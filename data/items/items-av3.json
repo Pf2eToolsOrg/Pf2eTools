@@ -1,11 +1,248 @@
 {
 	"item": [
 		{
+			"name": "Crimson Fulcrum Lens",
 			"source": "AV3",
-			"name": "Necrotic Bomb",
-			"level": "1+",
+			"page": 75,
 			"type": "Item",
-			"category": "Bomb",
+			"level": 9,
+			"traits": [
+				"Unique",
+				"Enchantment",
+				"Invested",
+				"Occult"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 700,
+				"note": null
+			},
+			"bulk": "1",
+			"category": "no category found",
+			"entries": [
+				"This concave lens has a drifting crimson cloud resembling slowly swirling blood within it. While you have the Crimson Fulcrum Lens invested, you seethe with malevolent fury you can barely contain. You gain a +2 item bonus to saving throws against {@trait fear} effects and a +2 item bonus to your melee {@action Strike} damage (this increases to a +4 item bonus to damage if the melee {@action Strike} is a jaws attack). You can also activate the lens in the following ways.",
+				{
+					"type": "activation",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"Interact"
+					],
+					"frequency": null,
+					"trigger": null,
+					"requirements": null,
+					"effect": [
+						"You grasp the Crimson Fulcrum Lens in one hand and make a {@action Strike} that doesn't require that hand. The {@action Strike} deals an additional {@damage 1d8} precision damage (or {@damage 2d8} precision damage if you make a jaws {@action Strike}) and doesn't count toward your multiple attack penalty."
+					]
+				},
+				{
+					"type": "activation",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"Interact (attack",
+						"possession)"
+					],
+					"frequency": null,
+					"trigger": null,
+					"requirements": null,
+					"effect": [
+						"While grasping the lens, make a melee spell attack roll with a modifier of +18. On a hit, you force the splinter of {@deity Nhimbaloth|LOGM}'s essence from the lens to possess the target. You're no longer invested in the lens, and the target gains the benefits as though it had invested the lens but can't activate the lens's other abilities. This effect is permanent, but it can be ended by {@trait any} effect that removes a {@trait possession} effect. The lens doesn't have any magical abilities until the {@trait possession} effect ends; when it does, the essence returns to the lens."
+					]
+				}
+			],
+			"generic": false,
+			"consumable": false
+		},
+		{
+			"name": "Ebon Fulcrum Lens",
+			"source": "AV3",
+			"page": 76,
+			"type": "Item",
+			"level": 12,
+			"traits": [
+				"Unique",
+				"Invested",
+				"Necromancy",
+				"Occult"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 2000,
+				"note": null
+			},
+			"bulk": "L",
+			"category": "no category found",
+			"entries": [
+				"This strangest and most powerful of the fulcrum lenses resembles a chip of smooth obsidian containing three dark glimmers of {@deity Nhimbaloth|LOGM}'s essence. Incorporeal creatures can touch and hold the Ebon Fulcrum Lens. While you have the Ebon Fulcrum Lens invested, and you're a corporeal creature, you become insubstantial, gain the {@trait incorporeal} trait, and are {@condition drained|CRB|drained 2}. Your {@condition drained} condition can't be reduced below 2 as long as you have the lens invested. You can activate the lens in the following ways. Both require expenditures of glimmers within the lens; once the lens is depleted of its three glimmers, it retains its ability to make corporeal creatures insubstantial but can't be used for its other abilities until its glimmers are restored (which generally requires a ritual or being steeped in an area of {@deity Nhimbaloth|LOGM}'s power).",
+				{
+					"type": "activation",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"components": [
+						"envision"
+					],
+					"frequency": "once per day",
+					"trigger": "you would be destroyed and are able to rejuvenate",
+					"requirements": "At least one glimmer remains in the Ebon Fulcrum Lens",
+					"effect": [
+						"For the first 24 hours after you rejuvenate, you gain a +1 item bonus to attack rolls, saving throws, and DCs. Reduce the number of glimmers remaining in the lens by 1."
+					]
+				},
+				{
+					"type": "activation",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"Interact"
+					],
+					"frequency": "once per day",
+					"trigger": null,
+					"requirements": "At least one glimmer remains in the Ebon Fulcrum Lens",
+					"effect": [
+						"You draw upon a glimmer of {@deity Nhimbaloth|LOGM}'s essence for power; reduce the number of glimmers remaining in the lens by 1. You're {@condition quickened} for 1 minute and gain a +1 item bonus to attack rolls, saving throws, and DCs. You can use this extra action to {@action Stride} or {@action Step}, or for an action in a special ghost ability you have."
+					]
+				}
+			],
+			"generic": false,
+			"consumable": false
+		},
+		{
+			"name": "Emerald Fulcrum Lens",
+			"source": "AV3",
+			"page": 76,
+			"type": "Item",
+			"level": 10,
+			"traits": [
+				"Unique",
+				"Invested",
+				"Necromancy",
+				"Negative",
+				"Occult"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 1000,
+				"note": null
+			},
+			"bulk": "3",
+			"category": "no category found",
+			"entries": [
+				"This concave green lens is pitted and flawed; its jagged edges can cut those who don't handle it with care. While you have the Emerald Fulcrum Lens invested, your flesh appears waxen and pallid. You gain negative healing and {@spell harm} spells gain a +4 status bonus to the Hit Points they restore to you.",
+				"You can also activate the lens in the following ways.",
+				{
+					"type": "activation",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"Interact (healing)"
+					],
+					"frequency": "once per day",
+					"trigger": null,
+					"requirements": null,
+					"effect": [
+						"You grasp the Emerald Fulcrum Lens in one hand, regain 30 Hit Points, and gain a +2 item bonus to saving throws against magic for 1 round."
+					]
+				},
+				{
+					"type": "activation",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"Interact (attack",
+						"possession)"
+					],
+					"frequency": null,
+					"trigger": null,
+					"requirements": null,
+					"effect": [
+						"as Crimson Fulcrum Lens, but the melee spell attack modifier is +20."
+					]
+				}
+			],
+			"generic": false,
+			"consumable": false
+		},
+		{
+			"name": "Fulcrum Lattice",
+			"source": "AV3",
+			"page": 76,
+			"type": "Item",
+			"level": 11,
+			"traits": [
+				"Unique",
+				"Occult",
+				"Transmutation"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 1200,
+				"note": null
+			},
+			"usage": "held in 2 hands",
+			"bulk": "2",
+			"category": "Held",
+			"entries": [
+				"This silver and copper framework is shaped to hold four focusing lenses, one behind the other, from smallest to largest. It has a socketed base to be mounted into a stand, such as that found in a lighthouse lantern. The Fulcrum Lattice was specifically designed to hold the four fulcrum lenses from smallest to largest (ebon, crimson, ochre, emerald), and it hums slightly while within 10 feet of any fulcrum lens. A fulcrum lens slotted into the Fulcrum Lattice has no Bulk; the lattice remains at 1 Bulk and can be carried easily. Inserting or removing a lens from the Fulcrum Lattice requires a single {@action Interact} action.",
+				"The Fulcrum Lattice channels the power of fulcrum lenses joined with it. While you hold the Fulcrum Lattice, lenses socketed into it are considered to be in your hand for the purpose of activating their abilities. When you make a melee spell attack with a lens in the Fulcrum Lattice, you use the highest melee spell attack modifier of any lens in the lattice, or you can use your melee attack modifier with simple weapons if it's greater."
+			],
+			"generic": false,
+			"consumable": false
+		},
+		{
+			"name": "Fungal Walk Musk",
+			"source": "AV3",
+			"page": 74,
+			"type": "Item",
+			"level": 5,
+			"traits": [
+				"Alchemical",
+				"Consumable",
+				"Olfactory"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 21,
+				"note": null
+			},
+			"usage": "Held in 1 hand",
+			"bulk": "L",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": "Interact",
+				"requirements": null,
+				"frequency": null,
+				"trigger": null
+			},
+			"category": "Consumable",
+			"entries": [
+				"This foul-smelling unguent dulls the odors and traces that fungus creatures detect. For 1 day after you slather this musk on your body, fungus creatures take a \u20134 penalty to {@skill Perception} checks to {@action Seek} you or otherwise notice you. If a fungus creature is mindless, it instead has a \u20136 penalty.",
+				"The musk also grants you a +1 item bonus to AC against melee attacks from fungus creatures with no vision for the same period of time. The effects of fungal walk musk end immediately if you're submerged in water or subject to another olfactory effect."
+			],
+			"generic": false,
+			"consumable": true
+		},
+		{
+			"name": "Necrotic Bomb",
+			"source": "AV3",
+			"page": 74,
+			"type": "Item",
+			"level": "1+",
 			"traits": [
 				"Alchemical",
 				"Bomb",
@@ -13,9 +250,8 @@
 				"Negative",
 				"Splash"
 			],
-			"consumable": true,
-			"generic": "G",
 			"usage": "held in 1 hand",
+			"bulk": "L",
 			"activate": {
 				"activity": {
 					"number": 1,
@@ -26,11 +262,12 @@
 				"frequency": null,
 				"trigger": null
 			},
-			"bulk": "L",
+			"category": "Bomb",
 			"entries": [
 				"Necrotic bombs combine reagents most people consider disgusting at best and unholy at worst, creating a life-sucking miasma upon contact with air. A necrotic bomb deals the listed negative damage and splash damage, and it sickens the primary target on a critical hit. This damage harms only living creatures.",
 				"Many types grant an item bonus to attack rolls."
 			],
+			"generic": "G",
 			"variants": [
 				{
 					"type": "lesser",
@@ -81,309 +318,27 @@
 					]
 				}
 			],
-			"page": 74
+			"consumable": true
 		},
 		{
-			"source": "AV3",
-			"name": "Stupor Poison",
-			"level": 4,
-			"type": "Item",
-			"category": "Poison",
-			"traits": [
-				"Uncommon",
-				"Alchemical",
-				"Consumable",
-				"Incapacitation",
-				"Injury",
-				"Poison",
-				"Sleep"
-			],
-			"consumable": true,
-			"generic": false,
-			"price": {
-				"coin": "gp",
-				"amount": 16,
-				"note": null
-			},
-			"usage": "held in 2 hands",
-			"activate": {
-				"activity": {
-					"number": 2,
-					"unit": "action"
-				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
-			},
-			"bulk": "L",
-			"entries": [
-				"Stupor poison is a more potent distillation of lethargy poison. Further exposure to stupor poison doesn't require the target to attempt additional saving throws; only failing a saving throw against an ongoing exposure can progress its stage.",
-				{
-					"type": "affliction",
-					"name": null,
-					"traits": [],
-					"DC": "20",
-					"savingThrow": "Fortitude",
-					"onset": null,
-					"maxDuration": "6\nhours",
-					"stages": [
-						{
-							"stage": 1,
-							"entry": "{@condition slowed|CRB|slowed 1} and {@condition flat-footed}",
-							"duration": "1 round"
-						},
-						{
-							"stage": 2,
-							"entry": "{@condition slowed|CRB|slowed 2} and {@condition flat-footed}",
-							"duration": "1 round"
-						},
-						{
-							"stage": 3,
-							"entry": "{@condition unconscious} with no {@skill Perception} check to wake up",
-							"duration": "1 round"
-						},
-						{
-							"stage": 4,
-							"entry": "{@condition unconscious} with no {@skill Perception} check to wake up",
-							"duration": "{@dice 1d6} hours"
-						}
-					]
-				}
-			],
-			"page": 74
-		},
-		{
-			"source": "AV3",
-			"name": "Fungal Walk Musk",
-			"level": 5,
-			"type": "Item",
-			"category": "Consumable",
-			"traits": [
-				"Alchemical",
-				"Consumable",
-				"Olfactory"
-			],
-			"consumable": true,
-			"generic": false,
-			"price": {
-				"coin": "gp",
-				"amount": 21,
-				"note": null
-			},
-			"usage": "Held in 1 hand",
-			"activate": {
-				"activity": {
-					"number": 1,
-					"unit": "action"
-				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
-			},
-			"bulk": "L",
-			"entries": [
-				"This foul-smelling unguent dulls the odors and traces that fungus creatures detect. For 1 day after you slather this musk on your body, fungus creatures take a \u20134 penalty to {@skill Perception} checks to {@action Seek} you or otherwise notice you. If a fungus creature is mindless, it instead has a \u20136 penalty.",
-				"The musk also grants you a +1 item bonus to AC against melee attacks from fungus creatures with no vision for the same period of time. The effects of fungal walk musk end immediately if you're submerged in water or subject to another olfactory effect."
-			],
-			"page": 74
-		},
-		{
-			"source": "AV3",
-			"name": "Crimson Fulcrum Lens",
-			"level": 9,
-			"type": "Item",
-			"category": "no category found",
-			"traits": [
-				"Unique",
-				"Enchantment",
-				"Invested",
-				"Occult"
-			],
-			"consumable": false,
-			"generic": false,
-			"price": {
-				"coin": "gp",
-				"amount": 700,
-				"note": null
-			},
-			"bulk": "1",
-			"entries": [
-				"This concave lens has a drifting crimson cloud resembling slowly swirling blood within it. While you have the Crimson Fulcrum Lens invested, you seethe with malevolent fury you can barely contain. You gain a +2 item bonus to saving throws against {@trait fear} effects and a +2 item bonus to your melee {@action Strike} damage (this increases to a +4 item bonus to damage if the melee {@action Strike} is a jaws attack). You can also activate the lens in the following ways.",
-				{
-					"type": "activation",
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"components": [
-						"Interact"
-					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
-					"effect": [
-						"You grasp the Crimson Fulcrum Lens in one hand and make a {@action Strike} that doesn't require that hand. The {@action Strike} deals an additional {@damage 1d8} precision damage (or {@damage 2d8} precision damage if you make a jaws {@action Strike}) and doesn't count toward your multiple attack penalty."
-					]
-				},
-				{
-					"type": "activation",
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"components": [
-						"Interact (attack",
-						"possession)"
-					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
-					"effect": [
-						"While grasping the lens, make a melee spell attack roll with a modifier of +18. On a hit, you force the splinter of {@deity Nhimbaloth|LOGM}'s essence from the lens to possess the target. You're no longer invested in the lens, and the target gains the benefits as though it had invested the lens but can't activate the lens's other abilities. This effect is permanent, but it can be ended by {@trait any} effect that removes a {@trait possession} effect. The lens doesn't have any magical abilities until the {@trait possession} effect ends; when it does, the essence returns to the lens."
-					]
-				}
-			],
-			"page": 75
-		},
-		{
-			"source": "AV3",
-			"name": "Ebon Fulcrum Lens",
-			"level": 12,
-			"type": "Item",
-			"category": "no category found",
-			"traits": [
-				"Unique",
-				"Invested",
-				"Necromancy",
-				"Occult"
-			],
-			"consumable": false,
-			"generic": false,
-			"price": {
-				"coin": "gp",
-				"amount": 2000,
-				"note": null
-			},
-			"bulk": "L",
-			"entries": [
-				"This strangest and most powerful of the fulcrum lenses resembles a chip of smooth obsidian containing three dark glimmers of {@deity Nhimbaloth|LOGM}'s essence. Incorporeal creatures can touch and hold the Ebon Fulcrum Lens. While you have the Ebon Fulcrum Lens invested, and you're a corporeal creature, you become insubstantial, gain the {@trait incorporeal} trait, and are {@condition drained|CRB|drained 2}. Your {@condition drained} condition can't be reduced below 2 as long as you have the lens invested. You can activate the lens in the following ways. Both require expenditures of glimmers within the lens; once the lens is depleted of its three glimmers, it retains its ability to make corporeal creatures insubstantial but can't be used for its other abilities until its glimmers are restored (which generally requires a ritual or being steeped in an area of {@deity Nhimbaloth|LOGM}'s power).",
-				{
-					"type": "activation",
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"components": [
-						"envision"
-					],
-					"frequency": "once per day",
-					"trigger": "you would be destroyed and are able to rejuvenate",
-					"requirements": "At least one glimmer remains in the Ebon Fulcrum Lens",
-					"effect": [
-						"For the first 24 hours after you rejuvenate, you gain a +1 item bonus to attack rolls, saving throws, and DCs. Reduce the number of glimmers remaining in the lens by 1."
-					]
-				},
-				{
-					"type": "activation",
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"components": [
-						"Interact"
-					],
-					"frequency": "once per day",
-					"trigger": null,
-					"requirements": "At least one glimmer remains in the Ebon Fulcrum Lens",
-					"effect": [
-						"You draw upon a glimmer of {@deity Nhimbaloth|LOGM}'s essence for power; reduce the number of glimmers remaining in the lens by 1. You're {@condition quickened} for 1 minute and gain a +1 item bonus to attack rolls, saving throws, and DCs. You can use this extra action to {@action Stride} or {@action Step}, or for an action in a special ghost ability you have."
-					]
-				}
-			],
-			"page": 76
-		},
-		{
-			"source": "AV3",
-			"name": "Emerald Fulcrum Lens",
-			"level": 10,
-			"type": "Item",
-			"category": "no category found",
-			"traits": [
-				"Unique",
-				"Invested",
-				"Necromancy",
-				"Negative",
-				"Occult"
-			],
-			"consumable": false,
-			"generic": false,
-			"price": {
-				"coin": "gp",
-				"amount": 1000,
-				"note": null
-			},
-			"bulk": "3",
-			"entries": [
-				"This concave green lens is pitted and flawed; its jagged edges can cut those who don't handle it with care. While you have the Emerald Fulcrum Lens invested, your flesh appears waxen and pallid. You gain negative healing and {@spell harm} spells gain a +4 status bonus to the Hit Points they restore to you.",
-				"You can also activate the lens in the following ways.",
-				{
-					"type": "activation",
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"components": [
-						"Interact (healing)"
-					],
-					"frequency": "once per day",
-					"trigger": null,
-					"requirements": null,
-					"effect": [
-						"You grasp the Emerald Fulcrum Lens in one hand, regain 30 Hit Points, and gain a +2 item bonus to saving throws against magic for 1 round."
-					]
-				},
-				{
-					"type": "activation",
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"components": [
-						"Interact (attack",
-						"possession)"
-					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
-					"effect": [
-						"as Crimson Fulcrum Lens, but the melee spell attack modifier is +20."
-					]
-				}
-			],
-			"page": 76
-		},
-		{
-			"source": "AV3",
 			"name": "Ochre Fulcrum Lens",
-			"level": 11,
+			"source": "AV3",
+			"page": 76,
 			"type": "Item",
-			"category": "no category found",
+			"level": 11,
 			"traits": [
 				"Unique",
 				"Enchantment",
 				"Invested",
 				"Occult"
 			],
-			"consumable": false,
-			"generic": false,
 			"price": {
 				"coin": "gp",
 				"amount": 1400,
 				"note": null
 			},
 			"bulk": "2",
+			"category": "no category found",
 			"entries": [
 				"This brownish-orange lens always seems dusty and gritty, even when wet. While you have the Ochre Fulcrum Lens invested, lassitude grips you. You gain resistance 10 to mental damage and a +2 status bonus to saves against {@trait emotion} effects. You can also activate the lens in the following ways.",
 				{
@@ -420,33 +375,78 @@
 					]
 				}
 			],
-			"page": 76
+			"generic": false,
+			"consumable": false
 		},
 		{
+			"name": "Stupor Poison",
 			"source": "AV3",
-			"name": "Fulcrum Lattice",
-			"level": 11,
+			"page": 74,
 			"type": "Item",
-			"category": "Held",
+			"level": 4,
 			"traits": [
-				"Unique",
-				"Occult",
-				"Transmutation"
+				"Uncommon",
+				"Alchemical",
+				"Consumable",
+				"Incapacitation",
+				"Injury",
+				"Poison",
+				"Sleep"
 			],
-			"consumable": false,
-			"generic": false,
 			"price": {
 				"coin": "gp",
-				"amount": 1200,
+				"amount": 16,
 				"note": null
 			},
 			"usage": "held in 2 hands",
-			"bulk": "2",
+			"bulk": "L",
+			"activate": {
+				"activity": {
+					"number": 2,
+					"unit": "action"
+				},
+				"components": "Interact",
+				"requirements": null,
+				"frequency": null,
+				"trigger": null
+			},
+			"category": "Poison",
 			"entries": [
-				"This silver and copper framework is shaped to hold four focusing lenses, one behind the other, from smallest to largest. It has a socketed base to be mounted into a stand, such as that found in a lighthouse lantern. The Fulcrum Lattice was specifically designed to hold the four fulcrum lenses from smallest to largest (ebon, crimson, ochre, emerald), and it hums slightly while within 10 feet of any fulcrum lens. A fulcrum lens slotted into the Fulcrum Lattice has no Bulk; the lattice remains at 1 Bulk and can be carried easily. Inserting or removing a lens from the Fulcrum Lattice requires a single {@action Interact} action.",
-				"The Fulcrum Lattice channels the power of fulcrum lenses joined with it. While you hold the Fulcrum Lattice, lenses socketed into it are considered to be in your hand for the purpose of activating their abilities. When you make a melee spell attack with a lens in the Fulcrum Lattice, you use the highest melee spell attack modifier of any lens in the lattice, or you can use your melee attack modifier with simple weapons if it's greater."
+				"Stupor poison is a more potent distillation of lethargy poison. Further exposure to stupor poison doesn't require the target to attempt additional saving throws; only failing a saving throw against an ongoing exposure can progress its stage.",
+				{
+					"type": "affliction",
+					"name": null,
+					"traits": [],
+					"DC": "20",
+					"savingThrow": "Fortitude",
+					"onset": null,
+					"maxDuration": "6\nhours",
+					"stages": [
+						{
+							"stage": 1,
+							"entry": "{@condition slowed|CRB|slowed 1} and {@condition flat-footed}",
+							"duration": "1 round"
+						},
+						{
+							"stage": 2,
+							"entry": "{@condition slowed|CRB|slowed 2} and {@condition flat-footed}",
+							"duration": "1 round"
+						},
+						{
+							"stage": 3,
+							"entry": "{@condition unconscious} with no {@skill Perception} check to wake up",
+							"duration": "1 round"
+						},
+						{
+							"stage": 4,
+							"entry": "{@condition unconscious} with no {@skill Perception} check to wake up",
+							"duration": "{@dice 1d6} hours"
+						}
+					]
+				}
 			],
-			"page": 76
+			"generic": false,
+			"consumable": true
 		}
 	]
 }

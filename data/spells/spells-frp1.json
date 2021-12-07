@@ -1,27 +1,52 @@
 {
 	"spell": [
 		{
-			"source": "FRP1",
 			"name": "Aura Of The Unremarkable",
+			"source": "FRP1",
+			"page": 77,
+			"type": "SPELL",
+			"focus": false,
 			"level": 6,
+			"traits": [
+				"Uncommon",
+				"Illusion",
+				"Mental"
+			],
+			"school": "I",
 			"traditions": [
 				"Arcane",
 				"Occult"
 			],
-			"school": "I",
-			"type": "SPELL",
-			"focus": false,
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
 			"components": {
 				"F": false,
 				"M": false,
 				"S": true,
 				"V": true
 			},
-			"traits": [
-				"Uncommon",
-				"Illusion",
-				"Mental"
-			],
+			"range": {
+				"type": null
+			},
+			"area": {
+				"types": [
+					"Emanation"
+				],
+				"entry": "30-foot emanation"
+			},
+			"savingThrowBasic": false,
+			"duration": {
+				"type": "timed",
+				"entry": "sustained up to 1 minute",
+				"duration": {
+					"number": 1,
+					"unit": "minute"
+				}
+			},
+			"sustain": true,
+			"dismiss": false,
 			"entries": [
 				"You and allies in the area appear to be completely innocuous to other creatures within the spell's area, regardless of the actions you're committing. For example, if you and your allies are loudly interrogating a local for information or aiming a crossbow at a noble from a balcony, creatures who can see you might not think this is unusual. Non-allied creatures in the emanation must attempt a Will save.",
 				{
@@ -34,68 +59,40 @@
 					}
 				}
 			],
-			"cast": {
-				"number": 2,
-				"unit": "action"
-			},
-			"range": {
-				"type": null
-			},
-			"area": {
-				"types": [
-					"Emanation"
-				],
-				"entry": "30-foot emanation"
-			},
-			"duration": {
-				"type": "timed",
-				"entry": "sustained up to 1 minute",
-				"duration": {
-					"number": 1,
-					"unit": "minute"
-				}
-			},
-			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": false,
 				"plus_x": null,
 				"x": null,
 				"no_x": null
-			},
-			"dismiss": false,
-			"sustain": true,
-			"page": 77
+			}
 		},
 		{
-			"source": "FRP1",
 			"name": "Return Beacon",
-			"level": 5,
-			"traditions": [
-				"Arcane",
-				"Occult"
-			],
-			"school": "C",
+			"source": "FRP1",
+			"page": 77,
 			"type": "SPELL",
 			"focus": false,
-			"components": {
-				"F": false,
-				"M": true,
-				"S": true,
-				"V": true
-			},
+			"level": 5,
 			"traits": [
 				"Uncommon",
 				"Conjuration",
 				"Teleportation"
 			],
-			"entries": [
-				"You create a unique planar beacon somewhere within the spell's range that remains in place. The beacon is {@condition invisible} except when detected by detect magic, in which case it looks like a 10-foot-wide tower of bright light stretching into the sky. At any time during the duration of the beacon, you can complete a 1-minute activity, which has the {@trait concentrate} and {@trait manipulate} traits, to focus on the beacon and transport yourself and any items you're wearing and holding from your current space to the location of the beacon. Transporting yourself in this way ends the spell. If this would bring another creature with you\u2014even if you're carrying it in an extradimensional container\u2014the beacon collapses, ending the spell, and the transportation attempt fails.",
-				"Casting return beacon while a beacon is active causes the previous return beacon spell to end. If you are not within 1 mile of the beacon, your attempt to transport yourself to the beacon fails. If a solid object is in the same space as the beacon when you transport yourself, you arrive in the nearest open space to the beacon. If there is not an open space within 30 feet of the beacon, your attempt to transport yourself fails, but the beacon remains intact."
+			"school": "C",
+			"traditions": [
+				"Arcane",
+				"Occult"
 			],
 			"cast": {
 				"number": 1,
 				"unit": "minute",
 				"entry": "1 minute"
+			},
+			"components": {
+				"F": false,
+				"M": true,
+				"S": true,
+				"V": true
 			},
 			"range": {
 				"type": "point",
@@ -105,6 +102,7 @@
 					"amount": 30
 				}
 			},
+			"savingThrowBasic": false,
 			"duration": {
 				"type": "timed",
 				"entry": "1 hour",
@@ -113,7 +111,12 @@
 					"unit": "hour"
 				}
 			},
-			"savingThrowBasic": false,
+			"sustain": false,
+			"dismiss": false,
+			"entries": [
+				"You create a unique planar beacon somewhere within the spell's range that remains in place. The beacon is {@condition invisible} except when detected by detect magic, in which case it looks like a 10-foot-wide tower of bright light stretching into the sky. At any time during the duration of the beacon, you can complete a 1-minute activity, which has the {@trait concentrate} and {@trait manipulate} traits, to focus on the beacon and transport yourself and any items you're wearing and holding from your current space to the location of the beacon. Transporting yourself in this way ends the spell. If this would bring another creature with you\u2014even if you're carrying it in an extradimensional container\u2014the beacon collapses, ending the spell, and the transportation attempt fails.",
+				"Casting return beacon while a beacon is active causes the previous return beacon spell to end. If you are not within 1 mile of the beacon, your attempt to transport yourself to the beacon fails. If a solid object is in the same space as the beacon when you transport yourself, you arrive in the nearest open space to the beacon. If there is not an open space within 30 feet of the beacon, your attempt to transport yourself fails, but the beacon remains intact."
+			],
 			"heightened": {
 				"heightened": true,
 				"plus_x": null,
@@ -136,24 +139,15 @@
 					}
 				],
 				"no_x": null
-			},
-			"dismiss": false,
-			"sustain": false,
-			"page": 77
+			}
 		},
 		{
-			"source": "FRP1",
 			"name": "Wronged Monk's Wrath",
-			"level": 5,
-			"school": "V",
+			"source": "FRP1",
+			"page": 77,
 			"type": "FOCUS",
 			"focus": true,
-			"components": {
-				"F": false,
-				"M": false,
-				"S": true,
-				"V": true
-			},
+			"level": 5,
 			"traits": [
 				"Uncommon",
 				"Electricity",
@@ -161,13 +155,17 @@
 				"Force",
 				"Monk"
 			],
-			"entries": [
-				"You unleash your ki as a powerful storm of force and lightning, dealing {@damage 2d6} force damage and {@damage 2d12} electricity damage to creatures in the area. If you use 2 actions to cast the spell, increase the size of the emanation to 10 feet and the damage to {@damage 3d6} force damage and {@damage 3d12} electricity damage. If you use 3 actions to cast the spell, increase the size of the emanation to 20 feet and the damage to {@damage 4d6} force and {@damage 4d12} electricity damage. Each creature attempts one basic Reflex save that applies to both types of damage On a failed save, the creature is {@condition deafened} for 1 round; on a critical failure, the creature also takes {@damage 2d12} {@condition persistent damage ||persistent electricity damage} and is {@condition deafened} for 1 minute."
-			],
+			"school": "V",
 			"cast": {
 				"number": 1,
 				"unit": "varies",
 				"entry": "{@as 1} to {@as 3}"
+			},
+			"components": {
+				"F": false,
+				"M": false,
+				"S": true,
+				"V": true
 			},
 			"range": {
 				"type": null
@@ -178,11 +176,16 @@
 				],
 				"entry": "5-foot emanation or more"
 			},
+			"savingThrow": "Reflex",
+			"savingThrowBasic": false,
 			"duration": {
 				"type": null
 			},
-			"savingThrow": "Reflex",
-			"savingThrowBasic": false,
+			"sustain": false,
+			"dismiss": false,
+			"entries": [
+				"You unleash your ki as a powerful storm of force and lightning, dealing {@damage 2d6} force damage and {@damage 2d12} electricity damage to creatures in the area. If you use 2 actions to cast the spell, increase the size of the emanation to 10 feet and the damage to {@damage 3d6} force damage and {@damage 3d12} electricity damage. If you use 3 actions to cast the spell, increase the size of the emanation to 20 feet and the damage to {@damage 4d6} force and {@damage 4d12} electricity damage. Each creature attempts one basic Reflex save that applies to both types of damage On a failed save, the creature is {@condition deafened} for 1 round; on a critical failure, the creature also takes {@damage 2d12} {@condition persistent damage ||persistent electricity damage} and is {@condition deafened} for 1 minute."
+			],
 			"heightened": {
 				"heightened": true,
 				"plus_x": {
@@ -191,10 +194,7 @@
 				},
 				"x": null,
 				"no_x": null
-			},
-			"dismiss": false,
-			"sustain": false,
-			"page": 77
+			}
 		}
 	]
 }

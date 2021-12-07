@@ -1,365 +1,19 @@
 {
 	"creature": [
 		{
-			"source": "EC3",
-			"name": "Swardlands Delinquent",
-			"level": 4,
-			"rarity": "Rare",
-			"alignment": "CN",
-			"size": "Medium",
-			"creatureType": [
-				"Humanoid"
-			],
-			"traits": [
-				"Human"
-			],
-			"perception": {
-				"default": 8
-			},
-			"languages": {
-				"languages": [
-					"Common"
-				],
-				"languageAbilities": []
-			},
-			"skills": {
-				"Acrobatics": {
-					"default": 10
-				},
-				"Athletics": {
-					"default": 9
-				},
-				"Deception": {
-					"default": 8
-				},
-				"Intimidation": {
-					"default": 8
-				},
-				"Stealth": {
-					"default": 12
-				},
-				"Thievery": {
-					"default": 12
-				}
-			},
-			"abilityMods": {
-				"Str": 3,
-				"Dex": 4,
-				"Con": 1,
-				"Int": 1,
-				"Wis": 0,
-				"Cha": 2
-			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+8, {@skill Stealth} +12 (+14 while in the."
-					],
-					"name": "Intimidation"
-				},
-				{
-					"entries": [
-						"+12 Str +3, Dex +4, Con +1, Int +1, Wis +0, Cha +2 Items leather armor, club, dagger; one delinquent carries a crowbar and another carries a brush and pot of red paint."
-					],
-					"name": "Swardlands), Thievery"
-				}
-			],
-			"ac": {
-				"default": 21,
-				"abilities": null
-			},
-			"savingThrows": {
-				"Fort": {
-					"default": 9
-				},
-				"Ref": {
-					"default": 14
-				},
-				"Will": {
-					"default": 8
-				},
-				"abilities": null
-			},
-			"hp": [
-				{
-					"hp": 65,
-					"note": null,
-					"abilities": null
-				}
-			],
-			"abilitiesMid": [
-				{
-					"entries": [],
-					"name": "Jemaig Hendri"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"trigger": "The delinquent is targeted with a melee or ranged attack by an attacker she can see",
-					"entries": [
-						"The delinquent gains a +2 circumstance bonus to AC against the triggering attack."
-					],
-					"name": "Nimble Dodge"
-				}
-			],
-			"speed": {
-				"abilities": null,
-				"walk": 25
-			},
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"entries": [
-						"The delinquent draws a weapon with an {@action Interact} action, then Strikes with the weapon they just drew."
-					],
-					"name": "Quick Draw"
-				},
-				{
-					"entries": [
-						"Creatures the delinquent critically hits are {@condition clumsy|CRB|clumsy 1} and can't make reactions until the end of the delinquent's next turn."
-					],
-					"name": "Rattling Blow"
-				},
-				{
-					"entries": [
-						"The delinquent deals {@dice 1d6} extra precision damage to {@condition flat-footed} creatures."
-					],
-					"name": "Sneak Attack",
-					"generic": true
-				}
-			],
-			"attacks": [],
-			"isNpc": false,
-			"inflicts": {
-				"damage": [],
-				"condition": [
-					"{@condition clumsy}",
-					"{@condition flat-footed}"
-				]
-			},
-			"page": 15,
-			"misc": [
-				"CC"
-			]
-		},
-		{
-			"source": "EC3",
-			"name": "Tanessa Fleer",
-			"level": 9,
-			"rarity": "Unique",
-			"alignment": "NE",
-			"size": "Medium",
-			"creatureType": [
-				"Humanoid"
-			],
-			"traits": [
-				"Human"
-			],
-			"perception": {
-				"default": 19
-			},
-			"languages": {
-				"languages": [
-					"Common"
-				],
-				"languageAbilities": []
-			},
-			"skills": {
-				"Acrobatics": {
-					"default": 19
-				},
-				"Athletics": {
-					"default": 17
-				},
-				"Intimidation": {
-					"default": 16
-				},
-				"Stealth": {
-					"default": 17
-				},
-				"Thievery": {
-					"default": 17
-				}
-			},
-			"abilityMods": {
-				"Str": 4,
-				"Dex": 4,
-				"Con": 1,
-				"Int": 0,
-				"Wis": 4,
-				"Cha": 1
-			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+16, {@skill Stealth} +17, {@skill Survival} +19, {@skill Thievery} +17 Str +4, Dex +4, Con +1, Int +0, Wis +4,"
-					],
-					"name": "Intimidation"
-				},
-				{
-					"entries": [
-						"+1 Items chain shirt, +1 striking hand crossbow (2, 20 bolts), shortsword."
-					],
-					"name": "Cha"
-				}
-			],
-			"ac": {
-				"default": 22,
-				"abilities": null
-			},
-			"savingThrows": {
-				"Fort": {
-					"default": 15
-				},
-				"Ref": {
-					"default": 16
-				},
-				"Will": {
-					"default": 10
-				},
-				"abilities": null
-			},
-			"hp": [
-				{
-					"hp": 155,
-					"note": null,
-					"abilities": null
-				}
-			],
-			"abilitiesMid": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"entries": [
-						"Tanessa can make."
-					],
-					"name": "Attack of Opportunity",
-					"generic": true
-				},
-				{
-					"entries": [
-						"Opportunity with a loaded ranged weapon she's wielding if the triggering creature is within 5 feet of her."
-					],
-					"name": "Attacks of"
-				}
-			],
-			"speed": {
-				"abilities": [
-					"mobility"
-				],
-				"walk": 30
-			},
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"entries": [
-						"Tanessa designates as her prey a single creature that she can see and hear or that she is Tracking.",
-						"She gains a +2 circumstance bonus to {@skill Perception} checks when she Seeks her prey and a +2 circumstance bonus."
-					],
-					"name": "Hunt Prey"
-				},
-				{
-					"entries": [
-						"{@skill Survival} checks when she Tracks her prey. She also ignores the penalty for making ranged attacks within her second range increment against her prey. Lastly, she deals {@damage 1d8} precision damage to her prey the first time she hits her prey each round. Tanessa can have only one prey designated at a time."
-					],
-					"name": "to"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"traits": [
-						"concentrate",
-						"manipulate"
-					],
-					"entries": [
-						"Requirement Tanessa has a hand crossbow in each hand; Tanessa quickly juggles her hand crossbows from one hand to another, reloading them both as she does so."
-					],
-					"name": "Incredible Reload"
-				},
-				{
-					"entries": [
-						"Tanessa's ranged Strikes don't trigger."
-					],
-					"name": "Mobile Shot Stance"
-				},
-				{
-					"entries": [
-						"Opportunity or other reactions triggered by ranged attacks."
-					],
-					"name": "Attacks of"
-				}
-			],
-			"attacks": [
-				{
-					"range": "Melee",
-					"name": "shortsword",
-					"attack": 19,
-					"traits": [
-						"agile",
-						"finesse",
-						"versatile S"
-					],
-					"effects": [],
-					"damage": "{@damage 1d6+10} piercing",
-					"types": [
-						"piercing"
-					]
-				},
-				{
-					"range": "Ranged",
-					"name": "hand crossbow",
-					"attack": 20,
-					"traits": [
-						"magical",
-						"range increment 60 feet",
-						"reload 1"
-					],
-					"effects": [],
-					"damage": "{@damage 2d6+10} piercing",
-					"types": [
-						"piercing"
-					]
-				}
-			],
-			"isNpc": false,
-			"inflicts": {
-				"damage": [
-					"piercing",
-					"precision"
-				],
-				"condition": []
-			},
-			"page": 16,
-			"misc": [
-				"MA",
-				"RA",
-				"UW"
-			]
-		},
-		{
-			"source": "EC3",
 			"name": "Bitter Truth Bandit",
+			"isNpc": false,
+			"source": "EC3",
+			"page": 17,
 			"level": 6,
 			"rarity": "Rare",
 			"alignment": "CN",
 			"size": "Medium",
-			"creatureType": [
-				"Humanoid"
-			],
 			"traits": [
 				"Human"
+			],
+			"creatureType": [
+				"Humanoid"
 			],
 			"perception": {
 				"default": 12
@@ -436,27 +90,6 @@
 				],
 				"walk": 30
 			},
-			"abilitiesBot": [
-				{
-					"entries": [
-						"Striking from concealment doesn't cause the bandit to become {@condition observed}."
-					],
-					"name": "Experienced Ambusher"
-				},
-				{
-					"entries": [
-						"A target damaged by the bandit's shortbow {@action Strike} must succeed at a DC 22 Fortitude save or be {@condition slowed|CRB|slowed 1} until the end of the bandit's next turn."
-					],
-					"name": "Muscle Striker"
-				},
-				{
-					"entries": [
-						"A bandit deals an additional {@damage 2d6} precision damage to {@condition flat-footed} creatures."
-					],
-					"name": "Sneak Attack",
-					"generic": true
-				}
-			],
 			"attacks": [
 				{
 					"range": "Melee",
@@ -504,7 +137,27 @@
 					]
 				}
 			],
-			"isNpc": false,
+			"abilitiesBot": [
+				{
+					"entries": [
+						"Striking from concealment doesn't cause the bandit to become {@condition observed}."
+					],
+					"name": "Experienced Ambusher"
+				},
+				{
+					"entries": [
+						"A target damaged by the bandit's shortbow {@action Strike} must succeed at a DC 22 Fortitude save or be {@condition slowed|CRB|slowed 1} until the end of the bandit's next turn."
+					],
+					"name": "Muscle Striker"
+				},
+				{
+					"entries": [
+						"A bandit deals an additional {@damage 2d6} precision damage to {@condition flat-footed} creatures."
+					],
+					"name": "Sneak Attack",
+					"generic": true
+				}
+			],
 			"inflicts": {
 				"damage": [
 					"piercing",
@@ -516,7 +169,6 @@
 					"{@condition slowed}"
 				]
 			},
-			"page": 17,
 			"misc": [
 				"MA",
 				"RA",
@@ -526,1253 +178,10 @@
 			]
 		},
 		{
-			"source": "EC3",
-			"name": "Pin Tingwheely",
-			"level": 8,
-			"rarity": "Unique",
-			"alignment": "CN",
-			"size": "Small",
-			"creatureType": [
-				"Fey"
-			],
-			"traits": [
-				"Sprite"
-			],
-			"perception": {
-				"default": 19
-			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"low-light vision"
-				]
-			},
-			"languages": {
-				"languages": [
-					"Common"
-				],
-				"languageAbilities": []
-			},
-			"skills": {
-				"Acrobatics": {
-					"default": 18
-				},
-				"Deception": {
-					"default": 16
-				},
-				"Nature": {
-					"default": 15
-				},
-				"Performance": {
-					"default": 18
-				},
-				"Stealth": {
-					"default": 21
-				}
-			},
-			"abilityMods": {
-				"Str": 0,
-				"Dex": 6,
-				"Con": 1,
-				"Int": 2,
-				"Wis": 3,
-				"Cha": 4
-			},
-			"items": [
-				"+1 striking longbow (60 arrows)",
-				"shortsword"
-			],
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+18, {@skill Stealth} +21 Str +0, Dex +6, Con +1, Int +2, Wis +3, Cha +4 Items +1 striking longbow (60 arrows), shortsword."
-					],
-					"name": "Performance"
-				}
-			],
-			"ac": {
-				"default": 29,
-				"abilities": null
-			},
-			"savingThrows": {
-				"Fort": {
-					"default": 15
-				},
-				"Ref": {
-					"default": 20
-				},
-				"Will": {
-					"default": 17
-				},
-				"abilities": null
-			},
-			"hp": [
-				{
-					"hp": 95,
-					"note": null,
-					"abilities": null
-				}
-			],
-			"weaknesses": [
-				{
-					"amount": 10,
-					"name": "cold iron"
-				}
-			],
-			"abilitiesMid": [
-				{
-					"entries": [
-						"Pin rolls a success on a Reflex save, he gets a critical success instead."
-					],
-					"name": "Evasion When"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"trigger": "Pin is targeted with a melee or ranged attack by an attacker he can see",
-					"entries": [
-						"Pin gains a +2 circumstance bonus to AC against the triggering attack."
-					],
-					"name": "Nimble Dodge"
-				}
-			],
-			"speed": {
-				"abilities": null,
-				"walk": 15,
-				"fly ": 45
-			},
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"entries": [
-						"{@damage 1d6+10} piercing Ranged longbow +19 (deadly d10, magical, range increment 100 feet, volley 20 feet), Damage {@damage 2d6+10} piercing Primal Innate Spells DC 26; 4th invisibility (at will, self only); 3rd dispel magic, illusory disguise; 2nd entangle, faerie fire; Cantrips (4th) dancing lights, detect magic, ghost sound, shield."
-					],
-					"name": "S), Damage"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"traits": [
-						"manipulate"
-					],
-					"entries": [
-						"Pin sprinkles pixie dust onto one of his arrows. If Pin hits a creature with that arrow before his next turn, the arrow inflicts one of the following special effects instead of dealing damage.",
-						"Each effect depends on the target's DC 26 Will save.",
-						"On a critical hit, the target treats its save result as one degree worse.",
-						{
-							"type": "list",
-							"items": [
-								"{@bold Befuddlement} (enchantment, mental) On a failed Will save, the target is {@condition stupefied|CRB|stupefied 1} for 1 minute ({@condition stupefied|CRB|stupefied 2} on a critical failure).",
-								"{@bold Charm} (emotion, enchantment, incapacitation, mental) The target suffers the result of a 4th-level {@spell charm} spell, except it doesn't gain a bonus to its save if the only {@condition hostile} act was Pin firing his bow, and Pin can choose to direct the target's adoration to another creature rather than himself.",
-								"{@bold Memory Loss} (divination, mental) On a failed Will save, the target loses the last 5 minutes of its memory. Pin can add a single false memory if he chooses, which is the only memory the target retains in that time period.",
-								"{@bold Reckless Pride} (emotion, enchantment, mental) The target suffers the result of delusional pride (Core Rulebook 391)."
-							]
-						}
-					],
-					"name": "Sprinkle Pixie Dust"
-				}
-			],
-			"attacks": [
-				{
-					"range": "Melee",
-					"name": "shortsword",
-					"attack": 18,
-					"traits": [
-						"agile",
-						"finesse",
-						"magical",
-						"versatile S"
-					],
-					"effects": [],
-					"damage": "{@damage 1d6+10} piercing",
-					"types": [
-						"piercing"
-					]
-				},
-				{
-					"range": "Ranged",
-					"name": "longbow",
-					"attack": 19,
-					"traits": [
-						"deadly d10",
-						"magical",
-						"range increment 100 feet",
-						"volley 20 feet"
-					],
-					"effects": [],
-					"damage": "{@damage 2d6+10} piercing",
-					"types": [
-						"piercing"
-					]
-				}
-			],
-			"spellcasting": [
-				{
-					"name": "Primal Innate",
-					"type": "Innate",
-					"tradition": "Primal",
-					"DC": 26,
-					"entry": {
-						"0": {
-							"level": 4,
-							"spells": [
-								{
-									"name": "dancing lights"
-								},
-								{
-									"name": "detect magic"
-								},
-								{
-									"name": "ghost sound"
-								},
-								{
-									"name": "shield"
-								}
-							]
-						},
-						"2": {
-							"spells": [
-								{
-									"name": "entangle"
-								},
-								{
-									"name": "faerie fire"
-								}
-							]
-						},
-						"3": {
-							"spells": [
-								{
-									"name": "dispel magic"
-								},
-								{
-									"name": "illusory disguise"
-								}
-							]
-						},
-						"4": {
-							"spells": [
-								{
-									"name": "invisibility",
-									"amount": "at will",
-									"notes": [
-										"self only"
-									]
-								}
-							]
-						}
-					}
-				}
-			],
-			"isNpc": false,
-			"inflicts": {
-				"damage": [
-					"piercing"
-				],
-				"condition": [
-					"{@condition stupefied}"
-				]
-			},
-			"page": 20,
-			"misc": [
-				"MA",
-				"RA",
-				"CC",
-				"UW"
-			]
-		},
-		{
-			"source": "EC3",
-			"name": "Xulgath Skirmisher",
-			"level": 6,
-			"rarity": "Uncommon",
-			"alignment": "CE",
-			"size": "Medium",
-			"creatureType": [
-				"Humanoid"
-			],
-			"traits": [
-				"Xulgath"
-			],
-			"perception": {
-				"default": 15
-			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
-			"languages": {
-				"languages": [
-					"Draconic",
-					"Undercommon"
-				],
-				"languageAbilities": []
-			},
-			"skills": {
-				"Acrobatics": {
-					"default": 16
-				},
-				"Athletics": {
-					"default": 14
-				},
-				"Stealth": {
-					"default": 16
-				},
-				"Survival": {
-					"default": 15
-				}
-			},
-			"abilityMods": {
-				"Str": 4,
-				"Dex": 4,
-				"Con": 1,
-				"Int": 0,
-				"Wis": 3,
-				"Cha": 0
-			},
-			"items": [
-				"javelins (6)",
-				"scimitar",
-				"studded leather armor"
-			],
-			"abilitiesTop": [],
-			"ac": {
-				"default": 24,
-				"abilities": null
-			},
-			"savingThrows": {
-				"Fort": {
-					"default": 13
-				},
-				"Ref": {
-					"default": 16
-				},
-				"Will": {
-					"default": 13
-				},
-				"abilities": null
-			},
-			"hp": [
-				{
-					"hp": 95,
-					"note": null,
-					"abilities": null
-				}
-			],
-			"abilitiesMid": [
-				{
-					"traits": [
-						"aura",
-						"olfactory"
-					],
-					"entries": [
-						"30 feet. A creature that enters the area must attempt a DC 23 Fortitude save. On a failure, the creature is {@condition sickened|CRB|sickened 2}, and on a critical failure, the creature is also {@condition slowed|CRB|slowed 1} for as long as it is {@condition sickened}. While within the aura, the creature takes a \u20132 circumstance penalty to saves to recover from the {@condition sickened} condition.",
-						"A creature that succeeds at its save is temporarily immune to all xulgaths' stenches for 1 minute."
-					],
-					"name": "Powerful Stench"
-				}
-			],
-			"speed": {
-				"abilities": [
-					"light step"
-				],
-				"walk": 30
-			},
-			"abilitiesBot": [
-				{
-					"entries": [
-						"When a skirmisher Strides or Steps, they ignore difficult terrain and treat greater difficult terrain as difficult terrain."
-					],
-					"name": "Light Step"
-				},
-				{
-					"entries": [
-						"The xulgath skirmisher doubles the range increment of its thrown weapons."
-					],
-					"name": "Powerful Arm"
-				},
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"traits": [
-						"attack",
-						"move"
-					],
-					"entries": [
-						"The xulgath skirmisher Strides or Steps, then Strikes. This {@action Strike} deals an additional {@damage 3d6} precision damage."
-					],
-					"name": "Skirmishing Movement"
-				}
-			],
-			"attacks": [
-				{
-					"range": "Melee",
-					"name": "scimitar",
-					"attack": 16,
-					"traits": [
-						"forceful",
-						"sweep"
-					],
-					"effects": [],
-					"damage": "{@damage 1d6+4} slashing",
-					"types": [
-						"slashing"
-					]
-				},
-				{
-					"range": "Melee",
-					"name": "jaws",
-					"attack": 16,
-					"traits": null,
-					"effects": [],
-					"damage": "{@damage 1d6+4} piercing",
-					"types": [
-						"piercing"
-					]
-				},
-				{
-					"range": "Melee",
-					"name": "claw",
-					"attack": 16,
-					"traits": [
-						"agile",
-						"finesse"
-					],
-					"effects": [],
-					"damage": "{@damage 1d4+4} slashing",
-					"types": [
-						"slashing"
-					]
-				},
-				{
-					"range": "Ranged",
-					"name": "javelin",
-					"attack": 16,
-					"traits": [
-						"thrown 60 feet"
-					],
-					"effects": [],
-					"damage": "{@damage 1d6+4} piercing damage",
-					"types": [
-						"piercing"
-					]
-				}
-			],
-			"isNpc": false,
-			"inflicts": {
-				"damage": [
-					"piercing",
-					"precision",
-					"slashing"
-				],
-				"condition": [
-					"{@condition sickened}"
-				]
-			},
-			"page": 27,
-			"misc": [
-				"MA",
-				"RA",
-				"TA",
-				"CC",
-				"UW"
-			]
-		},
-		{
-			"source": "EC3",
-			"name": "Xulgath Bomber",
-			"level": 7,
-			"rarity": "Uncommon",
-			"alignment": "CE",
-			"size": "Medium",
-			"creatureType": [
-				"Humanoid"
-			],
-			"traits": [
-				"Xulgath"
-			],
-			"perception": {
-				"default": 15
-			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
-			"languages": {
-				"languages": [
-					"Draconic",
-					"Undercommon"
-				],
-				"languageAbilities": []
-			},
-			"skills": {
-				"Acrobatics": {
-					"default": 17
-				},
-				"Athletics": {
-					"default": 14
-				},
-				"Crafting": {
-					"default": 17
-				},
-				"Stealth": {
-					"default": 15
-				},
-				"Thievery": {
-					"default": 15
-				}
-			},
-			"abilityMods": {
-				"Str": 3,
-				"Dex": 4,
-				"Con": 1,
-				"Int": 4,
-				"Wis": 2,
-				"Cha": 0
-			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+15, {@skill Thievery} +15 Str +3, Dex +4, Con +1, Int +4, Wis +2, Cha +0 Items alchemist's tools, greatpick, studded leather armor."
-					],
-					"name": "Stealth"
-				},
-				{
-					"entries": [
-						"A xulgath bomber carries the following infused items: 2 doses of concentrated xulgath bile, 2 moderate acid flasks, and 2 moderate alchemist's fires. These items last for 24 hours, or until the next time they make their daily preparations."
-					],
-					"name": "Infused Items"
-				}
-			],
-			"ac": {
-				"default": 25,
-				"abilities": null
-			},
-			"savingThrows": {
-				"Fort": {
-					"default": 12
-				},
-				"Ref": {
-					"default": 17
-				},
-				"Will": {
-					"default": 15
-				},
-				"abilities": null
-			},
-			"hp": [
-				{
-					"hp": 115,
-					"note": null,
-					"abilities": null
-				}
-			],
-			"resistances": [
-				{
-					"amount": 5,
-					"name": "poison"
-				}
-			],
-			"abilitiesMid": [
-				{
-					"traits": [
-						"aura",
-						"olfactory"
-					],
-					"entries": [
-						"30 feet. As xulgath skirmisher (page 27), but DC 24."
-					],
-					"name": "Powerful Stench"
-				}
-			],
-			"speed": {
-				"abilities": null,
-				"walk": 25
-			},
-			"abilitiesBot": [
-				{
-					"traits": [
-						"poison"
-					],
-					"entries": [
-						"The {@condition sickened} condition from concentrated xulgath bile doesn't improve on its own until the target recovers from the poison. A target who recovers from concentrated xulgath bile is immune to being {@condition sickened} by this poison for 1 minute; Saving."
-					],
-					"name": "Concentrated Xulgath Bile"
-				},
-				{
-					"entries": [
-						"DC 22; Maximum Duration 6 rounds; Stage 1 {@damage 1d10} poison damage and {@condition sickened|CRB|sickened 1} (1 round); Stage 2 {@damage 2d10} poison damage and {@condition sickened|CRB|sickened 2} (1 round); Stage 2 {@damage 2d10} poison damage and {@condition sickened|CRB|sickened 3} (1 round)."
-					],
-					"name": "Throw Fortitude"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"entries": [
-						"The bomber Interacts to draw a bomb, then Strikes with it."
-					],
-					"name": "Quick Bomber"
-				}
-			],
-			"attacks": [
-				{
-					"range": "Melee",
-					"name": "greatpick",
-					"attack": 16,
-					"traits": [
-						"fatal d12"
-					],
-					"effects": [
-						"concentrated xulgath bile"
-					],
-					"damage": "{@damage 1d12+5} piercing plus concentrated xulgath bile",
-					"types": [
-						"piercing"
-					]
-				},
-				{
-					"range": "Melee",
-					"name": "jaws",
-					"attack": 16,
-					"traits": null,
-					"effects": [],
-					"damage": "{@damage 2d6+5} piercing",
-					"types": [
-						"piercing"
-					]
-				},
-				{
-					"range": "Melee",
-					"name": "claw",
-					"attack": 16,
-					"traits": [
-						"agile",
-						"finesse"
-					],
-					"effects": [],
-					"damage": "{@damage 2d4+5} slashing",
-					"types": [
-						"slashing"
-					]
-				},
-				{
-					"range": "Ranged",
-					"name": "acid flask",
-					"attack": 17,
-					"traits": [
-						"range increment 20 feet",
-						"splash"
-					],
-					"effects": [],
-					"damage": "5 acid damage plus {@damage 2d6+2} {@condition persistent damage ||persistent acid} and 4 acid splash",
-					"types": [
-						"acid",
-						"persistent"
-					]
-				},
-				{
-					"range": "Ranged",
-					"name": "alchemist's fire",
-					"attack": 17,
-					"traits": [
-						"range increment 20 feet",
-						"splash"
-					],
-					"effects": [],
-					"damage": "{@damage 2d8+2} fire plus 4 {@condition persistent damage ||persistent fire} and 4 fire splash",
-					"types": [
-						"fire",
-						"persistent"
-					]
-				}
-			],
-			"isNpc": false,
-			"inflicts": {
-				"damage": [
-					"acid",
-					"fire",
-					"piercing",
-					"poison",
-					"slashing"
-				],
-				"condition": [
-					"{@condition sickened}"
-				]
-			},
-			"page": 28,
-			"misc": [
-				"MA",
-				"RA",
-				"CC",
-				"UW"
-			]
-		},
-		{
-			"source": "EC3",
-			"name": "Headless Xulgath",
-			"level": 11,
-			"rarity": "Unique",
-			"alignment": "CE",
-			"size": "Large",
-			"creatureType": [
-				"Humanoid"
-			],
-			"traits": [
-				"Xulgath"
-			],
-			"perception": {
-				"default": 20
-			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"motion sense",
-					"no vision"
-				]
-			},
-			"languages": {
-				"languages": [
-					"Draconic",
-					"Undercommon (can't speak any"
-				],
-				"languageAbilities": []
-			},
-			"skills": {
-				"Athletics": {
-					"default": 23
-				},
-				"Intimidation": {
-					"default": 21
-				},
-				"Survival": {
-					"default": 21
-				}
-			},
-			"abilityMods": {
-				"Str": 7,
-				"Dex": 3,
-				"Con": 5,
-				"Int": 0,
-				"Wis": 3,
-				"Cha": 3
-			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"The headless xulgath can sense nearby motion through vibrations and air movement."
-					],
-					"name": "Motion Sense"
-				}
-			],
-			"ac": {
-				"default": 29,
-				"abilities": null
-			},
-			"savingThrows": {
-				"Fort": {
-					"default": 24
-				},
-				"Ref": {
-					"default": 20
-				},
-				"Will": {
-					"default": 22
-				},
-				"abilities": null
-			},
-			"hp": [
-				{
-					"hp": 195,
-					"note": null,
-					"abilities": null
-				}
-			],
-			"abilitiesMid": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"entries": [],
-					"name": "Attack of Opportunity",
-					"generic": true
-				},
-				{
-					"traits": [
-						"aura",
-						"olfactory"
-					],
-					"entries": [
-						"30 feet. As xulgath skirmisher (page 27), but DC 29."
-					],
-					"name": "Powerful Stench"
-				}
-			],
-			"speed": {
-				"abilities": null,
-				"walk": 20
-			},
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"frequency": "once per round",
-					"entries": [
-						"Requirements The headless xulgath has a creature {@condition grabbed}; The headless."
-					],
-					"name": "Choke Slam"
-				}
-			],
-			"attacks": [
-				{
-					"range": "Melee",
-					"name": "claw",
-					"attack": 22,
-					"traits": [
-						"agile",
-						"reach 15 feet"
-					],
-					"effects": [
-						"Grab"
-					],
-					"damage": "{@damage 2d8+13} slashing plus Grab",
-					"types": [
-						"slashing"
-					]
-				}
-			],
-			"isNpc": false,
-			"inflicts": {
-				"damage": [
-					"slashing"
-				],
-				"condition": [
-					"{@condition grabbed}"
-				]
-			},
-			"page": 50,
-			"misc": [
-				"MA",
-				"RC",
-				"CC"
-			]
-		},
-		{
-			"source": "EC3",
-			"name": "Resin-seep Xulgath",
-			"level": 10,
-			"rarity": "Rare",
-			"alignment": "CE",
-			"size": "Medium",
-			"creatureType": [
-				"Humanoid"
-			],
-			"traits": [
-				"Xulgath"
-			],
-			"perception": {
-				"default": 19
-			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
-			"languages": {
-				"languages": [
-					"Draconic",
-					"Undercommon"
-				],
-				"languageAbilities": []
-			},
-			"skills": {
-				"Acrobatics": {
-					"default": 23
-				},
-				"Athletics": {
-					"default": 20
-				},
-				"Intimidation": {
-					"default": 16
-				},
-				"Survival": {
-					"default": 19
-				},
-				"Thievery": {
-					"default": 21
-				}
-			},
-			"abilityMods": {
-				"Str": 4,
-				"Dex": 5,
-				"Con": 3,
-				"Int": 1,
-				"Wis": 3,
-				"Cha": 0
-			},
-			"items": [
-				"+1 striking dagger"
-			],
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+19, {@skill Thievery} +21 Str +4, Dex +5, Con +3, Int +1, Wis +3, Cha +0 Items +1 striking dagger."
-					],
-					"name": "Survival"
-				}
-			],
-			"ac": {
-				"default": 30,
-				"abilities": null
-			},
-			"savingThrows": {
-				"Fort": {
-					"default": 19
-				},
-				"Ref": {
-					"default": 23
-				},
-				"Will": {
-					"default": 17
-				},
-				"abilities": null
-			},
-			"hp": [
-				{
-					"hp": 195,
-					"note": null,
-					"abilities": null
-				}
-			],
-			"abilitiesMid": [],
-			"speed": {
-				"abilities": null,
-				"walk": 25
-			},
-			"abilitiesBot": [
-				{
-					"traits": [
-						"incapacitation",
-						"poison"
-					],
-					"entries": [
-						"A creature damaged by a resin-seep xulgath's jaws or claw {@action Strike} must succeed at a DC 28 Reflex save or be covered with clumps of noxious resin, taking {@damage 2d8} poison damage and a \u201315-foot penalty to its Speeds for 1 minute (on a critical failure, the creature is also {@condition clumsy|CRB|clumsy 1} for 1 minute). The creature is {@condition sickened|CRB|sickened 1} for as long it has a Speed penalty. A creature can spend an {@action Interact} action to scrape the resin off, decreasing the Speed penalty by 5 with each such action."
-					],
-					"name": "Resin Crust"
-				},
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"traits": [
-						"poison"
-					],
-					"entries": [
-						"The resin-seep xulgath flexes its pores and emits a 30-foot line of resin that deals {@damage 3d12} poison damage and knocks the target 5 feet back (DC 28 basic Reflex save; on a success or critical success the target isn't knocked back, and on a critical failure the target is knocked back 10 feet). The resin-seep xulgath can't use Resin Spray again for {@dice 1d4} rounds."
-					],
-					"name": "Resin Spray"
-				}
-			],
-			"attacks": [
-				{
-					"range": "Melee",
-					"name": "dagger",
-					"attack": 21,
-					"traits": [
-						"agile",
-						"finesse",
-						"magical",
-						"versatile S"
-					],
-					"effects": [],
-					"damage": "{@damage 2d4+11} piercing",
-					"types": [
-						"piercing"
-					]
-				},
-				{
-					"range": "Melee",
-					"name": "jaws",
-					"attack": 20,
-					"traits": null,
-					"effects": [
-						"resin crust"
-					],
-					"damage": "{@damage 1d8+11} piercing plus resin crust",
-					"types": [
-						"piercing"
-					]
-				},
-				{
-					"range": "Melee",
-					"name": "claw",
-					"attack": 20,
-					"traits": [
-						"agile",
-						"finesse"
-					],
-					"effects": [
-						"resin crust"
-					],
-					"damage": "{@damage 1d6+11} slashing plus resin crust",
-					"types": [
-						"slashing"
-					]
-				},
-				{
-					"range": "Ranged",
-					"name": "dagger",
-					"attack": 21,
-					"traits": [
-						"agile",
-						"magical",
-						"thrown 10 feet",
-						"versatile S"
-					],
-					"effects": [
-						"xulgath bile"
-					],
-					"damage": "{@damage 2d4+11} piercing plus xulgath bile",
-					"types": [
-						"piercing"
-					]
-				}
-			],
-			"isNpc": false,
-			"inflicts": {
-				"damage": [
-					"piercing",
-					"poison",
-					"slashing"
-				],
-				"condition": [
-					"{@condition clumsy}"
-				]
-			},
-			"page": 51,
-			"misc": [
-				"MA",
-				"RA",
-				"TA",
-				"AD",
-				"CC",
-				"UW"
-			]
-		},
-		{
-			"source": "EC3",
-			"name": "Hooklimb Xulgath",
-			"level": 10,
-			"rarity": "Rare",
-			"alignment": "NE",
-			"size": "Medium",
-			"creatureType": [
-				"Humanoid"
-			],
-			"traits": [
-				"Xulgath"
-			],
-			"perception": {
-				"default": 18
-			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
-			"languages": {
-				"languages": [
-					"Draconic",
-					"Undercommon"
-				],
-				"languageAbilities": []
-			},
-			"skills": {
-				"Acrobatics": {
-					"default": 25
-				},
-				"Athletics": {
-					"default": 21
-				},
-				"Intimidation": {
-					"default": 16
-				},
-				"Stealth": {
-					"default": 19
-				},
-				"Survival": {
-					"default": 16
-				}
-			},
-			"abilityMods": {
-				"Str": 7,
-				"Dex": 5,
-				"Con": 3,
-				"Int": 0,
-				"Wis": 2,
-				"Cha": 0
-			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+19, {@skill Survival} +16 Str +7, Dex +5, Con +3, Int +0, Wis +2, Cha +0."
-					],
-					"name": "Stealth"
-				}
-			],
-			"ac": {
-				"default": 29,
-				"abilities": null
-			},
-			"savingThrows": {
-				"Fort": {
-					"default": 21
-				},
-				"Ref": {
-					"default": 21
-				},
-				"Will": {
-					"default": 16
-				},
-				"abilities": null
-			},
-			"hp": [
-				{
-					"hp": 190,
-					"note": null,
-					"abilities": null
-				}
-			],
-			"abilitiesMid": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"entries": [],
-					"name": "Attack of Opportunity",
-					"generic": true
-				},
-				{
-					"traits": [
-						"aura",
-						"olfactory"
-					],
-					"entries": [
-						"30 feet. As xulgath skirmisher (page 27), but DC 28."
-					],
-					"name": "Powerful Stench"
-				}
-			],
-			"speed": {
-				"abilities": null,
-				"walk": 25,
-				"climb ": 25
-			},
-			"abilitiesBot": [
-				{
-					"entries": [
-						"The hooklimb always critically succeeds at checks to Grab a Ledge."
-					],
-					"name": "Quick Catch"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"entries": [
-						"The hooklimb flexes hooklike barbs on its claws. Until the start of the hooklimb's next turn, its claws Strikes deal an additional {@damage 1d10} {@condition persistent damage ||persistent bleed damage}."
-					],
-					"name": "Raking Claws"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"traits": [
-						"claw"
-					],
-					"entries": [],
-					"name": "Rend",
-					"generic": true
-				}
-			],
-			"attacks": [
-				{
-					"range": "Melee",
-					"name": "jaws",
-					"attack": 22,
-					"traits": null,
-					"effects": [],
-					"damage": "{@damage 1d6+13} piercing",
-					"types": [
-						"piercing"
-					]
-				},
-				{
-					"range": "Melee",
-					"name": "claw",
-					"attack": 22,
-					"traits": [
-						"agile"
-					],
-					"effects": [],
-					"damage": "{@damage 2d8+13} slashing",
-					"types": [
-						"slashing"
-					]
-				}
-			],
-			"isNpc": false,
-			"inflicts": {
-				"damage": [
-					"piercing",
-					"slashing"
-				],
-				"condition": []
-			},
-			"page": 55,
-			"misc": [
-				"MA"
-			]
-		},
-		{
-			"source": "EC3",
 			"name": "Bugul Noz",
+			"isNpc": false,
+			"source": "EC3",
+			"page": 76,
 			"level": 12,
 			"rarity": "Rare",
 			"alignment": "CN",
@@ -1904,49 +313,6 @@
 				],
 				"walk": 25
 			},
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"entries": [
-						"The bugul noz swings its limbs about wildly. It makes up to three claw Strikes, each against a different creature and each with a \u20132 circumstance penalty.",
-						"Its multiple attack penalty doesn't increase until after it makes all the attacks."
-					],
-					"name": "Flail"
-				},
-				{
-					"entries": [
-						"The bugul noz ignores difficult terrain in forests."
-					],
-					"name": "Forest Jaunt"
-				},
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"traits": [
-						"illusion",
-						"vocal"
-					],
-					"entries": [
-						"The bugul noz lets out a hair-raising keen.",
-						"Other creatures within 30 feet must attempt a DC 31 Fortitude save. The bugul noz can't use this ability again for {@dice 1d4} rounds.",
-						{
-							"type": "successDegree",
-							"entries": {
-								"Critical Success": "The target is unaffected.",
-								"Success": "The target takes {@damage 2d10} sonic damage.",
-								"Failure": "The target takes {@damage 4d10} sonic damage and gains sonic weakness 10 for 1 minute.",
-								"Critical Failure": "As failure, and the target becomes {@condition fleeing} for 1 round."
-							}
-						}
-					],
-					"name": "Haunting Wail"
-				}
-			],
 			"attacks": [
 				{
 					"range": "Melee",
@@ -2011,7 +377,49 @@
 					}
 				}
 			],
-			"isNpc": false,
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"entries": [
+						"The bugul noz swings its limbs about wildly. It makes up to three claw Strikes, each against a different creature and each with a \u20132 circumstance penalty.",
+						"Its multiple attack penalty doesn't increase until after it makes all the attacks."
+					],
+					"name": "Flail"
+				},
+				{
+					"entries": [
+						"The bugul noz ignores difficult terrain in forests."
+					],
+					"name": "Forest Jaunt"
+				},
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"traits": [
+						"illusion",
+						"vocal"
+					],
+					"entries": [
+						"The bugul noz lets out a hair-raising keen.",
+						"Other creatures within 30 feet must attempt a DC 31 Fortitude save. The bugul noz can't use this ability again for {@dice 1d4} rounds.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "The target is unaffected.",
+								"Success": "The target takes {@damage 2d10} sonic damage.",
+								"Failure": "The target takes {@damage 4d10} sonic damage and gains sonic weakness 10 for 1 minute.",
+								"Critical Failure": "As failure, and the target becomes {@condition fleeing} for 1 round."
+							}
+						}
+					],
+					"name": "Haunting Wail"
+				}
+			],
 			"inflicts": {
 				"damage": [
 					"bludgeoning",
@@ -2024,7 +432,6 @@
 					"{@condition fleeing}"
 				]
 			},
-			"page": 76,
 			"misc": [
 				"MA",
 				"RA",
@@ -2032,8 +439,10 @@
 			]
 		},
 		{
-			"source": "EC3",
 			"name": "Cat Sith",
+			"isNpc": false,
+			"source": "EC3",
+			"page": 77,
 			"level": 6,
 			"rarity": "Uncommon",
 			"alignment": "CN",
@@ -2132,32 +541,6 @@
 				"abilities": null,
 				"walk": 35
 			},
-			"abilitiesBot": [
-				{
-					"traits": [
-						"curse",
-						"misfortune"
-					],
-					"entries": [
-						"A creature hit by a cat sith's claw must succeed at a DC 23 Will save or be cursed with misfortune. Whenever the cursed creature rolls a critical success on a skill check or saving throw, it gets a success instead. Each day, a cursed creature can attempt a DC {@flatDC 10} flat check to break the curse."
-					],
-					"name": "Cat Sith's Mark"
-				},
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"traits": [
-						"necromancy",
-						"occult"
-					],
-					"entries": [
-						"The cat sith touches a {@condition dying} creature or a creature that died within the past 3 days. If the target is a {@condition dying} creature, it must attempt a DC 25 Fortitude save; on a failure, its {@condition dying} value increases by 1 (or 2 on a critical failure). If the target is dead, it receives no save and its soul is imprisoned in the cat sith's body, becoming freed only if the cat sith is slain. While the soul is imprisoned, the creature can't be brought back to life by any means short of a wish or miracle. The cat sith can hold only one soul at a time and can release a soul as a free action."
-					],
-					"name": "Steal Soul"
-				}
-			],
 			"attacks": [
 				{
 					"range": "Melee",
@@ -2213,7 +596,32 @@
 					}
 				}
 			],
-			"isNpc": false,
+			"abilitiesBot": [
+				{
+					"traits": [
+						"curse",
+						"misfortune"
+					],
+					"entries": [
+						"A creature hit by a cat sith's claw must succeed at a DC 23 Will save or be cursed with misfortune. Whenever the cursed creature rolls a critical success on a skill check or saving throw, it gets a success instead. Each day, a cursed creature can attempt a DC {@flatDC 10} flat check to break the curse."
+					],
+					"name": "Cat Sith's Mark"
+				},
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"traits": [
+						"necromancy",
+						"occult"
+					],
+					"entries": [
+						"The cat sith touches a {@condition dying} creature or a creature that died within the past 3 days. If the target is a {@condition dying} creature, it must attempt a DC 25 Fortitude save; on a failure, its {@condition dying} value increases by 1 (or 2 on a critical failure). If the target is dead, it receives no save and its soul is imprisoned in the cat sith's body, becoming freed only if the cat sith is slain. While the soul is imprisoned, the creature can't be brought back to life by any means short of a wish or miracle. The cat sith can hold only one soul at a time and can release a soul as a free action."
+					],
+					"name": "Steal Soul"
+				}
+			],
 			"inflicts": {
 				"damage": [
 					"piercing",
@@ -2223,15 +631,16 @@
 					"{@condition dying}"
 				]
 			},
-			"page": 77,
 			"misc": [
 				"MA",
 				"CC"
 			]
 		},
 		{
-			"source": "EC3",
 			"name": "Counteflora",
+			"isNpc": false,
+			"source": "EC3",
+			"page": 78,
 			"level": 10,
 			"rarity": "Common",
 			"alignment": "N",
@@ -2330,6 +739,35 @@
 				"abilities": null,
 				"walk": 25
 			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "vines",
+					"attack": 21,
+					"traits": [
+						"agile"
+					],
+					"effects": [],
+					"damage": "{@damage 2d6+9} slashing",
+					"types": [
+						"slashing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "head",
+					"attack": 23,
+					"traits": [
+						"reach 10 feet",
+						"sweep"
+					],
+					"effects": [],
+					"damage": "{@damage 3d10+9} bludgeoning",
+					"types": [
+						"bludgeoning"
+					]
+				}
+			],
 			"abilitiesBot": [
 				{
 					"activity": {
@@ -2371,36 +809,6 @@
 					"name": "Furious Swing"
 				}
 			],
-			"attacks": [
-				{
-					"range": "Melee",
-					"name": "vines",
-					"attack": 21,
-					"traits": [
-						"agile"
-					],
-					"effects": [],
-					"damage": "{@damage 2d6+9} slashing",
-					"types": [
-						"slashing"
-					]
-				},
-				{
-					"range": "Melee",
-					"name": "head",
-					"attack": 23,
-					"traits": [
-						"reach 10 feet",
-						"sweep"
-					],
-					"effects": [],
-					"damage": "{@damage 3d10+9} bludgeoning",
-					"types": [
-						"bludgeoning"
-					]
-				}
-			],
-			"isNpc": false,
 			"inflicts": {
 				"damage": [
 					"bludgeoning",
@@ -2411,7 +819,6 @@
 					"{@condition enfeebled}"
 				]
 			},
-			"page": 78,
 			"misc": [
 				"MA",
 				"RC",
@@ -2419,8 +826,10 @@
 			]
 		},
 		{
-			"source": "EC3",
 			"name": "Cu Sith",
+			"isNpc": false,
+			"source": "EC3",
+			"page": 79,
 			"level": 7,
 			"rarity": "Uncommon",
 			"alignment": "N",
@@ -2504,6 +913,21 @@
 				"abilities": null,
 				"walk": 40
 			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"attack": 17,
+					"traits": null,
+					"effects": [
+						"Grab"
+					],
+					"damage": "{@damage 2d10+9} piercing plus Grab",
+					"types": [
+						"piercing"
+					]
+				}
+			],
 			"abilitiesBot": [
 				{
 					"activity": {
@@ -2546,22 +970,6 @@
 					"name": "Worry Prey"
 				}
 			],
-			"attacks": [
-				{
-					"range": "Melee",
-					"name": "jaws",
-					"attack": 17,
-					"traits": null,
-					"effects": [
-						"Grab"
-					],
-					"damage": "{@damage 2d10+9} piercing plus Grab",
-					"types": [
-						"piercing"
-					]
-				}
-			],
-			"isNpc": false,
 			"inflicts": {
 				"damage": [
 					"piercing"
@@ -2571,1192 +979,25 @@
 					"{@condition grabbed}"
 				]
 			},
-			"page": 79,
 			"misc": [
 				"MA",
 				"CC"
 			]
 		},
 		{
-			"source": "EC3",
-			"name": "Herecite Of Zevgavizeb",
-			"level": 10,
-			"rarity": "Uncommon",
-			"alignment": "CE",
-			"size": "Medium",
-			"creatureType": [
-				"Undead"
-			],
-			"perception": {
-				"default": 20
-			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision",
-					"detect alignment (good only)"
-				]
-			},
-			"languages": {
-				"languages": [
-					"Common",
-					"Draconic",
-					"Infernal"
-				],
-				"languageAbilities": []
-			},
-			"skills": {
-				"Athletics": {
-					"default": 20
-				},
-				"Intimidation": {
-					"default": 23
-				},
-				"Religion": {
-					"default": 22
-				},
-				"Zevgavizeb Lore": {
-					"default": 19
-				}
-			},
-			"abilityMods": {
-				"Str": 6,
-				"Dex": 4,
-				"Con": 5,
-				"Int": 1,
-				"Wis": 4,
-				"Cha": 7
-			},
-			"items": [
-				"+1 striking spiked gauntlet"
-			],
-			"abilitiesTop": [
-				{
-					"entries": [
-						"Multiple herecites can form a cabal to gain increased magical abilities and defenses. A cabal consists of two to five herecites. The ritual to form a cabal (or to welcome new herecites into an existing cabal) requires 24 hours of worship, prayer, and vile sacrifice, after which point the herecites become magically bound to one another. All herecites in a cabal gain the cleric domain spells granted by each individual herecite's deity, and each herecite's focus pool increases to 3 Focus Points. As long as the cabal exists, herecites in the cabal gain a +2 status bonus to {@skill Perception} checks and fast healing 10. These benefits persist as long as the cabal consists of two or more herecites that remain within 1 mile of one another."
-					],
-					"name": "Cabal"
-				},
-				{
-					"entries": [
-						"A herecite is associated with one evil god and is always of the same alignment as that god. Whenever it wields its deity's favored weapon, that weapon gains the unholy rune. The herecite's creators select two domains from their deity; the herecite can cast the domain spells and the advanced domain spells from those domains as cleric focus spells. The herecite can cast the deity's other granted cleric spells as divine innate spells. Most herecites have 2 Focus Points in their focus pool. The herecite presented here is a herecite of {@deity Zevgavizeb|EC3}."
-					],
-					"name": "Herecite Deity"
-				}
-			],
-			"ac": {
-				"default": 30,
-				"abilities": null
-			},
-			"savingThrows": {
-				"Fort": {
-					"default": 19
-				},
-				"Ref": {
-					"default": 20
-				},
-				"Will": {
-					"default": 22
-				},
-				"abilities": null
-			},
-			"hp": [
-				{
-					"hp": 200,
-					"note": null,
-					"abilities": [
-						"negative healing"
-					]
-				}
-			],
-			"weaknesses": [
-				{
-					"amount": 10,
-					"name": "good"
-				}
-			],
-			"abilitiesMid": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"traits": [
-						"auditory",
-						"divine",
-						"evil"
-					],
-					"trigger": "A creature within 30 feet uses the {@action Sustain a Spell} action to sustain a divine spell or the {@action Cast a Spell} action to cast a divine spell with a verbal component",
-					"entries": [
-						"The herecite warps the caster's prayers into a sacrilegious echo praising the evils of its own deity. The triggering caster must succeed at a DC 29 Will saving throw or their spell is disrupted and their action wasted."
-					],
-					"name": "Perverse Prayer"
-				}
-			],
-			"speed": {
-				"abilities": null,
-				"walk": 30
-			},
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 3,
-						"unit": "action"
-					},
-					"traits": [
-						"concentrate",
-						"divine",
-						"evil",
-						"necromancy"
-					],
-					"requirements": "The herecite is in a cabal of three or more members, two of which are within 60 feet and have used",
-					"entries": [],
-					"name": "Assault the Soul"
-				},
-				{
-					"entries": [
-						"Communion within the last round; The herecite casts bind soul, spirit blast, or spiritual epidemic (DC 31)",
-						"Once a herecite has used this ability (whether or not it was successful), the cabal must wait 24 hours before one of its members can use Assault the Soul again."
-					],
-					"name": "Cabal"
-				},
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"traits": [
-						"auditory",
-						"concentrate"
-					],
-					"entries": [
-						"With murmurs and chants, the herecite casts its consciousness toward the other members of its cabal. For 1 round, it senses what other members are sensing, knows their thoughts, and knows their exact location."
-					],
-					"name": "Cabal Communion"
-				},
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"traits": [
-						"curse",
-						"divine",
-						"evil"
-					],
-					"entries": [
-						"Recalling the cruelty of the foul ritual that birthed it, the herecite curses an enemy with a fragment of its blasphemy. The herecite targets one creature within 30 feet, which must attempt a DC 29 Will save. On a failure, the creature is cursed. As long as the creature is cursed, any art object, symbol, or implement of religious significance in the creature's possession\u2014such as a divine spellcasting focus, holy text, fetish, or rendering of a deity\u2014becomes physically corrupted in a way that debases the deity's tenets (a depiction of {@deity Shelyn}'s songbird, for example, might lose its beautiful plumage to reveal a hideous skeletal form beneath). While these items continue to function normally, the cursed creature is {@condition stupefied|CRB|stupefied 2} as long as it possesses an object corrupted in this fashion. The creature can cast off its corrupted objects to remove the {@condition stupefied} condition, but any new religious objects it takes into its possession become similarly corrupted. The curse can be lifted by a {@spell remove curse} spell or by an atone ritual. After a creature is targeted with this ability, regardless of whether it was affected, it becomes immune to herecites' Curse of Defiled Idols for 1 day."
-					],
-					"name": "Curse of Defiled Idols"
-				}
-			],
-			"attacks": [
-				{
-					"range": "Melee",
-					"name": "unholy spiked gauntlet",
-					"attack": 22,
-					"traits": [
-						"agile",
-						"free-hand"
-					],
-					"effects": [],
-					"damage": "{@damage 2d4+10} piercing plus {@damage 1d6} evil",
-					"types": [
-						"evil",
-						"piercing"
-					]
-				}
-			],
-			"spellcasting": [
-				{
-					"name": "Divine Innate",
-					"type": "Innate",
-					"tradition": "Divine",
-					"DC": 28,
-					"entry": {
-						"1": {
-							"spells": [
-								{
-									"name": "ray of enfeeblement"
-								}
-							]
-						},
-						"2": {
-							"spells": [
-								{
-									"name": "darkness",
-									"amount": 3
-								}
-							]
-						},
-						"3": {
-							"spells": [
-								{
-									"name": "crisis of faith"
-								},
-								{
-									"name": "harm",
-									"amount": "at will"
-								},
-								{
-									"name": "meld into stone"
-								}
-							]
-						},
-						"5": {
-							"spells": [
-								{
-									"name": "ravening maw",
-									"notes": [
-										"page 67"
-									]
-								}
-							]
-						},
-						"constant": {
-							"5": {
-								"spells": [
-									{
-										"name": "detect alignment",
-										"notes": [
-											"good only"
-										]
-									}
-								]
-							}
-						}
-					}
-				}
-			],
-			"isNpc": false,
-			"inflicts": {
-				"damage": [
-					"piercing"
-				],
-				"condition": [
-					"{@condition stupefied}"
-				]
-			},
-			"page": 80,
-			"misc": [
-				"MA",
-				"CC"
-			]
-		},
-		{
-			"source": "EC3",
-			"name": "Shoony Tiller",
-			"level": 0,
-			"rarity": "Rare",
-			"alignment": "NG",
-			"size": "Small",
-			"creatureType": [
-				"Humanoid"
-			],
-			"traits": [
-				"Shoony"
-			],
-			"perception": {
-				"default": 6
-			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"low-light vision"
-				]
-			},
-			"languages": {
-				"languages": [
-					"Common",
-					"Shoony"
-				],
-				"languageAbilities": []
-			},
-			"skills": {
-				"Athletics": {
-					"default": 7
-				},
-				"Crafting": {
-					"default": 1
-				},
-				"Diplomacy": {
-					"default": 4
-				},
-				"Survival": {
-					"default": 4
-				},
-				"Farming Lore": {
-					"default": 3
-				}
-			},
-			"abilityMods": {
-				"Str": 3,
-				"Dex": 1,
-				"Con": 1,
-				"Int": -1,
-				"Wis": 2,
-				"Cha": 2
-			},
-			"items": [
-				"hoe"
-			],
-			"abilitiesTop": [],
-			"ac": {
-				"default": 15,
-				"abilities": null
-			},
-			"savingThrows": {
-				"Fort": {
-					"default": 5
-				},
-				"Ref": {
-					"default": 3
-				},
-				"Will": {
-					"default": 6
-				},
-				"abilities": null
-			},
-			"hp": [
-				{
-					"hp": 16,
-					"note": null,
-					"abilities": null
-				}
-			],
-			"abilitiesMid": [],
-			"speed": {
-				"abilities": null,
-				"walk": 25
-			},
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"traits": [
-						"manipulate"
-					],
-					"entries": [
-						"Page 72."
-					],
-					"name": "Dig Quickly"
-				}
-			],
-			"attacks": [
-				{
-					"range": "Melee",
-					"name": "hoe",
-					"attack": 6,
-					"traits": null,
-					"effects": [],
-					"damage": "{@damage 1d4+3} bludgeoning",
-					"types": [
-						"bludgeoning"
-					]
-				},
-				{
-					"range": "Ranged",
-					"name": "dirt clod",
-					"attack": 4,
-					"traits": [
-						"range increment 10 feet",
-						"thrown"
-					],
-					"effects": [],
-					"damage": "1 nonlethal",
-					"types": [
-						"nonlethal"
-					]
-				}
-			],
-			"isNpc": false,
-			"inflicts": {
-				"damage": [
-					"bludgeoning"
-				],
-				"condition": []
-			},
-			"page": 82,
-			"misc": [
-				"MA",
-				"RA",
-				"TA"
-			]
-		},
-		{
-			"source": "EC3",
-			"name": "Shoony Militia Member",
-			"level": 2,
-			"rarity": "Rare",
-			"alignment": "LG",
-			"size": "Small",
-			"creatureType": [
-				"Humanoid"
-			],
-			"traits": [
-				"Shoony"
-			],
-			"perception": {
-				"default": 8
-			},
-			"senses": {
-				"precise": [],
-				"imprecise": [
-					"scent 30 feet"
-				],
-				"vague": [],
-				"other": [
-					"low-light vision"
-				]
-			},
-			"languages": {
-				"languages": [
-					"Common",
-					"Shoony"
-				],
-				"languageAbilities": []
-			},
-			"skills": {
-				"Acrobatics": {
-					"default": 8
-				},
-				"Athletics": {
-					"default": 10
-				},
-				"Crafting": {
-					"default": 4
-				},
-				"Society": {
-					"default": 6
-				},
-				"Survival": {
-					"default": 6
-				}
-			},
-			"abilityMods": {
-				"Str": 4,
-				"Dex": 2,
-				"Con": 1,
-				"Int": 0,
-				"Wis": 2,
-				"Cha": 1
-			},
-			"items": [
-				"hide armor",
-				"javelin (2)",
-				"longsword"
-			],
-			"abilitiesTop": [],
-			"ac": {
-				"default": 17,
-				"abilities": null
-			},
-			"savingThrows": {
-				"Fort": {
-					"default": 9
-				},
-				"Ref": {
-					"default": 6
-				},
-				"Will": {
-					"default": 8
-				},
-				"abilities": null
-			},
-			"hp": [
-				{
-					"hp": 40,
-					"note": null,
-					"abilities": null
-				}
-			],
-			"abilitiesMid": [],
-			"speed": {
-				"abilities": null,
-				"walk": 20
-			},
-			"abilitiesBot": [],
-			"attacks": [
-				{
-					"range": "Melee",
-					"name": "longsword",
-					"attack": 10,
-					"traits": [
-						"versatile P"
-					],
-					"effects": [],
-					"damage": "{@damage 1d8+4} slashing",
-					"types": [
-						"slashing"
-					]
-				},
-				{
-					"range": "Ranged",
-					"name": "javelin",
-					"attack": 10,
-					"traits": [
-						"range increment 30 feet",
-						"thrown"
-					],
-					"effects": [],
-					"damage": "{@damage 1d6+4} piercing",
-					"types": [
-						"piercing"
-					]
-				}
-			],
-			"isNpc": false,
-			"inflicts": {
-				"damage": [
-					"piercing",
-					"slashing"
-				],
-				"condition": []
-			},
-			"page": 83,
-			"misc": [
-				"MA",
-				"RA",
-				"TA",
-				"UW"
-			]
-		},
-		{
-			"source": "EC3",
-			"name": "Shoony Hierarch",
-			"level": 4,
-			"rarity": "Rare",
-			"alignment": "NG",
-			"size": "Small",
-			"creatureType": [
-				"Humanoid"
-			],
-			"traits": [
-				"Shoony"
-			],
-			"perception": {
-				"default": 12
-			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"low-light vision"
-				]
-			},
-			"languages": {
-				"languages": [
-					"Common",
-					"Shoony"
-				],
-				"languageAbilities": []
-			},
-			"skills": {
-				"Crafting": {
-					"default": 11
-				},
-				"Diplomacy": {
-					"default": 12
-				},
-				"Society": {
-					"default": 13
-				},
-				"Survival": {
-					"default": 11
-				},
-				"Shoony Lore": {
-					"default": 13
-				}
-			},
-			"abilityMods": {
-				"Str": 0,
-				"Dex": 2,
-				"Con": -1,
-				"Int": 3,
-				"Wis": 3,
-				"Cha": 4
-			},
-			"items": [
-				"longbow (20 arrows and 5 signal arrows)",
-				"staff"
-			],
-			"abilitiesTop": [],
-			"ac": {
-				"default": 19,
-				"abilities": null
-			},
-			"savingThrows": {
-				"Fort": {
-					"default": 9
-				},
-				"Ref": {
-					"default": 10
-				},
-				"Will": {
-					"default": 13
-				},
-				"abilities": null
-			},
-			"hp": [
-				{
-					"hp": 60,
-					"note": null,
-					"abilities": null
-				}
-			],
-			"abilitiesMid": [],
-			"speed": {
-				"abilities": [
-					"paddler (page 71)"
-				],
-				"walk": 25
-			},
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"entries": [
-						"The shoony hierarch sparks and launches an alchemically treated arrow that creates a bright light high in the sky. A signal arrow cannot be used to deal damage. Hierarchs carry a number of different arrows that signal different things; a red signal arrow might mean retreat, whereas a green arrow might be a call to gather in the village commons."
-					],
-					"name": "Signal Arrow"
-				}
-			],
-			"attacks": [
-				{
-					"range": "Melee",
-					"name": "staff",
-					"attack": 9,
-					"traits": [
-						"two-hand d8"
-					],
-					"effects": [],
-					"damage": "{@damage 1d4} bludgeoning",
-					"types": [
-						"bludgeoning"
-					]
-				},
-				{
-					"range": "Ranged",
-					"name": "longbow",
-					"attack": 11,
-					"traits": [
-						"deadly 1d10",
-						"range 100 feet",
-						"volley 30 feet"
-					],
-					"effects": [],
-					"damage": "{@damage 1d8+2} piercing",
-					"types": [
-						"piercing"
-					]
-				}
-			],
-			"isNpc": false,
-			"inflicts": {
-				"damage": [
-					"bludgeoning",
-					"piercing"
-				],
-				"condition": []
-			},
-			"page": 83,
-			"misc": [
-				"MA",
-				"RA",
-				"UW"
-			]
-		},
-		{
-			"source": "EC3",
-			"name": "Xulgath Stoneliege",
-			"level": 8,
-			"rarity": "Uncommon",
-			"alignment": "CE",
-			"size": "Medium",
-			"creatureType": [
-				"Humanoid"
-			],
-			"traits": [
-				"Xulgath"
-			],
-			"perception": {
-				"default": 14
-			},
-			"senses": {
-				"precise": [],
-				"imprecise": [
-					"tremorsense 30 feet"
-				],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
-			"languages": {
-				"languages": [
-					"Draconic",
-					"Undercommon"
-				],
-				"languageAbilities": []
-			},
-			"skills": {
-				"Athletics": {
-					"default": 19
-				},
-				"Intimidation": {
-					"default": 18
-				},
-				"Survival": {
-					"default": 18
-				},
-				"Cave Lore": {
-					"default": 15
-				}
-			},
-			"abilityMods": {
-				"Str": 5,
-				"Dex": 2,
-				"Con": 6,
-				"Int": 1,
-				"Wis": 2,
-				"Cha": 2
-			},
-			"abilitiesTop": [],
-			"ac": {
-				"default": 26,
-				"abilities": null
-			},
-			"savingThrows": {
-				"Fort": {
-					"default": 20
-				},
-				"Ref": {
-					"default": 12
-				},
-				"Will": {
-					"default": 14
-				},
-				"abilities": null
-			},
-			"hp": [
-				{
-					"hp": 135,
-					"note": null,
-					"abilities": null
-				}
-			],
-			"resistances": [
-				{
-					"amount": 8,
-					"name": "physical"
-				}
-			],
-			"abilitiesMid": [
-				{
-					"traits": [
-						"aura",
-						"olfactory"
-					],
-					"entries": [
-						"30 feet. As xulgath warrior (Bestiary 336), except DC 24."
-					],
-					"name": "Stench"
-				}
-			],
-			"speed": {
-				"abilities": null,
-				"walk": 20,
-				"burrow ": 10
-			},
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"traits": [
-						"earth",
-						"transmutation"
-					],
-					"frequency": "once per round",
-					"entries": [
-						"The stoneliege commands nearby earth to attack a foe. The stoneliege makes a claw {@action Strike} against a creature that is within 60 feet of the stoneliege and 10 feet of an earthen surface, such as dirt, mud, stone, or sand. The {@action Strike} originates from the surface's square and has a reach of 10 feet. On a critical hit, the target is also knocked {@condition prone}."
-					],
-					"name": "Earthen Blow"
-				},
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"traits": [
-						"earth",
-						"transmutation"
-					],
-					"requirements": "The stoneliege is standing on or next to at least 10 cubic feet of dirt, stone, or other earthen material",
-					"frequency": "once per minute;",
-					"entries": [
-						"The stoneliege creates a violent wave of roiling earth. Creatures in a 15-foot cone take {@damage 7d8} bludgeoning damage (DC 26 basic Reflex save; on a critical failure, creatures are also knocked {@condition prone})."
-					],
-					"name": "Earthen Torrent"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"traits": [
-						"earth",
-						"transmutation"
-					],
-					"entries": [
-						"The stoneliege turns their own body into solid stone like a statue and immediately becomes {@condition petrified} (Core Rulebook 621). Any creature grappled or {@condition restrained} by the stoneliege becomes {@condition immobilized}; to get free, the creature must damage the statue enough to break it or succeed at a DC 28 {@skill Acrobatics} check to {@action Escape}."
-					],
-					"name": "Stone Throes"
-				}
-			],
-			"attacks": [
-				{
-					"range": "Melee",
-					"name": "digging bar",
-					"attack": 18,
-					"traits": [
-						"fatal d12",
-						"forceful",
-						"versatile B"
-					],
-					"effects": [],
-					"damage": "{@damage 2d10+9} piercing",
-					"types": [
-						"piercing"
-					]
-				},
-				{
-					"range": "Melee",
-					"name": "jaws",
-					"attack": 21,
-					"traits": null,
-					"effects": [],
-					"damage": "{@damage 2d8+9} piercing",
-					"types": [
-						"piercing"
-					]
-				},
-				{
-					"range": "Melee",
-					"name": "claw",
-					"attack": 19,
-					"traits": [
-						"agile"
-					],
-					"effects": [
-						"Grab"
-					],
-					"damage": "{@damage 2d6+9} slashing plus Grab",
-					"types": [
-						"slashing"
-					]
-				}
-			],
-			"spellcasting": [
-				{
-					"name": "Primal Innate",
-					"type": "Innate",
-					"tradition": "Primal",
-					"DC": 26,
-					"entry": {
-						"4": {
-							"spells": [
-								{
-									"name": "shape stone",
-									"amount": 3
-								}
-							]
-						}
-					}
-				}
-			],
-			"isNpc": false,
-			"inflicts": {
-				"damage": [
-					"bludgeoning",
-					"piercing",
-					"slashing"
-				],
-				"condition": [
-					"{@condition petrified}",
-					"{@condition prone}"
-				]
-			},
-			"page": 84,
-			"misc": [
-				"MA",
-				"AD",
-				"AC",
-				"CC"
-			]
-		},
-		{
-			"source": "EC3",
-			"name": "Yaganty",
-			"level": 10,
-			"rarity": "Uncommon",
-			"alignment": "LN",
-			"size": "Large",
-			"creatureType": [
-				"Fey"
-			],
-			"perception": {
-				"default": 20
-			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"greater darkvision"
-				]
-			},
-			"languages": {
-				"languages": [
-					"Common",
-					"Infernal",
-					"Sylvan"
-				],
-				"languageAbilities": []
-			},
-			"skills": {
-				"Deception": {
-					"default": 23
-				},
-				"Nature": {
-					"default": 21
-				},
-				"Occultism": {
-					"default": 18
-				},
-				"Stealth": {
-					"default": 23
-				}
-			},
-			"abilityMods": {
-				"Str": 6,
-				"Dex": 5,
-				"Con": 5,
-				"Int": 2,
-				"Wis": 5,
-				"Cha": 7
-			},
-			"abilitiesTop": [],
-			"ac": {
-				"default": 29,
-				"abilities": null
-			},
-			"savingThrows": {
-				"Fort": {
-					"default": 23
-				},
-				"Ref": {
-					"default": 17
-				},
-				"Will": {
-					"default": 21
-				},
-				"abilities": null
-			},
-			"hp": [
-				{
-					"hp": 200,
-					"note": null,
-					"abilities": null
-				}
-			],
-			"weaknesses": [
-				{
-					"amount": 10,
-					"name": "cold iron"
-				}
-			],
-			"resistances": [
-				{
-					"amount": 10,
-					"name": "fire"
-				}
-			],
-			"abilitiesMid": [
-				{
-					"traits": [
-						"aura",
-						"light",
-						"mental",
-						"primal",
-						"visual"
-					],
-					"entries": [
-						"60 feet. The flames from a yaganty's fingers shed bright light in a 10-foot radius and are visible even in areas affected by magical darkness, but they do not shed dim light beyond that radius. Any creature within 60 feet in an area of darkness or dim light that sees the yaganty's candle fingers must succeed at a DC 27 Will save or become {@condition fascinated} by the yaganty for 1 minute or until the yaganty uses a {@condition hostile} action against the creature, whichever comes first."
-					],
-					"name": "Light in the Darkness"
-				},
-				{
-					"entries": [
-						"A yaganty who is doused with water or otherwise has their candle fingers extinguished takes {@damage 3d6} {@condition persistent damage ||persistent mental damage}, becomes {@condition quickened|CRB|quickened 1}, and screams in agony until they reignite their candles (typically by casting produce flame and lighting their fingers with an {@action Interact} action)."
-					],
-					"name": "Vulnerability to Extinguishing"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"entries": [],
-					"name": "Attack of Opportunity",
-					"generic": true
-				}
-			],
-			"speed": {
-				"abilities": null,
-				"walk": 20
-			},
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"traits": [
-						"fire"
-					],
-					"entries": [
-						"The yaganty whips a stream of scalding wax in a 30-foot line. Each glob deals {@damage 1d6} {@condition persistent damage ||persistent fire damage}. An affected creature or adjacent ally can remove one glob of wax by spending an {@action Interact} action to scrape it off. The yaganty can't use Fling Wax again for {@dice 1d4} rounds.",
-						"Creatures in the area must attempt a DC 27 Reflex save.",
-						{
-							"type": "successDegree",
-							"entries": {
-								"Critical Success": "The creature is unaffected.",
-								"Success": "The creature is splattered with {@dice 1d2+1} globs of wax.",
-								"Failure": "The creature is splattered with {@dice 1d4+2} globs of wax.",
-								"Critical Failure": "As failure, and the creature is {@condition blinded} until it removes the globs of wax."
-							}
-						}
-					],
-					"name": "Fling Wax"
-				}
-			],
-			"attacks": [
-				{
-					"range": "Melee",
-					"name": "candle fingers",
-					"attack": 20,
-					"traits": [
-						"fire",
-						"magical",
-						"reach 10 feet"
-					],
-					"effects": [],
-					"damage": "{@damage 3d10+5} fire",
-					"types": [
-						"fire"
-					]
-				},
-				{
-					"range": "Melee",
-					"name": "claw",
-					"attack": 22,
-					"traits": [
-						"agile",
-						"magical",
-						"reach 10 feet"
-					],
-					"effects": [
-						"Grab"
-					],
-					"damage": "{@damage 2d8+9} slashing plus Grab",
-					"types": [
-						"slashing"
-					]
-				}
-			],
-			"spellcasting": [
-				{
-					"name": "Occult Innate",
-					"type": "Innate",
-					"tradition": "Occult",
-					"DC": 29,
-					"attack": 23,
-					"entry": {
-						"0": {
-							"level": 5,
-							"spells": [
-								{
-									"name": "produce flame"
-								}
-							]
-						},
-						"3": {
-							"spells": [
-								{
-									"name": "burning hands",
-									"amount": 2
-								}
-							]
-						},
-						"4": {
-							"spells": [
-								{
-									"name": "darkness"
-								}
-							]
-						},
-						"5": {
-							"spells": [
-								{
-									"name": "dimension door"
-								}
-							]
-						}
-					}
-				}
-			],
-			"isNpc": false,
-			"inflicts": {
-				"damage": [
-					"fire",
-					"slashing"
-				],
-				"condition": [
-					"{@condition blinded}",
-					"{@condition fascinated}"
-				]
-			},
-			"page": 85,
-			"misc": [
-				"MA",
-				"RC",
-				"AD",
-				"CC"
-			]
-		},
-		{
-			"source": "EC3",
 			"name": "Ginjana Mindkeeper",
+			"isNpc": false,
+			"source": "EC3",
+			"page": 87,
 			"level": 11,
 			"rarity": "Unique",
 			"alignment": "CE",
 			"size": "Small",
-			"creatureType": [
-				"Humanoid"
-			],
 			"traits": [
 				"Dero"
+			],
+			"creatureType": [
+				"Humanoid"
 			],
 			"perception": {
 				"default": 22
@@ -3888,6 +1129,41 @@
 				],
 				"walk": 20
 			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "shortsword",
+					"attack": 24,
+					"traits": [
+						"agile",
+						"finesse",
+						"magical",
+						"versatile S"
+					],
+					"effects": [],
+					"damage": "{@damage 2d6+13} piercing",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "heavy crossbow",
+					"attack": 25,
+					"traits": [
+						"magical",
+						"range increment 120 feet",
+						"reload 2"
+					],
+					"effects": [
+						"shadow essence"
+					],
+					"damage": "{@damage 2d10+13} piercing plus shadow essence",
+					"types": [
+						"piercing"
+					]
+				}
+			],
 			"abilitiesBot": [
 				{
 					"activity": {
@@ -3955,42 +1231,6 @@
 					"name": "Surprise Attack"
 				}
 			],
-			"attacks": [
-				{
-					"range": "Melee",
-					"name": "shortsword",
-					"attack": 24,
-					"traits": [
-						"agile",
-						"finesse",
-						"magical",
-						"versatile S"
-					],
-					"effects": [],
-					"damage": "{@damage 2d6+13} piercing",
-					"types": [
-						"piercing"
-					]
-				},
-				{
-					"range": "Ranged",
-					"name": "heavy crossbow",
-					"attack": 25,
-					"traits": [
-						"magical",
-						"range increment 120 feet",
-						"reload 2"
-					],
-					"effects": [
-						"shadow essence"
-					],
-					"damage": "{@damage 2d10+13} piercing plus shadow essence",
-					"types": [
-						"piercing"
-					]
-				}
-			],
-			"isNpc": false,
 			"inflicts": {
 				"damage": [
 					"negative",
@@ -4003,7 +1243,6 @@
 					"{@condition flat-footed}"
 				]
 			},
-			"page": 87,
 			"misc": [
 				"MA",
 				"RA",
@@ -4012,18 +1251,1525 @@
 			]
 		},
 		{
+			"name": "Headless Xulgath",
+			"isNpc": false,
 			"source": "EC3",
+			"page": 50,
+			"level": 11,
+			"rarity": "Unique",
+			"alignment": "CE",
+			"size": "Large",
+			"traits": [
+				"Xulgath"
+			],
+			"creatureType": [
+				"Humanoid"
+			],
+			"perception": {
+				"default": 20
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [],
+				"vague": [],
+				"other": [
+					"motion sense",
+					"no vision"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Draconic",
+					"Undercommon (can't speak any"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Athletics": {
+					"default": 23
+				},
+				"Intimidation": {
+					"default": 21
+				},
+				"Survival": {
+					"default": 21
+				}
+			},
+			"abilityMods": {
+				"Str": 7,
+				"Dex": 3,
+				"Con": 5,
+				"Int": 0,
+				"Wis": 3,
+				"Cha": 3
+			},
+			"abilitiesTop": [
+				{
+					"entries": [
+						"The headless xulgath can sense nearby motion through vibrations and air movement."
+					],
+					"name": "Motion Sense"
+				}
+			],
+			"ac": {
+				"default": 29,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 24
+				},
+				"Ref": {
+					"default": 20
+				},
+				"Will": {
+					"default": 22
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 195,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"abilitiesMid": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"entries": [],
+					"name": "Attack of Opportunity",
+					"generic": true
+				},
+				{
+					"traits": [
+						"aura",
+						"olfactory"
+					],
+					"entries": [
+						"30 feet. As xulgath skirmisher (page 27), but DC 29."
+					],
+					"name": "Powerful Stench"
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 20
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "claw",
+					"attack": 22,
+					"traits": [
+						"agile",
+						"reach 15 feet"
+					],
+					"effects": [
+						"Grab"
+					],
+					"damage": "{@damage 2d8+13} slashing plus Grab",
+					"types": [
+						"slashing"
+					]
+				}
+			],
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"frequency": "once per round",
+					"entries": [
+						"Requirements The headless xulgath has a creature {@condition grabbed}; The headless."
+					],
+					"name": "Choke Slam"
+				}
+			],
+			"inflicts": {
+				"damage": [
+					"slashing"
+				],
+				"condition": [
+					"{@condition grabbed}"
+				]
+			},
+			"misc": [
+				"MA",
+				"RC",
+				"CC"
+			]
+		},
+		{
+			"name": "Herecite Of Zevgavizeb",
+			"isNpc": false,
+			"source": "EC3",
+			"page": 80,
+			"level": 10,
+			"rarity": "Uncommon",
+			"alignment": "CE",
+			"size": "Medium",
+			"creatureType": [
+				"Undead"
+			],
+			"perception": {
+				"default": 20
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [],
+				"vague": [],
+				"other": [
+					"darkvision",
+					"detect alignment (good only)"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Common",
+					"Draconic",
+					"Infernal"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Athletics": {
+					"default": 20
+				},
+				"Intimidation": {
+					"default": 23
+				},
+				"Religion": {
+					"default": 22
+				},
+				"Zevgavizeb Lore": {
+					"default": 19
+				}
+			},
+			"abilityMods": {
+				"Str": 6,
+				"Dex": 4,
+				"Con": 5,
+				"Int": 1,
+				"Wis": 4,
+				"Cha": 7
+			},
+			"items": [
+				"+1 striking spiked gauntlet"
+			],
+			"abilitiesTop": [
+				{
+					"entries": [
+						"Multiple herecites can form a cabal to gain increased magical abilities and defenses. A cabal consists of two to five herecites. The ritual to form a cabal (or to welcome new herecites into an existing cabal) requires 24 hours of worship, prayer, and vile sacrifice, after which point the herecites become magically bound to one another. All herecites in a cabal gain the cleric domain spells granted by each individual herecite's deity, and each herecite's focus pool increases to 3 Focus Points. As long as the cabal exists, herecites in the cabal gain a +2 status bonus to {@skill Perception} checks and fast healing 10. These benefits persist as long as the cabal consists of two or more herecites that remain within 1 mile of one another."
+					],
+					"name": "Cabal"
+				},
+				{
+					"entries": [
+						"A herecite is associated with one evil god and is always of the same alignment as that god. Whenever it wields its deity's favored weapon, that weapon gains the unholy rune. The herecite's creators select two domains from their deity; the herecite can cast the domain spells and the advanced domain spells from those domains as cleric focus spells. The herecite can cast the deity's other granted cleric spells as divine innate spells. Most herecites have 2 Focus Points in their focus pool. The herecite presented here is a herecite of {@deity Zevgavizeb|EC3}."
+					],
+					"name": "Herecite Deity"
+				}
+			],
+			"ac": {
+				"default": 30,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 19
+				},
+				"Ref": {
+					"default": 20
+				},
+				"Will": {
+					"default": 22
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 200,
+					"note": null,
+					"abilities": [
+						"negative healing"
+					]
+				}
+			],
+			"weaknesses": [
+				{
+					"amount": 10,
+					"name": "good"
+				}
+			],
+			"abilitiesMid": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"auditory",
+						"divine",
+						"evil"
+					],
+					"trigger": "A creature within 30 feet uses the {@action Sustain a Spell} action to sustain a divine spell or the {@action Cast a Spell} action to cast a divine spell with a verbal component",
+					"entries": [
+						"The herecite warps the caster's prayers into a sacrilegious echo praising the evils of its own deity. The triggering caster must succeed at a DC 29 Will saving throw or their spell is disrupted and their action wasted."
+					],
+					"name": "Perverse Prayer"
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 30
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "unholy spiked gauntlet",
+					"attack": 22,
+					"traits": [
+						"agile",
+						"free-hand"
+					],
+					"effects": [],
+					"damage": "{@damage 2d4+10} piercing plus {@damage 1d6} evil",
+					"types": [
+						"evil",
+						"piercing"
+					]
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Divine Innate",
+					"type": "Innate",
+					"tradition": "Divine",
+					"DC": 28,
+					"entry": {
+						"1": {
+							"spells": [
+								{
+									"name": "ray of enfeeblement"
+								}
+							]
+						},
+						"2": {
+							"spells": [
+								{
+									"name": "darkness",
+									"amount": 3
+								}
+							]
+						},
+						"3": {
+							"spells": [
+								{
+									"name": "crisis of faith"
+								},
+								{
+									"name": "harm",
+									"amount": "at will"
+								},
+								{
+									"name": "meld into stone"
+								}
+							]
+						},
+						"5": {
+							"spells": [
+								{
+									"name": "ravening maw",
+									"notes": [
+										"page 67"
+									]
+								}
+							]
+						},
+						"constant": {
+							"5": {
+								"spells": [
+									{
+										"name": "detect alignment",
+										"notes": [
+											"good only"
+										]
+									}
+								]
+							}
+						}
+					}
+				}
+			],
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 3,
+						"unit": "action"
+					},
+					"traits": [
+						"concentrate",
+						"divine",
+						"evil",
+						"necromancy"
+					],
+					"requirements": "The herecite is in a cabal of three or more members, two of which are within 60 feet and have used",
+					"entries": [],
+					"name": "Assault the Soul"
+				},
+				{
+					"entries": [
+						"Communion within the last round; The herecite casts bind soul, spirit blast, or spiritual epidemic (DC 31)",
+						"Once a herecite has used this ability (whether or not it was successful), the cabal must wait 24 hours before one of its members can use Assault the Soul again."
+					],
+					"name": "Cabal"
+				},
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"traits": [
+						"auditory",
+						"concentrate"
+					],
+					"entries": [
+						"With murmurs and chants, the herecite casts its consciousness toward the other members of its cabal. For 1 round, it senses what other members are sensing, knows their thoughts, and knows their exact location."
+					],
+					"name": "Cabal Communion"
+				},
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"traits": [
+						"curse",
+						"divine",
+						"evil"
+					],
+					"entries": [
+						"Recalling the cruelty of the foul ritual that birthed it, the herecite curses an enemy with a fragment of its blasphemy. The herecite targets one creature within 30 feet, which must attempt a DC 29 Will save. On a failure, the creature is cursed. As long as the creature is cursed, any art object, symbol, or implement of religious significance in the creature's possession\u2014such as a divine spellcasting focus, holy text, fetish, or rendering of a deity\u2014becomes physically corrupted in a way that debases the deity's tenets (a depiction of {@deity Shelyn}'s songbird, for example, might lose its beautiful plumage to reveal a hideous skeletal form beneath). While these items continue to function normally, the cursed creature is {@condition stupefied|CRB|stupefied 2} as long as it possesses an object corrupted in this fashion. The creature can cast off its corrupted objects to remove the {@condition stupefied} condition, but any new religious objects it takes into its possession become similarly corrupted. The curse can be lifted by a {@spell remove curse} spell or by an atone ritual. After a creature is targeted with this ability, regardless of whether it was affected, it becomes immune to herecites' Curse of Defiled Idols for 1 day."
+					],
+					"name": "Curse of Defiled Idols"
+				}
+			],
+			"inflicts": {
+				"damage": [
+					"piercing"
+				],
+				"condition": [
+					"{@condition stupefied}"
+				]
+			},
+			"misc": [
+				"MA",
+				"CC"
+			]
+		},
+		{
+			"name": "Hooklimb Xulgath",
+			"isNpc": false,
+			"source": "EC3",
+			"page": 55,
+			"level": 10,
+			"rarity": "Rare",
+			"alignment": "NE",
+			"size": "Medium",
+			"traits": [
+				"Xulgath"
+			],
+			"creatureType": [
+				"Humanoid"
+			],
+			"perception": {
+				"default": 18
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [],
+				"vague": [],
+				"other": [
+					"darkvision"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Draconic",
+					"Undercommon"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 25
+				},
+				"Athletics": {
+					"default": 21
+				},
+				"Intimidation": {
+					"default": 16
+				},
+				"Stealth": {
+					"default": 19
+				},
+				"Survival": {
+					"default": 16
+				}
+			},
+			"abilityMods": {
+				"Str": 7,
+				"Dex": 5,
+				"Con": 3,
+				"Int": 0,
+				"Wis": 2,
+				"Cha": 0
+			},
+			"abilitiesTop": [
+				{
+					"entries": [
+						"+19, {@skill Survival} +16 Str +7, Dex +5, Con +3, Int +0, Wis +2, Cha +0."
+					],
+					"name": "Stealth"
+				}
+			],
+			"ac": {
+				"default": 29,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 21
+				},
+				"Ref": {
+					"default": 21
+				},
+				"Will": {
+					"default": 16
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 190,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"abilitiesMid": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"entries": [],
+					"name": "Attack of Opportunity",
+					"generic": true
+				},
+				{
+					"traits": [
+						"aura",
+						"olfactory"
+					],
+					"entries": [
+						"30 feet. As xulgath skirmisher (page 27), but DC 28."
+					],
+					"name": "Powerful Stench"
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 25,
+				"climb ": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"attack": 22,
+					"traits": null,
+					"effects": [],
+					"damage": "{@damage 1d6+13} piercing",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "claw",
+					"attack": 22,
+					"traits": [
+						"agile"
+					],
+					"effects": [],
+					"damage": "{@damage 2d8+13} slashing",
+					"types": [
+						"slashing"
+					]
+				}
+			],
+			"abilitiesBot": [
+				{
+					"entries": [
+						"The hooklimb always critically succeeds at checks to Grab a Ledge."
+					],
+					"name": "Quick Catch"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"entries": [
+						"The hooklimb flexes hooklike barbs on its claws. Until the start of the hooklimb's next turn, its claws Strikes deal an additional {@damage 1d10} {@condition persistent damage ||persistent bleed damage}."
+					],
+					"name": "Raking Claws"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"claw"
+					],
+					"entries": [],
+					"name": "Rend",
+					"generic": true
+				}
+			],
+			"inflicts": {
+				"damage": [
+					"piercing",
+					"slashing"
+				],
+				"condition": []
+			},
+			"misc": [
+				"MA"
+			]
+		},
+		{
+			"name": "Pin Tingwheely",
+			"isNpc": false,
+			"source": "EC3",
+			"page": 20,
+			"level": 8,
+			"rarity": "Unique",
+			"alignment": "CN",
+			"size": "Small",
+			"traits": [
+				"Sprite"
+			],
+			"creatureType": [
+				"Fey"
+			],
+			"perception": {
+				"default": 19
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [],
+				"vague": [],
+				"other": [
+					"low-light vision"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Common"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 18
+				},
+				"Deception": {
+					"default": 16
+				},
+				"Nature": {
+					"default": 15
+				},
+				"Performance": {
+					"default": 18
+				},
+				"Stealth": {
+					"default": 21
+				}
+			},
+			"abilityMods": {
+				"Str": 0,
+				"Dex": 6,
+				"Con": 1,
+				"Int": 2,
+				"Wis": 3,
+				"Cha": 4
+			},
+			"items": [
+				"+1 striking longbow (60 arrows)",
+				"shortsword"
+			],
+			"abilitiesTop": [
+				{
+					"entries": [
+						"+18, {@skill Stealth} +21 Str +0, Dex +6, Con +1, Int +2, Wis +3, Cha +4 Items +1 striking longbow (60 arrows), shortsword."
+					],
+					"name": "Performance"
+				}
+			],
+			"ac": {
+				"default": 29,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 15
+				},
+				"Ref": {
+					"default": 20
+				},
+				"Will": {
+					"default": 17
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 95,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"weaknesses": [
+				{
+					"amount": 10,
+					"name": "cold iron"
+				}
+			],
+			"abilitiesMid": [
+				{
+					"entries": [
+						"Pin rolls a success on a Reflex save, he gets a critical success instead."
+					],
+					"name": "Evasion When"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "Pin is targeted with a melee or ranged attack by an attacker he can see",
+					"entries": [
+						"Pin gains a +2 circumstance bonus to AC against the triggering attack."
+					],
+					"name": "Nimble Dodge"
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 15,
+				"fly ": 45
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "shortsword",
+					"attack": 18,
+					"traits": [
+						"agile",
+						"finesse",
+						"magical",
+						"versatile S"
+					],
+					"effects": [],
+					"damage": "{@damage 1d6+10} piercing",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "longbow",
+					"attack": 19,
+					"traits": [
+						"deadly d10",
+						"magical",
+						"range increment 100 feet",
+						"volley 20 feet"
+					],
+					"effects": [],
+					"damage": "{@damage 2d6+10} piercing",
+					"types": [
+						"piercing"
+					]
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Primal Innate",
+					"type": "Innate",
+					"tradition": "Primal",
+					"DC": 26,
+					"entry": {
+						"0": {
+							"level": 4,
+							"spells": [
+								{
+									"name": "dancing lights"
+								},
+								{
+									"name": "detect magic"
+								},
+								{
+									"name": "ghost sound"
+								},
+								{
+									"name": "shield"
+								}
+							]
+						},
+						"2": {
+							"spells": [
+								{
+									"name": "entangle"
+								},
+								{
+									"name": "faerie fire"
+								}
+							]
+						},
+						"3": {
+							"spells": [
+								{
+									"name": "dispel magic"
+								},
+								{
+									"name": "illusory disguise"
+								}
+							]
+						},
+						"4": {
+							"spells": [
+								{
+									"name": "invisibility",
+									"amount": "at will",
+									"notes": [
+										"self only"
+									]
+								}
+							]
+						}
+					}
+				}
+			],
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"entries": [
+						"{@damage 1d6+10} piercing Ranged longbow +19 (deadly d10, magical, range increment 100 feet, volley 20 feet), Damage {@damage 2d6+10} piercing Primal Innate Spells DC 26; 4th invisibility (at will, self only); 3rd dispel magic, illusory disguise; 2nd entangle, faerie fire; Cantrips (4th) dancing lights, detect magic, ghost sound, shield."
+					],
+					"name": "S), Damage"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"manipulate"
+					],
+					"entries": [
+						"Pin sprinkles pixie dust onto one of his arrows. If Pin hits a creature with that arrow before his next turn, the arrow inflicts one of the following special effects instead of dealing damage.",
+						"Each effect depends on the target's DC 26 Will save.",
+						"On a critical hit, the target treats its save result as one degree worse.",
+						{
+							"type": "list",
+							"items": [
+								"{@bold Befuddlement} (enchantment, mental) On a failed Will save, the target is {@condition stupefied|CRB|stupefied 1} for 1 minute ({@condition stupefied|CRB|stupefied 2} on a critical failure).",
+								"{@bold Charm} (emotion, enchantment, incapacitation, mental) The target suffers the result of a 4th-level {@spell charm} spell, except it doesn't gain a bonus to its save if the only {@condition hostile} act was Pin firing his bow, and Pin can choose to direct the target's adoration to another creature rather than himself.",
+								"{@bold Memory Loss} (divination, mental) On a failed Will save, the target loses the last 5 minutes of its memory. Pin can add a single false memory if he chooses, which is the only memory the target retains in that time period.",
+								"{@bold Reckless Pride} (emotion, enchantment, mental) The target suffers the result of delusional pride (Core Rulebook 391)."
+							]
+						}
+					],
+					"name": "Sprinkle Pixie Dust"
+				}
+			],
+			"inflicts": {
+				"damage": [
+					"piercing"
+				],
+				"condition": [
+					"{@condition stupefied}"
+				]
+			},
+			"misc": [
+				"MA",
+				"RA",
+				"CC",
+				"UW"
+			]
+		},
+		{
+			"name": "Resin-seep Xulgath",
+			"isNpc": false,
+			"source": "EC3",
+			"page": 51,
+			"level": 10,
+			"rarity": "Rare",
+			"alignment": "CE",
+			"size": "Medium",
+			"traits": [
+				"Xulgath"
+			],
+			"creatureType": [
+				"Humanoid"
+			],
+			"perception": {
+				"default": 19
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [],
+				"vague": [],
+				"other": [
+					"darkvision"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Draconic",
+					"Undercommon"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 23
+				},
+				"Athletics": {
+					"default": 20
+				},
+				"Intimidation": {
+					"default": 16
+				},
+				"Survival": {
+					"default": 19
+				},
+				"Thievery": {
+					"default": 21
+				}
+			},
+			"abilityMods": {
+				"Str": 4,
+				"Dex": 5,
+				"Con": 3,
+				"Int": 1,
+				"Wis": 3,
+				"Cha": 0
+			},
+			"items": [
+				"+1 striking dagger"
+			],
+			"abilitiesTop": [
+				{
+					"entries": [
+						"+19, {@skill Thievery} +21 Str +4, Dex +5, Con +3, Int +1, Wis +3, Cha +0 Items +1 striking dagger."
+					],
+					"name": "Survival"
+				}
+			],
+			"ac": {
+				"default": 30,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 19
+				},
+				"Ref": {
+					"default": 23
+				},
+				"Will": {
+					"default": 17
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 195,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"abilitiesMid": [],
+			"speed": {
+				"abilities": null,
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "dagger",
+					"attack": 21,
+					"traits": [
+						"agile",
+						"finesse",
+						"magical",
+						"versatile S"
+					],
+					"effects": [],
+					"damage": "{@damage 2d4+11} piercing",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"attack": 20,
+					"traits": null,
+					"effects": [
+						"resin crust"
+					],
+					"damage": "{@damage 1d8+11} piercing plus resin crust",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "claw",
+					"attack": 20,
+					"traits": [
+						"agile",
+						"finesse"
+					],
+					"effects": [
+						"resin crust"
+					],
+					"damage": "{@damage 1d6+11} slashing plus resin crust",
+					"types": [
+						"slashing"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "dagger",
+					"attack": 21,
+					"traits": [
+						"agile",
+						"magical",
+						"thrown 10 feet",
+						"versatile S"
+					],
+					"effects": [
+						"xulgath bile"
+					],
+					"damage": "{@damage 2d4+11} piercing plus xulgath bile",
+					"types": [
+						"piercing"
+					]
+				}
+			],
+			"abilitiesBot": [
+				{
+					"traits": [
+						"incapacitation",
+						"poison"
+					],
+					"entries": [
+						"A creature damaged by a resin-seep xulgath's jaws or claw {@action Strike} must succeed at a DC 28 Reflex save or be covered with clumps of noxious resin, taking {@damage 2d8} poison damage and a \u201315-foot penalty to its Speeds for 1 minute (on a critical failure, the creature is also {@condition clumsy|CRB|clumsy 1} for 1 minute). The creature is {@condition sickened|CRB|sickened 1} for as long it has a Speed penalty. A creature can spend an {@action Interact} action to scrape the resin off, decreasing the Speed penalty by 5 with each such action."
+					],
+					"name": "Resin Crust"
+				},
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"traits": [
+						"poison"
+					],
+					"entries": [
+						"The resin-seep xulgath flexes its pores and emits a 30-foot line of resin that deals {@damage 3d12} poison damage and knocks the target 5 feet back (DC 28 basic Reflex save; on a success or critical success the target isn't knocked back, and on a critical failure the target is knocked back 10 feet). The resin-seep xulgath can't use Resin Spray again for {@dice 1d4} rounds."
+					],
+					"name": "Resin Spray"
+				}
+			],
+			"inflicts": {
+				"damage": [
+					"piercing",
+					"poison",
+					"slashing"
+				],
+				"condition": [
+					"{@condition clumsy}"
+				]
+			},
+			"misc": [
+				"MA",
+				"RA",
+				"TA",
+				"AD",
+				"CC",
+				"UW"
+			]
+		},
+		{
+			"name": "Shoony Hierarch",
+			"isNpc": false,
+			"source": "EC3",
+			"page": 83,
+			"level": 4,
+			"rarity": "Rare",
+			"alignment": "NG",
+			"size": "Small",
+			"traits": [
+				"Shoony"
+			],
+			"creatureType": [
+				"Humanoid"
+			],
+			"perception": {
+				"default": 12
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [],
+				"vague": [],
+				"other": [
+					"low-light vision"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Common",
+					"Shoony"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Crafting": {
+					"default": 11
+				},
+				"Diplomacy": {
+					"default": 12
+				},
+				"Society": {
+					"default": 13
+				},
+				"Survival": {
+					"default": 11
+				},
+				"Shoony Lore": {
+					"default": 13
+				}
+			},
+			"abilityMods": {
+				"Str": 0,
+				"Dex": 2,
+				"Con": -1,
+				"Int": 3,
+				"Wis": 3,
+				"Cha": 4
+			},
+			"items": [
+				"longbow (20 arrows and 5 signal arrows)",
+				"staff"
+			],
+			"abilitiesTop": [],
+			"ac": {
+				"default": 19,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 9
+				},
+				"Ref": {
+					"default": 10
+				},
+				"Will": {
+					"default": 13
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 60,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"abilitiesMid": [],
+			"speed": {
+				"abilities": [
+					"paddler (page 71)"
+				],
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "staff",
+					"attack": 9,
+					"traits": [
+						"two-hand d8"
+					],
+					"effects": [],
+					"damage": "{@damage 1d4} bludgeoning",
+					"types": [
+						"bludgeoning"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "longbow",
+					"attack": 11,
+					"traits": [
+						"deadly 1d10",
+						"range 100 feet",
+						"volley 30 feet"
+					],
+					"effects": [],
+					"damage": "{@damage 1d8+2} piercing",
+					"types": [
+						"piercing"
+					]
+				}
+			],
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"entries": [
+						"The shoony hierarch sparks and launches an alchemically treated arrow that creates a bright light high in the sky. A signal arrow cannot be used to deal damage. Hierarchs carry a number of different arrows that signal different things; a red signal arrow might mean retreat, whereas a green arrow might be a call to gather in the village commons."
+					],
+					"name": "Signal Arrow"
+				}
+			],
+			"inflicts": {
+				"damage": [
+					"bludgeoning",
+					"piercing"
+				],
+				"condition": []
+			},
+			"misc": [
+				"MA",
+				"RA",
+				"UW"
+			]
+		},
+		{
+			"name": "Shoony Militia Member",
+			"isNpc": false,
+			"source": "EC3",
+			"page": 83,
+			"level": 2,
+			"rarity": "Rare",
+			"alignment": "LG",
+			"size": "Small",
+			"traits": [
+				"Shoony"
+			],
+			"creatureType": [
+				"Humanoid"
+			],
+			"perception": {
+				"default": 8
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [
+					"scent 30 feet"
+				],
+				"vague": [],
+				"other": [
+					"low-light vision"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Common",
+					"Shoony"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 8
+				},
+				"Athletics": {
+					"default": 10
+				},
+				"Crafting": {
+					"default": 4
+				},
+				"Society": {
+					"default": 6
+				},
+				"Survival": {
+					"default": 6
+				}
+			},
+			"abilityMods": {
+				"Str": 4,
+				"Dex": 2,
+				"Con": 1,
+				"Int": 0,
+				"Wis": 2,
+				"Cha": 1
+			},
+			"items": [
+				"hide armor",
+				"javelin (2)",
+				"longsword"
+			],
+			"abilitiesTop": [],
+			"ac": {
+				"default": 17,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 9
+				},
+				"Ref": {
+					"default": 6
+				},
+				"Will": {
+					"default": 8
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 40,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"abilitiesMid": [],
+			"speed": {
+				"abilities": null,
+				"walk": 20
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "longsword",
+					"attack": 10,
+					"traits": [
+						"versatile P"
+					],
+					"effects": [],
+					"damage": "{@damage 1d8+4} slashing",
+					"types": [
+						"slashing"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "javelin",
+					"attack": 10,
+					"traits": [
+						"range increment 30 feet",
+						"thrown"
+					],
+					"effects": [],
+					"damage": "{@damage 1d6+4} piercing",
+					"types": [
+						"piercing"
+					]
+				}
+			],
+			"abilitiesBot": [],
+			"inflicts": {
+				"damage": [
+					"piercing",
+					"slashing"
+				],
+				"condition": []
+			},
+			"misc": [
+				"MA",
+				"RA",
+				"TA",
+				"UW"
+			]
+		},
+		{
+			"name": "Shoony Tiller",
+			"isNpc": false,
+			"source": "EC3",
+			"page": 82,
+			"level": 0,
+			"rarity": "Rare",
+			"alignment": "NG",
+			"size": "Small",
+			"traits": [
+				"Shoony"
+			],
+			"creatureType": [
+				"Humanoid"
+			],
+			"perception": {
+				"default": 6
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [],
+				"vague": [],
+				"other": [
+					"low-light vision"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Common",
+					"Shoony"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Athletics": {
+					"default": 7
+				},
+				"Crafting": {
+					"default": 1
+				},
+				"Diplomacy": {
+					"default": 4
+				},
+				"Survival": {
+					"default": 4
+				},
+				"Farming Lore": {
+					"default": 3
+				}
+			},
+			"abilityMods": {
+				"Str": 3,
+				"Dex": 1,
+				"Con": 1,
+				"Int": -1,
+				"Wis": 2,
+				"Cha": 2
+			},
+			"items": [
+				"hoe"
+			],
+			"abilitiesTop": [],
+			"ac": {
+				"default": 15,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 5
+				},
+				"Ref": {
+					"default": 3
+				},
+				"Will": {
+					"default": 6
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 16,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"abilitiesMid": [],
+			"speed": {
+				"abilities": null,
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "hoe",
+					"attack": 6,
+					"traits": null,
+					"effects": [],
+					"damage": "{@damage 1d4+3} bludgeoning",
+					"types": [
+						"bludgeoning"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "dirt clod",
+					"attack": 4,
+					"traits": [
+						"range increment 10 feet",
+						"thrown"
+					],
+					"effects": [],
+					"damage": "1 nonlethal",
+					"types": [
+						"nonlethal"
+					]
+				}
+			],
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"traits": [
+						"manipulate"
+					],
+					"entries": [
+						"Page 72."
+					],
+					"name": "Dig Quickly"
+				}
+			],
+			"inflicts": {
+				"damage": [
+					"bludgeoning"
+				],
+				"condition": []
+			},
+			"misc": [
+				"MA",
+				"RA",
+				"TA"
+			]
+		},
+		{
 			"name": "Skarja",
+			"isNpc": false,
+			"source": "EC3",
+			"page": 88,
 			"level": 13,
 			"rarity": "Unique",
 			"alignment": "NE",
 			"size": "Medium",
+			"traits": [
+				"Hag"
+			],
 			"creatureType": [
 				"Humanoid",
 				"Fiend"
-			],
-			"traits": [
-				"Hag"
 			],
 			"perception": {
 				"default": 25
@@ -4132,54 +2878,6 @@
 				"abilities": null,
 				"walk": 25
 			},
-			"abilitiesBot": [
-				{
-					"entries": [
-						{
-							"type": "affliction",
-							"name": "",
-							"traits": [
-								"disease"
-							],
-							"note": " A creature can't recover from the\n{@condition drained} condition until Abyssal plague is cured",
-							"DC": "33",
-							"savingThrow": "Fortitude",
-							"onset": null,
-							"maxDuration": null,
-							"stages": [
-								{
-									"stage": 1,
-									"entry": "{@condition drained|CRB|drained 1}",
-									"duration": "1 day"
-								},
-								{
-									"stage": 2,
-									"entry": "{@condition drained} increases by 2",
-									"duration": "1 day"
-								}
-							]
-						}
-					],
-					"name": "Abyssal Plague"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"traits": [
-						"concentrate",
-						"occult",
-						"polymorph",
-						"transmutation"
-					],
-					"entries": [
-						"Skarja can take on the appearance of any Medium female humanoid. This doesn't change her."
-					],
-					"name": "Change Shape",
-					"generic": true
-				}
-			],
 			"attacks": [
 				{
 					"range": "Melee",
@@ -4312,7 +3010,54 @@
 					}
 				}
 			],
-			"isNpc": false,
+			"abilitiesBot": [
+				{
+					"entries": [
+						{
+							"type": "affliction",
+							"name": "",
+							"traits": [
+								"disease"
+							],
+							"note": " A creature can't recover from the\n{@condition drained} condition until Abyssal plague is cured",
+							"DC": "33",
+							"savingThrow": "Fortitude",
+							"onset": null,
+							"maxDuration": null,
+							"stages": [
+								{
+									"stage": 1,
+									"entry": "{@condition drained|CRB|drained 1}",
+									"duration": "1 day"
+								},
+								{
+									"stage": 2,
+									"entry": "{@condition drained} increases by 2",
+									"duration": "1 day"
+								}
+							]
+						}
+					],
+					"name": "Abyssal Plague"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"concentrate",
+						"occult",
+						"polymorph",
+						"transmutation"
+					],
+					"entries": [
+						"Skarja can take on the appearance of any Medium female humanoid. This doesn't change her."
+					],
+					"name": "Change Shape",
+					"generic": true
+				}
+			],
 			"inflicts": {
 				"damage": [
 					"piercing",
@@ -4322,24 +3067,373 @@
 					"{@condition drained}"
 				]
 			},
-			"page": 88,
 			"misc": [
 				"MA",
 				"CC"
 			]
 		},
 		{
+			"name": "Swardlands Delinquent",
+			"isNpc": false,
 			"source": "EC3",
+			"page": 15,
+			"level": 4,
+			"rarity": "Rare",
+			"alignment": "CN",
+			"size": "Medium",
+			"traits": [
+				"Human"
+			],
+			"creatureType": [
+				"Humanoid"
+			],
+			"perception": {
+				"default": 8
+			},
+			"languages": {
+				"languages": [
+					"Common"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 10
+				},
+				"Athletics": {
+					"default": 9
+				},
+				"Deception": {
+					"default": 8
+				},
+				"Intimidation": {
+					"default": 8
+				},
+				"Stealth": {
+					"default": 12
+				},
+				"Thievery": {
+					"default": 12
+				}
+			},
+			"abilityMods": {
+				"Str": 3,
+				"Dex": 4,
+				"Con": 1,
+				"Int": 1,
+				"Wis": 0,
+				"Cha": 2
+			},
+			"abilitiesTop": [
+				{
+					"entries": [
+						"+8, {@skill Stealth} +12 (+14 while in the."
+					],
+					"name": "Intimidation"
+				},
+				{
+					"entries": [
+						"+12 Str +3, Dex +4, Con +1, Int +1, Wis +0, Cha +2 Items leather armor, club, dagger; one delinquent carries a crowbar and another carries a brush and pot of red paint."
+					],
+					"name": "Swardlands), Thievery"
+				}
+			],
+			"ac": {
+				"default": 21,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 9
+				},
+				"Ref": {
+					"default": 14
+				},
+				"Will": {
+					"default": 8
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 65,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"abilitiesMid": [
+				{
+					"entries": [],
+					"name": "Jemaig Hendri"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "The delinquent is targeted with a melee or ranged attack by an attacker she can see",
+					"entries": [
+						"The delinquent gains a +2 circumstance bonus to AC against the triggering attack."
+					],
+					"name": "Nimble Dodge"
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 25
+			},
+			"attacks": [],
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"entries": [
+						"The delinquent draws a weapon with an {@action Interact} action, then Strikes with the weapon they just drew."
+					],
+					"name": "Quick Draw"
+				},
+				{
+					"entries": [
+						"Creatures the delinquent critically hits are {@condition clumsy|CRB|clumsy 1} and can't make reactions until the end of the delinquent's next turn."
+					],
+					"name": "Rattling Blow"
+				},
+				{
+					"entries": [
+						"The delinquent deals {@dice 1d6} extra precision damage to {@condition flat-footed} creatures."
+					],
+					"name": "Sneak Attack",
+					"generic": true
+				}
+			],
+			"inflicts": {
+				"damage": [],
+				"condition": [
+					"{@condition clumsy}",
+					"{@condition flat-footed}"
+				]
+			},
+			"misc": [
+				"CC"
+			]
+		},
+		{
+			"name": "Tanessa Fleer",
+			"isNpc": false,
+			"source": "EC3",
+			"page": 16,
+			"level": 9,
+			"rarity": "Unique",
+			"alignment": "NE",
+			"size": "Medium",
+			"traits": [
+				"Human"
+			],
+			"creatureType": [
+				"Humanoid"
+			],
+			"perception": {
+				"default": 19
+			},
+			"languages": {
+				"languages": [
+					"Common"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 19
+				},
+				"Athletics": {
+					"default": 17
+				},
+				"Intimidation": {
+					"default": 16
+				},
+				"Stealth": {
+					"default": 17
+				},
+				"Thievery": {
+					"default": 17
+				}
+			},
+			"abilityMods": {
+				"Str": 4,
+				"Dex": 4,
+				"Con": 1,
+				"Int": 0,
+				"Wis": 4,
+				"Cha": 1
+			},
+			"abilitiesTop": [
+				{
+					"entries": [
+						"+16, {@skill Stealth} +17, {@skill Survival} +19, {@skill Thievery} +17 Str +4, Dex +4, Con +1, Int +0, Wis +4,"
+					],
+					"name": "Intimidation"
+				},
+				{
+					"entries": [
+						"+1 Items chain shirt, +1 striking hand crossbow (2, 20 bolts), shortsword."
+					],
+					"name": "Cha"
+				}
+			],
+			"ac": {
+				"default": 22,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 15
+				},
+				"Ref": {
+					"default": 16
+				},
+				"Will": {
+					"default": 10
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 155,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"abilitiesMid": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"entries": [
+						"Tanessa can make."
+					],
+					"name": "Attack of Opportunity",
+					"generic": true
+				},
+				{
+					"entries": [
+						"Opportunity with a loaded ranged weapon she's wielding if the triggering creature is within 5 feet of her."
+					],
+					"name": "Attacks of"
+				}
+			],
+			"speed": {
+				"abilities": [
+					"mobility"
+				],
+				"walk": 30
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "shortsword",
+					"attack": 19,
+					"traits": [
+						"agile",
+						"finesse",
+						"versatile S"
+					],
+					"effects": [],
+					"damage": "{@damage 1d6+10} piercing",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "hand crossbow",
+					"attack": 20,
+					"traits": [
+						"magical",
+						"range increment 60 feet",
+						"reload 1"
+					],
+					"effects": [],
+					"damage": "{@damage 2d6+10} piercing",
+					"types": [
+						"piercing"
+					]
+				}
+			],
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"entries": [
+						"Tanessa designates as her prey a single creature that she can see and hear or that she is Tracking.",
+						"She gains a +2 circumstance bonus to {@skill Perception} checks when she Seeks her prey and a +2 circumstance bonus."
+					],
+					"name": "Hunt Prey"
+				},
+				{
+					"entries": [
+						"{@skill Survival} checks when she Tracks her prey. She also ignores the penalty for making ranged attacks within her second range increment against her prey. Lastly, she deals {@damage 1d8} precision damage to her prey the first time she hits her prey each round. Tanessa can have only one prey designated at a time."
+					],
+					"name": "to"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"concentrate",
+						"manipulate"
+					],
+					"entries": [
+						"Requirement Tanessa has a hand crossbow in each hand; Tanessa quickly juggles her hand crossbows from one hand to another, reloading them both as she does so."
+					],
+					"name": "Incredible Reload"
+				},
+				{
+					"entries": [
+						"Tanessa's ranged Strikes don't trigger."
+					],
+					"name": "Mobile Shot Stance"
+				},
+				{
+					"entries": [
+						"Opportunity or other reactions triggered by ranged attacks."
+					],
+					"name": "Attacks of"
+				}
+			],
+			"inflicts": {
+				"damage": [
+					"piercing",
+					"precision"
+				],
+				"condition": []
+			},
+			"misc": [
+				"MA",
+				"RA",
+				"UW"
+			]
+		},
+		{
 			"name": "Thessekka",
+			"isNpc": false,
+			"source": "EC3",
+			"page": 91,
 			"level": 14,
 			"rarity": "Unique",
 			"alignment": "CE",
 			"size": "Medium",
-			"creatureType": [
-				"Humanoid"
-			],
 			"traits": [
 				"Xulgath"
+			],
+			"creatureType": [
+				"Humanoid"
 			],
 			"perception": {
 				"default": 26
@@ -4456,6 +3550,65 @@
 				"walk": 20,
 				"burrow ": 10
 			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"attack": 28,
+					"traits": null,
+					"effects": [],
+					"damage": "{@damage 3d8+12} piercing",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "claw",
+					"attack": 28,
+					"traits": [
+						"agile"
+					],
+					"effects": [
+						"Grab"
+					],
+					"damage": "{@damage 3d6+12} slashing plus Grab",
+					"types": [
+						"slashing"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "alchemical bomb",
+					"attack": 27,
+					"traits": [
+						"range increment 30 feet",
+						"splash"
+					],
+					"effects": [
+						"varies by bomb"
+					],
+					"damage": "varies by bomb",
+					"types": []
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Primal Innate",
+					"type": "Innate",
+					"tradition": "Primal",
+					"DC": 34,
+					"entry": {
+						"4": {
+							"spells": [
+								{
+									"name": "shape stone"
+								}
+							]
+						}
+					}
+				}
+			],
 			"abilitiesBot": [
 				{
 					"traits": [
@@ -4523,66 +3676,6 @@
 					"name": "Stone Throes"
 				}
 			],
-			"attacks": [
-				{
-					"range": "Melee",
-					"name": "jaws",
-					"attack": 28,
-					"traits": null,
-					"effects": [],
-					"damage": "{@damage 3d8+12} piercing",
-					"types": [
-						"piercing"
-					]
-				},
-				{
-					"range": "Melee",
-					"name": "claw",
-					"attack": 28,
-					"traits": [
-						"agile"
-					],
-					"effects": [
-						"Grab"
-					],
-					"damage": "{@damage 3d6+12} slashing plus Grab",
-					"types": [
-						"slashing"
-					]
-				},
-				{
-					"range": "Ranged",
-					"name": "alchemical bomb",
-					"attack": 27,
-					"traits": [
-						"range increment 30 feet",
-						"splash"
-					],
-					"effects": [
-						"varies by bomb"
-					],
-					"damage": "varies by bomb",
-					"types": []
-				}
-			],
-			"spellcasting": [
-				{
-					"name": "Primal Innate",
-					"type": "Innate",
-					"tradition": "Primal",
-					"DC": 34,
-					"entry": {
-						"4": {
-							"spells": [
-								{
-									"name": "shape stone"
-								}
-							]
-						}
-					}
-				}
-			],
-			"isNpc": false,
 			"inflicts": {
 				"damage": [
 					"bludgeoning",
@@ -4594,12 +3687,919 @@
 					"{@condition sickened}"
 				]
 			},
-			"page": 91,
 			"misc": [
 				"MA",
 				"RA",
 				"CC",
 				"UW"
+			]
+		},
+		{
+			"name": "Xulgath Bomber",
+			"isNpc": false,
+			"source": "EC3",
+			"page": 28,
+			"level": 7,
+			"rarity": "Uncommon",
+			"alignment": "CE",
+			"size": "Medium",
+			"traits": [
+				"Xulgath"
+			],
+			"creatureType": [
+				"Humanoid"
+			],
+			"perception": {
+				"default": 15
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [],
+				"vague": [],
+				"other": [
+					"darkvision"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Draconic",
+					"Undercommon"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 17
+				},
+				"Athletics": {
+					"default": 14
+				},
+				"Crafting": {
+					"default": 17
+				},
+				"Stealth": {
+					"default": 15
+				},
+				"Thievery": {
+					"default": 15
+				}
+			},
+			"abilityMods": {
+				"Str": 3,
+				"Dex": 4,
+				"Con": 1,
+				"Int": 4,
+				"Wis": 2,
+				"Cha": 0
+			},
+			"abilitiesTop": [
+				{
+					"entries": [
+						"+15, {@skill Thievery} +15 Str +3, Dex +4, Con +1, Int +4, Wis +2, Cha +0 Items alchemist's tools, greatpick, studded leather armor."
+					],
+					"name": "Stealth"
+				},
+				{
+					"entries": [
+						"A xulgath bomber carries the following infused items: 2 doses of concentrated xulgath bile, 2 moderate acid flasks, and 2 moderate alchemist's fires. These items last for 24 hours, or until the next time they make their daily preparations."
+					],
+					"name": "Infused Items"
+				}
+			],
+			"ac": {
+				"default": 25,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 12
+				},
+				"Ref": {
+					"default": 17
+				},
+				"Will": {
+					"default": 15
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 115,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"resistances": [
+				{
+					"amount": 5,
+					"name": "poison"
+				}
+			],
+			"abilitiesMid": [
+				{
+					"traits": [
+						"aura",
+						"olfactory"
+					],
+					"entries": [
+						"30 feet. As xulgath skirmisher (page 27), but DC 24."
+					],
+					"name": "Powerful Stench"
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "greatpick",
+					"attack": 16,
+					"traits": [
+						"fatal d12"
+					],
+					"effects": [
+						"concentrated xulgath bile"
+					],
+					"damage": "{@damage 1d12+5} piercing plus concentrated xulgath bile",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"attack": 16,
+					"traits": null,
+					"effects": [],
+					"damage": "{@damage 2d6+5} piercing",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "claw",
+					"attack": 16,
+					"traits": [
+						"agile",
+						"finesse"
+					],
+					"effects": [],
+					"damage": "{@damage 2d4+5} slashing",
+					"types": [
+						"slashing"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "acid flask",
+					"attack": 17,
+					"traits": [
+						"range increment 20 feet",
+						"splash"
+					],
+					"effects": [],
+					"damage": "5 acid damage plus {@damage 2d6+2} {@condition persistent damage ||persistent acid} and 4 acid splash",
+					"types": [
+						"acid",
+						"persistent"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "alchemist's fire",
+					"attack": 17,
+					"traits": [
+						"range increment 20 feet",
+						"splash"
+					],
+					"effects": [],
+					"damage": "{@damage 2d8+2} fire plus 4 {@condition persistent damage ||persistent fire} and 4 fire splash",
+					"types": [
+						"fire",
+						"persistent"
+					]
+				}
+			],
+			"abilitiesBot": [
+				{
+					"traits": [
+						"poison"
+					],
+					"entries": [
+						"The {@condition sickened} condition from concentrated xulgath bile doesn't improve on its own until the target recovers from the poison. A target who recovers from concentrated xulgath bile is immune to being {@condition sickened} by this poison for 1 minute; Saving."
+					],
+					"name": "Concentrated Xulgath Bile"
+				},
+				{
+					"entries": [
+						"DC 22; Maximum Duration 6 rounds; Stage 1 {@damage 1d10} poison damage and {@condition sickened|CRB|sickened 1} (1 round); Stage 2 {@damage 2d10} poison damage and {@condition sickened|CRB|sickened 2} (1 round); Stage 2 {@damage 2d10} poison damage and {@condition sickened|CRB|sickened 3} (1 round)."
+					],
+					"name": "Throw Fortitude"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"entries": [
+						"The bomber Interacts to draw a bomb, then Strikes with it."
+					],
+					"name": "Quick Bomber"
+				}
+			],
+			"inflicts": {
+				"damage": [
+					"acid",
+					"fire",
+					"piercing",
+					"poison",
+					"slashing"
+				],
+				"condition": [
+					"{@condition sickened}"
+				]
+			},
+			"misc": [
+				"MA",
+				"RA",
+				"CC",
+				"UW"
+			]
+		},
+		{
+			"name": "Xulgath Skirmisher",
+			"isNpc": false,
+			"source": "EC3",
+			"page": 27,
+			"level": 6,
+			"rarity": "Uncommon",
+			"alignment": "CE",
+			"size": "Medium",
+			"traits": [
+				"Xulgath"
+			],
+			"creatureType": [
+				"Humanoid"
+			],
+			"perception": {
+				"default": 15
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [],
+				"vague": [],
+				"other": [
+					"darkvision"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Draconic",
+					"Undercommon"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 16
+				},
+				"Athletics": {
+					"default": 14
+				},
+				"Stealth": {
+					"default": 16
+				},
+				"Survival": {
+					"default": 15
+				}
+			},
+			"abilityMods": {
+				"Str": 4,
+				"Dex": 4,
+				"Con": 1,
+				"Int": 0,
+				"Wis": 3,
+				"Cha": 0
+			},
+			"items": [
+				"javelins (6)",
+				"scimitar",
+				"studded leather armor"
+			],
+			"abilitiesTop": [],
+			"ac": {
+				"default": 24,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 13
+				},
+				"Ref": {
+					"default": 16
+				},
+				"Will": {
+					"default": 13
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 95,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"abilitiesMid": [
+				{
+					"traits": [
+						"aura",
+						"olfactory"
+					],
+					"entries": [
+						"30 feet. A creature that enters the area must attempt a DC 23 Fortitude save. On a failure, the creature is {@condition sickened|CRB|sickened 2}, and on a critical failure, the creature is also {@condition slowed|CRB|slowed 1} for as long as it is {@condition sickened}. While within the aura, the creature takes a \u20132 circumstance penalty to saves to recover from the {@condition sickened} condition.",
+						"A creature that succeeds at its save is temporarily immune to all xulgaths' stenches for 1 minute."
+					],
+					"name": "Powerful Stench"
+				}
+			],
+			"speed": {
+				"abilities": [
+					"light step"
+				],
+				"walk": 30
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "scimitar",
+					"attack": 16,
+					"traits": [
+						"forceful",
+						"sweep"
+					],
+					"effects": [],
+					"damage": "{@damage 1d6+4} slashing",
+					"types": [
+						"slashing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"attack": 16,
+					"traits": null,
+					"effects": [],
+					"damage": "{@damage 1d6+4} piercing",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "claw",
+					"attack": 16,
+					"traits": [
+						"agile",
+						"finesse"
+					],
+					"effects": [],
+					"damage": "{@damage 1d4+4} slashing",
+					"types": [
+						"slashing"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "javelin",
+					"attack": 16,
+					"traits": [
+						"thrown 60 feet"
+					],
+					"effects": [],
+					"damage": "{@damage 1d6+4} piercing damage",
+					"types": [
+						"piercing"
+					]
+				}
+			],
+			"abilitiesBot": [
+				{
+					"entries": [
+						"When a skirmisher Strides or Steps, they ignore difficult terrain and treat greater difficult terrain as difficult terrain."
+					],
+					"name": "Light Step"
+				},
+				{
+					"entries": [
+						"The xulgath skirmisher doubles the range increment of its thrown weapons."
+					],
+					"name": "Powerful Arm"
+				},
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"traits": [
+						"attack",
+						"move"
+					],
+					"entries": [
+						"The xulgath skirmisher Strides or Steps, then Strikes. This {@action Strike} deals an additional {@damage 3d6} precision damage."
+					],
+					"name": "Skirmishing Movement"
+				}
+			],
+			"inflicts": {
+				"damage": [
+					"piercing",
+					"precision",
+					"slashing"
+				],
+				"condition": [
+					"{@condition sickened}"
+				]
+			},
+			"misc": [
+				"MA",
+				"RA",
+				"TA",
+				"CC",
+				"UW"
+			]
+		},
+		{
+			"name": "Xulgath Stoneliege",
+			"isNpc": false,
+			"source": "EC3",
+			"page": 84,
+			"level": 8,
+			"rarity": "Uncommon",
+			"alignment": "CE",
+			"size": "Medium",
+			"traits": [
+				"Xulgath"
+			],
+			"creatureType": [
+				"Humanoid"
+			],
+			"perception": {
+				"default": 14
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [
+					"tremorsense 30 feet"
+				],
+				"vague": [],
+				"other": [
+					"darkvision"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Draconic",
+					"Undercommon"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Athletics": {
+					"default": 19
+				},
+				"Intimidation": {
+					"default": 18
+				},
+				"Survival": {
+					"default": 18
+				},
+				"Cave Lore": {
+					"default": 15
+				}
+			},
+			"abilityMods": {
+				"Str": 5,
+				"Dex": 2,
+				"Con": 6,
+				"Int": 1,
+				"Wis": 2,
+				"Cha": 2
+			},
+			"abilitiesTop": [],
+			"ac": {
+				"default": 26,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 20
+				},
+				"Ref": {
+					"default": 12
+				},
+				"Will": {
+					"default": 14
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 135,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"resistances": [
+				{
+					"amount": 8,
+					"name": "physical"
+				}
+			],
+			"abilitiesMid": [
+				{
+					"traits": [
+						"aura",
+						"olfactory"
+					],
+					"entries": [
+						"30 feet. As xulgath warrior (Bestiary 336), except DC 24."
+					],
+					"name": "Stench"
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 20,
+				"burrow ": 10
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "digging bar",
+					"attack": 18,
+					"traits": [
+						"fatal d12",
+						"forceful",
+						"versatile B"
+					],
+					"effects": [],
+					"damage": "{@damage 2d10+9} piercing",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"attack": 21,
+					"traits": null,
+					"effects": [],
+					"damage": "{@damage 2d8+9} piercing",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "claw",
+					"attack": 19,
+					"traits": [
+						"agile"
+					],
+					"effects": [
+						"Grab"
+					],
+					"damage": "{@damage 2d6+9} slashing plus Grab",
+					"types": [
+						"slashing"
+					]
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Primal Innate",
+					"type": "Innate",
+					"tradition": "Primal",
+					"DC": 26,
+					"entry": {
+						"4": {
+							"spells": [
+								{
+									"name": "shape stone",
+									"amount": 3
+								}
+							]
+						}
+					}
+				}
+			],
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"earth",
+						"transmutation"
+					],
+					"frequency": "once per round",
+					"entries": [
+						"The stoneliege commands nearby earth to attack a foe. The stoneliege makes a claw {@action Strike} against a creature that is within 60 feet of the stoneliege and 10 feet of an earthen surface, such as dirt, mud, stone, or sand. The {@action Strike} originates from the surface's square and has a reach of 10 feet. On a critical hit, the target is also knocked {@condition prone}."
+					],
+					"name": "Earthen Blow"
+				},
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"traits": [
+						"earth",
+						"transmutation"
+					],
+					"requirements": "The stoneliege is standing on or next to at least 10 cubic feet of dirt, stone, or other earthen material",
+					"frequency": "once per minute;",
+					"entries": [
+						"The stoneliege creates a violent wave of roiling earth. Creatures in a 15-foot cone take {@damage 7d8} bludgeoning damage (DC 26 basic Reflex save; on a critical failure, creatures are also knocked {@condition prone})."
+					],
+					"name": "Earthen Torrent"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"earth",
+						"transmutation"
+					],
+					"entries": [
+						"The stoneliege turns their own body into solid stone like a statue and immediately becomes {@condition petrified} (Core Rulebook 621). Any creature grappled or {@condition restrained} by the stoneliege becomes {@condition immobilized}; to get free, the creature must damage the statue enough to break it or succeed at a DC 28 {@skill Acrobatics} check to {@action Escape}."
+					],
+					"name": "Stone Throes"
+				}
+			],
+			"inflicts": {
+				"damage": [
+					"bludgeoning",
+					"piercing",
+					"slashing"
+				],
+				"condition": [
+					"{@condition petrified}",
+					"{@condition prone}"
+				]
+			},
+			"misc": [
+				"MA",
+				"AD",
+				"AC",
+				"CC"
+			]
+		},
+		{
+			"name": "Yaganty",
+			"isNpc": false,
+			"source": "EC3",
+			"page": 85,
+			"level": 10,
+			"rarity": "Uncommon",
+			"alignment": "LN",
+			"size": "Large",
+			"creatureType": [
+				"Fey"
+			],
+			"perception": {
+				"default": 20
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [],
+				"vague": [],
+				"other": [
+					"greater darkvision"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Common",
+					"Infernal",
+					"Sylvan"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Deception": {
+					"default": 23
+				},
+				"Nature": {
+					"default": 21
+				},
+				"Occultism": {
+					"default": 18
+				},
+				"Stealth": {
+					"default": 23
+				}
+			},
+			"abilityMods": {
+				"Str": 6,
+				"Dex": 5,
+				"Con": 5,
+				"Int": 2,
+				"Wis": 5,
+				"Cha": 7
+			},
+			"abilitiesTop": [],
+			"ac": {
+				"default": 29,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 23
+				},
+				"Ref": {
+					"default": 17
+				},
+				"Will": {
+					"default": 21
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 200,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"weaknesses": [
+				{
+					"amount": 10,
+					"name": "cold iron"
+				}
+			],
+			"resistances": [
+				{
+					"amount": 10,
+					"name": "fire"
+				}
+			],
+			"abilitiesMid": [
+				{
+					"traits": [
+						"aura",
+						"light",
+						"mental",
+						"primal",
+						"visual"
+					],
+					"entries": [
+						"60 feet. The flames from a yaganty's fingers shed bright light in a 10-foot radius and are visible even in areas affected by magical darkness, but they do not shed dim light beyond that radius. Any creature within 60 feet in an area of darkness or dim light that sees the yaganty's candle fingers must succeed at a DC 27 Will save or become {@condition fascinated} by the yaganty for 1 minute or until the yaganty uses a {@condition hostile} action against the creature, whichever comes first."
+					],
+					"name": "Light in the Darkness"
+				},
+				{
+					"entries": [
+						"A yaganty who is doused with water or otherwise has their candle fingers extinguished takes {@damage 3d6} {@condition persistent damage ||persistent mental damage}, becomes {@condition quickened|CRB|quickened 1}, and screams in agony until they reignite their candles (typically by casting produce flame and lighting their fingers with an {@action Interact} action)."
+					],
+					"name": "Vulnerability to Extinguishing"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"entries": [],
+					"name": "Attack of Opportunity",
+					"generic": true
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 20
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "candle fingers",
+					"attack": 20,
+					"traits": [
+						"fire",
+						"magical",
+						"reach 10 feet"
+					],
+					"effects": [],
+					"damage": "{@damage 3d10+5} fire",
+					"types": [
+						"fire"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "claw",
+					"attack": 22,
+					"traits": [
+						"agile",
+						"magical",
+						"reach 10 feet"
+					],
+					"effects": [
+						"Grab"
+					],
+					"damage": "{@damage 2d8+9} slashing plus Grab",
+					"types": [
+						"slashing"
+					]
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Occult Innate",
+					"type": "Innate",
+					"tradition": "Occult",
+					"DC": 29,
+					"attack": 23,
+					"entry": {
+						"0": {
+							"level": 5,
+							"spells": [
+								{
+									"name": "produce flame"
+								}
+							]
+						},
+						"3": {
+							"spells": [
+								{
+									"name": "burning hands",
+									"amount": 2
+								}
+							]
+						},
+						"4": {
+							"spells": [
+								{
+									"name": "darkness"
+								}
+							]
+						},
+						"5": {
+							"spells": [
+								{
+									"name": "dimension door"
+								}
+							]
+						}
+					}
+				}
+			],
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"traits": [
+						"fire"
+					],
+					"entries": [
+						"The yaganty whips a stream of scalding wax in a 30-foot line. Each glob deals {@damage 1d6} {@condition persistent damage ||persistent fire damage}. An affected creature or adjacent ally can remove one glob of wax by spending an {@action Interact} action to scrape it off. The yaganty can't use Fling Wax again for {@dice 1d4} rounds.",
+						"Creatures in the area must attempt a DC 27 Reflex save.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "The creature is unaffected.",
+								"Success": "The creature is splattered with {@dice 1d2+1} globs of wax.",
+								"Failure": "The creature is splattered with {@dice 1d4+2} globs of wax.",
+								"Critical Failure": "As failure, and the creature is {@condition blinded} until it removes the globs of wax."
+							}
+						}
+					],
+					"name": "Fling Wax"
+				}
+			],
+			"inflicts": {
+				"damage": [
+					"fire",
+					"slashing"
+				],
+				"condition": [
+					"{@condition blinded}",
+					"{@condition fascinated}"
+				]
+			},
+			"misc": [
+				"MA",
+				"RC",
+				"AD",
+				"CC"
 			]
 		}
 	]

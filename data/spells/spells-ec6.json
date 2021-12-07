@@ -1,45 +1,32 @@
 {
 	"spell": [
 		{
-			"source": "EC6",
 			"name": "Astral Labyrinth",
-			"level": 9,
-			"traditions": [
-				"Arcane",
-				"Divine",
-				"Occult"
-			],
-			"school": "A",
+			"source": "EC6",
+			"page": 76,
 			"type": "SPELL",
 			"focus": false,
-			"components": {
-				"F": false,
-				"M": false,
-				"S": true,
-				"V": true
-			},
+			"level": 9,
 			"traits": [
 				"Uncommon",
 				"Abjuration",
 				"Incapacitation"
 			],
-			"entries": [
-				"You connect the entire area with an {@condition invisible} maze of astral energy that interferes with dimensional and mental magic.",
-				"Choose a point in the area that you can see when you cast this spell. Objects other than {@trait force} effects and rare metals can't block this spell's area. Astral labyrinth attempts to counteract magical {@trait mental} effects targeting or including anyone other than the caster in the area, though it has no effect on {@trait mental} effects that began outside the area or before the spell was cast.",
-				"In addition, any creature that tries to depart or arrive in a location in the area by teleportation or extradimensional travel (including extradimensional spaces) must attempt a Will saving throw. Summoned creatures must attempt the save when they are summoned, but not when the summoning ends.",
-				{
-					"type": "successDegree",
-					"entries": {
-						"Critical Success": "The creature is unaffected.",
-						"Success": "The creature is {@condition stunned|CRB|stunned 1}.",
-						"Failure": "The creature is {@condition stunned|CRB|stunned 1}, you are mentally alerted that something has failed its save against this spell, and the creature arrives in the empty space closest to the point you chose instead of its intended destination.",
-						"Critical Failure": "The creature is {@condition stunned|CRB|stunned 3}, you get a mental glimpse of its appearance, and the creature arrives in the empty space closest to the point you chose instead of its intended destination."
-					}
-				}
+			"school": "A",
+			"traditions": [
+				"Arcane",
+				"Divine",
+				"Occult"
 			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
+			},
+			"components": {
+				"F": false,
+				"M": false,
+				"S": true,
+				"V": true
 			},
 			"range": {
 				"type": "point",
@@ -55,6 +42,7 @@
 				],
 				"entry": "80-foot burst"
 			},
+			"savingThrowBasic": false,
 			"duration": {
 				"type": "timed",
 				"entry": "1 day",
@@ -63,7 +51,22 @@
 					"unit": "day"
 				}
 			},
-			"savingThrowBasic": false,
+			"sustain": false,
+			"dismiss": false,
+			"entries": [
+				"You connect the entire area with an {@condition invisible} maze of astral energy that interferes with dimensional and mental magic.",
+				"Choose a point in the area that you can see when you cast this spell. Objects other than {@trait force} effects and rare metals can't block this spell's area. Astral labyrinth attempts to counteract magical {@trait mental} effects targeting or including anyone other than the caster in the area, though it has no effect on {@trait mental} effects that began outside the area or before the spell was cast.",
+				"In addition, any creature that tries to depart or arrive in a location in the area by teleportation or extradimensional travel (including extradimensional spaces) must attempt a Will saving throw. Summoned creatures must attempt the save when they are summoned, but not when the summoning ends.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "The creature is unaffected.",
+						"Success": "The creature is {@condition stunned|CRB|stunned 1}.",
+						"Failure": "The creature is {@condition stunned|CRB|stunned 1}, you are mentally alerted that something has failed its save against this spell, and the creature arrives in the empty space closest to the point you chose instead of its intended destination.",
+						"Critical Failure": "The creature is {@condition stunned|CRB|stunned 3}, you get a mental glimpse of its appearance, and the creature arrives in the empty space closest to the point you chose instead of its intended destination."
+					}
+				}
+			],
 			"heightened": {
 				"heightened": true,
 				"plus_x": null,
@@ -74,40 +77,34 @@
 					}
 				],
 				"no_x": null
-			},
-			"dismiss": false,
-			"sustain": false,
-			"page": 76
+			}
 		},
 		{
-			"source": "EC6",
 			"name": "Deluge",
-			"level": 8,
-			"traditions": [
-				"Arcane",
-				"Primal"
-			],
-			"school": "V",
+			"source": "EC6",
+			"page": 76,
 			"type": "SPELL",
 			"focus": false,
-			"components": {
-				"F": false,
-				"M": false,
-				"S": true,
-				"V": true
-			},
+			"level": 8,
 			"traits": [
 				"Uncommon",
 				"Evocation",
 				"Water"
 			],
-			"entries": [
-				"You unleash a catastrophic downpour in the area that vanishes an instant later. All flying creatures in the area descend 50 feet or until blocked by the ground or firm surface. Each creature whose descent was blocked by the ground or firm surface takes bludgeoning damage equal to the number of feet it fell (the creature does not also take falling damage) and is knocked {@condition prone}. Creatures on the ground, including flying creatures forced to the ground by the spell, must succeed at a Reflex save or be pushed 50 feet away from the center of the area.",
-				"Flimsy structures in the area collapse. The GM can determine other large-scale effects that result from the deluge."
+			"school": "V",
+			"traditions": [
+				"Arcane",
+				"Primal"
 			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
+			},
+			"components": {
+				"F": false,
+				"M": false,
+				"S": true,
+				"V": true
 			},
 			"range": {
 				"type": "point",
@@ -123,10 +120,16 @@
 				],
 				"entry": "40-foot burst"
 			},
+			"savingThrowBasic": false,
 			"duration": {
 				"type": null
 			},
-			"savingThrowBasic": false,
+			"sustain": false,
+			"dismiss": false,
+			"entries": [
+				"You unleash a catastrophic downpour in the area that vanishes an instant later. All flying creatures in the area descend 50 feet or until blocked by the ground or firm surface. Each creature whose descent was blocked by the ground or firm surface takes bludgeoning damage equal to the number of feet it fell (the creature does not also take falling damage) and is knocked {@condition prone}. Creatures on the ground, including flying creatures forced to the ground by the spell, must succeed at a Reflex save or be pushed 50 feet away from the center of the area.",
+				"Flimsy structures in the area collapse. The GM can determine other large-scale effects that result from the deluge."
+			],
 			"heightened": {
 				"heightened": true,
 				"plus_x": {
@@ -135,28 +138,15 @@
 				},
 				"x": null,
 				"no_x": null
-			},
-			"dismiss": false,
-			"sustain": false,
-			"page": 76
+			}
 		},
 		{
-			"source": "EC6",
 			"name": "Devour Life",
-			"level": 8,
-			"traditions": [
-				"Divine",
-				"Occult"
-			],
-			"school": "N",
+			"source": "EC6",
+			"page": 76,
 			"type": "SPELL",
 			"focus": false,
-			"components": {
-				"F": false,
-				"M": false,
-				"S": true,
-				"V": true
-			},
+			"level": 8,
 			"traits": [
 				"Uncommon",
 				"Death",
@@ -164,12 +154,20 @@
 				"Necromancy",
 				"Negative"
 			],
-			"entries": [
-				"You attempt to utterly consume the target's life force. The target takes 60 negative damage with a basic Fortitude save. If this damage reduces the target to 0 Hit Points, it dies immediately. You regain Hit Points equal to half the negative damage the target takes (after applying resistance and the like). Any excess healing is gained as temporary Hit Points, which you lose after 1 minute."
+			"school": "N",
+			"traditions": [
+				"Divine",
+				"Occult"
 			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
+			},
+			"components": {
+				"F": false,
+				"M": false,
+				"S": true,
+				"V": true
 			},
 			"range": {
 				"type": "point",
@@ -180,11 +178,16 @@
 				}
 			},
 			"targets": "1 living creature",
+			"savingThrow": "Fortitude",
+			"savingThrowBasic": true,
 			"duration": {
 				"type": null
 			},
-			"savingThrow": "Fortitude",
-			"savingThrowBasic": true,
+			"sustain": false,
+			"dismiss": false,
+			"entries": [
+				"You attempt to utterly consume the target's life force. The target takes 60 negative damage with a basic Fortitude save. If this damage reduces the target to 0 Hit Points, it dies immediately. You regain Hit Points equal to half the negative damage the target takes (after applying resistance and the like). Any excess healing is gained as temporary Hit Points, which you lose after 1 minute."
+			],
 			"heightened": {
 				"heightened": true,
 				"plus_x": {
@@ -193,41 +196,35 @@
 				},
 				"x": null,
 				"no_x": null
-			},
-			"dismiss": false,
-			"sustain": false,
-			"page": 76
+			}
 		},
 		{
-			"source": "EC6",
 			"name": "Prying Survey",
-			"level": 8,
-			"traditions": [
-				"Arcane",
-				"Occult"
-			],
-			"school": "D",
+			"source": "EC6",
+			"page": 76,
 			"type": "SPELL",
 			"focus": false,
-			"components": {
-				"F": false,
-				"M": true,
-				"S": true,
-				"V": true
-			},
+			"level": 8,
 			"traits": [
 				"Uncommon",
 				"Divination",
 				"Scrying"
 			],
-			"entries": [
-				"You create eight {@condition invisible}, floating eyes, each about 3 inches in diameter, that scan the area around you, transmitting rough impressions of the environment. The eyes constantly examine and send you summaries of their findings. They are solid and can't move through barriers, and they don't follow routes that they fail to find while Searching. Any damage to an eye destroys it. When all eyes are destroyed, the spell ends.",
-				"As a single action, which has the {@trait concentrate} trait, you can concentrate on a location within the area that an eye can reach. An eye travels to that location, and you {@action Seek} visually as if you were there. As an exploration activity, you can travel at half speed while continuing to concentrate on the eyes to gain the benefits of both the {@action Scout} and {@action Search} activities. With the eyes, you can check everything even if you are traveling faster than 300 feet per minute. The eyes use your {@skill Perception} modifier. You can have only one prying survey in effect at a time."
+			"school": "D",
+			"traditions": [
+				"Arcane",
+				"Occult"
 			],
 			"cast": {
 				"number": 1,
 				"unit": "minute",
 				"entry": "1 minute"
+			},
+			"components": {
+				"F": false,
+				"M": true,
+				"S": true,
+				"V": true
 			},
 			"range": {
 				"type": null
@@ -238,6 +235,7 @@
 				],
 				"entry": "120-foot emanation"
 			},
+			"savingThrowBasic": false,
 			"duration": {
 				"type": "timed",
 				"entry": "1 hour",
@@ -246,7 +244,12 @@
 					"unit": "hour"
 				}
 			},
-			"savingThrowBasic": false,
+			"sustain": false,
+			"dismiss": false,
+			"entries": [
+				"You create eight {@condition invisible}, floating eyes, each about 3 inches in diameter, that scan the area around you, transmitting rough impressions of the environment. The eyes constantly examine and send you summaries of their findings. They are solid and can't move through barriers, and they don't follow routes that they fail to find while Searching. Any damage to an eye destroys it. When all eyes are destroyed, the spell ends.",
+				"As a single action, which has the {@trait concentrate} trait, you can concentrate on a location within the area that an eye can reach. An eye travels to that location, and you {@action Seek} visually as if you were there. As an exploration activity, you can travel at half speed while continuing to concentrate on the eyes to gain the benefits of both the {@action Scout} and {@action Search} activities. With the eyes, you can check everything even if you are traveling faster than 300 feet per minute. The eyes use your {@skill Perception} modifier. You can have only one prying survey in effect at a time."
+			],
 			"heightened": {
 				"heightened": true,
 				"plus_x": null,
@@ -257,34 +260,56 @@
 					}
 				],
 				"no_x": null
-			},
-			"dismiss": false,
-			"sustain": false,
-			"page": 76
+			}
 		},
 		{
-			"source": "EC6",
 			"name": "Undermine Reality",
-			"level": 8,
-			"traditions": [
-				"Arcane",
-				"Occult"
-			],
-			"school": "I",
+			"source": "EC6",
+			"page": 76,
 			"type": "SPELL",
 			"focus": false,
-			"components": {
-				"F": false,
-				"M": false,
-				"S": true,
-				"V": true
-			},
+			"level": 8,
 			"traits": [
 				"Uncommon",
 				"Illusion",
 				"Incapacitation",
 				"Shadow"
 			],
+			"school": "I",
+			"traditions": [
+				"Arcane",
+				"Occult"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": {
+				"F": false,
+				"M": false,
+				"S": true,
+				"V": true
+			},
+			"range": {
+				"type": "point",
+				"entry": "500 feet",
+				"distance": {
+					"type": "feet",
+					"amount": 500
+				}
+			},
+			"targets": "one creature",
+			"savingThrowBasic": false,
+			"duration": {
+				"type": "timed",
+				"entry": "varies",
+				"duration": {
+					"number": 1,
+					"unit": "special"
+				}
+			},
+			"sustain": false,
+			"dismiss": false,
 			"entries": [
 				"You lash a target with tendrils of shadow that steal some of its substance, making it quasi-real. As long as it is quasireal, its Strikes deal half damage, it can't critically succeed at any skill check, and creatures attempting saving throws against its spells and effects get a result one degree of success better than they rolled. The target must attempt a Will saving throw.",
 				{
@@ -297,9 +322,39 @@
 					}
 				}
 			],
+			"heightened": {
+				"heightened": false,
+				"plus_x": null,
+				"x": null,
+				"no_x": null
+			}
+		},
+		{
+			"name": "Upheaval",
+			"source": "EC6",
+			"page": 77,
+			"type": "SPELL",
+			"focus": false,
+			"level": 9,
+			"traits": [
+				"Uncommon",
+				"Conjuration",
+				"Earth"
+			],
+			"school": "C",
+			"traditions": [
+				"Arcane",
+				"Primal"
+			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
+			},
+			"components": {
+				"F": false,
+				"M": false,
+				"S": true,
+				"V": true
 			},
 			"range": {
 				"type": "point",
@@ -309,48 +364,18 @@
 					"amount": 500
 				}
 			},
-			"targets": "one creature",
-			"duration": {
-				"type": "timed",
-				"entry": "varies",
-				"duration": {
-					"number": 1,
-					"unit": "special"
-				}
+			"area": {
+				"types": [
+					"Burst"
+				],
+				"entry": "150-foot burst"
 			},
 			"savingThrowBasic": false,
-			"heightened": {
-				"heightened": false,
-				"plus_x": null,
-				"x": null,
-				"no_x": null
+			"duration": {
+				"type": null
 			},
-			"dismiss": false,
 			"sustain": false,
-			"page": 76
-		},
-		{
-			"source": "EC6",
-			"name": "Upheaval",
-			"level": 9,
-			"traditions": [
-				"Arcane",
-				"Primal"
-			],
-			"school": "C",
-			"type": "SPELL",
-			"focus": false,
-			"components": {
-				"F": false,
-				"M": false,
-				"S": true,
-				"V": true
-			},
-			"traits": [
-				"Uncommon",
-				"Conjuration",
-				"Earth"
-			],
+			"dismiss": false,
 			"entries": [
 				"The ground in the area shudders and crumbles as huge pillars of stone erupt into the air, rending the terrain around them.",
 				"The GM might add additional effects in certain areas.",
@@ -373,37 +398,12 @@
 					}
 				}
 			],
-			"cast": {
-				"number": 2,
-				"unit": "action"
-			},
-			"range": {
-				"type": "point",
-				"entry": "500 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 500
-				}
-			},
-			"area": {
-				"types": [
-					"Burst"
-				],
-				"entry": "150-foot burst"
-			},
-			"duration": {
-				"type": null
-			},
-			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": false,
 				"plus_x": null,
 				"x": null,
 				"no_x": null
-			},
-			"dismiss": false,
-			"sustain": false,
-			"page": 77
+			}
 		}
 	]
 }

@@ -1,26 +1,52 @@
 {
 	"spell": [
 		{
-			"source": "AV1",
 			"name": "Worm's Repast",
+			"source": "AV1",
+			"page": 80,
+			"type": "SPELL",
+			"focus": false,
 			"level": 2,
+			"traits": [
+				"Rare",
+				"Necromancy"
+			],
+			"school": "N",
 			"traditions": [
 				"Occult",
 				"Primal"
 			],
-			"school": "N",
-			"type": "SPELL",
-			"focus": false,
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
 			"components": {
 				"F": false,
 				"M": false,
 				"S": true,
 				"V": true
 			},
-			"traits": [
-				"Rare",
-				"Necromancy"
-			],
+			"range": {
+				"type": "point",
+				"entry": "30 feet",
+				"distance": {
+					"type": "feet",
+					"amount": 30
+				}
+			},
+			"targets": "1 corporeal creature",
+			"savingThrow": "Fortitude",
+			"savingThrowBasic": false,
+			"duration": {
+				"type": "timed",
+				"entry": "see below",
+				"duration": {
+					"number": 1,
+					"unit": "special"
+				}
+			},
+			"sustain": false,
+			"dismiss": false,
 			"entries": [
 				"Gnawing worms materialize within the flesh of the target creature, dealing {@damage 4d6} piercing damage and {@damage 1d6} {@condition persistent damage ||persistent piercing damage}. If the target is a non-skeletal corporeal undead creature, you deal an extra {@damage 2d6} {@condition persistent damage ||persistent piercing damage}. The target must attempt a Fortitude save.",
 				{
@@ -33,29 +59,6 @@
 					}
 				}
 			],
-			"cast": {
-				"number": 2,
-				"unit": "action"
-			},
-			"range": {
-				"type": "point",
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
-			},
-			"targets": "1 corporeal creature",
-			"duration": {
-				"type": "timed",
-				"entry": "see below",
-				"duration": {
-					"number": 1,
-					"unit": "special"
-				}
-			},
-			"savingThrow": "Fortitude",
-			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": true,
 				"plus_x": {
@@ -64,10 +67,7 @@
 				},
 				"x": null,
 				"no_x": null
-			},
-			"dismiss": false,
-			"sustain": false,
-			"page": 80
+			}
 		}
 	]
 }

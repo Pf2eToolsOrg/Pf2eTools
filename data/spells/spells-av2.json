@@ -1,22 +1,12 @@
 {
 	"spell": [
 		{
-			"source": "AV2",
 			"name": "Daydreamer's Curse",
-			"level": 4,
-			"traditions": [
-				"Arcane",
-				"Occult"
-			],
-			"school": "E",
+			"source": "AV2",
+			"page": 73,
 			"type": "SPELL",
 			"focus": false,
-			"components": {
-				"F": false,
-				"M": false,
-				"S": true,
-				"V": true
-			},
+			"level": 4,
 			"traits": [
 				"Uncommon",
 				"Attack",
@@ -25,6 +15,42 @@
 				"Mental",
 				"Misfortune"
 			],
+			"school": "E",
+			"traditions": [
+				"Arcane",
+				"Occult"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": {
+				"F": false,
+				"M": false,
+				"S": true,
+				"V": true
+			},
+			"range": {
+				"type": "point",
+				"entry": "touch",
+				"distance": {
+					"type": "touch",
+					"amount": 1
+				}
+			},
+			"targets": "1 creature",
+			"savingThrow": "Will",
+			"savingThrowBasic": false,
+			"duration": {
+				"type": "timed",
+				"entry": "varies",
+				"duration": {
+					"number": 1,
+					"unit": "special"
+				}
+			},
+			"sustain": false,
+			"dismiss": false,
 			"entries": [
 				"You impose a curse upon the target that renders it easily distracted and unable to focus its thoughts on tasks that demand insight or discernment. The target must attempt a Will save.",
 				{
@@ -37,9 +63,42 @@
 					}
 				}
 			],
+			"heightened": {
+				"heightened": false,
+				"plus_x": null,
+				"x": null,
+				"no_x": null
+			}
+		},
+		{
+			"name": "Savant's Curse",
+			"source": "AV2",
+			"page": 73,
+			"type": "SPELL",
+			"focus": false,
+			"level": 4,
+			"traits": [
+				"Uncommon",
+				"Attack",
+				"Curse",
+				"Enchantment",
+				"Mental",
+				"Misfortune"
+			],
+			"school": "E",
+			"traditions": [
+				"Arcane",
+				"Occult"
+			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
+			},
+			"components": {
+				"F": false,
+				"M": false,
+				"S": true,
+				"V": true
 			},
 			"range": {
 				"type": "point",
@@ -50,6 +109,8 @@
 				}
 			},
 			"targets": "1 creature",
+			"savingThrow": "Will",
+			"savingThrowBasic": false,
 			"duration": {
 				"type": "timed",
 				"entry": "varies",
@@ -58,43 +119,8 @@
 					"unit": "special"
 				}
 			},
-			"savingThrow": "Will",
-			"savingThrowBasic": false,
-			"heightened": {
-				"heightened": false,
-				"plus_x": null,
-				"x": null,
-				"no_x": null
-			},
-			"dismiss": false,
 			"sustain": false,
-			"page": 73
-		},
-		{
-			"source": "AV2",
-			"name": "Savant's Curse",
-			"level": 4,
-			"traditions": [
-				"Arcane",
-				"Occult"
-			],
-			"school": "E",
-			"type": "SPELL",
-			"focus": false,
-			"components": {
-				"F": false,
-				"M": false,
-				"S": true,
-				"V": true
-			},
-			"traits": [
-				"Uncommon",
-				"Attack",
-				"Curse",
-				"Enchantment",
-				"Mental",
-				"Misfortune"
-			],
+			"dismiss": false,
 			"entries": [
 				"You afflict the target with a curse that fills its mind with distracting and hyperspecialized minutiae, causing it to second-guess even simple facts. The target must attempt a Will saving throw.",
 				{
@@ -107,38 +133,12 @@
 					}
 				}
 			],
-			"cast": {
-				"number": 2,
-				"unit": "action"
-			},
-			"range": {
-				"type": "point",
-				"entry": "touch",
-				"distance": {
-					"type": "touch",
-					"amount": 1
-				}
-			},
-			"targets": "1 creature",
-			"duration": {
-				"type": "timed",
-				"entry": "varies",
-				"duration": {
-					"number": 1,
-					"unit": "special"
-				}
-			},
-			"savingThrow": "Will",
-			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": false,
 				"plus_x": null,
 				"x": null,
 				"no_x": null
-			},
-			"dismiss": false,
-			"sustain": false,
-			"page": 73
+			}
 		}
 	]
 }

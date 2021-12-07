@@ -1,21 +1,58 @@
 {
 	"item": [
 		{
+			"name": "Ambrosia Of Undying Hope",
 			"source": "EC6",
-			"name": "Aroden's Hearthstone",
-			"level": 25,
+			"page": 74,
 			"type": "Item",
-			"category": "Artifact",
+			"level": 19,
+			"traits": [
+				"Rare",
+				"Alchemical",
+				"Consumable",
+				"Elixir",
+				"Necromancy"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 6200,
+				"note": null
+			},
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": "Interact",
+				"requirements": null,
+				"frequency": null,
+				"trigger": null
+			},
+			"category": "Elixir",
+			"entries": [
+				"This elixir is usually stored in a small metal flask or miniature stein. The dark liquid sparkles as if it were full of stars and is considered sacred to {@deity Cayden Cailean} and to the cults of the Failed in Absalom. The next time you would die from damage within 8 hours after you drink the ambrosia, it prevents you from {@condition dying}, you regain 20 Hit Points, the elixir's benefits end, and you become temporarily immune to the ambrosia of undying hope for 24 hours.",
+				"The ambrosia can't protect you from {@trait death} effects or disintegration, but it can protect against almost any other form of death via damage. You can only be under the effect of a single ambrosia of undying hope at a time."
+			],
+			"generic": false,
+			"consumable": true
+		},
+		{
+			"name": "Aroden's Hearthstone",
+			"source": "EC6",
+			"page": 66,
+			"type": "Item",
+			"level": 25,
 			"traits": [
 				"Unique",
 				"Arcane",
 				"Artifact",
 				"Enchantment"
 			],
-			"consumable": false,
-			"generic": false,
 			"usage": "held in 1 hand",
 			"bulk": "L",
+			"category": "Artifact",
 			"entries": [
 				"This coin-sized gemstone can be used on its own but must be included in the construction of a hearth in order to fully activate its magic.",
 				{
@@ -55,24 +92,61 @@
 					]
 				}
 			],
-			"page": 66
+			"generic": false,
+			"consumable": false
 		},
 		{
+			"name": "Celestial Hair",
 			"source": "EC6",
-			"name": "Hunter's Dawn",
-			"level": 23,
+			"page": 74,
 			"type": "Item",
-			"category": "Artifact",
+			"level": 20,
+			"traits": [
+				"Rare",
+				"Abjuration",
+				"Consumable",
+				"Magical",
+				"Talisman"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 12500,
+				"note": null
+			},
+			"usage": "affixed to armor",
+			"bulk": "\u2014",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "free"
+				},
+				"components": "Interact",
+				"requirements": null,
+				"frequency": null,
+				"trigger": "You critically fail a saving throw or are critically hit by an attack."
+			},
+			"category": "Talisman",
+			"entries": [
+				"This strand of hair shimmers like the strands of fate. When you activate the string, it resonates with a single, perfect note. The triggering saving throw becomes a failure or the triggering attack roll becomes a regular hit, not critical one. If the source of the attack or effect is an evil creature, that creature must succeed at a DC 41 Will saving throw or be {@condition enfeebled|CRB|enfeebled 2} and {@condition stupefied|CRB|stupefied 2} until the end of its next turn."
+			],
+			"generic": false,
+			"consumable": true
+		},
+		{
+			"name": "Hunter's Dawn",
+			"source": "EC6",
+			"page": 67,
+			"type": "Item",
+			"level": 23,
 			"traits": [
 				"Unique",
 				"Arcane",
 				"Artifact",
 				"Enchantment"
 			],
-			"consumable": false,
-			"generic": false,
 			"usage": "held in 1 hand",
 			"bulk": "1",
+			"category": "Artifact",
 			"entries": [
 				"Hunter's Dawn is a +3 greater striking speed ghost touch club. However, the notched head of the weapon marks it as an atlatl, an ancient tool used for throwing darts and javelins. You can use Hunter's Dawn with a mundane dart or javelin like you would use a bow with an arrow; when you do so, the range of the dart or javelin is doubled, and the dart or javelin uses Hunter's Dawn to determine its attack modifier and damage dice.",
 				"Activate {@as 1}, {@as 2}, or {@as 3} ({@action Interact}) You swing Hunter's Dawn and launch a magically conjured javelin at a target within 60 feet, making a ranged {@action Strike}. The javelin has the statistics of a javelin but gains the magical properties of Hunter's Dawn and disappears immediately after hitting or missing its target. On a successful hit, you deal damage ({@damage 3d6} piercing, due to the atlatl's greater striking rune, plus your Strength modifier); in addition, a gazelle leaps from the hit target to one or more targets within 20 feet of the first, dealing {@damage 2d6} piercing damage plus your Strength modifier.",
@@ -112,24 +186,52 @@
 					]
 				}
 			],
-			"page": 67
+			"generic": false,
+			"consumable": false
 		},
 		{
+			"name": "Jerkin Of Liberation",
 			"source": "EC6",
-			"name": "Kortos Diamond",
-			"level": 22,
+			"page": 74,
 			"type": "Item",
-			"category": "Artifact",
+			"level": 17,
+			"traits": [
+				"Uncommon",
+				"Abjuration",
+				"Armor",
+				"Invested",
+				"Magical"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 14000,
+				"note": null
+			},
+			"usage": "worn armor",
+			"bulk": "1",
+			"category": "Armor",
+			"entries": [
+				"This +2 greater resilient studded leather is traditionally inscribed with a symbol of either {@deity Norgorber} or {@deity Cayden Cailean}. Its leather is light as silk, and its buttons and studs are gleaming crystal. While you wear it, you get a +15-foot item bonus to your Speed, and effects that attempt to impose penalties on your Speed must first counteract the jerkin of liberation or they have no effect on you.",
+				"In addition, you are hard to incapacitate. You use the jerkin's item level or your own level, whichever is higher, to determine effects of the {@trait incapacitation} trait."
+			],
+			"generic": false,
+			"consumable": false
+		},
+		{
+			"name": "Kortos Diamond",
+			"source": "EC6",
+			"page": 68,
+			"type": "Item",
+			"level": 22,
 			"traits": [
 				"Unique",
 				"Artifact",
 				"Divine",
 				"Evocation"
 			],
-			"consumable": false,
-			"generic": false,
 			"usage": "held in 1 hand",
 			"bulk": "1",
+			"category": "Artifact",
 			"entries": [
 				"The hilt of this +3 major striking axiomatic spell-storing longsword is simple and elegant. The blade itself is made of throneglass\u2014a clear, jewellike crafting material with a razor-sharp edge, capable of absorbing psychic magic and redirecting it at the wielder's enemies.",
 				"Whenever the Kortos Diamond is in an area of dim or brighter light, it glows faintly, as if reflecting the light of a setting sun.",
@@ -187,150 +289,21 @@
 					]
 				}
 			],
-			"page": 68
-		},
-		{
-			"source": "EC6",
-			"name": "Tears Of The Last Azlanti",
-			"level": 25,
-			"type": "Item",
-			"category": "Artifact",
-			"traits": [
-				"Unique",
-				"Arcane",
-				"Artifact",
-				"Invested",
-				"Transmutation"
-			],
-			"consumable": false,
 			"generic": false,
-			"usage": "worn necklace",
-			"bulk": "L",
-			"entries": [
-				"This gold necklace sports six bails, each with a different aeon stone. The backside of each bail is engraved with a single ancient Azlanti rune: Patience, Remembrance, Resilience, Tenacity, Wisdom, Invention.",
-				"While a bail is active, you recall pieces of childhood memories, brief stories and lessons spoken to you by Aroden. The knowledge imparted by each bail carries a specific power but also allows you to access the invested and resonant powers of the aeon stone (Core Rulebook 604) in the active bail's slot as though the stone orbited your head. Each day at dawn, a new bail becomes active; roll {@dice 1d6} to determine which bail is active, determined by the table below. Only one bail can be active at any time.",
-				"Once per day, you can attempt to exchange the aeon stone in a given bail for another aeon stone with a successful DC 35 {@skill Arcana} check.",
-				"D6 Bail Default Aeon Stone 1 Patience Gold nodule Active Power: Telepathy with a range of 100 feet 2 Remembrance Tourmaline sphere Active Power: Cast {@spell hypercognition} at will 3 Resilience Clear spindle Active Power: Worn armor gains the antimagic property rune 4 Tenacity Pink rhomboid Active Power: Wielded weapons gain the vorpal property rune 5 Wisdom Orange prism Active Power: Skill checks for downtime activities or to {@action Recall Knowledge} are one degree of success higher 6 Invention Lavender and green ellipsoid Active Power: You can craft items up to 5 levels higher than your actual level Destruction The memories and lessons that echo through the Tears of the Last Azlanti give clues about steps needed to destroy the artifact. After you have gained the power of each of the six aeon stones at least once, you are granted visions of six locations across Golarion. At each of these locations, you must replace one of the necklace's aeon stones with a dull gray aeon stone. Once the final stone is replaced, the powers of the necklace are drawn into its new stones. These stones become pieces of throneglass, and the chain and bails disintegrate."
-			],
-			"page": 69
+			"consumable": false
 		},
 		{
-			"source": "EC6",
-			"name": "Ambrosia Of Undying Hope",
-			"level": 19,
-			"type": "Item",
-			"category": "Elixir",
-			"traits": [
-				"Rare",
-				"Alchemical",
-				"Consumable",
-				"Elixir",
-				"Necromancy"
-			],
-			"consumable": true,
-			"generic": false,
-			"price": {
-				"coin": "gp",
-				"amount": 6200,
-				"note": null
-			},
-			"usage": "held in 1 hand",
-			"activate": {
-				"activity": {
-					"number": 1,
-					"unit": "action"
-				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
-			},
-			"bulk": "L",
-			"entries": [
-				"This elixir is usually stored in a small metal flask or miniature stein. The dark liquid sparkles as if it were full of stars and is considered sacred to {@deity Cayden Cailean} and to the cults of the Failed in Absalom. The next time you would die from damage within 8 hours after you drink the ambrosia, it prevents you from {@condition dying}, you regain 20 Hit Points, the elixir's benefits end, and you become temporarily immune to the ambrosia of undying hope for 24 hours.",
-				"The ambrosia can't protect you from {@trait death} effects or disintegration, but it can protect against almost any other form of death via damage. You can only be under the effect of a single ambrosia of undying hope at a time."
-			],
-			"page": 74
-		},
-		{
-			"source": "EC6",
-			"name": "Celestial Hair",
-			"level": 20,
-			"type": "Item",
-			"category": "Talisman",
-			"traits": [
-				"Rare",
-				"Abjuration",
-				"Consumable",
-				"Magical",
-				"Talisman"
-			],
-			"consumable": true,
-			"generic": false,
-			"price": {
-				"coin": "gp",
-				"amount": 12500,
-				"note": null
-			},
-			"usage": "affixed to armor",
-			"activate": {
-				"activity": {
-					"number": 1,
-					"unit": "free"
-				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": "You critically fail a saving throw or are critically hit by an attack."
-			},
-			"bulk": "\u2014",
-			"entries": [
-				"This strand of hair shimmers like the strands of fate. When you activate the string, it resonates with a single, perfect note. The triggering saving throw becomes a failure or the triggering attack roll becomes a regular hit, not critical one. If the source of the attack or effect is an evil creature, that creature must succeed at a DC 41 Will saving throw or be {@condition enfeebled|CRB|enfeebled 2} and {@condition stupefied|CRB|stupefied 2} until the end of its next turn."
-			],
-			"page": 74
-		},
-		{
-			"source": "EC6",
-			"name": "Jerkin Of Liberation",
-			"level": 17,
-			"type": "Item",
-			"category": "Armor",
-			"traits": [
-				"Uncommon",
-				"Abjuration",
-				"Armor",
-				"Invested",
-				"Magical"
-			],
-			"consumable": false,
-			"generic": false,
-			"price": {
-				"coin": "gp",
-				"amount": 14000,
-				"note": null
-			},
-			"usage": "worn armor",
-			"bulk": "1",
-			"entries": [
-				"This +2 greater resilient studded leather is traditionally inscribed with a symbol of either {@deity Norgorber} or {@deity Cayden Cailean}. Its leather is light as silk, and its buttons and studs are gleaming crystal. While you wear it, you get a +15-foot item bonus to your Speed, and effects that attempt to impose penalties on your Speed must first counteract the jerkin of liberation or they have no effect on you.",
-				"In addition, you are hard to incapacitate. You use the jerkin's item level or your own level, whichever is higher, to determine effects of the {@trait incapacitation} trait."
-			],
-			"page": 74
-		},
-		{
-			"source": "EC6",
 			"name": "Locket Of Sealed Nightmares",
-			"level": 19,
+			"source": "EC6",
+			"page": 74,
 			"type": "Item",
-			"category": "Worn",
+			"level": 19,
 			"traits": [
 				"Rare",
 				"Illusion",
 				"Invested",
 				"Magical"
 			],
-			"consumable": false,
-			"generic": false,
 			"price": {
 				"coin": "gp",
 				"amount": 36000,
@@ -338,6 +311,7 @@
 			},
 			"usage": "worn necklace",
 			"bulk": "\u2014",
+			"category": "Worn",
 			"entries": [
 				"As long as this locket of horn and silver is closed, you don't need to sleep. However, you can still overexert your body with too much activity, so you still need to rest to avoid becoming {@condition fatigued} or to remove the {@condition fatigued} condition.",
 				"You also gain a +4 item bonus on saving throws against mental illusions, {@trait magical} effects that would make you {@condition unconscious}, and effects that would make you {@condition fatigued}.",
@@ -361,14 +335,15 @@
 					]
 				}
 			],
-			"page": 74
+			"generic": false,
+			"consumable": false
 		},
 		{
-			"source": "EC6",
 			"name": "Panacea Fruit",
-			"level": 19,
+			"source": "EC6",
+			"page": 74,
 			"type": "Item",
-			"category": "Consumable",
+			"level": 19,
 			"traits": [
 				"Rare",
 				"Consumable",
@@ -376,14 +351,13 @@
 				"Necromancy",
 				"Primal"
 			],
-			"consumable": true,
-			"generic": false,
 			"price": {
 				"coin": "gp",
 				"amount": 8000,
 				"note": null
 			},
 			"usage": "held in 1 hand",
+			"bulk": "L",
 			"activate": {
 				"activity": {
 					"number": 1,
@@ -394,28 +368,28 @@
 				"frequency": null,
 				"trigger": null
 			},
-			"bulk": "L",
+			"category": "Consumable",
 			"entries": [
 				"This fruit is slowly, constantly changing shape, transforming from one fruit into another, but always appearing at the peak of ripeness. When you consume the fruit, it attempts to counteract all curses, diseases, and poisons affecting you, and you immediately regain {@dice 8d8+30} Hit Points. The fruit has a counteract level of 9 and a +30 modifier for the rolls against each condition. The fruit's seed remains after consumption and can be planted later, becoming a seed-shaped tree feather token that sprouts a tree bearing many kinds of mundane fruit."
 			],
-			"page": 74
+			"generic": false,
+			"consumable": true
 		},
 		{
-			"source": "EC6",
 			"name": "Piereta",
-			"level": 20,
+			"source": "EC6",
+			"page": 74,
 			"type": "Item",
-			"category": "Held",
+			"level": 20,
 			"traits": [
 				"Unique",
 				"Divine",
 				"Evocation",
 				"Intelligent"
 			],
-			"consumable": false,
-			"generic": false,
 			"usage": "held in 1 hand",
 			"bulk": "1",
+			"category": "Held",
 			"entries": [
 				"30 feet Communication telepathy (Azlanti, Celestial, Common, Utopian) Skills {@skill Diplomacy} +33, {@skill Religion} +29, {@skill Lore||Warfare Lore} +27 Int +0, Wis +4, Cha +6 Will +31 Piereta was a Knight of Ozem during the Shining Crusade, sworn to the service of Aroden's herald, {@deity Arazni|LOGM}. After {@deity Arazni|LOGM} perished at the hands of the Whispering Tyrant, Piereta became the first paladin to swear her service to the newly ascended goddess, {@deity Iomedae}. When she fell in battle, a fragment of her spirit clung to the sword through which she had wielded her faith in countless battles, granting the weapon a sentience of its own. The sword named herself after her fallen bearer and has been a faithful companion to many Iomedaean warriors since.",
 				"Piereta is a +3 major striking holy rapier devoted to the principles of {@deity Iomedae} as an exemplar of valorous action and as a protector of the innocent.",
@@ -456,21 +430,20 @@
 					]
 				}
 			],
-			"page": 74
+			"generic": false,
+			"consumable": false
 		},
 		{
-			"source": "EC6",
 			"name": "Planar Ribbon",
-			"level": 20,
+			"source": "EC6",
+			"page": 75,
 			"type": "Item",
-			"category": "Held",
+			"level": 20,
 			"traits": [
 				"Unique",
 				"Conjuration",
 				"Occult"
 			],
-			"consumable": false,
-			"generic": false,
 			"price": {
 				"coin": "gp",
 				"amount": 60000,
@@ -478,6 +451,7 @@
 			},
 			"usage": "held in 1 hand",
 			"bulk": "L",
+			"category": "Held",
 			"entries": [
 				"By twisting and twirling this ordinary-looking leather ribbon, you can temporarily bend a rift in space.",
 				{
@@ -517,22 +491,21 @@
 					]
 				}
 			],
-			"page": 75
+			"generic": false,
+			"consumable": false
 		},
 		{
-			"source": "EC6",
 			"name": "Shield Of The Unified Legion",
-			"level": 20,
+			"source": "EC6",
+			"page": 75,
 			"type": "Item",
-			"category": "Shield",
+			"level": 20,
 			"traits": [
 				"Uncommon",
 				"Evocation",
 				"Magical",
 				"Shield"
 			],
-			"consumable": false,
-			"generic": false,
 			"price": {
 				"coin": "gp",
 				"amount": 70000,
@@ -540,6 +513,7 @@
 			},
 			"usage": "strapped to 1 hand",
 			"bulk": "L",
+			"category": "Shield",
 			"entries": [
 				"This high-grade orichalcum shield (Hardness 16, HP 64, and BT 32) bears a +3 major striking shield boss that cannot be removed. It gleams brightly in any light, drawing attention at all times. When you Raise this Shield, ephemeral reflections of it appear in front of each of your allies within 30 feet, granting them its +2 circumstance bonus to AC for as long as they are within 30 feet of you and your shield is raised.",
 				{
@@ -559,22 +533,21 @@
 					]
 				}
 			],
-			"page": 75
+			"generic": false,
+			"consumable": false
 		},
 		{
-			"source": "EC6",
 			"name": "Staff Of Sieges",
-			"level": 20,
+			"source": "EC6",
+			"page": 75,
 			"type": "Item",
-			"category": "Staff",
+			"level": 20,
 			"traits": [
 				"Uncommon",
 				"Evocation",
 				"Magical",
 				"Staff"
 			],
-			"consumable": false,
-			"generic": false,
 			"price": {
 				"coin": "gp",
 				"amount": 65000,
@@ -582,6 +555,7 @@
 			},
 			"usage": "held in 1 hand",
 			"bulk": "1",
+			"category": "Staff",
 			"entries": [
 				"This adamantine staff is fitted with mithral plates resembling battlements on a castle. Lesser cover, cover, and greater cover don't grant any bonus against your spell attacks or to saving throws against your spells that you cast from the staff.",
 				{
@@ -603,7 +577,33 @@
 					]
 				}
 			],
-			"page": 75
+			"generic": false,
+			"consumable": false
+		},
+		{
+			"name": "Tears Of The Last Azlanti",
+			"source": "EC6",
+			"page": 69,
+			"type": "Item",
+			"level": 25,
+			"traits": [
+				"Unique",
+				"Arcane",
+				"Artifact",
+				"Invested",
+				"Transmutation"
+			],
+			"usage": "worn necklace",
+			"bulk": "L",
+			"category": "Artifact",
+			"entries": [
+				"This gold necklace sports six bails, each with a different aeon stone. The backside of each bail is engraved with a single ancient Azlanti rune: Patience, Remembrance, Resilience, Tenacity, Wisdom, Invention.",
+				"While a bail is active, you recall pieces of childhood memories, brief stories and lessons spoken to you by Aroden. The knowledge imparted by each bail carries a specific power but also allows you to access the invested and resonant powers of the aeon stone (Core Rulebook 604) in the active bail's slot as though the stone orbited your head. Each day at dawn, a new bail becomes active; roll {@dice 1d6} to determine which bail is active, determined by the table below. Only one bail can be active at any time.",
+				"Once per day, you can attempt to exchange the aeon stone in a given bail for another aeon stone with a successful DC 35 {@skill Arcana} check.",
+				"D6 Bail Default Aeon Stone 1 Patience Gold nodule Active Power: Telepathy with a range of 100 feet 2 Remembrance Tourmaline sphere Active Power: Cast {@spell hypercognition} at will 3 Resilience Clear spindle Active Power: Worn armor gains the antimagic property rune 4 Tenacity Pink rhomboid Active Power: Wielded weapons gain the vorpal property rune 5 Wisdom Orange prism Active Power: Skill checks for downtime activities or to {@action Recall Knowledge} are one degree of success higher 6 Invention Lavender and green ellipsoid Active Power: You can craft items up to 5 levels higher than your actual level Destruction The memories and lessons that echo through the Tears of the Last Azlanti give clues about steps needed to destroy the artifact. After you have gained the power of each of the six aeon stones at least once, you are granted visions of six locations across Golarion. At each of these locations, you must replace one of the necklace's aeon stones with a dull gray aeon stone. Once the final stone is replaced, the powers of the necklace are drawn into its new stones. These stones become pieces of throneglass, and the chain and bails disintegrate."
+			],
+			"generic": false,
+			"consumable": false
 		}
 	]
 }

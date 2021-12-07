@@ -1,19 +1,17 @@
 {
 	"item": [
 		{
-			"source": "TiO",
 			"name": "Antivenom Potion",
-			"level": 2,
+			"source": "TiO",
+			"page": 60,
 			"type": "Item",
-			"category": "Potion",
+			"level": 2,
 			"traits": [
 				"Consumable",
 				"Magical",
 				"Necromancy",
 				"Potion"
 			],
-			"consumable": true,
-			"generic": false,
 			"price": {
 				"coin": "gp",
 				"amount": 6,
@@ -21,26 +19,26 @@
 			},
 			"usage": "held in 1 hand",
 			"bulk": "L",
+			"category": "Potion",
 			"entries": [
 				"This cloudy, white liquid helps protect against poisons.",
 				"When you drink an antivenom potion, you can immediately attempt a DC {@flatDC 10} flat check to end any {@condition persistent damage ||persistent poison damage} you're taking. In addition, for 1 minute after drinking the potion, you gain a +1 bonus to Fortitude saving throws to avoid taking {@condition persistent damage ||persistent poison damage}."
 			],
-			"page": 60
+			"generic": false,
+			"consumable": true
 		},
 		{
-			"source": "TiO",
 			"name": "Capsaicin Tonic",
-			"level": 4,
+			"source": "TiO",
+			"page": 60,
 			"type": "Item",
-			"category": "Elixir",
+			"level": 4,
 			"traits": [
 				"Uncommon",
 				"Alchemical",
 				"Consumable",
 				"Elixir"
 			],
-			"consumable": true,
-			"generic": false,
 			"price": {
 				"coin": "gp",
 				"amount": 17,
@@ -48,6 +46,7 @@
 			},
 			"usage": "held in 1 hand",
 			"bulk": "L",
+			"category": "Elixir",
 			"entries": [
 				"This translucent, pale-yellow drink has several pepper seeds suspended within it.",
 				"Although the tonic is painfully spicy when first consumed, the heat soon fades as the tonic coats your throat. In the next hour, you can use the activation below up to three times; the third time you use it, the effects of the capsaicin tonic end. While under the effects of the tonic, you can easily consume even the spiciest of foods without trouble.",
@@ -68,44 +67,43 @@
 					]
 				}
 			],
-			"page": 60
+			"generic": false,
+			"consumable": true
 		},
 		{
-			"source": "TiO",
 			"name": "Sparkblade",
-			"level": 3,
+			"source": "TiO",
+			"page": 60,
 			"type": "Item",
-			"category": "no category found",
+			"level": 3,
 			"traits": [
 				"Evocation",
 				"Magical"
 			],
-			"consumable": false,
-			"generic": false,
 			"price": {
 				"coin": "gp",
 				"amount": 70,
 				"note": null
 			},
+			"category": "no category found",
 			"entries": [
 				"Faint, delicate etchings of lightning trace across the blade of this +1 cold iron shortsword. Cold iron is made from particularly pure sources of iron and shaped with little to no heat, resulting in weapons deadly to demons and fey alike. Once per day, you can spend 1 action to point the sparkblade at a foe within 30 feet of you and shoot an arc of lightning from the blade. This lightning can leap from your chosen foe to another creature you choose within 30 feet, dealing {@damage 2d4+4} electricity damage to each creature (DC 19 basic Reflex save)."
 			],
-			"page": 60
+			"generic": false,
+			"consumable": false
 		},
 		{
-			"source": "TiO",
 			"name": "Sun Wheel",
-			"level": 5,
+			"source": "TiO",
+			"page": 60,
 			"type": "Item",
-			"category": "Worn",
+			"level": 5,
 			"traits": [
 				"Rare",
 				"Abjuration",
 				"Invested",
 				"Magical"
 			],
-			"consumable": false,
-			"generic": false,
 			"price": {
 				"coin": "gp",
 				"amount": 150,
@@ -113,6 +111,7 @@
 			},
 			"usage": "worn",
 			"bulk": "\u2014",
+			"category": "Worn",
 			"entries": [
 				"Created by the priests of a Qadiran sect of Sarenites, the sun wheels were designed to protect the Dawnflower's followers in their quest to hunt down a dangerous cult trying to raise a spawn of the evil god {@deity Rovagug}. Once they completed their crusade, these priests disbanded and went on to minister other congregations. They each took their sun wheels with them, handing them down to the next generations.",
 				"This copper medallion is etched with a stylized sun, its rays shaped like the spokes of a wagon wheel. It tends to glint brightly when exposed to sunlight. While wearing this pendant, you gain a +1 item bonus to {@skill Religion} checks.",
@@ -121,7 +120,8 @@
 				"If you choose to deal the fire damage, you can't Activate the sun wheel again until the next morning.",
 				"If you prevent damage but don't deal the fire damage, you can use it again in 10 minutes, as normal for shield."
 			],
-			"page": 60
+			"generic": false,
+			"consumable": false
 		}
 	]
 }

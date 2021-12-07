@@ -1,44 +1,16 @@
 {
 	"item": [
 		{
-			"source": "EC5",
-			"name": "Blightburn Ward",
-			"level": 13,
-			"type": "Item",
-			"category": "Worn",
-			"traits": [
-				"Uncommon",
-				"Abjuration",
-				"Invested",
-				"Magical"
-			],
-			"consumable": false,
-			"generic": false,
-			"price": {
-				"coin": "gp",
-				"amount": 2300,
-				"note": null
-			},
-			"usage": "worn necklace",
-			"bulk": "\u2014",
-			"entries": [
-				"This heavy iron necklace is decorated with tiny gems that resemble the stars in the ceiling high above the Vault of the Black Desert. While you have invested this item, you cannot contract blightburn sickness. It doesn't cure blightburn sickness if you already have it, but the disease's stage can't progress while you wear it."
-			],
-			"page": 73
-		},
-		{
-			"source": "EC5",
 			"name": "Anchor Spear",
-			"level": 13,
+			"source": "EC5",
+			"page": 75,
 			"type": "Item",
-			"category": "Held",
+			"level": 13,
 			"traits": [
 				"Uncommon",
 				"Magical",
 				"Transmutation"
 			],
-			"consumable": false,
-			"generic": false,
 			"price": {
 				"coin": "gp",
 				"amount": 2800,
@@ -46,6 +18,7 @@
 			},
 			"usage": "held in 1 hand",
 			"bulk": "1",
+			"category": "Held",
 			"entries": [
 				"The tip of this +2 greater striking spear is large and wickedly barbed, and the haft is inlaid with fine silver lines that run the length of the weapon. Wielded by specially trained xulgath cavalry, anchor spears are used to prevent the escape of gogiteths or other monsters capable of climbing or burrowing.",
 				{
@@ -90,126 +63,47 @@
 					]
 				}
 			],
-			"page": 75
-		},
-		{
-			"source": "EC5",
-			"name": "Cave Worm Repellent",
-			"level": "13+",
-			"type": "Item",
-			"category": "Consumable",
-			"traits": [
-				"Uncommon",
-				"Alchemical",
-				"Consumable"
-			],
-			"consumable": true,
-			"generic": "G",
-			"usage": "held in 1 hand",
-			"bulk": "L",
-			"entries": [
-				"Cave worm repellent is a highly noxious oil that can be applied to a creature or sprinkled in a circle around a 10-footradius area. In either case, after it is applied, it lasts for 24 hours or until it is scrubbed clean with 1 minute of work.",
-				"When applied to a creature, the repellent causes cave worms of the indicated type to avoid attacking that creature in melee as long as they have something else nearby to attack. The repellent does not deter a cave worm from making ranged attacks against a coated target. If no creatures are within a cave worm's reach and it wants to approach and make a melee attack, it approaches and attacks a non-coated creature if it can without spending more actions to do so.",
-				"If the coated creature is swallowed by the designated type of cave worm, the cave worm must succeed at a Fortitude save or involuntarily regurgitate the swallowed creature on the next round (a single action)",
-				"When sprinkled around an area, cave worm repellent negates any chance of a random encounter with the particular type of cave worm in that area, as the creatures purposefully avoid the affected area.",
-				"Other types of repellent that function similarly to this one might exist at the GM's discretion. Uncommon or rare creatures are typically much harder to repel, and repellent against them might necessitate harvesting ingredients from the creatures themselves (such as the creature's liver or a certain gland)."
-			],
-			"variants": [
-				{
-					"type": "purple worm repellent",
-					"level": 13,
-					"price": {
-						"coin": "gp",
-						"amount": 550,
-						"note": null
-					},
-					"entries": []
-				},
-				{
-					"type": "azure worm repellent",
-					"level": 15,
-					"price": {
-						"coin": "gp",
-						"amount": 1100,
-						"note": null
-					},
-					"craftReq": "The initial raw ingredients must include an azure worm's scale.",
-					"entries": []
-				},
-				{
-					"type": "crimson worm repellent",
-					"level": 18,
-					"price": {
-						"coin": "gp",
-						"amount": 4500,
-						"note": null
-					},
-					"craftReq": "The initial raw ingredients must include a crimson worm's liver.",
-					"entries": []
-				}
-			],
-			"page": 75
-		},
-		{
-			"source": "EC5",
-			"name": "Greengut",
-			"level": 17,
-			"type": "Item",
-			"category": "Poison",
-			"traits": [
-				"Uncommon",
-				"Alchemical",
-				"Consumable",
-				"Poison"
-			],
-			"consumable": true,
 			"generic": false,
+			"consumable": false
+		},
+		{
+			"name": "Blightburn Ward",
+			"source": "EC5",
+			"page": 73,
+			"type": "Item",
+			"level": 13,
+			"traits": [
+				"Uncommon",
+				"Abjuration",
+				"Invested",
+				"Magical"
+			],
 			"price": {
 				"coin": "gp",
-				"amount": 2500,
+				"amount": 2300,
 				"note": null
 			},
-			"usage": "held in 1 hand",
-			"activate": {
-				"activity": {
-					"number": 1,
-					"unit": "action"
-				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
-			},
-			"bulk": "L",
+			"usage": "worn necklace",
+			"bulk": "\u2014",
+			"category": "Worn",
 			"entries": [
-				"This watery, mint-green emetic of xulgath design is often carried in a delicate obsidian vial or other fragile container.",
-				"In the unfortunate circumstance that a creature has been Swallowed Whole by another creature, the swallowed creature can break open a vial of greengut to immediately induce vomiting. The swallower must succeed at a DC 40 Fortitude save or take {@damage 18d6} poison damage and possibly vomit the contents of its stomach.",
-				{
-					"type": "successDegree",
-					"entries": {
-						"Critical Success": "The creature is unaffected.",
-						"Success": "The creature takes half damage.",
-						"Failure": "The creature takes full damage, is {@condition sickened|CRB|sickened 1}, and vomits up any and all creatures Swallowed Whole on its next turn (a single action, which also allows it a Fortitude save against the {@condition sickened} condition), as well as any stones or other objects it swallowed.",
-						"Critical Failure": "As failure, but the creature takes double damage and is {@condition sickened|CRB|sickened 2}."
-					}
-				}
+				"This heavy iron necklace is decorated with tiny gems that resemble the stars in the ceiling high above the Vault of the Black Desert. While you have invested this item, you cannot contract blightburn sickness. It doesn't cure blightburn sickness if you already have it, but the disease's stage can't progress while you wear it."
 			],
-			"page": 75
+			"generic": false,
+			"consumable": false
 		},
 		{
-			"source": "EC5",
 			"name": "Bomber's Saddle",
-			"level": 13,
+			"source": "EC5",
+			"page": 76,
 			"type": "Item",
-			"category": "Companion",
+			"level": 13,
 			"traits": [
 				"Uncommon",
 				"Companion",
 				"Invested",
 				"Magical"
 			],
-			"consumable": false,
-			"generic": false,
 			"price": {
 				"coin": "gp",
 				"amount": 2800,
@@ -217,6 +111,7 @@
 			},
 			"usage": "worn saddle",
 			"bulk": "2",
+			"category": "Companion",
 			"entries": [
 				"Developed by urdefhans for their skaveling mounts but quickly copied by other races' cavalry, this leather saddle is made from cave worm hide and is designed to fit a variety of flying steeds. In addition to a seat for the rider, the bomber's saddle has a bomb compartment situated underneath the mount. The compartment can hold up to six alchemical bombs of light or negligible Bulk.",
 				{
@@ -253,21 +148,124 @@
 					]
 				}
 			],
-			"page": 76
+			"generic": false,
+			"consumable": false
 		},
 		{
+			"name": "Cave Worm Repellent",
 			"source": "EC5",
-			"name": "Heedless Spurs",
-			"level": 15,
+			"page": 75,
 			"type": "Item",
-			"category": "Worn",
+			"level": "13+",
+			"traits": [
+				"Uncommon",
+				"Alchemical",
+				"Consumable"
+			],
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"category": "Consumable",
+			"entries": [
+				"Cave worm repellent is a highly noxious oil that can be applied to a creature or sprinkled in a circle around a 10-footradius area. In either case, after it is applied, it lasts for 24 hours or until it is scrubbed clean with 1 minute of work.",
+				"When applied to a creature, the repellent causes cave worms of the indicated type to avoid attacking that creature in melee as long as they have something else nearby to attack. The repellent does not deter a cave worm from making ranged attacks against a coated target. If no creatures are within a cave worm's reach and it wants to approach and make a melee attack, it approaches and attacks a non-coated creature if it can without spending more actions to do so.",
+				"If the coated creature is swallowed by the designated type of cave worm, the cave worm must succeed at a Fortitude save or involuntarily regurgitate the swallowed creature on the next round (a single action)",
+				"When sprinkled around an area, cave worm repellent negates any chance of a random encounter with the particular type of cave worm in that area, as the creatures purposefully avoid the affected area.",
+				"Other types of repellent that function similarly to this one might exist at the GM's discretion. Uncommon or rare creatures are typically much harder to repel, and repellent against them might necessitate harvesting ingredients from the creatures themselves (such as the creature's liver or a certain gland)."
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"type": "purple worm repellent",
+					"level": 13,
+					"price": {
+						"coin": "gp",
+						"amount": 550,
+						"note": null
+					},
+					"entries": []
+				},
+				{
+					"type": "azure worm repellent",
+					"level": 15,
+					"price": {
+						"coin": "gp",
+						"amount": 1100,
+						"note": null
+					},
+					"craftReq": "The initial raw ingredients must include an azure worm's scale.",
+					"entries": []
+				},
+				{
+					"type": "crimson worm repellent",
+					"level": 18,
+					"price": {
+						"coin": "gp",
+						"amount": 4500,
+						"note": null
+					},
+					"craftReq": "The initial raw ingredients must include a crimson worm's liver.",
+					"entries": []
+				}
+			],
+			"consumable": true
+		},
+		{
+			"name": "Greengut",
+			"source": "EC5",
+			"page": 75,
+			"type": "Item",
+			"level": 17,
+			"traits": [
+				"Uncommon",
+				"Alchemical",
+				"Consumable",
+				"Poison"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 2500,
+				"note": null
+			},
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": "Interact",
+				"requirements": null,
+				"frequency": null,
+				"trigger": null
+			},
+			"category": "Poison",
+			"entries": [
+				"This watery, mint-green emetic of xulgath design is often carried in a delicate obsidian vial or other fragile container.",
+				"In the unfortunate circumstance that a creature has been Swallowed Whole by another creature, the swallowed creature can break open a vial of greengut to immediately induce vomiting. The swallower must succeed at a DC 40 Fortitude save or take {@damage 18d6} poison damage and possibly vomit the contents of its stomach.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "The creature is unaffected.",
+						"Success": "The creature takes half damage.",
+						"Failure": "The creature takes full damage, is {@condition sickened|CRB|sickened 1}, and vomits up any and all creatures Swallowed Whole on its next turn (a single action, which also allows it a Fortitude save against the {@condition sickened} condition), as well as any stones or other objects it swallowed.",
+						"Critical Failure": "As failure, but the creature takes double damage and is {@condition sickened|CRB|sickened 2}."
+					}
+				}
+			],
+			"generic": false,
+			"consumable": true
+		},
+		{
+			"name": "Heedless Spurs",
+			"source": "EC5",
+			"page": 76,
+			"type": "Item",
+			"level": 15,
 			"traits": [
 				"Rare",
 				"Abjuration",
 				"Magical"
 			],
-			"consumable": false,
-			"generic": false,
 			"price": {
 				"coin": "gp",
 				"amount": 5200,
@@ -275,6 +273,7 @@
 			},
 			"usage": "worn anklets",
 			"bulk": "L",
+			"category": "Worn",
 			"entries": [
 				"These wicked-looking spiked metal wheels fit around the ankles and jingle when the wearer walks, imposing a \u20131 item penalty on {@skill Stealth} checks. If used as a weapon, they are treated as a spiked gauntlet.",
 				{
@@ -294,22 +293,21 @@
 					]
 				}
 			],
-			"page": 76
+			"generic": false,
+			"consumable": false
 		},
 		{
-			"source": "EC5",
 			"name": "Life's Last Breath",
-			"level": 18,
+			"source": "EC5",
+			"page": 76,
 			"type": "Item",
-			"category": "Held",
+			"level": 18,
 			"traits": [
 				"Unique",
 				"Evil",
 				"Magical",
 				"Necromancy"
 			],
-			"consumable": false,
-			"generic": false,
 			"price": {
 				"coin": "gp",
 				"amount": 23500,
@@ -317,6 +315,7 @@
 			},
 			"usage": "held in 1 hand",
 			"bulk": "2",
+			"category": "Held",
 			"entries": [
 				"The twin serrated blades of this legendary rhoka sword (page 83) are dull black and constantly drip with blood.",
 				"Life's Last Breath is said to have been forged centuries ago for an unknown urdefhan general and has since fallen into the hands of countless other powerful urdefhan warlords.",
@@ -362,24 +361,24 @@
 					]
 				}
 			],
-			"page": 76
+			"generic": false,
+			"consumable": false
 		},
 		{
-			"source": "EC5",
 			"name": "Staff Of The Black Desert",
-			"level": "12+",
+			"source": "EC5",
+			"page": 76,
 			"type": "Item",
-			"category": "Staff",
+			"level": "12+",
 			"traits": [
 				"Uncommon",
 				"Divination",
 				"Magical",
 				"Staff"
 			],
-			"consumable": false,
-			"generic": "G",
 			"usage": "held in 1 hand",
 			"bulk": "1",
+			"category": "Staff",
 			"entries": [
 				"This rough metal staff is pitted and sandblasted, with thousands of nigh-imperceptible sand crystals embedded in its surface. While carrying the staff, you gain a +2 circumstance bonus to {@skill Occultism} checks to identify aberrations and oozes native to the Darklands.",
 				{
@@ -400,6 +399,8 @@
 					]
 				}
 			],
+			"craftReq": "Supply one casting of all listed levels of all listed spells.",
+			"generic": "G",
 			"variants": [
 				{
 					"type": "staff of the Black Desert",
@@ -426,8 +427,7 @@
 					]
 				}
 			],
-			"craftReq": "Supply one casting of all listed levels of all listed spells.",
-			"page": 76
+			"consumable": false
 		}
 	]
 }

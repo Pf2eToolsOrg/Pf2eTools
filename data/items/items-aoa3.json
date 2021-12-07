@@ -1,11 +1,11 @@
 {
 	"item": [
 		{
-			"source": "AoA3",
 			"name": "Addlebrain",
-			"level": 7,
+			"source": "AoA3",
+			"page": 71,
 			"type": "Item",
-			"category": "Poison",
+			"level": 7,
 			"traits": [
 				"Rare",
 				"Alchemical",
@@ -13,14 +13,13 @@
 				"Inhaled",
 				"Poison"
 			],
-			"consumable": true,
-			"generic": false,
 			"price": {
 				"coin": "gp",
 				"amount": 58,
 				"note": null
 			},
 			"usage": "held in 2 hands",
+			"bulk": "L",
 			"activate": {
 				"activity": {
 					"number": 1,
@@ -31,7 +30,7 @@
 				"frequency": null,
 				"trigger": null
 			},
-			"bulk": "L",
+			"category": "Poison",
 			"entries": [
 				"Certain Scarlet Triad poisoners use toxins like addlebrain to keep captured prisoners docile and compliant for short periods of time until they can be properly shackled and imprisoned.",
 				"Addlebrain is distilled from a hallucinogenic lichen that can often be found growing in the sewers below particularly large cities like Katapesh.",
@@ -63,22 +62,21 @@
 					]
 				}
 			],
-			"page": 71
+			"generic": false,
+			"consumable": true
 		},
 		{
-			"source": "AoA3",
 			"name": "Bellflower Toolbelt",
-			"level": 6,
+			"source": "AoA3",
+			"page": 71,
 			"type": "Item",
-			"category": "Worn",
+			"level": 6,
 			"traits": [
 				"Rare",
 				"Invested",
 				"Magical",
 				"Transmutation"
 			],
-			"consumable": false,
-			"generic": false,
 			"price": {
 				"coin": "gp",
 				"amount": 220,
@@ -86,6 +84,7 @@
 			},
 			"usage": "worn belt",
 			"bulk": "1",
+			"category": "Worn",
 			"entries": [
 				"Different versions of this belt are customized to appear to suit specific trades, so a belt used for carpentry would look somewhat different than a belt for baking.",
 				{
@@ -107,27 +106,27 @@
 					]
 				}
 			],
-			"page": 71
+			"generic": false,
+			"consumable": false
 		},
 		{
-			"source": "AoA3",
 			"name": "Bountiful Cauldron",
-			"level": 9,
+			"source": "AoA3",
+			"page": 71,
 			"type": "Item",
-			"category": "no category found",
+			"level": 9,
 			"traits": [
 				"Uncommon",
 				"Conjuration",
 				"Magical"
 			],
-			"consumable": false,
-			"generic": false,
 			"price": {
 				"coin": "gp",
 				"amount": 680,
 				"note": null
 			},
 			"bulk": "2",
+			"category": "no category found",
 			"entries": [
 				"This mid-sized, silver cauldron is a boon within areas where access to fresh food is limited, for it can be commanded to fill itself with hearty (and delicious) vegetable stew. It can also be put to a much greater use in the pursuit of crafting certain items.",
 				"When used to {@action Craft} alchemical items, potions, or oils, a bountiful cauldron grants a +2 item bonus to the {@skill Crafting} check.",
@@ -149,21 +148,50 @@
 					]
 				}
 			],
-			"page": 71
+			"generic": false,
+			"consumable": false
 		},
 		{
+			"name": "Cursed",
 			"source": "AoA3",
-			"name": "Dreamstone",
-			"level": 9,
+			"page": 71,
 			"type": "Item",
+			"level": 9,
+			"traits": [
+				"Rare",
+				"Cursed",
+				"Enchantment",
+				"Magical"
+			],
+			"usage": "held in 1 hand",
+			"bulk": "L",
 			"category": "Held",
+			"entries": [
+				"A dreamstone can become cursed if left exposed to creatures that corrupt sleep, generate nightmares, or otherwise prey on sleeping or dreaming victims via supernatural methods. A cursed dreamstone seems to function as a normal dreamstone until the bearer falls asleep or is forced to attempt a saving throw against a {@trait sleep} effect. At this point, the person carrying the cursed dreamstone must attempt a DC 26 Will save to resist the curse's effects.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "The character resists the curse entirely and experiences a vivid dream while sleeping that warms them of the nature of the cursed dreamstone.",
+						"Success": "The character resists the curse.",
+						"Failure": "As long as the cursed character possesses the stone, they are {@condition fatigued} whenever they wake from sleep, whether natural or magically induced, and they take a \u20132 item penalty to all saving throws against {@trait sleep} effects instead of gaining the normal bonus from a dreamstone.",
+						"Critical Failure": "As failure, and whenever the bearer attempts a saving throw against a {@trait sleep} effect, they get the outcome that is one degree worse than the result of their saving throw."
+					}
+				}
+			],
+			"generic": false,
+			"consumable": false
+		},
+		{
+			"name": "Dreamstone",
+			"source": "AoA3",
+			"page": 71,
+			"type": "Item",
+			"level": 9,
 			"traits": [
 				"Uncommon",
 				"Enchantment",
 				"Magical"
 			],
-			"consumable": false,
-			"generic": false,
 			"price": {
 				"coin": "gp",
 				"amount": 700,
@@ -171,6 +199,7 @@
 			},
 			"usage": "held in 1 hand",
 			"bulk": "L",
+			"category": "Held",
 			"entries": [
 				"A dreamstone is a disc-shaped object carved with imagery or words sacred to {@deity Desna}\u2014be it her religious symbol, a short prayer, or merely the shape of a single star. When you carry a dreamstone, you find it easier to fall asleep, and you gain improved effects from the resulting rest. You always fall asleep within 5 minutes of lying down with the intention of sleeping, and you require only 2 hours of sleep per day to gain the benefits of 8 hours of sleep, provided you have carried the dreamstone for at least 24 hours prior to resting. As long as you carry a dreamstone, you gain a +2 item bonus to saving throws against {@trait sleep} effects.",
 				{
@@ -190,54 +219,24 @@
 					]
 				}
 			],
-			"page": 71
-		},
-		{
-			"source": "AoA3",
-			"name": "Cursed",
-			"level": 9,
-			"type": "Item",
-			"category": "Held",
-			"traits": [
-				"Rare",
-				"Cursed",
-				"Enchantment",
-				"Magical"
-			],
-			"consumable": false,
 			"generic": false,
-			"usage": "held in 1 hand",
-			"bulk": "L",
-			"entries": [
-				"A dreamstone can become cursed if left exposed to creatures that corrupt sleep, generate nightmares, or otherwise prey on sleeping or dreaming victims via supernatural methods. A cursed dreamstone seems to function as a normal dreamstone until the bearer falls asleep or is forced to attempt a saving throw against a {@trait sleep} effect. At this point, the person carrying the cursed dreamstone must attempt a DC 26 Will save to resist the curse's effects.",
-				{
-					"type": "successDegree",
-					"entries": {
-						"Critical Success": "The character resists the curse entirely and experiences a vivid dream while sleeping that warms them of the nature of the cursed dreamstone.",
-						"Success": "The character resists the curse.",
-						"Failure": "As long as the cursed character possesses the stone, they are {@condition fatigued} whenever they wake from sleep, whether natural or magically induced, and they take a \u20132 item penalty to all saving throws against {@trait sleep} effects instead of gaining the normal bonus from a dreamstone.",
-						"Critical Failure": "As failure, and whenever the bearer attempts a saving throw against a {@trait sleep} effect, they get the outcome that is one degree worse than the result of their saving throw."
-					}
-				}
-			],
-			"page": 71
+			"consumable": false
 		},
 		{
-			"source": "AoA3",
 			"name": "Eye Of The Wise",
-			"level": 11,
+			"source": "AoA3",
+			"page": 72,
 			"type": "Item",
-			"category": "Artifact",
+			"level": 11,
 			"traits": [
 				"Unique",
 				"Artifact",
 				"Divination",
 				"Invested"
 			],
-			"consumable": false,
-			"generic": false,
 			"usage": "held in 1 hand",
 			"bulk": "L",
+			"category": "Artifact",
 			"entries": [
 				"This fist-sized, 12-rayed black star sapphire is sacred to Yueral, the elven goddess of magic and jewels, and most accounts of its creation attribute its crafting to a circle of her worshippers. In addition to the abilities listed below, the gem functions as a portal key for Jewelgate at {@deity Alseta|LOGM}'s Ring.",
 				{
@@ -274,14 +273,15 @@
 					]
 				}
 			],
-			"page": 72
+			"generic": false,
+			"consumable": false
 		},
 		{
-			"source": "AoA3",
 			"name": "Gourd Home",
-			"level": 9,
+			"source": "AoA3",
+			"page": 72,
 			"type": "Item",
-			"category": "Structure",
+			"level": 9,
 			"traits": [
 				"Rare",
 				"Conjuration",
@@ -289,14 +289,13 @@
 				"Magical",
 				"Structure"
 			],
-			"consumable": false,
-			"generic": false,
 			"price": {
 				"coin": "gp",
 				"amount": 650,
 				"note": null
 			},
 			"bulk": "L (when not activated)",
+			"category": "Structure",
 			"entries": [
 				"This dried gourd seems entirely nondescript, as it is hollow and has a sturdy cord wrapped around its neck for easy carrying. Closer inspection reveals the gourd has grown in the rough shape of a hut or similar small dwelling.",
 				{
@@ -334,7 +333,8 @@
 					]
 				}
 			],
-			"page": 72
+			"generic": false,
+			"consumable": false
 		}
 	]
 }

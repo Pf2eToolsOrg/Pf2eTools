@@ -1,18 +1,16 @@
 {
 	"item": [
 		{
-			"source": "AV2",
 			"name": "Cooperative Blade",
-			"level": 6,
+			"source": "AV2",
+			"page": 71,
 			"type": "Item",
-			"category": "Held",
+			"level": 6,
 			"traits": [
 				"Unique",
 				"Divination",
 				"Magical"
 			],
-			"consumable": false,
-			"generic": false,
 			"price": {
 				"coin": "gp",
 				"amount": 250,
@@ -20,103 +18,44 @@
 			},
 			"usage": "held in 1 hand",
 			"bulk": "1",
+			"category": "Held",
 			"entries": [
 				"This +1 striking longsword has a mirror-like blade free of tarnish despite being millennia old. While wielding it, you gain a +2 item bonus to checks to {@action Aid}. If you're an expert with the skill or attack roll you're using to {@action Aid} and you critically succeed, you grant your ally a +3 circumstance bonus to the triggering check instead of a +2 bonus."
 			],
-			"page": 71
+			"generic": false,
+			"consumable": false
 		},
 		{
+			"name": "Devil's Luck",
 			"source": "AV2",
-			"name": "Hunter's Brooch",
-			"level": 4,
+			"page": 74,
 			"type": "Item",
-			"category": "Worn",
+			"level": 3,
 			"traits": [
-				"Unique",
-				"Divine",
+				"Rare",
+				"Contract",
+				"Enchantment",
+				"Fortune",
 				"Invested",
-				"Positive",
-				"Transmutation"
+				"Magical"
 			],
-			"consumable": false,
-			"generic": false,
-			"price": {
-				"coin": "gp",
-				"amount": 80,
-				"note": null
-			},
-			"usage": "worn",
-			"bulk": "L",
-			"entries": [
-				"While wearing this silver religious symbol of {@deity Erastil}, you can cast the {@spell disrupt undead} cantrip as an innate divine spell.",
-				{
-					"type": "activation",
-					"activity": {
-						"number": 3,
-						"unit": "action"
-					},
-					"components": [
-						"command",
-						"Interact"
-					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
-					"effect": [
-						"By touching a weapon you wield to the symbol and uttering a plea for {@deity Erastil}'s steadying hand, you grant that weapon the deadly d12 trait. Against undead, the weapon instead gains the fatal d12 trait. This blessing lasts for 1 minute, until you score a critical hit with the weapon, or until you aren't wielding the weapon."
-					]
-				}
-			],
-			"page": 71
-		},
-		{
-			"source": "AV2",
-			"name": "Folding Drums",
-			"level": 5,
-			"type": "Item",
 			"category": "no category found",
-			"traits": [
-				"Uncommon",
-				"Magical",
-				"Transmutation"
-			],
-			"consumable": false,
-			"generic": false,
-			"price": {
-				"coin": "gp",
-				"amount": 160,
-				"note": null
-			},
-			"usage": "varies (see text)",
-			"bulk": "varies (see text)",
 			"entries": [
-				"You can unfold this virtuoso percussion instrument into a hand drum (1 Bulk), a marching drum set with a shoulder harness and back brace (3 Bulk), or a large standing drum set with a built-in stool (16 Bulk). Changing the folding drum's size is a 3-action {@action Interact} activity, and the drums must have sufficient open space to accommodate their new size.",
-				{
-					"type": "activation",
-					"activity": {
-						"number": 1,
-						"unit": "varies",
-						"entry": "{@as 1} {@action Interact} (concentrate) Frequency"
-					},
-					"components": [
-						"once per hour"
-					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
-					"effect": [
-						"You play a pounding rhythm on the drum. If the next action you use is to cast a composition cantrip that has an emanation, increase the area of the emanation by 30 feet."
-					]
-				}
+				"Devil imp; {@action Decipher Writing} {@skill Arcana}, {@skill Occultism}, {@skill Society} You've bargained with an imp, one of the least powerful devils, for a fragment of infernal luck.",
+				"Benefit Once per day, you can roll a saving throw twice and use the higher result.",
+				"Payment At the termination of your mortal life, your soul must serve the imp for 100 years.",
+				"{@condition Hidden} Condition The \"termination of mortal life\" clause is carefully worded to hasten your demise. You can't use the benefit against a {@trait death} effect, and if you roll a failure on a saving throw against a {@trait death} effect, you get a critical failure instead.",
+				"Termination Clause If you critically fail a saving throw against a {@trait death} effect and do not die, the contract becomes unenforceable on its terms and is voided."
 			],
-			"page": 72
+			"generic": false,
+			"consumable": false
 		},
 		{
-			"source": "AV2",
 			"name": "Drover's Band",
-			"level": 7,
+			"source": "AV2",
+			"page": 72,
 			"type": "Item",
-			"category": "Worn",
+			"level": 7,
 			"traits": [
 				"Rare",
 				"Enchantment",
@@ -124,8 +63,6 @@
 				"Invested",
 				"Magical"
 			],
-			"consumable": false,
-			"generic": false,
 			"price": {
 				"coin": "gp",
 				"amount": 675,
@@ -133,6 +70,7 @@
 			},
 			"usage": "worn bracers",
 			"bulk": "L",
+			"category": "Worn",
 			"entries": [
 				"This black leather wrist guard has a bright red gem on the inside of the wrist. Faint glyphs and words of domination in Infernal swim inside the gem. Your words become harsh and clipped when you have this magic item invested.",
 				{
@@ -161,14 +99,101 @@
 					]
 				}
 			],
-			"page": 72
+			"generic": false,
+			"consumable": false
 		},
 		{
+			"name": "Folding Drums",
 			"source": "AV2",
-			"name": "Ichthyosis Mutagen",
-			"level": 5,
+			"page": 72,
 			"type": "Item",
-			"category": "Elixir",
+			"level": 5,
+			"traits": [
+				"Uncommon",
+				"Magical",
+				"Transmutation"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 160,
+				"note": null
+			},
+			"usage": "varies (see text)",
+			"bulk": "varies (see text)",
+			"category": "no category found",
+			"entries": [
+				"You can unfold this virtuoso percussion instrument into a hand drum (1 Bulk), a marching drum set with a shoulder harness and back brace (3 Bulk), or a large standing drum set with a built-in stool (16 Bulk). Changing the folding drum's size is a 3-action {@action Interact} activity, and the drums must have sufficient open space to accommodate their new size.",
+				{
+					"type": "activation",
+					"activity": {
+						"number": 1,
+						"unit": "varies",
+						"entry": "{@as 1} {@action Interact} (concentrate) Frequency"
+					},
+					"components": [
+						"once per hour"
+					],
+					"frequency": null,
+					"trigger": null,
+					"requirements": null,
+					"effect": [
+						"You play a pounding rhythm on the drum. If the next action you use is to cast a composition cantrip that has an emanation, increase the area of the emanation by 30 feet."
+					]
+				}
+			],
+			"generic": false,
+			"consumable": false
+		},
+		{
+			"name": "Hunter's Brooch",
+			"source": "AV2",
+			"page": 71,
+			"type": "Item",
+			"level": 4,
+			"traits": [
+				"Unique",
+				"Divine",
+				"Invested",
+				"Positive",
+				"Transmutation"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 80,
+				"note": null
+			},
+			"usage": "worn",
+			"bulk": "L",
+			"category": "Worn",
+			"entries": [
+				"While wearing this silver religious symbol of {@deity Erastil}, you can cast the {@spell disrupt undead} cantrip as an innate divine spell.",
+				{
+					"type": "activation",
+					"activity": {
+						"number": 3,
+						"unit": "action"
+					},
+					"components": [
+						"command",
+						"Interact"
+					],
+					"frequency": null,
+					"trigger": null,
+					"requirements": null,
+					"effect": [
+						"By touching a weapon you wield to the symbol and uttering a plea for {@deity Erastil}'s steadying hand, you grant that weapon the deadly d12 trait. Against undead, the weapon instead gains the fatal d12 trait. This blessing lasts for 1 minute, until you score a critical hit with the weapon, or until you aren't wielding the weapon."
+					]
+				}
+			],
+			"generic": false,
+			"consumable": false
+		},
+		{
+			"name": "Ichthyosis Mutagen",
+			"source": "AV2",
+			"page": 72,
+			"type": "Item",
+			"level": 5,
 			"traits": [
 				"Rare",
 				"Alchemical",
@@ -177,14 +202,13 @@
 				"Mutagen",
 				"Polymorph"
 			],
-			"consumable": true,
-			"generic": false,
 			"price": {
 				"coin": "gp",
 				"amount": 24,
 				"note": null
 			},
 			"usage": "held in 1 hand",
+			"bulk": "L",
 			"activate": {
 				"activity": {
 					"number": 1,
@@ -195,21 +219,96 @@
 				"frequency": null,
 				"trigger": null
 			},
-			"bulk": "L",
+			"category": "Elixir",
 			"entries": [
 				"After you drink this mutagen, your skin continually renews itself, thickening into large, scaly patches.",
 				"Benefit For 1 minute, you gain fast healing 2 and automatically succeed at flat checks to recover from {@condition persistent damage ||persistent bleed damage}.",
 				"Drawback Your thickened skin makes quick movement difficult, and your excess skin flakes off with the slightest movement.",
 				"You take a \u20132 penalty to Reflex saves for 1 minute. Any creature attempting to {@action Track} you in the next 24 hours gains a +4 circumstance bonus to their check."
 			],
-			"page": 72
+			"generic": false,
+			"consumable": true
 		},
 		{
+			"name": "Icy Disposition",
 			"source": "AV2",
-			"name": "Sloughing Toxin",
-			"level": 7,
+			"page": 75,
 			"type": "Item",
-			"category": "Poison",
+			"level": 11,
+			"traits": [
+				"Rare",
+				"Abjuration",
+				"Contract",
+				"Invested",
+				"Magical"
+			],
+			"category": "no category found",
+			"entries": [
+				"Devil gelugon; {@action Decipher Writing} {@skill Nature}, {@skill Lore||Games Lore} Your flesh looks no different, but is cold to the touch.",
+				"Benefit You gain cold resistance equal to your level and a +1 status bonus to saving throws against {@trait mental} effects.",
+				"Payment Liquids in your possession, including potions and liquid alchemical items, freeze over the course of 1 minute and thaw 1 minute after they leave your possession.",
+				"Frozen potions and elixirs take 1 minute to consume.",
+				"{@condition Hidden} Condition (conjuration, teleportation) No more than once per week, the gelugon can move you like a piece on a game board to advance its schemes. The gelugon can appear and transport you and any items you're wearing and holding from your current space to a clear space within 500 feet (the gelugon need not see this location, but must know its relative location and distance from you). This effect doesn't transport any other creatures.",
+				"The gelugon is unlikely to place you in a less dangerous space than the one you left.",
+				"Termination Clause The contract provides you the benefits of \"the eternal ice of Cocytus.\" If you travel to Cocytus, Hell's seventh layer, and stand within an area at least 100 feet across that contains no ice and has a temperature above freezing, the contract is void. Such locations are exceptionally rare in Cocytus, and the efforts to create such an area are likely to attract unpleasant attention."
+			],
+			"generic": false,
+			"consumable": false
+		},
+		{
+			"name": "Pact Of Blood-taking",
+			"source": "AV2",
+			"page": 75,
+			"type": "Item",
+			"level": 5,
+			"traits": [
+				"Rare",
+				"Contract",
+				"Invested",
+				"Magical",
+				"Necromancy"
+			],
+			"category": "no category found",
+			"entries": [
+				"Devil barbazu; {@action Decipher Writing} {@skill Society}, {@skill Lore||Warfare Lore} You negotiate for might and viciousness.",
+				"Benefit Your successful Strikes with slashing and piercing melee weapons deal 1 {@condition persistent damage ||persistent bleed damage}. On a critical success, this {@condition persistent damage ||persistent bleed damage} is equal to half your level.",
+				"Payment You regain half the normal number of Hit Points from resting (including Hit Points gained from long-term rest) and from any application of the {@skill Medicine} skill.",
+				"{@condition Hidden} Condition The barbazu owns any weapons you find. No more often than once per month, the barbazu can demand a single weapon of its choice (often the best weapon in your possession). You are compelled to hand over the weapon immediately, without question.",
+				"Termination Clause The contract guarantees that you will not \"be slain by the barbazu or by barbazu action.\" This wording is vague; if any barbazu kills you, or if you die from {@condition persistent damage ||persistent bleed damage} from any source, the contract is voided."
+			],
+			"generic": false,
+			"consumable": false
+		},
+		{
+			"name": "Right Of Retribution",
+			"source": "AV2",
+			"page": 75,
+			"type": "Item",
+			"level": 8,
+			"traits": [
+				"Rare",
+				"Contract",
+				"Enchantment",
+				"Invested",
+				"Magical"
+			],
+			"category": "no category found",
+			"entries": [
+				"Devil erinys; {@action Decipher Writing} {@skill Nature}, {@skill Religion} Profane powers of vengeance are yours to inflict.",
+				"Benefit When a creature deals damage to you, you can call out for retribution as a reaction. Until the end of your next turn, you gain a +1 status bonus to attack rolls against that creature.",
+				"Payment If you wound a creature, it is your duty to kill it. If a creature survives for 24 hours after you deal it damage, you are {@condition doomed|CRB|doomed 1}. If you already have the {@condition doomed} condition, it increases by 1.",
+				"{@condition Hidden} Condition No more than once per year, the erinys can compel you to attack a creature of the erinys's choice that you can see. You are {@condition controlled} by the erinys and must fight the chosen creature for 1 minute.",
+				"Termination Clause The contract demands that you enact bloody vengeance against anyone who has ever wronged you, but the nature of the vengeance is vague. You can end the contract by creating effigies of everyone you believe has ever wronged you, bleeding upon them all at once (at least 1 Hit Point per effigy), and destroying them."
+			],
+			"generic": false,
+			"consumable": false
+		},
+		{
+			"name": "Sloughing Toxin",
+			"source": "AV2",
+			"page": 72,
+			"type": "Item",
+			"level": 7,
 			"traits": [
 				"Rare",
 				"Alchemical",
@@ -217,14 +316,13 @@
 				"Injury",
 				"Poison"
 			],
-			"consumable": true,
-			"generic": false,
 			"price": {
 				"coin": "gp",
 				"amount": 60,
 				"note": null
 			},
 			"usage": "held in 2 hands",
+			"bulk": "L",
 			"activate": {
 				"activity": {
 					"number": 2,
@@ -235,7 +333,7 @@
 				"frequency": null,
 				"trigger": null
 			},
-			"bulk": "L",
+			"category": "Poison",
 			"entries": [
 				"This complex toxin makes the muscles beneath a creature's skin loose and malleable, which fleshwarpers find useful in their work. Rough or jerky movements the victim performs concentrate the toxin in subdermal muscles and eventually cause skin and muscle to slough away.",
 				{
@@ -265,106 +363,8 @@
 					]
 				}
 			],
-			"page": 72
-		},
-		{
-			"source": "AV2",
-			"name": "Devil's Luck",
-			"level": 3,
-			"type": "Item",
-			"category": "no category found",
-			"traits": [
-				"Rare",
-				"Contract",
-				"Enchantment",
-				"Fortune",
-				"Invested",
-				"Magical"
-			],
-			"consumable": false,
 			"generic": false,
-			"entries": [
-				"Devil imp; {@action Decipher Writing} {@skill Arcana}, {@skill Occultism}, {@skill Society} You've bargained with an imp, one of the least powerful devils, for a fragment of infernal luck.",
-				"Benefit Once per day, you can roll a saving throw twice and use the higher result.",
-				"Payment At the termination of your mortal life, your soul must serve the imp for 100 years.",
-				"{@condition Hidden} Condition The \"termination of mortal life\" clause is carefully worded to hasten your demise. You can't use the benefit against a {@trait death} effect, and if you roll a failure on a saving throw against a {@trait death} effect, you get a critical failure instead.",
-				"Termination Clause If you critically fail a saving throw against a {@trait death} effect and do not die, the contract becomes unenforceable on its terms and is voided."
-			],
-			"page": 74
-		},
-		{
-			"source": "AV2",
-			"name": "Pact Of Blood-taking",
-			"level": 5,
-			"type": "Item",
-			"category": "no category found",
-			"traits": [
-				"Rare",
-				"Contract",
-				"Invested",
-				"Magical",
-				"Necromancy"
-			],
-			"consumable": false,
-			"generic": false,
-			"entries": [
-				"Devil barbazu; {@action Decipher Writing} {@skill Society}, {@skill Lore||Warfare Lore} You negotiate for might and viciousness.",
-				"Benefit Your successful Strikes with slashing and piercing melee weapons deal 1 {@condition persistent damage ||persistent bleed damage}. On a critical success, this {@condition persistent damage ||persistent bleed damage} is equal to half your level.",
-				"Payment You regain half the normal number of Hit Points from resting (including Hit Points gained from long-term rest) and from any application of the {@skill Medicine} skill.",
-				"{@condition Hidden} Condition The barbazu owns any weapons you find. No more often than once per month, the barbazu can demand a single weapon of its choice (often the best weapon in your possession). You are compelled to hand over the weapon immediately, without question.",
-				"Termination Clause The contract guarantees that you will not \"be slain by the barbazu or by barbazu action.\" This wording is vague; if any barbazu kills you, or if you die from {@condition persistent damage ||persistent bleed damage} from any source, the contract is voided."
-			],
-			"page": 75
-		},
-		{
-			"source": "AV2",
-			"name": "Right Of Retribution",
-			"level": 8,
-			"type": "Item",
-			"category": "no category found",
-			"traits": [
-				"Rare",
-				"Contract",
-				"Enchantment",
-				"Invested",
-				"Magical"
-			],
-			"consumable": false,
-			"generic": false,
-			"entries": [
-				"Devil erinys; {@action Decipher Writing} {@skill Nature}, {@skill Religion} Profane powers of vengeance are yours to inflict.",
-				"Benefit When a creature deals damage to you, you can call out for retribution as a reaction. Until the end of your next turn, you gain a +1 status bonus to attack rolls against that creature.",
-				"Payment If you wound a creature, it is your duty to kill it. If a creature survives for 24 hours after you deal it damage, you are {@condition doomed|CRB|doomed 1}. If you already have the {@condition doomed} condition, it increases by 1.",
-				"{@condition Hidden} Condition No more than once per year, the erinys can compel you to attack a creature of the erinys's choice that you can see. You are {@condition controlled} by the erinys and must fight the chosen creature for 1 minute.",
-				"Termination Clause The contract demands that you enact bloody vengeance against anyone who has ever wronged you, but the nature of the vengeance is vague. You can end the contract by creating effigies of everyone you believe has ever wronged you, bleeding upon them all at once (at least 1 Hit Point per effigy), and destroying them."
-			],
-			"page": 75
-		},
-		{
-			"source": "AV2",
-			"name": "Icy Disposition",
-			"level": 11,
-			"type": "Item",
-			"category": "no category found",
-			"traits": [
-				"Rare",
-				"Abjuration",
-				"Contract",
-				"Invested",
-				"Magical"
-			],
-			"consumable": false,
-			"generic": false,
-			"entries": [
-				"Devil gelugon; {@action Decipher Writing} {@skill Nature}, {@skill Lore||Games Lore} Your flesh looks no different, but is cold to the touch.",
-				"Benefit You gain cold resistance equal to your level and a +1 status bonus to saving throws against {@trait mental} effects.",
-				"Payment Liquids in your possession, including potions and liquid alchemical items, freeze over the course of 1 minute and thaw 1 minute after they leave your possession.",
-				"Frozen potions and elixirs take 1 minute to consume.",
-				"{@condition Hidden} Condition (conjuration, teleportation) No more than once per week, the gelugon can move you like a piece on a game board to advance its schemes. The gelugon can appear and transport you and any items you're wearing and holding from your current space to a clear space within 500 feet (the gelugon need not see this location, but must know its relative location and distance from you). This effect doesn't transport any other creatures.",
-				"The gelugon is unlikely to place you in a less dangerous space than the one you left.",
-				"Termination Clause The contract provides you the benefits of \"the eternal ice of Cocytus.\" If you travel to Cocytus, Hell's seventh layer, and stand within an area at least 100 feet across that contains no ice and has a temperature above freezing, the contract is void. Such locations are exceptionally rare in Cocytus, and the efforts to create such an area are likely to attract unpleasant attention."
-			],
-			"page": 75
+			"consumable": true
 		}
 	]
 }

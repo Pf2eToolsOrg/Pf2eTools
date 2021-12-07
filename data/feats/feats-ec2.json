@@ -1,36 +1,33 @@
 {
 	"feat": [
 		{
-			"source": "EC2",
 			"name": "Animal Trainer Dedication",
+			"source": "EC2",
+			"page": 75,
 			"level": 2,
+			"featType": {
+				"class": false,
+				"general": false,
+				"ancestry": false,
+				"skill": false,
+				"archetype": true
+			},
 			"traits": [
 				"Uncommon",
 				"Archetype",
 				"Dedication"
 			],
-			"featType": {
-				"class": false,
-				"general": false,
-				"ancestry": false,
-				"skill": false,
-				"archetype": true
-			},
 			"prerequisites": "Trained in {@skill Nature}",
 			"entries": [
 				"You gain the services of a young animal companion that travels with you and obeys simple commands as best as it can (Core Rulebook 214). This trained animal is trained in {@skill Performance} instead of the skill listed for its type."
 			],
-			"special": "You can't select another dedication feat until you've gained two other feats from the animal trainer archetype.",
-			"page": 75
+			"special": "You can't select another dedication feat until you've gained two other feats from the animal trainer archetype."
 		},
 		{
-			"source": "EC2",
 			"name": "Beast Speaker",
+			"source": "EC2",
+			"page": 75,
 			"level": 4,
-			"traits": [
-				"Uncommon",
-				"Archetype"
-			],
 			"featType": {
 				"class": false,
 				"general": false,
@@ -38,42 +35,20 @@
 				"skill": false,
 				"archetype": true
 			},
+			"traits": [
+				"Uncommon",
+				"Archetype"
+			],
 			"prerequisites": "Animal Trainer Dedication",
 			"entries": [
 				"You constantly have the effects of {@spell speak with animals} as a 2nd-level innate primal spell. You gain a +2 circumstance bonus to {@skill Diplomacy} checks to Make a {@action Request} of animals while this spell is active."
-			],
-			"page": 75
+			]
 		},
 		{
-			"source": "EC2",
-			"name": "Mature Trained Companion",
-			"level": 6,
-			"traits": [
-				"Uncommon",
-				"Archetype"
-			],
-			"featType": {
-				"class": false,
-				"general": false,
-				"ancestry": false,
-				"skill": false,
-				"archetype": true
-			},
-			"prerequisites": "Animal Trainer Dedication",
-			"entries": [
-				"Your animal companion grows up, becoming a mature animal companion. Increase its proficiency rank in {@skill Performance} to expert instead of one of the three skill increases for mature. It gains the Mesmerizing {@skill Performance} advanced maneuver (see below), rather than the normal advanced maneuver for its type."
-			],
-			"page": 75
-		},
-		{
-			"source": "EC2",
 			"name": "Insistent Command",
+			"source": "EC2",
+			"page": 75,
 			"level": 8,
-			"traits": [
-				"Uncommon",
-				"Archetype",
-				"Skill"
-			],
 			"featType": {
 				"class": false,
 				"general": false,
@@ -83,20 +58,21 @@
 				],
 				"archetype": true
 			},
+			"traits": [
+				"Uncommon",
+				"Archetype",
+				"Skill"
+			],
 			"prerequisites": "Master in {@skill Nature}, Animal Trainer Dedication",
 			"entries": [
 				"When you roll a success to {@action Command an Animal}, you get a critical success; if you roll a critical failure, you get a failure."
-			],
-			"page": 75
+			]
 		},
 		{
+			"name": "Mature Trained Companion",
 			"source": "EC2",
-			"name": "Splendid Companion",
-			"level": 12,
-			"traits": [
-				"Uncommon",
-				"Archetype"
-			],
+			"page": 75,
+			"level": 6,
 			"featType": {
 				"class": false,
 				"general": false,
@@ -104,20 +80,20 @@
 				"skill": false,
 				"archetype": true
 			},
-			"prerequisites": "Mature Trained Companion",
+			"traits": [
+				"Uncommon",
+				"Archetype"
+			],
+			"prerequisites": "Animal Trainer Dedication",
 			"entries": [
-				"Your animal companion continues to develop. It becomes a nimble or savage animal companion (your choice), gaining abilities determined by its type. Increase its proficiency rank in {@skill Performance} to master instead of {@skill Athletics} or {@skill Acrobatics}."
-			],
-			"page": 75
+				"Your animal companion grows up, becoming a mature animal companion. Increase its proficiency rank in {@skill Performance} to expert instead of one of the three skill increases for mature. It gains the Mesmerizing {@skill Performance} advanced maneuver (see below), rather than the normal advanced maneuver for its type."
+			]
 		},
 		{
-			"source": "EC2",
 			"name": "Specialized Companion",
+			"source": "EC2",
+			"page": 75,
 			"level": 18,
-			"traits": [
-				"Uncommon",
-				"Archetype"
-			],
 			"featType": {
 				"class": false,
 				"general": false,
@@ -125,11 +101,35 @@
 				"skill": false,
 				"archetype": true
 			},
+			"traits": [
+				"Uncommon",
+				"Archetype"
+			],
 			"prerequisites": "Splendid Companion",
 			"entries": [
 				"The animal companion you gain from the Animal Trainer Dedication feat gains one specialization of your choice (Core Rulebook 217). Increase its proficiency rank in {@skill Performance} to legendary instead of one of the specialization's skill increases."
+			]
+		},
+		{
+			"name": "Splendid Companion",
+			"source": "EC2",
+			"page": 75,
+			"level": 12,
+			"featType": {
+				"class": false,
+				"general": false,
+				"ancestry": false,
+				"skill": false,
+				"archetype": true
+			},
+			"traits": [
+				"Uncommon",
+				"Archetype"
 			],
-			"page": 75
+			"prerequisites": "Mature Trained Companion",
+			"entries": [
+				"Your animal companion continues to develop. It becomes a nimble or savage animal companion (your choice), gaining abilities determined by its type. Increase its proficiency rank in {@skill Performance} to master instead of {@skill Athletics} or {@skill Acrobatics}."
+			]
 		}
 	]
 }

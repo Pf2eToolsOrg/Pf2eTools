@@ -1,22 +1,12 @@
 {
 	"spell": [
 		{
-			"source": "EC2",
 			"name": "Clownish Curse",
-			"level": 4,
-			"traditions": [
-				"Arcane",
-				"Occult"
-			],
-			"school": "E",
+			"source": "EC2",
+			"page": 77,
 			"type": "SPELL",
 			"focus": false,
-			"components": {
-				"F": false,
-				"M": false,
-				"S": true,
-				"V": true
-			},
+			"level": 4,
 			"traits": [
 				"Uncommon",
 				"Attack",
@@ -25,6 +15,42 @@
 				"Mental",
 				"Misfortune"
 			],
+			"school": "E",
+			"traditions": [
+				"Arcane",
+				"Occult"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": {
+				"F": false,
+				"M": false,
+				"S": true,
+				"V": true
+			},
+			"range": {
+				"type": "point",
+				"entry": "touch",
+				"distance": {
+					"type": "touch",
+					"amount": 1
+				}
+			},
+			"targets": "1 creature",
+			"savingThrow": "Will",
+			"savingThrowBasic": false,
+			"duration": {
+				"type": "timed",
+				"entry": "varies",
+				"duration": {
+					"number": 1,
+					"unit": "special"
+				}
+			},
+			"sustain": false,
+			"dismiss": false,
 			"entries": [
 				"You afflict the target with a curse that causes it to emit ridiculous noises as it moves. Furthermore, the target's hands and feet become awkward and uncoordinated, as though it were wearing oversized gloves and shoes.",
 				{
@@ -37,9 +63,40 @@
 					}
 				}
 			],
+			"heightened": {
+				"heightened": false,
+				"plus_x": null,
+				"x": null,
+				"no_x": null
+			}
+		},
+		{
+			"name": "Favorable Review",
+			"source": "EC2",
+			"page": 77,
+			"type": "SPELL",
+			"focus": false,
+			"level": 4,
+			"traits": [
+				"Uncommon",
+				"Enchantment",
+				"Incapacitation",
+				"Mental"
+			],
+			"school": "E",
+			"traditions": [
+				"Arcane",
+				"Occult"
+			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
+			},
+			"components": {
+				"F": false,
+				"M": false,
+				"S": true,
+				"V": true
 			},
 			"range": {
 				"type": "point",
@@ -50,6 +107,8 @@
 				}
 			},
 			"targets": "1 creature",
+			"savingThrow": "Will",
+			"savingThrowBasic": false,
 			"duration": {
 				"type": "timed",
 				"entry": "varies",
@@ -58,41 +117,8 @@
 					"unit": "special"
 				}
 			},
-			"savingThrow": "Will",
-			"savingThrowBasic": false,
-			"heightened": {
-				"heightened": false,
-				"plus_x": null,
-				"x": null,
-				"no_x": null
-			},
-			"dismiss": false,
 			"sustain": false,
-			"page": 77
-		},
-		{
-			"source": "EC2",
-			"name": "Favorable Review",
-			"level": 4,
-			"traditions": [
-				"Arcane",
-				"Occult"
-			],
-			"school": "E",
-			"type": "SPELL",
-			"focus": false,
-			"components": {
-				"F": false,
-				"M": false,
-				"S": true,
-				"V": true
-			},
-			"traits": [
-				"Uncommon",
-				"Enchantment",
-				"Incapacitation",
-				"Mental"
-			],
+			"dismiss": true,
 			"entries": [
 				"You enchant a creature to ensure they have only good things to say about your show. Identify a single creature, location, or performance, such as \"Dame Ellendia,\" \"Savories Meats,\" or \"the Theater of the Mind's latest magic show.\" The target must attempt Will save. You can {@action Dismiss} the spell.",
 				{
@@ -105,29 +131,6 @@
 					}
 				}
 			],
-			"cast": {
-				"number": 2,
-				"unit": "action"
-			},
-			"range": {
-				"type": "point",
-				"entry": "touch",
-				"distance": {
-					"type": "touch",
-					"amount": 1
-				}
-			},
-			"targets": "1 creature",
-			"duration": {
-				"type": "timed",
-				"entry": "varies",
-				"duration": {
-					"number": 1,
-					"unit": "special"
-				}
-			},
-			"savingThrow": "Will",
-			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": true,
 				"plus_x": null,
@@ -138,33 +141,114 @@
 					}
 				],
 				"no_x": null
-			},
-			"dismiss": true,
-			"sustain": false,
-			"page": 77
+			}
 		},
 		{
+			"name": "Pillar Of Water",
 			"source": "EC2",
-			"name": "Pyrotechnics",
+			"page": 77,
+			"type": "SPELL",
+			"focus": false,
 			"level": 3,
+			"traits": [
+				"Uncommon",
+				"Evocation",
+				"Water"
+			],
+			"school": "V",
+			"traditions": [
+				"Arcane",
+				"Primal"
+			],
+			"cast": {
+				"number": 3,
+				"unit": "action"
+			},
+			"components": {
+				"F": false,
+				"M": true,
+				"S": true,
+				"V": true
+			},
+			"range": {
+				"type": "point",
+				"entry": "120 feet",
+				"distance": {
+					"type": "feet",
+					"amount": 120
+				}
+			},
+			"savingThrowBasic": false,
+			"duration": {
+				"type": "timed",
+				"entry": "1 minute",
+				"duration": {
+					"number": 1,
+					"unit": "minute"
+				}
+			},
+			"sustain": false,
+			"dismiss": false,
+			"entries": [
+				"You create a large, self-contained cylinder of still fresh water.",
+				"The pillar has a maximum radius of 15 feet and a maximum height of 60 feet. Creatures inside the pillar can swim through the water as normal ({@action Swim} DC 10), or, if the spell was cast on solid ground, walk along the bottom (which is difficult terrain)",
+				"Any creature that exits the pillar falls or lands accordingly."
+			],
+			"heightened": {
+				"heightened": false,
+				"plus_x": null,
+				"x": null,
+				"no_x": null
+			}
+		},
+		{
+			"name": "Pyrotechnics",
+			"source": "EC2",
+			"page": 77,
+			"type": "SPELL",
+			"focus": false,
+			"level": 3,
+			"traits": [
+				"Uncommon",
+				"Fire",
+				"Transmutation"
+			],
+			"school": "T",
 			"traditions": [
 				"Arcane",
 				"Occult"
 			],
-			"school": "T",
-			"type": "SPELL",
-			"focus": false,
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
 			"components": {
 				"F": false,
 				"M": true,
 				"S": true,
 				"V": false
 			},
-			"traits": [
-				"Uncommon",
-				"Fire",
-				"Transmutation"
-			],
+			"range": {
+				"type": "point",
+				"entry": "120 feet",
+				"distance": {
+					"type": "feet",
+					"amount": 120
+				}
+			},
+			"targets": "1 fire",
+			"savingThrow": "Fortitude",
+			"savingThrowBasic": false,
+			"duration": {
+				"type": "timed",
+				"entry": "sustained up to 1 minute",
+				"duration": {
+					"number": 1,
+					"unit": "minute"
+				}
+			},
+			"sustain": true,
+			"dismiss": false,
 			"entries": [
 				"You turn a fire into either a burst of blinding fireworks or a thick cloud of choking smoke, chosen when you Cast the Spell. The spell targets one fire source, which is immediately extinguished if it is a non-magical fire the size of a campfire or smaller. If the fire source is a creature, the creature takes {@dice 1d6} points of cold damage and is not extinguished.",
 				"Fireworks The targeted fire explodes into a colorful array of flashy, fiery, glowing aerial fireworks in a 20-foot-radius burst. The first time you Sustain the Spell each round, you can cause the area of fireworks to ascend up to 20 feet, but you cannot move the area laterally. Creatures that start their turn within the area of the fireworks must attempt a Fortitude save, and are then temporarily immune for 1 minute.",
@@ -178,96 +262,12 @@
 					}
 				}
 			],
-			"cast": {
-				"number": 2,
-				"unit": "action"
-			},
-			"range": {
-				"type": "point",
-				"entry": "120 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 120
-				}
-			},
-			"targets": "1 fire",
-			"duration": {
-				"type": "timed",
-				"entry": "sustained up to 1 minute",
-				"duration": {
-					"number": 1,
-					"unit": "minute"
-				}
-			},
-			"savingThrow": "Fortitude",
-			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": false,
 				"plus_x": null,
 				"x": null,
 				"no_x": null
-			},
-			"dismiss": false,
-			"sustain": true,
-			"page": 77
-		},
-		{
-			"source": "EC2",
-			"name": "Pillar Of Water",
-			"level": 3,
-			"traditions": [
-				"Arcane",
-				"Primal"
-			],
-			"school": "V",
-			"type": "SPELL",
-			"focus": false,
-			"components": {
-				"F": false,
-				"M": true,
-				"S": true,
-				"V": true
-			},
-			"traits": [
-				"Uncommon",
-				"Evocation",
-				"Water"
-			],
-			"entries": [
-				"You create a large, self-contained cylinder of still fresh water.",
-				"The pillar has a maximum radius of 15 feet and a maximum height of 60 feet. Creatures inside the pillar can swim through the water as normal ({@action Swim} DC 10), or, if the spell was cast on solid ground, walk along the bottom (which is difficult terrain)",
-				"Any creature that exits the pillar falls or lands accordingly."
-			],
-			"cast": {
-				"number": 3,
-				"unit": "action"
-			},
-			"range": {
-				"type": "point",
-				"entry": "120 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 120
-				}
-			},
-			"duration": {
-				"type": "timed",
-				"entry": "1 minute",
-				"duration": {
-					"number": 1,
-					"unit": "minute"
-				}
-			},
-			"savingThrowBasic": false,
-			"heightened": {
-				"heightened": false,
-				"plus_x": null,
-				"x": null,
-				"no_x": null
-			},
-			"dismiss": false,
-			"sustain": false,
-			"page": 77
+			}
 		}
 	]
 }

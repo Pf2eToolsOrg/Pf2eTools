@@ -1,11 +1,11 @@
 {
 	"item": [
 		{
-			"source": "EC1",
 			"name": "Dust Pods",
-			"level": 1,
+			"source": "EC1",
+			"page": 76,
 			"type": "Snare",
-			"category": "Snare",
+			"level": 1,
 			"traits": [
 				"Uncommon",
 				"Consumable",
@@ -13,13 +13,12 @@
 				"Snare",
 				"Trap"
 			],
-			"consumable": true,
-			"generic": false,
 			"price": {
 				"coin": "gp",
 				"amount": 3,
 				"note": null
 			},
+			"category": "Snare",
 			"entries": [
 				"You hide fragile pods of pollen or other clinging powder that get in the eyes of the first creature that enters the snare's square. The creature must attempt a DC 17 Reflex saving throw. A creature {@condition dazzled} by the pollen can use an {@action Interact} action to attempt a DC {@flatDC 5} flat check to remove the condition.",
 				{
@@ -32,14 +31,83 @@
 					}
 				}
 			],
-			"page": 76
+			"generic": false,
+			"consumable": true
 		},
 		{
+			"name": "Fang Snare",
 			"source": "EC1",
-			"name": "Thunder Snare",
-			"level": 2,
+			"page": 76,
 			"type": "Snare",
+			"level": 4,
+			"traits": [
+				"Uncommon",
+				"Consumable",
+				"Mechanical",
+				"Snare",
+				"Trap"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 15,
+				"note": null
+			},
 			"category": "Snare",
+			"entries": [
+				"You set snake fangs, poison stingers, or other venomous animal parts in the ground where they can be touched or stepped on by a creature that enters the snare's square.",
+				"The first creature to enter the square must attempt a DC 20 Reflex saving throw.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Success": "The target is unaffected.",
+						"Failure": "The target takes 1 piercing damage and {@damage 2d8} poison damage.",
+						"Critical Failure": "The target takes 2 piercing damage and {@damage 4d8} poison damage."
+					}
+				}
+			],
+			"generic": false,
+			"consumable": true
+		},
+		{
+			"name": "Grasping Tree",
+			"source": "EC1",
+			"page": 76,
+			"type": "Snare",
+			"level": 3,
+			"traits": [
+				"Uncommon",
+				"Consumable",
+				"Mechanical",
+				"Snare",
+				"Trap"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 9,
+				"note": null
+			},
+			"category": "Snare",
+			"entries": [
+				"You rig tree branches, thin strands of bark, or other plant matter to close in on a creature that enters the snare's square. The first creature to enter the square must attempt a DC 19 Reflex saving throw.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "The target is unaffected.",
+						"Success": "The target takes {@damage 1d4} slashing damage.",
+						"Failure": "As success, plus the target is {@condition flat-footed}.",
+						"Critical Failure": "The target takes {@damage 2d4} slashing damage and is {@condition immobilized} until it destroys the snare (AC 16, HP 25) or Escapes (DC 19)."
+					}
+				}
+			],
+			"generic": false,
+			"consumable": true
+		},
+		{
+			"name": "Thunder Snare",
+			"source": "EC1",
+			"page": 76,
+			"type": "Snare",
+			"level": 2,
 			"traits": [
 				"Auditory",
 				"Consumable",
@@ -47,13 +115,12 @@
 				"Snare",
 				"Trap"
 			],
-			"consumable": true,
-			"generic": false,
 			"price": {
 				"coin": "gp",
 				"amount": 6,
 				"note": null
 			},
+			"category": "Snare",
 			"entries": [
 				"The snare makes a thunderous noise when a creature enters the snare's square, which can be heard up to 1,000 feet away. The creature must attempt a DC 18 Fortitude saving throw.",
 				{
@@ -67,48 +134,15 @@
 				}
 			],
 			"craftReq": "1 lesser thunderstone.",
-			"page": 76
-		},
-		{
-			"source": "EC1",
-			"name": "Grasping Tree",
-			"level": 3,
-			"type": "Snare",
-			"category": "Snare",
-			"traits": [
-				"Uncommon",
-				"Consumable",
-				"Mechanical",
-				"Snare",
-				"Trap"
-			],
-			"consumable": true,
 			"generic": false,
-			"price": {
-				"coin": "gp",
-				"amount": 9,
-				"note": null
-			},
-			"entries": [
-				"You rig tree branches, thin strands of bark, or other plant matter to close in on a creature that enters the snare's square. The first creature to enter the square must attempt a DC 19 Reflex saving throw.",
-				{
-					"type": "successDegree",
-					"entries": {
-						"Critical Success": "The target is unaffected.",
-						"Success": "The target takes {@damage 1d4} slashing damage.",
-						"Failure": "As success, plus the target is {@condition flat-footed}.",
-						"Critical Failure": "The target takes {@damage 2d4} slashing damage and is {@condition immobilized} until it destroys the snare (AC 16, HP 25) or Escapes (DC 19)."
-					}
-				}
-			],
-			"page": 76
+			"consumable": true
 		},
 		{
-			"source": "EC1",
 			"name": "Torrent Snare",
-			"level": 3,
+			"source": "EC1",
+			"page": 76,
 			"type": "Snare",
-			"category": "Snare",
+			"level": 3,
 			"traits": [
 				"Uncommon",
 				"Consumable",
@@ -116,13 +150,12 @@
 				"Snare",
 				"Trap"
 			],
-			"consumable": true,
-			"generic": false,
 			"price": {
 				"coin": "gp",
 				"amount": 9,
 				"note": null
 			},
+			"category": "Snare",
 			"entries": [
 				"You pile waterlogged plants or access a nearby source of water to rain down on a Medium or smaller creature that enters the snare's square. When a creature enters the square, the snare's square and all adjacent squares become slippery difficult terrain, and the triggering creature must attempt a DC 19 Reflex saving throw, with the following effects.",
 				{
@@ -134,41 +167,8 @@
 					}
 				}
 			],
-			"page": 76
-		},
-		{
-			"source": "EC1",
-			"name": "Fang Snare",
-			"level": 4,
-			"type": "Snare",
-			"category": "Snare",
-			"traits": [
-				"Uncommon",
-				"Consumable",
-				"Mechanical",
-				"Snare",
-				"Trap"
-			],
-			"consumable": true,
 			"generic": false,
-			"price": {
-				"coin": "gp",
-				"amount": 15,
-				"note": null
-			},
-			"entries": [
-				"You set snake fangs, poison stingers, or other venomous animal parts in the ground where they can be touched or stepped on by a creature that enters the snare's square.",
-				"The first creature to enter the square must attempt a DC 20 Reflex saving throw.",
-				{
-					"type": "successDegree",
-					"entries": {
-						"Success": "The target is unaffected.",
-						"Failure": "The target takes 1 piercing damage and {@damage 2d8} poison damage.",
-						"Critical Failure": "The target takes 2 piercing damage and {@damage 4d8} poison damage."
-					}
-				}
-			],
-			"page": 76
+			"consumable": true
 		}
 	]
 }

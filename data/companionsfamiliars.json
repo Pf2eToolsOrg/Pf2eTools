@@ -1,313 +1,37 @@
 {
 	"companion": [
 		{
-			"name": "Terror Bird",
-			"source": "LOTGB",
-			"page": 55,
+			"name": "Ape",
+			"source": "APG",
+			"page": 144,
 			"type": "Companion",
 			"fluff": [
 				{
 					"type": "pf2-h3",
-					"name": "Terror Bird",
+					"name": "Ape",
 					"entries": [
-						"Your companion is a terror bird, a large species of flightless carnivorous avian."
+						"Your companion is an ape or other primate."
 					]
 				}
 			],
-			"size": "Large",
+			"size": "Small",
 			"attacks": [
 				{
 					"range": "Melee",
-					"name": "beak",
-					"damage": "{@damage 1d8} piercing"
-				},
-				{
-					"range": "Melee",
-					"name": "talon",
-					"traits": [
-						"agile"
-					],
-					"damage": "{@damage 1d6} piercing"
-				}
-			],
-			"abilityMods": {
-				"Str": 3,
-				"Dex": 2,
-				"Con": 2,
-				"Int": -4,
-				"Wis": 1,
-				"Cha": 0
-			},
-			"hp": 8,
-			"skill": "Survival",
-			"senses": {
-				"other": [
-					"{@ability low-light vision}"
-				]
-			},
-			"speed": {
-				"abilities": null,
-				"walk": 40
-			},
-			"special": "mount",
-			"support": "Your terror bird screeches at your enemies when you create an opening. Until the start of your next turn, your {@action Strike||Strikes} that deal damage to a creature within your terror bird's reach make the target {@condition flat-footed} until the start of your next turn.",
-			"maneuver": {
-				"name": "Tearing Clutch",
-				"source": "LOTGB",
-				"page": 55,
-				"activity": {
-					"number": 2,
-					"unit": "action"
-				},
-				"entries": [
-					"The terror bird makes a beak {@action Strike}; on a successful hit, the target takes {@damage 2d6} {@condition persistent damage||persistent bleed damage}."
-				]
-			}
-		},
-		{
-			"name": "Pangolin",
-			"source": "LOTGB",
-			"page": 55,
-			"type": "Companion",
-			"fluff": [
-				{
-					"type": "pf2-h3",
-					"name": "Pangolin",
-					"entries": [
-						"Your companion is a particularly large pangolin, such as an ugvashi from Vudra."
-					]
-				}
-			],
-			"size": "Medium",
-			"attacks": [
-				{
-					"range": "Melee",
-					"name": "body",
+					"name": "fist",
 					"damage": "{@damage 1d8} bludgeoning"
-				},
-				{
-					"range": "Melee",
-					"name": "claw",
-					"traits": [
-						"agile"
-					],
-					"damage": "{@damage 1d6} slashing"
-				}
-			],
-			"abilityMods": {
-				"Str": 3,
-				"Dex": 2,
-				"Con": 2,
-				"Int": -4,
-				"Wis": 1,
-				"Cha": 0
-			},
-			"hp": 8,
-			"skill": "Survival",
-			"senses": {
-				"other": [
-					"{@ability low-light vision}"
-				]
-			},
-			"speed": {
-				"abilities": null,
-				"walk": 25
-			},
-			"support": "Your pangolin tears at your enemies with its serrated plates. Until the start of your next turn, your {@action Strike||Strikes} that damage a creature in your pangolin's reach also deal {@damage 1d6} {@condition persistent damage||persistent bleed damage}. If your pangolin is nimble or savage, the persistent bleed damage increases to {@damage 2d6}.",
-			"maneuver": {
-				"name": "Defensive Curl",
-				"source": "LOTGB",
-				"page": 55,
-				"activity": {
-					"number": 1,
-					"unit": "action"
-				},
-				"entries": [
-					"The pangolin coils into a ball to defend itself. It gains a +2 circumstance bonus to AC. Any creature that hits the pangolin with a melee unarmed attack while it's in its Defensive Curl take {@damage 2d6} {@condition persistent damage||persistent bleed damage}. The pangolin can't move, use its unarmed attacks, or take other actions that require it to use its limbs while in its Defensive Curl, but it can unfurl as a single action, ending the effects of Defensive Curl."
-				]
-			}
-		},
-		{
-			"name": "Moth",
-			"source": "LOTGB",
-			"page": 54,
-			"type": "Companion",
-			"fluff": [
-				{
-					"type": "pf2-h3",
-					"name": "Moth",
-					"entries": [
-						"Your animal companion is a giant fruit-eating moth with a strong proboscis that can pierce skin."
-					]
-				}
-			],
-			"size": "Small",
-			"attacks": [
-				{
-					"range": "Melee",
-					"name": "proboscis",
-					"traits": [
-						"finesse"
-					],
-					"damage": "{@damage 1d6} piercing"
-				}
-			],
-			"abilityMods": {
-				"Str": 2,
-				"Dex": 3,
-				"Con": 1,
-				"Int": -4,
-				"Wis": 2,
-				"Cha": 0
-			},
-			"hp": 6,
-			"skill": "Stealth",
-			"senses": {
-				"imprecise": [
-					"{@ability scent} 30 feet"
-				],
-				"other": [
-					"{@ability darkvision}"
-				]
-			},
-			"speed": {
-				"abilities": null,
-				"walk": 15,
-				"fly": 30
-			},
-			"special": "Your moth is invisible to {@ability echolocation}.",
-			"support": "Your moth releases a shower of dust to reveal your foes. Until the start of your next turn, if you damage a {@condition concealed} or {@condition hidden} creature in your moth's reach with a {@action Strike}, that creature requires only a DC {@flatDC 3} flat check to target it if it's {@condition concealed}, or DC {@flatDC 9} if it's {@condition hidden}. The reduced DC lasts until the end of your next turn.",
-			"maneuver": {
-				"name": "Ultrasonic Scream",
-				"source": "LOTGB",
-				"page": 54,
-				"activity": {
-					"number": 2,
-					"unit": "action"
-				},
-				"entries": [
-					"The moth flaps its wings and emits ultrasonic squeaks that scramble the senses of nearby creatures. Choose one creature within 30 feet of the moth. That creature must attempt a Fortitude save. This uses a trained DC using the moth's Constitution modifier or an expert DC if the moth is specialized.",
-					{
-						"type": "successDegree",
-						"entries": {
-							"Success": "The target treats all creatures as {@condition concealed} on its next attack before the start of your next turn.",
-							"Failure": "The target treats all creatures as {@condition concealed} until the start of your next turn.",
-							"Critical Failure": "As failure, and the target is also {@condition stunned 1}."
-						}
-					}
-				]
-			}
-		},
-		{
-			"name": "Capybara",
-			"source": "LOTGB",
-			"page": 54,
-			"type": "Companion",
-			"fluff": [
-				{
-					"type": "pf2-h3",
-					"name": "Capybara",
-					"entries": [
-						"Your animal companion is a capybara, a giant rodent common in the forests of Arcadia."
-					]
-				}
-			],
-			"size": "Small",
-			"attacks": [
-				{
-					"range": "Melee",
-					"name": "head",
-					"traits": [
-						"agile"
-					],
-					"damage": "{@damage 1d6} bludgeoning"
-				}
-			],
-			"abilityMods": {
-				"Str": 2,
-				"Dex": 2,
-				"Con": 2,
-				"Int": -4,
-				"Wis": 2,
-				"Cha": 0
-			},
-			"hp": 6,
-			"skill": "Survival",
-			"senses": {
-				"imprecise": [
-					"{@ability scent} 30 feet"
-				],
-				"other": [
-					"{@ability low-light vision}"
-				]
-			},
-			"speed": {
-				"abilities": null,
-				"walk": 35
-			},
-			"support": "Your capybara assists you in battle. You gain a +1 circumstance bonus on your next attack roll to {@action Strike} a foe within your capybara's reach. The bonus lasts until the first time you use it or until the beginning of your next turn, whichever comes first.",
-			"maneuver": {
-				"name": "Distracting Spray",
-				"source": "LOTGB",
-				"page": 54,
-				"activity": {
-					"number": 2,
-					"unit": "action"
-				},
-				"entries": [
-					"The capybara sprays an adjacent target with its scent glands. The target must attempt a Fortitude save. Wiping off the musk takes an {@action Interact} action and ends the effect. This uses a trained DC using the capybara's Constitution modifier or an expert DC if the capybara is specialized.",
-					{
-						"type": "successDegree",
-						"entries": {
-							"Critical Success": "The creature is unaffected.",
-							"Success": "The creature is {@condition clumsy 1} for 1 round.",
-							"Failure": "The creature is {@condition clumsy 1} for 1 minute.",
-							"Critical Failure": "The creature is {@condition clumsy 2} for 1 minute."
-						}
-					}
-				]
-			}
-		},
-		{
-			"name": "Beetle",
-			"source": "LOTGB",
-			"page": 54,
-			"type": "Companion",
-			"fluff": [
-				{
-					"type": "pf2-h3",
-					"name": "Beetle",
-					"entries": [
-						"Your animal companion is a large, flightless stag beetle."
-					]
-				}
-			],
-			"size": "Medium or Large",
-			"attacks": [
-				{
-					"range": "Melee",
-					"name": "mandible",
-					"damage": "{@damage 1d8} piercing"
-				},
-				{
-					"range": "Melee",
-					"name": "foot",
-					"traits": [
-						"agile"
-					],
-					"damage": "{@damage 1d6} bludgeoning"
 				}
 			],
 			"abilityMods": {
 				"Str": 3,
 				"Dex": 1,
-				"Con": 3,
+				"Con": 2,
 				"Int": -4,
-				"Wis": 1,
+				"Wis": 2,
 				"Cha": 0
 			},
 			"hp": 8,
-			"skill": "Survival",
+			"skill": "Intimidation",
 			"senses": {
 				"other": [
 					"{@ability low-light vision}"
@@ -315,22 +39,86 @@
 			},
 			"speed": {
 				"abilities": null,
-				"walk": 35
+				"walk": 25,
+				"burrow": null,
+				"climb": 25
 			},
-			"special": "mount",
-			"support": "Your beetle stomps around and smashes into foes, knocking them off balance or pushing them aside when you create an opening. Until the start of your next turn, while riding on your beetle, your {@action Strike||Strikes} that deal damage either make the target {@condition flat-footed} until the end of your next turn or move the target 5 feet away from the beetle (this is {@quickref forced movement||3|forced movement}). The target chooses which effect occurs.",
+			"support": "Your ape threatens your foes with menacing growls. Until the start of your next turn, if you hit and deal damage to a creature in your ape's reach, the creature becomes {@condition frightened} 1.",
 			"maneuver": {
-				"name": "Hustle",
-				"source": "LOTGB",
-				"page": 54,
+				"name": "Frightning Display",
+				"source": "APG",
+				"page": 144,
 				"activity": {
-					"number": 2,
-					"unit": "action"
+					"number": 1,
+					"unit": "action",
+					"entry": "{@as 1}"
 				},
 				"entries": [
-					"The beetle moves at incredible speed. It {@action Stride||Strides} three times."
+					"Your ape makes a loud and frightening display, throwing a foe off balance. The ape attempts to {@action Demoralize} the target creature; this display gains the {@trait visual} trait and doesn't require language. While {@condition frightened} by this ability, the target is {@condition flat-footed} to your ape."
 				]
 			}
+		},
+		{
+			"name": "Arboreal Sapling",
+			"source": "APG",
+			"page": 144,
+			"type": "Companion",
+			"fluff": [
+				{
+					"type": "pf2-h3",
+					"name": "Arboreal Sapling",
+					"entries": [
+						"Your companion is a walking tree, a cousin of the great arboreal wardens and regents. An arboreal sapling has the {@trait plant} trait instead of the {@trait animal} trait, but it otherwise functions normally as an animal companion. They are typically only selected by {@class druid||animal order druids|animal} who are also members of the {@class druid||leaf order|leaf}."
+					]
+				}
+			],
+			"access": "You are a member of the {@class druid||leaf order|leaf}.",
+			"size": "Small",
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "branch",
+					"damage": "{@damage 1d8} bludgeoning"
+				}
+			],
+			"abilityMods": {
+				"Str": 3,
+				"Dex": 1,
+				"Con": 2,
+				"Int": -4,
+				"Wis": 2,
+				"Cha": 0
+			},
+			"hp": 8,
+			"skill": "Stealth",
+			"senses": {
+				"other": [
+					"{@ability low-light vision}"
+				]
+			},
+			"speed": {
+				"abilities": null,
+				"walk": 25,
+				"burrow": null,
+				"climb": null
+			},
+			"support": "Your arboreal sapling plants roots around your foe, impeding its movement. Until the start of your next turn, if you hit and deal damage to a creature in your arboreal sapling's reach, the first square the creature moves into after taking that damage is {@quickref difficult terrain||3|terrain}.",
+			"maneuver": {
+				"name": "Throw Rock",
+				"source": "APG",
+				"page": 144,
+				"activity": {
+					"number": 1,
+					"unit": "action",
+					"entry": "{@as 1}"
+				},
+				"entries": [
+					"The arboreal sapling Interacts to pick up a rock within reach or retrieve a stowed rock, then throws it with a ranged rock {@action Strike} that deals a base of {@damage 1d6} bludgeoning damage with a range increment of 30 feet."
+				]
+			},
+			"traits": [
+				"Uncommon"
+			]
 		},
 		{
 			"name": "Badger",
@@ -413,188 +201,6 @@
 						]
 					},
 					"After it has stopped raging, it can't use Badger Rage again for 1 minute."
-				]
-			}
-		},
-		{
-			"name": "Shadow Hound",
-			"source": "SoM",
-			"page": 228,
-			"type": "Companion",
-			"fluff": [
-				{
-					"type": "pf2-h3",
-					"name": "Shadow Hound",
-					"entries": [
-						"Your companion is a canine creature related to the {@plane Shadow Plane} denizens known as shadow mastiffs."
-					]
-				}
-			],
-			"access": "You're a {@archetype Shadowcaster|SoM}.",
-			"size": "Small",
-			"attacks": [
-				{
-					"range": "Melee",
-					"name": "jaws",
-					"traits": [
-						"finesse"
-					],
-					"damage": "{@damage 1d8} piercing"
-				}
-			],
-			"abilityMods": {
-				"Str": 2,
-				"Dex": 3,
-				"Con": 1,
-				"Int": -4,
-				"Wis": 1,
-				"Cha": 1
-			},
-			"hp": 4,
-			"skill": "Intimidation",
-			"senses": {
-				"imprecise": [
-					"{@ability scent} 30 feet"
-				],
-				"other": [
-					"{@ability darkvision}"
-				]
-			},
-			"speed": {
-				"abilities": null,
-				"walk": 30
-			},
-			"support": "Your shadow hound shrouds your foes in shadow when you leave an opening. Until the start of your next turn, when you damage a creature with a {@action Strike} and that creature is within reach of your shadow hound, both you and your shadow hound become {@condition concealed} to the creature until the end of your next turn.",
-			"maneuver": {
-				"name": "Bay",
-				"source": "SoM",
-				"page": 228,
-				"activity": {
-					"number": 2,
-					"unit": "action"
-				},
-				"entries": [
-					"The shadow hound releases an eerie bay, attempting to {@action Demoralize} each foe in a 20-foot emanation. These {@action Demoralize} attempts don't require a language and don't take any penalty due to not sharing a language."
-				]
-			}
-		},
-		{
-			"name": "Ape",
-			"source": "APG",
-			"page": 144,
-			"type": "Companion",
-			"fluff": [
-				{
-					"type": "pf2-h3",
-					"name": "Ape",
-					"entries": [
-						"Your companion is an ape or other primate."
-					]
-				}
-			],
-			"size": "Small",
-			"attacks": [
-				{
-					"range": "Melee",
-					"name": "fist",
-					"damage": "{@damage 1d8} bludgeoning"
-				}
-			],
-			"abilityMods": {
-				"Str": 3,
-				"Dex": 1,
-				"Con": 2,
-				"Int": -4,
-				"Wis": 2,
-				"Cha": 0
-			},
-			"hp": 8,
-			"skill": "Intimidation",
-			"senses": {
-				"other": [
-					"{@ability low-light vision}"
-				]
-			},
-			"speed": {
-				"abilities": null,
-				"walk": 25,
-				"burrow": null,
-				"climb": 25
-			},
-			"support": "Your ape threatens your foes with menacing growls. Until the start of your next turn, if you hit and deal damage to a creature in your ape's reach, the creature becomes {@condition frightened} 1.",
-			"maneuver": {
-				"name": "Frightning Display",
-				"source": "APG",
-				"page": 144,
-				"activity": {
-					"number": 1,
-					"unit": "action",
-					"entry": "{@as 1}"
-				},
-				"entries": [
-					"Your ape makes a loud and frightening display, throwing a foe off balance. The ape attempts to {@action Demoralize} the target creature; this display gains the {@trait visual} trait and doesn't require language. While {@condition frightened} by this ability, the target is {@condition flat-footed} to your ape."
-				]
-			}
-		},
-		{
-			"name": "Arboreal Sapling",
-			"source": "APG",
-			"traits": [
-				"Uncommon"
-			],
-			"page": 144,
-			"type": "Companion",
-			"access": "You are a member of the {@class druid||leaf order|leaf}.",
-			"fluff": [
-				{
-					"type": "pf2-h3",
-					"name": "Arboreal Sapling",
-					"entries": [
-						"Your companion is a walking tree, a cousin of the great arboreal wardens and regents. An arboreal sapling has the {@trait plant} trait instead of the {@trait animal} trait, but it otherwise functions normally as an animal companion. They are typically only selected by {@class druid||animal order druids|animal} who are also members of the {@class druid||leaf order|leaf}."
-					]
-				}
-			],
-			"size": "Small",
-			"attacks": [
-				{
-					"range": "Melee",
-					"name": "branch",
-					"damage": "{@damage 1d8} bludgeoning"
-				}
-			],
-			"abilityMods": {
-				"Str": 3,
-				"Dex": 1,
-				"Con": 2,
-				"Int": -4,
-				"Wis": 2,
-				"Cha": 0
-			},
-			"hp": 8,
-			"skill": "Stealth",
-			"senses": {
-				"other": [
-					"{@ability low-light vision}"
-				]
-			},
-			"speed": {
-				"abilities": null,
-				"walk": 25,
-				"burrow": null,
-				"climb": null
-			},
-			"support": "Your arboreal sapling plants roots around your foe, impeding its movement. Until the start of your next turn, if you hit and deal damage to a creature in your arboreal sapling's reach, the first square the creature moves into after taking that damage is {@quickref difficult terrain||3|terrain}.",
-			"maneuver": {
-				"name": "Throw Rock",
-				"source": "APG",
-				"page": 144,
-				"activity": {
-					"number": 1,
-					"unit": "action",
-					"entry": "{@as 1}"
-				},
-				"entries": [
-					"The arboreal sapling Interacts to pick up a rock within reach or retrieve a stowed rock, then throws it with a ranged rock {@action Strike} that deals a base of {@damage 1d6} bludgeoning damage with a range increment of 30 feet."
 				]
 			}
 		},
@@ -740,6 +346,70 @@
 			}
 		},
 		{
+			"name": "Beetle",
+			"source": "LOTGB",
+			"page": 54,
+			"type": "Companion",
+			"fluff": [
+				{
+					"type": "pf2-h3",
+					"name": "Beetle",
+					"entries": [
+						"Your animal companion is a large, flightless stag beetle."
+					]
+				}
+			],
+			"size": "Medium or Large",
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "mandible",
+					"damage": "{@damage 1d8} piercing"
+				},
+				{
+					"range": "Melee",
+					"name": "foot",
+					"traits": [
+						"agile"
+					],
+					"damage": "{@damage 1d6} bludgeoning"
+				}
+			],
+			"abilityMods": {
+				"Str": 3,
+				"Dex": 1,
+				"Con": 3,
+				"Int": -4,
+				"Wis": 1,
+				"Cha": 0
+			},
+			"hp": 8,
+			"skill": "Survival",
+			"senses": {
+				"other": [
+					"{@ability low-light vision}"
+				]
+			},
+			"speed": {
+				"abilities": null,
+				"walk": 35
+			},
+			"support": "Your beetle stomps around and smashes into foes, knocking them off balance or pushing them aside when you create an opening. Until the start of your next turn, while riding on your beetle, your {@action Strike||Strikes} that deal damage either make the target {@condition flat-footed} until the end of your next turn or move the target 5 feet away from the beetle (this is {@quickref forced movement||3|forced movement}). The target chooses which effect occurs.",
+			"maneuver": {
+				"name": "Hustle",
+				"source": "LOTGB",
+				"page": 54,
+				"activity": {
+					"number": 2,
+					"unit": "action"
+				},
+				"entries": [
+					"The beetle moves at incredible speed. It {@action Stride||Strides} three times."
+				]
+			},
+			"special": "mount"
+		},
+		{
 			"name": "Bird",
 			"source": "CRB",
 			"page": 215,
@@ -870,6 +540,139 @@
 			}
 		},
 		{
+			"name": "Camel",
+			"source": "AOA5",
+			"page": 80,
+			"type": "Companion",
+			"fluff": [
+				{
+					"type": "pf2-h3",
+					"name": "Camel",
+					"entries": [
+						"Your companion is a camel or llama."
+					]
+				}
+			],
+			"size": "Medium or Large",
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"damage": "{@damage 1d6} piercing"
+				}
+			],
+			"abilityMods": {
+				"Str": 3,
+				"Dex": 2,
+				"Con": 2,
+				"Int": -4,
+				"Wis": 1,
+				"Cha": 0
+			},
+			"hp": 8,
+			"skill": "Survival",
+			"senses": {
+				"other": [
+					"{@ability low-light vision}",
+					"{@ability scent} (imprecise, 30 feet)"
+				]
+			},
+			"speed": {
+				"abilities": null,
+				"walk": 35,
+				"burrow": null,
+				"climb": null
+			},
+			"support": "The camel makes a ranged attack to spit a long string of saliva at a foe within 10 feet. On a hit, the foe is {@condition dazzled} for 1 round.",
+			"maneuver": {
+				"name": "Sand Stride",
+				"source": "AOA5",
+				"page": 80,
+				"activity": {
+					"number": 2,
+					"unit": "action",
+					"entry": "{@as 2}"
+				},
+				"traits": [
+					"move"
+				],
+				"entries": [
+					"The camel {@action Stride||Strides} twice with a +5-foot circumstance bonus to Speed, ignoring {@quickref difficult terrain||3|terrain} caused by rubble, sand, and uneven ground made of earth and stone."
+				]
+			},
+			"special": "mount; your camel ignores the harmful effects of mild, severe, and extreme cold or heat, selected when you gain the companion."
+		},
+		{
+			"name": "Capybara",
+			"source": "LOTGB",
+			"page": 54,
+			"type": "Companion",
+			"fluff": [
+				{
+					"type": "pf2-h3",
+					"name": "Capybara",
+					"entries": [
+						"Your animal companion is a capybara, a giant rodent common in the forests of Arcadia."
+					]
+				}
+			],
+			"size": "Small",
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "head",
+					"traits": [
+						"agile"
+					],
+					"damage": "{@damage 1d6} bludgeoning"
+				}
+			],
+			"abilityMods": {
+				"Str": 2,
+				"Dex": 2,
+				"Con": 2,
+				"Int": -4,
+				"Wis": 2,
+				"Cha": 0
+			},
+			"hp": 6,
+			"skill": "Survival",
+			"senses": {
+				"imprecise": [
+					"{@ability scent} 30 feet"
+				],
+				"other": [
+					"{@ability low-light vision}"
+				]
+			},
+			"speed": {
+				"abilities": null,
+				"walk": 35
+			},
+			"support": "Your capybara assists you in battle. You gain a +1 circumstance bonus on your next attack roll to {@action Strike} a foe within your capybara's reach. The bonus lasts until the first time you use it or until the beginning of your next turn, whichever comes first.",
+			"maneuver": {
+				"name": "Distracting Spray",
+				"source": "LOTGB",
+				"page": 54,
+				"activity": {
+					"number": 2,
+					"unit": "action"
+				},
+				"entries": [
+					"The capybara sprays an adjacent target with its scent glands. The target must attempt a Fortitude save. Wiping off the musk takes an {@action Interact} action and ends the effect. This uses a trained DC using the capybara's Constitution modifier or an expert DC if the capybara is specialized.",
+					{
+						"type": "successDegree",
+						"entries": {
+							"Critical Success": "The creature is unaffected.",
+							"Success": "The creature is {@condition clumsy 1} for 1 round.",
+							"Failure": "The creature is {@condition clumsy 1} for 1 minute.",
+							"Critical Failure": "The creature is {@condition clumsy 2} for 1 minute."
+						}
+					}
+				]
+			}
+		},
+		{
 			"name": "Cat",
 			"source": "CRB",
 			"page": 215,
@@ -925,7 +728,6 @@
 				"burrow": null,
 				"climb": null
 			},
-			"special": "Your cat deals {@damage 1d4} extra precision damage against {@condition flat-footed} targets.",
 			"support": "Your cat throws your enemies off-balance when you create an opening. Until the start of your next turn, your {@action Strike||Strikes} that deal damage to a creature within your cat's reach make the target {@condition flat-footed} until the end of your next turn.",
 			"maneuver": {
 				"name": "Cat Pounce",
@@ -939,70 +741,8 @@
 				"entries": [
 					"The cat {@action Stride||Strides} and then {@action Strike||Strikes}. If it was {@condition undetected} at the start of its Cat Pounce, it remains {@condition undetected} until after the attack."
 				]
-			}
-		},
-		{
-			"name": "Camel",
-			"source": "AOA5",
-			"page": 80,
-			"type": "Companion",
-			"fluff": [
-				{
-					"type": "pf2-h3",
-					"name": "Camel",
-					"entries": [
-						"Your companion is a camel or llama."
-					]
-				}
-			],
-			"size": "Medium or Large",
-			"attacks": [
-				{
-					"range": "Melee",
-					"name": "jaws",
-					"damage": "{@damage 1d6} piercing"
-				}
-			],
-			"abilityMods": {
-				"Str": 3,
-				"Dex": 2,
-				"Con": 2,
-				"Int": -4,
-				"Wis": 1,
-				"Cha": 0
 			},
-			"hp": 8,
-			"skill": "Survival",
-			"senses": {
-				"other": [
-					"{@ability low-light vision}",
-					"{@ability scent} (imprecise, 30 feet)"
-				]
-			},
-			"speed": {
-				"abilities": null,
-				"walk": 35,
-				"burrow": null,
-				"climb": null
-			},
-			"special": "mount; your camel ignores the harmful effects of mild, severe, and extreme cold or heat, selected when you gain the companion.",
-			"support": "The camel makes a ranged attack to spit a long string of saliva at a foe within 10 feet. On a hit, the foe is {@condition dazzled} for 1 round.",
-			"maneuver": {
-				"name": "Sand Stride",
-				"source": "AOA5",
-				"page": 80,
-				"activity": {
-					"number": 2,
-					"unit": "action",
-					"entry": "{@as 2}"
-				},
-				"traits": [
-					"move"
-				],
-				"entries": [
-					"The camel {@action Stride||Strides} twice with a +5-foot circumstance bonus to Speed, ignoring {@quickref difficult terrain||3|terrain} caused by rubble, sand, and uneven ground made of earth and stone."
-				]
-			}
+			"special": "Your cat deals {@damage 1d4} extra precision damage against {@condition flat-footed} targets."
 		},
 		{
 			"name": "Cave Gecko",
@@ -1190,7 +930,6 @@
 				"burrow": null,
 				"swim": 25
 			},
-			"special": "The crocodile can hold its breath for about 2 hours.",
 			"support": "Your crocodile clamps its jaws on your foe, refusing to let go. Until the start of your next turn, if your {@action Strike} damages a creature in your crocodile's reach, your crocodile can latch onto the creature. While thus attached, the crocodile can move along with the target whenever the target moves until the end of your next turn. Your crocodile can latch onto only one creature in this way, and it must release the creature to make a jaws {@action Strike}. If the target is smaller than the crocodile, it takes a \u201310-foot circumstance penalty to its Speeds and can't {@action Fly} while the crocodile is latched on.",
 			"maneuver": {
 				"name": "Death Roll",
@@ -1205,7 +944,8 @@
 				"entries": [
 					"The crocodile tucks its legs and rolls rapidly, twisting its victim. It makes a jaws {@action Strike} with a +2 circumstance bonus to the attack roll against the {@condition grabbed} creature. If it hits, it also knocks the creature {@condition prone}. If it misses, it releases the creature."
 				]
-			}
+			},
+			"special": "The crocodile can hold its breath for about 2 hours."
 		},
 		{
 			"name": "Dromaeosaur",
@@ -1325,7 +1065,6 @@
 				"burrow": null,
 				"swim": null
 			},
-			"special": "mount",
 			"support": "Your horse adds momentum to your charge. Until the start of your next turn, if you moved at least 10 feet on the action before your attack, add a circumstance bonus to damage to that attack equal to twice the number of damage dice. If your weapon already has the {@trait jousting} weapon trait, increase the trait's damage bonus by 2 per die instead.",
 			"maneuver": {
 				"name": "Gallop",
@@ -1342,7 +1081,8 @@
 				"entries": [
 					"The horse {@action Stride||Strides} twice at a +10-foot circumstance bonus to Speed."
 				]
-			}
+			},
+			"special": "mount"
 		},
 		{
 			"name": "Hyena",
@@ -1391,7 +1131,6 @@
 				"burrow": null,
 				"swim": null
 			},
-			"special": "mount",
 			"support": "The hyena mockingly yowls at your enemies and bites at them when you create an opening. Until the start of your next turn, each time you hit a creature in the hyena's reach with a {@action Strike}, the creature becomes {@condition frightened} 1.",
 			"maneuver": {
 				"name": "Gnaw",
@@ -1406,7 +1145,8 @@
 				"entries": [
 					"The {@action Strike}'s target takes {@damage 1d6} {@condition persistent damage||persistent bleed damage} and takes a \u201310-foot status penalty to its Speed until it removes the bleed damage. If the hyena is a specialized animal companion, the {@condition persistent damage||persistent bleed damage} increases to {@damage 2d6}."
 				]
-			}
+			},
+			"special": "mount"
 		},
 		{
 			"name": "Monitor Lizard",
@@ -1452,7 +1192,6 @@
 				"burrow": null,
 				"swim": null
 			},
-			"special": "mount",
 			"support": "The monitor lizard distracts an adjacent opponent with snapping jaws and rapid movements. Until the start of your next turn, if your {@action Strike} damages a foe, any time the foe attempts an action with the {@trait manipulate} trait until the end of your next turn, it must attempt a DC {@flatDC 5} flat check. On a failure, the action is disrupted.",
 			"maneuver": {
 				"name": "Lurching Rush",
@@ -1466,13 +1205,145 @@
 				"entries": [
 					"The monitor lizard {@action Stride||Strides} and then makes a jaws {@action Strike}. If it moved at least 20 feet away from its starting position, it gains a +2 circumstance bonus to this attack roll."
 				]
+			},
+			"special": "mount"
+		},
+		{
+			"name": "Moth",
+			"source": "LOTGB",
+			"page": 54,
+			"type": "Companion",
+			"fluff": [
+				{
+					"type": "pf2-h3",
+					"name": "Moth",
+					"entries": [
+						"Your animal companion is a giant fruit-eating moth with a strong proboscis that can pierce skin."
+					]
+				}
+			],
+			"size": "Small",
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "proboscis",
+					"traits": [
+						"finesse"
+					],
+					"damage": "{@damage 1d6} piercing"
+				}
+			],
+			"abilityMods": {
+				"Str": 2,
+				"Dex": 3,
+				"Con": 1,
+				"Int": -4,
+				"Wis": 2,
+				"Cha": 0
+			},
+			"hp": 6,
+			"skill": "Stealth",
+			"senses": {
+				"imprecise": [
+					"{@ability scent} 30 feet"
+				],
+				"other": [
+					"{@ability darkvision}"
+				]
+			},
+			"speed": {
+				"abilities": null,
+				"walk": 15,
+				"fly": 30
+			},
+			"support": "Your moth releases a shower of dust to reveal your foes. Until the start of your next turn, if you damage a {@condition concealed} or {@condition hidden} creature in your moth's reach with a {@action Strike}, that creature requires only a DC {@flatDC 3} flat check to target it if it's {@condition concealed}, or DC {@flatDC 9} if it's {@condition hidden}. The reduced DC lasts until the end of your next turn.",
+			"maneuver": {
+				"name": "Ultrasonic Scream",
+				"source": "LOTGB",
+				"page": 54,
+				"activity": {
+					"number": 2,
+					"unit": "action"
+				},
+				"entries": [
+					"The moth flaps its wings and emits ultrasonic squeaks that scramble the senses of nearby creatures. Choose one creature within 30 feet of the moth. That creature must attempt a Fortitude save. This uses a trained DC using the moth's Constitution modifier or an expert DC if the moth is specialized.",
+					{
+						"type": "successDegree",
+						"entries": {
+							"Success": "The target treats all creatures as {@condition concealed} on its next attack before the start of your next turn.",
+							"Failure": "The target treats all creatures as {@condition concealed} until the start of your next turn.",
+							"Critical Failure": "As failure, and the target is also {@condition stunned 1}."
+						}
+					}
+				]
+			},
+			"special": "Your moth is invisible to {@ability echolocation}."
+		},
+		{
+			"name": "Pangolin",
+			"source": "LOTGB",
+			"page": 55,
+			"type": "Companion",
+			"fluff": [
+				{
+					"type": "pf2-h3",
+					"name": "Pangolin",
+					"entries": [
+						"Your companion is a particularly large pangolin, such as an ugvashi from Vudra."
+					]
+				}
+			],
+			"size": "Medium",
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "body",
+					"damage": "{@damage 1d8} bludgeoning"
+				},
+				{
+					"range": "Melee",
+					"name": "claw",
+					"traits": [
+						"agile"
+					],
+					"damage": "{@damage 1d6} slashing"
+				}
+			],
+			"abilityMods": {
+				"Str": 3,
+				"Dex": 2,
+				"Con": 2,
+				"Int": -4,
+				"Wis": 1,
+				"Cha": 0
+			},
+			"hp": 8,
+			"skill": "Survival",
+			"senses": {
+				"other": [
+					"{@ability low-light vision}"
+				]
+			},
+			"speed": {
+				"abilities": null,
+				"walk": 25
+			},
+			"support": "Your pangolin tears at your enemies with its serrated plates. Until the start of your next turn, your {@action Strike||Strikes} that damage a creature in your pangolin's reach also deal {@damage 1d6} {@condition persistent damage||persistent bleed damage}. If your pangolin is nimble or savage, the persistent bleed damage increases to {@damage 2d6}.",
+			"maneuver": {
+				"name": "Defensive Curl",
+				"source": "LOTGB",
+				"page": 55,
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"entries": [
+					"The pangolin coils into a ball to defend itself. It gains a +2 circumstance bonus to AC. Any creature that hits the pangolin with a melee unarmed attack while it's in its Defensive Curl take {@damage 2d6} {@condition persistent damage||persistent bleed damage}. The pangolin can't move, use its unarmed attacks, or take other actions that require it to use its limbs while in its Defensive Curl, but it can unfurl as a single action, ending the effects of Defensive Curl."
+				]
 			}
 		},
 		{
 			"name": "Riding Drake",
-			"traits": [
-				"Uncommon"
-			],
 			"source": "APG",
 			"page": 145,
 			"type": "Companion",
@@ -1519,7 +1390,6 @@
 				"burrow": null,
 				"swim": null
 			},
-			"special": "mount",
 			"support": "Your drake snorts fire in your foes' faces. Until the start of your next turn, each time you {@action Strike} while riding the drake and hit a creature in the drake's reach, the creature takes {@damage 1d4} fire damage from the drake. If your drake is nimble or savage, the fire damage increases to {@damage 2d4}.",
 			"maneuver": {
 				"name": "Breath Weapon",
@@ -1534,7 +1404,11 @@
 				"entries": [
 					"The riding drake breathes a 30-foot cone of fire, dealing {@damage 1d6 + floor((#$prompt_number:min=2,title=Character Level,default=2$#)/2)d6|1d6} fire damage for every 2 levels the drake has to all creatures in the area (basic Reflex save). This uses a trained DC using the drake's Constitution modifier or an expert DC if the drake is specialized."
 				]
-			}
+			},
+			"traits": [
+				"Uncommon"
+			],
+			"special": "mount"
 		},
 		{
 			"name": "Scorpion",
@@ -1587,7 +1461,6 @@
 				"burrow": null,
 				"swim": null
 			},
-			"special": "The scorpion's stinger attack deals an additional {@damage 1d4} poison damage or {@damage 2d4} poison damage if the scorpion is a specialized companion.",
 			"support": "Your scorpion drips poison from its stinger when you create an opening. Until the start of your next turn, your {@action Strike||Strikes} that damage a creature in your scorpion's reach also deal {@damage 1d6} {@condition persistent damage ||persistent poison damage}. If your scorpion is nimble or savage, the {@condition persistent damage ||persistent poison damage} increases to {@damage 2d6}.",
 			"maneuver": {
 				"name": "Grab and Sting",
@@ -1600,6 +1473,69 @@
 				},
 				"entries": [
 					"The scorpion holds its foe in place with its pincers in order to sting it. It makes a pincer {@action Strike}. If the {@action Strike} hits, the target creature automatically becomes {@action grab||grabbed} by the scorpion, which then makes a stinger {@action Strike} against it. The {@condition grabbed} condition lasts until the end of your next turn."
+				]
+			},
+			"special": "The scorpion's stinger attack deals an additional {@damage 1d4} poison damage or {@damage 2d4} poison damage if the scorpion is a specialized companion."
+		},
+		{
+			"name": "Shadow Hound",
+			"source": "SoM",
+			"page": 228,
+			"type": "Companion",
+			"fluff": [
+				{
+					"type": "pf2-h3",
+					"name": "Shadow Hound",
+					"entries": [
+						"Your companion is a canine creature related to the {@plane Shadow Plane} denizens known as shadow mastiffs."
+					]
+				}
+			],
+			"access": "You're a {@archetype Shadowcaster|SoM}.",
+			"size": "Small",
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"traits": [
+						"finesse"
+					],
+					"damage": "{@damage 1d8} piercing"
+				}
+			],
+			"abilityMods": {
+				"Str": 2,
+				"Dex": 3,
+				"Con": 1,
+				"Int": -4,
+				"Wis": 1,
+				"Cha": 1
+			},
+			"hp": 4,
+			"skill": "Intimidation",
+			"senses": {
+				"imprecise": [
+					"{@ability scent} 30 feet"
+				],
+				"other": [
+					"{@ability darkvision}"
+				]
+			},
+			"speed": {
+				"abilities": null,
+				"walk": 30
+			},
+			"support": "Your shadow hound shrouds your foes in shadow when you leave an opening. Until the start of your next turn, when you damage a creature with a {@action Strike} and that creature is within reach of your shadow hound, both you and your shadow hound become {@condition concealed} to the creature until the end of your next turn.",
+			"maneuver": {
+				"name": "Bay",
+				"source": "SoM",
+				"page": 228,
+				"activity": {
+					"number": 2,
+					"unit": "action"
+				},
+				"entries": [
+					"The shadow hound releases an eerie bay, attempting to {@action Demoralize} each foe in a 20-foot emanation. These {@action Demoralize} attempts don't require a language and don't take any penalty due to not sharing a language."
 				]
 			}
 		},
@@ -1647,7 +1583,6 @@
 				"burrow": null,
 				"swim": 40
 			},
-			"special": "The shark has the {@trait aquatic} trait. Its blood scent enables it to smell blood in the water from up to 1 mile away.",
 			"support": "When your shark senses blood, it tears into your enemies. Until the start of your next turn, each time you hit a creature in the shark's reach with a {@action Strike} and deal slashing or piercing damage, the creature takes {@damage 1d8} slashing damage from the shark. If your shark is nimble or savage, the slashing damage increases to {@damage 2d8}.",
 			"maneuver": {
 				"name": "Shred",
@@ -1662,7 +1597,8 @@
 				"entries": [
 					"The shark viciously rips into the wound, dealing additional damage. The target of the shark's {@action Strike} takes {@damage 1d8} slashing damage ({@damage 2d8} for a mature shark or {@damage 3d8} for a specialized companion)."
 				]
-			}
+			},
+			"special": "The shark has the {@trait aquatic} trait. Its blood scent enables it to smell blood in the water from up to 1 mile away."
 		},
 		{
 			"name": "Snake",
@@ -1728,6 +1664,70 @@
 			}
 		},
 		{
+			"name": "Terror Bird",
+			"source": "LOTGB",
+			"page": 55,
+			"type": "Companion",
+			"fluff": [
+				{
+					"type": "pf2-h3",
+					"name": "Terror Bird",
+					"entries": [
+						"Your companion is a terror bird, a large species of flightless carnivorous avian."
+					]
+				}
+			],
+			"size": "Large",
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "beak",
+					"damage": "{@damage 1d8} piercing"
+				},
+				{
+					"range": "Melee",
+					"name": "talon",
+					"traits": [
+						"agile"
+					],
+					"damage": "{@damage 1d6} piercing"
+				}
+			],
+			"abilityMods": {
+				"Str": 3,
+				"Dex": 2,
+				"Con": 2,
+				"Int": -4,
+				"Wis": 1,
+				"Cha": 0
+			},
+			"hp": 8,
+			"skill": "Survival",
+			"senses": {
+				"other": [
+					"{@ability low-light vision}"
+				]
+			},
+			"speed": {
+				"abilities": null,
+				"walk": 40
+			},
+			"support": "Your terror bird screeches at your enemies when you create an opening. Until the start of your next turn, your {@action Strike||Strikes} that deal damage to a creature within your terror bird's reach make the target {@condition flat-footed} until the start of your next turn.",
+			"maneuver": {
+				"name": "Tearing Clutch",
+				"source": "LOTGB",
+				"page": 55,
+				"activity": {
+					"number": 2,
+					"unit": "action"
+				},
+				"entries": [
+					"The terror bird makes a beak {@action Strike}; on a successful hit, the target takes {@damage 2d6} {@condition persistent damage||persistent bleed damage}."
+				]
+			},
+			"special": "mount"
+		},
+		{
 			"name": "Vulture",
 			"source": "AoA5",
 			"page": 80,
@@ -1775,7 +1775,6 @@
 				"swim": null
 			},
 			"support": "The vulture retches and vomits onto a foe within 10 feet. Until the start of your next turn, if you hit and deal damage to the target, the target must succeed at a Fortitude save or become {@condition sickened} 1 ({@condition sickened} 2 on a critical failure). The DC of the Fortitude save is 12 (or 14, if the vulture is a specialized animal companion) + your level + the vulture's Constitution modifier.",
-			"special": "Your vulture gains a +1 status bonus to all saves against disease, and if it rolls a success on a save against a disease, the result is a critical success instead.",
 			"maneuver": {
 				"name": "Feast on the Fallen",
 				"source": "AoA5",
@@ -1790,7 +1789,8 @@
 				"entries": [
 					"The vulture consumes a piece of the defeated foe, regaining 18 Hit Points. If the vulture is a specialized animal companion, increase the Hit Points regained to 30."
 				]
-			}
+			},
+			"special": "Your vulture gains a +1 status bonus to all saves against disease, and if it rolls a success on a save against a disease, the result is a critical success instead."
 		},
 		{
 			"name": "Wolf",
@@ -1857,76 +1857,6 @@
 		}
 	],
 	"familiar": [
-		{
-			"name": "Clockwork Familiar",
-			"source": "LOTGB",
-			"page": 23,
-			"type": "Familiar",
-			"traits": [
-				"Uncommon",
-				"Clockwork",
-				"Construct"
-			],
-			"requires": 3,
-			"granted": [
-				"{@familiarAbility darkvision}"
-			],
-			"abilities": [
-				{
-					"name": "Clockwork",
-					"entries": [
-						"You need to keep your clockwork familiar wound, but the process isn't particularly onerous or time consuming. If you spend 1 minute winding up your clockwork familiar with a unique key only you can use, it can remain active for 24 hours, after which time it becomes unaware of its surroundings and can't act until it's wound again.",
-						"Enemies can attempt to disable the clockwork familiar, with a standard DC for your level to Disable a Device, to reduce the remaining operational time by 1 hour (or 2 hours on a critical success). Certain other abilities that adversely affect technology might also reduce the clockwork familiar's remaining operational time.",
-						"Some abilities, like Steam Screen, require your clockwork familiar to spend some of its remaining operational time. It can't spend more than it has and shuts down immediately once it has no time remaining.",
-						"You can wind your clockwork familiar for 1 minute at any time to return it to the maximum 24 hours of operational time."
-					]
-				},
-				{
-					"name": "Constructed",
-					"entries": [
-						"Your clockwork familiar is made of metal rather than flesh and bone, although it is still delicate enough in certain places to be vulnerable to violence in the same manner as a living creature. It is immune to {@condition persistent damage||bleed}, {@trait death} effects, {@trait disease}, {@condition doomed}, {@condition drained}, {@condition fatigued}, {@trait healing}, {@trait necromancy}, {@trait nonlethal} attacks, {@condition paralyzed}, {@trait poison}, {@condition sickened}, and {@condition unconscious}. It can recover Hit Points only via the {@action Repair} action and other methods that fix items, not from any form of Hit Point healing. It's destroyed at 0 Hit Points."
-					]
-				},
-				{
-					"name": "Electricity Vulnerability",
-					"entries": [
-						"The metal components of a clockwork familiar conduct electricity and are easily disrupted by an electric current. It gains weakness to electricity damage equal to your level."
-					]
-				},
-				{
-					"name": "Steam Screen",
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"frequency": "once per minute",
-					"entries": [
-						"Your clockwork familiar blows a billowing plume of steam into its square around itself. It gains a +1 circumstance bonus to its {@action Intimidation} checks, and any creature in the familiar's square has {@condition concealed||concealment}, though creatures in the square can't use this {@condition concealed||concealment} to {@action Hide} or {@action Sneak}. The steam and its effects remain for 1 round. To use this ability, your clockwork familiar must spend 1 hour of operational time."
-					]
-				},
-				{
-					"name": "Toggle Standby Mode",
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"entries": [
-						"Your clockwork familiar enters standby mode. Its operational time doesn't decrease in standby, but it can sense its surroundings (with a \u20132 penalty to {@skill Perception}). It can't act, with one exception: when you {@action Command an Animal||Command} it to exit standby mode, it does so, by using this action again."
-					]
-				}
-			],
-			"fluff": [
-				{
-					"type": "pf2-h2",
-					"name": "Clockwork Familiar",
-					"entries": [
-						"A clockwork creature is typically composed entirely of turning gears and small bronze steam pipes. It can take the form of any Tiny animal, such as a small mammal, reptile, or bird. Its eyes are cut from glittering glass, with many facets within to help it process what it sees. Any teeth, beak, and tongue are rendered out of iron. When it moves, its joints emit little croaks and whistles, and it occasionally emits electrical sparks if perturbed. Clockwork creatures who live near the sea, or are otherwise exposed to water often, might squeeze lemons and use the juice to wash themselves. They can also blow steam out of the pipes on their bodies to intimidate an enemy or put up a smokescreen.",
-						"Your clockwork familiar is a specific familiar. Specific familiars (Advanced Player's Guide 147) are familiars with unique abilities. In order for you to choose a specific familiar, your familiar must be capable of having the template's required number of familiar abilities. A specific familiar gains the listed traits and several abilities, including abilities it can gain only as a specific familiar. Much like a familiar that naturally has a familiar ability, you can never swap out any of these granted or unique abilities. Once you've selected a specific familiar, you can't change it without losing your familiar\u2014this uses the same rules as if your familiar had died. If your familiar gains more abilities than necessary to become a specific familiar, you can spend the remaining abilities normally.",
-						"If your clockwork familiar is destroyed, it can be brought back to life through any conventional means that would bring back a living familiar, such as through resurrection magic."
-					]
-				}
-			]
-		},
 		{
 			"name": "Aeon Wyrd",
 			"source": "LOPSG",
@@ -2024,6 +1954,76 @@
 			]
 		},
 		{
+			"name": "Clockwork Familiar",
+			"source": "LOTGB",
+			"page": 23,
+			"type": "Familiar",
+			"traits": [
+				"Uncommon",
+				"Clockwork",
+				"Construct"
+			],
+			"requires": 3,
+			"granted": [
+				"{@familiarAbility darkvision}"
+			],
+			"abilities": [
+				{
+					"name": "Clockwork",
+					"entries": [
+						"You need to keep your clockwork familiar wound, but the process isn't particularly onerous or time consuming. If you spend 1 minute winding up your clockwork familiar with a unique key only you can use, it can remain active for 24 hours, after which time it becomes unaware of its surroundings and can't act until it's wound again.",
+						"Enemies can attempt to disable the clockwork familiar, with a standard DC for your level to Disable a Device, to reduce the remaining operational time by 1 hour (or 2 hours on a critical success). Certain other abilities that adversely affect technology might also reduce the clockwork familiar's remaining operational time.",
+						"Some abilities, like Steam Screen, require your clockwork familiar to spend some of its remaining operational time. It can't spend more than it has and shuts down immediately once it has no time remaining.",
+						"You can wind your clockwork familiar for 1 minute at any time to return it to the maximum 24 hours of operational time."
+					]
+				},
+				{
+					"name": "Constructed",
+					"entries": [
+						"Your clockwork familiar is made of metal rather than flesh and bone, although it is still delicate enough in certain places to be vulnerable to violence in the same manner as a living creature. It is immune to {@condition persistent damage||bleed}, {@trait death} effects, {@trait disease}, {@condition doomed}, {@condition drained}, {@condition fatigued}, {@trait healing}, {@trait necromancy}, {@trait nonlethal} attacks, {@condition paralyzed}, {@trait poison}, {@condition sickened}, and {@condition unconscious}. It can recover Hit Points only via the {@action Repair} action and other methods that fix items, not from any form of Hit Point healing. It's destroyed at 0 Hit Points."
+					]
+				},
+				{
+					"name": "Electricity Vulnerability",
+					"entries": [
+						"The metal components of a clockwork familiar conduct electricity and are easily disrupted by an electric current. It gains weakness to electricity damage equal to your level."
+					]
+				},
+				{
+					"name": "Steam Screen",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"frequency": "once per minute",
+					"entries": [
+						"Your clockwork familiar blows a billowing plume of steam into its square around itself. It gains a +1 circumstance bonus to its {@action Intimidation} checks, and any creature in the familiar's square has {@condition concealed||concealment}, though creatures in the square can't use this {@condition concealed||concealment} to {@action Hide} or {@action Sneak}. The steam and its effects remain for 1 round. To use this ability, your clockwork familiar must spend 1 hour of operational time."
+					]
+				},
+				{
+					"name": "Toggle Standby Mode",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"entries": [
+						"Your clockwork familiar enters standby mode. Its operational time doesn't decrease in standby, but it can sense its surroundings (with a \u20132 penalty to {@skill Perception}). It can't act, with one exception: when you {@action Command an Animal||Command} it to exit standby mode, it does so, by using this action again."
+					]
+				}
+			],
+			"fluff": [
+				{
+					"type": "pf2-h2",
+					"name": "Clockwork Familiar",
+					"entries": [
+						"A clockwork creature is typically composed entirely of turning gears and small bronze steam pipes. It can take the form of any Tiny animal, such as a small mammal, reptile, or bird. Its eyes are cut from glittering glass, with many facets within to help it process what it sees. Any teeth, beak, and tongue are rendered out of iron. When it moves, its joints emit little croaks and whistles, and it occasionally emits electrical sparks if perturbed. Clockwork creatures who live near the sea, or are otherwise exposed to water often, might squeeze lemons and use the juice to wash themselves. They can also blow steam out of the pipes on their bodies to intimidate an enemy or put up a smokescreen.",
+						"Your clockwork familiar is a specific familiar. Specific familiars (Advanced Player's Guide 147) are familiars with unique abilities. In order for you to choose a specific familiar, your familiar must be capable of having the template's required number of familiar abilities. A specific familiar gains the listed traits and several abilities, including abilities it can gain only as a specific familiar. Much like a familiar that naturally has a familiar ability, you can never swap out any of these granted or unique abilities. Once you've selected a specific familiar, you can't change it without losing your familiar\u2014this uses the same rules as if your familiar had died. If your familiar gains more abilities than necessary to become a specific familiar, you can spend the remaining abilities normally.",
+						"If your clockwork familiar is destroyed, it can be brought back to life through any conventional means that would bring back a living familiar, such as through resurrection magic."
+					]
+				}
+			]
+		},
+		{
 			"name": "Dweomercat Cub",
 			"source": "LOPSG",
 			"page": 122,
@@ -2082,6 +2082,43 @@
 					"name": "Dweomercat Cub",
 					"entries": [
 						"Pathfinder agent Arianrhod Thriceborn, an adherent of the Eldest {@deity Magdh}, raised a litter of these intelligent mystical felines from the First World. Dweomercat cubs are curious and love exploring ley lines and traveling the world. At only 1 foot tall and weighing 15 pounds, dweomercat cubs are smaller than their egos and curiosity imply."
+					]
+				}
+			]
+		},
+		{
+			"name": "Elemental Wisp",
+			"source": "LOTGB",
+			"page": 35,
+			"type": "Familiar",
+			"traits": [
+				"Elemental"
+			],
+			"requires": 3,
+			"granted": [
+				"{@familiarAbility accompanist|APG}",
+				"{@familiarAbility speech}"
+			],
+			"abilities": [
+				{
+					"name": "Elemental",
+					"entries": [
+						"Choose air, earth, fire, or water. Your wisp is a wisp of that element and gains that trait. Your wisp gains a familiar ability depending on its element. Air wisps gain {@familiarAbility flight}, earth wisps gain {@familiarAbility burrower}, fire wisps gain {@familiarAbility greater resistance} (fire), and water wisps gain {@familiarAbility amphibious}."
+					]
+				},
+				{
+					"name": "Resonance",
+					"entries": [
+						"(aura) 30 feet. Your wisp vibrates at a frequency attuned to their element, resonating with and empowering all effects sharing that trait. Creatures in the area gain a +1 status bonus to damage rolls for effects with the same elemental trait as your wisp ({@trait air}, {@trait earth}, {@trait fire}, or {@trait water})."
+					]
+				}
+			],
+			"fluff": [
+				{
+					"type": "pf2-h3",
+					"name": "Elemental Wisp",
+					"entries": [
+						"Wisps are tiny elemental beings that often act as familiars to spellcasters attuned to the elements. They each usually have different personalities: air wisps are playful and capricious, earth wisps are timid but loyal, fire wisps are carefree and boisterous, and water wisps are gentle and nurturing."
 					]
 				}
 			]
@@ -2190,40 +2227,6 @@
 			"alignment": "An imp must be lawful evil"
 		},
 		{
-			"name": "Pipefox",
-			"source": "LOTGB",
-			"page": 35,
-			"type": "Familiar",
-			"traits": [
-				"Beast"
-			],
-			"requires": 5,
-			"granted": [
-				"{@familiarAbility climber}",
-				"{@familiarAbility darkvision}",
-				"{@familiarAbility second opinion|LOTGB}",
-				"{@familiarAbility skilled|APG} (two skills of your choice)",
-				"{@familiarAbility speech}"
-			],
-			"abilities": [
-				{
-					"name": "Divinatory Linguist",
-					"entries": [
-						"Thanks to its innate tendency for divinations, your pipefox speaks and understands all languages you know (instead of just one) as well as one common language you don't know."
-					]
-				}
-			],
-			"fluff": [
-				{
-					"type": "pf2-h3",
-					"name": "Pipefox",
-					"entries": [
-						"A pipefox is a tiny magical fox with a thin, limbless body that is about a foot long. Pipefoxes are secretive, shy, evasive, and they love to acquire knowledge, using innate divination magic to learn facts and languages over time. They can bond with a person sharing their scholarly pursuits after a long period of observation and careful social interactions."
-					]
-				}
-			]
-		},
-		{
 			"name": "Nosoi",
 			"source": "LOTGB",
 			"page": 35,
@@ -2277,38 +2280,35 @@
 			]
 		},
 		{
-			"name": "Elemental Wisp",
+			"name": "Pipefox",
 			"source": "LOTGB",
 			"page": 35,
 			"type": "Familiar",
 			"traits": [
-				"Elemental"
+				"Beast"
 			],
-			"requires": 3,
+			"requires": 5,
 			"granted": [
-				"{@familiarAbility accompanist|APG}",
+				"{@familiarAbility climber}",
+				"{@familiarAbility darkvision}",
+				"{@familiarAbility second opinion|LOTGB}",
+				"{@familiarAbility skilled|APG} (two skills of your choice)",
 				"{@familiarAbility speech}"
 			],
 			"abilities": [
 				{
-					"name": "Elemental",
+					"name": "Divinatory Linguist",
 					"entries": [
-						"Choose air, earth, fire, or water. Your wisp is a wisp of that element and gains that trait. Your wisp gains a familiar ability depending on its element. Air wisps gain {@familiarAbility flight}, earth wisps gain {@familiarAbility burrower}, fire wisps gain {@familiarAbility greater resistance} (fire), and water wisps gain {@familiarAbility amphibious}."
-					]
-				},
-				{
-					"name": "Resonance",
-					"entries": [
-						"(aura) 30 feet. Your wisp vibrates at a frequency attuned to their element, resonating with and empowering all effects sharing that trait. Creatures in the area gain a +1 status bonus to damage rolls for effects with the same elemental trait as your wisp ({@trait air}, {@trait earth}, {@trait fire}, or {@trait water})."
+						"Thanks to its innate tendency for divinations, your pipefox speaks and understands all languages you know (instead of just one) as well as one common language you don't know."
 					]
 				}
 			],
 			"fluff": [
 				{
 					"type": "pf2-h3",
-					"name": "Elemental Wisp",
+					"name": "Pipefox",
 					"entries": [
-						"Wisps are tiny elemental beings that often act as familiars to spellcasters attuned to the elements. They each usually have different personalities: air wisps are playful and capricious, earth wisps are timid but loyal, fire wisps are carefree and boisterous, and water wisps are gentle and nurturing."
+						"A pipefox is a tiny magical fox with a thin, limbless body that is about a foot long. Pipefoxes are secretive, shy, evasive, and they love to acquire knowledge, using innate divination magic to learn facts and languages over time. They can bond with a person sharing their scholarly pursuits after a long period of observation and careful social interactions."
 					]
 				}
 			]

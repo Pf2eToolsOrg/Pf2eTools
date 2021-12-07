@@ -1,19 +1,18 @@
 {
 	"item": [
 		{
-			"source": "AV1",
 			"name": "Gauntlight",
-			"level": 20,
+			"source": "AV1",
+			"page": 77,
 			"type": "Item",
-			"category": "Artifact",
+			"level": 20,
 			"traits": [
 				"Unique",
 				"Artifact",
 				"Magical",
 				"Necromancy"
 			],
-			"consumable": false,
-			"generic": false,
+			"category": "Artifact",
 			"entries": [
 				"Gauntlight is much more than a 115-foot-tall lighthouse rising from the heart of an old ruin in Fogfen\u2014its pale stone walls extend far below the ruins, passing through eight different dungeon levels and finally terminating at the ninth level below the surface, where its deep foundation centers on an ominous chamber where, long ago, {@deity Nhimbaloth|LOGM} herself once physically brushed against this world. Once she finished its physical construction, the sorcerer Belcorra Haruvex used this spot as a source of power to infuse the walls, floors, and ceilings of each of Gauntlight's levels with eldritch power. The lens at the apex of the lighthouse would have, in time, been able to focus this lingering eldritch energy into a powerful beam, but Belcorra's plans were cut short before she could replace the mundane lenses with dangerous magical ones.",
 				"As an artifact, Gauntlight can't be damaged by normal means. Its walls are impenetrable and impervious to any attempt to breach them by anybody except for followers of {@deity Nhimbaloth|LOGM}. They block effects that allow temporary passage, such as passwall, and also create a barrier against dimensional travel. The walls attempt to counteract {@trait teleportation} effects and planar travel into or out of areas within Gauntlight and efforts to summon creatures into the area (using a +37 counteract modifier); this effect does not stop a summoned creature from departing when the summoning ends.",
@@ -54,21 +53,20 @@
 					]
 				}
 			],
-			"page": 77
+			"generic": false,
+			"consumable": false
 		},
 		{
-			"source": "AV1",
 			"name": "Lantern Of Empty Light",
-			"level": 6,
+			"source": "AV1",
+			"page": 78,
 			"type": "Item",
-			"category": "Held",
+			"level": 6,
 			"traits": [
 				"Rare",
 				"Enchantment",
 				"Magical"
 			],
-			"consumable": false,
-			"generic": false,
 			"price": {
 				"coin": "gp",
 				"amount": 240,
@@ -76,6 +74,7 @@
 			},
 			"usage": "held in 1 hand",
 			"bulk": "1",
+			"category": "Held",
 			"entries": [
 				"It's said that the pale blue light of this eldritch lantern shines from another dimension or even is linked, somehow, to the glow of a ghost when it is consumed by the Outer Goddess {@deity Nhimbaloth|LOGM}. A lantern of empty light is not intrinsically an evil item, though it remains a favored tool of those who would manipulate the minds of others for sinister reasons. It can be used as a normal bull's-eye lantern, but prolonged use tends to instill in the user a vague sense of being watched by unseen eyes.",
 				{
@@ -105,23 +104,23 @@
 					]
 				}
 			],
-			"page": 78
+			"generic": false,
+			"consumable": false
 		},
 		{
-			"source": "AV1",
 			"name": "Skeptic's Elixir",
-			"level": "1+",
+			"source": "AV1",
+			"page": 78,
 			"type": "Item",
-			"category": "Elixir",
+			"level": "1+",
 			"traits": [
 				"Uncommon",
 				"Alchemical",
 				"Consumable",
 				"Elixir"
 			],
-			"consumable": true,
-			"generic": "G",
 			"usage": "held in 1 hand",
+			"bulk": "L",
 			"activate": {
 				"activity": {
 					"number": 1,
@@ -132,11 +131,12 @@
 				"frequency": null,
 				"trigger": null
 			},
-			"bulk": "L",
+			"category": "Elixir",
 			"entries": [
 				"This elixir sharpens your mind and allows you to see through lies, falsehoods, and magical trickery.",
 				"You gain an item bonus to {@skill Perception} checks and {@skill Perception} DCs to notice falsehoods, whether they're spoken lies or written deceit. You gain this same item bonus to Will saves."
 			],
+			"generic": "G",
 			"variants": [
 				{
 					"type": "lesser",
@@ -175,24 +175,23 @@
 					]
 				}
 			],
-			"page": 78
+			"consumable": true
 		},
 		{
-			"source": "AV1",
 			"name": "The Whispering Reeds",
-			"level": 10,
+			"source": "AV1",
+			"page": 78,
 			"type": "Item",
-			"category": "Artifact",
+			"level": 10,
 			"traits": [
 				"Rare",
 				"Artifact",
 				"Divination",
 				"Occult"
 			],
-			"consumable": false,
-			"generic": false,
 			"usage": "held in 2 hands",
 			"bulk": "2",
+			"category": "Artifact",
 			"entries": [
 				"This hefty tome was compiled centuries ago by an anonymous author who sought to collect all parables, myths, stories, and encounters with the Outer Goddess {@deity Nhimbaloth|LOGM}. According to the introduction, the author's original intent was to create a work that foes of the Empty Death could use to fight against her influence, but as one reads through the book, it becomes apparent that the opposite effect has been achieved\u2014by compiling these stories, the author inadvertently generated a work that made it easier for {@deity Nhimbaloth|LOGM} to influence the world. Those who venerate the Empty Death seek copies of this book to use as a guide and religious text, while those who don't know better and peruse the book as though it were merely an anthology of stories find themselves unwittingly falling prey to {@deity Nhimbaloth|LOGM}'s cult or agents of the entity herself. Those who study from The Whispering Reeds for too long are often cursed to rise as ghosts after death\u2014 though their existence never lasts for long, as they are inevitably consumed by {@deity Nhimbaloth|LOGM}.",
 				"If a character understands the dangers of this book, however, moderated use can stall or even prevent such a fate from befalling them. If a character takes special care, they can even potentially use The Whispering Reeds for its original purpose\u2014as a weapon against the cult of {@deity Nhimbaloth|LOGM}. Using the text too often or leveraging some of its more powerful effects, however, causes the user to feel an ominous chill. In these cases, the user is exposed to the tome's curse, Empty Death (see below)",
@@ -271,7 +270,8 @@
 					]
 				}
 			],
-			"page": 78
+			"generic": false,
+			"consumable": false
 		}
 	]
 }

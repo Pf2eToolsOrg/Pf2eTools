@@ -1,11 +1,11 @@
 {
 	"item": [
 		{
-			"source": "AoE3",
 			"name": "Barbed Vest",
-			"level": 10,
+			"source": "AoE3",
+			"page": 78,
 			"type": "Item",
-			"category": "Armor",
+			"level": 10,
 			"traits": [
 				"Rare",
 				"Cursed",
@@ -13,10 +13,9 @@
 				"Magical",
 				"Necromancy"
 			],
-			"consumable": false,
-			"generic": false,
 			"usage": "worn armor",
 			"bulk": "1",
+			"category": "Armor",
 			"entries": [
 				"Viciously sharp spiked chains wrap around this studded leather armor that can be used to magically harm the wearer and channel supernatural abilities without somehow tearing at the leather itself.",
 				"The barbed vest doesn't fuse to you in the usual way (as described on page 90 of the Pathfinder Gamemastery Guide). It can be removed and discarded, but 1 day after doing so, you feel driven to recollect the vest at any cost until the curse is removed with a {@spell remove curse} spell.",
@@ -38,14 +37,15 @@
 					]
 				}
 			],
-			"page": 78
+			"generic": false,
+			"consumable": false
 		},
 		{
-			"source": "AoE3",
 			"name": "Blackfinger Blight",
-			"level": 12,
+			"source": "AoE3",
+			"page": 78,
 			"type": "Item",
-			"category": "Poison",
+			"level": 12,
 			"traits": [
 				"Rare",
 				"Alchemical",
@@ -54,14 +54,13 @@
 				"Poison",
 				"Virulent"
 			],
-			"consumable": true,
-			"generic": false,
 			"price": {
 				"coin": "gp",
 				"amount": 350,
 				"note": null
 			},
 			"usage": "held in 1 hand",
+			"bulk": "L",
 			"activate": {
 				"activity": {
 					"number": 2,
@@ -72,7 +71,7 @@
 				"frequency": null,
 				"trigger": null
 			},
-			"bulk": "L",
+			"category": "Poison",
 			"entries": [
 				"This oily, dark purple powder gives off the distinct odor of boiled leather. When delivered, the poison acts quickly to constrict the victim's blood flow to their extremities and turn their lungs into a soft jelly. A victim of blackfinger blight is recognizable by the pores of their fingertips weeping an inky oil that coats their hands and makes it difficult to hold things. Each round, at the beginning of their turn, a creature affected by blackfinger blight must succeed at a flat DC 5 check or drop one random item they're holding.",
 				{
@@ -102,28 +101,28 @@
 					]
 				}
 			],
-			"page": 78
+			"generic": false,
+			"consumable": true
 		},
 		{
-			"source": "AoE3",
 			"name": "Mnemonic Acid",
-			"level": 8,
+			"source": "AoE3",
+			"page": 78,
 			"type": "Item",
-			"category": "Elixir",
+			"level": 8,
 			"traits": [
 				"Uncommon",
 				"Alchemical",
 				"Consumable",
 				"Elixir"
 			],
-			"consumable": true,
-			"generic": false,
 			"price": {
 				"coin": "gp",
 				"amount": 75,
 				"note": null
 			},
 			"usage": "held in 1 hand",
+			"bulk": "L",
 			"activate": {
 				"activity": {
 					"number": 1,
@@ -134,13 +133,14 @@
 				"frequency": null,
 				"trigger": null
 			},
-			"bulk": "L",
+			"category": "Elixir",
 			"entries": [
 				"This translucent yellow-green liquid has a sharp, tangy odor and an oily sheen. It's mildly acidic and can cause a minor rash after prolonged contact with skin. To unlock its true potential, you must submerge a piece of an intelligent creature's brain matter in the acid and allow the material to completely dissolve. This takes {@dice 2d10} minutes, during which time the mnemonic acid bubbles and steams eagerly.",
 				"Once the brain matter fully dissolves, you can consume the acid as an {@action Interact} action to experience a powerful vision and relive one of the memories of the creature whose brain matter was dissolved. You have no control over which memory you experience, although such visions are almost always of memories that were meaningful to the owner of the dissolved brain matter. The memory might be of a single event or a series of related and interconnected events; the memory lasts no longer than 10 minutes, and you're blind to the world around you for the duration.",
 				"Each dose of mnemonic acid requires roughly 10% of the brain matter of the creature whose visions are to be experienced, meaning that up to 10 different memories from the same creature can be experienced, each with a different dose of mnemonic acid, before the brain matter is exhausted."
 			],
-			"page": 78
+			"generic": false,
+			"consumable": true
 		}
 	]
 }

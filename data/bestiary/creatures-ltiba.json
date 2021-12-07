@@ -1,17 +1,19 @@
 {
 	"creature": [
 		{
-			"source": "LTiBA",
 			"name": "Princess Sunset",
+			"isNpc": false,
+			"source": "LTiBA",
+			"page": 5,
 			"level": 2,
 			"rarity": "Common",
 			"alignment": "N",
 			"size": "Medium",
-			"creatureType": [
-				"Construct"
-			],
 			"traits": [
 				"Mindless"
+			],
+			"creatureType": [
+				"Construct"
 			],
 			"perception": {
 				"default": 6
@@ -54,6 +56,7 @@
 					"abilities": null
 				}
 			],
+			"hardness": 5,
 			"immunities": {
 				"damage": [
 					"bleed"
@@ -63,7 +66,6 @@
 					"disease"
 				]
 			},
-			"hardness": 5,
 			"abilitiesMid": [
 				{
 					"entries": [
@@ -88,19 +90,6 @@
 				"abilities": null,
 				"walk": 25
 			},
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 3,
-						"unit": "action"
-					},
-					"entries": [
-						"Small or smaller, headbutt, DC 14."
-					],
-					"name": "Trample",
-					"generic": true
-				}
-			],
 			"attacks": [
 				{
 					"range": "Melee",
@@ -114,12 +103,23 @@
 					"types": []
 				}
 			],
-			"isNpc": false,
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 3,
+						"unit": "action"
+					},
+					"entries": [
+						"Small or smaller, headbutt, DC 14."
+					],
+					"name": "Trample",
+					"generic": true
+				}
+			],
 			"inflicts": {
 				"damage": [],
 				"condition": []
 			},
-			"page": 5,
 			"misc": [
 				"MA"
 			]

@@ -1,18 +1,16 @@
 {
 	"item": [
 		{
-			"source": "Sli",
 			"name": "Flaying Knife",
-			"level": 8,
+			"source": "Sli",
+			"page": 60,
 			"type": "Item",
-			"category": "Held",
+			"level": 8,
 			"traits": [
 				"Uncommon",
 				"Magical",
 				"Necromancy"
 			],
-			"consumable": false,
-			"generic": false,
 			"price": {
 				"coin": "gp",
 				"amount": 480,
@@ -20,24 +18,24 @@
 			},
 			"usage": "held in 1 hand",
 			"bulk": "1",
+			"category": "Held",
 			"entries": [
 				"This long, thin +1 striking wounding dagger has a smooth edge on one side and a serrated edge on the other. Its {@condition persistent damage ||persistent bleed damage} comes from slicing away long strips of the target's flesh, and it deals {@damage 1d8} {@condition persistent damage ||persistent bleed damage} on a hit instead of {@dice 1d6}. A creature takes a \u20132 status penalty to saving throws against diseases for as long as it has {@condition persistent damage ||persistent bleed damage} from this knife."
 			],
-			"page": 60
+			"generic": false,
+			"consumable": false
 		},
 		{
-			"source": "Sli",
 			"name": "Gluttonous Spear",
-			"level": 6,
+			"source": "Sli",
+			"page": 60,
 			"type": "Item",
-			"category": "Held",
+			"level": 6,
 			"traits": [
 				"Uncommon",
 				"Magical",
 				"Necromancy"
 			],
-			"consumable": false,
-			"generic": false,
 			"price": {
 				"coin": "gp",
 				"amount": 250,
@@ -45,18 +43,20 @@
 			},
 			"usage": "held in 1 hand",
 			"bulk": "1",
+			"category": "Held",
 			"entries": [
 				"The head of this +1 striking returning spear is wrapped in greasy hide, and its head resembles a thick, clawed finger.",
 				"On a critical hit, the target is {@condition enfeebled|CRB|enfeebled 1} for 1 minute, and you gain {@dice 1d8} temporary Hit Points that last for 1 minute."
 			],
-			"page": 60
+			"generic": false,
+			"consumable": false
 		},
 		{
-			"source": "Sli",
 			"name": "Oily Button",
-			"level": 5,
+			"source": "Sli",
+			"page": 60,
 			"type": "Item",
-			"category": "Talisman",
+			"level": 5,
 			"traits": [
 				"Uncommon",
 				"Conjuration",
@@ -64,14 +64,13 @@
 				"Magical",
 				"Talisman"
 			],
-			"consumable": true,
-			"generic": false,
 			"price": {
 				"coin": "gp",
 				"amount": 30,
 				"note": null
 			},
 			"usage": "affixed to armor",
+			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
@@ -82,19 +81,20 @@
 				"frequency": null,
 				"trigger": "You succeed at an {@skill Athletics} check to {@action Disarm}"
 			},
-			"bulk": "\u2014",
+			"category": "Talisman",
 			"entries": [
 				"{@skill Athletics}.",
 				"A thin sheen of slick oil covers this gaudy button. When you activate the oily button, your attempts to {@action Disarm} your opponent of an item before the start of the opponent's next turn gain a +4 circumstance bonus instead of +2, and the \u20132 circumstance penalty to attacks with the item or other checks requiring a firm grasp on the item lasts until the end of its next turn or until it uses an {@action Interact} action to adjust its grip."
 			],
-			"page": 60
+			"generic": false,
+			"consumable": true
 		},
 		{
-			"source": "Sli",
 			"name": "Putrescent Glob",
-			"level": 7,
+			"source": "Sli",
+			"page": 61,
 			"type": "Item",
-			"category": "Talisman",
+			"level": 7,
 			"traits": [
 				"Uncommon",
 				"Conjuration",
@@ -102,14 +102,13 @@
 				"Magical",
 				"Talisman"
 			],
-			"consumable": true,
-			"generic": false,
 			"price": {
 				"coin": "gp",
 				"amount": 65,
 				"note": null
 			},
 			"usage": "affixed to a weapon",
+			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
@@ -120,18 +119,19 @@
 				"frequency": null,
 				"trigger": "You damage a creature that is {@condition sickened|CRB|sickened 1} with a {@action Strike} using the affixed weapon"
 			},
-			"bulk": "\u2014",
+			"category": "Talisman",
 			"entries": [
 				"This repulsive, hairy glob dangles from the end of your weapon. When you activate the putrescent glob, the creature you damaged must succeed at a DC 23 Fortitude save or its {@condition sickened} condition increases to {@condition sickened|CRB|sickened 2}, and it can't reduce its {@condition sickened} condition until the end of its next turn. On a critical failure, it's also {@condition slowed|CRB|slowed 1} until the end of its next turn."
 			],
-			"page": 61
+			"generic": false,
+			"consumable": true
 		},
 		{
-			"source": "Sli",
 			"name": "Sixfingers Elixir",
-			"level": "5+",
+			"source": "Sli",
+			"page": 61,
 			"type": "Item",
-			"category": "Elixir",
+			"level": "5+",
 			"traits": [
 				"Uncommon",
 				"Alchemical",
@@ -139,9 +139,8 @@
 				"Elixir",
 				"Polymorph"
 			],
-			"consumable": true,
-			"generic": "G",
 			"usage": "held in 1 hand",
+			"bulk": "L",
 			"activate": {
 				"activity": {
 					"number": 1,
@@ -152,11 +151,12 @@
 				"frequency": null,
 				"trigger": null
 			},
-			"bulk": "L",
+			"category": "Elixir",
 			"entries": [
 				"This gritty, spicy fluid causes you to grow a sixth finger on each hand and gives you a spiderlike grip.",
 				"You gain a +2 item bonus to your Reflex DC to keep from being Disarmed and a climb Speed of 20 feet for the listed duration."
 			],
+			"generic": "G",
 			"variants": [
 				{
 					"type": "lesser",
@@ -195,21 +195,19 @@
 					]
 				}
 			],
-			"page": 61
+			"consumable": true
 		},
 		{
-			"source": "Sli",
 			"name": "Slime Whip",
-			"level": 7,
+			"source": "Sli",
+			"page": 61,
 			"type": "Item",
-			"category": "Held",
+			"level": 7,
 			"traits": [
 				"Uncommon",
 				"Magical",
 				"Transmutation"
 			],
-			"consumable": false,
-			"generic": false,
 			"price": {
 				"coin": "gp",
 				"amount": 360,
@@ -217,6 +215,7 @@
 			},
 			"usage": "held in 1 hand",
 			"bulk": "1",
+			"category": "Held",
 			"entries": [
 				"This thick, greasy +1 striking shifting whip is made from a slimy pseudopod. You don't take the usual \u20132 circumstance penalty to your attack rolls when using the slime whip to make a lethal attack. The whip's form can be changed just like any weapon with the shifting rune, but it reverts to its original form as soon as it isn't wielded. When in its whip form, you can use the following action.",
 				{
@@ -237,14 +236,15 @@
 					]
 				}
 			],
-			"page": 61
+			"generic": false,
+			"consumable": false
 		},
 		{
-			"source": "Sli",
 			"name": "Slippery Ribbon",
-			"level": 1,
+			"source": "Sli",
+			"page": 61,
 			"type": "Item",
-			"category": "Talisman",
+			"level": 1,
 			"traits": [
 				"Uncommon",
 				"Consumable",
@@ -252,14 +252,13 @@
 				"Talisman",
 				"Transmutation"
 			],
-			"consumable": true,
-			"generic": false,
 			"price": {
 				"coin": "gp",
 				"amount": 12,
 				"note": null
 			},
 			"usage": "affixed to armor",
+			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
@@ -270,19 +269,20 @@
 				"frequency": null,
 				"trigger": "You succeed at an"
 			},
-			"bulk": "\u2014",
+			"category": "Talisman",
 			"entries": [
 				"{@skill Acrobatics} check to {@action Tumble Through}, but you don't have enough Speed to move all the way through the enemy's space; Requirements You are an expert in {@skill Acrobatics}.",
 				"This ribbon is constantly greasy to the touch and stains the armor it's affixed to. When you activate the slippery ribbon, your Speed increases by an amount necessary for you to move all the way through the enemy's space."
 			],
-			"page": 61
+			"generic": false,
+			"consumable": true
 		},
 		{
-			"source": "Sli",
 			"name": "Wand Of Noisome Acid",
-			"level": "6+",
+			"source": "Sli",
+			"page": 61,
 			"type": "Item",
-			"category": "Wand",
+			"level": "6+",
 			"traits": [
 				"Uncommon",
 				"Acid",
@@ -290,10 +290,9 @@
 				"Magical",
 				"Wand"
 			],
-			"consumable": false,
-			"generic": "G",
 			"usage": "held in 1 hand",
 			"bulk": "L",
+			"category": "Wand",
 			"entries": [
 				"This greasy stick emits a stomach-churning scent when held in a hand.",
 				{
@@ -314,6 +313,8 @@
 					]
 				}
 			],
+			"craftReq": "Supply a casting of acid arrow of the appropriate level.",
+			"generic": "G",
 			"variants": [
 				{
 					"type": "2nd-level spell",
@@ -356,25 +357,23 @@
 					"entries": []
 				}
 			],
-			"craftReq": "Supply a casting of acid arrow of the appropriate level.",
-			"page": 61
+			"consumable": false
 		},
 		{
-			"source": "Sli",
 			"name": "Wand Of Teeming Ghosts",
-			"level": "6+",
+			"source": "Sli",
+			"page": 61,
 			"type": "Item",
-			"category": "Wand",
+			"level": "6+",
 			"traits": [
 				"Uncommon",
 				"Magical",
 				"Necromancy",
 				"Wand"
 			],
-			"consumable": false,
-			"generic": "G",
 			"usage": "held in 1 hand",
 			"bulk": "L",
+			"category": "Wand",
 			"entries": [
 				"This pale wooden wand is carved to resemble a thigh bone with metal caps at each end. Ghostly tendrils seem to swirl around it every so often.",
 				{
@@ -411,6 +410,8 @@
 					]
 				}
 			],
+			"craftReq": "Supply a casting of false life of the appropriate level.",
+			"generic": "G",
 			"variants": [
 				{
 					"type": "2nd-level spell",
@@ -493,8 +494,7 @@
 					"entries": []
 				}
 			],
-			"craftReq": "Supply a casting of false life of the appropriate level.",
-			"page": 61
+			"consumable": false
 		}
 	]
 }

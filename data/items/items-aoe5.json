@@ -1,19 +1,246 @@
 {
 	"item": [
 		{
+			"name": "Cauldron Of Nightmares",
 			"source": "AoE5",
-			"name": "Fungal Armor",
-			"level": 15,
+			"page": 78,
 			"type": "Item",
+			"level": 17,
+			"traits": [
+				"Rare",
+				"Illusion",
+				"Invested",
+				"Magical"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 13000,
+				"note": null
+			},
+			"usage": "held in 2 hands",
+			"bulk": "1",
+			"category": "Held",
+			"entries": [
+				"Engraved with carvings of tortured souls, this green cauldron has two abilities that allow it to capture nightmares and then unleash them on the world. The cauldron has an affinity for preying on the minds of captives and prisoners, who take a \u20132 circumstance penalty to saving throws against it.",
+				{
+					"type": "activation",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"Interact"
+					],
+					"frequency": "once per day",
+					"trigger": null,
+					"requirements": null,
+					"effect": [
+						"The cauldron casts nightmare (DC 35) on a target creature that you know by name. The target must be on the same plane as you. If the target fails its save and is 15th level or lower, you add its nightmare to the cauldron. The cauldron can hold only six nightmares at a time; when you add a new nightmare, you choose which six to keep."
+					]
+				},
+				{
+					"type": "activation",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"Interact"
+					],
+					"frequency": "once per week",
+					"trigger": null,
+					"requirements": null,
+					"effect": [
+						"You spill the nightmarish contents of the cauldron onto the ground and choose one creature whose nightmare is stored in your cauldron. A nightmare copy of the chosen creature springs to life from the bubbling pile of horror.",
+						"The cauldron casts duplicate foe on the target, ignoring the range restriction, and the target automatically fails its saving throw. All enemies within 20 feet of the cauldron are subjected to a {@spell fear} spell (DC 35). All other nightmares stored in the cauldron are lost. The cauldron becomes totally inert and can't be used again for 1 week."
+					]
+				}
+			],
+			"craftReq": "Supply a casting of nightmare.",
+			"generic": false,
+			"consumable": false
+		},
+		{
+			"name": "Clockwork Cloak",
+			"source": "AoE5",
+			"page": 79,
+			"type": "Item",
+			"level": 18,
+			"traits": [
+				"Uncommon",
+				"Clockwork",
+				"Invested",
+				"Magical"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 20000,
+				"note": null
+			},
+			"usage": "worn cloak",
+			"bulk": "L",
+			"category": "Worn",
+			"entries": [
+				"Paper-thin interlocking gears and winding cogs make up this bronze cloak.",
+				{
+					"type": "activation",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"components": [
+						"Interact"
+					],
+					"frequency": "once per day",
+					"trigger": "You're struck by a melee attack with a held weapon",
+					"requirements": null,
+					"effect": [
+						"You deflect the blow and attempt to catch the weapon in the cloak's gears. Make an {@skill Athletics} check to {@action Disarm} the weapon."
+					]
+				},
+				{
+					"type": "activation",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"Interact"
+					],
+					"frequency": null,
+					"trigger": null,
+					"requirements": null,
+					"effect": [
+						"You wrap the cloak around yourself and the winding gears decelerate your body, causing you to enter standby mode. While in standby mode you don't need to eat, drink, or sleep. You remain aware of your surroundings but take a \u20134 penalty to {@skill Perception} checks. You can stay in standby mode indefinitely, although your body ages normally. You can leave standby mode as a free action. If you do so to initiate combat, you gain a +2 item bonus to your initiative roll."
+					]
+				}
+			],
+			"generic": false,
+			"consumable": false
+		},
+		{
+			"name": "Clockwork Helm",
+			"source": "AoE5",
+			"page": 79,
+			"type": "Item",
+			"level": 17,
+			"traits": [
+				"Rare",
+				"Clockwork",
+				"Invested",
+				"Magical"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 13000,
+				"note": null
+			},
+			"usage": "worn headwear",
+			"bulk": "L",
+			"category": "Worn",
+			"entries": [
+				"Rotating gears cover the outside of this imposing helmet. In order to function, the device must be wound for 10 minutes once every 24 hours. The clockwork helm has a calming and focusing effect on the mind. If you're affected by a detrimental condition caused by a {@trait mental} or {@trait emotion} effect, each round at the beginning of your turn, the gears of the helmet unwind and reduce the value of the condition by 1.",
+				"This effect works only if the condition's value can normally be reduced by simply waiting; otherwise the helmet has no effect.",
+				{
+					"type": "activation",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"envision"
+					],
+					"frequency": "once per day",
+					"trigger": null,
+					"requirements": "You've wound the clockwork helm for 10 minutes within the last 24 hours",
+					"effect": [
+						"You fire a beam of withering heat from the helmet's eye slits at a target. Make a spell or ranged attack roll (your choice) to affect the target. On a hit, the target takes {@damage 10d8} fire damage and is {@condition drained|CRB|drained 2}."
+					]
+				}
+			],
+			"generic": false,
+			"consumable": false
+		},
+		{
+			"name": "Clockwork Rejuvenator",
+			"source": "AoE5",
+			"page": 79,
+			"type": "Item",
+			"level": 18,
+			"traits": [
+				"Rare",
+				"Clockwork",
+				"Consumable",
+				"Magical",
+				"Necromancy"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 4500,
+				"note": null
+			},
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "varies",
+					"entry": "{@as 1} or {@as 2}"
+				},
+				"components": "Interact",
+				"requirements": "The round you activate the rejuvenator, you must first spend either 1",
+				"frequency": null,
+				"trigger": null
+			},
+			"category": "Consumable",
+			"entries": [
+				"This device has four finger-like latches centered around a whirring mass of gears.",
+				"After winding the clockwork rejuvenator, you can latch it to the chest of an adjacent recently dead creature and return it to life.",
+				"If you wound the rejuvenator using 1 {@action Interact} action, you can return to life a creature that died in the last 2 rounds, restoring it to 1 HP. If you wound the rejuvenator using 2 {@action Interact} actions, you can return to life a creature that died within the last 3 rounds. After attaching, the device continues to whirl for 1 minute, restoring 10 HP per round to the target. Thereafter, the clockwork rejuvenator loses its magic and becomes inert."
+			],
+			"generic": false,
+			"consumable": true
+		},
+		{
+			"name": "Forgotten Shell",
+			"source": "AoE5",
+			"page": 78,
+			"type": "Item",
+			"level": 13,
+			"traits": [
+				"Rare",
+				"Divination",
+				"Invested",
+				"Magical"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 2500,
+				"note": null
+			},
+			"usage": "worn armor",
+			"bulk": "4",
 			"category": "Armor",
+			"entries": [
+				"This +2 resilient full plate, crafted from grim plates of iron, covers the entire body except for small holes for the eyes and mouth. While wearing the armor, you gain the benefits of a {@spell nondetection} spell. Additionally, creatures attempting to {@action Recall Knowledge} about a subject involving you must succeed at a DC 30 Will save. On a success, they can attempt the check normally. On a failure, they can still attempt the check, but even if they successfully {@action Recall Knowledge}, they don't remember you (although they might remember other details about the event). Creatures that fail their save can make another attempt to {@action Recall Knowledge} about you, but they must wait 24 hours to do so.",
+				"You can spend 1 hour using blacksmithing tools to bind a helpless Medium humanoid inside the suit, which welds the suit shut and makes it impossible to remove without breaking it (Hardness 9, HP 36, BT 18). The humanoid inside the suit counts as being Invested while bound in this fashion and can't break out of the suit on its own. If the suit is welded shut, the creature gains the benefits above but also the following penalties: Whenever the humanoid attempts a {@skill Deception}, {@skill Diplomacy}, {@skill Intimidation}, or {@skill Performance} check, they must roll twice and use the worse result. Additionally, creatures the humanoid encounters have an initial attitude toward them of one degree worse than they normally would (for instance, {@condition unfriendly} instead of {@condition indifferent})."
+			],
+			"craftReq": "Supply a casting of nondetection and outcast's curse.",
+			"generic": false,
+			"consumable": false
+		},
+		{
+			"name": "Fungal Armor",
+			"source": "AoE5",
+			"page": 77,
+			"type": "Item",
+			"level": 15,
 			"traits": [
 				"Rare",
 				"Invested",
 				"Magical",
 				"Transmutation"
 			],
-			"consumable": false,
-			"generic": false,
 			"price": {
 				"coin": "gp",
 				"amount": 7200,
@@ -21,6 +248,7 @@
 			},
 			"usage": "worn armor",
 			"bulk": "1",
+			"category": "Armor",
 			"entries": [
 				"This +2 greater resilient studded leather is made of hardened fungus. Every day the armor grows dozens of unusual mushrooms that can be used for cooking, infused reagents, or common spell material components.",
 				{
@@ -42,28 +270,26 @@
 				}
 			],
 			"craftReq": "Supply a casting of cloudkill and gaseous form.",
-			"page": 77
+			"generic": false,
+			"consumable": false
 		},
 		{
-			"source": "AoE5",
 			"name": "Garrote Bolt",
-			"level": 15,
+			"source": "AoE5",
+			"page": 77,
 			"type": "Item",
-			"category": "Consumable",
+			"level": 15,
 			"traits": [
 				"Uncommon",
 				"Consumable",
 				"Magical",
 				"Transmutation"
 			],
-			"consumable": true,
-			"generic": false,
 			"price": {
 				"coin": "gp",
 				"amount": 1200,
 				"note": null
 			},
-			"ammunition": "bolt",
 			"activate": {
 				"activity": {
 					"number": 1,
@@ -74,26 +300,69 @@
 				"frequency": null,
 				"trigger": null
 			},
+			"ammunition": "bolt",
+			"category": "Consumable",
 			"entries": [
 				"The shaft of this silver bolt is engraved with wiry designs.",
 				"When a garrote bolt hits a target, it transforms into a silver garrote and wraps around one of the target's appendages, dealing an additional {@damage 2d12} {@condition persistent damage ||persistent slashing damage}. On a critical hit, it wraps around the target's throat, and the target can't breathe until the {@condition persistent damage} ends."
 			],
-			"page": 77
+			"generic": false,
+			"consumable": true
 		},
 		{
+			"name": "Gearblade",
 			"source": "AoE5",
-			"name": "Miogimo's Mask",
-			"level": 16,
+			"page": 79,
 			"type": "Item",
-			"category": "Worn",
+			"level": 17,
+			"traits": [
+				"Rare",
+				"Clockwork",
+				"Invested",
+				"Magical"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 13000,
+				"note": null
+			},
+			"usage": "held in 1 or 2 hands",
+			"bulk": "2",
+			"category": "Held",
+			"entries": [
+				"Shaped like a blade made from spinning gears, this +2 greater striking weapon can catch enemy weapons and grind up foes. In order to function, the gearblade must be wound for 10 minutes once every 24 hours. During this process, you can reconfigure the weapon to transform into a bastard sword, greatsword, longsword, or shortsword. It then gains all the features of the chosen weapon except that its Bulk is always 2 and it gains the disarm weapon trait and the versatile B weapon trait (which replaces any other {@trait versatile} trait the weapon might have). If you don't wind the gearblade, it becomes inert and has the statistics of a greatclub.",
+				{
+					"type": "activation",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"components": [
+						"envision"
+					],
+					"frequency": "once per day",
+					"trigger": null,
+					"requirements": "You've wound the gearblade for 10 minutes within the last 24 hours",
+					"effect": [
+						"The target's weapon is pulled through the gearblade's gears and shoots out the other side, landing 20 feet away in a direction of your choice. The target must attempt a DC 36 Reflex save. On a failure, the limb holding their weapon is also pulled into the gearblade, and the creature takes {@damage 3d12} bludgeoning damage. On a critical failure, they take {@damage 6d12} bludgeoning damage and the limb becomes unusable until healed by a {@spell regenerate} spell or a similar effect."
+					]
+				}
+			],
+			"generic": false,
+			"consumable": false
+		},
+		{
+			"name": "Miogimo's Mask",
+			"source": "AoE5",
+			"page": 77,
+			"type": "Item",
+			"level": 16,
 			"traits": [
 				"Unique",
 				"Invested",
 				"Magical",
 				"Necromancy"
 			],
-			"consumable": false,
-			"generic": false,
 			"price": {
 				"coin": "gp",
 				"amount": 9500,
@@ -101,6 +370,7 @@
 			},
 			"usage": "worn mask",
 			"bulk": "L",
+			"category": "Worn",
 			"entries": [
 				"The crime lord Miogimo almost always appears with this special mask, crafted with a piece of his soul. It has two forms.",
 				"In its first form, the mask depicts a silvery and angelic face; while wearing the mask in this form, your alignment appears as lawful good to creatures attempting to detect your alignment. In its second form, the mask depicts a gold-skinned demonic face; while wearing the mask in this form, your alignment appears as chaotic evil to creatures attempting to detect your alignment.",
@@ -158,21 +428,20 @@
 					]
 				}
 			],
-			"page": 77
+			"generic": false,
+			"consumable": false
 		},
 		{
-			"source": "AoE5",
 			"name": "Nightmare Cudgel",
-			"level": 11,
+			"source": "AoE5",
+			"page": 78,
 			"type": "Item",
-			"category": "Held",
+			"level": 11,
 			"traits": [
 				"Uncommon",
 				"Invested",
 				"Magical"
 			],
-			"consumable": false,
-			"generic": false,
 			"price": {
 				"coin": "gp",
 				"amount": 1000,
@@ -180,6 +449,7 @@
 			},
 			"usage": "held in 1 hand",
 			"bulk": "1",
+			"category": "Held",
 			"entries": [
 				"Crafted from polished wood, this seemingly mundane +1 striking club comes with a red leather strap near the handle. The mere sight of the cudgel in a guard's hand fills prisoners with dread.",
 				{
@@ -200,278 +470,8 @@
 					]
 				}
 			],
-			"page": 78
-		},
-		{
-			"source": "AoE5",
-			"name": "Cauldron Of Nightmares",
-			"level": 17,
-			"type": "Item",
-			"category": "Held",
-			"traits": [
-				"Rare",
-				"Illusion",
-				"Invested",
-				"Magical"
-			],
-			"consumable": false,
 			"generic": false,
-			"price": {
-				"coin": "gp",
-				"amount": 13000,
-				"note": null
-			},
-			"usage": "held in 2 hands",
-			"bulk": "1",
-			"entries": [
-				"Engraved with carvings of tortured souls, this green cauldron has two abilities that allow it to capture nightmares and then unleash them on the world. The cauldron has an affinity for preying on the minds of captives and prisoners, who take a \u20132 circumstance penalty to saving throws against it.",
-				{
-					"type": "activation",
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"components": [
-						"Interact"
-					],
-					"frequency": "once per day",
-					"trigger": null,
-					"requirements": null,
-					"effect": [
-						"The cauldron casts nightmare (DC 35) on a target creature that you know by name. The target must be on the same plane as you. If the target fails its save and is 15th level or lower, you add its nightmare to the cauldron. The cauldron can hold only six nightmares at a time; when you add a new nightmare, you choose which six to keep."
-					]
-				},
-				{
-					"type": "activation",
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"components": [
-						"Interact"
-					],
-					"frequency": "once per week",
-					"trigger": null,
-					"requirements": null,
-					"effect": [
-						"You spill the nightmarish contents of the cauldron onto the ground and choose one creature whose nightmare is stored in your cauldron. A nightmare copy of the chosen creature springs to life from the bubbling pile of horror.",
-						"The cauldron casts duplicate foe on the target, ignoring the range restriction, and the target automatically fails its saving throw. All enemies within 20 feet of the cauldron are subjected to a {@spell fear} spell (DC 35). All other nightmares stored in the cauldron are lost. The cauldron becomes totally inert and can't be used again for 1 week."
-					]
-				}
-			],
-			"craftReq": "Supply a casting of nightmare.",
-			"page": 78
-		},
-		{
-			"source": "AoE5",
-			"name": "Forgotten Shell",
-			"level": 13,
-			"type": "Item",
-			"category": "Armor",
-			"traits": [
-				"Rare",
-				"Divination",
-				"Invested",
-				"Magical"
-			],
-			"consumable": false,
-			"generic": false,
-			"price": {
-				"coin": "gp",
-				"amount": 2500,
-				"note": null
-			},
-			"usage": "worn armor",
-			"bulk": "4",
-			"entries": [
-				"This +2 resilient full plate, crafted from grim plates of iron, covers the entire body except for small holes for the eyes and mouth. While wearing the armor, you gain the benefits of a {@spell nondetection} spell. Additionally, creatures attempting to {@action Recall Knowledge} about a subject involving you must succeed at a DC 30 Will save. On a success, they can attempt the check normally. On a failure, they can still attempt the check, but even if they successfully {@action Recall Knowledge}, they don't remember you (although they might remember other details about the event). Creatures that fail their save can make another attempt to {@action Recall Knowledge} about you, but they must wait 24 hours to do so.",
-				"You can spend 1 hour using blacksmithing tools to bind a helpless Medium humanoid inside the suit, which welds the suit shut and makes it impossible to remove without breaking it (Hardness 9, HP 36, BT 18). The humanoid inside the suit counts as being Invested while bound in this fashion and can't break out of the suit on its own. If the suit is welded shut, the creature gains the benefits above but also the following penalties: Whenever the humanoid attempts a {@skill Deception}, {@skill Diplomacy}, {@skill Intimidation}, or {@skill Performance} check, they must roll twice and use the worse result. Additionally, creatures the humanoid encounters have an initial attitude toward them of one degree worse than they normally would (for instance, {@condition unfriendly} instead of {@condition indifferent})."
-			],
-			"craftReq": "Supply a casting of nondetection and outcast's curse.",
-			"page": 78
-		},
-		{
-			"source": "AoE5",
-			"name": "Clockwork Cloak",
-			"level": 18,
-			"type": "Item",
-			"category": "Worn",
-			"traits": [
-				"Uncommon",
-				"Clockwork",
-				"Invested",
-				"Magical"
-			],
-			"consumable": false,
-			"generic": false,
-			"price": {
-				"coin": "gp",
-				"amount": 20000,
-				"note": null
-			},
-			"usage": "worn cloak",
-			"bulk": "L",
-			"entries": [
-				"Paper-thin interlocking gears and winding cogs make up this bronze cloak.",
-				{
-					"type": "activation",
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"components": [
-						"Interact"
-					],
-					"frequency": "once per day",
-					"trigger": "You're struck by a melee attack with a held weapon",
-					"requirements": null,
-					"effect": [
-						"You deflect the blow and attempt to catch the weapon in the cloak's gears. Make an {@skill Athletics} check to {@action Disarm} the weapon."
-					]
-				},
-				{
-					"type": "activation",
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"components": [
-						"Interact"
-					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
-					"effect": [
-						"You wrap the cloak around yourself and the winding gears decelerate your body, causing you to enter standby mode. While in standby mode you don't need to eat, drink, or sleep. You remain aware of your surroundings but take a \u20134 penalty to {@skill Perception} checks. You can stay in standby mode indefinitely, although your body ages normally. You can leave standby mode as a free action. If you do so to initiate combat, you gain a +2 item bonus to your initiative roll."
-					]
-				}
-			],
-			"page": 79
-		},
-		{
-			"source": "AoE5",
-			"name": "Clockwork Helm",
-			"level": 17,
-			"type": "Item",
-			"category": "Worn",
-			"traits": [
-				"Rare",
-				"Clockwork",
-				"Invested",
-				"Magical"
-			],
-			"consumable": false,
-			"generic": false,
-			"price": {
-				"coin": "gp",
-				"amount": 13000,
-				"note": null
-			},
-			"usage": "worn headwear",
-			"bulk": "L",
-			"entries": [
-				"Rotating gears cover the outside of this imposing helmet. In order to function, the device must be wound for 10 minutes once every 24 hours. The clockwork helm has a calming and focusing effect on the mind. If you're affected by a detrimental condition caused by a {@trait mental} or {@trait emotion} effect, each round at the beginning of your turn, the gears of the helmet unwind and reduce the value of the condition by 1.",
-				"This effect works only if the condition's value can normally be reduced by simply waiting; otherwise the helmet has no effect.",
-				{
-					"type": "activation",
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"components": [
-						"envision"
-					],
-					"frequency": "once per day",
-					"trigger": null,
-					"requirements": "You've wound the clockwork helm for 10 minutes within the last 24 hours",
-					"effect": [
-						"You fire a beam of withering heat from the helmet's eye slits at a target. Make a spell or ranged attack roll (your choice) to affect the target. On a hit, the target takes {@damage 10d8} fire damage and is {@condition drained|CRB|drained 2}."
-					]
-				}
-			],
-			"page": 79
-		},
-		{
-			"source": "AoE5",
-			"name": "Clockwork Rejuvenator",
-			"level": 18,
-			"type": "Item",
-			"category": "Consumable",
-			"traits": [
-				"Rare",
-				"Clockwork",
-				"Consumable",
-				"Magical",
-				"Necromancy"
-			],
-			"consumable": true,
-			"generic": false,
-			"price": {
-				"coin": "gp",
-				"amount": 4500,
-				"note": null
-			},
-			"usage": "held in 1 hand",
-			"activate": {
-				"activity": {
-					"number": 1,
-					"unit": "varies",
-					"entry": "{@as 1} or {@as 2}"
-				},
-				"components": "Interact",
-				"requirements": "The round you activate the rejuvenator, you must first spend either 1",
-				"frequency": null,
-				"trigger": null
-			},
-			"bulk": "L",
-			"entries": [
-				"This device has four finger-like latches centered around a whirring mass of gears.",
-				"After winding the clockwork rejuvenator, you can latch it to the chest of an adjacent recently dead creature and return it to life.",
-				"If you wound the rejuvenator using 1 {@action Interact} action, you can return to life a creature that died in the last 2 rounds, restoring it to 1 HP. If you wound the rejuvenator using 2 {@action Interact} actions, you can return to life a creature that died within the last 3 rounds. After attaching, the device continues to whirl for 1 minute, restoring 10 HP per round to the target. Thereafter, the clockwork rejuvenator loses its magic and becomes inert."
-			],
-			"page": 79
-		},
-		{
-			"source": "AoE5",
-			"name": "Gearblade",
-			"level": 17,
-			"type": "Item",
-			"category": "Held",
-			"traits": [
-				"Rare",
-				"Clockwork",
-				"Invested",
-				"Magical"
-			],
-			"consumable": false,
-			"generic": false,
-			"price": {
-				"coin": "gp",
-				"amount": 13000,
-				"note": null
-			},
-			"usage": "held in 1 or 2 hands",
-			"bulk": "2",
-			"entries": [
-				"Shaped like a blade made from spinning gears, this +2 greater striking weapon can catch enemy weapons and grind up foes. In order to function, the gearblade must be wound for 10 minutes once every 24 hours. During this process, you can reconfigure the weapon to transform into a bastard sword, greatsword, longsword, or shortsword. It then gains all the features of the chosen weapon except that its Bulk is always 2 and it gains the disarm weapon trait and the versatile B weapon trait (which replaces any other {@trait versatile} trait the weapon might have). If you don't wind the gearblade, it becomes inert and has the statistics of a greatclub.",
-				{
-					"type": "activation",
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"components": [
-						"envision"
-					],
-					"frequency": "once per day",
-					"trigger": null,
-					"requirements": "You've wound the gearblade for 10 minutes within the last 24 hours",
-					"effect": [
-						"The target's weapon is pulled through the gearblade's gears and shoots out the other side, landing 20 feet away in a direction of your choice. The target must attempt a DC 36 Reflex save. On a failure, the limb holding their weapon is also pulled into the gearblade, and the creature takes {@damage 3d12} bludgeoning damage. On a critical failure, they take {@damage 6d12} bludgeoning damage and the limb becomes unusable until healed by a {@spell regenerate} spell or a similar effect."
-					]
-				}
-			],
-			"page": 79
+			"consumable": false
 		}
 	]
 }

@@ -1,40 +1,31 @@
 {
 	"spell": [
 		{
-			"source": "AoE2",
 			"name": "Admonishing Ray",
-			"level": 1,
-			"traditions": [
-				"Arcane",
-				"Divine"
-			],
-			"school": "N",
+			"source": "AoE2",
+			"page": 76,
 			"type": "SPELL",
 			"focus": false,
-			"components": {
-				"F": false,
-				"M": false,
-				"S": true,
-				"V": true
-			},
+			"level": 1,
 			"traits": [
 				"Attack",
 				"Necromancy",
 				"Nonlethal"
 			],
-			"entries": [
-				"A ray of energy bludgeons your target into submission without causing lasting harm. When you cast this spell, you choose whether the ray feels like a strong punch or slap. Make a spell attack roll. The ray deals {@damage 2d6} bludgeoning damage.",
-				{
-					"type": "successDegree",
-					"entries": {
-						"Critical Success": "The target takes double damage.",
-						"Success": "The target takes full damage."
-					}
-				}
+			"school": "N",
+			"traditions": [
+				"Arcane",
+				"Divine"
 			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
+			},
+			"components": {
+				"F": false,
+				"M": false,
+				"S": true,
+				"V": true
 			},
 			"range": {
 				"type": "point",
@@ -45,10 +36,22 @@
 				}
 			},
 			"targets": "1 creature",
+			"savingThrowBasic": false,
 			"duration": {
 				"type": null
 			},
-			"savingThrowBasic": false,
+			"sustain": false,
+			"dismiss": false,
+			"entries": [
+				"A ray of energy bludgeons your target into submission without causing lasting harm. When you cast this spell, you choose whether the ray feels like a strong punch or slap. Make a spell attack roll. The ray deals {@damage 2d6} bludgeoning damage.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "The target takes double damage.",
+						"Success": "The target takes full damage."
+					}
+				}
+			],
 			"heightened": {
 				"heightened": true,
 				"plus_x": {
@@ -57,33 +60,56 @@
 				},
 				"x": null,
 				"no_x": null
-			},
-			"dismiss": false,
-			"sustain": false,
-			"page": 76
+			}
 		},
 		{
-			"source": "AoE2",
 			"name": "Magical Fetters",
+			"source": "AoE2",
+			"page": 77,
+			"type": "SPELL",
+			"focus": false,
 			"level": 3,
+			"traits": [
+				"Uncommon",
+				"Conjuration",
+				"Incapacitation"
+			],
+			"school": "C",
 			"traditions": [
 				"Arcane",
 				"Occult"
 			],
-			"school": "C",
-			"type": "SPELL",
-			"focus": false,
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
 			"components": {
 				"F": false,
 				"M": false,
 				"S": true,
 				"V": true
 			},
-			"traits": [
-				"Uncommon",
-				"Conjuration",
-				"Incapacitation"
-			],
+			"range": {
+				"type": "point",
+				"entry": "60 feet",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"targets": "1 creature",
+			"savingThrow": "Reflex",
+			"savingThrowBasic": false,
+			"duration": {
+				"type": "timed",
+				"entry": "see below",
+				"duration": {
+					"number": 1,
+					"unit": "special"
+				}
+			},
+			"sustain": false,
+			"dismiss": false,
 			"entries": [
 				"Ghostly manacles launch from your outstretched hand and clasp around the target's limbs, impeding its movements.",
 				"The target must attempt a Reflex save.",
@@ -97,56 +123,20 @@
 					}
 				}
 			],
-			"cast": {
-				"number": 2,
-				"unit": "action"
-			},
-			"range": {
-				"type": "point",
-				"entry": "60 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 60
-				}
-			},
-			"targets": "1 creature",
-			"duration": {
-				"type": "timed",
-				"entry": "see below",
-				"duration": {
-					"number": 1,
-					"unit": "special"
-				}
-			},
-			"savingThrow": "Reflex",
-			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": false,
 				"plus_x": null,
 				"x": null,
 				"no_x": null
-			},
-			"dismiss": false,
-			"sustain": false,
-			"page": 77
+			}
 		},
 		{
-			"source": "AoE2",
 			"name": "Maze Of Locked Doors",
-			"level": 7,
-			"traditions": [
-				"Arcane",
-				"Occult"
-			],
-			"school": "C",
+			"source": "AoE2",
+			"page": 77,
 			"type": "SPELL",
 			"focus": false,
-			"components": {
-				"F": false,
-				"M": false,
-				"S": true,
-				"V": true
-			},
+			"level": 7,
 			"traits": [
 				"Uncommon",
 				"Conjuration",
@@ -154,6 +144,42 @@
 				"Incapacitation",
 				"Teleportation"
 			],
+			"school": "C",
+			"traditions": [
+				"Arcane",
+				"Occult"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": {
+				"F": false,
+				"M": false,
+				"S": true,
+				"V": true
+			},
+			"range": {
+				"type": "point",
+				"entry": "120 feet",
+				"distance": {
+					"type": "feet",
+					"amount": 120
+				}
+			},
+			"targets": "1 creature",
+			"savingThrow": "Will",
+			"savingThrowBasic": false,
+			"duration": {
+				"type": "timed",
+				"entry": "sustained",
+				"duration": {
+					"number": 1,
+					"unit": "unlimited"
+				}
+			},
+			"sustain": true,
+			"dismiss": false,
 			"entries": [
 				"The target of your spell is drawn into a long, twisting, extradimensional hallway blocked at 30-foot intervals with high-grade darkwood doors (Hardness 20, HP 80, BT 40, {@skill Athletics} DC 30 to {@action Force Open}) secured with average locks (DC 25 {@skill Thievery}, 4 successful checks required). A creature trapped within this hallway can escape only when the spell expires, or when they successfully pass through the number of doors determined by their save, either by breaking through the doors or picking the locks (or any combination of these, if the target must pass through multiple doors to escape). {@trait Teleportation} effects of 6th level or lower are automatically suppressed within the extradimensional hallway; higher-level {@trait teleportation} effects require the caster to succeed at a counteract check against your spell DC or they fail.",
 				{
@@ -166,65 +192,37 @@
 					}
 				}
 			],
-			"cast": {
-				"number": 2,
-				"unit": "action"
-			},
-			"range": {
-				"type": "point",
-				"entry": "120 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 120
-				}
-			},
-			"targets": "1 creature",
-			"duration": {
-				"type": "timed",
-				"entry": "sustained",
-				"duration": {
-					"number": 1,
-					"unit": "unlimited"
-				}
-			},
-			"savingThrow": "Will",
-			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": false,
 				"plus_x": null,
 				"x": null,
 				"no_x": null
-			},
-			"dismiss": false,
-			"sustain": true,
-			"page": 77
+			}
 		},
 		{
-			"source": "AoE2",
 			"name": "Putrefy Food And Drink",
+			"source": "AoE2",
+			"page": 77,
+			"type": "SPELL",
+			"focus": false,
 			"level": 1,
+			"traits": [
+				"Necromancy"
+			],
+			"school": "N",
 			"traditions": [
 				"Divine",
 				"Primal"
 			],
-			"school": "N",
-			"type": "SPELL",
-			"focus": false,
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
 			"components": {
 				"F": false,
 				"M": false,
 				"S": true,
 				"V": true
-			},
-			"traits": [
-				"Necromancy"
-			],
-			"entries": [
-				"You cause otherwise edible food to rot and spoil instantly, and water and other liquids to become brackish and undrinkable. Holy water, unholy water, and similar food and drink of significance are spoiled by this spell, unless they are associated with a deity of decay or putrefaction, but it has no effect on creatures of any type, potions, or alchemical elixirs. One cubic foot of liquid is roughly 8 gallons."
-			],
-			"cast": {
-				"number": 2,
-				"unit": "action"
 			},
 			"range": {
 				"type": "point",
@@ -235,10 +233,15 @@
 				}
 			},
 			"targets": "1 cubic foot of clean food or water",
+			"savingThrowBasic": false,
 			"duration": {
 				"type": null
 			},
-			"savingThrowBasic": false,
+			"sustain": false,
+			"dismiss": false,
+			"entries": [
+				"You cause otherwise edible food to rot and spoil instantly, and water and other liquids to become brackish and undrinkable. Holy water, unholy water, and similar food and drink of significance are spoiled by this spell, unless they are associated with a deity of decay or putrefaction, but it has no effect on creatures of any type, potions, or alchemical elixirs. One cubic foot of liquid is roughly 8 gallons."
+			],
 			"heightened": {
 				"heightened": true,
 				"plus_x": null,
@@ -253,39 +256,35 @@
 					}
 				],
 				"no_x": null
-			},
-			"dismiss": false,
-			"sustain": false,
-			"page": 77
+			}
 		},
 		{
-			"source": "AoE2",
 			"name": "Speaking Sky",
-			"level": 6,
-			"school": "D",
+			"source": "AoE2",
+			"page": 79,
 			"type": "FOCUS",
 			"focus": true,
+			"level": 6,
+			"traits": [
+				"Uncommon",
+				"Air",
+				"Divination"
+			],
+			"school": "D",
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
 			"components": {
 				"F": false,
 				"M": false,
 				"S": true,
 				"V": true
 			},
-			"traits": [
-				"Uncommon",
-				"Air",
-				"Divination"
-			],
-			"entries": [
-				"The air speaks to you. You can precisely sense any motion within 60 feet through vibration and air movement."
-			],
-			"cast": {
-				"number": 2,
-				"unit": "action"
-			},
 			"range": {
 				"type": null
 			},
+			"savingThrowBasic": false,
 			"duration": {
 				"type": "timed",
 				"entry": "1 round",
@@ -294,35 +293,51 @@
 					"unit": "round"
 				}
 			},
-			"savingThrowBasic": false,
+			"sustain": false,
+			"dismiss": false,
+			"entries": [
+				"The air speaks to you. You can precisely sense any motion within 60 feet through vibration and air movement."
+			],
 			"heightened": {
 				"heightened": false,
 				"plus_x": null,
 				"x": null,
 				"no_x": null
-			},
-			"dismiss": false,
-			"sustain": false,
-			"page": 79
+			}
 		},
 		{
-			"source": "AoE2",
 			"name": "Steal The Sky",
-			"level": 5,
-			"school": "V",
+			"source": "AoE2",
+			"page": 79,
 			"type": "FOCUS",
 			"focus": true,
+			"level": 5,
+			"traits": [
+				"Uncommon",
+				"Air",
+				"Evocation"
+			],
+			"school": "V",
+			"cast": {
+				"number": 1,
+				"unit": "reaction"
+			},
 			"components": {
 				"F": false,
 				"M": false,
 				"S": false,
 				"V": true
 			},
-			"traits": [
-				"Uncommon",
-				"Air",
-				"Evocation"
-			],
+			"trigger": "You make a successful unarmed",
+			"range": {
+				"type": null
+			},
+			"savingThrowBasic": false,
+			"duration": {
+				"type": null
+			},
+			"sustain": false,
+			"dismiss": false,
 			"entries": [
 				"{@action Strike} against a flying creature.",
 				"Targets the creature you hit Saving Throw Fortitude You deny a flying creature the support of the air.",
@@ -336,18 +351,6 @@
 					}
 				}
 			],
-			"cast": {
-				"number": 1,
-				"unit": "reaction"
-			},
-			"trigger": "You make a successful unarmed",
-			"range": {
-				"type": null
-			},
-			"duration": {
-				"type": null
-			},
-			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": true,
 				"plus_x": {
@@ -356,10 +359,7 @@
 				},
 				"x": null,
 				"no_x": null
-			},
-			"dismiss": false,
-			"sustain": false,
-			"page": 79
+			}
 		}
 	]
 }

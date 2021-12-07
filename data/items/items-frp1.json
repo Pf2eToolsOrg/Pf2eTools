@@ -1,11 +1,11 @@
 {
 	"item": [
 		{
-			"source": "FRP1",
 			"name": "Bonmuan Swapping Stone",
-			"level": "11+",
+			"source": "FRP1",
+			"page": 75,
 			"type": "Item",
-			"category": "Consumable",
+			"level": "11+",
 			"traits": [
 				"Uncommon",
 				"Conjuration",
@@ -13,9 +13,8 @@
 				"Magical",
 				"Teleportation"
 			],
-			"consumable": true,
-			"generic": "G",
 			"usage": "held in 1 hand",
+			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
@@ -26,12 +25,13 @@
 				"frequency": null,
 				"trigger": null
 			},
-			"bulk": "\u2014",
+			"category": "Consumable",
 			"entries": [
 				"This small, opalescent stone glows with a light that constantly shifts between colors. When you activate the stone, you throw it into a space within 100 feet. The stone then casts dimension door on you and transports you to itself. This destroys the stone.",
 				"You can instead hurl the stone at a creature in an attempt to bring that creature closer to you.",
 				"Make a ranged {@action Strike} against a creature using your highest proficiency with a ranged weapon. The swapping stone has a range increment of 15 feet. On a hit, the stone shatters against the creature, casting dimension door on the creature and causing it to instantly teleport to a space adjacent to you. An unwilling creature can resist this teleportation with a successful DC 28 Will save."
 			],
+			"generic": "G",
 			"variants": [
 				{
 					"type": "lesser swapping stone",
@@ -80,14 +80,14 @@
 					]
 				}
 			],
-			"page": 75
+			"consumable": true
 		},
 		{
-			"source": "FRP1",
 			"name": "Phoenix Fighting Fan",
-			"level": 20,
+			"source": "FRP1",
+			"page": 75,
 			"type": "Item",
-			"category": "Artifact",
+			"level": 20,
 			"traits": [
 				"Rare",
 				"Artifact",
@@ -95,10 +95,9 @@
 				"Healing",
 				"Magical"
 			],
-			"consumable": false,
-			"generic": false,
 			"usage": "held in 1 hand",
 			"bulk": "L",
+			"category": "Artifact",
 			"entries": [
 				"This elegant +3 greater striking flaming silver fighting fan (Pathfinder Lost Omens: Gods & Magic 120) features sharp silver feathers instead of traditional paper leaves in its design.",
 				{
@@ -139,14 +138,15 @@
 					]
 				}
 			],
-			"page": 75
+			"generic": false,
+			"consumable": false
 		},
 		{
-			"source": "FRP1",
 			"name": "Phoenix Necklace",
-			"level": 20,
+			"source": "FRP1",
+			"page": 75,
 			"type": "Item",
-			"category": "Artifact",
+			"level": 20,
 			"traits": [
 				"Rare",
 				"Artifact",
@@ -154,10 +154,9 @@
 				"Magical",
 				"Necromancy"
 			],
-			"consumable": false,
-			"generic": false,
 			"usage": "worn necklace",
 			"bulk": "\u2014",
+			"category": "Artifact",
 			"entries": [
 				"This brilliant jewelry is made from fine silver interwoven with a uniquely malleable form of ruby that causes the necklace to glimmer like a flickering fire. Hao Jin created the necklaces to mitigate the potential of death during the Ruby Phoenix Tournament pre-qualifier, and she specially attuned each phoenix necklace to the silver feathers she created for the pre-qualifying round. While the silver feathers themselves aren't magical, they are required to activate the necklace's power. Each team starts with 3 feathers {@condition hidden} in their headquarters; they acquire more through challenges and events.",
 				"Additionally, the tournament emissary's enforcers have the ability to deliver messages to the necklace's wearer at any time by casting sending, though the wearer can't respond.",
@@ -197,7 +196,8 @@
 					]
 				}
 			],
-			"page": 75
+			"generic": false,
+			"consumable": false
 		}
 	]
 }

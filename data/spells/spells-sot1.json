@@ -1,210 +1,49 @@
 {
 	"spell": [
 		{
+			"name": "Airburst",
 			"source": "SoT1",
-			"name": "Stumbling Curse",
+			"page": 76,
+			"type": "SPELL",
+			"focus": false,
 			"level": 1,
-			"school": "T",
-			"type": "FOCUS",
-			"focus": true,
-			"components": {
-				"F": false,
-				"M": false,
-				"S": true,
-				"V": false
-			},
 			"traits": [
 				"Uncommon",
-				"Curse",
-				"Hex",
-				"Transmutation",
-				"Witch"
+				"Air",
+				"Evocation"
 			],
-			"entries": [
-				"With a twist of a finger, you send a creature careening on a haphazard trajectory. The target must attempt a Reflex save.",
-				{
-					"type": "successDegree",
-					"entries": {
-						"Critical Success": "The target is unaffected.",
-						"Success": "The target takes a \u20132 status penalty to {@skill Athletics} and {@skill Acrobatics} checks.",
-						"Failure": "As success, and each time the target Strides, it uses the first 5 feet of movement of the {@action Stride} to move 5 feet in a random direction (this is forced movement). This has no effect on a creature with only 5 feet of movement.",
-						"Critical Failure": "As failure, except you control the direction of the target's first 5 feet of movement of the {@action Stride}."
-					}
-				}
+			"school": "V",
+			"traditions": [
+				"Arcane",
+				"Primal"
 			],
 			"cast": {
 				"number": 1,
 				"unit": "action"
 			},
-			"range": {
-				"type": "point",
-				"entry": "60 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 60
-				}
-			},
-			"targets": "1 creature",
-			"duration": {
-				"type": "timed",
-				"entry": "sustained up to 1 minute",
-				"duration": {
-					"number": 1,
-					"unit": "minute"
-				}
-			},
-			"savingThrow": "Reflex",
-			"savingThrowBasic": false,
-			"heightened": {
-				"heightened": false,
-				"plus_x": null,
-				"x": null,
-				"no_x": null
-			},
-			"dismiss": false,
-			"sustain": true,
-			"page": 75
-		},
-		{
-			"source": "SoT1",
-			"name": "Verminous Lure",
-			"level": 1,
-			"traditions": [
-				"Primal"
-			],
-			"school": "T",
-			"type": "SPELL",
-			"focus": false,
-			"components": {
-				"F": false,
-				"M": false,
-				"S": true,
-				"V": true
-			},
-			"traits": [
-				"Uncommon",
-				"Olfactory",
-				"Transmutation"
-			],
-			"entries": [
-				"Upon casting, the target emits a musk that's captivating to certain animals. Tiny animals and animal swarms of any size within range must attempt a Will save. On a failure, non-{@condition hostile} animals or animal swarms try to touch the target. If {@condition hostile}, such creatures choose to attack the target instead of other foes, if able to do so without spending additional actions or exposing themselves to additional danger.",
-				"Verminous lure doesn't change animals' attitudes towards the target and is easily overridden by more direct control, such as the {@action Command an Animal} action.",
-				"Animals with imprecise sense can use their scent as a precise sense against the target."
-			],
-			"cast": {
-				"number": 2,
-				"unit": "action"
-			},
-			"range": {
-				"type": "point",
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
-			},
-			"targets": "1 creature or object",
-			"duration": {
-				"type": "timed",
-				"entry": "10 minutes",
-				"duration": {
-					"number": 10,
-					"unit": "minute"
-				}
-			},
-			"savingThrowBasic": false,
-			"heightened": {
-				"heightened": false,
-				"plus_x": null,
-				"x": null,
-				"no_x": null
-			},
-			"dismiss": false,
-			"sustain": false,
-			"page": 76
-		},
-		{
-			"source": "SoT1",
-			"name": "Impeccable Flow",
-			"level": 2,
-			"traditions": [
-				"Arcane",
-				"Divine"
-			],
-			"school": "D",
-			"type": "SPELL",
-			"focus": false,
-			"components": {
-				"F": false,
-				"M": false,
-				"S": true,
-				"V": true
-			},
-			"traits": [
-				"Uncommon",
-				"Divination",
-				"Lawful"
-			],
-			"entries": [
-				"You attune yourself to an underlying cosmic order to the world. While you remain in tune with this power, you gain a +1 status bonus to {@skill Perception} checks, saving throws, and skill checks. If you critically fail any check while under the effects of this spell, the bonus ends and you instead have a \u20131 status penalty to all checks for the remaining duration."
-			],
-			"cast": {
-				"number": 2,
-				"unit": "action"
-			},
-			"range": {
-				"type": null
-			},
-			"duration": {
-				"type": "timed",
-				"entry": "1 minute",
-				"duration": {
-					"number": 1,
-					"unit": "minute"
-				}
-			},
-			"savingThrowBasic": false,
-			"heightened": {
-				"heightened": true,
-				"plus_x": null,
-				"x": [
-					{
-						"level": 5,
-						"entry": "The status bonus increases to +2."
-					},
-					{
-						"level": 8,
-						"entry": "The status bonus increases to +3."
-					}
-				],
-				"no_x": null
-			},
-			"dismiss": false,
-			"sustain": false,
-			"page": 76
-		},
-		{
-			"source": "SoT1",
-			"name": "Airburst",
-			"level": 1,
-			"traditions": [
-				"Arcane",
-				"Primal"
-			],
-			"school": "V",
-			"type": "SPELL",
-			"focus": false,
 			"components": {
 				"F": false,
 				"M": false,
 				"S": false,
 				"V": true
 			},
-			"traits": [
-				"Uncommon",
-				"Air",
-				"Evocation"
-			],
+			"range": {
+				"type": null
+			},
+			"area": {
+				"types": [
+					"Emanation"
+				],
+				"entry": "5-foot emanation"
+			},
+			"targets": "all creatures and unattended objects in the area",
+			"savingThrow": "Fortitude",
+			"savingThrowBasic": false,
+			"duration": {
+				"type": null
+			},
+			"sustain": false,
+			"dismiss": false,
 			"entries": [
 				"A blast of wind wildly pushes everything nearby.",
 				"Unattended objects of 1 Bulk or less are pushed 5 feet away from you. Large or smaller creatures must attempt a Fortitude save.",
@@ -218,25 +57,6 @@
 					}
 				}
 			],
-			"cast": {
-				"number": 1,
-				"unit": "action"
-			},
-			"range": {
-				"type": null
-			},
-			"area": {
-				"types": [
-					"Emanation"
-				],
-				"entry": "5-foot emanation"
-			},
-			"targets": "all creatures and unattended objects in the area",
-			"duration": {
-				"type": null
-			},
-			"savingThrow": "Fortitude",
-			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": true,
 				"plus_x": null,
@@ -247,40 +67,86 @@
 					}
 				],
 				"no_x": null
-			},
-			"dismiss": false,
-			"sustain": false,
-			"page": 76
+			}
 		},
 		{
+			"name": "Friendfetch",
 			"source": "SoT1",
-			"name": "Grave Impressions",
-			"level": 2,
-			"traditions": [
-				"Divine",
-				"Occult"
-			],
-			"school": "N",
+			"page": 77,
 			"type": "SPELL",
 			"focus": false,
+			"level": 1,
+			"traits": [
+				"Uncommon",
+				"Evocation",
+				"Force"
+			],
+			"school": "V",
+			"traditions": [
+				"Arcane",
+				"Occult"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
 			"components": {
 				"F": false,
 				"M": false,
 				"S": true,
 				"V": true
 			},
+			"range": {
+				"type": "point",
+				"entry": "30 feet",
+				"distance": {
+					"type": "feet",
+					"amount": 30
+				}
+			},
+			"targets": "1 or 2 willing creatures",
+			"savingThrowBasic": false,
+			"duration": {
+				"type": null
+			},
+			"sustain": false,
+			"dismiss": false,
+			"entries": [
+				"You shoot out ephemeral, telekinetic strands that drag each target directly toward you, stopping in the closest unoccupied space to you in this path. This is forced movement."
+			],
+			"heightened": {
+				"heightened": false,
+				"plus_x": null,
+				"x": null,
+				"no_x": null
+			}
+		},
+		{
+			"name": "Grave Impressions",
+			"source": "SoT1",
+			"page": 77,
+			"type": "SPELL",
+			"focus": false,
+			"level": 2,
 			"traits": [
 				"Uncommon",
 				"Necromancy"
 			],
-			"entries": [
-				"You project a fragment of your senses into the corpse.",
-				"While within 500 feet of the corpse (even if it's outside your line of sight or line of effect), you can see from where the target corpse had eyes using your normal visual senses, and you can hear from where the corpse had ears using your normal auditory senses. You can switch between your own vision and hearing, and the corpse's senses, with a single action that has the {@trait concentrate} trait. If the corpse naturally lacked eyes or hearing organs in life, you cannot use that sense when using this spell. If the corpse is moved from its location, the spell ends."
+			"school": "N",
+			"traditions": [
+				"Divine",
+				"Occult"
 			],
 			"cast": {
 				"number": 1,
 				"unit": "minute",
 				"entry": "1 minute"
+			},
+			"components": {
+				"F": false,
+				"M": false,
+				"S": true,
+				"V": true
 			},
 			"range": {
 				"type": "point",
@@ -291,6 +157,7 @@
 				}
 			},
 			"targets": "1 corpse",
+			"savingThrowBasic": false,
 			"duration": {
 				"type": "timed",
 				"entry": "10 minutes",
@@ -299,7 +166,12 @@
 					"unit": "minute"
 				}
 			},
-			"savingThrowBasic": false,
+			"sustain": false,
+			"dismiss": false,
+			"entries": [
+				"You project a fragment of your senses into the corpse.",
+				"While within 500 feet of the corpse (even if it's outside your line of sight or line of effect), you can see from where the target corpse had eyes using your normal visual senses, and you can hear from where the corpse had ears using your normal auditory senses. You can switch between your own vision and hearing, and the corpse's senses, with a single action that has the {@trait concentrate} trait. If the corpse naturally lacked eyes or hearing organs in life, you cannot use that sense when using this spell. If the corpse is moved from its location, the spell ends."
+			],
 			"heightened": {
 				"heightened": true,
 				"plus_x": null,
@@ -314,22 +186,89 @@
 					}
 				],
 				"no_x": null
-			},
-			"dismiss": false,
-			"sustain": false,
-			"page": 77
+			}
 		},
 		{
+			"name": "Impeccable Flow",
 			"source": "SoT1",
-			"name": "Mind Games",
+			"page": 76,
+			"type": "SPELL",
+			"focus": false,
 			"level": 2,
+			"traits": [
+				"Uncommon",
+				"Divination",
+				"Lawful"
+			],
+			"school": "D",
+			"traditions": [
+				"Arcane",
+				"Divine"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": {
+				"F": false,
+				"M": false,
+				"S": true,
+				"V": true
+			},
+			"range": {
+				"type": null
+			},
+			"savingThrowBasic": false,
+			"duration": {
+				"type": "timed",
+				"entry": "1 minute",
+				"duration": {
+					"number": 1,
+					"unit": "minute"
+				}
+			},
+			"sustain": false,
+			"dismiss": false,
+			"entries": [
+				"You attune yourself to an underlying cosmic order to the world. While you remain in tune with this power, you gain a +1 status bonus to {@skill Perception} checks, saving throws, and skill checks. If you critically fail any check while under the effects of this spell, the bonus ends and you instead have a \u20131 status penalty to all checks for the remaining duration."
+			],
+			"heightened": {
+				"heightened": true,
+				"plus_x": null,
+				"x": [
+					{
+						"level": 5,
+						"entry": "The status bonus increases to +2."
+					},
+					{
+						"level": 8,
+						"entry": "The status bonus increases to +3."
+					}
+				],
+				"no_x": null
+			}
+		},
+		{
+			"name": "Mind Games",
+			"source": "SoT1",
+			"page": 77,
+			"type": "SPELL",
+			"focus": false,
+			"level": 2,
+			"traits": [
+				"Uncommon",
+				"Enchantment",
+				"Mental"
+			],
+			"school": "E",
 			"traditions": [
 				"Arcane",
 				"Occult"
 			],
-			"school": "E",
-			"type": "SPELL",
-			"focus": false,
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
 			"components": {
 				"F": true,
 				"M": false,
@@ -337,11 +276,27 @@
 				"V": true
 			},
 			"cost": "3 gp game piece focus",
-			"traits": [
-				"Uncommon",
-				"Enchantment",
-				"Mental"
-			],
+			"range": {
+				"type": "point",
+				"entry": "30 feet",
+				"distance": {
+					"type": "feet",
+					"amount": 30
+				}
+			},
+			"targets": "1 creature",
+			"savingThrow": "Will",
+			"savingThrowBasic": false,
+			"duration": {
+				"type": "timed",
+				"entry": "sustained up to 1 minute",
+				"duration": {
+					"number": 1,
+					"unit": "minute"
+				}
+			},
+			"sustain": true,
+			"dismiss": false,
 			"entries": [
 				"You lock minds with the target, trying to mentally subdue them. The target must attempt a Will save. Each time you Sustain this Spell, the target attempts another Will save.",
 				{
@@ -354,19 +309,49 @@
 					}
 				}
 			],
+			"heightened": {
+				"heightened": false,
+				"plus_x": null,
+				"x": null,
+				"no_x": null
+			}
+		},
+		{
+			"name": "Stumbling Curse",
+			"source": "SoT1",
+			"page": 75,
+			"type": "FOCUS",
+			"focus": true,
+			"level": 1,
+			"traits": [
+				"Uncommon",
+				"Curse",
+				"Hex",
+				"Transmutation",
+				"Witch"
+			],
+			"school": "T",
 			"cast": {
-				"number": 2,
+				"number": 1,
 				"unit": "action"
+			},
+			"components": {
+				"F": false,
+				"M": false,
+				"S": true,
+				"V": false
 			},
 			"range": {
 				"type": "point",
-				"entry": "30 feet",
+				"entry": "60 feet",
 				"distance": {
 					"type": "feet",
-					"amount": 30
+					"amount": 60
 				}
 			},
 			"targets": "1 creature",
+			"savingThrow": "Reflex",
+			"savingThrowBasic": false,
 			"duration": {
 				"type": "timed",
 				"entry": "sustained up to 1 minute",
@@ -375,46 +360,52 @@
 					"unit": "minute"
 				}
 			},
-			"savingThrow": "Will",
-			"savingThrowBasic": false,
+			"sustain": true,
+			"dismiss": false,
+			"entries": [
+				"With a twist of a finger, you send a creature careening on a haphazard trajectory. The target must attempt a Reflex save.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "The target is unaffected.",
+						"Success": "The target takes a \u20132 status penalty to {@skill Athletics} and {@skill Acrobatics} checks.",
+						"Failure": "As success, and each time the target Strides, it uses the first 5 feet of movement of the {@action Stride} to move 5 feet in a random direction (this is forced movement). This has no effect on a creature with only 5 feet of movement.",
+						"Critical Failure": "As failure, except you control the direction of the target's first 5 feet of movement of the {@action Stride}."
+					}
+				}
+			],
 			"heightened": {
 				"heightened": false,
 				"plus_x": null,
 				"x": null,
 				"no_x": null
-			},
-			"dismiss": false,
-			"sustain": true,
-			"page": 77
+			}
 		},
 		{
+			"name": "Verminous Lure",
 			"source": "SoT1",
-			"name": "Friendfetch",
-			"level": 1,
-			"traditions": [
-				"Arcane",
-				"Occult"
-			],
-			"school": "V",
+			"page": 76,
 			"type": "SPELL",
 			"focus": false,
+			"level": 1,
+			"traits": [
+				"Uncommon",
+				"Olfactory",
+				"Transmutation"
+			],
+			"school": "T",
+			"traditions": [
+				"Primal"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
 			"components": {
 				"F": false,
 				"M": false,
 				"S": true,
 				"V": true
-			},
-			"traits": [
-				"Uncommon",
-				"Evocation",
-				"Force"
-			],
-			"entries": [
-				"You shoot out ephemeral, telekinetic strands that drag each target directly toward you, stopping in the closest unoccupied space to you in this path. This is forced movement."
-			],
-			"cast": {
-				"number": 2,
-				"unit": "action"
 			},
 			"range": {
 				"type": "point",
@@ -424,20 +415,29 @@
 					"amount": 30
 				}
 			},
-			"targets": "1 or 2 willing creatures",
-			"duration": {
-				"type": null
-			},
+			"targets": "1 creature or object",
 			"savingThrowBasic": false,
+			"duration": {
+				"type": "timed",
+				"entry": "10 minutes",
+				"duration": {
+					"number": 10,
+					"unit": "minute"
+				}
+			},
+			"sustain": false,
+			"dismiss": false,
+			"entries": [
+				"Upon casting, the target emits a musk that's captivating to certain animals. Tiny animals and animal swarms of any size within range must attempt a Will save. On a failure, non-{@condition hostile} animals or animal swarms try to touch the target. If {@condition hostile}, such creatures choose to attack the target instead of other foes, if able to do so without spending additional actions or exposing themselves to additional danger.",
+				"Verminous lure doesn't change animals' attitudes towards the target and is easily overridden by more direct control, such as the {@action Command an Animal} action.",
+				"Animals with imprecise sense can use their scent as a precise sense against the target."
+			],
 			"heightened": {
 				"heightened": false,
 				"plus_x": null,
 				"x": null,
 				"no_x": null
-			},
-			"dismiss": false,
-			"sustain": false,
-			"page": 77
+			}
 		}
 	]
 }

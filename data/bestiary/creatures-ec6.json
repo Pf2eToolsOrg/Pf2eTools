@@ -1,8 +1,166 @@
 {
 	"creature": [
 		{
+			"name": "Barking Stag",
+			"isNpc": false,
 			"source": "EC6",
+			"page": 40,
+			"level": 13,
+			"rarity": "Rare",
+			"alignment": "N",
+			"size": "Large",
+			"creatureType": [
+				"Animal"
+			],
+			"perception": {
+				"default": 28
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [],
+				"vague": [],
+				"other": [
+					"low-light vision"
+				]
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 24
+				},
+				"Athletics": {
+					"default": 27
+				},
+				"Survival": {
+					"default": 26
+				}
+			},
+			"abilityMods": {
+				"Str": 8,
+				"Dex": 5,
+				"Con": 4,
+				"Int": -4,
+				"Wis": 5,
+				"Cha": 1
+			},
+			"abilitiesTop": [
+				{
+					"entries": [
+						"When it isn't injured, a barking stag benefits from {@action Cover Tracks}, regardless of its travel Speed."
+					],
+					"name": "Foil the Hunt"
+				}
+			],
+			"ac": {
+				"default": 34,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 21
+				},
+				"Ref": {
+					"default": 26
+				},
+				"Will": {
+					"default": 23
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 245,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"weaknesses": [
+				{
+					"name": "arrow vulnerability"
+				}
+			],
+			"abilitiesMid": [
+				{
+					"entries": [
+						"A barking stag takes 10 additional damage from arrows (but not bolts or other ammunition)."
+					],
+					"name": "Arrow Vulnerability"
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 45
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "antler",
+					"attack": 16,
+					"traits": [
+						"grapple"
+					],
+					"effects": [
+						"Grab"
+					],
+					"damage": "{@damage 3d10+12} piercing plus Grab",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "hoof",
+					"attack": 16,
+					"traits": null,
+					"effects": [],
+					"damage": "{@damage 3d8+12} bludgeoning",
+					"types": [
+						"bludgeoning"
+					]
+				}
+			],
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"requirements": "The barking stag has a creature {@condition grabbed} with its antler",
+					"entries": [
+						"The barking stag tosses the {@condition grabbed} creature 20 feet into the air and up to 15 feet away in a direction of its choice, dealing {@damage 3d10+12} piercing damage plus falling damage to the creature."
+					],
+					"name": "Antler Toss"
+				},
+				{
+					"activity": {
+						"number": 3,
+						"unit": "action"
+					},
+					"entries": [
+						"Medium or smaller, hoof, DC 30."
+					],
+					"name": "Trample",
+					"generic": true
+				}
+			],
+			"inflicts": {
+				"damage": [
+					"bludgeoning",
+					"piercing"
+				],
+				"condition": [
+					"{@condition grabbed}"
+				]
+			},
+			"misc": [
+				"MA",
+				"CC"
+			]
+		},
+		{
 			"name": "Convergent Giant Eagle",
+			"isNpc": false,
+			"source": "EC6",
+			"page": 12,
 			"level": 15,
 			"rarity": "Rare",
 			"alignment": "LN",
@@ -105,7 +263,6 @@
 				"walk": 10,
 				"fly ": 60
 			},
-			"abilitiesBot": [],
 			"attacks": [
 				{
 					"range": "Melee",
@@ -119,7 +276,7 @@
 					]
 				}
 			],
-			"isNpc": false,
+			"abilitiesBot": [],
 			"inflicts": {
 				"damage": [
 					"piercing"
@@ -128,24 +285,244 @@
 					"{@condition confused}"
 				]
 			},
-			"page": 12,
 			"misc": [
 				"MA",
 				"CC"
 			]
 		},
 		{
+			"name": "Convergent Kendley Nathrael",
+			"isNpc": false,
 			"source": "EC6",
+			"page": 87,
+			"level": 19,
+			"rarity": "Unique",
+			"alignment": "LN",
+			"size": "Medium",
+			"traits": [
+				"Elf",
+				"Human"
+			],
+			"creatureType": [
+				"Humanoid"
+			],
+			"perception": {
+				"default": 35
+			},
+			"languages": {
+				"languages": [
+					"Common",
+					"Elven",
+					"Sylvan",
+					"Utopian"
+				],
+				"languageAbilities": [
+					"convergent link"
+				]
+			},
+			"skills": {
+				"Athletics": {
+					"default": 32
+				},
+				"Diplomacy": {
+					"default": 35
+				},
+				"Intimidation": {
+					"default": 33
+				},
+				"Survival": {
+					"default": 30
+				}
+			},
+			"abilityMods": {
+				"Str": 5,
+				"Dex": 0,
+				"Con": 4,
+				"Int": 3,
+				"Wis": 3,
+				"Cha": 6
+			},
+			"abilitiesTop": [
+				{
+					"entries": [
+						"+30 Str +5, Dex +0, Con +4, Int +3, Wis +3, Cha +6 Items +2 greater striking bastard sword, +2 greater resilient chain mail, +2 greater striking composite longbow (20 arrows), key to strongbox in area A10."
+					],
+					"name": "Survival"
+				},
+				{
+					"entries": [
+						"Creatures with this ability can communicate with each other by manifesting an aura of wispy Utopian runes. This has the effects of telepathy with a range of 300 feet, but requires line of sight."
+					],
+					"name": "Convergent Link"
+				}
+			],
+			"ac": {
+				"default": 41,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 33
+				},
+				"Ref": {
+					"default": 29
+				},
+				"Will": {
+					"default": 32
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 440,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"weaknesses": [
+				{
+					"amount": 20,
+					"name": "chaotic"
+				}
+			],
+			"abilitiesMid": [
+				{
+					"entries": [
+						"Kendley is {@condition confused}, {@condition fascinated}, or {@condition frightened}, she loses her innate spells and her convergent link and convergent tactics abilities."
+					],
+					"name": "Disrupted Link While"
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "bastard sword",
+					"attack": 34,
+					"traits": [
+						"magical",
+						"two-hand d12"
+					],
+					"effects": [
+						"convergent tactics"
+					],
+					"damage": "{@damage 3d8+11} slashing plus convergent tactics",
+					"types": [
+						"slashing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "composite longbow",
+					"attack": 29,
+					"traits": [
+						"deadly 2d10",
+						"magical",
+						"propulsive",
+						"range increment 100 feet",
+						"reload 0",
+						"volley 30 feet"
+					],
+					"effects": [
+						"convergent tactics"
+					],
+					"damage": "{@damage 3d8+11} piercing plus convergent tactics",
+					"types": [
+						"piercing"
+					]
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Divine Innate",
+					"type": "Innate",
+					"tradition": "Divine",
+					"DC": 39,
+					"attack": 31,
+					"entry": {
+						"0": {
+							"level": 10,
+							"spells": [
+								{
+									"name": "shield"
+								},
+								{
+									"name": "telekinetic projectile"
+								}
+							]
+						},
+						"2": {
+							"spells": [
+								{
+									"name": "calm emotions",
+									"amount": "at will"
+								},
+								{
+									"name": "telekinetic maneuver",
+									"amount": "at will"
+								}
+							]
+						},
+						"10": {
+							"spells": [
+								{
+									"name": "divine wrath",
+									"notes": [
+										"lawful only"
+									]
+								}
+							]
+						}
+					}
+				}
+			],
+			"abilitiesBot": [
+				{
+					"entries": [
+						"Kendley casts calm emotions, creatures {@condition controlled} by the convergence lattice automatically fail their saving throws against the effect, but they can still use {@condition hostile} actions against creatures who aren't {@condition controlled} by the convergence lattice. Each time she Sustains the Spell, creatures affected by the spell are exposed to the convergence lattice as though they had been in conversation with her."
+					],
+					"name": "Convergent Calm When"
+				},
+				{
+					"entries": [
+						"Kendley's attacks (including telekinetic projectile) deal an extra {@dice 4d8} damage to creatures within reach of one of her allies who has convergent tactics."
+					],
+					"name": "Convergent Tactics"
+				}
+			],
+			"inflicts": {
+				"damage": [
+					"piercing",
+					"slashing"
+				],
+				"condition": [
+					"{@condition confused}",
+					"{@condition controlled}"
+				]
+			},
+			"misc": [
+				"MA",
+				"CC",
+				"UW"
+			]
+		},
+		{
 			"name": "Convergent Soldier",
+			"isNpc": false,
+			"source": "EC6",
+			"page": 14,
 			"level": 16,
 			"rarity": "Rare",
 			"alignment": "LN",
 			"size": "Medium",
-			"creatureType": [
-				"Humanoid"
-			],
 			"traits": [
 				"Human"
+			],
+			"creatureType": [
+				"Humanoid"
 			],
 			"perception": {
 				"default": 28
@@ -237,37 +614,6 @@
 				"abilities": null,
 				"walk": 25
 			},
-			"abilitiesBot": [
-				{
-					"entries": [
-						"The convergent soldier's attacks deal an extra {@dice 4d8} damage to creatures within reach of one of their allies with convergent tactics."
-					],
-					"name": "Convergent Tactics"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"traits": [
-						"divine",
-						"illusion",
-						"mental",
-						"visual"
-					],
-					"entries": [
-						"Utopian runes burst from the convergent soldier. Any creature {@condition stupefied} by the convergence lattice who is within 100 feet of the convergent soldier and can see the runes must attempt a DC 34 Will save.",
-						{
-							"type": "successDegree",
-							"entries": {
-								"Failure": "For 1 round, the creature is {@condition flat-footed} to creatures with the convergent link ability and counts as an ally with convergent tactics for the purposes of activating the convergent tactics ability.",
-								"Critical Failure": "As failure, and the creature is also {@condition slowed|CRB|slowed 1} for 1 round due to the information overload."
-							}
-						}
-					],
-					"name": "Force Communication"
-				}
-			],
 			"attacks": [
 				{
 					"range": "Melee",
@@ -304,7 +650,37 @@
 					]
 				}
 			],
-			"isNpc": false,
+			"abilitiesBot": [
+				{
+					"entries": [
+						"The convergent soldier's attacks deal an extra {@dice 4d8} damage to creatures within reach of one of their allies with convergent tactics."
+					],
+					"name": "Convergent Tactics"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"divine",
+						"illusion",
+						"mental",
+						"visual"
+					],
+					"entries": [
+						"Utopian runes burst from the convergent soldier. Any creature {@condition stupefied} by the convergence lattice who is within 100 feet of the convergent soldier and can see the runes must attempt a DC 34 Will save.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Failure": "For 1 round, the creature is {@condition flat-footed} to creatures with the convergent link ability and counts as an ally with convergent tactics for the purposes of activating the convergent tactics ability.",
+								"Critical Failure": "As failure, and the creature is also {@condition slowed|CRB|slowed 1} for 1 round due to the information overload."
+							}
+						}
+					],
+					"name": "Force Communication"
+				}
+			],
 			"inflicts": {
 				"damage": [
 					"piercing",
@@ -317,7 +693,6 @@
 					"{@condition stupefied}"
 				]
 			},
-			"page": 14,
 			"misc": [
 				"MA",
 				"RA",
@@ -326,17 +701,450 @@
 			]
 		},
 		{
+			"name": "Elysian Sheep",
+			"isNpc": false,
 			"source": "EC6",
+			"page": 32,
+			"level": 7,
+			"rarity": "Rare",
+			"alignment": "NG",
+			"size": "Large",
+			"creatureType": [
+				"Animal"
+			],
+			"perception": {
+				"default": 18
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [],
+				"vague": [],
+				"other": [
+					"low-light vision"
+				]
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 17
+				},
+				"Athletics": {
+					"default": 15
+				},
+				"Survival": {
+					"default": 16
+				}
+			},
+			"abilityMods": {
+				"Str": 2,
+				"Dex": 6,
+				"Con": 4,
+				"Int": -4,
+				"Wis": 3,
+				"Cha": -1
+			},
+			"abilitiesTop": [
+				{
+					"entries": [
+						"Inclines and rocky areas are not difficult terrain for an Elysian sheep."
+					],
+					"name": "Nimble Grazer"
+				}
+			],
+			"ac": {
+				"default": 25,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 15
+				},
+				"Ref": {
+					"default": 18
+				},
+				"Will": {
+					"default": 12
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 140,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"weaknesses": [
+				{
+					"amount": 5,
+					"name": "evil"
+				}
+			],
+			"abilitiesMid": [
+				{
+					"entries": [
+						"Elysian sheep gains the {@condition fleeing} condition whenever it has the {@condition frightened} condition."
+					],
+					"name": "Cowardly An"
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 40
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "horn",
+					"attack": 16,
+					"traits": null,
+					"effects": [
+						"{@dice 2d8+5}"
+					],
+					"damage": "{@dice 2d8+5} plus {@damage 1d6} good",
+					"types": [
+						"good"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "hoof",
+					"attack": 16,
+					"traits": null,
+					"effects": [
+						"{@dice 2d6+5}"
+					],
+					"damage": "{@dice 2d6+5} plus {@damage 1d6} good",
+					"types": [
+						"good"
+					]
+				}
+			],
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 3,
+						"unit": "action"
+					},
+					"entries": [
+						"Medium or smaller, hoof, DC 24."
+					],
+					"name": "Trample",
+					"generic": true
+				}
+			],
+			"inflicts": {
+				"damage": [
+					"good"
+				],
+				"condition": [
+					"{@condition fleeing}"
+				]
+			},
+			"misc": [
+				"MA",
+				"CC"
+			]
+		},
+		{
+			"name": "Elysian Titan",
+			"isNpc": false,
+			"source": "EC6",
+			"page": 82,
+			"level": 21,
+			"rarity": "Rare",
+			"alignment": "CG",
+			"size": "Gargantuan",
+			"traits": [
+				"Titan"
+			],
+			"creatureType": [
+				"Humanoid"
+			],
+			"perception": {
+				"default": 36
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [],
+				"vague": [],
+				"other": [
+					"darkvision",
+					"true seeing"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Abyssal",
+					"Celestial",
+					"Common"
+				],
+				"languageAbilities": [
+					"telepathy 100 feet"
+				]
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 36
+				},
+				"Athletics": {
+					"default": 43
+				},
+				"Crafting": {
+					"default": 37
+				},
+				"Diplomacy": {
+					"default": 37
+				},
+				"Religion": {
+					"default": 37
+				},
+				"Survival": {
+					"default": 37
+				}
+			},
+			"abilityMods": {
+				"Str": 10,
+				"Dex": 7,
+				"Con": 8,
+				"Int": 6,
+				"Wis": 8,
+				"Cha": 6
+			},
+			"items": [
+				"+2 greater resilient breastplate",
+				"+3 greater striking greatpick"
+			],
+			"abilitiesTop": [],
+			"ac": {
+				"default": 46,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 37
+				},
+				"Ref": {
+					"default": 34
+				},
+				"Will": {
+					"default": 35
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 400,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"immunities": {
+				"damage": [],
+				"condition": [
+					"death effects",
+					"disease"
+				]
+			},
+			"abilitiesMid": [
+				{
+					"traits": [
+						"aura",
+						"divine",
+						"illusion",
+						"mental"
+					],
+					"entries": [
+						"100 feet. Titans warp perception and distance around them to seem even larger and more imposing. A creature that enters or begins its turn within the emanation must succeed at a DC 44 Will save or its movement toward the titan is movement over difficult terrain (greater difficult terrain on a critical failure) for 1 round."
+					],
+					"name": "Impossible Stature"
+				}
+			],
+			"speed": {
+				"abilities": [
+					"air walk"
+				],
+				"walk": 40
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "greatpick",
+					"attack": 41,
+					"traits": [
+						"fatal d12",
+						"magical",
+						"reach 30 feet"
+					],
+					"effects": [],
+					"damage": "{@damage 4d10+20} piercing",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "fist",
+					"attack": 38,
+					"traits": [
+						"agile",
+						"reach 30 feet"
+					],
+					"effects": [],
+					"damage": "{@damage 4d8+20} bludgeoning",
+					"types": [
+						"bludgeoning"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "rock",
+					"attack": 38,
+					"traits": [
+						"brutal",
+						"range increment 200 feet"
+					],
+					"effects": [],
+					"damage": "{@damage 3d12+20} bludgeoning",
+					"types": [
+						"bludgeoning"
+					]
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Divine Innate",
+					"type": "Innate",
+					"tradition": "Divine",
+					"DC": 44,
+					"entry": {
+						"5": {
+							"spells": [
+								{
+									"name": "sending",
+									"amount": 3
+								}
+							]
+						},
+						"6": {
+							"spells": [
+								{
+									"name": "scrying",
+									"amount": 3
+								}
+							]
+						},
+						"7": {
+							"spells": [
+								{
+									"name": "plane shift",
+									"amount": "at will"
+								}
+							]
+						},
+						"8": {
+							"spells": [
+								{
+									"name": "dispel magic",
+									"amount": "at will"
+								},
+								{
+									"name": "freedom of movement",
+									"amount": "at will"
+								}
+							]
+						},
+						"10": {
+							"spells": [
+								{
+									"name": "meteor swarm"
+								},
+								{
+									"name": "revival"
+								}
+							]
+						},
+						"constant": {
+							"10": {
+								"spells": [
+									{
+										"name": "air"
+									}
+								]
+							}
+						}
+					}
+				}
+			],
+			"rituals": [
+				{
+					"tradition": "Divine",
+					"DC": 44,
+					"rituals": [
+						{
+							"name": "freedom"
+						}
+					]
+				}
+			],
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"entries": [],
+					"name": "Throw Rock",
+					"generic": true
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"entries": [
+						"The titan makes a fist {@action Strike} against a creature affected by their Impossible Stature, even if it's outside of the titan's normal reach. On a hit, the titan automatically Grabs the creature and, if out of their reach, pulls it within reach."
+					],
+					"name": "Titanic Grasp"
+				},
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"entries": [
+						"The titan makes a melee weapon {@action Strike} against each foe within their reach. This counts as three attacks for the titan's multiple attack penalty."
+					],
+					"name": "Wide Cleave"
+				}
+			],
+			"inflicts": {
+				"damage": [
+					"bludgeoning",
+					"piercing"
+				],
+				"condition": []
+			},
+			"misc": [
+				"MA",
+				"RC",
+				"RA",
+				"UW"
+			]
+		},
+		{
 			"name": "Kimilekki",
+			"isNpc": false,
+			"source": "EC6",
+			"page": 17,
 			"level": 17,
 			"rarity": "Unique",
 			"alignment": "CE",
 			"size": "Huge",
-			"creatureType": [
-				"Fiend"
-			],
 			"traits": [
 				"Demon"
+			],
+			"creatureType": [
+				"Fiend"
 			],
 			"perception": {
 				"default": 30
@@ -442,47 +1250,6 @@
 				"abilities": null,
 				"walk": 35
 			},
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"requirements": "A creature is {@condition grabbed} in the glabrezu's pincer",
-					"entries": [
-						"The glabrezu pulls the {@condition grabbed} creature up to 5 feet closer, then makes two claw Strikes against it. Those Strikes count as one attack when determining the glabrezu's multiple attack penalty, and the penalty doesn't increase until after both Strikes."
-					],
-					"name": "Captive Rake"
-				},
-				{
-					"entries": [
-						"When a reaction would disrupt the glabrezu's spell, the demon can attempt a DC {@flatDC 15} flat check, avoiding the disruption on a success."
-					],
-					"name": "Steady Spellcasting"
-				},
-				{
-					"entries": [
-						"A glabrezu can always use {@skill Deception} when rolling initiative as long as they're aware of at least one opponent before initiative is rolled. When using {@skill Deception} for initiative, the demon gains a +2 circumstance bonus to {@skill Deception}."
-					],
-					"name": "Sudden Betrayal"
-				},
-				{
-					"entries": [
-						"A glabrezu's illusory disguise enables it to appear as a creature of any size."
-					],
-					"name": "Treacherous Veil"
-				},
-				{
-					"traits": [
-						"divination",
-						"divine"
-					],
-					"entries": [
-						"Once per month, a glabrezu can grant a mortal humanoid the effects of a {@spell miracle} spell granted by an Abyssal patron, though the glabrezu always perverts the miracle according to their own treacherous nature."
-					],
-					"name": "Twisted Desires"
-				}
-			],
 			"attacks": [
 				{
 					"range": "Melee",
@@ -639,2713 +1406,78 @@
 					]
 				}
 			],
-			"isNpc": false,
-			"inflicts": {
-				"damage": [
-					"bludgeoning",
-					"mental",
-					"piercing",
-					"slashing"
-				],
-				"condition": [
-					"{@condition grabbed}"
-				]
-			},
-			"page": 17,
-			"misc": [
-				"MA",
-				"RC",
-				"CC"
-			]
-		},
-		{
-			"source": "EC6",
-			"name": "Elysian Sheep",
-			"level": 7,
-			"rarity": "Rare",
-			"alignment": "NG",
-			"size": "Large",
-			"creatureType": [
-				"Animal"
-			],
-			"perception": {
-				"default": 18
-			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"low-light vision"
-				]
-			},
-			"skills": {
-				"Acrobatics": {
-					"default": 17
-				},
-				"Athletics": {
-					"default": 15
-				},
-				"Survival": {
-					"default": 16
-				}
-			},
-			"abilityMods": {
-				"Str": 2,
-				"Dex": 6,
-				"Con": 4,
-				"Int": -4,
-				"Wis": 3,
-				"Cha": -1
-			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"Inclines and rocky areas are not difficult terrain for an Elysian sheep."
-					],
-					"name": "Nimble Grazer"
-				}
-			],
-			"ac": {
-				"default": 25,
-				"abilities": null
-			},
-			"savingThrows": {
-				"Fort": {
-					"default": 15
-				},
-				"Ref": {
-					"default": 18
-				},
-				"Will": {
-					"default": 12
-				},
-				"abilities": null
-			},
-			"hp": [
-				{
-					"hp": 140,
-					"note": null,
-					"abilities": null
-				}
-			],
-			"weaknesses": [
-				{
-					"amount": 5,
-					"name": "evil"
-				}
-			],
-			"abilitiesMid": [
-				{
-					"entries": [
-						"Elysian sheep gains the {@condition fleeing} condition whenever it has the {@condition frightened} condition."
-					],
-					"name": "Cowardly An"
-				}
-			],
-			"speed": {
-				"abilities": null,
-				"walk": 40
-			},
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 3,
-						"unit": "action"
-					},
-					"entries": [
-						"Medium or smaller, hoof, DC 24."
-					],
-					"name": "Trample",
-					"generic": true
-				}
-			],
-			"attacks": [
-				{
-					"range": "Melee",
-					"name": "horn",
-					"attack": 16,
-					"traits": null,
-					"effects": [
-						"{@dice 2d8+5}"
-					],
-					"damage": "{@dice 2d8+5} plus {@damage 1d6} good",
-					"types": [
-						"good"
-					]
-				},
-				{
-					"range": "Melee",
-					"name": "hoof",
-					"attack": 16,
-					"traits": null,
-					"effects": [
-						"{@dice 2d6+5}"
-					],
-					"damage": "{@dice 2d6+5} plus {@damage 1d6} good",
-					"types": [
-						"good"
-					]
-				}
-			],
-			"isNpc": false,
-			"inflicts": {
-				"damage": [
-					"good"
-				],
-				"condition": [
-					"{@condition fleeing}"
-				]
-			},
-			"page": 32,
-			"misc": [
-				"MA",
-				"CC"
-			]
-		},
-		{
-			"source": "EC6",
-			"name": "Barking Stag",
-			"level": 13,
-			"rarity": "Rare",
-			"alignment": "N",
-			"size": "Large",
-			"creatureType": [
-				"Animal"
-			],
-			"perception": {
-				"default": 28
-			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"low-light vision"
-				]
-			},
-			"skills": {
-				"Acrobatics": {
-					"default": 24
-				},
-				"Athletics": {
-					"default": 27
-				},
-				"Survival": {
-					"default": 26
-				}
-			},
-			"abilityMods": {
-				"Str": 8,
-				"Dex": 5,
-				"Con": 4,
-				"Int": -4,
-				"Wis": 5,
-				"Cha": 1
-			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"When it isn't injured, a barking stag benefits from {@action Cover Tracks}, regardless of its travel Speed."
-					],
-					"name": "Foil the Hunt"
-				}
-			],
-			"ac": {
-				"default": 34,
-				"abilities": null
-			},
-			"savingThrows": {
-				"Fort": {
-					"default": 21
-				},
-				"Ref": {
-					"default": 26
-				},
-				"Will": {
-					"default": 23
-				},
-				"abilities": null
-			},
-			"hp": [
-				{
-					"hp": 245,
-					"note": null,
-					"abilities": null
-				}
-			],
-			"weaknesses": [
-				{
-					"name": "arrow vulnerability"
-				}
-			],
-			"abilitiesMid": [
-				{
-					"entries": [
-						"A barking stag takes 10 additional damage from arrows (but not bolts or other ammunition)."
-					],
-					"name": "Arrow Vulnerability"
-				}
-			],
-			"speed": {
-				"abilities": null,
-				"walk": 45
-			},
 			"abilitiesBot": [
 				{
 					"activity": {
 						"number": 1,
 						"unit": "action"
 					},
-					"requirements": "The barking stag has a creature {@condition grabbed} with its antler",
+					"requirements": "A creature is {@condition grabbed} in the glabrezu's pincer",
 					"entries": [
-						"The barking stag tosses the {@condition grabbed} creature 20 feet into the air and up to 15 feet away in a direction of its choice, dealing {@damage 3d10+12} piercing damage plus falling damage to the creature."
+						"The glabrezu pulls the {@condition grabbed} creature up to 5 feet closer, then makes two claw Strikes against it. Those Strikes count as one attack when determining the glabrezu's multiple attack penalty, and the penalty doesn't increase until after both Strikes."
 					],
-					"name": "Antler Toss"
-				},
-				{
-					"activity": {
-						"number": 3,
-						"unit": "action"
-					},
-					"entries": [
-						"Medium or smaller, hoof, DC 30."
-					],
-					"name": "Trample",
-					"generic": true
-				}
-			],
-			"attacks": [
-				{
-					"range": "Melee",
-					"name": "antler",
-					"attack": 16,
-					"traits": [
-						"grapple"
-					],
-					"effects": [
-						"Grab"
-					],
-					"damage": "{@damage 3d10+12} piercing plus Grab",
-					"types": [
-						"piercing"
-					]
-				},
-				{
-					"range": "Melee",
-					"name": "hoof",
-					"attack": 16,
-					"traits": null,
-					"effects": [],
-					"damage": "{@damage 3d8+12} bludgeoning",
-					"types": [
-						"bludgeoning"
-					]
-				}
-			],
-			"isNpc": false,
-			"inflicts": {
-				"damage": [
-					"bludgeoning",
-					"piercing"
-				],
-				"condition": [
-					"{@condition grabbed}"
-				]
-			},
-			"page": 40,
-			"misc": [
-				"MA",
-				"CC"
-			]
-		},
-		{
-			"source": "EC6",
-			"name": "Vavakia",
-			"level": 18,
-			"rarity": "Uncommon",
-			"alignment": "CE",
-			"size": "Huge",
-			"creatureType": [
-				"Fiend"
-			],
-			"traits": [
-				"Demon"
-			],
-			"perception": {
-				"default": 32
-			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision",
-					"true seeing"
-				]
-			},
-			"languages": {
-				"languages": [
-					"Abyssal",
-					"Celestial",
-					"Draconic"
-				],
-				"languageAbilities": [
-					"telepathy 100 feet"
-				]
-			},
-			"skills": {
-				"Athletics": {
-					"default": 35
-				},
-				"Deception": {
-					"default": 32
-				},
-				"Intimidation": {
-					"default": 34
-				},
-				"Religion": {
-					"default": 30
-				},
-				"Stealth": {
-					"default": 32
-				}
-			},
-			"abilityMods": {
-				"Str": 9,
-				"Dex": 4,
-				"Con": 6,
-				"Int": 4,
-				"Wis": 6,
-				"Cha": 6
-			},
-			"items": [
-				"breastplate",
-				"+2 greater striking ranseur"
-			],
-			"abilitiesTop": [],
-			"ac": {
-				"default": 42,
-				"abilities": null
-			},
-			"savingThrows": {
-				"Fort": {
-					"default": 32
-				},
-				"Ref": {
-					"default": 28
-				},
-				"Will": {
-					"default": 30
-				},
-				"abilities": null
-			},
-			"hp": [
-				{
-					"hp": 350,
-					"note": null,
-					"abilities": null
-				}
-			],
-			"weaknesses": [
-				{
-					"amount": 15,
-					"name": "cold iron"
-				},
-				{
-					"amount": 15,
-					"name": "good"
-				}
-			],
-			"abilitiesMid": [
-				{
-					"traits": [
-						"aura",
-						"emotion",
-						"fear",
-						"mental"
-					],
-					"entries": [
-						"60 feet, DC 37."
-					],
-					"name": "Frightful Presence",
-					"generic": true
+					"name": "Captive Rake"
 				},
 				{
 					"entries": [
-						"A vavakia is repulsed by the restoration of souls. The demon takes {@damage 3d10+10} mental damage the first time each round that a creature within 100 feet of it is restored to life or loses the {@condition doomed} condition."
+						"When a reaction would disrupt the glabrezu's spell, the demon can attempt a DC {@flatDC 15} flat check, avoiding the disruption on a success."
 					],
-					"name": "Restoration Vulnerability"
-				}
-			],
-			"speed": {
-				"abilities": null,
-				"walk": 40,
-				"fly ": 40
-			},
-			"abilitiesBot": [
-				{
-					"entries": [
-						"A creature damaged by the vavakia's jaws is {@condition sickened|CRB|sickened 1} from the rank smell of vapors from the wound."
-					],
-					"name": "Smoking Wound"
-				},
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"traits": [
-						"death",
-						"divine",
-						"necromancy",
-						"negative"
-					],
-					"entries": [
-						"The vavakia exhales ghostly green fire in a 60-foot cone. Living creatures in the area take {@damage 20d6} negative damage (DC 42 basic Reflex save). A good creature that fails this save is becomes {@condition stupefied|CRB|stupefied 2} for 1 minute ({@condition stupefied|CRB|stupefied 4} on a critical failure). A creature slain by Soulfire Breath can't be resurrected except by powerful magic such as a {@spell wish} spell. The vavakia can't use."
-					],
-					"name": "Soulfire Breath"
+					"name": "Steady Spellcasting"
 				},
 				{
 					"entries": [
-						"Breath again for {@dice 1d4} rounds."
+						"A glabrezu can always use {@skill Deception} when rolling initiative as long as they're aware of at least one opponent before initiative is rolled. When using {@skill Deception} for initiative, the demon gains a +2 circumstance bonus to {@skill Deception}."
 					],
-					"name": "Soulfire"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"traits": [
-						"divine",
-						"healing",
-						"necromancy"
-					],
-					"requirements": "The vavakia's last action was Soulfire Breath",
-					"entries": [
-						"The vavakia inhales and regains 10 Hit Points for each creature damaged by its Soulfire Breath. Any excess healing is gained as temporary."
-					],
-					"name": "Soulfire Inhalation"
+					"name": "Sudden Betrayal"
 				},
 				{
 					"entries": [
-						"Points, which remain for 1 minute."
+						"A glabrezu's illusory disguise enables it to appear as a creature of any size."
 					],
-					"name": "Hit"
+					"name": "Treacherous Veil"
 				},
 				{
 					"traits": [
-						"incapacitation"
-					],
-					"entries": [
-						"If the vavakia critically hits with its tail {@action Strike}, the target must succeed at a DC 40 Fortitude save or be {@condition stunned} for 1 round ({@dice 1d4} rounds on a critical failure)."
-					],
-					"name": "Stunning Tail"
-				},
-				{
-					"activity": {
-						"number": 3,
-						"unit": "action"
-					},
-					"entries": [
-						"Large or smaller, claw, DC 40."
-					],
-					"name": "Trample",
-					"generic": true
-				}
-			],
-			"attacks": [
-				{
-					"range": "Melee",
-					"name": "ranseur",
-					"attack": 36,
-					"traits": [
-						"disarm",
-						"magical",
-						"reach 25 feet"
-					],
-					"effects": [
-						"Grab"
-					],
-					"damage": "{@damage 3d10+17} piercing plus {@damage 1d10} acid and Grab",
-					"types": [
-						"acid",
-						"piercing"
-					]
-				},
-				{
-					"range": "Melee",
-					"name": "jaws",
-					"attack": 35,
-					"traits": [
-						"magical",
-						"reach 15 feet"
-					],
-					"effects": [
-						"smoking wound"
-					],
-					"damage": "{@damage 3d8+17} piercing plus {@damage 2d8} {@condition persistent damage ||persistent bleed} and smoking wound",
-					"types": [
-						"persistent",
-						"piercing"
-					]
-				},
-				{
-					"range": "Melee",
-					"name": "claw",
-					"attack": 35,
-					"traits": [
-						"agile",
-						"magical",
-						"reach 15 feet"
-					],
-					"effects": [],
-					"damage": "{@damage 3d10+17} slashing",
-					"types": [
-						"slashing"
-					]
-				},
-				{
-					"range": "Melee",
-					"name": "tail",
-					"attack": 35,
-					"traits": [
-						"backswing",
-						"magical",
-						"reach 20 feet"
-					],
-					"effects": [
-						"stunning tail"
-					],
-					"damage": "{@damage 3d12+17} bludgeoning plus stunning tail",
-					"types": [
-						"bludgeoning"
-					]
-				}
-			],
-			"spellcasting": [
-				{
-					"name": "Divine Innate",
-					"type": "Innate",
-					"tradition": "Divine",
-					"DC": 40,
-					"entry": {
-						"4": {
-							"spells": [
-								{
-									"name": "dimension door",
-									"amount": "at will"
-								}
-							]
-						},
-						"5": {
-							"spells": [
-								{
-									"name": "dimension door"
-								}
-							]
-						},
-						"8": {
-							"spells": [
-								{
-									"name": "divine aura"
-								},
-								{
-									"name": "divine wrath",
-									"amount": "at will"
-								},
-								{
-									"name": "earthquake"
-								}
-							]
-						},
-						"9": {
-							"spells": [
-								{
-									"name": "massacre"
-								},
-								{
-									"name": "power word stun"
-								}
-							]
-						},
-						"constant": {
-							"9": {
-								"spells": [
-									{
-										"name": "true seeing"
-									}
-								]
-							}
-						}
-					}
-				}
-			],
-			"isNpc": false,
-			"inflicts": {
-				"damage": [
-					"bludgeoning",
-					"mental",
-					"negative",
-					"piercing",
-					"slashing"
-				],
-				"condition": [
-					"{@condition doomed}",
-					"{@condition sickened}",
-					"{@condition stunned}",
-					"{@condition stupefied}"
-				]
-			},
-			"page": 79,
-			"misc": [
-				"MA",
-				"RC",
-				"AD",
-				"AC",
-				"CC",
-				"UW"
-			]
-		},
-		{
-			"source": "EC6",
-			"name": "Saurian Warmonger",
-			"level": 16,
-			"rarity": "Uncommon",
-			"alignment": "NE",
-			"size": "Huge",
-			"creatureType": [
-				"Humanoid"
-			],
-			"traits": [
-				"Dinosaur"
-			],
-			"perception": {
-				"default": 31
-			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
-			"languages": {
-				"languages": [
-					"Common",
-					"Ignan",
-					"Sylvan"
-				],
-				"languageAbilities": [
-					"speak with animals"
-				]
-			},
-			"skills": {
-				"Athletics": {
-					"default": 32
-				},
-				"Crafting": {
-					"default": 28
-				},
-				"Intimidation": {
-					"default": 28
-				},
-				"Nature": {
-					"default": 30
-				},
-				"Survival": {
-					"default": 30
-				}
-			},
-			"abilityMods": {
-				"Str": 8,
-				"Dex": 5,
-				"Con": 6,
-				"Int": 4,
-				"Wis": 6,
-				"Cha": 4
-			},
-			"items": [
-				"leather armor",
-				"+1 striking mancatcher",
-				"+2 greater striking spear"
-			],
-			"abilitiesTop": [],
-			"ac": {
-				"default": 39,
-				"abilities": null
-			},
-			"savingThrows": {
-				"Fort": {
-					"default": 26
-				},
-				"Ref": {
-					"default": 25
-				},
-				"Will": {
-					"default": 28
-				},
-				"abilities": null
-			},
-			"hp": [
-				{
-					"hp": 340,
-					"note": null,
-					"abilities": null
-				}
-			],
-			"abilitiesMid": [],
-			"speed": {
-				"abilities": null,
-				"walk": 40
-			},
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"traits": [
-						"incapacitation",
-						"sonic"
-					],
-					"entries": [
-						"The saurian warmonger bellows, evoking the power of the primordial world. Non-dinosaur creatures within 30 feet take {@damage 10d6} sonic damage (DC 34 basic Fortitude save). On a failed save, a creature is also {@condition slowed|CRB|slowed 2} for 1 round ({@condition stunned} {@dice 1d4} on a critical failure). The saurian can't use Boneshaking Roar again for {@dice 1d4} rounds."
-					],
-					"name": "Boneshaking Roar"
-				},
-				{
-					"entries": [
-						"A warmonger wields their mancatcher in one hand."
-					],
-					"name": "Primordial Balance"
-				},
-				{
-					"entries": [
-						"When the warmonger makes a successful mancatcher {@action Strike}, their target must succeed at a DC 34 Reflex save or become {@condition grabbed} until the end of the warmonger's next turn. Each time the creature fails an attempt to {@action Escape} the warmonger, it takes {@damage 2d6} piercing damage."
-					],
-					"name": "Restrain"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"entries": [
-						"The saurian warmonger makes three Strikes: one {@action Strike} each with the weapons in their hands and one {@action Strike} with their tail.",
-						"They can perform these attacks in any order, though each counts toward their multiple attack penalty as normal. After making a Three-Limbed Lunge, the warmonger is {@condition flat-footed} until the beginning of their next turn."
-					],
-					"name": "Three-Limbed Lunge"
-				}
-			],
-			"attacks": [
-				{
-					"range": "Melee",
-					"name": "spear",
-					"attack": 32,
-					"traits": [
-						"magical",
-						"reach 15 feet"
-					],
-					"effects": [],
-					"damage": "{@damage 3d6+16} piercing",
-					"types": [
-						"piercing"
-					]
-				},
-				{
-					"range": "Melee",
-					"name": "mancatcher",
-					"attack": 31,
-					"traits": [
-						"grab",
-						"magical",
-						"reach 20 feet"
-					],
-					"effects": [
-						"restrain"
-					],
-					"damage": "{@damage 2d6+16} slashing plus restrain",
-					"types": [
-						"slashing"
-					]
-				},
-				{
-					"range": "Melee",
-					"name": "jaws",
-					"attack": 30,
-					"traits": [
-						"deadly d12",
-						"reach 15 feet"
-					],
-					"effects": [],
-					"damage": "{@damage 3d10+16} piercing",
-					"types": [
-						"piercing"
-					]
-				},
-				{
-					"range": "Melee",
-					"name": "tail",
-					"attack": 30,
-					"traits": [
-						"agile",
-						"finesse",
-						"reach 10 feet",
-						"trip"
-					],
-					"effects": [],
-					"damage": "{@damage 3d6+16} bludgeoning",
-					"types": [
-						"bludgeoning"
-					]
-				},
-				{
-					"range": "Ranged",
-					"name": "spear",
-					"attack": 32,
-					"traits": [
-						"magical",
-						"thrown 20 feet"
-					],
-					"effects": [],
-					"damage": "{@damage 3d6+16} piercing",
-					"types": [
-						"piercing"
-					]
-				}
-			],
-			"spellcasting": [
-				{
-					"name": "Primal Innate",
-					"type": "Innate",
-					"tradition": "Primal",
-					"DC": 37,
-					"entry": {
-						"3": {
-							"spells": [
-								{
-									"name": "animal vision",
-									"notes": [
-										"at will; dinosaurs only"
-									]
-								}
-							]
-						},
-						"4": {
-							"spells": [
-								{
-									"name": "air walk"
-								}
-							]
-						},
-						"constant": {
-							"2": {
-								"spells": [
-									{
-										"name": "speak with animals"
-									}
-								]
-							}
-						}
-					}
-				}
-			],
-			"isNpc": false,
-			"inflicts": {
-				"damage": [
-					"bludgeoning",
-					"piercing",
-					"slashing",
-					"sonic"
-				],
-				"condition": [
-					"{@condition flat-footed}",
-					"{@condition grabbed}",
-					"{@condition slowed}"
-				]
-			},
-			"page": 80,
-			"misc": [
-				"MA",
-				"RC",
-				"RA",
-				"TA",
-				"CC",
-				"UW"
-			]
-		},
-		{
-			"source": "EC6",
-			"name": "Saurian Worldwatcher",
-			"level": 18,
-			"rarity": "Uncommon",
-			"alignment": "NE",
-			"size": "Huge",
-			"creatureType": [
-				"Humanoid"
-			],
-			"traits": [
-				"Dinosaur"
-			],
-			"perception": {
-				"default": 34
-			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
-			"languages": {
-				"languages": [
-					"Common",
-					"Ignan",
-					"Sylvan"
-				],
-				"languageAbilities": [
-					"speak with animals"
-				]
-			},
-			"skills": {
-				"Acrobatics": {
-					"default": 35
-				},
-				"Athletics": {
-					"default": 33
-				},
-				"Diplomacy": {
-					"default": 32
-				},
-				"Intimidation": {
-					"default": 32
-				},
-				"Nature": {
-					"default": 34
-				},
-				"Stealth": {
-					"default": 35
-				},
-				"Survival": {
-					"default": 34
-				}
-			},
-			"abilityMods": {
-				"Str": 7,
-				"Dex": 9,
-				"Con": 6,
-				"Int": 5,
-				"Wis": 8,
-				"Cha": 6
-			},
-			"items": [
-				"javelins (2)",
-				"+2 greater striking naginata"
-			],
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+35, {@skill Survival} +34 Str +7, Dex +9, Con +6, Int +5, Wis +8, Cha +6 Items javelins (2), +2 greater striking naginata."
-					],
-					"name": "Stealth"
-				}
-			],
-			"ac": {
-				"default": 43,
-				"abilities": null
-			},
-			"savingThrows": {
-				"Fort": {
-					"default": 30
-				},
-				"Ref": {
-					"default": 33
-				},
-				"Will": {
-					"default": 32
-				},
-				"abilities": null
-			},
-			"hp": [
-				{
-					"hp": 330,
-					"note": null,
-					"abilities": null
-				}
-			],
-			"resistances": [
-				{
-					"amount": 15,
-					"name": "fire"
-				}
-			],
-			"abilitiesMid": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"frequency": "once per round",
-					"entries": [
-						"Trigger A creature makes a melee {@action Strike} against the worldwatcher but misses; The worldwatcher breaks the triggering creature's limb or weapon. If the triggering {@action Strike} was an unarmed attack, the triggering creature takes {@damage 6d6} bludgeoning damage and becomes {@condition clumsy|CRB|clumsy 1} until the limb is reset (an {@action Interact} action with the {@trait manipulate} trait). If the triggering {@action Strike} was a weapon {@action Strike}, the weapon takes {@damage 6d6} bludgeoning damage."
-					],
-					"name": "Raptor Jaw Disarm"
-				}
-			],
-			"speed": {
-				"abilities": null,
-				"walk": 40
-			},
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"entries": [
-						"As saurian warmonger, but DC 38."
-					],
-					"name": "Boneshaking Roar",
-					"traits": [
-						"incapacitation",
-						"sonic"
-					],
-					"entries_as_xyz": [
-						"The saurian warmonger bellows, evoking the power of the primordial world. Non-dinosaur creatures within 30 feet take {@damage 10d6} sonic damage (DC 34 basic Fortitude save). On a failed save, a creature is also {@condition slowed|CRB|slowed 2} for 1 round ({@condition stunned} {@dice 1d4} on a critical failure). The saurian can't use Boneshaking Roar again for {@dice 1d4} rounds."
-					]
-				},
-				{
-					"traits": [
-						"incapacitation"
-					],
-					"entries": [
-						"Whenever the worldwatcher hits a creature with their fist or naginata {@action Strike}, that creature must succeed at a DC 39 Fortitude save or be {@condition stunned|CRB|stunned 1} ({@condition stunned|CRB|stunned 3} on a critical hit)."
-					],
-					"name": "Stunning Blow"
-				}
-			],
-			"attacks": [
-				{
-					"range": "Melee",
-					"name": "naginata",
-					"attack": 35,
-					"traits": [
-						"deadly d8",
-						"magical",
-						"reach 20 feet",
-						"versatile P"
-					],
-					"effects": [
-						"stunning blow"
-					],
-					"damage": "{@damage 3d8+19} slashing plus stunning blow",
-					"types": [
-						"slashing"
-					]
-				},
-				{
-					"range": "Melee",
-					"name": "jaws",
-					"attack": 33,
-					"traits": [
-						"deadly d12",
-						"magical",
-						"reach 15 feet"
-					],
-					"effects": [],
-					"damage": "{@damage 3d10+17} piercing",
-					"types": [
-						"piercing"
-					]
-				},
-				{
-					"range": "Melee",
-					"name": "fist",
-					"attack": 35,
-					"traits": [
-						"agile",
-						"finesse",
-						"magical",
-						"reach 10 feet"
-					],
-					"effects": [
-						"stunning blow"
-					],
-					"damage": "{@damage 4d10+19} bludgeoning plus stunning blow",
-					"types": [
-						"bludgeoning"
-					]
-				},
-				{
-					"range": "Melee",
-					"name": "tail",
-					"attack": 35,
-					"traits": [
-						"agile",
-						"finesse",
-						"magical",
-						"reach 10 feet",
-						"trip"
-					],
-					"effects": [],
-					"damage": "{@damage 3d6+19} bludgeoning",
-					"types": [
-						"bludgeoning"
-					]
-				},
-				{
-					"range": "Ranged",
-					"name": "javelin",
-					"attack": 35,
-					"traits": [
-						"thrown 30 feet"
-					],
-					"effects": [],
-					"damage": "{@damage 1d6+19} piercing",
-					"types": [
-						"piercing"
-					]
-				}
-			],
-			"spellcasting": [
-				{
-					"name": "Primal Innate",
-					"type": "Innate",
-					"tradition": "Primal",
-					"DC": 40,
-					"entry": {
-						"2": {
-							"spells": [
-								{
-									"name": "animal messenger"
-								}
-							]
-						},
-						"3": {
-							"spells": [
-								{
-									"name": "animal vision",
-									"notes": [
-										"at will; dinosaurs only"
-									]
-								}
-							]
-						},
-						"4": {
-							"spells": [
-								{
-									"name": "air walk"
-								}
-							]
-						},
-						"9": {
-							"spells": [
-								{
-									"name": "fiery body"
-								},
-								{
-									"name": "summon animal",
-									"notes": [
-										"dinosaur only"
-									]
-								},
-								{
-									"name": "volcanic eruption"
-								}
-							]
-						},
-						"constant": {
-							"2": {
-								"spells": [
-									{
-										"name": "speak with animals"
-									}
-								]
-							}
-						}
-					}
-				}
-			],
-			"isNpc": false,
-			"inflicts": {
-				"damage": [
-					"bludgeoning",
-					"piercing",
-					"slashing",
-					"sonic"
-				],
-				"condition": [
-					"{@condition clumsy}",
-					"{@condition slowed}",
-					"{@condition stunned}"
-				]
-			},
-			"page": 81,
-			"misc": [
-				"MA",
-				"RC",
-				"RA",
-				"TA",
-				"CC",
-				"UW"
-			]
-		},
-		{
-			"source": "EC6",
-			"name": "Elysian Titan",
-			"level": 21,
-			"rarity": "Rare",
-			"alignment": "CG",
-			"size": "Gargantuan",
-			"creatureType": [
-				"Humanoid"
-			],
-			"traits": [
-				"Titan"
-			],
-			"perception": {
-				"default": 36
-			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision",
-					"true seeing"
-				]
-			},
-			"languages": {
-				"languages": [
-					"Abyssal",
-					"Celestial",
-					"Common"
-				],
-				"languageAbilities": [
-					"telepathy 100 feet"
-				]
-			},
-			"skills": {
-				"Acrobatics": {
-					"default": 36
-				},
-				"Athletics": {
-					"default": 43
-				},
-				"Crafting": {
-					"default": 37
-				},
-				"Diplomacy": {
-					"default": 37
-				},
-				"Religion": {
-					"default": 37
-				},
-				"Survival": {
-					"default": 37
-				}
-			},
-			"abilityMods": {
-				"Str": 10,
-				"Dex": 7,
-				"Con": 8,
-				"Int": 6,
-				"Wis": 8,
-				"Cha": 6
-			},
-			"items": [
-				"+2 greater resilient breastplate",
-				"+3 greater striking greatpick"
-			],
-			"abilitiesTop": [],
-			"ac": {
-				"default": 46,
-				"abilities": null
-			},
-			"savingThrows": {
-				"Fort": {
-					"default": 37
-				},
-				"Ref": {
-					"default": 34
-				},
-				"Will": {
-					"default": 35
-				},
-				"abilities": null
-			},
-			"hp": [
-				{
-					"hp": 400,
-					"note": null,
-					"abilities": null
-				}
-			],
-			"immunities": {
-				"damage": [],
-				"condition": [
-					"death effects",
-					"disease"
-				]
-			},
-			"abilitiesMid": [
-				{
-					"traits": [
-						"aura",
-						"divine",
-						"illusion",
-						"mental"
-					],
-					"entries": [
-						"100 feet. Titans warp perception and distance around them to seem even larger and more imposing. A creature that enters or begins its turn within the emanation must succeed at a DC 44 Will save or its movement toward the titan is movement over difficult terrain (greater difficult terrain on a critical failure) for 1 round."
-					],
-					"name": "Impossible Stature"
-				}
-			],
-			"speed": {
-				"abilities": [
-					"air walk"
-				],
-				"walk": 40
-			},
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"entries": [],
-					"name": "Throw Rock",
-					"generic": true
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"entries": [
-						"The titan makes a fist {@action Strike} against a creature affected by their Impossible Stature, even if it's outside of the titan's normal reach. On a hit, the titan automatically Grabs the creature and, if out of their reach, pulls it within reach."
-					],
-					"name": "Titanic Grasp"
-				},
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"entries": [
-						"The titan makes a melee weapon {@action Strike} against each foe within their reach. This counts as three attacks for the titan's multiple attack penalty."
-					],
-					"name": "Wide Cleave"
-				}
-			],
-			"attacks": [
-				{
-					"range": "Melee",
-					"name": "greatpick",
-					"attack": 41,
-					"traits": [
-						"fatal d12",
-						"magical",
-						"reach 30 feet"
-					],
-					"effects": [],
-					"damage": "{@damage 4d10+20} piercing",
-					"types": [
-						"piercing"
-					]
-				},
-				{
-					"range": "Melee",
-					"name": "fist",
-					"attack": 38,
-					"traits": [
-						"agile",
-						"reach 30 feet"
-					],
-					"effects": [],
-					"damage": "{@damage 4d8+20} bludgeoning",
-					"types": [
-						"bludgeoning"
-					]
-				},
-				{
-					"range": "Ranged",
-					"name": "rock",
-					"attack": 38,
-					"traits": [
-						"brutal",
-						"range increment 200 feet"
-					],
-					"effects": [],
-					"damage": "{@damage 3d12+20} bludgeoning",
-					"types": [
-						"bludgeoning"
-					]
-				}
-			],
-			"spellcasting": [
-				{
-					"name": "Divine Innate",
-					"type": "Innate",
-					"tradition": "Divine",
-					"DC": 44,
-					"entry": {
-						"5": {
-							"spells": [
-								{
-									"name": "sending",
-									"amount": 3
-								}
-							]
-						},
-						"6": {
-							"spells": [
-								{
-									"name": "scrying",
-									"amount": 3
-								}
-							]
-						},
-						"7": {
-							"spells": [
-								{
-									"name": "plane shift",
-									"amount": "at will"
-								}
-							]
-						},
-						"8": {
-							"spells": [
-								{
-									"name": "dispel magic",
-									"amount": "at will"
-								},
-								{
-									"name": "freedom of movement",
-									"amount": "at will"
-								}
-							]
-						},
-						"10": {
-							"spells": [
-								{
-									"name": "meteor swarm"
-								},
-								{
-									"name": "revival"
-								}
-							]
-						},
-						"constant": {
-							"10": {
-								"spells": [
-									{
-										"name": "air"
-									}
-								]
-							}
-						}
-					}
-				}
-			],
-			"rituals": [
-				{
-					"tradition": "Divine",
-					"DC": 44,
-					"rituals": [
-						{
-							"name": "freedom"
-						}
-					]
-				}
-			],
-			"isNpc": false,
-			"inflicts": {
-				"damage": [
-					"bludgeoning",
-					"piercing"
-				],
-				"condition": []
-			},
-			"page": 82,
-			"misc": [
-				"MA",
-				"RC",
-				"RA",
-				"UW"
-			]
-		},
-		{
-			"source": "EC6",
-			"name": "Thanatotic Titan",
-			"level": 22,
-			"rarity": "Rare",
-			"alignment": "CE",
-			"size": "Gargantuan",
-			"creatureType": [
-				"Humanoid"
-			],
-			"traits": [
-				"Titan"
-			],
-			"perception": {
-				"default": 36
-			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision",
-					"true seeing"
-				]
-			},
-			"languages": {
-				"languages": [
-					"Abyssal",
-					"Celestial",
-					"Common"
-				],
-				"languageAbilities": [
-					"telepathy 100 feet"
-				]
-			},
-			"skills": {
-				"Athletics": {
-					"default": 45
-				},
-				"Crafting": {
-					"default": 41
-				},
-				"Deception": {
-					"default": 36
-				},
-				"Intimidation": {
-					"default": 38
-				},
-				"Religion": {
-					"default": 38
-				},
-				"Stealth": {
-					"default": 36
-				}
-			},
-			"abilityMods": {
-				"Str": 10,
-				"Dex": 4,
-				"Con": 9,
-				"Int": 8,
-				"Wis": 6,
-				"Cha": 8
-			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+38, {@skill Religion} +38, {@skill Stealth} +36 Str +10, Dex +4, Con +9, Int +8, Wis +6, Cha +8 Items +2 greater resilient full plate, +3 greater striking halberd."
-					],
-					"name": "Intimidation"
-				}
-			],
-			"ac": {
-				"default": 46,
-				"abilities": null
-			},
-			"savingThrows": {
-				"Fort": {
-					"default": 37
-				},
-				"Ref": {
-					"default": 34
-				},
-				"Will": {
-					"default": 35
-				},
-				"abilities": null
-			},
-			"hp": [
-				{
-					"hp": 540,
-					"note": null,
-					"abilities": null
-				}
-			],
-			"immunities": {
-				"damage": [],
-				"condition": [
-					"death effects",
-					"disease"
-				]
-			},
-			"abilitiesMid": [
-				{
-					"traits": [
-						"aura",
-						"divine",
-						"illusion",
-						"mental"
-					],
-					"entries": [
-						"100 feet. As Elysian titan, but DC 45."
-					],
-					"name": "Impossible Stature",
-					"entries_as_xyz": [
-						"100 feet. Titans warp perception and distance around them to seem even larger and more imposing. A creature that enters or begins its turn within the emanation must succeed at a DC 44 Will save or its movement toward the titan is movement over difficult terrain (greater difficult terrain on a critical failure) for 1 round."
-					]
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"entries": [
-						"The titan can use their {@action Attack of Opportunity} when a creature within their reach uses a concentrate action, in additional to its normal trigger. They disrupt actions on any hit, not just a critical hit\u2014including triggering concentrate actions."
-					],
-					"name": "Attack of Opportunity",
-					"generic": true
-				}
-			],
-			"speed": {
-				"abilities": [
-					"air walk"
-				],
-				"walk": 40
-			},
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"entries": [
-						"{@damage 4d10+25} piercing Melee foot +39 (agile, reach 30 feet), Damage {@damage 4d8+20} bludgeoning Ranged {@as 1} rock +39 (brutal, range increment 200 feet), Damage {@damage 3d12+20} bludgeoning Divine Innate Spells DC 45; 10th massacre, meteor swarm; 8th dispel magic (at will), spiritual epidemic (at will), suggestion (at will); 7th spell turning; 6th scrying (×3); 5th sending; Constant (10th) air walk, true seeing Divine Rituals DC 45; planar ally, resurrect."
-					],
-					"name": "S), Damage"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "free"
-					},
-					"traits": [
+						"divination",
 						"divine"
 					],
-					"trigger": "The titan damages a creature capable of using divine spells or abilities",
 					"entries": [
-						"The creature must attempt a DC 45 Will save. Critical Success The creature is unaffected. Success The creature can't use divine spells or abilities for 1 round and is {@condition frightened|CRB|frightened 2}. Only powerful non-divine magic, such as wish, can undo this effect. Failure As success, but the duration is 1 minute. Critical Failure As success, but the duration is unlimited."
+						"Once per month, a glabrezu can grant a mortal humanoid the effects of a {@spell miracle} spell granted by an Abyssal patron, though the glabrezu always perverts the miracle according to their own treacherous nature."
 					],
-					"name": "Godslayer",
-					"entries_as_xyz": "Ability not found: 'Godslayer As success, but the duration is 1 minute. Critical Failure As success, but the duration is unlimited.' in Thanatotic Titan, p.83"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"traits": [
-						"divine",
-						"transmutation"
-					],
-					"entries": [
-						"If a titan's rock {@action Strike} isn't a critical failure, the rock explodes, dealing {@dice 10d6} damage of a damage type of the titan's choice to all creatures in a 20- foot burst (DC 45 basic Reflex save)."
-					],
-					"name": "Throw Rock",
-					"generic": true
-				},
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"entries": [
-						"The titan Strides twice and makes a melee {@action Strike}. If the {@action Strike} hits, the titan can cast {@spell earthquake} centered on the target as a free action."
-					],
-					"name": "Titanic Charge"
-				},
-				{
-					"activity": {
-						"number": 3,
-						"unit": "action"
-					},
-					"entries": [
-						"Huge or smaller, foot, DC 45."
-					],
-					"name": "Trample",
-					"generic": true
-				},
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"entries": [
-						"The titan makes a melee weapon {@action Strike} against each foe within their reach. This counts as three attacks for the titan's multiple attack penalty."
-					],
-					"name": "Wide Cleave"
+					"name": "Twisted Desires"
 				}
 			],
-			"attacks": [
-				{
-					"range": "Melee",
-					"name": "halberd",
-					"attack": 42,
-					"traits": [
-						"magical",
-						"reach 40 feet",
-						"versatile S"
-					],
-					"effects": [],
-					"damage": "{@damage 4d10+25} piercing",
-					"types": [
-						"piercing"
-					]
-				},
-				{
-					"range": "Melee",
-					"name": "foot",
-					"attack": 39,
-					"traits": [
-						"agile",
-						"reach 30 feet"
-					],
-					"effects": [],
-					"damage": "{@damage 4d8+20} bludgeoning",
-					"types": [
-						"bludgeoning"
-					]
-				},
-				{
-					"range": "Ranged",
-					"name": "rock",
-					"attack": 39,
-					"traits": [
-						"brutal",
-						"range increment 200 feet"
-					],
-					"effects": [],
-					"damage": "{@damage 3d12+20} bludgeoning",
-					"types": [
-						"bludgeoning"
-					]
-				}
-			],
-			"spellcasting": [
-				{
-					"name": "Divine Innate",
-					"type": "Innate",
-					"tradition": "Divine",
-					"DC": 45,
-					"entry": {
-						"5": {
-							"spells": [
-								{
-									"name": "sending"
-								}
-							]
-						},
-						"6": {
-							"spells": [
-								{
-									"name": "scrying",
-									"amount": 3
-								}
-							]
-						},
-						"7": {
-							"spells": [
-								{
-									"name": "spell turning"
-								}
-							]
-						},
-						"8": {
-							"spells": [
-								{
-									"name": "dispel magic",
-									"amount": "at will"
-								},
-								{
-									"name": "spiritual epidemic",
-									"amount": "at will"
-								},
-								{
-									"name": "suggestion",
-									"amount": "at will"
-								}
-							]
-						},
-						"10": {
-							"spells": [
-								{
-									"name": "massacre"
-								},
-								{
-									"name": "meteor swarm"
-								}
-							]
-						},
-						"constant": {
-							"10": {
-								"spells": [
-									{
-										"name": "air walk"
-									},
-									{
-										"name": "true seeing"
-									}
-								]
-							}
-						}
-					}
-				}
-			],
-			"rituals": [
-				{
-					"tradition": "Divine",
-					"DC": 45,
-					"rituals": [
-						{
-							"name": "planar ally"
-						},
-						{
-							"name": "resurrect"
-						}
-					]
-				}
-			],
-			"isNpc": false,
 			"inflicts": {
 				"damage": [
 					"bludgeoning",
-					"piercing"
+					"mental",
+					"piercing",
+					"slashing"
 				],
 				"condition": [
-					"{@condition frightened}"
+					"{@condition grabbed}"
 				]
 			},
-			"page": 83,
 			"misc": [
 				"MA",
 				"RC",
-				"RA",
-				"CC",
-				"UW"
+				"CC"
 			]
 		},
 		{
-			"source": "EC6",
-			"name": "Viskithrel",
-			"level": 15,
-			"rarity": "Uncommon",
-			"alignment": "NE",
-			"size": "Huge",
-			"creatureType": [
-				"Beast"
-			],
-			"perception": {
-				"default": 27
-			},
-			"senses": {
-				"precise": [
-					"scent 100 feet"
-				],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
-			"languages": {
-				"languages": [
-					"Abyssal (can't speak any languages)"
-				],
-				"languageAbilities": []
-			},
-			"skills": {
-				"Acrobatics": {
-					"default": 25
-				},
-				"Athletics": {
-					"default": 31
-				},
-				"Survival": {
-					"default": 27
-				}
-			},
-			"abilityMods": {
-				"Str": 8,
-				"Dex": 6,
-				"Con": 4,
-				"Int": -3,
-				"Wis": 4,
-				"Cha": -1
-			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"A viskithrel can detect a creature's scent up to a week after the creature has passed through or left an area, and it gains a +4 circumstance bonus to {@action Track} a creature whose scent it has detected."
-					],
-					"name": "Ravenous Tracker"
-				}
-			],
-			"ac": {
-				"default": 37,
-				"abilities": null
-			},
-			"savingThrows": {
-				"Fort": {
-					"default": 25
-				},
-				"Ref": {
-					"default": 27
-				},
-				"Will": {
-					"default": 23
-				},
-				"abilities": null
-			},
-			"hp": [
-				{
-					"hp": 275,
-					"note": null,
-					"abilities": null
-				}
-			],
-			"immunities": {
-				"damage": [],
-				"condition": [
-					"sickened"
-				]
-			},
-			"abilitiesMid": [
-				{
-					"entries": [
-						"A viskithrel's many-chambered snout allows it to partition and ignore scents. The creature can choose to critically succeed at any saving throw against an inhaled threat (such as inhaled poison) or olfactory effects, regardless of its roll."
-					],
-					"name": "Selective Scent"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"trigger": "A creature within 10 feet of the viskithrel makes a melee {@action Strike} against it",
-					"entries": [
-						"The viskithrel Steps up to 15 feet, ignoring difficult terrain as it leaps over obstacles. If this movement takes the viskithrel out of range of the triggering {@action Strike},"
-					],
-					"name": "Predator's Leap"
-				},
-				{
-					"entries": [
-						"{@action Strike} is disrupted. It then makes a jaws {@action Strike} against a bleeding creature."
-					],
-					"name": "the"
-				}
-			],
-			"speed": {
-				"abilities": null,
-				"walk": 40,
-				"swim ": 20
-			},
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"entries": [
-						"Melee talon +30 (agile, reach 10 feet), Damage {@damage 3d10+14} slashing Melee {@as 1} tentacle +30 (reach 20 feet), Damage {@damage 1d10+14} slashing plus {@damage 2d10} {@condition persistent damage ||persistent bleed}."
-					],
-					"name": "and Grab"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"traits": [
-						"attack"
-					],
-					"entries": [
-						"Large, {@damage 3d10} bludgeoning plus {@damage 2d10} acid, Rupture 25."
-					],
-					"name": "Swallow Whole",
-					"generic": true
-				}
-			],
-			"attacks": [
-				{
-					"range": "Melee",
-					"name": "jaws",
-					"attack": 30,
-					"traits": [
-						"reach 15 feet"
-					],
-					"effects": [
-						"Grab"
-					],
-					"damage": "{@damage 3d10+14} piercing plus {@damage 1d10} acid and Grab",
-					"types": [
-						"acid",
-						"piercing"
-					]
-				},
-				{
-					"range": "Melee",
-					"name": "talon",
-					"attack": 30,
-					"traits": [
-						"agile",
-						"reach 10 feet"
-					],
-					"effects": [],
-					"damage": "{@damage 3d10+14} slashing",
-					"types": [
-						"slashing"
-					]
-				},
-				{
-					"range": "Melee",
-					"name": "tentacle",
-					"attack": 30,
-					"traits": [
-						"reach 20 feet"
-					],
-					"effects": [],
-					"damage": "{@damage 1d10+14} slashing plus {@damage 2d10} {@condition persistent damage ||persistent bleed}",
-					"types": [
-						"persistent",
-						"slashing"
-					]
-				}
-			],
-			"isNpc": false,
-			"inflicts": {
-				"damage": [
-					"bludgeoning",
-					"piercing",
-					"slashing"
-				],
-				"condition": []
-			},
-			"page": 84,
-			"misc": [
-				"MA",
-				"RC"
-			]
-		},
-		{
-			"source": "EC6",
-			"name": "Xulgath Thoughtmaw",
-			"level": 15,
-			"rarity": "Rare",
-			"alignment": "CE",
-			"size": "Medium",
-			"creatureType": [
-				"Humanoid"
-			],
-			"traits": [
-				"Xulgath"
-			],
-			"perception": {
-				"default": 30
-			},
-			"senses": {
-				"precise": [],
-				"imprecise": [
-					"thoughtsense 60 feet"
-				],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
-			"languages": {
-				"languages": [
-					"Draconic",
-					"Undercommon"
-				],
-				"languageAbilities": [
-					"telepathy 100 feet"
-				]
-			},
-			"skills": {
-				"Acrobatics": {
-					"default": 25
-				},
-				"Arcana": {
-					"default": 27
-				},
-				"Deception": {
-					"default": 29
-				},
-				"Diplomacy": {
-					"default": 27
-				},
-				"Occultism": {
-					"default": 31
-				},
-				"Society": {
-					"default": 27
-				},
-				"Xulgath Lore": {
-					"default": 31
-				}
-			},
-			"abilityMods": {
-				"Str": 4,
-				"Dex": 6,
-				"Con": 4,
-				"Int": 8,
-				"Wis": 5,
-				"Cha": 6
-			},
-			"items": [
-				"+2 resilient leather armor",
-				"+2 striking spear"
-			],
-			"abilitiesTop": [
-				{
-					"traits": [
-						"divination",
-						"mental",
-						"occult"
-					],
-					"entries": [
-						"The thoughtmaw senses a creature's mental essence at the listed range."
-					],
-					"name": "Thoughtsense"
-				}
-			],
-			"ac": {
-				"default": 36,
-				"abilities": null
-			},
-			"savingThrows": {
-				"Fort": {
-					"default": 23
-				},
-				"Ref": {
-					"default": 26
-				},
-				"Will": {
-					"default": 30
-				},
-				"abilities": null
-			},
-			"hp": [
-				{
-					"hp": 280,
-					"note": null,
-					"abilities": null
-				}
-			],
-			"resistances": [
-				{
-					"amount": 15,
-					"name": "mental"
-				}
-			],
-			"abilitiesMid": [
-				{
-					"traits": [
-						"aura",
-						"mental"
-					],
-					"entries": [
-						"30 feet. A creature that enters the emanation must attempt a DC 36 Will save. On a failure, the creature is {@condition stupefied|CRB|stupefied 1} for 1 minute ({@condition stupefied|CRB|stupefied 2} and also {@condition paralyzed} for 1 round on a critical failure). A creature that succeeds at its save is temporarily immune to psychogenic secretions for 1 minute."
-					],
-					"name": "Psychogenic Secretions"
-				}
-			],
-			"speed": {
-				"abilities": null,
-				"walk": 25,
-				"fly ": 35
-			},
-			"abilitiesBot": [
-				{
-					"traits": [
-						"8th"
-					],
-					"entries": [
-						"telekinetic projectile; Constant (8th) fly Occult Rituals DC 36; inveigle."
-					],
-					"name": "Cantrips"
-				},
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"traits": [
-						"divination",
-						"mental",
-						"occult"
-					],
-					"entries": [
-						"The thoughtmaw invades the mind of a creature within 100 feet and attempts to swallow its capacity for higher thought. The creature must attempt a DC 36 Will save."
-					],
-					"name": "Consume Knowledge"
-				},
-				{
-					"entries": [
-						"Knowledge immediately ends any of the ability's previous effects on a different creature.",
-						{
-							"type": "successDegree",
-							"entries": {
-								"Critical Success": "The creature is unaffected.",
-								"Success": "The creature is {@condition slowed|CRB|slowed 1} for 1 round.",
-								"Failure": "The creature is {@condition slowed|CRB|slowed 1} and can take no actions other than basic actions for 1 minute.",
-								"Critical Failure": "As failure, and the thoughtmaw is {@condition quickened|CRB|quickened 1} for 1 minute. It can use this extra action"
-							}
-						}
-					],
-					"name": "Using Consume"
-				},
-				{
-					"entries": [
-						"{@action Cast a Spell} if the target had prepared spells or a spell repertoire."
-					],
-					"name": "to Stride, Strike, or"
-				}
-			],
-			"attacks": [
-				{
-					"range": "Melee",
-					"name": "spear",
-					"attack": 30,
-					"traits": [
-						"magical"
-					],
-					"effects": [],
-					"damage": "{@damage 2d6+10} piercing",
-					"types": [
-						"piercing"
-					]
-				},
-				{
-					"range": "Melee",
-					"name": "jaws",
-					"attack": 28,
-					"traits": null,
-					"effects": [],
-					"damage": "{@damage 3d8+10} piercing",
-					"types": [
-						"piercing"
-					]
-				},
-				{
-					"range": "Melee",
-					"name": "claw",
-					"attack": 28,
-					"traits": [
-						"agile",
-						"finesse"
-					],
-					"effects": [],
-					"damage": "{@damage 3d4+10} slashing",
-					"types": [
-						"slashing"
-					]
-				},
-				{
-					"range": "Ranged",
-					"name": "spear",
-					"attack": 30,
-					"traits": [
-						"magical",
-						"thrown 20 feet"
-					],
-					"effects": [],
-					"damage": "{@damage 2d6+10} piercing",
-					"types": [
-						"piercing"
-					]
-				}
-			],
-			"spellcasting": [
-				{
-					"name": "Occult Spontaneous",
-					"type": "Spontaneous",
-					"tradition": "Occult",
-					"DC": 36,
-					"entry": {
-						"0": {
-							"level": 7,
-							"spells": [
-								{
-									"name": "daze"
-								},
-								{
-									"name": "forbidding ward"
-								},
-								{
-									"name": "message"
-								},
-								{
-									"name": "shield"
-								}
-							]
-						},
-						"4": {
-							"slots": 3,
-							"spells": [
-								{
-									"name": "invisibility"
-								},
-								{
-									"name": "modify memory"
-								},
-								{
-									"name": "suggestion"
-								}
-							]
-						},
-						"5": {
-							"slots": 3,
-							"spells": [
-								{
-									"name": "hallucination"
-								},
-								{
-									"name": "mind probe"
-								},
-								{
-									"name": "synaptic pulse"
-								}
-							]
-						},
-						"6": {
-							"slots": 3,
-							"spells": [
-								{
-									"name": "phantasmal calamity"
-								},
-								{
-									"name": "scrying"
-								},
-								{
-									"name": "wall of force"
-								}
-							]
-						},
-						"7": {
-							"slots": 3,
-							"spells": [
-								{
-									"name": "phantasmal killer"
-								},
-								{
-									"name": "visions of danger"
-								},
-								{
-									"name": "warp mind"
-								}
-							]
-						}
-					}
-				},
-				{
-					"name": "Occult Innate",
-					"type": "Innate",
-					"tradition": "Occult",
-					"DC": 36,
-					"attack": 28,
-					"entry": {
-						"2": {
-							"spells": [
-								{
-									"name": "telekinetic maneuver",
-									"amount": "at will"
-								}
-							]
-						},
-						"5": {
-							"spells": [
-								{
-									"name": "telekinetic haul",
-									"amount": "at will"
-								}
-							]
-						},
-						"8": {
-							"spells": [
-								{
-									"name": "phantom pain",
-									"amount": 3
-								}
-							]
-						}
-					}
-				}
-			],
-			"rituals": [
-				{
-					"tradition": "Occult",
-					"DC": 36,
-					"rituals": [
-						{
-							"name": "inveigle"
-						}
-					]
-				}
-			],
-			"isNpc": false,
-			"inflicts": {
-				"damage": [
-					"piercing",
-					"slashing"
-				],
-				"condition": [
-					"{@condition slowed}",
-					"{@condition stupefied}"
-				]
-			},
-			"page": 85,
-			"misc": [
-				"MA",
-				"RA",
-				"TA",
-				"CC",
-				"UW"
-			]
-		},
-		{
-			"source": "EC6",
-			"name": "Convergent Kendley Nathrael",
-			"level": 19,
-			"rarity": "Unique",
-			"alignment": "LN",
-			"size": "Medium",
-			"creatureType": [
-				"Humanoid"
-			],
-			"traits": [
-				"Elf",
-				"Human"
-			],
-			"perception": {
-				"default": 35
-			},
-			"languages": {
-				"languages": [
-					"Common",
-					"Elven",
-					"Sylvan",
-					"Utopian"
-				],
-				"languageAbilities": [
-					"convergent link"
-				]
-			},
-			"skills": {
-				"Athletics": {
-					"default": 32
-				},
-				"Diplomacy": {
-					"default": 35
-				},
-				"Intimidation": {
-					"default": 33
-				},
-				"Survival": {
-					"default": 30
-				}
-			},
-			"abilityMods": {
-				"Str": 5,
-				"Dex": 0,
-				"Con": 4,
-				"Int": 3,
-				"Wis": 3,
-				"Cha": 6
-			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+30 Str +5, Dex +0, Con +4, Int +3, Wis +3, Cha +6 Items +2 greater striking bastard sword, +2 greater resilient chain mail, +2 greater striking composite longbow (20 arrows), key to strongbox in area A10."
-					],
-					"name": "Survival"
-				},
-				{
-					"entries": [
-						"Creatures with this ability can communicate with each other by manifesting an aura of wispy Utopian runes. This has the effects of telepathy with a range of 300 feet, but requires line of sight."
-					],
-					"name": "Convergent Link"
-				}
-			],
-			"ac": {
-				"default": 41,
-				"abilities": null
-			},
-			"savingThrows": {
-				"Fort": {
-					"default": 33
-				},
-				"Ref": {
-					"default": 29
-				},
-				"Will": {
-					"default": 32
-				},
-				"abilities": null
-			},
-			"hp": [
-				{
-					"hp": 440,
-					"note": null,
-					"abilities": null
-				}
-			],
-			"weaknesses": [
-				{
-					"amount": 20,
-					"name": "chaotic"
-				}
-			],
-			"abilitiesMid": [
-				{
-					"entries": [
-						"Kendley is {@condition confused}, {@condition fascinated}, or {@condition frightened}, she loses her innate spells and her convergent link and convergent tactics abilities."
-					],
-					"name": "Disrupted Link While"
-				}
-			],
-			"speed": {
-				"abilities": null,
-				"walk": 25
-			},
-			"abilitiesBot": [
-				{
-					"entries": [
-						"Kendley casts calm emotions, creatures {@condition controlled} by the convergence lattice automatically fail their saving throws against the effect, but they can still use {@condition hostile} actions against creatures who aren't {@condition controlled} by the convergence lattice. Each time she Sustains the Spell, creatures affected by the spell are exposed to the convergence lattice as though they had been in conversation with her."
-					],
-					"name": "Convergent Calm When"
-				},
-				{
-					"entries": [
-						"Kendley's attacks (including telekinetic projectile) deal an extra {@dice 4d8} damage to creatures within reach of one of her allies who has convergent tactics."
-					],
-					"name": "Convergent Tactics"
-				}
-			],
-			"attacks": [
-				{
-					"range": "Melee",
-					"name": "bastard sword",
-					"attack": 34,
-					"traits": [
-						"magical",
-						"two-hand d12"
-					],
-					"effects": [
-						"convergent tactics"
-					],
-					"damage": "{@damage 3d8+11} slashing plus convergent tactics",
-					"types": [
-						"slashing"
-					]
-				},
-				{
-					"range": "Melee",
-					"name": "composite longbow",
-					"attack": 29,
-					"traits": [
-						"deadly 2d10",
-						"magical",
-						"propulsive",
-						"range increment 100 feet",
-						"reload 0",
-						"volley 30 feet"
-					],
-					"effects": [
-						"convergent tactics"
-					],
-					"damage": "{@damage 3d8+11} piercing plus convergent tactics",
-					"types": [
-						"piercing"
-					]
-				}
-			],
-			"spellcasting": [
-				{
-					"name": "Divine Innate",
-					"type": "Innate",
-					"tradition": "Divine",
-					"DC": 39,
-					"attack": 31,
-					"entry": {
-						"0": {
-							"level": 10,
-							"spells": [
-								{
-									"name": "shield"
-								},
-								{
-									"name": "telekinetic projectile"
-								}
-							]
-						},
-						"2": {
-							"spells": [
-								{
-									"name": "calm emotions",
-									"amount": "at will"
-								},
-								{
-									"name": "telekinetic maneuver",
-									"amount": "at will"
-								}
-							]
-						},
-						"10": {
-							"spells": [
-								{
-									"name": "divine wrath",
-									"notes": [
-										"lawful only"
-									]
-								}
-							]
-						}
-					}
-				}
-			],
-			"isNpc": false,
-			"inflicts": {
-				"damage": [
-					"piercing",
-					"slashing"
-				],
-				"condition": [
-					"{@condition confused}",
-					"{@condition controlled}"
-				]
-			},
-			"page": 87,
-			"misc": [
-				"MA",
-				"CC",
-				"UW"
-			]
-		},
-		{
-			"source": "EC6",
 			"name": "Kirosthrek",
+			"isNpc": false,
+			"source": "EC6",
+			"page": 89,
 			"level": 20,
 			"rarity": "Unique",
 			"alignment": "NE",
 			"size": "Medium",
-			"creatureType": [
-				"Humanoid"
-			],
 			"traits": [
 				"Xulgath"
+			],
+			"creatureType": [
+				"Humanoid"
 			],
 			"perception": {
 				"default": 36
@@ -3471,27 +1603,6 @@
 				"walk": 25,
 				"fly ": 35
 			},
-			"abilitiesBot": [
-				{
-					"traits": [
-						"10th"
-					],
-					"entries": [
-						"fly, true seeing Occult Rituals DC 42; call spirit, inveigle, planar binding."
-					],
-					"name": "Constant"
-				},
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"entries": [
-						"As xulgath thoughtmaw (page 85), but DC 42."
-					],
-					"name": "Consume Knowledge"
-				}
-			],
 			"attacks": [
 				{
 					"range": "Melee",
@@ -3748,7 +1859,27 @@
 					]
 				}
 			],
-			"isNpc": false,
+			"abilitiesBot": [
+				{
+					"traits": [
+						"10th"
+					],
+					"entries": [
+						"fly, true seeing Occult Rituals DC 42; call spirit, inveigle, planar binding."
+					],
+					"name": "Constant"
+				},
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"entries": [
+						"As xulgath thoughtmaw (page 85), but DC 42."
+					],
+					"name": "Consume Knowledge"
+				}
+			],
 			"inflicts": {
 				"damage": [
 					"piercing",
@@ -3756,24 +1887,25 @@
 				],
 				"condition": []
 			},
-			"page": 89,
 			"misc": [
 				"MA"
 			]
 		},
 		{
-			"source": "EC6",
 			"name": "Sarvel Ever-hunger",
+			"isNpc": false,
+			"source": "EC6",
+			"page": 90,
 			"level": 22,
 			"rarity": "Unique",
 			"alignment": "CE",
 			"size": "Large",
+			"traits": [
+				"Xulgath"
+			],
 			"creatureType": [
 				"Humanoid",
 				"Fiend"
-			],
-			"traits": [
-				"Xulgath"
 			],
 			"perception": {
 				"default": 39
@@ -3914,39 +2046,6 @@
 				],
 				"walk": 30
 			},
-			"abilitiesBot": [
-				{
-					"traits": [
-						"10th"
-					],
-					"entries": [
-						"divine lance, message, read aura, shield; Constant (4th) air walk, freedom of movement Rituals DC 45; Abyssal pact, atone, commune."
-					],
-					"name": "Cantrips"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"entries": [
-						"{@damage 4d8+12} bludgeoning, DC 45."
-					],
-					"name": "Constrict",
-					"generic": true
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"frequency": "once per round",
-					"entries": [
-						"Sarvel makes one tentacle {@action Strike} with each tentacle he currently has (to a maximum of six Strikes), but he can't target a single creature with more than one {@action Strike}. Each attack counts toward his multiple attack penalty, but the penalty doesn't increase until all the attacks have been made."
-					],
-					"name": "Writhe Independently"
-				}
-			],
 			"attacks": [
 				{
 					"range": "Melee",
@@ -4070,7 +2169,39 @@
 					}
 				}
 			],
-			"isNpc": false,
+			"abilitiesBot": [
+				{
+					"traits": [
+						"10th"
+					],
+					"entries": [
+						"divine lance, message, read aura, shield; Constant (4th) air walk, freedom of movement Rituals DC 45; Abyssal pact, atone, commune."
+					],
+					"name": "Cantrips"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"entries": [
+						"{@damage 4d8+12} bludgeoning, DC 45."
+					],
+					"name": "Constrict",
+					"generic": true
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"frequency": "once per round",
+					"entries": [
+						"Sarvel makes one tentacle {@action Strike} with each tentacle he currently has (to a maximum of six Strikes), but he can't target a single creature with more than one {@action Strike}. Each attack counts toward his multiple attack penalty, but the penalty doesn't increase until all the attacks have been made."
+					],
+					"name": "Writhe Independently"
+				}
+			],
 			"inflicts": {
 				"damage": [
 					"bludgeoning",
@@ -4082,10 +2213,1879 @@
 					"{@condition unconscious}"
 				]
 			},
-			"page": 90,
 			"misc": [
 				"MA",
 				"RC",
+				"CC",
+				"UW"
+			]
+		},
+		{
+			"name": "Saurian Warmonger",
+			"isNpc": false,
+			"source": "EC6",
+			"page": 80,
+			"level": 16,
+			"rarity": "Uncommon",
+			"alignment": "NE",
+			"size": "Huge",
+			"traits": [
+				"Dinosaur"
+			],
+			"creatureType": [
+				"Humanoid"
+			],
+			"perception": {
+				"default": 31
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [],
+				"vague": [],
+				"other": [
+					"darkvision"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Common",
+					"Ignan",
+					"Sylvan"
+				],
+				"languageAbilities": [
+					"speak with animals"
+				]
+			},
+			"skills": {
+				"Athletics": {
+					"default": 32
+				},
+				"Crafting": {
+					"default": 28
+				},
+				"Intimidation": {
+					"default": 28
+				},
+				"Nature": {
+					"default": 30
+				},
+				"Survival": {
+					"default": 30
+				}
+			},
+			"abilityMods": {
+				"Str": 8,
+				"Dex": 5,
+				"Con": 6,
+				"Int": 4,
+				"Wis": 6,
+				"Cha": 4
+			},
+			"items": [
+				"leather armor",
+				"+1 striking mancatcher",
+				"+2 greater striking spear"
+			],
+			"abilitiesTop": [],
+			"ac": {
+				"default": 39,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 26
+				},
+				"Ref": {
+					"default": 25
+				},
+				"Will": {
+					"default": 28
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 340,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"abilitiesMid": [],
+			"speed": {
+				"abilities": null,
+				"walk": 40
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "spear",
+					"attack": 32,
+					"traits": [
+						"magical",
+						"reach 15 feet"
+					],
+					"effects": [],
+					"damage": "{@damage 3d6+16} piercing",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "mancatcher",
+					"attack": 31,
+					"traits": [
+						"grab",
+						"magical",
+						"reach 20 feet"
+					],
+					"effects": [
+						"restrain"
+					],
+					"damage": "{@damage 2d6+16} slashing plus restrain",
+					"types": [
+						"slashing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"attack": 30,
+					"traits": [
+						"deadly d12",
+						"reach 15 feet"
+					],
+					"effects": [],
+					"damage": "{@damage 3d10+16} piercing",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "tail",
+					"attack": 30,
+					"traits": [
+						"agile",
+						"finesse",
+						"reach 10 feet",
+						"trip"
+					],
+					"effects": [],
+					"damage": "{@damage 3d6+16} bludgeoning",
+					"types": [
+						"bludgeoning"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "spear",
+					"attack": 32,
+					"traits": [
+						"magical",
+						"thrown 20 feet"
+					],
+					"effects": [],
+					"damage": "{@damage 3d6+16} piercing",
+					"types": [
+						"piercing"
+					]
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Primal Innate",
+					"type": "Innate",
+					"tradition": "Primal",
+					"DC": 37,
+					"entry": {
+						"3": {
+							"spells": [
+								{
+									"name": "animal vision",
+									"notes": [
+										"at will; dinosaurs only"
+									]
+								}
+							]
+						},
+						"4": {
+							"spells": [
+								{
+									"name": "air walk"
+								}
+							]
+						},
+						"constant": {
+							"2": {
+								"spells": [
+									{
+										"name": "speak with animals"
+									}
+								]
+							}
+						}
+					}
+				}
+			],
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"traits": [
+						"incapacitation",
+						"sonic"
+					],
+					"entries": [
+						"The saurian warmonger bellows, evoking the power of the primordial world. Non-dinosaur creatures within 30 feet take {@damage 10d6} sonic damage (DC 34 basic Fortitude save). On a failed save, a creature is also {@condition slowed|CRB|slowed 2} for 1 round ({@condition stunned} {@dice 1d4} on a critical failure). The saurian can't use Boneshaking Roar again for {@dice 1d4} rounds."
+					],
+					"name": "Boneshaking Roar"
+				},
+				{
+					"entries": [
+						"A warmonger wields their mancatcher in one hand."
+					],
+					"name": "Primordial Balance"
+				},
+				{
+					"entries": [
+						"When the warmonger makes a successful mancatcher {@action Strike}, their target must succeed at a DC 34 Reflex save or become {@condition grabbed} until the end of the warmonger's next turn. Each time the creature fails an attempt to {@action Escape} the warmonger, it takes {@damage 2d6} piercing damage."
+					],
+					"name": "Restrain"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"entries": [
+						"The saurian warmonger makes three Strikes: one {@action Strike} each with the weapons in their hands and one {@action Strike} with their tail.",
+						"They can perform these attacks in any order, though each counts toward their multiple attack penalty as normal. After making a Three-Limbed Lunge, the warmonger is {@condition flat-footed} until the beginning of their next turn."
+					],
+					"name": "Three-Limbed Lunge"
+				}
+			],
+			"inflicts": {
+				"damage": [
+					"bludgeoning",
+					"piercing",
+					"slashing",
+					"sonic"
+				],
+				"condition": [
+					"{@condition flat-footed}",
+					"{@condition grabbed}",
+					"{@condition slowed}"
+				]
+			},
+			"misc": [
+				"MA",
+				"RC",
+				"RA",
+				"TA",
+				"CC",
+				"UW"
+			]
+		},
+		{
+			"name": "Saurian Worldwatcher",
+			"isNpc": false,
+			"source": "EC6",
+			"page": 81,
+			"level": 18,
+			"rarity": "Uncommon",
+			"alignment": "NE",
+			"size": "Huge",
+			"traits": [
+				"Dinosaur"
+			],
+			"creatureType": [
+				"Humanoid"
+			],
+			"perception": {
+				"default": 34
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [],
+				"vague": [],
+				"other": [
+					"darkvision"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Common",
+					"Ignan",
+					"Sylvan"
+				],
+				"languageAbilities": [
+					"speak with animals"
+				]
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 35
+				},
+				"Athletics": {
+					"default": 33
+				},
+				"Diplomacy": {
+					"default": 32
+				},
+				"Intimidation": {
+					"default": 32
+				},
+				"Nature": {
+					"default": 34
+				},
+				"Stealth": {
+					"default": 35
+				},
+				"Survival": {
+					"default": 34
+				}
+			},
+			"abilityMods": {
+				"Str": 7,
+				"Dex": 9,
+				"Con": 6,
+				"Int": 5,
+				"Wis": 8,
+				"Cha": 6
+			},
+			"items": [
+				"javelins (2)",
+				"+2 greater striking naginata"
+			],
+			"abilitiesTop": [
+				{
+					"entries": [
+						"+35, {@skill Survival} +34 Str +7, Dex +9, Con +6, Int +5, Wis +8, Cha +6 Items javelins (2), +2 greater striking naginata."
+					],
+					"name": "Stealth"
+				}
+			],
+			"ac": {
+				"default": 43,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 30
+				},
+				"Ref": {
+					"default": 33
+				},
+				"Will": {
+					"default": 32
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 330,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"resistances": [
+				{
+					"amount": 15,
+					"name": "fire"
+				}
+			],
+			"abilitiesMid": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"frequency": "once per round",
+					"entries": [
+						"Trigger A creature makes a melee {@action Strike} against the worldwatcher but misses; The worldwatcher breaks the triggering creature's limb or weapon. If the triggering {@action Strike} was an unarmed attack, the triggering creature takes {@damage 6d6} bludgeoning damage and becomes {@condition clumsy|CRB|clumsy 1} until the limb is reset (an {@action Interact} action with the {@trait manipulate} trait). If the triggering {@action Strike} was a weapon {@action Strike}, the weapon takes {@damage 6d6} bludgeoning damage."
+					],
+					"name": "Raptor Jaw Disarm"
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 40
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "naginata",
+					"attack": 35,
+					"traits": [
+						"deadly d8",
+						"magical",
+						"reach 20 feet",
+						"versatile P"
+					],
+					"effects": [
+						"stunning blow"
+					],
+					"damage": "{@damage 3d8+19} slashing plus stunning blow",
+					"types": [
+						"slashing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"attack": 33,
+					"traits": [
+						"deadly d12",
+						"magical",
+						"reach 15 feet"
+					],
+					"effects": [],
+					"damage": "{@damage 3d10+17} piercing",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "fist",
+					"attack": 35,
+					"traits": [
+						"agile",
+						"finesse",
+						"magical",
+						"reach 10 feet"
+					],
+					"effects": [
+						"stunning blow"
+					],
+					"damage": "{@damage 4d10+19} bludgeoning plus stunning blow",
+					"types": [
+						"bludgeoning"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "tail",
+					"attack": 35,
+					"traits": [
+						"agile",
+						"finesse",
+						"magical",
+						"reach 10 feet",
+						"trip"
+					],
+					"effects": [],
+					"damage": "{@damage 3d6+19} bludgeoning",
+					"types": [
+						"bludgeoning"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "javelin",
+					"attack": 35,
+					"traits": [
+						"thrown 30 feet"
+					],
+					"effects": [],
+					"damage": "{@damage 1d6+19} piercing",
+					"types": [
+						"piercing"
+					]
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Primal Innate",
+					"type": "Innate",
+					"tradition": "Primal",
+					"DC": 40,
+					"entry": {
+						"2": {
+							"spells": [
+								{
+									"name": "animal messenger"
+								}
+							]
+						},
+						"3": {
+							"spells": [
+								{
+									"name": "animal vision",
+									"notes": [
+										"at will; dinosaurs only"
+									]
+								}
+							]
+						},
+						"4": {
+							"spells": [
+								{
+									"name": "air walk"
+								}
+							]
+						},
+						"9": {
+							"spells": [
+								{
+									"name": "fiery body"
+								},
+								{
+									"name": "summon animal",
+									"notes": [
+										"dinosaur only"
+									]
+								},
+								{
+									"name": "volcanic eruption"
+								}
+							]
+						},
+						"constant": {
+							"2": {
+								"spells": [
+									{
+										"name": "speak with animals"
+									}
+								]
+							}
+						}
+					}
+				}
+			],
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"entries": [
+						"As saurian warmonger, but DC 38."
+					],
+					"name": "Boneshaking Roar",
+					"traits": [
+						"incapacitation",
+						"sonic"
+					],
+					"entries_as_xyz": [
+						"The saurian warmonger bellows, evoking the power of the primordial world. Non-dinosaur creatures within 30 feet take {@damage 10d6} sonic damage (DC 34 basic Fortitude save). On a failed save, a creature is also {@condition slowed|CRB|slowed 2} for 1 round ({@condition stunned} {@dice 1d4} on a critical failure). The saurian can't use Boneshaking Roar again for {@dice 1d4} rounds."
+					]
+				},
+				{
+					"traits": [
+						"incapacitation"
+					],
+					"entries": [
+						"Whenever the worldwatcher hits a creature with their fist or naginata {@action Strike}, that creature must succeed at a DC 39 Fortitude save or be {@condition stunned|CRB|stunned 1} ({@condition stunned|CRB|stunned 3} on a critical hit)."
+					],
+					"name": "Stunning Blow"
+				}
+			],
+			"inflicts": {
+				"damage": [
+					"bludgeoning",
+					"piercing",
+					"slashing",
+					"sonic"
+				],
+				"condition": [
+					"{@condition clumsy}",
+					"{@condition slowed}",
+					"{@condition stunned}"
+				]
+			},
+			"misc": [
+				"MA",
+				"RC",
+				"RA",
+				"TA",
+				"CC",
+				"UW"
+			]
+		},
+		{
+			"name": "Thanatotic Titan",
+			"isNpc": false,
+			"source": "EC6",
+			"page": 83,
+			"level": 22,
+			"rarity": "Rare",
+			"alignment": "CE",
+			"size": "Gargantuan",
+			"traits": [
+				"Titan"
+			],
+			"creatureType": [
+				"Humanoid"
+			],
+			"perception": {
+				"default": 36
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [],
+				"vague": [],
+				"other": [
+					"darkvision",
+					"true seeing"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Abyssal",
+					"Celestial",
+					"Common"
+				],
+				"languageAbilities": [
+					"telepathy 100 feet"
+				]
+			},
+			"skills": {
+				"Athletics": {
+					"default": 45
+				},
+				"Crafting": {
+					"default": 41
+				},
+				"Deception": {
+					"default": 36
+				},
+				"Intimidation": {
+					"default": 38
+				},
+				"Religion": {
+					"default": 38
+				},
+				"Stealth": {
+					"default": 36
+				}
+			},
+			"abilityMods": {
+				"Str": 10,
+				"Dex": 4,
+				"Con": 9,
+				"Int": 8,
+				"Wis": 6,
+				"Cha": 8
+			},
+			"abilitiesTop": [
+				{
+					"entries": [
+						"+38, {@skill Religion} +38, {@skill Stealth} +36 Str +10, Dex +4, Con +9, Int +8, Wis +6, Cha +8 Items +2 greater resilient full plate, +3 greater striking halberd."
+					],
+					"name": "Intimidation"
+				}
+			],
+			"ac": {
+				"default": 46,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 37
+				},
+				"Ref": {
+					"default": 34
+				},
+				"Will": {
+					"default": 35
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 540,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"immunities": {
+				"damage": [],
+				"condition": [
+					"death effects",
+					"disease"
+				]
+			},
+			"abilitiesMid": [
+				{
+					"traits": [
+						"aura",
+						"divine",
+						"illusion",
+						"mental"
+					],
+					"entries": [
+						"100 feet. As Elysian titan, but DC 45."
+					],
+					"name": "Impossible Stature",
+					"entries_as_xyz": [
+						"100 feet. Titans warp perception and distance around them to seem even larger and more imposing. A creature that enters or begins its turn within the emanation must succeed at a DC 44 Will save or its movement toward the titan is movement over difficult terrain (greater difficult terrain on a critical failure) for 1 round."
+					]
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"entries": [
+						"The titan can use their {@action Attack of Opportunity} when a creature within their reach uses a concentrate action, in additional to its normal trigger. They disrupt actions on any hit, not just a critical hit\u2014including triggering concentrate actions."
+					],
+					"name": "Attack of Opportunity",
+					"generic": true
+				}
+			],
+			"speed": {
+				"abilities": [
+					"air walk"
+				],
+				"walk": 40
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "halberd",
+					"attack": 42,
+					"traits": [
+						"magical",
+						"reach 40 feet",
+						"versatile S"
+					],
+					"effects": [],
+					"damage": "{@damage 4d10+25} piercing",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "foot",
+					"attack": 39,
+					"traits": [
+						"agile",
+						"reach 30 feet"
+					],
+					"effects": [],
+					"damage": "{@damage 4d8+20} bludgeoning",
+					"types": [
+						"bludgeoning"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "rock",
+					"attack": 39,
+					"traits": [
+						"brutal",
+						"range increment 200 feet"
+					],
+					"effects": [],
+					"damage": "{@damage 3d12+20} bludgeoning",
+					"types": [
+						"bludgeoning"
+					]
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Divine Innate",
+					"type": "Innate",
+					"tradition": "Divine",
+					"DC": 45,
+					"entry": {
+						"5": {
+							"spells": [
+								{
+									"name": "sending"
+								}
+							]
+						},
+						"6": {
+							"spells": [
+								{
+									"name": "scrying",
+									"amount": 3
+								}
+							]
+						},
+						"7": {
+							"spells": [
+								{
+									"name": "spell turning"
+								}
+							]
+						},
+						"8": {
+							"spells": [
+								{
+									"name": "dispel magic",
+									"amount": "at will"
+								},
+								{
+									"name": "spiritual epidemic",
+									"amount": "at will"
+								},
+								{
+									"name": "suggestion",
+									"amount": "at will"
+								}
+							]
+						},
+						"10": {
+							"spells": [
+								{
+									"name": "massacre"
+								},
+								{
+									"name": "meteor swarm"
+								}
+							]
+						},
+						"constant": {
+							"10": {
+								"spells": [
+									{
+										"name": "air walk"
+									},
+									{
+										"name": "true seeing"
+									}
+								]
+							}
+						}
+					}
+				}
+			],
+			"rituals": [
+				{
+					"tradition": "Divine",
+					"DC": 45,
+					"rituals": [
+						{
+							"name": "planar ally"
+						},
+						{
+							"name": "resurrect"
+						}
+					]
+				}
+			],
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"entries": [
+						"{@damage 4d10+25} piercing Melee foot +39 (agile, reach 30 feet), Damage {@damage 4d8+20} bludgeoning Ranged {@as 1} rock +39 (brutal, range increment 200 feet), Damage {@damage 3d12+20} bludgeoning Divine Innate Spells DC 45; 10th massacre, meteor swarm; 8th dispel magic (at will), spiritual epidemic (at will), suggestion (at will); 7th spell turning; 6th scrying (×3); 5th sending; Constant (10th) air walk, true seeing Divine Rituals DC 45; planar ally, resurrect."
+					],
+					"name": "S), Damage"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "free"
+					},
+					"traits": [
+						"divine"
+					],
+					"trigger": "The titan damages a creature capable of using divine spells or abilities",
+					"entries": [
+						"The creature must attempt a DC 45 Will save. Critical Success The creature is unaffected. Success The creature can't use divine spells or abilities for 1 round and is {@condition frightened|CRB|frightened 2}. Only powerful non-divine magic, such as wish, can undo this effect. Failure As success, but the duration is 1 minute. Critical Failure As success, but the duration is unlimited."
+					],
+					"name": "Godslayer",
+					"entries_as_xyz": "Ability not found: 'Godslayer As success, but the duration is 1 minute. Critical Failure As success, but the duration is unlimited.' in Thanatotic Titan, p.83"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"divine",
+						"transmutation"
+					],
+					"entries": [
+						"If a titan's rock {@action Strike} isn't a critical failure, the rock explodes, dealing {@dice 10d6} damage of a damage type of the titan's choice to all creatures in a 20- foot burst (DC 45 basic Reflex save)."
+					],
+					"name": "Throw Rock",
+					"generic": true
+				},
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"entries": [
+						"The titan Strides twice and makes a melee {@action Strike}. If the {@action Strike} hits, the titan can cast {@spell earthquake} centered on the target as a free action."
+					],
+					"name": "Titanic Charge"
+				},
+				{
+					"activity": {
+						"number": 3,
+						"unit": "action"
+					},
+					"entries": [
+						"Huge or smaller, foot, DC 45."
+					],
+					"name": "Trample",
+					"generic": true
+				},
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"entries": [
+						"The titan makes a melee weapon {@action Strike} against each foe within their reach. This counts as three attacks for the titan's multiple attack penalty."
+					],
+					"name": "Wide Cleave"
+				}
+			],
+			"inflicts": {
+				"damage": [
+					"bludgeoning",
+					"piercing"
+				],
+				"condition": [
+					"{@condition frightened}"
+				]
+			},
+			"misc": [
+				"MA",
+				"RC",
+				"RA",
+				"CC",
+				"UW"
+			]
+		},
+		{
+			"name": "Vavakia",
+			"isNpc": false,
+			"source": "EC6",
+			"page": 79,
+			"level": 18,
+			"rarity": "Uncommon",
+			"alignment": "CE",
+			"size": "Huge",
+			"traits": [
+				"Demon"
+			],
+			"creatureType": [
+				"Fiend"
+			],
+			"perception": {
+				"default": 32
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [],
+				"vague": [],
+				"other": [
+					"darkvision",
+					"true seeing"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Abyssal",
+					"Celestial",
+					"Draconic"
+				],
+				"languageAbilities": [
+					"telepathy 100 feet"
+				]
+			},
+			"skills": {
+				"Athletics": {
+					"default": 35
+				},
+				"Deception": {
+					"default": 32
+				},
+				"Intimidation": {
+					"default": 34
+				},
+				"Religion": {
+					"default": 30
+				},
+				"Stealth": {
+					"default": 32
+				}
+			},
+			"abilityMods": {
+				"Str": 9,
+				"Dex": 4,
+				"Con": 6,
+				"Int": 4,
+				"Wis": 6,
+				"Cha": 6
+			},
+			"items": [
+				"breastplate",
+				"+2 greater striking ranseur"
+			],
+			"abilitiesTop": [],
+			"ac": {
+				"default": 42,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 32
+				},
+				"Ref": {
+					"default": 28
+				},
+				"Will": {
+					"default": 30
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 350,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"weaknesses": [
+				{
+					"amount": 15,
+					"name": "cold iron"
+				},
+				{
+					"amount": 15,
+					"name": "good"
+				}
+			],
+			"abilitiesMid": [
+				{
+					"traits": [
+						"aura",
+						"emotion",
+						"fear",
+						"mental"
+					],
+					"entries": [
+						"60 feet, DC 37."
+					],
+					"name": "Frightful Presence",
+					"generic": true
+				},
+				{
+					"entries": [
+						"A vavakia is repulsed by the restoration of souls. The demon takes {@damage 3d10+10} mental damage the first time each round that a creature within 100 feet of it is restored to life or loses the {@condition doomed} condition."
+					],
+					"name": "Restoration Vulnerability"
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 40,
+				"fly ": 40
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "ranseur",
+					"attack": 36,
+					"traits": [
+						"disarm",
+						"magical",
+						"reach 25 feet"
+					],
+					"effects": [
+						"Grab"
+					],
+					"damage": "{@damage 3d10+17} piercing plus {@damage 1d10} acid and Grab",
+					"types": [
+						"acid",
+						"piercing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"attack": 35,
+					"traits": [
+						"magical",
+						"reach 15 feet"
+					],
+					"effects": [
+						"smoking wound"
+					],
+					"damage": "{@damage 3d8+17} piercing plus {@damage 2d8} {@condition persistent damage ||persistent bleed} and smoking wound",
+					"types": [
+						"persistent",
+						"piercing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "claw",
+					"attack": 35,
+					"traits": [
+						"agile",
+						"magical",
+						"reach 15 feet"
+					],
+					"effects": [],
+					"damage": "{@damage 3d10+17} slashing",
+					"types": [
+						"slashing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "tail",
+					"attack": 35,
+					"traits": [
+						"backswing",
+						"magical",
+						"reach 20 feet"
+					],
+					"effects": [
+						"stunning tail"
+					],
+					"damage": "{@damage 3d12+17} bludgeoning plus stunning tail",
+					"types": [
+						"bludgeoning"
+					]
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Divine Innate",
+					"type": "Innate",
+					"tradition": "Divine",
+					"DC": 40,
+					"entry": {
+						"4": {
+							"spells": [
+								{
+									"name": "dimension door",
+									"amount": "at will"
+								}
+							]
+						},
+						"5": {
+							"spells": [
+								{
+									"name": "dimension door"
+								}
+							]
+						},
+						"8": {
+							"spells": [
+								{
+									"name": "divine aura"
+								},
+								{
+									"name": "divine wrath",
+									"amount": "at will"
+								},
+								{
+									"name": "earthquake"
+								}
+							]
+						},
+						"9": {
+							"spells": [
+								{
+									"name": "massacre"
+								},
+								{
+									"name": "power word stun"
+								}
+							]
+						},
+						"constant": {
+							"9": {
+								"spells": [
+									{
+										"name": "true seeing"
+									}
+								]
+							}
+						}
+					}
+				}
+			],
+			"abilitiesBot": [
+				{
+					"entries": [
+						"A creature damaged by the vavakia's jaws is {@condition sickened|CRB|sickened 1} from the rank smell of vapors from the wound."
+					],
+					"name": "Smoking Wound"
+				},
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"traits": [
+						"death",
+						"divine",
+						"necromancy",
+						"negative"
+					],
+					"entries": [
+						"The vavakia exhales ghostly green fire in a 60-foot cone. Living creatures in the area take {@damage 20d6} negative damage (DC 42 basic Reflex save). A good creature that fails this save is becomes {@condition stupefied|CRB|stupefied 2} for 1 minute ({@condition stupefied|CRB|stupefied 4} on a critical failure). A creature slain by Soulfire Breath can't be resurrected except by powerful magic such as a {@spell wish} spell. The vavakia can't use."
+					],
+					"name": "Soulfire Breath"
+				},
+				{
+					"entries": [
+						"Breath again for {@dice 1d4} rounds."
+					],
+					"name": "Soulfire"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"divine",
+						"healing",
+						"necromancy"
+					],
+					"requirements": "The vavakia's last action was Soulfire Breath",
+					"entries": [
+						"The vavakia inhales and regains 10 Hit Points for each creature damaged by its Soulfire Breath. Any excess healing is gained as temporary."
+					],
+					"name": "Soulfire Inhalation"
+				},
+				{
+					"entries": [
+						"Points, which remain for 1 minute."
+					],
+					"name": "Hit"
+				},
+				{
+					"traits": [
+						"incapacitation"
+					],
+					"entries": [
+						"If the vavakia critically hits with its tail {@action Strike}, the target must succeed at a DC 40 Fortitude save or be {@condition stunned} for 1 round ({@dice 1d4} rounds on a critical failure)."
+					],
+					"name": "Stunning Tail"
+				},
+				{
+					"activity": {
+						"number": 3,
+						"unit": "action"
+					},
+					"entries": [
+						"Large or smaller, claw, DC 40."
+					],
+					"name": "Trample",
+					"generic": true
+				}
+			],
+			"inflicts": {
+				"damage": [
+					"bludgeoning",
+					"mental",
+					"negative",
+					"piercing",
+					"slashing"
+				],
+				"condition": [
+					"{@condition doomed}",
+					"{@condition sickened}",
+					"{@condition stunned}",
+					"{@condition stupefied}"
+				]
+			},
+			"misc": [
+				"MA",
+				"RC",
+				"AD",
+				"AC",
+				"CC",
+				"UW"
+			]
+		},
+		{
+			"name": "Viskithrel",
+			"isNpc": false,
+			"source": "EC6",
+			"page": 84,
+			"level": 15,
+			"rarity": "Uncommon",
+			"alignment": "NE",
+			"size": "Huge",
+			"creatureType": [
+				"Beast"
+			],
+			"perception": {
+				"default": 27
+			},
+			"senses": {
+				"precise": [
+					"scent 100 feet"
+				],
+				"imprecise": [],
+				"vague": [],
+				"other": [
+					"darkvision"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Abyssal (can't speak any languages)"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 25
+				},
+				"Athletics": {
+					"default": 31
+				},
+				"Survival": {
+					"default": 27
+				}
+			},
+			"abilityMods": {
+				"Str": 8,
+				"Dex": 6,
+				"Con": 4,
+				"Int": -3,
+				"Wis": 4,
+				"Cha": -1
+			},
+			"abilitiesTop": [
+				{
+					"entries": [
+						"A viskithrel can detect a creature's scent up to a week after the creature has passed through or left an area, and it gains a +4 circumstance bonus to {@action Track} a creature whose scent it has detected."
+					],
+					"name": "Ravenous Tracker"
+				}
+			],
+			"ac": {
+				"default": 37,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 25
+				},
+				"Ref": {
+					"default": 27
+				},
+				"Will": {
+					"default": 23
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 275,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"immunities": {
+				"damage": [],
+				"condition": [
+					"sickened"
+				]
+			},
+			"abilitiesMid": [
+				{
+					"entries": [
+						"A viskithrel's many-chambered snout allows it to partition and ignore scents. The creature can choose to critically succeed at any saving throw against an inhaled threat (such as inhaled poison) or olfactory effects, regardless of its roll."
+					],
+					"name": "Selective Scent"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A creature within 10 feet of the viskithrel makes a melee {@action Strike} against it",
+					"entries": [
+						"The viskithrel Steps up to 15 feet, ignoring difficult terrain as it leaps over obstacles. If this movement takes the viskithrel out of range of the triggering {@action Strike},"
+					],
+					"name": "Predator's Leap"
+				},
+				{
+					"entries": [
+						"{@action Strike} is disrupted. It then makes a jaws {@action Strike} against a bleeding creature."
+					],
+					"name": "the"
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 40,
+				"swim ": 20
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"attack": 30,
+					"traits": [
+						"reach 15 feet"
+					],
+					"effects": [
+						"Grab"
+					],
+					"damage": "{@damage 3d10+14} piercing plus {@damage 1d10} acid and Grab",
+					"types": [
+						"acid",
+						"piercing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "talon",
+					"attack": 30,
+					"traits": [
+						"agile",
+						"reach 10 feet"
+					],
+					"effects": [],
+					"damage": "{@damage 3d10+14} slashing",
+					"types": [
+						"slashing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "tentacle",
+					"attack": 30,
+					"traits": [
+						"reach 20 feet"
+					],
+					"effects": [],
+					"damage": "{@damage 1d10+14} slashing plus {@damage 2d10} {@condition persistent damage ||persistent bleed}",
+					"types": [
+						"persistent",
+						"slashing"
+					]
+				}
+			],
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"entries": [
+						"Melee talon +30 (agile, reach 10 feet), Damage {@damage 3d10+14} slashing Melee {@as 1} tentacle +30 (reach 20 feet), Damage {@damage 1d10+14} slashing plus {@damage 2d10} {@condition persistent damage ||persistent bleed}."
+					],
+					"name": "and Grab"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"attack"
+					],
+					"entries": [
+						"Large, {@damage 3d10} bludgeoning plus {@damage 2d10} acid, Rupture 25."
+					],
+					"name": "Swallow Whole",
+					"generic": true
+				}
+			],
+			"inflicts": {
+				"damage": [
+					"bludgeoning",
+					"piercing",
+					"slashing"
+				],
+				"condition": []
+			},
+			"misc": [
+				"MA",
+				"RC"
+			]
+		},
+		{
+			"name": "Xulgath Thoughtmaw",
+			"isNpc": false,
+			"source": "EC6",
+			"page": 85,
+			"level": 15,
+			"rarity": "Rare",
+			"alignment": "CE",
+			"size": "Medium",
+			"traits": [
+				"Xulgath"
+			],
+			"creatureType": [
+				"Humanoid"
+			],
+			"perception": {
+				"default": 30
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [
+					"thoughtsense 60 feet"
+				],
+				"vague": [],
+				"other": [
+					"darkvision"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Draconic",
+					"Undercommon"
+				],
+				"languageAbilities": [
+					"telepathy 100 feet"
+				]
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 25
+				},
+				"Arcana": {
+					"default": 27
+				},
+				"Deception": {
+					"default": 29
+				},
+				"Diplomacy": {
+					"default": 27
+				},
+				"Occultism": {
+					"default": 31
+				},
+				"Society": {
+					"default": 27
+				},
+				"Xulgath Lore": {
+					"default": 31
+				}
+			},
+			"abilityMods": {
+				"Str": 4,
+				"Dex": 6,
+				"Con": 4,
+				"Int": 8,
+				"Wis": 5,
+				"Cha": 6
+			},
+			"items": [
+				"+2 resilient leather armor",
+				"+2 striking spear"
+			],
+			"abilitiesTop": [
+				{
+					"traits": [
+						"divination",
+						"mental",
+						"occult"
+					],
+					"entries": [
+						"The thoughtmaw senses a creature's mental essence at the listed range."
+					],
+					"name": "Thoughtsense"
+				}
+			],
+			"ac": {
+				"default": 36,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 23
+				},
+				"Ref": {
+					"default": 26
+				},
+				"Will": {
+					"default": 30
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 280,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"resistances": [
+				{
+					"amount": 15,
+					"name": "mental"
+				}
+			],
+			"abilitiesMid": [
+				{
+					"traits": [
+						"aura",
+						"mental"
+					],
+					"entries": [
+						"30 feet. A creature that enters the emanation must attempt a DC 36 Will save. On a failure, the creature is {@condition stupefied|CRB|stupefied 1} for 1 minute ({@condition stupefied|CRB|stupefied 2} and also {@condition paralyzed} for 1 round on a critical failure). A creature that succeeds at its save is temporarily immune to psychogenic secretions for 1 minute."
+					],
+					"name": "Psychogenic Secretions"
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 25,
+				"fly ": 35
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "spear",
+					"attack": 30,
+					"traits": [
+						"magical"
+					],
+					"effects": [],
+					"damage": "{@damage 2d6+10} piercing",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"attack": 28,
+					"traits": null,
+					"effects": [],
+					"damage": "{@damage 3d8+10} piercing",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "claw",
+					"attack": 28,
+					"traits": [
+						"agile",
+						"finesse"
+					],
+					"effects": [],
+					"damage": "{@damage 3d4+10} slashing",
+					"types": [
+						"slashing"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "spear",
+					"attack": 30,
+					"traits": [
+						"magical",
+						"thrown 20 feet"
+					],
+					"effects": [],
+					"damage": "{@damage 2d6+10} piercing",
+					"types": [
+						"piercing"
+					]
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Occult Spontaneous",
+					"type": "Spontaneous",
+					"tradition": "Occult",
+					"DC": 36,
+					"entry": {
+						"0": {
+							"level": 7,
+							"spells": [
+								{
+									"name": "daze"
+								},
+								{
+									"name": "forbidding ward"
+								},
+								{
+									"name": "message"
+								},
+								{
+									"name": "shield"
+								}
+							]
+						},
+						"4": {
+							"slots": 3,
+							"spells": [
+								{
+									"name": "invisibility"
+								},
+								{
+									"name": "modify memory"
+								},
+								{
+									"name": "suggestion"
+								}
+							]
+						},
+						"5": {
+							"slots": 3,
+							"spells": [
+								{
+									"name": "hallucination"
+								},
+								{
+									"name": "mind probe"
+								},
+								{
+									"name": "synaptic pulse"
+								}
+							]
+						},
+						"6": {
+							"slots": 3,
+							"spells": [
+								{
+									"name": "phantasmal calamity"
+								},
+								{
+									"name": "scrying"
+								},
+								{
+									"name": "wall of force"
+								}
+							]
+						},
+						"7": {
+							"slots": 3,
+							"spells": [
+								{
+									"name": "phantasmal killer"
+								},
+								{
+									"name": "visions of danger"
+								},
+								{
+									"name": "warp mind"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Occult Innate",
+					"type": "Innate",
+					"tradition": "Occult",
+					"DC": 36,
+					"attack": 28,
+					"entry": {
+						"2": {
+							"spells": [
+								{
+									"name": "telekinetic maneuver",
+									"amount": "at will"
+								}
+							]
+						},
+						"5": {
+							"spells": [
+								{
+									"name": "telekinetic haul",
+									"amount": "at will"
+								}
+							]
+						},
+						"8": {
+							"spells": [
+								{
+									"name": "phantom pain",
+									"amount": 3
+								}
+							]
+						}
+					}
+				}
+			],
+			"rituals": [
+				{
+					"tradition": "Occult",
+					"DC": 36,
+					"rituals": [
+						{
+							"name": "inveigle"
+						}
+					]
+				}
+			],
+			"abilitiesBot": [
+				{
+					"traits": [
+						"8th"
+					],
+					"entries": [
+						"telekinetic projectile; Constant (8th) fly Occult Rituals DC 36; inveigle."
+					],
+					"name": "Cantrips"
+				},
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"traits": [
+						"divination",
+						"mental",
+						"occult"
+					],
+					"entries": [
+						"The thoughtmaw invades the mind of a creature within 100 feet and attempts to swallow its capacity for higher thought. The creature must attempt a DC 36 Will save."
+					],
+					"name": "Consume Knowledge"
+				},
+				{
+					"entries": [
+						"Knowledge immediately ends any of the ability's previous effects on a different creature.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "The creature is unaffected.",
+								"Success": "The creature is {@condition slowed|CRB|slowed 1} for 1 round.",
+								"Failure": "The creature is {@condition slowed|CRB|slowed 1} and can take no actions other than basic actions for 1 minute.",
+								"Critical Failure": "As failure, and the thoughtmaw is {@condition quickened|CRB|quickened 1} for 1 minute. It can use this extra action"
+							}
+						}
+					],
+					"name": "Using Consume"
+				},
+				{
+					"entries": [
+						"{@action Cast a Spell} if the target had prepared spells or a spell repertoire."
+					],
+					"name": "to Stride, Strike, or"
+				}
+			],
+			"inflicts": {
+				"damage": [
+					"piercing",
+					"slashing"
+				],
+				"condition": [
+					"{@condition slowed}",
+					"{@condition stupefied}"
+				]
+			},
+			"misc": [
+				"MA",
+				"RA",
+				"TA",
 				"CC",
 				"UW"
 			]

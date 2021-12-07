@@ -1,16 +1,155 @@
 {
 	"item": [
 		{
+			"name": "Aurifying Salts",
 			"source": "AoE1",
-			"name": "Fingerprinting Kit",
-			"level": 3,
+			"page": 80,
 			"type": "Item",
-			"category": "Held",
+			"level": 3,
+			"traits": [
+				"Uncommon",
+				"Alchemical",
+				"Consumable"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 12,
+				"note": null
+			},
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": "Interact",
+				"requirements": null,
+				"frequency": null,
+				"trigger": null
+			},
+			"category": "Consumable",
+			"entries": [
+				"You can apply this pale eggshell powder to one outfit, one object of up to Medium size, or up to 10 smaller objects in the same space, such as jewelry, to make them appear gilded for 1 hour. If used as part of {@action Make an Impression||Making an Impression} on an audience swayed by expensive clothing, it makes most clothing or jewelry seem to be worth 10 times as much as they really are. Only someone who closely inspects an affected item notices it's not real gold. If you apply the salts to an object made of metal, the metal softens like gold, reducing its Hardness by 4 (to a minimum of Hardness 10) for 1 hour."
+			],
+			"generic": false,
+			"consumable": true
+		},
+		{
+			"name": "Blindpepper Bomb",
+			"source": "AoE1",
+			"page": 78,
+			"type": "Item",
+			"level": 5,
+			"traits": [
+				"Uncommon",
+				"Alchemical",
+				"Bomb",
+				"Consumable",
+				"Visual"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 40,
+				"note": null
+			},
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": "Strike",
+				"requirements": null,
+				"frequency": null,
+				"trigger": null
+			},
+			"category": "Bomb",
+			"entries": [
+				"Though expensive, these single-use alchemical bombs are often used by police forces to disperse unruly crowds and quell riots without risking permanent physical injury to either officers or civilians. The bomb can be thrown up to 30 feet, causing it to explode, spraying the aerosolized pepper dust in a 15-foot-radius burst. All creatures in the area must succeed at a DC 18 Reflex save to avoid inhaling the dust or getting it in their eyes. On a failed save, the creature is {@condition blinded} for 1 round and then {@condition dazzled} for 1 round. On a critical failure, the creature is {@condition blinded} for 1 round, {@condition sickened|CRB|sickened 1}, and {@condition dazzled} until it removes the {@condition sickened} condition."
+			],
+			"generic": false,
+			"consumable": true
+		},
+		{
+			"name": "Blindpepper Tube",
+			"source": "AoE1",
+			"page": 78,
+			"type": "Item",
+			"level": 1,
+			"traits": [
+				"Uncommon",
+				"Alchemical",
+				"Consumable",
+				"Visual"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 3,
+				"note": null
+			},
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"category": "Consumable",
+			"entries": [
+				"This single-use pacification device consists of finely ground hot pepper loaded into a sealed, blowgun-style tube with a one-way valve and a range of 5 feet. To use it, the wielder must tear open the tube's seal as an {@action Interact} action, then spend another action to blow the hot pepper into an adjacent creature's face. These actions don't have to be taken in the same round. The target must attempt a DC 15 Reflex save to avoid inhaling the pepper or getting it in their eyes. On a failed save, the creature is {@condition blinded} for 1 round and then {@condition dazzled} for 1 round. On a critical failure, the creature is {@condition blinded} for 1 round, {@condition sickened|CRB|sickened 1}, and {@condition dazzled} until it removes the {@condition sickened} condition."
+			],
+			"generic": false,
+			"consumable": true
+		},
+		{
+			"name": "Corpseward Pendant",
+			"source": "AoE1",
+			"page": 80,
+			"type": "Item",
+			"level": 5,
+			"traits": [
+				"Uncommon",
+				"Abjuration",
+				"Invested",
+				"Magical"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 150,
+				"note": null
+			},
+			"usage": "worn amulet",
+			"bulk": "\u2014",
+			"category": "Worn",
+			"entries": [
+				"This small pendant is usually shaped like a humanoid skull or small animal skull.",
+				{
+					"type": "activation",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"Interact"
+					],
+					"frequency": "three times per day",
+					"trigger": null,
+					"requirements": null,
+					"effect": [
+						"You become undetectable to undead creatures for 10 minutes. Undead can't see, hear, or smell you, nor detect you with sensory capabilities such as scent or tremorsense. A creature can attempt a single DC 18 Will saving throw to ignore this effect.",
+						"If an undead has reason to believe that {@condition undetected} opponents are present, it can still attempt to {@action Seek} or {@action Strike} you. If you attempt to use a positive spell to damage undead, use Command Undead, touch or damage an undead creature, or attack any creature while warded in this manner, the pendant's effects immediately end. An undead creature who observes you in this manner or one who succeeds at the Will save is immune to the corpseward pendant for 24 hours."
+					]
+				}
+			],
+			"generic": false,
+			"consumable": false
+		},
+		{
+			"name": "Fingerprinting Kit",
+			"source": "AoE1",
+			"page": 77,
+			"type": "Item",
+			"level": 3,
 			"traits": [
 				"Uncommon"
 			],
-			"consumable": false,
-			"generic": false,
 			"price": {
 				"coin": "gp",
 				"amount": 30,
@@ -18,31 +157,88 @@
 			},
 			"usage": "held in 2 hands",
 			"bulk": "L",
+			"category": "Held",
 			"entries": [
 				"Rarely found outside of major metropolises, fingerprinting kits are a state-of-the-art, non-magical means of linking suspects to the scene of a crime.",
 				"The kit consists of two parts. The first, a delicate brush and a jar of extremely fine dust, is used to reveal fingerprints left behind by most humanoid creatures. The dust sticks to the natural oils left behind on smooth surfaces. When you use the kit to determine whether or not creatures left behind a fingerprint at a crime scene, the GM rolls a secret {@skill Thievery} check against the {@skill Thievery} DC of every creature capable of leaving prints that has interacted with the scene. On a success, you locate a clear print from that creature and carefully transfer it to a special sheet of sticky paper. (Note that fingerprints can last for days, and prints collected in this manner often include those of victims, witnesses, and unrelated passersby.) At the GM's discretion, the print-leaving creature might get a bonus to its {@skill Thievery} DC for taking special precautions. In other cases, finding a print might be impossible (such as if the creature was wearing gloves or if the location has been significantly compromised)",
 				"The second part of the kit is a small sheaf of paper and a pad soaked in ink. By forcing a humanoid creature with fingerprints to roll a finger across the pad and then press it to the paper, you can obtain an image of the unique whorls in that creature's fingerprints. These can then be compared to any prints found at a crime scene. Successfully determining whether or not two prints match requires a DC 15 {@skill Perception} check\u2014the GM should roll this check secretly as well, since a failed check may result in false information."
 			],
-			"page": 77
+			"generic": false,
+			"consumable": false
 		},
 		{
+			"name": "Grolna",
 			"source": "AoE1",
-			"name": "Handcuffs",
-			"level": "3+",
+			"page": 81,
 			"type": "Item",
-			"category": "Held",
+			"level": 1,
+			"traits": [
+				"Uncommon",
+				"Alchemical",
+				"Consumable",
+				"Drug",
+				"Ingested",
+				"Poison"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 3,
+				"note": null
+			},
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": "Interact",
+				"requirements": null,
+				"frequency": null,
+				"trigger": null
+			},
+			"category": "Poison",
+			"entries": [
+				"This caligni-made, murky-green drug supercharges a creature's olfactory senses at the expense of dulling their mind. Popular throughout the Darklands for its ability to transform normally dull scents and flavors into intense, euphoric experiences, grolna can also be a great aid to trackers who want to follow scent trails, turning ordinary humanoids into effective bloodhounds.",
+				"Taking an additional dose of grolna while affected by the effects of stage 1 of a previous dose resets the duration of stage 1 and postpones the onset of stage 2 effects.",
+				{
+					"type": "affliction",
+					"name": null,
+					"traits": [],
+					"DC": "13",
+					"savingThrow": "Fortitude",
+					"onset": "1 minute",
+					"maxDuration": "8 hours",
+					"stages": [
+						{
+							"stage": 1,
+							"entry": "gain scent",
+							"duration": "imprecise"
+						}
+					]
+				}
+			],
+			"generic": false,
+			"consumable": true
+		},
+		{
+			"name": "Handcuffs",
+			"source": "AoE1",
+			"page": 77,
+			"type": "Item",
+			"level": "3+",
 			"traits": [
 				"Uncommon"
 			],
-			"consumable": false,
-			"generic": "G",
 			"usage": "held in 1 hand",
 			"bulk": "L",
+			"category": "Held",
 			"entries": [
 				"Developed in Absalom and rarely used except by police forces in major cities due to their significant cost, handcuffs possess a ratcheting lock system in each cuff that allows them to be quickly cinched down on a captive's limbs, even if they're actively resisting.",
 				"To apply handcuffs, you must first grab or restrain your opponent, then attempt an {@skill Athletics} check against the opponent's Fortitude DC. On a success, you lock one of the cuffs around your opponent's wrist. You can lock the other cuff to yourself or a stationary object within reach as an {@action Interact} action; to lock it to another creature (either the same opponent you just cuffed or a separate creature altogether), you must first grab or restrain that creature, as before, and then make an {@skill Athletics} check against its Fortitude DC. The DC to make the {@skill Athletics} check against your own wrist is 5, or 10 for an unattended object.",
 				"If you bind a creature to itself, it takes the same penalties as those imposed by manacles (Core Rulebook 290). If you bind a creature to another creature (including yourself), the two creatures are locked together and must remain in adjacent spaces, and both creatures gain the {@condition clumsy|CRB|clumsy 1} condition as long as they are handcuffed. If you lock a creature to an immobile object, such as a bar or tree, the creature is {@condition immobilized}. (For creatures with an unusual physiology such as more or fewer limbs, the GM determines what effects handcuffs have, if any.) Handcuffs are unlocked via a key and are easier to slip out of than ordinary manacles. The chain between handcuffs can be {@condition Broken} Open with a single {@skill Athletics} check."
 			],
+			"generic": "G",
 			"variants": [
 				{
 					"type": "average handcuffs",
@@ -81,369 +277,14 @@
 					]
 				}
 			],
-			"page": 77
+			"consumable": false
 		},
 		{
-			"source": "AoE1",
-			"name": "Blindpepper Bomb",
-			"level": 5,
-			"type": "Item",
-			"category": "Bomb",
-			"traits": [
-				"Uncommon",
-				"Alchemical",
-				"Bomb",
-				"Consumable",
-				"Visual"
-			],
-			"consumable": true,
-			"generic": false,
-			"price": {
-				"coin": "gp",
-				"amount": 40,
-				"note": null
-			},
-			"usage": "held in 1 hand",
-			"activate": {
-				"activity": {
-					"number": 1,
-					"unit": "action"
-				},
-				"components": "Strike",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
-			},
-			"bulk": "L",
-			"entries": [
-				"Though expensive, these single-use alchemical bombs are often used by police forces to disperse unruly crowds and quell riots without risking permanent physical injury to either officers or civilians. The bomb can be thrown up to 30 feet, causing it to explode, spraying the aerosolized pepper dust in a 15-foot-radius burst. All creatures in the area must succeed at a DC 18 Reflex save to avoid inhaling the dust or getting it in their eyes. On a failed save, the creature is {@condition blinded} for 1 round and then {@condition dazzled} for 1 round. On a critical failure, the creature is {@condition blinded} for 1 round, {@condition sickened|CRB|sickened 1}, and {@condition dazzled} until it removes the {@condition sickened} condition."
-			],
-			"page": 78
-		},
-		{
-			"source": "AoE1",
-			"name": "Blindpepper Tube",
-			"level": 1,
-			"type": "Item",
-			"category": "Consumable",
-			"traits": [
-				"Uncommon",
-				"Alchemical",
-				"Consumable",
-				"Visual"
-			],
-			"consumable": true,
-			"generic": false,
-			"price": {
-				"coin": "gp",
-				"amount": 3,
-				"note": null
-			},
-			"usage": "held in 1 hand",
-			"bulk": "L",
-			"entries": [
-				"This single-use pacification device consists of finely ground hot pepper loaded into a sealed, blowgun-style tube with a one-way valve and a range of 5 feet. To use it, the wielder must tear open the tube's seal as an {@action Interact} action, then spend another action to blow the hot pepper into an adjacent creature's face. These actions don't have to be taken in the same round. The target must attempt a DC 15 Reflex save to avoid inhaling the pepper or getting it in their eyes. On a failed save, the creature is {@condition blinded} for 1 round and then {@condition dazzled} for 1 round. On a critical failure, the creature is {@condition blinded} for 1 round, {@condition sickened|CRB|sickened 1}, and {@condition dazzled} until it removes the {@condition sickened} condition."
-			],
-			"page": 78
-		},
-		{
-			"source": "AoE1",
-			"name": "Monkey's Fist",
-			"level": 0,
-			"type": "Item",
-			"category": "no category found",
-			"consumable": false,
-			"generic": false,
-			"entries": [
-				"Also called a \"slungshot,\" the monkey's fist is a short length of rope ending in a thick knot wrapped around a metal weight. You can tie the loose end of a monkey's fist to your wrist; if you are disarmed, the weapon remains secured to your wrist rather than falling to the ground, though you must use an {@action Interact} action to grip it before using it again.",
-				"A monkey's fist is a martial melee weapon."
-			],
-			"page": 78
-		},
-		{
-			"source": "AoE1",
-			"name": "Nightstick",
-			"level": 0,
-			"type": "Item",
-			"category": "no category found",
-			"consumable": false,
-			"generic": false,
-			"entries": [
-				"This collapsible baton consists of several nested, telescoping metal shafts that can be extended as a free action by flicking the wrist. Once extended to its full length (usually around 2 feet), the baton locks into shape until the wielder uses an {@action Interact} action to collapse it\u2014a collapsed nightstick is 8 inches long, making it easily {@condition concealed}.",
-				"Lighter and more maneuverable than an ordinary club or truncheon, nightsticks are designed to subdue foes without causing permanent injury. A nightstick is an uncommon simple melee weapon."
-			],
-			"page": 78
-		},
-		{
-			"source": "AoE1",
-			"name": "Pacifying",
-			"level": 5,
-			"type": "Rune",
-			"category": "Rune",
-			"traits": [
-				"Uncommon",
-				"Enchantment",
-				"Magical"
-			],
-			"consumable": false,
-			"generic": false,
-			"price": {
-				"coin": "gp",
-				"amount": 150,
-				"note": null
-			},
-			"usage": "etched onto a weapon",
-			"appliesTo": "Weapon",
-			"entries": [
-				"This rune turns weapons into instruments of peacemaking.",
-				{
-					"type": "activation",
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"components": [
-						"command (mental)"
-					],
-					"frequency": null,
-					"trigger": "You damage a creature with a pacifying weapon",
-					"requirements": null,
-					"effect": [
-						"The damaged creature must succeed at a DC 20 Will save or be pacified. A pacified creature takes a \u20132 penalty to attack rolls on any attacks that aren't nonlethal for 1 minute, and the creature also experiences a clear psychic warning that they should stop dealing lethal damage."
-					]
-				}
-			],
-			"page": 78
-		},
-		{
-			"source": "AoE1",
-			"name": "Recording Rod",
-			"level": "3+",
-			"type": "Item",
-			"category": "Consumable",
-			"traits": [
-				"Uncommon",
-				"Consumable",
-				"Divination",
-				"Magical",
-				"Scrying"
-			],
-			"consumable": true,
-			"generic": "G",
-			"usage": "varies",
-			"bulk": "1",
-			"entries": [
-				"This smooth metal bar is short enough to fit in one hand. It has several inset gemstone buttons on one end and a small lens on the other.",
-				"Popular with law enforcement and blackmailers alike, recording rods allow users to capture and replay incriminating scenes and are often {@condition concealed} and triggered covertly to avoid raising the subject's suspicion.",
-				{
-					"type": "activation",
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"components": [
-						"Interact"
-					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
-					"effect": [
-						"When activated, the rod records anything it sees and hears for 1 minute. Its lens acts as both eye and ear with precise vision and imprecise hearing. This recorded sequence can then be played back as many times as desired, the sights and sounds communicated telepathically to the rod's holder. The rod's recording sequence can be triggered manually by a person holding it, or it can be programmed to begin recording automatically in response to a specified stimulus, such as nearby movement or a specific trigger word spoken in its vicinity.",
-						"For basic recording rods, once activated, the rod records for 1 minute, after which it loses its recording ability but can replay that same scene over and over.",
-						"Rarer and more expensive reusable versions of the recording rod operate similarly, but the recording function can be enabled a second time by permanently erasing the memory currently stored on the rod. A reusable recording rod lacks the {@trait consumable} trait."
-					]
-				}
-			],
-			"variants": [
-				{
-					"type": "basic",
-					"level": 3,
-					"price": {
-						"coin": "gp",
-						"amount": 20,
-						"note": null
-					},
-					"entries": []
-				},
-				{
-					"type": "reusable",
-					"level": 5,
-					"price": {
-						"coin": "gp",
-						"amount": 60,
-						"note": null
-					},
-					"entries": []
-				}
-			],
-			"page": 80
-		},
-		{
-			"source": "AoE1",
-			"name": "Ring Of Discretion",
-			"level": 1,
-			"type": "Item",
-			"category": "Worn",
-			"traits": [
-				"Uncommon",
-				"Illusion",
-				"Invested",
-				"Magical",
-				"Visual"
-			],
-			"consumable": false,
-			"generic": false,
-			"price": {
-				"coin": "gp",
-				"amount": 15,
-				"note": null
-			},
-			"usage": "worn ring",
-			"bulk": "\u2014",
-			"entries": [
-				"This ring magically conceals any armor and sheathed weapons you're wearing by either turning them {@condition invisible} or creating the illusion of ordinary clothes. The ring doesn't change your appearance beyond concealing weapons and armor. As soon as you wield a weapon, the weapon becomes obvious to onlookers and is no longer affected by the ring until you sheathe the weapon for at least 1 minute. A creature can disbelieve this illusion by Seeking or any time it hits you with an attack."
-			],
-			"page": 80
-		},
-		{
-			"source": "AoE1",
-			"name": "Aurifying Salts",
-			"level": 3,
-			"type": "Item",
-			"category": "Consumable",
-			"traits": [
-				"Uncommon",
-				"Alchemical",
-				"Consumable"
-			],
-			"consumable": true,
-			"generic": false,
-			"price": {
-				"coin": "gp",
-				"amount": 12,
-				"note": null
-			},
-			"usage": "held in 1 hand",
-			"activate": {
-				"activity": {
-					"number": 1,
-					"unit": "action"
-				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
-			},
-			"bulk": "L",
-			"entries": [
-				"You can apply this pale eggshell powder to one outfit, one object of up to Medium size, or up to 10 smaller objects in the same space, such as jewelry, to make them appear gilded for 1 hour. If used as part of {@action Make an Impression||Making an Impression} on an audience swayed by expensive clothing, it makes most clothing or jewelry seem to be worth 10 times as much as they really are. Only someone who closely inspects an affected item notices it's not real gold. If you apply the salts to an object made of metal, the metal softens like gold, reducing its Hardness by 4 (to a minimum of Hardness 10) for 1 hour."
-			],
-			"page": 80
-		},
-		{
-			"source": "AoE1",
-			"name": "Corpseward Pendant",
-			"level": 5,
-			"type": "Item",
-			"category": "Worn",
-			"traits": [
-				"Uncommon",
-				"Abjuration",
-				"Invested",
-				"Magical"
-			],
-			"consumable": false,
-			"generic": false,
-			"price": {
-				"coin": "gp",
-				"amount": 150,
-				"note": null
-			},
-			"usage": "worn amulet",
-			"bulk": "\u2014",
-			"entries": [
-				"This small pendant is usually shaped like a humanoid skull or small animal skull.",
-				{
-					"type": "activation",
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"components": [
-						"Interact"
-					],
-					"frequency": "three times per day",
-					"trigger": null,
-					"requirements": null,
-					"effect": [
-						"You become undetectable to undead creatures for 10 minutes. Undead can't see, hear, or smell you, nor detect you with sensory capabilities such as scent or tremorsense. A creature can attempt a single DC 18 Will saving throw to ignore this effect.",
-						"If an undead has reason to believe that {@condition undetected} opponents are present, it can still attempt to {@action Seek} or {@action Strike} you. If you attempt to use a positive spell to damage undead, use Command Undead, touch or damage an undead creature, or attack any creature while warded in this manner, the pendant's effects immediately end. An undead creature who observes you in this manner or one who succeeds at the Will save is immune to the corpseward pendant for 24 hours."
-					]
-				}
-			],
-			"page": 80
-		},
-		{
-			"source": "AoE1",
-			"name": "Grolna",
-			"level": 1,
-			"type": "Item",
-			"category": "Poison",
-			"traits": [
-				"Uncommon",
-				"Alchemical",
-				"Consumable",
-				"Drug",
-				"Ingested",
-				"Poison"
-			],
-			"consumable": true,
-			"generic": false,
-			"price": {
-				"coin": "gp",
-				"amount": 3,
-				"note": null
-			},
-			"usage": "held in 1 hand",
-			"activate": {
-				"activity": {
-					"number": 1,
-					"unit": "action"
-				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
-			},
-			"bulk": "L",
-			"entries": [
-				"This caligni-made, murky-green drug supercharges a creature's olfactory senses at the expense of dulling their mind. Popular throughout the Darklands for its ability to transform normally dull scents and flavors into intense, euphoric experiences, grolna can also be a great aid to trackers who want to follow scent trails, turning ordinary humanoids into effective bloodhounds.",
-				"Taking an additional dose of grolna while affected by the effects of stage 1 of a previous dose resets the duration of stage 1 and postpones the onset of stage 2 effects.",
-				{
-					"type": "affliction",
-					"name": null,
-					"traits": [],
-					"DC": "13",
-					"savingThrow": "Fortitude",
-					"onset": "1 minute",
-					"maxDuration": "8 hours",
-					"stages": [
-						{
-							"stage": 1,
-							"entry": "gain scent",
-							"duration": "imprecise"
-						}
-					]
-				}
-			],
-			"page": 81
-		},
-		{
-			"source": "AoE1",
 			"name": "Knockout Dram",
-			"level": 7,
+			"source": "AoE1",
+			"page": 81,
 			"type": "Item",
-			"category": "Poison",
+			"level": 7,
 			"traits": [
 				"Uncommon",
 				"Alchemical",
@@ -451,14 +292,13 @@
 				"Ingested",
 				"Poison"
 			],
-			"consumable": true,
-			"generic": false,
 			"price": {
 				"coin": "gp",
 				"amount": 70,
 				"note": null
 			},
 			"usage": "held in 1 hand",
+			"bulk": "L",
 			"activate": {
 				"activity": {
 					"number": 1,
@@ -469,7 +309,7 @@
 				"frequency": null,
 				"trigger": null
 			},
-			"bulk": "L",
+			"category": "Poison",
 			"entries": [
 				"This soporific chemical comes in liquid form and is virtually undetectable by taste or scent. It's most commonly slipped into a victim's drink to quickly induce a deep unconsciousness.",
 				{
@@ -494,14 +334,15 @@
 					]
 				}
 			],
-			"page": 81
+			"generic": false,
+			"consumable": true
 		},
 		{
-			"source": "AoE1",
 			"name": "Looter's Lethargy",
-			"level": 2,
+			"source": "AoE1",
+			"page": 81,
 			"type": "Item",
-			"category": "Poison",
+			"level": 2,
 			"traits": [
 				"Uncommon",
 				"Alchemical",
@@ -509,14 +350,13 @@
 				"Contact",
 				"Poison"
 			],
-			"consumable": true,
-			"generic": false,
 			"price": {
 				"coin": "gp",
 				"amount": 6,
 				"note": null
 			},
 			"usage": "held in 1 hand",
+			"bulk": "L",
 			"activate": {
 				"activity": {
 					"number": 1,
@@ -527,7 +367,7 @@
 				"frequency": null,
 				"trigger": null
 			},
-			"bulk": "L",
+			"category": "Poison",
 			"entries": [
 				"Traps may keep many a thief at bay, but the poison known as looter's lethargy ensures that no thieves are strong enough to walk off with pilfered treasures.",
 				"Commonly smeared on locks, chests, and even valuable items themselves, the poison slowly saps the strength of those who touch it.",
@@ -559,22 +399,90 @@
 					]
 				}
 			],
-			"page": 81
+			"generic": false,
+			"consumable": true
 		},
 		{
+			"name": "Monkey's Fist",
 			"source": "AoE1",
-			"name": "Reaper's Lancet",
-			"level": 5,
+			"page": 78,
 			"type": "Item",
-			"category": "Poison",
+			"level": 0,
+			"category": "no category found",
+			"entries": [
+				"Also called a \"slungshot,\" the monkey's fist is a short length of rope ending in a thick knot wrapped around a metal weight. You can tie the loose end of a monkey's fist to your wrist; if you are disarmed, the weapon remains secured to your wrist rather than falling to the ground, though you must use an {@action Interact} action to grip it before using it again.",
+				"A monkey's fist is a martial melee weapon."
+			],
+			"generic": false,
+			"consumable": false
+		},
+		{
+			"name": "Nightstick",
+			"source": "AoE1",
+			"page": 78,
+			"type": "Item",
+			"level": 0,
+			"category": "no category found",
+			"entries": [
+				"This collapsible baton consists of several nested, telescoping metal shafts that can be extended as a free action by flicking the wrist. Once extended to its full length (usually around 2 feet), the baton locks into shape until the wielder uses an {@action Interact} action to collapse it\u2014a collapsed nightstick is 8 inches long, making it easily {@condition concealed}.",
+				"Lighter and more maneuverable than an ordinary club or truncheon, nightsticks are designed to subdue foes without causing permanent injury. A nightstick is an uncommon simple melee weapon."
+			],
+			"generic": false,
+			"consumable": false
+		},
+		{
+			"name": "Pacifying",
+			"source": "AoE1",
+			"page": 78,
+			"type": "Rune",
+			"level": 5,
+			"traits": [
+				"Uncommon",
+				"Enchantment",
+				"Magical"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 150,
+				"note": null
+			},
+			"usage": "etched onto a weapon",
+			"category": "Rune",
+			"appliesTo": "Weapon",
+			"entries": [
+				"This rune turns weapons into instruments of peacemaking.",
+				{
+					"type": "activation",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"components": [
+						"command (mental)"
+					],
+					"frequency": null,
+					"trigger": "You damage a creature with a pacifying weapon",
+					"requirements": null,
+					"effect": [
+						"The damaged creature must succeed at a DC 20 Will save or be pacified. A pacified creature takes a \u20132 penalty to attack rolls on any attacks that aren't nonlethal for 1 minute, and the creature also experiences a clear psychic warning that they should stop dealing lethal damage."
+					]
+				}
+			],
+			"generic": false,
+			"consumable": false
+		},
+		{
+			"name": "Reaper's Lancet",
+			"source": "AoE1",
+			"page": 81,
+			"type": "Item",
+			"level": 5,
 			"traits": [
 				"Unique",
 				"Magical",
 				"Necromancy",
 				"Poison"
 			],
-			"consumable": false,
-			"generic": false,
 			"price": {
 				"coin": "gp",
 				"amount": 200,
@@ -582,6 +490,7 @@
 			},
 			"usage": "held in 1 hand",
 			"bulk": "1",
+			"category": "Poison",
 			"entries": [
 				"Hendrid Pratchett himself designed this custom skull-topped +1 striking exquisite sword cane and had it gilded in high-quality gold. Its first victim was the very smith whom Pratchett commissioned to craft the weapon, so the means of its construction are a secret known only to Pratchett. The magic of the Reaper's Lancet applies to both the blade and the sheath, making them each effectively a +1 striking weapon, but only if both are wielded by the same creature\u2014if the two components are shared between creatures, only the blade retains the rune's magic.",
 				"Reaper's Lancet has a {@condition hidden} reservoir inside the skull that automatically applies a new dose of poison to the blade after the previous dose was expended with a successful {@action Strike}. The reservoir must be filled manually (a process requiring 1 minute) and is large enough to hold only 3 doses at a time. Any sort of injury-delivered poison can be placed in it, though all doses must be of the same poison. The Price of the poison is not reflected in this weapon's listed Price.",
@@ -602,7 +511,98 @@
 					]
 				}
 			],
-			"page": 81
+			"generic": false,
+			"consumable": false
+		},
+		{
+			"name": "Recording Rod",
+			"source": "AoE1",
+			"page": 80,
+			"type": "Item",
+			"level": "3+",
+			"traits": [
+				"Uncommon",
+				"Consumable",
+				"Divination",
+				"Magical",
+				"Scrying"
+			],
+			"usage": "varies",
+			"bulk": "1",
+			"category": "Consumable",
+			"entries": [
+				"This smooth metal bar is short enough to fit in one hand. It has several inset gemstone buttons on one end and a small lens on the other.",
+				"Popular with law enforcement and blackmailers alike, recording rods allow users to capture and replay incriminating scenes and are often {@condition concealed} and triggered covertly to avoid raising the subject's suspicion.",
+				{
+					"type": "activation",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"Interact"
+					],
+					"frequency": null,
+					"trigger": null,
+					"requirements": null,
+					"effect": [
+						"When activated, the rod records anything it sees and hears for 1 minute. Its lens acts as both eye and ear with precise vision and imprecise hearing. This recorded sequence can then be played back as many times as desired, the sights and sounds communicated telepathically to the rod's holder. The rod's recording sequence can be triggered manually by a person holding it, or it can be programmed to begin recording automatically in response to a specified stimulus, such as nearby movement or a specific trigger word spoken in its vicinity.",
+						"For basic recording rods, once activated, the rod records for 1 minute, after which it loses its recording ability but can replay that same scene over and over.",
+						"Rarer and more expensive reusable versions of the recording rod operate similarly, but the recording function can be enabled a second time by permanently erasing the memory currently stored on the rod. A reusable recording rod lacks the {@trait consumable} trait."
+					]
+				}
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"type": "basic",
+					"level": 3,
+					"price": {
+						"coin": "gp",
+						"amount": 20,
+						"note": null
+					},
+					"entries": []
+				},
+				{
+					"type": "reusable",
+					"level": 5,
+					"price": {
+						"coin": "gp",
+						"amount": 60,
+						"note": null
+					},
+					"entries": []
+				}
+			],
+			"consumable": true
+		},
+		{
+			"name": "Ring Of Discretion",
+			"source": "AoE1",
+			"page": 80,
+			"type": "Item",
+			"level": 1,
+			"traits": [
+				"Uncommon",
+				"Illusion",
+				"Invested",
+				"Magical",
+				"Visual"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 15,
+				"note": null
+			},
+			"usage": "worn ring",
+			"bulk": "\u2014",
+			"category": "Worn",
+			"entries": [
+				"This ring magically conceals any armor and sheathed weapons you're wearing by either turning them {@condition invisible} or creating the illusion of ordinary clothes. The ring doesn't change your appearance beyond concealing weapons and armor. As soon as you wield a weapon, the weapon becomes obvious to onlookers and is no longer affected by the ring until you sheathe the weapon for at least 1 minute. A creature can disbelieve this illusion by Seeking or any time it hits you with an attack."
+			],
+			"generic": false,
+			"consumable": false
 		}
 	]
 }

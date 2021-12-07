@@ -320,6 +320,23 @@
 			]
 		},
 		{
+			"name": "Adventurer's Pack",
+			"source": "CRB",
+			"equipment": true,
+			"type": "Item",
+			"price": {
+				"coin": "sp",
+				"amount": 15,
+				"note": null
+			},
+			"bulk": 1,
+			"hands": null,
+			"category": "Gear",
+			"entries": [
+				"This item is the starter kit for an adventurer, containing the essential items for exploration and survival. The Bulk value is for the entire pack together, but see the descriptions of individual items as necessary. The pack contains the following items: a {@item backpack}, a {@item bedroll}, {@item chalk (10)||10 pieces of chalk}, {@item flint and steel}, {@item rope (50 feet)||50 feet of rope}, 2 weeks' {@item Rations (1 week)||rations}, {@item soap}, 5 {@item torch||torches}, and a {@item waterskin}."
+			]
+		},
+		{
 			"name": "Aeon Stone",
 			"source": "CRB",
 			"page": 604,
@@ -641,13 +658,6 @@
 				"These brass goggles are engraved with flame patterns and have thick, heavy lenses. While worn, they give you a +1 item bonus to {@skill Crafting} checks to {@action Craft} alchemical items and a +1 item bonus to attack rolls with alchemical bombs. You can also ignore lesser cover when making {@action Strike||Strikes} with alchemical bombs."
 			],
 			"generic": "G",
-			"_vmod": {
-				"entries": {
-					"mode": "replaceTxt",
-					"replace": "\\+1"
-				},
-				"entriesMode": "generic"
-			},
 			"variants": [
 				{
 					"type": "alchemist goggles",
@@ -698,7 +708,14 @@
 						}
 					}
 				}
-			]
+			],
+			"_vmod": {
+				"entries": {
+					"mode": "replaceTxt",
+					"replace": "\\+1"
+				},
+				"entriesMode": "generic"
+			}
 		},
 		{
 			"name": "Alchemist's Fire",
@@ -789,6 +806,66 @@
 				},
 				"entriesMode": "variant"
 			}
+		},
+		{
+			"name": "Alchemist's Lab",
+			"source": "CRB",
+			"equipment": true,
+			"type": "Item",
+			"price": {
+				"coin": "gp",
+				"amount": 5,
+				"note": null
+			},
+			"bulk": 6,
+			"hands": 2,
+			"category": "Gear",
+			"entries": [
+				"You need an alchemist's lab to {@action Craft} alchemical items during downtime."
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"type": "Base",
+					"name": "Alchemist's Lab",
+					"price": {
+						"coin": "gp",
+						"amount": 5,
+						"note": null
+					},
+					"entries": []
+				},
+				{
+					"type": "Expanded",
+					"name": "Expanded Alchemist's Lab",
+					"level": 3,
+					"price": {
+						"coin": "gp",
+						"amount": 55,
+						"note": null
+					},
+					"entries": [
+						"An expanded alchemist's lab gives a +1 item bonus to {@skill Crafting} checks to create alchemical items."
+					]
+				}
+			]
+		},
+		{
+			"name": "Alchemist's Tools",
+			"source": "CRB",
+			"equipment": true,
+			"type": "Item",
+			"price": {
+				"coin": "gp",
+				"amount": 3,
+				"note": null
+			},
+			"bulk": 1,
+			"hands": 2,
+			"category": "Gear",
+			"entries": [
+				"This mobile collection of vials and chemicals can be used for simple alchemical tasks. If you wear your alchemist's tools, you can draw and replace them as part of the action that uses them. "
+			]
 		},
 		{
 			"name": "Aligned Oil",
@@ -1439,6 +1516,31 @@
 			}
 		},
 		{
+			"name": "Arrow",
+			"source": "CRB",
+			"page": 282,
+			"equipment": true,
+			"type": "Equipment",
+			"traits": [],
+			"price": {
+				"coin": "sp",
+				"amount": 1,
+				"note": "(price for 10)"
+			},
+			"bulk": null,
+			"shieldStats": null,
+			"activate": null,
+			"onset": null,
+			"ammunition": null,
+			"category": "Ammunition",
+			"entries": [
+				"These projectiles are the ammunition for bows. The shaft of an arrow is made of wood. It is stabilized in flight by fletching at one end and bears a metal head on the other."
+			],
+			"craftReq": null,
+			"generic": false,
+			"variants": null
+		},
+		{
 			"name": "Arrow-catching Shield",
 			"source": "CRB",
 			"page": 587,
@@ -1480,31 +1582,6 @@
 				}
 			],
 			"generic": false
-		},
-		{
-			"name": "Arrow",
-			"source": "CRB",
-			"page": 282,
-			"equipment": true,
-			"type": "Equipment",
-			"traits": [],
-			"price": {
-				"coin": "sp",
-				"amount": 1,
-				"note": "(price for 10)"
-			},
-			"bulk": null,
-			"shieldStats": null,
-			"activate": null,
-			"onset": null,
-			"ammunition": null,
-			"category": "Ammunition",
-			"entries": [
-				"These projectiles are the ammunition for bows. The shaft of an arrow is made of wood. It is stabilized in flight by fletching at one end and bears a metal head on the other."
-			],
-			"craftReq": null,
-			"generic": false,
-			"variants": null
 		},
 		{
 			"name": "Arsenic",
@@ -1568,6 +1645,49 @@
 			"generic": false
 		},
 		{
+			"name": "Artisan's Tools",
+			"source": "CRB",
+			"equipment": true,
+			"type": "Item",
+			"price": {
+				"coin": "gp",
+				"amount": 4,
+				"note": null
+			},
+			"bulk": 2,
+			"hands": 2,
+			"category": "Gear",
+			"entries": [
+				"You need these tools to create items from raw materials with the {@action Craft} skill. Different sets are needed for different work, as determined by the GM; for example, blacksmith's tools differ from woodworker's tools. If you wear your artisan's tools, you can draw and replace them as part of the action that uses them."
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"type": "Base",
+					"name": "Artisan's Tools",
+					"price": {
+						"coin": "gp",
+						"amount": 5,
+						"note": null
+					},
+					"entries": []
+				},
+				{
+					"type": "Sterling",
+					"name": "Sterling Artisan's Tools",
+					"level": 3,
+					"price": {
+						"coin": "gp",
+						"amount": 50,
+						"note": null
+					},
+					"entries": [
+						"Sterling artisan's tools give you a +1 item bonus to the check."
+					]
+				}
+			]
+		},
+		{
 			"name": "Axiomatic",
 			"source": "CRB",
 			"page": 583,
@@ -1592,6 +1712,23 @@
 			],
 			"craftReq": "You are lawful.",
 			"generic": false
+		},
+		{
+			"name": "Backpack",
+			"source": "CRB",
+			"equipment": true,
+			"type": "Item",
+			"price": {
+				"coin": "sp",
+				"amount": 1,
+				"note": null
+			},
+			"bulk": null,
+			"hands": null,
+			"category": "Gear",
+			"entries": [
+				"A backpack holds up to 4 Bulk of items. and the first 2 Bulk of these items don't count against your Bulk limits. If you're carrying or stowing the pack rather than wearing it on your back, its Bulk is light instead of negligible. "
+			]
 		},
 		{
 			"name": "Bag of Holding",
@@ -1774,6 +1911,23 @@
 			"generic": false
 		},
 		{
+			"name": "Basic Crafter's Book",
+			"source": "CRB",
+			"equipment": true,
+			"type": "Item",
+			"price": {
+				"coin": "sp",
+				"amount": 1,
+				"note": null
+			},
+			"bulk": "L",
+			"hands": 2,
+			"category": "Gear",
+			"entries": [
+				"This book contains the formulas (page 293) for Crafting the common items in this chapter."
+			]
+		},
+		{
 			"name": "Beacon Shot",
 			"source": "CRB",
 			"page": 559,
@@ -1806,6 +1960,23 @@
 				"A creature can remove the arrow or bolt by using an {@action Interact} basic action and succeeding at a DC 20 {@skill Athletics} check."
 			],
 			"generic": false
+		},
+		{
+			"name": "Bedroll",
+			"source": "CRB",
+			"equipment": true,
+			"type": "Item",
+			"price": {
+				"coin": "cp",
+				"amount": 2,
+				"note": null
+			},
+			"bulk": "L",
+			"hands": null,
+			"category": "Gear",
+			"entries": [
+				"Using a writing set, you can draft correspondence and scribe scrolls. A set includes stationery, including a variety of paper and parchment, as well as ink, a quill or inkpen, sealing wax, and a simple seal. If you've written a large amount, you can refill your kit with extra ink and paper."
+			]
 		},
 		{
 			"name": "Belladonna",
@@ -2023,6 +2194,7 @@
 				"This transformation is a {@trait morph} effect, and both the jaws and claws are unarmed attacks in the {@group brawling} weapon group. You gain the benefits of a {@item +1 weapon potency} rune and a {@item striking} rune with these attacks (gaining a +1 item bonus to attack rolls and increasing the weapon damage dice by one).",
 				"If you have an {@class barbarian||animal instinct|animal} and the bestial rage instinct ability, instead of gaining these unarmed attacks, your unarmed attacks from the bestial rage instinct ability gain the benefits of a {@item +2 weapon potency} rune and a {@item greater striking} rune (granting a +2 item bonus to attack rolls and increasing the weapon damage dice by two)."
 			],
+			"craftReq": "You are a barbarian with the {@class barbarian||animal instinct|animal}.",
 			"generic": "G",
 			"variants": [
 				{
@@ -2088,8 +2260,7 @@
 						"entriesMode": "generic"
 					}
 				}
-			],
-			"craftReq": "You are a barbarian with the {@class barbarian||animal instinct|animal}."
+			]
 		},
 		{
 			"name": "Bestial Mutagen",
@@ -3494,6 +3665,40 @@
 			"generic": false
 		},
 		{
+			"name": "Caltrops",
+			"source": "CRB",
+			"equipment": true,
+			"type": "Item",
+			"price": {
+				"coin": "cp",
+				"amount": 3,
+				"note": null
+			},
+			"bulk": "L",
+			"hands": 1,
+			"category": "Gear",
+			"entries": [
+				"These four‑pronged metal spikes can damage a creature's feet. You can scatter caltrops in an empty square adjacent to you with an Interact action. The first creature that moves into that square must succeed at a DC 14 Acrobatics check or take 1d4 piercing damage and 1 persistent bleed damage. A creature taking persistent bleed damage from caltrops takes a \u20135‑foot penalty to its Speed. Spending an Interact action to pluck the caltrops free reduces the DC to stop the bleeding. Once a creature takes damage from caltrops, enough are ruined that other creatures moving into the square are safe. Deployed caltrops can be salvaged and reused if no creatures took damage from them. Otherwise, enough are ruined that they can't be salvaged. "
+			]
+		},
+		{
+			"name": "Candle (10)",
+			"source": "CRB",
+			"equipment": true,
+			"type": "Item",
+			"price": {
+				"coin": "cp",
+				"amount": 1,
+				"note": "for price of 10"
+			},
+			"bulk": null,
+			"hands": 1,
+			"category": "Gear",
+			"entries": [
+				"A lit candle sheds dim light in a 10‑foot radius for 8 hours. "
+			]
+		},
+		{
 			"name": "Candle of Truth",
 			"source": "CRB",
 			"page": 570,
@@ -3740,6 +3945,40 @@
 			"generic": false
 		},
 		{
+			"name": "Chain (10 feet)",
+			"source": "CRB",
+			"equipment": true,
+			"type": "Item",
+			"price": {
+				"coin": "gp",
+				"amount": 4,
+				"note": "for price of 10 feet"
+			},
+			"bulk": 1,
+			"hands": 2,
+			"category": "Gear",
+			"entries": [
+				""
+			]
+		},
+		{
+			"name": "Chalk (10)",
+			"source": "CRB",
+			"equipment": true,
+			"type": "Item",
+			"price": {
+				"coin": "cp",
+				"amount": 1,
+				"note": "for price of 10"
+			},
+			"bulk": null,
+			"hands": 1,
+			"category": "Gear",
+			"entries": [
+				""
+			]
+		},
+		{
 			"name": "Channel Protection Amulet",
 			"source": "CRB",
 			"page": 608,
@@ -3791,13 +4030,6 @@
 			"entries": [
 				"Enzymatic compounds in this elixir strengthen and excite the muscles in your legs. You gain a status bonus to your Speed for the listed duration."
 			],
-			"_vmod": {
-				"entries": {
-					"mode": "replaceTxt",
-					"replace": "You gain a status bonus to your Speed for the listed duration."
-				},
-				"entriesMode": "generic"
-			},
 			"generic": "G",
 			"variants": [
 				{
@@ -3851,6 +4083,30 @@
 						}
 					}
 				}
+			],
+			"_vmod": {
+				"entries": {
+					"mode": "replaceTxt",
+					"replace": "You gain a status bonus to your Speed for the listed duration."
+				},
+				"entriesMode": "generic"
+			}
+		},
+		{
+			"name": "Chest",
+			"source": "CRB",
+			"equipment": true,
+			"type": "Item",
+			"price": {
+				"coin": "sp",
+				"amount": 6,
+				"note": null
+			},
+			"bulk": 2,
+			"hands": 2,
+			"category": "Gear",
+			"entries": [
+				"A wooden chest can hold up to 8 Bulk of items. "
 			]
 		},
 		{
@@ -4069,6 +4325,49 @@
 			"generic": false
 		},
 		{
+			"name": "Climbing Kit",
+			"source": "CRB",
+			"equipment": true,
+			"type": "Item",
+			"price": {
+				"coin": "sp",
+				"amount": 5,
+				"note": null
+			},
+			"bulk": 1,
+			"hands": 2,
+			"category": "Gear",
+			"entries": [
+				"This satchel includes 50 feet of rope, pulleys, a dozen pitons, a hammer, a grappling hook, and one set of crampons. Climbing kits allow you to attach yourself to the wall you're {@action Climb||Climbing}, moving half as quickly as usual (minimum 5 feet) but letting you attempt a DC {@flatDC 5} flat check whenever you critically fail to prevent a fall. A single kit has only enough materials for one climber; each climber needs their own kit. If you wear your climbing kit, you can access it as part of a {@action Climb} action."
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"type": "Base",
+					"name": "Climbing Kit",
+					"price": {
+						"coin": "sp",
+						"amount": 5,
+						"note": null
+					},
+					"entries": []
+				},
+				{
+					"type": "Extreme",
+					"name": "Extreme Climbing Kit",
+					"level": 3,
+					"price": {
+						"coin": "gp",
+						"amount": 40,
+						"note": null
+					},
+					"entries": [
+						"You gain a +1 item bonus to {@skill Athletics} checks to {@action Climb} while using an extreme climbing kit."
+					]
+				}
+			]
+		},
+		{
 			"name": "Cloak of Elvenkind",
 			"source": "CRB",
 			"page": 608,
@@ -4190,6 +4489,16 @@
 			]
 		},
 		{
+			"name": "Clothing",
+			"source": "CRB",
+			"equipment": true,
+			"type": "Item",
+			"category": "Gear",
+			"entries": [
+				"Ordinary clothing is functional with basic tailoring, such as peasant garb, monk's robes, or work clothes. Explorer's clothing is sturdy enough that it can be reinforced to protect you, even though it isn't a suit of armor. It comes in many forms, though the most common sorts look like clerical vestments, monk's garments, or wizard's robes, as members of all three classes are likely to avoid wearing armor. For more information on explorer's clothing, see pages 275\u2013276. Fine clothing, suitable for a noble or royal, is made with expensive fabrics, precious metals, and intricate patterns. You can wear only one tool set of light Bulk with fine clothing, instead of the normal limit of 2 Bulk. You gain a +1 item bonus to checks to Make an Impression on upper‑class folk while wearing high‑fashion fine clothing. Winter clothing allows you to negate the damage from severe environmental cold and reduce the damage from extreme cold to that of severe cold. "
+			]
+		},
+		{
 			"name": "Cognitive Mutagen",
 			"source": "CRB",
 			"page": 547,
@@ -4220,14 +4529,6 @@
 				"{@b Benefit} You gain an item bonus to {@skill Arcana}, {@skill Crafting}, {@skill Lore}, {@skill Occultism}, and {@skill Society} checks and all checks to {@action Recall Knowledge}. Your critical failures on {@action Recall Knowledge} checks become failures instead.",
 				"{@b Drawback} You take a \u20132 penalty to weapon and unarmed attack rolls, {@skill Athletics} checks, and {@skill Acrobatics} checks. You can carry 2 less Bulk than normal before becoming {@condition encumbered}, and the maximum Bulk you can carry is reduced by 4."
 			],
-			"_vmod": {
-				"entries": {
-					"mode": "replaceTxt",
-					"replaceTags": true,
-					"replace": "You gain an item bonus to \\{@skill Arcana\\}, \\{@skill Crafting\\}, \\{@skill Lore\\}, \\{@skill Occultism\\}, and \\{@skill Society\\} checks and all checks to \\{@action Recall Knowledge\\}."
-				},
-				"entriesMode": "generic"
-			},
 			"generic": "G",
 			"variants": [
 				{
@@ -4298,7 +4599,15 @@
 						}
 					}
 				}
-			]
+			],
+			"_vmod": {
+				"entries": {
+					"mode": "replaceTxt",
+					"replaceTags": true,
+					"replace": "You gain an item bonus to \\{@skill Arcana\\}, \\{@skill Crafting\\}, \\{@skill Lore\\}, \\{@skill Occultism\\}, and \\{@skill Society\\} checks and all checks to \\{@action Recall Knowledge\\}."
+				},
+				"entriesMode": "generic"
+			}
 		},
 		{
 			"name": "Cold Iron",
@@ -4657,6 +4966,49 @@
 			"generic": false
 		},
 		{
+			"name": "Compass",
+			"source": "CRB",
+			"equipment": true,
+			"type": "Item",
+			"price": {
+				"coin": "gp",
+				"amount": 1,
+				"note": null
+			},
+			"bulk": null,
+			"hands": 1,
+			"category": "Gear",
+			"entries": [
+				"A compass helps you {@action Sense Direction} or navigate, provided you're in a location with uniform magnetic fields. Without a compass, you take a \u20132 item penalty to these checks (similar to using a shoddy item)."
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"type": "Base",
+					"name": "Compass",
+					"price": {
+						"coin": "gp",
+						"amount": 1,
+						"note": null
+					},
+					"entries": []
+				},
+				{
+					"type": "Lensatic",
+					"name": "Lensatic Compass",
+					"level": 3,
+					"price": {
+						"coin": "gp",
+						"amount": 20,
+						"note": null
+					},
+					"entries": [
+						"A lensatic compass gives you a +1 item bonus to these checks."
+					]
+				}
+			]
+		},
+		{
 			"name": "Comprehension Elixir",
 			"source": "CRB",
 			"page": 547,
@@ -4684,13 +5036,6 @@
 			"entries": [
 				"This bitter draught opens your mind to the potential of the written word. For the listed duration after drinking this elixir, you can understand any words you read, so long as they are written in a common language. This elixir doesn't automatically allow you to understand codes or extremely esoteric passages\u2014you still need to attempt a skill check to {@action Decipher Writing}."
 			],
-			"_vmod": {
-				"entries": {
-					"mode": "replaceTxt",
-					"replace": "the listed duration"
-				},
-				"entriesMode": "generic"
-			},
 			"generic": "G",
 			"variants": [
 				{
@@ -4727,7 +5072,29 @@
 						}
 					}
 				}
-			]
+			],
+			"_vmod": {
+				"entries": {
+					"mode": "replaceTxt",
+					"replace": "the listed duration"
+				},
+				"entriesMode": "generic"
+			}
+		},
+		{
+			"name": "Cookware",
+			"source": "CRB",
+			"equipment": true,
+			"type": "Item",
+			"price": {
+				"coin": "gp",
+				"amount": 1,
+				"note": null
+			},
+			"bulk": 2,
+			"hands": 2,
+			"category": "Gear",
+			"entries": []
 		},
 		{
 			"name": "Corrosive",
@@ -4857,6 +5224,49 @@
 					"entries": [
 						"The eyepiece grants a +2 item bonus and can be activated.",
 						"{@b Activate} 1 minute ({@action Interact}); {@b Frequency} once per day; {@b Effect} You calibrate the eyepiece to have it cast a 5th-level {@spell creation} spell over the course of 1 minute to construct a temporary item."
+					]
+				}
+			]
+		},
+		{
+			"name": "Crowbar",
+			"source": "CRB",
+			"equipment": true,
+			"type": "Item",
+			"price": {
+				"coin": "sp",
+				"amount": 5,
+				"note": null
+			},
+			"bulk": "L",
+			"hands": 2,
+			"category": "Gear",
+			"entries": [
+				"When {@action Force Open||Forcing Open} an object that doesn't have an easy grip, a crowbar makes it easier to gain the necessary leverage. Without a crowbar, prying something open takes a \u20132 item penalty to the {@skill Athletics} check to {@action Force Open}."
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"type": "Base",
+					"name": "Crowbar",
+					"price": {
+						"coin": "gp",
+						"amount": 1,
+						"note": null
+					},
+					"entries": []
+				},
+				{
+					"type": "Levered",
+					"name": "Levered Crowbar",
+					"level": 3,
+					"price": {
+						"coin": "gp",
+						"amount": 20,
+						"note": null
+					},
+					"entries": [
+						"A levered crowbar grants you a +1 item bonus to {@skill Athletics} checks to {@action Force Open} anything that can be pried open."
 					]
 				}
 			]
@@ -5318,13 +5728,6 @@
 			"entries": [
 				"After you drink this elixir, your sight becomes sharper in darkness. You gain {@ability darkvision} for the listed duration."
 			],
-			"_vmod": {
-				"entries": {
-					"mode": "replaceTxt",
-					"replace": "the listed duration"
-				},
-				"entriesMode": "generic"
-			},
 			"generic": "G",
 			"variants": [
 				{
@@ -5378,7 +5781,14 @@
 						}
 					}
 				}
-			]
+			],
+			"_vmod": {
+				"entries": {
+					"mode": "replaceTxt",
+					"replace": "the listed duration"
+				},
+				"entriesMode": "generic"
+			}
 		},
 		{
 			"name": "Darkwood",
@@ -5979,6 +6389,49 @@
 				}
 			],
 			"generic": false
+		},
+		{
+			"name": "Disguise Kit",
+			"source": "CRB",
+			"equipment": true,
+			"type": "Item",
+			"price": {
+				"coin": "gp",
+				"amount": 2,
+				"note": null
+			},
+			"bulk": "L",
+			"hands": 2,
+			"category": "Gear",
+			"entries": [
+				"This small wooden box contains cosmetics, false facial hair, spirit gum, and a few simple wigs. You usually need a disguise kit to set up a disguise in order to {@action Impersonate} someone using the {@skill Deception} skill. If you've crafted a large number of disguises, you can replenish your cosmetics supply with {@item replacement cosmetics} suitable for the type of your disguise kit. You can draw and replace a worn disguise kit as part of the action that uses it. "
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"type": "Base",
+					"name": "Disguise Kit",
+					"price": {
+						"coin": "gp",
+						"amount": 2,
+						"note": null
+					},
+					"entries": []
+				},
+				{
+					"type": "Elite",
+					"name": "Elite Disguise Kit",
+					"level": 3,
+					"price": {
+						"coin": "gp",
+						"amount": 40,
+						"note": null
+					},
+					"entries": [
+						"An elite disguise kit adds a +1 item bonus to relevant checks."
+					]
+				}
+			]
 		},
 		{
 			"name": "Disintegration Bolt",
@@ -6780,14 +7233,6 @@
 			"entries": [
 				"After you drink this elixir, you notice subtle visual details. For the next hour, you gain an item bonus to {@skill Perception} checks that is greater when attempting to find secret doors and traps."
 			],
-			"_vmod": {
-				"entriesMode": "generic",
-				"entries": {
-					"mode": "replaceTxt",
-					"replaceTags": true,
-					"replace": "For the next hour, you gain an item bonus to {@skill Perception} checks that is greater when attempting to find secret doors and traps."
-				}
-			},
 			"generic": "G",
 			"variants": [
 				{
@@ -6858,7 +7303,15 @@
 						"The bonus is +3, or +4 to find secret doors and traps. Each time you pass within 10 feet of a secret door or trap, the GM automatically rolls a secret check for you to find it."
 					]
 				}
-			]
+			],
+			"_vmod": {
+				"entriesMode": "generic",
+				"entries": {
+					"mode": "replaceTxt",
+					"replaceTags": true,
+					"replace": "For the next hour, you gain an item bonus to {@skill Perception} checks that is greater when attempting to find secret doors and traps."
+				}
+			}
 		},
 		{
 			"name": "Effervescent Ampoule",
@@ -7001,13 +7454,6 @@
 			"entries": [
 				"Elixirs of life accelerate the body's natural healing processes and immune system. Upon drinking this elixir, you regain the listed number of Hit Points and gain an item bonus to saving throws against diseases and poisons for 10 minutes."
 			],
-			"_vmod": {
-				"entriesMode": "generic",
-				"entries": {
-					"mode": "replaceTxt",
-					"replace": "the listed number of Hit Points and gain an item bonus"
-				}
-			},
 			"generic": "G",
 			"variants": [
 				{
@@ -7112,7 +7558,14 @@
 						}
 					}
 				}
-			]
+			],
+			"_vmod": {
+				"entriesMode": "generic",
+				"entries": {
+					"mode": "replaceTxt",
+					"replace": "the listed number of Hit Points and gain an item bonus"
+				}
+			}
 		},
 		{
 			"name": "Elixir of Rejuvenation",
@@ -7450,6 +7903,21 @@
 						"entriesMode": "generic"
 					}
 				}
+			]
+		},
+		{
+			"name": "Extra Ink and Paper",
+			"source": "CRB",
+			"equipment": true,
+			"type": "Item",
+			"price": {
+				"coin": "sp",
+				"amount": 1,
+				"note": null
+			},
+			"category": "Gear",
+			"entries": [
+				"Using a {@item writing set}, you can draft correspondence and scribe scrolls. If you've written a large amount, you can refill your kit with extra ink and paper."
 			]
 		},
 		{
@@ -7851,6 +8319,48 @@
 			"generic": false
 		},
 		{
+			"name": "Fishing Tackle",
+			"source": "CRB",
+			"equipment": true,
+			"type": "Item",
+			"price": {
+				"coin": "sp",
+				"amount": 8,
+				"note": null
+			},
+			"bulk": 1,
+			"hands": 2,
+			"category": "Gear",
+			"entries": [
+				"This kit include a collapsible fishing pole, fishhooks, line, lures, and a fishing net."
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"type": "Base",
+					"name": "Fishing Tackle",
+					"price": {
+						"coin": "sp",
+						"amount": 1,
+						"note": null
+					},
+					"entries": []
+				},
+				{
+					"type": "Professional",
+					"level": 3,
+					"price": {
+						"coin": "gp",
+						"amount": 20,
+						"note": null
+					},
+					"entries": [
+						"Professional fishing tackle grants a +1 item bonus to checks to fish."
+					]
+				}
+			]
+		},
+		{
 			"name": "Flame Navette",
 			"source": "CRB",
 			"page": 567,
@@ -7988,6 +8498,23 @@
 						"Increase the {@condition persistent damage} on a critical hit to {@dice 2d10}. Fire damage dealt by this weapon (including the {@condition persistent damage||persistent fire damage}) ignores the target's fire resistance."
 					]
 				}
+			]
+		},
+		{
+			"name": "Flint and Steel",
+			"source": "CRB",
+			"equipment": true,
+			"type": "Item",
+			"price": {
+				"coin": "cp",
+				"amount": 5,
+				"note": null
+			},
+			"bulk": null,
+			"hands": 2,
+			"category": "Gear",
+			"entries": [
+				"Flint and steel are useful in creating a fire if you have the time to catch a spark, though using them is typically too time‑consuming to be practical during an encounter. Even in ideal conditions, using flint and steel to light a flame requires using at least 3 actions, and often significantly longer. "
 			]
 		},
 		{
@@ -8161,6 +8688,23 @@
 			"generic": false
 		},
 		{
+			"name": "Formula Book (blank)",
+			"source": "CRB",
+			"equipment": true,
+			"type": "Item",
+			"price": {
+				"coin": "gp",
+				"amount": 1,
+				"note": null
+			},
+			"bulk": "L",
+			"hands": 1,
+			"category": "Gear",
+			"entries": [
+				"A formula book holds the formulas necessary to make items other than the common equipment from this chapter; {@class alchemist||alchemists} typically get one for free. Each formula book can hold the formulas for up to 100 different items. Formulas can also appear on parchment sheets, tablets, and almost any other medium; there's no need for you to copy them into a specific book as long as you can keep them on hand to reference them. "
+			]
+		},
+		{
 			"name": "Fortification",
 			"source": "CRB",
 			"page": 582,
@@ -8317,13 +8861,6 @@
 			"entries": [
 				"The liquid reagents in this vial rapidly absorb heat when exposed to air. A frost vial deals the listed cold damage and cold splash damage. On a hit, the target takes a status penalty to its Speeds until the end of its next turn. Many types of frost vial also grant an item bonus to attack rolls."
 			],
-			"_vmod": {
-				"entriesMode": "generic",
-				"entries": {
-					"mode": "replaceTxt",
-					"replace": "A frost vial deals the listed cold damage and cold splash damage. On a hit, the target takes a status penalty to its Speeds until the end of its next turn. Many types of frost vial also grant an item bonus to attack rolls."
-				}
-			},
 			"generic": "G",
 			"variants": [
 				{
@@ -8394,7 +8931,14 @@
 						"You gain a +3 item bonus to attack rolls, the bomb deals {@damage 4d6} cold damage and 4 cold splash damage, and the target takes a \u201315-foot penalty."
 					]
 				}
-			]
+			],
+			"_vmod": {
+				"entriesMode": "generic",
+				"entries": {
+					"mode": "replaceTxt",
+					"replace": "A frost vial deals the listed cold damage and cold splash damage. On a hit, the target takes a status penalty to its Speeds until the end of its next turn. Many types of frost vial also grant an item bonus to attack rolls."
+				}
+			}
 		},
 		{
 			"name": "Gallows Tooth",
@@ -8973,6 +9517,23 @@
 			"generic": false
 		},
 		{
+			"name": "Grappling Hook",
+			"source": "CRB",
+			"equipment": true,
+			"type": "Item",
+			"price": {
+				"coin": "sp",
+				"amount": 1,
+				"note": null
+			},
+			"bulk": "L",
+			"hands": 1,
+			"category": "Gear",
+			"entries": [
+				"You can throw a grappling hook with a rope tied to it to make a climb easier. To anchor a grappling hook, make an attack roll with the secret trait against a DC depending on the target, typically at least DC 20. On a success, your hook has a firm hold, but on a critical failure, the hook seems like it will hold but actually falls when you're partway up. "
+			]
+		},
+		{
 			"name": "Grasping Snare",
 			"source": "CRB",
 			"page": 590,
@@ -9166,6 +9727,21 @@
 				"When a creature enters the snare's square, it releases hundreds upon hundreds of carefully prepared arrows, blanketing a 20-foot radius around the snare's square with massive arrow fire that deals {@damage 18d6} piercing damage. Creatures in the area must attempt a DC 37 basic Reflex saving throw."
 			],
 			"generic": false
+		},
+		{
+			"name": "Hammer",
+			"source": "CRB",
+			"equipment": true,
+			"type": "Item",
+			"price": {
+				"coin": "sp",
+				"amount": 1,
+				"note": null
+			},
+			"bulk": "L",
+			"hands": 1,
+			"category": "Gear",
+			"entries": []
 		},
 		{
 			"name": "Hampering Snare",
@@ -9542,6 +10118,43 @@
 			]
 		},
 		{
+			"name": "Healer's Tools",
+			"source": "CRB",
+			"equipment": true,
+			"type": "Item",
+			"price": {
+				"coin": "gp",
+				"amount": 5,
+				"note": null
+			},
+			"bulk": 1,
+			"hands": 2,
+			"category": "Gear",
+			"entries": [
+				"This kit of bandages, herbs, and suturing tools is necessary for {@skill Medicine} checks to {@action Administer First Aid}, {@action Treat Disease}, {@action Treat Poison}, or {@action Treat Wounds}. If you wear your healer's tools, you can draw and replace them as part of the action that uses them. "
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"type": "Base",
+					"name": "Healer's Tools",
+					"entries": []
+				},
+				{
+					"type": "Expanded",
+					"level": 3,
+					"price": {
+						"coin": "gp",
+						"amount": 50,
+						"note": null
+					},
+					"entries": [
+						"Expanded healer's tools provide a +1 item bonus to such checks."
+					]
+				}
+			]
+		},
+		{
 			"name": "Healing Potion",
 			"source": "CRB",
 			"page": 563,
@@ -9570,13 +10183,6 @@
 			"entries": [
 				"A healing potion is a vial of a ruby-red liquid that imparts a tingling sensation as the drinker's wounds heal rapidly. When you drink a healing potion, you regain the listed number of Hit Points."
 			],
-			"_vmod": {
-				"entriesMode": "generic",
-				"entries": {
-					"mode": "replaceTxt",
-					"replace": "the listed number of"
-				}
-			},
 			"generic": "G",
 			"variants": [
 				{
@@ -9664,7 +10270,14 @@
 						}
 					}
 				}
-			]
+			],
+			"_vmod": {
+				"entriesMode": "generic",
+				"entries": {
+					"mode": "replaceTxt",
+					"replace": "the listed number of"
+				}
+			}
 		},
 		{
 			"name": "Hemlock",
@@ -9759,6 +10372,22 @@
 				}
 			],
 			"generic": false
+		},
+		{
+			"name": "Holly and Mistletoe",
+			"source": "CRB",
+			"equipment": true,
+			"type": "Item",
+			"price": {
+				"coin": null,
+				"amount": 0,
+				"note": null
+			},
+			"hands": 1,
+			"category": "Gear",
+			"entries": [
+				"Plants of supernatural significance provide a primal focus for primal spellcasters, such as druids, when using certain abilities and casting some spells. A bundle of holly and mistletoe must be held in one hand to use it. Other primal foci exist for druids focused on other aspects of nature. "
+			]
 		},
 		{
 			"name": "Holy",
@@ -10125,6 +10754,21 @@
 					]
 				}
 			]
+		},
+		{
+			"name": "Hourglass",
+			"source": "CRB",
+			"equipment": true,
+			"type": "Item",
+			"price": {
+				"coin": "gp",
+				"amount": 3,
+				"note": null
+			},
+			"bulk": "L",
+			"hands": 1,
+			"category": "Gear",
+			"entries": []
 		},
 		{
 			"name": "Hunter's Bane",
@@ -10851,13 +11495,6 @@
 				"{@b Benefit} You gain an item bonus to Fortitude saves and the listed number of temporary Hit Points. Whenever you are at maximum Hit Points for at least 1 full minute, you regain the temporary Hit Points.",
 				"{@b Drawback} You take a \u20132 penalty to Will saves, {@skill Perception} checks, and initiative rolls."
 			],
-			"_vmod": {
-				"entries": {
-					"mode": "replaceTxt",
-					"replace": "an item bonus to Fortitude saves and the listed number of temporary Hit Points."
-				},
-				"entriesMode": "generic"
-			},
 			"generic": "G",
 			"variants": [
 				{
@@ -10928,7 +11565,14 @@
 						}
 					}
 				}
-			]
+			],
+			"_vmod": {
+				"entries": {
+					"mode": "replaceTxt",
+					"replace": "an item bonus to Fortitude saves and the listed number of temporary Hit Points."
+				},
+				"entriesMode": "generic"
+			}
 		},
 		{
 			"name": "Keen",
@@ -11059,6 +11703,62 @@
 						"The berry tarts each restore {@dice 4d8+8} Hit Points, and the bag has two additional compartments, each of which can be Activated with an {@action Interact} action.",
 						"The fourth compartment is lined in golden velvet. Once per day, you can draw a lucky magic sling bullet from this compartment. If you attack with this sling bullet, you roll twice and use the better result on your attack roll and your damage roll. This is a {@trait fortune} effect. The stone becomes non-magical if not hurled by the end of your turn. Once activated, this compartment stitches itself shut until the next day.",
 						"The bag's fifth compartment is lined in black wool. Once per day, you can unfold this compartment into a 5-foot-diameter portal on the ground. The first person to {@action Step} into the portal from an adjacent square is teleported away. This has the same effect as an 5th-level {@spell dimension door} spell, except the affected creature takes the knapsack with them. When the portal is used, or at the start of your next turn if it hasn't been used, the compartment closes automatically and can't be unfolded until the next day."
+					]
+				}
+			]
+		},
+		{
+			"name": "Ladder (10-foot)",
+			"source": "CRB",
+			"equipment": true,
+			"type": "Item",
+			"price": {
+				"coin": "cp",
+				"amount": 3,
+				"note": null
+			},
+			"bulk": 3,
+			"hands": 2,
+			"category": "Gear",
+			"entries": [
+				"Plants of supernatural significance provide a primal focus for primal spellcasters, such as druids, when using certain abilities and casting some spells. A bundle of holly and mistletoe must be held in one hand to use it. Other primal foci exist for druids focused on other aspects of nature. "
+			]
+		},
+		{
+			"name": "Lantern",
+			"source": "CRB",
+			"equipment": true,
+			"type": "Item",
+			"category": "Gear",
+			"entries": [
+				"A lantern sheds bright light and requires 1 pint of {@item oil (1 pint)||oil} to function for 6 hours."
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"type": "Bull's Eye",
+					"price": {
+						"coin": "gp",
+						"amount": 1,
+						"note": null
+					},
+					"bulk": 1,
+					"hands": 1,
+					"entries": [
+						"A bull's‑eye lantern emits its light in a 60‑foot cone (and dim light in the next 60 feet)."
+					]
+				},
+				{
+					"type": "Hooded",
+					"price": {
+						"coin": "sp",
+						"amount": 7,
+						"note": null
+					},
+					"bulk": "L",
+					"hands": 1,
+					"entries": [
+						"A hooded lantern sheds light in a 30‑foot radius (and dim light in the next 30 feet) and is equipped with shutters, which you can close to block the light. Closing or opening the shutters takes an {@action Interact} action."
 					]
 				}
 			]
@@ -11328,6 +12028,70 @@
 				}
 			],
 			"generic": false
+		},
+		{
+			"name": "Lock",
+			"source": "CRB",
+			"equipment": true,
+			"type": "Item",
+			"hands": 2,
+			"category": "Gear",
+			"entries": [
+				"Picking a poor lock requires two successful DC 15 {@skill Thievery} checks, a simple lock requires three successful DC 20 {@skill Thievery} checks, an average lock requires four successes at DC 25, a good lock requires five successes at DC 30, and a superior lock six successes at DC 40."
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"type": "Poor",
+					"price": {
+						"coin": "sp",
+						"amount": 2,
+						"note": null
+					},
+					"level": 0,
+					"entries": []
+				},
+				{
+					"type": "Simple",
+					"price": {
+						"coin": "gp",
+						"amount": 2,
+						"note": null
+					},
+					"level": 1,
+					"entries": []
+				},
+				{
+					"type": "Average",
+					"price": {
+						"coin": "gp",
+						"amount": 15,
+						"note": null
+					},
+					"level": 3,
+					"entries": []
+				},
+				{
+					"type": "Good",
+					"price": {
+						"coin": "gp",
+						"amount": 200,
+						"note": null
+					},
+					"level": 9,
+					"entries": []
+				},
+				{
+					"type": "Superior",
+					"price": {
+						"coin": "gp",
+						"amount": 4500,
+						"note": null
+					},
+					"level": 17,
+					"entries": []
+				}
+			]
 		},
 		{
 			"name": "Luck Blade",
@@ -11783,6 +12547,23 @@
 			]
 		},
 		{
+			"name": "Magnifying Glass",
+			"source": "CRB",
+			"equipment": true,
+			"type": "Item",
+			"level": 3,
+			"price": {
+				"coin": "gp",
+				"amount": 40,
+				"note": null
+			},
+			"hands": 1,
+			"category": "Gear",
+			"entries": [
+				"This quality handheld lens gives you a +1 item bonus to {@skill Perception} checks to notice minute details of documents, fabric, and the like. "
+			]
+		},
+		{
 			"name": "Mail of Luck",
 			"source": "CRB",
 			"page": 558,
@@ -11882,6 +12663,70 @@
 			"generic": false
 		},
 		{
+			"name": "Manacles",
+			"source": "CRB",
+			"equipment": true,
+			"type": "Item",
+			"hands": 2,
+			"category": "Gear",
+			"entries": [
+				"You can manacle someone who is willing or otherwise at your mercy as an {@trait exploration} activity taking 10\u201330 seconds depending on the creature's size and how many manacles you apply. A two‑legged creature with its legs bound takes a \u201315‑foot circumstance penalty to its Speeds, and a two‑handed creature with its wrists bound has to succeed at a DC {@flatDC 5} flat check any time it uses a {@trait manipulate} action or else that action fails. This DC may be higher depending on how tightly the manacles constrain the hands. A creature bound to a stationary object is immobilized. For creatures with more or fewer limbs, the GM determines what effect manacles have, if any. Freeing a creature from poor manacles requires two successful DC 17 Thievery checks, simple manacles requires three successes at DC 22, average manacles require four successes at DC 27, good manacles require five successes at DC 32, and superior manacles require six successes at DC 42. "
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"type": "Poor",
+					"price": {
+						"coin": "sp",
+						"amount": 2,
+						"note": null
+					},
+					"level": 0,
+					"entries": []
+				},
+				{
+					"type": "Simple",
+					"price": {
+						"coin": "gp",
+						"amount": 3,
+						"note": null
+					},
+					"level": 1,
+					"entries": []
+				},
+				{
+					"type": "Average",
+					"price": {
+						"coin": "gp",
+						"amount": 20,
+						"note": null
+					},
+					"level": 3,
+					"entries": []
+				},
+				{
+					"type": "Good",
+					"price": {
+						"coin": "gp",
+						"amount": 250,
+						"note": null
+					},
+					"level": 9,
+					"entries": []
+				},
+				{
+					"type": "Superior",
+					"price": {
+						"coin": "gp",
+						"amount": 5000,
+						"note": null
+					},
+					"level": 17,
+					"entries": []
+				}
+			]
+		},
+		{
 			"name": "Marking Snare",
 			"source": "CRB",
 			"page": 590,
@@ -11969,6 +12814,23 @@
 						"The tools grant a +3 item bonus, and the spells are heightened to 6th level."
 					]
 				}
+			]
+		},
+		{
+			"name": "Material Component Pouch",
+			"source": "CRB",
+			"equipment": true,
+			"type": "Item",
+			"price": {
+				"coin": "sp",
+				"amount": 5,
+				"note": null
+			},
+			"bulk": "L",
+			"hands": 1,
+			"category": "Gear",
+			"entries": [
+				"This pouch contains material components for those spells that require them. Though the components are used up over time, you can refill spent components during your daily preparations. "
 			]
 		},
 		{
@@ -12146,6 +13008,20 @@
 			]
 		},
 		{
+			"name": "Merchant's Scale",
+			"source": "CRB",
+			"equipment": true,
+			"type": "Item",
+			"price": {
+				"amount": 2,
+				"coin": "sp"
+			},
+			"bulk": "L",
+			"hands": 2,
+			"category": "Gear",
+			"entries": []
+		},
+		{
 			"name": "Mesmerizing Opal",
 			"source": "CRB",
 			"page": 568,
@@ -12306,6 +13182,19 @@
 			"generic": false
 		},
 		{
+			"name": "Mirror",
+			"source": "CRB",
+			"equipment": true,
+			"type": "Item",
+			"price": {
+				"amount": 1,
+				"coin": "gp"
+			},
+			"hands": 1,
+			"category": "Gear",
+			"entries": []
+		},
+		{
 			"name": "Mistform Elixir",
 			"source": "CRB",
 			"page": 549,
@@ -12335,13 +13224,6 @@
 				"A faint mist emanates from your skin, making you {@condition concealed} for the listed duration. As usual being {@condition concealed} when your position is still obvious, you can't use this concealment to {@action Hide} or {@action Sneak}."
 			],
 			"generic": "G",
-			"_vmod": {
-				"entriesMode": "generic",
-				"entries": {
-					"mode": "replaceTxt",
-					"replace": "the listed duration"
-				}
-			},
 			"variants": [
 				{
 					"type": "lesser",
@@ -12394,7 +13276,14 @@
 						}
 					}
 				}
-			]
+			],
+			"_vmod": {
+				"entriesMode": "generic",
+				"entries": {
+					"mode": "replaceTxt",
+					"replace": "the listed duration"
+				}
+			}
 		},
 		{
 			"name": "Mithral",
@@ -12699,6 +13588,19 @@
 			"generic": false
 		},
 		{
+			"name": "Mug",
+			"source": "CRB",
+			"equipment": true,
+			"type": "Item",
+			"price": {
+				"amount": 1,
+				"coin": "cp"
+			},
+			"hands": 1,
+			"category": "Gear",
+			"entries": []
+		},
+		{
 			"name": "Mummified Bat",
 			"source": "CRB",
 			"page": 568,
@@ -12770,6 +13672,66 @@
 				"If you have the Twist the Knife feat, the talisman instead deals {@condition persistent damage||persistent bleed damage} equal to your sneak attack damage."
 			],
 			"generic": false
+		},
+		{
+			"name": "Musical Instrument",
+			"source": "CRB",
+			"equipment": true,
+			"type": "Item",
+			"hands": 2,
+			"category": "Gear",
+			"entries": [
+				"Handheld instruments include bagpipes, a small set of chimes, small drums, fiddles and viols, flutes and recorders, small harps, lutes, trumpets, and similarly sized instruments. The GM might rule that an especially large handheld instrument (like a tuba) has greater Bulk. Heavy instruments such as large drums, a full set of chimes, and keyboard instruments are less portable and generally need to be stationary while being played."
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"type": "Handheld",
+					"price": {
+						"coin": "sp",
+						"amount": 8,
+						"note": null
+					},
+					"bulk": 1,
+					"entries": []
+				},
+				{
+					"type": "Virtuoso Handheld",
+					"price": {
+						"coin": "gp",
+						"amount": 50,
+						"note": null
+					},
+					"bulk": 1,
+					"level": 3,
+					"entries": [
+						"A virtuoso instrument gives a +1 item bonus to {@skill Performance} checks using that instrument."
+					]
+				},
+				{
+					"type": "Heavy",
+					"price": {
+						"coin": "gp",
+						"amount": 2,
+						"note": null
+					},
+					"bulk": 16,
+					"entries": []
+				},
+				{
+					"type": "Virtuoso Heavy",
+					"price": {
+						"coin": "gp",
+						"amount": 100,
+						"note": null
+					},
+					"level": 3,
+					"bulk": 16,
+					"entries": [
+						"A virtuoso instrument gives a +1 item bonus to {@skill Performance} checks using that instrument."
+					]
+				}
+			]
 		},
 		{
 			"name": "Necklace of Fireballs",
@@ -13176,6 +14138,21 @@
 				"Removing the oil in this way usually takes 1 minute for objects with Bulk of 1 or less, or a number of minutes equal to the item's Bulk."
 			],
 			"generic": false
+		},
+		{
+			"name": "Oil (1 pint)",
+			"source": "CRB",
+			"equipment": true,
+			"type": "Item",
+			"price": {
+				"amount": 1,
+				"coin": "cp"
+			},
+			"hands": 2,
+			"category": "Gear",
+			"entries": [
+				"You can use oil to fuel lanterns, but you can also set a pint of oil aflame and throw it. You must first spend an Interact action preparing the oil, then throw it with another action as a ranged attack. If you hit, it splatters on the creature or in a single 5‑foot square you target. You must succeed at a DC {@flatDC 10} flat check for the oil to ignite successfully when it hits. If the oil ignites, the target takes 1d6 fire damage. "
+			]
 		},
 		{
 			"name": "Oil of Animation",
@@ -13957,6 +14934,21 @@
 			]
 		},
 		{
+			"name": "Piton",
+			"source": "CRB",
+			"equipment": true,
+			"type": "Item",
+			"price": {
+				"amount": 1,
+				"coin": "cp"
+			},
+			"hands": 1,
+			"category": "Gear",
+			"entries": [
+				"These small spikes can be used as anchors to make climbing easier. To affix a piton, you must hold it in one hand and use a hammer to drive it in with your other hand. You can attach a rope to the hammered piton so that you don't fall all the way to the ground on a critical failure while Climbing. "
+			]
+		},
+		{
 			"name": "Plate Armor of the Deep",
 			"source": "CRB",
 			"page": 558,
@@ -14268,13 +15260,6 @@
 				"Drinking this thick, fortifying potion grants resistance against a single damage type for 1 hour. Each potion of resistance is created to defend against acid, cold, electricity, fire, or sonic damage (and is called a lesser potion of fire resistance or the like)."
 			],
 			"generic": "G",
-			"_vmod": {
-				"entriesMode": "generic",
-				"entries": {
-					"mode": "replaceTxt",
-					"replace": "resistance against"
-				}
-			},
 			"variants": [
 				{
 					"type": "lesser",
@@ -14327,7 +15312,14 @@
 						}
 					}
 				}
-			]
+			],
+			"_vmod": {
+				"entriesMode": "generic",
+				"entries": {
+					"mode": "replaceTxt",
+					"replace": "resistance against"
+				}
+			}
 		},
 		{
 			"name": "Potion of Swimming",
@@ -14665,14 +15657,6 @@
 				"{@b Benefit} You gain an item bonus to {@skill Acrobatics} checks, {@skill Stealth} checks, {@skill Thievery} checks, Reflex saves, and Dexterity-based attack rolls, and you gain the listed status bonus to your Speed.",
 				"{@b Drawback} You take damage equal to twice your level; you can't recover Hit Points lost in this way by any means while the mutagen lasts. You take a \u20132 penalty to Fortitude saves."
 			],
-			"_vmod": {
-				"entries": {
-					"mode": "replaceTxt",
-					"replaceTags": true,
-					"replace": "You gain an item bonus to \\{@skill Acrobatics\\} checks, \\{@skill Stealth\\} checks, \\{@skill Thievery\\} checks, Reflex saves, and Dexterity-based attack rolls, and you gain the listed status bonus to your Speed."
-				},
-				"entriesMode": "generic"
-			},
 			"generic": "G",
 			"variants": [
 				{
@@ -14743,7 +15727,30 @@
 						}
 					}
 				}
-			]
+			],
+			"_vmod": {
+				"entries": {
+					"mode": "replaceTxt",
+					"replaceTags": true,
+					"replace": "You gain an item bonus to \\{@skill Acrobatics\\} checks, \\{@skill Stealth\\} checks, \\{@skill Thievery\\} checks, Reflex saves, and Dexterity-based attack rolls, and you gain the listed status bonus to your Speed."
+				},
+				"entriesMode": "generic"
+			}
+		},
+		{
+			"name": "Rations (1 week)",
+			"source": "CRB",
+			"equipment": true,
+			"type": "Item",
+			"price": {
+				"amount": 4,
+				"coin": "sp",
+				"note": "for one week's worth"
+			},
+			"bulk": "L",
+			"hands": 1,
+			"category": "Gear",
+			"entries": []
 		},
 		{
 			"name": "Reflecting Shield",
@@ -14788,6 +15795,169 @@
 			],
 			"craftReq": "Supply one casting of spell turning, and the initial raw materials must include at least 2,750 gp of silver.",
 			"generic": false
+		},
+		{
+			"name": "Religious Symbol",
+			"source": "CRB",
+			"equipment": true,
+			"type": "Item",
+			"bulk": "L",
+			"hands": 1,
+			"category": "Gear",
+			"entries": [
+				"This piece of wood or silver is emblazoned with an image representing a deity. Some divine spellcasters, such as clerics, can use a religious symbol of their deity as a divine focus to use certain abilities and cast some spells. A religious symbol must be held in one hand to use it. "
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"type": "Wooden",
+					"price": {
+						"coin": "sp",
+						"amount": 1,
+						"note": null
+					},
+					"entries": []
+				},
+				{
+					"type": "Silver",
+					"price": {
+						"coin": "gp",
+						"amount": 2,
+						"note": null
+					},
+					"entries": []
+				}
+			]
+		},
+		{
+			"name": "Religious Text",
+			"source": "CRB",
+			"equipment": true,
+			"type": "Item",
+			"price": {
+				"coin": "gp",
+				"amount": 1,
+				"note": null
+			},
+			"bulk": "L",
+			"hands": 1,
+			"category": "Gear",
+			"entries": [
+				"This manuscript contains scripture of a particular religion. Some divine spellcasters, such as clerics, can use a religious text as a divine focus to use certain abilities and cast some spells. A religious text must be held in one hand to use it. "
+			]
+		},
+		{
+			"name": "Repair Kit",
+			"source": "CRB",
+			"equipment": true,
+			"type": "Item",
+			"bulk": 1,
+			"hands": 2,
+			"category": "Gear",
+			"entries": [
+				"A repair kit allows you to perform simple repairs while traveling. It contains a portable anvil, tongs, woodworking tools, a whetstone, and oils for conditioning leather and wood. You can use a repair kit to {@action Repair} items using the {@skill Crafting} skill. You can draw and replace a worn repair kit as part of the action that uses it. "
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"type": "Base",
+					"name": "Repair Kit",
+					"price": {
+						"coin": "gp",
+						"amount": 2,
+						"note": null
+					},
+					"entries": []
+				},
+				{
+					"type": "Superb",
+					"level": 3,
+					"price": {
+						"coin": "gp",
+						"amount": 25,
+						"note": null
+					},
+					"entries": [
+						"A superb repair kit gives you a +1 item bonus to the check."
+					]
+				}
+			]
+		},
+		{
+			"name": "Replacement Cosmetics",
+			"source": "CRB",
+			"equipment": true,
+			"type": "Item",
+			"price": {
+				"coin": "sp",
+				"amount": 1,
+				"note": null
+			},
+			"bulk": null,
+			"hands": null,
+			"category": "Gear",
+			"entries": [
+				"If you've crafted a large number of disguises, you can replenish your cosmetics supply with replacement cosmetics suitable for the type of your {@item disguise kit}."
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"type": "Base",
+					"name": "Replacement Cosmetics",
+					"price": {
+						"coin": "sp",
+						"amount": 1,
+						"note": null
+					},
+					"entries": []
+				},
+				{
+					"type": "Elite",
+					"name": "Elite Replacement Cosmetics",
+					"level": 3,
+					"price": {
+						"coin": "sp",
+						"amount": 5,
+						"note": null
+					},
+					"entries": []
+				}
+			]
+		},
+		{
+			"name": "Replacement Picks",
+			"source": "CRB",
+			"equipment": true,
+			"type": "Item",
+			"bulk": null,
+			"hands": null,
+			"category": "Gear",
+			"entries": [
+				"If your {@item thieves' tools (generic)||thieves' tools} are broken, you can repair them by replacing the lock picks with replacement picks appropriate to your tools; this doesn't require using the {@action Repair} action."
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"name": "Replacement Picks",
+					"type": "Base",
+					"price": {
+						"coin": "sp",
+						"amount": 3,
+						"note": null
+					},
+					"entries": []
+				},
+				{
+					"type": "Infiltrator",
+					"level": 3,
+					"price": {
+						"coin": "gp",
+						"amount": 3,
+						"note": null
+					},
+					"entries": []
+				}
+			]
 		},
 		{
 			"name": "Resilient",
@@ -15757,6 +16927,21 @@
 			"generic": false
 		},
 		{
+			"name": "Rope (50 feet)",
+			"source": "CRB",
+			"equipment": true,
+			"type": "Item",
+			"price": {
+				"amount": 5,
+				"coin": "sp",
+				"note": "for 50 feet"
+			},
+			"bulk": "L",
+			"hands": 2,
+			"category": "Gear",
+			"entries": []
+		},
+		{
 			"name": "Runestone",
 			"source": "CRB",
 			"page": 571,
@@ -15778,6 +16963,39 @@
 				"This flat piece of hard stone is specially prepared for etching a magical fundamental rune or property rune. You can etch only one rune upon a stone. Once the stone is etched, it gains the magic school trait of the rune etched upon it. When a rune is transferred from the runestone to another object, the runestone cracks and is destroyed. The Price listed is for an empty stone; a stone holding a rune adds the Price of the rune."
 			],
 			"generic": false
+		},
+		{
+			"name": "Sack (5)",
+			"source": "CRB",
+			"equipment": true,
+			"type": "Item",
+			"price": {
+				"amount": 1,
+				"coin": "cp",
+				"note": "for price of 5"
+			},
+			"bulk": "L",
+			"hands": 1,
+			"category": "Gear",
+			"entries": [
+				"A sack can hold up to 8 Bulk worth of items. A sack containing 2 Bulk or less can be worn on the body, usually tucked into a belt. You can carry a sack with one hand, but must use two hands to transfer items in and out. "
+			]
+		},
+		{
+			"name": "Saddlebags",
+			"source": "CRB",
+			"equipment": true,
+			"type": "Item",
+			"price": {
+				"amount": 2,
+				"coin": "sp"
+			},
+			"bulk": "L",
+			"hands": 2,
+			"category": "Gear",
+			"entries": [
+				"Saddlebags come in a pair. Each can hold up to 3 Bulk of items, and the first 1 Bulk of items in each doesn't count against your mount's Bulk limit. The Bulk value given is for saddlebags worn by a mount. If you are carrying or stowing saddlebags, they count as 1 Bulk instead of light Bulk. "
+			]
 		},
 		{
 			"name": "Salamander Elixir",
@@ -15980,6 +17198,47 @@
 			"generic": false
 		},
 		{
+			"name": "Scholarly Journal",
+			"source": "CRB",
+			"equipment": true,
+			"type": "Item",
+			"level": 3,
+			"traits": [
+				"Uncommon"
+			],
+			"bulk": "L",
+			"hands": 1,
+			"category": "Gear",
+			"entries": [
+				"Scholarly journals are uncommon. Each scholarly journal is a folio on a very specific topic, such as vampires or the history of a single town or neighborhood of a city. If you spend 1 minute referencing an academic journal before attempting a skill check to {@action Recall Knowledge} about the subject, you gain a +1 item bonus to the check. The GM determines what scholarly journals are available in any location. "
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"type": "Scholarly Journal",
+					"price": {
+						"coin": "gp",
+						"amount": 6,
+						"note": null
+					},
+					"entries": []
+				},
+				{
+					"type": "Scholarly Journal Compendium",
+					"level": 3,
+					"hands": 2,
+					"price": {
+						"coin": "gp",
+						"amount": 30,
+						"note": null
+					},
+					"entries": [
+						"A compendium of journals costs five times as much as a single journal and requires both hands to use; each compendium contains several journals and grants its bonus on a broader topic, such as all undead or a whole city."
+					]
+				}
+			]
+		},
+		{
 			"name": "Scroll of Glitterdust",
 			"source": "CRB",
 			"page": 565,
@@ -16103,13 +17362,6 @@
 				"This briny concoction alters the skin on your hands and feet.",
 				"The spaces between your fingers and toes become webbed, granting you a swim Speed of 20 feet for the listed duration."
 			],
-			"_vmod": {
-				"entriesMode": "generic",
-				"entries": {
-					"mode": "replaceTxt",
-					"replace": "the listed duration."
-				}
-			},
 			"generic": "G",
 			"variants": [
 				{
@@ -16163,7 +17415,14 @@
 						"The duration is 24 hours, and you can breathe underwater."
 					]
 				}
-			]
+			],
+			"_vmod": {
+				"entriesMode": "generic",
+				"entries": {
+					"mode": "replaceTxt",
+					"replace": "the listed duration."
+				}
+			}
 		},
 		{
 			"name": "Serene Mutagen",
@@ -16704,6 +17963,21 @@
 						"entriesMode": "generic"
 					}
 				}
+			]
+		},
+		{
+			"name": "Signal Whistle",
+			"source": "CRB",
+			"equipment": true,
+			"type": "Item",
+			"price": {
+				"amount": 8,
+				"coin": "cp"
+			},
+			"hands": 2,
+			"category": "Gear",
+			"entries": [
+				"When sounded, a signal whistle can be heard clearly up to half a mile away across open terrain."
 			]
 		},
 		{
@@ -17515,13 +18789,6 @@
 			"entries": [
 				"With a sharp twist of this item, you instantly create a screen of thick, opaque smoke in a burst centered on one corner of your space. All creatures within that area are {@condition concealed}, and all other creatures are {@condition concealed} to them. The smoke lasts for 1 minute or until dispersed by a strong wind."
 			],
-			"_vmod": {
-				"entriesMode": "generic",
-				"entries": {
-					"mode": "replaceTxt",
-					"replace": "in a burst"
-				}
-			},
 			"generic": "G",
 			"variants": [
 				{
@@ -17558,7 +18825,14 @@
 						"The radius of the burst is 20 feet."
 					]
 				}
-			]
+			],
+			"_vmod": {
+				"entriesMode": "generic",
+				"entries": {
+					"mode": "replaceTxt",
+					"replace": "in a burst"
+				}
+			}
 		},
 		{
 			"name": "Snake Oil",
@@ -17594,6 +18868,47 @@
 			"generic": false
 		},
 		{
+			"name": "Snare Kit",
+			"source": "CRB",
+			"equipment": true,
+			"type": "Item",
+			"price": {
+				"amount": 5,
+				"coin": "gp"
+			},
+			"bulk": 2,
+			"hands": 2,
+			"category": "Gear",
+			"entries": [
+				"This kit contains tools and materials for creating snares. A snare kit allows you to {@action Craft} snares using the {@skill Crafting} skill. You can draw and replace a worn snare kit as part of the action to use it. "
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"name": "Snare Kit",
+					"type": "Base",
+					"price": {
+						"coin": "gp",
+						"amount": 6,
+						"note": null
+					},
+					"entries": []
+				},
+				{
+					"type": "Specialist",
+					"level": 3,
+					"price": {
+						"coin": "gp",
+						"amount": 55,
+						"note": null
+					},
+					"entries": [
+						"A specialist snare kit gives you a +1 item bonus to the check."
+					]
+				}
+			]
+		},
+		{
 			"name": "Sneaky Key",
 			"source": "CRB",
 			"page": 569,
@@ -17627,6 +18942,19 @@
 				"This small silver skeleton key can be pinned to armor or a sleeve. When you turn the key to activate it, for the next minute, if the outcome of any your attempts to {@action Pick a Lock} is a critical failure, you get a failure instead."
 			],
 			"generic": false
+		},
+		{
+			"name": "Soap",
+			"source": "CRB",
+			"equipment": true,
+			"type": "Item",
+			"price": {
+				"amount": 2,
+				"coin": "cp"
+			},
+			"hands": 1,
+			"category": "Gear",
+			"entries": []
 		},
 		{
 			"name": "Speed",
@@ -17710,6 +19038,22 @@
 				}
 			],
 			"generic": false
+		},
+		{
+			"name": "Spellbook (blank)",
+			"source": "CRB",
+			"equipment": true,
+			"type": "Item",
+			"price": {
+				"amount": 1,
+				"coin": "gp"
+			},
+			"bulk": "L",
+			"hands": 1,
+			"category": "Gear",
+			"entries": [
+				"A spellbook holds the written knowledge necessary to learn and prepare various spells, a necessity for wizards (who typically get one for free) and a useful luxury for other spellcasters looking to learn additional spells. Each spellbook can hold up to 100 spells. The Price listed is for a blank spellbook. "
+			]
 		},
 		{
 			"name": "Spellguard Shield",
@@ -18144,6 +19488,42 @@
 				}
 			],
 			"generic": false
+		},
+		{
+			"name": "Spyglass",
+			"source": "CRB",
+			"equipment": true,
+			"type": "Item",
+			"price": {
+				"amount": 20,
+				"coin": "gp"
+			},
+			"bulk": "L",
+			"hands": 2,
+			"category": "Gear",
+			"entries": [
+				"A typical spyglass lets you see eight times farther than normal."
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"type": "Base",
+					"name": "Spyglass",
+					"entries": []
+				},
+				{
+					"type": "Fine",
+					"level": 4,
+					"price": {
+						"coin": "gp",
+						"amount": 80,
+						"note": null
+					},
+					"entries": [
+						"A fine spyglass adds a +1 item bonus to {@skill Perception} checks to notice details at a distance."
+					]
+				}
+			]
 		},
 		{
 			"name": "Staff of Abjuration",
@@ -19801,6 +21181,47 @@
 			"generic": false
 		},
 		{
+			"name": "Survey Map",
+			"source": "CRB",
+			"equipment": true,
+			"type": "Item",
+			"level": 3,
+			"traits": [
+				"Uncommon"
+			],
+			"bulk": "L",
+			"hands": 1,
+			"category": "Gear",
+			"entries": [
+				"Maps are uncommon. Most maps you can find are simple and functional. A survey map details a single location in excellent detail. One of these maps gives you a +1 item bonus to {@skill Survival} checks and any skill checks to {@action Recall Knowledge}, provided the checks are related to the location detailed on the map. The GM determines what maps are available in any location. "
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"type": "Survey Map",
+					"price": {
+						"coin": "gp",
+						"amount": 10,
+						"note": null
+					},
+					"entries": []
+				},
+				{
+					"type": "Survey Map Atlas",
+					"level": 3,
+					"price": {
+						"coin": "gp",
+						"amount": 50,
+						"note": null
+					},
+					"hands": 2,
+					"entries": [
+						"Maps sometimes come in atlases, containing a number of maps of the same quality, often on similar topics. An atlas costs five times as much as a single map and requires both hands to use. "
+					]
+				}
+			]
+		},
+		{
 			"name": "Swift Block Cabochon",
 			"source": "CRB",
 			"page": 569,
@@ -19836,6 +21257,22 @@
 				"This clear quartz cabochon attaches to the center of your shield. When you activate the cabochon, you use the {@feat Shield Block} reaction even if you hadn't raised the affixed shield (and even if you don't normally have that reaction)."
 			],
 			"generic": false
+		},
+		{
+			"name": "Tack",
+			"source": "CRB",
+			"equipment": true,
+			"type": "Item",
+			"price": {
+				"coin": "gp",
+				"amount": 4,
+				"note": null
+			},
+			"bulk": 1,
+			"category": "Gear",
+			"entries": [
+				"Tack includes all the gear required to outfit a riding animal, including a saddle, bit and bridle, and stirrups if necessary. Especially large or oddly shaped animals might require specialty saddles. These can be more expensive or hard to find, as determined by the GM. The Bulk value given is for tack worn by a creature. If carried, the Bulk increases to 2. "
+			]
 		},
 		{
 			"name": "Tanglefoot Bag",
@@ -20065,6 +21502,104 @@
 				}
 			],
 			"generic": false
+		},
+		{
+			"name": "Ten-Foot Pole",
+			"source": "CRB",
+			"equipment": true,
+			"type": "Item",
+			"price": {
+				"coin": "cp",
+				"amount": 1,
+				"note": null
+			},
+			"bulk": 1,
+			"hands": 2,
+			"category": "Gear",
+			"entries": [
+				"When wielding this long pole, you can use {@action Seek} to search a square up to 10 feet away. The pole is not sturdy enough to use as a weapon. "
+			]
+		},
+		{
+			"name": "Tent",
+			"source": "CRB",
+			"equipment": true,
+			"type": "Item",
+			"hands": 2,
+			"category": "Gear",
+			"entries": [],
+			"generic": "G",
+			"variants": [
+				{
+					"type": "Pup",
+					"price": {
+						"coin": "sp",
+						"amount": 8,
+						"note": null
+					},
+					"bulk": "L",
+					"entries": []
+				},
+				{
+					"type": "Four-person",
+					"price": {
+						"coin": "gp",
+						"amount": 5,
+						"note": null
+					},
+					"bulk": 1,
+					"entries": []
+				},
+				{
+					"type": "Pavilion",
+					"level": 2,
+					"price": {
+						"coin": "gp",
+						"amount": 40,
+						"note": null
+					},
+					"bulk": 12,
+					"entries": []
+				}
+			]
+		},
+		{
+			"name": "Thieves' Tools",
+			"source": "CRB",
+			"equipment": true,
+			"type": "Item",
+			"price": {
+				"coin": "gp",
+				"amount": 3,
+				"note": null
+			},
+			"bulk": "L",
+			"hands": 2,
+			"category": "Gear",
+			"entries": [
+				"You need thieves' tools to {@action Pick a Lock||Pick Locks} or {@action Disable a Device||Disable Devices} (of some types) using the {@skill Thievery} skill. If your thieves' tools are broken, you can repair them by replacing the lock picks with {@item replacement picks} appropriate to your tools; this doesn't require using the {@action Repair} action. If you wear your thieves' tools, you can draw and replace them as part of the action that uses them. "
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"name": "Thieves' Tools",
+					"type": "Base",
+					"entries": []
+				},
+				{
+					"type": "Infiltrator",
+					"level": 3,
+					"price": {
+						"coin": "gp",
+						"amount": 50,
+						"note": null
+					},
+					"hands": 2,
+					"entries": [
+						"Infiltrator thieves' tools add a +1 item bonus to checks to {@action Pick a Lock||Pick Locks} and {@action Disable a Device||Disable Devices}."
+					]
+				}
+			]
 		},
 		{
 			"name": "Third Eye",
@@ -20455,6 +21990,58 @@
 				"An alchemical substance applied to one end of this tiny wooden stick ignites when struck against a rough surface. Creating a flame with a tindertwig is much faster than creating a flame with flint and steel. You can ignite the tindertwig and touch it to a flammable object as part of the same {@action Interact} action."
 			],
 			"generic": false
+		},
+		{
+			"name": "Tool",
+			"source": "CRB",
+			"equipment": true,
+			"type": "Item",
+			"category": "Gear",
+			"entries": [
+				"This entry is a catchall for basic hand tools that don't have a specific adventuring purpose. A hoe, shovel, or sledgehammer is a long tool, and a hand drill, ice hook, or trowel is a short tool. A tool can usually be used as an improvised weapon, dealing {@damage 1d4} damage for a short tool or {@damage 1d6} for a long tool. The GM determines the damage type that's appropriate or adjusts the damage if needed. "
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"type": "Long",
+					"price": {
+						"coin": "gp",
+						"amount": 1,
+						"note": null
+					},
+					"bulk": 1,
+					"hands": 2,
+					"entries": []
+				},
+				{
+					"type": "Short",
+					"price": {
+						"coin": "sp",
+						"amount": 4,
+						"note": null
+					},
+					"bulk": "L",
+					"hands": "1+",
+					"entries": []
+				}
+			]
+		},
+		{
+			"name": "Torch",
+			"source": "CRB",
+			"equipment": true,
+			"type": "Item",
+			"price": {
+				"coin": "cp",
+				"amount": 1,
+				"note": null
+			},
+			"bulk": "L",
+			"hands": 1,
+			"category": "Gear",
+			"entries": [
+				"A torch sheds bright light in a 20‑foot radius (and dim light to the next 20 feet) for 1 hour. It can be used as an improvised weapon that deals 1d4 bludgeoning damage plus 1 fire damage. "
+			]
 		},
 		{
 			"name": "Tracker's Goggles",
@@ -21859,6 +23446,23 @@
 			"generic": false
 		},
 		{
+			"name": "Waterskin",
+			"source": "CRB",
+			"equipment": true,
+			"type": "Item",
+			"price": {
+				"coin": "cp",
+				"amount": 5,
+				"note": null
+			},
+			"bulk": "L",
+			"hands": 1,
+			"category": "Gear",
+			"entries": [
+				"When it's full, a waterskin contains roughly 1 day's worth of water for a Small or Medium creature. "
+			]
+		},
+		{
 			"name": "Wayfinder",
 			"source": "CRB",
 			"page": 617,
@@ -22166,12 +23770,12 @@
 				"trigger": null
 			},
 			"category": "Talisman",
-			"trigger": "You successfully {@action Trip} a foe",
-			"requirements": "You are trained in {@skill Athletics}.",
 			"entries": [
 				"This wolf canine is bound in a strip of leather and tied to a buckle or strap of a suit of armor. When you activate the fang, you deal bludgeoning damage equal to your Strength modifier to the target of your {@action Trip}. If your {@action Trip} would already deal physical damage that doesn't include an ability modifier, add your Strength modifier to that damage."
 			],
-			"generic": false
+			"generic": false,
+			"trigger": "You successfully {@action Trip} a foe",
+			"requirements": "You are trained in {@skill Athletics}."
 		},
 		{
 			"name": "Wolfsbane",
@@ -22364,6 +23968,23 @@
 			"generic": false
 		},
 		{
+			"name": "Writing Set",
+			"source": "CRB",
+			"equipment": true,
+			"type": "Item",
+			"price": {
+				"coin": "gp",
+				"amount": 1,
+				"note": null
+			},
+			"bulk": "L",
+			"hands": 2,
+			"category": "Gear",
+			"entries": [
+				"Using a writing set, you can draft correspondence and scribe scrolls. A set includes stationery, including a variety of paper and parchment, as well as ink, a quill or inkpen, sealing wax, and a simple seal. If you've written a large amount, you can refill your kit with {@item extra ink and paper}."
+			]
+		},
+		{
 			"name": "Wyvern Poison",
 			"source": "CRB",
 			"page": 554,
@@ -22423,1627 +24044,6 @@
 				}
 			],
 			"generic": false
-		},
-		{
-			"name": "Adventurer's Pack",
-			"type": "Item",
-			"price": {
-				"coin": "sp",
-				"amount": 15,
-				"note": null
-			},
-			"hands": null,
-			"bulk": 1,
-			"category": "Gear",
-			"equipment": true,
-			"source": "CRB",
-			"entries": [
-				"This item is the starter kit for an adventurer, containing the essential items for exploration and survival. The Bulk value is for the entire pack together, but see the descriptions of individual items as necessary. The pack contains the following items: a {@item backpack}, a {@item bedroll}, {@item chalk (10)||10 pieces of chalk}, {@item flint and steel}, {@item rope (50 feet)||50 feet of rope}, 2 weeks' {@item Rations (1 week)||rations}, {@item soap}, 5 {@item torch||torches}, and a {@item waterskin}."
-			]
-		},
-		{
-			"name": "Alchemist's Lab",
-			"type": "Item",
-			"price": {
-				"coin": "gp",
-				"amount": 5,
-				"note": null
-			},
-			"hands": 2,
-			"bulk": 6,
-			"category": "Gear",
-			"equipment": true,
-			"source": "CRB",
-			"entries": [
-				"You need an alchemist's lab to {@action Craft} alchemical items during downtime."
-			],
-			"generic": "G",
-			"variants": [
-				{
-					"type": "Base",
-					"name": "Alchemist's Lab",
-					"price": {
-						"coin": "gp",
-						"amount": 5,
-						"note": null
-					},
-					"entries": []
-				},
-				{
-					"type": "Expanded",
-					"name": "Expanded Alchemist's Lab",
-					"level": 3,
-					"price": {
-						"coin": "gp",
-						"amount": 55,
-						"note": null
-					},
-					"entries": [
-						"An expanded alchemist's lab gives a +1 item bonus to {@skill Crafting} checks to create alchemical items."
-					]
-				}
-			]
-		},
-		{
-			"name": "Alchemist's Tools",
-			"type": "Item",
-			"price": {
-				"coin": "gp",
-				"amount": 3,
-				"note": null
-			},
-			"hands": 2,
-			"bulk": 1,
-			"category": "Gear",
-			"equipment": true,
-			"source": "CRB",
-			"entries": [
-				"This mobile collection of vials and chemicals can be used for simple alchemical tasks. If you wear your alchemist's tools, you can draw and replace them as part of the action that uses them. "
-			]
-		},
-		{
-			"name": "Artisan's Tools",
-			"type": "Item",
-			"price": {
-				"coin": "gp",
-				"amount": 4,
-				"note": null
-			},
-			"hands": 2,
-			"bulk": 2,
-			"category": "Gear",
-			"equipment": true,
-			"source": "CRB",
-			"entries": [
-				"You need these tools to create items from raw materials with the {@action Craft} skill. Different sets are needed for different work, as determined by the GM; for example, blacksmith's tools differ from woodworker's tools. If you wear your artisan's tools, you can draw and replace them as part of the action that uses them."
-			],
-			"generic": "G",
-			"variants": [
-				{
-					"type": "Base",
-					"name": "Artisan's Tools",
-					"price": {
-						"coin": "gp",
-						"amount": 5,
-						"note": null
-					},
-					"entries": []
-				},
-				{
-					"type": "Sterling",
-					"name": "Sterling Artisan's Tools",
-					"level": 3,
-					"price": {
-						"coin": "gp",
-						"amount": 50,
-						"note": null
-					},
-					"entries": [
-						"Sterling artisan's tools give you a +1 item bonus to the check."
-					]
-				}
-			]
-		},
-		{
-			"name": "Backpack",
-			"type": "Item",
-			"price": {
-				"coin": "sp",
-				"amount": 1,
-				"note": null
-			},
-			"hands": null,
-			"bulk": null,
-			"category": "Gear",
-			"equipment": true,
-			"source": "CRB",
-			"entries": [
-				"A backpack holds up to 4 Bulk of items. and the first 2 Bulk of these items don't count against your Bulk limits. If you're carrying or stowing the pack rather than wearing it on your back, its Bulk is light instead of negligible. "
-			]
-		},
-		{
-			"name": "Basic Crafter's Book",
-			"type": "Item",
-			"price": {
-				"coin": "sp",
-				"amount": 1,
-				"note": null
-			},
-			"hands": 2,
-			"bulk": "L",
-			"category": "Gear",
-			"equipment": true,
-			"source": "CRB",
-			"entries": [
-				"This book contains the formulas (page 293) for Crafting the common items in this chapter."
-			]
-		},
-		{
-			"name": "Bedroll",
-			"type": "Item",
-			"price": {
-				"coin": "cp",
-				"amount": 2,
-				"note": null
-			},
-			"hands": null,
-			"bulk": "L",
-			"category": "Gear",
-			"equipment": true,
-			"source": "CRB",
-			"entries": [
-				"Using a writing set, you can draft correspondence and scribe scrolls. A set includes stationery, including a variety of paper and parchment, as well as ink, a quill or inkpen, sealing wax, and a simple seal. If you've written a large amount, you can refill your kit with extra ink and paper."
-			]
-		},
-		{
-			"name": "Caltrops",
-			"type": "Item",
-			"price": {
-				"coin": "cp",
-				"amount": 3,
-				"note": null
-			},
-			"hands": 1,
-			"bulk": "L",
-			"category": "Gear",
-			"equipment": true,
-			"source": "CRB",
-			"entries": [
-				"These four‑pronged metal spikes can damage a creature's feet. You can scatter caltrops in an empty square adjacent to you with an Interact action. The first creature that moves into that square must succeed at a DC 14 Acrobatics check or take 1d4 piercing damage and 1 persistent bleed damage. A creature taking persistent bleed damage from caltrops takes a \u20135‑foot penalty to its Speed. Spending an Interact action to pluck the caltrops free reduces the DC to stop the bleeding. Once a creature takes damage from caltrops, enough are ruined that other creatures moving into the square are safe. Deployed caltrops can be salvaged and reused if no creatures took damage from them. Otherwise, enough are ruined that they can't be salvaged. "
-			]
-		},
-		{
-			"name": "Candle (10)",
-			"type": "Item",
-			"price": {
-				"coin": "cp",
-				"amount": 1,
-				"note": "for price of 10"
-			},
-			"hands": 1,
-			"bulk": null,
-			"category": "Gear",
-			"equipment": true,
-			"source": "CRB",
-			"entries": [
-				"A lit candle sheds dim light in a 10‑foot radius for 8 hours. "
-			]
-		},
-		{
-			"name": "Chain (10 feet)",
-			"type": "Item",
-			"price": {
-				"coin": "gp",
-				"amount": 4,
-				"note": "for price of 10 feet"
-			},
-			"hands": 2,
-			"bulk": 1,
-			"category": "Gear",
-			"equipment": true,
-			"source": "CRB",
-			"entries": [
-				""
-			]
-		},
-		{
-			"name": "Chalk (10)",
-			"type": "Item",
-			"price": {
-				"coin": "cp",
-				"amount": 1,
-				"note": "for price of 10"
-			},
-			"hands": 1,
-			"bulk": null,
-			"category": "Gear",
-			"equipment": true,
-			"source": "CRB",
-			"entries": [
-				""
-			]
-		},
-		{
-			"name": "Chest",
-			"type": "Item",
-			"price": {
-				"coin": "sp",
-				"amount": 6,
-				"note": null
-			},
-			"hands": 2,
-			"bulk": 2,
-			"category": "Gear",
-			"equipment": true,
-			"source": "CRB",
-			"entries": [
-				"A wooden chest can hold up to 8 Bulk of items. "
-			]
-		},
-		{
-			"name": "Climbing Kit",
-			"type": "Item",
-			"price": {
-				"coin": "sp",
-				"amount": 5,
-				"note": null
-			},
-			"hands": 2,
-			"bulk": 1,
-			"category": "Gear",
-			"equipment": true,
-			"source": "CRB",
-			"entries": [
-				"This satchel includes 50 feet of rope, pulleys, a dozen pitons, a hammer, a grappling hook, and one set of crampons. Climbing kits allow you to attach yourself to the wall you're {@action Climb||Climbing}, moving half as quickly as usual (minimum 5 feet) but letting you attempt a DC {@flatDC 5} flat check whenever you critically fail to prevent a fall. A single kit has only enough materials for one climber; each climber needs their own kit. If you wear your climbing kit, you can access it as part of a {@action Climb} action."
-			],
-			"generic": "G",
-			"variants": [
-				{
-					"type": "Base",
-					"name": "Climbing Kit",
-					"price": {
-						"coin": "sp",
-						"amount": 5,
-						"note": null
-					},
-					"entries": []
-				},
-				{
-					"type": "Extreme",
-					"name": "Extreme Climbing Kit",
-					"level": 3,
-					"price": {
-						"coin": "gp",
-						"amount": 40,
-						"note": null
-					},
-					"entries": [
-						"You gain a +1 item bonus to {@skill Athletics} checks to {@action Climb} while using an extreme climbing kit."
-					]
-				}
-			]
-		},
-		{
-			"name": "Clothing",
-			"type": "Item",
-			"category": "Gear",
-			"equipment": true,
-			"source": "CRB",
-			"entries": [
-				"Ordinary clothing is functional with basic tailoring, such as peasant garb, monk's robes, or work clothes. Explorer's clothing is sturdy enough that it can be reinforced to protect you, even though it isn't a suit of armor. It comes in many forms, though the most common sorts look like clerical vestments, monk's garments, or wizard's robes, as members of all three classes are likely to avoid wearing armor. For more information on explorer's clothing, see pages 275\u2013276. Fine clothing, suitable for a noble or royal, is made with expensive fabrics, precious metals, and intricate patterns. You can wear only one tool set of light Bulk with fine clothing, instead of the normal limit of 2 Bulk. You gain a +1 item bonus to checks to Make an Impression on upper‑class folk while wearing high‑fashion fine clothing. Winter clothing allows you to negate the damage from severe environmental cold and reduce the damage from extreme cold to that of severe cold. "
-			]
-		},
-		{
-			"name": "Compass",
-			"type": "Item",
-			"price": {
-				"coin": "gp",
-				"amount": 1,
-				"note": null
-			},
-			"hands": 1,
-			"bulk": null,
-			"category": "Gear",
-			"equipment": true,
-			"source": "CRB",
-			"entries": [
-				"A compass helps you {@action Sense Direction} or navigate, provided you're in a location with uniform magnetic fields. Without a compass, you take a \u20132 item penalty to these checks (similar to using a shoddy item)."
-			],
-			"generic": "G",
-			"variants": [
-				{
-					"type": "Base",
-					"name": "Compass",
-					"price": {
-						"coin": "gp",
-						"amount": 1,
-						"note": null
-					},
-					"entries": []
-				},
-				{
-					"type": "Lensatic",
-					"name": "Lensatic Compass",
-					"level": 3,
-					"price": {
-						"coin": "gp",
-						"amount": 20,
-						"note": null
-					},
-					"entries": [
-						"A lensatic compass gives you a +1 item bonus to these checks."
-					]
-				}
-			]
-		},
-		{
-			"name": "Crowbar",
-			"type": "Item",
-			"price": {
-				"coin": "sp",
-				"amount": 5,
-				"note": null
-			},
-			"hands": 2,
-			"bulk": "L",
-			"category": "Gear",
-			"equipment": true,
-			"source": "CRB",
-			"entries": [
-				"When {@action Force Open||Forcing Open} an object that doesn't have an easy grip, a crowbar makes it easier to gain the necessary leverage. Without a crowbar, prying something open takes a \u20132 item penalty to the {@skill Athletics} check to {@action Force Open}."
-			],
-			"generic": "G",
-			"variants": [
-				{
-					"type": "Base",
-					"name": "Crowbar",
-					"price": {
-						"coin": "gp",
-						"amount": 1,
-						"note": null
-					},
-					"entries": []
-				},
-				{
-					"type": "Levered",
-					"name": "Levered Crowbar",
-					"level": 3,
-					"price": {
-						"coin": "gp",
-						"amount": 20,
-						"note": null
-					},
-					"entries": [
-						"A levered crowbar grants you a +1 item bonus to {@skill Athletics} checks to {@action Force Open} anything that can be pried open."
-					]
-				}
-			]
-		},
-		{
-			"name": "Cookware",
-			"type": "Item",
-			"price": {
-				"coin": "gp",
-				"amount": 1,
-				"note": null
-			},
-			"hands": 2,
-			"bulk": 2,
-			"category": "Gear",
-			"equipment": true,
-			"source": "CRB",
-			"entries": []
-		},
-		{
-			"name": "Disguise Kit",
-			"type": "Item",
-			"category": "Gear",
-			"equipment": true,
-			"price": {
-				"coin": "gp",
-				"amount": 2,
-				"note": null
-			},
-			"hands": 2,
-			"bulk": "L",
-			"source": "CRB",
-			"entries": [
-				"This small wooden box contains cosmetics, false facial hair, spirit gum, and a few simple wigs. You usually need a disguise kit to set up a disguise in order to {@action Impersonate} someone using the {@skill Deception} skill. If you've crafted a large number of disguises, you can replenish your cosmetics supply with {@item replacement cosmetics} suitable for the type of your disguise kit. You can draw and replace a worn disguise kit as part of the action that uses it. "
-			],
-			"generic": "G",
-			"variants": [
-				{
-					"type": "Base",
-					"name": "Disguise Kit",
-					"price": {
-						"coin": "gp",
-						"amount": 2,
-						"note": null
-					},
-					"entries": []
-				},
-				{
-					"type": "Elite",
-					"name": "Elite Disguise Kit",
-					"level": 3,
-					"price": {
-						"coin": "gp",
-						"amount": 40,
-						"note": null
-					},
-					"entries": [
-						"An elite disguise kit adds a +1 item bonus to relevant checks."
-					]
-				}
-			]
-		},
-		{
-			"name": "Replacement Cosmetics",
-			"type": "Item",
-			"category": "Gear",
-			"equipment": true,
-			"price": {
-				"coin": "sp",
-				"amount": 1,
-				"note": null
-			},
-			"hands": null,
-			"bulk": null,
-			"source": "CRB",
-			"entries": [
-				"If you've crafted a large number of disguises, you can replenish your cosmetics supply with replacement cosmetics suitable for the type of your {@item disguise kit}."
-			],
-			"generic": "G",
-			"variants": [
-				{
-					"type": "Base",
-					"name": "Replacement Cosmetics",
-					"price": {
-						"coin": "sp",
-						"amount": 1,
-						"note": null
-					},
-					"entries": []
-				},
-				{
-					"type": "Elite",
-					"name": "Elite Replacement Cosmetics",
-					"level": 3,
-					"price": {
-						"coin": "sp",
-						"amount": 5,
-						"note": null
-					},
-					"entries": []
-				}
-			]
-		},
-		{
-			"name": "Fishing Tackle",
-			"type": "Item",
-			"price": {
-				"coin": "sp",
-				"amount": 8,
-				"note": null
-			},
-			"hands": 2,
-			"bulk": 1,
-			"category": "Gear",
-			"equipment": true,
-			"source": "CRB",
-			"entries": [
-				"This kit include a collapsible fishing pole, fishhooks, line, lures, and a fishing net."
-			],
-			"generic": "G",
-			"variants": [
-				{
-					"type": "Base",
-					"name": "Fishing Tackle",
-					"price": {
-						"coin": "sp",
-						"amount": 1,
-						"note": null
-					},
-					"entries": []
-				},
-				{
-					"type": "Professional",
-					"level": 3,
-					"price": {
-						"coin": "gp",
-						"amount": 20,
-						"note": null
-					},
-					"entries": [
-						"Professional fishing tackle grants a +1 item bonus to checks to fish."
-					]
-				}
-			]
-		},
-		{
-			"name": "Flint and Steel",
-			"type": "Item",
-			"price": {
-				"coin": "cp",
-				"amount": 5,
-				"note": null
-			},
-			"hands": 2,
-			"bulk": null,
-			"category": "Gear",
-			"equipment": true,
-			"source": "CRB",
-			"entries": [
-				"Flint and steel are useful in creating a fire if you have the time to catch a spark, though using them is typically too time‑consuming to be practical during an encounter. Even in ideal conditions, using flint and steel to light a flame requires using at least 3 actions, and often significantly longer. "
-			]
-		},
-		{
-			"name": "Formula Book (blank)",
-			"type": "Item",
-			"price": {
-				"coin": "gp",
-				"amount": 1,
-				"note": null
-			},
-			"hands": 1,
-			"bulk": "L",
-			"category": "Gear",
-			"equipment": true,
-			"source": "CRB",
-			"entries": [
-				"A formula book holds the formulas necessary to make items other than the common equipment from this chapter; {@class alchemist||alchemists} typically get one for free. Each formula book can hold the formulas for up to 100 different items. Formulas can also appear on parchment sheets, tablets, and almost any other medium; there's no need for you to copy them into a specific book as long as you can keep them on hand to reference them. "
-			]
-		},
-		{
-			"name": "Hammer",
-			"type": "Item",
-			"price": {
-				"coin": "sp",
-				"amount": 1,
-				"note": null
-			},
-			"hands": 1,
-			"bulk": "L",
-			"category": "Gear",
-			"equipment": true,
-			"source": "CRB",
-			"entries": []
-		},
-		{
-			"name": "Grappling Hook",
-			"type": "Item",
-			"price": {
-				"coin": "sp",
-				"amount": 1,
-				"note": null
-			},
-			"hands": 1,
-			"bulk": "L",
-			"category": "Gear",
-			"equipment": true,
-			"source": "CRB",
-			"entries": [
-				"You can throw a grappling hook with a rope tied to it to make a climb easier. To anchor a grappling hook, make an attack roll with the secret trait against a DC depending on the target, typically at least DC 20. On a success, your hook has a firm hold, but on a critical failure, the hook seems like it will hold but actually falls when you're partway up. "
-			]
-		},
-		{
-			"name": "Healer's Tools",
-			"type": "Item",
-			"price": {
-				"coin": "gp",
-				"amount": 5,
-				"note": null
-			},
-			"hands": 2,
-			"bulk": 1,
-			"category": "Gear",
-			"equipment": true,
-			"source": "CRB",
-			"entries": [
-				"This kit of bandages, herbs, and suturing tools is necessary for {@skill Medicine} checks to {@action Administer First Aid}, {@action Treat Disease}, {@action Treat Poison}, or {@action Treat Wounds}. If you wear your healer's tools, you can draw and replace them as part of the action that uses them. "
-			],
-			"generic": "G",
-			"variants": [
-				{
-					"type": "Base",
-					"name": "Healer's Tools",
-					"entries": []
-				},
-				{
-					"type": "Expanded",
-					"level": 3,
-					"price": {
-						"coin": "gp",
-						"amount": 50,
-						"note": null
-					},
-					"entries": [
-						"Expanded healer's tools provide a +1 item bonus to such checks."
-					]
-				}
-			]
-		},
-		{
-			"name": "Hourglass",
-			"type": "Item",
-			"category": "Gear",
-			"equipment": true,
-			"price": {
-				"coin": "gp",
-				"amount": 3,
-				"note": null
-			},
-			"hands": 1,
-			"bulk": "L",
-			"source": "CRB",
-			"entries": []
-		},
-		{
-			"name": "Holly and Mistletoe",
-			"type": "Item",
-			"category": "Gear",
-			"equipment": true,
-			"price": {
-				"coin": null,
-				"amount": 0,
-				"note": null
-			},
-			"hands": 1,
-			"source": "CRB",
-			"entries": [
-				"Plants of supernatural significance provide a primal focus for primal spellcasters, such as druids, when using certain abilities and casting some spells. A bundle of holly and mistletoe must be held in one hand to use it. Other primal foci exist for druids focused on other aspects of nature. "
-			]
-		},
-		{
-			"name": "Ladder (10-foot)",
-			"type": "Item",
-			"category": "Gear",
-			"equipment": true,
-			"price": {
-				"coin": "cp",
-				"amount": 3,
-				"note": null
-			},
-			"hands": 2,
-			"bulk": 3,
-			"source": "CRB",
-			"entries": [
-				"Plants of supernatural significance provide a primal focus for primal spellcasters, such as druids, when using certain abilities and casting some spells. A bundle of holly and mistletoe must be held in one hand to use it. Other primal foci exist for druids focused on other aspects of nature. "
-			]
-		},
-		{
-			"name": "Lantern",
-			"type": "Item",
-			"category": "Gear",
-			"equipment": true,
-			"source": "CRB",
-			"entries": [
-				"A lantern sheds bright light and requires 1 pint of {@item oil (1 pint)||oil} to function for 6 hours."
-			],
-			"generic": "G",
-			"variants": [
-				{
-					"type": "Bull's Eye",
-					"price": {
-						"coin": "gp",
-						"amount": 1,
-						"note": null
-					},
-					"bulk": 1,
-					"hands": 1,
-					"entries": [
-						"A bull's‑eye lantern emits its light in a 60‑foot cone (and dim light in the next 60 feet)."
-					]
-				},
-				{
-					"type": "Hooded",
-					"price": {
-						"coin": "sp",
-						"amount": 7,
-						"note": null
-					},
-					"bulk": "L",
-					"hands": 1,
-					"entries": [
-						"A hooded lantern sheds light in a 30‑foot radius (and dim light in the next 30 feet) and is equipped with shutters, which you can close to block the light. Closing or opening the shutters takes an {@action Interact} action."
-					]
-				}
-			]
-		},
-		{
-			"name": "Lock",
-			"type": "Item",
-			"category": "Gear",
-			"equipment": true,
-			"hands": 2,
-			"source": "CRB",
-			"entries": [
-				"Picking a poor lock requires two successful DC 15 {@skill Thievery} checks, a simple lock requires three successful DC 20 {@skill Thievery} checks, an average lock requires four successes at DC 25, a good lock requires five successes at DC 30, and a superior lock six successes at DC 40."
-			],
-			"generic": "G",
-			"variants": [
-				{
-					"type": "Poor",
-					"price": {
-						"coin": "sp",
-						"amount": 2,
-						"note": null
-					},
-					"level": 0,
-					"entries": []
-				},
-				{
-					"type": "Simple",
-					"price": {
-						"coin": "gp",
-						"amount": 2,
-						"note": null
-					},
-					"level": 1,
-					"entries": []
-				},
-				{
-					"type": "Average",
-					"price": {
-						"coin": "gp",
-						"amount": 15,
-						"note": null
-					},
-					"level": 3,
-					"entries": []
-				},
-				{
-					"type": "Good",
-					"price": {
-						"coin": "gp",
-						"amount": 200,
-						"note": null
-					},
-					"level": 9,
-					"entries": []
-				},
-				{
-					"type": "Superior",
-					"price": {
-						"coin": "gp",
-						"amount": 4500,
-						"note": null
-					},
-					"level": 17,
-					"entries": []
-				}
-			]
-		},
-		{
-			"name": "Magnifying Glass",
-			"type": "Item",
-			"category": "Gear",
-			"equipment": true,
-			"level": 3,
-			"price": {
-				"coin": "gp",
-				"amount": 40,
-				"note": null
-			},
-			"hands": 1,
-			"source": "CRB",
-			"entries": [
-				"This quality handheld lens gives you a +1 item bonus to {@skill Perception} checks to notice minute details of documents, fabric, and the like. "
-			]
-		},
-		{
-			"name": "Manacles",
-			"type": "Item",
-			"category": "Gear",
-			"equipment": true,
-			"hands": 2,
-			"source": "CRB",
-			"entries": [
-				"You can manacle someone who is willing or otherwise at your mercy as an {@trait exploration} activity taking 10\u201330 seconds depending on the creature's size and how many manacles you apply. A two‑legged creature with its legs bound takes a \u201315‑foot circumstance penalty to its Speeds, and a two‑handed creature with its wrists bound has to succeed at a DC {@flatDC 5} flat check any time it uses a {@trait manipulate} action or else that action fails. This DC may be higher depending on how tightly the manacles constrain the hands. A creature bound to a stationary object is immobilized. For creatures with more or fewer limbs, the GM determines what effect manacles have, if any. Freeing a creature from poor manacles requires two successful DC 17 Thievery checks, simple manacles requires three successes at DC 22, average manacles require four successes at DC 27, good manacles require five successes at DC 32, and superior manacles require six successes at DC 42. "
-			],
-			"generic": "G",
-			"variants": [
-				{
-					"type": "Poor",
-					"price": {
-						"coin": "sp",
-						"amount": 2,
-						"note": null
-					},
-					"level": 0,
-					"entries": []
-				},
-				{
-					"type": "Simple",
-					"price": {
-						"coin": "gp",
-						"amount": 3,
-						"note": null
-					},
-					"level": 1,
-					"entries": []
-				},
-				{
-					"type": "Average",
-					"price": {
-						"coin": "gp",
-						"amount": 20,
-						"note": null
-					},
-					"level": 3,
-					"entries": []
-				},
-				{
-					"type": "Good",
-					"price": {
-						"coin": "gp",
-						"amount": 250,
-						"note": null
-					},
-					"level": 9,
-					"entries": []
-				},
-				{
-					"type": "Superior",
-					"price": {
-						"coin": "gp",
-						"amount": 5000,
-						"note": null
-					},
-					"level": 17,
-					"entries": []
-				}
-			]
-		},
-		{
-			"name": "Material Component Pouch",
-			"type": "Item",
-			"price": {
-				"coin": "sp",
-				"amount": 5,
-				"note": null
-			},
-			"hands": 1,
-			"bulk": "L",
-			"category": "Gear",
-			"equipment": true,
-			"source": "CRB",
-			"entries": [
-				"This pouch contains material components for those spells that require them. Though the components are used up over time, you can refill spent components during your daily preparations. "
-			]
-		},
-		{
-			"name": "Musical Instrument",
-			"type": "Item",
-			"category": "Gear",
-			"equipment": true,
-			"hands": 2,
-			"source": "CRB",
-			"entries": [
-				"Handheld instruments include bagpipes, a small set of chimes, small drums, fiddles and viols, flutes and recorders, small harps, lutes, trumpets, and similarly sized instruments. The GM might rule that an especially large handheld instrument (like a tuba) has greater Bulk. Heavy instruments such as large drums, a full set of chimes, and keyboard instruments are less portable and generally need to be stationary while being played."
-			],
-			"generic": "G",
-			"variants": [
-				{
-					"type": "Handheld",
-					"price": {
-						"coin": "sp",
-						"amount": 8,
-						"note": null
-					},
-					"bulk": 1,
-					"entries": []
-				},
-				{
-					"type": "Virtuoso Handheld",
-					"price": {
-						"coin": "gp",
-						"amount": 50,
-						"note": null
-					},
-					"bulk": 1,
-					"level": 3,
-					"entries": [
-						"A virtuoso instrument gives a +1 item bonus to {@skill Performance} checks using that instrument."
-					]
-				},
-				{
-					"type": "Heavy",
-					"price": {
-						"coin": "gp",
-						"amount": 2,
-						"note": null
-					},
-					"bulk": 16,
-					"entries": []
-				},
-				{
-					"type": "Virtuoso Heavy",
-					"price": {
-						"coin": "gp",
-						"amount": 100,
-						"note": null
-					},
-					"level": 3,
-					"bulk": 16,
-					"entries": [
-						"A virtuoso instrument gives a +1 item bonus to {@skill Performance} checks using that instrument."
-					]
-				}
-			]
-		},
-		{
-			"name": "Merchant's Scale",
-			"type": "Item",
-			"hands": 2,
-			"price": {
-				"amount": 2,
-				"coin": "sp"
-			},
-			"bulk": "L",
-			"category": "Gear",
-			"equipment": true,
-			"source": "CRB",
-			"entries": []
-		},
-		{
-			"name": "Mug",
-			"type": "Item",
-			"hands": 1,
-			"price": {
-				"amount": 1,
-				"coin": "cp"
-			},
-			"category": "Gear",
-			"equipment": true,
-			"source": "CRB",
-			"entries": []
-		},
-		{
-			"name": "Mirror",
-			"type": "Item",
-			"hands": 1,
-			"price": {
-				"amount": 1,
-				"coin": "gp"
-			},
-			"category": "Gear",
-			"equipment": true,
-			"source": "CRB",
-			"entries": []
-		},
-		{
-			"name": "Oil (1 pint)",
-			"type": "Item",
-			"hands": 2,
-			"price": {
-				"amount": 1,
-				"coin": "cp"
-			},
-			"category": "Gear",
-			"equipment": true,
-			"source": "CRB",
-			"entries": [
-				"You can use oil to fuel lanterns, but you can also set a pint of oil aflame and throw it. You must first spend an Interact action preparing the oil, then throw it with another action as a ranged attack. If you hit, it splatters on the creature or in a single 5‑foot square you target. You must succeed at a DC {@flatDC 10} flat check for the oil to ignite successfully when it hits. If the oil ignites, the target takes 1d6 fire damage. "
-			]
-		},
-		{
-			"name": "Piton",
-			"type": "Item",
-			"hands": 1,
-			"price": {
-				"amount": 1,
-				"coin": "cp"
-			},
-			"category": "Gear",
-			"equipment": true,
-			"source": "CRB",
-			"entries": [
-				"These small spikes can be used as anchors to make climbing easier. To affix a piton, you must hold it in one hand and use a hammer to drive it in with your other hand. You can attach a rope to the hammered piton so that you don't fall all the way to the ground on a critical failure while Climbing. "
-			]
-		},
-		{
-			"name": "Rations (1 week)",
-			"type": "Item",
-			"hands": 1,
-			"bulk": "L",
-			"price": {
-				"amount": 4,
-				"coin": "sp",
-				"note": "for one week's worth"
-			},
-			"category": "Gear",
-			"equipment": true,
-			"source": "CRB",
-			"entries": []
-		},
-		{
-			"name": "Religious Symbol",
-			"type": "Item",
-			"bulk": "L",
-			"hands": 1,
-			"category": "Gear",
-			"equipment": true,
-			"source": "CRB",
-			"entries": [
-				"This piece of wood or silver is emblazoned with an image representing a deity. Some divine spellcasters, such as clerics, can use a religious symbol of their deity as a divine focus to use certain abilities and cast some spells. A religious symbol must be held in one hand to use it. "
-			],
-			"generic": "G",
-			"variants": [
-				{
-					"type": "Wooden",
-					"price": {
-						"coin": "sp",
-						"amount": 1,
-						"note": null
-					},
-					"entries": []
-				},
-				{
-					"type": "Silver",
-					"price": {
-						"coin": "gp",
-						"amount": 2,
-						"note": null
-					},
-					"entries": []
-				}
-			]
-		},
-		{
-			"name": "Religious Text",
-			"type": "Item",
-			"price": {
-				"coin": "gp",
-				"amount": 1,
-				"note": null
-			},
-			"bulk": "L",
-			"hands": 1,
-			"category": "Gear",
-			"equipment": true,
-			"source": "CRB",
-			"entries": [
-				"This manuscript contains scripture of a particular religion. Some divine spellcasters, such as clerics, can use a religious text as a divine focus to use certain abilities and cast some spells. A religious text must be held in one hand to use it. "
-			]
-		},
-		{
-			"name": "Repair Kit",
-			"type": "Item",
-			"category": "Gear",
-			"equipment": true,
-			"hands": 2,
-			"bulk": 1,
-			"source": "CRB",
-			"entries": [
-				"A repair kit allows you to perform simple repairs while traveling. It contains a portable anvil, tongs, woodworking tools, a whetstone, and oils for conditioning leather and wood. You can use a repair kit to {@action Repair} items using the {@skill Crafting} skill. You can draw and replace a worn repair kit as part of the action that uses it. "
-			],
-			"generic": "G",
-			"variants": [
-				{
-					"type": "Base",
-					"name": "Repair Kit",
-					"price": {
-						"coin": "gp",
-						"amount": 2,
-						"note": null
-					},
-					"entries": []
-				},
-				{
-					"type": "Superb",
-					"level": 3,
-					"price": {
-						"coin": "gp",
-						"amount": 25,
-						"note": null
-					},
-					"entries": [
-						"A superb repair kit gives you a +1 item bonus to the check."
-					]
-				}
-			]
-		},
-		{
-			"name": "Rope (50 feet)",
-			"type": "Item",
-			"price": {
-				"amount": 5,
-				"coin": "sp",
-				"note": "for 50 feet"
-			},
-			"hands": 2,
-			"bulk": "L",
-			"category": "Gear",
-			"equipment": true,
-			"source": "CRB",
-			"entries": []
-		},
-		{
-			"name": "Sack (5)",
-			"type": "Item",
-			"price": {
-				"amount": 1,
-				"coin": "cp",
-				"note": "for price of 5"
-			},
-			"hands": 1,
-			"bulk": "L",
-			"category": "Gear",
-			"equipment": true,
-			"source": "CRB",
-			"entries": [
-				"A sack can hold up to 8 Bulk worth of items. A sack containing 2 Bulk or less can be worn on the body, usually tucked into a belt. You can carry a sack with one hand, but must use two hands to transfer items in and out. "
-			]
-		},
-		{
-			"name": "Saddlebags",
-			"type": "Item",
-			"price": {
-				"amount": 2,
-				"coin": "sp"
-			},
-			"hands": 2,
-			"bulk": "L",
-			"category": "Gear",
-			"equipment": true,
-			"source": "CRB",
-			"entries": [
-				"Saddlebags come in a pair. Each can hold up to 3 Bulk of items, and the first 1 Bulk of items in each doesn't count against your mount's Bulk limit. The Bulk value given is for saddlebags worn by a mount. If you are carrying or stowing saddlebags, they count as 1 Bulk instead of light Bulk. "
-			]
-		},
-		{
-			"name": "Scholarly Journal",
-			"level": 3,
-			"type": "Item",
-			"category": "Gear",
-			"equipment": true,
-			"source": "CRB",
-			"hands": 1,
-			"bulk": "L",
-			"traits": [
-				"Uncommon"
-			],
-			"entries": [
-				"Scholarly journals are uncommon. Each scholarly journal is a folio on a very specific topic, such as vampires or the history of a single town or neighborhood of a city. If you spend 1 minute referencing an academic journal before attempting a skill check to {@action Recall Knowledge} about the subject, you gain a +1 item bonus to the check. The GM determines what scholarly journals are available in any location. "
-			],
-			"generic": "G",
-			"variants": [
-				{
-					"type": "Scholarly Journal",
-					"price": {
-						"coin": "gp",
-						"amount": 6,
-						"note": null
-					},
-					"entries": []
-				},
-				{
-					"type": "Scholarly Journal Compendium",
-					"level": 3,
-					"hands": 2,
-					"price": {
-						"coin": "gp",
-						"amount": 30,
-						"note": null
-					},
-					"entries": [
-						"A compendium of journals costs five times as much as a single journal and requires both hands to use; each compendium contains several journals and grants its bonus on a broader topic, such as all undead or a whole city."
-					]
-				}
-			]
-		},
-		{
-			"name": "Signal Whistle",
-			"type": "Item",
-			"price": {
-				"amount": 8,
-				"coin": "cp"
-			},
-			"hands": 2,
-			"category": "Gear",
-			"equipment": true,
-			"source": "CRB",
-			"entries": [
-				"When sounded, a signal whistle can be heard clearly up to half a mile away across open terrain."
-			]
-		},
-		{
-			"name": "Snare Kit",
-			"type": "Item",
-			"price": {
-				"amount": 5,
-				"coin": "gp"
-			},
-			"hands": 2,
-			"bulk": 2,
-			"category": "Gear",
-			"equipment": true,
-			"source": "CRB",
-			"entries": [
-				"This kit contains tools and materials for creating snares. A snare kit allows you to {@action Craft} snares using the {@skill Crafting} skill. You can draw and replace a worn snare kit as part of the action to use it. "
-			],
-			"generic": "G",
-			"variants": [
-				{
-					"name": "Snare Kit",
-					"type": "Base",
-					"price": {
-						"coin": "gp",
-						"amount": 6,
-						"note": null
-					},
-					"entries": []
-				},
-				{
-					"type": "Specialist",
-					"level": 3,
-					"price": {
-						"coin": "gp",
-						"amount": 55,
-						"note": null
-					},
-					"entries": [
-						"A specialist snare kit gives you a +1 item bonus to the check."
-					]
-				}
-			]
-		},
-		{
-			"name": "Soap",
-			"type": "Item",
-			"price": {
-				"amount": 2,
-				"coin": "cp"
-			},
-			"hands": 1,
-			"category": "Gear",
-			"equipment": true,
-			"source": "CRB",
-			"entries": []
-		},
-		{
-			"name": "Spellbook (blank)",
-			"type": "Item",
-			"price": {
-				"amount": 1,
-				"coin": "gp"
-			},
-			"hands": 1,
-			"bulk": "L",
-			"category": "Gear",
-			"equipment": true,
-			"source": "CRB",
-			"entries": [
-				"A spellbook holds the written knowledge necessary to learn and prepare various spells, a necessity for wizards (who typically get one for free) and a useful luxury for other spellcasters looking to learn additional spells. Each spellbook can hold up to 100 spells. The Price listed is for a blank spellbook. "
-			]
-		},
-		{
-			"name": "Spyglass",
-			"price": {
-				"amount": 20,
-				"coin": "gp"
-			},
-			"hands": 2,
-			"bulk": "L",
-			"type": "Item",
-			"category": "Gear",
-			"equipment": true,
-			"source": "CRB",
-			"entries": [
-				"A typical spyglass lets you see eight times farther than normal."
-			],
-			"generic": "G",
-			"variants": [
-				{
-					"type": "Base",
-					"name": "Spyglass",
-					"entries": []
-				},
-				{
-					"type": "Fine",
-					"level": 4,
-					"price": {
-						"coin": "gp",
-						"amount": 80,
-						"note": null
-					},
-					"entries": [
-						"A fine spyglass adds a +1 item bonus to {@skill Perception} checks to notice details at a distance."
-					]
-				}
-			]
-		},
-		{
-			"name": "Survey Map",
-			"type": "Item",
-			"level": 3,
-			"category": "Gear",
-			"equipment": true,
-			"source": "CRB",
-			"bulk": "L",
-			"hands": 1,
-			"entries": [
-				"Maps are uncommon. Most maps you can find are simple and functional. A survey map details a single location in excellent detail. One of these maps gives you a +1 item bonus to {@skill Survival} checks and any skill checks to {@action Recall Knowledge}, provided the checks are related to the location detailed on the map. The GM determines what maps are available in any location. "
-			],
-			"traits": [
-				"Uncommon"
-			],
-			"generic": "G",
-			"variants": [
-				{
-					"type": "Survey Map",
-					"price": {
-						"coin": "gp",
-						"amount": 10,
-						"note": null
-					},
-					"entries": []
-				},
-				{
-					"type": "Survey Map Atlas",
-					"level": 3,
-					"price": {
-						"coin": "gp",
-						"amount": 50,
-						"note": null
-					},
-					"hands": 2,
-					"entries": [
-						"Maps sometimes come in atlases, containing a number of maps of the same quality, often on similar topics. An atlas costs five times as much as a single map and requires both hands to use. "
-					]
-				}
-			]
-		},
-		{
-			"name": "Tack",
-			"type": "Item",
-			"price": {
-				"coin": "gp",
-				"amount": 4,
-				"note": null
-			},
-			"bulk": 1,
-			"category": "Gear",
-			"equipment": true,
-			"source": "CRB",
-			"entries": [
-				"Tack includes all the gear required to outfit a riding animal, including a saddle, bit and bridle, and stirrups if necessary. Especially large or oddly shaped animals might require specialty saddles. These can be more expensive or hard to find, as determined by the GM. The Bulk value given is for tack worn by a creature. If carried, the Bulk increases to 2. "
-			]
-		},
-		{
-			"name": "Ten-Foot Pole",
-			"type": "Item",
-			"price": {
-				"coin": "cp",
-				"amount": 1,
-				"note": null
-			},
-			"bulk": 1,
-			"hands": 2,
-			"category": "Gear",
-			"equipment": true,
-			"source": "CRB",
-			"entries": [
-				"When wielding this long pole, you can use {@action Seek} to search a square up to 10 feet away. The pole is not sturdy enough to use as a weapon. "
-			]
-		},
-		{
-			"name": "Replacement Picks",
-			"type": "Item",
-			"category": "Gear",
-			"equipment": true,
-			"hands": null,
-			"bulk": null,
-			"source": "CRB",
-			"entries": [
-				"If your {@item thieves' tools (generic)||thieves' tools} are broken, you can repair them by replacing the lock picks with replacement picks appropriate to your tools; this doesn't require using the {@action Repair} action."
-			],
-			"generic": "G",
-			"variants": [
-				{
-					"name": "Replacement Picks",
-					"type": "Base",
-					"price": {
-						"coin": "sp",
-						"amount": 3,
-						"note": null
-					},
-					"entries": []
-				},
-				{
-					"type": "Infiltrator",
-					"level": 3,
-					"price": {
-						"coin": "gp",
-						"amount": 3,
-						"note": null
-					},
-					"entries": []
-				}
-			]
-		},
-		{
-			"name": "Tent",
-			"type": "Item",
-			"category": "Gear",
-			"equipment": true,
-			"source": "CRB",
-			"entries": [],
-			"hands": 2,
-			"generic": "G",
-			"variants": [
-				{
-					"type": "Pup",
-					"price": {
-						"coin": "sp",
-						"amount": 8,
-						"note": null
-					},
-					"bulk": "L",
-					"entries": []
-				},
-				{
-					"type": "Four-person",
-					"price": {
-						"coin": "gp",
-						"amount": 5,
-						"note": null
-					},
-					"bulk": 1,
-					"entries": []
-				},
-				{
-					"type": "Pavilion",
-					"level": 2,
-					"price": {
-						"coin": "gp",
-						"amount": 40,
-						"note": null
-					},
-					"bulk": 12,
-					"entries": []
-				}
-			]
-		},
-		{
-			"name": "Thieves' Tools",
-			"type": "Item",
-			"price": {
-				"coin": "gp",
-				"amount": 3,
-				"note": null
-			},
-			"bulk": "L",
-			"hands": 2,
-			"category": "Gear",
-			"equipment": true,
-			"source": "CRB",
-			"entries": [
-				"You need thieves' tools to {@action Pick a Lock||Pick Locks} or {@action Disable a Device||Disable Devices} (of some types) using the {@skill Thievery} skill. If your thieves' tools are broken, you can repair them by replacing the lock picks with {@item replacement picks} appropriate to your tools; this doesn't require using the {@action Repair} action. If you wear your thieves' tools, you can draw and replace them as part of the action that uses them. "
-			],
-			"generic": "G",
-			"variants": [
-				{
-					"name": "Thieves' Tools",
-					"type": "Base",
-					"entries": []
-				},
-				{
-					"type": "Infiltrator",
-					"level": 3,
-					"price": {
-						"coin": "gp",
-						"amount": 50,
-						"note": null
-					},
-					"hands": 2,
-					"entries": [
-						"Infiltrator thieves' tools add a +1 item bonus to checks to {@action Pick a Lock||Pick Locks} and {@action Disable a Device||Disable Devices}."
-					]
-				}
-			]
-		},
-		{
-			"name": "Tool",
-			"type": "Item",
-			"category": "Gear",
-			"equipment": true,
-			"source": "CRB",
-			"entries": [
-				"This entry is a catchall for basic hand tools that don't have a specific adventuring purpose. A hoe, shovel, or sledgehammer is a long tool, and a hand drill, ice hook, or trowel is a short tool. A tool can usually be used as an improvised weapon, dealing {@damage 1d4} damage for a short tool or {@damage 1d6} for a long tool. The GM determines the damage type that's appropriate or adjusts the damage if needed. "
-			],
-			"generic": "G",
-			"variants": [
-				{
-					"type": "Long",
-					"price": {
-						"coin": "gp",
-						"amount": 1,
-						"note": null
-					},
-					"bulk": 1,
-					"hands": 2,
-					"entries": []
-				},
-				{
-					"type": "Short",
-					"price": {
-						"coin": "sp",
-						"amount": 4,
-						"note": null
-					},
-					"bulk": "L",
-					"hands": "1+",
-					"entries": []
-				}
-			]
-		},
-		{
-			"name": "Torch",
-			"type": "Item",
-			"category": "Gear",
-			"equipment": true,
-			"source": "CRB",
-			"price": {
-				"coin": "cp",
-				"amount": 1,
-				"note": null
-			},
-			"bulk": "L",
-			"hands": 1,
-			"entries": [
-				"A torch sheds bright light in a 20‑foot radius (and dim light to the next 20 feet) for 1 hour. It can be used as an improvised weapon that deals 1d4 bludgeoning damage plus 1 fire damage. "
-			]
-		},
-		{
-			"name": "Waterskin",
-			"type": "Item",
-			"price": {
-				"coin": "cp",
-				"amount": 5,
-				"note": null
-			},
-			"bulk": "L",
-			"hands": 1,
-			"category": "Gear",
-			"equipment": true,
-			"source": "CRB",
-			"entries": [
-				"When it's full, a waterskin contains roughly 1 day's worth of water for a Small or Medium creature. "
-			]
-		},
-		{
-			"name": "Writing Set",
-			"type": "Item",
-			"price": {
-				"coin": "gp",
-				"amount": 1,
-				"note": null
-			},
-			"bulk": "L",
-			"hands": 2,
-			"category": "Gear",
-			"equipment": true,
-			"source": "CRB",
-			"entries": [
-				"Using a writing set, you can draft correspondence and scribe scrolls. A set includes stationery, including a variety of paper and parchment, as well as ink, a quill or inkpen, sealing wax, and a simple seal. If you've written a large amount, you can refill your kit with {@item extra ink and paper}."
-			]
-		},
-		{
-			"name": "Extra Ink and Paper",
-			"type": "Item",
-			"price": {
-				"coin": "sp",
-				"amount": 1,
-				"note": null
-			},
-			"category": "Gear",
-			"equipment": true,
-			"source": "CRB",
-			"entries": [
-				"Using a {@item writing set}, you can draft correspondence and scribe scrolls. If you've written a large amount, you can refill your kit with extra ink and paper."
-			]
 		}
 	]
 }

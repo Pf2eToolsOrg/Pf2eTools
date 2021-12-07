@@ -1,27 +1,47 @@
 {
 	"spell": [
 		{
-			"source": "EC4",
 			"name": "Blood Feast",
+			"source": "EC4",
+			"page": 74,
+			"type": "SPELL",
+			"focus": false,
 			"level": 5,
+			"traits": [
+				"Uncommon",
+				"Necromancy"
+			],
+			"school": "N",
 			"traditions": [
 				"Arcane",
 				"Divine",
 				"Occult"
 			],
-			"school": "N",
-			"type": "SPELL",
-			"focus": false,
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
 			"components": {
 				"F": false,
 				"M": false,
 				"S": true,
 				"V": true
 			},
-			"traits": [
-				"Uncommon",
-				"Necromancy"
-			],
+			"range": {
+				"type": "point",
+				"entry": "touch",
+				"distance": {
+					"type": "touch",
+					"amount": 1
+				}
+			},
+			"targets": "1 creature",
+			"savingThrowBasic": false,
+			"duration": {
+				"type": null
+			},
+			"sustain": false,
+			"dismiss": false,
 			"entries": [
 				"Your head splits vertically into an enormous maw, which feasts upon the target's blood, dealing {@damage 12d6} piercing damage, depending on your spell attack roll. After the spell, your head sews back together as if it had never split apart. You gain temporary Hit Points for 1 minute equal to half the piercing damage the target takes.",
 				"If you are a gug, increase the piercing damage by {@dice 2d6} and increase the {@condition persistent damage ||persistent bleed damage} you deal on a critical hit by {@dice 1d8}. This spell doesn't alter a gug's appearance.",
@@ -34,23 +54,6 @@
 					}
 				}
 			],
-			"cast": {
-				"number": 2,
-				"unit": "action"
-			},
-			"range": {
-				"type": "point",
-				"entry": "touch",
-				"distance": {
-					"type": "touch",
-					"amount": 1
-				}
-			},
-			"targets": "1 creature",
-			"duration": {
-				"type": null
-			},
-			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": true,
 				"plus_x": {
@@ -59,33 +62,55 @@
 				},
 				"x": null,
 				"no_x": null
-			},
-			"dismiss": false,
-			"sustain": false,
-			"page": 74
+			}
 		},
 		{
-			"source": "EC4",
 			"name": "Entrancing Eyes",
-			"level": 7,
-			"traditions": [
-				"Arcane"
-			],
-			"school": "E",
+			"source": "EC4",
+			"page": 74,
 			"type": "SPELL",
 			"focus": false,
-			"components": {
-				"F": false,
-				"M": false,
-				"S": true,
-				"V": true
-			},
+			"level": 7,
 			"traits": [
 				"Uncommon",
 				"Enchantment",
 				"Mental",
 				"Visual"
 			],
+			"school": "E",
+			"traditions": [
+				"Arcane"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": {
+				"F": false,
+				"M": false,
+				"S": true,
+				"V": true
+			},
+			"range": {
+				"type": null
+			},
+			"area": {
+				"types": [
+					"Emanation"
+				],
+				"entry": "30-foot emanation centered on you"
+			},
+			"savingThrowBasic": false,
+			"duration": {
+				"type": "timed",
+				"entry": "sustained up to 1 minute",
+				"duration": {
+					"number": 1,
+					"unit": "minute"
+				}
+			},
+			"sustain": true,
+			"dismiss": false,
 			"entries": [
 				"Your eyes glow with an entrancing radiance that captivates those who meet your gaze. Any creature that ends its turn within the emanation must attempt a Will save.",
 				{
@@ -97,61 +122,61 @@
 					}
 				}
 			],
-			"cast": {
-				"number": 2,
-				"unit": "action"
-			},
-			"range": {
-				"type": null
-			},
-			"area": {
-				"types": [
-					"Emanation"
-				],
-				"entry": "30-foot emanation centered on you"
-			},
-			"duration": {
-				"type": "timed",
-				"entry": "sustained up to 1 minute",
-				"duration": {
-					"number": 1,
-					"unit": "minute"
-				}
-			},
-			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": false,
 				"plus_x": null,
 				"x": null,
 				"no_x": null
-			},
-			"dismiss": false,
-			"sustain": true,
-			"page": 74
+			}
 		},
 		{
-			"source": "EC4",
 			"name": "Necrotic Radiation",
+			"source": "EC4",
+			"page": 75,
+			"type": "SPELL",
+			"focus": false,
 			"level": 4,
+			"traits": [
+				"Uncommon",
+				"Necromancy",
+				"Negative"
+			],
+			"school": "N",
 			"traditions": [
 				"Arcane",
 				"Divine",
 				"Occult"
 			],
-			"school": "N",
-			"type": "SPELL",
-			"focus": false,
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
 			"components": {
 				"F": false,
 				"M": true,
 				"S": true,
 				"V": false
 			},
-			"traits": [
-				"Uncommon",
-				"Necromancy",
-				"Negative"
-			],
+			"range": {
+				"type": "point",
+				"entry": "touch",
+				"distance": {
+					"type": "touch",
+					"amount": 1
+				}
+			},
+			"targets": "one object or one 10-footsquare area",
+			"savingThrowBasic": false,
+			"duration": {
+				"type": "timed",
+				"entry": "24 hours",
+				"duration": {
+					"number": 24,
+					"unit": "hour"
+				}
+			},
+			"sustain": false,
+			"dismiss": false,
 			"entries": [
 				"You imbue the touched object or space with slow-acting necrotic radiation. If you cast the spell on an object, any creature ending its turn holding or carrying the object takes {@damage 2d6} negative damage. If you cast the spell on an area, any creature ending its turn in the area takes {@damage 2d6} negative damage. You can attempt to use this spell on an attended object by touching the object. If you do, the creature attempts a Reflex save to reduce the effect.",
 				{
@@ -164,28 +189,6 @@
 					}
 				}
 			],
-			"cast": {
-				"number": 2,
-				"unit": "action"
-			},
-			"range": {
-				"type": "point",
-				"entry": "touch",
-				"distance": {
-					"type": "touch",
-					"amount": 1
-				}
-			},
-			"targets": "one object or one 10-footsquare area",
-			"duration": {
-				"type": "timed",
-				"entry": "24 hours",
-				"duration": {
-					"number": 24,
-					"unit": "hour"
-				}
-			},
-			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": true,
 				"plus_x": {
@@ -194,10 +197,7 @@
 				},
 				"x": null,
 				"no_x": null
-			},
-			"dismiss": false,
-			"sustain": false,
-			"page": 75
+			}
 		}
 	]
 }
