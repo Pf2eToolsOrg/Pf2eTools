@@ -14,13 +14,13 @@ jobs:
       matrix:
         node-version: [15.x]
 
-    continue-on-error: true
     steps:
     - uses: actions/checkout@v2
       with:
         persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal access token.
         fetch-depth: 0 # otherwise, there would be errors pushing refs to the destination repository.
-    - run: |
+    - name: Build files
+      run: |
         npm ci
         npm run build
         npm run build:deploy:prod
@@ -32,7 +32,7 @@ jobs:
         git config --local user.name "github-actions[bot]"
         git commit -m "Automated Build" -a
 
-    - name: Push changes
+    - name: Push files
       continue-on-error: true
       uses: ad-m/github-push-action@master
       with:
