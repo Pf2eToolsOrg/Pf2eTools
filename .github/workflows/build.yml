@@ -19,13 +19,34 @@ jobs:
       with:
         persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal access token.
         fetch-depth: 0 # otherwise, there would be errors pushing refs to the destination repository.
+
     - run: npm ci
     - run: npm run build
     - run: npm run build:seo
     - run: npm run build:deploy:prod
 
+    - name: Optimize JS/Header
+      run: |
+        cat js/styleswitch.js <(echo ";") js/navigation.js <(echo ";") js/browsercheck.js > js/header.js
+        rm js/styleswitch.js js/navigation.js
+        cat js/parser.js <(echo ";") js/utils.js <(echo ";") js/utils-ui.js <(echo ";") js/omnidexer.js <(echo ";") js/omnisearch.js <(echo ";") js/render.js <(echo ";") js/render-dice.js <(echo ";") js/scalecreature.js <(echo ";") js/hist.js > js/shared.js
+        rm js/utils.js js/utils-ui.js js/omnidexer.js js/omnisearch.js js/render.js js/render-dice.js js/scalecreature.js js/hist.js
+
+    - uses: pCYSl5EDgo/cat@master
+      id: Header
+      with:
+        path: js/header.js
+
+    - uses: pCYSl5EDgo/cat@master
+      id: Shared
+      with:
+        path: js/shared.js
+
     - name: Diff files
       run: git diff --name-status
+      env:
+        TEXT: ${{steps.hello.outputs.Shared}}
+        TEXT: ${{steps.hello.outputs.Header}}
 
     - name: Commit files
       continue-on-error: true
@@ -33,9 +54,16 @@ jobs:
         git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
         git config --local user.name "github-actions[bot]"
         git commit -m "Automated Build" -a
+      env:
+        TEXT: ${{steps.hello.outputs.Shared}}
+        TEXT: ${{steps.hello.outputs.Header}}
 
     - name: Push files
       uses: ad-m/github-push-action@master
+      env:
+        TEXT: ${{steps.hello.outputs.Shared}}
+        TEXT: ${{steps.hello.outputs.Header}}
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         branch: prod
+        force: true
