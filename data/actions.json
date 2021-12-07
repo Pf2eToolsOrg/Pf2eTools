@@ -843,9 +843,9 @@
 		{
 			"name": "Arcane Cascade",
 			"source": "SoM",
-			"page": 37,
+			"page": 38,
 			"activity": {
-				"number": 2,
+				"number": 1,
 				"unit": "action"
 			},
 			"traits": [
@@ -1816,6 +1816,7 @@
 					"Rogue"
 				]
 			},
+			"trigger": "Your {@action Strike} hits a {@condition flat-footed} creature and deals damage.",
 			"entries": [
 				"You apply one of the following debilitations, which lasts until the end of your next turn. ",
 				{
@@ -3515,7 +3516,7 @@
 				]
 			},
 			"entries": [
-				"As long as your group has successfully Reconnoitered the hex, you can use this activity to create an accurate map of the hex with a successful Survival check (typically at a trained or expert DC). When you have an accurate map of the hex, the DC of any check to navigate that hex is reduced by 2."
+				"As long as your group has successfully {@action Reconnoiter|GMG|Reconnoitered} the hex, you can use this activity to create an accurate map of the hex with a successful {@skill Survival} check (typically at a trained or expert DC). When you have an accurate map of the hex, the DC of any check to navigate that hex is reduced by 2."
 			]
 		},
 		{
@@ -3531,6 +3532,7 @@
 				"Incapacitation",
 				"Rogue"
 			],
+			"trigger": "Your {@action Strike} hits a {@condition flat-footed} creature and deals damage.",
 			"actionType": {
 				"class": [
 					"Rogue"

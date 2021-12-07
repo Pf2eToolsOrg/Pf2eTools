@@ -807,21 +807,10 @@
 			"level": 1,
 			"entries": [
 				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction",
-						"entry": "{@as R}"
-					},
-					"traits": [
-						"Champion"
-					],
-					"entries": [
-						"You protect your ally and strike your foe. The ally gains resistance to all damage against the triggering damage equal to 2 + your level. If the foe is within reach, make a melee Strike against it."
-					],
-					"type": "ability",
-					"style": "full",
+					"type": "statblock",
+					"tag": "action",
 					"name": "Retributive Strike",
-					"trigger": "An enemy damages your ally, and both are within 15 feet of you."
+					"source": "CRB"
 				}
 			]
 		},
@@ -836,30 +825,10 @@
 			"level": 1,
 			"entries": [
 				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction",
-						"entry": "{@as R}"
-					},
-					"source": "CRB",
-					"page": 107,
-					"traits": [
-						"Champion"
-					],
-					"entries": [
-						"Your foe hesitates under the weight of sin as visions of redemption play in their mind's eye. The foe must choose one of the following options",
-						{
-							"type": "list",
-							"items": [
-								"The ally is unharmed by the triggering damage.",
-								"The ally gains resistance to all damage against the triggering damage equal to 2 + your level. After the damaging effect is applied, the enemy becomes enfeebled 2 until the end of its next turn."
-							]
-						}
-					],
-					"type": "ability",
-					"style": "full",
+					"type": "statblock",
+					"tag": "action",
 					"name": "Glimpse of Redemption",
-					"trigger": "An enemy damages your ally, and both are within 15 feet of you."
+					"source": "CRB"
 				}
 			]
 		},
@@ -874,23 +843,10 @@
 			"level": 1,
 			"entries": [
 				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction",
-						"entry": "{@as R}"
-					},
-					"source": "CRB",
-					"page": 107,
-					"traits": [
-						"Champion"
-					],
-					"entries": [
-						"You free an ally from restraint. If the trigger was an ally taking damage, the ally gains resistance to all damage against the triggering damage equal to 2 + your level. The ally can attempt to break free of effects grabbing, restraining, immobilizing, or paralyzing them. They either attempt a new save against one such effect that allows a save, or attempt to {@action Escape} from one effect as a free action. If they can move, the ally can Step as a free action, even if they didn't need to escape."
-					],
-					"type": "ability",
-					"style": "full",
+					"type": "statblock",
+					"tag": "action",
 					"name": "Liberating Step",
-					"trigger": "An enemy damages, Grabs, or {@action Grapple|CRB|Grapples} your ally, and both are within 15 feet of you."
+					"source": "CRB"
 				}
 			]
 		},
@@ -1090,36 +1046,10 @@
 			"level": 1,
 			"entries": [
 				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction",
-						"entry": "{@as R}"
-					},
-					"source": "APG",
-					"page": 116,
-					"traits": [
-						"Uncommon",
-						"Champion",
-						"Divine",
-						"Emotion",
-						"Enchantment",
-						"Mental"
-					],
-					"entries": [
-						"You put an impertinent foe who dared harm you in their proper place. You command your enemy to kneel before you in obedience. If they dare to refuse, they must pay the price in pain and anguish. The foe must choose one of the following options.",
-						{
-							"type": "list",
-							"items": [
-								"The enemy kneels, dropping prone as a free action.",
-								"The enemy refuses, and you deal 1d6 mental damage to it. This damage increases to 2d6 at 5th level, 3d6 at 9th level, 4d6 at 12th level, 5d6 at 16th level, and 6d6 at 19th level."
-							]
-						},
-						"In addition, your Strikes against the triggering creature deal 1 extra damage until the end of your next turn. You choose whether the damage type is evil or negative each time you use this reaction. This extra damage increases to 2 at 9th level and 3 at 16th level."
-					],
-					"type": "ability",
-					"style": "full",
+					"type": "statblock",
+					"tag": "action",
 					"name": "Iron Command",
-					"trigger": "An enemy within 15 feet damages you."
+					"source": "APG"
 				}
 			]
 		},
@@ -1213,25 +1143,10 @@
 			"level": 1,
 			"entries": [
 				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction",
-						"entry": "{@as R}"
-					},
-					"source": "APG",
-					"page": 116,
-					"traits": [
-						"Uncommon",
-						"Champion"
-					],
-					"entries": [
-						"Your self-interest keeps you safe. You gain resistance against the triggering damage equal to 2 + half your level, regardless of damage type.",
-						"In addition, your Strikes against the triggering creature deal 1 extra damage until the end of your next turn. You choose whether this extra damage is evil or negative each time you use this reaction. This extra damage increases to 2 at 9th level and 3 at 16th level."
-					],
-					"type": "ability",
-					"style": "full",
+					"type": "statblock",
+					"tag": "action",
 					"name": "Selfish Shield",
-					"trigger": "An enemy within 15 feet damages you."
+					"source": "APG"
 				}
 			]
 		},
@@ -1326,25 +1241,10 @@
 			"level": 1,
 			"entries": [
 				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction",
-						"entry": "{@as R}"
-					},
-					"source": "APG",
-					"page": 116,
-					"traits": [
-						"Uncommon",
-						"Champion"
-					],
-					"entries": [
-						"Bloodshed begets bloodshed as you drag your enemy toward oblivion. You increase the amount of damage you take by 1d6, and you deal 1d6 damage to the triggering enemy, choosing evil or negative damage to deal to the enemy each time you use this reaction. In addition, until the end of your next turn, your Strikes against the triggering creature deal 2 extra damage of the type you chose.",
-						"The damage you take and deal when you use this reaction increases to 2d6 at 5th level, 3d6 at 9th level, 4d6 at 12th level, 5d6 at 16th level, and 6d6 at 19th level. The extra damage on your Strikes increases to 4 at 9th level and 6 at 16th level."
-					],
-					"type": "ability",
-					"style": "full",
+					"type": "statblock",
+					"tag": "action",
 					"name": "Destructive Vengeance",
-					"trigger": "An enemy within 15 feet damages you."
+					"source": "APG"
 				}
 			]
 		},

@@ -464,29 +464,10 @@
 			"entries": [
 				"When taking advantage of an opening, you both hinder and harm your foe. You gain the {@action Debilitating Strike} free action.",
 				{
-					"activity": {
-						"number": 1,
-						"unit": "free",
-						"entry": "{@as F}"
-					},
-					"traits": [
-						"Rogue"
-					],
-					"source": "CRB",
-					"page": 182,
-					"entries": [
-						"You apply one of the following debilitations, which lasts until the end of your next turn. ",
-						{
-							"type": "list",
-							"items": [
-								"{@b Debilitation} the target takes a \u201310-foot status penalty to its Speeds.",
-								"{@b Debilitation} The target becomes {@condition enfeebled} 1."
-							]
-						}
-					],
-					"type": "ability",
-					"style": "full",
-					"name": "Debilitating Strike"
+					"type": "statblock",
+					"tag": "action",
+					"name": "Debilitating Strike",
+					"source": "CRB"
 				}
 			]
 		},
@@ -610,33 +591,10 @@
 			"entries": [
 				"You can incapacitate an unwary foe with a single strike. Your proficiency rank for your rogue class DC increases to master. You gain the {@action Master Strike} free action.",
 				{
-					"activity": {
-						"number": 1,
-						"unit": "free",
-						"entry": "{@as F}"
-					},
-					"traits": [
-						"Incapacitation",
-						"Rogue"
-					],
-					"page": 182,
-					"source": "CRB",
-					"frequency": "once per round.",
-					"entries": [
-						"The target attempts a Fortitude save at your class DC. It then becomes temporarily immune to your Master Strike for 1 day.",
-						{
-							"type": "successDegree",
-							"entries": {
-								"Critical Success": "The target is unaffected.",
-								"Success": "The target is {@condition enfeebled} 2 until the end of your next turn.",
-								"Failure": "The target is {@condition paralyzed} for 4 rounds.",
-								"Critical Failure": "The target is {@condition paralyzed} for 4 rounds, knocked {@condition unconscious} for 2 hours, or killed (your choice)."
-							}
-						}
-					],
-					"type": "ability",
-					"style": "full",
-					"name": "Master Strike"
+					"type": "statblock",
+					"tag": "action",
+					"name": "Master Strike",
+					"source": "CRB"
 				}
 			]
 		}
