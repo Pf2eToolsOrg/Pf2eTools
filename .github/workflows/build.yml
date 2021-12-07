@@ -25,28 +25,8 @@ jobs:
     - run: npm run build:seo
     - run: npm run build:deploy:prod
 
-    - name: Optimize JS/Header
-      run: |
-        cat js/styleswitch.js <(echo ";") js/navigation.js <(echo ";") js/browsercheck.js > js/header.js
-        rm js/styleswitch.js js/navigation.js
-        cat js/parser.js <(echo ";") js/utils.js <(echo ";") js/utils-ui.js <(echo ";") js/omnidexer.js <(echo ";") js/omnisearch.js <(echo ";") js/render.js <(echo ";") js/render-dice.js <(echo ";") js/scalecreature.js <(echo ";") js/hist.js > js/shared.js
-        rm js/utils.js js/utils-ui.js js/omnidexer.js js/omnisearch.js js/render.js js/render-dice.js js/scalecreature.js js/hist.js
-
-    - uses: pCYSl5EDgo/cat@master
-      id: header
-      with:
-        path: js/header.js
-
-    - uses: pCYSl5EDgo/cat@master
-      id: shared
-      with:
-        path: js/shared.js
-
     - name: Diff files
       run: git diff --name-status
-      env:
-        SHARED: ${{ steps.hello.outputs.shared }}
-        HEADER: ${{ steps.hello.outputs.header }}
 
     - name: Commit files
       continue-on-error: true
