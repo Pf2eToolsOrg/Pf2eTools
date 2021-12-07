@@ -33,20 +33,20 @@ jobs:
         rm js/utils.js js/utils-ui.js js/omnidexer.js js/omnisearch.js js/render.js js/render-dice.js js/scalecreature.js js/hist.js
 
     - uses: pCYSl5EDgo/cat@master
-      id: Header
+      id: header
       with:
         path: js/header.js
 
     - uses: pCYSl5EDgo/cat@master
-      id: Shared
+      id: shared
       with:
         path: js/shared.js
 
     - name: Diff files
       run: git diff --name-status
       env:
-        TEXT: ${{steps.hello.outputs.Shared}}
-        TEXT: ${{steps.hello.outputs.Header}}
+        SHARED: ${{ steps.hello.outputs.shared }}
+        HEADER: ${{ steps.hello.outputs.header }}
 
     - name: Commit files
       continue-on-error: true
@@ -54,15 +54,9 @@ jobs:
         git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
         git config --local user.name "github-actions[bot]"
         git commit -m "Automated Build" -a
-      env:
-        TEXT: ${{steps.hello.outputs.Shared}}
-        TEXT: ${{steps.hello.outputs.Header}}
 
     - name: Push files
       uses: ad-m/github-push-action@master
-      env:
-        TEXT: ${{steps.hello.outputs.Shared}}
-        TEXT: ${{steps.hello.outputs.Header}}
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         branch: prod
