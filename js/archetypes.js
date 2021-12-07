@@ -77,7 +77,7 @@ class ArchetypesPage extends BaseComponent {
 			$iptSearch: $(`#lst__search`),
 			$wrpFormTop: $filterSearch,
 			$btnReset: $(`#reset`),
-			namespace: ".archetypes.archetypes",
+			namespace: "archetypes.archetypes",
 		});
 		await this._featFilter.pInitFilterBox({
 			$iptSearch: $(`#feat-lst__search`),
