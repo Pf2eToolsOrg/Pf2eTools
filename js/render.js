@@ -4265,6 +4265,60 @@ Renderer.feat = {
 			${Renderer.generic.getRenderedEntries(feat)}
 			${opts.noPage ? "" : Renderer.utils.getPageP(feat)}`;
 	},
+
+	_builtLists: {},
+
+	_lockBuildList: null,
+	async _pLockBuildList () {
+		while (Renderer.feat._lockBuildList) await Renderer.feat._lockBuildList.lock;
+		let unlock = null;
+		const lock = new Promise(resolve => unlock = resolve);
+		Renderer.feat._lockBuildList = {
+			lock,
+			unlock,
+		}
+	},
+
+	_unlockBuildList () {
+		const lockMeta = Renderer.feat._lockBuildList;
+		if (Renderer.feat._lockBuildList) {
+			delete Renderer.feat._lockBuildList;
+			lockMeta.unlock();
+		}
+	},
+
+	/**
+	 * Runs callback with itemList as argument
+	 * @param [opts] Options object.
+	 * @param [opts.fnCallback] Run with args: allItems.
+	 * @param [opts.urls] Overrides for default URLs.
+	 * @param [opts.isAddGroups] Whether item groups should be included.
+	 * @param [opts.isBlacklistVariants] Whether the blacklist should be respected when applying magic variants.
+	 */
+	async pBuildList (opts) {
+		await Renderer.feat._pLockBuildList();
+
+		opts = opts || {};
+		opts.urls = opts.urls || {};
+
+		const kBlacklist = opts.isBlacklistVariants ? "withBlacklist" : "withoutBlacklist";
+		if (Renderer.feat._builtLists[kBlacklist]) {
+			const cached = Renderer.feat._builtLists[kBlacklist];
+
+			Renderer.feat._unlockBuildList();
+			if (opts.fnCallback) return opts.fnCallback(cached);
+			return cached;
+		}
+
+		const featData = await DataUtil.feat.loadJSON();
+		const allItems = [...featData.feat];
+
+		Renderer.feat._builtLists[kBlacklist] = allItems;
+
+		Renderer.feat._unlockBuildList();
+		if (opts.fnCallback) return opts.fnCallback(allItems);
+		return allItems;
+	},
 };
 
 Renderer.group = {

@@ -71,6 +71,13 @@ const toGenerate = [
 		},
 		style: 1,
 	},
+	{
+		page: "feats",
+		pGetEntries: async () => {
+			return Renderer.feat.pBuildList();
+		},
+		style: 1,
+	},
 
 	// TODO expand this as required
 ];
