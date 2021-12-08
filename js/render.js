@@ -4311,13 +4311,12 @@ Renderer.feat = {
 		}
 
 		const featData = await DataUtil.feat.loadJSON();
-		const allItems = [...featData.feat];
 
-		Renderer.feat._builtLists[kBlacklist] = allItems;
+		Renderer.feat._builtLists[kBlacklist] = featData;
 
 		Renderer.feat._unlockBuildList();
-		if (opts.fnCallback) return opts.fnCallback(allItems);
-		return allItems;
+		if (opts.fnCallback) return opts.fnCallback(featData);
+		return featData;
 	},
 };
 
