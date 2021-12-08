@@ -73,8 +73,11 @@ const toGenerate = [
 	},
 	{
 		page: "feats",
-		pGetEntries: async () => {
-			return Renderer.feat.pBuildList();
+		pGetEntries: () => {
+			const index = rd(`data/feats/index.json`);
+			const fileData = Object.entries(index)
+				.map(([_, filename]) => rd(`data/feats/${filename}`));
+			return fileData.map(it => MiscUtil.copy(it.feat)).reduce((a, b) => a.concat(b))
 		},
 		style: 1,
 	},
