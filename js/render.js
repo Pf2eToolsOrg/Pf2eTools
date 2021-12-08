@@ -3705,6 +3705,7 @@ Renderer.creature = {
 	},
 
 	getLanguages (cr) {
+		renderer = Renderer.get()
 		if (cr.languages != null && (cr.languages.languages.length !== 0 || cr.languages.languageAbilities.length !== 0)) {
 			let renderStack = [];
 
@@ -3714,7 +3715,7 @@ Renderer.creature = {
 			renderStack.push(cr.languages.languages.length !== 0 ? cr.languages.languages.join(", ") : "— ")
 			if (cr.languages.languageAbilities.length !== 0) {
 				if (cr.languages.languages.length !== 0) renderStack.push("; ")
-				renderStack.push(cr.languages.languageAbilities.join(", "))
+				renderStack.push(renderer.render(cr.languages.languageAbilities.join(", ")))
 			}
 			renderStack.push(`</span>`)
 			renderStack.push(`</p>`)
@@ -3779,7 +3780,7 @@ Renderer.creature = {
 		renderStack.push(`<p class="pf2-stat pf2-stat__section">`)
 		const ac = cr.ac
 		renderStack.push(`<span><strong>AC&nbsp;</strong>${ac.default}${Renderer.utils.getNotes(ac, {exclude: ["default", "abilities"]})}`)
-		if (ac.abilities != null) renderStack.push(`; ${ac.abilities}`);
+		if (ac.abilities != null) renderStack.push(`; ${renderer.render(ac.abilities)}`);
 		const st = cr.savingThrows
 		renderStack.push(`; <strong>Fort&nbsp;</strong>`)
 		renderStack.push(Renderer.get().render(`{@d20 ${st.Fort.default}||Fortitude Save}`))
