@@ -4,6 +4,7 @@
  *   - spam "Clear Site Data" in DevTools
  *   - use "update on reload" in Service Workers DevTools section
  *   - sanity-check code to ensure it has updated
+ * 	 - https://developers.google.com/web/ilt/pwa/caching-files-with-service-worker
  */
 
 // importScripts("./js/sw-files.js");
