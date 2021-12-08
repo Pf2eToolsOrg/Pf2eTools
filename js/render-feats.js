@@ -1,6 +1,6 @@
 class RenderFeats {
 	static $getRenderedFeat (feat) {
-		const renderStack = [];
+		const renderStack = [""];
 		Renderer.get().setFirstSection(true).recursiveRender(feat.entries, renderStack, {pf2StatFix: true});
 		return $$`
 			${Renderer.utils.getExcludedDiv(feat, "feat", UrlUtil.PG_FEATS)}
