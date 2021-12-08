@@ -7031,6 +7031,7 @@ Renderer._stripTagLayer = function (str) {
 					case "@language":
 					case "@object":
 					case "@ancestry":
+					case "@archetype":
 					case "@versatileHeritage":
 					case "@reward":
 					case "@spell":
