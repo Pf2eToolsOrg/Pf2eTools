@@ -8,7 +8,7 @@ function rd (path) {
 	return JSON.parse(fs.readFileSync(path, "utf-8"));
 }
 
-const BASE_SITE_URL = "";
+const BASE_SITE_URL = "https://pf2etools.com/";
 const version = rd("package.json").version;
 
 const lastMod = (() => {
@@ -126,14 +126,14 @@ async function main () {
 	const $urlRoot = $urlSet.ele("url");
 	$urlRoot.ele("loc", BASE_SITE_URL);
 	$urlRoot.ele("lastmod", lastMod);
-	$urlRoot.ele("changefreq", "monthly");
+	$urlRoot.ele("changefreq", "weekly");
 	sitemapLinkCount++;
 
 	Object.keys(baseSitemapData).forEach(url => {
 		const $url = $urlSet.ele("url");
 		$url.ele("loc", `${BASE_SITE_URL}${url}`);
 		$url.ele("lastmod", lastMod);
-		$url.ele("changefreq", "monthly");
+		$url.ele("changefreq", "weekly");
 		sitemapLinkCount++;
 	});
 
@@ -141,7 +141,7 @@ async function main () {
 		const $url = $urlSet.ele("url");
 		$url.ele("loc", `${BASE_SITE_URL}${url}`);
 		$url.ele("lastmod", lastMod);
-		$url.ele("changefreq", "weekly");
+		$url.ele("changefreq", "monthly");
 		sitemapLinkCount++;
 	});
 
