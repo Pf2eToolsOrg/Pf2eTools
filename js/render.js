@@ -5190,7 +5190,7 @@ Renderer.hover = {
 				case VeCt.HASH_ITEM_RUNES: {
 					toRender = Renderer.hover._getFromCache(page, source, hash);
 					if (toRender) break;
-					const [baseItem, ...runes] = await Promise.all(data.split(HASH_SUB_LIST_SEP).map(h => Renderer.hover.pCacheAndGet(page, h.split(HASH_LIST_SEP)[1], h)));
+					const [baseItem, ...runes] = await Promise.all(data.split(HASH_SUB_LIST_SEP).map(h => Renderer.hover.pCacheAndGet(page, decodeURIComponent(h.split(HASH_LIST_SEP)[1]), h)));
 					toRender = Renderer.runeItem.getRuneItem(baseItem, runes);
 					Renderer.hover._addToCache(page, source, hash, toRender);
 					break;
