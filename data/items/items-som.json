@@ -1534,7 +1534,7 @@
 				{
 					"type": "ability",
 					"components": [
-						"Cast a Spell"
+						"{@action Cast a Spell}"
 					],
 					"frequency": null,
 					"trigger": null,
@@ -1569,7 +1569,7 @@
 						{
 							"type": "ability",
 							"components": [
-								"Cast a Spell"
+								"{@action Cast a Spell}"
 							],
 							"frequency": "once per day",
 							"entries": [
@@ -1591,7 +1591,7 @@
 						{
 							"type": "ability",
 							"components": [
-								"Cast a Spell"
+								"{@action Cast a Spell}"
 							],
 							"frequency": "once per day",
 							"entries": [
@@ -1601,7 +1601,7 @@
 						{
 							"type": "ability",
 							"components": [
-								"Cast a Spell"
+								"{@action Cast a Spell}"
 							],
 							"frequency": "once per day",
 							"entries": [
@@ -1640,7 +1640,7 @@
 				{
 					"type": "ability",
 					"components": [
-						"Cast a Spell"
+						"{@action Cast a Spell}"
 					],
 					"frequency": null,
 					"trigger": null,
@@ -1675,7 +1675,7 @@
 						{
 							"type": "ability",
 							"components": [
-								"Cast a Spell"
+								"{@action Cast a Spell}"
 							],
 							"frequency": "once per day",
 							"entries": [
@@ -1697,7 +1697,7 @@
 						{
 							"type": "ability",
 							"components": [
-								"Cast a Spell"
+								"{@action Cast a Spell}"
 							],
 							"frequency": "once per day",
 							"entries": [
@@ -1707,7 +1707,7 @@
 						{
 							"type": "ability",
 							"components": [
-								"Cast a Spell"
+								"{@action Cast a Spell}"
 							],
 							"frequency": "once per day",
 							"entries": [
@@ -2271,7 +2271,7 @@
 				{
 					"type": "ability",
 					"components": [
-						"Cast a Spell"
+						"{@action Cast a Spell}"
 					],
 					"frequency": null,
 					"trigger": null,
@@ -2306,7 +2306,7 @@
 						{
 							"type": "ability",
 							"components": [
-								"Cast a Spell"
+								"{@action Cast a Spell}"
 							],
 							"frequency": "once per day",
 							"entries": [
@@ -2328,7 +2328,7 @@
 						{
 							"type": "ability",
 							"components": [
-								"Cast a Spell"
+								"{@action Cast a Spell}"
 							],
 							"frequency": "once per day",
 							"entries": [
@@ -2338,7 +2338,7 @@
 						{
 							"type": "ability",
 							"components": [
-								"Cast a Spell"
+								"{@action Cast a Spell}"
 							],
 							"frequency": "once per day",
 							"entries": [
@@ -2792,7 +2792,7 @@
 				{
 					"type": "ability",
 					"components": [
-						"Cast a Spell"
+						"{@action Cast a Spell}"
 					],
 					"frequency": null,
 					"trigger": null,
@@ -3290,7 +3290,7 @@
 				{
 					"type": "ability",
 					"components": [
-						"Cast a Spell"
+						"{@action Cast a Spell}"
 					],
 					"frequency": null,
 					"trigger": null,
@@ -3325,7 +3325,7 @@
 						{
 							"type": "ability",
 							"components": [
-								"Cast a Spell"
+								"{@action Cast a Spell}"
 							],
 							"frequency": "once per day",
 							"entries": [
@@ -3347,7 +3347,7 @@
 						{
 							"type": "ability",
 							"components": [
-								"Cast a Spell"
+								"{@action Cast a Spell}"
 							],
 							"frequency": "once per day",
 							"entries": [
@@ -3357,7 +3357,7 @@
 						{
 							"type": "ability",
 							"components": [
-								"Cast a Spell"
+								"{@action Cast a Spell}"
 							],
 							"frequency": "once per day",
 							"entries": [
@@ -4405,7 +4405,7 @@
 				{
 					"type": "ability",
 					"components": [
-						"Cast a Spell"
+						"{@action Cast a Spell}"
 					],
 					"frequency": null,
 					"trigger": null,
@@ -4495,7 +4495,7 @@
 				{
 					"type": "ability",
 					"components": [
-						"Cast a Spell"
+						"{@action Cast a Spell}"
 					],
 					"frequency": null,
 					"trigger": null,
@@ -5212,7 +5212,7 @@
 				{
 					"type": "ability",
 					"components": [
-						"Cast a Spell"
+						"{@action Cast a Spell}"
 					],
 					"frequency": null,
 					"trigger": null,
@@ -5222,7 +5222,153 @@
 					]
 				}
 			],
-			"generic": false,
+			"generic": "G",
+			"variants": [
+				{
+					"type": "trinity geode",
+					"level": 3,
+					"price": {
+						"coin": "gp",
+						"amount": 60,
+						"note": null
+					},
+					"entries": []
+				},
+				{
+					"type": "greater trinity geode",
+					"level": 8,
+					"price": {
+						"coin": "gp",
+						"amount": 460,
+						"note": null
+					},
+					"entries": [
+						"Resistance when affixed to armor is 3, extra damage affixed to a weapon is {@damage 1d6}, and spell DC is 24.",
+						{
+							"type": "ability",
+							"components": [
+								"{@action Cast a Spell}"
+							],
+							"frequency": "once per day",
+							"entries": [
+								"You cast {@spell meld into stone}."
+							]
+						}
+					],
+					"_mod": {
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replace": "resistance 1",
+								"with": "resistance 3"
+							},
+							{
+								"mode": "replaceTxt",
+								"replace": "{@damage 1d4}",
+								"with": "{@damage 1d6}"
+							},
+							{
+								"mode": "replaceTxt",
+								"replace": "17",
+								"with": "24"
+							},
+							{
+								"mode": "appendArr",
+								"items": [
+									{
+										"type": "ability",
+										"components": [
+											"{@action Cast a Spell}"
+										],
+										"frequency": "once per day",
+										"entries": [
+											"You cast {@spell meld into stone}."
+										]
+									}
+								]
+							}
+						],
+						"entriesMode": "generic"
+					}
+				},
+				{
+					"type": "major trinity geode",
+					"level": 12,
+					"price": {
+						"coin": "gp",
+						"amount": 1900,
+						"note": null
+					},
+					"entries": [
+						"Resistance when affixed to armor is 5, extra damage when affixed to a weapon is {@damage 1d8}, and spell DC is 29.",
+						{
+							"type": "ability",
+							"components": [
+								"{@action Cast a Spell}"
+							],
+							"frequency": "once per day",
+							"entries": [
+								"You cast 4th-level {@spell meld into stone}."
+							]
+						},
+						{
+							"type": "ability",
+							"components": [
+								"{@action Cast a Spell}"
+							],
+							"frequency": "once per day",
+							"entries": [
+								"You cast {@spell spike stones|apg}."
+							]
+						}
+					],
+					"_mod": {
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replace": "resistance 1",
+								"with": "resistance 5"
+							},
+							{
+								"mode": "replaceTxt",
+								"replace": "{@damage 1d4}",
+								"with": "{@damage 1d8}"
+							},
+							{
+								"mode": "replaceTxt",
+								"replace": "17",
+								"with": "29"
+							},
+							{
+								"mode": "appendArr",
+								"items": [
+									{
+										"type": "ability",
+										"components": [
+											"{@action Cast a Spell}"
+										],
+										"frequency": "once per day",
+										"entries": [
+											"You cast 4th-level {@spell meld into stone}."
+										]
+									},
+									{
+										"type": "ability",
+										"components": [
+											"{@action Cast a Spell}"
+										],
+										"frequency": "once per day",
+										"entries": [
+											"You cast {@spell spike stones|apg}."
+										]
+									}
+								]
+							}
+						],
+						"entriesMode": "generic"
+					}
+				}
+			],
 			"consumable": false
 		},
 		{
