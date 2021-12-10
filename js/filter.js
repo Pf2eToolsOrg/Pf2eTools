@@ -8,8 +8,9 @@ class PageFilter {
 		return !SourceUtil.isNonstandardSource(val) && !SourceUtil.isAdventure(val);
 	}
 
-	constructor () {
-		this._sourceFilter = new SourceFilter();
+	constructor (opts) {
+		opts = opts || {};
+		this._sourceFilter = new SourceFilter(opts.sourceFilterOpts);
 		this._filterBox = null;
 	}
 

@@ -42,6 +42,9 @@ class ClassesPage extends BaseComponent {
 		this._featDataList = [];
 		this._featFilter = new PageFilterFeats({
 			typeDeselFn: it => it === "Class",
+			sourceFilterOpts: {
+				selFn: it => !SourceUtil.isNonstandardSource(it),
+			},
 		});
 		this.__featId = {_: 0};
 		this._featId = this._getProxy("featId", this.__featId);
