@@ -54,6 +54,7 @@ class NavBar {
 		addDivider(ulPlayers);
 		addLi(ulPlayers, "feats.html", "Feats");
 		addLi(ulPlayers, "companionsfamiliars.html", "Companions & Familiars");
+		addLi(ulPlayers, "optionalfeatures.html", "Optional Features");
 
 		const ulDms = addDropdown(navBar, "Game Master");
 		addLi(ulDms, "gmscreen.html", "GM Screen");

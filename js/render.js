@@ -4671,6 +4671,17 @@ Renderer.language = {
 	},
 };
 
+Renderer.optionalFeature = {
+	getRenderedString (it, opts) {
+		opts = opts || {};
+		return `
+		${Renderer.utils.getNameDiv(it)}
+		${Renderer.utils.getDividerDiv()}
+		${Renderer.generic.getRenderedEntries(it)}
+		${opts.noPage ? "" : Renderer.utils.getPageP(it)}`;
+	},
+};
+
 Renderer.ritual = {
 	getCompactRenderedString (ritual, opts) {
 		opts = opts || {};

@@ -701,7 +701,9 @@ Parser.CAT_ID_PAGE = 45;
 Parser.CAT_ID_ARCHETYPE = 47;
 Parser.CAT_ID_VEHICLE = 49;
 Parser.CAT_ID_PLACE = 50;
+Parser.CAT_ID_OPTIONAL_FEATURE = 51;
 
+// FIXME:
 Parser.CAT_ID_TO_FULL = {};
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_CREATURE] = "Bestiary";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_SPELL] = "Spell";
