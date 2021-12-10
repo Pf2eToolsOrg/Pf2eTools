@@ -4495,7 +4495,7 @@ Renderer.item = {
 			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Skills&nbsp;</strong>`);
 			const skills = [];
 			Object.keys(item.skills).forEach(skill => {
-				skills.push(`${skill}&nbsp;${renderer.render(`{@d20 ${item.skills[skill]["default"]}||${skill}}`)}${Renderer.utils.getNotes(item.skills[skill], {exclude: ["default"], dice: {name: skill}})}`);
+				skills.push(`${skill.includes("Lore") ? `${renderer.render(`{@skill Lore||${skill}}`)}` : `${renderer.render(`{@skill ${skill}}`)}`}&nbsp;${renderer.render(`{@d20 ${item.skills[skill]["default"]}||${skill}}`)}${Renderer.utils.getNotes(item.skills[skill], {exclude: ["default"], dice: {name: skill}})}`);
 			});
 			renderStack.push(skills.join(", "))
 			renderStack.push(`</p>`);
