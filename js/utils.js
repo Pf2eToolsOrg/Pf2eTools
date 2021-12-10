@@ -2533,9 +2533,11 @@ DataUtil = {
 					return DataUtil.generic._walker_replaceTxt.walk(it, handlers);
 				});
 
+				// TODO: This is getting out of hand
 				const typesToReplaceIn = ["successDegree", "ability", "affliction", "lvlEffect"];
 				copyTo[prop].forEach(it => {
 					if (it.entries) it.entries = DataUtil.generic._walker_replaceTxt.walk(it.entries, handlers);
+					if (it.items) it.items = DataUtil.generic._walker_replaceTxt.walk(it.items, handlers);
 					if (typesToReplaceIn.includes(it.type)) {
 						Object.keys(it).forEach(key => {
 							it[key] = DataUtil.generic._walker_replaceTxt.walk(it[key], handlers)
