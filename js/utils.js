@@ -2727,6 +2727,12 @@ DataUtil = {
 		},
 	},
 
+	trait: {
+		loadJSON: async function () {
+			return DataUtil.loadJSON(`${Renderer.get().baseUrl}data/traits.json`);
+		},
+	},
+
 	feat: {
 		_loadedJson: null,
 		_pLoadingJson: null,

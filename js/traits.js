@@ -4,7 +4,7 @@ class TraitsPage extends ListPage {
 	constructor () {
 		const pageFilter = new PageFilterTraits();
 		super({
-			dataSource: "data/traits.json",
+			dataSource: DataUtil.trait.loadJSON,
 
 			pageFilter,
 
