@@ -4411,7 +4411,7 @@ Renderer.item = {
 		if (item.str != null || item.checkPen != null || item.speedPen != null) {
 			let tempStack = []
 			if (item.str != null) tempStack.push(`<strong>Strength&nbsp;</strong>${item.str}`)
-			if (item.checkPen != null) tempStack.push(`<strong>Check Penalty&nbsp;</strong>${item.speedPen ? `–${item.checkPen}` : "\u2014"}`)
+			if (item.checkPen != null) tempStack.push(`<strong>Check Penalty&nbsp;</strong>${item.checkPen ? `–${item.checkPen}` : "\u2014"}`)
 			if (item.speedPen != null) tempStack.push(`<strong>Speed Penalty&nbsp;</strong>${item.speedPen ? `–${item.speedPen} ft.` : "\u2014"}`)
 			renderStack.push(`<p class="pf2-stat pf2-stat__section">${tempStack.join("; ")}</p>`)
 		}
