@@ -422,11 +422,52 @@
 				"Intelligent",
 				"Occult"
 			],
+			"perception": {
+				"default": 26,
+				"senses": {
+					"precise": [
+						"vision 60 feet"
+					],
+					"imprecise": [
+						"hearing 30 feet"
+					]
+				}
+			},
+			"communication": [
+				{
+					"name": "telepathy",
+					"notes": "{@language Common}, and six other common languages"
+				}
+			],
+			"skills": {
+				"Arcana": {
+					"default": 30
+				},
+				"Deception": {
+					"default": 27
+				},
+				"Diplomacy": {
+					"default": 27
+				},
+				"Occultism": {
+					"default": 30
+				}
+			},
+			"abilityMods": {
+				"Int": 6,
+				"Wis": 4,
+				"Cha": 4
+			},
+			"savingThrows": {
+				"Will": {
+					"default": 26
+				}
+			},
 			"usage": "held in 2 hands",
 			"bulk": "2",
 			"category": "Held",
 			"entries": [
-				"30 feet Communication telepathy (Common, and six other common languages) Skills {@skill Arcana} +30, {@skill Deception} +27, {@skill Diplomacy} +27, {@skill Occultism} +30 Int +6, Wis +4, Cha +4 Will +26 The gunsmith that created this marvelous +2 greater striking spell-storing scattergun poured so much love and care into its creation that the weapon gained a spark of sentience. However, at first it was completely incapable of expressing itself. This led a seething frustration to grow within the weapon, as it yearned desperately to respond to Animate Dreamer the same love and affection that created it. Through decades of effort, it gained the ability to communicate empathically, then telepathically. Now, the weapon is capable of exerting its influence over other inanimate objects. Despite the weapon's progress, years of feeling helpless have given the animate dreamer a singular goal: to obtain and occupy a body of its own.",
+				"The gunsmith that created this marvelous {@runeItem scattergun|G&G|+2 weapon potency||greater striking||spell-storing|} poured so much love and care into its creation that the weapon gained a spark of sentience. However, at first it was completely incapable of expressing itself. This led a seething frustration to grow within the weapon, as it yearned desperately to respond to Animate Dreamer the same love and affection that created it. Through decades of effort, it gained the ability to communicate empathically, then telepathically. Now, the weapon is capable of exerting its influence over other inanimate objects. Despite the weapon's progress, years of feeling helpless have given the animate dreamer a singular goal: to obtain and occupy a body of its own.",
 				"An animate dreamer is cunning, intelligent, and patient. It urges you to create a body for it and is willing to go to any lengths to see its goals come to fruition, including coercion, deception, and violence. An animate dreamer desires a permanent body but isn't picky about the body's form or the methods it has to use in order to gain it. Therefore, an animate dreamer is just as happy in a living body stolen from an innocent as it would be in an artificially constructed body, or even an undead corpse. If you refuse to work towards creating or obtaining a body for the animate dreamer, it will likely use its possession ability to try and take control of you and use your body to find a permanent replacement for itself.",
 				{
 					"type": "ability",
@@ -502,7 +543,7 @@
 				"The aquarium lamp is a combination light source and exotic animal aquarium, intended to provide rich nobles amusement and illumination. It takes the shape of a glass cube 50 feet wide and seven feet high filled with sea water, flanked by two much smaller water tanks. A sparse brass frame around the device keeps the tanks themselves from touching the ground and serves as a mounting point for a pair of electrical coils on the top, which are enclosed within separate glass tubes. Six electric eels swim within the central tank, while a number of animals belonging to species considered to be the eels' natural prey swim in the smaller feeding tanks.",
 				"With the simple pull of a lever attached to either smaller tank, one of the prey animals is released into the eel tank.",
 				"Within seconds, the eels converge on the hapless animal, using their electrical charges to stun their victims. When this happens, the salty seawater conducts the electrical energy into transfer coils {@condition hidden} within the brass frame, which send the energy to the top-mounted electrical coils. The end result produces enough light to fully illuminate a room as though it were midday.",
-				"This device is an expression of a recent trend among certain Avistani nobles to blend form and function in their Introduction Gears Gears Equipment Gunslingers and Shootists Guns and Black Powder Equipment Guns and Gears on Golarion Glossary and Index Guns &"
+				"This device is an expression of a recent trend among certain Avistani nobles to blend form and function in their "
 			],
 			"generic": false,
 			"consumable": false
@@ -752,7 +793,8 @@
 				"note": null
 			},
 			"bulk": "2",
-			"category": "Wheelchair",
+			"category": "Assistive Item",
+			"subCategory": "Wheelchair",
 			"entries": [
 				"This common wheelchair is ideal for everyday use, but isn't designed for adventuring. Basic chairs are most common among non-adventurers."
 			],
@@ -839,7 +881,7 @@
 						"Critical Success": "The creature is unaffected.",
 						"Success": "The creature takes half damage.",
 						"Failure": "The creature takes full damage and is knocked {@condition prone} and {@condition immobilized} for 1 round ({@action Escape} DC 28).",
-						"Critical Failure": "The creature takes double damage, is knocked {@condition prone}, and is {@condition restrained} for 1 round ({@action Escape} DC 28). Introduction Gears Gears Equipment Gunslingers and Shootists Guns and Black Powder Equipment Guns and Gears on Golarion Glossary and Index Guns &"
+						"Critical Failure": "The creature takes double damage, is knocked {@condition prone}, and is {@condition restrained} for 1 round ({@action Escape} DC 28). "
 					}
 				}
 			],
@@ -1131,11 +1173,49 @@
 				"Intelligent",
 				"Primal"
 			],
+			"perception": {
+				"default": 11,
+				"senses": {
+					"precise": [
+						"vision 30 feet"
+					],
+					"imprecise": [
+						"hearing 30 feet"
+					]
+				}
+			},
+			"communication": [
+				{
+					"name": "speech",
+					"notes": "{@language Common}"
+				}
+			],
+			"skills": {
+				"Nature": {
+					"default": 9
+				},
+				"Performance": {
+					"default": 10
+				},
+				"Survival": {
+					"default": 11
+				}
+			},
+			"abilityMods": {
+				"Int": 0,
+				"Wis": 2,
+				"Cha": 3
+			},
+			"savingThrows": {
+				"Will": {
+					"default": 11
+				}
+			},
 			"usage": "Held in 1 or 2 hands",
 			"bulk": "1",
-			"category": "no category found",
+			"category": "Held",
 			"entries": [
-				"30 feet Communication speech (Common) Skills {@skill Nature} +9, {@skill Performance} +10, {@skill Survival} +11 Int +0, Wis +2, Cha +3 Will +11 Possessing a boisterous, proud demeanor, this +1 jezail is an aspiring big game hunter, always quick to share a tale of its bold adventures and predatory conquests\u2014although the veracity of such tales is often questionable. A boastful hunter enjoys tracking and hunting animals of all kinds but takes particular pleasure in taking down large, dangerous, or rare animals. Against an animal, the boastful hunter deals {@damage 1d6} additional damage. On a critical hit against an animal, the boastful hunter also deals {@damage 1d6} {@condition persistent damage ||persistent bleed damage}.",
+				"Possessing a boisterous, proud demeanor, this {@runeItem jezail|g&g|+1 weapon potency|} is an aspiring big game hunter, always quick to share a tale of its bold adventures and predatory conquests\u2014although the veracity of such tales is often questionable. A boastful hunter enjoys tracking and hunting animals of all kinds but takes particular pleasure in taking down large, dangerous, or rare animals. Against an animal, the boastful hunter deals {@damage 1d6} additional damage. On a critical hit against an animal, the boastful hunter also deals {@damage 1d6} {@condition persistent damage ||persistent bleed damage}.",
 				"A boastful hunter urges you to face off against tougher and tougher creatures\u2014a challenge the ambitious rifle may not be adequate to deal with. If the boastful hunter goes one week without participating in a hunt against an animal of at least your level, it becomes bored. A bored boastful hunter complains incessantly and imposes a \u20131 item penalty to attack rolls against non-animal targets. A bored boastful hunter can be appeased by using it in combat against an animal of at least your level.",
 				"Unable to accept its own weaknesses, a boastful hunter blames any failed hunts on you, and considers remarks about its strength or quality a terrible insult. An insulted boastful hunter badmouths you to sentient creatures you interact with, imposing a \u20131 item penalty to {@skill Deception}, {@skill Diplomacy}, and {@skill Intimidation} skill checks, and all attacks with it incur a misfire chance until the weapon is appeased. An insulted boastful hunter can be appeased by complimenting it and succeeding at a {@skill Diplomacy} check against its Will DC two days in a row. You can only attempt a {@skill Diplomacy} check to appease the boastful hunter once each day."
 			],
@@ -1430,7 +1510,7 @@
 			},
 			"category": "Consumable",
 			"entries": [
-				"This small, clockwork torch device uses a trigger-operated sparker to ignite a flow of flammable gas, creating a short, hot flame capable of rapidly cauterizing wounds and helping to stop bleeding. The cauterizing torch is applied to yourself or an adjacent target. The target attempts an immediate flat check to end any {@condition persistent damage ||persistent bleed} effect with the lower DC for particularly effective assistance (Core Rulebook 62)."
+				"This small, clockwork torch device uses a trigger-operated sparker to ignite a flow of flammable gas, creating a short, hot flame capable of rapidly cauterizing wounds and helping to stop bleeding. The cauterizing torch is applied to yourself or an adjacent target. The target attempts an immediate flat check to end any {@condition persistent damage ||persistent bleed} effect with the lower DC for particularly effective assistance."
 			],
 			"generic": false,
 			"consumable": true
@@ -1665,8 +1745,7 @@
 					"requirements": null,
 					"entries": [
 						"The diving suit shoots out a water jet that causes you to {@action Swim} 25 feet in a straight line. The distance of this movement is unaffected by your swim Speed, if you have one, or the armor's Speed penalty.",
-						"However, {@quickref difficult terrain||3|terrain}, such as the {@quickref difficult terrain||3|terrain} for moving up or down or moving against a current, still slows this movement.",
-						"Introduction Gears Gears Equipment Gunslingers and Shootists Guns and Black Powder Equipment Guns and Gears on Golarion Glossary and Index Guns &"
+						"However, {@quickref difficult terrain||3|terrain}, such as the {@quickref difficult terrain||3|terrain} for moving up or down or moving against a current, still slows this movement."
 					]
 				}
 			],
@@ -2215,7 +2294,7 @@
 			"bulk": "2",
 			"category": "Held",
 			"entries": [
-				"A drake rifle is a firearm made from the saliva glands of a drake. The firearm launches small bursts of empowered spittle instead of typical rounds of ammunition. A drake rifle Rare Breath Blaster Introduction Gears Characters Gears Equipment Guns Characters Guns Equipment The Rotating Gear Glossary And Index Guns &"
+				"A drake rifle is a firearm made from the saliva glands of a drake. The firearm launches small bursts of empowered spittle instead of typical rounds of ammunition. A drake rifle "
 			],
 			"generic": false,
 			"consumable": false
@@ -2281,11 +2360,90 @@
 				"Intelligent",
 				"Occult"
 			],
+			"perception": {
+				"default": 26,
+				"senses": {
+					"precise": [
+						"vision 60 feet"
+					],
+					"imprecise": [
+						"hearing 30 feet"
+					]
+				}
+			},
+			"communication": [
+				{
+					"name": "speech",
+					"notes": "{@language Common}, {@language Dwarven}, {@language Kelish}, {@language Osiriani}"
+				}
+			],
+			"skills": {
+				"Diplomacy": {
+					"default": 23
+				},
+				"Intimidation": {
+					"default": 23
+				},
+				"Alkenstar Lore": {
+					"default": 25
+				},
+				"Firearm Lore": {
+					"default": 25
+				},
+				"Society": {
+					"default": 21
+				}
+			},
+			"abilityMods": {
+				"Int": 2,
+				"Wis": 5,
+				"Cha": 4
+			},
+			"savingThrows": {
+				"Will": {
+					"default": 26
+				}
+			},
 			"usage": "held in 2 hands",
 			"bulk": "1",
 			"category": "Held",
 			"entries": [
-				"30 feet Communication speech (Common, Dwarven, Kelish, Osiriani) Skills {@skill Diplomacy} +23, {@skill Intimidation} +23, {@skill Lore||Alkenstar Lore} +25, {@skill Lore||Firearm Lore} +25, {@skill Society} +21 Int +2, Wis +5, Cha +4 Will +26."
+				"Patriotic to the extreme, this {@runeItem flintlock musket|G&G|+2 weapon potency||flaming||greater striking|} was among the first firearms forged in the Gunworks and was wielded by Ancil Alkenstar, founder of the Grand Duchy of Alkenstar. In Alkenstar’s hands, the musket was used to defend the burgeoning Grand Duchy from outside threats, including mutants of the Mana Wastes, Nexian constructs, and undead from Geb. After Ancil’s death, the weapon was passed down, per his own decree, not to his heirs but to the greatest defender of Alkenstar, as determined by the weapon’s previous owner. Over time, the devotion and heroism of each successive wielder left a psychic imprint on the weapon, until it developed an intellect and drive of its own.",
+				"A duchy defender is a powerful weapon with a rigid personality. It follows the laws of Alkenstar to the letter, and fights in defense of its nation. If these two priorities ever clash, a duchy defender prioritizes the protection of Alkenstar and its citizens over following the laws themselves, since laws can change, but the people will always need protecting.",
+				"If you break the laws of Alkenstar, a duchy defender goes out of its way to call attention to you at inopportune times, such as when you’re engaged in an illegal activity, and attempts to see you pay for your crimes, up to and including outing you to law enforcement and providing testimony against you in court. If a duchy defender is used unjustly against a citizen of Alkenstar, the weapon automatically misfires.",
+				"If the weapon is removed from the Grand Duchy of Alkenstar without a reason that directly benefits the duchy, the duchy defender transports itself away, reappearing in the hands of a previous worthy owner, or elsewhere in Alkenstar if no such previous owner lives. In the hands of a worthy owner, a duchy defender is nearly impossible to steal, since it transports itself back to you at the first opportunity after someone takes it, and it grants you a +2 circumstance bonus to their Reflex DC to resist being disarmed of it.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"command"
+					],
+					"frequency": "once per round",
+					"trigger": null,
+					"requirements": null,
+					"entries": [
+						"The duchy defender focuses its will on a single target it can see and who it knows is guilty of committing a crime within Alkenstar’s borders. The next time the duchy defender damages this target, it deals an additional {@damage 2d8} precision damage."
+					]
+				},
+				{
+					"type": "ability",
+					"activity": {
+						"number": 3,
+						"unit": "action"
+					},
+					"components": [
+						"command"
+					],
+					"traits": [
+						"conjuration", "magical", "teleportation"
+					],
+					"entries": [
+						"The duchy defender travels through the air at a speed faster than light, returning to the hands of a previous owner who has been deemed worthy. If the owner’s hands are full, the duchy defender instead appears on the ground in their space. If there is no previous owner the duchy defender deems worthy that lives, it instead travels to a random public location within Alkenstar. Traveling to an unknown location is draining; after doing so, the duchy defender can’t transport itself anywhere for {@dice 1d4} days."
+					]
+				}
 			],
 			"generic": false,
 			"consumable": false
@@ -3073,7 +3231,8 @@
 				"note": null
 			},
 			"bulk": "3",
-			"category": "Wheelchair",
+			"category": "Assistive Item",
+			"subCategory": "Wheelchair",
 			"entries": [
 				"This clockwork traveler's chair is shaped like a wheeled frog, with springs attached to the bottom and an extensible tongue on the front.",
 				{
@@ -3254,7 +3413,6 @@
 			},
 			"category": "Consumable",
 			"entries": [
-				"Introduction Gears Gears Equipment Gunslingers and Shootists Guns and Black Powder Equipment Guns and Gears on Golarion Glossary and Index Guns &"
 			],
 			"generic": false,
 			"consumable": true
@@ -3458,8 +3616,7 @@
 						"note": null
 					},
 					"entries": [
-						"Clockwork controls the reel on this grappling gun, reeling the grappling hook back in when you pull a lever. Reloading a clockwork grappling gun takes three {@action Interact} actions.",
-						"Umbrella Injector Grappling Gun Introduction Gears Characters Gears Equipment Guns Characters Guns Equipment The Rotating Gear Glossary And Index Guns &"
+						"Clockwork controls the reel on this grappling gun, reeling the grappling hook back in when you pull a lever. Reloading a clockwork grappling gun takes three {@action Interact} actions."
 					]
 				}
 			],
@@ -3876,8 +4033,7 @@
 				"This ever-burning spirit keeps the firearm warm to the touch, regardless of surrounding environment.",
 				"No matter how much you clean and maintain it, an immolation clan pistol is always at risk of a misfire, and the flat check to avoid a misfire is DC 7 rather than DC 5.",
 				"On a misfire, an immolation hand cannon releases a blast of concentrated fire, dealing you {@damage 2d6} fire damage and {@damage 2d6} {@condition persistent damage ||persistent fire damage}.",
-				"An immolation clan pistol fuses with you when you first fire it. While you're fused with the immolation clan pistol, the pained spirit haunts your dreams, forcing you to relive its death each night. If you fired the immolation clan pistol that day, you are unharmed by these dreams. If you didn't fire the immolation clan pistol that day, but still possess it, you awaken {@condition fatigued}. If you no longer possess the immolation clan pistol, the spirit of its dwarven smith is enraged by your neglect; you awaken {@condition fatigued} and aflame, taking {@damage 2d6} {@condition persistent damage ||persistent fire damage}.",
-				"Immolation Clan Pistol Introduction Gears Characters Gears Equipment Guns Characters Guns Equipment The Rotating Gear Glossary And Index Guns &"
+				"An immolation clan pistol fuses with you when you first fire it. While you're fused with the immolation clan pistol, the pained spirit haunts your dreams, forcing you to relive its death each night. If you fired the immolation clan pistol that day, you are unharmed by these dreams. If you didn't fire the immolation clan pistol that day, but still possess it, you awaken {@condition fatigued}. If you no longer possess the immolation clan pistol, the spirit of its dwarven smith is enraged by your neglect; you awaken {@condition fatigued} and aflame, taking {@damage 2d6} {@condition persistent damage ||persistent fire damage}."
 			],
 			"generic": false,
 			"consumable": false
@@ -5061,7 +5217,7 @@
 			"bulk": "2",
 			"category": "no category found",
 			"entries": [
-				"Whether it's a parchment with ominous pentagrams and Steamflight Pack Introduction Gears Gears Equipment Gunslingers and Shootists Guns and Black Powder Equipment Guns and Gears on Golarion Glossary and Index Guns &"
+				"Whether it's a parchment with ominous pentagrams and Steamflight Pack "
 			],
 			"generic": false,
 			"consumable": false
@@ -5286,7 +5442,7 @@
 						"note": null
 					},
 					"entries": [
-						"Monopods are lighter and can be deployed with a single hand using the same action as drawing the firearm. They still require an {@action Interact} action to retrieve. Monopods are Portable Weapon {@action Mount} Introduction Gears Characters Gears Equipment Guns Characters Guns Equipment The Rotating Gear Glossary And Index Guns &"
+						"Monopods are lighter and can be deployed with a single hand using the same action as drawing the firearm. They still require an {@action Interact} action to retrieve. Monopods are Portable Weapon {@action Mount}"
 					]
 				}
 			],
@@ -6124,7 +6280,8 @@
 				"note": null
 			},
 			"bulk": "3",
-			"category": "Wheelchair",
+			"category": "Assistive Item",
+			"subCategory": "Wheelchair",
 			"entries": [
 				"This clockwork traveler's chair has spinnerets and spider legs that allow it to roll up walls, fire web lines to pull you to a location, and obstruct foes with webs. While using the chair, you gain a climb Speed equal to your Speed.",
 				{
@@ -6563,9 +6720,10 @@
 				"note": null
 			},
 			"bulk": "3",
-			"category": "Wheelchair",
+			"category": "Assistive Item",
+			"subCategory": "Wheelchair",
 			"entries": [
-				"This traveler's chair uses magic and Stasian technology, storing up power in its Stasian coils to arc lightning through your foes and grant brief spurts of flight.",
+				"This {@item traveler's chair} uses magic and Stasian technology, storing up power in its Stasian coils to arc lightning through your foes and grant brief spurts of flight.",
 				{
 					"type": "ability",
 					"activity": {
@@ -6619,11 +6777,49 @@
 				"Enchantment",
 				"Intelligent"
 			],
+			"perception": {
+				"default": 26,
+				"senses": {
+					"precise": [
+						"vision 30 feet"
+					],
+					"imprecise": [
+						"hearing 30 feet"
+					]
+				}
+			},
+			"communication": [
+				{
+					"name": "speech",
+					"notes": "{@language Common}"
+				}
+			],
+			"skills": {
+				"Intimidation": {
+					"default": 19
+				},
+				"Navigation Lore": {
+					"default": 14
+				},
+				"Sailing Lore": {
+					"default": 14
+				}
+			},
+			"abilityMods": {
+				"Int": 0,
+				"Wis": 2,
+				"Cha": 4
+			},
+			"savingThrows": {
+				"Will": {
+					"default": 16
+				}
+			},
 			"usage": "held in 1 hand",
 			"bulk": "1",
 			"category": "Held",
 			"entries": [
-				"30 feet Communication speech (Common) Skills {@skill Intimidation} +19, {@skill Lore||Navigation Lore} +14, {@skill Lore||Sailing Lore} +14 Int +0, Wis +2, Cha +4 Will +16 Integrated Firearms A sunken pistol is imbued with the unfulfilled desires and insatiable greed of its previous wielder, a notorious pirate drowned at sea. Once a beautiful and artistically wrought weapon, a sunken pistol is coated in a fine layer of dried salt and encrusted with barnacles. Each shot fired from this +1 striking dragon mouth pistol is now coated in a layer of salty ectoplasm and has the effects of a ghost touch rune. You can shoot the sunken pistol underwater, even when using black powder ammunition.",
+				"A sunken pistol is imbued with the unfulfilled desires and insatiable greed of its previous wielder, a notorious pirate drowned at sea. Once a beautiful and artistically wrought weapon, a sunken pistol is coated in a fine layer of dried salt and encrusted with barnacles. Each shot fired from this {@runeItem dragon mouth pistol|G&G|+1 weapon potency||striking|} is now coated in a layer of salty ectoplasm and has the effects of a ghost touch rune. You can shoot the sunken pistol underwater, even when using black powder ammunition.",
 				"A sunken pistol urges you to amass a horde of treasure even a dragon would be proud of. The methods used to acquire these riches matter not to the greedy pirate pistol, so long as you amass and hoard excessive wealth. Above all else, a sunken pistol desires the return of its own treasure, which might rest in the wreck of its sunken ship's hold or be {@condition hidden} on a dangerous island.",
 				"In pursuit of treasure, a sunken pistol offers nautical and navigation advice to you, though it refuses such aid during less lucrative ventures. If you prove a profitable partner, the sunken pistol aids you in combat by Demoralizing your opponents (see the first Activation below). If you prove charitable or unwilling to retrieve its treasure, the sunken pistol turns its ire on you, Demoralizing you during combat until you relent. If you repeatedly refuse the sunken pistol, it would be wise to not accept water breathing from it, as it might attempt to drown you to allow a more suitable wielder to acquire it from your corpse. The sunken pistol can use the following activations.",
 				{
@@ -6762,7 +6958,7 @@
 						"amount": 15000,
 						"note": null
 					},
-					"craftReq": "The initial raw materials must include the tentacles and ink glands of a creature with a tentacle {@action Strike} and ink. Tentacle Cannon Introduction Gears Characters Gears Equipment Guns Characters Guns Equipment The Rotating Gear Glossary And Index Guns &",
+					"craftReq": "The initial raw materials must include the tentacles and ink glands of a creature with a tentacle {@action Strike} and ink.",
 					"entries": [
 						"A major tentacle cannon is a +3 greater striking weapon.",
 						"It has a +27 bonus to {@action Grapple}, and its ink spray DC is 37."
@@ -6806,8 +7002,7 @@
 					"trigger": null,
 					"requirements": null,
 					"entries": [
-						"You capitalize on the fears your firearm engenders, terrifying your foes. Make a ranged {@action Strike} with this firearm against a target. If you successfully deal damage to your target, the target is also affected by a 4th-level {@spell phantasmal killer} with a spell DC of 28. While phantasmal killer typically takes the shape of the target's worst fear, this effect always appears to the target in the form of a majestic and ferocious tiger.",
-						"Pistol of Wonder Introduction Gears Characters Gears Equipment Guns Characters Guns Equipment The Rotating Gear Glossary And Index Guns &"
+						"You capitalize on the fears your firearm engenders, terrifying your foes. Make a ranged {@action Strike} with this firearm against a target. If you successfully deal damage to your target, the target is also affected by a 4th-level {@spell phantasmal killer} with a spell DC of 28. While phantasmal killer typically takes the shape of the target's worst fear, this effect always appears to the target in the form of a majestic and ferocious tiger."
 					]
 				}
 			],
@@ -6913,7 +7108,8 @@
 				"note": null
 			},
 			"bulk": "3",
-			"category": "Wheelchair",
+			"category": "Assistive Item",
+			"subCategory": "Wheelchair",
 			"entries": [
 				"This wheelchair is tailored for adventures and travels. The design is sleek and fashionable to provide excellent comfort and support. A traveler's chair has small mechanisms, either made from interlocking wood pieces, clockwork, or other devices, that allow the chair to traverse up or down stairs without any additional difficulty (moving up stairs is still {@quickref difficult terrain||3|terrain}, just like for other characters), and move through other such environments that adventurers and travelers encounter without any additional difficulty, such as ladders and uneven ground.",
 				"Magical Wheelchairs The following wheelchairs use technology and magic for incredible effects, in addition to the basic benefits granted from the base wheelchair (typically a traveler's chair)."
@@ -7214,7 +7410,7 @@
 			"bulk": "L",
 			"category": "no category found",
 			"entries": [
-				"These scopes, popular with snipers and other sneaky sharpshooters who ply their trade in the dead of night, incorporate clouded crystals with magical properties into their design. While relatively useless under normal lighting conditions, these crystals can help bring things into focus when used in dim light. The scope is then given an enchantment to enhance these properties for use in Magnifying Scope Introduction Gears Characters Gears Equipment Guns Characters Guns Equipment The Rotating Gear Glossary And Index Guns &"
+				"These scopes, popular with snipers and other sneaky sharpshooters who ply their trade in the dead of night, incorporate clouded crystals with magical properties into their design. While relatively useless under normal lighting conditions, these crystals can help bring things into focus when used in dim light. The scope is then given an enchantment to enhance these properties for use in Magnifying Scope"
 			],
 			"generic": false,
 			"consumable": false

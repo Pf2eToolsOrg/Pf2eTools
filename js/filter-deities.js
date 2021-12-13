@@ -51,16 +51,6 @@ class PageFilterDeities extends PageFilter {
 	mutateForFilters (g) {
 		g._fSources = SourceFilter.getCompleteFilterSources(g);
 		g._fSpells = Array(11).map(_ => []);
-		if (g.devoteeBenefits) {
-			if (g.devoteeBenefits.font) g._fFont = g.devoteeBenefits.font;
-			if (g.devoteeBenefits.skill) g._fSkill = g.devoteeBenefits.skill;
-			if (g.devoteeBenefits.weapon) g._fWeapon = g.devoteeBenefits.weapon.map(w => w.split("|")[0]);
-			if (g.devoteeBenefits.domains) g._fDomains = g.devoteeBenefits.domains || [VeCt.STR_NONE];
-			if (g.devoteeBenefits.spells) g._fSpells = [...Array(11).keys()].map(l => (g.devoteeBenefits.spells[l] || []).map(s => s.split("|")[0]));
-		} else {
-			g._fDomains = [VeCt.STR_NONE];
-		}
-		if (g.domains) g._fDomains.sort(SortUtil.ascSort);
 
 		g._fMisc = [];
 		if (g.lore || g.symbolImg) g._fMisc.push("Has Lore");
@@ -68,6 +58,18 @@ class PageFilterDeities extends PageFilter {
 		if (g.core === true) g._fMisc.push("Core")
 		if (g.hasLore === true) g._fMisc.push("Has Lore")
 		if (g.images) g._fMisc.push("Has Images")
+
+		if (g.devoteeBenefits) {
+			if (g.devoteeBenefits.font) g._fFont = g.devoteeBenefits.font;
+			if (g.devoteeBenefits.skill) g._fSkill = g.devoteeBenefits.skill;
+			if (g.devoteeBenefits.weapon) g._fWeapon = g.devoteeBenefits.weapon.map(w => w.split("|")[0]);
+			if (g.devoteeBenefits.domains) g._fDomains = g.devoteeBenefits.domains || [VeCt.STR_NONE];
+			if (g.devoteeBenefits.spells) g._fSpells = [...Array(11).keys()].map(l => (g.devoteeBenefits.spells[l] || []).map(s => s.split("|")[0]));
+			if (g.devoteeBenefits.avatar) g._fMisc.push("Has Battle Form")
+		} else {
+			g._fDomains = [VeCt.STR_NONE];
+		}
+		if (g.domains) g._fDomains.sort(SortUtil.ascSort);
 	}
 
 	addToFilters (g, isExcluded) {

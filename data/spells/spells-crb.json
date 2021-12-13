@@ -798,9 +798,10 @@
 						"Duplicate any occult spell of 9th level or lower.",
 						"Duplicate any non-occult spell of 7th level or lower.",
 						"Produce any effect whose power is equivalent to any occult spell 9th level or lower, or non-occult spell 7th level or lower.",
-						"Reverse certain effects that refer to the {@spell wish} spell At the GM's discretion, you can try to produce greater effects, but this is dangerous and the spell may have only a partial effect."
+						"Reverse certain effects that refer to the {@spell wish} spell"
 					]
-				}
+				},
+				"At the GM's discretion, you can try to produce greater effects, but this is dangerous and the spell may have only a partial effect."
 			],
 			"heightened": {
 				"heightened": false,
@@ -1722,7 +1723,7 @@
 			"sustain": false,
 			"dismiss": true,
 			"entries": [
-				"You transform into an avatar of your deity, assuming a Huge battle form. You must have space to expand or the spell is lost.",
+				"You transform into an avatar of your deity, assuming a {@trait Huge} battle form. You must have space to expand or the spell is lost.",
 				"You have hands in this battle form and can take manipulate actions. You can {@action Dismiss} this spell.",
 				"You gain the following statistics and abilities regardless of which deity's battle form you assume:",
 				{
@@ -1733,26 +1734,7 @@
 						"{@ability Darkvision}.",
 						"One or more attacks specific to your deity's battle form, which are the only attacks you can use. You're trained with them. Your attack modifier is +33, and you use the listed damage. Melee attacks are Strength based (for the purposes of the {@condition enfeebled} condition, for example) unless they have the {@trait finesse} trait, and all ranged attacks are Dexterity based. Attacks that deal positive or negative damage don't heal creatures.",
 						"{@skill Athletics} modifier of +35, unless your own is higher. You also gain the specific abilities listed for your deity below:",
-						"{@bold Abadar} Speed 50 feet, burrow Speed 30 feet, immune to {@condition immobilized}; Ranged {@as 1} crossbow (range increment 120 feet, reload 1), Damage {@damage 6d10+3} piercing.",
-						"{@bold Asmodeus} Speed 70 feet, air walk; Melee {@as 1} mace (reach 15 feet), Damage {@damage 6d10+6} bludgeoning; Ranged {@as 1} hellfire (range 120 feet), Damage {@damage 6d6+3} fire.",
-						"{@bold Calistria} Speed 30 feet, fly Speed 70 feet; Melee {@as 1} whip (disarm, finesse, nonlethal, reach 20 feet), Damage {@damage 6d4+6} slashing; Ranged {@as 1} savored sting (range 60 feet), Damage {@damage 6d6+3} poison.",
-						"{@bold Cayden Cailean} Speed 70 feet, air walk, ignore {@quickref difficult terrain||3|terrain} and {@quickref greater difficult terrain||3|terrain}; Melee {@as 1} rapier (deadly, reach 15 feet), Damage {@damage 6d6+6} piercing; Ranged {@as 1} ale splash (range 120 feet), Damage {@damage 6d6+3} poison.",
-						"{@bold Desna} Speed 30 feet, fly Speed 70 feet; Melee {@as 1} starknife (agile, deadly, finesse, reach 15 feet, silver, thrown 60 feet), Damage {@damage 6d4+6} piercing; Ranged {@as 1} moonbeam (range 120 feet, silver), Damage {@damage 6d6+3} fire.",
-						"{@bold Erastil} Speed 70 feet, air walk, ignore {@quickref difficult terrain||3|terrain} and {@quickref greater difficult terrain||3|terrain}; Ranged {@as 1} longbow (deadly d8, range increment 150 feet), Damage {@damage 6d8+3} piercing.",
-						"{@bold Gorum} Speed 70 feet, immune to {@condition immobilized}; Melee {@as 1} greatsword (versatile P, reach 15 feet), Damage {@damage 6d12+6} slashing.",
-						"Gozreh no land Speed, fly Speed 70 feet, swim Speed 70 feet; ignore {@quickref difficult terrain||3|terrain} and {@quickref greater difficult terrain||3|terrain}; Melee {@as 1} waves (bull rush, reach 15 feet, thrown 20 feet), Damage {@damage 6d8+6} bludgeoning; Ranged {@as 1} wind (versatile electricity, range 120 feet), Damage {@damage 6d6+3} bludgeoning.",
-						"{@bold Iomedae} Speed 70 feet, air walk; shield (15 Hardness, can't be damaged); Melee {@as 1} longsword (versatile P, reach 15 feet), Damage {@damage 6d8+6} slashing.",
-						"{@bold Irori} Speed 80 feet, air walk; Melee {@as 1} unfettered strike (agile, versatile P or S, finesse, reach 15 feet), Damage {@damage 6d8+6} bludgeoning; Ranged {@as 1} wind strike (range 60 feet), Damage {@damage 6d4+6} bludgeoning.",
-						"{@bold Lamashtu} Speed 30 feet, fly Speed 70 feet; Melee {@as 1} falchion (forceful, reach 15 feet), Damage {@damage 6d10+6} slashing; Ranged {@as 1} waters of Lamashtu (range 120 feet), Damage {@damage 6d6+3} poison.",
-						"{@bold Nethys} Speed 70 feet, air walk; Ranged {@as 1} raw magic (range 120 feet; versatile cold, electricity, or fire), Damage {@damage 6d6} force.",
-						"{@bold Norgorber} Speed 70 feet, air walk, ignore {@quickref difficult terrain||3|terrain} and {@quickref greater difficult terrain||3|terrain}; Melee {@as 1} shortsword (agile, finesse, versatile S, reach 15 feet), Damage {@damage 6d6+6} piercing; Ranged {@as 1} blackfinger toss (range 120 feet), Damage {@damage 6d6+3} poison.",
-						"{@bold Pharasma} Speed 70 feet, air walk; Melee {@as 1} dagger (agile, finesse, reach 15 feet, thrown 40 feet), Damage {@damage 6d6+6} slashing; Ranged {@as 1} spiral blast (range 120 feet, damages only undead), Damage {@damage 6d8+3} positive.",
-						"{@bold Rovagug} Speed 50 feet, burrow Speed 30 feet, immune to {@condition immobilized}; Melee {@as 1} jaws (reach 15 feet), Damage {@damage 6d12+6} piercing; Melee {@as 1} leg (agile, versatile P, reach 15 feet), Damage {@damage 6d8+6} bludgeoning.",
-						"{@bold Sarenrae} Speed 30 feet, fly Speed 70 feet; Melee {@as 1} scimitar (forceful, nonlethal, reach 15 feet), Damage {@damage 6d6+6} slashing; Ranged {@as 1} everflame (nonlethal, range 120 feet), Damage {@damage 6d6+3} fire.",
-						"{@bold Shelyn} Speed 70 feet, air walk, ignore {@quickref difficult terrain||3|terrain} and {@quickref greater difficult terrain||3|terrain}; Melee {@as 1} glaive (deadly d8, nonlethal, reach 20 feet), Damage {@damage 6d8+6} slashing; Ranged {@as 1} melody of inner beauty, (nonlethal, range 120 feet), Damage {@damage 6d6+3} sonic.",
-						"{@bold Torag} Speed 50 feet, burrow Speed 30 feet, immune to {@condition immobilized}; shield (15 Hardness, can't be damaged); Melee {@as 1} warhammer (bull rush, reach 15 feet), Damage {@damage 6d8+6} bludgeoning.",
-						"{@bold Urgathoa} Speed 70 feet, air walk; Melee {@as 1} scythe (deadly d10, trip, reach 15 feet), Damage {@damage 6d10+6} slashing; Ranged {@as 1} pallid plague (range 120 feet), Damage {@damage 6d6+3} negative.",
-						"{@bold Zon-Kuthon} Speed 70 feet, air walk, ignore {@quickref difficult terrain||3|terrain} and {@quickref greater difficult terrain||3|terrain}; Melee {@as 1} spiked chain (disarm, trip, reach 15 feet), Damage {@damage 6d8+6} slashing; Ranged {@as 1} midnight pain (mental, nonlethal, range 120 feet), Damage {@damage 6d6+3} mental."
+						"{@note You can see all {@filter deities battle forms|deities||Miscellaneous=Has Battle Form} on the {@filter Deities|deities.html} page.}"
 					]
 				}
 			],
@@ -4155,7 +4137,7 @@
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
-				"You shout a command that's hard to ignore. You can command the target to approach you, run away (as if it had the {@condition fleeing} condition), release what it's holding, drop {@condition prone}, or stand in place. It can't {@action Delay} or take any reactions until it has obeyed your command. The effects depend on the target's Will save.",
+				"You shout a command that's hard to ignore. You can command the target to approach you, run away (as if it had the {@condition fleeing} condition), release what it's holding, {@action Drop Prone}, or stand in place. It can't {@action Delay} or take any reactions until it has obeyed your command. The effects depend on the target's Will save.",
 				{
 					"type": "successDegree",
 					"entries": {
@@ -8255,7 +8237,7 @@
 					"entries": {
 						"Critical Success": "The target is unaffected.",
 						"Success": "The target's attention wavers. It becomes {@condition flat-footed} and {@condition fascinated} by its daydreams.",
-						"Failure": "As success, except that you appear in the dream and give a suggestion. This can be to approach you, run away (as if it had the {@condition fleeing} condition), {@action Release} what it's holding, Drop {@condition Prone}, or stand in place. The creature follows this course of action as its first action after you {@action Cast a Spell||Cast the Spell}.",
+						"Failure": "As success, except that you appear in the dream and give a suggestion. This can be to approach you, run away (as if it had the {@condition fleeing} condition), {@action Release} what it's holding, {@action Drop Prone}, or stand in place. The creature follows this course of action as its first action after you {@action Cast a Spell||Cast the Spell}.",
 						"Critical Failure": "As failure, but the target follows the course of action for as many actions as possible for the spell's duration, and it does nothing else."
 					}
 				}
@@ -13749,7 +13731,7 @@
 				"S": true,
 				"V": true
 			},
-			"cost": "one vial of holy water (page 571)",
+			"cost": "one vial of {@item holy water}",
 			"range": {
 				"type": "point",
 				"entry": "500 feet",
@@ -21986,7 +21968,7 @@
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
-				"You attempt to call forth the dead creature's soul, requiring the creature's body to be present and relatively intact. The creature must have died within the past 3 days. If Pharasma has decided that the creature's time has come (at the GM's discretion), or if the creature doesn't wish to return to life, this spell automatically fails, but the diamonds aren't consumed in the casting.",
+				"You attempt to call forth the dead creature's soul, requiring the creature's body to be present and relatively intact. The creature must have died within the past 3 days. If {@deity Pharasma} has decided that the creature's time has come (at the GM's discretion), or if the creature doesn't wish to return to life, this spell automatically fails, but the diamonds aren't consumed in the casting.",
 				"If the spell is successful, the creature returns to life with 1 Hit Point, no spells prepared or spell slots available, no points in any pools or any other daily resources, and still with any long-term debilitations of the old body. The time spent in the Boneyard leaves the target temporarily debilitated, making it {@condition clumsy 2}, {@condition drained 2}, and {@condition enfeebled 2} for 1 week; these conditions can't be removed or reduced by any means until the week has passed.",
 				"The creature is also permanently changed by its time in the afterlife, such as a slight personality shift, a streak of white in the hair, or a strange new birthmark."
 			],

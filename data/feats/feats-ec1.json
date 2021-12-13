@@ -44,7 +44,7 @@
 				"Concentrate",
 				"Manipulate"
 			],
-			"prerequisites": "Juggler Dedication",
+			"prerequisites": "{@feat Juggler Dedication|EC1}",
 			"trigger": "Your turn begins.",
 			"entries": [
 				"You continue Juggling until the end of your next turn.",
@@ -107,7 +107,14 @@
 			"entries": [
 				"You become trained in {@skill Performance}; if you were already trained in {@skill Performance}, you instead become trained in a skill of your choice. You also gain the Juggle skill feat (page 76), even if you don't meet its prerequisites."
 			],
-			"special": "You cannot select another dedication feat until you have gained one other feat from the juggler archetype."
+			"special": "You cannot select another dedication feat until you have gained one other feat from the juggler archetype.",
+			"leadsTo": [
+				"Focused Juggler|EC1",
+				"Lobbed Attack|EC1",
+				"Opportune Throw|EC1",
+				"Quick Juggler|EC1",
+				"Reflexive Catch|EC1"
+			]
 		},
 		{
 			"name": "Levering Strike",
@@ -156,7 +163,7 @@
 				"Uncommon",
 				"Archetype"
 			],
-			"prerequisites": "master in {@skill Performance}, Juggler Dedication",
+			"prerequisites": "master in {@skill Performance}, {@feat Juggler Dedication|EC1}",
 			"requirements": "You are Juggling a thrown weapon.",
 			"entries": [
 				"You make a thrown ranged {@action Strike} with the required weapon, using the weapon's normal range increment. This attack doesn't trigger reactions, and if the target has never seen you use this feat before, the target is {@condition flat-footed} against this attack."
@@ -182,7 +189,7 @@
 				"Uncommon",
 				"Archetype"
 			],
-			"prerequisites": "legendary in {@skill Performance}, Juggler Dedication",
+			"prerequisites": "legendary in {@skill Performance}, {@feat Juggler Dedication|EC1}",
 			"trigger": "A creature within 10 feet of you uses a manipulate action or a move action, makes a ranged attack, or leaves a square during a move action it's using.",
 			"requirements": "You are Juggling a thrown weapon.",
 			"entries": [
@@ -235,7 +242,7 @@
 				"Uncommon",
 				"Archetype"
 			],
-			"prerequisites": "expert in {@skill Performance}, Juggler Dedication",
+			"prerequisites": "expert in {@skill Performance}, {@feat Juggler Dedication|EC1}",
 			"entries": [
 				"When you start to Juggle or add another item to those you are Juggling, you add two items instead of one. Increase the maximum number of items you can Juggle by one."
 			]
@@ -262,7 +269,7 @@
 				"Concentrate",
 				"Manipulate"
 			],
-			"prerequisites": "expert in {@skill Acrobatics}, Juggler Dedication",
+			"prerequisites": "expert in {@skill Acrobatics}, {@feat Juggler Dedication|EC1}",
 			"trigger": "An item falls within your reach or an attacker fails an attack roll to hit you or a creature within your reach with a thrown weapon.",
 			"requirements": "The item or thrown weapon is of a Bulk you can Juggle.",
 			"entries": [
@@ -290,7 +297,14 @@
 			"entries": [
 				"When you {@action High Jump}, {@action Leap}, or {@action Long Jump} while wielding your staff, you gain a +2 circumstance bonus to any {@skill Athletics} check required and add 5 feet to the distance you can {@action Leap} vertically and horizontally. You can {@action Shove} and {@action Trip} even if you don't have a free hand, provided you are wielding your staff. Finally, when you roll a success on a check to {@action Balance} while wielding your staff, you get a critical success instead."
 			],
-			"special": "You cannot select another dedication feat until you have gained two other feats from the staff acrobat archetype."
+			"special": "You cannot select another dedication feat until you have gained two other feats from the staff acrobat archetype.",
+			"leadsTo": [
+				"Bullying Staff|EC1",
+				"Levering Strike|EC1",
+				"Pivot Strike|EC1",
+				"Staff Sweep|EC1",
+				"Whirlwind Stance|EC1"
+			]
 		},
 		{
 			"name": "Staff Sweep",
