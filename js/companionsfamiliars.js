@@ -119,5 +119,9 @@ class CompanionsFamiliarsPage extends ListPage {
 	}
 }
 
-const companionsFamiliarsPage = new CompanionsFamiliarsPage();
-window.addEventListener("load", () => companionsFamiliarsPage.pOnLoad());
+let companionsFamiliarsPage;
+window.addEventListener("load", async () => {
+	await Renderer.trait.preloadTraits();
+	companionsFamiliarsPage = new CompanionsFamiliarsPage();
+	companionsFamiliarsPage.pOnLoad();
+});

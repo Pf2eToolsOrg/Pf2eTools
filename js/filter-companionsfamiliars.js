@@ -4,7 +4,7 @@ class PageFilterCompanionsFamiliars extends PageFilter {
 	constructor () {
 		super();
 		this._typeFilter = new Filter({header: "Type"});
-		this._traitsFilter = new Filter({header: "Traits"});
+		this._traitsFilter = new TraitsFilter({header: "Traits"});
 		this._skillFilter = new Filter({header: "Skills"});
 		this._strengthFilter = new RangeFilter({header: "Strength", min: -5, max: 5});
 		this._dexterityFilter = new RangeFilter({header: "Dexterity", min: -5, max: 5});
