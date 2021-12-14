@@ -70,7 +70,7 @@
 			]
 		},
 		{
-			"name": "Anima Invocation (modified)",
+			"name": "Anima Invocation (Modified)",
 			"source": "AoA6",
 			"page": 75,
 			"level": 10,
@@ -123,9 +123,9 @@
 				{
 					"type": "successDegree",
 					"entries": {
-						"Critical Success": "You gain full access to your own potential for 1 day. You gain resistance 10 to all damage and a +4 status bonus to saves against effects created by evil creatures. Your Strikes gain the effects of the ghost touch rune and deal an additional {@damage 1d10} good damage. You are immune to the soul-draining effect within {@deity Alseta|LOGM}'s Landing.",
-						"Success": "You tap into your own potential for 1 day. You gain resistance 5 to all damage and a +2 status bonus to saves against effects created by evil creatures. Your Strikes gain the effects of the ghost touch rune and deal an additional 1 good damage. You are immune to the soul-draining effect within {@deity Alseta|LOGM}'s Landing.",
-						"Failure": "You are unable to tap into your own spiritual essence, but you still gain immunity to the souldraining effect within {@deity Alseta|LOGM}'s Landing.",
+						"Critical Success": "You gain full access to your own potential for 1 day. You gain resistance 10 to all damage and a +4 status bonus to saves against effects created by evil creatures. Your Strikes gain the effects of the {@item ghost touch} rune and deal an additional {@damage 1d10} good damage. You are immune to the soul-draining effect within Alseta's Landing.",
+						"Success": "You tap into your own potential for 1 day. You gain resistance 5 to all damage and a +2 status bonus to saves against effects created by evil creatures. Your Strikes gain the effects of the {@item ghost touch} rune and deal an additional 1 good damage. You are immune to the soul-draining effect within Alseta's Landing.",
+						"Failure": "You are unable to tap into your own spiritual essence, but you still gain immunity to the souldraining effect within Alseta's Landing.",
 						"Critical Failure": "You botch the ritual, damaging your own spiritual essence. You gain {@condition doomed|CRB|doomed 1} or increase your {@condition doomed} condition by 1 if you're already {@condition doomed}. This {@condition doomed} value decreases by 1 every week. This is a {@trait curse} effect."
 					}
 				}
@@ -222,7 +222,6 @@
 				],
 				"prof": "expert"
 			},
-
 			"secondaryCheck": {
 				"entry": "{@skill Arcana}, {@skill Crafting}, or {@skill Occultism}",
 				"skills": [
@@ -282,7 +281,6 @@
 					"Society"
 				]
 			},
-
 			"duration": {
 				"type": "timed",
 				"entry": "Until the wager's completion",
@@ -483,7 +481,6 @@
 				}
 			},
 			"targets": "1 animal of up to the level on {@table Creature Creation Rituals|CRB|Table 7\u20131};",
-
 			"entries": [
 				"You grant intelligence to the target, transforming it into a beast. If it was previously an animal companion or minion, it can no longer serve as one.",
 				{
@@ -538,7 +535,6 @@
 					"Occultism"
 				]
 			},
-
 			"duration": {
 				"type": "timed",
 				"entry": "unlimited",
@@ -1436,7 +1432,6 @@
 				}
 			},
 			"targets": "1 dead creature",
-
 			"entries": [
 				"You transform the target into an undead creature with a level up to that allowed in {@table Creature Creation Rituals|CRB|Table 7\u20131}. There are many versions of this ritual, each specific to a particular type of undead (one ritual for all zombies, one for skeletons, one for ghouls, and so on), and the rituals that create rare undead are also rare. Some forms of undead, such as liches, form using their own unique methods and can't be created with a version of create undead.",
 				{
@@ -1891,7 +1886,10 @@
 			"secondaryCheck": {
 				"entry": "{@skill Crafting}, {@skill Intimidation}, {@skill Occultism}, {@skill Performance}",
 				"skills": [
-					"Crafting", "Intimidation", "Occultism", "Performance"
+					"Crafting",
+					"Intimidation",
+					"Occultism",
+					"Performance"
 				]
 			},
 			"duration": {
@@ -2022,7 +2020,6 @@
 					"Medicine"
 				]
 			},
-
 			"area": {
 				"entry": "40-foot-radius burst",
 				"types": [
@@ -2427,7 +2424,6 @@
 				}
 			},
 			"targets": "1 creature of up to 16th level",
-
 			"entries": [
 				"You perform a ritual to imprison a creature in one of several forms. While some versions of this ritual offer all of the forms, others include only a single form or only a few of them. Whichever form you use, the effect can't be counteracted, though it can be ended by freedom. Some forms of imprisonment can be ended by other means. Because the ritual requires the target to remain within 10 feet at all times, it typically requires you to subdue the target first.",
 				{
@@ -2600,8 +2596,6 @@
 					"Society"
 				]
 			},
-
-
 			"entries": [
 				"You attempt to learn useful legends about a particular subject, which must be an important person, place, or thing.",
 				"If the subject is present, increase the degree of success of your primary skill check by one step. If you have only vague information about the subject before attempting the ritual, decrease the degree of success of your primary skill check by one step. These modifiers cancel each other out if you have a subject present with little to no baseline information.",
@@ -2730,7 +2724,6 @@
 					"Lore"
 				]
 			},
-
 			"duration": {
 				"type": "timed",
 				"entry": "1 week or until the named destination is reached, whichever comes first",
@@ -2832,7 +2825,6 @@
 					"Diplomacy"
 				]
 			},
-
 			"duration": {
 				"type": "timed",
 				"entry": "see text",
@@ -2968,7 +2960,6 @@
 					"Survival"
 				]
 			},
-
 			"area": {
 				"types": [
 					"Misc."
@@ -3047,7 +3038,6 @@
 				"entry": "1 year",
 				"type": "timed"
 			},
-
 			"entries": [
 				"Using the blood, you compose a portrait of the target in perfect health. Once the portrait is complete, you recite your grievances against the target and enact on the portrait the punishments you wish to see them face, choosing from the {@condition clumsy}, {@condition enfeebled}, {@condition drained}, or {@condition stupefied} condition. The target must attempt a Will saving throw. You're only able to perform this ritual if you know the target's name and are able to see their face clearly in your mind's eye, and the secondary caster who performs the {@skill Crafting} check must be able to paint or draw the target from memory.",
 				"The target suffers the effects over the course of {@dice 1d6} hours, during which time the portrait transforms to reveal a caricature of the punishment you chose\u2014muscles atrophied into nothing for {@condition enfeebled}, pallid and sickly for {@condition drained}, and so on. The target is immediately aware that they're under the effects of a magical ailment. If the duration expires or the target removes the curse with a remove curse or similar effect, their portrait slowly returns back to its original form. Destroying the portrait also ends the effect immediately.",
@@ -3151,8 +3141,6 @@
 				],
 				"prof": "trained"
 			},
-
-
 			"entries": [
 				"You delve inward, spending extensive time contemplating the purity of your own soul and the actions of your past. If you aren't truly penitent, the outcome is always a critical failure.",
 				{
@@ -3262,7 +3250,6 @@
 				}
 			},
 			"targets": "1 dead creature of up to 8th level",
-
 			"entries": [
 				"You call forth the target's soul and attempt to incarnate it into a brand-new body. As the soul won't be returning to the original body, only a small portion of the creature's remains are required. These remains must have been part of the original body at the time of death, and the target must have died within the past week. If {@deity Pharasma} has decided that the target's time has come or the target's soul is trapped or doesn't wish to return, this ritual automatically fails, but you discover this after you succeed at the Religion check and can end the ritual without paying the cost.",
 				"If the ritual is successful, the target's new body has a random ancestry. First roll {@dice 1d20}. On a result of 1 through 14, the new body is one of a {@trait common} ancestry, while on a 15 through 20 they become a member of an {@trait uncommon} or {@trait rare} ancestry. The GM chooses possible ancestries based on those found in the region and then rolls randomly between them. For instance, the GM could roll {@dice 1d6} to choose a common ancestry from the Core Rulebook. The target replaces their ancestry Hit Points, size, Speeds, ability boosts, ability flaws, traits, and special abilities with those of their new ancestry. The target loses their heritage and ancestry feats, selecting replacements from their new ancestry. The target's background, class features, and known languages remain unaltered.",
@@ -3349,7 +3336,6 @@
 				}
 			},
 			"targets": "1 dead creature",
-
 			"entries": [
 				"You call upon gods, spirits, and stranger beings to bar a creature's spirit from ever returning. A spirit that doesn't wish to be so constrained can attempt a Will save to resist this ritual; on a critical success, it fools you into believing the ritual succeeded. This ritual has no effect on a target who is undead or whose soul is otherwise not in the afterlife.",
 				{
@@ -3405,7 +3391,6 @@
 				}
 			},
 			"targets": "1 dead creature of up to 10th level",
-
 			"entries": [
 				"You attempt to call forth the target's soul and return it to its body. This requires the target's body to be present and relatively intact. The target must have died within the past year. If {@deity Pharasma} has decided that the target's time has come or the target doesn't wish to return, this ritual automatically fails, but you discover this after the successful {@skill Religion} check and can end the ritual without paying the cost.",
 				{
@@ -3493,7 +3478,6 @@
 				}
 			},
 			"targets": "1 living creature",
-
 			"entries": [
 				"You create an illusory duplicate of the target creature by animating ice or snow sculpted in its shape. The simulacrum is a 4th-level creature with no special abilities. If it needs to attempt a roll or use a DC, use the moderate number for a monster, except as noted below. It doesn't have any specific memories from the target, but it can use information about the creature gained from any of the casters to {@action Impersonate} the target. It looks exactly like the target and has a {@skill Deception} modifier to {@action Impersonate} that creature equal to the modifier of the secondary spellcaster who rolled the {@skill Deception} check, with a +4 status bonus.",
 				"While it doesn't have any of the original's special abilities, like a dragon's breath weapon, the illusions that make up the simulacrum allow it to appear to use those abilities; they just never seem to have an effect. For instance, against a simulacrum dragon's breath weapon, all creatures in the area seem to critically succeed at their saving throws and take no damage. Creatures can attempt to disbelieve the illusion by attempting a {@skill Perception} check against the {@skill Deception} DC of the secondary spellcaster who rolled the {@skill Deception} check.",
@@ -3603,7 +3587,6 @@
 				"type": "point"
 			},
 			"targets": "the secondary casters",
-
 			"entries": [
 				"You carefully tattoo the same design upon each secondary caster. The tattoo can be of any shape or symbol, but it must include a mouth. The tattoo fades naturally over the course of 1 month.",
 				{
@@ -3847,7 +3830,6 @@
 				"entry": "1 month",
 				"type": "timed"
 			},
-
 			"entries": [
 				"This famous ritual is a sophisticated example of symbolic magic, binding fate and fortune to follow a prepared script. To conduct the ritual, you and the secondary casters must put on a long-form, multi-person, plot-based performance that's usually a play or opera, though more unusual performances have been known. You take the role of the director, while the secondary casters are either actors ({@skill Performance}) or significant backstage figures, such as set or costume designers ({@skill Crafting}). The casting time of the ritual includes both preparations and rehearsals of various sorts and the actual performance, which must be at least an hour long.",
 				"The performance presents current events and offers a particular vision on how they resolve, often in metaphorical or allegorical format (proposing the overthrow of a tyrant by referring to a different, legendary tyrant who was overthrown, or suggesting that a murderous secret might be uncovered by presenting an allegory of truth defeating murder). This performance must be presented to an audience of at least a hundred people, a majority of whom must both be connected, at least peripherally, to the events in question (the people of the tyrant's city, or the residents of the village where the murder occurred) and who must understand what the metaphor or allegory actually refers to. For the magic to spark, the performance must declare its purpose loudly and clearly to the parties most concerned. If a major antagonist featured in the performance is in the audience and the ritual is a success, you get a critical success instead.",
