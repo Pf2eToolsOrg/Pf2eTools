@@ -1420,6 +1420,18 @@ EventUtil = {
 	noModifierKeys (evt) {
 		return !evt.ctrlKey && !evt.altKey && !evt.metaKey;
 	},
+
+	getKeyIgnoreCapsLock (evt) {
+		if (!evt.key) return null;
+		if (evt.key.length !== 1) return evt.key;
+		const isCaps = (evt.originalEvent || evt).getModifierState("CapsLock");
+		if (!isCaps) return evt.key;
+		const asciiCode = evt.key.charCodeAt(0);
+		const isUpperCase = asciiCode >= 65 && asciiCode <= 90;
+		const isLowerCase = asciiCode >= 97 && asciiCode <= 122;
+		if (!isUpperCase && !isLowerCase) return evt.key;
+		return isUpperCase ? evt.key.toLowerCase() : evt.key.toUpperCase();
+	},
 };
 
 if (typeof window !== "undefined") window.addEventListener("load", EventUtil.init);
@@ -1948,39 +1960,53 @@ UrlUtil.PG_TO_NAME[UrlUtil.PG_PLACES] = "Planes and Places";
 UrlUtil.PG_TO_NAME[UrlUtil.PG_OPTIONAL_FEATURES] = "Optional Features";
 
 UrlUtil.CAT_TO_PAGE = {};
-UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_CREATURE] = UrlUtil.PG_BESTIARY;
-UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_SPELL] = UrlUtil.PG_SPELLS;
-UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_RITUAL] = UrlUtil.PG_RITUALS;
-UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_VEHICLE] = UrlUtil.PG_VEHICLES;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_QUICKREF] = UrlUtil.PG_QUICKREF;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_VARIANT_RULE] = UrlUtil.PG_VARIANTRULES;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_SUBSYSTEM] = UrlUtil.PG_VARIANTRULES;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_TABLE] = UrlUtil.PG_TABLES;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_TABLE_GROUP] = UrlUtil.PG_TABLES;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_BOOK] = UrlUtil.PG_BOOK;
+
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_ANCESTRY] = UrlUtil.PG_ANCESTRIES;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_HERITAGE] = UrlUtil.PG_ANCESTRIES;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_VE_HERITAGE] = UrlUtil.PG_ANCESTRIES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_BACKGROUND] = UrlUtil.PG_BACKGROUNDS;
-UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_ITEM] = UrlUtil.PG_ITEMS;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_CLASS] = UrlUtil.PG_CLASSES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_CLASS_FEATURE] = UrlUtil.PG_CLASSES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_SUBCLASS] = UrlUtil.PG_CLASSES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_SUBCLASS_FEATURE] = UrlUtil.PG_CLASSES;
-UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_CONDITION] = UrlUtil.PG_CONDITIONS;
-UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_AFFLICTION] = UrlUtil.PG_AFFLICTIONS;
-UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_FEAT] = UrlUtil.PG_FEATS;
-UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_ANCESTRY] = UrlUtil.PG_ANCESTRIES;
-UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_HERITAGE] = UrlUtil.PG_ANCESTRIES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_ARCHETYPE] = UrlUtil.PG_ARCHETYPES;
-UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_VARIANT_RULE] = UrlUtil.PG_VARIANTRULES;
-UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_ADVENTURE] = UrlUtil.PG_ADVENTURE;
-UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_DEITY] = UrlUtil.PG_DEITIES;
-UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_HAZARD] = UrlUtil.PG_HAZARDS;
-UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_QUICKREF] = UrlUtil.PG_QUICKREF;
-UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_TABLE] = UrlUtil.PG_TABLES;
-UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_TABLE_GROUP] = UrlUtil.PG_TABLES;
-UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_ACTION] = UrlUtil.PG_ACTIONS;
-UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_ABILITY] = UrlUtil.PG_ABILITIES;
-UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_LANGUAGE] = UrlUtil.PG_LANGUAGES;
-UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_TRAIT] = UrlUtil.PG_TRAITS;
-UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_BOOK] = UrlUtil.PG_BOOK;
-UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_PAGE] = null;
-UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_PLACE] = UrlUtil.PG_PLACES;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_FEAT] = UrlUtil.PG_FEATS;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_COMPANION] = UrlUtil.PG_COMPANIONS_FAMILIARS;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_FAMILIAR] = UrlUtil.PG_COMPANIONS_FAMILIARS;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_EIDOLON] = UrlUtil.PG_COMPANIONS_FAMILIARS;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_OPTIONAL_FEATURE] = UrlUtil.PG_OPTIONAL_FEATURES;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_OPTIONAL_FEATURE_LESSON] = UrlUtil.PG_OPTIONAL_FEATURES;
+
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_ADVENTURE] = UrlUtil.PG_ADVENTURE;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_HAZARD] = UrlUtil.PG_HAZARDS;
+
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_ACTION] = UrlUtil.PG_ACTIONS;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_CREATURE] = UrlUtil.PG_BESTIARY;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_CONDITION] = UrlUtil.PG_CONDITIONS;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_ITEM] = UrlUtil.PG_ITEMS;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_SPELL] = UrlUtil.PG_SPELLS;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_AFFLICTION] = UrlUtil.PG_AFFLICTIONS;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_CURSE] = UrlUtil.PG_AFFLICTIONS;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_ITEM_CURSE] = UrlUtil.PG_AFFLICTIONS;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_DISEASE] = UrlUtil.PG_AFFLICTIONS;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_ABILITY] = UrlUtil.PG_ABILITIES;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_DEITY] = UrlUtil.PG_DEITIES;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_LANGUAGE] = UrlUtil.PG_LANGUAGES;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_PLACE] = UrlUtil.PG_PLACES;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_PLANE] = UrlUtil.PG_PLACES;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_NATION] = UrlUtil.PG_PLACES;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_SETTLEMENT] = UrlUtil.PG_PLACES;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_RITUAL] = UrlUtil.PG_RITUALS;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_VEHICLE] = UrlUtil.PG_VEHICLES;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_TRAIT] = UrlUtil.PG_TRAITS;
+
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_PAGE] = null;
 
 UrlUtil.CAT_TO_HOVER_PAGE = {};
 UrlUtil.CAT_TO_HOVER_PAGE[Parser.CAT_ID_CLASS_FEATURE] = "classfeature";

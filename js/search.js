@@ -30,13 +30,13 @@ class SearchPage {
 			.click(() => Omnisearch.doShowHelp());
 
 		const $btnToggleUa = $(`<button class="btn btn-default" title="Filter unofficial source results">Include unofficial</button>`)
-			.click(() => Omnisearch.doToggleUa());
+			.click(() => Omnisearch.doToggleUnofficial());
 		const hkUa = () => {
-			$btnToggleUa.toggleClass("active", Omnisearch.isShowUa);
+			$btnToggleUa.toggleClass("active", Omnisearch.isShowUnofficial);
 			if (isInitialHooks) return;
 			this._doSearch();
 		};
-		Omnisearch.addHookUa(hkUa)
+		Omnisearch.addHookUnofficial(hkUa)
 		hkUa();
 
 		const $btnToggleBlacklisted = $(`<button class="btn btn-default" title="Filter blacklisted content results">Include Blacklisted</button>`)

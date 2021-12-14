@@ -224,7 +224,7 @@ class IndexableDirectoryHeritages extends IndexableDirectory {
 class IndexableDirectoryVeHeritages extends IndexableDirectory {
 	constructor () {
 		super({
-			category: Parser.CAT_ID_HERITAGE,
+			category: Parser.CAT_ID_VE_HERITAGE,
 			dir: "ancestries",
 			primary: "name",
 			source: "source",
@@ -567,7 +567,7 @@ class IndexableFileConditions extends IndexableFile {
 class IndexableFileDiseases extends IndexableFile {
 	constructor () {
 		super({
-			category: Parser.CAT_ID_AFFLICTION,
+			category: Parser.CAT_ID_DISEASE,
 			file: "afflictions.json",
 			listProp: "disease",
 			baseUrl: "afflictions.html",
@@ -579,7 +579,7 @@ class IndexableFileDiseases extends IndexableFile {
 class IndexableFileCurses extends IndexableFile {
 	constructor () {
 		super({
-			category: Parser.CAT_ID_AFFLICTION,
+			category: Parser.CAT_ID_CURSE,
 			file: "afflictions.json",
 			listProp: "curse",
 			baseUrl: "afflictions.html",
@@ -591,7 +591,7 @@ class IndexableFileCurses extends IndexableFile {
 class IndexableFileItemCurses extends IndexableFile {
 	constructor () {
 		super({
-			category: Parser.CAT_ID_AFFLICTION,
+			category: Parser.CAT_ID_ITEM_CURSE,
 			file: "afflictions.json",
 			listProp: "itemcurse",
 			baseUrl: "afflictions.html",
@@ -608,6 +608,20 @@ class IndexableFileVariantRules extends IndexableFile {
 			listProp: "variantrule",
 			baseUrl: "variantrules.html",
 			isHover: true,
+			include: (it) => it.type !== "Subsystem",
+		});
+	}
+}
+
+class IndexableFileSubsystems extends IndexableFile {
+	constructor () {
+		super({
+			category: Parser.CAT_ID_SUBSYSTEM,
+			file: "variantrules.json",
+			listProp: "variantrule",
+			baseUrl: "variantrules.html",
+			isHover: true,
+			include: (it) => it.type === "Subsystem",
 		});
 	}
 }
@@ -821,6 +835,18 @@ class IndexableFileFamiliars extends IndexableFile {
 	}
 }
 
+class IndexableFileEidolons extends IndexableFile {
+	constructor () {
+		super({
+			category: Parser.CAT_ID_EIDOLON,
+			file: "companionsfamiliars.json",
+			listProp: "eidolon",
+			baseUrl: "companionsfamiliars.html",
+			isHover: true,
+		});
+	}
+}
+
 class IndexableFileRituals extends IndexableFile {
 	constructor () {
 		super({
@@ -829,6 +855,32 @@ class IndexableFileRituals extends IndexableFile {
 			listProp: "ritual",
 			baseUrl: "rituals.html",
 			isHover: true,
+		});
+	}
+}
+
+class IndexableFileOptionalFeatures extends IndexableFile {
+	constructor () {
+		super({
+			category: Parser.CAT_ID_OPTIONAL_FEATURE,
+			file: "optionalfeatures.json",
+			listProp: "optionalfeature",
+			baseUrl: "optionalfeatures.html",
+			isHover: true,
+			include: (it) => !["Basic Lesson", "Greater Lesson", "Major Lesson"].includes(it.type),
+		});
+	}
+}
+
+class IndexableFileOptionalFeaturesLessons extends IndexableFile {
+	constructor () {
+		super({
+			category: Parser.CAT_ID_OPTIONAL_FEATURE,
+			file: "optionalfeatures.json",
+			listProp: "optionalfeature",
+			baseUrl: "optionalfeatures.html",
+			isHover: true,
+			include: (it) => ["Basic Lesson", "Greater Lesson", "Major Lesson"].includes(it.type),
 		});
 	}
 }
@@ -843,6 +895,7 @@ Omnidexer.TO_INDEX = [
 
 	new IndexableFileQuickReference(),
 	new IndexableFileVariantRules(),
+	new IndexableFileSubsystems(),
 	new IndexableFileBooks(),
 	new IndexableFileDeities(),
 	new IndexableFileHazards(),
@@ -854,8 +907,11 @@ Omnidexer.TO_INDEX = [
 	new IndexableFileTraits(),
 	new IndexableFileCompanions(),
 	new IndexableFileFamiliars(),
+	new IndexableFileEidolons(),
 	new IndexableFileAdventures(),
 	new IndexableFileRituals(),
+	new IndexableFileOptionalFeatures(),
+	new IndexableFileOptionalFeaturesLessons(),
 ];
 
 class IndexableSpecial {
