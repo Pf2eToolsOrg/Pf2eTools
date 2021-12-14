@@ -186,12 +186,16 @@ class PageFilterBestiary extends PageFilter {
 
 		cr._fimmunities = [];
 		if (cr.immunities) {
-			cr.immunities.damage.forEach((i) => {
-				cr._fimmunities.push(i.replace(/\s(?:\().+/, ""));
-			})
-			cr.immunities.condition.forEach((i) => {
-				cr._fimmunities.push(i.replace(/\s(?:\().+/, ""));
-			})
+			if (cr.immunities.damage) {
+				cr.immunities.damage.forEach((i) => {
+					cr._fimmunities.push(i.replace(/\s(?:\().+/, ""));
+				})
+			}
+			if (cr.immunities.condition) {
+				cr.immunities.condition.forEach((i) => {
+					cr._fimmunities.push(i.replace(/\s(?:\().+/, ""));
+				})
+			}
 		}
 		cr._fweaknesses = [];
 		if (cr.weaknesses) {

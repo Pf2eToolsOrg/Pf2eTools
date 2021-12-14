@@ -81,6 +81,16 @@ const toGenerate = [
 		},
 		style: 1,
 	},
+	{
+		page: "backgrounds",
+		pGetEntries: () => {
+			const index = rd(`data/backgrounds/index.json`);
+			const fileData = Object.entries(index)
+				.map(([_, filename]) => rd(`data/backgrounds/${filename}`));
+			return fileData.map(it => MiscUtil.copy(it.background)).reduce((a, b) => a.concat(b))
+		},
+		style: 1,
+	},
 
 	// TODO expand this as required
 ];

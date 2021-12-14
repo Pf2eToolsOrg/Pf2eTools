@@ -365,7 +365,7 @@
 						"unit": "action"
 					},
 					"entries": [
-						"The adamantine golem Strides up to its Speed, pushing back each creature whose space it moves into and damaging them if they try to stop its movement. A creature can try to bar the way by attempting a DC 45 Fortitude save.",
+						"The adamantine golem {@action Stride||Strides} up to its Speed, pushing back each creature whose space it moves into and damaging them if they try to stop its movement. A creature can try to bar the way by attempting a DC 45 Fortitude save.",
 						{
 							"type": "successDegree",
 							"entries": {
@@ -8466,7 +8466,7 @@
 						"unit": "action"
 					},
 					"entries": [
-						"The arboreal warden Strides and then makes a shield bash {@action Strike}. If the attack hits, the target is pushed 10 feet."
+						"The arboreal warden {@action Stride||Strides} and then makes a shield bash {@action Strike}. If the attack hits, the target is pushed 10 feet."
 					],
 					"name": "Shield Push"
 				}
@@ -9532,7 +9532,7 @@
 					"effects": [
 						"Improved Grab"
 					],
-					"damage": "{@damage 3d12+16} piercing plus Improved Grab",
+					"damage": "{@damage 3d12+16} piercing plus {@ability Improved Grab}",
 					"types": [
 						"piercing"
 					]
@@ -9609,7 +9609,7 @@
 						"unit": "action"
 					},
 					"entries": [
-						"The azure worm Swims up to its swim Speed, then Leaps vertically out of the water up to 30 feet, making a {@action Strike} against a creature at the apex of the jump (this lets it attack a creature within 45 feet of the water's surface). After the {@action Strike}, the worm splashes back down. It can use Improved Grab on this {@action Strike} and follow it up with Fast Swallow."
+						"The azure worm Swims up to its swim Speed, then Leaps vertically out of the water up to 30 feet, making a {@action Strike} against a creature at the apex of the jump (this lets it attack a creature within 45 feet of the water's surface). After the {@action Strike}, the worm splashes back down. It can use {@ability Improved Grab} on this {@action Strike} and follow it up with Fast Swallow."
 					],
 					"name": "Breach"
 				},
@@ -10261,7 +10261,7 @@
 						"Improved Grab",
 						"whip reposition"
 					],
-					"damage": "{@damage 4d6+17} fire plus {@damage 1d6} evil, Improved Grab, and whip reposition",
+					"damage": "{@damage 4d6+17} fire plus {@damage 1d6} evil, {@ability Improved Grab}, and whip reposition",
 					"types": [
 						"evil",
 						"fire"
@@ -10564,7 +10564,7 @@
 			"abilitiesBot": [
 				{
 					"entries": [
-						"When a banshee Strides at least 10 feet, they're {@condition concealed} until the start of their next turn."
+						"When a banshee {@action Stride||Strides} at least 10 feet, they're {@condition concealed} until the start of their next turn."
 					],
 					"name": "Spectral Ripple"
 				},
@@ -10753,7 +10753,7 @@
 					"effects": [
 						"Improved Grab"
 					],
-					"damage": "{@damage 4d12+18} piercing plus Improved Grab",
+					"damage": "{@damage 4d12+18} piercing plus {@ability Improved Grab}",
 					"types": [
 						"piercing"
 					]
@@ -10796,7 +10796,7 @@
 						"move"
 					],
 					"entries": [
-						"The baomal Swims or Strides alongside a creature or the hull of a vessel, dealing damage with the strong spikes on its shell. Each creature or ship the baomal is adjacent to at any point during its movement takes {@damage 6d6+10} slashing and piercing damage (DC 42 basic Reflex save). Against vessels, Shell Rake ignores the first 5 Hardness and creates an explosion of splinters that deals {@dice 3d6+5} damage to every creature within 10 feet of the deck's edge (DC 42 basic Reflex save)."
+						"The baomal Swims or {@action Stride||Strides} alongside a creature or the hull of a vessel, dealing damage with the strong spikes on its shell. Each creature or ship the baomal is adjacent to at any point during its movement takes {@damage 6d6+10} slashing and piercing damage (DC 42 basic Reflex save). Against vessels, Shell Rake ignores the first 5 Hardness and creates an explosion of splinters that deals {@dice 3d6+5} damage to every creature within 10 feet of the deck's edge (DC 42 basic Reflex save)."
 					],
 					"name": "Shell Rake"
 				},
@@ -11841,7 +11841,7 @@
 						"unit": "action"
 					},
 					"entries": [
-						"The boar Strides twice and then makes a tusk {@action Strike}. As long as it moved at least 20 feet, it gains a +2 circumstance bonus to its attack roll."
+						"The boar {@action Stride||Strides} twice and then makes a tusk {@action Strike}. As long as it moved at least 20 feet, it gains a +2 circumstance bonus to its attack roll."
 					],
 					"name": "Boar Charge"
 				}
@@ -13189,7 +13189,7 @@
 						"unit": "action"
 					},
 					"entries": [
-						"The bugbear thug Strides up to 10 feet and attempts to {@action Grapple} a creature they're {@condition undetected} by. If they succeed, they also deal fist damage to that creature."
+						"The bugbear thug {@action Stride||Strides} up to 10 feet and attempts to {@action Grapple} a creature they're {@condition undetected} by. If they succeed, they also deal fist damage to that creature."
 					],
 					"name": "Bushwhack"
 				},
@@ -14971,7 +14971,7 @@
 						"unit": "action"
 					},
 					"entries": [
-						"The catfolk pouncer Strides up to double their Speed. If the catfolk ends their movement within melee reach of at least one enemy, they can make a melee {@action Strike} against that enemy."
+						"The catfolk pouncer {@action Stride||Strides} up to double their Speed. If the catfolk ends their movement within melee reach of at least one enemy, they can make a melee {@action Strike} against that enemy."
 					],
 					"name": "Sudden Charge"
 				}
@@ -15087,7 +15087,7 @@
 					],
 					"trigger": "The cauthooj is the target of a melee",
 					"entries": [
-						"{@action Strike} and is adjacent to another enemy that is also within the reach of the melee {@action Strike}. The cauthooj nimbly hops aside, redirecting the triggering {@action Strike} against the adjacent enemy. The cauthooj Strides up to half its Speed, and this movement does not trigger reactions."
+						"{@action Strike} and is adjacent to another enemy that is also within the reach of the melee {@action Strike}. The cauthooj nimbly hops aside, redirecting the triggering {@action Strike} against the adjacent enemy. The cauthooj {@action Stride||Strides} up to half its Speed, and this movement does not trigger reactions."
 					],
 					"name": "Hop-Dodge"
 				}
@@ -15279,7 +15279,7 @@
 						"unit": "action"
 					},
 					"entries": [
-						"The cave bear Strides and makes a {@action Strike} at the end of that movement."
+						"The cave bear {@action Stride||Strides} and makes a {@action Strike} at the end of that movement."
 					],
 					"name": "Rush"
 				},
@@ -17670,7 +17670,7 @@
 					"hp": 270,
 					"note": null,
 					"abilities": [
-						"regeneration 10 (deactivated by cold iron)"
+						"{@ability regeneration} 10 (deactivated by cold iron)"
 					]
 				}
 			],
@@ -17765,7 +17765,7 @@
 					"effects": [
 						"Improved Grab"
 					],
-					"damage": "{@damage 3d6+14} bludgeoning plus Improved Grab",
+					"damage": "{@damage 3d6+14} bludgeoning plus {@ability Improved Grab}",
 					"types": [
 						"bludgeoning"
 					]
@@ -17996,7 +17996,7 @@
 					"effects": [
 						"Improved Grab"
 					],
-					"damage": "{@damage 3d10+18} piercing plus {@damage 2d6} fire and Improved Grab",
+					"damage": "{@damage 3d10+18} piercing plus {@damage 2d6} fire and {@ability Improved Grab}",
 					"types": [
 						"fire",
 						"piercing"
@@ -18566,7 +18566,7 @@
 						"unit": "action"
 					},
 					"entries": [
-						"The daeodon Strides twice and then makes a tusk {@action Strike}. As long as it moved at least 20 feet, it gains a +2 circumstance bonus to its attack roll.",
+						"The daeodon {@action Stride||Strides} twice and then makes a tusk {@action Strike}. As long as it moved at least 20 feet, it gains a +2 circumstance bonus to its attack roll.",
 						"A medium or smaller creature struck by this attack must succeed at a DC 19 Reflex save or be knocked {@condition prone} by the force of the blow."
 					],
 					"name": "Daeodon Charge"
@@ -19896,7 +19896,7 @@
 						"unit": "action"
 					},
 					"entries": [
-						"The deinonychus Strides up to 10 feet and then makes a {@action Strike}, or makes a {@action Strike} and then Strides up to 10 feet."
+						"The deinonychus {@action Stride||Strides} up to 10 feet and then makes a {@action Strike}, or makes a {@action Strike} and then {@action Stride||Strides} up to 10 feet."
 					],
 					"name": "Darting Attack"
 				},
@@ -21314,7 +21314,7 @@
 					"hp": 130,
 					"note": null,
 					"abilities": [
-						"regeneration 15 (deactivated by fire)"
+						"{@ability regeneration} 15 (deactivated by fire)"
 					]
 				}
 			],
@@ -21898,7 +21898,7 @@
 						"evocation"
 					],
 					"entries": [
-						"20 feet. All squares in the djinni's aura are {@quickref difficult terrain||3|terrain} for Striding and Flying creatures. Creatures with the {@trait air} trait are immune."
+						"20 feet. All squares in the djinni's aura are {@quickref difficult terrain||3|terrain} for {@action Stride||Striding} and Flying creatures. Creatures with the {@trait air} trait are immune."
 					],
 					"name": "Whirlwind"
 				}
@@ -22525,7 +22525,7 @@
 					"effects": [
 						"Improved Grab"
 					],
-					"damage": "{@damage 3d8+9} piercing plus Improved Grab",
+					"damage": "{@damage 3d8+9} piercing plus {@ability Improved Grab}",
 					"types": [
 						"piercing"
 					]
@@ -25940,7 +25940,7 @@
 						"unit": "action"
 					},
 					"entries": [
-						"The elananx Strides and makes a {@action Strike} at the end of that movement. If the elananx began this action {@condition hidden}, it remains {@condition hidden} until after the attack."
+						"The elananx {@action Stride||Strides} and makes a {@action Strike} at the end of that movement. If the elananx began this action {@condition hidden}, it remains {@condition hidden} until after the attack."
 					],
 					"name": "Pounce"
 				},
@@ -31754,7 +31754,7 @@
 						"unit": "action"
 					},
 					"entries": [
-						"The giant anaconda Strides, Climbs, or Swims up to half its Speed, pulling any creatures it has {@condition grabbed} with it."
+						"The giant anaconda {@action Stride||Strides}, Climbs, or Swims up to half its Speed, pulling any creatures it has {@condition grabbed} with it."
 					],
 					"name": "Slither"
 				},
@@ -32491,7 +32491,7 @@
 					"effects": [
 						"Improved Grab"
 					],
-					"damage": "{@damage 2d8+7} piercing plus {@damage 2d6} acid and Improved Grab",
+					"damage": "{@damage 2d8+7} piercing plus {@damage 2d6} acid and {@ability Improved Grab}",
 					"types": [
 						"acid",
 						"piercing"
@@ -32509,7 +32509,7 @@
 					],
 					"name": "Focused Assault",
 					"entries_as_xyz": [
-						"The flytrap attacks a single target with both its leaves. The flytrap makes one leaf {@action Strike}. On a success, the flytrap deals the damage from one leaf {@action Strike} plus an additional {@dice 1d8} damage for every leaf beyond the first. On a failure, the flytrap deals the damage from one leaf {@action Strike}, but it can't use Improved Grab. It deals no damage on a critical failure. This counts toward the flytrap's multiple attack penalty as a number of attacks equal to the number of leaves the flytrap has."
+						"The flytrap attacks a single target with both its leaves. The flytrap makes one leaf {@action Strike}. On a success, the flytrap deals the damage from one leaf {@action Strike} plus an additional {@dice 1d8} damage for every leaf beyond the first. On a failure, the flytrap deals the damage from one leaf {@action Strike}, but it can't use {@ability Improved Grab}. It deals no damage on a critical failure. This counts toward the flytrap's multiple attack penalty as a number of attacks equal to the number of leaves the flytrap has."
 					]
 				},
 				{
@@ -32671,7 +32671,7 @@
 						"visual"
 					],
 					"entries": [
-						"The giant frilled lizard Strides. If it ends that {@action Stride} adjacent to at least one other creature, it suddenly displays its colorful neck frills and issues a frightening hiss. Each adjacent creature must succeed at a DC 21 Will save or become {@condition frightened 2} (or {@condition frightened 3} on a critical failure). The creature is then temporarily immune to Intimidating Display for 1 minute."
+						"The giant frilled lizard {@action Stride||Strides}. If it ends that {@action Stride} adjacent to at least one other creature, it suddenly displays its colorful neck frills and issues a frightening hiss. Each adjacent creature must succeed at a DC 21 Will save or become {@condition frightened 2} (or {@condition frightened 3} on a critical failure). The creature is then temporarily immune to Intimidating Display for 1 minute."
 					],
 					"name": "Intimidating Display"
 				}
@@ -33033,7 +33033,7 @@
 						"unit": "action"
 					},
 					"entries": [
-						"The giant monitor lizard Strides twice and then makes a jaws {@action Strike}. If the lizard moved at least 20 feet away from its starting position, it gains a +2 circumstance bonus to this attack roll."
+						"The giant monitor lizard {@action Stride||Strides} twice and then makes a jaws {@action Strike}. If the lizard moved at least 20 feet away from its starting position, it gains a +2 circumstance bonus to this attack roll."
 					],
 					"name": "Lurching Charge"
 				},
@@ -35273,7 +35273,7 @@
 				},
 				{
 					"entries": [
-						"A gnoll ignores the first square of {@quickref difficult terrain||3|terrain} it moves into each time it Steps or Strides."
+						"A gnoll ignores the first square of {@quickref difficult terrain||3|terrain} it moves into each time it {@action Step||Steps} or {@action Stride||Strides}."
 					],
 					"name": "Rugged Travel"
 				}
@@ -35430,7 +35430,7 @@
 				},
 				{
 					"entries": [
-						"A gnoll ignores the first square of {@quickref difficult terrain||3|terrain} it moves into each time it Steps or Strides."
+						"A gnoll ignores the first square of {@quickref difficult terrain||3|terrain} it moves into each time it {@action Step||Steps} or {@action Stride||Strides}."
 					],
 					"name": "Rugged Travel"
 				}
@@ -35613,7 +35613,7 @@
 				},
 				{
 					"entries": [
-						"A gnoll ignores the first square of {@quickref difficult terrain||3|terrain} it moves into each time it Steps or Strides."
+						"A gnoll ignores the first square of {@quickref difficult terrain||3|terrain} it moves into each time it {@action Step||Steps} or {@action Stride||Strides}."
 					],
 					"name": "Rugged Travel"
 				}
@@ -35724,7 +35724,7 @@
 						"entry": "{@as R}"
 					},
 					"entries": [
-						"The goblin warrior Steps."
+						"The goblin warrior {@action Step||Steps}."
 					],
 					"name": "Goblin Scuttle",
 					"trigger": "A goblin ally ends a move action adjacent to the warrior."
@@ -35872,7 +35872,7 @@
 					"trigger": "The rider issues a command to the goblin dog.",
 					"requirements": "A creature must be mounted on the goblin dog.",
 					"entries": [
-						"The goblin dog Steps before following the command."
+						"The goblin dog {@action Step||Steps} before following the command."
 					],
 					"name": "Juke"
 				}
@@ -36043,7 +36043,7 @@
 						"entry": "{@as R}"
 					},
 					"entries": [
-						"The goblin warrior Steps."
+						"The goblin warrior {@action Step||Steps}."
 					],
 					"name": "Goblin Scuttle",
 					"trigger": "A goblin ally ends a move action adjacent to the warrior."
@@ -36173,7 +36173,7 @@
 						"entry": "{@as R}"
 					},
 					"entries": [
-						"The goblin warrior Steps."
+						"The goblin warrior {@action Step||Steps}."
 					],
 					"name": "Goblin Scuttle",
 					"trigger": "A goblin ally ends a move action adjacent to the warrior."
@@ -36337,7 +36337,7 @@
 					},
 					"trigger": "A goblin ally ends a move action adjacent to the warrior.",
 					"entries": [
-						"The goblin warrior Steps."
+						"The goblin warrior {@action Step||Steps}."
 					],
 					"name": "Goblin Scuttle"
 				}
@@ -36504,7 +36504,7 @@
 					"effects": [
 						"Improved Grab"
 					],
-					"damage": "{@damage 3d10+12} piercing plus Improved Grab",
+					"damage": "{@damage 3d10+12} piercing plus {@ability Improved Grab}",
 					"types": [
 						"piercing"
 					]
@@ -36548,7 +36548,7 @@
 						"unit": "action"
 					},
 					"entries": [
-						"The gogiteth Strides three times. Once per {@action Stride}, it can attempt a leg {@action Strike} against a creature in its reach at any point during the {@action Stride}; it must make each attack against a different creature, but it doesn't apply its multiple attack penalty until after making all its Strikes. If any of the Strikes result in a critical failure, Skittering Assault ends."
+						"The gogiteth {@action Stride||Strides} three times. Once per {@action Stride}, it can attempt a leg {@action Strike} against a creature in its reach at any point during the {@action Stride}; it must make each attack against a different creature, but it doesn't apply its multiple attack penalty until after making all its Strikes. If any of the Strikes result in a critical failure, Skittering Assault ends."
 					],
 					"name": "Skittering Assault"
 				}
@@ -36651,7 +36651,7 @@
 						"attack"
 					],
 					"entries": [
-						"The hunting spider automatically notices the creature and Strides, Climbs, or Descends on a Web before it rolls initiative."
+						"The hunting spider automatically notices the creature and {@action Stride||Strides}, Climbs, or Descends on a Web before it rolls initiative."
 					],
 					"name": "Spring Upon Prey",
 					"trigger": "A creature touches the hunting spider's web while the spider is on it.",
@@ -37275,7 +37275,7 @@
 						"unit": "action"
 					},
 					"entries": [
-						"The great cyclops Strides twice and makes a horn {@action Strike}. If it moved at least 20 feet away from its starting position, the {@action Strike}'s damage is increased to {@dice 3d10+20}."
+						"The great cyclops {@action Stride||Strides} twice and makes a horn {@action Strike}. If it moved at least 20 feet away from its starting position, the {@action Strike}'s damage is increased to {@dice 3d10+20}."
 					],
 					"name": "Powerful Charge"
 				},
@@ -37853,7 +37853,7 @@
 					],
 					"name": "Flaming Gallop",
 					"entries_as_xyz": [
-						"The nightmare Strides or Flies up to triple its Speed. Its hooves burst with intense flame, dealing {@damage 3d6} fire damage (DC 24 basic Reflex save) once to each creature other than the nightmare's rider that the nightmare moves adjacent to during its gallop."
+						"The nightmare {@action Stride||Strides} or Flies up to triple its Speed. Its hooves burst with intense flame, dealing {@damage 3d6} fire damage (DC 24 basic Reflex save) once to each creature other than the nightmare's rider that the nightmare moves adjacent to during its gallop."
 					]
 				},
 				{
@@ -38459,7 +38459,7 @@
 						"unit": "action"
 					},
 					"entries": [
-						"The griffon Strides and makes a talon {@action Strike} at the end of that movement. If the griffon began this action {@condition hidden}, it remains {@condition hidden} until after the attack."
+						"The griffon {@action Stride||Strides} and makes a talon {@action Strike} at the end of that movement. If the griffon began this action {@condition hidden}, it remains {@condition hidden} until after the attack."
 					],
 					"name": "Pounce"
 				}
@@ -39230,7 +39230,7 @@
 						"unit": "action"
 					},
 					"entries": [
-						"The grizzly bear Strides and makes a {@action Strike} at the end of that movement."
+						"The grizzly bear {@action Stride||Strides} and makes a {@action Strike} at the end of that movement."
 					],
 					"name": "Rush"
 				},
@@ -40073,7 +40073,7 @@
 						"reach 20 feet"
 					],
 					"effects": [],
-					"damage": "{@damage 4d12+18} bludgeoning plus Improved Grab or Improved Push 20 feet",
+					"damage": "{@damage 4d12+18} bludgeoning plus {@ability Improved Grab} or Improved Push 20 feet",
 					"types": [
 						"bludgeoning"
 					]
@@ -40958,7 +40958,7 @@
 						"unit": "action"
 					},
 					"entries": [
-						"The archer Strides, Steps, or Sneaks, then Interacts to reload."
+						"The archer {@action Stride||Strides}, {@action Step||Steps}, or {@action Sneak||Sneaks}, then Interacts to reload."
 					],
 					"name": "Running Reload"
 				}
@@ -41756,7 +41756,7 @@
 					"trigger": "A creature touches the hunting spider's web while the spider is on it.",
 					"requirements": "Initiative has not yet been rolled.",
 					"entries": [
-						"The hunting spider automatically notices the creature and Strides, Climbs, or Descends on a Web before it rolls initiative."
+						"The hunting spider automatically notices the creature and {@action Stride||Strides}, Climbs, or Descends on a Web before it rolls initiative."
 					],
 					"name": "Spring Upon Prey"
 				}
@@ -41955,7 +41955,7 @@
 						"unit": "action"
 					},
 					"entries": [
-						"The hyena makes a jaws {@action Strike} against a {@condition prone} enemy. If it hits, in addition to dealing damage, the hyena Strides up to 10 feet, dragging the enemy along."
+						"The hyena makes a jaws {@action Strike} against a {@condition prone} enemy. If it hits, in addition to dealing damage, the hyena {@action Stride||Strides} up to 10 feet, dragging the enemy along."
 					],
 					"name": "Drag"
 				},
@@ -42243,7 +42243,7 @@
 						"unit": "action"
 					},
 					"entries": [
-						"The hyena makes a jaws {@action Strike} against a {@condition prone} enemy. If it hits, in addition to dealing damage, the hyena Strides up to 10 feet, dragging the enemy along."
+						"The hyena makes a jaws {@action Strike} against a {@condition prone} enemy. If it hits, in addition to dealing damage, the hyena {@action Stride||Strides} up to 10 feet, dragging the enemy along."
 					],
 					"name": "Drag"
 				},
@@ -42341,7 +42341,7 @@
 					"hp": 330,
 					"note": null,
 					"abilities": [
-						"regeneration 10 (deactivated by cold iron)"
+						"{@ability regeneration} 10 (deactivated by cold iron)"
 					]
 				}
 			],
@@ -42442,7 +42442,7 @@
 					"effects": [
 						"Improved Grab"
 					],
-					"damage": "{@damage 3d6+17} bludgeoning plus Improved Grab",
+					"damage": "{@damage 3d6+17} bludgeoning plus {@ability Improved Grab}",
 					"types": [
 						"bludgeoning"
 					]
@@ -43119,7 +43119,7 @@
 						"unit": "action"
 					},
 					"entries": [
-						"The iron golem Strides up to its Speed, pushing back each creature whose space it moves into and damaging them if they try to stop its movement. A creature can attempt to bar the way by succeeding at a DC 37 Fortitude save. On a critical success, the resisting creature takes no damage; otherwise, it is damaged as if hit by the golem's fist."
+						"The iron golem {@action Stride||Strides} up to its Speed, pushing back each creature whose space it moves into and damaging them if they try to stop its movement. A creature can attempt to bar the way by succeeding at a DC 37 Fortitude save. On a critical success, the resisting creature takes no damage; otherwise, it is damaged as if hit by the golem's fist."
 					],
 					"name": "Inexorable March"
 				},
@@ -44521,7 +44521,7 @@
 						"unit": "action"
 					},
 					"entries": [
-						"The kobold warrior Strides up to its Speed plus 5 feet and gains a +2 circumstance bonus to AC against reactions triggered by this movement. It must end this movement in a space that's not adjacent to any enemy."
+						"The kobold warrior {@action Stride||Strides} up to its Speed plus 5 feet and gains a +2 circumstance bonus to AC against reactions triggered by this movement. It must end this movement in a space that's not adjacent to any enemy."
 					],
 					"name": "Hurried Retreat",
 					"requirements": "The kobold warrior is adjacent to at least one enemy."
@@ -44679,7 +44679,7 @@
 					},
 					"requirements": "The kobold warrior is adjacent to at least one enemy.",
 					"entries": [
-						"The kobold warrior Strides up to its Speed plus 5 feet and gains a +2 circumstance bonus to AC against reactions triggered by this movement. It must end this movement in a space that's not adjacent to any enemy."
+						"The kobold warrior {@action Stride||Strides} up to its Speed plus 5 feet and gains a +2 circumstance bonus to AC against reactions triggered by this movement. It must end this movement in a space that's not adjacent to any enemy."
 					],
 					"name": "Hurried Retreat"
 				},
@@ -44806,7 +44806,7 @@
 					"hp": 215,
 					"note": null,
 					"abilities": [
-						"regeneration 15 (deactivated by chaotic)"
+						"{@ability regeneration} 15 (deactivated by chaotic)"
 					]
 				}
 			],
@@ -46859,7 +46859,7 @@
 						"unit": "action"
 					},
 					"entries": [
-						"The leopard Strides and makes a {@action Strike} at the end of that movement. If the leopard began this action {@condition hidden}, it remains {@condition hidden} until after this ability's {@action Strike}."
+						"The leopard {@action Stride||Strides} and makes a {@action Strike} at the end of that movement. If the leopard began this action {@condition hidden}, it remains {@condition hidden} until after this ability's {@action Strike}."
 					],
 					"name": "Pounce"
 				},
@@ -48154,7 +48154,7 @@
 						"unit": "action"
 					},
 					"entries": [
-						"The lion Strides and makes a {@action Strike} at the end of that movement. If the lion began this action {@condition hidden}, it remains {@condition hidden} until after the ability's {@action Strike}."
+						"The lion {@action Stride||Strides} and makes a {@action Strike} at the end of that movement. If the lion began this action {@condition hidden}, it remains {@condition hidden} until after the ability's {@action Strike}."
 					],
 					"name": "Pounce"
 				},
@@ -50821,7 +50821,7 @@
 					"effects": [
 						"Improved Grab"
 					],
-					"damage": "{@damage 2d12+10} piercing plus Improved Grab",
+					"damage": "{@damage 2d12+10} piercing plus {@ability Improved Grab}",
 					"types": [
 						"piercing"
 					]
@@ -51659,7 +51659,7 @@
 						"unit": "action"
 					},
 					"entries": [
-						"The minotaur Strides twice, then makes a horn {@action Strike}. If it moved at least 20 feet from its starting position, the {@action Strike}'s damage is increased to {@dice 2d8+10}."
+						"The minotaur {@action Stride||Strides} twice, then makes a horn {@action Strike}. If it moved at least 20 feet from its starting position, the {@action Strike}'s damage is increased to {@dice 2d8+10}."
 					],
 					"name": "Powerful Charge"
 				}
@@ -51993,7 +51993,7 @@
 					"hp": 240,
 					"note": null,
 					"abilities": [
-						"regeneration 20 (deactivated by acid or fire)"
+						"{@ability regeneration} 20 (deactivated by acid or fire)"
 					]
 				}
 			],
@@ -52363,7 +52363,7 @@
 					"hp": 350,
 					"note": null,
 					"abilities": [
-						"regeneration 50 (deactivated by sonic)"
+						"{@ability regeneration} 50 (deactivated by sonic)"
 					]
 				}
 			],
@@ -52423,7 +52423,7 @@
 					"effects": [
 						"Improved Grab"
 					],
-					"damage": "{@damage 4d12+18} piercing plus Improved Grab",
+					"damage": "{@damage 4d12+18} piercing plus {@ability Improved Grab}",
 					"types": [
 						"piercing"
 					]
@@ -52439,7 +52439,7 @@
 					"effects": [
 						"Improved Grab"
 					],
-					"damage": "{@damage 4d10+18} bludgeoning plus Improved Grab",
+					"damage": "{@damage 4d10+18} bludgeoning plus {@ability Improved Grab}",
 					"types": [
 						"bludgeoning"
 					]
@@ -54751,7 +54751,7 @@
 						"fire"
 					],
 					"entries": [
-						"The nightmare Strides or Flies up to triple its Speed. Its hooves burst with intense flame, dealing {@damage 3d6} fire damage (DC 24 basic Reflex save) once to each creature other than the nightmare's rider that the nightmare moves adjacent to during its gallop."
+						"The nightmare {@action Stride||Strides} or Flies up to triple its Speed. Its hooves burst with intense flame, dealing {@damage 3d6} fire damage (DC 24 basic Reflex save) once to each creature other than the nightmare's rider that the nightmare moves adjacent to during its gallop."
 					],
 					"name": "Flaming Gallop"
 				}
@@ -55833,7 +55833,7 @@
 						"unit": "action"
 					},
 					"entries": [
-						"The ogre glutton Strides twice and makes a jaws {@action Strike}. If they damage a living creature with this {@action Strike}, the temporary Hit Points they receive from glutton's feast is increased to {@dice 2d4}."
+						"The ogre glutton {@action Stride||Strides} twice and makes a jaws {@action Strike}. If they damage a living creature with this {@action Strike}, the temporary Hit Points they receive from glutton's feast is increased to {@dice 2d4}."
 					],
 					"name": "Glutton's Rush"
 				},
@@ -56846,7 +56846,7 @@
 						"mental"
 					],
 					"entries": [
-						"The owlbear makes a Bloodcurdling Screech and Strides twice. All creatures within 80 feet of the owlbear at any point during this movement are subjected to the effects of Bloodcurdling Screech."
+						"The owlbear makes a Bloodcurdling Screech and {@action Stride||Strides} twice. All creatures within 80 feet of the owlbear at any point during this movement are subjected to the effects of Bloodcurdling Screech."
 					],
 					"name": "Screeching Advance"
 				}
@@ -57414,7 +57414,7 @@
 					"hp": 300,
 					"note": null,
 					"abilities": [
-						"regeneration 20 (deactivated by cold or evil)",
+						"{@ability regeneration} 20 (deactivated by cold or evil)",
 						"self-resurrection"
 					]
 				}
@@ -57720,7 +57720,7 @@
 					"hp": 335,
 					"note": null,
 					"abilities": [
-						"regeneration 30 (deactivated by good)"
+						"{@ability regeneration} 30 (deactivated by good)"
 					]
 				}
 			],
@@ -57841,7 +57841,7 @@
 					"effects": [
 						"Improved Grab"
 					],
-					"damage": "{@damage 4d10+17} bludgeoning plus {@damage 2d6} evil and Improved Grab",
+					"damage": "{@damage 4d10+17} bludgeoning plus {@damage 2d6} evil and {@ability Improved Grab}",
 					"types": [
 						"bludgeoning",
 						"evil"
@@ -58544,7 +58544,7 @@
 					"hp": 335,
 					"note": null,
 					"abilities": [
-						"regeneration 20 (deactivated by chaotic)"
+						"{@ability regeneration} 20 (deactivated by chaotic)"
 					]
 				}
 			],
@@ -59566,7 +59566,7 @@
 					"effects": [
 						"Improved Grab"
 					],
-					"damage": "{@damage 3d10+15} piercing plus Improved Grab",
+					"damage": "{@damage 3d10+15} piercing plus {@ability Improved Grab}",
 					"types": [
 						"piercing"
 					]
@@ -61407,7 +61407,7 @@
 						"unit": "action"
 					},
 					"entries": [
-						"The redcap Strides up to half its Speed and makes a boot {@action Strike} at any point during that movement. If the boot {@action Strike} hits a {@condition prone} creature, it deals an extra {@damage 2d6} {@condition persistent damage ||persistent bleed damage}."
+						"The redcap {@action Stride||Strides} up to half its Speed and makes a boot {@action Strike} at any point during that movement. If the boot {@action Strike} hits a {@condition prone} creature, it deals an extra {@damage 2d6} {@condition persistent damage ||persistent bleed damage}."
 					],
 					"name": "Stomp"
 				}
@@ -61990,7 +61990,7 @@
 						"unit": "action"
 					},
 					"entries": [
-						"The riding pony Strides twice. It has a +10-foot circumstance bonus to its Speed during these Strides."
+						"The riding pony {@action Stride||Strides} twice. It has a +10-foot circumstance bonus to its Speed during these {@action Stride||Strides}."
 					],
 					"name": "Gallop"
 				}
@@ -62107,7 +62107,7 @@
 						"unit": "action"
 					},
 					"entries": [
-						"The riding pony Strides twice. It has a +10-foot circumstance bonus to its Speed during these Strides."
+						"The riding pony {@action Stride||Strides} twice. It has a +10-foot circumstance bonus to its Speed during these {@action Stride||Strides}."
 					],
 					"name": "Gallop"
 				}
@@ -62409,7 +62409,7 @@
 					"effects": [
 						"Improved Grab"
 					],
-					"damage": "{@damage 2d8+12} slashing plus Improved Grab",
+					"damage": "{@damage 2d8+12} slashing plus {@ability Improved Grab}",
 					"types": [
 						"slashing"
 					]
@@ -64698,7 +64698,7 @@
 						"move"
 					],
 					"entries": [
-						"The sea serpent extends the spines along its back and Swims or Strides. Each creature the serpent is adjacent to at any point during its movement takes {@damage 4d6+8} slashing damage (DC 32 basic Reflex save)."
+						"The sea serpent extends the spines along its back and Swims or {@action Stride||Strides}. Each creature the serpent is adjacent to at any point during its movement takes {@damage 4d6+8} slashing damage (DC 32 basic Reflex save)."
 					],
 					"name": "Spine Rake"
 				},
@@ -65561,7 +65561,7 @@
 					"effects": [
 						"Improved Grab"
 					],
-					"damage": "{@damage 3d8+17} bludgeoning plus {@damage 1d6} evil and Improved Grab",
+					"damage": "{@damage 3d8+17} bludgeoning plus {@damage 1d6} evil and {@ability Improved Grab}",
 					"types": [
 						"bludgeoning",
 						"evil"
@@ -67102,7 +67102,7 @@
 						"unit": "action"
 					},
 					"entries": [
-						"The giant Strides and makes a horns {@action Strike} with a +4 circumstance bonus to damage. If the strike hits, the giant attempts to {@action Demoralize} the target."
+						"The giant {@action Stride||Strides} and makes a horns {@action Strike} with a +4 circumstance bonus to damage. If the strike hits, the giant attempts to {@action Demoralize} the target."
 					],
 					"name": "Terrifying Charge"
 				}
@@ -67245,7 +67245,7 @@
 						"unit": "action"
 					},
 					"entries": [
-						"The horse Strides twice, with its Speed increased by 10 feet."
+						"The horse {@action Stride||Strides} twice, with its Speed increased by 10 feet."
 					],
 					"name": "Gallop"
 				},
@@ -68258,7 +68258,7 @@
 						"unit": "action"
 					},
 					"entries": [
-						"The smilodon Strides and makes a {@action Strike} at the end of that movement. If the smilodon began this action {@condition hidden}, it remains {@condition hidden} until after this ability's {@action Strike}."
+						"The smilodon {@action Stride||Strides} and makes a {@action Strike} at the end of that movement. If the smilodon began this action {@condition hidden}, it remains {@condition hidden} until after this ability's {@action Strike}."
 					],
 					"name": "Pounce"
 				},
@@ -68397,7 +68397,7 @@
 					"effects": [
 						"Improved Grab"
 					],
-					"damage": "{@damage 1d8+2} piercing plus {@damage 1d6} acid and Improved Grab",
+					"damage": "{@damage 1d8+2} piercing plus {@damage 1d6} acid and {@ability Improved Grab}",
 					"types": [
 						"acid",
 						"piercing"
@@ -68411,7 +68411,7 @@
 						"unit": "action"
 					},
 					"entries": [
-						"The flytrap attacks a single target with both its leaves. The flytrap makes one leaf {@action Strike}. On a success, the flytrap deals the damage from one leaf {@action Strike} plus an additional {@dice 1d8} damage for every leaf beyond the first. On a failure, the flytrap deals the damage from one leaf {@action Strike}, but it can't use Improved Grab. It deals no damage on a critical failure. This counts toward the flytrap's multiple attack penalty as a number of attacks equal to the number of leaves the flytrap has."
+						"The flytrap attacks a single target with both its leaves. The flytrap makes one leaf {@action Strike}. On a success, the flytrap deals the damage from one leaf {@action Strike} plus an additional {@dice 1d8} damage for every leaf beyond the first. On a failure, the flytrap deals the damage from one leaf {@action Strike}, but it can't use {@ability Improved Grab}. It deals no damage on a critical failure. This counts toward the flytrap's multiple attack penalty as a number of attacks equal to the number of leaves the flytrap has."
 					],
 					"name": "Focused Assault"
 				},
@@ -68876,7 +68876,7 @@
 						"unit": "action"
 					},
 					"entries": [
-						"The sphinx Strides and makes a {@action Strike} at the end of that movement. If the sphinx began this action {@condition hidden}, they remain {@condition hidden} until after the attack."
+						"The sphinx {@action Stride||Strides} and makes a {@action Strike} at the end of that movement. If the sphinx began this action {@condition hidden}, they remain {@condition hidden} until after the attack."
 					],
 					"name": "Pounce"
 				},
@@ -69294,7 +69294,7 @@
 					},
 					"trigger": "The stegosaurus is targeted with a melee attack.",
 					"entries": [
-						"The stegosaurus leans its dorsal plates into the attack, gaining a +2 circumstance bonus to its AC against the triggering attack. If the attack misses, the stegosaurus Steps after the attack."
+						"The stegosaurus leans its dorsal plates into the attack, gaining a +2 circumstance bonus to its AC against the triggering attack. If the attack misses, the stegosaurus {@action Step||Steps} after the attack."
 					],
 					"name": "Dorsal Deflection"
 				}
@@ -69683,7 +69683,7 @@
 						"unit": "action"
 					},
 					"entries": [
-						"The stone golem Strides up to its Speed, pushing back each creature whose space it moves into and damaging them if they try to stop its movement. A creature can attempt to bar the way by succeeding at a DC 34 Fortitude save. On a critical success, the resisting creature takes no damage; otherwise it is damaged as if hit by the golem's fist."
+						"The stone golem {@action Stride||Strides} up to its Speed, pushing back each creature whose space it moves into and damaging them if they try to stop its movement. A creature can attempt to bar the way by succeeding at a DC 34 Fortitude save. On a critical success, the resisting creature takes no damage; otherwise it is damaged as if hit by the golem's fist."
 					],
 					"name": "Inexorable March"
 				},
@@ -70684,7 +70684,7 @@
 					"hp": 400,
 					"note": null,
 					"abilities": [
-						"regeneration 15 (deactivated by cold iron)"
+						"{@ability regeneration} 15 (deactivated by cold iron)"
 					]
 				}
 			],
@@ -70781,7 +70781,7 @@
 					"effects": [
 						"Improved Grab"
 					],
-					"damage": "{@damage 4d6+18} bludgeoning plus Improved Grab",
+					"damage": "{@damage 4d6+18} bludgeoning plus {@ability Improved Grab}",
 					"types": [
 						"bludgeoning"
 					]
@@ -70847,7 +70847,7 @@
 						"unit": "action"
 					},
 					"entries": [
-						"The tarn linnorm Strides and then makes a jaws {@action Strike} with each of its heads, each against a different target. These attacks count toward the tarn linnorm's multiple attack penalty, and the multiple attack penalty doesn't increase until after the tarn linnorm makes all of these attacks."
+						"The tarn linnorm {@action Stride||Strides} and then makes a jaws {@action Strike} with each of its heads, each against a different target. These attacks count toward the tarn linnorm's multiple attack penalty, and the multiple attack penalty doesn't increase until after the tarn linnorm makes all of these attacks."
 					],
 					"name": "Double Bite"
 				},
@@ -71164,7 +71164,7 @@
 					"hp": 370,
 					"note": null,
 					"abilities": [
-						"regeneration 25 (deactivated by cold)"
+						"{@ability regeneration} 25 (deactivated by cold)"
 					]
 				}
 			],
@@ -71233,7 +71233,7 @@
 						"reach 20 feet"
 					],
 					"effects": [],
-					"damage": "{@damage 4d10+16} bludgeoning plus {@damage 2d6} chaotic, {@damage 2d6} evil, and Improved Grab or Improved Push 20 feet (40 feet on a critical hit)",
+					"damage": "{@damage 4d10+16} bludgeoning plus {@damage 2d6} chaotic, {@damage 2d6} evil, and {@ability Improved Grab} or Improved Push 20 feet (40 feet on a critical hit)",
 					"types": [
 						"bludgeoning",
 						"chaotic",
@@ -71857,7 +71857,7 @@
 						"unit": "action"
 					},
 					"entries": [
-						"The tiger Strides and makes a {@action Strike} at the end of that movement. If the tiger began this action {@condition hidden}, it remains {@condition hidden} until after this ability's {@action Strike}."
+						"The tiger {@action Stride||Strides} and makes a {@action Strike} at the end of that movement. If the tiger began this action {@condition hidden}, it remains {@condition hidden} until after this ability's {@action Strike}."
 					],
 					"name": "Pounce"
 				},
@@ -71970,7 +71970,7 @@
 					"hp": 440,
 					"note": null,
 					"abilities": [
-						"regeneration 20 (deactivated by cold iron)"
+						"{@ability regeneration} 20 (deactivated by cold iron)"
 					]
 				}
 			],
@@ -72074,7 +72074,7 @@
 					"effects": [
 						"Improved Grab"
 					],
-					"damage": "{@damage 4d6+19} bludgeoning plus Improved Grab",
+					"damage": "{@damage 4d6+19} bludgeoning plus {@ability Improved Grab}",
 					"types": [
 						"bludgeoning"
 					]
@@ -72292,7 +72292,7 @@
 					"hp": 550,
 					"note": null,
 					"abilities": [
-						"regeneration 50 (deactivated by good)"
+						"{@ability regeneration} 50 (deactivated by good)"
 					]
 				}
 			],
@@ -72686,7 +72686,7 @@
 						"unit": "action"
 					},
 					"entries": [
-						"The triceratops Strides up to 10 feet and then makes a {@action Strike}."
+						"The triceratops {@action Stride||Strides} up to 10 feet and then makes a {@action Strike}."
 					],
 					"name": "Lumbering Charge"
 				},
@@ -72791,7 +72791,7 @@
 					"hp": 115,
 					"note": null,
 					"abilities": [
-						"regeneration 20 (deactivated by acid or fire)"
+						"{@ability regeneration} 20 (deactivated by acid or fire)"
 					]
 				}
 			],
@@ -72943,7 +72943,7 @@
 					"hp": 220,
 					"note": null,
 					"abilities": [
-						"regeneration 30 (deactivated by acid or fire)"
+						"{@ability regeneration} 30 (deactivated by acid or fire)"
 					]
 				}
 			],
@@ -73068,7 +73068,7 @@
 						"unit": "action"
 					},
 					"entries": [
-						"The troll king Strides twice in a straight line. It can make up to two claw Strikes during this movement and one jaws {@action Strike} at the end of its movement. It can't {@action Strike} the same creature more than once."
+						"The troll king {@action Stride||Strides} twice in a straight line. It can make up to two claw Strikes during this movement and one jaws {@action Strike} at the end of its movement. It can't {@action Strike} the same creature more than once."
 					],
 					"name": "Unstoppable Charge"
 				}
@@ -73477,7 +73477,7 @@
 						"unit": "action"
 					},
 					"entries": [
-						"The unicorn Strides up to double its Speed in a straight line and then makes a horn {@action Strike}. If the unicorn moved at least 20 feet, it deals an additional {@dice 2d6} damage on a hit."
+						"The unicorn {@action Stride||Strides} up to double its Speed in a straight line and then makes a horn {@action Strike}. If the unicorn moved at least 20 feet, it deals an additional {@dice 2d6} damage on a hit."
 					],
 					"name": "Powerful Charge"
 				}
@@ -75109,7 +75109,7 @@
 						"unit": "action"
 					},
 					"entries": [
-						"The velociraptor Strides up to 10 feet, ignoring {@quickref difficult terrain||3|terrain} as it leaps over obstacles. It then makes a {@action Strike} with its talons, gaining a +1 circumstance bonus to its attack roll."
+						"The velociraptor {@action Stride||Strides} up to 10 feet, ignoring {@quickref difficult terrain||3|terrain} as it leaps over obstacles. It then makes a {@action Strike} with its talons, gaining a +1 circumstance bonus to its attack roll."
 					],
 					"name": "Leaping Charge"
 				},
@@ -75210,7 +75210,7 @@
 					},
 					"trigger": "A creature ends its movement adjacent to the viper or within the viper's space.",
 					"entries": [
-						"The viper Strides, Climbs, or Swims up to 10 feet (or up to the relevant Speed, if that Speed is less than 10 feet). It must end its movement in a location that isn't within 5 feet of a foe. This movement doesn't trigger reactions."
+						"The viper {@action Stride||Strides}, Climbs, or Swims up to 10 feet (or up to the relevant Speed, if that Speed is less than 10 feet). It must end its movement in a location that isn't within 5 feet of a foe. This movement doesn't trigger reactions."
 					],
 					"name": "Slink"
 				}
@@ -75939,7 +75939,7 @@
 						"unit": "action"
 					},
 					"entries": [
-						"The riding pony Strides twice. It has a +10-foot circumstance bonus to its Speed during these Strides."
+						"The riding pony {@action Stride||Strides} twice. It has a +10-foot circumstance bonus to its Speed during these {@action Stride||Strides}."
 					],
 					"name": "Gallop"
 				}
@@ -76055,7 +76055,7 @@
 						"unit": "action"
 					},
 					"entries": [
-						"The riding pony Strides twice. It has a +10-foot circumstance bonus to its Speed during these Strides."
+						"The riding pony {@action Stride||Strides} twice. It has a +10-foot circumstance bonus to its Speed during these {@action Stride||Strides}."
 					],
 					"name": "Gallop"
 				}
@@ -76835,7 +76835,7 @@
 					},
 					"trigger": "A creature touches the web lurker's web while the web lurker is on it.",
 					"entries": [
-						"Requirement Initiative has not yet been rolled. The web lurker automatically notices the creature and Strides or Climbs before rolling initiative."
+						"Requirement Initiative has not yet been rolled. The web lurker automatically notices the creature and {@action Stride||Strides} or Climbs before rolling initiative."
 					],
 					"name": "Spring upon Prey"
 				}
@@ -77044,7 +77044,7 @@
 					"effects": [
 						"Improved Grab"
 					],
-					"damage": "{@damage 4d12+10} bludgeoning plus Improved Grab",
+					"damage": "{@damage 4d12+10} bludgeoning plus {@ability Improved Grab}",
 					"types": [
 						"bludgeoning"
 					]
@@ -77221,7 +77221,7 @@
 					"hp": 315,
 					"note": null,
 					"abilities": [
-						"regeneration 30 (deactivated by cold iron)"
+						"{@ability regeneration} 30 (deactivated by cold iron)"
 					]
 				}
 			],
@@ -80004,7 +80004,7 @@
 					},
 					"trigger": "The yeti is {@condition hidden} or {@condition undetected} while not in combat, and a creature would observe it.",
 					"entries": [
-						"The yeti Strides or Climbs up to half its Speed to a location where it can {@action Hide}, then Hides. If its new {@skill Stealth} check result meets or exceeds the triggering creature's {@skill Perception} DC, the yeti remains {@condition hidden}."
+						"The yeti {@action Stride||Strides} or Climbs up to half its Speed to a location where it can {@action Hide}, then Hides. If its new {@skill Stealth} check result meets or exceeds the triggering creature's {@skill Perception} DC, the yeti remains {@condition hidden}."
 					],
 					"name": "Vanish"
 				}
