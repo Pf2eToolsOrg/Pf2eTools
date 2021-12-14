@@ -3520,7 +3520,7 @@ Renderer.ancestry = {
 
 Renderer.archetype = {
 	getCompactRenderedString (archetype) {
-		const renderer = Renderer.get();
+		const renderer = Renderer.get().setFirstSection(true);
 		return `${renderer.render({type: "pf2-h3", name: archetype.name})}
 		${renderer.render(archetype.entries)}`;
 	},
