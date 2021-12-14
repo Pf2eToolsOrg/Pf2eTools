@@ -994,7 +994,7 @@ Parser.getNormalisedRange = function (range) {
 			case UNT_FEET: multiplier = Parser.INCHES_PER_FOOT; distance = dist.amount; break;
 			case UNT_MILES: multiplier = Parser.INCHES_PER_FOOT * Parser.FEET_PER_MILE; distance = dist.amount; break;
 			case RNG_TOUCH: distance = 1; break;
-			case RNG_UNLIMITED_SAME_PLANE: distance = 900000000; break; // from BolS (homebrew)
+			case RNG_UNLIMITED_SAME_PLANE: distance = 900000000; break;
 			case RNG_UNLIMITED: distance = 900000001; break;
 			case "unknown": distance = 900000002; break;
 			default: {
