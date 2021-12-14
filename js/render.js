@@ -3799,14 +3799,14 @@ Renderer.creature = {
 		const hp = cr.hp
 		for (let i = 0; i < hp.length; i++) {
 			renderStack.push(`<span><strong>HP&nbsp;</strong>${hp[i].note != null ? `${hp[i].note} ` : ``}${hp[i].hp}`)
-			renderStack.push(`${hp[i].abilities != null ? `, ${hp[i].abilities.join(", ")}` : ``}`)
+			renderStack.push(`${renderer.render(`${hp[i].abilities != null ? `, ${hp[i].abilities.join(", ")}` : ``}`)}`)
 			renderStack.push(`${(i === hp.length - 1) ? `` : ` `}`)
 		}
 		if (cr.hardness != null) {
 			renderStack.push(`; <strong>Hardness&nbsp;</strong>${cr.hardness}`)
 		}
 		if (cr.immunities != null) {
-			renderStack.push(`; <strong>Immunities&nbsp;</strong>${cr.immunities.damage.concat(cr.immunities.condition).sort().join(", ")}`)
+			renderStack.push(`; <strong>Immunities&nbsp;</strong>${(cr.immunities.damage ? cr.immunities.damage.concat(cr.immunities.condition) : cr.immunities.condition).sort().join(", ")}`)
 		}
 		if (cr.weaknesses != null) {
 			renderStack.push(`; <strong>Weaknesses&nbsp;</strong>`)

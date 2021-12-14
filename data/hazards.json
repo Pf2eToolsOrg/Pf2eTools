@@ -1965,7 +1965,7 @@
 					},
 					"trigger": "A carcass is touched or jostled",
 					"entries": [
-						"Each creature within 30 feet of any centipede carcass takes {@damage 4d4} piercing damage (DC 22 basic Reflex save), and the area becomes difficult terrain due to the many sharpened legs on the ground. Each creature that Strides more than 10 feet through the area must succeed at a DC 20 {@skill Acrobatics} check or take {@damage 1d4} piercing damage. The trap then rolls initiative."
+						"Each creature within 30 feet of any centipede carcass takes {@damage 4d4} piercing damage (DC 22 basic Reflex save), and the area becomes difficult terrain due to the many sharpened legs on the ground. Each creature that {@action Stride||Strides} more than 10 feet through the area must succeed at a DC 20 {@skill Acrobatics} check or take {@damage 1d4} piercing damage. The trap then rolls initiative."
 					],
 					"type": "ability",
 					"name": "Volley of Legs"
@@ -2294,7 +2294,7 @@
 				}
 			],
 			"routine": [
-				"(3 actions) The convergence lattice uses its first action to call for aid. Each convergent creature within 100 feet of the lattice Strides toward the lattice as a reaction.",
+				"(3 actions) The convergence lattice uses its first action to call for aid. Each convergent creature within 100 feet of the lattice {@action Stride||Strides} toward the lattice as a reaction.",
 				"Creatures thus called continue to move toward the lattice on their turn each round until they are adjacent to it, at which point they defend it with their lives. The lattice uses its second action to deal {@damage 16d6} mental damage (DC 42 basic Will save) to a non-convergent creature within 100 feet. This damage is nonlethal; a creature knocked out by this damage doesn't gain the {@condition dying} condition and is automatically {@condition controlled} by the convergence lattice when they awaken. The lattice uses its third action to make the same attack against a second non-convergent creature within 100 feet; if there isn't such a second creature, it doesn't take its third action."
 			],
 			"reset": [

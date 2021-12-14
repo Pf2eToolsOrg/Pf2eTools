@@ -939,7 +939,7 @@
 					"effects": [
 						"Improved Grab"
 					],
-					"damage": "{@damage 4d6+18} bludgeoning plus Improved Grab",
+					"damage": "{@damage 4d6+18} bludgeoning plus {@ability Improved Grab}",
 					"types": [
 						"bludgeoning"
 					]
@@ -970,7 +970,7 @@
 						"unit": "action"
 					},
 					"entries": [
-						"20 feet Melee root +37 (reach 30 feet), Damage {@damage 4d8+18} bludgeoning plus {@action Trip} Melee {@as 1} vine +37 (agile, reach 40 feet), Damage {@damage 4d6+18} bludgeoning plus Improved Grab Primal Innate Spells DC 38; 9th nature's enmity (×4);"
+						"20 feet Melee root +37 (reach 30 feet), Damage {@damage 4d8+18} bludgeoning plus {@action Trip} Melee {@as 1} vine +37 (agile, reach 40 feet), Damage {@damage 4d6+18} bludgeoning plus {@ability Improved Grab} Primal Innate Spells DC 38; 9th nature's enmity (×4);"
 					],
 					"name": "and Improved Push"
 				},
@@ -1490,7 +1490,7 @@
 				},
 				{
 					"entries": [
-						"Whenever a troop Strides, it first Forms Up as a free action to condense into a 20-foot-by-20-foot area (minus any missing squares), then moves up to its Speed. This works just like a Gargantuan creature moving; for instance, if any square enters difficult terrain, the extra movement cost applies to the whole troop."
+						"Whenever a troop {@action Stride||Strides}, it first Forms Up as a free action to condense into a 20-foot-by-20-foot area (minus any missing squares), then moves up to its Speed. This works just like a Gargantuan creature moving; for instance, if any square enters difficult terrain, the extra movement cost applies to the whole troop."
 					],
 					"name": "Troop Movement"
 				},
@@ -1653,7 +1653,7 @@
 					"effects": [
 						"Improved Grab"
 					],
-					"damage": "{@damage 3d10+22} bludgeoning plus Improved Grab",
+					"damage": "{@damage 3d10+22} bludgeoning plus {@ability Improved Grab}",
 					"types": [
 						"bludgeoning"
 					]
@@ -1669,7 +1669,7 @@
 					"effects": [
 						"Improved Grab"
 					],
-					"damage": "{@damage 3d8+20} bludgeoning plus Improved Grab",
+					"damage": "{@damage 3d8+20} bludgeoning plus {@ability Improved Grab}",
 					"types": [
 						"bludgeoning"
 					]
@@ -2672,7 +2672,7 @@
 					"traits": [
 						"move"
 					],
-					"trigger": "Cloudsplitter Strides or Tramples within 5 feet of",
+					"trigger": "Cloudsplitter {@action Stride||Strides} or Tramples within 5 feet of",
 					"frequency": "once per day;",
 					"entries": [],
 					"name": "Combined Charge"
@@ -2803,7 +2803,7 @@
 					],
 					"requirements": "Jin-Hae is wielding her wind and fire wheels",
 					"entries": [
-						"Jin-Hae blasts off on her wind and fire wheels, leaving an elemental trail in her wake. She Strides up to twice her Speed and makes a wind and fire wheel {@action Strike} at any point during her movement. The path left by her movement is filled with her choice of an 8th-level {@spell wall of wind} or {@spell wall of fire} spell. Jin-Hae is unaffected by any walls she creates with this ability. She cannot use Wind-Fire Charge again for {@dice 1d4} rounds. If she uses Wind-Fire Charge again, the wall created by her previous Wind-Fire Charge disappears as soon as her action is completed."
+						"Jin-Hae blasts off on her wind and fire wheels, leaving an elemental trail in her wake. She {@action Stride||Strides} up to twice her Speed and makes a wind and fire wheel {@action Strike} at any point during her movement. The path left by her movement is filled with her choice of an 8th-level {@spell wall of wind} or {@spell wall of fire} spell. Jin-Hae is unaffected by any walls she creates with this ability. She cannot use Wind-Fire Charge again for {@dice 1d4} rounds. If she uses Wind-Fire Charge again, the wall created by her previous Wind-Fire Charge disappears as soon as her action is completed."
 					],
 					"name": "Wind-Fire Charge"
 				},
@@ -3116,7 +3116,7 @@
 					"effects": [
 						"Improved Grab"
 					],
-					"damage": "{@damage 4d12+18} piercing plus Improved Grab",
+					"damage": "{@damage 4d12+18} piercing plus {@ability Improved Grab}",
 					"types": [
 						"piercing"
 					]
@@ -3432,7 +3432,7 @@
 					"effects": [
 						"Improved Grab"
 					],
-					"damage": "{@damage 3d12+18} piercing plus Improved Grab",
+					"damage": "{@damage 3d12+18} piercing plus {@ability Improved Grab}",
 					"types": [
 						"piercing"
 					]
@@ -4082,7 +4082,7 @@
 					"effects": [
 						"Improved Grab"
 					],
-					"damage": "{@damage 4d4+21} bludgeoning plus Improved Grab",
+					"damage": "{@damage 4d4+21} bludgeoning plus {@ability Improved Grab}",
 					"types": [
 						"bludgeoning"
 					]
@@ -4394,7 +4394,7 @@
 					},
 					"requirements": "The sanzuwu is standing on the ground",
 					"entries": [
-						"The sanzuwu Strides. A 6th-level {@spell wall of fire} appears in all the spaces the sanzuwu left during this movement, lasting for 1 round. The sanzuwu can't use Scorch Earth again for {@dice 1d4} rounds."
+						"The sanzuwu {@action Stride||Strides}. A 6th-level {@spell wall of fire} appears in all the spaces the sanzuwu left during this movement, lasting for 1 round. The sanzuwu can't use Scorch Earth again for {@dice 1d4} rounds."
 					],
 					"name": "Scorch Earth"
 				},
@@ -4863,7 +4863,7 @@
 					"effects": [
 						"Improved Grab"
 					],
-					"damage": "{@damage 7d8+20} bludgeoning plus Improved Grab",
+					"damage": "{@damage 7d8+20} bludgeoning plus {@ability Improved Grab}",
 					"types": [
 						"bludgeoning"
 					]
@@ -5035,7 +5035,7 @@
 					"hp": 320,
 					"note": null,
 					"abilities": [
-						"regeneration 25 (deactivated by cold iron or evil)"
+						"{@ability regeneration} 25 (deactivated by cold iron or evil)"
 					]
 				}
 			],
@@ -5084,7 +5084,7 @@
 					"effects": [
 						"Improved Grab"
 					],
-					"damage": "{@damage 4d12+14} piercing plus {@dice 2d6} energy and Improved Grab",
+					"damage": "{@damage 4d12+14} piercing plus {@dice 2d6} energy and {@ability Improved Grab}",
 					"types": [
 						"energy",
 						"piercing"
@@ -5411,7 +5411,7 @@
 						"frostbite",
 						"Improved Grab"
 					],
-					"damage": "{@damage 3d8+15} bludgeoning plus {@damage 2d6} cold, frostbite, and Improved Grab",
+					"damage": "{@damage 3d8+15} bludgeoning plus {@damage 2d6} cold, frostbite, and {@ability Improved Grab}",
 					"types": [
 						"bludgeoning",
 						"cold"
@@ -5812,7 +5812,7 @@
 				},
 				{
 					"entries": [
-						"Strikes a creature on his own turn; Syndara rotates the space of the Glass Lighthouse around himself to carry him to a distant location in an instant. He Strides twice. This movement doesn't trigger reactions. If his next action is to attack a different target than the triggering creature, he gains a +1 circumstance bonus to that attack; each time he Walks."
+						"Strikes a creature on his own turn; Syndara rotates the space of the Glass Lighthouse around himself to carry him to a distant location in an instant. He {@action Stride||Strides} twice. This movement doesn't trigger reactions. If his next action is to attack a different target than the triggering creature, he gains a +1 circumstance bonus to that attack; each time he Walks."
 					],
 					"name": "Lighthouse; Trigger Syndara"
 				},

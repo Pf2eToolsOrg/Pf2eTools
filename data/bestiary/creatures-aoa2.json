@@ -568,7 +568,7 @@
 					"effects": [
 						"Improved Grab"
 					],
-					"damage": "{@damage 2d6+9} bludgeoning plus Improved Grab",
+					"damage": "{@damage 2d6+9} bludgeoning plus {@ability Improved Grab}",
 					"types": [
 						"bludgeoning"
 					]
@@ -3435,7 +3435,7 @@
 					],
 					"requirements": "Hezle must be adjacent to at least one enemy.",
 					"entries": [
-						"Cost 1 batch of infused reagents. Hezle throws a mix of special powders centered on a corner of her space, creating a plume of smoke filling a 5-foot burst until the end of her turn that causes her to be {@condition hidden}. She then immediately Sneaks, but must end her movement in a space that's not adjacent to any enemies. All creatures other than Hezle in the smoke cloud must attempt a DC 26 Fortitude save. Critical Success The creature is unaffected. Success The creature is {@condition sickened|CRB|sickened 1}. Failure The creature is {@condition sickened|CRB|sickened 2}. Critical Failure The creature is {@condition sickened|CRB|sickened 3} and {@condition stunned|CRB|stunned 1}."
+						"Cost 1 batch of infused reagents. Hezle throws a mix of special powders centered on a corner of her space, creating a plume of smoke filling a 5-foot burst until the end of her turn that causes her to be {@condition hidden}. She then immediately {@action Sneak||Sneaks}, but must end her movement in a space that's not adjacent to any enemies. All creatures other than Hezle in the smoke cloud must attempt a DC 26 Fortitude save. Critical Success The creature is unaffected. Success The creature is {@condition sickened|CRB|sickened 1}. Failure The creature is {@condition sickened|CRB|sickened 2}. Critical Failure The creature is {@condition sickened|CRB|sickened 3} and {@condition stunned|CRB|stunned 1}."
 					],
 					"name": "Smoky Retreat"
 				},
@@ -3905,7 +3905,7 @@
 						"unit": "action"
 					},
 					"entries": [
-						"The kishi Strides twice. If it ends its movement within melee reach of at least one enemy, it can make a melee {@action Strike} against that enemy."
+						"The kishi {@action Stride||Strides} twice. If it ends its movement within melee reach of at least one enemy, it can make a melee {@action Strike} against that enemy."
 					],
 					"name": "Sudden Charge"
 				},
@@ -4987,7 +4987,7 @@
 						"unit": "action"
 					},
 					"entries": [
-						"The sabosan Strides up to double its Speed and then makes a claw {@action Strike}. If the sabosan moved at least 20 feet, it deals an additional {@dice 1d6} damage on a hit."
+						"The sabosan {@action Stride||Strides} up to double its Speed and then makes a claw {@action Strike}. If the sabosan moved at least 20 feet, it deals an additional {@dice 1d6} damage on a hit."
 					],
 					"name": "Powerful Charge"
 				}

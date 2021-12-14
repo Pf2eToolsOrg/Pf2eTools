@@ -161,7 +161,7 @@
 						"teleportation"
 					],
 					"entries": [
-						"An aiudara wraith moves by means of localized teleportation. An aiudara wraith's {@action Stride} does not have the {@trait move} trait. When an aiudara wraith Strides, it reaches its destination within the range of its Speed immediately."
+						"An aiudara wraith moves by means of localized teleportation. An aiudara wraith's {@action Stride} does not have the {@trait move} trait. When an aiudara wraith {@action Stride||Strides}, it reaches its destination within the range of its Speed immediately."
 					],
 					"name": "Instantaneous Movement"
 				}
@@ -3368,7 +3368,7 @@
 					"effects": [
 						"Improved Grab"
 					],
-					"damage": "{@damage 5d10+10} piercing plus {@damage 4d6} fire and Improved Grab",
+					"damage": "{@damage 5d10+10} piercing plus {@damage 4d6} fire and {@ability Improved Grab}",
 					"types": [
 						"fire",
 						"piercing"
@@ -4322,7 +4322,7 @@
 						"unit": "action"
 					},
 					"entries": [
-						"The Promise guard Strides up to double their Speed. If the guard ends their movement within melee reach of at least one enemy, they can make a melee {@action Strike} against that enemy."
+						"The Promise guard {@action Stride||Strides} up to double their Speed. If the guard ends their movement within melee reach of at least one enemy, they can make a melee {@action Strike} against that enemy."
 					],
 					"name": "Sudden Charge"
 				}
@@ -4861,14 +4861,14 @@
 				"Will": {
 					"default": 39
 				},
-				"abilities": null
+				"abilities": "+2 status to all saves vs. {@trait magic}"
 			},
 			"hp": [
 				{
 					"hp": 540,
 					"note": null,
 					"abilities": [
-						"regeneration 50"
+						"{@ability regeneration} 50"
 					]
 				}
 			],
@@ -4876,9 +4876,30 @@
 				{
 					"amount": 25,
 					"name": "fire"
+				},
+				{
+					"amount": 25,
+					"name": "physical"
 				}
 			],
+			"immunities": {
+				"condition": [
+					"acid", "clumsy", "disease", "drained", "enfeebled", "mental", "paralyzed", "persistent damage", "petrified", "poison", "polymorph", "stupefied"
+				]
+			},
 			"abilitiesMid": [
+				{
+					"entries": [
+						"Tarrasque is immune to cones, lines, rays, and {@spell magic missile} spells. These effects bounce harmlessly off its scales."
+					],
+					"name": "Carapace"
+				},
+				{
+					"entries": [
+						"Tarrasque recovers from the {@condition slowed} and {@condition stunned} conditions at the end of its turn. It's also immune to penalties to its Speeds, and it ignores difficult terrain and greater difficult terrain."
+					],
+					"name": "Inexorable"
+				},
 				{
 					"traits": [
 						"aura",
@@ -4887,11 +4908,16 @@
 						"mental"
 					],
 					"entries": [
-						"300 feet, DC 39 Inexorable Tarrasque recovers from the {@condition slowed} and {@condition stunned} conditions at the end of its turn. It's also immune to penalties to its Speeds, and it ignores difficult terrain and greater difficult terrain.",
-						"Reactive Tarrasque gains 3 reactions each round. It can still use only one reaction per trigger."
+						"300 feet, DC 39"
 					],
 					"name": "Frightful Presence",
 					"generic": true
+				},
+				{
+					"entries": [
+						"Tarrasque gains 3 reactions each round. It can still use only one reaction per trigger."
+					],
+					"name": "Reactive"
 				},
 				{
 					"activity": {
@@ -4899,10 +4925,21 @@
 						"unit": "reaction"
 					},
 					"entries": [
-						"Reflect {@as R} Trigger Tarrasque's carapace deflects an effect. The effect is redirected back at its source."
+						""
 					],
 					"name": "Attack of Opportunity",
 					"generic": true
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "Tarrasque's carapace deflects an effect.",
+					"entries": [
+						"The effect is redirected back at its source."
+					],
+					"name": "Reflect"
 				}
 			],
 			"speed": {
@@ -4924,7 +4961,7 @@
 					"effects": [
 						"Improved Grab"
 					],
-					"damage": "{@damage 5d12+20} piercing plus Improved Grab",
+					"damage": "{@damage 5d12+20} piercing plus {@ability Improved Grab}",
 					"types": [
 						"piercing"
 					]
@@ -6051,7 +6088,7 @@
 					"hp": 385,
 					"note": null,
 					"abilities": [
-						"regeneration 25"
+						"{@ability regeneration} 25"
 					]
 				}
 			],
