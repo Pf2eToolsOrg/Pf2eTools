@@ -6999,11 +6999,17 @@ Renderer._stripTagLayer = function (str) {
 
 					case "@note":
 					case "@domain":
-					case "@group":
-					case "@skill": {
+					case "@group": {
 						return text;
 					}
-
+					case "@skill": {
+						const parts = Renderer.splitTagByPipe(text);
+						if (parts[2] !== undefined) {
+							return parts[2]
+						} else {
+							return parts[0]
+						}
+					}
 					case "@Pf2eTools":
 					case "@pf2etools":
 					case "@adventure":

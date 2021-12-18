@@ -84,19 +84,19 @@
             "type": "object",
             "required": [],
             "properties": {
-                "entry": {
-                    "type": "string"
-                },
-                "skills": {
-                    "type": "array",
-                    "items": {
-                        "anyOf": [
-                            {
-                                "type": "string"
-                            }
-                        ]
+              "entry": {
+                "type": "string"
+              },
+              "skills": {
+                "type": "array",
+                "items": {
+                  "anyOf": [
+                    {
+                      "type": "string"
                     }
+                  ]
                 }
+              }
             },
             "additionalProperties": false
           },
@@ -104,82 +104,82 @@
             "type": "object",
             "required": [],
             "properties": {
-                "type": {
+              "type": {
+                "type": "string"
+              },
+              "entry": {
+                "type": "string"
+              },
+              "duration": {
+                "type": "object",
+                "properties": {
+                  "number": {
+                    "type": "integer"
+                  },
+                  "unit": {
                     "type": "string"
+                  }
                 },
-                "entry": {
-                    "type": "string"
-                },
-                "duration": {
-                    "type": "object",
-                    "properties": {
-                        "number": {
-                            "type": "integer"
-                        },
-                        "unit": {
-                            "type": "string"
-                        }
-                    },
-                    "additionalProperties": false
-                }
+                "additionalProperties": false
+              }
             },
             "additionalProperties": false
           },
           "targets": {
             "type": "string"
-        },
-        "range": {
-          "type": "object",
-          "properties": {
+          },
+          "range": {
+            "type": "object",
+            "properties": {
               "type": {
-                  "type": "string"
+                "type": "string"
               },
               "entry": {
-                  "type": "string"
+                "type": "string"
               },
               "distance": {
-                  "type": "object",
-                  "properties": {
-                      "type": {
-                          "type": "string"
-                      },
-                      "amount": {
-                          "type": "integer"
-                      }
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "type": "string"
                   },
-                  "additionalProperties": false
+                  "amount": {
+                    "type": "integer"
+                  }
+                },
+                "additionalProperties": false
               }
-          },
-          "additionalProperties": false
-      },
-      "area": {
-        "type": "object",
-        "properties": {
-            "entry": {
-                "type": "string"
             },
-            "types": {
+            "additionalProperties": false
+          },
+          "area": {
+            "type": "object",
+            "properties": {
+              "entry": {
+                "type": "string"
+              },
+              "types": {
                 "type": "array",
                 "additionalItems": false,
                 "items": {
-                    "anyOf": [
-                        {
-                            "type": "string"
-                        }
-                    ]
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    }
+                  ]
                 }
+              }
+            },
+            "additionalProperties": false
+          },
+          "secondaryCasters": {
+            "type": "object",
+            "properties": {
+              "number": {
+                "type": "integer"
+              }
             }
-        },
-        "additionalProperties": false
-    },
-    "secondaryCasters": {
-      "type": "object",
-      "properties": {
-          "number": {
-              "type": "integer"
           }
-      }
-  }
         }
       }
     }
