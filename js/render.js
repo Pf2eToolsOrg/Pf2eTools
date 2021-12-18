@@ -4805,7 +4805,7 @@ Renderer.spell = {
 		if (sp.requirements != null) castPart += `; <strong>Requirements&nbsp;</strong>${renderer.render(sp.requirements)}`;
 
 		const targetingParts = [];
-		if (sp.range && sp.range.type != null) targetingParts.push(`<strong>Range&nbsp;</strong>${renderer.render(sp.range.entry)}`);
+		if (sp.range) targetingParts.push(`<strong>Range&nbsp;</strong>${renderer.render(sp.range.entry)}`);
 		if (sp.area != null) targetingParts.push(`<strong>Area&nbsp;</strong>${renderer.render(sp.area.entry)}`);
 		if (sp.targets != null) targetingParts.push(`<strong>Targets&nbsp;</strong>${renderer.render(sp.targets)}`);
 

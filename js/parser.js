@@ -966,53 +966,39 @@ RNG_UNLIMITED = "unlimited";
 RNG_UNLIMITED_SAME_PLANE = "planetary";
 RNG_TOUCH = "touch";
 
+// TODO: Handle range/area types: emanation, cone etc?
 Parser.getNormalisedRange = function (range) {
+	if (!MiscUtil.isObject(range)) return 0;
 	let multiplier = 1;
 	let distance = 0;
 	let offset = 0;
 
-	switch (range.type) {
-		case RNG_SPECIAL: return 1000000000;
-		case RNG_POINT: adjustForDistance(); break;
-		case RNG_LINE: offset = 1; adjustForDistance(); break;
-		case RNG_CONE: offset = 2; adjustForDistance(); break;
-		case RNG_RADIUS: offset = 3; adjustForDistance(); break;
-		case RNG_HEMISPHERE: offset = 4; adjustForDistance(); break;
-		case RNG_SPHERE: offset = 5; adjustForDistance(); break;
-		case RNG_CYLINDER: offset = 6; adjustForDistance(); break;
-		case RNG_CUBE: offset = 7; adjustForDistance(); break;
-	}
-
-	// value in inches, to allow greater granularity
-	return (multiplier * distance) + offset;
-
-	function adjustForDistance () {
-		let dist = {}
-		if (`distance` in range) dist = range.distance;
-		switch (`distance` in range) {
-			case null: distance = 0; break;
-			case UNT_FEET: multiplier = Parser.INCHES_PER_FOOT; distance = dist.amount; break;
-			case UNT_MILES: multiplier = Parser.INCHES_PER_FOOT * Parser.FEET_PER_MILE; distance = dist.amount; break;
-			case RNG_TOUCH: distance = 1; break;
-			case RNG_UNLIMITED_SAME_PLANE: distance = 900000000; break;
-			case RNG_UNLIMITED: distance = 900000001; break;
-			case "unknown": distance = 900000002; break;
-			default: {
-				// it's homebrew?
-				const fromBrew = MiscUtil.get(BrewUtil.homebrewMeta, "spellDistanceUnits", dist.type);
-				if (fromBrew) {
-					const ftPerUnit = fromBrew.feetPerUnit;
-					if (ftPerUnit != null) {
-						multiplier = Parser.INCHES_PER_FOOT * ftPerUnit;
-						distance = dist.amount;
-					} else {
-						distance = 910000000; // default to max distance, to have them displayed at the bottom
-					}
+	const dist = MiscUtil.merge({type: null, amount: 0}, range.distance)
+	switch (dist.type) {
+		case null: distance = 0; break;
+		case UNT_FEET: multiplier = Parser.INCHES_PER_FOOT; distance = dist.amount; break;
+		case UNT_MILES: multiplier = Parser.INCHES_PER_FOOT * Parser.FEET_PER_MILE; distance = dist.amount; break;
+		case RNG_TOUCH: distance = 1; break;
+		case RNG_UNLIMITED_SAME_PLANE: distance = 900000000; break;
+		case RNG_UNLIMITED: distance = 900000001; break;
+		case "unknown": distance = 900000002; break;
+		default: {
+			// it's homebrew?
+			const fromBrew = MiscUtil.get(BrewUtil.homebrewMeta, "spellDistanceUnits", dist.type);
+			if (fromBrew) {
+				const ftPerUnit = fromBrew.feetPerUnit;
+				if (ftPerUnit != null) {
+					multiplier = Parser.INCHES_PER_FOOT * ftPerUnit;
+					distance = dist.amount;
+				} else {
+					distance = 910000000; // default to max distance, to have them displayed at the bottom
 				}
-				break;
 			}
+			break;
 		}
 	}
+	// value in inches, to allow greater granularity
+	return (multiplier * distance) + offset;
 }
 
 Parser.getFilterRange = function (object) {
