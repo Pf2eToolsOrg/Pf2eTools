@@ -672,7 +672,7 @@
 									"page": 17,
 									"name": "Single Actions",
 									"entries": [
-										"Single actions use this symbol: {@as 1}. They’re the simplest, most common type of action. You can use three single actions on your turn in an encounter, in any order you see fit."
+										"Single actions use this symbol: {@as 1}. They're the simplest, most common type of action. You can use three single actions on your turn in an encounter, in any order you see fit."
 									]
 								},
 								{
@@ -680,7 +680,7 @@
 									"page": 17,
 									"name": "Reactions",
 									"entries": [
-										"Reactions use this symbol: {@as R}. These actions can be used even when it’s not your turn. You get only one reaction per encounter round, and you can use it only when its specific trigger is fulfilled. Often, the trigger is another creature’s action."
+										"Reactions use this symbol: {@as R}. These actions can be used even when it's not your turn. You get only one reaction per encounter round, and you can use it only when its specific trigger is fulfilled. Often, the trigger is another creature's action."
 									]
 								},
 								{
@@ -688,7 +688,7 @@
 									"page": 17,
 									"name": "Free Actions",
 									"entries": [
-										"Free actions use this symbol: {@as F}. Free actions don’t require you to spend any of your three single actions or your reaction. A free action might have a trigger like a reaction does. If so, you can use it just like a reaction—even if it’s not your turn. However, you can use only one free action per trigger, so if you have multiple free actions with the same trigger, you have to decide which to use. If a free action doesn’t have a trigger, you use it like a single action, just without spending any of your actions for the turn."
+										"Free actions use this symbol: {@as F}. Free actions don't require you to spend any of your three single actions or your reaction. A free action might have a trigger like a reaction does. If so, you can use it just like a reaction\u2014even if it's not your turn. However, you can use only one free action per trigger, so if you have multiple free actions with the same trigger, you have to decide which to use. If a free action doesn't have a trigger, you use it like a single action, just without spending any of your actions for the turn."
 									]
 								},
 								{
@@ -13897,7 +13897,7 @@
 							"page": 480,
 							"name": "Rest and Daily Preparations",
 							"entries": [
-								"You perform at your best when you take enough time to rest and prepare. Once every 24 hours, you can take a period of rest (typically 8 hours), after which you regain Hit Points equal to your Constitution modifier (minimum 1) times your level, and you might recover from or improve certain conditions (page 453). Sleeping in armor results in poor rest that leaves you fatigued. If you go more than 16 hours without resting, you become fatigued (you cannot recover from this until you rest at least 6 continuous hours).",
+								"You perform at your best when you take enough time to rest and prepare. Once every 24 hours, you can take a period of rest (typically 8 hours), after which you regain Hit Points equal to your Constitution modifier (minimum 1) times your level, and you might recover from or improve certain conditions (page 453). Sleeping in armor results in poor rest that leaves you {@condition fatigued}. If you go more than 16 hours without resting, you become {@condition fatigued} (you cannot recover from this until you rest at least 6 continuous hours).",
 								"After you rest, you make your daily preparations, which takes around 1 hour. You can prepare only if you've rested, and only once per day. Preparing includes the following:",
 								{
 									"type": "list",
@@ -13908,7 +13908,10 @@
 										"You invest up to 10 worn magic items to gain their benefits for the day."
 									]
 								}
-							]
+							],
+							"data": {
+								"quickrefIndex": true
+							}
 						}
 					],
 					"data": {

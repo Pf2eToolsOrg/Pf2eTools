@@ -19,7 +19,7 @@ jobs:
       with:
         type: 'zip'
         filename: 'pf2ools-${{ env.RELEASE_VERSION }}.zip'
-        exclusions: '*.git* /*node_modules/* .editorconfig /*.github/* /*CNAME/*'
+        exclusions: '*.git* /*node_modules/* .editorconfig /*.github/* CNAME'
 
     - name: Upload Release
       uses: ncipollo/release-action@v1
