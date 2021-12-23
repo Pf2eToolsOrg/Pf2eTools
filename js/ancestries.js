@@ -1309,7 +1309,7 @@ class AncestriesPage extends BaseComponent {
 	_updateFeatHref () {
 		const feat = this.activeFeat;
 		if (!feat) return;
-		$(`#btn-feat-link`).attr("href", `feats.html#${UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_FEATS](feat)}${HASH_PART_SEP}${this.featFilterBox.getSubHashes().join(HASH_PART_SEP)}`);
+		$(`#btn-feat-link`).attr("href", `feats.html#${UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_FEATS](feat)}${HASH_PART_SEP}${this.featFilterBox.getSubHashes().map(sh => sh.replace(/\.ancestries\.feats/, "")).join(HASH_PART_SEP)}`);
 	}
 
 	static _render_$getNoContent () {
