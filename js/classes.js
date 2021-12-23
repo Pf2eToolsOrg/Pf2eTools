@@ -1199,18 +1199,24 @@ class ClassesPage extends BaseComponent {
 			inactiveText: "Show Feats",
 		}).title("Toggle Feat View").addClass("mb-1");
 
-		const imageLinks = ((this.activeClass.summary || {}).images || []).map(l => `<a href="${l}" target="_blank" rel="noopener noreferrer">${l}</a>`);
-		const $btnShowImages = $(`<button class="btn btn-xs btn-default mb-1">Images</button>`).click(() => {
-			const {$modalInner, doClose} = UiUtil.getShowModal({
-				title: "Images are available.",
-			});
-			const $btnClose = $(`<button class="btn btn-danger btn-sm mt-auto mb-1" style="width: fit-content; align-self: center;">Close</button>`).click(() => doClose());
-			$$`${imageLinks}${$btnClose}`.appendTo($modalInner);
+		const imageLinks = ((this.activeClass.summary || {}).images || []).map(l => `<li><a href="${l}" target="_blank" rel="noopener noreferrer">${l}</a></li>`);
+		const $dropDownImages = $(`<li class="dropdown" style="list-style: none"></li>`);
+		const $dropDownImagesButton = $(`<button class="btn btn-default btn-xs mr-2 mb-1 flex-3">Images</button>`).on("click", (evt) => {
+			evt.preventDefault();
+			evt.stopPropagation();
+			$dropDownImagesButton.toggleClass("ui-tab__btn-tab-head");
+			$dropDownImages.toggleClass("open");
+		}).appendTo($dropDownImages);
+		const $dropDownImagesContent = $(`<li class="dropdown-menu dropdown-menu--top" style="margin-top: -0.25rem !important; border-radius: 0"></li>`).appendTo($dropDownImages);
+		imageLinks.forEach(l => $dropDownImagesContent.append(l));
+		document.addEventListener("click", () => {
+			$dropDownImages.toggleClass("open", false)
+			$dropDownImagesButton.toggleClass("ui-tab__btn-tab-head", false);
 		});
 
 		$$`<div class="flex-v-center m-1 flex-wrap">
 			<div class="mr-2 no-shrink">${$btnToggleFeats}</div>
-			${imageLinks.length ? $$`<div class="mr-2 no-shrink">${$btnShowImages}</div>` : ""}
+			${imageLinks.length ? $$`<div class="mr-2 no-shrink">${$dropDownImages}</div>` : ""}
 			<div class="btn-group no-shrink mb-1 ml-auto">${$btnToggleFeatures}${$btnToggleFluff}</div>
 		</divc>`.appendTo($wrp);
 	}

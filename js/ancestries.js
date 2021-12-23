@@ -973,25 +973,31 @@ class AncestriesPage extends BaseComponent {
 			inactiveText: "Show Feats",
 		}).title("Toggle Feat View").addClass("mb-1");
 
-		const $btnShowImages = $(`<button class="btn btn-xs btn-default mb-1" id="btn-show-images">Images</button>`).click(() => {
+		const $dropDownImages = $(`<li class="dropdown" style="list-style: none"></li>`);
+		const $dropDownImagesContent = $(`<li class="dropdown-menu dropdown-menu--top" style="margin-top: -0.25rem !important; border-radius: 0"></li>`).appendTo($dropDownImages);
+		const $dropDownImagesButton = $(`<button class="btn btn-default btn-xs mr-2 mb-1 flex-3">Images</button>`).on("click", (evt) => {
+			evt.preventDefault();
+			evt.stopPropagation();
+			$dropDownImagesContent.empty();
 			const {veHerUrls, ancUrls} = this._getImageUrls();
-			const veHerLinks = veHerUrls.map(l => `<a href="${l}" target="_blank" rel="noopener noreferrer">${l}</a>`);
-			const ancLinks = ancUrls.map(l => `<a href="${l}" target="_blank" rel="noopener noreferrer">${l}</a>`);
+			const ancLinks = ancUrls.map(l => `<li><a href="${l}" target="_blank" rel="noopener noreferrer">${l}</a></li>`);
+			const veHerLinks = veHerUrls.map(l => `<li><a href="${l}" target="_blank" rel="noopener noreferrer">${l}</a></li>`);
+			ancLinks.forEach(l => $dropDownImagesContent.append(l));
+			if (ancLinks.length && veHerLinks.length) $dropDownImagesContent.append($(`<li class="divider"></li>`))
+			veHerLinks.forEach(l => $dropDownImagesContent.append(l));
+			if (ancLinks.length === 0 && veHerLinks.length === 0) $dropDownImagesContent.append($(`<li class="p-1">No Images available.</li>`))
 
-			const {$modalInner, doClose} = UiUtil.getShowModal({
-				title: "Images are available in the Archives of Nethys.",
-			});
-			const $btnClose = $(`<button class="btn btn-danger btn-sm mt-auto mb-1" style="width: fit-content; align-self: center;">Close</button>`).click(() => doClose());
-			$$`${ancLinks.length ? `<p class="mb-0">${this.activeAncestry.name} Images</p>` : ""}
-				${ancLinks}
-				${veHerLinks.length ? `<p class="mt-2 mb-0">Versatile Heritage Images</p>` : ""}
-				${veHerLinks}
-				${$btnClose}`.appendTo($modalInner);
+			$dropDownImagesButton.toggleClass("ui-tab__btn-tab-head");
+			$dropDownImages.toggleClass("open");
+		}).appendTo($dropDownImages);
+		document.addEventListener("click", () => {
+			$dropDownImages.toggleClass("open", false)
+			$dropDownImagesButton.toggleClass("ui-tab__btn-tab-head", false);
 		});
 
 		$$`<div class="flex-v-center m-1 flex-wrap">
 			<div class="mr-2 no-shrink">${$btnToggleFeats}</div>
-			<div class="mr-2 no-shrink">${$btnShowImages}</div>
+			<div class="mr-2 no-shrink">${$dropDownImages}</div>
 			<div class="btn-group no-shrink mb-1 ml-auto">${$btnToggleFeatures}${$btnToggleFluff}</div>
 		</divc>`.appendTo($wrp);
 	}
