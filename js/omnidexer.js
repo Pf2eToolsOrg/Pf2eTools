@@ -145,6 +145,70 @@ class Omnidexer {
 	}
 }
 
+class TraitIndexer extends Omnidexer {
+	constructor () {
+		super();
+		this._index = {};
+	}
+
+	async pAddToIndex (arbiter, json, options) {
+		options = options || {};
+		const index = this._index;
+
+		const getToAdd = (it, i) => {
+			const src = TraitIndexer.getProperty(it, arbiter.source || "source");
+			const hash = arbiter.hashBuilder
+				? arbiter.hashBuilder(it, i)
+				: UrlUtil.URL_TO_HASH_BUILDER[arbiter.baseUrl](it);
+			return {
+				n: TraitIndexer.getProperty(it, arbiter.primary || "name"),
+				s: this.getMetaId("s", src),
+				u: hash,
+			};
+		};
+		const getAddTo = (it) => {
+			return arbiter.getTraits ? arbiter.getTraits(it) : [...it.traits || []];
+		}
+
+		const pHandleItem = async (it, i) => {
+			if (it.noDisplay) return;
+
+			const toAdd = getToAdd(it, i);
+			const addTo = getAddTo(it).map(t => Parser.getTraitName(t).toLowerCase());
+			const cat = arbiter.category;
+
+			addTo.forEach(t => {
+				index[t] = index[t] || {};
+				(index[t][cat] = index[t][cat] || []).push(toAdd);
+			});
+		};
+
+		const dataArr = TraitIndexer.getProperty(json, arbiter.listProp);
+		if (dataArr) {
+			for (let i = 0; i < dataArr.length; ++i) {
+				const it = dataArr[i];
+				await pHandleItem(it, i);
+			}
+		}
+	}
+
+	static decompressIndex (indexGroup) {
+		const {x, m} = indexGroup;
+
+		const props = new Set();
+		// de-invert the metadata
+		const lookup = {};
+		Object.keys(m).forEach(k => {
+			props.add(k);
+			Object.entries(m[k]).forEach(([kk, vv]) => (lookup[k] = lookup[k] || {})[vv] = kk);
+		});
+
+		Object.values(x).forEach(v => Object.values(v).forEach(a => a.forEach(it => Object.keys(it)
+			.filter(k => props.has(k)).forEach(k => it[k] = lookup[k][it[k]] || it[k]))));
+		return x;
+	}
+}
+
 class IndexableDirectory {
 	/**
 	 * @param opts Options object.
@@ -161,6 +225,7 @@ class IndexableDirectory {
 	 * @param [opts.isOnlyDeep]
 	 * @param [opts.pFnPreProcBrew] An un-bound function
 	 * @param [opts.hashBuilder]
+	 * @param [opts.getTraits]
 	 */
 	constructor (opts) {
 		this.category = opts.category;
@@ -176,6 +241,7 @@ class IndexableDirectory {
 		this.isOnlyDeep = opts.isOnlyDeep;
 		this.pFnPreProcBrew = opts.pFnPreProcBrew;
 		this.hashBuilder = opts.hashBuilder;
+		this.getTraits = opts.getTraits
 	}
 
 	pGetDeepIndex () { return []; }
@@ -260,6 +326,15 @@ class IndexableDirectoryBestiary extends IndexableDirectory {
 			listProp: "creature",
 			baseUrl: "bestiary.html",
 			isHover: true,
+			getTraits: (cr) => {
+				const traits = [];
+				if (cr.rarity !== "Common") traits.push(cr.rarity);
+				if (cr.alignment != null) traits.push(cr.alignment);
+				if (cr.size != null) traits.push(cr.size);
+				if (cr.traits != null && cr.traits.length) traits.push(...cr.traits);
+				if (cr.creatureType != null) traits.push(...cr.creatureType);
+				return traits;
+			},
 		});
 	}
 }
@@ -501,6 +576,7 @@ class IndexableFile {
 	 * @param [opts.filter] a function which takes a data item and returns true if it should not be indexed, false otherwise
 	 * @param [opts.include] a function which takes a data item and returns true if it should be indexed, false otherwise
 	 * @param [opts.postLoad] a function which takes the data set, does some post-processing, and runs a callback when done (synchronously)
+	 * @param [opts.getTraits]
 	 * @param opts.isOnlyDeep
 	 * @param opts.additionalIndexes
 	 */
@@ -520,6 +596,7 @@ class IndexableFile {
 		this.postLoad = opts.postLoad;
 		this.isOnlyDeep = opts.isOnlyDeep;
 		this.additionalIndexes = opts.additionalIndexes;
+		this.getTraits = opts.getTraits;
 	}
 
 	/**
@@ -935,4 +1012,5 @@ Omnidexer.TO_INDEX__SPECIAL = [
 
 if (typeof module !== "undefined") {
 	module.exports.Omnidexer = Omnidexer;
+	module.exports.TraitIndexer = TraitIndexer;
 }

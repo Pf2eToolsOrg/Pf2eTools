@@ -14,6 +14,7 @@ class TraitsPage extends ListPage {
 
 			dataProps: ["trait"],
 		});
+		this._traitIndex = null;
 	}
 
 	getListItem (it, vhI, isExcluded) {
@@ -73,9 +74,15 @@ class TraitsPage extends ListPage {
 		return listItem;
 	}
 
+	async pOnLoad () {
+		this._traitIndex = TraitIndexer.decompressIndex(await DataUtil.loadJSON(`${Renderer.get().baseUrl}search/traits.json`));
+		await super.pOnLoad();
+	}
+
 	doLoadHash (id) {
 		const $content = $(`#pagecontent`).empty();
 		const trt = this._dataList[id];
+		const trtIndex = (this._traitIndex || {})[trt.name.toLowerCase()];
 
 		function buildStatsTab () {
 			$content.append(RenderTraits.$getRenderedTrait(trt));
@@ -83,6 +90,24 @@ class TraitsPage extends ListPage {
 		const buildInfoTab = async () => {
 			const quickRules = await Renderer.utils.pGetQuickRules("trait");
 			$content.append(quickRules);
+		}
+		function buildUsesTab () {
+			const renderer = Renderer.get().setFirstSection(true);
+			$content.append(renderer.render({type: "pf2-h3", name: trt.name, entries: ["This trait is used in the following statblocks."]}));
+
+			Object.entries(trtIndex).forEach(([catStr, objects]) => {
+				const cat = Number(catStr);
+				const catName = Parser.CAT_ID_TO_FULL[cat];
+				// FIXME: This doesnt work in many cases. Perhaps index it as well.
+				const catHref = `${UrlUtil.CAT_TO_PAGE[cat]}#${objects[0].u},${trt.categories.map(c => `flst${c}:${trt.name}=1`).join(",")}`;
+				const $wrapper = $(`<div><a href="${catHref}">${renderer.render({type: "pf2-h4", name: `${catName} (${objects.length})`})}</a></div>`);
+				$wrapper.append(objects.sort((a, b) => SortUtil.ascSortProp("n", a, b)).map(obj => {
+					const hoverStr = `onmouseover="Renderer.hover.pHandleLinkMouseOver(event, this, '${UrlUtil.categoryToHoverPage(cat)}', '${obj.s}', '${obj.u.replace(/'/g, "\\'")}')" onmouseleave="Renderer.hover.handleLinkMouseLeave(event, this)" onmousemove="Renderer.hover.handleLinkMouseMove(event, this)" ${Renderer.hover.getPreventTouchString()}`;
+					const href = `${Renderer.get().baseUrl}${UrlUtil.categoryToPage(cat)}#${obj.u}`;
+					return `<a href="${href}" ${hoverStr}>${obj.n}</a>`;
+				}).join(", "));
+				$wrapper.appendTo($content);
+			});
 		}
 		const statTab = Renderer.utils.tabButton(
 			"Trait",
@@ -94,7 +119,14 @@ class TraitsPage extends ListPage {
 			() => {},
 			buildInfoTab,
 		);
-		Renderer.utils.bindTabButtons(statTab, infoTab);
+		const usesTab = Renderer.utils.tabButton(
+			"References",
+			() => {},
+			buildUsesTab,
+		)
+		const tabs = [statTab, infoTab];
+		if (trtIndex) tabs.push(usesTab);
+		Renderer.utils.bindTabButtons(...tabs);
 
 		ListUtil.updateSelected();
 	}

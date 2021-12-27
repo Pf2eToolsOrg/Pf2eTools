@@ -1,3 +1,4 @@
+require("../js/parser.js");
 require("../js/utils.js");
 require("../js/render.js");
 const od = require("../js/omnidexer.js");
@@ -23,6 +24,13 @@ class UtilSearchIndex {
 		return out;
 	}
 
+	static async pGetIndexTraits (doLogging = true, noFilter = false) {
+		ut.patchLoadJson();
+		const out = await UtilSearchIndex._pGetIndex({traits: true}, doLogging, noFilter);
+		ut.unpatchLoadJson();
+		return out;
+	}
+
 	static async pGetIndexAlternate (forProp, doLogging = true, noFilter = false) {
 		ut.patchLoadJson();
 		const opts = {alternate: forProp};
@@ -32,7 +40,7 @@ class UtilSearchIndex {
 	}
 
 	static async _pGetIndex (opts, doLogging = true, noFilter = false) {
-		const indexer = new od.Omnidexer();
+		const indexer = opts.traits ? new od.TraitIndexer() : new od.Omnidexer();
 
 		// region Index entities from directories, e.g. creatures and spells
 		const toIndexMultiPart = od.Omnidexer.TO_INDEX__FROM_INDEX_JSON
@@ -48,7 +56,7 @@ class UtilSearchIndex {
 			for (const filename of loadedFiles) {
 				const filePath = `../data/${indexMeta.dir}/${filename}`;
 				const contents = require(filePath);
-				if (doLogging) console.log(`indexing ${filePath}`);
+				if (doLogging) console.log(`indexing${opts.traits ? " traits " : " "}${filePath}`);
 				const optsNxt = {isNoFilter: noFilter};
 				if (opts.alternate) optsNxt.alt = indexMeta.alternateIndexes[opts.alternate];
 				await indexer.pAddToIndex(indexMeta, contents, optsNxt);
@@ -66,7 +74,7 @@ class UtilSearchIndex {
 
 			if (indexMeta.postLoad) indexMeta.postLoad(data);
 
-			if (doLogging) console.log(`indexing ${filePath}`);
+			if (doLogging) console.log(`indexing${opts.traits ? " traits " : " "}${filePath}`);
 			Object.values(data)
 				.filter(it => it instanceof Array)
 				.forEach(it => it.sort((a, b) => UtilSearchIndex._sortSources(a.source || MiscUtil.get(a, "inherits", "source"), b.source || MiscUtil.get(b, "inherits", "source")) || SortUtil.ascSortLower(a.name || MiscUtil.get(a, "inherits", "name") || "", b.name || MiscUtil.get(b, "inherits", "name") || "")));
@@ -78,7 +86,7 @@ class UtilSearchIndex {
 		// endregion
 
 		// region Index special
-		if (!opts.alternate) {
+		if (!opts.alternate && !opts.traits) {
 			for (const indexMeta of od.Omnidexer.TO_INDEX__SPECIAL) {
 				const toIndex = await indexMeta.pGetIndex();
 				toIndex.forEach(it => indexer.pushToIndex(it));
