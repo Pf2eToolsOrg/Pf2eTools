@@ -1534,7 +1534,7 @@
 				{
 					"type": "ability",
 					"components": [
-						"Cast a Spell"
+						"{@action Cast a Spell}"
 					],
 					"frequency": null,
 					"trigger": null,
@@ -1569,14 +1569,54 @@
 						{
 							"type": "ability",
 							"components": [
-								"Cast a Spell"
+								"{@action Cast a Spell}"
 							],
 							"frequency": "once per day",
 							"entries": [
 								"You cast {@spell wall of wind}."
 							]
 						}
-					]
+					],
+					"_mod": {
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replace": "resistance 1",
+								"with": "resistance 5"
+							},
+							{
+								"mode": "replaceTxt",
+								"replace": "10 feet",
+								"with": "25 feet"
+							},
+							{
+								"mode": "replaceTxt",
+								"replace": "\\+8",
+								"with": "+14"
+							},
+							{
+								"mode": "replaceTxt",
+								"replace": "18",
+								"with": "24"
+							},
+							{
+								"mode": "appendArr",
+								"items": [
+									{
+										"type": "ability",
+										"components": [
+											"{@action Cast a Spell}"
+										],
+										"frequency": "once per day",
+										"entries": [
+											"You cast {@spell wall of wind}."
+										]
+									}
+								]
+							}
+						],
+						"entriesMode": "generic"
+					}
 				},
 				{
 					"type": "major five-feather wreath",
@@ -1591,7 +1631,7 @@
 						{
 							"type": "ability",
 							"components": [
-								"Cast a Spell"
+								"{@action Cast a Spell}"
 							],
 							"frequency": "once per day",
 							"entries": [
@@ -1601,14 +1641,69 @@
 						{
 							"type": "ability",
 							"components": [
-								"Cast a Spell"
+								"{@action Cast a Spell}"
 							],
 							"frequency": "once per day",
 							"entries": [
 								"You cast {@spell air walk}."
 							]
 						}
-					]
+					],
+					"_mod": {
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replace": "\\+1 item bonus",
+								"with": "\\+2 item bonus"
+							},
+							{
+								"mode": "replaceTxt",
+								"replace": "resistance 1",
+								"with": "resistance 10"
+							},
+							{
+								"mode": "replaceTxt",
+								"replace": "10 feet",
+								"with": "40 feet"
+							},
+							{
+								"mode": "replaceTxt",
+								"replace": "\\+8",
+								"with": "+19"
+							},
+							{
+								"mode": "replaceTxt",
+								"replace": "18",
+								"with": "29"
+							},
+							{
+								"mode": "appendArr",
+								"items": [
+									{
+										"type": "ability",
+										"components": [
+											"{@action Cast a Spell}"
+										],
+										"frequency": "once per day",
+										"entries": [
+											"You cast 4th-level {@spell wall of wind}."
+										]
+									},
+									{
+										"type": "ability",
+										"components": [
+											"{@action Cast a Spell}"
+										],
+										"frequency": "once per day",
+										"entries": [
+											"You cast {@spell air walk}."
+										]
+									}
+								]
+							}
+						],
+						"entriesMode": "generic"
+					}
 				}
 			],
 			"consumable": false
@@ -1640,7 +1735,7 @@
 				{
 					"type": "ability",
 					"components": [
-						"Cast a Spell"
+						"{@action Cast a Spell}"
 					],
 					"frequency": null,
 					"trigger": null,
@@ -1671,18 +1766,59 @@
 						"note": null
 					},
 					"entries": [
-						"Resistance when affixed to armor is 5, extra damage when affixed to a weapon is {@dice 1d6}, the spell attack roll is +14, and the spell DC is 24.",
+						"Resistance when affixed to armor is 5, extra damage when affixed to a weapon is {@damage 1d6}, the spell attack roll is +14, and the spell DC is 24.",
 						{
 							"type": "ability",
 							"components": [
-								"Cast a Spell"
+								"{@action Cast a Spell}"
 							],
 							"frequency": "once per day",
 							"entries": [
 								"You cast {@spell fireball}."
 							]
 						}
-					]
+					],
+					"_mod": {
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replace": "resistance 2",
+								"with": "resistance 5"
+							},
+							{
+								"mode": "replaceTxt",
+								"replaceTags": true,
+								"replace": "{@damage 1d4}",
+								"with": "{@damage 1d6}"
+							},
+							{
+								"mode": "replaceTxt",
+								"replace": "17",
+								"with": "24"
+							},
+							{
+								"mode": "replaceTxt",
+								"replace": "\\+7",
+								"with": "+14"
+							},
+							{
+								"mode": "appendArr",
+								"items": [
+									{
+										"type": "ability",
+										"components": [
+											"{@action Cast a Spell}"
+										],
+										"frequency": "once per day",
+										"entries": [
+											"You cast {@spell fireball}."
+										]
+									}
+								]
+							}
+						],
+						"entriesMode": "generic"
+					}
 				},
 				{
 					"type": "major flaming star",
@@ -1697,7 +1833,7 @@
 						{
 							"type": "ability",
 							"components": [
-								"Cast a Spell"
+								"{@action Cast a Spell}"
 							],
 							"frequency": "once per day",
 							"entries": [
@@ -1707,14 +1843,65 @@
 						{
 							"type": "ability",
 							"components": [
-								"Cast a Spell"
+								"{@action Cast a Spell}"
 							],
 							"frequency": "once per day",
 							"entries": [
 								"You cast {@spell wall of fire}."
 							]
 						}
-					]
+					],
+					"_mod": {
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replace": "resistance 2",
+								"with": "resistance 10"
+							},
+							{
+								"mode": "replaceTxt",
+								"replaceTags": true,
+								"replace": "{@damage 1d4}",
+								"with": "{@damage 1d8}"
+							},
+							{
+								"mode": "replaceTxt",
+								"replace": "17",
+								"with": "29"
+							},
+							{
+								"mode": "replaceTxt",
+								"replace": "\\+7",
+								"with": "+19"
+							},
+							{
+								"mode": "appendArr",
+								"items": [
+									{
+										"type": "ability",
+										"components": [
+											"{@action Cast a Spell}"
+										],
+										"frequency": "once per day",
+										"entries": [
+											"You cast 4th-level {@spell fireball}."
+										]
+									},
+									{
+										"type": "ability",
+										"components": [
+											"{@action Cast a Spell}"
+										],
+										"frequency": "once per day",
+										"entries": [
+											"You cast {@spell wall of fire}."
+										]
+									}
+								]
+							}
+						],
+						"entriesMode": "generic"
+					}
 				}
 			],
 			"consumable": false
@@ -2271,7 +2458,7 @@
 				{
 					"type": "ability",
 					"components": [
-						"Cast a Spell"
+						"{@action Cast a Spell}"
 					],
 					"frequency": null,
 					"trigger": null,
@@ -2306,14 +2493,50 @@
 						{
 							"type": "ability",
 							"components": [
-								"Cast a Spell"
+								"{@action Cast a Spell}"
 							],
 							"frequency": "once per day",
 							"entries": [
 								"You cast 2nd-level {@spell harm} or {@spell heal}."
 							]
 						}
-					]
+					],
+					"_mod": {
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replace": "resistance 2",
+								"with": "resistance 5"
+							},
+							{
+								"mode": "replaceTxt",
+								"replaceTags": true,
+								"replace": "{@damage 1d4}",
+								"with": "{@damage 1d6}"
+							},
+							{
+								"mode": "replaceTxt",
+								"replace": "17",
+								"with": "24"
+							},
+							{
+								"mode": "appendArr",
+								"items": [
+									{
+										"type": "ability",
+										"components": [
+											"{@action Cast a Spell}"
+										],
+										"frequency": "once per day",
+										"entries": [
+											"You cast 2nd-level {@spell harm} or {@spell heal}."
+										]
+									}
+								]
+							}
+						],
+						"entriesMode": "generic"
+					}
 				},
 				{
 					"type": "major grim sandglass",
@@ -2328,7 +2551,7 @@
 						{
 							"type": "ability",
 							"components": [
-								"Cast a Spell"
+								"{@action Cast a Spell}"
 							],
 							"frequency": "once per day",
 							"entries": [
@@ -2338,14 +2561,60 @@
 						{
 							"type": "ability",
 							"components": [
-								"Cast a Spell"
+								"{@action Cast a Spell}"
 							],
 							"frequency": "once per day",
 							"entries": [
 								"You cast {@spell enervation|APG} or 4th-level {@spell restoration}."
 							]
 						}
-					]
+					],
+					"_mod": {
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replace": "resistance 2",
+								"with": "resistance 10"
+							},
+							{
+								"mode": "replaceTxt",
+								"replaceTags": true,
+								"replace": "{@damage 1d4}",
+								"with": "{@damage 1d8}"
+							},
+							{
+								"mode": "replaceTxt",
+								"replace": "17",
+								"with": "29"
+							},
+							{
+								"mode": "appendArr",
+								"items": [
+									{
+										"type": "ability",
+										"components": [
+											"{@action Cast a Spell}"
+										],
+										"frequency": "once per day",
+										"entries": [
+											"You cast 4th-level {@spell harm} or {@spell heal}."
+										]
+									},
+									{
+										"type": "ability",
+										"components": [
+											"{@action Cast a Spell}"
+										],
+										"frequency": "once per day",
+										"entries": [
+											"You cast {@spell enervation|APG} or 4th-level {@spell restoration}."
+										]
+									}
+								]
+							}
+						],
+						"entriesMode": "generic"
+					}
 				}
 			],
 			"consumable": false
@@ -2792,7 +3061,7 @@
 				{
 					"type": "ability",
 					"components": [
-						"Cast a Spell"
+						"{@action Cast a Spell}"
 					],
 					"frequency": null,
 					"trigger": null,
@@ -3290,7 +3559,7 @@
 				{
 					"type": "ability",
 					"components": [
-						"Cast a Spell"
+						"{@action Cast a Spell}"
 					],
 					"frequency": null,
 					"trigger": null,
@@ -3325,14 +3594,50 @@
 						{
 							"type": "ability",
 							"components": [
-								"Cast a Spell"
+								"{@action Cast a Spell}"
 							],
 							"frequency": "once per day",
 							"entries": [
 								"You cast {@spell aqueous orb|APG} or {@spell feet to fins}."
 							]
 						}
-					]
+					],
+					"_mod": {
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replace": "resistance 2",
+								"with": "resistance 5"
+							},
+							{
+								"mode": "replaceTxt",
+								"replaceTags": true,
+								"replace": ", treating each square in their spaces as {@quickref difficult terrain||3|terrain}",
+								"with": ""
+							},
+							{
+								"mode": "replaceTxt",
+								"replace": "17",
+								"with": "24"
+							},
+							{
+								"mode": "appendArr",
+								"items": [
+									{
+										"type": "ability",
+										"components": [
+											"{@action Cast a Spell}"
+										],
+										"frequency": "once per day",
+										"entries": [
+											"You cast {@spell aqueous orb|APG} or {@spell feet to fins}."
+										]
+									}
+								]
+							}
+						],
+						"entriesMode": "generic"
+					}
 				},
 				{
 					"type": "major perfect droplet",
@@ -3347,7 +3652,7 @@
 						{
 							"type": "ability",
 							"components": [
-								"Cast a Spell"
+								"{@action Cast a Spell}"
 							],
 							"frequency": "once per day",
 							"entries": [
@@ -3357,14 +3662,60 @@
 						{
 							"type": "ability",
 							"components": [
-								"Cast a Spell"
+								"{@action Cast a Spell}"
 							],
 							"frequency": "once per day",
 							"entries": [
 								"You cast {@spell hydraulic torrent}."
 							]
 						}
-					]
+					],
+					"_mod": {
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replace": "resistance 2",
+								"with": "resistance 10"
+							},
+							{
+								"mode": "replaceTxt",
+								"replaceTags": true,
+								"replace": ", treating each square in their spaces as {@quickref difficult terrain||3|terrain}",
+								"with": ""
+							},
+							{
+								"mode": "replaceTxt",
+								"replace": "17",
+								"with": "29"
+							},
+							{
+								"mode": "appendArr",
+								"items": [
+									{
+										"type": "ability",
+										"components": [
+											"{@action Cast a Spell}"
+										],
+										"frequency": "once per day",
+										"entries": [
+											"You cast 4th-level {@spell aqueous orb|APG} or {@spell feet to fins}."
+										]
+									},
+									{
+										"type": "ability",
+										"components": [
+											"{@action Cast a Spell}"
+										],
+										"frequency": "once per day",
+										"entries": [
+											"You cast {@spell hydraulic torrent}."
+										]
+									}
+								]
+							}
+						],
+						"entriesMode": "generic"
+					}
 				}
 			],
 			"consumable": false
@@ -4405,7 +4756,7 @@
 				{
 					"type": "ability",
 					"components": [
-						"Cast a Spell"
+						"{@action Cast a Spell}"
 					],
 					"frequency": null,
 					"trigger": null,
@@ -4495,7 +4846,7 @@
 				{
 					"type": "ability",
 					"components": [
-						"Cast a Spell"
+						"{@action Cast a Spell}"
 					],
 					"frequency": null,
 					"trigger": null,
@@ -5212,7 +5563,7 @@
 				{
 					"type": "ability",
 					"components": [
-						"Cast a Spell"
+						"{@action Cast a Spell}"
 					],
 					"frequency": null,
 					"trigger": null,
@@ -5222,7 +5573,155 @@
 					]
 				}
 			],
-			"generic": false,
+			"generic": "G",
+			"variants": [
+				{
+					"type": "trinity geode",
+					"level": 3,
+					"price": {
+						"coin": "gp",
+						"amount": 60,
+						"note": null
+					},
+					"entries": []
+				},
+				{
+					"type": "greater trinity geode",
+					"level": 8,
+					"price": {
+						"coin": "gp",
+						"amount": 460,
+						"note": null
+					},
+					"entries": [
+						"Resistance when affixed to armor is 3, extra damage affixed to a weapon is {@damage 1d6}, and spell DC is 24.",
+						{
+							"type": "ability",
+							"components": [
+								"{@action Cast a Spell}"
+							],
+							"frequency": "once per day",
+							"entries": [
+								"You cast {@spell meld into stone}."
+							]
+						}
+					],
+					"_mod": {
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replace": "resistance 1",
+								"with": "resistance 3"
+							},
+							{
+								"mode": "replaceTxt",
+								"replaceTags": true,
+								"replace": "{@damage 1d4}",
+								"with": "{@damage 1d6}"
+							},
+							{
+								"mode": "replaceTxt",
+								"replace": "17",
+								"with": "24"
+							},
+							{
+								"mode": "appendArr",
+								"items": [
+									{
+										"type": "ability",
+										"components": [
+											"{@action Cast a Spell}"
+										],
+										"frequency": "once per day",
+										"entries": [
+											"You cast {@spell meld into stone}."
+										]
+									}
+								]
+							}
+						],
+						"entriesMode": "generic"
+					}
+				},
+				{
+					"type": "major trinity geode",
+					"level": 12,
+					"price": {
+						"coin": "gp",
+						"amount": 1900,
+						"note": null
+					},
+					"entries": [
+						"Resistance when affixed to armor is 5, extra damage when affixed to a weapon is {@damage 1d8}, and spell DC is 29.",
+						{
+							"type": "ability",
+							"components": [
+								"{@action Cast a Spell}"
+							],
+							"frequency": "once per day",
+							"entries": [
+								"You cast 4th-level {@spell meld into stone}."
+							]
+						},
+						{
+							"type": "ability",
+							"components": [
+								"{@action Cast a Spell}"
+							],
+							"frequency": "once per day",
+							"entries": [
+								"You cast {@spell spike stones|apg}."
+							]
+						}
+					],
+					"_mod": {
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replace": "resistance 1",
+								"with": "resistance 5"
+							},
+							{
+								"mode": "replaceTxt",
+								"replaceTags": true,
+								"replace": "{@damage 1d4}",
+								"with": "{@damage 1d8}"
+							},
+							{
+								"mode": "replaceTxt",
+								"replace": "17",
+								"with": "29"
+							},
+							{
+								"mode": "appendArr",
+								"items": [
+									{
+										"type": "ability",
+										"components": [
+											"{@action Cast a Spell}"
+										],
+										"frequency": "once per day",
+										"entries": [
+											"You cast 4th-level {@spell meld into stone}."
+										]
+									},
+									{
+										"type": "ability",
+										"components": [
+											"{@action Cast a Spell}"
+										],
+										"frequency": "once per day",
+										"entries": [
+											"You cast {@spell spike stones|apg}."
+										]
+									}
+								]
+							}
+						],
+						"entriesMode": "generic"
+					}
+				}
+			],
 			"consumable": false
 		},
 		{

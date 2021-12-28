@@ -1,0 +1,106 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "feats.json",
+    "title": "Feats",
+    "description": "The feat data type for Pf2eTools.",
+    "type": "object",
+    "version": "0.0.1",
+    "properties": {
+        "feat": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "source": {
+                  "type": "string"
+                },
+                "page": {
+                  "type": "number"
+                },
+                "prerequisites": {
+                  "type": "string"
+                },
+                "frequency": {
+                  "type": "string"
+                },
+                "trigger": {
+                  "type": "string"
+                },
+                "cost": {
+                  "type": "string"
+                },
+                "requirements": {
+                  "type": "string"
+                },
+                "level": {
+                  "type": "number"
+                },
+                "featType": {
+                  "type": "object",
+                  "properties": {
+                    "class": {
+                      "type": ["string"]
+                    },
+                    "general": {
+                      "type": "boolean",
+                      "enum": [ true ]
+                    },
+                    "ancestry": {
+                      "type": ["string"]
+                    },
+                    "skill": {
+                      "not": { "enum": [ false ] },
+                      "type": ["string", "boolean", "array"]
+                    },
+                    "archetype": {
+                      "type": ["string"]
+                    }
+                  }
+                },
+                "activity": {
+                  "type": "object",
+                  "$ref": "schema.json#/definitions/activity"
+                },
+                "access": {
+                  "type": "string"
+                },
+                "traits": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "minItems": 1,
+                  "uniqueItems": true
+                },
+                "leadsTo": {
+                  "type": "array",
+                    "items": [
+                      {
+                        "type": "string"
+                      }
+                    ]
+                },
+                "entries": {
+                  "type": "array",
+                    "items": [
+                      {
+                        "type": "string"
+                      }
+                    ]
+                }
+              },
+              "required": [
+                "name",
+                "source",
+                "entries"
+              ]
+            }
+        }
+    },
+    "required": [
+        "feat"
+    ]
+}

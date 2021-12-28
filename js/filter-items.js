@@ -123,7 +123,7 @@ class PageFilterItems extends PageFilter {
 		// Filters
 		item._fSources = SourceFilter.getCompleteFilterSources(item);
 		item._fPrice = PageFilterItems._priceCategory(item._sPrice);
-		item._fWeaponRange = item.category === "Weapon" ? (item.ranged ? "Ranged" : "Melee") : null;
+		item._fWeaponRange = item.category === "Weapon" ? (item.range ? "Ranged" : "Melee") : null;
 		item._fMisc = ["Ammunition", "Bomb", "Consumable", "Elixir", "Oil", "Poison", "Potion", "Scroll", "Snare", "Talisman", "Tool"].includes(item.category) ? ["Consumable"] : [];
 		for (let entry of item.entries) {
 			if (typeof entry === "object") {

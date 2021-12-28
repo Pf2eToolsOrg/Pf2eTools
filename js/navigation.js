@@ -54,6 +54,7 @@ class NavBar {
 		addDivider(ulPlayers);
 		addLi(ulPlayers, "feats.html", "Feats");
 		addLi(ulPlayers, "companionsfamiliars.html", "Companions & Familiars");
+		addLi(ulPlayers, "optionalfeatures.html", "Optional Features");
 
 		const ulDms = addDropdown(navBar, "Game Master");
 		addLi(ulDms, "gmscreen.html", "GM Screen");
@@ -182,6 +183,7 @@ class NavBar {
 				title: "Add the site to your home screen. When used in conjunction with the Preload Offline Data option, this can create a functional offline copy of the site.",
 			},
 		);
+		/*
 		addButton(
 			ulSettings,
 			{
@@ -279,7 +281,7 @@ class NavBar {
 				title: "Preload the site data for offline use. Warning: slow. If it appears to freeze, cancel it and try again; progress will be saved.",
 			},
 		);
-
+		*/
 		/**
 		 * Adds a new item to the navigation bar. Can be used either in root, or in a different UL.
 		 * @param appendTo - Element to append this link to.

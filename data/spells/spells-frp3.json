@@ -26,7 +26,6 @@
 				"V": true
 			},
 			"range": {
-				"type": "point",
 				"entry": "touch",
 				"distance": {
 					"type": "touch",
@@ -75,9 +74,6 @@
 				"M": false,
 				"S": true,
 				"V": true
-			},
-			"range": {
-				"type": null
 			},
 			"area": {
 				"types": [
@@ -129,9 +125,6 @@
 				"S": true,
 				"V": true
 			},
-			"range": {
-				"type": null
-			},
 			"area": {
 				"types": [
 					"Emanation"
@@ -151,13 +144,13 @@
 			"dismiss": false,
 			"entries": [
 				"You encircle yourself in an aura of protective flames.",
-				"Each creature that hits you with an unarmed attack, Grapples you, or otherwise touches you takes 3 fire damage. When you Cast the Spell and the first time you sustain it each round, each creature in the area takes {@damage 3d6} fire damage (basic Reflex save)."
+				"Each creature that hits you with an unarmed attack, Grapples you, or otherwise touches you takes 3 fire damage. When you {@action Cast a Spell||Cast the Spell} and the first time you sustain it each round, each creature in the area takes {@damage 3d6} fire damage (basic Reflex save)."
 			],
 			"heightened": {
 				"heightened": true,
 				"plus_x": {
 					"level": 1,
-					"entry": "The damage caused by touching you increases by 1, and the fire damage when you Cast the Spell or sustain it increases by {@dice 1d6}."
+					"entry": "The damage caused by touching you increases by 1, and the fire damage when you {@action Cast a Spell||Cast the Spell} or sustain it increases by {@dice 1d6}."
 				},
 				"x": null,
 				"no_x": null

@@ -264,7 +264,6 @@
 			padding-top: 0.3em;
 			text-align: right;
 			font-style: italic;
-			clear: left;
 
 			&--other {
 				display: block;
@@ -695,8 +694,9 @@
 	clear: right;
 	border-left: solid 2px #5e0000;
 	color: #5e0000;
-	width: 50%;
-	max-width: 170px;
+	width: 35%;
+	max-width: 300px;
+	min-width: 170px;
 	margin: 0.4em -1em 0.4em 1em;
 	font-family: 'good-pro', sans-serif;
 	font-size: 1em;
@@ -760,19 +760,10 @@
 		}
 	}
 
-	@media only screen and (max-width: 220px) {
+	@media only screen and (max-width: 440px) {
 		width: calc(100%);
 		max-width: none;
-	}
-}
-
-.pf2-book--large {
-	.pf2-sidebar {
-		max-width: 200px;
-
-		@media only screen and (max-width: 684px) {
-			max-width: 185px;
-		}
+		float: none;
 	}
 }
 
@@ -1433,8 +1424,8 @@
 		background-color: #aaa4;
 		border: 1px solid rgba(204, 204, 204, 0.4);
 		position: absolute;
-		bottom: 0;
-		height: 1px;
+		bottom: 3px;
+		height: 2px;
 		width: 100%;
 		cursor: ns-resize;
 		user-select: none;
@@ -1450,7 +1441,12 @@
 
 .feat-view--inactive {
 	.feat-view {
-		display: none;
+		display: none !important;
+
+		// Disgusting Hack
+		+ .fltr__mini-view {
+			display: none !important;
+		}
 	}
 
 	.feat-view--resizable {

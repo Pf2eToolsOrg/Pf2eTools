@@ -5,7 +5,7 @@ if (typeof module !== "undefined") require("./parser.js");
 
 // in deployment, `IS_DEPLOYED = "<version number>";` should be set below.
 IS_DEPLOYED = undefined;
-VERSION_NUMBER = /* PF2ETOOLS_VERSION__OPEN */"0.1.1"/* PF2ETOOLS_VERSION__CLOSE */;
+VERSION_NUMBER = /* PF2ETOOLS_VERSION__OPEN */"0.1.2"/* PF2ETOOLS_VERSION__CLOSE */;
 DEPLOYED_STATIC_ROOT = ""; // ""; // FIXME re-enable this when we have a CDN again
 IS_VTT = false;
 
@@ -1420,6 +1420,18 @@ EventUtil = {
 	noModifierKeys (evt) {
 		return !evt.ctrlKey && !evt.altKey && !evt.metaKey;
 	},
+
+	getKeyIgnoreCapsLock (evt) {
+		if (!evt.key) return null;
+		if (evt.key.length !== 1) return evt.key;
+		const isCaps = (evt.originalEvent || evt).getModifierState("CapsLock");
+		if (!isCaps) return evt.key;
+		const asciiCode = evt.key.charCodeAt(0);
+		const isUpperCase = asciiCode >= 65 && asciiCode <= 90;
+		const isLowerCase = asciiCode >= 97 && asciiCode <= 122;
+		if (!isUpperCase && !isLowerCase) return evt.key;
+		return isUpperCase ? evt.key.toLowerCase() : evt.key.toUpperCase();
+	},
 };
 
 if (typeof window !== "undefined") window.addEventListener("load", EventUtil.init);
@@ -1871,6 +1883,7 @@ UrlUtil.PG_ENCOUNTERGEN = "encountergen.html";
 UrlUtil.PG_LOOTGEN = "encountergen.html";
 UrlUtil.PG_CHANGELOG = "changelog.html";
 UrlUtil.PG_PLACES = "places.html";
+UrlUtil.PG_OPTIONAL_FEATURES = "optionalfeatures.html";
 
 UrlUtil.URL_TO_HASH_BUILDER = {};
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_BESTIARY] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
@@ -1897,6 +1910,7 @@ UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_LANGUAGES] = (it) => UrlUtil.encodeForHas
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_TRAITS] = (it) => UrlUtil.encodeForHash(BrewUtil.hasSourceJson(it.source) ? [it.name, it.source] : [it.name]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_VEHICLES] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_PLACES] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_OPTIONAL_FEATURES] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 // region Fake pages (props)
 UrlUtil.URL_TO_HASH_BUILDER["subclass"] = it => {
 	const hashParts = [
@@ -1943,40 +1957,56 @@ UrlUtil.PG_TO_NAME[UrlUtil.PG_ENCOUNTERGEN] = "Encounter Generator";
 UrlUtil.PG_TO_NAME[UrlUtil.PG_LOOTGEN] = "Loot Generator";
 UrlUtil.PG_TO_NAME[UrlUtil.PG_CHANGELOG] = "Changelog";
 UrlUtil.PG_TO_NAME[UrlUtil.PG_PLACES] = "Planes and Places";
+UrlUtil.PG_TO_NAME[UrlUtil.PG_OPTIONAL_FEATURES] = "Optional Features";
 
 UrlUtil.CAT_TO_PAGE = {};
-UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_CREATURE] = UrlUtil.PG_BESTIARY;
-UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_SPELL] = UrlUtil.PG_SPELLS;
-UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_RITUAL] = UrlUtil.PG_RITUALS;
-UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_VEHICLE] = UrlUtil.PG_VEHICLES;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_QUICKREF] = UrlUtil.PG_QUICKREF;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_VARIANT_RULE] = UrlUtil.PG_VARIANTRULES;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_SUBSYSTEM] = UrlUtil.PG_VARIANTRULES;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_TABLE] = UrlUtil.PG_TABLES;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_TABLE_GROUP] = UrlUtil.PG_TABLES;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_BOOK] = UrlUtil.PG_BOOK;
+
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_ANCESTRY] = UrlUtil.PG_ANCESTRIES;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_HERITAGE] = UrlUtil.PG_ANCESTRIES;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_VE_HERITAGE] = UrlUtil.PG_ANCESTRIES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_BACKGROUND] = UrlUtil.PG_BACKGROUNDS;
-UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_ITEM] = UrlUtil.PG_ITEMS;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_CLASS] = UrlUtil.PG_CLASSES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_CLASS_FEATURE] = UrlUtil.PG_CLASSES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_SUBCLASS] = UrlUtil.PG_CLASSES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_SUBCLASS_FEATURE] = UrlUtil.PG_CLASSES;
-UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_CONDITION] = UrlUtil.PG_CONDITIONS;
-UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_AFFLICTION] = UrlUtil.PG_AFFLICTIONS;
-UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_FEAT] = UrlUtil.PG_FEATS;
-UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_ANCESTRY] = UrlUtil.PG_ANCESTRIES;
-UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_HERITAGE] = UrlUtil.PG_ANCESTRIES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_ARCHETYPE] = UrlUtil.PG_ARCHETYPES;
-UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_VARIANT_RULE] = UrlUtil.PG_VARIANTRULES;
-UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_ADVENTURE] = UrlUtil.PG_ADVENTURE;
-UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_DEITY] = UrlUtil.PG_DEITIES;
-UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_HAZARD] = UrlUtil.PG_HAZARDS;
-UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_QUICKREF] = UrlUtil.PG_QUICKREF;
-UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_TABLE] = UrlUtil.PG_TABLES;
-UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_TABLE_GROUP] = UrlUtil.PG_TABLES;
-UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_ACTION] = UrlUtil.PG_ACTIONS;
-UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_ABILITY] = UrlUtil.PG_ABILITIES;
-UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_LANGUAGE] = UrlUtil.PG_LANGUAGES;
-UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_TRAIT] = UrlUtil.PG_TRAITS;
-UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_BOOK] = UrlUtil.PG_BOOK;
-UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_PAGE] = null;
-UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_PLACE] = UrlUtil.PG_PLACES;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_FEAT] = UrlUtil.PG_FEATS;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_COMPANION] = UrlUtil.PG_COMPANIONS_FAMILIARS;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_FAMILIAR] = UrlUtil.PG_COMPANIONS_FAMILIARS;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_EIDOLON] = UrlUtil.PG_COMPANIONS_FAMILIARS;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_OPTIONAL_FEATURE] = UrlUtil.PG_OPTIONAL_FEATURES;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_OPTIONAL_FEATURE_LESSON] = UrlUtil.PG_OPTIONAL_FEATURES;
+
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_ADVENTURE] = UrlUtil.PG_ADVENTURE;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_HAZARD] = UrlUtil.PG_HAZARDS;
+
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_ACTION] = UrlUtil.PG_ACTIONS;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_CREATURE] = UrlUtil.PG_BESTIARY;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_CONDITION] = UrlUtil.PG_CONDITIONS;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_ITEM] = UrlUtil.PG_ITEMS;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_SPELL] = UrlUtil.PG_SPELLS;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_AFFLICTION] = UrlUtil.PG_AFFLICTIONS;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_CURSE] = UrlUtil.PG_AFFLICTIONS;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_ITEM_CURSE] = UrlUtil.PG_AFFLICTIONS;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_DISEASE] = UrlUtil.PG_AFFLICTIONS;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_ABILITY] = UrlUtil.PG_ABILITIES;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_DEITY] = UrlUtil.PG_DEITIES;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_LANGUAGE] = UrlUtil.PG_LANGUAGES;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_PLACE] = UrlUtil.PG_PLACES;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_PLANE] = UrlUtil.PG_PLACES;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_NATION] = UrlUtil.PG_PLACES;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_SETTLEMENT] = UrlUtil.PG_PLACES;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_RITUAL] = UrlUtil.PG_RITUALS;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_VEHICLE] = UrlUtil.PG_VEHICLES;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_TRAIT] = UrlUtil.PG_TRAITS;
+
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_PAGE] = null;
 
 UrlUtil.CAT_TO_HOVER_PAGE = {};
 UrlUtil.CAT_TO_HOVER_PAGE[Parser.CAT_ID_CLASS_FEATURE] = "classfeature";
@@ -2533,9 +2563,11 @@ DataUtil = {
 					return DataUtil.generic._walker_replaceTxt.walk(it, handlers);
 				});
 
+				// TODO: This is getting out of hand
 				const typesToReplaceIn = ["successDegree", "ability", "affliction", "lvlEffect"];
 				copyTo[prop].forEach(it => {
 					if (it.entries) it.entries = DataUtil.generic._walker_replaceTxt.walk(it.entries, handlers);
+					if (it.items) it.items = DataUtil.generic._walker_replaceTxt.walk(it.items, handlers);
 					if (typesToReplaceIn.includes(it.type)) {
 						Object.keys(it).forEach(key => {
 							it[key] = DataUtil.generic._walker_replaceTxt.walk(it[key], handlers)
@@ -2722,6 +2754,12 @@ DataUtil = {
 
 			// cleanup
 			delete copyTo._copy;
+		},
+	},
+
+	trait: {
+		loadJSON: async function () {
+			return DataUtil.loadJSON(`${Renderer.get().baseUrl}data/traits.json`);
 		},
 	},
 

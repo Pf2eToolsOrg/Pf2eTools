@@ -123,7 +123,7 @@
 			"frequency": "once per day",
 			"trigger": "A creature targets you with an attack or other targeted effect, and you can see the attacker.",
 			"entries": [
-				"You create a blanket of fog in a 5\u2013foot burst centered on one corner of your space. All creatures within that area are {@condition concealed}, and all others are {@condition concealed} to them. This concealment applies to the triggering effect, and the fog lasts for 1 minute or until dispersed by a strong wind. After resolving the triggering effect, you {@action Step}. If an effect prevents you from Stepping, you attempt to {@action Escape} the effect and {@action Step} if you succeed."
+				"You create a blanket of fog in a 5\u2013foot burst centered on one corner of your space. All creatures within that area are {@condition concealed}, and all others are {@condition concealed} to them. This concealment applies to the triggering effect, and the fog lasts for 1 minute or until dispersed by a strong wind. After resolving the triggering effect, you {@action Step}. If an effect prevents you from {@action Step||Stepping}, you attempt to {@action Escape} the effect and {@action Step} if you succeed."
 			]
 		},
 		{
@@ -364,7 +364,7 @@
 			],
 			"entries": [
 				"You have full control over your shape and can transform into your inherent animal.",
-				"You can use {@action Change Shape (Beastkin)|LOAG} to enter an animal shape. When you gain this feat, choose either {@spell aerial form}, {@spell animal form}, or {@spell dinosaur form}; after you choose a form, you can't change the form. While in animal shape, you gain the effects of a 5th-level casting of your chosen form spell, except you always transform into an animal matching your inherent animal and can use your humanoid form's AC if it's higher than what the animal form grants. If your inherent animal isn't among the animals listed in the form, you default to the statistics and abilities of the bird battle form, cat battle form, or deinonychus battle form for {@spell aerial form}, {@spell animal form}, and {@spell dinosaur form}, respectively (at the GM's discretion, you instead default to a different form that is closest to your inherent animal). You can remain in animal shape indefinitely and can use {@action Change Shape (Beastkin)|LOAG} to return to your humanoid or hybrid shape at any time.",
+				"You can use {@action Change Shape (Beastkin)|LOAG} to enter an animal shape. When you gain this feat, choose either {@spell aerial form}, {@spell animal form}, {@spell dinosaur form} or {@spell insect form}; after you choose a form, you can't change the form. While in animal shape, you gain the effects of a 5th-level casting of your chosen form spell, except you always transform into an animal matching your inherent animal and can use your humanoid form's AC if it's higher than what the animal form grants. If your inherent animal isn't among the animals listed in the form, you default to the statistics and abilities of the bird battle form, cat battle form, deinonychus battle form or ant battle form for {@spell aerial form}, {@spell animal form}, {@spell dinosaur form}, and {@spell insect form}, respectively (at the GM's discretion, you instead default to a different form that is closest to your inherent animal). You can remain in animal shape indefinitely and can use {@action Change Shape (Beastkin)|LOAG} to return to your humanoid or hybrid shape at any time.",
 				"If you have the {@feat Critter Shape|LOAG} feat, you can choose to gain the effects of a 4th-level {@spell pest form}, can remain in critter shape indefinitely, and can return to your critter shape at any time after leaving the shape, just as you can with Animal Shape."
 			]
 		},
@@ -1909,6 +1909,7 @@
 				"skill": false,
 				"archetype": false
 			},
+			"prerequisites": "Medium size",
 			"traits": [
 				"Fleshwarp"
 			],
@@ -2850,7 +2851,7 @@
 				"Kitsune"
 			],
 			"entries": [
-				"A crack of your tail sparks wisps of blue energy. Choose either electricity or fire when you gain this feat. You gain a foxfire ranged unarmed attack with a maximum range of 20 feet. The attack deals {@dice 1d4} damage of the chosen type (no ability modifier is added to the damage roll). Your foxfire attack is in the sling weapon group. Like other unarmed attacks, you can improve this attack with {@item handwraps of mighty blows (generic)|CRB|handwraps of mighty blows}."
+				"A crack of your tail sparks wisps of blue energy. Choose either electricity or fire when you gain this feat. You gain a foxfire ranged unarmed attack with a maximum range of 20 feet. The attack deals {@dice 1d4} damage of the chosen type (no ability modifier is added to the damage roll). Your foxfire attack is in the {@group sling} weapon group and has the {@trait magical} trait. Like other unarmed attacks, you can improve this attack with {@item handwraps of mighty blows (generic)|CRB|handwraps of mighty blows}."
 			],
 			"special": "If you are a frozen wind kitsune, your foxfire deals cold damage instead of electricity or fire."
 		},
@@ -3469,7 +3470,7 @@
 			"frequency": "once per day",
 			"trigger": "You critically hit a foe with a {@action Strike} with a slashing weapon.",
 			"entries": [
-				"Choose either lightning bolt or gust of wind. You Cast the chosen Spell as a 6th-level primal innate spell in the direction of the target of the triggering action."
+				"Choose either lightning bolt or gust of wind. You {@action Cast a Spell||Cast the chosen Spell} as a 6th-level primal innate spell in the direction of the target of the triggering action."
 			]
 		},
 		{
@@ -4260,7 +4261,7 @@
 				"Fetchling"
 			],
 			"entries": [
-				"Your body is almost as flexible as your shadow. When you critically fail at {@action Squeeze||Squeezing}, you get a failure instead. Additionally, when you roll a success at an {@action Escape} check, you get a critical success instead; if you roll a critical success, you can {@action Step} instead of Striding up to 5 feet."
+				"Your body is almost as flexible as your shadow. When you critically fail at {@action Squeeze||Squeezing}, you get a failure instead. Additionally, when you roll a success at an {@action Escape} check, you get a critical success instead; if you roll a critical success, you can {@action Step} instead of {@action Stride||Striding} up to 5 feet."
 			]
 		},
 		{
@@ -4465,7 +4466,7 @@
 			"entries": [
 				"Your warmask burns off of your face, releasing your apprehension. You remove the {@condition frightened} condition. Your warmask is destroyed, and you can't reapply it until your next daily preparations."
 			],
-			"special": "You can use this reaction even if you have a condition tied to the {@condition frightened} condition that would normally prevent you from using a reaction, such as \"{@condition fleeing} as long as you're {@condition frightened}\" or \"{@condition paralyzed} as long as you're {@condition frightened}.\""
+			"special": "You can use this free action even if you have a condition tied to the {@condition frightened} condition that would normally prevent you from using a reaction, such as \"{@condition fleeing} as long as you're {@condition frightened}\" or \"{@condition paralyzed} as long as you're {@condition frightened}.\""
 		},
 		{
 			"name": "Mask Of Pain",
@@ -5321,7 +5322,8 @@
 				"archetype": false
 			},
 			"traits": [
-				"Aasimar"
+				"Aasimar",
+				"Healing"
 			],
 			"frequency": "once per day",
 			"entries": [
@@ -6827,7 +6829,7 @@
 				"Kitsune"
 			],
 			"entries": [
-				"Your magic has crystallized into a spherical stone. You gain a {@filter familiar|companionsfamiliars||Type=Familiar}, except it's a star orb: a Tiny stone of light Bulk. The familiar has no Speeds and must select a Speed familiar ability before it can move, animating in a way appropriate to the chosen Speed and using the statistics of a normal familiar for that day; when it‘s an immobile stone, it can't select any familiar or master abilities that require it to move. It always has the innate surge master ability (Advanced Player's Guide 147)."
+				"Your magic has crystallized into a spherical stone. You gain a {@filter familiar|companionsfamiliars||Type=Familiar}, except it's a star orb: a Tiny stone of light Bulk. The familiar has no Speeds and must select a Speed familiar ability before it can move, animating in a way appropriate to the chosen Speed and using the statistics of a normal familiar for that day; when it‘s an immobile stone, it can't select any familiar or master abilities that require it to move. It always has the {@familiarAbility innate surge|apg} master ability, which counts against your limit for familiar and master abilities."
 			],
 			"leadsTo": [
 				"Killing Stone|LOAG"
@@ -8114,7 +8116,7 @@
 				"Strix"
 			],
 			"entries": [
-				"With a sharp flap of your wings, you stay light on your feet as you move. You {@action Step} twice."
+				"With a sharp flap of your wings, you stay light on your feet as you move. You {@action Step} 5 feet twice."
 			]
 		},
 		{
@@ -8135,7 +8137,7 @@
 			"entries": [
 				"You're among the few kobolds who grow a set of draconic wings later in life. The wings are initially small and weak; while not enough for full flight, a strong flap allows you to jump further.",
 				"When Leaping horizontally, you move an additional 5 feet (this additional distance isn't cumulative with the increased {@action Leap} distance from the Powerful {@action Leap} feat). You don't automatically fail your checks to {@action High Jump} or {@action Long Jump} if you don't {@action Stride} at least 10 feet first.",
-				"In addition, when you attempt a {@action Long Jump}, you can jump a distance up to 10 feet higher than you normally would based on the result of your {@skill Athletics} check, though you still can't jump farther than your Speed."
+				"In addition, when you attempt a {@action Long Jump}, you can jump a distance up to 10 feet longer than you normally would based on the result of your {@skill Athletics} check, though you still can't jump farther than your Speed."
 			],
 			"leadsTo": [
 				"Hatchling Flight|LOAG",

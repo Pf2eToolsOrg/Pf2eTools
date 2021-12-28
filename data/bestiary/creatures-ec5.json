@@ -143,7 +143,7 @@
 					"effects": [
 						"Improved Grab"
 					],
-					"damage": "{@damage 3d12+16} piercing plus Improved Grab",
+					"damage": "{@damage 3d12+16} piercing plus {@ability Improved Grab}",
 					"types": [
 						"piercing"
 					]
@@ -2034,7 +2034,7 @@
 						"rage"
 					],
 					"entries": [
-						"Kharostan Strides up to five times his Speed in a straight line. He can increase the number of actions for this activity to 3 in order to {@action Stride} up to eight times his Speed in a straight line instead."
+						"Kharostan {@action Stride||Strides} up to five times his Speed in a straight line. He can increase the number of actions for this activity to 3 in order to {@action Stride} up to eight times his Speed in a straight line instead."
 					],
 					"name": "Furious Sprint"
 				},
@@ -3389,7 +3389,7 @@
 						"unit": "action"
 					},
 					"entries": [
-						"The Shraen graveknight Steps once then Strikes with its rapier. A creature damaged by the attack must attempt a DC 36 Fortitude save. On a failure, the creature takes {@damage 4d6} {@condition persistent damage ||persistent bleed damage}. On a critical failure, the attack pierces the creature's heart, and the creature dies."
+						"The Shraen graveknight {@action Step||Steps} once then Strikes with its rapier. A creature damaged by the attack must attempt a DC 36 Fortitude save. On a failure, the creature takes {@damage 4d6} {@condition persistent damage ||persistent bleed damage}. On a critical failure, the attack pierces the creature's heart, and the creature dies."
 					],
 					"name": "Heart-Seeking Strike"
 				},

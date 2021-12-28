@@ -22,6 +22,9 @@ class ArchetypesPage extends BaseComponent {
 		this._featDataList = [];
 		this._featFilter = new PageFilterFeats({
 			typeDeselFn: it => it === "Archetype",
+			sourceFilterOpts: {
+				selFn: it => !SourceUtil.isNonstandardSource(it),
+			},
 		});
 		this.__featId = {_: 0};
 		this._featId = this._getProxy("featId", this.__featId);
@@ -658,7 +661,8 @@ class ArchetypesPage extends BaseComponent {
 		const hkShowFeats = () => {
 			if (this._state.isShowFeats) {
 				$(`.feat-view--inactive`).toggleClass("feat-view--active", true).toggleClass("feat-view--inactive", false);
-				const $featView = $(`.feat-view--resizable`)
+				const $featView = $(`.feat-view--resizable`);
+				// TODO: Improve this
 				if (!$featView.attr("style")) $featView.height(Math.min($featView.height() + 25, $(window).height() * 0.5));
 			} else {
 				$(`.feat-view--active`).toggleClass("feat-view--active", false).toggleClass("feat-view--inactive", true);
@@ -726,7 +730,7 @@ class ArchetypesPage extends BaseComponent {
 	_updateFeatHref () {
 		const feat = this.activeFeat;
 		if (!feat) return;
-		$(`#btn-feat-link`).attr("href", `feats.html#${UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_FEATS](feat)}${HASH_PART_SEP}${this.featFilterBox.getSubHashes().join(HASH_PART_SEP)}`);
+		$(`#btn-feat-link`).attr("href", `feats.html#${UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_FEATS](feat)}${HASH_PART_SEP}${this.featFilterBox.getSubHashes().map(sh => sh.replace(/\.archetypes\.feats/, "")).join(HASH_PART_SEP)}`);
 	}
 
 	static _render_$getNoContent () {

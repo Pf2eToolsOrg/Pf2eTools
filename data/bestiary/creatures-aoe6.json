@@ -844,7 +844,7 @@
 					"hp": 400,
 					"note": null,
 					"abilities": [
-						"regeneration 20 (deactivated by evil)"
+						"{@ability regeneration} 20 (deactivated by evil)"
 					]
 				}
 			],
@@ -1145,7 +1145,7 @@
 					"hp": 350,
 					"note": null,
 					"abilities": [
-						"regeneration 30 (deactivated by lawful)"
+						"{@ability regeneration} 30 (deactivated by lawful)"
 					]
 				}
 			],
@@ -1205,7 +1205,7 @@
 					"effects": [
 						"Improved Grab"
 					],
-					"damage": "{@damage 4d8+14} bludgeoning plus {@damage 2d6} chaotic plus Improved Grab",
+					"damage": "{@damage 4d8+14} bludgeoning plus {@damage 2d6} chaotic plus {@ability Improved Grab}",
 					"types": [
 						"bludgeoning",
 						"chaotic"
@@ -1285,7 +1285,7 @@
 						"unit": "action"
 					},
 					"entries": [
-						"The baatamidar makes up to four tentacle Strikes, each against a different target. Each attack counts separately for the baatamidar's multiple attack penalty, but the penalty doesn't increase until the baatamidar has made all the attacks. If the baatamidar subsequently uses the Improved Grab action, it can Grab any number of creatures it hit with Writhing Arms."
+						"The baatamidar makes up to four tentacle Strikes, each against a different target. Each attack counts separately for the baatamidar's multiple attack penalty, but the penalty doesn't increase until the baatamidar has made all the attacks. If the baatamidar subsequently uses the {@ability Improved Grab} action, it can Grab any number of creatures it hit with Writhing Arms."
 					],
 					"name": "Writhing Arms"
 				}
@@ -1993,7 +1993,7 @@
 					"effects": [
 						"Improved Grab"
 					],
-					"damage": "{@damage 3d10+18} piercing plus Improved Grab",
+					"damage": "{@damage 3d10+18} piercing plus {@ability Improved Grab}",
 					"types": [
 						"piercing"
 					]
@@ -2873,7 +2873,7 @@
 				},
 				{
 					"entries": [
-						"Rumormonger dodges out of the way and uses his momentum to attack and move out of reach. He Strides up to 20 feet and can {@action Strike} at any point during this movement; this {@action Strike} counts toward the multiple attack penalty on his next turn."
+						"Rumormonger dodges out of the way and uses his momentum to attack and move out of reach. He {@action Stride||Strides} up to 20 feet and can {@action Strike} at any point during this movement; this {@action Strike} counts toward the multiple attack penalty on his next turn."
 					],
 					"name": "The"
 				}
@@ -3018,7 +3018,7 @@
 						"unit": "action"
 					},
 					"entries": [
-						"The Daemonic Rumormonger Strides up to his Speed. He can make up to three claw Strikes, each against a different target, at any points during this {@action Stride}. His multiple attack penalty applies as usual."
+						"The Daemonic Rumormonger {@action Stride||Strides} up to his Speed. He can make up to three claw Strikes, each against a different target, at any points during this {@action Stride}. His multiple attack penalty applies as usual."
 					],
 					"name": "Whirling Slashes"
 				}
@@ -5831,7 +5831,7 @@
 					"effects": [
 						"Improved Grab"
 					],
-					"damage": "{@damage 4d10+17} bludgeoning plus {@damage 2d6} chaotic and Improved Grab",
+					"damage": "{@damage 4d10+17} bludgeoning plus {@damage 2d6} chaotic and {@ability Improved Grab}",
 					"types": [
 						"bludgeoning",
 						"chaotic"
@@ -7380,7 +7380,7 @@
 						"unit": "action"
 					},
 					"entries": [
-						"The penqual Strides twice, ignoring difficult terrain, and then uses Frantic Grasp. If it moves at least 20 feet away from its starting position,"
+						"The penqual {@action Stride||Strides} twice, ignoring difficult terrain, and then uses Frantic Grasp. If it moves at least 20 feet away from its starting position,"
 					],
 					"name": "Mob Rush"
 				},
@@ -7846,7 +7846,7 @@
 					"effects": [
 						"Improved Grab"
 					],
-					"damage": "{@damage 4d10+18} piercing plus Improved Grab",
+					"damage": "{@damage 4d10+18} piercing plus {@ability Improved Grab}",
 					"types": [
 						"piercing"
 					]

@@ -159,7 +159,7 @@
 						"unit": "action"
 					},
 					"entries": [
-						"The agile warrior Strides up to their Speed. During this movement, they can move through the space of one creature without triggering reactions. When the agile warrior moves through a creature's space in this way, that creature becomes {@condition flat-footed} until the end of the agile warrior's turn. If the agile warrior ends their movement within melee reach of at least one enemy, they can make a melee {@action Strike} against that enemy."
+						"The agile warrior {@action Stride||Strides} up to their Speed. During this movement, they can move through the space of one creature without triggering reactions. When the agile warrior moves through a creature's space in this way, that creature becomes {@condition flat-footed} until the end of the agile warrior's turn. If the agile warrior ends their movement within melee reach of at least one enemy, they can make a melee {@action Strike} against that enemy."
 					],
 					"name": "Tumbling Attack"
 				}
@@ -1576,7 +1576,7 @@
 						"unit": "action"
 					},
 					"entries": [
-						"The caustic monitor Strides twice, then makes a jaws {@action Strike}. If the monitor moved at least 20 feet away from its starting position, it gains a +2 circumstance bonus to this attack roll."
+						"The caustic monitor {@action Stride||Strides} twice, then makes a jaws {@action Strike}. If the monitor moved at least 20 feet away from its starting position, it gains a +2 circumstance bonus to this attack roll."
 					],
 					"name": "Lurching Charge"
 				},
@@ -1721,7 +1721,7 @@
 					"effects": [
 						"Improved Grab"
 					],
-					"damage": "{@damage 3d8+18} slashing plus Improved Grab",
+					"damage": "{@damage 3d8+18} slashing plus {@ability Improved Grab}",
 					"types": [
 						"slashing"
 					]
@@ -1888,9 +1888,9 @@
 						"number": 1,
 						"unit": "reaction"
 					},
-					"trigger": "Another dromornis within 10 feet Strides",
+					"trigger": "Another dromornis within 10 feet {@action Stride||Strides}",
 					"entries": [
-						"The dromornis Strides up to half its Speed."
+						"The dromornis {@action Stride||Strides} up to half its Speed."
 					],
 					"name": "Pack Ambush"
 				}
@@ -1942,7 +1942,7 @@
 						"unit": "action"
 					},
 					"entries": [
-						"The dromornis suddenly Strides and makes a {@action Strike} at the end of its movement. During the {@action Stride}, it gains a +10-foot circumstance bonus to its Speed."
+						"The dromornis suddenly {@action Stride||Strides} and makes a {@action Strike} at the end of its movement. During the {@action Stride}, it gains a +10-foot circumstance bonus to its Speed."
 					],
 					"name": "Rushing Attack"
 				},
@@ -2629,7 +2629,7 @@
 						"unit": "action"
 					},
 					"entries": [
-						"The grave spinosaurus Strides and makes a {@action Strike} at the end of its movement. If the {@action Strike} hits, it deals damage as normal and the grave spinosaurus makes an {@skill Athletics} check to {@action Trip} the target. This check counts toward the grave spinosaurus's multiple attack penalty, but the multiple attack penalty doesn't increase until after it makes the check."
+						"The grave spinosaurus {@action Stride||Strides} and makes a {@action Strike} at the end of its movement. If the {@action Strike} hits, it deals damage as normal and the grave spinosaurus makes an {@skill Athletics} check to {@action Trip} the target. This check counts toward the grave spinosaurus's multiple attack penalty, but the multiple attack penalty doesn't increase until after it makes the check."
 					],
 					"name": "Pouncing Pin"
 				},
@@ -2814,7 +2814,7 @@
 						"unit": "action"
 					},
 					"entries": [
-						"Hana's Hundreds attempt to trample all foes in their way. The team Forms Up and Strides twice, moving through the space of Medium or smaller creatures. Each creature the team moves through takes {@damage 4d8+14} bludgeoning damage (DC 33 basic Reflex save)",
+						"Hana's Hundreds attempt to trample all foes in their way. The team Forms Up and {@action Stride||Strides} twice, moving through the space of Medium or smaller creatures. Each creature the team moves through takes {@damage 4d8+14} bludgeoning damage (DC 33 basic Reflex save)",
 						"On a critical failure, the creature is also knocked {@condition prone}."
 					],
 					"name": "Run Them Over!"
@@ -2826,7 +2826,7 @@
 					"entries": [
 						"first Forms Up as a free action to condense into a 20-foot-by-20-foot area (minus any missing squares), then moves up to its Speed. This works just like a Gargantuan creature moving; for instance, if any square of the team enters difficult terrain, the extra movement cost applies to the whole team."
 					],
-					"name": "Troop Movement Whenever Hana's Hundreds Strides, the"
+					"name": "Troop Movement Whenever Hana's Hundreds {@action Stride||Strides}, the"
 				},
 				{
 					"activity": {
@@ -3993,7 +3993,7 @@
 					"hp": 295,
 					"note": null,
 					"abilities": [
-						"regeneration 15 (deactivated by acid or fire)"
+						"{@ability regeneration} 15 (deactivated by acid or fire)"
 					]
 				}
 			],
@@ -5047,7 +5047,7 @@
 				},
 				{
 					"entries": [
-						"When a muckish creep Strides or Steps, it leaves behind a slimy mud trail that coats the traversed area. All traversed squares are covered in grease (DC 26) until the start of the muckish creep's next turn."
+						"When a muckish creep {@action Stride||Strides} or {@action Step||Steps}, it leaves behind a slimy mud trail that coats the traversed area. All traversed squares are covered in grease (DC 26) until the start of the muckish creep's next turn."
 					],
 					"name": "Mud Trail"
 				},
@@ -5874,7 +5874,7 @@
 				},
 				{
 					"entries": [
-						"Whenever a terra-cotta squadron Strides, the garrison first Forms Up as a free action to condense into a 20-foot-by-20-foot area (minus any missing squares), then moves up to its Speed. This works just like a Gargantuan creature moving; for instance, if any square of the squadron enters difficult terrain, the extra movement cost applies to the whole squadron."
+						"Whenever a terra-cotta squadron {@action Stride||Strides}, the garrison first Forms Up as a free action to condense into a 20-foot-by-20-foot area (minus any missing squares), then moves up to its Speed. This works just like a Gargantuan creature moving; for instance, if any square of the squadron enters difficult terrain, the extra movement cost applies to the whole squadron."
 					],
 					"name": "Troop Movement"
 				}

@@ -4,11 +4,12 @@
  *   - spam "Clear Site Data" in DevTools
  *   - use "update on reload" in Service Workers DevTools section
  *   - sanity-check code to ensure it has updated
+ * 	 - https://developers.google.com/web/ilt/pwa/caching-files-with-service-worker
  */
 
 // importScripts("./js/sw-files.js");
 
-const cacheName = /* PF2ETOOLS_VERSION__OPEN */"0.1.1"/* PF2ETOOLS_VERSION__CLOSE */;
+const cacheName = /* PF2ETOOLS_VERSION__OPEN */"0.1.2"/* PF2ETOOLS_VERSION__CLOSE */;
 // const cacheableFilenames = new Set(filesToCache);
 
 let isCacheRunning;

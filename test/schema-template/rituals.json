@@ -1,0 +1,190 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Rituals",
+  "description": "The ritual data type for Pf2eTools.",
+  "type": "object",
+  "version": "0.0.1",
+  "properties": {
+    "ritual": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "source": {
+            "type": "string"
+          },
+          "page": {
+            "type": "integer"
+          },
+          "level": {
+            "type": "integer"
+          },
+          "traits": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "cast": {
+            "type": "object",
+            "examples": [
+              {
+                "number": 1,
+                "unit": "day",
+                "entry": "1 day"
+              }
+            ],
+            "required": [
+              "number",
+              "unit",
+              "entry"
+            ],
+            "properties": {
+              "number": {
+                "type": "integer"
+              },
+              "unit": {
+                "type": "string"
+              },
+              "entry": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          },
+          "primaryCheck": {
+            "type": "object",
+            "required": [
+              "entry",
+              "skills"
+            ],
+            "properties": {
+              "entry": {
+                "type": "string"
+              },
+              "skills": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "prof": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          },
+          "entries": {
+            "type": "array"
+          },
+          "secondaryCheck": {
+            "type": "object",
+            "required": [],
+            "properties": {
+              "entry": {
+                "type": "string"
+              },
+              "skills": {
+                "type": "array",
+                "items": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    }
+                  ]
+                }
+              }
+            },
+            "additionalProperties": false
+          },
+          "duration": {
+            "type": "object",
+            "required": [],
+            "properties": {
+              "type": {
+                "type": "string"
+              },
+              "entry": {
+                "type": "string"
+              },
+              "duration": {
+                "type": "object",
+                "properties": {
+                  "number": {
+                    "type": "integer"
+                  },
+                  "unit": {
+                    "type": "string"
+                  }
+                },
+                "additionalProperties": false
+              }
+            },
+            "additionalProperties": false
+          },
+          "targets": {
+            "type": "string"
+          },
+          "range": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string"
+              },
+              "entry": {
+                "type": "string"
+              },
+              "distance": {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "type": "string"
+                  },
+                  "amount": {
+                    "type": "integer"
+                  }
+                },
+                "additionalProperties": false
+              }
+            },
+            "additionalProperties": false
+          },
+          "area": {
+            "type": "object",
+            "properties": {
+              "entry": {
+                "type": "string"
+              },
+              "types": {
+                "type": "array",
+                "additionalItems": false,
+                "items": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    }
+                  ]
+                }
+              }
+            },
+            "additionalProperties": false
+          },
+          "secondaryCasters": {
+            "type": "object",
+            "properties": {
+              "number": {
+                "type": "integer"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "ritual"
+  ]
+}

@@ -669,106 +669,155 @@ Parser.alignAbvToFull = function (align) {
 	}
 };
 
-Parser.CAT_ID_CREATURE = 1;
-Parser.CAT_ID_SPELL = 2;
-Parser.CAT_ID_BACKGROUND = 3;
-Parser.CAT_ID_ITEM = 4;
-Parser.CAT_ID_CLASS = 5;
-Parser.CAT_ID_CONDITION = 6;
-Parser.CAT_ID_FEAT = 7;
-Parser.CAT_ID_RITUAL = 8;
-Parser.CAT_ID_TRAIT = 9;
-Parser.CAT_ID_ANCESTRY = 10;
-Parser.CAT_ID_HERITAGE = 11;
-Parser.CAT_ID_VARIANT_RULE = 12;
-Parser.CAT_ID_ADVENTURE = 13;
-Parser.CAT_ID_DEITY = 14;
-Parser.CAT_ID_HAZARD = 17;
-Parser.CAT_ID_QUICKREF = 18;
-Parser.CAT_ID_COMPANION = 19;
-Parser.CAT_ID_FAMILIAR = 20;
-Parser.CAT_ID_AFFLICTION = 21;
-Parser.CAT_ID_TABLE = 24;
-Parser.CAT_ID_TABLE_GROUP = 25;
-Parser.CAT_ID_CLASS_FEATURE = 30;
-Parser.CAT_ID_SUBCLASS = 40;
-Parser.CAT_ID_SUBCLASS_FEATURE = 41;
-Parser.CAT_ID_ACTION = 42;
-Parser.CAT_ID_ABILITY = 48;
-Parser.CAT_ID_LANGUAGE = 43;
-Parser.CAT_ID_BOOK = 44;
-Parser.CAT_ID_PAGE = 45;
-Parser.CAT_ID_ARCHETYPE = 47;
-Parser.CAT_ID_VEHICLE = 49;
-Parser.CAT_ID_PLACE = 50;
+Parser.CAT_ID_QUICKREF = 10;
+Parser.CAT_ID_VARIANT_RULE = 11;
+Parser.CAT_ID_SUBSYSTEM = 12;
+Parser.CAT_ID_TABLE = 13;
+Parser.CAT_ID_TABLE_GROUP = 14;
+Parser.CAT_ID_BOOK = 15;
 
+Parser.CAT_ID_ANCESTRY = 20;
+Parser.CAT_ID_HERITAGE = 21;
+Parser.CAT_ID_VE_HERITAGE = 22;
+Parser.CAT_ID_BACKGROUND = 7;
+Parser.CAT_ID_CLASS = 23;
+Parser.CAT_ID_CLASS_FEATURE = 5;
+Parser.CAT_ID_SUBCLASS = 24;
+Parser.CAT_ID_SUBCLASS_FEATURE = 6;
+Parser.CAT_ID_ARCHETYPE = 25;
+Parser.CAT_ID_FEAT = 0;
+Parser.CAT_ID_COMPANION = 26;
+Parser.CAT_ID_FAMILIAR = 27;
+Parser.CAT_ID_EIDOLON = 28;
+Parser.CAT_ID_OPTIONAL_FEATURE = 30;
+Parser.CAT_ID_OPTIONAL_FEATURE_LESSON = 31;
+
+Parser.CAT_ID_ADVENTURE = 50;
+Parser.CAT_ID_HAZARD = 51;
+
+Parser.CAT_ID_ACTION = 8;
+Parser.CAT_ID_CREATURE = 1;
+Parser.CAT_ID_CONDITION = 60;
+Parser.CAT_ID_ITEM = 2;
+Parser.CAT_ID_SPELL = 3;
+Parser.CAT_ID_AFFLICTION = 61;
+Parser.CAT_ID_CURSE = 62;
+Parser.CAT_ID_ITEM_CURSE = 63;
+Parser.CAT_ID_DISEASE = 64;
+Parser.CAT_ID_ABILITY = 65;
+Parser.CAT_ID_DEITY = 9;
+Parser.CAT_ID_LANGUAGE = 66;
+Parser.CAT_ID_PLACE = 67;
+Parser.CAT_ID_PLANE = 68;
+Parser.CAT_ID_NATION = 69;
+Parser.CAT_ID_SETTLEMENT = 70;
+Parser.CAT_ID_RITUAL = 71;
+Parser.CAT_ID_VEHICLE = 72;
+Parser.CAT_ID_TRAIT = 4;
+
+Parser.CAT_ID_PAGE = 99;
+
+// FIXME:
 Parser.CAT_ID_TO_FULL = {};
-Parser.CAT_ID_TO_FULL[Parser.CAT_ID_CREATURE] = "Bestiary";
-Parser.CAT_ID_TO_FULL[Parser.CAT_ID_SPELL] = "Spell";
-Parser.CAT_ID_TO_FULL[Parser.CAT_ID_RITUAL] = "Ritual";
-Parser.CAT_ID_TO_FULL[Parser.CAT_ID_VEHICLE] = "Vehicle";
-Parser.CAT_ID_TO_FULL[Parser.CAT_ID_BACKGROUND] = "Background";
-Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ITEM] = "Item";
-Parser.CAT_ID_TO_FULL[Parser.CAT_ID_CLASS] = "Class";
-Parser.CAT_ID_TO_FULL[Parser.CAT_ID_CONDITION] = "Condition";
-Parser.CAT_ID_TO_FULL[Parser.CAT_ID_FEAT] = "Feat";
-Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ANCESTRY] = "Ancestry";
-Parser.CAT_ID_TO_FULL[Parser.CAT_ID_HERITAGE] = "Heritage";
-Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ARCHETYPE] = "Archetype";
-Parser.CAT_ID_TO_FULL[Parser.CAT_ID_VARIANT_RULE] = "Variant Rule";
-Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ADVENTURE] = "Adventure";
-Parser.CAT_ID_TO_FULL[Parser.CAT_ID_DEITY] = "Deity";
-Parser.CAT_ID_TO_FULL[Parser.CAT_ID_HAZARD] = "Hazard";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_QUICKREF] = "Quick Reference";
-Parser.CAT_ID_TO_FULL[Parser.CAT_ID_AFFLICTION] = "Affliction";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_VARIANT_RULE] = "Variant Rule";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_SUBSYSTEM] = "Subsystem";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_TABLE] = "Table";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_TABLE_GROUP] = "Table";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_BOOK] = "Book";
+
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ANCESTRY] = "Ancestry";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_HERITAGE] = "Heritage";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_VE_HERITAGE] = "Versatile Heritage";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_BACKGROUND] = "Background";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_CLASS] = "Class";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_CLASS_FEATURE] = "Class Feature";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_SUBCLASS] = "Subclass";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_SUBCLASS_FEATURE] = "Subclass Feature";
-Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ACTION] = "Action";
-Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ABILITY] = "Creature Ability";
-Parser.CAT_ID_TO_FULL[Parser.CAT_ID_LANGUAGE] = "Language";
-Parser.CAT_ID_TO_FULL[Parser.CAT_ID_BOOK] = "Book";
-Parser.CAT_ID_TO_FULL[Parser.CAT_ID_PAGE] = "Page";
-Parser.CAT_ID_TO_FULL[Parser.CAT_ID_TRAIT] = "Trait";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ARCHETYPE] = "Archetype";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_FEAT] = "Feat";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_COMPANION] = "Companion";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_FAMILIAR] = "Familiar";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_EIDOLON] = "Eidolon";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_OPTIONAL_FEATURE] = "Optional Feature";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_OPTIONAL_FEATURE_LESSON] = "Lesson";
+
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ADVENTURE] = "Adventure";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_HAZARD] = "Hazard";
+
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ACTION] = "Action";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_CREATURE] = "Bestiary";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_CONDITION] = "Condition";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ITEM] = "Item";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_SPELL] = "Spell";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_AFFLICTION] = "Affliction";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_CURSE] = "Curse";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ITEM_CURSE] = "Item Curse";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_DISEASE] = "Disease";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ABILITY] = "Creature Ability";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_DEITY] = "Deity";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_LANGUAGE] = "Language";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_PLACE] = "Place";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_PLANE] = "Plane";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_NATION] = "Nation";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_SETTLEMENT] = "Settlement";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_RITUAL] = "Ritual";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_VEHICLE] = "Vehicle";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_TRAIT] = "Trait";
+
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_PAGE] = "Page";
 
 Parser.pageCategoryToFull = function (catId) {
 	return Parser._parse_aToB(Parser.CAT_ID_TO_FULL, catId);
 };
 
 Parser.CAT_ID_TO_PROP = {};
-Parser.CAT_ID_TO_PROP[Parser.CAT_ID_CREATURE] = "creature";
-Parser.CAT_ID_TO_PROP[Parser.CAT_ID_SPELL] = "spell";
-Parser.CAT_ID_TO_PROP[Parser.CAT_ID_RITUAL] = "ritual";
-Parser.CAT_ID_TO_PROP[Parser.CAT_ID_VEHICLE] = "vehicle";
-Parser.CAT_ID_TO_PROP[Parser.CAT_ID_BACKGROUND] = "background";
-Parser.CAT_ID_TO_PROP[Parser.CAT_ID_ITEM] = "item";
-Parser.CAT_ID_TO_PROP[Parser.CAT_ID_CLASS] = "class";
-Parser.CAT_ID_TO_PROP[Parser.CAT_ID_CONDITION] = "condition";
-Parser.CAT_ID_TO_PROP[Parser.CAT_ID_FEAT] = "feat";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_QUICKREF] = null;
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_VARIANT_RULE] = "variantrule";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_SUBSYSTEM] = "variantrule";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_TABLE] = "table";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_TABLE_GROUP] = "tableGroup";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_BOOK] = "book";
+
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_ANCESTRY] = "ancestry";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_HERITAGE] = "heritage";
-Parser.CAT_ID_TO_PROP[Parser.CAT_ID_ARCHETYPE] = "archetype";
-Parser.CAT_ID_TO_PROP[Parser.CAT_ID_VARIANT_RULE] = "variantrule";
-Parser.CAT_ID_TO_PROP[Parser.CAT_ID_ADVENTURE] = "adventure";
-Parser.CAT_ID_TO_PROP[Parser.CAT_ID_DEITY] = "deity";
-Parser.CAT_ID_TO_PROP[Parser.CAT_ID_HAZARD] = "hazard";
-Parser.CAT_ID_TO_PROP[Parser.CAT_ID_AFFLICTION] = "affliction";
-Parser.CAT_ID_TO_PROP[Parser.CAT_ID_TABLE] = "table";
-Parser.CAT_ID_TO_PROP[Parser.CAT_ID_QUICKREF] = null;
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_VE_HERITAGE] = "versatileHeritage";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_BACKGROUND] = "background";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_CLASS] = "class";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_CLASS_FEATURE] = "classFeature";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_SUBCLASS] = "subclass";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_SUBCLASS_FEATURE] = "subclassFeature";
-Parser.CAT_ID_TO_PROP[Parser.CAT_ID_ACTION] = "action";
-Parser.CAT_ID_TO_PROP[Parser.CAT_ID_ABILITY] = "ability";
-Parser.CAT_ID_TO_PROP[Parser.CAT_ID_LANGUAGE] = "language";
-Parser.CAT_ID_TO_PROP[Parser.CAT_ID_BOOK] = "book";
-Parser.CAT_ID_TO_PROP[Parser.CAT_ID_TRAIT] = "trait";
-Parser.CAT_ID_TO_PROP[Parser.CAT_ID_FAMILIAR] = "familiar";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_ARCHETYPE] = "archetype";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_FEAT] = "feat";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_COMPANION] = "companion";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_FAMILIAR] = "familiar";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_EIDOLON] = "eidolon";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_OPTIONAL_FEATURE] = "optionalfeature";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_OPTIONAL_FEATURE_LESSON] = "optionalfeature";
+
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_ADVENTURE] = "adventure";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_HAZARD] = "hazard";
+
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_ACTION] = "action";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_CREATURE] = "creature";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_CONDITION] = "condition";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_ITEM] = "item";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_SPELL] = "spell";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_AFFLICTION] = "affliction";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_CURSE] = "curse";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_ITEM_CURSE] = "itemcurse";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_DISEASE] = "disease";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_ABILITY] = "ability";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_DEITY] = "deity";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_LANGUAGE] = "language";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_PLACE] = "place";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_PLANE] = "place";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_NATION] = "place";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_SETTLEMENT] = "place";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_RITUAL] = "ritual";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_VEHICLE] = "vehicle";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_TRAIT] = "trait";
+
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_PAGE] = null;
 
 Parser.pageCategoryToProp = function (catId) {
@@ -917,53 +966,39 @@ RNG_UNLIMITED = "unlimited";
 RNG_UNLIMITED_SAME_PLANE = "planetary";
 RNG_TOUCH = "touch";
 
+// TODO: Handle range/area types: emanation, cone etc?
 Parser.getNormalisedRange = function (range) {
+	if (!MiscUtil.isObject(range)) return 0;
 	let multiplier = 1;
 	let distance = 0;
 	let offset = 0;
 
-	switch (range.type) {
-		case RNG_SPECIAL: return 1000000000;
-		case RNG_POINT: adjustForDistance(); break;
-		case RNG_LINE: offset = 1; adjustForDistance(); break;
-		case RNG_CONE: offset = 2; adjustForDistance(); break;
-		case RNG_RADIUS: offset = 3; adjustForDistance(); break;
-		case RNG_HEMISPHERE: offset = 4; adjustForDistance(); break;
-		case RNG_SPHERE: offset = 5; adjustForDistance(); break;
-		case RNG_CYLINDER: offset = 6; adjustForDistance(); break;
-		case RNG_CUBE: offset = 7; adjustForDistance(); break;
-	}
-
-	// value in inches, to allow greater granularity
-	return (multiplier * distance) + offset;
-
-	function adjustForDistance () {
-		let dist = {}
-		if (`distance` in range) dist = range.distance;
-		switch (`distance` in range) {
-			case null: distance = 0; break;
-			case UNT_FEET: multiplier = Parser.INCHES_PER_FOOT; distance = dist.amount; break;
-			case UNT_MILES: multiplier = Parser.INCHES_PER_FOOT * Parser.FEET_PER_MILE; distance = dist.amount; break;
-			case RNG_TOUCH: distance = 1; break;
-			case RNG_UNLIMITED_SAME_PLANE: distance = 900000000; break; // from BolS (homebrew)
-			case RNG_UNLIMITED: distance = 900000001; break;
-			case "unknown": distance = 900000002; break;
-			default: {
-				// it's homebrew?
-				const fromBrew = MiscUtil.get(BrewUtil.homebrewMeta, "spellDistanceUnits", dist.type);
-				if (fromBrew) {
-					const ftPerUnit = fromBrew.feetPerUnit;
-					if (ftPerUnit != null) {
-						multiplier = Parser.INCHES_PER_FOOT * ftPerUnit;
-						distance = dist.amount;
-					} else {
-						distance = 910000000; // default to max distance, to have them displayed at the bottom
-					}
+	const dist = MiscUtil.merge({type: null, amount: 0}, range.distance)
+	switch (dist.type) {
+		case null: distance = 0; break;
+		case UNT_FEET: multiplier = Parser.INCHES_PER_FOOT; distance = dist.amount; break;
+		case UNT_MILES: multiplier = Parser.INCHES_PER_FOOT * Parser.FEET_PER_MILE; distance = dist.amount; break;
+		case RNG_TOUCH: distance = 1; break;
+		case RNG_UNLIMITED_SAME_PLANE: distance = 900000000; break;
+		case RNG_UNLIMITED: distance = 900000001; break;
+		case "unknown": distance = 900000002; break;
+		default: {
+			// it's homebrew?
+			const fromBrew = MiscUtil.get(BrewUtil.homebrewMeta, "spellDistanceUnits", dist.type);
+			if (fromBrew) {
+				const ftPerUnit = fromBrew.feetPerUnit;
+				if (ftPerUnit != null) {
+					multiplier = Parser.INCHES_PER_FOOT * ftPerUnit;
+					distance = dist.amount;
+				} else {
+					distance = 910000000; // default to max distance, to have them displayed at the bottom
 				}
-				break;
 			}
+			break;
 		}
 	}
+	// value in inches, to allow greater granularity
+	return (multiplier * distance) + offset;
 }
 
 Parser.getFilterRange = function (object) {

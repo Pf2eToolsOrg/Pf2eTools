@@ -5,7 +5,7 @@ class PageFilterFeats extends PageFilter {
 	// endregion
 
 	constructor (opts) {
-		super();
+		super(opts);
 		opts = opts || {};
 		this._levelFilter = new RangeFilter({
 			header: "Level",

@@ -1,6 +1,6 @@
-/**
- * Can be used to inspect which HTML files depend on which scripts.
- */
+/*
+	Can be used to inspect which HTML files depend on which scripts.
+*/
 
 const fs = require("fs");
 const ut = require("./util");

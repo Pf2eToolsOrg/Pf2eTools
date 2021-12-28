@@ -1,0 +1,29 @@
+name: Automated Release
+on:
+  push:
+    tags:
+      - 'v**'
+      - '!v.**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+
+    - name: Set env
+      run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
+
+    - name: Archive Release
+      uses: thedoctor0/zip-release@master
+      with:
+        type: 'zip'
+        filename: 'pf2ools-${{ env.RELEASE_VERSION }}.zip'
+        exclusions: '*.git* /*node_modules/* .editorconfig /*.github/* CNAME'
+
+    - name: Upload Release
+      uses: ncipollo/release-action@v1
+      with:
+        generateReleaseNotes: true
+        artifacts: "pf2ools-${{ env.RELEASE_VERSION }}.zip"
+        token: ${{ secrets.GITHUB_TOKEN }}

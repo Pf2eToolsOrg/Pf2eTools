@@ -1866,7 +1866,7 @@
 					"effects": [
 						"Improved Grab"
 					],
-					"damage": "{@damage 2d4+8} slashing plus Improved Grab",
+					"damage": "{@damage 2d4+8} slashing plus {@ability Improved Grab}",
 					"types": [
 						"slashing"
 					]
@@ -6027,7 +6027,7 @@
 					"hp": 14,
 					"note": null,
 					"abilities": [
-						"regeneration 2 (deactivated by good or silver)"
+						"{@ability regeneration} 2 (deactivated by good or silver)"
 					]
 				}
 			],
@@ -6157,7 +6157,7 @@
 						"unit": "action"
 					},
 					"entries": [
-						"The augur Flies or Strides, whirling as they move. The augur deals the damage of their blade {@action Strike} to each creature whose space they enter (DC 16 basic Reflex save). Each creature is affected only once, even if the augur moves through its space multiple times."
+						"The augur Flies or {@action Stride||Strides}, whirling as they move. The augur deals the damage of their blade {@action Strike} to each creature whose space they enter (DC 16 basic Reflex save). Each creature is affected only once, even if the augur moves through its space multiple times."
 					],
 					"name": "Whirling Slice"
 				}
@@ -7155,7 +7155,7 @@
 						"visual"
 					],
 					"entries": [
-						"The baobhan sith sways rhythmically and Strides up to their Speed.",
+						"The baobhan sith sways rhythmically and {@action Stride||Strides} up to their Speed.",
 						"Each creature within 30 feet of the baobhan sith at the end of their movement must attempt a DC 25 Will save.",
 						{
 							"type": "successDegree",
@@ -8272,7 +8272,7 @@
 						"unit": "action"
 					},
 					"entries": [
-						"The behir Strides up to its Speed, during which it can walk on air as if it were solid ground, ascending or descending at up to a 45-degree angle. It can make up to four claw Strikes at any point during this movement, each against a different target within reach, and it deals an extra {@damage 1d6} electricity damage with each {@action Strike}. These attacks count toward the behir's multiple attack penalty, but the multiple attack penalty doesn't increase until after the behir makes all of its attacks.",
+						"The behir {@action Stride||Strides} up to its Speed, during which it can walk on air as if it were solid ground, ascending or descending at up to a 45-degree angle. It can make up to four claw Strikes at any point during this movement, each against a different target within reach, and it deals an extra {@damage 1d6} electricity damage with each {@action Strike}. These attacks count toward the behir's multiple attack penalty, but the multiple attack penalty doesn't increase until after the behir makes all of its attacks.",
 						"If the behir moves half its Speed or less during a Claw Storm, that movement doesn't trigger reactions. The behir can't use Claw Storm if it has a creature wrapped in its coils.",
 						"At the end of Claw Storm, it drifts downward up to 60 feet to the ground, landing softly and taking no damage from the fall. If it descends further than 60 feet, it takes damage normally from the remaining fall."
 					],
@@ -10098,7 +10098,7 @@
 			"skills": {
 				"Athletics": {
 					"default": 8,
-					"to Leap while Water Striding or Swimming": 10
+					"to Leap while Water {@action Stride||Striding} or Swimming": 10
 				},
 				"Stealth": {
 					"default": 8
@@ -10213,7 +10213,7 @@
 						"unit": "action"
 					},
 					"entries": [
-						"The bog strider Strides up to three times in a straight line across smooth water. They can make a single {@action Strike} against a creature at the end of this movement."
+						"The bog strider {@action Stride||Strides} up to three times in a straight line across smooth water. They can make a single {@action Strike} against a creature at the end of this movement."
 					],
 					"name": "Water Sprint"
 				},
@@ -11346,7 +11346,7 @@
 					"hp": 245,
 					"note": null,
 					"abilities": [
-						"regeneration 15 (deactivated by chaotic)"
+						"{@ability regeneration} 15 (deactivated by chaotic)"
 					]
 				}
 			],
@@ -11623,7 +11623,7 @@
 					"hp": 360,
 					"note": null,
 					"abilities": [
-						"regeneration 15 (deactivated by cold iron)"
+						"{@ability regeneration} 15 (deactivated by cold iron)"
 					]
 				}
 			],
@@ -13824,7 +13824,7 @@
 					"hp": 135,
 					"note": null,
 					"abilities": [
-						"regeneration 20 (deactivated by acid or sonic)"
+						"{@ability regeneration} 20 (deactivated by acid or sonic)"
 					]
 				}
 			],
@@ -14539,7 +14539,7 @@
 						"unit": "action"
 					},
 					"entries": [
-						"The chupacabra Strides and makes a {@action Strike} at the end of that movement. If the chupacabra began this action {@condition hidden}, it remains {@condition hidden} until after this ability's {@action Strike}."
+						"The chupacabra {@action Stride||Strides} and makes a {@action Strike} at the end of that movement. If the chupacabra began this action {@condition hidden}, it remains {@condition hidden} until after this ability's {@action Strike}."
 					],
 					"name": "Pounce"
 				}
@@ -14878,7 +14878,7 @@
 						"unit": "action"
 					},
 					"entries": [
-						"The Coil spy Strides up to half their Speed and attempts a {@action Feint}, in either order."
+						"The Coil spy {@action Stride||Strides} up to half their Speed and attempts a {@action Feint}, in either order."
 					],
 					"name": "Deceptive Reposition"
 				},
@@ -17282,7 +17282,7 @@
 					"hp": 260,
 					"note": null,
 					"abilities": [
-						"regeneration 20 (deactivated by cold)"
+						"{@ability regeneration} 20 (deactivated by cold)"
 					]
 				}
 			],
@@ -18498,7 +18498,7 @@
 						"unit": "action"
 					},
 					"entries": [
-						"The duneshaker solifugid Strides and makes a {@action Strike} at the end of that movement. If the duneshaker solifugid began this action {@condition hidden}, it remains {@condition hidden} until after this ability's {@action Strike}."
+						"The duneshaker solifugid {@action Stride||Strides} and makes a {@action Strike} at the end of that movement. If the duneshaker solifugid began this action {@condition hidden}, it remains {@condition hidden} until after this ability's {@action Strike}."
 					],
 					"name": "Pounce"
 				},
@@ -18927,7 +18927,7 @@
 						"unit": "action"
 					},
 					"entries": [
-						"The dweomercat Strides and makes a {@action Strike} at the end of that movement. If the dweomercat began this action {@condition hidden}, it remains {@condition hidden} until after this ability's {@action Strike}."
+						"The dweomercat {@action Stride||Strides} and makes a {@action Strike} at the end of that movement. If the dweomercat began this action {@condition hidden}, it remains {@condition hidden} until after this ability's {@action Strike}."
 					],
 					"name": "Pounce"
 				}
@@ -19674,7 +19674,7 @@
 					"hp": 375,
 					"note": null,
 					"abilities": [
-						"regeneration 25 (deactivated by good or silver)"
+						"{@ability regeneration} 25 (deactivated by good or silver)"
 					]
 				}
 			],
@@ -19747,7 +19747,7 @@
 						"exquisite pain",
 						"Improved Grab"
 					],
-					"damage": "{@damage 3d6+19} slashing plus {@damage 2d6} {@condition persistent damage ||persistent bleed}, exquisite pain, and Improved Grab",
+					"damage": "{@damage 3d6+19} slashing plus {@damage 2d6} {@condition persistent damage ||persistent bleed}, exquisite pain, and {@ability Improved Grab}",
 					"types": [
 						"persistent",
 						"slashing"
@@ -20063,7 +20063,7 @@
 						"unit": "action"
 					},
 					"entries": [
-						"The esobok Strides and then makes a {@action Strike}. If it began this action {@condition hidden}, it remains {@condition hidden} until after the {@action Strike}."
+						"The esobok {@action Stride||Strides} and then makes a {@action Strike}. If it began this action {@condition hidden}, it remains {@condition hidden} until after the {@action Strike}."
 					],
 					"name": "Pounce"
 				},
@@ -20212,7 +20212,7 @@
 					"hp": 90,
 					"note": null,
 					"abilities": [
-						"regeneration 10 (deactivated by good or silver)"
+						"{@ability regeneration} 10 (deactivated by good or silver)"
 					]
 				}
 			],
@@ -20645,7 +20645,7 @@
 					],
 					"requirements": "The fetchling is in dim light",
 					"entries": [
-						"The fetchling Strides. They have a +10-foot status bonus to their."
+						"The fetchling {@action Stride||Strides}. They have a +10-foot status bonus to their."
 					],
 					"name": "Shadow Stride"
 				}
@@ -21070,7 +21070,7 @@
 					"hp": 250,
 					"note": null,
 					"abilities": [
-						"regeneration 15 (deactivated by acid or cold)"
+						"{@ability regeneration} 15 (deactivated by acid or cold)"
 					]
 				}
 			],
@@ -21242,7 +21242,7 @@
 						{
 							"type": "successDegree",
 							"entries": {
-								"Critical Success": "The fire yai Strides or Flies up to half its Speed in any direction. The struck creature takes {@damage 4d6} {@condition persistent damage ||persistent bleed damage} and is pushed along with the yai an equal distance. The creature is {@condition grabbed} until the yai's next turn or until the yai makes a katana {@action Strike}.",
+								"Critical Success": "The fire yai {@action Stride||Strides} or Flies up to half its Speed in any direction. The struck creature takes {@damage 4d6} {@condition persistent damage ||persistent bleed damage} and is pushed along with the yai an equal distance. The creature is {@condition grabbed} until the yai's next turn or until the yai makes a katana {@action Strike}.",
 								"Success": "As critical success, but the creature takes {@damage 2d6} {@condition persistent damage ||persistent bleed damage}.",
 								"Failure": "The struck creature is pushed back 5 feet.",
 								"Critical Failure": "The struck creature is unaffected."
@@ -21363,7 +21363,7 @@
 					"hp": 315,
 					"note": null,
 					"abilities": [
-						"regeneration 10 (deactivated"
+						"{@ability regeneration} 10 (deactivated"
 					]
 				}
 			],
@@ -21459,7 +21459,7 @@
 					"effects": [
 						"Improved Grab"
 					],
-					"damage": "{@damage 3d6+15} bludgeoning plus Improved Grab",
+					"damage": "{@damage 3d6+15} bludgeoning plus {@ability Improved Grab}",
 					"types": [
 						"bludgeoning"
 					]
@@ -21911,7 +21911,7 @@
 					"effects": [
 						"Improved Grab"
 					],
-					"damage": "{@damage 3d12+14} piercing plus Improved Grab",
+					"damage": "{@damage 3d12+14} piercing plus {@ability Improved Grab}",
 					"types": [
 						"piercing"
 					]
@@ -21927,7 +21927,7 @@
 					"effects": [
 						"Improved Grab"
 					],
-					"damage": "{@damage 3d8+14} bludgeoning plus Improved Grab",
+					"damage": "{@damage 3d8+14} bludgeoning plus {@ability Improved Grab}",
 					"types": [
 						"bludgeoning"
 					]
@@ -22104,7 +22104,7 @@
 					"hp": 90,
 					"note": null,
 					"abilities": [
-						"regeneration 15 (deactivated by acid or fire)"
+						"{@ability regeneration} 15 (deactivated by acid or fire)"
 					]
 				}
 			],
@@ -22944,7 +22944,7 @@
 					},
 					"requirements": "The giant ant has a Large or smaller creature {@condition grabbed}",
 					"entries": [
-						"The giant ant Strides up to its full Speed, carrying the {@condition grabbed} creature with it. It is {@condition encumbered} if the {@condition grabbed} creature is Medium or larger."
+						"The giant ant {@action Stride||Strides} up to its full Speed, carrying the {@condition grabbed} creature with it. It is {@condition encumbered} if the {@condition grabbed} creature is Medium or larger."
 					],
 					"name": "Haul Away"
 				}
@@ -23279,7 +23279,7 @@
 					},
 					"trigger": "The giant cockroach is targeted by a melee attack",
 					"entries": [
-						"The giant cockroach gains a +2 circumstance bonus to AC against the triggering attack. After the attack resolves, the cockroach Strides, Climbs, or Flies up to 10 feet."
+						"The giant cockroach gains a +2 circumstance bonus to AC against the triggering attack. After the attack resolves, the cockroach {@action Stride||Strides}, Climbs, or Flies up to 10 feet."
 					],
 					"name": "Scurry"
 				}
@@ -25058,7 +25058,7 @@
 					"effects": [
 						"Improved Grab"
 					],
-					"damage": "{@damage 2d12+10} piercing plus Improved Grab",
+					"damage": "{@damage 2d12+10} piercing plus {@ability Improved Grab}",
 					"types": [
 						"piercing"
 					]
@@ -25220,7 +25220,7 @@
 						"unit": "action"
 					},
 					"entries": [
-						"The giant solifugid Strides and makes a {@action Strike} at the end of that movement.",
+						"The giant solifugid {@action Stride||Strides} and makes a {@action Strike} at the end of that movement.",
 						"If the giant solifugid began this action {@condition hidden}, it remains {@condition hidden} until after this ability's {@action Strike}."
 					],
 					"name": "Pounce"
@@ -25358,7 +25358,7 @@
 					"effects": [
 						"Improved Grab"
 					],
-					"damage": "{@damage 2d8+11} bludgeoning plus Improved Grab",
+					"damage": "{@damage 2d8+11} bludgeoning plus {@ability Improved Grab}",
 					"types": [
 						"bludgeoning"
 					]
@@ -25864,7 +25864,7 @@
 						"unit": "action"
 					},
 					"entries": [
-						"The giant whiptail centipede Strides **or Steps. During this movement, it can pass through spaces as narrow as 5 feet without {@action Squeeze||Squeezing}."
+						"The giant whiptail centipede {@action Stride||Strides} **or {@action Step||Steps}. During this movement, it can pass through spaces as narrow as 5 feet without {@action Squeeze||Squeezing}."
 					],
 					"name": "Undulate"
 				},
@@ -26034,7 +26034,7 @@
 						"unit": "action"
 					},
 					"entries": [
-						"The wolverine Strides and makes a {@action Strike} at the end of that movement. If the wolverine begins this action {@condition hidden}, it remains {@condition hidden} until after the attack."
+						"The wolverine {@action Stride||Strides} and makes a {@action Strike} at the end of that movement. If the wolverine begins this action {@condition hidden}, it remains {@condition hidden} until after the attack."
 					],
 					"name": "Pounce"
 				},
@@ -26385,7 +26385,7 @@
 						"unit": "action"
 					},
 					"entries": [
-						"The gorgon Strides twice, then makes a horn {@action Strike}. If it moved at least 20 feet from its starting position, the {@action Strike}'s damage is increased to {@dice 3d12+12}."
+						"The gorgon {@action Stride||Strides} twice, then makes a horn {@action Strike}. If it moved at least 20 feet from its starting position, the {@action Strike}'s damage is increased to {@dice 3d12+12}."
 					],
 					"name": "Powerful Charge"
 				},
@@ -27126,7 +27126,7 @@
 					"effects": [
 						"Improved Grab"
 					],
-					"damage": "{@damage 4d8+18} bludgeoning plus Improved Grab",
+					"damage": "{@damage 4d8+18} bludgeoning plus {@ability Improved Grab}",
 					"types": [
 						"bludgeoning"
 					]
@@ -28344,7 +28344,7 @@
 					},
 					"frequency": "once per minute",
 					"entries": [
-						"The hadrosaurid Strides twice. It has a +20-foot circumstance bonus to its Speed during these Strides."
+						"The hadrosaurid {@action Stride||Strides} twice. It has a +20-foot circumstance bonus to its Speed during these {@action Stride||Strides}."
 					],
 					"name": "Sprint"
 				},
@@ -28612,7 +28612,7 @@
 						"unit": "action"
 					},
 					"entries": [
-						"The hamatula makes a barb {@action Strike}, then Strides up to half its Speed without triggering reactions. If."
+						"The hamatula makes a barb {@action Strike}, then {@action Stride||Strides} up to half its Speed without triggering reactions. If."
 					],
 					"name": "Impaling Barb"
 				},
@@ -28843,7 +28843,7 @@
 						"unit": "action"
 					},
 					"entries": [
-						"The hellcat Strides and makes a {@action Strike} at the end of that movement. If the hellcat began this action {@condition hidden}, it remains {@condition hidden} until after the ability's {@action Strike}."
+						"The hellcat {@action Stride||Strides} and makes a {@action Strike} at the end of that movement. If the hellcat began this action {@condition hidden}, it remains {@condition hidden} until after the ability's {@action Strike}."
 					],
 					"name": "Pounce"
 				}
@@ -29676,7 +29676,7 @@
 						"unit": "action"
 					},
 					"entries": [
-						"The hodag Strides, then makes a {@action Strike} against a target in reach. If it moves at least 20 feet and succeeds at its {@action Strike}, the hodag deals damage normally and then attempts an {@skill Athletics} check against the creature's Fortitude DC to toss the enemy into the air. On a success, the tossed creature is thrown 10 feet in a straight line in the direction of the hodag's choice and then lands {@condition prone}. If the creature is knocked into a solid object, it takes {@damage 1d6} bludgeoning damage as well before landing {@condition prone}. The hodag can instead toss a creature straight up in the air. The creature lands in the same square where it started, takes {@damage 1d6} bludgeoning damage, and lands {@condition prone}."
+						"The hodag {@action Stride||Strides}, then makes a {@action Strike} against a target in reach. If it moves at least 20 feet and succeeds at its {@action Strike}, the hodag deals damage normally and then attempts an {@skill Athletics} check against the creature's Fortitude DC to toss the enemy into the air. On a success, the tossed creature is thrown 10 feet in a straight line in the direction of the hodag's choice and then lands {@condition prone}. If the creature is knocked into a solid object, it takes {@damage 1d6} bludgeoning damage as well before landing {@condition prone}. The hodag can instead toss a creature straight up in the air. The creature lands in the same square where it started, takes {@damage 1d6} bludgeoning damage, and lands {@condition prone}."
 					],
 					"name": "Toss"
 				}
@@ -30554,7 +30554,7 @@
 					"hp": 230,
 					"note": null,
 					"abilities": [
-						"regeneration 15 (deactivated by acid or fire)"
+						"{@ability regeneration} 15 (deactivated by acid or fire)"
 					]
 				}
 			],
@@ -31319,7 +31319,7 @@
 						"unit": "action"
 					},
 					"entries": [
-						"The iguanodon makes a thumb spike {@action Strike} at an adjacent foe and then Strides up to 15 feet, dragging its thumb spike across the foe to gouge out a brutal wound. If this {@action Strike} hits, it deals an extra {@dice 1d8} points of slashing damage and the following {@action Stride} does not trigger reactions from the creature struck. This thumb spike {@action Strike} counts as two attacks when calculating the iguanodon's multiple attack penalty."
+						"The iguanodon makes a thumb spike {@action Strike} at an adjacent foe and then {@action Stride||Strides} up to 15 feet, dragging its thumb spike across the foe to gouge out a brutal wound. If this {@action Strike} hits, it deals an extra {@dice 1d8} points of slashing damage and the following {@action Stride} does not trigger reactions from the creature struck. This thumb spike {@action Strike} counts as two attacks when calculating the iguanodon's multiple attack penalty."
 					],
 					"name": "Gouging Lunge"
 				}
@@ -32023,7 +32023,7 @@
 					"hp": 215,
 					"note": null,
 					"abilities": [
-						"regeneration 20 (deactivated by good or silver)"
+						"{@ability regeneration} 20 (deactivated by good or silver)"
 					]
 				}
 			],
@@ -32346,7 +32346,7 @@
 						"illusion"
 					],
 					"entries": [
-						"The invidiak Strides up to twice their speed. If the invidiak ends their movement in an area of dim light, they become {@condition hidden} as long as they don't move and the lighting in the area they're in doesn't grow brighter than dim light."
+						"The invidiak {@action Stride||Strides} up to twice their speed. If the invidiak ends their movement in an area of dim light, they become {@condition hidden} as long as they don't move and the lighting in the area they're in doesn't grow brighter than dim light."
 					],
 					"name": "Shadow Blend"
 				},
@@ -32843,7 +32843,7 @@
 					"hp": 230,
 					"note": null,
 					"abilities": [
-						"regeneration 10 (deactivated by cold)"
+						"{@ability regeneration} 10 (deactivated by cold)"
 					]
 				}
 			],
@@ -33126,7 +33126,7 @@
 					"hp": 500,
 					"note": null,
 					"abilities": [
-						"regeneration 25 (deactivated by vorpal weapons)"
+						"{@ability regeneration} 25 (deactivated by vorpal weapons)"
 					]
 				}
 			],
@@ -33338,7 +33338,7 @@
 					"hp": 360,
 					"note": null,
 					"abilities": [
-						"regeneration 40 (deactivated by acid or fire)"
+						"{@ability regeneration} 40 (deactivated by acid or fire)"
 					]
 				}
 			],
@@ -35546,7 +35546,7 @@
 						"unit": "action"
 					},
 					"entries": [
-						"The living boulder Strides twice, and can then make a {@action Strike} with its jaws. This jaws {@action Strike} gains Knockdown."
+						"The living boulder {@action Stride||Strides} twice, and can then make a {@action Strike} with its jaws. This jaws {@action Strike} gains Knockdown."
 					],
 					"name": "Rolling Charge"
 				}
@@ -37328,7 +37328,7 @@
 					"hp": 230,
 					"note": null,
 					"abilities": [
-						"regeneration 15 (deactivated by chaotic)"
+						"{@ability regeneration} 15 (deactivated by chaotic)"
 					]
 				}
 			],
@@ -39227,7 +39227,7 @@
 						"unit": "action"
 					},
 					"entries": [
-						"The morlock Strides up to twice its Speed, during which it attempts a {@action High Jump} or a {@action Long Jump}. At any point during its movement, the morlock can make a melee {@action Strike} against an enemy in its reach. The morlock then can't use {@action Leap} Attack for 1 round."
+						"The morlock {@action Stride||Strides} up to twice its Speed, during which it attempts a {@action High Jump} or a {@action Long Jump}. At any point during its movement, the morlock can make a melee {@action Strike} against an enemy in its reach. The morlock then can't use {@action Leap} Attack for 1 round."
 					],
 					"name": "Leap Attack"
 				},
@@ -41131,7 +41131,7 @@
 					"hp": 375,
 					"note": null,
 					"abilities": [
-						"regeneration 20 (deactivated by cold iron)"
+						"{@ability regeneration} 20 (deactivated by cold iron)"
 					]
 				}
 			],
@@ -42597,7 +42597,7 @@
 					"hp": 125,
 					"note": null,
 					"abilities": [
-						"regeneration 7 (deactivated by acid or fire)"
+						"{@ability regeneration} 7 (deactivated by acid or fire)"
 					]
 				}
 			],
@@ -43299,7 +43299,7 @@
 					"hp": 67,
 					"note": null,
 					"abilities": [
-						"regeneration 5 (deactivated by good or silver)"
+						"{@ability regeneration} 5 (deactivated by good or silver)"
 					]
 				}
 			],
@@ -43856,7 +43856,7 @@
 						"unit": "action"
 					},
 					"entries": [
-						"The pachycephalosaurus Strides up to its Speed. If it ends its movement within melee reach of a target, it can make a skull {@action Strike} against that target. If the pachycephalosaurus critically hits with this {@action Strike}, the creature hit is {@condition stunned 1}."
+						"The pachycephalosaurus {@action Stride||Strides} up to its Speed. If it ends its movement within melee reach of a target, it can make a skull {@action Strike} against that target. If the pachycephalosaurus critically hits with this {@action Strike}, the creature hit is {@condition stunned 1}."
 					],
 					"name": "Clobbering Charge"
 				},
@@ -44780,7 +44780,7 @@
 					"hp": 300,
 					"note": null,
 					"abilities": [
-						"regeneration 15 (deactivated by evil)"
+						"{@ability regeneration} 15 (deactivated by evil)"
 					]
 				}
 			],
@@ -45798,7 +45798,7 @@
 				},
 				{
 					"entries": [
-						"AC, then Strides up to half their Speed after."
+						"AC, then {@action Stride||Strides} up to half their Speed after."
 					],
 					"name": "to"
 				},
@@ -47617,7 +47617,7 @@
 						"unit": "action"
 					},
 					"entries": [
-						"The rhinoceros Strides twice, then makes a horn {@action Strike}. As long as the rhinoceros moved at least 20 feet, the {@action Strike}'s damage increases to {@dice 3d8+6}. A Medium or smaller creature struck by this attack must succeed at a DC 21 Reflex save or be automatically Shoved back 5 feet and knocked {@condition prone} by the force of the blow."
+						"The rhinoceros {@action Stride||Strides} twice, then makes a horn {@action Strike}. As long as the rhinoceros moved at least 20 feet, the {@action Strike}'s damage increases to {@dice 3d8+6}. A Medium or smaller creature struck by this attack must succeed at a DC 21 Reflex save or be automatically Shoved back 5 feet and knocked {@condition prone} by the force of the blow."
 					],
 					"name": "Rhinoceros Charge"
 				},
@@ -48021,7 +48021,7 @@
 					"hp": 175,
 					"note": null,
 					"abilities": [
-						"regeneration 10 (deactivated by good or silver)"
+						"{@ability regeneration} 10 (deactivated by good or silver)"
 					]
 				}
 			],
@@ -49774,7 +49774,7 @@
 					},
 					"requirements": "The scythe tree is using Dead Tree in forested terrain, and a creature that hasn't detected it is within 30 feet",
 					"entries": [
-						"The scythe tree Strides up to 25 feet toward the triggering creature. Once the creature is in reach, the scythe tree makes a scythe branch {@action Strike} against it. The creature is {@condition flat-footed} against this {@action Strike}."
+						"The scythe tree {@action Stride||Strides} up to 25 feet toward the triggering creature. Once the creature is in reach, the scythe tree makes a scythe branch {@action Strike} against it. The creature is {@condition flat-footed} against this {@action Strike}."
 					],
 					"name": "Woodland Ambush"
 				}
@@ -50621,7 +50621,7 @@
 					"hp": 295,
 					"note": null,
 					"abilities": [
-						"regeneration 10 (deactivated"
+						"{@ability regeneration} 10 (deactivated"
 					]
 				}
 			],
@@ -50718,7 +50718,7 @@
 					"effects": [
 						"Improved Grab"
 					],
-					"damage": "{@damage 4d6+16} bludgeoning plus Improved Grab",
+					"damage": "{@damage 4d6+16} bludgeoning plus {@ability Improved Grab}",
 					"types": [
 						"bludgeoning"
 					]
@@ -52131,7 +52131,7 @@
 					"hp": 500,
 					"note": null,
 					"abilities": [
-						"regeneration 20 (deactivated by evil)"
+						"{@ability regeneration} 20 (deactivated by evil)"
 					]
 				}
 			],
@@ -53186,7 +53186,7 @@
 					},
 					"requirements": "The spiral centurion has not acted yet this turn",
 					"entries": [
-						"The spiral centurion Strides up to its Speed. It then gains a +2 circumstance bonus to attack and damage rolls until the end of its turn."
+						"The spiral centurion {@action Stride||Strides} up to its Speed. It then gains a +2 circumstance bonus to attack and damage rolls until the end of its turn."
 					],
 					"name": "Rev Up"
 				},
@@ -54815,7 +54815,7 @@
 						"primal"
 					],
 					"entries": [
-						"The striding fire Strides up to double its Speed in a straight line. Its movement during this {@action Stride} doesn't trigger reactions. Any creature the striding fire was adjacent to at any point during this {@action Stride} must attempt a DC 24 basic Reflex save. If it critically fails, it is knocked {@condition prone} by a wave of heated air. The striding fire can't use Burning Rush for {@dice 1d4} rounds."
+						"The striding fire {@action Stride||Strides} up to double its Speed in a straight line. Its movement during this {@action Stride} doesn't trigger reactions. Any creature the striding fire was adjacent to at any point during this {@action Stride} must attempt a DC 24 basic Reflex save. If it critically fails, it is knocked {@condition prone} by a wave of heated air. The striding fire can't use Burning Rush for {@dice 1d4} rounds."
 					],
 					"name": "Burning Rush"
 				}
@@ -55922,7 +55922,7 @@
 					"hp": 385,
 					"note": null,
 					"abilities": [
-						"regeneration 15 (deactivated by cold iron)"
+						"{@ability regeneration} 15 (deactivated by cold iron)"
 					]
 				}
 			],
@@ -57071,7 +57071,7 @@
 					"hp": 350,
 					"note": null,
 					"abilities": [
-						"regeneration 25 (deactivated by acid or cold)"
+						"{@ability regeneration} 25 (deactivated by acid or cold)"
 					]
 				}
 			],
@@ -57960,7 +57960,7 @@
 						"unit": "action"
 					},
 					"entries": [
-						"The titan centipede Strides up to its Speed or Steps.",
+						"The titan centipede {@action Stride||Strides} up to its Speed or {@action Step||Steps}.",
 						"During this movement, it can pass through spaces as narrow as 10 feet without {@action Squeeze||Squeezing}."
 					],
 					"name": "Undulate"
@@ -58375,7 +58375,7 @@
 					"hp": 65,
 					"note": null,
 					"abilities": [
-						"regeneration 15 (deactivated"
+						"{@ability regeneration} 15 (deactivated"
 					]
 				}
 			],
@@ -58982,7 +58982,7 @@
 					"hp": 190,
 					"note": null,
 					"abilities": [
-						"regeneration 25 (deactivated by acid or fire)"
+						"{@ability regeneration} 25 (deactivated by acid or fire)"
 					]
 				}
 			],
@@ -59216,7 +59216,7 @@
 					"effects": [
 						"Improved Grab"
 					],
-					"damage": "{@damage 3d8+16} slashing plus Improved Grab",
+					"damage": "{@damage 3d8+16} slashing plus {@ability Improved Grab}",
 					"types": [
 						"slashing"
 					]
@@ -60764,7 +60764,7 @@
 					"effects": [
 						"Improved Grab"
 					],
-					"damage": "{@damage 4d12+16} bludgeoning plus {@damage 1d6} good and Improved Grab",
+					"damage": "{@damage 4d12+16} bludgeoning plus {@damage 1d6} good and {@ability Improved Grab}",
 					"types": [
 						"bludgeoning",
 						"good"
@@ -62926,7 +62926,7 @@
 					"hp": 295,
 					"note": null,
 					"abilities": [
-						"regeneration 15 (deactivated by acid and fire)"
+						"{@ability regeneration} 15 (deactivated by acid and fire)"
 					]
 				}
 			],
@@ -63342,7 +63342,7 @@
 						"unit": "action"
 					},
 					"entries": [
-						"The wereboar Strides twice and then makes a melee {@action Strike}. As long as they moved at least 20 feet, they gain a +2 circumstance bonus to their attack roll."
+						"The wereboar {@action Stride||Strides} twice and then makes a melee {@action Strike}. As long as they moved at least 20 feet, they gain a +2 circumstance bonus to their attack roll."
 					],
 					"name": "Boar Charge"
 				},
@@ -64227,7 +64227,7 @@
 						"unit": "action"
 					},
 					"entries": [
-						"The wolverine Strides and makes a {@action Strike} at the end of that movement. If the wolverine begins this action {@condition hidden}, it remains {@condition hidden} until after the attack."
+						"The wolverine {@action Stride||Strides} and makes a {@action Strike} at the end of that movement. If the wolverine begins this action {@condition hidden}, it remains {@condition hidden} until after the attack."
 					],
 					"name": "Pounce"
 				},
@@ -65623,7 +65623,7 @@
 						"yamaraj venom",
 						"spirit touch"
 					],
-					"damage": "{@damage 4d8+18} piercing plus Improved Grab and yamaraj venom and spirit touch",
+					"damage": "{@damage 4d8+18} piercing plus {@ability Improved Grab} and yamaraj venom and spirit touch",
 					"types": [
 						"piercing"
 					]
@@ -68425,7 +68425,7 @@
 					"effects": [
 						"Improved Grab"
 					],
-					"damage": "{@damage 3d12+17} piercing plus Improved Grab",
+					"damage": "{@damage 3d12+17} piercing plus {@ability Improved Grab}",
 					"types": [
 						"piercing"
 					]

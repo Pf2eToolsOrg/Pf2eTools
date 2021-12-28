@@ -665,14 +665,14 @@
 							"page": 17,
 							"name": "Understanding Actions",
 							"entries": [
-								"Characters and their adversaries affect the world of Pathfinder by using actions and producing effects. This is especially the case during encounters, when every action counts. When you use an action, you generate an effect. This effect might be automatic, but sometimes actions necessitate that you roll a die, and the effect is based on what you rolled.",
+								"Characters and their adversaries affect the world of Pathfinder by using actions and producing effects. This is especially the case during encounters, when every action counts. When you use an action, you generate an effect. This effect might be automatic, but sometimes actions necessitate that you roll a die, and the effect is based on what you rolled. ",
 								"Throughout this book, you will see special icons to denote actions.",
 								{
 									"type": "pf2-h4",
 									"page": 17,
 									"name": "Single Actions",
 									"entries": [
-										"You can use three single actions on your turn in an encounter, in any order you see fit."
+										"Single actions use this symbol: {@as 1}. They're the simplest, most common type of action. You can use three single actions on your turn in an encounter, in any order you see fit."
 									]
 								},
 								{
@@ -680,7 +680,7 @@
 									"page": 17,
 									"name": "Reactions",
 									"entries": [
-										"turn. You get only one reaction per encounter round, and you can use it only when its specific trigger is fulfilled. Often, the trigger is another creature's action."
+										"Reactions use this symbol: {@as R}. These actions can be used even when it's not your turn. You get only one reaction per encounter round, and you can use it only when its specific trigger is fulfilled. Often, the trigger is another creature's action."
 									]
 								},
 								{
@@ -688,8 +688,7 @@
 									"page": 17,
 									"name": "Free Actions",
 									"entries": [
-										"your three single actions or your reaction. A free action might have a trigger like a reaction does. If so, you can use it just like a reaction\u2014even if it's not your turn.",
-										"However, you can use only one free action per trigger, so if you have multiple free actions with the same trigger, you have to decide which to use. If a free action doesn't have a trigger, you use it like a single action, just without spending any of your actions for the turn."
+										"Free actions use this symbol: {@as F}. Free actions don't require you to spend any of your three single actions or your reaction. A free action might have a trigger like a reaction does. If so, you can use it just like a reaction\u2014even if it's not your turn. However, you can use only one free action per trigger, so if you have multiple free actions with the same trigger, you have to decide which to use. If a free action doesn't have a trigger, you use it like a single action, just without spending any of your actions for the turn."
 									]
 								},
 								{
@@ -698,8 +697,8 @@
 									"name": "Activities",
 									"entries": [
 										"Activities are special tasks that you complete by spending one or more of your actions together. Usually, an activity uses two or more actions and lets you do more than a single action would allow. You have to spend all the actions an activity requires for its effects to happen. Spellcasting is one of the most common activities, as most spells take more than a single action to cast.",
-										"an instant, can be performed by spending a free action or a reaction.",
-										"All tasks that take longer than a turn are activities. If an activity is meant to be done during exploration, it has the exploration trait. An activity that takes a day or more of commitment and that can be done only during downtime has the downtime trait."
+										"Activities that use two actions use this symbol: {@as 2}. Activities that use three actions use this symbol: {@as 3}. A few special activities, such as spells you can cast in an instant, can be performed by spending a free action or a reaction.",
+										"All tasks that take longer than a turn are activities. If an activity is meant to be done during exploration, it has the {@trait exploration} trait. An activity that takes a day or more of commitment and that can be done only during downtime has the {@trait downtime} trait."
 									]
 								}
 							]
@@ -13898,7 +13897,7 @@
 							"page": 480,
 							"name": "Rest and Daily Preparations",
 							"entries": [
-								"You perform at your best when you take enough time to rest and prepare. Once every 24 hours, you can take a period of rest (typically 8 hours), after which you regain Hit Points equal to your Constitution modifier (minimum 1) times your level, and you might recover from or improve certain conditions (page 453). Sleeping in armor results in poor rest that leaves you fatigued. If you go more than 16 hours without resting, you become fatigued (you cannot recover from this until you rest at least 6 continuous hours).",
+								"You perform at your best when you take enough time to rest and prepare. Once every 24 hours, you can take a period of rest (typically 8 hours), after which you regain Hit Points equal to your Constitution modifier (minimum 1) times your level, and you might recover from or improve certain conditions (page 453). Sleeping in armor results in poor rest that leaves you {@condition fatigued}. If you go more than 16 hours without resting, you become {@condition fatigued} (you cannot recover from this until you rest at least 6 continuous hours).",
 								"After you rest, you make your daily preparations, which takes around 1 hour. You can prepare only if you've rested, and only once per day. Preparing includes the following:",
 								{
 									"type": "list",
@@ -13909,7 +13908,10 @@
 										"You invest up to 10 worn magic items to gain their benefits for the day."
 									]
 								}
-							]
+							],
+							"data": {
+								"quickrefIndex": true
+							}
 						}
 					],
 					"data": {
@@ -18864,7 +18866,7 @@
 									"page": 565,
 									"name": "Crafting a Scroll",
 									"entries": [
-										"The process to Craft a scroll is much like that to Craft any other magic item. When you begin the crafting process, choose a spell to put into the scroll. You have to either Cast that Spell during the crafting process, or someone else must do so in your presence. Casting that Spell doesn't produce its normal effects; instead, the magic is trapped inside the scroll. The casting must come from a spellcaster expending a spell slot.",
+										"The process to Craft a scroll is much like that to Craft any other magic item. When you begin the crafting process, choose a spell to put into the scroll. You have to either {@action Cast a Spell||Cast that Spell} during the crafting process, or someone else must do so in your presence. Casting that Spell doesn't produce its normal effects; instead, the magic is trapped inside the scroll. The casting must come from a spellcaster expending a spell slot.",
 										"You can't Craft a scroll from a spell produced from another magic item, for example. The caster has to provide any cost of the spell.",
 										"Like other consumables, scrolls can be crafted in batches of four. All scrolls of one batch must contain the same spell at the same level, and you must provide one casting for each scroll crafted."
 									]

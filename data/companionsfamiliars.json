@@ -317,9 +317,11 @@
 			"hp": 8,
 			"skill": "Intimidation",
 			"senses": {
+				"imprecise": [
+					"{@ability scent} 30 feet"
+				],
 				"other": [
-					"{@ability low-light vision}",
-					"{@ability scent} (imprecise, 30 feet)"
+					"{@ability low-light vision}"
 				]
 			},
 			"speed": {
@@ -513,9 +515,11 @@
 			"hp": 8,
 			"skill": "Survival",
 			"senses": {
+				"imprecise": [
+					"{@ability scent} 30 feet"
+				],
 				"other": [
-					"{@ability low-light vision}",
-					"{@ability scent} (imprecise, 30 feet)"
+					"{@ability low-light vision}"
 				]
 			},
 			"speed": {
@@ -572,9 +576,11 @@
 			"hp": 8,
 			"skill": "Survival",
 			"senses": {
+				"imprecise": [
+					"{@ability scent} 30 feet"
+				],
 				"other": [
-					"{@ability low-light vision}",
-					"{@ability scent} (imprecise, 30 feet)"
+					"{@ability low-light vision}"
 				]
 			},
 			"speed": {
@@ -717,9 +723,11 @@
 			"hp": 4,
 			"skill": "Stealth",
 			"senses": {
+				"imprecise": [
+					"{@ability scent} 30 feet"
+				],
 				"other": [
-					"{@ability low-light vision}",
-					"{@ability scent} (imprecise, 30 feet)"
+					"{@ability low-light vision}"
 				]
 			},
 			"speed": {
@@ -780,9 +788,11 @@
 			"hp": 6,
 			"skill": "Stealth",
 			"senses": {
+				"imprecise": [
+					"{@ability scent} 30 feet"
+				],
 				"other": [
-					"{@ability low-light vision}",
-					"{@ability scent} (imprecise, 30 feet)"
+					"{@ability low-light vision}"
 				]
 			},
 			"speed": {
@@ -992,9 +1002,11 @@
 			"hp": 6,
 			"skill": "Stealth",
 			"senses": {
+				"imprecise": [
+					"{@ability scent} 30 feet"
+				],
 				"other": [
-					"{@ability low-light vision}",
-					"{@ability scent} (imprecise, 30 feet)"
+					"{@ability low-light vision}"
 				]
 			},
 			"speed": {
@@ -1054,9 +1066,11 @@
 			"hp": 8,
 			"skill": "Survival",
 			"senses": {
+				"imprecise": [
+					"{@ability scent} 30 feet"
+				],
 				"other": [
-					"{@ability low-light vision}",
-					"{@ability scent} (imprecise, 30 feet)"
+					"{@ability low-light vision}"
 				]
 			},
 			"speed": {
@@ -1120,9 +1134,11 @@
 			"hp": 6,
 			"skill": "Intimidation",
 			"senses": {
+				"imprecise": [
+					"{@ability scent} 30 feet"
+				],
 				"other": [
-					"{@ability low-light vision}",
-					"{@ability scent} (imprecise, 30 feet)"
+					"{@ability low-light vision}"
 				]
 			},
 			"speed": {
@@ -1181,9 +1197,11 @@
 			"hp": 8,
 			"skill": "Survival",
 			"senses": {
+				"imprecise": [
+					"{@ability scent} 30 feet"
+				],
 				"other": [
-					"{@ability low-light vision}",
-					"{@ability scent} (imprecise, 30 feet)"
+					"{@ability low-light vision}"
 				]
 			},
 			"speed": {
@@ -1572,9 +1590,11 @@
 			"hp": 6,
 			"skill": "Stealth",
 			"senses": {
+				"imprecise": [
+					"{@ability scent} 60 feet"
+				],
 				"other": [
-					"blood scent",
-					"{@ability scent} (imprecise, 60 feet)"
+					"blood scent"
 				]
 			},
 			"speed": {
@@ -1636,9 +1656,11 @@
 			"hp": 6,
 			"skill": "Stealth",
 			"senses": {
+				"imprecise": [
+					"{@ability scent} 30 feet"
+				],
 				"other": [
-					"low-light vision",
-					"{@ability scent} (imprecise, 30 feet)"
+					"low-light vision"
 				]
 			},
 			"speed": {
@@ -1763,9 +1785,11 @@
 			"hp": 6,
 			"skill": "Survival",
 			"senses": {
+				"imprecise": [
+					"{@ability scent} 30 feet"
+				],
 				"other": [
-					"low-light vision",
-					"{@ability scent} (imprecise, 30 feet)"
+					"low-light vision"
 				]
 			},
 			"speed": {
@@ -1828,9 +1852,11 @@
 			"hp": 6,
 			"skill": "Survival",
 			"senses": {
+				"imprecise": [
+					"{@ability scent} 30 feet"
+				],
 				"other": [
-					"low-light vision",
-					"{@ability scent} (imprecise, 30 feet)"
+					"low-light vision"
 				]
 			},
 			"speed": {
@@ -2463,6 +2489,25 @@
 	],
 	"familiarAbility": [
 		{
+			"name": "Mask Freeze",
+			"source": "LOCG",
+			"page": 100,
+			"type": "Familiar",
+			"entries": [
+				"When in mask form, your familiar can hide its obvious supernatural qualities to pass as a simple, unassuming mask. It doesn't need to {@action Impersonate} to fool a passing glance, and it gains a +4 circumstance bonus to its {@skill Deception} DC against an active observer {@action Seek||Seeking} or otherwise studying it.",
+				"{@note The following ability is available only to {@feat mask familiar|LOCG|mask familiars}.}"
+			]
+		},
+		{
+			"name": "Ambassador",
+			"source": "LOTGB",
+			"page": 34,
+			"type": "Familiar",
+			"entries": [
+				"Your familiar knows how to act cute or focused on cue, helping you make a good impression. Despite being a minion, your familiar gains 1 reaction at the start of its turns, which it can use only to {@action Aid} you on a {@skill Diplomacy} check to {@action Make an Impression} (it still has to prepare to help you as normal for the Aid reaction, which requires it to participate throughout the activity). It automatically succeeds at its check to {@action Aid} you with those skills or automatically critically succeeds if you're a master of the skill in question."
+			]
+		},
+		{
 			"name": "Major Resistance",
 			"source": "LOTGB",
 			"page": 34,
@@ -2621,7 +2666,7 @@
 			"page": 146,
 			"type": "Familiar",
 			"entries": [
-				"Choose a spell in your repertoire or that you prepared today that is at least 5 levels lower than your highest-level spell slot. Your familiar can Cast that Spell once per day using your magical tradition, spell attack modifier, and spell DC. If the spell has a drawback that affects the caster, both you and your familiar are affected. You must be able to cast 6th-level spells using spell slots to select this ability."
+				"Choose a spell in your repertoire or that you prepared today that is at least 5 levels lower than your highest-level spell slot. Your familiar can {@action Cast a Spell||Cast that Spell} once per day using your magical tradition, spell attack modifier, and spell DC. If the spell has a drawback that affects the caster, both you and your familiar are affected. You must be able to cast 6th-level spells using spell slots to select this ability."
 			]
 		},
 		{

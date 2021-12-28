@@ -2,7 +2,6 @@ class RenderItems {
 	static $getRenderedItem (item) {
 		const renderStack = [""]
 		Renderer.get().recursiveRender(item.entries, renderStack, {pf2StatFix: true})
-
 		return $$`
 			${Renderer.utils.getExcludedDiv(item, "item")}
 			${Renderer.utils.getNameDiv(item, {page: UrlUtil.PG_ITEMS})}

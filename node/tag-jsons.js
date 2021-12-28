@@ -286,6 +286,7 @@ class TraitTag {
 TraitTag._TRAITS_REGEX_EFFECT = null;
 TraitTag._TRAITS_REGEX_AND = null;
 
+// To tag Cast a Spell-isms it's ` (?<!"|\{|\||@action )(Cast .+? Spell)(?<!"|\}|\|) `
 class ActionTag {
 	static init () {
 		const actionData = ut.readJson(`./data/actions.json`);

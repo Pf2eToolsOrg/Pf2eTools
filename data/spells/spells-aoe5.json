@@ -28,9 +28,6 @@
 				"S": true,
 				"V": true
 			},
-			"range": {
-				"type": null
-			},
 			"area": {
 				"types": [
 					"Emanation"
@@ -51,8 +48,8 @@
 					"entries": {
 						"Critical Success": "The creature is unaffected.",
 						"Success": "The creature takes half damage.",
-						"Failure": "The creature takes full damage and must Drop {@condition Prone} as its first action on its next turn.",
-						"Critical Failure": "The creature takes double damage, must Drop {@condition Prone} as its first action on its next turn, and can't {@action Stand} during its next turn."
+						"Failure": "The creature takes full damage and must {@action Drop Prone} as its first action on its next turn.",
+						"Critical Failure": "The creature takes double damage, must {@action Drop Prone} as its first action on its next turn, and can't {@action Stand} during its next turn."
 					}
 				}
 			],
@@ -94,9 +91,6 @@
 				"V": false
 			},
 			"trigger": "A creature within 30 feet fails a",
-			"range": {
-				"type": null
-			},
 			"savingThrowBasic": false,
 			"duration": {
 				"type": null

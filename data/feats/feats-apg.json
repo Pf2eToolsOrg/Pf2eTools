@@ -204,12 +204,7 @@
 				"Dodge Away|APG",
 				"Graceful Leaper|APG",
 				"Tumbling Opportunist|APG",
-				"Tumbling Strike|APG",
-				"Bullying Staff|EC1",
-				"Levering Strike|EC1",
-				"Pivot Strike|EC1",
-				"Staff Sweep|EC1",
-				"Whirlwind Stance|EC1"
+				"Tumbling Strike|APG"
 			]
 		},
 		{
@@ -1767,7 +1762,7 @@
 				"Witch"
 			],
 			"entries": [
-				"Your patron grants you a special lesson, revealing a hidden facet of its nature. Choose a basic lesson from the list on page 100. You gain its associated hex, and your familiar learns the associated spell. Increase the number of Focus Points in your focus pool by 1."
+				"Your patron grants you a special lesson, revealing a hidden facet of its nature. Choose a {@filter basic lesson|optionalfeatures||Feature Type=Basic Lesson}. You gain its associated hex, and your familiar learns the associated spell. Increase the number of Focus Points in your focus pool by 1."
 			]
 		},
 		{
@@ -2757,7 +2752,7 @@
 				"Witch"
 			],
 			"entries": [
-				"You can extend one of your spells with a quick burst of laughter. You learn the cackle hex (page 237). Increase the number of Focus Points in your focus pool by 1."
+				"You can extend one of your spells with a quick burst of laughter. You learn the {@spell cackle|apg} hex. Increase the number of Focus Points in your focus pool by 1."
 			]
 		},
 		{
@@ -8584,13 +8579,6 @@
 			"entries": [
 				"Your connection to the Boneyard ensures that your blows strike true against spectral beings. Your weapon and unarmed attack {@action Strike|CRB|Strikes} against incorporeal creatures become magical.",
 				"If they are already magical, they instead gain the effects of a ghost touch property rune."
-			],
-			"leadsTo": [
-				"Ghost Strike|AV1",
-				"Grave's Voice|AV1",
-				"Investigate Haunting|AV1",
-				"Peer Beyond|AV1",
-				"Spirit Spells|AV1"
 			]
 		},
 		{
@@ -8630,7 +8618,7 @@
 				"Archetype",
 				"Dedication"
 			],
-			"prerequisites": "Impressive {@skill Performance}",
+			"prerequisites": "{@feat Impressive Performance}",
 			"entries": [
 				"You know how to turn combat into a form of entertainment. You become trained in {@skill Lore||Gladiatorial Lore}; if already trained in {@skill Lore||Gladiatorial Lore}, you instead become trained in another {@skill Lore} skill of your choice.",
 				"At the start of a combat encounter, if you have spectators, you gain a number of temporary HP equal to your character level for 1 minute and you can roll {@skill Performance} for your initiative."
@@ -8947,7 +8935,7 @@
 				"Witch"
 			],
 			"entries": [
-				"Your patron grants you greater knowledge. Choose a greater or basic lesson from the list on page 100. You gain its associated hex, and your familiar learns the associated spell. Increase the number of Focus Points in your focus pool by 1."
+				"Your patron grants you greater knowledge. Choose a {@filter greater or basic lesson|optionalfeatures||Feature Type=Basic Lesson;Greater Lesson}. You gain its associated hex, and your familiar learns the associated spell. Increase the number of Focus Points in your focus pool by 1."
 			]
 		},
 		{
@@ -11673,7 +11661,7 @@
 				"Witch"
 			],
 			"entries": [
-				"Your patron grants you even greater secrets. Choose a major, greater, or basic lesson from the list on page 100. You gain its associated hex, and your familiar learns the associated spell.",
+				"Your patron grants you even greater secrets. Choose a {@filter major, greater, or basic lesson|optionalfeatures||Feature Type=Basic Lesson;Greater Lesson;Major Lesson}. You gain its associated hex, and your familiar learns the associated spell.",
 				"Increase the number of Focus Points in your focus pool by 1."
 			],
 			"special": "You can select this feat a second time if you're 14th level or higher, and a third time if you're 18th level or higher. Choose a different lesson each time."
@@ -16223,7 +16211,7 @@
 			],
 			"prerequisites": "trained in {@skill Stealth} and {@skill Survival}",
 			"entries": [
-				"You are a highly skilled scout, capable of providing your allies a timely warning of any danger. You gain the {@action Scout}'s Warning ranger feat (Core Rulebook 172). When you're using the {@action Scout} exploration activity, you grant your allies a +2 circumstance bonus to their initiative rolls instead of a +1 circumstance bonus."
+				"You are a highly skilled scout, capable of providing your allies a timely warning of any danger. You gain the {@feat Scout's Warning (ranger)} ranger feat. When you're using the {@action Scout} exploration activity, you grant your allies a +2 circumstance bonus to their initiative rolls instead of a +1 circumstance bonus."
 			],
 			"special": "You can't select another dedication feat until you have gained two other feats from the scout archetype.",
 			"leadsTo": [
@@ -16282,8 +16270,7 @@
 			"prerequisites": "{@feat Scout Dedication|APG}",
 			"requirements": "You are {@condition hidden} from or {@condition undetected} by all of your opponents, and you aren't within 10 feet of any enemy.",
 			"entries": [
-				"You leap from the shadows to strike your foes. {@action Stride} up to your Speed, then {@action Strike} twice. If you were {@condition hidden} or {@condition unnoticed} by the target of these {@action Strike|CRB|Strikes}, your foe is {@condition flat-footed} against both attacks. Your multiple attack penalty applies normally for both attacks.",
-				"Scroll Trickster Magic has long been written down, and in myriad forms. From the classic rolled parchment to strings tied with a hundred intricate knots, from baked clay tablets covered with incisions to bound collections of bamboo slips, magic is everywhere. You just need to know how to read it."
+				"You leap from the shadows to strike your foes. {@action Stride} up to your Speed, then {@action Strike} twice. If you were {@condition hidden} or {@condition unnoticed} by the target of these {@action Strike|CRB|Strikes}, your foe is {@condition flat-footed} against both attacks. Your multiple attack penalty applies normally for both attacks."
 			]
 		},
 		{

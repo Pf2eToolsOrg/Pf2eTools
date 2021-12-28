@@ -106,7 +106,9 @@ class PageFilterSpells extends PageFilter {
 
 		// used for filtering
 		spell._fSources = SourceFilter.getCompleteFilterSources(spell);
-		spell._fTraditions = (spell.traditions || []).concat(spell.spellLists || []);
+		spell._fTraditions = (spell.traditions || [])
+			.concat(spell.spellLists || [])
+			.concat(spell.traditions ? spell.traditions.includes("Primal" || "Arcane") ? "Halcyon" : [] : []);
 		spell._fFocus = spell.focus ? ["Focus Spell"] : ["Spell"];
 		spell._fTraits = spell.traits.map(t => Parser.getTraitName(t));
 		if (!spell._fTraits.map(t => Renderer.trait.isTraitInCategory(t, "Rarity")).some(Boolean)) spell._fTraits.push("Common");

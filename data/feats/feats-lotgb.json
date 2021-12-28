@@ -14,7 +14,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Wrestler"
 			},
 			"traits": [
 				"Archetype",
@@ -45,14 +45,14 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Spell Trickster"
 			},
 			"traits": [
 				"Archetype"
 			],
 			"prerequisites": "{@feat Spell Trickster Dedication|LOTGB}, ability to cast {@spell mage hand}",
 			"entries": [
-				"When you cast {@spell mage hand}, you can modify its target to be a set of thieves' tools. When you Cast the Spell in this way, the tools move up to 20 feet towards a device or lock. After you Sustain the Spell on future turns, you can use the tools to attempt {@skill Thievery} checks to {@action Disable a Device} or {@action Pick a Lock} within the spell's range, but you take a \u20132 penalty to your {@skill Thievery} check. If you critically fail, the spell ends and you can't use this modification again for 24 hours."
+				"When you cast {@spell mage hand}, you can modify its target to be a set of thieves' tools. When you {@action Cast a Spell||Cast the Spell} in this way, the tools move up to 20 feet towards a device or lock. After you Sustain the Spell on future turns, you can use the tools to attempt {@skill Thievery} checks to {@action Disable a Device} or {@action Pick a Lock} within the spell's range, but you take a \u20132 penalty to your {@skill Thievery} check. If you critically fail, the spell ends and you can't use this modification again for 24 hours."
 			],
 			"leadsTo": [
 				"Larcenous Hand|LOTGB"
@@ -68,7 +68,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Spell Trickster"
 			},
 			"traits": [
 				"Archetype"
@@ -88,7 +88,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Spell Trickster"
 			},
 			"traits": [
 				"Archetype"
@@ -109,7 +109,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Captivator"
 			},
 			"traits": [
 				"Archetype"
@@ -117,7 +117,7 @@
 			"prerequisites": "{@feat Captivator Dedication|LOTGB}",
 			"entries": [
 				"Your innate ability to fascinate others develops into full-fledged spellcasting. This spellcasting comes naturally and instinctively to you, rather than as a product of training.",
-				"Choose a 1st-level occult spell from either the enchantment captivator."
+				"Choose a {@filter 1st-level occult spell from either the enchantment or illusion school|spells||Level=1|Tradition & Spell List=Occult|School=E;I}. You can {@action Cast a Spell||Cast this Spell} as an occult innate spell. At 6th level, you gain a {@filter 2nd-level spell|spells||Level=2|Tradition & Spell List=Occult|School=E;I}, and at 8th level, you gain a {@filter 3rd-level spell|spells||Level=3|Tradition & Spell List=Occult|School=E;I}. Each of these spells must be from either the enchantment or illusion school."
 			],
 			"leadsTo": [
 				"Captivating Intensity|LOTGB",
@@ -136,7 +136,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Spell Trickster"
 			},
 			"traits": [
 				"Archetype"
@@ -144,8 +144,8 @@
 			"prerequisites": "{@feat Tracing Sigil|LOTGB}",
 			"entries": [
 				"When you cast {@spell sigil}, you can modify the spell to add the following heightened entry.",
-				"Heightened (4th) You attune yourself to the marked target.",
-				"While the spell lasts, you can spend a single action, which has the concentrate, {@trait detection}, and {@trait divination} traits, to attempt to locate the target, learning the direction to the target as long as you are within 1 mile of it. If the target is a creature or a creature is in possession of the target object, the creature can attempt a Will saving throw against your spell DC. If it succeeds, your attempt to locate the target fails and you can't attempt this again for 1 day. You can only have a single target marked with a sigil modified in this way. If you Cast this Spell again on a second target, the {@spell sigil} spell on the first target ends, and your mark fades."
+				"{@b Heightened (4th)} You attune yourself to the marked target.",
+				"While the spell lasts, you can spend a single action, which has the concentrate, {@trait detection}, and {@trait divination} traits, to attempt to locate the target, learning the direction to the target as long as you are within 1 mile of it. If the target is a creature or a creature is in possession of the target object, the creature can attempt a Will saving throw against your spell DC. If it succeeds, your attempt to locate the target fails and you can't attempt this again for 1 day. You can only have a single target marked with a sigil modified in this way. If you {@action Cast a Spell||Cast this Spell} again on a second target, the {@spell sigil} spell on the first target ends, and your mark fades."
 			]
 		},
 		{
@@ -158,14 +158,14 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Captivator"
 			},
 			"traits": [
 				"Archetype"
 			],
 			"prerequisites": "{@feat Basic Captivator Spellcasting|LOTGB}",
 			"entries": [
-				"Your ability to captivate others has grown, and you can use your captivator abilities more often. You seem to never run out of the ability to fascinate or distract. You can cast each occult innate spell granted by captivator archetype feats one additional time per day. You can do this for spells of all levels granted, other than your two highest spell levels from non-cantrip captivator spells. If you have Heightened Captivation, you can Cast the chosen Spell a second time each day, though one of the two times you cast it, it's heightened two levels lower than your highest level of non-cantrip captivator spells, as long as the spell can be cast at that spell level."
+				"Your ability to captivate others has grown, and you can use your captivator abilities more often. You seem to never run out of the ability to fascinate or distract. You can cast each occult innate spell granted by captivator archetype feats one additional time per day. You can do this for spells of all levels granted, other than your two highest spell levels from non-cantrip captivator spells. If you have {@feat Heightened Captivation|LOTGB}, you can {@action Cast a Spell||Cast the chosen Spell} a second time each day, though one of the two times you cast it, it's heightened two levels lower than your highest level of non-cantrip captivator spells, as long as the spell can be cast at that spell level."
 			]
 		},
 		{
@@ -178,7 +178,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Captivator"
 			},
 			"traits": [
 				"Archetype",
@@ -213,7 +213,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Spell Trickster"
 			},
 			"traits": [
 				"Archetype"
@@ -237,7 +237,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Wrestler"
 			},
 			"traits": [
 				"Archetype"
@@ -259,7 +259,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Spell Trickster"
 			},
 			"traits": [
 				"Archetype"
@@ -283,7 +283,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Captivator"
 			},
 			"traits": [
 				"Archetype"
@@ -326,7 +326,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Spell Trickster"
 			},
 			"traits": [
 				"Archetype"
@@ -351,7 +351,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Wrestler"
 			},
 			"traits": [
 				"Archetype"
@@ -372,7 +372,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Spell Trickster"
 			},
 			"traits": [
 				"Archetype"
@@ -393,7 +393,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Spell Trickster"
 			},
 			"traits": [
 				"Archetype"
@@ -419,7 +419,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Captivator"
 			},
 			"traits": [
 				"Archetype",
@@ -445,7 +445,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Wrestler"
 			},
 			"traits": [
 				"Archetype"
@@ -474,7 +474,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Captivator"
 			},
 			"traits": [
 				"Archetype"
@@ -482,8 +482,8 @@
 			"prerequisites": "{@feat Basic Captivator Spellcasting|LOTGB}",
 			"entries": [
 				"You learn more powerful spells to enchant and deceive.",
-				"You learn a 4th-level occult spell. At 12th level, you learn a 5th-level spell, and at 14th level, you learn a 6th-level spell.",
-				"Each of these spells must come from either the enchantment or illusion school. You Cast these Spells as occult innate spells.",
+				"You learn a {@filter 4th-level occult spell|spells||Level=4|Tradition & Spell List=Occult|School=E;I}. At 12th level, you learn a {@filter 5th-level spell|spells||Level=5|Tradition & Spell List=Occult|School=E;I}, and at 14th level, you learn a {@filter 6th-level spell|spells||Level=6|Tradition & Spell List=Occult|School=E;I}.",
+				"Each of these spells must come from either the enchantment or illusion school. You {@action Cast a Spell||Cast these Spells} as occult innate spells.",
 				"You become an expert with spell attack rolls and spell DCs for occult spells."
 			],
 			"leadsTo": [
@@ -500,7 +500,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Spell Trickster"
 			},
 			"traits": [
 				"Archetype",
@@ -525,7 +525,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Wrestler"
 			},
 			"traits": [
 				"Archetype",
@@ -568,7 +568,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Captivator"
 			},
 			"traits": [
 				"Archetype",
@@ -655,7 +655,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Wrestler"
 			},
 			"traits": [
 				"Archetype"
@@ -676,12 +676,12 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Spell Trickster"
 			},
 			"traits": [
 				"Archetype"
 			],
-			"prerequisites": "{@feat Agile Hand|LOTGB}, {@feat {@feat Pickpocket}} skill feat",
+			"prerequisites": "{@feat Agile Hand|LOTGB}, {@feat Pickpocket} skill feat",
 			"entries": [
 				"When you cast {@spell mage hand}, you can remove its duration, modify its range to 20 feet, and modify its target to be an attended object within the spell's Bulk limit that wouldn't be time-consuming to remove. Add the following to the spell's standard effects: If the creature attending the object is willing to have you take the item, mage hand carries the item to you.",
 				"If the creature is unwilling, you must attempt to {@action Steal} the target object with a {@skill Thievery} check. The usual restrictions on attempts to {@action Steal} an object apply, including the restrictions that you can't steal objects that would be extremely noticeable or time-consuming to remove (like worn shoes or armor or actively wielded objects) and you can't {@action Steal} from a creature in combat or otherwise on guard. On a successful {@action Steal} check, the mage hand carries the item to you, and on a critical failure, you can't use this modification again for 1 hour.",
@@ -698,7 +698,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Spell Trickster"
 			},
 			"traits": [
 				"Archetype"
@@ -706,7 +706,7 @@
 			"prerequisites": "{@feat Spell Trickster Dedication|LOTGB}, ability to cast {@spell fireball}",
 			"entries": [
 				"When you cast {@spell fireball}, you can modify its effects, decreasing the base damage to {@dice 5d6} and causing it to deal 2 {@condition persistent damage ||persistent fire damage} to creatures that fail their save, doubled as normal on a critical failure. If you do, replace its heightened entry with the following.",
-				"Heightened (+1) The damage is increased by {@dice 1d6} and the {@condition persistent damage ||persistent fire damage} is increased by 2."
+				"{@b Heightened (+1)} The damage is increased by {@dice 1d6} and the {@condition persistent damage ||persistent fire damage} is increased by 2."
 			]
 		},
 		{
@@ -723,7 +723,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Captivator"
 			},
 			"traits": [
 				"Archetype",
@@ -733,8 +733,7 @@
 			"frequency": "once per day",
 			"entries": [
 				"If your illusions or enchantments fail to ensnare the minds of others, you can cast them again. If your next action is to cast an innate enchantment or illusion spell and it fails to affect any targets, you do not lose the spell. You must use the same number of actions to recast the same spell on your following turn; if you can't, or choose not to, you waste that number of actions with no effect. After this second casting, you lose the spell whether it affected any targets or not.",
-				"Look Again works only with spells that require targets and doesn't do anything if you cast a targeted spell but didn't select any targets.",
-				"Just as Golarion's merchants scour busy marketplaces for newfound goods, scholars of magic congregate in teahouses, debate at symposia, and haunt the back rooms of esoteric shops to swap secrets of their trade. In such meetings, a different kind of magic may strike: the spark of innovation! The mixing of magical techniques produces fascinating and unpredictable results. As one of these innovators, sometimes called a spell trickster, you have a knack for pioneering magical techniques and discovering new effects from spells most novice spellcasters take for granted. Whether your unique abilities are the result of weeks of experimentation or a secret passed to you by a traveling practitioner, you delight in surprising others with your tricks."
+				"Look Again works only with spells that require targets and doesn't do anything if you cast a targeted spell but didn't select any targets."
 			]
 		},
 		{
@@ -747,7 +746,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Captivator"
 			},
 			"traits": [
 				"Archetype"
@@ -755,7 +754,7 @@
 			"prerequisites": "{@feat Expert Captivator Spellcasting|LOTGB}",
 			"entries": [
 				"You master the most powerful spells that enchant and deceive.",
-				"You learn a 7th-level occult spell. At 18th level, you learn an 8th-level spell, and at 20th level, you learn a 9th-level spell.",
+				"You learn a {@filter 7th-level occult spell|spells||Level=7|Tradition & Spell List=Occult|School=E;I}. At 18th level, you learn an {@filter 8th-level spell|spells||Level=8|Tradition & Spell List=Occult|School=E;I} spell, and at 20th level, you learn a {@filter 9th-level spell|spells||Level=9|Tradition & Spell List=Occult|School=E;I}.",
 				"Each of these spells must come from either the enchantment or illusion school. You cast these spells as occult innate spells.",
 				"You become a master with spell attack rolls and spell DCs for occult spells."
 			]
@@ -790,7 +789,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Spell Trickster"
 			},
 			"traits": [
 				"Archetype"
@@ -835,7 +834,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Captivator"
 			},
 			"traits": [
 				"Archetype"
@@ -902,7 +901,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Wrestler"
 			},
 			"traits": [
 				"Archetype",
@@ -942,7 +941,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Spell Trickster"
 			},
 			"traits": [
 				"Archetype"
@@ -982,7 +981,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Spell Trickster"
 			},
 			"traits": [
 				"Archetype"
@@ -1022,7 +1021,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Spell Trickster"
 			},
 			"traits": [
 				"Archetype"
@@ -1042,7 +1041,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Spell Trickster"
 			},
 			"traits": [
 				"Archetype"
@@ -1112,7 +1111,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Spell Trickster"
 			},
 			"traits": [
 				"Archetype",
@@ -1120,7 +1119,7 @@
 			],
 			"prerequisites": "Able to cast spells; trained in {@skill Arcana}, {@skill Nature},",
 			"entries": [
-				"{@skill Occultism}, or {@skill Religion} Your experience with magic and its traditions lets you specialize in the casting of certain spells, customizing familiar spells to create novel effects. Whenever you gain a feat from this archetype, you either learn to modify the effects of a single spell, or you change one of the modifications from a previous feat. Each time you Cast the Spell corresponding to the feat you chose, you decide whether to cast its normal or modified version. You can only apply one modification to a spell at a time, even if you know more than one modification for that spell. Besides modifications mentioned in the feat, the spell functions as normal.",
+				"{@skill Occultism}, or {@skill Religion} Your experience with magic and its traditions lets you specialize in the casting of certain spells, customizing familiar spells to create novel effects. Whenever you gain a feat from this archetype, you either learn to modify the effects of a single spell, or you change one of the modifications from a previous feat. Each time you {@action Cast a Spell||Cast the Spell} corresponding to the feat you chose, you decide whether to cast its normal or modified version. You can only apply one modification to a spell at a time, even if you know more than one modification for that spell. Besides modifications mentioned in the feat, the spell functions as normal.",
 				"Choose up to two 4th-level spell trickster archetype feats for which you meet the spell-casting prerequisite. You gain those feats, ignoring their level prerequisite."
 			],
 			"special": "You can't select another dedication feat until you have gained two other feats from the spell trickster archetype. The two feats you gain from taking the dedication don't count toward this total.",
@@ -1166,7 +1165,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Wrestler"
 			},
 			"traits": [
 				"Archetype"
@@ -1219,7 +1218,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Spell Trickster"
 			},
 			"traits": [
 				"Archetype"
@@ -1243,7 +1242,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Wrestler"
 			},
 			"traits": [
 				"Archetype"
@@ -1268,7 +1267,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Wrestler"
 			},
 			"traits": [
 				"Archetype"
@@ -1296,7 +1295,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Spell Trickster"
 			},
 			"traits": [
 				"Archetype"
@@ -1321,7 +1320,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Wrestler"
 			},
 			"traits": [
 				"Archetype"
@@ -1342,7 +1341,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Spell Trickster"
 			},
 			"traits": [
 				"Archetype"
@@ -1381,7 +1380,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Spell Trickster"
 			},
 			"traits": [
 				"Archetype"
@@ -1401,7 +1400,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Spell Trickster"
 			},
 			"traits": [
 				"Archetype"
@@ -1424,7 +1423,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Spell Trickster"
 			},
 			"traits": [
 				"Archetype"
@@ -1444,7 +1443,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Spell Trickster"
 			},
 			"traits": [
 				"Archetype"
@@ -1511,7 +1510,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Spell Trickster"
 			},
 			"traits": [
 				"Archetype"
@@ -1531,7 +1530,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Wrestler"
 			},
 			"traits": [
 				"Archetype",

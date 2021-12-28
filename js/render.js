@@ -3520,7 +3520,7 @@ Renderer.ancestry = {
 
 Renderer.archetype = {
 	getCompactRenderedString (archetype) {
-		const renderer = Renderer.get();
+		const renderer = Renderer.get().setFirstSection(true);
 		return `${renderer.render({type: "pf2-h3", name: archetype.name})}
 		${renderer.render(archetype.entries)}`;
 	},
@@ -3705,6 +3705,7 @@ Renderer.creature = {
 	},
 
 	getLanguages (cr) {
+		renderer = Renderer.get()
 		if (cr.languages != null && (cr.languages.languages.length !== 0 || cr.languages.languageAbilities.length !== 0)) {
 			let renderStack = [];
 
@@ -3714,7 +3715,7 @@ Renderer.creature = {
 			renderStack.push(cr.languages.languages.length !== 0 ? cr.languages.languages.join(", ") : "— ")
 			if (cr.languages.languageAbilities.length !== 0) {
 				if (cr.languages.languages.length !== 0) renderStack.push("; ")
-				renderStack.push(cr.languages.languageAbilities.join(", "))
+				renderStack.push(renderer.render(cr.languages.languageAbilities.join(", ")))
 			}
 			renderStack.push(`</span>`)
 			renderStack.push(`</p>`)
@@ -3779,7 +3780,7 @@ Renderer.creature = {
 		renderStack.push(`<p class="pf2-stat pf2-stat__section">`)
 		const ac = cr.ac
 		renderStack.push(`<span><strong>AC&nbsp;</strong>${ac.default}${Renderer.utils.getNotes(ac, {exclude: ["default", "abilities"]})}`)
-		if (ac.abilities != null) renderStack.push(`; ${ac.abilities}`);
+		if (ac.abilities != null) renderStack.push(`; ${renderer.render(ac.abilities)}`);
 		const st = cr.savingThrows
 		renderStack.push(`; <strong>Fort&nbsp;</strong>`)
 		renderStack.push(Renderer.get().render(`{@d20 ${st.Fort.default}||Fortitude Save}`))
@@ -3798,14 +3799,14 @@ Renderer.creature = {
 		const hp = cr.hp
 		for (let i = 0; i < hp.length; i++) {
 			renderStack.push(`<span><strong>HP&nbsp;</strong>${hp[i].note != null ? `${hp[i].note} ` : ``}${hp[i].hp}`)
-			renderStack.push(`${hp[i].abilities != null ? `, ${hp[i].abilities.join(", ")}` : ``}`)
+			renderStack.push(`${renderer.render(`${hp[i].abilities != null ? `, ${hp[i].abilities.join(", ")}` : ``}`)}`)
 			renderStack.push(`${(i === hp.length - 1) ? `` : ` `}`)
 		}
 		if (cr.hardness != null) {
 			renderStack.push(`; <strong>Hardness&nbsp;</strong>${cr.hardness}`)
 		}
 		if (cr.immunities != null) {
-			renderStack.push(`; <strong>Immunities&nbsp;</strong>${cr.immunities.damage.concat(cr.immunities.condition).sort().join(", ")}`)
+			renderStack.push(`; <strong>Immunities&nbsp;</strong>${(cr.immunities.damage ? cr.immunities.damage.concat(cr.immunities.condition) : cr.immunities.condition).sort().join(", ")}`)
 		}
 		if (cr.weaknesses != null) {
 			renderStack.push(`; <strong>Weaknesses&nbsp;</strong>`)
@@ -4410,7 +4411,7 @@ Renderer.item = {
 		if (item.str != null || item.checkPen != null || item.speedPen != null) {
 			let tempStack = []
 			if (item.str != null) tempStack.push(`<strong>Strength&nbsp;</strong>${item.str}`)
-			if (item.checkPen != null) tempStack.push(`<strong>Check Penalty&nbsp;</strong>${item.speedPen ? `–${item.checkPen}` : "\u2014"}`)
+			if (item.checkPen != null) tempStack.push(`<strong>Check Penalty&nbsp;</strong>${item.checkPen ? `–${item.checkPen}` : "\u2014"}`)
 			if (item.speedPen != null) tempStack.push(`<strong>Speed Penalty&nbsp;</strong>${item.speedPen ? `–${item.speedPen} ft.` : "\u2014"}`)
 			renderStack.push(`<p class="pf2-stat pf2-stat__section">${tempStack.join("; ")}</p>`)
 		}
@@ -4485,7 +4486,7 @@ Renderer.item = {
 					.concat((item.perception.senses.vague || []).map(s => `vague ${s}`))
 					.join(", ");
 			}
-			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Perception&nbsp;</strong>${renderer.render(`{@d20 ${item.perception.default}||Perception}`)}${senses ? `; ${senses}` : ""}</p>`);
+			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>${renderer.render(`{@skill Perception}`)}&nbsp;</strong>${renderer.render(`{@d20 ${item.perception.default}||Perception}`)}${senses ? `; ${senses}` : ""}</p>`);
 		}
 		if (item.communication) {
 			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Communication&nbsp;</strong>${item.communication.map(c => `${c.name}${c.notes ? ` (${renderer.render(c.notes)})` : ""}`).join("; ")}</p>`)
@@ -4494,7 +4495,7 @@ Renderer.item = {
 			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Skills&nbsp;</strong>`);
 			const skills = [];
 			Object.keys(item.skills).forEach(skill => {
-				skills.push(`${skill}&nbsp;${renderer.render(`{@d20 ${item.skills[skill]["default"]}||${skill}}`)}${Renderer.utils.getNotes(item.skills[skill], {exclude: ["default"], dice: {name: skill}})}`);
+				skills.push(`${skill.includes("Lore") ? `${renderer.render(`{@skill Lore||${skill}}`)}` : `${renderer.render(`{@skill ${skill}}`)}`}&nbsp;${renderer.render(`{@d20 ${item.skills[skill]["default"]}||${skill}}`)}${Renderer.utils.getNotes(item.skills[skill], {exclude: ["default"], dice: {name: skill}})}`);
 			});
 			renderStack.push(skills.join(", "))
 			renderStack.push(`</p>`);
@@ -4670,6 +4671,17 @@ Renderer.language = {
 	},
 };
 
+Renderer.optionalFeature = {
+	getRenderedString (it, opts) {
+		opts = opts || {};
+		return `
+		${Renderer.utils.getNameDiv(it)}
+		${Renderer.utils.getDividerDiv()}
+		${Renderer.generic.getRenderedEntries(it)}
+		${opts.noPage ? "" : Renderer.utils.getPageP(it)}`;
+	},
+};
+
 Renderer.ritual = {
 	getCompactRenderedString (ritual, opts) {
 		opts = opts || {};
@@ -4793,7 +4805,7 @@ Renderer.spell = {
 		if (sp.requirements != null) castPart += `; <strong>Requirements&nbsp;</strong>${renderer.render(sp.requirements)}`;
 
 		const targetingParts = [];
-		if (sp.range && sp.range.type != null) targetingParts.push(`<strong>Range&nbsp;</strong>${renderer.render(sp.range.entry)}`);
+		if (sp.range) targetingParts.push(`<strong>Range&nbsp;</strong>${renderer.render(sp.range.entry)}`);
 		if (sp.area != null) targetingParts.push(`<strong>Area&nbsp;</strong>${renderer.render(sp.area.entry)}`);
 		if (sp.targets != null) targetingParts.push(`<strong>Targets&nbsp;</strong>${renderer.render(sp.targets)}`);
 
@@ -5189,7 +5201,7 @@ Renderer.hover = {
 				case VeCt.HASH_ITEM_RUNES: {
 					toRender = Renderer.hover._getFromCache(page, source, hash);
 					if (toRender) break;
-					const [baseItem, ...runes] = await Promise.all(data.split(HASH_SUB_LIST_SEP).map(h => Renderer.hover.pCacheAndGet(page, h.split(HASH_LIST_SEP)[1], h)));
+					const [baseItem, ...runes] = await Promise.all(data.split(HASH_SUB_LIST_SEP).map(h => Renderer.hover.pCacheAndGet(page, decodeURIComponent(h.split(HASH_LIST_SEP)[1]), h)));
 					toRender = Renderer.runeItem.getRuneItem(baseItem, runes);
 					Renderer.hover._addToCache(page, source, hash, toRender);
 					break;
@@ -6987,11 +6999,17 @@ Renderer._stripTagLayer = function (str) {
 
 					case "@note":
 					case "@domain":
-					case "@group":
-					case "@skill": {
+					case "@group": {
 						return text;
 					}
-
+					case "@skill": {
+						const parts = Renderer.splitTagByPipe(text);
+						if (parts[2] !== undefined) {
+							return parts[2]
+						} else {
+							return parts[0]
+						}
+					}
 					case "@Pf2eTools":
 					case "@pf2etools":
 					case "@adventure":
@@ -7030,6 +7048,7 @@ Renderer._stripTagLayer = function (str) {
 					case "@language":
 					case "@object":
 					case "@ancestry":
+					case "@archetype":
 					case "@versatileHeritage":
 					case "@reward":
 					case "@spell":

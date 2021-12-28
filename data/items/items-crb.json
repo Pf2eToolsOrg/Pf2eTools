@@ -125,7 +125,104 @@
 			],
 			"category": "Material",
 			"entries": [
-				"Mined from rocks that fell from the heavens, adamantine is one of the hardest metals known. It has a shiny, black appearance, and it is prized for its amazing resiliency and ability to hold an incredibly sharp edge."
+				"Mined from rocks that fell from the heavens, adamantine is one of the hardest metals known. It has a shiny, black appearance, and it is prized for its amazing resiliency and ability to hold an incredibly sharp edge.",
+				{
+					"type": "table",
+					"source": "CRB",
+					"page": 578,
+					"labelRowIdx": [
+						0
+					],
+					"colSizes": [
+						2,
+						1,
+						1,
+						1
+					],
+					"colStyles": [
+						"text-left",
+						"text-center",
+						"text-center",
+						"text-center"
+					],
+					"rows": [
+						[
+							"Adamantine Items",
+							"Hardness",
+							"HP",
+							"BT"
+						],
+						[
+							"{@b Thin Items}",
+							"",
+							"",
+							""
+						],
+						{
+							"type": "multiRow",
+							"rows": [
+								[
+									"{@indentFirst Standard-grade}",
+									"10",
+									"40",
+									"20"
+								],
+								[
+									"{@indentFirst High-grade}",
+									"13",
+									"52",
+									"26"
+								]
+							]
+						},
+						[
+							"{@b Items}",
+							"",
+							"",
+							""
+						],
+						{
+							"type": "multiRow",
+							"rows": [
+								[
+									"{@indentFirst Standard-grade}",
+									"14",
+									"56",
+									"28"
+								],
+								[
+									"{@indentFirst High-grade}",
+									"17",
+									"68",
+									"34"
+								]
+							]
+						},
+						[
+							"{@b Structures}",
+							"",
+							"",
+							""
+						],
+						{
+							"type": "multiRow",
+							"rows": [
+								[
+									"{@indentFirst Standard-grade}",
+									"28",
+									"112",
+									"56"
+								],
+								[
+									"{@indentFirst High-grade}",
+									"34",
+									"136",
+									"68"
+								]
+							]
+						}
+					]
+				}
 			],
 			"generic": "G",
 			"variants": [
@@ -167,9 +264,7 @@
 						"amount": 6000,
 						"note": "per Bulk"
 					},
-					"entries": [
-						"Adamantine Items Hardness HP BT Thin Items Standard-grade 10 40 20 High-grade 13 52 26."
-					]
+					"entries": []
 				}
 			]
 		},
@@ -322,6 +417,7 @@
 		{
 			"name": "Adventurer's Pack",
 			"source": "CRB",
+			"page": 288,
 			"equipment": true,
 			"type": "Item",
 			"price": {
@@ -810,6 +906,7 @@
 		{
 			"name": "Alchemist's Lab",
 			"source": "CRB",
+			"page": 288,
 			"equipment": true,
 			"type": "Item",
 			"price": {
@@ -853,6 +950,7 @@
 		{
 			"name": "Alchemist's Tools",
 			"source": "CRB",
+			"page": 288,
 			"equipment": true,
 			"type": "Item",
 			"price": {
@@ -1647,6 +1745,7 @@
 		{
 			"name": "Artisan's Tools",
 			"source": "CRB",
+			"page": 288,
 			"equipment": true,
 			"type": "Item",
 			"price": {
@@ -1665,11 +1764,6 @@
 				{
 					"type": "Base",
 					"name": "Artisan's Tools",
-					"price": {
-						"coin": "gp",
-						"amount": 5,
-						"note": null
-					},
 					"entries": []
 				},
 				{
@@ -1716,6 +1810,7 @@
 		{
 			"name": "Backpack",
 			"source": "CRB",
+			"page": 288,
 			"equipment": true,
 			"type": "Item",
 			"price": {
@@ -1913,6 +2008,7 @@
 		{
 			"name": "Basic Crafter's Book",
 			"source": "CRB",
+			"page": 288,
 			"equipment": true,
 			"type": "Item",
 			"price": {
@@ -1963,6 +2059,7 @@
 		},
 		{
 			"name": "Bedroll",
+			"page": 288,
 			"source": "CRB",
 			"equipment": true,
 			"type": "Item",
@@ -3658,14 +3755,15 @@
 			},
 			"category": "Snare",
 			"entries": [
-				"This snare consists of a {@condition hidden} canister of caltrops (page 287) attached to a trip wire. When the snare is triggered, it flings the caltrops into either the snare's square or a square adjacent to the snare. You choose which square when you set up the snare.",
-				"If the caltrops scatter into the same square as a creature, that creature must attempt the {@skill Acrobatics} check immediately."
+				"This snare consists of a {@condition hidden} canister of {@item caltrops} attached to a trip wire. When the snare is triggered, it flings the caltrops into either the snare's square or a square adjacent to the snare. You choose which square when you set up the snare.",
+				"If the {@item caltrops} scatter into the same square as a creature, that creature must attempt the {@skill Acrobatics} check immediately."
 			],
 			"craftReq": "Supply a container of caltrops.",
 			"generic": false
 		},
 		{
 			"name": "Caltrops",
+			"page": 288,
 			"source": "CRB",
 			"equipment": true,
 			"type": "Item",
@@ -3684,6 +3782,7 @@
 		{
 			"name": "Candle (10)",
 			"source": "CRB",
+			"page": 288,
 			"equipment": true,
 			"type": "Item",
 			"price": {
@@ -3946,6 +4045,7 @@
 		},
 		{
 			"name": "Chain (10 feet)",
+			"page": 288,
 			"source": "CRB",
 			"equipment": true,
 			"type": "Item",
@@ -3964,6 +4064,7 @@
 		{
 			"name": "Chalk (10)",
 			"source": "CRB",
+			"page": 288,
 			"equipment": true,
 			"type": "Item",
 			"price": {
@@ -4095,6 +4196,7 @@
 		{
 			"name": "Chest",
 			"source": "CRB",
+			"page": 288,
 			"equipment": true,
 			"type": "Item",
 			"price": {
@@ -4327,6 +4429,7 @@
 		{
 			"name": "Climbing Kit",
 			"source": "CRB",
+			"page": 288,
 			"equipment": true,
 			"type": "Item",
 			"price": {
@@ -4491,6 +4594,7 @@
 		{
 			"name": "Clothing",
 			"source": "CRB",
+			"page": 288,
 			"equipment": true,
 			"type": "Item",
 			"category": "Gear",
@@ -4622,7 +4726,122 @@
 			"category": "Material",
 			"entries": [
 				"Weapons made from cold iron are deadly to demons and fey alike.",
-				"Cold iron looks like normal iron but is mined from particularly pure sources and shaped with little or no heat. This process is extremely difficult, especially for high-grade cold iron items."
+				"Cold iron looks like normal iron but is mined from particularly pure sources and shaped with little or no heat. This process is extremely difficult, especially for high-grade cold iron items.",
+				{
+					"type": "table",
+					"source": "CRB",
+					"page": 578,
+					"labelRowIdx": [
+						0
+					],
+					"colSizes": [
+						2,
+						1,
+						1,
+						1
+					],
+					"colStyles": [
+						"text-left",
+						"text-center",
+						"text-center",
+						"text-center"
+					],
+					"rows": [
+						[
+							"Cold Iron Items",
+							"Hardness",
+							"HP",
+							"BT"
+						],
+						[
+							"{@b Thin Items}",
+							"",
+							"",
+							""
+						],
+						{
+							"type": "multiRow",
+							"rows": [
+								[
+									"{@indentFirst Low-grade}",
+									"5",
+									"20",
+									"10"
+								],
+								[
+									"{@indentFirst Standard-grade}",
+									"7",
+									"28",
+									"14"
+								],
+								[
+									"{@indentFirst High-grade}",
+									"10",
+									"40",
+									"20"
+								]
+							]
+						},
+						[
+							"{@b Items}",
+							"",
+							"",
+							""
+						],
+						{
+							"type": "multiRow",
+							"rows": [
+								[
+									"{@indentFirst Low-grade}",
+									"9",
+									"36",
+									"18"
+								],
+								[
+									"{@indentFirst Standard-grade}",
+									"11",
+									"44",
+									"22"
+								],
+								[
+									"{@indentFirst High-grade}",
+									"14",
+									"56",
+									"28"
+								]
+							]
+						},
+						[
+							"{@b Structures}",
+							"",
+							"",
+							""
+						],
+						{
+							"type": "multiRow",
+							"rows": [
+								[
+									"{@indentFirst Low-grade}",
+									"18",
+									"72",
+									"36"
+								],
+								[
+									"{@indentFirst Standard-grade}",
+									"22",
+									"88",
+									"44"
+								],
+								[
+									"{@indentFirst High-grade}",
+									"28",
+									"112",
+									"56"
+								]
+							]
+						}
+					]
+				}
 			],
 			"generic": "G",
 			"variants": [
@@ -4674,9 +4893,7 @@
 						"amount": 4500,
 						"note": "per Bulk"
 					},
-					"entries": [
-						"Cold Iron Items Hardness HP BT Thin Items Low-grade 5 20 10 Standard-grade 7 28 14 High-grade 10 40 20."
-					]
+					"entries": []
 				}
 			]
 		},
@@ -4968,6 +5185,7 @@
 		{
 			"name": "Compass",
 			"source": "CRB",
+			"page": 288,
 			"equipment": true,
 			"type": "Item",
 			"price": {
@@ -5084,6 +5302,7 @@
 		{
 			"name": "Cookware",
 			"source": "CRB",
+			"page": 288,
 			"equipment": true,
 			"type": "Item",
 			"price": {
@@ -5231,6 +5450,7 @@
 		{
 			"name": "Crowbar",
 			"source": "CRB",
+			"page": 288,
 			"equipment": true,
 			"type": "Item",
 			"price": {
@@ -5803,7 +6023,104 @@
 			],
 			"category": "Material",
 			"entries": [
-				"Darkwood is a very lightweight wood found primarily in oldgrowth forests in south-central Avistan; it is dark as ebony but has a slight purple tint. A darkwood item's Bulk is reduced by 1 (or to light Bulk if its normal Bulk is 1, with no effect on an item that normally has light Bulk). The Price of an item made of darkwood is based on the item's normal Bulk, not its reduced Bulk for being made of darkwood, but reduce the Bulk before making any further Bulk adjustments for the size of the item."
+				"Darkwood is a very lightweight wood found primarily in oldgrowth forests in south-central Avistan; it is dark as ebony but has a slight purple tint. A darkwood item's Bulk is reduced by 1 (or to light Bulk if its normal Bulk is 1, with no effect on an item that normally has light Bulk). The Price of an item made of darkwood is based on the item's normal Bulk, not its reduced Bulk for being made of darkwood, but reduce the Bulk before making any further Bulk adjustments for the size of the item.",
+				{
+					"type": "table",
+					"source": "CRB",
+					"page": 578,
+					"labelRowIdx": [
+						0
+					],
+					"colSizes": [
+						2,
+						1,
+						1,
+						1
+					],
+					"colStyles": [
+						"text-left",
+						"text-center",
+						"text-center",
+						"text-center"
+					],
+					"rows": [
+						[
+							"Darkwood Items",
+							"Hardness",
+							"HP",
+							"BT"
+						],
+						[
+							"{@b Thin Items}",
+							"",
+							"",
+							""
+						],
+						{
+							"type": "multiRow",
+							"rows": [
+								[
+									"{@indentFirst Standard-grade}",
+									"5",
+									"20",
+									"10"
+								],
+								[
+									"{@indentFirst High-grade}",
+									"8",
+									"32",
+									"16"
+								]
+							]
+						},
+						[
+							"{@b Items}",
+							"",
+							"",
+							""
+						],
+						{
+							"type": "multiRow",
+							"rows": [
+								[
+									"{@indentFirst Standard-grade}",
+									"7",
+									"28",
+									"14"
+								],
+								[
+									"{@indentFirst High-grade}",
+									"10",
+									"40",
+									"20"
+								]
+							]
+						},
+						[
+							"{@b Structures}",
+							"",
+							"",
+							""
+						],
+						{
+							"type": "multiRow",
+							"rows": [
+								[
+									"{@indentFirst Standard-grade}",
+									"14",
+									"56",
+									"28"
+								],
+								[
+									"{@indentFirst High-grade}",
+									"20",
+									"80",
+									"40"
+								]
+							]
+						}
+					]
+				}
 			],
 			"generic": "G",
 			"variants": [
@@ -5845,9 +6162,7 @@
 						"amount": 6000,
 						"note": "per Bulk"
 					},
-					"entries": [
-						"Darkwood Items Hardness HP BT Thin Items Standard-grade 5 20 10 High-grade 8 32 16."
-					]
+					"entries": []
 				}
 			]
 		},
@@ -6393,6 +6708,7 @@
 		{
 			"name": "Disguise Kit",
 			"source": "CRB",
+			"page": 288,
 			"equipment": true,
 			"type": "Item",
 			"price": {
@@ -6817,7 +7133,119 @@
 			],
 			"category": "Material",
 			"entries": [
-				"The hide and scales of a dragon can be used to {@action Craft} any item normally made of ordinary leather or hide. Dragonhide varies in color from blue to glittering gold, depending on the dragon it came from. Due to the scales' resiliency, it can also be used to {@action Craft} armor usually made out of metal plates (such as a breastplate, half plate, and full plate), allowing such armor to be made without metal. Dragonhide objects are immune to one damage type, depending on the type of dragon (see the table below)."
+				"The hide and scales of a dragon can be used to {@action Craft} any item normally made of ordinary leather or hide. Dragonhide varies in color from blue to glittering gold, depending on the dragon it came from. Due to the scales' resiliency, it can also be used to {@action Craft} armor usually made out of metal plates (such as a breastplate, half plate, and full plate), allowing such armor to be made without metal. Dragonhide objects are immune to one damage type, depending on the type of dragon (see the table below).",
+				{
+					"type": "table",
+					"source": "CRB",
+					"page": 579,
+					"labelRowIdx": [
+						0
+					],
+					"colStyles": [
+						"text-center",
+						"text-center"
+					],
+					"rows": [
+						[
+							"Dragon Type",
+							"Resistance"
+						],
+						[
+							"Black or copper",
+							"Acid"
+						],
+						[
+							"Blue or bronze",
+							"Electricity"
+						],
+						[
+							"Brass, gold, or red",
+							"Fire"
+						],
+						[
+							"Green",
+							"Poison"
+						],
+						[
+							"Silver or white",
+							"Cold"
+						]
+					]
+				},
+				{
+					"type": "table",
+					"source": "CRB",
+					"page": 578,
+					"labelRowIdx": [
+						0
+					],
+					"colSizes": [
+						2,
+						1,
+						1,
+						1
+					],
+					"colStyles": [
+						"text-left",
+						"text-center",
+						"text-center",
+						"text-center"
+					],
+					"rows": [
+						[
+							"Dragonhide Items",
+							"Hardness",
+							"HP",
+							"BT"
+						],
+						[
+							"{@b Thin Items}",
+							"",
+							"",
+							""
+						],
+						{
+							"type": "multiRow",
+							"rows": [
+								[
+									"{@indentFirst Standard-grade}",
+									"4",
+									"16",
+									"8"
+								],
+								[
+									"{@indentFirst High-grade}",
+									"8",
+									"32",
+									"16"
+								]
+							]
+						},
+						[
+							"{@b Items}",
+							"",
+							"",
+							""
+						],
+						{
+							"type": "multiRow",
+							"rows": [
+								[
+									"{@indentFirst Standard-grade}",
+									"7",
+									"28",
+									"14"
+								],
+								[
+									"{@indentFirst High-grade}",
+									"11",
+									"44",
+									"22"
+								]
+							]
+						}
+					]
+				}
 			],
 			"generic": "G",
 			"variants": [
@@ -6839,9 +7267,7 @@
 						"amount": 6000,
 						"note": "per Bulk"
 					},
-					"entries": [
-						"Dragon."
-					]
+					"entries": []
 				}
 			]
 		},
@@ -7616,7 +8042,7 @@
 			"bulk": "1",
 			"category": "Armor",
 			"entries": [
-				"Elven chain is a chain shirt made of mithral (page 579) that glitters in even the faintest light. It grants a +2 item bonus to AC and has no check penalty.",
+				"Elven chain is a chain shirt made of {@item mithral} that glitters in even the faintest light. It grants a +2 item bonus to AC and has no check penalty.",
 				"Created by elven artisans employing ancient crafting techniques, elven chain is exceptionally quiet. Unlike other chain shirts\u2014even other mithral chain shirts\u2014elven chain does not have the {@trait noisy} trait. This suit of armor can be etched with runes like any other mithral chain shirt."
 			],
 			"generic": "G",
@@ -7908,6 +8334,7 @@
 		{
 			"name": "Extra Ink and Paper",
 			"source": "CRB",
+			"page": 288,
 			"equipment": true,
 			"type": "Item",
 			"price": {
@@ -8321,6 +8748,7 @@
 		{
 			"name": "Fishing Tackle",
 			"source": "CRB",
+			"page": 288,
 			"equipment": true,
 			"type": "Item",
 			"price": {
@@ -8503,6 +8931,7 @@
 		{
 			"name": "Flint and Steel",
 			"source": "CRB",
+			"page": 288,
 			"equipment": true,
 			"type": "Item",
 			"price": {
@@ -8690,6 +9119,7 @@
 		{
 			"name": "Formula Book (blank)",
 			"source": "CRB",
+			"page": 288,
 			"equipment": true,
 			"type": "Item",
 			"price": {
@@ -9519,6 +9949,7 @@
 		{
 			"name": "Grappling Hook",
 			"source": "CRB",
+			"page": 288,
 			"equipment": true,
 			"type": "Item",
 			"price": {
@@ -9731,6 +10162,7 @@
 		{
 			"name": "Hammer",
 			"source": "CRB",
+			"page": 288,
 			"equipment": true,
 			"type": "Item",
 			"price": {
@@ -10120,6 +10552,7 @@
 		{
 			"name": "Healer's Tools",
 			"source": "CRB",
+			"page": 288,
 			"equipment": true,
 			"type": "Item",
 			"price": {
@@ -10376,6 +10809,7 @@
 		{
 			"name": "Holly and Mistletoe",
 			"source": "CRB",
+			"page": 288,
 			"equipment": true,
 			"type": "Item",
 			"price": {
@@ -10758,6 +11192,7 @@
 		{
 			"name": "Hourglass",
 			"source": "CRB",
+			"page": 288,
 			"equipment": true,
 			"type": "Item",
 			"price": {
@@ -11710,6 +12145,7 @@
 		{
 			"name": "Ladder (10-foot)",
 			"source": "CRB",
+			"page": 288,
 			"equipment": true,
 			"type": "Item",
 			"price": {
@@ -11727,6 +12163,7 @@
 		{
 			"name": "Lantern",
 			"source": "CRB",
+			"page": 288,
 			"equipment": true,
 			"type": "Item",
 			"category": "Gear",
@@ -12032,6 +12469,7 @@
 		{
 			"name": "Lock",
 			"source": "CRB",
+			"page": 288,
 			"equipment": true,
 			"type": "Item",
 			"hands": 2,
@@ -12549,6 +12987,7 @@
 		{
 			"name": "Magnifying Glass",
 			"source": "CRB",
+			"page": 288,
 			"equipment": true,
 			"type": "Item",
 			"level": 3,
@@ -12665,6 +13104,7 @@
 		{
 			"name": "Manacles",
 			"source": "CRB",
+			"page": 288,
 			"equipment": true,
 			"type": "Item",
 			"hands": 2,
@@ -12819,6 +13259,7 @@
 		{
 			"name": "Material Component Pouch",
 			"source": "CRB",
+			"page": 288,
 			"equipment": true,
 			"type": "Item",
 			"price": {
@@ -13010,6 +13451,7 @@
 		{
 			"name": "Merchant's Scale",
 			"source": "CRB",
+			"page": 288,
 			"equipment": true,
 			"type": "Item",
 			"price": {
@@ -13185,6 +13627,7 @@
 			"name": "Mirror",
 			"source": "CRB",
 			"equipment": true,
+			"page": 288,
 			"type": "Item",
 			"price": {
 				"amount": 1,
@@ -13298,7 +13741,104 @@
 			],
 			"category": "Material",
 			"entries": [
-				"Mithral is renowned for its lightness, durability, and effectiveness against a range of creatures including devils and lycanthropes. It has the same sheen as silver but a slightly lighter hue. Mithral weapons and armor are treated as if they were silver for the purpose of damaging creatures with weakness to silver. A metal item made of mithral is lighter than one made of iron or steel: the item's Bulk is reduced by 1 (reduced to light Bulk if its normal Bulk is 1, with no effect on an item that normally has light Bulk). The Price of an item made of this material is based on the item's normal Bulk, not its reduced Bulk for being made of mithral, but reduce the Bulk before making any further Bulk adjustments for the size of the item."
+				"Mithral is renowned for its lightness, durability, and effectiveness against a range of creatures including devils and lycanthropes. It has the same sheen as silver but a slightly lighter hue. Mithral weapons and armor are treated as if they were silver for the purpose of damaging creatures with weakness to silver. A metal item made of mithral is lighter than one made of iron or steel: the item's Bulk is reduced by 1 (reduced to light Bulk if its normal Bulk is 1, with no effect on an item that normally has light Bulk). The Price of an item made of this material is based on the item's normal Bulk, not its reduced Bulk for being made of mithral, but reduce the Bulk before making any further Bulk adjustments for the size of the item.",
+				{
+					"type": "table",
+					"source": "CRB",
+					"page": 579,
+					"labelRowIdx": [
+						0
+					],
+					"colSizes": [
+						2,
+						1,
+						1,
+						1
+					],
+					"colStyles": [
+						"text-left",
+						"text-center",
+						"text-center",
+						"text-center"
+					],
+					"rows": [
+						[
+							"Mithral Items",
+							"Hardness",
+							"HP",
+							"BT"
+						],
+						[
+							"{@b Thin Items}",
+							"",
+							"",
+							""
+						],
+						{
+							"type": "multiRow",
+							"rows": [
+								[
+									"{@indentFirst Standard-grade}",
+									"5",
+									"20",
+									"10"
+								],
+								[
+									"{@indentFirst High-grade}",
+									"8",
+									"32",
+									"16"
+								]
+							]
+						},
+						[
+							"{@b Items}",
+							"",
+							"",
+							""
+						],
+						{
+							"type": "multiRow",
+							"rows": [
+								[
+									"{@indentFirst Standard-grade}",
+									"9",
+									"36",
+									"18"
+								],
+								[
+									"{@indentFirst High-grade}",
+									"12",
+									"48",
+									"24"
+								]
+							]
+						},
+						[
+							"{@b Structures}",
+							"",
+							"",
+							""
+						],
+						{
+							"type": "multiRow",
+							"rows": [
+								[
+									"{@indentFirst Standard-grade}",
+									"18",
+									"72",
+									"36"
+								],
+								[
+									"{@indentFirst High-grade}",
+									"24",
+									"96",
+									"48"
+								]
+							]
+						}
+					]
+				}
 			],
 			"generic": "G",
 			"variants": [
@@ -13340,9 +13880,7 @@
 						"amount": 6000,
 						"note": "per Bulk"
 					},
-					"entries": [
-						"Mithral Items Hardness HP BT Thin Items Standard-grade 5 20 10 High-grade 8 32 16."
-					]
+					"entries": []
 				}
 			]
 		},
@@ -13590,6 +14128,7 @@
 		{
 			"name": "Mug",
 			"source": "CRB",
+			"page": 288,
 			"equipment": true,
 			"type": "Item",
 			"price": {
@@ -13676,6 +14215,7 @@
 		{
 			"name": "Musical Instrument",
 			"source": "CRB",
+			"page": 288,
 			"equipment": true,
 			"type": "Item",
 			"hands": 2,
@@ -14143,6 +14683,7 @@
 			"name": "Oil (1 pint)",
 			"source": "CRB",
 			"equipment": true,
+			"page": 288,
 			"type": "Item",
 			"price": {
 				"amount": 1,
@@ -14470,7 +15011,86 @@
 			],
 			"category": "Material",
 			"entries": [
-				"The most rare and valuable skymetal, orichalcum is coveted for its incredible time-related magical properties. This dull, coppery metal isn't as physically sturdy as adamantine, but orichalcum's time-bending properties protect it, granting it greater Hardness and Hit Points. If an orichalcum item takes damage but isn't destroyed, it repairs itself completely 24 hours later."
+				"The most rare and valuable skymetal, orichalcum is coveted for its incredible time-related magical properties. This dull, coppery metal isn't as physically sturdy as adamantine, but orichalcum's time-bending properties protect it, granting it greater Hardness and Hit Points. If an orichalcum item takes damage but isn't destroyed, it repairs itself completely 24 hours later.",
+				{
+					"type": "table",
+					"source": "CRB",
+					"page": 579,
+					"labelRowIdx": [
+						0
+					],
+					"colSizes": [
+						2,
+						1,
+						1,
+						1
+					],
+					"colStyles": [
+						"text-left",
+						"text-center",
+						"text-center",
+						"text-center"
+					],
+					"rows": [
+						[
+							"Orichalcum Items",
+							"Hardness",
+							"HP",
+							"BT"
+						],
+						[
+							"{@b Thin Items}",
+							"",
+							"",
+							""
+						],
+						{
+							"type": "multiRow",
+							"rows": [
+								[
+									"{@indentFirst High-grade}",
+									"16",
+									"64",
+									"32"
+								]
+							]
+						},
+						[
+							"{@b Items}",
+							"",
+							"",
+							""
+						],
+						{
+							"type": "multiRow",
+							"rows": [
+								[
+									"{@indentFirst High-grade}",
+									"18",
+									"72",
+									"36"
+								]
+							]
+						},
+						[
+							"{@b Structures}",
+							"",
+							"",
+							""
+						],
+						{
+							"type": "multiRow",
+							"rows": [
+								[
+									"{@indentFirst High-grade}",
+									"35",
+									"140",
+									"70"
+								]
+							]
+						}
+					]
+				}
 			],
 			"generic": "G",
 			"variants": [
@@ -14502,9 +15122,7 @@
 						"amount": 10000,
 						"note": "per Bulk"
 					},
-					"entries": [
-						"Orichalcum Items Hardness HP BT Thin Items High-grade 16 64 32."
-					]
+					"entries": []
 				}
 			]
 		},
@@ -14936,6 +15554,7 @@
 		{
 			"name": "Piton",
 			"source": "CRB",
+			"page": 288,
 			"equipment": true,
 			"type": "Item",
 			"price": {
@@ -15740,6 +16359,7 @@
 		{
 			"name": "Rations (1 week)",
 			"source": "CRB",
+			"page": 288,
 			"equipment": true,
 			"type": "Item",
 			"price": {
@@ -15799,6 +16419,7 @@
 		{
 			"name": "Religious Symbol",
 			"source": "CRB",
+			"page": 288,
 			"equipment": true,
 			"type": "Item",
 			"bulk": "L",
@@ -15832,6 +16453,7 @@
 		{
 			"name": "Religious Text",
 			"source": "CRB",
+			"page": 288,
 			"equipment": true,
 			"type": "Item",
 			"price": {
@@ -15849,6 +16471,7 @@
 		{
 			"name": "Repair Kit",
 			"source": "CRB",
+			"page": 288,
 			"equipment": true,
 			"type": "Item",
 			"bulk": 1,
@@ -15886,6 +16509,7 @@
 		{
 			"name": "Replacement Cosmetics",
 			"source": "CRB",
+			"page": 288,
 			"equipment": true,
 			"type": "Item",
 			"price": {
@@ -15927,6 +16551,7 @@
 		{
 			"name": "Replacement Picks",
 			"source": "CRB",
+			"page": 288,
 			"equipment": true,
 			"type": "Item",
 			"bulk": null,
@@ -16929,6 +17554,7 @@
 		{
 			"name": "Rope (50 feet)",
 			"source": "CRB",
+			"page": 288,
 			"equipment": true,
 			"type": "Item",
 			"price": {
@@ -16967,6 +17593,7 @@
 		{
 			"name": "Sack (5)",
 			"source": "CRB",
+			"page": 288,
 			"equipment": true,
 			"type": "Item",
 			"price": {
@@ -16984,6 +17611,7 @@
 		{
 			"name": "Saddlebags",
 			"source": "CRB",
+			"page": 288,
 			"equipment": true,
 			"type": "Item",
 			"price": {
@@ -17200,6 +17828,7 @@
 		{
 			"name": "Scholarly Journal",
 			"source": "CRB",
+			"page": 288,
 			"equipment": true,
 			"type": "Item",
 			"level": 3,
@@ -17968,6 +18597,7 @@
 		{
 			"name": "Signal Whistle",
 			"source": "CRB",
+			"page": 288,
 			"equipment": true,
 			"type": "Item",
 			"price": {
@@ -18016,7 +18646,122 @@
 			],
 			"category": "Material",
 			"entries": [
-				"Silver weapons are a bane to creatures ranging from devils to werewolves. Silver items are less durable than steel items, and low-grade silver items are usually merely silver-plated."
+				"Silver weapons are a bane to creatures ranging from devils to werewolves. Silver items are less durable than steel items, and low-grade silver items are usually merely silver-plated.",
+				{
+					"type": "table",
+					"source": "CRB",
+					"page": 579,
+					"labelRowIdx": [
+						0
+					],
+					"colSizes": [
+						2,
+						1,
+						1,
+						1
+					],
+					"colStyles": [
+						"text-left",
+						"text-center",
+						"text-center",
+						"text-center"
+					],
+					"rows": [
+						[
+							"Silver Items",
+							"Hardness",
+							"HP",
+							"BT"
+						],
+						[
+							"{@b Thin Items}",
+							"",
+							"",
+							""
+						],
+						{
+							"type": "multiRow",
+							"rows": [
+								[
+									"{@indentFirst Low-grade}",
+									"3",
+									"12",
+									"6"
+								],
+								[
+									"{@indentFirst Standard-grade}",
+									"5",
+									"20",
+									"10"
+								],
+								[
+									"{@indentFirst High-grade}",
+									"8",
+									"32",
+									"16"
+								]
+							]
+						},
+						[
+							"{@b Items}",
+							"",
+							"",
+							""
+						],
+						{
+							"type": "multiRow",
+							"rows": [
+								[
+									"{@indentFirst Low-grade}",
+									"5",
+									"20",
+									"10"
+								],
+								[
+									"{@indentFirst Standard-grade}",
+									"7",
+									"28",
+									"14"
+								],
+								[
+									"{@indentFirst High-grade}",
+									"10",
+									"40",
+									"20"
+								]
+							]
+						},
+						[
+							"{@b Structures}",
+							"",
+							"",
+							""
+						],
+						{
+							"type": "multiRow",
+							"rows": [
+								[
+									"{@indentFirst Low-grade}",
+									"10",
+									"40",
+									"20"
+								],
+								[
+									"{@indentFirst Standard-grade}",
+									"14",
+									"56",
+									"28"
+								],
+								[
+									"{@indentFirst High-grade}",
+									"20",
+									"80",
+									"40"
+								]
+							]
+						}
+					]
+				}
 			],
 			"generic": "G",
 			"variants": [
@@ -18068,9 +18813,7 @@
 						"amount": 4500,
 						"note": "per Bulk"
 					},
-					"entries": [
-						"Silver Items Hardness HP BT Thin Items Low-grade 3 12 6 Standard-grade 5 20 10 High-grade 8 32 16."
-					]
+					"entries": []
 				}
 			]
 		},
@@ -18870,6 +19613,7 @@
 		{
 			"name": "Snare Kit",
 			"source": "CRB",
+			"page": 288,
 			"equipment": true,
 			"type": "Item",
 			"price": {
@@ -18946,6 +19690,7 @@
 		{
 			"name": "Soap",
 			"source": "CRB",
+			"page": 288,
 			"equipment": true,
 			"type": "Item",
 			"price": {
@@ -19042,6 +19787,7 @@
 		{
 			"name": "Spellbook (blank)",
 			"source": "CRB",
+			"page": 288,
 			"equipment": true,
 			"type": "Item",
 			"price": {
@@ -19492,6 +20238,7 @@
 		{
 			"name": "Spyglass",
 			"source": "CRB",
+			"page": 288,
 			"equipment": true,
 			"type": "Item",
 			"price": {
@@ -21183,6 +21930,7 @@
 		{
 			"name": "Survey Map",
 			"source": "CRB",
+			"page": 288,
 			"equipment": true,
 			"type": "Item",
 			"level": 3,
@@ -21261,6 +22009,7 @@
 		{
 			"name": "Tack",
 			"source": "CRB",
+			"page": 288,
 			"equipment": true,
 			"type": "Item",
 			"price": {
@@ -21506,6 +22255,7 @@
 		{
 			"name": "Ten-Foot Pole",
 			"source": "CRB",
+			"page": 288,
 			"equipment": true,
 			"type": "Item",
 			"price": {
@@ -21523,6 +22273,7 @@
 		{
 			"name": "Tent",
 			"source": "CRB",
+			"page": 288,
 			"equipment": true,
 			"type": "Item",
 			"hands": 2,
@@ -21566,6 +22317,7 @@
 		{
 			"name": "Thieves' Tools",
 			"source": "CRB",
+			"page": 288,
 			"equipment": true,
 			"type": "Item",
 			"price": {
@@ -21994,6 +22746,7 @@
 		{
 			"name": "Tool",
 			"source": "CRB",
+			"page": 288,
 			"equipment": true,
 			"type": "Item",
 			"category": "Gear",
@@ -22029,6 +22782,7 @@
 		{
 			"name": "Torch",
 			"source": "CRB",
+			"page": 288,
 			"equipment": true,
 			"type": "Item",
 			"price": {
@@ -23197,7 +23951,7 @@
 					"type": "ability",
 					"style": "compact",
 					"components": [
-						"Cast a Spell"
+						"{@action Cast a Spell}"
 					],
 					"frequency": "once per day, plus overcharge",
 					"trigger": null,
@@ -23448,6 +24202,7 @@
 		{
 			"name": "Waterskin",
 			"source": "CRB",
+			"page": 288,
 			"equipment": true,
 			"type": "Item",
 			"price": {
@@ -23970,6 +24725,7 @@
 		{
 			"name": "Writing Set",
 			"source": "CRB",
+			"page": 288,
 			"equipment": true,
 			"type": "Item",
 			"price": {
