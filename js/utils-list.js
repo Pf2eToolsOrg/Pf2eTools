@@ -214,7 +214,7 @@ const ListUtil = {
 	__mouseMoveId: 1,
 	async _pBindSublistResizeHandlers ($ele) {
 		const STORAGE_KEY = "SUBLIST_RESIZE";
-		const BORDER_SIZE = 3;
+		const BORDER_SIZE = 10;
 		const MOUSE_MOVE_ID = ListUtil.__mouseMoveId++;
 		const $doc = $(document);
 

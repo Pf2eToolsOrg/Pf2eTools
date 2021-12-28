@@ -661,7 +661,8 @@ class ArchetypesPage extends BaseComponent {
 		const hkShowFeats = () => {
 			if (this._state.isShowFeats) {
 				$(`.feat-view--inactive`).toggleClass("feat-view--active", true).toggleClass("feat-view--inactive", false);
-				const $featView = $(`.feat-view--resizable`)
+				const $featView = $(`.feat-view--resizable`);
+				// TODO: Improve this
 				if (!$featView.attr("style")) $featView.height(Math.min($featView.height() + 25, $(window).height() * 0.5));
 			} else {
 				$(`.feat-view--active`).toggleClass("feat-view--active", false).toggleClass("feat-view--inactive", true);

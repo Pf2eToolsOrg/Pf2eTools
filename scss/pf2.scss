@@ -1424,8 +1424,8 @@
 		background-color: #aaa4;
 		border: 1px solid rgba(204, 204, 204, 0.4);
 		position: absolute;
-		bottom: 0;
-		height: 1px;
+		bottom: 3px;
+		height: 2px;
 		width: 100%;
 		cursor: ns-resize;
 		user-select: none;
@@ -1441,7 +1441,12 @@
 
 .feat-view--inactive {
 	.feat-view {
-		display: none;
+		display: none !important;
+
+		// Disgusting Hack
+		+ .fltr__mini-view {
+			display: none !important;
+		}
 	}
 
 	.feat-view--resizable {

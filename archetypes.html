@@ -85,33 +85,30 @@
 					<button class="sort btn btn-default btn-xs ve-grow" data-sort="source">Source <span
 						class="caret_wrp"></span></button>
 				</div>
-				<ul class="list list--stats archetypes" style="flex: 4;"></ul>
+				<ul class="list list--stats archetypes" style="min-height: 30%;"></ul>
 
-				<!--TODO: Fix that stupid scrollbar, fuck css-->
-				<div class="feat-view mt-2" id="featlistcontainer" style="flex: 7; overflow: hidden;">
-					<div class="lst__form-top" id="feat-filter-search-group">
-						<div class="w-100 relative">
-							<input type="search" id="feat-lst__search" autocomplete="off" autocapitalize="off"
-								   spellcheck="false" class="search form-control lst__search lst__search--no-border-h">
-							<div id="feat-lst__search-glass" class="lst__wrp-search-glass no-events flex-vh-center"><span
-								class="glyphicon glyphicon-search"></span></div>
-							<div class="lst__wrp-search-visible no-events flex-vh-center feats"></div>
-						</div>
-						<button class="btn btn-default px-2" id="feat-reset"><span
-							class="glyphicon glyphicon-refresh"></span></button>
+				<div class="lst__form-top feat-view" id="feat-filter-search-group">
+					<div class="w-100 relative">
+						<input type="search" id="feat-lst__search" autocomplete="off" autocapitalize="off"
+							   spellcheck="false" class="search form-control lst__search lst__search--no-border-h">
+						<div id="feat-lst__search-glass" class="lst__wrp-search-glass no-events flex-vh-center"><span
+							class="glyphicon glyphicon-search"></span></div>
+						<div class="lst__wrp-search-visible no-events flex-vh-center feats"></div>
 					</div>
-					<div id="feat-filtertools" class="input-group input-group--bottom flex no-shrink">
-						<button class="col-5 sort btn btn-default btn-xs" data-sort="name">Name <span
-							class="caret_wrp"></span></button>
-						<button class="col-1-5 sort btn btn-default btn-xs" data-sort="level">Lvl. <span
-							class="caret_wrp"></span></button>
-						<button class="col-4 sort btn btn-default btn-xs" data-sort="prerequisites">Prerequisites <span
-							class="caret_wrp"></span></button>
-						<button class="col-1-5 sort btn btn-default btn-xs" data-sort="source">Source <span
-							class="caret_wrp"></span></button>
-					</div>
-					<ul class="list list--stats feats" style="margin-right: 0;"></ul>
+					<button class="btn btn-default px-2" id="feat-reset"><span
+						class="glyphicon glyphicon-refresh"></span></button>
 				</div>
+				<div id="feat-filtertools" class="input-group input-group--bottom flex no-shrink feat-view">
+					<button class="col-5 sort btn btn-default btn-xs" data-sort="name">Name <span
+						class="caret_wrp"></span></button>
+					<button class="col-1-5 sort btn btn-default btn-xs" data-sort="level">Lvl. <span
+						class="caret_wrp"></span></button>
+					<button class="col-4 sort btn btn-default btn-xs" data-sort="prerequisites">Prerequisites <span
+						class="caret_wrp"></span></button>
+					<button class="col-1-5 sort btn btn-default btn-xs" data-sort="source">Source <span
+						class="caret_wrp"></span></button>
+				</div>
+				<ul class="list list--stats feats feat-view" style="min-height: 30%;"></ul>
 			</div>
 
 			<div id="contentwrapper" class="view-col" style="flex: 6;">
