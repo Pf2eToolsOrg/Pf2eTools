@@ -5409,9 +5409,8 @@
 			"source": "CRB",
 			"page": 90,
 			"activity": {
-				"number": 1,
-				"unit": "varies",
-				"entry": "{@as 2}{@as 2}"
+				"number": 2,
+				"unit": "action"
 			},
 			"level": 6,
 			"featType": {
@@ -5432,7 +5431,7 @@
 			"prerequisites": "dragon instinct",
 			"requirements": "You haven't used this ability since you last Raged.",
 			"entries": [
-				"You breathe deeply and exhale powerful energy in a 30-foot cone or 60-foot line, dealing {@dice 1d6} damage per level. The area and damage type match those of your dragon (see Table 3\u20134."
+				"You breathe deeply and exhale powerful energy in a 30-foot cone or 60-foot line, dealing {@damage #$prompt_number:min=6,title=Character Level,default=6$#d6|1d6} damage per level. The area and damage type match those of your dragon (see {@table Dragon Instincts||Table 3\u20134}). If you used this ability in the last hour, the area and the damage are halved (15-foot cone or 30-foot line; {@damage floor((#$prompt_number:min=6,title=Character Level,default=6$#)/2)d6|1d6} damage for every 2 levels). Each creature in the area must attempt a basic Reflex save."
 			]
 		},
 		{
