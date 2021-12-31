@@ -2260,6 +2260,14 @@ function Renderer () {
 						};
 						this._recursiveRender(fauxEntry, textStack, meta);
 						break;
+					case "@optfeature":
+						fauxEntry.href.path = UrlUtil.PG_OPTIONAL_FEATURES;
+						fauxEntry.href.hover = {
+							page: UrlUtil.PG_OPTIONAL_FEATURES,
+							source,
+						};
+						this._recursiveRender(fauxEntry, textStack, meta);
+						break;
 					case "@variantrule":
 						fauxEntry.href.path = UrlUtil.PG_VARIANTRULES;
 						fauxEntry.href.hover = {
@@ -4672,11 +4680,14 @@ Renderer.language = {
 };
 
 Renderer.optionalFeature = {
-	getRenderedString (it, opts) {
+	// FIXME: Add prerequisite showing
+	getCompactRenderedString (it, opts) {
 		opts = opts || {};
 		return `
 		${Renderer.utils.getNameDiv(it)}
 		${Renderer.utils.getDividerDiv()}
+		${Renderer.utils.getTraitsDiv(it.traits)}
+		${it.traits ? Renderer.utils.getDividerDiv() : ""}
 		${Renderer.generic.getRenderedEntries(it)}
 		${opts.noPage ? "" : Renderer.utils.getPageP(it)}`;
 	},
@@ -5074,6 +5085,7 @@ Renderer.hover = {
 		"hazard": UrlUtil.PG_HAZARDS,
 		"deity": UrlUtil.PG_DEITIES,
 		"variantrule": UrlUtil.PG_VARIANTRULES,
+		"optfeature": UrlUtil.PG_OPTIONAL_FEATURES,
 	},
 
 	LinkMeta: function () {
@@ -6078,6 +6090,9 @@ Renderer.hover = {
 				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "tables.json", ["table", "tableGroup"], (listProp, item) => item.__prop = listProp);
 			case UrlUtil.PG_ACTIONS:
 				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "actions.json", "action");
+			// FIXME: WHY ARE YOU NOT WORKING???
+			case UrlUtil.PG_OPTIONAL_FEATURES:
+				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "optionalfeatures.json", "optionalfeature");
 			case UrlUtil.PG_ABILITIES:
 				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "abilities.json", "ability");
 			case UrlUtil.PG_LANGUAGES:
@@ -6724,6 +6739,8 @@ Renderer.hover = {
 				return Renderer.action.getCompactRenderedString;
 			case UrlUtil.PG_ABILITIES:
 				return Renderer.ability.getCompactRenderedString;
+			case UrlUtil.PG_OPTIONAL_FEATURES:
+				return Renderer.optionalfeature.getCompactRenderedString;
 			case UrlUtil.PG_LANGUAGES:
 				return Renderer.language.getCompactRenderedString;
 			case UrlUtil.PG_TRAITS:
@@ -7065,6 +7082,7 @@ Renderer._stripTagLayer = function (str) {
 					case "@familiar":
 					case "@familiarAbility":
 					case "@companion":
+					case "@optfeature":
 					case "@variantrule": {
 						const parts = Renderer.splitTagByPipe(text);
 						return parts.length >= 3 ? parts[2] : parts[0];

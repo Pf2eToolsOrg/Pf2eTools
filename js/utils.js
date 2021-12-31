@@ -1883,7 +1883,7 @@ UrlUtil.PG_ENCOUNTERGEN = "encountergen.html";
 UrlUtil.PG_LOOTGEN = "encountergen.html";
 UrlUtil.PG_CHANGELOG = "changelog.html";
 UrlUtil.PG_PLACES = "places.html";
-UrlUtil.PG_OPTIONAL_FEATURES = "optionalfeatures.html";
+UrlUtil.PG_OPTIONAL_FEATURES = "optionalFeatures.html";
 
 UrlUtil.URL_TO_HASH_BUILDER = {};
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_BESTIARY] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
@@ -2788,12 +2788,27 @@ DataUtil = {
 			otherSources: true,
 		},
 		_mergeCache: {},
-		async pMergeCopy (deityList, deity, options) {
-			return DataUtil.generic._pMergeCopy(DataUtil.deity, UrlUtil.PG_DEITIES, deityList, deity, options);
+		async pMergeCopy (ritualList, ritual, options) {
+			return DataUtil.generic._pMergeCopy(DataUtil.ritual, UrlUtil.PG_RITUALS, ritualList, ritual, options);
 		},
 
 		loadJSON: async function () {
 			return DataUtil.loadJSON(`${Renderer.get().baseUrl}data/rituals.json`);
+		},
+	},
+
+	optionalfeature: {
+		_MERGE_REQUIRES_PRESERVE: {
+			page: true,
+			otherSources: true,
+		},
+		_mergeCache: {},
+		async pMergeCopy (optionalFeatureList, optionalfeature, options) {
+			return DataUtil.generic._pMergeCopy(DataUtil.optionalfeature, UrlUtil.PG_OPTIONAL_FEATURES, optionalFeatureList, optionalfeature, options);
+		},
+
+		loadJSON: async function () {
+			return DataUtil.loadJSON(`${Renderer.get().baseUrl}data/optionalfeatures.json`);
 		},
 	},
 
@@ -4344,6 +4359,8 @@ BrewUtil = {
 				return ["place"];
 			case UrlUtil.PG_RITUALS:
 				return ["ritual"];
+			case UrlUtil.PG_OPTIONAL_FEATURES:
+				return ["optionalfeature"];
 			case UrlUtil.PG_VEHICLES:
 				return ["vehicle"];
 			case UrlUtil.PG_TRAITS:
@@ -4460,6 +4477,7 @@ BrewUtil = {
 			case "group":
 			case "domain":
 			case "skill":
+			case "optionalfeature":
 				return BrewUtil._genPDeleteGenericBrew(category);
 			case "subclass":
 				return BrewUtil._pDeleteSubclassBrew;
@@ -4553,7 +4571,7 @@ BrewUtil = {
 		obj.uniqueId = CryptUtil.md5(JSON.stringify(obj));
 	},
 
-	_STORABLE: ["variantrule", "table", "tableGroup", "book", "bookData", "ancestry", "heritage", "versatileHeritage", "background", "class", "subclass", "classFeature", "subclassFeature", "archetype", "feat", "companion", "familiar", "eidolon", "adventure", "adventureData", "hazard", "action", "creature", "condition", "item", "baseitem", "spell", "disease", "curse", "itemcurse", "ability", "deity", "language", "place", "ritual", "vehicle", "trait", "group", "domain", "skill"],
+	_STORABLE: ["variantrule", "table", "tableGroup", "book", "bookData", "ancestry", "heritage", "versatileHeritage", "background", "class", "subclass", "classFeature", "subclassFeature", "archetype", "feat", "companion", "familiar", "eidolon", "adventure", "adventureData", "hazard", "action", "creature", "condition", "item", "baseitem", "spell", "disease", "curse", "itemcurse", "ability", "deity", "language", "place", "ritual", "vehicle", "trait", "group", "domain", "skill", "optionalfeature"],
 	async pDoHandleBrewJson (json, page, pFuncRefresh) {
 		page = BrewUtil._PAGE || page;
 		await BrewUtil._lockHandleBrewJson.pLock();
@@ -4697,6 +4715,7 @@ BrewUtil = {
 			case UrlUtil.PG_PLACES:
 			case UrlUtil.PG_RITUALS:
 			case UrlUtil.PG_VEHICLES:
+			case UrlUtil.PG_OPTIONAL_FEATURES:
 			case UrlUtil.PG_TRAITS:
 				await (BrewUtil._pHandleBrew || handleBrew)(MiscUtil.copy(toAdd));
 				break;
