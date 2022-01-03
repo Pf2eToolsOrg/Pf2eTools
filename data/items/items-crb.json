@@ -16581,6 +16581,21 @@
 						"note": null
 					},
 					"entries": []
+				},
+				{
+					"type": "Concealable",
+					"level": 4,
+					"source": "LOPSG",
+					"page": 114,
+					"traits": [
+						"Uncommon"
+					],
+					"price": {
+						"coin": "gp",
+						"amount": 10,
+						"note": null
+					},
+					"entries": []
 				}
 			]
 		},
@@ -22338,14 +22353,25 @@
 			"hands": 2,
 			"category": "Gear",
 			"entries": [
-				"You need thieves' tools to {@action Pick a Lock||Pick Locks} or {@action Disable a Device||Disable Devices} (of some types) using the {@skill Thievery} skill. If your thieves' tools are broken, you can repair them by replacing the lock picks with {@item replacement picks} appropriate to your tools; this doesn't require using the {@action Repair} action. If you wear your thieves' tools, you can draw and replace them as part of the action that uses them. "
+				"You need thieves' tools to {@action Pick a Lock||Pick Locks} or {@action Disable a Device||Disable Devices} (of some types) using the {@skill Thievery} skill. If your thieves' tools are broken, you can repair them by replacing the lock picks with {@item replacement picks (generic)||replacement picks} appropriate to your tools; this doesn't require using the {@action Repair} action. If you wear your thieves' tools, you can draw and replace them as part of the action that uses them. "
 			],
 			"generic": "G",
 			"variants": [
 				{
 					"name": "Thieves' Tools",
 					"type": "Base",
-					"entries": []
+					"entries": [],
+					"_mod": {
+						"entries": [
+							{
+								"mode": "prependArr",
+								"items": [
+									"You need thieves' tools to {@action Pick a Lock||Pick Locks} or {@action Disable a Device||Disable Devices} (of some types) using the {@skill Thievery} skill. If your thieves' tools are broken, you can repair them by replacing the lock picks with {@item replacement picks} appropriate to your tools; this doesn't require using the {@action Repair} action. If you wear your thieves' tools, you can draw and replace them as part of the action that uses them. "
+								]
+							}
+						],
+						"entriesMode": "variant"
+					}
 				},
 				{
 					"type": "Infiltrator",
@@ -22358,7 +22384,46 @@
 					"hands": 2,
 					"entries": [
 						"Infiltrator thieves' tools add a +1 item bonus to checks to {@action Pick a Lock||Pick Locks} and {@action Disable a Device||Disable Devices}."
-					]
+					],
+					"_mod": {
+						"entries": [
+							{
+								"mode": "prependArr",
+								"items": [
+									"You need thieves' tools to {@action Pick a Lock||Pick Locks} or {@action Disable a Device||Disable Devices} (of some types) using the {@skill Thievery} skill. If your thieves' tools are broken, you can repair them by replacing the lock picks with {@item infiltrator replacement picks||replacement picks} appropriate to your tools; this doesn't require using the {@action Repair} action. If you wear your thieves' tools, you can draw and replace them as part of the action that uses them. "
+								]
+							}
+						],
+						"entriesMode": "variant"
+					}
+				},
+				{
+					"type": "Concealable",
+					"traits": [
+						"Uncommon"
+					],
+					"level": 4,
+					"price": {
+						"coin": "gp",
+						"amount": 80,
+						"note": null
+					},
+					"source": "LOPSG",
+					"page": 114,
+					"entries": [
+						"Smaller and made of stronger materials than most sets of thieves’ tools, the items in this kit are much easier to conceal. You gain a +1 item bonus to {@skill Stealth} checks to {@action Conceal an Object||Conceal} these tools. They otherwise function as {@item infiltrator thieves’ tools}."
+					],
+					"_mod": {
+						"entries": [
+							{
+								"mode": "prependArr",
+								"items": [
+									"You need thieves' tools to {@action Pick a Lock||Pick Locks} or {@action Disable a Device||Disable Devices} (of some types) using the {@skill Thievery} skill. If your thieves' tools are broken, you can repair them by replacing the lock picks with {@item concealable replacement picks|lopsg|replacement picks} appropriate to your tools; this doesn't require using the {@action Repair} action. If you wear your thieves' tools, you can draw and replace them as part of the action that uses them. "
+								]
+							}
+						],
+						"entriesMode": "variant"
+					}
 				}
 			]
 		},
