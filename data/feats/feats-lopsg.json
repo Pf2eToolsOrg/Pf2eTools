@@ -257,7 +257,7 @@
 			"requirements": "You have successfully identified the target with {@action Recall Knowledge} during this combat.",
 			"entries": [
 				"Identifying a creature is the first step in finding its weaknesses.",
-				"Attempt a {@action Strike} against the target; if successful, you deal an additional {@damage 1d6} precision damage. If you have succeeded on a {@action Recall Knowledge} check against the target during this combat and their creature type was previously recorded using Thorough Reports, you also deal 1 point of {@condition persistent damage ||persistent bleed damage}. The creature is then temporarily immune to Discerning {@action Strike} for 1 day."
+				"Attempt a {@action Strike} against the target; if successful, you deal an additional {@damage 1d6} precision damage. If you have succeeded on a {@action Recall Knowledge} check against the target during this combat and their creature type was previously recorded using {@feat Thorough Reports|LOWG}, you also deal 1 point of {@condition persistent damage ||persistent bleed damage}. The creature is then temporarily immune to Discerning Strike for 1 day."
 			]
 		},
 		{
@@ -392,7 +392,7 @@
 						"Critical Success": "The target takes {@damage 12d6} fire damage and falls {@condition prone} in an unoccupied adjacent square of your choice. The target is no longer {@condition grabbed}. The target and any creature adjacent to it also each take {@damage 1d6} {@condition persistent damage ||persistent fire damage}.",
 						"Success": "As critical success, but the target takes {@damage 6d6} fire damage instead of {@dice 12d6}, and creatures don't take {@condition persistent damage ||persistent fire damage}.",
 						"Failure": "The target is no longer {@condition grabbed}.",
-						"Critical Failure": "As failure, but you fall {@condition prone}. Scrolls Training The {@skill Society}'s Master of Scrolls, Kreighton Shaine (page 42), may be considered strange and absent-minded by his peers, but the elf venture-captain takes his duties quite seriously. Skilled in researching obscure subjects and unraveling inscrutable secrets, Kreighton teaches his students the value of an inquisitive mind."
+						"Critical Failure": "As failure, but you fall {@condition prone}."
 					}
 				}
 			]
@@ -473,8 +473,8 @@
 			],
 			"entries": [
 				"Stella Fane has perfected a technique for using playing cards as weapons that's one part sleight of hand and one part magic.",
-				"When you enter this stance, choose whether to treat playing cards (page 115) in your possession as daggers or darts; you can wield a playing card in all ways as the chosen weapon until the stance ends. As long as the majority of the deck remains in your possession, any cards that are lost or thrown can be found after 1 minute. Otherwise, the remaining cards are likely lost or destroyed.",
-				"A character who has this feat can enchant a single deck of playing cards as a magic weapon, etching fundamental and property runes directly onto the deck of cards."
+				"When you enter this stance, choose whether to treat {@item playing cards|lopsg} in your possession as {@item dagger||daggers} or {@item dart||darts}; you can wield a playing card in all ways as the chosen weapon until the stance ends. As long as the majority of the deck remains in your possession, any cards that are lost or thrown can be found after 1 minute. Otherwise, the remaining cards are likely lost or destroyed.",
+				"A character who has this feat can enchant a single deck of {@item playing cards|lopsg} as a magic weapon, etching fundamental and property runes directly onto the deck of cards."
 			]
 		},
 		{
@@ -713,7 +713,7 @@
 			"prerequisites": "{@feat Scrollmaster Dedication|LOCG}",
 			"entries": [
 				"You've learned a few tricks to ensure you find every last magic item and interesting {@trait magical} effect during your missions. You can cast {@spell detect magic} and read aura as innate spells at will. You can also cast {@spell locate} as an innate spell once per day, but only to locate magic items, not specific mundane objects or types of objects. If you could already cast spells, these spells are of the same tradition. Otherwise, they're arcane spells, you use Intelligence as your spellcasting ability, and you become trained in spell attack rolls and spell DCs for arcane spells.",
-				"When you cast {@spell detect magic} or read aura from this feat on an item or creature under the effect of a {@spell magic aura} spell or interact with an item under the effect of an {@spell item facade} spell, you gain a +2 circumstance bonus on your check to disbelieve the illusion."
+				"When you cast {@spell detect magic} or read aura from this feat on an item or creature under the effect of a {@spell magic aura} spell or interact with an item under the effect of an {@spell item facade} spell, you gain a +2 circumstance bonus on your check to {@quickref disbelieve the illusion|CRB|2|disbelieving illusions|0}."
 			]
 		},
 		{
@@ -1192,8 +1192,7 @@
 			],
 			"prerequisites": "{@feat Pathfinder Agent Dedication|LOWG}",
 			"entries": [
-				"You're familiar with the danger that lingering spirits can pose to an unwary adventurer, and you're particularly attuned to their presence. Even if you aren't {@action Search||Searching} in exploration mode, you can attempt a check to find haunts Pathfinder Agent Feats The following feats are available to characters with the Pathfinder Agent Dedication (Pathfinder Lost Omens World Guide 23)",
-				"that normally require you to {@action Search} for them. You still need to meet any other requirements to find a particular haunt."
+				"You're familiar with the danger that lingering spirits can pose to an unwary adventurer, and you're particularly attuned to their presence. Even if you aren't {@action Search||Searching} in exploration mode, you can attempt a check to find haunts that normally require you to {@action Search} for them. You still need to meet any other requirements to find a particular haunt."
 			]
 		},
 		{
@@ -1305,7 +1304,7 @@
 			],
 			"prerequisites": "{@feat Scrollmaster Dedication|LOCG}",
 			"entries": [
-				"You gain the {@spell transcribe moment|LOPSG} focus spell (page 45). If you don't already have one, you gain a focus pool of 1 Focus Point, which you can {@action Refocus} by spending 10 minutes to study a text or record notes on your recent experiences."
+				"You gain the {@spell transcribe moment|LOPSG} focus spell. If you don't already have one, you gain a focus pool of 1 Focus Point, which you can {@action Refocus} by spending 10 minutes to study a text or record notes on your recent experiences."
 			]
 		},
 		{

@@ -5428,7 +5428,7 @@
 					]
 				},
 				"Your character starts out with 15 gold pieces (150 silver pieces) to spend on any common items from this chapter. Items with an uncommon rarity can be purchased only if you have special access from abilities you selected during character creation or your GM gives you permission to purchase them.",
-				"Once you've purchased your starting items, there are three main ways to gain new items and equipment: you can find them during an adventure, make them using the Crafting skill, or purchase them from a merchant.",
+				"Once you've purchased your starting items, there are three main ways to gain new items and equipment: you can find them during an adventure, make them using the {@skill Crafting} skill, or purchase them from a merchant.",
 				{
 					"type": "pf2-h2",
 					"page": 271,
@@ -7735,7 +7735,7 @@
 								"Certain feats, class features, weapon runes, and other effects can grant you additional benefits when you make a Strike with certain weapons and get a critical success. This is called a critical specialization effect. The exact effect depends on which weapon group your weapon belongs to, as listed below. You can always decide not to add the critical specialization effect of your weapon.",
 								"{@b Axe:} Choose one creature adjacent to the initial target and within reach. If its AC is lower than your attack roll result for the critical hit, you deal damage to that creature equal to the result of the weapon damage die you rolled (including extra dice for its potency rune, if any). This amount isn't doubled, and no bonuses or other additional dice apply to this damage.",
 								"{@b Bomb:} Increase the radius of the bomb's splash damage (if any) to 10 feet.",
-								"{@b Bow:} If the target of the critical hit is adjacent to a surface, it gets stuck to that surface by the missile. The target is immobilized and must spend an Interact action to attempt a DC 10 Athletics check to pull the missile free; it can't move from its space until it succeeds. The creature doesn't become stuck if it is incorporeal, is liquid (like a water elemental or some oozes), or could otherwise escape without effort.",
+								"{@b Bow:} If the target of the critical hit is adjacent to a surface, it gets stuck to that surface by the missile. The target is immobilized and must spend an Interact action to attempt a DC 10 {@skill Athletics} check to pull the missile free; it can't move from its space until it succeeds. The creature doesn't become stuck if it is incorporeal, is liquid (like a water elemental or some oozes), or could otherwise escape without effort.",
 								"{@b Brawling:} The target must succeed at a Fortitude save against your class DC or be slowed 1 until the end of your next turn.",
 								"{@b Club:} You knock the target away from you up to 10 feet (you choose the distance). This is {@quickref forced movement||3|forced movement}.",
 								"{@b Dart:} The target takes {@dice 1d6} {@condition Persistent Damage|CRB|persistent bleed damage}. You gain an item bonus to this bleed damage equal to the weapon's item bonus to attack rolls.",
@@ -8317,7 +8317,7 @@
 											]
 										},
 										[
-											"{@item Religious text",
+											"{@item Religious text}",
 											"1 gp",
 											"L",
 											"1"
@@ -8600,8 +8600,8 @@
 								"{@b Alchemist's Tools:} These beakers and chemicals can be used to set up a mobile alchemical laboratory. Expanded alchemist's tools give a +1 item bonus to Crafting checks to create alchemical items. When you carry the tools from place to place, you keep many of the components handy on your person, in pockets or bandoliers.",
 								"{@b Artisan's Tools:} You need these tools to create items from raw materials with the Craft skill. Sterling artisan's tools give you a +1 item bonus to the check. Different sets are needed for different work, as determined by the GM; for example, blacksmith's tools differ from woodworker's tools.",
 								"{@b Backpack:} A backpack holds up to 4 Bulk of items. If you're carrying or stowing the pack rather than wearing it on your back, its bulk is light instead of negligible.",
-								"{@b Basic Crafter's Book:} This book contains the formulas (page 293) for Crafting the common items in this chapter.",
-								"{@b Caltrops:} These four-pronged metal spikes can cause damage to a creature's feet. You can scatter caltrops in an empty square adjacent to you with an Interact action. The first creature that moves into that square must succeed at a DC 14 Acrobatics check or take 1d4 piercing damage and 1 persistent bleed damage. A creature taking persistent bleed damage from caltrops takes a \u20135-foot penalty to its Speed. Spending an Interact action to pluck the caltrops free reduces the DC to stop the bleeding. Once a creature takes damage from caltrops, enough caltrops are ruined that other creatures moving into the square are safe.",
+								"{@b Basic Crafter's Book:} This book contains the {@quickref formulas|CRB|1|formulas|0} for Crafting the common items in this chapter.",
+								"{@b Caltrops:} These four-pronged metal spikes can cause damage to a creature's feet. You can scatter caltrops in an empty square adjacent to you with an Interact action. The first creature that moves into that square must succeed at a DC 14 {@skill Acrobatics} check or take 1d4 piercing damage and 1 persistent bleed damage. A creature taking persistent bleed damage from caltrops takes a \u20135-foot penalty to its Speed. Spending an Interact action to pluck the caltrops free reduces the DC to stop the bleeding. Once a creature takes damage from caltrops, enough caltrops are ruined that other creatures moving into the square are safe.",
 								"Deployed caltrops can be salvaged and reused if no creatures took damage from them. Otherwise, enough caltrops are ruined that they can't be salvaged.",
 								"{@b Candle:} A lit candle sheds dim light in a 10-foot radius.",
 								"{@b Chest:} A wooden chest can hold up to 8 Bulk of items.",
@@ -8628,9 +8628,9 @@
 								"A bull's-eye lantern emits its light in a 60‑foot cone (and dim light in the next 60 feet).",
 								"A hooded lantern sheds light in a 30‑foot radius (and dim light in the next 30 feet) and is equipped with shutters, which you can close to block the light.",
 								"Closing or opening the shutters takes an Interact action.",
-								"{@b Lock:} Picking a poor lock requires two successful DC 15 Thievery checks, a simple lock requires three successful DC 20 Thievery checks, an average lock requires four successes at DC 25, a good lock requires five successes at DC 30, and a superior lock six successes at DC 40.",
+								"{@b Lock:} Picking a poor lock requires two successful DC 15 {@skill Thievery} checks, a simple lock requires three successful DC 20 {@skill Thievery} checks, an average lock requires four successes at DC 25, a good lock requires five successes at DC 30, and a superior lock six successes at DC 40.",
 								"{@b Magnifying Glass:} This quality handheld lens gives you a +1 item bonus to {@skill Perception} checks to notice minute details of documents, fabric, and the like.",
-								"{@b Manacles:} You can manacle someone who is willing or otherwise at your mercy as an exploration activity taking 10\u201330 seconds depending on the creature's size and how many manacles you apply. A two-legged creature with its legs bound takes a \u201315-foot circumstance penalty to its Speeds, and a two-handed creature with its wrists bound has to succeed at a DC {@flatDC 5} flat check any time it uses a manipulate action or else that action fails. This DC may be higher depending on how tightly the manacles constrain the hands. A creature bound to a stationary object is immobilized. For creatures with more or fewer limbs, the GM determines what effect manacles have, if any. Freeing a creature from poor manacles requires two successful DC 17 Thievery checks, simple manacles requires three successes at DC 22, average manacles require four successes at DC 27, good manacles require five successes at DC 32, and superior manacles require six successes at DC 42.",
+								"{@b Manacles:} You can manacle someone who is willing or otherwise at your mercy as an exploration activity taking 10\u201330 seconds depending on the creature's size and how many manacles you apply. A two-legged creature with its legs bound takes a \u201315-foot circumstance penalty to its Speeds, and a two-handed creature with its wrists bound has to succeed at a DC {@flatDC 5} flat check any time it uses a manipulate action or else that action fails. This DC may be higher depending on how tightly the manacles constrain the hands. A creature bound to a stationary object is immobilized. For creatures with more or fewer limbs, the GM determines what effect manacles have, if any. Freeing a creature from poor manacles requires two successful DC 17 {@skill Thievery} checks, simple manacles requires three successes at DC 22, average manacles require four successes at DC 27, good manacles require five successes at DC 32, and superior manacles require six successes at DC 42.",
 								"{@b Material Component Pouch:} This pouch contains material components for those spells that require them.",
 								"Though the components are used up over time, you can refill spent components during your daily preparations.",
 								"{@b Musical Instrument:} Handheld instruments include bagpipes, a small set of chimes, small drums, fiddles and viols, flutes and recorders, small harps, lutes, trumpets, and similarly sized instruments. The GM might rule that an especially large handheld instrument (like a tuba) has greater Bulk. Heavy instruments such as large drums, a full set of chimes, and keyboard instruments are less portable and generally need to be stationary while played.",
@@ -8641,13 +8641,13 @@
 								"{@b Religious Symbol:} This piece of wood or silver is emblazoned with an image representing a deity. Some divine spellcasters, such as clerics, can use a religious symbol of their deity as a divine focus to use certain abilities and cast some spells. A religious symbol must be held in one hand to use it.",
 								"{@b Religious Text:} This manuscript contains scripture of a particular religion. Some divine spellcasters, such as clerics, can use a religious text as a divine focus to use certain abilities and cast some spells. A religious text must be held in one hand to use it.",
 								"{@b Repair Kit:} A repair kit allows you to perform simple repairs while traveling.",
-								"It contains a portable anvil, tongs, woodworking tools, a whetstone, and oils for conditioning leather and wood. You can use a repair kit to Repair items using the Crafting skill. A superb repair kit gives you a +1 item bonus to the check.",
+								"It contains a portable anvil, tongs, woodworking tools, a whetstone, and oils for conditioning leather and wood. You can use a repair kit to Repair items using the {@skill Crafting} skill. A superb repair kit gives you a +1 item bonus to the check.",
 								"{@b Sack:} A sack can hold up to 8 Bulk worth of items. A sack containing 2 Bulk or less can be worn on the body, usually tucked into a belt. You can carry a sack with one hand, but must use two hands to transfer items in and out.",
 								"{@b Saddlebags:} Saddlebags come in a pair. Each can hold up to 3 Bulk of items. The Bulk value given is for saddlebags worn by a mount. If you are carrying or stowing saddlebags, they count as 1 Bulk instead of light Bulk.",
 								"{@b Scholarly Journal:} Scholarly journals are uncommon.",
 								"Each scholarly journal is a folio on a very specific topic, such as vampires or the history of a single town or neighborhood of a city. If you spend 1 minute referencing an academic journal before attempting a skill check to {@action Recall Knowledge} about the subject, you gain a +1 item bonus to the check. A compendium of journals costs five times as much as a single journal and requires both hands to use; each compendium contains several journals and grants its bonus on a broader topic, such as all undead or a whole city. The GM determines what scholarly journals are available in any location.",
 								"{@b Signal Whistle:} When sounded, a signal whistle can be heard clearly up to half a mile away across open terrain.",
-								"{@b Snare Kit:} This kit contains tools and materials for creating snares. A snare kit allows you to Craft snares using the Crafting skill. A specialist snare kit gives you a +1 item bonus to the check.",
+								"{@b Snare Kit:} This kit contains tools and materials for creating snares. A snare kit allows you to Craft snares using the {@skill Crafting} skill. A specialist snare kit gives you a +1 item bonus to the check.",
 								"{@b Spellbook:} A spellbook holds the written knowledge necessary to learn and prepare various spells, a necessity for wizards (who typically get one for free) and a useful luxury for other spellcasters looking to learn additional spells. Each spellbook can hold up to 100 spells. The Price listed is for a blank spellbook.",
 								"{@b Spyglass:} A typical spyglass lets you see eight times farther than normal. A fine spyglass adds a +1 item bonus to {@skill Perception} checks to notice details at a distance.",
 								"{@b Survey Map:} Maps are uncommon.",
@@ -9080,7 +9080,10 @@
 										"If an item has multiple types of different levels, each type has its own formula, and you need the formula for the specific type of item you want to Craft. For example, {@i if you have a formula for a type I bag of holding but not for a type II bag of holding, you must acquire a separate formula to Craft a type II bag of holding.}"
 									]
 								}
-							]
+							],
+							"data": {
+								"quickref": 2
+							}
 						},
 						{
 							"type": "pf2-h2",
@@ -9368,7 +9371,10 @@
 										}
 									]
 								}
-							]
+							],
+							"data": {
+								"quickref": 2
+							}
 						},
 						{
 							"type": "pf2-h2",
@@ -9627,7 +9633,10 @@
 										}
 									]
 								}
-							]
+							],
+							"data": {
+								"quickref": 2
+							}
 						},
 						{
 							"type": "pf2-h2",
@@ -9804,10 +9813,7 @@
 								"Although spellbooks play a central role in a wizard's daily routine, other prepared spellcasting classes have been known to use spellbooks to record uncommon or even rare spells. Such a resource allows a caster to treat the spell like any other common spell, so long as they can reference the book during their daily preparations."
 							]
 						}
-					],
-					"data": {
-						"quickref": 3
-					}
+					]
 				},
 				{
 					"type": "pf2-h2",
@@ -9870,9 +9876,12 @@
 							"page": 298,
 							"name": "Disbelieving Illusions",
 							"entries": [
-								"Sometimes illusions allow an affected creature a chance to disbelieve the spell, which lets the creature effectively ignore the spell if it succeeds at doing so. This usually happens when a creature Seeks or otherwise spends actions to engage with the illusion, comparing the result of its Perception check (or another check or saving throw, at the GM's discretion) to the caster's spell DC. Mental illusions typically provide rules in the spell's description for disbelieving the effect (often allowing the affected creature to attempt a Will save).",
-								"If the illusion is visual, and a creature interacts with the illusion in a way that would prove it is not what it seems, the creature might know that an illusion is present, but it still can't ignore the illusion without successfully disbelieving it. For instance, if a character is pushed through the illusion of a door, they will know that the door is an illusion, but they still can't see through it. Disbelieving an illusion makes it and those things it blocks seem hazy and indistinct, so even in the case where a visual illusion is disbelieved, it may, at the GM's discretion, block vision enough to make those on the other side concealed.."
-							]
+								"Sometimes illusions allow an affected creature a chance to disbelieve the spell, which lets the creature effectively ignore the spell if it succeeds at doing so. This usually happens when a creature {@action Seek||Seeks} or otherwise spends actions to engage with the illusion, comparing the result of its {@skill Perception} check (or another check or saving throw, at the GM's discretion) to the caster's spell DC. {@trait Mental} illusions typically provide rules in the spell's description for disbelieving the effect (often allowing the affected creature to attempt a Will save).",
+								"If the illusion is {@trait visual}, and a creature interacts with the illusion in a way that would prove it is not what it seems, the creature might know that an illusion is present, but it still can't ignore the illusion without successfully disbelieving it. For instance, if a character is pushed through the illusion of a door, they will know that the door is an illusion, but they still can't see through it. Disbelieving an illusion makes it and those things it blocks seem hazy and indistinct, so even in the case where a visual illusion is disbelieved, it may, at the GM's discretion, block vision enough to make those on the other side concealed.."
+							],
+							"data": {
+								"quickref": 3
+							}
 						},
 						{
 							"type": "pf2-h3",
@@ -9903,10 +9912,7 @@
 								"As with other checks and DCs, bonuses can increase the result of your spell attack roll or your spell DC, and penalties can decrease the result of your spell attack roll or your spell DC. See pages 444\u2013445 in Chapter 9: Playing the Game for more information about modifiers, bonuses, and penalties."
 							]
 						}
-					],
-					"data": {
-						"quickref": 3
-					}
+					]
 				},
 				{
 					"type": "pf2-h2",
@@ -13883,7 +13889,7 @@
 										"{@b {@action Impersonate}:} You use Deception and usually a disguise kit to create a disguise (page 245).",
 										"{@b {@action Learn a Spell}:} You use the skill corresponding to the spell's tradition to gain access to a new spell (page 238).",
 										"{@b {@action Make an Impression}:} You use Diplomacy to make a good impression on someone (page 246).",
-										"{@b {@action Repair}:} With a repair kit and the Crafting skill, you fix a damaged item (page 243).",
+										"{@b {@action Repair}:} With a repair kit and the {@skill Crafting} skill, you fix a damaged item (page 243).",
 										"{@b {@action Sense Direction}:} You use Survival to get a sense of where you are or determine the cardinal directions (page 252).",
 										"{@b {@action Squeeze}:} Using Acrobatics, you squeeze though very tight spaces (page 241).",
 										"{@b {@action Track}:} You use Survival to find and follow creatures' tracks (page 252).",
@@ -13979,7 +13985,7 @@
 									"name": "SKILL DOWNTIME ACTIVITIES",
 									"entries": [
 										"Chapter 4: Skills includes several downtime activities, which are summarized here.",
-										"{@b {@action Craft}:} Using the Crafting skill, you can create items from raw materials (page 244).",
+										"{@b {@action Craft}:} Using the {@skill Crafting} skill, you can create items from raw materials (page 244).",
 										"{@b {@action Create Forgery}:} You forge a document (page 251).",
 										"{@b {@action Earn Income}:} You earn money, typically using Crafting, Lore, or Performance (page 236).",
 										"{@b {@action Subsist}:} You find food and shelter in the wilderness or within a settlement (page 240).",
@@ -16267,7 +16273,7 @@
 											"page": 509,
 											"name": "Other Types of Treasure",
 											"entries": [
-												"Not all treasure has to be items or currency. Crafters can use the Crafting skill to turn raw materials directly into items instead of buying those items with coins. Knowledge can expand a character's abilities, and formulas make good treasure for item-crafting characters. A spellcaster might get access to new spells from an enemy's spellbook or an ancient scholar, while a monk might retrain techniques with rarer ones learned from a master on a remote mountaintop."
+												"Not all treasure has to be items or currency. Crafters can use the {@skill Crafting} skill to turn raw materials directly into items instead of buying those items with coins. Knowledge can expand a character's abilities, and formulas make good treasure for item-crafting characters. A spellcaster might get access to new spells from an enemy's spellbook or an ancient scholar, while a monk might retrain techniques with rarer ones learned from a master on a remote mountaintop."
 											]
 										},
 										{
@@ -18578,7 +18584,7 @@
 						"Alchemical items are not magical. They instead use the properties of volatile chemicals, exotic minerals, potent plants, and other substances, collectively referred to as alchemical reagents. As such, alchemical items don't radiate magical auras, and they can't be dismissed or affected by {@spell dispel magic}. Their effects last for a set amount of time or until they are countered in some way, typically physically.",
 						"Sometimes the reactions of alchemical reagents create effects that seem magical, and at other times they straddle the line between purely reactive and the inexplicable.",
 						"Alchemists can infuse reagents with some of their own essence, allowing them to efficiently create short-lived alchemical items at no monetary cost. Even in these cases, alchemical items don't radiate magic auras, instead using the alchemist's infused essence as one additional catalyst for the item's alchemical effects.",
-						"Rules for creating alchemical items are found in the Craft activity on page 244, and you must have the Alchemical Crafting skill feat to use Crafting to create alchemical items. Critically failing a Crafting check to make alchemical items often causes a dangerous effect, such as an explosion for a bomb or accidental exposure for a poison, in addition to losing some of the materials.",
+						"Rules for creating alchemical items are found in the Craft activity on page 244, and you must have the Alchemical {@skill Crafting} skill feat to use Crafting to create alchemical items. Critically failing a Crafting check to make alchemical items often causes a dangerous effect, such as an explosion for a bomb or accidental exposure for a poison, in addition to losing some of the materials.",
 						"Some alchemical items have additional requirements beyond those stated in the Craft activity; these items list their requirements in a Craft Requirements entry.",
 						"All alchemical items have the alchemical trait. Most also have the consumable trait, which means that the item is used up once activated. The bomb, elixir, and poison traits indicate special categories of alchemical items, each of which is described on the following pages. Alchemical items without any of these traits are called alchemical tools, and are described further on page 554.",
 						"This section contains the following subcategories.",
@@ -19394,7 +19400,7 @@
 					"page": 589,
 					"name": "Snares",
 					"entries": [
-						"Snares are small annoyances and simple traps you can create using the Crafting skill if you have the Snare Crafting feat (page 266). Creating a snare requires a snare kit (page 291) and an amount of raw materials worth the amount listed in the snare's Price entry. Unlike other items, found snares cannot be collected or sold in their complete form. Snares have the snare trait.",
+						"Snares are small annoyances and simple traps you can create using the {@skill Crafting} skill if you have the Snare Crafting feat (page 266). Creating a snare requires a snare kit (page 291) and an amount of raw materials worth the amount listed in the snare's Price entry. Unlike other items, found snares cannot be collected or sold in their complete form. Snares have the snare trait.",
 						{
 							"type": "pf2-h3",
 							"page": 589,

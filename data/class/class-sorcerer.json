@@ -360,7 +360,70 @@
 			"classSource": "CRB",
 			"level": 1,
 			"entries": [
-				"Choose a bloodline that gives you your spellcasting talent. This choice determines the type of spells you cast and the spell list you choose them from, additional spells you learn, and additional trained skills. You also gain Focus Points and special focus spells based on your bloodline. The bloodlines presented in this book are as follows."
+				"Choose a bloodline that gives you your spellcasting talent. This choice determines the type of spells you cast and the spell list you choose them from, additional spells you learn, and additional trained skills. You also gain Focus Points and special focus spells based on your bloodline.",
+				{
+					"type": "pf2-h4",
+					"name": "Bloodline Spells",
+					"entries": [
+						"Your bloodline grants you bloodline spells, special spells unique to your lineage. Bloodline spells are a type of focus spell. It costs 1 Focus Point to cast a focus spell, and you start with a focus pool of 1 Focus Point. You refill your focus pool during your daily preparations, and you can regain 1 Focus Point by spending 10 minutes using the {@action Refocus} activity. Unlike other characters, you don’t need to do anything specific to {@action Refocus}, as the power flowing through your veins naturally replenishes your focus pool.",
+						"Focus spells are automatically heightened to half your level rounded up. Focus spells don’t require spell slots, nor can you cast them using spell slots. Taking feats can give you more focus spells and increase the size of your focus pool, though your focus pool can never hold more than 3 points. The full rules can be found {@quickref here|CRB|2|focus spells|0}."
+					]
+				},
+				{
+					"type": "pf2-h4",
+					"name": "Reading a Bloodline Entry",
+					"entries": [
+						"A bloodline entry contains the following information.",
+						{
+							"type": "pf2-options",
+							"skipSort": true,
+							"items": [
+								{
+									"type": "item",
+									"name": "Spell List",
+									"entries": [
+										"You use this magical tradition and spell list."
+									]
+								},
+								{
+									"type": "item",
+									"name": "Bloodline Skills",
+									"entries": [
+										"You become trained in the listed skills."
+									]
+								},
+								{
+									"type": "item",
+									"name": "Granted Spells",
+									"entries": [
+										"You automatically add the spells listed here to your spell repertoire, as described in {@classFeature Spell Repertoire|Sorcerer||1}. At 1st level, you gain a cantrip and a 1st-level spell. You learn the other spells on the list as soon as you gain the ability to cast sorcerer spells of that level."
+									]
+								},
+								{
+									"type": "item",
+									"name": "Bloodline Spells",
+									"entries": [
+										"You automatically gain the initial bloodline spell at 1st level and can gain more by selecting the {@feat Advanced Bloodline} and {@feat Greater Bloodline} feats."
+									]
+								},
+								{
+									"type": "item",
+									"name": "Blood Magic",
+									"entries": [
+										"Whenever you cast a bloodline spell using Focus Points or a granted spell from your bloodline using a spell slot, you gain a blood magic effect. If the blood magic offers a choice, make it before resolving the spell. The blood magic effect occurs after resolving any checks for the spell’s initial effects and, against a foe, applies only if the spell is a successful attack or the foe fails its saving throw. If the spell has an area, you must designate yourself or one target in the area when you cast the spell to be the target of the blood magic effect. All references to spell level refer to the level of the spell you cast."
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"type": "pf2-brown-box",
+					"name": "THE BLESSED AND THE DAMNED",
+					"entries": [
+						"Many bloodlines are tied to certain types of creatures, and the reputations of those creatures might color how people see you. If you have the blood of demons, people might fear you; conversely, people of good faiths might assume angelic blood puts you on their side. These preconceptions aren’t necessarily true. Having a bloodline of creatures of a certain alignment doesn’t have any effect on your own alignment unless you want it to; your magic is disconnected from its source."
+					]
+				}
 			]
 		},
 		{

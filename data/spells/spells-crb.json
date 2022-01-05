@@ -1347,11 +1347,11 @@
 			"sustain": true,
 			"dismiss": false,
 			"entries": [
-				"You create a brief vision of immense wealth filling the spell's area. Each creature within 20 feet of the area that could be enticed by material wealth must attempt a Will saving throw. A creature that enters the area automatically disbelieves the illusion, and disbelieving the illusion ends any {@condition fascinated} condition imposed by the spell. As long as you {@action Sustain a Spell||Sustain the Spell}, other creatures react to the treasure like they would any other illusion, but they are not at risk of becoming {@condition fascinated}.",
+				"You create a brief vision of immense wealth filling the spell's area. Each creature within 20 feet of the area that could be enticed by material wealth must attempt a Will saving throw. A creature that enters the area automatically {@quickref disbelieves the illusion|CRB|2|disbelieving illusions|0}, and disbelieving the illusion ends any {@condition fascinated} condition imposed by the spell. As long as you {@action Sustain a Spell||Sustain the Spell}, other creatures react to the treasure like they would any other illusion, but they are not at risk of becoming {@condition fascinated}.",
 				{
 					"type": "successDegree",
 					"entries": {
-						"Critical Success": "The creature disbelieves the illusion and is unaffected by it.",
+						"Critical Success": "The creature {@quickref disbelieves the illusion|CRB|2|disbelieving illusions|0} and is unaffected by it.",
 						"Success": "The creature is {@condition fascinated} by the wealth until it has completed its first action on its next turn.",
 						"Failure": "The creature is {@condition fascinated} by the illusion."
 					}
@@ -8132,7 +8132,7 @@
 			"sustain": true,
 			"dismiss": false,
 			"entries": [
-				"The target appears to fall down dead, though it actually turns {@condition invisible}. Its illusory corpse remains where it fell, complete with a believable fatal wound. This illusion looks and feels like a dead body. If the target's death seems absurd\u2014for instance, a barbarian at full health appears to be slain by 2 damage\u2014the GM can grant the attacker an immediate {@skill Perception} check to disbelieve the illusion. If the target uses {@condition hostile} actions, the spell ends. This ends the entire spell, so the illusory corpse disappears too."
+				"The target appears to fall down dead, though it actually turns {@condition invisible}. Its illusory corpse remains where it fell, complete with a believable fatal wound. This illusion looks and feels like a dead body. If the target's death seems absurd\u2014for instance, a barbarian at full health appears to be slain by 2 damage\u2014the GM can grant the attacker an immediate {@skill Perception} check to {@quickref disbelieve the illusion|CRB|2|disbelieving illusions|0}. If the target uses {@condition hostile} actions, the spell ends. This ends the entire spell, so the illusory corpse disappears too."
 			],
 			"heightened": {
 				"heightened": true,
@@ -9861,7 +9861,7 @@
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
-				"You create a false image that fools any attempts to scry on an area. Any {@spell scrying} spell sees, hears, smells, and otherwise detects whatever you wish within the area, rather than what is actually in the area. You can {@action Sustain a Spell||Sustain the Spell} each round to change the illusion as you desire, including playing out a complex scene. If the {@spell scrying} spell is of a higher level than false vision, the scryer can attempt a {@skill Perception} check to disbelieve the illusion, though even if they're successful, they can't learn what's truly going on in the area."
+				"You create a false image that fools any attempts to scry on an area. Any {@spell scrying} spell sees, hears, smells, and otherwise detects whatever you wish within the area, rather than what is actually in the area. You can {@action Sustain a Spell||Sustain the Spell} each round to change the illusion as you desire, including playing out a complex scene. If the {@spell scrying} spell is of a higher level than false vision, the scryer can attempt a {@skill Perception} check to {@quickref disbelieve the illusion|CRB|2|disbelieving illusions|0}, though even if they're successful, they can't learn what's truly going on in the area."
 			],
 			"heightened": {
 				"heightened": false,
@@ -12676,7 +12676,7 @@
 			"entries": [
 				"The target consistently detects one thing as another, can't detect something that's there, or detects something that's not there, though it doesn't alter their beliefs. You choose which of these effects applies, and you determine the specifics of the hallucination. For example, you could make the target see all elves as humans, be unable to detect the presence of their brother, see their beloved pocket watch on their person even when it isn't, or see a tower in the center of town.",
 				"The target can attempt an initial Will save, with effects below.",
-				"They also receive a Will save to disbelieve the hallucination every time they {@action Seek} or directly interact with the hallucination. For example, the target could attempt to disbelieve the hallucination each time they interacted with an elf, bumped into their brother accidentally, tried to check their pocket watch, or studied the tower. The target can attempt to disbelieve with a large circumstance bonus in situations determined by the GM, such as if the target attempted to climb the nonexistent tower.",
+				"They also receive a Will save to {@quickref disbelieve the hallucination|CRB|2|disbelieving illusions|0} every time they {@action Seek} or directly interact with the hallucination. For example, the target could attempt to {@quickref disbelieve the hallucination|CRB|2|disbelieving illusions|0} each time they interacted with an elf, bumped into their brother accidentally, tried to check their pocket watch, or studied the tower. The target can attempt to disbelieve with a large circumstance bonus in situations determined by the GM, such as if the target attempted to climb the nonexistent tower.",
 				{
 					"type": "successDegree",
 					"entries": {
@@ -12757,7 +12757,7 @@
 			"dismiss": false,
 			"entries": [
 				"You create an illusion that causes natural terrain to look, sound, feel, and smell like a different kind of terrain. This doesn't disguise any structures or creatures in the area.",
-				"Any creature that touches the illusion or uses the {@action Seek} action to examine it can attempt to disbelieve your illusion."
+				"Any creature that touches the illusion or uses the {@action Seek} action to examine it can attempt to {@quickref disbelieve your illusion|CRB|2|disbelieving illusions|0}."
 			],
 			"heightened": {
 				"heightened": true,
@@ -13578,7 +13578,7 @@
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
-				"You mime creating an {@condition invisible 10}-foot-by-10-foot stretch of wall adjacent to you and within your reach. The wall is solid to those creatures that don't disbelieve it, even incorporeal creatures. You and your allies can voluntarily believe the wall exists to continue to treat it as solid, for instance to climb onto it. A creature that disbelieves the illusion is temporarily immune to your house of imaginary walls for 1 minute. The wall doesn't block creatures that didn't see your visual performance, nor does it block objects. The wall has AC 10, Hardness equal to double the spell's level, and HP equal to quadruple the spell's level."
+				"You mime creating an {@condition invisible 10}-foot-by-10-foot stretch of wall adjacent to you and within your reach. The wall is solid to those creatures that don't disbelieve it, even incorporeal creatures. You and your allies can voluntarily believe the wall exists to continue to treat it as solid, for instance to climb onto it. A creature that {@quickref disbelieves the illusion|CRB|2|disbelieving illusions|0} is temporarily immune to your house of imaginary walls for 1 minute. The wall doesn't block creatures that didn't see your visual performance, nor does it block objects. The wall has AC 10, Hardness equal to double the spell's level, and HP equal to quadruple the spell's level."
 			],
 			"heightened": {
 				"heightened": false,
@@ -13990,8 +13990,8 @@
 				"In combat, the illusion can use 2 actions per turn, which it uses when you {@action Sustain a Spell||Sustain the Spell}. It uses your spell attack roll for attack rolls and your spell DC for its AC. Its saving throw modifiers are equal to your spell DC \u2013 10. It is substantial enough that it can flank other creatures. If the image is hit by an attack or fails a save, the spell ends.",
 				"The illusion can cause damage by making the target believe the illusion's attacks are real, but it cannot otherwise directly affect the physical world. If the illusory creature hits with a {@action Strike}, the target takes mental damage equal to {@dice 1d4} plus your spellcasting ability modifier. This is a {@trait mental} effect.",
 				"The illusion's Strikes are nonlethal. If the damage doesn't correspond to the image of the monster\u2014for example, if an illusory Large dragon deals only 5 damage\u2014the GM might allow the target to attempt an immediate {@skill Perception} check to disbelieve the spell. Any relevant resistances and weaknesses apply if the target thinks they do, as judged by the GM. For example, if the illusion wields a warhammer and attacks a creature resistant to bludgeoning damage, the creature would take less mental damage. However, illusory damage does not deactivate regeneration or trigger other effects that require a certain damage type. The GM should track illusory damage dealt by the illusion.",
-				"Any creature that touches the image or uses the {@action Seek} action to examine it can attempt to disbelieve your illusion.",
-				"When a creature disbelieves the illusion, it recovers from half the damage it had taken from it (if any) and doesn't take any further damage from it."
+				"Any creature that touches the image or uses the {@action Seek} action to examine it can attempt to {@quickref disbelieve your illusion|CRB|2|disbelieving illusions|0}.",
+				"When a creature {@quickref disbelieves the illusion|CRB|2|disbelieving illusions|0}, it recovers from half the damage it had taken from it (if any) and doesn't take any further damage from it."
 			],
 			"heightened": {
 				"heightened": true,
@@ -14113,7 +14113,7 @@
 			"entries": [
 				"You create an illusory visual image of a stationary object.",
 				"The entire image must fit within the spell's area. The object appears to animate naturally, but it doesn't make sounds or generate smells. For example, water would appear to pour down an illusory waterfall, but it would be silent.",
-				"Any creature that touches the image or uses the {@action Seek} action to examine it can attempt to disbelieve your illusion."
+				"Any creature that touches the image or uses the {@action Seek} action to examine it can attempt to {@quickref disbelieve your illusion|CRB|2|disbelieving illusions|0}."
 			],
 			"heightened": {
 				"heightened": true,
@@ -14186,7 +14186,7 @@
 			"entries": [
 				"You form an imaginary scene that includes up to 10 discrete creatures or objects of various sizes, all of which must be within the spell's area. These elements generate appropriate sounds and smells, and they feel right to the touch. Elements of an illusory scene are incapable of speech. Unlike with the {@spell illusory creature} spell, creatures in your scene lack combat abilities and statistics. Your scene doesn't include changes to the environment around it, though you can place your scene within the illusory environment of a {@spell hallucinatory terrain} spell.",
 				"When you create the scene, you can choose to have it be static or follow a program. Though a static scene is stationary, it includes basic natural movement. For example, wind blowing on an illusory piece of paper would rustle it. A program can be up to 1 minute long and repeats when finished. For instance, you could create a scene of two orcs fighting each other, and the fight would go the same way for each repetition. If you create a loop, the two fighters end up in the same place at the start of the scene and at the end of it, but you can smooth the program so it's hard to tell when the loop ends and begins. Anyone observing the scene for more than a few minutes almost always notices it looping. You're unable to alter the program after you create the illusion.",
-				"Any creature that touches any part of the image or uses the {@action Seek} action to examine it can attempt to disbelieve your illusion. If they interact with a portion of the illusion, they disbelieve only that portion. They disbelieve the entire scene only on a critical success."
+				"Any creature that touches any part of the image or uses the {@action Seek} action to examine it can attempt to {@quickref disbelieve your illusion|CRB|2|disbelieving illusions|0}. If they interact with a portion of the illusion, they disbelieve only that portion. They disbelieve the entire scene only on a critical success."
 			],
 			"heightened": {
 				"heightened": true,
@@ -14830,7 +14830,7 @@
 			"dismiss": false,
 			"entries": [
 				"You make the target object look and feel as though it were in much better or worse physical condition. When you cast this spell, decide whether you want to make the object look decrepit or perfect. An item made to look decrepit appears {@condition broken} and shoddy. An intact item made to look better appears as though it's brand new and highly polished or well maintained. A {@condition broken} item appears to be intact and functional.",
-				"Destroyed items can't be affected by this spell. A creature that Interacts with the item can attempt to disbelieve the illusion."
+				"Destroyed items can't be affected by this spell. A creature that Interacts with the item can attempt to {@quickref disbelieve the illusion|CRB|2|disbelieving illusions|0}."
 			],
 			"heightened": {
 				"heightened": true,
@@ -16282,7 +16282,7 @@
 			"dismiss": false,
 			"entries": [
 				"You alter the appearance of an item's magic aura. You can choose to have the target's aura appear as that of common magic item of twice magic aura's level or lower, or to have it register as being under the effects of a spell of your choice of magic aura's level or lower. If the target is magical, you can instead choose to have it appear as entirely non-magical.",
-				"A caster using {@spell detect magic} or {@spell read aura} of an equal or higher spell level can attempt to disbelieve the illusion from magic aura. Magic aura doesn't mask the aura of spells that are 9th level or higher or of items that are 19th level or higher."
+				"A caster using {@spell detect magic} or {@spell read aura} of an equal or higher spell level can attempt to {@quickref disbelieve the illusion|CRB|2|disbelieving illusions|0} from magic aura. Magic aura doesn't mask the aura of spells that are 9th level or higher or of items that are 19th level or higher."
 			],
 			"heightened": {
 				"heightened": true,
@@ -17594,7 +17594,7 @@
 			"entries": [
 				"You reshape the magic aura of one creature or object to resemble that of another. You designate one target as the primary target and the other as the secondary target.",
 				"Effects that would detect auras on the primary target instead detect the same types of auras from the secondary target.",
-				"A creature reading the aura can attempt to disbelieve the illusion. You can {@action Dismiss} the spell from up to a mile away."
+				"A creature reading the aura can attempt to {@quickref disbelieve the illusion|CRB|2|disbelieving illusions|0}. You can {@action Dismiss} the spell from up to a mile away."
 			],
 			"heightened": {
 				"heightened": false,
@@ -19158,7 +19158,7 @@
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
-				"A vision of apocalyptic destruction fills the mind of each creature in the area. The vision deals {@damage 11d6} mental damage (basic Will save). On a critical failure, the creature must also succeed at a Reflex save or believe it's trapped (stuck in a fissure, adrift at sea, or some other fate in keeping with its vision). If it fails the second save, it's also {@condition stunned} for 1 minute. It can attempt a new Will save at the end of each of its turns, and on a success, it disbelieves the illusion and recovers from the {@condition stunned} condition."
+				"A vision of apocalyptic destruction fills the mind of each creature in the area. The vision deals {@damage 11d6} mental damage (basic Will save). On a critical failure, the creature must also succeed at a Reflex save or believe it's trapped (stuck in a fissure, adrift at sea, or some other fate in keeping with its vision). If it fails the second save, it's also {@condition stunned} for 1 minute. It can attempt a new Will save at the end of each of its turns, and on a success, it {@quickref disbelieves the illusion|CRB|2|disbelieving illusions|0} and recovers from the {@condition stunned} condition."
 			],
 			"heightened": {
 				"heightened": true,
@@ -29243,8 +29243,8 @@
 					"type": "successDegree",
 					"entries": {
 						"Critical Success": "The target is unaffected.",
-						"Success": "The target believes you're in the designated location and can't see you in your actual location. The target automatically disbelieves the illusion when you use an action that doesn't make sense in the illusion's position, or if the target attacks, touches, Seeks, or otherwise engages with the illusion. If you use a {@condition hostile} action against the target, the spell ends.",
-						"Failure": "As success, but the target must succeed at a Will save to disbelieve the illusion when one of the listed events occurs.",
+						"Success": "The target believes you're in the designated location and can't see you in your actual location. The target automatically {@quickref disbelieves the illusion|CRB|2|disbelieving illusions|0} when you use an action that doesn't make sense in the illusion's position, or if the target attacks, touches, Seeks, or otherwise engages with the illusion. If you use a {@condition hostile} action against the target, the spell ends.",
+						"Failure": "As success, but the target must succeed at a Will save to {@quickref disbelieve the illusion|CRB|2|disbelieving illusions|0} when one of the listed events occurs.",
 						"Critical Failure": "As success, but the target must critically succeed at a Will save to disbelieve when one of the listed events occurs."
 					}
 				}
@@ -30380,7 +30380,7 @@
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
-				"Whenever you speak or make any other sound vocally, you can make your vocalization seem to originate from somewhere else within 60 feet, and you can change that apparent location freely as you vocalize. Any creature that hears the sound can attempt to disbelieve your illusion."
+				"Whenever you speak or make any other sound vocally, you can make your vocalization seem to originate from somewhere else within 60 feet, and you can change that apparent location freely as you vocalize. Any creature that hears the sound can attempt to {@quickref disbelieve your illusion|CRB|2|disbelieving illusions|0}."
 			],
 			"heightened": {
 				"heightened": true,
@@ -30388,7 +30388,7 @@
 				"x": [
 					{
 						"level": 2,
-						"entry": "The spell's duration increases to 1 hour, and you can also change the tone, quality, and other aspects of your voice. Before a creature can attempt to disbelieve your illusion, it must actively attempt a {@skill Perception} check or otherwise use actions to interact with the sound."
+						"entry": "The spell's duration increases to 1 hour, and you can also change the tone, quality, and other aspects of your voice. Before a creature can attempt to {@quickref disbelieve your illusion|CRB|2|disbelieving illusions|0}, it must actively attempt a {@skill Perception} check or otherwise use actions to interact with the sound."
 					}
 				],
 				"no_x": null
@@ -30627,7 +30627,7 @@
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
-				"An illusion of horrific creatures fills the spell's area. The creatures look like Tiny swarming monsters with a specific appearance of your choice, such as Hellish flies or animated saw blades. The burst deals {@damage 8d8} mental damage (basic Will save) to each creature that's inside the burst when it's created, enters the burst, or starts its turn inside the burst. A creature that critically succeeds at its Will save can immediately attempt to disbelieve the illusion. A creature that tries to {@action Interact} with the monsters or observes one with a {@action Seek} action can attempt to disbelieve the illusion. Creatures that disbelieve the illusion take no damage from the illusion thereafter."
+				"An illusion of horrific creatures fills the spell's area. The creatures look like Tiny swarming monsters with a specific appearance of your choice, such as Hellish flies or animated saw blades. The burst deals {@damage 8d8} mental damage (basic Will save) to each creature that's inside the burst when it's created, enters the burst, or starts its turn inside the burst. A creature that critically succeeds at its Will save can immediately attempt to {@quickref disbelieve the illusion|CRB|2|disbelieving illusions|0}. A creature that tries to {@action Interact} with the monsters or observes one with a {@action Seek} action can attempt to {@quickref disbelieve the illusion|CRB|2|disbelieving illusions|0}. Creatures that {@quickref disbelieve the illusion|CRB|2|disbelieving illusions|0} take no damage from the illusion thereafter."
 			],
 			"heightened": {
 				"heightened": true,

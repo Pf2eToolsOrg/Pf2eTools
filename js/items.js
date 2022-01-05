@@ -430,7 +430,7 @@ class ItemsPage extends ListPage {
 						name: {name: "Name", transform: true},
 						source: {name: "Source", transform: (it) => `<span class="${Parser.sourceJsonToColor(it)}" title="${Parser.sourceJsonToFull(it)}" ${BrewUtil.sourceJsonToStyle(it.source)}>${Parser.sourceJsonToAbv(it)}</span>`},
 						_traits: {name: "Traits", transform: (it) => `<span>${(it._fTraits).sort(SortUtil.sortTraits).join(", ")}</span>`},
-						_category: {name: "Category", transform: (it) => `${it.subCategory ? `${it.subCategory} ` : ""}${it.category === "Weapon" ? `${it.ranged ? "Ranged" : "Melee"} ${it.category}` : it.category}`},
+						_category: {name: "Category", transform: (it) => `${it.subCategory ? `${it.subCategory} ` : ""}${it.category === "Weapon" ? `${it.range ? "Ranged" : "Melee"} ${it.category}` : it.category}`},
 						group: {name: "Group", transform: (it) => it || ""},
 						_price: {name: "Price", transform: (it) => Parser.priceToFull(it.price)},
 						_bulk: {name: "Bulk", transform: (it) => it.bulk != null ? it.bulk : "\u2014"},
