@@ -57,15 +57,9 @@
 				},
 				{
 					"entries": [
-						"If an aigamuxa takes damage from {@action Stride||Striding}."
+						"If an aigamuxa takes damage from {@action Stride||Striding} or {@action Step||Stepping} into hazardous terrain or a square with similar grounded hazards (such as caltrops), they can't {@action Seek} until the end of their next turn."
 					],
 					"name": "Weak Feet"
-				},
-				{
-					"entries": [
-						"Stepping into hazardous terrain or a square with similar grounded hazards (such as caltrops), they can't {@action Seek} until the end of their next turn."
-					],
-					"name": "or"
 				}
 			],
 			"ac": {
@@ -1249,21 +1243,9 @@
 						"unit": "action"
 					},
 					"entries": [
-						"The veteran makes a melee {@action Strike} and compares the attack roll result."
+						"The veteran makes a melee {@action Strike} and compares the attack roll result to the AC of up to two foes, each of whom must be within their melee reach and adjacent to each other. Roll damage only once and apply it to each creature hit. A Swipe counts as two attacks for the biloko veteran's multiple attack penalty."
 					],
 					"name": "Swipe"
-				},
-				{
-					"entries": [
-						"AC of up to two foes, each of whom must be within their melee reach and adjacent to each other. Roll damage only once and apply it to each creature hit."
-					],
-					"name": "to the"
-				},
-				{
-					"entries": [
-						"Swipe counts as two attacks for the biloko veteran's multiple attack penalty."
-					],
-					"name": "A"
 				}
 			],
 			"inflicts": {
@@ -2208,20 +2190,7 @@
 				"Wis": 4,
 				"Cha": 1
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+13, {@skill Deception} +15, {@skill Nature} +13, {@skill Stealth} +16, {@skill Survival} +13 Str +6, Dex +5, Con +1, Int +0,"
-					],
-					"name": "Crafting"
-				},
-				{
-					"entries": [
-						"+4, Cha +1 Items blowgun (10 poisoned darts), +1 dagger."
-					],
-					"name": "Wis"
-				}
-			],
+			"abilitiesTop": [],
 			"ac": {
 				"default": 25,
 				"abilities": null
@@ -2350,13 +2319,9 @@
 						"transmutation"
 					],
 					"entries": [
-						"The eloko is affected by a 4th-level {@spell enlarge} spell. This lasts for 1 minute, and the eloko can {@action Dismiss}."
+						"The eloko is affected by a 4th-level {@spell enlarge} spell. This lasts for 1 minute, and the eloko can {@action Dismiss} the Spell."
 					],
 					"name": "Size Alteration"
-				},
-				{
-					"entries": [],
-					"name": "the Spell."
 				},
 				{
 					"traits": [
@@ -2367,23 +2332,6 @@
 					],
 					"name": "Sneak Attack",
 					"generic": true
-				},
-				{
-					"entries": [
-						"Legend tells that charau-ka share ancestry with the demon lord Angazhan, who transformed the dead bodies of humans who waged war against his cult, causing them to rise as the first of the mandrill-like humanoids.",
-						"Though long unproven, rumors persist that charau-ka priests have perfected a hideous ritual that forces the slain to reincarnate as new charau-ka in honor of this ancient tale. Other stories say that powerful altars devoted to Angazhan contain this power, and that conducting ritual sacrifices before these magical artifacts causes the spirits of the dead to return to life as violent devotees of Angazhan, the master of those who revel in savagery and destruction.",
-						"The largest charau-ka stronghold in the Mwangi Expanse is the city."
-					],
-					"name": "CHARAU-KA"
-				},
-				{
-					"traits": [
-						"page 266"
-					],
-					"entries": [
-						", located on the shores of Lake Ocota. Though the death of their Gorilla King has led to political turmoil, the charau-ka will happily unite to kidnap or murder any outsiders in the area."
-					],
-					"name": "of Usaro"
 				}
 			],
 			"inflicts": {
@@ -2404,7 +2352,7 @@
 			]
 		},
 		{
-			"name": "Goluo",
+			"name": "Sié Goluo",
 			"isNpc": false,
 			"source": "LOME",
 			"page": 306,
@@ -2588,24 +2536,9 @@
 				},
 				{
 					"entries": [
-						"Sié Goluo ignores {@quickref difficult terrain||3|terrain} and doesn't trigger traps with his movement.",
-						"Primal Innate Spells DC 34; 3rd humanoid form (at will); Constant (1st) pass without trace."
+						"Sié Goluo ignores {@quickref difficult terrain||3|terrain} and doesn't trigger traps with his movement."
 					],
 					"name": "Spirit Steps"
-				},
-				{
-					"entries": [
-						"Scholars who know of Atreia, the elemental lord of fire, suspect solar ibises might be related to the imprisoned demigod; Atreia is said to take the form of a three-headed ibis and was known for his holy, purifying flame. That this is mere coincidence seems too implausible to consider, but solar ibis don't acknowledge any connection to the demigod, leaving some to wonder if Atreia's imprisonment caused the sun birds to unconsciously forget their origins."
-					],
-					"name": "A Severed Connection"
-				},
-				{
-					"entries": [
-						"Solar ibis are beings of light sometimes called sun birds, or \"winged luminaries\" by the more scholarly inclined. They're tasked with guarding sacred places or items, although they sometimes also protect the living from places of incredible danger. Their appearance is always preceded by numerous small purple-winged birds with a splash of yellow on their crowns; these are avatars of the ibis that nest and congregate in areas it protects. The presence of these avatars is often the only way to track these reclusive and solitary creatures. Should the solar ibis choose to appear, these little birds scatter like wild fowl. The sun bird then manifests and bathes the area in a brilliant shower of light that can blind and startle unwary and unprepared creatures in its presence.",
-						"The solar ibis appears as a magnificent, large bird surrounded by a halo of brilliant light. Its black feathers shimmer with all the colors of the spectrum, casting glossy rainbows across its plumage. It has a keen sense of insight, which it uses to pass judgment as a whole on whether those before it are worthy to access what it guards. It punishes those it finds unworthy with its cleansing might.",
-						"Though considered sacred by most within the Mwangi Expanse, there are still some who hunt these glorious creatures; some seek the treasures that the ibis keep, while others seek the ibis themselves, dead or alive. Some believe that the feathers of a solar ibis, when burned, create an incense that can grant holy power to those that inhale it. Others believe that its bones and feet can be ground into a powder that can destroy demons and purify the undead."
-					],
-					"name": "SOLAR IBIS"
 				}
 			],
 			"inflicts": {
@@ -2821,11 +2754,8 @@
 						"number": 1,
 						"unit": "action"
 					},
-					"traits": [
-						"tail"
-					],
 					"entries": [
-						"only, {@damage 2d12+12} bludgeoning, DC 34."
+						"tail only, {@damage 2d12+12} bludgeoning, DC 34."
 					],
 					"name": "Greater Constrict",
 					"generic": true
@@ -2835,11 +2765,8 @@
 						"number": 1,
 						"unit": "action"
 					},
-					"traits": [
-						"jaws"
-					],
 					"entries": [
-						"only, Huge, {@damage 3d12+10} bludgeoning, Rupture 37."
+						"jaws only, Huge, {@damage 3d12+10} bludgeoning, Rupture 37."
 					],
 					"name": "Swallow Whole",
 					"generic": true
@@ -3011,12 +2938,6 @@
 						"The k'nonna {@action Stride||Strides} and makes a {@action Strike} at the end of that movement. If the k'nonna began this action {@condition hidden}, they remain {@condition hidden} until after this ability's {@action Strike}."
 					],
 					"name": "Pounce"
-				},
-				{
-					"entries": [
-						"Kaava are stealthy, jungle-dwelling humanoids with short down feathers that can easily be mistaken for fur from a distance. Kaava have tough scales beneath these feathers. Both the scales and feathers have mutable pigmentation that allows a kaava to blend into surrounding foliage like a chameleon."
-					],
-					"name": "KAAVA"
 				}
 			],
 			"inflicts": {
@@ -3379,54 +3300,6 @@
 						"The karina mimics a voice and mocks a creature within 30 feet. They attempt a {@skill Deception} check to {@action Demoralize} the creature. Regardless of whether the check succeeds, the target creature is temporarily immune to the karina's Mocking Cry for 1 hour."
 					],
 					"name": "Mocking Cry"
-				},
-				{
-					"entries": [],
-					"name": "MWANGI"
-				},
-				{
-					"entries": [],
-					"name": "EXPANSE"
-				},
-				{
-					"entries": [],
-					"name": "RECLAIMING"
-				},
-				{
-					"entries": [],
-					"name": "THE EXPANSE"
-				},
-				{
-					"entries": [],
-					"name": "HISTORY"
-				},
-				{
-					"entries": [],
-					"name": "PEOPLE OF THE"
-				},
-				{
-					"entries": [],
-					"name": "MWANGI"
-				},
-				{
-					"entries": [],
-					"name": "RELIGION"
-				},
-				{
-					"entries": [],
-					"name": "GEOGRAPHY"
-				},
-				{
-					"entries": [],
-					"name": "BESTIARY"
-				},
-				{
-					"entries": [],
-					"name": "GLOSSARY AND"
-				},
-				{
-					"entries": [],
-					"name": "INDEX"
 				}
 			],
 			"inflicts": {
@@ -3662,7 +3535,22 @@
 								}
 							]
 						},
-						"constant": {}
+						"constant": {
+							"8": {
+								"spells": [
+									{
+										"name": "freedom of movement"
+									}
+								]
+							},
+							"7": {
+								"spells": [
+									{
+										"name": "true seeing"
+									}
+								]
+							}
+						}
 					}
 				}
 			],
@@ -3672,9 +3560,7 @@
 						"number": 1,
 						"unit": "action"
 					},
-					"entries": [
-						"Melee foot +35 (agile, magical, reach 20 feet), Damage {@damage 3d10+17} bludgeoning Primal Innate Spells DC 38, attack +30; 9th wall of fire (×3), wall of stone (×3); 8th fire shield, volcanic eruption; 4th air walk, gaseous form; Cantrips (9th) detect magic, produce flame; Constant (8th) freedom of movement; (7th) true seeing."
-					],
+					"entries": [],
 					"name": "Improved Grab",
 					"generic": true
 				},

@@ -3827,7 +3827,7 @@ Renderer.creature = {
 				if (typeof (x) === "string") {
 					rs.push(x)
 				} else {
-					rs.push(`${x.name} ${x.amount}${x.note ? ` ${renderer.render(x.note)}` : ``}`)
+					rs.push(`${x.name}${x.amount ? ` ${x.amount}` : ""}${x.note ? ` ${renderer.render(x.note)}` : ``}`)
 				}
 			}
 			renderStack.push(rs.join(", "))
@@ -3839,24 +3839,12 @@ Renderer.creature = {
 	},
 
 	getSpeed (cr) {
-		let renderStack = [];
-		renderStack.push(`<p class="pf2-stat pf2-stat__section">`)
-		renderStack.push(`<span><strong>Speed&nbsp;</strong>`)
-		let speeds = []
-		if (cr.speed.walk != null) speeds.push(`${cr.speed.walk} feet`)
-		for (let key in cr.speed) {
-			if (key !== "abilities" && key !== "walk") {
-				speeds.push(`${key} ${cr.speed[key]} feet`)
-			}
-		}
-		renderStack.push(speeds.join(", "))
-		if (cr.speed.abilities != null) {
-			renderStack.push("; ")
-			renderStack.push(cr.speed.abilities.join(", "))
-		}
-		renderStack.push(`</span>`)
-		renderStack.push(`</p>`)
-		return renderStack.join("")
+		const renderer = Renderer.get();
+		const speeds = cr.speed.walk != null ? [`${cr.speed.walk} feet`] : [];
+		speeds.push(...Object.keys(cr.speed).filter(k => !(["abilities", "walk"].includes(k))).map(k => `${k} ${cr.speed[k]} feet`));
+		return `<p class="pf2-stat pf2-stat__section">
+				<strong>Speed&nbsp;</strong>
+				${speeds.join(", ")}${cr.speed.abilities != null ? `; ${renderer.render(cr.speed.abilities.join(", "))}` : ""}</p>`
 	},
 
 	getAttacks (cr) {
@@ -3872,7 +3860,7 @@ Renderer.creature = {
 				renderStack.push(`<span>`)
 				if (attack.traits != null) {
 					let traits = []
-					attack.traits.forEach((t) => traits.push(`{@trait ${t.toLowerCase()}}`));
+					attack.traits.forEach((t) => traits.push(`{@trait ${Parser.getTraitName(t)}||${t.toLowerCase()}}`));
 					renderStack.push(Renderer.get().render(` (${traits.join(", ")})`))
 				}
 				renderStack.push(`, <strong>Damage&nbsp;</strong>`)
@@ -3890,18 +3878,16 @@ Renderer.creature = {
 			const renderer = Renderer.get()
 			let renderStack = [];
 			for (let sc of cr.spellcasting) {
-				renderStack.push(`<p class="pf2-stat pf2-stat__section">`)
-				renderStack.push(`<span><strong>${sc.name} Spells</strong> DC ${sc.DC}</span>`)
-				if (sc.attack != null) {
-					renderStack.push(renderer.render(`<span>, attack </span>{@hit ${sc.attack}||Spell attack}`))
-				}
+				const meta = [];
+				if (sc.DC != null) meta.push(`DC ${sc.DC}`);
+				if (sc.attack != null) meta.push(`attack {@hit ${sc.attack}||Spell attack}`);
+				if (sc.fp != null) meta.push(`${sc.fp} Focus Points`);
+				renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>${sc.name}${/Spell/.test(sc.name) ? "" : " Spells"}&nbsp;</strong>${renderer.render(meta.join(", "))}`)
 				Object.keys(sc.entry).sort(SortUtil.sortSpellLvlCreature).forEach((lvl) => {
 					if (lvl !== "constant") {
 						renderStack.push(`<span>; <strong>${lvl === "0" ? "Cantrips" : Parser.getOrdinalForm(lvl)}&nbsp;</strong>`)
 						if (sc.entry[lvl].level != null) renderStack.push(`<strong>(${Parser.getOrdinalForm(sc.entry[lvl].level)})&nbsp;</strong>`)
 						if (sc.entry[lvl].slots != null) renderStack.push(`(${sc.entry[lvl].slots} slots) `)
-						if (sc.entry[lvl].fp != null) renderStack.push(`${sc.entry[lvl].fp} `)
-						renderStack.push(`</span>`)
 						let spells = []
 						for (let spell of sc.entry[lvl].spells) {
 							let amount = spell.amount != null ? typeof (spell.amount) === "number" ? [`×${spell.amount}`] : [spell.amount] : []
@@ -3915,10 +3901,10 @@ Renderer.creature = {
 						renderStack.push(renderer.render(spells.join(", ")))
 					} else {
 						renderStack.push(`<span>; <strong>Constant&nbsp;</strong></span>`)
-						Object.keys(sc.entry[lvl]).sort().reverse().forEach((clvl) => {
+						Object.keys(sc.entry["constant"]).sort().reverse().forEach((clvl) => {
 							renderStack.push(`<span><strong>(${Parser.getOrdinalForm(clvl)})&nbsp;</strong></span>`)
 							let spells = []
-							for (let spell of sc.entry[lvl][clvl].spells) {
+							for (let spell of sc.entry["constant"][clvl].spells) {
 								let notes = spell.notes != null ? spell.notes : []
 								let bracket = ""
 								if (notes.length) {
@@ -3937,27 +3923,13 @@ Renderer.creature = {
 	},
 
 	getRituals (cr) {
-		if (cr.rituals != null) {
-			const renderer = Renderer.get()
-			let renderStack = [];
-			cr.rituals.forEach((feature) => {
-				renderStack.push(`<p class="pf2-stat pf2-stat__section">`)
-				renderStack.push(`<span><strong>${feature.tradition} Rituals</strong> DC ${feature.DC}</span>; `)
-				let rituals = []
-				feature.rituals.forEach((ritual) => {
-					let bracket = ""
-					let notes = ritual.notes != null ? ritual.notes : []
-					let level = ritual.level != null ? [Parser.getOrdinalForm(ritual.level)] : []
-					if (level.length || notes.length) {
-						bracket = ` (${level.concat(notes).join(", ")})`
-					}
-					rituals.push(`{@spell ${ritual.name}|${ritual.source || SRC_CRB}|${ritual.name}}${bracket}`)
-				});
-				renderStack.push(renderer.render(rituals.join(", ")))
-				renderStack.push(`</p>`)
-			})
-			return renderStack.join("")
-		} else return ""
+		if (cr.rituals == null) return "";
+		const renderer = Renderer.get();
+		const renderRitual = (r) => {
+			return `{@ritual ${r.name}|${r.source || ""}}${r.notes == null && r.level == null ? "" : ` (${[Parser.getOrdinalForm(r.level)].concat(...(r.notes || [])).filter(Boolean).join(", ")})`}`;
+		};
+		return `${cr.rituals.map(rf => `<p class="pf2-stat pf2-stat__section"><strong>${rf.tradition ? `${rf.tradition} ` : ""}Rituals</strong> DC ${rf.DC};
+				${renderer.render(rf.rituals.map(r => renderRitual(r)).join(", "))}`)}`;
 	},
 
 	getCompactRenderedString (cr, opts) {
@@ -4008,7 +3980,7 @@ Renderer.creature = {
 			const genericAbility = Renderer.hover._getFromCache(UrlUtil.PG_ABILITIES, "Bst", hash);
 			renderedGenericAbility = Renderer.creature.getRenderedAbility(genericAbility, {generic: true});
 		}
-		return $$`<p class="pf2-stat pf2-stat__section ${buttonClass} ${options.generic ? "hidden" : ""}"><span><strong>${ability.generic || options.generic ? `${renderer.render(`{@ability ${ability.name}}`)}` : ability.name}</strong>
+		return $$`<p class="pf2-stat pf2-stat__section ${buttonClass} ${options.generic ? "hidden" : ""}"><strong>${ability.generic || options.generic ? `${renderer.render(`{@ability ${ability.name}}`)}` : ability.name}</strong>
 					${ability.activity ? renderer.render(Parser.timeToFullEntry(ability.activity)) : ""}
 					${(ability.generic || options.generic) && !options.noButton ? Renderer.creature.getAbilityTextButton(buttonClass, options.generic) : ""}
 					${trts.length ? `(${trts.join(", ")}); ` : ""}
@@ -4017,7 +3989,7 @@ Renderer.creature = {
 					${ability.trigger ? `<strong>Trigger&nbsp;</strong>${renderer.render_addTerm(ability.trigger)}` : ""}
 					${ability.frequency || ability.requirements || ability.trigger ? "<strong>Effect&nbsp;</strong>" : ""}
 					${(ability.entries || []).map(it => renderer.render(it, {isAbility: true})).join(" ")}
-					</span></p>
+					</p>
 					${renderedGenericAbility || ""}`;
 	},
 

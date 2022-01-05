@@ -113,10 +113,8 @@
 			"resistances": [
 				{
 					"amount": 5,
-					"name": "all damage"
-				},
-				{
-					"name": "ghost"
+					"name": "all damage",
+					"note": "except force, {@item ghost touch}, or positive; double resistance against non-magical"
 				}
 			],
 			"abilitiesMid": [
@@ -210,8 +208,7 @@
 			"abilitiesBot": [
 				{
 					"entries": [
-						"When hit by an abandoned zealot's hand of despair, a creature capable of divine spellcasting or with divinely granted abilities must succeed at a DC 24 Will save or be unable to use those spells or abilities until the end of its next turn.",
-						"through the Test of the Starstone."
+						"When hit by an abandoned zealot's hand of despair, a creature capable of divine spellcasting or with divinely granted abilities must succeed at a DC 24 Will save or be unable to use those spells or abilities until the end of its next turn."
 					],
 					"name": "Rend Faith"
 				}
@@ -392,15 +389,9 @@
 						"necromancy"
 					],
 					"entries": [
-						"When the abrikandilu hits a creature with a jaws {@action Strike}, the creature must succeed at a DC 21 Fortitude save or become physically mutilated. The creature then takes a \u20131 status penalty."
+						"When the abrikandilu hits a creature with a jaws {@action Strike}, the creature must succeed at a DC 21 Fortitude save or become physically mutilated. The creature then takes a \u20131 status penalty to Charisma-based checks. This penalty is cumulative up to –3 and remains even if the wounds are healed. The penalty is reduced by 1 every 24 hours until it reaches 0."
 					],
 					"name": "Mutilating Bite"
-				},
-				{
-					"entries": [
-						"Charisma-based checks. This penalty is cumulative up to \u20133 and remains even if the wounds are healed. The penalty is reduced by 1 every 24 hours until it reaches 0."
-					],
-					"name": "to"
 				},
 				{
 					"activity": {
@@ -1173,11 +1164,6 @@
 			],
 			"abilitiesMid": [
 				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction",
-						"entry": "{@as R}"
-					},
 					"traits": [
 						"aura",
 						"emotion",
@@ -1185,12 +1171,28 @@
 						"mental"
 					],
 					"entries": [
-						"90 feet, DC 32 (page 305)",
-						"Animals, fungi, and plants take a \u20132 circumstance penalty to the save.",
-						"Fed by Water As young forest dragon, but 35 temporary HP."
+						"90 feet, DC 32. Animals, fungi, and plants take a \u20132 circumstance penalty to the save."
 					],
 					"name": "Frightful Presence",
 					"generic": true
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction",
+						"entry": "{@as R}"
+					},
+					"traits": [
+						"healing",
+						"necromancy",
+						"primal"
+					],
+					"trigger": "The forest dragon is targeted with a water spell or effect",
+					"frequency": "once per hour",
+					"entries": [
+						"The forest dragon gains 35 temporary Hit Points."
+					],
+					"name": "Fed by Water"
 				}
 			],
 			"speed": {
@@ -1264,87 +1266,24 @@
 									"name": "tree shape"
 								}
 							]
-						}
-					}
-				},
-				{
-					"name": "Primal Prepared",
-					"type": "Prepared",
-					"tradition": "Primal",
-					"DC": 29,
-					"attack": 22,
-					"entry": {
+						},
 						"0": {
 							"level": 4,
 							"spells": [
 								{
-									"name": "acid splash"
-								},
-								{
-									"name": "detect magic"
-								},
-								{
-									"name": "guidance"
-								},
-								{
-									"name": "read aura"
-								},
-								{
-									"name": "tanglefoot"
+									"name": "know direction"
 								}
 							]
 						},
-						"1": {
-							"spells": [
-								{
-									"name": "create water"
-								},
-								{
-									"name": "goblin pox"
-								},
-								{
-									"name": "pest form"
-								}
-							]
-						},
-						"2": {
-							"spells": [
-								{
-									"name": "animal messenger"
-								},
-								{
-									"name": "darkness"
-								},
-								{
-									"name": "water breathing"
-								}
-							]
-						},
-						"3": {
-							"spells": [
-								{
-									"name": "animal vision"
-								},
-								{
-									"name": "stinking cloud"
-								},
-								{
-									"name": "wall of thorns"
-								}
-							]
-						},
-						"4": {
-							"spells": [
-								{
-									"name": "gaseous form"
-								},
-								{
-									"name": "hallucinatory terrain"
-								},
-								{
-									"name": "solid fog"
-								}
-							]
+						"constant": {
+							"1": {
+								"spells": [
+									{
+										"name": "pass without trace",
+										"notes": ["forest terrain only"]
+									}
+								]
+							}
 						}
 					}
 				}
@@ -1355,12 +1294,7 @@
 						"number": 1,
 						"unit": "action"
 					},
-					"traits": [
-						"page 305"
-					],
-					"entries": [
-						"Melee tail +29 (magical, reach 25 feet), Damage {@damage 3d8+13} bludgeoning plus {@ability Grab} Primal Innate Spells DC 34; 4th entangle, tree shape Primal Prepared Spells DC 29, attack +22; 4th gaseous form, hallucinatory terrain, solid fog; 3rd animal vision, stinking cloud, wall of thorns; 2nd animal messenger, darkness, water breathing; 1st create water, goblin pox, pest form; Cantrips (4th) acid splash, detect magic, guidance, read aura, tanglefoot; Rituals DC 29; plant growth Primal Prepared Spells DC 34, dragon, plus 6th baleful polymorph, purple worm sting, tangling creepers; 5th cloudkill, moon frenzy, tree stride; Cantrips (6th) acid splash, detect magic, guidance, read aura, tanglefoot; Rituals DC 34; commune with nature Primal Prepared Spells DC 41, plus 9th implosion, nature's enmity; 8th horrid wilting, polar ray, punishing winds; 7th eclipse burst, prismatic spray, true target; Cantrips (9th) acid splash, detect magic, guidance, read aura, tanglefoot (see forest shape); Cantrips (4th) know direction; Constant (1st) pass without trace (forest terrain only)"
-					],
+					"entries": [],
 					"name": "Grab",
 					"generic": true
 				},
@@ -1374,12 +1308,9 @@
 						"primal"
 					],
 					"entries": [
-						"As young forest dragon, but {@dice 14d6} damage and 40-foot cone (DC 34)."
+						"The dragon unleashes a swarm of insects that deals {@damage 14d6} piercing damage in a 40-foot cone (DC 34 basic Reflex save) before dispersing. A creature that critically fails is {@condition stunned 2} from the insects' venom; this is a {@trait poison} effect. The dragon can't use Breath Weapon again for {@dice 1d4} rounds."
 					],
-					"name": "Breath Weapon",
-					"entries_as_xyz": [
-						"The dragon unleashes a swarm of insects that deals {@damage 10d6} piercing damage in a 30-foot cone (DC 29 basic Reflex save) before dispersing. A creature that critically fails is {@condition stunned 2} from the insects' venom; this is a {@trait poison} effect. The dragon can't use Breath Weapon again for {@dice 1d4} rounds."
-					]
+					"name": "Breath Weapon"
 				},
 				{
 					"activity": {
@@ -1599,13 +1530,10 @@
 						"water"
 					],
 					"entries": [
-						"As young sea dragon, but resistance 20."
+						"The dragon liquefies, turning entirely to water while maintaining their shape, for a split second. Against the triggering effect, they gain resistance 20 to fire and to all physical damage."
 					],
 					"name": "Liquefy",
-					"trigger": "The dragon is targeted by a {@action Strike} or spell that could deal fire or physical damage to them",
-					"entries_as_xyz": [
-						"The dragon liquefies, turning entirely to water while maintaining their shape, for a split second. Against the triggering effect, they gain resistance 15 to fire and to all physical damage."
-					]
+					"trigger": "The dragon is targeted by a {@action Strike} or spell that could deal fire or physical damage to them"
 				}
 			],
 			"speed": {
@@ -1687,20 +1615,31 @@
 									]
 								}
 							]
+						},
+						"constant": {
+							"2": {
+								"spells": [
+									{
+										"name": "water walk"
+									}
+								]
+							}
 						}
 					}
 				}
 			],
-			"abilitiesBot": [
+			"rituals": [
 				{
-					"traits": [
-						"2nd"
-					],
-					"entries": [
-						"water walk Rituals DC 32; control weather (doesn't require secondary casters)"
-					],
-					"name": "Constant"
-				},
+					"DC": 32,
+					"rituals": [
+						{
+							"name": "control weather",
+							"notes": ["doesn't require secondary casters"]
+						}
+					]
+				}
+			],
+			"abilitiesBot": [
 				{
 					"activity": {
 						"number": 2,
@@ -1712,13 +1651,9 @@
 						"water"
 					],
 					"entries": [
-						"As young sea dragon, but {@dice 13d6} damage in a 25-foot burst within 50 feet (DC 32 basic Reflex save)."
+						"The dragon shoots a ball of water that deals {@damage 13d6} bludgeoning damage in a 25-foot burst within 50 feet (DC 32 basic Reflex save). All non-magical fire in the radius is extinguished. The dragon can't use Breath Weapon again for {@dice 1d4} rounds."
 					],
-					"name": "Breath Weapon",
-					"entries_as_xyz": [
-						"The dragon shoots a ball of water that deals {@damage 9d6} bludgeoning damage in a 20-foot burst within 40 feet (DC 26 basic Reflex save). All non-magical fire in the radius is extinguished. The dragon can't use Breath Weapon again for {@dice 1d4} rounds.",
-						"Arcane Prepared Spells DC 26, attack +19; 3rd feet to fins, haste, wall of wind; 2nd hideous laughter, resist energy, water breathing; 1st air bubble, grease, grim tendrils; Cantrips (3rd) detect magic, message, prestidigitation, read aura, shield Arcane Prepared Spells DC 32, plus 5th mariner's curse, tongues, wall of ice; 4th dimension door, gaseous form, resilient sphere; Cantrips (5th) detect magic, message, prestidigitation, read aura, shield; Rituals DC 32; commune with nature Arcane Prepared Spells DC 38, plus 8th disappearance, discern location, horrid wilting; 7th energy aegis, project image, spell turning; 6th phantasmal calamity, repulsion, true seeing; Cantrips (8th) detect magic, message, prestidigitation, read aura, shield; Rituals DC 38; commune with nature."
-					]
+					"name": "Breath Weapon"
 				},
 				{
 					"activity": {
@@ -1752,12 +1687,9 @@
 						"water"
 					],
 					"entries": [
-						"As young sea dragon, but DC 32."
+						"A living creature that takes damage from the sea dragon's jaws {@action Strike} must succeed at a DC 32 Fortitude save or become {@condition sickened 1} as a surge of excess water floods its body."
 					],
-					"name": "Hyponatremia",
-					"entries_as_xyz": [
-						"A living creature that takes damage from the sea dragon's jaws {@action Strike} must succeed at a DC 26 Fortitude save or become {@condition sickened 1} as a surge of excess water floods its body."
-					]
+					"name": "Hyponatremia"
 				}
 			],
 			"inflicts": {
@@ -2005,12 +1937,9 @@
 						"evocation"
 					],
 					"entries": [
-						"As young sky dragon, but {@damage 7d12} electricity, 25-foot burst within 50 feet, and DC 33. See divine lightning below."
+						"The dragon shoots a ball of electricity that deals {@damage 7d12} electricity damage in a 25-foot burst within 50 feet (DC 33 basic Reflex save). They can't use Breath Weapon again for {@dice 1d4} rounds. See divine lightning below."
 					],
-					"name": "Breath Weapon",
-					"entries_as_xyz": [
-						"The dragon shoots a ball of electricity that deals {@damage 5d12} electricity damage in a 20-foot burst within 40 feet (DC 28 basic Reflex save). They can't use Breath Weapon again for {@dice 1d4} rounds."
-					]
+					"name": "Breath Weapon"
 				},
 				{
 					"activity": {
@@ -2320,12 +2249,9 @@
 						"occult"
 					],
 					"entries": [
-						"As young sovereign dragon, but {@damage 16d6} mental damage and a 40-foot cone (DC 36)."
+						"The dragon unleashes a roar charged with psychic energy, dealing {@damage 16d6} mental damage in a 40-foot cone (DC 36 basic Will save). The dragon can't use Breath Weapon again for {@dice 1d4} rounds."
 					],
-					"name": "Breath Weapon",
-					"entries_as_xyz": [
-						"The dragon unleashes a roar charged with psychic energy, dealing {@damage 12d6} mental damage in a 30-foot cone (DC 30 basic Will save). The dragon can't use Breath Weapon again for {@dice 1d4} rounds."
-					]
+					"name": "Breath Weapon"
 				},
 				{
 					"entries": [
@@ -2349,7 +2275,7 @@
 						"unit": "action"
 					},
 					"entries": [
-						"As young sovereign dragon, but resistance 15 and DC 36."
+						"The dragon's golden armor glows with a protective golden light. The dragon gains a +2 status bonus to AC and resistance 15 to energy damage. Each enemy in a 20-foot emanation must succeed at a DC 36 Fortitude save or be {@condition dazzled}. All these effects last until the end of the dragon's next turn."
 					],
 					"name": "Gleaming Armor",
 					"traits": [
@@ -2357,10 +2283,7 @@
 						"light",
 						"occult"
 					],
-					"frequency": "once per hour",
-					"entries_as_xyz": [
-						"The dragon's golden armor glows with a protective golden light. The dragon gains a +2 status bonus to AC and resistance 10 to energy damage. Each enemy in a 20-foot emanation must succeed at a DC 30 Fortitude save or be {@condition dazzled}. All these effects last until the end of the dragon's next turn."
-					]
+					"frequency": "once per hour"
 				},
 				{
 					"activity": {
@@ -2639,12 +2562,7 @@
 						"number": 1,
 						"unit": "action"
 					},
-					"traits": [
-						"page 305"
-					],
-					"entries": [
-						"Melee tail +24 (magical, reach 20 feet), Damage {@damage 2d8+13} bludgeoning plus {@ability Grab} Arcane Innate Spells DC 30, attack +24; 4th continual flame, wall of fire; Cantrips (4th) detect magic."
-					],
+					"entries": [],
 					"name": "Grab",
 					"generic": true
 				},
@@ -2665,12 +2583,9 @@
 						"fire"
 					],
 					"entries": [
-						"As young underworld dragon, but {@damage 10d6} fire damage in a 25-foot burst within 50 feet (DC 30 basic Reflex save), and {@damage 2d6} {@condition persistent damage ||persistent fire damage}."
+						"The dragon breathes a blast of fire that explodes in a 25-foot burst within 50 feet, dealing {@damage 10d6} fire damage (DC 30 basic Reflex save). Creatures that fail the save also take {@damage 2d6} {@condition persistent damage ||persistent fire damage}. The dragon can't use Breath Weapon again for {@dice 1d4} rounds."
 					],
-					"name": "Breath Weapon",
-					"entries_as_xyz": [
-						"The dragon breathes a blast of fire that explodes in a 20-foot burst within 40 feet, dealing {@damage 7d6} fire damage (DC 25 basic Reflex save). Creatures that fail the save also take {@damage 1d6} {@condition persistent damage ||persistent fire damage}. The dragon can't use Breath Weapon again for {@dice 1d4} rounds."
-					]
+					"name": "Breath Weapon"
 				},
 				{
 					"entries": [
@@ -3617,11 +3532,6 @@
 			},
 			"abilitiesMid": [
 				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction",
-						"entry": "{@as R}"
-					},
 					"traits": [
 						"aura",
 						"emotion",
@@ -3629,11 +3539,28 @@
 						"mental"
 					],
 					"entries": [
-						"90 feet, DC 39 (page 305). Animals, fungi, and plants take a \u20132 circumstance penalty to the save.",
-						"Fed by Water As young forest dragon, but 40 temporary HP."
+						"90 feet, DC 39. Animals, fungi, and plants take a \u20132 circumstance penalty to the save."
 					],
 					"name": "Frightful Presence",
 					"generic": true
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction",
+						"entry": "{@as R}"
+					},
+					"traits": [
+						"healing",
+						"necromancy",
+						"primal"
+					],
+					"trigger": "The forest dragon is targeted with a water spell or effect",
+					"frequency": "once per hour",
+					"entries": [
+						"The forest dragon gains 40 temporary Hit Points."
+					],
+					"name": "Fed by Water"
 				}
 			],
 			"speed": {
@@ -3761,12 +3688,9 @@
 						"primal"
 					],
 					"entries": [
-						"As young forest dragon, but {@dice 20d6} damage and 60-foot cone (DC 41)."
+						"The dragon unleashes a swarm of insects that deals {@damage 20d6} piercing damage in a 60-foot cone (DC 41 basic Reflex save) before dispersing. A creature that critically fails is {@condition stunned 2} from the insects' venom; this is a {@trait poison} effect. The dragon can't use Breath Weapon again for {@dice 1d4} rounds."
 					],
-					"name": "Breath Weapon",
-					"entries_as_xyz": [
-						"The dragon unleashes a swarm of insects that deals {@damage 10d6} piercing damage in a 30-foot cone (DC 29 basic Reflex save) before dispersing. A creature that critically fails is {@condition stunned 2} from the insects' venom; this is a {@trait poison} effect. The dragon can't use Breath Weapon again for {@dice 1d4} rounds."
-					]
+					"name": "Breath Weapon"
 				},
 				{
 					"activity": {
@@ -3790,7 +3714,7 @@
 						"unit": "action"
 					},
 					"entries": [
-						"As adult forest dragon, but {@dice 9d10} damage (DC 41)."
+						"The dragon draws moisture from the living creatures surrounding them, using the energy to heal their own wounds. Each living creature in a 30-foot emanation takes {@damage 9d10} negative damage (DC 41 basic Fortitude save). Creatures made entirely of water and plant creatures use the outcome one degree of success worse than they rolled. The dragon regains Hit Points equal to half of the highest damage a single creature takes from this effect. In addition, all non-creature plant life in the area withers and dies, eliminating non-magical undergrowth and any resulting {@quickref difficult terrain||3|terrain}, cover, and concealment. Water is also consumed in the same way, typically lowering any standing body of water fully within the area by 1 foot."
 					],
 					"name": "Draining Blight",
 					"traits": [
@@ -3799,10 +3723,7 @@
 						"negative",
 						"primal"
 					],
-					"frequency": "once per day",
-					"entries_as_xyz": [
-						"The dragon draws moisture from the living creatures surrounding them, using the energy to heal their own wounds. Each living creature in a 30-foot emanation takes {@damage 7d10} negative damage (DC 34 basic Fortitude save). Creatures made entirely of water and plant creatures use the outcome one degree of success worse than they rolled. The dragon regains Hit Points equal to half of the highest damage a single creature takes from this effect. In addition, all non-creature plant life in the area withers and dies, eliminating non-magical undergrowth and any resulting {@quickref difficult terrain||3|terrain}, cover, and concealment. Water is also consumed in the same way, typically lowering any standing body of water fully within the area by 1 foot."
-					]
+					"frequency": "once per day"
 				},
 				{
 					"entries": [
@@ -4002,13 +3923,10 @@
 						"water"
 					],
 					"entries": [
-						"As young sea dragon, but resistance 25."
+						"The dragon liquefies, turning entirely to water while maintaining their shape, for a split second. Against the triggering effect, they gain resistance 25 to fire and to all physical damage."
 					],
 					"name": "Liquefy",
-					"trigger": "The dragon is targeted by a {@action Strike} or spell that could deal fire or physical damage to them",
-					"entries_as_xyz": [
-						"The dragon liquefies, turning entirely to water while maintaining their shape, for a split second. Against the triggering effect, they gain resistance 15 to fire and to all physical damage."
-					]
+					"trigger": "The dragon is targeted by a {@action Strike} or spell that could deal fire or physical damage to them"
 				}
 			],
 			"speed": {
@@ -4122,13 +4040,9 @@
 						"water"
 					],
 					"entries": [
-						"As young sea dragon, but {@damage 18d6} bludgeoning damage in a 30-foot burst within 60 feet (DC 38 basic Reflex save)."
+						"The dragon shoots a ball of water that deals {@damage 18d6} bludgeoning damage in a 30-foot burst within 60 feet (DC 38 basic Reflex save). All non-magical fire in the radius is extinguished. The dragon can't use Breath Weapon again for {@dice 1d4} rounds."
 					],
-					"name": "Breath Weapon",
-					"entries_as_xyz": [
-						"The dragon shoots a ball of water that deals {@damage 9d6} bludgeoning damage in a 20-foot burst within 40 feet (DC 26 basic Reflex save). All non-magical fire in the radius is extinguished. The dragon can't use Breath Weapon again for {@dice 1d4} rounds.",
-						"Arcane Prepared Spells DC 26, attack +19; 3rd feet to fins, haste, wall of wind; 2nd hideous laughter, resist energy, water breathing; 1st air bubble, grease, grim tendrils; Cantrips (3rd) detect magic, message, prestidigitation, read aura, shield Arcane Prepared Spells DC 32, plus 5th mariner's curse, tongues, wall of ice; 4th dimension door, gaseous form, resilient sphere; Cantrips (5th) detect magic, message, prestidigitation, read aura, shield; Rituals DC 32; commune with nature Arcane Prepared Spells DC 38, plus 8th disappearance, discern location, horrid wilting; 7th energy aegis, project image, spell turning; 6th phantasmal calamity, repulsion, true seeing; Cantrips (8th) detect magic, message, prestidigitation, read aura, shield; Rituals DC 38; commune with nature."
-					]
+					"name": "Breath Weapon"
 				},
 				{
 					"activity": {
@@ -4162,12 +4076,9 @@
 						"water"
 					],
 					"entries": [
-						"As young sea dragon, but DC 38 and {@condition sickened 2}."
+						"A living creature that takes damage from the sea dragon's jaws {@action Strike} must succeed at a DC 38 Fortitude save or become {@condition sickened 2} as a surge of excess water floods its body."
 					],
-					"name": "Hyponatremia",
-					"entries_as_xyz": [
-						"A living creature that takes damage from the sea dragon's jaws {@action Strike} must succeed at a DC 26 Fortitude save or become {@condition sickened 1} as a surge of excess water floods its body."
-					]
+					"name": "Hyponatremia"
 				},
 				{
 					"activity": {
@@ -4183,10 +4094,18 @@
 					"requirements": "The dragon is in a body of water at least as large as they are",
 					"frequency": "once per 10 minutes;",
 					"entries": [
-						"The dragon slams their body down, sending a towering wave outward. This wave deals {@damage 10d12} bludgeoning damage in a 90-foot emanation. Each creature in the area must attempt a DC 38 Reflex save. Structures and unattended objects in the area take the full amount of damage with no saving throw. Critical Success The creature takes no damage but is pushed 30 feet from the dragon. Success The creature takes half damage and is pushed 60 feet from the dragon. Failure The creature takes full damage, is pushed 120 feet from the dragon, and falls {@condition prone}. Critical Failure As failure, but double damage."
+						"The dragon slams their body down, sending a towering wave outward. This wave deals {@damage 10d12} bludgeoning damage in a 90-foot emanation. Each creature in the area must attempt a DC 38 Reflex save. Structures and unattended objects in the area take the full amount of damage with no saving throw.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "The creature takes no damage but is pushed 30 feet from the dragon.",
+								"Success": "The creature takes half damage and is pushed 60 feet from the dragon.",
+								"Failure": "The creature takes full damage, is pushed 120 feet from the dragon, and falls {@condition prone}.",
+								"Critical Failure": "As failure, but double damage."
+							}
+						}
 					],
-					"name": "Tidal Wave",
-					"entries_as_xyz": "Ability not found: 'Tidal Wave As failure, but double damage.' in Ancient Sea Dragon, p.78"
+					"name": "Tidal Wave"
 				}
 			],
 			"inflicts": {
@@ -4433,12 +4352,9 @@
 						"evocation"
 					],
 					"entries": [
-						"As young sky dragon, but {@damage 9d12} electricity and {@damage 2d12} sonic damage, 30-foot burst within 60 feet, DC 40. See divine lightning below."
+						"The dragon shoots a ball of electricity that deals {@damage 9d12} electricity damage and {@damage 2d12} sonic damage in a 30-foot burst within 60 feet (DC 40 basic Reflex save). They can't use Breath Weapon again for {@dice 1d4} rounds. See divine lightning below."
 					],
-					"name": "Breath Weapon",
-					"entries_as_xyz": [
-						"The dragon shoots a ball of electricity that deals {@damage 5d12} electricity damage in a 20-foot burst within 40 feet (DC 28 basic Reflex save). They can't use Breath Weapon again for {@dice 1d4} rounds."
-					]
+					"name": "Breath Weapon"
 				},
 				{
 					"activity": {
@@ -4792,12 +4708,9 @@
 						"occult"
 					],
 					"entries": [
-						"As young sovereign dragon, but {@damage 21d6} mental damage and a 50-foot cone (DC 43)."
+						"The dragon unleashes a roar charged with psychic energy, dealing {@damage 21d6} mental damage in a 50-foot cone (DC 43 basic Will save). The dragon can't use Breath Weapon again for {@dice 1d4} rounds."
 					],
-					"name": "Breath Weapon",
-					"entries_as_xyz": [
-						"The dragon unleashes a roar charged with psychic energy, dealing {@damage 12d6} mental damage in a 30-foot cone (DC 30 basic Will save). The dragon can't use Breath Weapon again for {@dice 1d4} rounds."
-					]
+					"name": "Breath Weapon"
 				},
 				{
 					"entries": [
@@ -4821,7 +4734,7 @@
 						"unit": "action"
 					},
 					"entries": [
-						"As young sovereign dragon, but resistance 20 and DC 43."
+						"The dragon's golden armor glows with a protective golden light. The dragon gains a +2 status bonus to AC and resistance 20 to energy damage. Each enemy in a 20-foot emanation must succeed at a DC 43 Fortitude save or be {@condition dazzled}. All these effects last until the end of the dragon's next turn."
 					],
 					"name": "Gleaming Armor",
 					"traits": [
@@ -4829,10 +4742,7 @@
 						"light",
 						"occult"
 					],
-					"frequency": "once per hour",
-					"entries_as_xyz": [
-						"The dragon's golden armor glows with a protective golden light. The dragon gains a +2 status bonus to AC and resistance 10 to energy damage. Each enemy in a 20-foot emanation must succeed at a DC 30 Fortitude save or be {@condition dazzled}. All these effects last until the end of the dragon's next turn."
-					]
+					"frequency": "once per hour"
 				},
 				{
 					"activity": {
@@ -4856,13 +4766,10 @@
 						"occult"
 					],
 					"entries": [
-						"As adult sovereign dragon, but the status bonus is +2."
+						"The dragon chooses a mortal they've {@condition observed} performing an exceptional act and offers their august blessing in exchange for the creature carrying out a specific directive, such as defeating a tyrant or protecting a sacred site. If the creature agrees, until its next daily preparations, it gains a +2 status bonus to the dragon's choice of attack rolls, AC, or all of the following: {@skill Perception}, Will saves, and Charisma-based skill checks. The dragon can {@action Dismiss} this benefit by spending a single action (that has the {@trait concentrate} trait), which they're swift to do if the mortal dares to defy the dragon's directive."
 					],
 					"name": "Inspire Envoy",
-					"frequency": "once per day",
-					"entries_as_xyz": [
-						"The dragon chooses a mortal they've {@condition observed} performing an exceptional act and offers their august blessing in exchange for the creature carrying out a specific directive, such as defeating a tyrant or protecting a sacred site. If the creature agrees, until its next daily preparations, it gains a +1 status bonus to the dragon's choice of attack rolls, AC, or all of the following: {@skill Perception}, Will saves, and Charisma-based skill checks. The dragon can {@action Dismiss} this benefit by spending a single action (that has the {@trait concentrate} trait), which they're swift to do if the mortal dares to defy the dragon's directive."
-					]
+					"frequency": "once per day"
 				}
 			],
 			"inflicts": {
@@ -5021,12 +4928,9 @@
 						"fire"
 					],
 					"entries": [
-						"10 feet. As adult underworld dragon, but DC 35."
+						"10 feet. Each creature that ends its turn in the aura must succeed at a DC 35 Fortitude saving throw or become {@condition fatigued} while it remains in the aura."
 					],
-					"name": "Sweltering Heat",
-					"entries_as_xyz": [
-						"10 feet. Each creature that ends its turn in the aura must succeed at a DC 28 Fortitude saving throw or become {@condition fatigued} while it remains in the aura."
-					]
+					"name": "Sweltering Heat"
 				}
 			],
 			"speed": {
@@ -5132,12 +5036,9 @@
 						"fire"
 					],
 					"entries": [
-						"As young underworld dragon, but {@damage 14d6} fire damage in a 30-foot burst within 60 feet (DC 39 basic Reflex save), and {@damage 3d6} {@condition persistent damage ||persistent fire damage}."
+						"The dragon breathes a blast of fire that explodes in a 30-foot burst within 60 feet, dealing {@damage 14d6} fire damage (DC 39 basic Reflex save). Creatures that fail the save also take {@damage 3d6} {@condition persistent damage ||persistent fire damage}. The dragon can't use Breath Weapon again for {@dice 1d4} rounds."
 					],
-					"name": "Breath Weapon",
-					"entries_as_xyz": [
-						"The dragon breathes a blast of fire that explodes in a 20-foot burst within 40 feet, dealing {@damage 7d6} fire damage (DC 25 basic Reflex save). Creatures that fail the save also take {@damage 1d6} {@condition persistent damage ||persistent fire damage}. The dragon can't use Breath Weapon again for {@dice 1d4} rounds."
-					]
+					"name": "Breath Weapon"
 				},
 				{
 					"entries": [
@@ -5294,19 +5195,9 @@
 			"abilitiesMid": [
 				{
 					"entries": [
-						"The android takes a \u20131 circumstance penalty."
+						"The android takes a \u20131 circumstance penalty to Diplomacy and {@skill Performance} checks, and to {@skill Perception} checks to {@action Sense Motive}."
 					],
 					"name": "Emotionally Unaware"
-				},
-				{
-					"entries": [
-						"{@skill Performance} checks, and to {@skill Perception} checks."
-					],
-					"name": "to Diplomacy and"
-				},
-				{
-					"entries": [],
-					"name": "to Sense Motive."
 				},
 				{
 					"activity": {
@@ -5477,21 +5368,9 @@
 						"entry": "{@as R}"
 					},
 					"trigger": "A creature makes a melee weapon {@action Strike} against the angazhani and misses",
-					"requirements": "The angazhani is benefiting from their Defensive",
-					"entries": [],
+					"requirements": "The angazhani is benefiting from their Defensive Slam",
+					"entries": ["The angazhani attempts to {@action Disarm} the attacker of the triggering weapon."],
 					"name": "Defensive Disarm"
-				},
-				{
-					"entries": [
-						"The angazhani attempts."
-					],
-					"name": "Slam; Effect"
-				},
-				{
-					"entries": [
-						"{@action Disarm} the attacker of the triggering weapon."
-					],
-					"name": "to"
 				}
 			],
 			"speed": {
@@ -5920,13 +5799,9 @@
 			"abilitiesMid": [
 				{
 					"entries": [
-						"As animated silverware swarm, but reduced to AC 35 when {@condition broken}."
+						"Like normal objects, an animated colossus has Hardness. This Hardness reduces any damage the swarm takes by an amount equal to the Hardness. Once an animated colossus is reduced to fewer than half its Hit Points, or immediately upon being damaged by a critical hit, its construct armor breaks, removing the Hardness and reducing its Armor Class to 35."
 					],
-					"name": "Construct Armor",
-					"entries_as_xyz": [
-						"Like normal objects, an animated silverware swarm has Hardness. This Hardness reduces any damage the swarm takes by an amount equal to the Hardness.",
-						"Once an animated silverware swarm is reduced to fewer than half its Hit Points, or immediately upon being damaged by a critical hit, its construct armor breaks, removing the Hardness and reducing its Armor Class to 12."
-					]
+					"name": "Construct Armor"
 				},
 				{
 					"entries": [
@@ -6103,13 +5978,9 @@
 			"abilitiesMid": [
 				{
 					"entries": [
-						"As animated silverware swarm, but reduced to AC 26 when {@condition broken}."
+						"Like normal objects, an animated furnace has Hardness. This Hardness reduces any damage the furnace takes by an amount equal to the Hardness. Once an animated furnace is reduced to fewer than half its Hit Points, or immediately upon being damaged by a critical hit, its construct armor breaks, removing the Hardness and reducing its Armor Class to 26."
 					],
-					"name": "Construct Armor",
-					"entries_as_xyz": [
-						"Like normal objects, an animated silverware swarm has Hardness. This Hardness reduces any damage the swarm takes by an amount equal to the Hardness.",
-						"Once an animated silverware swarm is reduced to fewer than half its Hit Points, or immediately upon being damaged by a critical hit, its construct armor breaks, removing the Hardness and reducing its Armor Class to 12."
-					]
+					"name": "Construct Armor"
 				}
 			],
 			"speed": {
@@ -6408,13 +6279,9 @@
 			"abilitiesMid": [
 				{
 					"entries": [
-						"As animated silverware swarm, but reduced to AC 32 when {@condition broken}."
+						"Like normal objects, an animated trebuchet has Hardness. This Hardness reduces any damage the trebuchet takes by an amount equal to the Hardness. Once an animated trebuchet is reduced to fewer than half its Hit Points, or immediately upon being damaged by a critical hit, its construct armor breaks, removing the Hardness and reducing its Armor Class to 32."
 					],
-					"name": "Construct Armor",
-					"entries_as_xyz": [
-						"Like normal objects, an animated silverware swarm has Hardness. This Hardness reduces any damage the swarm takes by an amount equal to the Hardness.",
-						"Once an animated silverware swarm is reduced to fewer than half its Hit Points, or immediately upon being damaged by a critical hit, its construct armor breaks, removing the Hardness and reducing its Armor Class to 12."
-					]
+					"name": "Construct Armor"
 				}
 			],
 			"speed": {
@@ -6652,16 +6519,6 @@
 				}
 			],
 			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"entries": [
-						"{@damage 1d6+8} piercing Ranged crossbow +14 (range increment 60, reload 1), Damage {@damage 1d8+8} piercing Divine Innate Spells DC 18; 1st true strike."
-					],
-					"name": "S), Damage"
-				},
 				{
 					"entries": [
 						"When the sharpshooter reloads their crossbow, they also calculate the best angle to their target, increasing the damage die from {@dice 1d8} to {@dice 1d10} and gaining a +2 circumstance bonus to their damage roll for their next crossbow {@action Strike}, as long as it occurs before the end of their next turn."
@@ -7070,6 +6927,15 @@
 									"name": "vampiric touch"
 								}
 							]
+						},
+						"constant": {
+							"4": {
+								"spells": [
+									{
+										"name": "speak with plants"
+									}
+								]
+							}
 						}
 					}
 				}
@@ -7080,23 +6946,10 @@
 						"number": 1,
 						"unit": "action"
 					},
-					"traits": [
-						"page 305"
-					],
 					"entries": [
-						"Ranged thorns +16, Damage {@damage 2d8+5} piercing plus {@damage 1d4} {@condition persistent damage ||persistent bleed} Primal Innate Spells DC 22; 3rd vampiric touch;"
 					],
 					"name": "Knockdown",
 					"generic": true
-				},
-				{
-					"traits": [
-						"4th"
-					],
-					"entries": [
-						"speak with plants."
-					],
-					"name": "Constant"
 				},
 				{
 					"activity": {
@@ -7222,14 +7075,13 @@
 			"abilitiesMid": [
 				{
 					"entries": [
-						"As living graffiti."
+						"When a creature attempts to {@action Strike} a living rune and critically misses, the attacker hits the surface (a canvas, wall, or so on) behind the living rune. This might damage the surface or the attacker's weapon, at the GM's discretion."
 					],
-					"name": "Backdrop",
-					"entries_as_xyz": "Ability not found: 'Backdrop As living graffiti.' in Arcane Living Rune, p.163"
+					"name": "Backdrop"
 				},
 				{
 					"entries": [
-						"As living graffiti, except it takes {@dice 7d6} damage when its surface is destroyed."
+						"A living rune can move only along flat surfaces. If the surface it's on is destroyed (such as a portrait hit by a fireball spell or a wall being smashed), the rune takes {@damage 7d6} damage and is shunted to the nearest flat surface. If there is no flat surface within 5 feet, the rune is destroyed."
 					],
 					"name": "Surface-Bound"
 				}
@@ -7872,7 +7724,7 @@
 			"abilitiesBot": [
 				{
 					"entries": [
-						"Exposure to the bauble beast's magical stomach fluids enchants the mind. A creature critically hit by the beast's jaws or bile {@action Strike} is subject to a charitable urgeAPG spell (DC 23)."
+						"Exposure to the bauble beast's magical stomach fluids enchants the mind. A creature critically hit by the beast's jaws or bile {@action Strike} is subject to a {@spell charitable urge|apg} spell (DC 23)."
 					],
 					"name": "Philanthropic Bile"
 				},
@@ -7883,17 +7735,11 @@
 						"exploration"
 					],
 					"entries": [
-						"The jeweler beast creates imitation jewelry within its own digestive system. This takes about 4 hours. Determining the jewelry is fake works like detecting a forgery (Core Rulebook 251), using either {@skill Perception} or {@skill Crafting} instead."
-					],
-					"name": "Forge Jewelry"
-				},
-				{
-					"entries": [
-						"{@skill Society}, with a DC of 25.",
+						"The jeweler beast creates imitation jewelry within its own digestive system. This takes about 4 hours. Determining the jewelry is fake works like detecting a forgery (Core Rulebook 251), using either {@skill Perception} or {@skill Crafting} instead of Perception or {@skill Society}, with a DC of 25.",
 						"The process of creating fake jewelry also places an enchantment inside the item. Anyone who dons the imitation jewelry is targeted with a DC 24 {@spell suggestion} spell with a duration of 1 hour on a failure or 24 hours on a critical failure.",
 						"A creature that fails learns the location where the fake jewelry was created and is compelled to collect their valuable belongings and bring them to that location. Removing the imitation jewelry ends the spell immediately, but the wearer can't take it off voluntarily."
 					],
-					"name": "of Perception or"
+					"name": "Forge Jewelry"
 				}
 			],
 			"inflicts": {
@@ -8112,22 +7958,9 @@
 						"occult"
 					],
 					"entries": [
-						"The baykok steals life from its victim and leaves listless dread in its place. If a target fails its save against Devour Life, it becomes {@condition drained 1}. Each time the target gets a full night's rest, it must succeed at a DC 26 Fortitude save or its {@condition drained} value increases rather than decreasing. The curse ends if the creature recovers from the {@condition drained} condition, but if the creature would reach {@condition drained 5} from this effect, it dies.",
-						"(page 236 and Bestiary 298) and zombie (page 302 and Bestiary."
+						"The baykok steals life from its victim and leaves listless dread in its place. If a target fails its save against Devour Life, it becomes {@condition drained 1}. Each time the target gets a full night's rest, it must succeed at a DC 26 Fortitude save or its {@condition drained} value increases rather than decreasing. The curse ends if the creature recovers from the {@condition drained} condition, but if the creature would reach {@condition drained 5} from this effect, it dies."
 					],
 					"name": "Wasting Curse"
-				},
-				{
-					"entries": [
-						"2 of the Pathfinder."
-					],
-					"name": "in Chapter"
-				},
-				{
-					"entries": [
-						"Guide to determine."
-					],
-					"name": "Gamemastery"
 				}
 			],
 			"inflicts": {
@@ -8305,15 +8138,9 @@
 					"trigger": "A bright light source reveals the betobeto-san",
 					"requirements": "The betobeto-san isn't already within an area of bright light",
 					"entries": [
-						"The betobeto-san {@action Step||Steps} briefly."
+						"The betobeto-san Steps briefly into the {@place Shadow Plane} and then back again, appearing up to 30 feet away from where they began."
 					],
 					"name": "Shadow Step"
-				},
-				{
-					"entries": [
-						"Plane and then back again, appearing up to 30 feet away from where they began."
-					],
-					"name": "into the Shadow"
 				}
 			],
 			"speed": {
@@ -9366,30 +9193,21 @@
 				{
 					"entries": [
 						"A brainchild is sustained only by the reputation that precedes them.",
-						"Mindless creatures are immune to a brainchild and can't perceive them. The brainchild's size, features, and items, as well as the appearance of their attacks, match what the foes perceiving them expect. If foes expect to see different things, the brainchild chooses which to manifest. If any creature that can perceive the brainchild believes the brainchild has one of the abilities below, the brainchild has that ability. A creature can {@action Seek}."
-					],
-					"name": "Urban Legend"
-				},
-				{
-					"traits": [
-						"against the brainchild's Deception DC"
-					],
-					"entries": [
-						"to attempt to disbelieve an individual ability. If at any point no creature perceiving the brainchild believes in the ability, the brainchild loses that ability immediately. If foes expect different particulars, such as one believing the brainchild is immune to fire and another believing they're immune to divinations, the brainchild chooses one to have.",
+						"Mindless creatures are immune to a brainchild and can't perceive them. The brainchild's size, features, and items, as well as the appearance of their attacks, match what the foes perceiving them expect. If foes expect to see different things, the brainchild chooses which to manifest. If any creature that can perceive the brainchild believes the brainchild has one of the abilities below, the brainchild has that ability. A creature can {@action Seek} or {@action Sense Motive} to attempt to disbelieve an individual ability. If at any point no creature perceiving the brainchild believes in the ability, the brainchild loses that ability immediately. If foes expect different particulars, such as one believing the brainchild is immune to fire and another believing they're immune to divinations, the brainchild chooses one to have.",
 						{
 							"type": "list",
 							"items": [
-								"{@bold Tremorsense} (imprecise) 100 feet (page 306)",
-								"Immunity to one damage type, magic school, or condition",
-								"Weakness 10 to one damage type other than mental",
-								"Resistance 10 to physical damage, with an exception for either cold iron or silver",
-								"{@bold Frightful Presence} (aura, emotion, fear, mental) 100 feet, DC 28",
-								"{@damage 1d6} Extra Damage on Strikes, of a type one foe believes in",
-								"{@bold Additional} Spells phantom pain and shadow blast at 6th level"
+								"{@b {@ability Tremorsense}} (imprecise) 100 feet",
+								"{@b Immunity} to one damage type, magic school, or condition",
+								"{@b Weakness} 10 to one damage type other than mental",
+								"{@b Resistance} 10 to physical damage, with an exception for either cold iron or silver",
+								"{@b Frightful Presence} (aura, emotion, fear, mental) 100 feet, DC 28",
+								"{@b {@damage 1d6} Extra Damage} on Strikes, of a type one foe believes in",
+								"{@b Additional Spells} {@spell phantom pain} and {@spell shadow blast} at 6th level"
 							]
 						}
 					],
-					"name": "or Sense Motive"
+					"name": "Urban Legend"
 				}
 			],
 			"ac": {
@@ -10444,9 +10262,6 @@
 						"unit": "reaction",
 						"entry": "{@as R}"
 					},
-					"traits": [
-						"page 304"
-					],
 					"entries": [],
 					"name": "Attack of Opportunity",
 					"generic": true
@@ -10503,15 +10318,9 @@
 						"mental"
 					],
 					"entries": [
-						"Each caligni within 30 feet of the vanguard gains."
+						"Each caligni within 30 feet of the vanguard gains the Attack of Opportunity reaction until the end of the vanguard's next turn. Once a caligni has used this {@action Attack of Opportunity}, that caligni is temporarily immune to the same vanguard's Call to Arms for 10 minutes."
 					],
 					"name": "Call to Arms"
-				},
-				{
-					"entries": [
-						"Opportunity reaction until the end of the vanguard's next turn. Once a caligni has used this {@action Attack of Opportunity}, that caligni is temporarily immune to the same vanguard's Call to Arms for 10 minutes."
-					],
-					"name": "the Attack of"
 				},
 				{
 					"activity": {
@@ -10869,16 +10678,9 @@
 						"unit": "action"
 					},
 					"entries": [
-						"The camel {@action Stride||Strides} twice. It has a +5-foot circumstance bonus to its Speed during these {@action Stride||Strides}, ignoring {@quickref difficult terrain||3|terrain} caused by rubble, sand, and uneven ground made of earth and stone.",
-						"troop's Hellknight plate (Pathfinder."
+						"The camel {@action Stride||Strides} twice. It has a +5-foot circumstance bonus to its Speed during these {@action Stride||Strides}, ignoring {@quickref difficult terrain||3|terrain} caused by rubble, sand, and uneven ground made of earth and stone."
 					],
 					"name": "Sand Stride"
-				},
-				{
-					"entries": [
-						"80)"
-					],
-					"name": "Lost Omens Character Guide"
 				}
 			],
 			"inflicts": {
@@ -11129,10 +10931,17 @@
 					],
 					"requirements": "The caulborn's last action was a successful hand {@action Strike}",
 					"entries": [
-						"The caulborn steals some of the psychic energy from the creature it hit. The target must attempt a DC 25 Will save; regardless of the outcome, the creature is temporarily immune to Consume Thoughts for 1 minute. Success The target is unaffected. Failure The target becomes {@condition stupefied 2} for 1 minute, and the caulborn regains {@dice 1d12} Hit Points. Critical Failure As failure, but the target is {@condition stupefied 3} for 1 minute and the caulborn regains {@dice 2d12} Hit Points. If the target was already {@condition stupefied} when the caulborn used this ability, the target is also {@condition confused} for 1 round."
+						"The caulborn steals some of the psychic energy from the creature it hit. The target must attempt a DC 25 Will save; regardless of the outcome, the creature is temporarily immune to Consume Thoughts for 1 minute.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Success": "The target is unaffected.",
+								"Failure": "The target becomes {@condition stupefied 2} for 1 minute, and the caulborn regains {@dice 1d12} Hit Points.",
+								"Critical Failure": "As failure, but the target is {@condition stupefied 3} for 1 minute and the caulborn regains {@dice 2d12} Hit Points. If the target was already {@condition stupefied} when the caulborn used this ability, the target is also {@condition confused} for 1 round."
+							}
+						}
 					],
-					"name": "Consume Thoughts",
-					"entries_as_xyz": "Ability not found: 'Consume Thoughts As failure, but the target is {@condition stupefied 3} for 1 minute and the caulborn regains {@dice 2d12} Hit Points. If the target was already {@condition stupefied} when the caulborn used this ability, the target is also {@condition confused} for 1 round.' in Caulborn, p.94"
+					"name": "Consume Thoughts"
 				},
 				{
 					"traits": [
@@ -11490,18 +11299,9 @@
 					},
 					"requirements": "The cecaelia is holding a net in two appendages",
 					"entries": [
-						"The cecaelia hurls their net, attempting to hamper a foe. The cecaelia makes a ranged {@action Strike} (with a +15 modifier) against a Medium or smaller creature within 20 feet. On a hit, the target is {@condition flat-footed} and takes a \u201310-foot circumstance penalty to its Speeds. On a critical hit, the creature is instead {@condition restrained}."
+						"The cecaelia hurls their net, attempting to hamper a foe. The cecaelia makes a ranged {@action Strike} (with a +15 modifier) against a Medium or smaller creature within 20 feet. On a hit, the target is {@condition flat-footed} and takes a \u201310-foot circumstance penalty to its Speeds. On a critical hit, the creature is instead {@condition restrained}. The DC to Escape the net is 16. A creature adjacent to the target can {@action Interact} with the net to remove it from the target."
 					],
 					"name": "Hurl Net"
-				},
-				{
-					"traits": [
-						"the"
-					],
-					"entries": [
-						"net is 16. A creature adjacent to the target can {@action Interact} with the net to remove it from the target."
-					],
-					"name": "The DC to Escape"
 				},
 				{
 					"activity": {
@@ -12156,14 +11956,9 @@
 				},
 				{
 					"entries": [
-						"City guards ignore {@quickref difficult terrain||3|terrain} (but not {@quickref greater difficult terrain||3|terrain}) caused by crowds or from movement through narrow spaces such as alleyways.",
-						"text on clockwork design\u2014Glorious."
+						"City guards ignore {@quickref difficult terrain||3|terrain} (but not {@quickref greater difficult terrain||3|terrain}) caused by crowds or from movement through narrow spaces such as alleyways."
 					],
 					"name": "Urban Chasers"
-				},
-				{
-					"entries": [],
-					"name": "Rhythms in Life and Mechanica."
 				}
 			],
 			"inflicts": {
@@ -14355,10 +14150,16 @@
 			],
 			"abilitiesBot": [
 				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"frequency": "once per day",
 					"entries": [
-						"While bonded, the spirit guide loses the {@trait incorporeal} and {@trait spirit} traits, loses their immunities and resistances, and changes their Strikes to deal the appropriate physical damage (typically piercing or slashing) instead of force damage."
+						"The spirit guide forms a bond with a mortal creature. While the bond exists, the spirit guide increases their current and maximum Hit Points by 10, gains a +2 status bonus to their attack and damage rolls, and can communicate telepathically with the bonded mortal as long as the two beings are on the same plane. The spirit guide can only be bonded with one mortal at a time, and they can take this action again to end the bond or to form a new bond (which also ends the old bond). The bond also ends if the spirit guide or the mortal dies.",
+						"This bond strengthens the spirit guide's connection to the {@place Material Plane}. While bonded, the spirit guide loses the {@trait incorporeal} and {@trait spirit} traits, loses their immunities and resistances, and changes their Strikes to deal the appropriate physical damage (typically piercing or slashing) instead of force damage."
 					],
-					"name": "the Material Plane."
+					"name": "Bond with Mortal"
 				},
 				{
 					"activity": {
@@ -14509,12 +14310,9 @@
 						"mental"
 					],
 					"entries": [
-						"100 feet. As Elysian titan, but DC 46."
+						"100 feet. Titans warp perception and distance around them to seem even larger and more imposing. A creature that enters or begins its turn within the emanation must succeed at a DC 46 Will save or its movement toward the titan is movement over {@quickref difficult terrain||3|terrain} ({@quickref greater difficult terrain||3|terrain} on a critical failure) for 1 round."
 					],
-					"name": "Impossible Stature",
-					"entries_as_xyz": [
-						"100 feet. Titans warp perception and distance around them to seem even larger and more imposing. A creature that enters or begins its turn within the emanation must succeed at a DC 44 Will save or its movement toward the titan is movement over {@quickref difficult terrain||3|terrain} ({@quickref greater difficult terrain||3|terrain} on a critical failure) for 1 round."
-					]
+					"name": "Impossible Stature"
 				},
 				{
 					"entries": [
@@ -14810,10 +14608,18 @@
 					},
 					"trigger": "A creature within 60 feet is targeted by a spell that would restore Hit Points or provide a status bonus (the deimavigga automatically recognizes such effects)",
 					"entries": [
-						"The deimavigga whispers disturbing lies, audible only to the target, to shake the target's faith in the spell's caster. The target must attempt a DC 43 Will save. Critical Success The target disbelieves the lies and receives the intended benefit of the spell; the target becomes temporarily immune to Whispers of Discord for 24 hours. Success As critical success, but the target isn't temporarily immune. Failure The spell fails to affect the target. The target refuses all aid from that caster for 1 round and doesn't count as the caster's ally. Critical Failure As failure, but the duration is 1 minute."
+						"The deimavigga whispers disturbing lies, audible only to the target, to shake the target's faith in the spell's caster. The target must attempt a DC 43 Will save.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "The target disbelieves the lies and receives the intended benefit of the spell; the target becomes temporarily immune to Whispers of Discord for 24 hours.",
+								"Success": "As critical success, but the target isn't temporarily immune.",
+								"Failure": "The spell fails to affect the target. The target refuses all aid from that caster for 1 round and doesn't count as the caster's ally.",
+								"Critical Failure": "As failure, but the duration is 1 minute."
+							}
+						}
 					],
-					"name": "Whispers of Discord",
-					"entries_as_xyz": "Ability not found: 'Whispers of Discord As critical success, but the target isn't temporarily immune. Failure The spell fails to affect the target. The target refuses all aid from that caster for 1 round and doesn't count as the caster's ally. Critical Failure As failure, but the duration is 1 minute.' in Deimavigga, p.66"
+					"name": "Whispers of Discord"
 				}
 			],
 			"speed": {
@@ -15302,7 +15108,7 @@
 			"abilitiesBot": [
 				{
 					"entries": [
-						"staff, striking rune."
+						"{@item staff}, {@item striking||striking rune}."
 					],
 					"name": "Faithful Weapon"
 				},
@@ -15748,7 +15554,8 @@
 			},
 			"senses": {
 				"other": [
-					"darkvision; true seeing"
+					"{@ability darkvision}",
+					"{@spell true seeing}"
 				]
 			},
 			"languages": {
@@ -16236,10 +16043,17 @@
 					],
 					"requirements": "The dramofir is adjacent to an {@condition unconscious} or sleeping creature",
 					"entries": [
-						"The dramofir licks the creature's forehead, places their hand in the same spot, and siphons the creature's dreams to incorporate into their robes. If the target is affected by any {@trait mental} effect altering their dreams, such as an animate dream's curse of endless nightmares or a {@spell nightmare} spell, the dramofir attempts to counteract that effect (counteract modifier +26). Otherwise, the dramofir plucks a benign dream from the creature, and the target must attempt a DC 36 Will save. Success The creature is unaffected. Failure The creature is {@condition stupefied 1} until the next time it gets a full night's rest. Critical Failure As failure, but {@condition stupefied 2}, and the dramofir casts a 6th-level {@spell modify memory} spell on the target."
+						"The dramofir licks the creature's forehead, places their hand in the same spot, and siphons the creature's dreams to incorporate into their robes. If the target is affected by any {@trait mental} effect altering their dreams, such as an animate dream's curse of endless nightmares or a {@spell nightmare} spell, the dramofir attempts to counteract that effect (counteract modifier +26). Otherwise, the dramofir plucks a benign dream from the creature, and the target must attempt a DC 36 Will save.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Success": "The creature is unaffected.",
+								"Failure": "The creature is {@condition stupefied 1} until the next time it gets a full night's rest.",
+								"Critical Failure": "As failure, but {@condition stupefied 2}, and the dramofir casts a 6th-level {@spell modify memory} spell on the target."
+							}
+						}
 					],
-					"name": "Pluck Dream",
-					"entries_as_xyz": "Ability not found: 'Pluck Dream As failure, but {@condition stupefied 2}, and the dramofir casts a 6th-level {@spell modify memory} spell on the target.' in Dramofir, p.86"
+					"name": "Pluck Dream"
 				}
 			],
 			"inflicts": {
@@ -17133,10 +16947,8 @@
 			"resistances": [
 				{
 					"amount": 10,
-					"name": "all damage"
-				},
-				{
-					"name": "ghost"
+					"name": "all damage",
+					"note": "except force, {@item ghost touch}, or positive; double resistance vs. non-magical"
 				}
 			],
 			"abilitiesMid": [
@@ -17386,12 +17198,9 @@
 						"air"
 					],
 					"entries": [
-						"30 feet. As air wisp, but for the {@trait earth} trait."
+						"30 feet. All wisps vibrate at a frequency attuned to their element, resonating with and empowering all creatures and effects sharing that trait. A creature in the area gains a +1 status bonus to attack and damage rolls for effects with the {@trait earth} trait; a creature with the {@trait elemental} and {@trait earth} traits gains this bonus to all attack and damage rolls."
 					],
-					"name": "Resonance",
-					"entries_as_xyz": [
-						"30 feet. All wisps vibrate at a frequency attuned to their element, resonating with and empowering all creatures and effects sharing that trait. A creature in the area gains a +1 status bonus to attack and damage rolls for effects with the {@trait air} trait; a creature with the {@trait elemental} and {@trait air} traits gains this bonus to all attack and damage rolls."
-					]
+					"name": "Resonance"
 				},
 				{
 					"activity": {
@@ -17432,7 +17241,7 @@
 			"abilitiesBot": [
 				{
 					"entries": [
-						"When an air wisp rolls a critical failure on a check to {@action Aid}, they get a failure instead, and when they roll a success, they get a critical success instead."
+						"When an earth wisp rolls a critical failure on a check to {@action Aid}, they get a failure instead, and when they roll a success, they get a critical success instead."
 					],
 					"name": "In Concert"
 				}
@@ -17881,16 +17690,37 @@
 					"name": "Guardian Monolith"
 				},
 				{
+					"entries": [
+						"When the sphinx casts shape stone, they can shape the stone into a magical duplicate of themself. When they cast {@spell clairaudience}, clairvoyance, locate, or ventriloquism, they can make the effect come from any duplicate, instead of themself. The elder sphinx can concentrate for 1 minute to transfer their consciousness to any duplicate; the sphinx is then in their stone form from Guardian Monolith in that statue. The sphinx can have no more than four duplicate statues at a time. Casting shape stone at that point causes the oldest duplicate to crumble to dust."
+					],
+					"name": "Idols of Stone"
+				},
+				{
+					"name": "Pose a Riddle",
+					"traits": [
+						"enchantment",
+						"incapacitation",
+						"linguistic",
+						"mental",
+						"occult"
+					],
 					"activity": {
 						"number": 2,
 						"unit": "action"
 					},
-					"frequency": "once per 10 minutes; The sphinx recites a riddle and compels up to 10 creatures within 30 feet to answer (DC 37 Will save).",
+					"frequency": "once per 10 minutes",
 					"entries": [
-						"When the sphinx casts shape stone, they can shape the stone into a magical duplicate of themself. When they cast {@spell clairaudience}, clairvoyance, locate, or ventriloquism, they can make the effect come from any duplicate, instead of themself. The elder sphinx can concentrate for 1 minute to transfer their consciousness to any duplicate; the sphinx is then in their stone form from Guardian Monolith in that statue. The sphinx can have no more than four duplicate statues at a time. Casting shape stone at that point causes the oldest duplicate to crumble to dust. Pose a Riddle (enchantment, incapacitation, linguistic, mental, occult) The GM either runs the riddle out of character by timing the players' attempts, or picks an appropriate associated skill for the riddle, such as {@skill Religion} for a riddle involving divine mysteries. The sphinx gains a +2 circumstance bonus to attack rolls and damage rolls against any creature that answers incorrectly even once. This bonus lasts for 1 day. Critical Success The creature is unaffected, but it can choose to try to help solve the riddle.. Success The creature attempts to answer the riddle. Each round spending at least one action attempting a {@action Recall Knowledge} check with the chosen skill (or working on the answer, if using an out of game riddle). This lasts for 1 minute, until the creature successfully answers the riddle, or until an enemy takes a {@condition hostile} action against the creature, whichever comes first. Failure As success but the creature must spend at least two actions each round attempting to answer. Critical Failure As failure, but up to 1 hour."
-					],
-					"name": "Idols of Stone",
-					"entries_as_xyz": "Ability not found: 'Idols of Stone As success but the creature must spend at least two actions each round attempting to answer.' in Elder Sphinx, p.250"
+						"The sphinx recites a riddle and compels up to 10 creatures within 30 feet to answer (DC 37 Will save). The GM either runs the riddle out of character by timing the players' attempts, or picks an appropriate associated skill for the riddle, such as {@skill Religion} for a riddle involving divine mysteries. The sphinx gains a +2 circumstance bonus to attack rolls and damage rolls against any creature that answers incorrectly even once. This bonus lasts for 1 day.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "The creature is unaffected, but it can choose to try to help solve the riddle.",
+								"Success": "The creature attempts to answer the riddle. Each round spending at least one action attempting a {@action Recall Knowledge} check with the chosen skill (or working on the answer, if using an out of game riddle). This lasts for 1 minute, until the creature successfully answers the riddle, or until an enemy takes a {@condition hostile} action against the creature, whichever comes first.",
+								"Failure": "As success but the creature must spend at least two actions each round attempting to answer.",
+								"Critical Failure": "As failure, but up to 1 hour."
+							}
+						}
+					]
 				},
 				{
 					"activity": {
@@ -18137,17 +17967,13 @@
 						"unit": "action"
 					},
 					"entries": [
-						"As wyrmwraith, but {@damage 24d6} negative damage, a 90-foot cone, and DC 46."
+						"The wyrmwraith unleashes a burst of negative energy that deals {@damage 24d6} negative damage to all creatures in a 90-foot cone (DC 46 basic Reflex save). They can't use Breath Weapon again for {@dice 1d4} rounds."
 					],
 					"name": "Breath Weapon",
 					"traits": [
 						"divine",
 						"necromancy",
 						"negative"
-					],
-					"entries_as_xyz": [
-						"The wyrmwraith unleashes a burst of negative energy that deals {@damage 18d6} negative damage to all creatures in a 60-foot cone (DC 38 basic Reflex save)",
-						"They can't use Breath Weapon again for {@dice 1d4} rounds."
 					]
 				},
 				{
@@ -18188,15 +18014,12 @@
 				},
 				{
 					"entries": [
-						"As wyrmwraith, but 24 temporary Hit Points and DC 46."
+						"When a wyrmwraith deals damage to a living creature with a spectral jaws or spectral claw {@action Strike}, the wyrmwraith gains 24 temporary Hit Points, and the creature must succeed at a DC 46 Fortitude save or become {@condition drained 2}. Further damage dealt by the wyrmwraith's spectral jaws or spectral claws Strikes increases the value of the {@condition drained} condition by 2 on a failed save, to a maximum of {@condition drained 4}."
 					],
 					"name": "Drain Life",
 					"traits": [
 						"divine",
 						"necromancy"
-					],
-					"entries_as_xyz": [
-						"When a wyrmwraith deals damage to a living creature with a spectral jaws or spectral claw {@action Strike}, the wyrmwraith gains 18 temporary Hit Points, and the creature must succeed at a DC 38 Fortitude save or become {@condition drained 2}. Further damage dealt by the wyrmwraith's spectral jaws or spectral claws Strikes increases the value of the {@condition drained} condition by 2 on a failed save, to a maximum of {@condition drained 4}."
 					]
 				},
 				{
@@ -18232,8 +18055,7 @@
 						"divine",
 						"move"
 					],
-					"requirements": "The wyrmwraith is in their ectoplasmic form",
-					"entries_as_xyz": "Ability not found: 'Phase Lurch As the {@action Stride} action, but the wyrmwraith can pass through walls or material obstacles as though they were incorporeal. They must begin and end their movement outside of any physical obstacles, and passing through solid material is {@quickref difficult terrain||3|terrain}.' in Wyrmwraith, p.296"
+					"requirements": "The wyrmwraith is in their ectoplasmic form"
 				}
 			],
 			"inflicts": {
@@ -19779,15 +19601,9 @@
 						"unit": "action"
 					},
 					"entries": [
-						"The feathered bear {@action Stride||Strides} and makes a {@action Strike} at the end of that movement."
+						"The feathered bear {@action Stride||Strides} and makes a {@action Strike} at the end of that movement. During the {@action Stride}, the feathered bear ignores {@quickref difficult terrain||3|terrain} and {@quickref greater difficult terrain||3|terrain}, and they can move across air as easily as solid ground. If the feathered bear doesn't end their movement on solid ground, they fall as soon as the {@action Strike} is completed."
 					],
 					"name": "Feathered Charge"
-				},
-				{
-					"entries": [
-						"{@action Stride}, the feathered bear ignores {@quickref difficult terrain||3|terrain} and {@quickref greater difficult terrain||3|terrain}, and they can move across air as easily as solid ground. If the feathered bear doesn't end their movement on solid ground, they fall as soon as the {@action Strike} is completed."
-					],
-					"name": "During the"
 				},
 				{
 					"activity": {
@@ -19949,12 +19765,9 @@
 			"abilitiesMid": [
 				{
 					"entries": [
-						"As clacking skull swarm, but {@damage 3d12} piercing and {@damage 2d12} negative, DC 32."
+						"When a feral skull swarm is reduced to 0 Hit Points, it erupts in an explosion of foul energy and bone fragments in a 30-foot burst, dealing {@damage 3d12} piercing damage and {@damage 2d12} negative damage (DC 32 basic Reflex save)."
 					],
-					"name": "Boneshard Burst",
-					"entries_as_xyz": [
-						"When a clacking skull swarm is reduced to 0 Hit Points, it erupts in an explosion of foul energy and bone fragments in a 30-foot burst, dealing {@damage 2d12} piercing damage and {@damage 2d12} negative damage (DC 29 basic Reflex save)."
-					]
+					"name": "Boneshard Burst"
 				}
 			],
 			"speed": {
@@ -20287,12 +20100,9 @@
 						"air"
 					],
 					"entries": [
-						"30 feet. As air wisp, but for the {@trait fire} trait."
+						"30 feet. All wisps vibrate at a frequency attuned to their element, resonating with and empowering all creatures and effects sharing that trait. A creature in the area gains a +1 status bonus to attack and damage rolls for effects with the {@trait fire} trait; a creature with the {@trait elemental} and {@trait fire} traits gains this bonus to all attack and damage rolls."
 					],
-					"name": "Resonance",
-					"entries_as_xyz": [
-						"30 feet. All wisps vibrate at a frequency attuned to their element, resonating with and empowering all creatures and effects sharing that trait. A creature in the area gains a +1 status bonus to attack and damage rolls for effects with the {@trait air} trait; a creature with the {@trait elemental} and {@trait air} traits gains this bonus to all attack and damage rolls."
-					]
+					"name": "Resonance"
 				},
 				{
 					"activity": {
@@ -20334,7 +20144,7 @@
 			"abilitiesBot": [
 				{
 					"entries": [
-						"When an air wisp rolls a critical failure on a check to {@action Aid}, they get a failure instead, and when they roll a success, they get a critical success instead."
+						"When an fire wisp rolls a critical failure on a check to {@action Aid}, they get a failure instead, and when they roll a success, they get a critical success instead."
 					],
 					"name": "In Concert"
 				}
@@ -20733,7 +20543,9 @@
 			},
 			"resistances": [
 				{
-					"name": "all damage"
+					"amount": 5,
+					"name": "all damage",
+					"note": "except force, {@item ghost touch}, or positive; double resistance vs. non-magical"
 				}
 			],
 			"abilitiesMid": [
@@ -21521,14 +21333,9 @@
 			],
 			"resistances": [
 				{
-					"name": "acid"
-				},
-				{
-					"name": "electricity"
-				},
-				{
 					"amount": 1,
-					"name": "or sonic"
+					"name": "acid, electricity, or sonic",
+					"note": "chosen randomly each day"
 				}
 			],
 			"abilitiesMid": [],
@@ -22135,7 +21942,15 @@
 					],
 					"trigger": "A humanoid enemy damages the ghoran manipulator with a melee attack",
 					"entries": [
-						"The ghoran manipulator rearranges its facial petals and wails, mimicking humanoid anguish to engender sympathy. The triggering creature must attempt a DC 20 Will save. Success The target is unaffected and is temporarily immune for 1 hour. Failure The target takes a \u20132 circumstance penalty on attack rolls against the ghoran manipulator until the start of its next turn. Critical Failure As failure, and the target is {@condition stupefied 2} until the start of its next turn."
+						"The ghoran manipulator rearranges its facial petals and wails, mimicking humanoid anguish to engender sympathy. The triggering creature must attempt a DC 20 Will save.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Success": "The target is unaffected and is temporarily immune for 1 hour.",
+								"Failure": "The target takes a –2 circumstance penalty on attack rolls against the ghoran manipulator until the start of its next turn.",
+								"Critical Failure": "As failure, and the target is {@condition stupefied 2} until the start of its next turn."
+							}
+						}
 					],
 					"name": "Anguished Cry"
 				}
@@ -22654,15 +22469,9 @@
 					},
 					"trigger": "The opossum is reduced below 15 HP",
 					"entries": [
-						"The opossum collapses. It is {@condition flat-footed} and can use actions that require only its mind, but any other action ends the ruse. A successful DC 18 {@skill Perception} check to {@action Seek} or {@skill Medicine} check."
+						"The opossum collapses. It is {@condition flat-footed} and can use actions that require only its mind, but any other action ends the ruse. A successful DC 18 {@skill Perception} check to {@action Seek} or {@skill Medicine} check to Recall Knowledge is required to determine that the animal is not, in fact, dead."
 					],
 					"name": "Feign Death"
-				},
-				{
-					"entries": [
-						"Knowledge is required to determine that the animal is not, in fact, dead."
-					],
-					"name": "to Recall"
 				},
 				{
 					"activity": {
@@ -23407,7 +23216,7 @@
 							"traits": [
 								"disease"
 							],
-							"note": " The {@condition sickened}\ncondition from carrion fever can't be\nreduced while the affliction remains",
+							"note": " The {@condition sickened} condition from carrion fever can't be reduced while the affliction remains",
 							"DC": "18",
 							"savingThrow": "Fortitude",
 							"onset": "1 day",
@@ -23933,7 +23742,7 @@
 							"DC": "24",
 							"savingThrow": "Fortitude",
 							"onset": null,
-							"maxDuration": "6\nrounds",
+							"maxDuration": "6 rounds",
 							"stages": [
 								{
 									"stage": 1,
@@ -24357,8 +24166,7 @@
 				},
 				{
 					"entries": [
-						"A globster can survive for 1 hour out of the water, after which it risks drowning and suffocation.",
-						"tools and several bags of holding."
+						"A globster can survive for 1 hour out of the water, after which it risks drowning and suffocation."
 					],
 					"name": "Saturated"
 				}
@@ -24450,15 +24258,9 @@
 			"abilitiesTop": [
 				{
 					"entries": [
-						"A green man can communicate with plants, with the effects of speak with plants, and can use."
+						"A green man can communicate with plants, with the effects of speak with plants, and can use {@skill Diplomacy} to {@action Make an Impression} on plants and {@action Request} things from plants."
 					],
 					"name": "Green Tongue"
-				},
-				{
-					"entries": [
-						"{@action Make an Impression} on plants and {@action Request} things from plants."
-					],
-					"name": "Diplomacy to"
 				},
 				{
 					"entries": [
@@ -24525,29 +24327,7 @@
 						"transmutation"
 					],
 					"entries": [
-						"60 feet.",
-						"Living creatures in the area other than plants slowly transform into non-creature plants. The green man can exclude creatures from this effect, but they must be aware of a creature's presence and location to do so.",
-						"Edicts discover or create new Anathema allow flagrant abuse."
-					],
-					"name": "Green Caress"
-				},
-				{
-					"entries": [],
-					"name": "Follower Alignments NG, N, NE"
-				},
-				{
-					"entries": [
-						"Font heal."
-					],
-					"name": "Divine"
-				},
-				{
-					"entries": [],
-					"name": "Divine Skill Nature"
-				},
-				{
-					"entries": [
-						"Weapon sickle Domains healing, might, nature, Cleric Spells 1st: {@spell summon plant or fungus}, 2nd: {@spell entangle}, 6th: {@spell tangling creepers} A non-plant creature in the area must attempt a DC 45 Fortitude save immediately before the start of its turn.",
+						"60 feet. Living creatures in the area other than plants slowly transform into non-creature plants. The green man can exclude creatures from this effect, but they must be aware of a creature's presence and location to do so. A non-plant creature in the area must attempt a DC 45 Fortitude save immediately before the start of its turn.",
 						{
 							"type": "successDegree",
 							"entries": {
@@ -24558,7 +24338,7 @@
 							}
 						}
 					],
-					"name": "Favored"
+					"name": "Green Caress"
 				},
 				{
 					"activity": {
@@ -24675,6 +24455,28 @@
 					}
 				}
 			],
+			"rituals": [
+				{
+					"DC": 48,
+					"rituals": [
+						{
+							"name": "awaken animal"
+						},
+						{
+							"name": "commune with nature"
+						},
+						{
+							"name": "control weather"
+						},
+						{
+							"name": "plant growth"
+						},
+						{
+							"name": "primal call"
+						}
+					]
+				}
+			],
 			"abilitiesBot": [
 				{
 					"activity": {
@@ -24682,13 +24484,13 @@
 						"unit": "action"
 					},
 					"entries": [
-						"The green man's vines leach away magic and transform it into life essence for the green man. On a successful vine {@action Strike}, the green man attempts to counteract one spell active on the target (typically one vexing the green man, or determined randomly if they aren't aware of specific effects), with a counteract level of 10 and a modifier of +38. If the effect is counteracted, the green man gains 30 temporary Hit Points that last for 10 minutes."
+						"The green man's vines leach away magic and transform it into life essence for the green man. On a successful vine {@action Strike}, the green man attempts to counteract one spell active on the target (typically one vexing the green man, or determined randomly if they aren't aware of specific effects), with a counteract level of 10 and a modifier of {@dice 1d20+38|+38}. If the effect is counteracted, the green man gains 30 temporary Hit Points that last for 10 minutes."
 					],
 					"name": "Absorb Magic"
 				},
 				{
 					"entries": [
-						"The green man's thorns embed themselves into any creature they damage, taking root into the ground. A target damaged by a thorn has its Speeds halved, and it can't {@action Step}, {@action Fly}, air walk, or otherwise leave the ground until the thorn is removed. Removing a thorn requires 3 {@action Interact} actions, which don't have to be consecutive. If the creature performing the final action doesn't succeed at a DC 45 {@skill Medicine} check as part of that action, the target takes {@dice 10d6} damage upon the thorn's removal."
+						"The green man's thorns embed themselves into any creature they damage, taking root into the ground. A target damaged by a thorn has its Speeds halved, and it can't {@action Step}, {@action Fly}, {@spell air walk}, or otherwise leave the ground until the thorn is removed. Removing a thorn requires 3 {@action Interact} actions, which don't have to be consecutive. If the creature performing the final action doesn't succeed at a DC 45 {@skill Medicine} check as part of that action, the target takes {@dice 10d6} damage upon the thorn's removal."
 					],
 					"name": "Embed"
 				},
@@ -24704,10 +24506,15 @@
 				},
 				{
 					"entries": [
-						"A green man can use their {@ability Improved Grab} action against a creature of any size.",
-						"Green Rituals A green man can perform all their rituals without secondary casters, relying on their own primal ties to the vital essence in spirits of nature. A green man's awaken animal and primal call rituals work on plants instead of their usual range of choices. Most green men also know the ritual to create various types of leshys and possibly even magic allowing the creation of arboreals or more powerful plant creatures."
+						"A green man can use their {@ability Improved Grab} action against a creature of any size."
 					],
 					"name": "Green Grab"
+				},
+				{
+					"entries": [
+						"A green man can perform all their rituals without secondary casters, relying on their own primal ties to the vital essence in spirits of nature. A green man's awaken animal and primal call rituals work on plants instead of their usual range of choices. Most green men also know the ritual to create various types of leshys and possibly even magic allowing the creation of arboreals or more powerful plant creatures."
+					],
+					"name": "Green Rituals"
 				},
 				{
 					"activity": {
@@ -24718,15 +24525,6 @@
 						"The green man lashes out with all six vines to attack many opponents. They make up to six vine Strikes, each against a different target; this counts as one attack for their multiple attack penalty, increasing only after all the attacks are made."
 					],
 					"name": "Vine Forest"
-				},
-				{
-					"traits": [
-						"Bestiary 2 134"
-					],
-					"entries": [
-						"and grimples (Bestiary 192) or train giant rats (Bestiary 276) and spider swarms (Bestiary 306) to do their bidding."
-					],
-					"name": "Vexgits"
 				}
 			],
 			"inflicts": {
@@ -25187,30 +24985,17 @@
 			],
 			"abilitiesBot": [
 				{
-					"traits": [
-						"emotion",
-						"fear",
-						"mental",
-						"poison"
-					],
 					"entries": [
-						"As grioth scout, but DC 20."
-					],
-					"name": "Grioth Venom",
-					"entries_as_xyz": [
 						{
 							"type": "affliction",
-							"name": "",
 							"traits": [
 								"emotion",
 								"fear",
 								"mental",
 								"poison"
 							],
-							"note": "",
-							"DC": "17",
+							"DC": 20,
 							"savingThrow": "Fortitude",
-							"onset": null,
 							"maxDuration": "6 rounds",
 							"stages": [
 								{
@@ -25230,7 +25015,8 @@
 								}
 							]
 						}
-					]
+					],
+					"name": "Grioth Venom"
 				},
 				{
 					"activity": {
@@ -25243,13 +25029,9 @@
 						"occult"
 					],
 					"entries": [
-						"As grioth scout, but {@damage 2d6} mental damage and a DC 20 Will save."
+						"The grioth scout makes a {@action Strike} with a voidglass weapon. If the {@action Strike} hits, it deals an additional {@damage 2d6} mental damage, and the target must succeed at a DC 20 Will save (this has the {@trait incapacitation} trait) or become {@condition confused} for 1 round."
 					],
-					"name": "Shock Mind",
-					"entries_as_xyz": [
-						"The grioth scout makes a {@action Strike} with a voidglass weapon. If the {@action Strike} hits, it deals an additional {@damage 1d6} mental damage, and the target must succeed at a DC 17 Will save (this has the {@trait incapacitation} trait) or become {@condition confused} for 1 round.",
-						"Occult Innate Spells DC 16, attack +8; 1st phantom pain; Cantrips (1st) daze, detect magic, mage hand, telekinetic projectile."
-					]
+					"name": "Shock Mind"
 				},
 				{
 					"activity": {
@@ -25264,7 +25046,16 @@
 					],
 					"frequency": "once per day",
 					"entries": [
-						"The grioth cultist waves a hand in a complex pattern to invoke dark powers, dealing {@damage 3d8} mental damage. Each nongrioth creature within 20 feet must attempt a DC 20 Will save. Critical Success The creature is unaffected. Success The creature takes half damage Failure The creature takes full damage and becomes {@condition stupefied 1} for 1 round Critical Failure The creature takes double damage and becomes {@condition stupefied 1} for 1 minute."
+						"The grioth cultist waves a hand in a complex pattern to invoke dark powers, dealing {@damage 3d8} mental damage. Each nongrioth creature within 20 feet must attempt a DC 20 Will save.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "The creature is unaffected.",
+								"Success": "The creature takes half damage.",
+								"Failure": "The creature takes full damage and becomes {@condition stupefied 1} for 1 round.",
+								"Critical Failure": "The creature takes double damage and becomes {@condition stupefied 1} for 1 minute."
+							}
+						}
 					],
 					"name": "Invoke Haunter of the Dark"
 				}
@@ -25442,6 +25233,40 @@
 					]
 				}
 			],
+			"spellcasting": [{
+				"name": "Occult Innate",
+				"type": "Innate",
+				"tradition": "Occult",
+				"DC": 16,
+				"attack": 8,
+				"entry": {
+					"1": {
+						"spells": [
+							{
+								"name": "phantom pain"
+							}
+						]
+					},
+					"0": {
+						"level": 1,
+						"spells": [
+							{
+								"name": "daze"
+							},
+							{
+								"name": "detect magic"
+							},
+							{
+								"name": "mage hand"
+							},
+
+							{
+								"name": "telekinetic projectile"
+							}
+						]
+					}
+				}
+			}],
 			"abilitiesBot": [
 				{
 					"entries": [
@@ -25491,8 +25316,7 @@
 						"occult"
 					],
 					"entries": [
-						"The grioth scout makes a {@action Strike} with a voidglass weapon. If the {@action Strike} hits, it deals an additional {@damage 1d6} mental damage, and the target must succeed at a DC 17 Will save (this has the {@trait incapacitation} trait) or become {@condition confused} for 1 round.",
-						"Occult Innate Spells DC 16, attack +8; 1st phantom pain; Cantrips (1st) daze, detect magic, mage hand, telekinetic projectile."
+						"The grioth scout makes a {@action Strike} with a voidglass weapon. If the {@action Strike} hits, it deals an additional {@damage 1d6} mental damage, and the target must succeed at a DC 17 Will save (this has the {@trait incapacitation} trait) or become {@condition confused} for 1 round."
 					],
 					"name": "Shock Mind"
 				}
@@ -25609,7 +25433,13 @@
 			},
 			"resistances": [
 				{
-					"name": "electricity"
+					"name": "electricity",
+					"amount": 10
+				},
+				{
+					"name": "physical",
+					"amount": 10,
+					"note": "except bludgeoning"
 				}
 			],
 			"abilitiesMid": [],
@@ -26409,12 +26239,11 @@
 			],
 			"abilitiesBot": [
 				{
-					"traits": [
-						"page 306"
-					],
-					"entries": [
-						"Primal Innate Spells DC 30; Cantrips (4th) detect magic."
-					],
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"entries": [],
 					"name": "Push",
 					"generic": true
 				},
@@ -26885,11 +26714,20 @@
 						"unit": "action"
 					},
 					"frequency": "once per round",
+					"requirements": "The hatred siktempora has a creature {@condition grabbed}",
 					"entries": [
-						"Requirements The hatred siktempora has a creature {@condition grabbed}; The hatred siktempora tightens their garrote, dealing {@damage 5d10} bludgeoning damage to each creature they're Grabbing. Each creature {@condition grabbed} by the siktempora must attempt a DC 40 Fortitude save. Critical Success The creature takes no damage. Success The creature takes half damage. Failure The creature takes full damage and can't breathe or speak while it remains {@condition grabbed}; it must hold its breath or begin suffocating. Critical Failure As failure, but double damage and the creature becomes {@condition restrained} and can't speak for 1 round after it's no longer {@condition grabbed}."
+						"The hatred siktempora tightens their garrote, dealing {@damage 5d10} bludgeoning damage to each creature they're Grabbing. Each creature {@condition grabbed} by the siktempora must attempt a DC 40 Fortitude save.",
+						{
+							"type": "suceessDegree",
+							"entries": {
+								"Critical Success": "The creature takes no damage.",
+								"Success": "The creature takes half damage.",
+								"Failure": "The creature takes full damage and can't breathe or speak while it remains {@condition grabbed}; it must hold its breath or begin suffocating.",
+								"Critical Failure": "As failure, but double damage and the creature becomes {@condition restrained} and can't speak for 1 round after it's no longer {@condition grabbed}."
+							}
+						}
 					],
-					"name": "Vindictive Crush",
-					"entries_as_xyz": "Ability not found: 'Vindictive Crush As failure, but double damage and the creature becomes {@condition restrained} and can't speak for 1 round after it's no longer {@condition grabbed}.' in Hatred Siktempora, p.235"
+					"name": "Vindictive Crush"
 				}
 			],
 			"inflicts": {
@@ -27505,9 +27343,6 @@
 						"number": 1,
 						"unit": "action"
 					},
-					"traits": [
-						"page 305"
-					],
 					"entries": [],
 					"name": "Form Up"
 				},
@@ -27522,17 +27357,31 @@
 					"name": "Lance Charge"
 				},
 				{
+					"entries": [
+						"Effects that target only animals or only humanoids may not work on the cavalry brigade, subject to the GM's discretion."
+					],
+					"name": "Mounted Troop"
+				},
+				{
 					"activity": {
 						"number": 1,
 						"unit": "varies",
 						"entry": "{@as 1} to {@as 3}"
 					},
 					"entries": [
-						"s that target only animals or only humanoids may not work on the cavalry brigade, subject to the GM's discretion.",
-						"Swing from the Saddle Frequency once per round; The brigade engages in a coordinated melee attack against each enemy within 10 feet (DC 23 basic Reflex save). The damage depends on the number of actions.",
-						"{@as 1} {@damage 2d6} slashing damage {@as 2} {@damage 2d6+10} slashing damage {@as 3} {@damage 3d6+13} slashing damage."
+						"The brigade engages in a coordinated melee attack against each enemy within 10 feet (DC 23 basic Reflex save). The damage depends on the number of actions.",
+						{
+							"type": "list",
+							"style": "list-no-bullets",
+							"items": [
+								"{@as 1} {@damage 2d6} slashing damage",
+								"{@as 2} {@damage 2d6+10} slashing damage",
+								"{@as 3} {@damage 3d6+13} slashing damage."
+							]
+						}
 					],
-					"name": "Mounted Troop"
+					"frequency": "once per round",
+					"name": "Swing from the Saddle"
 				},
 				{
 					"entries": [
@@ -29452,15 +29301,9 @@
 						"occult"
 					],
 					"entries": [
-						"The hyakume reaches out with their mind and attempts to steal memories from a creature within 30 feet. The target must succeed at a DC 40 Will saving throw or become {@condition stupefied 2} and have some of its memories stolen. The hyakume learns some of the target's memories (chosen by."
+						"The hyakume reaches out with their mind and attempts to steal memories from a creature within 30 feet. The target must succeed at a DC 40 Will saving throw or become {@condition stupefied 2} and have some of its memories stolen. The hyakume learns some of the target's memories (chosen by the GM), which are then lost to the target."
 					],
 					"name": "Steal Memories"
-				},
-				{
-					"entries": [
-						"GM), which are then lost to the target."
-					],
-					"name": "the"
 				}
 			],
 			"inflicts": {
@@ -29602,17 +29445,10 @@
 					"entries": [
 						"An incutilis drives tendrils into a Small or Medium living creature that's {@condition unconscious} or {@condition restrained} by the incutilis. It attaches and injects the unfortunate host with enzymes to take over control of the creature's nervous system, turning the host into a puppet {@condition controlled} by the incutilis.",
 						"The puppet becomes {@condition dying 2} and is {@condition controlled} by the incutilis. If the puppet dies, its body remains under the control of the incutilis until it's destroyed or the incutilis Abandons the Puppet. If the puppet recovers from the {@condition dying} condition, the incutilis immediately Abandons the Puppet.",
-						"While controlling a puppet, the incutilis is attached to the puppet's head (or elsewhere, if its brain is in an unconventional location) and moves along with it. The puppet uses its own AC, Hit Points, Fortitude."
+						"While controlling a puppet, the incutilis is attached to the puppet's head (or elsewhere, if its brain is in an unconventional location) and moves along with it. The puppet uses its own AC, Hit Points, Fortitude and Reflex saves, and physical Strikes, but it uses the incutilis's Will save. The puppet can perform only basic actions and untrained uses of the {@skill Athletics} and {@skill Stealth} skills while {@condition controlled}.",
+						"Any attack that deals damage to the puppet also deals 1 mental damage to the incutilis. Area effects are applied to both the incutilis and puppet. The incutilis always has lesser cover while in control of a puppet."
 					],
 					"name": "Puppetmaster"
-				},
-				{
-					"entries": [
-						"Reflex saves, and physical Strikes, but it uses the incutilis's Will save. The puppet can perform only basic actions and untrained uses of the {@skill Athletics} and {@skill Stealth} skills while {@condition controlled}.",
-						"Any attack that deals damage to the puppet also deals 1 mental damage to the incutilis. Area effects are applied to both the incutilis and puppet.",
-						"The incutilis always has lesser cover while in control of a puppet."
-					],
-					"name": "and"
 				}
 			],
 			"inflicts": {
@@ -29731,10 +29567,8 @@
 			"resistances": [
 				{
 					"amount": 2,
-					"name": "all damage"
-				},
-				{
-					"name": "ghost"
+					"name": "all damage",
+					"note": "except force, {@item ghost touch}, or mental; double resistance vs. non-magical"
 				}
 			],
 			"abilitiesMid": [],
@@ -29792,7 +29626,6 @@
 					],
 					"entries": [
 						"While a creature is taking {@condition persistent damage ||persistent mental damage} from the ioton, the ioton takes the shape of a creature familiar to the target, such as an acquaintance, pet, or common animal, though the appearance is imperfect and grants no benefit to {@action Impersonate} an individual.",
-						"floating disk ability.",
 						"While transformed, the ioton loses its {@trait incorporeal} trait, immunities, and resistances, but it gains an unarmed melee {@action Strike} with a +6 attack modifier that deals {@damage 1d8+2} bludgeoning damage. The ioton immediately returns to its original form once no creature is taking {@condition persistent damage ||persistent mental damage} from it."
 					],
 					"name": "Leech Thought"
@@ -30200,7 +30033,15 @@
 					],
 					"frequency": "once per round",
 					"entries": [
-						"The japalisura whispers misleading words and falsehoods to one adjacent creature, attempting a {@skill Deception} check against the target's {@skill Perception} DC. Critical Success For 1 minute, the target believes that one creature of the japalisura's choice is its mortal foe, spending all its actions to reach and attack that creature. At the end of each of its turns, the target can attempt a DC 32 Will save to end the effect early. Success As critical success except the effect ends at the end of the creature's first turn, without the need for a Will save. Failure The target sees through the japalisura's attempts at misdirection and is temporarily immune to False Foe for 1 day. Innate Divine Spells DC 32; 6th illusory disguise, read omens (at will), augury (at will); Constant (6th) magic aura (self only), nondetection (self only), see invisibility."
+						"The japalisura whispers misleading words and falsehoods to one adjacent creature, attempting a {@skill Deception} check against the target's {@skill Perception} DC.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "For 1 minute, the target believes that one creature of the japalisura's choice is its mortal foe, spending all its actions to reach and attack that creature. At the end of each of its turns, the target can attempt a DC 32 Will save to end the effect early.",
+								"Success": "As critical success except the effect ends at the end of the creature's first turn, without the need for a Will save.",
+								"Failure": "The target sees through the japalisura's attempts at misdirection and is temporarily immune to False Foe for 1 day."
+							}
+						}
 					],
 					"name": "False Foe"
 				},
@@ -30326,21 +30167,11 @@
 						"unit": "reaction",
 						"entry": "{@as R}"
 					},
-					"requirements": "The jorogumo has their spider legs extended or has",
-					"entries": [],
+					"requirements": "The jorogumo has their spider legs extended or has Changed Shape",
+					"entries": [						"The jorogumo raises a leg, gaining a +2 circumstance bonus to AC against the triggering attack."
+					],
+					"trigger": "The jorogumo is targeted with an attack",
 					"name": "Darting Legs"
-				},
-				{
-					"entries": [
-						"The jorogumo is targeted with an attack; The jorogumo raises a leg, gaining a +2 circumstance bonus."
-					],
-					"name": "Changed Shape; Trigger"
-				},
-				{
-					"entries": [
-						"AC against the triggering attack."
-					],
-					"name": "to"
 				}
 			],
 			"speed": {
@@ -30884,13 +30715,10 @@
 						"entry": "{@as R}"
 					},
 					"entries": [
-						"As giant opossum, but 70 HP."
+						"The khravgodon collapses. It is {@condition flat-footed} and can use actions that require only its mind, but any other action ends the ruse. A successful DC 18 {@skill Perception} check to {@action Seek} or {@skill Medicine} check to {@action Recall Knowledge} is required to determine that the animal is not, in fact, dead."
 					],
 					"name": "Feign Death",
-					"trigger": "The opossum is reduced below 15 HP",
-					"entries_as_xyz": [
-						"The opossum collapses. It is {@condition flat-footed} and can use actions that require only its mind, but any other action ends the ruse. A successful DC 18 {@skill Perception} check to {@action Seek} or {@skill Medicine} check."
-					]
+					"trigger": "The opossum is reduced below 70 HP"
 				},
 				{
 					"activity": {
@@ -30968,12 +30796,9 @@
 				},
 				{
 					"entries": [
-						"As giant opossum, but can drag Large or smaller creatures."
+						"A khravgodon can drag a Large or smaller creature it has {@condition grabbed} with its tail along with it when it {@action Stride||Strides}."
 					],
-					"name": "Grasping Tail",
-					"entries_as_xyz": [
-						"A giant opossum can drag a Small or Tiny creature it has {@condition grabbed} with its tail along with it when it {@action Stride||Strides}."
-					]
+					"name": "Grasping Tail"
 				}
 			],
 			"inflicts": {
@@ -32055,16 +31880,13 @@
 			"abilitiesTop": [
 				{
 					"entries": [
-						"As shikigami, but a kodama's ward is a specific tree."
+						"Every kami is bound to a ward: a specific animal, plant, object, or location. A kami can merge with or emerge from their ward as a single action, which has the {@trait concentrate} trait. While merged, the kami can observe their surroundings with their usual senses as well as the senses of their ward, but can't move, communicate with, or control their ward. Additionally, a kami merged with their ward recovers Hit Points each minute as if they spent an entire day resting.",
+						"A kodama's ward is a specific tree."
 					],
 					"name": "Ward",
 					"traits": [
 						"abjuration",
 						"divine"
-					],
-					"entries_as_xyz": [
-						"Every kami is bound to a ward: a specific animal, plant, object, or location. A kami can merge with or emerge from their ward as a single action, which has the {@trait concentrate} trait. While merged, the kami can observe their surroundings with their usual senses as well as the senses of their ward, but can't move, communicate with, or control their ward. Additionally, a kami merged with their ward recovers Hit Points each minute as if they spent an entire day resting.",
-						"A shikigami's ward is typically a minor work of art or symbol of civilization, such as a milestone, trail sign, personal garden, or tiny statue."
 					]
 				}
 			],
@@ -32798,7 +32620,8 @@
 									"name": "obscuring mist"
 								},
 								{
-									"name": "pummeling rubbleAPG"
+									"name": "pummeling rubble",
+									"source": "apg"
 								}
 							]
 						},
@@ -32830,7 +32653,7 @@
 			"abilitiesBot": [
 				{
 					"entries": [
-						"Once per day, the kovintus can cast a 3rd-level primal innate spell. They can do so only if a spell with a corresponding trait was cast within 10 feet of the kovintus since the start of their last turn (including if the kovintus {@action Cast a Spell||Cast the Spell}). The traits and the spells they grant are as follows: {@spell wall of wind} for air, {@spell meld into stone} for earth, {@spell wall of thorns} for plant, and {@spell crashing wave|APG}APG for water."
+						"Once per day, the kovintus can cast a 3rd-level primal innate spell. They can do so only if a spell with a corresponding trait was cast within 10 feet of the kovintus since the start of their last turn (including if the kovintus {@action Cast a Spell||Cast the Spell}). The traits and the spells they grant are as follows: {@spell wall of wind} for {@trait air}, {@spell meld into stone} for {@trait earth}, {@spell wall of thorns} for {@trait plant}, and {@spell crashing wave|apg} for {@trait water}."
 					],
 					"name": "Nature's Chosen"
 				}
@@ -33087,7 +32910,13 @@
 							"9": {
 								"spells": [
 									{
-										"name": "air"
+										"name": "air walk"
+									},
+									{
+										"name": "see invisibility"
+									},
+									{
+										"name": "tongues"
 									}
 								]
 							}
@@ -33101,12 +32930,7 @@
 						"number": 1,
 						"unit": "action"
 					},
-					"traits": [
-						"page 305"
-					],
-					"entries": [
-						"Melee horn +41 (magical), Damage {@damage 4d10+25} piercing Primal Innate Spells DC 42, attack +34; 9th baleful polymorph (×2), cone of cold (×2), wall of ice; Cantrips (10th) dancing lights, ray of frost, sigil, tanglefoot; Constant (9th) air walk, see invisibility, tongues."
-					],
+					"entries": [],
 					"name": "Improved Grab",
 					"generic": true
 				},
@@ -33120,28 +32944,12 @@
 					],
 					"requirements": "Krampus has a Medium or smaller creature {@condition grabbed}",
 					"entries": [
-						"Krampus attempts to stuff the {@condition grabbed} creature into his basket, attempting an {@skill Athletics} check against the target's Reflex."
+						"Krampus attempts to stuff the {@condition grabbed} creature into his basket, attempting an {@skill Athletics} check against the target's Reflex DC. If he succeeds, the creature is shoved into Krampus's basket and Krampus's spiked chain or claw is freed for future Strikes." ,
+						"The captured creature is {@condition grabbed}, {@condition slowed 1}, and subjected to Krampus's regression ability (see below) at the start of each round it is captured. If the victim {@action Escape||Escapes} (DC 48), it climbs out of the basket. A captured creature can attack the interior of the basket, but only with unarmed attacks or weapons of light Bulk or less, against an AC of 40. If the captured creature deals 40 slashing or piercing damage, the basket is {@condition broken} and all the creatures inside spill out. A creature that gets free by either Escaping or by someone breaking the basket is deposited in a square of their choosing adjacent to Krampus.",
+						"The basket is an extradimensional space, so the weight of the creatures within doesn't count against Krampus's Bulk limit. Up to four Small creatures or two Medium creatures can fit in the basket at one time. Krampus can {@action Repair} the basket as a 2-action activity that doesn't require tools. If the basket is lost or destroyed, Krampus can create a new one with 1 hour of work. The basket functions as a normal sack if used by anyone other than Krampus."
+
 					],
 					"name": "Capture"
-				},
-				{
-					"entries": [
-						"If he succeeds, the creature is shoved into Krampus's basket and Krampus's spiked chain or claw is freed for future Strikes.",
-						"The captured creature is {@condition grabbed}, {@condition slowed 1}, and subjected to Krampus's regression ability (see below) at the start of each round it is captured. If the victim {@action Escape||Escapes} (DC 48), it climbs out of the basket. A captured creature can attack the interior of the basket, but only with unarmed attacks or weapons of light Bulk or less, against an AC of 40. If the captured creature deals 40 slashing or piercing damage, the basket is {@condition broken} and all the creatures inside spill out. A creature that gets free by either Escaping or by someone breaking the basket is deposited in a square of their choosing adjacent."
-					],
-					"name": "DC."
-				},
-				{
-					"entries": [
-						"The basket is an extradimensional space, so the weight of the creatures within doesn't count against."
-					],
-					"name": "to Krampus."
-				},
-				{
-					"entries": [
-						"Bulk limit. Up to four Small creatures or two Medium creatures can fit in the basket at one time. Krampus can {@action Repair} the basket as a 2-action activity that doesn't require tools. If the basket is lost or destroyed, Krampus can create a new one with 1 hour of work. The basket functions as a normal sack if used by anyone other than Krampus."
-					],
-					"name": "Krampus's"
 				},
 				{
 					"activity": {
@@ -33152,15 +32960,9 @@
 						"concentrate"
 					],
 					"entries": [
-						"Krampus designates a single target he can see as \"naughty.\" He gains a +2 circumstance bonus to {@skill Perception} checks when he Seeks the naughty target and a +2 circumstance bonus."
+						"Krampus designates a single target he can see as \"naughty.\" He gains a +2 circumstance bonus to {@skill Perception} checks when he Seeks the naughty target and a +2 circumstance bonus to {@skill Survival} checks to {@action Track} the naughty target. On melee attacks against the naughty target, Krampus's spiked chain gains the {@trait agile} trait. In addition, when Krampus Grabs the naughty target, he can attempt to Capture them as a free action. Krampus can have only one naughty target at a time."
 					],
 					"name": "Punish the Naughty"
-				},
-				{
-					"entries": [
-						"{@skill Survival} checks to {@action Track} the naughty target. On melee attacks against the naughty target, Krampus's spiked chain gains the {@trait agile} trait. In addition, when Krampus Grabs the naughty target, he can attempt to Capture them as a free action. Krampus can have only one naughty target at a time."
-					],
-					"name": "to"
 				},
 				{
 					"traits": [
@@ -33317,11 +33119,8 @@
 						"number": 1,
 						"unit": "action"
 					},
-					"traits": [
-						"silver"
-					],
 					"entries": [
-						"scissors (page 306)"
+						"silver scissors"
 					],
 					"name": "Rend",
 					"generic": true
@@ -33474,7 +33273,7 @@
 							"traits": [
 								"disease"
 							],
-							"note": " The target can't recover from the {@condition fatigued} condition\ncaused by black apoxia until the disease is cured",
+							"note": " The target can't recover from the {@condition fatigued} condition caused by black apoxia until the disease is cured",
 							"DC": "24",
 							"savingThrow": "Fortitude",
 							"onset": null,
@@ -33528,7 +33327,16 @@
 					],
 					"requirements": "The kurobozu is adjacent to a living creature that is {@condition paralyzed}, {@condition slowed}, {@condition stunned}, or {@condition unconscious}",
 					"entries": [
-						"The kurobozu leans over and sucks the breath from the target, who must attempt a DC 22 Fortitude save. Regardless of the result, the creature is exposed to black apoxia and its breath reeks of carrion for 1 minute. Critical Success The creature is unaffected. Success The creature can't speak for 1 minute. Failure The creature becomes {@condition sickened 2} and can't speak for 1 minute. Critical Failure As failure, plus the creature falls {@condition unconscious} and begins suffocating."
+						"The kurobozu leans over and sucks the breath from the target, who must attempt a DC 22 Fortitude save. Regardless of the result, the creature is exposed to black apoxia and its breath reeks of carrion for 1 minute.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "The creature is unaffected.",
+								"Success": "The creature can't speak for 1 minute.",
+								"Failure": "The creature becomes {@condition sickened 2} and can't speak for 1 minute.",
+								"Critical Failure": "As failure, plus the creature falls {@condition unconscious} and begins suffocating."
+							}
+						}
 					],
 					"name": "Steal Breath"
 				},
@@ -33970,7 +33778,8 @@
 									"amount": "at will"
 								},
 								{
-									"name": "pummeling rubbleAPG"
+									"name": "pummeling rubble",
+									"source": "apg"
 								}
 							]
 						},
@@ -35502,15 +35311,9 @@
 						"concentrate"
 					],
 					"entries": [
-						"The locathah hunter designates a single creature they can see and hear, or one they're Tracking, as their prey. The hunter gains a +2 circumstance bonus to {@skill Perception} checks."
+						"The locathah hunter designates a single creature they can see and hear, or one they're Tracking, as their prey. The hunter gains a +2 circumstance bonus to {@skill Perception} checks to {@action Seek} the prey and to {@skill Survival} checks to {@action Track} the prey. The first time the locathah hits their designated prey in a round, they deal an additional {@damage 1d8} precision damage. These effects last until the hunter uses Hunt Prey again."
 					],
 					"name": "Hunt Prey"
-				},
-				{
-					"entries": [
-						"{@action Seek} the prey and to {@skill Survival} checks to {@action Track} the prey. The first time the locathah hits their designated prey in a round, they deal an additional {@damage 1d8} precision damage. These effects last until the hunter uses {@action Hunt Prey} again."
-					],
-					"name": "to"
 				},
 				{
 					"entries": [
@@ -35724,20 +35527,47 @@
 									"name": "blink"
 								}
 							]
+						},
+						"constant": {
+							"8": {
+								"spells": [
+									{
+										"name": "air walk"
+									}
+								]
+							}
+						}
+					}
+				},
+				{
+					"name": "Bard Composition",
+					"type": "Focus",
+					"tradition": null,
+					"fp": 3,
+					"DC": 37,
+					"entry": {
+						"8": {
+							"spells": [
+								{
+									"name": "lingering composition"
+								}
+							]
+						},
+						"0": {
+							"level": 8,
+							"spells": [
+								{
+									"name": "inspire courage"
+								},
+								{
+									"name": "inspire defense"
+								}
+							]
 						}
 					}
 				}
 			],
 			"abilitiesBot": [
-				{
-					"traits": [
-						"8th"
-					],
-					"entries": [
-						"air walk Bard Composition Spells 3 Focus Points, DC 37; 8th lingering composition (Core Rulebook 387); Cantrips (8th level) inspire courage (Core Rulebook 386), inspire defense (Core Rulebook 386)"
-					],
-					"name": "Constant"
-				},
 				{
 					"traits": [
 						"emotion",
@@ -35969,14 +35799,24 @@
 					}
 				}
 			],
+			"rituals": [
+				{
+					"DC": 21,
+					"rituals": [
+						{
+							"name": "create undead",
+							"notes": ["doesn't require secondary casters"]
+						}
+					]
+				}
+			],
 			"abilitiesBot": [
 				{
-					"traits": [
-						"page 305"
-					],
-					"entries": [
-						"Occult Innate Spells DC 21; 2nd fear (×3), illusory creature (at will), illusory object (at will), invisibility; Cantrips (2nd) ghost sound, mage hand Rituals DC 21; create undead (doesn't require secondary casters)"
-					],
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"entries": [],
 					"name": "Grab",
 					"generic": true
 				},
@@ -37416,15 +37256,9 @@
 					},
 					"trigger": "The mezlan succeeds at a saving throw against a single-target spell",
 					"entries": [
-						"The mezlan absorbs the spell, nullifying its effect and storing it for later. They can {@action Cast a Spell||Cast the Spell} using the original caster's spell attack modifier and."
+						"The mezlan absorbs the spell, nullifying its effect and storing it for later. They can {@action Cast a Spell||Cast the Spell} using the original caster's spell attack modifier and DC. They can store only one spell at a time, but they can absorb a new spell to replace the spell they currently have stored. A willing caster can allow the mezlan to Absorb a Spell without requiring a save."
 					],
 					"name": "Absorb Spell"
-				},
-				{
-					"entries": [
-						"They can store only one spell at a time, but they can absorb a new spell to replace the spell they currently have stored. A willing caster can allow the mezlan to Absorb a Spell without requiring a save."
-					],
-					"name": "DC."
 				},
 				{
 					"entries": [
@@ -37496,15 +37330,9 @@
 				},
 				{
 					"entries": [
-						"A creature hit by the mezlan's ooze globule takes a \u201315-foot circumstance penalty to all Speeds for 1 minute. On a critical hit, a target standing on a solid surface also becomes {@condition immobilized}, while a target Flying via wings falls to the ground and becomes unable."
+						"A creature hit by the mezlan's ooze globule takes a \u201315-foot circumstance penalty to all Speeds for 1 minute. On a critical hit, a target standing on a solid surface also becomes {@condition immobilized}, while a target Flying via wings falls to the ground and becomes unable to Fly. A target can end all effects by Escaping (DC 32) or spending a total of 3 {@action Interact} actions to free itself."
 					],
 					"name": "Viscous Trap"
-				},
-				{
-					"entries": [
-						"A target can end all effects by Escaping (DC 32) or spending a total of 3 {@action Interact} actions to free itself."
-					],
-					"name": "to Fly."
 				}
 			],
 			"inflicts": {
@@ -37523,7 +37351,7 @@
 			"hasImages": true
 		},
 		{
-			"name": "Mi-go",
+			"name": "Mi-Go",
 			"isNpc": false,
 			"source": "Bst3",
 			"page": 168,
@@ -37592,12 +37420,6 @@
 				"Cha": 2
 			},
 			"abilitiesTop": [
-				{
-					"entries": [
-						"+17, {@skill Occultism} +15, {@skill Religion} +14, {@skill Stealth} +13, {@skill Thievery} +13 Str +2, Dex +5, Con +3, Int +5, Wis +4, Cha +2."
-					],
-					"name": "to Impersonate), Medicine"
-				}
 			],
 			"ac": {
 				"default": 24,
@@ -37981,15 +37803,9 @@
 			"abilitiesTop": [
 				{
 					"entries": [
-						"A siktempora can always roll Dimension."
+						"A siktempora can always roll {@skill Lore||Dimension of Time Lore} for initiative. When it does, it gains a +2 circumstance bonus to the roll."
 					],
 					"name": "Temporal Sense"
-				},
-				{
-					"entries": [
-						"{@skill Lore} for initiative. When it does, it gains a +2 circumstance bonus to the roll."
-					],
-					"name": "of Time"
 				}
 			],
 			"ac": {
@@ -38123,12 +37939,19 @@
 						"mental",
 						"occult"
 					],
-					"requirements": "The misery siktempora's last action was a claw",
+					"requirements": "The misery siktempora's last action was a claw {@action Strike} that damaged the target",
 					"entries": [
-						"{@action Strike} that damaged the target; The misery siktempora fills the target's thoughts with abject despair. The target must attempt a DC 32 Will save. Regardless of outcome, the target is then immune to Inflict Misery for 1 minute. Success The target is unaffected. Failure The target is {@condition clumsy 2}, {@condition enfeebled 2}, and {@condition stupefied 2} for 1 round. Critical Failure As failure, but for 1 minute."
+						"The misery siktempora fills the target's thoughts with abject despair. The target must attempt a DC 32 Will save. Regardless of outcome, the target is then immune to Inflict Misery for 1 minute.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Success": "The target is unaffected.",
+								"Failure": "The target is {@condition clumsy 2}, {@condition enfeebled 2}, and {@condition stupefied 2} for 1 round.",
+								"Critical Failure": "As failure, but for 1 minute."
+							}
+						}
 					],
-					"name": "Inflict Misery",
-					"entries_as_xyz": "Ability not found: 'Inflict Misery As failure, but for 1 minute.' in Misery Siktempora, p.232"
+					"name": "Inflict Misery"
 				},
 				{
 					"activity": {
@@ -38589,7 +38412,7 @@
 							"traits": [
 								"poison"
 							],
-							"note": " A mix couatl's venom deals\ngood damage rather than poison damage to fiends",
+							"note": " A mix couatl's venom deals good damage rather than poison damage to fiends",
 							"DC": "26",
 							"savingThrow": "Fortitude",
 							"onset": null,
@@ -40010,7 +39833,7 @@
 					},
 					"trigger": "A foe within reach moves away from the munagola",
 					"entries": [
-						"s The munagola {@action Stride||Strides} or Flies up to their Speed, following the retreating foe and keeping it in reach until the foe stops moving or the munagola has moved their full Speed."
+						"The munagola {@action Stride||Strides} or Flies up to their Speed, following the retreating foe and keeping it in reach until the foe stops moving or the munagola has moved their full Speed."
 					],
 					"name": "No Escape"
 				}
@@ -40693,15 +40516,9 @@
 			"abilitiesTop": [
 				{
 					"entries": [
-						"While the namorrodor is on the Shadow Plane, its lifesense extends."
+						"While the namorrodor is on the Shadow Plane, its lifesense extends to the {@place Material Plane} as a vague sense with a 100-foot range."
 					],
 					"name": "Interplanar Lifesense"
-				},
-				{
-					"entries": [
-						"Plane as a vague sense with a 100-foot range."
-					],
-					"name": "to the Material"
 				}
 			],
 			"ac": {
@@ -40763,25 +40580,10 @@
 						"conjuration",
 						"teleportation"
 					],
-					"requirements": "The namorrodor is on the",
-					"entries": [],
+					"requirements": "The namorrodor is on the Shadow Plane",
+					"trigger": "A creature the namorrodor can sense with its lifesense on the {@place Material Plane} dies.",
+					"entries": ["The namorrodor leaps between planes, appearing on the Material Plane within 100 feet of the triggering creature. It remains on the Material Plane for 24 hours, after which it is recalled to its original location on the Shadow Plane."],
 					"name": "Material Leap"
-				},
-				{
-					"entries": [
-						"A creature the namorrodor can sense with its lifesense."
-					],
-					"name": "Shadow Plane; Trigger"
-				},
-				{
-					"entries": [
-						"Plane dies; The namorrodor leaps between planes, appearing on the Material Plane within 100 feet of the triggering creature. It remains on the Material Plane for 24 hours, after which it is recalled to its original location on."
-					],
-					"name": "on the Material"
-				},
-				{
-					"entries": [],
-					"name": "the Shadow Plane."
 				}
 			],
 			"speed": {
@@ -41641,14 +41443,11 @@
 					"name": "Missile Volley"
 				},
 				{
-					"traits": [
-						"nightmarchers"
-					],
 					"entries": [
-						"{@action Stride}, they first Form Up as a free action to condense into a 20-foot-by-20-foot area (minus any missing squares), then move.",
+						"Whenever the nightmarchers {@action Stride}, they first Form Up as a free action to condense into a 20-foot-by-20-foot area (minus any missing squares), then move.",
 						"This works just like a Gargantuan creature moving; for instance, if any of the nightmarchers' squares enter {@quickref difficult terrain||3|terrain}, the extra movement cost applies to the whole group."
 					],
-					"name": "Troop Movement Whenever the"
+					"name": "Troop Movement"
 				}
 			],
 			"inflicts": {
@@ -43038,8 +42837,7 @@
 				},
 				{
 					"entries": [
-						"A living graffiti can move only along flat surfaces. If the surface it's on is destroyed (such as a portrait hit by a {@spell fireball} spell or a wall being smashed), the graffiti takes {@dice 2d6} damage and is shunted to the nearest flat surface. If there is no flat surface within 5 feet, the graffiti is destroyed.",
-						"of setting up glyphs of warding as."
+						"A living graffiti can move only along flat surfaces. If the surface it's on is destroyed (such as a portrait hit by a {@spell fireball} spell or a wall being smashed), the graffiti takes {@dice 2d6} damage and is shunted to the nearest flat surface. If there is no flat surface within 5 feet, the graffiti is destroyed."
 					],
 					"name": "Surface-Bound"
 				}
@@ -43790,7 +43588,7 @@
 								"primal",
 								"transmutation"
 							],
-							"note": " The regenerative and transmutative properties of ouroboros blood\nregenerate and mutate a creature's body into ouroboros-like snakes. A creature\nalready affected by regenerative blood is immune to additional exposure.",
+							"note": " The regenerative and transmutative properties of ouroboros blood regenerate and mutate a creature's body into ouroboros-like snakes. A creature already affected by regenerative blood is immune to additional exposure.",
 							"DC": "42",
 							"savingThrow": "Fortitude",
 							"onset": null,
@@ -44182,10 +43980,54 @@
 						"7": {
 							"spells": [
 								{
-									"name": "plane shift"
+									"name": "plane shift",
+									"notes": "to or from the {@place Shadow Plane} only"
+								}
+							]
+						},
+						"5": {
+							"spells": [
+								{
+									"name": "shadow blast"
 								},
 								{
-									"name": "to or from the"
+									"name": "shadow walk"
+								}
+							]
+						},
+						"4": {
+							"spells": [
+								{
+									"name": "darkness",
+									"amount": "at will"
+								},
+								{
+									"name": "invisibility"
+								}
+							]
+						},
+						"3": {
+							"spells": [
+								{
+									"name": "mind reading",
+									"amount": "at will"
+								}
+							]
+						},
+						"0": {
+							"level": 3,
+							"spells": [
+								{
+									"name": "chill touch"
+								},
+								{
+									"name": "daze"
+								},
+								{
+									"name": "read aura"
+								},
+								{
+									"name": "shield"
 								}
 							]
 						}
@@ -44193,12 +44035,6 @@
 				}
 			],
 			"abilitiesBot": [
-				{
-					"entries": [
-						"Plane only) 5th shadow blast, shadow walk; 4th darkness (at will), invisibility; 3rd mind reading (at will); Cantrips (3rd) chill touch, daze, read aura, shield."
-					],
-					"name": "Shadow"
-				},
 				{
 					"activity": {
 						"number": 1,
@@ -44211,76 +44047,10 @@
 						"occult"
 					],
 					"entries": [
-						"The owb inflicts a curse on."
+						"The owb inflicts a curse on one creature taking persistent cold damage from their burning cold Strike, stealing the victim's vibrancy. The creature must attempt a DC 23 Fortitude save. On a failure, the creature gains light blindness and its coloration turns to washed out shades of gray, along with all equipment it carries, wields, or wears. These effects have an unlimited duration. Regardless of the result of its save, the creature is temporarily immune for 1 minute.",
+						"If the owb uses this ability on a caligni, the curse can't be removed short of {@spell wish} or similar powerful magic."
 					],
 					"name": "Curse of Darkness"
-				},
-				{
-					"entries": [
-						"Spell phantom pain (4th, at will);"
-					],
-					"name": "Enkaar, the Malformed Prisoner:"
-				},
-				{
-					"entries": [
-						"Weapon spiked chain."
-					],
-					"name": "Favored"
-				},
-				{
-					"entries": [
-						"This strange strangers. Ability lifesense 120 feet (page 305); Favored Weapon dagger."
-					],
-					"name": "Eyes That Watch:"
-				},
-				{
-					"entries": [
-						"A beautiful form parasites, and reckless lust. Spell charm (4th, at will); Favored Weapon shortsword."
-					],
-					"name": "Grasping Iovett:"
-				},
-				{
-					"entries": [
-						"This androgynous creature is loneliness, and narcissism. Spell silence (4th, at will); Favored Weapon shortsword."
-					],
-					"name": "Husk:"
-				},
-				{
-					"entries": [
-						"This stern magistrate Spell weapon storm (4th, at will);"
-					],
-					"name": "Lady Razor:"
-				},
-				{
-					"entries": [
-						"Weapon dagger."
-					],
-					"name": "Favored"
-				},
-				{
-					"traits": [
-						"unexpected"
-					],
-					"entries": [
-						"violence. Spell modify memory (4th, at will); Favored Weapon morningstar."
-					],
-					"name": "Reshmit of the Heavy Voice: Taking"
-				},
-				{
-					"traits": [
-						"time"
-					],
-					"entries": [
-						". Spell slow (4th, at will);"
-					],
-					"name": "Thalaphyrr Martyr-Minder: The"
-				},
-				{
-					"entries": [
-						"Weapon spear one creature taking {@condition persistent damage ||persistent cold damage} from their burning cold {@action Strike}, stealing the victim's vibrancy. The creature must attempt a DC 23 Fortitude save. On a failure, the creature gains light blindness and its coloration turns to washed out shades of gray, along with all equipment it carries, wields, or wears. These effects have an unlimited duration. Regardless of the result of its save, the creature is temporarily immune for 1 minute.",
-						"If the owb uses this ability on a caligni, the curse can't be removed short of wish or similar powerful magic."
-					],
-					"name": "Favored"
 				}
 			],
 			"inflicts": {
@@ -44546,19 +44316,17 @@
 						"number": 1,
 						"unit": "action"
 					},
-					"entries": [
-						"As owb, but DC 32."
-					],
-					"name": "Curse of Darkness",
 					"traits": [
 						"curse",
 						"darkness",
 						"evocation",
 						"occult"
 					],
-					"entries_as_xyz": [
-						"The owb inflicts a curse on."
-					]
+					"entries": [
+						"The owb inflicts a curse on one creature taking persistent cold damage from their burning cold Strike, stealing the victim's vibrancy. The creature must attempt a DC 32 Fortitude save. On a failure, the creature gains light blindness and its coloration turns to washed out shades of gray, along with all equipment it carries, wields, or wears. These effects have an unlimited duration. Regardless of the result of its save, the creature is temporarily immune for 1 minute.",
+						"If the owb uses this ability on a caligni, the curse can't be removed short of {@spell wish} or similar powerful magic."
+					],
+					"name": "Curse of Darkness"
 				},
 				{
 					"entries": [
@@ -44772,7 +44540,7 @@
 							"traits": [
 								"disease"
 							],
-							"note": " A creature can't\nremove the {@condition fatigued} condition while\ninfected",
+							"note": " A creature can't remove the {@condition fatigued} condition while infected",
 							"DC": "23",
 							"savingThrow": "Fortitude",
 							"onset": "1 day",
@@ -45098,7 +44866,7 @@
 								"mental",
 								"poison"
 							],
-							"note": " A creature affected by betrayal\ntoxin hears whispers of incessant doubt in their head and can't treat any creature\nas their ally",
+							"note": " A creature affected by betrayal toxin hears whispers of incessant doubt in their head and can't treat any creature as their ally",
 							"DC": "28",
 							"savingThrow": "Fortitude",
 							"onset": null,
@@ -45266,7 +45034,16 @@
 					],
 					"trigger": "The skelm hears a creature speak within 30 feet",
 					"entries": [
-						"The skelm sows paranoia by putting treacherous words on another's lips. The skelm whispers up to 12 words and attempts a {@skill Deception} check against the {@skill Perception} DC of a creature other than the triggering creature within 30 feet. Critical Success The target hears the skelm's words as if they were spoken by the triggering creature. This can alter {@trait linguistic} effects. The skelm also casts paranoia or suggestion on the target, if he likes. Success As critical success, except the skelm can't cast {@spell paranoia} or suggestion. Failure The target doesn't hear the skelm's words, and they have no effect. Critical Failure The target hears the skelm speak the words."
+						"The skelm sows paranoia by putting treacherous words on another's lips. The skelm whispers up to 12 words and attempts a {@skill Deception} check against the {@skill Perception} DC of a creature other than the triggering creature within 30 feet.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "The target hears the skelm's words as if they were spoken by the triggering creature. This can alter {@trait linguistic} effects. The skelm also casts paranoia or suggestion on the target, if he likes.",
+								"Success": "As critical success, except the skelm can't cast {@spell paranoia} or suggestion.",
+								"Failure": "The target doesn't hear the skelm's words, and they have no effect.",
+								"Critical Failure": "The target hears the skelm speak the words."
+							}
+						}
 					],
 					"name": "Corrupt Speech"
 				}
@@ -45400,7 +45177,15 @@
 					],
 					"frequency": "once per day",
 					"entries": [
-						"The skelm gives an impassioned speech calling for his followers to act upon their convictions. Each creature within 30 feet must attempt a DC 24 Will save. Critical Success The creature can immediately {@action Strike} an adjacent creature of its choosing. Success The creature is unaffected. Failure The creature immediately Strikes an adjacent creature; if multiple creatures are adjacent, the skelm chooses the target. If no creatures are adjacent, the creature is {@condition flat-footed} and {@condition fascinated} with the skelm until the start of its next turn."
+						"The skelm gives an impassioned speech calling for his followers to act upon their convictions. Each creature within 30 feet must attempt a DC 24 Will save.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "The creature can immediately {@action Strike} an adjacent creature of its choosing.",
+								"Success": "The creature is unaffected.",
+								"Failure": "The creature immediately Strikes an adjacent creature; if multiple creatures are adjacent, the skelm chooses the target. If no creatures are adjacent, the creature is {@condition flat-footed} and {@condition fascinated} with the skelm until the start of its next turn."
+							}
+						}
 					],
 					"name": "Incite Violence"
 				}
@@ -45574,7 +45359,7 @@
 							"traits": [
 								"disease"
 							],
-							"note": " Rest\ndoesn't decrease the {@condition drained} value\nfrom penanggalan bile",
+							"note": " Rest doesn't decrease the {@condition drained} value from penanggalan bile",
 							"DC": "19",
 							"savingThrow": "Fortitude",
 							"onset": null,
@@ -46978,7 +46763,8 @@
 						"6": {
 							"spells": [
 								{
-									"name": "animated assaultAPG"
+									"name": "animated assault",
+									"source": "apg"
 								},
 								{
 									"name": "dominate"
@@ -48878,10 +48664,18 @@
 					],
 					"requirements": "The rhu-chalik has successfully affected the target with mind probe, mind reading, or Project Terror in the last minute",
 					"entries": [
-						"The rhu-chalik creates nightmarish visions in the target's mind. The target must attempt a DC 24 Will save. Critical Success The target creature is unaffected and temporarily immune to Project Terror for 1 minute. Success The target is unaffected. Failure The target becomes {@condition frightened 2}. Failing additional saves against this effect increases the {@condition frightened} condition value by 2; if this would increase the target's {@condition frightened} value beyond {@condition frightened 4}, the target is {@condition fleeing} for 1 round and {@condition frightened 4}. Critical Failure As failure, but the target becomes {@condition unconscious} for 30 minutes instead of {@condition fleeing}."
+						"The rhu-chalik creates nightmarish visions in the target's mind. The target must attempt a DC 24 Will save.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "The target creature is unaffected and temporarily immune to Project Terror for 1 minute.",
+								"Success": "The target is unaffected.",
+								"Failure": "The target becomes {@condition frightened 2}. Failing additional saves against this effect increases the {@condition frightened} condition value by 2; if this would increase the target's {@condition frightened} value beyond {@condition frightened 4}, the target is {@condition fleeing} for 1 round and {@condition frightened 4}.",
+								"Critical Failure": "As failure, but the target becomes {@condition unconscious} for 30 minutes instead of {@condition fleeing}."
+							}
+						}
 					],
-					"name": "Project Terror",
-					"entries_as_xyz": "Ability not found: 'Project Terror As failure, but the target becomes {@condition unconscious} for 30 minutes instead of {@condition fleeing}.' in Rhu-chalik, p.214"
+					"name": "Project Terror"
 				},
 				{
 					"traits": [
@@ -49396,15 +49190,9 @@
 						"unit": "action"
 					},
 					"entries": [
-						"Requirements The rokurokubi's neck is not currently extended; The rokurokubi's head comes within an inch of their target's face before striking. They Extend their Neck, attempt."
+						"Requirements The rokurokubi's neck is not currently extended; The rokurokubi's head comes within an inch of their target's face before striking. They Extend their Neck, attempt to {@action Demoralize} one opponent within 20 feet, and then make a jaws {@action Strike} against that opponent. Their {@action Demoralize} check is a visual rather than {@trait auditory} effect, and they don't take a penalty if the target doesn't understand their language."
 					],
 					"name": "Threatening Lunge"
-				},
-				{
-					"entries": [
-						"{@action Demoralize} one opponent within 20 feet, and then make a jaws {@action Strike} against that opponent. Their {@action Demoralize} check is a visual rather than {@trait auditory} effect, and they don't take a penalty if the target doesn't understand their language."
-					],
-					"name": "to"
 				}
 			],
 			"inflicts": {
@@ -49550,10 +49338,9 @@
 						"unit": "action"
 					},
 					"entries": [
-						"As ram."
+						"The ram {@action Stride||Strides} twice in a straight line and then makes a horn {@action Strike} with a +1 circumstance bonus to its attack roll."
 					],
-					"name": "Ram Charge",
-					"entries_as_xyz": "Ability not found: 'Ram Charge As ram.' in Rosethorn Ram, p.212"
+					"name": "Ram Charge"
 				}
 			],
 			"inflicts": {
@@ -50076,15 +49863,9 @@
 					},
 					"trigger": "The sasquatch is in forest terrain and rolls {@skill Stealth} for Initiative",
 					"entries": [
-						"The sasquatch {@action Stride||Strides} up to half their Speed, after which they attempt."
+						"The sasquatch {@action Stride||Strides} up to half their Speed, after which they attempt to {@action Demoralize} a single creature within 15 feet."
 					],
 					"name": "Emerge From Undergrowth"
-				},
-				{
-					"entries": [
-						"{@action Demoralize} a single creature within 15 feet."
-					],
-					"name": "to"
 				}
 			],
 			"speed": {
@@ -50227,15 +50008,9 @@
 			"abilitiesTop": [
 				{
 					"entries": [
-						"After performing a 1-hour ritual, a scalescribe can bond with one willing creature capable of Casting Spells. The scalescribe can {@action Aid} their bonded caster."
+						"After performing a 1-hour ritual, a scalescribe can bond with one willing creature capable of Casting Spells. The scalescribe can {@action Aid} their bonded caster in {@skill Crafting} a scroll, and they can make their Transcribed spell available to the caster so long as the spell is of the caster's tradition. A bonded prepared caster can prepare the spell. A bonded spontaneous caster can add the spell to their spell repertoire during their daily preparations, and it remains as long as the Transcribed scroll exists."
 					],
 					"name": "Mage Bond"
-				},
-				{
-					"entries": [
-						"{@skill Crafting} a scroll, and they can make their Transcribed spell available to the caster so long as the spell is of the caster's tradition. A bonded prepared caster can prepare the spell. A bonded spontaneous caster can add the spell to their spell repertoire during their daily preparations, and it remains as long as the Transcribed scroll exists."
-					],
-					"name": "in"
 				}
 			],
 			"ac": {
@@ -50270,10 +50045,18 @@
 					},
 					"trigger": "Another creature targets the scalescribe with a spell requiring verbal components",
 					"entries": [
-						"The scalescribe attempts to copy the incantation onto a scroll by attempting a counteract check (counteract level 2, counteract modifier +10) with the following effects instead of the normal effects of counteracting. The spell still affects the scalescribe, regardless of the results of this check. The scalescribe can {@action Cast a Spell} from any scroll they Transcribe as if it were on their spell list. Transcribing a new scroll renders any previously Transcribed scroll inert. Critical Success If the triggering spell's level was no more than 3 higher than the scalescribe's counteract level, the scalescribe captures a copy of the spell in a scroll that appears in their hand. This scroll can be used normally but fades after 24 hours if not used before then. Success As critical success, but only if the spell's level is no more than 1 higher than the scalescribe's counteract level. Failure As critical success, but only if the spell's level is lower than the scalescribe's counteract level. Critical Failure The scalescribe fails to copy the spell."
+						"The scalescribe attempts to copy the incantation onto a scroll by attempting a counteract check (counteract level 2, counteract modifier +10) with the following effects instead of the normal effects of counteracting. The spell still affects the scalescribe, regardless of the results of this check. The scalescribe can {@action Cast a Spell} from any scroll they Transcribe as if it were on their spell list. Transcribing a new scroll renders any previously Transcribed scroll inert.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "If the triggering spell's level was no more than 3 higher than the scalescribe's counteract level, the scalescribe captures a copy of the spell in a scroll that appears in their hand. This scroll can be used normally but fades after 24 hours if not used before then.",
+								"Success": "As critical success, but only if the spell's level is no more than 1 higher than the scalescribe's counteract level.",
+								"Failure": "As critical success, but only if the spell's level is lower than the scalescribe's counteract level.",
+								"Critical Failure": "The scalescribe fails to copy the spell."
+							}
+						}
 					],
-					"name": "Transcribe",
-					"entries_as_xyz": "Ability not found: 'Transcribe As critical success, but only if the spell's level is no more than 1 higher than the scalescribe's counteract level. Failure As critical success, but only if the spell's level is lower than the scalescribe's counteract level. Critical Failure The scalescribe fails to copy the spell.' in Scalescribe, p.226"
+					"name": "Transcribe"
 				}
 			],
 			"speed": {
@@ -50368,10 +50151,6 @@
 						"When the scalescribe deals damage to a creature with their fountain pen, the creature takes {@damage 1d4} {@condition persistent damage ||persistent poison damage}. When a creature taking this damage attempts to take an action with the {@trait concentrate} trait, it must succeed at a DC {@flatDC 5} flat check or the action is disrupted."
 					],
 					"name": "Inkstain"
-				},
-				{
-					"entries": [],
-					"name": "Seahorse"
 				}
 			],
 			"inflicts": {
@@ -50781,20 +50560,20 @@
 									"amount": 3
 								}
 							]
+						},
+						"constant": {
+							"6": {
+								"spells": [
+									{
+										"name": "tongues"
+									}
+								]
+							}
 						}
 					}
 				}
 			],
 			"abilitiesBot": [
-				{
-					"traits": [
-						"6th"
-					],
-					"entries": [
-						"tongues."
-					],
-					"name": "Constant"
-				},
 				{
 					"activity": {
 						"number": 2,
@@ -50802,8 +50581,7 @@
 					},
 					"entries": [
 						"The seething spirit attempts to possess an adjacent corporeal creature. This has the same effect as a {@spell possession} spell (DC 30), except since the spirit doesn't have a physical body, they're not {@condition unconscious} and {@condition paralyzed} when the effect ends. The spirit can't {@action Dismiss} the possession.",
-						"The creature gains 12 temporary Hit Points that are lost when the possession ends. During the possession, the creature has the pulse of rage aura. Each time the possessed creature makes a melee {@action Strike}, the spirit can substitute their ephemeral claw attack modifier, damage amount, or both in place of the creature's own statistics.",
-						"called sovereign shabti to create a the royal's death, the sovereign."
+						"The creature gains 12 temporary Hit Points that are lost when the possession ends. During the possession, the creature has the pulse of rage aura. Each time the possessed creature makes a melee {@action Strike}, the spirit can substitute their ephemeral claw attack modifier, damage amount, or both in place of the creature's own statistics."
 					],
 					"name": "Furious Possession"
 				}
@@ -51410,9 +51188,9 @@
 					"type": "Focus",
 					"tradition": null,
 					"DC": 19,
+					"fp": 2,
 					"entry": {
 						"2": {
-							"fp": "(2 Focus Points)",
 							"spells": [
 								{
 									"name": "lay on hands"
@@ -52195,7 +51973,7 @@
 							"DC": "17",
 							"savingThrow": "Fortitude",
 							"onset": null,
-							"maxDuration": "6\nrounds",
+							"maxDuration": "6 rounds",
 							"stages": [
 								{
 									"stage": 1,
@@ -52817,7 +52595,7 @@
 					"traits": [
 						"occult"
 					],
-					"trigger": "The shulsaga's last action was a successful melee {@action Strike} against an astral form created by the astral projectionAPG ritual or a similar effect",
+					"trigger": "The shulsaga's last action was a successful melee {@action Strike} against an astral form created by the {@ritual astral projection|apg} ritual or a similar effect",
 					"frequency": "once per minute;",
 					"entries": [
 						"The shulsaga attempts to counteract the effect projecting the creature onto the Astral Plane, with the effects of a 5th-level {@spell dispel magic} spell (counteract modifier +18)."
@@ -53487,15 +53265,9 @@
 					},
 					"trigger": "The skull peeler is using Perfect Camouflage and a creature moves into a space within 15 feet of it",
 					"entries": [
-						"The skull peeler Leaps toward the triggering creature."
+						"The skull peeler Leaps toward the triggering creature and Strikes with its tongue. If this {@action Strike} is successful, the skull peeler automatically {@ability Grab||Grabs} the target with its tongue."
 					],
 					"name": "Snatch Skull"
-				},
-				{
-					"entries": [
-						"Strikes with its tongue. If this {@action Strike} is successful, the skull peeler automatically Grabs (page 305) the target with its tongue."
-					],
-					"name": "and"
 				}
 			],
 			"speed": {
@@ -53945,12 +53717,9 @@
 			"abilitiesMid": [
 				{
 					"entries": [
-						"As clacking skull swarm, but {@damage 3d12} piercing and {@damage 3d12} negative, DC 34."
+						"When a sorcerous skull swarm is reduced to 0 Hit Points, it erupts in an explosion of foul energy and bone fragments in a 30-foot burst, dealing {@damage 3d12} piercing damage and {@damage 3d12} negative damage (DC 34 basic Reflex save)."
 					],
-					"name": "Boneshard Burst",
-					"entries_as_xyz": [
-						"When a clacking skull swarm is reduced to 0 Hit Points, it erupts in an explosion of foul energy and bone fragments in a 30-foot burst, dealing {@damage 2d12} piercing damage and {@damage 2d12} negative damage (DC 29 basic Reflex save)."
-					]
+					"name": "Boneshard Burst"
 				},
 				{
 					"activity": {
@@ -54262,12 +54031,7 @@
 			],
 			"abilitiesBot": [
 				{
-					"traits": [
-						"page 305"
-					],
-					"entries": [
-						"Occult Innate Spells DC 29; 7th plane shift (self only; Astral or Material Plane only); 5th harm, illusory creature, mind probe, modify memory; 4th dimension door (at will); 2nd invisibility (at will), silence (at will)"
-					],
+					"entries": [],
 					"name": "Knockdown",
 					"generic": true
 				},
@@ -54315,16 +54079,9 @@
 						"occult"
 					],
 					"entries": [
-						"The soul skelm makes a melee {@action Strike} trailing a wave of shadowy illusions. The skelm is {@condition flat-footed} until the start of his next turn."
+						"The soul skelm makes a melee {@action Strike} trailing a wave of shadowy illusions. The skelm is {@condition flat-footed} until the start of his next turn. If the {@action Strike} is successful, the skelm increases the number of damage dice by one, and the target must attempt a DC 29 Will save. On a failure, the target becomes {@condition invisible}, inaudible, and otherwise imperceptible to its allies for 4 rounds, and it likewise can't see, hear, or otherwise perceive those allies. Regardless of the outcome, the creature is temporarily immune to Isolating Lash for 24 hours."
 					],
 					"name": "Isolating Lash"
-				},
-				{
-					"entries": [
-						"{@action Strike} is successful, the skelm increases the number of damage dice by one, and the target must attempt a DC 29 Will save. On a failure, the target becomes {@condition invisible}, inaudible, and otherwise imperceptible to its allies for 4 rounds, and it likewise can't see, hear, or otherwise perceive those allies.",
-						"Regardless of the outcome, the creature is temporarily immune to Isolating Lash for 24 hours."
-					],
-					"name": "If the"
 				}
 			],
 			"inflicts": {
@@ -55122,12 +54879,9 @@
 			"abilitiesMid": [
 				{
 					"entries": [
-						"As stone lion cub, but 50 Hit Points (BT 25)."
+						"The condition of a stone lions's vessel dictates the cub's maximum Hit Point value. Undamaged, the vessel is an object with 50 Hit Points (BT 25). When the lions is in spirit form, damaging it doesn't hurt the vessel, but damaging the vessel deals an equal amount of damage to the cub. When the lions Inhabits its Vessel, they're a single target, and damage reduces the Hit Points of both the lions and the vessel. If the vessel is {@condition broken}, the lions can still fight normally while inhabiting it and suffers no ill effect, but if the vessel is ever destroyed, the lions is instantly slain and can't reconstitute."
 					],
-					"name": "Bonded Vessel",
-					"entries_as_xyz": [
-						"The condition of a stone cub's vessel dictates the cub's maximum Hit Point value. Undamaged, the vessel is an object with 28 Hit Points (BT 14). When the cub is in spirit form, damaging it doesn't hurt the vessel, but damaging the vessel deals an equal amount of damage to the cub. When the cub Inhabits its Vessel, they're a single target, and damage reduces the Hit Points of both the cub and the vessel. If the vessel is {@condition broken}, the cub can still fight normally while inhabiting it and suffers no ill effect, but if the vessel is ever destroyed, the cub is instantly slain and can't reconstitute."
-					]
+					"name": "Bonded Vessel"
 				},
 				{
 					"traits": [
@@ -55212,7 +54966,7 @@
 						"manipulate"
 					],
 					"entries": [
-						"As stone lion cub, but Resistances physical 5 (except bludgeoning), Speed 30 feet, and it gains the following Strikes.",
+						"The lion touches and melds with its bonded vessel, bringing the statue to life. It can cease Inhabiting its Vessel by spending a single action, which has the {@trait concentrate} trait. While Inhabiting the Vessel, it loses its fly Speed and gains Immunities healing, nonlethal; Resistances physical 5 (except bludgeoning); Speed 30 feet; and the following {@action Strike||Strikes}.",
 						{
 							"type": "list",
 							"items": [
@@ -55221,25 +54975,13 @@
 							]
 						}
 					],
-					"name": "Inhabit Vessel",
-					"entries_as_xyz": [
-						"The cub touches and melds with its bonded vessel, bringing the statue to life. It can cease Inhabiting its Vessel by spending a single action, which has the {@trait concentrate} trait. While Inhabiting the Vessel, it loses its fly Speed and gains Immunities healing, nonlethal; Resistances physical 3 (except bludgeoning); Speed 20 feet; and the following {@action Strike}.",
-						{
-							"type": "list",
-							"items": [
-								"{@bold Melee} {@as 1} jaws +10 (agile), Damage {@damage 1d6+5} bludgeoning plus {@ability Grab}"
-							]
-						}
-					]
+					"name": "Inhabit Vessel"
 				},
 				{
 					"entries": [
-						"As stone lion cub, but resistance 5."
+						"When not Inhabiting its Vessel, the lion is incorporeal and gains resistance 5 to all damage (except force damage and damage from Strikes with the ghost touch property rune; double resistance against non-magical)."
 					],
-					"name": "Spirit Body",
-					"entries_as_xyz": [
-						"When not Inhabiting its Vessel, the cub is incorporeal and gains resistance 3 to all damage (except force damage and damage from Strikes with the ghost touch property rune; double resistance against non-magical)."
-					]
+					"name": "Spirit Body"
 				}
 			],
 			"inflicts": {
@@ -56033,9 +55775,22 @@
 			"abilitiesBot": [
 				{
 					"entries": [
-						"Strikes they make against the triggering enemy."
+						"Strix kinmates are tightly bonded to one another, adept at teamwork and supporting each other's attacks. If an enemy is within reach of both the kinmate and one other strix, that enemy is {@condition flat-footed} to all strix."
 					],
-					"name": "on"
+					"name": "Strix Camaraderie"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "free"
+					},
+					"traits": ["emotion", "mental"],
+					"frequency": "once per 10 minutes",
+					"trigger": "The kinmate or a strix ally they can see is damaged by an enemy's critical hit",
+					"entries": [
+						"Until the end of their next turn, the kinmate gains a {@damage 1d6|+1d6} status bonus to damage rolls on Strikes they make against the triggering enemy."
+					],
+					"name": "Strix Vengeance"
 				}
 			],
 			"inflicts": {
@@ -56110,13 +55865,10 @@
 				},
 				{
 					"entries": [
-						"As cobbleswarm, but precise to 120 feet and imprecise to 240 feet."
+						"A sturzstromer's tremorsense is a precise sense out to 120 feet and an imprecise sense out to 240 feet. A sturzstromer can't sense anything beyond the range of its tremorsense."
 					],
 					"name": "Tremorsense",
-					"generic": true,
-					"entries_as_xyz": [
-						"A cobbleswarm's tremorsense is a precise sense out to 40 feet and an imprecise sense out to 80 feet. A cobbleswarm can't sense anything beyond the range of its tremorsense."
-					]
+					"generic": true
 				}
 			],
 			"ac": {
@@ -56200,19 +55952,16 @@
 						"attack"
 					],
 					"entries": [
-						"As cobbleswarm, but on a success the creature is {@condition grabbed}, and on a critical success the creature is {@condition restrained}."
-					],
-					"name": "Grasping Bites",
-					"entries_as_xyz": [
-						"The cobbleswarm attempts an {@skill Athletics} check and compares the result to the Fortitude DC of each creature in its space. This counts as two attacks for the cobbleswarm's multiple attack penalty.",
+						"The sturzstromer attempts an {@skill Athletics} check and compares the result to the Fortitude DC of each creature in its space. This counts as two attacks for the sturzstromer's multiple attack penalty.",
 						{
 							"type": "successDegree",
 							"entries": {
-								"Critical Success": "The creature falls {@condition prone}, takes {@damage 1d6} bludgeoning damage, and is {@condition grabbed} by the cobbleswarm until the end of the cobbleswarm's next turn.",
-								"Success": "The creature falls {@condition prone}."
+								"Critical Success": "The creature falls {@condition prone}, takes {@damage 1d6} bludgeoning damage, and is {@condition restrained} by the sturzstromer until the end of the sturzstromer's next turn.",
+								"Success": "The creature falls {@condition prone}, and is {@condition grabbed} by the sturzstromer until the end of the sturzstromer's next turn."
 							}
 						}
-					]
+					],
+					"name": "Grasping Bites"
 				},
 				{
 					"activity": {
@@ -56232,13 +55981,9 @@
 						"unit": "action"
 					},
 					"entries": [
-						"As cobbleswarm, but {@damage 4d10} bludgeoning damage and DC 41.",
-						"thundering weapon rune, but it."
+						"Each foe in the sturzstromer's space takes {@damage 4d10} bludgeoning damage (DC 41 basic Reflex save)."
 					],
-					"name": "Pummeling Assault",
-					"entries_as_xyz": [
-						"Each foe in the cobbleswarm's space takes {@damage 2d4} bludgeoning damage (DC 17 basic Reflex save)."
-					]
+					"name": "Pummeling Assault"
 				}
 			],
 			"inflicts": {
@@ -57781,12 +57526,9 @@
 						"mental"
 					],
 					"entries": [
-						"100 feet. As Elysian titan, but DC 45."
+						"100 feet. Titans warp perception and distance around them to seem even larger and more imposing. A creature that enters or begins its turn within the emanation must succeed at a DC 45 Will save or its movement toward the titan is movement over {@quickref difficult terrain||3|terrain} ({@quickref greater difficult terrain||3|terrain} on a critical failure) for 1 round."
 					],
-					"name": "Impossible Stature",
-					"entries_as_xyz": [
-						"100 feet. Titans warp perception and distance around them to seem even larger and more imposing. A creature that enters or begins its turn within the emanation must succeed at a DC 44 Will save or its movement toward the titan is movement over {@quickref difficult terrain||3|terrain} ({@quickref greater difficult terrain||3|terrain} on a critical failure) for 1 round."
-					]
+					"name": "Impossible Stature"
 				},
 				{
 					"activity": {
@@ -57951,10 +57693,18 @@
 					],
 					"trigger": "The titan damages a creature capable of using divine spells or abilities",
 					"entries": [
-						"The creature must attempt a DC 45 Will save. Critical Success The creature is unaffected. Success The creature can't use divine spells or abilities for 1 round and is {@condition frightened 2}. Only powerful non-divine magic, such as wish, can undo this effect. Failure As success, but the duration is 1 minute. Critical Failure As success, but the duration is unlimited."
+						"The creature must attempt a DC 45 Will save.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "The creature is unaffected.",
+								"Success":"The creature can't use divine spells or abilities for 1 round and is {@condition frightened 2}. Only powerful non-divine magic, such as wish, can undo this effect.",
+								"Failure":"As success, but the duration is 1 minute.",
+								"Critical Failure":"As success, but the duration is unlimited."
+							}
+						}
 					],
-					"name": "Godslayer",
-					"entries_as_xyz": "Ability not found: 'Godslayer As success, but the duration is 1 minute. Critical Failure As success, but the duration is unlimited.' in Thanatotic Titan, p.269"
+					"name": "Godslayer"
 				},
 				{
 					"activity": {
@@ -58479,13 +58229,9 @@
 					],
 					"requirements": "The tidehawk is within 120 feet of a body of water at least as large as it is",
 					"entries": [
-						"The tidehawk draws water to itself, wrapping its feathers like a suit of armor. The tidehawk gains a +2 circumstance bonus to AC until the start of its next turn. If the tidehawk takes damage from a melee {@action Strike} while under this effect, this water armor explodes outward, dealing {@damage 4d8} bludgeoning damage (DC 32 basic Reflex save) to the attacking creature and ending the circumstance bonus."
+						"The tidehawk draws water to itself, wrapping its feathers like a suit of armor. The tidehawk gains a +2 circumstance bonus to AC until the start of its next turn. If the tidehawk takes damage from a melee {@action Strike} while under this effect, this water armor explodes outward, dealing {@damage 4d8} bludgeoning damage (DC 32 basic Reflex save) to the attacking creature and ending the circumstance bonus to AC."
 					],
 					"name": "Oceanic Armor"
-				},
-				{
-					"entries": [],
-					"name": "to AC."
 				},
 				{
 					"activity": {
@@ -58887,7 +58633,8 @@
 						"2": {
 							"spells": [
 								{
-									"name": "sudden blightAPG",
+									"name": "sudden blight",
+									"source": "apg",
 									"amount": "at will"
 								}
 							]
@@ -59440,12 +59187,9 @@
 			"abilitiesMid": [
 				{
 					"entries": [
-						"As tooth fairy, but 15 feet and DC 20."
+						"When killed, a tooth fairy swarm bursts into sticky, foul-smelling white dust. Each creature with 15 feet must succeed at a DC 20 Fortitude save or become {@condition sickened 1} ({@condition sickened 2} on a critical failure)."
 					],
-					"name": "Plaque Burst",
-					"entries_as_xyz": [
-						"When killed, a tooth fairy bursts into sticky, foul-smelling white dust. Each creature with 5 feet must succeed at a DC 16 Fortitude save or become {@condition sickened 1} ({@condition sickened 2} on a critical failure)."
-					]
+					"name": "Plaque Burst"
 				}
 			],
 			"speed": {
@@ -59554,16 +59298,13 @@
 			"abilitiesTop": [
 				{
 					"entries": [
-						"As shikigami, but a toshigami's ward is a specific cherry tree."
+						"Every kami is bound to a ward: a specific animal, plant, object, or location. A kami can merge with or emerge from their ward as a single action, which has the {@trait concentrate} trait. While merged, the kami can observe their surroundings with their usual senses as well as the senses of their ward, but can't move, communicate with, or control their ward. Additionally, a kami merged with their ward recovers Hit Points each minute as if they spent an entire day resting.",
+						"A toshigami's ward is a specific cherry tree."
 					],
 					"name": "Ward",
 					"traits": [
 						"abjuration",
 						"divine"
-					],
-					"entries_as_xyz": [
-						"Every kami is bound to a ward: a specific animal, plant, object, or location. A kami can merge with or emerge from their ward as a single action, which has the {@trait concentrate} trait. While merged, the kami can observe their surroundings with their usual senses as well as the senses of their ward, but can't move, communicate with, or control their ward. Additionally, a kami merged with their ward recovers Hit Points each minute as if they spent an entire day resting.",
-						"A shikigami's ward is typically a minor work of art or symbol of civilization, such as a milestone, trail sign, personal garden, or tiny statue."
 					]
 				}
 			],
@@ -60335,6 +60076,15 @@
 									"name": "blink"
 								}
 							]
+						},
+						"constant": {
+							"7": {
+								"spells": [
+									{
+										"name": "air walk"
+									}
+								]
+							}
 						}
 					}
 				}
@@ -60345,19 +60095,10 @@
 						"number": 2,
 						"unit": "action"
 					},
-					"traits": [
-						"7th"
-					],
 					"entries": [
-						"air walk Vie for Victory The triumph siktempora pushes themself beyond their limits to secure victory over a chosen foe. They choose one target they can see and reach with a single {@action Stride} action. They attempt to {@action Demoralize} that target, ignoring the typical limitations on distance and with no penalty for not sharing a language with the target. They then {@action Stride} and attempt one {@skill Athletics} attack action (such as."
+						"The triumph siktempora pushes themself beyond their limits to secure victory over a chosen foe. They choose one target they can see and reach with a single {@action Stride} action. They attempt to {@action Demoralize} that target, ignoring the typical limitations on distance and with no penalty for not sharing a language with the target. They then {@action Stride} and attempt one {@skill Athletics} attack action (such as {@action Grapple} or {@action Disarm}) against the target."
 					],
-					"name": "Constant"
-				},
-				{
-					"entries": [
-						"{@action Disarm}) against the target."
-					],
-					"name": "Grapple or"
+					"name": "Vie for Victory"
 				},
 				{
 					"activity": {
@@ -62619,13 +62360,9 @@
 				},
 				{
 					"entries": [
-						"The vishkanya infiltrator is adept at dealing with tight situations. They have a +1 circumstance bonus to checks."
+						"The vishkanya infiltrator is adept at dealing with tight situations. They have a +1 circumstance bonus to checks to {@action Escape}."
 					],
 					"name": "Flexible"
-				},
-				{
-					"entries": [],
-					"name": "to Escape."
 				},
 				{
 					"entries": [
@@ -62644,15 +62381,12 @@
 					"entries": [
 						{
 							"type": "affliction",
-							"name": "",
 							"traits": [
 								"injury",
 								"poison"
 							],
-							"note": "",
-							"DC": "20",
+							"DC": 20,
 							"savingThrow": "Fortitude",
-							"onset": null,
 							"maxDuration": "6 rounds",
 							"stages": [
 								{
@@ -62662,20 +62396,18 @@
 								},
 								{
 									"stage": 2,
-									"entry": "{@damage 1d4} poison damage and {@condition flat-footed} ;",
+									"entry": "{@damage 1d4} poison damage and {@condition flat-footed}",
+									"duration": "1 round"
+								},
+								{
+									"stage": 3,
+									"entry": "{@damage 1d4} poison damage, {@condition flat-footed}, and a –5-foot penalty to Speed",
 									"duration": "1 round"
 								}
 							]
 						}
 					],
 					"name": "Vishkanyan Venom"
-				},
-				{
-					"traits": [
-						"1 round"
-					],
-					"entries": [],
-					"name": "to Speed"
 				}
 			],
 			"inflicts": {
@@ -63025,12 +62757,9 @@
 						"air"
 					],
 					"entries": [
-						"30 feet. As air wisp, but for the {@trait water} trait."
+						"30 feet. All wisps vibrate at a frequency attuned to their element, resonating with and empowering all creatures and effects sharing that trait. A creature in the area gains a +1 status bonus to attack and damage rolls for effects with the {@trait water} trait; a creature with the {@trait elemental} and {@trait water} traits gains this bonus to all attack and damage rolls."
 					],
-					"name": "Resonance",
-					"entries_as_xyz": [
-						"30 feet. All wisps vibrate at a frequency attuned to their element, resonating with and empowering all creatures and effects sharing that trait. A creature in the area gains a +1 status bonus to attack and damage rolls for effects with the {@trait air} trait; a creature with the {@trait elemental} and {@trait air} traits gains this bonus to all attack and damage rolls."
-					]
+					"name": "Resonance"
 				},
 				{
 					"activity": {
@@ -63086,7 +62815,7 @@
 				},
 				{
 					"entries": [
-						"When an air wisp rolls a critical failure on a check to {@action Aid}, they get a failure instead, and when they roll a success, they get a critical success instead."
+						"When an water wisp rolls a critical failure on a check to {@action Aid}, they get a failure instead, and when they roll a success, they get a critical success instead."
 					],
 					"name": "In Concert"
 				}
@@ -63594,12 +63323,14 @@
 				},
 				{
 					"traits": [
-						"of"
+						"curse",
+						"necromancy",
+						"primal"
 					],
 					"entries": [
-						"the Werebat (curse, necromancy, primal) Saving Throw DC 15 Fortitude."
+						"Saving Throw DC 15 Fortitude."
 					],
-					"name": "Curse"
+					"name": "Curse of the Werebat"
 				},
 				{
 					"traits": [
@@ -63795,19 +63526,6 @@
 						"number": 1,
 						"unit": "action"
 					},
-					"traits": [
-						"page 305"
-					],
-					"entries": [
-						"Melee tail +10 (agile), Damage {@damage 1d6+4} bludgeoning Melee {@as 1} hatchet +10 (agile, sweep), Damage {@damage 1d6+4} slashing Ranged {@as 1} hatchet +7 (agile, sweep, thrown 10 feet), Damage {@damage 1d6+4} slashing."
-					],
-					"name": "and Grab"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
 					"entries": [
 						"30 feet (page 304)"
 					],
@@ -63833,12 +63551,14 @@
 				},
 				{
 					"traits": [
-						"of"
+						"curse",
+						"necromancy",
+						"primal"
 					],
 					"entries": [
-						"the Werecrocodile (curse, necromancy, primal) Saving Throw DC 15 Fortitude."
+						"Saving Throw DC 15 Fortitude."
 					],
-					"name": "Curse"
+					"name": "Curse of the Werecrocodile"
 				},
 				{
 					"traits": [
@@ -64289,23 +64009,27 @@
 									"amount": "at will"
 								},
 								{
-									"name": "ice stormAPG"
+									"name": "ice storm",
+									"source": "apg"
 								}
 							]
+						},
+						"constant": {
+							"4": {
+								"spells": [
+									{
+										"name": "pass without trace"
+									},
+									{
+										"name": "see invisibility"
+									}
+								]
+							}
 						}
 					}
 				}
 			],
 			"abilitiesBot": [
-				{
-					"traits": [
-						"4th"
-					],
-					"entries": [
-						"pass without trace, see invisibility."
-					],
-					"name": "Constant"
-				},
 				{
 					"traits": [
 						"cold",
@@ -64425,7 +64149,12 @@
 			],
 			"resistances": [
 				{
-					"name": "piercing"
+					"name": "piercing",
+					"amount": 5
+				},
+				{
+					"name": "slashing",
+					"amount": 5
 				}
 			],
 			"abilitiesMid": [
@@ -64960,8 +64689,7 @@
 					"entries": [
 						"As the {@action Stride} action, but the wyrmwraith can pass through walls or material obstacles as though they were incorporeal. They must begin and end their movement outside of any physical obstacles, and passing through solid material is {@quickref difficult terrain||3|terrain}."
 					],
-					"name": "Phase Lurch",
-					"entries_as_xyz": "Ability not found: 'Phase Lurch As the {@action Stride} action, but the wyrmwraith can pass through walls or material obstacles as though they were incorporeal. They must begin and end their movement outside of any physical obstacles, and passing through solid material is {@quickref difficult terrain||3|terrain}.' in Wyrmwraith, p.296"
+					"name": "Phase Lurch"
 				}
 			],
 			"inflicts": {
@@ -65372,7 +65100,7 @@
 							"traits": [
 								"disease"
 							],
-							"note": " A ximtal's withering attacks cause a debilitating disease\ntargeting the senses",
+							"note": " A ximtal's withering attacks cause a debilitating disease targeting the senses",
 							"DC": "36",
 							"savingThrow": "Fortitude",
 							"onset": null,
@@ -65735,7 +65463,7 @@
 							"traits": [
 								"poison"
 							],
-							"note": " A xiuh couatl's poison deals good\ndamage rather than poison damage to fiends",
+							"note": " A xiuh couatl's poison deals good damage rather than poison damage to fiends",
 							"DC": "32",
 							"savingThrow": "Fortitude",
 							"onset": null,
@@ -66082,13 +65810,29 @@
 						"fear",
 						"mental"
 					],
-					"trigger": "The forest dragon is targeted with a water spell or effect",
-					"frequency": "once per hour;",
 					"entries": [
-						"90 feet, DC 27 (page 305). Animals, fungi, and plants take a \u20132 circumstance penalty to the save. Fed by Water (healing, necromancy, primal) ; The forest dragon gains 30 temporary Hit Points."
+						"90 feet, DC 27. Animals, fungi, and plants take a \u20132 circumstance penalty to the save."
 					],
 					"name": "Frightful Presence",
 					"generic": true
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction",
+						"entry": "{@as R}"
+					},
+					"traits": [
+						"healing",
+						"necromancy",
+						"primal"
+					],
+					"trigger": "The forest dragon is targeted with a water spell or effect",
+					"frequency": "once per hour",
+					"entries": [
+						"The forest dragon gains 30 temporary Hit Points."
+					],
+					"name": "Fed by Water"
 				}
 			],
 			"speed": {
@@ -66367,9 +66111,19 @@
 			"abilitiesMid": [
 				{
 					"entries": [
-						"AC until the start of their next turn."
+						"If the sea dragon is targeted with an earth spell or flesh to stone, they lose Liquefy until the end of their next turn."
 					],
-					"name": "to"
+					"name": "Countered by Earth"
+				},
+				{
+					"traits": [
+						"arcane",
+						"transmutation"
+					],
+					"entries": [
+						"When a sea dragon is struck by a weapon made primarily of metal or affected by a spell that uses metal, many of the dragon's scales transform to mimic the metal. This grants the dragon a +1 item bonus to AC until the start of their next turn."
+					],
+					"name": "Fed by Metal"
 				},
 				{
 					"traits": [
@@ -66481,88 +66235,20 @@
 									]
 								}
 							]
-						}
-					}
-				},
-				{
-					"name": "Arcane Prepared",
-					"type": "Prepared",
-					"tradition": "Arcane",
-					"DC": 26,
-					"attack": 19,
-					"entry": {
-						"0": {
-							"level": 3,
-							"spells": [
-								{
-									"name": "detect magic"
-								},
-								{
-									"name": "message"
-								},
-								{
-									"name": "prestidigitation"
-								},
-								{
-									"name": "read aura"
-								},
-								{
-									"name": "shield"
-								}
-							]
 						},
-						"1": {
-							"spells": [
-								{
-									"name": "air bubble"
-								},
-								{
-									"name": "grease"
-								},
-								{
-									"name": "grim tendrils"
-								}
-							]
-						},
-						"2": {
-							"spells": [
-								{
-									"name": "hideous laughter"
-								},
-								{
-									"name": "resist energy"
-								},
-								{
-									"name": "water breathing"
-								}
-							]
-						},
-						"3": {
-							"spells": [
-								{
-									"name": "feet to fins"
-								},
-								{
-									"name": "haste"
-								},
-								{
-									"name": "wall of wind"
-								}
-							]
+						"constant":{
+							"2": {
+								"spells": [
+									{
+										"name": "water walk"
+									}
+								]
+							}
 						}
 					}
 				}
 			],
 			"abilitiesBot": [
-				{
-					"traits": [
-						"2nd"
-					],
-					"entries": [
-						"water walk."
-					],
-					"name": "Constant"
-				},
 				{
 					"activity": {
 						"number": 2,
@@ -66574,8 +66260,7 @@
 						"water"
 					],
 					"entries": [
-						"The dragon shoots a ball of water that deals {@damage 9d6} bludgeoning damage in a 20-foot burst within 40 feet (DC 26 basic Reflex save). All non-magical fire in the radius is extinguished. The dragon can't use Breath Weapon again for {@dice 1d4} rounds.",
-						"Arcane Prepared Spells DC 26, attack +19; 3rd feet to fins, haste, wall of wind; 2nd hideous laughter, resist energy, water breathing; 1st air bubble, grease, grim tendrils; Cantrips (3rd) detect magic, message, prestidigitation, read aura, shield Arcane Prepared Spells DC 32, plus 5th mariner's curse, tongues, wall of ice; 4th dimension door, gaseous form, resilient sphere; Cantrips (5th) detect magic, message, prestidigitation, read aura, shield; Rituals DC 32; commune with nature Arcane Prepared Spells DC 38, plus 8th disappearance, discern location, horrid wilting; 7th energy aegis, project image, spell turning; 6th phantasmal calamity, repulsion, true seeing; Cantrips (8th) detect magic, message, prestidigitation, read aura, shield; Rituals DC 38; commune with nature."
+						"The dragon shoots a ball of water that deals {@damage 9d6} bludgeoning damage in a 20-foot burst within 40 feet (DC 26 basic Reflex save). All non-magical fire in the radius is extinguished. The dragon can't use Breath Weapon again for {@dice 1d4} rounds."
 					],
 					"name": "Breath Weapon"
 				},
@@ -67107,7 +66792,7 @@
 						"mental"
 					],
 					"entries": [
-						"90 feet, DC 28 (page 305) Occult Prepared Spells DC 29, attack +23; 4th calm emotions, detect scrying, silence; 3rd enthrall, heroism, hypnotic pattern; 2nd comprehend language, remove fear, status; 1st command, illusory disguise, true strike; Cantrips (4th) daze, detect magic, prestidigitation, read aura, shield Occult Prepared Spells DC 36, dragon, plus 6th dominate, feeblemind, zealous conviction; 5th dreaming potential, subconscious suggestion, tongues; Cantrips (6th) daze, detect magic, prestidigitation, read aura, shield Occult Prepared Spells DC 43, dragon, plus 9th foresight, overwhelming presence, telepathic demand; 8th disappearance, dream council, maze; 7th dimensional lock, magnificent mansion, true target; Cantrips (9th) daze, detect magic, prestidigitation, read aura, shield."
+						"90 feet, DC 28."
 					],
 					"name": "Frightful Presence",
 					"generic": true
@@ -68059,16 +67744,13 @@
 			"abilitiesTop": [
 				{
 					"entries": [
-						"As shikigami, but a zuishin's ward is a specific gate, doorway, or shrine."
+						"Every kami is bound to a ward: a specific animal, plant, object, or location. A kami can merge with or emerge from their ward as a single action, which has the {@trait concentrate} trait. While merged, the kami can observe their surroundings with their usual senses as well as the senses of their ward, but can't move, communicate with, or control their ward. Additionally, a kami merged with their ward recovers Hit Points each minute as if they spent an entire day resting.",
+						"A zuishin's ward is a specific gate, doorway, or shrine."
 					],
 					"name": "Ward",
 					"traits": [
 						"abjuration",
 						"divine"
-					],
-					"entries_as_xyz": [
-						"Every kami is bound to a ward: a specific animal, plant, object, or location. A kami can merge with or emerge from their ward as a single action, which has the {@trait concentrate} trait. While merged, the kami can observe their surroundings with their usual senses as well as the senses of their ward, but can't move, communicate with, or control their ward. Additionally, a kami merged with their ward recovers Hit Points each minute as if they spent an entire day resting.",
-						"A shikigami's ward is typically a minor work of art or symbol of civilization, such as a milestone, trail sign, personal garden, or tiny statue."
 					]
 				}
 			],

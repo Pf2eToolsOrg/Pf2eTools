@@ -242,14 +242,11 @@
 			},
 			"actions": [
 				{
-					"traits": [
-						"is"
-					],
+					"name": "Earth Vulnerability",
 					"entries": [
-						"opposed by the Plane of Earth. Any spell or {@trait magical} effect with the {@trait earth} trait that targets a creature or area within 50 feet of the rift deals 10 damage to the rift per spell levels (or per 2 levels for magic items, feats, and so forth). For example, a 3rd-level {@spell earthbind} spell cast on a creature near the air rift deals 30 points of damage to the rift."
+						"The Elemental Plane of Air is opposed by the Plane of Earth. Any spell or {@trait magical} effect with the {@trait earth} trait that targets a creature or area within 50 feet of the rift deals 10 damage to the rift per spell levels (or per 2 levels for magic items, feats, and so forth). For example, a 3rd-level {@spell earthbind} spell cast on a creature near the air rift deals 30 points of damage to the rift."
 					],
-					"type": "ability",
-					"name": "Earth Vulnerability The Elemental Plane of Air"
+					"type": "ability"
 				},
 				{
 					"activity": {
@@ -258,25 +255,23 @@
 					},
 					"trigger": "A creature comes within 50 feet of the rift",
 					"entries": [
-						"The air rift creates a shroud of subjective gravity around the creature for 1 minute. The creature can use a free action, which has the {@trait concentrate} trait, to choose any direction they wish for gravity to pull them. This allows a creature to {@action Stride} along any surface."
+						"The air rift creates a shroud of subjective gravity around the creature for 1 minute. The creature can use a free action, which has the {@trait concentrate} trait, to choose any direction they wish for gravity to pull them. This allows a creature to {@action Stride} along any surface or {@action Fly} in a straight line by choosing a direction into midair. For unattended objects and mindless creatures, this is microgravity: they float in place unless pushed off a surface."
 					],
 					"type": "ability",
 					"name": "Weightlessness"
-				},
-				{
-					"entries": [
-						"{@action Fly} in a straight line by choosing a direction into midair. For unattended objects and mindless creatures, this is microgravity: they float in place unless pushed off a surface."
-					],
-					"type": "ability",
-					"name": "or"
 				}
 			],
 			"routine": [
 				"(1 action) Winds blow through the area in a random direction, causing creatures and objects within 50 feet of the air rift to float up, down, north, south, east, or west (roll a d6 to determine which direction). Creatures and objects in the area must attempt a DC 37 Fortitude save. If a creature is pushed into a solid object or another creature by this effect, both take {@damage 3d8+15} bludgeoning damage on impact.",
-				"Critical Success The creature is unaffected.",
-				"Success The creature is pushed 10 feet, but takes only half damage from impact.",
-				"Failure The creature is pushed 20 feet, falls {@condition prone}, and takes full damage from impact.",
-				"Critical Failure The creature is pushed 40 feet, falls {@condition prone}, and takes double damage from impact."
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "The creature is unaffected.",
+						"Success": "The creature is pushed 10 feet, but takes only half damage from impact.",
+						"Failure": "The creature is pushed 20 feet, falls {@condition prone}, and takes full damage from impact.",
+						"Critical Failure": "The creature is pushed 40 feet, falls {@condition prone}, and takes double damage from impact."
+					}
+				}
 			]
 		},
 		{
