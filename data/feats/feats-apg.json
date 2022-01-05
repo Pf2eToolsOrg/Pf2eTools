@@ -8707,7 +8707,14 @@
 			],
 			"prerequisites": "trained in {@skill Deception}",
 			"entries": [
-				"When you trick a foe, you can goad them into overextending their next attack. On a {@action Feint}, you can use the following success and critical success effects instead of any other effects you would gain when you {@action Feint}; if you do, other abilities that."
+				"When you trick a foe, you can goad them into overextending their next attack. On a {@action Feint}, you can use the following success and critical success effects instead of any other effects you would gain when you {@action Feint}; if you do, other abilities that adjust the normal effects of your {@action Feint} no longer apply. You can choose whether to use the Goading Feint benefits or the normal benefits each time you {@action Feint} a given foe.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "The target takes a \u20132 circumstance penalty to all attack rolls against you before the end of its next turn.",
+						"Success": "The target takes a \u20132 circumstance penalty to its next attack roll against you before the end of its next turn."
+					}
+				}
 			]
 		},
 		{
