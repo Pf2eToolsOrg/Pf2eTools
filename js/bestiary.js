@@ -272,7 +272,7 @@ class BestiaryPage extends ListPage {
 				const pageUrl = `#${UrlUtil.autoEncodeHash(toRender)}${toRender._isScaledLvl ? `${HASH_PART_SEP}${VeCt.HASH_CR_SCALED}${HASH_SUB_KV_SEP}${toRender._isscaledLvl}` : ""}`;
 
 				const renderFn = Renderer.hover._pageToRenderFn(UrlUtil.getCurrentPage());
-				const $content = $$`<table class="stats">${renderFn(toRender)}</table>`;
+				const $content = $$`<div class="stats">${renderFn(toRender)}</div>`;
 				Renderer.hover.getShowWindow(
 					$content,
 					Renderer.hover.getWindowPositionFromEvent(evt),

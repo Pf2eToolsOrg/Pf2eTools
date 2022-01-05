@@ -6852,7 +6852,15 @@
 				"S": true,
 				"V": true
 			},
-			"trigger": "A foe within range casts a",
+			"trigger": "A foe within range casts a 9th-level or lower spell.",
+			"range": {
+				"entry": "120 feet",
+				"distance": {
+					"type": "feet",
+					"amount": 120
+				}
+			},
+			"targets": "the triggering spell",
 			"savingThrowBasic": false,
 			"duration": {
 				"type": null
@@ -6860,8 +6868,7 @@
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
-				"9th-level or lower spell.",
-				"Range 120 feet; Targets the triggering spell You instantly destroy the incoming spell, though at the cost of sending magical feedback through your body. You automatically counteract the spell, but the feedback brings you unavoidable harm. You lose {@dice 1d8} Hit Points per level of the triggering spell."
+				"You instantly destroy the incoming spell, though at the cost of sending magical feedback through your body. You automatically counteract the spell, but the feedback brings you unavoidable harm. You lose {@dice 1d8} Hit Points per level of the triggering spell."
 			],
 			"heightened": {
 				"heightened": false,
