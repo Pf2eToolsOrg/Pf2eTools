@@ -604,7 +604,7 @@ class ScaleCreature {
 						return `@hit ${Number(m[1]) + opts.flatAddProf}`;
 					});
 					e = e.replaceAll(/@damage (\d+d\d+)([+-]?\d*)/g, (formula, formulaNoMod, mod) => {
-						if (!mod) return `@damage ${formulaNoMod}+${bonus}`;
+						if (!mod) return `@damage ${formulaNoMod}${bonus > 0 ? "+" : ""}${bonus}`;
 						else {
 							if (Number(mod) + bonus > 0) return `@damage ${formulaNoMod}+${Number(mod) + bonus}`;
 							else if (Number(mod) + bonus < 0) return `@damage ${formulaNoMod}${Number(mod) + bonus}`;
@@ -890,10 +890,13 @@ class ScaleCreature {
 					e = e.replaceAll(/@hit (\d+)/g, (...m) => {
 						return `@hit ${this._scaleValue(lvlIn, toLvl, Number(m[1]), this._LvlAttackBonus) + opts.flatAddProf}`;
 					});
-					e = e.replaceAll(/@damage (\d+d\d+[+-]?\d*)/g, (...m) => {
-						const scaleTo = isArea ? this._LvlAreaDamage[toLvl][Number(isLimited)] / this._LvlAreaDamage[lvlIn][Number(isLimited)] * this._getDiceEV(m[1]) : this._scaleValue(lvlIn, toLvl, this._getDiceEV(m[1]), this._LvlExpectedDamage);
-						return `@damage ${this._scaleDice(m[1], scaleTo)}`;
-					});
+					// Do not scale damage formulas when applying variant rules
+					if (lvlIn !== toLvl) {
+						e = e.replaceAll(/@damage (\d+d\d+[+-]?\d*)/g, (...m) => {
+							const scaleTo = isArea ? this._LvlAreaDamage[toLvl][Number(isLimited)] / this._LvlAreaDamage[lvlIn][Number(isLimited)] * this._getDiceEV(m[1]) : this._scaleValue(lvlIn, toLvl, this._getDiceEV(m[1]), this._LvlExpectedDamage);
+							return `@damage ${this._scaleDice(m[1], scaleTo)}`;
+						});
+					}
 				}
 				return e;
 			});
