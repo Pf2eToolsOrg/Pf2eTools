@@ -355,7 +355,8 @@
 			},
 			"usage": "attached to firearm (firing mechanism)",
 			"bulk": "\u2014",
-			"category": "no category found",
+			"category": "Modification",
+			"subCategory": "Firing Mechanism",
 			"entries": [
 				"Air cartridge firing mechanisms use a container of compressed air affixed to a sealed system that releases the air in a small burst to propel ammunition, and they're the default used in Arcadian air repeaters. Any firearm can be modified to replace its normal firing mechanism with an air cartridge firing system, allowing the weapon to be fired underwater or in other conditions that would normally prevent the ignition of black powder. The air cartridges lack much of the propulsive power of black powder, however, imposing a \u201310-foot penalty to the attached firearm's range increment. Weapons with the kickback trait don't gain that trait's benefits when using an air cartridge firing system.",
 				"Attaching an air cartridge firing system takes one hour, though this time can overlap with the standard time required to maintain and clean your firearm to prevent misfires."
@@ -543,7 +544,8 @@
 				"The aquarium lamp is a combination light source and exotic animal aquarium, intended to provide rich nobles amusement and illumination. It takes the shape of a glass cube 50 feet wide and seven feet high filled with sea water, flanked by two much smaller water tanks. A sparse brass frame around the device keeps the tanks themselves from touching the ground and serves as a mounting point for a pair of electrical coils on the top, which are enclosed within separate glass tubes. Six electric eels swim within the central tank, while a number of animals belonging to species considered to be the eels' natural prey swim in the smaller feeding tanks.",
 				"With the simple pull of a lever attached to either smaller tank, one of the prey animals is released into the eel tank.",
 				"Within seconds, the eels converge on the hapless animal, using their electrical charges to stun their victims. When this happens, the salty seawater conducts the electrical energy into transfer coils {@condition hidden} within the brass frame, which send the energy to the top-mounted electrical coils. The end result produces enough light to fully illuminate a room as though it were midday.",
-				"This device is an expression of a recent trend among certain Avistani nobles to blend form and function in their "
+				"This device is an expression of a recent trend among certain Avistani nobles to blend form and function in their manors’ interior decorations. In such circles, ostentatious decorations that serve no functional purpose are derided as “tacky” and “unrefined.” If a noble in such company wishes not to be ridiculed, they must be sure that each decoration adds something to the room beyond the aesthetic. The aquarium lamp is the latest tool in this social arms race, and it’s already proven popular with its target market.",
+				"When active, the aquarium lamp produces bright light in a 60-foot radius (and dim light for the next 60 feet). Each activation provides enough energy for 10 minutes of use, and the two feeding tanks combined carry enough prey animals for 50 activations before needing to be refilled, though electric eels usually need feeding only once per day, and won’t go after the prey if they’re all full. While electric eels are not aggressive to their aquarium keepers and will gradually learn to associate them with food, they can engage in violent social behavior, especially when they are young. This behavior leads to small fights involving tail slapping, biting, and discharged electricity, the last of which causes the lamp to illuminate without hitting the lever to release prey. The electric eels live around 15 years if kept well-fed."
 			],
 			"generic": false,
 			"consumable": false
@@ -1674,14 +1676,21 @@
 				"amount": 200,
 				"note": null
 			},
+			"ac": 2,
+			"dexCap": 3,
+			"checkPen": 1,
+			"speedPen": 0,
+			"str": 12,
+			"group": "Plate",
 			"usage": "worn armor",
 			"bulk": "2",
 			"category": "Armor",
+			"subCategory": "Light",
 			"entries": [
 				"Sometimes, just disguising one's face just isn't convincing enough. Clockwork disguises were invented to supplement regular disguise kits, which are used all across Golarion. For example, if a spy wants to infiltrate a military camp, they must be wearing the same type of armor as the soldiers stationed there\u2014or else have a very good explanation for their commander as to why they're out of proper uniform! The clockwork disguise is intended to help avoid such awkward, potentially fatal confrontations.",
 				"The clockwork disguise looks like a harness connected to hundreds of small metal plates that cover the user's torso and arms. Each of these plates is equipped with several hinges, allowing them to be shaped into a wide variety of patterns. When these shaped plates are arranged and connected, they can be made to look like almost any basic suit of light or medium metal armor, though armor embellishments such as those worn by highranking officers are beyond this device. The arrangement process takes some time, but once it's completed, the user need only perform a few simple adjustments to a clockwork mechanism in the disguise to make the plate arrangement into a new preset configuration. Afterwards, when the user flips a switch on the harness's belt to one of three positions, the plates shift, overlap, and connect as necessary to transform the disguise into the desired preset configuration. The clockwork disguise can have up to three preset configurations at a time, and most users use a minimum of two: the one required for their current task, and a suitably inconspicuous configuration for when the first configuration is unnecessary.",
 				"Giving a clockwork disguise a new preset configuration requires 20 minutes of work. The clockwork disguise can have a maximum of three preset configurations at a time, and it can only mimic light and medium armor suits made of metal.",
-				"The clockwork disguise is light armor and has the following stats, regardless of which type of armor it mimics: AC Bonus +2; Dex Cap +3; Check Penalty \u20131; Strength 12; Group plate.",
+				"The clockwork disguise is light armor and has the stats listed above, regardless of which type of armor it mimics.",
 				{
 					"type": "ability",
 					"activity": {
@@ -4390,7 +4399,7 @@
 			},
 			"usage": "attached to firearm",
 			"bulk": "1",
-			"category": "no category found",
+			"category": "Modification",
 			"entries": [
 				"These modifications include a heavier stock and larger replacement barrel designed to increase the stopping power of firearms. Large bore modifications can only be applied to firearms with the kickback or scatter traits, and attaching large bore modifications takes 1 hour, though this time can overlap with the standard time required to maintain and clean your firearm to prevent misfires.",
 				"Blazons of shared power When you attach large bore modifications to a kickback weapon, the circumstance bonus to damage granted by the kickback trait increases from 1 to 2 additional damage and the Strength requirement to fire the weapon without penalty increases to 18.",
@@ -4638,7 +4647,8 @@
 			],
 			"usage": "attached to firearm (scope)",
 			"bulk": "L",
-			"category": "no category found",
+			"category": "Modification",
+			"subCategory": "Scope",
 			"entries": [
 				"More of a field projector than a scope, this small cylinder of magnetite has been enchanted to spread and accelerate the shrapnel of a scatter weapon further than the weapon's natural capabilities. Furthermore, some of the floating magnetite inside the scope's structure can help you when attempting to determine the your allies' locations. The magnetite scope grants you a +2 item bonus to {@skill Survival} checks to {@action Sense Direction} when using the scope to assist you in navigating. This scope can only be attached to firearms with the scatter trait.",
 				{
@@ -4697,7 +4707,8 @@
 			],
 			"usage": "attached to firearm or crossbow (scope)",
 			"bulk": "L",
-			"category": "no category found",
+			"category": "Modification",
+			"subCategory": "Scope",
 			"entries": [
 				"These scopes use magically enhanced lenses to extend the range of your weapon and help spot distant foes. The scope grants you a +1 item bonus to visual {@skill Perception} checks to {@action Seek} creatures through the scope.",
 				{
@@ -5778,7 +5789,8 @@
 			},
 			"usage": "attached to firearm (scope)",
 			"bulk": "L",
-			"category": "no category found",
+			"category": "Modification",
+			"subCategory": "Scope",
 			"entries": [
 				"The dwarven gunsmiths of Dongun Hold originally created these scopes to help them clear out vermin in underground areas. This scope captures the sound that echoes off a creature hit by the firearm and transforms it into light, illuminating the target for all to see.",
 				{
@@ -5820,7 +5832,8 @@
 			},
 			"usage": "attached to firearm or crossbow (scope)",
 			"bulk": "L",
-			"category": "no category found",
+			"category": "Modification",
+			"subCategory": "Scope",
 			"entries": [
 				"The scope of truth is a bit bigger than most to accommodate larger lenses, which have been magically prepared with tiny shards from crystal balls to reveal the truth. The scope grants you a +2 item bonus to {@skill Perception} checks made to {@action Seek} in areas you can see through the scope.",
 				{
@@ -7238,7 +7251,8 @@
 			},
 			"usage": "attached to firearm (firing mechanism)",
 			"bulk": "\u2014",
-			"category": "no category found",
+			"category": "Modification",
+			"subCategory": "Firing Mechanism",
 			"entries": [
 				"This device replaces the attached firearm's normal firing mechanism (normally, most of the guns in this chapter use a flintlock or matchlock firing mechanism). When the firearm's wielder fires the weapon, a small rune etched on a piece of stone affixed inside the mechanism releases a magical spark that's propelled through the firing mechanism and into the firearm, launching its bullet. An underwater firing mechanism allows the attached firearm to be fired underwater or in other conditions that would normally prevent the ignition of black powder. Attaching an underwater firing mechanism to a firearm takes 1 hour, though this time can overlap with the standard time required to maintain and clean your firearm to prevent misfires.",
 				"Talismans A talisman is a small object affixed to armor, a shield, or a weapon (which is called the affixed item). You must be wielding or wearing an item to activate a talisman attached to that item. Once activated, a talisman burns out permanently. The talismans included in this section are particularly useful for characters who wield firearms or crossbows."
@@ -7361,7 +7375,7 @@
 			],
 			"usage": "attached to a thrown weapon",
 			"bulk": "\u2014",
-			"category": "no category found",
+			"category": "Modification",
 			"entries": [
 				"These delicate clockwork wings enable thrown weapons to soar through the air at high speeds, performing turns and other aerial maneuvers midflight. Wind-up wings also have different types of special effects depending on the type.",
 				"Wind-up wings must be attached to a thrown weapon and wound to function. A thrown weapon with an attached set of wind-up wings can't have anything else attached to it, or the wings cease to function.",
@@ -7378,8 +7392,7 @@
 						"note": null
 					},
 					"entries": [
-						"When you make a thrown {@action Strike} with the weapon to which a pair of flutterback wind-up wings are attached, and the wings are wound, the wings fly the weapon back to your hand after the {@action Strike} is complete. If your hands are full when the weapon returns, the wings hover in place three feet above the ground.",
-						"At the end of your turn, the wings are wound down; they don't function again until wound. If you aren't holding the weapon when the flutterback wind-up wings become wound down, the weapon falls to the ground."
+						"When you make a thrown {@action Strike} with the weapon to which a pair of flutterback wind-up wings are attached, and the wings are wound, the wings fly the weapon back to your hand after the {@action Strike} is complete. If your hands are full when the weapon returns, the wings hover in place three feet above the ground. At the end of your turn, the wings are wound down; they don't function again until wound. If you aren't holding the weapon when the flutterback wind-up wings become wound down, the weapon falls to the ground."
 					]
 				},
 				{
@@ -7398,7 +7411,7 @@
 			"consumable": false
 		},
 		{
-			"name": "{@ability darkvision} Scope",
+			"name": "Darkvision Scope",
 			"source": "G&G",
 			"page": 180,
 			"type": "Item",
@@ -7409,7 +7422,8 @@
 			],
 			"usage": "attached to firearm or crossbow (scope)",
 			"bulk": "L",
-			"category": "no category found",
+			"category": "Modification",
+			"subCategory": "Scope",
 			"entries": [
 				"These scopes, popular with snipers and other sneaky sharpshooters who ply their trade in the dead of night, incorporate clouded crystals with magical properties into their design. While relatively useless under normal lighting conditions, these crystals can help bring things into focus when used in dim light. The scope is then given an enchantment to enhance these properties for use in Magnifying Scope"
 			],
