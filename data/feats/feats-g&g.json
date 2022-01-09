@@ -762,8 +762,9 @@
 				"Concentrate",
 				"Gunslinger"
 			],
+			"requirements": "An enemy you've damaged with a ranged weapon during the last minute is {@condition concealed} or {@condition hidden} from you.",
 			"entries": [
-				"Requirements An enemy you've damaged with a ranged weapon during the last minute is {@condition concealed} or {@condition hidden} from you."
+				"Once you've locked on to a target, little can obscure your aim. Make a ranged weapon {@action Strike} against the required target. This {@action Strike} ignores the target's {@condition concealed} condition and reduces the flat check for the {@condition hidden} condition from 11 to 5."
 			]
 		},
 		{
@@ -2622,15 +2623,32 @@
 				"Dedication"
 			],
 			"prerequisites": "trained in {@skill Crafting}",
-			"cost": "1 or more batches of infused reagents",
 			"entries": [
-				"You have a free hand; Effect You set off a fireworks display.",
-				"You can launch a normal firework to simply create a visual or audible signal within 20 feet or you can choose one of the following special effects. A firework display has the listed traits, and if it costs more than 1 batch of infused reagents, it is noted in its Cost entry.",
-				"Comet {@as 1} (visual) You shoot a streak of shining light in a 60-foot line. All spaces in that line are lit with bright light until the start of your next turn. As part of this action, you can also {@action Point Out} a single creature in the line, and your allies do not need to hear or understand you.",
-				"Flower {@as 1} (visual) You ignite a ring of sparks, creating a shape that might be reminiscent of a flower blooming in the sky.",
-				"Each enemy with 20 feet of you must attempt a Fortitude save. On a failure, the enemy is {@condition dazzled} for 1 round, and on a critical failure they are {@condition dazzled} for 2 rounds.",
-				"Salute {@as 1} (auditory) You create a startling bang or whistle, adding an auditory component to your fireworks display.",
-				"When you launch a salute display, you can choose a {@condition confused} or {@condition fascinated} ally within 60 feet. If the ally you chose is {@condition fascinated}, the noise is so violent that it acts as a {@condition hostile} effect for the purpose of their {@condition fascinated} condition (though it has no negative repercussions) automatically ending most applications of the {@condition fascinated} condition. If they're {@condition confused}, the sound is so loud and violent that it might snap the ally out of confusion. They can immediately attempt the flat check to remove the {@condition confused} condition which normally occurs when a creature is damaged. If the {@condition confused} condition has special rules that remove the flat check when taking damage or make the flat check harder, those rules also apply to the salute."
+				"You’ve learned the secrets of making fire and sound bloom\nusing black powder, metals, and paper. You most likely came\nby this knowledge through formal training with a fireworks\nhouse in Tian Xia or a fireworks company from Vudra, though\nperhaps you mastered fireworks completely by yourself after\nfinding a secret stash in an old shipwreck.",
+				"You become trained in Fireworks Lore or become\nan expert if you were already trained in it. You\ngain the Alchemical Crafting feat, a pool of\ninfused reagents equal to your level, and advanced alchemy\n(allowing you to make alchemical items during your daily\npreparations without the normal cost or time expenditure).\nYou can use your infused reagents only to make fireworks,\nLaunch a Fireworks Display, and use other feats from this\narchetype (see below). Your advanced alchemy level is 1.\nThe rules for these are in the Alchemical Crafting section\non page 258 of the Core Rulebook, and rules for infused\nreagents and advanced alchemy are on page 72. If you gain\ninfused reagents from more than one source, you use the\nhighest number of reagents to determine your pool rather\nthan adding them together.",
+				"You can also create special fireworks displays using your\ninfused reagents, designed to create distinctive effects you can\nuse to make onlookers marvel and even to gain an advantage\nin combat. You gain the Launch Fireworks Display action and\nlearn some basic displays, and you can learn additional, more\ncomplex displays through other firework technician feats.\nThe DC for any display is equal to your class DC or spell DC,\nwhichever is higher.",
+				{
+					"type": "ability",
+					"name": "Launch Fireworks Display",
+					"activity": {
+						"entry": "{@as 1} to {@as 3} (see below)"
+					},
+					"traits": ["manipulate"],
+					"cost": "1 or more batches of infused reagents",
+					"requirements": "You have a free hand",
+					"entries": [
+						"You set off a fireworks display. You can launch a normal firework to simply create a visual or audible signal within 20 feet or you can choose one of the following special effects. A firework display has the listed traits, and if it costs more than 1 batch of infused reagents, it is noted in its Cost entry.",
+						{
+							"type": "list",
+							"style": "list-no-bullets-indent",
+							"items": [
+								"{@b Comet} {@as 1} ({@trait visual}) You shoot a streak of shining light in a 60-foot line. All spaces in that line are lit with bright light until the start of your next turn. As part of this action, you can also {@action Point Out} a single creature in the line, and your allies do not need to hear or understand you.",
+								"{@b Flower} {@as 1} ({@trait visual}) You ignite a ring of sparks, creating a shape that might be reminiscent of a flower blooming in the sky. Each enemy with 20 feet of you must attempt a Fortitude save. On a failure, the enemy is {@condition dazzled} for 1 round, and on a critical failure they are {@condition dazzled} for 2 rounds.",
+								"{@b Salute} {@as 1} ({@trait auditory}) You create a startling bang or whistle, adding an {@trait auditory} component to your fireworks display. When you launch a salute display, you can choose a {@condition confused} or {@condition fascinated} ally within 60 feet. If the ally you chose is {@condition fascinated}, the noise is so violent that it acts as a {@condition hostile} effect for the purpose of their {@condition fascinated} condition (though it has no negative repercussions) automatically ending most applications of the {@condition fascinated} condition. If they're {@condition confused}, the sound is so loud and violent that it might snap the ally out of confusion. They can immediately attempt the flat check to remove the {@condition confused} condition which normally occurs when a creature is damaged. If the {@condition confused} condition has special rules that remove the flat check when taking damage or make the flat check harder, those rules also apply to the salute."
+							]
+						}
+					]
+				}
 			],
 			"special": "You can't select another dedication feat until you've gained two other feats from the fireworks technician archetype.",
 			"leadsTo": [
@@ -3061,7 +3079,7 @@
 			"entries": [
 				"No one can react faster than you can pull your trigger. When using your initial deed, instead of Interacting to draw a weapon, you can {@action Strike} with a firearm or crossbow you're already wielding. If this {@action Strike} hits, the target is also {@condition flat-footed} until the end of your first turn of the encounter."
 			],
-			"special": "If your initial deed allows you to {@action Interact} to draw a weapon more than once, this feat allows you to replace one of these {@action Interact} actions and use the other one to draw a weapon. You can't replace both {@action Interact} actions with Strikes, but you"
+			"special": "If your initial deed allows you to {@action Interact} to draw a weapon more than once, this feat allows you to replace one of these {@action Interact} actions and use the other one to draw a weapon. You can't replace both {@action Interact} actions with Strikes, but you can draw a loaded firearm or crossbow with one of the actions and immediately shoot it with the other."
 		},
 		{
 			"name": "Haphazard Repair",
