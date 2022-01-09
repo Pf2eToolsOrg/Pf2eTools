@@ -6062,7 +6062,6 @@ Renderer.hover = {
 				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "tables.json", ["table", "tableGroup"], (listProp, item) => item.__prop = listProp);
 			case UrlUtil.PG_ACTIONS:
 				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "actions.json", "action");
-			// FIXME: WHY ARE YOU NOT WORKING???
 			case UrlUtil.PG_OPTIONAL_FEATURES:
 				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "optionalfeatures.json", "optionalfeature");
 			case UrlUtil.PG_ABILITIES:
@@ -6712,7 +6711,7 @@ Renderer.hover = {
 			case UrlUtil.PG_ABILITIES:
 				return Renderer.ability.getCompactRenderedString;
 			case UrlUtil.PG_OPTIONAL_FEATURES:
-				return Renderer.optionalfeature.getCompactRenderedString;
+				return Renderer.optionalFeature.getCompactRenderedString;
 			case UrlUtil.PG_LANGUAGES:
 				return Renderer.language.getCompactRenderedString;
 			case UrlUtil.PG_TRAITS:
