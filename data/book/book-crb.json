@@ -2157,7 +2157,10 @@
 										}
 									]
 								}
-							]
+							],
+							"data": {
+								"quickref": 1
+							}
 						},
 						{
 							"type": "pf2-h2",
@@ -2213,144 +2216,147 @@
 									"page": 218,
 									"name": "Familiar and Master Abilities",
 									"entries": [
-										"Each day, you channel your magic into two abilities, which can be either familiar or master abilities. If your familiar is an animal that naturally has one of these abilities (for instance, an owl has a fly Speed), you must select that ability. Your familiar can't be an animal that naturally has more familiar abilities than your daily maximum familiar abilities."
-									]
-								}
-							]
-						},
-						{
-							"type": "pf2-h4",
-							"page": 218,
-							"name": "Familiar Abilities",
-							"entries": [
-								{
-									"type": "pf2-options",
-									"style": "pf2-p text-indent-subsequent block",
-									"items": [
+										"Each day, you channel your magic into two abilities, which can be either familiar or master abilities. If your familiar is an animal that naturally has one of these abilities (for instance, an owl has a fly Speed), you must select that ability. Your familiar can't be an animal that naturally has more familiar abilities than your daily maximum familiar abilities.",
 										{
-											"name": "Amphibious",
+											"type": "pf2-h4",
+											"page": 218,
+											"name": "Familiar Abilities",
 											"entries": [
-												"It gains a swim Speed of 25 feet (or Speed of 25 feet if it already has a swim Speed)."
+												{
+													"type": "pf2-options",
+													"style": "pf2-p text-indent-subsequent block",
+													"items": [
+														{
+															"name": "Amphibious",
+															"entries": [
+																"It gains a swim Speed of 25 feet (or Speed of 25 feet if it already has a swim Speed)."
+															]
+														},
+														{
+															"name": "Burrower",
+															"entries": [
+																"It gains a burrow Speed of 5 feet, allowing it to dig Tiny holes."
+															]
+														},
+														{
+															"name": "Climber",
+															"entries": [
+																"It gains a climb Speed of 25 feet."
+															]
+														},
+														{
+															"name": "Damage Avoidance",
+															"entries": [
+																"Choose one type of save. It takes no damage when it succeeds at that type of save; this doesn't prevent effects other than damage."
+															]
+														},
+														{
+															"name": "Darkvision",
+															"entries": [
+																"It gains {@ability darkvision}."
+															]
+														},
+														{
+															"name": "Fast Movement",
+															"entries": [
+																"Increase one of the familiar's Speeds from 25 feet to 40 feet."
+															]
+														},
+														{
+															"name": "Flier",
+															"entries": [
+																"It gains a fly Speed of 25 feet."
+															]
+														},
+														{
+															"name": "Kinspeech",
+															"entries": [
+																"It can understand and speak with animals of the same species. To select this, your familiar must be an animal, it must have the speech ability, and you must be at least 6th level."
+															]
+														},
+														{
+															"name": "Lab Assistant",
+															"entries": [
+																"It can use your Quick Alchemy action. You must have Quick Alchemy, and your familiar must be in your space. This has the same cost and requirement as if you used it. It must have the manual dexterity ability to select this."
+															]
+														},
+														{
+															"name": "Manual Dexterity",
+															"entries": [
+																"It can use up to two of its limbs as if they were hands to use manipulate actions."
+															]
+														},
+														{
+															"name": "Scent",
+															"entries": [
+																"It gains {@ability scent} (imprecise, 30 feet)."
+															]
+														},
+														{
+															"name": "Speech",
+															"entries": [
+																"It understands and speaks a language you know."
+															]
+														}
+													]
+												}
 											]
 										},
 										{
-											"name": "Burrower",
+											"type": "pf2-h4",
+											"page": 218,
+											"name": "Master Abilities",
 											"entries": [
-												"It gains a burrow Speed of 5 feet, allowing it to dig Tiny holes."
-											]
-										},
-										{
-											"name": "Climber",
-											"entries": [
-												"It gains a climb Speed of 25 feet."
-											]
-										},
-										{
-											"name": "Damage Avoidance",
-											"entries": [
-												"Choose one type of save. It takes no damage when it succeeds at that type of save; this doesn't prevent effects other than damage."
-											]
-										},
-										{
-											"name": "Darkvision",
-											"entries": [
-												"It gains {@ability darkvision}."
-											]
-										},
-										{
-											"name": "Fast Movement",
-											"entries": [
-												"Increase one of the familiar's Speeds from 25 feet to 40 feet."
-											]
-										},
-										{
-											"name": "Flier",
-											"entries": [
-												"It gains a fly Speed of 25 feet."
-											]
-										},
-										{
-											"name": "Kinspeech",
-											"entries": [
-												"It can understand and speak with animals of the same species. To select this, your familiar must be an animal, it must have the speech ability, and you must be at least 6th level."
-											]
-										},
-										{
-											"name": "Lab Assistant",
-											"entries": [
-												"It can use your Quick Alchemy action. You must have Quick Alchemy, and your familiar must be in your space. This has the same cost and requirement as if you used it. It must have the manual dexterity ability to select this."
-											]
-										},
-										{
-											"name": "Manual Dexterity",
-											"entries": [
-												"It can use up to two of its limbs as if they were hands to use manipulate actions."
-											]
-										},
-										{
-											"name": "Scent",
-											"entries": [
-												"It gains {@ability scent} (imprecise, 30 feet)."
-											]
-										},
-										{
-											"name": "Speech",
-											"entries": [
-												"It understands and speaks a language you know."
+												{
+													"type": "pf2-options",
+													"style": "pf2-p text-indent-subsequent block",
+													"items": [
+														{
+															"name": "Cantrip Connection",
+															"entries": [
+																"You can prepare an additional cantrip, or if you have a repertoire, instead designate a cantrip to add to your repertoire every time you select this ability; you can retrain it but can't otherwise change it. You must be able to prepare cantrips or add them to your repertoire to select this."
+															]
+														},
+														{
+															"name": "Extra Reagents",
+															"entries": [
+																"Your familiar grows extra infused reagents on or in its body. You gain an additional batch of infused reagents. You must have the infused reagents ability to select this ability."
+															]
+														},
+														{
+															"name": "Familiar Focus",
+															"entries": [
+																"Once per day, your familiar can use 2 actions with the {@trait concentrate} to regain 1 Focus Point, up to your usual maximum You must have a focus pool to select this."
+															]
+														},
+														{
+															"name": "Lifelink",
+															"entries": [
+																"If your familiar would be reduced to 0 HP by damage, as a reaction with the {@trait concentrate}, you can take the damage. If you do, you take all the damage and your familiar takes none. However, if special effects when a hit damages your familiar (such as snake venom) still apply to your familiar."
+															]
+														},
+														{
+															"name": "Spell Battery",
+															"entries": [
+																"You gain one additional spell slot at least 3 levels lower than your highest-level spell slot; you must be able to cast 4th-level spells using spell slots to select this master ability."
+															]
+														},
+														{
+															"name": "Spell Delivery",
+															"entries": [
+																"If your familiar is in your space, you can cast a spell with a range of touch, transfer its power to your familiar, and command the familiar to deliver the spell. If you do, the familiar uses its 2 actions for the round to move to a target of your choice and touch that target. If it doesn't reach the target to touch it this turn, the spell has no effect."
+															]
+														}
+													]
+												}
 											]
 										}
 									]
 								}
-							]
-						},
-						{
-							"type": "pf2-h4",
-							"page": 218,
-							"name": "Master Abilities",
-							"entries": [
-								{
-									"type": "pf2-options",
-									"style": "pf2-p text-indent-subsequent block",
-									"items": [
-										{
-											"name": "Cantrip Connection",
-											"entries": [
-												"You can prepare an additional cantrip, or if you have a repertoire, instead designate a cantrip to add to your repertoire every time you select this ability; you can retrain it but can't otherwise change it. You must be able to prepare cantrips or add them to your repertoire to select this."
-											]
-										},
-										{
-											"name": "Extra Reagents",
-											"entries": [
-												"Your familiar grows extra infused reagents on or in its body. You gain an additional batch of infused reagents. You must have the infused reagents ability to select this ability."
-											]
-										},
-										{
-											"name": "Familiar Focus",
-											"entries": [
-												"Once per day, your familiar can use 2 actions with the {@trait concentrate} to regain 1 Focus Point, up to your usual maximum You must have a focus pool to select this."
-											]
-										},
-										{
-											"name": "Lifelink",
-											"entries": [
-												"If your familiar would be reduced to 0 HP by damage, as a reaction with the {@trait concentrate}, you can take the damage. If you do, you take all the damage and your familiar takes none. However, if special effects when a hit damages your familiar (such as snake venom) still apply to your familiar."
-											]
-										},
-										{
-											"name": "Spell Battery",
-											"entries": [
-												"You gain one additional spell slot at least 3 levels lower than your highest-level spell slot; you must be able to cast 4th-level spells using spell slots to select this master ability."
-											]
-										},
-										{
-											"name": "Spell Delivery",
-											"entries": [
-												"If your familiar is in your space, you can cast a spell with a range of touch, transfer its power to your familiar, and command the familiar to deliver the spell. If you do, the familiar uses its 2 actions for the round to move to a target of your choice and touch that target. If it doesn't reach the target to touch it this turn, the spell has no effect."
-											]
-										}
-									]
-								}
-							]
+							],
+							"data": {
+								"quickref": 1
+							}
 						}
 					]
 				},
