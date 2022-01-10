@@ -67,7 +67,10 @@ Shared UI components
 /* region Tabs */
 .night-mode .ui-tab__ {
 	&btn-tab-head {
-		&--active {
+		&--active,
+		&--active:focus,
+		&--active:hover,
+		&--active:active, {
 			background-color: $rgb-btn-default-active--night;
 		}
 	}
@@ -75,12 +78,20 @@ Shared UI components
 	&wrp-tab-body {
 		&--background {
 			background: $rgb-bg--night;
+			border-color: $rgb-border-grey--trans-night;
 		}
 	}
 
 	&wrp-tab-heads--border {
 		border-color: $rgb-border-grey--night;
 		border-width: 2px;
+	}
+}
+
+.night-mode .ui-tab-side__ {
+	&wrp-tab {
+		background: $rgb-bg--night;
+		border-color: $rgb-border-grey--trans-night;
 	}
 }
 /* endregion */
