@@ -828,8 +828,10 @@ function Renderer () {
 
 	this._renderAttack = function (entry, textStack, meta, options) {
 		const renderer = Renderer.get();
+		const agile = entry.traits.map(v => v.toLowerCase()).includes("agile")
+		const MAP = entry.noMAP ? "" : `/{@hit ${entry.attack - (agile ? 4 : 5)}||${entry.name.uppercaseFirst()}}/{@hit ${entry.attack - (agile ? 8 : 10)}||${entry.name.uppercaseFirst()}}`
 		textStack[0] += `<p class="pf2-stat pf2-stat__section attack">
-			<strong>${entry.range}&nbsp;</strong>${renderer.render("{@as 1}")} ${entry.name} ${renderer.render(`{@hit ${entry.attack}||${entry.name.uppercaseFirst()}}`)}
+			<strong>${entry.range}&nbsp;</strong>${renderer.render("{@as 1}")} ${entry.name} ${renderer.render(`{@hit ${entry.attack}||${entry.name.uppercaseFirst()}}${MAP}`)}
 			${entry.traits != null ? ` ${renderer.render(`(${entry.traits.map((t) => `{@trait ${t.toLowerCase()}}`).join(", ")})`)}` : ""}, <strong>Damage&nbsp;</strong>${renderer.render(entry.damage)}${entry.noMAP ? "; no multiple attack penalty" : ""}</p>`;
 	};
 
@@ -3435,11 +3437,10 @@ Renderer.affliction = {
 		const renderer = Renderer.get();
 		const renderStack = [];
 		renderer.setFirstSection(true);
-		const rLvl = isNaN(Number(affliction.level)) ? `` : ` ${affliction.level}`;
 
 		renderStack.push(`${Renderer.utils.getExcludedDiv(affliction, affliction.__prop || affliction._type, UrlUtil.PG_AFFLICTIONS)}`)
 		renderStack.push(`
-			${Renderer.utils.getNameDiv(affliction, {page: UrlUtil.PG_AFFLICTIONS, level: rLvl, ...opts})}
+			${Renderer.utils.getNameDiv(affliction, {page: UrlUtil.PG_AFFLICTIONS, level: ` ${affliction.level !== null ? affliction.level : ""}`, ...opts})}
 			${Renderer.utils.getDividerDiv()}
 			${Renderer.utils.getTraitsDiv(affliction.traits || [])}
 		`);
@@ -3856,12 +3857,17 @@ Renderer.creature = {
 		if (cr.attacks) {
 			for (let attack of cr.attacks) {
 				renderStack.push(`<p class="pf2-stat pf2-stat__section">`)
+				// Name Span
 				renderStack.push(`<span><strong>${attack.range}&nbsp;</strong>`)
 				renderStack.push(Renderer.get().render(`{@as 1} `))
 				if (attack.name) renderStack.push(`${attack.name}`)
 				renderStack.push(`</span>`)
-				if (attack.attack != null) renderStack.push(Renderer.get().render(` {@hit ${attack.attack}||${attack.name.uppercaseFirst()} `))
+				// Attack Span
+				const agile = attack.traits != null ? attack.traits.map(v => v.toLowerCase()).includes("agile") : false
+				const MAP = attack.noMAP ? "" : `/{@hit ${attack.attack - (agile ? 4 : 5)}||${attack.name.uppercaseFirst()}}/{@hit ${attack.attack - (agile ? 8 : 10)}||${attack.name.uppercaseFirst()}}`
+				if (attack.attack != null) renderStack.push(Renderer.get().render(` {@hit ${attack.attack}||${attack.name.uppercaseFirst()}}${MAP} `))
 				renderStack.push(`<span>`)
+				// Trait + Damage Span
 				if (attack.traits != null) {
 					let traits = []
 					attack.traits.forEach((t) => traits.push(`{@trait ${Parser.getTraitName(t)}||${t.toLowerCase()}}`));
@@ -3884,7 +3890,8 @@ Renderer.creature = {
 			for (let sc of cr.spellcasting) {
 				const meta = [];
 				if (sc.DC != null) meta.push(`DC ${sc.DC}`);
-				if (sc.attack != null) meta.push(`attack {@hit ${sc.attack}||Spell attack}`);
+				const MAP = sc.noMAP ? "" : `/{@hit ${sc.attack - 5}||Spell attack}/{@hit ${sc.attack - 10}||Spell attack}`
+				if (sc.attack != null) meta.push(`attack {@hit ${sc.attack}||Spell attack}${MAP}`);
 				if (sc.fp != null) meta.push(`${sc.fp} Focus Points`);
 				renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>${sc.name}${/Spell/.test(sc.name) ? "" : " Spells"}&nbsp;</strong>${renderer.render(meta.join(", "))}`)
 				Object.keys(sc.entry).sort(SortUtil.sortSpellLvlCreature).forEach((lvl) => {

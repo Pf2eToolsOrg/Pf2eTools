@@ -763,6 +763,25 @@
 				"Wis": 1,
 				"Cha": 3
 			},
+			"spellcasting": [
+				{
+					"name": "Champion Devotion",
+					"type": "Focus",
+					"tradition": null,
+					"DC": 20,
+					"fp": 1,
+					"entry": {
+						"3": {
+							"spells": [
+								{
+									"name": "touch of corruption",
+									"source": "APG"
+								}
+							]
+						}
+					}
+				}
+			],
 			"items": [
 				"lesser cheetah's elixir",
 				"greataxe",
@@ -5180,15 +5199,9 @@
 					],
 					"requirements": "The drunkard is drunk, and isn't {@condition fatigued} or raging",
 					"entries": [
-						"Something sets the drunkard off, causing them to fly into a drunken rage. They gain 6 temporary Hit Points that last until the drunken rage ends. While raging, they deal 4 additional damage with melee attacks and take a \u20131 penalty to AC. The drunkard can't use concentrate actions except {@action Seek} and rage actions. The rage lasts for 1 minute or until the drunkard falls {@condition unconscious} or sobers up. The drunkard can't voluntarily stop the Drunken."
+						"Something sets the drunkard off, causing them to fly into a drunken rage. They gain 6 temporary Hit Points that last until the drunken rage ends. While raging, they deal 4 additional damage with melee attacks and take a \u20131 penalty to AC. The drunkard can't use concentrate actions except {@action Seek} and {@trait rage} actions. The rage lasts for 1 minute or until the drunkard falls {@condition unconscious} or sobers up. The drunkard can't voluntarily stop the Drunken Rage. Once the rage ends, the drunkard can't {@action Rage} again for 1 minute."
 					],
 					"name": "Drunken Rage"
-				},
-				{
-					"entries": [
-						"Once the rage ends, the drunkard can't {@action Rage} again for 1 minute."
-					],
-					"name": "Rage."
 				}
 			],
 			"inflicts": {

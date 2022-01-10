@@ -11528,6 +11528,48 @@
 								"Drugs offer short-term benefits with harmful side effects and long-term consequences. These short-term benefits, such as euphoria, draw many to drugs, but addiction keeps users hooked long after their first dose. A character can voluntarily fail their initial save against a drug, but for each dose they consume, they must attempt a saving throw against addiction, a disease that represents cravings and withdrawal. Addiction is unique to each drug, so a character can be affected by multiple instances of addiction at once.",
 								"Certain drugs alter how addiction works for that drug, adding the {@trait virulent} trait to the addiction, limiting the maximum stage a character can reach, or adding additional stages beyond those listed in the base affliction.",
 								{
+									"type": "data",
+									"tag": "disease",
+									"data": {
+										"source": "GMG",
+										"page": 120,
+										"name": "Addiction",
+										"level": ", level varies",
+										"type": "disease",
+										"entries": [
+											"Track the maximum stage you reach with each drug's addiction. This maximum stage is separate from your current addiction stage for the drug. The maximum stage can't be reduced, even if you fully remove the disease. When you take the drug, two things happen: you attempt a saving throw against addiction, and you suppress the effects of addiction for 1 day. Failing a save against addiction caused by taking the drug causes you to go to 1 stage higher than the maximum stage you had previously reached (2 stages higher on a critical failure). If you're currently suffering from addiction when you attempt a save from taking the drug, you can't improve your stage; if you succeed at the save, the stage remains the same as it was.",
+											"When you attempt your save against addiction each week, the stage you are currently at can't get worse\u2014it can only stay the same or improve. The conditions from addiction can't be removed while you are affected by the addiction, and suppressing addiction by taking the drug only avoids the effects\u2014it doesn't remove the disease.",
+											{
+												"type": "affliction",
+												"savingThrow": "Fortitude (DC equals that of the drug)",
+												"onset": "1 day",
+												"stages": [
+													{
+														"stage": 1,
+														"entry": "{@condition fatigued}",
+														"duration": "1 week"
+													},
+													{
+														"stage": 2,
+														"entry": "{@condition fatigued} and {@condition sickened||sickened 1}",
+														"duration": "1 week"
+													},
+													{
+														"stage": 3,
+														"entry": "{@condition fatigued}, {@condition drained||drained 1} and {@condition sickened||sickened 1}",
+														"duration": "1 week"
+													},
+													{
+														"stage": 4,
+														"entry": "{@condition fatigued}, {@condition drained||drained 2}, {@condition sickened||sickened 2} and {@condition stupefied||stupefied 2}",
+														"duration": "1 week"
+													}
+												]
+											}
+										]
+									}
+								},
+								{
 									"type": "pf2-brown-box",
 									"source": "GMG",
 									"page": 120,
@@ -11537,7 +11579,10 @@
 										"If you do include drugs in your game, consider the role they'll play. In some campaigns, drugs might simply be an element of flavor and a tool characters use to reach their goals; in others, the side effects and risk of addiction might be a terrible price to pay. The rules assume something of a middle path, where drugs are addictive substances that may provide a short‑term benefit but have consequences. To make drugs more accessible in your game, remove some of the more severe stages of addiction. To make them more dangerous, add the {@trait virulent} trait to the addiction affliction, add more stages with increasingly severe effects, or increase the DC of the save against the addiction by 1 for every use of the drug, decreasing back to normal over time as they stop using the drug."
 									]
 								}
-							]
+							],
+							"data": {
+								"quickref": 5
+							}
 						}
 					]
 				},
