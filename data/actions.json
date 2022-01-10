@@ -1100,7 +1100,7 @@
 				}
 			},
 			"entries": [
-				"You cover your tracks, moving up to half your travel Speed, using the rules on page 479). You don't need to attempt a {@skill Survival} check to cover your tracks, but anyone tracking you must succeed at a {@skill Survival} check against your Survival DC if it is higher than the normal DC to Track.",
+				"You cover your tracks, moving up to half your {@quickref travel Speed||0|Exploration Mode}. You don't need to attempt a {@skill Survival} check to cover your tracks, but anyone tracking you must succeed at a {@skill Survival} check against your Survival DC if it is higher than the normal DC to Track.",
 				"In some cases, you might Cover Tracks in an encounter. In this case, Cover Tracks is a single action and doesn't have the {@trait exploration} trait."
 			]
 		},
@@ -5223,7 +5223,7 @@
 				}
 			},
 			"entries": [
-				"You follow tracks, moving at up to half your travel Speed, using the rules on page 479). After a successful check to Track, you can continue following the tracks at half your Speed without attempting additional checks for up to 1 hour. In some cases, you might Track in an encounter. In this case, Track is a single action and doesn't have the {@trait exploration} trait, but you might need to roll more often because you're in a tense situation. The GM determines how often you must attempt this check.",
+				"You follow tracks, moving at up to half your {@quickref travel Speed||0|Exploration Mode}.. After a successful check to Track, you can continue following the tracks at half your Speed without attempting additional checks for up to 1 hour. In some cases, you might Track in an encounter. In this case, Track is a single action and doesn't have the {@trait exploration} trait, but you might need to roll more often because you're in a tense situation. The GM determines how often you must attempt this check.",
 				"You attempt your {@skill Survival} check when you start Tracking, once every hour you continue tracking, and any time something significant changes in the trail. The GM determines the DCs for such checks, depending on the freshness of the trail, the weather, and the type of ground.",
 				{
 					"type": "successDegree",
@@ -5498,7 +5498,9 @@
 				"number": 2,
 				"unit": "action"
 			},
-			"traits": ["fortune"],
+			"traits": [
+				"fortune"
+			],
 			"frequency": "once per day",
 			"actionType": {
 				"archetype": [

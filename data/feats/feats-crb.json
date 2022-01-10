@@ -258,7 +258,7 @@
 			],
 			"prerequisites": "{@feat Deity's Domain}",
 			"entries": [
-				"Through your conviction, you have glimpsed the deeper secrets of your deity's domain. You gain an advanced domain spell from the domain you chose with Deity's Domain. You can cast that spell as a devotion spell. Increase the number of Focus Points in your focus pool by 1."
+				"Through your conviction, you have glimpsed the deeper secrets of your {@pf2etools deity|deities.html}'s domain. You gain an advanced domain spell from the domain you chose with {@feat Deity's Domain}. You can cast that spell as a devotion spell. Increase the number of Focus Points in your focus pool by 1."
 			]
 		},
 		{
@@ -671,7 +671,7 @@
 				"Alchemist"
 			],
 			"entries": [
-				"You have used alchemy to create life, a simple creature formed from alchemical materials, reagents, and a bit of your own blood. This alchemical familiar appears to be a small creature of flesh and blood, though it might have some unusual or distinguishing aspects depending on your creative process. Like other familiars, your alchemical familiar assists you in your laboratory and on adventures. The familiar uses your Intelligence modifier to determine its {@skill Perception}, {@skill Acrobatics}, and {@skill Stealth} modifiers (see Familiars on page 217 for more information)."
+				"You have used alchemy to create life, a simple creature formed from alchemical materials, reagents, and a bit of your own blood. This alchemical familiar appears to be a small creature of flesh and blood, though it might have some unusual or distinguishing aspects depending on your creative process. Like other familiars, your alchemical familiar assists you in your laboratory and on adventures. The familiar uses your Intelligence modifier to determine its {@skill Perception}, {@skill Acrobatics}, and {@skill Stealth} modifiers (see {@quickref Familiars||0|familiars} for more information)."
 			]
 		},
 		{
@@ -857,7 +857,7 @@
 				"Gnome"
 			],
 			"entries": [
-				"You build a rapport with an animal, which becomes magically bonded to you. You gain a {@filter familiar|companionsfamiliars||Type=Familiar} using the rules on page 217. The type of animal is up to you, but most gnomes choose animals with a burrow Speed."
+				"You build a rapport with an animal, which becomes magically bonded to you. You gain a {@filter familiar|companionsfamiliars||Type=Familiar}. The type of animal is up to you, but most gnomes choose animals with a burrow Speed."
 			]
 		},
 		{
@@ -878,7 +878,11 @@
 			],
 			"prerequisites": "animal order",
 			"entries": [
-				"You gain the service of a young animal companion that travels with you on your adventures and obeys any simple commands you give it to the best of its abilities. See Animal Companions on page 214 for more information."
+				"You gain the service of a young animal companion that travels with you on your adventures and obeys any simple commands you give it to the best of its abilities. See {@quickref Animal Companions||0|Animal Companions} for more information."
+			],
+			"leadsTo": [
+				"Mature Animal Companion (Druid)",
+				"Incredible Companion (Druid)"
 			]
 		},
 		{
@@ -898,9 +902,12 @@
 				"Ranger"
 			],
 			"entries": [
-				"You gain the service of a young animal companion that travels with you and obeys simple commands as best as it can. See Animal Companions on page 214. When you {@action Hunt Prey}, your animal companion gains the action's benefits and your hunter's edge benefit if you have one."
+				"You gain the service of a young animal companion that travels with you and obeys simple commands as best as it can. See {@quickref Animal Companions||0|Animal Companions}. When you {@action Hunt Prey}, your animal companion gains the action's benefits and your hunter's edge benefit if you have one."
 			],
 			"leadsTo": [
+				"Mature Animal Companion (Ranger)",
+				"Incredible Companion (Ranger)",
+				"Specialized Companion (Ranger)",
 				"Stealthy Companion"
 			]
 		},
@@ -1044,7 +1051,7 @@
 			],
 			"prerequisites": "{@feat Wizard Dedication}",
 			"entries": [
-				"Select one arcane school of magic. You gain the school's initial school spell. If you don't already have one, you gain a focus pool of 1 Focus Point, which you can {@action Refocus} by studying. (For more on arcane schools, see page 204.)"
+				"Select one arcane {@classFeature arcane school|wizard||1||school of magic}. You gain the school's initial school spell. If you don't already have one, you gain a focus pool of 1 Focus Point, which you can {@action Refocus} by studying."
 			]
 		},
 		{
@@ -1354,7 +1361,7 @@
 			],
 			"prerequisites": "divine ally (steed), {@feat Imposing Destrier}",
 			"entries": [
-				"Guided by your ongoing care, your steed has developed incredible intelligence and skill. The mount you gained through the {@feat divine ally} class feature is now a specialized animal companion (page 217). You can select one of the usual specializations or the auspice specialization.",
+				"Guided by your ongoing care, your steed has developed incredible intelligence and skill. The mount you gained through the {@feat divine ally} class feature is now a {@quickref specialized animal companion||0|Specialized Animal Companions}. You can select one of the usual specializations or the auspice specialization.",
 				"Auspice mounts gain the following benefits: Your companion is marked by your deity's religious symbol as a sacred creature of your deity. Its proficiency rank in {@skill Religion} increases to expert, it can speak the language associated with your deity's servitors (Celestial for champions who follow the tenets of good), and its Intelligence modifier increases by 2 and its Wisdom modifier by 1."
 			]
 		},
@@ -1452,8 +1459,8 @@
 			"entries": [
 				"You become trained in {@skill Athletics}; if you were already trained in {@skill Athletics}, you instead become trained in a skill of your choice.",
 				"You become trained in barbarian class DC.",
-				"You can use the {@action Rage} action (page 84)",
-				"Choose an instinct as you would if you were a barbarian. You have that instinct for all purposes and become bound by its anathema, but you don't gain any of the other abilities it grants."
+				"You can use the {@action Rage} action.",
+				"Choose an {@classFeature instinct|Barbarian||1} as you would if you were a barbarian. You have that instinct for all purposes and become bound by its anathema, but you don't gain any of the other abilities it grants."
 			],
 			"special": "You cannot select another dedication feat until you have gained two other feats from the barbarian archetype.",
 			"leadsTo": [
@@ -1649,7 +1656,7 @@
 			],
 			"prerequisites": "{@feat Sorcerer Dedication}",
 			"entries": [
-				"You gain your bloodline's initial bloodline spell. If you don't already have one, you also gain a focus pool of 1 Focus Point, which you can {@action Refocus} without any special effort. (For more on bloodline spells, see page 194.)"
+				"You gain your {@classFeature bloodline|Sorcerer||1}'s {@filter initial bloodline spell|spells||Level=1|Spell Type=Focus Spell|Classes=Sorcerer}. If you don't already have one, you also gain a focus pool of 1 Focus Point, which you can {@action Refocus} without any special effort."
 			]
 		},
 		{
@@ -3843,8 +3850,8 @@
 			],
 			"prerequisites": "{@feat Bard Dedication}",
 			"entries": [
-				"You gain the {@spell counter performance} composition spell.",
-				"If you don't already have one, you gain a focus pool of 1 Focus Point, which you can {@action Refocus} by engaging your muse. (For more on composition spells, see page 97.)"
+				"You gain the {@spell counter performance} {@classFeature composition spells|Bard||1||composition spell}.",
+				"If you don't already have one, you gain a focus pool of 1 Focus Point, which you can {@action Refocus} by engaging your muse."
 			]
 		},
 		{
@@ -3979,7 +3986,7 @@
 				"Alchemist"
 			],
 			"entries": [
-				"Your research has paid off, culminating in the legendary philosopher's stone. You learn the formula for the philosopher's stone (page 554) and can add it to your formula book."
+				"Your research has paid off, culminating in the legendary philosopher's stone. You learn the formula for the {@item philosopher's stone} and can add it to your formula book."
 			]
 		},
 		{
@@ -4132,7 +4139,7 @@
 				"Ranger"
 			],
 			"entries": [
-				"You have a deep understanding of the crossbow. When you're wielding a crossbow and use {@action Hunt Prey} or use {@action Interact} to reload your crossbow, you gain a +2 circumstance bonus to the damage roll on your next {@action Strike} with that crossbow. If the crossbow is a simple crossbow, also increase the damage die size for that attack by one step (page 279). You must make the attack before the end of your next turn or these benefits are lost."
+				"You have a deep understanding of the crossbow. When you're wielding a crossbow and use {@action Hunt Prey} or use {@action Interact} to reload your crossbow, you gain a +2 circumstance bonus to the damage roll on your next {@action Strike} with that crossbow. If the crossbow is a simple crossbow, also increase the damage die size for that attack by one step. You must make the attack before the end of your next turn or these benefits are lost."
 			]
 		},
 		{
@@ -4434,7 +4441,7 @@
 				"Champion"
 			],
 			"entries": [
-				"You embody an aspect of your deity. Choose one of your deity's domains from those listed on page 441. You gain the domain's initial domain spell as a devotion spell."
+				"You embody an aspect of your deity. Choose one of your {@pf2etools deity|deities.html}'s domains. You gain the domain's initial domain spell as a devotion spell."
 			],
 			"leadsTo": [
 				"Advanced Deity's Domain"
@@ -4672,7 +4679,7 @@
 				"Bard"
 			],
 			"entries": [
-				"You learn the {@spell dirge of doom} composition cantrip (page 386), which frightens your enemies."
+				"You learn the {@spell dirge of doom} composition cantrip, which frightens your enemies."
 			]
 		},
 		{
@@ -4951,7 +4958,7 @@
 			],
 			"prerequisites": "{@feat Champion Dedication}",
 			"entries": [
-				"You gain a divine ally of your choice (page 108)."
+				"You gain a {@classFeature divine ally|Champion||3} of your choice."
 			]
 		},
 		{
@@ -5172,9 +5179,9 @@
 			],
 			"entries": [
 				"Your deity bestows a special spell related to their powers.",
-				"Select one domain\u2014a subject of particular interest to you within your religion\u2014from your deity's list. You gain an initial domain spell for that domain, a spell unique to the domain and not available to other clerics. Each domain's theme and domain spells appear in Table 8 \u20132: Domains on page 441.",
+				"Select one domain\u2014a subject of particular interest to you within your religion\u2014from your deity's list. You gain an initial domain spell for that domain, a spell unique to the domain and not available to other clerics. Each domain's theme and domain spells appear in {@table Domains||Table 8\u20132: Domains}.",
 				"Domain spells are a type of focus spell. It costs 1 Focus Point to cast a focus spell, and you start with a focus pool of 1 Focus Point. You refill your focus pool during your daily preparations, and you can regain 1 Focus Point by spending 10 minutes using the {@action Refocus} activity to pray to your deity or do service toward their causes.",
-				"Focus spells are automatically heightened to half your level rounded up. Focus spells don't require spell slots, nor can you cast them using spell slots. Certain feats can give you more focus spells and increase the size of your focus pool, though your focus pool can never hold more than 3 Focus Points. The full rules for focus spells appear on page 300."
+				"Focus spells are automatically heightened to half your level rounded up. Focus spells don't require spell slots, nor can you cast them using spell slots. Certain feats can give you more focus spells and increase the size of your focus pool, though your focus pool can never hold more than 3 Focus Points. The full rules for focus spells can be found {@quickref here||2|focus spells}."
 			],
 			"special": "You can select this feat multiple times, selecting a different domain each time and gaining its domain spell.",
 			"leadsTo": [
@@ -9712,9 +9719,9 @@
 			"traits": [
 				"Druid"
 			],
-			"prerequisites": "{@feat Mature Animal Companion}",
+			"prerequisites": "{@feat Mature Animal Companion (Druid)}",
 			"entries": [
-				"Your animal companion continues to grow and develop. It becomes a nimble or savage animal companion (your choice), gaining additional capabilities determined by the type of companion (page 214)."
+				"Your animal companion continues to grow and develop. It becomes a {@quickref nimble||0|Nimble Animal Companions} or {@quickref savage||0|Savage Animal Companions} animal companion (your choice), gaining additional capabilities determined by the type of companion."
 			]
 		},
 		{
@@ -9733,9 +9740,9 @@
 			"traits": [
 				"Ranger"
 			],
-			"prerequisites": "{@feat Mature Animal Companion}",
+			"prerequisites": "{@feat Mature Animal Companion (Ranger)}",
 			"entries": [
-				"Your animal companion continues to grow and develop. It becomes a nimble or savage animal companion (your choice), gaining additional capabilities determined by the type of companion (page 214)."
+				"Your animal companion continues to grow and develop. It becomes a {@quickref nimble||0|Nimble Animal Companions} or {@quickref savage||0|Savage Animal Companions} animal companion (your choice), gaining additional capabilities determined by the type of companion."
 			],
 			"leadsTo": [
 				"Specialized Companion (Ranger)"
@@ -10057,7 +10064,7 @@
 			],
 			"prerequisites": "{@feat Barbarian Dedication}",
 			"entries": [
-				"You gain the instinct ability for the instinct you chose for Barbarian Dedication."
+				"You gain the {@classFeature instinct|Barbarian||1} ability for the instinct you chose for {@feat Barbarian Dedication}."
 			]
 		},
 		{
@@ -11158,7 +11165,7 @@
 			],
 			"prerequisites": "divine ally (steed)",
 			"entries": [
-				"You and your mount have grown closer, and your loyalty to each other is unbreakable. The mount you gained through the {@feat divine ally} class feature is now a mature animal companion (page 214). In addition, your mount never attacks you, even if it is magically compelled to do so."
+				"You and your mount have grown closer, and your loyalty to each other is unbreakable. The mount you gained through the {@feat divine ally} class feature is now a {@quickref specialized animal companion||0|Mature Animal Companions}. In addition, your mount never attacks you, even if it is magically compelled to do so."
 			],
 			"leadsTo": [
 				"Imposing Destrier",
@@ -11601,10 +11608,13 @@
 			"traits": [
 				"Druid"
 			],
-			"prerequisites": "{@feat Animal Companion}",
+			"prerequisites": "{@feat Animal Companion (Druid)}",
 			"entries": [
-				"Your animal companion grows up, becoming a mature animal companion, which grants it additional capabilities. See the animal companion rules on page 214 for more information.",
+				"Your animal companion grows up, becoming a {@quickref specialized animal companion||0|Mature Animal Companions}, which grants it additional capabilities.",
 				"Your animal companion is better trained than most. During an encounter, even if you don't use the {@action Command an Animal} action, your animal companion can still use 1 action on your turn that round to {@action Stride} or {@action Strike}."
+			],
+			"leadsTo": [
+				"Incredible Companion (Druid)"
 			]
 		},
 		{
@@ -11623,10 +11633,14 @@
 			"traits": [
 				"Ranger"
 			],
-			"prerequisites": "{@feat Animal Companion}",
+			"prerequisites": "{@feat Animal Companion (Ranger)}",
 			"entries": [
-				"Your animal companion grows up, becoming a mature animal companion and gaining additional capabilities (page 214)",
+				"Your animal companion grows up, becoming a {@quickref specialized animal companion||0|Mature Animal Companions} and gaining additional capabilities.",
 				"If you have the {@action Hunt Prey} action, your animal companion assaults the prey even without your orders. During an encounter, even if you don't use the {@action Command an Animal} action, your animal companion can still use 1 action that round on your turn to {@action Stride} toward or {@action Strike} your prey."
+			],
+			"leadsTo": [
+				"Incredible Companion (Ranger)",
+				"Specialized Companion (Ranger)"
 			]
 		},
 		{
