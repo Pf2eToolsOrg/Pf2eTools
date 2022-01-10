@@ -3894,7 +3894,8 @@ Renderer.creature = {
 			for (let sc of cr.spellcasting) {
 				const meta = [];
 				if (sc.DC != null) meta.push(`DC ${sc.DC}`);
-				if (sc.attack != null) meta.push(`attack {@hit ${sc.attack}||Spell attack}`);
+				const MAP = sc.noMAP ? "" : `/{@hit ${sc.attack - 5}||Spell attack}/{@hit ${sc.attack - 10}||Spell attack}`
+				if (sc.attack != null) meta.push(`attack {@hit ${sc.attack}||Spell attack}${MAP}`);
 				if (sc.fp != null) meta.push(`${sc.fp} Focus Points`);
 				renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>${sc.name}${/Spell/.test(sc.name) ? "" : " Spells"}&nbsp;</strong>${renderer.render(meta.join(", "))}`)
 				Object.keys(sc.entry).sort(SortUtil.sortSpellLvlCreature).forEach((lvl) => {
