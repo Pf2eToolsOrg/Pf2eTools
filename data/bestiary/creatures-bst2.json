@@ -1286,6 +1286,14 @@
 					"DC": 31,
 					"attack": 23,
 					"entry": {
+						"0": {
+							"level": 6,
+							"spells": [
+								{
+									"name": "produce flame"
+								}
+							]
+						},
 						"6": {
 							"spells": [
 								{
@@ -1295,14 +1303,6 @@
 								{
 									"name": "wall of fire",
 									"amount": "at will"
-								}
-							]
-						},
-						"0": {
-							"level": 6,
-							"spells": [
-								{
-									"name": "produce flame"
 								}
 							]
 						}
@@ -1573,6 +1573,14 @@
 					"tradition": "Primal",
 					"DC": 36,
 					"entry": {
+						"0": {
+							"level": 7,
+							"spells": [
+								{
+									"name": "detect magic"
+								}
+							]
+						},
 						"7": {
 							"spells": [
 								{
@@ -1584,14 +1592,6 @@
 								},
 								{
 									"name": "vampiric exsanguination"
-								}
-							]
-						},
-						"0": {
-							"level": 7,
-							"spells": [
-								{
-									"name": "detect magic"
 								}
 							]
 						}
@@ -6564,7 +6564,7 @@
 						"divine"
 					],
 					"entries": [
-						"The azuretzi mocks a creature’s magical ability with na touch. The azuretzi must attempt a {@skill Thievery} check against the target's Will DC.",
+						"The azuretzi mocks a creature's magical ability with na touch. The azuretzi must attempt a {@skill Thievery} check against the target's Will DC.",
 						{
 							"type": "successDegree",
 							"entries": {
@@ -11623,17 +11623,17 @@
 					"DC": 40,
 					"entry": {
 						"constant": {
-							"8": {
-								"spells": [
-									{
-										"name": "freedom of movement"
-									}
-								]
-							},
 							"7": {
 								"spells": [
 									{
 										"name": "true seeing"
+									}
+								]
+							},
+							"8": {
+								"spells": [
+									{
+										"name": "freedom of movement"
 									}
 								]
 							}
@@ -16247,6 +16247,26 @@
 					"DC": 27,
 					"attack": 19,
 					"entry": {
+						"0": {
+							"level": 4,
+							"spells": [
+								{
+									"name": "chill touch"
+								},
+								{
+									"name": "detect magic"
+								},
+								{
+									"name": "mage hand"
+								},
+								{
+									"name": "message"
+								},
+								{
+									"name": "read aura"
+								}
+							]
+						},
 						"2": {
 							"spells": [
 								{
@@ -16280,26 +16300,6 @@
 								},
 								{
 									"name": "suggestion"
-								}
-							]
-						},
-						"0": {
-							"level": 4,
-							"spells": [
-								{
-									"name": "chill touch"
-								},
-								{
-									"name": "detect magic"
-								},
-								{
-									"name": "mage hand"
-								},
-								{
-									"name": "message"
-								},
-								{
-									"name": "read aura"
 								}
 							]
 						},
@@ -34556,6 +34556,26 @@
 					"DC": 18,
 					"attack": 10,
 					"entry": {
+						"0": {
+							"level": 2,
+							"spells": [
+								{
+									"name": "dancing lights"
+								},
+								{
+									"name": "ghost sound"
+								},
+								{
+									"name": "mage hand"
+								},
+								{
+									"name": "prestidigitation"
+								},
+								{
+									"name": "telekinetic projectile"
+								}
+							]
+						},
 						"1": {
 							"spells": [
 								{
@@ -34582,26 +34602,6 @@
 									"notes": [
 										"self only"
 									]
-								}
-							]
-						},
-						"0": {
-							"level": 2,
-							"spells": [
-								{
-									"name": "dancing lights"
-								},
-								{
-									"name": "ghost sound"
-								},
-								{
-									"name": "mage hand"
-								},
-								{
-									"name": "prestidigitation"
-								},
-								{
-									"name": "telekinetic projectile"
 								}
 							]
 						}
@@ -34827,6 +34827,14 @@
 					"tradition": "Primal",
 					"DC": 46,
 					"entry": {
+						"0": {
+							"level": 10,
+							"spells": [
+								{
+									"name": "produce flame"
+								}
+							]
+						},
 						"7": {
 							"spells": [
 								{
@@ -34856,14 +34864,6 @@
 							"spells": [
 								{
 									"name": "cataclysm"
-								}
-							]
-						},
-						"0": {
-							"level": 10,
-							"spells": [
-								{
-									"name": "produce flame"
 								}
 							]
 						}
@@ -40446,6 +40446,23 @@
 					"DC": 38,
 					"attack": 30,
 					"entry": {
+						"0": {
+							"level": 8,
+							"spells": [
+								{
+									"name": "daze"
+								},
+								{
+									"name": "detect magic"
+								},
+								{
+									"name": "mage hand"
+								},
+								{
+									"name": "telekinetic projectile"
+								}
+							]
+						},
 						"5": {
 							"spells": [
 								{
@@ -40490,23 +40507,6 @@
 								},
 								{
 									"name": "summon entity"
-								}
-							]
-						},
-						"0": {
-							"level": 8,
-							"spells": [
-								{
-									"name": "daze"
-								},
-								{
-									"name": "detect magic"
-								},
-								{
-									"name": "mage hand"
-								},
-								{
-									"name": "telekinetic projectile"
 								}
 							]
 						}
@@ -44864,7 +44864,9 @@
 								"spells": [
 									{
 										"name": "detect alignment",
-										"notes": ["evil only"]
+										"notes": [
+											"evil only"
+										]
 									},
 									{
 										"name": "tongues"
@@ -51077,6 +51079,17 @@
 					"tradition": "Occult",
 					"DC": 23,
 					"entry": {
+						"0": {
+							"level": 4,
+							"spells": [
+								{
+									"name": "daze"
+								},
+								{
+									"name": "detect magic"
+								}
+							]
+						},
 						"1": {
 							"spells": [
 								{
@@ -51099,17 +51112,6 @@
 								},
 								{
 									"name": "dimension door"
-								}
-							]
-						},
-						"0": {
-							"level": 4,
-							"spells": [
-								{
-									"name": "daze"
-								},
-								{
-									"name": "detect magic"
 								}
 							]
 						}
@@ -53964,6 +53966,14 @@
 					"tradition": "Primal",
 					"DC": 25,
 					"entry": {
+						"0": {
+							"level": 4,
+							"spells": [
+								{
+									"name": "dancing lights"
+								}
+							]
+						},
 						"2": {
 							"spells": [
 								{
@@ -53988,14 +53998,6 @@
 								},
 								{
 									"name": "shatter"
-								}
-							]
-						},
-						"0": {
-							"level": 4,
-							"spells": [
-								{
-									"name": "dancing lights"
 								}
 							]
 						}
@@ -56002,17 +56004,17 @@
 					"DC": 41,
 					"entry": {
 						"constant": {
-							"9": {
-								"spells": [
-									{
-										"name": "freedom of movement"
-									}
-								]
-							},
 							"8": {
 								"spells": [
 									{
 										"name": "true seeing"
+									}
+								]
+							},
+							"9": {
+								"spells": [
+									{
+										"name": "freedom of movement"
 									}
 								]
 							}
@@ -57255,6 +57257,17 @@
 					"tradition": "Occult",
 					"DC": 40,
 					"entry": {
+						"0": {
+							"level": 9,
+							"spells": [
+								{
+									"name": "daze"
+								},
+								{
+									"name": "detect magic"
+								}
+							]
+						},
 						"7": {
 							"spells": [
 								{
@@ -57296,29 +57309,18 @@
 								}
 							]
 						},
-						"0": {
-							"level": 9,
-							"spells": [
-								{
-									"name": "daze"
-								},
-								{
-									"name": "detect magic"
-								}
-							]
-						},
 						"constant": {
-							"6": {
-								"spells": [
-									{
-										"name": "true seeing"
-									}
-								]
-							},
 							"4": {
 								"spells": [
 									{
 										"name": "freedom of movement"
+									}
+								]
+							},
+							"6": {
+								"spells": [
+									{
+										"name": "true seeing"
 									}
 								]
 							}
@@ -68311,9 +68313,11 @@
 			"rituals": [
 				{
 					"DC": 32,
-					"rituals": [{
-						"name": "geas"
-					}]
+					"rituals": [
+						{
+							"name": "geas"
+						}
+					]
 				}
 			],
 			"abilitiesBot": [

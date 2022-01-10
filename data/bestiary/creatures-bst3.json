@@ -389,7 +389,7 @@
 						"necromancy"
 					],
 					"entries": [
-						"When the abrikandilu hits a creature with a jaws {@action Strike}, the creature must succeed at a DC 21 Fortitude save or become physically mutilated. The creature then takes a \u20131 status penalty to Charisma-based checks. This penalty is cumulative up to –3 and remains even if the wounds are healed. The penalty is reduced by 1 every 24 hours until it reaches 0."
+						"When the abrikandilu hits a creature with a jaws {@action Strike}, the creature must succeed at a DC 21 Fortitude save or become physically mutilated. The creature then takes a \u20131 status penalty to Charisma-based checks. This penalty is cumulative up to \u20133 and remains even if the wounds are healed. The penalty is reduced by 1 every 24 hours until it reaches 0."
 					],
 					"name": "Mutilating Bite"
 				},
@@ -1257,6 +1257,14 @@
 					"tradition": "Primal",
 					"DC": 34,
 					"entry": {
+						"0": {
+							"level": 4,
+							"spells": [
+								{
+									"name": "know direction"
+								}
+							]
+						},
 						"4": {
 							"spells": [
 								{
@@ -1267,20 +1275,14 @@
 								}
 							]
 						},
-						"0": {
-							"level": 4,
-							"spells": [
-								{
-									"name": "know direction"
-								}
-							]
-						},
 						"constant": {
 							"1": {
 								"spells": [
 									{
 										"name": "pass without trace",
-										"notes": ["forest terrain only"]
+										"notes": [
+											"forest terrain only"
+										]
 									}
 								]
 							}
@@ -1634,7 +1636,9 @@
 					"rituals": [
 						{
 							"name": "control weather",
-							"notes": ["doesn't require secondary casters"]
+							"notes": [
+								"doesn't require secondary casters"
+							]
 						}
 					]
 				}
@@ -5369,7 +5373,9 @@
 					},
 					"trigger": "A creature makes a melee weapon {@action Strike} against the angazhani and misses",
 					"requirements": "The angazhani is benefiting from their Defensive Slam",
-					"entries": ["The angazhani attempts to {@action Disarm} the attacker of the triggering weapon."],
+					"entries": [
+						"The angazhani attempts to {@action Disarm} the attacker of the triggering weapon."
+					],
 					"name": "Defensive Disarm"
 				}
 			],
@@ -6946,8 +6952,7 @@
 						"number": 1,
 						"unit": "action"
 					},
-					"entries": [
-					],
+					"entries": [],
 					"name": "Knockdown",
 					"generic": true
 				},
@@ -21947,7 +21952,7 @@
 							"type": "successDegree",
 							"entries": {
 								"Success": "The target is unaffected and is temporarily immune for 1 hour.",
-								"Failure": "The target takes a –2 circumstance penalty on attack rolls against the ghoran manipulator until the start of its next turn.",
+								"Failure": "The target takes a \u20132 circumstance penalty on attack rolls against the ghoran manipulator until the start of its next turn.",
 								"Critical Failure": "As failure, and the target is {@condition stupefied 2} until the start of its next turn."
 							}
 						}
@@ -25233,40 +25238,41 @@
 					]
 				}
 			],
-			"spellcasting": [{
-				"name": "Occult Innate",
-				"type": "Innate",
-				"tradition": "Occult",
-				"DC": 16,
-				"attack": 8,
-				"entry": {
-					"1": {
-						"spells": [
-							{
-								"name": "phantom pain"
-							}
-						]
-					},
-					"0": {
-						"level": 1,
-						"spells": [
-							{
-								"name": "daze"
-							},
-							{
-								"name": "detect magic"
-							},
-							{
-								"name": "mage hand"
-							},
-
-							{
-								"name": "telekinetic projectile"
-							}
-						]
+			"spellcasting": [
+				{
+					"name": "Occult Innate",
+					"type": "Innate",
+					"tradition": "Occult",
+					"DC": 16,
+					"attack": 8,
+					"entry": {
+						"0": {
+							"level": 1,
+							"spells": [
+								{
+									"name": "daze"
+								},
+								{
+									"name": "detect magic"
+								},
+								{
+									"name": "mage hand"
+								},
+								{
+									"name": "telekinetic projectile"
+								}
+							]
+						},
+						"1": {
+							"spells": [
+								{
+									"name": "phantom pain"
+								}
+							]
+						}
 					}
 				}
-			}],
+			],
 			"abilitiesBot": [
 				{
 					"entries": [
@@ -30168,7 +30174,8 @@
 						"entry": "{@as R}"
 					},
 					"requirements": "The jorogumo has their spider legs extended or has Changed Shape",
-					"entries": [						"The jorogumo raises a leg, gaining a +2 circumstance bonus to AC against the triggering attack."
+					"entries": [
+						"The jorogumo raises a leg, gaining a +2 circumstance bonus to AC against the triggering attack."
 					],
 					"trigger": "The jorogumo is targeted with an attack",
 					"name": "Darting Legs"
@@ -32944,10 +32951,9 @@
 					],
 					"requirements": "Krampus has a Medium or smaller creature {@condition grabbed}",
 					"entries": [
-						"Krampus attempts to stuff the {@condition grabbed} creature into his basket, attempting an {@skill Athletics} check against the target's Reflex DC. If he succeeds, the creature is shoved into Krampus's basket and Krampus's spiked chain or claw is freed for future Strikes." ,
+						"Krampus attempts to stuff the {@condition grabbed} creature into his basket, attempting an {@skill Athletics} check against the target's Reflex DC. If he succeeds, the creature is shoved into Krampus's basket and Krampus's spiked chain or claw is freed for future Strikes.",
 						"The captured creature is {@condition grabbed}, {@condition slowed 1}, and subjected to Krampus's regression ability (see below) at the start of each round it is captured. If the victim {@action Escape||Escapes} (DC 48), it climbs out of the basket. A captured creature can attack the interior of the basket, but only with unarmed attacks or weapons of light Bulk or less, against an AC of 40. If the captured creature deals 40 slashing or piercing damage, the basket is {@condition broken} and all the creatures inside spill out. A creature that gets free by either Escaping or by someone breaking the basket is deposited in a square of their choosing adjacent to Krampus.",
 						"The basket is an extradimensional space, so the weight of the creatures within doesn't count against Krampus's Bulk limit. Up to four Small creatures or two Medium creatures can fit in the basket at one time. Krampus can {@action Repair} the basket as a 2-action activity that doesn't require tools. If the basket is lost or destroyed, Krampus can create a new one with 1 hour of work. The basket functions as a normal sack if used by anyone other than Krampus."
-
 					],
 					"name": "Capture"
 				},
@@ -35546,13 +35552,6 @@
 					"fp": 3,
 					"DC": 37,
 					"entry": {
-						"8": {
-							"spells": [
-								{
-									"name": "lingering composition"
-								}
-							]
-						},
 						"0": {
 							"level": 8,
 							"spells": [
@@ -35561,6 +35560,13 @@
 								},
 								{
 									"name": "inspire defense"
+								}
+							]
+						},
+						"8": {
+							"spells": [
+								{
+									"name": "lingering composition"
 								}
 							]
 						}
@@ -35805,7 +35811,9 @@
 					"rituals": [
 						{
 							"name": "create undead",
-							"notes": ["doesn't require secondary casters"]
+							"notes": [
+								"doesn't require secondary casters"
+							]
 						}
 					]
 				}
@@ -37419,8 +37427,7 @@
 				"Wis": 4,
 				"Cha": 2
 			},
-			"abilitiesTop": [
-			],
+			"abilitiesTop": [],
 			"ac": {
 				"default": 24,
 				"abilities": null
@@ -40582,7 +40589,9 @@
 					],
 					"requirements": "The namorrodor is on the Shadow Plane",
 					"trigger": "A creature the namorrodor can sense with its lifesense on the {@place Material Plane} dies.",
-					"entries": ["The namorrodor leaps between planes, appearing on the Material Plane within 100 feet of the triggering creature. It remains on the Material Plane for 24 hours, after which it is recalled to its original location on the Shadow Plane."],
+					"entries": [
+						"The namorrodor leaps between planes, appearing on the Material Plane within 100 feet of the triggering creature. It remains on the Material Plane for 24 hours, after which it is recalled to its original location on the Shadow Plane."
+					],
 					"name": "Material Leap"
 				}
 			],
@@ -43977,43 +43986,6 @@
 					"DC": 23,
 					"attack": 15,
 					"entry": {
-						"7": {
-							"spells": [
-								{
-									"name": "plane shift",
-									"notes": "to or from the {@place Shadow Plane} only"
-								}
-							]
-						},
-						"5": {
-							"spells": [
-								{
-									"name": "shadow blast"
-								},
-								{
-									"name": "shadow walk"
-								}
-							]
-						},
-						"4": {
-							"spells": [
-								{
-									"name": "darkness",
-									"amount": "at will"
-								},
-								{
-									"name": "invisibility"
-								}
-							]
-						},
-						"3": {
-							"spells": [
-								{
-									"name": "mind reading",
-									"amount": "at will"
-								}
-							]
-						},
 						"0": {
 							"level": 3,
 							"spells": [
@@ -44028,6 +44000,43 @@
 								},
 								{
 									"name": "shield"
+								}
+							]
+						},
+						"3": {
+							"spells": [
+								{
+									"name": "mind reading",
+									"amount": "at will"
+								}
+							]
+						},
+						"4": {
+							"spells": [
+								{
+									"name": "darkness",
+									"amount": "at will"
+								},
+								{
+									"name": "invisibility"
+								}
+							]
+						},
+						"5": {
+							"spells": [
+								{
+									"name": "shadow blast"
+								},
+								{
+									"name": "shadow walk"
+								}
+							]
+						},
+						"7": {
+							"spells": [
+								{
+									"name": "plane shift",
+									"notes": "to or from the {@place Shadow Plane} only"
 								}
 							]
 						}
@@ -55784,7 +55793,10 @@
 						"number": 1,
 						"unit": "free"
 					},
-					"traits": ["emotion", "mental"],
+					"traits": [
+						"emotion",
+						"mental"
+					],
 					"frequency": "once per 10 minutes",
 					"trigger": "The kinmate or a strix ally they can see is damaged by an enemy's critical hit",
 					"entries": [
@@ -57698,9 +57710,9 @@
 							"type": "successDegree",
 							"entries": {
 								"Critical Success": "The creature is unaffected.",
-								"Success":"The creature can't use divine spells or abilities for 1 round and is {@condition frightened 2}. Only powerful non-divine magic, such as wish, can undo this effect.",
-								"Failure":"As success, but the duration is 1 minute.",
-								"Critical Failure":"As success, but the duration is unlimited."
+								"Success": "The creature can't use divine spells or abilities for 1 round and is {@condition frightened 2}. Only powerful non-divine magic, such as wish, can undo this effect.",
+								"Failure": "As success, but the duration is 1 minute.",
+								"Critical Failure": "As success, but the duration is unlimited."
 							}
 						}
 					],
@@ -62401,7 +62413,7 @@
 								},
 								{
 									"stage": 3,
-									"entry": "{@damage 1d4} poison damage, {@condition flat-footed}, and a –5-foot penalty to Speed",
+									"entry": "{@damage 1d4} poison damage, {@condition flat-footed}, and a \u20135-foot penalty to Speed",
 									"duration": "1 round"
 								}
 							]
@@ -66236,7 +66248,7 @@
 								}
 							]
 						},
-						"constant":{
+						"constant": {
 							"2": {
 								"spells": [
 									{

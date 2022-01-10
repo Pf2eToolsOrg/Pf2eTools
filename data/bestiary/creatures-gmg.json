@@ -3436,6 +3436,26 @@
 					"DC": 20,
 					"attack": 10,
 					"entry": {
+						"0": {
+							"level": 2,
+							"spells": [
+								{
+									"name": "daze"
+								},
+								{
+									"name": "ghost sound"
+								},
+								{
+									"name": "mage hand"
+								},
+								{
+									"name": "message"
+								},
+								{
+									"name": "prestidigitation"
+								}
+							]
+						},
 						"1": {
 							"slots": 3,
 							"spells": [
@@ -3466,26 +3486,6 @@
 									"name": "invisibility"
 								}
 							]
-						},
-						"0": {
-							"level": 2,
-							"spells": [
-								{
-									"name": "daze"
-								},
-								{
-									"name": "ghost sound"
-								},
-								{
-									"name": "mage hand"
-								},
-								{
-									"name": "message"
-								},
-								{
-									"name": "prestidigitation"
-								}
-							]
 						}
 					}
 				},
@@ -3495,18 +3495,18 @@
 					"DC": 19,
 					"attack": 10,
 					"entry": {
-						"1": {
-							"spells": [
-								{
-									"name": "counter performance"
-								}
-							]
-						},
 						"0": {
 							"level": 1,
 							"spells": [
 								{
 									"name": "inspire courage"
+								}
+							]
+						},
+						"1": {
+							"spells": [
+								{
+									"name": "counter performance"
 								}
 							]
 						}
@@ -5500,7 +5500,9 @@
 					},
 					"trigger": "The false priest critically fails a {@skill Deception} or {@skill Performance} check",
 					"frequency": "once per hour;",
-					"entries": ["The false priest {@action Stride||Strides}."],
+					"entries": [
+						"The false priest {@action Stride||Strides}."
+					],
 					"name": "The Jig Is Up"
 				}
 			],
@@ -9848,6 +9850,26 @@
 					"tradition": "Divine",
 					"DC": 23,
 					"entry": {
+						"0": {
+							"level": 3,
+							"spells": [
+								{
+									"name": "guidance"
+								},
+								{
+									"name": "light"
+								},
+								{
+									"name": "message"
+								},
+								{
+									"name": "sigil"
+								},
+								{
+									"name": "stabilize"
+								}
+							]
+						},
 						"1": {
 							"spells": [
 								{
@@ -9883,26 +9905,6 @@
 								},
 								{
 									"name": "remove disease"
-								}
-							]
-						},
-						"0": {
-							"level": 3,
-							"spells": [
-								{
-									"name": "guidance"
-								},
-								{
-									"name": "light"
-								},
-								{
-									"name": "message"
-								},
-								{
-									"name": "sigil"
-								},
-								{
-									"name": "stabilize"
 								}
 							]
 						}
