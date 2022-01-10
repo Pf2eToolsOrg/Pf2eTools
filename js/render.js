@@ -935,9 +935,8 @@ function Renderer () {
 			const renderer = Renderer.get();
 			this._handleTrackTitles(entry.name);
 			textStack[0] += `<p class="pf2-h1 rd__h${entry.blue ? " pf2-h1--blue" : ""}" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}>
-							<span class="entry-title-inner">${renderer.render(entry.name)}</span>
-							${entry.source ? `<span class="pf2-h--source">${Parser.sourceJsonToFull(entry.source)}${entry.page != null ? `, p. ${entry.page}` : ""}</span>` : ""}`;
-			if (entry.collapsible) textStack[0] += `<span class="pf2-h1--collapse">${entry.collapsible ? this._getCollapsibleToggle({minus: "-"}) : ""}</span>`;
+							<span class="entry-title-inner" ${entry.source ? `title="${Parser.sourceJsonToFull(entry.source)}${entry.page != null ? `, p. ${entry.page}` : ""}"` : ""}>${renderer.render(entry.name)}</span>`;
+			if (entry.collapsible) textStack[0] += `<span class="pf2-h1--collapse">${this._getCollapsibleToggle({minus: "-"})}</span>`;
 			textStack[0] += `</p>`
 		}
 		this._firstSection = false;
@@ -985,9 +984,8 @@ function Renderer () {
 			const renderer = Renderer.get();
 			this._handleTrackTitles(entry.name);
 			textStack[0] += `<p class="pf2-h2 rd__h" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}>
-							<span class="entry-title-inner">${renderer.render(entry.name)}</span>
-							${entry.source ? `<span class="pf2-h--source">${Parser.sourceJsonToFull(entry.source)}${entry.page != null ? `, p. ${entry.page}` : ""}</span>` : ""}`;
-			if (entry.collapsible) textStack[0] += `<span class="pf2-h2--collapse">${entry.collapsible ? this._getCollapsibleToggle({minus: "-", parents: 3}) : ""}</span>`;
+							<span class="entry-title-inner" ${entry.source ? `title="${Parser.sourceJsonToFull(entry.source)}${entry.page != null ? `, p. ${entry.page}` : ""}"` : ""}>${renderer.render(entry.name)}</span>`;
+			if (entry.collapsible) textStack[0] += this._getCollapsibleToggle({minus: "-"});
 			textStack[0] += `</p>`
 		}
 		textStack[0] += `</div>`
@@ -1008,8 +1006,7 @@ function Renderer () {
 			const renderer = Renderer.get();
 			this._handleTrackTitles(entry.name);
 			textStack[0] += `<p class="pf2-h3 rd__h ${this._firstSection ? "p-0" : ""}" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}>
-							<span class="entry-title-inner">${renderer.render(entry.name)}</span>
-							${entry.source ? `<span class="pf2-h--source">${Parser.sourceJsonToFull(entry.source)}${entry.page != null ? `, p. ${entry.page}` : ""}</span>` : ""}`;
+							<span class="entry-title-inner" ${entry.source ? `title="${Parser.sourceJsonToFull(entry.source)}${entry.page != null ? `, p. ${entry.page}` : ""}"` : ""}>${renderer.render(entry.name)}</span>`;
 			if (entry.level || entry.collapsible) textStack[0] += `<span class="pf2-h3--lvl">${entry.level ? Parser.getOrdinalForm(entry.level) : ""}${entry.collapsible ? this._getCollapsibleToggle({minus: "\u2013"}) : ""}</span>`;
 			textStack[0] += `</p>`;
 		}
@@ -1031,8 +1028,7 @@ function Renderer () {
 			const renderer = Renderer.get();
 			this._handleTrackTitles(entry.name);
 			textStack[0] += `<p class="pf2-h4 rd__h ${this._firstSection ? "p-0" : ""}" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}>
-							<span class="entry-title-inner">${renderer.render(entry.name)}</span>
-							${entry.source ? `<span class="pf2-h--source">${Parser.sourceJsonToFull(entry.source)}${entry.page != null ? `, p. ${entry.page}` : ""}</span>` : ""}`;
+							<span class="entry-title-inner" ${entry.source ? `title="${Parser.sourceJsonToFull(entry.source)}${entry.page != null ? `, p. ${entry.page}` : ""}"` : ""}>${renderer.render(entry.name)}</span>`;
 			if (entry.level || entry.collapsible) textStack[0] += `<span class="pf2-h4--lvl">${entry.level ? Parser.getOrdinalForm(entry.level) : ""}${entry.collapsible ? this._getCollapsibleToggle({minus: "\u2013"}) : ""}</span>`;
 			textStack[0] += `</p>`;
 		}
@@ -1065,7 +1061,7 @@ function Renderer () {
 	};
 
 	this._getCollapsibleToggle = function (opts) {
-		return `<span class="no-select" onclick="((ele) => {
+		return `<span class="no-select pf2-h--collapse" onclick="((ele) => {
 			$(ele).text($(ele).text().includes('+') ? ' [${opts.minus}]' : ' [+]');
 			$(ele).parent().parent()${opts.parents === 3 ? ".parent()" : ""}.siblings().toggle();
 		})(this)">[${opts.minus}]</span>`
