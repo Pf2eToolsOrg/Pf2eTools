@@ -827,12 +827,12 @@ function Renderer () {
 	}
 
 	this._renderAttack = function (entry, textStack, meta, options) {
-		const renderer = Renderer.get();
-		const agile = entry.traits.map(v => v.toLowerCase()).includes("agile")
-		const MAP = entry.noMAP ? "" : `/{@hit ${entry.attack - (agile ? 4 : 5)}||${entry.name.uppercaseFirst()}}/{@hit ${entry.attack - (agile ? 8 : 10)}||${entry.name.uppercaseFirst()}}`
+		let MAP = -5;
+		if (entry.noMAP) MAP = 0;
+		if (entry.traits && entry.traits.map(t => t.toLowerCase()).includes("agile")) MAP = -4;
 		textStack[0] += `<p class="pf2-stat pf2-stat__section attack">
-			<strong>${entry.range}&nbsp;</strong>${renderer.render("{@as 1}")} ${entry.name} ${renderer.render(`{@hit ${entry.attack}||${entry.name.uppercaseFirst()}}${MAP}`)}
-			${entry.traits != null ? ` ${renderer.render(`(${entry.traits.map((t) => `{@trait ${t.toLowerCase()}}`).join(", ")})`)}` : ""}, <strong>Damage&nbsp;</strong>${renderer.render(entry.damage)}${entry.noMAP ? "; no multiple attack penalty" : ""}</p>`;
+			<strong>${entry.range}&nbsp;</strong>${this.render("{@as 1}")} ${entry.name} ${this.render(`{@hit ${entry.attack}||${entry.name.uppercaseFirst()}|MAP=${MAP}}`)}
+			${entry.traits != null ? ` ${this.render(`(${entry.traits.map((t) => `{@trait ${t.toLowerCase()}}`).join(", ")})`)}` : ""}, <strong>Damage&nbsp;</strong>${this.render(entry.damage)}${entry.noMAP ? "; no multiple attack penalty" : ""}</p>`;
 	};
 
 	this._renderAbility = function (entry, textStack, meta, options) {
@@ -1638,7 +1638,20 @@ function Renderer () {
 						this._recursiveRender(fauxEntry, textStack, meta);
 						break;
 					}
-					case "@d20":
+					case "@d20": {
+						// format: {@d20 +1} or {@d20 -2}
+						let mod;
+						if (!isNaN(rollText)) {
+							const n = Number(rollText);
+							mod = `${n >= 0 ? "+" : ""}${n}`;
+						} else mod = rollText;
+						fauxEntry.displayText = fauxEntry.displayText || mod;
+						fauxEntry.toRoll = `1d20${mod}`;
+						fauxEntry.subType = "d20";
+						fauxEntry.d20mod = mod;
+						this._recursiveRender(fauxEntry, textStack, meta);
+						break;
+					}
 					case "@hit": {
 						// format: {@hit +1} or {@hit -2}
 						let mod;
@@ -1648,7 +1661,9 @@ function Renderer () {
 						} else mod = rollText;
 						fauxEntry.displayText = fauxEntry.displayText || mod;
 						fauxEntry.toRoll = `1d20${mod}`;
-						fauxEntry.subType = "d20";
+						const MAPstr = others.find(o => o.startsWith("MAP=")) || "MAP=-5";
+						fauxEntry.MAP = Number(MAPstr.replace(/MAP=/, ""));
+						fauxEntry.subType = "hit";
 						fauxEntry.d20mod = mod;
 						this._recursiveRender(fauxEntry, textStack, meta);
 						break;
@@ -2694,7 +2709,7 @@ Renderer.getRollableEntryDice = function (entry, name, isAddHandlers = true, toD
 };
 
 Renderer.getEntryDiceTitle = function (subType) {
-	return `Click to roll. ${subType === "damage" ? "SHIFT to roll a critical hit, CTRL to half damage (rounding down)." : subType === "d20" ? "SHIFT to roll with advantage, CTRL to roll with disadvantage." : "SHIFT/CTRL to roll twice."}`
+	return `Click to roll. ${subType === "damage" ? "SHIFT to roll a critical hit, CTRL to half damage (rounding down)." : subType === "d20" ? "SHIFT to roll with advantage, CTRL to roll with disadvantage." : subType === "hit" ? "SHIFT to roll with MAP, CTRL to roll with MAP × 2." : "SHIFT/CTRL to roll twice."}`
 };
 
 Renderer.legacyDiceToString = function (array) {
@@ -3853,33 +3868,11 @@ Renderer.creature = {
 	},
 
 	getAttacks (cr) {
-		let renderStack = [];
 		if (cr.attacks) {
-			for (let attack of cr.attacks) {
-				renderStack.push(`<p class="pf2-stat pf2-stat__section">`)
-				// Name Span
-				renderStack.push(`<span><strong>${attack.range}&nbsp;</strong>`)
-				renderStack.push(Renderer.get().render(`{@as 1} `))
-				if (attack.name) renderStack.push(`${attack.name}`)
-				renderStack.push(`</span>`)
-				// Attack Span
-				const agile = attack.traits != null ? attack.traits.map(v => v.toLowerCase()).includes("agile") : false
-				const MAP = attack.noMAP ? "" : `/{@hit ${attack.attack - (agile ? 4 : 5)}||${attack.name.uppercaseFirst()}}/{@hit ${attack.attack - (agile ? 8 : 10)}||${attack.name.uppercaseFirst()}}`
-				if (attack.attack != null) renderStack.push(Renderer.get().render(` {@hit ${attack.attack}||${attack.name.uppercaseFirst()}}${MAP} `))
-				renderStack.push(`<span>`)
-				// Trait + Damage Span
-				if (attack.traits != null) {
-					let traits = []
-					attack.traits.forEach((t) => traits.push(`{@trait ${Parser.getTraitName(t)}||${t.toLowerCase()}}`));
-					renderStack.push(Renderer.get().render(` (${traits.join(", ")})`))
-				}
-				renderStack.push(`, <strong>Damage&nbsp;</strong>`)
-				renderStack.push(Renderer.get().render(attack.damage))
-
-				renderStack.push(`</span>`)
-				renderStack.push(`</p>`)
-			}
-			return renderStack.join("")
+			const renderer = Renderer.get();
+			const renderStack = [];
+			cr.attacks.forEach(a => renderer._renderAttack(a, renderStack));
+			return renderStack.join("");
 		}
 	},
 
@@ -3890,8 +3883,7 @@ Renderer.creature = {
 			for (let sc of cr.spellcasting) {
 				const meta = [];
 				if (sc.DC != null) meta.push(`DC ${sc.DC}`);
-				const MAP = sc.noMAP ? "" : `/{@hit ${sc.attack - 5}||Spell attack}/{@hit ${sc.attack - 10}||Spell attack}`
-				if (sc.attack != null) meta.push(`attack {@hit ${sc.attack}||Spell attack}${MAP}`);
+				if (sc.attack != null) meta.push(`attack {@hit ${sc.attack}||Spell attack}`);
 				if (sc.fp != null) meta.push(`${sc.fp} Focus Points`);
 				renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>${sc.name}${/Spell/.test(sc.name) ? "" : " Spells"}&nbsp;</strong>${renderer.render(meta.join(", "))}`)
 				Object.keys(sc.entry).sort(SortUtil.sortSpellLvlCreature).forEach((lvl) => {
