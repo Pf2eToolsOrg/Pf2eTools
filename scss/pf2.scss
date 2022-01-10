@@ -364,6 +364,8 @@
 
 .pf2-h1 {
 	color: #5e0000;
+	position: relative;
+	width: 100%;
 	margin: 0;
 	padding: 0.3em 0 0;
 	font-family: 'Taroca', sans-serif;
@@ -374,18 +376,13 @@
 	line-height: 1em;
 
 	&--collapse {
-		position: relative;
+		position: absolute;
 		right: 0;
-		margin-right: 0.435em;
+		line-height: 0.8em;
 	}
 
 	&--blue {
 		color: #002664;
-	}
-
-	.pf2-h--source {
-		display: none;
-		margin-bottom: -0.3em;
 	}
 
 	&:hover {
@@ -413,6 +410,8 @@
 
 .pf2-h2 {
 	color: #002664;
+	position: relative;
+	width: 100%;
 	margin: 0 0 0.1em;
 	padding: 0;
 	font-family: 'Taroca', sans-serif;
@@ -471,10 +470,6 @@
 		margin: 1em 0 0;
 	}
 
-	.pf2-h--source {
-		display: none;
-	}
-
 	&:hover {
 		.pf2-h--source {
 			display: inline-block;
@@ -484,6 +479,7 @@
 
 .pf2-h3 {
 	color: #5e0000;
+	position: relative;
 	margin: 0;
 	padding: 0.6em 0 0;
 	font-family: 'Gin', sans-serif;
@@ -497,10 +493,6 @@
 		margin-left: auto !important;
 	}
 
-	.pf2-h--source {
-		display: none;
-	}
-
 	&:hover {
 		.pf2-h--source {
 			display: inline-block;
@@ -510,6 +502,7 @@
 
 .pf2-h4 {
 	color: #a86753;
+	position: relative;
 	margin: 0;
 	padding: 0.3em 0 0;
 	font-family: 'Gin', sans-serif;
@@ -520,10 +513,6 @@
 	display: flex;
 	vertical-align: bottom;
 	text-align: left;
-
-	.pf2-h--source {
-		display: none;
-	}
 
 	&--lvl {
 		margin-left: auto !important;
@@ -553,12 +542,12 @@
 	text-align: left;
 }
 
-.pf2-h--source {
-	opacity: 60%;
-	font-size: 0.7em;
-	margin-left: 0.4em;
-	line-height: 1.2em;
-	align-self: flex-end;
+
+.pf2-h--collapse {
+	opacity: 40%;
+	position: absolute;
+	right: 0;
+	font-size: 0.5em;
 }
 
 .pf2-p {
