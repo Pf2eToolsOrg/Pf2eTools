@@ -415,14 +415,25 @@
 			"prerequisites": "{@feat Firework Technician Dedication|G&G}",
 			"entries": [
 				"You've learned how to pull off a sudden noisemaker at just the right moment in your display, a technique that can disrupt precise wording. You gain the Banshee Cry fireworks display.",
-				"Banshee Cry {@as R} Trigger A creature within 30 feet Casts a Spell that has a verbal component or Activates an Item using a command Activation; Effect You set off a firework to explode with a loud screech near the creature. The creature must attempt a Will save.",
 				{
-					"type": "successDegree",
-					"entries": {
-						"Success": "The creature is unaffected.",
-						"Failure": "The creature must use an additional action on the triggering action or activity, or it's disrupted.",
-						"Critical Failure": "The triggering action is disrupted."
-					}
+					"type": "ability",
+					"name": "Banshee Cry",
+					"activity": {
+						"unit": "reaction",
+						"number": 1
+					},
+					"trigger": "A creature within 30 feet {@action Cast a Spell||Casts a Spell} that has a verbal component or {@action Activate an Item||Activates an Item} using a command Activation",
+					"entries": [
+						"You set off a firework to explode with a loud screech near the creature. The creature must attempt a Will save.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Success": "The creature is unaffected.",
+								"Failure": "The creature must use an additional action on the triggering action or activity, or it's disrupted.",
+								"Critical Failure": "The triggering action is disrupted."
+							}
+						}
+					]
 				}
 			]
 		},
@@ -568,7 +579,18 @@
 				"The beast gun also acts as a conduit, drawing out and amplifying any latent or active magic power you have. You learn to cast spontaneous spells and gain the {@action Cast a Spell} activity. You gain a spell repertoire with one cantrip of your choice, from either the arcane or primal spell list. You choose this cantrip from the common spells on your chosen spell list or from other spells you have access to on the list. This cantrip must require a spell attack roll. You're trained in spell attack rolls and spell DCs for arcane or primal spells, whichever of the two traditions you chose. Your key spellcasting ability for these spells is Charisma.",
 				"If you already cast arcane or primal spells from spell slots, you learn one additional cantrip from that tradition. If you're a prepared caster, you can prepare this spell in addition to your usual cantrips per day; if you're a spontaneous caster, you add this cantrip to your spell repertoire.",
 				"You also gain Spellsling.",
-				"Spellsling {@as 3} Requirements You're wielding your bonded beast gun; Effect You {@action Cast a Spell} that takes 1 or 2 actions to cast and requires a spell attack roll. The effects of the spell do not occur immediately but are imbued into the beast gun you're wielding. Make a {@action Strike} with that beast gun. Your spell flies with the ammunition, using your attack roll result to determine the effects of both the {@action Strike} and the spell. This counts as two attacks for the purposes of determining your multiple attack penalty, but you don't apply the penalty until after you've completed resolving the attack and spell."
+				{
+					"type": "ability",
+					"name": "Spellsling",
+					"activity": {
+						"unit": "action",
+						"number": 3
+					},
+					"requirements": "You're wielding your bonded beast gun",
+					"entries": [
+						"You {@action Cast a Spell} that takes 1 or 2 actions to cast and requires a spell attack roll. The effects of the spell do not occur immediately but are imbued into the beast gun you're wielding. Make a {@action Strike} with that beast gun. Your spell flies with the ammunition, using your attack roll result to determine the effects of both the {@action Strike} and the spell. This counts as two attacks for the purposes of determining your multiple attack penalty, but you don't apply the penalty until after you've completed resolving the attack and spell."
+					]
+				}
 			],
 			"special": "You can't select another dedication feat until you've gained two other feats from the beast gunner archetype.",
 			"leadsTo": [
@@ -1479,7 +1501,18 @@
 			"prerequisites": "{@feat Firework Technician Dedication|G&G}",
 			"entries": [
 				"This display emits a cascade of loud bangs or glittering trails. While you initially designed the display to captivate your audience's attention, it turns out to have a surprisingly effective use in combat, suppressing {@trait auditory} or {@trait visual} effects behind your magnificent display. You gain the Coughing Dragon fireworks display.",
-				"Coughing Dragon {@as 2} Cost 2 batches of infused reagents; Effect Choose either {@trait auditory} or {@trait visual} effects. The display gains that trait, and you attempt to counteract one or more effects within 60 feet that have this trait. On a success, the effect is suppressed until the start of your next turn, rather than ending entirely. Use your {@skill Lore||Fireworks Lore} modifier as your counteract modifier, and your counteract level is equal to half your advanced alchemy level (rounded up). A coughing dragon costs 2 batches of infused reagents rather than 1, but you can increase the cost to 3 batches and spend an additional action to create an even bigger coughing dragon display that attempts to counteract both {@trait auditory} and {@trait visual} effects at the same time."
+				{
+					"type": "ability",
+					"name": "Coughing Dragon",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"cost": "2 batches of infused reagents",
+					"entries": [
+						"Choose either {@trait auditory} or {@trait visual} effects. The display gains that trait, and you attempt to counteract one or more effects within 60 feet that have this trait. On a success, the effect is suppressed until the start of your next turn, rather than ending entirely. Use your {@skill Lore||Fireworks Lore} modifier as your counteract modifier, and your counteract level is equal to half your advanced alchemy level (rounded up). A coughing dragon costs 2 batches of infused reagents rather than 1, but you can increase the cost to 3 batches and spend an additional action to create an even bigger coughing dragon display that attempts to counteract both {@trait auditory} and {@trait visual} effects at the same time."
+					]
+				}
 			]
 		},
 		{
@@ -1750,7 +1783,21 @@
 			],
 			"entries": [
 				"You know how to set explosives to cause the maximum possible damage to buildings and other structures. You become trained in {@skill Lore||Engineering Lore} or become an expert in it if you were already trained. You gain the Set Explosives action.",
-				"Set Explosives {@as 2} (concentrate) Requirements You have 1 or 2 bombs in hand; Effect You attach the bombs to an inanimate object within your reach, such as a door, wall, or column, and rig them to detonate at a set time. The bombs explode at a specific time you determine (such as after your next action or at the start of your next turn, to a maximum of 1 minute), dealing their damage and splash damage to the inanimate object. Combine this damage for the purpose of resistances and weaknesses, and this damage ignores an amount of the object's Hardness equal to your level. Any creatures adjacent to the hazard take the bombs' splash damage, also combined for the purpose of resistances and weaknesses. As a reminder, since you didn't throw the bombs, Calculated Splash and similar effects don't apply. Making sure your timing is correct requires concentration, so you can't Set Explosives again while you're waiting for a previously set bomb to detonate."
+				{
+					"type": "ability",
+					"name": "Set Explosives",
+					"activity": {
+						"unit": "action",
+						"number": 2
+					},
+					"traits": [
+						"concentrate"
+					],
+					"requirements": "You have 1 or 2 bombs in hand",
+					"entries": [
+						"You attach the bombs to an inanimate object within your reach, such as a door, wall, or column, and rig them to detonate at a set time. The bombs explode at a specific time you determine (such as after your next action or at the start of your next turn, to a maximum of 1 minute), dealing their damage and splash damage to the inanimate object. Combine this damage for the purpose of resistances and weaknesses, and this damage ignores an amount of the object's Hardness equal to your level. Any creatures adjacent to the hazard take the bombs' splash damage, also combined for the purpose of resistances and weaknesses. As a reminder, since you didn't throw the bombs, Calculated Splash and similar effects don't apply. Making sure your timing is correct requires concentration, so you can't Set Explosives again while you're waiting for a previously set bomb to detonate."
+					]
+				}
 			],
 			"special": "You can't select another dedication feat until you've gained two other feats from the demolitionist archetype.",
 			"leadsTo": [
@@ -2161,7 +2208,7 @@
 			"prerequisites": "{@feat Vehicle Mechanic Dedication|G&G}, expert in {@skill Crafting}",
 			"entries": [
 				"You are practiced at working in vast garages of vehicles and can work on many machines at a time. When Repairing and spending the full 10 minutes, you can fix up to two objects. If you are a master in {@skill Crafting}, you can fix up to four targets. If you're legendary in {@skill Crafting}, you can fix up to eight targets.",
-				"This feat has no effect when using Quick {@action Repair} or another ability to reduce the time spent Repairing."
+				"This feat has no effect when using {@feat Quick Repair} or another ability to reduce the time spent Repairing."
 			]
 		},
 		{
@@ -2863,9 +2910,9 @@
 			"traits": [
 				"Inventor"
 			],
-			"prerequisites": "Megaton {@action Strike}",
+			"prerequisites": "{@feat Megaton Strike|g&g}",
 			"entries": [
-				"When you use a full-power Megaton {@action Strike}, you can knock your foe back. When you succeed at your {@action Strike} while using an unstable Megaton {@action Strike}, your target must attempt a Fortitude save against your class DC.",
+				"When you use a full-power {@feat Megaton Strike|g&g}, you can knock your foe back. When you succeed at your {@action Strike} while using an unstable {@feat Megaton Strike|g&g}, your target must attempt a Fortitude save against your class DC.",
 				{
 					"type": "successDegree",
 					"entries": {
@@ -2876,7 +2923,7 @@
 					}
 				}
 			],
-			"special": "If your innovation is a minion, this benefit applies on its unstable Megaton Strikes."
+			"special": "If your innovation is a minion, this benefit applies on its unstable {@feat Megaton Strike|g&g|Megaton Strikes}."
 		},
 		{
 			"name": "Gigavolt",
@@ -2916,16 +2963,32 @@
 			"prerequisites": "{@feat Firework Technician Dedication|G&G}",
 			"entries": [
 				"Flames and explosions sear the air in a riot of color and devastation that rivals that wrought by even the wildest goblin party. The display is both so beautiful and chaotic that, while mesmerizing, it poses a significant risk to the physical health, sight, and hearing of anyone who gets too close. You gain the Goblin Jubilee fireworks display.",
-				"Goblin Jubilee {@as 3} (fire, sonic, visual) Cost 3 batches of infused reagents; Effect Chaos fills a 20-foot burst within 120 feet. All creatures in the area takes {@damage 3d6} fire damage and {@damage 3d6} sonic damage and must attempt a Fortitude save.",
-				"A goblin jubilee display costs 3 batches of infused reagents, rather than 1.",
 				{
-					"type": "successDegree",
-					"entries": {
-						"Critical Success": "The creature is unaffected.",
-						"Success": "The creature is {@condition dazzled} and {@condition deafened} until the end of its next turn and takes half damage.",
-						"Failure": "The creature is {@condition dazzled} and {@condition deafened} for 1 minute and takes full damage.",
-						"Critical Failure": "The creature is {@condition blinded} for 1 round, {@condition dazzled} and {@condition deafened} for 1 minute, and takes double damage."
-					}
+					"type": "ability",
+					"name": "Goblin Jubilee",
+					"activity": {
+						"number": 3,
+						"unit": "action"
+					},
+					"traits": [
+						"fire",
+						"sonic",
+						"visual"
+					],
+					"cost": "3 batches of infused reagents",
+					"entries": [
+						"Chaos fills a 20-foot burst within 120 feet. All creatures in the area takes {@damage 3d6} fire damage and {@damage 3d6} sonic damage and must attempt a Fortitude save.",
+						"A goblin jubilee display costs 3 batches of infused reagents, rather than 1.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "The creature is unaffected.",
+								"Success": "The creature is {@condition dazzled} and {@condition deafened} until the end of its next turn and takes half damage.",
+								"Failure": "The creature is {@condition dazzled} and {@condition deafened} for 1 minute and takes full damage.",
+								"Critical Failure": "The creature is {@condition blinded} for 1 round, {@condition dazzled} and {@condition deafened} for 1 minute, and takes double damage."
+							}
+						}
+					]
 				}
 			]
 		},
@@ -3411,7 +3474,18 @@
 			"prerequisites": "{@feat Firework Technician Dedication|G&G}",
 			"entries": [
 				"This multi-sequence rocket blasts confetti at a series of altitudes. While the design is intended to delight children of all ages, you've found it has an unexpected side effect of confounding enemy fliers. You gain the Jumping Jenny fireworks display.",
-				"Jumping Jenny {@as 1} Cost 2 batches of infused reagents; Effect Target a flying creature within 60 feet. Until the start of your next turn, each time that creature attempts to {@action Fly}, they must succeed at an {@skill Acrobatics} check to {@action Maneuver in Flight} against the DC of your fireworks display, or the {@action Fly} action is disrupted. If all the creature's attempts to {@action Fly} are disrupted, at the end of its turn, it falls harmlessly to the ground below. A jumping jenny costs 2 batches of infused reagents, rather than 1."
+				{
+					"type": "ability",
+					"name": "Jumping Jenny",
+					"activity": {
+						"unit": "action",
+						"number": 1
+					},
+					"cost": "2 batches of infused reagents",
+					"entries": [
+						"Target a flying creature within 60 feet. Until the start of your next turn, each time that creature attempts to {@action Fly}, they must succeed at an {@skill Acrobatics} check to {@action Maneuver in Flight} against the DC of your fireworks display, or the {@action Fly} action is disrupted. If all the creature's attempts to {@action Fly} are disrupted, at the end of its turn, it falls harmlessly to the ground below. A jumping jenny costs 2 batches of infused reagents, rather than 1."
+					]
+				}
 			]
 		},
 		{
@@ -3672,12 +3746,12 @@
 				{
 					"type": "list",
 					"items": [
-						"{@bold Armor You} {@action Strike} with a melee unarmed attack or a melee weapon. To use a melee weapon for this, you must have prepared it in advance with special contraptions when you make your daily preparations.",
+						"{@bold Armor} You {@action Strike} with a melee unarmed attack or a melee weapon. To use a melee weapon for this, you must have prepared it in advance with special contraptions when you make your daily preparations.",
 						"{@bold Construct} Your minion innovation Strikes.",
-						"{@bold Weapon You} {@action Strike} with your weapon innovation"
+						"{@bold Weapon} You {@action Strike} with your weapon innovation"
 					]
 				},
-				"Unstable Function You put even more force into the {@action Strike}, though you risk stress fractures to your innovation. Add the unstable trait to Megaton {@action Strike}. The {@action Strike} deals another extra damage die, for a total of two extra dice at 4th level, three at 10th level, and four at 18th level."
+				"{@b Unstable Function} You put even more force into the {@action Strike}, though you risk stress fractures to your innovation. Add the unstable trait to Megaton Strike. The {@action Strike} deals another extra damage die, for a total of two extra dice at 4th level, three at 10th level, and four at 18th level."
 			],
 			"special": "If your innovation is a minion, it can take this action rather than you."
 		},
@@ -3771,7 +3845,7 @@
 				"Gunslinger"
 			],
 			"entries": [
-				"Bullets and bombs can be scarce in some parts, so you've learned to make your own. You become trained in {@skill Crafting} and gain the alchemist's infused reagents class feature (Core Rulebook 72), gaining a number of reagents each day equal to your level. You also gain the Alchemical {@skill Crafting} feat and four additional formulas for 1st-level alchemical items.",
+				"Bullets and bombs can be scarce in some parts, so you've learned to make your own. You become trained in {@skill Crafting} and gain the alchemist's infused reagents class feature (Core Rulebook 72), gaining a number of reagents each day equal to your level. You also gain the {@feat Alchemical Crafting} feat and four additional formulas for 1st-level alchemical items.",
 				"You gain infused reagents (a pool of reagents usable to make alchemical items) and advanced alchemy (allowing you to make alchemical items during your daily preparations without the normal cost or time expenditure). You gain batches of infused reagents per day equal to your level, which you can use to create only bombs or alchemical ammunition. Your advanced alchemy level for creating these is 1 and doesn't increase on its own. If you use a batch of infused reagents to create basic level-0 ammunition such as black powder cartridges or black powder doses, you produce 10 rounds of ammunition."
 			],
 			"leadsTo": [
@@ -4025,7 +4099,7 @@
 			],
 			"prerequisites": "{@feat Vehicle Mechanic Dedication|G&G}",
 			"entries": [
-				"You can patch up damage to an object with a quick fix. You gain the Improvised {@action Repair} general feat. When you use Improvised {@action Repair}, you can attempt a {@skill Crafting} check with the same DC as {@action Repair}. If you succeed, you can use the object as a normal object of its type until it takes damage rather than as a shoddy object of its type."
+				"You can patch up damage to an object with a quick fix. You gain the {@feat Improvised Repair} general feat. When you use {@feat Improvised Repair}, you can attempt a {@skill Crafting} check with the same DC as {@action Repair}. If you succeed, you can use the object as a normal object of its type until it takes damage rather than as a shoddy object of its type."
 			]
 		},
 		{
@@ -4661,8 +4735,8 @@
 			],
 			"trigger": "A critical hit deals physical damage to you.",
 			"entries": [
-				"Attempt a DC {@flatDC 17} flat check. If you are successful, the attack becomes a normal hit.",
-				"WARRIOR Automaton Introduction Gears Characters Gears Equipment Guns Characters Guns Equipment The Rotating Gear Glossary And Index Guns &"
+				"Your body is designed to be particularly resilient. Your chassis is medium armor in the plate armor group that grants a +4 item bonus to AC, a Dex cap of +1, a check penalty of \u20132, a speed penalty of \u20135 feet, and a Strength value of 16. You can never wear other armor or remove your chassis; however, you still don't become fatigued from sleeping. Finally, you can etch armor runes onto your chassis as normal.",
+				"{@b Enhancement} Your chassis becomes difficult to overcome. You gain the Chassis Deflection reaction."
 			]
 		},
 		{
@@ -5641,11 +5715,10 @@
 			],
 			"prerequisites": "master in {@skill Deception}, {@feat Unexpected Sharpshooter Dedication|G&G}",
 			"frequency": "once per round",
-			"requirements": "Either you used Accidental Shot and hit your opponent with the {@action Strike} this turn, or you used Lucky",
+			"requirements": "Either you used {@action Accidental Shot|g&g} and hit your opponent with the {@action Strike} this turn, or you used {@feat Lucky Escape|g&g} since your last turn and the triggering attack missed you.",
 			"entries": [
-				"{@action Escape} since your last turn and the triggering attack missed you.",
 				"You laugh innocently about the inexplicable luck of your last shot hitting its mark or how close the attack that just missed you came to taking your head off, causing your foes to second guess whether it's a good idea to oppose you in battle.",
-				"Attempt to {@action Demoralize} either the foe you hit with Accidental Shot or the foe that missed you due to Lucky {@action Escape}. You use {@skill Deception} instead of {@skill Intimidation} to attempt the check to {@action Demoralize}."
+				"Attempt to {@action Demoralize} either the foe you hit with {@action Accidental Shot|g&g} or the foe that missed you due to {@feat Lucky Escape|g&g}. You use {@skill Deception} instead of {@skill Intimidation} to attempt the check to {@action Demoralize}."
 			]
 		},
 		{
@@ -5897,7 +5970,7 @@
 			],
 			"prerequisites": "{@feat Unexpected Sharpshooter Dedication|G&G}",
 			"entries": [
-				"Your ability to narrowly evade danger defies all logic. You can use Lucky {@action Escape} once per hour instead of once per day."
+				"Your ability to narrowly evade danger defies all logic. You can use {@feat Lucky Escape|g&g} once per hour instead of once per day."
 			]
 		},
 		{
@@ -5917,7 +5990,7 @@
 			],
 			"prerequisites": "{@feat Unexpected Sharpshooter Dedication|G&G}",
 			"entries": [
-				"While no one, not even you, might appear to understand why, you demonstrate a greater ability to hit your targets regardless of the obstacles in your way. You can use the Accidental Shot activity granted to you by the Unexpected Sharpshooter Dedication once per hour instead of once per day."
+				"While no one, not even you, might appear to understand why, you demonstrate a greater ability to hit your targets regardless of the obstacles in your way. You can use the {@action Accidental Shot|g&g} activity granted to you by the Unexpected Sharpshooter Dedication once per hour instead of once per day."
 			]
 		},
 		{
@@ -5959,7 +6032,21 @@
 			"frequency": "once per day",
 			"entries": [
 				"Who needs skill when you've got dumb luck? Sometimes your shots hit miraculously, regardless of the fact that you seemed to slip when you pulled the trigger or that you weren't aiming at your foe when you fired. You gain the Accidental Shot activity.",
-				"Accidental Shot {@as 2} (fortune) Frequency once per day; Effect You make a {@action Strike} with a ranged weapon, rolling the attack and damage twice and using the better results for each. The attack ignores circumstance penalties to the attack roll and any flat check required due to the target being {@condition concealed} or {@condition hidden}."
+				{
+					"type": "ability",
+					"name": "Accidental Shot",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"traits": [
+						"fortune"
+					],
+					"frequency": "once per day",
+					"entries": [
+						"You make a {@action Strike} with a ranged weapon, rolling the attack and damage twice and using the better results for each. The attack ignores circumstance penalties to the attack roll and any flat check required due to the target being {@condition concealed} or {@condition hidden}."
+					]
+				}
 			],
 			"special": "You can't select another dedication feat until you've gained two other feats from the unexpected sharpshooter archetype.",
 			"leadsTo": [

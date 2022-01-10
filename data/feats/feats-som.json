@@ -747,8 +747,35 @@
 				"You gain a spell repertoire with one cantrip of your choice, from a spell list of your choice. You choose this cantrip from the common spells on your chosen spell list or from other spells to which you have access on that list. You're trained in spell attack rolls and spell DCs for that tradition. Your key spellcasting ability for these spells is Charisma.",
 				"If you can already cast spells from spell slots, you learn one additional cantrip from your spellcasting tradition. If you're a prepared caster, you can prepare this spell in addition to your usual cantrips per day; if you're a spontaneous caster, you add this cantrip to your spell repertoire.",
 				"You gain the Catharsis reaction and the Settle Emotions activity.",
-				"{@b Catharsis} {@as R} ({@trait concentrate}, {@trait emotion}, {@trait mental}) {@b Trigger} determined by your catharsis emotion; {@b Effect} You gain the catharsis activation effects listed for your catharsis emotion. You gain that emotion's emotional fervor benefits for 3 rounds. When your emotional fervor ends, you suffer the listed emotional fallout. After using Catharsis, you can't use it again until you use the Settle Emotions activity.",
-				"{@b Settle Emotions} ({@trait concentrate}, {@trait emotion}, {@trait mental}) You spend 10 minutes using techniques you've developed to calm your emotions and bring them back under control. This allows you to access your Catharsis again."
+				{
+					"type": "ability",
+					"name": "Catharsis",
+					"activity": {
+						"unit": "reaction",
+						"number": 1
+					},
+					"traits": [
+						"concentrate",
+						"emotion",
+						"mental"
+					],
+					"trigger": "determined by your catharsis emotion",
+					"entries": [
+						"You gain the catharsis activation effects listed for your catharsis emotion. You gain that emotion's emotional fervor benefits for 3 rounds. When your emotional fervor ends, you suffer the listed emotional fallout. After using Catharsis, you can't use it again until you use the Settle Emotions activity."
+					]
+				},
+				{
+					"type": "ability",
+					"name": "Settle Emotions",
+					"traits": [
+						"concentrate",
+						"emotion",
+						"mental"
+					],
+					"entries": [
+						"You spend 10 minutes using techniques you've developed to calm your emotions and bring them back under control. This allows you to access your Catharsis again."
+					]
+				}
 			],
 			"special": "You can't select another dedication feat until you've gained two other feats from the cathartic mage archetype.",
 			"leadsTo": [
@@ -3793,7 +3820,7 @@
 			"entries": [
 				"You attack in an arc and enact your spell against everyone you hit. Make a {@action Spellstrike|SoM}, but roll separate {@action Strike||Strikes} to attack two creatures, each of whom must be within your melee reach and adjacent to each other. If your spell could affect two or more targets, your spell affects whichever foes you hit, not just the first target; otherwise, choose one target to affect with the spell. A Spell Swipe counts as two attacks for your multiple attack penalty, but the penalty doesn't increase until after you make both attacks.",
 				"If you're using a weapon that has the {@trait sweep} trait, its circumstance bonus applies against both targets. You can use this activity with only melee {@action Strike||Strikes}, even if you have the {@class Magus|SoM|starlit span|starlit span|SoM} hybrid study or a similar ability.",
-				"If you use {@feat Expansive Spellstrike|SoM} to {@action Spellstrike|SoM} with an area spell, apply the area as described in Expansive {@action Spellstrike|SoM}, choosing one of the creatures you {@action Strike} to determine the area and whether the spell fails due to a critically failed {@action Strike}. If you use {@feat Expansive Spellstrike|SoM} to {@action Spellstrike|SoM} with a targeted spell, the spell is lost completely only if both {@action Strike||Strikes} are critical failures."
+				"If you use {@feat Expansive Spellstrike|SoM} to {@action Spellstrike|SoM} with an area spell, apply the area as described in {@feat Expansive Spellstrike|SoM}, choosing one of the creatures you {@action Strike} to determine the area and whether the spell fails due to a critically failed {@action Strike}. If you use {@feat Expansive Spellstrike|SoM} to {@action Spellstrike|SoM} with a targeted spell, the spell is lost completely only if both {@action Strike||Strikes} are critical failures."
 			]
 		},
 		{

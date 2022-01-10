@@ -173,7 +173,7 @@
 				"Hobgoblin"
 			],
 			"entries": [
-				"You learn formulas more easily. You gain four common 1st-level alchemical formulas when you take this feat, and each time you gain a level, you gain a common alchemical formula of that level. You still need Alchemical {@skill Crafting} to {@action Craft} alchemical items."
+				"You learn formulas more easily. You gain four common 1st-level alchemical formulas when you take this feat, and each time you gain a level, you gain a common alchemical formula of that level. You still need {@feat Alchemical Crafting} to {@action Craft} alchemical items."
 			],
 			"special": "You can take this feat only at 1st level, and you can't retrain into or out of this feat."
 		},
@@ -469,7 +469,22 @@
 				"Elf"
 			],
 			"entries": [
-				"Once per day, you can spend 10 minutes studying your surroundings in search of omens related to a particular course of action to cast {@spell augury} as an innate divine spell. Unless the result of the augury was \"nothing,\" you gain the following reaction for the next 30 minutes: Call Upon the Brightness {@as R} (concentrate) Trigger You attempt an attack roll, skill check, or saving throw while performing the course of action from your augury, but you haven't rolled yet; Effect You gain a +1 status bonus to the triggering check, or a +2 status bonus if the result of the augury was \"woe\" and you proceeded anyway."
+				"Once per day, you can spend 10 minutes studying your surroundings in search of omens related to a particular course of action to cast {@spell augury} as an innate divine spell. Unless the result of the {@spell augury} was \"nothing,\" you gain the following reaction for the next 30 minutes:",
+				{
+					"type": "ability",
+					"name": "Call Upon the Brightness",
+					"activity": {
+						"unit": "reaction",
+						"number": 1
+					},
+					"traits": [
+						"concentrate"
+					],
+					"trigger": "You attempt an attack roll, skill check, or saving throw while performing the course of action from your augury, but you haven't rolled yet",
+					"entries": [
+						"You gain a +1 status bonus to the triggering check, or a +2 status bonus if the result of the {@spell augury} was \"woe\" and you proceeded anyway."
+					]
+				}
 			]
 		},
 		{
@@ -1956,7 +1971,7 @@
 			"prerequisites": "{@feat Halfling Luck}",
 			"entries": [
 				"While your willingness to dig into a task you know little about might get you into trouble, your incredible luck often saves you from danger. You can attempt skill actions that normally require you to be trained even if you aren't trained in that skill.",
-				"If you use Halfling Luck when you fail a check for a skill with which you are untrained,"
+				"If you use Halfling Luck when you fail a check for a skill with which you are untrained, you can add a proficiency bonus equal to your level, rather than 0, when you reroll the triggering skill check. You gain a +4 circumstance bonus to this rerolled skill check."
 			]
 		},
 		{
@@ -2002,7 +2017,7 @@
 				"Leshy"
 			],
 			"entries": [
-				"Your size and demeanor make it easy for you to convince others that you mean no harm. You gain the Shameless {@action Request} skill feat as a bonus feat. Additionally, you gain a +1 circumstance bonus to initiative checks when you roll {@skill Deception} for initiative."
+				"Your size and demeanor make it easy for you to convince others that you mean no harm. You gain the {@feat Shameless Request} skill feat as a bonus feat. Additionally, you gain a +1 circumstance bonus to initiative checks when you roll {@skill Deception} for initiative."
 			]
 		},
 		{

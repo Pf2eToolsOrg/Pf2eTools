@@ -1332,8 +1332,9 @@
 			"traits": [
 				"Champion"
 			],
+			"requirements": "exalt, Vengeful Oath.",
 			"entries": [
-				"Requirements exalt, Vengeful Oath."
+				"When you call upon others to take retribution, you also guide their aim. When you use {@action Retributive Strike}, your allies who make Strikes take only a \u20132 penalty, instead of a \u20135 penalty."
 			]
 		},
 		{
@@ -3758,9 +3759,9 @@
 				"Rage",
 				"Visual"
 			],
-			"prerequisites": "Share {@action Rage}",
+			"prerequisites": "{@feat Share Rage}",
 			"entries": [
-				"You can drive your allies into a frenzy, granting them incredible benefits. You can ignore the requirements on Share {@action Rage}, using it multiple times in a {@action Rage}. Allies affected by Share {@action Rage} who accept your anathema for the duration of the {@action Rage} gain your instinct ability and the specialization ability it gains from weapon specialization, but not greater weapon specialization."
+				"You can drive your allies into a frenzy, granting them incredible benefits. You can ignore the requirements on {@feat Share Rage}, using it multiple times in a {@action Rage}. Allies affected by {@feat Share Rage} who accept your anathema for the duration of the {@action Rage} gain your instinct ability and the specialization ability it gains from weapon specialization, but not greater weapon specialization."
 			]
 		},
 		{
@@ -3959,7 +3960,7 @@
 			],
 			"prerequisites": "legendary in {@skill Crafting}",
 			"entries": [
-				"You can find ways to craft just about anything, despite restrictions. As long as you have the appropriate {@skill Crafting} skill feat (such as Magical {@skill Crafting} for magic items) and meet the item's level and proficiency requirement, you ignore just about any other requirement, such as being of a specific ancestry or providing spells. The only exceptions are requirements that add to the item's cost, including castings of spells that themselves have a cost, and requirements of special items such as the philosopher's stone that have exclusive means of access and {@skill Crafting}. The GM decides whether you can ignore a requirement."
+				"You can find ways to craft just about anything, despite restrictions. As long as you have the appropriate {@skill Crafting} skill feat (such as {@feat Magical Crafting} for magic items) and meet the item's level and proficiency requirement, you ignore just about any other requirement, such as being of a specific ancestry or providing spells. The only exceptions are requirements that add to the item's cost, including castings of spells that themselves have a cost, and requirements of special items such as the philosopher's stone that have exclusive means of access and {@skill Crafting}. The GM decides whether you can ignore a requirement."
 			]
 		},
 		{
@@ -5249,9 +5250,7 @@
 			],
 			"requirements": "You are wielding a ranged weapon with reload 0.",
 			"entries": [
-				"You shoot twice in blindingly fast succession. Make two Strikes, each against a separate target and with a \u20132 penalty.",
-				"Both attacks count toward your multiple attack penalty, but the penalty doesn't increase until after you've made both of them.",
-				"When you have your shield raised, you can {@action Stride} to move half your Speed without triggering reactions that are triggered by your movement (such as Attacks of Opportunity). You can use Shielded {@action Stride} while Flying or Swimming instead of {@action Stride||Striding} if you have the corresponding movement type."
+				"You shoot twice in blindingly fast succession. Make two {@action Strike||Strikes}, each against a separate target and with a \u20132 penalty. Both attacks count toward your multiple attack penalty, but the penalty doesn't increase until after you've made both of them."
 			],
 			"leadsTo": [
 				"Triple Shot",
@@ -7048,6 +7047,9 @@
 			"entries": [
 				"When you {@action Perform}, compare your result to the Will DC of one observer. If you succeed, the target is {@condition fascinated} by you for 1 round. If the observer is in a situation that demands immediate attention, such as combat, you must critically succeed to fascinate it and the {@action Perform} action gains the {@trait incapacitation} trait. You must choose which creature you're trying to fascinate before you roll your check, and the target is then temporarily immune for 1 hour.",
 				"If you're an expert in {@skill Performance}, you can fascinate up to four observers; if you're a master, you can fascinate up to 10 observers; and if you're legendary, you can fascinate any number of observers at the same time."
+			],
+			"leadsTo": [
+				"Focused Fascination|APG"
 			]
 		},
 		{
@@ -7336,7 +7338,7 @@
 				"Druid"
 			],
 			"entries": [
-				"You have learned some of the tricks the fey use to bend primal magic toward illusions and trickery. Add illusory disguise,"
+				"You have learned some of the tricks the fey use to bend primal magic toward illusions and trickery. Add {@spell illusory disguise}, {@spell illusory object}, {@spell illusory scene}, and {@spell veil} to your spell list as primal spells."
 			]
 		},
 		{
@@ -12482,6 +12484,13 @@
 			"prerequisites": "trained in {@skill Nature}",
 			"entries": [
 				"You can apply natural cures to heal your allies. You can use {@skill Nature} instead of {@skill Medicine} to {@action Treat Wounds}. If you're in the wilderness, you might have easier access to fresh ingredients, allowing you to gain a +2 circumstance bonus to your check to {@action Treat Wounds} using {@skill Nature}, subject to the GM's determination."
+			],
+			"leadsTo": [
+				"Herbalist Dedication|APG",
+				"Endemic Herbs|APG",
+				"Expert Herbalism|APG",
+				"Fresh Ingredients|APG",
+				"Poultice Preparation|APG"
 			]
 		},
 		{
@@ -13654,7 +13663,7 @@
 			],
 			"prerequisites": "{@feat Aggressive Block} or {@feat Brutish Shove}",
 			"entries": [
-				"You can push larger foes around with your attack. You can use Aggressive Block or Brutish {@action Shove} against a creature up to two sizes larger than you.",
+				"You can push larger foes around with your attack. You can use {@feat Aggressive Block} or {@feat Brutish Shove} against a creature up to two sizes larger than you.",
 				"When a creature you {@action Shove} has to stop moving because it would hit an object, it takes damage equal to your Strength modifier (minimum 1). This happens regardless of how you Shoved the creature."
 			]
 		},
@@ -15737,6 +15746,9 @@
 			"requirements": "You haven't used this ability since you last Raged.",
 			"entries": [
 				"You stoke an ally's fury. While you are raging, one willing creature within 30 feet gains the effects of the {@action Rage} action, except it can still use concentrate actions."
+			],
+			"leadsTo": [
+				"Contagious Rage"
 			]
 		},
 		{
@@ -16003,15 +16015,7 @@
 				"Fighter"
 			],
 			"entries": [
-				"When your shield is up, your enemies' blows can't touch you.",
-				"opponent hard enough to make it stumble back. Make a {@action Strike} with a two-handed melee weapon. If you hit a target that is your size or smaller, that creature is {@condition flat-footed} until the end of your current turn, and you can automatically {@action Shove} it, with the same benefits as the {@action Shove} action (including the critical success effect, if your {@action Strike} was a critical hit). If you move to follow the target, your movement doesn't trigger reactions.",
-				"This {@action Strike} has the following failure effect.",
-				{
-					"type": "successDegree",
-					"entries": {
-						"Failure": "The target becomes {@condition flat-footed} until the end of your current turn."
-					}
-				}
+				"When your shield is up, your enemies' blows can't touch you. When you have your shield raised, you can {@action Stride} to move half your Speed without triggering reactions that are triggered by your movement (such as {@ability Attack of Opportunity||Attacks of Opportunity}). You can use Shielded Stride while Flying or Swimming instead of {@action Stride||Striding} if you have the corresponding movement type."
 			]
 		},
 		{
@@ -17485,7 +17489,7 @@
 			],
 			"entries": [
 				"You swing at a foe while mid-leap. Make a {@action Leap}, {@action High Jump}, or {@action Long Jump} and attempt one melee {@action Strike} at any point during your jump. Immediately after the {@action Strike}, you fall to the ground if you're in the air, even if you haven't reached the maximum distance of your jump. If the distance you fall is no more than the height of your jump, you take no damage and land upright.",
-				"When attempting a {@action High Jump} or {@action Long Jump} during a Sudden {@action Leap}, determine the DC using the {@action Long Jump} DCs, and increase your maximum distance to double your Speed."
+				"When attempting a {@action High Jump} or {@action Long Jump} during a Sudden Leap, determine the DC using the {@action Long Jump} DCs, and increase your maximum distance to double your Speed."
 			]
 		},
 		{
@@ -17510,9 +17514,9 @@
 			],
 			"entries": [
 				"You make an impressive leap and swing while you soar. Make a {@action Leap}, {@action High Jump}, or {@action Long Jump} and attempt one melee {@action Strike} at any point during your jump. Immediately after the {@action Strike}, you fall to the ground if you're in the air, even if you haven't reached the maximum distance of your jump. If the distance you fall is no more than the height of your jump, you take no damage and land upright.",
-				"When attempting a {@action High Jump} or {@action Long Jump} during a Sudden {@action Leap}, determine the DC using the {@action Long Jump} DCs, and increase your maximum distance to double your Speed."
+				"When attempting a {@action High Jump} or {@action Long Jump} during a Sudden Leap, determine the DC using the {@action Long Jump} DCs, and increase your maximum distance to double your Speed."
 			],
-			"special": "If you have Felling {@action Strike}, you can spend 3 actions to make a Sudden {@action Leap} and use Felling {@action Strike} instead of a normal {@action Strike}."
+			"special": "If you have Felling {@action Strike}, you can spend 3 actions to make a Sudden Leap and use {@feat Felling Strike} instead of a normal {@action Strike}."
 		},
 		{
 			"name": "Superior Bond",
@@ -17671,7 +17675,7 @@
 			],
 			"prerequisites": "master in {@skill Stealth}",
 			"entries": [
-				"You can move your full Speed when you {@action Sneak}. You can use Swift {@action Sneak} while Burrowing, Climbing, Flying, or Swimming instead of {@action Stride||Striding} if you have the corresponding movement type."
+				"You can move your full Speed when you {@action Sneak}. You can use Swift Sneak while Burrowing, Climbing, Flying, or Swimming instead of {@action Stride||Striding} if you have the corresponding movement type."
 			]
 		},
 		{
@@ -19599,7 +19603,7 @@
 				"Monk"
 			],
 			"entries": [
-				"You defy gravity, traversing vertical planes as easily as the ground. {@action Stride} up to your Speed. You must start your movement on a horizontal surface. During this movement, you can run up vertical surfaces, like walls, at your full Speed. If you end the {@action Stride} off the ground, you fall after taking your next action or when your turn ends, whichever comes first (though you can {@action Grab an Edge}, if applicable). If you have Water {@action Step} or a similar ability, Wall Run lets you run along flimsy vertical surfaces, as well as vertical liquids, such as a waterfall."
+				"You defy gravity, traversing vertical planes as easily as the ground. {@action Stride} up to your Speed. You must start your movement on a horizontal surface. During this movement, you can run up vertical surfaces, like walls, at your full Speed. If you end the {@action Stride} off the ground, you fall after taking your next action or when your turn ends, whichever comes first (though you can {@action Grab an Edge}, if applicable). If you have {@feat Water Step} or a similar ability, Wall Run lets you run along flimsy vertical surfaces, as well as vertical liquids, such as a waterfall."
 			]
 		},
 		{

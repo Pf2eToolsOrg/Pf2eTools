@@ -5489,6 +5489,25 @@
 			"entries": [
 				"Your careful shot against an unsuspecting opponent pierces a vital artery or organ. Make a ranged {@action Strike}. If the target is {@condition flat-footed}, the {@action Strike} deals an extra die of weapon damage, and the foe takes {@condition persistent damage||persistent bleed damage} equal to the amount of precision damage from your {@action One Shot, One Kill|G&G}."
 			]
+		},
+		{
+			"name": "Accidental Shot",
+			"source": "G&G",
+			"page": 142,
+			"activity": {
+				"number": 2,
+				"unit": "action"
+			},
+			"traits": ["fortune"],
+			"frequency": "once per day",
+			"actionType": {
+				"archetype": [
+					"Unexpected Sharpshooter|G&G"
+				]
+			},
+			"entries": [
+				"You make a {@action Strike} with a ranged weapon, rolling the attack and damage twice and using the better results for each. The attack ignores circumstance penalties to the attack roll and any flat check required due to the target being {@condition concealed} or {@condition hidden}."
+			]
 		}
 	]
 }
