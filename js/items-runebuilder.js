@@ -145,7 +145,7 @@ class RuneBuilder extends ProxyBase {
 	_getInitialFilterState (baseItem) {
 		baseItem = baseItem || this.baseItem;
 		let state = MiscUtil.copy(RuneBuilder.RUNEBUILDER_DEFAULT_FILTER_STATE);
-		state.filters["Rune applies to..."] = {
+		state.filters["Applies to..."] = {
 			"meta": {
 				"combineBlue": "or",
 				"combineRed": "or",
@@ -155,7 +155,7 @@ class RuneBuilder extends ProxyBase {
 			"state": {
 			},
 		}
-		state.filters["Rune applies to..."]["state"][`${baseItem.category} Rune`] = 1;
+		state.filters["Applies to..."]["state"][`${baseItem.category}`] = 1;
 		return state
 	}
 

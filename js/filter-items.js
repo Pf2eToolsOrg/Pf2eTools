@@ -109,7 +109,7 @@ class PageFilterItems extends PageFilter {
 			header: "Miscellaneous",
 			items: ["Consumable"],
 		});
-		this._appliesToFilter = new Filter({header: "Rune applies to..."});
+		this._appliesToFilter = new Filter({header: "Applies to..."});
 
 		this._categoriesRuneItems = [];
 	}
@@ -141,7 +141,7 @@ class PageFilterItems extends PageFilter {
 		item.equipment ? item._fType.push("Equipment") : item._fType.push("Treasure");
 		if (item.generic === "G") item._fType.push("Generic Variant");
 		if (item.generic === "V") item._fType.push("Specific Variant");
-		item._fAppliesTo = item.appliesTo ? `${item.appliesTo} Rune` : null;
+		item._fAppliesTo = item.appliesTo ? `${item.appliesTo}` : null;
 
 		item._fDamage = undefined; // set by trait implies
 		this.handleTraitImplies(item, {traitProp: "traits", entityTypes: ["item"]});
@@ -270,7 +270,7 @@ class ModalFilterBaseItems extends ModalFilter {
 
 		eleLabel.innerHTML = `<div class="col-1 pl-0 flex-vh-center">${this._isRadio ? `<input type="radio" name="radio" class="no-events">` : `<input type="checkbox" class="no-events">`}</div>
 			<div class="col-4-2 bold">${item.name}</div>
-			<div class="col-2-2 text-center">${item.category}</div>
+			<div class="col-2-2 text-center">${Array.isArray(item.category) ? item.category.join(", ") : item.category}</div>
 			<div class="col-2 text-center">${Parser.priceToFull(item.price)}</div>
 			<div class="col-1-3 text-center">${item.bulk ? item.bulk : "\u2014"}</div>
 			<div class="col-1-3 text-center ${Parser.sourceJsonToColor(item.source)} pr-0" title="${Parser.sourceJsonToFull(item.source)}" ${BrewUtil.sourceJsonToStyle(item.source)}>${source}</div>`;

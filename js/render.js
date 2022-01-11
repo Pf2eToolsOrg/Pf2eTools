@@ -4443,7 +4443,7 @@ Renderer.item = {
 				renderStack.push(`<strong>Category&nbsp;</strong>`);
 				if (item.subCategory != null) renderStack.push(`${item.subCategory} `);
 				if (item.category === "Weapon") renderStack.push(`${item.range ? "Ranged" : "Melee"} `);
-				renderStack.push(`${item.category}${item.category === "Worn" ? `&nbsp;${item.type}` : ""}`);
+				renderStack.push(`${Array.isArray(item.category) ? item.category.join(", ") : item.category}${item.category === "Worn" ? `&nbsp;${item.type}` : ""}`);
 			}
 			if (item.category != null && item.group != null) renderStack.push("; ")
 			if (item.group != null) renderStack.push(`<strong>Group&nbsp;</strong>${renderer.render(`{@group ${item.group}}`)}`);
