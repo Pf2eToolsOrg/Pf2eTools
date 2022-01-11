@@ -7,7 +7,7 @@ class Omnisearch {
 		const $nav = $(`#navbar`);
 
 		this._$iptSearch = $(`<input class="form-control search omni__input" placeholder="${this._PLACEHOLDER_TEXT}" title="Hotkey: F. Disclaimer: unlikely to search everywhere. Use with caution.">`).disableSpellcheck();
-		const $searchSubmit = $(`<button class="btn btn-default omni__submit" tabindex="-1"><span class="glyphicon glyphicon-search"></span></button>`);
+		const $searchSubmit = $(`<button class="btn btn-default omni__submit" tabindex="-1"><span class="glyphicon glyphicon-search" type="submit"></span></button>`);
 
 		this._$searchInputWrapper = $$`
 			<div class="input-group omni__wrp-input">

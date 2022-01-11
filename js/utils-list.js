@@ -36,7 +36,7 @@ const ListUtil = {
 		const _handleSearchChange = () => {
 			setTimeout(() => {
 				if ($iptSearch.val().length) $btnSearchClear.removeClass("no-events").addClass("clickable").title("Clear").html(`<span class="glyphicon glyphicon-remove"/>`);
-				else $btnSearchClear.addClass("no-events").removeClass("clickable").title(null).html(`<span class="glyphicon glyphicon-search"/>`);
+				else $btnSearchClear.addClass("no-events").removeClass("clickable").title(null).html(`<span class="glyphicon glyphicon-search" type="submit"/>`);
 			})
 		};
 		const handleSearchChange = MiscUtil.throttle(_handleSearchChange, 50);
