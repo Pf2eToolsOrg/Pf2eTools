@@ -74,9 +74,9 @@ class ItemsPage extends ListPage {
 			eleLi.addEventListener("contextmenu", (evt) => ListUtil.openContextMenu(evt, this._mundaneList, listItem));
 			return {mundane: listItem};
 		} else {
+			const cats = typeof item.category === "string" ? [item.category] : Array.isArray(item.category) ? item.category : [];
 			eleLi.innerHTML += `<a href="#${hash}" class="lst--border">
-				${item.category === "Rune" ? RuneBuilder.getButtons(itI) : ""}
-				<span class="col-4 pl-0 bold col-name">${item.name}</span>
+				<span class="col-4 pl-0">${cats.includes("Rune") ? RuneBuilder.getButtons(itI) : ""}<span class="bold w-100">${item.name}</span></span>
 				<span class="col-2-2 text-center">${Array.isArray(item.category) ? item.category.join(", ") : item.category}</span>
 				<span class="col-1-5 text-center">${level}</span>
 				<span class="col-1-8 text-center">${Parser.priceToFull(item.price)}</span>

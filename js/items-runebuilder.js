@@ -208,7 +208,6 @@ class RuneBuilder extends ProxyBase {
 		$(`#btn-sublist-add`).toggleClass("hidden", true);
 		$(`#btn-sublist-subtract`).toggleClass("hidden", true);
 		$(`#btn-sublist-other`).toggleClass("hidden", true);
-		$(`.col-name`).toggleClass("col-4", false).toggleClass("col-3", true);
 		this.renderItem(this.runeItem);
 	}
 
@@ -225,7 +224,6 @@ class RuneBuilder extends ProxyBase {
 		$(`#btn-sublist-add`).toggleClass("hidden", false);
 		$(`#btn-sublist-subtract`).toggleClass("hidden", false);
 		$(`#btn-sublist-other`).toggleClass("hidden", false);
-		$(`.col-name`).toggleClass("col-3", false).toggleClass("col-4", true);
 	}
 
 	async activate () {
@@ -363,7 +361,7 @@ class RuneBuilder extends ProxyBase {
 	}
 
 	static getButtons (itemId) {
-		return `<span class="rigen__visible col-1 no-wrap pl-0 text-center" onclick="event.preventDefault(); event.stopPropagation()">
+		return `<span class="rigen__visible col-3 no-wrap pl-0 text-center" onclick="event.preventDefault(); event.stopPropagation()">
 			<button id="rigen__add-btn-${itemId}" title="Add" class="btn btn-success btn-xs rigen__btn_list" onclick="runeBuilder.handleClick(event, ${itemId}, 1)"><span class="glyphicon glyphicon-plus"></span></button>
 			<button id="rigen__subtract-btn-${itemId}" title="Subtract" class="btn btn-danger btn-xs rigen__btn_list hidden" onclick="runeBuilder.handleClick(event, ${itemId}, 0)"><span class="glyphicon glyphicon-minus"></span></button>
 		</span>`;
