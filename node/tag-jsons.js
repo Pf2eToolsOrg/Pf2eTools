@@ -432,7 +432,7 @@ GroupTag._GROUPS_REGEX = null;
  * inplace
  */
 async function main () {
-	const args = ut.parseArgs();
+	const args = ut.ArgParser.parse();
 	await TagJsons.pInit();
 	TagJsons.run(args);
 	TagJsons.teardown();
