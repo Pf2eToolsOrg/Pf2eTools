@@ -12,6 +12,24 @@
 			"traits": [
 				"Human"
 			],
+			"spellcasting": [
+				{
+					"name": "Cleric Domain",
+					"type": "Focus",
+					"tradition": null,
+					"DC": 17,
+					"fp": 1,
+					"entry": {
+						"1": {
+							"spells": [
+								{
+									"name": "cry of destruction"
+								}
+							]
+						}
+					}
+				}
+			],
 			"creatureType": [
 				"Humanoid"
 			],
@@ -50,10 +68,10 @@
 				"Cha": 1
 			},
 			"items": [
-				"crossbow (10 bolts)",
-				"religious symbol of Nethys",
-				"religious text of Nethys",
-				"staff"
+				"{@item crossbow} ({@item bolt||10 bolts})",
+				"{@item religious symbol} of {@deity Nethys}",
+				"{@item religious text} of {@deity Nethys}",
+				"{@item staff}"
 			],
 			"abilitiesTop": [],
 			"ac": {
@@ -10550,13 +10568,8 @@
 				"Wis": 3,
 				"Cha": 4
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+7, {@skill Survival} +7 Str +2, Dex +1, Con +0, Int +1, Wis +3, Cha +4 Items flail, manifesto (functions as religious text), pouch of rocks, robes."
-					],
-					"name": "Religion"
-				}
+			"items": [
+				"{@item flail}, manifesto (functions as {@item religious text}), pouch of rocks, robes"
 			],
 			"ac": {
 				"default": 17,
@@ -10678,6 +10691,22 @@
 								},
 								{
 									"name": "sanctuary"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Cleric Domain",
+					"type": "Focus",
+					"tradition": null,
+					"DC": 18,
+					"fp": 1,
+					"entry": {
+						"1": {
+							"spells": [
+								{
+									"name": "read fate"
 								}
 							]
 						}
@@ -13731,11 +13760,10 @@
 				"Cha": 2
 			},
 			"items": [
-				"composite shortbow (20 arrows)",
-				"half plate",
-				"mace",
-				"steel shield (Hardness 5",
-				"HP 20"
+				"{@item composite shortbow} (20 arrows)",
+				"{@item half plate}",
+				"{@item mace}",
+				"{@item steel shield} (Hardness 5, HP 20, BT 10)"
 			],
 			"abilitiesTop": [],
 			"ac": {
