@@ -2820,13 +2820,10 @@
 					"name": "Run Them Over!"
 				},
 				{
-					"traits": [
-						"team"
-					],
 					"entries": [
-						"first Forms Up as a free action to condense into a 20-foot-by-20-foot area (minus any missing squares), then moves up to its Speed. This works just like a Gargantuan creature moving; for instance, if any square of the team enters difficult terrain, the extra movement cost applies to the whole team."
+						"Whenever Hana's Hundreds {@action Stride||Strides}, the team first Forms Up as a free action to condense into a 20-foot-by-20-foot area (minus any missing squares), then moves up to its Speed. This works just like a Gargantuan creature moving; for instance, if any square of the team enters difficult terrain, the extra movement cost applies to the whole team."
 					],
-					"name": "Troop Movement Whenever Hana's Hundreds {@action Stride||Strides}, the"
+					"name": "Troop Movement"
 				},
 				{
 					"activity": {
@@ -2834,9 +2831,12 @@
 						"unit": "varies",
 						"entry": "{@as 1} to {@as 3}"
 					},
-					"frequency": "once per round; Hana's Hundreds flail their swords wildly at each enemy adjacent to the team (DC 33 basic Reflex save).",
+					"frequency": "once per round",
 					"entries": [
-						"The damage depends on the number of actions. {@as 1} {@damage 2d8} slashing damage {@as 2} {@damage 3d8+13} slashing damage {@as 3} {@damage 4d8+16} slashing damage."
+						"Hana's Hundreds flail their swords wildly at each enemy adjacent to the team (DC 33 basic Reflex save). The damage depends on the number of actions.",
+						"{@as 1} {@damage 2d8} slashing damage",
+						"{@as 2} {@damage 3d8+13} slashing damage",
+						"{@as 3} {@damage 4d8+16} slashing damage."
 					],
 					"name": "Whirlwind of Blades"
 				}

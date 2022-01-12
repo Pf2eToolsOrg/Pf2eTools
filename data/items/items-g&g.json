@@ -1960,7 +1960,7 @@
 							{
 								"mode": "replaceTxt",
 								"replaceTags": true,
-								"replace": "an \\{@skill Acrobatics\\} check with a DC depending on the type",
+								"replace": "an \\{@skill {@skill Acrobatics}\\} check with a DC depending on the type",
 								"with": "a DC 17 {@skill Acrobatics}"
 							},
 							{
@@ -2001,7 +2001,7 @@
 							{
 								"mode": "replaceTxt",
 								"replaceTags": true,
-								"replace": "an \\{@skill Acrobatics\\} check with a DC depending on the type",
+								"replace": "an \\{@skill {@skill Acrobatics}\\} check with a DC depending on the type",
 								"with": "a DC 21 {@skill Acrobatics}"
 							},
 							{
@@ -2042,7 +2042,7 @@
 							{
 								"mode": "replaceTxt",
 								"replaceTags": true,
-								"replace": "an \\{@skill Acrobatics\\} check with a DC depending on the type",
+								"replace": "an \\{@skill {@skill Acrobatics}\\} check with a DC depending on the type",
 								"with": "a DC 30 {@skill Acrobatics}"
 							},
 							{
@@ -2083,7 +2083,7 @@
 							{
 								"mode": "replaceTxt",
 								"replaceTags": true,
-								"replace": "an \\{@skill Acrobatics\\} check with a DC depending on the type",
+								"replace": "an \\{@skill {@skill Acrobatics}\\} check with a DC depending on the type",
 								"with": "a DC 39 {@skill Acrobatics}"
 							},
 							{
@@ -5668,7 +5668,7 @@
 			"ammunition": null,
 			"category": "Ammunition",
 			"entries": [
-				"Firearms require ammunition consisting of a projectile and black powder. A round of ammo can vary in its composition but is typically either a prepackaged paper cartridge, including wadding, bullet, and black powder, or loose shot packed in manually. Some weapons, like hand cannons and blunderbusses, can fire other materials, but their ammunition has the same Price due to the cost of the black powder. Because making rounds of firearm ammunition requires creating black powder, you need the {@feat Alchemical Crafting} skill feat to make them. Firearm rounds are a valid option for magical ammunition, just like arrows or bolts. Crafting magical firearm ammunition requires you to be able to craft both alchemical and magical items."
+				"Firearms require ammunition consisting of a projectile and black powder. A round of ammo can vary in its composition but is typically either a prepackaged paper cartridge, including wadding, bullet, and black powder, or loose shot packed in manually. Some weapons, like hand cannons and blunderbusses, can fire other materials, but their ammunition has the same Price due to the cost of the black powder. Because making rounds of firearm ammunition requires creating black powder, you need the {@feat Alchemical Crafting} skill feat to make them. Firearm rounds are a valid option for magical ammunition, just like arrows or bolts. {@skill Crafting} magical firearm ammunition requires you to be able to craft both alchemical and magical items."
 			],
 			"craftReq": null,
 			"generic": false,
@@ -5875,18 +5875,24 @@
 				{
 					"type": "ability",
 					"activity": {
-						"number": 1,
-						"unit": "varies",
-						"entry": "{@as 2} {@action Interact} (emotion, enchantment, fear, magical,"
+						"number": 2,
+						"unit": "action"
 					},
 					"components": [
-						"mental)"
+						"{@action Interact}"
 					],
-					"frequency": "once per hour Effect The screech shooter unleashes a frightening wail.",
+					"traits": [
+						"emotion",
+						"enchantment",
+						"fear",
+						"magical",
+						"mental"
+					],
+					"frequency": "once per hour",
 					"trigger": null,
 					"requirements": null,
 					"entries": [
-						"Frequency once per hour Effect The screech shooter unleashes a frightening wail. All creatures in a 30-foot emanation from you must attempt a DC 25 Will save.",
+						"The screech shooter unleashes a frightening wail. All creatures in a 30-foot emanation from you must attempt a DC 25 Will save.",
 						{
 							"type": "successDegree",
 							"entries": {

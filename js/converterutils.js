@@ -15,7 +15,7 @@ class Source {
 		switch (str) {
 			case "CRB": {
 				const patEvenPage = new RegExp(/\n\d? ?Core Rulebook\n(\d{1,3})/);
-				const patOddPage = new RegExp(/(?:\n.*?\d)?\n(\d{1,3})\n?.*?\nIntroduction\nAncestries &\nBackgrounds\nClasses\nSkills\nFeats\nEquipment\nSpells\nThe Age of\nLost OMENS\nPlaying the\nGame\nGame\nmastering\nCrafting\n& Treasure\nAppendix/);
+				const patOddPage = new RegExp(/(?:\n.*?\d)?\n(\d{1,3})\n?.*?\nIntroduction\nAncestries &\nBackgrounds\nClasses\nSkills\nFeats\nEquipment\nSpells\nThe Age of\nLost OMENS\nPlaying the\nGame\nGame\nmastering\n{@skill Crafting}\n& Treasure\nAppendix/);
 				const crb = new Source("CRB", patEvenPage, patOddPage);
 				crb.patTraits = new RegExp(/\n([A-Z 0-9-]+)\n([A-Z ]+\n)?/);
 				return crb;

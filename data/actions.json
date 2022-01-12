@@ -1100,7 +1100,7 @@
 				}
 			},
 			"entries": [
-				"You cover your tracks, moving up to half your {@quickref travel Speed||0|Exploration Mode}. You don't need to attempt a {@skill Survival} check to cover your tracks, but anyone tracking you must succeed at a {@skill Survival} check against your Survival DC if it is higher than the normal DC to Track.",
+				"You cover your tracks, moving up to half your {@quickref travel Speed||0|Exploration Mode}. You don't need to attempt a {@skill Survival} check to cover your tracks, but anyone tracking you must succeed at a {@skill Survival} check against your {@skill Survival} DC if it is higher than the normal DC to Track.",
 				"In some cases, you might Cover Tracks in an encounter. In this case, Cover Tracks is a single action and doesn't have the {@trait exploration} trait."
 			]
 		},
@@ -1149,19 +1149,19 @@
 				{
 					"type": "list",
 					"items": [
-						"The item is your level or lower. An item that doesn't list a level is level 0. If the item is 9th level or higher, you must be a master in Crafting, and if it's 16th or higher, you must be legendary.",
+						"The item is your level or lower. An item that doesn't list a level is level 0. If the item is 9th level or higher, you must be a master in {@skill Crafting}, and if it's 16th or higher, you must be legendary.",
 						"You have the formula for the item; see Getting Formulas below for more information.",
 						"You have an appropriate set of tools and, in many cases, a workshop. For example, you need access to a smithy to forge a metal shield.",
 						"You must supply raw materials worth at least half the item's Price. You always expend at least that amount of raw materials when you Craft successfully. If you're in a settlement, you can usually spend currency to get the amount of raw materials you need, except in the case of rarer precious materials."
 					]
 				},
 				"You must spend 4 days at work, at which point you attempt a {@skill Crafting} check. The GM determines the DC to Craft the item based on its level, rarity, and other circumstances.",
-				"If your attempt to create the item is successful, you expend the raw materials you supplied. You can pay the remaining portion of the item's Price in materials to complete the item immediately, or you can spend additional downtime days working on it. For each additional day you spend, reduce the value of the materials you need to expend to complete the item. This amount is determined using {@table Income Earned|CRB|Table 4\u20132: Income Earned}, based on your proficiency rank in {@skill Crafting} and using your own level instead of a task level. After any of these downtime days, you can complete the item by spending the remaining portion of its Price in materials. If the downtime days you spend are interrupted, you can return to finish the item later, continuing where you left off. An example of Crafting appears in the sidebar.",
+				"If your attempt to create the item is successful, you expend the raw materials you supplied. You can pay the remaining portion of the item's Price in materials to complete the item immediately, or you can spend additional downtime days working on it. For each additional day you spend, reduce the value of the materials you need to expend to complete the item. This amount is determined using {@table Income Earned|CRB|Table 4\u20132: Income Earned}, based on your proficiency rank in {@skill Crafting} and using your own level instead of a task level. After any of these downtime days, you can complete the item by spending the remaining portion of its Price in materials. If the downtime days you spend are interrupted, you can return to finish the item later, continuing where you left off. An example of {@skill Crafting} appears in the sidebar.",
 				{
 					"type": "successDegree",
 					"entries": {
-						"Critical Success": "Your attempt is successful. Each additional day spent Crafting reduces the materials needed to complete the item by an amount based on your level + 1 and your proficiency rank in {@skill Crafting}.",
-						"Success": "Your attempt is successful. Each additional day spent Crafting reduces the materials needed to complete the item by an amount based on your level and your proficiency rank.",
+						"Critical Success": "Your attempt is successful. Each additional day spent {@skill Crafting} reduces the materials needed to complete the item by an amount based on your level + 1 and your proficiency rank in {@skill Crafting}.",
+						"Success": "Your attempt is successful. Each additional day spent {@skill Crafting} reduces the materials needed to complete the item by an amount based on your level and your proficiency rank.",
 						"Failure": "You fail to complete the item. You can salvage the raw materials you supplied for their full value. If you want to try again, you must start over.",
 						"Critical Failure": "You fail to complete the item. You ruin 10% of the raw materials you supplied, but you can salvage the rest. If you want to try again, you must start over."
 					}
@@ -1525,7 +1525,7 @@
 			},
 			"requirements": "Some devices require you to use {@item thieves' tools|CRB} when disabling them.",
 			"entries": [
-				"This action allows you to disarm a trap or another complex device. Often, a device requires numerous successes before becoming disabled, depending on its construction and complexity. Thieves' tools are helpful and sometimes even required to Disable a Device, as determined by the GM, and sometimes a device requires a higher proficiency rank in Thievery to disable it.",
+				"This action allows you to disarm a trap or another complex device. Often, a device requires numerous successes before becoming disabled, depending on its construction and complexity. Thieves' tools are helpful and sometimes even required to Disable a Device, as determined by the GM, and sometimes a device requires a higher proficiency rank in {@skill Thievery} to disable it.",
 				"Your {@skill Thievery} check result determines how much progress you make.",
 				{
 					"type": "successDegree",
@@ -2436,8 +2436,8 @@
 			},
 			"requirements": "You have a one-handed firearm or one-handed crossbow visibly worn or wielded.",
 			"entries": [
-				"You attempt to clear the room by promising a grim fate to anyone who doesn't do what you say, and quickly. Attempt a Deception or Intimidation check against the Will DCs of each creature within 30 feet, except for your allies. Regardless of whether you succeed or fail, each subject is temporarily immune to your Grim Swagger for 10 minutes.",
-				"For example, if you attempt a Deception check, you lie and boast about your prowess or the large group of friends on their way to back you up. If you attempt an Intimidation check, you promise everyone in the room that you're going to be the last thing they see.",
+				"You attempt to clear the room by promising a grim fate to anyone who doesn't do what you say, and quickly. Attempt a {@skill Deception} or {@skill Intimidation} check against the Will DCs of each creature within 30 feet, except for your allies. Regardless of whether you succeed or fail, each subject is temporarily immune to your Grim Swagger for 10 minutes.",
+				"For example, if you attempt a {@skill Deception} check, you lie and boast about your prowess or the large group of friends on their way to back you up. If you attempt an {@skill Intimidation} check, you promise everyone in the room that you're going to be the last thing they see.",
 				{
 					"type": "successDegree",
 					"entries": {
@@ -3783,7 +3783,7 @@
 			},
 			"prerequisites": "trained in {@skill Diplomacy}, {@skill Intimidation}, {@skill Performance}",
 			"entries": [
-				"You spend 1 minute encouraging your ally. Though this action typically has the auditory and linguistic traits, if you're using the Performance skill, the GM might adjust the traits for this action to match the traits for your type of performance.",
+				"You spend 1 minute encouraging your ally. Though this action typically has the auditory and linguistic traits, if you're using the {@skill Performance} skill, the GM might adjust the traits for this action to match the traits for your type of performance.",
 				"Attempt a DC 15 skill check. The GM might adjust this DC based on the circumstances, such as attempting to Rally an ally who just suffered a humiliating defeat."
 			]
 		},
@@ -3864,17 +3864,17 @@
 				{
 					"type": "list",
 					"items": [
-						"{@b Arcana:} Arcane theories, magical traditions, creatures of arcane significance, and arcane planes.",
-						"{@b Crafting:} Alchemical reactions and creatures, item value, engineering, unusual materials, and constructs.",
+						"{@b {@skill Arcana}:} Arcane theories, magical traditions, creatures of arcane significance, and arcane planes.",
+						"{@b {@skill Crafting}:} Alchemical reactions and creatures, item value, engineering, unusual materials, and constructs.",
 						"{@b Lore:} The subject of the Lore skill's subcategory.",
-						"{@b Medicine:} Diseases, poisons, wounds, and forensics.",
-						"{@b Nature:} The environment, flora, geography, weather, creatures of natural origin, and natural planes.",
-						"{@b Occultism:} Ancient mysteries, obscure philosophy, creatures of occult significance, and esoteric planes.",
-						"{@b Religion:} Divine agents, divine planes, theology, obscure myths, and creatures of religious significance.",
+						"{@b {@skill Medicine}:} Diseases, poisons, wounds, and forensics.",
+						"{@b {@skill Nature}:} The environment, flora, geography, weather, creatures of natural origin, and natural planes.",
+						"{@b {@skill Occultism}:} Ancient mysteries, obscure philosophy, creatures of occult significance, and esoteric planes.",
+						"{@b {@skill Religion}:} Divine agents, divine planes, theology, obscure myths, and creatures of religious significance.",
 						"{@b Society:} Local history, key personalities, legal institutions, societal structure, and humanoid culture."
 					]
 				},
-				"The GM might allow checks to {@action Recall Knowledge} using other skills. For example, you might assess the skill of an acrobat using Acrobatics. If you're using a physical skill (like in this example), the GM will most likely have you use a mental ability score\u2014typically Intelligence\u2014instead of the skill's normal physical ability score.",
+				"The GM might allow checks to {@action Recall Knowledge} using other skills. For example, you might assess the skill of an acrobat using {@skill Acrobatics}. If you're using a physical skill (like in this example), the GM will most likely have you use a mental ability score\u2014typically Intelligence\u2014instead of the skill's normal physical ability score.",
 				{
 					"type": "pf2-sample-box",
 					"name": "Recall Knowledge Tasks",
@@ -4134,7 +4134,7 @@
 					"type": "pf2-h3",
 					"name": "Skills",
 					"entries": [
-						"You can spend a week of downtime retraining to swap out one of your skill increases. Reduce your proficiency rank in the skill losing its increase by one step and increase your proficiency rank in another skill by one step. The new proficiency rank has to be equal to or lower than the proficiency rank you traded away. For instance, if your bard is a master in Performance and Stealth, and an expert in Occultism, you could reduce the character's proficiency in Stealth to expert and become a master in Occultism, but you couldn't reassign that skill increase to become legendary in Performance. Keep track of your level when you reassign skill increases; the level at which your skill proficiencies changed can influence your ability to retrain feats with skill prerequisites.",
+						"You can spend a week of downtime retraining to swap out one of your skill increases. Reduce your proficiency rank in the skill losing its increase by one step and increase your proficiency rank in another skill by one step. The new proficiency rank has to be equal to or lower than the proficiency rank you traded away. For instance, if your bard is a master in {@skill Performance} and {@skill Stealth}, and an expert in {@skill Occultism}, you could reduce the character's proficiency in {@skill Stealth} to expert and become a master in {@skill Occultism}, but you couldn't reassign that skill increase to become legendary in {@skill Performance}. Keep track of your level when you reassign skill increases; the level at which your skill proficiencies changed can influence your ability to retrain feats with skill prerequisites.",
 						"You can also spend a week to retrain an initial trained skill you gained during character creation."
 					]
 				},
@@ -5382,7 +5382,7 @@
 			"requirements": "You are holding {@item healer's tools|CRB}, or you are wearing them and have a hand free.",
 			"entries": [
 				"You spend 10 minutes treating one injured living creature (targeting yourself, if you so choose). The target is then temporarily immune to Treat Wounds actions for 1 hour, but this interval overlaps with the time you spent treating (so a patient can be treated once per hour, not once per 70 minutes).",
-				"The {@skill Medicine} check DC is usually 15, though the GM might adjust it based on the circumstances, such as treating a patient outside in a storm, or treating magically cursed wounds. If you're an expert in Medicine, you can instead attempt a DC 20 check to increase the Hit Points regained by 10; if you're a master of Medicine, you can instead attempt a DC 30 check to increase the Hit Points regained by 30; and if you're legendary, you can instead attempt a DC 40 check to increase the Hit Points regained by 50. The damage dealt on a critical failure remains the same.",
+				"The {@skill Medicine} check DC is usually 15, though the GM might adjust it based on the circumstances, such as treating a patient outside in a storm, or treating magically cursed wounds. If you're an expert in {@skill Medicine}, you can instead attempt a DC 20 check to increase the Hit Points regained by 10; if you're a master of {@skill Medicine}, you can instead attempt a DC 30 check to increase the Hit Points regained by 30; and if you're legendary, you can instead attempt a DC 40 check to increase the Hit Points regained by 50. The damage dealt on a critical failure remains the same.",
 				"If you succeed at your check, you can continue treating the target to grant additional healing. If you treat them for a total of 1 hour, double the Hit Points they regain from Treat Wounds.",
 				"The result of your {@skill Medicine} check determines how many Hit Points the target regains.",
 				{
