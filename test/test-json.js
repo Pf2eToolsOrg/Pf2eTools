@@ -54,19 +54,11 @@ async function main () {
 	process.chdir(`${cacheDir}/test/schema`);
 
 	const PRELOAD_SINGLE_FILE_SCHEMAS = [
-		"trapshazards.json",
-		"objects.json",
-		"items.json",
 	];
 
 	const PRELOAD_COMMON_SINGLE_FILE_SCHEMAS = [
-		"entry.json",
-		"util.json",
-		"shared-items.json",
 	];
 
-	ajv.addSchema(ut.readJson("spells/spells.json", "utf8"), "spells/spells.json");
-	ajv.addSchema(ut.readJson("bestiary/bestiary.json", "utf8"), "bestiary/bestiary.json");
 	PRELOAD_SINGLE_FILE_SCHEMAS.forEach(schemaName => {
 		ajv.addSchema(ut.readJson(schemaName, "utf8"), schemaName);
 	});
