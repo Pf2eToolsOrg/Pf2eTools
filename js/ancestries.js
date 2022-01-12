@@ -314,8 +314,9 @@ class AncestriesPage extends BaseComponent {
 		// Parity with the implementation in hist.js
 		if (Hist.isHistorySuppressed) return Hist.setSuppressHistory(false);
 
+		const doSetFeatFilters = Hist.getDoubleHashParts()[0][0].toLowerCase() !== UrlUtil.autoEncodeHash(this.activeAncestry).toLowerCase();
 		this._setAncestryFromHash();
-		if (Hist.getDoubleHashParts()[0][0].toLowerCase() !== UrlUtil.autoEncodeHash(this.activeAncestry).toLowerCase()) this._setFeatAncestryFilters();
+		if (doSetFeatFilters) this._setFeatAncestryFilters();
 		this._setFeatFromHash();
 		this._setStateFromHash();
 	}
