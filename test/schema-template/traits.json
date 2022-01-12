@@ -1,0 +1,74 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema",
+	"$id": "traits.json",
+	"title": "Traits",
+	"description": "The trait data type for Pf2eTools.",
+	"type": "object",
+	"version": "0.0.1",
+	"properties": {
+		"trait": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"source": {
+						"type": "string"
+					},
+					"page": {
+						"type": "integer"
+					},
+					"categories": {
+						"type": "array",
+						"items":{
+							"type": "string",
+							"enum": [
+								"Ancestry & Heritage",
+								"Creature",
+								"Creature Type",
+								"Schools & Traditions",
+								"General",
+								"Energy & Elements",
+								"Class",
+								"Armor & Weapon",
+								"Planar",
+								"Item",
+								"Alignment",
+								"_alignAbv",
+								"Scope",
+								"Effect",
+								"Time",
+								"Size",
+								"Gravity",
+								"Combat",
+								"Morphic",
+								"Rarity",
+								"Equipment",
+								"_settlement"
+							]
+						}
+					},
+					"otherSources": {
+						"$ref": "utils.json#/definitions/otherSources"
+					},
+					"implies":{
+						"$ref": "utils.json#/definitions/implies"
+					},
+					"entries": {
+						"type": "array",
+						"items": {
+							"$ref": "entry.json"
+						}
+					}
+				},
+				"additionalProperties": false,
+				"required": ["name", "source", "entries", "page"]
+			},
+			"uniqueItems": true
+		}
+	},
+	"required": ["trait"],
+	"additionalProperties": false
+}
