@@ -1,0 +1,179 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"title": "_meta",
+	"$id": "_meta.json",
+	"description": "The `_meta` block providing sources and metadata for site data files.",
+	"type": "object",
+	"version": "0.0.1",
+	"properties": {
+		"sources": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"description": "A set of properties describing a \"source.\" A source could be, for example, a homebrew PDF, book, or blog post.",
+				"properties": {
+					"json": {
+						"type": "string",
+						"description": "An identifying string, as seen in the JSON in \"source\" fields."
+					},
+					"abbreviation": {
+						"type": "string",
+						"description": "Abbreviated form of the source, to display on the site."
+					},
+					"color": {
+						"type": "string",
+						"pattern": "^([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$",
+						"description": "HTML hex color code this source should use when displayed in lists, e.g. 'ff00ff'"
+					},
+					"full": {
+						"type": "string",
+						"description": "Full title of the source, to display on the site."
+					},
+					"authors": {
+						"type": "array",
+						"description": "A list of authors who created the homebrew source.",
+						"items": {
+							"type": "string",
+							"description": "Author name."
+						},
+						"uniqueItems": true
+					},
+					"convertedBy": {
+						"type": "array",
+						"description": "An optional list of people who contributed to converting the source to 5etools format.",
+						"items": {
+							"type": "string",
+							"description": "Contributor name."
+						},
+						"uniqueItems": true
+					},
+					"dateReleased": {
+						"type": "string",
+						"format": "date",
+						"description": "The date of release of the source, in the format YYYY-MM-DD (RFC3339)."
+					},
+					"version": {
+						"type": "string",
+						"description": "The source version, e.g. \"1.2.3\"."
+					},
+					"url": {
+						"type": "string",
+						"format": "uri",
+						"not": {
+							"enum": [""]
+						},
+						"description": "A direct link to the source, if available in web form or on a store."
+					},
+					"targetSchema": {
+						"type": "string",
+						"description": "The target schema version in Pf2etools, e.g. \"1.2.3\"."
+					}
+				},
+				"additionalProperties": false,
+				"required": ["json", "abbreviation", "full", "version"]
+			},
+			"uniqueItems": true
+		},
+		"skills": {
+			"type": "object",
+			"description": "Object keys are Skill names, which can referenced using {@skill <key>} (case sensitive)",
+			"patternProperties": {
+				".*": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				}
+			}
+		},
+		"spellSchools": {
+			"type": "object",
+			"description": "Object names are spell school abbreviations (e.g. `\"X\"`); values should be objects with `\"full\"`` (used in the main entry, e.g. \"Evocation\") and `\"short\"` (used in the list view, e.g. `\"Evoc.\"`) key/values.",
+			"patternProperties": {
+				".*": {
+					"type": "object",
+					"properties": {
+						"full": {
+							"type": "string"
+						},
+						"short": {
+							"type": "string"
+						},
+						"color": {
+							"type": "string",
+							"pattern": "^([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$",
+							"description": "HTML hex color code this source should use when displayed in lists, e.g. 'ff00ff'"
+						}
+					},
+					"required": ["full", "short"]
+				}
+			}
+		},
+		"dateAdded": {
+			"type": "integer",
+			"pattern": "^(\\d{10}|0)$",
+			"description": "The epoch timestamp (in seconds) when the homebrew was added to the repository. Not guaranteed to be anywhere near accurate."
+		},
+		"dateLastModified": {
+			"type": "integer",
+			"pattern": "^(\\d{10}|0)$",
+			"description": "The epoch timestamp (in seconds) when the homebrew was last modified. Not guaranteed to be anywhere near accurate."
+		},
+		"currencyConversions": {
+			"type": "object",
+			"description": "Keys should be uniquely-named value conversion objects, and can be referenced from item entities as \"currencyConversion\": \"<MyKey>\". The currency conversion info will then be used when rendering the value of the item.",
+			"patternProperties": {
+				".*": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"coin": {
+								"type": "string",
+								"description": "Coin abbreviation, e.g. \"gp\""
+							},
+							"mult": {
+								"type": "number",
+								"description": "A multiplier for converting copper to this currency, e.g. \"0.01\" for standard gold pieces"
+							},
+							"isFallback": {
+								"type": "boolean",
+								"description": "If true, this currency will be used as a fallback when the copper value of the item is a fractional value (e.g. a single ball bearing is worth 0.1 cp; marking gold as the fallback currency would have this be converted to gold)."
+							}
+						},
+						"required": ["coin", "mult"]
+					}
+				}
+			}
+		},
+		"dependencies": {
+			"description": "A map of `\"<data property>\": [\"<JsonSource1>\", ..., \"<JsonSourceN>\"]`. Entities from these sources can then be extended/referenced in this file.",
+			"type": "object",
+			"patternProperties": {
+				"^[a-zA-Z]+$": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				}
+			}
+		},
+		"includes": {
+			"description": "Structure as per \"dependencies\". Additional sources to be included when loading the file.",
+			"type": "object",
+			"patternProperties": {
+				"^[a-zA-Z]+$": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				}
+			}
+		},
+		"unlisted": {
+			"description": "If this homebrew file should be ignored/hidden by any indexer.",
+			"type": "boolean"
+		}
+	},
+	"required": ["sources", "dateAdded", "dateLastModified"]
+}
