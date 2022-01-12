@@ -28,7 +28,7 @@ function doClean (args) {
  */
 async function main () {
 	await TagJsons.pInit();
-	const args = ut.parseArgs();
+	const args = ut.ArgParser.parse();
 	doClean(args)
 }
 

@@ -287,6 +287,7 @@ TraitTag._TRAITS_REGEX_EFFECT = null;
 TraitTag._TRAITS_REGEX_AND = null;
 
 // To tag Cast a Spell-isms it's ` (?<!"|\{|\||@action )(Cast .+? Spell)(?<!"|\}|\|) `
+// FIXME: Tagging actions in feat names, such as "Swift Sneak" -> "Swift {@action Sneak}" instead of "{@feat Swift Sneak}"
 class ActionTag {
 	static init () {
 		const actionData = ut.readJson(`./data/actions.json`);
@@ -431,7 +432,7 @@ GroupTag._GROUPS_REGEX = null;
  * inplace
  */
 async function main () {
-	const args = ut.parseArgs();
+	const args = ut.ArgParser.parse();
 	await TagJsons.pInit();
 	TagJsons.run(args);
 	TagJsons.teardown();

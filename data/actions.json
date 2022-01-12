@@ -1100,7 +1100,7 @@
 				}
 			},
 			"entries": [
-				"You cover your tracks, moving up to half your travel Speed, using the rules on page 479). You don't need to attempt a {@skill Survival} check to cover your tracks, but anyone tracking you must succeed at a {@skill Survival} check against your Survival DC if it is higher than the normal DC to Track.",
+				"You cover your tracks, moving up to half your {@quickref travel Speed||0|Exploration Mode}. You don't need to attempt a {@skill Survival} check to cover your tracks, but anyone tracking you must succeed at a {@skill Survival} check against your Survival DC if it is higher than the normal DC to Track.",
 				"In some cases, you might Cover Tracks in an encounter. In this case, Cover Tracks is a single action and doesn't have the {@trait exploration} trait."
 			]
 		},
@@ -1156,7 +1156,7 @@
 					]
 				},
 				"You must spend 4 days at work, at which point you attempt a {@skill Crafting} check. The GM determines the DC to Craft the item based on its level, rarity, and other circumstances.",
-				"If your attempt to create the item is successful, you expend the raw materials you supplied. You can pay the remaining portion of the item's Price in materials to complete the item immediately, or you can spend additional downtime days working on it. For each additional day you spend, reduce the value of the materials you need to expend to complete the item. This amount is determined using {@table Income Earned|CRB|Table 4\u20132: Income Earned}, based on your proficiency rank in Crafting and using your own level instead of a task level. After any of these downtime days, you can complete the item by spending the remaining portion of its Price in materials. If the downtime days you spend are interrupted, you can return to finish the item later, continuing where you left off. An example of Crafting appears in the sidebar.",
+				"If your attempt to create the item is successful, you expend the raw materials you supplied. You can pay the remaining portion of the item's Price in materials to complete the item immediately, or you can spend additional downtime days working on it. For each additional day you spend, reduce the value of the materials you need to expend to complete the item. This amount is determined using {@table Income Earned|CRB|Table 4\u20132: Income Earned}, based on your proficiency rank in {@skill Crafting} and using your own level instead of a task level. After any of these downtime days, you can complete the item by spending the remaining portion of its Price in materials. If the downtime days you spend are interrupted, you can return to finish the item later, continuing where you left off. An example of Crafting appears in the sidebar.",
 				{
 					"type": "successDegree",
 					"entries": {
@@ -1406,7 +1406,7 @@
 			"page": 470,
 			"activity": {
 				"number": 1,
-				"unit": "action"
+				"unit": "free"
 			},
 			"actionType": {
 				"basic": true
@@ -4024,8 +4024,8 @@
 				{
 					"type": "successDegree",
 					"entries": {
-						"Critical Success": "You restore 10 Hit Points to the item, plus an additional 10 Hit Points per proficiency rank you have in Crafting (a total of 20 HP if you're trained, 30 HP if you're an expert, 40 HP if you're a master, or 50 HP if you're legendary).",
-						"Success": "You restore 5 Hit Points to the item, plus an additional 5 per proficiency rank you have in Crafting (for a total of 10 HP if you are trained, 15 HP if you're an expert, 20 HP if you're a master, or 25 HP if you're legendary).",
+						"Critical Success": "You restore 10 Hit Points to the item, plus an additional 10 Hit Points per proficiency rank you have in {@skill Crafting} (a total of 20 HP if you're trained, 30 HP if you're an expert, 40 HP if you're a master, or 50 HP if you're legendary).",
+						"Success": "You restore 5 Hit Points to the item, plus an additional 5 per proficiency rank you have in {@skill Crafting} (for a total of 10 HP if you are trained, 15 HP if you're an expert, 20 HP if you're a master, or 25 HP if you're legendary).",
 						"Critical Failure": "You deal {@dice 2d6} damage to the item. Apply the item's Hardness to this damage."
 					}
 				}
@@ -4313,12 +4313,12 @@
 			"entries": [
 				"You scan an area for signs of creatures or objects. If you're looking for creatures, choose an area you're scanning. If precision is necessary, the GM can have you select a 30-foot cone or a 15-foot burst within line of sight. You might take a penalty if you choose an area that's far away.",
 				"If you're using Seek to search for objects (including secret doors and hazards), you search up to a 10-foot square adjacent to you. The GM might determine you need to Seek as an activity, taking more actions or even minutes or hours if you're searching a particularly cluttered area.",
-				"The GM attempts a single secret {@skill Perception} check for you and compares the result to the {@skill Stealth} DCs of any undetected or hidden creatures in the area or the DC to detect each object in the area (as determined by the GM or by someone Concealing the Object). A creature you detect might remain hidden, rather than becoming observed, if you're using an imprecise sense or if an effect (such as invisibility) prevents the subject from being observed.",
+				"The GM attempts a single secret {@skill Perception} check for you and compares the result to the {@skill Stealth} DCs of any {@condition undetected} or {@condition hidden} creatures in the area or the DC to detect each object in the area (as determined by the GM or by someone {@action Conceal an Object||Concealing the Object}). A creature you detect might remain {@condition hidden}, rather than becoming {@condition observed}, if you're using an imprecise sense or if an effect (such as {@condition invisible||invisibility}) prevents the subject from being {@condition observed}.",
 				{
 					"type": "successDegree",
 					"entries": {
-						"Critical Success": "If you were searching for creatures, any undetected or hidden creature you critically succeeded against becomes {@condition observed|CRB} by you. If you were searching for an object, you learn its location.",
-						"Success": "If you were searching for creatures, any undetected creature you succeeded against becomes hidden from you instead of undetected, and any hidden creature you succeeded against becomes {@condition observed|CRB} by you. If you were searching for an object, you learn its location or get a clue to its whereabouts, as determined by the GM."
+						"Critical Success": "If you were searching for creatures, any {@condition undetected} or {@condition hidden} creature you critically succeeded against becomes {@condition observed|CRB} by you. If you were searching for an object, you learn its location.",
+						"Success": "If you were searching for creatures, any {@condition undetected} creature you succeeded against becomes {@condition hidden} from you instead of {@condition undetected}, and any {@condition hidden} creature you succeeded against becomes {@condition observed|CRB} by you. If you were searching for an object, you learn its location or get a clue to its whereabouts, as determined by the GM."
 					}
 				}
 			]
@@ -5223,7 +5223,7 @@
 				}
 			},
 			"entries": [
-				"You follow tracks, moving at up to half your travel Speed, using the rules on page 479). After a successful check to Track, you can continue following the tracks at half your Speed without attempting additional checks for up to 1 hour. In some cases, you might Track in an encounter. In this case, Track is a single action and doesn't have the {@trait exploration} trait, but you might need to roll more often because you're in a tense situation. The GM determines how often you must attempt this check.",
+				"You follow tracks, moving at up to half your {@quickref travel Speed||0|Exploration Mode}.. After a successful check to Track, you can continue following the tracks at half your Speed without attempting additional checks for up to 1 hour. In some cases, you might Track in an encounter. In this case, Track is a single action and doesn't have the {@trait exploration} trait, but you might need to roll more often because you're in a tense situation. The GM determines how often you must attempt this check.",
 				"You attempt your {@skill Survival} check when you start Tracking, once every hour you continue tracking, and any time something significant changes in the trail. The GM determines the DCs for such checks, depending on the freshness of the trail, the weather, and the type of ground.",
 				{
 					"type": "successDegree",
@@ -5488,6 +5488,27 @@
 			},
 			"entries": [
 				"Your careful shot against an unsuspecting opponent pierces a vital artery or organ. Make a ranged {@action Strike}. If the target is {@condition flat-footed}, the {@action Strike} deals an extra die of weapon damage, and the foe takes {@condition persistent damage||persistent bleed damage} equal to the amount of precision damage from your {@action One Shot, One Kill|G&G}."
+			]
+		},
+		{
+			"name": "Accidental Shot",
+			"source": "G&G",
+			"page": 142,
+			"activity": {
+				"number": 2,
+				"unit": "action"
+			},
+			"traits": [
+				"fortune"
+			],
+			"frequency": "once per day",
+			"actionType": {
+				"archetype": [
+					"Unexpected Sharpshooter|G&G"
+				]
+			},
+			"entries": [
+				"You make a {@action Strike} with a ranged weapon, rolling the attack and damage twice and using the better results for each. The attack ignores circumstance penalties to the attack roll and any flat check required due to the target being {@condition concealed} or {@condition hidden}."
 			]
 		}
 	]

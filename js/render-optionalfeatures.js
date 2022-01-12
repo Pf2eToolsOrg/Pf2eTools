@@ -1,5 +1,5 @@
 class RenderOptionalFeatures {
 	static $getRenderedOptionalFeature (it) {
-		return $$`${Renderer.optionalFeature.getRenderedString(it)}`;
+		return $$`${Renderer.optionalFeature.getCompactRenderedString(it)}`;
 	}
 }

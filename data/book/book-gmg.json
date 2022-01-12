@@ -11528,6 +11528,48 @@
 								"Drugs offer short-term benefits with harmful side effects and long-term consequences. These short-term benefits, such as euphoria, draw many to drugs, but addiction keeps users hooked long after their first dose. A character can voluntarily fail their initial save against a drug, but for each dose they consume, they must attempt a saving throw against addiction, a disease that represents cravings and withdrawal. Addiction is unique to each drug, so a character can be affected by multiple instances of addiction at once.",
 								"Certain drugs alter how addiction works for that drug, adding the {@trait virulent} trait to the addiction, limiting the maximum stage a character can reach, or adding additional stages beyond those listed in the base affliction.",
 								{
+									"type": "data",
+									"tag": "disease",
+									"data": {
+										"source": "GMG",
+										"page": 120,
+										"name": "Addiction",
+										"level": ", level varies",
+										"type": "disease",
+										"entries": [
+											"Track the maximum stage you reach with each drug's addiction. This maximum stage is separate from your current addiction stage for the drug. The maximum stage can't be reduced, even if you fully remove the disease. When you take the drug, two things happen: you attempt a saving throw against addiction, and you suppress the effects of addiction for 1 day. Failing a save against addiction caused by taking the drug causes you to go to 1 stage higher than the maximum stage you had previously reached (2 stages higher on a critical failure). If you're currently suffering from addiction when you attempt a save from taking the drug, you can't improve your stage; if you succeed at the save, the stage remains the same as it was.",
+											"When you attempt your save against addiction each week, the stage you are currently at can't get worse\u2014it can only stay the same or improve. The conditions from addiction can't be removed while you are affected by the addiction, and suppressing addiction by taking the drug only avoids the effects\u2014it doesn't remove the disease.",
+											{
+												"type": "affliction",
+												"savingThrow": "Fortitude (DC equals that of the drug)",
+												"onset": "1 day",
+												"stages": [
+													{
+														"stage": 1,
+														"entry": "{@condition fatigued}",
+														"duration": "1 week"
+													},
+													{
+														"stage": 2,
+														"entry": "{@condition fatigued} and {@condition sickened||sickened 1}",
+														"duration": "1 week"
+													},
+													{
+														"stage": 3,
+														"entry": "{@condition fatigued}, {@condition drained||drained 1} and {@condition sickened||sickened 1}",
+														"duration": "1 week"
+													},
+													{
+														"stage": 4,
+														"entry": "{@condition fatigued}, {@condition drained||drained 2}, {@condition sickened||sickened 2} and {@condition stupefied||stupefied 2}",
+														"duration": "1 week"
+													}
+												]
+											}
+										]
+									}
+								},
+								{
 									"type": "pf2-brown-box",
 									"source": "GMG",
 									"page": 120,
@@ -11537,7 +11579,10 @@
 										"If you do include drugs in your game, consider the role they'll play. In some campaigns, drugs might simply be an element of flavor and a tool characters use to reach their goals; in others, the side effects and risk of addiction might be a terrible price to pay. The rules assume something of a middle path, where drugs are addictive substances that may provide a short‑term benefit but have consequences. To make drugs more accessible in your game, remove some of the more severe stages of addiction. To make them more dangerous, add the {@trait virulent} trait to the addiction affliction, add more stages with increasingly severe effects, or increase the DC of the save against the addiction by 1 for every use of the drug, decreasing back to normal over time as they stop using the drug."
 									]
 								}
-							]
+							],
+							"data": {
+								"quickref": 5
+							}
 						}
 					]
 				},
@@ -12849,13 +12894,13 @@
 														[
 															{
 																"name": "Discovery",
-																"entry": "DC 13 Mercantile {@skill Lore}, DC 18 {@skill Perception}, DC 16 {@skill Society}"
+																"entry": "DC 13 {@skill Lore||Mercantile Lore}, DC 18 {@skill Perception}, DC 16 {@skill Society}"
 															}
 														],
 														[
 															{
 																"name": "Influence Skills",
-																"entry": "DC 16 Accounting {@skill Lore} (noting how the theater could be made profitable), DC 16 {@skill Crafting} (volunteering to repair the building), DC 20 {@skill Intimidation}, DC 20 {@skill Performance}, DC 22 {@skill Diplomacy}, DC 24 {@skill Deception}"
+																"entry": "DC 16 {@skill Lore||Accounting Lore} (noting how the theater could be made profitable), DC 16 {@skill Crafting} (volunteering to repair the building), DC 20 {@skill Intimidation}, DC 20 {@skill Performance}, DC 22 {@skill Diplomacy}, DC 24 {@skill Deception}"
 															}
 														],
 														[
@@ -13081,7 +13126,7 @@
 														[
 															{
 																"name": "Research Checks",
-																"entry": "DC 18 Academia {@skill Lore} or Library {@skill Lore}, DC 23 {@skill Occultism}"
+																"entry": "DC 18 {@skill Lore||Academia Lore} or {@skill Lore||Library Lore}, DC 23 {@skill Occultism}"
 															}
 														]
 													],
@@ -13143,7 +13188,7 @@
 														[
 															{
 																"name": "20 Research Points",
-																"entry": "The loremother tree stirs and partially awakens, issuing the PCs a dire warning about danger in the knowledge they seek. Replace the loremother tree's Performance Research check with a DC 28 Diplomacy check to convince the tree to share further knowledge."
+																"entry": "The loremother tree stirs and partially awakens, issuing the PCs a dire warning about danger in the knowledge they seek. Replace the loremother tree's Performance Research check with a DC 28 {@skill Diplomacy} check to convince the tree to share further knowledge."
 															}
 														],
 														[
@@ -13360,31 +13405,31 @@
 									"rows": [
 										[
 											"Crumbling Corridor (1st)",
-											"DC 13 Acrobatics to avoid disturbing the walls, DC 15 Crafting to shore up the walls; {@b Quaking Corridor (11th)} DC 25 Acrobatics, DC 30 Crafting"
+											"DC 13 {@skill Acrobatics} to avoid disturbing the walls, DC 15 {@skill Crafting} to shore up the walls; {@b Quaking Corridor (11th)} DC 25 {@skill Acrobatics}, DC 30 {@skill Crafting}"
 										],
 										[
 											"Fungus Grotto (1st)",
-											"DC 15 Fortitude to endure poisonous spore, DC 13 Survival to avoid the mushrooms; {@b Virulent Fungi (5th)} DC 20 Fortitude, DC 18 Survival"
+											"DC 15 Fortitude to endure poisonous spore, DC 13 {@skill Survival} to avoid the mushrooms; {@b Virulent Fungi (5th)} DC 20 Fortitude, DC 18 {@skill Survival}"
 										],
 										[
 											"Pit Trap (1st)",
-											"DC 13 Athletics to quickly climb out, DC 15 Perception to spot the trap before it's triggered; {@b Exceptional Pit Trap (5th)} DC 20 Athletics, DC 18 Perception"
+											"DC 13 {@skill Athletics} to quickly climb out, DC 15 Perception to spot the trap before it's triggered; {@b Exceptional Pit Trap (5th)} DC 20 {@skill Athletics}, DC 18 Perception"
 										],
 										[
 											"Wandering Gelatinous Cube (1st)",
-											"DC 18 Occultism to identify its deficiencies, DC 15 Stealth to sneak past; {@b Wandering Black Pudding (7th)} DC 24 Occultism, DC 19 Stealth"
+											"DC 18 {@skill Occultism} to identify its deficiencies, DC 15 {@skill Stealth} to sneak past; {@b Wandering Black Pudding (7th)} DC 24 {@skill Occultism}, DC 19 {@skill Stealth}"
 										],
 										[
 											"Collapsed Tunnel (5th)",
-											"DC 20 Athletics to dig through, DC 18 Perception to find a secret door around; Ancient Collapse (12th) DC 30 Athletics, DC 28 Perception"
+											"DC 20 {@skill Athletics} to dig through, DC 18 Perception to find a secret door around; Ancient Collapse (12th) DC 30 {@skill Athletics}, DC 28 Perception"
 										],
 										[
 											"Pendulum Trap (5th)",
-											"DC 20 Reflex to dodge the blades, DC 15 Thievery to disable the tap; {@b Panoply of Pendulums (12th)} DC 30 Reflex, DC 28 Thievery"
+											"DC 20 Reflex to dodge the blades, DC 15 {@skill Thievery} to disable the tap; {@b Panoply of Pendulums (12th)} DC 30 Reflex, DC 28 {@skill Thievery}"
 										],
 										[
 											"Wooden Portcullis (8th)",
-											"DC 25 Acrobatics to squeeze through, DC 20 Athletics to lift the gate; {@b Iron Portcullis (11th)} DC 25 Acrobatics, DC 30 Athletics"
+											"DC 25 {@skill Acrobatics} to squeeze through, DC 20 {@skill Athletics} to lift the gate; {@b Iron Portcullis (11th)} DC 25 {@skill Acrobatics}, DC 30 {@skill Athletics}"
 										]
 									]
 								},
@@ -13405,31 +13450,31 @@
 									"rows": [
 										[
 											"Crowd (1st)",
-											"DC 15 Acrobatics or Athletics to weave or push through, DC 13 Society to follow the flow; {@b Festival Crowd (4th)} DC 20 Athletics, DC 18 Society"
+											"DC 15 {@skill Acrobatics} or Athletics to weave or push through, DC 13 {@skill Society} to follow the flow; {@b Festival Crowd (4th)} DC 20 {@skill Athletics}, DC 18 {@skill Society}"
 										],
 										[
 											"Fruit Cart (1st)",
-											"DC 13 Athletics to vault over or smash through, DC 15 Intimidation to make the merchant move it; {@b Merchant Pavilion (5th)} DC 20 Athletics, DC 22 Intimidation"
+											"DC 13 {@skill Athletics} to vault over or smash through, DC 15 {@skill Intimidation} to make the merchant move it; {@b Merchant Pavilion (5th)} DC 20 {@skill Athletics}, DC 22 {@skill Intimidation}"
 										],
 										[
 											"Guard Dog (1st)",
-											"DC 14 Nature to calm, DC 16 Stealth to sneak past; {@b Guard Roc (9th)} DC 26 Nature, DC 28 Stealth"
+											"DC 14 {@skill Nature} to calm, DC 16 {@skill Stealth} to sneak past; {@b Guard Roc (9th)} DC 26 {@skill Nature}, DC 28 {@skill Stealth}"
 										],
 										[
 											"Rickety Rooftops (1st)",
-											"DC 15 Acrobatics to cross clotheslines, DC 13 Athletics to jump from roof to roof; {@b Crumbling, Steep Rooftops (5th)} DC 18 Acrobatics, DC 20 Athletics"
+											"DC 15 {@skill Acrobatics} to cross clotheslines, DC 13 {@skill Athletics} to jump from roof to roof; {@b Crumbling, Steep Rooftops (5th)} DC 18 {@skill Acrobatics}, DC 20 {@skill Athletics}"
 										],
 										[
 											"Wooden Fence (1st)",
-											"DC 13 Athletics to climb over, DC 15 Thievery to unlock a gate; {@b High Iron Fence (8th)} DC 20 Athletics, DC 25 Thievery"
+											"DC 13 {@skill Athletics} to climb over, DC 15 {@skill Thievery} to unlock a gate; {@b High Iron Fence (8th)} DC 20 {@skill Athletics}, DC 25 {@skill Thievery}"
 										],
 										[
 											"Gang of Hooligans (2nd)",
-											"DC 13 Deception to trick, DC 15 Stealth to sneak past; {@b Elite Criminals (12th)} DC 28 Deception, DC 30 Stealth"
+											"DC 13 {@skill Deception} to trick, DC 15 {@skill Stealth} to sneak past; {@b Elite Criminals (12th)} DC 28 {@skill Deception}, DC 30 {@skill Stealth}"
 										],
 										[
 											"Twisting Alleyways (2nd)",
-											"DC 17 Perception to find a path, DC 13 Society to recall a map; {@b Multi-Story Maze (7th)} DC 22 Perception, DC 20 Society"
+											"DC 17 Perception to find a path, DC 13 {@skill Society} to recall a map; {@b Multi-Story Maze (7th)} DC 22 Perception, DC 20 {@skill Society}"
 										]
 									]
 								},
@@ -13450,31 +13495,31 @@
 									"rows": [
 										[
 											"Deep Mud (1st)",
-											"DC 15 Athletics to slog through, DC 13 Perception to find a path; {@b Horrid Bog (5th)} DC 20 Athletics, DC 18 Perception"
+											"DC 15 {@skill Athletics} to slog through, DC 13 Perception to find a path; {@b Horrid Bog (5th)} DC 20 {@skill Athletics}, DC 18 Perception"
 										],
 										[
 											"Downpour (1st)",
-											"DC 13 Fortitude to push through, DC 15 Nature to predict the weather; {@b Magical Thunderstorm (5th)} DC 30 Fortitude, DC 25 Nature"
+											"DC 13 Fortitude to push through, DC 15 {@skill Nature} to predict the weather; {@b Magical Thunderstorm (5th)} DC 30 Fortitude, DC 25 {@skill Nature}"
 										],
 										[
 											"Rope Bridge (1st)",
-											"DC 15 Acrobatics to cross carefully, DC 13 Crafting to make repairs; {@b Solitary Frayed Rope (11th)} DC 25 Acrobatics, DC 30 Crafting"
+											"DC 15 {@skill Acrobatics} to cross carefully, DC 13 {@skill Crafting} to make repairs; {@b Solitary Frayed Rope (11th)} DC 25 {@skill Acrobatics}, DC 30 {@skill Crafting}"
 										],
 										[
 											"Rushing River (1st)",
-											"DC 15 Athletics to swim or hop across stones, DC 13 Survival to find a ford nearby;{@b Flash Flood (5th)} DC 20 Athletics, DC 18 Survival "
+											"DC 15 {@skill Athletics} to swim or hop across stones, DC 13 {@skill Survival} to find a ford nearby;{@b Flash Flood (5th)} DC 20 {@skill Athletics}, DC 18 {@skill Survival} "
 										],
 										[
 											"Steep Hills (1st)",
-											"DC 13 Athletics to climb across, DC 15 Perception to find easier path; {@b Rugged Mountain (5th)} DC 20 Athletics, DC 18 Perception"
+											"DC 13 {@skill Athletics} to climb across, DC 15 Perception to find easier path; {@b Rugged Mountain (5th)} DC 20 {@skill Athletics}, DC 18 Perception"
 										],
 										[
 											"Swarm of Wasps (1st)",
-											"DC 15 Fortitude to endure stings, DC 13 Survival to smoke them out; {@b Those Aren't Wasps! (5th)} DC 20 Fortitude, DC 18 Survival"
+											"DC 15 Fortitude to endure stings, DC 13 {@skill Survival} to smoke them out; {@b Those Aren't Wasps! (5th)} DC 20 Fortitude, DC 18 {@skill Survival}"
 										],
 										[
 											"Tangled Forest (2nd)",
-											"DC 17 Perception to find the way, DC 13 Survival to plot a path; {@b Enchanted Forest (5th)} DC 20 Perception, DC 18 Survival"
+											"DC 17 Perception to find the way, DC 13 {@skill Survival} to plot a path; {@b Enchanted Forest (5th)} DC 20 Perception, DC 18 {@skill Survival}"
 										]
 									]
 								}

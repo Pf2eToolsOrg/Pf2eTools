@@ -1623,72 +1623,6 @@
 			}
 		},
 		{
-			"name": "Chilling Spray",
-			"source": "LOGM",
-			"page": 107,
-			"otherSources": {
-				"Reprinted": [
-					"APG|217"
-				]
-			},
-			"type": "SPELL",
-			"focus": false,
-			"level": 1,
-			"traits": [
-				"Cold",
-				"Evocation"
-			],
-			"school": "V",
-			"traditions": [
-				"Arcane",
-				"Primal"
-			],
-			"cast": {
-				"number": 2,
-				"unit": "action"
-			},
-			"components": {
-				"F": false,
-				"M": false,
-				"S": true,
-				"V": true
-			},
-			"area": {
-				"types": [
-					"Cone"
-				],
-				"entry": "15-foot cone"
-			},
-			"savingThrow": "Reflex",
-			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
-			"sustain": false,
-			"dismiss": false,
-			"entries": [
-				"A cone of icy shards bursts from your spread hands and coats the targets in a layer of frost. You deal {@damage 2d4} cold damage to creatures in the area; they must each attempt a Reflex save.",
-				{
-					"type": "successDegree",
-					"entries": {
-						"Critical Success": "The creature is unaffected.",
-						"Success": "The creature takes half damage.",
-						"Failure": "The creature takes full damage and takes a \u20135-foot status penalty to its Speeds for 2 rounds.",
-						"Critical Failure": "The creature takes double damage and takes a \u201310-foot status penalty to its Speeds for 2 rounds."
-					}
-				}
-			],
-			"heightened": {
-				"heightened": true,
-				"plus_x": {
-					"level": 1,
-					"entry": "The damage increases by {@dice 2d4}."
-				},
-				"x": null,
-				"no_x": null
-			}
-		},
-		{
 			"name": "Chroma Leach",
 			"source": "APG",
 			"page": 217,
@@ -1822,6 +1756,11 @@
 			"page": 237,
 			"type": "CANTRIP",
 			"focus": true,
+			"subclass": {
+				"Witch|Patron": [
+					"Winter"
+				]
+			},
 			"level": 0,
 			"traits": [
 				"Uncommon",
@@ -2598,6 +2537,11 @@
 			"source": "APG",
 			"page": 238,
 			"type": "CANTRIP",
+			"subclass": {
+				"Witch|Patron": [
+					"Rune"
+				]
+			},
 			"focus": true,
 			"level": 0,
 			"traits": [
@@ -3187,6 +3131,11 @@
 			"name": "Evil Eye",
 			"source": "APG",
 			"page": 238,
+			"subclass": {
+				"Witch|Patron": [
+					"Curse"
+				]
+			},
 			"type": "CANTRIP",
 			"focus": true,
 			"level": 0,
@@ -3872,7 +3821,7 @@
 				{
 					"type": "successDegree",
 					"entries": {
-						"Critical Success": "The target disbelieves the illusion and is unaffected.",
+						"Critical Success": "The target {@quickref disbelieves the illusion|CRB|2|disbelieving illusions|0} and is unaffected.",
 						"Success": "For 1 round, the target is {@condition stupefied 2} and takes a \u20132 status penalty to any checks it makes to determine the effects of reactions.",
 						"Failure": "For 1 minute, the target is {@condition stupefied 2} and can't use reactions.",
 						"Critical Failure": "As failure, and all spaces are {@quickref difficult terrain||3|terrain} for the target."
@@ -5532,6 +5481,11 @@
 			"page": 239,
 			"type": "CANTRIP",
 			"focus": true,
+			"subclass": {
+				"Witch|Patron": [
+					"Fate"
+				]
+			},
 			"level": 0,
 			"traits": [
 				"Uncommon",
@@ -5931,7 +5885,7 @@
 					"type": "successDegree",
 					"entries": {
 						"Critical Success": "The target is unaffected.",
-						"Success": "The target becomes {@condition fascinated} with the treasure, and the duration is until the end of its turn. The target can also try to disbelieve the illusion if it touches the treasure, Seeks to examine it, or speaks to it if the illusion appears to be a person or the like. If the target disbelieves the illusion, the spell ends.",
+						"Success": "The target becomes {@condition fascinated} with the treasure, and the duration is until the end of its turn. The target can also try to {@quickref disbelieve the illusion|CRB|2|disbelieving illusions|0} if it touches the treasure, Seeks to examine it, or speaks to it if the illusion appears to be a person or the like. If the target {@quickref disbelieves the illusion|CRB|2|disbelieving illusions|0}, the spell ends.",
 						"Failure": "As success, but the duration is 1 minute.",
 						"Critical Failure": "As success, but the duration is 1 minute. The target finds the treasure so appealing that until the spell ends, it must spend each action focused on it. This can include moving toward the treasure if the target isn't next to it, and Interacting with the treasure if the target is next to it. (If the illusion appears to be a person or the like, the target can also {@action Interact} to converse with it.)"
 					}
@@ -7023,6 +6977,11 @@
 			"page": 239,
 			"type": "CANTRIP",
 			"focus": true,
+			"subclass": {
+				"Witch|Patron": [
+					"Night"
+				]
+			},
 			"level": 0,
 			"traits": [
 				"Uncommon",
@@ -7677,6 +7636,11 @@
 			"page": 239,
 			"type": "CANTRIP",
 			"focus": true,
+			"subclass": {
+				"Witch|Patron": [
+					"Fervor"
+				]
+			},
 			"level": 0,
 			"traits": [
 				"Uncommon",
@@ -7780,11 +7744,11 @@
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
-				"You cause the areas to appear to swell, bend, and break, twisting together in a bizarre spatial geometry. The cubes of the spell's area can't be adjacent to one another. A creature must attempt a Will save if it's in one of the cubes when you {@action Cast a Spell||Cast the Spell}, or if it later enters one of the areas, with the following effects. A creature interacting with the illusion can also attempt a Will save to disbelieve the illusion, as normal.",
+				"You cause the areas to appear to swell, bend, and break, twisting together in a bizarre spatial geometry. The cubes of the spell's area can't be adjacent to one another. A creature must attempt a Will save if it's in one of the cubes when you {@action Cast a Spell||Cast the Spell}, or if it later enters one of the areas, with the following effects. A creature interacting with the illusion can also attempt a Will save to {@quickref disbelieve the illusion|CRB|2|disbelieving illusions|0}, as normal.",
 				{
 					"type": "successDegree",
 					"entries": {
-						"Success": "The creature disbelieves the illusion.",
+						"Success": "The creature {@quickref disbelieves the illusion|CRB|2|disbelieving illusions|0}.",
 						"Failure": "All terrain in the cubes is {@quickref difficult terrain||3|terrain} for the creature, including the air if the creature is flying, walls if it's climbing, and so on. When the creature would exit one of the cubes, it exits from one randomly determined by the GM. This is a {@trait teleportation} effect. It can exit from any edge of that cube it chooses. When selecting a random cube, the GM excludes any that don't match the creature's terrain; for instance, if the creature were exiting along the ground, the GM would exclude any cube that didn't have an exit on the ground."
 					}
 				}
@@ -8821,6 +8785,11 @@
 			"type": "CANTRIP",
 			"focus": true,
 			"level": 0,
+			"subclass": {
+				"Witch|Patron": [
+					"Wild"
+				]
+			},
 			"traits": [
 				"Uncommon",
 				"Cantrip",

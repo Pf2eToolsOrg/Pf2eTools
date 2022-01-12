@@ -315,7 +315,7 @@ class AncestriesPage extends BaseComponent {
 		if (Hist.isHistorySuppressed) return Hist.setSuppressHistory(false);
 
 		this._setAncestryFromHash();
-		this._setFeatAncestryFilters();
+		if (Hist.getDoubleHashParts()[0][0].toLowerCase() !== UrlUtil.autoEncodeHash(this.activeAncestry).toLowerCase()) this._setFeatAncestryFilters();
 		this._setFeatFromHash();
 		this._setStateFromHash();
 	}

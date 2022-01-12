@@ -284,7 +284,7 @@ class RenderMap {
 		const $btnZoomPlus = $(`<button class="btn btn-xs btn-default"><span class="glyphicon glyphicon-zoom-in"/> Zoom In</button>`)
 			.click(() => zoomChange("in"));
 
-		const $btnZoomReset = $(`<button class="btn btn-xs btn-default" title="Reset Zoom"><span class="glyphicon glyphicon-search"/> Reset Zoom</button>`)
+		const $btnZoomReset = $(`<button class="btn btn-xs btn-default" title="Reset Zoom"><span class="glyphicon glyphicon-search" type="submit"/> Reset Zoom</button>`)
 			.click(() => zoomChange("reset"));
 
 		const $btnHelp = $(`<button class="btn btn-xs btn-default ml-auto mr-4" title="Help"><span class="glyphicon glyphicon-info-sign"/> Help</button>`)

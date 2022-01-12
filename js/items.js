@@ -43,7 +43,7 @@ class ItemsPage extends ListPage {
 		if (item.equipment) {
 			eleLi.innerHTML = `<a href="#${hash}" class="lst--border">
 				<span class="col-4 pl-0 bold">${item.name}</span>
-				<span class="col-2-2 text-center">${item.category ? item.category : "\u2014"}</span>
+				<span class="col-2-2 text-center">${item.category ? `${Array.isArray(item.category) ? item.category.join(", ") : item.category}` : "\u2014"}</span>
 				<span class="col-1-5 text-center">${level}</span>
 				<span class="col-1-8 text-center">${Parser.priceToFull(item.price)}</span>
 				<span class="col-1-2 text-center">${item.bulk ? item.bulk : "\u2014"}</span>
@@ -74,10 +74,10 @@ class ItemsPage extends ListPage {
 			eleLi.addEventListener("contextmenu", (evt) => ListUtil.openContextMenu(evt, this._mundaneList, listItem));
 			return {mundane: listItem};
 		} else {
+			const cats = typeof item.category === "string" ? [item.category] : Array.isArray(item.category) ? item.category : [];
 			eleLi.innerHTML += `<a href="#${hash}" class="lst--border">
-				${item.category === "Rune" ? RuneBuilder.getButtons(itI) : ""}
-				<span class="col-4 pl-0 bold col-name">${item.name}</span>
-				<span class="col-2-2 text-center">${item.category}</span>
+				<span class="col-4 pl-0">${cats.includes("Rune") ? RuneBuilder.getButtons(itI) : ""}<span class="bold w-100">${item.name}</span></span>
+				<span class="col-2-2 text-center">${Array.isArray(item.category) ? item.category.join(", ") : item.category}</span>
 				<span class="col-1-5 text-center">${level}</span>
 				<span class="col-1-8 text-center">${Parser.priceToFull(item.price)}</span>
 				<span class="col-1-2 text-center">${item.bulk ? item.bulk : "\u2014"}</span>
@@ -430,7 +430,7 @@ class ItemsPage extends ListPage {
 						name: {name: "Name", transform: true},
 						source: {name: "Source", transform: (it) => `<span class="${Parser.sourceJsonToColor(it)}" title="${Parser.sourceJsonToFull(it)}" ${BrewUtil.sourceJsonToStyle(it.source)}>${Parser.sourceJsonToAbv(it)}</span>`},
 						_traits: {name: "Traits", transform: (it) => `<span>${(it._fTraits).sort(SortUtil.sortTraits).join(", ")}</span>`},
-						_category: {name: "Category", transform: (it) => `${it.subCategory ? `${it.subCategory} ` : ""}${it.category === "Weapon" ? `${it.ranged ? "Ranged" : "Melee"} ${it.category}` : it.category}`},
+						_category: {name: "Category", transform: (it) => `${it.subCategory ? `${it.subCategory} ` : ""}${it.category === "Weapon" ? `${it.range ? "Ranged" : "Melee"} ${it.category}` : it.category}`},
 						group: {name: "Group", transform: (it) => it || ""},
 						_price: {name: "Price", transform: (it) => Parser.priceToFull(it.price)},
 						_bulk: {name: "Bulk", transform: (it) => it.bulk != null ? it.bulk : "\u2014"},

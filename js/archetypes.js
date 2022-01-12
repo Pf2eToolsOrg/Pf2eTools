@@ -515,7 +515,8 @@ class ArchetypesPage extends BaseComponent {
 
 		const $lnk = $(`<a href="#${hash}" class="lst--border">
 			<span class="bold col-8 pl-0">${arc.name}</span>
-			<span class="col-4 text-center ${Parser.sourceJsonToColor(arc.source)} pr-0" title="${Parser.sourceJsonToFull(arc.source)}" ${BrewUtil.sourceJsonToStyle(arc.source)}>${source}</span>
+			<span class="col-2 text-center">${arc.dedicationLevel}</span>
+			<span class="col-2 text-center ${Parser.sourceJsonToColor(arc.source)} pr-0" title="${Parser.sourceJsonToFull(arc.source)}" ${BrewUtil.sourceJsonToStyle(arc.source)}>${source}</span>
 		</a>`);
 
 		const $ele = $$`<li class="row ${isExcluded ? "row--blacklisted" : ""}">${$lnk}</li>`;
@@ -527,6 +528,7 @@ class ArchetypesPage extends BaseComponent {
 			{
 				hash,
 				source,
+				level: arc.dedicationLevel,
 			},
 			{
 				$lnk,

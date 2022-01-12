@@ -2890,7 +2890,7 @@ class ComponentUiUtil {
 	static _$getDecor (component, prop, $ipt, decorType, side, opts) {
 		switch (decorType) {
 			case "search": {
-				return $(`<div class="ui-ideco__wrp ui-ideco__wrp--${side} no-events flex-vh-center"><span class="glyphicon glyphicon-search"></span></div>`);
+				return $(`<div class="ui-ideco__wrp ui-ideco__wrp--${side} no-events flex-vh-center"><span class="glyphicon glyphicon-search" type="submit"></span></div>`);
 			}
 			case "clear": {
 				return $(`<div class="ui-ideco__wrp ui-ideco__wrp--${side} flex-vh-center clickable" title="Clear"><span class="glyphicon glyphicon-remove"></span></div>`)

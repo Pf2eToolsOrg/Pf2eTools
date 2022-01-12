@@ -258,7 +258,7 @@
 			],
 			"prerequisites": "{@feat Deity's Domain}",
 			"entries": [
-				"Through your conviction, you have glimpsed the deeper secrets of your deity's domain. You gain an advanced domain spell from the domain you chose with Deity's Domain. You can cast that spell as a devotion spell. Increase the number of Focus Points in your focus pool by 1."
+				"Through your conviction, you have glimpsed the deeper secrets of your {@pf2etools deity|deities.html}'s domain. You gain an advanced domain spell from the domain you chose with {@feat Deity's Domain}. You can cast that spell as a devotion spell. Increase the number of Focus Points in your focus pool by 1."
 			]
 		},
 		{
@@ -671,7 +671,7 @@
 				"Alchemist"
 			],
 			"entries": [
-				"You have used alchemy to create life, a simple creature formed from alchemical materials, reagents, and a bit of your own blood. This alchemical familiar appears to be a small creature of flesh and blood, though it might have some unusual or distinguishing aspects depending on your creative process. Like other familiars, your alchemical familiar assists you in your laboratory and on adventures. The familiar uses your Intelligence modifier to determine its {@skill Perception}, {@skill Acrobatics}, and {@skill Stealth} modifiers (see Familiars on page 217 for more information)."
+				"You have used alchemy to create life, a simple creature formed from alchemical materials, reagents, and a bit of your own blood. This alchemical familiar appears to be a small creature of flesh and blood, though it might have some unusual or distinguishing aspects depending on your creative process. Like other familiars, your alchemical familiar assists you in your laboratory and on adventures. The familiar uses your Intelligence modifier to determine its {@skill Perception}, {@skill Acrobatics}, and {@skill Stealth} modifiers (see {@quickref Familiars||0|familiars} for more information)."
 			]
 		},
 		{
@@ -857,7 +857,7 @@
 				"Gnome"
 			],
 			"entries": [
-				"You build a rapport with an animal, which becomes magically bonded to you. You gain a {@filter familiar|companionsfamiliars||Type=Familiar} using the rules on page 217. The type of animal is up to you, but most gnomes choose animals with a burrow Speed."
+				"You build a rapport with an animal, which becomes magically bonded to you. You gain a {@filter familiar|companionsfamiliars||Type=Familiar}. The type of animal is up to you, but most gnomes choose animals with a burrow Speed."
 			]
 		},
 		{
@@ -878,7 +878,11 @@
 			],
 			"prerequisites": "animal order",
 			"entries": [
-				"You gain the service of a young animal companion that travels with you on your adventures and obeys any simple commands you give it to the best of its abilities. See Animal Companions on page 214 for more information."
+				"You gain the service of a young animal companion that travels with you on your adventures and obeys any simple commands you give it to the best of its abilities. See {@quickref Animal Companions||0|Animal Companions} for more information."
+			],
+			"leadsTo": [
+				"Mature Animal Companion (Druid)",
+				"Incredible Companion (Druid)"
 			]
 		},
 		{
@@ -898,9 +902,12 @@
 				"Ranger"
 			],
 			"entries": [
-				"You gain the service of a young animal companion that travels with you and obeys simple commands as best as it can. See Animal Companions on page 214. When you {@action Hunt Prey}, your animal companion gains the action's benefits and your hunter's edge benefit if you have one."
+				"You gain the service of a young animal companion that travels with you and obeys simple commands as best as it can. See {@quickref Animal Companions||0|Animal Companions}. When you {@action Hunt Prey}, your animal companion gains the action's benefits and your hunter's edge benefit if you have one."
 			],
 			"leadsTo": [
+				"Mature Animal Companion (Ranger)",
+				"Incredible Companion (Ranger)",
+				"Specialized Companion (Ranger)",
 				"Stealthy Companion"
 			]
 		},
@@ -1044,7 +1051,7 @@
 			],
 			"prerequisites": "{@feat Wizard Dedication}",
 			"entries": [
-				"Select one arcane school of magic. You gain the school's initial school spell. If you don't already have one, you gain a focus pool of 1 Focus Point, which you can {@action Refocus} by studying. (For more on arcane schools, see page 204.)"
+				"Select one arcane {@classFeature arcane school|wizard||1||school of magic}. You gain the school's initial school spell. If you don't already have one, you gain a focus pool of 1 Focus Point, which you can {@action Refocus} by studying."
 			]
 		},
 		{
@@ -1332,8 +1339,9 @@
 			"traits": [
 				"Champion"
 			],
+			"requirements": "exalt, Vengeful Oath.",
 			"entries": [
-				"Requirements exalt, Vengeful Oath."
+				"When you call upon others to take retribution, you also guide their aim. When you use {@action Retributive Strike}, your allies who make Strikes take only a \u20132 penalty, instead of a \u20135 penalty."
 			]
 		},
 		{
@@ -1353,7 +1361,7 @@
 			],
 			"prerequisites": "divine ally (steed), {@feat Imposing Destrier}",
 			"entries": [
-				"Guided by your ongoing care, your steed has developed incredible intelligence and skill. The mount you gained through the {@feat divine ally} class feature is now a specialized animal companion (page 217). You can select one of the usual specializations or the auspice specialization.",
+				"Guided by your ongoing care, your steed has developed incredible intelligence and skill. The mount you gained through the {@feat divine ally} class feature is now a {@quickref specialized animal companion||0|Specialized Animal Companions}. You can select one of the usual specializations or the auspice specialization.",
 				"Auspice mounts gain the following benefits: Your companion is marked by your deity's religious symbol as a sacred creature of your deity. Its proficiency rank in {@skill Religion} increases to expert, it can speak the language associated with your deity's servitors (Celestial for champions who follow the tenets of good), and its Intelligence modifier increases by 2 and its Wisdom modifier by 1."
 			]
 		},
@@ -1451,8 +1459,8 @@
 			"entries": [
 				"You become trained in {@skill Athletics}; if you were already trained in {@skill Athletics}, you instead become trained in a skill of your choice.",
 				"You become trained in barbarian class DC.",
-				"You can use the {@action Rage} action (page 84)",
-				"Choose an instinct as you would if you were a barbarian. You have that instinct for all purposes and become bound by its anathema, but you don't gain any of the other abilities it grants."
+				"You can use the {@action Rage} action.",
+				"Choose an {@classFeature instinct|Barbarian||1} as you would if you were a barbarian. You have that instinct for all purposes and become bound by its anathema, but you don't gain any of the other abilities it grants."
 			],
 			"special": "You cannot select another dedication feat until you have gained two other feats from the barbarian archetype.",
 			"leadsTo": [
@@ -1648,7 +1656,7 @@
 			],
 			"prerequisites": "{@feat Sorcerer Dedication}",
 			"entries": [
-				"You gain your bloodline's initial bloodline spell. If you don't already have one, you also gain a focus pool of 1 Focus Point, which you can {@action Refocus} without any special effort. (For more on bloodline spells, see page 194.)"
+				"You gain your {@classFeature bloodline|Sorcerer||1}'s {@filter initial bloodline spell|spells||Level=1|Spell Type=Focus Spell|Classes=Sorcerer}. If you don't already have one, you also gain a focus pool of 1 Focus Point, which you can {@action Refocus} without any special effort."
 			]
 		},
 		{
@@ -2142,11 +2150,11 @@
 				{
 					"type": "list",
 					"items": [
-						"Abjuration force damage",
-						"{@bold Conjuration or} Transmutation the same type as the weapon",
+						"{@b Abjuration} force damage",
+						"{@bold Conjuration or Transmutation} the same type as the weapon",
 						"{@bold Divination, Enchantment, or} Illusion mental damage",
-						"Evocation a type the spell dealt, or force damage if the spell didn't deal damage",
-						"Necromancy negative damage"
+						"{@b Evocation} a type the spell dealt, or force damage if the spell didn't deal damage",
+						"{@b Necromancy} negative damage"
 					]
 				}
 			]
@@ -3758,9 +3766,9 @@
 				"Rage",
 				"Visual"
 			],
-			"prerequisites": "Share {@action Rage}",
+			"prerequisites": "{@feat Share Rage}",
 			"entries": [
-				"You can drive your allies into a frenzy, granting them incredible benefits. You can ignore the requirements on Share {@action Rage}, using it multiple times in a {@action Rage}. Allies affected by Share {@action Rage} who accept your anathema for the duration of the {@action Rage} gain your instinct ability and the specialization ability it gains from weapon specialization, but not greater weapon specialization."
+				"You can drive your allies into a frenzy, granting them incredible benefits. You can ignore the requirements on {@feat Share Rage}, using it multiple times in a {@action Rage}. Allies affected by {@feat Share Rage} who accept your anathema for the duration of the {@action Rage} gain your instinct ability and the specialization ability it gains from weapon specialization, but not greater weapon specialization."
 			]
 		},
 		{
@@ -3842,8 +3850,8 @@
 			],
 			"prerequisites": "{@feat Bard Dedication}",
 			"entries": [
-				"You gain the {@spell counter performance} composition spell.",
-				"If you don't already have one, you gain a focus pool of 1 Focus Point, which you can {@action Refocus} by engaging your muse. (For more on composition spells, see page 97.)"
+				"You gain the {@spell counter performance} {@classFeature composition spells|Bard||1||composition spell}.",
+				"If you don't already have one, you gain a focus pool of 1 Focus Point, which you can {@action Refocus} by engaging your muse."
 			]
 		},
 		{
@@ -3959,7 +3967,7 @@
 			],
 			"prerequisites": "legendary in {@skill Crafting}",
 			"entries": [
-				"You can find ways to craft just about anything, despite restrictions. As long as you have the appropriate {@skill Crafting} skill feat (such as Magical {@skill Crafting} for magic items) and meet the item's level and proficiency requirement, you ignore just about any other requirement, such as being of a specific ancestry or providing spells. The only exceptions are requirements that add to the item's cost, including castings of spells that themselves have a cost, and requirements of special items such as the philosopher's stone that have exclusive means of access and {@skill Crafting}. The GM decides whether you can ignore a requirement."
+				"You can find ways to craft just about anything, despite restrictions. As long as you have the appropriate {@skill Crafting} skill feat (such as {@feat Magical Crafting} for magic items) and meet the item's level and proficiency requirement, you ignore just about any other requirement, such as being of a specific ancestry or providing spells. The only exceptions are requirements that add to the item's cost, including castings of spells that themselves have a cost, and requirements of special items such as the philosopher's stone that have exclusive means of access and {@skill Crafting}. The GM decides whether you can ignore a requirement."
 			]
 		},
 		{
@@ -3978,7 +3986,7 @@
 				"Alchemist"
 			],
 			"entries": [
-				"Your research has paid off, culminating in the legendary philosopher's stone. You learn the formula for the philosopher's stone (page 554) and can add it to your formula book."
+				"Your research has paid off, culminating in the legendary philosopher's stone. You learn the formula for the {@item philosopher's stone} and can add it to your formula book."
 			]
 		},
 		{
@@ -4131,7 +4139,7 @@
 				"Ranger"
 			],
 			"entries": [
-				"You have a deep understanding of the crossbow. When you're wielding a crossbow and use {@action Hunt Prey} or use {@action Interact} to reload your crossbow, you gain a +2 circumstance bonus to the damage roll on your next {@action Strike} with that crossbow. If the crossbow is a simple crossbow, also increase the damage die size for that attack by one step (page 279). You must make the attack before the end of your next turn or these benefits are lost."
+				"You have a deep understanding of the crossbow. When you're wielding a crossbow and use {@action Hunt Prey} or use {@action Interact} to reload your crossbow, you gain a +2 circumstance bonus to the damage roll on your next {@action Strike} with that crossbow. If the crossbow is a simple crossbow, also increase the damage die size for that attack by one step. You must make the attack before the end of your next turn or these benefits are lost."
 			]
 		},
 		{
@@ -4433,7 +4441,7 @@
 				"Champion"
 			],
 			"entries": [
-				"You embody an aspect of your deity. Choose one of your deity's domains from those listed on page 441. You gain the domain's initial domain spell as a devotion spell."
+				"You embody an aspect of your deity. Choose one of your {@pf2etools deity|deities.html}'s domains. You gain the domain's initial domain spell as a devotion spell."
 			],
 			"leadsTo": [
 				"Advanced Deity's Domain"
@@ -4671,7 +4679,7 @@
 				"Bard"
 			],
 			"entries": [
-				"You learn the {@spell dirge of doom} composition cantrip (page 386), which frightens your enemies."
+				"You learn the {@spell dirge of doom} composition cantrip, which frightens your enemies."
 			]
 		},
 		{
@@ -4950,7 +4958,7 @@
 			],
 			"prerequisites": "{@feat Champion Dedication}",
 			"entries": [
-				"You gain a divine ally of your choice (page 108)."
+				"You gain a {@classFeature divine ally|Champion||3} of your choice."
 			]
 		},
 		{
@@ -5171,9 +5179,9 @@
 			],
 			"entries": [
 				"Your deity bestows a special spell related to their powers.",
-				"Select one domain\u2014a subject of particular interest to you within your religion\u2014from your deity's list. You gain an initial domain spell for that domain, a spell unique to the domain and not available to other clerics. Each domain's theme and domain spells appear in Table 8 \u20132: Domains on page 441.",
+				"Select one domain\u2014a subject of particular interest to you within your religion\u2014from your deity's list. You gain an initial domain spell for that domain, a spell unique to the domain and not available to other clerics. Each domain's theme and domain spells appear in {@table Domains||Table 8\u20132: Domains}.",
 				"Domain spells are a type of focus spell. It costs 1 Focus Point to cast a focus spell, and you start with a focus pool of 1 Focus Point. You refill your focus pool during your daily preparations, and you can regain 1 Focus Point by spending 10 minutes using the {@action Refocus} activity to pray to your deity or do service toward their causes.",
-				"Focus spells are automatically heightened to half your level rounded up. Focus spells don't require spell slots, nor can you cast them using spell slots. Certain feats can give you more focus spells and increase the size of your focus pool, though your focus pool can never hold more than 3 Focus Points. The full rules for focus spells appear on page 300."
+				"Focus spells are automatically heightened to half your level rounded up. Focus spells don't require spell slots, nor can you cast them using spell slots. Certain feats can give you more focus spells and increase the size of your focus pool, though your focus pool can never hold more than 3 Focus Points. The full rules for focus spells can be found {@quickref here||2|focus spells}."
 			],
 			"special": "You can select this feat multiple times, selecting a different domain each time and gaining its domain spell.",
 			"leadsTo": [
@@ -5249,9 +5257,7 @@
 			],
 			"requirements": "You are wielding a ranged weapon with reload 0.",
 			"entries": [
-				"You shoot twice in blindingly fast succession. Make two Strikes, each against a separate target and with a \u20132 penalty.",
-				"Both attacks count toward your multiple attack penalty, but the penalty doesn't increase until after you've made both of them.",
-				"When you have your shield raised, you can {@action Stride} to move half your Speed without triggering reactions that are triggered by your movement (such as Attacks of Opportunity). You can use Shielded {@action Stride} while Flying or Swimming instead of {@action Stride||Striding} if you have the corresponding movement type."
+				"You shoot twice in blindingly fast succession. Make two {@action Strike||Strikes}, each against a separate target and with a \u20132 penalty. Both attacks count toward your multiple attack penalty, but the penalty doesn't increase until after you've made both of them."
 			],
 			"leadsTo": [
 				"Triple Shot",
@@ -7048,6 +7054,9 @@
 			"entries": [
 				"When you {@action Perform}, compare your result to the Will DC of one observer. If you succeed, the target is {@condition fascinated} by you for 1 round. If the observer is in a situation that demands immediate attention, such as combat, you must critically succeed to fascinate it and the {@action Perform} action gains the {@trait incapacitation} trait. You must choose which creature you're trying to fascinate before you roll your check, and the target is then temporarily immune for 1 hour.",
 				"If you're an expert in {@skill Performance}, you can fascinate up to four observers; if you're a master, you can fascinate up to 10 observers; and if you're legendary, you can fascinate any number of observers at the same time."
+			],
+			"leadsTo": [
+				"Focused Fascination|APG"
 			]
 		},
 		{
@@ -7336,7 +7345,7 @@
 				"Druid"
 			],
 			"entries": [
-				"You have learned some of the tricks the fey use to bend primal magic toward illusions and trickery. Add illusory disguise,"
+				"You have learned some of the tricks the fey use to bend primal magic toward illusions and trickery. Add {@spell illusory disguise}, {@spell illusory object}, {@spell illusory scene}, and {@spell veil} to your spell list as primal spells."
 			]
 		},
 		{
@@ -9157,7 +9166,7 @@
 			],
 			"entries": [
 				"Your ancestors spent their days cloaked and cradled in illusions, and as a result, sensing illusion magic is second nature to you. You gain a +1 circumstance bonus to both {@skill Perception} checks and Will saves against illusions.",
-				"When you come within 10 feet of an illusion that can be disbelieved, the GM rolls a secret check for you to disbelieve it, even if you didn't spend an action to {@action Interact} with the illusion."
+				"When you come within 10 feet of an illusion that can be {@quickref disbelieved|CRB|2|disbelieving illusions|0}, the GM rolls a secret check for you to {@quickref disbelieve it|CRB|2|disbelieving illusions|0}, even if you didn't spend an action to {@action Interact} with the illusion."
 			],
 			"leadsTo": [
 				"Intuitive Illusions|LOCG",
@@ -9230,7 +9239,7 @@
 				"Move",
 				"Rogue"
 			],
-			"prerequisites": "legendary in {@skill Acrobatics}, Quick {@action Squeeze}",
+			"prerequisites": "legendary in {@skill Acrobatics}, {@feat Quick Squeeze}",
 			"requirements": "You are adjacent to a floor or vertical wall.",
 			"entries": [
 				"You find tiny holes or imperfections that no one else could see and try to somehow fit yourself through them, possibly moving directly through the wall or floor from one side to the other. Your movement attempt fails if the wall or floor is made of something other than wood, plaster, or stone; is thicker than 10 feet; or contains even a thin layer of metal. If you have a climb Speed, you can use this ability to attempt to move through a ceiling."
@@ -9710,9 +9719,9 @@
 			"traits": [
 				"Druid"
 			],
-			"prerequisites": "{@feat Mature Animal Companion}",
+			"prerequisites": "{@feat Mature Animal Companion (Druid)}",
 			"entries": [
-				"Your animal companion continues to grow and develop. It becomes a nimble or savage animal companion (your choice), gaining additional capabilities determined by the type of companion (page 214)."
+				"Your animal companion continues to grow and develop. It becomes a {@quickref nimble||0|Nimble Animal Companions} or {@quickref savage||0|Savage Animal Companions} animal companion (your choice), gaining additional capabilities determined by the type of companion."
 			]
 		},
 		{
@@ -9731,9 +9740,9 @@
 			"traits": [
 				"Ranger"
 			],
-			"prerequisites": "{@feat Mature Animal Companion}",
+			"prerequisites": "{@feat Mature Animal Companion (Ranger)}",
 			"entries": [
-				"Your animal companion continues to grow and develop. It becomes a nimble or savage animal companion (your choice), gaining additional capabilities determined by the type of companion (page 214)."
+				"Your animal companion continues to grow and develop. It becomes a {@quickref nimble||0|Nimble Animal Companions} or {@quickref savage||0|Savage Animal Companions} animal companion (your choice), gaining additional capabilities determined by the type of companion."
 			],
 			"leadsTo": [
 				"Specialized Companion (Ranger)"
@@ -10055,7 +10064,7 @@
 			],
 			"prerequisites": "{@feat Barbarian Dedication}",
 			"entries": [
-				"You gain the instinct ability for the instinct you chose for Barbarian Dedication."
+				"You gain the {@classFeature instinct|Barbarian||1} ability for the instinct you chose for {@feat Barbarian Dedication}."
 			]
 		},
 		{
@@ -10411,7 +10420,7 @@
 			],
 			"entries": [
 				"Your study of the flow of mystical energy allows you to harness it into your physical strikes.",
-				"You gain the ki strike ki spell and a focus pool of 1 Focus Point. The rules for ki spells are summarized in the sidebar on page 157, and the full rules for focus spells appear on page 300."
+				"You gain the {@spell ki strike} ki spell and a focus pool of 1 Focus Point."
 			]
 		},
 		{
@@ -11156,7 +11165,7 @@
 			],
 			"prerequisites": "divine ally (steed)",
 			"entries": [
-				"You and your mount have grown closer, and your loyalty to each other is unbreakable. The mount you gained through the {@feat divine ally} class feature is now a mature animal companion (page 214). In addition, your mount never attacks you, even if it is magically compelled to do so."
+				"You and your mount have grown closer, and your loyalty to each other is unbreakable. The mount you gained through the {@feat divine ally} class feature is now a {@quickref specialized animal companion||0|Mature Animal Companions}. In addition, your mount never attacks you, even if it is magically compelled to do so."
 			],
 			"leadsTo": [
 				"Imposing Destrier",
@@ -11599,10 +11608,13 @@
 			"traits": [
 				"Druid"
 			],
-			"prerequisites": "{@feat Animal Companion}",
+			"prerequisites": "{@feat Animal Companion (Druid)}",
 			"entries": [
-				"Your animal companion grows up, becoming a mature animal companion, which grants it additional capabilities. See the animal companion rules on page 214 for more information.",
+				"Your animal companion grows up, becoming a {@quickref specialized animal companion||0|Mature Animal Companions}, which grants it additional capabilities.",
 				"Your animal companion is better trained than most. During an encounter, even if you don't use the {@action Command an Animal} action, your animal companion can still use 1 action on your turn that round to {@action Stride} or {@action Strike}."
+			],
+			"leadsTo": [
+				"Incredible Companion (Druid)"
 			]
 		},
 		{
@@ -11621,10 +11633,14 @@
 			"traits": [
 				"Ranger"
 			],
-			"prerequisites": "{@feat Animal Companion}",
+			"prerequisites": "{@feat Animal Companion (Ranger)}",
 			"entries": [
-				"Your animal companion grows up, becoming a mature animal companion and gaining additional capabilities (page 214)",
+				"Your animal companion grows up, becoming a {@quickref specialized animal companion||0|Mature Animal Companions} and gaining additional capabilities.",
 				"If you have the {@action Hunt Prey} action, your animal companion assaults the prey even without your orders. During an encounter, even if you don't use the {@action Command an Animal} action, your animal companion can still use 1 action that round on your turn to {@action Stride} toward or {@action Strike} your prey."
+			],
+			"leadsTo": [
+				"Incredible Companion (Ranger)",
+				"Specialized Companion (Ranger)"
 			]
 		},
 		{
@@ -12482,6 +12498,13 @@
 			"prerequisites": "trained in {@skill Nature}",
 			"entries": [
 				"You can apply natural cures to heal your allies. You can use {@skill Nature} instead of {@skill Medicine} to {@action Treat Wounds}. If you're in the wilderness, you might have easier access to fresh ingredients, allowing you to gain a +2 circumstance bonus to your check to {@action Treat Wounds} using {@skill Nature}, subject to the GM's determination."
+			],
+			"leadsTo": [
+				"Herbalist Dedication|APG",
+				"Endemic Herbs|APG",
+				"Expert Herbalism|APG",
+				"Fresh Ingredients|APG",
+				"Poultice Preparation|APG"
 			]
 		},
 		{
@@ -13654,7 +13677,7 @@
 			],
 			"prerequisites": "{@feat Aggressive Block} or {@feat Brutish Shove}",
 			"entries": [
-				"You can push larger foes around with your attack. You can use Aggressive Block or Brutish {@action Shove} against a creature up to two sizes larger than you.",
+				"You can push larger foes around with your attack. You can use {@feat Aggressive Block} or {@feat Brutish Shove} against a creature up to two sizes larger than you.",
 				"When a creature you {@action Shove} has to stop moving because it would hit an object, it takes damage equal to your Strength modifier (minimum 1). This happens regardless of how you Shoved the creature."
 			]
 		},
@@ -14258,6 +14281,9 @@
 			"entries": [
 				"You {@action Squeeze} 5 feet per round (10 feet on a critical success)",
 				"If you're legendary in {@skill Acrobatics}, you {@action Squeeze} at full Speed."
+			],
+			"leadsTo": [
+				"Implausible Infiltration"
 			]
 		},
 		{
@@ -15734,6 +15760,9 @@
 			"requirements": "You haven't used this ability since you last Raged.",
 			"entries": [
 				"You stoke an ally's fury. While you are raging, one willing creature within 30 feet gains the effects of the {@action Rage} action, except it can still use concentrate actions."
+			],
+			"leadsTo": [
+				"Contagious Rage"
 			]
 		},
 		{
@@ -16000,15 +16029,7 @@
 				"Fighter"
 			],
 			"entries": [
-				"When your shield is up, your enemies' blows can't touch you.",
-				"opponent hard enough to make it stumble back. Make a {@action Strike} with a two-handed melee weapon. If you hit a target that is your size or smaller, that creature is {@condition flat-footed} until the end of your current turn, and you can automatically {@action Shove} it, with the same benefits as the {@action Shove} action (including the critical success effect, if your {@action Strike} was a critical hit). If you move to follow the target, your movement doesn't trigger reactions.",
-				"This {@action Strike} has the following failure effect.",
-				{
-					"type": "successDegree",
-					"entries": {
-						"Failure": "The target becomes {@condition flat-footed} until the end of your current turn."
-					}
-				}
+				"When your shield is up, your enemies' blows can't touch you. When you have your shield raised, you can {@action Stride} to move half your Speed without triggering reactions that are triggered by your movement (such as {@ability Attack of Opportunity||Attacks of Opportunity}). You can use Shielded Stride while Flying or Swimming instead of {@action Stride||Striding} if you have the corresponding movement type."
 			]
 		},
 		{
@@ -17482,7 +17503,7 @@
 			],
 			"entries": [
 				"You swing at a foe while mid-leap. Make a {@action Leap}, {@action High Jump}, or {@action Long Jump} and attempt one melee {@action Strike} at any point during your jump. Immediately after the {@action Strike}, you fall to the ground if you're in the air, even if you haven't reached the maximum distance of your jump. If the distance you fall is no more than the height of your jump, you take no damage and land upright.",
-				"When attempting a {@action High Jump} or {@action Long Jump} during a Sudden {@action Leap}, determine the DC using the {@action Long Jump} DCs, and increase your maximum distance to double your Speed."
+				"When attempting a {@action High Jump} or {@action Long Jump} during a Sudden Leap, determine the DC using the {@action Long Jump} DCs, and increase your maximum distance to double your Speed."
 			]
 		},
 		{
@@ -17507,9 +17528,9 @@
 			],
 			"entries": [
 				"You make an impressive leap and swing while you soar. Make a {@action Leap}, {@action High Jump}, or {@action Long Jump} and attempt one melee {@action Strike} at any point during your jump. Immediately after the {@action Strike}, you fall to the ground if you're in the air, even if you haven't reached the maximum distance of your jump. If the distance you fall is no more than the height of your jump, you take no damage and land upright.",
-				"When attempting a {@action High Jump} or {@action Long Jump} during a Sudden {@action Leap}, determine the DC using the {@action Long Jump} DCs, and increase your maximum distance to double your Speed."
+				"When attempting a {@action High Jump} or {@action Long Jump} during a Sudden Leap, determine the DC using the {@action Long Jump} DCs, and increase your maximum distance to double your Speed."
 			],
-			"special": "If you have Felling {@action Strike}, you can spend 3 actions to make a Sudden {@action Leap} and use Felling {@action Strike} instead of a normal {@action Strike}."
+			"special": "If you have Felling {@action Strike}, you can spend 3 actions to make a Sudden Leap and use {@feat Felling Strike} instead of a normal {@action Strike}."
 		},
 		{
 			"name": "Superior Bond",
@@ -17668,7 +17689,7 @@
 			],
 			"prerequisites": "master in {@skill Stealth}",
 			"entries": [
-				"You can move your full Speed when you {@action Sneak}. You can use Swift {@action Sneak} while Burrowing, Climbing, Flying, or Swimming instead of {@action Stride||Striding} if you have the corresponding movement type."
+				"You can move your full Speed when you {@action Sneak}. You can use Swift Sneak while Burrowing, Climbing, Flying, or Swimming instead of {@action Stride||Striding} if you have the corresponding movement type."
 			]
 		},
 		{
@@ -18009,7 +18030,7 @@
 			],
 			"prerequisites": "{@feat Wild Shape}",
 			"entries": [
-				"Your form is as mutable as the weather, changing to meet your whim. You add the forms listed in humanoid form to your wild shape list."
+				"Your form is as mutable as the weather, changing to meet your whim. You add the forms listed in {@spell humanoid form} to your wild shape list."
 			]
 		},
 		{
@@ -18376,7 +18397,7 @@
 				"Rogue"
 			],
 			"trigger": "You specify the trigger when you make your daily preparations (see Requirements below).",
-			"requirements": "When you make your daily preparations, you must specify a trigger for this reaction using the same restrictions as the triggers for the {@action Ready} action.",
+			"requirements": "When you make your daily preparations, you must specify a trigger for this reaction using the same restrictions as the triggers for the {@action Ready} action. You also choose a {@filter single spell|spells||level=1;2;3;4|Tradition & Spell List=arcane;divine;occult;primal|components=!cost|Miscellaneous=Has Targets|Cast Time=Varies;Action;Two-Action;Three-Action;Free Action;Minutes;Rounds} from the arcane, divine, occult, or primal list of 4th level or lower. The spell can't have a cost, nor can its casting time be more than 10 minutes. The spell must be able to target a single creature, and you must be a valid target for it.",
 			"entries": [
 				"Whether from jury-rigged magic items, stolen magical essence, or other means, you have a contingency in your back pocket for desperate situations. When the trigger occurs, you cause the spell to come into effect. The spell targets only you, no matter how many creatures it would affect normally. If you define particularly complicated conditions, as determined by the GM, the trigger might fail.",
 				"Once the contingency is triggered, the spell is expended until your next daily preparations."
@@ -18932,9 +18953,7 @@
 			],
 			"prerequisites": "{@feat Unconventional Weaponry}, trained in the weapon you chose for {@feat Unconventional Weaponry}",
 			"entries": [
-				"You've continued to advance your powers using your unconventional weapon. Whenever you gain a class feature that grants you expert or greater proficiency in certain weapons, you also gain that proficiency in the weapon you chose for Unconventional Weaponry.",
-				"Half-Elf and Half-Orc Ancestry Feats A human with elf or orc blood is called a half-elf or half-orc, respectively, which is represented by the corresponding heritage. If you have the half-elf or half‑orc heritage, you can select from additional ancestry feats not available to other humans.",
-				"Half-Elf Ancestry Feats The following feats are available to half-elves."
+				"You've continued to advance your powers using your unconventional weapon. Whenever you gain a class feature that grants you expert or greater proficiency in certain weapons, you also gain that proficiency in the weapon you chose for Unconventional Weaponry."
 			]
 		},
 		{
@@ -19598,7 +19617,7 @@
 				"Monk"
 			],
 			"entries": [
-				"You defy gravity, traversing vertical planes as easily as the ground. {@action Stride} up to your Speed. You must start your movement on a horizontal surface. During this movement, you can run up vertical surfaces, like walls, at your full Speed. If you end the {@action Stride} off the ground, you fall after taking your next action or when your turn ends, whichever comes first (though you can {@action Grab an Edge}, if applicable). If you have Water {@action Step} or a similar ability, Wall Run lets you run along flimsy vertical surfaces, as well as vertical liquids, such as a waterfall."
+				"You defy gravity, traversing vertical planes as easily as the ground. {@action Stride} up to your Speed. You must start your movement on a horizontal surface. During this movement, you can run up vertical surfaces, like walls, at your full Speed. If you end the {@action Stride} off the ground, you fall after taking your next action or when your turn ends, whichever comes first (though you can {@action Grab an Edge}, if applicable). If you have {@feat Water Step} or a similar ability, Wall Run lets you run along flimsy vertical surfaces, as well as vertical liquids, such as a waterfall."
 			]
 		},
 		{
@@ -20034,7 +20053,7 @@
 			],
 			"prerequisites": "wild order",
 			"entries": [
-				"You are one with the wild, always changing and adapting to meet any challenge. You gain the wild shape order spell, which lets you transform into a variety of forms that you can expand with druid feats."
+				"You are one with the wild, always changing and adapting to meet any challenge. You gain the {@feat wild shape} order spell, which lets you transform into a variety of forms that you can expand with druid feats."
 			],
 			"leadsTo": [
 				"Elemental Shape",

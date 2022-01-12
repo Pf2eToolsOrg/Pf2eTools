@@ -1,7 +1,7 @@
 {
 	"name": "pf2etools",
 	"author": "Pf2eTools",
-	"version": "0.1.2",
+	"version": "0.1.3",
 	"license": "MIT",
 	"description": "A site dedicated to making playing games with your friends as easy as possible.",
 	"scripts": {
@@ -13,7 +13,8 @@
 		"minify:json": "node node/minify-json.js",
 		"test:js": "eslint js node",
 		"test:styles": "stylelint scss/*.scss",
-		"test": "npm run test:js && npm run test:styles",
+		"test:data": "node test/test-all.js",
+		"test": "npm run test:js && npm run test:styles && npm run test:data",
 		"build:css": "npm run build:css:main && npm run build:css:classes && npm run build:css:misc && npm run build:css:search",
 		"build:css:main": "node-sass --source-map=true --output-style=compressed scss/main.scss css/style.css && postcss ./css/style.css --use autoprefixer -r",
 		"build:css:classes": "node-sass --source-map=true --output-style=compressed scss/classes.scss css/classes.css && postcss ./css/classes.css --use autoprefixer -r",

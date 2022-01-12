@@ -1349,7 +1349,6 @@ class Filter extends FilterBase {
 
 	_getPill (item) {
 		const displayText = this._displayFn ? this._displayFn(item.item) : item.item;
-
 		const btnPill = e_({
 			tag: "div",
 			clazz: "fltr__pill",

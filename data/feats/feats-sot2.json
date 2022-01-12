@@ -88,7 +88,22 @@
 			"prerequisites": "trained in {@skill Performance}",
 			"entries": [
 				"You are a master archivist and entertainer, capable of pulling wisdom from the tales you tell and weaving your allies and enemies into a powerful narrative. You gain the Spin Tale action.",
-				"Spin Tale {@as 1} (auditory, linguistic) Frequency once every 10 minutes; Effect You tell a story, designating one of your allies (but not yourself) as the hero of the story, and one enemy as the villain; both must be within 60 feet. The hero gains a +1 status bonus to attack rolls and saving throws against the villain until the start of your next turn. If you Spin a Tale on your next turn, the story continues for another round, for a maximum of 10 rounds. While the tale continues, minor, crude illusions spring into being in your space; these are arcane {@trait illusion} effects that have no mechanical impact other than illustrating your tale."
+				{
+					"type": "ability",
+					"name": "Spin Tale",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"auditory",
+						"linguistic"
+					],
+					"frequency": "once every 10 minutes",
+					"entries": [
+						"You tell a story, designating one of your allies (but not yourself) as the hero of the story, and one enemy as the villain; both must be within 60 feet. The hero gains a +1 status bonus to attack rolls and saving throws against the villain until the start of your next turn. If you Spin a Tale on your next turn, the story continues for another round, for a maximum of 10 rounds. While the tale continues, minor, crude illusions spring into being in your space; these are {@trait arcane} {@trait illusion} effects that have no mechanical impact other than illustrating your tale."
+					]
+				}
 			],
 			"special": "You can't select another dedication feat until you've gained two other feats from the folklorist archetype."
 		},
@@ -114,7 +129,7 @@
 			]
 		},
 		{
-			"name": "Nantambu Chime-ringer Dedication",
+			"name": "Nantambu Chime-Ringer Dedication",
 			"source": "SoT2",
 			"page": 79,
 			"level": 2,

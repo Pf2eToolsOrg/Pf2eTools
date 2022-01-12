@@ -151,16 +151,30 @@
 			],
 			"abilitiesBot": [
 				{
-					"traits": [
-						"poison"
-					],
 					"entries": [
-						"As zyss serpentfolk, but DC 20."
+						{
+							"type": "affliction",
+							"traits": [
+								"poison"
+							],
+							"DC": 20,
+							"savingThrow": "Fortitude",
+							"maxDuration": "6 rounds",
+							"stages": [
+								{
+									"stage": 1,
+									"entry": "{@damage 1d4} poison damage and {@condition enfeebled 1}",
+									"duration": "1 round"
+								},
+								{
+									"stage": 2,
+									"entry": "{@damage 2d4} poison damage and {@condition enfeebled 1}",
+									"duration": "1 round"
+								}
+							]
+						}
 					],
-					"name": "Serpentfolk Venom",
-					"entries_as_xyz": [
-						"Saving Throw DC 16 Fortitude;"
-					]
+					"name": "Serpentfolk Venom"
 				},
 				{
 					"activity": {
@@ -309,13 +323,10 @@
 						"entry": "{@as R}"
 					},
 					"entries": [
-						"As young brine dragon, but {@dice 5d6} damage and DC 30."
+						"The dragon spits a glob of caustic salt water at the creature. The creature takes {@damage 5d6} acid damage (DC 30 basic Reflex save). On a failure, the concentrate action is disrupted."
 					],
 					"name": "Brine Spit",
-					"trigger": "A creature the brine dragon observes within 30 feet uses a concentrate action",
-					"entries_as_xyz": [
-						"The dragon spits a glob of caustic salt water at the creature. The creature takes {@damage 3d6} acid damage (DC 26 basic Reflex save). On a failure, the concentrate action is disrupted."
-					]
+					"trigger": "A creature the brine dragon observes within 30 feet uses a concentrate action"
 				}
 			],
 			"speed": {
@@ -387,87 +398,6 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Primal Prepared",
-					"type": "Prepared",
-					"tradition": "Primal",
-					"DC": 29,
-					"attack": 23,
-					"entry": {
-						"0": {
-							"level": 4,
-							"spells": [
-								{
-									"name": "dancing lights"
-								},
-								{
-									"name": "detect magic"
-								},
-								{
-									"name": "electric arc"
-								},
-								{
-									"name": "prestidigitation"
-								},
-								{
-									"name": "read aura"
-								}
-							]
-						},
-						"1": {
-							"spells": [
-								{
-									"name": "feather fall"
-								},
-								{
-									"name": "negate aroma"
-								},
-								{
-									"name": "shocking grasp"
-								}
-							]
-						},
-						"2": {
-							"spells": [
-								{
-									"name": "animal messenger"
-								},
-								{
-									"name": "faerie fire"
-								},
-								{
-									"name": "speak with animals"
-								}
-							]
-						},
-						"3": {
-							"spells": [
-								{
-									"name": "earthbind"
-								},
-								{
-									"name": "haste"
-								},
-								{
-									"name": "stinking cloud"
-								}
-							]
-						},
-						"4": {
-							"spells": [
-								{
-									"name": "freedom of movement"
-								},
-								{
-									"name": "hallucinatory terrain"
-								},
-								{
-									"name": "speak with plants"
-								}
-							]
-						}
-					}
-				},
-				{
 					"name": "Primal Innate",
 					"type": "Innate",
 					"tradition": "Primal",
@@ -500,15 +430,6 @@
 				}
 			],
 			"abilitiesBot": [
-				{
-					"traits": [
-						"6th"
-					],
-					"entries": [
-						"dancing lights, detect magic, electric arc, prestidigitation, read aura Primal Prepared Spells DC 41, plus 9th heal, storm of vengeance; 8th dispel magic, moment of renewal, punishing winds; 7th energy aegis, plane shift, unfettered pack; Cantrips (9th) dancing lights, detect magic, electric arc, prestidigitation, read aura Primal Innate Spells DC 32, attack +24; 4th hydraulic torrent; 3rd hydraulic push (×3); 2nd obscuring mist."
-					],
-					"name": "Cantrips"
-				},
 				{
 					"activity": {
 						"number": 2,
@@ -1109,10 +1030,18 @@
 					"trigger": "The crystal dragon damages a creature made of flesh with a jaws {@action Strike}",
 					"frequency": "once per day",
 					"entries": [
-						"The dragon embeds transformative crystals in the creature's flesh. The creature must attempt a DC 30 Fortitude save. Critical Success The target is unaffected. Success The target is {@condition slowed 1} for 1 round as portions of its flesh turn crystalline. Failure The target is {@condition slowed 1} and must attempt a Fortitude save at the end of each of its turns; this ongoing save has the {@trait incapacitation} trait. On a failed save, the {@condition slowed} condition value increases by 1 (or by 2 on a critical failure). A successful save reduces the {@condition slowed} condition value by 1. A creature unable to act due to the {@condition slowed} condition from Crystallize Flesh is {@condition petrified} permanently, transforming into a crystalline statue. The effect ends if the creature is {@condition petrified} or the {@condition slowed} condition is removed. Critical Failure As failure, but the target is initially {@condition slowed 2}."
+						"The dragon embeds transformative crystals in the creature's flesh. The creature must attempt a DC 30 Fortitude save.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "The target is unaffected.",
+								"Success": "The target is {@condition slowed 1} for 1 round as portions of its flesh turn crystalline.",
+								"Failure": "The target is {@condition slowed 1} and must attempt a Fortitude save at the end of each of its turns; this ongoing save has the {@trait incapacitation} trait. On a failed save, the {@condition slowed} condition value increases by 1 (or by 2 on a critical failure). A successful save reduces the {@condition slowed} condition value by 1. A creature unable to act due to the {@condition slowed} condition from Crystallize Flesh is {@condition petrified} permanently, transforming into a crystalline statue. The effect ends if the creature is {@condition petrified} or the {@condition slowed} condition is removed.",
+								"Critical Failure": "As failure, but the target is initially {@condition slowed 2}."
+							}
+						}
 					],
-					"name": "Crystallize Flesh",
-					"entries_as_xyz": "Ability not found: 'Crystallize Flesh As failure, but the target is initially {@condition slowed 2}.' in Adult Crystal Dragon, p.92"
+					"name": "Crystallize Flesh"
 				},
 				{
 					"activity": {
@@ -1357,6 +1286,14 @@
 					"DC": 31,
 					"attack": 23,
 					"entry": {
+						"0": {
+							"level": 6,
+							"spells": [
+								{
+									"name": "produce flame"
+								}
+							]
+						},
 						"6": {
 							"spells": [
 								{
@@ -1373,15 +1310,6 @@
 				}
 			],
 			"abilitiesBot": [
-				{
-					"traits": [
-						"6th"
-					],
-					"entries": [
-						"produce flame."
-					],
-					"name": "Cantrips"
-				},
 				{
 					"activity": {
 						"number": 2,
@@ -1645,6 +1573,14 @@
 					"tradition": "Primal",
 					"DC": 36,
 					"entry": {
+						"0": {
+							"level": 7,
+							"spells": [
+								{
+									"name": "detect magic"
+								}
+							]
+						},
 						"7": {
 							"spells": [
 								{
@@ -1663,15 +1599,6 @@
 				}
 			],
 			"abilitiesBot": [
-				{
-					"traits": [
-						"7th"
-					],
-					"entries": [
-						"detect magic."
-					],
-					"name": "Cantrips"
-				},
 				{
 					"activity": {
 						"number": 2,
@@ -1716,12 +1643,9 @@
 				},
 				{
 					"entries": [
-						"As young umbral dragon, but {@damage 6d6} force damage to undead."
+						"An umbral dragon's Strikes affect incorporeal creatures with the effects of a ghost touch property rune, and an umbral dragon's jaws deal an additional {@damage 6d6} force damage to undead."
 					],
-					"name": "Ghost Bane",
-					"entries_as_xyz": [
-						"An umbral dragon's Strikes affect incorporeal creatures with the effects of a ghost touch property rune, and an umbral dragon's jaws deal an additional {@damage 4d6} force damage to undead."
-					]
+					"name": "Ghost Bane"
 				}
 			],
 			"inflicts": {
@@ -1880,7 +1804,16 @@
 					},
 					"requirements": "The ahuizotl has a Medium or smaller creature {@condition grabbed} with its tail claw",
 					"entries": [
-						"The ahuizotl attempts an {@skill Athletics} check against the creature's Fortitude DC. Critical Success If the creature is 10 feet away from the ahuizotl, it is dragged into a square adjacent to the ahuizotl. The ahuizotl can make a jaws {@action Strike} against the creature. Success If the creature is 10 feet away from the ahuizotl, it is dragged into a square adjacent to the ahuizotl. Failure The creature is not dragged. Critical Failure The creature is not dragged and the ahuizotl no longer has the creature {@condition grabbed}."
+						"The ahuizotl attempts an {@skill Athletics} check against the creature's Fortitude DC.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "If the creature is 10 feet away from the ahuizotl, it is dragged into a square adjacent to the ahuizotl. The ahuizotl can make a jaws {@action Strike} against the creature.",
+								"Success": "If the creature is 10 feet away from the ahuizotl, it is dragged into a square adjacent to the ahuizotl.",
+								"Failure": "The creature is not dragged.",
+								"Critical Failure": "The creature is not dragged and the ahuizotl no longer has the creature {@condition grabbed}."
+							}
+						}
 					],
 					"name": "Tail Drag"
 				}
@@ -1947,18 +1880,9 @@
 			"abilitiesTop": [
 				{
 					"entries": [
-						"3 or more days without eating, an akata can secrete resin that encases it in a noqual cocoon. The cocoon has Hardness 9, 40 HP, and a."
+						"3 or more days without eating, an akata can secrete resin that encases it in a noqual cocoon. The cocoon has Hardness 9, 40 HP, and a Broken Threshold of 18. It has resistance 5 to damage from magical sources. As long as the cocoon remains intact, the akata can't be harmed, and it doesn't need to eat or drink. While inside the cocoon, the akata gains lifesense 30 feet. The akata remains in a state of hibernation until it is exposed to extreme heat or senses a living creature, at which point it can burst free of its cocoon in {@dice 1d4} minutes."
 					],
 					"name": "Hibernation After"
-				},
-				{
-					"traits": [
-						"of"
-					],
-					"entries": [
-						"18. It has resistance 5 to damage from magical sources. As long as the cocoon remains intact, the akata can't be harmed, and it doesn't need to eat or drink. While inside the cocoon, the akata gains lifesense 30 feet. The akata remains in a state of hibernation until it is exposed to extreme heat or senses a living creature, at which point it can burst free of its cocoon in {@dice 1d4} minutes."
-					],
-					"name": "Broken Threshold"
 				},
 				{
 					"entries": [
@@ -2052,7 +1976,7 @@
 								"disease"
 							],
 							"note": " An akata implants its parasitic larval young into\nany creature it bites, but only Medium or Small humanoids\nmake suitable hosts; all other creatures are immune to\nthis disease",
-							"DC": "17",
+							"DC": 17,
 							"savingThrow": "Fortitude",
 							"onset": null,
 							"maxDuration": null,
@@ -2222,7 +2146,8 @@
 					"name": "precision"
 				},
 				{
-					"name": "protean"
+					"name": "protean anatomy",
+					"amount": 6
 				}
 			],
 			"abilitiesMid": [
@@ -2799,13 +2724,10 @@
 						"entry": "{@as R}"
 					},
 					"entries": [
-						"As young brine dragon, but {@dice 7d6} damage and DC 36."
+						"The dragon spits a glob of caustic salt water at the creature. The creature takes {@damage 7d6} acid damage (DC 36 basic Reflex save). On a failure, the concentrate action is disrupted."
 					],
 					"name": "Brine Spit",
-					"trigger": "A creature the brine dragon observes within 30 feet uses a concentrate action",
-					"entries_as_xyz": [
-						"The dragon spits a glob of caustic salt water at the creature. The creature takes {@damage 3d6} acid damage (DC 26 basic Reflex save). On a failure, the concentrate action is disrupted."
-					]
+					"trigger": "A creature the brine dragon observes within 30 feet uses a concentrate action"
 				}
 			],
 			"speed": {
@@ -2951,12 +2873,9 @@
 						"unit": "action"
 					},
 					"entries": [
-						"As adult brine dragon, but {@damage 6d6} {@condition persistent damage ||persistent acid damage} and {@condition sickened 3}."
+						"The dragon makes a jaws {@action Strike}. On a hit, the target takes {@damage 6d6} {@condition persistent damage ||persistent acid damage}, and is {@condition sickened 3} from the pain of salt and brine in its wounds."
 					],
-					"name": "Desiccating Bite",
-					"entries_as_xyz": [
-						"The dragon makes a jaws {@action Strike}. On a hit, the target takes {@damage 4d6} {@condition persistent damage ||persistent acid damage}, and is {@condition sickened 2} from the pain of salt and brine in its wounds."
-					]
+					"name": "Desiccating Bite"
 				},
 				{
 					"activity": {
@@ -3614,13 +3533,21 @@
 						"primal",
 						"transmutation"
 					],
+					"trigger": "The crystal dragon damages a creature made of flesh with a jaws {@action Strike}",
 					"frequency": "once per day",
 					"entries": [
-						"As adult crystal dragon, but DC 37."
+						"The dragon embeds transformative crystals in the creature's flesh. The creature must attempt a DC 37 Fortitude save.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "The target is unaffected.",
+								"Success": "The target is {@condition slowed 1} for 1 round as portions of its flesh turn crystalline.",
+								"Failure": "The target is {@condition slowed 1} and must attempt a Fortitude save at the end of each of its turns; this ongoing save has the {@trait incapacitation} trait. On a failed save, the {@condition slowed} condition value increases by 1 (or by 2 on a critical failure). A successful save reduces the {@condition slowed} condition value by 1. A creature unable to act due to the {@condition slowed} condition from Crystallize Flesh is {@condition petrified} permanently, transforming into a crystalline statue. The effect ends if the creature is {@condition petrified} or the {@condition slowed} condition is removed.",
+								"Critical Failure": "As failure, but the target is initially {@condition slowed 2}."
+							}
+						}
 					],
-					"name": "Crystallize Flesh",
-					"trigger": "The crystal dragon damages a creature made of flesh with a jaws {@action Strike}",
-					"entries_as_xyz": "Ability not found: 'Crystallize Flesh As failure, but the target is initially {@condition slowed 2}.' in Adult Crystal Dragon, p.92"
+					"name": "Crystallize Flesh"
 				},
 				{
 					"activity": {
@@ -3956,12 +3883,9 @@
 						"unit": "action"
 					},
 					"entries": [
-						"As adult magma dragon, but the {@condition persistent damage} is {@dice 5d6}."
+						"If the next action the dragon uses is Breath Weapon, the magma clings to those it damages. Each creature that fails its save against the Breath Weapon takes {@damage 5d6} {@condition persistent damage ||persistent fire damage}, and as long as it has this {@condition persistent damage ||persistent fire damage}, it also takes a \u201310-foot status penalty to its Speeds."
 					],
-					"name": "Volcanic Purge",
-					"entries_as_xyz": [
-						"If the next action the dragon uses is Breath Weapon, the magma clings to those it damages. Each creature that fails its save against the Breath Weapon takes {@damage 4d6} {@condition persistent damage ||persistent fire damage}, and as long as it has this {@condition persistent damage ||persistent fire damage}, it also takes a \u201310-foot status penalty to its Speeds."
-					]
+					"name": "Volcanic Purge"
 				}
 			],
 			"inflicts": {
@@ -4229,28 +4153,30 @@
 						"unit": "action"
 					},
 					"entries": [
-						"As adult umbral dragon, but a 50-foot cone, DC 42, the dragon's negative breath deals {@damage 21d6} negative damage or {@damage 25d6} force damage to undead, and the dragon's shadow breath causes {@condition enfeebled 3}."
-					],
-					"name": "Breath Weapon",
-					"entries_as_xyz": [
 						"The umbral dragon breathes in one of two ways. They can't use Breath Weapon again for {@dice 1d4} rounds.",
 						{
 							"type": "list",
 							"items": [
-								"{@bold Negative} (necromancy, negative, primal) The dragon breathes a blast of darkness in a 40-foot cone that deals {@damage 16d6} negative damage (DC 36 basic Reflex save). Undead creatures take {@damage 19d6} force damage instead of the negative damage.",
-								"{@bold Shadows} (necromancy, primal, shadow) The dragon breathes a blast of shadows in a 40-foot cone. Each creature within the cone must attempt a DC 36 Fortitude save."
+								"{@bold Negative} (necromancy, negative, primal) The dragon breathes a blast of darkness in a 50-foot cone that deals {@damage 21d6} negative damage (DC 42 basic Reflex save). Undead creatures take {@damage 25d6} force damage instead of the negative damage.",
+								{
+									"type": "item",
+									"entries": [
+										"{@bold Shadows} (necromancy, primal, shadow) The dragon breathes a blast of shadows in a 50-foot cone. Each creature within the cone must attempt a DC 42 Fortitude save.",
+										{
+											"type": "successDegree",
+											"entries": {
+												"Critical Success": "The creature is unaffected.",
+												"Success": "The creature is {@condition enfeebled 3} for 1 round.",
+												"Failure": "The creature is {@condition enfeebled 3} for 1 minute.",
+												"Critical Failure": "The creature is {@condition enfeebled 3} for 1 minute and {@condition blinded} for 1 round."
+											}
+										}
+									]
+								}
 							]
-						},
-						{
-							"type": "successDegree",
-							"entries": {
-								"Critical Success": "The creature is unaffected.",
-								"Success": "The creature is {@condition enfeebled 2} for 1 round.",
-								"Failure": "The creature is {@condition enfeebled 2} for 1 minute.",
-								"Critical Failure": "The creature is {@condition enfeebled 2} for 1 minute and {@condition blinded} for 1 round."
-							}
 						}
-					]
+					],
+					"name": "Breath Weapon"
 				},
 				{
 					"activity": {
@@ -4280,12 +4206,9 @@
 				},
 				{
 					"entries": [
-						"As young umbral dragon, but {@damage 8d6} force damage to undead."
+						"An umbral dragon's Strikes affect incorporeal creatures with the effects of a ghost touch property rune, and an umbral dragon's jaws deal an additional {@damage 8d6} force damage to undead."
 					],
-					"name": "Ghost Bane",
-					"entries_as_xyz": [
-						"An umbral dragon's Strikes affect incorporeal creatures with the effects of a ghost touch property rune, and an umbral dragon's jaws deal an additional {@damage 4d6} force damage to undead."
-					]
+					"name": "Ghost Bane"
 				}
 			],
 			"inflicts": {
@@ -4476,7 +4399,7 @@
 								"occult"
 							],
 							"note": " An animate\ndream's touch fills the victim's mind with terrifying visions",
-							"DC": "26",
+							"DC": 26,
 							"savingThrow": "Fortitude",
 							"onset": null,
 							"maxDuration": null,
@@ -5024,7 +4947,16 @@
 			],
 			"resistances": [
 				{
-					"name": "bludgeoning"
+					"name": "bludgeoning",
+					"amount": 2
+				},
+				{
+					"name": "piercing",
+					"amount": 5
+				},
+				{
+					"name": "slashing",
+					"amount": 5
 				}
 			],
 			"abilitiesMid": [
@@ -5165,13 +5097,9 @@
 					],
 					"entries": [
 						"Trigger The assassin vine detects a creature within 20 feet via tremorsense; The assassin vine causes vegetation within a 20-foot emanation to writhe for 1 round, turning this area into {@quickref difficult terrain||3|terrain}. When a creature starts its turn in this area, it must attempt a DC 20 Reflex save. On a failure, it takes a \u201310-foot circumstance penalty to its Speeds until it leaves the area, and on a critical failure it is also {@condition immobilized} for 1 round. A creature can attempt to {@action Escape} to remove these effects.",
-						"Assassin vines are immune."
+						"Assassin vines are immune to Grasping Foliage."
 					],
 					"name": "Grasping Foliage"
-				},
-				{
-					"entries": [],
-					"name": "to Grasping Foliage."
 				}
 			],
 			"speed": {
@@ -5305,16 +5233,10 @@
 						"entry": "{@as R}"
 					},
 					"entries": [
-						"An athach gains an extra reaction at the start of each of its turns that it can use only to make an {@action Attack of Opportunity} with its claw. It can't use more than one."
+						"An athach gains an extra reaction at the start of each of its turns that it can use only to make an {@action Attack of Opportunity} with its claw. It can't use more than one Attack of Opportunity triggered by the same action."
 					],
 					"name": "Attack of Opportunity",
 					"generic": true
-				},
-				{
-					"entries": [
-						"Opportunity triggered by the same action."
-					],
-					"name": "Attack of"
 				},
 				{
 					"activity": {
@@ -5396,7 +5318,7 @@
 								"poison"
 							],
 							"note": "",
-							"DC": "32",
+							"DC": 32,
 							"savingThrow": "Fortitude",
 							"onset": null,
 							"maxDuration": "6 rounds",
@@ -5759,7 +5681,9 @@
 					"name": "mental"
 				},
 				{
-					"name": "physical"
+					"name": "physical",
+					"amount": 15,
+					"note": "exept cold iron"
 				}
 			],
 			"abilitiesMid": [],
@@ -5892,7 +5816,7 @@
 								"occult"
 							],
 							"note": "",
-							"DC": "34",
+							"DC": 34,
 							"savingThrow": "Fortitude",
 							"onset": null,
 							"maxDuration": null,
@@ -6413,7 +6337,7 @@
 						"prediction"
 					],
 					"entries": [
-						"An akizendri can anticipate the most likely location of a creature through their supernatural insight into the forces of chaotic probabilities and chance. This grants the akizendri the ability to sense creatures within the listed range. A creature under the effects of nondetection or that is otherwise shielded from divinations and predictions cannot be noticed via entropy sense."
+						"An Azuretzi can anticipate the most likely location of a creature through their supernatural insight into the forces of chaotic probabilities and chance. This grants the azuretzi the ability to sense creatures within the listed range. A creature under the effects of nondetection or that is otherwise shielded from divinations and predictions cannot be noticed via entropy sense."
 					],
 					"name": "Entropy Sense"
 				}
@@ -6466,8 +6390,8 @@
 						"transmutation"
 					],
 					"entries": [
-						"An akizendri's vital organs shift and change shape and position constantly. Immediately after the akizendri takes acid, electricity, or sonic damage, it gains the listed amount of resistance to that damage type. This lasts for 1 hour or until the next time the protean takes damage of one of the other types (in which case its resistance changes to match that type), whichever comes first.",
-						"The akizendri is immune to {@trait polymorph} effects unless it is a willing target. If {@condition blinded} or {@condition deafened}, the akizendri automatically recovers at the end of its next turn as new sensory organs grow to replace the compromised ones."
+						"An azuretzi's vital organs shift and change shape and position constantly. Immediately after the azuretzi takes acid, electricity, or sonic damage, it gains the listed amount of resistance to that damage type. This lasts for 1 hour or until the next time the protean takes damage of one of the other types (in which case its resistance changes to match that type), whichever comes first.",
+						"The azuretzi is immune to {@trait polymorph} effects unless it is a willing target. If {@condition blinded} or {@condition deafened}, the akizendri automatically recovers at the end of its next turn as new sensory organs grow to replace the compromised ones."
 					],
 					"name": "Protean Anatomy"
 				},
@@ -6589,20 +6513,20 @@
 									"name": "dimension door"
 								}
 							]
+						},
+						"constant": {
+							"4": {
+								"spells": [
+									{
+										"name": "freedom of movement"
+									}
+								]
+							}
 						}
 					}
 				}
 			],
 			"abilitiesBot": [
-				{
-					"traits": [
-						"4th"
-					],
-					"entries": [
-						"freedom of movement."
-					],
-					"name": "Constant"
-				},
 				{
 					"activity": {
 						"number": 1,
@@ -6626,12 +6550,32 @@
 						"transmutation"
 					],
 					"entries": [
-						"As Change Shape, but an azuretzi can assume the specific form of a Medium or smaller creature it Seeks with a successful DC 25."
+						"As {@ability Change Shape}, but an azuretzi can assume the specific form of a Medium or smaller creature it {@action Seek||Seeks} with a successful DC 25."
 					],
-					"name": "Change Shape",
-					"entries_as_xyz": [
-						"The monster changes its shape indefinitely. It can use this action again to return to its natural shape or adopt a new shape. Unless otherwise noted, a monster cannot use Change Shape to appear as a specific individual. Using Change Shape counts as creating a disguise for the {@action Impersonate} use of {@skill Deception}. The monster's transformation automatically defeats {@skill Perception} DCs to determine whether the creature is a member of the ancestry or creature type into which it transformed, and it gains a +4 status bonus to its {@skill Deception} DC to prevent others from seeing through its disguise. Change Shape abilities specify what shapes the monster can adopt. The monster doesn't gain any special abilities of the new shape, only its physical form. For example, in each shape, it replaces its normal Speeds and Strikes, and might potentially change its senses or size. Any changes are listed in its stat block."
-					]
+					"name": "Mimic Form"
+				},
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"traits": [
+						"abjuration",
+						"divine"
+					],
+					"entries": [
+						"The azuretzi mocks a creature's magical ability with na touch. The azuretzi must attempt a {@skill Thievery} check against the target's Will DC.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "The azuretzi chooses one spell of up to 3rd level that the target creature has available to cast. The azuretzi gains that spell as a mock divine innate spell, and it can cast that spell once as an innate divine spell using its own DC and spell attack. It must do so before 24 hours pass or the mock spell is lost. The creature touched cannot cast the mock spell until the azuretzi casts it first or the 24 hour period passes, whichever comes first.",
+								"Success": "As critical success, but the azuretzi has 1 hour to cast the mock spell before it is lost, and the creature touched can cast the spell normally.",
+								"Failure": "As critical success, but the azuretzi must cast the mock spell before the end of its next turn or it is lost, and the creature touched can cast the spell normally.",
+								"Critical Failure": "Mocking Touch has no effect."
+							}
+						}
+					],
+					"name": "Mocking Touch"
 				}
 			],
 			"inflicts": {
@@ -6765,7 +6709,16 @@
 					},
 					"trigger": "A creature within the babau's reach successfully hits the babau with a {@action Strike}",
 					"entries": [
-						"The babau excretes a gout of acidic, bloodlike slime against the attacker and its weapon. The attacker must attempt a DC 24 Reflex save. Critical Success The attacker is unaffected. Success The attacker takes {@damage 1d6} acid damage. Failure The attacker takes {@damage 2d6} acid damage. Critical Failure As failure, except the weapon used to {@action Strike} the babau becomes {@condition broken}, unless the weapon is made of a material that is immune to acid."
+						"The babau excretes a gout of acidic, bloodlike slime against the attacker and its weapon. The attacker must attempt a DC 24 Reflex save.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "The attacker is unaffected.",
+								"Success": "The attacker takes {@damage 1d6} acid damage.",
+								"Failure": "The attacker takes {@damage 2d6} acid damage.",
+								"Critical Failure": "As failure, except the weapon used to {@action Strike} the babau becomes {@condition broken}, unless the weapon is made of a material that is immune to acid."
+							}
+						}
 					],
 					"name": "Reactive Slime"
 				}
@@ -7193,15 +7146,9 @@
 					},
 					"requirements": "A bleeding creature is within the baobhan sith's reach",
 					"entries": [
-						"The baobhan sith tries to."
+						"The baobhan sith tries to Drink the Blood from the bleeding creature's wounds. The baobhan sith attempts an {@skill Athletics} check against the victim's Fortitude DC. On a success, the victim becomes {@condition drained 1} and the baobhan sith regains 10 HP, gaining any Hit Points in excess of their maximum Hit Points as temporary Hit Points. Drinking Blood from a victim that's already {@condition drained} doesn't restore any Hit Points to the baobhan sith but increases the victim's {@condition drained} value by 1. A victim's {@condition drained} condition decreases by 1 per week. A blood transfusion, which requires 10 minutes, a successful DC 20 {@skill Medicine} check, and sufficient blood or a blood donor, reduces the {@condition drained} value by 1."
 					],
 					"name": "Drink Blood"
-				},
-				{
-					"entries": [
-						"Blood from the bleeding creature's wounds. The baobhan sith attempts an {@skill Athletics} check against the victim's Fortitude DC. On a success, the victim becomes {@condition drained 1} and the baobhan sith regains 10 HP, gaining any Hit Points in excess of their maximum Hit Points as temporary Hit Points. Drinking Blood from a victim that's already {@condition drained} doesn't restore any Hit Points to the baobhan sith but increases the victim's {@condition drained} value by 1. A victim's {@condition drained} condition decreases by 1 per week. A blood transfusion, which requires 10 minutes, a successful DC 20 {@skill Medicine} check, and sufficient blood or a blood donor, reduces the {@condition drained} value by 1."
-					],
-					"name": "Drink the"
 				}
 			],
 			"inflicts": {
@@ -7337,7 +7284,7 @@
 								"disease"
 							],
 							"note": "",
-							"DC": "22",
+							"DC": 22,
 							"savingThrow": "Fortitude",
 							"onset": null,
 							"maxDuration": "6 rounds",
@@ -7649,15 +7596,9 @@
 						"unit": "action"
 					},
 					"entries": [
-						"The bastion archon locks itself in place, becoming voluntarily {@condition immobilized}. While Entrenched, the archon can't be forcibly moved or tripped, and it gains a +2 circumstance bonus."
+						"The bastion archon locks itself in place, becoming voluntarily {@condition immobilized}. While Entrenched, the archon can't be forcibly moved or tripped, and it gains a +2 circumstance bonus to AC and Reflex saves. Entrench ends automatically as soon as the bastion archon uses another move action."
 					],
 					"name": "Entrench"
-				},
-				{
-					"entries": [
-						"Reflex saves. Entrench ends automatically as soon as the bastion archon uses another move action."
-					],
-					"name": "to AC and"
 				},
 				{
 					"activity": {
@@ -7887,7 +7828,7 @@
 								"necromancy"
 							],
 							"note": " The {@condition drained}\ncondition from Abyssal rot is cumulative, to\na maximum of {@condition drained 4}",
-							"DC": "29",
+							"DC": 29,
 							"savingThrow": "Fortitude",
 							"onset": null,
 							"maxDuration": "6 rounds",
@@ -7914,15 +7855,9 @@
 				},
 				{
 					"entries": [
-						"A creature hit by the bebilith's web {@action Strike} is {@condition restrained} and tethered to the bebilith, preventing it from moving further away from the bebilith. The {@condition restrained} creature is also under the effects of a {@spell dimensional anchor} spell (DC 29) with a duration that lasts as long as the creature remains tethered. The bebilith can have only one creature tethered at a time. The DC to {@action Escape}."
+						"A creature hit by the bebilith's web {@action Strike} is {@condition restrained} and tethered to the bebilith, preventing it from moving further away from the bebilith. The {@condition restrained} creature is also under the effects of a {@spell dimensional anchor} spell (DC 29) with a duration that lasts as long as the creature remains tethered. The bebilith can have only one creature tethered at a time. The DC to {@action Escape} or {@action Force Open} the tether is 29. The tether can be severed with a {@action Strike} (AC 20, Hardness 2, HP 20); this ends the dimensional anchor effect but does not free the {@condition restrained} creature."
 					],
 					"name": "Dimensional Tether"
-				},
-				{
-					"entries": [
-						"Open the tether is 29. The tether can be severed with a {@action Strike} (AC 20, Hardness 2, HP 20); this ends the dimensional anchor effect but does not free the {@condition restrained} creature."
-					],
-					"name": "or Force"
 				},
 				{
 					"entries": [
@@ -8313,44 +8248,6 @@
 						"The behir moves the creature into its coils, freeing its jaws. The creature remains {@condition grabbed} and takes {@damage 1d6+6} slashing damage. The behir's coils can hold as many creatures as will fit in its space."
 					],
 					"name": "Wrap in Coils"
-				},
-				{
-					"entries": [],
-					"name": "Two Quick Flashes: Danger!"
-				},
-				{
-					"entries": [
-						"All is safe."
-					],
-					"name": "Long Pulse:"
-				},
-				{
-					"entries": [
-						"Captured food."
-					],
-					"name": "Two Long Pulses:"
-				},
-				{
-					"entries": [
-						"Come here."
-					],
-					"name": "Very Long Pulse:"
-				},
-				{
-					"entries": [
-						"Let's mate!"
-					],
-					"name": "Rapid Strobing:"
-				},
-				{
-					"entries": [],
-					"name": "Intermittent Quick Flashes: Excited!"
-				},
-				{
-					"entries": [
-						"Flash, then Darkness: Sad."
-					],
-					"name": "One Long"
 				}
 			],
 			"inflicts": {
@@ -9312,15 +9209,9 @@
 				},
 				{
 					"entries": [
-						"The blodeuwedd can use {@skill Diplomacy}."
+						"The blodeuwedd can use {@skill Diplomacy} to {@action Make an Impression} on and make very simple Requests of animals."
 					],
 					"name": "Wild Empathy"
-				},
-				{
-					"entries": [
-						"{@action Make an Impression} on and make very simple Requests of animals."
-					],
-					"name": "to"
 				}
 			],
 			"ac": {
@@ -9609,7 +9500,7 @@
 								"poison"
 							],
 							"note": "",
-							"DC": "17",
+							"DC": 17,
 							"savingThrow": "Fortitude",
 							"onset": null,
 							"maxDuration": "6 rounds",
@@ -10027,7 +9918,7 @@
 								"negative"
 							],
 							"note": "\nThis affliction can't be reduced below stage 1, nor can\nthe damage from it be healed, until it's successfully\ntreated with remove curse or a similar effect; the affliction can then be removed as normal\nfor a disease. A creature killed by bog rot\nmelts into a noxious sludge and can't be\nresurrected except by a 7th-level resurrect\nritual or similar magic",
-							"DC": "21",
+							"DC": 21,
 							"savingThrow": "Fortitude",
 							"onset": null,
 							"maxDuration": null,
@@ -10520,16 +10411,30 @@
 					"name": "Raise Serpent"
 				},
 				{
-					"traits": [
-						"poison"
-					],
 					"entries": [
-						"As zyss serpentfolk, but DC 26."
+						{
+							"type": "affliction",
+							"traits": [
+								"poison"
+							],
+							"DC": 26,
+							"savingThrow": "Fortitude",
+							"maxDuration": "6 rounds",
+							"stages": [
+								{
+									"stage": 1,
+									"entry": "{@damage 1d4} poison damage and {@condition enfeebled 1}",
+									"duration": "1 round"
+								},
+								{
+									"stage": 2,
+									"entry": "{@damage 2d4} poison damage and {@condition enfeebled 1}",
+									"duration": "1 round"
+								}
+							]
+						}
 					],
-					"name": "Serpentfolk Venom",
-					"entries_as_xyz": [
-						"Saving Throw DC 16 Fortitude;"
-					]
+					"name": "Serpentfolk Venom"
 				}
 			],
 			"inflicts": {
@@ -11000,7 +10905,8 @@
 					"name": "salt"
 				},
 				{
-					"name": "splash"
+					"name": "splash damage",
+					"amount": 5
 				}
 			],
 			"abilitiesMid": [],
@@ -11025,32 +10931,27 @@
 					"entries": [
 						{
 							"type": "affliction",
-							"name": "",
 							"traits": [
 								"poison"
 							],
-							"note": "",
-							"DC": "21",
+							"DC": 21,
 							"savingThrow": "Fortitude",
-							"onset": null,
 							"maxDuration": "6 rounds",
 							"stages": [
 								{
 									"stage": 1,
-									"entry": "{@condition clumsy 1}, {@condition sickened 1}, and \u20135‑foot status penalty to Speed ;",
+									"entry": "{@condition clumsy 1}, {@condition sickened 1}, and \u20135‑foot status penalty to Speed",
+									"duration": "1 round"
+								},
+								{
+									"stage": 2,
+									"entry": "{@condition clumsy 1}, {@condition sickened 1}, and \u201310‑foot status penalty to Speed",
 									"duration": "1 round"
 								}
 							]
 						}
 					],
 					"name": "Brood Leech Swarm Venom"
-				},
-				{
-					"traits": [
-						"1 round"
-					],
-					"entries": [],
-					"name": "to Speed"
 				}
 			],
 			"inflicts": {
@@ -11319,10 +11220,9 @@
 			"abilitiesTop": [
 				{
 					"entries": [
-						"As theletos."
+						"When a bythos conveys information, it does so wordlessly through psychic projections. This acts as telepathy with a range of 100 feet but is understandable to all creatures regardless of whether they have a language. The meaning to non-aeons can be vague and is often mysterious. A bythos can use this ability to communicate flawlessly with any other aeon on the same plane."
 					],
-					"name": "Envisioning",
-					"entries_as_xyz": "Ability not found: 'Envisioning As theletos.' in Bythos, p.11"
+					"name": "Envisioning"
 				}
 			],
 			"ac": {
@@ -11573,8 +11473,8 @@
 					"scent 60 feet"
 				],
 				"other": [
-					"darkvision",
-					"true seeing"
+					"{@ability darkvision}",
+					"{@spell true seeing}"
 				]
 			},
 			"languages": {
@@ -11660,7 +11560,7 @@
 			],
 			"speed": {
 				"abilities": [
-					"freedom of movement"
+					"{@spell freedom of movement}"
 				],
 				"walk": 35,
 				"climb ": 40,
@@ -11723,6 +11623,13 @@
 					"DC": 40,
 					"entry": {
 						"constant": {
+							"7": {
+								"spells": [
+									{
+										"name": "true seeing"
+									}
+								]
+							},
 							"8": {
 								"spells": [
 									{
@@ -11736,9 +11643,11 @@
 			],
 			"abilitiesBot": [
 				{
-					"entries": [
-						"Primal Innate Spells DC 40; Constant (8th) freedom of movement; (7th) true seeing."
-					],
+					"activity": {
+						"unit": "free",
+						"number": 1
+					},
+					"entries": [],
 					"name": "Improved Grab",
 					"generic": true
 				},
@@ -11754,8 +11663,7 @@
 					],
 					"entries": [
 						"The cairn linnorm expels a 60-foot cone of negative energy\u2013infused acid, dealing {@damage 19d6} acid damage to creatures in the area (DC 40 basic Reflex save)",
-						"The acid also saps the life out of affected creatures. At the beginning of the linnorm's next turn, each creature that failed the Reflex save must succeed at a DC 40 Fortitude save or become {@condition drained 1} ({@condition drained 2} on a critical failure). The cairn linnorm can't use Breath Weapon again for {@dice 1d4} rounds.",
-						"and in the first Bestiary constitute the."
+						"The acid also saps the life out of affected creatures. At the beginning of the linnorm's next turn, each creature that failed the Reflex save must succeed at a DC 40 Fortitude save or become {@condition drained 1} ({@condition drained 2} on a critical failure). The cairn linnorm can't use Breath Weapon again for {@dice 1d4} rounds."
 					],
 					"name": "Breath Weapon"
 				},
@@ -11769,7 +11677,7 @@
 								"poison"
 							],
 							"note": "",
-							"DC": "41",
+							"DC": 41,
 							"savingThrow": "Fortitude",
 							"onset": null,
 							"maxDuration": "10 rounds",
@@ -12604,10 +12512,18 @@
 					],
 					"frequency": "three times per day",
 					"entries": [
-						"The carbuncle concentrates on a creature it can see and tries to manipulate that creature. The target must attempt a DC 18 Will save. The target then becomes temporarily immune for 24 hours. Critical Success The attempt backfires and bolsters the target's mind instead, granting it a +1 status bonus to Will saving throws for 1 hour. Success The target briefly experiences an unusual but harmless sensation like an unexpected flavor or scent, an urge to eat something strange, or an amusing half-forgotten memory. Failure The target is compelled to spend all of its actions on its next turn performing harmless, pointless, and usually embarrassing actions. Critical Failure As failure, but the compulsion persists for 1 minute. The target can attempt a new save at the end of its turn each round to end the effect."
+						"The carbuncle concentrates on a creature it can see and tries to manipulate that creature. The target must attempt a DC 18 Will save. The target then becomes temporarily immune for 24 hours.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "The attempt backfires and bolsters the target's mind instead, granting it a +1 status bonus to Will saving throws for 1 hour.",
+								"Success": "The target briefly experiences an unusual but harmless sensation like an unexpected flavor or scent, an urge to eat something strange, or an amusing half-forgotten memory.",
+								"Failure": "The target is compelled to spend all of its actions on its next turn performing harmless, pointless, and usually embarrassing actions.",
+								"Critical Failure": "As failure, but the compulsion persists for 1 minute. The target can attempt a new save at the end of its turn each round to end the effect."
+							}
+						}
 					],
-					"name": "Specious Suggestion",
-					"entries_as_xyz": "Ability not found: 'Specious Suggestion As failure, but the compulsion persists for 1 minute. The target can attempt a new save at the end of its turn each round to end the effect.' in Carbuncle, p.47"
+					"name": "Specious Suggestion"
 				}
 			],
 			"inflicts": {
@@ -12941,7 +12857,7 @@
 								"disease"
 							],
 							"note": " The {@condition sickened} and {@condition unconscious} conditions from filth fever can't\nend or be reduced until the disease is cured",
-							"DC": "19",
+							"DC": 19,
 							"savingThrow": "Fortitude",
 							"onset": null,
 							"maxDuration": null,
@@ -13416,24 +13332,13 @@
 						{
 							"type": "successDegree",
 							"entries": {
-								"Success": "The creature is unaffected and is temporarily immune"
-							}
-						}
-					],
-					"name": "Compel Condemned"
-				},
-				{
-					"entries": [
-						"Condemned for 24 hours.",
-						{
-							"type": "successDegree",
-							"entries": {
+								"Success": "The creature is unaffected and is temporarily immune to Compel Condemned for 24 hours.",
 								"Failure": "The creature must spend each of its actions to move closer to the catrina as quickly as possible, while avoiding obvious dangers. If the compelled creature is adjacent to the catrina, it stays still and doesn't act. If the creature takes any damage, the effect ends and the creature is temporarily immune to Compel Condemned for 24 hours. This effect lasts for 1 round, but if the catrina uses this ability again on subsequent rounds, it extend the duration by 1 round for all affected creatures.",
 								"Critical Failure": "As failure, but damage does not end the effect."
 							}
 						}
 					],
-					"name": "to Compel"
+					"name": "Compel Condemned"
 				},
 				{
 					"activity": {
@@ -13713,7 +13618,7 @@
 								"poison"
 							],
 							"note": "",
-							"DC": "17",
+							"DC": 17,
 							"savingThrow": "Fortitude",
 							"onset": null,
 							"maxDuration": "6\nrounds",
@@ -14889,16 +14794,30 @@
 					"name": "Maintain Disguise A"
 				},
 				{
-					"traits": [
-						"poison"
-					],
 					"entries": [
-						"As zyss serpentfolk, but DC 19."
+						{
+							"type": "affliction",
+							"traits": [
+								"poison"
+							],
+							"DC": 19,
+							"savingThrow": "Fortitude",
+							"maxDuration": "6 rounds",
+							"stages": [
+								{
+									"stage": 1,
+									"entry": "{@damage 1d4} poison damage and {@condition enfeebled 1}",
+									"duration": "1 round"
+								},
+								{
+									"stage": 2,
+									"entry": "{@damage 2d4} poison damage and {@condition enfeebled 1}",
+									"duration": "1 round"
+								}
+							]
+						}
 					],
-					"name": "Serpentfolk Venom",
-					"entries_as_xyz": [
-						"Saving Throw DC 16 Fortitude;"
-					]
+					"name": "Serpentfolk Venom"
 				},
 				{
 					"entries": [
@@ -15920,7 +15839,7 @@
 								"disease"
 							],
 							"note": " A creature bitten by a cythnigot\nbecomes afflicted by fast-growing spores that swiftly grow\ninto twitching spikes and hideous pallid growths of hairlike\nfibers. These growths erupt from the bite wound and writhe\nand wrap around the creature's limbs. Plant creatures take\na \u20132 circumstance penalty to save against tangle spores",
-							"DC": "17",
+							"DC": 17,
 							"savingThrow": "Fortitude",
 							"onset": null,
 							"maxDuration": "6 rounds",
@@ -16258,15 +16177,20 @@
 			},
 			"resistances": [
 				{
-					"name": "critical"
+					"name": "critical hits",
+					"amount": 10
+				},
+				{
+					"name": "precision",
+					"amount": 10
 				}
 			],
 			"abilitiesMid": [
 				{
 					"entries": [
-						"Leng don't need to breathe."
+						"Denizens of Leng don't need to breathe."
 					],
-					"name": "No Breath Denizens of"
+					"name": "No Breath"
 				},
 				{
 					"entries": [
@@ -16323,6 +16247,26 @@
 					"DC": 27,
 					"attack": 19,
 					"entry": {
+						"0": {
+							"level": 4,
+							"spells": [
+								{
+									"name": "chill touch"
+								},
+								{
+									"name": "detect magic"
+								},
+								{
+									"name": "mage hand"
+								},
+								{
+									"name": "message"
+								},
+								{
+									"name": "read aura"
+								}
+							]
+						},
 						"2": {
 							"spells": [
 								{
@@ -16358,20 +16302,20 @@
 									"name": "suggestion"
 								}
 							]
+						},
+						"constant": {
+							"4": {
+								"spells": [
+									{
+										"name": "tongues"
+									}
+								]
+							}
 						}
 					}
 				}
 			],
 			"abilitiesBot": [
-				{
-					"traits": [
-						"4th"
-					],
-					"entries": [
-						"chill touch, detect magic, mage hand, message, read aura; Constant (4th) tongues."
-					],
-					"name": "Cantrips"
-				},
 				{
 					"traits": [
 						"curse",
@@ -17070,7 +17014,8 @@
 					"default": 12
 				},
 				"Athletics": {
-					"default": 9
+					"default": 9,
+					"to {@action Leap} or {@action Climb}": 12
 				},
 				"Stealth": {
 					"default": 14
@@ -17088,12 +17033,6 @@
 				"Cha": -5
 			},
 			"abilitiesTop": [
-				{
-					"entries": [
-						"+14, {@skill Thievery} +15 Str +2, Dex +5, Con +1, Int \u20135, Wis +0, Cha \u20135."
-					],
-					"name": "or Climb), Stealth"
-				},
 				{
 					"entries": [
 						"A dig-widget's face consists of a set of infiltrator thieves' tools. They can be salvaged from a destroyed dig-widget with a successful DC 20 {@skill Crafting} check. On a failed check, the tools are destroyed."
@@ -17373,9 +17312,7 @@
 			],
 			"abilitiesBot": [
 				{
-					"entries": [
-						"Occult Innate Spells DC 28; Constant (6th) see invisibility."
-					],
+					"entries": [],
 					"name": "Improved Grab",
 					"generic": true
 				},
@@ -17397,7 +17334,7 @@
 					},
 					"requirements": "The doprillu has a creature {@condition grabbed}",
 					"entries": [
-						"The doprillu whirls the {@condition grabbed} creature about, making a Body {@action Strike} against each creature in reach. After that {@action Strike}, the doprillu can hurl the {@condition grabbed} creature up to 50 feet as a ranged {@action Strike}. This {@action Strike} has the same attack modifier and damage as Body {@action Strike}, but has the thrown 20 feet weapon trait Primal Prepared Spells DC 26, attack +20; 3rd haste, lightning bolt, slow; 2nd animal messenger, humanoid form, water breathing; 1st create water, grease, negate aroma;"
+						"The doprillu whirls the {@condition grabbed} creature about, making a Body {@action Strike} against each creature in reach. After that {@action Strike}, the doprillu can hurl the {@condition grabbed} creature up to 50 feet as a ranged {@action Strike}. This {@action Strike} has the same attack modifier and damage as Body {@action Strike}, but has the thrown 20 feet weapon trait."
 					],
 					"name": "Whirlwind Throw"
 				}
@@ -18339,7 +18276,7 @@
 								"poison"
 							],
 							"note": "",
-							"DC": "16",
+							"DC": 16,
 							"savingThrow": "Fortitude",
 							"onset": null,
 							"maxDuration": "4 rounds",
@@ -19054,10 +18991,9 @@
 			"abilitiesBot": [
 				{
 					"entries": [
-						"As living boulder above."
+						"An earthen destrier can {@action Burrow} through earthen matter, including rock. When it does so, it moves at its full burrow Speed, leaving no tunnels or signs of its passing."
 					],
-					"name": "Earth Glide",
-					"entries_as_xyz": "Ability not found: 'Earth Glide As living boulder above.' in Earthen Destrier, p.108"
+					"name": "Earth Glide"
 				},
 				{
 					"entries": [
@@ -20424,7 +20360,7 @@
 								"disease"
 							],
 							"note": " The victim can't reduce its {@condition sickened} condition while it's affected\nby pyrexic malaria",
-							"DC": "20",
+							"DC": 20,
 							"savingThrow": "Fortitude",
 							"onset": "4 days",
 							"maxDuration": null,
@@ -20942,7 +20878,7 @@
 								"poison"
 							],
 							"note": "",
-							"DC": "24",
+							"DC": 24,
 							"savingThrow": "Fortitude",
 							"onset": null,
 							"maxDuration": "6\nrounds",
@@ -21224,13 +21160,10 @@
 						"transmutation"
 					],
 					"entries": [
-						"As onidoshi, but into a fire giant."
+						"The fire yai takes on the appearance of a {@creature fire giant}. This doesn't change their Speed or {@action Strike} attack and damage."
 					],
 					"name": "Change Shape",
-					"generic": true,
-					"entries_as_xyz": [
-						"The onidoshi takes on the appearance of an ogre. This doesn't change their Speed or {@action Strike} attack and damage."
-					]
+					"generic": true
 				},
 				{
 					"activity": {
@@ -21503,7 +21436,7 @@
 								"poison"
 							],
 							"note": "",
-							"DC": "37",
+							"DC": 37,
 							"savingThrow": "Fortitude",
 							"onset": null,
 							"maxDuration": "10\nrounds",
@@ -21768,7 +21701,7 @@
 								"poison"
 							],
 							"note": "",
-							"DC": "19",
+							"DC": 19,
 							"savingThrow": "Fortitude",
 							"onset": null,
 							"maxDuration": "6\nrounds",
@@ -22596,7 +22529,7 @@
 								"disease"
 							],
 							"note": " A ghonhatine's vomit\ncarries an awful disease that, over time, can cause a suffering creature's flesh to\ndevelop painful boils that eventually\nslough away, leaving gaping wounds",
-							"DC": "28",
+							"DC": 28,
 							"savingThrow": "Fortitude",
 							"onset": null,
 							"maxDuration": null,
@@ -22912,7 +22845,7 @@
 								"poison"
 							],
 							"note": "",
-							"DC": "18",
+							"DC": 18,
 							"savingThrow": "Fortitude",
 							"onset": null,
 							"maxDuration": "4 rounds",
@@ -23553,7 +23486,16 @@
 					},
 					"trigger": "The giant crawling hand takes piercing or slashing damage",
 					"entries": [
-						"A random creature adjacent to the giant crawling hand is sprayed with vile pus that deals {@damage 4d6} negative damage. The affected creature must attempt a DC 21 Reflex save. Critical Success The creature takes no damage. Success The creature takes half damage and becomes {@condition sickened 1}. Failure The creature takes full damage and becomes {@condition sickened 2}. Critical Failure The creature takes double damage and becomes {@condition sickened 3}."
+						"A random creature adjacent to the giant crawling hand is sprayed with vile pus that deals {@damage 4d6} negative damage. The affected creature must attempt a DC 21 Reflex save.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "The creature takes no damage.",
+								"Success": "The creature takes half damage and becomes {@condition sickened 1}.",
+								"Failure": "The creature takes full damage and becomes {@condition sickened 2}.",
+								"Critical Failure": "The creature takes double damage and becomes {@condition sickened 3}."
+							}
+						}
 					],
 					"name": "Pus Burst"
 				}
@@ -23951,7 +23893,7 @@
 								"virulent"
 							],
 							"note": " A giant fly could\ncarry any disease, but most transmit a\nvirulent but not fatal infection called {@action Fly}\nPox with their bite",
-							"DC": "16",
+							"DC": 16,
 							"savingThrow": "Fortitude",
 							"onset": "1 day",
 							"maxDuration": null,
@@ -24761,7 +24703,7 @@
 								"disease"
 							],
 							"note": " The victim can't reduce its {@condition sickened} condition while it's\naffected by septic malaria",
-							"DC": "24",
+							"DC": 24,
 							"savingThrow": "Fortitude",
 							"onset": "1 day",
 							"maxDuration": null,
@@ -25085,12 +25027,9 @@
 						"unit": "action"
 					},
 					"entries": [
-						"As snapping turtle, but AC 30."
+						"The snapping turtle retracts its limbs and head into its shell and ends its turn. This increases its AC to 30, but it can't act except to reemerge, which it can do as a single action."
 					],
-					"name": "Shell Defense",
-					"entries_as_xyz": [
-						"The snapping turtle retracts its limbs and head into its shell and ends its turn. This increases its AC to 18, but it can't act except to reemerge, which it can do as a single action."
-					]
+					"name": "Shell Defense"
 				},
 				{
 					"activity": {
@@ -25534,7 +25473,7 @@
 								"disease"
 							],
 							"note": "",
-							"DC": "17",
+							"DC": 17,
 							"savingThrow": "Fortitude",
 							"onset": "1 day",
 							"maxDuration": null,
@@ -25683,7 +25622,7 @@
 								"poison"
 							],
 							"note": "",
-							"DC": "19",
+							"DC": 19,
 							"savingThrow": "Fortitude",
 							"onset": null,
 							"maxDuration": "6 rounds",
@@ -25877,7 +25816,7 @@
 								"poison"
 							],
 							"note": "",
-							"DC": "19",
+							"DC": 19,
 							"savingThrow": "Fortitude",
 							"onset": null,
 							"maxDuration": "6 rounds",
@@ -27376,7 +27315,7 @@
 								"poison"
 							],
 							"note": "",
-							"DC": "22",
+							"DC": 22,
 							"savingThrow": "Fortitude",
 							"onset": null,
 							"maxDuration": "6 rounds",
@@ -27506,22 +27445,10 @@
 						"entry": "{@as R}"
 					},
 					"entries": [
-						"A grindylow gains 1 extra reaction at the start of each of its turns that it can use only to make an Attack."
+						"A grindylow gains 1 extra reaction at the start of each of its turns that it can use only to make an Attack of Opportunity with a tentacle. It can't use more than one Attack of Opportunity triggered by the same choice."
 					],
 					"name": "Attack of Opportunity",
 					"generic": true
-				},
-				{
-					"entries": [
-						"Opportunity with a tentacle. It can't use more than one."
-					],
-					"name": "of"
-				},
-				{
-					"entries": [
-						"Opportunity triggered by the same choice."
-					],
-					"name": "Attack of"
 				}
 			],
 			"speed": {
@@ -28612,15 +28539,9 @@
 						"unit": "action"
 					},
 					"entries": [
-						"The hamatula makes a barb {@action Strike}, then {@action Stride||Strides} up to half its Speed without triggering reactions. If."
+						"The hamatula makes a barb {@action Strike}, then {@action Stride||Strides} up to half its Speed without triggering reactions. If the {@action Strike} hits, the hamatula impales the target with one of its barbs and snaps the barb free as it moves away from the target. This deals an additional {@damage 2d8} piercing damage to the target and pins it to an adjacent surface, rendering it {@condition immobilized} ({@action Escape} DC 29)."
 					],
 					"name": "Impaling Barb"
-				},
-				{
-					"entries": [
-						"{@action Strike} hits, the hamatula impales the target with one of its barbs and snaps the barb free as it moves away from the target. This deals an additional {@damage 2d8} piercing damage to the target and pins it to an adjacent surface, rendering it {@condition immobilized} ({@action Escape} DC 29)."
-					],
-					"name": "the"
 				},
 				{
 					"entries": [
@@ -29858,20 +29779,20 @@
 									"name": "dimension door"
 								}
 							]
+						},
+						"constant": {
+							"5": {
+								"spells": [
+									{
+										"name": "tongues"
+									}
+								]
+							}
 						}
 					}
 				}
 			],
 			"abilitiesBot": [
-				{
-					"traits": [
-						"5th"
-					],
-					"entries": [
-						"tongues."
-					],
-					"name": "Constant"
-				},
 				{
 					"entries": [
 						"Once per day, if an archon sees another creature cast {@spell dimension door}, the archon can use dimension door (heightened to 5th level) within 1 round to attempt to follow that creature to the maximum distance of the archon's dimension door. If the archon's dimension door has enough distance, the archon appears the same distance and direction from the creature as before either creature used dimension door."
@@ -30131,15 +30052,9 @@
 					},
 					"entries": [
 						"The hound of Tindalos casts a 4th‑level {@spell dimension door} spell, but it must transport itself into a space adjacent to an angle of 90o (or more acute) in the structure or environment around it. For example, it could teleport to a space adjacent to a wall (using the angle between the wall and floor) or a corner in a room, or adjacent to a sizable tree growing straight up out of the ground, but not to a flat plain or a room with only curved corners and edges.",
-						"Once per day, the hound can use this ability to plane shift to or from."
+						"Once per day, the hound can use this ability to plane shift to or from the Dimension of Time, with the same restrictions on what angles it can appear next to."
 					],
 					"name": "Angled Entry"
-				},
-				{
-					"entries": [
-						"Time, with the same restrictions on what angles it can appear next to."
-					],
-					"name": "the Dimension of"
 				}
 			],
 			"inflicts": {
@@ -30239,7 +30154,9 @@
 			},
 			"resistances": [
 				{
-					"name": "physical"
+					"name": "physical",
+					"amount": 5,
+					"note": "exept adamantine and bludgeoning"
 				}
 			],
 			"abilitiesMid": [
@@ -30701,13 +30618,10 @@
 						"transmutation"
 					],
 					"entries": [
-						"As onidoshi, but into a frost giant."
+						"The ice yai takes on the appearance of an {@creature frost giant}. This doesn't change their Speed or {@action Strike} attack and damage."
 					],
 					"name": "Change Shape",
-					"generic": true,
-					"entries_as_xyz": [
-						"The onidoshi takes on the appearance of an ogre. This doesn't change their Speed or {@action Strike} attack and damage."
-					]
+					"generic": true
 				},
 				{
 					"activity": {
@@ -31454,7 +31368,8 @@
 					"name": "precision"
 				},
 				{
-					"name": "protean"
+					"name": "protean anatomy",
+					"amount": 15
 				}
 			],
 			"abilitiesMid": [
@@ -32970,7 +32885,7 @@
 								"virulent"
 							],
 							"note": " Isqulugia's {@condition sickened}, {@condition slowed}, and {@condition paralyzed}\nconditions can't be removed until this affliction is removed",
-							"DC": "30",
+							"DC": 30,
 							"savingThrow": "Fortitude",
 							"onset": null,
 							"maxDuration": null,
@@ -33917,24 +33832,13 @@
 							"type": "successDegree",
 							"entries": {
 								"Critical Success": "The creature is unaffected and is temporarily immune to Captivating Lure for 24 hours.",
-								"Success": "The creature is {@condition stupefied 1} for 1 round and is then temporarily immune to"
-							}
-						}
-					],
-					"name": "Captivating Lure"
-				},
-				{
-					"entries": [
-						"Lure for 24 hours.",
-						{
-							"type": "successDegree",
-							"entries": {
+								"Success": "The creature is {@condition stupefied 1} for 1 round and is then temporarily immune to Captivating Lure for 24 hours.",
 								"Failure": "The creature is {@condition fascinated}, and it must spend each of its actions to move closer to the kelpie as expediently as possible while avoiding obvious dangers. If a captivated creature is adjacent to the kelpie, it either attempts to mount the kelpie (if the kelpie is in equine form) or stays still and doesn't act. If the creature is attacked by the kelpie, or if it can't breathe water and enters an area of water, the creature is freed from captivation at the end of the kelpie's turn.",
 								"Critical Failure": "As failure, but the target doesn't consider water a danger and will enter an area of water even if it can't swim or breathe water. If it is attacked by the kelpie or starts to drown, it can attempt a new save at the start of its next turn, but it isn't freed automatically."
 							}
 						}
 					],
-					"name": "Captivating"
+					"name": "Captivating Lure"
 				},
 				{
 					"activity": {
@@ -33948,16 +33852,10 @@
 						"transmutation"
 					],
 					"entries": [
-						"The kelpie can take on the appearance of any."
+						"The kelpie can take on the appearance of any Medium or Large animal of an equine nature (such as a horse, hippocampus, or pony), or any Small or Medium humanoid. This doesn't change its Speeds or its attack and damage modifiers with its Strikes."
 					],
 					"name": "Change Shape",
 					"generic": true
-				},
-				{
-					"entries": [
-						"Large animal of an equine nature (such as a horse, hippocampus, or pony), or any Small or Medium humanoid. This doesn't change its Speeds or its attack and damage modifiers with its Strikes."
-					],
-					"name": "Medium or"
 				}
 			],
 			"inflicts": {
@@ -34458,20 +34356,23 @@
 									"name": "warp mind"
 								}
 							]
+						},
+						"constant": {
+							"7": {
+								"spells": [
+									{
+										"name": "air walk"
+									},
+									{
+										"name": "tongues"
+									}
+								]
+							}
 						}
 					}
 				}
 			],
 			"abilitiesBot": [
-				{
-					"traits": [
-						"7th"
-					],
-					"entries": [
-						"air walk, tongues."
-					],
-					"name": "Constant"
-				},
 				{
 					"activity": {
 						"number": 1,
@@ -34508,7 +34409,7 @@
 								"poison"
 							],
 							"note": "",
-							"DC": "33",
+							"DC": 33,
 							"savingThrow": "Fortitude",
 							"onset": null,
 							"maxDuration": "6 rounds",
@@ -34655,6 +34556,26 @@
 					"DC": 18,
 					"attack": 10,
 					"entry": {
+						"0": {
+							"level": 2,
+							"spells": [
+								{
+									"name": "dancing lights"
+								},
+								{
+									"name": "ghost sound"
+								},
+								{
+									"name": "mage hand"
+								},
+								{
+									"name": "prestidigitation"
+								},
+								{
+									"name": "telekinetic projectile"
+								}
+							]
+						},
 						"1": {
 							"spells": [
 								{
@@ -34688,15 +34609,6 @@
 				}
 			],
 			"abilitiesBot": [
-				{
-					"traits": [
-						"2nd"
-					],
-					"entries": [
-						"dancing lights, ghost sound, mage hand, prestidigitation, telekinetic projectile."
-					],
-					"name": "Cantrips"
-				},
 				{
 					"activity": {
 						"number": 2,
@@ -34915,10 +34827,19 @@
 					"tradition": "Primal",
 					"DC": 46,
 					"entry": {
+						"0": {
+							"level": 10,
+							"spells": [
+								{
+									"name": "produce flame"
+								}
+							]
+						},
 						"7": {
 							"spells": [
 								{
-									"name": "plane shift"
+									"name": "plane shift",
+									"notes": "to the {@place Material Plane}, {@place Plane of Fire}, or {@place Plane of Earth} only"
 								}
 							]
 						},
@@ -34951,12 +34872,6 @@
 			],
 			"abilitiesBot": [
 				{
-					"entries": [
-						"Earth only); Cantrips (10th) produce flame."
-					],
-					"name": "Plane, Plane of Fire, or Plane of"
-				},
-				{
 					"activity": {
 						"number": 1,
 						"unit": "action"
@@ -34980,13 +34895,7 @@
 					],
 					"entries": [
 						"The volcano on the lerritan's back erupts and sends lava bombs raining down in a 30‑foot emanation, dealing {@damage 12d12} fire damage.",
-						"Each creature in the area must attempt a DC 46 Reflex saving throw. The lava globules quickly cool into heavy stones, transforming the area into {@quickref greater difficult terrain||3|terrain} for non‑lerritans. The lerritan can't use."
-					],
-					"name": "Volcanic Eruption"
-				},
-				{
-					"entries": [
-						"Eruption for {@dice 1d4} rounds.",
+						"Each creature in the area must attempt a DC 46 Reflex saving throw. The lava globules quickly cool into heavy stones, transforming the area into {@quickref greater difficult terrain||3|terrain} for non‑lerritans. The lerritan can't use Volcanic Eruption for {@dice 1d4} rounds.",
 						{
 							"type": "successDegree",
 							"entries": {
@@ -34997,7 +34906,7 @@
 							}
 						}
 					],
-					"name": "Volcanic"
+					"name": "Volcanic Eruption"
 				}
 			],
 			"inflicts": {
@@ -35149,19 +35058,11 @@
 						"primal"
 					],
 					"entries": [
-						"60 feet; Requirements The leucrotta's last action was."
-					],
-					"name": "Luring Cry"
-				},
-				{
-					"traits": [
-						"leucrotta"
-					],
-					"entries": [
-						"utters a plaintive cry to draw its prey closer. Each creature within the emanation that was deceived by Sound Mimicry must succeed at a DC 19 Will save or become {@condition fascinated} and compelled to move toward the sound of the leucrotta's voice on their turn. {@condition Fascinated} creatures are also {@condition flat‑footed}. If the leucrotta attacks, the {@condition fascinated} condition ends only for the creature that is attacked.",
+						"60 feet; The leucrotta utters a plaintive cry to draw its prey closer. Each creature within the emanation that was deceived by Sound Mimicry must succeed at a DC 19 Will save or become {@condition fascinated} and compelled to move toward the sound of the leucrotta's voice on their turn. {@condition Fascinated} creatures are also {@condition flat-footed}. If the  attacks, the {@condition fascinated} condition ends only for the creature that is attacked.",
 						"If the leucrotta speaks a creature's name while using its Luring Cry, that creature takes a \u20132 circumstance penalty to their saving throw to resist the ability. On a successful save, a creature is temporarily immune to Luring Cry for 24 hours."
 					],
-					"name": "Sound Mimicry; Effect The"
+					"requirements": "The leucrotta's last action was Sound Mimicry",
+					"name": "Luring Cry"
 				},
 				{
 					"activity": {
@@ -35394,15 +35295,9 @@
 						"primal"
 					],
 					"entries": [
-						"The leydroth unleashes a bestial roar that reverberates within a 30‑foot emanation. It rolls an {@skill Intimidation} check and compares the result to the Will DC of each creature in the area, with the effects."
+						"The leydroth unleashes a bestial roar that reverberates within a 30‑foot emanation. It rolls an {@skill Intimidation} check and compares the result to the Will DC of each creature in the area, with the effects of {@action Demoralize}. It also uses this result to attempt to counteract each spell or {@trait magical} effect in the area, plus one item or effect on each creature in the area, with the effects of dispel magic. The leydroth can't use Dispelling Roar again for {@dice 1d4} rounds."
 					],
 					"name": "Dispelling Roar"
-				},
-				{
-					"entries": [
-						"It also uses this result to attempt to counteract each spell or {@trait magical} effect in the area, plus one item or effect on each creature in the area, with the effects of dispel magic. The leydroth can't use Dispelling Roar again for {@dice 1d4} rounds."
-					],
-					"name": "of Demoralize."
 				},
 				{
 					"activity": {
@@ -36356,7 +36251,7 @@
 								"poison"
 							],
 							"note": "",
-							"DC": "26",
+							"DC": 26,
 							"savingThrow": "Fortitude",
 							"onset": null,
 							"maxDuration": "6 rounds",
@@ -37194,10 +37089,18 @@
 					},
 					"requirements": "A creature adjacent to the marsh giant is {@condition prone} in water at least 1 foot deep",
 					"entries": [
-						"The marsh giant uses its gaff to shake the creature back and forth and hold it underwater. The giant attempts an {@skill Athletics} check against the target's Fortitude DC. Critical Success The target takes {@damage 6d6+14} piercing damage and loses 5 rounds' worth of air if they were holding their breath. Success The target takes {@damage 3d6+14} piercing damage and loses 3 rounds' worth of air if they were holding their breath. Failure The target is unaffected. Critical Failure As failure, but the giant drops its gaff as well."
+						"The marsh giant uses its gaff to shake the creature back and forth and hold it underwater. The giant attempts an {@skill Athletics} check against the target's Fortitude DC.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "The target takes {@damage 6d6+14} piercing damage and loses 5 rounds' worth of air if they were holding their breath.",
+								"Success": "The target takes {@damage 3d6+14} piercing damage and loses 3 rounds' worth of air if they were holding their breath.",
+								"Failure": "The target is unaffected.",
+								"Critical Failure": "As failure, but the giant drops its gaff as well."
+							}
+						}
 					],
-					"name": "Hook Shake",
-					"entries_as_xyz": "Ability not found: 'Hook Shake As failure, but the giant drops its gaff as well.' in Marsh Giant, p.125"
+					"name": "Hook Shake"
 				},
 				{
 					"activity": {
@@ -37727,7 +37630,7 @@
 								"poison"
 							],
 							"note": "",
-							"DC": "25",
+							"DC": 25,
 							"savingThrow": "Fortitude",
 							"onset": null,
 							"maxDuration": "6 rounds",
@@ -38004,7 +37907,7 @@
 								"disease"
 							],
 							"note": "",
-							"DC": "29",
+							"DC": 29,
 							"savingThrow": "Fortitude",
 							"onset": null,
 							"maxDuration": null,
@@ -39620,7 +39523,9 @@
 					"name": "acid"
 				},
 				{
-					"name": "physical"
+					"name": "physical",
+					"amount": 3,
+					"note": "except bludgeoning"
 				}
 			],
 			"abilitiesMid": [
@@ -40164,15 +40069,9 @@
 						"extradimensional"
 					],
 					"entries": [
-						"The nalfeshnee steals all unattended items glowing with its Light."
+						"The nalfeshnee steals all unattended items glowing with its Light of Avarice into an extradimensional space. The demon can {@action Interact} to regurgitate any number of these items into their hand or onto the ground. If the demon dies, is affected by a {@trait teleportation} effect, or consumes an extradimensional space (such as a bag of holding), they vomit up all the items."
 					],
 					"name": "Claim Wealth"
-				},
-				{
-					"entries": [
-						"Avarice into an extradimensional space. The demon can {@action Interact} to regurgitate any number of these items into their hand or onto the ground. If the demon dies, is affected by a {@trait teleportation} effect, or consumes an extradimensional space (such as a bag of holding), they vomit up all the items."
-					],
-					"name": "of"
 				},
 				{
 					"activity": {
@@ -40547,6 +40446,23 @@
 					"DC": 38,
 					"attack": 30,
 					"entry": {
+						"0": {
+							"level": 8,
+							"spells": [
+								{
+									"name": "daze"
+								},
+								{
+									"name": "detect magic"
+								},
+								{
+									"name": "mage hand"
+								},
+								{
+									"name": "telekinetic projectile"
+								}
+							]
+						},
 						"5": {
 							"spells": [
 								{
@@ -40597,15 +40513,26 @@
 					}
 				}
 			],
+			"rituals": [
+				{
+					"DC": 38,
+					"rituals": [
+						{
+							"name": "geas"
+						},
+						{
+							"name": "inveigle"
+						}
+					]
+				}
+			],
 			"abilitiesBot": [
 				{
 					"activity": {
 						"number": 1,
-						"unit": "action"
+						"unit": "free"
 					},
-					"entries": [
-						"Melee rasping tongue +28 (agile, fatal d10, reach 25 feet), Damage {@damage 3d8+13} slashing Occult Innate Spells DC 38, attack +30; 8th charm, suggestion, summon entity; 7th phantasmal calamity, teleport; 6th scrying (×3), suggestion (at will); 5th mind probe (at will), telekinetic haul (at will); Cantrips (8th) daze, detect magic, mage hand, telekinetic projectile Rituals DC 38; geas, inveigle."
-					],
+					"entries": [],
 					"name": "Improved Grab",
 					"generic": true
 				},
@@ -41238,31 +41165,47 @@
 									"name": "time stop"
 								}
 							]
+						},
+						"constant": {
+							"10": {
+								"spells": [
+									{
+										"name": "detect magic"
+									},
+									{
+										"name": "mind blank"
+									},
+									{
+										"name": "tongues"
+									},
+									{
+										"name": "true seeing"
+									}
+								]
+							}
 						}
 					}
 				}
 			],
+			"rituals": [
+				{
+					"DC": 42,
+					"rituals": [
+						{
+							"name": "geas"
+						},
+						{
+							"name": "legend lore"
+						}
+					]
+				}
+			],
 			"abilitiesBot": [
 				{
-					"traits": [
-						"10th"
-					],
 					"entries": [
-						"detect magic, mind blank, tongues, true seeing Rituals DC 42; geas, legend lore."
-					],
-					"name": "Constant"
-				},
-				{
-					"entries": [
-						"When a creature is subject to a {@trait fortune} effect from a norn and a {@trait misfortune} effect from any source other than a norn (or vice versa), the norn's effect automatically counteracts the other effect and then takes place normally, rather than the two effects canceling each other out. If both the {@trait fortune} and {@trait misfortune} effect are from a norn, then the two cancel each other out as normal. At the GM's discretion, powerful entities related to fate or luck, like."
+						"When a creature is subject to a {@trait fortune} effect from a norn and a {@trait misfortune} effect from any source other than a norn (or vice versa), the norn's effect automatically counteracts the other effect and then takes place normally, rather than the two effects canceling each other out. If both the {@trait fortune} and {@trait misfortune} effect are from a norn, then the two cancel each other out as normal. At the GM's discretion, powerful entities related to fate or luck, like Desna, Magdh, or Pharasma, count as a norn for the purpose of this ability."
 					],
 					"name": "Fated"
-				},
-				{
-					"entries": [
-						"Pharasma, count as a norn for the purpose of this ability."
-					],
-					"name": "Desna, Magdh, or"
 				},
 				{
 					"traits": [
@@ -41270,16 +41213,9 @@
 						"occult"
 					],
 					"entries": [
-						"When a norn deals negative damage with a {@action Strike}, she regains 10 Hit."
+						"When a norn deals negative damage with a {@action Strike}, she regains 10 Hit Points. The target must succeed at a DC 39 Fortitude save or become {@condition drained 1} ({@condition drained 2} on a critical failure). Further negative damage dealt by the norn increases the {@condition drained} condition value by 1 on a failed save (or by 2 on a critical failure), to a maximum of {@condition drained 4}."
 					],
 					"name": "Sever Fate"
-				},
-				{
-					"entries": [
-						"The target must succeed at a DC 39 Fortitude save or become {@condition drained 1} ({@condition drained 2} on a critical failure)",
-						"Further negative damage dealt by the norn increases the {@condition drained} condition value by 1 on a failed save (or by 2 on a critical failure), to a maximum of {@condition drained 4}."
-					],
-					"name": "Points."
 				},
 				{
 					"activity": {
@@ -41565,7 +41501,7 @@
 								"disease"
 							],
 							"note": " The target can't recover\nfrom the {@condition fatigued} condition caused by\nmortasheen until the disease is cured. Mortasheen\ngains the {@trait virulent} trait against animals and plants",
-							"DC": "28",
+							"DC": 28,
 							"savingThrow": "Fortitude",
 							"onset": null,
 							"maxDuration": null,
@@ -42731,7 +42667,7 @@
 						"transmutation"
 					],
 					"entries": [
-						"The onidoshi takes on the appearance of an ogre. This doesn't change their Speed or {@action Strike} attack and damage."
+						"The onidoshi takes on the appearance of an {@creature ogre}. This doesn't change their Speed or {@action Strike} attack and damage."
 					],
 					"name": "Change Shape",
 					"generic": true
@@ -43679,7 +43615,7 @@
 								"poison"
 							],
 							"note": "",
-							"DC": "25",
+							"DC": 25,
 							"savingThrow": "Fortitude",
 							"onset": null,
 							"maxDuration": "6 rounds",
@@ -43871,10 +43807,18 @@
 					],
 					"trigger": "The pachycephalosaurus damages a Medium or smaller foe with its skull {@action Strike}",
 					"entries": [
-						"The pachycephalosaurus digs in and flings its head up, shoving its foe away. It attempts an {@skill Athletics} check against the target's Fortitude DC. Critical Success The pachycephalosaurus pushes the opponent up to 10 feet away from itself and knocks the target {@condition prone}. Success The pachycephalosaurus pushes the opponent back 5 feet. Failure The pachycephalosaurus fails to push the opponent. Critical Failure As failure, but the failed attempt leaves the pachycephalosaurus {@condition flat-footed} for 1 round."
+						"The pachycephalosaurus digs in and flings its head up, shoving its foe away. It attempts an {@skill Athletics} check against the target's Fortitude DC.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "The pachycephalosaurus pushes the opponent up to 10 feet away from itself and knocks the target {@condition prone}.",
+								"Success": "The pachycephalosaurus pushes the opponent back 5 feet.",
+								"Failure": "The pachycephalosaurus fails to push the opponent.",
+								"Critical Failure": "As failure, but the failed attempt leaves the pachycephalosaurus {@condition flat-footed} for 1 round."
+							}
+						}
 					],
-					"name": "Sudden Shove",
-					"entries_as_xyz": "Ability not found: 'Sudden {@action Shove} As failure, but the failed attempt leaves the pachycephalosaurus {@condition flat-footed} for 1 round.' in Pachycephalosaurus, p.81"
+					"name": "Sudden Shove"
 				}
 			],
 			"inflicts": {
@@ -44069,7 +44013,7 @@
 								"poison"
 							],
 							"note": "",
-							"DC": "29",
+							"DC": 29,
 							"savingThrow": "Fortitude",
 							"onset": null,
 							"maxDuration": "6 rounds",
@@ -44615,20 +44559,20 @@
 									"name": "dimension door"
 								}
 							]
+						},
+						"constant": {
+							"2": {
+								"spells": [
+									{
+										"name": "see invisibility"
+									}
+								]
+							}
 						}
 					}
 				}
 			],
 			"abilitiesBot": [
-				{
-					"traits": [
-						"2nd"
-					],
-					"entries": [
-						"see invisibility."
-					],
-					"name": "Constant"
-				},
 				{
 					"activity": {
 						"number": 1,
@@ -44659,7 +44603,7 @@
 								"poison"
 							],
 							"note": "",
-							"DC": "30",
+							"DC": 30,
 							"savingThrow": "Fortitude",
 							"onset": null,
 							"maxDuration": "6 rounds",
@@ -44914,20 +44858,46 @@
 									"name": "sunburst"
 								}
 							]
+						},
+						"constant": {
+							"5": {
+								"spells": [
+									{
+										"name": "detect alignment",
+										"notes": [
+											"evil only"
+										]
+									},
+									{
+										"name": "tongues"
+									},
+									{
+										"name": "true seeing"
+									}
+								]
+							}
 						}
 					}
 				}
 			],
-			"abilitiesBot": [
+			"rituals": [
 				{
-					"traits": [
-						"5th"
-					],
-					"entries": [
-						"detect alignment (evil only), tongues, true seeing Rituals DC 37; angelic messenger, call spirit, resurrect."
-					],
-					"name": "Constant"
-				},
+					"DC": 37,
+					"rituals": [
+						{
+							"name": "angelic messenger",
+							"source": "Bst"
+						},
+						{
+							"name": "call spirit"
+						},
+						{
+							"name": "resurrect"
+						}
+					]
+				}
+			],
+			"abilitiesBot": [
 				{
 					"activity": {
 						"number": 2,
@@ -45596,7 +45566,7 @@
 								"poison"
 							],
 							"note": " A quetz couatl's venom deals good\ndamage rather than poison damage to fiends",
-							"DC": "29",
+							"DC": 29,
 							"savingThrow": "Fortitude",
 							"onset": null,
 							"maxDuration": "6 rounds",
@@ -45792,21 +45762,9 @@
 					},
 					"trigger": "The quickling is targeted by a {@action Strike}",
 					"entries": [
-						"The quickling darts aside, gaining a +2 circumstance bonus."
+						"The quickling darts aside, gaining a +2 circumstance bonus to AC, then {@action Stride||Strides} up to half their Speed after the {@action Strike} resolves."
 					],
 					"name": "Can't Catch Me"
-				},
-				{
-					"entries": [
-						"AC, then {@action Stride||Strides} up to half their Speed after."
-					],
-					"name": "to"
-				},
-				{
-					"entries": [
-						"{@action Strike} resolves."
-					],
-					"name": "the"
 				}
 			],
 			"speed": {
@@ -46386,15 +46344,9 @@
 				{
 					"entries": [
 						"A raven can use simple items as tools, such as poking a stick at an opening to tease out a piece of food.",
-						"They are also quite adept at stealing objects. A raven can't use."
+						"They are also quite adept at stealing objects. A raven can't use {@skill Thievery} to {@action Palm an Object}, {@action Disable a Device}, or {@action Pick a Lock}, but it can use {@skill Thievery} to {@action Steal} light objects that it can carry in its beak or talons or to accomplish other relatively simple tasks."
 					],
 					"name": "Cunning"
-				},
-				{
-					"entries": [
-						"{@action Palm an Object}, {@action Disable a Device}, or {@action Pick a Lock}, but it can use {@skill Thievery} to {@action Steal} light objects that it can carry in its beak or talons or to accomplish other relatively simple tasks."
-					],
-					"name": "Thievery to"
 				}
 			],
 			"ac": {
@@ -46549,9 +46501,7 @@
 						"unit": "action"
 					},
 					"entries": [
-						"The ravens' angry pecking deals {@damage 1d8} piercing damage to each enemy in the swarm's space (DC 20 basic Reflex save). A creature that critically fails its save is {@condition blinded} for {@dice 1d4} rounds as the ravens focus their attacks on the target's vulnerable face.",
-						"teleport or gaseous form. Of course, Ravener Though their lifespans can measure in millennia, all dragons must eventually perish. While many do so on the blades or under the spells of dragonslayers, some manage to outlast their enemies and must, in time, face the truth that awaits all living creatures at the end of their natural lifespan. As with many other creatures, some dragons respond to such looming reminders of their own mortality poorly, and the particularly prideful or wrathful of their kind often lash out in anger when confronted by this grim truth. Peace and acceptance may find some dragons, but the most stubborn of their ilk (and invariably the most wicked) may pursue a different answer to the problem. These dragons seek out sinister rites that can transform them into undead creatures known as raveners.",
-						"A ravener's flesh is stripped away as part of the transformation, leaving only their skeleton. What they lose in flesh, however, the dragon gains in soul-rending power, as their raw spiritual energy forms a protective barrier around their skeleton, keeping it intact and allowing flight with now-skeletal wings. This new existence is not so easy to maintain as other forms of undeath, however, and the."
+						"The ravens' angry pecking deals {@damage 1d8} piercing damage to each enemy in the swarm's space (DC 20 basic Reflex save). A creature that critically fails its save is {@condition blinded} for {@dice 1d4} rounds as the ravens focus their attacks on the target's vulnerable face."
 					],
 					"name": "Swarming Beaks"
 				}
@@ -47243,12 +47193,9 @@
 						"unit": "action"
 					},
 					"entries": [
-						"As blue-ringed octopus, but 80 feet."
+						"The reef octopus moves up to 80 feet in a straight line through the water without triggering reactions."
 					],
-					"name": "Jet",
-					"entries_as_xyz": [
-						"The blue-ringed octopus moves up to 60 feet in a straight line through the water without triggering reactions."
-					]
+					"name": "Jet"
 				},
 				{
 					"entries": [
@@ -47259,7 +47206,7 @@
 								"poison"
 							],
 							"note": "",
-							"DC": "17",
+							"DC": 17,
 							"savingThrow": "Fortitude",
 							"onset": null,
 							"maxDuration": "6 rounds",
@@ -47823,9 +47770,11 @@
 			],
 			"abilitiesBot": [
 				{
-					"entries": [
-						"Primal Innate Spells DC 35; 5th charm (at will), control water (at will); 2nd invisibility (at will), obscuring mist (at will); Constant (6th) water walk."
-					],
+					"activity": {
+						"number": 1,
+						"unit": "free"
+					},
+					"entries": [],
 					"name": "Improved Grab",
 					"generic": true
 				},
@@ -47843,13 +47792,7 @@
 						"primal"
 					],
 					"entries": [
-						"The rusalka cries out a compelling invitation. Each non-fey creature within a 300-foot emanation must attempt a DC 27 Will save. The effect lasts for 1 round, but if the rusalka uses Beckoning Call again on subsequent rounds, the duration extends by 1 round for all affected creatures. Once a creature succeeds at any save against."
-					],
-					"name": "Beckoning Call"
-				},
-				{
-					"entries": [
-						"Call, that creature is temporarily immune for 24 hours.",
+						"The rusalka cries out a compelling invitation. Each non-fey creature within a 300-foot emanation must attempt a DC 27 Will save. The effect lasts for 1 round, but if the rusalka uses Beckoning Call again on subsequent rounds, the duration extends by 1 round for all affected creatures. Once a creature succeeds at any save against Beckoning Call, that creature is temporarily immune for 24 hours.",
 						{
 							"type": "successDegree",
 							"entries": {
@@ -47859,7 +47802,7 @@
 							}
 						}
 					],
-					"name": "Beckoning"
+					"name": "Beckoning Call"
 				},
 				{
 					"activity": {
@@ -48141,7 +48084,16 @@
 					],
 					"frequency": "once per hour",
 					"entries": [
-						"The sacristan opens their mouth to unloose the wailing howls and mind-twisting darkness of the Shadow Plane. This creates a 30-foot emanation of darkness and wailing sounds around the sacristan. Creatures with {@ability darkvision} can't see through this darkness. The sacristan can Sustain Shadow Scream for up to 1 minute. Non-velstrac creatures in the area when the ability is used, as well as those who enter or start their turn in the area, must attempt a DC 28 Will save. Critical Success The creature is unaffected and is then temporarily immune for 24 hours. Success The creature is {@condition deafened} for 1 round. Failure The creature is {@condition confused} and {@condition deafened} for 1 round. Critical Failure The creature takes 20 mental damage, and is {@condition confused} and {@condition deafened} for 1 round."
+						"The sacristan opens their mouth to unloose the wailing howls and mind-twisting darkness of the Shadow Plane. This creates a 30-foot emanation of darkness and wailing sounds around the sacristan. Creatures with {@ability darkvision} can't see through this darkness. The sacristan can Sustain Shadow Scream for up to 1 minute. Non-velstrac creatures in the area when the ability is used, as well as those who enter or start their turn in the area, must attempt a DC 28 Will save.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "The creature is unaffected and is then temporarily immune for 24 hours.",
+								"Success": "The creature is {@condition deafened} for 1 round.",
+								"Failure": "The creature is {@condition confused} and {@condition deafened} for 1 round.",
+								"Critical Failure": "The creature takes 20 mental damage, and is {@condition confused} and {@condition deafened} for 1 round."
+							}
+						}
 					],
 					"name": "Shadow Scream"
 				}
@@ -49153,7 +49105,7 @@
 								"poison"
 							],
 							"note": "",
-							"DC": "26",
+							"DC": 26,
 							"savingThrow": "Fortitude",
 							"onset": null,
 							"maxDuration": "6 rounds",
@@ -49355,8 +49307,7 @@
 						"concentrate"
 					],
 					"entries": [
-						"Until it acts, the scarecrow resembles an ordinary scarecrow. It has an automatic result of 32 on {@skill Deception} checks and DCs to pass as an ordinary scarecrow.",
-						"akin to spheres of annihilation or."
+						"Until it acts, the scarecrow resembles an ordinary scarecrow. It has an automatic result of 32 on {@skill Deception} checks and DCs to pass as an ordinary scarecrow."
 					],
 					"name": "Mundane Appearance"
 				}
@@ -49474,7 +49425,9 @@
 			],
 			"resistances": [
 				{
-					"name": "physical"
+					"name": "physical",
+					"amount": 5,
+					"note": "except adamantine"
 				}
 			],
 			"abilitiesMid": [
@@ -49721,15 +49674,9 @@
 					},
 					"trigger": "A creature rolls a critical failure on a melee weapon {@action Strike} against the scythe tree",
 					"entries": [
-						"The scythe tree attempts."
+						"The scythe tree attempts to {@action Disarm} the creature."
 					],
 					"name": "Ripping Disarm"
-				},
-				{
-					"entries": [
-						"{@action Disarm} the creature."
-					],
-					"name": "to"
 				}
 			],
 			"speed": {
@@ -50778,7 +50725,7 @@
 								"poison"
 							],
 							"note": "",
-							"DC": "36",
+							"DC": 36,
 							"savingThrow": "Fortitude",
 							"onset": null,
 							"maxDuration": "10 rounds",
@@ -51132,6 +51079,17 @@
 					"tradition": "Occult",
 					"DC": 23,
 					"entry": {
+						"0": {
+							"level": 4,
+							"spells": [
+								{
+									"name": "daze"
+								},
+								{
+									"name": "detect magic"
+								}
+							]
+						},
 						"1": {
 							"spells": [
 								{
@@ -51161,15 +51119,6 @@
 				}
 			],
 			"abilitiesBot": [
-				{
-					"traits": [
-						"4th"
-					],
-					"entries": [
-						"daze, detect magic."
-					],
-					"name": "Cantrips"
-				},
 				{
 					"activity": {
 						"number": 1,
@@ -51373,7 +51322,7 @@
 								"disease"
 							],
 							"note": "",
-							"DC": "22",
+							"DC": 22,
 							"savingThrow": "Fortitude",
 							"onset": null,
 							"maxDuration": null,
@@ -51583,7 +51532,7 @@
 								"primal"
 							],
 							"note": "",
-							"DC": "27",
+							"DC": 27,
 							"savingThrow": "Fortitude",
 							"onset": null,
 							"maxDuration": "6 rounds",
@@ -51888,7 +51837,7 @@
 								"disease"
 							],
 							"note": "",
-							"DC": "18",
+							"DC": 18,
 							"savingThrow": "Fortitude",
 							"onset": "{@dice 1d4} days",
 							"maxDuration": null,
@@ -52414,10 +52363,18 @@
 					],
 					"requirements": "The soul eater is adjacent to a {@condition dying} creature",
 					"entries": [
-						"The soul eater attempts to devour the {@condition dying} creature's soul. The creature must attempt a DC 25 Will save. A creature that dies as a result of Drain Soul can't be restored to life except by a spell or ritual of 8th level or higher. If the soul eater that used Drain Soul on a creature is slain within 100 feet of that creature's corpse and the creature has been dead no longer than 1 minute, the creature's soul returns to its body and is restored to life, leaving the creature {@condition unconscious} and {@condition dying 1} but no longer {@condition doomed}. Critical Success The creature is unaffected. Success The creature becomes {@condition doomed 1}, or increases its {@condition doomed} value by 1 if it was already {@condition doomed}. Failure As success, but {@condition doomed 2}. Critical Failure As success, but {@condition doomed 3}."
+						"The soul eater attempts to devour the {@condition dying} creature's soul. The creature must attempt a DC 25 Will save. A creature that dies as a result of Drain Soul can't be restored to life except by a spell or ritual of 8th level or higher. If the soul eater that used Drain Soul on a creature is slain within 100 feet of that creature's corpse and the creature has been dead no longer than 1 minute, the creature's soul returns to its body and is restored to life, leaving the creature {@condition unconscious} and {@condition dying 1} but no longer {@condition doomed}.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "The creature is unaffected.",
+								"Success": "The creature becomes {@condition doomed 1}, or increases its {@condition doomed} value by 1 if it was already {@condition doomed}.",
+								"Failure": "As success, but {@condition doomed 2}.",
+								"Critical Failure": "As success, but {@condition doomed 3}."
+							}
+						}
 					],
-					"name": "Drain Soul",
-					"entries_as_xyz": "Ability not found: 'Drain Soul As success, but {@condition doomed 2}. Critical Failure As success, but {@condition doomed 3}.' in Soul Eater, p.247"
+					"name": "Drain Soul"
 				},
 				{
 					"traits": [
@@ -52653,7 +52610,7 @@
 								"poison"
 							],
 							"note": "",
-							"DC": "15",
+							"DC": 15,
 							"savingThrow": "Fortitude",
 							"onset": null,
 							"maxDuration": "6 rounds",
@@ -52925,13 +52882,10 @@
 			},
 			"abilitiesTop": [
 				{
-					"traits": [
-						"spinosaurus"
-					],
 					"entries": [
-						"can hold its breath for 2 hours."
+						"A spinosaurus can hold its breath for 2 hours."
 					],
-					"name": "Deep Breath A"
+					"name": "Deep Breath"
 				}
 			],
 			"ac": {
@@ -53017,7 +52971,16 @@
 					],
 					"requirements": "The spinosaurus is swimming on the surface of water",
 					"entries": [
-						"With a powerful lunge to the side, the spinosaurus uses its sail to slap the surface of the water, creating a crushing wave of water that deals {@damage 6d6} bludgeoning damage in a 30-foot cone. Each creature in the water in the area must attempt a DC 30 Reflex save. Critical Success The creature is unaffected. Success The creature takes half damage. Failure The creature takes full damage and is {@condition slowed 1} until the end of its next turn. Critical Failure The creature takes double damage and is {@condition stunned 3}."
+						"With a powerful lunge to the side, the spinosaurus uses its sail to slap the surface of the water, creating a crushing wave of water that deals {@damage 6d6} bludgeoning damage in a 30-foot cone. Each creature in the water in the area must attempt a DC 30 Reflex save.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "The creature is unaffected.",
+								"Success": "The creature takes half damage.",
+								"Failure": "The creature takes full damage and is {@condition slowed 1} until the end of its next turn.",
+								"Critical Failure": "The creature takes double damage and is {@condition stunned 3}."
+							}
+						}
 					],
 					"name": "Staggering Sail"
 				},
@@ -53597,10 +53560,18 @@
 					},
 					"trigger": "A creature in the sportlebore swarm's area speaks, uses a verbal component, or opens its mouth",
 					"entries": [
-						"A portion of the sportlebore swarm attempts to surge down the throat of the triggering creature, which must attempt a DC 25 Fortitude save. Critical Success The creature is unaffected. Success The creature gets a mouthful of sportlebores. It spits the insects out and avoids further damage, but it can't speak for 1 round, and if it was performing a verbal spellcasting action, the spell fails and the caster wastes the action. Failure The creature takes {@damage 4d6} piercing damage from sportlebore bites, can't speak for 1 round, and loses a spell as noted under Success. Critical Failure As failure, but the creature is also exposed to sportlebore infestation."
+						"A portion of the sportlebore swarm attempts to surge down the throat of the triggering creature, which must attempt a DC 25 Fortitude save.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "The creature is unaffected.",
+								"Success": "The creature gets a mouthful of sportlebores. It spits the insects out and avoids further damage, but it can't speak for 1 round, and if it was performing a verbal spellcasting action, the spell fails and the caster wastes the action.",
+								"Failure": "The creature takes {@damage 4d6} piercing damage from sportlebore bites, can't speak for 1 round, and loses a spell as noted under Success.",
+								"Critical Failure": "As failure, but the creature is also exposed to sportlebore infestation."
+							}
+						}
 					],
-					"name": "Pour Down Throat",
-					"entries_as_xyz": "Ability not found: 'Pour Down Throat As failure, but the creature is also exposed to sportlebore infestation.' in Sportlebore Swarm, p.251"
+					"name": "Pour Down Throat"
 				}
 			],
 			"speed": {
@@ -53995,6 +53966,14 @@
 					"tradition": "Primal",
 					"DC": 25,
 					"entry": {
+						"0": {
+							"level": 4,
+							"spells": [
+								{
+									"name": "dancing lights"
+								}
+							]
+						},
 						"2": {
 							"spells": [
 								{
@@ -54026,15 +54005,6 @@
 				}
 			],
 			"abilitiesBot": [
-				{
-					"traits": [
-						"4th"
-					],
-					"entries": [
-						"dancing lights."
-					],
-					"name": "Cantrips"
-				},
 				{
 					"activity": {
 						"number": 1,
@@ -54658,7 +54628,7 @@
 								"poison"
 							],
 							"note": "",
-							"DC": "16",
+							"DC": 16,
 							"savingThrow": "Fortitude",
 							"onset": null,
 							"maxDuration": "4 rounds",
@@ -55348,10 +55318,17 @@
 					],
 					"requirements": "The sunflower leshy begins its turn in an area of bright light",
 					"entries": [
-						"20 feet; ; The sunflower leshy reflects the sun or another source of bright light from their face. Each creature that ends its turn in the emanation must attempt a DC 16 Will save. Success The creature is unaffected and is temporarily immune to heliotrope for 24 hours. Failure The creature is distracted by the light, becoming {@condition flat‑footed} for 1 round. Critical Failure As failure, but the creature is also {@condition dazzled} for 1 round."
+						"The sunflower leshy reflects the sun or another source of bright light from their face. Each creature that ends its turn in a 20-foot emanation must attempt a DC 16 Will save.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Success": "The creature is unaffected and is temporarily immune to heliotrope for 24 hours.",
+								"Failure": "The creature is distracted by the light, becoming {@condition flat‑footed} for 1 round.",
+								"Critical Failure": "As failure, but the creature is also {@condition dazzled} for 1 round."
+							}
+						}
 					],
-					"name": "Heliotrope",
-					"entries_as_xyz": "Ability not found: 'Heliotrope As failure, but the creature is also {@condition dazzled} for 1 round.' in Sunflower Leshy, p.160"
+					"name": "Heliotrope"
 				},
 				{
 					"traits": [
@@ -56027,10 +56004,17 @@
 					"DC": 41,
 					"entry": {
 						"constant": {
+							"8": {
+								"spells": [
+									{
+										"name": "true seeing"
+									}
+								]
+							},
 							"9": {
 								"spells": [
 									{
-										"name": "freedom"
+										"name": "freedom of movement"
 									}
 								]
 							}
@@ -56040,9 +56024,11 @@
 			],
 			"abilitiesBot": [
 				{
-					"entries": [
-						"Primal Innate Spells DC 41; Constant (9th) freedom of movement; (8th) true seeing."
-					],
+					"activity": {
+						"number": 1,
+						"unit": "free"
+					},
+					"entries": [],
 					"name": "Improved Grab",
 					"generic": true
 				},
@@ -56440,7 +56426,7 @@
 								"poison"
 							],
 							"note": "",
-							"DC": "21",
+							"DC": 21,
 							"savingThrow": "Fortitude",
 							"onset": null,
 							"maxDuration": "6 rounds",
@@ -57271,6 +57257,17 @@
 					"tradition": "Occult",
 					"DC": 40,
 					"entry": {
+						"0": {
+							"level": 9,
+							"spells": [
+								{
+									"name": "daze"
+								},
+								{
+									"name": "detect magic"
+								}
+							]
+						},
 						"7": {
 							"spells": [
 								{
@@ -57311,20 +57308,38 @@
 									"name": "phantasmal calamity"
 								}
 							]
+						},
+						"constant": {
+							"4": {
+								"spells": [
+									{
+										"name": "freedom of movement"
+									}
+								]
+							},
+							"6": {
+								"spells": [
+									{
+										"name": "true seeing"
+									}
+								]
+							}
 						}
 					}
 				}
 			],
-			"abilitiesBot": [
+			"rituals": [
 				{
-					"traits": [
-						"9th"
-					],
-					"entries": [
-						"daze, detect magic; Constant (6th) true seeing, (4th) freedom of movement Rituals DC 40; imprisonment (9th)"
-					],
-					"name": "Cantrips"
-				},
+					"DC": 40,
+					"rituals": [
+						{
+							"name": "imprisonment",
+							"level": 9
+						}
+					]
+				}
+			],
+			"abilitiesBot": [
 				{
 					"activity": {
 						"number": 1,
@@ -57400,7 +57415,7 @@
 								"poison"
 							],
 							"note": "",
-							"DC": "40",
+							"DC": 40,
 							"savingThrow": "Fortitude",
 							"onset": null,
 							"maxDuration": "6 rounds",
@@ -57641,8 +57656,7 @@
 				},
 				{
 					"entries": [
-						"A creature that takes damage from a thunderbird's thunderbolt {@action Strike} must succeed at a DC 28 Fortitude save or be knocked {@condition prone} and {@condition deafened} for 1 round.",
-						"pages 118\u2013119 of the Gamemastery Guide, potential diseases that a."
+						"A creature that takes damage from a thunderbird's thunderbolt {@action Strike} must succeed at a DC 28 Fortitude save or be knocked {@condition prone} and {@condition deafened} for 1 round."
 					],
 					"name": "Thunderstrike"
 				}
@@ -57918,7 +57932,7 @@
 								"poison"
 							],
 							"note": "",
-							"DC": "28",
+							"DC": 28,
 							"savingThrow": "Fortitude",
 							"onset": null,
 							"maxDuration": "6 rounds",
@@ -58410,7 +58424,7 @@
 								"disease"
 							],
 							"note": "",
-							"DC": "18",
+							"DC": 18,
 							"savingThrow": "Fortitude",
 							"onset": null,
 							"maxDuration": null,
@@ -59520,12 +59534,9 @@
 						"negative"
 					],
 					"entries": [
-						"As urdefhan warrior, but DC 21 and {@damage 5d6} negative damage."
+						"When an urdefhan dies, its {@condition invisible} flesh quickly rots away and sublimates into a foul-smelling gas that fills a 5-foot emanation around the body. This gas deals {@damage 5d6} negative damage to creatures in this area as their flesh curdles and rots as well (DC 21 basic Fortitude save)."
 					],
-					"name": "Necrotic Decay",
-					"entries_as_xyz": [
-						"When an urdefhan dies, its {@condition invisible} flesh quickly rots away and sublimates into a foul-smelling gas that fills a 5-foot emanation around the body. This gas deals {@damage 3d6} negative damage to creatures in this area as their flesh curdles and rots as well (DC 17 basic Fortitude save)."
-					]
+					"name": "Necrotic Decay"
 				}
 			],
 			"speed": {
@@ -60048,19 +60059,12 @@
 							"type": "successDegree",
 							"entries": {
 								"Success": "The creature is unaffected.",
-								"Failure": "The creature is {@condition drained 1}, and the vampiric mist gains 5 temporary"
+								"Failure": "The creature is {@condition drained 1}, and the vampiric mist gains 5 temporary Hit Points.",
+								"Critical Failure": "The creature is {@condition drained 2}. The vampiric mist gains 10 temporary Hit Points and takes on an intense red until the end of its next turn. During this time, it gains a +2 status bonus to AC and saves and is {@condition quickened}. It can use its extra action only to {@action Strike}."
 							}
 						}
 					],
 					"name": "Blood Siphon"
-				},
-				{
-					"entries": [
-						"Critical Failure The creature is {@condition drained 2}.",
-						"The vampiric mist gains 10 temporary Hit Points and takes on an intense red until the end of its next turn. During this time, it gains a +2 status bonus to AC and saves and is {@condition quickened}. It can use its extra action only to {@action Strike}.",
-						"spell‑reflecting plate mail."
-					],
-					"name": "Hit Points."
 				}
 			],
 			"inflicts": {
@@ -60310,12 +60314,9 @@
 				},
 				{
 					"entries": [
-						"As esobok, but {@dice 2d6}."
+						"A vanth's Strikes affect incorporeal creatures with the effects of a ghost touch property rune and deal {@damage 2d6} negative damage to living creatures and {@damage 2d6} positive damage to undead."
 					],
-					"name": "Spirit Touch",
-					"entries_as_xyz": [
-						"An esobok's Strikes affect incorporeal creatures with the effects of a ghost touch property rune and deal {@damage 1d6} negative damage to living creatures and {@damage 1d6} positive damage to undead."
-					]
+					"name": "Spirit Touch"
 				},
 				{
 					"activity": {
@@ -60330,10 +60331,18 @@
 					],
 					"frequency": "three times per day",
 					"entries": [
-						"The vanth bestows a curse on a creature by touching it with its scythe. The creature must attempt a DC 25 Will save. Critical Success The target is unaffected and is temporarily immune to Vanth's Curse for 24 hours. Success The target feels a momentary shudder of doom and is {@condition stupefied 1} for 1 minute by the distracting sensation. Failure The target becomes morose and glum as it accepts its own inevitable fate. For 1 hour, the target is {@condition stupefied 2}. Each time the target gains the {@condition dying} condition, the {@condition stupefied} condition value increases by 1, to a maximum value of {@condition stupefied 4}. Critical Failure As failure, but the effect is permanent."
+						"The vanth bestows a curse on a creature by touching it with its scythe. The creature must attempt a DC 25 Will save.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "The target is unaffected and is temporarily immune to Vanth's Curse for 24 hours.",
+								"Success": "The target feels a momentary shudder of doom and is {@condition stupefied 1} for 1 minute by the distracting sensation.",
+								"Failure": "The target becomes morose and glum as it accepts its own inevitable fate. For 1 hour, the target is {@condition stupefied 2}. Each time the target gains the {@condition dying} condition, the {@condition stupefied} condition value increases by 1, to a maximum value of {@condition stupefied 4}.",
+								"Critical Failure": "As failure, but the effect is permanent."
+							}
+						}
 					],
-					"name": "Vanth's Curse",
-					"entries_as_xyz": "Ability not found: 'Vanth's Curse As failure, but the effect is permanent.' in Vanth, p.210"
+					"name": "Vanth's Curse"
 				}
 			],
 			"inflicts": {
@@ -61792,12 +61801,9 @@
 						"visual"
 					],
 					"entries": [
-						"30 feet. As nabasu, but with a DC 38 Fortitude save."
+						"30 feet. When a non-demon ends its turn in the aura, it must attempt a DC 38 Fortitude save. If it fails, it becomes {@condition drained 1}."
 					],
-					"name": "Death-Stealing Gaze",
-					"entries_as_xyz": [
-						"30 feet. When a non-demon ends its turn in the aura, it must attempt a DC 23 Fortitude save. If it fails, it becomes {@condition drained 1}."
-					]
+					"name": "Death-Stealing Gaze"
 				}
 			],
 			"speed": {
@@ -61920,21 +61926,17 @@
 						"visual"
 					],
 					"entries": [
-						"As nabasu, but the vrolikai does not have starvation vulnerability."
-					],
-					"name": "Consume Death",
-					"entries_as_xyz": [
-						"The nabasu focuses their death-stealing gaze upon a single target they can see within 30 feet. The target must immediately attempt a Fortitude save against death-stealing gaze.",
+						"The vrolikai focuses their death-stealing gaze upon a single target they can see within 30 feet. The target must immediately attempt a Fortitude save against death-stealing gaze.",
 						{
 							"type": "successDegree",
 							"entries": {
-								"Critical Success": "The creature is unaffected and the nabasu suffers starvation vulnerability.",
 								"Success": "The creature is unaffected.",
-								"Failure": "The creature is affected by deathstealing gaze and becomes {@condition drained 1}. If the creature was already {@condition drained 1} by the death-stealing gaze before attempting the save, a failed save increases the value of the {@condition drained} condition by 1, to a maximum of {@condition drained 4}. The nabasu gains 10 temporary Hit Points, and the {@condition drained} creature is temporarily immune until the start of the nabasu's next turn.",
+								"Failure": "The creature is affected by deathstealing gaze and becomes {@condition drained 1}. If the creature was already {@condition drained 1} by the death-stealing gaze before attempting the save, a failed save increases the value of the {@condition drained} condition by 1, to a maximum of {@condition drained 4}. The vrolikai gains 10 temporary Hit Points, and the {@condition drained} creature is temporarily immune until the start of the vrolikai's next turn.",
 								"Critical Failure": "As failure, but the creature increases the amount of drain by 2."
 							}
 						}
-					]
+					],
+					"name": "Consume Death"
 				},
 				{
 					"activity": {
@@ -62284,7 +62286,16 @@
 					],
 					"requirements": "The vrykolakas ancient is adjacent to an {@condition unconscious} creature",
 					"entries": [
-						"The vrykolakas ancient steals the creature's breath. The {@condition unconscious} creature begins suffocating, can't be awakened for 1 round, and must attempt a DC 33 Fortitude save. If a creature is targeted with this ability in consecutive rounds, the save DC decreases by 2 each round after the first. Critical Success The target immediately awakens and is then temporarily immune to {@action Steal} Breath for 24 hours. Success The target is unaffected. Failure The target takes {@dice 1d10} damage. Critical Failure The target is reduced to 0 HP and becomes {@condition dying 1}."
+						"The vrykolakas ancient steals the creature's breath. The {@condition unconscious} creature begins suffocating, can't be awakened for 1 round, and must attempt a DC 33 Fortitude save. If a creature is targeted with this ability in consecutive rounds, the save DC decreases by 2 each round after the first.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "The target immediately awakens and is then temporarily immune to {@action Steal} Breath for 24 hours.",
+								"Success": "The target is unaffected.",
+								"Failure": "The target takes {@dice 1d10} damage.",
+								"Critical Failure": "The target is reduced to 0 HP and becomes {@condition dying 1}."
+							}
+						}
 					],
 					"name": "Steal Breath"
 				}
@@ -62815,10 +62826,6 @@
 						"A water orm can dissolve into water, appearing only as a long, dark, serpentine stretch of water. While in this form, a water orm's swim Speed increases to 600 feet, it automatically succeeds at {@skill Athletics} checks to swim, and it gains a +4 circumstance bonus to {@skill Stealth} checks in water. A water orm can remain in this form for 8 hours, but it can't enter salt water when using this ability. A water orm can return to its normal form using a single action which has the {@trait concentrate} trait."
 					],
 					"name": "Water Travel"
-				},
-				{
-					"entries": [],
-					"name": "the Pathfinder Bestiary."
 				}
 			],
 			"inflicts": {
@@ -63111,13 +63118,10 @@
 						"transmutation"
 					],
 					"entries": [
-						"As onidoshi, but into a storm giant. The yai can also turn into a puddle of water, with the effects of gaseous form except they retain their land Speed, double their swim Speed, and can't fly."
+						"The water yai takes on the appearance of an {@creature storm giant}. This doesn't change their Speed or {@action Strike} attack and damage. The yai can also turn into a puddle of water, with the effects of gaseous form except they retain their land Speed, double their swim Speed, and can't fly."
 					],
 					"name": "Change Shape",
-					"generic": true,
-					"entries_as_xyz": [
-						"The onidoshi takes on the appearance of an ogre. This doesn't change their Speed or {@action Strike} attack and damage."
-					]
+					"generic": true
 				},
 				{
 					"activity": {
@@ -63133,10 +63137,18 @@
 					],
 					"requirements": "The water yai's last action was a successful kimono {@action Strike}",
 					"entries": [
-						"The water yai extends a portion of their kimono to attempt to envelop a creature within 15 feet. The water yai must attempt a {@skill Performance} check against the creature's Reflex DC. Critical Success The creature takes {@damage 20d6} electricity damage and is {@condition grabbed} until the end of its next turn. Success As critical success, but only {@damage 10d6} electricity damage. Failure The target takes {@damage 5d6} electricity damage but is not {@condition grabbed}. Critical Failure The target is unaffected."
+						"The water yai extends a portion of their kimono to attempt to envelop a creature within 15 feet. The water yai must attempt a {@skill Performance} check against the creature's Reflex DC.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "The creature takes {@damage 20d6} electricity damage and is {@condition grabbed} until the end of its next turn.",
+								"Success": "As critical success, but only {@damage 10d6} electricity damage.",
+								"Failure": "The target takes {@damage 5d6} electricity damage but is not {@condition grabbed}.",
+								"Critical Failure": "The target is unaffected."
+							}
+						}
 					],
-					"name": "Enveloping Kimono",
-					"entries_as_xyz": "Ability not found: 'Enveloping Kimono As critical success, but only {@damage 10d6} electricity damage. Failure The target takes {@damage 5d6} electricity damage but is not {@condition grabbed}. Critical Failure The target is unaffected.' in Water Yai, p.191"
+					"name": "Enveloping Kimono"
 				}
 			],
 			"inflicts": {
@@ -63365,12 +63377,14 @@
 				},
 				{
 					"traits": [
-						"of"
+						"curse",
+						"necromancy",
+						"primal"
 					],
 					"entries": [
-						"the Wereboar (curse, necromancy, primal); Saving Throw DC 18 Fortitude."
+						"Saving Throw DC 18 Fortitude."
 					],
-					"name": "Curse"
+					"name": "Curse of the Wereboar"
 				},
 				{
 					"traits": [
@@ -63525,7 +63539,7 @@
 						"curse of the weretiger",
 						"Grab"
 					],
-					"damage": "{@damage 2d6+7} piercing plus curse of the weretiger and Grab",
+					"damage": "{@damage 2d6+7} piercing plus curse of the weretiger and {@ability Grab}",
 					"types": [
 						"piercing"
 					]
@@ -63538,23 +63552,13 @@
 						"agile"
 					],
 					"effects": [],
-					"damage": "{@damage 2d4+7} slashing",
+					"damage": "{@damage 2d4+7} slashing and {@ability Grab}",
 					"types": [
 						"slashing"
 					]
 				}
 			],
 			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"entries": [
-						"Melee claw +14 (agile), Damage {@damage 2d4+7} slashing."
-					],
-					"name": "and Grab"
-				},
 				{
 					"activity": {
 						"number": 1,
@@ -63567,9 +63571,50 @@
 						"transmutation"
 					],
 					"entries": [
-						"Human with fist +14 for {@damage 1d4+7} bludgeoning, or tiger with."
+						"Human with fist +14 for {@damage 1d4+7} bludgeoning, or tiger with Speed 30 feet and Wrestle (Bestiary page 53)."
 					],
 					"name": "Change Shape",
+					"generic": true
+				},
+				{
+					"traits": [
+						"curse",
+						"necromancy",
+						"primal"
+					],
+					"entries": [
+						"Saving Throw DC 21 Fortitude."
+					],
+					"name": "Curse of the Weretiger"
+				},
+				{
+					"traits": [
+						"polymorph",
+						"primal",
+						"transmutation"
+					],
+					"entries": [],
+					"name": "Moon Frenzy"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"entries": [
+						"The weretiger {@action Stride||Strides} and makes a {@action Strike} at the end of that movement. If the weretiger began this action hidden, they remain hidden until after this ability's {@action Strike}."
+					],
+					"name": "Pounce"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"entries": [
+						"claw"
+					],
+					"name": "Rend",
 					"generic": true
 				}
 			],
@@ -65381,14 +65426,12 @@
 					"entries": [
 						{
 							"type": "affliction",
-							"name": "",
 							"traits": [
 								"disease"
 							],
-							"note": " The {@condition sickened} condition from xill eggs doesn't\nimprove on its own until the disease is cured or runs its\ncourse. It can be cured with a 10-minute operation that\nrequires a successful DC 26 {@skill Medicine} check and deals\n{@damage 4d6} slashing damage to the host",
-							"DC": "24",
+							"note": " The {@condition sickened} condition from xill eggs doesn't improve on its own until the disease is cured or runs its course. It can be cured with a 10-minute operation that requires a successful DC 26 {@skill Medicine} check and deals {@damage 4d6} slashing damage to the host",
+							"DC": 24,
 							"savingThrow": "Fortitude",
-							"onset": null,
 							"maxDuration": "24 hours",
 							"stages": [
 								{
@@ -65403,20 +65446,18 @@
 								},
 								{
 									"stage": 3,
-									"entry": "{@condition sickened 2} ;",
+									"entry": "{@condition sickened 2}",
 									"duration": "4 hours"
+								},
+								{
+									"stage": 3,
+									"entry": "{@condition sickened 2} and {@damage 2d6} {@condition persistent damage||persistent bleed damage} as larval xills burrow out of the body and immediately fade away into the {@place Ethereal Plane}",
+									"duration": "1 hour"
 								}
 							]
 						}
 					],
 					"name": "Xill Eggs"
-				},
-				{
-					"traits": [
-						"1 hour"
-					],
-					"entries": [],
-					"name": "the Ethereal Plane"
 				},
 				{
 					"traits": [
@@ -65769,12 +65810,9 @@
 				},
 				{
 					"entries": [
-						"As esobok, but {@dice 3d6}."
+						"A yamaraj's Strikes affect incorporeal creatures with the effects of a ghost touch property rune and deal {@damage 3d6} negative damage to living creatures and {@damage 3d6} positive damage to undead."
 					],
-					"name": "Spirit Touch",
-					"entries_as_xyz": [
-						"An esobok's Strikes affect incorporeal creatures with the effects of a ghost touch property rune and deal {@damage 1d6} negative damage to living creatures and {@damage 1d6} positive damage to undead."
-					]
+					"name": "Spirit Touch"
 				},
 				{
 					"entries": [
@@ -65785,7 +65823,7 @@
 								"poison"
 							],
 							"note": " While a creature is {@condition clumsy} from this poison, it is {@condition doomed} with the same value",
-							"DC": "42",
+							"DC": 42,
 							"savingThrow": "Fortitude",
 							"onset": null,
 							"maxDuration": "10 rounds",
@@ -65917,12 +65955,9 @@
 						"aura"
 					],
 					"entries": [
-						"As yellow musk thrall, but DC 15."
+						"5 feet. Grasping tendrils extend out from the brute. When the brute ends its movement next to a creature, or a creature ends its turn next to the brute, that creature must succeed at a DC 15 Reflex save or be {@condition grabbed} by the tendrils."
 					],
-					"name": "Entangling Tendrils",
-					"entries_as_xyz": [
-						"5 feet. Grasping tendrils extend out from the thrall. When the thrall ends its movement next to a creature, or a creature ends its turn next to the thrall, that creature must succeed at a DC 14 Reflex save or be {@condition grabbed} by the tendrils."
-					]
+					"name": "Entangling Tendrils"
 				}
 			],
 			"speed": {
@@ -65952,22 +65987,16 @@
 						"entry": "{@as F}"
 					},
 					"entries": [
-						"As yellow musk thrall, but the trigger occurs when the yellow musk brute is reduced to 15 HP or fewer."
+						"Creeper tendrils tear through the brute's limbs, causing its forearms to tear loose. The brute's melee reach increases by 5 feet."
 					],
 					"name": "Limb Extension",
-					"trigger": "The yellow musk thrall is reduced to 4 HP or fewer",
-					"entries_as_xyz": [
-						"Creeper tendrils tear through the thrall's limbs, causing its forearms to tear loose. The thrall's melee reach increases by 5 feet."
-					]
+					"trigger": "The yellow musk thrall is reduced to 15 HP or fewer"
 				},
 				{
 					"entries": [
-						"As yellow musk thrall, but DC 15."
+						"When the brute strikes a creature, that creature is exposed to yellow musk creeper pollen, as Spray Pollen (DC 15). The creature is {@condition fascinated} by the yellow musk creeper that spawned the brute, not by the brute itself."
 					],
-					"name": "Pollen Touch",
-					"entries_as_xyz": [
-						"When the thrall strikes a creature, that creature is exposed to yellow musk creeper pollen, as Spray Pollen (DC 14). The creature is {@condition fascinated} by the yellow musk creeper that spawned the thrall, not by the thrall itself."
-					]
+					"name": "Pollen Touch"
 				}
 			],
 			"inflicts": {
@@ -66083,15 +66112,9 @@
 						"mental"
 					],
 					"entries": [
-						"The creeper bores dozens of tendrils into the brain of a Small, Medium, or Large humanoid creature that's {@condition unconscious}, willing, or {@condition fascinated} by Spray Pollen, and within reach of the creeper's tendrils. The creature must succeed at a DC 18 Fortitude save or become {@condition stupefied 1} ({@condition stupefied 2} on a critical failure). Subsequent failed saves against Bore."
+						"The creeper bores dozens of tendrils into the brain of a Small, Medium, or Large humanoid creature that's {@condition unconscious}, willing, or {@condition fascinated} by Spray Pollen, and within reach of the creeper's tendrils. The creature must succeed at a DC 18 Fortitude save or become {@condition stupefied 1} ({@condition stupefied 2} on a critical failure). Subsequent failed saves against Bore into Brain increase the {@condition stupefied} value. If the creature reaches {@condition stupefied 5}, it is turned into a yellow musk thrall (see below). Boring into a creature's brain doesn't end fascination caused by Spray Pollen."
 					],
 					"name": "Bore into Brain"
-				},
-				{
-					"entries": [
-						"Brain increase the {@condition stupefied} value. If the creature reaches {@condition stupefied 5}, it is turned into a yellow musk thrall (see below). Boring into a creature's brain doesn't end fascination caused by Spray Pollen."
-					],
-					"name": "into"
 				},
 				{
 					"activity": {
@@ -68036,7 +68059,7 @@
 								"virulent"
 							],
 							"note": "",
-							"DC": "18",
+							"DC": 18,
 							"savingThrow": "Fortitude",
 							"onset": "{@dice 1d4} days",
 							"maxDuration": null,
@@ -68274,20 +68297,30 @@
 									"name": "locate"
 								}
 							]
+						},
+						"constant": {
+							"6": {
+								"spells": [
+									{
+										"name": "true seeing"
+									}
+								]
+							}
 						}
 					}
 				}
 			],
-			"abilitiesBot": [
+			"rituals": [
 				{
-					"traits": [
-						"6th"
-					],
-					"entries": [
-						"true seeing Rituals DC 32; geas."
-					],
-					"name": "Constant"
-				},
+					"DC": 32,
+					"rituals": [
+						{
+							"name": "geas"
+						}
+					]
+				}
+			],
+			"abilitiesBot": [
 				{
 					"activity": {
 						"number": 2,

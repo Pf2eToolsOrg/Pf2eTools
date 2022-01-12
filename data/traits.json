@@ -38,7 +38,15 @@
 				"Schools & Traditions"
 			],
 			"entries": [
-				"Effects and magic items with this trait are associated with the abjuration school of magic, typically involving protection or wards."
+				"Effects and magic items with this trait are associated with the abjuration school of magic, typically involving protection or wards.",
+				{
+					"type": "entriesOtherSource",
+					"entries": [
+						"Abjurations protect and ward. They create barriers that keep out attacks, effects, or even certain types of creatures. They also create effects that harm trespassers or banish interlopers."
+					],
+					"source": "CRB",
+					"page": 297
+				}
 			]
 		},
 		{
@@ -739,8 +747,7 @@
 			"name": "Lineage",
 			"source": "APG",
 			"page": 268,
-			"categories": [
-			],
+			"categories": [],
 			"entries": [
 				"A feat with this trait indicates a character's descendance from a particular type of creature. You can have only one lineage feat. You can select a lineage feat only at 1st level, and you can't retrain into or out of these feats."
 			]
@@ -943,7 +950,8 @@
 				"Armor & Weapon"
 			],
 			"entries": [
-				"Combination is a new trait for weapons that combine the functionality of melee weapons and firearms in unique or unusual ways. A combination weapon has both a firearm form or usage and a melee weapon form or usage. Table 4\u20133: Uncommon Combination Weapons lists the firearm statistics first, and the melee weapon statistics indented beneath, just above the ammunition."
+				"Combination is a new trait for weapons that combine the functionality of melee weapons and firearms in unique or unusual ways. A combination weapon has both a firearm form or usage and a melee weapon form or usage. {@table Uncommon Combination Weapons|G&G|Table 4\u20133: Uncommon Combination Weapons} lists the firearm statistics first, and the melee weapon statistics indented beneath, just above the ammunition. Switching between the melee weapon usage and the firearm usage requires an {@action Interact} action. However, if your last action was a successful melee {@action Strike} against a foe using a combination weapon, you can make a firearm {@action Strike} with the combination weapon against that foe without fully switching to the firearm usage, firing the firearm just as you hit with the melee attack. In this case, the combination weapon returns to its melee usage after the firearm {@action Strike}.",
+				"Since a combination weapon is one weapon with two usages, both usages share any fundamental runes. You can put a property rune on a combination weapon as long as it's appropriate for either of the two usages, but if only one of the usages meets the property rune's requirements, the effects of the property rune only apply for that usage. For instance, a {@item vorpal} {@group axe} musket only applies the {@item vorpal} property rune when you are using it as an {@group axe}. Due to their complexity, combination weapons can't have another weapon, such as a {@item bayonet|G&G} or {@item reinforced stock|G&G}, attached to them."
 			]
 		},
 		{
@@ -1071,7 +1079,16 @@
 				"Schools & Traditions"
 			],
 			"entries": [
-				"Effects and magic items with this trait are associated with the conjuration school of magic, typically involving summoning, creation, {@trait teleportation}, or moving things from place to place."
+				"Effects and magic items with this trait are associated with the conjuration school of magic, typically involving summoning, creation, {@trait teleportation}, or moving things from place to place.",
+				{
+					"type": "entriesOtherSource",
+					"entries": [
+						"Conjuration spells transport creatures via teleportation, create an object, or bring a creature or object from somewhere else (typically from another plane) to follow your commands.",
+						"Conjuration spells often have the {@trait teleportation} trait, and the creatures summoned by conjuration spells have the {@trait summoned} trait."
+					],
+					"source": "CRB",
+					"page": 297
+				}
 			]
 		},
 		{
@@ -1194,7 +1211,7 @@
 				"Armor & Weapon"
 			],
 			"entries": [
-				"Critical fusion is a new trait for combination weapons that grants you two additional options for the critical specialization effect when using the combination weapon's melee version to make a melee attack while the firearm is loaded."
+				"Critical fusion is a new trait for combination weapons that grants you two additional options for the critical specialization effect when using the combination weapon's melee version to make a melee attack while the firearm is loaded. If you choose to use one of them, they replace the melee usage's normal critical specialization effect. First, you can discharge the firearm to create a loud bang and concussion, using the critical specialization effect for firearms instead of the melee weapon group's critical specialization effect. Second, you can choose to discharge the firearm to increase the critical hit's momentum or shoot the foe as you attack them in melee, dealing 2 additional damage per weapon damage die. Both options discharge the firearm, which typically means you have to reload it before firing it again."
 			]
 		},
 		{
@@ -1272,7 +1289,7 @@
 			"source": "CRB",
 			"page": 282,
 			"otherSources": {
-				"Expanded": [
+				"Reprinted": [
 					"G&G|232"
 				]
 			},
@@ -1280,15 +1297,7 @@
 				"Armor & Weapon"
 			],
 			"entries": [
-				"On a critical hit, the weapon adds a weapon damage die of the listed size. Roll this after doubling the weapon's damage. This increases to two dice if the weapon has a {@i greater striking rune} and three dice if the weapon has a {@i major striking rune}. For instance, a rapier with a {@i greater striking rune} deals {@damage 2d8} extra piercing damage on a critical hit. An ability that changes the size of the weapon's normal damage dice doesn't change the size of its deadly die.",
-				{
-					"type": "entriesOtherSource",
-					"entries": [
-						"On a critical hit, the weapon adds a weapon damage die of the listed size. Roll this after doubling the weapon's damage. This increases to two dice if the weapon has a greater striking rune and three dice if the weapon has a major striking rune."
-					],
-					"source": "G&G",
-					"page": 232
-				}
+				"On a critical hit, the weapon adds a weapon damage die of the listed size. Roll this after doubling the weapon's damage. This increases to two dice if the weapon has a {@item greater striking||greater striking rune} and three dice if the weapon has a {@item major striking||major striking rune}. For instance, a rapier with a {@item greater striking||greater striking rune} deals {@damage 2d8} extra piercing damage on a critical hit. An ability that changes the size of the weapon's normal damage dice doesn't change the size of its deadly die."
 			]
 		},
 		{
@@ -1467,7 +1476,16 @@
 				"Schools & Traditions"
 			],
 			"entries": [
-				"The divination school of magic typically involves obtaining or transferring information, or predicting events."
+				"The divination school of magic typically involves obtaining or transferring information, or predicting events.",
+				{
+					"type": "entriesOtherSource",
+					"entries": [
+						"Divinations allow you to learn the secrets of the present, past, and future. They bestow good fortune, grant you the ability to perceive remote locations, and reveal secret knowledge.",
+						"Divinations often have the detection trait if they find something, the {@trait prediction} trait if they grant you insight about what might happen in the future, the {@trait revelation} trait if they show things as they truly are, or the {@trait scrying} trait if they let you perceive another location."
+					],
+					"source": "CRB",
+					"page": 297
+				}
 			]
 		},
 		{
@@ -1780,7 +1798,15 @@
 				"Schools & Traditions"
 			],
 			"entries": [
-				"Effects and magic items with this trait are associated with the enchantment school of magic, typically involving mind control, emotion alteration, and other mental effects."
+				"Effects and magic items with this trait are associated with the enchantment school of magic, typically involving mind control, emotion alteration, and other mental effects.",
+				{
+					"type": "entriesOtherSource",
+					"entries": [
+						"Enchantments affect the minds and emotions of other creatures\u2014sometimes to influence and control them, and other times to bolster them to greater heights of courage. Enchantment spells almost always have the {@trait mental} trait, and many have the {@trait emotion} trait or the {@trait fear} trait."
+					],
+					"source": "CRB",
+					"page": 297
+				}
 			]
 		},
 		{
@@ -1882,7 +1908,15 @@
 				"Schools & Traditions"
 			],
 			"entries": [
-				"Effects and magic items with this trait are associated with the evocation school of magic, typically involving energy and elemental forces."
+				"Effects and magic items with this trait are associated with the evocation school of magic, typically involving energy and elemental forces.",
+				{
+					"type": "entriesOtherSource",
+					"entries": [
+						"Evocations capture magical energy and then shape it to harm your foes or protect your allies. Evocation spells often have a trait that comes from the type of damage they deal, such as {@trait acid}, {@trait cold}, {@trait fire}, {@trait force}, or {@trait sonic}."
+					],
+					"source": "CRB",
+					"page": 298
+				}
 			]
 		},
 		{
@@ -2809,7 +2843,15 @@
 				"Schools & Traditions"
 			],
 			"entries": [
-				"Effects and magic items with this trait are associated with the illusion school of magic, typically involving false sensory stimuli."
+				"Effects and magic items with this trait are associated with the illusion school of magic, typically involving false sensory stimuli.",
+				{
+					"type": "entriesOtherSource",
+					"entries": [
+						"Illusions create the semblance of something real, fooling the eyes, ears, and other senses. They almost always have the {@trait mental} trait, and depending on how the illusion is perceived, they might also have the {@trait auditory} or {@trait visual} trait."
+					],
+					"source": "CRB",
+					"page": 298
+				}
 			]
 		},
 		{
@@ -3724,7 +3766,16 @@
 				"Schools & Traditions"
 			],
 			"entries": [
-				"Effects and magic items with this trait are associated with the necromancy school of magic, typically involving forces of life and death."
+				"Effects and magic items with this trait are associated with the necromancy school of magic, typically involving forces of life and death.",
+				{
+					"type": "entriesOtherSource",
+					"entries": [
+						"Necromancy spells harness the power of life and death.",
+						"They can sap life essence or sustain creatures with life-saving healing. Necromancy spells often have the {@trait curse}, {@trait death}, {@trait healing}, {@trait negative}, or {@trait positive} traits."
+					],
+					"source": "CRB",
+					"page": 298
+				}
 			]
 		},
 		{
@@ -4408,7 +4459,13 @@
 				"Armor & Weapon"
 			],
 			"entries": [
-				"This weapon can channel energy damage. You gain the {@action Conduct Energy|LOAG} free action while wielding a resonant weapon."
+				"This weapon can channel energy damage. You gain the {@action Conduct Energy|LOAG} free action while wielding a resonant weapon.",
+				{
+					"type": "statblock",
+					"tag": "action",
+					"name": "Conduct Energy",
+					"source": "LOAG"
+				}
 			]
 		},
 		{
@@ -4585,7 +4642,7 @@
 				"Creature"
 			],
 			"entries": [
-				"Shoonies are reclusive humanoids who resemble bipedal dogs with wrinkled faces  and  bulging  eyes."
+				"Shoonies are reclusive humanoids who resemble bipedal dogs with wrinkled faces and bulging eyes."
 			]
 		},
 		{
@@ -4601,7 +4658,7 @@
 				"Armor & Weapon"
 			],
 			"entries": [
-				"You can use this weapon to {@action Shove} with the Athletics skill even if you don't have a free hand. This uses the weapon's reach (if different from your own) and adds the weapon's item bonus to attack rolls as an item bonus to the Athletics check. If you critically fail a check to Shove using the weapon, you can drop the weapon to take the effects of a failure instead of a critical failure."
+				"You can use this weapon to {@action Shove} with the {@skill Athletics} skill even if you don't have a free hand. This uses the weapon's reach (if different from your own) and adds the weapon's item bonus to attack rolls as an item bonus to the {@skill Athletics} check. If you critically fail a check to {@action Shove} using the weapon, you can drop the weapon to take the effects of a failure instead of a critical failure."
 			]
 		},
 		{
@@ -4732,7 +4789,7 @@
 				"Equipment"
 			],
 			"entries": [
-				"Spellhearts are permanent items that work similarly to talismans. You affix a spellheart using the Affix a Spellheart activity, which is otherwise identical to {@action Affix a Talisman||Affixing the Talisman}. The limit of one talisman per item remains\u2014an item can have one spellheart or one talisman, not both. When casting a cantrip from a spellheart, you can use your own spell attack roll or spell DC if it's higher. Crafting a spellheart requires the spells the spellheart can cast. For example, a {@item major five-feather wreath|som} requires {@spell air walk}, {@spell gale blast}, and {@spell wall of wind}."
+				"Spellhearts are permanent items that work similarly to talismans. You affix a spellheart using the Affix a Spellheart activity, which is otherwise identical to {@action Affix a Talisman||Affixing the Talisman}. The limit of one talisman per item remains\u2014an item can have one spellheart or one talisman, not both. When casting a cantrip from a spellheart, you can use your own spell attack roll or spell DC if it's higher. {@action Craft||Crafting} a spellheart requires the spells the spellheart can cast. For example, a {@item major five-feather wreath|som} requires {@spell air walk}, {@spell gale blast}, and {@spell wall of wind}."
 			]
 		},
 		{
@@ -4906,7 +4963,8 @@
 			],
 			"entries": [
 				"A creature called by a {@trait conjuration} spell or effect gains the summoned trait. A summoned creature can't summon other creatures, create things of value, or cast spells that require a cost. It has the {@trait minion} trait. If it tries to cast a spell of equal or higher level than the spell that summoned it, it overpowers the summoning magic, causing the summoned creature's spell to fail and the summon spell to end. Otherwise, the summoned creature uses the standard abilities for a creature of its kind. It generally attacks your enemies to the best of its abilities. If you can communicate with it, you can attempt to command it, but the GM determines the degree to which it follows your commands.",
-				"Immediately when you finish {@action Cast a Spell|CRB|Casting the Spell}, the summoned creature uses its 2 actions for that turn. A summoned creature can't control any spawn or other creatures generated from it, and such creatures return to their unaltered state (usually a corpse in the case of spawn) once the summoned creature is gone. If it's unclear what this state would be, the GM decides. Summoned creatures can be banished by various spells and effects. They are automatically banished if reduced to 0 Hit Points or if the spell that called them ends."
+				"Immediately when you finish {@action Cast a Spell|CRB|Casting the Spell}, the summoned creature uses its 2 actions for that turn. A summoned creature can't control any spawn or other creatures generated from it, and such creatures return to their unaltered state (usually a corpse in the case of spawn) once the summoned creature is gone. If it's unclear what this state would be, the GM decides.",
+				"Summoned creatures can be banished by various spells and effects. They are automatically banished if reduced to 0 Hit Points or if the spell that called them ends."
 			]
 		},
 		{
@@ -5093,9 +5151,7 @@
 			"name": "Hellknight",
 			"source": "LOCG",
 			"page": 133,
-			"categories": [
-
-			],
+			"categories": [],
 			"entries": [
 				"The Hellknights are a collection of knightly orders focused on maintaining order and upholding the law."
 			]
@@ -5182,7 +5238,15 @@
 				"Schools & Traditions"
 			],
 			"entries": [
-				"Effects and magic items with this trait are associated with the transmutation school of magic, typically changing something's form."
+				"Effects and magic items with this trait are associated with the transmutation school of magic, typically changing something's form.",
+				{
+					"type": "entriesOtherSource",
+					"entries": [
+						"Transmutation spells make alterations to or transform the physical form of a creature or object. The {@trait morph} and {@trait polymorph} traits appear primarily in transmutation spells."
+					],
+					"source": "CRB",
+					"page": 298
+				}
 			]
 		},
 		{

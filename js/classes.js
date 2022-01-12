@@ -320,7 +320,7 @@ class ClassesPage extends BaseComponent {
 		if (Hist.isHistorySuppressed) return Hist.setSuppressHistory(false);
 
 		this._setClassFromHash();
-		this._setFeatClassFilters();
+		if (Hist.getDoubleHashParts()[0][0].toLowerCase() !== UrlUtil.autoEncodeHash(this.activeClass).toLowerCase()) this._setFeatClassFilters();
 		this._setFeatFromHash();
 		this._setStateFromHash();
 	}

@@ -185,9 +185,9 @@
 					"type": "Focus",
 					"tradition": null,
 					"DC": 20,
+					"fp": 1,
 					"entry": {
 						"3": {
-							"fp": "(1 Focus Point)",
 							"spells": [
 								{
 									"name": "lay on hands",
@@ -959,12 +959,9 @@
 						"transmutation"
 					],
 					"entries": [
-						"As young blue dragon, but DC 32."
+						"When casting create water, the dragon can attempt to destroy liquid instead of creating it, turning an equal amount of liquid into sand. This destroys liquid magic or alchemical items if they're of a lower level than the dragon (a creature can attempt a DC 32 Will save to protect all liquids in its possession). This doesn't affect the liquids in a creature's body."
 					],
-					"name": "Desert Thirst",
-					"entries_as_xyz": [
-						"When casting create water, the dragon can attempt to destroy liquid instead of creating it, turning an equal amount of liquid into sand. This destroys liquid magic or alchemical items if they're of a lower level than the dragon (a creature can attempt a DC 26 Will save to protect all liquids in its possession). This doesn't affect the liquids in a creature's body."
-					]
+					"name": "Desert Thirst"
 				},
 				{
 					"activity": {
@@ -1490,19 +1487,16 @@
 						"unit": "action"
 					},
 					"entries": [
-						"As young bronze dragon, but an 80-foot line, DC 33, and the dragon's lightning deals {@damage 8d12} electricity damage."
-					],
-					"name": "Breath Weapon",
-					"entries_as_xyz": [
 						"The bronze dragon breathes in one of two ways. The dragon can't use Breath Weapon again for {@dice 1d4} rounds.",
 						{
 							"type": "list",
 							"items": [
-								"{@bold Lightning} (arcane, electricity, evocation); The dragon breathes lightning in a 60-foot line that deals {@damage 6d12} electricity damage (DC 28 basic Reflex save).",
-								"{@bold Repulsion Gas} (abjuration, arcane, incapacitation, mental); The dragon breathes a 60-foot line of repulsive gas. Each creature in the area must succeed at a DC 28 Will save or become {@condition fleeing} from the dragon for 1 round (or 2 rounds on a critical failure)."
+								"{@bold Lightning} (arcane, electricity, evocation); The dragon breathes lightning in a 80-foot line that deals {@damage 8d12} electricity damage (DC 33 basic Reflex save).",
+								"{@bold Repulsion Gas} (abjuration, arcane, incapacitation, mental); The dragon breathes a 80-foot line of repulsive gas. Each creature in the area must succeed at a DC 33 Will save or become {@condition fleeing} from the dragon for 1 round (or 2 rounds on a critical failure)."
 							]
 						}
-					]
+					],
+					"name": "Breath Weapon"
 				},
 				{
 					"activity": {
@@ -1522,16 +1516,13 @@
 				},
 				{
 					"entries": [
-						"As young bronze dragon, but for up to 60 minutes per day."
+						"For up to 60 minutes per day, the dragon, along with allied creatures and vessels within 50 feet, can move at double their normal Speed in water."
 					],
 					"name": "Water Mastery",
 					"traits": [
 						"arcane",
 						"transmutation",
 						"water"
-					],
-					"entries_as_xyz": [
-						"For up to 30 minutes per day, the dragon, along with allied creatures and vessels within 50 feet, can move at double their normal Speed in water."
 					]
 				}
 			],
@@ -1770,19 +1761,16 @@
 						"unit": "action"
 					},
 					"entries": [
-						"As young copper dragon, but an 80-foot line, DC 32, and the dragon's acid deals {@damage 13d6} acid damage."
-					],
-					"name": "Breath Weapon",
-					"entries_as_xyz": [
 						"The copper dragon breathes in one of two ways. The dragon can't use Breath Weapon again for {@dice 1d4} rounds.",
 						{
 							"type": "list",
 							"items": [
-								"{@bold Acid} (acid, arcane, evocation); The dragon breathes acid in a 60-foot line that deals {@damage 8d6} acid damage (DC 26 basic Fortitude save).",
-								"{@bold Slowing Gas} (arcane, transmutation); The dragon breathes a 60-foot line of slowing gas. Each creature in the area must succeed at a DC 26 Fortitude save or be {@condition slowed 1} for 1 round (or {@condition slowed 2} on a critical failure)."
+								"{@bold Acid} (acid, arcane, evocation); The dragon breathes acid in a 80-foot line that deals {@damage 13d6} acid damage (DC 32 basic Fortitude save).",
+								"{@bold Slowing Gas} (arcane, transmutation); The dragon breathes a 80-foot line of slowing gas. Each creature in the area must succeed at a DC 32 Fortitude save or be {@condition slowed 1} for 1 round (or {@condition slowed 2} on a critical failure)."
 							]
 						}
-					]
+					],
+					"name": "Breath Weapon"
 				},
 				{
 					"entries": [
@@ -2083,19 +2071,16 @@
 						"unit": "action"
 					},
 					"entries": [
-						"As young gold dragon, but a 40-foot cone, DC 37, the dragon's flame deals {@damage 15d6} fire damage, and the dragon's weakening gas causes {@condition enfeebled 2} ({@condition enfeebled 3} on a critical failure)."
-					],
-					"name": "Breath Weapon",
-					"entries_as_xyz": [
 						"The gold dragon breathes in one of two ways. The dragon can't use Breath Weapon again for {@dice 1d4} rounds.",
 						{
 							"type": "list",
 							"items": [
-								"{@bold Flame} (arcane, evocation, fire); The dragon breathes a blast of flame in a 30-foot cone that deals {@damage 11d6} fire damage (DC 31 basic Reflex save).",
-								"{@bold Weakening Gas} (arcane, necromancy); The dragon breathes a blast of weakening gas. Each creature within a 30-foot cone must succeed at a DC 31 Fortitude save or become {@condition enfeebled 1} for 1 minute (or {@condition enfeebled 2} on a critical failure)."
+								"{@bold Flame} (arcane, evocation, fire); The dragon breathes a blast of flame in a 40-foot cone that deals {@damage 15d6} fire damage (DC 37 basic Reflex save).",
+								"{@bold Weakening Gas} (arcane, necromancy); The dragon breathes a blast of weakening gas. Each creature within a 40-foot cone must succeed at a DC 37 Fortitude save or become {@condition enfeebled 2} for 1 minute (or {@condition enfeebled 3} on a critical failure)."
 							]
 						}
-					]
+					],
+					"name": "Breath Weapon"
 				},
 				{
 					"activity": {
@@ -2938,19 +2923,16 @@
 						"unit": "action"
 					},
 					"entries": [
-						"As young silver dragon, but a 40-foot cone, DC 35, the dragon's frost deals {@damage 15d6} cold damage, and the dragon's paralyzing gas makes the creature {@condition slowed 2} for 1 round (or {@condition paralyzed} for 2 rounds on a critical failure)."
-					],
-					"name": "Breath Weapon",
-					"entries_as_xyz": [
 						"The silver dragon breathes in one of two ways. The dragon can't use Breath Weapon again for {@dice 1d4} rounds.",
 						{
 							"type": "list",
 							"items": [
-								"{@bold Frost} (arcane, cold, evocation); The dragon breathes a cloud of frost in a 30-foot cone that deals {@damage 10d6} cold damage (DC 29 basic Reflex save).",
-								"{@bold Paralyzing Gas} (arcane, enchantment, incapacitation); The dragon breathes a blast of paralyzing gas. Each creature within a 30-foot cone must succeed at a DC 29 Fortitude save or be {@condition slowed 1} for 1 round (or {@condition paralyzed} for 1 round on a critical failure)."
+								"{@bold Frost} (arcane, cold, evocation); The dragon breathes a cloud of frost in a 40-foot cone that deals {@damage 15d6} cold damage (DC 35 basic Reflex save).",
+								"{@bold Paralyzing Gas} (arcane, enchantment, incapacitation); The dragon breathes a blast of paralyzing gas. Each creature within a 40-foot cone must succeed at a DC 35 Fortitude save or be {@condition slowed 2} for 1 round (or {@condition paralyzed} for 2 round on a critical failure)."
 							]
 						}
-					]
+					],
+					"name": "Breath Weapon"
 				},
 				{
 					"entries": [
@@ -3136,13 +3118,10 @@
 						"cold"
 					],
 					"entries": [
-						"As young white dragon, but {@damage 2d6} cold damage."
+						"The dragon's blood sprays on the creature, dealing {@damage 2d6} cold damage. A creature that takes cold damage in this way is {@condition slowed 1} for 1 round."
 					],
 					"name": "Freezing Blood",
-					"trigger": "An adjacent creature deals piercing or slashing damage to the dragon.",
-					"entries_as_xyz": [
-						"The dragon's blood sprays on the creature, dealing {@damage 1d6} cold damage. A creature that takes cold damage in this way is {@condition slowed 1} for 1 round."
-					]
+					"trigger": "An adjacent creature deals piercing or slashing damage to the dragon."
 				}
 			],
 			"speed": {
@@ -3262,12 +3241,9 @@
 						"unit": "action"
 					},
 					"entries": [
-						"As young white dragon, but DC 29 and {@damage 3d6} bludgeoning damage."
+						"The dragon slams into the ground. It can do this if it's on the ground or Flying within 10 feet of the ground. Each creature on the ground within 10 feet must succeed at a DC 29 Reflex save or fall {@condition prone} and take {@damage 3d6} bludgeoning damage. The dragon can then {@action Step}."
 					],
-					"name": "Ground Slam",
-					"entries_as_xyz": [
-						"The dragon slams into the ground. It can do this if it's on the ground or Flying within 10 feet of the ground. Each creature on the ground within 10 feet must succeed at a DC 24 Reflex save or fall {@condition prone} and take {@damage 2d6} bludgeoning damage. The dragon can then {@action Step}."
-					]
+					"name": "Ground Slam"
 				},
 				{
 					"entries": [
@@ -3829,17 +3805,14 @@
 					"entries": [
 						{
 							"type": "affliction",
-							"name": "",
 							"traits": [
 								"curse",
 								"occult",
 								"virulent"
 							],
-							"note": "",
-							"DC": "25",
+							"note": "A {@spell remove disease} spell can counteract this curse, but immunity to disease offers no protection against it.",
+							"DC": 25,
 							"savingThrow": "Fortitude",
-							"onset": null,
-							"maxDuration": null,
 							"stages": [
 								{
 									"stage": 1,
@@ -3853,8 +3826,8 @@
 								},
 								{
 									"stage": 3,
-									"entry": "the victim's skin transforms into a clear, slimy membrane, inflicting {@condition drained 2} until the curse ends;",
-									"duration": null
+									"entry": "the victim's skin transforms into a clear, slimy membrane, inflicting {@condition drained 2} until the curse ends; every hour this membrane remains dry, the creature's drained condition increases by 1",
+									"duration": "permanent"
 								}
 							]
 						}
@@ -4115,13 +4088,10 @@
 						"necromancy"
 					],
 					"entries": [
-						"As adult black dragon, but DC 35."
+						"The dragon permanently befouls 10 cubic feet of liquid within 90 feet. The liquid becomes undrinkable and unable to support water-breathing life. This destroys liquid magic or alchemical items if they're of a lower level than the dragon (a creature can attempt a DC 35 Will save to protect liquids in its possession). This doesn't affect the liquids in a creature's body."
 					],
 					"name": "Corrupt Water",
-					"frequency": "Once per day",
-					"entries_as_xyz": [
-						"The dragon permanently befouls 10 cubic feet of liquid within 90 feet. The liquid becomes undrinkable and unable to support water-breathing life. This destroys liquid magic or alchemical items if they're of a lower level than the dragon (a creature can attempt a DC 28 Will save to protect liquids in its possession). This doesn't affect the liquids in a creature's body."
-					]
+					"frequency": "Once per day"
 				},
 				{
 					"activity": {
@@ -4438,12 +4408,9 @@
 						"transmutation"
 					],
 					"entries": [
-						"As young blue dragon, but DC 37."
+						"When casting create water, the dragon can attempt to destroy liquid instead of creating it, turning an equal amount of liquid into sand. This destroys liquid magic or alchemical items if they're of a lower level than the dragon (a creature can attempt a DC 37 Will save to protect all liquids in its possession). This doesn't affect the liquids in a creature's body."
 					],
-					"name": "Desert Thirst",
-					"entries_as_xyz": [
-						"When casting create water, the dragon can attempt to destroy liquid instead of creating it, turning an equal amount of liquid into sand. This destroys liquid magic or alchemical items if they're of a lower level than the dragon (a creature can attempt a DC 26 Will save to protect all liquids in its possession). This doesn't affect the liquids in a creature's body."
-					]
+					"name": "Desert Thirst"
 				},
 				{
 					"activity": {
@@ -4717,13 +4684,10 @@
 						"evocation"
 					],
 					"entries": [
-						"As adult brass dragon, but DC 37."
+						"The dragon calls upon the desert wind. This has the same effect as gust of wind (DC 37 Fortitude) but in a 60-foot cone. A creature that fails its save is also {@condition blinded} until the end of its next turn (or for 1 minute on a critical failure)."
 					],
 					"name": "Desert Wind",
-					"frequency": "three times per day.",
-					"entries_as_xyz": [
-						"The dragon calls upon the desert wind. This has the same effect as gust of wind (DC 30 Fortitude) but in a 60-foot cone. A creature that fails its save is also {@condition blinded} until the end of its next turn (or for 1 minute on a critical failure)."
-					]
+					"frequency": "three times per day."
 				},
 				{
 					"activity": {
@@ -4876,12 +4840,9 @@
 						"electricity"
 					],
 					"entries": [
-						"15 feet. As adult bronze dragon, but {@damage 2d12} electricity."
+						"15 feet, {@damage 2d12} electricity damage. The bronze dragon can turn this aura on or off using a single action, which has the {@trait concentrate} trait, and it can choose to not affect allies with the aura."
 					],
-					"name": "Electricity Aura",
-					"entries_as_xyz": [
-						"10 feet, {@damage 1d12} electricity damage. The bronze dragon can turn this aura on or off using a single action, which has the {@trait concentrate} trait, and it can choose to not affect allies with the aura."
-					]
+					"name": "Electricity Aura"
 				},
 				{
 					"traits": [
@@ -5029,19 +4990,16 @@
 						"unit": "action"
 					},
 					"entries": [
-						"As young bronze dragon, but a 100-foot line, DC 40, and the dragon's lightning deals {@damage 12d12} electricity damage."
-					],
-					"name": "Breath Weapon",
-					"entries_as_xyz": [
 						"The bronze dragon breathes in one of two ways. The dragon can't use Breath Weapon again for {@dice 1d4} rounds.",
 						{
 							"type": "list",
 							"items": [
-								"{@bold Lightning} (arcane, electricity, evocation); The dragon breathes lightning in a 60-foot line that deals {@damage 6d12} electricity damage (DC 28 basic Reflex save).",
-								"{@bold Repulsion Gas} (abjuration, arcane, incapacitation, mental); The dragon breathes a 60-foot line of repulsive gas. Each creature in the area must succeed at a DC 28 Will save or become {@condition fleeing} from the dragon for 1 round (or 2 rounds on a critical failure)."
+								"{@bold Lightning} (arcane, electricity, evocation); The dragon breathes lightning in a 100-foot line that deals {@damage 12d12} electricity damage (DC 40 basic Reflex save).",
+								"{@bold Repulsion Gas} (abjuration, arcane, incapacitation, mental); The dragon breathes a 100-foot line of repulsive gas. Each creature in the area must succeed at a DC 40 Will save or become {@condition fleeing} from the dragon for 1 round (or 2 rounds on a critical failure)."
 							]
 						}
-					]
+					],
+					"name": "Breath Weapon"
 				},
 				{
 					"activity": {
@@ -5061,16 +5019,13 @@
 				},
 				{
 					"entries": [
-						"As young bronze dragon, but up to 120 minutes per day."
+						"For up to 120 minutes per day, the dragon, along with allied creatures and vessels within 50 feet, can move at double their normal Speed in water."
 					],
 					"name": "Water Mastery",
 					"traits": [
 						"arcane",
 						"transmutation",
 						"water"
-					],
-					"entries_as_xyz": [
-						"For up to 30 minutes per day, the dragon, along with allied creatures and vessels within 50 feet, can move at double their normal Speed in water."
 					]
 				}
 			],
@@ -5329,19 +5284,16 @@
 						"unit": "action"
 					},
 					"entries": [
-						"As young copper dragon, but a 100-foot line, DC 38, and the dragon's acid deals {@damage 18d6} acid damage."
-					],
-					"name": "Breath Weapon",
-					"entries_as_xyz": [
 						"The copper dragon breathes in one of two ways. The dragon can't use Breath Weapon again for {@dice 1d4} rounds.",
 						{
 							"type": "list",
 							"items": [
-								"{@bold Acid} (acid, arcane, evocation); The dragon breathes acid in a 60-foot line that deals {@damage 8d6} acid damage (DC 26 basic Fortitude save).",
-								"{@bold Slowing Gas} (arcane, transmutation); The dragon breathes a 60-foot line of slowing gas. Each creature in the area must succeed at a DC 26 Fortitude save or be {@condition slowed 1} for 1 round (or {@condition slowed 2} on a critical failure)."
+								"{@bold Acid} (acid, arcane, evocation); The dragon breathes acid in a 100-foot line that deals {@damage 18d6} acid damage (DC 38 basic Fortitude save).",
+								"{@bold Slowing Gas} (arcane, transmutation); The dragon breathes a 100-foot line of slowing gas. Each creature in the area must succeed at a DC 38 Fortitude save or be {@condition slowed 1} for 1 round (or {@condition slowed 2} on a critical failure)."
 							]
 						}
-					]
+					],
+					"name": "Breath Weapon"
 				},
 				{
 					"entries": [
@@ -5668,19 +5620,16 @@
 						"unit": "action"
 					},
 					"entries": [
-						"As a young gold dragon, but a 50-foot cone, DC 44, the dragon's flame deals {@damage 20d6} fire damage, and the dragon's weakening gas causes {@condition enfeebled 3} ({@condition enfeebled 4} on a critical failure)."
-					],
-					"name": "Breath Weapon",
-					"entries_as_xyz": [
 						"The gold dragon breathes in one of two ways. The dragon can't use Breath Weapon again for {@dice 1d4} rounds.",
 						{
 							"type": "list",
 							"items": [
-								"{@bold Flame} (arcane, evocation, fire); The dragon breathes a blast of flame in a 30-foot cone that deals {@damage 11d6} fire damage (DC 31 basic Reflex save).",
-								"{@bold Weakening Gas} (arcane, necromancy); The dragon breathes a blast of weakening gas. Each creature within a 30-foot cone must succeed at a DC 31 Fortitude save or become {@condition enfeebled 1} for 1 minute (or {@condition enfeebled 2} on a critical failure)."
+								"{@bold Flame} (arcane, evocation, fire); The dragon breathes a blast of flame in a 50-foot cone that deals {@damage 20d6} fire damage (DC 44 basic Reflex save).",
+								"{@bold Weakening Gas} (arcane, necromancy); The dragon breathes a blast of weakening gas. Each creature within a 50-foot cone must succeed at a DC 44 Fortitude save or become {@condition enfeebled 3} for 1 minute (or {@condition enfeebled 4} on a critical failure)."
 							]
 						}
-					]
+					],
+					"name": "Breath Weapon"
 				},
 				{
 					"activity": {
@@ -6606,19 +6555,16 @@
 						"unit": "action"
 					},
 					"entries": [
-						"As young silver dragon, but a 50-foot cone, DC 42, the frost deals {@damage 20d6} cold damage, and the paralyzing gas makes the creature {@condition paralyzed} for 1 round (or 3 rounds on a critical failure)."
-					],
-					"name": "Breath Weapon",
-					"entries_as_xyz": [
 						"The silver dragon breathes in one of two ways. The dragon can't use Breath Weapon again for {@dice 1d4} rounds.",
 						{
 							"type": "list",
 							"items": [
-								"{@bold Frost} (arcane, cold, evocation); The dragon breathes a cloud of frost in a 30-foot cone that deals {@damage 10d6} cold damage (DC 29 basic Reflex save).",
-								"{@bold Paralyzing Gas} (arcane, enchantment, incapacitation); The dragon breathes a blast of paralyzing gas. Each creature within a 30-foot cone must succeed at a DC 29 Fortitude save or be {@condition slowed 1} for 1 round (or {@condition paralyzed} for 1 round on a critical failure)."
+								"{@bold Frost} (arcane, cold, evocation); The dragon breathes a cloud of frost in a 50-foot cone that deals {@damage 20d6} cold damage (DC 42 basic Reflex save).",
+								"{@bold Paralyzing Gas} (arcane, enchantment, incapacitation); The dragon breathes a blast of paralyzing gas. Each creature within a 50-foot cone must succeed at a DC 42 Fortitude save or be {@condition paralyzed} for 1 round (or 3 rounds on a critical failure)."
 							]
 						}
-					]
+					],
+					"name": "Breath Weapon"
 				},
 				{
 					"entries": [
@@ -6818,13 +6764,10 @@
 						"cold"
 					],
 					"entries": [
-						"As young white dragon, but {@damage 3d6} cold damage."
+						"The dragon's blood sprays on the creature, dealing {@damage 3d6} cold damage. A creature that takes cold damage in this way is {@condition slowed 1} for 1 round."
 					],
 					"name": "Freezing Blood",
-					"trigger": "An adjacent creature deals piercing or slashing damage to the dragon.",
-					"entries_as_xyz": [
-						"The dragon's blood sprays on the creature, dealing {@damage 1d6} cold damage. A creature that takes cold damage in this way is {@condition slowed 1} for 1 round."
-					]
+					"trigger": "An adjacent creature deals piercing or slashing damage to the dragon."
 				}
 			],
 			"speed": {
@@ -6953,12 +6896,9 @@
 						"unit": "action"
 					},
 					"entries": [
-						"As young white dragon, but DC 37 and {@damage 5d6} bludgeoning damage."
+						"The dragon slams into the ground. It can do this if it's on the ground or Flying within 10 feet of the ground. Each creature on the ground within 10 feet must succeed at a DC 37 Reflex save or fall {@condition prone} and take {@damage 5d6} bludgeoning damage. The dragon can then {@action Step}."
 					],
-					"name": "Ground Slam",
-					"entries_as_xyz": [
-						"The dragon slams into the ground. It can do this if it's on the ground or Flying within 10 feet of the ground. Each creature on the ground within 10 feet must succeed at a DC 24 Reflex save or fall {@condition prone} and take {@damage 2d6} bludgeoning damage. The dragon can then {@action Step}."
-					]
+					"name": "Ground Slam"
 				},
 				{
 					"entries": [
@@ -6980,49 +6920,6 @@
 						"The dragon reshapes a cube of ice or snow it touches, up to 10 feet across. Any creature standing atop the ice must succeed at a DC 15 Reflex save or {@skill Acrobatics} check. On a failure, the creature falls {@condition prone} atop the ice; on a critical failure, it falls off the ice entirely and is also {@condition prone}."
 					],
 					"name": "Shape Ice"
-				},
-				{
-					"entries": [
-						"Paragons of virtue, nobility, and grace, metallic dragons are benevolent entities revered as mythic beings akin to gods in both their power and majesty. Few have ever seen a metallic dragon firsthand, but tales of their intervention in mortals' lives\u2014and of their passing\u2014always spread far and wide. Named for the way their scales resemble the shining metals humanoids use in commerce, warfare, and industry, these immense beings are diverse in their interests and abilities, and they don't seem to mind being associated with such mundane materials. After all, to compare a gold dragon to a gold coin is like comparing an ocean to a glass of water\u2014though they may seem similar at first glance, the raw power, breadth, and grandeur of one simply overwhelms the other.",
-						"In addition to metallic dragons and their chromatic counterparts (page 104\u2013115), other types of dragons roam the world and the rest of the multiverse. In the legendary lands of Tian Xia on the other side of the globe are the imperial dragons, serpentine beings who protect the cosmic balance and defend their ancient homeland. Outside the Material Plane, primal dragons such as the domineering brine dragon and reclusive cloud dragon shape the nature and goings-on of the Elemental Planes. Countless other types of dragons are sure to exist, including dragons on far-flung planes of existence and, it is rumored, primeval dragons who soar between the stars."
-					],
-					"name": "Dragon, Metallic"
-				},
-				{
-					"entries": [
-						"Some dragons can take humanoid form, allowing them to infiltrate settlements or influence others without revealing their true nature. They gain the following ability:"
-					],
-					"name": "Shape-Changing Dragons"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"traits": [
-						"arcane",
-						"concentrate",
-						"polymorph",
-						"transmutation"
-					],
-					"entries": [
-						"The dragon takes on the appearance of any Small or Medium humanoid. This doesn't change its Speed or attack and damage modifiers with its Strikes, but might change the damage type its Strikes deal (typically to bludgeoning)."
-					],
-					"name": "Change Shape",
-					"generic": true
-				},
-				{
-					"entries": [
-						"Each type of metallic dragon features a sidebar on spellcasting dragons of that kind. To make a metallic dragon spellcaster, remove the dragon's Draconic Frenzy and Draconic Momentum abilities, and give it the spells outlined in its sidebar. You can swap out any number of these with other arcane spells, provided you keep the same number of spells for each level. You might also want to increase the dragon's Intelligence, Wisdom, or Charisma modifier by 1 or 2 to reflect its mastery of magic."
-					],
-					"name": "Metallic Dragon Spellcasters"
-				},
-				{
-					"entries": [
-						"Metallic dragons are found throughout the Inner Sea region, especially in pockets of wilderness where they can carve a hideout and then take action on political and social issues, both in their local area and on a wider scale. Their everlasting war with chromatic dragons keeps them in close proximity to their evil brethren; in regions where metallic and chromatic dragons' territories intersect, humanoid settlements get caught in the crossfire, and villagers and city-dwellers alike rightfully fear for their own safety.",
-						"Silver dragons lair in abundance around the cold wastes west of Mendev, as a consequence of the days when they joined thousands of crusaders who marched headlong into the demon-infested Worldwound. Bronze dragons are abundant in Taldor, and many copper dragons lair in the wilds of Andoran, where they wage war alongside other freedom fighters to overthrow devils in the neighboring empire of Cheliax. Perhaps the most extreme example of a metallic dragon taking part in human affairs is on the island nation of Hermea, where Mengkare\u2014an ancient gold wyrm\u2014has begun a grand social experiment he calls \"the Glorious Endeavor.\" Ostensibly intended to create a future utopia on Golarion, this highly controversial experiment is instead regarded by many as a cruel and unusual form of eugenics."
-					],
-					"name": "Metallic Dragons on Golarion"
 				}
 			],
 			"inflicts": {
@@ -7130,12 +7027,9 @@
 			"abilitiesMid": [
 				{
 					"entries": [
-						"As animated broom, but reduced to AC 13 when {@condition broken}."
+						"Like normal objects, an animated armor has Hardness. This Hardness reduces any damage it takes by an amount equal to the Hardness. Once an animated broom is reduced to less than half its Hit Points, or immediately upon being damaged by a critical hit, its construct armor breaks and its Armor Class is reduced to 13."
 					],
-					"name": "Construct Armor",
-					"entries_as_xyz": [
-						"Like normal objects, an animated broom has Hardness. This Hardness reduces any damage it takes by an amount equal to the Hardness. Once an animated broom is reduced to less than half its Hit Points, or immediately upon being damaged by a critical hit, its construct armor breaks and its Armor Class is reduced to 14."
-					]
+					"name": "Construct Armor"
 				}
 			],
 			"speed": {
@@ -7407,12 +7301,9 @@
 			"abilitiesMid": [
 				{
 					"entries": [
-						"As animated broom, but reduced to AC 15 when {@condition broken}."
+						"Like normal objects, an animated statue has Hardness. This Hardness reduces any damage it takes by an amount equal to the Hardness. Once an animated broom is reduced to less than half its Hit Points, or immediately upon being damaged by a critical hit, its construct armor breaks and its Armor Class is reduced to 15."
 					],
-					"name": "Construct Armor",
-					"entries_as_xyz": [
-						"Like normal objects, an animated broom has Hardness. This Hardness reduces any damage it takes by an amount equal to the Hardness. Once an animated broom is reduced to less than half its Hit Points, or immediately upon being damaged by a critical hit, its construct armor breaks and its Armor Class is reduced to 14."
-					]
+					"name": "Construct Armor"
 				}
 			],
 			"speed": {
@@ -9578,7 +9469,7 @@
 								"poison"
 							],
 							"note": "",
-							"DC": "37",
+							"DC": 37,
 							"savingThrow": "Fortitude",
 							"onset": null,
 							"maxDuration": "6 rounds",
@@ -9886,7 +9777,16 @@
 					],
 					"frequency": "once per day",
 					"entries": [
-						"The balisse marks an evil creature within its confessor's aura as irredeemable. It can only do so after a failed attempt to convince the creature to repent. The touched creature takes a \u20131 status penalty to AC and saves, reduces its resistances by 2, and gains weakness 2 to good damage. The duration depends on the target's DC 26 Will save. Critical Success The creature is unaffected. Success The duration is 1 round. Failure The duration is 1 day. Critical Failure The duration is permanent."
+						"The balisse marks an evil creature within its confessor's aura as irredeemable. It can only do so after a failed attempt to convince the creature to repent. The touched creature takes a \u20131 status penalty to AC and saves, reduces its resistances by 2, and gains weakness 2 to good damage. The duration depends on the target's DC 26 Will save.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "The creature is unaffected.",
+								"Success": "The duration is 1 round.",
+								"Failure": "The duration is 1 day.",
+								"Critical Failure": "The duration is permanent."
+							}
+						}
 					],
 					"name": "Brand of the Impenitent"
 				},
@@ -11040,7 +10940,7 @@
 								"disease"
 							],
 							"note": "",
-							"DC": "23",
+							"DC": 23,
 							"savingThrow": "Fortitude",
 							"onset": null,
 							"maxDuration": null,
@@ -12740,7 +12640,7 @@
 								"poison"
 							],
 							"note": "",
-							"DC": "26",
+							"DC": 26,
 							"savingThrow": "Fortitude",
 							"onset": null,
 							"maxDuration": "6 rounds",
@@ -13610,10 +13510,7 @@
 						"As {@action Attack of Opportunity}, but both the bunyip and the triggering creature must be in water."
 					],
 					"name": "Attack of Opportunity",
-					"trigger": "A creature within the monster's reach uses a manipulate action or a move action, makes a ranged attack, or leaves a square during a move action it's using.",
-					"entries_as_xyz": [
-						"The monster attempts a melee {@action Strike} against the triggering creature. If the attack is a critical hit and the trigger was a manipulate action, the monster disrupts that action. This {@action Strike} doesn't count toward the monster's multiple attack penalty, and its multiple attack penalty doesn't apply to this {@action Strike}."
-					]
+					"trigger": "A creature within the monster's reach uses a manipulate action or a move action, makes a ranged attack, or leaves a square during a move action it's using."
 				}
 			],
 			"speed": {
@@ -13888,7 +13785,7 @@
 								"disease"
 							],
 							"note": " The cacodaemon can telepathically\ncommunicate with the afflicted creature at any distance on the\nsame plane",
-							"DC": "17",
+							"DC": 17,
 							"savingThrow": "Fortitude",
 							"onset": null,
 							"maxDuration": null,
@@ -15279,15 +15176,9 @@
 						"unit": "action"
 					},
 					"entries": [
-						"The cave bear {@action Stride||Strides} and makes a {@action Strike} at the end of that movement."
+						"The cave bear {@action Stride||Strides} and makes a {@action Strike} at the end of that movement. During the {@action Stride}, it gains a +10-foot circumstance bonus to its Speed."
 					],
 					"name": "Rush"
-				},
-				{
-					"entries": [
-						"{@action Stride}, it gains a +10-foot circumstance bonus to its Speed."
-					],
-					"name": "During the"
 				}
 			],
 			"inflicts": {
@@ -15590,7 +15481,7 @@
 								"poison"
 							],
 							"note": "",
-							"DC": "20",
+							"DC": 20,
 							"savingThrow": "Fortitude",
 							"onset": null,
 							"maxDuration": "6 rounds",
@@ -16034,9 +15925,9 @@
 					"type": "Focus",
 					"tradition": null,
 					"DC": 21,
+					"fp": 1,
 					"entry": {
 						"2": {
-							"fp": "(1 Focus Point)",
 							"spells": [
 								{
 									"name": "wild morph"
@@ -16698,7 +16589,7 @@
 								"poison"
 							],
 							"note": "",
-							"DC": "25",
+							"DC": 25,
 							"savingThrow": "Fortitude",
 							"onset": null,
 							"maxDuration": "6 rounds",
@@ -17835,7 +17726,7 @@
 								"poison"
 							],
 							"note": "",
-							"DC": "34",
+							"DC": 34,
 							"savingThrow": "Fortitude",
 							"onset": null,
 							"maxDuration": "10 rounds",
@@ -18062,7 +17953,7 @@
 								"poison"
 							],
 							"note": "",
-							"DC": "41",
+							"DC": 41,
 							"savingThrow": "Fortitude",
 							"onset": null,
 							"maxDuration": "6 rounds",
@@ -19055,7 +18946,7 @@
 								"poison"
 							],
 							"note": "",
-							"DC": "25",
+							"DC": 25,
 							"savingThrow": "Fortitude",
 							"onset": null,
 							"maxDuration": "5 minutes",
@@ -20964,12 +20855,9 @@
 			"abilitiesMid": [
 				{
 					"entries": [
-						"As dero stalker, but 8 damage."
+						"A dero strangler takes 8 damage for every hour they're exposed to sunlight."
 					],
-					"name": "Vulnerable to Sunlight",
-					"entries_as_xyz": [
-						"A dero stalker takes 4 damage for every hour they're exposed to sunlight."
-					]
+					"name": "Vulnerable to Sunlight"
 				}
 			],
 			"speed": {
@@ -21388,7 +21276,7 @@
 								"poison"
 							],
 							"note": "",
-							"DC": "29",
+							"DC": 29,
 							"savingThrow": "Fortitude",
 							"onset": null,
 							"maxDuration": "6 rounds",
@@ -22844,7 +22732,7 @@
 								"poison"
 							],
 							"note": "",
-							"DC": "23",
+							"DC": 23,
 							"savingThrow": "Fortitude",
 							"onset": null,
 							"maxDuration": "6 rounds",
@@ -24452,13 +24340,10 @@
 			],
 			"abilitiesBot": [
 				{
-					"traits": [
-						"1st"
-					],
 					"entries": [
-						"lesser acid flask, lesser alchemist fire, lesser tanglefoot bag."
+						"{@item lesser acid flask}, {@item lesser alchemist's fire}, {@item lesser tanglefoot bag}."
 					],
-					"name": "Alchemical Formulas"
+					"name": "Alchemical Formulas (1st)"
 				},
 				{
 					"entries": [
@@ -24761,7 +24646,7 @@
 			"abilitiesMid": [
 				{
 					"entries": [
-						"Duergar taskmasters automatically disbelieve all illusions of 1st level or lower."
+						"Duergar taskmasters automatically {@quickref disbelieve all illusion|CRB|2|disbelieving illusions|0} of 1st level or lower."
 					],
 					"name": "Iron Mind"
 				},
@@ -25717,23 +25602,53 @@
 					"DC": 29,
 					"attack": 19,
 					"entry": {
+						"0": {
+							"level": 5,
+							"spells": [
+								{
+									"name": "produce flame"
+								}
+							]
+						},
+						"4": {
+							"spells": [
+								{
+									"name": "gaseous form"
+								},
+								{
+									"name": "invisibility",
+									"amount": 2
+								}
+							]
+						},
+						"5": {
+							"spells": [
+								{
+									"name": "illusory object"
+								}
+							]
+						},
 						"7": {
 							"spells": [
 								{
-									"name": "plane shift"
+									"name": "plane shift",
+									"notes": "Elemental Planes, or {@place Material Plane} only"
 								}
 							]
+						},
+						"constant": {
+							"5": {
+								"spells": [
+									{
+										"name": "detect magic"
+									}
+								]
+							}
 						}
 					}
 				}
 			],
 			"abilitiesBot": [
-				{
-					"entries": [
-						"Plane only) 5th illusory object; 4th gaseous form, invisibility (×2); Cantrips (5th) produce flame; Constant (5th) detect magic."
-					],
-					"name": "Elemental Planes, or Material"
-				},
 				{
 					"traits": [
 						"fire"
@@ -25754,8 +25669,9 @@
 						"polymorph",
 						"transmutation"
 					],
+					"frequency": "Once per day.",
 					"entries": [
-						"as janni (DC 29)."
+						"The efreeti changes a creature's size. This works as a 4th-level {@spell enlarge} or {@spell shrink} spell but can target an unwilling creature (DC 29 Fortitude save negates)."
 					],
 					"name": "Change Size"
 				},
@@ -26200,12 +26116,9 @@
 						"transmutation"
 					],
 					"entries": [
-						"10 feet. As stone mauler, but {@damage 2d8} piercing."
+						"10 feet. Spikes of rock rise up from all stone surfaces in the emanation, creating {@quickref difficult terrain||3|terrain}. A creature moving in the terrain takes {@damage 2d8} piercing damage for each square of spikes it moves into (a Large or larger creature takes damage only once for each square it moves, even if its space covers multiple squares of spikes). Creatures with the {@trait earth} trait ignore all effects within the area. The stone mauler can disable or activate spike stones as a single action, which has the {@trait concentrate} trait."
 					],
-					"name": "Spike Stones",
-					"entries_as_xyz": [
-						"5 feet. Spikes of rock rise up from all stone surfaces in the emanation, creating {@quickref difficult terrain||3|terrain}. A creature moving in the terrain takes {@damage 2d6} piercing damage for each square of spikes it moves into (a Large or larger creature takes damage only once for each square it moves, even if its space covers multiple squares of spikes). Creatures with the {@trait earth} trait ignore all effects within the area. The stone mauler can disable or activate spike stones as a single action, which has the {@trait concentrate} trait."
-					]
+					"name": "Spike Stones"
 				},
 				{
 					"activity": {
@@ -26394,13 +26307,10 @@
 						"entry": "{@as R}"
 					},
 					"entries": [
-						"As living whirlwind, but the elemental hurricane reforms within 100 feet."
+						"The elemental hurricane disperses. Until the end of the current turn, it can't be attacked or targeted, doesn't take up space, and any auras or emanations it has are suppressed. At the end of the turn, the elemental hurricane reforms in any space in which it can fit within 100 feet of where it dispersed and any auras or emanations it has are restored as long as their duration didn't run out while it was dispersed."
 					],
 					"name": "Disperse",
-					"trigger": "The living whirlwind takes damage from a {@condition hostile} action.",
-					"entries_as_xyz": [
-						"The living whirlwind disperses. Until the end of the current turn, it can't be attacked or targeted, doesn't take up space, and any auras or emanations it has are suppressed. At the end of the turn, the living whirlwind reforms in any space in which it can fit within 25 feet of where it dispersed and any auras or emanations it has are restored as long as their duration didn't run out while it was dispersed."
-					]
+					"trigger": "The living whirlwind takes damage from a {@condition hostile} action."
 				}
 			],
 			"speed": {
@@ -26590,12 +26500,9 @@
 						"fire"
 					],
 					"entries": [
-						"As living wildfire, but {@damage 7d6} fire damage and DC 30."
+						"When the elemental inferno dies, it explodes, dealing {@damage 7d6} fire damage to each creature in a 10-foot emanation (DC 30 basic Reflex save)."
 					],
-					"name": "Explosion",
-					"entries_as_xyz": [
-						"When the living wildfire dies, it explodes, dealing {@damage 3d6} fire damage to each creature in a 10-foot emanation (DC 19 basic Reflex save)."
-					]
+					"name": "Explosion"
 				},
 				{
 					"traits": [
@@ -26818,12 +26725,9 @@
 						"water"
 					],
 					"entries": [
-						"As living waterfall, but a 20-foot emanation and a +20 counteract modifier."
+						"The elemental puts out all fires in a 20-foot emanation. It extinguishes all non-magical fires automatically and attempts to counteract magical fires (+20 counteract modifier)."
 					],
-					"name": "Drench",
-					"entries_as_xyz": [
-						"The elemental puts out all fires in a 5-foot emanation. It extinguishes all non-magical fires automatically and attempts to counteract magical fires (+14 counteract modifier)."
-					]
+					"name": "Drench"
 				},
 				{
 					"activity": {
@@ -27376,7 +27280,7 @@
 								"poison"
 							],
 							"note": "",
-							"DC": "22",
+							"DC": 22,
 							"savingThrow": "Fortitude",
 							"onset": null,
 							"maxDuration": "6 rounds",
@@ -28459,12 +28363,9 @@
 						"fire"
 					],
 					"entries": [
-						"As living wildfire, but {@damage 6d6} fire and DC 28."
+						"When the firewyrm dies, it explodes, dealing {@damage 6d6} fire damage to each creature in a 10-foot emanation (DC 28 basic Reflex save)."
 					],
-					"name": "Explosion",
-					"entries_as_xyz": [
-						"When the living wildfire dies, it explodes, dealing {@damage 3d6} fire damage to each creature in a 10-foot emanation (DC 19 basic Reflex save)."
-					]
+					"name": "Explosion"
 				},
 				{
 					"traits": [
@@ -31888,12 +31789,9 @@
 			"abilitiesMid": [
 				{
 					"entries": [
-						"As animated broom, but reduced to AC 22 when {@condition broken}."
+						"Like normal objects, a giant animated statue has Hardness. This Hardness reduces any damage it takes by an amount equal to the Hardness. Once a giant animated statue is reduced to less than half its Hit Points, or immediately upon being damaged by a critical hit, its construct armor breaks and its Armor Class is reduced to 22."
 					],
-					"name": "Construct Armor",
-					"entries_as_xyz": [
-						"Like normal objects, an animated broom has Hardness. This Hardness reduces any damage it takes by an amount equal to the Hardness. Once an animated broom is reduced to less than half its Hit Points, or immediately upon being damaged by a critical hit, its construct armor breaks and its Armor Class is reduced to 14."
-					]
+					"name": "Construct Armor"
 				}
 			],
 			"speed": {
@@ -32197,7 +32095,7 @@
 								"poison"
 							],
 							"note": "",
-							"DC": "14",
+							"DC": 14,
 							"savingThrow": "Fortitude",
 							"onset": null,
 							"maxDuration": "6 rounds",
@@ -32505,12 +32403,9 @@
 						"unit": "action"
 					},
 					"entries": [
-						"As snapping flytrap, but it uses all four of its leaves."
+						"The flytrap attacks a single target all four of its leaves. The flytrap makes one leaf {@action Strike}. On a success, the flytrap deals the damage from one leaf {@action Strike} plus an additional {@dice 1d8} damage for every leaf beyond the first. On a failure, the flytrap deals the damage from one leaf {@action Strike}, but it can't use {@ability Improved Grab}. It deals no damage on a critical failure. This counts toward the flytrap's multiple attack penalty as a number of attacks equal to the number of leaves the flytrap has."
 					],
-					"name": "Focused Assault",
-					"entries_as_xyz": [
-						"The flytrap attacks a single target with both its leaves. The flytrap makes one leaf {@action Strike}. On a success, the flytrap deals the damage from one leaf {@action Strike} plus an additional {@dice 1d8} damage for every leaf beyond the first. On a failure, the flytrap deals the damage from one leaf {@action Strike}, but it can't use {@ability Improved Grab}. It deals no damage on a critical failure. This counts toward the flytrap's multiple attack penalty as a number of attacks equal to the number of leaves the flytrap has."
-					]
+					"name": "Focused Assault"
 				},
 				{
 					"activity": {
@@ -32518,12 +32413,9 @@
 						"unit": "action"
 					},
 					"entries": [
-						"As snapping flytrap, but it makes four leaf Strikes rather than two."
+						"The flytrap makes four leaf Strikes at a \u20132 penalty, each against a different target. These attacks count toward the flytrap's multiple attack penalty, but the multiple attack penalty doesn't increase until after it makes all its attacks."
 					],
-					"name": "Hungry Flurry",
-					"entries_as_xyz": [
-						"The flytrap makes two leaf Strikes at a \u20132 penalty, each against a different target. These attacks count toward the flytrap's multiple attack penalty, but the multiple attack penalty doesn't increase until after it makes all its attacks."
-					]
+					"name": "Hungry Flurry"
 				},
 				{
 					"activity": {
@@ -33046,7 +32938,7 @@
 								"poison"
 							],
 							"note": "",
-							"DC": "17",
+							"DC": 17,
 							"savingThrow": "Fortitude",
 							"onset": null,
 							"maxDuration": "6 rounds",
@@ -33373,7 +33265,7 @@
 								"poison"
 							],
 							"note": "",
-							"DC": "26",
+							"DC": 26,
 							"savingThrow": "Fortitude",
 							"onset": null,
 							"maxDuration": "6 rounds",
@@ -33550,7 +33442,7 @@
 								"disease"
 							],
 							"note": "The {@condition sickened} and {@condition unconscious} conditions from filth fever don't improve on their own until the disease is cured.",
-							"DC": "14",
+							"DC": 14,
 							"savingThrow": "Fortitude",
 							"stages": [
 								{
@@ -33732,7 +33624,7 @@
 								"poison"
 							],
 							"note": "",
-							"DC": "18",
+							"DC": 18,
 							"savingThrow": "Fortitude",
 							"onset": null,
 							"maxDuration": "6 rounds",
@@ -34010,7 +33902,7 @@
 								"poison"
 							],
 							"note": "",
-							"DC": "23",
+							"DC": 23,
 							"savingThrow": "Fortitude",
 							"onset": null,
 							"maxDuration": "8 rounds",
@@ -34139,10 +34031,7 @@
 						"As {@action Attack of Opportunity}, but the snake can use this reaction only if it's Coiled."
 					],
 					"name": "Attack of Opportunity",
-					"trigger": "A creature within the monster's reach uses a manipulate action or a move action, makes a ranged attack, or leaves a square during a move action it's using.",
-					"entries_as_xyz": [
-						"The monster attempts a melee {@action Strike} against the triggering creature. If the attack is a critical hit and the trigger was a manipulate action, the monster disrupts that action. This {@action Strike} doesn't count toward the monster's multiple attack penalty, and its multiple attack penalty doesn't apply to this {@action Strike}."
-					]
+					"trigger": "A creature within the monster's reach uses a manipulate action or a move action, makes a ranged attack, or leaves a square during a move action it's using."
 				}
 			],
 			"speed": {
@@ -34188,7 +34077,7 @@
 								"poison"
 							],
 							"note": "",
-							"DC": "17",
+							"DC": 17,
 							"savingThrow": "Fortitude",
 							"onset": null,
 							"maxDuration": "6 rounds",
@@ -34327,7 +34216,7 @@
 								"poison"
 							],
 							"note": "",
-							"DC": "19",
+							"DC": 19,
 							"savingThrow": "Fortitude",
 							"onset": null,
 							"maxDuration": "6 rounds",
@@ -34361,7 +34250,7 @@
 								"disease"
 							],
 							"note": "",
-							"DC": "21",
+							"DC": 21,
 							"savingThrow": "Fortitude",
 							"onset": null,
 							"maxDuration": null,
@@ -34713,7 +34602,16 @@
 					},
 					"trigger": "A creature critically fails a melee attack to hit the gimmerling or moves into a space within the gimmerling's treacherous aura.",
 					"entries": [
-						"The triggering creature must attempt a DC 32 Reflex save. Critical Success The target is unaffected. Success The target is {@condition flat-footed} until the start of its next turn. Failure The target takes {@damage 2d10} bludgeoning damage and is {@condition flat-footed} until the start of its next turn. Critical Failure As failure, and the target is knocked {@condition prone}."
+						"The triggering creature must attempt a DC 32 Reflex save.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "The target is unaffected.",
+								"Success": "The target is {@condition flat-footed} until the start of its next turn.",
+								"Failure": "The target takes {@damage 2d10} bludgeoning damage and is {@condition flat-footed} until the start of its next turn.",
+								"Critical Failure": "As failure, and the target is knocked {@condition prone}."
+							}
+						}
 					],
 					"name": "Trip Up"
 				}
@@ -35906,7 +35804,7 @@
 								"disease"
 							],
 							"note": " Goblins and goblin dogs are immune to goblin pox.",
-							"DC": "17",
+							"DC": 17,
 							"savingThrow": "Fortitude",
 							"onset": null,
 							"maxDuration": null,
@@ -36704,7 +36602,7 @@
 								"poison"
 							],
 							"note": "",
-							"DC": "30",
+							"DC": 30,
 							"savingThrow": "Fortitude",
 							"onset": null,
 							"maxDuration": "6 rounds",
@@ -37416,9 +37314,19 @@
 					},
 					"requirements": "The shark hit with a jaws {@action Strike} on its most recent action this turn.",
 					"entries": [
-						"The creature the shark hit takes {@damage 1d12} slashing damage. Strafing Chomp {@as 1} The shark Swims up to half its swim Speed, makes a jaws {@action Strike}, and then Swims up to half its Speed further. The {@action Strike} deals half damage."
+						"The creature the shark hit takes {@damage 1d12} slashing damage."
 					],
 					"name": "Savage"
+				},
+				{
+					"name": "Strafing Chomp",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"entries": [
+						"The shark Swims up to half its swim Speed, makes a jaws {@action Strike}, and then Swims up to half its Speed further. The {@action Strike} deals half damage."
+					]
 				}
 			],
 			"inflicts": {
@@ -37741,12 +37649,9 @@
 						"aura"
 					],
 					"entries": [
-						"20 feet. As nightmare, but DC 28."
+						"20 feet. The nightmare continually exhales black smoke that creates concealment in an aura around it. Nightmares and their riders can see through this smoke. A creature that begins its turn in the area becomes {@condition sickened 2} (DC 28 Fortitude negates) and is then temporarily immune sickness from the smoke for 1 minute. The nightmare, its rider, any creature currently holding its breath (or that does not need to breathe), and any creature immune to poison are immune to the aura's {@condition sickened} effect but not the concealment."
 					],
-					"name": "Smoke",
-					"entries_as_xyz": [
-						"15 feet. The nightmare continually exhales black smoke that creates concealment in an aura around it. Nightmares and their riders can see through this smoke. A creature that begins its turn in the area becomes {@condition sickened 2} (DC 23 Fortitude negates) and is then temporarily immune sickness from the smoke for 1 minute. The nightmare, its rider, any creature currently holding its breath (or that does not need to breathe), and any creature immune to poison are immune to the aura's {@condition sickened} effect but not the concealment."
-					]
+					"name": "Smoke"
 				}
 			],
 			"ac": {
@@ -37849,12 +37754,9 @@
 						"fire"
 					],
 					"entries": [
-						"As nightmare, but {@damage 6d6} fire damage and DC 30."
+						"The nightmare {@action Stride||Strides} or Flies up to triple its Speed. Its hooves burst with intense flame, dealing {@damage 6d6} fire damage (DC 30 basic Reflex save) once to each creature other than the nightmare's rider that the nightmare moves adjacent to during its gallop."
 					],
-					"name": "Flaming Gallop",
-					"entries_as_xyz": [
-						"The nightmare {@action Stride||Strides} or Flies up to triple its Speed. Its hooves burst with intense flame, dealing {@damage 3d6} fire damage (DC 24 basic Reflex save) once to each creature other than the nightmare's rider that the nightmare moves adjacent to during its gallop."
-					]
+					"name": "Flaming Gallop"
 				},
 				{
 					"activity": {
@@ -38025,12 +37927,9 @@
 			"abilitiesBot": [
 				{
 					"entries": [
-						"As shadow, but the spawn isn't {@condition clumsy}."
+						"When a creature's shadow is pulled free by Steal Shadow, it becomes a shadow spawn under the command of the shadow that created it. This shadow spawn doesn't have Steal Shadow. If the creature the shadow spawn was pulled from dies, the shadow spawn becomes a full-fledged, autonomous shadow. If the creature recovers from its enfeeblement, its shadow returns to it and the shadow spawn is extinguished."
 					],
-					"name": "Shadow Spawn",
-					"entries_as_xyz": [
-						"When a creature's shadow is pulled free by {@action Steal} Shadow, it becomes a shadow spawn under the command of the shadow that created it. This shadow spawn doesn't have {@action Steal} Shadow and is perpetually and incurably {@condition clumsy 2}. If the creature the shadow spawn was pulled from dies, the shadow spawn becomes a full-fledged, autonomous shadow. If the creature recovers from its enfeeblement, its shadow returns to it and the shadow spawn is extinguished."
-					]
+					"name": "Shadow Spawn"
 				},
 				{
 					"entries": [
@@ -38047,11 +37946,11 @@
 						"divine",
 						"necromancy"
 					],
+					"requirements": "The shadow hit a living creature with a shadow hand {@action Strike} on its previous action",
 					"entries": [
-						"As shadow, but causes {@condition enfeebled 2} (or {@condition enfeebled 3} on a critical hit)."
+						"The shadow pulls at the target's shadow, making the creature {@condition enfeebled 2} (or {@condition enfeebled 3} on a critical hit). This is cumulative with other {@condition enfeebled} conditions from shadows, to a maximum of {@condition enfeebled 4}. If this increases a creature's {@condition enfeebled} value to 3 or more, the target's shadow is separated from its body (see shadow spawn). {@condition Enfeebled} from Steal Shadow decreases by 1 every hour."
 					],
-					"name": "Steal Shadow",
-					"entries_as_xyz": "Ability not found: '{@action Steal} Shadow As shadow, but causes {@condition enfeebled 2} (or {@condition enfeebled 3} on a critical hit).' in Greater Shadow, p.289"
+					"name": "Steal Shadow"
 				}
 			],
 			"inflicts": {
@@ -39230,15 +39129,9 @@
 						"unit": "action"
 					},
 					"entries": [
-						"The grizzly bear {@action Stride||Strides} and makes a {@action Strike} at the end of that movement."
+						"The grizzly bear {@action Stride||Strides} and makes a {@action Strike} at the end of that movement. During the {@action Stride}, the grizzly bear gains a +10-foot circumstance bonus to its Speed."
 					],
 					"name": "Rush"
-				},
-				{
-					"entries": [
-						"{@action Stride}, the grizzly bear gains a +10-foot circumstance bonus to its Speed."
-					],
-					"name": "During the"
 				}
 			],
 			"inflicts": {
@@ -39752,7 +39645,7 @@
 								"poison"
 							],
 							"note": "",
-							"DC": "29",
+							"DC": 29,
 							"savingThrow": "Fortitude",
 							"onset": null,
 							"maxDuration": "6 rounds",
@@ -41400,7 +41293,7 @@
 								"poison"
 							],
 							"note": " A homunculus has one dose of poison in a reservoir in its head. It can refill this poison from its reserves with an {@action Interact} action.",
-							"DC": "15",
+							"DC": 15,
 							"savingThrow": "Fortitude",
 							"onset": null,
 							"maxDuration": "6 rounds",
@@ -41806,7 +41699,7 @@
 								"poison"
 							],
 							"note": "",
-							"DC": "16",
+							"DC": 16,
 							"savingThrow": "Fortitude",
 							"onset": null,
 							"maxDuration": "6 rounds",
@@ -42512,7 +42405,7 @@
 								"poison"
 							],
 							"note": "",
-							"DC": "38",
+							"DC": 38,
 							"savingThrow": "Fortitude",
 							"onset": null,
 							"maxDuration": "10 rounds",
@@ -42773,7 +42666,7 @@
 								"poison"
 							],
 							"note": "",
-							"DC": "16",
+							"DC": 16,
 							"savingThrow": "Fortitude",
 							"onset": null,
 							"maxDuration": "6 rounds",
@@ -43132,7 +43025,7 @@
 								"poison"
 							],
 							"note": " Any {@condition drained} value from this poison is reduced by 1 every hour.",
-							"DC": "33",
+							"DC": 33,
 							"savingThrow": "Fortitude",
 							"onset": null,
 							"maxDuration": "4 rounds",
@@ -43723,7 +43616,7 @@
 								"poison"
 							],
 							"note": "",
-							"DC": "24",
+							"DC": 24,
 							"savingThrow": "Fortitude",
 							"onset": null,
 							"maxDuration": "6 rounds",
@@ -44138,7 +44031,7 @@
 						"transmutation"
 					],
 					"entries": [
-						"When the keketar casts hallucinatory terrain, it infuses the illusion with quasi-real substance. Creatures that do not disbelieve the illusion treat structures and terrain created through the spell as though they were real, ascending illusory stairs, becoming trapped by illusory quicksand, and so on."
+						"When the keketar casts hallucinatory terrain, it infuses the illusion with quasi-real substance. Creatures that do not {@quickref disbelieve the illusion|CRB|2|disbelieving illusions|0} treat structures and terrain created through the spell as though they were real, ascending illusory stairs, becoming trapped by illusory quicksand, and so on."
 					],
 					"name": "Reshape Reality"
 				},
@@ -45184,7 +45077,7 @@
 								"poison"
 							],
 							"note": " Krakens are immune to this poison.",
-							"DC": "39",
+							"DC": 39,
 							"savingThrow": "Fortitude",
 							"onset": null,
 							"maxDuration": "10 rounds",
@@ -45927,10 +45820,9 @@
 						"occult"
 					],
 					"entries": [
-						"As Lamia's Caress, but DC 28, and the creature is {@condition stupefied 2} (or has its existing {@condition stupefied} increased by 2) if it critically fails."
+						"The lamia touches a creature, who must succeed at a DC 28 Will save or become {@condition stupefied 1} (or {@condition stupefied 2} on a critical failure). If the target fails additional saves against this ability, the condition value increases by 1 (or 2 if it critically fails; to a maximum of {@condition stupefied 4}). This condition value decreases by 1 every 24 hours."
 					],
-					"name": "Matriarch's Caress",
-					"entries_as_xyz": "Ability not found: 'Matriarch's Caress As Lamia's Caress, but DC 28, and the creature is {@condition stupefied 2} (or has its existing {@condition stupefied} increased by 2) if it critically fails.' in Lamia Matriarch, p.217"
+					"name": "Matriarch's Caress"
 				}
 			],
 			"inflicts": {
@@ -46478,12 +46370,9 @@
 						"enchantment"
 					],
 					"entries": [
-						"As horned archon, but DC 23."
+						"30 feet. Enemies that start their turn in the area or enter it must attempt a DC 23 Will save. On a failure, they take a \u20131 status penalty to attack rolls, spell rolls, and damage rolls against any other target while in the aura for 24 hours or until they damage the archon, whichever comes first. On a critical failure, they can't use {@condition hostile} actions against any other target while in the area for 24 hours or until they damage the archon, whichever comes first. Regardless of the result, a creature is then temporarily immune to further menacing guardian auras for 24 hours."
 					],
-					"name": "Menacing Guardian",
-					"entries_as_xyz": [
-						"30 feet. Enemies that start their turn in the area or enter it must attempt a DC 19 Will save. On a failure, they take a \u20131 status penalty to attack rolls, spell rolls, and damage rolls against any other target while in the aura for 24 hours or until they damage the archon, whichever comes first. On a critical failure, they can't use {@condition hostile} actions against any other target while in the area for 24 hours or until they damage the archon, whichever comes first. Regardless of the result, a creature is then temporarily immune to further menacing guardian auras for 24 hours."
-					]
+					"name": "Menacing Guardian"
 				},
 				{
 					"activity": {
@@ -47368,7 +47257,7 @@
 								"disease"
 							],
 							"note": " The leukodaemon can telepathically communicate\nwith the afflicted creature at any distance on the same plane",
-							"DC": "28",
+							"DC": 28,
 							"savingThrow": "Fortitude",
 							"onset": null,
 							"maxDuration": null,
@@ -49097,12 +48986,9 @@
 			"abilitiesBot": [
 				{
 					"entries": [
-						"As lizardfolk defender, but 150 rounds (15 minutes)."
+						"A lizardfolk scout can hold their breath for 150 rounds (15 minutes)."
 					],
-					"name": "Deep Breath",
-					"entries_as_xyz": [
-						"A lizardfolk defender can hold their breath for 175 rounds (17-1/2 minutes)."
-					]
+					"name": "Deep Breath"
 				},
 				{
 					"entries": [
@@ -49119,7 +49005,7 @@
 								"poison"
 							],
 							"note": "",
-							"DC": "17",
+							"DC": 17,
 							"savingThrow": "Fortitude",
 							"onset": null,
 							"maxDuration": "6 rounds",
@@ -49351,12 +49237,9 @@
 			"abilitiesBot": [
 				{
 					"entries": [
-						"As lizardfolk defender, but 200 rounds (20 minutes)."
+						"A lizardfolk stargazer can hold their breath for 200 rounds (20 minutes)."
 					],
-					"name": "Deep Breath",
-					"entries_as_xyz": [
-						"A lizardfolk defender can hold their breath for 175 rounds (17-1/2 minutes)."
-					]
+					"name": "Deep Breath"
 				}
 			],
 			"inflicts": {
@@ -50690,7 +50573,7 @@
 								"poison"
 							],
 							"note": "",
-							"DC": "25",
+							"DC": 25,
 							"savingThrow": "Fortitude",
 							"onset": null,
 							"maxDuration": "6 rounds",
@@ -50852,12 +50735,9 @@
 						"move"
 					],
 					"entries": [
-						"As great white shark, but the megalodon's reach allows it to attack a creature up to 35 feet above the surface of the water (or 40 feet with its tail)."
+						"The megalodon Swims up to its swim Speed, then Leaps vertically out of the water up to 25 feet high, making a {@action Strike} against a creature at any point during the jump (this lets it attack a creature within 35 feet of the water's surface or 40 feet with its tail). After the {@action Strike}, the shark splashes back down into the water."
 					],
-					"name": "Breach",
-					"entries_as_xyz": [
-						"The shark Swims up to its swim Speed, then Leaps vertically out of the water up to 25 feet high, making a {@action Strike} against a creature at any point during the jump (this lets it attack a creature within 30 feet of the water's surface). After the {@action Strike}, the shark splashes back down into the water."
-					]
+					"name": "Breach"
 				},
 				{
 					"activity": {
@@ -50865,13 +50745,10 @@
 						"unit": "action"
 					},
 					"entries": [
-						"As great white shark, but {@damage 2d12} slashing damage."
+						"The creature the megalodon hit takes {@damage 2d12} slashing damage."
 					],
 					"name": "Savage",
-					"requirements": "The shark hit with a jaws {@action Strike} on its most recent action this turn.",
-					"entries_as_xyz": [
-						"The creature the shark hit takes {@damage 1d12} slashing damage. Strafing Chomp {@as 1} The shark Swims up to half its swim Speed, makes a jaws {@action Strike}, and then Swims up to half its Speed further. The {@action Strike} deals half damage."
-					]
+					"requirements": "The megalodon hit with a jaws {@action Strike} on its most recent action this turn."
 				},
 				{
 					"activity": {
@@ -52260,12 +52137,9 @@
 				},
 				{
 					"entries": [
-						"As nosoi, but {@dice 4d6}."
+						"A morrigna's Strikes affect incorporeal creatures as though etched with a ghost touch property rune and deal {@damage 4d6} negative damage to living creatures or {@damage 4d6} positive damage to undead."
 					],
-					"name": "Spirit Touch",
-					"entries_as_xyz": [
-						"A nosoi's Strikes affect incorporeal creatures as though etched with a ghost touch property rune and deal {@damage 1d6} negative damage to living creatures or {@damage 1d6} positive damage to undead."
-					]
+					"name": "Spirit Touch"
 				}
 			],
 			"inflicts": {
@@ -52927,7 +52801,7 @@
 								"negative"
 							],
 							"note": " This disease and any damage from it can't be healed until this curse is removed. A creature killed by mummy rot turns to dust and can't be resurrected except by a 7th-level resurrect ritual or similar magic.",
-							"DC": "22",
+							"DC": 22,
 							"savingThrow": "Fortitude",
 							"onset": null,
 							"maxDuration": null,
@@ -53176,7 +53050,7 @@
 								"necromancy"
 							],
 							"note": " This disease and any damage from it can't be healed until this curse is removed. A creature killed by insidious mummy rot turns to sand and can't be resurrected except by a 7th-level resurrect ritual or similar magic.",
-							"DC": "26",
+							"DC": 26,
 							"savingThrow": "Fortitude",
 							"onset": null,
 							"maxDuration": null,
@@ -53761,10 +53635,7 @@
 					"entries": [
 						"As naiad, but the naiad queen can heal in any body of water in her domain and regains 28 HP."
 					],
-					"name": "Water Healing",
-					"entries_as_xyz": [
-						"While within her bonded body of water (see water dependent above), the naiad heals 1 Hit Point every 10 minutes."
-					]
+					"name": "Water Healing"
 				}
 			],
 			"inflicts": {
@@ -54524,7 +54395,7 @@
 								"disease"
 							],
 							"note": " A creature can't recover from {@condition drained} until abyssal plague is cured.",
-							"DC": "28",
+							"DC": 28,
 							"savingThrow": "Fortitude",
 							"onset": null,
 							"maxDuration": null,
@@ -55508,7 +55379,7 @@
 								"disease"
 							],
 							"note": "",
-							"DC": "26",
+							"DC": 26,
 							"savingThrow": "Fortitude",
 							"onset": null,
 							"maxDuration": null,
@@ -56649,7 +56520,7 @@
 								"disease"
 							],
 							"note": " The {@condition sickened} and {@condition unconscious} conditions from filth fever don't improve on their own until the disease is cured.",
-							"DC": "20",
+							"DC": 20,
 							"savingThrow": "Fortitude",
 							"onset": null,
 							"maxDuration": null,
@@ -56830,7 +56701,15 @@
 					},
 					"requirements": "The owlbear has a creature {@condition grabbed} with its talons.",
 					"entries": [
-						"The owlbear attempts to disembowel the creature with a beak {@action Strike}. If the {@action Strike} hits, the target must attempt a DC 22 Will save. Critical Success The target is unaffected. Success The target is {@condition sickened 1}. Failure The target is {@condition sickened 1} and {@condition slowed 1} as long as it remains {@condition sickened}."
+						"The owlbear attempts to disembowel the creature with a beak {@action Strike}. If the {@action Strike} hits, the target must attempt a DC 22 Will save.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "The target is unaffected.",
+								"Success": "The target is {@condition sickened 1}.",
+								"Failure": "The target is {@condition sickened 1} and {@condition slowed 1} as long as it remains {@condition sickened}."
+							}
+						}
 					],
 					"name": "Gnaw"
 				},
@@ -57311,13 +57190,10 @@
 						"necromancy"
 					],
 					"entries": [
-						"As barbazu, but the {@condition persistent damage ||persistent bleed damage} is {@dice 3d6}, and the counteract DC to use healing magic is 29."
+						"A contract devil's glaive {@action Strike} also deals {@damage 3d6} {@condition persistent damage ||persistent bleed damage} that resists attempts to heal it. The flat check to stop the bleeding starts at DC 20. The DC is reduced to 15 only if the bleeding creature or an ally successfully assists with the recovery.",
+						"The DC to {@action Administer First Aid} to a creature with an infernal wound is increased by 5. A spellcaster or item attempting to use healing magic on a creature suffering from an infernal wound must succeed at a DC 29 counteract check or the magic fails to heal the creature."
 					],
-					"name": "Infernal Wound",
-					"entries_as_xyz": [
-						"A bearded devil's glaive {@action Strike} also deals {@damage 1d6} {@condition persistent damage ||persistent bleed damage} that resists attempts to heal it. The flat check to stop the bleeding starts at DC 20. The DC is reduced to 15 only if the bleeding creature or an ally successfully assists with the recovery.",
-						"The DC to {@action Administer First Aid} to a creature with an infernal wound is increased by 5. A spellcaster or item attempting to use healing magic on a creature suffering from an infernal wound must succeed at a DC 21 counteract check or the magic fails to heal the creature."
-					]
+					"name": "Infernal Wound"
 				}
 			],
 			"inflicts": {
@@ -58011,7 +57887,7 @@
 								"poison"
 							],
 							"note": "",
-							"DC": "43",
+							"DC": 43,
 							"savingThrow": "Fortitude",
 							"onset": null,
 							"maxDuration": "10 rounds",
@@ -58388,13 +58264,10 @@
 						"attack"
 					],
 					"entries": [
-						"As zombie shambler, but with an attack bonus of +9 that deals {@damage 1d12+4} piercing damage. A creature damaged by the jaws is exposed to zombie rot."
+						"The zombie makes a jaws unarmed melee {@action Strike} against the {@condition grabbed} or {@condition restrained} creature with an attack modifier of +9 that deals {@damage 1d12+4} piercing damage. A creature damaged by the jaws is exposed to zombie rot."
 					],
 					"name": "Jaws",
-					"requirements": "The zombie has a creature {@condition grabbed} or {@condition restrained}.",
-					"entries_as_xyz": [
-						"The zombie makes a jaws unarmed melee {@action Strike} against the {@condition grabbed} or {@condition restrained} creature with an attack modifier of +7 that deals {@damage 1d8+3} piercing damage."
-					]
+					"requirements": "The zombie has a creature {@condition grabbed} or {@condition restrained}."
 				},
 				{
 					"entries": [
@@ -58406,7 +58279,7 @@
 								"necromancy"
 							],
 							"note": " An infected creature can't heal damage it takes from zombie rot until it has been cured of the disease.",
-							"DC": "18",
+							"DC": 18,
 							"savingThrow": "Fortitude",
 							"onset": null,
 							"maxDuration": null,
@@ -59638,7 +59511,7 @@
 								"poison"
 							],
 							"note": "",
-							"DC": "32",
+							"DC": 32,
 							"savingThrow": "Fortitude",
 							"onset": null,
 							"maxDuration": "6 rounds",
@@ -59954,7 +59827,7 @@
 								"poison"
 							],
 							"note": "",
-							"DC": "17",
+							"DC": 17,
 							"savingThrow": "Fortitude",
 							"onset": null,
 							"maxDuration": "6 rounds",
@@ -60321,7 +60194,7 @@
 			"abilitiesBot": [
 				{
 					"entries": [
-						"The quelaunt can cast the following cleric domain spells as 8th-level occult innate spells at will without spending Focus Points: {@spell blind ambition} (Core Rulebook 389), {@spell captivating adoration} (Core Rulebook 389), and {@spell delusional pride} (Core Rulebook 391)."
+						"The quelaunt can cast the following cleric domain spells as 8th-level occult innate spells at will without spending Focus Points: {@spell blind ambition}, {@spell captivating adoration}, and {@spell delusional pride}."
 					],
 					"name": "Emotional Focus"
 				},
@@ -60348,7 +60221,7 @@
 					],
 					"frequency": "once per round",
 					"entries": [
-						"The quelaunt feeds on the emotional unrest of a single creature within 30 feet that's under a harmful {@trait emotion} effect. The target must succeed at a DC 37 Will save or take {@damage 4d10} mental damage and be {@condition stunned} for 1 round. If the target fails its saving throw, the quelaunt regains the same number of Hit Points and Feed on Emotion does not cost the quelaunt an action, allowing it to use another action this turn. Occult Innate Spells DC 39; 7th crushing despair (×3); 3rd fear (at will); 2nd hideous laughter; Constant (4th) air walk."
+						"The quelaunt feeds on the emotional unrest of a single creature within 30 feet that's under a harmful {@trait emotion} effect. The target must succeed at a DC 37 Will save or take {@damage 4d10} mental damage and be {@condition stunned} for 1 round. If the target fails its saving throw, the quelaunt regains the same number of Hit Points and Feed on Emotion does not cost the quelaunt an action, allowing it to use another action this turn."
 					],
 					"name": "Feed on Emotion"
 				},
@@ -60894,20 +60767,7 @@
 				"Wis": 1,
 				"Cha": -3
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+6 Str \u20132, Dex +3, Con +1, Int \u20134, Wis +1,"
-					],
-					"name": "to Climb or Swim), Stealth"
-				},
-				{
-					"entries": [
-						"\u20133."
-					],
-					"name": "Cha"
-				}
-			],
+			"abilitiesTop": [],
 			"ac": {
 				"default": 14,
 				"abilities": null
@@ -60965,7 +60825,7 @@
 								"disease"
 							],
 							"note": "The {@condition sickened} and {@condition unconscious} conditions from filth fever don't improve on their own until the disease is cured.",
-							"DC": "14",
+							"DC": 14,
 							"savingThrow": "Fortitude",
 							"stages": [
 								{
@@ -62940,7 +62800,15 @@
 					],
 					"trigger": "The rune giant uses an arcane ability or casts an arcane spell.",
 					"entries": [
-						"The runes on the giant's body flash as they produce magical energy. Each creature within a 10-foot emanation must attempt a DC 35 Fortitude save. Critical Success The creature is unaffected. Success The creature is {@condition dazzled} for 1 round. Failure The creature is {@condition blinded} for 1 round."
+						"The runes on the giant's body flash as they produce magical energy. Each creature within a 10-foot emanation must attempt a DC 35 Fortitude save.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "The creature is unaffected.",
+								"Success": "The creature is {@condition dazzled} for 1 round.",
+								"Failure": "The creature is {@condition blinded} for 1 round."
+							}
+						}
 					],
 					"name": "Flashing Runes"
 				},
@@ -63709,7 +63577,7 @@
 								"poison"
 							],
 							"note": "",
-							"DC": "18",
+							"DC": 18,
 							"savingThrow": "Fortitude",
 							"onset": null,
 							"maxDuration": "6 rounds",
@@ -64991,10 +64859,15 @@
 						"number": 1,
 						"unit": "action"
 					},
-					"entries": [
-						"Shadow (divine, necromancy) Requirement The shadow hit a living creature with a shadow hand {@action Strike} on its previous action. The shadow pulls at the target's shadow, making the creature {@condition enfeebled 1}. This is cumulative with other {@condition enfeebled} conditions from shadows, to a maximum of {@condition enfeebled 4}. If this increases a creature's {@condition enfeebled} value to 3 or more, the target's shadow is separated from its body (see shadow spawn). {@condition Enfeebled} from {@action Steal} Shadow decreases by 1 every hour."
+					"traits": [
+						"divine",
+						"necromancy"
 					],
-					"name": "Steal"
+					"requirements": "The shadow hit a living creature with a shadow hand {@action Strike} on its previous action",
+					"entries": [
+						"The shadow pulls at the target's shadow, making the creature {@condition enfeebled 1}. This is cumulative with other {@condition enfeebled} conditions from shadows, to a maximum of {@condition enfeebled 4}. If this increases a creature's {@condition enfeebled} value to 3 or more, the target's shadow is separated from its body (see shadow spawn). {@condition Enfeebled} from {@action Steal} Shadow decreases by 1 every hour."
+					],
+					"name": "Steal Shadow"
 				}
 			],
 			"inflicts": {
@@ -65840,12 +65713,9 @@
 						"enchantment"
 					],
 					"entries": [
-						"As horned archon, but DC 27."
+						"30 feet. Enemies that start their turn in the area or enter it must attempt a DC 27 Will save. On a failure, they take a \u20131 status penalty to attack rolls, spell rolls, and damage rolls against any other target while in the aura for 24 hours or until they damage the archon, whichever comes first. On a critical failure, they can't use {@condition hostile} actions against any other target while in the area for 24 hours or until they damage the archon, whichever comes first. Regardless of the result, a creature is then temporarily immune to further menacing guardian auras for 24 hours."
 					],
-					"name": "Menacing Guardian",
-					"entries_as_xyz": [
-						"30 feet. Enemies that start their turn in the area or enter it must attempt a DC 19 Will save. On a failure, they take a \u20131 status penalty to attack rolls, spell rolls, and damage rolls against any other target while in the aura for 24 hours or until they damage the archon, whichever comes first. On a critical failure, they can't use {@condition hostile} actions against any other target while in the area for 24 hours or until they damage the archon, whichever comes first. Regardless of the result, a creature is then temporarily immune to further menacing guardian auras for 24 hours."
-					]
+					"name": "Menacing Guardian"
 				},
 				{
 					"activity": {
@@ -66513,7 +66383,7 @@
 								"poison"
 							],
 							"note": "",
-							"DC": "32",
+							"DC": 32,
 							"savingThrow": "Fortitude",
 							"onset": null,
 							"maxDuration": "6 rounds",
@@ -68700,8 +68570,9 @@
 			},
 			"senses": {
 				"other": [
-					"darkvision; detect magic",
-					"see invisibility"
+					"{@ability darkvision}",
+					"{@spell detect magic}",
+					"{@spell see invisibility}"
 				]
 			},
 			"languages": {
@@ -69017,7 +68888,7 @@
 								"poison"
 							],
 							"note": "",
-							"DC": "14",
+							"DC": 14,
 							"savingThrow": "Fortitude",
 							"onset": null,
 							"maxDuration": "4 rounds",
@@ -69829,13 +69700,10 @@
 						"entry": "{@as R}"
 					},
 					"entries": [
-						"As living landslide, but 15 feet down."
+						"The stone mauler crumbles into the ground, Burrowing down 15 feet. This Burrowing does not trigger reactions. The stone mauler can't Crumble again for {@dice 1d4} rounds."
 					],
 					"name": "Crumble",
-					"trigger": "The living landslide takes damage from a {@condition hostile} source while atop rock or earth.",
-					"entries_as_xyz": [
-						"The living landslide crumbles into the ground, Burrowing down 10 feet. This Burrowing does not trigger reactions. The living landslide can't Crumble again for {@dice 1d4} rounds."
-					]
+					"trigger": "The stone mauler takes damage from a {@condition hostile} source while atop rock or earth."
 				}
 			],
 			"speed": {
@@ -70238,13 +70106,10 @@
 						"entry": "{@as R}"
 					},
 					"entries": [
-						"As living whirlwind, but the storm lord reforms within 50 feet."
+						"The storm lord disperses. Until the end of the current turn, it can't be attacked or targeted, doesn't take up space, and any auras or emanations it has are suppressed. At the end of the turn, the storm lord reforms in any space in which it can fit within 50 feet of where it dispersed and any auras or emanations it has are restored as long as their duration didn't run out while it was dispersed."
 					],
 					"name": "Disperse",
-					"trigger": "The living whirlwind takes damage from a {@condition hostile} action.",
-					"entries_as_xyz": [
-						"The living whirlwind disperses. Until the end of the current turn, it can't be attacked or targeted, doesn't take up space, and any auras or emanations it has are suppressed. At the end of the turn, the living whirlwind reforms in any space in which it can fit within 25 feet of where it dispersed and any auras or emanations it has are restored as long as their duration didn't run out while it was dispersed."
-					]
+					"trigger": "The living whirlwind takes damage from a {@condition hostile} action."
 				}
 			],
 			"speed": {
@@ -70872,7 +70737,7 @@
 								"poison"
 							],
 							"note": "",
-							"DC": "44",
+							"DC": 44,
 							"savingThrow": "Fortitude",
 							"onset": null,
 							"maxDuration": "10 rounds",
@@ -71289,7 +71154,7 @@
 								"disease"
 							],
 							"note": " Plants and fungi are immune.",
-							"DC": "40",
+							"DC": 40,
 							"savingThrow": "Fortitude",
 							"onset": null,
 							"maxDuration": null,
@@ -71477,12 +71342,9 @@
 						"water"
 					],
 					"entries": [
-						"As living waterfall, but a 10-foot emanation and a +20 counteract modifier."
+						"The elemental puts out all fires in a 10-foot emanation. It extinguishes all non-magical fires automatically and attempts to counteract magical fires (+20 counteract modifier)."
 					],
-					"name": "Drench",
-					"entries_as_xyz": [
-						"The elemental puts out all fires in a 5-foot emanation. It extinguishes all non-magical fires automatically and attempts to counteract magical fires (+14 counteract modifier)."
-					]
+					"name": "Drench"
 				}
 			],
 			"inflicts": {
@@ -72154,7 +72016,7 @@
 								"poison"
 							],
 							"note": "",
-							"DC": "44",
+							"DC": 44,
 							"savingThrow": "Fortitude",
 							"onset": null,
 							"maxDuration": "10 rounds",
@@ -73249,7 +73111,7 @@
 								"disease"
 							],
 							"note": "",
-							"DC": "17",
+							"DC": 17,
 							"savingThrow": "Fortitude",
 							"onset": null,
 							"maxDuration": null,
@@ -74669,12 +74531,9 @@
 						"disease"
 					],
 					"entries": [
-						"As aboleth, but DC 36, 30-foot radius, and 24 hours."
+						"30 feet. While underwater, a vidileth exudes a cloud of transparent slime. An air-breathing creature adjacent to a vidileth must succeed at a DC 36 Fortitude save each round or lose the ability to breathe air but gain the ability to breathe water for 24 hours."
 					],
-					"name": "Mucus Cloud",
-					"entries_as_xyz": [
-						"5 feet. While underwater, an aboleth exudes a cloud of transparent slime. An air-breathing creature adjacent to an aboleth must succeed at a DC 25 Fortitude save each round or lose the ability to breathe air but gain the ability to breathe water for 3 hours."
-					]
+					"name": "Mucus Cloud"
 				}
 			],
 			"ac": {
@@ -74914,29 +74773,17 @@
 					"name": "Delayed Suggestion"
 				},
 				{
-					"traits": [
-						"curse",
-						"occult",
-						"virulent"
-					],
 					"entries": [
-						"As alghollthu master, but DC 36."
-					],
-					"name": "Slime",
-					"entries_as_xyz": [
 						{
 							"type": "affliction",
-							"name": "",
 							"traits": [
 								"curse",
 								"occult",
 								"virulent"
 							],
-							"note": "",
-							"DC": "25",
+							"note": "A {@spell remove disease} spell can counteract this curse, but immunity to disease offers no protection against it.",
+							"DC": 36,
 							"savingThrow": "Fortitude",
-							"onset": null,
-							"maxDuration": null,
 							"stages": [
 								{
 									"stage": 1,
@@ -74950,12 +74797,13 @@
 								},
 								{
 									"stage": 3,
-									"entry": "the victim's skin transforms into a clear, slimy membrane, inflicting {@condition drained 2} until the curse ends;",
-									"duration": null
+									"entry": "the victim's skin transforms into a clear, slimy membrane, inflicting {@condition drained 2} until the curse ends; every hour this membrane remains dry, the creature's drained condition increases by 1",
+									"duration": "permanent"
 								}
 							]
 						}
-					]
+					],
+					"name": "Slime"
 				},
 				{
 					"activity": {
@@ -75249,7 +75097,7 @@
 								"poison"
 							],
 							"note": "",
-							"DC": "16",
+							"DC": 16,
 							"savingThrow": "Fortitude",
 							"onset": null,
 							"maxDuration": "4 rounds",
@@ -75781,7 +75629,7 @@
 						"move"
 					],
 					"entries": [
-						"The vrock dances in flight and chants to create a ruinous explosion of electricity. If more vrocks within 30 feet want to join the dance, the vrock can delay the dance to wait for more vrocks; FPO in that case, the effect occurs after the last vrock uses Dance of Ruin or one of the vrocks chooses to complete that round of the dance. Each non-demon creature in a 20-foot emanation from any of the dancing vrocks takes {@damage 2d12} electricity damage (DC 28 basic Reflex save). For each additional vrock that joins the dance, the damage increases by {@dice 1d12} and the save DC increases by 1 (to a maximum of four vrocks dealing {@dice 5d12} damage with a DC 31 save). The vrocks can continue dancing by using Dance of Ruin each round, for up to 3 rounds in total. The emanation's size increases by 20 feet each round, and the damage increases by {@dice 1d12} per vrock each round."
+						"The vrock dances in flight and chants to create a ruinous explosion of electricity. If more vrocks within 30 feet want to join the dance, the vrock can delay the dance to wait for more vrocks; in that case, the effect occurs after the last vrock uses Dance of Ruin or one of the vrocks chooses to complete that round of the dance. Each non-demon creature in a 20-foot emanation from any of the dancing vrocks takes {@damage 2d12} electricity damage (DC 28 basic Reflex save). For each additional vrock that joins the dance, the damage increases by {@dice 1d12} and the save DC increases by 1 (to a maximum of four vrocks dealing {@dice 5d12} damage with a DC 31 save). The vrocks can continue dancing by using Dance of Ruin each round, for up to 3 rounds in total. The emanation's size increases by 20 feet each round, and the damage increases by {@dice 1d12} per vrock each round."
 					],
 					"name": "Dance of Ruin"
 				},
@@ -76553,7 +76401,7 @@
 								"poison"
 							],
 							"note": "",
-							"DC": "21",
+							"DC": 21,
 							"savingThrow": "Fortitude",
 							"onset": null,
 							"maxDuration": "6 rounds",
@@ -76896,7 +76744,7 @@
 								"poison"
 							],
 							"note": "",
-							"DC": "19",
+							"DC": 19,
 							"savingThrow": "Fortitude",
 							"onset": null,
 							"maxDuration": "10 rounds",
@@ -77371,7 +77219,7 @@
 								"primal"
 							],
 							"note": " A creature affected by wendigo torment can't recover beyond stage 1 until it has been restored to full HP.",
-							"DC": "38",
+							"DC": 38,
 							"savingThrow": "Will",
 							"onset": null,
 							"maxDuration": null,
@@ -77616,12 +77464,14 @@
 				},
 				{
 					"traits": [
-						"of"
+						"curse",
+						"necromancy",
+						"primal"
 					],
 					"entries": [
-						"the Werebear (curse, necromancy, primal); Saving Throw DC 22 Fortitude."
+						"Saving Throw DC 22 Fortitude."
 					],
-					"name": "Curse"
+					"name": "Curse of the Werebear"
 				},
 				{
 					"activity": {
@@ -77885,12 +77735,14 @@
 				},
 				{
 					"traits": [
-						"of"
+						"curse",
+						"necromancy",
+						"primal"
 					],
 					"entries": [
-						"the Wererat (curse, necromancy, primal); Saving Throw DC 18 Fortitude."
+						"Saving Throw DC 18 Fortitude."
 					],
-					"name": "Curse"
+					"name": "Curse of the Werebear"
 				},
 				{
 					"traits": [
@@ -78120,12 +77972,14 @@
 				},
 				{
 					"traits": [
-						"of"
+						"curse",
+						"necromancy",
+						"primal"
 					],
 					"entries": [
-						"the Werewolf (curse, necromancy, primal); Saving Throw DC 19 Fortitude."
+						"Saving Throw DC 19 Fortitude."
 					],
-					"name": "Curse"
+					"name": "Curse of the Werewolf"
 				},
 				{
 					"traits": [
@@ -79133,7 +78987,7 @@
 								"poison"
 							],
 							"note": "",
-							"DC": "22",
+							"DC": 22,
 							"savingThrow": "Fortitude",
 							"onset": null,
 							"maxDuration": "6 rounds",
@@ -79430,12 +79284,9 @@
 						"olfactory"
 					],
 					"entries": [
-						"30 feet. As xulgath warrior, but DC 19."
+						"30 feet. A creature that enters the area must attempt a DC 19 Fortitude save. On a failure, the creature is {@condition sickened 1}, and on a critical failure, the creature also takes a \u20135-foot status penalty to its Speeds for 1 round. While within the aura, the creature takes a \u20132 circumstance penalty to saves to recover from the {@condition sickened} condition. A creature that succeeds at its save is temporarily immune to all xulgaths' stenches for 1 minute."
 					],
-					"name": "Stench",
-					"entries_as_xyz": [
-						"30 feet. A creature that enters the area must attempt a DC 16 Fortitude save. On a failure, the creature is {@condition sickened 1}, and on a critical failure, the creature also takes a \u20135-foot status penalty to its Speeds for 1 round. While within the aura, the creature takes a \u20132 circumstance penalty to saves to recover from the {@condition sickened} condition. A creature that succeeds at its save is temporarily immune to all xulgaths' stenches for 1 minute."
-					]
+					"name": "Stench"
 				}
 			],
 			"speed": {

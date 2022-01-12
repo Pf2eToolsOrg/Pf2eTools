@@ -1288,8 +1288,19 @@
 			"prerequisites": "Alchemical {@skill Crafting}; trained in {@skill Crafting}, {@skill Deception}, and {@skill Stealth}",
 			"entries": [
 				"You've trained to assassinate your foes, and you do so with tenacity and precision. You gain the Mark for Death activity.",
-				"Mark for Death {@as 3} Requirements You can see and hear the creature you intend to mark; Effect You designate a single creature as your mark. This lasts until the mark dies or you use Mark for Death again. You gain a +2 circumstance bonus to {@skill Perception} checks to {@action Seek} your mark and on {@skill Deception} checks to {@action Feint} against your mark. Your {@trait agile} and {@trait finesse} weapons and unarmed attacks gain the backstabber and deadly d6 weapon traits when you're attacking your mark.",
-				"If the weapon or unarmed attack already has the {@trait deadly} trait, increase the size of the deadly damage die by one step instead of giving it deadly d6."
+				{
+					"type": "ability",
+					"name": "Mark for Death",
+					"activity": {
+						"number": 3,
+						"unit": "action"
+					},
+					"requirements": "Requirements You can see and hear the creature you intend to mark",
+					"entries": [
+						"You designate a single creature as your mark. This lasts until the mark dies or you use Mark for Death again. You gain a +2 circumstance bonus to {@skill Perception} checks to {@action Seek} your mark and on {@skill Deception} checks to {@action Feint} against your mark. Your {@trait agile} and {@trait finesse} weapons and unarmed attacks gain the backstabber and deadly d6 weapon traits when you're attacking your mark.",
+						"If the weapon or unarmed attack already has the {@trait deadly} trait, increase the size of the deadly damage die by one step instead of giving it deadly d6."
+					]
+				}
 			],
 			"special": "You can't select another dedication feat until you've gained two other feats from the assassin archetype.",
 			"leadsTo": [
@@ -2099,11 +2110,11 @@
 				{
 					"type": "list",
 					"items": [
-						"Abjuration force damage",
-						"{@bold Conjuration or} Transmutation same type as the weapon",
-						"{@bold Divination, Enchantment, or} Illusion mental damage",
-						"Evocation a type the spell dealt, or force damage if the spell didn't deal damage",
-						"Necromancy negative damage"
+						"{@b Abjuration} force damage",
+						"{@bold Conjuration or Transmutation} same type as the weapon",
+						"{@bold Divination, Enchantment, or Illusion} mental damage",
+						"{@b Evocation} a type the spell dealt, or force damage if the spell didn't deal damage",
+						"{@b Necromancy} negative damage"
 					]
 				}
 			]
@@ -2466,10 +2477,9 @@
 					"items": [
 						"If the creatures associated with your bloodline have the ability to fly, you gain a fly Speed equal to your land Speed.",
 						"If the creatures associated with your bloodline are aquatic or amphibious, you become amphibious, able to breathe water and air equally well, and you gain a swim Speed equal to your Speed.",
-						"If creatures associated with your bloodline have a resistance or immunity to acid, cold, electricity, fire, negative, or sonic, choose an energy type your bloodline is immune or resistant to and gain resistance 20 against that energy type"
+						"If creatures associated with your bloodline have a resistance or immunity to acid, cold, electricity, fire, negative, or sonic, choose an energy type your bloodline is immune or resistant to and gain resistance 20 against that energy type."
 					]
-				},
-				"Arcane Thesis."
+				}
 			]
 		},
 		{
@@ -3261,13 +3271,24 @@
 			],
 			"entries": [
 				"The more people you have looking at you, the more content you are, and you take every opportunity to show up others when their performances are less than perfect. You gain the Upstage reaction. In addition, when you {@action Earn Income}, if the level of the task is higher than your level, you gain a +1 circumstance bonus to your check to {@action Earn Income}.",
-				"Upstage {@as R} Trigger A foe attempts a skill check and doesn't get a critical success; Effect After your foe has tried their best, you show everyone how it's really done. Attempt a check using the same skill that triggered this reaction.",
 				{
-					"type": "successDegree",
-					"entries": {
-						"Critical Success": "You gain a +1 status bonus to attack rolls, {@skill Perception} checks, saving throws, and skill checks until the end of your next turn.",
-						"Success": "As critical success, except you gain the benefits only if the triggering creature failed their skill check."
-					}
+					"type": "ability",
+					"name": "Upstage",
+					"activity": {
+						"unit": "reaction",
+						"number": 1
+					},
+					"trigger": "A foe attempts a skill check and doesn't get a critical success",
+					"entries": [
+						"After your foe has tried their best, you show everyone how it's really done. Attempt a check using the same skill that triggered this reaction.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "You gain a +1 status bonus to attack rolls, {@skill Perception} checks, saving throws, and skill checks until the end of your next turn.",
+								"Success": "As critical success, except you gain the benefits only if the triggering creature failed their skill check."
+							}
+						}
+					]
 				}
 			],
 			"special": "You can't select another dedication feat until you have gained two other feats from the celebrity archetype.",
@@ -4058,10 +4079,10 @@
 				"Wizard"
 			],
 			"prerequisites": "expert in {@skill Deception}",
-			"trigger": "A creature succeeded, but didn't critically succeed, at a {@skill Perception} check or Will save to disbelieve an illusion from a spell that you cast.",
+			"trigger": "A creature succeeded, but didn't critically succeed, at a {@skill Perception} check or Will save to {@quickref disbelieve an illusion|CRB|2|disbelieving illusions|0} from a spell that you cast.",
 			"requirements": "You are within 30 feet of the observer and the illusion.",
 			"entries": [
-				"You use your deceptive skills to make your illusions seem even more real. Attempt a {@skill Deception} check against the target's {@skill Perception} DC. If you succeed, the target fails to disbelieve the illusion."
+				"You use your deceptive skills to make your illusions seem even more real. Attempt a {@skill Deception} check against the target's {@skill Perception} DC. If you succeed, the target fails to {@quickref disbelieve the illusion|CRB|2|disbelieving illusions|0}."
 			]
 		},
 		{
@@ -4809,9 +4830,19 @@
 			"entries": [
 				"You can rig your bombs to inanimate objects in order to cause destruction to the surrounding area. As an activity that takes 1 minute, you attach between one and four bombs to an inanimate object within your reach, such as a chest, door, wall, or column. This creates a hazard in one square occupied by or adjacent to the inanimate object, and the hazard's {@skill Stealth} DC to detect it and {@skill Thievery} DC to disable it are equal to your class DC.",
 				"The hazard has the following reaction, which you can also trigger as a single action so long as you are within 30 feet of the hazard. The hazard retains its potency until it's triggered, until the inanimate object moves from its space, or until you make your next daily preparations, whichever comes first.",
-				"Fire in the Hole {@as R} Trigger A creature moves into the hazard's space; Effect The hazard explodes, dealing the bombs' damage and splash damage to the inanimate object.",
-				"Combine this damage for the purpose of resistances and weaknesses, and this damage ignores an amount of the object's Hardness equal to your level. Any creatures adjacent to the hazard take the bombs' splash damage, similarly combined for the purpose of resistances and weaknesses.",
-				"As a reminder, since you didn't throw the bombs, Calculated Splash and similar effects don't apply."
+				{
+					"type": "ability",
+					"name": "Fire in the Hole",
+					"activity": {
+						"unit": "reaction",
+						"number": 1
+					},
+					"trigger": "A creature moves into the hazard's space",
+					"entries": [
+						"The hazard explodes, dealing the bombs' damage and splash damage to the inanimate object. Combine this damage for the purpose of resistances and weaknesses, and this damage ignores an amount of the object's Hardness equal to your level. Any creatures adjacent to the hazard take the bombs' splash damage, similarly combined for the purpose of resistances and weaknesses.",
+						"As a reminder, since you didn't throw the bombs, Calculated Splash and similar effects don't apply."
+					]
+				}
 			]
 		},
 		{
@@ -5442,7 +5473,7 @@
 			],
 			"prerequisites": "{@feat Medic Dedication|APG}",
 			"entries": [
-				"You move to provide immediate care to those who need it. {@action Stride}, then use one of the following: {@feat Battle Medicine} or {@action Treat Poison}. You can spend a second action to instead {@action Stride} and then {@action Administer First Aid} or Treat a Condition (if you have it; see below)."
+				"You move to provide immediate care to those who need it. {@action Stride}, then use one of the following: {@feat Battle Medicine} or {@action Treat Poison}. You can spend a second action to instead {@action Stride} and then {@action Administer First Aid} or {@feat Treat Condition|apg|Treat a Condition} (if you have it)."
 			]
 		},
 		{
@@ -8166,9 +8197,9 @@
 			"traits": [
 				"Swashbuckler"
 			],
-			"prerequisites": "Fascinating {@skill Performance}",
+			"prerequisites": "{@feat Fascinating Performance}",
 			"entries": [
-				"When you use Fascinating {@skill Performance} in a combat encounter, you need only a success, rather than a critical success, to fascinate your target. This works only if you're attempting to fascinate one target. For example, if you were an expert in {@skill Performance}, you could choose to target multiple creatures normally or target one creature and fascinate it on a success."
+				"When you use {@feat Fascinating Performance} in a combat encounter, you need only a success, rather than a critical success, to fascinate your target. This works only if you're attempting to fascinate one target. For example, if you were an expert in {@skill Performance}, you could choose to target multiple creatures normally or target one creature and fascinate it on a success."
 			]
 		},
 		{
@@ -8484,7 +8515,7 @@
 			],
 			"prerequisites": "{@feat Herbalist Dedication|APG}, expert in {@skill Nature}",
 			"entries": [
-				"When using Natural {@skill Medicine} to {@action Treat Wounds}, you can spend a batch of herbs to gain the +2 circumstance bonus from having fresh ingredients, even if not in wilderness. If you spend a batch of herbs in wilderness, you gain a +4 circumstance bonus instead."
+				"When using {@feat Natural Medicine} to {@action Treat Wounds}, you can spend a batch of herbs to gain the +2 circumstance bonus from having fresh ingredients, even if not in wilderness. If you spend a batch of herbs in wilderness, you gain a +4 circumstance bonus instead."
 			]
 		},
 		{
@@ -8707,7 +8738,14 @@
 			],
 			"prerequisites": "trained in {@skill Deception}",
 			"entries": [
-				"When you trick a foe, you can goad them into overextending their next attack. On a {@action Feint}, you can use the following success and critical success effects instead of any other effects you would gain when you {@action Feint}; if you do, other abilities that."
+				"When you trick a foe, you can goad them into overextending their next attack. On a {@action Feint}, you can use the following success and critical success effects instead of any other effects you would gain when you {@action Feint}; if you do, other abilities that adjust the normal effects of your {@action Feint} no longer apply. You can choose whether to use the Goading Feint benefits or the normal benefits each time you {@action Feint} a given foe.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "The target takes a \u20132 circumstance penalty to all attack rolls against you before the end of its next turn.",
+						"Success": "The target takes a \u20132 circumstance penalty to its next attack roll against you before the end of its next turn."
+					}
+				}
 			]
 		},
 		{
@@ -9165,7 +9203,7 @@
 			"requirements": "Your {@action Strike|CRB|Strikes} currently deal extra damage from your champion's reaction.",
 			"entries": [
 				"Make a {@action Strike} against the creature that triggered your champion's reaction. If you hit, the target takes double the extra damage from your reaction and must succeed at a Fortitude save against your class DC or be {@condition drained 1}.",
-				"Regardless of the result, the creature is temporarily immune to your Gruesome {@action Strike} for 24 hours."
+				"Regardless of the result, the creature is temporarily immune to your Gruesome Strike for 24 hours."
 			]
 		},
 		{
@@ -9456,10 +9494,10 @@
 				"Archetype",
 				"Dedication"
 			],
-			"prerequisites": "trained in {@skill Nature}, Natural {@skill Medicine}",
+			"prerequisites": "trained in {@skill Nature}, {@feat Natural Medicine}",
 			"entries": [
-				"You can create remedies and other herbal products. You gain the basic alchemy benefits (page 150), though they apply only for herbal items: alchemical items with the {@trait healing} trait, plus antidote and antiplague. You gain batches of infused reagents per day equal to your level or half your level if you didn't make your daily preparations in the wilderness. Your advanced alchemy level for creating these is 1 and doesn't increase on its own.",
-				"You become an expert in {@skill Nature} and can use {@skill Nature} instead of {@skill Crafting} to {@action Craft} herbal items. You don't need to be trained in {@skill Crafting} or have the Alchemical {@skill Crafting} feat to do so, and you can use healer's tools instead of alchemist's tools."
+				"You can create remedies and other herbal products. You gain the basic alchemy benefits (page 150), though they apply only for herbal items: alchemical items with the {@trait healing} trait, plus {@item antidote (generic)||antidote} and {@item antiplague (generic)||antiplauge}. You gain batches of infused reagents per day equal to your level or half your level if you didn't make your daily preparations in the wilderness. Your advanced alchemy level for creating these is 1 and doesn't increase on its own.",
+				"You become an expert in {@skill Nature} and can use {@skill Nature} instead of {@skill Crafting} to {@action Craft} herbal items. You don't need to be trained in {@skill Crafting} or have the {@feat Alchemical Crafting} feat to do so, and you can use {@item healer's tools} instead of alchemist's tools."
 			],
 			"special": "You can't select another dedication feat until you have gained two other feats from the herbalist archetype.",
 			"leadsTo": [
@@ -9577,10 +9615,9 @@
 				"Archetype",
 				"Skill"
 			],
-			"prerequisites": "expert in {@skill Arcana}, {@skill Nature}, {@skill Occultism}, or {@skill Religion};",
+			"prerequisites": "expert in {@skill Arcana}, {@skill Nature}, {@skill Occultism}, or {@skill Religion}; {@feat Vigilante Dedication|apg}",
 			"entries": [
-				"Vigilante Dedication You've learned to hide the magical auras of your gear.",
-				"During your daily preparations, you carefully tweak any or all of your magic items to appear non-magical. Objects adjusted in this way remain so until your next preparations.",
+				"You've learned to hide the magical auras of your gear. During your daily preparations, you carefully tweak any or all of your magic items to appear non-magical. Objects adjusted in this way remain so until your next preparations.",
 				"A spellcaster using detect magic or read aura must succeed at a {@skill Perception} check against your {@skill Deception} DC to see through your obfuscations."
 			]
 		},
@@ -12440,7 +12477,7 @@
 				"Oracle"
 			],
 			"entries": [
-				"Your mystery holds unknowable depths of magic not always associated with the divine. You can have one spell in your spell repertoire not on the divine spell list, in addition to spells you've added to your spell list from feats like Divine Access. You cast that spell as a divine spell. You can swap which spell you add and from which tradition as you could any other oracle spell, but you can't use this feat to have more than one spell from another tradition in your spell repertoire at the same time."
+				"Your mystery holds unknowable depths of magic not always associated with the divine. You can have one spell in your spell repertoire not on the divine spell list, in addition to spells you've added to your spell list from feats like {@feat Divine Access|apg}. You cast that spell as a divine spell. You can swap which spell you add and from which tradition as you could any other oracle spell, but you can't use this feat to have more than one spell from another tradition in your spell repertoire at the same time."
 			]
 		},
 		{
@@ -13829,7 +13866,20 @@
 			"prerequisites": "trained in {@skill Intimidation}",
 			"entries": [
 				"As a pirate, you sail the seas in search of enemy ships to plunder. You become trained in {@skill Lore||Sailing Lore}, or become an expert in it if you were already trained. You ignore the effects of {@quickref difficult terrain||3|terrain} or uneven ground caused by a ship's movement. Additionally, you gain the Boarding Assault action.",
-				"Boarding Assault {@as 2} (flourish) Either {@action Stride} twice or attempt an {@skill Acrobatics} check (DC determined by the GM, but usually DC 20) to swing on a rope up to twice your Speed. If you boarded or disembarked from a boat or similar vehicle during this movement, you can make a melee {@action Strike} that deals one additional weapon damage die."
+				{
+					"type": "ability",
+					"name": "Boarding Assault",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"traits": [
+						"flourish"
+					],
+					"entries": [
+						"Either {@action Stride} twice or attempt an {@skill Acrobatics} check (DC determined by the GM, but usually DC 20) to swing on a rope up to twice your Speed. If you boarded or disembarked from a boat or similar vehicle during this movement, you can make a melee {@action Strike} that deals one additional weapon damage die."
+					]
+				}
 			],
 			"special": "You can't select another dedication feat until you have gained two other feats from the pirate archetype.",
 			"leadsTo": [
@@ -14484,7 +14534,7 @@
 				"Visual"
 			],
 			"entries": [
-				"Where others etch their armor to serve as a conduit for their imaginations, your vivid mind and bold personality allow you to project a more fitting persona over your lackluster armor. You change the shape and appearance of your armor to appear as ordinary or fine clothes of your imagining. The armor's statistics don't change. This effect lasts as long as you remain conscious and are wearing the armor. A creature can disbelieve the illusion by Seeking or touching your armor. The DC equals your Will DC."
+				"Where others etch their armor to serve as a conduit for their imaginations, your vivid mind and bold personality allow you to project a more fitting persona over your lackluster armor. You change the shape and appearance of your armor to appear as ordinary or fine clothes of your imagining. The armor's statistics don't change. This effect lasts as long as you remain conscious and are wearing the armor. A creature can {@quickref disbelieve the illusion|CRB|2|disbelieving illusions|0} by Seeking or touching your armor. The DC equals your Will DC."
 			]
 		},
 		{
@@ -14871,7 +14921,7 @@
 			],
 			"entries": [
 				"You have a pet rat that has become magically bonded to you.",
-				"You gain a {@filter familiar|companionsfamiliars||Type=Familiar} using the rules on page 217 of the Core Rulebook, and this familiar must be a rat. It still gets the benefits of familiar abilities, but its base form remains a rat."
+				"You gain a {@filter familiar|companionsfamiliars||Type=Familiar}, and this familiar must be a rat. It still gets the benefits of familiar abilities, but its base form remains a rat."
 			]
 		},
 		{
@@ -15911,8 +15961,7 @@
 				"Champion"
 			],
 			"entries": [
-				"You are a great warrior that can stand strong against the fiercest opponents to your cause. You gain resistance 10 to bludgeoning, piercing, and slashing damage caused by creatures and effects opposed to your tenets (evil creatures for tenets of good, good creatures for tenets of evil, and so on). In addition, creatures and effects that roll a natural 20 on an attack roll against you don't improve their result by one degree of success.",
-				"cleric Feats."
+				"You are a great warrior that can stand strong against the fiercest opponents to your cause. You gain resistance 10 to bludgeoning, piercing, and slashing damage caused by creatures and effects opposed to your tenets (evil creatures for tenets of good, good creatures for tenets of evil, and so on). In addition, creatures and effects that roll a natural 20 on an attack roll against you don't improve their result by one degree of success."
 			]
 		},
 		{
@@ -18489,10 +18538,7 @@
 			"prerequisites": "{@feat Duelist Dedication|APG}",
 			"entries": [
 				"You have studied a great many combat techniques, which you can review each day. During your daily preparations, you can swap out any number of your duelist archetype feats for other duelist archetype feats of the appropriate level for which you are qualified. You can't swap out Duelist Dedication or Student of the Dueling Arts in this way.",
-				"In addition, you can enter a stance from a duelist archetype feat you don't have (such as one listed under Additional Feats) by increasing the number of actions it takes to enter the stance by 1 (typically to 2 actions). You must still meet the feat's prerequisites.",
-				"are among their number. Bolstering your athletic and martial abilities with mystical talents, you achieve rare heights with the bow or crossbow\u2014transforming arrows or bolts into eldritch ammunition, sending arrows zig-zagging nearly unerringly to their target, and manifesting arrows that can deliver spells or even instant death.",
-				"While having some spellcasting ability increases your potential flexibility and power as an eldritch archer, you might learn the secrets of these arts without being independently skilled in spellcasting, instead learning the magic of the bow for its own sake.",
-				"Additional Feats: 20th Impossible Volley (Core Rulebook 153)"
+				"In addition, you can enter a stance from a duelist archetype feat you don't have (such as one listed under Additional Feats) by increasing the number of actions it takes to enter the stance by 1 (typically to 2 actions). You must still meet the feat's prerequisites."
 			]
 		},
 		{
@@ -19666,7 +19712,7 @@
 				"Metamagic"
 			],
 			"entries": [
-				"Spells you cast can transform briefly into vital essence,"
+				"Spells you cast can transform briefly into vital essence, traveling harmlessly through living and undead creatures between you and your target, blocked only by solid objects. If the next action you use is to {@action Cast a Spell} that requires a spell attack roll, your targets don't benefit from cover provided by living or undead creatures."
 			]
 		},
 		{
@@ -19936,7 +19982,7 @@
 				"Investigator"
 			],
 			"trigger": "You specify the trigger when you make your daily preparations (see Requirements below).",
-			"requirements": "When you make your daily preparations, you must specify a trigger for this reaction using the same restrictions as the triggers for the {@action Ready} action.",
+			"requirements": "When you make your daily preparations, you must specify a trigger for this reaction using the same restrictions as the triggers for the {@action Ready} action. You also choose a {@filter single spell|spells||level=1;2;3;4|Tradition & Spell List=arcane;divine;occult;primal|components=!cost|Miscellaneous=Has Targets|Cast Time=Varies;Action;Two-Action;Three-Action;Free Action;Minutes;Rounds} from the arcane, divine, occult, or primal list of 4th level or lower. The spell can't have a cost, nor can its casting time be more than 10 minutes. The spell must be able to target a single creature, and you must be a valid target for it.",
 			"entries": [
 				"Whether from jury-rigged magic items, deduction from the study of magical interactions, or other means, you have a contingency in your back pocket for desperate situations.",
 				"When the trigger occurs, you cause the spell to come into effect. The spell targets only you, no matter how many creatures it would affect normally. If you define particularly complicated conditions, as determined by the GM, the trigger might fail. Once the contingency is triggered, the spell is expended until your next daily preparations."
@@ -20132,7 +20178,7 @@
 			"prerequisites": "Twin {@action Feint}",
 			"requirements": "You are wielding two melee weapons, each in a different hand.",
 			"entries": [
-				"Your movements with two weapons are so swift and disorienting that they befuddle your opponent. When using Twin {@action Feint}, if both your {@action Strike|CRB|Strikes} deal damage to a targeted creature, the target must succeed at a Will saving throw against your class DC or become {@condition stupefied 1} until the end of your next turn."
+				"Your movements with two weapons are so swift and disorienting that they befuddle your opponent. When using Twin Feint, if both your {@action Strike|CRB|Strikes} deal damage to a targeted creature, the target must succeed at a Will saving throw against your class DC or become {@condition stupefied 1} until the end of your next turn."
 			]
 		},
 		{

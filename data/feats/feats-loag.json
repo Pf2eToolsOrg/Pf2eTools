@@ -263,9 +263,19 @@
 				"Leshy"
 			],
 			"entries": [
-				"Small roots sprout from your feet, steadying you as you move. You gain the Steady {@action Balance} skill feat, even if you aren't trained in {@skill Acrobatics}, and you can use the Anchor action.",
-				"Anchor {@as 1} Effect You send your roots deeper into the ground, making it harder for you to stumble. Until you move, you gain a +2 circumstance bonus to your Fortitude or Reflex DC against attempts to {@action Shove} or {@action Trip} you (or a +4 circumstance bonus if you're a root leshy). This bonus also applies to saving throws against spells or effects that attempt to move you or knock you {@condition prone}.",
-				"If an effect forces you to move, you move only half the normal distance, as some of the effort goes to tearing out the roots. At the GM's discretion, this ability might not work on ground that's more resilient than stone, such as metal flooring or magically-reinforced masonry."
+				"Small roots sprout from your feet, steadying you as you move. You gain the {@feat Steady Balance} skill feat, even if you aren't trained in {@skill Acrobatics}, and you can use the Anchor action.",
+				{
+					"type": "ability",
+					"name": "Anchor",
+					"activity": {
+						"unit": "action",
+						"number": 1
+					},
+					"entries": [
+						"You send your roots deeper into the ground, making it harder for you to stumble. Until you move, you gain a +2 circumstance bonus to your Fortitude or Reflex DC against attempts to {@action Shove} or {@action Trip} you (or a +4 circumstance bonus if you're a root leshy). This bonus also applies to saving throws against spells or effects that attempt to move you or knock you {@condition prone}.",
+						"If an effect forces you to move, you move only half the normal distance, as some of the effort goes to tearing out the roots. At the GM's discretion, this ability might not work on ground that's more resilient than stone, such as metal flooring or magically-reinforced masonry."
+					]
+				}
 			]
 		},
 		{
@@ -759,7 +769,22 @@
 			],
 			"entries": [
 				"Your elemental ancestor's legacy asserts itself as brackish water, like the seawater of the ocean. You gain the Salt Wound reaction.",
-				"Salt Wound {@as R} (undine) Frequency once per day; Trigger A creature that has blood and is not at its maximum Hit Points hits you with a melee {@action Strike}; Effect You channel salt and brine from your blood into the creature's wounds. The creature must attempt a Fortitude save using your class DC or spell DC, whichever is higher. On a failure, the creature takes {@damage 1d6} {@condition persistent damage ||persistent acid damage} and is {@condition sickened 1} by the pain. On a critical failure, it instead takes {@damage 2d6} {@condition persistent damage ||persistent acid damage} and is {@condition sickened 2}."
+				{
+					"type": "ability",
+					"name": "Salt Wound",
+					"activity": {
+						"unit": "reaction",
+						"number": 1
+					},
+					"traits": [
+						"undine"
+					],
+					"frequency": "once per day",
+					"trigger": "A creature that has blood and is not at its maximum Hit Points hits you with a melee {@action Strike}",
+					"entries": [
+						"You channel salt and brine from your blood into the creature's wounds. The creature must attempt a Fortitude save using your class DC or spell DC, whichever is higher. On a failure, the creature takes {@damage 1d6} {@condition persistent damage ||persistent acid damage} and is {@condition sickened 1} by the pain. On a critical failure, it instead takes {@damage 2d6} {@condition persistent damage ||persistent acid damage} and is {@condition sickened 2}."
+					]
+				}
 			]
 		},
 		{
@@ -902,8 +927,7 @@
 			"frequency": "once per day",
 			"entries": [
 				"The life-giving energy that flows in your blood revitalizes you. You recover {@dice 4d6} Hit Points and gain 10 temporary Hit Points for 1 minute.",
-				"When you reach 15th level, you instead recover {@dice 6d6} HP and gain 15 temporary HP.",
-				"boom: the Onyx Key. Through this."
+				"When you reach 15th level, you instead recover {@dice 6d6} HP and gain 15 temporary HP."
 			]
 		},
 		{
@@ -1831,7 +1855,7 @@
 				"Your suli heritage can be traced back to two geniekin ancestors of opposing elements, or to an elemental ancestor that embodied two combined elements.",
 				"Choose two of the following elements: air, earth, fire, and water. Once made, this choice can't be changed. You gain resistance equal to half your level (minimum 1) to all damaging effects with the traits of either of your chosen elements."
 			],
-			"special": "If you take the Elemental Assault or {@feat Elemental Bulwark|LOAG} ancestry feats, you can use them only with your chosen elements. You can add your resistance from this feat to the resistance you gain from Elemental Bulwark against effects with your elements' traits, for a total of 5 + half your level, or 10 + half your level with Improved Elemental Bulwark. If you take the Tetraelemental Assault feat, you can choose each of your two elements twice each, instead of choosing each of the four elements once each."
+			"special": "If you take the {@feat Elemental Assault|LOAG} or {@feat Elemental Bulwark|LOAG} ancestry feats, you can use them only with your chosen elements. You can add your resistance from this feat to the resistance you gain from {@feat Elemental Bulwark|LOAG} against effects with your elements' traits, for a total of 5 + half your level, or 10 + half your level with {@feat Improved Elemental Bulwark|LOAG}. If you take the {@feat Tetraelemental Assault|LOAG} feat, you can choose each of your two elements twice each, instead of choosing each of the four elements once each."
 		},
 		{
 			"name": "Dustsoul",
@@ -2093,7 +2117,7 @@
 				"Oread"
 			],
 			"entries": [
-				"You have a strong connection with stone and metal. You gain the trained proficiency rank in {@skill Crafting}. If you would automatically become trained in {@skill Crafting} (from your background or class, for example), you instead become trained in a skill of your choice. You gain the Specialty {@skill Crafting} skill feat for both Stonemasonry and Blacksmithing."
+				"You have a strong connection with stone and metal. You gain the trained proficiency rank in {@skill Crafting}. If you would automatically become trained in {@skill Crafting} (from your background or class, for example), you instead become trained in a skill of your choice. You gain the {@feat Specialty Crafting} skill feat for both Stonemasonry and Blacksmithing."
 			]
 		},
 		{
@@ -2999,7 +3023,7 @@
 				"Oread"
 			],
 			"entries": [
-				"The earth inside you asserts itself as crystallized gemstones or metals, like a cluster of quartz or veins of iron and gold. This shimmering presence inside your being inspires you to flashy and flamboyant performances. You gain the trained proficiency rank in {@skill Performance}. If you would automatically become trained in {@skill Performance} (from your background or class, for example), you instead become trained in a skill of your choice. You gain the Impressive {@skill Performance} skill feat."
+				"The earth inside you asserts itself as crystallized gemstones or metals, like a cluster of quartz or veins of iron and gold. This shimmering presence inside your being inspires you to flashy and flamboyant performances. You gain the trained proficiency rank in {@skill Performance}. If you would automatically become trained in {@skill Performance} (from your background or class, for example), you instead become trained in a skill of your choice. You gain the {@feat Impressive Performance} skill feat."
 			]
 		},
 		{
@@ -3564,7 +3588,7 @@
 				"Lineage"
 			],
 			"entries": [
-				"Your wild, unique features betray your agathion birthright. Serene celestials from the plane of Nirvana, agathions seek the peaceful path, ensuring a better world for all to coexist. Your halcyon demeanor leads you to search for peaceful resolution to conflict. You gain the trained proficiency rank in {@skill Nature}. If you would automatically become trained in {@skill Nature} (from your background or class, for example), you instead become trained in a skill of your choice. You know the Sylvan language and gain the Natural {@skill Medicine} skill feat."
+				"Your wild, unique features betray your agathion birthright. Serene celestials from the plane of Nirvana, agathions seek the peaceful path, ensuring a better world for all to coexist. Your halcyon demeanor leads you to search for peaceful resolution to conflict. You gain the trained proficiency rank in {@skill Nature}. If you would automatically become trained in {@skill Nature} (from your background or class, for example), you instead become trained in a skill of your choice. You know the Sylvan language and gain the {@feat Natural Medicine} skill feat."
 			],
 			"leadsTo": [
 				"Agathion Magic|LOAG",
@@ -3806,7 +3830,7 @@
 				"Aphorite"
 			],
 			"entries": [
-				"Your affinity with process and order makes you a natural artisan. You gain the trained proficiency rank in {@skill Crafting} (or another skill of your choice, if you're already trained in {@skill Crafting}). You gain the Specialty {@skill Crafting} skill feat in a specialty of your choice."
+				"Your affinity with process and order makes you a natural artisan. You gain the trained proficiency rank in {@skill Crafting} (or another skill of your choice, if you're already trained in {@skill Crafting}). You gain the {@feat Specialty Crafting} skill feat in a specialty of your choice."
 			]
 		},
 		{
@@ -4582,7 +4606,7 @@
 				"Oread"
 			],
 			"entries": [
-				"You have a connection to the muddier denizens of the Plane of Earth from its border with the Plane of Water, and your elemental lineage manifests as clay or mud, reflecting that bond. Your body's mudlike quality makes it easy for you to compress and squeeze yourself through smaller areas. You gain the trained proficiency rank in {@skill Acrobatics}. If you would automatically become trained in {@skill Acrobatics} (from your background or class, for example), you instead become trained in a skill of your choice. You gain the Quick {@action Squeeze} skill feat."
+				"You have a connection to the muddier denizens of the Plane of Earth from its border with the Plane of Water, and your elemental lineage manifests as clay or mud, reflecting that bond. Your body's mudlike quality makes it easy for you to compress and squeeze yourself through smaller areas. You gain the trained proficiency rank in {@skill Acrobatics}. If you would automatically become trained in {@skill Acrobatics} (from your background or class, for example), you instead become trained in a skill of your choice. You gain the {@feat Quick Squeeze} skill feat."
 			]
 		},
 		{
@@ -4644,7 +4668,21 @@
 			],
 			"entries": [
 				"You have a connection to vaporous forms of water, such as fog and mist. You gain the Mist Blending reaction.",
-				"Mist Blending {@as R} (undine) Trigger A creature attempts a flat check to target you because you're {@condition concealed} or {@condition hidden} due to fog, haze, mist, or smoke; Effect You shroud yourself in mist, making it harder for your foe to hit you. If you're {@condition concealed}, the DC of the flat check increases from 5 to 7; if you're {@condition hidden}, it increases from 11 to 13."
+				{
+					"type": "ability",
+					"name": "Mist Blending",
+					"activity": {
+						"unit": "reaction",
+						"number": 1
+					},
+					"traits": [
+						"undine"
+					],
+					"trigger": "A creature attempts a flat check to target you because you're {@condition concealed} or {@condition hidden} due to fog, haze, mist, or smoke",
+					"entries": [
+						"You shroud yourself in mist, making it harder for your foe to hit you. If you're {@condition concealed}, the DC of the flat check increases from 5 to 7; if you're {@condition hidden}, it increases from 11 to 13."
+					]
+				}
 			]
 		},
 		{
@@ -5244,7 +5282,7 @@
 			"trigger": "You would take bludgeoning, piercing, or slashing damage.",
 			"entries": [
 				"Your body anticipates the blow. The impact area briefly reorganizes into a strengthened tissue lattice that blunts the attack. You gain resistance equal to your level to the triggering damage type, which applies against the triggering damage.",
-				"If you have the Crystalline Dust feat, you can use Preemptive Reconfiguration without expending a usage of the reaction for the purpose of the feat's Frequency limit. Instead, the usage counts toward your number of Crystalline Dust uses per day, as if you had used that feat instead."
+				"If you have the {@feat Crystalline Dust|loag} feat, you can use Preemptive Reconfiguration without expending a usage of the reaction for the purpose of the feat's Frequency limit. Instead, the usage counts toward your number of {@feat Crystalline Dust|loag} uses per day, as if you had used that feat instead."
 			]
 		},
 		{
@@ -6525,7 +6563,7 @@
 			],
 			"prerequisites": "expert in {@skill Athletics}",
 			"entries": [
-				"You create gusts of wind when you jump, allowing you to carry yourself across greater distances. You gain the Quick Jump and Powerful {@action Leap} skill feats as bonus feats."
+				"You create gusts of wind when you jump, allowing you to carry yourself across greater distances. You gain the {@feat Quick Jump} and {@feat Powerful Leap} skill feats as bonus feats."
 			]
 		},
 		{
@@ -6544,7 +6582,7 @@
 				"Kobold"
 			],
 			"entries": [
-				"You are an expert at moving through extremely tight spaces. You gain the Quick {@action Squeeze} skill feat, even if you're not trained in {@skill Acrobatics}. When you roll a success on an {@skill Acrobatics} check to {@action Squeeze}, you get a critical success instead."
+				"You are an expert at moving through extremely tight spaces. You gain the {@feat Quick Squeeze} skill feat, even if you're not trained in {@skill Acrobatics}. When you roll a success on an {@skill Acrobatics} check to {@action Squeeze}, you get a critical success instead."
 			]
 		},
 		{
@@ -6584,7 +6622,21 @@
 			],
 			"entries": [
 				"You have a connection to smoke and haze. You gain the Smoke Blending reaction.",
-				"Smoke Blending {@as R} (sylph) Trigger A creature attempts a flat check to target you because you're {@condition concealed} or {@condition hidden} due to fog, haze, mist, or smoke; Effect You shroud yourself in smoke, making it harder for your foe to hit you. If you're {@condition concealed}, the DC of the flat check increases from 5 to 7; if you're {@condition hidden}, it increases from 11 to 13."
+				{
+					"type": "ability",
+					"name": "Smoke Blending",
+					"activity": {
+						"unit": "reaction",
+						"number": 1
+					},
+					"traits": [
+						"sylph"
+					],
+					"trigger": "A creature attempts a flat check to target you because you're {@condition concealed} or {@condition hidden} due to fog, haze, mist, or smoke",
+					"entries": [
+						"You shroud yourself in smoke, making it harder for your foe to hit you. If you're {@condition concealed}, the DC of the flat check increases from 5 to 7; if you're {@condition hidden}, it increases from 11 to 13."
+					]
+				}
 			]
 		},
 		{
@@ -7015,7 +7067,7 @@
 				"Strix"
 			],
 			"entries": [
-				"You're a talented story weaver and use your voice effectively. You are trained in {@skill Performance}. If you would automatically become trained in {@skill Performance}, you instead become trained in a skill of your choice. You also gain the Impressive {@skill Performance} skill feat and gain a +1 circumstance bonus when Performing for an audience of strix."
+				"You're a talented story weaver and use your voice effectively. You are trained in {@skill Performance}. If you would automatically become trained in {@skill Performance}, you instead become trained in a skill of your choice. You also gain the {@feat Impressive Performance} skill feat and gain a +1 circumstance bonus when Performing for an audience of strix."
 			]
 		},
 		{
@@ -7329,9 +7381,17 @@
 			],
 			"entries": [
 				"You've learned to bind some of your feathers together into a fan to focus your ancestral magic. You gain a tengu feather fan: a magic item of light Bulk with a level equal to your level and the {@trait evocation} and {@trait primal} traits. You (and only you) can use the tengu feather fan to cast tengu magic. If your fan is lost or destroyed, you can create a replacement during your daily preparations; if you do so, your previous fan falls apart into mundane feathers. Further feats might grant you additional activations of your tengu feather fan, but you can never have more than three activations per day, no matter how many such feats you have.",
-				"The DC for spells you cast with your tengu feather fan is your class DC or spell DC, whichever is higher.",
-				"You can cast the 1st-level {@spell gust of wind} spell by activating your tengu feather fan.",
-				"Activate {@action Interact}; Frequency once per day; Effect You cast one of the spells contained in your tengu feather fan. {@action Activate an Item||Activating} the fan takes the spell's normal number of actions. You can also Activate the fan to cast a cantrip you've gained from a heritage or ancestry feat; this activation doesn't count against the fan's uses per day."
+				"The DC for spells you cast with your tengu feather fan is your class DC or spell DC, whichever is higher. You can cast the 1st-level {@spell gust of wind} spell by activating your tengu feather fan.",
+				{
+					"type": "ability",
+					"components": [
+						"Interact"
+					],
+					"frequency": "once per day",
+					"entries": [
+						"You cast one of the spells contained in your tengu feather fan. {@action Activate an Item||Activating} the fan takes the spell's normal number of actions. You can also Activate the fan to cast a cantrip you've gained from a heritage or ancestry feat; this activation doesn't count against the fan's uses per day."
+					]
+				}
 			],
 			"leadsTo": [
 				"Wind God's Fan|LOAG",
@@ -7628,7 +7688,7 @@
 				"Tengu"
 			],
 			"entries": [
-				"You have near-supernatural poise that lets you move swiftly across the most unsteady surfaces. You gain the Steady {@action Balance} skill feat. You can {@action Step} into {@quickref difficult terrain||3|terrain} caused by uneven ground, such as a rocky field or hilly incline."
+				"You have near-supernatural poise that lets you move swiftly across the most unsteady surfaces. You gain the {@feat Steady Balance} skill feat. You can {@action Step} into {@quickref difficult terrain||3|terrain} caused by uneven ground, such as a rocky field or hilly incline."
 			]
 		},
 		{
@@ -7832,7 +7892,7 @@
 				"Ganzi"
 			],
 			"entries": [
-				"You possess small, weak wings that aid in balance. You gain the Steady {@action Balance} and {@feat Cat Fall} skill feats as bonus feats, even if you aren't trained in {@skill Acrobatics}."
+				"You possess small, weak wings that aid in balance. You gain the {@feat Steady Balance} and {@feat Cat Fall} skill feats as bonus feats, even if you aren't trained in {@skill Acrobatics}."
 			]
 		},
 		{
@@ -8136,7 +8196,7 @@
 			],
 			"entries": [
 				"You're among the few kobolds who grow a set of draconic wings later in life. The wings are initially small and weak; while not enough for full flight, a strong flap allows you to jump further.",
-				"When Leaping horizontally, you move an additional 5 feet (this additional distance isn't cumulative with the increased {@action Leap} distance from the Powerful {@action Leap} feat). You don't automatically fail your checks to {@action High Jump} or {@action Long Jump} if you don't {@action Stride} at least 10 feet first.",
+				"When Leaping horizontally, you move an additional 5 feet (this additional distance isn't cumulative with the increased {@action Leap} distance from the {@feat Powerful Leap} feat). You don't automatically fail your checks to {@action High Jump} or {@action Long Jump} if you don't {@action Stride} at least 10 feet first.",
 				"In addition, when you attempt a {@action Long Jump}, you can jump a distance up to 10 feet longer than you normally would based on the result of your {@skill Athletics} check, though you still can't jump farther than your Speed."
 			],
 			"leadsTo": [

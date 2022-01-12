@@ -46,7 +46,7 @@
 			"access": "You are from the {@condition Broken} Lands region.",
 			"entries": [
 				"Your Aldori duelist training teaches you martial techniques and increases your dedication to the Aldori dueling sword. You become trained in your choice of {@skill Acrobatics} or {@skill Athletics} and in {@skill Lore||Dueling Lore}; if you were already trained, you become an expert instead.",
-				"Whenever your proficiency rank in any weapon increases to expert or beyond, you also gain that new proficiency rank with Aldori dueling swords. You gain access to Aldori dueling swords (page 28)."
+				"Whenever your proficiency rank in any weapon increases to expert or beyond, you also gain that new proficiency rank with {@item Aldori dueling sword||Aldori dueling swords}. You gain access to {@item Aldori dueling sword||Aldori dueling swords}."
 			],
 			"special": "You cannot select another dedication feat until you have gained two other feats from the Aldori duelist archetype.",
 			"leadsTo": [
@@ -483,8 +483,7 @@
 			],
 			"prerequisites": "{@feat Battle Medicine}, can't have a patron deity",
 			"entries": [
-				"You recover an additional 5 Hit Points from a successful attempt to {@action Treat Wounds||Treat your Wounds} or use Battle {@skill Medicine} on you. After you or an ally use Battle {@skill Medicine} on you, you become temporarily immune to that Battle {@skill Medicine} for only 1 hour, instead of 1 day.",
-				"Thuvia When most people think of Thuvia, they think of the sun orchid elixir: the legendary potion capable of reversing the effects of aging. Discovered thousands of years ago by Artokus Kirran, the draught is derived from the famed flower that grows only in the harshest reaches of Thuvia's desert, though its exact formula is known only to the immortal alchemist himself. A child of the chaos that followed the collapse of Ancient Osirion, Artokus met with local leaders."
+				"You recover an additional 5 Hit Points from a successful attempt to {@action Treat Wounds||Treat your Wounds} or use {@feat Battle Medicine} on you. After you or an ally use {@feat Battle Medicine} on you, you become temporarily immune to that {@feat Battle Medicine} for only 1 hour, instead of 1 day."
 			],
 			"leadsTo": [
 				"Mortal Healing|LOGM"
@@ -988,7 +987,7 @@
 			"prerequisites": "member of the Pathfinder Society",
 			"access": "You are from Absalom.",
 			"entries": [
-				"Your Pathfinder training has broadened your horizons and made you more flexible at various skills, since you never know when you might need an obscure skill to complete your mission. You become trained in one skill of your choice, or expert in a skill of your choice in which you were trained. You also become trained in {@skill Lore||Pathfinder Lore}, or an expert if you were already trained. When using a skill untrained, your proficiency bonus is equal to your level instead of 0. You gain access to wayfinders (Core Rulebook page 617)."
+				"Your Pathfinder training has broadened your horizons and made you more flexible at various skills, since you never know when you might need an obscure skill to complete your mission. You become trained in one skill of your choice, or expert in a skill of your choice in which you were trained. You also become trained in {@skill Lore||Pathfinder Lore}, or an expert if you were already trained. When using a skill untrained, your proficiency bonus is equal to your level instead of 0. You gain access to {@item wayfinder||wayfinders}."
 			],
 			"special": "You cannot select another dedication feat until you have gained two other feats from the Pathfinder agent archetype.",
 			"leadsTo": [
@@ -1034,7 +1033,7 @@
 			],
 			"prerequisites": "{@feat Student of Perfection Dedication|LOWG}",
 			"entries": [
-				"You gain the appropriate ki spell for your School of Perfection: unblinking flame revelation for Unblinking Flame, unbreaking wave advance for Unbreaking Waves, unfolding wind rush for Unfolding Wind, or untwisting iron buffer for Untwisting Iron.",
+				"You gain the appropriate ki spell for your School of Perfection: {@spell unblinking flame revelation|LOWG} for Unblinking Flame, {@spell unbreaking wave advance|LOWG} for Unbreaking Waves, {@spell unfolding wind rush|LOWG} for Unfolding Wind, or {@spell untwisting iron buffer|LOWG} for Untwisting Iron.",
 				"Increase the number of Focus Points in your focus pool by 1."
 			]
 		},
@@ -1055,7 +1054,7 @@
 			],
 			"prerequisites": "{@feat Student of Perfection Dedication|LOWG}",
 			"entries": [
-				"You gain the perfect strike ki spell. Increase the number of Focus Points in your focus pool by 1."
+				"You gain the {@spell perfect strike|LOWG} ki spell. Increase the number of Focus Points in your focus pool by 1."
 			]
 		},
 		{
@@ -1235,7 +1234,7 @@
 			]
 		},
 		{
-			"name": "Student Of Perfection Dedication",
+			"name": "Student of Perfection Dedication",
 			"source": "LOWG",
 			"page": 83,
 			"level": 2,
@@ -1244,19 +1243,23 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": "Student Of Perfection"
+				"archetype": "Student of Perfection"
 			},
 			"traits": [
 				"Uncommon",
 				"Archetype",
 				"Dedication"
 			],
-			"prerequisites": "powerful fist or expert in unarmed attacks; member of a House of Perfection",
+			"prerequisites": "{@classFeature powerful fist|monk||1} or expert in unarmed attacks; member of a House of Perfection",
 			"access": "You are from Jalmeray.",
 			"entries": [
-				"You have learned the martial arts techniques of your House of Perfection. You become trained in your choice of {@skill Acrobatics} or {@skill Athletics} and {@skill Lore||Warfare Lore}; if you were already trained, you become an expert instead. You gain the Ki {@action Strike} monk class feat, which grants you the ki strike ki spell and a focus pool of 1 Focus Point that you can recover using the {@action Refocus} activity as a monk does. Your ki spells from Student of Perfection are occult spells."
+				"You have learned the martial arts techniques of your House of Perfection. You become trained in your choice of {@skill Acrobatics} or {@skill Athletics} and {@skill Lore||Warfare Lore}; if you were already trained, you become an expert instead. You gain the {@feat Ki Strike} monk class feat, which grants you the ki strike ki spell and a focus pool of 1 Focus Point that you can recover using the {@action Refocus} activity as a monk does. Your ki spells from Student of Perfection are occult spells."
 			],
-			"special": "You can't select another dedication feat until you have gained two other feats from the student of perfection archetype."
+			"special": "You can't select another dedication feat until you have gained two other feats from the student of perfection archetype.",
+			"leadsTo": [
+				"Perfect Ki Adept|LOWG",
+				"Perfect Strike|LOWG"
+			]
 		},
 		{
 			"name": "Thorough Reports",

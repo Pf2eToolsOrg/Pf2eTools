@@ -72,7 +72,7 @@ function generateFeatTrees (args) {
 }
 
 async function main () {
-	const args = ut.parseArgs();
+	const args = ut.ArgParser.parse();
 	generateFeatTrees(args);
 }
 

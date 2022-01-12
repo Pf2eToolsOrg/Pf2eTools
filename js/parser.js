@@ -1613,6 +1613,7 @@ Parser.TAG_TO_DEFAULT_SOURCE = {
 	"familiarAbility": SRC_CRB,
 	"companion": SRC_CRB,
 	"eidolon": SRC_SOM,
+	"optfeature": SRC_APG,
 };
 Parser.getTagSource = function (tag, source) {
 	if (source && source.trim()) return source;

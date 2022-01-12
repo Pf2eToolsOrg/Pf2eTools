@@ -21,7 +21,7 @@ class SearchPage {
 			})
 			.val(decodeURIComponent(location.search.slice(1).replace(/\+/g, " ")))
 
-		const $btnSearch = $(`<button class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>`)
+		const $btnSearch = $(`<button class="btn btn-default"><span class="glyphicon glyphicon-search" type="submit"></span></button>`)
 			.click(() => {
 				location.search = encodeURIComponent($iptSearch.val().trim().toLowerCase());
 			});

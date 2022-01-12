@@ -1213,7 +1213,20 @@
 			"entries": [
 				"You gain fire and mental resistance 5.",
 				"When you die, you rise as an undead creature with the {@trait zombie} trait (Bestiary 340) on the next round; if you are a PC, you become an NPC under Walkena's control. Your stats remain the same, except that your alignment changes to evil. If you reach 0 Hit Points as a zombie, you are destroyed and do not rise again.",
-				"Activate {@as 1} command; Frequency once per day; Effect You gain a +1 status bonus to Will saves. Choose a weapon or an unarmed {@action Strike}; your chosen attack deals an extra {@damage 1d6} fire damage for the next 1 minute."
+				{
+					"type": "ability",
+					"activity": {
+						"unit": "action",
+						"number": 1
+					},
+					"components": [
+						"command"
+					],
+					"frequency": "once per day",
+					"entries": [
+						"You gain a +1 status bonus to Will saves. Choose a weapon or an unarmed {@action Strike}; your chosen attack deals an extra {@damage 1d6} fire damage for the next 1 minute."
+					]
+				}
 			],
 			"special": "If you are a zombie at a time when Mzali is entirely purged of foreigners, your duty is fulfilled and you are immediately destroyed."
 		},
@@ -1779,7 +1792,7 @@
 				"Anadi"
 			],
 			"entries": [
-				"You can produce a soft silk to weave into useful items. You gain the Specialty {@skill Crafting} feat with a specialty in weaving. You can use your webbing to {@action Craft} simple, nonconsumable threaded items, such as clothing and rope, at zero cost as long as their base Price is 1 sp or less. These items have no resale value, and they naturally degrade after 24 hours without regular (if minor) maintenance. You can maintain up to 10 such items at a time; if you create a new one, your oldest creation breaks down from neglect. These temporary items take you only 1 day to {@action Craft} instead of 4. If you're an expert in {@skill Crafting}, you can {@action Craft} these items in 1 hour; if you're a master, you can {@action Craft} them in 10 minutes; if you're legendary, you can {@action Craft} them in 1 minute."
+				"You can produce a soft silk to weave into useful items. You gain the {@feat Specialty Crafting} feat with a specialty in weaving. You can use your webbing to {@action Craft} simple, nonconsumable threaded items, such as clothing and rope, at zero cost as long as their base Price is 1 sp or less. These items have no resale value, and they naturally degrade after 24 hours without regular (if minor) maintenance. You can maintain up to 10 such items at a time; if you create a new one, your oldest creation breaks down from neglect. These temporary items take you only 1 day to {@action Craft} instead of 4. If you're an expert in {@skill Crafting}, you can {@action Craft} these items in 1 hour; if you're a master, you can {@action Craft} them in 10 minutes; if you're legendary, you can {@action Craft} them in 1 minute."
 			]
 		},
 		{

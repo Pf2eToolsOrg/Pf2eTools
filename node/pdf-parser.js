@@ -87,7 +87,7 @@ class PdfConverter {
  */
 async function main () {
 	await TagJsons.pInit();
-	const ARGS = ut.parseArgs();
+	const ARGS = ut.ArgParser.parse();
 	PdfConverter.doConvert(ARGS);
 }
 

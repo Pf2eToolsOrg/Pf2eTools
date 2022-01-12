@@ -12,6 +12,24 @@
 			"traits": [
 				"Human"
 			],
+			"spellcasting": [
+				{
+					"name": "Cleric Domain",
+					"type": "Focus",
+					"tradition": null,
+					"DC": 17,
+					"fp": 1,
+					"entry": {
+						"1": {
+							"spells": [
+								{
+									"name": "cry of destruction"
+								}
+							]
+						}
+					}
+				}
+			],
 			"creatureType": [
 				"Humanoid"
 			],
@@ -50,10 +68,10 @@
 				"Cha": 1
 			},
 			"items": [
-				"crossbow (10 bolts)",
-				"religious symbol of Nethys",
-				"religious text of Nethys",
-				"staff"
+				"{@item crossbow} ({@item bolt||10 bolts})",
+				"{@item religious symbol} of {@deity Nethys}",
+				"{@item religious text} of {@deity Nethys}",
+				"{@item staff}"
 			],
 			"abilitiesTop": [],
 			"ac": {
@@ -454,14 +472,30 @@
 					]
 				}
 			],
-			"abilitiesBot": [
+			"spellcasting": [
 				{
-					"entries": [
-						"DC 14; Cantrips (1st) daze, detect magic, mage hand."
-					],
-					"name": "Occult Spells Known"
+					"name": "Occult Spells Known",
+					"tradition": "Occult",
+					"DC": 14,
+					"entry": {
+						"0": {
+							"level": 1,
+							"spells": [
+								{
+									"name": "daze"
+								},
+								{
+									"name": "detect magic"
+								},
+								{
+									"name": "mage hand"
+								}
+							]
+						}
+					}
 				}
 			],
+			"abilitiesBot": [],
 			"inflicts": {
 				"damage": [
 					"bludgeoning"
@@ -747,6 +781,25 @@
 				"Wis": 1,
 				"Cha": 3
 			},
+			"spellcasting": [
+				{
+					"name": "Champion Devotion",
+					"type": "Focus",
+					"tradition": null,
+					"DC": 20,
+					"fp": 1,
+					"entry": {
+						"3": {
+							"spells": [
+								{
+									"name": "touch of corruption",
+									"source": "APG"
+								}
+							]
+						}
+					}
+				}
+			],
 			"items": [
 				"lesser cheetah's elixir",
 				"greataxe",
@@ -1378,15 +1431,9 @@
 					},
 					"trigger": "The assassin is targeted with a melee or ranged attack by an attacker they can see",
 					"entries": [
-						"The assassin gains a +2 circumstance bonus."
+						"The assassin gains a +2 circumstance bonus to AC against the triggering attack."
 					],
 					"name": "Nimble Dodge"
-				},
-				{
-					"entries": [
-						"AC against the triggering attack."
-					],
-					"name": "to"
 				}
 			],
 			"speed": {
@@ -2025,15 +2072,9 @@
 				},
 				{
 					"entries": [
-						"A barrister gains a +2 circumstance bonus."
+						"A barrister gains a +2 circumstance bonus to {@skill Diplomacy} checks to {@action Make an Impression} or {@action Request} something of the deciding members within a courtroom. If the barrister successfully Performs against a DC of 20 during the 20 minutes prior to the check, they increase the circumstance bonus to +4."
 					],
 					"name": "Sway the Judge and Jury"
-				},
-				{
-					"entries": [
-						"{@skill Diplomacy} checks to {@action Make an Impression} or {@action Request} something of the deciding members within a courtroom. If the barrister successfully Performs against a DC of 20 during the 20 minutes prior to the check, they increase the circumstance bonus to +4."
-					],
-					"name": "to"
 				}
 			],
 			"ac": {
@@ -2415,10 +2456,14 @@
 			],
 			"abilitiesBot": [
 				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
 					"entries": [
-						"AC during those actions."
+						"The beggar Strides three times and gains a +2 circumstance bonus to AC during those actions."
 					],
-					"name": "to"
+					"name": "Beat a Retreat"
 				}
 			],
 			"inflicts": {
@@ -3071,15 +3116,9 @@
 				},
 				{
 					"entries": [
-						"On the first round of combat, if the burglar rolls {@skill Deception}."
+						"On the first round of combat, if the burglar rolls {@skill Deception} or {@skill Stealth} for initiative, creatures that haven't acted are {@condition flat-footed} to them."
 					],
 					"name": "Surprise Attack"
-				},
-				{
-					"entries": [
-						"{@skill Stealth} for initiative, creatures that haven't acted are {@condition flat-footed} to them."
-					],
-					"name": "or"
 				}
 			],
 			"inflicts": {
@@ -3434,6 +3473,26 @@
 					"DC": 20,
 					"attack": 10,
 					"entry": {
+						"0": {
+							"level": 2,
+							"spells": [
+								{
+									"name": "daze"
+								},
+								{
+									"name": "ghost sound"
+								},
+								{
+									"name": "mage hand"
+								},
+								{
+									"name": "message"
+								},
+								{
+									"name": "prestidigitation"
+								}
+							]
+						},
 						"1": {
 							"slots": 3,
 							"spells": [
@@ -3466,18 +3525,32 @@
 							]
 						}
 					}
+				},
+				{
+					"name": "Bard Composition",
+					"type": "Focus",
+					"DC": 19,
+					"attack": 10,
+					"entry": {
+						"0": {
+							"level": 1,
+							"spells": [
+								{
+									"name": "inspire courage"
+								}
+							]
+						},
+						"1": {
+							"spells": [
+								{
+									"name": "counter performance"
+								}
+							]
+						}
+					}
 				}
 			],
 			"abilitiesBot": [
-				{
-					"traits": [
-						"2nd"
-					],
-					"entries": [
-						"daze, ghost sound, mage hand, message, prestidigitation Bard Composition Spells 1 Focus Point, DC 19; 1st counter performance (Core Rulebook 386); Cantrips (1st) inspire courage (Core Rulebook 386)"
-					],
-					"name": "Cantrips"
-				},
 				{
 					"entries": [
 						"The charlatan deals an extra {@damage 1d6} precision damage to {@condition flat-footed} creatures."
@@ -3827,16 +3900,6 @@
 						"When three or more commoners are adjacent to each other, each commoner gets a +1 circumstance bonus to Athletic checks to {@action Shove}, attack rolls, and damage rolls."
 					],
 					"name": "Power of the Mob"
-				},
-				{
-					"entries": [
-						"A mob is a violent crowd (Core Rulebook 514) that works as {@quickref greater difficult terrain||3|terrain} and hazardous terrain, dealing {@dice 1d4} damage for each square entered. A creature can spend a single action to attempt a DC 16 {@skill Intimidation} check, clearing the mob from all squares adjacent to them on a success (or all squares within 10 feet on a critical success). This action has the concentrate, emotion, {@trait manipulate}, and {@trait mental} traits."
-					],
-					"name": "BRAVING THE MOB"
-				},
-				{
-					"entries": [],
-					"name": "BEGGAR"
 				}
 			],
 			"inflicts": {
@@ -5154,15 +5217,9 @@
 					],
 					"requirements": "The drunkard is drunk, and isn't {@condition fatigued} or raging",
 					"entries": [
-						"Something sets the drunkard off, causing them to fly into a drunken rage. They gain 6 temporary Hit Points that last until the drunken rage ends. While raging, they deal 4 additional damage with melee attacks and take a \u20131 penalty to AC. The drunkard can't use concentrate actions except {@action Seek} and rage actions. The rage lasts for 1 minute or until the drunkard falls {@condition unconscious} or sobers up. The drunkard can't voluntarily stop the Drunken."
+						"Something sets the drunkard off, causing them to fly into a drunken rage. They gain 6 temporary Hit Points that last until the drunken rage ends. While raging, they deal 4 additional damage with melee attacks and take a \u20131 penalty to AC. The drunkard can't use concentrate actions except {@action Seek} and {@trait rage} actions. The rage lasts for 1 minute or until the drunkard falls {@condition unconscious} or sobers up. The drunkard can't voluntarily stop the Drunken Rage. Once the rage ends, the drunkard can't {@action Rage} again for 1 minute."
 					],
 					"name": "Drunken Rage"
-				},
-				{
-					"entries": [
-						"Once the rage ends, the drunkard can't {@action Rage} again for 1 minute."
-					],
-					"name": "Rage."
 				}
 			],
 			"inflicts": {
@@ -5441,15 +5498,9 @@
 			"abilitiesBot": [
 				{
 					"entries": [
-						"On the first round of combat, if the false priest rolls {@skill Deception}."
+						"On the first round of combat, if the false priest rolls {@skill Deception} or {@skill Performance} for initiative, creatures that haven't acted yet are {@condition flat-footed} to the false priest."
 					],
 					"name": "Deceiver's Surprise"
-				},
-				{
-					"entries": [
-						"{@skill Performance} for initiative, creatures that haven't acted yet are {@condition flat-footed} to the false priest."
-					],
-					"name": "or"
 				},
 				{
 					"activity": {
@@ -5461,15 +5512,9 @@
 						"mental"
 					],
 					"entries": [
-						"The false priest convinces someone of their omnipotence by attempting a {@skill Deception} check compared to the creature's Will."
+						"The false priest convinces someone of their omnipotence by attempting a {@skill Deception} check compared to the creature's Will DC. If successful, the target gains {@dice 1d8+4} temporary Hit Points that last for 1 hour or until the false priest removes them by rebuking the target, whichever occurs first."
 					],
 					"name": "Fickle Prophecy"
-				},
-				{
-					"entries": [
-						"If successful, the target gains {@dice 1d8+4} temporary Hit Points that last for 1 hour or until the false priest removes them by rebuking the target, whichever occurs first."
-					],
-					"name": "DC."
 				},
 				{
 					"entries": [
@@ -5484,16 +5529,12 @@
 						"unit": "reaction",
 						"entry": "{@as R}"
 					},
-					"trigger": "The false priest critically fails a",
+					"trigger": "The false priest critically fails a {@skill Deception} or {@skill Performance} check",
 					"frequency": "once per hour;",
-					"entries": [],
-					"name": "The Jig Is Up"
-				},
-				{
 					"entries": [
-						"{@skill Performance} check; The false priest {@action Stride||Strides}."
+						"The false priest {@action Stride||Strides}."
 					],
-					"name": "Deception or"
+					"name": "The Jig Is Up"
 				}
 			],
 			"inflicts": {
@@ -5951,15 +5992,9 @@
 				},
 				{
 					"entries": [
-						"On the first round of combat, if the gang leader rolls."
+						"On the first round of combat, if the gang leader rolls {@skill Deception} or {@skill Stealth} for initiative, creatures who haven't acted are {@condition flat‑footed} to the gang leader."
 					],
 					"name": "Surprise Attack"
-				},
-				{
-					"entries": [
-						"{@skill Stealth} for initiative, creatures who haven't acted are {@condition flat‑footed} to the gang leader."
-					],
-					"name": "Deception or"
 				},
 				{
 					"activity": {
@@ -8934,11 +8969,13 @@
 				"Wis": 3,
 				"Cha": -1
 			},
+			"items": [
+				"light mace",
+				"hooded robe",
+				"scroll of spectral hand",
+				"spellbook (Abominable Missives of the Atrophied)"
+			],
 			"abilitiesTop": [
-				{
-					"entries": [],
-					"name": "of the Atrophied)"
-				},
 				{
 					"traits": [
 						"arcane",
@@ -9844,6 +9881,26 @@
 					"tradition": "Divine",
 					"DC": 23,
 					"entry": {
+						"0": {
+							"level": 3,
+							"spells": [
+								{
+									"name": "guidance"
+								},
+								{
+									"name": "light"
+								},
+								{
+									"name": "message"
+								},
+								{
+									"name": "sigil"
+								},
+								{
+									"name": "stabilize"
+								}
+							]
+						},
 						"1": {
 							"spells": [
 								{
@@ -9883,18 +9940,24 @@
 							]
 						}
 					}
+				},
+				{
+					"name": "Cleric Domain",
+					"type": "Focus",
+					"DC": 23,
+					"fp": 1,
+					"entry": {
+						"3": {
+							"spells": [
+								{
+									"name": "healer's blessing"
+								}
+							]
+						}
+					}
 				}
 			],
 			"abilitiesBot": [
-				{
-					"traits": [
-						"3rd"
-					],
-					"entries": [
-						"guidance, light, message, sigil, stabilize Cleric Domain Spells 1 Focus Point, DC 23; 3rd healer's blessing (Core Rulebook 393)"
-					],
-					"name": "Cantrips"
-				},
 				{
 					"entries": [
 						"When the plague doctor casts heal, they roll d10s instead of d8s."
@@ -10505,13 +10568,8 @@
 				"Wis": 3,
 				"Cha": 4
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+7, {@skill Survival} +7 Str +2, Dex +1, Con +0, Int +1, Wis +3, Cha +4 Items flail, manifesto (functions as religious text), pouch of rocks, robes."
-					],
-					"name": "Religion"
-				}
+			"items": [
+				"{@item flail}, manifesto (functions as {@item religious text}), pouch of rocks, robes"
 			],
 			"ac": {
 				"default": 17,
@@ -10633,6 +10691,22 @@
 								},
 								{
 									"name": "sanctuary"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Cleric Domain",
+					"type": "Focus",
+					"tradition": null,
+					"DC": 18,
+					"fp": 1,
+					"entry": {
+						"1": {
+							"spells": [
+								{
+									"name": "read fate"
 								}
 							]
 						}
@@ -10817,7 +10891,16 @@
 					],
 					"requirements": "The reckless scientist is holding a bomb or elixir",
 					"entries": [
-						"The reckless scientist combines the bomb with another bomb or the elixir with another elixir. They can {@action Interact} to draw a second bomb or elixir if necessary as part of this action. They attempt a DC 28 {@skill Crafting} check, destroying both component items to create one new item. If a viable resulting item isn't used by the end of the scientist's next turn, it explodes as described under critical failure. Critical Success The new item has the full effect of both component items when used. Success The new item combines both items, but halves the effect of each. (This halves damage for bombs, the amount of healing of elixirs of life, or the duration for effects that can't have their value halved. Details are determined by the GM.) Failure The new item is inert. Critical Failure The new item immediately explodes, dealing {@damage 3d6} piercing damage to the reckless scientist."
+						"The reckless scientist combines the bomb with another bomb or the elixir with another elixir. They can {@action Interact} to draw a second bomb or elixir if necessary as part of this action. They attempt a DC 28 {@skill Crafting} check, destroying both component items to create one new item. If a viable resulting item isn't used by the end of the scientist's next turn, it explodes as described under critical failure.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "The new item has the full effect of both component items when used.",
+								"Success": "The new item combines both items, but halves the effect of each. (This halves damage for bombs, the amount of healing of elixirs of life, or the duration for effects that can't have their value halved. Details are determined by the GM.)",
+								"Failure": "The new item is inert.",
+								"Critical Failure": "The new item immediately explodes, dealing {@damage 3d6} piercing damage to the reckless scientist."
+							}
+						}
 					],
 					"name": "Reckless Alchemy"
 				}
@@ -11305,21 +11388,9 @@
 						"concentrate"
 					],
 					"entries": [
-						"The sage studies a creature, attempting an."
+						"The sage studies a creature, attempting an {@skill Arcana}, {@skill Nature}, {@skill Occultism}, {@skill Religion}, or {@skill Society} check against the creature's {@action Recall Knowledge} DC. On a success, the sage gains a +2 circumstance bonus to attack rolls and AC against that creature and deals an additional {@dice 2d6} damage to the creature with weapon attacks. These benefits last for 1 minute or until the sage uses this ability again."
 					],
 					"name": "Sage's Analysis"
-				},
-				{
-					"entries": [
-						"{@skill Society} check against the creature's."
-					],
-					"name": "Arcana, Nature, Occultism, Religion, or"
-				},
-				{
-					"entries": [
-						"On a success, the sage gains a +2 circumstance bonus to attack rolls and AC against that creature and deals an additional {@dice 2d6} damage to the creature with weapon attacks. These benefits last for 1 minute or until the sage uses this ability again."
-					],
-					"name": "Recall Knowledge DC."
 				}
 			],
 			"inflicts": {
@@ -11745,15 +11816,9 @@
 						"unit": "action"
 					},
 					"entries": [
-						"The captain makes two Strikes, one with their rapier and one with their main‑gauche (in either order). If both Strikes hit, the ship captain can attempt."
+						"The captain makes two Strikes, one with their rapier and one with their main‑gauche (in either order). If both Strikes hit, the ship captain can attempt to {@action Disarm} the target. Their multiple attack penalty increases only after all the attacks are made."
 					],
 					"name": "Dual Disarm"
-				},
-				{
-					"entries": [
-						"{@action Disarm} the target. Their multiple attack penalty increases only after all the attacks are made."
-					],
-					"name": "to"
 				},
 				{
 					"activity": {
@@ -13695,11 +13760,10 @@
 				"Cha": 2
 			},
 			"items": [
-				"composite shortbow (20 arrows)",
-				"half plate",
-				"mace",
-				"steel shield (Hardness 5",
-				"HP 20"
+				"{@item composite shortbow} (20 arrows)",
+				"{@item half plate}",
+				"{@item mace}",
+				"{@item steel shield} (Hardness 5, HP 20, BT 10)"
 			],
 			"abilitiesTop": [],
 			"ac": {

@@ -80,6 +80,7 @@ class Omnidexer {
 				u: hash,
 				p: Omnidexer.getProperty(it, arbiter.page || "page"),
 			};
+			if (it.add_hash) toAdd.a = it.add_hash;
 			if (arbiter.isHover) toAdd.h = 1;
 			if (options.alt) {
 				if (options.alt.additionalProperties) Object.entries(options.alt.additionalProperties).forEach(([k, getV]) => toAdd[k] = getV(it));
@@ -112,6 +113,7 @@ class Omnidexer {
 				await pHandleItem(it, i, name);
 
 				if (it.alias) it.alias.forEach(a => pHandleItem(it, i, a));
+				if (it.id) await pHandleItem(it, i, `${it.id}: ${name}`);
 			}
 		}
 
