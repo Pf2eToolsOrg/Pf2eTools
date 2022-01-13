@@ -15,7 +15,8 @@
 						"type": "string"
 					},
 					"source": {
-						"type": "string"
+						"type": "string",
+						"$ref": "../utils.json#/definitions/sourceList"
 					},
 					"page": {
 						"type": "integer"
@@ -43,21 +44,40 @@
 						"type": "object",
 						"properties": {
 							"class": {
-								"type": ["string"]
+								"oneOf": [
+									{
+										"type": "string",
+										"$ref": "../utils.json#/definitions/classNameUpper"
+									},
+									{
+										"type": "array",
+										"items": {
+											"type": "string",
+											"$ref": "../utils.json#/definitions/classNameUpper"
+										},
+										"uniqueItems": true
+									}
+								]
 							},
 							"general": {
 								"type": "boolean",
 								"const": true
 							},
 							"ancestry": {
-								"type": ["string"]
+								"type": ["string", "array"],
+								"$ref": "../utils.json#/definitions/ancestryNameUpper"
 							},
 							"skill": {
 								"not": { "enum": [false] },
 								"type": ["string", "boolean", "array"]
 							},
 							"archetype": {
-								"type": ["string"]
+								"type": "array",
+								"items": {
+									"type": "string"
+								},
+								"minItems": 1,
+								"uniqueItems": true
 							}
 						}
 					},
@@ -70,33 +90,9 @@
 					},
 					"traits": {
 						"type": "array",
-						"items": {
+						"items":{
 							"type": "string",
-							"anyOf": [
-								{
-									"$ref": "../utils.json#/definitions/rarityUpper"
-								},
-								{
-									"$ref": "../utils.json#/definitions/classNameUpper"
-								},
-								{
-									"$ref": "../utils.json#/definitions/schoolTradUpper"
-								},
-								{
-									"$ref": "../utils.json#/definitions/damageTypeUpper"
-								},
-								{
-									"enum": [
-										"Archetype",
-										"Secret",
-										"Dedication",
-										"General",
-										"Skill",
-										"Prestige",
-										"Attack"
-									]
-								}
-							]
+							"$ref": "../utils.json#/definitions/anyTraitUpper"
 						},
 						"minItems": 1,
 						"uniqueItems": true
@@ -105,7 +101,8 @@
 						"type": "array",
 						"items": {
 							"type": "string"
-						}
+						},
+						"uniqueItems": true
 					},
 					"entries": {
 						"type": "array",
@@ -114,6 +111,9 @@
 						}
 					},
 					"special": {
+						"type": "string"
+					},
+					"add_hash": {
 						"type": "string"
 					}
 				},

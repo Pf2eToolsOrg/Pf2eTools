@@ -1,0 +1,39 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema",
+	"$id": "domains.json",
+	"title": "Domains",
+	"description": "The domain data type for Pf2eTools.",
+	"type": "object",
+	"version": "0.0.1",
+	"properties": {
+		"domain": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"source": {
+						"type": "string",
+						"$ref": "utils.json#/definitions/sourceList"
+					},
+					"name": {
+						"type": "string"
+					},
+					"page": {
+						"type": "integer"
+					},
+					"entries": {
+						"type": "array",
+						"items": {
+							"$ref": "entry.json"
+						}
+					}
+				},
+				"additionalProperties": false,
+				"required": ["source", "name", "entries", "page"]
+			},
+			"uniqueItems": true
+		}
+	},
+	"additionalProperties": false,
+	"required": ["domain"]
+}

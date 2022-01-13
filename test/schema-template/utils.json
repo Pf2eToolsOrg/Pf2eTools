@@ -7,6 +7,72 @@
 	"version": "0.0.1",
 
 	"definitions": {
+		"sourceList": {
+			"enum": [
+				"CRB",
+				"Bst",
+				"GMG",
+				"Bst2",
+				"APG",
+				"Bst3",
+				"SoM",
+				"LOWG",
+				"LOCG",
+				"LOGM",
+				"LOGMWS",
+				"LOL",
+				"LOPSG",
+				"LOAG",
+				"LOME",
+				"LOACLO",
+				"AAWS",
+				"G&G",
+				"LOTGB",
+				"AoA0",
+				"AoA1",
+				"AoA2",
+				"AoA3",
+				"AoA4",
+				"AoA5",
+				"AoA6",
+				"EC0",
+				"EC1",
+				"EC2",
+				"EC3",
+				"EC4",
+				"EC5",
+				"EC6",
+				"AoE0",
+				"AoE1",
+				"AoE2",
+				"AoE3",
+				"AoE4",
+				"AoE5",
+				"AoE6",
+				"AV0",
+				"AV1",
+				"AV2",
+				"AV3",
+				"FRP0",
+				"FRP1",
+				"FRP2",
+				"FRP3",
+				"SoT0",
+				"SoT1",
+				"SoT2",
+				"SoT3",
+				"SoT4",
+				"SoT5",
+				"SoT6",
+				"Sli",
+				"NGD",
+				"FoP",
+				"TiO",
+				"LTiBA"
+			]
+		},
+		
+		
 		"frequency": {
 			"type": "object",
 			"oneOf": [
@@ -79,8 +145,15 @@
 				},
 				"unit": {
 					"type": "string",
-					"enum": ["action", "reaction", "free", "varies", "minute", "round",
-					"hour"]
+					"enum": [
+						"action",
+						"reaction",
+						"free",
+						"varies",
+						"minute",
+						"round",
+						"hour"
+					]
 				},
 				"entry": {
 					"type": "string",
@@ -121,7 +194,7 @@
 				"item": {
 					"type": "object",
 					"properties": {
-						"_fDamageType":{
+						"_fDamageType": {
 							"type": "object",
 							"properties": {
 								"regex": {
@@ -164,8 +237,129 @@
 			"additionalProperties": false
 		},
 
-		"skillNameUpper":{
+		"anyTraitUpper": {
 			"type": "string",
+			"anyOf": [
+				{
+					"$ref": "#/definitions/rarityUpper"
+				},
+				{
+					"$ref": "#/definitions/classNameUpper"
+				},
+				{
+					"$ref": "#/definitions/schoolUpper"
+				},
+				{
+					"$ref": "#/definitions/traditionUpper"
+				},
+				{
+					"$ref": "#/definitions/damageTypeUpper"
+				},
+				{
+					"$ref": "#/definitions/effectNameUpper"
+				},
+				{
+					"$ref": "#/definitions/ancestryNameUpper"
+				},
+				{
+					"enum": [
+						"Archetype",
+						"Secret",
+						"Dedication",
+						"General",
+						"Skill",
+						"Prestige",
+						"Attack",
+						"Move",
+						"Exploration",
+						"Downtime",
+						"Energy",
+						"Concentrate",
+						"Finisher",
+						"Manipulate",
+						"Auditory",
+						"Flourish",
+						"Tandem",
+						"Stance",
+						"Spellshot",
+						"Unstable",
+						"Reckless",
+						"Verbal",
+						"Open",
+						"Rage",
+						"Lineage",
+						"Metamagic",
+						"Press",
+						"Oath",
+						"Vigilante",
+						"Multiclass",
+						"Social",
+						"Air",
+						"Earth",
+						"Water",
+						"Magical",
+						"Aura",
+						"Modification",
+						"Class",
+						"Extradimensional",
+						"Evolution",
+						"Pervasive Magic",
+						"Eidolon",
+						"True Name",
+						"Shadow",
+						"Contract",
+						"Invested"
+					]
+				},
+				{
+					"enum": [
+						"[Magical Tradition]"
+					]
+				},
+				{
+					"type": "string",
+					"pattern": "Additive \\d"
+				}
+			]
+		},
+
+		"ancestryNameUpper": {
+			"type": "string",
+			"enum": [
+				"Kitsune",
+				"Kobold",
+				"Grippli",
+				"Aasimar",
+				"Changeling",
+				"Human",
+				"Catfolk",
+				"Elf",
+				"Orc",
+				"Ratfolk",
+				"Dhampir",
+				"Duskwalker",
+				"Gnome",
+				"Goblin",
+				"Tiefling",
+				"Halfling",
+				"Dwarf",
+				"Half-Elf",
+				"Tengu",
+				"Automaton",
+				"Hobgoblin",
+				"Poppet",
+				"Goloma",
+				"Anadi",
+				"Gnoll",
+				"Lizardfolk",
+				"Conrasu",
+				"Shisk"
+			]
+		},
+
+		"skillNameUpper": {
+			"type": "string",
+			"description": "A Skill Trait",
 			"enum": [
 				"Acrobatics",
 				"Arcana",
@@ -187,7 +381,7 @@
 			]
 		},
 
-		"classNameUpperSourced":{
+		"classNameUpperSourced": {
 			"type": "string",
 			"enum": [
 				"Alchemist",
@@ -212,7 +406,7 @@
 				"Wizard"
 			]
 		},
-		"classNameUpper":{
+		"classNameUpper": {
 			"type": "string",
 			"enum": [
 				"Alchemist",
@@ -238,30 +432,31 @@
 			]
 		},
 
-		"rarityUpper":{
+		"rarityUpper": {
+			"type": "string",
+			"enum": ["Common", "Uncommon", "Rare", "Unique"]
+		},
+
+		"traditionUpper": {
 			"type": "string",
 			"enum": [
-				"Common",
-				"Uncommon",
-				"Rare",
-				"Unique"
+				"Arcane",
+				"Divine",
+				"Occult",
+				"Primal"
 			]
 		},
 
-		"schoolTradUpper": {
+		"schoolUpper": {
 			"type": "string",
 			"enum": [
 				"Abjuration",
-				"Arcane",
 				"Conjuration",
 				"Divination",
-				"Divine",
 				"Enchantment",
 				"Evocation",
 				"Illusion",
 				"Necromancy",
-				"Occult",
-				"Primal",
 				"Transmutation"
 			]
 		},
@@ -286,7 +481,34 @@
 				"Evil",
 				"Good",
 				"Chaotic",
-				"Lawful"
+				"Lawful",
+				"Mental"
+			]
+		},
+
+		"effectNameUpper": {
+			"type": "string",
+			"enum": [
+				"Death",
+				"Detection",
+				"Disease",
+				"Emotion",
+				"Fear",
+				"Fortune",
+				"Healing",
+				"Incapacitation",
+				"Light",
+				"Linguistic",
+				"Misfortune",
+				"Morph",
+				"Polymorph",
+				"Possession",
+				"Prediction",
+				"Revelation",
+				"Scrying",
+				"Sleep",
+				"Teleportation",
+				"Visual"
 			]
 		}
 	}

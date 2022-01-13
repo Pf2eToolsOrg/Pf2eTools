@@ -6,20 +6,13 @@
 			"page": 41,
 			"activity": {
 				"number": 1,
-				"unit": "free",
-				"entry": "{@as F}"
+				"unit": "free"
 			},
 			"level": 6,
 			"featType": {
-				"class": false,
-				"general": false,
-				"ancestry": false,
-				"skill": false,
-				"archetype": "Pathfinder Agent"
+				"archetype": ["Pathfinder Agent"]
 			},
-			"traits": [
-				"Archetype"
-			],
+			"traits": ["Archetype"],
 			"prerequisites": "{@feat Pathfinder Agent Dedication|LOWG}",
 			"trigger": "You are about to roll a {@skill Perception}, {@skill Society}, or {@skill Thievery} check for initiative.",
 			"entries": [
@@ -32,15 +25,9 @@
 			"page": 53,
 			"level": 14,
 			"featType": {
-				"class": false,
-				"general": false,
-				"ancestry": false,
-				"skill": false,
-				"archetype": "Swordmaster"
+				"archetype": ["Swordmaster"]
 			},
-			"traits": [
-				"Archetype"
-			],
+			"traits": ["Archetype"],
 			"prerequisites": "{@feat Swordmaster Dedication|LOCG}; trained in light, medium, or heavy armor",
 			"entries": [
 				"You've spent time training in your armor alongside other agents from the Swords. Your proficiency rank for light, medium, and heavy armor increases to expert for whichever of those you already had the trained proficiency rank in."
@@ -52,15 +39,9 @@
 			"page": 52,
 			"level": 10,
 			"featType": {
-				"class": false,
-				"general": false,
-				"ancestry": false,
-				"skill": false,
-				"archetype": "Swordmaster"
+				"archetype": ["Swordmaster"]
 			},
-			"traits": [
-				"Archetype"
-			],
+			"traits": ["Archetype"],
 			"prerequisites": "{@feat Swordmaster Dedication|LOCG}; trained in light, medium, or heavy armor",
 			"entries": [
 				"You've slept many nights in your armor and gotten used to it.",
@@ -73,15 +54,9 @@
 			"page": 45,
 			"level": 10,
 			"featType": {
-				"class": false,
-				"general": false,
-				"ancestry": false,
-				"skill": false,
-				"archetype": "Scrollmaster"
+				"archetype": ["Scrollmaster"]
 			},
-			"traits": [
-				"Archetype"
-			],
+			"traits": ["Archetype"],
 			"prerequisites": "master in {@skill Arcana}, {@skill Crafting}, {@skill Nature}, {@skill Occultism}, or {@skill Religion}; {@feat Scrollmaster Dedication|LOCG}",
 			"entries": [
 				"You learn how to apply your extensive knowledge of certain creatures using the lore you know. When you gain this feat, choose one of the following skills in which you have attained master proficiency: {@skill Arcana}, {@skill Crafting}, {@skill Nature}, {@skill Occultism}, or {@skill Religion}. You can use the chosen skill to {@action Recall Knowledge} to identify any creature normally identifiable by any of the above skills. In addition, when you critically succeed at identifying a creature, you gain a +1 circumstance bonus to your next attack roll or saving throw against that creature."
@@ -97,25 +72,15 @@
 			},
 			"level": 6,
 			"featType": {
-				"class": "Monk",
-				"general": false,
-				"ancestry": false,
-				"skill": false,
-				"archetype": false
+				"class": "Monk"
 			},
-			"traits": [
-				"Fire",
-				"Flourish",
-				"Monk"
-			],
+			"traits": ["Fire", "Flourish", "Monk"],
 			"prerequisites": "{@feat Rain of Embers Stance|LOPSG}",
 			"requirements": "You are in Rain of Embers Stance.",
 			"entries": [
 				"You rush forward and latch onto your enemy with talons of hungering fire. {@action Stride} once. If you end your movement within reach of at least one enemy, you can make a fire talon {@action Strike} against that enemy that deals an additional {@damage 1d4} {@condition persistent damage ||persistent fire damage}. If it hits and deals damage, you can attempt an {@skill Athletics} check to {@action Grapple} the creature you hit."
 			],
-			"leadsTo": [
-				"Explosive Death Drop|LOPSG"
-			]
+			"leadsTo": ["Explosive Death Drop|LOPSG"]
 		},
 		{
 			"name": "Cautious Delver",
@@ -123,15 +88,9 @@
 			"page": 45,
 			"level": 10,
 			"featType": {
-				"class": false,
-				"general": false,
-				"ancestry": false,
-				"skill": false,
-				"archetype": "Scrollmaster"
+				"archetype": ["Scrollmaster"]
 			},
-			"traits": [
-				"Archetype"
-			],
+			"traits": ["Archetype"],
 			"prerequisites": "{@feat Scrollmaster Dedication|LOCG}",
 			"entries": [
 				"You've studied the many ways that ancient architects and spellcasters protected their possessions, such as by implementing deadly traps and curses, and learned some magic to counteract them. You can cast {@spell dispel magic}, knock, and resist energy as innate spells, each once per day. If you can already cast spells, these spells are of the same tradition.",
@@ -148,15 +107,9 @@
 			},
 			"level": 12,
 			"featType": {
-				"class": false,
-				"general": false,
-				"ancestry": false,
-				"skill": false,
-				"archetype": "Spellmaster"
+				"archetype": ["Spellmaster"]
 			},
-			"traits": [
-				"Archetype"
-			],
+			"traits": ["Archetype"],
 			"prerequisites": "{@feat Spellmaster Dedication|LOCG}",
 			"frequency": "once per round",
 			"entries": [
@@ -169,18 +122,10 @@
 			"page": 41,
 			"level": 6,
 			"featType": {
-				"class": false,
-				"general": false,
-				"ancestry": false,
-				"skill": [
-					"Crafting"
-				],
-				"archetype": "Pathfinder Agent"
+				"skill": ["Crafting"],
+				"archetype": ["Pathfinder Agent"]
 			},
-			"traits": [
-				"Archetype",
-				"Skill"
-			],
+			"traits": ["Archetype", "Skill"],
 			"prerequisites": "expert in {@skill Crafting}, {@feat Pathfinder Agent Dedication|LOWG}",
 			"entries": [
 				"You're renowned for your ability to recover important items, whether they're from a long-abandoned temple or a thieves' den, and sometimes that requires creating a stand-in. You can spend 1 minute to assemble a facsimile of an object of no more than 1 Bulk that you can see from available materials. The facsimile has the same shape and Bulk as the replaced object and can pass as the object if not examined.",
@@ -197,17 +142,10 @@
 			},
 			"level": 4,
 			"featType": {
-				"class": false,
-				"general": false,
-				"ancestry": false,
 				"skill": true,
-				"archetype": "Pathfinder Agent"
+				"archetype": ["Pathfinder Agent"]
 			},
-			"traits": [
-				"Archetype",
-				"Concentrate",
-				"Skill"
-			],
+			"traits": ["Archetype", "Concentrate", "Skill"],
 			"prerequisites": "{@feat Pathfinder Agent Dedication|LOWG}, trained in {@skill Survival}",
 			"entries": [
 				"You've trained yourself to maintain a strong sense of direction at all times, even when you can't use a compass or see the sky above. You immediately intuit which direction is north (assuming the concept of north exists at your current location)."
@@ -219,15 +157,9 @@
 			"page": 46,
 			"level": 12,
 			"featType": {
-				"class": false,
-				"general": false,
-				"ancestry": false,
-				"skill": false,
-				"archetype": "Scrollmaster"
+				"archetype": ["Scrollmaster"]
 			},
-			"traits": [
-				"Archetype"
-			],
+			"traits": ["Archetype"],
 			"prerequisites": "{@feat Lore Seeker|LOCG}",
 			"entries": [
 				"You've mastered useful spells that let you find {@condition hidden} truths others might miss, and a preferred spell comes naturally to you. When you gain this feat, choose one of the innate spells granted by the {@skill Lore} Seeker feat: comprehend language, restore senses, or see invisibility. You can cast this spell three times per day instead of once per day.",
@@ -244,15 +176,9 @@
 			},
 			"level": 6,
 			"featType": {
-				"class": false,
-				"general": false,
-				"ancestry": false,
-				"skill": false,
-				"archetype": "Pathfinder Agent"
+				"archetype": ["Pathfinder Agent"]
 			},
-			"traits": [
-				"Archetype"
-			],
+			"traits": ["Archetype"],
 			"prerequisites": "{@feat Pathfinder Agent Dedication|LOWG}, {@feat Thorough Reports|LOWG}",
 			"requirements": "You have successfully identified the target with {@action Recall Knowledge} during this combat.",
 			"entries": [
@@ -266,21 +192,14 @@
 			"page": 41,
 			"activity": {
 				"number": 1,
-				"unit": "free",
-				"entry": "{@as F}"
+				"unit": "free"
 			},
 			"level": 8,
 			"featType": {
-				"class": false,
-				"general": false,
-				"ancestry": false,
 				"skill": true,
-				"archetype": "Pathfinder Agent"
+				"archetype": ["Pathfinder Agent"]
 			},
-			"traits": [
-				"Archetype",
-				"Skill"
-			],
+			"traits": ["Archetype", "Skill"],
 			"prerequisites": "{@feat Pathfinder Agent Dedication|LOWG}, master in a skill used to {@action Recall Knowledge}",
 			"frequency": "once per round",
 			"trigger": "You successfully {@action Recall Knowledge} about a creature you can see, using a skill in which you are a master.",
@@ -298,15 +217,9 @@
 			},
 			"level": 10,
 			"featType": {
-				"class": false,
-				"general": false,
-				"ancestry": false,
-				"skill": false,
-				"archetype": "Pathfinder Agent"
+				"archetype": ["Pathfinder Agent"]
 			},
-			"traits": [
-				"Archetype"
-			],
+			"traits": ["Archetype"],
 			"prerequisites": "{@feat Pathfinder Agent Dedication|LOWG}",
 			"entries": [
 				"Pathfinders are often asked to study the intricacies of ancient history under less than ideal conditions, and you've trained your brain to make the most of your limited time. You quickly memorize an inscription, scroll, or other piece of writing you can clearly see whose length is equivalent to no more than one page. You can then accurately recreate this writing using a writing kit, wax tablet, or other writing medium, once you have reached safety. You don't need to understand the writing or identify the language to reproduce it. Your memory lasts until the next time you make your daily preparations; if you have not written down or otherwise recreated what you saw by this point, your memory fades and any attempt to recreate what you saw is garbled and unintelligible. You can have only one piece of writing memorized at a time; any previous memorization fades the next time you use this ability."
@@ -322,19 +235,10 @@
 			},
 			"level": 12,
 			"featType": {
-				"class": false,
-				"general": false,
-				"ancestry": false,
-				"skill": [
-					"Medicine"
-				],
-				"archetype": "Swordmaster"
+				"skill": ["Medicine"],
+				"archetype": ["Swordmaster"]
 			},
-			"traits": [
-				"Archetype",
-				"Manipulate",
-				"Skill"
-			],
+			"traits": ["Archetype", "Manipulate", "Skill"],
 			"prerequisites": "{@feat Swordmaster Dedication|LOCG}, master in {@skill Medicine}",
 			"requirements": "An adjacent ally is suffering {@condition persistent damage}.",
 			"entries": [
@@ -348,15 +252,9 @@
 			"page": 41,
 			"level": 4,
 			"featType": {
-				"class": false,
-				"general": false,
-				"ancestry": false,
-				"skill": false,
-				"archetype": "Pathfinder Agent"
+				"archetype": ["Pathfinder Agent"]
 			},
-			"traits": [
-				"Archetype"
-			],
+			"traits": ["Archetype"],
 			"prerequisites": "{@feat Pathfinder Agent Dedication|LOWG}",
 			"entries": [
 				"You've traversed enough untamed wilderness to gain an intuitive understanding of the dangers that exist in such places. Your extensive familiarity means you sometimes notice perils even when you're not trying to. Even if you aren't {@action Search||Searching} in exploration mode, you can attempt a check to find environmental hazards that normally require you to {@action Search} for them. You still need to meet any other requirements to find a particular hazard."
@@ -372,16 +270,9 @@
 			},
 			"level": 14,
 			"featType": {
-				"class": "Monk",
-				"general": false,
-				"ancestry": false,
-				"skill": false,
-				"archetype": false
+				"class": "Monk"
 			},
-			"traits": [
-				"Fire",
-				"Monk"
-			],
+			"traits": ["Fire", "Monk"],
 			"prerequisites": "{@feat Blazing Talon Surge|LOPSG}",
 			"requirements": "You are in Rain of Embers Stance and have a target {@condition grabbed} or {@condition restrained}.",
 			"entries": [
@@ -403,15 +294,9 @@
 			"page": 49,
 			"level": 8,
 			"featType": {
-				"class": false,
-				"general": false,
-				"ancestry": false,
-				"skill": false,
-				"archetype": "Spellmaster"
+				"archetype": ["Spellmaster"]
 			},
-			"traits": [
-				"Archetype"
-			],
+			"traits": ["Archetype"],
 			"prerequisites": "{@feat Spellmaster Dedication|LOCG}",
 			"entries": [
 				"You can use your magic to transform into a small creature of a type that commonly serves as a spellcaster's familiar, potentially allowing you to safely scout for your party while retaining a degree of spellcasting ability. You gain the {@spell familiar form|LOPSG} focus spell. Increase the number of Focus Points in your focus pool by 1."
@@ -427,19 +312,11 @@
 			},
 			"level": 4,
 			"featType": {
-				"class": false,
 				"general": true,
-				"ancestry": false,
-				"skill": [
-					"Stealth"
-				],
-				"archetype": false
+
+				"skill": ["Stealth"]
 			},
-			"traits": [
-				"Uncommon",
-				"General",
-				"Skill"
-			],
+			"traits": ["Uncommon", "General", "Skill"],
 			"prerequisites": "expert in {@skill Stealth}",
 			"requirements": "You have a deck of playing cards in your possession.",
 			"entries": [
@@ -456,21 +333,9 @@
 			},
 			"level": 2,
 			"featType": {
-				"class": [
-					"Rogue",
-					"Swashbuckler"
-				],
-				"general": false,
-				"ancestry": false,
-				"skill": false,
-				"archetype": false
+				"class": ["Rogue", "Swashbuckler"]
 			},
-			"traits": [
-				"Uncommon",
-				"Rogue",
-				"Stance",
-				"Swashbuckler"
-			],
+			"traits": ["Uncommon", "Rogue", "Stance", "Swashbuckler"],
 			"entries": [
 				"Stella Fane has perfected a technique for using playing cards as weapons that's one part sleight of hand and one part magic.",
 				"When you enter this stance, choose whether to treat {@item playing cards|lopsg} in your possession as {@item dagger||daggers} or {@item dart||darts}; you can wield a playing card in all ways as the chosen weapon until the stance ends. As long as the majority of the deck remains in your possession, any cards that are lost or thrown can be found after 1 minute. Otherwise, the remaining cards are likely lost or destroyed.",
@@ -483,27 +348,13 @@
 			"page": 120,
 			"activity": {
 				"number": 1,
-				"unit": "reaction",
-				"entry": "{@as R}"
+				"unit": "reaction"
 			},
 			"level": 4,
 			"featType": {
-				"class": [
-					"Barbarian",
-					"Fighter",
-					"Ranger"
-				],
-				"general": false,
-				"ancestry": false,
-				"skill": false,
-				"archetype": false
+				"class": ["Barbarian", "Fighter", "Ranger"]
 			},
-			"traits": [
-				"Uncommon",
-				"Barbarian",
-				"Fighter",
-				"Ranger"
-			],
+			"traits": ["Uncommon", "Barbarian", "Fighter", "Ranger"],
 			"prerequisites": "trained in {@skill Acrobatics} and medium armor",
 			"trigger": "An enemy targets you with a melee {@action Strike}.",
 			"entries": [
@@ -517,21 +368,13 @@
 			"page": 53,
 			"activity": {
 				"number": 1,
-				"unit": "reaction",
-				"entry": "{@as R}"
+				"unit": "reaction"
 			},
 			"level": 16,
 			"featType": {
-				"class": false,
-				"general": false,
-				"ancestry": false,
-				"skill": false,
-				"archetype": "Swordmaster"
+				"archetype": ["Swordmaster"]
 			},
-			"traits": [
-				"Archetype",
-				"Fortune"
-			],
+			"traits": ["Archetype", "Fortune"],
 			"prerequisites": "{@feat Swordmaster Dedication|LOCG}",
 			"trigger": "An adjacent ally fails, but doesn't critically fail, a saving throw against an effect with the {@trait incapacitation} trait.",
 			"entries": [
@@ -544,15 +387,9 @@
 			"page": 45,
 			"level": 8,
 			"featType": {
-				"class": false,
-				"general": false,
-				"ancestry": false,
-				"skill": false,
-				"archetype": "Scrollmaster"
+				"archetype": ["Scrollmaster"]
 			},
-			"traits": [
-				"Archetype"
-			],
+			"traits": ["Archetype"],
 			"prerequisites": "{@feat Scrollmaster Dedication|LOCG}",
 			"entries": [
 				"You feel confident that you can explain your scrolls so well that even your allies can use them... hopefully. During your daily preparations, you can select a single scroll and instruct a single ally in its use. Until your next daily preparations, the ally can attempt to use the scroll with a single action that has the {@trait manipulate} trait. The ally rolls the skill corresponding to the spellcasting tradition. The GM determines the DC based on the scroll's level, possibly adjusted for the situation. If the spell has a spell attack bonus or a spell DC, use your level as the proficiency bonus and the highest of your ally's Intelligence, Wisdom, or Charisma modifiers.",
@@ -576,17 +413,9 @@
 			},
 			"level": 14,
 			"featType": {
-				"class": false,
-				"general": false,
-				"ancestry": false,
-				"skill": false,
-				"archetype": "Swordmaster"
+				"archetype": ["Swordmaster"]
 			},
-			"traits": [
-				"Archetype",
-				"Attack",
-				"Press"
-			],
+			"traits": ["Archetype", "Attack", "Press"],
 			"prerequisites": "{@feat Swordmaster Dedication|LOCG}",
 			"entries": [
 				"Your ranged attacks push your foes away from your allies.",
@@ -607,15 +436,9 @@
 			"page": 49,
 			"level": 8,
 			"featType": {
-				"class": false,
-				"general": false,
-				"ancestry": false,
-				"skill": false,
-				"archetype": "Spellmaster"
+				"archetype": ["Spellmaster"]
 			},
-			"traits": [
-				"Archetype"
-			],
+			"traits": ["Archetype"],
 			"prerequisites": "{@feat Spellmaster Dedication|LOCG}",
 			"entries": [
 				"You've learned to recognize the telltale writings and other signs that indicate the presence of magical traps. You gain a +2 circumstance bonus to {@skill Perception} checks to find magical traps, to AC against attacks made by magical traps, to saves against magical traps, and to checks to Disable magical traps. Even if you aren't {@action Search||Searching}, you get a check to find magical traps that normally require you to be {@action Search||Searching}. You still need to meet any other requirements to find the trap.",
@@ -628,20 +451,10 @@
 			"page": 52,
 			"level": 8,
 			"featType": {
-				"class": false,
-				"general": false,
-				"ancestry": false,
-				"skill": [
-					"Crafting"
-				],
-				"archetype": "Swordmaster"
+				"skill": ["Crafting"],
+				"archetype": ["Swordmaster"]
 			},
-			"traits": [
-				"Archetype",
-				"Exploration",
-				"Manipulate",
-				"Skill"
-			],
+			"traits": ["Archetype", "Exploration", "Manipulate", "Skill"],
 			"prerequisites": "{@feat Swordmaster Dedication|LOCG}, expert in {@skill Crafting}",
 			"entries": [
 				"You've learned to repair your equipment even in challenging circumstances, making use of what you have available. You can attempt to {@action Repair} an item without a repair kit, instead improvising tools out of your gear or found items. This adds 5 minutes to the time it takes to {@action Repair} the item. You can also {@action Repair} an item while on the move without needing a stable surface. This adds 10 minutes to the times it takes to {@action Repair} the item."
@@ -653,15 +466,9 @@
 			"page": 45,
 			"level": 8,
 			"featType": {
-				"class": false,
-				"general": false,
-				"ancestry": false,
-				"skill": false,
-				"archetype": "Scrollmaster"
+				"archetype": ["Scrollmaster"]
 			},
-			"traits": [
-				"Archetype"
-			],
+			"traits": ["Archetype"],
 			"prerequisites": "{@feat Scrollmaster Dedication|LOCG}",
 			"entries": [
 				"You've spent countless hours learning to recognize and predict a creature's innate magical abilities. The first time you successfully {@action Recall Knowledge} to identify a creature, in addition to any information you learn from your successful check, you learn the names of three of the highest-level innate spells it can cast, and you gain a +2 circumstance bonus on your next save against an innate spell cast by that creature."
@@ -673,22 +480,15 @@
 			"page": 120,
 			"activity": {
 				"number": 1,
-				"unit": "reaction",
-				"entry": "{@as R}"
+				"unit": "reaction"
 			},
 			"level": 4,
 			"featType": {
-				"class": false,
 				"general": true,
-				"ancestry": false,
-				"skill": true,
-				"archetype": false
+
+				"skill": true
 			},
-			"traits": [
-				"Uncommon",
-				"General",
-				"Skill"
-			],
+			"traits": ["Uncommon", "General", "Skill"],
 			"trigger": "You gain no information from a {@action Recall Knowledge} check (usually because you failed the secret check) using one of the two skills you chose for this feat.",
 			"entries": [
 				"Kreighton teaches his students that an agile mind can glean clues leading to the truth, even from the most unlikely of sources. You immediately reattempt the triggering check using the other chosen skill."
@@ -701,15 +501,9 @@
 			"page": 45,
 			"level": 8,
 			"featType": {
-				"class": false,
-				"general": false,
-				"ancestry": false,
-				"skill": false,
-				"archetype": "Scrollmaster"
+				"archetype": ["Scrollmaster"]
 			},
-			"traits": [
-				"Archetype"
-			],
+			"traits": ["Archetype"],
 			"prerequisites": "{@feat Scrollmaster Dedication|LOCG}",
 			"entries": [
 				"You've learned a few tricks to ensure you find every last magic item and interesting {@trait magical} effect during your missions. You can cast {@spell detect magic} and read aura as innate spells at will. You can also cast {@spell locate} as an innate spell once per day, but only to locate magic items, not specific mundane objects or types of objects. If you could already cast spells, these spells are of the same tradition. Otherwise, they're arcane spells, you use Intelligence as your spellcasting ability, and you become trained in spell attack rolls and spell DCs for arcane spells.",
@@ -722,15 +516,9 @@
 			"page": 52,
 			"level": 10,
 			"featType": {
-				"class": false,
-				"general": false,
-				"ancestry": false,
-				"skill": false,
-				"archetype": "Swordmaster"
+				"archetype": ["Swordmaster"]
 			},
-			"traits": [
-				"Archetype"
-			],
+			"traits": ["Archetype"],
 			"prerequisites": "{@feat Swordmaster Dedication|LOCG}",
 			"entries": [
 				"You've become comfortable in using weapons that you might not have picked up before training with the Swords. Choose one weapon group, such as hammer or sword. Whenever your proficiency rank in any weapon increases to expert or beyond, you also gain that new proficiency rank with both simple and martial weapons of your chosen weapon group."
@@ -742,21 +530,13 @@
 			"page": 49,
 			"activity": {
 				"number": 1,
-				"unit": "reaction",
-				"entry": "{@as R}"
+				"unit": "reaction"
 			},
 			"level": 16,
 			"featType": {
-				"class": false,
-				"general": false,
-				"ancestry": false,
-				"skill": false,
-				"archetype": "Spellmaster"
+				"archetype": ["Spellmaster"]
 			},
-			"traits": [
-				"Abjuration",
-				"Archetype"
-			],
+			"traits": ["Abjuration", "Archetype"],
 			"prerequisites": "{@feat Spellmaster Dedication|LOCG}, master in spell attack rolls and spell DCs",
 			"trigger": "A creature {@action Cast a Spell||Casts a Spell} that you have prepared, and that spell was cast or created with a tradition of magic in which you have master proficiency in spell attack rolls and spell DCs.",
 			"entries": [
@@ -769,16 +549,10 @@
 			"page": 45,
 			"level": 10,
 			"featType": {
-				"class": false,
-				"general": false,
-				"ancestry": false,
 				"skill": true,
-				"archetype": "Scrollmaster"
+				"archetype": ["Scrollmaster"]
 			},
-			"traits": [
-				"Archetype",
-				"Skill"
-			],
+			"traits": ["Archetype", "Skill"],
 			"prerequisites": "master in a skill with the {@action Recall Knowledge} action, {@feat Scrollmaster Dedication|LOCG}",
 			"entries": [
 				"You've mastered the art of deceiving others about your area of study. When you gain this feat, choose one skill with the {@action Recall Knowledge} action in which you have attained master proficiency. You can attempt to deceive others about the truth of facts and knowledge related to that skill\u2014such as by pretending to know something that you don't, planting false information, or the like\u2014using the {@action Lie} action of the {@skill Deception} skill. When you {@action Lie} in this way, attempt your skill check using the skill you selected when you gained this feat instead of {@skill Deception}, applying all bonuses or penalties related from the selected skill to the check. While it's easier to convince someone who knows nothing about your chosen false information, on a critical success, you can even convince someone who has heard something contradictory, unless they have reason to be certain from direct experience. For instance, you might say, \"I know you may have heard to use silver weapons against vampires, but that's a misconception based on conflating them with werewolves. According to all credible scholars, cold iron will do the trick.\" Once a creature realizes you've used masterful obfuscation to {@action Lie} to them, either from a failed check or due to later discovering the falsehood, you can't use this feat against them again, as it relies on blind trust in your superior knowledge. However, you can still {@action Lie} to them normally."
@@ -794,16 +568,9 @@
 			},
 			"level": 16,
 			"featType": {
-				"class": false,
-				"general": false,
-				"ancestry": false,
-				"skill": false,
-				"archetype": "Spellmaster"
+				"archetype": ["Spellmaster"]
 			},
-			"traits": [
-				"Archetype",
-				"Flourish"
-			],
+			"traits": ["Archetype", "Flourish"],
 			"prerequisites": "{@feat Spellmaster Dedication|LOCG}",
 			"requirements": "You're wielding a melee weapon and have {@action Cast a Spell} requiring at least 1 action this turn.",
 			"entries": [
@@ -816,15 +583,9 @@
 			"page": 41,
 			"level": 4,
 			"featType": {
-				"class": false,
-				"general": false,
-				"ancestry": false,
-				"skill": false,
-				"archetype": "Pathfinder Agent"
+				"archetype": ["Pathfinder Agent"]
 			},
-			"traits": [
-				"Archetype"
-			],
+			"traits": ["Archetype"],
 			"prerequisites": "{@feat Pathfinder Agent Dedication|LOWG}",
 			"entries": [
 				"Thanks to the time you've spent wandering through wild and untamed environments, you've gained an intuitive sense about creatures. You sometimes notice them before they attack, or spot them nearby even if they weren't planning on attacking. You can attempt a check to notice {@condition hidden} creatures attempting to {@action Avoid Notice} nearby even if you aren't actively {@action Search||Searching} for them. You still need to meet any other requirements to notice a particular creature."
@@ -836,15 +597,9 @@
 			"page": 52,
 			"level": 8,
 			"featType": {
-				"class": false,
-				"general": false,
-				"ancestry": false,
-				"skill": false,
-				"archetype": "Swordmaster"
+				"archetype": ["Swordmaster"]
 			},
-			"traits": [
-				"Archetype"
-			],
+			"traits": ["Archetype"],
 			"prerequisites": "{@feat Swordmaster Dedication|LOCG}, expert in {@skill Athletics} and {@skill Acrobatics}",
 			"entries": [
 				"You spend a lot of time focusing on your physical fitness. You increase your proficiency rank in {@skill Acrobatics} and {@skill Athletics} from expert to master."
@@ -856,15 +611,9 @@
 			"page": 52,
 			"level": 10,
 			"featType": {
-				"class": false,
-				"general": false,
-				"ancestry": false,
-				"skill": false,
-				"archetype": "Swordmaster"
+				"archetype": ["Swordmaster"]
 			},
-			"traits": [
-				"Archetype"
-			],
+			"traits": ["Archetype"],
 			"prerequisites": "{@feat Swordmaster Dedication|LOCG}",
 			"entries": [
 				"After extensive practice with the Swords, you're comfortable enough with your shield to move at a normal pace with it raised. You may use the {@action Defend} exploration activity while traveling at your full travel speed instead of half your travel speed."
@@ -880,15 +629,9 @@
 			},
 			"level": 8,
 			"featType": {
-				"class": false,
-				"general": false,
-				"ancestry": false,
-				"skill": false,
-				"archetype": "Swordmaster"
+				"archetype": ["Swordmaster"]
 			},
-			"traits": [
-				"Archetype"
-			],
+			"traits": ["Archetype"],
 			"prerequisites": "{@feat Swordmaster Dedication|LOCG}",
 			"entries": [
 				"You place your body between your friends and your enemies, protecting your allies against oncoming attacks. You choose one adjacent ally. That ally gains a +1 circumstance bonus to AC until the start of your next turn or until that ally is no longer adjacent to you, whichever comes first. You can only protect a single ally in this way. If you choose to Protect a different Ally, the previous ally loses the bonus to AC."
@@ -904,16 +647,9 @@
 			},
 			"level": 8,
 			"featType": {
-				"class": false,
-				"general": false,
-				"ancestry": false,
-				"skill": false,
-				"archetype": "Swordmaster"
+				"archetype": ["Swordmaster"]
 			},
-			"traits": [
-				"Archetype",
-				"Manipulate"
-			],
+			"traits": ["Archetype", "Manipulate"],
 			"prerequisites": "{@feat Swordmaster Dedication|LOCG}",
 			"entries": [
 				"You know that situations can change rapidly and might leave you needing to change equipment in the middle of combat.",
@@ -930,18 +666,9 @@
 			},
 			"level": 1,
 			"featType": {
-				"class": "Monk",
-				"general": false,
-				"ancestry": false,
-				"skill": false,
-				"archetype": false
+				"class": "Monk"
 			},
-			"traits": [
-				"Rare",
-				"Fire",
-				"Monk",
-				"Stance"
-			],
+			"traits": ["Rare", "Fire", "Monk", "Stance"],
 			"requirements": "You are unarmored.",
 			"entries": [
 				"You enter the stance of an enraged phoenix, holding your fingers as rigid as deadly talons while moving with quick, flickering gestures that dance with biting flames. The only Strikes you can make are fire talon Strikes. These deal {@damage 1d4} fire damage; are in the {@group brawling} group; and have the {@trait agile}, {@trait finesse}, {@trait fire}, {@trait nonlethal}, and {@trait unarmed} traits.",
@@ -958,16 +685,10 @@
 			},
 			"level": 12,
 			"featType": {
-				"class": false,
-				"general": false,
-				"ancestry": false,
 				"skill": true,
-				"archetype": "Swordmaster"
+				"archetype": ["Swordmaster"]
 			},
-			"traits": [
-				"Archetype",
-				"Skill"
-			],
+			"traits": ["Archetype", "Skill"],
 			"prerequisites": "{@feat Swordmaster Dedication|LOCG}, expert in a skill used to {@action Recall Knowledge}",
 			"requirements": "You're fighting a creature of your level or lower that could be identified by {@action Recall Knowledge} with a skill in which you're an expert.",
 			"entries": [
@@ -984,17 +705,9 @@
 			},
 			"level": 10,
 			"featType": {
-				"class": false,
-				"general": false,
-				"ancestry": false,
-				"skill": false,
-				"archetype": "Spellmaster"
+				"archetype": ["Spellmaster"]
 			},
-			"traits": [
-				"Archetype",
-				"Concentrate",
-				"Metamagic"
-			],
+			"traits": ["Archetype", "Concentrate", "Metamagic"],
 			"prerequisites": "{@feat Spellmaster Dedication|LOCG}",
 			"requirements": "An enemy's action disrupted your attempts to {@action Cast a Spell} since the beginning of your last turn.",
 			"entries": [
@@ -1007,15 +720,9 @@
 			"page": 52,
 			"level": 8,
 			"featType": {
-				"class": false,
-				"general": false,
-				"ancestry": false,
-				"skill": false,
-				"archetype": "Swordmaster"
+				"archetype": ["Swordmaster"]
 			},
-			"traits": [
-				"Archetype"
-			],
+			"traits": ["Archetype"],
 			"prerequisites": "{@feat Swordmaster Dedication|LOCG}",
 			"entries": [
 				"You keep hold of your weapons even when knocked out.",
@@ -1032,15 +739,9 @@
 			},
 			"level": 4,
 			"featType": {
-				"class": false,
-				"general": false,
-				"ancestry": false,
-				"skill": false,
-				"archetype": "Pathfinder Agent"
+				"archetype": ["Pathfinder Agent"]
 			},
-			"traits": [
-				"Archetype"
-			],
+			"traits": ["Archetype"],
 			"prerequisites": "{@feat Pathfinder Agent Dedication|LOWG}",
 			"frequency": "once per day",
 			"entries": [
@@ -1054,15 +755,9 @@
 			"page": 49,
 			"level": 18,
 			"featType": {
-				"class": false,
-				"general": false,
-				"ancestry": false,
-				"skill": false,
-				"archetype": "Spellmaster"
+				"archetype": ["Spellmaster"]
 			},
-			"traits": [
-				"Archetype"
-			],
+			"traits": ["Archetype"],
 			"prerequisites": "{@feat Absorb Spell|LOCG}",
 			"entries": [
 				"When you absorb a spell using the Absorb Spell reaction, you utilize secret, techniques that allow you to retain the power and knowledge necessary to cast the spell repeatedly\u2014potentially for a greater period of time. If you're a spontaneous caster, you can cast the triggering spell up to three times instead of once. If you're a prepared spellcaster, you can replace up to three of your prepared spells of the same level with the absorbed spell instead of one. Either way, you can choose to retain the absorbed spell for the next hour instead of the next 10 minutes; if you choose to extend the absorption to an hour, you can't use Absorb Spell again until one hour after the spell is absorbed."
@@ -1074,18 +769,10 @@
 			"page": 52,
 			"level": 12,
 			"featType": {
-				"class": false,
-				"general": false,
-				"ancestry": false,
-				"skill": [
-					"Survival"
-				],
-				"archetype": "Swordmaster"
+				"skill": ["Survival"],
+				"archetype": ["Swordmaster"]
 			},
-			"traits": [
-				"Archetype",
-				"Skill"
-			],
+			"traits": ["Archetype", "Skill"],
 			"prerequisites": "{@feat Swordmaster Dedication|LOCG}, master in {@skill Survival}",
 			"entries": [
 				"Swordmaster Feats The following archetype feats are available to characters with the swordmaster archetype (Character Guide 115)",
@@ -1102,18 +789,10 @@
 			},
 			"level": 8,
 			"featType": {
-				"class": false,
-				"general": false,
-				"ancestry": false,
-				"skill": [
-					"Medicine"
-				],
-				"archetype": "Pathfinder Agent"
+				"skill": ["Medicine"],
+				"archetype": ["Pathfinder Agent"]
 			},
-			"traits": [
-				"Archetype",
-				"Skill"
-			],
+			"traits": ["Archetype", "Skill"],
 			"prerequisites": "master in {@skill Medicine}, {@feat Pathfinder Agent Dedication|LOWG}",
 			"entries": [
 				"Pathfinders are trained to help each other be safe and successful, and you know how to jolt your allies back to their senses. Attempt a {@skill Medicine} check on an adjacent ally who is {@condition fascinated}, {@condition frightened}, {@condition stunned}, or {@condition stupefied} and choose one of those conditions. The DC is the DC for the effect that caused the condition.",
@@ -1134,20 +813,13 @@
 			"page": 49,
 			"activity": {
 				"number": 1,
-				"unit": "reaction",
-				"entry": "{@as R}"
+				"unit": "reaction"
 			},
 			"level": 14,
 			"featType": {
-				"class": false,
-				"general": false,
-				"ancestry": false,
-				"skill": false,
-				"archetype": "Spellmaster"
+				"archetype": ["Spellmaster"]
 			},
-			"traits": [
-				"Archetype"
-			],
+			"traits": ["Archetype"],
 			"prerequisites": "{@feat Spellmaster's Resilience|LOCG}",
 			"frequency": "once per day",
 			"trigger": "You critically fail at a saving throw against a foe's spell, and that spell was cast or created with the tradition of magic you selected with the Spellmaster's Resilience feat.",
@@ -1161,15 +833,9 @@
 			"page": 49,
 			"level": 10,
 			"featType": {
-				"class": false,
-				"general": false,
-				"ancestry": false,
-				"skill": false,
-				"archetype": "Spellmaster"
+				"archetype": ["Spellmaster"]
 			},
-			"traits": [
-				"Archetype"
-			],
+			"traits": ["Archetype"],
 			"prerequisites": "{@feat Spellmaster Dedication|LOCG}",
 			"entries": [
 				"You can create a number of powerful shielding runes that bolster your defenses against damaging spells by absorbing the worst of the energy to keep you safe. You gain the spellmaster's ward focus spell. Increase the number of Focus Points in your focus pool by 1."
@@ -1181,15 +847,9 @@
 			"page": 41,
 			"level": 4,
 			"featType": {
-				"class": false,
-				"general": false,
-				"ancestry": false,
-				"skill": false,
-				"archetype": "Pathfinder Agent"
+				"archetype": ["Pathfinder Agent"]
 			},
-			"traits": [
-				"Archetype"
-			],
+			"traits": ["Archetype"],
 			"prerequisites": "{@feat Pathfinder Agent Dedication|LOWG}",
 			"entries": [
 				"You're familiar with the danger that lingering spirits can pose to an unwary adventurer, and you're particularly attuned to their presence. Even if you aren't {@action Search||Searching} in exploration mode, you can attempt a check to find haunts that normally require you to {@action Search} for them. You still need to meet any other requirements to find a particular haunt."
@@ -1201,15 +861,9 @@
 			"page": 53,
 			"level": 18,
 			"featType": {
-				"class": false,
-				"general": false,
-				"ancestry": false,
-				"skill": false,
-				"archetype": "Swordmaster"
+				"archetype": ["Swordmaster"]
 			},
-			"traits": [
-				"Archetype"
-			],
+			"traits": ["Archetype"],
 			"prerequisites": "{@feat Shoulder Catastrophe|LOCG}",
 			"entries": [
 				"You fully protect your allies from the worst blows. When you use the Shoulder Catastrophe reaction, you can choose to take the full critical damage and effects from the attack, including effects that apply on a critical hit, and have your ally take no damage and avoid the attack's effects."
@@ -1225,20 +879,9 @@
 			},
 			"level": 6,
 			"featType": {
-				"class": [
-					"Rogue",
-					"Swashbuckler"
-				],
-				"general": false,
-				"ancestry": false,
-				"skill": false,
-				"archetype": false
+				"class": ["Rogue", "Swashbuckler"]
 			},
-			"traits": [
-				"Uncommon",
-				"Rogue",
-				"Swashbuckler"
-			],
+			"traits": ["Uncommon", "Rogue", "Swashbuckler"],
 			"prerequisites": "expert in {@skill Thievery}",
 			"requirements": "You are wielding a piercing or slashing melee weapon.",
 			"entries": [
@@ -1251,15 +894,9 @@
 			"page": 41,
 			"level": 12,
 			"featType": {
-				"class": false,
-				"general": false,
-				"ancestry": false,
-				"skill": false,
-				"archetype": "Pathfinder Agent"
+				"archetype": ["Pathfinder Agent"]
 			},
-			"traits": [
-				"Archetype"
-			],
+			"traits": ["Archetype"],
 			"prerequisites": "{@feat Pathfinder Agent Dedication|LOWG}",
 			"frequency": "once per day",
 			"entries": [
@@ -1272,15 +909,9 @@
 			"page": 53,
 			"level": 12,
 			"featType": {
-				"class": false,
-				"general": false,
-				"ancestry": false,
-				"skill": false,
-				"archetype": "Swordmaster"
+				"archetype": ["Swordmaster"]
 			},
-			"traits": [
-				"Archetype"
-			],
+			"traits": ["Archetype"],
 			"prerequisites": "{@feat Swordmaster Dedication|LOCG}, master in {@skill Diplomacy}",
 			"entries": [
 				"You often find that the best way to win a conflict means avoiding a fight in the first place. You're good at talking to potential opponents without making things worse.",
@@ -1293,15 +924,9 @@
 			"page": 45,
 			"level": 8,
 			"featType": {
-				"class": false,
-				"general": false,
-				"ancestry": false,
-				"skill": false,
-				"archetype": "Scrollmaster"
+				"archetype": ["Scrollmaster"]
 			},
-			"traits": [
-				"Archetype"
-			],
+			"traits": ["Archetype"],
 			"prerequisites": "{@feat Scrollmaster Dedication|LOCG}",
 			"entries": [
 				"You gain the {@spell transcribe moment|LOPSG} focus spell. If you don't already have one, you gain a focus pool of 1 Focus Point, which you can {@action Refocus} by spending 10 minutes to study a text or record notes on your recent experiences."
@@ -1313,20 +938,13 @@
 			"page": 46,
 			"activity": {
 				"number": 1,
-				"unit": "reaction",
-				"entry": "{@as R}"
+				"unit": "reaction"
 			},
 			"level": 16,
 			"featType": {
-				"class": false,
-				"general": false,
-				"ancestry": false,
-				"skill": false,
-				"archetype": "Scrollmaster"
+				"archetype": ["Scrollmaster"]
 			},
-			"traits": [
-				"Archetype"
-			],
+			"traits": ["Archetype"],
 			"prerequisites": "{@feat Scrollmaster Dedication|LOCG}",
 			"trigger": "Your turn ends.",
 			"requirements": "You're currently affected by a {@trait mental} effect that you gained by failing, but not critically failing, a saving throw.",
@@ -1342,20 +960,13 @@
 			"page": 41,
 			"activity": {
 				"number": 1,
-				"unit": "reaction",
-				"entry": "{@as R}"
+				"unit": "reaction"
 			},
 			"level": 4,
 			"featType": {
-				"class": false,
-				"general": false,
-				"ancestry": false,
-				"skill": false,
-				"archetype": "Pathfinder Agent"
+				"archetype": ["Pathfinder Agent"]
 			},
-			"traits": [
-				"Archetype"
-			],
+			"traits": ["Archetype"],
 			"prerequisites": "{@feat Pathfinder Agent Dedication|LOWG}",
 			"trigger": "An ally you can see succeeds or critically succeeds at a Strength- or Dexterity-based skill check, using a skill in which you are untrained.",
 			"entries": [
@@ -1368,15 +979,9 @@
 			"page": 41,
 			"level": 8,
 			"featType": {
-				"class": false,
-				"general": false,
-				"ancestry": false,
-				"skill": false,
-				"archetype": "Pathfinder Agent"
+				"archetype": ["Pathfinder Agent"]
 			},
-			"traits": [
-				"Archetype"
-			],
+			"traits": ["Archetype"],
 			"prerequisites": "{@feat Pathfinder Agent Dedication|LOWG}, {@feat Wayfinder Resonance Tinkerer|LOWG} (World Guide 23)",
 			"entries": [
 				"You are adept at using the unusual resonance of your wayfinder to aid in any deceptions you might employ. Once per day you can activate your wayfinder to cast {@spell illusory disguise}, heightened to 2nd level, as an arcane spell. Additionally, once per day, you can Activate your wayfinder with a single-action envision activation to transform it into a perfect replica of another similarly sized badge of membership or office, such as an Aspis Consortium badge. This transformation lasts for 1 hour."
@@ -1388,15 +993,9 @@
 			"page": 120,
 			"level": 6,
 			"featType": {
-				"class": false,
-				"general": false,
-				"ancestry": false,
-				"skill": false,
-				"archetype": "Pathfinder Agent"
+				"archetype": ["Pathfinder Agent"]
 			},
-			"traits": [
-				"Archetype"
-			],
+			"traits": ["Archetype"],
 			"prerequisites": "{@feat Pathfinder Agent Dedication|LOWG}, Wayfinder",
 			"requirements": "You have at least one 1st-level spell slot and a wayfinder.",
 			"entries": [
