@@ -3329,17 +3329,29 @@
 			],
 			"disable": {
 				"entries": [
-					"DC 26 {@skill Occultism} (expert) to exorcise the spirits,"
+					"DC 26 {@skill Occultism} (expert) to exorcise the spirits, or {@skill Deception} or DC 28 {@skill Religion} (trained) to imitate the Arodenite faith and render the haunt harmless until it resets"
 				]
 			},
-			"actions": [
-				{
-					"entries": [
-						"28 {@skill Religion} (trained) to imitate the Arodenite faith and render the haunt harmless until it resets AC 24; Fort +13, Will +15 HP 60; Immunities critical hits, physical damage; Weaknesses positive 10."
-					],
-					"type": "ability",
-					"name": "or Deception or DC"
+			"defenses": {
+				"ac": {
+					"default": 24
 				},
+				"hp": {
+					"default": 60
+				},
+				"immunities": [
+					"critical hits",
+					"physical damage"
+				],
+				"weaknesses": [
+					"positive 10"
+				],
+				"savingThrows": {
+					"fort": 13,
+					"will": 15
+				}
+			},
+			"actions": [
 				{
 					"activity": {
 						"number": 1,

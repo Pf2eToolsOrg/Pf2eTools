@@ -3025,13 +3025,12 @@ Renderer.utils = {
 			if (traits.indexOf(trait) === traits.length - 1) {
 				styles.push("pf2-trait--right");
 			}
-			if (trait === "Uncommon") {
-				styles.push("pf2-trait--uncommon");
-			} else if (trait === "Rare") {
-				styles.push("pf2-trait--rare");
-			} else if (trait === "Unique") {
-				styles.push("pf2-trait--unique");
-			} else if (Renderer.trait.isTraitInCategory(trait, "Size")) {
+			switch (trait.toLowerCase()) {
+				case "uncommon": styles.push("pf2-trait--uncommon"); break;
+				case "rare": styles.push("pf2-trait--rare"); break;
+				case "unique": styles.push("pf2-trait--unique"); break;
+			}
+			if (Renderer.trait.isTraitInCategory(trait, "Size")) {
 				styles.push("pf2-trait--size");
 			} else if (Renderer.trait.isTraitInCategory(trait, "_alignAbv")) {
 				styles.push("pf2-trait--alignment");
