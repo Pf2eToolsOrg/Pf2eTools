@@ -46,21 +46,18 @@ class PageFilterFeats extends PageFilter {
 		if (!feat._fTraits.map(t => Renderer.trait.isTraitInCategory(t, "Rarity")).some(Boolean)) feat._fTraits.push("Common");
 		feat._fType = [];
 		if (feat.featType == null) feat.featType = {};
+		// TODO: FEAT-90 Transition from featType to trait filter
 		if (feat.featType.class !== false && feat.featType.class != null) {
 			feat._fType.push("Class");
 		}
 		if (feat.featType.ancestry !== false && feat.featType.ancestry != null) {
 			feat._fType.push("Ancestry");
 		}
-		if (feat.featType.general !== false && feat.featType.general != null) {
-			feat._fType.push("General");
-		}
-		if (feat.featType.skill !== false && feat.featType.skill != null) {
-			feat._fType.push("Skill");
-		}
-		if (feat.featType.archetype !== false && feat.featType.archetype != null) {
-			feat._fType.push("Archetype");
-		}
+
+		if (feat.traits.includes("General")) { feat._fType.push("General"); }
+		if (feat.traits.includes("Skill")) { feat._fType.push("Skill"); }
+		if (feat.traits.includes("Archetype")) { feat._fType.push("Archetype"); }
+
 		feat._slType = MiscUtil.copy(feat._fType);
 		if (feat._slType.includes("Skill") && feat._slType.includes("General")) feat._slType.splice(feat._slType.indexOf("General"), 1);
 		feat._slType = feat._slType.sort(SortUtil.ascSort).join(", ")
