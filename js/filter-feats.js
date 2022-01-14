@@ -47,7 +47,7 @@ class PageFilterFeats extends PageFilter {
 		feat._fType = [];
 		if (feat.featType == null) feat.featType = {};
 
-		if (feat._fTraits.map(t => Renderer.trait.isTraitInCategory(t, "Ancestry")).some(Boolean)) feat._fType.push("Ancestry");
+		if (feat._fTraits.map(t => Renderer.trait.isTraitInCategory(t, "Ancestry & Heritage")).some(Boolean)) feat._fType.push("Ancestry");
 		if (feat._fTraits.map(t => Renderer.trait.isTraitInCategory(t, "Class")).some(Boolean)) feat._fType.push("Class");
 		if (feat.traits.includes("General")) feat._fType.push("General");
 		if (feat.traits.includes("Skill")) feat._fType.push("Skill");
@@ -69,14 +69,21 @@ class PageFilterFeats extends PageFilter {
 	}
 
 	addToFilters (feat, isExcluded) {
+		feat._fTraits = feat.traits.map(t => Parser.getTraitName(t));
 		if (isExcluded) return;
 
 		this._typeFilter.addItem(feat._fType);
 		this._traitsFilter.addItem(feat._fTraits);
-		if (typeof (feat.featType.ancestry) !== "boolean") this._ancestryFilter.addItem(feat.featType.ancestry);
 		if (typeof (feat.featType.archetype) !== "boolean") this._archetypeFilter.addItem(feat.featType.archetype);
-		if (typeof (feat.featType.class) !== "boolean") this._classFilter.addItem(feat.featType.class);
 		if (typeof (feat.featType.skill) !== "boolean") this._skillFilter.addItem(feat.featType.skill);
+
+		if (feat._fTraits.map(t => Renderer.trait.isTraitInCategory(t, "Ancestry & Heritage")).some(Boolean)) {
+			this._ancestryFilter.addItem(feat._fTraits.map(t => Renderer.trait.isTraitInCategory(t, "Ancestry & Heritage") ? Parser.getTraitName(t) : null));
+		}
+		if (feat._fTraits.map(t => Renderer.trait.isTraitInCategory(t, "Class")).some(Boolean)) {
+			this._classFilter.addItem(feat._fTraits.map(t => Renderer.trait.isTraitInCategory(t, "Class") ? Parser.getTraitName(t) : null));
+		}
+
 		if (feat._fTime != null) this._timeFilter.addItem(feat._fTime);
 		this._sourceFilter.addItem(feat._fSources);
 	}
@@ -102,10 +109,10 @@ class PageFilterFeats extends PageFilter {
 			ft._fSources,
 			ft._fType,
 			ft.level,
-			ft.featType.ancestry,
-			// FIXME Change line below
+			// FIXME: This is horrible, but it works
+			ft._fTraits.map(t => Renderer.trait.isTraitInCategory(t, "Ancestry & Heritage") ? Parser.getTraitName(t) : null),
 			ft.featType.archetype === true ? "Archetype" : ft.featType.archetype,
-			ft.featType.class,
+			ft._fTraits.map(t => Renderer.trait.isTraitInCategory(t, "Class") ? Parser.getTraitName(t) : null),
 			ft.featType.skill,
 			ft._fTime,
 			ft._fTraits,
