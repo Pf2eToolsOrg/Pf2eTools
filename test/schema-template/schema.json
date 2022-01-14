@@ -33,51 +33,22 @@
 			"type": "array"
 		},
 		"ancestry": {
-			"type": "array"
-		},
-		"heritage": {
 			"type": "array",
 			"items": {
 				"type": "object",
 				"properties": {
-					"name": {
-						"type": "string"
-					},
-					"shortName": {
-						"type": "string"
-					},
-					"source": {
-						"type": "string"
-					},
-					"ancestryName": {
-						"type": "string"
-					},
-					"ancestrySource": {
-						"type": "string"
-					},
-					"entries": {
-						"type": "array",
-						"items": [
-							{
-								"type": "string"
-							}
-						]
+					"heritage": {
+						"$ref": "heritages.json#/properties/heritage",
+						"required": ["ancestryName", "ancestrySource"]
 					}
-				},
-				"required": [
-					"name",
-					"source",
-					"ancestryName",
-					"ancestrySource",
-					"entries"
-				]
+				}
 			}
 		},
 		"versatileHeritage": {
 			"type": "array"
 		},
 		"background": {
-			"type": "array"
+			"$ref": "backgrounds.json#/properties/background"
 		},
 		"class": {
 			"type": "array"
