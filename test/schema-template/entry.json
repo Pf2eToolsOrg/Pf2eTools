@@ -298,32 +298,14 @@
 						},
 						"entries": {
 							"type": "object",
-							"properties": {
-								"Critical Success": {
+							"patternProperties": {
+								"^((Critical )?(Success|Failure))$": {
 									"type": ["array","string"],
 									"items": {
 										"$ref": "#"
 									}
 								},
-								"Success": {
-									"type": ["array","string"],
-									"items": {
-										"$ref": "#"
-									}
-								},
-								"Failure": {
-									"type": ["array","string"],
-									"items": {
-										"$ref": "#"
-									}
-								},
-								"Critical Failure": {
-									"type": ["array","string"],
-									"items": {
-										"$ref": "#"
-									}
-								},
-								"Special": {
+								"^Special$": {
 									"type": ["array","string"],
 									"items": {
 										"$ref": "#"
@@ -350,7 +332,10 @@
 							"const": "statblock"
 						},
 						"tag": {
-							"type":"string"
+							"type":"string",
+							"enum": [
+								"action"
+							]
 						},
 						"name": {
 							"type": "string"
@@ -1733,6 +1718,21 @@
 				}
 			]
 		},
+		"entryDataAbility": {
+			"type": "object",
+			"properties": {
+				"type": {
+					"const": "ability"
+				},
+				"dataAbility": {
+					"$ref": "abilities.json#/definitions/abilityData"
+				}
+			},
+			"required": [
+				"type",
+				"dataAbility"
+			]
+		},
 		"entryDataCreature": {
 			"type": "object",
 			"properties": {
@@ -2303,6 +2303,9 @@
 		},
 		{
 			"$ref": "#/definitions/entryAttack"
+		},
+		{
+			"$ref": "#/definitions/entryDataAbility"
 		},
 		{
 			"$ref": "#/definitions/entryDataCreature"

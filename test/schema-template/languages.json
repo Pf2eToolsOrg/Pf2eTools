@@ -1,0 +1,74 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema",
+	"$id": "languages.json",
+	"title": "Languages",
+	"description": "The language data type for Pf2eTools.",
+	"type": "object",
+	"version": "0.0.1",
+	"properties": {
+		"language": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"source": {
+						"type": "string",
+						"$ref": "utils.json#/definitions/sourceList"
+					},
+					"otherSources": {
+						"$ref": "utils.json#/definitions/otherSources"
+					},
+					"name": {
+						"type": "string"
+					},
+					"page": {
+						"type": "integer"
+					},
+					"type":{
+						"type": "string",
+						"enum": [
+							"Uncommon",
+							"Rare",
+							"Regional",
+							"Common",
+							"Secret"
+						]
+					},
+					"typicalSpeakers":{
+						"type": "array",
+						"items": {
+							"type": "string"
+						},
+						"uniqueItems": true,
+						"minItems": 1
+					},
+					"regions":{
+						"type": "array",
+						"items": {
+							"type": "string"
+						},
+						"uniqueItems": true
+					},
+					"entries": {
+						"type": "array",
+						"items": {
+							"$ref": "entry.json"
+						}
+					},
+					"fonts": {
+						"description": "A list of direct URLs to font files.",
+						"type": "array",
+						"items": {
+							"type": "string"
+						}
+					}
+				},
+				"additionalProperties": false,
+				"required": ["source", "name", "page"]
+			},
+			"uniqueItems": true
+		}
+	},
+	"additionalProperties": false,
+	"required": ["domain"]
+}

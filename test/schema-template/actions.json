@@ -9,189 +9,132 @@
 		"action": {
 			"type": "array",
 			"items": {
-					"type": "object",
-					"properties": {
-						"source": {
-							"type": "string"
+				"type": "object",
+				"properties": {
+					"source": {
+						"type": "string",
+						"$ref": "utils.json#/definitions/sourceList"
+					},
+					"name": {
+						"type": "string"
+					},
+					"page": {
+						"type": "integer"
+					},
+					"traits": {
+						"type": "array",
+						"items": {
+							"type": "string",
+							"$ref": "utils.json#/definitions/anyTraitUpper"
 						},
-						"name": {
-							"type": "string"
-						},
-						"page": {
-							"type": "integer"
-						},
-						"traits": {
-							"type": "array",
-							"items":{
-								"type": "string",
-								"enum": [
-									"Move",
-									"Manipulate",
-									"Exploration",
-									"Concentrate",
-									"Concentration",
-									"Magus",
-									"Stance",
-									"Downtime",
-									"Secret",
-									"Divine",
-									"Kitsune",
-									"Polymorph",
-									"Transmutation",
-									"Auditory",
-									"Emotion",
-									"Linguistic",
-									"Mental",
-									"Magical",
-									"Gunslinger",
-									"Fire",
-									"Unstable",
-									"Healing",
-									"Inventor",
-									"Investigator",
-									"Attack",
-									"Uncommon",
-									"Champion",
-									"Enchantment",
-									"Summoner",
-									"Tandem",
-									"Flourish",
-									"Fortune",
-									"Primal",
-									"Energy",
-									"Finisher",
-									"Swashbuckler",
-									"Rogue",
-									"Misfortune",
-									"Arcane",
-									"Wizard",
-									"Evocation",
-									"Spellshot",
-									"Barbarian",
-									"Conjuration",
-									"Teleportation",
-									"Divination",
-									"Scrying",
-									"Kobold",
-									"Poison",
-									"Rare",
-									"Visual",
-									"Monk",
-									"Fear",
-									"Ranger",
-									"Alchemist",
-									"Grippli",
-									"Abjuration",
-									"Incapacitation",
-									"Reckless"
-								]
-							}
-						},
-						"frequency": {
-							"$ref": "utils.json#/definitions/frequency"
-						},
-						"actionType": {
-							"type": "object",
-							"properties": {
-								"class": {
-									"type": "array",
-									"items": {
-										"$ref": "utils.json#/definitions/classNameUpperSourced"
-									},
-									"uniqueItems": true
+						"minItems": 1,
+						"uniqueItems": true
+					},
+					"frequency": {
+						"$ref": "utils.json#/definitions/frequency"
+					},
+					"actionType": {
+						"type": "object",
+						"properties": {
+							"class": {
+								"type": "array",
+								"items": {
+									"$ref": "utils.json#/definitions/classNameUpperSourced"
 								},
-								"subclass": {
-									"type": "array",
-									"items": {
-										"type": "string"
-									},
-									"uniqueItems": true
-								},
-								"archetype": {
-									"type": "array",
-									"items": {
-										"type": "string"
-									},
-									"uniqueItems": true
-								},
-								"ancestry": {
-									"type": "string"
-								},
-								"heritage": {
-									"type": "string"
-								},
-								"versatileHeritage": {
-									"type": "string"
-								},
-								"basic": {
-									"type": "boolean",
-									"enum": [true]
-								},
-								"item": {
-									"type": "boolean",
-									"enum": [true]
-								},
-								"skill": {
-									"type":"object",
-									"patternProperties": {
-										"(un)?trained": {
-											"type": "array",
-											"items": {
-												"$ref": "utils.json#/definitions/skillNameUpper"
-											},
-											"uniqueItems": true
-										}
-									},
-									"additionalProperties": false
-								},
-								"variantrule": {
-									"type": "array",
-									"items": {
-										"type": "string"
-									},
-									"uniqueItems": true
-								}
+								"uniqueItems": true
 							},
-							"additionalProperties": false
-						},
-						"activity": {
-							"type": "object",
-							"$ref": "utils.json#/definitions/activity"
-						},
-						"entries": {
-							"type": "array",
-							"items": {
-								"$ref": "entry.json"
+							"subclass": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								},
+								"uniqueItems": true
+							},
+							"archetype": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								},
+								"uniqueItems": true
+							},
+							"ancestry": {
+								"type": "string"
+							},
+							"heritage": {
+								"type": "string"
+							},
+							"versatileHeritage": {
+								"type": "string"
+							},
+							"basic": {
+								"type": "boolean",
+								"enum": [true]
+							},
+							"item": {
+								"type": "boolean",
+								"enum": [true]
+							},
+							"skill": {
+								"type": "object",
+								"patternProperties": {
+									"^((un)?trained)$": {
+										"type": "array",
+										"items": {
+											"$ref": "utils.json#/definitions/skillNameUpper"
+										},
+										"uniqueItems": true
+									}
+								},
+								"additionalProperties": false
+							},
+							"variantrule": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								},
+								"uniqueItems": true
 							}
 						},
-						"requirements": {
-							"type": "string"
-						},
-						"prerequisites": {
-							"type": "string"
-						},
-						"trigger": {
-							"type": "string"
-						},
-						"cost": {
-							"type": "string"
-						},
-						"info": {
-							"type": "array",
-							"items": {
-								"$ref": "entry.json"
-							}
-						},
-						"special": {
-							"type": "string"
-						},
-						"add_hash": {
-							"type": "string"
+						"additionalProperties": false
+					},
+					"activity": {
+						"type": "object",
+						"$ref": "utils.json#/definitions/activity"
+					},
+					"entries": {
+						"type": "array",
+						"items": {
+							"$ref": "entry.json"
 						}
 					},
-					"additionalProperties": false,
-					"required": ["source", "name", "entries"]
+					"requirements": {
+						"type": "string"
+					},
+					"prerequisites": {
+						"type": "string"
+					},
+					"trigger": {
+						"type": "string"
+					},
+					"cost": {
+						"type": "string"
+					},
+					"info": {
+						"type": "array",
+						"items": {
+							"$ref": "entry.json"
+						}
+					},
+					"special": {
+						"type": "string"
+					},
+					"add_hash": {
+						"type": "string"
+					}
 				},
+				"additionalProperties": false,
+				"required": ["source", "name", "entries"]
+			},
 			"uniqueItems": true
 		}
 	},
