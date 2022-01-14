@@ -4362,6 +4362,13 @@ Renderer.item = {
 		const renderer = Renderer.get();
 		if (item.access) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Access&nbsp;</strong>${renderer.render(item.access)}</p>`);
 		if (item.price) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Price&nbsp;</strong>${Parser.priceToFull(item.price)}</p>`);
+		if (item.contract != null) {
+			renderStack.push(`<p class="pf2-stat pf2-stat__section">`);
+			if (item.contract.devil != null) renderStack.push(`<strong>Devil&nbsp;</strong>${renderer.render(item.contract.devil)}`)
+			if (item.contract.devil != null && item.contract.decipher != null) renderStack.push("; ")
+			if (item.contract.decipher != null) renderStack.push(`<strong>${renderer.render(`{@action Decipher Writing}`)}&nbsp;</strong>${renderer.render(item.contract.decipher.map(d => `{@skill ${d}}`).join(", "))}`)
+			renderStack.push(`</p>`)
+		}
 
 		if (item.usage != null || item.bulk != null) {
 			renderStack.push(`<p class="pf2-stat pf2-stat__section">`);
