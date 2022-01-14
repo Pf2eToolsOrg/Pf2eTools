@@ -4903,6 +4903,17 @@ Renderer.trait = {
 		if (lookup) return lookup.categories.includes(category);
 		return category === "General";
 	},
+
+	getTraitCategories (trait) {
+		const lookup = Renderer.trait.TRAITS[trait.toLowerCase()];
+		if (lookup) return lookup.categories || [];
+		// else console.warn(`Could not look up the ${trait} trait.`);
+		return [];
+	},
+
+	filterTraitsByCats (traits, categories) {
+		return traits.filter(t => Renderer.trait.getTraitCategories(t).some(c => categories.includes(c)));
+	},
 };
 
 Renderer.variantrule = {
