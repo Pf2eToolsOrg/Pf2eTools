@@ -39,13 +39,21 @@
 				"Invested",
 				"Magical"
 			],
-			"category": "no category found",
+			"category": "Contract",
+			"contract": {
+				"devil": "{@creature imp}",
+				"decipher": [
+					"Arcana",
+					"Occultism",
+					"Society"
+				]
+			},
 			"entries": [
-				"Devil imp; {@action Decipher Writing} {@skill Arcana}, {@skill Occultism}, {@skill Society} You've bargained with an imp, one of the least powerful devils, for a fragment of infernal luck.",
-				"Benefit Once per day, you can roll a saving throw twice and use the higher result.",
-				"Payment At the termination of your mortal life, your soul must serve the imp for 100 years.",
-				"{@condition Hidden} Condition The \"termination of mortal life\" clause is carefully worded to hasten your demise. You can't use the benefit against a {@trait death} effect, and if you roll a failure on a saving throw against a {@trait death} effect, you get a critical failure instead.",
-				"Termination Clause If you critically fail a saving throw against a {@trait death} effect and do not die, the contract becomes unenforceable on its terms and is voided."
+				"You've bargained with an imp, one of the least powerful devils, for a fragment of infernal luck.",
+				"{@b Benefit} Once per day, you can roll a saving throw twice and use the higher result.",
+				"{@b Payment} At the termination of your mortal life, your soul must serve the imp for 100 years.",
+				"{@b Hidden Condition} The \"termination of mortal life\" clause is carefully worded to hasten your demise. You can't use the benefit against a {@trait death} effect, and if you roll a failure on a saving throw against a {@trait death} effect, you get a critical failure instead.",
+				"{@b Termination Clause} If you critically fail a saving throw against a {@trait death} effect and do not die, the contract becomes unenforceable on its terms and is voided."
 			],
 			"generic": false,
 			"consumable": false
@@ -242,15 +250,20 @@
 				"Invested",
 				"Magical"
 			],
-			"category": "no category found",
+			"contract": {
+				"devil": "{@creature gelugon}",
+				"decipher": [
+					"Nature",
+					"Lore||Games Lore"
+				]
+			},
+			"category": "Contract",
 			"entries": [
-				"Devil gelugon; {@action Decipher Writing} {@skill Nature}, {@skill Lore||Games Lore} Your flesh looks no different, but is cold to the touch.",
-				"Benefit You gain cold resistance equal to your level and a +1 status bonus to saving throws against {@trait mental} effects.",
-				"Payment Liquids in your possession, including potions and liquid alchemical items, freeze over the course of 1 minute and thaw 1 minute after they leave your possession.",
-				"Frozen potions and elixirs take 1 minute to consume.",
-				"{@condition Hidden} Condition (conjuration, teleportation) No more than once per week, the gelugon can move you like a piece on a game board to advance its schemes. The gelugon can appear and transport you and any items you're wearing and holding from your current space to a clear space within 500 feet (the gelugon need not see this location, but must know its relative location and distance from you). This effect doesn't transport any other creatures.",
-				"The gelugon is unlikely to place you in a less dangerous space than the one you left.",
-				"Termination Clause The contract provides you the benefits of \"the eternal ice of Cocytus.\" If you travel to Cocytus, Hell's seventh layer, and stand within an area at least 100 feet across that contains no ice and has a temperature above freezing, the contract is void. Such locations are exceptionally rare in Cocytus, and the efforts to create such an area are likely to attract unpleasant attention."
+				"Your flesh looks no different, but is cold to the touch.",
+				"{@b Benefit} You gain cold resistance equal to your level and a +1 status bonus to saving throws against {@trait mental} effects.",
+				"{@b Payment} Liquids in your possession, including potions and liquid alchemical items, freeze over the course of 1 minute and thaw 1 minute after they leave your possession. Frozen potions and elixirs take 1 minute to consume.",
+				"{@b Hidden Condition} ({@trait conjuration}, {@trait teleportation}) No more than once per week, the gelugon can move you like a piece on a game board to advance its schemes. The gelugon can appear and transport you and any items you're wearing and holding from your current space to a clear space within 500 feet (the gelugon need not see this location, but must know its relative location and distance from you). This effect doesn't transport any other creatures. The gelugon is unlikely to place you in a less dangerous space than the one you left.",
+				"{@b Termination Clause} The contract provides you the benefits of \"the eternal ice of Cocytus.\" If you travel to Cocytus, Hell's seventh layer, and stand within an area at least 100 feet across that contains no ice and has a temperature above freezing, the contract is void. Such locations are exceptionally rare in Cocytus, and the efforts to create such an area are likely to attract unpleasant attention."
 			],
 			"generic": false,
 			"consumable": false
@@ -268,13 +281,20 @@
 				"Magical",
 				"Necromancy"
 			],
-			"category": "no category found",
+			"contract": {
+				"devil": "{@creature barbazu}",
+				"decipher": [
+					"Society",
+					"Lore||Warfare Lore"
+				]
+			},
+			"category": "Contract",
 			"entries": [
-				"Devil barbazu; {@action Decipher Writing} {@skill Society}, {@skill Lore||Warfare Lore} You negotiate for might and viciousness.",
-				"Benefit Your successful Strikes with slashing and piercing melee weapons deal 1 {@condition persistent damage ||persistent bleed damage}. On a critical success, this {@condition persistent damage ||persistent bleed damage} is equal to half your level.",
-				"Payment You regain half the normal number of Hit Points from resting (including Hit Points gained from long-term rest) and from any application of the {@skill Medicine} skill.",
-				"{@condition Hidden} Condition The barbazu owns any weapons you find. No more often than once per month, the barbazu can demand a single weapon of its choice (often the best weapon in your possession). You are compelled to hand over the weapon immediately, without question.",
-				"Termination Clause The contract guarantees that you will not \"be slain by the barbazu or by barbazu action.\" This wording is vague; if any barbazu kills you, or if you die from {@condition persistent damage ||persistent bleed damage} from any source, the contract is voided."
+				"You negotiate for might and viciousness.",
+				"{@b Benefit} Your successful {@action Strike||Strikes} with slashing and piercing melee weapons deal 1 {@condition persistent damage ||persistent bleed damage}. On a critical success, this {@condition persistent damage ||persistent bleed damage} is equal to half your level.",
+				"{@b Payment} You regain half the normal number of Hit Points from resting (including Hit Points gained from long-term rest) and from any application of the {@skill Medicine} skill.",
+				"{@b Hidden Condition} The barbazu owns any weapons you find. No more often than once per month, the barbazu can demand a single weapon of its choice (often the best weapon in your possession). You are compelled to hand over the weapon immediately, without question.",
+				"{@b Termination Clause} The contract guarantees that you will not \"be slain by the barbazu or by barbazu action.\" This wording is vague; if any barbazu kills you, or if you die from {@condition persistent damage ||persistent bleed damage} from any source, the contract is voided."
 			],
 			"generic": false,
 			"consumable": false
@@ -292,13 +312,20 @@
 				"Invested",
 				"Magical"
 			],
-			"category": "no category found",
+			"contract": {
+				"devil": "{@creature erinys}",
+				"decipher": [
+					"Nature",
+					"Religion"
+				]
+			},
+			"category": "Contract",
 			"entries": [
-				"Devil erinys; {@action Decipher Writing} {@skill Nature}, {@skill Religion} Profane powers of vengeance are yours to inflict.",
-				"Benefit When a creature deals damage to you, you can call out for retribution as a reaction. Until the end of your next turn, you gain a +1 status bonus to attack rolls against that creature.",
-				"Payment If you wound a creature, it is your duty to kill it. If a creature survives for 24 hours after you deal it damage, you are {@condition doomed|CRB|doomed 1}. If you already have the {@condition doomed} condition, it increases by 1.",
-				"{@condition Hidden} Condition No more than once per year, the erinys can compel you to attack a creature of the erinys's choice that you can see. You are {@condition controlled} by the erinys and must fight the chosen creature for 1 minute.",
-				"Termination Clause The contract demands that you enact bloody vengeance against anyone who has ever wronged you, but the nature of the vengeance is vague. You can end the contract by creating effigies of everyone you believe has ever wronged you, bleeding upon them all at once (at least 1 Hit Point per effigy), and destroying them."
+				"Profane powers of vengeance are yours to inflict.",
+				"{@b Benefit} When a creature deals damage to you, you can call out for retribution as a reaction. Until the end of your next turn, you gain a +1 status bonus to attack rolls against that creature.",
+				"{@b Payment} If you wound a creature, it is your duty to kill it. If a creature survives for 24 hours after you deal it damage, you are {@condition doomed|CRB|doomed 1}. If you already have the {@condition doomed} condition, it increases by 1.",
+				"{@b Hidden Condition} No more than once per year, the erinys can compel you to attack a creature of the erinys's choice that you can see. You are {@condition controlled} by the erinys and must fight the chosen creature for 1 minute.",
+				"{@b Termination Clause} The contract demands that you enact bloody vengeance against anyone who has ever wronged you, but the nature of the vengeance is vague. You can end the contract by creating effigies of everyone you believe has ever wronged you, bleeding upon them all at once (at least 1 Hit Point per effigy), and destroying them."
 			],
 			"generic": false,
 			"consumable": false
