@@ -638,7 +638,6 @@ PropOrder._PROP_TO_LIST = {
 	"baseitem": PropOrder._ITEM,
 	"spell": PropOrder._SPELL,
 	"curse": PropOrder._AFFLICTION,
-	"itemcurse": PropOrder._AFFLICTION,
 	"disease": PropOrder._AFFLICTION,
 	"ability": PropOrder._ABILITY,
 	"deity": PropOrder._DEITY,

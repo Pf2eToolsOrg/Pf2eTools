@@ -37,7 +37,6 @@ function getFnListSort (prop) {
 		case "spell":
 		case "disease":
 		case "curse":
-		case "itemcurse":
 		case "ability":
 		case "deity":
 		case "language":

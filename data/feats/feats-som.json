@@ -5,10 +5,10 @@
 			"source": "SoM",
 			"page": 199,
 			"level": 6,
-			"featType": {
-
-			},
-			"traits": ["Druid"],
+			"featType": {},
+			"traits": [
+				"Druid"
+			],
 			"prerequisites": "flame order, stone order, storm order, or wave order",
 			"entries": [
 				"Your connection to one of the great elemental aspects of nature deepens, allowing you further control over its powers. You gain the advanced order spell associated with your order: if you're a member of the flame order, you gain {@spell combustion|SoM}; if you're a member of the stone order, you gain {@spell stone lance|SoM}; if you're a member of the storm order, you gain powerful {@spell inhalation|SoM}; if you're a member of the wave order, you gain {@spell pulverizing cascade|SoM}. Increase the number of Focus Points in your focus pool by 1."
@@ -20,9 +20,13 @@
 			"page": 75,
 			"level": 6,
 			"featType": {
-				"archetype": ["Magus"]
+				"archetype": [
+					"Magus"
+				]
 			},
-			"traits": ["Archetype"],
+			"traits": [
+				"Archetype"
+			],
 			"prerequisites": "{@feat Basic Martial Magic|SoM}",
 			"entries": [
 				"You gain one {@filter magus|feats||classes=magus} feat. For the purpose of meeting its prerequisites, your magus level is equal to half your character level."
@@ -35,25 +39,32 @@
 			"page": 77,
 			"level": 6,
 			"featType": {
-				"archetype": ["Summoner"]
+				"archetype": [
+					"Summoner"
+				]
 			},
-			"traits": ["Archetype"],
+			"traits": [
+				"Archetype"
+			],
 			"prerequisites": "{@feat Basic Synergy|SoM}",
 			"entries": [
 				"You gain one {@filter summoner|feats||classes=summoner} feat. For the purpose of meeting its prerequisites, your summoner level is equal to half your character level."
 			],
 			"special": "You can select this feat more than once. Each time you select it, you gain another summoner feat.",
-			"leadsTo": ["Signature Synergy|SoM"]
+			"leadsTo": [
+				"Signature Synergy|SoM"
+			]
 		},
 		{
 			"name": "Advanced Weaponry",
 			"source": "SoM",
 			"page": 67,
 			"level": 1,
-			"featType": {
-
-			},
-			"traits": ["Evolution", "Summoner"],
+			"featType": {},
+			"traits": [
+				"Evolution",
+				"Summoner"
+			],
 			"entries": [
 				"Your eidolon's attack evolves. Choose one of your eidolon's starting melee unarmed attacks. It gains one of the following traits, chosen when you gain the feat: {@trait disarm}, {@trait grapple}, {@trait nonlethal}, {@trait shove}, {@trait trip}, or {@trait versatile} bludgeoning, piercing, or slashing."
 			]
@@ -64,9 +75,13 @@
 			"page": 240,
 			"level": 4,
 			"featType": {
-				"archetype": ["Runelord"]
+				"archetype": [
+					"Runelord"
+				]
 			},
-			"traits": ["Archetype"],
+			"traits": [
+				"Archetype"
+			],
 			"prerequisites": "{@feat Embed Aeon Stone|SoM}",
 			"entries": [
 				"You gain the resonant power of one embedded aeon stone as if it were placed in a wayfinder. While you can embed multiple aeon stones in your flesh, you can gain the resonance power from only one embedded stone at a time, selected each day when you make your daily preparations."
@@ -78,10 +93,11 @@
 			"source": "SoM",
 			"page": 72,
 			"level": 14,
-			"featType": {
-
-			},
-			"traits": ["Evolution", "Summoner"],
+			"featType": {},
+			"traits": [
+				"Evolution",
+				"Summoner"
+			],
 			"prerequisites": "{@feat Glider Form|SoM}",
 			"entries": [
 				"Your eidolon can fly. It gains a fly Speed equal to its Speed."
@@ -92,10 +108,11 @@
 			"source": "SoM",
 			"page": 68,
 			"level": 2,
-			"featType": {
-
-			},
-			"traits": ["Evolution", "Summoner"],
+			"featType": {},
+			"traits": [
+				"Evolution",
+				"Summoner"
+			],
 			"entries": [
 				"Your eidolon moves more quickly. It gains a +10-foot status bonus to its Speed."
 			]
@@ -105,10 +122,11 @@
 			"source": "SoM",
 			"page": 68,
 			"level": 2,
-			"featType": {
-
-			},
-			"traits": ["Evolution", "Summoner"],
+			"featType": {},
+			"traits": [
+				"Evolution",
+				"Summoner"
+			],
 			"entries": [
 				"Your eidolon adapts to life on land and underwater. It gains the {@trait amphibious} trait, allowing it to breathe in water and air and to avoid the normal \u20132 penalty for making bludgeoning and slashing unarmed {@action Strike||Strikes} underwater. It gains a swim Speed equal to its land Speed or 25 feet, whichever is less; or if it is normally aquatic, it gains a land Speed equal to its swim Speed or 25 feet, whichever is less."
 			]
@@ -118,10 +136,10 @@
 			"source": "SoM",
 			"page": 42,
 			"level": 1,
-			"featType": {
-
-			},
-			"traits": ["Magus"],
+			"featType": {},
+			"traits": [
+				"Magus"
+			],
 			"entries": [
 				"Your physical training encompasses unarmed combat forms. The damage die for your fist changes to {@dice 1d6} instead of {@dice 1d4}. You don't take the normal \u20132 circumstance penalty when making a lethal attack with your fist or any other unarmed attacks. Your unarmed attacks gain the {@trait arcane} trait, making them magical. At 5th level, you also gain the critical specialization effects of unarmed attacks in the {@group brawling} group and weapons in the {@group brawling} group."
 			]
@@ -135,10 +153,10 @@
 				"unit": "action"
 			},
 			"level": 14,
-			"featType": {
-
-			},
-			"traits": ["Magus"],
+			"featType": {},
+			"traits": [
+				"Magus"
+			],
 			"prerequisites": "{@action Arcane Cascade|SoM}, {@action Spellstrike|SoM}",
 			"frequency": "once per turn",
 			"requirements": "Your most recent action was to {@action Cast a Spell} from a spell slot or make a {@action Spellstrike|SoM} with a spell from a spell slot.",
@@ -168,10 +186,10 @@
 				"unit": "reaction"
 			},
 			"level": 6,
-			"featType": {
-
-			},
-			"traits": ["Magus"],
+			"featType": {},
+			"traits": [
+				"Magus"
+			],
 			"trigger": "A creature within your reach uses a manipulate action or a move action, makes a ranged attack, or leaves a square during a move action it's using.",
 			"entries": [
 				"You lash out at a vulnerable foe. Make a melee {@action Strike} against the triggering creature. If your attack is a critical hit and the trigger was a manipulate action, you disrupt that action. This {@action Strike} doesn't count toward your multiple attack penalty, and your multiple attack penalty doesn't apply to this {@action Strike}."
@@ -183,9 +201,13 @@
 			"page": 213,
 			"level": 8,
 			"featType": {
-				"archetype": ["Geomancer"]
+				"archetype": [
+					"Geomancer"
+				]
 			},
-			"traits": ["Archetype"],
+			"traits": [
+				"Archetype"
+			],
 			"prerequisites": "{@feat Geomancer Dedication|SoM}, expert in {@skill Nature}",
 			"entries": [
 				"You can move freely through terrain you're attuned to.",
@@ -202,9 +224,13 @@
 			},
 			"level": 4,
 			"featType": {
-				"archetype": ["Geomancer"]
+				"archetype": [
+					"Geomancer"
+				]
 			},
-			"traits": ["Archetype"],
+			"traits": [
+				"Archetype"
+			],
 			"prerequisites": "{@feat Geomancer Dedication|SoM}",
 			"frequency": "once per 10 minutes",
 			"requirements": "Your previous action was to cast a spell with the {@trait air}, {@trait cold}, {@trait earth}, {@trait fire}, {@trait plant}, or {@trait water} trait",
@@ -219,9 +245,13 @@
 			"page": 195,
 			"level": 4,
 			"featType": {
-				"archetype": ["Cathartic Mage"]
+				"archetype": [
+					"Cathartic Mage"
+				]
 			},
-			"traits": ["Archetype"],
+			"traits": [
+				"Archetype"
+			],
 			"prerequisites": "{@feat Cathartic Mage Dedication|SoM}",
 			"entries": [
 				"You gain the {@quickref basic spellcasting benefits|CRB|0|spellcasting archetypes}. Each time you gain a spell slot of a new level from this archetype, add a spell of that spell level from your chosen tradition to your repertoire\u2014either a common spell or another spell you've learned or discovered."
@@ -237,11 +267,17 @@
 			"page": 75,
 			"level": 6,
 			"featType": {
-				"archetype": ["Magus"]
+				"archetype": [
+					"Magus"
+				]
 			},
-			"traits": ["Archetype"],
+			"traits": [
+				"Archetype"
+			],
 			"prerequisites": "{@feat Magus Dedication|SoM}",
-			"entries": ["You gain the basic bounded spellcasting benefits."],
+			"entries": [
+				"You gain the basic bounded spellcasting benefits."
+			],
 			"leadsTo": [
 				"Expert Magus Spellcasting|SoM",
 				"Master Magus Spellcasting|SoM"
@@ -253,14 +289,20 @@
 			"page": 75,
 			"level": 4,
 			"featType": {
-				"archetype": ["Magus"]
+				"archetype": [
+					"Magus"
+				]
 			},
-			"traits": ["Archetype"],
+			"traits": [
+				"Archetype"
+			],
 			"prerequisites": "{@feat Magus Dedication|SoM}",
 			"entries": [
 				"You gain a {@filter 1st- or 2nd-level magus|feats||classes=magus|level=[1;2]} feat of your choice."
 			],
-			"leadsTo": ["Advanced Martial Magic|SoM"]
+			"leadsTo": [
+				"Advanced Martial Magic|SoM"
+			]
 		},
 		{
 			"name": "Basic Spellcasting",
@@ -268,12 +310,19 @@
 			"page": 219,
 			"level": 4,
 			"featType": {},
-			"traits": ["Rare", "Pervasive Magic", "[Class]"],
+			"traits": [
+				"Rare",
+				"Pervasive Magic",
+				"[Class]"
+			],
 			"prerequisites": "{@feat Cantrip Casting|SoM}",
 			"entries": [
 				"You increase your ability to cast spells. You gain the {@quickref basic spellcasting benefits|CRB|0|spellcasting archetypes} granted by spellcasting archetypes, gaining a spell repertoire. Each time you gain a spell slot of a new level from the {@quickref basic, expert, and master spellcasting benefits|CRB|0|spellcasting archetypes} from pervasive magic feats, add a spell of the appropriate spell level to your repertoire: a common spell of the magical tradition matching your trait, or another spell of that tradition that you have learned or discovered."
 			],
-			"leadsTo": ["Expert Spellcasting|SoM", "Master Spellcasting|SoM"]
+			"leadsTo": [
+				"Expert Spellcasting|SoM",
+				"Master Spellcasting|SoM"
+			]
 		},
 		{
 			"name": "Basic Summoner Spellcasting",
@@ -281,9 +330,13 @@
 			"page": 77,
 			"level": 6,
 			"featType": {
-				"archetype": ["Summoner"]
+				"archetype": [
+					"Summoner"
+				]
 			},
-			"traits": ["Archetype"],
+			"traits": [
+				"Archetype"
+			],
 			"prerequisites": "{@feat Summoner Dedication|SoM}",
 			"entries": [
 				"You gain the basic bounded spellcasting benefits.",
@@ -301,14 +354,21 @@
 			"page": 76,
 			"level": 4,
 			"featType": {
-				"archetype": ["Summoner"]
+				"archetype": [
+					"Summoner"
+				]
 			},
-			"traits": ["Archetype"],
+			"traits": [
+				"Archetype"
+			],
 			"prerequisites": "{@feat Summoner Dedication|SoM}",
 			"entries": [
 				"You gain a {@filter 1st- or 2nd-level summoner|feats||classes=summoner|level=[1;2]} feat of your choice."
 			],
-			"leadsTo": ["Advanced Synergy|SoM", "Signature Synergy|SoM"]
+			"leadsTo": [
+				"Advanced Synergy|SoM",
+				"Signature Synergy|SoM"
+			]
 		},
 		{
 			"name": "Blazing Streak",
@@ -319,10 +379,11 @@
 				"unit": "action"
 			},
 			"level": 10,
-			"featType": {
-
-			},
-			"traits": ["Flourish", "Monk"],
+			"featType": {},
+			"traits": [
+				"Flourish",
+				"Monk"
+			],
 			"prerequisites": "{@feat Stoked Flame Stance|SoM}",
 			"requirements": "You're in Stoked Flame Stance.",
 			"entries": [
@@ -339,10 +400,12 @@
 				"unit": "action"
 			},
 			"level": 6,
-			"featType": {
-
-			},
-			"traits": ["Eidolon", "Evolution", "Summoner"],
+			"featType": {},
+			"traits": [
+				"Eidolon",
+				"Evolution",
+				"Summoner"
+			],
 			"prerequisites": "{@feat Bloodletting Claws|SoM}",
 			"requirements": "Your eidolon's last action dealt bleed damage to a living creature.",
 			"entries": [
@@ -354,24 +417,27 @@
 			"source": "SoM",
 			"page": 68,
 			"level": 4,
-			"featType": {
-
-			},
-			"traits": ["Evolution", "Summoner"],
+			"featType": {},
+			"traits": [
+				"Evolution",
+				"Summoner"
+			],
 			"entries": [
 				"Your eidolon inflicts bleeding wounds on a telling blow. If your eidolon critically hits with a melee unarmed {@action Strike} that deals slashing or piercing, its target takes {@damage 1d6} {@condition persistent damage||persistent bleed damage}. Your eidolon gains an item bonus to this bleed damage equal to the unarmed attack's item bonus to attack rolls. This is a critical specialization effect."
 			],
-			"leadsTo": ["Blood Frenzy|SoM"]
+			"leadsTo": [
+				"Blood Frenzy|SoM"
+			]
 		},
 		{
 			"name": "Boost Summons",
 			"source": "SoM",
 			"page": 70,
 			"level": 8,
-			"featType": {
-
-			},
-			"traits": ["Summoner"],
+			"featType": {},
+			"traits": [
+				"Summoner"
+			],
 			"entries": [
 				"Augmenting your eidolon extends to creatures you summon.",
 				"When you cast {@spell boost eidolon|SoM}, in addition to your eidolon, it also targets your summoned creatures within 60 feet."
@@ -387,9 +453,15 @@
 			},
 			"level": 6,
 			"featType": {
-				"archetype": ["Elementalist"]
+				"archetype": [
+					"Elementalist"
+				]
 			},
-			"traits": ["Archetype", "Metamagic", "Fire"],
+			"traits": [
+				"Archetype",
+				"Metamagic",
+				"Fire"
+			],
 			"prerequisites": "{@feat Elementalist Dedication|SoM}",
 			"entries": [
 				"You enhance your spell with elemental fire, causing it to set the target on fire. If the next action you use is to {@action Cast a Spell||Cast a non-cantrip Spell} that deals damage at a single target, the spell deals additional {@condition persistent damage ||persistent fire damage} equal to the spell level, in addition to its other effects. This has no effect if the spell already deals {@condition persistent damage ||persistent fire damage}. The spell gains the {@trait fire} trait."
@@ -400,10 +472,11 @@
 			"source": "SoM",
 			"page": 71,
 			"level": 10,
-			"featType": {
-
-			},
-			"traits": ["Evolution", "Summoner"],
+			"featType": {},
+			"traits": [
+				"Evolution",
+				"Summoner"
+			],
 			"entries": [
 				"Your eidolon can burrow through loose dirt. Your eidolon gains a burrow Speed of 15 feet."
 			]
@@ -414,7 +487,11 @@
 			"page": 219,
 			"level": 2,
 			"featType": {},
-			"traits": ["Rare", "Pervasive Magic", "[Class]"],
+			"traits": [
+				"Rare",
+				"Pervasive Magic",
+				"[Class]"
+			],
 			"entries": [
 				"You increase your ability to cast simple spells. You gain two additional cantrips from the tradition matching your trait."
 			],
@@ -429,10 +506,10 @@
 			"source": "SoM",
 			"page": 42,
 			"level": 2,
-			"featType": {
-
-			},
-			"traits": ["Magus"],
+			"featType": {},
+			"traits": [
+				"Magus"
+			],
 			"entries": [
 				"Dedicated study allows you to prepare a wider range of simple spells. You can prepare two additional cantrips each day."
 			]
@@ -446,10 +523,10 @@
 				"unit": "reaction"
 			},
 			"level": 8,
-			"featType": {
-
-			},
-			"traits": ["Magus"],
+			"featType": {},
+			"traits": [
+				"Magus"
+			],
 			"prerequisites": "{@action Arcane Cascade|SoM}",
 			"trigger": "You succeed at your save against a foe's harmful spell, or a foe fails a spell attack roll against you from a harmful spell.",
 			"entries": [
@@ -461,10 +538,10 @@
 			"source": "SoM",
 			"page": 45,
 			"level": 6,
-			"featType": {
-
-			},
-			"traits": ["Magus"],
+			"featType": {},
+			"traits": [
+				"Magus"
+			],
 			"prerequisites": "{@action Arcane Cascade|SoM}, focus pool",
 			"entries": [
 				"When in {@action Arcane Cascade|SoM}, you can make yourself resistant to magic. You learn the {@spell cascade countermeasure|SoM} conflux spel. Increase the number of Focus Points in your focus pool by 1."
@@ -479,10 +556,11 @@
 				"unit": "action"
 			},
 			"level": 10,
-			"featType": {
-
-			},
-			"traits": ["Attack", "Magus"],
+			"featType": {},
+			"traits": [
+				"Attack",
+				"Magus"
+			],
 			"prerequisites": "{@action Spellstrike|SoM}",
 			"requirements": "Your last action was a successful {@action Spellstrike|SoM}, and the spell you cast dealt energy damage (acid, cold, electricity, fire, force, negative, positive, or sonic).",
 			"entries": [
@@ -496,9 +574,13 @@
 			"page": 195,
 			"level": 4,
 			"featType": {
-				"archetype": ["Cathartic Mage"]
+				"archetype": [
+					"Cathartic Mage"
+				]
 			},
-			"traits": ["Archetype"],
+			"traits": [
+				"Archetype"
+			],
 			"prerequisites": "{@feat Cathartic Mage Dedication|SoM}",
 			"entries": [
 				"You learn the focus spell listed under your emotion's entry.",
@@ -511,9 +593,15 @@
 			"page": 194,
 			"level": 2,
 			"featType": {
-				"archetype": ["Cathartic Mage"]
+				"archetype": [
+					"Cathartic Mage"
+				]
 			},
-			"traits": ["Uncommon", "Archetype", "Dedication"],
+			"traits": [
+				"Uncommon",
+				"Archetype",
+				"Dedication"
+			],
 			"prerequisites": "Cha 14 or ability to cast spells from spell slots",
 			"entries": [
 				"You've learned to harness a particular emotion and mix it into your magic. Choose an emotion from the Emotional States section to be your catharsis emotion.",
@@ -528,7 +616,11 @@
 						"unit": "reaction",
 						"number": 1
 					},
-					"traits": ["concentrate", "emotion", "mental"],
+					"traits": [
+						"concentrate",
+						"emotion",
+						"mental"
+					],
 					"trigger": "determined by your catharsis emotion",
 					"entries": [
 						"You gain the catharsis activation effects listed for your catharsis emotion. You gain that emotion's emotional fervor benefits for 3 rounds. When your emotional fervor ends, you suffer the listed emotional fallout. After using Catharsis, you can't use it again until you use the Settle Emotions activity."
@@ -537,7 +629,11 @@
 				{
 					"type": "ability",
 					"name": "Settle Emotions",
-					"traits": ["concentrate", "emotion", "mental"],
+					"traits": [
+						"concentrate",
+						"emotion",
+						"mental"
+					],
 					"entries": [
 						"You spend 10 minutes using techniques you've developed to calm your emotions and bring them back under control. This allows you to access your Catharsis again."
 					]
@@ -558,25 +654,27 @@
 			"source": "SoM",
 			"page": 48,
 			"level": 12,
-			"featType": {
-
-			},
-			"traits": ["Magus"],
+			"featType": {},
+			"traits": [
+				"Magus"
+			],
 			"prerequisites": "conflux spells",
 			"entries": [
 				"You imagine how you'll weave magic and combat into future battles, improving your focus. If you have spent at least 2 Focus Points since the last time you {@action Refocus||Refocused}, you recover 2 Focus Points when you {@action Refocus} instead of 1."
 			],
-			"leadsTo": ["Conflux Wellspring|SoM"]
+			"leadsTo": [
+				"Conflux Wellspring|SoM"
+			]
 		},
 		{
 			"name": "Conflux Wellspring",
 			"source": "SoM",
 			"page": 49,
 			"level": 18,
-			"featType": {
-
-			},
-			"traits": ["Magus"],
+			"featType": {},
+			"traits": [
+				"Magus"
+			],
 			"prerequisites": "{@feat Conflux Focus|SoM}",
 			"entries": [
 				"You've achieved perfect magical and physical balance, allowing magic to flow into and through you more easily.",
@@ -592,10 +690,12 @@
 				"unit": "action"
 			},
 			"level": 8,
-			"featType": {
-
-			},
-			"traits": ["Eidolon", "Evolution", "Summoner"],
+			"featType": {},
+			"traits": [
+				"Eidolon",
+				"Evolution",
+				"Summoner"
+			],
 			"requirements": "Your eidolon has a creature {@condition grabbed} or {@condition restrained}.",
 			"entries": [
 				"Your eidolon constricts the creature, dealing bludgeoning damage equal to your eidolon's level plus its Strength modifier, with a basic Fortitude save against your spell DC."
@@ -606,10 +706,13 @@
 			"source": "SoM",
 			"page": 47,
 			"level": 10,
-			"featType": {
-
-			},
-			"traits": ["Evocation", "Light", "Magus", "Visual"],
+			"featType": {},
+			"traits": [
+				"Evocation",
+				"Light",
+				"Magus",
+				"Visual"
+			],
 			"prerequisites": "{@action Arcane Cascade|SoM}, {@class Magus|SoM|sparkling targe|sparkling targe|SoM} hybrid study",
 			"requirements": "You are in {@action Arcane Cascade|SoM} stance.",
 			"entries": [
@@ -634,10 +737,12 @@
 				"unit": "action"
 			},
 			"level": 4,
-			"featType": {
-
-			},
-			"traits": ["Eidolon", "Evolution", "Summoner"],
+			"featType": {},
+			"traits": [
+				"Eidolon",
+				"Evolution",
+				"Summoner"
+			],
 			"entries": [
 				"Your eidolon blocks attacks against you. After your eidolon uses this action, you gain a +2 circumstance bonus to AC until the beginning of your next turn. This bonus applies only while you're within your eidolon's reach (in most cases, this means your eidolon is adjacent to you or in your space)."
 			]
@@ -651,10 +756,10 @@
 				"unit": "action"
 			},
 			"level": 4,
-			"featType": {
-
-			},
-			"traits": ["Magus"],
+			"featType": {},
+			"traits": [
+				"Magus"
+			],
 			"prerequisites": "{@action Arcane Cascade|SoM}, {@class Magus|SoM|inexorable iron|inexorable iron|SoM} hybrid study, {@action Spellstrike|SoM}",
 			"requirements": "You are in {@action Arcane Cascade|SoM} stance and your {@action Spellstrike|SoM} is charged.",
 			"entries": [
@@ -666,10 +771,10 @@
 			"source": "SoM",
 			"page": 47,
 			"level": 10,
-			"featType": {
-
-			},
-			"traits": ["Magus"],
+			"featType": {},
+			"traits": [
+				"Magus"
+			],
 			"prerequisites": "dimensional assault focus spell, {@class Magus|SoM|laughing shadow|laughing shadow|SoM} hybrid study",
 			"entries": [
 				"You take advantage of teleportation to better hide your position. When you cast dimensional assault, you're affected by an {@spell invisibility} spell at the end of the teleport. You can choose not to make the {@action Strike} that is normally part of dimensional assault. If you do make the {@action Strike}, your invisibility ends after the {@action Strike}, as normal for invisibility."
@@ -681,9 +786,13 @@
 			"page": 226,
 			"level": 6,
 			"featType": {
-				"archetype": ["Shadowcaster"]
+				"archetype": [
+					"Shadowcaster"
+				]
 			},
-			"traits": ["Archetype"],
+			"traits": [
+				"Archetype"
+			],
 			"prerequisites": "{@feat Shadowcaster Dedication|SoM}",
 			"entries": [
 				"You've delved deeper into the mysteries of shadow and become blessed with magical power that increases your skills in the arts of deception and persuasion. You gain the {@spell inscrutable mask|SoM} domain spell. Increase the number of Focus Points in your focus pool by 1."
@@ -698,10 +807,10 @@
 				"unit": "action"
 			},
 			"level": 16,
-			"featType": {
-
-			},
-			"traits": ["Magus"],
+			"featType": {},
+			"traits": [
+				"Magus"
+			],
 			"prerequisites": "{@action Spellstrike|SoM}",
 			"requirements": "Your {@action Spellstrike|SoM} is charged.",
 			"entries": [
@@ -717,10 +826,10 @@
 				"unit": "action"
 			},
 			"level": 4,
-			"featType": {
-
-			},
-			"traits": ["Magus"],
+			"featType": {},
+			"traits": [
+				"Magus"
+			],
 			"prerequisites": "{@class Magus|SoM|laughing shadow|laughing shadow|SoM} hybrid study, {@action Spellstrike|SoM}",
 			"requirements": "You're in {@action Arcane Cascade|SoM} stance and have a hand free.",
 			"entries": [
@@ -737,9 +846,15 @@
 			},
 			"level": 4,
 			"featType": {
-				"archetype": ["Elementalist"]
+				"archetype": [
+					"Elementalist"
+				]
 			},
-			"traits": ["Archetype", "Metamagic", "Water"],
+			"traits": [
+				"Archetype",
+				"Metamagic",
+				"Water"
+			],
 			"prerequisites": "{@feat Elementalist Dedication|SoM}",
 			"entries": [
 				"You enhance your spell with elemental water, soaking the target. If the next action you use is to {@action Cast a Spell} targeting a single creature, you soak the target of the spell with water.",
@@ -756,9 +871,13 @@
 			},
 			"level": 10,
 			"featType": {
-				"archetype": ["Geomancer"]
+				"archetype": [
+					"Geomancer"
+				]
 			},
-			"traits": ["Archetype"],
+			"traits": [
+				"Archetype"
+			],
 			"prerequisites": "{@feat Geomancer Dedication|SoM}, expert in {@skill Nature}",
 			"requirements": "You gained a terrain attunement benefit this turn, and it matched the terrain you're in.",
 			"entries": [
@@ -770,10 +889,11 @@
 			"source": "SoM",
 			"page": 69,
 			"level": 4,
-			"featType": {
-
-			},
-			"traits": ["Evolution", "Summoner"],
+			"featType": {},
+			"traits": [
+				"Evolution",
+				"Summoner"
+			],
 			"prerequisites": "{@feat Energy Heart|SoM}",
 			"entries": [
 				"A second energy dwells in your eidolon. Choose an additional energy damage type. Your unarmed attack that deals energy damage gains the {@trait versatile} trait for the second energy damage type, and your eidolon gains resistance to the second type of energy damage equal to half your level."
@@ -784,10 +904,10 @@
 			"source": "SoM",
 			"page": 67,
 			"level": 1,
-			"featType": {
-
-			},
-			"traits": ["Summoner"],
+			"featType": {},
+			"traits": [
+				"Summoner"
+			],
 			"entries": [
 				"You and your eidolon have some skills you practice on your own. Choose two skills. Your eidolon becomes trained in one of those skills and you become trained in the other skill. At 7th level, you each become an expert in the chosen skills.",
 				"These skill proficiencies are not shared between you and your eidolon."
@@ -802,10 +922,10 @@
 				"unit": "free"
 			},
 			"level": 16,
-			"featType": {
-
-			},
-			"traits": ["Summoner"],
+			"featType": {},
+			"traits": [
+				"Summoner"
+			],
 			"trigger": "Your turn begins.",
 			"entries": [
 				"You maintain a spell with hardly a thought. You immediately gain the effects of the {@action Sustain a Spell} action, allowing you to extend the duration of one of your active spells."
@@ -820,10 +940,12 @@
 				"unit": "reaction"
 			},
 			"level": 6,
-			"featType": {
-
-			},
-			"traits": ["Eidolon", "Evolution", "Summoner"],
+			"featType": {},
+			"traits": [
+				"Eidolon",
+				"Evolution",
+				"Summoner"
+			],
 			"trigger": "A creature within your eidolon's reach uses a manipulate action or a move action, makes a ranged attack, or leaves a square during a move action it's using.",
 			"entries": [
 				"Your eidolon makes a melee {@action Strike} against the triggering creature. If the attack is a critical hit and the trigger was a manipulate action, your eidolon disrupts that action.",
@@ -835,10 +957,11 @@
 			"source": "SoM",
 			"page": 69,
 			"level": 6,
-			"featType": {
-
-			},
-			"traits": ["Evolution", "Summoner"],
+			"featType": {},
+			"traits": [
+				"Evolution",
+				"Summoner"
+			],
 			"entries": [
 				"Your eidolon gains the {@spell eidolon's wrath|SoM} focus spell, which it casts, instead of you. You determine the damage type when you gain the feat: acid, cold, electricity, fire, negative, positive, or sonic. If your eidolon is a celestial, fiend, or monitor with an alignment other than true neutral, you can choose a damage type in its alignment. Increase the number of Focus Points in your focus pool by 1. As normal, your eidolon shares your Focus Points."
 			]
@@ -849,9 +972,13 @@
 			"page": 206,
 			"level": 4,
 			"featType": {
-				"archetype": ["Elementalist"]
+				"archetype": [
+					"Elementalist"
+				]
 			},
-			"traits": ["Archetype"],
+			"traits": [
+				"Archetype"
+			],
 			"prerequisites": "{@feat Elementalist Dedication|SoM}, {@feat Familiar|SoM}",
 			"entries": [
 				"Your familiar becomes an elemental spirit capable of taking on aspects of the four elements: air, earth, fire, or water.",
@@ -874,9 +1001,15 @@
 			"page": 206,
 			"level": 2,
 			"featType": {
-				"archetype": ["Elementalist"]
+				"archetype": [
+					"Elementalist"
+				]
 			},
-			"traits": ["Archetype", "Class", "Dedication"],
+			"traits": [
+				"Archetype",
+				"Class",
+				"Dedication"
+			],
 			"prerequisites": "elemental magic",
 			"entries": [
 				"Each day when you make your daily preparations, you can attune yourself to one element of your choice: air, earth, fire, or water. You gain resistance equal to half your level (minimum 1 resistance) against damage dealt by effects with your attuned {@trait elemental} trait. This attunement lasts until you next make your daily preparations."
@@ -898,16 +1031,26 @@
 			"page": 240,
 			"level": 2,
 			"featType": {
-				"skill": ["Crafting"],
-				"archetype": ["Runelord"]
+				"skill": [
+					"Crafting"
+				],
+				"archetype": [
+					"Runelord"
+				]
 			},
-			"traits": ["Archetype", "Downtime", "Skill"],
+			"traits": [
+				"Archetype",
+				"Downtime",
+				"Skill"
+			],
 			"prerequisites": "{@feat Runelord Dedication|SoM}, trained in {@skill Crafting}",
 			"entries": [
 				"You discover the secrets to embedding aeon stones into your flesh. You spend 1 day attuning to an aeon stone and physically embedding it in your skin. While the stone is embedded this way, you gain the benefits of the aeon stone as if it were orbiting above your head, but it protects the stone from being noticed or stolen as easily. Aeon stones in your flesh must be invested to function, as usual.",
 				"You can also use this activity to safely remove an embedded aeon stone in 1 day. Someone without this feat can attempt to surgically remove it safely by spending 1 day and succeeding at a DC 30 {@skill Medicine} check, or hastily by simply ripping it from a corpse."
 			],
-			"leadsTo": ["Aeon Resonance|SoM"]
+			"leadsTo": [
+				"Aeon Resonance|SoM"
+			]
 		},
 		{
 			"name": "Emergency Targe",
@@ -918,10 +1061,10 @@
 				"unit": "reaction"
 			},
 			"level": 4,
-			"featType": {
-
-			},
-			"traits": ["Magus"],
+			"featType": {},
+			"traits": [
+				"Magus"
+			],
 			"prerequisites": "{@class Magus|SoM|sparkling targe|sparkling targe|SoM} hybrid study",
 			"trigger": "An enemy hits you with a melee {@action Strike} or a melee spell attack roll, or you fail a save against an enemy's spell.",
 			"requirements": "You are wielding a shield or have the {@spell shield} spell prepared.",
@@ -934,24 +1077,29 @@
 			"source": "SoM",
 			"page": 67,
 			"level": 1,
-			"featType": {
-
-			},
-			"traits": ["Evolution", "Summoner"],
+			"featType": {},
+			"traits": [
+				"Evolution",
+				"Summoner"
+			],
 			"entries": [
 				"Your eidolon's heart beats with energy. Choose an energy damage type other than force. One of its unarmed attacks changes its damage type to the chosen type, and it gains resistance to that type equal to half your level (minimum 1)."
 			],
-			"leadsTo": ["Dual Energy Heart|SoM", "Energy Resistance|SoM"]
+			"leadsTo": [
+				"Dual Energy Heart|SoM",
+				"Energy Resistance|SoM"
+			]
 		},
 		{
 			"name": "Energy Resistance",
 			"source": "SoM",
 			"page": 71,
 			"level": 8,
-			"featType": {
-
-			},
-			"traits": ["Evolution", "Summoner"],
+			"featType": {},
+			"traits": [
+				"Evolution",
+				"Summoner"
+			],
 			"prerequisites": "{@feat Energy Heart|SoM}",
 			"entries": [
 				"Your eidolon has stronger resistance. Its resistance from {@feat Energy Heart|SoM} and {@feat Dual Energy Heart|SoM} increase to your level."
@@ -962,10 +1110,10 @@
 			"source": "SoM",
 			"page": 42,
 			"level": 2,
-			"featType": {
-
-			},
-			"traits": ["Magus"],
+			"featType": {},
+			"traits": [
+				"Magus"
+			],
 			"prerequisites": "a familiar",
 			"entries": [
 				"You infuse your familiar with additional magical energy. You can select four familiar or master abilities each day, instead of two."
@@ -976,10 +1124,10 @@
 			"source": "SoM",
 			"page": 73,
 			"level": 20,
-			"featType": {
-
-			},
-			"traits": ["Summoner"],
+			"featType": {},
+			"traits": [
+				"Summoner"
+			],
 			"entries": [
 				"Your link with your eidolon is so intense that you continuously reinforce its abilities. You are permanently {@condition quickened}; you can use your extra action only to cast {@spell boost eidolon|SoM} or {@spell reinforce eidolon|SoM}. While in exploration mode, you can declare that you are also continually casting {@spell boost eidolon|SoM} or {@spell reinforce eidolon|SoM} even while using a different exploration activity. If you do, even before your first turn in a combat encounter, that cantrip is active as if you had cast it on your previous turn."
 			]
@@ -989,10 +1137,11 @@
 			"source": "SoM",
 			"page": 73,
 			"level": 16,
-			"featType": {
-
-			},
-			"traits": ["Evolution", "Summoner"],
+			"featType": {},
+			"traits": [
+				"Evolution",
+				"Summoner"
+			],
 			"entries": [
 				"Your eidolon has enhanced senses. It gains a +2 circumstance bonus to {@skill Perception}, and can't be flanked except by creatures that are higher level than it. It can see {@condition invisible} creatures and objects; they appear translucent and are {@condition concealed}. When your eidolon moves within 30 feet of an illusion that can be {@quickref disbelieved|CRB|2|disbelieving illusions|0}, the GM rolls a secret check to {@quickref disbelieve|CRB|2|disbelieving illusions|0} it, even if your eidolon didn't spend an action to {@action Interact}."
 			]
@@ -1002,10 +1151,11 @@
 			"source": "SoM",
 			"page": 67,
 			"level": 1,
-			"featType": {
-
-			},
-			"traits": ["Evolution", "Summoner"],
+			"featType": {},
+			"traits": [
+				"Evolution",
+				"Summoner"
+			],
 			"entries": [
 				"Your eidolon evolves more acute senses. Your eidolon gains {@ability low-light vision} and {@ability darkvision}, as well as {@ability scent} as an imprecise sense with a range of 30 feet."
 			]
@@ -1015,10 +1165,10 @@
 			"source": "SoM",
 			"page": 43,
 			"level": 2,
-			"featType": {
-
-			},
-			"traits": ["Magus"],
+			"featType": {},
+			"traits": [
+				"Magus"
+			],
 			"prerequisites": "{@action Spellstrike|SoM}",
 			"entries": [
 				"You've adapted a wider array of spells to work with your attacks. Rather than needing to use a spell that has a spell attack roll for a {@action Spellstrike|SoM}, you can use a harmful spell that can target a creature or that has an area of a burst, cone, or line (abiding by any other restrictions of {@action Spellstrike|SoM}). When you {@action Cast a Spell} that doesn't have a spell attack roll as part of a {@action Spellstrike|SoM}, it works in the following ways.",
@@ -1039,14 +1189,20 @@
 			"page": 195,
 			"level": 12,
 			"featType": {
-				"archetype": ["Cathartic Mage"]
+				"archetype": [
+					"Cathartic Mage"
+				]
 			},
-			"traits": ["Archetype"],
+			"traits": [
+				"Archetype"
+			],
 			"prerequisites": "{@feat Basic Cathartic Spellcasting|SoM}",
 			"entries": [
 				"You gain the {@quickref expert spellcasting benefits|CRB|0|spellcasting archetypes}."
 			],
-			"leadsTo": ["Master Cathartic Spellcasting|SoM"]
+			"leadsTo": [
+				"Master Cathartic Spellcasting|SoM"
+			]
 		},
 		{
 			"name": "Expert Combat Eidolon",
@@ -1054,9 +1210,13 @@
 			"page": 77,
 			"level": 12,
 			"featType": {
-				"archetype": ["Summoner"]
+				"archetype": [
+					"Summoner"
+				]
 			},
-			"traits": ["Archetype"],
+			"traits": [
+				"Archetype"
+			],
 			"prerequisites": "{@feat Summoner Dedication|SoM}",
 			"entries": [
 				"Your eidolon advances its capabilities in combat. Your eidolon becomes an expert in unarmed attacks. If you are an expert in unarmored defense, your eidolon also becomes an expert in unarmored defense. If you have weapon specialization, your eidolon also gains weapon specialization."
@@ -1068,12 +1228,20 @@
 			"page": 75,
 			"level": 12,
 			"featType": {
-				"archetype": ["Magus"]
+				"archetype": [
+					"Magus"
+				]
 			},
-			"traits": ["Archetype"],
+			"traits": [
+				"Archetype"
+			],
 			"prerequisites": "{@feat Basic Magus Spellcasting|SoM}, master in {@skill Arcana}",
-			"entries": ["You gain the expert bounded spellcasting benefits."],
-			"leadsTo": ["Master Magus Spellcasting|SoM"]
+			"entries": [
+				"You gain the expert bounded spellcasting benefits."
+			],
+			"leadsTo": [
+				"Master Magus Spellcasting|SoM"
+			]
 		},
 		{
 			"name": "Expert Spellcasting",
@@ -1081,10 +1249,18 @@
 			"page": 219,
 			"level": 12,
 			"featType": {},
-			"traits": ["Rare", "Pervasive Magic", "[Class]"],
+			"traits": [
+				"Rare",
+				"Pervasive Magic",
+				"[Class]"
+			],
 			"prerequisites": "{@feat Basic Spellcasting|SoM}",
-			"entries": ["You gain the expert spellcasting archetype benefits."],
-			"leadsTo": ["Master Spellcasting|SoM"]
+			"entries": [
+				"You gain the expert spellcasting archetype benefits."
+			],
+			"leadsTo": [
+				"Master Spellcasting|SoM"
+			]
 		},
 		{
 			"name": "Expert Summoner Spellcasting",
@@ -1092,22 +1268,30 @@
 			"page": 77,
 			"level": 12,
 			"featType": {
-				"archetype": ["Summoner"]
+				"archetype": [
+					"Summoner"
+				]
 			},
-			"traits": ["Archetype"],
+			"traits": [
+				"Archetype"
+			],
 			"prerequisites": "{@feat Basic Summoner Spellcasting|SoM}, master in the skill associated with your eidolon's tradition",
-			"entries": ["You gain the expert bounded spellcasting benefits."],
-			"leadsTo": ["Master Summoner Spellcasting|SoM"]
+			"entries": [
+				"You gain the expert bounded spellcasting benefits."
+			],
+			"leadsTo": [
+				"Master Summoner Spellcasting|SoM"
+			]
 		},
 		{
 			"name": "Extend Boost",
 			"source": "SoM",
 			"page": 67,
 			"level": 1,
-			"featType": {
-
-			},
-			"traits": ["Summoner"],
+			"featType": {},
+			"traits": [
+				"Summoner"
+			],
 			"entries": [
 				"You can increase the duration of your eidolon's boosts. You learn the {@spell extend boost|SoM} link spell. Increase the number of Focus Points in your focus pool by 1."
 			]
@@ -1117,14 +1301,16 @@
 			"source": "SoM",
 			"page": 42,
 			"level": 1,
-			"featType": {
-
-			},
-			"traits": ["Magus"],
+			"featType": {},
+			"traits": [
+				"Magus"
+			],
 			"entries": [
 				"You make a pact with a creature that helps you with your martial endeavors and assists your spellcasting. You gain a {@filter familiar|companionsfamiliars||Type=Familiar}."
 			],
-			"leadsTo": ["Elemental Familiar|SoM"]
+			"leadsTo": [
+				"Elemental Familiar|SoM"
+			]
 		},
 		{
 			"name": "Fiery Retort",
@@ -1135,10 +1321,12 @@
 				"unit": "reaction"
 			},
 			"level": 8,
-			"featType": {
-
-			},
-			"traits": ["Druid", "Evocation", "Fire"],
+			"featType": {},
+			"traits": [
+				"Druid",
+				"Evocation",
+				"Fire"
+			],
 			"prerequisites": "flame order",
 			"frequency": "once per minute",
 			"trigger": "An opponent adjacent to you hits you with a melee weapon or a melee unarmed attack.",
@@ -1151,10 +1339,10 @@
 			"source": "SoM",
 			"page": 198,
 			"level": 1,
-			"featType": {
-
-			},
-			"traits": ["Druid"],
+			"featType": {},
+			"traits": [
+				"Druid"
+			],
 			"prerequisites": "flame order",
 			"entries": [
 				"A lifetime of proximity to flames has inured your lungs and eyes to smoke. You can breathe normally in areas of ash and smoke without risk of suffocation, and you ignore the {@condition concealed} condition from smoke. You need only a successful DC {@flatDC 10} flat check to recover from {@condition persistent damage ||persistent fire damage}, rather than DC 15 (and the DC when receiving particularly effective assistance is 5 instead of 10)."
@@ -1165,10 +1353,10 @@
 			"source": "SoM",
 			"page": 199,
 			"level": 4,
-			"featType": {
-
-			},
-			"traits": ["Druid"],
+			"featType": {},
+			"traits": [
+				"Druid"
+			],
 			"prerequisites": "flame order",
 			"entries": [
 				"Your connection to heat and flame means that fire is reluctant to bring its full force to bear against you.",
@@ -1181,9 +1369,15 @@
 			"page": 209,
 			"level": 2,
 			"featType": {
-				"archetype": ["Flexible Spellcaster"]
+				"archetype": [
+					"Flexible Spellcaster"
+				]
 			},
-			"traits": ["Archetype", "Class", "Dedication"],
+			"traits": [
+				"Archetype",
+				"Class",
+				"Dedication"
+			],
 			"prerequisites": "flexible spell preparation",
 			"entries": [
 				"You now have four cantrips per day instead of three. At 4th level, you have five cantrips per day instead of four."
@@ -1194,10 +1388,10 @@
 			"source": "SoM",
 			"page": 71,
 			"level": 12,
-			"featType": {
-
-			},
-			"traits": ["Summoner"],
+			"featType": {},
+			"traits": [
+				"Summoner"
+			],
 			"entries": [
 				"You've learned how to transmogrify your eidolon to suit the circumstances of the day. Each day, choose one {@filter evolution feat of 6th level or lower|feats||level=[0;6]|General=Evolution} during your daily preparations. Your eidolon gains that feat until your next daily preparations."
 			]
@@ -1207,10 +1401,10 @@
 			"source": "SoM",
 			"page": 43,
 			"level": 2,
-			"featType": {
-
-			},
-			"traits": ["Magus"],
+			"featType": {},
+			"traits": [
+				"Magus"
+			],
 			"prerequisites": "focus pool",
 			"entries": [
 				"You can turn your attack into an unerring blur of force. You learn the {@spell force fang|SoM} conflux spell. Increase the number of Focus Points in your focus pool by 1."
@@ -1222,9 +1416,13 @@
 			"page": 241,
 			"level": 10,
 			"featType": {
-				"archetype": ["Runelord"]
+				"archetype": [
+					"Runelord"
+				]
 			},
-			"traits": ["Archetype"],
+			"traits": [
+				"Archetype"
+			],
 			"prerequisites": "{@feat Runelord Dedication|SoM}",
 			"requirements": "Your arcane bonded item is a polearm.",
 			"entries": [
@@ -1237,10 +1435,12 @@
 			"source": "SoM",
 			"page": 46,
 			"level": 8,
-			"featType": {
-
-			},
-			"traits": ["Arcane", "Magus", "Transmutation"],
+			"featType": {},
+			"traits": [
+				"Arcane",
+				"Magus",
+				"Transmutation"
+			],
 			"prerequisites": "{@action Spellstrike|SoM}",
 			"entries": [
 				"When you prepare a staff, you can hold it up to a weapon to merge the two items. You can switch the fused item's form from the weapon to the staff or vice versa as a single action, which has the {@trait concentrate} trait. When the item is in staff form, you can {@action Cast a Spell||Cast the Spells} from the staff and benefit from any other abilities the staff grants. The staff and the weapon share their fundamental runes, using whichever weapon potency and whichever striking rune is higher level. They don't share any other runes or specific abilities.",
@@ -1255,9 +1455,14 @@
 			"page": 212,
 			"level": 2,
 			"featType": {
-				"archetype": ["Geomancer"]
+				"archetype": [
+					"Geomancer"
+				]
 			},
-			"traits": ["Archetype", "Dedication"],
+			"traits": [
+				"Archetype",
+				"Dedication"
+			],
 			"prerequisites": "trained in {@skill Nature}; ability to cast spells from spell slots; at least one spell with the {@trait air}, {@trait cold}, {@trait earth}, {@trait fire}, {@trait plant}, or {@trait water} trait",
 			"entries": [
 				"You feel a deep connection to the world no matter where you are, a phenomenon known as \"terrain attunement.\" When you expend a spell slot to cast a spell with a trait that corresponds to the type of terrain you are currently in (as listed below), you gain the terrain attunement effect for that type of terrain. The GM might determine an attunement applies as long as it's prevalent enough around you. For instance, you might be in aquatic terrain on a riverbank or on a boat. Similarly, one place might count as multiple types of terrain, such as a mountain in the far north being both arctic and mountain. In this case, you choose only one terrain attunement effect, even if the spell has traits that would apply to each terrain type.",
@@ -1299,24 +1504,30 @@
 				"unit": "action"
 			},
 			"level": 1,
-			"featType": {
-
-			},
-			"traits": ["Eidolon", "Evolution", "Move", "Summoner"],
+			"featType": {},
+			"traits": [
+				"Eidolon",
+				"Evolution",
+				"Move",
+				"Summoner"
+			],
 			"entries": [
 				"Your eidolon evolves wings, a buoyant body, or some other means to control descent. It glides slowly toward the ground, 5 feet down and up to 25 feet forward through the air. As long as it spends at least 1 action gliding each round and has not yet reached the ground, it remains in the air at the end of your turn."
 			],
-			"leadsTo": ["Airborne Form|SoM"]
+			"leadsTo": [
+				"Airborne Form|SoM"
+			]
 		},
 		{
 			"name": "Grasping Limbs",
 			"source": "SoM",
 			"page": 71,
 			"level": 12,
-			"featType": {
-
-			},
-			"traits": ["Evolution", "Summoner"],
+			"featType": {},
+			"traits": [
+				"Evolution",
+				"Summoner"
+			],
 			"entries": [
 				"Your eidolon grabs enemies. Choose one of the eidolon's unarmed attacks with the {@trait grapple} trait. It gains the {@ability Grab} action on that unarmed attack."
 			]
@@ -1330,10 +1541,11 @@
 				"unit": "action"
 			},
 			"level": 10,
-			"featType": {
-
-			},
-			"traits": ["Druid", "Earth"],
+			"featType": {},
+			"traits": [
+				"Druid",
+				"Earth"
+			],
 			"prerequisites": "stone order",
 			"requirements": "You're standing on earthen or stone ground.",
 			"entries": [
@@ -1345,10 +1557,10 @@
 			"source": "SoM",
 			"page": 49,
 			"level": 14,
-			"featType": {
-
-			},
-			"traits": ["Magus"],
+			"featType": {},
+			"traits": [
+				"Magus"
+			],
 			"prerequisites": "focus pool",
 			"entries": [
 				"You can speed yourself up to move and attack more swiftly. You learn the {@spell hasted assault|SoM} conflux spell. Increase the number of Focus Points in your focus pool by 1."
@@ -1359,14 +1571,17 @@
 			"source": "SoM",
 			"page": 71,
 			"level": 8,
-			"featType": {
-
-			},
-			"traits": ["Evolution", "Summoner"],
+			"featType": {},
+			"traits": [
+				"Evolution",
+				"Summoner"
+			],
 			"entries": [
 				"Your eidolon grows substantially. Your eidolon becomes Large, instead of its previous size, and its reach increases to 10 feet. This doesn't change any of its other statistics."
 			],
-			"leadsTo": ["Towering Size|SoM"]
+			"leadsTo": [
+				"Towering Size|SoM"
+			]
 		},
 		{
 			"name": "Hybrid Study Spell",
@@ -1374,9 +1589,13 @@
 			"page": 75,
 			"level": 4,
 			"featType": {
-				"archetype": ["Magus"]
+				"archetype": [
+					"Magus"
+				]
 			},
-			"traits": ["Archetype"],
+			"traits": [
+				"Archetype"
+			],
 			"prerequisites": "{@feat Magus Dedication|SoM}",
 			"entries": [
 				"Gain the conflux spell from a {@class Magus|SoM|hybrid study} of your choice. If you don't already have one, you gain a focus pool of 1 Focus Point, which you can {@action Refocus} by studying your spellbook and performing a physical regimen. You don't gain any of the hybrid study's other benefits."
@@ -1388,9 +1607,13 @@
 			"page": 195,
 			"level": 12,
 			"featType": {
-				"archetype": ["Cathartic Mage"]
+				"archetype": [
+					"Cathartic Mage"
+				]
 			},
-			"traits": ["Archetype"],
+			"traits": [
+				"Archetype"
+			],
 			"prerequisites": "{@feat Cathartic Mage Dedication|SoM}",
 			"entries": [
 				"When you use Catharsis, one ally within 30 feet gains the catharsis activation benefits in addition to you. If these benefits require an emotional focus, they use your emotional focus as they're experiencing an empathic imprint of your emotions. Depending on the activation benefit, it might be impossible to grant it to an ally; for instance, pride could only have an effect for an ally if both you and the ally critically failed the same saving throw against the same effect."
@@ -1402,9 +1625,13 @@
 			"page": 77,
 			"level": 4,
 			"featType": {
-				"archetype": ["Summoner"]
+				"archetype": [
+					"Summoner"
+				]
 			},
-			"traits": ["Archetype"],
+			"traits": [
+				"Archetype"
+			],
 			"prerequisites": "{@feat Summoner Dedication|SoM}",
 			"entries": [
 				"Your link to your eidolon becomes stronger, granting it a new ability. Your eidolon gains the initial ability for an eidolon of its type."
@@ -1415,10 +1642,10 @@
 			"source": "SoM",
 			"page": 202,
 			"level": 6,
-			"featType": {
-
-			},
-			"traits": ["Monk"],
+			"featType": {},
+			"traits": [
+				"Monk"
+			],
 			"prerequisites": "{@feat Stoked Flame Stance|SoM}",
 			"entries": [
 				"While you're in Stoked Flame Stance, you have cold and fire resistance equal to half your level, and any creature that hits you with an unarmed attack, tries to Grab or {@action Grapple} you, or otherwise touches you takes fire damage equal to your Wisdom modifier (minimum 1). A creature can take this damage no more than once per turn."
@@ -1434,9 +1661,14 @@
 			},
 			"level": 12,
 			"featType": {
-				"archetype": ["Wellspring Mage"]
+				"archetype": [
+					"Wellspring Mage"
+				]
 			},
-			"traits": ["Abjuration", "Archetype"],
+			"traits": [
+				"Abjuration",
+				"Archetype"
+			],
 			"prerequisites": "{@feat Wellspring Mage Dedication|SoM}",
 			"trigger": "A creature you can see Casts a Spell.",
 			"requirements": "You have an unexpended spell slot and can see the triggering spell's manifestations.",
@@ -1451,10 +1683,10 @@
 			"source": "SoM",
 			"page": 45,
 			"level": 6,
-			"featType": {
-
-			},
-			"traits": ["Magus"],
+			"featType": {},
+			"traits": [
+				"Magus"
+			],
 			"entries": [
 				"When you critically succeed at a {@action Recall Knowledge} check about a creature, you gain a +1 circumstance bonus to your next attack roll against the creature, to your AC against its next attack roll, and to your save against its next effect requiring a save. If you share this information with your allies, they gain the benefits as well. If not used, these bonuses end after 1 minute."
 			]
@@ -1464,10 +1696,10 @@
 			"source": "SoM",
 			"page": 73,
 			"level": 20,
-			"featType": {
-
-			},
-			"traits": ["Summoner"],
+			"featType": {},
+			"traits": [
+				"Summoner"
+			],
 			"prerequisites": "{@feat Master Summoner|SoM}",
 			"entries": [
 				"Your ability to summon extends past your other spellcasting. When you sacrifice a 9th-level spell slot to gain two summoning slots using {@feat Master Summoner|SoM}, you can use those slots to cast {@filter summoning spells|spells||Miscellaneous=Summoning|Level=!9} heightened to 10th level. You can't use these spell slots for any purpose other than casting the {@filter summoning spells|spells||Miscellaneous=Summoning|Level=1;2;3;4;5;6;7;8;9}, and you don't count as having 10th-level spell slots for other abilities or rules."
@@ -1478,10 +1710,10 @@
 			"source": "SoM",
 			"page": 69,
 			"level": 4,
-			"featType": {
-
-			},
-			"traits": ["Summoner"],
+			"featType": {},
+			"traits": [
+				"Summoner"
+			],
 			"entries": [
 				"You learn the {@spell lifelink surge|SoM} link spell. Increase the number of Focus Points in your focus pool by 1."
 			]
@@ -1491,25 +1723,27 @@
 			"source": "SoM",
 			"page": 71,
 			"level": 12,
-			"featType": {
-
-			},
-			"traits": ["Summoner"],
+			"featType": {},
+			"traits": [
+				"Summoner"
+			],
 			"prerequisites": "link spells",
 			"entries": [
 				"Your focus recovers faster. If you have spent at least 2 Focus Points since the last time you {@action Refocus||Refocused}, you recover 2 Focus Points when you {@action Refocus} instead of 1."
 			],
-			"leadsTo": ["Link Wellspring|SoM"]
+			"leadsTo": [
+				"Link Wellspring|SoM"
+			]
 		},
 		{
 			"name": "Link Wellspring",
 			"source": "SoM",
 			"page": 73,
 			"level": 18,
-			"featType": {
-
-			},
-			"traits": ["Summoner"],
+			"featType": {},
+			"traits": [
+				"Summoner"
+			],
 			"prerequisites": "{@feat Link Focus|SoM}",
 			"entries": [
 				"Your bond replenishes your focus. If you have spent at least 3 Focus Points since the last time you {@action Refocus||Refocused}, you recover 3 Focus Points when you {@action Refocus} instead of 1."
@@ -1524,10 +1758,12 @@
 				"unit": "action"
 			},
 			"level": 10,
-			"featType": {
-
-			},
-			"traits": ["Arcane", "Magus", "Transmutation"],
+			"featType": {},
+			"traits": [
+				"Arcane",
+				"Magus",
+				"Transmutation"
+			],
 			"prerequisites": "{@action Spellstrike|SoM}, {@class Magus|SoM|twisting tree|twisting tree|SoM} hybrid study",
 			"requirements": "You're wielding a staff.",
 			"entries": [
@@ -1539,10 +1775,13 @@
 			"source": "SoM",
 			"page": 48,
 			"level": 12,
-			"featType": {
-
-			},
-			"traits": ["Arcane", "Detection", "Divination", "Magus"],
+			"featType": {},
+			"traits": [
+				"Arcane",
+				"Detection",
+				"Divination",
+				"Magus"
+			],
 			"entries": [
 				"You have a literal sixth sense for ambient magic in your vicinity. You can sense the presence of magic auras as though you were always using a 1st-level {@spell detect magic} spell. This detects magic in your field of vision only. When you {@action Seek}, you gain the benefits of a 3rd-level {@spell detect magic} spell on things you see (in addition to the normal benefits of {@action Seek||Seeking}). You can turn this sense off and on with a free action at the start or the end of your turn."
 			]
@@ -1552,26 +1791,30 @@
 			"source": "SoM",
 			"page": 71,
 			"level": 8,
-			"featType": {
-
-			},
-			"traits": ["Evolution", "Summoner"],
+			"featType": {},
+			"traits": [
+				"Evolution",
+				"Summoner"
+			],
 			"prerequisites": "{@feat Magical Understudy|SoM}",
 			"entries": [
 				"Your eidolon gains more magic. Choose one 2nd-level spell and one 1st-level spell of your eidolon's tradition.",
 				"Your eidolon can cast them each once per day as innate spells. At every even level after you take this feat, your eidolon can swap one of these innate spells for a new innate spell that's 2 or more levels lower than your highest-level spell slot."
 			],
-			"leadsTo": ["Magical Master|SoM"]
+			"leadsTo": [
+				"Magical Master|SoM"
+			]
 		},
 		{
 			"name": "Magical Master",
 			"source": "SoM",
 			"page": 73,
 			"level": 18,
-			"featType": {
-
-			},
-			"traits": ["Evolution", "Summoner"],
+			"featType": {},
+			"traits": [
+				"Evolution",
+				"Summoner"
+			],
 			"prerequisites": "{@feat Magical Adept|SoM}",
 			"entries": [
 				"Your eidolon gains a bevy of lower-level spells. Choose an innate spell of your eidolon's tradition of each of the spell levels from 1 to 7 in which your eidolon doesn't currently have an innate spell from Magical Adept. Your eidolon can cast each once per day as innate spells. You can swap these spells at every even level, but your eidolon can never know more than one spell of each spell level 1 through 7."
@@ -1582,10 +1825,11 @@
 			"source": "SoM",
 			"page": 68,
 			"level": 2,
-			"featType": {
-
-			},
-			"traits": ["Evolution", "Summoner"],
+			"featType": {},
+			"traits": [
+				"Evolution",
+				"Summoner"
+			],
 			"entries": [
 				"Your eidolon evolves to cast spells. It gains the {@action Cast a Spell} activity and learns two cantrips of its tradition, which it can cast as innate spells."
 			],
@@ -1601,9 +1845,15 @@
 			"page": 75,
 			"level": 2,
 			"featType": {
-				"archetype": ["Magus"]
+				"archetype": [
+					"Magus"
+				]
 			},
-			"traits": ["Archetype", "Dedication", "Multiclass"],
+			"traits": [
+				"Archetype",
+				"Dedication",
+				"Multiclass"
+			],
 			"prerequisites": "Strength or Dexterity 14, Intelligence 14",
 			"entries": [
 				"You cast spells like a magus, gaining a spellbook with four common arcane cantrips of your choice. You gain the {@action Cast a Spell} activity. You can prepare two cantrips each day from your spellbook. Each time you gain a spell slot of a new level from the magus archetype, add a spell of that level or lower to your spellbook. You're trained in arcane spell attack rolls and spell DCs. Your key spellcasting ability for magus archetype spells is Intelligence, and they are arcane magus spells. You become trained in {@skill Arcana}; if you were already trained in {@skill Arcana}, you instead become trained in a skill of your choice.",
@@ -1629,10 +1879,10 @@
 				"unit": "action"
 			},
 			"level": 1,
-			"featType": {
-
-			},
-			"traits": ["Magus"],
+			"featType": {},
+			"traits": [
+				"Magus"
+			],
 			"prerequisites": "{@action Spellstrike|SoM}",
 			"entries": [
 				"You make an assessment informed by your knowledge of how a creature fights. Attempt a check to {@action Recall Knowledge} about a creature. You gain a +1 circumstance bonus to your check if you previously hit the creature with a {@action Strike} this turn. If your check is successful, recharge your {@action Spellstrike|SoM}. The subject of your check is temporarily immune to Magus's Analysis for 1 day."
@@ -1644,9 +1894,13 @@
 			"page": 195,
 			"level": 18,
 			"featType": {
-				"archetype": ["Cathartic Mage"]
+				"archetype": [
+					"Cathartic Mage"
+				]
 			},
-			"traits": ["Archetype"],
+			"traits": [
+				"Archetype"
+			],
 			"prerequisites": "{@feat Expert Cathartic Spellcasting|SoM}",
 			"entries": [
 				"You gain the {@quickref master spellcasting benefits|CRB|0|spellcasting archetypes}."
@@ -1658,11 +1912,17 @@
 			"page": 75,
 			"level": 18,
 			"featType": {
-				"archetype": ["Magus"]
+				"archetype": [
+					"Magus"
+				]
 			},
-			"traits": ["Archetype"],
+			"traits": [
+				"Archetype"
+			],
 			"prerequisites": "{@feat Expert Magus Spellcasting|SoM}, legendary in {@skill Arcana}",
-			"entries": ["You gain the master bounded spellcasting benefits."]
+			"entries": [
+				"You gain the master bounded spellcasting benefits."
+			]
 		},
 		{
 			"name": "Master Spellcasting",
@@ -1670,23 +1930,31 @@
 			"page": 219,
 			"level": 18,
 			"featType": {},
-			"traits": ["Rare", "Pervasive Magic", "[Class]"],
+			"traits": [
+				"Rare",
+				"Pervasive Magic",
+				"[Class]"
+			],
 			"prerequisites": "{@feat Expert Spellcasting|SoM}",
-			"entries": ["You gain the master spellcasting archetype benefits."]
+			"entries": [
+				"You gain the master spellcasting archetype benefits."
+			]
 		},
 		{
 			"name": "Master Summoner",
 			"source": "SoM",
 			"page": 69,
 			"level": 6,
-			"featType": {
-
-			},
-			"traits": ["Summoner"],
+			"featType": {},
+			"traits": [
+				"Summoner"
+			],
 			"entries": [
 				"During daily preparations, you can designate one of your spell slots to become two summoning slots of the same spell level, from which you can cast only {@filter summoning|spells||Miscellaneous=Summoning} or {@filter incarnate|spells||General=Incarnate} spells."
 			],
-			"leadsTo": ["Legendary Summoner|SoM"]
+			"leadsTo": [
+				"Legendary Summoner|SoM"
+			]
 		},
 		{
 			"name": "Master Summoner Spellcasting",
@@ -1694,11 +1962,17 @@
 			"page": 77,
 			"level": 18,
 			"featType": {
-				"archetype": ["Summoner"]
+				"archetype": [
+					"Summoner"
+				]
 			},
-			"traits": ["Archetype"],
+			"traits": [
+				"Archetype"
+			],
 			"prerequisites": "{@feat Expert Summoner Spellcasting|SoM}, legendary in the skill associated with your eidolon's tradition",
-			"entries": ["You gain the master bounded spellcasting benefits."]
+			"entries": [
+				"You gain the master bounded spellcasting benefits."
+			]
 		},
 		{
 			"name": "Meld Into Eidolon",
@@ -1709,10 +1983,10 @@
 				"unit": "action"
 			},
 			"level": 1,
-			"featType": {
-
-			},
-			"traits": ["Summoner"],
+			"featType": {},
+			"traits": [
+				"Summoner"
+			],
 			"entries": [
 				"Your physical form can combine with that of your eidolon, granting benefits but limiting your capabilities. You {@action Manifest Eidolon|SoM|Manifest your Eidolon}, but instead of summoning it into an adjacent open space, you become it. While Manifested in this way, you use its statistics, and you can't act except to direct it to use {@action Manifest Eidolon|SoM|Manifest an Eidolon} to unmanifest it. Since you can't act, you can't {@action Cast a Spell||Cast Spells}, activate or benefit from magic items that normally benefit you and not your eidolon, perform actions that have the {@trait tandem} trait, or use other abilities that require you, and not the eidolon, to act. Your can't be separately targeted while you are melded into it. When you reach 0 HP, your eidolon unmanifests, leaving your body behind, {@condition unconscious} and {@condition dying}."
 			]
@@ -1726,10 +2000,12 @@
 				"unit": "action"
 			},
 			"level": 10,
-			"featType": {
-
-			},
-			"traits": ["Eidolon", "Evolution", "Summoner"],
+			"featType": {},
+			"traits": [
+				"Eidolon",
+				"Evolution",
+				"Summoner"
+			],
 			"requirements": "Your eidolon hit the same enemy with two consecutive {@action Strike||Strikes} with its secondary attack this turn and dealt slashing damage with both.",
 			"entries": [
 				"Your eidolon rends its foes. It automatically deals the damage from its secondary attack to the enemy."
@@ -1745,9 +2021,13 @@
 			},
 			"level": 8,
 			"featType": {
-				"archetype": ["Elementalist"]
+				"archetype": [
+					"Elementalist"
+				]
 			},
-			"traits": ["Archetype"],
+			"traits": [
+				"Archetype"
+			],
 			"prerequisites": "{@feat Elementalist Dedication|SoM}",
 			"trigger": "You take damage from a foe's spell or magical ability with the air, earth, {@trait fire}, or {@trait water} trait.",
 			"entries": [
@@ -1764,10 +2044,12 @@
 				"unit": "action"
 			},
 			"level": 10,
-			"featType": {
-
-			},
-			"traits": ["Arcane", "Evocation", "Magus"],
+			"featType": {},
+			"traits": [
+				"Arcane",
+				"Evocation",
+				"Magus"
+			],
 			"prerequisites": "{@action Spellstrike|SoM}, {@class Magus|SoM|starlit span|starlit span|SoM} hybrid study",
 			"requirements": "You're wielding a ranged or thrown weapon, or have a ranged unarmed attack.",
 			"entries": [
@@ -1780,10 +2062,11 @@
 			"source": "SoM",
 			"page": 71,
 			"level": 8,
-			"featType": {
-
-			},
-			"traits": ["Evolution", "Summoner"],
+			"featType": {},
+			"traits": [
+				"Evolution",
+				"Summoner"
+			],
 			"prerequisites": "{@feat Shrink Down|SoM}",
 			"entries": [
 				"Your eidolon can shrink even further. When using {@feat Shrink Down|SoM}, your eidolon can reduce its size to Tiny."
@@ -1794,10 +2077,10 @@
 			"source": "SoM",
 			"page": 199,
 			"level": 4,
-			"featType": {
-
-			},
-			"traits": ["Druid"],
+			"featType": {},
+			"traits": [
+				"Druid"
+			],
 			"prerequisites": "wave order",
 			"entries": [
 				"Water flows around you, letting you cut through the waves as if born to it. You gain a swim Speed of 15 feet. If you already have a permanent swim Speed, swimming up or down isn't {@quickref difficult terrain||3|terrain}."
@@ -1812,10 +2095,13 @@
 				"unit": "free"
 			},
 			"level": 6,
-			"featType": {
-
-			},
-			"traits": ["Concentrate", "Manipulate", "Metamagic", "Summoner"],
+			"featType": {},
+			"traits": [
+				"Concentrate",
+				"Manipulate",
+				"Metamagic",
+				"Summoner"
+			],
 			"entries": [
 				"If the next action you take is to {@action Manifest Eidolon|SoM|Manifest your Eidolon} as a three-action activity, or to Cast a three-action summoning Spell, the creature appears in an explosion.",
 				"All creatures in a 10-foot emanation around the creature you summoned or manifested take {@damage 1d4} fire damage per spell level for a summoning spell, or {@dice 1d4} damage per 2 levels for Manifesting your Eidolon. If the creature you summoned or manifested has the acid, cold, electricity, fire, {@trait sonic}, or {@trait water} trait, the damage is that type instead (or cold damage for the {@trait water} trait). If the creature has more than one of these traits, you choose which damage type to deal."
@@ -1830,10 +2116,10 @@
 				"unit": "action"
 			},
 			"level": 12,
-			"featType": {
-
-			},
-			"traits": ["Magus"],
+			"featType": {},
+			"traits": [
+				"Magus"
+			],
 			"prerequisites": "{@action Spellstrike|SoM}",
 			"requirements": "Your {@action Spellstrike|SoM} is charged.",
 			"entries": [
@@ -1849,10 +2135,13 @@
 				"unit": "action"
 			},
 			"level": 6,
-			"featType": {
-
-			},
-			"traits": ["Concentrate", "Evolution", "Summoner", "Transmutation"],
+			"featType": {},
+			"traits": [
+				"Concentrate",
+				"Evolution",
+				"Summoner",
+				"Transmutation"
+			],
 			"prerequisites": "your eidolon is a phantom",
 			"entries": [
 				"Your eidolon phases out of reality slightly, gaining resistance to all damage (except force and negative) equal to half your level. It's not incorporeal, but it can't use {@action Strike||Strikes} or actions that require a fully physical form, such as {@action Grapple}, {@action Shove}, or {@action Trip}. Your eidolon can return to its normal form with a single action, which has the {@trait concentrate} trait."
@@ -1864,9 +2153,13 @@
 			"page": 240,
 			"level": 6,
 			"featType": {
-				"archetype": ["Runelord"]
+				"archetype": [
+					"Runelord"
+				]
 			},
-			"traits": ["Archetype"],
+			"traits": [
+				"Archetype"
+			],
 			"prerequisites": "{@feat Runelord Dedication|SoM}",
 			"entries": [
 				"Your connection to rune magic has revealed tricks to make polearms deadlier in your hands. You gain the critical specialization effects of polearms."
@@ -1881,10 +2174,10 @@
 				"unit": "reaction"
 			},
 			"level": 14,
-			"featType": {
-
-			},
-			"traits": ["Magus"],
+			"featType": {},
+			"traits": [
+				"Magus"
+			],
 			"prerequisites": "{@feat Spell Parry|SoM}",
 			"trigger": "You're targeted by a {@action Strike} or a spell attack roll, or you're about to roll a saving throw against a spell effect.",
 			"requirements": "You have one or more hands free.",
@@ -1901,10 +2194,11 @@
 				"unit": "reaction"
 			},
 			"level": 10,
-			"featType": {
-
-			},
-			"traits": ["Abjuration", "Summoner"],
+			"featType": {},
+			"traits": [
+				"Abjuration",
+				"Summoner"
+			],
 			"trigger": "You and your eidolon are in a damaging effect's area.",
 			"entries": [
 				"The power of your bond can protect you and your eidolon from harm. If you and your eidolon would take different amounts of damage from the area effect, you take the lower amount of damage instead of the greater amount of damage."
@@ -1920,10 +2214,13 @@
 				"unit": "action"
 			},
 			"level": 12,
-			"featType": {
-
-			},
-			"traits": ["Druid", "Concentrate", "Metamagic", "Water"],
+			"featType": {},
+			"traits": [
+				"Druid",
+				"Concentrate",
+				"Metamagic",
+				"Water"
+			],
 			"prerequisites": "wave order",
 			"entries": [
 				"You purify the water within a creature's body to cleanse them of illness. If the next action you use is to cast {@spell heal} targeting a single living creature, you can attempt to counteract a disease or poison affecting the target, in addition to the other benefits of heal. If you do, heal gains the {@trait water} trait."
@@ -1934,10 +2231,11 @@
 			"source": "SoM",
 			"page": 71,
 			"level": 10,
-			"featType": {
-
-			},
-			"traits": ["Evolution", "Summoner"],
+			"featType": {},
+			"traits": [
+				"Evolution",
+				"Summoner"
+			],
 			"entries": [
 				"Your eidolon has an attack that pushes away enemies.",
 				"Choose one of the eidolon's unarmed attacks with the {@trait shove} trait. It gains the {@ability Push} action for that attack."
@@ -1953,9 +2251,15 @@
 			},
 			"level": 16,
 			"featType": {
-				"archetype": ["Geomancer"]
+				"archetype": [
+					"Geomancer"
+				]
 			},
-			"traits": ["Archetype", "Concentrate", "Metamagic"],
+			"traits": [
+				"Archetype",
+				"Concentrate",
+				"Metamagic"
+			],
 			"prerequisites": "{@feat Geomancer Dedication|SoM}, legendary in {@skill Nature}",
 			"frequency": "once per day",
 			"requirements": "Your previous action was {@feat Attunement Shift|SoM}.",
@@ -1973,10 +2277,10 @@
 				"unit": "action"
 			},
 			"level": 1,
-			"featType": {
-
-			},
-			"traits": ["Magus"],
+			"featType": {},
+			"traits": [
+				"Magus"
+			],
 			"requirements": "You're holding a book.",
 			"entries": [
 				"You raise up the book you're holding and flip it open to defend yourself and expedite your studies. The book remains raised until the start of your next turn.",
@@ -1989,10 +2293,11 @@
 			"source": "SoM",
 			"page": 68,
 			"level": 2,
-			"featType": {
-
-			},
-			"traits": ["Evolution", "Summoner"],
+			"featType": {},
+			"traits": [
+				"Evolution",
+				"Summoner"
+			],
 			"entries": [
 				"Spines, flame jets, and holy blasts are just some of the ways your eidolon might strike from a distance. It gains a ranged unarmed attack with a range increment of 30 feet that deals {@dice 1d4} damage and has the {@trait magical} and {@trait propulsive} traits. When you select this feat, choose a damage type: acid, bludgeoning, cold, electricity, fire, negative, piercing, positive, or slashing.",
 				"If your eidolon is a celestial, fiend, or monitor with an alignment other than true neutral, you can choose a damage type in its alignment."
@@ -2008,9 +2313,13 @@
 			},
 			"level": 6,
 			"featType": {
-				"archetype": ["Soulforger"]
+				"archetype": [
+					"Soulforger"
+				]
 			},
-			"traits": ["Archetype"],
+			"traits": [
+				"Archetype"
+			],
 			"prerequisites": "{@feat Soulforger Dedication|SoM}",
 			"trigger": "You roll initiative or a hazard attacks you.",
 			"entries": [
@@ -2026,10 +2335,10 @@
 				"unit": "free"
 			},
 			"level": 10,
-			"featType": {
-
-			},
-			"traits": ["Magus"],
+			"featType": {},
+			"traits": [
+				"Magus"
+			],
 			"prerequisites": "{@action Spellstrike|SoM}",
 			"frequency": "once per day",
 			"entries": [
@@ -2045,10 +2354,10 @@
 				"unit": "reaction"
 			},
 			"level": 4,
-			"featType": {
-
-			},
-			"traits": ["Summoner"],
+			"featType": {},
+			"traits": [
+				"Summoner"
+			],
 			"trigger": "Your eidolon would take damage.",
 			"entries": [
 				"You abruptly dismiss your eidolon to reduce the damage it takes, though this makes summoning it again more difficult.",
@@ -2061,9 +2370,14 @@
 			"page": 213,
 			"level": 12,
 			"featType": {
-				"archetype": ["Geomancer"]
+				"archetype": [
+					"Geomancer"
+				]
 			},
-			"traits": ["Uncommon", "Archetype"],
+			"traits": [
+				"Uncommon",
+				"Archetype"
+			],
 			"prerequisites": "{@feat Geomancer Dedication|SoM}, master in {@skill Nature}",
 			"entries": [
 				"You've learned how to commune with the land to learn information. You learn the commune with nature ritual if you didn't know it already.",
@@ -2080,9 +2394,13 @@
 			},
 			"level": 12,
 			"featType": {
-				"archetype": ["Elementalist"]
+				"archetype": [
+					"Elementalist"
+				]
 			},
-			"traits": ["Archetype"],
+			"traits": [
+				"Archetype"
+			],
 			"prerequisites": "{@feat Elementalist Dedication|SoM}",
 			"trigger": "The spell attack roll for a foe's spell with an {@trait elemental} trait targeting you fails or critically fails.",
 			"entries": [
@@ -2098,10 +2416,13 @@
 				"unit": "action"
 			},
 			"level": 1,
-			"featType": {
-
-			},
-			"traits": ["Evocation", "Monk", "Stance", "Water"],
+			"featType": {},
+			"traits": [
+				"Evocation",
+				"Monk",
+				"Stance",
+				"Water"
+			],
 			"requirements": "You're unarmored.",
 			"entries": [
 				"You enter a stance of fluid grace as small amounts of water flow with your movements and attacks. You can make flowing wave attacks that deal {@damage 1d6} bludgeoning damage.",
@@ -2109,17 +2430,20 @@
 				"While in Reflective Ripple Stance, you gain a +1 circumstance bonus to {@skill Athletics} checks to {@action Disarm}, {@action Swim}, or {@action Trip}, and you gain a +2 circumstance bonus to your Reflex DC to avoid being Disarmed and Tripped."
 			],
 			"special": "This feat gains your choice of either the {@trait divine} or {@trait occult} trait, matching your ki spell tradition if possible.",
-			"leadsTo": ["Rippling Spin|SoM", "Wave Spiral|SoM"]
+			"leadsTo": [
+				"Rippling Spin|SoM",
+				"Wave Spiral|SoM"
+			]
 		},
 		{
 			"name": "Reinforce Eidolon",
 			"source": "SoM",
 			"page": 68,
 			"level": 2,
-			"featType": {
-
-			},
-			"traits": ["Summoner"],
+			"featType": {},
+			"traits": [
+				"Summoner"
+			],
 			"entries": [
 				"You buffer your eidolon. You gain the {@spell reinforce eidolon|SoM} link cantrip."
 			]
@@ -2129,10 +2453,11 @@
 			"source": "SoM",
 			"page": 72,
 			"level": 14,
-			"featType": {
-
-			},
-			"traits": ["Evolution", "Summoner"],
+			"featType": {},
+			"traits": [
+				"Evolution",
+				"Summoner"
+			],
 			"entries": [
 				"Your eidolon is resilient against attacks. It gains resistance to physical damage equal to its Constitution modifier."
 			]
@@ -2146,10 +2471,10 @@
 				"unit": "free"
 			},
 			"level": 16,
-			"featType": {
-
-			},
-			"traits": ["Magus"],
+			"featType": {},
+			"traits": [
+				"Magus"
+			],
 			"prerequisites": "{@action Arcane Cascade|SoM}",
 			"trigger": "You use {@action Arcane Cascade|SoM}.",
 			"entries": [
@@ -2166,9 +2491,9 @@
 			},
 			"level": 1,
 			"featType": {
-
-
-				"skill": ["Intimidation"]
+				"skill": [
+					"Intimidation"
+				]
 			},
 			"traits": [
 				"Rare",
@@ -2204,10 +2529,10 @@
 				"unit": "reaction"
 			},
 			"level": 8,
-			"featType": {
-
-			},
-			"traits": ["Monk"],
+			"featType": {},
+			"traits": [
+				"Monk"
+			],
 			"prerequisites": "{@feat Reflective Ripple Stance|SoM}",
 			"trigger": "You are hit by a physical melee attack by an attacker you can see that's in reach.",
 			"requirements": "You're in Reflective Ripple Stance.",
@@ -2225,9 +2550,15 @@
 			},
 			"level": 10,
 			"featType": {
-				"archetype": ["Elementalist"]
+				"archetype": [
+					"Elementalist"
+				]
 			},
-			"traits": ["Archetype", "Earth", "Metamagic"],
+			"traits": [
+				"Archetype",
+				"Earth",
+				"Metamagic"
+			],
 			"prerequisites": "{@feat Elementalist Dedication|SoM}",
 			"entries": [
 				"You enhance your spell with elemental earth, causing chunks of stone to litter the ground. If the next action you use is to {@action Cast a Spell||Cast a non-cantrip Spell} that affects an area, a number of 5-foot squares in the area equal to the spell level become {@quickref difficult terrain||3|terrain} for 1 round. These squares must be on the ground, and the entire area of {@quickref difficult terrain||3|terrain} must be contiguous. The spell gains the {@trait earth} trait."
@@ -2243,16 +2574,23 @@
 			},
 			"level": 6,
 			"featType": {
-				"archetype": ["Geomancer"]
+				"archetype": [
+					"Geomancer"
+				]
 			},
-			"traits": ["Archetype", "Stance"],
+			"traits": [
+				"Archetype",
+				"Stance"
+			],
 			"prerequisites": "{@feat Geomancer Dedication|SoM}, expert in {@skill Nature}",
 			"requirements": "You gained a terrain attunement benefit this turn.",
 			"entries": [
 				"You enter a stance that makes it difficult to move around you. Each square adjacent to you becomes {@quickref difficult terrain||3|terrain} that matches the terrain attunement you gained (rime forms in an arctic terrain, momentary undergrowth shoots up in a forest terrain, and so on). You ignore this {@quickref difficult terrain||3|terrain}.",
 				"This stance ends if you move into a different type of terrain."
 			],
-			"leadsTo": ["Shifting Terrain|SoM"]
+			"leadsTo": [
+				"Shifting Terrain|SoM"
+			]
 		},
 		{
 			"name": "Runelord Dedication",
@@ -2260,9 +2598,16 @@
 			"page": 240,
 			"level": 2,
 			"featType": {
-				"archetype": ["Runelord"]
+				"archetype": [
+					"Runelord"
+				]
 			},
-			"traits": ["Rare", "Archetype", "Class", "Dedication"],
+			"traits": [
+				"Rare",
+				"Archetype",
+				"Class",
+				"Dedication"
+			],
 			"prerequisites": "runelord specialization",
 			"entries": [
 				"Your rune magic increases, and you practice with your school's associated weapon. You gain an additional cantrip of your chosen arcane school, and each time you gain a level (including this level), you add an additional spell from your chosen arcane school to your spellbook, with the same restrictions as the two spells you normally add."
@@ -2283,10 +2628,10 @@
 			"source": "SoM",
 			"page": 46,
 			"level": 8,
-			"featType": {
-
-			},
-			"traits": ["Magus"],
+			"featType": {},
+			"traits": [
+				"Magus"
+			],
 			"prerequisites": "focus pool",
 			"entries": [
 				"You can temporarily replicate the effects of a property rune for your weapon or unarmed attacks. You learn the {@spell runic impression|SoM} conflux spell. Increase the number of Focus Points in your focus pool by 1."
@@ -2298,9 +2643,13 @@
 			"page": 241,
 			"level": 12,
 			"featType": {
-				"archetype": ["Runelord"]
+				"archetype": [
+					"Runelord"
+				]
 			},
-			"traits": ["Archetype"],
+			"traits": [
+				"Archetype"
+			],
 			"prerequisites": "{@feat Counterspell|APG}, {@feat Runelord Dedication|SoM}",
 			"entries": [
 				"Your intricate knowledge of your school lets you easily negate spells from that school. Instead of being able to counter a foe's spell with Counterspell only if you have the same spell prepared, if the foe casts a spell from the school matching your specialization, you can Counterspell it with any other spell of the same school."
@@ -2312,9 +2661,13 @@
 			"page": 241,
 			"level": 18,
 			"featType": {
-				"archetype": ["Runelord"]
+				"archetype": [
+					"Runelord"
+				]
 			},
-			"traits": ["Archetype"],
+			"traits": [
+				"Archetype"
+			],
 			"prerequisites": "{@feat Counterspell|APG}, {@feat Runelord Dedication|SoM}",
 			"entries": [
 				"When you Counterspell a spell with a school matching your specialization, if you critically succeed at your counteract check, or if you succeed while using a spell of a higher level than the spell you countered, you can redirect the spell you countered. You choose the target, area, and other aspects of the spell and use your own spell DC, spell attack roll, or other statistics as appropriate to determine the effects."
@@ -2326,9 +2679,13 @@
 			"page": 226,
 			"level": 12,
 			"featType": {
-				"archetype": ["Shadowcaster"]
+				"archetype": [
+					"Shadowcaster"
+				]
 			},
-			"traits": ["Archetype"],
+			"traits": [
+				"Archetype"
+			],
 			"prerequisites": "{@feat Shadow Reservoir|SoM}",
 			"entries": [
 				"Your shadow's voice grows ever clearer; it whispers secrets of true power to you and shields your flesh from harm.",
@@ -2342,9 +2699,13 @@
 			"page": 226,
 			"level": 10,
 			"featType": {
-				"archetype": ["Shadowcaster"]
+				"archetype": [
+					"Shadowcaster"
+				]
 			},
-			"traits": ["Archetype"],
+			"traits": [
+				"Archetype"
+			],
 			"prerequisites": "ability to cast spells from spell slots, {@feat Shadowcaster Dedication|SoM}",
 			"entries": [
 				"Your own shadow speaks to you, providing knowledge of spells and a reservoir of magical power. Your shadow reservoir contains a single spell of each spell level at least 2 levels lower than the highest-level spell you can cast from your spell slots. This spell must come from your spell list, you must have access to it, and it must require a spell attack roll or a saving throw. These spells don't need to be prepared and aren't in your repertoire.",
@@ -2352,7 +2713,9 @@
 				"Spells cast from your shadow reservoir gain the {@trait shadow} trait, and affected creatures might be able to {@quickref disbelieve them|CRB|2|disbelieving illusions|0}. If the spell requires an attack roll, use the higher of the target's AC or their Will DC. If the spell requires a saving throw, the target uses their Will saving throw or the spell's normal saving throw, whichever is higher. Each time a creature fails its saving throw against a spell cast from your reservoir, you gain a small tattoo inked on your flesh out of pure shadowstuff.",
 				"If you have more than one source of spells you can cast with spell slots, such as if you're a spellcaster with a multiclass archetype, choose one source of spells for your shadow reservoir."
 			],
-			"leadsTo": ["Secrets Of Shadow|SoM"]
+			"leadsTo": [
+				"Secrets Of Shadow|SoM"
+			]
 		},
 		{
 			"name": "Shadow Spell",
@@ -2364,9 +2727,15 @@
 			},
 			"level": 8,
 			"featType": {
-				"archetype": ["Shadowcaster"]
+				"archetype": [
+					"Shadowcaster"
+				]
 			},
-			"traits": ["Archetype", "Metamagic", "Shadow"],
+			"traits": [
+				"Archetype",
+				"Metamagic",
+				"Shadow"
+			],
 			"prerequisites": "{@feat Shadowcaster Dedication|SoM}",
 			"entries": [
 				"You attach a piece of your shadow to a spell to cloud the senses and cause mischief. If the next action you take is to {@action Cast a Spell} that has the {@trait shadow} trait, choose one creature affected by the spell. This creature either gains a +2 status bonus to {@skill Stealth} or takes a \u20132 status penalty to {@skill Perception} (your choice). This lasts for 1 round. This choice and the effect occur after resolving any checks for the spell's initial effects. If the chosen creature is your enemy, it's affected only if your spell attack roll succeeded or if it failed its saving throw.",
@@ -2379,9 +2748,13 @@
 			"page": 226,
 			"level": 4,
 			"featType": {
-				"archetype": ["Shadowcaster"]
+				"archetype": [
+					"Shadowcaster"
+				]
 			},
-			"traits": ["Archetype"],
+			"traits": [
+				"Archetype"
+			],
 			"prerequisites": "{@feat Shadowcaster Dedication|SoM}",
 			"entries": [
 				"Hidden darkness whispers to you, teaching you secrets of shadow beyond other spellcasters of your tradition.",
@@ -2394,9 +2767,15 @@
 			"page": 226,
 			"level": 2,
 			"featType": {
-				"archetype": ["Shadowcaster"]
+				"archetype": [
+					"Shadowcaster"
+				]
 			},
-			"traits": ["Uncommon", "Archetype", "Dedication"],
+			"traits": [
+				"Uncommon",
+				"Archetype",
+				"Dedication"
+			],
 			"prerequisites": "ability to cast spells",
 			"entries": [
 				"You've sacrificed a piece of your spirit, allowing the powers of shadow into your being and changing the nature of your magic. You can no longer cast spells that have the {@trait light} trait; if an ability, such as a class feature or ancestry feat, would automatically grant you a {@spell light} spell, such as the Domain Initiate feat granting you the {@spell dazzling flash} spell, you don't gain that spell.",
@@ -2417,10 +2796,10 @@
 			"source": "SoM",
 			"page": 72,
 			"level": 14,
-			"featType": {
-
-			},
-			"traits": ["Summoner"],
+			"featType": {},
+			"traits": [
+				"Summoner"
+			],
 			"prerequisites": "{@feat Magical Understudy|SoM}",
 			"entries": [
 				"Your eidolon shares innate spells with you. You can cast the innate spells your eidolon gained from {@feat Magical Understudy|SoM}, {@feat Magical Adept|SoM}, and {@feat Magical Master|SoM}. You and your eidolon share the same daily uses of these innate spells."
@@ -2432,9 +2811,13 @@
 			"page": 212,
 			"level": 4,
 			"featType": {
-				"archetype": ["Geomancer"]
+				"archetype": [
+					"Geomancer"
+				]
 			},
-			"traits": ["Archetype"],
+			"traits": [
+				"Archetype"
+			],
 			"prerequisites": "{@feat Geomancer Dedication|SoM}",
 			"entries": [
 				"When you would gain a benefit from your terrain attunement, you can grant it to one ally within 30 feet instead of yourself.",
@@ -2446,9 +2829,7 @@
 			"source": "SoM",
 			"page": 199,
 			"level": 4,
-			"featType": {
-
-			},
+			"featType": {},
 			"traits": [
 				"Conjuration",
 				"Druid",
@@ -2467,10 +2848,12 @@
 			"source": "SoM",
 			"page": 45,
 			"level": 6,
-			"featType": {
-
-			},
-			"traits": ["Arcane", "Magus", "Transmutation"],
+			"featType": {},
+			"traits": [
+				"Arcane",
+				"Magus",
+				"Transmutation"
+			],
 			"prerequisites": "{@feat Raise a Tome|SoM}",
 			"entries": [
 				"During your daily preparations, you can magically fuse a shield into your favorite book, where it appears as an elaborate bookmark. While the two are fused, the book shares the Hardness, Hit Points, and Broken Threshold of the shield, and it can be used to {@feat Shield Block} if you have that reaction, with a requirement of \"You have Raised the Tome\" instead of the usual requirements.",
@@ -2487,9 +2870,13 @@
 			},
 			"level": 14,
 			"featType": {
-				"archetype": ["Geomancer"]
+				"archetype": [
+					"Geomancer"
+				]
 			},
-			"traits": ["Archetype"],
+			"traits": [
+				"Archetype"
+			],
 			"prerequisites": "{@feat Rough Terrain Stance|SoM}, master in {@skill Nature}",
 			"requirements": "Your terrain attunement matches the terrain you're in and you're in Rough Terrain Stance.",
 			"entries": [
@@ -2510,10 +2897,10 @@
 			"source": "SoM",
 			"page": 198,
 			"level": 1,
-			"featType": {
-
-			},
-			"traits": ["Druid"],
+			"featType": {},
+			"traits": [
+				"Druid"
+			],
 			"prerequisites": "wave order",
 			"entries": [
 				"The shallows and tide pools have always called to you and let you pass unhindered. You ignore {@quickref difficult terrain||3|terrain} resulting from shallow water. In addition, if you roll a success on an {@skill Acrobatics} check to {@action Balance} on a slippery or wet surface, or on an {@skill Athletics} check to {@action Swim}, you get a critical success instead."
@@ -2528,9 +2915,7 @@
 				"unit": "action"
 			},
 			"level": 4,
-			"featType": {
-
-			},
+			"featType": {},
 			"traits": [
 				"Concentrate",
 				"Eidolon",
@@ -2541,7 +2926,9 @@
 			"entries": [
 				"Your eidolon can shrink to fit into small spaces. Your eidolon reduces in size, to a minimum of size Small. It can use this action again while shrunk to return to its normal size."
 			],
-			"leadsTo": ["Miniaturize|SoM"]
+			"leadsTo": [
+				"Miniaturize|SoM"
+			]
 		},
 		{
 			"name": "Signature Synergy",
@@ -2549,9 +2936,13 @@
 			"page": 77,
 			"level": 14,
 			"featType": {
-				"archetype": ["Summoner"]
+				"archetype": [
+					"Summoner"
+				]
 			},
-			"traits": ["Archetype"],
+			"traits": [
+				"Archetype"
+			],
 			"prerequisites": "{@feat Advanced Synergy|SoM}",
 			"entries": [
 				"Your eidolon gains an evolution integral to its form, and it comes more easily than your other synergies. You gain one evolution feat from the following list: Airborne Form, Burrowing Form, Ever-Vigilant Senses, or Hulking Size. For the purpose of meeting its prerequisites, your summoner level is equal to your character level \u2013 4."
@@ -2563,9 +2954,13 @@
 			"page": 240,
 			"level": 8,
 			"featType": {
-				"archetype": ["Runelord"]
+				"archetype": [
+					"Runelord"
+				]
 			},
-			"traits": ["Archetype"],
+			"traits": [
+				"Archetype"
+			],
 			"prerequisites": "{@feat Runelord Dedication|SoM}",
 			"entries": [
 				"During daily preparations, you can indulge in your associated sin. When you do, you gain one additional spell slot of any spell level up to two levels below the highest-level wizard spell you can cast. You can prepare only a spell of your specialized school in this slot. As with any other act, indulging in your sin might change your alignment if your behavior harms someone else."
@@ -2576,10 +2971,10 @@
 			"source": "SoM",
 			"page": 69,
 			"level": 4,
-			"featType": {
-
-			},
-			"traits": ["Summoner"],
+			"featType": {},
+			"traits": [
+				"Summoner"
+			],
 			"entries": [
 				"Your eidolon gains a {@filter 1st-level skill feat|feats||type=Skill|level=[1;1]} and a {@filter 2nd-level or lower skill feat|feats||type=Skill|level=[0;2]}. At 7th level, your eidolon gains an additional skill feat, of {@filter 7th level or lower|feats||type=Skill|level=[0;7]}."
 			]
@@ -2590,9 +2985,13 @@
 			"page": 236,
 			"level": 6,
 			"featType": {
-				"archetype": ["Soulforger"]
+				"archetype": [
+					"Soulforger"
+				]
 			},
-			"traits": ["Archetype"],
+			"traits": [
+				"Archetype"
+			],
 			"prerequisites": "{@feat Soulforger Dedication|SoM}",
 			"entries": [
 				"Choose an additional soulforged armament of a different type than the type you already chose, and choose one essence power for it. Upgrade and change armaments individually.",
@@ -2612,9 +3011,14 @@
 			},
 			"level": 4,
 			"featType": {
-				"archetype": ["Soulforger"]
+				"archetype": [
+					"Soulforger"
+				]
 			},
-			"traits": ["Archetype", "Concentrate"],
+			"traits": [
+				"Archetype",
+				"Concentrate"
+			],
 			"prerequisites": "{@feat Soulforger Dedication|SoM}",
 			"trigger": "An attack you made with a soulforged weapon or shield misses a creature, or a creature hits you with an attack while you're either wearing manifested soulforged armor or have your soulforged shield raised.",
 			"requirements": "Your soulforged armament is manifested.",
@@ -2628,9 +3032,15 @@
 			"page": 236,
 			"level": 2,
 			"featType": {
-				"archetype": ["Soulforger"]
+				"archetype": [
+					"Soulforger"
+				]
 			},
-			"traits": ["Uncommon", "Archetype", "Dedication"],
+			"traits": [
+				"Uncommon",
+				"Archetype",
+				"Dedication"
+			],
 			"prerequisites": "Wis 14 or ability to cast divine spells",
 			"entries": [
 				"You can manifest the power of your spirit in combat to realize your motivations. You manifest an armor, shield, or weapon as a soulforged armament (page 232). Choose one essence power for the armament (below). Changing an essence power requires 1 week of retraining, and you can't retrain it while you have soulforged corruption.",
@@ -2673,15 +3083,17 @@
 				"unit": "action"
 			},
 			"level": 2,
-			"featType": {
-
-			},
-			"traits": ["Magus"],
+			"featType": {},
+			"traits": [
+				"Magus"
+			],
 			"requirements": "You have one or more hands free.",
 			"entries": [
 				"You infuse magical power into your body or armaments to parry both physical and magical assaults. You raise your guard, gaining a +1 circumstance bonus to AC and to saving throws against spells that target you until the start of your next turn, as long as you continue to meet the requirements."
 			],
-			"leadsTo": ["Preternatural Parry|SoM"]
+			"leadsTo": [
+				"Preternatural Parry|SoM"
+			]
 		},
 		{
 			"name": "Spell Swipe",
@@ -2692,10 +3104,10 @@
 				"unit": "action"
 			},
 			"level": 8,
-			"featType": {
-
-			},
-			"traits": ["Magus"],
+			"featType": {},
+			"traits": [
+				"Magus"
+			],
 			"prerequisites": "{@action Spellstrike|SoM}",
 			"requirements": "Your {@action Spellstrike|SoM} is charged.",
 			"entries": [
@@ -2709,10 +3121,11 @@
 			"source": "SoM",
 			"page": 72,
 			"level": 14,
-			"featType": {
-
-			},
-			"traits": ["Evolution", "Summoner"],
+			"featType": {},
+			"traits": [
+				"Evolution",
+				"Summoner"
+			],
 			"entries": [
 				"Your eidolon evolves to protect itself from the danger posed by spells. It gains a +1 status bonus to all saving throws against magic."
 			]
@@ -2723,9 +3136,13 @@
 			"page": 75,
 			"level": 4,
 			"featType": {
-				"archetype": ["Magus"]
+				"archetype": [
+					"Magus"
+				]
 			},
-			"traits": ["Archetype"],
+			"traits": [
+				"Archetype"
+			],
 			"prerequisites": "{@feat Magus Dedication|SoM}",
 			"entries": [
 				"You gain the magus's {@action Spellstrike|SoM} activity. You can recharge it only as an activity that takes 1 minute. This restriction applies even if you gain another ability that recharges {@action Spellstrike|SoM}."
@@ -2736,10 +3153,13 @@
 			"source": "SoM",
 			"page": 44,
 			"level": 2,
-			"featType": {
-
-			},
-			"traits": ["Arcane", "Conjuration", "Extradimensional", "Magus"],
+			"featType": {},
+			"traits": [
+				"Arcane",
+				"Conjuration",
+				"Extradimensional",
+				"Magus"
+			],
 			"entries": [
 				"You've magically constructed an extradimensional sheath for your weapon that you access through your clothing, typically through a pocket, sleeve, or seam.",
 				"This sheath is hard to notice, granting a +2 circumstance bonus to your {@skill Stealth} checks to {@action Conceal an Object||Conceal an Item} within it. A spirit sheath can hold only one weapon at a time, and the weapon must be 1 Bulk or less.",
@@ -2751,10 +3171,10 @@
 			"source": "SoM",
 			"page": 47,
 			"level": 8,
-			"featType": {
-
-			},
-			"traits": ["Magus"],
+			"featType": {},
+			"traits": [
+				"Magus"
+			],
 			"prerequisites": "{@action Spellstrike|SoM}",
 			"entries": [
 				"You've honed one spell as your favored combat technique, and you've practiced it enough that you no longer need to prepare it to cast it. Choose a spell in your spellbook that you could use with {@action Spellstrike|SoM} and that has a level no higher than the highest-level magus spell slot you have.",
@@ -2766,10 +3186,10 @@
 			"source": "SoM",
 			"page": 44,
 			"level": 4,
-			"featType": {
-
-			},
-			"traits": ["Magus"],
+			"featType": {},
+			"traits": [
+				"Magus"
+			],
 			"prerequisites": "{@action Arcane Cascade|SoM}, {@class Magus|SoM|starlit span|starlit span|SoM} hybrid study",
 			"entries": [
 				"Starlight shines in your sight, enhancing your perception and range. When you make a ranged {@action Strike} while in {@action Arcane Cascade|SoM} stance, you lower the DC of your flat check to target a creature that's {@condition concealed} or {@condition hidden} from you. The DC is reduced to {@flatDC 3} instead of 5 against a {@condition concealed} creature and to {@flatDC 9} instead of 11 against a {@condition hidden} one. When you cast {@spell shooting star|SoM} and target a hidden creature, you don't have to attempt the flat check for targeting a {@condition hidden} creature with a ranged {@action Strike}."
@@ -2780,10 +3200,10 @@
 			"source": "SoM",
 			"page": 45,
 			"level": 4,
-			"featType": {
-
-			},
-			"traits": ["Magus"],
+			"featType": {},
+			"traits": [
+				"Magus"
+			],
 			"entries": [
 				"Confident in your technique, you don't easily lose your concentration when you {@action Cast a Spell}. If a reaction would disrupt your spellcasting action, attempt a DC {@flatDC 15} flat check. If you succeed, your action isn't disrupted."
 			]
@@ -2793,10 +3213,10 @@
 			"source": "SoM",
 			"page": 198,
 			"level": 1,
-			"featType": {
-
-			},
-			"traits": ["Druid"],
+			"featType": {},
+			"traits": [
+				"Druid"
+			],
 			"prerequisites": "stone order",
 			"entries": [
 				"The earth has taught you how to remain unyielding and firm. If you roll a success on an {@skill Acrobatics} check made to {@action Balance} on uneven ground composed of earth or rock, you get a critical success instead. As long as you remain on the ground, you gain a +2 circumstance bonus to your Fortitude or Reflex DC against attempts to {@action Shove} or {@action Trip} you. This bonus also applies to saving throws against spells or effects that would attempt to knock you {@condition prone}. If you're a {@ancestry dwarf|crb|rock dwarf|rock|crb}, this bonus increases to +3."
@@ -2807,10 +3227,11 @@
 			"source": "SoM",
 			"page": 68,
 			"level": 2,
-			"featType": {
-
-			},
-			"traits": ["Evolution", "Summoner"],
+			"featType": {},
+			"traits": [
+				"Evolution",
+				"Summoner"
+			],
 			"entries": [
 				"Your eidolon changes to make it particularly effective as your mount. While you ride it, you get your full number of actions each round instead of reducing them to 2. This applies only when you ride your eidolon, not when anyone else does (see the Riding Sapient Creatures sidebar on page 71). Your eidolon still must be at least one size category larger than you to ride it. Since you work together to move, your eidolon's move actions while you're mounted gain the {@trait tandem} trait."
 			]
@@ -2824,27 +3245,33 @@
 				"unit": "action"
 			},
 			"level": 1,
-			"featType": {
-
-			},
-			"traits": ["Evocation", "Fire", "Monk", "Stance"],
+			"featType": {},
+			"traits": [
+				"Evocation",
+				"Fire",
+				"Monk",
+				"Stance"
+			],
 			"requirements": "You're unarmored.",
 			"entries": [
 				"You enter a stance of fast, fiery movements. You can make flashing spark attacks that deal {@damage 1d8} slashing damage. They are in the {@group brawling} group and have the {@trait forceful}, {@trait nonlethal}, {@trait sweep}, and {@trait unarmed} traits. If you have access to the flashing sparks' critical specialization effect, you can take an alternate effect instead: if your critical {@action Strike} dealt damage, the target takes {@damage 1d6} {@condition persistent damage||persistent fire damage}.",
 				"While in Stoked Flame Stance, you gain a +5-foot status bonus to your Speed. If you have incredible movement, increase the benefit from incredible movement to a +15-foot status bonus plus 5 feet for every 4 levels beyond 3rd."
 			],
 			"special": "This feat gains your choice of either the {@trait divine} or {@trait occult} trait, matching your ki spell tradition if possible.",
-			"leadsTo": ["Blazing Streak|SoM", "Inner Fire|SoM"]
+			"leadsTo": [
+				"Blazing Streak|SoM",
+				"Inner Fire|SoM"
+			]
 		},
 		{
 			"name": "Striker's Scroll",
 			"source": "SoM",
 			"page": 45,
 			"level": 4,
-			"featType": {
-
-			},
-			"traits": ["Magus"],
+			"featType": {},
+			"traits": [
+				"Magus"
+			],
 			"prerequisites": "{@action Spellstrike|SoM}",
 			"entries": [
 				"You can attach a scroll to your weapon or {@item handwraps of mighty blows (generic)|CRB|handwraps of mighty blows} to blend its spell into an attack, carefully folding it around a part of the weapon or sealing it to the weapon's surface. Attaching a scroll requires using the {@action Affix a Talisman} action. You can have only one scroll affixed to a weapon at a time, and you can't have both a talisman and scroll attached.",
@@ -2856,10 +3283,10 @@
 			"source": "SoM",
 			"page": 45,
 			"level": 4,
-			"featType": {
-
-			},
-			"traits": ["Magus"],
+			"featType": {},
+			"traits": [
+				"Magus"
+			],
 			"prerequisites": "{@action Arcane Cascade|SoM}, {@class Magus|SoM|twisting tree|twisting tree|SoM} hybrid study",
 			"entries": [
 				"You've studied the staff extensively to learn the hidden capabilities of your chosen weapon. When you critically succeed at an attack roll using a staff, you apply the critical specialization effect of the {@group club} group. While you're in {@action Arcane Cascade|SoM} stance, your staff gains the {@trait deadly d6} trait, with the damage from the deadly die being the same damage type as the extra damage from {@action Arcane Cascade|SoM}.",
@@ -2872,9 +3299,15 @@
 			"page": 76,
 			"level": 2,
 			"featType": {
-				"archetype": ["Summoner"]
+				"archetype": [
+					"Summoner"
+				]
 			},
-			"traits": ["Archetype", "Dedication", "Multiclass"],
+			"traits": [
+				"Archetype",
+				"Dedication",
+				"Multiclass"
+			],
 			"prerequisites": "Charisma 14",
 			"entries": [
 				"You've formed a bond with an eidolon, an entity that manifests in a physical body only through its link to your life force. Your bond may be tenuous, but that doesn't make your connection any less special. You gain an {@filter eidolon|companionsfamiliars||Type=Eidolon} as well as the {@action Manifest Eidolon|SoM} activity.",
@@ -2904,9 +3337,7 @@
 				"unit": "reaction"
 			},
 			"level": 12,
-			"featType": {
-
-			},
+			"featType": {},
 			"traits": [
 				"Concentrate",
 				"Conjuration",
@@ -2925,10 +3356,10 @@
 			"source": "SoM",
 			"page": 49,
 			"level": 20,
-			"featType": {
-
-			},
-			"traits": ["Magus"],
+			"featType": {},
+			"traits": [
+				"Magus"
+			],
 			"prerequisites": "{@action Spellstrike|SoM}",
 			"entries": [
 				"You've made it almost effortless to combine spells and attacks. You're permanently {@condition quickened}. You can use your extra action only to {@action Strike} or to recharge {@action Spellstrike|SoM}."
@@ -2943,10 +3374,14 @@
 				"unit": "free"
 			},
 			"level": 10,
-			"featType": {
-
-			},
-			"traits": ["Arcane", "Healing", "Magus", "Necromancy", "Positive"],
+			"featType": {},
+			"traits": [
+				"Arcane",
+				"Healing",
+				"Magus",
+				"Necromancy",
+				"Positive"
+			],
 			"prerequisites": "{@action Arcane Cascade|SoM}, {@class Magus|SoM|inexorable iron|inexorable iron|SoM} hybrid study",
 			"trigger": "You {@action Cast a Spell} using a spell slot.",
 			"requirements": "You're in {@action Arcane Cascade|SoM} stance.",
@@ -2964,10 +3399,11 @@
 				"unit": "action"
 			},
 			"level": 4,
-			"featType": {
-
-			},
-			"traits": ["Summoner", "Tandem"],
+			"featType": {},
+			"traits": [
+				"Summoner",
+				"Tandem"
+			],
 			"entries": [
 				"You and your eidolon move together. You each use a single action to {@action Stride}. Either of you that has the corresponding movement type can {@action Burrow}, {@action Climb}, {@action Fly}, or {@action Swim} instead."
 			]
@@ -2981,10 +3417,11 @@
 				"unit": "action"
 			},
 			"level": 6,
-			"featType": {
-
-			},
-			"traits": ["Summoner", "Tandem"],
+			"featType": {},
+			"traits": [
+				"Summoner",
+				"Tandem"
+			],
 			"requirements": "A creature is in your and your eidolon's reach.",
 			"entries": [
 				"You and your eidolon each attack, seamlessly targeting the same foe without interfering with each other's movements.",
@@ -2997,11 +3434,14 @@
 			"page": 164,
 			"level": 2,
 			"featType": {
-
-
-				"skill": ["Crafting"]
+				"skill": [
+					"Crafting"
+				]
 			},
-			"traits": ["General", "Skill"],
+			"traits": [
+				"General",
+				"Skill"
+			],
 			"prerequisites": "trained in {@skill Crafting}",
 			"entries": [
 				"You can craft tattoos, including magical tattoos. When you select this feat, you gain the formulas for four common magical tattoos of 2nd level or lower. You gain a +1 circumstance bonus to {@skill Crafting} checks to {@action Craft} tattoos. If you're a master in {@skill Crafting}, this bonus increases to +2."
@@ -3013,9 +3453,13 @@
 			"page": 213,
 			"level": 14,
 			"featType": {
-				"archetype": ["Geomancer"]
+				"archetype": [
+					"Geomancer"
+				]
 			},
-			"traits": ["Archetype"],
+			"traits": [
+				"Archetype"
+			],
 			"prerequisites": "{@feat Geomancer Dedication|SoM}, master in {@skill Nature}",
 			"frequency": "once per 10 minutes",
 			"trigger": "A {@action Strike} would damage you.",
@@ -3029,10 +3473,11 @@
 			"source": "SoM",
 			"page": 72,
 			"level": 12,
-			"featType": {
-
-			},
-			"traits": ["Evolution", "Summoner"],
+			"featType": {},
+			"traits": [
+				"Evolution",
+				"Summoner"
+			],
 			"prerequisites": "{@feat Hulking Size|SoM}",
 			"entries": [
 				"Your eidolon becomes even bigger. It becomes Huge, instead of Large, and the reach on all its attacks increases to 15 feet."
@@ -3047,10 +3492,12 @@
 				"unit": "action"
 			},
 			"level": 16,
-			"featType": {
-
-			},
-			"traits": ["Eidolon", "Evolution", "Summoner"],
+			"featType": {},
+			"traits": [
+				"Eidolon",
+				"Evolution",
+				"Summoner"
+			],
 			"entries": [
 				"Your eidolon {@action Stride||Strides} up to double its Speed and can move through the spaces of creatures at least one size smaller, Trampling each creature whose space it enters. It can attempt to Trample the same creature only once in a single Trample. It deals bludgeoning damage equal to the damage of its secondary attack against these creatures, which can attempt a basic Reflex save against your spell DC."
 			]
@@ -3064,9 +3511,7 @@
 				"unit": "action"
 			},
 			"level": 10,
-			"featType": {
-
-			},
+			"featType": {},
 			"traits": [
 				"Concentrate",
 				"Conjuration",
@@ -3084,10 +3529,10 @@
 			"source": "SoM",
 			"page": 73,
 			"level": 18,
-			"featType": {
-
-			},
-			"traits": ["Summoner"],
+			"featType": {},
+			"traits": [
+				"Summoner"
+			],
 			"entries": [
 				"You transmogrify your eidolon each day. During your daily preparations, you can swap out any number of your {@filter evolution feats|feats||General=Evolution}, each for a different evolution feat of an appropriate level for which you meet the prerequisites.",
 				"These swaps last until your next daily preparations."
@@ -3098,10 +3543,12 @@
 			"source": "SoM",
 			"page": 73,
 			"level": 20,
-			"featType": {
-
-			},
-			"traits": ["Polymorph", "Summoner", "Transmutation"],
+			"featType": {},
+			"traits": [
+				"Polymorph",
+				"Summoner",
+				"Transmutation"
+			],
 			"entries": [
 				"You can transform to match your eidolon. When you {@action Manifest Eidolon|SoM|Manifest your Eidolon}, you can call upon its powers to transform yourself into a duplicate until it unmanifests.",
 				"You can't use this if you {@action Manifest Eidolon|SoM|Manifest your Eidolon} in an unusual way, such as {@feat Meld into Eidolon|SoM}. While using Twin Eidolon, you use your eidolon's statistics other than your mental ability modifiers, including its evolutions. You can't cast spells (except spells your eidolon could cast), Activate or otherwise benefit from magic items that normally benefit you and not your eidolon, or use other actions it can't perform. Any of its spells you cast with limited uses count against your eidolon's uses. You can {@action Manifest Eidolon|SoM|Manifest your Eidolon} again to end this effect."
@@ -3114,9 +3561,13 @@
 			"page": 227,
 			"level": 14,
 			"featType": {
-				"archetype": ["Shadowcaster"]
+				"archetype": [
+					"Shadowcaster"
+				]
 			},
-			"traits": ["Archetype"],
+			"traits": [
+				"Archetype"
+			],
 			"prerequisites": "focus pool, {@feat Shadowcaster Dedication|SoM}",
 			"entries": [
 				"You pool the power of shadow within your eyes, gaining the ability to gather darkness into a turbulent orb of crushing emptiness within your line of sight. You gain the {@spell darklight|SoM} domain spell. Increase the number of Focus Points in your focus pool by 1."
@@ -3127,10 +3578,10 @@
 			"source": "SoM",
 			"page": 68,
 			"level": 1,
-			"featType": {
-
-			},
-			"traits": ["Summoner"],
+			"featType": {},
+			"traits": [
+				"Summoner"
+			],
 			"entries": [
 				"You can allow your eidolon to travel far from your side. You learn the {@spell unfetter eidolon|SoM} link spell. Increase the number of Focus Points in your focus pool by 1."
 			]
@@ -3145,9 +3596,13 @@
 			},
 			"level": 6,
 			"featType": {
-				"archetype": ["Wellspring Mage"]
+				"archetype": [
+					"Wellspring Mage"
+				]
 			},
-			"traits": ["Archetype"],
+			"traits": [
+				"Archetype"
+			],
 			"prerequisites": "{@feat Wellspring Mage Dedication|SoM}",
 			"frequency": "once per 10 minutes",
 			"trigger": "An enemy reduces you to 0 HP, an enemy critically hits you, or you critically fail a saving throw against an enemy's effect.",
@@ -3160,10 +3615,10 @@
 			"source": "SoM",
 			"page": 49,
 			"level": 18,
-			"featType": {
-
-			},
-			"traits": ["Magus"],
+			"featType": {},
+			"traits": [
+				"Magus"
+			],
 			"prerequisites": "{@action Spellstrike|SoM}",
 			"entries": [
 				"You can channel the entire realm of possibilities of your spellbook into an attack. Once during your daily preparations, you can use a spell slot to hold that infinite potential, rather than using it to prepare a spell. When you make a {@action Spellstrike|SoM}, you can expend this special spell slot to immediately prepare and cast a spell from your spellbook at 2 levels lower than the slot's level. (As normal for preparing spells, you can use a spell of an even-lower level, heightening it accordingly.) You don't have any spell prepared in that slot until you cast from that slot."
@@ -3174,10 +3629,11 @@
 			"source": "SoM",
 			"page": 69,
 			"level": 4,
-			"featType": {
-
-			},
-			"traits": ["Evolution", "Summoner"],
+			"featType": {},
+			"traits": [
+				"Evolution",
+				"Summoner"
+			],
 			"entries": [
 				"Your eidolon gains {@ability tremorsense} as an imprecise sense with a range of 30 feet. If aquatic, it gains {@ability wavesense} as an imprecise sense with a range of 30 feet instead. If amphibious, it gains both."
 			]
@@ -3191,10 +3647,11 @@
 				"unit": "action"
 			},
 			"level": 12,
-			"featType": {
-
-			},
-			"traits": ["Monk", "Water"],
+			"featType": {},
+			"traits": [
+				"Monk",
+				"Water"
+			],
 			"prerequisites": "{@feat Reflective Ripple Stance|SoM}",
 			"frequency": "once per minute",
 			"requirements": "You're in Reflective Ripple Stance.",
@@ -3207,10 +3664,11 @@
 			"source": "SoM",
 			"page": 71,
 			"level": 10,
-			"featType": {
-
-			},
-			"traits": ["Evolution", "Summoner"],
+			"featType": {},
+			"traits": [
+				"Evolution",
+				"Summoner"
+			],
 			"entries": [
 				"Your eidolon knocks enemies down. Choose one of the eidolon's unarmed attacks with the {@trait trip} trait.",
 				"It gains the {@ability Knockdown} action for that attack."
@@ -3222,9 +3680,14 @@
 			"page": 249,
 			"level": 4,
 			"featType": {
-				"archetype": ["Wellspring Mage"]
+				"archetype": [
+					"Wellspring Mage"
+				]
 			},
-			"traits": ["Archetype", "Fortune"],
+			"traits": [
+				"Archetype",
+				"Fortune"
+			],
 			"prerequisites": "{@feat Wellspring Mage Dedication|SoM}",
 			"entries": [
 				"When you generate a wellspring surge, roll twice on {@table Wellspring Surges|SoM|Table 5\u20132} and take the result of your choice. This doesn't apply when you cause another creature to generate a wellspring surge."
@@ -3236,9 +3699,16 @@
 			"page": 249,
 			"level": 2,
 			"featType": {
-				"archetype": ["Wellspring Mage"]
+				"archetype": [
+					"Wellspring Mage"
+				]
 			},
-			"traits": ["Rare", "Archetype", "Class", "Dedication"],
+			"traits": [
+				"Rare",
+				"Archetype",
+				"Class",
+				"Dedication"
+			],
 			"prerequisites": "wellspring magic",
 			"entries": [
 				"There's no longer a limit on how many temporary spell slots you can gain per day from wellspring magic."
@@ -3259,10 +3729,10 @@
 				"unit": "action"
 			},
 			"level": 20,
-			"featType": {
-
-			},
-			"traits": ["Magus"],
+			"featType": {},
+			"traits": [
+				"Magus"
+			],
 			"prerequisites": "{@action Spellstrike|SoM}",
 			"requirements": "Your {@action Spellstrike|SoM} is charged.",
 			"entries": [
@@ -3281,9 +3751,16 @@
 			},
 			"level": 14,
 			"featType": {
-				"archetype": ["Elementalist"]
+				"archetype": [
+					"Elementalist"
+				]
 			},
-			"traits": ["Air", "Archetype", "Concentrate", "Metamagic"],
+			"traits": [
+				"Air",
+				"Archetype",
+				"Concentrate",
+				"Metamagic"
+			],
 			"prerequisites": "{@feat Elementalist Dedication|SoM}",
 			"entries": [
 				"You enhance your spell with elemental air, using the wind to find your target and carry your magic around cover.",
@@ -3300,9 +3777,14 @@
 			},
 			"level": 8,
 			"featType": {
-				"archetype": ["Cathartic Mage"]
+				"archetype": [
+					"Cathartic Mage"
+				]
 			},
-			"traits": ["Archetype", "Concentrate"],
+			"traits": [
+				"Archetype",
+				"Concentrate"
+			],
 			"prerequisites": "{@feat Cathartic Mage Dedication|SoM}",
 			"requirements": "You have a reaction available and aren't prevented from using Catharsis.",
 			"entries": [
