@@ -903,11 +903,11 @@ function Renderer () {
 		if (!options.isAbility) textStack[0] += `<p class="pf2-stat pf2-stat__section">`
 		if (entry.name) textStack[0] += `<strong>${entry.name}&nbsp;</strong>`;
 		if (traits.length) textStack[0] += `(${renderer.render(traits.join(", "))}); `;
-		if (entry.level != null) textStack[0] += `<strong>Level&nbsp;</strong>${entry.level}. `;
+		if (entry.level != null) textStack[0] += `<strong>Level&nbsp;</strong>${entry.level}; `;
 		if (entry.note != null) textStack[0] += `${this.render(entry.note)} `;
 		if (entry.DC != null || entry.savingThrow != null) {
 			textStack[0] += `<strong>Saving Throw&nbsp;</strong>`
-			if (entry.DC != null) textStack[0] += `DC ${entry.DC} `
+			if (entry.DC != null) textStack[0] += `DC ${renderer.render(entry.DC)} `
 			textStack[0] += `${renderer.render(entry.savingThrow)}.`
 		}
 		if (entry.onset != null) textStack[0] += ` <strong>Onset</strong> ${entry.onset}`;
@@ -2156,7 +2156,6 @@ function Renderer () {
 						break;
 					case "@disease":
 					case "@curse":
-					case "@itemcurse":
 						fauxEntry.href.path = UrlUtil.PG_AFFLICTIONS;
 						fauxEntry.href.hover = {
 							page: UrlUtil.PG_AFFLICTIONS,
@@ -5048,7 +5047,6 @@ Renderer.hover = {
 		"condition": UrlUtil.PG_CONDITIONS,
 		"disease": UrlUtil.PG_AFFLICTIONS,
 		"curse": UrlUtil.PG_AFFLICTIONS,
-		"itemcurse": UrlUtil.PG_AFFLICTIONS,
 		"background": UrlUtil.PG_BACKGROUNDS,
 		"ancestry": UrlUtil.PG_ANCESTRIES,
 		"companion": UrlUtil.PG_COMPANIONS_FAMILIARS,
@@ -6058,7 +6056,7 @@ Renderer.hover = {
 			case UrlUtil.PG_CONDITIONS:
 				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "conditions.json", ["condition"], (listProp, item) => item.__prop = listProp);
 			case UrlUtil.PG_AFFLICTIONS:
-				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "afflictions.json", ["disease", "curse", "itemcurse"], (listProp, item) => item.__prop = listProp);
+				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "afflictions.json", ["disease", "curse"], (listProp, item) => item.__prop = listProp);
 			case UrlUtil.PG_TABLES:
 				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "tables.json", ["table", "tableGroup"], (listProp, item) => item.__prop = listProp);
 			case UrlUtil.PG_ACTIONS:

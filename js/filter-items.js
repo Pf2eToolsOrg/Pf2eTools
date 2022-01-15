@@ -141,7 +141,7 @@ class PageFilterItems extends PageFilter {
 		item.equipment ? item._fType.push("Equipment") : item._fType.push("Treasure");
 		if (item.generic === "G") item._fType.push("Generic Variant");
 		if (item.generic === "V") item._fType.push("Specific Variant");
-		item._fAppliesTo = item.appliesTo ? `${item.appliesTo}` : null;
+		if (item.appliesTo) item._fAppliesTo = item.appliesTo
 
 		item._fDamage = undefined; // set by trait implies
 		this.handleTraitImplies(item, {traitProp: "traits", entityTypes: ["item"]});
