@@ -1,0 +1,65 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"$id": "abilities.json",
+	"title": "Ability",
+	"description": "The ability data type for Pf2eTools.",
+	"version": "0.0.1",
+	"type": "object",
+
+	"definitions": {
+		"abilityData": {
+			"type": "object",
+			"properties": {
+				"source": {
+					"type": "string",
+					"$ref": "utils.json#/definitions/sourceList"
+				},
+				"name": {
+					"type": "string"
+				},
+				"page": {
+					"type": "integer"
+				},
+				"activity": {
+					"type": "object",
+					"$ref": "utils.json#/definitions/activity"
+				},
+				"requirements": {
+					"type": "string"
+				},
+				"trigger": {
+					"type": "string"
+				},
+				"traits": {
+					"type": "array",
+					"items": {
+						"type": "string",
+						"$ref": "utils.json#/definitions/anyTraitUpper"
+					},
+					"minItems": 1,
+					"uniqueItems": true
+				},
+				"entries": {
+					"type": "array",
+					"items": {
+						"$ref": "entry.json"
+					}
+				}
+			},
+			"additionalProperties": false,
+			"required": ["name", "source", "entries", "page"]
+		}
+	},
+
+	"properties": {
+		"ability": {
+			"type": "array",
+			"uniqueItems": true,
+			"items": {
+				"$ref": "#/definitions/abilityData"
+			}
+		}
+	},
+	"required": ["ability"],
+	"additionalProperties": false
+}

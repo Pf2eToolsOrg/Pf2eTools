@@ -1,455 +1,180 @@
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
-  "version": "0.0.1",
-  "type": "object",
-  "$id": "schema.json",
-  "title": "Schema",
-  "description": "Schema for Pf2eTools. Should include arrays titled similarly to the main site data, e.g. `spell` or `class`. Requires `_meta` if made as homebrew to function.",
-  "properties": {
-    "_meta": {
-      "description": "Metadata for the included data arrays",
-      "type": "object",
-      "properties": {
-        "sources": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "description": "A set of properties describing a \"source.\" A source could be, for example, a homebrew PDF, book, or blog post.",
-            "properties": {
-              "json": {
-                "type": "string",
-                "description": "An identifying string, as seen in the JSON in \"source\" fields."
-              },
-              "abbreviation": {
-                "type": "string",
-                "description": "Abbreviated form of the source, to display on the site."
-              },
-              "color": {
-                "type": "string",
-                "pattern": "^([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$",
-                "description": "HTML hex color code this source should use when displayed in lists, e.g. 'ff00ff'"
-              },
-              "full": {
-                "type": "string",
-                "description": "Full title of the source, to display on the site."
-              },
-              "authors": {
-                "type": "array",
-                "description": "A list of authors who created the homebrew source.",
-                "items": {
-                  "type": "string",
-                  "description": "Author name."
-                }
-              },
-              "convertedBy": {
-                "type": "array",
-                "description": "An optional list of people who contributed to converting the source to 5etools format.",
-                "items": {
-                  "type": "string",
-                  "description": "Contributor name."
-                }
-              },
-              "dateReleased": {
-                "type": "string",
-                "format": "date",
-                "description": "The release date of the source, e.g. \"2000-01-31\". Dates myst be specified in precisely this format, with two digits given for both month and day."
-              },
-              "version": {
-                "type": "string",
-                "description": "The source version, e.g. \"1.2.3\"."
-              },
-              "url": {
-                "type": "string",
-                "description": "A direct link to the source, if available in web form or on a store."
-              },
-              "targetSchema": {
-                "type": "string",
-                "description": "The target schema version in Pf2etools, e.g. \"1.2.3\"."
-              }
-            },
-            "required": [
-              "json",
-              "abbreviation",
-              "full",
-              "version"
-            ]
-          }
-        },
-        "skills": {
-          "type": "object",
-          "description": "Object keys are Skill names, which can referenced using {@skill <key>} (case sensitive)",
-          "patternProperties": {
-            ".*": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            }
-          }
-        },
-        "spellSchools": {
-          "type": "object",
-          "description": "Object names are spell school abbreviations (e.g. `\"X\"`); values should be objects with `\"full\"`` (used in the main entry, e.g. \"Evocation\") and `\"short\"` (used in the list view, e.g. `\"Evoc.\"`) key/values.",
-          "patternProperties": {
-            ".*": {
-              "type": "object",
-              "properties": {
-                "full": {
-                  "type": "string"
-                },
-                "short": {
-                  "type": "string"
-                },
-                "color": {
-                  "type": "string",
-                  "description": "HTML hex color code this source should use when displayed in lists, e.g. 'ff00ff'"
-                }
-              },
-              "required": [
-                "full",
-                "short"
-              ]
-            }
-          }
-        },
-        "dateAdded": {
-          "type": "integer",
-          "description": "The epoch timestamp (in seconds) when the homebrew was added to the repository. Not guaranteed to be anywhere near accurate."
-        },
-        "dateLastModified": {
-          "type": "integer",
-          "description": "The epoch timestamp (in seconds) when the homebrew was last modified. Not guaranteed to be anywhere near accurate."
-        },
-        "currencyConversions": {
-          "type": "object",
-          "description": "Keys should be uniquely-named value conversion objects, and can be referenced from item entities as \"currencyConversion\": \"<MyKey>\". The currency conversion info will then be used when rendering the value of the item.",
-          "patternProperties": {
-            ".*": {
-              "type": "array",
-              "items": {
-                "type": "object",
-                "properties": {
-                  "coin": {
-                    "type": "string",
-                    "description": "Coin abbreviation, e.g. \"gp\""
-                  },
-                  "mult": {
-                    "type": "number",
-                    "description": "A multiplier for converting copper to this currency, e.g. \"0.01\" for standard gold pieces"
-                  },
-                  "isFallback": {
-                    "type": "boolean",
-                    "description": "If true, this currency will be used as a fallback when the copper value of the item is a fractional value (e.g. a single ball bearing is worth 0.1 cp; marking gold as the fallback currency would have this be converted to gold)."
-                  }
-                },
-                "required": [
-                  "coin",
-                  "mult"
-                ]
-              }
-            }
-          }
-        },
-        "dependencies": {
-          "description": "A map of `\"<data property>\": [\"<JsonSource1>\", ..., \"<JsonSourceN>\"]`. Entities from these sources can then be extended/referenced in this file.",
-          "type": "object",
-          "patternProperties": {
-            "^[a-zA-Z]+$": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            }
-          }
-        },
-        "includes": {
-          "description": "Structure as per \"dependencies\". Additional sources to be included when loading the file.",
-          "type": "object",
-          "patternProperties": {
-            "^[a-zA-Z]+$": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            }
-          }
-        },
-        "unlisted": {
-          "description": "If this homebrew file should be ignored/hidden by any indexer.",
-          "type": "boolean"
-        }
-      },
-      "required": [
-        "sources"
-      ]
-    },
-    "variantrule": {
-      "type": "array"
-    },
-    "table": {
-      "type": "array"
-    },
-    "tableGroup": {
-      "type": "array"
-    },
-    "book": {
-      "type": "array"
-    },
-    "bookData": {
-      "type": "array"
-    },
-    "ancestry": {
-      "type": "array"
-    },
-    "heritage": {
-      "type": "array",
-      "items": [
-        {
-          "type": "object",
-          "properties": {
-            "name": {
-              "type": "string"
-            },
-            "shortName": {
-              "type": "string"
-            },
-            "source": {
-              "type": "string"
-            },
-            "ancestryName": {
-              "type": "string"
-            },
-            "ancestrySource": {
-              "type": "string"
-            },
-            "entries": {
-              "type": "array",
-              "items": [
-                {
-                  "type": "string"
-                }
-              ]
-            }
-          },
-          "required": [
-            "name",
-            "source",
-            "ancestryName",
-            "ancestrySource",
-            "entries"
-          ]
-        }
-      ]
-    },
-    "versatileHeritage": {
-      "type": "array"
-    },
-    "background": {
-      "type": "array"
-    },
-    "class": {
-      "type": "array"
-    },
-    "subclass": {
-      "type": "array"
-    },
-    "classFeature": {
-      "type": "array"
-    },
-    "subclassFeature": {
-      "type": "array"
-    },
-    "archetype": {
-      "type": "array"
-    },
-    "feat": {
-      "$ref": "feats/feats.json#properties/feat"
-    },
-    "companion": {
-      "type": "array"
-    },
-    "familiar": {
-      "type": "array"
-    },
-    "adventure": {
-      "type": "array"
-    },
-    "adventureData": {
-      "type": "array"
-    },
-    "hazard": {
-      "type": "array"
-    },
-    "action": {
-      "type": "array",
-      "items": [
-        {
-          "type": "object",
-          "properties": {
-            "source": {
-              "type": "string"
-            },
-            "name": {
-              "type": "string"
-            },
-            "traits": {
-              "type": "array",
-              "items": [
-                {
-                  "type": "string"
-                }
-              ]
-            },
-            "actionType": {
-              "type": "object"
-            },
-            "activity": {
-              "type": "object",
-              "$ref": "#/definitions/activity"
-            },
-            "entries": {
-              "type": "array",
-              "items": [
-                {
-                  "type": "string"
-                }
-              ]
-            }
-          },
-          "required": [
-            "source",
-            "name",
-            "entries"
-          ]
-        }
-      ]
-    },
-    "creature": {
-      "type": "array"
-    },
-    "condition": {
-      "type": "array"
-    },
-    "item": {
-      "type": "array"
-    },
-    "baseitem": {
-      "type": "array"
-    },
-    "spell": {
-      "type": "array"
-    },
-    "disease": {
-      "type": "array"
-    },
-    "curse": {
-      "type": "array"
-    },
-    "itemcurse": {
-      "type": "array"
-    },
-    "ability": {
-      "type": "array"
-    },
-    "deity": {
-      "type": "array"
-    },
-    "deityFluff": {
-      "type": "array"
-    },
-    "language": {
-      "type": "array"
-    },
-    "place": {
-      "type": "array"
-    },
-    "ritual": {
-      "$ref": "ritual.json#properties/ritual"
-    },
-    "vehicle": {
-      "type": "array"
-    },
-    "trait": {
-      "type": "array",
-      "items": [
-        {
-          "type": "object",
-          "properties": {
-            "name": {
-              "type": "string"
-            },
-            "source": {
-              "type": "string"
-            },
-            "categories": {
-              "type": "array",
-              "items": [
-                {
-                  "type": "string"
-                }
-              ]
-            },
-            "entries": {
-              "type": "array",
-              "items": [
-                {
-                  "type": "string"
-                }
-              ]
-            }
-          },
-          "required": [
-            "name",
-            "source",
-            "entries"
-          ]
-        }
-      ]
-    },
-    "group": {
-      "type": "array"
-    },
-    "domain": {
-      "type": "array"
-    },
-    "organization": {
-      "type": "array"
-    },
-    "organizationFluff": {
-      "type": "array"
-    }
-  },
-  "definitions": {
-    "activity": {
-      "additionalProperties": false,
-      "type": "object",
-      "required": [
-        "number",
-        "unit"
-      ],
-      "properties": {
-        "number": {
-          "type": "number"
-        },
-        "unit": {
-          "type": "string",
-          "enum": ["action", "reaction", "free", "varies"]
-        },
-        "entry": {
-          "type": "string",
-          "not": {
-            "enum": [
-              "{@as 1}",
-              "{@as 2}",
-              "{@as 3}",
-              "{@as R}",
-              "{@as F}",
-              "{@as r}",
-              "{@as f}"
-            ]
-          }
-        }
-      }
-    }
-  }
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"version": "0.0.1",
+	"type": "object",
+	"$id": "schema.json",
+	"title": "Schema",
+	"description": "Schema for Pf2eTools. Should include arrays titled similarly to the main site data, e.g. `spell` or `class`. Requires `_meta` if made as homebrew to function.",
+	"properties": {
+		"_meta": {
+			"$ref": "_meta.json"
+		},
+		"$schema": {
+			"description": "Relative or absolute path to the schema to apply to this document.",
+			"type": "string",
+			"examples": [
+				"../test/schema-template/schema.json",
+				"https://raw.githubusercontent.com/Pf2eTools/Pf2eTools.github.io/master/test/schema-template/schema.json"
+			]
+		},
+		"variantrule": {
+			"type": "array"
+		},
+		"table": {
+			"type": "array"
+		},
+		"tableGroup": {
+			"type": "array"
+		},
+		"book": {
+			"type": "array"
+		},
+		"bookData": {
+			"type": "array"
+		},
+		"ancestry": {
+			"type": "array"
+		},
+		"heritage": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"shortName": {
+						"type": "string"
+					},
+					"source": {
+						"type": "string"
+					},
+					"ancestryName": {
+						"type": "string"
+					},
+					"ancestrySource": {
+						"type": "string"
+					},
+					"entries": {
+						"type": "array",
+						"items": [
+							{
+								"type": "string"
+							}
+						]
+					}
+				},
+				"required": [
+					"name",
+					"source",
+					"ancestryName",
+					"ancestrySource",
+					"entries"
+				]
+			}
+		},
+		"versatileHeritage": {
+			"type": "array"
+		},
+		"background": {
+			"type": "array"
+		},
+		"class": {
+			"type": "array"
+		},
+		"subclass": {
+			"type": "array"
+		},
+		"classFeature": {
+			"type": "array"
+		},
+		"subclassFeature": {
+			"type": "array"
+		},
+		"archetype": {
+			"type": "array"
+		},
+		"feat": {
+			"$ref": "feats/feats.json#/properties/feat"
+		},
+		"companion": {
+			"type": "array"
+		},
+		"familiar": {
+			"type": "array"
+		},
+		"adventure": {
+			"type": "array"
+		},
+		"adventureData": {
+			"type": "array"
+		},
+		"hazard": {
+			"type": "array"
+		},
+		"action": {
+			"$ref": "actions.json#/properties/action"
+		},
+		"creature": {
+			"type": "array"
+		},
+		"condition": {
+			"type": "array"
+		},
+		"item": {
+			"type": "array"
+		},
+		"baseitem": {
+			"type": "array"
+		},
+		"spell": {
+			"type": "array"
+		},
+		"disease": {
+			"type": "array"
+		},
+		"curse": {
+			"type": "array"
+		},
+		"itemcurse": {
+			"type": "array"
+		},
+		"ability": {
+			"$ref": "abilities.json#/properties/ability"
+		},
+		"deity": {
+			"type": "array"
+		},
+		"deityFluff": {
+			"type": "array"
+		},
+		"language": {
+			"$ref": "languages.json#/properties/language"
+		},
+		"place": {
+			"type": "array"
+		},
+		"ritual": {
+			"$ref": "rituals.json#/properties/ritual"
+		},
+		"vehicle": {
+			"type": "array"
+		},
+		"trait": {
+			"$ref": "traits.json#/properties/trait"
+		},
+		"group": {
+			"$ref": "groups.json#/properties/group"
+		},
+		"domain": {
+			"$ref": "domains.json#/properties/domain"
+		},
+		"organization": {
+			"type": "array"
+		},
+		"organizationFluff": {
+			"type": "array"
+		}
+	},
+	"additionalProperties": false
 }

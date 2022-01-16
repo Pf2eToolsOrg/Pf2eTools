@@ -319,8 +319,9 @@ class ClassesPage extends BaseComponent {
 		// Parity with the implementation in hist.js
 		if (Hist.isHistorySuppressed) return Hist.setSuppressHistory(false);
 
+		const doSetFeatFilters = Hist.getDoubleHashParts()[0][0].toLowerCase() !== UrlUtil.autoEncodeHash(this.activeClass).toLowerCase();
 		this._setClassFromHash();
-		if (Hist.getDoubleHashParts()[0][0].toLowerCase() !== UrlUtil.autoEncodeHash(this.activeClass).toLowerCase()) this._setFeatClassFilters();
+		if (doSetFeatFilters) this._setFeatClassFilters();
 		this._setFeatFromHash();
 		this._setStateFromHash();
 	}

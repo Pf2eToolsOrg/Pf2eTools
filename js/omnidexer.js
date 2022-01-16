@@ -667,18 +667,6 @@ class IndexableFileCurses extends IndexableFile {
 	}
 }
 
-class IndexableFileItemCurses extends IndexableFile {
-	constructor () {
-		super({
-			category: Parser.CAT_ID_ITEM_CURSE,
-			file: "afflictions.json",
-			listProp: "itemcurse",
-			baseUrl: "afflictions.html",
-			isHover: true,
-		});
-	}
-}
-
 class IndexableFileVariantRules extends IndexableFile {
 	constructor () {
 		super({
@@ -970,7 +958,6 @@ Omnidexer.TO_INDEX = [
 	new IndexableFileConditions(),
 	new IndexableFileDiseases(),
 	new IndexableFileCurses(),
-	new IndexableFileItemCurses(),
 
 	new IndexableFileQuickReference(),
 	new IndexableFileVariantRules(),

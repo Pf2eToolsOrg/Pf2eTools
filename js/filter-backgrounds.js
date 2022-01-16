@@ -5,13 +5,14 @@ class PageFilterBackgrounds extends PageFilter {
 		super();
 
 		this._traitsFilter = new TraitsFilter({header: "Traits"})
-		this._skillFilter = new Filter({header: "Skill Proficiencies", displayFn: (it) => Renderer.stripTags(it).toTitleCase()});
-		this._loreFilter = new Filter({header: "Lore Proficiencies", displayFn: (it) => Renderer.stripTags(it).toTitleCase()});
+		this._skillFilter = new Filter({header: "Skill Proficiencies", displayFn: (it) => it.toTitleCase()});
+		this._loreFilter = new Filter({header: "Lore Proficiencies", displayFn: (it) => it.toTitleCase()});
 		this._boostFilter = new Filter({
 			header: "Ability Boosts",
 			items: ["Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma", "Free"],
 			itemSortFn: null,
 		});
+		this._featFilter = new Filter({header: "Feats", displayFn: (it) => it.toTitleCase()});
 		this._abilityFilter = new Filter({
 			header: "Miscellaneous",
 			items: ["Gives Ability"],
@@ -33,6 +34,7 @@ class PageFilterBackgrounds extends PageFilter {
 		this._skillFilter.addItem(bg.skills);
 		this._loreFilter.addItem(bg.lore);
 		this._boostFilter.addItem(bg.boosts);
+		this._featFilter.addItem(bg.feat);
 		this._abilityFilter.addItem(bg._fAbility);
 	}
 
@@ -43,6 +45,7 @@ class PageFilterBackgrounds extends PageFilter {
 			this._boostFilter,
 			this._skillFilter,
 			this._loreFilter,
+			this._featFilter,
 			this._abilityFilter,
 		];
 	}
@@ -55,6 +58,7 @@ class PageFilterBackgrounds extends PageFilter {
 			bg.boosts,
 			bg.skills,
 			bg.lore,
+			bg.feat,
 			bg._fAbility,
 		)
 	}

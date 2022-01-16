@@ -6,9 +6,7 @@
 				"number": 1,
 				"unit": "action"
 			},
-			"traits": [
-				"concentrate"
-			],
+			"traits": ["Concentrate"],
 			"source": "GMG",
 			"page": 205,
 			"entries": [
@@ -59,10 +57,7 @@
 			"name": "Butter Up",
 			"source": "GMG",
 			"page": 204,
-			"traits": [
-				"emotion",
-				"mental"
-			],
+			"traits": ["Emotion", "Mental"],
 			"entries": [
 				"When someone eats a dish or treat made by this NPC, the NPC can attempt a {@skill Lore||Baking Lore}, {@skill Lore||Cooking Lore}, or similar check against that creature's Will DC, with the same results as the {@action Make an Impression} action of {@skill Diplomacy}. If more than one creature partakes, the NPC uses the same check result against each creature's Will DC."
 			]
@@ -102,8 +97,7 @@
 			"page": 342,
 			"activity": {
 				"number": 1,
-				"unit": "reaction",
-				"entry": "{@as R}"
+				"unit": "reaction"
 			},
 			"trigger": "A creature within the monster's reach uses a manipulate action or a move action, makes a ranged attack, or leaves a square during a move action it's using.",
 			"entries": [
@@ -125,8 +119,7 @@
 			"page": 342,
 			"activity": {
 				"number": 1,
-				"unit": "reaction",
-				"entry": "{@as R}"
+				"unit": "reaction"
 			},
 			"trigger": "A creature Mounts or uses the Command an Animal action while riding the monster.",
 			"entries": [
@@ -139,8 +132,7 @@
 			"page": 342,
 			"activity": {
 				"number": 1,
-				"unit": "reaction",
-				"entry": "{@as R}"
+				"unit": "reaction"
 			},
 			"requirements": "The monster must have a free hand but can Release anything it's holding as part of this reaction.",
 			"trigger": "The monster is targeted with a thrown rock Strike or a rock would fall on the monster.",
@@ -157,13 +149,13 @@
 				"unit": "action"
 			},
 			"traits": [
-				"concentrate",
-				"[magical tradition]",
-				"polymorph",
-				"transmutation"
+				"Concentrate",
+				"[Magical Tradition]",
+				"Polymorph",
+				"Transmutation"
 			],
 			"entries": [
-				"The monster changes its shape indefinitely. It can use this action again to return to its natural shape or adopt a new shape. Unless otherwise noted, a monster cannot use Change Shape to appear as a specific individual. Using Change Shape counts as creating a disguise for the Impersonate use of Deception. The monster's transformation automatically defeats Perception DCs to determine whether the creature is a member of the ancestry or creature type into which it transformed, and it gains a +4 status bonus to its Deception DC to prevent others from seeing through its disguise. Change Shape abilities specify what shapes the monster can adopt. The monster doesn't gain any special abilities of the new shape, only its physical form. For example, in each shape, it replaces its normal Speeds and Strikes, and might potentially change its senses or size. Any changes are listed in its stat block."
+				"The monster changes its shape indefinitely. It can use this action again to return to its natural shape or adopt a new shape. Unless otherwise noted, a monster cannot use Change Shape to appear as a specific individual. Using Change Shape counts as creating a disguise for the Impersonate use of {@skill Deception}. The monster's transformation automatically defeats Perception DCs to determine whether the creature is a member of the ancestry or creature type into which it transformed, and it gains a +4 status bonus to its {@skill Deception} DC to prevent others from seeing through its disguise. Change Shape abilities specify what shapes the monster can adopt. The monster doesn't gain any special abilities of the new shape, only its physical form. For example, in each shape, it replaces its normal Speeds and Strikes, and might potentially change its senses or size. Any changes are listed in its stat block."
 			]
 		},
 		{
@@ -190,14 +182,10 @@
 			"name": "Coven",
 			"source": "Bst",
 			"page": 342,
-			"traits": [
-				"divination",
-				"mental",
-				"occult"
-			],
+			"traits": ["Divination", "Mental", "Occult"],
 			"entries": [
 				"This monster can form a coven with two or more other creatures who also have the coven ability. This involves performing an 8-hour ceremony with all prospective coven members. After the coven is formed, each of its members gains elite adjustments, adjusting their levels accordingly. Coven members can sense other members' locations and conditions by spending a single action, which has the {@trait concentrate}, and can sense what another coven member is sensing as a two-action activity, which has the {@trait concentrate} as well.",
-				"Covens also grant spells and rituals to their members, but these can be cast only in cooperation between three coven members who are all within 30 feet of one another. A coven member can contribute to a coven spell with a single-action spellcasting activity that has a single verbal component. If two coven members have contributed these actions within the last round, a third member can cast a coven spell on her turn by spending the normal spellcasting actions. A coven can cast its coven spells an unlimited number of times but can cast only one coven spell each round. All covens grant the 8th-level {@spell baleful polymorph|CRB} spell and all the following spells, which the coven can cast at any level up to 5th: {@spell augury|CRB}, {@spell charm|CRB}, {@spell clairaudience|CRB}, {@spell clairvoyance|CRB}, {@spell dream message|CRB}, {@spell illusory disguise|CRB}, {@spell illusory scene|CRB}, {@spell prying eye|CRB}, and {@spell talking corpse|CRB}. Individual creatures with the coven ability also grant additional spells to any coven they join. A coven can also cast the control weather ritual (Core Rulebook 411), with a DC of 23 instead of the standard DC.",
+				"Covens also grant spells and rituals to their members, but these can be cast only in cooperation between three coven members who are all within 30 feet of one another. A coven member can contribute to a coven spell with a single-action spellcasting activity that has a single verbal component. If two coven members have contributed these actions within the last round, a third member can cast a coven spell on her turn by spending the normal spellcasting actions. A coven can cast its coven spells an unlimited number of times but can cast only one coven spell each round. All covens grant the 8th-level {@spell baleful polymorph|CRB} spell and all the following spells, which the coven can cast at any level up to 5th: {@spell augury|CRB}, {@spell charm|CRB}, {@spell clairaudience|CRB}, {@spell clairvoyance|CRB}, {@spell dream message|CRB}, {@spell illusory disguise|CRB}, {@spell illusory scene|CRB}, {@spell prying eye|CRB}, and {@spell talking corpse|CRB}. Individual creatures with the coven ability also grant additional spells to any coven they join. A coven can also cast the {@ritual control weather} ritual, with a DC of 23 instead of the standard DC.",
 				"If a coven member leaving the coven or the death of a coven member brings the coven below three members, the remaining members keep their elite adjustments for 24 hours, but without enough members to contribute the necessary actions, they can't cast coven spells."
 			]
 		},
@@ -245,8 +233,7 @@
 			"page": 343,
 			"activity": {
 				"number": 1,
-				"unit": "reaction",
-				"entry": "{@as R}"
+				"unit": "reaction"
 			},
 			"trigger": "The monster is reduced to 0 HP.",
 			"entries": [
@@ -257,12 +244,7 @@
 			"name": "Frightful Presence",
 			"source": "Bst",
 			"page": 343,
-			"traits": [
-				"aura",
-				"emotion",
-				"fear",
-				"mental"
-			],
+			"traits": ["Aura", "Emotion", "Fear", "Mental"],
 			"entries": [
 				"A creature that first enters the area must attempt a Will save. Regardless of the result of the saving throw, the creature is temporarily immune to this monster's Frightful Presence for 1 minute.",
 				{
@@ -307,8 +289,7 @@
 			"page": 343,
 			"activity": {
 				"number": 1,
-				"unit": "free",
-				"entry": "{@as F}"
+				"unit": "free"
 			},
 			"entries": [
 				"The monster can use {@ability Grab|BST} as a free action triggered by a hit with its initial attack. A monster with {@ability Improved Grab} still needs to spend an action to extend the duration for creatures it already has {@condition grabbed}."
@@ -320,8 +301,7 @@
 			"page": 343,
 			"activity": {
 				"number": 1,
-				"unit": "free",
-				"entry": "{@as F}"
+				"unit": "free"
 			},
 			"entries": [
 				"The monster can use {@ability Knockdown|BST} as a free action triggered by a hit with its initial attack."
@@ -333,8 +313,7 @@
 			"page": 343,
 			"activity": {
 				"number": 1,
-				"unit": "free",
-				"entry": "{@as F}"
+				"unit": "free"
 			},
 			"entries": [
 				"The monster can use {@ability Push|BST} as a free action triggered by a hit with its initial attack."
@@ -349,9 +328,7 @@
 				"unit": "action"
 			},
 			"requirements": "The monster's last action was a success with a Strike that lists Knockdown in its damage entry.",
-			"entries": [
-				"The monster knocks the target {@condition prone}."
-			]
+			"entries": ["The monster knocks the target {@condition prone}."]
 		},
 		{
 			"name": "Lifesense",
@@ -425,8 +402,7 @@
 			"page": 344,
 			"activity": {
 				"number": 1,
-				"unit": "reaction",
-				"entry": "{@as R}"
+				"unit": "reaction"
 			},
 			"trigger": "An enemy damages the monster's ally, and both are within 15 feet of the monster.",
 			"entries": [
@@ -448,8 +424,7 @@
 			"page": 344,
 			"activity": {
 				"number": 1,
-				"unit": "reaction",
-				"entry": "{@as R}"
+				"unit": "reaction"
 			},
 			"trigger": "The monster has its shield raised and takes damage from a physical attack.",
 			"entries": [
@@ -472,11 +447,9 @@
 				"number": 1,
 				"unit": "action"
 			},
-			"traits": [
-				"attack"
-			],
+			"traits": ["Attack"],
 			"entries": [
-				"The monster attempts to swallow a creature of the listed size or smaller that it has {@condition grabbed} in its jaws or mouth. If a swallowed creature is of the maximum size listed, the monster can't use Swallow Whole again. If the creature is smaller than the maximum, the monster can usually swallow more creatures; the GM determines the maximum. The monster attempts an Athletics check opposed by the {@condition grabbed} creature's Reflex DC. If it succeeds, it swallows the creature. The monster's mouth or jaws no longer grab a creature it has swallowed, so the monster is free to use them to {@action Strike|CRB} or Grab once again. The monster can't attack creatures it has swallowed.",
+				"The monster attempts to swallow a creature of the listed size or smaller that it has {@condition grabbed} in its jaws or mouth. If a swallowed creature is of the maximum size listed, the monster can't use Swallow Whole again. If the creature is smaller than the maximum, the monster can usually swallow more creatures; the GM determines the maximum. The monster attempts an {@skill Athletics} check opposed by the {@condition grabbed} creature's Reflex DC. If it succeeds, it swallows the creature. The monster's mouth or jaws no longer grab a creature it has swallowed, so the monster is free to use them to {@action Strike|CRB} or Grab once again. The monster can't attack creatures it has swallowed.",
 				"A swallowed creature is {@condition grabbed}, is {@condition slowed} 1, and has to hold its breath or start suffocating. The swallowed creature takes the listed amount of damage when first swallowed and at the end of each of its turns while it's swallowed. If the victim {@action Escape||Escapes} this ability's {@condition grabbed} condition, it exits through the monster's mouth. This frees any other creature {@condition grabbed} in the monster's mouth or jaws. A swallowed creature can attack the monster that has swallowed it, but only with unarmed attacks or with weapons of light Bulk or less. The engulfing creature is {@condition flat-footed} against the attack. If the monster takes piercing or slashing damage equaling or exceeding the listed Rupture value from a single attack or spell, the engulfed creature cuts itself free. A creature that gets free by either Escaping or cutting itself free can immediately breathe and exits the swallowing monster's space.",
 				"If the monster dies, a swallowed creature can be freed by creatures adjacent to the corpse if they spend a combined total of 3 actions cutting the monster open with a weapon or unarmed attack that deals piercing or slashing damage."
 			]
@@ -493,11 +466,7 @@
 			"name": "Telepathy",
 			"source": "Bst",
 			"page": 344,
-			"traits": [
-				"aura",
-				"divination",
-				"magical"
-			],
+			"traits": ["Aura", "Divination", "Magical"],
 			"entries": [
 				"A monster with {@spell telepathy|CRB} can communicate mentally with any creatures within the listed radius, as long as they share a language. This doesn't give any special access to their thoughts, and communicates no more information than normal speech would."
 			]

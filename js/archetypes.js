@@ -319,8 +319,9 @@ class ArchetypesPage extends BaseComponent {
 		// Parity with the implementation in hist.js
 		if (Hist.isHistorySuppressed) return Hist.setSuppressHistory(false);
 
+		const doSetFeatFilters = Hist.getDoubleHashParts()[0][0].toLowerCase() !== UrlUtil.autoEncodeHash(this.activeArchetype).toLowerCase();
 		this._setArchetypeFromHash();
-		this._setFeatArchetypeFilters();
+		if (doSetFeatFilters) this._setFeatArchetypeFilters();
 		this._setFeatFromHash();
 		this._setStateFromHash();
 	}

@@ -13,7 +13,7 @@ class AfflictionsPage extends ListPage {
 
 			sublistClass: "subafflictions",
 
-			dataProps: [ "disease", "curse", "itemcurse"],
+			dataProps: [ "disease", "curse"],
 		});
 	}
 

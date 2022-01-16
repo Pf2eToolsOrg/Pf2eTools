@@ -1,0 +1,515 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"$id": "utils.json",
+	"title": "Utility Schema Functions",
+	"description": "A file containing various utility functions for Pf2eTools.",
+	"type": "object",
+	"version": "0.0.1",
+
+	"definitions": {
+		"sourceList": {
+			"enum": [
+				"CRB",
+				"Bst",
+				"GMG",
+				"Bst2",
+				"APG",
+				"Bst3",
+				"SoM",
+				"LOWG",
+				"LOCG",
+				"LOGM",
+				"LOGMWS",
+				"LOL",
+				"LOPSG",
+				"LOAG",
+				"LOME",
+				"LOACLO",
+				"AAWS",
+				"G&G",
+				"LOTGB",
+				"AoA0",
+				"AoA1",
+				"AoA2",
+				"AoA3",
+				"AoA4",
+				"AoA5",
+				"AoA6",
+				"EC0",
+				"EC1",
+				"EC2",
+				"EC3",
+				"EC4",
+				"EC5",
+				"EC6",
+				"AoE0",
+				"AoE1",
+				"AoE2",
+				"AoE3",
+				"AoE4",
+				"AoE5",
+				"AoE6",
+				"AV0",
+				"AV1",
+				"AV2",
+				"AV3",
+				"FRP0",
+				"FRP1",
+				"FRP2",
+				"FRP3",
+				"SoT0",
+				"SoT1",
+				"SoT2",
+				"SoT3",
+				"SoT4",
+				"SoT5",
+				"SoT6",
+				"Sli",
+				"NGD",
+				"FoP",
+				"TiO",
+				"LTiBA"
+			]
+		},
+		
+		
+		"frequency": {
+			"type": "object",
+			"oneOf": [
+				{
+					"properties": {
+						"special": {
+							"$comment": "For special cases that require a custom string.",
+							"type": "string"
+						}
+					},
+					"additionalProperties": false,
+					"required": ["special"]
+				},
+				{
+					"properties": {
+						"freq": {
+							"$comment": "In code return \"Once\" if =1, \"Twice\" if =2, and \"`n` times\" otherwise.",
+							"description": "How frequent it is; once, twice etc.",
+							"type": "integer",
+							"default": 1,
+							"exclusiveMinimum": 0
+						},
+						"recurs": {
+							"$comment": "Assume false unless provided. If provided, render \"every\" instead of \"per\".",
+							"description": "Use \"every\" instead of \"per\".",
+							"type": "boolean",
+							"default": false
+						},
+						"interval": {
+							"$comment": "Assume =1 unless provided.",
+							"description": "The number of units e.g. every *three* hours.",
+							"type": "integer",
+							"default": 1,
+							"exclusiveMinimum": 0
+						},
+						"unit": {
+							"$comment": "If \"interval\" is provided and > 1, then return the plural form of the unit.",
+							"type": "string",
+							"enum": [
+								"turn",
+								"round",
+								"minute",
+								"hour",
+								"day",
+								"week",
+								"month",
+								"year"
+							]
+						},
+						"customUnit": {
+							"$comment": "You could just add these the valid list above, but I feel like as more data is added it's going to become an ever extending list. Better to have a dedicated property for custom strings and keep the validation/pluralisation of standard units separate.",
+							"type": "string",
+							"examples": ["Crimson Shroud", "gem"]
+						}
+					},
+					"additionalProperties": false,
+					"oneOf": [
+						{ "required": ["freq", "unit"] },
+						{ "required": ["freq", "customUnit"] }
+					]
+				}
+			]
+		},
+		"activity": {
+			"type": "object",
+			"required": ["number", "unit"],
+			"properties": {
+				"number": {
+					"type": "number"
+				},
+				"unit": {
+					"type": "string",
+					"enum": [
+						"action",
+						"reaction",
+						"free",
+						"varies",
+						"minute",
+						"round",
+						"hour"
+					]
+				},
+				"entry": {
+					"type": "string",
+					"not": {
+						"enum": [
+							"{@as 1}",
+							"{@as 2}",
+							"{@as 3}",
+							"{@as R}",
+							"{@as F}",
+							"{@as r}",
+							"{@as f}"
+						]
+					}
+				}
+			},
+			"additionalProperties": false
+		},
+
+		"otherSources": {
+			"type": "object",
+			"patternProperties": {
+				"^(Reprinted|Expanded)$": {
+					"type": "array",
+					"items": {
+						"type": "string",
+						"pattern": "^[\\w\\d&]+\\|\\d+$"
+					},
+					"uniqueItems": true
+				}
+			},
+			"additionalProperties": false
+		},
+
+		"implies": {
+			"type": "object",
+			"properties": {
+				"item": {
+					"type": "object",
+					"properties": {
+						"_fDamageType": {
+							"type": "object",
+							"properties": {
+								"regex": {
+									"type": "string",
+									"format": "regex"
+								},
+								"flags": {
+									"type": "string",
+									"pattern": "^[gmixsuXUAJ]*$"
+								},
+								"value": {
+									"type": "string"
+								}
+							},
+							"minProperties": 3,
+							"additionalProperties": false
+						}
+					}
+				},
+				"creature": {
+					"type": "object",
+					"properties": {
+						"_fimmunities": {
+							"type": "array",
+							"items": {
+								"type": "string",
+								"enum": [
+									"emotion",
+									"fear",
+									"possession",
+									"mental"
+								]
+							},
+							"uniqueItems": true
+						},
+						"additionalProperties": false
+					}
+				}
+			},
+			"additionalProperties": false
+		},
+
+		"anyTraitUpper": {
+			"type": "string",
+			"anyOf": [
+				{
+					"$ref": "#/definitions/rarityUpper"
+				},
+				{
+					"$ref": "#/definitions/classNameUpper"
+				},
+				{
+					"$ref": "#/definitions/schoolUpper"
+				},
+				{
+					"$ref": "#/definitions/traditionUpper"
+				},
+				{
+					"$ref": "#/definitions/damageTypeUpper"
+				},
+				{
+					"$ref": "#/definitions/effectNameUpper"
+				},
+				{
+					"$ref": "#/definitions/ancestryNameUpper"
+				},
+				{
+					"enum": [
+						"Archetype",
+						"Secret",
+						"Dedication",
+						"General",
+						"Skill",
+						"Prestige",
+						"Attack",
+						"Move",
+						"Exploration",
+						"Downtime",
+						"Energy",
+						"Concentrate",
+						"Finisher",
+						"Manipulate",
+						"Auditory",
+						"Flourish",
+						"Tandem",
+						"Stance",
+						"Spellshot",
+						"Unstable",
+						"Reckless",
+						"Verbal",
+						"Open",
+						"Rage",
+						"Lineage",
+						"Metamagic",
+						"Press",
+						"Oath",
+						"Vigilante",
+						"Multiclass",
+						"Social",
+						"Air",
+						"Earth",
+						"Water",
+						"Magical",
+						"Aura",
+						"Modification",
+						"Class",
+						"Extradimensional",
+						"Evolution",
+						"Pervasive Magic",
+						"Eidolon",
+						"True Name",
+						"Shadow",
+						"Contract",
+						"Invested"
+					]
+				},
+				{
+					"enum": [
+						"[Magical Tradition]"
+					]
+				},
+				{
+					"type": "string",
+					"pattern": "Additive \\d"
+				}
+			]
+		},
+
+		"ancestryNameUpper": {
+			"type": "string",
+			"enum": [
+				"Kitsune",
+				"Kobold",
+				"Grippli",
+				"Aasimar",
+				"Changeling",
+				"Human",
+				"Catfolk",
+				"Elf",
+				"Orc",
+				"Ratfolk",
+				"Dhampir",
+				"Duskwalker",
+				"Gnome",
+				"Goblin",
+				"Tiefling",
+				"Halfling",
+				"Dwarf",
+				"Half-Elf",
+				"Tengu",
+				"Automaton",
+				"Hobgoblin",
+				"Poppet",
+				"Goloma",
+				"Anadi",
+				"Gnoll",
+				"Lizardfolk",
+				"Conrasu",
+				"Shisk"
+			]
+		},
+
+		"skillNameUpper": {
+			"type": "string",
+			"description": "A Skill Trait",
+			"enum": [
+				"Acrobatics",
+				"Arcana",
+				"Athletics",
+				"Crafting",
+				"Deception",
+				"Diplomacy",
+				"Intimidation",
+				"Lore",
+				"Medicine",
+				"Nature",
+				"Occultism",
+				"Performance",
+				"Religion",
+				"Society",
+				"Stealth",
+				"Survival",
+				"Thievery"
+			]
+		},
+
+		"classNameUpperSourced": {
+			"type": "string",
+			"enum": [
+				"Alchemist",
+				"Barbarian",
+				"Bard",
+				"Champion",
+				"Cleric",
+				"Druid",
+				"Fighter",
+				"Gunslinger|G&G",
+				"Inventor|G&G",
+				"Investigator|APG",
+				"Magus|SoM",
+				"Monk",
+				"Oracle|APG",
+				"Ranger",
+				"Rogue",
+				"Sorcerer",
+				"Summoner|SoM",
+				"Swashbuckler|APG",
+				"Witch|APG",
+				"Wizard"
+			]
+		},
+		"classNameUpper": {
+			"type": "string",
+			"enum": [
+				"Alchemist",
+				"Barbarian",
+				"Bard",
+				"Champion",
+				"Cleric",
+				"Druid",
+				"Fighter",
+				"Gunslinger",
+				"Inventor",
+				"Investigator",
+				"Magus",
+				"Monk",
+				"Oracle",
+				"Ranger",
+				"Rogue",
+				"Sorcerer",
+				"Summoner",
+				"Swashbuckler",
+				"Witch",
+				"Wizard"
+			]
+		},
+
+		"rarityUpper": {
+			"type": "string",
+			"enum": ["Common", "Uncommon", "Rare", "Unique"]
+		},
+
+		"traditionUpper": {
+			"type": "string",
+			"enum": [
+				"Arcane",
+				"Divine",
+				"Occult",
+				"Primal"
+			]
+		},
+
+		"schoolUpper": {
+			"type": "string",
+			"enum": [
+				"Abjuration",
+				"Conjuration",
+				"Divination",
+				"Enchantment",
+				"Evocation",
+				"Illusion",
+				"Necromancy",
+				"Transmutation"
+			]
+		},
+
+		"damageTypeUpper": {
+			"type": "string",
+			"enum": [
+				"Electricity",
+				"Sonic",
+				"Acid",
+				"Poison",
+				"Cold",
+				"Fire",
+				"Slashing",
+				"Bludgeoning",
+				"Piercing",
+				"Positive",
+				"Negative",
+				"Force",
+				"Bleed",
+				"Precision",
+				"Evil",
+				"Good",
+				"Chaotic",
+				"Lawful",
+				"Mental"
+			]
+		},
+
+		"effectNameUpper": {
+			"type": "string",
+			"enum": [
+				"Death",
+				"Detection",
+				"Disease",
+				"Emotion",
+				"Fear",
+				"Fortune",
+				"Healing",
+				"Incapacitation",
+				"Light",
+				"Linguistic",
+				"Misfortune",
+				"Morph",
+				"Polymorph",
+				"Possession",
+				"Prediction",
+				"Revelation",
+				"Scrying",
+				"Sleep",
+				"Teleportation",
+				"Visual"
+			]
+		}
+	}
+}

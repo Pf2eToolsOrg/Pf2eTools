@@ -1,5 +1,272 @@
 {
-	"item": [
+	"item": [{
+		"name": "Arrow Attracting",
+		"source": "GMG",
+		"page": 92,
+		"type": "Item",
+		"category": "Curse",
+		"level": 8,
+		"traits": [
+			"Rare",
+			"Abjuration",
+			"Cursed",
+			"Magical"
+		],
+		"usage": "curses armor or shield",
+		"appliesTo": ["Armor", "Shield"],
+		"entries": [
+			"An item affected by an arrow attracting curse protects you normally, but it draws ranged attacks like a magnet. Whenever a creature within 120 feet misses with a ranged attack, it must immediately reroll the attack against your AC, affecting you depending on the result of the new attack roll. The arrow attraction curse activates only if you could have been a legitimate target. Creatures that intentionally attempt to miss a ranged attack do not activate an arrow attraction curse. Once the curse has activated for the first time, the item fuses to you."
+		]
+	},
+	{
+		"name": "Arsonous",
+		"source": "GMG",
+		"page": 92,
+		"type": "Item",
+		"category": "Curse",
+		"level": 7,
+		"traits": [
+			"Rare",
+			"Cursed",
+			"Evocation",
+			"Fire",
+			"Magical"
+		],
+		"usage": "curses a ring, staff, or wand",
+		"appliesTo": ["Other"],
+		"entries": [
+			"An {@i arsonous} curse creates flaws in the mystic pathways that channel magic through an item, allowing excess power to escape as sparks. Whenever you {@action activate an item||activate} the magic item, a random ally within 30 feet takes {@dice 1d10} persistent fire damage. If no ally is in range, you take the damage instead. At the GM's discretion, this curse might ignite an unattended object or the surrounding environment instead."
+		]
+	},
+	{
+		"name": "Backbiting",
+		"source": "GMG",
+		"page": 92,
+		"type": "Item",
+		"category": "Curse",
+		"level": 4,
+		"traits": [
+			"Rare",
+			"Cursed",
+			"Evocation",
+			"Magical"
+		],
+		"usage": "curses a weapon",
+		"appliesTo": ["Weapon"],
+		"entries": [
+			"A weapon with the {@i backbiting} curse warps space in response to catastrophic mishaps. Whenever you critically fail at a {@action Strike} with this weapon, the weapon curls around (or its projectile swerves through the air) to strike you in the back as though you hit yourself, automatically dealing maximum damage to you."
+		]
+	},
+	{
+		"name": "Bloodbiter",
+		"source": "GMG",
+		"page": 92,
+		"type": "Item",
+		"category": "Curse",
+		"level": 6,
+		"traits": [
+			"Rare",
+			"Cursed",
+			"Magical",
+			"Necromancy"
+		],
+		"usage": "curses a piercing or slashing weapon",
+		"appliesTo": ["Weapon"],
+		"entries": [
+			"A {@i bloodbiter} weapon is awakened by violence and fueled by blood. When you make a successful attack with the weapon, it inflicts a wound that deals {@damage 1d6} {@condition persistent damage||persistent bleed damage} (in addition to its normal damage), but it also deals {@damage 1d6} {@condition persistent damage||persistent bleed damage} to you. The curse remains dormant until the weapon hits a creature, at which point black thorns protrude from the weapon and dig into your body; the weapon fuses to you and you can't use the hand that holds the weapon for any other purpose. If the weapon is two-handed, it attaches itself to only a single hand (GM's choice)."
+		]
+	},
+	{
+		"name": "Degenerating",
+		"source": "GMG",
+		"page": 93,
+		"type": "Item",
+		"category": "Curse",
+		"level": 5,
+		"traits": [
+			"Rare",
+			"Acid",
+			"Cursed",
+			"Necromancy",
+			"Magical"
+		],
+		"usage": "curses a weapon",
+		"appliesTo": ["Weapon"],
+		"entries": [
+			"Failure makes the weapon crumble. Whenever you critically fail an attack roll with the weapon, the {@i degenerating} curse deals {@damage 1d10} acid damage to the weapon, ignoring its Hardness and resistances."
+		]
+	},
+	{
+		"name": "Dependent",
+		"source": "GMG",
+		"page": 93,
+		"type": "Item",
+		"category": "Curse",
+		"level": 9,
+		"traits": [
+			"Rare",
+			"Cursed",
+			"Magical",
+			"Transmutation"
+		],
+		"usage": "curses gear used for skills or a weapon",
+		"appliesTo": ["Weapon", "Other"],
+		"entries": [
+			"The {@i dependent} curse makes an item function properly only under certain circumstances. Whenever you use the item to perform a skill check or use the weapon in combat, your degree of success is one worse than the result you rolled unless those specific conditions are met. The most common types of {@i dependent} curses are nocturnal or diurnal\u2014functioning normally only at night or only during the day, respectively\u2014but more restrictive curses do exist, such as a curse that restricts the item's use to underground or a curse that allows the item to function effectively only during autumn."
+		]
+	},
+	{
+		"name": "Dreary",
+		"source": "GMG",
+		"page": 93,
+		"type": "Item",
+		"category": "Curse",
+		"level": 3,
+		"traits": [
+			"Rare",
+			"Conjuration",
+			"Cursed",
+			"Magical"
+		],
+		"usage": "curses armor",
+		"appliesTo": ["Armor"],
+		"entries": [
+			"When you invest this armor, a personal-sized cloud appears over your head and begins to rain on you, and the armor fuses to you. This extinguishes uncovered flames and soaks other objects you are carrying or holding, potentially ruining them. {@book Cold Conditions|CRB|10|Temperature} are one step worse under the cloud, and at the GM's discretion it might cause other problems, such as interfering with sleep."
+		]
+	},
+	{
+		"name": "Erratic Transposing",
+		"source": "GMG",
+		"page": 93,
+		"type": "Item",
+		"category": "Curse",
+		"level": 11,
+		"traits": [
+			"Rare",
+			"Conjuration",
+			"Cursed",
+			"Magical"
+		],
+		"usage": "curses a weapon",
+		"appliesTo": ["Weapon"],
+		"entries": [
+			"This curse bursts with uncontrolled teleportation magic when activated, unreliably transporting creatures across the battlefield. On a critical hit with the affected weapon, you and an ally within 60 feet (chosen randomly) teleport to switch places with one another. If either of the affected creatures is unable to entirely fit within its new space, the creature is placed in the nearest available squares instead."
+		]
+	},
+	{
+		"name": "Grandstanding",
+		"source": "GMG",
+		"page": 93,
+		"type": "Item",
+		"category": "Curse",
+		"level": 11,
+		"traits": [
+			"Rare",
+			"Cursed",
+			"Enchantment",
+			"Magical"
+		],
+		"usage": "curses a weapon",
+		"appliesTo": ["Weapon"],
+		"entries": [
+			"Weapons with the {@i grandstanding} curse inspire overconfidence in their wielders, demanding style over pragmatism. Whenever you reduce a foe to 0 Hit Points, you lose all remaining actions on your turn, as you are compelled to flourish, gloat, pose, or otherwise waste your time in response."
+		]
+	},
+	{
+		"name": "Overdramatic",
+		"source": "GMG",
+		"page": 93,
+		"type": "Item",
+		"category": "Curse",
+		"level": 5,
+		"traits": [
+			"Rare",
+			"Cursed",
+			"Evocation",
+			"Magical"
+		],
+		"usage": "curses a weapon",
+		"appliesTo": ["Weapon"],
+		"entries": [
+			"The weapon flashes excessive light with each attack. On a critical hit with the weapon, you are {@condition blinded} until the end of your turn and take the effects of a {@i {@spell faerie fire}} spell until the start of your next turn."
+		]
+	},
+	{
+		"name": "Raucous",
+		"source": "GMG",
+		"page": 93,
+		"type": "Item",
+		"category": "Curse",
+		"level": 3,
+		"traits": [
+			"Rare",
+			"Cursed",
+			"Magical",
+			"Transmutation"
+		],
+		"usage": "curses gear or a weapon",
+		"appliesTo": ["Weapon", "Other"],
+		"entries": [
+			"While more annoying than deadly, a {@i raucous} curse is the bane of subtlety. Whenever you use the affected item, you must loudly yell what you are attempting to do with it, ruining any attempts at stealth. Failure to announce your action or speak at an appropriate volume automatically causes the attempted action to become a critical failure."
+		]
+	},
+	{
+		"name": "Ravenous",
+		"source": "GMG",
+		"page": 93,
+		"type": "Item",
+		"category": "Curse",
+		"level": 1,
+		"traits": [
+			"Rare",
+			"Cursed",
+			"Evocation",
+			"Magical"
+		],
+		"usage": "curses a ring, staff, or wand",
+		"appliesTo": ["Other"],
+		"entries": [
+			"A {@i ravenous} curse draws power from the wielder's body. Whenever you {@action activate an item||activate} the item, you become incredibly hungry and immediately begin to starve ({@book {@i Core Rulebook} 500|CRB|10|Starvation and Thirst}). You require 10 times as much food as normal for the next day."
+		]
+	},
+	{
+		"name": "Staining",
+		"source": "GMG",
+		"page": 93,
+		"type": "Item",
+		"category": "Curse",
+		"level": 1,
+		"traits": [
+			"Rare",
+			"Cursed",
+			"Magical",
+			"Transmutation"
+		],
+		"usage": "curses gear or a weapon",
+		"appliesTo": ["Weapon", "Other"],
+		"entries": [
+			"This property is associated with a specific color, which is defined at the time of the curse's creation. Whenever you use the affected equipment while taking a {@trait manipulate} action with another object, the second object is permanently stained the associated color. For instance, if you used a set of yellow {@i staining lockpicks} to open a door, the lock would permanently become yellow. This color change does not otherwise unnaturally persist and can be changed via any normal mundane or magical means."
+		]
+	},
+	{
+		"name": "Withering",
+		"source": "GMG",
+		"page": 93,
+		"type": "Item",
+		"category": "Curse",
+		"level": 13,
+		"traits": [
+			"Rare",
+			"Cursed",
+			"Magical",
+			"Necromancy"
+		],
+		"usage": "curses a ring, staff, or wand",
+		"appliesTo": ["Other"],
+		"entries": [
+			"A {@i withering} curse shrivels vulnerable flesh. Whenever you {@action activate an item||activate} the item, one of your fingers turns black and falls off. You take a \u20131 status penalty to {@skill Thievery} checks and Dexterity-based attack rolls with a hand missing two or three fingers; if you lose more than four fingers on one hand, you can't use that hand to hold objects or use {@trait manipulate} actions. These fingers can be replaced by magic but are otherwise gone forever. The GM has the final say on how creatures with unusual appendages or numbers of fingers are affected by this curse."
+		]
+	},
 		{
 			"name": "Alcohol",
 			"source": "GMG",
@@ -42,12 +309,12 @@
 						},
 						{
 							"stage": 2,
-							"entry": "{@condition flat‑footed}, +1 item bonus to saving throws against {@trait fear} effects",
+							"entry": "{@condition flat-footed}, +1 item bonus to saving throws against {@trait fear} effects",
 							"duration": "10 minutes"
 						},
 						{
 							"stage": 3,
-							"entry": "{@condition clumsy 1}, {@condition flat‑footed}, {@condition stupefied 2}",
+							"entry": "{@condition clumsy 1}, {@condition flat-footed}, {@condition stupefied 2}",
 							"duration": "10 minutes"
 						},
 						{
@@ -108,7 +375,7 @@
 					"trigger": null,
 					"requirements": null,
 					"entries": [
-						"The axe casts a 10th‑level {@spell summon elemental} spell to conjure an elite elemental avalanche (Bestiary 6, 147). The spell is automatically sustained, requiring no action on your part but still allowing you to command the elemental on each of your turns. You can {@action Dismiss} the Spell.",
+						"The axe casts a 10th-level {@spell summon elemental} spell to conjure an elite elemental avalanche (Bestiary 6, 147). The spell is automatically sustained, requiring no action on your part but still allowing you to command the elemental on each of your turns. You can {@action Dismiss} the Spell.",
 						"Destruction If an orc beheads a dwarven king with the Axe of the Dwarven Lords, the axe rusts away to nothing."
 					]
 				}
@@ -192,7 +459,7 @@
 			},
 			"category": "Poison",
 			"entries": [
-				"This potent drug is distilled from a certain tropical vine into a deep‑red syrup that, over time, stains the user's lips and teeth a vivid shade of red.",
+				"This potent drug is distilled from a certain tropical vine into a deep-red syrup that, over time, stains the user's lips and teeth a vivid shade of red.",
 				{
 					"type": "affliction",
 					"name": null,
@@ -356,7 +623,7 @@
 			},
 			"category": "Poison",
 			"entries": [
-				"Deros use cytillesh in a variety of ways, and some surface‑dwellers seek out the fungus for their own use. Memories lost to cytillesh can be restored through modify memory. The save for addiction to cytillesh is DC 20, and the addiction has the {@trait virulent} trait.",
+				"Deros use cytillesh in a variety of ways, and some surface-dwellers seek out the fungus for their own use. Memories lost to cytillesh can be restored through modify memory. The save for addiction to cytillesh is DC 20, and the addiction has the {@trait virulent} trait.",
 				{
 					"type": "affliction",
 					"name": null,
@@ -419,8 +686,8 @@
 							"type": "list",
 							"items": [
 								"{@bold Balance} Your alignment changes to a radically different one. If you fail to adhere to that alignment, you lose a level and all the benefits you gained at that level. Your XP total doesn't change when you lose a level this way.",
-								"{@bold Comet} If you alone defeat the next low‑threat or harder {@condition hostile} enemy or enemies you encounter, you gain enough XP to reach the next level. Otherwise, you gain no benefit.",
-								"{@bold Donjon} You're imprisoned by a 10th‑level imprisonment ritual. This uses the prison option, typically sequestering you in a distant part of the world. You also lose all your items. Cease drawing cards.",
+								"{@bold Comet} If you alone defeat the next low-threat or harder {@condition hostile} enemy or enemies you encounter, you gain enough XP to reach the next level. Otherwise, you gain no benefit.",
+								"{@bold Donjon} You're imprisoned by a 10th-level imprisonment ritual. This uses the prison option, typically sequestering you in a distant part of the world. You also lose all your items. Cease drawing cards.",
 								"{@bold Dullard} Immediately reduce your Intelligence score by {@dice 1d4+1}. You can then draw an additional card, and the Dullard card then disappears forever.",
 								"{@bold Euryale} (curse) A medusa's image curses you with a permanent \u20131 status penalty to all saving throws. This can be removed by only a deity or the Fates card.",
 								"{@bold The Fates The} Fates respin the fabric of reality to save you from any situation you choose. This can reverse even a past event, and you can make the decision instantly even if the event would slay you. This intervention saves only you, not anyone else affected by the event. There's no limit on how long you can wait before using this effect.",
@@ -521,7 +788,7 @@
 			"bulk": "1",
 			"category": "Artifact",
 			"entries": [
-				"This stone tablet is carved with the symbol of a five‑branched twig. There are only a limited number of elder signs, and each time one is destroyed, the universe's doom creeps inexorably closer. Reciting one of three different occult mantras (DC 20 {@skill Occultism} check to do so correctly) allows three different activations. All three abilities work only on a creature connected to the Elder Mythos or a cosmic horror, such as a wendigo or gug; the activations refer to them as \"eldritch creatures.\"",
+				"This stone tablet is carved with the symbol of a five-branched twig. There are only a limited number of elder signs, and each time one is destroyed, the universe's doom creeps inexorably closer. Reciting one of three different occult mantras (DC 20 {@skill Occultism} check to do so correctly) allows three different activations. All three abilities work only on a creature connected to the Elder Mythos or a cosmic horror, such as a wendigo or gug; the activations refer to them as \"eldritch creatures.\"",
 				{
 					"type": "ability",
 					"style": "compact",
@@ -538,7 +805,7 @@
 					"trigger": null,
 					"requirements": null,
 					"entries": [
-						"The elder sign casts a 10th‑level {@spell banishment} spell on an eldritch creature. Even if the creature isn't extraplanar, the elder sign can still banish it, sending it back to the part of the Material Plane from which it originated. If the creature is a Great Old One, the elder sign banishes it automatically (as if it critically failed its save) but is then forever destroyed."
+						"The elder sign casts a 10th-level {@spell banishment} spell on an eldritch creature. Even if the creature isn't extraplanar, the elder sign can still banish it, sending it back to the part of the Material Plane from which it originated. If the creature is a Great Old One, the elder sign banishes it automatically (as if it critically failed its save) but is then forever destroyed."
 					]
 				},
 				{
@@ -615,7 +882,7 @@
 			},
 			"category": "Poison",
 			"entries": [
-				"Specialists in Kyonin prepare this emerald‑green beverage.",
+				"Specialists in Kyonin prepare this emerald-green beverage.",
 				{
 					"type": "affliction",
 					"name": null,
@@ -659,7 +926,7 @@
 			"bulk": "5",
 			"category": "Artifact",
 			"entries": [
-				"This enormous, multifaceted prism normally rests on a pedestal, eerily refracting many‑colored lights even when no light source is present. In reality, the prism refracts the four magical essences into the visible spectrum (see page 300 in the Core Rulebook for more on the four essences). A creature adjacent to the prism can adjust its facets with an {@action Interact} action to change between two polarities. Two essences flow from two input streams into the prism, where the prism combines them into a single output stream; alternatively, a single essence flows from one input stream into the prism and is split into two output streams. A creature that enters and stays within an input essence stream for 1 minute is slowly encased in solid magic, at which point it is {@condition paralyzed} until anyone reverses the prism's flow or finishes activating the prism. A creature stepping into an output essence stream is gently pushed back and out of the stream.",
+				"This enormous, multifaceted prism normally rests on a pedestal, eerily refracting many-colored lights even when no light source is present. In reality, the prism refracts the four magical essences into the visible spectrum (see page 300 in the Core Rulebook for more on the four essences). A creature adjacent to the prism can adjust its facets with an {@action Interact} action to change between two polarities. Two essences flow from two input streams into the prism, where the prism combines them into a single output stream; alternatively, a single essence flows from one input stream into the prism and is split into two output streams. A creature that enters and stays within an input essence stream for 1 minute is slowly encased in solid magic, at which point it is {@condition paralyzed} until anyone reverses the prism's flow or finishes activating the prism. A creature stepping into an output essence stream is gently pushed back and out of the stream.",
 				{
 					"type": "ability",
 					"style": "compact",
@@ -802,7 +1069,7 @@
 				"Artifact",
 				"Rune"
 			],
-			"appliesTo": "Armor",
+			"appliesTo": ["Armor"],
 			"entries": [
 				"This rune was created by {@deity Torag}, god of the forge, protection, and strategy, and shared with his greatest artisans and warriors. {@deity Torag} designed a small number of these seals as gifts to allied good deities; each one is nearly identical but has a different spell effect when using the reaction activation; for instance, {@deity Sarenrae}'s seal casts {@spell sunburst} instead of {@spell earthquake}.",
 				"A seal constantly rings with the quiet sound of a hammer striking an anvil when etched onto a runestone. A Forgefather's seal can be etched only onto armor that can bear two or more property runes, and it is so powerful that it takes the place of two property runes. While wearing armor etched with a Forgefather's seal, you gain fire resistance 40. You ignore the armor's check penalty and Speed penalty (if any); if the armor is light or medium, increase its item bonus to AC by 1.",
@@ -822,7 +1089,7 @@
 					"trigger": "You are hit by an attack",
 					"requirements": null,
 					"entries": [
-						"The Forgefather's seal glows and your armor shakes as it absorbs the blow. The attack's damage is reduced by 100 and you cast {@spell earthquake} (DC 40), centered directly on the triggering creature. You decide the area of the earthquake when you {@action Cast a Spell||Cast the Spell}, from as small as the size of the creature and up to a 60‑foot burst."
+						"The Forgefather's seal glows and your armor shakes as it absorbs the blow. The attack's damage is reduced by 100 and you cast {@spell earthquake} (DC 40), centered directly on the triggering creature. You decide the area of the earthquake when you {@action Cast a Spell||Cast the Spell}, from as small as the size of the creature and up to a 60-foot burst."
 					]
 				},
 				{
@@ -1220,8 +1487,8 @@
 			"category": "Artifact",
 			"entries": [
 				"Each of the legendary orbs of dragonkind contains the essence and personality of a powerful dragon, with each of the 10 most famous orbs preserving a different type of metallic or chromatic dragon's spirit. It is believed that orbs for other types of true dragons exist, though that theory is yet to be confirmed.",
-				"While holding an orb of dragonkind, you are immune to the breath weapon of the dragon variety associated with the orb. An orb of dragonkind also grants a number of additional senses. You can communicate verbally and visually with the bearers of other orbs as if you were in the same room with them. You know if there are any dragons within 10 miles of you at all times; this extends to 100 miles for dragons of the type associated with the orb. If an associated dragon is within 1 mile, you know which direction the dragon is from you and the dragon's age, such as young, adult, or ancient. Each orb grants a 10th‑level arcane innate spell that you can cast at will, determined by the specific orb.",
-				"The Orb of Gold Dragonkind can convey the innate spells of any of the other orbs, as well as their activated abilities, but it can grant each individual power only once per day. In addition, the bearer of the gold orb can use its 3‑action activation to attempt to cast {@spell dominate} on the bearer of another orb if they are within 1 mile, as if that bearer were a dragon of the associated type within 500 feet. The last reports of the Orb of Gold Dragonkind on Golarion indicate the orb has been destroyed, however. GMs running campaigns in settings other than the Age of Lost Omens might decide the gold orb is still intact for their campaigns.",
+				"While holding an orb of dragonkind, you are immune to the breath weapon of the dragon variety associated with the orb. An orb of dragonkind also grants a number of additional senses. You can communicate verbally and visually with the bearers of other orbs as if you were in the same room with them. You know if there are any dragons within 10 miles of you at all times; this extends to 100 miles for dragons of the type associated with the orb. If an associated dragon is within 1 mile, you know which direction the dragon is from you and the dragon's age, such as young, adult, or ancient. Each orb grants a 10th-level arcane innate spell that you can cast at will, determined by the specific orb.",
+				"The Orb of Gold Dragonkind can convey the innate spells of any of the other orbs, as well as their activated abilities, but it can grant each individual power only once per day. In addition, the bearer of the gold orb can use its 3-action activation to attempt to cast {@spell dominate} on the bearer of another orb if they are within 1 mile, as if that bearer were a dragon of the associated type within 500 feet. The last reports of the Orb of Gold Dragonkind on Golarion indicate the orb has been destroyed, however. GMs running campaigns in settings other than the Age of Lost Omens might decide the gold orb is still intact for their campaigns.",
 				"Bearing an orb of dragonkind earns you the enmity of all dragonkind forever because you profited from the enslavement of the dragon within the orb, even if you later lose the orb.",
 				"Spell Granted (DC 40) black dragon (darkness), blue dragon (hallucinatory terrain), brass dragon (speak with animals), bronze dragon (control water), copper dragon (hideous laughter), green dragon (entangle), red dragon (wall of fire), silver dragon (detect alignment [evil only]), white dragon (wall of ice)",
 				{
@@ -1238,7 +1505,7 @@
 					"trigger": null,
 					"requirements": null,
 					"entries": [
-						"You cast a 10th‑level {@spell dominate} spell (DC 40) on a dragon of the type associated with the orb within 500 feet, except the effect lasts for 1 month rather than unlimited. The dragon does not receive its status bonus to saving throws against magic. The dragon is then temporarily immune to further domination via the orb for 24 hours."
+						"You cast a 10th-level {@spell dominate} spell (DC 40) on a dragon of the type associated with the orb within 500 feet, except the effect lasts for 1 month rather than unlimited. The dragon does not receive its status bonus to saving throws against magic. The dragon is then temporarily immune to further domination via the orb for 24 hours."
 					]
 				},
 				{
@@ -1256,8 +1523,8 @@
 					"trigger": null,
 					"requirements": null,
 					"entries": [
-						"You breathe an elemental blast that deals {@dice 25d6} damage (DC 40 basic Reflex save) in either a 60‑foot cone or a 100‑foot line (your choice). The breath's damage type matches the Breath Weapon of the dragon type associated with the orb of dragonkind (acid for the black orb, electricity for the blue orb, and so on)",
-						"Destruction An orb of dragonkind violently shatters and explodes when exposed to the Breath Weapon of a dragon who is a descendant of the dragon trapped within. The explosion deals damage as the 2‑action activation above to all creatures within 90 feet."
+						"You breathe an elemental blast that deals {@dice 25d6} damage (DC 40 basic Reflex save) in either a 60-foot cone or a 100-foot line (your choice). The breath's damage type matches the Breath Weapon of the dragon type associated with the orb of dragonkind (acid for the black orb, electricity for the blue orb, and so on)",
+						"Destruction An orb of dragonkind violently shatters and explodes when exposed to the Breath Weapon of a dragon who is a descendant of the dragon trapped within. The explosion deals damage as the 2-action activation above to all creatures within 90 feet."
 					]
 				}
 			],
@@ -1314,8 +1581,8 @@
 					"trigger": null,
 					"requirements": null,
 					"entries": [
-						"You take a sizable portion of a creature (at least two‑thirds of its original mass) and filter it through the mechanisms of the extractor. After the end of the process, the philosopher's extractor creates a transmogrifying mutagen that imparts the essence of the creature to the drinker. The extractor can make several transmogrifying mutagens simultaneously using the same activation if enough mass is provided at once, up to a maximum of 10 concurrent mutagens. Drinking a transmogrifying mutagen imparts you with one of the creature's unique abilities for 1 hour. This could grant one of several abilities such as a dragon's Breath Weapon, {@ability darkvision}, flight, frightful presence, or immunity to sleep. The ability functions as it did for the original creature, except it uses your class DC or your spell DC (whichever is higher) instead of the creature's DC.",
-						"The mutagen grants only abilities based on a creature's physiology and never grants magic‑related abilities such as innate spells or spellcasting ability. The GM ultimately decides what ability a transmogrifying mutagen grants.",
+						"You take a sizable portion of a creature (at least two-thirds of its original mass) and filter it through the mechanisms of the extractor. After the end of the process, the philosopher's extractor creates a transmogrifying mutagen that imparts the essence of the creature to the drinker. The extractor can make several transmogrifying mutagens simultaneously using the same activation if enough mass is provided at once, up to a maximum of 10 concurrent mutagens. Drinking a transmogrifying mutagen imparts you with one of the creature's unique abilities for 1 hour. This could grant one of several abilities such as a dragon's Breath Weapon, {@ability darkvision}, flight, frightful presence, or immunity to sleep. The ability functions as it did for the original creature, except it uses your class DC or your spell DC (whichever is higher) instead of the creature's DC.",
+						"The mutagen grants only abilities based on a creature's physiology and never grants magic-related abilities such as innate spells or spellcasting ability. The GM ultimately decides what ability a transmogrifying mutagen grants.",
 						"Unlike normal for mutagens and {@trait polymorph} effects, you can drink multiple transmogrifying mutagens and gain benefits from each. When you drink transmogrifying mutagens made from different creatures, you receive abilities from each creature. When you drink multiple transmogrifying mutagens made from the same type of creature, such as multiple mutagens made from trolls, you gain an additional ability for each transmogrifying mutagen you drink, and the duration of the abilities from that creature type increases by 1 hour for each additional concoction you drink.",
 						"However, these additional benefits come with a risk; if you drink a transmogrifying mutagen while at least one other is active, after drinking it, you must succeed at a flat check with a DC equal to the total number of active transmogrifying mutagens you've consumed. On a failure, you fully transform into a member of the species of the latest transmogrifying mutagen you drank, and you almost always go berserk from your change. The transformation may leave some amount of your personality and memories intact, at the GM's discretion.",
 						"Destruction Simultaneously feeding the philosopher's extractor sizable portions of an aeon, angel, archon, azata, daemon, demon, devil, protean, and psychopomp, each of at least 14th level, along with a philosopher's stone causes the device to jam, overheat, and explode. Creatures within 60 feet of the explosion must succeed at a DC 55 Reflex save or become covered in an alchemical slurry that transforms them into a horrifying amalgam of at least two of the creatures used to destroy the machine."
@@ -1378,7 +1645,7 @@
 			},
 			"category": "Poison",
 			"entries": [
-				"When eaten or smoked, pesh gives users a sense of well‑being, sometimes with hallucinations, aggression, and exhaustion.",
+				"When eaten or smoked, pesh gives users a sense of well-being, sometimes with hallucinations, aggression, and exhaustion.",
 				{
 					"type": "affliction",
 					"name": null,
@@ -1476,7 +1743,7 @@
 					"stages": [
 						{
 							"stage": 1,
-							"entry": "{@condition stupefied 2} and +2 item bonus to Reflex saves and Dexterity‑based skill checks",
+							"entry": "{@condition stupefied 2} and +2 item bonus to Reflex saves and Dexterity-based skill checks",
 							"duration": "1 hour"
 						},
 						{
@@ -1545,9 +1812,9 @@
 				}
 			},
 			"entries": [
-				"The legendary blade Serithtial is said to have been forged by Iomedae, goddess of honor, justice, and valor. She is an intelligent +4 major striking holy bastard sword. Although the sword is made of steel, Serithtial is also treated as cold iron and silver (Core Rulebook 578), allowing her to deal more damage to certain supernatural creatures. She glows as bright as a torch, but you or Serithtial can suppress or resume this glow as a single action, which has the {@trait concentrate} trait. In addition, Strikes with Serithtial deal an additional {@dice 2d6} damage against creatures that are worshippers of Zon‑Kuthon, and while wielding Serithtial, you constantly benefit from {@spell death ward} and {@spell freedom of movement} spells that function only against effects created by followers of Zon‑Kuthon.",
+				"The legendary blade Serithtial is said to have been forged by Iomedae, goddess of honor, justice, and valor. She is an intelligent +4 major striking holy bastard sword. Although the sword is made of steel, Serithtial is also treated as cold iron and silver (Core Rulebook 578), allowing her to deal more damage to certain supernatural creatures. She glows as bright as a torch, but you or Serithtial can suppress or resume this glow as a single action, which has the {@trait concentrate} trait. In addition, Strikes with Serithtial deal an additional {@dice 2d6} damage against creatures that are worshippers of Zon-Kuthon, and while wielding Serithtial, you constantly benefit from {@spell death ward} and {@spell freedom of movement} spells that function only against effects created by followers of Zon-Kuthon.",
 				"Serithtial was forged as a bastard sword, and she reverts to this shape when no one wields her, but she can also detect what sort of blade her current wielder prefers and transform into it (choosing from dagger, shortsword, longsword, scimitar, falchion, greatsword, rapier, or bastard sword) using an action, which she does when first held. The wielder can empathically tell Serithtial to transform at any time by using a single action, which has the {@trait concentrate} trait, after which Serithtial uses an action to transform.",
-				"Serithtial is willing to work with a partner of almost any alignment as long as they are dedicated to defeating the great wyrm Kazavon and the forces of Zon‑Kuthon. If you ignore those threats and pursue your own agenda instead, before long Serithtial attempts to seize control of your body (DC 45 Will save to resist her control), though she typically remains in control for only long enough to find a more worthy partner. You can attempt a new Will save each day to retake control of your body.",
+				"Serithtial is willing to work with a partner of almost any alignment as long as they are dedicated to defeating the great wyrm Kazavon and the forces of Zon-Kuthon. If you ignore those threats and pursue your own agenda instead, before long Serithtial attempts to seize control of your body (DC 45 Will save to resist her control), though she typically remains in control for only long enough to find a more worthy partner. You can attempt a new Will save each day to retake control of your body.",
 				{
 					"type": "ability",
 					"style": "compact",
@@ -1564,7 +1831,7 @@
 					"requirements": null,
 					"entries": [
 						"Serithtial spends the appropriate number of actions and casts a 9th level {@spell heal} or {@spell zone of truth} spell (DC 45 for either of the two spells)",
-						"Destruction If Kazavon or a great wyrm shadow dragon who is a worshipper of Zon‑Kuthon uses its breath weapon on Serithtial while she is unattended, the sword melts into a pool of mundane iron."
+						"Destruction If Kazavon or a great wyrm shadow dragon who is a worshipper of Zon-Kuthon uses its breath weapon on Serithtial while she is unattended, the sword melts into a pool of mundane iron."
 					]
 				}
 			]
@@ -1647,8 +1914,8 @@
 			"ammunition": "any",
 			"category": "Artifact",
 			"entries": [
-				"Legends claim that some long‑forgotten god stole the original bundle of shots of the First Vault from Abadar's repository.",
-				"Since then, individual pieces have turned up throughout the multiverse. When you pick up a shot of the First Vault, it immediately reshapes itself to function with any ranged weapon and establishes you as its owner until another creature picks it up. As its owner, you can use the shot's single‑action activation after shooting it.",
+				"Legends claim that some long-forgotten god stole the original bundle of shots of the First Vault from Abadar's repository.",
+				"Since then, individual pieces have turned up throughout the multiverse. When you pick up a shot of the First Vault, it immediately reshapes itself to function with any ranged weapon and establishes you as its owner until another creature picks it up. As its owner, you can use the shot's single-action activation after shooting it.",
 				"Instead of rolling weapon damage dice, a shot of the First Vault deals 25 damage plus any bonuses or additional damage as if 25 were the result of the weapon's damage dice; the damage type matches that normally dealt by the weapon. Upon damaging a creature, the shot of the First Vault shatters, and the fragments ricochet to hit any other enemies within 30 feet, making attack rolls with the same attack bonus. The shattered fragments remain lodged in the creatures they damage; the creatures are {@condition clumsy 2} while the fragments remain in place. A total of 3 actions, which have the {@trait manipulate} trait, are required to remove the fragments from yourself or an adjacent creature; alternatively, a single action and a successful DC 30 {@skill Medicine} check can be used. A critical failure on this {@skill Medicine} check deals 10 {@condition persistent damage ||persistent bleed damage} to the creature with the embedded fragment.",
 				{
 					"type": "ability",
@@ -1665,7 +1932,7 @@
 					"requirements": null,
 					"entries": [
 						"You recall the shot of the First Vault, which automatically reloads itself into your weapon. If the shot had fragmented, the fragments violently dislodge themselves, dealing 15 {@condition persistent damage ||persistent bleed damage} to each creature in which they were embedded.",
-						"The fragments then unite to re‑form the shot of the First Vault, which automatically reloads itself into your weapon."
+						"The fragments then unite to re-form the shot of the First Vault, which automatically reloads itself into your weapon."
 					]
 				},
 				{
@@ -1689,7 +1956,7 @@
 								"Critical Success": "The creature is unaffected.",
 								"Success": "The creature is moved {@dice 1d20}×50 feet in the direction you fired. If this causes it to hit a solid object, it takes 50 bludgeoning damage.",
 								"Failure": "The creature is transported to a random location on the plane of Axis.",
-								"Critical Failure": "The creature is transported to the First Vault. Unless it is capable of eluding Abadar's precautions, it is likely unable to escape the Vault on its own. Destruction If 10 shots of the First Vault are all fired at the same group of keketar or izfiitar proteans within 1 minute of each other, each shot was a hit, and the shots are then recalled, the shots collide as they attempt to re‑form and crumble to dust."
+								"Critical Failure": "The creature is transported to the First Vault. Unless it is capable of eluding Abadar's precautions, it is likely unable to escape the Vault on its own. Destruction If 10 shots of the First Vault are all fired at the same group of keketar or izfiitar proteans within 1 minute of each other, each shot was a hit, and the shots are then recalled, the shots collide as they attempt to re-form and crumble to dust."
 							}
 						}
 					]
@@ -1836,8 +2103,8 @@
 					"entries": [
 						"You attempt a DC 30 {@skill Arcana} or {@skill Occultism} check to take control of the sphere. If someone else already controls the sphere, this check uses their Will DC if higher. If you succeed, you take control of the sphere. If you fail, the sphere moves 10 feet closer to you (or 20 feet on a critical failure). You keep control as long as you remain within 80 feet of the sphere and Sustain the Activation each round.",
 						"When you Sustain the Activation, you must attempt a DC 30 {@skill Arcana} or {@skill Occultism} check. If you succeed, you direct the sphere to move up to 10 feet in a straight line (or up to 20 feet on a critical success). On a failure, you lose control of the sphere, and it moves 10 feet closer to you in a straight line (or 20 feet on a critical failure)",
-						"Destruction When a {@spell gate} spell is cast such that its rift overlaps a sphere of annihilation, roll d%. On a result of 1\u201350, the sphere is destroyed; on a 51\u201385, the spell is disrupted; and on a 86\u2013100, everything within an 180‑foot emanation of the sphere is pulled to another plane through a tear in the spatial fabric.",
-						"If a rod of cancellation (Pathfinder Advanced Player's Guide) touches the sphere, both items explode, dealing {@damage 14d6} bludgeoning damage (DC 35 basic Reflex save) to everything in a 60‑foot burst from the point of their destruction."
+						"Destruction When a {@spell gate} spell is cast such that its rift overlaps a sphere of annihilation, roll d%. On a result of 1\u201350, the sphere is destroyed; on a 51\u201385, the spell is disrupted; and on a 86\u2013100, everything within an 180-foot emanation of the sphere is pulled to another plane through a tear in the spatial fabric.",
+						"If a rod of cancellation (Pathfinder Advanced Player's Guide) touches the sphere, both items explode, dealing {@damage 14d6} bludgeoning damage (DC 35 basic Reflex save) to everything in a 60-foot burst from the point of their destruction."
 					]
 				}
 			],
@@ -1919,7 +2186,7 @@
 			},
 			"category": "Poison",
 			"entries": [
-				"This bitter paste is used among some gladiatorial rings for its short‑term benefits in a fight.",
+				"This bitter paste is used among some gladiatorial rings for its short-term benefits in a fight.",
 				{
 					"type": "affliction",
 					"name": null,

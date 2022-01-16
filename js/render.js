@@ -903,11 +903,11 @@ function Renderer () {
 		if (!options.isAbility) textStack[0] += `<p class="pf2-stat pf2-stat__section">`
 		if (entry.name) textStack[0] += `<strong>${entry.name}&nbsp;</strong>`;
 		if (traits.length) textStack[0] += `(${renderer.render(traits.join(", "))}); `;
-		if (entry.level != null) textStack[0] += `<strong>Level&nbsp;</strong>${entry.level}. `;
+		if (entry.level != null) textStack[0] += `<strong>Level&nbsp;</strong>${entry.level}; `;
 		if (entry.note != null) textStack[0] += `${this.render(entry.note)} `;
 		if (entry.DC != null || entry.savingThrow != null) {
 			textStack[0] += `<strong>Saving Throw&nbsp;</strong>`
-			if (entry.DC != null) textStack[0] += `DC ${entry.DC} `
+			if (entry.DC != null) textStack[0] += `DC ${renderer.render(entry.DC)} `
 			textStack[0] += `${renderer.render(entry.savingThrow)}.`
 		}
 		if (entry.onset != null) textStack[0] += ` <strong>Onset</strong> ${entry.onset}`;
@@ -2156,7 +2156,6 @@ function Renderer () {
 						break;
 					case "@disease":
 					case "@curse":
-					case "@itemcurse":
 						fauxEntry.href.path = UrlUtil.PG_AFFLICTIONS;
 						fauxEntry.href.hover = {
 							page: UrlUtil.PG_AFFLICTIONS,
@@ -3025,13 +3024,12 @@ Renderer.utils = {
 			if (traits.indexOf(trait) === traits.length - 1) {
 				styles.push("pf2-trait--right");
 			}
-			if (trait === "Uncommon") {
-				styles.push("pf2-trait--uncommon");
-			} else if (trait === "Rare") {
-				styles.push("pf2-trait--rare");
-			} else if (trait === "Unique") {
-				styles.push("pf2-trait--unique");
-			} else if (Renderer.trait.isTraitInCategory(trait, "Size")) {
+			switch (trait.toLowerCase()) {
+				case "uncommon": styles.push("pf2-trait--uncommon"); break;
+				case "rare": styles.push("pf2-trait--rare"); break;
+				case "unique": styles.push("pf2-trait--unique"); break;
+			}
+			if (Renderer.trait.isTraitInCategory(trait, "Size")) {
 				styles.push("pf2-trait--size");
 			} else if (Renderer.trait.isTraitInCategory(trait, "_alignAbv")) {
 				styles.push("pf2-trait--alignment");
@@ -4363,6 +4361,13 @@ Renderer.item = {
 		const renderer = Renderer.get();
 		if (item.access) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Access&nbsp;</strong>${renderer.render(item.access)}</p>`);
 		if (item.price) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Price&nbsp;</strong>${Parser.priceToFull(item.price)}</p>`);
+		if (item.contract != null) {
+			renderStack.push(`<p class="pf2-stat pf2-stat__section">`);
+			if (item.contract.devil != null) renderStack.push(`<strong>Devil&nbsp;</strong>${renderer.render(item.contract.devil)}`)
+			if (item.contract.devil != null && item.contract.decipher != null) renderStack.push("; ")
+			if (item.contract.decipher != null) renderStack.push(`<strong>${renderer.render(`{@action Decipher Writing}`)}&nbsp;</strong>${renderer.render(item.contract.decipher.map(d => `{@skill ${d}}`).join(", "))}`)
+			renderStack.push(`</p>`)
+		}
 
 		if (item.usage != null || item.bulk != null) {
 			renderStack.push(`<p class="pf2-stat pf2-stat__section">`);
@@ -4731,13 +4736,13 @@ Renderer.runeItem = {
 		let runeItem = MiscUtil.copy(baseItem);
 		runeItem.name = [...runes.map(r => Renderer.runeItem.getRuneShortName(r)), runeItem.name].join(" ");
 		runeItem.type = "item";
-		runeItem.category = "Rune Item";
 		runeItem.level = Math.max(...runes.map(r => r.level));
 		runeItem.traits = [...new Set([baseItem.traits, ...runes.map(it => it.traits)].flat())].sort(SortUtil.sortTraits);
 		const value = [baseItem, ...runes].map(it => Parser.priceToValue(it.price)).reduce((a, b) => a + b, 0);
 		runeItem.price = {coin: "gp", amount: Math.floor(value / 100)};
 		runeItem.entries = [runeItem.entries, ...runes.map(r => r.entries.map((e, idx) => idx === 0 ? `{@bold ${r.name}} ${e}` : e))].flat();
 		runeItem.runeItem = true;
+		delete runeItem.equipment;
 		return runeItem;
 	},
 };
@@ -4904,6 +4909,17 @@ Renderer.trait = {
 		if (lookup) return lookup.categories.includes(category);
 		return category === "General";
 	},
+
+	getTraitCategories (trait) {
+		const lookup = Renderer.trait.TRAITS[trait.toLowerCase()];
+		if (lookup) return lookup.categories || [];
+		// else console.warn(`Could not look up the ${trait} trait.`);
+		return [];
+	},
+
+	filterTraitsByCats (traits, categories) {
+		return traits.filter(t => Renderer.trait.getTraitCategories(t).some(c => categories.includes(c)));
+	},
 };
 
 Renderer.variantrule = {
@@ -5042,7 +5058,6 @@ Renderer.hover = {
 		"condition": UrlUtil.PG_CONDITIONS,
 		"disease": UrlUtil.PG_AFFLICTIONS,
 		"curse": UrlUtil.PG_AFFLICTIONS,
-		"itemcurse": UrlUtil.PG_AFFLICTIONS,
 		"background": UrlUtil.PG_BACKGROUNDS,
 		"ancestry": UrlUtil.PG_ANCESTRIES,
 		"companion": UrlUtil.PG_COMPANIONS_FAMILIARS,
@@ -6052,7 +6067,7 @@ Renderer.hover = {
 			case UrlUtil.PG_CONDITIONS:
 				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "conditions.json", ["condition"], (listProp, item) => item.__prop = listProp);
 			case UrlUtil.PG_AFFLICTIONS:
-				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "afflictions.json", ["disease", "curse", "itemcurse"], (listProp, item) => item.__prop = listProp);
+				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "afflictions.json", ["disease", "curse"], (listProp, item) => item.__prop = listProp);
 			case UrlUtil.PG_TABLES:
 				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "tables.json", ["table", "tableGroup"], (listProp, item) => item.__prop = listProp);
 			case UrlUtil.PG_ACTIONS:

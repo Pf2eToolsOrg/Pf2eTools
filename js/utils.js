@@ -5,7 +5,7 @@ if (typeof module !== "undefined") require("./parser.js");
 
 // in deployment, `IS_DEPLOYED = "<version number>";` should be set below.
 IS_DEPLOYED = undefined;
-VERSION_NUMBER = /* PF2ETOOLS_VERSION__OPEN */"0.1.3"/* PF2ETOOLS_VERSION__CLOSE */;
+VERSION_NUMBER = /* PF2ETOOLS_VERSION__OPEN */"0.1.4"/* PF2ETOOLS_VERSION__CLOSE */;
 DEPLOYED_STATIC_ROOT = ""; // ""; // FIXME re-enable this when we have a CDN again
 IS_VTT = false;
 
@@ -1993,7 +1993,6 @@ UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_ITEM] = UrlUtil.PG_ITEMS;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_SPELL] = UrlUtil.PG_SPELLS;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_AFFLICTION] = UrlUtil.PG_AFFLICTIONS;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_CURSE] = UrlUtil.PG_AFFLICTIONS;
-UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_ITEM_CURSE] = UrlUtil.PG_AFFLICTIONS;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_DISEASE] = UrlUtil.PG_AFFLICTIONS;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_ABILITY] = UrlUtil.PG_ABILITIES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_DEITY] = UrlUtil.PG_DEITIES;
@@ -4348,7 +4347,7 @@ BrewUtil = {
 			case UrlUtil.PG_SPELLS:
 				return _PG_SPELLS;
 			case UrlUtil.PG_AFFLICTIONS:
-				return ["disease", "curse", "itemcurse"];
+				return ["disease", "curse"];
 			case UrlUtil.PG_ABILITIES:
 				return ["ability"];
 			case UrlUtil.PG_DEITIES:
@@ -4404,7 +4403,6 @@ BrewUtil = {
 		if (cat === "bookData") return "Book Text";
 		if (cat === "baseitem") return "Base Item";
 		if (cat === "classFeature") return "Class Feature";
-		if (cat === "itemcurse") return "Item Curse";
 		if (cat === "versatileHeritage") return "Versatile Heritage";
 		if (cat === "subclassFeature") return "Subclass Feature";
 		return cat.uppercaseFirst();
@@ -4466,7 +4464,6 @@ BrewUtil = {
 			case "spell":
 			case "disease":
 			case "curse":
-			case "itemcurse":
 			case "ability":
 			case "deity":
 			case "language":
@@ -4571,7 +4568,7 @@ BrewUtil = {
 		obj.uniqueId = CryptUtil.md5(JSON.stringify(obj));
 	},
 
-	_STORABLE: ["variantrule", "table", "tableGroup", "book", "bookData", "ancestry", "heritage", "versatileHeritage", "background", "class", "subclass", "classFeature", "subclassFeature", "archetype", "feat", "companion", "familiar", "eidolon", "adventure", "adventureData", "hazard", "action", "creature", "condition", "item", "baseitem", "spell", "disease", "curse", "itemcurse", "ability", "deity", "language", "place", "ritual", "vehicle", "trait", "group", "domain", "skill", "optionalfeature"],
+	_STORABLE: ["variantrule", "table", "tableGroup", "book", "bookData", "ancestry", "heritage", "versatileHeritage", "background", "class", "subclass", "classFeature", "subclassFeature", "archetype", "feat", "companion", "familiar", "eidolon", "adventure", "adventureData", "hazard", "action", "creature", "condition", "item", "baseitem", "spell", "disease", "curse", "ability", "deity", "language", "place", "ritual", "vehicle", "trait", "group", "domain", "skill", "optionalfeature"],
 	async pDoHandleBrewJson (json, page, pFuncRefresh) {
 		page = BrewUtil._PAGE || page;
 		await BrewUtil._lockHandleBrewJson.pLock();

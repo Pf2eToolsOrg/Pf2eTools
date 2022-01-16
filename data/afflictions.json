@@ -72,12 +72,12 @@
 						},
 						{
 							"stage": 2,
-							"entry": "{@condition clumsy||clumsy 1} and a \u20135‑foot status penalty to Speed",
+							"entry": "{@condition clumsy||clumsy 1} and a \u20135-foot status penalty to Speed",
 							"duration": "1 day"
 						},
 						{
 							"stage": 3,
-							"entry": "{@condition clumsy||clumsy 2} and a \u201310‑foot status penalty to Speed",
+							"entry": "{@condition clumsy||clumsy 2} and a \u201310-foot status penalty to Speed",
 							"duration": "1 day"
 						}
 					]
@@ -562,7 +562,7 @@
 				"Enchantment"
 			],
 			"entries": [
-				"A successful remove curse spell, rather than ending this curse, reduces its stage by 1 (to a minimum of stage 1).",
+				"A successful {@spell remove curse} spell, rather than ending this curse, reduces its stage by 1 (to a minimum of stage 1).",
 				{
 					"type": "affliction",
 					"level": "your level",
@@ -718,7 +718,7 @@
 					"DC": 16,
 					"savingThrow": "Will",
 					"entries": [
-						"You must rest for 12 hours instead of 8 to avoid becoming {@condition fatigued} and can't gain any benefits from resting or long‑term rest. You can still make your daily preparations."
+						"You must rest for 12 hours instead of 8 to avoid becoming {@condition fatigued} and can't gain any benefits from resting or long-term rest. You can still make your daily preparations."
 					]
 				}
 			]
@@ -1075,248 +1075,6 @@
 						"You take {@dice 5d6} damage of the same damage type as the damage you dealt to the book, and the damage can't be healed as long as the curse lasts. Repairing the book, including replacing any missing text, ends this curse."
 					]
 				}
-			]
-		}
-	],
-	"itemcurse": [
-		{
-			"name": "Arrow Attracting",
-			"source": "GMG",
-			"page": 92,
-			"type": "Curse",
-			"level": 8,
-			"traits": [
-				"Rare",
-				"Abjuration",
-				"Cursed",
-				"Magical"
-			],
-			"usage": "curses armor or shield",
-			"entries": [
-				"An item affected by an arrow attracting curse protects you normally, but it draws ranged attacks like a magnet. Whenever a creature within 120 feet misses with a ranged attack, it must immediately reroll the attack against your AC, affecting you depending on the result of the new attack roll. The arrow attraction curse activates only if you could have been a legitimate target. Creatures that intentionally attempt to miss a ranged attack do not activate an arrow attraction curse. Once the curse has activated for the first time, the item fuses to you."
-			]
-		},
-		{
-			"name": "Arsonous",
-			"source": "GMG",
-			"page": 92,
-			"type": "Curse",
-			"level": 7,
-			"traits": [
-				"Rare",
-				"Cursed",
-				"Evocation",
-				"Fire",
-				"Magical"
-			],
-			"usage": "curses a ring, staff, or wand",
-			"entries": [
-				"An {@i arsonous} curse creates flaws in the mystic pathways that channel magic through an item, allowing excess power to escape as sparks. Whenever you {@action activate an item||activate} the magic item, a random ally within 30 feet takes {@dice 1d10} persistent fire damage. If no ally is in range, you take the damage instead. At the GM's discretion, this curse might ignite an unattended object or the surrounding environment instead."
-			]
-		},
-		{
-			"name": "Backbiting",
-			"source": "GMG",
-			"page": 92,
-			"type": "Curse",
-			"level": 4,
-			"traits": [
-				"Rare",
-				"Cursed",
-				"Evocation",
-				"Magical"
-			],
-			"usage": "curses a weapon",
-			"entries": [
-				"A weapon with the {@i backbiting} curse warps space in response to catastrophic mishaps. Whenever you critically fail at a {@action Strike} with this weapon, the weapon curls around (or its projectile swerves through the air) to strike you in the back as though you hit yourself, automatically dealing maximum damage to you."
-			]
-		},
-		{
-			"name": "Bloodbiter",
-			"source": "GMG",
-			"page": 92,
-			"type": "Curse",
-			"level": 6,
-			"traits": [
-				"Rare",
-				"Cursed",
-				"Magical",
-				"Necromancy"
-			],
-			"usage": "curses a piercing or slashing weapon",
-			"entries": [
-				"A {@i bloodbiter} weapon is awakened by violence and fueled by blood. When you make a successful attack with the weapon, it inflicts a wound that deals {@damage 1d6} {@condition persistent damage||persistent bleed damage} (in addition to its normal damage), but it also deals {@damage 1d6} {@condition persistent damage||persistent bleed damage} to you. The curse remains dormant until the weapon hits a creature, at which point black thorns protrude from the weapon and dig into your body; the weapon fuses to you and you can't use the hand that holds the weapon for any other purpose. If the weapon is two-handed, it attaches itself to only a single hand (GM's choice)."
-			]
-		},
-		{
-			"name": "Degenerating",
-			"source": "GMG",
-			"page": 93,
-			"type": "Curse",
-			"level": 5,
-			"traits": [
-				"Rare",
-				"Acid",
-				"Cursed",
-				"Necromancy",
-				"Magical"
-			],
-			"usage": "curses a weapon",
-			"entries": [
-				"Failure makes the weapon crumble. Whenever you critically fail an attack roll with the weapon, the {@i degenerating} curse deals {@damage 1d10} acid damage to the weapon, ignoring its Hardness and resistances."
-			]
-		},
-		{
-			"name": "Dependent",
-			"source": "GMG",
-			"page": 93,
-			"type": "Curse",
-			"level": 9,
-			"traits": [
-				"Rare",
-				"Cursed",
-				"Magical",
-				"Transmutation"
-			],
-			"usage": "curses gear used for skills or a weapon",
-			"entries": [
-				"The {@i dependent} curse makes an item function properly only under certain circumstances. Whenever you use the item to perform a skill check or use the weapon in combat, your degree of success is one worse than the result you rolled unless those specific conditions are met. The most common types of {@i dependent} curses are nocturnal or diurnal\u2014functioning normally only at night or only during the day, respectively\u2014but more restrictive curses do exist, such as a curse that restricts the item's use to underground or a curse that allows the item to function effectively only during autumn."
-			]
-		},
-		{
-			"name": "Dreary",
-			"source": "GMG",
-			"page": 93,
-			"type": "Curse",
-			"level": 3,
-			"traits": [
-				"Rare",
-				"Conjuration",
-				"Cursed",
-				"Magical"
-			],
-			"usage": "curses armor",
-			"entries": [
-				"When you invest this armor, a personal-sized cloud appears over your head and begins to rain on you, and the armor fuses to you. This extinguishes uncovered flames and soaks other objects you are carrying or holding, potentially ruining them. {@book Cold Conditions|CRB|10|Temperature} are one step worse under the cloud, and at the GM's discretion it might cause other problems, such as interfering with sleep."
-			]
-		},
-		{
-			"name": "Erratic Transposing",
-			"source": "GMG",
-			"page": 93,
-			"type": "Curse",
-			"level": 11,
-			"traits": [
-				"Rare",
-				"Conjuration",
-				"Cursed",
-				"Magical"
-			],
-			"usage": "curses a weapon",
-			"entries": [
-				"This curse bursts with uncontrolled teleportation magic when activated, unreliably transporting creatures across the battlefield. On a critical hit with the affected weapon, you and an ally within 60 feet (chosen randomly) teleport to switch places with one another. If either of the affected creatures is unable to entirely fit within its new space, the creature is placed in the nearest available squares instead."
-			]
-		},
-		{
-			"name": "Grandstanding",
-			"source": "GMG",
-			"page": 93,
-			"type": "Curse",
-			"level": 11,
-			"traits": [
-				"Rare",
-				"Cursed",
-				"Enchantment",
-				"Magical"
-			],
-			"usage": "curses a weapon",
-			"entries": [
-				"Weapons with the {@i grandstanding} curse inspire overconfidence in their wielders, demanding style over pragmatism. Whenever you reduce a foe to 0 Hit Points, you lose all remaining actions on your turn, as you are compelled to flourish, gloat, pose, or otherwise waste your time in response."
-			]
-		},
-		{
-			"name": "Overdramatic",
-			"source": "GMG",
-			"page": 93,
-			"type": "Curse",
-			"level": 5,
-			"traits": [
-				"Rare",
-				"Cursed",
-				"Evocation",
-				"Magical"
-			],
-			"usage": "curses a weapon",
-			"entries": [
-				"The weapon flashes excessive light with each attack. On a critical hit with the weapon, you are {@condition blinded} until the end of your turn and take the effects of a {@i {@spell faerie fire}} spell until the start of your next turn."
-			]
-		},
-		{
-			"name": "Raucous",
-			"source": "GMG",
-			"page": 93,
-			"type": "Curse",
-			"level": 3,
-			"traits": [
-				"Rare",
-				"Cursed",
-				"Magical",
-				"Transmutation"
-			],
-			"usage": "curses gear or a weapon",
-			"entries": [
-				"While more annoying than deadly, a {@i raucous} curse is the bane of subtlety. Whenever you use the affected item, you must loudly yell what you are attempting to do with it, ruining any attempts at stealth. Failure to announce your action or speak at an appropriate volume automatically causes the attempted action to become a critical failure."
-			]
-		},
-		{
-			"name": "Ravenous",
-			"source": "GMG",
-			"page": 93,
-			"type": "Curse",
-			"level": 1,
-			"traits": [
-				"Rare",
-				"Cursed",
-				"Evocation",
-				"Magical"
-			],
-			"usage": "curses a ring, staff, or wand",
-			"entries": [
-				"A {@i ravenous} curse draws power from the wielder's body. Whenever you {@action activate an item||activate} the item, you become incredibly hungry and immediately begin to starve ({@book {@i Core Rulebook} 500|CRB|10|Starvation and Thirst}). You require 10 times as much food as normal for the next day."
-			]
-		},
-		{
-			"name": "Staining",
-			"source": "GMG",
-			"page": 93,
-			"type": "Curse",
-			"level": 1,
-			"traits": [
-				"Rare",
-				"Cursed",
-				"Magical",
-				"Transmutation"
-			],
-			"usage": "curses gear or a weapon",
-			"entries": [
-				"This property is associated with a specific color, which is defined at the time of the curse's creation. Whenever you use the affected equipment while taking a {@trait manipulate} action with another object, the second object is permanently stained the associated color. For instance, if you used a set of yellow {@i staining lockpicks} to open a door, the lock would permanently become yellow. This color change does not otherwise unnaturally persist and can be changed via any normal mundane or magical means."
-			]
-		},
-		{
-			"name": "Withering",
-			"source": "GMG",
-			"page": 93,
-			"type": "Curse",
-			"level": 13,
-			"traits": [
-				"Rare",
-				"Cursed",
-				"Magical",
-				"Necromancy"
-			],
-			"usage": "curses a ring, staff, or wand",
-			"entries": [
-				"A {@i withering} curse shrivels vulnerable flesh. Whenever you {@action activate an item||activate} the item, one of your fingers turns black and falls off. You take a \u20131 status penalty to Thievery checks and Dexterity-based attack rolls with a hand missing two or three fingers; if you lose more than four fingers on one hand, you can't use that hand to hold objects or use {@trait manipulate} actions. These fingers can be replaced by magic but are otherwise gone forever. The GM has the final say on how creatures with unusual appendages or numbers of fingers are affected by this curse."
 			]
 		}
 	]

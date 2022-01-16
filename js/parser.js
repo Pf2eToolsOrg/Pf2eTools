@@ -702,17 +702,16 @@ Parser.CAT_ID_ITEM = 2;
 Parser.CAT_ID_SPELL = 3;
 Parser.CAT_ID_AFFLICTION = 61;
 Parser.CAT_ID_CURSE = 62;
-Parser.CAT_ID_ITEM_CURSE = 63;
-Parser.CAT_ID_DISEASE = 64;
-Parser.CAT_ID_ABILITY = 65;
+Parser.CAT_ID_DISEASE = 63;
+Parser.CAT_ID_ABILITY = 64;
 Parser.CAT_ID_DEITY = 9;
-Parser.CAT_ID_LANGUAGE = 66;
-Parser.CAT_ID_PLACE = 67;
-Parser.CAT_ID_PLANE = 68;
-Parser.CAT_ID_NATION = 69;
-Parser.CAT_ID_SETTLEMENT = 70;
-Parser.CAT_ID_RITUAL = 71;
-Parser.CAT_ID_VEHICLE = 72;
+Parser.CAT_ID_LANGUAGE = 65;
+Parser.CAT_ID_PLACE = 66;
+Parser.CAT_ID_PLANE = 67;
+Parser.CAT_ID_NATION = 68;
+Parser.CAT_ID_SETTLEMENT = 69;
+Parser.CAT_ID_RITUAL = 70;
+Parser.CAT_ID_VEHICLE = 71;
 Parser.CAT_ID_TRAIT = 4;
 
 Parser.CAT_ID_PAGE = 99;
@@ -752,7 +751,6 @@ Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ITEM] = "Item";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_SPELL] = "Spell";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_AFFLICTION] = "Affliction";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_CURSE] = "Curse";
-Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ITEM_CURSE] = "Item Curse";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_DISEASE] = "Disease";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ABILITY] = "Creature Ability";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_DEITY] = "Deity";
@@ -805,7 +803,6 @@ Parser.CAT_ID_TO_PROP[Parser.CAT_ID_ITEM] = "item";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_SPELL] = "spell";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_AFFLICTION] = "affliction";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_CURSE] = "curse";
-Parser.CAT_ID_TO_PROP[Parser.CAT_ID_ITEM_CURSE] = "itemcurse";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_DISEASE] = "disease";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_ABILITY] = "ability";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_DEITY] = "deity";
@@ -1583,7 +1580,6 @@ Parser.TAG_TO_DEFAULT_SOURCE = {
 	"condition": SRC_CRB,
 	"disease": SRC_GMG,
 	"curse": SRC_GMG,
-	"itemcurse": SRC_GMG,
 	"background": SRC_CRB,
 	"ancestry": SRC_CRB,
 	"versatileHeritage": SRC_APG,

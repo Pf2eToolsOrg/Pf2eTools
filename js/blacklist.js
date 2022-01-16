@@ -7,7 +7,6 @@ class Blacklist {
 		if (cat === "classFeature") return "Class Feature";
 		if (cat === "subclassFeature") return "Subclass Feature";
 		if (cat === "baseitem") return "Base Item";
-		if (cat === "itemcurse") return "Item Curse";
 		if (cat === "ability") return "Creature Ability";
 		return cat.uppercaseFirst();
 	}

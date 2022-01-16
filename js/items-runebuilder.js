@@ -39,8 +39,8 @@ class RuneBuilder extends ProxyBase {
 		$(`#btn-runebuild--change`).click(async () => {
 			await this.selectBaseItem();
 		});
-		$(`#btn-runebuild--save`).click(() => {
-			this.pSaveRuneItemAndState();
+		$(`#btn-runebuild--save`).click(async () => {
+			await this.pSaveRuneItemAndState();
 			Hist.setSubhash(RuneBuilder.HASH_KEY, null);
 			Hist.setMainHash(UrlUtil.autoEncodeHash(this.runeItem));
 		});
@@ -106,7 +106,7 @@ class RuneBuilder extends ProxyBase {
 		if (!this.runes.length) {
 			JqueryUtil.doToast({type: "warning", content: "Add runes to this item before saving."});
 		} else if (isDuplicate) {
-			JqueryUtil.doToast({type: "warning", content: "There are no changes to save."});
+			JqueryUtil.doToast({type: "warning", content: "This item already exists."});
 		} else {
 			const data = {item: [this.runeItem]};
 			itemsPage._addItems(data);
@@ -114,14 +114,22 @@ class RuneBuilder extends ProxyBase {
 			itemsPage._runeItems.push(id);
 			await ListUtil.pDoSublistAdd(id, true);
 
+			// Remove old item from lists & save
+			const itemListIx = ListUtil.getSublistedIds().find(id => UrlUtil.autoEncodeHash(itemsPage._dataList[id]) === this._state.activeKey);
+			if (itemListIx != null) {
+				await ListUtil.pDoSublistRemove(itemListIx);
+				// FIXME: Degen
+				itemsPage._magicList.removeItem(2618);
+				itemsPage._magicList._isDirty = true;
+				itemsPage._magicList.update();
+			}
+			this._state.savedRuneItems = Object.keys(this._state.savedRuneItems).filter(k => k !== this._state.activeKey)
+				.reduce((obj, key) => ({...obj, [key]: this._state.savedRuneItems[key]}), {});
 			const name = this.runeItem.name;
 			const key = UrlUtil.autoEncodeHash(this.runeItem);
-			this._state.savedRuneItems = {
-				...this._state.savedRuneItems,
-				[key]: {
-					name,
-					data: this.getSaveableState(),
-				},
+			this._state.savedRuneItems[key] = {
+				name,
+				data: this.getSaveableState(),
 			};
 			this._state.activeKey = key;
 			this.pSetSavedRuneItemsThrottled();
@@ -134,7 +142,6 @@ class RuneBuilder extends ProxyBase {
 		return {
 			h: UrlUtil.autoEncodeHash(this.runeItem),
 			t: Renderer.runeItem.getTag(this.baseItem, this.runes),
-			f: itemsPage._pageFilter._filterBox._getSaveableState(),
 		};
 	}
 
@@ -230,7 +237,7 @@ class RuneBuilder extends ProxyBase {
 		this._active = true;
 
 		const pageItem = itemsPage._dataList[itemsPage._itemId];
-		if ((pageItem.type === "Equipment" && ["Rune Item"].concat(itemsPage._pageFilter._categoriesRuneItems).includes(pageItem.category)) || pageItem.runeItem) {
+		if ((pageItem.type === "Equipment" && itemsPage._pageFilter._categoriesRuneItems.has(pageItem.category)) || pageItem.runeItem) {
 			this.baseItem = MiscUtil.copy(pageItem);
 		} else {
 			const selected = await this._modalFilter.pGetUserSelection();
@@ -261,6 +268,7 @@ class RuneBuilder extends ProxyBase {
 			this._cachedFilterState = null;
 		}
 		this.hide();
+		this.reset();
 		this._active = false;
 	}
 
@@ -301,7 +309,6 @@ class RuneBuilder extends ProxyBase {
 	onRuneListUpdate () {
 		this.renderItem(this.runeItem);
 		this.setSubhashFromState();
-		this._setActiveKey();
 	}
 
 	renderItem (item) {
@@ -337,12 +344,14 @@ class RuneBuilder extends ProxyBase {
 					for (const key of Object.keys(savedState.savedRuneItems)) {
 						if (savedState.savedRuneItems[key].data.h === hash) {
 							await this.pDoLoadState(savedState.savedRuneItems[key]);
+							this._state.activeKey = key;
 							break;
 						}
 					}
 				}
 			}
 		}
+		// TODO: If the baseitem is a runeItem after this we have a problem. Shouldn't be possible.
 
 		if (this.isActive()) this.show();
 		this.updateUi();
@@ -354,10 +363,6 @@ class RuneBuilder extends ProxyBase {
 
 	setSubhashFromState () {
 		Hist.setSubhash(RuneBuilder.HASH_KEY, this.isActive() ? `true${["", ...this.runes.map(r => UrlUtil.autoEncodeHash(r))].join(HASH_SUB_LIST_SEP)}` : null);
-	}
-
-	_setActiveKey () {
-		this._state.activeKey = UrlUtil.autoEncodeHash(this.runeItem);
 	}
 
 	static getButtons (itemId) {

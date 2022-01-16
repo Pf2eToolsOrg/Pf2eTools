@@ -111,7 +111,7 @@ class PageFilterItems extends PageFilter {
 		});
 		this._appliesToFilter = new Filter({header: "Applies to..."});
 
-		this._categoriesRuneItems = [];
+		this._categoriesRuneItems = new Set();
 	}
 
 	mutateForFilters (item) {
@@ -141,7 +141,7 @@ class PageFilterItems extends PageFilter {
 		item.equipment ? item._fType.push("Equipment") : item._fType.push("Treasure");
 		if (item.generic === "G") item._fType.push("Generic Variant");
 		if (item.generic === "V") item._fType.push("Specific Variant");
-		item._fAppliesTo = item.appliesTo ? `${item.appliesTo}` : null;
+		if (item.appliesTo) item._fAppliesTo = item.appliesTo
 
 		item._fDamage = undefined; // set by trait implies
 		this.handleTraitImplies(item, {traitProp: "traits", entityTypes: ["item"]});
@@ -149,7 +149,7 @@ class PageFilterItems extends PageFilter {
 		if (!item._fTraits.map(t => Renderer.trait.isTraitInCategory(t, "Rarity")).some(Boolean)) item._fTraits.push("Common");
 
 		// RuneItem Builder
-		if (item.appliesTo) this._categoriesRuneItems.push(item.appliesTo);
+		if (item.appliesTo) this._categoriesRuneItems.add(...item.appliesTo);
 	}
 
 	addToFilters (item, isExcluded) {

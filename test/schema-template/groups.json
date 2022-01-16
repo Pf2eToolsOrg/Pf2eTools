@@ -1,0 +1,46 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema",
+	"$id": "groups.json",
+	"title": "Groups",
+	"description": "The group data type for Pf2eTools.",
+	"type": "object",
+	"version": "0.0.1",
+	"properties": {
+		"group": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"source": {
+						"type": "string",
+						"$ref": "utils.json#/definitions/sourceList"
+					},
+					"name": {
+						"type": "string"
+					},
+					"page": {
+						"type": "integer"
+					},
+					"type":{
+						"type": "string",
+						"enum": [
+							"Armor",
+							"Weapon"
+						]
+					},
+					"specialization": {
+						"type": "array",
+						"items": {
+							"$ref": "entry.json"
+						}
+					}
+				},
+				"additionalProperties": false,
+				"required": ["source", "name", "specialization", "page"]
+			},
+			"uniqueItems": true
+		}
+	},
+	"additionalProperties": false,
+	"required": ["domain"]
+}
