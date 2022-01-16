@@ -4736,13 +4736,13 @@ Renderer.runeItem = {
 		let runeItem = MiscUtil.copy(baseItem);
 		runeItem.name = [...runes.map(r => Renderer.runeItem.getRuneShortName(r)), runeItem.name].join(" ");
 		runeItem.type = "item";
-		runeItem.category = "Rune Item";
 		runeItem.level = Math.max(...runes.map(r => r.level));
 		runeItem.traits = [...new Set([baseItem.traits, ...runes.map(it => it.traits)].flat())].sort(SortUtil.sortTraits);
 		const value = [baseItem, ...runes].map(it => Parser.priceToValue(it.price)).reduce((a, b) => a + b, 0);
 		runeItem.price = {coin: "gp", amount: Math.floor(value / 100)};
 		runeItem.entries = [runeItem.entries, ...runes.map(r => r.entries.map((e, idx) => idx === 0 ? `{@bold ${r.name}} ${e}` : e))].flat();
 		runeItem.runeItem = true;
+		delete runeItem.equipment;
 		return runeItem;
 	},
 };

@@ -111,7 +111,7 @@ class PageFilterItems extends PageFilter {
 		});
 		this._appliesToFilter = new Filter({header: "Applies to..."});
 
-		this._categoriesRuneItems = [];
+		this._categoriesRuneItems = new Set();
 	}
 
 	mutateForFilters (item) {
@@ -149,7 +149,7 @@ class PageFilterItems extends PageFilter {
 		if (!item._fTraits.map(t => Renderer.trait.isTraitInCategory(t, "Rarity")).some(Boolean)) item._fTraits.push("Common");
 
 		// RuneItem Builder
-		if (item.appliesTo) this._categoriesRuneItems.push(item.appliesTo);
+		if (item.appliesTo) this._categoriesRuneItems.add(...item.appliesTo);
 	}
 
 	addToFilters (item, isExcluded) {
