@@ -414,13 +414,16 @@
 				{
 					"type": "ability",
 					"activity": {
-						"number": 1,
-						"unit": "varies",
-						"entry": "{@as 2} {@action Interact} (emotion, enchantment,"
+						"number": 2,
+						"unit": "action"
 					},
 					"components": [
+						"{@action Interact}"
+					],
+					"traits": [
+						"emotion", "enchantment",
 						"mental",
-						"visual)"
+						"visual"
 					],
 					"frequency": "once per day",
 					"trigger": null,
@@ -1333,7 +1336,19 @@
 			"subCategory": "Armor",
 			"entries": [
 				"These highly polished metal plates can be added to any armor. While wearing armor with burnished plating, you gain the Sunshine! reaction. However, you take a \u20134 circumstance penalty to {@skill Stealth} checks except in darkness, and your armor's Strength entry increases its value by 2, requiring you to have a higher Strength score to overcome the armor's penalties. Even if you meet your armor's new Strength entry, you still take the penalty to {@skill Stealth} checks. When you are critically hit by an attack that deals bludgeoning damage, burnished plating stops working until someone spends 10 minutes repairing and polishing it; this doesn't require a {@skill Crafting} check.",
-				"Sunshine! {@as R} Trigger A creature you can see targets you with an attack; Requirements You are in an area of bright light; Effect You twist to reflect light in your foe's eyes. The attacking creature must succeed at a DC {@flatDC 3} flat check or the attack fails. The attacker doesn't need to roll this flat check if it has a precise sense other than vision or if it would already need to roll a flat check with a higher DC to target you, such as if you are {@condition concealed} or {@condition hidden}."
+				{
+					"type": "ability",
+					"name": "Sunshine!",
+					"activity": {
+						"unit": "reaction",
+						"number": 1
+					},
+					"trigger": "A creature you can see targets you with an attack",
+					"requirements": "You are in an area of bright light",
+					"entries": [
+						"You twist to reflect light in your foe's eyes. The attacking creature must succeed at a DC {@flatDC 3} flat check or the attack fails. The attacker doesn't need to roll this flat check if it has a precise sense other than vision or if it would already need to roll a flat check with a higher DC to target you, such as if you are {@condition concealed} or {@condition hidden}."
+					]
+				}
 			],
 			"generic": false,
 			"consumable": false
@@ -3561,7 +3576,7 @@
 						"note": null
 					},
 					"entries": [
-						"These pointed crystal shards embedded in your fingers grant you a fist {@action Strike} that deals {@damage 1d6} piercing damage, is in the brawling group, and has the {@trait magical} and {@trait unarmed} traits. Combat fleshgems can be enhanced with the effects of handwraps of mighty blows, as normal for an unarmed attack."
+						"These pointed crystal shards embedded in your fingers grant you a fist {@action Strike} that deals {@damage 1d6} piercing damage, is in the brawling group, and has the {@trait magical} and {@trait unarmed} traits. Combat fleshgems can be enhanced with the effects of {@item handwraps of mighty blows}, as normal for an unarmed attack."
 					]
 				},
 				{
@@ -8711,8 +8726,19 @@
 			"category": "Modification",
 			"subCategory": "Armor",
 			"entries": [
-				"This set of chains is completely covered with spikes and sharp blades. Not balanced for weapon use, twining chains are instead Armor and Weapons wrapped around a user's body as a deterrent to attackers\u2014and, for some, a fashion statement. While wearing twining chains, you gain the Thorns reaction. In addition to their dangers, twining chains' weight also increases your armor's Bulk by 1, Strength entry value by 2, and check penalty by 2.",
-				"Thorns {@as R} Trigger You are hit by an unarmed attack; Effect You twist to harm your attacker with your chains' spikes and blades. Make an attack roll against the triggering attacker using your unarmed attack modifier. On a hit, the attacking creature takes {@damage 1d6} piercing damage. This damage increases to {@dice 2d6} damage if the armor has a +1 potency rune, {@dice 3d6} damage if the armor has a +2 potency rune, or {@dice 4d6} damage if the armor has a +3 potency rune. However, whether you hit or miss, you take piercing damage equal to the number of d6s of piercing damage you would deal your attacker."
+				"This set of chains is completely covered with spikes and sharp blades. Not balanced for weapon use, twining chains are instead wrapped around a user's body as a deterrent to attackers\u2014and, for some, a fashion statement. While wearing twining chains, you gain the Thorns reaction. In addition to their dangers, twining chains' weight also increases your armor's Bulk by 1, Strength entry value by 2, and check penalty by 2.",
+				{
+					"type": "ability",
+					"name": "Thorns",
+					"activity": {
+						"unit": "reaction",
+						"number": 1
+					},
+					"trigger": "You are hit by an unarmed attack",
+					"entries": [
+						"You twist to harm your attacker with your chains' spikes and blades. Make an attack roll against the triggering attacker using your unarmed attack modifier. On a hit, the attacking creature takes {@damage 1d6} piercing damage. This damage increases to {@dice 2d6} damage if the armor has a {@item +1 armor potency||+1 potency} rune, {@dice 3d6} damage if the armor has a {@item +2 armor potency||+2 potency} rune, or {@dice 4d6} damage if the armor has a {@item +3 armor potency||+3 potency} rune. However, whether you hit or miss, you take piercing damage equal to the number of d6s of piercing damage you would deal your attacker."
+					]
+				}
 			],
 			"generic": false,
 			"consumable": false

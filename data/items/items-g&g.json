@@ -327,13 +327,12 @@
 					"unit": "action"
 				},
 				"components": "envision",
-				"requirements": "You're trained in",
+				"requirements": "You're trained in {@skill Intimidation}.",
 				"frequency": null,
 				"trigger": null
 			},
 			"category": "Talisman",
 			"entries": [
-				"{@skill Intimidation}.",
 				"This wide strip of treated lizard hide is wrapped around the grip or stock of the affixed weapon, augmenting the unease that your gunshot creates. When you activate it, you fire your gun into the air with the effects of Warning Shot (page 112). If you already have the Warning Shot feat, the target doesn't become temporarily immune to your {@action Demoralize}, potentially allowing you to {@action Demoralize} them again."
 			],
 			"generic": false,
@@ -721,38 +720,6 @@
 				}
 			},
 			"consumable": true
-		},
-		{
-			"name": "Backpack Ballista",
-			"source": "G&G",
-			"page": 62,
-			"type": "Item",
-			"level": 1,
-			"traits": [
-				"Uncommon"
-			],
-			"category": "no category found",
-			"entries": [
-				"This complex wooden device, worn on the back, contains a miniature ballista on a retractable arm. As an {@action Interact} action, you can pull a lever to deploy or retract the ballista. As long as it remains deployed, you must hold the ballista using that hand or some of the components spill out onto the ground, just like dropping any other weapon. While deployed, the device opens and raises the ballista up over your shoulder. While retracted, the ballista and its mount slide down and are {@condition concealed} within the device. Although a backpack ballista packs a punch, the device is a challenge to operate. Reloading it takes 1 minute and can't be done while worn. As normal, you can't wear a backpack ballista with another backpack."
-			],
-			"generic": false,
-			"consumable": false
-		},
-		{
-			"name": "Backpack Catapult",
-			"source": "G&G",
-			"page": 63,
-			"type": "Item",
-			"level": 1,
-			"traits": [
-				"Uncommon"
-			],
-			"category": "no category found",
-			"entries": [
-				"This wooden device is worn on the back and contains a miniature catapult mounted on a retractable frame. As an {@action Interact} action, you can pull a lever to deploy or retract the catapult. As long as it remains deployed, you must hold the catapult using that hand or some of the components spill out onto the ground, just like dropping any other weapon. While deployed, the device opens and raises the catapult up over your shoulder. While retracted, the catapult and its mount slide down and are {@condition concealed} within the device. A backpack catapult fires specialized stone spheres that are loaded into the bucket while unworn and retracted, through a sliding hatch; the reloading process takes 1 minute. To prevent misfires and accidental injury, the bucket fully encloses the stone while deployed, only opening when fired. As normal, you can't wear a backpack catapult with another backpack."
-			],
-			"generic": false,
-			"consumable": false
 		},
 		{
 			"name": "Ballista",
@@ -1906,8 +1873,7 @@
 				"This leather holster is crafted to better hide small firearms from view. Only firearms designed for use in one hand are small enough to disguise with this holster. You gain a +1 item bonus to {@skill Stealth} checks and DCs to hide or conceal a {@filter firearm|items||Hands=1|Group=Firearm} or {@item hand crossbow} in this holster."
 			],
 			"craftReq": null,
-			"generic": false,
-			"variants": null
+			"generic": false
 		},
 		{
 			"name": "Cryomister",
@@ -2105,22 +2071,6 @@
 				}
 			],
 			"consumable": true
-		},
-		{
-			"name": "Dart Umbrella",
-			"source": "G&G",
-			"page": 63,
-			"type": "Item",
-			"level": 0,
-			"traits": [
-				"Uncommon"
-			],
-			"category": "no category found",
-			"entries": [
-				"This umbrella fires tiny blowgun darts from its ferrule with a twist of the handle. The darts are loaded into the shaft, and though the damage they deal is minimal, the dart umbrella is an inconspicuous weapon easy to slip past inspections."
-			],
-			"generic": false,
-			"consumable": false
 		},
 		{
 			"name": "Day Goggles",
@@ -2482,8 +2432,7 @@
 				"These small pieces of cloth and stuffing have been crafted to dramatically muffle sound and easily slide into and out of the ear canals of humanoid creatures. You can insert or remove earplugs from your ears or a willing creature's ears with a single {@action Interact} action using one hand. They take a \u20132 circumstance penalty to all {@trait auditory} {@skill Perception} checks but also gain a +2 circumstance bonus to saving throws against {@trait auditory} effects."
 			],
 			"craftReq": null,
-			"generic": false,
-			"variants": null
+			"generic": false
 		},
 		{
 			"name": "Electrocable",
@@ -3064,8 +3013,7 @@
 				"This kit contains cleaning cloth, oil, small steel brushes, and other minor tools necessary for proper cleaning and maintenance of a firearm. Without a firearm cleaning kit, you can't perform the necessary tasks during your daily preparations to ensure that your firearm isn't at risk of misfiring under normal use conditions."
 			],
 			"craftReq": null,
-			"generic": false,
-			"variants": null
+			"generic": false
 		},
 		{
 			"name": "Firedrake",
@@ -4271,22 +4219,6 @@
 			"consumable": true
 		},
 		{
-			"name": "Injection Spear",
-			"source": "G&G",
-			"page": 63,
-			"type": "Item",
-			"level": 0,
-			"traits": [
-				"Uncommon"
-			],
-			"category": "no category found",
-			"entries": [
-				"A hollow receptacle inside this spear's head can store a single dose of poison. A sliding trigger along the spear's shaft can inject the loaded poison into a damaged target."
-			],
-			"generic": false,
-			"consumable": false
-		},
-		{
 			"name": "Instant Spy",
 			"source": "G&G",
 			"page": 70,
@@ -5213,22 +5145,6 @@
 			"consumable": false
 		},
 		{
-			"name": "Pantograph Gauntlet",
-			"source": "G&G",
-			"page": 63,
-			"type": "Item",
-			"level": 0,
-			"traits": [
-				"Uncommon"
-			],
-			"category": "no category found",
-			"entries": [
-				"A pantograph gauntlet is a heavy, fist-like weight, mounted on an extendable frame and attached to your outer arm with a series of leather straps. The frame's set of mechanical linkages connected at various hinges allow movements to propagate across the frame based on reshaping parallelograms, further {@condition controlled} by a crossbar grasped in your hand. A pantograph gauntlet is driven by your own motion and mirrors your arm's movements\u2014a punch thrown with your fist moves the pantograph, extending the weight out at a rapid speed to land blows up to 10 feet away. In some regions, such as Alkenstar and Ustalav, pantograph gauntlets are occasionally constructed entirely of metal and fashioned in the likeness of oversized arms, incorporating a complex system of gears or a miniature steam engine in place of the simpler pantograph mechanism."
-			],
-			"generic": false,
-			"consumable": false
-		},
-		{
 			"name": "Paper Shredder",
 			"source": "G&G",
 			"page": 88,
@@ -5499,8 +5415,7 @@
 				"While gunslingers have many methods for practicing their aim, these sturdy paper targets are excellent for tracking a gunslinger's progress over time, keeping score of how close they came to hitting the most vital spots. These targets are also used in situations where more detailed accuracy must be recorded, such as firearm competitions. Practice targets can appear in many shapes and sizes and usually come in packs of 10 held in protective cases made of heavy cloth or light leather."
 			],
 			"craftReq": null,
-			"generic": false,
-			"variants": null
+			"generic": false
 		},
 		{
 			"name": "Printing Press",
@@ -5619,52 +5534,95 @@
 			"consumable": false
 		},
 		{
-			"name": "Repeating Crossbow",
+			"name": "Repeating Magazine",
 			"source": "G&G",
-			"page": 64,
-			"type": "Item",
-			"level": 0,
-			"traits": [
-				"Uncommon"
-			],
-			"category": "no category found",
+			"page": 63,
+			"equipment": true,
+			"type": "Equipment",
+			"traits": [],
+			"price": {
+				"coin": "sp",
+				"amount": 9,
+				"note": "(price for 5 bolts)"
+			},
+			"bulk": "L",
+			"shieldStats": null,
+			"activate": null,
+			"onset": null,
+			"ammunition": null,
+			"group": "Bow",
+			"category": "Ammunition",
 			"entries": [
-				"This crossbow has an internal chamber that can be loaded with up to five bolts. An automated catch mechanism at the top of the flight groove, just in front of the latch, locks the bowstring and launches bolts with the pull of a trigger."
+				"{@note For use with repeating crossbows.}"
 			],
-			"generic": false,
-			"consumable": false
+			"generic": "G",
+			"variants": [
+				{
+					"type": "Crossbow",
+					"name": "Repeating Crossbow Magazine",
+					"entries": []
+				},
+				{
+					"type": "Hand Crossbow",
+					"name": "Repeating Hand Crossbow Magazine",
+					"entries": []
+				},
+				{
+					"type": "Heavy Crossbow",
+					"name": "Repeating Heavy Crossbow Magazine",
+					"entries": []
+				}
+			]
 		},
 		{
-			"name": "Repeating Hand Crossbow",
+			"name": "Backpack Ballista Bolts",
 			"source": "G&G",
-			"page": 64,
-			"type": "Item",
-			"level": 0,
-			"traits": [
-				"Uncommon"
-			],
-			"category": "no category found",
+			"page": 63,
+			"equipment": true,
+			"type": "Equipment",
+			"traits": [],
+			"price": {
+				"coin": "sp",
+				"amount": 1,
+				"note": "(price for 10)"
+			},
+			"bulk": 1,
+			"shieldStats": null,
+			"activate": null,
+			"onset": null,
+			"ammunition": null,
+			"group": "Bow",
+			"category": "Ammunition",
 			"entries": [
-				"This handheld crossbow features an ingeniously designed catch mechanism at the top of the flight groove, just in front of the latch, which automatically loads a bolt from a magazine and resets the string each time the weapon is fired. A typical repeating hand crossbow magazine holds five bolts."
+				"{@note For use with the {@item Backpack Ballista|G&G}."
 			],
-			"generic": false,
-			"consumable": false
+			"craftReq": null,
+			"generic": false
 		},
 		{
-			"name": "Repeating Heavy Crossbow",
+			"name": "Backpack Catapult Stones",
 			"source": "G&G",
-			"page": 64,
-			"type": "Item",
-			"level": 0,
-			"traits": [
-				"Uncommon"
-			],
-			"category": "no category found",
+			"page": 63,
+			"equipment": true,
+			"type": "Equipment",
+			"traits": [],
+			"price": {
+				"coin": "sp",
+				"amount": 1,
+				"note": "(price for 10)"
+			},
+			"bulk": 1,
+			"shieldStats": null,
+			"activate": null,
+			"onset": null,
+			"ammunition": null,
+			"group": "Sling",
+			"category": "Ammunition",
 			"entries": [
-				"This large crossbow has an internal chamber that can be loaded with up to five bolts. While it uses the same automated catch mechanism as other repeating crossbows, a repeating heavy crossbow's design has significant trade-offs. It has increased range and damage and is easier to learn how to use, but requires a small amount of effort to reload."
+				"{@note For use with the {@item Backpack Catapult|G&G}."
 			],
-			"generic": false,
-			"consumable": false
+			"craftReq": null,
+			"generic": false
 		},
 		{
 			"name": "Rounds",
@@ -5688,8 +5646,31 @@
 				"Firearms require ammunition consisting of a projectile and black powder. A round of ammo can vary in its composition but is typically either a prepackaged paper cartridge, including wadding, bullet, and black powder, or loose shot packed in manually. Some weapons, like hand cannons and blunderbusses, can fire other materials, but their ammunition has the same Price due to the cost of the black powder. Because making rounds of firearm ammunition requires creating black powder, you need the {@feat Alchemical Crafting} skill feat to make them. Firearm rounds are a valid option for magical ammunition, just like arrows or bolts. {@skill Crafting} magical firearm ammunition requires you to be able to craft both alchemical and magical items."
 			],
 			"craftReq": null,
-			"generic": false,
-			"variants": null
+			"generic": false
+		},
+		{
+			"name": "Rounds",
+			"source": "G&G",
+			"page": 151,
+			"equipment": true,
+			"type": "Equipment",
+			"traits": [],
+			"price": {
+				"coin": "sp",
+				"amount": 1,
+				"note": "(price for 10)"
+			},
+			"bulk": null,
+			"shieldStats": null,
+			"activate": null,
+			"onset": null,
+			"ammunition": null,
+			"category": "Ammunition",
+			"entries": [
+				"Firearms require ammunition consisting of a projectile and black powder. A round of ammo can vary in its composition but is typically either a prepackaged paper cartridge, including wadding, bullet, and black powder, or loose shot packed in manually. Some weapons, like hand cannons and blunderbusses, can fire other materials, but their ammunition has the same Price due to the cost of the black powder. Because making rounds of firearm ammunition requires creating black powder, you need the {@feat Alchemical Crafting} skill feat to make them. Firearm rounds are a valid option for magical ammunition, just like arrows or bolts. {@skill Crafting} magical firearm ammunition requires you to be able to craft both alchemical and magical items."
+			],
+			"craftReq": null,
+			"generic": false
 		},
 		{
 			"name": "Rowan Rifle",
@@ -6097,8 +6078,7 @@
 				"One of the more prolifically used devices developed in the infamous Alkenstar Gunworks, these small firearm components are capable of muffling most of the weapons' explosive sound when fired. Without a silencer, a firearm's shot makes a loud and distinctive bang, which can easily be heard through doors and thin walls, but firearms equipped with silencers only make a quiet noise when fired. Due to engineering constraints, a silencer can't be attached to any firearm with the {@trait scatter} trait. Attaching a silencer to a firearm takes 1 minute, and the silencer is consumed the first time a shot is fired through it."
 			],
 			"craftReq": null,
-			"generic": false,
-			"variants": null
+			"generic": false
 		},
 		{
 			"name": "Silencing Shot",
@@ -7205,8 +7185,7 @@
 				"Tripods are designed for use with kickback weapons, as a way for gunslingers with lower strength to accurately use these more powerful weapons by sacrificing mobility instead. They can be set up and attached to a firearm with a single {@action Interact} action using one hand, setting the tripod in your square. While this sturdy piece of engineering is in use, you don't take the \u20132 penalty for firing a {@trait kickback} weapon, even if your Strength isn't high enough to avoid the penalty. However, you must retrieve the tripod with a single {@action Interact} action before you can move the firearm to a different position. Normally, when you're {@condition hidden} or {@condition undetected}, you become {@condition observed} if you do anything except {@action Hide}, {@action Sneak}, or {@action Step}. However, deploying or retrieving a tripod with an {@action Interact} action doesn't automatically make you {@condition observed}, so long as you don't set up or remove the tripod when it's in a spot where creatures can see the tripod itself."
 			],
 			"craftReq": null,
-			"generic": false,
-			"variants": null
+			"generic": false
 		},
 		{
 			"name": "Trustworthy Round",
@@ -7242,24 +7221,6 @@
 			],
 			"generic": false,
 			"consumable": true
-		},
-		{
-			"name": "Umbrella Injector",
-			"source": "G&G",
-			"page": 64,
-			"type": "Item",
-			"level": 0,
-			"traits": [
-				"Uncommon"
-			],
-			"category": "no category found",
-			"entries": [
-				"This umbrella's ferrule is a hollow-tipped blade three to four inches in length and often overlooked as decorative.",
-				"A receptacle inside the umbrella's shaft can be loaded with a single dose of injury poison and injected into a damaged target with the pull of a sliding trigger. Reinforced ribs enable you to parry and deflect blows with the umbrella's tear-resistant canopy.",
-				"Combat Gear The following pieces of combat gear aren't weapons themselves, though several enable you to deploy other weapons in innovative ways."
-			],
-			"generic": false,
-			"consumable": false
 		},
 		{
 			"name": "Underwater Firing Mechanism",
@@ -7352,8 +7313,7 @@
 				"This buttoned, leather case protects a firearm and up to 6 rounds of ammunition from being damaged by water or other environmental effects."
 			],
 			"craftReq": null,
-			"generic": false,
-			"variants": null
+			"generic": false
 		},
 		{
 			"name": "Wind-up Cart",
