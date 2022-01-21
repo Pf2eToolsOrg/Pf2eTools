@@ -667,7 +667,7 @@
 				"frequency": null,
 				"trigger": null
 			},
-			"ammunition": "rounds|G&G|round",
+			"ammunition": "Dose or Round of Black Powder|G&G|roundss",
 			"category": "Consumable",
 			"entries": [
 				"These bullets are formed from a liquefied high-grade precious metal and enchanted to unlock that metal's true potential. Each version has a different special effect."
@@ -876,12 +876,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": "{@action Interact}"
 			},
-			"ammunition": "rounds|G&G|round",
+			"ammunition": "Dose or Round of Black Powder|G&G|rounds",
 			"category": "Consumable",
 			"entries": [
 				"Black powder is a volatile and explosive alchemical substance commonly used in the production of firearm munitions.",
@@ -895,7 +892,8 @@
 					"level": 0,
 					"entries": [
 						"The smallest unit of black powder that still has a simple use, a dose can be a simple package paper parcel around black powder or it can be packaged with a metal bullet or pellet to be used as ammunition. When ignited with a fuse or exposed to direct flame, a dose of black powder explodes. This isn't powerful enough to deal damage but makes a loud sound and could trigger further explosions. A fuse for a dose can be created with a few twists of paper and causes the dose to explode the round after it's lit."
-					]
+					],
+					"activate": null
 				},
 				{
 					"type": "horn",
@@ -906,6 +904,7 @@
 						"amount": 5,
 						"note": null
 					},
+					"ammunition": null,
 					"entries": [
 						"A horn contains 500 doses worth of black powder. A horn can be detonated by leaving a small trail of black powder and then lighting it. Each 5-foot square requires one dose of black powder to create a trail through. As long as the horn is mostly full (at least 400 doses remaining) it can be detonated to deal {@damage 1d6} fire damage in a 5-foot burst (DC 16 basic Reflex save). It takes 1 round per 15 feet of powder trail laid down for a horn to detonate after the trail is lit. If multiple horns detonate simultaneously, it can increase the area of the explosion, but the damage in overlapping areas doesn't increase."
 					]
@@ -919,6 +918,7 @@
 						"amount": 50,
 						"note": null
 					},
+					"ammunition": null,
 					"entries": [
 						"A keg contains 5,000 doses of black powder and can be detonated in the same way as a horn. As long as the keg is mostly full (at least 4,000 doses remaining) this deals {@damage 3d6} fire damage in a 20-foot burst (DC 20 basic Reflex save). Detonating multiple kegs can increase the area, but not the damage, of this effect; detonating a keg and any horns at the same time in an overlapping area also doesn't increase the damage."
 					]
@@ -2291,7 +2291,7 @@
 				"frequency": null,
 				"trigger": null
 			},
-			"ammunition": "rounds|G&G|round",
+			"ammunition": "Dose or Round of Black Powder|G&G|roundss",
 			"category": "Consumable",
 			"entries": [
 				"The night sky seems contained in this glass projectile.",
@@ -2568,7 +2568,7 @@
 				"frequency": null,
 				"trigger": null
 			},
-			"ammunition": "rounds|G&G|round",
+			"ammunition": "Dose or Round of Black Powder|G&G|roundss",
 			"category": "Consumable",
 			"entries": [
 				"Eroding bullets cast a faint green glow, and smell like the sicklysweet organic gases that rise from corpses. Handling an eroding bullet without gloves deals 1 point of acid damage and leaves the putrid scent coated on your fingers. Upon Striking an enemy, the glass casing inside the bullet bursts, releasing a splattering of bubbling green acid that coats the target. The target takes {@damage 2d6} {@condition persistent damage ||persistent acid damage} in addition to the damage normally dealt by the attack."
@@ -2933,7 +2933,7 @@
 				"frequency": null,
 				"trigger": null
 			},
-			"ammunition": "rounds|G&G|round",
+			"ammunition": "Dose or Round of Black Powder|G&G|roundss",
 			"category": "Consumable",
 			"entries": [
 				"These bullets are seaweed-green, refract light like an emerald, and are covered in a thin film of gray-green powder. When fired, a fairy bullet creates an effect that functions as the {@spell glitterdust} spell in a line between you and your target. This line can be no more than 60 feet long, so if the target is more than 60 feet away from you, the line simply ends after reaching its maximum distance. Since the fairy bullet is fired before the glitterdust can reveal the target, the effects don't affect the flat check for the attack roll with the fairy bullet."
@@ -3497,7 +3497,7 @@
 				"frequency": null,
 				"trigger": null
 			},
-			"ammunition": "rounds|G&G|round",
+			"ammunition": "Dose or Round of Black Powder|G&G|roundss",
 			"category": "Consumable",
 			"entries": [
 				"These cartridges are filled with sticky clear glue. When a glue bullet hits, a syrupy webbing coats the target and sticks to the ground or a nearby surface, hindering their movement. The target takes a \u201310-foot circumstance penalty to its Speeds for {@dice 2d4} rounds, or until it Escapes against a DC of 18. On a critical hit, the target is also {@condition immobilized} until it Escapes."
@@ -4879,7 +4879,7 @@
 				"frequency": null,
 				"trigger": null
 			},
-			"ammunition": "rounds|G&G|round",
+			"ammunition": "Dose or Round of Black Powder|G&G|roundss",
 			"category": "Consumable",
 			"entries": [
 				"This craggy stone ammunition is warm to the touch. When you fire an activated meteor shot, it explodes into a small swarm of meteors as it reaches its target, scorching nearby creatures and littering the ground with rubble. In addition to the weapon's normal damage, the meteor shot deals fire damage and the ground in the area becomes {@quickref difficult terrain||3|terrain}.",
@@ -5332,7 +5332,7 @@
 						"d% Wondrous Effect 1\u20132 The pistol casts phantom steed (4th level) to produce a pale horse adjacent to you; only you can ride it.",
 						"3 The target becomes a shiny metal color (bronze, copper, or iron) and any sound or speech becomes tinny and robotic in nature; this effect lasts 1 month.",
 						"4\u20135 The pistol casts dimensional anchor.",
-						"6 Modify memory (6th level) causes the target to forget you ever existed; you can't Sustain the Spell.",
+						"6 Modify memory (6th level) causes the target to forget you ever existed; you can't {@action Sustain a Spell||Sustain the Spell}.",
 						"7\u201313 A short rod protrudes from the pistol and unfurls a small flag that reads \"Bang!\". The pistol can't be fired until the flag is removed, which requires a single {@action Interact} action.",
 						"14\u201316 You are pushed 30 feet directly away from the target; if you hit an object or creature, you stop, but take falling damage equal to the distance you moved (if you hit a creature, it takes the same amount of falling damage)",
 						"17\u201319 The target is pushed 30 feet directly away from you; if it hits an object or creature, it stops, but takes falling damage equal to the distance it moved (if it hits another creature, the other creature takes the same amount of falling damage)",
@@ -5632,54 +5632,6 @@
 			"generic": false
 		},
 		{
-			"name": "Rounds",
-			"source": "G&G",
-			"page": 151,
-			"equipment": true,
-			"type": "Equipment",
-			"traits": [],
-			"price": {
-				"coin": "sp",
-				"amount": 1,
-				"note": "(price for 10)"
-			},
-			"bulk": null,
-			"shieldStats": null,
-			"activate": null,
-			"onset": null,
-			"ammunition": null,
-			"category": "Ammunition",
-			"entries": [
-				"Firearms require ammunition consisting of a projectile and black powder. A round of ammo can vary in its composition but is typically either a prepackaged paper cartridge, including wadding, bullet, and black powder, or loose shot packed in manually. Some weapons, like hand cannons and blunderbusses, can fire other materials, but their ammunition has the same Price due to the cost of the black powder. Because making rounds of firearm ammunition requires creating black powder, you need the {@feat Alchemical Crafting} skill feat to make them. Firearm rounds are a valid option for magical ammunition, just like arrows or bolts. {@skill Crafting} magical firearm ammunition requires you to be able to craft both alchemical and magical items."
-			],
-			"craftReq": null,
-			"generic": false
-		},
-		{
-			"name": "Rounds",
-			"source": "G&G",
-			"page": 151,
-			"equipment": true,
-			"type": "Equipment",
-			"traits": [],
-			"price": {
-				"coin": "sp",
-				"amount": 1,
-				"note": "(price for 10)"
-			},
-			"bulk": null,
-			"shieldStats": null,
-			"activate": null,
-			"onset": null,
-			"ammunition": null,
-			"category": "Ammunition",
-			"entries": [
-				"Firearms require ammunition consisting of a projectile and black powder. A round of ammo can vary in its composition but is typically either a prepackaged paper cartridge, including wadding, bullet, and black powder, or loose shot packed in manually. Some weapons, like hand cannons and blunderbusses, can fire other materials, but their ammunition has the same Price due to the cost of the black powder. Because making rounds of firearm ammunition requires creating black powder, you need the {@feat Alchemical Crafting} skill feat to make them. Firearm rounds are a valid option for magical ammunition, just like arrows or bolts. {@skill Crafting} magical firearm ammunition requires you to be able to craft both alchemical and magical items."
-			],
-			"craftReq": null,
-			"generic": false
-		},
-		{
 			"name": "Rowan Rifle",
 			"source": "G&G",
 			"page": 166,
@@ -5697,7 +5649,7 @@
 			"entries": [
 				"In a dense forest within Arcadia, djezet fell from the sky millennia ago, even before Earthfall. While this metal was poisonous to most of the plant life growing nearby, one stubborn rowan tree refused to die, its roots slowly absorbing djezet in small particles from the ground until the entire plant was suffused with it. Fey bowyers discovered the remarkable plant and coaxed it into growing into a very particular shape, its branching trunks woven together into a tightly twisted and naturally rifled barrel.",
 				"One of the legendary star guns, Arcadia's greatest treasures, the Rowan Rifle is a +2 greater fearsome speed greater striking (Advanced Player's Guide 260) advanced firearm with a range of increment of 300 feet. It deals {@damage 1d8} fire damage and has the backstabber, concussive, and fatal d12 traits.",
-				"As a star gun, the Rowan Rifle runs on magic, and doesn't use ammunition or black powder. As a weapon forged to protect the fey peoples of Arcadia, the Rowan Rifle's enchantments prevent it from ever causing harm to a creature with the {@trait fey} trait; any attempt to shoot a fey with it results in an automatic misfire. This legendary star gun is as much a badge of office as a weapon, as it denotes dominion over all Briarbough. If the Rowan Rifle's wielder is fey, or if they were specifically given the Rowan Rifle by a fey creature who recognized them as a worthy champion, they can use the following activations.",
+				"As a star gun, the Rowan Rifle runs on magic, and doesn't use ammunition or {@item black powder}. As a weapon forged to protect the fey peoples of Arcadia, the Rowan Rifle's enchantments prevent it from ever causing harm to a creature with the {@trait fey} trait; any attempt to shoot a fey with it results in an automatic misfire. This legendary star gun is as much a badge of office as a weapon, as it denotes dominion over all Briarbough. If the Rowan Rifle's wielder is fey, or if they were specifically given the Rowan Rifle by a fey creature who recognized them as a worthy champion, they can use the following activations.",
 				{
 					"type": "ability",
 					"activity": {
@@ -6699,7 +6651,7 @@
 				"frequency": null,
 				"trigger": null
 			},
-			"ammunition": "rounds|G&G|round",
+			"ammunition": "Dose or Round of Black Powder|G&G|roundss",
 			"category": "Consumable",
 			"entries": [
 				"A series of small stone discs pressed into a single round make up this ammunition. When you fire an activated stepping stone shot, whether you hit or miss your target, the shot creates a series of supports in a line that creatures can walk on as if solid ground. The line can ascend or descend at a 45-degree angle. The discs support any amount of weight, but don't otherwise pose any sort of obstacle; creatures and attacks can move through them if they wish. They crumble to dust if anything attempts to move or otherwise manipulate them. A creature can use a two-action activity, which has the {@trait manipulate} trait, to {@action Stride} up to its speed on the stones while causing them to crumble behind it. This ammunition does not work in firearms with the {@trait scatter} trait. The maximum length of the line depends on the type of ammunition. However, the line also can't extend beyond the maximum distance for a {@action Strike} from your firearm (usually six times the firearm's range increment)."

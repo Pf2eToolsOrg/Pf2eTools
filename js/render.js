@@ -1476,7 +1476,16 @@ function Renderer () {
 	};
 
 	this._renderHr = function (entry, textStack, meta, options) {
-		textStack[0] += `<hr class="rd__hr">`;
+		textStack[0] += `<hr class="${entry.style ? entry.style : "rd__hr"}">`;
+		if (entry.entries) {
+			const len = entry.entries.length;
+			for (let i = 0; i < len; ++i) {
+				this._recursiveRender(entry.entries[i], textStack, meta, {
+					prefix: "<p>",
+					suffix: "</p>",
+				})
+			}
+		}
 	};
 
 	this._getStyleClass = function (entry) {
