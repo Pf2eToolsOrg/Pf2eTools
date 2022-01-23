@@ -10285,7 +10285,7 @@
 							"page": 304,
 							"name": "Line of Effect",
 							"entries": [
-								"You usually need an unobstructed path to the target of a spell, the origin point of an area, or the place where you create something with a spell. More information on line of effect can be found on page 457."
+								"You usually need an unobstructed path to the target of a spell, the origin point of an area, or the place where you create something with a spell. {@quickref More information on line of effect.||3|line of effect}"
 							]
 						}
 					],
@@ -12487,15 +12487,21 @@
 							"entries": [
 								"When creating an effect, you usually need an unblocked path to the target of a spell, the origin point of an effect's area, or the place where you create something with a spell or other ability. This is called a line of effect. You have line of effect unless a creature is entirely behind a solid physical barrier. Visibility doesn't matter for line of effect, nor do portcullises and other barriers that aren't totally solid. If you're unsure whether a barrier is solid enough, usually a 1-foot-square gap is enough to maintain a line of effect, though the GM makes the final call.",
 								"In an area effect, creatures or targets must have line of effect to the point of origin to be affected. If there's no line of effect between the origin of the area and the target, the effect doesn't apply to that target. For example, if there's a solid wall between the origin of a {@spell fireball} and a creature that's within the burst radius, the wall blocks the effect\u2014that creature is unaffected by the {@spell fireball} and doesn't need to attempt a save against it. Likewise, any ongoing effects created by an ability with an area cease to affect anyone who moves outside of the line of effect."
-							]
+							],
+							"data": {
+								"quickrefIndex": true
+							}
 						},
 						{
 							"type": "pf2-h3",
 							"page": 457,
 							"name": "Line of Sight",
 							"entries": [
-								"Some effects require you to have line of sight to your target. As long as you can precisely sense the area (as described in Perception on page 464) and it is not blocked by a solid barrier (as described in Cover on pages 476\u2013477), you have line of sight. An area of darkness prevents line of sight if you don't have {@ability darkvision}, but portcullises and other obstacles that aren't totally solid do not. If you're unsure whether a barrier is solid enough to block line of sight, usually a 1-foot-square gap is enough to maintain line of sight, though the GM makes the final call."
-							]
+								"Some effects require you to have line of sight to your target. As long as you can precisely sense the area (as described in Perception on page 464) and it is not blocked by a solid barrier (as described in {@quickref Cover||4|Cover}), you have line of sight. An area of darkness prevents line of sight if you don't have {@ability darkvision}, but portcullises and other obstacles that aren't totally solid do not. If you're unsure whether a barrier is solid enough to block line of sight, usually a 1-foot-square gap is enough to maintain line of sight, though the GM makes the final call."
+							],
+							"data": {
+								"quickrefIndex": true
+							}
 						}
 					],
 					"data": {
@@ -12581,7 +12587,7 @@
 							"page": 458,
 							"name": "Virulent Afflictions",
 							"entries": [
-								"Afflictions with the virulent trait are harder to remove.",
+								"Afflictions with the {@trait virulent} trait are harder to remove.",
 								"You must succeed at two consecutive saves to reduce a virulent affliction's stage by 1. A critical success reduces a virulent affliction's stage by only 1 instead of by 2."
 							]
 						}
@@ -13637,7 +13643,7 @@
 							"page": 477,
 							"name": "Cover",
 							"entries": [
-								"When you're behind an obstacle that could block weapons, guard you against explosions, and make you harder to detect, you're behind cover. Standard cover gives you a +2 circumstance bonus to AC, to Reflex saves against area effects, and to {@skill Stealth} checks to Hide, Sneak, or otherwise avoid detection. You can increase this to greater cover using the Take Cover basic action, increasing the circumstance bonus to +4. If cover is especially light, typically when it's provided by a creature, you have lesser cover, which grants a +1 circumstance bonus to AC. A creature with standard cover or greater cover can attempt to use {@skill Stealth} to Hide, but lesser cover isn't sufficient.",
+								"When you're behind an obstacle that could block weapons, guard you against explosions, and make you harder to detect, you're behind cover. Standard cover gives you a +2 circumstance bonus to AC, to Reflex saves against area effects, and to {@skill Stealth} checks to {@action Hide}, {@action Sneak}, or otherwise avoid detection. You can increase this to greater cover using the {@action Take Cover} basic action, increasing the circumstance bonus to +4. If cover is especially light, typically when it's provided by a creature, you have lesser cover, which grants a +1 circumstance bonus to AC. A creature with standard cover or greater cover can attempt to use {@skill Stealth} to {@action Hide}, but lesser cover isn't sufficient.",
 								{
 									"type": "table",
 									"colStyles": [
@@ -13663,13 +13669,13 @@
 										],
 										[
 											"Greater",
-											"+2 to AC, Reflex, {@skill Stealth}",
+											"+4 to AC, Reflex, {@skill Stealth}",
 											"Yes"
 										]
 									]
 								},
-								"Cover is relative, so you might simultaneously have cover against one creature and not another. Cover applies only if your path to the target is partially blocked. If a creature is entirely behind a wall or the like, you don't have line of effect (page 457) and typically can't target it at all.",
-								"Usually, the GM can quickly decide whether your target has cover. If you're uncertain or need to be more precise, draw a line from the center of your space to the center of the target's space. If that line passes through any terrain or object that would block the effect, the target has standard cover (or greater cover if the obstruction is extreme or the target has Taken Cover). If the line passes through a creature instead, the target has lesser cover. When measuring cover against an area effect, draw the line from the effect's point of origin to the center of the creature's space.",
+								"Cover is relative, so you might simultaneously have cover against one creature and not another. Cover applies only if your path to the target is partially blocked. If a creature is entirely behind a wall or the like, you don't have {@quickref line of effect||3|line of effect} and typically can't target it at all.",
+								"Usually, the GM can quickly decide whether your target has cover. If you're uncertain or need to be more precise, draw a line from the center of your space to the center of the target's space. If that line passes through any terrain or object that would block the effect, the target has standard cover (or greater cover if the obstruction is extreme or the target has {@action Take Cover||Taken Cover}). If the line passes through a creature instead, the target has lesser cover. When measuring cover against an area effect, draw the line from the effect's point of origin to the center of the creature's space.",
 								{
 									"type": "pf2-h4",
 									"page": 477,
@@ -13686,7 +13692,10 @@
 										"Your GM might allow you to overcome your target's cover in some situations. If you're right next to an arrow slit, you can shoot without penalty, but you have greater cover against someone shooting back at you from far away. Your GM might let you reduce or negate cover by leaning around a corner to shoot or the like. This usually takes an action to set up, and the GM might measure cover from an edge or corner of your space instead of your center."
 									]
 								}
-							]
+							],
+							"data": {
+								"quickref": 4
+							}
 						},
 						{
 							"type": "pf2-h2",
@@ -13699,7 +13708,7 @@
 									"page": 478,
 									"name": "Mounted Combat",
 									"entries": [
-										"You can ride some creatures into combat. As noted in the Mount specialty basic action (page 472), your mount needs to be at least one size larger than you and willing. Your mount acts on your initiative. You must use the Command an Animal action (page 249) to get your mount to spend its actions. If you don't, the animal wastes its actions. If you have the Ride general feat, you succeed automatically when you Command an Animal that's your mount.",
+										"You can ride some creatures into combat. As noted in the {@action Mount} specialty basic action, your mount needs to be at least one size larger than you and willing. Your mount acts on your initiative. You must use the Command an Animal action (page 249) to get your mount to spend its actions. If you don't, the animal wastes its actions. If you have the Ride general feat, you succeed automatically when you Command an Animal that's your mount.",
 										"For example, if you are mounted on a horse and you make three attacks, your horse would remain stationary since you didn't command it. If you instead spent your first action to Command an Animal and succeeded, you could get your mount to Stride. You could spend your next action to attack or to command the horse to attack, but not both.",
 										{
 											"type": "pf2-h4",
