@@ -684,7 +684,7 @@
 				"Archetype"
 			],
 			"prerequisites": "Bullet Dancer Stance",
-			"requirements": "You're wielding a firearm with an attached bayonet or reinforced stock.",
+			"requirements": "You're wielding a firearm with an attached {@item bayonet|G&G} or {@item reinforced stock|G&G}.",
 			"entries": [
 				"The fiery blaze of your weapons combined with your unorthodox technique leaves your opponents with little opportunity to capitalize on any gaps in your defenses, or properly defend themselves against your onslaught. While in Bullet Dancer Stance, when you successfully {@action Strike} an opponent with a bayonet or reinforced stock attached to your firearm, the next ranged {@action Strike} you make against that opponent doesn't trigger reactions that would trigger on a ranged attack, such as {@action Attack of Opportunity}. While in Bullet Dancer Stance, when you make a successful ranged {@action Strike} against an opponent within your melee reach using a firearm, the next reinforced stock or bayonet attack attached to that firearm deals an additional 1 fire damage per weapon damage die.",
 				"The benefit on your next {@action Strike} from either use of Bullet Dancer Burn is lost if not used by the end of your next turn."
@@ -709,11 +709,24 @@
 				"Dedication"
 			],
 			"prerequisites": "expert in unarmored defense and trained in simple weapons",
-			"requirements": "You're unarmored and wielding a simple firearm, bayonet, or reinforced stock",
 			"entries": [
-				"{@action Flurry of Blows} with these weapons.",
-				"You can use your other monk feats or monk abilities that normally require unarmed attacks with bayonets and reinforced stocks, so long as the feat or ability doesn't require a single, specific {@action Strike}.",
-				"You can also use them with simple firearms when attacking within half the first range increment."
+				"You've learned how to synchronize traditional martial arts and guns. You gain the Bullet Dancer Stance  action.  Whenever  your  proficiency  in any weapon increases to expert or beyond, you gain that new proficiency with bayonets, reinforced stocks, simple firearms and unarmed attacks.",
+				{
+					"type": "ability",
+					"style": "compact",
+					"name": "Bullet Dancer Stance",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"Stance"
+					],
+					"requirements": "You're unarmored and wielding a simple firearm, {@item bayonet|G&G}, or {@item reinforced stock|G&G}",
+					"entries": [
+						"You enter a specialized  stance  for  a  unique  martial  art  centered  around  the  use  of  simple  firearms. While in this stance, the only Strikes you can make are those using bayonets, reinforced stocks, and simple firearms. You can use Flurry of Blows with these weapons. You  can  use  your  other  monk  feats  or monk abilities that normally require  unarmed  attacks  with  bayonets  and  reinforced  stocks,  so  long  as  the  feat  or ability doesn't require a single, specific Strike. You can also use them with simple firearms when attacking within half the first range increment."
+					]
+				}
 			],
 			"special": "You can't select another dedication feat until you've gained two other feats from the bullet dancer dedication archetype.",
 			"leadsTo": [
@@ -739,9 +752,8 @@
 				"Flourish"
 			],
 			"prerequisites": "{@feat Bullet Dancer Burn|G&G}",
-			"requirements": "You're in Bullet Dancer",
+			"requirements": "You're in Bullet Dancer Stance",
 			"entries": [
-				"Stance.",
 				"You've learned to reload your simple firearms with uncanny grace, the ammunition simply falling into place as though part of a well-practiced kata. You {@action Strike} with a simple firearm, and then {@action Interact} to reload that same firearm. You don't need a free hand to reload your simple firearm in this way."
 			]
 		},
@@ -974,9 +986,8 @@
 			],
 			"prerequisites": "{@feat Demolitionist Dedication|G&G}",
 			"trigger": "A creature moves into the bombs' splash area.",
-			"requirements": "You're within 30 feet of an area where you rigged bombs on a wall, cliff face, or similar vertical surface with Set Explosives or",
+			"requirements": "You're within 30 feet of an area where you rigged bombs on a wall, cliff face, or similar vertical surface with Set Explosives or Demolition Charge",
 			"entries": [
-				"Demolition Charge.",
 				"You detonate the required bombs in order to bring a wall down on a creature. If your bombs deal enough damage to reduce the wall's Hit Points below its {@condition Broken} Threshold, the wall partially collapses on the creature. The creature takes bludgeoning damage equal to the damage dealt to the wall (basic Reflex save; the DC for this save is equal to your class DC or spell DC, whichever is higher). On a failure, they must spend an {@action Interact} action to dig themselves out of the collapse, and on a critical failure, they must spend 2 {@action Interact} actions to do so.",
 				"Firework Technician The brilliant display of cascading lights and flickering aerial flowers, the thunderous boom, the sizzling crackle, and piercing screech\u2014these are the stock and trade of your craft. You know how to perfectly pair light and sound to create fireworks displays that can amaze children and adults, comfort friends, and even confound your foes.",
 				"As a fireworks technician, you might be an itinerant wanderer, roaming from town to town and developing your craft on your own. In that case, you make a living on the road, selling fireworks to the townsfolk, setting up public displays upon request and receipt of payment, and even tailoring individualized performances to those wealthy or interesting enough to be worthy of receiving their own private show.",
@@ -1894,9 +1905,9 @@
 			"traits": [
 				"Archetype"
 			],
-			"prerequisites": "{@feat Demolitionist Dedication|G&G}, master in",
+			"prerequisites": "{@feat Demolitionist Dedication|G&G}, master in {@skill Lore||Engineering Lore}",
 			"entries": [
-				"{@skill Lore||Engineering Lore} You know exactly how to make a memorable entrance... by detonating a bomb to produce a devastating explosion, of course! You Set Explosives on a door, window, container, or heavy gate. When the explosives detonate, you can attempt an {@skill Lore||Engineering Lore} check to {@action Force Open} the target. If a bomb would add an item bonus to attack rolls, add that item bonus to your {@skill Lore||Engineering Lore} check. Since you're blasting your way in, you can't avoid breaking the object or structure. If you roll a critical success, you get a success instead."
+				"You know exactly how to make a memorable entrance... by detonating a bomb to produce a devastating explosion, of course! You Set Explosives on a door, window, container, or heavy gate. When the explosives detonate, you can attempt an {@skill Lore||Engineering Lore} check to {@action Force Open} the target. If a bomb would add an item bonus to attack rolls, add that item bonus to your {@skill Lore||Engineering Lore} check. Since you're blasting your way in, you can't avoid breaking the object or structure. If you roll a critical success, you get a success instead."
 			]
 		},
 		{
@@ -3692,9 +3703,7 @@
 			"prerequisites": "{@feat Bullet Dancer Dedication|G&G},",
 			"requirements": "You're wielding a simple firearm.",
 			"entries": [
-				"When using a simple firearm, you can shoot objects right out of your enemy's hands. Attempt to {@action Disarm} the target using a ranged attack roll with your simple firearm, instead of attempting an {@skill Athletics} check against the target's Reflex DC.",
-				"Demolitionist As rippling explosions bring a castle's walls tumbling down, you grin and wipe the stone dust of your handiwork from your face. Brute force might work for others, but applying science to place the right explosives in just the right spot is essential to your craft.",
-				"Additional Feats: 4th Demolition Charge (Advanced Player's Guide 106); 6th Calculated Splash (Core Rulebook 77); 8th Directional Bombs (Core Rulebook 78); 12th Expanded Splash (Core Rulebook 79)"
+				"When using a simple firearm, you can shoot objects right out of your enemy's hands. Attempt to {@action Disarm} the target using a ranged attack roll with your simple firearm, instead of attempting an {@skill Athletics} check against the target's Reflex DC."
 			]
 		},
 		{
