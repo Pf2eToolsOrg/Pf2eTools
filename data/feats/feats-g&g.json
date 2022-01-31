@@ -1364,9 +1364,10 @@
 						"Critical Success": "The target is unaffected.",
 						"Success": "The target takes half damage and takes a \u20135-foot status penalty to its Speeds for 1 round.",
 						"Failure": "The target takes full damage and takes a \u201310-foot status penalty to its Speeds for 1 round.",
-						"Critical Failure": "The target takes double damage, is {@condition slowed|CRB|slowed 1} for 1 round, and takes a \u201315-foot status penalty to its Speeds for 1 round. Unstable Function Your innovation discharges an enormous cone of supercooled fluid, potentially causing cascading failures. Add the unstable trait to Deep Freeze. The ability affects all creatures within a 60-foot cone instead of a single target, and it deals cold damage equal to double your level instead of equal to your level."
+						"Critical Failure": "The target takes double damage, is {@condition slowed|CRB|slowed 1} for 1 round, and takes a \u201315-foot status penalty to its Speeds for 1 round."
 					}
-				}
+				},
+				"{@b Unstable Function} Your innovation discharges an enormous cone of supercooled fluid, potentially causing cascading failures. Add the unstable trait to Deep Freeze. The ability affects all creatures within a 60-foot cone instead of a single target, and it deals cold damage equal to double your level instead of equal to your level."
 			]
 		},
 		{
@@ -1502,9 +1503,9 @@
 			"trigger": "A creature within your reach uses a concentrate action.",
 			"entries": [
 				"Your enemies think they can concentrate on something else while you're nearby? Oh, you'll give them a distraction, all right! Make a melee {@action Strike} against the triggering creature with a weapon or unarmed attack that is benefiting from your offensive boost. This {@action Strike} doesn't count toward your multiple attack penalty, and your multiple attack penalty doesn't apply to this {@action Strike}.",
-				"Unstable Function You pull out all the stops to create an explosive distraction. Add the unstable trait to Distracting Explosion. If the attack hits, you disrupt the triggering concentrate action."
+				"{@b Unstable Function} You pull out all the stops to create an explosive distraction. Add the unstable trait to Distracting Explosion. If the attack hits, you disrupt the triggering concentrate action."
 			],
-			"special": "If your innovation is a minion, it can take this reaction instead of you, even though minions can't normally take reactions or act when it's not their turn. It uses your reaction for the turn to do so."
+			"special": "If your innovation is a {@class inventor|G&G|minion|construct}, it can take this reaction instead of you, even though minions can't normally take reactions or act when it's not their turn. It uses your reaction for the turn to do so."
 		},
 		{
 			"name": "Diving Armor",
@@ -1737,7 +1738,7 @@
 			"entries": [
 				"You electrify your armor to punish foes who dare to attack you. For 1 round, any creature that touches you, or that hits you with a melee unarmed attack or a non-reach melee weapon attack, takes {@damage 1d4} electricity damage. The effect ends if you cease wearing your armor innovation.",
 				"If you have the revolutionary innovation class feature, the damage increases to {@dice 2d4}.",
-				"Unstable Function You create an unstable chain reaction, sending countless sparks dancing across your armor. Add the unstable trait to Electrify Armor. The effects last for 1 minute instead of 1 round, and the damage dice increase from d4s to d12s."
+				"{@b Unstable Function} You create an unstable chain reaction, sending countless sparks dancing across your armor. Add the unstable trait to Electrify Armor. The effects last for 1 minute instead of 1 round, and the damage dice increase from d4s to d12s."
 			]
 		},
 		{
@@ -1841,9 +1842,9 @@
 			"traits": [
 				"Archetype"
 			],
-			"prerequisites": "{@feat Firework Technician Dedication|G&G}, expert in",
+			"prerequisites": "{@feat Firework Technician Dedication|G&G}, expert in {@skill Crafting}",
 			"entries": [
-				"{@skill Crafting} You're particularly adept at crafting fireworks, allowing you to create much more powerful fireworks than you otherwise could. Your advanced alchemy level for fireworks increases to your level \u2013 3."
+				"You're particularly adept at crafting fireworks, allowing you to create much more powerful fireworks than you otherwise could. Your advanced alchemy level for fireworks increases to your level \u2013 3."
 			]
 		},
 		{
@@ -1943,7 +1944,7 @@
 			"entries": [
 				"You aim an explosion from your innovation downward to launch yourself into the air. You jump up to 30 feet in any direction without touching the ground. You must land on a space of solid ground, or else you fall after using your next action. As normal for effects where you fall after using your next action, you still fall at the end of your turn, even if you don't use any further actions that turn."
 			],
-			"special": "If your innovation is a minion, it can take this action rather than you."
+			"special": "If your innovation is a {@class inventor|G&G|minion|construct}, it can take this action rather than you."
 		},
 		{
 			"name": "Explosive Maneuver",
@@ -2358,7 +2359,7 @@
 					}
 				}
 			],
-			"special": "If your innovation is a minion, this benefit applies on its unstable {@feat Megaton Strike|g&g|Megaton Strikes}."
+			"special": "If your innovation is a {@class inventor|G&G|minion|construct}, this benefit applies on its unstable {@feat Megaton Strike|g&g|Megaton Strikes}."
 		},
 		{
 			"name": "Gigavolt",
@@ -3027,7 +3028,7 @@
 				},
 				"{@b Unstable Function} You put even more force into the {@action Strike}, though you risk stress fractures to your innovation. Add the unstable trait to Megaton Strike. The {@action Strike} deals another extra damage die, for a total of two extra dice at 4th level, three at 10th level, and four at 18th level."
 			],
-			"special": "If your innovation is a minion, it can take this action rather than you."
+			"special": "If your innovation is a {@class inventor|G&G|minion|construct}, it can take this action rather than you."
 		},
 		{
 			"name": "Megavolt",
@@ -3045,10 +3046,10 @@
 			],
 			"entries": [
 				"You bleed off some electric power from your innovation in the shape of a damaging bolt. Creatures in a 20-foot line from your innovation take {@damage 3d4} electricity damage, with a basic Reflex save against your class DC. The electricity damage increases by {@dice 1d4} at 8th level and every 2 levels thereafter.",
-				"Unstable Function You overload and supercharge the voltage even higher. Add the unstable trait to Megavolt. The area increases to a 60-foot line and the damage increases from d4s to d12s.",
-				"If you have the breakthrough innovation class feature, you can choose a 60-foot or 90-foot line for the area when you use an unstable Megavolt; if you also have the revolutionary innovation class feature, you can choose a 60-foot, 90-foot, or 120-foot line."
+				"{@b Unstable Function} You overload and supercharge the voltage even higher. Add the unstable trait to Megavolt. The area increases to a 60-foot line and the damage increases from d4s to d12s.",
+				"If you have the {@classFeature breakthrough innovation|Inventor|G&G|7} class feature, you can choose a 60-foot or 90-foot line for the area when you use an unstable Megavolt; if you also have the revolutionary innovation class feature, you can choose a 60-foot, 90-foot, or 120-foot line."
 			],
-			"special": "If your innovation is a minion, it can take this action rather than you.",
+			"special": "If your innovation is a {@class inventor|G&G|minion|construct}, it can take this action rather than you.",
 			"leadsTo": [
 				"Gigavolt|G&G"
 			]
@@ -3166,7 +3167,7 @@
 			"trigger": "You would take damage.",
 			"entries": [
 				"Your armor innovation activates various devices you prepared ahead of time, and you use one of them to reduce the damage you would take by 15.",
-				"Unstable Function You activate all the precautions at once, violently repelling the incoming attack to blunt its force. Add the unstable trait to Negate Damage and reduce the damage you would take by 50."
+				"{@b Unstable Function} You activate all the precautions at once, violently repelling the incoming attack to blunt its force. Add the unstable trait to Negate Damage and reduce the damage you would take by 50."
 			]
 		},
 		{
@@ -4033,7 +4034,7 @@
 				"They told you there was no way that explosions could heal people, but they were fools... Fools who didn't understand your brilliance! You create a minor explosion from your innovation, altering the combustion to cauterize wounds using vaporized medicinal herbs. You or a living creature adjacent to you regains {@dice 1d10} Hit Points. In addition, the creature you heal can attempt an immediate flat check to recover from a single source of {@condition persistent damage ||persistent bleed damage}, with the DC reduction from appropriate assistance.",
 				"At 3rd level, and every 2 levels thereafter, increase the healing by {@dice 1d10}."
 			],
-			"special": "If your innovation is a minion, it can take this action rather than you, though because it's not a living creature, it can't use the ability on itself."
+			"special": "If your innovation is a {@class inventor|G&G|minion|construct}, it can take this action rather than you, though because it's not a living creature, it can't use the ability on itself."
 		},
 		{
 			"name": "Shared Overdrive",
