@@ -634,9 +634,9 @@
 				"Inventor",
 				"Manipulate"
 			],
-			"prerequisites": "offensive boost",
+			"prerequisites": "{@classFeature offensive boost|inventor|G&G|9}",
 			"entries": [
-				"You aren't satisfied with keeping to just one kind of boost from your constant tinkering, so you've learned to modulate between several possibilities at once. Choose two additional offensive boosts (page 22). You can use an {@action Interact} action to change the offensive boost currently affecting your weapon, choosing between the one you chose for the class feature and the two you chose for this modification. If your weapon has the {@trait modular} trait, you can swap the offensive boost as part of the {@action Interact} action you take to use that trait."
+				"You aren't satisfied with keeping to just one kind of boost from your constant tinkering, so you've learned to modulate between several possibilities at once. Choose two additional {@classFeature offensive boost|inventor|G&G|9||offensive boosts} (page 22). You can use an {@action Interact} action to change the {@classFeature offensive boost|inventor|G&G|9|offensive boosts} currently affecting your weapon, choosing between the one you chose for the class feature and the two you chose for this modification. If your weapon has the {@trait modular} trait, you can swap the {@classFeature offensive boost|inventor|G&G|9|offensive boosts} as part of the {@action Interact} action you take to use that trait."
 			]
 		},
 		{
@@ -1499,10 +1499,10 @@
 				"Inventor",
 				"Manipulate"
 			],
-			"prerequisites": "offensive boost",
+			"prerequisites": "{@classFeature offensive boost|inventor|G&G|9|offensive boosts}",
 			"trigger": "A creature within your reach uses a concentrate action.",
 			"entries": [
-				"Your enemies think they can concentrate on something else while you're nearby? Oh, you'll give them a distraction, all right! Make a melee {@action Strike} against the triggering creature with a weapon or unarmed attack that is benefiting from your offensive boost. This {@action Strike} doesn't count toward your multiple attack penalty, and your multiple attack penalty doesn't apply to this {@action Strike}.",
+				"Your enemies think they can concentrate on something else while you're nearby? Oh, you'll give them a distraction, all right! Make a melee {@action Strike} against the triggering creature with a weapon or unarmed attack that is benefiting from your {@classFeature offensive boost|inventor|G&G|9|offensive boosts}. This {@action Strike} doesn't count toward your multiple attack penalty, and your multiple attack penalty doesn't apply to this {@action Strike}.",
 				"{@b Unstable Function} You pull out all the stops to create an explosive distraction. Add the unstable trait to Distracting Explosion. If the attack hits, you disrupt the triggering concentrate action."
 			],
 			"special": "If your innovation is a {@class inventor|G&G|minion|construct}, it can take this reaction instead of you, even though minions can't normally take reactions or act when it's not their turn. It uses your reaction for the turn to do so."
@@ -2371,7 +2371,7 @@
 			],
 			"prerequisites": "{@feat Megavolt|G&G}",
 			"entries": [
-				"When you unleash electricity from your innovation, you can bounce it off obstacles, creating a field of electric death. When you use Megavolt, each time your line of electricity hits a solid barrier, such as a wall, it bounces off at an angle of your choice and continues until you have reached the full length of the line. Even if a creature is in the area from multiple bounces, it takes the damage only once."
+				"When you unleash electricity from your innovation, you can bounce it off obstacles, creating a field of electric death. When you use {@feat Megavolt|G&G}, each time your line of electricity hits a solid barrier, such as a wall, it bounces off at an angle of your choice and continues until you have reached the full length of the line. Even if a creature is in the area from multiple bounces, it takes the damage only once."
 			]
 		},
 		{
@@ -2596,15 +2596,15 @@
 				"Inventor",
 				"Manipulate"
 			],
-			"prerequisites": "offensive boost",
+			"prerequisites": "{@classFeature offensive boost|inventor|G&G|9|offensive boosts}",
 			"frequency": "once per 10 minutes",
 			"entries": [
 				"You don't just tinker with your own innovation, you fiddle with your allies' weapons as well (for their benefit, of course). Choose an ally in your reach and one of their weapons. Attempt a {@skill Crafting} check against a high DC for your level.",
 				{
 					"type": "successDegree",
 					"entries": {
-						"Success": "For 1 minute, the chosen ally's Strikes with the chosen weapon gain the same offensive boost your innovation has.",
-						"Critical Failure": "Your ally takes damage of the type and amount that your offensive boost normally deals on a successful {@action Strike}."
+						"Success": "For 1 minute, the chosen ally's Strikes with the chosen weapon gain the same {@classFeature offensive boost|inventor|G&G|9|offensive boosts} your innovation has.",
+						"Critical Failure": "Your ally takes damage of the type and amount that your {@classFeature offensive boost|inventor|G&G|9|offensive boosts} normally deals on a successful {@action Strike}."
 					}
 				}
 			]
@@ -3347,9 +3347,9 @@
 			"traits": [
 				"Inventor"
 			],
-			"prerequisites": "offensive boost",
+			"prerequisites": "{@classFeature offensive boost|inventor|G&G|9|offensive boosts}",
 			"entries": [
-				"Your innovation sets foes on fire, covers them in acid, leaves barbed thorns behind, or otherwise deals {@condition persistent damage} to your foes that sticks around long after you deliver your boosted attack. When you or your construct innovation damage a foe with offensive boost, that foe also takes {@damage 1d8} {@condition persistent damage} of the same damage type as the offensive boost damage."
+				"Your innovation sets foes on fire, covers them in acid, leaves barbed thorns behind, or otherwise deals {@condition persistent damage} to your foes that sticks around long after you deliver your boosted attack. When you or your construct innovation damage a foe with {@classFeature offensive boost|inventor|G&G|9|offensive boosts}, that foe also takes {@damage 1d8} {@condition persistent damage} of the same damage type as the {@classFeature offensive boost|inventor|G&G|9|offensive boosts} damage."
 			]
 		},
 		{
@@ -4956,7 +4956,7 @@
 			"entries": [
 				"You adjust your innovation's core, changing the way it explodes. When you choose this feat, select acid, cold, or electricity. Your innovation's core runs on that power source.",
 				"When using the {@action Explode|G&G} action, or any time your innovation explodes on a critical failure and damages you, change the damage type from fire damage to the type you chose.",
-				"If you have the offensive boost class feature and retrain Variable Core to a different damage type, you can also switch to a different offensive boost that deals the same damage type if you wish."
+				"If you have the {@classFeature offensive boost|inventor|G&G|9} class feature and retrain Variable Core to a different damage type, you can also switch to a different {@classFeature offensive boost|inventor|G&G|9} that deals the same damage type if you wish."
 			]
 		},
 		{
