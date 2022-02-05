@@ -727,19 +727,51 @@
 				"An oracle wields divine power, but not from a single divine being. This power could come from a potent concept or ideal, the attention of multiple divine entities whose areas of concern all touch on that subject, or a direct and dangerous conduit to raw divine power. This is the oracle's mystery, a source of divine magic not beholden to any deity.",
 				"Choose the mystery that empowers your magic. Your mystery grants you special spells called revelation spells and might later grant you divine domain spells. It dictates the effects of your oracular curse, adds an additional cantrip to your repertoire, and gives you one or more trained skills. Drawing insight and power from the collective divine influences that fuel your magic also provides you with a special benefit.",
 				{
+					"type": "refClassFeature",
+					"classFeature": "Revelation Spells|Oracle|APG|1"
+				},
+				{
+					"type": "refClassFeature",
+					"classFeature": "Oracular Curse|Oracle|APG|1"
+				}
+			]
+		},
+		{
+			"name": "Revelation Spells",
+			"source": "APG",
+			"subclasses": "Mystery",
+			"page": 69,
+			"className": "Oracle",
+			"classSource": "APG",
+			"level": 1,
+			"entries": [
+				{
 					"type": "pf2-h4",
+					"source": "APG",
 					"page": 69,
 					"name": "Revelation Spells",
 					"entries": [
-						"The powers of your mystery manifest in the form of revelation spells, which are a type of focus spell. Casting a revelation spell costs 1 Focus Point and increases the effects of your oracular curse (page 70). You start with a focus pool of 2 Focus Points. You refill your focus pool during your daily preparations, and you can regain 1 Focus Point by spending 10 minutes using the {@action Refocus} activity to reconcile the conflicting or unconventional nature of your divine mystery.",
-						"Focus spells are automatically heightened to half your level rounded up. Focus spells don't require spell slots, and you can't cast them using spell slots (see Divine Spellcasting on page 68). Taking feats can give you more focus spells and increase the size of your focus pool, though your focus pool can never hold more than 3 Focus Points. The full rules for focus spells appear on page 300 of the Core Rulebook.",
-						"Revelation spells have the {@trait cursebound} trait, unlike other focus spells. This trait means they increase the severity of your oracular curse (see below) when cast. You can't cast a {@trait cursebound} spell if you don't have an oracular curse.",
+						"The powers of your mystery manifest in the form of revelation spells, which are a type of focus spell. Casting a revelation spell costs 1 Focus Point and increases the effects of your {@classFeature oracular curse|oracle|apg|1||curse}. You start with a focus pool of 2 Focus Points. You refill your focus pool during your daily preparations, and you can regain 1 Focus Point by spending 10 minutes using the {@action Refocus} activity to reconcile the conflicting or unconventional nature of your divine mystery.",
+						"Focus spells are automatically heightened to half your level rounded up. Focus spells don't require spell slots, and you can't cast them using spell slots (see {@classFeature Divine Spellcasting|oracle|apg|1}). Taking feats can give you more focus spells and increase the size of your focus pool, though your focus pool can never hold more than 3 Focus Points. The full rules for focus spells appear on page 300 of the Core Rulebook.",
+						"Revelation spells have the {@trait cursebound} trait, unlike other focus spells. This trait means they increase the severity of your {@classFeature oracular curse|oracle|apg|1||curse} (see below) when cast. You can't cast a {@trait cursebound} spell if you don't have an {@classFeature oracular curse|oracle|apg|1||curse}.",
 						"You learn two revelation spells at 1st level. The first is an initial revelation spell determined by your mystery. The second is an initial domain spell you select from one of the domains associated with your mystery, which you cast as a revelation spell, causing it to gain the {@trait cursebound} trait."
 					]
-				},
+				}
+			]
+		},
+		{
+			"name": "Oracular Curse",
+			"source": "APG",
+			"subclasses": "Mystery",
+			"page": 70,
+			"className": "Oracle",
+			"classSource": "APG",
+			"level": 1,
+			"entries": [
 				{
 					"type": "pf2-h4",
 					"page": 70,
+					"source": "APG",
 					"name": "Oracular Curse",
 					"entries": [
 						"Drawing on multiple disparate sources of power inevitably places an incredible stress on your body, manifesting as a supernatural curse. The more revelation spells you cast, the worse the effects of your curse, but these increasingly conflicting energies can also provide you with divine benefits.",
