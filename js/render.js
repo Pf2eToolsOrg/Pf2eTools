@@ -447,15 +447,17 @@ function Renderer () {
 	this._renderText = function (entry, textStack, meta, options) {
 		entry.entries.forEach(e => this._recursiveRender(e, textStack, meta, {prefix: `<p class="${entry.style || ""}">`, suffix: `</p>`}));
 	};
-
+	// FIXME: BUG-72: Inconsistent font formatting.
 	this._renderEntriesOtherSource = function (entry, textStack, meta, options) {
 		if (entry.entries && entry.entries.length) {
+			// textStack[0] += `<div class="">`;
 			textStack[0] += `<hr class="hr-other-source">`;
 			entry.entries.forEach(e => this._recursiveRender(e, textStack, meta, {
 				prefix: "<p>",
 				suffix: "</p>",
 			}));
 			textStack[0] += Renderer.utils.getPageP(entry, {prefix: "\u2014", noReprints: true});
+			// textStack[0] += `</div>`;
 			textStack[0] += `<div class="mt-3"></div>`;
 		}
 	};
@@ -4805,8 +4807,8 @@ Renderer.spell = {
 		if (sp.savingThrow != null) stDurationParts.push(`<strong>Saving Throw&nbsp;</strong>${sp.savingThrowBasic ? "basic " : ""}${sp.savingThrow}`);
 		if (sp.duration && sp.duration.type != null) stDurationParts.push(`<strong>Duration&nbsp;</strong>${renderer.render(sp.duration.entry)}`);
 
-		return `${sp.traditions ? `<p class="pf2-stat pf2-stat__section"><strong>Traditions </strong>${sp.traditions.join(", ").toLowerCase()}</p>` : ""}
-		${sp.spellLists ? `<p class="pf2-stat pf2-stat__section"><strong>Spell Lists </strong>${sp.spellLists.join(", ").toLowerCase()}</p>` : ""}
+		return `${sp.traditions ? `<p class="pf2-stat pf2-stat__section"><strong>Traditions </strong>${sp.traditions.join(", ").toLowerCase()}${sp.spellLists ? "; " : ""}` : ""}
+		${sp.spellLists ? `<strong>Spell Lists </strong>${sp.spellLists.join(", ").toLowerCase()}</p>` : ""}
 		${sp.subclass ? Object.keys(sp.subclass).map(k => `<p class="pf2-stat pf2-stat__section"><strong>${k.split("|")[1]} </strong>${sp.subclass[k].join(", ")}</p>`) : ""}
 		<p class="pf2-stat pf2-stat__section"><strong>Cast </strong>${renderer.render(Parser.timeToFullEntry(sp.cast))} ${!Parser.TIME_ACTIONS.includes(sp.cast.unit) && components.length ? `(${components.join(", ")})` : components.join(", ")}${castPart}</p>
 		${targetingParts.length ? `<p class="pf2-stat pf2-stat__section">${targetingParts.join("; ")}</p>` : ""}
