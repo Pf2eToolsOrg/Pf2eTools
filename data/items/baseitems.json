@@ -1,6 +1,267 @@
 {
 	"baseitem": [
 		{
+			"name": "Backpack Ballista",
+			"source": "G&G",
+			"page": 62,
+			"type": "Item",
+			"level": 1,
+			"traits": [
+				"Uncommon"
+			],
+			"price": {
+				"amount": 18,
+				"coin": "gp"
+			},
+			"damage": "1d12",
+			"damageType": "P",
+			"range": 180,
+			"reload": "1 min.",
+			"bulk": 2,
+			"hands": "1+",
+			"ammunition": [
+				"Backpack Ballista Bolts|G&G"
+			],
+			"group": "Bow",
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"entries": [
+				"This complex wooden device, worn on the back, contains a miniature ballista on a retractable arm. As an {@action Interact} action, you can pull a lever to deploy or retract the ballista. As long as it remains deployed, you must hold the ballista using that hand or some of the components spill out onto the ground, just like dropping any other weapon. While deployed, the device opens and raises the ballista up over your shoulder. While retracted, the ballista and its mount slide down and are {@condition concealed} within the device. Although a backpack ballista packs a punch, the device is a challenge to operate. Reloading it takes 1 minute and can't be done while worn. As normal, you can't wear a backpack ballista with another backpack."
+			]
+		},
+		{
+			"name": "Backpack Catapult",
+			"source": "G&G",
+			"page": 63,
+			"type": "Item",
+			"level": 1,
+			"traits": [
+				"Uncommon",
+				"Volley 50 ft."
+			],
+			"price": {
+				"amount": 20,
+				"coin": "gp"
+			},
+			"damage": "1d12",
+			"damageType": "B",
+			"range": 240,
+			"reload": "1 min.",
+			"bulk": 3,
+			"ammunition": [
+				"Backpack Catapult Stones|G&G"
+			],
+			"hands": "1+",
+			"group": "Sling",
+			"category": "Weapon",
+			"subCategory": "Advanced",
+			"entries": [
+				"This wooden device is worn on the back and contains a miniature catapult mounted on a retractable frame. As an {@action Interact} action, you can pull a lever to deploy or retract the catapult. As long as it remains deployed, you must hold the catapult using that hand or some of the components spill out onto the ground, just like dropping any other weapon. While deployed, the device opens and raises the catapult up over your shoulder. While retracted, the catapult and its mount slide down and are {@condition concealed} within the device. A backpack catapult fires specialized stone spheres that are loaded into the bucket while unworn and retracted, through a sliding hatch; the reloading process takes 1 minute. To prevent misfires and accidental injury, the bucket fully encloses the stone while deployed, only opening when fired. As normal, you can't wear a backpack catapult with another backpack."
+			]
+		},
+		{
+			"name": "Dart Umbrella",
+			"source": "G&G",
+			"page": 63,
+			"type": "Item",
+			"level": 0,
+			"traits": [
+				"Agile",
+				"Concealable",
+				"Nonlethal",
+				"Uncommon"
+			],
+			"price": {
+				"amount": 1,
+				"coin": "gp"
+			},
+			"damage": "1",
+			"damageType": "P",
+			"range": 30,
+			"reload": 1,
+			"bulk": 1,
+			"hands": 1,
+			"group": "Dart",
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"entries": [
+				"This umbrella fires tiny blowgun darts from its ferrule with a twist of the handle. The darts are loaded into the shaft, and though the damage they deal is minimal, the dart umbrella is an inconspicuous weapon easy to slip past inspections."
+			]
+		},
+		{
+			"name": "Injection Spear",
+			"source": "G&G",
+			"page": 63,
+			"type": "Item",
+			"level": 0,
+			"traits": [
+				"Uncommon",
+				"Injection",
+				"Reach"
+			],
+			"price": {
+				"amount": 3,
+				"coin": "gp"
+			},
+			"damage": "1d8",
+			"damageType": "P",
+			"bulk": 1,
+			"hands": 2,
+			"group": "Spear",
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"entries": [
+				"A hollow receptacle inside this spear's head can store a single dose of poison. A sliding trigger along the spear's shaft can inject the loaded poison into a damaged target."
+			]
+		},
+		{
+			"name": "Umbrella Injector",
+			"source": "G&G",
+			"page": 64,
+			"type": "Item",
+			"level": 0,
+			"traits": [
+				"Uncommon",
+				"Concealable",
+				"finesse",
+				"injection",
+				"parry"
+			],
+			"price": {
+				"amount": 4,
+				"coin": "gp"
+			},
+			"damage": "1d4",
+			"damageType": "P",
+			"bulk": 1,
+			"hands": 1,
+			"group": "Sword",
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"entries": [
+				"This umbrella's ferrule is a hollow-tipped blade three to four inches in length and often overlooked as decorative.",
+				"A receptacle inside the umbrella's shaft can be loaded with a single dose of injury poison and injected into a damaged target with the pull of a sliding trigger. Reinforced ribs enable you to parry and deflect blows with the umbrella's tear-resistant canopy."
+			]
+		},
+		{
+			"name": "Pantograph Gauntlet",
+			"source": "G&G",
+			"page": 63,
+			"type": "Item",
+			"level": 0,
+			"traits": [
+				"Uncommon",
+				"Deadly d6",
+				"monk",
+				"reach",
+				"shove"
+			],
+			"price": {
+				"amount": 2,
+				"coin": "gp"
+			},
+			"damage": "1d4",
+			"damageType": "B",
+			"bulk": "L",
+			"hands": 1,
+			"group": "Brawling",
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"entries": [
+				"A pantograph gauntlet is a heavy, fist-like weight, mounted on an extendable frame and attached to your outer arm with a series of leather straps. The frame's set of mechanical linkages connected at various hinges allow movements to propagate across the frame based on reshaping parallelograms, further {@condition controlled} by a crossbar grasped in your hand. A pantograph gauntlet is driven by your own motion and mirrors your arm's movements\u2014a punch thrown with your fist moves the pantograph, extending the weight out at a rapid speed to land blows up to 10 feet away. In some regions, such as Alkenstar and Ustalav, pantograph gauntlets are occasionally constructed entirely of metal and fashioned in the likeness of oversized arms, incorporating a complex system of gears or a miniature steam engine in place of the simpler pantograph mechanism."
+			]
+		},
+		{
+			"name": "Repeating Crossbow",
+			"source": "G&G",
+			"equipment": true,
+			"type": "Equipment",
+			"traits": [
+				"Uncommon",
+				"Repeating"
+			],
+			"price": {
+				"amount": 10,
+				"coin": "gp"
+			},
+			"damage": "1d6",
+			"damageType": "P",
+			"range": 60,
+			"reload": 0,
+			"ammunition": [
+				"Repeating Crossbow Magazine|G&G"
+			],
+			"bulk": 1,
+			"hands": 2,
+			"category": "Weapon",
+			"subCategory": "Advanced",
+			"group": "Bow",
+			"page": 63,
+			"entries": [
+				"This crossbow has an internal chamber that can be loaded with up to five bolts. An automated catch mechanism at the top of the flight groove, just in front of the latch, locks the bowstring and launches bolts with the pull of a trigger."
+			]
+		},
+		{
+			"name": "Repeating Hand Crossbow",
+			"source": "G&G",
+			"equipment": true,
+			"type": "Equipment",
+			"traits": [
+				"Uncommon",
+				"Repeating"
+			],
+			"price": {
+				"amount": 10,
+				"coin": "gp"
+			},
+			"damage": "1d6",
+			"damageType": "P",
+			"range": 60,
+			"reload": 0,
+			"bulk": "L",
+			"ammunition": [
+				"Repeating Hand Crossbow Magazine|G&G"
+			],
+			"hands": 1,
+			"category": "Weapon",
+			"subCategory": "Advanced",
+			"group": "Bow",
+			"page": 63,
+			"entries": [
+				"This handheld crossbow features an ingeniously designed catch mechanism at the top of the flight groove, just in front of the latch, which automatically loads a bolt from a magazine and resets the string each time the weapon is fired. A typical repeating hand crossbow magazine holds five bolts."
+			]
+		},
+		{
+			"name": "Repeating Heavy Crossbow",
+			"source": "G&G",
+			"equipment": true,
+			"type": "Equipment",
+			"traits": [
+				"Uncommon",
+				"Repeating"
+			],
+			"price": {
+				"amount": 20,
+				"coin": "gp"
+			},
+			"damage": "1d10",
+			"damageType": "P",
+			"range": 180,
+			"reload": 1,
+			"bulk": 2,
+			"ammunition": [
+				"Repeating Heavy Crossbow Magazine|G&G"
+			],
+			"hands": 2,
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"group": "Bow",
+			"page": 63,
+			"entries": [
+				"This large crossbow has an internal chamber that can be loaded with up to five bolts. While it uses the same automated catch mechanism as other repeating crossbows, a repeating heavy crossbow's design has significant trade-offs. It has increased range and damage and is easier to learn how to use, but requires a small amount of effort to reload."
+			]
+		},
+		{
 			"name": "Hongali Hornbow",
 			"source": "LOTGB",
 			"page": 107,
@@ -350,9 +611,7 @@
 			"group": "Club",
 			"entries": [
 				"This deceptively dangerous weapon is essentially a mace with a longer haft and larger, often flanged head."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Throwing Knife",
@@ -381,9 +640,7 @@
 			"group": "Knife",
 			"entries": [
 				"This light knife is optimally balanced to be thrown accurately at a greater distance than a common dagger. While this comes at the cost of a significant cutting edge, the difference is worth it for throwing specialists."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Adze",
@@ -412,9 +669,7 @@
 			"group": "Axe",
 			"entries": [
 				"A common cutting tool, an adze resembles an axe\u2014but the cutting edge is horizontal, rather than vertical. The adze's shape makes it popular among wood workers, and grippli builders often use them to construct their treetop homes. The tool also serves as an effective weapon, due in part to the immense strength required to swing it."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Air Repeater",
@@ -434,7 +689,9 @@
 			},
 			"bulk": "L",
 			"onset": null,
-			"ammunition": "Pellets|G&G",
+			"ammunition": [
+				"Pellets|G&G"
+			],
 			"damage": "1d4",
 			"damageType": "P",
 			"hands": 1,
@@ -445,9 +702,7 @@
 			"group": "Firearm|G&G",
 			"entries": [
 				"A thin-barreled firearm that uses a container of pressurized air instead of black powder to propel small metal bullets from an attached cartridge, the air repeater has fallen out of common use in Arcadia due to its poor stopping power, though it's still used occasionally for casual hunting and sport shooting. The air repeater and its {@item long air repeater|G&G|longer-ranged, two-handed variant} are still valued by some for their ability to allow a shooter to fire multiple rounds without needing to stop to reload or crank to a new chamber. A typical air repeater magazine holds 6 {@item pellets|G&G}."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Aldori Dueling Sword",
@@ -480,10 +735,7 @@
 			"appliesTo": null,
 			"entries": [
 				"An Aldori dueling sword is a slim, single-bladed dueling sword with a slight curve and a sharp, reinforced point. It deals {@damage 1d8} slashing damage. An aldori dueling sword is an advanced one-handed melee weapon in the sword weapon group."
-			],
-			"craftReq": null,
-			"generic": false,
-			"variants": null
+			]
 		},
 		{
 			"name": "Arquebus",
@@ -504,7 +756,9 @@
 			},
 			"bulk": 2,
 			"onset": null,
-			"ammunition": "Rounds|G&G",
+			"ammunition": [
+				"Dose or Round of Black Powder|G&G|round"
+			],
 			"damage": "1d8",
 			"damageType": "P",
 			"hands": 2,
@@ -515,9 +769,7 @@
 			"group": "Firearm|G&G",
 			"entries": [
 				"This is a long rifle that offers more range than the average firearm, though the long barrel and ferocious kickback make the weapon particularly unsteady unless a tripod or other stand is used to stabilize it. The arquebus is one of the most commonly used long guns among the soldiers of Dongun Hold and Alkenstar."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Bastard Sword",
@@ -544,9 +796,7 @@
 			"group": "Sword",
 			"entries": [
 				"This broad-bladed sword, sometimes called the hand-and-a-half sword, has a longer grip so it can be held in one hand or used with two hands to provide extra piercing or slashing power."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Battle Axe",
@@ -573,9 +823,7 @@
 			"group": "Axe",
 			"entries": [
 				"These axes are designed explicitly as weapons, rather than tools. They typically weigh less, with a shaft reinforced with metal bands or bolts, and have a sharper blade, making them ideal for chopping limbs rather than wood."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Bayonet",
@@ -605,9 +853,7 @@
 			"entries": [
 				"This blade or spike can be attached to a crossbow or firearm but, unlike other attached weapons, can be wielded in one hand as its own weapon. When used as a separate weapon, it can't benefit from any runes or abilities that function only for attached weapons.",
 				"{@note *An attached bayonet or reinforced stock requires the same number of hands as the weapon it's attached to. A detached bayonet requires one hand.}"
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Bladed Scarf",
@@ -639,9 +885,7 @@
 			"group": "Flail",
 			"entries": [
 				"The thin metal plates interwoven throughout this long scarf turn a fashion accessory into a deadly weapon."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Blowgun",
@@ -660,7 +904,9 @@
 			},
 			"bulk": "L",
 			"onset": null,
-			"ammunition": "Blowgun Dart",
+			"ammunition": [
+				"Blowgun Dart"
+			],
 			"damage": "1",
 			"damageType": "P",
 			"hands": 1,
@@ -671,9 +917,7 @@
 			"group": "Dart",
 			"entries": [
 				"This long, narrow tube is used for shooting blowgun darts, using only the power of a forcefully exhaled breath."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Blunderbuss",
@@ -693,7 +937,9 @@
 			},
 			"bulk": 2,
 			"onset": null,
-			"ammunition": "Rounds|G&G",
+			"ammunition": [
+				"Dose or Round of Black Powder|G&G|round"
+			],
 			"damage": "1d8",
 			"damageType": "P",
 			"hands": 2,
@@ -704,9 +950,7 @@
 			"group": "Firearm|G&G",
 			"entries": [
 				"This weapon fires pellets from a trumpet-shaped barrel, making it an excellent choice for hunting brush fowl or dealing damage within a short, broad area. Adventuring gunslingers often carry a blunderbuss to deal with swarms of vermin and similar threats."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Bo Staff",
@@ -736,9 +980,7 @@
 			"group": "Club",
 			"entries": [
 				"This strong but slender staff is tapered at the ends and well balanced. It's designed to be an offensive and defensive weapon."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Boarding Pike",
@@ -768,9 +1010,7 @@
 			"group": "Polearm",
 			"entries": [
 				"Taking the form of a longspear fitted with crossbars or hooks, a boarding pike provides its wielder a sharp implement that's as adept at shoving enemies off a ship's railings as facilitating the boarding of other vessels. This is a martial melee weapon."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Bola",
@@ -806,9 +1046,7 @@
 			"group": "Sling",
 			"entries": [
 				"This throwing weapon consists of weights tied to the end of long cords, which can be used to bludgeon foes or entangle their legs."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Breastplate",
@@ -835,9 +1073,7 @@
 			"group": "Plate",
 			"entries": [
 				"Though referred to as a breastplate, this type of armor consists of several pieces of plate or {@item half plate} armor that protect the torso, chest, neck, and sometimes the hips and lower legs. It strategically grants some of the protection of plate while allowing greater flexibility and speed."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Buckler",
@@ -864,9 +1100,7 @@
 			"category": "Shield",
 			"entries": [
 				"This very small shield is a favorite of duelists and quick, lightly armored warriors. It's typically made of steel and strapped to your forearm. You can {@action Raise a Shield} with your buckler as long as you have that hand free or are holding a light object that's not a weapon in that hand."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Buugeng",
@@ -897,9 +1131,7 @@
 			"group": "Sword",
 			"entries": [
 				"A blade of conrasu design, a buugeng has a unique, curved shape that allows it to rotate smoothly in the hand of a trained warrior. This spinning motion makes it easier to attack multiple foes at once with the weapon."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Chain Mail",
@@ -929,9 +1161,7 @@
 			"group": "Chain",
 			"entries": [
 				"A suit of chain mail consists of several pieces of armor composed of small metal rings linked together in a protective mesh. It typically includes a chain shirt, leggings, a pair of arms, and a coif, collectively protecting most of the body."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Chain Shirt",
@@ -961,9 +1191,7 @@
 			"group": "Chain",
 			"entries": [
 				"Sometimes called a hauberk, this is a long shirt constructed of the same metal rings as {@item chainmail}. However, it is much lighter than {@item chainmail} and protects only the torso, upper arms, and upper legs of its wearer."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Clan Dagger",
@@ -994,9 +1222,7 @@
 			"group": "Knife",
 			"entries": [
 				"This broad dagger is carried by dwarves as a weapon, tool, and designation of clan. Losing or having to surrender a clan dagger is considered a mark of embarrassment to most dwarves."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Clan Pistol",
@@ -1017,7 +1243,9 @@
 			},
 			"bulk": "L",
 			"onset": null,
-			"ammunition": "Rounds|G&G",
+			"ammunition": [
+				"Dose or Round of Black Powder|G&G|round"
+			],
 			"damage": "1d6",
 			"damageType": "P",
 			"hands": 1,
@@ -1028,9 +1256,7 @@
 			"group": "Firearm|G&G",
 			"entries": [
 				"The tradition of dwarves displaying their clan affiliations with special clan daggers goes back millennia, but many of the dwarf clans of Dongun Hold have their own take on the tradition, with promising young gunsmiths claiming their adulthood by crafting a specialized personal firearm using the clan's unique smithing traditions. Losing or being forced to surrender their clan pistol is a terrible embarrassment for the dwarves that carry them."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Club",
@@ -1057,9 +1283,7 @@
 			"group": "Club",
 			"entries": [
 				"This is a piece of stout wood shaped or repurposed to bludgeon an enemy. Clubs can be intricately carved pieces of martial art or as simple as a tree branch or piece of wood."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Coat Pistol",
@@ -1091,9 +1315,7 @@
 			"group": "Firearm|G&G",
 			"entries": [
 				"This small pistol is easily concealed inside a jacket or some other article of clothing. Rarely kept as a primary weapon, coat pistols are equally favored by clever assassins and traveling Alkenstar aristocrats."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Combat Grapnel",
@@ -1125,9 +1347,7 @@
 			"group": "Flail",
 			"entries": [
 				"Although grappling hooks typically serve as a climbing tool, this specially reinforced grapnel attached to a rope up to 10 feet long can be swung as a weapon. This is a martial melee weapon."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Composite Longbow",
@@ -1147,7 +1367,9 @@
 			},
 			"bulk": 2,
 			"onset": null,
-			"ammunition": "Arrows",
+			"ammunition": [
+				"Arrow"
+			],
 			"damage": "1d8",
 			"damageType": "P",
 			"hands": "1+",
@@ -1158,9 +1380,7 @@
 			"group": "Bow",
 			"entries": [
 				"This projectile weapon is made from horn, wood, and sinew laminated together to increase the power of its pull and the force of its projectile. Like all longbows, its great size also increases the bow's range and power. You must use two hands to fire it, and it cannot be used while mounted. Any time an ability is specifically restricted to a longbow, such as Erastil's favored weapon, it also applies to composite longbows unless otherwise stated."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Composite Shortbow",
@@ -1179,7 +1399,9 @@
 			},
 			"bulk": 1,
 			"onset": null,
-			"ammunition": "Arrow",
+			"ammunition": [
+				"Arrow"
+			],
 			"damage": "1d6",
 			"damageType": "P",
 			"hands": "1+",
@@ -1190,9 +1412,7 @@
 			"group": "Bow",
 			"entries": [
 				"This shortbow is made from horn, wood, and sinew laminated together to increase the power of its pull and the force of its projectile. Its compact size and power make it a favorite of mounted archers. Any time an ability is specifically restricted to a shortbow, it also applies to composite shortbows unless otherwise stated."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Crossbow",
@@ -1208,7 +1428,9 @@
 			},
 			"bulk": 1,
 			"onset": null,
-			"ammunition": "Bolt",
+			"ammunition": [
+				"Bolt"
+			],
 			"damage": "1d8",
 			"damageType": "P",
 			"hands": 2,
@@ -1219,9 +1441,7 @@
 			"group": "Bow",
 			"entries": [
 				"This ranged weapon has a bow-like assembly mounted on a handled frame called a tiller. The tiller has a mechanism to lock the bowstring in place, attached to a trigger mechanism that releases the tension and launches a bolt."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Dagger",
@@ -1251,9 +1471,7 @@
 			"group": "Knife",
 			"entries": [
 				"This small, bladed weapon is held in one hand and used to stab a creature in close combat. It can also be thrown."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Dart",
@@ -1283,9 +1501,7 @@
 			"group": "Dart",
 			"entries": [
 				"This thrown weapon is larger than an arrow but shorter than a javelin. It typically has a short shaft of wood ending in a metal tip and is sometimes stabilized by feathers or fur."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Dogslicer",
@@ -1316,9 +1532,7 @@
 			"group": "Sword",
 			"entries": [
 				"This short, curved, and crude makeshift blade often has holes drilled into it to reduce its weight. It's a favored weapon of goblins."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Double-barreled Musket",
@@ -1340,7 +1554,9 @@
 			},
 			"bulk": 1,
 			"onset": null,
-			"ammunition": "Rounds|G&G",
+			"ammunition": [
+				"Dose or Round of Black Powder|G&G|round"
+			],
 			"damage": "1d6",
 			"damageType": "P",
 			"hands": 2,
@@ -1351,9 +1567,7 @@
 			"group": "Firearm|G&G",
 			"entries": [
 				"This flintlock breech-loader has two side-by-side barrels. Though less accurate than a standard musket, a double-barreled musket offers versatility in firing options. Many of Alkenstar's famous shield marshals save their earnings to buy a double-barreled musket as their first personal firearm."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Double-barreled Pistol",
@@ -1374,7 +1588,9 @@
 			},
 			"bulk": 1,
 			"onset": null,
-			"ammunition": "Rounds|G&G",
+			"ammunition": [
+				"Dose or Round of Black Powder|G&G|round"
+			],
 			"damage": "1d4",
 			"damageType": "P",
 			"hands": 1,
@@ -1385,9 +1601,7 @@
 			"group": "Firearm|G&G",
 			"entries": [
 				"This flintlock pistol has two side-by-side barrels. Though less accurate than a standard pistol, a double-barreled pistol is a useful and versatile weapon. It's generally banned in areas where duels with pistols are relatively common, in much the same way that arriving at an aristocratic duel with a scattergun would be considered crass, at best."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Dragon Mouth Pistol",
@@ -1407,7 +1621,9 @@
 			},
 			"bulk": 1,
 			"onset": null,
-			"ammunition": "Rounds|G&G",
+			"ammunition": [
+				"Dose or Round of Black Powder|G&G|round"
+			],
 			"damage": "1d6",
 			"damageType": "P",
 			"hands": 1,
@@ -1418,9 +1634,7 @@
 			"group": "Firearm|G&G",
 			"entries": [
 				"Similar to the blunderbuss, a dragon-mouth pistol fires pellets from a flared barrel. Though less powerful than a blunderbuss, the dragon-mouth pistol is appreciated for its portability and one-handed design. Though the name was coined because of the destructive belch of this handheld scatter weapon, many gunsmiths craft dragon-mouth pistols with elaborate embellishments that resemble a stylized dragon's maw framing the barrel."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Dueling Pistol",
@@ -1442,7 +1656,9 @@
 			},
 			"bulk": "L",
 			"onset": null,
-			"ammunition": "Rounds|G&G",
+			"ammunition": [
+				"Dose or Round of Black Powder|G&G|round"
+			],
 			"damage": "1d6",
 			"damageType": "P",
 			"hands": 1,
@@ -1453,9 +1669,7 @@
 			"group": "Firearm|G&G",
 			"entries": [
 				"Made for settling disputes when diplomacy fails, dueling pistols are finely crafted and made to fit easily into a holster or pocket. Noble and wealthy merchants in both Alkenstar and Dongun Hold often own matching pairs of dueling pistols in case they're called upon to address a challenge\u2014though this practice has become increasingly rare in the modern age."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Dwarven Scattergun",
@@ -1478,7 +1692,9 @@
 			},
 			"bulk": 2,
 			"onset": null,
-			"ammunition": "Rounds|G&G",
+			"ammunition": [
+				"Dose or Round of Black Powder|G&G|round"
+			],
 			"damage": "1d8",
 			"damageType": "P",
 			"hands": 2,
@@ -1489,9 +1705,7 @@
 			"group": "Firearm|G&G",
 			"entries": [
 				"A favored weapon of dwarf scouts from Dongun Hold, the dwarven scattergun is a powerful weapon designed to take advantage of a dwarf's sturdy frame. A dwarven scattergun fires a large paper cartridge stuffed with black powder and knuckle-sized lumps of metal, creating a devastating burst so destructive that a foolish dwarf might find themself catching painful ricochets when firing at a too-close target. Some scatterguns are crafted with a clockwork firing tray that can quickly sort and load black powder and shot without needing a prepackaged cartridge, though this is largely an aesthetic feature with no real mechanical benefit."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Dwarven War Axe",
@@ -1521,9 +1735,7 @@
 			"group": "Axe",
 			"entries": [
 				"This favored weapon of the dwarves has a large, ornate head mounted on a thick handle. This powerful axe can be wielded with one hand or two."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Elven Curve Blade",
@@ -1553,9 +1765,7 @@
 			"group": "Sword",
 			"entries": [
 				"Essentially a longer version of the scimitar, this traditional elven weapon has a thinner blade than its cousin."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Explorer's Clothing",
@@ -1583,9 +1793,7 @@
 			"group": "Cloth",
 			"entries": [
 				"Adventurers who don't wear armor travel in durable clothing. Though it's not armor and uses your unarmored defense proficiency, it still has a Dex Cap and can grant an item bonus to AC if etched with potency runes (as described on page 581)."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Falchion",
@@ -1613,9 +1821,7 @@
 			"group": "Sword",
 			"entries": [
 				"This weapon is a heavier, two-handed version of the curved-bladed scimitar. It is weighted toward the blade's end, making it a powerful slashing weapon."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Fangwire",
@@ -1648,9 +1854,7 @@
 			"group": "Brawling",
 			"entries": [
 				"This kobold wire is thin and hard to see, making it perfect for an ambush. The wielder wraps the wire around a vulnerable spot, such as the neck, and twists it to inflict potentially fatal lacerations. The name derives from the use of a similar wire in traps, or slow fangs, with the word \"slow\" removed, as a fangwire gets quick results."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Fauchard",
@@ -1685,10 +1889,7 @@
 			"appliesTo": null,
 			"entries": [
 				"A fauchard is similar to a {@item glaive}, save that its cutting edge is along the concave side. Fauchards are favored by Crimson Reclaimers for hacking through waves of zombies. The fauchard is a martial melee weapon."
-			],
-			"craftReq": null,
-			"generic": false,
-			"variants": null
+			]
 		},
 		{
 			"name": "Fighting Fan",
@@ -1720,9 +1921,7 @@
 			"group": "Knife",
 			"entries": [
 				"This fan is useful for elegant dances as well as for slicing unsuspecting foes with the blades along its outer edge. If used in performances, it might be disguised as a frilly accessory, or it might be an obvious, though elegant, weapon."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Filcher's Fork",
@@ -1755,9 +1954,7 @@
 			"group": "Spear",
 			"entries": [
 				"This halfling weapon looks like a long, two-pronged fork and is used as both a weapon and a cooking implement."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Fire Lance",
@@ -1776,7 +1973,9 @@
 			},
 			"bulk": 2,
 			"onset": null,
-			"ammunition": "Rounds|G&G",
+			"ammunition": [
+				"Dose or Round of Black Powder|G&G|round"
+			],
 			"damage": "1d6",
 			"damageType": "P",
 			"hands": 2,
@@ -1786,10 +1985,8 @@
 			"subCategory": "Simple",
 			"group": "Firearm|G&G",
 			"entries": [
-				"A thin-barreled firearm that uses a container of pressurized air instead of black powder to propel small metal bullets from an attached cartridge, the air repeater has fallen out of common use in Arcadia due to its poor stopping power, though it's still used occasionally for casual hunting and sport shooting. The air repeater and its longer-ranged, two-handed variant are still valued by some for their ability to allow a shooter to fire multiple rounds without needing to stop to reload or crank to a new chamber. A typical air repeater magazine holds 6 pellets."
-			],
-			"craftReq": null,
-			"generic": false
+				"A thin-barreled firearm that uses a container of pressurized air instead of black powder to propel small metal bullets from an attached cartridge, the air repeater has fallen out of common use in Arcadia due to its poor stopping power, though it's still used occasionally for casual hunting and sport shooting. The air repeater and its {@item long air repeater|G&G|longer-ranged, two-handed variant} are still valued by some for their ability to allow a shooter to fire multiple rounds without needing to stop to reload or crank to a new chamber. A typical air repeater magazine holds 6 {@item pellets}."
+			]
 		},
 		{
 			"name": "Flail",
@@ -1818,9 +2015,7 @@
 			"group": "Flail",
 			"entries": [
 				"This weapon consists of a wooden handle attached to a spiked ball or cylinder by a chain, rope, or strap of leather."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Flingflenser",
@@ -1842,7 +2037,9 @@
 			},
 			"bulk": 1,
 			"onset": null,
-			"ammunition": "Rounds|G&G",
+			"ammunition": [
+				"Dose or Round of Black Powder|G&G|round"
+			],
 			"damage": "1d6",
 			"damageType": "S",
 			"hands": 2,
@@ -1853,9 +2050,7 @@
 			"group": "Firearm|G&G",
 			"entries": [
 				"A flingflenser is a goblin-designed weapon ending in an ovoid tube with a hatch and handle on the narrow end. A cluster of circular blades held together and attached to a black powder packet with a thin leather strap serves as ammunition and is loaded through the hatch before being fired with a flintlock or other external ignition mechanism. The flingflenser's sturdy design also places it among the more reliable goblin weapons."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Flintlock Musket",
@@ -1875,7 +2070,9 @@
 			},
 			"bulk": 1,
 			"onset": null,
-			"ammunition": "Rounds|G&G",
+			"ammunition": [
+				"Dose or Round of Black Powder|G&G|round"
+			],
 			"damage": "1d6",
 			"damageType": "P",
 			"hands": 2,
@@ -1886,9 +2083,7 @@
 			"group": "Firearm|G&G",
 			"entries": [
 				"The most commonly available of firearms in Alkenstar, the flintlock musket includes an external firing mechanism and an efficient and relatively compact frame. Though lacking the range and firing power of the {@item arquebus} preferred by Alkenstar and Dongun Hold's military members, the flintlock musket is popular among civilians for its ease of use."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Flintlock Pistol",
@@ -1908,7 +2103,9 @@
 			},
 			"bulk": 1,
 			"onset": null,
-			"ammunition": "Rounds|G&G",
+			"ammunition": [
+				"Dose or Round of Black Powder|G&G|round"
+			],
 			"damage": "1d4",
 			"damageType": "P",
 			"hands": 1,
@@ -1919,9 +2116,7 @@
 			"group": "Firearm|G&G",
 			"entries": [
 				"Though less accurate and powerful than a flintlock musket, the flintlock pistol is a preferred weapon of privateers thanks to its more compact size and affordability. Pirate captains often wear a brace of such pistols in a bandolier so they can draw and fire without stopping to reload."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Forked Bipod",
@@ -1950,9 +2145,7 @@
 			"group": "Spear",
 			"entries": [
 				"Developed by Alkenstar scouts who often don't have time to break down a tripod when beset by the chaotic mutant monsters of the Mana Wastes, this two-pronged stabbing weapon can be used as a bipod to stabilize a gun with potent kickback. A forked bipod can be deployed or retrieved for use as a melee weapon as an {@action Interact} action."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Full Plate",
@@ -1982,9 +2175,7 @@
 			"group": "Plate",
 			"entries": [
 				"Plate mail consists of interlocking plates that encase nearly the entire body in a carapace of steel. It is costly and heavy, and the wearer often requires help to don it correctly, but it provides some of the best defense armor can supply. A suit of this armor comes with an undercoat of {@item padded armor|CRB} and a pair of {@item gauntlet|CRB|gauntlets}."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Gauntlet",
@@ -2012,9 +2203,7 @@
 			"group": "Brawling",
 			"entries": [
 				"A pair of these metal gloves comes with {@item full plate}, {@item half plate}, and {@item splint armor}; they can also be purchased separately and worn with other types of armor. They not only protect your hands but also transform your hands into lethal weapons."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Glaive",
@@ -2043,9 +2232,7 @@
 			"group": "Polearm",
 			"entries": [
 				"This polearm consists of a long, single-edged blade on the end of a 7-foot pole. It is extremely effective at delivering lethal cuts at a distance."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Gnome Flickmace",
@@ -2074,9 +2261,7 @@
 			"group": "Flail",
 			"entries": [
 				"More a flail than a mace, this weapon has a short handle attached to a length of chain with a ball at the end. The ball is propelled to its reach with the flick of the wrist, the momentum of which brings the ball back to the wielder after the strike."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Gnome Hooked Hammer",
@@ -2107,9 +2292,7 @@
 			"group": "Hammer",
 			"entries": [
 				"This gnome tool and weapon features a hammer at one end and a curved pick on the other. It's such a strange and awkward weapon that others think the gnomes are slightly erratic for using it."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Greataxe",
@@ -2136,9 +2319,7 @@
 			"group": "Axe",
 			"entries": [
 				"This large battle axe is too heavy to wield with only one hand. Many greataxes incorporate two blades, and they are often \"bearded,\" having a hook at the bottom to increase the strength of their chopping power."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Greatclub",
@@ -2166,9 +2347,7 @@
 			"group": "Club",
 			"entries": [
 				"While many greatclubs are intricately carved, others are little more than a sturdy tree branch. These massive clubs are too heavy to wield with only one hand."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Greatpick",
@@ -2195,9 +2374,7 @@
 			"group": "Pick",
 			"entries": [
 				"This pick has a longer handle and broader head than a regular pick. It is too heavy to wield in one hand."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Greatsword",
@@ -2224,9 +2401,7 @@
 			"group": "Sword",
 			"entries": [
 				"This immense two-handed sword is nearly as tall as its wielder. Its lower blade is often somewhat dulled to allow it to be gripped for extra leverage in close-quarter fights."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Guisarme",
@@ -2254,9 +2429,7 @@
 			"group": "Polearm",
 			"entries": [
 				"This polearm bears a long, often one-sided, curved blade with a hook protruding from the blunt side of the blade, which can allow its wielder to trip opponents at a distance. Its shaft is usually 8 feet long."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Halberd",
@@ -2284,9 +2457,7 @@
 			"group": "Polearm",
 			"entries": [
 				"This polearm has a relatively short, 5-foot shaft. The business end is a long spike with an axe blade attached."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Half Plate",
@@ -2314,9 +2485,7 @@
 			"group": "Plate",
 			"entries": [
 				"Half plate consists of most of the upper body plates used in full plate, with lighter or sparser steel plate protection for the arms and legs. This provides some of the protection of {@item full plate} with greater flexibility and speed. A suit of this armor comes with an undercoat of {@item padded armor|CRB} and a pair of {@item gauntlet|CRB|gauntlets}."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Halfling Sling Staff",
@@ -2336,7 +2505,9 @@
 			},
 			"bulk": 1,
 			"onset": null,
-			"ammunition": "Sling Bullets",
+			"ammunition": [
+				"Sling Bullets"
+			],
 			"damage": "1d10",
 			"damageType": "B",
 			"hands": 2,
@@ -2347,9 +2518,7 @@
 			"group": "Sling",
 			"entries": [
 				"This staff ends in a Y-shaped split that cradles a sling. The length of the staff provides excellent leverage when used two-handed to fling rocks or bullets from the sling."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Hand Adze",
@@ -2380,9 +2549,7 @@
 			"group": "Axe",
 			"entries": [
 				"This is a smaller version of an {@item adze|LOAG}, useful for more delicate woodworking or projects in cramped spaces. Gripplis use the hand adze for crafting and as close quarters weapons."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Hand Cannon",
@@ -2401,7 +2568,9 @@
 			},
 			"bulk": 1,
 			"onset": null,
-			"ammunition": "Rounds|G&G",
+			"ammunition": [
+				"Dose or Round of Black Powder|G&G|round"
+			],
 			"damage": "1d6",
 			"damageType": "Mod",
 			"hands": 1,
@@ -2412,9 +2581,7 @@
 			"group": "Firearm|G&G",
 			"entries": [
 				"Popular among privateers and mercenaries in Goka, hand cannons are little more than a hardened tube with a handle and external ignition attached. A hand cannon can be used to fire almost anything that can be packed into its barrel. The wielder of a hand cannon can change the damage type granted by its {@trait modular} trait as part of the same {@action Interact} action used to reload."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Hand Crossbow",
@@ -2430,7 +2597,9 @@
 			},
 			"bulk": "L",
 			"onset": null,
-			"ammunition": "Bolt",
+			"ammunition": [
+				"Bolt"
+			],
 			"damage": "1d6",
 			"damageType": "P",
 			"hands": 1,
@@ -2441,9 +2610,7 @@
 			"group": "Bow",
 			"entries": [
 				"Sometimes referred to as an alley bow by rogues or ruffians, this small crossbow fires small bolts that are sometimes used to deliver poison to the target. It's small enough to be shot one-handed, but it still requires two hands to load."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Harmona Gun",
@@ -2462,7 +2629,9 @@
 			},
 			"bulk": 2,
 			"onset": null,
-			"ammunition": "Rounds|G&G",
+			"ammunition": [
+				"Dose or Round of Black Powder|G&G|round"
+			],
 			"damage": "1d10",
 			"damageType": "B",
 			"hands": 2,
@@ -2473,9 +2642,7 @@
 			"group": "Firearm|G&G",
 			"entries": [
 				": A favored weapon of monster hunters in Arcadia, the harmona gun is a large-bore long gun that fires a heavy, slow-moving round. The gun got its name due to the eerie similarity between the buzzing sound its oversized projectiles make flying through the air and the flight of a fey bird called a harmona."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Hatchet",
@@ -2504,9 +2671,7 @@
 			"group": "Axe",
 			"entries": [
 				"This small axe can be used in close combat or thrown."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Heavy Crossbow",
@@ -2522,7 +2687,9 @@
 			},
 			"bulk": 2,
 			"onset": null,
-			"ammunition": "Bolt",
+			"ammunition": [
+				"Bolt"
+			],
 			"damage": "1d10",
 			"damageType": "P",
 			"hands": 2,
@@ -2533,9 +2700,7 @@
 			"group": "Bow",
 			"entries": [
 				"This large crossbow is harder to load and more substantial than a regular crossbow, but it packs a greater punch."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Heavy Power Suit",
@@ -2560,9 +2725,7 @@
 			"entries": [
 				"If your Strength score is at least 16, you remove the Speed penalty entirely instead of reducing it to \u20135 feet.",
 				"{@note This armor is exclusive to the {@class Inventor|G&G} class with the {@class Inventor|G&G|Armor|Armor|G&G} innovation and the {@b Heavy Construction} {@subclassFeature Breakthrough Innovation|Inventor|G&G|Armor|G&G|7||breakthrough armor modification}. While you may be able to wear this armor as a different class, everyone but the creator of the armor is untrained in it, even if they would normally be trained (or better) in heavy armor.}"
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Hellknight Plate",
@@ -2598,10 +2761,7 @@
 			"entries": [
 				"Few armors in the Inner Sea region are as memorable as the iconic Hellknight plate. While each order has its own flourishes, Hellknight plate is instantly recognizable to any who know of the Hellknights.",
 				"Hellknights go to extreme measures to punish non-Hellknights who get their hands on Hellknight plate, and the reward is not usually worth the risk, since for non-Hellknights, the armor is functionally similar to {@item full plate}."
-			],
-			"craftReq": null,
-			"generic": false,
-			"variants": null
+			]
 		},
 		{
 			"name": "Hide Armor",
@@ -2628,9 +2788,7 @@
 			"group": "Leather",
 			"entries": [
 				"A mix of furs, sturdy hide, and sometimes molded boiled leather, this armor provides protection due to its layers of leather, though its bulkiness slows the wearer down and decreases mobility."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Horsechopper",
@@ -2661,9 +2819,7 @@
 			"group": "Polearm",
 			"entries": [
 				"Created by goblins to battle horses, this weapon is essentially a long shaft ending in a blade with a large hook."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Javelin",
@@ -2692,9 +2848,7 @@
 			"group": "Dart",
 			"entries": [
 				"This thin spear is well balanced for throwing but is not designed for melee use."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Jezail",
@@ -2715,7 +2869,9 @@
 			},
 			"bulk": 1,
 			"onset": null,
-			"ammunition": "Rounds|G&G",
+			"ammunition": [
+				"Dose or Round of Black Powder|G&G|round"
+			],
 			"damage": "1d8",
 			"damageType": "P",
 			"hands": 1,
@@ -2726,9 +2882,7 @@
 			"group": "Firearm|G&G",
 			"entries": [
 				"Jezails are simple, efficient long guns developed in Casmaron that typically feature a custom stock and a flintlock firing mechanism. Though lacking the range and stopping power of an arquebus or the raw force of a harmona gun, the jezail is an elegant, well-balanced weapon suitable for a variety of combat situations. It's even possible to tuck it under one arm to fire a less accurate attack that uses only one hand."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Kama",
@@ -2758,9 +2912,7 @@
 			"group": "Knife",
 			"entries": [
 				"Similar to a sickle and used in some regions to reap grain, a kama has a short, slightly curved blade and a wooden handle."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Katana",
@@ -2790,9 +2942,7 @@
 			"group": "Sword",
 			"entries": [
 				"A katana is a curved, single-edged sword known for its wickedly sharped blade."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Katar",
@@ -2822,9 +2972,7 @@
 			"group": "Knife",
 			"entries": [
 				"Also known as punching daggers, katars are characterized by their H-shaped hand grip that allows the blade to jut out from the knuckles."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Khakkara",
@@ -2854,9 +3002,7 @@
 			"group": "Club",
 			"entries": [
 				"This staff is topped by a pointed metal circle from which hang several smaller rings that jingle and clang noisily as the staff is moved, allowing you to announce your presence and scare off wild animals as you walk."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Khopesh",
@@ -2884,9 +3030,7 @@
 			"group": "Sword",
 			"entries": [
 				"This curved sickle sword has a pointed tip, allowing it to be swung like a handaxe or thrust like a short sword. The tip of a khopesh is usually hooked so that it can be used to disarm an opponent's shield or weapon."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Knuckle Duster",
@@ -2915,9 +3059,7 @@
 			"group": "Brawling",
 			"entries": [
 				"This bit of hardened metal, favored by street toughs, is typically made of brass and features four finger holes so that it can sit atop the knuckles, adding extra power to a punch."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Kukri",
@@ -2947,9 +3089,7 @@
 			"group": "Knife",
 			"entries": [
 				"The blade of this foot-long knife curves inward and lacks a cross guard at the hilt."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Lance",
@@ -2978,9 +3118,7 @@
 			"group": "Spear",
 			"entries": [
 				"This spear-like weapon is used by a mounted creature to deal a great deal of damage."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Leather Armor",
@@ -3007,9 +3145,7 @@
 			"group": "Leather",
 			"entries": [
 				"A mix of flexible and molded boiled leather, a suit of this type of armor provides some protection with maximum flexibility."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Light Hammer",
@@ -3037,9 +3173,100 @@
 			"group": "Hammer",
 			"entries": [
 				"This smaller version of the warhammer has a wooden or metal shaft ending in a metal head. Unlike its heavier cousin, it is light enough to throw."
+			]
+		},
+		{
+			"name": "Tengu Gale Blade",
+			"source": "APG",
+			"page": 248,
+			"equipment": true,
+			"type": "Equipment",
+			"traits": [
+				"Uncommon",
+				"Agile",
+				"disarm",
+				"finesse",
+				"tengu"
 			],
-			"craftReq": null,
-			"generic": false
+			"price": {
+				"amount": 4,
+				"coin": "gp",
+				"note": null
+			},
+			"bulk": "L",
+			"onset": null,
+			"ammunition": null,
+			"damage": "1d6",
+			"damageType": "S",
+			"hands": 1,
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"group": "Sword",
+			"entries": [
+				"This fan-shaped sword, designed by members of the tengu ancestry, has five broad blades that join at its hilt. Tengu sailors also use gale blades as makeshift weather vanes, as the sword spins to show the wind's direction when loosely held aloft."
+			]
+		},
+		{
+			"name": "Claw Blade",
+			"source": "APG",
+			"page": 248,
+			"equipment": true,
+			"type": "Equipment",
+			"traits": [
+				"Uncommon",
+				"Agile",
+				"catfolk",
+				"deadly d8",
+				"disarm",
+				"finesse",
+				"versatile P"
+			],
+			"price": {
+				"amount": 2,
+				"coin": "gp",
+				"note": null
+			},
+			"bulk": "L",
+			"onset": null,
+			"ammunition": null,
+			"damage": "1d4",
+			"damageType": "S",
+			"hands": 1,
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"group": "Knife",
+			"entries": [
+				"The three parallel blades of this handheld weapon extend between the fingers to resemble the natural claws of the amurruns who created them, providing a way for those catfolk without suitable natural claws to share the fighting customs of their kin."
+			]
+		},
+		{
+			"name": "Sword Cane",
+			"source": "APG",
+			"page": 248,
+			"equipment": true,
+			"type": "Equipment",
+			"traits": [
+				"Agile",
+				"finesse",
+				"concealable"
+			],
+			"price": {
+				"amount": 5,
+				"coin": "gp",
+				"note": null
+			},
+			"bulk": 1,
+			"onset": null,
+			"ammunition": null,
+			"damage": "1d6",
+			"damageType": "P",
+			"hands": 1,
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"group": "Sword",
+			"entries": [
+				"This slender, rapier-like sword is concealed within a wooden or metal cane that serves as a sheath, making it an inconspicuous weapon easy to slip past inspections or into high-society events. A sword cane is typically 4 feet long when sheathed, and its hilt is usually capped with a wooden or metal decoration."
+			]
 		},
 		{
 			"name": "Light Mace",
@@ -3068,9 +3295,7 @@
 			"group": "Club",
 			"entries": [
 				"A light mace has a short wooden or metal shaft ending with a dense metal head. Used much like a club, it delivers heavy bludgeoning blows, but with extra power derived from the head's metal ridges or spikes."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Light Pick",
@@ -3098,9 +3323,7 @@
 			"group": "Pick",
 			"entries": [
 				"A light pick is a modified mining implement with a wooden shaft ending in a pick head crafted more to pierce armor and flesh than chip rocks."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Long Air Repeater",
@@ -3119,20 +3342,20 @@
 			},
 			"bulk": 1,
 			"onset": null,
-			"ammunition": "Pellets|G&G",
+			"ammunition": [
+				"Pellets|G&G"
+			],
 			"damage": "1d4",
 			"damageType": "P",
-			"hands": 1,
+			"hands": 2,
 			"reload": 0,
 			"range": 60,
 			"category": "Weapon",
 			"subCategory": "Simple",
 			"group": "Firearm|G&G",
 			"entries": [
-				"Like the one-handed air repeater, this thin-barreled firearm uses a container of pressurized air instead of black powder to propel small metal pellets from an attached cartridge. The long air repeater has better range and ammo capacity than the {@item air repeater|G&G|one-handed variant}, though it still lacks significant stopping power. A typical long air repeater magazine holds 8 {@item pellets|G&G}."
-			],
-			"craftReq": null,
-			"generic": false
+				"Like the {@item air repeater|G&G|one-handed air repeater}, this thin-barreled firearm uses a container of pressurized air instead of black powder to propel small metal pellets from an attached cartridge. The long air repeater has better range and ammo capacity than the {@item air repeater|G&G|one-handed variant}, though it still lacks significant stopping power. A typical long air repeater magazine holds 8 {@item pellets|G&G}."
+			]
 		},
 		{
 			"name": "Longbow",
@@ -3151,7 +3374,9 @@
 			},
 			"bulk": 2,
 			"onset": null,
-			"ammunition": "Arrows",
+			"ammunition": [
+				"Arrow"
+			],
 			"damage": "1d8",
 			"damageType": "P",
 			"hands": "1+",
@@ -3162,9 +3387,7 @@
 			"group": "Bow",
 			"entries": [
 				"This 5-foot-tall bow, usually made of a single piece of elm, hickory, or yew, has a powerful draw and is excellent at propelling arrows with great force and at an extreme distance. You must use two hands to fire a longbow, and it can't be used while mounted."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Longspear",
@@ -3191,9 +3414,7 @@
 			"group": "Spear",
 			"entries": [
 				"This very long spear, sometimes called a pike, is purely for thrusting rather than throwing. Used by many soldiers and city watch for crowd control and defense against charging enemies, it must be wielded with two hands."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Longsword",
@@ -3220,9 +3441,7 @@
 			"group": "Sword",
 			"entries": [
 				"Longswords can be one-edged or two-edged swords. Their blades are heavy and they're between 3 and 4 feet in length."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Mace",
@@ -3249,9 +3468,7 @@
 			"group": "Club",
 			"entries": [
 				"With a stout haft and a heavy metal head, a mace is sturdy and allows its wielder to deliver powerful blows and dent armor."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Machete",
@@ -3279,9 +3496,7 @@
 			"group": "Sword",
 			"entries": [
 				"This medium-length sword has a wide blade and long grip. Though it is typically used to hack through heavy foliage, the machete can also be used as a deadly weapon."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Main-gauche",
@@ -3312,9 +3527,7 @@
 			"group": "Knife",
 			"entries": [
 				"This parrying dagger features a robust guard to protect the wielder's hand."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Mambele",
@@ -3344,9 +3557,7 @@
 			"group": "Axe",
 			"entries": [
 				"Also known as a hunga munga or danisco, this hybrid knife-axe consists of a hilt and a blade that curves backward toward the wielder. The curve of the blade is such that after a victim has been struck by a mambele, more damage is dealt as the weapon is extracted from the victim's body."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Maul",
@@ -3373,9 +3584,7 @@
 			"group": "Hammer",
 			"entries": [
 				"Mauls are massive warhammers that must be swung with two hands."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Meteor Hammer",
@@ -3405,9 +3614,7 @@
 			"group": "Flail",
 			"entries": [
 				"This weapon consists of a long chain connected to a heavy weight at one end. When a wielder swings the weight by the chain, it builds momentum and can serve as a deadly bludgeon with incredible reach."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Mithral Tree",
@@ -3429,7 +3636,9 @@
 			},
 			"bulk": 1,
 			"onset": null,
-			"ammunition": "Rounds|G&G",
+			"ammunition": [
+				"Dose or Round of Black Powder|G&G|round"
+			],
 			"damage": "1d6",
 			"damageType": "P",
 			"hands": 2,
@@ -3440,9 +3649,7 @@
 			"group": "Firearm|G&G",
 			"entries": [
 				"Neither mithral nor a tree, this long gun takes its name from the legends of the elves of Jinin and is most commonly found within the nation. An elegant weapon, a mithral tree does somewhat resemble a tree; its fanned stock and long, sweeping barrel reinforced with metal rings enable a wielder to parry melee attacks while moving back into safe firing range."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Morningstar",
@@ -3469,9 +3676,7 @@
 			"group": "Club",
 			"entries": [
 				"This weapon has a short shaft ending in a metal ball studded with spikes."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Naginata",
@@ -3501,9 +3706,7 @@
 			"group": "Polearm",
 			"entries": [
 				"This 6-foot staff has a 2-foot-long, slightly curved, swordlike blade attached at one end. The long pole helps keep the wielder out of reach of swords and shorter weapons."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Nine-Ring Sword",
@@ -3531,9 +3734,7 @@
 			"group": "Sword",
 			"entries": [
 				"This sword has a broad blade, along which are threaded nine heavy metal rings. The rings add weight to the weapon for downward swings, as well as clashing together to make noise."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Nunchaku",
@@ -3564,9 +3765,7 @@
 			"group": "Club",
 			"entries": [
 				"The nunchaku is constructed of two wooden or metal bars connected by a short length of rope or chain."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Orc Knuckle Dagger",
@@ -3596,9 +3795,7 @@
 			"group": "Knife",
 			"entries": [
 				"This stout, metal blade of orc design has a horizontal basket hilt with blades jutting from each end, or sometimes one blade like that of a katar."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Orc Necksplitter",
@@ -3628,9 +3825,7 @@
 			"group": "Axe",
 			"entries": [
 				"This single-bladed bearded axe has a jagged blade that's perfect for separating bone from tendon and cartilage."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Padded Armor",
@@ -3659,9 +3854,7 @@
 			"group": "Cloth",
 			"entries": [
 				"This armor is simply a layer of heavy, quilted cloth, but it is sometimes used because it's so inexpensive. Padded armor is easier to damage and destroy than other types of armor. Heavy armor comes with a padded armor undercoat included in its Price, though it loses the comfort trait when worn under heavy armor. You can wear just that padded armor undercoat to sleep in, if your heavy armor is destroyed, or when otherwise not wearing the full heavy armor. This allows you to keep the armor invested and benefit from the power of any runes on the associated heavy armor, but no one else can wear your heavy armor without the padded undercoat."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Pepperbox",
@@ -3682,7 +3875,9 @@
 			},
 			"bulk": 1,
 			"onset": null,
-			"ammunition": "Rounds|G&G",
+			"ammunition": [
+				"Dose or Round of Black Powder|G&G|round"
+			],
 			"damage": "1d4",
 			"damageType": "P",
 			"hands": 1,
@@ -3693,9 +3888,7 @@
 			"group": "Firearm|G&G",
 			"entries": [
 				"This weapon is a specialty of the smiths of Alkenstar. The pepperbox has three barrels that each hold a single shot, and the shooter can manually rotate the whole barrel assembly to align a loaded barrel with the firing mechanism."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Pick",
@@ -3722,9 +3915,7 @@
 			"group": "Pick",
 			"entries": [
 				"A pick designed solely for combat has a sturdy wooden shaft and a heavy, pointed head to deliver devastating blows."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Polytool",
@@ -3754,9 +3945,7 @@
 			"group": "Sword",
 			"entries": [
 				"The polytool is a small metal rod with a number of simple tools folded inside. The user can extend a long ceramic blade, as well as an awl, a chisel, a file, flint and steel, a hook, an inkpen, a magnifying glass, pliers, scissors, and a small saw. The flint and steel can be used up to 10 times before needing to be replaced. Though inspired by advanced Numerian technology, the polytool is a simple enough feat of metalworking that any blacksmith could produce it\u2014perfect for the goddess Casandalee to spread innovation farther than actual Numerian tech could reach."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Power Suit",
@@ -3778,9 +3967,7 @@
 			"group": "Composite",
 			"entries": [
 				"{@note This armor is exclusive to the {@class Inventor|G&G} class with the {@class Inventor|G&G|Armor|Armor|G&G} innovation. While you may be able to wear this armor as a different class, everyone but the creator of the armor is untrained in it, even if they would normally be trained (or better) in medium armor.}"
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Ranseur",
@@ -3808,9 +3995,7 @@
 			"group": "Polearm",
 			"entries": [
 				"This polearm is a long trident with a central prong that's longer than the other two."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Rapier",
@@ -3839,9 +4024,7 @@
 			"group": "Sword",
 			"entries": [
 				"The rapier is a long and thin piercing blade with a basket hilt. It is prized among many as a dueling weapon."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Reinforced Stock",
@@ -3871,9 +4054,7 @@
 			"entries": [
 				"A reinforced stock is a weighted crossbow, firearm haft, or grip customized for striking in melee.",
 				"{@note *An attached bayonet or reinforced stock requires the same number of hands as the weapon it's attached to. A detached bayonet requires one hand.}"
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Sai",
@@ -3905,9 +4086,7 @@
 			"group": "Knife",
 			"entries": [
 				"This piercing dagger is a metal spike flanked by a pair of prongs that can be used to trap an enemy's weapon."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Sap",
@@ -3935,9 +4114,7 @@
 			"group": "Club",
 			"entries": [
 				"A sap has a soft wrapping around a dense core, typically a leather sheath around a lead rod. Its head is wider than its grip to disperse the force of a blow, as the weapon's purpose is to knock out its victim rather than to draw blood."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Sawtooth Saber",
@@ -3967,9 +4144,7 @@
 			"group": "Sword",
 			"entries": [
 				"The signature weapon of the Red Mantis assassins, this curved blade is serrated like a saw, hence the name."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Scale Mail",
@@ -3996,9 +4171,7 @@
 			"group": "Composite",
 			"entries": [
 				"Scale mail consists of many metal scales sewn onto a reinforced leather backing, often in the form of a long shirt that protects the torso, arms, and legs."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Scimitar",
@@ -4026,9 +4199,7 @@
 			"group": "Sword",
 			"entries": [
 				"This one-handed curved blade is sharp on one side."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Scourge",
@@ -4058,8 +4229,7 @@
 			"group": "Flail",
 			"entries": [
 				"A scourge\u2014also known as a cat-o'-nine-tails\u2014is a set of several knotted cords made from cotton or leather and attached to a handle. While most scourges are more suitable for torture than combat, the weapons used by the Order of the Scourge have metal barbs woven in to pierce clothing and armor. The scourge is a martial melee weapon."
-			],
-			"generic": false
+			]
 		},
 		{
 			"name": "Scythe",
@@ -4087,9 +4257,7 @@
 			"group": "Polearm",
 			"entries": [
 				"Derived from a farming tool used to mow down long grains and cereals, this weapon has a long wooden shaft with protruding handles, capped with a curved blade set at a right angle."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Shield Boss",
@@ -4116,9 +4284,7 @@
 			"group": "Shield",
 			"entries": [
 				"Typically a round, convex, or conical piece of thick metal attached to the center of a shield, a shield boss increases the bludgeoning damage of a shield bash."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Shield Spikes",
@@ -4145,9 +4311,7 @@
 			"group": "Shield",
 			"entries": [
 				"These metal spikes are strategically placed on the defensive side of the shield to deal piercing damage with a shield bash."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Shortbow",
@@ -4165,7 +4329,9 @@
 			},
 			"bulk": 1,
 			"onset": null,
-			"ammunition": "Arrows",
+			"ammunition": [
+				"Arrow"
+			],
 			"damage": "1d6",
 			"damageType": "P",
 			"hands": "1+",
@@ -4176,9 +4342,7 @@
 			"group": "Bow",
 			"entries": [
 				"This smaller bow is made of a single piece of wood and favored by skirmishers and cavalry."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Shortsword",
@@ -4207,9 +4371,7 @@
 			"group": "Sword",
 			"entries": [
 				"These blades come in a variety of shapes and styles, but they are typically 2 feet long."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Shuriken",
@@ -4241,9 +4403,7 @@
 			"group": "Dart",
 			"entries": [
 				"This \"throwing star\" is a small piece of flat metal with sharp edges, designed to be flung with a flick of the wrist."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Sickle",
@@ -4272,9 +4432,7 @@
 			"group": "Knife",
 			"entries": [
 				"Originally a farming tool used for reaping grain, this one-handed weapon has a short wooden handle ending in a curved blade, sometimes sharpened on both sides."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Slide Pistol",
@@ -4296,7 +4454,9 @@
 			},
 			"bulk": 2,
 			"onset": null,
-			"ammunition": "Rounds|G&G",
+			"ammunition": [
+				"Dose or Round of Black Powder|G&G|round"
+			],
 			"damage": "1d6",
 			"damageType": "P",
 			"hands": 1,
@@ -4307,9 +4467,7 @@
 			"group": "Firearm|G&G",
 			"entries": [
 				"Also known as a harmonica gun, this weapon is essentially a stock, trigger, and firing mechanism attached to a sliding brace of barrels that can each hold a round of ammunition."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Sling",
@@ -4327,7 +4485,9 @@
 			},
 			"bulk": "L",
 			"onset": null,
-			"ammunition": "Sling Bullets",
+			"ammunition": [
+				"Sling Bullets"
+			],
 			"damage": "1d6",
 			"damageType": "B",
 			"hands": 1,
@@ -4338,9 +4498,7 @@
 			"group": "Sling",
 			"entries": [
 				"Little more than a leather cup attached to a pair of straps, a sling can be used to fling smooth stones or sling bullets at a range."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Spear",
@@ -4367,9 +4525,7 @@
 			"group": "Spear",
 			"entries": [
 				"A long metal shaft ending with a metal spike, a spear can be used one-handed as a melee weapon and can be thrown."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Spiked Chain",
@@ -4399,9 +4555,7 @@
 			"group": "Flail",
 			"entries": [
 				"This 4-foot-long length of chain is covered with barbs and has spikes on one or both ends. Some feature metal hoops used as handgrips."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Spiked Gauntlet",
@@ -4429,9 +4583,7 @@
 			"group": "Brawling",
 			"entries": [
 				"Providing the same defensive function as a standard gauntlet, this version has a group of spikes protruding from the knuckles to deliver piercing damage with a punch."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Splint Mail",
@@ -4459,9 +4611,7 @@
 			"group": "Composite",
 			"entries": [
 				"This type of armor is {@item chain mail} reinforced with flexible, interlocking metal plates, typically located on the wearer's torso, upper arms, and legs. A suit of this armor comes with an undercoat of {@item padded armor|CRB} and a pair of {@item gauntlet|CRB|gauntlets}."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Staff",
@@ -4488,9 +4638,7 @@
 			"group": "Club",
 			"entries": [
 				"This long piece of wood can aid in walking and deliver a mighty blow."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Starknife",
@@ -4521,9 +4669,7 @@
 			"group": "Knife",
 			"entries": [
 				"From a central metal ring, four tapering metal blades extend like points on a compass rose. When gripping a starknife from the center, the wielder can use it as a melee weapon. It can also be thrown short distances."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Steel Shield",
@@ -4550,9 +4696,7 @@
 			"category": "Shield",
 			"entries": [
 				"Like wooden shields, steel shields come in a variety of shapes and sizes. Though more expensive than wooden shields, they are much more durable."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Stiletto Pen",
@@ -4584,9 +4728,7 @@
 			"group": "Dart",
 			"entries": [
 				"This weapon is a fully functional, lavish ink pen with a clip that can be attached to a pocket or bandoleer and easily retrieved as a free action. Using an action to Interact with the pen allows its wielder to disengage a stiletto blade that slides free of the upper body or reattach the previously removed blade."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Studded Leather Armor",
@@ -4613,9 +4755,7 @@
 			"group": "Leather",
 			"entries": [
 				"This {@item leather armor} is reinforced with metal studs and sometimes small metal plates, providing most of the flexibility of leather armor with more robust protection."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Subterfuge Suit",
@@ -4637,9 +4777,7 @@
 			"group": "Composite",
 			"entries": [
 				"{@note This armor is exclusive to the {@class Inventor|G&G} class with the {@class Inventor|G&G|Armor|Armor|G&G} innovation. While you may be able to wear this armor as a different class, everyone but the creator of the armor is untrained in it, even if they would normally be trained (or better) in medium armor.}"
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Taw Launcher",
@@ -4661,7 +4799,9 @@
 			},
 			"bulk": "1",
 			"onset": null,
-			"ammunition": "Wooden Taws|LOAG",
+			"ammunition": [
+				"Wooden Taws|LOAG"
+			],
 			"damage": "1d6",
 			"damageType": "modular",
 			"hands": 2,
@@ -4672,9 +4812,7 @@
 			"group": "Bow",
 			"entries": [
 				"Designed by conrasu warriors, this complex device is a crossbow and fires small wooden bullets known as taws. A system of blades within the launcher can rapidly reshape a taw as it's loaded, allowing the launcher to fire taws of different shapes, such as fléchettes."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Tekko-Kagi",
@@ -4706,9 +4844,7 @@
 			"group": "Brawling",
 			"entries": [
 				"Four curved blades attached to a sturdy handlebar give the wielder of this close-combat weapon the illusion of having claws that extend from their fist. Adherents of Bastet favor the tekko-kagi for catching their foes off guard."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Temple Sword",
@@ -4737,9 +4873,7 @@
 			"group": "Sword",
 			"entries": [
 				"This heavy blade is favored by guardians of religious sites. It has a distinctive, crescent-shaped blade that seems to be a mix of a sickle and sword. It often has holes drilled into the blade or the pommel so that bells or other holy trinkets can be affixed to the weapon as an aid for prayer or mediation."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Thunder Sling",
@@ -4771,9 +4905,7 @@
 			"group": "Sling",
 			"entries": [
 				"Tengu use these specialized slings to fire darts further and with greater force than when thrown by hand, which is particularly effective when attacking from great heights. A thunder sling uses {@item dart|crb|darts} as ammunition. It can also hurl {@item blowgun dart||blowgun darts} as ammunition but deals {@damage 1d4} piercing damage instead of {@damage 1d6} when used this way."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Tower Shield",
@@ -4802,9 +4934,7 @@
 			"entries": [
 				"These massive shields can be used to provide cover to nearly the entire body. Due to their size, they are typically made of wood reinforced with metal.",
 				"{@note Getting the higher bonus for a tower shield requires using the {@action Take Cover} action while the shield is raised.}"
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Tricky Pick",
@@ -4835,9 +4965,7 @@
 			"group": "Pick",
 			"entries": [
 				"This ingenious kobold pick conceals several hidden traps, which the wielder can activate to trick and befuddle foes with a variety of damaging blades and bludgeoning surfaces."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Trident",
@@ -4864,9 +4992,7 @@
 			"group": "Spear",
 			"entries": [
 				"This three-pronged, spear-like weapon typically has a 4-foot shaft. Like a spear, it can be wielded with one hand or thrown."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Urumi",
@@ -4895,9 +5021,7 @@
 			"group": "Flail",
 			"entries": [
 				"A bouquet of whiplike blades extends from the hilt of this sword."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Wakizashi",
@@ -4928,9 +5052,7 @@
 			"group": "Sword",
 			"entries": [
 				"This short-bladed, single-edged sword is typically carried as part of a pair alongside a katana."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "War Flail",
@@ -4959,9 +5081,7 @@
 			"group": "Flail",
 			"entries": [
 				"This large flail has a long shaft connected to a shorter piece of stout wood or metal that's sometimes inlaid with spikes."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "War Razor",
@@ -4991,9 +5111,7 @@
 			"group": "Knife",
 			"entries": [
 				"A war razor is an exaggerated version of the barbers' tool. It is a brittle but extremely sharp weapon that is very easy to slip into a pocket or sleeve."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Warhammer",
@@ -5020,9 +5138,7 @@
 			"group": "Hammer",
 			"entries": [
 				"This weapon has a wooden shaft ending in a large, heavy metal head. The head of the hammer might be single-sided or double-sided, but it's always capable of delivering powerful bludgeoning blows."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Whip",
@@ -5053,9 +5169,7 @@
 			"group": "Flail",
 			"entries": [
 				"This long strand of thick leather, often braided, delivers a painful but nonlethal slash at a distance, usually accompanied by a distinctive cracking sound."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Whip Claw",
@@ -5086,9 +5200,7 @@
 			"group": "Flail",
 			"entries": [
 				"The whip claw is a long tether affixed to clawlike daggers, allowing the wielder to fling and retract them with deadly precision. Catfolk developed this weapon to provide extended reach when hunting dangerous animals and wield them with unmatched expertise."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Wish Blade",
@@ -5119,9 +5231,7 @@
 			"group": "Sword",
 			"entries": [
 				"Specialized grooves lined with unique, alchemically treated metals capable of retaining energy score the length of this sword. The first wish blades originated from genie smiths, and the knowledge of these weapons has been passed on to generations of geniekin, earning them the name wish blades."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Rungu",
@@ -5150,9 +5260,7 @@
 			"group": "Club",
 			"entries": [
 				"This specialized club is designed for throwing and is useful for both combat and hunting. Rungus were invented by Zenj humans of the Mwangi Expanse and are most common among their tribes, though gripplis have also adopted rungus for hunting creatures that hide high in treetops."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Wish Knife",
@@ -5185,9 +5293,7 @@
 			"group": "Knife",
 			"entries": [
 				"Much like a {@item wish blade|LOAG}, the length of this knife is scored with intricate grooves capable of retaining energy. Wish knives are lighter than their counterparts, making them the weapon of choice for agile combatants."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		},
 		{
 			"name": "Wooden Shield",
@@ -5214,9 +5320,7 @@
 			"category": "Shield",
 			"entries": [
 				"Though they come in a variety of shapes and sizes, the protection offered by wooden shields comes from the stoutness of their materials. While wooden shields are less expensive than steel shields, they break more easily."
-			],
-			"craftReq": null,
-			"generic": false
+			]
 		}
 	]
 }

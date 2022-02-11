@@ -14373,7 +14373,7 @@
 						"{@bold Beetle} Speed 25 feet; Melee {@as 1} mandibles, Damage {@damage 2d10} bludgeoning.",
 						"{@bold Centipede} Speed 25 feet, climb Speed 25 feet; {@ability darkvision}; Melee {@as 1} mandibles, Damage {@damage 1d8} piercing plus {@damage 1d4} {@condition persistent damage ||persistent poison}.",
 						"{@bold Mantis} Speed 40 feet; imprecise {@ability scent} 30 feet; Melee {@as 1} foreleg, Damage {@damage 2d8} bludgeoning.",
-						"{@bold Scorpion} Speed 40 feet; {@ability darkvision}, imprecise tremorsense 60 feet; Melee {@as 1} stinger, Damage {@damage 1d8} piercing plus {@damage 1d4} {@condition persistent damage ||persistent poison}; Melee {@as 1} pincer (agile), Damage {@damage 1d6} bludgeoning.",
+						"{@bold Scorpion} Speed 40 feet; {@ability darkvision}, imprecise {@ability tremorsense} 60 feet; Melee {@as 1} stinger, Damage {@damage 1d8} piercing plus {@damage 1d4} {@condition persistent damage ||persistent poison}; Melee {@as 1} pincer (agile), Damage {@damage 1d6} bludgeoning.",
 						"{@bold Spider} {@ability darkvision}; Melee {@as 1} fangs, Damage {@damage 1d6} piercing plus {@damage 1d4} {@condition persistent damage ||persistent poison}; Melee {@as 1} Speed 25 feet, climb Speed 25 feet; Ranged {@as 1} web (range increment 20 feet), Damage entangles the target for 1 round."
 					]
 				}
@@ -31977,10 +31977,10 @@
 				{
 					"type": "list",
 					"items": [
-						"If you have Wild Shape, you can morph your hands into wild claws. Your hands transform into incredibly sharp claws. These claws are an unarmed attack you're trained in and deal {@damage 1d6} slashing damage each (agile, finesse). You can still hold and use items with your hands while they're transformed by this spell, but you cannot hold an item while attacking. If you have Insect Shape, you can instead transform your mouth into wild jaws, an unarmed attack you're trained in that deals {@damage 1d8} piercing damage.",
-						"If you have Elemental Shape, you can morph your body to be partially composed of elemental matter, granting you resistance 5 to critical hits and precision damage.",
-						"If you have Plant Shape, you can morph your arms into long vines, increasing your reach to 10 feet (or 15 feet with a reach weapon).",
-						"If you have Soaring Shape, you can cast the spell as a two-action activity ({@as 2} somatic, verbal) to grow wings from your back. These wings allow you to fly with a fly Speed of 30 feet."
+						"If you have {@feat Wild Shape}, you can morph your hands into wild claws. Your hands transform into incredibly sharp claws. These claws are an unarmed attack you're trained in and deal {@damage 1d6} slashing damage each ({@trait agile}, {@trait finesse}). You can still hold and use items with your hands while they're transformed by this spell, but you cannot hold an item while attacking. If you have Insect Shape, you can instead transform your mouth into wild jaws, an unarmed attack you're trained in that deals {@damage 1d8} piercing damage.",
+						"If you have {@feat Elemental Shape}, you can morph your body to be partially composed of elemental matter, granting you resistance 5 to critical hits and precision damage.",
+						"If you have {@feat Plant Shape}, you can morph your arms into long vines, increasing your reach to 10 feet (or 15 feet with a {@trait reach} weapon).",
+						"If you have {@feat Soaring Shape}, you can cast the spell as a two-action activity ({@as 2} somatic, verbal) to grow wings from your back. These wings allow you to {@action fly} with a fly Speed of 30 feet."
 					]
 				}
 			],
@@ -32036,7 +32036,7 @@
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
-				"You infuse yourself with primal essence and transform yourself into another form. You can polymorph into any form listed in pest form, which lasts 10 minutes. All other wild shape forms last 1 minute. You can add more forms to your wild shape list with druid feats; your feat might grant you some or all of the forms from a given polymorph spell. When you transform into a form granted by a spell, you gain all the effects of the form you chose from a version of the spell heightened to wild shape's level. Wild shape allows you to use your own shapeshifting training more easily than most polymorph spells. When you choose to use your own attack modifier while polymorphed instead of the form's default attack modifier, you gain a +2 status bonus to your attack rolls."
+				"You infuse yourself with primal essence and transform yourself into another form. You can polymorph into any form listed in {@spell pest form}, which lasts 10 minutes. All other wild shape forms last 1 minute. You can add more forms to your wild shape list with druid feats; your feat might grant you some or all of the forms from a given polymorph spell. When you transform into a form granted by a spell, you gain all the effects of the form you chose from a version of the spell heightened to wild shape's level. Wild shape allows you to use your own shapeshifting training more easily than most polymorph spells. When you choose to use your own attack modifier while polymorphed instead of the form's default attack modifier, you gain a +2 status bonus to your attack rolls."
 			],
 			"heightened": {
 				"heightened": true,
@@ -32044,7 +32044,7 @@
 				"x": [
 					{
 						"level": 2,
-						"entry": "You can also wild shape into the forms listed in animal form."
+						"entry": "You can also wild shape into the forms listed in {@spell animal form}."
 					}
 				],
 				"no_x": null

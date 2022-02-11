@@ -327,13 +327,12 @@
 					"unit": "action"
 				},
 				"components": "envision",
-				"requirements": "You're trained in",
+				"requirements": "You're trained in {@skill Intimidation}.",
 				"frequency": null,
 				"trigger": null
 			},
 			"category": "Talisman",
 			"entries": [
-				"{@skill Intimidation}.",
 				"This wide strip of treated lizard hide is wrapped around the grip or stock of the affixed weapon, augmenting the unease that your gunshot creates. When you activate it, you fire your gun into the air with the effects of Warning Shot (page 112). If you already have the Warning Shot feat, the target doesn't become temporarily immune to your {@action Demoralize}, potentially allowing you to {@action Demoralize} them again."
 			],
 			"generic": false,
@@ -355,7 +354,9 @@
 			},
 			"usage": "attached to firearm (firing mechanism)",
 			"bulk": "\u2014",
-			"appliesTo": ["Weapon"],
+			"appliesTo": [
+				"Weapon"
+			],
 			"category": "Modification",
 			"subCategory": "Firing Mechanism",
 			"entries": [
@@ -636,7 +637,9 @@
 				"frequency": null,
 				"trigger": null
 			},
-			"ammunition": "any",
+			"ammunition": [
+				"any"
+			],
 			"category": "Consumable",
 			"entries": [
 				"The components of this ammunition emit a strong smell when combined during its activation. A creature hit by an activated aromatic ammunition gains a distinct odor for up to 1 hour or until the scent is washed off (requiring at least a gallon of water and 10 minutes of scrubbing). Any creatures within 30 feet smell the target, allowing even those with a weak sense of smell to detect its presence, and all creatures gain a +1 item bonus to {@action Track} the affected creature for as long as it has the odor. A creature that has imprecise or precise scent doubles the range at which they can detect the target using their scent compared to the normal range of their scent."
@@ -666,7 +669,9 @@
 				"frequency": null,
 				"trigger": null
 			},
-			"ammunition": "rounds|G&G|round",
+			"ammunition": [
+				"Dose or Round of Black Powder|G&G|round"
+			],
 			"category": "Consumable",
 			"entries": [
 				"These bullets are formed from a liquefied high-grade precious metal and enchanted to unlock that metal's true potential. Each version has a different special effect."
@@ -721,38 +726,6 @@
 				}
 			},
 			"consumable": true
-		},
-		{
-			"name": "Backpack Ballista",
-			"source": "G&G",
-			"page": 62,
-			"type": "Item",
-			"level": 1,
-			"traits": [
-				"Uncommon"
-			],
-			"category": "no category found",
-			"entries": [
-				"This complex wooden device, worn on the back, contains a miniature ballista on a retractable arm. As an {@action Interact} action, you can pull a lever to deploy or retract the ballista. As long as it remains deployed, you must hold the ballista using that hand or some of the components spill out onto the ground, just like dropping any other weapon. While deployed, the device opens and raises the ballista up over your shoulder. While retracted, the ballista and its mount slide down and are {@condition concealed} within the device. Although a backpack ballista packs a punch, the device is a challenge to operate. Reloading it takes 1 minute and can't be done while worn. As normal, you can't wear a backpack ballista with another backpack."
-			],
-			"generic": false,
-			"consumable": false
-		},
-		{
-			"name": "Backpack Catapult",
-			"source": "G&G",
-			"page": 63,
-			"type": "Item",
-			"level": 1,
-			"traits": [
-				"Uncommon"
-			],
-			"category": "no category found",
-			"entries": [
-				"This wooden device is worn on the back and contains a miniature catapult mounted on a retractable frame. As an {@action Interact} action, you can pull a lever to deploy or retract the catapult. As long as it remains deployed, you must hold the catapult using that hand or some of the components spill out onto the ground, just like dropping any other weapon. While deployed, the device opens and raises the catapult up over your shoulder. While retracted, the catapult and its mount slide down and are {@condition concealed} within the device. A backpack catapult fires specialized stone spheres that are loaded into the bucket while unworn and retracted, through a sliding hatch; the reloading process takes 1 minute. To prevent misfires and accidental injury, the bucket fully encloses the stone while deployed, only opening when fired. As normal, you can't wear a backpack catapult with another backpack."
-			],
-			"generic": false,
-			"consumable": false
 		},
 		{
 			"name": "Ballista",
@@ -907,12 +880,11 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": "{@action Interact}"
 			},
-			"ammunition": "rounds|G&G|round",
+			"ammunition": [
+				"Dose or Round of Black Powder|G&G|rounds"
+			],
 			"category": "Consumable",
 			"entries": [
 				"Black powder is a volatile and explosive alchemical substance commonly used in the production of firearm munitions.",
@@ -926,7 +898,8 @@
 					"level": 0,
 					"entries": [
 						"The smallest unit of black powder that still has a simple use, a dose can be a simple package paper parcel around black powder or it can be packaged with a metal bullet or pellet to be used as ammunition. When ignited with a fuse or exposed to direct flame, a dose of black powder explodes. This isn't powerful enough to deal damage but makes a loud sound and could trigger further explosions. A fuse for a dose can be created with a few twists of paper and causes the dose to explode the round after it's lit."
-					]
+					],
+					"activate": null
 				},
 				{
 					"type": "horn",
@@ -937,6 +910,7 @@
 						"amount": 5,
 						"note": null
 					},
+					"ammunition": null,
 					"entries": [
 						"A horn contains 500 doses worth of black powder. A horn can be detonated by leaving a small trail of black powder and then lighting it. Each 5-foot square requires one dose of black powder to create a trail through. As long as the horn is mostly full (at least 400 doses remaining) it can be detonated to deal {@damage 1d6} fire damage in a 5-foot burst (DC 16 basic Reflex save). It takes 1 round per 15 feet of powder trail laid down for a horn to detonate after the trail is lit. If multiple horns detonate simultaneously, it can increase the area of the explosion, but the damage in overlapping areas doesn't increase."
 					]
@@ -950,6 +924,7 @@
 						"amount": 50,
 						"note": null
 					},
+					"ammunition": null,
 					"entries": [
 						"A keg contains 5,000 doses of black powder and can be detonated in the same way as a horn. As long as the keg is mostly full (at least 4,000 doses remaining) this deals {@damage 3d6} fire damage in a 20-foot burst (DC 20 basic Reflex save). Detonating multiple kegs can increase the area, but not the damage, of this effect; detonating a keg and any horns at the same time in an overlapping area also doesn't increase the damage."
 					]
@@ -1906,8 +1881,7 @@
 				"This leather holster is crafted to better hide small firearms from view. Only firearms designed for use in one hand are small enough to disguise with this holster. You gain a +1 item bonus to {@skill Stealth} checks and DCs to hide or conceal a {@filter firearm|items||Hands=1|Group=Firearm} or {@item hand crossbow} in this holster."
 			],
 			"craftReq": null,
-			"generic": false,
-			"variants": null
+			"generic": false
 		},
 		{
 			"name": "Cryomister",
@@ -2105,22 +2079,6 @@
 				}
 			],
 			"consumable": true
-		},
-		{
-			"name": "Dart Umbrella",
-			"source": "G&G",
-			"page": 63,
-			"type": "Item",
-			"level": 0,
-			"traits": [
-				"Uncommon"
-			],
-			"category": "no category found",
-			"entries": [
-				"This umbrella fires tiny blowgun darts from its ferrule with a twist of the handle. The darts are loaded into the shaft, and though the damage they deal is minimal, the dart umbrella is an inconspicuous weapon easy to slip past inspections."
-			],
-			"generic": false,
-			"consumable": false
 		},
 		{
 			"name": "Day Goggles",
@@ -2339,7 +2297,9 @@
 				"frequency": null,
 				"trigger": null
 			},
-			"ammunition": "rounds|G&G|round",
+			"ammunition": [
+				"Dose or Round of Black Powder|G&G|round"
+			],
 			"category": "Consumable",
 			"entries": [
 				"The night sky seems contained in this glass projectile.",
@@ -2482,8 +2442,7 @@
 				"These small pieces of cloth and stuffing have been crafted to dramatically muffle sound and easily slide into and out of the ear canals of humanoid creatures. You can insert or remove earplugs from your ears or a willing creature's ears with a single {@action Interact} action using one hand. They take a \u20132 circumstance penalty to all {@trait auditory} {@skill Perception} checks but also gain a +2 circumstance bonus to saving throws against {@trait auditory} effects."
 			],
 			"craftReq": null,
-			"generic": false,
-			"variants": null
+			"generic": false
 		},
 		{
 			"name": "Electrocable",
@@ -2617,7 +2576,9 @@
 				"frequency": null,
 				"trigger": null
 			},
-			"ammunition": "rounds|G&G|round",
+			"ammunition": [
+				"Dose or Round of Black Powder|G&G|round"
+			],
 			"category": "Consumable",
 			"entries": [
 				"Eroding bullets cast a faint green glow, and smell like the sicklysweet organic gases that rise from corpses. Handling an eroding bullet without gloves deals 1 point of acid damage and leaves the putrid scent coated on your fingers. Upon Striking an enemy, the glass casing inside the bullet bursts, releasing a splattering of bubbling green acid that coats the target. The target takes {@damage 2d6} {@condition persistent damage ||persistent acid damage} in addition to the damage normally dealt by the attack."
@@ -2862,7 +2823,9 @@
 				"frequency": null,
 				"trigger": null
 			},
-			"ammunition": "any",
+			"ammunition": [
+				"any"
+			],
 			"category": "Consumable",
 			"entries": [
 				"This ammunition includes a small reservoir of a tacky red substance that coats the ammunition when you activate it. The substance makes a creature bleed more freely. For 1 minute after you deal damage to a creature with an activated exsanguinating ammunition that creature gains the listed weakness to {@condition persistent damage ||persistent bleed damage}. In addition, the DC of any flat checks to end {@condition persistent damage ||persistent bleed damage} increases from 15 to 17 (from 10 to 12 when receiving particularly effective assistance) for the duration."
@@ -2982,7 +2945,9 @@
 				"frequency": null,
 				"trigger": null
 			},
-			"ammunition": "rounds|G&G|round",
+			"ammunition": [
+				"Dose or Round of Black Powder|G&G|round"
+			],
 			"category": "Consumable",
 			"entries": [
 				"These bullets are seaweed-green, refract light like an emerald, and are covered in a thin film of gray-green powder. When fired, a fairy bullet creates an effect that functions as the {@spell glitterdust} spell in a line between you and your target. This line can be no more than 60 feet long, so if the target is more than 60 feet away from you, the line simply ends after reaching its maximum distance. Since the fairy bullet is fired before the glitterdust can reveal the target, the effects don't affect the flat check for the attack roll with the fairy bullet."
@@ -3064,8 +3029,7 @@
 				"This kit contains cleaning cloth, oil, small steel brushes, and other minor tools necessary for proper cleaning and maintenance of a firearm. Without a firearm cleaning kit, you can't perform the necessary tasks during your daily preparations to ensure that your firearm isn't at risk of misfiring under normal use conditions."
 			],
 			"craftReq": null,
-			"generic": false,
-			"variants": null
+			"generic": false
 		},
 		{
 			"name": "Firedrake",
@@ -3547,7 +3511,9 @@
 				"frequency": null,
 				"trigger": null
 			},
-			"ammunition": "rounds|G&G|round",
+			"ammunition": [
+				"Dose or Round of Black Powder|G&G|round"
+			],
 			"category": "Consumable",
 			"entries": [
 				"These cartridges are filled with sticky clear glue. When a glue bullet hits, a syrupy webbing coats the target and sticks to the ground or a nearby surface, hindering their movement. The target takes a \u201310-foot circumstance penalty to its Speeds for {@dice 2d4} rounds, or until it Escapes against a DC of 18. On a critical hit, the target is also {@condition immobilized} until it Escapes."
@@ -4271,22 +4237,6 @@
 			"consumable": true
 		},
 		{
-			"name": "Injection Spear",
-			"source": "G&G",
-			"page": 63,
-			"type": "Item",
-			"level": 0,
-			"traits": [
-				"Uncommon"
-			],
-			"category": "no category found",
-			"entries": [
-				"A hollow receptacle inside this spear's head can store a single dose of poison. A sliding trigger along the spear's shaft can inject the loaded poison into a damaged target."
-			],
-			"generic": false,
-			"consumable": false
-		},
-		{
 			"name": "Instant Spy",
 			"source": "G&G",
 			"page": 70,
@@ -4638,8 +4588,9 @@
 		},
 		{
 			"name": "Magnetite Scope",
-
-			"appliesTo": ["Weapon"],
+			"appliesTo": [
+				"Weapon"
+			],
 			"source": "G&G",
 			"page": 181,
 			"type": "Item",
@@ -4652,7 +4603,6 @@
 			"bulk": "L",
 			"category": "Modification",
 			"subCategory": "Scope",
-
 			"entries": [
 				"More of a field projector than a scope, this small cylinder of magnetite has been enchanted to spread and accelerate the shrapnel of a scatter weapon further than the weapon's natural capabilities. Furthermore, some of the floating magnetite inside the scope's structure can help you when attempting to determine the your allies' locations. The magnetite scope grants you a +2 item bonus to {@skill Survival} checks to {@action Sense Direction} when using the scope to assist you in navigating. This scope can only be attached to firearms with the scatter trait.",
 				{
@@ -4676,8 +4626,9 @@
 			"variants": [
 				{
 					"type": "magnetite Scope",
-
-			"appliesTo": ["Weapon"],
+					"appliesTo": [
+						"Weapon"
+					],
 					"level": 9,
 					"price": {
 						"coin": "gp",
@@ -4688,8 +4639,9 @@
 				},
 				{
 					"type": "greater magnetite Scope",
-
-			"appliesTo": ["Weapon"],
+					"appliesTo": [
+						"Weapon"
+					],
 					"level": 17,
 					"price": {
 						"coin": "gp",
@@ -4705,7 +4657,6 @@
 		},
 		{
 			"name": "Magnifying Scope",
-
 			"source": "G&G",
 			"page": 181,
 			"type": "Item",
@@ -4718,8 +4669,9 @@
 			"bulk": "L",
 			"category": "Modification",
 			"subCategory": "Scope",
-
-			"appliesTo": ["Weapon"],
+			"appliesTo": [
+				"Weapon"
+			],
 			"entries": [
 				"These scopes use magically enhanced lenses to extend the range of your weapon and help spot distant foes. The scope grants you a +1 item bonus to visual {@skill Perception} checks to {@action Seek} creatures through the scope.",
 				{
@@ -4743,8 +4695,9 @@
 			"variants": [
 				{
 					"type": "magnifying Scope",
-
-			"appliesTo": ["Weapon"],
+					"appliesTo": [
+						"Weapon"
+					],
 					"level": 3,
 					"price": {
 						"coin": "gp",
@@ -4755,8 +4708,9 @@
 				},
 				{
 					"type": "greater magnifying Scope",
-
-			"appliesTo": ["Weapon"],
+					"appliesTo": [
+						"Weapon"
+					],
 					"level": 9,
 					"price": {
 						"coin": "gp",
@@ -4769,8 +4723,9 @@
 				},
 				{
 					"type": "major magnifying Scope",
-
-			"appliesTo": ["Weapon"],
+					"appliesTo": [
+						"Weapon"
+					],
 					"level": 17,
 					"price": {
 						"coin": "gp",
@@ -4940,7 +4895,9 @@
 				"frequency": null,
 				"trigger": null
 			},
-			"ammunition": "rounds|G&G|round",
+			"ammunition": [
+				"Dose or Round of Black Powder|G&G|round"
+			],
 			"category": "Consumable",
 			"entries": [
 				"This craggy stone ammunition is warm to the touch. When you fire an activated meteor shot, it explodes into a small swarm of meteors as it reaches its target, scorching nearby creatures and littering the ground with rubble. In addition to the weapon's normal damage, the meteor shot deals fire damage and the ground in the area becomes {@quickref difficult terrain||3|terrain}.",
@@ -5213,22 +5170,6 @@
 			"consumable": false
 		},
 		{
-			"name": "Pantograph Gauntlet",
-			"source": "G&G",
-			"page": 63,
-			"type": "Item",
-			"level": 0,
-			"traits": [
-				"Uncommon"
-			],
-			"category": "no category found",
-			"entries": [
-				"A pantograph gauntlet is a heavy, fist-like weight, mounted on an extendable frame and attached to your outer arm with a series of leather straps. The frame's set of mechanical linkages connected at various hinges allow movements to propagate across the frame based on reshaping parallelograms, further {@condition controlled} by a crossbar grasped in your hand. A pantograph gauntlet is driven by your own motion and mirrors your arm's movements\u2014a punch thrown with your fist moves the pantograph, extending the weight out at a rapid speed to land blows up to 10 feet away. In some regions, such as Alkenstar and Ustalav, pantograph gauntlets are occasionally constructed entirely of metal and fashioned in the likeness of oversized arms, incorporating a complex system of gears or a miniature steam engine in place of the simpler pantograph mechanism."
-			],
-			"generic": false,
-			"consumable": false
-		},
-		{
 			"name": "Paper Shredder",
 			"source": "G&G",
 			"page": 88,
@@ -5409,7 +5350,7 @@
 						"d% Wondrous Effect 1\u20132 The pistol casts phantom steed (4th level) to produce a pale horse adjacent to you; only you can ride it.",
 						"3 The target becomes a shiny metal color (bronze, copper, or iron) and any sound or speech becomes tinny and robotic in nature; this effect lasts 1 month.",
 						"4\u20135 The pistol casts dimensional anchor.",
-						"6 Modify memory (6th level) causes the target to forget you ever existed; you can't Sustain the Spell.",
+						"6 Modify memory (6th level) causes the target to forget you ever existed; you can't {@action Sustain a Spell||Sustain the Spell}.",
 						"7\u201313 A short rod protrudes from the pistol and unfurls a small flag that reads \"Bang!\". The pistol can't be fired until the flag is removed, which requires a single {@action Interact} action.",
 						"14\u201316 You are pushed 30 feet directly away from the target; if you hit an object or creature, you stop, but take falling damage equal to the distance you moved (if you hit a creature, it takes the same amount of falling damage)",
 						"17\u201319 The target is pushed 30 feet directly away from you; if it hits an object or creature, it stops, but takes falling damage equal to the distance it moved (if it hits another creature, the other creature takes the same amount of falling damage)",
@@ -5499,8 +5440,7 @@
 				"While gunslingers have many methods for practicing their aim, these sturdy paper targets are excellent for tracking a gunslinger's progress over time, keeping score of how close they came to hitting the most vital spots. These targets are also used in situations where more detailed accuracy must be recorded, such as firearm competitions. Practice targets can appear in many shapes and sizes and usually come in packs of 10 held in protective cases made of heavy cloth or light leather."
 			],
 			"craftReq": null,
-			"generic": false,
-			"variants": null
+			"generic": false
 		},
 		{
 			"name": "Printing Press",
@@ -5619,57 +5559,50 @@
 			"consumable": false
 		},
 		{
-			"name": "Repeating Crossbow",
+			"name": "Repeating Magazine",
 			"source": "G&G",
-			"page": 64,
-			"type": "Item",
-			"level": 0,
-			"traits": [
-				"Uncommon"
-			],
-			"category": "no category found",
+			"page": 63,
+			"equipment": true,
+			"type": "Equipment",
+			"traits": [],
+			"price": {
+				"coin": "sp",
+				"amount": 9,
+				"note": "(price for 5 bolts)"
+			},
+			"bulk": "L",
+			"shieldStats": null,
+			"activate": null,
+			"onset": null,
+			"ammunition": null,
+			"group": "Bow",
+			"category": "Ammunition",
 			"entries": [
-				"This crossbow has an internal chamber that can be loaded with up to five bolts. An automated catch mechanism at the top of the flight groove, just in front of the latch, locks the bowstring and launches bolts with the pull of a trigger."
+				"{@note For use with repeating crossbows.}"
 			],
-			"generic": false,
-			"consumable": false
+			"generic": "G",
+			"variants": [
+				{
+					"type": "Crossbow",
+					"name": "Repeating Crossbow Magazine",
+					"entries": []
+				},
+				{
+					"type": "Hand Crossbow",
+					"name": "Repeating Hand Crossbow Magazine",
+					"entries": []
+				},
+				{
+					"type": "Heavy Crossbow",
+					"name": "Repeating Heavy Crossbow Magazine",
+					"entries": []
+				}
+			]
 		},
 		{
-			"name": "Repeating Hand Crossbow",
+			"name": "Backpack Ballista Bolts",
 			"source": "G&G",
-			"page": 64,
-			"type": "Item",
-			"level": 0,
-			"traits": [
-				"Uncommon"
-			],
-			"category": "no category found",
-			"entries": [
-				"This handheld crossbow features an ingeniously designed catch mechanism at the top of the flight groove, just in front of the latch, which automatically loads a bolt from a magazine and resets the string each time the weapon is fired. A typical repeating hand crossbow magazine holds five bolts."
-			],
-			"generic": false,
-			"consumable": false
-		},
-		{
-			"name": "Repeating Heavy Crossbow",
-			"source": "G&G",
-			"page": 64,
-			"type": "Item",
-			"level": 0,
-			"traits": [
-				"Uncommon"
-			],
-			"category": "no category found",
-			"entries": [
-				"This large crossbow has an internal chamber that can be loaded with up to five bolts. While it uses the same automated catch mechanism as other repeating crossbows, a repeating heavy crossbow's design has significant trade-offs. It has increased range and damage and is easier to learn how to use, but requires a small amount of effort to reload."
-			],
-			"generic": false,
-			"consumable": false
-		},
-		{
-			"name": "Rounds",
-			"source": "G&G",
-			"page": 151,
+			"page": 63,
 			"equipment": true,
 			"type": "Equipment",
 			"traits": [],
@@ -5678,18 +5611,43 @@
 				"amount": 1,
 				"note": "(price for 10)"
 			},
-			"bulk": null,
+			"bulk": 1,
 			"shieldStats": null,
 			"activate": null,
 			"onset": null,
 			"ammunition": null,
+			"group": "Bow",
 			"category": "Ammunition",
 			"entries": [
-				"Firearms require ammunition consisting of a projectile and black powder. A round of ammo can vary in its composition but is typically either a prepackaged paper cartridge, including wadding, bullet, and black powder, or loose shot packed in manually. Some weapons, like hand cannons and blunderbusses, can fire other materials, but their ammunition has the same Price due to the cost of the black powder. Because making rounds of firearm ammunition requires creating black powder, you need the {@feat Alchemical Crafting} skill feat to make them. Firearm rounds are a valid option for magical ammunition, just like arrows or bolts. {@skill Crafting} magical firearm ammunition requires you to be able to craft both alchemical and magical items."
+				"{@note For use with the {@item Backpack Ballista|G&G}."
 			],
 			"craftReq": null,
-			"generic": false,
-			"variants": null
+			"generic": false
+		},
+		{
+			"name": "Backpack Catapult Stones",
+			"source": "G&G",
+			"page": 63,
+			"equipment": true,
+			"type": "Equipment",
+			"traits": [],
+			"price": {
+				"coin": "sp",
+				"amount": 1,
+				"note": "(price for 10)"
+			},
+			"bulk": 1,
+			"shieldStats": null,
+			"activate": null,
+			"onset": null,
+			"ammunition": null,
+			"group": "Sling",
+			"category": "Ammunition",
+			"entries": [
+				"{@note For use with the {@item Backpack Catapult|G&G}."
+			],
+			"craftReq": null,
+			"generic": false
 		},
 		{
 			"name": "Rowan Rifle",
@@ -5709,7 +5667,7 @@
 			"entries": [
 				"In a dense forest within Arcadia, djezet fell from the sky millennia ago, even before Earthfall. While this metal was poisonous to most of the plant life growing nearby, one stubborn rowan tree refused to die, its roots slowly absorbing djezet in small particles from the ground until the entire plant was suffused with it. Fey bowyers discovered the remarkable plant and coaxed it into growing into a very particular shape, its branching trunks woven together into a tightly twisted and naturally rifled barrel.",
 				"One of the legendary star guns, Arcadia's greatest treasures, the Rowan Rifle is a +2 greater fearsome speed greater striking (Advanced Player's Guide 260) advanced firearm with a range of increment of 300 feet. It deals {@damage 1d8} fire damage and has the backstabber, concussive, and fatal d12 traits.",
-				"As a star gun, the Rowan Rifle runs on magic, and doesn't use ammunition or black powder. As a weapon forged to protect the fey peoples of Arcadia, the Rowan Rifle's enchantments prevent it from ever causing harm to a creature with the {@trait fey} trait; any attempt to shoot a fey with it results in an automatic misfire. This legendary star gun is as much a badge of office as a weapon, as it denotes dominion over all Briarbough. If the Rowan Rifle's wielder is fey, or if they were specifically given the Rowan Rifle by a fey creature who recognized them as a worthy champion, they can use the following activations.",
+				"As a star gun, the Rowan Rifle runs on magic, and doesn't use ammunition or {@item black powder}. As a weapon forged to protect the fey peoples of Arcadia, the Rowan Rifle's enchantments prevent it from ever causing harm to a creature with the {@trait fey} trait; any attempt to shoot a fey with it results in an automatic misfire. This legendary star gun is as much a badge of office as a weapon, as it denotes dominion over all Briarbough. If the Rowan Rifle's wielder is fey, or if they were specifically given the Rowan Rifle by a fey creature who recognized them as a worthy champion, they can use the following activations.",
 				{
 					"type": "ability",
 					"activity": {
@@ -5808,8 +5766,9 @@
 			"bulk": "L",
 			"category": "Modification",
 			"subCategory": "Scope",
-
-			"appliesTo": ["Weapon"],
+			"appliesTo": [
+				"Weapon"
+			],
 			"entries": [
 				"The dwarven gunsmiths of Dongun Hold originally created these scopes to help them clear out vermin in underground areas. This scope captures the sound that echoes off a creature hit by the firearm and transforms it into light, illuminating the target for all to see.",
 				{
@@ -5853,8 +5812,9 @@
 			"bulk": "L",
 			"category": "Modification",
 			"subCategory": "Scope",
-
-			"appliesTo": ["Weapon"],
+			"appliesTo": [
+				"Weapon"
+			],
 			"entries": [
 				"The scope of truth is a bit bigger than most to accommodate larger lenses, which have been magically prepared with tiny shards from crystal balls to reveal the truth. The scope grants you a +2 item bonus to {@skill Perception} checks made to {@action Seek} in areas you can see through the scope.",
 				{
@@ -6063,13 +6023,12 @@
 					"unit": "action"
 				},
 				"components": "envision",
-				"requirements": "You're an expert in",
+				"requirements": "You're an expert in {@skill Intimidation} and the affixed weapon is loaded.",
 				"frequency": null,
 				"trigger": null
 			},
 			"category": "Talisman",
 			"entries": [
-				"{@skill Intimidation} and the affixed weapon is loaded.",
 				"This dried skull of a snake is mounted atop the firearm's barrel or affixed to a crossbow's stock. When activated, the skull crawls onto the ammunition loaded in the affixed weapon. If you {@action Strike} with the weapon before the end of your turn, the skull lets out a bloodcurdling scream as the ammunition approaches its target. Regardless of whether the {@action Strike} is a success, the screaming skull allows you to attempt to {@action Demoralize} the target as well as each enemy within 30 feet of the target."
 			],
 			"generic": false,
@@ -6097,8 +6056,7 @@
 				"One of the more prolifically used devices developed in the infamous Alkenstar Gunworks, these small firearm components are capable of muffling most of the weapons' explosive sound when fired. Without a silencer, a firearm's shot makes a loud and distinctive bang, which can easily be heard through doors and thin walls, but firearms equipped with silencers only make a quiet noise when fired. Due to engineering constraints, a silencer can't be attached to any firearm with the {@trait scatter} trait. Attaching a silencer to a firearm takes 1 minute, and the silencer is consumed the first time a shot is fired through it."
 			],
 			"craftReq": null,
-			"generic": false,
-			"variants": null
+			"generic": false
 		},
 		{
 			"name": "Silencing Shot",
@@ -6126,7 +6084,9 @@
 				"frequency": null,
 				"trigger": null
 			},
-			"ammunition": "any",
+			"ammunition": [
+				"any"
+			],
 			"category": "Consumable",
 			"entries": [
 				"This shimmering, golden-hued ammunition never makes any sound. A creature hit by a silencing shot is subject to the effects of a 4th-level {@spell silence} spell (DC 25)."
@@ -6710,7 +6670,9 @@
 				"frequency": null,
 				"trigger": null
 			},
-			"ammunition": "rounds|G&G|round",
+			"ammunition": [
+				"Dose or Round of Black Powder|G&G|round"
+			],
 			"category": "Consumable",
 			"entries": [
 				"A series of small stone discs pressed into a single round make up this ammunition. When you fire an activated stepping stone shot, whether you hit or miss your target, the shot creates a series of supports in a line that creatures can walk on as if solid ground. The line can ascend or descend at a 45-degree angle. The discs support any amount of weight, but don't otherwise pose any sort of obstacle; creatures and attacks can move through them if they wish. They crumble to dust if anything attempts to move or otherwise manipulate them. A creature can use a two-action activity, which has the {@trait manipulate} trait, to {@action Stride} up to its speed on the stones while causing them to crumble behind it. This ammunition does not work in firearms with the {@trait scatter} trait. The maximum length of the line depends on the type of ammunition. However, the line also can't extend beyond the maximum distance for a {@action Strike} from your firearm (usually six times the firearm's range increment)."
@@ -7205,8 +7167,7 @@
 				"Tripods are designed for use with kickback weapons, as a way for gunslingers with lower strength to accurately use these more powerful weapons by sacrificing mobility instead. They can be set up and attached to a firearm with a single {@action Interact} action using one hand, setting the tripod in your square. While this sturdy piece of engineering is in use, you don't take the \u20132 penalty for firing a {@trait kickback} weapon, even if your Strength isn't high enough to avoid the penalty. However, you must retrieve the tripod with a single {@action Interact} action before you can move the firearm to a different position. Normally, when you're {@condition hidden} or {@condition undetected}, you become {@condition observed} if you do anything except {@action Hide}, {@action Sneak}, or {@action Step}. However, deploying or retrieving a tripod with an {@action Interact} action doesn't automatically make you {@condition observed}, so long as you don't set up or remove the tripod when it's in a spot where creatures can see the tripod itself."
 			],
 			"craftReq": null,
-			"generic": false,
-			"variants": null
+			"generic": false
 		},
 		{
 			"name": "Trustworthy Round",
@@ -7234,7 +7195,9 @@
 				"frequency": null,
 				"trigger": null
 			},
-			"ammunition": "any",
+			"ammunition": [
+				"any"
+			],
 			"category": "Consumable",
 			"entries": [
 				"This ammunition was developed in Dongun Hold to minimize casualties to {@condition friendly} fire, and is always marked by a burnished copper head or tip so it can be easily identified. Before you can fire a trustworthy round, you must call out a target. You don't need to specify a name; the target could be \"The angry tiger attacking our group on the left.\" The round will only hit the specified target and will turn to gossamer dust midair if it misses the intended target or comes into contact with anything else; this also prevents abilities that redirect attacks. The round doesn't have any capabilities beyond your own to determine whether someone is who you think they are, so you can't use it to determine a disguised creature's identity.",
@@ -7242,24 +7205,6 @@
 			],
 			"generic": false,
 			"consumable": true
-		},
-		{
-			"name": "Umbrella Injector",
-			"source": "G&G",
-			"page": 64,
-			"type": "Item",
-			"level": 0,
-			"traits": [
-				"Uncommon"
-			],
-			"category": "no category found",
-			"entries": [
-				"This umbrella's ferrule is a hollow-tipped blade three to four inches in length and often overlooked as decorative.",
-				"A receptacle inside the umbrella's shaft can be loaded with a single dose of injury poison and injected into a damaged target with the pull of a sliding trigger. Reinforced ribs enable you to parry and deflect blows with the umbrella's tear-resistant canopy.",
-				"Combat Gear The following pieces of combat gear aren't weapons themselves, though several enable you to deploy other weapons in innovative ways."
-			],
-			"generic": false,
-			"consumable": false
 		},
 		{
 			"name": "Underwater Firing Mechanism",
@@ -7279,7 +7224,9 @@
 			"usage": "attached to firearm (firing mechanism)",
 			"bulk": "\u2014",
 			"category": "Modification",
-			"appliesTo": ["Weapon"],
+			"appliesTo": [
+				"Weapon"
+			],
 			"subCategory": "Firing Mechanism",
 			"entries": [
 				"This device replaces the attached firearm's normal firing mechanism (normally, most of the guns in this chapter use a flintlock or matchlock firing mechanism). When the firearm's wielder fires the weapon, a small rune etched on a piece of stone affixed inside the mechanism releases a magical spark that's propelled through the firing mechanism and into the firearm, launching its bullet. An underwater firing mechanism allows the attached firearm to be fired underwater or in other conditions that would normally prevent the ignition of black powder. Attaching an underwater firing mechanism to a firearm takes 1 hour, though this time can overlap with the standard time required to maintain and clean your firearm to prevent misfires.",
@@ -7352,8 +7299,7 @@
 				"This buttoned, leather case protects a firearm and up to 6 rounds of ammunition from being damaged by water or other environmental effects."
 			],
 			"craftReq": null,
-			"generic": false,
-			"variants": null
+			"generic": false
 		},
 		{
 			"name": "Wind-up Cart",
@@ -7440,7 +7386,6 @@
 		},
 		{
 			"name": "Darkvision Scope",
-
 			"source": "G&G",
 			"page": 180,
 			"type": "Item",
@@ -7453,8 +7398,9 @@
 			"bulk": "L",
 			"category": "Modification",
 			"subCategory": "Scope",
-
-			"appliesTo": ["Weapon"],
+			"appliesTo": [
+				"Weapon"
+			],
 			"entries": [
 				"These scopes, popular with snipers and other sneaky sharpshooters who ply their trade in the dead of night, incorporate clouded crystals with magical properties into their design. While relatively useless under normal lighting conditions, these crystals can help bring things into focus when used in dim light. The scope is then given an enchantment to enhance these properties for use in Magnifying Scope"
 			],

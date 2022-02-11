@@ -414,13 +414,17 @@
 				{
 					"type": "ability",
 					"activity": {
-						"number": 1,
-						"unit": "varies",
-						"entry": "{@as 2} {@action Interact} (emotion, enchantment,"
+						"number": 2,
+						"unit": "action"
 					},
 					"components": [
+						"{@action Interact}"
+					],
+					"traits": [
+						"emotion",
+						"enchantment",
 						"mental",
-						"visual)"
+						"visual"
 					],
 					"frequency": "once per day",
 					"trigger": null,
@@ -546,7 +550,9 @@
 			],
 			"usage": "etched onto a weapon",
 			"category": "Rune",
-			"appliesTo": ["Weapon"],
+			"appliesTo": [
+				"Weapon"
+			],
 			"entries": [
 				"This rune prevents enemies from escaping your grasp by {@condition fleeing} to other planes. If you critically hit a target with an anchoring weapon, the weapon casts dimensional anchor on the target (DC 27, counteract modifier +17)."
 			],
@@ -826,7 +832,9 @@
 				"frequency": null,
 				"trigger": null
 			},
-			"ammunition": "sling bullet",
+			"ammunition": [
+				"sling bullet"
+			],
 			"category": "Consumable",
 			"entries": [
 				"A big rock bullet is a sling bullet made of heavy granite, but each piece of ammunition feels much more dense than it appears. When activated, a big rock bullet transforms into a giant rock just before hitting the target. The target takes {@damage 4d6} additional bludgeoning damage on a successful hit. Even on a failed attack roll (but not a critical failure), the target takes {@damage 2d6} bludgeoning damage. Creatures with the {@ability Catch Rock} reaction can use it against a big rock bullet."
@@ -923,7 +931,9 @@
 			},
 			"usage": "etched onto armor",
 			"category": "Rune",
-			"appliesTo": ["Armor"],
+			"appliesTo": [
+				"Armor"
+			],
 			"entries": [
 				"While you wear this acrid armor, any creature that Engulfs you or Swallows you Whole is {@condition sickened|CRB|sickened 1}; if it spends an action retching to reduce the {@condition sickened} condition, you can attempt to {@action Escape} as a reaction."
 			],
@@ -1033,7 +1043,9 @@
 				"frequency": null,
 				"trigger": null
 			},
-			"ammunition": "bolt",
+			"ammunition": [
+				"bolt"
+			],
 			"category": "Consumable",
 			"entries": [
 				"The head of this bolt is a vented container that smells strongly of caustic pepper. When an activated blindpepper bolt hits a target, it deals no damage; instead the creature must attempt a DC 17 Fortitude save. If the {@action Strike} was a critical success, the target takes a \u20132 circumstance penalty to its Fortitude save. At the GM's discretion, a creature with no eyes or olfactory organs might not be affected by this item.",
@@ -1316,7 +1328,9 @@
 			"source": "LOTGB",
 			"page": 104,
 			"type": "Item",
-			"appliesTo": ["Armor"],
+			"appliesTo": [
+				"Armor"
+			],
 			"level": 1,
 			"traits": [
 				"Uncommon",
@@ -1333,7 +1347,19 @@
 			"subCategory": "Armor",
 			"entries": [
 				"These highly polished metal plates can be added to any armor. While wearing armor with burnished plating, you gain the Sunshine! reaction. However, you take a \u20134 circumstance penalty to {@skill Stealth} checks except in darkness, and your armor's Strength entry increases its value by 2, requiring you to have a higher Strength score to overcome the armor's penalties. Even if you meet your armor's new Strength entry, you still take the penalty to {@skill Stealth} checks. When you are critically hit by an attack that deals bludgeoning damage, burnished plating stops working until someone spends 10 minutes repairing and polishing it; this doesn't require a {@skill Crafting} check.",
-				"Sunshine! {@as R} Trigger A creature you can see targets you with an attack; Requirements You are in an area of bright light; Effect You twist to reflect light in your foe's eyes. The attacking creature must succeed at a DC {@flatDC 3} flat check or the attack fails. The attacker doesn't need to roll this flat check if it has a precise sense other than vision or if it would already need to roll a flat check with a higher DC to target you, such as if you are {@condition concealed} or {@condition hidden}."
+				{
+					"type": "ability",
+					"name": "Sunshine!",
+					"activity": {
+						"unit": "reaction",
+						"number": 1
+					},
+					"trigger": "A creature you can see targets you with an attack",
+					"requirements": "You are in an area of bright light",
+					"entries": [
+						"You twist to reflect light in your foe's eyes. The attacking creature must succeed at a DC {@flatDC 3} flat check or the attack fails. The attacker doesn't need to roll this flat check if it has a precise sense other than vision or if it would already need to roll a flat check with a higher DC to target you, such as if you are {@condition concealed} or {@condition hidden}."
+					]
+				}
 			],
 			"generic": false,
 			"consumable": false
@@ -1780,7 +1806,9 @@
 			],
 			"usage": "etched onto a bludgeoning weapon",
 			"category": "Rune",
-			"appliesTo": ["Weapon"],
+			"appliesTo": [
+				"Weapon"
+			],
 			"entries": [
 				"Weapons with this rune empower your strength, and attacks with these weapons leave your foe staggered. When you critically hit a target with this weapon, your target becomes {@condition clumsy|CRB|clumsy 1} and {@condition enfeebled|CRB|enfeebled 1} until the end of your next turn."
 			],
@@ -1890,7 +1918,9 @@
 			},
 			"usage": "etched onto armor",
 			"category": "Rune",
-			"appliesTo": ["Armor"],
+			"appliesTo": [
+				"Armor"
+			],
 			"entries": [
 				"These symbols fortify your body's grasp on your soul, keeping it tethered when death approaches.",
 				{
@@ -2686,7 +2716,9 @@
 			"bulk": "\u2014",
 			"category": "Modification",
 			"subCategory": "Shield",
-			"appliesTo": ["Shield"],
+			"appliesTo": [
+				"Shield"
+			],
 			"entries": [
 				"This variant on the shield boss is usually shaped like a dragon's head, its jaws open wide enough to wedge a small vessel of liquid within. A dragon's crest can be etched with weapon runes, much like a shield boss or shield spikes, but doesn't otherwise alter your shield's statistics. A shield bearing a dragon's crest can't be combined with an attached weapon, like shield spikes.",
 				"You can use an {@action Interact} action to wedge an alchemical bomb into the crest's jaws. While a bomb is wedged in the shield, you take a \u20131 penalty to attack rolls with the shield.",
@@ -2751,7 +2783,9 @@
 			],
 			"usage": "etched onto armor",
 			"category": "Rune",
-			"appliesTo": ["Armor"],
+			"appliesTo": [
+				"Armor"
+			],
 			"entries": [
 				"Eerie symbols cover your armor, inspiring terror in your foes. {@condition Frightened} enemies within 30 feet that can see you must attempt a DC 20 Will save at the end of their turn; on a failure, the value of their {@condition frightened} condition doesn't decrease below 1 that turn."
 			],
@@ -2984,7 +3018,9 @@
 			},
 			"usage": "etched onto a weapon",
 			"category": "Rune",
-			"appliesTo": ["Weapon"],
+			"appliesTo": [
+				"Weapon"
+			],
 			"entries": [
 				"A weapon with this rune can absorb energy damage to empower it.",
 				{
@@ -3122,7 +3158,9 @@
 				"frequency": null,
 				"trigger": null
 			},
-			"ammunition": "Arrow",
+			"ammunition": [
+				"Arrow"
+			],
 			"category": "Consumable",
 			"entries": [
 				"This arrow splits at the far end of the shaft into five branching arrowheads, making it impractical for single targets but deadly in combat.",
@@ -3386,7 +3424,9 @@
 			],
 			"usage": "etched onto a melee weapon",
 			"category": "Rune",
-			"appliesTo": ["Weapon"],
+			"appliesTo": [
+				"Weapon"
+			],
 			"entries": [
 				"When etched with this rune, a weapon's hilt or haft becomes engraved with grooves that match the imprints of a wolf's teeth. By putting a fanged weapon in your mouth, you can transform into an animal.",
 				{
@@ -3561,7 +3601,7 @@
 						"note": null
 					},
 					"entries": [
-						"These pointed crystal shards embedded in your fingers grant you a fist {@action Strike} that deals {@damage 1d6} piercing damage, is in the brawling group, and has the {@trait magical} and {@trait unarmed} traits. Combat fleshgems can be enhanced with the effects of handwraps of mighty blows, as normal for an unarmed attack."
+						"These pointed crystal shards embedded in your fingers grant you a fist {@action Strike} that deals {@damage 1d6} piercing damage, is in the brawling group, and has the {@trait magical} and {@trait unarmed} traits. Combat fleshgems can be enhanced with the effects of {@item handwraps of mighty blows}, as normal for an unarmed attack."
 					]
 				},
 				{
@@ -3862,7 +3902,9 @@
 			],
 			"usage": "etched onto a weapon",
 			"category": "Rune",
-			"appliesTo": ["Weapon"],
+			"appliesTo": [
+				"Weapon"
+			],
 			"entries": [
 				"Hauling weapons are adept at moving creatures around the battlefield after a successful attack.",
 				{
@@ -3928,7 +3970,9 @@
 			},
 			"usage": "etched onto a weapon",
 			"category": "Rune",
-			"appliesTo": ["Weapon"],
+			"appliesTo": [
+				"Weapon"
+			],
 			"entries": [
 				"A weapon with a hopeful rune exudes positivity. On a critical hit with this weapon, you inspire your comrades, pushing them to fight harder and stand for your shared convictions. Allies within 30 feet that share at least one alignment component with you gain a +1 status bonus to attack rolls until the end of your next turn."
 			],
@@ -4091,7 +4135,9 @@
 			},
 			"usage": "etched onto medium or heavy armor",
 			"category": "Rune",
-			"appliesTo": ["Armor"],
+			"appliesTo": [
+				"Armor"
+			],
 			"entries": [
 				"This substantial rune makes you difficult to hold back.",
 				"Whenever you are affected by an effect that lasts until you {@action Escape} (for instance, from the {@action Grapple} action or a tanglefoot bag), you become {@condition quickened}. You can use the extra action each round only to {@action Step} or {@action Escape}."
@@ -4560,7 +4606,9 @@
 				"frequency": null,
 				"trigger": null
 			},
-			"ammunition": "any",
+			"ammunition": [
+				"any"
+			],
 			"category": "Consumable",
 			"entries": [
 				"Juxtaposition ammunition quivers with anticipation, as if the projectile wishes to constantly be in motion. When an activated juxtaposition ammunition hits a creature, it doesn't deal the {@action Strike}'s normal damage. Instead, the target must succeed at a DC 28 Will save or be teleported to a safe, unoccupied square of your choice within 60 feet of its original position and within the weapon's first range increment. On a critical failure, the target is also {@condition sickened|CRB|sickened 1} from the gut-wrenching sensation of sudden movement. Any relocation from the juxtaposition ammunition is {@quickref forced movement||3|forced movement}."
@@ -6582,7 +6630,9 @@
 			"page": 104,
 			"type": "Item",
 			"level": 0,
-			"appliesTo": ["Armor"],
+			"appliesTo": [
+				"Armor"
+			],
 			"traits": [
 				"Uncommon",
 				"Adjustment"
@@ -6684,7 +6734,9 @@
 				"frequency": null,
 				"trigger": null
 			},
-			"ammunition": "Any",
+			"ammunition": [
+				"Any"
+			],
 			"category": "Consumable",
 			"entries": [
 				"This arrow is made of polished animal horn, with the head of a rhinoceros carved in place of a traditional arrowhead.",
@@ -6878,7 +6930,9 @@
 			"usage": "applied to a shield",
 			"category": "Modification",
 			"subCategory": "Shield",
-			"appliesTo": ["Shield"],
+			"appliesTo": [
+				"Shield"
+			],
 			"entries": [
 				"There are numerous methods to modify shields\u2014snarling rods to catch weapons, bladed edges, padding for nonlethal strikes, and so on\u2014but all share basic functionality. A shield augmentation can be etched with weapon runes, much like a shield boss or shield spikes, but doesn't otherwise alter your shield's statistics. A shield bearing an augmentation can't be combined with an attached weapon, like shield spikes.",
 				"A shield augmentation grants your shield one or more weapon traits, chosen when the augmentation is created. You can either choose to add the {@trait backswing} or {@trait forceful} trait, or you can choose two of the following weapon traits: {@trait disarm}, {@trait nonlethal}, {@trait shove}, {@trait thrown 10 feet}, {@trait trip}, or {@trait versatile S}."
@@ -7286,7 +7340,9 @@
 				"frequency": null,
 				"trigger": null
 			},
-			"ammunition": "arrow, bolt",
+			"ammunition": [
+				"arrow, bolt"
+			],
 			"category": "Consumable",
 			"entries": [
 				"Silencing ammunition is particularly dense and seems to dampen sounds around it. On a successful {@action Strike}, an activated piece of silencing ammunition creates a 2nd-level {@spell silence} effect on the target. The target can resist the effects of the ammunition with a successful DC 25 Will save, though it takes a \u20132 circumstance penalty if the {@action Strike} was a critical hit. While the effect is active, the target can use an {@action Interact} action to try to tug out the arrow or bolt and end the effect early; this requires a successful DC 25 Will save."
@@ -7424,7 +7480,9 @@
 				"frequency": null,
 				"trigger": null
 			},
-			"ammunition": "Any",
+			"ammunition": [
+				"Any"
+			],
 			"category": "Consumable",
 			"entries": [
 				"Singularity ammunition seems to pull in the light around it, swirling along the surface in a misty pattern. An activated singularity arrow creates a strong gravitational force, centered on the creature hit.",
@@ -7463,7 +7521,9 @@
 				"frequency": null,
 				"trigger": null
 			},
-			"ammunition": "bolt",
+			"ammunition": [
+				"bolt"
+			],
 			"category": "Consumable",
 			"entries": [
 				"This azure bolt is carved in the shape of an undulating snake, its bared fangs framing the point of its head. When an activated sky serpent bolt successfully hits a target, the bolt takes the form of a snake made of pure lightning, dealing {@damage 2d12} electricity damage to all creatures in a 30-foot line (DC 19 basic Reflex save) starting from the target.",
@@ -7932,7 +7992,9 @@
 			],
 			"usage": "etched onto armor",
 			"category": "Rune",
-			"appliesTo": ["Armor"],
+			"appliesTo": [
+				"Armor"
+			],
 			"entries": [
 				"These symbols close bloody wounds. Armor with this rune reduces the DC of the flat check to end {@condition persistent damage ||persistent bleed damage} from 15 to 12 (7 with particularly effective assistance)."
 			],
@@ -8114,7 +8176,9 @@
 				"frequency": null,
 				"trigger": null
 			},
-			"ammunition": "arrow, bolt",
+			"ammunition": [
+				"arrow, bolt"
+			],
 			"category": "Consumable",
 			"entries": [
 				"Each piece of stonethroat ammunition is tipped with an unusual yellow stone. When an activated piece of stonethroat ammunition hits a target, the target must attempt a DC 30 Fortitude save.",
@@ -8317,7 +8381,9 @@
 			"level": "1+",
 			"usage": "attached to explorer's clothing",
 			"category": "Modification",
-			"appliesTo": ["Armor"],
+			"appliesTo": [
+				"Armor"
+			],
 			"subCategory": "Armor",
 			"entries": [
 				"These thick, overlapping layers of clothing are coupled with a matching hat, outfitted with mesh netting around its wide brim to keep you safe from insects. You gain resistance 3 to physical damage from swarms. Explorer's clothing altered in this way has a Dexterity cap of +2, check penalty of \u20131, and Speed penalty of \u20135 feet regardless of your Strength."
@@ -8650,7 +8716,9 @@
 				"frequency": null,
 				"trigger": null
 			},
-			"ammunition": "any",
+			"ammunition": [
+				"any"
+			],
 			"category": "Consumable",
 			"entries": [
 				"Transposition ammunition has a milky-white cast and will sometimes shift position subtly of its own accord. When you activate the ammunition, instead of making your {@action Strike} against a foe, you fire transposition ammunition at any unoccupied square you can see within your weapon's first range increment and succeed without making an attack roll. You pull yourself through the Astral Plane, teleporting along with any items you are holding into the square where you shot the ammunition. If this would carry along any other creature (even one in an extradimensional space), the activation fails."
@@ -8696,7 +8764,9 @@
 			"page": 104,
 			"type": "Item",
 			"level": 1,
-			"appliesTo": ["Armor"],
+			"appliesTo": [
+				"Armor"
+			],
 			"traits": [
 				"Uncommon",
 				"Adjustment"
@@ -8711,8 +8781,19 @@
 			"category": "Modification",
 			"subCategory": "Armor",
 			"entries": [
-				"This set of chains is completely covered with spikes and sharp blades. Not balanced for weapon use, twining chains are instead Armor and Weapons wrapped around a user's body as a deterrent to attackers\u2014and, for some, a fashion statement. While wearing twining chains, you gain the Thorns reaction. In addition to their dangers, twining chains' weight also increases your armor's Bulk by 1, Strength entry value by 2, and check penalty by 2.",
-				"Thorns {@as R} Trigger You are hit by an unarmed attack; Effect You twist to harm your attacker with your chains' spikes and blades. Make an attack roll against the triggering attacker using your unarmed attack modifier. On a hit, the attacking creature takes {@damage 1d6} piercing damage. This damage increases to {@dice 2d6} damage if the armor has a +1 potency rune, {@dice 3d6} damage if the armor has a +2 potency rune, or {@dice 4d6} damage if the armor has a +3 potency rune. However, whether you hit or miss, you take piercing damage equal to the number of d6s of piercing damage you would deal your attacker."
+				"This set of chains is completely covered with spikes and sharp blades. Not balanced for weapon use, twining chains are instead wrapped around a user's body as a deterrent to attackers\u2014and, for some, a fashion statement. While wearing twining chains, you gain the Thorns reaction. In addition to their dangers, twining chains' weight also increases your armor's Bulk by 1, Strength entry value by 2, and check penalty by 2.",
+				{
+					"type": "ability",
+					"name": "Thorns",
+					"activity": {
+						"unit": "reaction",
+						"number": 1
+					},
+					"trigger": "You are hit by an unarmed attack",
+					"entries": [
+						"You twist to harm your attacker with your chains' spikes and blades. Make an attack roll against the triggering attacker using your unarmed attack modifier. On a hit, the attacking creature takes {@damage 1d6} piercing damage. This damage increases to {@dice 2d6} damage if the armor has a {@item +1 armor potency||+1 potency} rune, {@dice 3d6} damage if the armor has a {@item +2 armor potency||+2 potency} rune, or {@dice 4d6} damage if the armor has a {@item +3 armor potency||+3 potency} rune. However, whether you hit or miss, you take piercing damage equal to the number of d6s of piercing damage you would deal your attacker."
+					]
+				}
 			],
 			"generic": false,
 			"consumable": false
