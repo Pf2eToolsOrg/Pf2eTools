@@ -176,6 +176,17 @@
 		padding-left: 1em;
 		text-indent: -1em;
 	}
+
+	.pf2-other-source {
+		font-family: 'SabonLTStd', sans-serif;
+		font-size: 1em;
+		text-align: justify;
+		line-height: 1.35em;
+
+		+ .pf2-other-source {
+			text-indent: 1em;
+		}
+	}
 }
 
 .pf2-big-stat {
@@ -542,7 +553,6 @@
 	text-align: left;
 }
 
-
 .pf2-h--collapse {
 	opacity: 40%;
 	position: absolute;
@@ -563,6 +573,11 @@
 	+ .pf2-p {
 		text-indent: 1em;
 	}
+}
+
+.pf2-other-source {
+	margin: 0;
+	padding: 0;
 }
 
 .pf2-table {

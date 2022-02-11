@@ -447,18 +447,17 @@ function Renderer () {
 	this._renderText = function (entry, textStack, meta, options) {
 		entry.entries.forEach(e => this._recursiveRender(e, textStack, meta, {prefix: `<p class="${entry.style || ""}">`, suffix: `</p>`}));
 	};
-	// FIXME: BUG-72: Inconsistent font formatting.
+
 	this._renderEntriesOtherSource = function (entry, textStack, meta, options) {
 		if (entry.entries && entry.entries.length) {
-			// textStack[0] += `<div class="">`;
+			textStack[0] += `<div class="pf2-wrp-other-source mb-3">`;
 			textStack[0] += `<hr class="hr-other-source">`;
 			entry.entries.forEach(e => this._recursiveRender(e, textStack, meta, {
-				prefix: "<p>",
-				suffix: "</p>",
+				prefix: `<p class="pf2-other-source">`,
+				suffix: `</p>`,
 			}));
 			textStack[0] += Renderer.utils.getPageP(entry, {prefix: "\u2014", noReprints: true});
-			// textStack[0] += `</div>`;
-			textStack[0] += `<div class="mt-3"></div>`;
+			textStack[0] += `</div>`;
 		}
 	};
 
