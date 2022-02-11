@@ -177,7 +177,7 @@ class ScaleCreature {
 			"24": [633, 617, 508, 492, 383, 367],
 			"25": [633, 617, 508, 492, 383, 367],
 		};
-		this._regexHealingAbilities = /(healing |regeneration )(\d)+/g;
+		this._regexHealingAbilities = /(healing |regeneration )(\d+)/g;
 		this._LvlResistanceWeakness = {
 			"-1": [1, 1],
 			"0": [3, 1],
