@@ -940,7 +940,7 @@ Parser.timeToFullEntry = function (time) {
 }
 
 Parser.freqToFullEntry = function (freq) {
-	if (freq.special != null) return time.special;
+	if (freq.special != null) return freq.special;
 	freq.number = Parser.numberToText(freq.freq, true)
 	return `${freq.number} ${freq.recurs ? "every" : "per"} ${freq.interval || ""} ${freq.interval >= 2 ? `${freq.unit}s` : freq.customUnit ? freq.customUnit : freq.unit}${freq.overcharge ? ", plus overcharge" : ""}`;
 }
