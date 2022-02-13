@@ -524,19 +524,6 @@ Renderer.dice = {
 	async _pHandleRoll2 (wrpTree, rolledBy, opts) {
 		opts = {...opts};
 
-		if (wrpTree.meta && wrpTree.meta.hasPb) {
-			const userPb = await InputUiUtil.pGetUserNumber({
-				min: 0,
-				int: true,
-				title: "Enter Proficiency Bonus",
-				default: 2,
-				storageKey_default: "dice.playerProficiencyBonus",
-				isGlobal_default: true,
-			});
-			if (userPb == null) return null;
-			opts.pb = userPb;
-		}
-
 		if (Renderer.dice._isManualMode) return Renderer.dice._pHandleRoll2_manual(wrpTree.tree, rolledBy, opts);
 		else return Renderer.dice._pHandleRoll2_automatic(wrpTree.tree, rolledBy, opts);
 	},
@@ -546,7 +533,6 @@ Renderer.dice = {
 	 * @param rolledBy
 	 * @param [opts] Options object.
 	 * @param [opts.fnGetMessage]
-	 * @param [opts.pb] User-entered proficiency bonus, to be propagated to the meta.
 	 */
 	_pHandleRoll2_automatic (tree, rolledBy, opts) {
 		opts = opts || {};
@@ -557,7 +543,6 @@ Renderer.dice = {
 
 		if (tree) {
 			const meta = {};
-			if (opts.pb) meta.pb = opts.pb;
 			const result = tree.evl(meta);
 			const fullHtml = (meta.html || []).join("");
 			const allMax = meta.allMax && meta.allMax.length && !(meta.allMax.filter(it => !it).length);
@@ -832,7 +817,6 @@ Renderer.dice.lang = {
 			braceCount: 0,
 			mode: null,
 			token: "",
-			hasPb: false,
 		};
 
 		str = str
@@ -856,7 +840,7 @@ Renderer.dice.lang = {
 
 		this._lex3_lex(self, str);
 
-		return {lexed: self.tokenStack, lexedMeta: {hasPb: self.hasPb}};
+		return {lexed: self.tokenStack, lexedMeta: {}};
 	},
 
 	_lex3_lex (self, l) {
@@ -931,9 +915,6 @@ Renderer.dice.lang = {
 			case "*": self.tokenStack.push(Renderer.dice.tk.MULT); break;
 			case "/": self.tokenStack.push(Renderer.dice.tk.DIV); break;
 			case "^": self.tokenStack.push(Renderer.dice.tk.POW); break;
-			case "pb": self.tokenStack.push(Renderer.dice.tk.PB); self.hasPb = true; break;
-			case "summonspelllevel": self.tokenStack.push(Renderer.dice.tk.SUMMON_SPELL_LEVEL); self.hasSummonSpellLevel = true; break;
-			case "summonclasslevel": self.tokenStack.push(Renderer.dice.tk.SUMMON_CLASS_LEVEL); self.hasSummonClassLevel = true; break;
 			case "floor": self.tokenStack.push(Renderer.dice.tk.FLOOR); break;
 			case "ceil": self.tokenStack.push(Renderer.dice.tk.CEIL); break;
 			case "round": self.tokenStack.push(Renderer.dice.tk.ROUND); break;
@@ -1047,12 +1028,6 @@ Renderer.dice.lang = {
 			}
 
 			return new Renderer.dice.parsed.Factor(self.lastAccepted);
-		} else if (this._parse3_accept(self, Renderer.dice.tk.PB)) {
-			return new Renderer.dice.parsed.Factor(Renderer.dice.tk.PB);
-		} else if (this._parse3_accept(self, Renderer.dice.tk.SUMMON_SPELL_LEVEL)) {
-			return new Renderer.dice.parsed.Factor(Renderer.dice.tk.SUMMON_SPELL_LEVEL);
-		} else if (this._parse3_accept(self, Renderer.dice.tk.SUMMON_CLASS_LEVEL)) {
-			return new Renderer.dice.parsed.Factor(Renderer.dice.tk.SUMMON_CLASS_LEVEL);
 		} else if (
 			// Single-arg functions
 			this._parse3_match(self, Renderer.dice.tk.FLOOR)
@@ -1299,7 +1274,6 @@ Renderer.dice.tk.SUB = Renderer.dice.tk._new("SUB", "-");
 Renderer.dice.tk.MULT = Renderer.dice.tk._new("MULT", "*");
 Renderer.dice.tk.DIV = Renderer.dice.tk._new("DIV", "/");
 Renderer.dice.tk.POW = Renderer.dice.tk._new("POW", "^");
-Renderer.dice.tk.PB = Renderer.dice.tk._new("PB", "pb");
 Renderer.dice.tk.FLOOR = Renderer.dice.tk._new("FLOOR", "floor");
 Renderer.dice.tk.CEIL = Renderer.dice.tk._new("CEIL", "ceil");
 Renderer.dice.tk.ROUND = Renderer.dice.tk._new("ROUND", "round");
@@ -1715,10 +1689,6 @@ Renderer.dice.parsed = {
 					if (this._hasParens) this.addToMeta(meta, ")");
 					return out;
 				}
-				case Renderer.dice.tk.PB.type: {
-					this.addToMeta(meta, this.toString(meta));
-					return meta.pb == null ? 0 : meta.pb;
-				}
 				default: throw new Error(`Unimplemented!`);
 			}
 		}
@@ -1728,7 +1698,6 @@ Renderer.dice.parsed = {
 			switch (this._node.type) {
 				case Renderer.dice.tk.TYP_NUMBER: out = this._node.value; break;
 				case Renderer.dice.tk.TYP_SYMBOL: out = this._node.toString(); break;
-				case Renderer.dice.tk.PB.type: out = this.meta ? (this.meta.pb || 0) : "PB"; break;
 				default: throw new Error(`Unimplemented!`);
 			}
 			return this._hasParens ? `(${out})` : out;

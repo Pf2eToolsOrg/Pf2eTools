@@ -218,7 +218,7 @@ class ArchetypesPage extends BaseComponent {
 
 	_addFeatsData (feats) {
 		if (!(feats.feat && feats.feat.length)) return false;
-		const arcFeats = feats.feat.filter(f => !!f.featType.archetype)
+		const arcFeats = feats.feat.filter(f => f.featType && f.featType.archetype)
 		arcFeats.forEach(f => {
 			const isExcluded = ExcludeUtil.isExcluded(UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_FEATS](f), "feat", f.source);
 			this._featFilter.mutateAndAddToFilters(f, isExcluded)
@@ -251,6 +251,8 @@ class ArchetypesPage extends BaseComponent {
 					const [lvl, name, source] = ft.split("|");
 					const hash = UrlUtil.encodeForHash([name, source]);
 					const mutateExtraFeat = (feat) => {
+						// FIXME:
+						feat.featType = feat.featType || {};
 						feat.featType.archetype = typeof feat.featType.archetype === "object" ? feat.featType.archetype : [];
 						feat.featType.archetype.push(arc.name);
 						feat._fType = ["Archetype"];

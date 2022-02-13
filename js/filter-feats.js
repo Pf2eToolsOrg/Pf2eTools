@@ -37,11 +37,11 @@ class PageFilterFeats extends PageFilter {
 	}
 
 	mutateForFilters (feat) {
+		if (feat.featType == null) feat.featType = {};
 		feat._fSources = SourceFilter.getCompleteFilterSources(feat);
 		feat._slPrereq = Renderer.stripTags(feat.prerequisites || `\u2014`).uppercaseFirst();
 		feat._fTraits = feat.traits.map(t => Parser.getTraitName(t));
 		if (!feat._fTraits.map(t => Renderer.trait.isTraitInCategory(t, "Rarity")).some(Boolean)) feat._fTraits.push("Common");
-		if (feat.featType == null) feat.featType = {};
 
 		feat._fType = [];
 		if (Renderer.trait.filterTraitsByCats(feat._fTraits, ["Ancestry & Heritage"]).length) feat._fType.push("Ancestry");
@@ -62,6 +62,12 @@ class PageFilterFeats extends PageFilter {
 		if (feat.special != null) feat._fMisc.push("Has Special");
 		if (feat.leadsTo && feat.leadsTo.length) feat._fMisc.push("Leads to...");
 		if (feat.featType.variant === true) feat._fMisc.push("Variant");
+		// FIXME: Temporary workaround until prerequisites data changes
+		if (feat.prerequisites) {
+			const regExpSkills = /{@skill (.*?)[}|]/g;
+			feat.featType.skill = feat.featType.skill || [];
+			feat.featType.skill.push(...[...feat.prerequisites.matchAll(regExpSkills)].map(m => m[1]));
+		}
 	}
 
 	addToFilters (feat, isExcluded) {
