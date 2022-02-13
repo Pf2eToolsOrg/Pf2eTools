@@ -2024,7 +2024,7 @@
 							"page": 214,
 							"name": "Animal Companions",
 							"entries": [
-								"An animal companion is a loyal comrade who follows your orders without you needing to use Handle an Animal on it. Your animal companion has the minion trait, and it gains 2 actions during your turn if you use the Command an Animal action to command it; this is in place of the usual effects of Command an Animal. If your companion dies, you can spend a week of downtime to replace it at no cost. You can have only one animal companion at a time.",
+								"An animal companion is a loyal comrade who follows your orders without you needing to use Handle an Animal on it. Your animal companion has the minion trait, and it gains 2 actions during your turn if you use the {@action Command an Animal} action to command it; this is in place of the usual effects of {@action Command an Animal}. If your companion dies, you can spend a week of downtime to replace it at no cost. You can have only one animal companion at a time.",
 								{
 									"type": "pf2-h3",
 									"page": 214,
@@ -2103,7 +2103,7 @@
 									"page": 214,
 									"name": "Companion Types",
 									"entries": [
-										"The species of animal you choose is called your companion's type. Each companion type has its own statistics. The Size entry indicates your companion's starting size as a young animal companion. Following the size entry are the companion's unarmed attacks, and then its ability modifiers. The Hit Points entry indicates the companion's ancestry Hit Points. The Skill entry indicates an additional trained skill your companion has. The Senses entry lists your companion's special senses. The Speed entry gives your companion's Speeds. The Special entry, if present, lists any other special abilities your companion has, for example whether it often serves as a mount and is particularly appropriate for mounted classes, such as the champion.",
+										"The species of animal you choose is called your {@filter companion's type|companionsfamiliars||Type=Companion}. Each {@filter companion type|companionsfamiliars||Type=Companion} has its own statistics. The Size entry indicates your companion's starting size as a young animal companion. Following the size entry are the companion's unarmed attacks, and then its ability modifiers. The Hit Points entry indicates the companion's ancestry Hit Points. The Skill entry indicates an additional trained skill your companion has. The Senses entry lists your companion's special senses. The Speed entry gives your companion's Speeds. The Special entry, if present, lists any other special abilities your companion has, for example whether it often serves as a mount and is particularly appropriate for mounted classes, such as the champion.",
 										"The Support Benefit entry indicates a special benefit you gain by {@action Command an Animal||Commanding the Animal} to use the Support action (see below). The Advanced Maneuver entry indicates a powerful new action your companion learns how to use if it becomes a nimble or savage animal companion."
 									]
 								},
@@ -10266,7 +10266,7 @@
 							"page": 304,
 							"name": "Areas",
 							"entries": [
-								"Sometimes a spell has an area, which can be a burst, cone, emanation, or line. The method of measuring these areas can be found on page 456. If the spell originates from your position, the spell has only an area; if you can cause the spell's area to appear farther away from you, the spell has both a range and an area."
+								"Sometimes a spell has an area, which can be a burst, cone, emanation, or line. The method of measuring these areas can be found {@quickref here||3|Areas}. If the spell originates from your position, the spell has only an area; if you can cause the spell's area to appear farther away from you, the spell has both a range and an area."
 							]
 						},
 						{
@@ -10285,7 +10285,7 @@
 							"page": 304,
 							"name": "Line of Effect",
 							"entries": [
-								"You usually need an unobstructed path to the target of a spell, the origin point of an area, or the place where you create something with a spell. {@quickref More information on line of effect.||3|line of effect}"
+								"You usually need an unobstructed path to the target of a spell, the origin point of an area, or the place where you create something with a spell. More information on line of effect can be found {@quickref here||3|line of effect}."
 							]
 						}
 					],
@@ -12478,7 +12478,10 @@
 										"A line shoots forth from you in a straight line in a direction of your choosing. The line affects each creature whose space it overlaps. Unless a line effect says otherwise, it is 5 feet wide. For example, the {@spell lightning bolt} spell's area is a 60-foot line that's 5 feet wide."
 									]
 								}
-							]
+							],
+							"data": {
+								"quickrefIndex": true
+							}
 						},
 						{
 							"type": "pf2-h3",
@@ -13708,14 +13711,14 @@
 									"page": 478,
 									"name": "Mounted Combat",
 									"entries": [
-										"You can ride some creatures into combat. As noted in the {@action Mount} specialty basic action, your mount needs to be at least one size larger than you and willing. Your mount acts on your initiative. You must use the Command an Animal action (page 249) to get your mount to spend its actions. If you don't, the animal wastes its actions. If you have the Ride general feat, you succeed automatically when you Command an Animal that's your mount.",
-										"For example, if you are mounted on a horse and you make three attacks, your horse would remain stationary since you didn't command it. If you instead spent your first action to Command an Animal and succeeded, you could get your mount to Stride. You could spend your next action to attack or to command the horse to attack, but not both.",
+										"You can ride some creatures into combat. As noted in the {@action Mount} specialty basic action, your mount needs to be at least one size larger than you and willing. Your mount acts on your initiative. You must use the {@action Command an Animal} action (page 249) to get your mount to spend its actions. If you don't, the animal wastes its actions. If you have the Ride general feat, you succeed automatically when you {@action Command an Animal} that's your mount.",
+										"For example, if you are mounted on a horse and you make three attacks, your horse would remain stationary since you didn't command it. If you instead spent your first action to {@action Command an Animal} and succeeded, you could get your mount to Stride. You could spend your next action to attack or to command the horse to attack, but not both.",
 										{
 											"type": "pf2-h4",
 											"page": 478,
 											"name": "Mounted Attacks",
 											"entries": [
-												"You and your mount fight as a unit. Consequently, you share a multiple attack penalty. For example, if you Strike and then Command an Animal to have your mount Strike, your mount's attack takes a \u20135 multiple attack penalty.",
+												"You and your mount fight as a unit. Consequently, you share a multiple attack penalty. For example, if you Strike and then {@action Command an Animal} to have your mount Strike, your mount's attack takes a \u20135 multiple attack penalty.",
 												"You occupy every square of your mount's space for the purpose of making your attacks. If you were Medium and on a Large mount, you could attack a creature on one side of your mount, then attack on the opposite side with your next action. If you have a longer reach, the distance depends partly on the size of your mount. On a Medium or smaller mount, use your normal reach. On a Large or Huge mount, you can attack any square adjacent to the mount if you have 5- or 10-foot reach, or any square within 10 feet of the mount (including diagonally) if you have 15-foot reach."
 											]
 										},
