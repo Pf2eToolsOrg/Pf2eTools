@@ -476,7 +476,10 @@
 				"Monk"
 			],
 			"prerequisites": "ki spells",
-			"frequency": "once per hour",
+			"frequency": {
+				"unit": "hour",
+				"freq": 1
+			},
 			"trigger": "You {@action Cast a Spell} that has the {@trait monk} trait.",
 			"entries": [
 				"The power of your ki soothes your wounds and energizes you for battle. You regain Hit Points equal to your level plus your Wisdom modifier."
@@ -514,7 +517,10 @@
 				"Fortune",
 				"Kobold"
 			],
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"trigger": "You attempt a saving throw while adjacent to one or more allies, but you haven't rolled yet.",
 			"entries": [
 				"In stressful circumstances, you find strength in your allies' example. Roll the save using an adjacent ally's modifier for that type of saving throw instead of your own."
@@ -803,7 +809,10 @@
 				"Fortune"
 			],
 			"prerequisites": "{@feat Archaeologist Dedication|APG}",
-			"frequency": "once per hour",
+			"frequency": {
+				"unit": "hour",
+				"freq": 1
+			},
 			"trigger": "You fail a check against a trap, such as a {@skill Thievery} check to Disable the trap or a Reflex save to avoid its effects.",
 			"entries": [
 				"You are more than just skillful; your drive to find the secrets of the past manifests as a strange kind of luck. Reroll the failed check and use the new result."
@@ -974,7 +983,10 @@
 				"Necromancy"
 			],
 			"prerequisites": "{@feat Eldritch Archer Dedication|APG}",
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"entries": [
 				"You modify an arrow or bolt to bring death to your target in a single potent hit. Make a bow {@action Strike}. On a hit, you deal an additional {@damage 10d10} precision damage. On a critical hit, the target must also succeed at a Fortitude saving throw against your class DC or spell DC, whichever is higher, or be immediately slain; this save has the {@trait death} and {@trait incapacitation} traits."
 			]
@@ -1210,7 +1222,12 @@
 				"Elf",
 				"Fortune"
 			],
-			"frequency": "once every 10 minutes",
+			"frequency": {
+				"freq": 1,
+				"unit": "minute",
+				"recurs": true,
+				"interval": 10
+			},
 			"requirements": "You are adjacent to an ally with the {@condition dying} condition.",
 			"entries": [
 				"Though you know that you will eventually outlive your companions, seeing them at death's door brings clarity to your attacks. Make a {@action Strike}. Roll twice on the attack roll and use the higher result."
@@ -1632,7 +1649,10 @@
 				"Primal"
 			],
 			"prerequisites": "{@feat Beastmaster Dedication|APG}, Call Companion",
-			"frequency": "once per turn",
+			"frequency": {
+				"unit": "turn",
+				"freq": 1
+			},
 			"entries": [
 				"You quickly call in a primal projection of a non-active companion to provide the companion's support benefit. The projection arrives in an unoccupied square of your choice within 30 feet of you, grants you its support benefit, and then disappears on your next turn. The projection has the same AC and saving throw modifiers as the real companion, and if it would take any damage before your next turn, it disappears and the support benefit ends immediately."
 			]
@@ -1669,7 +1689,10 @@
 			"traits": [
 				"Oracle"
 			],
-			"frequency": "once per turn",
+			"frequency": {
+				"unit": "turn",
+				"freq": 1
+			},
 			"requirements": "Your most recent action was to cast a noncantrip spell.",
 			"entries": [
 				"You siphon the residual energy from the last spell you cast into one weapon you're wielding. Until the end of your turn, the weapon deals an extra {@dice 1d6} damage of a type depending on the school of the spell you just cast.",
@@ -1755,7 +1778,10 @@
 				"Misfortune",
 				"Occult"
 			],
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"trigger": "A creature within 30 feet you can see would succeed at a save.",
 			"entries": [
 				"You hiss a spiteful curse at the creature. The target must reroll the triggering saving throw and use the worse result."
@@ -1899,7 +1925,11 @@
 				"Metamagic"
 			],
 			"prerequisites": "{@feat Blessed One Dedication|APG}, ability to cast spells from spell slots, {@feat Mercy}",
-			"frequency": "once per 10 minutes",
+			"frequency": {
+				"unit": "minute",
+				"interval": 10,
+				"freq": 1
+			},
 			"entries": [
 				"When you focus your magic on an ally, you can remove harmful conditions. If your next action is to {@action Cast a Spell} from a spell slot, and that spell targets only a single ally, you can also attempt to remove a harmful condition from that ally. The condition must be one that could be removed by your {@feat Mercy} feat, including those granted by later feats such as {@feat Greater Mercy}. Attempt a {@quickref counteract|CRB|3|counteracting} check based on the spell's DC and level. This effect is in addition to the normal effects of your spell."
 			]
@@ -2055,7 +2085,10 @@
 			"traits": [
 				"Human"
 			],
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"trigger": "You lose the {@condition dying} condition.",
 			"entries": [
 				"You recover from near-death experiences with astounding resilience. Don't increase the value of your {@condition wounded} condition due to losing the {@condition dying} condition."
@@ -2195,7 +2228,10 @@
 				"Flourish"
 			],
 			"prerequisites": "{@feat Marshal Dedication|APG}",
-			"frequency": "once per minute",
+			"frequency": {
+				"unit": "minute",
+				"freq": 1
+			},
 			"entries": [
 				"You call out a quick cadence, guiding your allies into a more efficient rhythm. Each willing ally within your marshal's aura is {@condition quickened} until the end of their next turn, and they can use the extra action only to {@action Stride}. At the end of each ally's turn, if they used the extra action, they then become {@condition slowed 1} until the end of their following turn."
 			],
@@ -2344,7 +2380,10 @@
 				"Catfolk",
 				"Fortune"
 			],
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"trigger": "You fail a Reflex saving throw.",
 			"entries": [
 				"You instinctively twist away from danger. You can reroll the triggering saving throw and use the better result."
@@ -2373,7 +2412,10 @@
 				"Emotion",
 				"Mental"
 			],
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"trigger": "An ally within 30 feet would be reduced to 0 HP but not immediately killed.",
 			"entries": [
 				"You give a daring yowl in the face of adversity, calling your companion back from the brink of unconsciousness. Your ally isn't knocked out and remains at 1 Hit Point. Your ally's {@condition wounded} condition still increases by 1 as though they had been {@condition dying} and recovered."
@@ -2655,7 +2697,10 @@
 				"Morph",
 				"Transmutation"
 			],
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"entries": [
 				"With effort, you can call forth magical wings from your back, similar in appearance to those of your celestial forebears.",
 				"These wings remain for 10 minutes. You gain a fly Speed equal to your Speed while you've manifested your wings."
@@ -2895,7 +2940,10 @@
 				"Poison"
 			],
 			"prerequisites": "{@feat Cobra Stance|APG}, expert in unarmed attacks",
-			"frequency": "once per minute",
+			"frequency": {
+				"unit": "minute",
+				"freq": 1
+			},
 			"requirements": "You are in Cobra Stance.",
 			"entries": [
 				"You lash out with devious intent and the power to envenom your foe. Make a cobra fang {@action Strike}. Your reach with this {@action Strike} is 5 feet greater than normal. If this {@action Strike} hits, the target takes {@damage 1d4} {@condition persistent damage ||persistent poison damage} per weapon damage die."
@@ -3103,7 +3151,10 @@
 				"Skill"
 			],
 			"prerequisites": "master in {@skill Nature}, {@skill Occultism}, or {@skill Religion}",
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"entries": [
 				"You have learned rites or meditations that enable you to perceive minor, {@condition invisible} spirits within a place. Choose {@skill Nature}, {@skill Occultism}, or {@skill Religion} when you select this feat.",
 				"{@skill Nature} allows you to contact the spirits of nature that form leshies, who are born of pure life essence rather than spiritual energy and can answer questions about natural features like the location of nearby water or plant life.",
@@ -3795,7 +3846,10 @@
 			"traits": [
 				"Champion"
 			],
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"trigger": "You begin your turn and have no Focus Points in your pool.",
 			"entries": [
 				"You call out to your deity in a plea for their aid. You instantly recover 1 Focus Point."
@@ -4839,7 +4893,10 @@
 				"Divine",
 				"Tengu"
 			],
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"trigger": "A creature within 60 feet uses a {@trait fortune} or {@trait misfortune} effect.",
 			"entries": [
 				"As someone tries to twist fate, you consume the interference.",
@@ -5317,7 +5374,10 @@
 				"Abjuration",
 				"Sorcerer"
 			],
-			"frequency": "once per turn",
+			"frequency": {
+				"unit": "turn",
+				"freq": 1
+			},
 			"requirements": "Your most recent action was to cast a non-cantrip spell that dealt energy damage.",
 			"entries": [
 				"You trap energy from the last spell you cast within your body, coating your flesh in a protective ward. Until the start of your next turn, you gain resistance 5 to one type of energy damage dealt by the spell you just cast."
@@ -5336,7 +5396,10 @@
 				"Champion"
 			],
 			"prerequisites": "You've sworn to an oath against a specific type of creature.",
-			"frequency": "once per hour",
+			"frequency": {
+				"unit": "hour",
+				"freq": 1
+			},
 			"entries": [
 				"You call on your oath to embolden you in combat. When you Enforce your Oath, select one creature you can see that you've sworn to defeat as part of your oath. You gain a +1 status bonus to AC and saves against attacks and effects by the chosen creature. You also gain a +1 status bonus to attack rolls against the chosen creature. However, your dedication to Enforcing your Oath draws your focus away from all other foes. While you are Enforcing your Oath, you take a \u20131 status penalty to AC, attack rolls, and saves against all other creatures until you stop Enforcing your Oath.",
 				"You stop Enforcing your Oath once the chosen creature is reduced to 0 Hit Points or offers a legitimate surrender to you or your allies. You immediately stop Enforcing your Oath if you are {@condition unconscious} or if the chosen creature goes {@condition unnoticed} by you for more than 1 minute. You can also stop Enforcing your Oath at any time during your turn as a free action."
@@ -6093,7 +6156,10 @@
 				"Tiefling",
 				"Transmutation"
 			],
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"entries": [
 				"You can strain to call forth bat-like or otherwise fiendish wings from your back, similar in appearance to those of your fiendish ancestors. Once manifested, these wings remain for 10 minutes. You gain a fly Speed equal to your land Speed while you've manifested your wings."
 			],
@@ -6474,7 +6540,10 @@
 				"Metamagic",
 				"Oracle"
 			],
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"entries": [
 				"You've learned to forestall the effects of your curse somewhat.",
 				"If the next action you use is to cast a revelation spell, the severity of your curse doesn't increase."
@@ -6514,7 +6583,10 @@
 				"Polymorph",
 				"Transmutation"
 			],
-			"frequency": "once per hour",
+			"frequency": {
+				"unit": "hour",
+				"freq": 1
+			},
 			"entries": [
 				"You can transform into a harmless bat. You gain the effects of a 4th-level {@spell pest form}, except you always transform into a bat."
 			]
@@ -7267,7 +7339,10 @@
 				"Additive 2",
 				"Alchemist"
 			],
-			"frequency": "once per round",
+			"frequency": {
+				"unit": "round",
+				"freq": 1
+			},
 			"trigger": "You craft an elixir of life using {@action Quick Alchemy}, and that elixir is at least 2 levels lower than your advanced alchemy level.",
 			"entries": [
 				"By adding a special catalyst, you transform a healing elixir into a topical projectile. You grant the elixir the {@trait bomb} trait.",
@@ -7332,7 +7407,10 @@
 				"Human",
 				"Mental"
 			],
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"entries": [
 				"The blood of heroes courses through your veins, and you inspire your allies to dig deep and find a new level of resolve. You grant up to 10 willing creatures within 30 feet the effects of a 6th-level {@spell zealous conviction}, though the effect automatically ends on a target if you give that target a command they would normally find repugnant. This action has the {@trait auditory} trait or {@trait visual} trait, depending on how you inspire your allies."
 			]
@@ -7486,7 +7564,10 @@
 			"traits": [
 				"Gnome"
 			],
-			"frequency": "twice per week",
+			"frequency": {
+				"freq": 2,
+				"unit": "week"
+			},
 			"entries": [
 				"The connection between you and the First World resonates within your body stronger than it does for most gnomes, allowing you to cross the threshold between the Material Plane and the First World. You gain plane shift as a primal innate spell. You can cast it twice per week. This can be used only to travel back and forth between the First World and the Material Plane. Due to your body's natural resonance, you can act as the spell focus, and you don't require a tuning fork."
 			]
@@ -8065,7 +8146,10 @@
 				"Visual"
 			],
 			"prerequisites": "at least one arcane or occult innate spell gained from a gnome heritage or gnome ancestry feat",
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"trigger": "You are attacked by a foe.",
 			"entries": [
 				"The magic within you manifests as a natural reaction to threats. You gain the effects of mirror image but with two images instead of three. The tradition of this action matches the tradition of your gnome ancestry options."
@@ -8292,7 +8376,10 @@
 				"Monk"
 			],
 			"prerequisites": "ki spells, {@feat Master of Many Styles}",
-			"frequency": "once per minute",
+			"frequency": {
+				"unit": "minute",
+				"freq": 1
+			},
 			"entries": [
 				"You center yourself with the universe and draw upon its vast power. You cast a single action ki spell with the {@trait stance} trait, without spending a Focus Point."
 			]
@@ -8856,7 +8943,10 @@
 				"Transmutation"
 			],
 			"prerequisites": "{@feat Eldritch Archer Dedication|APG}",
-			"frequency": "once per round",
+			"frequency": {
+				"unit": "round",
+				"freq": 1
+			},
 			"entries": [
 				"You imbue your ammunition with eldritch power. When you select this feat, choose three types of {@filter common magical ammunition of 4th level or lower from the Core Rulebook or this book|items||Sources=CRB,APG|Rarity=Common|Type=Ammunition|Level=[0;4]}. Your GM might allow you to choose from other types of magical ammunition, such as uncommon ammunition, or ammunition from other books.",
 				"When using Magic Arrow, you transform a non-magical arrow or bolt into a piece of ammunition of one type you chose. You must shoot the ammunition before the end of your turn or the magic dissipates. If the ammunition has an Activate entry, you still need to spend the required actions to activate the ammunition before shooting it. When you use Magic Arrow, you can choose a type of magical ammunition that is typically not available to the type of ammunition you're using\u2014for example, you can use climbing bolt on an arrow, even though that magical ammunition is normally only found on bolts."
@@ -10348,7 +10438,10 @@
 				"Flourish"
 			],
 			"prerequisites": "{@feat Martial Artist Dedication|APG}",
-			"frequency": "once per minute",
+			"frequency": {
+				"unit": "minute",
+				"freq": 1
+			},
 			"entries": [
 				"With a burst of effort, you weave a path through your enemies, striking each in turn as you move past them. You {@action Stride}; this movement doesn't trigger reactions. You can {@action Strike} up to three times at any point during your movement, each against a different enemy. Each attack counts toward your multiple attack penalty, but your multiple attack penalty doesn't increase until you have made all your attacks."
 			]
@@ -10533,7 +10626,10 @@
 				"Magical"
 			],
 			"prerequisites": "{@feat Eldritch Archer Dedication|APG}",
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"entries": [
 				"You can concentrate an immense amount of magic to create a piece of ammunition that phases through everything but your target. Make a bow {@action Strike} against a foe who is {@condition observed} or {@condition hidden} to you (but not {@condition undetected}). The ammunition travels to your target in a straight line, passing through any non-magical barriers or walls in its way, though magical barriers stop the arrow. The shot ignores all cover, the {@condition concealed} condition, the {@condition hidden} condition, and circumstance bonuses to AC from shields. It has a +4 status bonus to hit creatures wearing any type of armor. The {@action Strike}'s damage can't be reduced with a {@feat Shield Block} reaction using a non-magical shield."
 			]
@@ -11068,7 +11164,10 @@
 				"Cleric",
 				"Fortune"
 			],
-			"frequency": "once per hour",
+			"frequency": {
+				"unit": "hour",
+				"freq": 1
+			},
 			"trigger": "You fail a saving throw against a {@trait mental} effect.",
 			"entries": [
 				"Your deity sends you a vision of faith to steel you against mental attacks. Reroll the triggering saving throw with a +2 circumstance bonus. You must use the second result, even if it's worse."
@@ -11301,7 +11400,10 @@
 				"Ratfolk"
 			],
 			"prerequisites": "{@feat Cheek Pouches|APG}",
-			"frequency": "once per round",
+			"frequency": {
+				"unit": "round",
+				"freq": 1
+			},
 			"entries": [
 				"You are adept at quickly moving items into your cheek pouches. You {@action Interact} to store one held item in your cheek pouches (provided it fits)."
 			]
@@ -11339,7 +11441,10 @@
 				"Metamagic",
 				"Oracle"
 			],
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"entries": [
 				"If your next action is to cast an oracle cantrip or an oracle spell that is at least 2 levels lower than the highest-level oracle spell you can cast, reduce the number of actions to cast it by 1 (minimum 1 action)."
 			]
@@ -11359,7 +11464,10 @@
 				"Metamagic",
 				"Witch"
 			],
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"entries": [
 				"If your next action is to cast a witch cantrip or a witch spell that is at least 2 levels lower than the highest-level witch spell you can cast, reduce the number of actions to cast it by 1 (minimum 1 action)."
 			]
@@ -11557,7 +11665,10 @@
 			"traits": [
 				"Gnome"
 			],
-			"frequency": "once per hour",
+			"frequency": {
+				"unit": "hour",
+				"freq": 1
+			},
 			"trigger": "You blind or dazzle a creature.",
 			"entries": [
 				"You've spent considerable time practicing the manipulation of light, weaponizing your blade's reflection or bolstering the luminosity of magical displays to unconventional heights.",
@@ -11717,7 +11828,10 @@
 				"Fortune",
 				"Goblin"
 			],
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"entries": [
 				"Despite a lifetime filled with questionable decisions, you've managed to survive, as though you have uncanny luck that lets you avoid the consequences of your own actions. For the remainder of your turn, if you roll a failure or critical failure on a saving throw against a harmful effect, you get a success instead. Further, enemies and hazards that would damage you this turn roll the minimum possible damage.",
 				"These benefits apply only to harmful effects incurred entirely during your turn in which you activate Reckless Abandon, such as running through a prismatic wall. {@condition Persistent damage} and conditions that were applied prior to your turn proceed normally, and as soon as your turn ends you are subject to the full consequences of any dangers still threatening you."
@@ -11845,7 +11959,10 @@
 				"Metamagic"
 			],
 			"prerequisites": "harmful font or healing font",
-			"frequency": "once per hour",
+			"frequency": {
+				"unit": "hour",
+				"freq": 1
+			},
 			"entries": [
 				"If your next action is to use your divine font to cast a 3-action {@spell heal} or {@spell harm} spell to damage creatures, you can harness the residual energy to counterbalance opposing forces. You use your {@spell heal} or {@spell harm} spell to attempt to counteract one effect in the spell's area with the chaotic, evil, {@trait good}, or {@trait lawful} trait. The chosen trait must oppose one component of your deity's alignment; if your deity is neutral, you can choose any one trait."
 			]
@@ -12905,7 +13022,10 @@
 				"Halfling"
 			],
 			"prerequisites": "legendary {@skill Stealth}",
-			"frequency": "once per hour",
+			"frequency": {
+				"unit": "hour",
+				"freq": 1
+			},
 			"trigger": "You successfully use {@skill Stealth} to {@action Hide} and become {@condition hidden} from all your current foes, or use {@skill Stealth} to {@action Sneak} and become {@condition undetected} to all your current foes.",
 			"entries": [
 				"With a powerful talent for misdirection, you slip from your adversaries' notice so thoroughly you appear to be somewhere else. You become {@condition invisible} for 1 minute or until you take a {@condition hostile} action, whichever comes first. Choose a location within 10 feet of you. Until your invisibility ends, you appear to be {@condition hidden} in that location to anyone trying to find you. If the searcher gets clear evidence that you're not there, they no longer think you're {@condition hidden} there, but they don't discover your actual location."
@@ -13254,7 +13374,10 @@
 			"traits": [
 				"Witch"
 			],
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"requirements": "You haven't acted yet on your turn.",
 			"entries": [
 				"You draw upon the reservoir of your patron's magic that resides within your familiar. During your turn, you can cast one spell your familiar knows that was granted by your patron's theme or lessons without spending a spell slot to do so (or even having it prepared). The spell must be at least 1 level lower than the highest-level spell you can cast."
@@ -13489,7 +13612,10 @@
 				"Transmutation"
 			],
 			"prerequisites": "skyborn tengu heritage",
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"entries": [
 				"To be a tengu is to be unburdened by the concerns of the world below. You grow a pair of magical wings or expand your existing ones. For 5 minutes, you gain a fly Speed equal to your land Speed or 20 feet, whichever is greater."
 			],
@@ -13784,7 +13910,10 @@
 				"Fortune"
 			],
 			"prerequisites": "spirit instinct",
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"trigger": "You fail, but don't critically fail, a {@skill Perception} check or a skill check.",
 			"entries": [
 				"Though no one sees them and only you can hear them, the spirits around you constantly chatter, save when you are {@action Rage|CRB|raging}. Sometimes they're even {@condition helpful}. You can heed the spirits' guidance to reroll the triggering check, using the second result even if it's worse."
@@ -14468,7 +14597,10 @@
 			"traits": [
 				"Cleric"
 			],
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"trigger": "An ally you can see falls to 0 Hit Points.",
 			"entries": [
 				"When an ally you can see falls in battle, your fight or flight response triggers a surge in your deity's might within you. You instantly regain 1 Focus Point."
@@ -14563,7 +14695,10 @@
 			"traits": [
 				"Investigator"
 			],
-			"frequency": "once per hour",
+			"frequency": {
+				"unit": "hour",
+				"freq": 1
+			},
 			"trigger": "A foe takes a {@condition hostile} action against you in combat.",
 			"entries": [
 				"Sometimes something intrudes upon your case unexpectedly, such as an ambush sent to bring your investigation to a close. You've learned how to compartmentalize your main lead and pursue a new one for your current predicament.",
@@ -15410,7 +15545,10 @@
 				"Attack"
 			],
 			"prerequisites": "{@feat Acrobat Dedication|APG}",
-			"frequency": "once per minute",
+			"frequency": {
+				"unit": "minute",
+				"freq": 1
+			},
 			"requirements": "Your most recent action was to {@action Tumble Through} or Tumbling {@action Strike}, and you successfully moved through an enemy's space.",
 			"entries": [
 				"You use a burst of stamina to perform a breathtaking feat of {@skill Acrobatics} as you speed through a foe's space, leaving your foe lying flat on their back. You attempt to {@action Trip} the enemy whose space you moved through. You can use {@skill Acrobatics} instead of {@skill Athletics} for this check."
@@ -16245,7 +16383,10 @@
 				"Uncommon",
 				"Investigator"
 			],
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"entries": [
 				"You carefully consider your case and narrow down some of the details. When you {@action Pursue a Lead|APG}, you can spend 10 minutes instead of 1 minute to ask two questions of the GM as you complete the activity. The GM must answer truthfully with \"yes\" or \"no,\" though if the answer would be misleading or have no practical application to your investigation the GM can answer \"immaterial.\" You can't use Whodunnit? more than once for the same lead, even across different days.",
 				"Your questions must come from the following list, applying to either the creature or the clue you found:",

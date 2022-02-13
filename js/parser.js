@@ -16,7 +16,7 @@ Parser._parse_bToA = function (abMap, b) {
 	}
 	return b;
 };
-Parser.numberToText = function (number) {
+Parser.numberToText = function (number, freq) {
 	if (number == null) throw new TypeError(`undefined or null object passed to parser`);
 	if (Math.abs(number) >= 100) return `${number}`;
 
@@ -26,9 +26,13 @@ Parser.numberToText = function (number) {
 			case 0:
 				return "zero";
 			case 1:
-				return "one";
+				if (freq) {
+					return "once"
+				} else return "one"
 			case 2:
-				return "two";
+				if (freq) {
+					return "twice"
+				} else return "two"
 			case 3:
 				return "three";
 			case 4:
@@ -70,7 +74,7 @@ Parser.numberToText = function (number) {
 			case 40:
 				return "forty";
 			case 50:
-				return "fiddy"; // :^)
+				return "<span title=\"fiddy\">fifty</span>"; // :^)
 			case 60:
 				return "sixty";
 			case 70:
@@ -86,7 +90,11 @@ Parser.numberToText = function (number) {
 		}
 	}
 
-	return `${number < 0 ? "negative " : ""}${getAsText(number)}`;
+	if (freq) {
+		return `${getAsText(number)} ${number > 2 ? "times" : ""}`
+	} else {
+		return `${number < 0 ? "negative " : ""}${getAsText(number)}`
+	}
 };
 
 Parser._greatestCommonDivisor = function (a, b) {
@@ -929,6 +937,12 @@ Parser.timeToFullEntry = function (time) {
 		return "{@as 1}";
 	}
 	return `${time.number} ${time.unit}${time.number >= 2 ? "s" : ""}`;
+}
+
+Parser.freqToFullEntry = function (freq) {
+	if (freq.special != null) return time.special;
+	freq.number = Parser.numberToText(freq.freq, true)
+	return `${freq.number} ${freq.recurs ? "every" : "per"} ${freq.interval || ""} ${freq.interval >= 2 ? `${freq.unit}s` : freq.customUnit ? freq.customUnit : freq.unit}${freq.overcharge ? ", plus overcharge" : ""}`;
 }
 
 Parser.timeToTableStr = function (time) {

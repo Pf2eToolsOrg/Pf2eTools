@@ -1487,7 +1487,10 @@
 						"incapacitation",
 						"mental"
 					],
-					"frequency": "once per round",
+					"frequency": {
+				"unit": "round",
+				"freq": 1
+			},
 					"entries": [
 						"Hollow Hush feeds on the emotional unrest of a single creature within 30 feet that's currently affected by an {@trait emotion} effect. The target must succeed at a DC 41 Will save or take {@damage 5d10} mental damage and be {@condition stunned} for 1 round. If the target fails its saving throw, Hollow Hush regains the same number of Hit Points and Feed on Emotion does not cost Hollow Hush an action, allowing it to use another action this turn."
 					],
@@ -2074,7 +2077,10 @@
 						"unit": "free"
 					},
 					"trigger": "Kharostan damages a creature with a jaws {@action Strike}",
-					"frequency": "once per round",
+					"frequency": {
+				"unit": "round",
+				"freq": 1
+			},
 					"entries": [
 						"Kharostan's bite leaves the victim's flesh translucent around the site of the injury. He chooses one of the effects below, each of which requires the damaged creature to attempt a DC 37 Fortitude save. If the jaws {@action Strike} was a critical hit, the creature takes both effects, rolling the saving throw once and using the result for both effects.",
 						{
@@ -4476,7 +4482,10 @@
 						"necromancy",
 						"occult"
 					],
-					"frequency": "once per day",
+					"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 					"entries": [
 						"The vitalia pumps copious amounts of blood into the air, creating a cascading rain of vital fluids in a 15-foot emanation. All creatures in the area are {@condition concealed} from one another. A creature that benefits from consuming blood (such as bloodseekers or vampires) gains fast healing 10 while in the area. While in the area, a creature taking {@condition persistent damage ||persistent bleed damage} cannot end that condition, even if it spends actions to attempt a flat check to do so. The rain lasts for 1 minute."
 					],

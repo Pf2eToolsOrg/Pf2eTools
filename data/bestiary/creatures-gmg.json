@@ -1156,7 +1156,10 @@
 						"entry": "{@as F}"
 					},
 					"requirements": "A direct superior is supervising the apprentice",
-					"frequency": "once per day;",
+					"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 					"entries": [
 						"The apprentice gains a +2 circumstance bonus to attack rolls, damage rolls, saving throws, and skill checks until the end of their next turn."
 					],
@@ -2754,7 +2757,10 @@
 						"linguistic",
 						"mental"
 					],
-					"frequency": "once per round",
+					"frequency": {
+				"unit": "round",
+				"freq": 1
+			},
 					"entries": [
 						"The bosun orders an ally to attack or to get in position. Until the end of the ally's next turn, they gain the bosun's choice of a +2 status bonus to attack rolls or a +10-foot status bonus to their Speeds."
 					],
@@ -3656,7 +3662,10 @@
 						"entry": "{@as R}"
 					},
 					"trigger": "The chronicler is {@condition dying}",
-					"frequency": "once per day;",
+					"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 					"entries": [
 						"The chronicler reduces their {@condition dying} condition by 1. If the chronicler is no longer {@condition dying}, they remain {@condition unconscious} for at least 1 hour or until they regain 1 Hit Point."
 					],
@@ -4466,7 +4475,10 @@
 						"number": 1,
 						"unit": "action"
 					},
-					"frequency": "once per round",
+					"frequency": {
+				"unit": "round",
+				"freq": 1
+			},
 					"entries": [
 						"The dancer {@action Stride||Strides} up to their Speed. Once during this movement, when the dancer is adjacent to a creature, the dancer can make that creature attempt a DC 17 Will save. On a failure, that creature is {@condition fascinated} with the dancer until the end of its next turn."
 					],
@@ -5530,7 +5542,10 @@
 						"entry": "{@as R}"
 					},
 					"trigger": "The false priest critically fails a {@skill Deception} or {@skill Performance} check",
-					"frequency": "once per hour;",
+					"frequency": {
+				"unit": "hour",
+				"freq": 1
+			},
 					"entries": [
 						"The false priest {@action Stride||Strides}."
 					],
@@ -9124,7 +9139,10 @@
 						"arcane"
 					],
 					"requirements": "The necromancer hasn't acted yet on this turn",
-					"frequency": "once per day;",
+					"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 					"entries": [
 						"The necromancer expends the power stored in their mace. This gives them the ability to cast one prepared spell they prepared today and already cast, without spending a spell slot."
 					],
@@ -9273,7 +9291,10 @@
 						"number": 1,
 						"unit": "action"
 					},
-					"frequency": "once per round",
+					"frequency": {
+				"unit": "round",
+				"freq": 1
+			},
 					"entries": [
 						"The noble Feints. On a success, the noble Strikes the target."
 					],
@@ -12134,7 +12155,10 @@
 						"number": 1,
 						"unit": "action"
 					},
-					"frequency": "once per round",
+					"frequency": {
+				"unit": "round",
+				"freq": 1
+			},
 					"entries": [
 						"The spy draws a weapon and then Strikes with it. The target of the {@action Strike} is {@condition flat-footed} against the attack."
 					],
@@ -13687,7 +13711,10 @@
 						"number": 2,
 						"unit": "action"
 					},
-					"frequency": "once per round",
+					"frequency": {
+				"unit": "round",
+				"freq": 1
+			},
 					"entries": [
 						"The watch officer {@action Stride||Strides} twice. If they end their movement within melee reach of at least one enemy, they can make a melee {@action Strike} against that enemy."
 					],

@@ -83,7 +83,10 @@
 				"Rogue"
 			],
 			"prerequisites": "{@action Debilitating Strike}",
-			"frequency": "once per minute",
+			"frequency": {
+				"unit": "minute",
+				"freq": 1
+			},
 			"trigger": "You apply a debilitation to a creature.",
 			"entries": [
 				"You can make your debilitation last an exceptionally long time. The triggering debilitation lasts for 1 minute instead of until the end of your next turn."

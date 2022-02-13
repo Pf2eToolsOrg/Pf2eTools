@@ -31,7 +31,10 @@
 				"Additive 2",
 				"Alchemist"
 			],
-			"frequency": "once per minute",
+			"frequency": {
+				"unit": "minute",
+				"freq": 1
+			},
 			"trigger": "You use {@action Quick Alchemy} to craft an alchemical bomb that deals splash damage and is at least 2 levels lower than your advanced alchemy level.",
 			"entries": [
 				"Your bomb incorporates an explosive spark of wonder that leaves witnesses dumbfounded. Any target hit by your {@action Strike} with the bomb is {@condition fascinated} by you for 1 round. On a critical success, the target is also {@condition stunned|CRB|stunned 1}."
@@ -197,7 +200,10 @@
 				"Uncommon",
 				"Sorcerer"
 			],
-			"frequency": "once per minute",
+			"frequency": {
+				"unit": "minute",
+				"freq": 1
+			},
 			"trigger": "You apply an effect from your blood magic that lasts for 1 round.",
 			"entries": [
 				"You have learned how to invest magic more deeply by witnessing Aroden's works. The triggering blood magic effect lasts for 1 minute instead of 1 round."
@@ -216,7 +222,10 @@
 				"Uncommon",
 				"Druid"
 			],
-			"frequency": "once per hour",
+			"frequency": {
+				"unit": "hour",
+				"freq": 1
+			},
 			"trigger": "You take damage or cast a primal spell.",
 			"entries": [
 				"The life-giving properties of the aeon orbs flourish within you. Small plants or fungi magically appear on all surfaces in a 60-foot emanation around you. This life withers after 1 day unless the environment can support it. You can choose one of the following options each time you use this feat.",

@@ -547,7 +547,10 @@
 				"Mental",
 				"Poppet"
 			],
-			"frequency": "once per hour",
+			"frequency": {
+				"unit": "hour",
+				"freq": 1
+			},
 			"trigger": "A creature you can see damages you with a melee {@action Strike}.",
 			"entries": [
 				"You respond with a startled look, dramatic pratfall, or theatrical arm-flailing that stymies your attacker. The attacker must succeed at a Will saving throw against your class DC or spell DC, whichever is higher, or become {@condition stupefied|CRB|stupefied 1} for 1 round ({@condition stupefied|CRB|stupefied 2} on a critical failure)."
@@ -643,7 +646,10 @@
 				"Metamagic"
 			],
 			"prerequisites": "{@feat Captivator Dedication|LOTGB}",
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"entries": [
 				"If your illusions or enchantments fail to ensnare the minds of others, you can cast them again. If your next action is to cast an innate enchantment or illusion spell and it fails to affect any targets, you do not lose the spell. You must use the same number of actions to recast the same spell on your following turn; if you can't, or choose not to, you waste that number of actions with no effect. After this second casting, you lose the spell whether it affected any targets or not.",
 				"Look Again works only with spells that require targets and doesn't do anything if you cast a targeted spell but didn't select any targets."
@@ -733,7 +739,10 @@
 				"Archetype"
 			],
 			"prerequisites": "{@feat Captivator Dedication|LOTGB}",
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"trigger": "You are the target of a spell or attack.",
 			"entries": [
 				"You're so charming and distracting that when pressed, you can cast a simple enchantment in time to foil an attacker. You cast any of your 1st-level enchantment spells that normally take two actions or fewer to cast. This takes effect before the triggering spell or attack, and if the attacker is affected by your spell, it can make different decisions based on the effects (for instance, if you charm the attacker and it becomes {@condition friendly} to you, it can choose a different target than you for its attack or spell). The attacking creature must be in range of your chosen spell, and if your spell requires targets, the attacking creature must be a valid target. Your spell affects only the attacking creature, even if it would normally affect more targets or an area."
@@ -747,7 +756,10 @@
 			"traits": [
 				"Poppet"
 			],
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"trigger": "You have the {@condition dying} condition and are about to attempt a recovery check.",
 			"entries": [
 				"The magic that animates you strains to keep you alive.",

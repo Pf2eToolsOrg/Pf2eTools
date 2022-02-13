@@ -18,7 +18,10 @@
 					"Summoner|SoM"
 				]
 			},
-			"frequency": "once per round",
+			"frequency": {
+				"unit": "round",
+				"freq": 1
+			},
 			"entries": [
 				"You and your eidolon act as one. Either you or your eidolon takes an action or activity using the same number of actions as Act Together, and the other takes a single action.",
 				"For example, if you spent 2 actions to Act Together, you could cast {@spell burning hands} (2 actions) and your eidolon could {@action Strike} (1 action), or your eidolon could use its Breath Weapon (2 actions) and you could {@action Stride} (1 action).",
@@ -245,7 +248,9 @@
 				"ancestry": "Anadi|LOME",
 				"heritage": "Venomous|LOME"
 			},
-			"frequency": "a number of times per day equal to your level",
+			"frequency": {
+				"special": "a number of times per day equal to your level"
+			},
 			"entries": [
 				"You envenom your fangs. If the next fangs {@action Strike} you make before the end of your turn hits and deals damage, the {@action Strike} deals an additional {@damage 1d6} poison damage. On a critical failure, the poison is wasted as normal. At 12th level, this poison damage increases to {@damage 2d6}."
 			]
@@ -453,7 +458,10 @@
 				"ancestry": "Shisk|LOME",
 				"heritage": "Quillcoat|LOME"
 			},
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"trigger": "You are hit with an unarmed strike or a strike with a non-reach melee weapon.",
 			"entries": [
 				"You break off quills in your attacker's flesh. You deal {@damage 1d8} piercing damage to the triggering creature (basic Reflex save using your class DC or spell DC, whichever is higher.) On a critical failure, the creature also takes {@damage 1d4} {@condition persistent damage||persistent bleed damage} as your quills hook into its flesh. At 3rd level, and every 2 levels thereafter, this damage increases by {@damage 1d8} and the persistent piercing damage increases by 1."
@@ -607,7 +615,10 @@
 				"ancestry": "Conrasu|LOME",
 				"heritage": "Rite of Knowing|LOME"
 			},
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"trigger": "You are about to attempt a check to {@action Recall Knowledge}.",
 			"entries": [
 				"You call upon the knowledge of Axis to ensure the accuracy of your information. You roll a second time and use the higher result. If you roll a critical failure, you get a failure instead. If you roll a success, you get a critical success instead."
@@ -928,7 +939,11 @@
 					"Investigator|APG"
 				]
 			},
-			"frequency": "once per 10 minutes",
+			"frequency": {
+				"unit": "minute",
+				"interval": 10,
+				"freq": 1
+			},
 			"trigger": "Another creature attempts a check to investigate a lead you're pursuing.",
 			"entries": [
 				"You share information with the triggering creature. They gain a circumstance bonus to their check equal to your circumstance bonus to checks investigating your subject from {@action Pursue a Lead|APG}. The GM can add any relevant traits to this reaction depending on the situation, such as {@trait auditory} and {@trait linguistic} if you're conveying information verbally."
@@ -1492,7 +1507,10 @@
 					"Investigator|APG"
 				]
 			},
-			"frequency": "once per round",
+			"frequency": {
+				"unit": "round",
+				"freq": 1
+			},
 			"trigger": "Another creature attempts a check to investigate a lead you're pursuing.",
 			"entries": [
 				"You assess a foe's weaknesses in combat and use them to formulate a plan of attack against your enemy. Choose a creature you can see and roll a {@dice d20}. If you {@action Strike} the chosen creature later this round, you must use the result of the roll you made to {@action Devise a Stratagem|APG} for your {@action Strike}'s attack roll instead of rolling. You make this substitution only for the first {@action Strike} you make against the creature this round, not any subsequent attacks.",
@@ -1651,7 +1669,10 @@
 					"Wizard"
 				]
 			},
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"entries": [
 				"You expend the power stored in your bonded item. During your turn, you gain the ability to cast one spell you prepared today and already cast, without spending a spell slot. You must still {@action Cast a Spell|CRB|Cast the Spell} and meet the spell's other requirements."
 			]
@@ -1816,7 +1837,10 @@
 				"ancestry": "Dwarf",
 				"heritage": "Elemental Heart|LOCG"
 			},
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"entries": [
 				"Energy bursts forth from your body. You deal {@dice 1d6} damage of your chosen type to all adjacent creatures (basic Reflex save using your class DC or spell DC, whichever is higher). At 3rd level, and every 2 levels thereafter, this damage increases by {@dice 1d6}."
 			]
@@ -1919,7 +1943,11 @@
 					"Empiricism|APG"
 				]
 			},
-			"frequency": "once per 10 minutes",
+			"frequency": {
+				"unit": "minute",
+				"interval": 10,
+				"freq": 1
+			},
 			"entries": [
 				"You observe and assess your surroundings with great speed. You {@action Recall Knowledge}, {@action Seek}, or {@action Sense Motive}."
 			]
@@ -2786,7 +2814,10 @@
 				"ancestry": "Kitsune|LOAG",
 				"heritage": "Dark Fields|LOAG"
 			},
-			"frequency": "once per hour",
+			"frequency": {
+				"unit": "hour",
+				"freq": 1
+			},
 			"trigger": "A creature within 60 feet gains the {@condition frightened} condition.",
 			"entries": [
 				"You are invigorated by the shock of a prank or the thrum of terror. You gain temporary Hit Points equal to the creature's level or 3, whichever is higher."
@@ -3251,7 +3282,10 @@
 					"Rogue"
 				]
 			},
-			"frequency": "once per round.",
+			"frequency": {
+				"unit": "round",
+				"freq": 1
+			},
 			"trigger": "Your {@action Strike} hits a {@condition flat-footed} creature and deals damage.",
 			"entries": [
 				"The target attempts a Fortitude save at your class DC. It then becomes temporarily immune to your Master Strike for 1 day.",
@@ -3324,7 +3358,10 @@
 					"Mutagenist"
 				]
 			},
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"entries": [
 				"You experience a brief resurgence of a mutagen. Choose one mutagen you've consumed since your last daily preparations. You gain the effects of that mutagen for 1 minute."
 			]
@@ -3370,7 +3407,10 @@
 					"Inventor|G&G"
 				]
 			},
-			"frequency": "once per round",
+			"frequency": {
+				"unit": "round",
+				"freq": 1
+			},
 			"entries": [
 				"Temporarily cranking the gizmos on your body into overdrive, you try to add greater power to your attacks. Attempt a {@skill Crafting} check that has a {@table DCs by Level||standard DC for your level}.",
 				{
@@ -3587,7 +3627,11 @@
 					"Interrogation|APG"
 				]
 			},
-			"frequency": "once per 10 minutes",
+			"frequency": {
+				"unit": "minute",
+				"interval": 10,
+				"freq": 1
+			},
 			"entries": [
 				"You ask a question that charms or needles someone in just the right way. Ask a question of a non-allied creature that you can see and have been conversing with. Attempt a {@skill Diplomacy} check against the creature's Will DC. The creature is then temporarily immune for 1 hour.",
 				{
@@ -3615,7 +3659,11 @@
 					"Investigator|APG"
 				]
 			},
-			"frequency": "once per 10 minutes",
+			"frequency": {
+				"unit": "minute",
+				"interval": 10,
+				"freq": 1
+			},
 			"entries": [
 				"You spend 1 minute examining the details of one potential clue, designating the subject related to that clue as the target of your active investigation. This subject is typically a single creature, item, or small location (such as a room or corridor), but the GM might allow a different scope for your investigation. You don't need to know the identity, purpose, or nature of the subject, but you do need to be aware of its existence. For instance, finding a footprint is enough to investigate the creature that left it, and seeing a hasty sketch of an item or location can be enough to start your investigation of that subject.",
 				"Whenever you attempt a {@skill Perception} or skill check to investigate a designated subject, you gain a +1 circumstance bonus to the check. The exact checks this applies to depend on the actions you use to investigate and are determined by the GM, but checks to investigate are typically {@skill Perception} checks or skill checks that use Intelligence, Wisdom, or Charisma.",
@@ -4583,7 +4631,9 @@
 					"Magus|SoM"
 				]
 			},
-			"frequency": "until recharged (see below)",
+			"frequency": {
+				"special": "until recharged (see below)"
+			},
 			"entries": [
 				"You channel a spell into a punch or sword thrust to deliver a combined attack. You {@action Cast a Spell} that takes 1 or 2 actions to cast and requires a spell attack roll. The effects of the spell don't occur immediately but are imbued into your attack instead. Make a melee Strike with a weapon or unarmed attack. Your spell is coupled with your attack, using your attack roll result to determine the effects of both the Strike and the spell. This counts as two attacks for your multiple attack penalty, but you don't apply the penalty until after you've completed the Spellstrike. The infusion of spell energy grants your {@action Strike} the {@trait arcane} trait, making it {@trait magical}.",
 				"After you use Spellstrike, you can't do so again until you recharge your Spellstrike as a single action, which has the {@trait concentrate} trait. You also recharge your Spellstrike when you cast a {@filter conflux spell|spells||Classes=Magus} that takes at least 1 action to cast; casting a focus spell of another type doesn't recharge your Spellstrike."
@@ -5003,7 +5053,10 @@
 				"ancestry": "Kobold|APG",
 				"heritage": "Venomtail|APG"
 			},
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"requirements": "You are wielding a piercing or slashing weapon.",
 			"entries": [
 				"You apply your tail's venom to a piercing or slashing weapon. If your next {@action Strike} with that weapon before the end of your next turn hits and deals damage, you deal {@condition persistent damage|CRB|persistent poison damage} equal to your level to the target."
@@ -5172,7 +5225,10 @@
 				"ancestry": "Grippli|LOME",
 				"heritage": "Poisonhide|LOME"
 			},
-			"frequency": "once per hour",
+			"frequency": {
+				"unit": "hour",
+				"freq": 1
+			},
 			"trigger": "A creature touches you, such as by Grappling you, successfully hitting you with an unarmed attack, or using a touch-range spell against you.",
 			"entries": [
 				"You exude a deadly toxin. The triggering creature takes {@damage 1d4} poison damage (basic Fortitude save using your class DC or spell DC, whichever is higher). At 3rd level and every 2 levels thereafter, the damage increases by {@damage 1d4}."
@@ -5474,7 +5530,10 @@
 			"traits": [
 				"Fortune"
 			],
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"actionType": {
 				"archetype": [
 					"Unexpected Sharpshooter|G&G"

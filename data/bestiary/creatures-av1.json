@@ -1647,7 +1647,10 @@
 						"concentrate"
 					],
 					"requirements": "A creature within 15 feet of the flickerwisp is {@condition confused}",
-					"frequency": "once per round;",
+					"frequency": {
+				"unit": "round",
+				"freq": 1
+			},
 					"entries": [
 						"The flickerwisp feeds on the creature's confusion, even as its flashing body and disjointed gyrations cause existing confusion effects to persist. It regains {@dice 1d4} Hit Points, and if the creature's {@condition confused} condition has a limited duration, it lasts 1 additional round."
 					],
@@ -3721,7 +3724,10 @@
 						"concentrate"
 					],
 					"requirements": "An enemy is affected by a {@trait fear} effect or has the {@condition frightened} or {@condition dying} condition, and is within 25 feet of the voidglutton",
-					"frequency": "once per round;",
+					"frequency": {
+				"unit": "round",
+				"freq": 1
+			},
 					"entries": [
 						"The voidglutton feeds on the creature's terror. It regains {@dice 3d4} Hit Points and its Glow reignites if it had been extinguished. It cannot use Consume Light again for {@dice 1d4} rounds, as it is too glutted on fear to suppress its Glow."
 					],
@@ -4306,7 +4312,10 @@
 						"prediction",
 						"primal"
 					],
-					"frequency": "once per day",
+					"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 					"entries": [
 						"Wrin attempts to read the future in the stars by spending an hour studying the night sky\u2014she can't use this ability during the day, on an overcast night, or when she can't otherwise study the stars. Although Wrin usually performs this reading for an individual person or to answer a pressing question she has, for the purposes of this campaign she reads the stars for the party as a whole. She attempts an."
 					],

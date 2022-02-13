@@ -71,8 +71,8 @@
 				"LTiBA"
 			]
 		},
-		
-		
+
+
 		"frequency": {
 			"type": "object",
 			"oneOf": [
@@ -98,6 +98,12 @@
 						"recurs": {
 							"$comment": "Assume false unless provided. If provided, render \"every\" instead of \"per\".",
 							"description": "Use \"every\" instead of \"per\".",
+							"type": "boolean",
+							"default": false
+						},
+						"overcharge": {
+							"$comment": "Assume false unless provided. If provided, render \", plus overcharge\".",
+							"description": "Adds \", plus overcharge\"; used for Wands.",
 							"type": "boolean",
 							"default": false
 						},
@@ -334,7 +340,7 @@
 			]
 		},
 
-		
+
 		"abilityUpper": {
 			"type": "string",
 			"enum": [
@@ -344,7 +350,7 @@
 				"Intelligence",
 				"Wisdom",
 				"Charisma",
-				
+
 				"Free"
 			]
 		},

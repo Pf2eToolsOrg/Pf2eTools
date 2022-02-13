@@ -19,7 +19,11 @@
 				"Archetype"
 			],
 			"prerequisites": "{@feat Spellmaster Dedication|LOCG}, spell repertoire or ability to prepare spells",
-			"frequency": "once per 10 minutes",
+			"frequency": {
+				"unit": "minute",
+				"interval": 10,
+				"freq": 1
+			},
 			"trigger": "You critically succeed at a saving throw against a foe's spell, and that spell is of a level you can normally cast.",
 			"entries": [
 				"You absorb a spell and store it in your body. If you are a spontaneous spellcaster, you can cast the triggering spell once during the next 10 minutes, even if it's not on your spell list as if it were in your repertoire. If you are a prepared spellcaster, you can replace one of your prepared spells of the same level with the absorbed spell, but you must cast the absorbed spell within 10 minutes or you lose that spell slot for the day. You cast the spell at the same spell level as the spell you absorbed, but the spell is of your magical tradition and uses your spell DC, spell attack roll, and other statistics to determine its effects."
@@ -198,7 +202,10 @@
 				"Uncommon",
 				"Dwarf"
 			],
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"trigger": "An ally within 30 feet gains the {@condition dying} condition.",
 			"access": "mountain dwarf ethnicity",
 			"entries": [
@@ -410,7 +417,10 @@
 				"Metamagic"
 			],
 			"prerequisites": "{@feat Magaambyan Attendant Dedication|LOCG}, Cascade Bearers affiliation",
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"requirements": "You haven't yet acted on your turn.",
 			"entries": [
 				"You call upon your Cascade Bearer training to help you adjust a spell for the current situation. Until the end of your turn, you gain a single metamagic feat from the druid class or the wizard class that has a level requirement of no more than half your level."
@@ -639,7 +649,11 @@
 				"Archetype"
 			],
 			"prerequisites": "{@feat Swordmaster Dedication|LOCG}",
-			"frequency": "once per 10 minutes",
+			"frequency": {
+				"unit": "minute",
+				"interval": 10,
+				"freq": 1
+			},
 			"trigger": "You take damage that would reduce you to 0 Hit Points.",
 			"entries": [
 				"You continue to fight when others would fall. Just before taking the triggering damage, you gain temporary Hit Points equal to twice your level. If you have Hit Points remaining after gaining these temporary Hit Points, you aren't knocked {@condition unconscious}, nor do you suffer the other effects of being reduced to 0 Hit Points. Any temporary Hit Points that remain after applying the damage last for up to 4 rounds."
@@ -776,7 +790,10 @@
 				"Gnome"
 			],
 			"prerequisites": "{@feat Gnome Obsession}",
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"entries": [
 				"Your desire for stimulation has led you from one pursuit to another and granted you a smattering of expertise with myriad crafts and professions. You reflect on snippets you've learned to temporarily become trained in one {@skill Lore} skill of your choice. This proficiency lasts for 10 minutes or until you critically fail a check with that skill. Since this training is temporary, you can't use it as a prerequisite for a permanent character option like a feat or a skill increase."
 			]
@@ -944,7 +961,7 @@
 				"Lizardfolk"
 			],
 			"prerequisites": "{@feat Sharp Fangs|LOCG}",
-			"frequency": "a number of times per day equal to your level",
+			"frequency": {"special": "a number of times per day equal to your level"},
 			"entries": [
 				"You envenom your fangs. If the next fangs {@action Strike} you make before the end of your next turn hits and deals damage, the {@action Strike} deals an additional {@damage 1d6} poison damage.",
 				"On a critical failure, the poison is wasted as normal."
@@ -1910,7 +1927,10 @@
 				"Gnome"
 			],
 			"prerequisites": "{@feat Illusion Sense}",
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"trigger": "Your turn begins.",
 			"entries": [
 				"Illusion magic comes to you so naturally that you can effortlessly sustain your magical ruses. You immediately gain the effects of a {@action Sustain a Spell} action to extend the duration of one of your active illusion spells."
@@ -2100,7 +2120,10 @@
 				"Fortune",
 				"Human"
 			],
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"trigger": "You roll a critical failure on a saving throw against an {@trait emotion} effect.",
 			"access": "Vudrani ethnicity",
 			"entries": [
@@ -2182,7 +2205,10 @@
 			"traits": [
 				"Gnome"
 			],
-			"frequency": "once per minute",
+			"frequency": {
+				"unit": "minute",
+				"freq": 1
+			},
 			"trigger": "You cast an innate spell from a gnome heritage or ancestry feat.",
 			"entries": [
 				"The upwelling of innate magic refreshes your body. You gain a number of temporary Hit Points equal to half your level (minimum 1) that last until the end of your next turn."
@@ -2760,7 +2786,10 @@
 				"Concentrate",
 				"Human"
 			],
-			"frequency": "3 times per day",
+			"frequency": {
+				"freq": 3,
+				"unit": "day"
+			},
 			"requirements": "You must spend 10 minutes just after your daily preparations examining the sky or consulting a star chart or you can't use this action that day.",
 			"access": "Lirgeni nationality",
 			"entries": [
@@ -3433,7 +3462,10 @@
 			"traits": [
 				"Gnome"
 			],
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"trigger": "You succeed at a skill check to {@action Recall Knowledge} to identify a creature.",
 			"entries": [
 				"You study a creature's form and behavior to hypothesize likely means of overcoming its strengths. Once before the end of your next turn, you can use the skill modifier from the triggering check in place of your saving throw modifier against one of the creature's abilities, in place of your {@skill Perception} modifier to {@action Seek} the creature, in place of your {@skill Deception} modifier to {@action Feint} against the creature, or in place of your {@skill Intimidation} modifier to {@action Demoralize} the creature. Alternatively, against one of the creature's attacks, you can use your DC for the skill used in the triggering check in place of your AC."
@@ -3678,7 +3710,12 @@
 				"Gnome"
 			],
 			"prerequisites": "chameleon gnome heritage",
-			"frequency": "once every 10 minutes",
+			"frequency": {
+				"freq": 1,
+				"recurs": true,
+				"interval": 10,
+				"unit": "minute"
+			},
 			"entries": [
 				"Whereas most gnomes' coloration is static or changes slowly, you can cause your hair, eye, and skin color to scintillate in brief and disorienting bursts. Once every 10 minutes, when you use the {@action Feint} action, you can compare your {@skill Deception} check result to the {@skill Perception} DCs of all adjacent creatures rather than just one creature within melee reach. It's possible to get a different degree of success for each target.",
 				"These changes are imprecise and usually short-lived, so while they allow you to periodically change your appearance in unpredictable ways, they are of little use in providing camouflage or aiding a disguise."

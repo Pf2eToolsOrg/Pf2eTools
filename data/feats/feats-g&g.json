@@ -167,7 +167,10 @@
 				"Automaton",
 				"Transmutation"
 			],
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"entries": [
 				"You redirect energy from your core to ports on your back or feet, allowing you to fly for a short time. You can maintain this redirected energy for 5 minutes. You gain a fly Speed equal to your Speed while redirecting the energy.",
 				"{@b Enhancement} You can maintain your flight for longer. You can redirect your energy at all times, allowing you to fly whenever you want, rather than just once per day for 5 minutes."
@@ -873,7 +876,11 @@
 				"Archetype"
 			],
 			"prerequisites": "{@feat Unexpected Sharpshooter Dedication|G&G}",
-			"frequency": "once per 10 minutes",
+			"frequency": {
+				"unit": "minute",
+				"interval": 10,
+				"freq": 1
+			},
 			"entries": [
 				"You fire your gun once, creating a devastating and unpredictable chain of events; perhaps your bullet strikes exactly the right spot on a water tower, causing it to flood and incite a stampede of horses which knock over a lantern that sets a city on fire. Whatever the exact chain reaction, and no matter how improbable, the indiscriminate catastrophe creates significant challenges for your enemies across a wide area while leaving everyone else alone.",
 				"Make a {@action Strike} with a ranged weapon, and if you hit, you can make another {@action Strike} at a target within 30 feet of the first target. If you hit the second target, attempt to {@action Strike} a third target within 30 feet of the second target, and so on, continuing until you miss a target. You can cease the chain at any point; otherwise, it ends when you first miss an attack.",
@@ -1107,7 +1114,10 @@
 				"Magical"
 			],
 			"prerequisites": "{@feat Beast Gunner Dedication|G&G}",
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"entries": [
 				"You create a direct magical connection with your beast gun, allowing you to guide the beast gun's next shot by taking control of the projectile directly, steering it through the air, and swerving and veering it to continue to hit target after target. Make a beast gun {@action Strike} against a creature within the first range increment. On a hit, the shot tears through the target and continues toward another target you can see. You make a {@action Strike} against this new target. The new target must be no farther from the previous target than a distance equal to the beast gun's range increment. For example, the new target must be within 150 feet of the previous target when attacking with a drake rifle. On a hit, you can direct the bullet toward a new target.",
 				"You can continue to make Strikes against new targets in this same way until your attack misses, at which point your shot dissipates. You can't make a {@action Strike} against a target you already attacked during this use of {@condition Controlled} Bullet, but you can otherwise continue to make attacks against valid targets until you miss. Each attack counts toward your multiple attack penalty, but don't increase your penalty until you've made all your attacks."
@@ -1167,7 +1177,10 @@
 				"Polymorph",
 				"Transmutation"
 			],
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"entries": [
 				"Your body transforms into a powerful magical cannon.",
 				"While immobile as a cannon, you can fire blasts of energy directly from your core, devastating your foes. You become {@condition immobilized} until you use an {@action Interact} action to revert back to your standard form. While in your cannon form, the only actions you can use are to {@action Strike} with an energy blast unarmed attack or to {@action Interact} to revert back to your standard form. You can remain in your cannon form for up to 1 minute or until you take the action to revert back to your standard form, whichever comes first.",
@@ -1188,7 +1201,10 @@
 			"traits": [
 				"Automaton"
 			],
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"trigger": "You have the {@condition dying} condition and are about to attempt a recovery check.",
 			"entries": [
 				"Your soul taps into your core's power to push against the grasp of death and allow you to recover consciousness.",
@@ -1238,7 +1254,10 @@
 			"traits": [
 				"Gunslinger"
 			],
-			"frequency": "once per round",
+			"frequency": {
+				"unit": "round",
+				"freq": 1
+			},
 			"requirements": "You're wielding a loaded firearm or crossbow.",
 			"entries": [
 				"You lay down suppressive fire to protect allies by forcing foes to take cover from your wild attacks. Make a firearm or crossbow {@action Strike}; the target must decide before you roll your attack whether it will duck out of the way. If the target ducks, it gains a +2 circumstance bonus to AC against your attack, or a +4 circumstance bonus to AC if it has cover. It also takes a \u20132 circumstance penalty to ranged attack rolls until the end of its next turn. If the target chooses not to duck, you gain a +1 circumstance bonus to your attack roll for that {@action Strike}."
@@ -1259,7 +1278,10 @@
 				"Fortune"
 			],
 			"prerequisites": "master in {@skill Crafting}",
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"trigger": "You misfire with a firearm or you roll a failure on a",
 			"access": "You are from Dongun Hold or Alkenstar.",
 			"entries": [
@@ -1292,7 +1314,10 @@
 				"Concentrate",
 				"Gunslinger"
 			],
-			"frequency": "once per minute",
+			"frequency": {
+				"unit": "minute",
+				"freq": 1
+			},
 			"requirements": "You're wielding a loaded firearm or crossbow and are not {@condition fatigued}.",
 			"entries": [
 				"Your steps echo with the thunderous retort of exploding black powder as you dance a dance of death. Take any of the following actions you choose in any order: {@action Step}, {@action Strike} against a target within your firearm's first range increment, and {@action Interact} to reload. If you attempted a {@action Strike} and it succeeded, you can repeat these three actions again in any order. If you attempted a {@action Strike} in the second set and succeeded, you can repeat the actions one last time.",
@@ -1552,7 +1577,10 @@
 				"Necromancy"
 			],
 			"prerequisites": "{@feat Beast Gunner Dedication|G&G}",
-			"frequency": "once per minute",
+			"frequency": {
+				"unit": "minute",
+				"freq": 1
+			},
 			"requirements": "You're wielding your bonded beast gun.",
 			"entries": [
 				"You draw out the bestial magic energy within your bonded beast gun to fortify yourself, purge ongoing harm, and bolster your life force with a sheath of swirling life essence. You gain temporary Hit Points equal to your level and attempt a flat check against any ongoing {@condition persistent damage}, using the DC appropriate for particularly effective assistance. Using this ability depletes the magic within your bonded beast gun, preventing you from using any of its activated abilities until the end of your next turn."
@@ -2221,7 +2249,10 @@
 				"Archetype"
 			],
 			"prerequisites": "{@feat Overwatch Dedication|G&G}, master in {@skill Perception}",
-			"frequency": "once per minute",
+			"frequency": {
+				"unit": "minute",
+				"freq": 1
+			},
 			"trigger": "An enemy within your overwatch field attempts an attack against an ally who is also within your overwatch field.",
 			"entries": [
 				"Your foresight and planning are more valuable than armor as you direct your ally away from danger, but there's a limit to how often you can guide your allies away from a foe's relentless assaults. The triggering attack roll targets your {@skill Perception} DC instead of your ally's AC. Though this allows your ally to avoid taking penalties to their AC, it doesn't remove any conditions or other effects causing such penalties. For example, an enemy with sneak attack would still deal extra damage to your ally if they are {@condition flat-footed}, even though they wouldn't take the \u20132 circumstance penalty when defending against the attack."
@@ -2242,7 +2273,10 @@
 				"Dwarf"
 			],
 			"prerequisites": "worshipper of {@deity Torag} or {@deity Angradd|LOGM}",
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"trigger": "You attempt a ranged {@action Strike}.",
 			"access": "You are from Dongun Hold or Alkenstar.",
 			"entries": [
@@ -2290,7 +2324,10 @@
 				"Magical"
 			],
 			"prerequisites": "{@feat Spellshot Dedication|G&G}",
-			"frequency": "once per round.",
+			"frequency": {
+				"unit": "round",
+				"freq": 1
+			},
 			"entries": [
 				"You channel potent magic into your next shot, empowering it with a blast of crackling energy. Choose acid, cold, electricity, or fire. If you hit with your next attack roll using a firearm or crossbow before the end of your turn, you deal {@damage 1d6} additional damage of this type. At 12th level, this increases to {@damage 2d6} additional damage, and at 18th level, it increases to {@damage 3d6} additional damage."
 			]
@@ -2462,7 +2499,10 @@
 				"Fortune",
 				"Gunslinger"
 			],
-			"frequency": "once per hour",
+			"frequency": {
+				"unit": "hour",
+				"freq": 1
+			},
 			"trigger": "You fail a Fortitude or Will save.",
 			"entries": [
 				"You call upon deep reserves of toughness and mental fortitude to power through an otherwise debilitating effect. Reroll the triggering save with a +2 circumstance bonus; you must use the second result."
@@ -2594,7 +2634,11 @@
 				"Manipulate"
 			],
 			"prerequisites": "{@classFeature offensive boost|inventor|G&G|9|offensive boosts}",
-			"frequency": "once per 10 minutes",
+			"frequency": {
+				"unit": "minute",
+				"interval": 10,
+				"freq": 1
+			},
 			"entries": [
 				"You don't just tinker with your own innovation, you fiddle with your allies' weapons as well (for their benefit, of course). Choose an ally in your reach and one of their weapons. Attempt a {@skill Crafting} check against a high DC for your level.",
 				{
@@ -2671,7 +2715,10 @@
 				"Archetype"
 			],
 			"prerequisites": "trained in {@skill Deception}, Unexpected Sharpshooter",
-			"frequency": "once per hour",
+			"frequency": {
+				"unit": "hour",
+				"freq": 1
+			},
 			"requirements": "Your previous action was a ranged weapon",
 			"entries": [
 				"{@action Strike} that missed a foe within 60 feet.",
@@ -2827,7 +2874,10 @@
 			"traits": [
 				"Inventor"
 			],
-			"frequency": "once per hour",
+			"frequency": {
+				"unit": "hour",
+				"freq": 1
+			},
 			"entries": [
 				"Need to balance on a razor's edge, force open an iron door, or persuade a dragon to negotiate? Never fear! No matter the situation, you always have just the thing. You attempt a skill action that takes 1 minute or less to complete, using the same number of actions or amount of time as normal. However, as you take the action, describe a device you pull out and use to accomplish the skill. The specifics of how you accomplish this are up to you, but they should fit the challenge at hand.",
 				"For instance, you might use gravitic stabilizers to balance on the razor's edge, a force battering ram gizmo to open the iron door, or a device that produces an aroma with the ability to pacify wyrms to persuade the dragon. Using an invention in this way lets you alter how you calculate the skill check used in the action. Instead of the normal skill modifier associated with that skill action, you use your {@skill Crafting} modifier."
@@ -2913,7 +2963,10 @@
 				"Misfortune"
 			],
 			"prerequisites": "{@feat Unexpected Sharpshooter Dedication|G&G}",
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"trigger": "A creature targets you with an attack, even if you aren't aware of it.",
 			"entries": [
 				"Your enemy lies in wait, lines up the perfect shot, and pulls the trigger... then at just the right moment you duck down to notice something scrawled on the cobblestone in chalk, a shiny coin, or some other coincidental distraction, creating an opportunity for the attack to miss. The attacker must roll the attack twice and use the worse result."
@@ -3200,7 +3253,10 @@
 				"Inventor"
 			],
 			"prerequisites": "construct companion",
-			"frequency": "once per minute",
+			"frequency": {
+				"unit": "minute",
+				"freq": 1
+			},
 			"trigger": "Your construct companion would become {@condition confused} or {@condition controlled}.",
 			"entries": [
 				"You appeal to your construct companion's bond with its creator to have it break free of a controlling effect. Attempt to counteract the effect that {@condition confused} or {@condition controlled} your construct companion, using your {@skill Crafting} modifier for the counteract check and half your level rounded up for the counteract level."
@@ -3387,7 +3443,10 @@
 				"Magical"
 			],
 			"prerequisites": "{@feat Spellshot Dedication|G&G}",
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"entries": [
 				"You can aim your bullets not just in three normal dimensions, but in additional dimensions as well, allowing you to fire a magical shot that phases through everything but your target. Make a crossbow or firearm {@action Strike} against a foe who's {@condition observed} or {@condition hidden} to you (but not {@condition undetected}). The ammunition travels to your target in a straight line, passing through any non-magical barriers or walls in its way, though magical barriers and {@trait force} effects stop the bullet. The shot ignores all cover, the {@condition concealed} condition, the {@condition hidden} condition, and circumstance bonuses to AC from shields. It has a +4 status bonus to hit creatures wearing any type of armor. The {@action Strike}'s damage can't be reduced with a Shield Block reaction using a non-magical shield."
 			]
@@ -3675,7 +3734,10 @@
 				"Automaton"
 			],
 			"prerequisites": "sharpshooter automaton",
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"entries": [
 				"Throughout the day, your body produces powerful projectiles within your chassis. You fire them all at once in either a 30-foot cone or a 10-foot emanation. Foes in the area take {@damage 6d6} piercing damage. This increases to {@dice 7d6} at 12th level, {@dice 8d6} at 15th level, and {@dice 9d6} at 18th level.",
 				"{@b Enhancement} The projectiles regenerate quicker, they are much more powerful, and you can refine the metallic content to harm certain creatures. You can use Rain of Bolts once per hour instead of once per day. The damage increases to {@dice 12d6} and each time you use the action, you can choose adamantine, cold iron, or silver. The damage from Rain of Bolts is treated as the metal you chose. At 20th level, the damage increases to {@dice 13d6}."
@@ -4274,7 +4336,10 @@
 				"Manipulate"
 			],
 			"prerequisites": "expert in {@skill Crafting}",
-			"frequency": "once per minute",
+			"frequency": {
+				"unit": "minute",
+				"freq": 1
+			},
 			"access": "You are from Dongun Hold or Alkenstar.",
 			"entries": [
 				"You dust explosive black powder on your fist or glove before attacking, which combusts as you hit an opponent.",
@@ -4312,7 +4377,10 @@
 						"Conjuration",
 						"Magical"
 					],
-					"frequency": "once per round",
+					"frequency": {
+				"unit": "round",
+				"freq": 1
+			},
 					"entries": [
 						"You conjure an ordinary level-0 bolt or bullet out of thin air and then immediately Interact to load it into your weapon. If the bolt or bullet isn't fired before the end of your turn, the effect is wasted."
 					]
@@ -4605,7 +4673,10 @@
 				"Skill"
 			],
 			"prerequisites": "master in {@skill Deception}, {@feat Unexpected Sharpshooter Dedication|G&G}",
-			"frequency": "once per round",
+			"frequency": {
+				"unit": "round",
+				"freq": 1
+			},
 			"requirements": "Either you used {@action Accidental Shot|g&g} and hit your opponent with the {@action Strike} this turn, or you used {@feat Lucky Escape|g&g} since your last turn and the triggering attack missed you.",
 			"entries": [
 				"You laugh innocently about the inexplicable luck of your last shot hitting its mark or how close the attack that just missed you came to taking your head off, causing your foes to second guess whether it's a good idea to oppose you in battle.",
@@ -4862,7 +4933,10 @@
 				"Archetype",
 				"Dedication"
 			],
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"entries": [
 				"Who needs skill when you've got dumb luck? Sometimes your shots hit miraculously, regardless of the fact that you seemed to slip when you pulled the trigger or that you weren't aiming at your foe when you fired. You gain the Accidental Shot activity.",
 				{
@@ -4875,7 +4949,10 @@
 					"traits": [
 						"fortune"
 					],
-					"frequency": "once per day",
+					"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 					"entries": [
 						"You make a {@action Strike} with a ranged weapon, rolling the attack and damage twice and using the better results for each. The attack ignores circumstance penalties to the attack roll and any flat check required due to the target being {@condition concealed} or {@condition hidden}."
 					]
