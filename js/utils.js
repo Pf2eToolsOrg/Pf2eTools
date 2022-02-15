@@ -1872,6 +1872,7 @@ UrlUtil.PG_MANAGE_BREW = "managebrew.html";
 UrlUtil.PG_MAKE_BREW = "makebrew.html";
 UrlUtil.PG_DEMO_RENDER = "renderdemo.html";
 UrlUtil.PG_TABLES = "tables.html";
+UrlUtil.PG_ORGANIZATIONS = "organizations.html";
 UrlUtil.PG_CHARACTERS = "characters.html";
 UrlUtil.PG_ACTIONS = "actions.html";
 UrlUtil.PG_ABILITIES = "abilities.html";
@@ -1904,6 +1905,7 @@ UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_BOOK] = (it) => UrlUtil.encodeForHash(it.
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_DEITIES] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_HAZARDS] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_TABLES] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ORGANIZATIONS] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ACTIONS] = (it) => UrlUtil.encodeForHash([it.add_hash ? `${it.name} (${it.add_hash})` : it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ABILITIES] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_LANGUAGES] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
@@ -1949,6 +1951,7 @@ UrlUtil.PG_TO_NAME[UrlUtil.PG_QUICKREF] = "Quick Reference";
 UrlUtil.PG_TO_NAME[UrlUtil.PG_MANAGE_BREW] = "Homebrew Manager";
 UrlUtil.PG_TO_NAME[UrlUtil.PG_DEMO_RENDER] = "Renderer Demo";
 UrlUtil.PG_TO_NAME[UrlUtil.PG_TABLES] = "Tables";
+UrlUtil.PG_TO_NAME[UrlUtil.PG_ORGANIZATIONS] = "Organizations";
 UrlUtil.PG_TO_NAME[UrlUtil.PG_ACTIONS] = "Actions";
 UrlUtil.PG_TO_NAME[UrlUtil.PG_ABILITIES] = "Creature Abilities";
 UrlUtil.PG_TO_NAME[UrlUtil.PG_LANGUAGES] = "Languages";
@@ -1999,6 +2002,7 @@ UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_DEITY] = UrlUtil.PG_DEITIES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_LANGUAGE] = UrlUtil.PG_LANGUAGES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_PLACE] = UrlUtil.PG_PLACES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_PLANE] = UrlUtil.PG_PLACES;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_ORGANIZATION] = UrlUtil.PG_ORGANIZATIONS;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_NATION] = UrlUtil.PG_PLACES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_SETTLEMENT] = UrlUtil.PG_PLACES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_RITUAL] = UrlUtil.PG_RITUALS;
@@ -2276,6 +2280,8 @@ DataUtil = {
 				case "ancestryFluff": return DataUtil.ancestryFluff.pMergeCopy(arr, entry, options);
 				case "deity": return DataUtil.deity.pMergeCopy(arr, entry, options);
 				case "deityFluff": return DataUtil.deityFluff.pMergeCopy(arr, entry, options);
+				case "organization": return DataUtil.organization.pMergeCopy(arr, entry, options);
+				case "organizationFluff": return DataUtil.organizationFluff.pMergeCopy(arr, entry, options);
 				default: throw new Error(`No dependency _copy merge strategy specified for property "${prop}"`);
 			}
 		}
@@ -3238,6 +3244,32 @@ DataUtil = {
 		_mergeCache: {},
 		async pMergeCopy (deityFlfList, deityFlf, options) {
 			return DataUtil.generic._pMergeCopy(DataUtil.deityFluff, UrlUtil.PG_DEITIES, deityFlfList, deityFlf, options);
+		},
+	},
+
+	organization: {
+		_MERGE_REQUIRES_PRESERVE: {
+			page: true,
+			otherSources: true,
+		},
+		_mergeCache: {},
+		async pMergeCopy (organizationList, organization, options) {
+			return DataUtil.generic._pMergeCopy(DataUtil.organization, UrlUtil.PG_ORGANIZATIONS, organizationList, organization, options);
+		},
+
+		loadJSON: async function () {
+			return DataUtil.loadJSON(`${Renderer.get().baseUrl}data/deities.json`);
+		},
+	},
+
+	organizationFluff: {
+		_MERGE_REQUIRES_PRESERVE: {
+			page: true,
+			otherSources: true,
+		},
+		_mergeCache: {},
+		async pMergeCopy (organizationFlfList, organizationFlf, options) {
+			return DataUtil.generic._pMergeCopy(DataUtil.organizationFluff, UrlUtil.PG_ORGANIZATIONS, organizationFlfList, organizationFlf, options);
 		},
 	},
 
@@ -4356,6 +4388,8 @@ BrewUtil = {
 				return ["language"];
 			case UrlUtil.PG_PLACES:
 				return ["place"];
+			case UrlUtil.PG_ORGANIZATIONS:
+				return ["organization"];
 			case UrlUtil.PG_RITUALS:
 				return ["ritual"];
 			case UrlUtil.PG_OPTIONAL_FEATURES:
@@ -4465,6 +4499,7 @@ BrewUtil = {
 			case "disease":
 			case "curse":
 			case "ability":
+			case "organization":
 			case "deity":
 			case "language":
 			case "place":
@@ -4568,7 +4603,7 @@ BrewUtil = {
 		obj.uniqueId = CryptUtil.md5(JSON.stringify(obj));
 	},
 
-	_STORABLE: ["variantrule", "table", "tableGroup", "book", "bookData", "ancestry", "heritage", "versatileHeritage", "background", "class", "subclass", "classFeature", "subclassFeature", "archetype", "feat", "companion", "familiar", "eidolon", "adventure", "adventureData", "hazard", "action", "creature", "condition", "item", "baseitem", "spell", "disease", "curse", "ability", "deity", "language", "place", "ritual", "vehicle", "trait", "group", "domain", "skill", "optionalfeature"],
+	_STORABLE: ["variantrule", "table", "tableGroup", "book", "bookData", "ancestry", "heritage", "versatileHeritage", "background", "class", "subclass", "classFeature", "subclassFeature", "archetype", "feat", "companion", "familiar", "eidolon", "adventure", "adventureData", "hazard", "action", "creature", "condition", "item", "baseitem", "spell", "disease", "curse", "ability", "deity", "language", "place", "ritual", "vehicle", "trait", "group", "domain", "skill", "optionalfeature", "organization"],
 	async pDoHandleBrewJson (json, page, pFuncRefresh) {
 		page = BrewUtil._PAGE || page;
 		await BrewUtil._lockHandleBrewJson.pLock();
@@ -4710,6 +4745,7 @@ BrewUtil = {
 			case UrlUtil.PG_DEITIES:
 			case UrlUtil.PG_LANGUAGES:
 			case UrlUtil.PG_PLACES:
+			case UrlUtil.PG_ORGANIZATIONS:
 			case UrlUtil.PG_RITUALS:
 			case UrlUtil.PG_VEHICLES:
 			case UrlUtil.PG_OPTIONAL_FEATURES:

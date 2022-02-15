@@ -1926,6 +1926,30 @@ function Renderer () {
 				break;
 			}
 
+			case "@organization": {
+				const [name, source, displayText, ...others] = Renderer.splitTagByPipe(text);
+				const hash = `${name}${source ? `${HASH_LIST_SEP}${source}` : ""}`;
+
+				const fauxEntry = {
+					type: "link",
+					href: {
+						type: "internal",
+						hash,
+					},
+					text: (displayText || name),
+				};
+
+				fauxEntry.href.path = UrlUtil.PG_ORGANIZATION;
+				if (!source) fauxEntry.href.hash += `${HASH_LIST_SEP}${SRC_LOCG}`;
+				fauxEntry.href.hover = {
+					page: UrlUtil.PG_ORGANIZATION,
+					source: source || SRC_LOCG,
+				};
+				this._recursiveRender(fauxEntry, textStack, meta);
+
+				break;
+			}
+
 			case "@trait": {
 				const [name, source, displayText, ...others] = Renderer.splitTagByPipe(text);
 				const hash = BrewUtil.hasSourceJson(source) ? `${Parser.getTraitName(name)}${HASH_LIST_SEP}${source}` : Parser.getTraitName(name);
@@ -4143,6 +4167,7 @@ Renderer.deity = {
 			${b.avatar ? `<p class="pf2-h3">Avatar</p>${b.avatar.preface ? `<p class="pf2-stat">${renderer.render(b.avatar.preface)}</p>` : ""}<p class="pf2-stat">${renderer.render(b.avatar.entry)}</p>` : ""}
 			`;
 	},
+
 	getRenderedLore (deity) {
 		const textStack = [""];
 		const renderer = Renderer.get().setFirstSection(true)
@@ -4189,6 +4214,81 @@ Renderer.deity = {
 			entity: deity,
 			fluffUrl: `data/fluff-deities.json`,
 			fluffProp: "deityFluff",
+		});
+	},
+};
+
+Renderer.organization = {
+	getCompactRenderedString (organization, opts) {
+		opts = opts || {};
+		const renderer = Renderer.get().setFirstSection(true);
+		const renderStack = [];
+		return `
+			${Renderer.utils.getExcludedDiv(organization, "organization", UrlUtil.PG_ORGANIZATION)}
+			${Renderer.utils.getNameDiv(organization, {type: `${organization.alignment && organization.alignment.length === 1 ? `${organization.alignment[0]}` : ""} organization`, ...opts})}
+			${Renderer.utils.getDividerDiv()}
+			${Renderer.utils.getTraitsDiv(organization.traits || [])}
+			${Renderer.organization.getTitleScopeGoals(organization)}
+			${Renderer.utils.getDividerDiv()}
+			${Renderer.organization.getDetails(organization)}
+			${Renderer.utils.getDividerDiv()}
+			${Renderer.organization.getMembership(organization)}
+			${renderStack.join("")}
+			${opts.noPage ? "" : Renderer.utils.getPageP(organization)}`;
+	},
+
+	getTitleScopeGoals (organization) {
+		let out = [];
+		const renderer = Renderer.get();
+		if (organization.title) out.push(`<p class="pf2-stat__section"><i>${organization.title.join(", ")}</i></p>`)
+		if (organization.scope) out.push(`<p class="pf2-stat__section"><strong>Scope and Influence&nbsp;</strong>${renderer.render(organization.scope.join(", "))}</p>`)
+		if (organization.goals) out.push(`<p class="pf2-stat__section"><strong>Goals&nbsp;</strong>${renderer.render(organization.goals.join(", "))}</p>`)
+		return out.join("")
+	},
+
+	getDetails (organization) {
+		let out = [];
+		const renderer = Renderer.get();
+		if (organization.headquarters) out.push(`<p class="pf2-stat__section"><strong>Headquarters&nbsp;</strong>${renderer.render(organization.headquarters.join(", "))}</p>`)
+		if (organization.keyMembers) out.push(`<p class="pf2-stat__section"><strong>Key Members&nbsp;</strong>${renderer.render(organization.keyMembers.join(", "))}</p>`)
+		if (organization.allies) out.push(`<p class="pf2-stat__section"><strong>Allies&nbsp;</strong>${renderer.render(organization.allies.join(", "))}</p>`)
+		if (organization.enemies) out.push(`<p class="pf2-stat__section"><strong>Enemies&nbsp;</strong>${renderer.render(organization.enemies.join(", "))}</p>`)
+		if (organization.assets) out.push(`<p class="pf2-stat__section"><strong>Assets&nbsp;</strong>${renderer.render(organization.assets.join(", "))}</p>`)
+		return out.join("")
+	},
+
+	getMembership (organization) {
+		let out = [];
+		const renderer = Renderer.get();
+		if (organization.requirements) out.push(`<p class="pf2-stat__section"><strong>Membership Requirements&nbsp;</strong>${renderer.render(organization.requirements.join(", "))}</p>`)
+		if (organization.followerAlignment) out.push(`<p class="pf2-stat__section"><strong>Accepted Alignments&nbsp;</strong>${renderer.render(organization.followerAlignment.map(it => `{@trait ${it.main}} ${it.secondary ? `(${it.secondary.map(it => `{@trait ${it}}`).join(", ")})` : ""}`).join(", "))}</p>`)
+		if (organization.values) out.push(`<p class="pf2-stat__section"><strong>Values&nbsp;</strong>${renderer.render(organization.values.join(", "))}</p>`)
+		if (organization.anathema) out.push(`<p class="pf2-stat__section"><strong>Anathema&nbsp;</strong>${renderer.render(organization.anathema.join(", "))}</p>`)
+		return out.join("")
+	},
+
+	getRenderedLore (organization) {
+		const textStack = [""];
+		const renderer = Renderer.get().setFirstSection(true)
+		if (organization.lore) organization.lore.forEach(l => renderer.recursiveRender(l, textStack));
+		return textStack.join("");
+	},
+
+	getImage (organization) {
+		const textStack = [""];
+		if (organization.images) {
+			const img = organization.images[0];
+			if (img.includes("2e.aonprd.com")) textStack.push(`<a target="_blank" rel="noopener noreferrer" title="Shift/Ctrl to open in a new window/tab." href="${img}">Images available on the Archives of Nethys.</a>`);
+			else textStack.push(`<p><img style="display: block; margin-left: auto; margin-right: auto; width: 50%;" src="${img}" alt="No Image Found."></p>`);
+		}
+		return textStack.join("");
+	},
+
+	async pGetFluff (organization) {
+		return Renderer.utils.pGetFluff({
+			entity: organization,
+			fluffUrl: `data/fluff-organizations.json`,
+			fluffProp: "organizationFluff",
 		});
 	},
 };
@@ -4806,8 +4906,8 @@ Renderer.spell = {
 		if (sp.savingThrow != null) stDurationParts.push(`<strong>Saving Throw&nbsp;</strong>${sp.savingThrowBasic ? "basic " : ""}${sp.savingThrow}`);
 		if (sp.duration && sp.duration.type != null) stDurationParts.push(`<strong>Duration&nbsp;</strong>${renderer.render(sp.duration.entry)}`);
 
-		return `${sp.traditions ? `<p class="pf2-stat pf2-stat__section"><strong>Traditions </strong>${sp.traditions.join(", ").toLowerCase()}${sp.spellLists ? "; " : ""}` : ""}
-		${sp.spellLists ? `<strong>Spell Lists </strong>${sp.spellLists.join(", ").toLowerCase()}</p>` : ""}
+		return `${sp.traditions ? `<p class="pf2-stat pf2-stat__section"><strong>Traditions </strong>${renderer.render(sp.traditions.map(it => `{@trait ${it}}`).join(", ").toLowerCase())}</p>` : ""}
+		${sp.spellLists ? `<p class="pf2-stat pf2-stat__section"><strong>Spell Lists </strong>${sp.spellLists.join(", ").toLowerCase()}</p>` : ""}
 		${sp.subclass ? Object.keys(sp.subclass).map(k => `<p class="pf2-stat pf2-stat__section"><strong>${k.split("|")[1]}</strong>
 		${renderer.render(k.split("|")[1].toLowerCase() === "domain" ? sp.subclass[k].map(it => `{@filter ${it}|deities||domain=${it}}`).join(", ")
 		: k.split("|")[1].toLowerCase() === "mystery" ? sp.subclass[k].map(it => `{@class Oracle|APG|${it}|${it}}`).join(", ")
@@ -5079,6 +5179,7 @@ Renderer.hover = {
 		"feat": UrlUtil.PG_FEATS,
 		"hazard": UrlUtil.PG_HAZARDS,
 		"deity": UrlUtil.PG_DEITIES,
+		"organization": UrlUtil.PG_ORGANIZATION,
 		"variantrule": UrlUtil.PG_VARIANTRULES,
 		"optfeature": UrlUtil.PG_OPTIONAL_FEATURES,
 	},
@@ -6073,6 +6174,8 @@ Renderer.hover = {
 				return Renderer.hover._pCacheAndGet_pLoadAncestries(page, source, hash, opts);
 			case UrlUtil.PG_DEITIES:
 				return Renderer.hover._pCacheAndGet_pLoadCustom(page, source, hash, opts, "deities.json", "deity", null, "deity");
+			case UrlUtil.PG_ORGANIZATION:
+				return Renderer.hover._pCacheAndGet_pLoadCustom(page, source, hash, opts, "organizations.json", "organization");
 			case UrlUtil.PG_HAZARDS:
 				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "hazards.json", ["hazard"]);
 			case UrlUtil.PG_VARIANTRULES:
@@ -6712,6 +6815,8 @@ Renderer.hover = {
 				return Renderer.condition.getCompactRenderedString;
 			case UrlUtil.PG_AFFLICTIONS:
 				return Renderer.affliction.getCompactRenderedString;
+			case UrlUtil.PG_ORGANIZATION:
+				return Renderer.organization.getCompactRenderedString;
 			case UrlUtil.PG_BACKGROUNDS:
 				return Renderer.background.getCompactRenderedString;
 			case UrlUtil.PG_FEATS:
@@ -6813,7 +6918,7 @@ Renderer.hover = {
 				},
 		);
 	},
-
+	// FIXME: Organizations Page, see the pop-out button
 	$getHoverContent_stats (page, toRender) {
 		const renderFn = Renderer.hover._pageToRenderFn(page);
 		return $$`<div class="stats pf2-stat">${renderFn(toRender)}</div>`;
@@ -7072,6 +7177,7 @@ Renderer._stripTagLayer = function (str) {
 					case "@ritual":
 					case "@settlement":
 					case "@deity":
+					case "@organization":
 					case "@eidolon":
 					case "@familiar":
 					case "@familiarAbility":
