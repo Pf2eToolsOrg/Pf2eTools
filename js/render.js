@@ -4201,6 +4201,14 @@ Renderer.deity = {
 		});
 	},
 };
+// TODO: Try incorporating this into more entries.
+// Also probably put this in a more fitting place.
+semiComma = function (array) {
+	const renderer = Renderer.get().setFirstSection(true);
+	if (array.find(element => { if (element.includes(",")) { return true; } })) {
+		return renderer.render(array.join("; "))
+	} else return renderer.render(array.join(", "))
+};
 
 Renderer.organization = {
 	getCompactRenderedString (organization, opts) {
@@ -4225,29 +4233,31 @@ Renderer.organization = {
 		let out = [];
 		const renderer = Renderer.get();
 		if (organization.title) out.push(`<p class="pf2-stat__section"><i>${organization.title.join(", ")}</i></p>`)
-		if (organization.scope) out.push(`<p class="pf2-stat__section"><strong>Scope and Influence&nbsp;</strong>${renderer.render(organization.scope.join(", "))}</p>`)
-		if (organization.goals) out.push(`<p class="pf2-stat__section"><strong>Goals&nbsp;</strong>${renderer.render(organization.goals.join(", "))}</p>`)
+		if (organization.scope) out.push(`<p class="pf2-stat__section"><strong>Scope and Influence&nbsp;</strong>${semiComma(organization.scope)}</p>`)
+		if (organization.goals) out.push(`<p class="pf2-stat__section"><strong>Goals&nbsp;</strong>${semiComma(organization.goals)}</p>`)
 		return out.join("")
 	},
 
 	getDetails (organization) {
 		let out = [];
 		const renderer = Renderer.get();
-		if (organization.headquarters) out.push(`<p class="pf2-stat__section"><strong>Headquarters&nbsp;</strong>${renderer.render(organization.headquarters.join(", "))}</p>`)
-		if (organization.keyMembers) out.push(`<p class="pf2-stat__section"><strong>Key Members&nbsp;</strong>${renderer.render(organization.keyMembers.join(", "))}</p>`)
-		if (organization.allies) out.push(`<p class="pf2-stat__section"><strong>Allies&nbsp;</strong>${renderer.render(organization.allies.join(", "))}</p>`)
-		if (organization.enemies) out.push(`<p class="pf2-stat__section"><strong>Enemies&nbsp;</strong>${renderer.render(organization.enemies.join(", "))}</p>`)
-		if (organization.assets) out.push(`<p class="pf2-stat__section"><strong>Assets&nbsp;</strong>${renderer.render(organization.assets.join(", "))}</p>`)
+		if (organization.headquarters) out.push(`<p class="pf2-stat__section"><strong>Headquarters&nbsp;</strong>${semiComma(organization.headquarters)}</p>`)
+		if (organization.keyMembers) out.push(`<p class="pf2-stat__section"><strong>Key Members&nbsp;</strong>${semiComma(organization.keyMembers)}</p>`)
+		if (organization.allies) out.push(`<p class="pf2-stat__section"><strong>Allies&nbsp;</strong>${semiComma(organization.allies)}</p>`)
+		if (organization.enemies) out.push(`<p class="pf2-stat__section"><strong>Enemies&nbsp;</strong>${semiComma(organization.enemies)}</p>`)
+		if (organization.assets) out.push(`<p class="pf2-stat__section"><strong>Assets&nbsp;</strong>${semiComma(organization.assets)}</p>`)
 		return out.join("")
 	},
 
 	getMembership (organization) {
 		let out = [];
 		const renderer = Renderer.get();
-		if (organization.requirements) out.push(`<p class="pf2-stat__section"><strong>Membership Requirements&nbsp;</strong>${renderer.render(organization.requirements.join(", "))}</p>`)
-		if (organization.followerAlignment) out.push(`<p class="pf2-stat__section"><strong>Accepted Alignments&nbsp;</strong>${renderer.render(organization.followerAlignment.map(it => `{@trait ${it.main}} ${it.secondary ? `(${it.secondary.map(it => `{@trait ${it}}`).join(", ")})` : ""}`).join(", "))}</p>`)
-		if (organization.values) out.push(`<p class="pf2-stat__section"><strong>Values&nbsp;</strong>${renderer.render(organization.values.join(", "))}</p>`)
-		if (organization.anathema) out.push(`<p class="pf2-stat__section"><strong>Anathema&nbsp;</strong>${renderer.render(organization.anathema.join(", "))}</p>`)
+		if (organization.requirements) out.push(`<p class="pf2-stat__section"><strong>Membership Requirements&nbsp;</strong>${semiComma(organization.requirements)}</p>`)
+		if (organization.followerAlignment) {
+			out.push(`<p class="pf2-stat__section"><strong>Accepted Alignments&nbsp;</strong>${renderer.render(organization.followerAlignment.map(it => it.entry ? it.entry : `{@trait ${it.main}}${it.secondaryCustom ? `(${it.secondaryCustom})` : it.secondary ? `(${it.secondary.map(it => `{@trait ${it}}`).join(", ")}${it.note ? `; ${it.note}` : ""})` : ""}`).join(", "))}</p>`)
+		}
+		if (organization.values) out.push(`<p class="pf2-stat__section"><strong>Values&nbsp;</strong>${semiComma(organization.values)}</p>`)
+		if (organization.anathema) out.push(`<p class="pf2-stat__section"><strong>Anathema&nbsp;</strong>${semiComma(organization.anathema)}</p>`)
 		return out.join("")
 	},
 
@@ -6904,7 +6914,6 @@ Renderer.hover = {
 				},
 		);
 	},
-	// FIXME: Organizations Page, see the pop-out button
 	$getHoverContent_stats (page, toRender) {
 		const renderFn = Renderer.hover._pageToRenderFn(page);
 		return $$`<div class="stats pf2-stat">${renderFn(toRender)}</div>`;
