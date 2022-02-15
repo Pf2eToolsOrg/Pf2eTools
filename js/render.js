@@ -3304,7 +3304,7 @@ Renderer.ability = {
 			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Prerequisites&nbsp;</strong>${renderer.render(it.prerequisites)}</p>`);
 		}
 		if (it.frequency != null) {
-			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Frequency&nbsp;</strong>${renderer.render_addTerm(Parser.freqToFullEntry(it.frequency))}</p>`);
+			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Frequency&nbsp;</strong>${renderer.render(Parser.freqToFullEntry(it.frequency))}</p>`);
 		}
 		if (it.trigger != null) {
 			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Trigger&nbsp;</strong>${renderer.render(it.trigger)}</p>`);
@@ -5110,7 +5110,7 @@ Renderer.generic = {
 		const traits = it.traits || [];
 		const renderedSections = Renderer.generic.getRenderedSection(it.sections);
 		return `
-		${Renderer.utils.getNameDiv(it, {"isEmbedded": options.isEmbedded, "type": `${it.type ? it.type : ""} `, "level": typeof it.level !== "number" ? it.level : undefined})}
+		${Renderer.utils.getNameDiv(it, {"isEmbedded": options.isEmbedded, "activity": `${it.activity ? Parser.timeToFullEntry(it.activity) : ""}`, "type": `${it.type ? it.type : ""} `, "level": typeof it.level !== "number" ? it.level : undefined})}
 		${Renderer.utils.getDividerDiv()}
 		${Renderer.utils.getTraitsDiv(traits)}
 		${Renderer.ability.getSubHead(it)}
