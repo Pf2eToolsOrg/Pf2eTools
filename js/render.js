@@ -4254,7 +4254,7 @@ Renderer.organization = {
 		const renderer = Renderer.get();
 		if (organization.requirements) out.push(`<p class="pf2-stat__section"><strong>Membership Requirements&nbsp;</strong>${semiComma(organization.requirements)}</p>`)
 		if (organization.followerAlignment) {
-			out.push(`<p class="pf2-stat__section"><strong>Accepted Alignments&nbsp;</strong>${renderer.render(organization.followerAlignment.map(it => it.entry ? it.entry : `{@trait ${it.main}}${it.secondaryCustom ? `(${it.secondaryCustom})` : it.secondary ? `(${it.secondary.map(it => `{@trait ${it}}`).join(", ")}${it.note ? `; ${it.note}` : ""})` : ""}`).join(", "))}</p>`)
+			out.push(`<p class="pf2-stat__section"><strong>Accepted Alignments&nbsp;</strong>${renderer.render(organization.followerAlignment.map(it => it.entry ? it.entry : `{@trait ${it.main}}${it.secondaryCustom ? ` (${it.secondaryCustom})` : it.secondary ? ` (${it.secondary.map(it => `{@trait ${it}}`).join(", ")}${it.note ? `; ${it.note}` : ""})` : ""}`).join(", "))}</p>`)
 		}
 		if (organization.values) out.push(`<p class="pf2-stat__section"><strong>Values&nbsp;</strong>${semiComma(organization.values)}</p>`)
 		if (organization.anathema) out.push(`<p class="pf2-stat__section"><strong>Anathema&nbsp;</strong>${semiComma(organization.anathema)}</p>`)
