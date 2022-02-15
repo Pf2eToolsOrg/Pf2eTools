@@ -1926,30 +1926,6 @@ function Renderer () {
 				break;
 			}
 
-			case "@organization": {
-				const [name, source, displayText, ...others] = Renderer.splitTagByPipe(text);
-				const hash = `${name}${source ? `${HASH_LIST_SEP}${source}` : ""}`;
-
-				const fauxEntry = {
-					type: "link",
-					href: {
-						type: "internal",
-						hash,
-					},
-					text: (displayText || name),
-				};
-
-				fauxEntry.href.path = UrlUtil.PG_ORGANIZATION;
-				if (!source) fauxEntry.href.hash += `${HASH_LIST_SEP}${SRC_LOCG}`;
-				fauxEntry.href.hover = {
-					page: UrlUtil.PG_ORGANIZATION,
-					source: source || SRC_LOCG,
-				};
-				this._recursiveRender(fauxEntry, textStack, meta);
-
-				break;
-			}
-
 			case "@trait": {
 				const [name, source, displayText, ...others] = Renderer.splitTagByPipe(text);
 				const hash = BrewUtil.hasSourceJson(source) ? `${Parser.getTraitName(name)}${HASH_LIST_SEP}${source}` : Parser.getTraitName(name);
@@ -2296,6 +2272,14 @@ function Renderer () {
 						};
 						// FIXME: everything that has to do with add_hash is horrible and its making me do stuff like this
 						fauxEntry.text = displayText || name.replace(/ \(.+\)/, "");
+						this._recursiveRender(fauxEntry, textStack, meta);
+						break;
+					case "@organization":
+						fauxEntry.href.path = UrlUtil.PG_ORGANIZATIONS;
+						fauxEntry.href.hover = {
+							page: UrlUtil.PG_ORGANIZATIONS,
+							source,
+						};
 						this._recursiveRender(fauxEntry, textStack, meta);
 						break;
 					case "@hazard":
@@ -4224,7 +4208,7 @@ Renderer.organization = {
 		const renderer = Renderer.get().setFirstSection(true);
 		const renderStack = [];
 		return `
-			${Renderer.utils.getExcludedDiv(organization, "organization", UrlUtil.PG_ORGANIZATION)}
+			${Renderer.utils.getExcludedDiv(organization, "organization", UrlUtil.PG_ORGANIZATIONS)}
 			${Renderer.utils.getNameDiv(organization, {type: `${organization.alignment && organization.alignment.length === 1 ? `${organization.alignment[0]}` : ""} organization`, ...opts})}
 			${Renderer.utils.getDividerDiv()}
 			${Renderer.utils.getTraitsDiv(organization.traits || [])}
@@ -5179,7 +5163,7 @@ Renderer.hover = {
 		"feat": UrlUtil.PG_FEATS,
 		"hazard": UrlUtil.PG_HAZARDS,
 		"deity": UrlUtil.PG_DEITIES,
-		"organization": UrlUtil.PG_ORGANIZATION,
+		"organization": UrlUtil.PG_ORGANIZATIONS,
 		"variantrule": UrlUtil.PG_VARIANTRULES,
 		"optfeature": UrlUtil.PG_OPTIONAL_FEATURES,
 	},
@@ -6174,8 +6158,8 @@ Renderer.hover = {
 				return Renderer.hover._pCacheAndGet_pLoadAncestries(page, source, hash, opts);
 			case UrlUtil.PG_DEITIES:
 				return Renderer.hover._pCacheAndGet_pLoadCustom(page, source, hash, opts, "deities.json", "deity", null, "deity");
-			case UrlUtil.PG_ORGANIZATION:
-				return Renderer.hover._pCacheAndGet_pLoadCustom(page, source, hash, opts, "organizations.json", "organization");
+			case UrlUtil.PG_ORGANIZATIONS:
+				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "organizations.json", "organization");
 			case UrlUtil.PG_HAZARDS:
 				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "hazards.json", ["hazard"]);
 			case UrlUtil.PG_VARIANTRULES:
@@ -6293,6 +6277,8 @@ Renderer.hover = {
 				return Renderer.hover._pCacheAndGet_pLoadSimpleFluff(page, source, hash, opts, "data/backgrounds/fluff-backgrounds.json", "backgroundFluff");
 			case `fluff__${UrlUtil.PG_ITEMS}`:
 				return Renderer.hover._pCacheAndGet_pLoadSimpleFluff(page, source, hash, opts, "fluff-conditions.json", ["conditionFluff", "diseaseFluff"]);
+			case `fluff__${UrlUtil.PG_ORGANIZATIONS}`:
+				return Renderer.hover._pCacheAndGet_pLoadSimpleFluff(page, source, hash, opts, "fluff-organizations.json", "organizationFluff");
 				// endregion
 
 			// region props
@@ -6815,7 +6801,7 @@ Renderer.hover = {
 				return Renderer.condition.getCompactRenderedString;
 			case UrlUtil.PG_AFFLICTIONS:
 				return Renderer.affliction.getCompactRenderedString;
-			case UrlUtil.PG_ORGANIZATION:
+			case UrlUtil.PG_ORGANIZATIONS:
 				return Renderer.organization.getCompactRenderedString;
 			case UrlUtil.PG_BACKGROUNDS:
 				return Renderer.background.getCompactRenderedString;

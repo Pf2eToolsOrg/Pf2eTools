@@ -3258,7 +3258,7 @@ DataUtil = {
 		},
 
 		loadJSON: async function () {
-			return DataUtil.loadJSON(`${Renderer.get().baseUrl}data/deities.json`);
+			return DataUtil.loadJSON(`${Renderer.get().baseUrl}data/organizations.json`);
 		},
 	},
 

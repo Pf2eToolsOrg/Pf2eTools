@@ -26,12 +26,10 @@ class OrganizationsPage extends ListPage {
 		const hash = UrlUtil.autoEncodeHash(g);
 
 		const alignment = g.followerAlignment.map(it => it.main).join(", ") || "\u2014";
-		// FIXME: CSS, ALL FUCKED UP
-		// Also consider adding more filters
 		eleLi.innerHTML = `<a href="#${hash}" class="lst--border">
-			<span class="bold col-7 pl-0">${g.name}</span>
+			<span class="bold col-8 pl-0">${g.name}</span>
 			<span class="col-2 text-center">${alignment}</span>
-			<span class="col-2 text-center ${Parser.sourceJsonToColor(g.source)} pr-0" title="${Parser.sourceJsonToFull(g.source)}" ${BrewUtil.sourceJsonToStyle(g.source)}>${source}</span>
+			<span class="col-2 text-center ${Parser.sourceJsonToColor(g.source)}" title="${Parser.sourceJsonToFull(g.source)}" ${BrewUtil.sourceJsonToStyle(g.source)}>${source}</span>
 		</a>`;
 
 		const listItem = new ListItem(
@@ -60,14 +58,13 @@ class OrganizationsPage extends ListPage {
 		this._list.filter(item => this._pageFilter.toDisplay(f, this._dataList[item.ix]));
 		FilterBox.selectFirstVisible(this._dataList);
 	}
-	// FIXME: CSS, ALL FUCKED UP 2
 	getSublistItem (g, pinId) {
 		const hash = UrlUtil.autoEncodeHash(g);
 		const alignment = g.followerAlignment.map(it => it.main).join(", ") || "\u2014";
 		const $ele = $(`<li class="row">
 			<a href="#${hash}" class="lst--border">
-				<span class="bold col-5-2 pl-0">${g.name}</span>
-				<span class="col-3-4 text-center">${alignment}</span>
+				<span class="bold col-10 pl-0">${g.name}</span>
+				<span class="col-2 text-center">${alignment}</span>
 			</a>
 		</li>`)
 			.contextmenu(evt => ListUtil.openSubContextMenu(evt, listItem));

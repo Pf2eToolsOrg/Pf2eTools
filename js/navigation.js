@@ -64,7 +64,6 @@ class NavBar {
 		addDivider(ulAdventures);
 		addLi(ulAdventures, "adventure.html", "Sample Adventure", {isSide: true, aHash: "ID", date: "2019"});
 		addLi(ulDms, "hazards.html", "Hazards");
-		addLi(ulDms, "abilities.html", "Creature Abilities");
 
 		const ulReferences = addDropdown(navBar, "References");
 		addLi(ulReferences, "actions.html", "Actions");
@@ -82,6 +81,7 @@ class NavBar {
 		addLi(ulReferences, "places.html", "Planes & Places");
 		addLi(ulReferences, "organizations.html", "Organizations");
 		addDivider(ulReferences);
+		addLi(ulReferences, "abilities.html", "Creature Abilities");
 		addLi(ulReferences, "traits.html", "Traits");
 
 		const ulUtils = addDropdown(navBar, "Utilities");

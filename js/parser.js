@@ -721,6 +721,7 @@ Parser.CAT_ID_SETTLEMENT = 69;
 Parser.CAT_ID_RITUAL = 70;
 Parser.CAT_ID_VEHICLE = 71;
 Parser.CAT_ID_TRAIT = 4;
+Parser.CAT_ID_ORGANIZATION = 72;
 
 Parser.CAT_ID_PAGE = 99;
 
@@ -765,6 +766,7 @@ Parser.CAT_ID_TO_FULL[Parser.CAT_ID_DEITY] = "Deity";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_LANGUAGE] = "Language";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_PLACE] = "Place";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_PLANE] = "Plane";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ORGANIZATION] = "Organization";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_NATION] = "Nation";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_SETTLEMENT] = "Settlement";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_RITUAL] = "Ritual";
@@ -817,6 +819,7 @@ Parser.CAT_ID_TO_PROP[Parser.CAT_ID_DEITY] = "deity";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_LANGUAGE] = "language";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_PLACE] = "place";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_PLANE] = "place";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_ORGANIZATION] = "organization";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_NATION] = "place";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_SETTLEMENT] = "place";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_RITUAL] = "ritual";
@@ -1624,6 +1627,7 @@ Parser.TAG_TO_DEFAULT_SOURCE = {
 	"companion": SRC_CRB,
 	"eidolon": SRC_SOM,
 	"optfeature": SRC_APG,
+	"organization": SRC_LOCG,
 };
 Parser.getTagSource = function (tag, source) {
 	if (source && source.trim()) return source;
