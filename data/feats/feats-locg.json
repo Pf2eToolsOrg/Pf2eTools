@@ -973,7 +973,6 @@
 			"name": "Everstand Stance",
 			"source": "LOCG",
 			"page": 90,
-			"add_hash": "Champion",
 			"activity": {
 				"number": 1,
 				"unit": "action"
@@ -982,28 +981,6 @@
 			"traits": [
 				"Uncommon",
 				"Champion",
-				"Stance"
-			],
-			"requirements": "You are wielding a shield.",
-			"entries": [
-				"You brace your shield with both hands, enhancing its potential for both offense and defense. When in this stance, you wield the shield with both hands. When wielding a shield this way, increase the weapon damage die of the shield's boss or spikes by one step, and increase the shield's Hardness by 2 when using the {@feat Shield Block} reaction."
-			],
-			"leadsTo": [
-				"Everstand Strike (Champion)|LOCG"
-			]
-		},
-		{
-			"name": "Everstand Stance",
-			"source": "LOCG",
-			"page": 90,
-			"add_hash": "Fighter",
-			"activity": {
-				"number": 1,
-				"unit": "action"
-			},
-			"level": 1,
-			"traits": [
-				"Uncommon",
 				"Fighter",
 				"Stance"
 			],
@@ -1012,35 +989,13 @@
 				"You brace your shield with both hands, enhancing its potential for both offense and defense. When in this stance, you wield the shield with both hands. When wielding a shield this way, increase the weapon damage die of the shield's boss or spikes by one step, and increase the shield's Hardness by 2 when using the {@feat Shield Block} reaction."
 			],
 			"leadsTo": [
-				"Everstand Strike (Fighter)|LOCG"
+				"Everstand Strike|LOCG"
 			]
 		},
 		{
 			"name": "Everstand Strike",
 			"source": "LOCG",
 			"page": 90,
-			"add_hash": "Fighter",
-			"activity": {
-				"number": 1,
-				"unit": "action"
-			},
-			"level": 4,
-			"traits": [
-				"Uncommon",
-				"Fighter",
-				"Press"
-			],
-			"prerequisites": "{@feat Everstand Stance (Fighter)|LOCG|Everstand Stance}",
-			"requirements": "You are wielding a shield in two hands.",
-			"entries": [
-				"Your follow-up blow leaves you an opening to set your shield. Make a {@action Strike} with the wielded shield. If the {@action Strike} hits and deals damage, you also {@action Raise a Shield|CRB|Raise your Shield}."
-			]
-		},
-		{
-			"name": "Everstand Strike",
-			"source": "LOCG",
-			"page": 90,
-			"add_hash": "Champion",
 			"activity": {
 				"number": 1,
 				"unit": "action"
@@ -1049,9 +1004,10 @@
 			"traits": [
 				"Uncommon",
 				"Champion",
+				"Fighter",
 				"Press"
 			],
-			"prerequisites": "{@feat Everstand Stance (Champion)|LOCG|Everstand Stance}",
+			"prerequisites": "{@feat Everstand Stance}",
 			"requirements": "You are wielding a shield in two hands.",
 			"entries": [
 				"Your follow-up blow leaves you an opening to set your shield. Make a {@action Strike} with the wielded shield. If the {@action Strike} hits and deals damage, you also {@action Raise a Shield|CRB|Raise your Shield}."
@@ -1840,7 +1796,6 @@
 			"name": "Impassable Wall Stance",
 			"source": "LOCG",
 			"page": 90,
-			"add_hash": "Fighter",
 			"activity": {
 				"number": 1,
 				"unit": "action"
@@ -1849,28 +1804,10 @@
 			"traits": [
 				"Uncommon",
 				"Fighter",
+				"Champion",
 				"Stance"
 			],
 			"prerequisites": "{@action Attack of Opportunity}",
-			"entries": [
-				"You refuse to let foes past your guard. As long as you are in this stance, when you critically hit with an {@action Attack of Opportunity} triggered by a move action, you disrupt that move action."
-			]
-		},
-		{
-			"name": "Impassable Wall Stance",
-			"source": "LOCG",
-			"page": 90,
-			"add_hash": "Champion",
-			"activity": {
-				"number": 1,
-				"unit": "action"
-			},
-			"level": 8,
-			"traits": [
-				"Uncommon",
-				"Champion"
-			],
-			"prerequisites": "{@feat Attack of Opportunity (Champion)|CRB|Attack of Opportunity}",
 			"entries": [
 				"You refuse to let foes past your guard. As long as you are in this stance, when you critically hit with an {@action Attack of Opportunity} triggered by a move action, you disrupt that move action."
 			]
