@@ -27,8 +27,8 @@ class OrganizationsPage extends ListPage {
 
 		const alignment = g.followerAlignment.map(it => it.main).join(", ") || "\u2014";
 		eleLi.innerHTML = `<a href="#${hash}" class="lst--border">
-			<span class="bold col-8 pl-0">${g.name}</span>
-			<span class="col-2 text-center">${alignment}</span>
+			<span class="bold col-7 pl-0">${g.name}</span>
+			<span class="col-3 text-center">${alignment}</span>
 			<span class="col-2 text-center ${Parser.sourceJsonToColor(g.source)}" title="${Parser.sourceJsonToFull(g.source)}" ${BrewUtil.sourceJsonToStyle(g.source)}>${source}</span>
 		</a>`;
 
@@ -63,8 +63,8 @@ class OrganizationsPage extends ListPage {
 		const alignment = g.followerAlignment.map(it => it.main).join(", ") || "\u2014";
 		const $ele = $(`<li class="row">
 			<a href="#${hash}" class="lst--border">
-				<span class="bold col-10 pl-0">${g.name}</span>
-				<span class="col-2 text-center">${alignment}</span>
+				<span class="bold col-9 pl-0">${g.name}</span>
+				<span class="col-3 text-center">${alignment}</span>
 			</a>
 		</li>`)
 			.contextmenu(evt => ListUtil.openSubContextMenu(evt, listItem));
