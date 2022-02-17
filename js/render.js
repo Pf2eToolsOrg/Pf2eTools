@@ -3257,6 +3257,147 @@ Renderer.utils = {
 
 	HTML_NO_INFO: "<i>No information available.</i>",
 	HTML_NO_IMAGES: "<i>No images available.</i>",
+	_prereqWeights: {
+		level: 0,
+		pact: 1,
+		patron: 2,
+		spell: 3,
+		race: 4,
+		ability: 5,
+		proficiency: 6,
+		spellcasting: 7,
+		feature: 8,
+		item: 9,
+		other: 10,
+		otherSummary: 11,
+		[undefined]: 12,
+	},
+	_getPrerequisiteHtml_getShortClassName (className) {
+		const ixFirstVowel = /[aeiou]/.exec(className).index;
+		const start = className.slice(0, ixFirstVowel + 1);
+		let end = className.slice(ixFirstVowel + 1);
+		end = end.replace().replace(/[aeiou]/g, "");
+		return `${start}${end}`.toTitleCase();
+	},
+	getPrerequisiteHtml: (prerequisites, {isListMode = false, blacklistKeys = new Set(), isTextOnly = false, isSkipPrefix = false} = {}) => {
+		if (!prerequisites) { return isListMode ? "\u2014" : ""; }
+		let cntPrerequisites = 0;
+		const renderer = Renderer.get();
+		const listOfChoices = prerequisites.map(pr => {
+			return Object.entries(pr).sort(([kA], [kB]) => Renderer.utils._prereqWeights[kA] - Renderer.utils._prereqWeights[kB]).map(([k, v]) => {
+				if (blacklistKeys.has(k)) { return false; }
+				cntPrerequisites += 1;
+				switch (k) {
+					case "level":
+					{
+						if (typeof v === "number") {
+							if (isListMode) { return `Lvl ${v}`; } else { return `${Parser.getOrdinalForm(v)} level`; }
+						} else if (!v.class && !v.subclass) {
+							if (isListMode) { return `Lvl ${v.level}`; } else { return `${Parser.getOrdinalForm(v.level)} level`; }
+						}
+						const isSubclassVisible = v.subclass && v.subclass.visible;
+						const isClassVisible = v.class && (v.class.visible || isSubclassVisible);
+						if (isListMode) {
+							const shortNameRaw = isClassVisible ? Renderer.utils._getPrerequisiteHtml_getShortClassName(v.class.name) : null;
+							return `${isClassVisible ? `${shortNameRaw.slice(0, 4)}${isSubclassVisible ? "*" : "."} ` : ""} Lvl ${v.level}`;
+						} else {
+							let classPart = "";
+							if (isClassVisible && isSubclassVisible) { classPart = ` ${v.class.name} (${v.subclass.name})`; } else if (isClassVisible) { classPart = ` ${v.class.name}`; } else if (isSubclassVisible) { classPart = ` &lt;remember to insert class name here&gt; (${v.subclass.name})`; }
+							return `${Parser.getOrdinalForm(v.level)} level${isClassVisible ? ` ${classPart}` : ""}`;
+						}
+					}
+					case "spell":
+						return isListMode ? v.map(x => x.split("#")[0].split("|")[0].toTitleCase()).join("/") : v.map(sp => Parser.prereqSpellToFull(sp, {
+							isTextOnly,
+						})).joinConjunct(", ", " or ");
+					case "feat":
+						return isListMode ? v.map(x => x.split("|")[0].toTitleCase()).join("/") : v.map(it => `{@feat ${it}}`).joinConjunct(", ", " or ");
+					case "feature":
+						return isListMode ? v.map(x => Renderer.stripTags(x).toTitleCase()).join("/") : v.map(it => isTextOnly ? Renderer.stripTags(it) : it).joinConjunct(", ", " or ");
+					case "item":
+						return isListMode ? v.map(x => x.toTitleCase()).join("/") : v.joinConjunct(", ", " or ");
+					case "otherSummary":
+						return isListMode ? (v.entrySummary || Renderer.stripTags(v.entry)) : (isTextOnly ? Renderer.stripTags(v.entry) : v.entry);
+					case "other":
+						return isListMode ? "Special" : (isTextOnly ? Renderer.stripTags(v) : v);
+					case "ability":
+					{
+						let hadMultipleInner = false;
+						let hadMultiMultipleInner = false;
+						let allValuesEqual = null;
+						outer: for (const abMeta of v) {
+							for (const req of Object.values(abMeta)) {
+								if (allValuesEqual == null) { allValuesEqual = req; } else {
+									if (req !== allValuesEqual) {
+										allValuesEqual = null;
+										break outer;
+									}
+								}
+							}
+						}
+						const abilityOptions = v.map(abMeta => {
+							if (allValuesEqual) {
+								const abList = Object.keys(abMeta);
+								hadMultipleInner = hadMultipleInner || abList.length > 1;
+								return isListMode ? abList.map(ab => ab.uppercaseFirst()).join(", ") : abList.map(ab => Parser.attAbvToFull(ab)).joinConjunct(", ", " and ");
+							} else {
+								const groups = {};
+								Object.entries(abMeta).forEach(([ab, req]) => {
+									(groups[req] = groups[req] || []).push(ab);
+								},
+								);
+								let isMulti = false;
+								const byScore = Object.entries(groups).sort(([reqA], [reqB]) => SortUtil.ascSort(Number(reqB), Number(reqA))).map(([req, abs]) => {
+									hadMultipleInner = hadMultipleInner || abs.length > 1;
+									if (abs.length > 1) { hadMultiMultipleInner = isMulti = true; }
+									abs = abs.sort(SortUtil.ascSortAtts);
+									return isListMode ? `${abs.map(ab => ab.uppercaseFirst()).join(", ")} ${req}+` : `${abs.map(ab => Parser.attAbvToFull(ab)).joinConjunct(", ", " and ")} ${req} or higher`;
+								},
+								);
+								return isListMode ? `${isMulti || byScore.length > 1 ? "(" : ""}${byScore.join(" & ")}${isMulti || byScore.length > 1 ? ")" : ""}` : isMulti ? byScore.joinConjunct("; ", " and ") : byScore.joinConjunct(", ", " and ");
+							}
+						},
+						);
+						if (isListMode) {
+							return `${abilityOptions.join("/")}${allValuesEqual != null ? ` ${allValuesEqual}+` : ""}`;
+						} else {
+							const isComplex = hadMultiMultipleInner || hadMultipleInner || allValuesEqual == null;
+							const joined = abilityOptions.joinConjunct(hadMultiMultipleInner ? " - " : hadMultipleInner ? "; " : ", ", isComplex ? (isTextOnly ? ` /or/ ` : ` <i>or</i> `) : " or ");
+							return `${joined}${allValuesEqual != null ? ` ${allValuesEqual} or higher` : ""}`;
+						}
+					}
+					case "proficiency":
+					{
+						const parts = v.map(obj => {
+							return Object.entries(obj).map(([profType, prof]) => {
+								switch (profType) {
+									case "armor":
+									{
+										return isListMode ? `Prof ${Parser.armorFullToAbv(prof)} armor` : `Proficiency with ${prof} armor`;
+									}
+									case "weapon":
+									{
+										return isListMode ? `Prof ${Parser.weaponFullToAbv(prof)} weapon` : `Proficiency with a ${prof} weapon`;
+									}
+									default:
+										throw new Error(`Unhandled proficiency type: "${profType}"`);
+								}
+							},
+							);
+						},
+						);
+						return isListMode ? parts.join("/") : parts.joinConjunct(", ", " or ");
+					}
+					default:
+						throw new Error(`Unhandled key: ${k}`);
+				}
+			},
+			).filter(Boolean).join(", ");
+		},
+		).filter(Boolean);
+		if (!listOfChoices.length) { return isListMode ? "\u2014" : ""; }
+		return `${renderer.render(isListMode ? listOfChoices.join("/") : `${isSkipPrefix ? "" : `<strong>Prerequisite${cntPrerequisites === 1 ? "" : "s"}</strong> `}${listOfChoices.joinConjunct("; ", " or ")}`)}`;
+	},
 
 	getMediaUrl (entry, prop, mediaDir) {
 		if (!entry[prop]) return "";
@@ -4757,13 +4898,19 @@ Renderer.language = {
 
 Renderer.optionalFeature = {
 	// FIXME: Add prerequisite showing
+	getListPrerequisiteLevelText (prerequisites) {
+		if (!prerequisites || !prerequisites.some(it => it.level)) { return "\u2014"; }
+		const levelPart = prerequisites.find(it => it.level).level;
+		return levelPart.level || levelPart;
+	},
 	getCompactRenderedString (it, opts) {
 		opts = opts || {};
 		return `
 		${Renderer.utils.getNameDiv(it)}
 		${Renderer.utils.getDividerDiv()}
 		${Renderer.utils.getTraitsDiv(it.traits)}
-		${it.traits ? Renderer.utils.getDividerDiv() : ""}
+		${it.prerequisite ? `<p class="pf2-stat pf2-stat__section">${Renderer.utils.getPrerequisiteHtml(it.prerequisite)}</p>` : ""}
+		${it.traits ? Renderer.utils.getDividerDiv() : it.prerequisite ? Renderer.utils.getDividerDiv() : ""}
 		${Renderer.generic.getRenderedEntries(it)}
 		${opts.noPage ? "" : Renderer.utils.getPageP(it)}`;
 	},

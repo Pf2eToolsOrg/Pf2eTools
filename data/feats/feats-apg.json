@@ -258,7 +258,7 @@
 			],
 			"prerequisites": "{@feat Archer Dedication|APG}",
 			"entries": [
-				"Through constant practice and the crucible of experience, you increase your skill with advanced bows. You gain proficiency with {@filter all advanced bows|items||group=bow|rarity=uncommon} as if they were martial weapons in the bow weapon group."
+				"Through constant practice and the crucible of experience, you increase your skill with advanced bows. You gain proficiency with {@filter all advanced bows|items||group=bow|Subcategory=Weapon;Advanced|category=weapon} as if they were martial weapons in the {@group bow} weapon group."
 			]
 		},
 		{
@@ -833,7 +833,7 @@
 				"Dedication"
 			],
 			"entries": [
-				"You become trained in all simple and martial weapons in the bow weapon group. Whenever you gain a class feature that grants you expert or greater proficiency in certain weapons, you also gain that proficiency rank in all simple and martial weapons in the bow weapon group. If you are at least an expert in the bow you are using, you gain access to the critical specialization effect with that bow."
+				"You become trained in all {@filter simple and martial weapons|items||Group=Bow|Subcategory=Weapon;Martial;Simple|category=weapon} in the {@group bow} weapon group. Whenever you gain a class feature that grants you expert or greater proficiency in certain weapons, you also gain that proficiency rank in all simple and martial weapons in the {@group bow} weapon group. If you are at least an expert in the bow you are using, you gain access to the critical specialization effect with that bow."
 			],
 			"special": "You can't select another dedication feat until you have gained two other feats from the archer archetype.",
 			"leadsTo": [
@@ -863,7 +863,7 @@
 			],
 			"prerequisites": "{@feat Archer Dedication|APG}",
 			"entries": [
-				"You slow down, focus, and take a careful shot. Make a ranged {@action Strike} with a weapon in the bow weapon group.",
+				"You slow down, focus, and take a careful shot. Make a ranged {@action Strike} with a weapon in the {@group bow} weapon group.",
 				"You gain a +2 circumstance bonus to the attack roll and ignore the target's {@condition concealed} condition. If the target is {@condition hidden}, reduce the flat check from being {@condition hidden} from 11 to 5."
 			]
 		},
@@ -7784,7 +7784,7 @@
 			],
 			"prerequisites": "{@feat Cavalier Dedication|APG}",
 			"entries": [
-				"You've trained your mount to become a powerful force on the battlefield. The mount you gained through the Cavalier Dedication feat becomes a mature animal companion, granting it additional capabilities. During an encounter, even if you don't use the {@action Command an Animal} action, your animal companion can still use 1 action on your turn to {@action Stride} or {@action Strike}."
+				"You've trained your mount to become a powerful force on the battlefield. The mount you gained through the {@feat Cavalier Dedication|apg} feat becomes a mature animal companion, granting it additional capabilities. During an encounter, even if you don't use the {@action Command an Animal} action, your animal companion can still use 1 action on your turn to {@action Stride} or {@action Strike}."
 			],
 			"leadsTo": [
 				"Incredible Mount|APG",
@@ -7988,7 +7988,7 @@
 			],
 			"prerequisites": "{@feat Impressive Mount|APG}",
 			"entries": [
-				"Under your care and training, your mount has realized its innate potential. The mount you gained through the Cavalier Dedication feat becomes a nimble or savage animal companion (your choice), gaining additional capabilities determined by the type of companion."
+				"Under your care and training, your mount has realized its innate potential. The mount you gained through the {@feat Cavalier Dedication|apg} feat becomes a {@quickref nimble||0|nimble animal companions} or {@quickref savage||0|savage animal companions} animal companion (your choice), gaining additional capabilities determined by the type of companion."
 			],
 			"leadsTo": [
 				"Specialized Mount|APG"
@@ -11384,7 +11384,7 @@
 			],
 			"prerequisites": "{@feat Archer Dedication|APG}",
 			"entries": [
-				"You draw your bow and attack with the same action. You {@action Interact} to draw a weapon from the bow weapon group that is loaded or has reload 0, then {@action Strike} with that weapon."
+				"You draw your bow and attack with the same action. You {@action Interact} to draw a weapon from the {@group bow} weapon group that is loaded or has reload 0, then {@action Strike} with that weapon."
 			]
 		},
 		{
