@@ -2264,6 +2264,14 @@ function Renderer () {
 						};
 						this._recursiveRender(fauxEntry, textStack, meta);
 						break;
+					case "@companionAbility":
+						fauxEntry.href.path = UrlUtil.PG_COMPANIONS_FAMILIARS;
+						fauxEntry.href.hover = {
+							page: UrlUtil.PG_COMPANIONS_FAMILIARS,
+							source,
+						};
+						this._recursiveRender(fauxEntry, textStack, meta);
+						break;
 					case "@feat":
 						fauxEntry.href.path = UrlUtil.PG_FEATS;
 						fauxEntry.href.hover = {
@@ -3731,6 +3739,7 @@ Renderer.background = {
 Renderer.companionfamiliar = {
 	getRenderedString (it, opts) {
 		if (it.__prop === "familiarAbility") return Renderer.familiar.getRenderedFamiliarAbility(it, opts)
+		if (it.__prop === "companionAbility") return Renderer.companion.getRenderedCompanionAbility(it, opts)
 		if (it.__prop === "companion") return Renderer.companion.getRenderedString(it, opts);
 		if (it.__prop === "familiar") return Renderer.familiar.getRenderedString(it, opts);
 		if (it.__prop === "eidolon") return Renderer.eidolon.getRenderedString(it, opts);
@@ -3767,6 +3776,13 @@ Renderer.companion = {
 		${companion.maneuver ? Renderer.action.getCompactRenderedString(companion.maneuver, {noPage: true}) : ""}
 		${Renderer.utils.getPageP(companion)}`;
 	},
+	getRenderedCompanionAbility (it, opts) {
+		return `${Renderer.utils.getNameDiv(it)}
+			${Renderer.utils.getDividerDiv()}
+			${Renderer.utils.getTraitsDiv(it.traits)}
+			${Renderer.generic.getRenderedEntries(it)}
+			${Renderer.utils.getPageP(it)}`;
+	},
 };
 Renderer.familiar = {
 	getRenderedString (familiar, opts) {
@@ -3789,7 +3805,9 @@ Renderer.familiar = {
 		// TODO:
 		return `${Renderer.utils.getNameDiv(it, {type: `${it.type} Ability`})}
 			${Renderer.utils.getDividerDiv()}
-			${Renderer.generic.getRenderedEntries(it)}`;
+			${Renderer.utils.getTraitsDiv(it.traits)}
+			${Renderer.generic.getRenderedEntries(it)}
+			${Renderer.utils.getPageP(it)}`;
 	},
 };
 Renderer.eidolon = {
@@ -6310,7 +6328,7 @@ Renderer.hover = {
 			case UrlUtil.PG_FEATS:
 				return Renderer.hover._pCacheAndGet_pLoadWithIndex(page, source, hash, opts, "data/feats/", "feat");
 			case UrlUtil.PG_COMPANIONS_FAMILIARS:
-				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "companionsfamiliars.json", ["companion", "familiar", "familiarAbility", "eidolon"]);
+				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "companionsfamiliars.json", ["companion", "companionAbility", "familiar", "familiarAbility", "eidolon"]);
 			case UrlUtil.PG_ANCESTRIES:
 				return Renderer.hover._pCacheAndGet_pLoadAncestries(page, source, hash, opts);
 			case UrlUtil.PG_DEITIES:
@@ -7324,6 +7342,7 @@ Renderer._stripTagLayer = function (str) {
 					case "@familiar":
 					case "@familiarAbility":
 					case "@companion":
+					case "@companionAbility":
 					case "@optfeature":
 					case "@variantrule": {
 						const parts = Renderer.splitTagByPipe(text);

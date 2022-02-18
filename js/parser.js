@@ -1625,6 +1625,7 @@ Parser.TAG_TO_DEFAULT_SOURCE = {
 	"familiar": SRC_APG,
 	"familiarAbility": SRC_CRB,
 	"companion": SRC_CRB,
+	"companionAbility": SRC_CRB,
 	"eidolon": SRC_SOM,
 	"optfeature": SRC_APG,
 	"organization": SRC_LOCG,
