@@ -14635,7 +14635,7 @@
 						"magical"
 					],
 					"effects": [],
-					"damage": "{@dice 1d6}\u20131 bludgeoning plus {@damage 1d4} good",
+					"damage": "{@dice 1d6-1} bludgeoning plus {@damage 1d4} good",
 					"types": [
 						"bludgeoning",
 						"good"
@@ -20178,7 +20178,7 @@
 						"magical"
 					],
 					"effects": [],
-					"damage": "{@dice 1d4}\u20133 piercing plus {@damage 6d6} negative",
+					"damage": "{@dice 1d4-3} piercing plus {@damage 6d6} negative",
 					"types": [
 						"negative",
 						"piercing"
@@ -32141,7 +32141,7 @@
 					"effects": [
 						"giant centipede venom"
 					],
-					"damage": "{@dice 1d4}\u20131 piercing plus giant centipede venom",
+					"damage": "{@dice 1d4-1} piercing plus giant centipede venom",
 					"types": [
 						"piercing"
 					]
@@ -42621,7 +42621,7 @@
 					"effects": [
 						"imp venom"
 					],
-					"damage": "{@dice 1d4}\u20131 piercing plus {@damage 1d4} evil and imp venom",
+					"damage": "{@dice 1d4-1} piercing plus {@damage 1d4} evil and imp venom",
 					"types": [
 						"evil",
 						"piercing"
@@ -42694,8 +42694,8 @@
 						{
 							"type": "list",
 							"items": [
-								"{@bold Boar size} Medium; {@ability scent} (imprecise) 30 feet; Speed 40 feet; Melee tusk +9 (finesse), Damage {@dice 1d10}\u20131 piercing",
-								"{@bold Giant Spider size} Medium; Speed 25 feet, climb 25 feet; Melee fangs +9 (finesse, poison), Damage {@dice 1d6}\u20131 piercing plus {@damage 1d4} poison",
+								"{@bold Boar size} Medium; {@ability scent} (imprecise) 30 feet; Speed 40 feet; Melee tusk +9 (finesse), Damage {@dice 1d10-1} piercing",
+								"{@bold Giant Spider size} Medium; Speed 25 feet, climb 25 feet; Melee fangs +9 (finesse, poison), Damage {@dice 1d6-1} piercing plus {@damage 1d4} poison",
 								"Rat {@ability scent}; Speed 20 feet; Melee jaws +9 (agile, finesse), Damage 1 piercing",
 								"Raven {@ability scent}; Speed 10 feet, fly 40 feet; Melee beak +9 (finesse), Damage 1 piercing"
 							]
@@ -44252,7 +44252,7 @@
 						"finesse"
 					],
 					"effects": [],
-					"damage": "{@dice 1d6}\u20131 slashing",
+					"damage": "{@dice 1d6-1} slashing",
 					"types": [
 						"slashing"
 					]
@@ -44265,7 +44265,7 @@
 						"two-hand d8"
 					],
 					"effects": [],
-					"damage": "{@dice 1d4}\u20131 bludgeoning",
+					"damage": "{@dice 1d4-1} bludgeoning",
 					"types": [
 						"bludgeoning"
 					]
@@ -46235,7 +46235,7 @@
 						"reach 10 feet"
 					],
 					"effects": [],
-					"damage": "{@dice 1d8}\u20131 piercing",
+					"damage": "{@dice 1d8-1} piercing",
 					"types": [
 						"piercing"
 					]
@@ -51693,8 +51693,8 @@
 				"Cha": -1
 			},
 			"items": [
-				"dart (10)",
-				"shortsword"
+				"{@item dart} (10)",
+				"{@item shortsword}"
 			],
 			"abilitiesTop": [
 				{
@@ -51709,8 +51709,7 @@
 				},
 				{
 					"entries": [
-						"Mitflits can use {@skill Diplomacy} to {@action Make an Impression} on and {@action Request} things of arthropods (insects, spiders, scorpions, crabs, and similar invertebrate animals). Most arthropods have a starting attitude of {@condition indifferent} to mitflits.",
-						"Items dart (10), shortsword."
+						"Mitflits can use {@skill Diplomacy} to {@action Make an Impression} on and {@action Request} things of arthropods (insects, spiders, scorpions, crabs, and similar invertebrate animals). Most arthropods have a starting attitude of {@condition indifferent} to mitflits."
 					],
 					"name": "Vermin Empathy"
 				}
@@ -51756,7 +51755,7 @@
 						"versatile S"
 					],
 					"effects": [],
-					"damage": "{@dice 1d6}\u20131 piercing",
+					"damage": "{@dice 1d6-1} piercing",
 					"types": [
 						"piercing"
 					]
@@ -51771,7 +51770,7 @@
 						"thrown"
 					],
 					"effects": [],
-					"damage": "{@dice 1d4}\u20131 piercing",
+					"damage": "{@dice 1d4-1} piercing",
 					"types": [
 						"piercing"
 					]
@@ -55069,7 +55068,7 @@
 					"effects": [
 						"spirit touch"
 					],
-					"damage": "{@dice 1d4}\u20131 piercing plus spirit touch",
+					"damage": "{@dice 1d4-1} piercing plus spirit touch",
 					"types": [
 						"piercing"
 					]
@@ -59357,7 +59356,7 @@
 						"versatile S"
 					],
 					"effects": [],
-					"damage": "{@dice 1d6}\u20133 slashing",
+					"damage": "{@dice 1d6-3} slashing",
 					"types": [
 						"slashing"
 					]
@@ -59801,7 +59800,7 @@
 					"effects": [
 						"quasit venom"
 					],
-					"damage": "{@dice 1d6}\u20131 slashing plus {@damage 1d4} evil and quasit venom",
+					"damage": "{@dice 1d6-1} slashing plus {@damage 1d4} evil and quasit venom",
 					"types": [
 						"evil",
 						"slashing"
@@ -59893,10 +59892,10 @@
 						{
 							"type": "list",
 							"items": [
-								"Bat echolocation 40 feet; Speed 15 feet, fly Speed 30 feet; Melee fangs +7, Damage {@dice 1d4}\u20131 piercing; Melee wing +7 (agile), Damage {@dice 1d4}\u20131 bludgeoning",
+								"Bat echolocation 40 feet; Speed 15 feet, fly Speed 30 feet; Melee fangs +7, Damage {@dice 1d4-1} piercing; Melee wing +7 (agile), Damage {@dice 1d4-1} bludgeoning",
 								"{@bold Centipede} Speed 10 feet, climb 10 feet; Melee mandibles +7 (poison), Damage 1 piercing plus {@damage 1d4} poison",
 								"{@bold Toad scent} (imprecise) 30 feet; Speed 5 feet; Melee jaws +7, Damage 1 bludgeoning",
-								"{@bold Wolf size} Medium; {@ability scent} (imprecise) 30 feet; Speed 40 feet, climb 10 feet; Melee jaws +7, Damage {@dice 1d10}\u20131 piercing plus Knockdown"
+								"{@bold Wolf size} Medium; {@ability scent} (imprecise) 30 feet; Speed 40 feet, climb 10 feet; Melee jaws +7, Damage {@dice 1d10-1} piercing plus Knockdown"
 							]
 						}
 					],
@@ -68073,8 +68072,7 @@
 				},
 				{
 					"entries": [
-						"A creature struck by a slurk's slime squirt becomes {@condition clumsy 1} and takes a \u20135-foot penalty to Speed for 1 hour or until the slime is removed. The slime can be removed with a total of three {@action Interact} actions by the entangled creature or creatures adjacent to the creature. These actions don't need to be consecutive or made by the same creature.",
-						"A snake's hide can be cleanly removed with a successful {@skill Crafting} check or appropriate {@skill Lore} check."
+						"A creature struck by a slurk's slime squirt becomes {@condition clumsy 1} and takes a \u20135-foot penalty to Speed for 1 hour or until the slime is removed. The slime can be removed with a total of three {@action Interact} actions by the entangled creature or creatures adjacent to the creature. These actions don't need to be consecutive or made by the same creature."
 					],
 					"name": "Entangling Slime"
 				}
@@ -69113,7 +69111,7 @@
 						"magical"
 					],
 					"effects": [],
-					"damage": "{@dice 1d6}\u20133 piercing plus 1 fire",
+					"damage": "{@dice 1d6-3} piercing plus 1 fire",
 					"types": [
 						"fire",
 						"piercing"
@@ -75185,7 +75183,7 @@
 					"effects": [
 						"viper venom"
 					],
-					"damage": "{@dice 1d8}\u20133 piercing plus viper venom",
+					"damage": "{@dice 1d8-3} piercing plus viper venom",
 					"types": [
 						"piercing"
 					]
@@ -75363,7 +75361,7 @@
 						"magical"
 					],
 					"effects": [],
-					"damage": "{@dice 1d8}\u20131 piercing plus {@damage 1d4} chaotic",
+					"damage": "{@dice 1d8-1} piercing plus {@damage 1d4} chaotic",
 					"types": [
 						"chaotic",
 						"piercing"
@@ -75381,7 +75379,7 @@
 					"effects": [
 						"confounding lash"
 					],
-					"damage": "{@dice 1d4}\u20131 slashing plus {@damage 1d4} chaotic and confounding lash",
+					"damage": "{@dice 1d4-1} slashing plus {@damage 1d4} chaotic and confounding lash",
 					"types": [
 						"chaotic",
 						"slashing"
