@@ -3519,14 +3519,42 @@
 					"items": [
 						"Your eidolon gains {@ability low-light vision} and {@ability darkvision}.",
 						"Your eidolon gains {@ability scent} as an imprecise sense up to 30 feet.",
-						"Your eidolon can breathe underwater and gains a swim Speed equal to its land Speed or 30 feet,"
+						"Your eidolon can breathe underwater and gains a swim Speed equal to its land Speed or 30 feet, whichever is less. Alternatively, if your eidolon is normally aquatic, it can breathe air and gains a land Speed equal to its swim Speed or 30 feet, whichever is less. Either way, it gains the {@trait amphibious} trait.",
+						"Your eidolon gains a +20-foot status bonus to its Speed."
 					]
 				}
 			],
 			"heightened": {
-				"heightened": false,
+				"heightened": true,
 				"plus_x": null,
-				"x": null,
+				"x": [
+					{
+						"level": 3,
+						"entries": [
+							"Add the following options to the list of effects you can choose:",
+							{
+								"type": "list",
+								"items": [
+									"Your eidolon becomes Large, instead of its previous size. This increases your eidolon's reach to 10 feet but doesn't change any other statistics for your eidolon. Because of the special link you share, you can ride your eidolon without getting in each other's way. If another creature tries to ride your eidolon, both you and the riding creature each regain only 2 actions at the start of your turns each round, as normal.",
+									"Your eidolon gains a climb Speed equal to its land Speed."
+								]
+							}
+						]
+					},
+					{
+						"level": 5,
+						"entries": [
+							"Add the options from the 3rd-level version and the following options to the list of effects you can choose:",
+							{
+								"type": "list",
+								"items": [
+									"Your eidolon becomes Huge, instead of its previous size. This has the same effects as the 3rd-level option to become Large, except your eidolon's reach increases to 15 feet.",
+									"Your eidolon gains a fly Speed equal to its Speed."
+								]
+							}
+						]
+					}
+				],
 				"no_x": null
 			}
 		},
@@ -4139,13 +4167,13 @@
 			"entries": [
 				"A Medium floating, disembodied hand made of magical force appears in an unoccupied space adjacent to you, following you across the battlefield to shield you against your foes' attacks. Each time you {@action Sustain a Spell||Sustain the Spell}, the hand moves to an unoccupied space of your choice adjacent to you. When you {@action Sustain a Spell||Sustain the Spell}, you can have the hand {@action Fly} to an unoccupied space of your choice adjacent to an ally to protect that ally instead. The hand's movement does not trigger reactions based on creature movement.",
 				"Successful attacks against the hand damage it, and damaging effects that can target a creature can target the hand. The hand has an AC of 25, 50 Hit Points, and can't recover HP by any means. A hit by a {@spell disintegrate} spell or similar effect destroys the hand.",
-				"The hand's actions and the cover it provides depend on what actions you take during your turn. At the end of your turn, what the hand does is determined by the first entry on this list that matches a trait from any of the actions you used on your turn. For instance, if you {@action Step}, {@action Stride}, and {@action Sustain a Spell||Sustain the Spell}, you use the entry for move actions, so the hand provides standard cover.",
+				"The hand's actions and the {@quickref cover||3|cover} it provides depend on what actions you take during your turn. At the end of your turn, what the hand does is determined by the first entry on this list that matches a trait from any of the actions you used on your turn. For instance, if you {@action Step}, {@action Stride}, and {@action Sustain a Spell||Sustain the Spell}, you use the entry for move actions, so the hand provides standard cover.",
 				{
 					"type": "list",
 					"items": [
-						"{@bold Manipulate or Attack} The hand interposes between you and your foes. It provides lesser cover (+1 circumstance bonus to AC) against all attacks that pass through the hand's square.",
-						"{@bold Move} The hand provides standard cover (+2 circumstance bonus to AC, Reflex, and {@skill Stealth} checks) against all attacks that pass through the hand's square.",
-						"{@bold Concentrate} The hand provides greater cover (+4 circumstance bonus to AC, Reflex, and {@skill Stealth} checks) against all attacks that pass through the hand's square."
+						"{@bold {@trait Manipulate} or {@trait Attack}} The hand interposes between you and your foes. It provides lesser cover (+1 circumstance bonus to AC) against all attacks that pass through the hand's square.",
+						"{@bold {@trait Move}} The hand provides standard cover (+2 circumstance bonus to AC, Reflex, and {@skill Stealth} checks) against all attacks that pass through the hand's square.",
+						"{@bold {@trait Concentrate}} The hand provides greater cover (+4 circumstance bonus to AC, Reflex, and {@skill Stealth} checks) against all attacks that pass through the hand's square."
 					]
 				}
 			],
@@ -4155,19 +4183,51 @@
 				"x": [
 					{
 						"level": 6,
-						"entry": "The hand has AC 27 and 60 Hit Points. When you {@action Cast a Spell||Cast this Spell}, you can choose to replace the hand's Manipulate or Attack option with Swat. • Swat The hand Flies to an enemy of your choice within range and attempts to Push that enemy, using your spell attack roll instead of an {@skill Athletics} check to determine the results of the Push."
+						"entry": [
+							"The hand has AC 27 and 60 Hit Points. When you {@action Cast a Spell||Cast this Spell}, you can choose to replace the hand's Manipulate or Attack option with Swat.",
+							{
+								"type": "list",
+								"items": [
+									"{@bold Swat} The hand {@action Fly||Flies} to an enemy of your choice within range and attempts to {@action Shove||Push} that enemy, using your spell attack roll instead of an {@skill Athletics} check to determine the results of the {@action Shove||Push}."
+								]
+							}
+						]
 					},
 					{
 						"level": 7,
-						"entry": "The hand has AC 30 and 70 Hit Points, and it is Large. When you {@action Cast a Spell||Cast this Spell}, you can choose to replace the hand's Manipulate or Attack option with Grasp or Swat. • Grasp The hand Flies to an enemy of your choice within range and attempts to {@action Grapple} that enemy, using your spell attack roll instead of an {@skill Athletics} check to determine the results of the {@action Grapple}."
+						"entry": [
+							"The hand has AC 30 and 70 Hit Points, and it is Large. When you {@action Cast a Spell||Cast this Spell}, you can choose to replace the hand's Manipulate or Attack option with Grasp or Swat.",
+							{
+								"type": "list",
+								"items": [
+									"{@b Grasp} The hand {@action Fly||Flies} to an enemy of your choice within range and attempts to {@action Grapple} that enemy, using your spell attack roll instead of an {@skill Athletics} check to determine the results of the {@action Grapple}."
+								]
+							}
+						]
 					},
 					{
 						"level": 8,
-						"entry": "The hand has AC 32 and 80 Hit Points, and it is Large. When you {@action Cast a Spell||Cast this Spell}, you can choose to replace the hand's Manipulate or Attack option with Grasp, Punch, or Swat. • Punch The hand Flies to an enemy of your choice within range and attempts to {@action Strike} that enemy with crushing force. The hand's Strikes use your melee spell attack modifiers and deal {@damage 7d8} force damage. The hand's Strikes don't use or contribute to your multiple attack penalty."
+						"entry": [
+							"The hand has AC 32 and 80 Hit Points, and it is Large. When you {@action Cast a Spell||Cast this Spell}, you can choose to replace the hand's Manipulate or Attack option with Grasp, Punch, or Swat.",
+							{
+								"type": "list",
+								"items": [
+									"{@b Punch} The hand {@action Fly||Flies} to an enemy of your choice within range and attempts to {@action Strike} that enemy with crushing force. The hand's {@action Strike||Strikes} use your melee spell attack modifiers and deal {@damage 7d8} force damage. The hand's {@action Strike||Strikes} don't use or contribute to your multiple attack penalty."
+								]
+							}
+						]
 					},
 					{
 						"level": 9,
-						"entry": "The hand has AC 35 and 90 Hit Points, and it is Large. When you {@action Cast a Spell||Cast this Spell}, you can choose to replace the hand's Manipulate or Attack option with Crush, Grasp, Punch, or Swat. • Crush If the hand doesn't have a target {@condition grabbed}, it Flies to an enemy of your choice within range and attempts to {@action Strike} that enemy with deadly crushing force. The hand's Strikes are melee spell attacks that deal {@damage 6d8} force damage. The hand's Strikes don't take or contribute to your multiple attack penalty. On a successful {@action Strike}, the target is {@condition grabbed} by the hand until the end of your next turn, unless the hand moves or the target successfully {@action Escape||Escapes} against your spell DC. However, if the hand has a target {@condition grabbed} when it uses Crush, it instead Constricts the target, dealing {@damage 6d8} force damage with a basic Fortitude save."
+						"entry": [
+							"The hand has AC 35 and 90 Hit Points, and it is Large. When you {@action Cast a Spell||Cast this Spell}, you can choose to replace the hand's Manipulate or Attack option with Crush, Grasp, Punch, or Swat.",
+							{
+								"type": "list",
+								"items": [
+									"{@b Crush} If the hand doesn't have a target {@condition grabbed}, it {@action Fly||Flies} to an enemy of your choice within range and attempts to {@action Strike} that enemy with deadly crushing force. The hand's {@action Strike||Strikes} are melee spell attacks that deal {@damage 6d8} force damage. The hand's {@action Strike||Strikes} don't take or contribute to your multiple attack penalty. On a successful {@action Strike}, the target is {@condition grabbed} by the hand until the end of your next turn, unless the hand moves or the target successfully {@action Escape||Escapes} against your spell DC. However, if the hand has a target {@condition grabbed} when it uses Crush, it instead {@ability Constricts} the target, dealing {@damage 6d8} force damage with a basic Fortitude save."
+								]
+							}
+						]
 					}
 				],
 				"no_x": null

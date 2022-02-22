@@ -16,7 +16,7 @@
 					},
 					"source": {
 						"type": "string",
-						"$ref": "../utils.json#/definitions/sourceList"
+						"$ref": "utils.json#/definitions/sourceList"
 					},
 					"page": {
 						"type": "integer"
@@ -25,7 +25,7 @@
 						"type": "string"
 					},
 					"frequency": {
-						"$ref": "../utils.json#/definitions/frequency"
+						"$ref": "utils.json#/definitions/frequency"
 					},
 					"trigger": {
 						"type": "string"
@@ -47,13 +47,13 @@
 								"oneOf": [
 									{
 										"type": "string",
-										"$ref": "../utils.json#/definitions/classNameUpper"
+										"$ref": "utils.json#/definitions/classNameUpper"
 									},
 									{
 										"type": "array",
 										"items": {
 											"type": "string",
-											"$ref": "../utils.json#/definitions/classNameUpper"
+											"$ref": "utils.json#/definitions/classNameUpper"
 										},
 										"uniqueItems": true
 									}
@@ -65,7 +65,7 @@
 							},
 							"ancestry": {
 								"type": ["string", "array"],
-								"$ref": "../utils.json#/definitions/ancestryNameUpper"
+								"$ref": "utils.json#/definitions/ancestryNameUpper"
 							},
 							"skill": {
 								"not": { "enum": [false] },
@@ -83,7 +83,7 @@
 					},
 					"activity": {
 						"type": "object",
-						"$ref": "../utils.json#/definitions/activity"
+						"$ref": "utils.json#/definitions/activity"
 					},
 					"access": {
 						"type": "string"
@@ -92,7 +92,7 @@
 						"type": "array",
 						"items":{
 							"type": "string",
-							"$ref": "../utils.json#/definitions/anyTraitUpper"
+							"$ref": "utils.json#/definitions/anyTraitUpper"
 						},
 						"minItems": 1,
 						"uniqueItems": true
@@ -107,7 +107,7 @@
 					"entries": {
 						"type": "array",
 						"items": {
-							"$ref": "../entry.json"
+							"$ref": "entry.json"
 						}
 					},
 					"special": {
