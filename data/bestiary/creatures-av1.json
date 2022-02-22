@@ -3816,12 +3816,6 @@
 				"Cha": 2
 			},
 			"abilitiesTop": [
-				{
-					"entries": [
-						"+15, {@skill Intimidation} +17, {@skill Occultism} +17, {@skill Religion} +15, {@skill Stealth} +15 Str +4, Dex +6, Con +2, Int +6, Wis +4, Cha +2."
-					],
-					"name": "Deception"
-				}
 			],
 			"ac": {
 				"default": 25,
@@ -3871,10 +3865,9 @@
 			"abilitiesMid": [
 				{
 					"entries": [
-						"As worm that walks, but slow-moving leeches give the heroes 2 rounds, rather than 1 round, to dispatch the {@condition fleeing} vermin before they escape."
+						"As {@creature Worm That Walks Cultist|bst2|worm that walks}, but slow-moving leeches give the heroes 2 rounds, rather than 1 round, to dispatch the {@condition fleeing} vermin before they escape."
 					],
-					"name": "Discorporate",
-					"entries_as_xyz": "Ability not found: 'Discorporate As worm that walks, but slow-moving leeches give the heroes 2 rounds, rather than 1 round, to dispatch the {@condition fleeing} vermin before they escape.' in Volluk Azrinae, p.54"
+					"name": "Discorporate"
 				},
 				{
 					"traits": [
@@ -3904,7 +3897,7 @@
 						"reach 10 feet"
 					],
 					"effects": [],
-					"damage": "{@damage 2d8+8} {@condition persistent damage ||persistent piercing damage}",
+					"damage": "{@damage 2d8+8} {@condition persistent damage||persistent piercing damage}",
 					"types": [
 						"persistent"
 					]
@@ -3931,7 +3924,7 @@
 									"name": "mirror image"
 								},
 								{
-									"name": "vomit swarm"
+									"name": "vomit swarm|apg"
 								}
 							]
 						},
@@ -3962,10 +3955,7 @@
 									"name": "suggestion"
 								},
 								{
-									"name": "worm's repast",
-									"notes": [
-										"page 80"
-									]
+									"name": "worm's repast|av1"
 								}
 							]
 						}
