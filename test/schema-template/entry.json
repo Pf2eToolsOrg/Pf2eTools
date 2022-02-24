@@ -218,6 +218,9 @@
 								},
 								{
 									"const": "pf2-h1-flavor"
+								},
+								{
+									"const": "pf2-sidebar"
 								}
 							]
 						},
@@ -247,6 +250,9 @@
 						},
 						"id": {
 							"type": "string"
+						},
+						"collapsible": {
+							"type": "boolean"
 						}
 					},
 					"required": [
@@ -334,7 +340,9 @@
 						"tag": {
 							"type":"string",
 							"enum": [
-								"action"
+								"action",
+								"feat",
+								"item"
 							]
 						},
 						"name": {

@@ -1,0 +1,69 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema",
+	"$id": "diseases.json",
+	"title": "Diseases",
+	"description": "The disease data type for Pf2eTools.",
+	"type": "object",
+	"version": "0.0.1",
+	"properties": {
+		"disease": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"source": {
+						"type": "string",
+						"$ref": "utils.json#/definitions/sourceList"
+					},
+					"name": {
+						"type": "string"
+					},
+					"page": {
+						"type": "integer"
+					},
+					"type": {
+						"type": "string",
+						"enum": ["Disease", "Weapon"]
+					},
+					"level": {
+						"type": "integer"
+					},
+					"traits": {
+						"type": "array",
+						"items": {
+							"type": "string",
+							"anyOf": [
+								{
+									"$ref": "utils.json#/definitions/traditionUpper"
+								},
+								{
+									"$ref": "utils.json#/definitions/schoolUpper"
+								},
+								{
+									"$ref": "utils.json#/definitions/effectNameUpper"
+								},
+								{
+									"enum": [
+										"Virulent",
+										"Curse"
+									]
+								}
+							]
+						}
+					},
+					"entries": {
+						"type": "array",
+						"items": {
+							"$ref": "entry.json"
+						}
+					}
+				},
+				"additionalProperties": false,
+				"required": ["source", "name", "entries", "page"]
+			},
+			"uniqueItems": true
+		}
+	},
+	"additionalProperties": false,
+	"required": ["disease"]
+}
