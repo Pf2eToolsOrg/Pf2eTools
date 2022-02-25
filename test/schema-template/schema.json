@@ -66,7 +66,7 @@
 			"type": "array"
 		},
 		"feat": {
-			"$ref": "feats.json#/properties/feat"
+			"$ref": "feats/feats.json#/properties/feat"
 		},
 		"companion": {
 			"type": "array"
@@ -102,7 +102,7 @@
 			"type": "array"
 		},
 		"disease": {
-			"type": "array"
+			"$ref": "diseases.json#/properties/disease"
 		},
 		"curse": {
 			"type": "array"
@@ -144,7 +144,7 @@
 			"$ref": "organizations.json#/properties/organization"
 		},
 		"organizationFluff": {
-			"type": "array"
+			"$ref": "fluff-organizations.json#/properties/organizationFluff"
 		},
 		"eidolon": {
 			"type": "array"
@@ -154,6 +154,9 @@
 		},
 		"optionalfeature": {
 			"type": "array"
+		},
+		"data": {
+			"$ref": "renderdemo.json#/properties/data"
 		}
 	},
 	"additionalProperties": false
