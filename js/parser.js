@@ -626,8 +626,7 @@ Parser.getOrdinalForm = function (i) {
 };
 
 Parser.spLevelToFull = function (level) {
-	if (level === 0) return "Cantrip";
-	else return Parser.getOrdinalForm(level);
+	return Parser.getOrdinalForm(level);
 };
 
 Parser.getArticle = function (str) {

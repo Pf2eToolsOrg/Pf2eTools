@@ -5034,7 +5034,7 @@ Renderer.spell = {
 		const entryStack = [];
 		renderer.recursiveRender(sp.entries, entryStack, {pf2StatFix: true});
 
-		const level = sp.type === "CANTRIP" ? " 1" : ` ${sp.level}`;
+		const level = ` ${sp.level}`;
 
 		return `${Renderer.utils.getExcludedDiv(sp, "spell", UrlUtil.PG_SPELLS)}
 		${Renderer.utils.getNameDiv(sp, {page: UrlUtil.PG_SPELLS, level: level, ...opts})}
