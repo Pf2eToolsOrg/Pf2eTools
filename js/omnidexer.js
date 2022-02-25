@@ -110,10 +110,10 @@ class Omnidexer {
 				const it = dataArr[i];
 
 				const name = Omnidexer.getProperty(it, arbiter.primary || "name");
-				await pHandleItem(it, i, name);
+				if (it.id) await pHandleItem(it, i, `${it.id}: ${name}`);
+				else await pHandleItem(it, i, name);
 
 				if (it.alias) it.alias.forEach(a => pHandleItem(it, i, a));
-				if (it.id) await pHandleItem(it, i, `${it.id}: ${name}`);
 			}
 		}
 
