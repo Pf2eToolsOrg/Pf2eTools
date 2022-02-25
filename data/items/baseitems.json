@@ -1,654 +1,6 @@
 {
 	"baseitem": [
 		{
-			"name": "Backpack Ballista",
-			"source": "G&G",
-			"equipment": true,
-			"page": 62,
-			"type": "Item",
-			"level": 1,
-			"traits": [
-				"Uncommon"
-			],
-			"price": {
-				"amount": 18,
-				"coin": "gp"
-			},
-			"damage": "1d12",
-			"damageType": "P",
-			"range": 180,
-			"reload": "1 min.",
-			"bulk": 2,
-			"hands": "1+",
-			"ammunition": [
-				"Backpack Ballista Bolts|G&G"
-			],
-			"group": "Bow",
-			"category": "Weapon",
-			"subCategory": "Martial",
-			"entries": [
-				"This complex wooden device, worn on the back, contains a miniature ballista on a retractable arm. As an {@action Interact} action, you can pull a lever to deploy or retract the ballista. As long as it remains deployed, you must hold the ballista using that hand or some of the components spill out onto the ground, just like dropping any other weapon. While deployed, the device opens and raises the ballista up over your shoulder. While retracted, the ballista and its mount slide down and are {@condition concealed} within the device. Although a backpack ballista packs a punch, the device is a challenge to operate. Reloading it takes 1 minute and can't be done while worn. As normal, you can't wear a backpack ballista with another backpack."
-			]
-		},
-		{
-			"name": "Backpack Catapult",
-			"source": "G&G",
-			"equipment": true,
-			"page": 63,
-			"type": "Item",
-			"level": 1,
-			"traits": [
-				"Uncommon",
-				"Volley 50 ft."
-			],
-			"price": {
-				"amount": 20,
-				"coin": "gp"
-			},
-			"damage": "1d12",
-			"damageType": "B",
-			"range": 240,
-			"reload": "1 min.",
-			"bulk": 3,
-			"ammunition": [
-				"Backpack Catapult Stones|G&G"
-			],
-			"hands": "1+",
-			"group": "Sling",
-			"category": "Weapon",
-			"subCategory": "Advanced",
-			"entries": [
-				"This wooden device is worn on the back and contains a miniature catapult mounted on a retractable frame. As an {@action Interact} action, you can pull a lever to deploy or retract the catapult. As long as it remains deployed, you must hold the catapult using that hand or some of the components spill out onto the ground, just like dropping any other weapon. While deployed, the device opens and raises the catapult up over your shoulder. While retracted, the catapult and its mount slide down and are {@condition concealed} within the device. A backpack catapult fires specialized stone spheres that are loaded into the bucket while unworn and retracted, through a sliding hatch; the reloading process takes 1 minute. To prevent misfires and accidental injury, the bucket fully encloses the stone while deployed, only opening when fired. As normal, you can't wear a backpack catapult with another backpack."
-			]
-		},
-		{
-			"name": "Dart Umbrella",
-			"source": "G&G",
-			"equipment": true,
-			"page": 63,
-			"type": "Item",
-			"level": 0,
-			"traits": [
-				"Agile",
-				"Concealable",
-				"Nonlethal",
-				"Uncommon"
-			],
-			"price": {
-				"amount": 1,
-				"coin": "gp"
-			},
-			"damage": "1",
-			"damageType": "P",
-			"range": 30,
-			"reload": 1,
-			"bulk": 1,
-			"hands": 1,
-			"group": "Dart",
-			"category": "Weapon",
-			"subCategory": "Martial",
-			"entries": [
-				"This umbrella fires tiny blowgun darts from its ferrule with a twist of the handle. The darts are loaded into the shaft, and though the damage they deal is minimal, the dart umbrella is an inconspicuous weapon easy to slip past inspections."
-			]
-		},
-		{
-			"name": "Injection Spear",
-			"source": "G&G",
-			"equipment": true,
-			"page": 63,
-			"type": "Item",
-			"level": 0,
-			"traits": [
-				"Uncommon",
-				"Injection",
-				"Reach"
-			],
-			"price": {
-				"amount": 3,
-				"coin": "gp"
-			},
-			"damage": "1d8",
-			"damageType": "P",
-			"bulk": 1,
-			"hands": 2,
-			"group": "Spear",
-			"category": "Weapon",
-			"subCategory": "Martial",
-			"entries": [
-				"A hollow receptacle inside this spear's head can store a single dose of poison. A sliding trigger along the spear's shaft can inject the loaded poison into a damaged target."
-			]
-		},
-		{
-			"name": "Umbrella Injector",
-			"source": "G&G",
-			"equipment": true,
-			"page": 64,
-			"type": "Item",
-			"level": 0,
-			"traits": [
-				"Uncommon",
-				"Concealable",
-				"finesse",
-				"injection",
-				"parry"
-			],
-			"price": {
-				"amount": 4,
-				"coin": "gp"
-			},
-			"damage": "1d4",
-			"damageType": "P",
-			"bulk": 1,
-			"hands": 1,
-			"group": "Sword",
-			"category": "Weapon",
-			"subCategory": "Martial",
-			"entries": [
-				"This umbrella's ferrule is a hollow-tipped blade three to four inches in length and often overlooked as decorative.",
-				"A receptacle inside the umbrella's shaft can be loaded with a single dose of injury poison and injected into a damaged target with the pull of a sliding trigger. Reinforced ribs enable you to parry and deflect blows with the umbrella's tear-resistant canopy."
-			]
-		},
-		{
-			"name": "Pantograph Gauntlet",
-			"source": "G&G",
-			"equipment": true,
-			"page": 63,
-			"type": "Item",
-			"level": 0,
-			"traits": [
-				"Uncommon",
-				"Deadly d6",
-				"monk",
-				"reach",
-				"shove"
-			],
-			"price": {
-				"amount": 2,
-				"coin": "gp"
-			},
-			"damage": "1d4",
-			"damageType": "B",
-			"bulk": "L",
-			"hands": 1,
-			"group": "Brawling",
-			"category": "Weapon",
-			"subCategory": "Martial",
-			"entries": [
-				"A pantograph gauntlet is a heavy, fist-like weight, mounted on an extendable frame and attached to your outer arm with a series of leather straps. The frame's set of mechanical linkages connected at various hinges allow movements to propagate across the frame based on reshaping parallelograms, further {@condition controlled} by a crossbar grasped in your hand. A pantograph gauntlet is driven by your own motion and mirrors your arm's movements\u2014a punch thrown with your fist moves the pantograph, extending the weight out at a rapid speed to land blows up to 10 feet away. In some regions, such as Alkenstar and Ustalav, pantograph gauntlets are occasionally constructed entirely of metal and fashioned in the likeness of oversized arms, incorporating a complex system of gears or a miniature steam engine in place of the simpler pantograph mechanism."
-			]
-		},
-		{
-			"name": "Repeating Crossbow",
-			"source": "G&G",
-			"equipment": true,
-			"type": "Equipment",
-			"traits": [
-				"Uncommon",
-				"Repeating"
-			],
-			"price": {
-				"amount": 10,
-				"coin": "gp"
-			},
-			"damage": "1d6",
-			"damageType": "P",
-			"range": 60,
-			"reload": 0,
-			"ammunition": [
-				"Repeating Crossbow Magazine|G&G"
-			],
-			"bulk": 1,
-			"hands": 2,
-			"category": "Weapon",
-			"subCategory": "Advanced",
-			"group": "Bow",
-			"page": 63,
-			"entries": [
-				"This crossbow has an internal chamber that can be loaded with up to five bolts. An automated catch mechanism at the top of the flight groove, just in front of the latch, locks the bowstring and launches bolts with the pull of a trigger."
-			]
-		},
-		{
-			"name": "Repeating Hand Crossbow",
-			"source": "G&G",
-			"equipment": true,
-			"type": "Equipment",
-			"traits": [
-				"Uncommon",
-				"Repeating"
-			],
-			"price": {
-				"amount": 10,
-				"coin": "gp"
-			},
-			"damage": "1d6",
-			"damageType": "P",
-			"range": 60,
-			"reload": 0,
-			"bulk": "L",
-			"ammunition": [
-				"Repeating Hand Crossbow Magazine|G&G"
-			],
-			"hands": 1,
-			"category": "Weapon",
-			"subCategory": "Advanced",
-			"group": "Bow",
-			"page": 63,
-			"entries": [
-				"This handheld crossbow features an ingeniously designed catch mechanism at the top of the flight groove, just in front of the latch, which automatically loads a bolt from a magazine and resets the string each time the weapon is fired. A typical repeating hand crossbow magazine holds five bolts."
-			]
-		},
-		{
-			"name": "Repeating Heavy Crossbow",
-			"source": "G&G",
-			"equipment": true,
-			"type": "Equipment",
-			"traits": [
-				"Uncommon",
-				"Repeating"
-			],
-			"price": {
-				"amount": 20,
-				"coin": "gp"
-			},
-			"damage": "1d10",
-			"damageType": "P",
-			"range": 180,
-			"reload": 1,
-			"bulk": 2,
-			"ammunition": [
-				"Repeating Heavy Crossbow Magazine|G&G"
-			],
-			"hands": 2,
-			"category": "Weapon",
-			"subCategory": "Martial",
-			"group": "Bow",
-			"page": 63,
-			"entries": [
-				"This large crossbow has an internal chamber that can be loaded with up to five bolts. While it uses the same automated catch mechanism as other repeating crossbows, a repeating heavy crossbow's design has significant trade-offs. It has increased range and damage and is easier to learn how to use, but requires a small amount of effort to reload."
-			]
-		},
-		{
-			"name": "Hongali Hornbow",
-			"source": "LOTGB",
-			"page": 107,
-			"equipment": true,
-			"type": "Equipment",
-			"traits": [
-				"deadly d6",
-				"propulsive"
-			],
-			"price": {
-				"amount": 11,
-				"coin": "gp"
-			},
-			"damage": "1d8",
-			"damageType": "P",
-			"range": 40,
-			"reload": 0,
-			"bulk": 2,
-			"hands": "1+",
-			"category": "Weapon",
-			"subCategory": "Martial",
-			"group": "Bow",
-			"entries": [
-				"These immense bows are traditionally made from the horns of great beasts, though modern residents of Hongal, the northernmost nation in Tian Xia, often use composite materials or even small trees as the weapon's base. While Hongali hornbows have a shorter range than other bows, they make up for it by focusing the power of the longbow at a short distance and can be used from horseback\u2014perfect for the skirmishing fighting style of mounted Hongali troops. While it's difficult for those in Avistan to get their hands on these Hongali weapons, a small warband of beast-riding orcs from the Hold of Belkzen managed to arm themselves with Hongali hornbows and cut a bloody swathe through adventurers and neighboring militaries alike for several years before they were finally defeated via a desperate ambush. The stories of that warband spread, causing Avistani adventurers with little knowledge of Tian Xia to associate the bows with orcs. Hongali characters have access to the Hongali hornbow."
-			]
-		},
-		{
-			"name": "Chakram",
-			"source": "LOTGB",
-			"page": 107,
-			"equipment": true,
-			"type": "Equipment",
-			"traits": [
-				"thrown"
-			],
-			"price": {
-				"amount": 5,
-				"coin": "sp"
-			},
-			"damage": "1d8",
-			"damageType": "S",
-			"range": 20,
-			"bulk": "L",
-			"hands": 1,
-			"category": "Weapon",
-			"subCategory": "Martial",
-			"group": "Knife",
-			"entries": [
-				"Simple, elegant, and portable, the chakram is an open-centered metal discus with a sharpened edge, as well as a grip running along the center so the wielder can hold it safely."
-			]
-		},
-		{
-			"name": "Switchscythe",
-			"level": 1,
-			"source": "LOTGB",
-			"page": 107,
-			"equipment": true,
-			"type": "Equipment",
-			"traits": [
-				"uncommon",
-				"gnome",
-				"fatal d10",
-				"modular (P and grapple, or S and sweep)"
-			],
-			"price": {
-				"amount": 12,
-				"coin": "gp"
-			},
-			"damage": "1d6",
-			"damageType": "P",
-			"bulk": 2,
-			"hands": 1,
-			"category": "Weapon",
-			"subCategory": "Advanced",
-			"group": "Pick",
-			"entries": [
-				"Another complex gnome invention, the switchscythe is designed for versatility. The curved blade is partly hollow, containing a long rod of wood or metal; the rod can be pulled perpendicular to the blade, turning the switchscythe from a {@trait sweep||sweeping}, axe-like blade into a hooked pick capable of {@trait grapple||grappling} a foe."
-			]
-		},
-		{
-			"name": "Spiral Rapier",
-			"source": "LOTGB",
-			"page": 107,
-			"equipment": true,
-			"type": "Equipment",
-			"traits": [
-				"uncommon",
-				"disarm",
-				"finesse",
-				"parry"
-			],
-			"price": {
-				"amount": 5,
-				"coin": "gp"
-			},
-			"damage": "1d6",
-			"damageType": "P",
-			"bulk": 1,
-			"hands": 1,
-			"category": "Weapon",
-			"subCategory": "Advanced",
-			"group": "Sword",
-			"entries": [
-				"An old Taldan dueling weapon from the empire's height, this rapier has a thicker blade than normal, which is shaped into a corkscrew-like spiral well suited to catching enemy weapons. Characters from Taldor have access to the spiral rapier."
-			]
-		},
-		{
-			"name": "Sickle-Saber",
-			"source": "LOTGB",
-			"page": 107,
-			"equipment": true,
-			"type": "Equipment",
-			"traits": [
-				"uncommon",
-				"backswing",
-				"forceful"
-			],
-			"price": {
-				"amount": 5,
-				"coin": "gp"
-			},
-			"damage": "1d6",
-			"damageType": "S",
-			"bulk": 1,
-			"hands": 1,
-			"category": "Weapon",
-			"subCategory": "Advanced",
-			"group": "Sword",
-			"entries": [
-				"A classical weapon of Irrisenis who lacked magical talent, the sickle-saber has seen a resurgence since the coronation of Queen Anastasia. The queen was fascinated with the sickle-sabers in the palace treasury, and now the unusual blades are carried by her honor guard and Irriseni diplomats alike. The sickle-saber's blade curves multiple times along its 4-foot length, and its hilt is similarly curved. A small, secondary grip on the blade lets the wielder rapidly and unpredictably twist the cutting edges. Characters from Irrisen have access to the sickle-saber."
-			]
-		},
-		{
-			"name": "Butchering Axe",
-			"source": "LOTGB",
-			"page": 107,
-			"equipment": true,
-			"type": "Equipment",
-			"traits": [
-				"uncommon",
-				"orc",
-				"shove",
-				"sweep"
-			],
-			"price": {
-				"amount": 8,
-				"coin": "gp"
-			},
-			"damage": "1d12",
-			"damageType": "S",
-			"bulk": 2,
-			"hands": 2,
-			"category": "Weapon",
-			"subCategory": "Advanced",
-			"group": "Axe",
-			"entries": [
-				"Invented by Belkzen's zealous Steel-Eaters, the butchering axe has an oversized head and a long, thick haft counterbalanced with steel or stone. The weapon's sweeping strokes inflict immense damage, particularly against groups of foes, and can push dangerous opponents away to a safe distance. All of these qualities are particularly useful against the lumbering zombie hordes of the Whispering Tyrant. Correspondingly, butchering axes are often wielded by orc and half-orc Crimson Reclaimers of Lastwall."
-			]
-		},
-		{
-			"name": "Tonfa",
-			"source": "LOTGB",
-			"page": 107,
-			"equipment": true,
-			"type": "Equipment",
-			"traits": [
-				"uncommon",
-				"agile",
-				"finesse",
-				"monk",
-				"parry",
-				"twin"
-			],
-			"price": {
-				"amount": 1,
-				"coin": "sp"
-			},
-			"damage": "1d4",
-			"damageType": "B",
-			"bulk": "L",
-			"hands": 1,
-			"category": "Weapon",
-			"subCategory": "Martial",
-			"group": "Brawling",
-			"entries": [
-				"These L-shaped fighting batons are good for striking and blocking. The wielder holds the handle and either spins the stick or strikes with the stick covering the forearm."
-			]
-		},
-		{
-			"name": "Piranha Kiss",
-			"source": "LOTGB",
-			"page": 107,
-			"equipment": true,
-			"type": "Equipment",
-			"traits": [
-				"uncommon",
-				"agile",
-				"disarm",
-				"finesse"
-			],
-			"price": {
-				"amount": 4,
-				"coin": "sp"
-			},
-			"damage": "1d6",
-			"damageType": "P",
-			"bulk": "L",
-			"hands": 1,
-			"category": "Weapon",
-			"subCategory": "Martial",
-			"group": "Knife",
-			"entries": [
-				"Made of a jagged blade with teeth pointing toward a leather-wrapped hilt, these weapons are particularly effective at disarming opponents. Piranha kisses were occasionally used during the Vidric Revolution, and some Firebrands carry them today. Members of the Firebrands have access to this weapon."
-			]
-		},
-		{
-			"name": "Elven Branched Spear",
-			"source": "LOTGB",
-			"page": 107,
-			"equipment": true,
-			"type": "Equipment",
-			"traits": [
-				"uncommon",
-				"elf",
-				"deadly d8",
-				"finesse",
-				"reach"
-			],
-			"price": {
-				"amount": 3,
-				"coin": "gp"
-			},
-			"damage": "1d6",
-			"damageType": "P",
-			"bulk": 1,
-			"hands": 2,
-			"category": "Weapon",
-			"subCategory": "Martial",
-			"group": "Spear",
-			"entries": [
-				"Several short branches project from this delicate spear's shaft, each angled forward and tipped with a leaflike blade."
-			]
-		},
-		{
-			"name": "Dueling Spear",
-			"source": "LOTGB",
-			"page": 107,
-			"equipment": true,
-			"type": "Equipment",
-			"traits": [
-				"uncommon",
-				"disarm",
-				"finesse",
-				"versatile S"
-			],
-			"price": {
-				"amount": 2,
-				"coin": "gp"
-			},
-			"damage": "1d8",
-			"damageType": "P",
-			"bulk": 2,
-			"hands": 2,
-			"category": "Weapon",
-			"subCategory": "Martial",
-			"group": "Spear",
-			"entries": [
-				"This spear has a spade-like blade at one end and a forked blade at the other, making it resemble a large arrow. It's well balanced for spinning and twisting maneuvers. The spade-like end can be used for slashing and stabbing, while the forked end is effective at wrenching a weapon from an enemy's grasp."
-			]
-		},
-		{
-			"name": "Asp Coil",
-			"source": "LOTGB",
-			"page": 107,
-			"equipment": true,
-			"type": "Equipment",
-			"traits": [
-				"uncommon",
-				"reach",
-				"versatile P"
-			],
-			"price": {
-				"amount": 10,
-				"coin": "gp"
-			},
-			"damage": "1d6",
-			"damageType": "S",
-			"bulk": 1,
-			"hands": 1,
-			"category": "Weapon",
-			"subCategory": "Martial",
-			"group": "Sword",
-			"entries": [
-				"The asp coil, named both for its slithering striking style and its usage among Aspis Consortium agents, has two forms. In sword form, it resembles an elegant, oddly balanced sword. However, with a twist of the pommel, the blade splits into a series of segments connected by elaborate metal cables. Agents of the Aspis Consortium have access to this weapon."
-			]
-		},
-		{
-			"name": "Tri-bladed Katar",
-			"source": "LOTGB",
-			"page": 107,
-			"equipment": true,
-			"type": "Equipment",
-			"traits": [
-				"uncommon",
-				"disarm",
-				"fatal d8",
-				"monk"
-			],
-			"price": {
-				"amount": 8,
-				"coin": "sp"
-			},
-			"damage": "1d4",
-			"damageType": "P",
-			"bulk": "L",
-			"hands": 1,
-			"category": "Weapon",
-			"subCategory": "Simple",
-			"group": "Knife",
-			"entries": [
-				"This punching dagger resembles the standard katar, save that a pair of blades can be folded out from the center blade, transforming the weapon into a starburst shape well suited to catching foes' weapons."
-			]
-		},
-		{
-			"name": "Thundermace",
-			"source": "LOTGB",
-			"page": 107,
-			"equipment": true,
-			"type": "Equipment",
-			"traits": [
-				"uncommon",
-				"backswing"
-			],
-			"price": {
-				"amount": 2,
-				"coin": "sp",
-				"note": null
-			},
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d8",
-			"damageType": "B",
-			"hands": 2,
-			"bulk": 2,
-			"category": "Weapon",
-			"subCategory": "Simple",
-			"group": "Club",
-			"entries": [
-				"This deceptively dangerous weapon is essentially a mace with a longer haft and larger, often flanged head."
-			]
-		},
-		{
-			"name": "Throwing Knife",
-			"source": "LOTGB",
-			"page": 107,
-			"equipment": true,
-			"type": "Equipment",
-			"traits": [
-				"agile",
-				"finesse",
-				"thrown 20 ft."
-			],
-			"price": {
-				"amount": 3,
-				"coin": "sp",
-				"note": null
-			},
-			"bulk": "L",
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d4",
-			"damageType": "P",
-			"hands": 1,
-			"category": "Weapon",
-			"subCategory": "Simple",
-			"group": "Knife",
-			"entries": [
-				"This light knife is optimally balanced to be thrown accurately at a greater distance than a common dagger. While this comes at the cost of a significant cutting edge, the difference is worth it for throwing specialists."
-			]
-		},
-		{
 			"name": "Adze",
 			"source": "LOAG",
 			"page": 139,
@@ -775,6 +127,93 @@
 			"group": "Firearm|G&G",
 			"entries": [
 				"This is a long rifle that offers more range than the average firearm, though the long barrel and ferocious kickback make the weapon particularly unsteady unless a tripod or other stand is used to stabilize it. The arquebus is one of the most commonly used long guns among the soldiers of Dongun Hold and Alkenstar."
+			]
+		},
+		{
+			"name": "Asp Coil",
+			"source": "LOTGB",
+			"page": 107,
+			"equipment": true,
+			"type": "Equipment",
+			"traits": [
+				"uncommon",
+				"reach",
+				"versatile P"
+			],
+			"price": {
+				"amount": 10,
+				"coin": "gp"
+			},
+			"bulk": 1,
+			"damage": "1d6",
+			"damageType": "S",
+			"hands": 1,
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"group": "Sword",
+			"entries": [
+				"The asp coil, named both for its slithering striking style and its usage among Aspis Consortium agents, has two forms. In sword form, it resembles an elegant, oddly balanced sword. However, with a twist of the pommel, the blade splits into a series of segments connected by elaborate metal cables. Agents of the Aspis Consortium have access to this weapon."
+			]
+		},
+		{
+			"name": "Backpack Ballista",
+			"source": "G&G",
+			"page": 62,
+			"equipment": true,
+			"type": "Item",
+			"level": 1,
+			"traits": [
+				"Uncommon"
+			],
+			"price": {
+				"amount": 18,
+				"coin": "gp"
+			},
+			"bulk": 2,
+			"ammunition": [
+				"Backpack Ballista Bolts|G&G"
+			],
+			"damage": "1d12",
+			"damageType": "P",
+			"hands": "1+",
+			"reload": "1 min.",
+			"range": 180,
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"group": "Bow",
+			"entries": [
+				"This complex wooden device, worn on the back, contains a miniature ballista on a retractable arm. As an {@action Interact} action, you can pull a lever to deploy or retract the ballista. As long as it remains deployed, you must hold the ballista using that hand or some of the components spill out onto the ground, just like dropping any other weapon. While deployed, the device opens and raises the ballista up over your shoulder. While retracted, the ballista and its mount slide down and are {@condition concealed} within the device. Although a backpack ballista packs a punch, the device is a challenge to operate. Reloading it takes 1 minute and can't be done while worn. As normal, you can't wear a backpack ballista with another backpack."
+			]
+		},
+		{
+			"name": "Backpack Catapult",
+			"source": "G&G",
+			"page": 63,
+			"equipment": true,
+			"type": "Item",
+			"level": 1,
+			"traits": [
+				"Uncommon",
+				"Volley 50 ft."
+			],
+			"price": {
+				"amount": 20,
+				"coin": "gp"
+			},
+			"bulk": 3,
+			"ammunition": [
+				"Backpack Catapult Stones|G&G"
+			],
+			"damage": "1d12",
+			"damageType": "B",
+			"hands": "1+",
+			"reload": "1 min.",
+			"range": 240,
+			"category": "Weapon",
+			"subCategory": "Advanced",
+			"group": "Sling",
+			"entries": [
+				"This wooden device is worn on the back and contains a miniature catapult mounted on a retractable frame. As an {@action Interact} action, you can pull a lever to deploy or retract the catapult. As long as it remains deployed, you must hold the catapult using that hand or some of the components spill out onto the ground, just like dropping any other weapon. While deployed, the device opens and raises the catapult up over your shoulder. While retracted, the catapult and its mount slide down and are {@condition concealed} within the device. A backpack catapult fires specialized stone spheres that are loaded into the bucket while unworn and retracted, through a sliding hatch; the reloading process takes 1 minute. To prevent misfires and accidental injury, the bucket fully encloses the stone while deployed, only opening when fired. As normal, you can't wear a backpack catapult with another backpack."
 			]
 		},
 		{
@@ -1040,13 +479,13 @@
 				"coin": "sp",
 				"note": null
 			},
-			"range": 20,
 			"bulk": "L",
 			"onset": null,
 			"ammunition": null,
 			"damage": "1d6",
 			"damageType": "B",
 			"hands": 1,
+			"range": 20,
 			"category": "Weapon",
 			"subCategory": "Martial",
 			"group": "Sling",
@@ -1106,6 +545,33 @@
 			"category": "Shield",
 			"entries": [
 				"This very small shield is a favorite of duelists and quick, lightly armored warriors. It's typically made of steel and strapped to your forearm. You can {@action Raise a Shield} with your buckler as long as you have that hand free or are holding a light object that's not a weapon in that hand."
+			]
+		},
+		{
+			"name": "Butchering Axe",
+			"source": "LOTGB",
+			"page": 107,
+			"equipment": true,
+			"type": "Equipment",
+			"traits": [
+				"uncommon",
+				"orc",
+				"shove",
+				"sweep"
+			],
+			"price": {
+				"amount": 8,
+				"coin": "gp"
+			},
+			"bulk": 2,
+			"damage": "1d12",
+			"damageType": "S",
+			"hands": 2,
+			"category": "Weapon",
+			"subCategory": "Advanced",
+			"group": "Axe",
+			"entries": [
+				"Invented by Belkzen's zealous Steel-Eaters, the butchering axe has an oversized head and a long, thick haft counterbalanced with steel or stone. The weapon's sweeping strokes inflict immense damage, particularly against groups of foes, and can push dangerous opponents away to a safe distance. All of these qualities are particularly useful against the lumbering zombie hordes of the Whispering Tyrant. Correspondingly, butchering axes are often wielded by orc and half-orc Crimson Reclaimers of Lastwall."
 			]
 		},
 		{
@@ -1200,6 +666,31 @@
 			]
 		},
 		{
+			"name": "Chakram",
+			"source": "LOTGB",
+			"page": 107,
+			"equipment": true,
+			"type": "Equipment",
+			"traits": [
+				"thrown"
+			],
+			"price": {
+				"amount": 5,
+				"coin": "sp"
+			},
+			"bulk": "L",
+			"damage": "1d8",
+			"damageType": "S",
+			"hands": 1,
+			"range": 20,
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"group": "Knife",
+			"entries": [
+				"Simple, elegant, and portable, the chakram is an open-centered metal discus with a sharpened edge, as well as a grip running along the center so the wielder can hold it safely."
+			]
+		},
+		{
 			"name": "Clan Dagger",
 			"source": "CRB",
 			"page": 280,
@@ -1262,6 +753,39 @@
 			"group": "Firearm|G&G",
 			"entries": [
 				"The tradition of dwarves displaying their clan affiliations with special clan daggers goes back millennia, but many of the dwarf clans of Dongun Hold have their own take on the tradition, with promising young gunsmiths claiming their adulthood by crafting a specialized personal firearm using the clan's unique smithing traditions. Losing or being forced to surrender their clan pistol is a terrible embarrassment for the dwarves that carry them."
+			]
+		},
+		{
+			"name": "Claw Blade",
+			"source": "APG",
+			"page": 248,
+			"equipment": true,
+			"type": "Equipment",
+			"traits": [
+				"Uncommon",
+				"Agile",
+				"catfolk",
+				"deadly d8",
+				"disarm",
+				"finesse",
+				"versatile P"
+			],
+			"price": {
+				"amount": 2,
+				"coin": "gp",
+				"note": null
+			},
+			"bulk": "L",
+			"onset": null,
+			"ammunition": null,
+			"damage": "1d4",
+			"damageType": "S",
+			"hands": 1,
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"group": "Knife",
+			"entries": [
+				"The three parallel blades of this handheld weapon extend between the fingers to resemble the natural claws of the amurruns who created them, providing a way for those catfolk without suitable natural claws to share the fighting customs of their kin."
 			]
 		},
 		{
@@ -1510,6 +1034,36 @@
 			]
 		},
 		{
+			"name": "Dart Umbrella",
+			"source": "G&G",
+			"page": 63,
+			"equipment": true,
+			"type": "Item",
+			"level": 0,
+			"traits": [
+				"Agile",
+				"Concealable",
+				"Nonlethal",
+				"Uncommon"
+			],
+			"price": {
+				"amount": 1,
+				"coin": "gp"
+			},
+			"bulk": 1,
+			"damage": "1",
+			"damageType": "P",
+			"hands": 1,
+			"reload": 1,
+			"range": 30,
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"group": "Dart",
+			"entries": [
+				"This umbrella fires tiny blowgun darts from its ferrule with a twist of the handle. The darts are loaded into the shaft, and though the damage they deal is minimal, the dart umbrella is an inconspicuous weapon easy to slip past inspections."
+			]
+		},
+		{
 			"name": "Dogslicer",
 			"source": "CRB",
 			"page": 281,
@@ -1678,6 +1232,33 @@
 			]
 		},
 		{
+			"name": "Dueling Spear",
+			"source": "LOTGB",
+			"page": 107,
+			"equipment": true,
+			"type": "Equipment",
+			"traits": [
+				"uncommon",
+				"disarm",
+				"finesse",
+				"versatile S"
+			],
+			"price": {
+				"amount": 2,
+				"coin": "gp"
+			},
+			"bulk": 2,
+			"damage": "1d8",
+			"damageType": "P",
+			"hands": 2,
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"group": "Spear",
+			"entries": [
+				"This spear has a spade-like blade at one end and a forked blade at the other, making it resemble a large arrow. It's well balanced for spinning and twisting maneuvers. The spade-like end can be used for slashing and stabbing, while the forked end is effective at wrenching a weapon from an enemy's grasp."
+			]
+		},
+		{
 			"name": "Dwarven Scattergun",
 			"source": "G&G",
 			"page": 151,
@@ -1741,6 +1322,34 @@
 			"group": "Axe",
 			"entries": [
 				"This favored weapon of the dwarves has a large, ornate head mounted on a thick handle. This powerful axe can be wielded with one hand or two."
+			]
+		},
+		{
+			"name": "Elven Branched Spear",
+			"source": "LOTGB",
+			"page": 107,
+			"equipment": true,
+			"type": "Equipment",
+			"traits": [
+				"uncommon",
+				"elf",
+				"deadly d8",
+				"finesse",
+				"reach"
+			],
+			"price": {
+				"amount": 3,
+				"coin": "gp"
+			},
+			"bulk": 1,
+			"damage": "1d6",
+			"damageType": "P",
+			"hands": 2,
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"group": "Spear",
+			"entries": [
+				"Several short branches project from this delicate spear's shaft, each angled forward and tipped with a leaflike blade."
 			]
 		},
 		{
@@ -2797,6 +2406,33 @@
 			]
 		},
 		{
+			"name": "Hongali Hornbow",
+			"source": "LOTGB",
+			"page": 107,
+			"equipment": true,
+			"type": "Equipment",
+			"traits": [
+				"deadly d6",
+				"propulsive"
+			],
+			"price": {
+				"amount": 11,
+				"coin": "gp"
+			},
+			"bulk": 2,
+			"damage": "1d8",
+			"damageType": "P",
+			"hands": "1+",
+			"reload": 0,
+			"range": 40,
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"group": "Bow",
+			"entries": [
+				"These immense bows are traditionally made from the horns of great beasts, though modern residents of Hongal, the northernmost nation in Tian Xia, often use composite materials or even small trees as the weapon's base. While Hongali hornbows have a shorter range than other bows, they make up for it by focusing the power of the longbow at a short distance and can be used from horseback\u2014perfect for the skirmishing fighting style of mounted Hongali troops. While it's difficult for those in Avistan to get their hands on these Hongali weapons, a small warband of beast-riding orcs from the Hold of Belkzen managed to arm themselves with Hongali hornbows and cut a bloody swathe through adventurers and neighboring militaries alike for several years before they were finally defeated via a desperate ambush. The stories of that warband spread, causing Avistani adventurers with little knowledge of Tian Xia to associate the bows with orcs. Hongali characters have access to the Hongali hornbow."
+			]
+		},
+		{
 			"name": "Horsechopper",
 			"source": "CRB",
 			"page": 281,
@@ -2825,6 +2461,33 @@
 			"group": "Polearm",
 			"entries": [
 				"Created by goblins to battle horses, this weapon is essentially a long shaft ending in a blade with a large hook."
+			]
+		},
+		{
+			"name": "Injection Spear",
+			"source": "G&G",
+			"page": 63,
+			"equipment": true,
+			"type": "Item",
+			"level": 0,
+			"traits": [
+				"Uncommon",
+				"Injection",
+				"Reach"
+			],
+			"price": {
+				"amount": 3,
+				"coin": "gp"
+			},
+			"bulk": 1,
+			"damage": "1d8",
+			"damageType": "P",
+			"hands": 2,
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"group": "Spear",
+			"entries": [
+				"A hollow receptacle inside this spear's head can store a single dose of poison. A sliding trigger along the spear's shaft can inject the loaded poison into a damaged target."
 			]
 		},
 		{
@@ -3179,99 +2842,6 @@
 			"group": "Hammer",
 			"entries": [
 				"This smaller version of the warhammer has a wooden or metal shaft ending in a metal head. Unlike its heavier cousin, it is light enough to throw."
-			]
-		},
-		{
-			"name": "Tengu Gale Blade",
-			"source": "APG",
-			"page": 248,
-			"equipment": true,
-			"type": "Equipment",
-			"traits": [
-				"Uncommon",
-				"Agile",
-				"disarm",
-				"finesse",
-				"tengu"
-			],
-			"price": {
-				"amount": 4,
-				"coin": "gp",
-				"note": null
-			},
-			"bulk": "L",
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d6",
-			"damageType": "S",
-			"hands": 1,
-			"category": "Weapon",
-			"subCategory": "Martial",
-			"group": "Sword",
-			"entries": [
-				"This fan-shaped sword, designed by members of the tengu ancestry, has five broad blades that join at its hilt. Tengu sailors also use gale blades as makeshift weather vanes, as the sword spins to show the wind's direction when loosely held aloft."
-			]
-		},
-		{
-			"name": "Claw Blade",
-			"source": "APG",
-			"page": 248,
-			"equipment": true,
-			"type": "Equipment",
-			"traits": [
-				"Uncommon",
-				"Agile",
-				"catfolk",
-				"deadly d8",
-				"disarm",
-				"finesse",
-				"versatile P"
-			],
-			"price": {
-				"amount": 2,
-				"coin": "gp",
-				"note": null
-			},
-			"bulk": "L",
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d4",
-			"damageType": "S",
-			"hands": 1,
-			"category": "Weapon",
-			"subCategory": "Martial",
-			"group": "Knife",
-			"entries": [
-				"The three parallel blades of this handheld weapon extend between the fingers to resemble the natural claws of the amurruns who created them, providing a way for those catfolk without suitable natural claws to share the fighting customs of their kin."
-			]
-		},
-		{
-			"name": "Sword Cane",
-			"source": "APG",
-			"page": 248,
-			"equipment": true,
-			"type": "Equipment",
-			"traits": [
-				"Agile",
-				"finesse",
-				"concealable"
-			],
-			"price": {
-				"amount": 5,
-				"coin": "gp",
-				"note": null
-			},
-			"bulk": 1,
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d6",
-			"damageType": "P",
-			"hands": 1,
-			"category": "Weapon",
-			"subCategory": "Martial",
-			"group": "Sword",
-			"entries": [
-				"This slender, rapier-like sword is concealed within a wooden or metal cane that serves as a sheath, making it an inconspicuous weapon easy to slip past inspections or into high-society events. A sword cane is typically 4 feet long when sheathed, and its hilt is usually capped with a wooden or metal decoration."
 			]
 		},
 		{
@@ -3863,6 +3433,35 @@
 			]
 		},
 		{
+			"name": "Pantograph Gauntlet",
+			"source": "G&G",
+			"page": 63,
+			"equipment": true,
+			"type": "Item",
+			"level": 0,
+			"traits": [
+				"Uncommon",
+				"Deadly d6",
+				"monk",
+				"reach",
+				"shove"
+			],
+			"price": {
+				"amount": 2,
+				"coin": "gp"
+			},
+			"bulk": "L",
+			"damage": "1d4",
+			"damageType": "B",
+			"hands": 1,
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"group": "Brawling",
+			"entries": [
+				"A pantograph gauntlet is a heavy, fist-like weight, mounted on an extendable frame and attached to your outer arm with a series of leather straps. The frame's set of mechanical linkages connected at various hinges allow movements to propagate across the frame based on reshaping parallelograms, further {@condition controlled} by a crossbar grasped in your hand. A pantograph gauntlet is driven by your own motion and mirrors your arm's movements\u2014a punch thrown with your fist moves the pantograph, extending the weight out at a rapid speed to land blows up to 10 feet away. In some regions, such as Alkenstar and Ustalav, pantograph gauntlets are occasionally constructed entirely of metal and fashioned in the likeness of oversized arms, incorporating a complex system of gears or a miniature steam engine in place of the simpler pantograph mechanism."
+			]
+		},
+		{
 			"name": "Pepperbox",
 			"source": "G&G",
 			"page": 151,
@@ -3921,6 +3520,33 @@
 			"group": "Pick",
 			"entries": [
 				"A pick designed solely for combat has a sturdy wooden shaft and a heavy, pointed head to deliver devastating blows."
+			]
+		},
+		{
+			"name": "Piranha Kiss",
+			"source": "LOTGB",
+			"page": 107,
+			"equipment": true,
+			"type": "Equipment",
+			"traits": [
+				"uncommon",
+				"agile",
+				"disarm",
+				"finesse"
+			],
+			"price": {
+				"amount": 4,
+				"coin": "sp"
+			},
+			"bulk": "L",
+			"damage": "1d6",
+			"damageType": "P",
+			"hands": 1,
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"group": "Knife",
+			"entries": [
+				"Made of a jagged blade with teeth pointing toward a leather-wrapped hilt, these weapons are particularly effective at disarming opponents. Piranha kisses were occasionally used during the Vidric Revolution, and some Firebrands carry them today. Members of the Firebrands have access to this weapon."
 			]
 		},
 		{
@@ -4060,6 +3686,125 @@
 			"entries": [
 				"A reinforced stock is a weighted crossbow, firearm haft, or grip customized for striking in melee.",
 				"{@note *An attached bayonet or reinforced stock requires the same number of hands as the weapon it's attached to. A detached bayonet requires one hand.}"
+			]
+		},
+		{
+			"name": "Repeating Crossbow",
+			"source": "G&G",
+			"page": 63,
+			"equipment": true,
+			"type": "Equipment",
+			"traits": [
+				"Uncommon",
+				"Repeating"
+			],
+			"price": {
+				"amount": 10,
+				"coin": "gp"
+			},
+			"bulk": 1,
+			"ammunition": [
+				"Repeating Crossbow Magazine|G&G"
+			],
+			"damage": "1d6",
+			"damageType": "P",
+			"hands": 2,
+			"reload": 0,
+			"range": 60,
+			"category": "Weapon",
+			"subCategory": "Advanced",
+			"group": "Bow",
+			"entries": [
+				"This crossbow has an internal chamber that can be loaded with up to five bolts. An automated catch mechanism at the top of the flight groove, just in front of the latch, locks the bowstring and launches bolts with the pull of a trigger."
+			]
+		},
+		{
+			"name": "Repeating Hand Crossbow",
+			"source": "G&G",
+			"page": 63,
+			"equipment": true,
+			"type": "Equipment",
+			"traits": [
+				"Uncommon",
+				"Repeating"
+			],
+			"price": {
+				"amount": 10,
+				"coin": "gp"
+			},
+			"bulk": "L",
+			"ammunition": [
+				"Repeating Hand Crossbow Magazine|G&G"
+			],
+			"damage": "1d6",
+			"damageType": "P",
+			"hands": 1,
+			"reload": 0,
+			"range": 60,
+			"category": "Weapon",
+			"subCategory": "Advanced",
+			"group": "Bow",
+			"entries": [
+				"This handheld crossbow features an ingeniously designed catch mechanism at the top of the flight groove, just in front of the latch, which automatically loads a bolt from a magazine and resets the string each time the weapon is fired. A typical repeating hand crossbow magazine holds five bolts."
+			]
+		},
+		{
+			"name": "Repeating Heavy Crossbow",
+			"source": "G&G",
+			"page": 63,
+			"equipment": true,
+			"type": "Equipment",
+			"traits": [
+				"Uncommon",
+				"Repeating"
+			],
+			"price": {
+				"amount": 20,
+				"coin": "gp"
+			},
+			"bulk": 2,
+			"ammunition": [
+				"Repeating Heavy Crossbow Magazine|G&G"
+			],
+			"damage": "1d10",
+			"damageType": "P",
+			"hands": 2,
+			"reload": 1,
+			"range": 180,
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"group": "Bow",
+			"entries": [
+				"This large crossbow has an internal chamber that can be loaded with up to five bolts. While it uses the same automated catch mechanism as other repeating crossbows, a repeating heavy crossbow's design has significant trade-offs. It has increased range and damage and is easier to learn how to use, but requires a small amount of effort to reload."
+			]
+		},
+		{
+			"name": "Rungu",
+			"source": "LOAG",
+			"page": 139,
+			"equipment": true,
+			"type": "Equipment",
+			"traits": [
+				"grippli",
+				"shove",
+				"thrown 30 ft."
+			],
+			"price": {
+				"amount": 4,
+				"coin": "sp",
+				"note": null
+			},
+			"bulk": "L",
+			"onset": null,
+			"ammunition": null,
+			"damage": "1d6",
+			"damageType": "B",
+			"hands": 1,
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"group": "Club",
+			"entries": [
+				"This specialized club is designed for throwing and is useful for both combat and hunting. Rungus were invented by Zenj humans of the Mwangi Expanse and are most common among their tribes, though gripplis have also adopted rungus for hunting creatures that hide high in treetops."
 			]
 		},
 		{
@@ -4441,6 +4186,32 @@
 			]
 		},
 		{
+			"name": "Sickle-Saber",
+			"source": "LOTGB",
+			"page": 107,
+			"equipment": true,
+			"type": "Equipment",
+			"traits": [
+				"uncommon",
+				"backswing",
+				"forceful"
+			],
+			"price": {
+				"amount": 5,
+				"coin": "gp"
+			},
+			"bulk": 1,
+			"damage": "1d6",
+			"damageType": "S",
+			"hands": 1,
+			"category": "Weapon",
+			"subCategory": "Advanced",
+			"group": "Sword",
+			"entries": [
+				"A classical weapon of Irrisenis who lacked magical talent, the sickle-saber has seen a resurgence since the coronation of Queen Anastasia. The queen was fascinated with the sickle-sabers in the palace treasury, and now the unusual blades are carried by her honor guard and Irriseni diplomats alike. The sickle-saber's blade curves multiple times along its 4-foot length, and its hilt is similarly curved. A small, secondary grip on the blade lets the wielder rapidly and unpredictably twist the cutting edges. Characters from Irrisen have access to the sickle-saber."
+			]
+		},
+		{
 			"name": "Slide Pistol",
 			"source": "G&G",
 			"page": 151,
@@ -4589,6 +4360,33 @@
 			"group": "Brawling",
 			"entries": [
 				"Providing the same defensive function as a standard gauntlet, this version has a group of spikes protruding from the knuckles to deliver piercing damage with a punch."
+			]
+		},
+		{
+			"name": "Spiral Rapier",
+			"source": "LOTGB",
+			"page": 107,
+			"equipment": true,
+			"type": "Equipment",
+			"traits": [
+				"uncommon",
+				"disarm",
+				"finesse",
+				"parry"
+			],
+			"price": {
+				"amount": 5,
+				"coin": "gp"
+			},
+			"bulk": 1,
+			"damage": "1d6",
+			"damageType": "P",
+			"hands": 1,
+			"category": "Weapon",
+			"subCategory": "Advanced",
+			"group": "Sword",
+			"entries": [
+				"An old Taldan dueling weapon from the empire's height, this rapier has a thicker blade than normal, which is shaped into a corkscrew-like spiral well suited to catching enemy weapons. Characters from Taldor have access to the spiral rapier."
 			]
 		},
 		{
@@ -4786,6 +4584,63 @@
 			]
 		},
 		{
+			"name": "Switchscythe",
+			"source": "LOTGB",
+			"page": 107,
+			"equipment": true,
+			"type": "Equipment",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"gnome",
+				"fatal d10",
+				"modular (P and grapple, or S and sweep)"
+			],
+			"price": {
+				"amount": 12,
+				"coin": "gp"
+			},
+			"bulk": 2,
+			"damage": "1d6",
+			"damageType": "P",
+			"hands": 1,
+			"category": "Weapon",
+			"subCategory": "Advanced",
+			"group": "Pick",
+			"entries": [
+				"Another complex gnome invention, the switchscythe is designed for versatility. The curved blade is partly hollow, containing a long rod of wood or metal; the rod can be pulled perpendicular to the blade, turning the switchscythe from a {@trait sweep||sweeping}, axe-like blade into a hooked pick capable of {@trait grapple||grappling} a foe."
+			]
+		},
+		{
+			"name": "Sword Cane",
+			"source": "APG",
+			"page": 248,
+			"equipment": true,
+			"type": "Equipment",
+			"traits": [
+				"Agile",
+				"finesse",
+				"concealable"
+			],
+			"price": {
+				"amount": 5,
+				"coin": "gp",
+				"note": null
+			},
+			"bulk": 1,
+			"onset": null,
+			"ammunition": null,
+			"damage": "1d6",
+			"damageType": "P",
+			"hands": 1,
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"group": "Sword",
+			"entries": [
+				"This slender, rapier-like sword is concealed within a wooden or metal cane that serves as a sheath, making it an inconspicuous weapon easy to slip past inspections or into high-society events. A sword cane is typically 4 feet long when sheathed, and its hilt is usually capped with a wooden or metal decoration."
+			]
+		},
+		{
 			"name": "Taw Launcher",
 			"source": "LOAG",
 			"page": 139,
@@ -4882,6 +4737,66 @@
 			]
 		},
 		{
+			"name": "Tengu Gale Blade",
+			"source": "APG",
+			"page": 248,
+			"equipment": true,
+			"type": "Equipment",
+			"traits": [
+				"Uncommon",
+				"Agile",
+				"disarm",
+				"finesse",
+				"tengu"
+			],
+			"price": {
+				"amount": 4,
+				"coin": "gp",
+				"note": null
+			},
+			"bulk": "L",
+			"onset": null,
+			"ammunition": null,
+			"damage": "1d6",
+			"damageType": "S",
+			"hands": 1,
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"group": "Sword",
+			"entries": [
+				"This fan-shaped sword, designed by members of the tengu ancestry, has five broad blades that join at its hilt. Tengu sailors also use gale blades as makeshift weather vanes, as the sword spins to show the wind's direction when loosely held aloft."
+			]
+		},
+		{
+			"name": "Throwing Knife",
+			"source": "LOTGB",
+			"page": 107,
+			"equipment": true,
+			"type": "Equipment",
+			"traits": [
+				"agile",
+				"finesse",
+				"thrown 20 ft."
+			],
+			"price": {
+				"amount": 3,
+				"coin": "sp",
+				"note": null
+			},
+			"bulk": "L",
+			"onset": null,
+			"ammunition": null,
+			"damage": "1d4",
+			"damageType": "P",
+			"hands": 1,
+			"category": "Weapon",
+			"subCategory": "Simple",
+			"group": "Knife",
+			"entries": [
+				"This light knife is optimally balanced to be thrown accurately at a greater distance than a common dagger. While this comes at the cost of a significant cutting edge, the difference is worth it for throwing specialists."
+			]
+		},
+		{
 			"name": "Thunder Sling",
 			"source": "LOAG",
 			"page": 139,
@@ -4914,6 +4829,63 @@
 			]
 		},
 		{
+			"name": "Thundermace",
+			"source": "LOTGB",
+			"page": 107,
+			"equipment": true,
+			"type": "Equipment",
+			"traits": [
+				"uncommon",
+				"backswing"
+			],
+			"price": {
+				"amount": 2,
+				"coin": "sp",
+				"note": null
+			},
+			"bulk": 2,
+			"onset": null,
+			"ammunition": null,
+			"damage": "1d8",
+			"damageType": "B",
+			"hands": 2,
+			"category": "Weapon",
+			"subCategory": "Simple",
+			"group": "Club",
+			"entries": [
+				"This deceptively dangerous weapon is essentially a mace with a longer haft and larger, often flanged head."
+			]
+		},
+		{
+			"name": "Tonfa",
+			"source": "LOTGB",
+			"page": 107,
+			"equipment": true,
+			"type": "Equipment",
+			"traits": [
+				"uncommon",
+				"agile",
+				"finesse",
+				"monk",
+				"parry",
+				"twin"
+			],
+			"price": {
+				"amount": 1,
+				"coin": "sp"
+			},
+			"bulk": "L",
+			"damage": "1d4",
+			"damageType": "B",
+			"hands": 1,
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"group": "Brawling",
+			"entries": [
+				"These L-shaped fighting batons are good for striking and blocking. The wielder holds the handle and either spins the stick or strikes with the stick covering the forearm."
+			]
+		},
+		{
 			"name": "Tower Shield",
 			"source": "CRB",
 			"page": 277,
@@ -4940,6 +4912,33 @@
 			"entries": [
 				"These massive shields can be used to provide cover to nearly the entire body. Due to their size, they are typically made of wood reinforced with metal.",
 				"{@note Getting the higher bonus for a tower shield requires using the {@action Take Cover} action while the shield is raised.}"
+			]
+		},
+		{
+			"name": "Tri-bladed Katar",
+			"source": "LOTGB",
+			"page": 107,
+			"equipment": true,
+			"type": "Equipment",
+			"traits": [
+				"uncommon",
+				"disarm",
+				"fatal d8",
+				"monk"
+			],
+			"price": {
+				"amount": 8,
+				"coin": "sp"
+			},
+			"bulk": "L",
+			"damage": "1d4",
+			"damageType": "P",
+			"hands": 1,
+			"category": "Weapon",
+			"subCategory": "Simple",
+			"group": "Knife",
+			"entries": [
+				"This punching dagger resembles the standard katar, save that a pair of blades can be folded out from the center blade, transforming the weapon into a starburst shape well suited to catching foes' weapons."
 			]
 		},
 		{
@@ -4998,6 +4997,36 @@
 			"group": "Spear",
 			"entries": [
 				"This three-pronged, spear-like weapon typically has a 4-foot shaft. Like a spear, it can be wielded with one hand or thrown."
+			]
+		},
+		{
+			"name": "Umbrella Injector",
+			"source": "G&G",
+			"page": 64,
+			"equipment": true,
+			"type": "Item",
+			"level": 0,
+			"traits": [
+				"Uncommon",
+				"Concealable",
+				"finesse",
+				"injection",
+				"parry"
+			],
+			"price": {
+				"amount": 4,
+				"coin": "gp"
+			},
+			"bulk": 1,
+			"damage": "1d4",
+			"damageType": "P",
+			"hands": 1,
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"group": "Sword",
+			"entries": [
+				"This umbrella's ferrule is a hollow-tipped blade three to four inches in length and often overlooked as decorative.",
+				"A receptacle inside the umbrella's shaft can be loaded with a single dose of injury poison and injected into a damaged target with the pull of a sliding trigger. Reinforced ribs enable you to parry and deflect blows with the umbrella's tear-resistant canopy."
 			]
 		},
 		{
@@ -5237,35 +5266,6 @@
 			"group": "Sword",
 			"entries": [
 				"Specialized grooves lined with unique, alchemically treated metals capable of retaining energy score the length of this sword. The first wish blades originated from genie smiths, and the knowledge of these weapons has been passed on to generations of geniekin, earning them the name wish blades."
-			]
-		},
-		{
-			"name": "Rungu",
-			"source": "LOAG",
-			"page": 139,
-			"equipment": true,
-			"type": "Equipment",
-			"traits": [
-				"grippli",
-				"shove",
-				"thrown 30 ft."
-			],
-			"price": {
-				"amount": 4,
-				"coin": "sp",
-				"note": null
-			},
-			"bulk": "L",
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d6",
-			"damageType": "B",
-			"hands": 1,
-			"category": "Weapon",
-			"subCategory": "Martial",
-			"group": "Club",
-			"entries": [
-				"This specialized club is designed for throwing and is useful for both combat and hunting. Rungus were invented by Zenj humans of the Mwangi Expanse and are most common among their tribes, though gripplis have also adopted rungus for hunting creatures that hide high in treetops."
 			]
 		},
 		{

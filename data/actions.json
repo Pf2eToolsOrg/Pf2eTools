@@ -1,6 +1,30 @@
 {
 	"action": [
 		{
+			"name": "Accidental Shot",
+			"source": "G&G",
+			"page": 142,
+			"activity": {
+				"number": 2,
+				"unit": "action"
+			},
+			"traits": [
+				"Fortune"
+			],
+			"actionType": {
+				"archetype": [
+					"Unexpected Sharpshooter|G&G"
+				]
+			},
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
+			"entries": [
+				"You make a {@action Strike} with a ranged weapon, rolling the attack and damage twice and using the better results for each. The attack ignores circumstance penalties to the attack roll and any flat check required due to the target being {@condition concealed} or {@condition hidden}."
+			]
+		},
+		{
 			"name": "Act Together",
 			"source": "SoM",
 			"page": 53,
@@ -654,21 +678,6 @@
 			]
 		},
 		{
-			"name": "Detect Magic",
-			"source": "CRB",
-			"page": 479,
-			"traits": [
-				"Exploration",
-				"Concentrate"
-			],
-			"actionType": {
-				"basic": true
-			},
-			"entries": [
-				"You cast {@spell detect magic} at regular intervals. You move at half your travel speed or slower. You have no chance of accidentally overlooking a magic aura at a travel speed up to 300 feet per minute, but must be traveling no more than 150 feet per minute to detect magic auras before the party moves into them."
-			]
-		},
-		{
 			"name": "Change Shape",
 			"source": "LOAG",
 			"activity": {
@@ -947,27 +956,6 @@
 			"trigger": "Another creature attempts a check to investigate a lead you're pursuing.",
 			"entries": [
 				"You share information with the triggering creature. They gain a circumstance bonus to their check equal to your circumstance bonus to checks investigating your subject from {@action Pursue a Lead|APG}. The GM can add any relevant traits to this reaction depending on the situation, such as {@trait auditory} and {@trait linguistic} if you're conveying information verbally."
-			]
-		},
-		{
-			"name": "Opportune Riposte",
-			"source": "APG",
-			"page": 86,
-			"activity": {
-				"number": 1,
-				"unit": "reaction"
-			},
-			"traits": [
-				"Swashbuckler"
-			],
-			"actionType": {
-				"class": [
-					"Swashbuckler|APG"
-				]
-			},
-			"trigger": "A foe within your reach critically fails a {@action Strike} against you.",
-			"entries": [
-				"You take advantage of an opening from your enemy's fumbled attack. You either make a melee {@action Strike} against the triggering foe or attempt to {@action Disarm} it of the weapon it used for the Strike."
 			]
 		},
 		{
@@ -1508,6 +1496,21 @@
 			"entries": [
 				"Bloodshed begets bloodshed as you drag your enemy toward oblivion. You increase the amount of damage you take by 1d6, and you deal 1d6 damage to the triggering enemy, choosing evil or negative damage to deal to the enemy each time you use this reaction. In addition, until the end of your next turn, your Strikes against the triggering creature deal 2 extra damage of the type you chose.",
 				"The damage you take and deal when you use this reaction increases to 2d6 at 5th level, 3d6 at 9th level, 4d6 at 12th level, 5d6 at 16th level, and 6d6 at 19th level. The extra damage on your Strikes increases to 4 at 9th level and 6 at 16th level."
+			]
+		},
+		{
+			"name": "Detect Magic",
+			"source": "CRB",
+			"page": 479,
+			"traits": [
+				"Exploration",
+				"Concentrate"
+			],
+			"actionType": {
+				"basic": true
+			},
+			"entries": [
+				"You cast {@spell detect magic} at regular intervals. You move at half your travel speed or slower. You have no chance of accidentally overlooking a magic aura at a travel speed up to 300 feet per minute, but must be traveling no more than 150 feet per minute to detect magic auras before the party moves into them."
 			]
 		},
 		{
@@ -3409,6 +3412,27 @@
 			"trigger": "You roll Initiative.",
 			"entries": [
 				"Your first shot is the deadliest. {@action Interact} to draw a firearm or crossbow. On your first turn, your first {@action Strike} with that weapon deals an additional {@damage 1d6} precision damage. This precision damage increases to {@damage 2d6} at 9th level and {@damage 3d6} at 15th level."
+			]
+		},
+		{
+			"name": "Opportune Riposte",
+			"source": "APG",
+			"page": 86,
+			"activity": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"traits": [
+				"Swashbuckler"
+			],
+			"actionType": {
+				"class": [
+					"Swashbuckler|APG"
+				]
+			},
+			"trigger": "A foe within your reach critically fails a {@action Strike} against you.",
+			"entries": [
+				"You take advantage of an opening from your enemy's fumbled attack. You either make a melee {@action Strike} against the triggering foe or attempt to {@action Disarm} it of the weapon it used for the Strike."
 			]
 		},
 		{
@@ -5661,30 +5685,6 @@
 			},
 			"entries": [
 				"Your careful shot against an unsuspecting opponent pierces a vital artery or organ. Make a ranged {@action Strike}. If the target is {@condition flat-footed}, the {@action Strike} deals an extra die of weapon damage, and the foe takes {@condition persistent damage||persistent bleed damage} equal to the amount of precision damage from your {@action One Shot, One Kill|G&G}."
-			]
-		},
-		{
-			"name": "Accidental Shot",
-			"source": "G&G",
-			"page": 142,
-			"activity": {
-				"number": 2,
-				"unit": "action"
-			},
-			"traits": [
-				"Fortune"
-			],
-			"frequency": {
-				"unit": "day",
-				"freq": 1
-			},
-			"actionType": {
-				"archetype": [
-					"Unexpected Sharpshooter|G&G"
-				]
-			},
-			"entries": [
-				"You make a {@action Strike} with a ranged weapon, rolling the attack and damage twice and using the better results for each. The attack ignores circumstance penalties to the attack roll and any flat check required due to the target being {@condition concealed} or {@condition hidden}."
 			]
 		}
 	]
