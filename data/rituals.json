@@ -529,6 +529,7 @@
 					"Occultism"
 				]
 			},
+			"targets": "1 non-magical inanimate object",
 			"duration": {
 				"type": "timed",
 				"entry": "unlimited",
@@ -537,7 +538,6 @@
 					"unit": "unlimited"
 				}
 			},
-			"targets": "1 non-magical inanimate object",
 			"entries": [
 				"You imbue a single Small or smaller object with rudimentary awareness and consciousness, and it gains mental ability modifiers depending on the results of the ritual. It gains the ability to see and hear, and the ability to understand (but not speak) a single language that you know. It's {@condition indifferent} to you and all living creatures. In all other respects, it's an ordinary object of its type. An awakened object that gains the {@condition broken} condition is rendered insensate until Repaired above its {@condition Broken} Threshold.",
 				"Magical objects and constructs can't be awakened, nor can most spell or magic item abilities be added to an awakened object later (the process to do so is much more complicated than a ritual and essentially creates an intelligent magic."
@@ -646,6 +646,13 @@
 				],
 				"prof": "expert"
 			},
+			"secondaryCheck": {
+				"entry": "{@skill Religion}, {@skill Society}",
+				"skills": [
+					"Religion",
+					"Society"
+				]
+			},
 			"range": {
 				"distance": {
 					"amount": 20,
@@ -654,13 +661,6 @@
 				"entry": "20 feet"
 			},
 			"targets": "1 living creature of a level no greater than double the bathe in blood ritual's level",
-			"secondaryCheck": {
-				"entry": "{@skill Religion}, {@skill Society}",
-				"skills": [
-					"Religion",
-					"Society"
-				]
-			},
 			"entries": [
 				"This is an old ritual, illegal in nearly every corner of Golarion, but never quite exterminated. You bathe in the freshly spilled blood of your people, whose lives and years you steal in the process.",
 				"This ritual requires that you submerge yourself in a bath of alchemically treated blood, attended by silent servants.",
@@ -995,13 +995,6 @@
 				],
 				"prof": "expert"
 			},
-			"range": {
-				"distance": {
-					"amount": 10,
-					"type": "feet"
-				},
-				"entry": "10 feet"
-			},
 			"secondaryCheck": {
 				"entry": "{@skill Crafting}, {@skill Performance}, {@skill Society}",
 				"skills": [
@@ -1009,6 +1002,13 @@
 					"Performance",
 					"Society"
 				]
+			},
+			"range": {
+				"distance": {
+					"amount": 10,
+					"type": "feet"
+				},
+				"entry": "10 feet"
 			},
 			"targets": "1 damaged or {@condition broken} public work no larger than 3,000 cubic feet (the size of a {@trait Huge} creature) ",
 			"entries": [
@@ -1072,6 +1072,7 @@
 					"amount": 1
 				}
 			},
+			"targets": "1 living creature",
 			"duration": {
 				"duration": {
 					"number": 1,
@@ -1080,7 +1081,6 @@
 				"entry": "1 week",
 				"type": "timed"
 			},
-			"targets": "1 living creature",
 			"entries": [
 				"At twilight for 5 days, you line the fruit in front of the mirror, chanting the name of the target, and envisioning its eyes in your mind. At exactly midnight on the last day, you drive the pins through the fruits, miming the action of methodically blinding the target to you and your companions. The target is immediately affected and can't visually detect any of the casters involved in the ritual\u2014provided that the ritual was successful, the target is unaware of the effects. Since the ritual affects the target's ability to see the casters, rather than make the casters {@condition invisible}, effects like true seeing are ineffective against concealment's curtain; instead, the target would need to remove the curse with effects like remove curse.",
 				"To perform this ritual, you must have been within 5 feet of the target at least once, close enough to get a good look at its eyes. The target is temporarily immune to further castings of concealment's curtain for 1 year.",
@@ -1881,6 +1881,12 @@
 					"Performance"
 				]
 			},
+			"area": {
+				"entry": "An enclosed area up to 60 feet × 60 feet, up to 20 feet high",
+				"types": [
+					"Misc."
+				]
+			},
 			"duration": {
 				"duration": {
 					"number": 1,
@@ -1888,12 +1894,6 @@
 				},
 				"entry": "1 week",
 				"type": "timed"
-			},
-			"area": {
-				"entry": "An enclosed area up to 60 feet × 60 feet, up to 20 feet high",
-				"types": [
-					"Misc."
-				]
 			},
 			"entries": [
 				"You ward an area with cold iron bells, protecting it from the influence of the first world. Fey creatures feel uncomfortable within the area and all physical attacks against them are considered cold iron for the purposes of their Weaknesses and Resistances. Furthermore, you set up bells within 3 squares within the area (usually at entrances). When a fey creature begins its turn in a square containing bells, it takes mental damage equal to its Weakness to cold iron, if any. This damage is {@trait nonlethal}.",
@@ -2339,11 +2339,11 @@
 				"entry": "see text",
 				"type": "unknown"
 			},
+			"targets": "1 sentient living creature",
 			"duration": {
 				"entry": "until used 10 times or until the target's body parts are removed from the doll",
 				"type": "timed"
 			},
-			"targets": "1 sentient living creature",
 			"entries": [
 				"You craft a doll with care and quiet meditation on the target, inserting the fingernails into the body, tying the lock of hair around the neck of the doll, or emptying the vial of blood into the stuffing and allowing it to be absorbed. You then stuff the doll and form it to mimic the shape of the target, creating clothing and accessories for the doll that are similar to commonly worn items. You must have been within 5 feet of the target at least once and gotten a good look at them to perform this ritual. You can cast the ritual and create the doll at any range from the target.",
 				"Once the doll is complete, you can {@action Interact} with the doll violently once per round to cause pain to the target as long as they're within 200 feet. This pain manifests as mental damage inflicted on the target, and it depends on how many of the three body part components (hair, nails, or blood) you included in the creation of the doll. After the first time you manipulate the doll, you can continue to do so until either the target moves beyond 200 feet or until you {@action Interact} with the doll to cause pain 10 times, whichever comes first. After either of those conditions is met, the doll falls apart into stuffing and dust.",
@@ -2991,6 +2991,9 @@
 				"entry": "7 days"
 			},
 			"cost": "splendid art supplies worth at least 100 gp × the target's level, at least one pint of blood from the target",
+			"secondaryCasters": {
+				"number": 3
+			},
 			"primaryCheck": {
 				"entry": "{@skill Occultism} or {@skill Religion} (master)",
 				"prof": "master",
@@ -3006,9 +3009,6 @@
 					"Occultism",
 					"Religion"
 				]
-			},
-			"secondaryCasters": {
-				"number": 3
 			},
 			"targets": "1 living creature",
 			"duration": {

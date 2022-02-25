@@ -1,5 +1,6 @@
 window.addEventListener("load", async () => {
 	Renderer.get().setBaseUrl("/");
+	await Renderer.trait.preloadTraits();
 	const it = await Renderer.hover.pCacheAndGet(`${_SEO_PAGE}.html`, _SEO_SOURCE, _SEO_HASH);
 
 	document.title = `${it.name} - Pf2eTools`;

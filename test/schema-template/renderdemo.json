@@ -1,0 +1,18 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema",
+	"$id": "renderdemo.json",
+	"title": "Render Demo",
+	"description": "The example data to load for renderer demonstration for Pf2eTools.",
+	"type": "object",
+	"version": "0.0.1",
+	"properties": {
+		"data": {
+			"type": "array",
+			"items": {
+				"$ref": "entry.json"
+			}
+		}
+	},
+	"additionalProperties": false,
+	"required": ["data"]
+}
