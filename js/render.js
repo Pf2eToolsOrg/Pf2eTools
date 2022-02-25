@@ -5161,7 +5161,7 @@ Renderer.trait = {
 	async preloadTraits () {
 		let loading = {};
 		const cats = new Set([]);
-		const traits = (await Promise.all([DataUtil.loadJSON("data/traits.json"), BrewUtil.pAddBrewData()])).map(it => it.trait).filter(Boolean).flat();
+		const traits = (await Promise.all([DataUtil.loadJSON(`${Renderer.get().baseUrl}data/traits.json`), BrewUtil.pAddBrewData()])).map(it => it.trait).filter(Boolean).flat();
 		for (let trait of traits) {
 			if (!trait.categories || !trait.categories.length) {
 				trait.categories = ["General"];
@@ -7434,6 +7434,7 @@ if (typeof module !== "undefined") {
 	global.Renderer = Renderer;
 } else {
 	window.addEventListener("load", async () => {
-		await Renderer.trait.preloadTraits()
+		// This would fail on seo pages because base url has not been set yet.
+		if (!window.hasOwnProperty("_SEO_PAGE")) await Renderer.trait.preloadTraits()
 	});
 }
