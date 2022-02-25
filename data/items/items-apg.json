@@ -98,7 +98,7 @@
 				"components": "envision",
 				"requirements": null,
 				"frequency": null,
-				"trigger": "You Shield Block a melee attack with the affixed shield."
+				"trigger": "You {@action Shield Block} a melee attack with the affixed shield."
 			},
 			"category": "Talisman",
 			"entries": [
@@ -133,9 +133,16 @@
 			},
 			"category": "Bomb",
 			"entries": [
-				"Blight bombs contain volatile toxic chemicals that rot flesh. A blight bomb deals the listed poison damage, {@condition persistent damage ||persistent poison damage}, and splash damage. Many types grant an item bonus to attack rolls."
+				"Blight bombs contain volatile toxic chemicals that rot flesh. A blight bomb deals the listed poison damage, {@condition persistent damage||persistent poison damage}, and splash damage. Many types grant an item bonus to attack rolls."
 			],
 			"generic": "G",
+			"_vmod": {
+				"entries": {
+					"mode": "replaceTxt",
+					"replace": "A blight bomb deals the listed poison damage, {@condition persistent damage\\|\\|persistent poison damage}, and splash damage. Many types grant an item bonus to attack rolls."
+				},
+				"entriesMode": "generic"
+			},
 			"variants": [
 				{
 					"type": "lesser",
@@ -146,8 +153,14 @@
 						"note": null
 					},
 					"entries": [
-						"The bomb deals {@damage 1d6} poison damage, {@damage 1d4} {@condition persistent damage ||persistent poison damage}, and 1 poison splash damage."
-					]
+						"The bomb deals {@damage 1d6} poison damage, {@damage 1d4} {@condition persistent damage||persistent poison damage}, and 1 poison splash damage."
+					],
+					"_mod": {
+						"entries": {
+							"replaceTags": true,
+							"with": "A lesser blight bomb deals {@damage 1d6} {@condition persistent damage||persistent acid damage} and 1 acid splash damage."
+						}
+					}
 				},
 				{
 					"type": "moderate",
@@ -159,7 +172,13 @@
 					},
 					"entries": [
 						"You gain a +1 item bonus to attack rolls. The bomb deals {@damage 2d6} poison damage, {@damage 2d4} {@condition persistent damage ||persistent poison damage}, and 2 poison splash damage."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"replaceTags": true,
+							"with": "A moderate blight bomb deals {@damage 2d6} poison damage, {@damage 2d4} {@condition persistent damage ||persistent poison damage}, and 2 poison splash damage. You gain a +1 item bonus to attack rolls."
+						}
+					}
 				},
 				{
 					"type": "greater",
@@ -171,7 +190,13 @@
 					},
 					"entries": [
 						"You gain a +2 item bonus to attack rolls. The bomb deals {@damage 3d6} poison damage, {@damage 3d4} {@condition persistent damage ||persistent poison damage}, and 3 poison splash damage."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"replaceTags": true,
+							"with": "A greater blight bomb deals {@damage 3d6} poison damage, {@damage 3d4} {@condition persistent damage ||persistent poison damage}, and 3 poison splash damage. You gain a +2 item bonus to attack rolls."
+						}
+					}
 				},
 				{
 					"type": "major",
@@ -183,7 +208,13 @@
 					},
 					"entries": [
 						"You gain a +3 item bonus to attack rolls. The bomb deals {@damage 4d6} poison damage, {@damage 4d4} {@condition persistent damage ||persistent poison damage}, and 4 poison splash damage."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"replaceTags": true,
+							"with": "A major blight bomb deals {@damage 4d6} poison damage, {@damage 4d4} {@condition persistent damage ||persistent poison damage}, and 4 poison splash damage. You gain a +3 item bonus to attack rolls."
+						}
+					}
 				}
 			]
 		},
@@ -812,7 +843,7 @@
 			"entries": [
 				"This brown-and-gold robe covers you from head to toe. Its weighty fabric doesn't move with the wind, instead hanging still as if carved of stone.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "action"
@@ -820,10 +851,13 @@
 					"components": [
 						"Interact"
 					],
-					"frequency": "once per hour",
+					"frequency": {
+						"unit": "hour",
+						"freq": 1
+					},
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You {@action Burrow} through dirt and stone up to your land Speed, leaving no tunnels or signs of your passing. If you end your movement inside solid stone, you are forcibly expelled into the nearest open area, taking {@damage 1d6} bludgeoning damage for every 5 feet between the end of your movement and the open area."
 					]
 				}
@@ -854,7 +888,7 @@
 				"This fine wooden box is inlaid with Dwarven runes, with hinges and a clasp of forged iron.",
 				"The box contains a few handfuls of fine sand.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "minute",
@@ -864,10 +898,13 @@
 						"(envision",
 						"Interact)"
 					],
-					"frequency": "once per day",
+					"frequency": {
+						"unit": "day",
+						"freq": 1
+					},
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You hold the box closed and, while envisioning the earth around you, turn the box clockwise three times and then give it three slow shakes. When you open the box, the sand has arranged itself to replicate, in miniature, the stone terrain surrounding you, to a range of 60 feet. This shows details of paths; hills; embankments; boulders; and even artificial structures like walls, ditches, and tunnels, as long as they're made of stone and earth.",
 						"If you're underground, it reveals tunnels and voids in the earth within 60 feet at your current depth. The sand maintains its shape until you close the box."
 					]
@@ -931,7 +968,7 @@
 			"entries": [
 				"These strange masks consist of a thin stone hood and a shimmering purple veil reminiscent of the pleroma aeon who first gifted them to mortals in the hope that sharing the means of aeon communication would reduce the misunderstandings and conflicts among mortal civilizations. An envisioning mask covers your entire face, though it doesn't hinder your vision or other senses.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "action"
@@ -939,10 +976,14 @@
 					"components": [
 						"Interact"
 					],
-					"frequency": "once per day",
+
+					"frequency": {
+						"unit": "day",
+						"freq": 1
+					},
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You lose the ability to produce language and instead communicate wordlessly through a series of psychic projections. This acts as telepathy with a range of 100 feet, but it is understandable to all creatures regardless of whether they have a language. When communicating with non-aeons, however, your meaning is often vague and mysterious. This effect lasts for 10 minutes."
 					]
 				}
@@ -970,7 +1011,7 @@
 			"entries": [
 				"The magic within this wooden shield (Hardness 3, HP 12, BT 6) lashes out at your foes as the shield is destroyed.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "free"
@@ -981,7 +1022,7 @@
 					"frequency": null,
 					"trigger": "The exploding shield is destroyed",
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"The shield explodes outward, dealing {@damage 4d6} piercing damage to each creature in a 15-foot cone (DC 19 basic Reflex save)."
 					]
 				}
@@ -1069,7 +1110,7 @@
 			"entries": [
 				"This dark-red ring is engraved with ashen symbols and smells faintly of smoke.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 2,
 						"unit": "action"
@@ -1078,10 +1119,14 @@
 						"envision",
 						"Interact"
 					],
-					"frequency": "once per day",
+
+					"frequency": {
+						"unit": "day",
+						"freq": 1
+					},
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You {@action Stride} (or {@action Burrow} or {@action Fly}, if you have the corresponding Speed) into any fire large enough to contain you, including magical fires. You vanish into the fire and take no damage from it. You can sense all sufficiently large fires within 100 feet of where you vanish, and you reemerge from any of those fires, either within the fire or adjacent to it. If you end your movement in the fire, it affects you as normal."
 					]
 				}
@@ -1252,7 +1297,7 @@
 			"entries": [
 				"This +2 striking dogslicer is obviously the work of a brilliant but scrappy artisan who valued versatility over safety. Four toothy gems line the blade's cutting edge, three of which glow\u2014one with fiery red light, one with a chill blue, and one that gives off sparks\u2014while the last is a glistening black. Each of these gems embodies a weapon property rune, but only one rune can be active at a time.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "action"
@@ -1263,7 +1308,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You twist the gem along the blade corresponding with the desired weapon rune: red for flaming, blue for frost, or yellow for shock. You take {@dice 1d6} damage of the type the chosen rune deals. You can instead twist the black gem to disable the active property rune, taking no damage."
 					]
 				}
@@ -1466,7 +1511,7 @@
 			"entries": [
 				"A glamorous buckler (Hardness 3, HP 6, BT 3) is lavishly decorated with gilding and inset gemstones that glitter in the light. While you have it raised, the glamorous buckler grants you a +1 item bonus to {@skill Deception} checks to {@action Feint}.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "free"
@@ -1474,10 +1519,14 @@
 					"components": [
 						"envision"
 					],
-					"frequency": "once per day",
+
+					"frequency": {
+						"unit": "day",
+						"freq": 1
+					},
 					"trigger": "You {@action Feint}",
 					"requirements": "You have the glamorous buckler raised",
-					"effect": [
+					"entries": [
 						"As you {@action Feint}, the glamorous buckler sparkles mightily. On a successful {@action Feint}, the target is {@condition dazzled} for 1 round."
 					]
 				}
@@ -1507,7 +1556,7 @@
 			"entries": [
 				"These heavy boots are made of blackened metal and always feel warm to the touch, with streams of glowing embers cascading off their heels. While wearing hellfire boots, you gain resistance 10 to fire damage.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 2,
 						"unit": "action"
@@ -1515,10 +1564,13 @@
 					"components": [
 						"Interact"
 					],
-					"frequency": "once per minute",
+					"frequency": {
+						"unit": "minute",
+						"freq": 1
+					},
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"{@action Stride}. Each square you move through during your {@action Stride} is scorched with hellish flames, becoming hazardous terrain for 1 minute. A creature that moves through one of these spaces takes {@damage 3d6} fire damage."
 					]
 				}
@@ -1581,7 +1633,7 @@
 			"entries": [
 				"This elegant +1 striking sword cane serves equally well as a fashionable accessory and {@condition hidden} weapon suitable for highsociety events where weapons aren't typically permitted.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "action"
@@ -1592,7 +1644,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You twist the sword cane's hilt, magically merging the blade into the cane. While the blade is merged, it can't be drawn and gains the benefits of a 3rd-level {@spell magic aura} spell to appear non-magical. Passive observers can't attempt a check to notice the cane is anything more than a mundane, if superb, fashion accessory. Those carefully examining it can discern the cane is more than it appears, but doing so is extremely difficult (DC 30 {@skill Perception})",
 						"Activating the sword cane again releases the blade, allowing it to be drawn normally."
 					]
@@ -1686,7 +1738,7 @@
 				"These white silk gloves are adorned in red hearts that glow faintly whenever you are adjacent to someone you feel particularly strongly toward.",
 				"They buoy your spirit, giving you a +1 item bonus to {@skill Diplomacy} checks.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "action"
@@ -1694,10 +1746,14 @@
 					"components": [
 						"Interact"
 					],
-					"frequency": "once per day",
+
+					"frequency": {
+						"unit": "day",
+						"freq": 1
+					},
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You grasp the hands of a willing creature you have strong positive feelings about, regardless of the nature of those feelings.",
 						"The creature gains a +1 status bonus to saving throws and 10 temporary Hit Points for 10 minutes.",
 						"If the creature shares your feelings, you gain the same benefits, and for the duration, when you both roll a success on a saving throw against an {@trait emotion} effect that causes negative emotions, you both get a critical success instead."
@@ -1725,7 +1781,7 @@
 			"entries": [
 				"This ice-blue half-mask is adorned with a wicked silver grin that covers the wearer's mouth, leaving the rest of the face uncovered. You gain a +2 item bonus to {@skill Intimidation} checks.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 2,
 						"unit": "action"
@@ -1734,10 +1790,14 @@
 						"envision",
 						"Interact"
 					],
-					"frequency": "once per day",
+
+					"frequency": {
+						"unit": "day",
+						"freq": 1
+					},
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"The mask emits a soul-chilling scream that deals {@damage 6d10} negative damage to each living creature in a 20-foot emanation (DC 25 basic Fortitude save)."
 					]
 				}
@@ -1780,7 +1840,7 @@
 			"entries": [
 				"The ghastly visage of a slain medusa's head stares out from this steel shield (Hardness 13, HP 52, BT 26). The shield comes with a thick leather cover to conceal the head.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 2,
 						"unit": "action"
@@ -1788,10 +1848,14 @@
 					"components": [
 						"Interact (visual)"
 					],
-					"frequency": "once per day",
+
+					"frequency": {
+						"unit": "day",
+						"freq": 1
+					},
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You reveal the medusa's face, focusing its gaze on one creature within 30 feet. The shield casts flesh to stone with a range of 30 feet."
 					]
 				}
@@ -2442,7 +2506,7 @@
 			"entries": [
 				"This seemingly unremarkable, weathered silver coin bears the bust of an unnamed monarch on the face and a majestic bird on the tail. You can toss the coin without activating it, in which case it follows the normal laws of probability.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "action"
@@ -2453,7 +2517,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You rub your thumb on one side of the coin with the intent of slightly tweaking the strands of fate, then flip the coin into the air in a coin toss. No matter how the toss is resolved\u2014 letting the coin fall to the ground, slapping it down on the back of your hand, or catching it on your open palm\u2014it always lands with the side you rubbed face up."
 					]
 				}
@@ -2579,7 +2643,7 @@
 			"entries": [
 				"This powerful magic rod is inimical to all magic.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 2,
 						"unit": "action"
@@ -2590,7 +2654,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You touch the rod to a {@trait magical} effect or magic item and attempt to counteract the effect or item.",
 						"Regardless of the result, the rod of cancellation can't be activated again for {@dice 2d6} hours.",
 						"On a success, the effect or item is deactivated for the same amount of time, and its duration, if any, continues to expire during that time. If you choose, you can instead completely drain the rod of cancellation's magic on a success in order to completely drain the magic from the effect or item. If you do, both become completely non-magical and their magic can't be recovered, even by the {@spell remake} spell.",
@@ -2616,7 +2680,7 @@
 			"entries": [
 				"This silk rope measures 50 feet long and is capable of holding up to 3,000 pounds. If the rope is ever cut, only the longest remaining portion retains its magic.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "action"
@@ -2624,10 +2688,14 @@
 					"components": [
 						"Interact"
 					],
-					"frequency": "once per day",
+
+					"frequency": {
+						"unit": "day",
+						"freq": 1
+					},
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You hold one end of the rope and point to a destination.",
 						"The rope animates for 1 minute, moving 10 feet per round until it reaches the destination or runs out of length. The rope can move across any non-damaging horizontal or vertical surface, but it can't extend upward without a surface to support it. At any point while the rope is animated, you can use an {@action Interact} action to wiggle the rope, giving it one of the following commands: stop in place, fasten securely to the nearest available object, detach from an object, or knot or unknot itself."
 					]
@@ -2810,7 +2878,7 @@
 			"entries": [
 				"This sticky salve stubbornly holds wounds closed and encourages swift natural healing. You can activate the salve in either of the following ways.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "action"
@@ -2821,12 +2889,12 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You {@action Administer First Aid} without requiring healer's tools. You either gain a +2 item bonus to the {@skill Medicine} check, or you can use the skinstitch salve's {@skill Medicine} modifier of +13 instead of your own."
 					]
 				},
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "free"
@@ -2837,7 +2905,7 @@
 					"frequency": null,
 					"trigger": "You {@action Treat Wounds} or use Battle",
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You gain a +2 item bonus to the triggering {@skill Medicine} check. If you roll a success on the {@skill Medicine} check, you get a critical success instead."
 					]
 				}
@@ -2867,7 +2935,7 @@
 				"Slates are crafted in pairs, and each works with only the other of its pair.",
 				"If one slate of a pair is ever {@condition broken}, the other shatters into non-magical shards. The listed price is for a pair of slates.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 2,
 						"unit": "action"
@@ -2878,7 +2946,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You use a piece of chalk to write up to 25 words on a slate. As you write, the writing also appears on the other slate in its matched pair, no matter how far away it is, as long as it is on the same plane. Wiping one slate clean erases the writing from both slates. Each slate can be activated once per hour."
 					]
 				}
@@ -3025,7 +3093,7 @@
 			"entries": [
 				"This +1 striking ghost touch crossbow has an array of crystalline lenses and silver fittings along the stock and feels strangely light.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "action"
@@ -3033,10 +3101,13 @@
 					"components": [
 						"envision"
 					],
-					"frequency": "once per minute",
+					"frequency": {
+						"unit": "minute",
+						"freq": 1
+					},
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You aim through the crossbow's crystalline lenses, gaining imprecise vision onto the Ethereal Plane with a range of 60 feet in addition to your normal senses for the rest of your turn. While this effect lasts, your next {@action Strike} with the spiritsight crossbow can also affect targets on the Ethereal Plane during the first 60 feet of its flight."
 					]
 				}
@@ -3062,7 +3133,7 @@
 				"This bizarre staff is made from oak, capped with a cluster of eye-shaped gemstones that seem to move and undulate at the corner of your vision. While wielding the staff, you can peer through the eyes, using your normal visual senses (including any benefits of spells affecting your vision, like see invisibility). You can maneuver the staff to see things around corners, at higher elevations, or in places where the staff can fit but your head can't. This doesn't provide sufficient line of effect to target creatures around corners.",
 				"The eyes are as vulnerable as your eyes and can be affected by anything that alters your vision, such as a blinding flash of light.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "varies",
@@ -3074,7 +3145,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You expend a number of charges from the staff to cast a spell from its list."
 					]
 				}
@@ -3175,7 +3246,7 @@
 			"entries": [
 				"This stout staff is made from gnarled hawthorn. When used as a weapon, a staff of nature's vengeance permanently has the effects of shillelagh.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "varies",
@@ -3187,7 +3258,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You expend a number of charges from the staff to cast a spell from its list."
 					]
 				}
@@ -3271,7 +3342,7 @@
 			"entries": [
 				"A large, stylized symbol of an eye adorns the top of this wooden staff, representing the watchful eye of the divine powers. The bearer of the staff can guide and protect, seeing bounties and tragedies that could befall them in the future. When wielding this staff, you gain a +1 item bonus on {@skill Survival} checks to {@action Sense Direction} or {@action Subsist}, and to {@skill Religion} checks to {@action Recall Knowledge}.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "varies",
@@ -3283,7 +3354,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You expend a number of charges from the staff to cast a spell from its list."
 					]
 				}
@@ -3574,7 +3645,7 @@
 			"entries": [
 				"This sealed pewter urn contains the ashes of a benevolent ancestor, with a sliver of lingering spirit that strives to protect you.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "reaction"
@@ -3585,12 +3656,12 @@
 					"frequency": null,
 					"trigger": "You would become {@condition doomed} or your {@condition doomed} value would increase",
 					"requirements": "The ashes aren't {@condition doomed}",
-					"effect": [
+					"entries": [
 						"The ashes in the urn intervene, taking the {@condition doomed} condition in your place, and you don't gain or increase the value of your own {@condition doomed} condition. Each night when you get a full night's rest, you can reduce your own {@condition doomed} condition or that of the urn, but not both."
 					]
 				},
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "action"
@@ -3599,10 +3670,13 @@
 						"envision",
 						"Interact (attack)"
 					],
-					"frequency": "once per round",
+					"frequency": {
+						"unit": "round",
+						"freq": 1
+					},
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"The urn shoots a bolt of negative energy at a foe within 30 feet. Attempt a spell attack roll against the target's AC, using a modifier of +15 or your own spell attack roll modifier, whichever is higher. On a success, the bolt deals {@damage 4d4} negative damage (doubled on a critical success)."
 					]
 				}
@@ -3627,7 +3701,7 @@
 			"entries": [
 				"The metal plates of this +1 resilient full plate are covered by a bright tabard featuring a distinctive coat of arms divided into four fields. This insignia magically records your recent victories, displaying one triumph in each field of the coat of arms, allowing you to call upon those victories for aid in future battles.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "free"
@@ -3638,12 +3712,12 @@
 					"frequency": null,
 					"trigger": "You kill or destroy a creature of a level equal to or greater than your victory plate (adjusted as usual if you add fundamental runes to victory plate).",
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You direct the armor to commemorate your victory. The coat of arms on the armor's tabard shifts to incorporate heraldry related to the slain creature, and the victory is recorded within the tabard. If you have already recorded four victories, choose one to replace with the new victory."
 					]
 				},
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 2,
 						"unit": "action"
@@ -3652,10 +3726,13 @@
 						"envision",
 						"Interact"
 					],
-					"frequency": "once per hour",
+					"frequency": {
+						"unit": "hour",
+						"freq": 1
+					},
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You touch one of the tabard's four fields representing one of your victories and recall your triumph over that creature. That creature vanishes from the tabard, and for 1 minute, you gain resistance 5 to a damage type based on the creature's trait (you gain resistance to only one type, even if the creature has more than one trait that could apply):",
 						{
 							"type": "list",
@@ -3741,7 +3818,7 @@
 			"entries": [
 				"This wand is made of two copper plates separated by a ceramic center.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "varies",
@@ -3750,10 +3827,14 @@
 					"components": [
 						"a Spell"
 					],
-					"frequency": "once per day, plus overcharge",
+					"frequency": {
+						"unit": "day",
+						"freq": 1,
+						"overcharge": true
+					},
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You cast {@spell light}ning bolt, but the spell's area is twice as wide (two adjacent and parallel 120-foot lines) and creatures that fail their save are {@condition flat-footed} for 1 round."
 					]
 				}
@@ -3822,7 +3903,7 @@
 			"entries": [
 				"This wand is a length of wrought black iron.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "varies",
@@ -3831,10 +3912,14 @@
 					"components": [
 						"a Spell"
 					],
-					"frequency": "once per day, plus overcharge",
+					"frequency": {
+						"unit": "day",
+						"freq": 1,
+						"overcharge": true
+					},
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You cast {@spell darkness}. Each creature that ends its turn within the spell's area must succeed at a DC 20 Will save or become {@condition frightened|CRB|frightened 1} ({@condition frightened|CRB|frightened 2} on a critical failure)."
 					]
 				}
@@ -3883,7 +3968,7 @@
 			"entries": [
 				"This alabaster wand has a clear crystal at the tip.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "varies",
@@ -3892,10 +3977,14 @@
 					"components": [
 						"a Spell"
 					],
-					"frequency": "once per day, plus overcharge",
+					"frequency": {
+						"unit": "day",
+						"freq": 1,
+						"overcharge": true
+					},
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You cast {@spell heal} at the indicated level. After you cast the spell, at the start of your next turn, excess healing magic wells up from the wand and heals you, as though you cast the 1-action version of heal on yourself at the same spell level.",
 						"You gain this benefit only once, even if you cast multiple {@spell heal} spells from wands of overflowing life in the same turn."
 					]
@@ -3985,7 +4074,7 @@
 			"entries": [
 				"This wand is a slender length of ice-blue glass.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "varies",
@@ -3994,10 +4083,14 @@
 					"components": [
 						"a Spell"
 					],
-					"frequency": "once per day, plus overcharge",
+					"frequency": {
+						"unit": "day",
+						"freq": 1,
+						"overcharge": true
+					},
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You cast {@spell cone of cold}. The ground within the spell's area is swathed in deep snow, becoming difficult terrain for 1 minute."
 					]
 				}
@@ -4045,7 +4138,7 @@
 			"entries": [
 				"The handle of this wand is a 5-inch-long piece of rosewood, but most of its length is a pair of twisted spider legs covered in gossamer webbing.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "varies",
@@ -4054,10 +4147,14 @@
 					"components": [
 						"a Spell"
 					],
-					"frequency": "once per day, plus overcharge",
+					"frequency": {
+						"unit": "day",
+						"freq": 1,
+						"overcharge": true
+					},
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You cast {@spell web}, but the strands of webbing are envenomed. Any creature that fails their {@skill Athletics} check or Reflex save to navigate the web takes {@damage 1d6} poison damage."
 					]
 				}
@@ -4105,7 +4202,7 @@
 			"entries": [
 				"This rune is a swirling glyph on the front of the armor. A large pair of transparent, ephemeral wings floats out from the back of the armor.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 2,
 						"unit": "action"
@@ -4114,10 +4211,13 @@
 						"command",
 						"Interact"
 					],
-					"frequency": "once per hour",
+					"frequency": {
+						"unit": "hour",
+						"freq": 1
+					},
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You trace the rune on the front of the breastplate and the armor's ephemeral wings grow tangible, granting you a fly Speed of 25 feet or your land Speed, whichever is slower. This effect lasts for 5 minutes or until you {@action Dismiss} it. Once the effect ends, the wings disappear completely, reappearing in their ephemeral form 1 hour later."
 					]
 				}
