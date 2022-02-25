@@ -32,9 +32,11 @@ class SpellsPage extends ListPage {
 		const source = Parser.sourceJsonToAbv(spell.source);
 		const time = Parser.timeToTableStr(spell.cast);
 		const school = Parser.spSchoolAbvToFull(spell.school);
+		const type = spell.traits.includes("Cantrip") ? "C" : spell.focus ? "F" : "S";
 
 		eleLi.innerHTML = `<a href="#${hash}" class="lst--border">
 			<span class="bold col-3-9 pl-0">${spell.name}</span>
+			<span class="col-1-1 text-center">${type}</span>
 			<span class="col-1-5 text-center">${Parser.spLevelToFull(spell.level)}</span>
 			<span class="col-2-4 text-center">${time}</span>
 			<span class="col-2-7 sp__school-${spell.school} text-center" title="${Parser.spSchoolAbvToFull(spell.school)}" ${Parser.spSchoolAbvToStyle(spell.school)}>${school}</span>
@@ -52,6 +54,7 @@ class SpellsPage extends ListPage {
 				time,
 				school: Parser.spSchoolAbvToFull(spell.school),
 				normalisedTime: spell._normalisedTime,
+				type: spell._normalisedType,
 			},
 			{
 				uniqueId: spell.uniqueId ? spell.uniqueId : spI,

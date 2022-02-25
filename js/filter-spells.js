@@ -12,6 +12,7 @@ class PageFilterSpells extends PageFilter {
 			case "name": return SortUtil.compareListNames(a, b);
 			case "source": return SortUtil.ascSort(a.values.source, b.values.source) || SortUtil.compareListNames(a, b);
 			case "level": return SortUtil.ascSort(a.values.level, b.values.level) || SortUtil.compareListNames(a, b);
+			case "type": return SortUtil.compareListNames(a, b);
 			case "school": return SortUtil.ascSort(a.values.school, b.values.school) || SortUtil.compareListNames(a, b);
 			case "time": return SortUtil.ascSort(a.values.normalisedTime, b.values.normalisedTime) || SortUtil.compareListNames(a, b);
 		}
@@ -103,6 +104,7 @@ class PageFilterSpells extends PageFilter {
 		// used for sorting
 		spell._normalisedTime = Parser.getNormalisedTime(spell.cast);
 		spell._normalisedRange = Parser.getNormalisedRange(spell.range);
+		spell._normalisedType = spell.traits.includes("Cantrip") ? "C" : spell.focus ? "F" : "S";
 
 		// used for filtering
 		spell._fSources = SourceFilter.getCompleteFilterSources(spell);

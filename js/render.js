@@ -5035,9 +5035,10 @@ Renderer.spell = {
 		renderer.recursiveRender(sp.entries, entryStack, {pf2StatFix: true});
 
 		const level = ` ${sp.level}`;
+		const type = sp.traits.includes("Cantrip") ? "CANTRIP" : sp.focus ? "FOCUS" : "SPELL";
 
 		return `${Renderer.utils.getExcludedDiv(sp, "spell", UrlUtil.PG_SPELLS)}
-		${Renderer.utils.getNameDiv(sp, {page: UrlUtil.PG_SPELLS, level: level, ...opts})}
+		${Renderer.utils.getNameDiv(sp, {page: UrlUtil.PG_SPELLS, type: type, level: level, ...opts})}
 		${Renderer.utils.getDividerDiv()}
 		${Renderer.utils.getTraitsDiv(sp.traits)}
 		${Renderer.spell.getSubHead(sp)}
