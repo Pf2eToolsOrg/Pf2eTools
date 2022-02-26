@@ -1669,6 +1669,12 @@ UrlUtil = {
 				const parts = filterBox.getSubHashes({isAddSearchTerm: true});
 				parts.unshift(url);
 
+				if (evt.ctrlKey) {
+					await MiscUtil.pCopyTextToClipboard(filterBox.getFilterTag());
+					JqueryUtil.showCopiedEffect($btn);
+					return;
+				}
+
 				if (evt.shiftKey && ListUtil.sublist) {
 					const toEncode = JSON.stringify(ListUtil.getExportableSublist());
 					const part2 = UrlUtil.packSubHash(ListUtil.SUB_HASH_PREFIX, [toEncode], {isEncodeBoth: true});
@@ -1678,7 +1684,7 @@ UrlUtil = {
 				await MiscUtil.pCopyTextToClipboard(parts.join(HASH_PART_SEP));
 				JqueryUtil.showCopiedEffect($btn);
 			})
-			.title("Get Link to Filters (SHIFT adds List)")
+			.title("Get link to filters (SHIFT adds list; CTRL copies @filter tag)")
 	},
 
 	bindLinkExportButtonMulti (filterBox, $btn) {

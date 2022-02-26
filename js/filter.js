@@ -862,6 +862,11 @@ class FilterBox extends ProxyBase {
 		return out.length ? out : null;
 	}
 
+	getFilterTag () {
+		const parts = this._filters.map(f => f.getFilterTagPart()).filter(Boolean);
+		return `{@filter |${UrlUtil.getCurrentPage().replace(/\.html$/, "")}||${parts.join("|")}}`;
+	}
+
 	setFromValues (values) {
 		this._filters.forEach(it => it.setFromValues(values));
 	}
@@ -1250,6 +1255,29 @@ class Filter extends FilterBase {
 		// Always extend default state
 		out.push(UrlUtil.packSubHash(this.getSubHashPrefix("options", this.header), ["extend"]))
 		return out;
+	}
+
+	_getStateNotDefault () {
+		return Object.entries(this._state)
+			.filter(([k, v]) => {
+				if (k.startsWith("_")) return false;
+				const defState = this._getDefaultState(k);
+				return defState !== v;
+			});
+	}
+
+	getFilterTagPart () {
+		const areNotDefaultState = this._getStateNotDefault();
+		if (!areNotDefaultState.length) return null;
+
+		const pt = Object.entries(this._state)
+			.filter(([k]) => !k.startsWith("_"))
+			.filter(([, v]) => v)
+			.map(([k, v]) => `${v === 2 ? "!" : ""}${k}`)
+			.join(";")
+			.toLowerCase();
+
+		return `${this.header.toLowerCase()}=${pt}`;
 	}
 
 	/**
@@ -2503,6 +2531,24 @@ class RangeFilter extends FilterBase {
 		return out.length ? out : null;
 	}
 
+	getFilterTagPart () {
+		if (this._state.min === this._state.curMin && this._state.max === this._state.curMax) return null;
+
+		if (!this._labels) {
+			if (this._state.curMin === this._state.curMax) return `${this.header}=[${this._state.curMin}]`;
+			return `${this.header}=[${this._state.curMin};${this._state.curMax}]`;
+		}
+
+		if (this._state.curMin === this._state.curMax) {
+			const label = this._labels[this._state.curMin];
+			return `${this.header}=[&${label}]`;
+		}
+
+		const labelLow = this._labels[this._state.curMin];
+		const labelHigh = this._labels[this._state.curMax];
+		return `${this.header}=[&${labelLow};&${labelHigh}]`;
+	}
+
 	setFromSubHashState (state) {
 		this.setMetaFromSubHashState(state);
 
@@ -2993,6 +3039,8 @@ class OptionsFilter extends FilterBase {
 		return out.length ? out : null;
 	}
 
+	getFilterTagPart () { return null; }
+
 	setFromSubHashState (state) {
 		this.setMetaFromSubHashState(state);
 
@@ -3247,6 +3295,10 @@ class MultiFilter extends FilterBase {
 		// flatten any arrays of arrays into our array of arrays
 		this._filters.map(it => it.getSubHashes()).filter(Boolean).forEach(it => out.push(...it));
 		return out.length ? out : null;
+	}
+
+	getFilterTagPart () {
+		return this._filters.map(it => it.getFilterTagPart()).filter(Boolean).join("|");
 	}
 
 	setFromSubHashState (state) {
