@@ -5275,7 +5275,7 @@ Renderer.generic = {
 		const traits = it.traits || [];
 		const renderedSections = Renderer.generic.getRenderedSection(it.sections);
 		return `
-		${Renderer.utils.getNameDiv(it, {"isEmbedded": options.isEmbedded, "activity": `${it.activity ? Parser.timeToFullEntry(it.activity) : ""}`, "type": `${it.type ? it.type : ""} `, "level": typeof it.level !== "number" ? it.level : undefined})}
+		${Renderer.utils.getNameDiv(it, {"isEmbedded": options.isEmbedded, "activity": `${it.activity ? Parser.timeToFullEntry(it.activity) : ""}`, "type": `${it.category ? it.category : ""} `, "level": typeof it.level !== "number" ? it.level : undefined})}
 		${Renderer.utils.getDividerDiv()}
 		${Renderer.utils.getTraitsDiv(traits)}
 		${Renderer.ability.getSubHead(it)}
