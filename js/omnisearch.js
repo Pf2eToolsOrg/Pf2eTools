@@ -28,22 +28,26 @@ class Omnisearch {
 			Renderer.hover.cleanTempWindows();
 		});
 
-		this._$iptSearch.on("keydown", (e) => {
-			e.stopPropagation();
+		this._$iptSearch.on("keydown", (evt) => {
+			evt.stopPropagation();
 			Renderer.hover.cleanTempWindows();
-			switch (e.which) {
-				case 13: // enter
+			switch (evt.key) {
+				case "Enter":
+					if (evt.ctrlKey) {
+						window.location = `${Renderer.get().baseUrl}${UrlUtil.PG_SEARCH}?${this._$iptSearch.val()}`;
+						break;
+					}
 					this._clickFirst = true;
 					$searchSubmit.click();
 					break;
-				case 38: // up
-					e.preventDefault();
+				case "ArrowUp":
+					evt.preventDefault();
 					break;
-				case 40: // down
-					e.preventDefault();
+				case "ArrowDown":
+					evt.preventDefault();
 					this._$searchOut.find(`a.omni__lnk-name`).first().focus();
 					break;
-				case 27: // escape
+				case "Escape":
 					this._$iptSearch.val("");
 					this._$iptSearch.blur();
 			}
