@@ -32,7 +32,6 @@ class SpellsPage extends ListPage {
 		const source = Parser.sourceJsonToAbv(spell.source);
 		const time = Parser.timeToTableStr(spell.cast);
 		const school = Parser.spSchoolAbvToFull(spell.school);
-		const type = spell.traits.includes("Cantrip") && spell.focus ? "FC" : spell.traits.includes("Cantrip") ? "C" : spell.focus ? "F" : "S";
 
 		eleLi.innerHTML = `<a href="#${hash}" class="lst--border">
 			<span class="bold col-3-8 pl-0">${spell.name}</span>

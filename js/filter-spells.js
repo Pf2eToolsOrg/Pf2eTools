@@ -104,7 +104,7 @@ class PageFilterSpells extends PageFilter {
 		// used for sorting
 		spell._normalisedTime = Parser.getNormalisedTime(spell.cast);
 		spell._normalisedRange = Parser.getNormalisedRange(spell.range);
-		spell._normalisedType = spell.traits.includes("Cantrip") ? "C" : spell.focus ? "F" : "S";
+		spell._normalisedType = spell.traits.includes("Cantrip") && spell.focus ? "FC" : spell.traits.includes("Cantrip") ? "C" : spell.focus ? "F" : "S";
 
 		// used for filtering
 		spell._fSources = SourceFilter.getCompleteFilterSources(spell);
