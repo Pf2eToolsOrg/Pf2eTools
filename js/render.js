@@ -2495,6 +2495,13 @@ function Renderer () {
 		if (/[^<>\w\s](?:<\/[^<\s]+>)*$/.test(str)) return str;
 		else return `${str}${terminator}`;
 	}
+
+	this.renderJoinCommaOrSemi = function (entries) {
+		// TODO: Expand this to allow rendering of other entry types
+		if (entries.includes(e => typeof e !== "string")) return this.render(entries);
+		if (entries.find(element => element.includes(","))) return this.render(entries.join("; "));
+		else return this.render(entries.join(", "));
+	}
 }
 
 Renderer.ENTRIES_WITH_ENUMERATED_TITLES = [
@@ -4360,20 +4367,10 @@ Renderer.deity = {
 		});
 	},
 };
-// TODO: Try incorporating this into more entries.
-// Also probably put this in a more fitting place.
-semiComma = function (array) {
-	const renderer = Renderer.get().setFirstSection(true);
-	if (array.find(element => { if (element.includes(",")) { return true; } })) {
-		return renderer.render(array.join("; "))
-	} else return renderer.render(array.join(", "))
-};
 
 Renderer.organization = {
 	getCompactRenderedString (organization, opts) {
 		opts = opts || {};
-		const renderer = Renderer.get().setFirstSection(true);
-		const renderStack = [];
 		return `
 			${Renderer.utils.getExcludedDiv(organization, "organization", UrlUtil.PG_ORGANIZATIONS)}
 			${Renderer.utils.getNameDiv(organization, {type: `${organization.alignment && organization.alignment.length === 1 ? `${organization.alignment[0]}` : ""} organization`, ...opts})}
@@ -4384,45 +4381,44 @@ Renderer.organization = {
 			${Renderer.organization.getDetails(organization)}
 			${Renderer.utils.getDividerDiv()}
 			${Renderer.organization.getMembership(organization)}
-			${renderStack.join("")}
 			${opts.noPage ? "" : Renderer.utils.getPageP(organization)}`;
 	},
 
 	getTitleScopeGoals (organization) {
 		let out = [];
 		const renderer = Renderer.get();
-		if (organization.title) out.push(`<p class="pf2-stat__section"><i>${organization.title.join(", ")}</i></p>`)
-		if (organization.scope) out.push(`<p class="pf2-stat__section"><strong>Scope and Influence&nbsp;</strong>${semiComma(organization.scope)}</p>`)
-		if (organization.goals) out.push(`<p class="pf2-stat__section"><strong>Goals&nbsp;</strong>${semiComma(organization.goals)}</p>`)
-		return out.join("")
+		if (organization.title) out.push(`<p class="pf2-stat__section"><i>${organization.title.join(", ")}</i></p>`);
+		if (organization.scope) out.push(`<p class="pf2-stat__section"><strong>Scope and Influence&nbsp;</strong>${renderer.renderJoinCommaOrSemi(organization.scope)}</p>`);
+		if (organization.goals) out.push(`<p class="pf2-stat__section"><strong>Goals&nbsp;</strong>${renderer.renderJoinCommaOrSemi(organization.goals)}</p>`);
+		return out.join("");
 	},
 
 	getDetails (organization) {
 		let out = [];
 		const renderer = Renderer.get();
-		if (organization.headquarters) out.push(`<p class="pf2-stat__section"><strong>Headquarters&nbsp;</strong>${semiComma(organization.headquarters)}</p>`)
-		if (organization.keyMembers) out.push(`<p class="pf2-stat__section"><strong>Key Members&nbsp;</strong>${semiComma(organization.keyMembers)}</p>`)
-		if (organization.allies) out.push(`<p class="pf2-stat__section"><strong>Allies&nbsp;</strong>${semiComma(organization.allies)}</p>`)
-		if (organization.enemies) out.push(`<p class="pf2-stat__section"><strong>Enemies&nbsp;</strong>${semiComma(organization.enemies)}</p>`)
-		if (organization.assets) out.push(`<p class="pf2-stat__section"><strong>Assets&nbsp;</strong>${semiComma(organization.assets)}</p>`)
+		if (organization.headquarters) out.push(`<p class="pf2-stat__section"><strong>Headquarters&nbsp;</strong>${renderer.renderJoinCommaOrSemi(organization.headquarters)}</p>`);
+		if (organization.keyMembers) out.push(`<p class="pf2-stat__section"><strong>Key Members&nbsp;</strong>${renderer.renderJoinCommaOrSemi(organization.keyMembers)}</p>`);
+		if (organization.allies) out.push(`<p class="pf2-stat__section"><strong>Allies&nbsp;</strong>${renderer.renderJoinCommaOrSemi(organization.allies)}</p>`);
+		if (organization.enemies) out.push(`<p class="pf2-stat__section"><strong>Enemies&nbsp;</strong>${renderer.renderJoinCommaOrSemi(organization.enemies)}</p>`);
+		if (organization.assets) out.push(`<p class="pf2-stat__section"><strong>Assets&nbsp;</strong>${renderer.renderJoinCommaOrSemi(organization.assets)}</p>`);
 		return out.join("")
 	},
 
 	getMembership (organization) {
 		let out = [];
 		const renderer = Renderer.get();
-		if (organization.requirements) out.push(`<p class="pf2-stat__section"><strong>Membership Requirements&nbsp;</strong>${semiComma(organization.requirements)}</p>`)
+		if (organization.requirements) out.push(`<p class="pf2-stat__section"><strong>Membership Requirements&nbsp;</strong>${renderer.renderJoinCommaOrSemi(organization.requirements)}</p>`);
 		if (organization.followerAlignment) {
-			out.push(`<p class="pf2-stat__section"><strong>Accepted Alignments&nbsp;</strong>${renderer.render(organization.followerAlignment.map(it => it.entry ? it.entry : `{@trait ${it.main}}${it.secondaryCustom ? ` (${it.secondaryCustom})` : it.secondary ? ` (${it.secondary.map(it => `{@trait ${it}}`).join(", ")}${it.note ? `; ${it.note}` : ""})` : ""}`).join(", "))}</p>`)
+			out.push(`<p class="pf2-stat__section"><strong>Accepted Alignments&nbsp;</strong>${renderer.render(organization.followerAlignment.map(it => it.entry ? it.entry : `{@trait ${it.main}}${it.secondaryCustom ? ` (${it.secondaryCustom})` : it.secondary ? ` (${it.secondary.map(it => `{@trait ${it}}`).join(", ")}${it.note ? `; ${it.note}` : ""})` : ""}`).join(", "))}</p>`);
 		}
-		if (organization.values) out.push(`<p class="pf2-stat__section"><strong>Values&nbsp;</strong>${semiComma(organization.values)}</p>`)
-		if (organization.anathema) out.push(`<p class="pf2-stat__section"><strong>Anathema&nbsp;</strong>${semiComma(organization.anathema)}</p>`)
-		return out.join("")
+		if (organization.values) out.push(`<p class="pf2-stat__section"><strong>Values&nbsp;</strong>${renderer.renderJoinCommaOrSemi(organization.values)}</p>`);
+		if (organization.anathema) out.push(`<p class="pf2-stat__section"><strong>Anathema&nbsp;</strong>${renderer.renderJoinCommaOrSemi(organization.anathema)}</p>`);
+		return out.join("");
 	},
 
 	getRenderedLore (organization) {
 		const textStack = [""];
-		const renderer = Renderer.get().setFirstSection(true)
+		const renderer = Renderer.get().setFirstSection(true);
 		if (organization.lore) organization.lore.forEach(l => renderer.recursiveRender(l, textStack));
 		return textStack.join("");
 	},
