@@ -15,6 +15,11 @@
 	<link rel="stylesheet" href="css/jquery-ui-slider-pips.css">
 	<link rel="stylesheet" href="css/style.css">
 
+	<!-- Embeds -->
+	<meta content="Pf2eTools" property="og:site_name">
+	<meta content="Spells" property="og:title">
+	<meta content="https://pf2etools.com/favicon-256x256.png" property="og:image">
+
 	<!-- Favicons -->
 	<link rel="icon" type="image/svg+xml" href="favicon.svg?v=1.115">
 	<link rel="icon" type="image/png" sizes="256x256" href="favicon-256x256.png">
@@ -44,6 +49,9 @@
 
 	<!-- macOS Safari Pinned Tab and Touch Bar -->
 	<link rel="mask-icon" href="safari-pinned-tab.svg" color="#5E0000">
+
+	<!-- OpenSearch -->
+	<link rel="search" href="open-search.xml" title="Search Pf2eTools" type="application/opensearchdescription+xml">
 
 	<script>if ("serviceWorker" in navigator) navigator.serviceWorker.register("/sw.js");</script>
 
@@ -90,15 +98,17 @@
 					<button class="btn btn-xs btn-default" title="Reset Selection" id="reset"><span class="glyphicon glyphicon-refresh"></span></button>
 				</div>
 				<div id="filtertools" class="input-group input-group--bottom flex no-shrink">
-					<button class="col-3-9 sort btn btn-default btn-xs" data-sort="name">Name <span
+					<button class="col-3-8 sort btn btn-default btn-xs" data-sort="name">Name <span
 						class="caret_wrp"></span></button>
-					<button class="col-1-5 sort btn btn-default btn-xs" data-sort="level">Level <span
+					<button class="col-0-9 sort btn btn-default btn-xs" data-sort="type" title=" F - Focus; C - Cantrip; S - Spell">Type <span
 						class="caret_wrp"></span></button>
-					<button class="col-2-4 sort btn btn-default btn-xs" data-sort="time">Cast Time <span
+					<button class="col-1-3 sort btn btn-default btn-xs" data-sort="level">Level <span
 						class="caret_wrp"></span></button>
-					<button class="col-2-7 sort btn btn-default btn-xs" data-sort="school">School <span
+					<button class="col-2-2 sort btn btn-default btn-xs" data-sort="time">Cast Time <span
 						class="caret_wrp"></span></button>
-					<button class="col-1-5 sort btn btn-default btn-xs ve-grow" data-sort="source">Source <span
+					<button class="col-2-5 sort btn btn-default btn-xs" data-sort="school">School <span
+						class="caret_wrp"></span></button>
+					<button class="col-1-3 sort btn btn-default btn-xs ve-grow" data-sort="source">Source <span
 						class="caret_wrp"></span></button>
 				</div>
 

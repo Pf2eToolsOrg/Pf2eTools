@@ -380,7 +380,10 @@
 				"Orc"
 			],
 			"prerequisites": "tusks unarmed attack",
-			"frequency": "once per minute",
+			"frequency": {
+				"unit": "minute",
+				"freq": 1
+			},
 			"trigger": "You successfully {@action Strike} a living creature that has the {@trait fiend} trait with your tusks unarmed attack.",
 			"access": "Matanji ethnicity",
 			"entries": [
@@ -462,7 +465,10 @@
 			"traits": [
 				"Shisk"
 			],
-			"frequency": "once per round",
+			"frequency": {
+				"unit": "round",
+				"freq": 1
+			},
 			"entries": [
 				"You constantly remember details about the world. You attempt a check to {@action Recall Knowledge}. If you succeed, you gain additional information or context. If you critically succeed, at the GM's discretion you might gain even more additional information or context than normal.",
 				"Shisk Enclaves Most shisks can be found in small communities burrowed into the Barrier Wall, existing in caverns and tunnels that riddle the mountains from peak to base. A few scattered enclaves can be found in the Bandu Hills\u2014the dry and arid region well-suited to shisk tastes.",
@@ -666,7 +672,10 @@
 				"Grippli"
 			],
 			"prerequisites": "trained in {@skill Nature}",
-			"frequency": "once per hour",
+			"frequency": {
+				"unit": "hour",
+				"freq": 1
+			},
 			"trigger": "A creature with the animal, beast, elemental, fey, {@trait fungus}, or {@trait plant} trait attacks you, and you can see the attacker.",
 			"entries": [
 				"Your canny understanding of natural and primal creatures helps you predict and dodge their attacks. The triggering attack roll targets your {@skill Nature} DC instead of your AC. Though this allows you to avoid taking penalties to your AC, it doesn't remove any conditions or other effects causing such penalties. For example, an enemy with sneak attack would still deal extra damage to you for being {@condition flat-footed}, even though you wouldn't take the \u20132 circumstance penalty against the attack."
@@ -866,7 +875,10 @@
 				"Shisk"
 			],
 			"prerequisites": "quillcoat shisk or quill unarmed attack",
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"entries": [
 				"You can launch a mass of quills at opponents. You spray quills in a 30-foot cone, dealing {@damage 5d8} piercing damage. Each creature in the area must attempt a basic saving throw against the higher of your class DC or spell DC. On a critical failure, a creature also takes 5 {@condition persistent damage ||persistent bleed damage}. At 11th level and every even level thereafter, the piercing damage increases by {@dice 1d8} and the {@condition persistent damage ||persistent bleed damage} increases by 1."
 			]
@@ -1099,7 +1111,10 @@
 				"Divination",
 				"Goloma"
 			],
-			"frequency": "once per hour",
+			"frequency": {
+				"unit": "hour",
+				"freq": 1
+			},
 			"entries": [
 				"When you focus your eyes carefully, your gaze can pierce through all obfuscations, even magical ones. When you use True Gaze, you gain the effects of a 6th-level {@spell true seeing} spell, using your {@skill Perception} modifier for the counteract check."
 			]
@@ -1172,7 +1187,11 @@
 			"traits": [
 				"Anadi"
 			],
-			"frequency": "once per 10 minutes",
+			"frequency": {
+				"unit": "minute",
+				"interval": 10,
+				"freq": 1
+			},
 			"entries": [
 				"Your natural ability to create silken webs blends with your magical powers, allowing you to create impossibly large webs with great frequency. This has the effects of a 2nd-level {@spell web} spell using your class DC or spell DC, whichever is higher.",
 				"Anadi Enclaves Mostly found in their home nation of Nurvatcha, anadi settlements are traditionally built with techniques developed before the discovery of transformation magic. As a result, these cities have often been built upon cliffsides or in dense jungles that can support anadi webs. In the capital city of Domithari, a council of elected officials congregate around the Empty Throne, an honorary seat reserved for Grandmother Spider, though no one expects her to assume the mantle of monarch. In the city of Majabi, the finest scholars among the anadi people make homes above and below the surface. Majabi also houses the First Weave, a tapestry of arcane infused webbing that documents the earliest anadi transformation spells."

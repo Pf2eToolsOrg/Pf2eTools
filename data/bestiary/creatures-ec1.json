@@ -676,7 +676,10 @@
 						"occult"
 					],
 					"trigger": "A creature within 30 feet of the bone croupier attempts a check that uses a d20, but hasn't rolled yet",
-					"frequency": "once per day;",
+					"frequency": {
+						"unit": "day",
+						"freq": 1
+					},
 					"entries": [
 						"The bone croupier pulls on the threads of luck that bind all things. Instead of rolling its check, the target automatically gets a failure."
 					],
@@ -2632,7 +2635,7 @@
 						"two-hand d8"
 					],
 					"effects": [],
-					"damage": "{@dice 1d4}\u20131 bludgeoning",
+					"damage": "{@dice 1d4-1} bludgeoning",
 					"types": [
 						"bludgeoning"
 					]
@@ -3732,7 +3735,14 @@
 					"name": "sonic"
 				}
 			],
-			"abilitiesMid": [],
+			"abilitiesMid": [
+				{
+					"entries": [
+						"Worm demons can't stand the sight of a good meal presented and then swiftly taken away. Whenever a dying creature within sight of the worm demon has its dying condition removed, the worm demon takes {@damage 1d6} mental damage."
+					],
+					"name": "Recoil from Wasted Opportunities"
+				}
+			],
 			"speed": {
 				"abilities": null,
 				"walk": 25,
@@ -4326,7 +4336,10 @@
 						"olfactory",
 						"poison"
 					],
-					"frequency": "once per minute",
+					"frequency": {
+						"unit": "minute",
+						"freq": 1
+					},
 					"entries": [
 						"All adjacent creatures must attempt a DC 18 Fortitude save. On a failure, the creature is {@condition slowed|CRB|slowed 1} ({@condition slowed|CRB|slowed 2} on a critical failure) until the end of its next turn and takes a \u20132 circumstance penalty to Fortitude saves against xulgath bile for 1 minute."
 					],

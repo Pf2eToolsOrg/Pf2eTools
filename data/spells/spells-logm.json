@@ -1,76 +1,9 @@
 {
 	"spell": [
 		{
-			"name": "Chilling Spray",
-			"source": "LOGM",
-			"page": 107,
-			"otherSources": {
-				"Reprinted": [
-					"APG|217"
-				]
-			},
-			"type": "SPELL",
-			"focus": false,
-			"level": 1,
-			"traits": [
-				"Cold",
-				"Evocation"
-			],
-			"school": "V",
-			"traditions": [
-				"Arcane",
-				"Primal"
-			],
-			"cast": {
-				"number": 2,
-				"unit": "action"
-			},
-			"components": {
-				"F": false,
-				"M": false,
-				"S": true,
-				"V": true
-			},
-			"area": {
-				"types": [
-					"Cone"
-				],
-				"entry": "15-foot cone"
-			},
-			"savingThrow": "Reflex",
-			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
-			"sustain": false,
-			"dismiss": false,
-			"entries": [
-				"A cone of icy shards bursts from your spread hands and coats the targets in a layer of frost. You deal {@damage 2d4} cold damage to creatures in the area; they must each attempt a Reflex save.",
-				{
-					"type": "successDegree",
-					"entries": {
-						"Critical Success": "The creature is unaffected.",
-						"Success": "The creature takes half damage.",
-						"Failure": "The creature takes full damage and takes a \u20135-foot status penalty to its Speeds for 2 rounds.",
-						"Critical Failure": "The creature takes double damage and takes a \u201310-foot status penalty to its Speeds for 2 rounds."
-					}
-				}
-			],
-			"heightened": {
-				"heightened": true,
-				"plus_x": {
-					"level": 1,
-					"entry": "The damage increases by {@dice 2d4}."
-				},
-				"x": null,
-				"no_x": null
-			}
-		},
-		{
 			"name": "Acid Storm",
 			"source": "LOGM",
 			"page": 106,
-			"type": "SPELL",
 			"focus": false,
 			"level": 5,
 			"traits": [
@@ -133,7 +66,6 @@
 			"name": "Acidic Burst",
 			"source": "LOGM",
 			"page": 106,
-			"type": "SPELL",
 			"focus": false,
 			"level": 1,
 			"traits": [
@@ -185,7 +117,6 @@
 			"name": "Adapt Self",
 			"source": "LOGM",
 			"page": 112,
-			"type": "FOCUS",
 			"focus": true,
 			"level": 1,
 			"traits": [
@@ -238,7 +169,6 @@
 			"name": "Adaptive Ablation",
 			"source": "LOGM",
 			"page": 112,
-			"type": "FOCUS",
 			"focus": true,
 			"level": 4,
 			"traits": [
@@ -275,7 +205,7 @@
 				"heightened": true,
 				"plus_x": {
 					"level": 2,
-					"entry": "Increase the resistance by 5. Cold You control ice, snow, and freezing temperatures."
+					"entry": "Increase the resistance by 5."
 				},
 				"x": null,
 				"no_x": null
@@ -285,7 +215,6 @@
 			"name": "Agitate",
 			"source": "LOGM",
 			"page": 106,
-			"type": "SPELL",
 			"focus": false,
 			"level": 1,
 			"traits": [
@@ -355,7 +284,6 @@
 			"name": "Animus Mine",
 			"source": "LOGM",
 			"page": 106,
-			"type": "SPELL",
 			"focus": false,
 			"level": 2,
 			"traits": [
@@ -415,7 +343,6 @@
 			"name": "Anticipate Peril",
 			"source": "LOGM",
 			"page": 107,
-			"type": "SPELL",
 			"focus": false,
 			"level": 1,
 			"traits": [
@@ -472,7 +399,6 @@
 			"name": "Asterism",
 			"source": "LOGM",
 			"page": 117,
-			"type": "FOCUS",
 			"focus": true,
 			"level": 4,
 			"traits": [
@@ -517,7 +443,7 @@
 				"heightened": true,
 				"plus_x": {
 					"level": 1,
-					"entry": "The damage increases by {@dice 1d6}. swarm You exert control over masses of creatures."
+					"entry": "The damage increases by {@dice 1d6}."
 				},
 				"x": null,
 				"no_x": null
@@ -527,7 +453,6 @@
 			"name": "Befuddle",
 			"source": "LOGM",
 			"page": 107,
-			"type": "SPELL",
 			"focus": false,
 			"level": 1,
 			"traits": [
@@ -592,7 +517,6 @@
 			"name": "Bottle The Storm",
 			"source": "LOGM",
 			"page": 115,
-			"type": "FOCUS",
 			"focus": true,
 			"level": 4,
 			"traits": [
@@ -636,7 +560,7 @@
 					},
 					{
 						"level": 10,
-						"entry": "The resistance increases to 20, and you can immediately make the spell attack roll granted by bottle the storm as part of the reaction used to cast the spell. plague You wield disease and pestilence like a weapon."
+						"entry": "The resistance increases to 20, and you can immediately make the spell attack roll granted by bottle the storm as part of the reaction used to cast the spell."
 					}
 				],
 				"no_x": null
@@ -646,7 +570,6 @@
 			"name": "Brand The Impenitent",
 			"source": "LOGM",
 			"page": 107,
-			"type": "SPELL",
 			"focus": false,
 			"level": 2,
 			"traits": [
@@ -710,7 +633,6 @@
 			"name": "Charged Javelin",
 			"source": "LOGM",
 			"page": 115,
-			"type": "FOCUS",
 			"focus": true,
 			"level": 1,
 			"traits": [
@@ -764,10 +686,74 @@
 			}
 		},
 		{
+			"name": "Chilling Spray",
+			"source": "LOGM",
+			"page": 107,
+			"otherSources": {
+				"Reprinted": [
+					"APG|217"
+				]
+			},
+			"focus": false,
+			"level": 1,
+			"traits": [
+				"Cold",
+				"Evocation"
+			],
+			"school": "V",
+			"traditions": [
+				"Arcane",
+				"Primal"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": {
+				"F": false,
+				"M": false,
+				"S": true,
+				"V": true
+			},
+			"area": {
+				"types": [
+					"Cone"
+				],
+				"entry": "15-foot cone"
+			},
+			"savingThrow": "Reflex",
+			"savingThrowBasic": false,
+			"duration": {
+				"type": null
+			},
+			"sustain": false,
+			"dismiss": false,
+			"entries": [
+				"A cone of icy shards bursts from your spread hands and coats the targets in a layer of frost. You deal {@damage 2d4} cold damage to creatures in the area; they must each attempt a Reflex save.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "The creature is unaffected.",
+						"Success": "The creature takes half damage.",
+						"Failure": "The creature takes full damage and takes a \u20135-foot status penalty to its Speeds for 2 rounds.",
+						"Critical Failure": "The creature takes double damage and takes a \u201310-foot status penalty to its Speeds for 2 rounds."
+					}
+				}
+			],
+			"heightened": {
+				"heightened": true,
+				"plus_x": {
+					"level": 1,
+					"entry": "The damage increases by {@dice 2d4}."
+				},
+				"x": null,
+				"no_x": null
+			}
+		},
+		{
 			"name": "Cup Of Dust",
 			"source": "LOGM",
 			"page": 107,
-			"type": "SPELL",
 			"focus": false,
 			"level": 3,
 			"traits": [
@@ -839,7 +825,6 @@
 			"name": "Delay Consequence",
 			"source": "LOGM",
 			"page": 118,
-			"type": "FOCUS",
 			"focus": true,
 			"level": 1,
 			"traits": [
@@ -891,7 +876,6 @@
 			"name": "Diamond Dust",
 			"source": "LOGM",
 			"page": 112,
-			"type": "FOCUS",
 			"focus": true,
 			"level": 4,
 			"traits": [
@@ -936,7 +920,7 @@
 				"heightened": true,
 				"plus_x": {
 					"level": 2,
-					"entry": "The damage increases by {@dice 1d6}. deCay You have the power to spoil and deteriorate matter."
+					"entry": "The damage increases by {@dice 1d6}."
 				},
 				"x": null,
 				"no_x": null
@@ -946,7 +930,6 @@
 			"name": "Divine Plagues",
 			"source": "LOGM",
 			"page": 115,
-			"type": "FOCUS",
 			"focus": true,
 			"level": 1,
 			"traits": [
@@ -1030,7 +1013,6 @@
 			"name": "Door To Beyond",
 			"source": "LOGM",
 			"page": 119,
-			"type": "FOCUS",
 			"focus": true,
 			"level": 4,
 			"traits": [
@@ -1087,7 +1069,7 @@
 				"heightened": true,
 				"plus_x": {
 					"level": 1,
-					"entry": "The damage increases by {@dice 1d6}. wyrmkin You draw on the power of dragons, linnorms, and other powerful reptilian creatures."
+					"entry": "The damage increases by {@dice 1d6}."
 				},
 				"x": null,
 				"no_x": null
@@ -1097,7 +1079,6 @@
 			"name": "Draconic Barrage",
 			"source": "LOGM",
 			"page": 119,
-			"type": "FOCUS",
 			"focus": true,
 			"level": 1,
 			"traits": [
@@ -1188,7 +1169,6 @@
 			"name": "Dust Storm",
 			"source": "LOGM",
 			"page": 114,
-			"type": "FOCUS",
 			"focus": true,
 			"level": 4,
 			"traits": [
@@ -1238,7 +1218,7 @@
 				"heightened": true,
 				"plus_x": {
 					"level": 2,
-					"entry": "The damage increases by {@dice 1d6}. duty You defend oaths and carry out your divine missions with great dedication."
+					"entry": "The damage increases by {@dice 1d6}."
 				},
 				"x": null,
 				"no_x": null
@@ -1248,7 +1228,6 @@
 			"name": "Dutiful Challenge",
 			"source": "LOGM",
 			"page": 114,
-			"type": "FOCUS",
 			"focus": true,
 			"level": 4,
 			"traits": [
@@ -1291,7 +1270,7 @@
 				"heightened": true,
 				"plus_x": {
 					"level": 3,
-					"entry": "The status penalties increase by 1. glyph You wield power over written words and symbols."
+					"entry": "The status penalties increase by 1."
 				},
 				"x": null,
 				"no_x": null
@@ -1301,7 +1280,6 @@
 			"name": "Ectoplasmic Interstice",
 			"source": "LOGM",
 			"page": 117,
-			"type": "FOCUS",
 			"focus": true,
 			"level": 4,
 			"traits": [
@@ -1343,8 +1321,7 @@
 			"sustain": true,
 			"dismiss": false,
 			"entries": [
-				"You force the Material and Ethereal Planes to partially overlap, creating a zone that causes incorporeal and spiritual entities to take on many of the aspects of corporeal creatures. Within the ectoplasmic interstice, incorporeal creatures cannot pass through solid objects or corporeal creatures, and they can manipulate and attempt Strength-based checks against physical creatures and objects. An incorporeal PC or other creature with a normal Strength modifier simply uses that modifier, but if the creature had a Strength modifier of \u20135, like most incorporeal monsters, it uses a +4 modifier instead, increasing its {@skill Athletics} modifier by 9 accordingly. Attacks against creatures that are within the interstice overcome resistances as if they were by ghost touch weapons.",
-				"star You command the power of the stars."
+				"You force the Material and Ethereal Planes to partially overlap, creating a zone that causes incorporeal and spiritual entities to take on many of the aspects of corporeal creatures. Within the ectoplasmic interstice, incorporeal creatures cannot pass through solid objects or corporeal creatures, and they can manipulate and attempt Strength-based checks against physical creatures and objects. An incorporeal PC or other creature with a normal Strength modifier simply uses that modifier, but if the creature had a Strength modifier of \u20135, like most incorporeal monsters, it uses a +4 modifier instead, increasing its {@skill Athletics} modifier by 9 accordingly. Attacks against creatures that are within the interstice overcome resistances as if they were by ghost touch weapons."
 			],
 			"heightened": {
 				"heightened": false,
@@ -1357,7 +1334,6 @@
 			"name": "Eject Soul",
 			"source": "LOGM",
 			"page": 117,
-			"type": "FOCUS",
 			"focus": true,
 			"level": 1,
 			"traits": [
@@ -1414,7 +1390,6 @@
 			"name": "Empty Inside",
 			"source": "LOGM",
 			"page": 119,
-			"type": "FOCUS",
 			"focus": true,
 			"level": 1,
 			"traits": [
@@ -1457,7 +1432,6 @@
 			"name": "Endure",
 			"source": "LOGM",
 			"page": 107,
-			"type": "SPELL",
 			"focus": false,
 			"level": 1,
 			"traits": [
@@ -1515,7 +1489,6 @@
 			"name": "Ephemeral Hazards",
 			"source": "LOGM",
 			"page": 113,
-			"type": "FOCUS",
 			"focus": true,
 			"level": 4,
 			"traits": [
@@ -1569,7 +1542,7 @@
 				"heightened": true,
 				"plus_x": {
 					"level": 1,
-					"entry": "The damage increases by {@dice 1d6}. dust You have the power to dry and crumble what opposes you."
+					"entry": "The damage increases by {@dice 1d6}."
 				},
 				"x": null,
 				"no_x": null
@@ -1579,7 +1552,6 @@
 			"name": "Expeditious Excavation",
 			"source": "LOGM",
 			"page": 107,
-			"type": "SPELL",
 			"focus": false,
 			"level": 2,
 			"traits": [
@@ -1648,7 +1620,6 @@
 			"name": "Fallow Field",
 			"source": "LOGM",
 			"page": 113,
-			"type": "FOCUS",
 			"focus": true,
 			"level": 4,
 			"traits": [
@@ -1699,7 +1670,7 @@
 						"Critical Success": "The creature regains the full number of Hit Points that would be restored by the {@trait healing} effect, and is temporarily immune for 1 minute.",
 						"Success": "The creature regains the full number of Hit Points that would be restored.",
 						"Failure": "The creature regains only half the number of Hit Points that would be restored.",
-						"Critical Failure": "The creature does not regain Hit Points from the {@trait healing} effect. delirium You can bring about hallucinations and restlessness."
+						"Critical Failure": "The creature does not regain Hit Points from the {@trait healing} effect."
 					}
 				}
 			],
@@ -1714,7 +1685,6 @@
 			"name": "Feast Of Ashes",
 			"source": "LOGM",
 			"page": 107,
-			"type": "SPELL",
 			"focus": false,
 			"level": 2,
 			"traits": [
@@ -1783,7 +1753,6 @@
 			"name": "Font Of Serenity",
 			"source": "LOGM",
 			"page": 116,
-			"type": "FOCUS",
 			"focus": true,
 			"level": 4,
 			"traits": [
@@ -1835,7 +1804,7 @@
 				"heightened": true,
 				"plus_x": {
 					"level": 4,
-					"entry": "The bonus increases by 1. sorrow You have a painful connection to melancholy and sadness."
+					"entry": "The bonus increases by 1."
 				},
 				"x": null,
 				"no_x": null
@@ -1845,7 +1814,6 @@
 			"name": "Foul Miasma",
 			"source": "LOGM",
 			"page": 115,
-			"type": "FOCUS",
 			"focus": true,
 			"level": 4,
 			"traits": [
@@ -1891,7 +1859,7 @@
 						"Critical Success": "The target receives the benefit of a successful save against the lowest-level disease affecting it.",
 						"Success": "The target is unaffected.",
 						"Failure": "One randomly chosen disease affecting the target fills the air in a 15-foot emanation centered on the target. For the spell's duration, any creature that enters or ends its turn within the area is exposed to that disease.",
-						"Critical Failure": "As failure, except the miasma contains all the diseases affecting the target. repose You ease mental burdens."
+						"Critical Failure": "As failure, except the miasma contains all the diseases affecting the target."
 					}
 				}
 			],
@@ -1906,7 +1874,6 @@
 			"name": "Fungal Hyphae",
 			"source": "LOGM",
 			"page": 108,
-			"type": "SPELL",
 			"focus": false,
 			"level": 2,
 			"traits": [
@@ -1962,7 +1929,6 @@
 			"name": "Ghostly Transcription",
 			"source": "LOGM",
 			"page": 115,
-			"type": "FOCUS",
 			"focus": true,
 			"level": 4,
 			"traits": [
@@ -2018,7 +1984,6 @@
 					"SoM|109"
 				]
 			},
-			"type": "SPELL",
 			"focus": false,
 			"level": 3,
 			"traits": [
@@ -2083,7 +2048,6 @@
 			"name": "Hyperfocus",
 			"source": "LOGM",
 			"page": 113,
-			"type": "FOCUS",
 			"focus": true,
 			"level": 1,
 			"traits": [
@@ -2153,7 +2117,6 @@
 			"name": "Ill Omen",
 			"source": "LOGM",
 			"page": 108,
-			"type": "SPELL",
 			"focus": false,
 			"level": 1,
 			"traits": [
@@ -2216,7 +2179,6 @@
 			"name": "Iron Gut",
 			"source": "LOGM",
 			"page": 108,
-			"type": "SPELL",
 			"focus": false,
 			"level": 2,
 			"traits": [
@@ -2268,7 +2230,6 @@
 			"name": "Lament",
 			"source": "LOGM",
 			"page": 116,
-			"type": "FOCUS",
 			"focus": true,
 			"level": 1,
 			"traits": [
@@ -2320,7 +2281,6 @@
 			"name": "Liberating Command",
 			"source": "LOGM",
 			"page": 108,
-			"type": "SPELL",
 			"focus": false,
 			"level": 1,
 			"traits": [
@@ -2369,7 +2329,6 @@
 			"name": "Message Rune",
 			"source": "LOGM",
 			"page": 108,
-			"type": "SPELL",
 			"focus": false,
 			"level": 1,
 			"traits": [
@@ -2427,7 +2386,6 @@
 			"name": "Oathkeeper's Insignia",
 			"source": "LOGM",
 			"page": 114,
-			"type": "FOCUS",
 			"focus": true,
 			"level": 1,
 			"traits": [
@@ -2488,7 +2446,6 @@
 			"name": "Object Memory",
 			"source": "LOGM",
 			"page": 118,
-			"type": "FOCUS",
 			"focus": true,
 			"level": 1,
 			"traits": [
@@ -2536,7 +2493,6 @@
 			"name": "Overflowing Sorrow",
 			"source": "LOGM",
 			"page": 116,
-			"type": "FOCUS",
 			"focus": true,
 			"level": 4,
 			"traits": [
@@ -2590,7 +2546,7 @@
 				"heightened": true,
 				"plus_x": {
 					"level": 2,
-					"entry": "When you {@action Cast a Spell||Cast the Spell}, you can choose to increase the area by 5 feet. soul You wield power over the spiritual."
+					"entry": "When you {@action Cast a Spell||Cast the Spell}, you can choose to increase the area by 5 feet."
 				},
 				"x": null,
 				"no_x": null
@@ -2600,7 +2556,6 @@
 			"name": "Parch",
 			"source": "LOGM",
 			"page": 114,
-			"type": "FOCUS",
 			"focus": true,
 			"level": 1,
 			"traits": [
@@ -2661,7 +2616,6 @@
 			"name": "Penumbral Shroud",
 			"source": "LOGM",
 			"page": 109,
-			"type": "SPELL",
 			"focus": false,
 			"level": 1,
 			"traits": [
@@ -2724,7 +2678,6 @@
 			"name": "Redact",
 			"source": "LOGM",
 			"page": 114,
-			"type": "FOCUS",
 			"focus": true,
 			"level": 1,
 			"traits": [
@@ -2783,7 +2736,6 @@
 			"name": "Reflective Scales",
 			"source": "LOGM",
 			"page": 109,
-			"type": "SPELL",
 			"focus": false,
 			"level": 4,
 			"traits": [
@@ -2833,7 +2785,6 @@
 			"name": "Remember The Lost",
 			"source": "LOGM",
 			"page": 119,
-			"type": "FOCUS",
 			"focus": true,
 			"level": 4,
 			"traits": [
@@ -2871,7 +2822,7 @@
 				"heightened": true,
 				"plus_x": {
 					"level": 1,
-					"entry": "The damage increases by {@dice 2d6} (or {@dice 2d10} to an enemy when you name a specific victim). Void You draw power from emptiness."
+					"entry": "The damage increases by {@dice 2d6} (or {@dice 2d10} to an enemy when you name a specific victim)."
 				},
 				"x": null,
 				"no_x": null
@@ -2881,7 +2832,6 @@
 			"name": "Roar Of The Wyrm",
 			"source": "LOGM",
 			"page": 119,
-			"type": "FOCUS",
 			"focus": true,
 			"level": 4,
 			"traits": [
@@ -2944,7 +2894,6 @@
 			"name": "Share Burden",
 			"source": "LOGM",
 			"page": 116,
-			"type": "FOCUS",
 			"focus": true,
 			"level": 1,
 			"traits": [
@@ -2985,7 +2934,6 @@
 			"name": "Share Lore",
 			"source": "LOGM",
 			"page": 109,
-			"type": "SPELL",
 			"focus": false,
 			"level": 1,
 			"traits": [
@@ -3051,7 +2999,6 @@
 			"name": "Shattering Gem",
 			"source": "LOGM",
 			"page": 109,
-			"type": "SPELL",
 			"focus": false,
 			"level": 1,
 			"traits": [
@@ -3112,7 +3059,6 @@
 			"name": "Shifting Sand",
 			"source": "LOGM",
 			"page": 110,
-			"type": "SPELL",
 			"focus": false,
 			"level": 3,
 			"traits": [
@@ -3197,7 +3143,6 @@
 			"name": "Shockwave",
 			"source": "LOGM",
 			"page": 110,
-			"type": "SPELL",
 			"focus": false,
 			"level": 1,
 			"traits": [
@@ -3262,7 +3207,6 @@
 			"name": "Show The Way",
 			"source": "LOGM",
 			"page": 110,
-			"type": "SPELL",
 			"focus": false,
 			"level": 3,
 			"traits": [
@@ -3322,7 +3266,6 @@
 			"name": "Slough Skin",
 			"source": "LOGM",
 			"page": 110,
-			"type": "SPELL",
 			"focus": false,
 			"level": 2,
 			"traits": [
@@ -3370,7 +3313,6 @@
 			"name": "Stasis",
 			"source": "LOGM",
 			"page": 118,
-			"type": "FOCUS",
 			"focus": true,
 			"level": 4,
 			"traits": [
@@ -3416,7 +3358,7 @@
 						"Critical Success": "The target is unaffected.",
 						"Success": "The target is {@condition stunned 1} as time thickens around it.",
 						"Failure": "Time ceases to pass for the target for 1 round. It is invulnerable to all damage, it cannot be targeted or affected by anything, and no rounds elapse for any timed durations, conditions, afflictions, and other effects it has. While in stasis, the target can't be moved, and it remains fixed in place, defying gravity if need be.",
-						"Critical Failure": "As failure, but the target is held in stasis for 3 rounds. At the end of each of its turns, it can attempt a Will save to reduce the remaining duration by 1 round or end it entirely on a critical success. Vigil You watch over those long passed and guard their secrets."
+						"Critical Failure": "As failure, but the target is held in stasis for 3 rounds. At the end of each of its turns, it can attempt a Will save to reduce the remaining duration by 1 round or end it entirely on a critical success."
 					}
 				}
 			],
@@ -3431,7 +3373,6 @@
 			"name": "Swarm Form",
 			"source": "LOGM",
 			"page": 118,
-			"type": "FOCUS",
 			"focus": true,
 			"level": 4,
 			"traits": [
@@ -3468,7 +3409,7 @@
 				"heightened": true,
 				"plus_x": {
 					"level": 2,
-					"entry": "Increase your resistances and weaknesses each by 5. Time You reign over the flow of time."
+					"entry": "Increase your resistances and weaknesses each by 5."
 				},
 				"x": null,
 				"no_x": null
@@ -3478,7 +3419,6 @@
 			"name": "Swarmsense",
 			"source": "LOGM",
 			"page": 117,
-			"type": "FOCUS",
 			"focus": true,
 			"level": 1,
 			"traits": [
@@ -3535,7 +3475,6 @@
 			"name": "Temporary Tool",
 			"source": "LOGM",
 			"page": 110,
-			"type": "SPELL",
 			"focus": false,
 			"level": 1,
 			"traits": [
@@ -3581,7 +3520,6 @@
 			"name": "Tether",
 			"source": "LOGM",
 			"page": 111,
-			"type": "SPELL",
 			"focus": false,
 			"level": 1,
 			"traits": [
@@ -3648,7 +3586,6 @@
 			"name": "Time Beacon",
 			"source": "LOGM",
 			"page": 111,
-			"type": "SPELL",
 			"focus": false,
 			"level": 7,
 			"traits": [
@@ -3694,7 +3631,6 @@
 			"name": "Whirling Scarves",
 			"source": "LOGM",
 			"page": 111,
-			"type": "SPELL",
 			"focus": false,
 			"level": 3,
 			"traits": [
@@ -3744,7 +3680,6 @@
 			"name": "Winter Bolt",
 			"source": "LOGM",
 			"page": 112,
-			"type": "FOCUS",
 			"focus": true,
 			"level": 1,
 			"traits": [
@@ -3801,7 +3736,6 @@
 			"name": "Withering Grasp",
 			"source": "LOGM",
 			"page": 112,
-			"type": "FOCUS",
 			"focus": true,
 			"level": 1,
 			"traits": [
@@ -3857,7 +3791,6 @@
 			"name": "Zenith Star",
 			"source": "LOGM",
 			"page": 117,
-			"type": "FOCUS",
 			"focus": true,
 			"level": 1,
 			"traits": [

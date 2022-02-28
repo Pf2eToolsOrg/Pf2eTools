@@ -12,13 +12,14 @@ class PageFilterSpells extends PageFilter {
 			case "name": return SortUtil.compareListNames(a, b);
 			case "source": return SortUtil.ascSort(a.values.source, b.values.source) || SortUtil.compareListNames(a, b);
 			case "level": return SortUtil.ascSort(a.values.level, b.values.level) || SortUtil.compareListNames(a, b);
+			case "type": return SortUtil.ascSort(a.values.type, b.values.type) || SortUtil.compareListNames(a, b);
 			case "school": return SortUtil.ascSort(a.values.school, b.values.school) || SortUtil.compareListNames(a, b);
 			case "time": return SortUtil.ascSort(a.values.normalisedTime, b.values.normalisedTime) || SortUtil.compareListNames(a, b);
 		}
 	}
 
 	static getFltrSpellLevelStr (level) {
-		return level === 0 ? Parser.spLevelToFull(level) : `${Parser.spLevelToFull(level)} level`;
+		return `${Parser.spLevelToFull(level)} level`;
 	}
 	// endregion
 
@@ -29,7 +30,7 @@ class PageFilterSpells extends PageFilter {
 		this._levelFilter = new Filter({
 			header: "Level",
 			items: [
-				0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+				1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
 			],
 			displayFn: PageFilterSpells.getFltrSpellLevelStr,
 		});
@@ -38,9 +39,9 @@ class PageFilterSpells extends PageFilter {
 			items: [...Parser.TRADITIONS],
 			itemSortFn: null,
 		});
-		this._focusFilter = new Filter({
+		this._spellTypeFilter = new Filter({
 			header: "Spell Type",
-			items: ["Focus Spell", "Spell"],
+			items: ["Focus", "Spell", "Cantrip"],
 			itemSortFn: null,
 		});
 		this._classFilter = new Filter({header: "Classes"});
@@ -51,7 +52,7 @@ class PageFilterSpells extends PageFilter {
 		});
 		this._multiFocusFilter = new MultiFilter({
 			header: "Focus Spells",
-			filters: [this._focusFilter, this._classFilter, this._subClassFilter],
+			filters: [this._classFilter, this._subClassFilter],
 		});
 		this._componentsFilter = new Filter({
 			header: "Components",
@@ -103,13 +104,15 @@ class PageFilterSpells extends PageFilter {
 		// used for sorting
 		spell._normalisedTime = Parser.getNormalisedTime(spell.cast);
 		spell._normalisedRange = Parser.getNormalisedRange(spell.range);
+		spell._normalisedType = spell.traits.includes("Cantrip") && spell.focus ? "FC" : spell.traits.includes("Cantrip") ? "C" : spell.focus ? "F" : "S";
 
 		// used for filtering
 		spell._fSources = SourceFilter.getCompleteFilterSources(spell);
 		spell._fTraditions = (spell.traditions || [])
 			.concat(spell.spellLists || [])
 			.concat(spell.traditions ? spell.traditions.includes("Primal" || "Arcane") ? "Halcyon" : [] : []);
-		spell._fFocus = spell.focus ? ["Focus Spell"] : ["Spell"];
+		spell._fSpellType = spell.focus ? ["Focus"] : ["Spell"];
+		if (spell.traits.includes("Cantrip")) spell._fSpellType.push("Cantrip");
 		spell._fTraits = spell.traits.map(t => Parser.getTraitName(t));
 		if (!spell._fTraits.map(t => Renderer.trait.isTraitInCategory(t, "Rarity")).some(Boolean)) spell._fTraits.push("Common");
 		spell._fClasses = spell._fTraits.filter(t => Renderer.trait.isTraitInCategory(t, "Class")) || [];
@@ -151,7 +154,7 @@ class PageFilterSpells extends PageFilter {
 		this._sourceFilter.addItem(spell._fSources);
 		this._traditionFilter.addItem(spell._fTraditions);
 		if (spell.spellLists) this._traditionFilter.addItem(spell.spellLists)
-		this._focusFilter.addItem(spell._fFocus);
+		this._spellTypeFilter.addItem(spell._fSpellType);
 		this._classFilter.addItem(spell._fClasses);
 		spell._fSubClasses.forEach(sc => {
 			this._subClassFilter.addNest(sc.nest, {isHidden: true});
@@ -166,6 +169,7 @@ class PageFilterSpells extends PageFilter {
 	async _pPopulateBoxOptions (opts) {
 		opts.filters = [
 			this._sourceFilter,
+			this._spellTypeFilter,
 			this._levelFilter,
 			this._traditionFilter,
 			this._schoolFilter,
@@ -185,6 +189,7 @@ class PageFilterSpells extends PageFilter {
 		return this._filterBox.toDisplay(
 			values,
 			s._fSources,
+			s._fSpellType,
 			s.level,
 			s._fTraditions,
 			s.school,
@@ -195,7 +200,6 @@ class PageFilterSpells extends PageFilter {
 			s._fRange,
 			s._fSavingThrow,
 			[
-				s._fFocus,
 				s._fClasses,
 				s._fSubClasses,
 			],

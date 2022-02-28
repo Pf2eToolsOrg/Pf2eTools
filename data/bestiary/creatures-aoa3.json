@@ -148,7 +148,7 @@
 						"versatile P"
 					],
 					"effects": [],
-					"damage": "{@dice 1d4}\u20131 slashing plus {@damage 1d4} {@condition persistent damage ||persistent bleed}",
+					"damage": "{@dice 1d4-1} slashing plus {@damage 1d4} {@condition persistent damage ||persistent bleed}",
 					"types": [
 						"persistent",
 						"slashing"
@@ -532,7 +532,10 @@
 						"unit": "free"
 					},
 					"requirements": "Barushak hasn't acted yet on this turn.",
-					"frequency": "once per day",
+					"frequency": {
+						"unit": "day",
+						"freq": 1
+					},
 					"entries": [
 						"This turn, Barushak can cast one prepared spell he has already cast today without spending a spell slot. He must still {@action Cast a Spell||Cast the Spell} and meet the spell's other requirements."
 					],
@@ -2800,7 +2803,10 @@
 					"traits": [
 						"fortune"
 					],
-					"frequency": "once per day",
+					"frequency": {
+						"unit": "day",
+						"freq": 1
+					},
 					"entries": [
 						"Trigger Nolly fails a skill check or a saving throw. Nolly rerolls the triggering check, but she must use the new result, even if it's worse."
 					],
@@ -3103,7 +3109,10 @@
 						"number": 1,
 						"unit": "action"
 					},
-					"frequency": "once per turn",
+					"frequency": {
+						"unit": "turn",
+						"freq": 1
+					},
 					"entries": [
 						"Amnin makes a greatclub {@action Strike} and a kick {@action Strike}. If both hit the same creature, combine their damage for the purposes of resistances and weaknesses."
 					],
@@ -3737,7 +3746,12 @@
 					"Draconic",
 					"Elven",
 					"Gnomish",
-					"Halfling,"
+					"Halfling",
+					"Infernal",
+					"Jotun",
+					"Shadowtongue",
+					"Strix",
+					"Varisian"
 				],
 				"languageAbilities": []
 			},
@@ -3766,14 +3780,6 @@
 				"Wis": 7,
 				"Cha": 5
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"Skills {@skill Arcana} +21, {@skill Deception} +23, {@skill Religion} +21, {@skill Society} +19, {@skill Lore||Torture Lore} +21 Str \u20135, Dex +3, Con +0, Int +3, Wis +7, Cha +5."
-					],
-					"name": "Infernal, Jotun, Shadowtongue, Strix, Varisian"
-				}
-			],
 			"ac": {
 				"default": 29,
 				"abilities": null
@@ -3811,13 +3817,8 @@
 			"resistances": [
 				{
 					"amount": 8,
-					"name": "all damage"
-				},
-				{
-					"name": "ghost touch"
-				},
-				{
-					"name": "or"
+					"name": "all damage",
+					"note": "(except force, {@item ghost touch}, or positive; double resistance vs. non-magical)"
 				}
 			],
 			"abilitiesMid": [
@@ -3864,8 +3865,11 @@
 						"divine",
 						"necromancy"
 					],
-					"requirements": "The remnant of",
-					"frequency": "three times per day; Barzillai is within Ravounel.",
+					"requirements": "The remnant of Barzillai is within Ravounel",
+					"frequency": {
+						"unit": "day",
+						"freq": 3
+					},
 					"entries": [
 						"The remnant of Barzillai stirs up and amplifies unsettled spirits in the area to create a single haunt of 6th level or lower at his present location. This haunt is permanent until it is disabled or the remnant."
 					],
@@ -4522,7 +4526,10 @@
 						"number": 2,
 						"unit": "action"
 					},
-					"frequency": "three times per day",
+					"frequency": {
+						"freq": 3,
+						"unit": "day"
+					},
 					"entries": [
 						"The poisoner {@action Stride||Strides}, poisoning their weapon as they move. The poisoner moves up to their Speed and makes a melee {@action Strike} that deals {@dice 2d8} extra poison damage. This has no effect on a {@action Strike} that already deals poison damage."
 					],

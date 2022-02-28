@@ -19,9 +19,9 @@
 				"Constitution"
 			],
 			"languages": [
-				"{@language Anadu}",
+				"{@language Anadi|AoA1}",
 				"{@language Mwangi}",
-				"Additional languages equal to your Intelligence modifier (if positive). Choose from {@language Draconic}, {@language Elven}, {@language Gnoll}, {@language Iruxi}, {@language Orcish}, {@language Sylvan}, and any other languages to which you have access (such as the languages prevalent in your region)."
+				"Additional languages equal to your Intelligence modifier (if positive). Choose from {@language Draconic}, {@language Elven}, {@language Gnoll}, {@language Iruxi|Bst}, {@language Orcish}, {@language Sylvan}, and any other languages to which you have access (such as the languages prevalent in your region)."
 			],
 			"traits": [
 				"Anadi",
@@ -219,7 +219,9 @@
 									"Venomous Anadi|LOME"
 								]
 							},
-							"frequency": "a number of times per day equal to your leve",
+							"frequency": {
+								"special": "a number of times per day equal to your level"
+							},
 							"entries": [
 								"You envenom your fangs. If the next fangs {@action Strike} you make before the end of your turn hits and deals damage, the {@action Strike} deals an additional {@damage 1d6} poison damage. On a critical failure, the poison is wasted as normal. At 12th level, this poison damage increases to {@damage 2d6}."
 							]

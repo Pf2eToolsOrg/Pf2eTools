@@ -78,7 +78,10 @@
 			"traits": [
 				"Sylph"
 			],
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"trigger": "A creature targets you with an attack or other targeted effect, and you can see the attacker.",
 			"entries": [
 				"You create a blanket of fog in a 5\u2013foot burst centered on one corner of your space. All creatures within that area are {@condition concealed}, and all others are {@condition concealed} to them. This concealment applies to the triggering effect, and the fog lasts for 1 minute or until dispersed by a strong wind. After resolving the triggering effect, you {@action Step}. If an effect prevents you from {@action Step||Stepping}, you attempt to {@action Escape} the effect and {@action Step} if you succeed."
@@ -97,7 +100,10 @@
 			"traits": [
 				"Ganzi"
 			],
-			"frequency": "once per hour",
+			"frequency": {
+				"unit": "hour",
+				"freq": 1
+			},
 			"trigger": "You take acid, electricity, or sonic damage.",
 			"entries": [
 				"You focus on your protean forebears to change your energy resistance. The energy resistance you gain from your ganzi heritage changes to match the triggering damage. This change occurs after the damage is dealt."
@@ -303,7 +309,10 @@
 				"Transmutation",
 				"Water"
 			],
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"entries": [
 				"If you and up to four other creatures are in contact with a body of water deep enough for you to fully submerge, you can spend 10 minutes adapting the creatures to that specific body of water. This allows them to breathe normally while within that body of water and protects them from deep ocean pressure. These effects last until the creatures are no longer in contact with that body of water or until you use this ability again, whichever comes first for each creature."
 			]
@@ -431,7 +440,10 @@
 				"Ifrit",
 				"Primal"
 			],
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"trigger": "Your turn begins.",
 			"entries": [
 				"You explode in flame. Enemies in a 20-foot emanation take {@damage 7d6} fire damage (basic Reflex save using your class DC or spell DC, whichever is higher). Allies in the area are {@condition quickened} for 1 round and can use the additional action to {@action Strike} or {@action Stride}."
@@ -520,7 +532,10 @@
 					"traits": [
 						"undine"
 					],
-					"frequency": "once per day",
+					"frequency": {
+						"unit": "day",
+						"freq": 1
+					},
 					"trigger": "A creature that has blood and is not at its maximum Hit Points hits you with a melee {@action Strike}",
 					"entries": [
 						"You channel salt and brine from your blood into the creature's wounds. The creature must attempt a Fortitude save using your class DC or spell DC, whichever is higher. On a failure, the creature takes {@damage 1d6} {@condition persistent damage ||persistent acid damage} and is {@condition sickened 1} by the pain. On a critical failure, it instead takes {@damage 2d6} {@condition persistent damage ||persistent acid damage} and is {@condition sickened 2}."
@@ -545,7 +560,10 @@
 				"Incapacitation"
 			],
 			"prerequisites": "expert in {@skill Performance}",
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"entries": [
 				"You've spent many an evening learning songs and tales featuring calacas, death's wandering minstrels. You dramatically unleash a stunning blast of sound by smashing an instrument you hold or belting out a discordant note. This has the effects of synaptic pulse, but the effect is auditory rather than mental. The DC is either your class DC or spell DC, whichever is higher."
 			]
@@ -590,7 +608,10 @@
 				"Hobgoblin",
 				"Manipulate"
 			],
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"trigger": "An adjacent and willing ally would be reduced to 0 HP but not killed.",
 			"entries": [
 				"You physically help an ally remain standing and encourage them to push through their pain against dire odds. Your ally doesn't fall {@condition unconscious} and remains at 1 Hit Point. The ally also gains a number of temporary Hit Points equal to your level that last for 1 minute. Fighting onward with such an injury isn't without consequence; your ally's {@condition wounded} condition increases by 1."
@@ -623,7 +644,10 @@
 				"Necromancy",
 				"Positive"
 			],
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"entries": [
 				"The life-giving energy that flows in your blood revitalizes you. You recover {@dice 4d6} Hit Points and gain 10 temporary Hit Points for 1 minute.",
 				"When you reach 15th level, you instead recover {@dice 6d6} HP and gain 15 temporary HP."
@@ -645,7 +669,10 @@
 				"Necromancy",
 				"Positive"
 			],
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"trigger": "A living creature within 60 feet would die.",
 			"entries": [
 				"The energy that flows in your blood can save a life in the direst of times.",
@@ -776,7 +803,10 @@
 				"Duskwalker",
 				"Fortune"
 			],
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"trigger": "You would die as a result of a failed saving throw or recovery check.",
 			"entries": [
 				"Your previous life ended due to sheer poor luck, struck by lightning or choking on a fish bone. You can reroll the triggering recovery check or saving throw, but you must use the new result, even if it's worse than the first roll."
@@ -795,7 +825,10 @@
 			"traits": [
 				"Aphorite"
 			],
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"entries": [
 				"You tap into the Godmind's collective cognitive well, rapidly parsing near-infinite variables to read your surroundings. For 1 minute, you gain precise motion sense out to 60 feet, you can see {@condition invisible} creatures and objects, and you gain the effects of a 9th-level {@spell true seeing}."
 			]
@@ -815,7 +848,10 @@
 				"Ifrit",
 				"Metamagic"
 			],
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"entries": [
 				"Your next fire spell leaves embers in its wake. If your next action is to {@action Cast a Spell} with an area and the {@trait fire} trait, for 1 minute, your spell's area becomes {@quickref difficult terrain||3|terrain} as well as hazardous terrain, dealing 1 fire damage for each square a creature moves through."
 			]
@@ -876,7 +912,10 @@
 				"Leshy",
 				"Poison"
 			],
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"entries": [
 				"You secrete a cloak of concentrated poison that harms any who dare attack you. For 1 minute, any creature that touches you or damages you with an unarmed attack or melee weapon without the {@trait reach} trait takes {@damage 3d6} poison damage."
 			]
@@ -1041,7 +1080,10 @@
 			"traits": [
 				"Aphorite"
 			],
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"entries": [
 				"You've learned to disperse the crystalline motes coating your body as a haze. You become {@condition concealed}, though you can't use this concealment to {@action Hide} or {@action Sneak}, as normal for concealment where your position is still obvious. The motes stay within an inch of your skin, move with you, and last for a number of rounds equal to half your level."
 			],
@@ -1126,7 +1168,10 @@
 			"traits": [
 				"Duskwalker"
 			],
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"trigger": "You are about to gain the {@condition dying} condition as a result of another creature's attack or ability, and that creature is within your melee reach.",
 			"entries": [
 				"Once, you died because someone\u2014murderer or monster, soldier or executioner\u2014 chose to strike you down. Just before losing consciousness, make a melee {@action Strike} against the triggering creature."
@@ -1310,10 +1355,10 @@
 			"source": "LOAG",
 			"page": 94,
 			"level": 9,
-			"prerequisites": "Medium size",
 			"traits": [
 				"Fleshwarp"
 			],
+			"prerequisites": "Medium size",
 			"entries": [
 				"Your limbs and even your torso can collapse in on themselves, allowing you to fit through tight spaces as though you were a Small creature. You can move at full Speed while {@action Squeeze||Squeezing}."
 			]
@@ -1345,7 +1390,10 @@
 				"Evocation",
 				"Suli"
 			],
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"entries": [
 				"You shroud your arms and held weapons in elemental magic. Choose one element.",
 				"Until the end of your next turn, your Strikes deal an additional {@dice 1d6} damage of the indicated type and have the trait corresponding to the element: electricity for air, bludgeoning for earth, fire for fire, or cold for water."
@@ -1513,7 +1561,10 @@
 				"Transmutation"
 			],
 			"prerequisites": "{@feat Evanescent Wings|LOAG}",
-			"frequency": "once per hour",
+			"frequency": {
+				"unit": "hour",
+				"freq": 1
+			},
 			"entries": [
 				"You stoke your magic to energize your wings, temporarily transforming them into glowing, majestic forms. For 1 minute, you gain a fly Speed of 30 feet."
 			],
@@ -1593,7 +1644,12 @@
 				"Fetchling",
 				"Occult"
 			],
-			"frequency": "once every 10 minutes",
+			"frequency": {
+				"recurs": true,
+				"freq": 1,
+				"unit": "minute",
+				"interval": 10
+			},
 			"entries": [
 				"You wrap shadow around a single unattended light source within 120 feet that's no larger than a torch. Any non-magical light source you target is automatically extinguished. For magical light sources, attempt a counteract check using your Fortitude or {@skill Thievery} modifier against the target's DC. Your counteract level is equal to half your level rounded up. Successfully counteracting the light source suppresses its ability to produce light for 1 minute, but not any other effects. If you're in dim light or darkness when you Extinguish Light, its range is 240 feet."
 			]
@@ -1657,7 +1713,10 @@
 				"Dhampir"
 			],
 			"prerequisites": "{@feat Adhyabhau|LOAG}",
-			"frequency": "once per hour",
+			"frequency": {
+				"unit": "hour",
+				"freq": 1
+			},
 			"trigger": "You deal mental damage.",
 			"entries": [
 				"The psychic feedback of another creature's pain fills you with false life. You gain temporary Hit Points equal to half the mental damage you dealt from the triggering effect. If the triggering action dealt mental damage to multiple creatures, calculate these temporary Hit Points using the creature that took the most damage. You lose any remaining temporary Hit Points after 1 minute."
@@ -1691,7 +1750,11 @@
 				"Manipulate",
 				"Strix"
 			],
-			"frequency": "once per 10 minutes",
+			"frequency": {
+				"unit": "minute",
+				"interval": 10,
+				"freq": 1
+			},
 			"entries": [
 				"With heavy wing beats, you whip up a furious gust and direct it at your opponents. This air blast has the effects of gust of wind with a DC equal to your class DC or spell DC, whichever is higher."
 			]
@@ -1773,7 +1836,10 @@
 				"Tiefling",
 				"Transmutation"
 			],
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"entries": [
 				"You embrace your monstrous blood and make it your own, screaming out to the heavens and hells alike in rage, pain, and defiance. Reality buckles and twists under your sudden power\u2014each tiefling has a unique transformation, but it might include sulfurous flames, choruses of shrieks, or twisting, serpentine lightning. Every creature within 10 feet of you is {@condition deafened} and {@condition dazzled} for 1 round unless they succeed at a Fortitude save using your class DC or spell DC, whichever is higher. Your final form has the effects of divine vessel for a deity that shares an alignment with your fiendish lineage. Your final form resembles a creature from your fiendish lineage, and you remain in that form for 1 minute. While in your final form, you can cast {@spell chilling darkness}, fireball, and lightning bolt as 6th-level divine innate spells, once each per use of this feat.",
 				"When you emerge from your final form, you become {@condition drained 3}. In addition, if you have this feat, you gain weakness 10 to good even when not in your final form, and you take good damage even if you aren't evil."
@@ -1833,7 +1899,10 @@
 				"Teleportation"
 			],
 			"prerequisites": "{@feat Emberkin|LOAG}",
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"entries": [
 				"Your peri lineage has opened your mind to fire's raw, purging essence. You can spend 1 minute in focused preparation, then enter a fire your size or larger to instantly teleport to any fire that is your size or larger up to 5 miles away. You take no damage from entering or exiting fires when using this ability. Once you enter the fire, you instantly know the rough locations of other large fires within range and can exit from the original fire, if you prefer. You can't carry extradimensional spaces with you when you teleport; if you attempt to do so, the activity fails."
 			]
@@ -1850,7 +1919,10 @@
 			"traits": [
 				"Strix"
 			],
-			"frequency": "once per round",
+			"frequency": {
+				"unit": "round",
+				"freq": 1
+			},
 			"entries": [
 				"You can fly through the air in short bursts at half your land Speed. If you don't end your movement on solid ground, you fall at the end of your turn."
 			]
@@ -1921,7 +1993,10 @@
 				"Oread"
 			],
 			"prerequisites": "{@feat Shield Block}",
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"entries": [
 				"You reinforce your shield with a rocky outgrowth of metal and stone. You Raise your Shield. If you use the {@feat Shield Block} reaction before your next turn, add your character level to your shield's Hardness when determining how much damage is blocked."
 			]
@@ -1939,7 +2014,10 @@
 			"traits": [
 				"Kitsune"
 			],
-			"frequency": "once per hour",
+			"frequency": {
+				"unit": "hour",
+				"freq": 1
+			},
 			"entries": [
 				"You always have time for a joke or prank. You {@action Create a Diversion}, {@action Conceal an Object}, or {@action Hide}. All creatures who witnessed your Fox Trick then wise up to it, becoming temporarily immune to your Fox Trick for 24 hours."
 			]
@@ -2009,7 +2087,10 @@
 			"traits": [
 				"Fleshwarp"
 			],
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"trigger": "A creature you are aware of damages you with a melee {@action Strike}.",
 			"entries": [
 				"Your wound yawns open, appalling your attacker. The attacker must succeed at a Fortitude saving throw against your class DC or spell DC, whichever is higher, or become {@condition sickened 1} ({@condition sickened 2} on a critical failure). It can't recover from the {@condition sickened} condition while it's adjacent to you."
@@ -2138,7 +2219,10 @@
 				"Necromancy",
 				"Primal"
 			],
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"entries": [
 				"You are descended from the einherji, the worthy warriors of chaos. You call upon your ascendant blood with a mighty cry that fills you with a revitalizing energy for 1 minute or until you critically fail a {@action Strike}, whichever comes first. For the duration, the first time each round you successfully {@action Strike} a creature of your level or higher, you regain Hit Points equal to half your level."
 			]
@@ -2211,7 +2295,10 @@
 				"Fortune",
 				"Lizardfolk"
 			],
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"trigger": "You are about to attempt a skill check or saving throw.",
 			"entries": [
 				"The stars grant you insights that guide your actions. You roll twice and take the better result. If it's night and you can see the stars, you gain a +1 circumstance bonus to the triggering roll."
@@ -2232,7 +2319,10 @@
 				"Misfortune",
 				"Tengu"
 			],
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"trigger": "A creature within 60 feet is about to attempt an attack roll or skill check.",
 			"entries": [
 				"You caw ominously, cursing the creature with misfortune. The target creature must roll the triggering check twice and take the lower result."
@@ -2263,7 +2353,10 @@
 				"Kobold"
 			],
 			"prerequisites": "{@feat Winglets|LOAG}",
-			"frequency": "once per round",
+			"frequency": {
+				"unit": "round",
+				"freq": 1
+			},
 			"entries": [
 				"You can fly a little! You {@action Fly} up to half your Speed. If you don't end your movement on solid ground, you fall at the end of your turn."
 			],
@@ -2303,7 +2396,11 @@
 			"traits": [
 				"Ifrit"
 			],
-			"frequency": "once per 10 minutes",
+			"frequency": {
+				"unit": "minute",
+				"interval": 10,
+				"freq": 1
+			},
 			"trigger": "An effect would deal fire damage to you, even if you resist all the damage.",
 			"entries": [
 				"You harness the oncoming flames and twist them into a screen of heat and smoke, granting you concealment until the beginning of your next turn."
@@ -2369,7 +2466,10 @@
 				"Tengu"
 			],
 			"prerequisites": "{@feat Storm's Lash|APG} (Advanced Player's Guide 26)",
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"trigger": "You critically hit a foe with a {@action Strike} with a slashing weapon.",
 			"entries": [
 				"Choose either lightning bolt or gust of wind. You {@action Cast a Spell||Cast the chosen Spell} as a 6th-level primal innate spell in the direction of the target of the triggering action."
@@ -2459,7 +2559,10 @@
 				"Aphorite",
 				"Fortune"
 			],
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"trigger": "You would critically fail a skill check or suffer an effect with the {@trait misfortune} trait.",
 			"entries": [
 				"You shift the underlying fabric of reality to impose a baseline of order.",
@@ -2531,7 +2634,10 @@
 				"Occult",
 				"Transmutation"
 			],
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"trigger": "You Disable a hazard.",
 			"requirements": "The hazard isn't {@condition broken}.",
 			"entries": [
@@ -2550,7 +2656,10 @@
 			"traits": [
 				"Aphorite"
 			],
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"requirements": "You're afflicted by a disease or poison, or are taking {@condition persistent damage}.",
 			"entries": [
 				"Your ordered physiology rejects unwelcome elements. Choose one.",
@@ -2633,7 +2742,10 @@
 				"Primal"
 			],
 			"prerequisites": "{@feat Brine May|APG}, {@feat Snow May|LOAG}, {@feat Veil May|LOAG}, or {@feat Virga May|LOAG}",
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"entries": [
 				"You summon an aura of shimmering heat, flurrying snow, crashing waves, or swirling wind and lightning. For 1 minute, you gain concealment against creatures more than 5 feet away, and any creature that ends its turn within 5 feet of you suffers {@dice 1d12} damage (basic Reflex save using your class DC or spell DC, whichever is higher). At 13th and 17th level, this damage increases by {@dice 1d12}. A veil may changeling deals fire damage, a snow may changeling deals cold damage, a brine may changeling deals bludgeoning damage and the effect gains the {@trait water} trait, and a virga may changeling deals electricity damage."
 			]
@@ -2728,7 +2840,10 @@
 			"traits": [
 				"Strix"
 			],
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"entries": [
 				"You unfold your wings for travel and can keep them unfolded for 10 minutes. You gain a fly Speed equal to your land Speed while your wings are unfurled. If you have Fledgling Flight, you gain a +10-foot status bonus to your fly Speed with Juvenile Flight. As normal, since your fly Speed is derived from your land Speed, this status bonus isn't cumulative with a status bonus to your land Speed, if you have one."
 			],
@@ -2985,7 +3100,10 @@
 			"traits": [
 				"Changeling"
 			],
-			"frequency": "once per minute",
+			"frequency": {
+				"unit": "minute",
+				"freq": 1
+			},
 			"trigger": "You cast a non-cantrip occult spell or an innate spell from a changeling ancestry feat.",
 			"entries": [
 				"You can tap into some of the magic that flows through your blood to give you new life. You gain a number of temporary Hit Points equal to half your level (minimum 1) that last until the end of your next turn."
@@ -3098,7 +3216,10 @@
 				"Orc"
 			],
 			"prerequisites": "{@feat Orc Warmask|LOAG}",
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"trigger": "You fail a saving throw against an effect from your warmask's magical tradition.",
 			"requirements": "You're wearing your warmask.",
 			"entries": [
@@ -3223,7 +3344,10 @@
 			"traits": [
 				"Changeling"
 			],
-			"frequency": "once per minute",
+			"frequency": {
+				"unit": "minute",
+				"freq": 1
+			},
 			"trigger": "An adjacent ally is hit by an attack.",
 			"entries": [
 				"You have the protective instinct your own mother lacks and will gladly suffer in another's place. You interpose yourself in the attack's path. You become the target of the triggering attack and are automatically hit by the attack (or critically hit if the ally was critically hit), suffering the full effects in your ally's place."
@@ -3271,7 +3395,10 @@
 				"Android",
 				"Concentrate"
 			],
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"entries": [
 				"Your nanites fly out of your body, swarming around you in a cloud. You become {@condition concealed} for a number of rounds equal to half your level. You can't use this concealment to {@action Hide} or {@action Sneak}, as normal for concealment that makes your position obvious. While Nanite Shroud is active, you can't use other abilities that require the use of your nanites."
 			]
@@ -3290,7 +3417,10 @@
 				"Android",
 				"Concentrate"
 			],
-			"frequency": "once per hour",
+			"frequency": {
+				"unit": "hour",
+				"freq": 1
+			},
 			"trigger": "You attempt a skill check requiring three actions or fewer.",
 			"entries": [
 				"You stimulate your nanites, forcing your body to temporarily increase its efficiency.",
@@ -3418,7 +3548,10 @@
 				"Duskwalker",
 				"Necromancy"
 			],
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"entries": [
 				"You have a connection to olethroses, the enigmatic psychopomps who successfully swayed the yamaraj to permit the creation of the first duskwalkers. You place a finger on fate's scales by wrapping silk around your bow. The first time this turn that you hit a creature with a {@action Strike} using a weapon in the bow group you've modified in this way, that creature takes an additional 60 damage (basic Fortitude save using your class DC or spell DC, whichever is higher) as the arrow works to cut short their very destiny. This additional damage is of the same type as the initial attack dealt. If you hit more than one creature at the same time, choose one to suffer the effect of your decree."
 			]
@@ -3589,7 +3722,10 @@
 			"traits": [
 				"Aphorite"
 			],
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"trigger": "You would take bludgeoning, piercing, or slashing damage.",
 			"entries": [
 				"Your body anticipates the blow. The impact area briefly reorganizes into a strengthened tissue lattice that blunts the attack. You gain resistance equal to your level to the triggering damage type, which applies against the triggering damage.",
@@ -3646,7 +3782,10 @@
 				"Aasimar",
 				"Healing"
 			],
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"entries": [
 				"You call on your celestial forebears to rid your body of all toxins and impurities. For each disease or poison currently affecting you, attempt a {@skill Religion} check to counteract that disease or poison. As normal, your counteract level is equal to half your level, rounded up."
 			]
@@ -3699,7 +3838,10 @@
 				"Light",
 				"Visual"
 			],
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"entries": [
 				"Your skin glows with intensity. Creatures within 10 feet who can see you must succeed at a Fortitude save against your class DC or spell DC, whichever is higher.",
 				{
@@ -3787,7 +3929,10 @@
 				"Auditory",
 				"Hobgoblin"
 			],
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"entries": [
 				"You call out to your allies and push them to give their all in combat. All allies within 30 feet that can hear you gain a number of temporary Hit Points equal to your level. In addition, these allies become {@condition quickened} for 1 minute but can only use the extra action to {@action Step}, {@action Stride}, or {@action Strike}."
 			]
@@ -3890,7 +4035,10 @@
 				"Transmutation",
 				"Water"
 			],
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"entries": [
 				"You surround your body with a thin layer of water drawn from the moisture in the air. You can spend one hour resting to rehydrate your gills and skin, which counts as submerging your body in water. At the GM's discretion, incredibly dry areas, such as deserts, might not have enough moisture in the air for your Rehydration to work."
 			]
@@ -3908,7 +4056,10 @@
 				"Android",
 				"Concentrate"
 			],
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"entries": [
 				"You trigger your body's repair programming, causing your body's nanites to heal your wounds. You gain fast healing equal to half your level for 1 minute. While {@action Repair} Module is active, you can't use other abilities that require the use of your nanites."
 			]
@@ -3951,7 +4102,10 @@
 			"traits": [
 				"Android"
 			],
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"trigger": "You have the {@condition dying} condition and are about to attempt a recovery check.",
 			"entries": [
 				"Your nanites are programmed to automatically revive you. You're restored to 1 Hit Point, lose the {@condition dying} and {@condition unconscious} conditions, and can act normally on this turn. You gain or increase the {@condition wounded} condition as normal when losing the {@condition dying} condition in this way."
@@ -4087,7 +4241,10 @@
 				"Fire",
 				"Ifrit"
 			],
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"entries": [
 				"You make a weapon unbearable to hold. Attempt an {@skill Athletics} check to {@action Disarm} a target creature. You don't need to have a hand free to make this {@action Disarm} attempt. If the {@action Disarm} attempt succeeds, the target takes {@damage 4d6} fire damage unless it drops the weapon, and on a critical success, it takes {@damage 4d6} fire damage and drops the weapon. If you're legendary in {@skill Athletics}, this increases to {@damage 8d6} fire damage."
 			]
@@ -4176,7 +4333,10 @@
 				"Occult",
 				"Transmutation"
 			],
-			"frequency": "once per hour",
+			"frequency": {
+				"unit": "hour",
+				"freq": 1
+			},
 			"entries": [
 				"You draw on your connection with the Shadow Plane to see through all but the deepest darkness. You gain {@ability darkvision||greater darkvision} for 1 minute."
 			]
@@ -4250,7 +4410,10 @@
 				"Kitsune"
 			],
 			"prerequisites": "tailless alternate form",
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"entries": [
 				"You wear many faces, even those that don't belong to you. When you Change Shape into your tailless form, you gain the effects of 3rd-level {@spell illusory disguise} for 1 hour or until you shift back, except it's a {@trait transmutation} effect rather than an illusion."
 			]
@@ -4634,7 +4797,10 @@
 			"traits": [
 				"Leshy"
 			],
-			"frequency": "once per hour",
+			"frequency": {
+				"unit": "hour",
+				"freq": 1
+			},
 			"entries": [
 				"You unleash a cloud of pollen or similar spores. All creatures in a 10-foot emanation around you must attempt a Fortitude save using your class DC or spell DC (whichever is higher) with the following results. Plants and fungi are immune to this effect.",
 				{
@@ -4860,7 +5026,11 @@
 				"Mental",
 				"Strix"
 			],
-			"frequency": "once per 10 minutes",
+			"frequency": {
+				"unit": "minute",
+				"interval": 10,
+				"freq": 1
+			},
 			"trigger": "You, or a strix ally you can see, are damaged by an enemy's critical hit.",
 			"entries": [
 				"You dedicate yourself to destroying those who harm your kin. Until the end of your next turn, you deal an additional{@dice +1d6} damage on Strikes against the triggering enemy. The bonus increases to{@dice +2d6} if you use a striking weapon or unarmed attack and{@dice +3d6} if you use a major striking weapon or unarmed attack."
@@ -5020,7 +5190,10 @@
 					"components": [
 						"Interact"
 					],
-					"frequency": "once per day",
+					"frequency": {
+						"unit": "day",
+						"freq": 1
+					},
 					"entries": [
 						"You cast one of the spells contained in your tengu feather fan. {@action Activate an Item||Activating} the fan takes the spell's normal number of actions. You can also Activate the fan to cast a cantrip you've gained from a heritage or ancestry feat; this activation doesn't count against the fan's uses per day."
 					]
@@ -5098,7 +5271,10 @@
 				"Undine",
 				"Water"
 			],
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"entries": [
 				"You conjure the force of the tides to gain a +4 circumstance bonus to AC until the end of your next turn. Any allies adjacent to you during the duration gain a +2 circumstance bonus to AC as long as they remain adjacent to you. You can Sustain the effect to a maximum duration of 5 rounds. When a creature receiving a circumstance bonus to AC from Tidal Shield would take damage from an attack, as a reaction, you can reduce the damage to that creature by 40; after you do so, Tidal Shield ends."
 			]
@@ -5169,7 +5345,12 @@
 			"traits": [
 				"Oread"
 			],
-			"frequency": "once every 10 minutes",
+			"frequency": {
+				"recurs": true,
+				"freq": 1,
+				"unit": "minute",
+				"interval": 10
+			},
 			"entries": [
 				"You have the power to shatter the earth into a shape of your devising. You crack the ground beneath you, creating {@quickref difficult terrain||3|terrain} in a 5-foot burst centered on one corner of your space."
 			]
@@ -5501,7 +5682,10 @@
 			"traits": [
 				"Duskwalker"
 			],
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"trigger": "An ally within 30 feet takes damage that would otherwise reduce them to 0 Hit Points and give them the {@condition dying} condition.",
 			"entries": [
 				"Once, you died because you valued someone else's life above your own; just as then, you protect an ally by suffering in their stead. Reduce the damage the triggering ally would take by 1 + your level. You redirect this damage to yourself, but your immunities, weaknesses, resistances, and so on don't apply. You aren't subject to any conditions or other effects from whatever damaged your ally (such as poison from a venomous bite)\u2014your ally is still subject to those effects even if you redirect all of the triggering damage to yourself. If the redirected damage prevents the ally from being reduced to 0 Hit Points, they remain conscious and don't gain the {@condition dying} condition."
@@ -5586,7 +5770,10 @@
 				"Sylph",
 				"Transmutation"
 			],
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"entries": [
 				"You can strain to call forth feathered or cloudy wings from your back. Once manifested, these wings remain for 10 minutes. You gain a fly Speed equal to your land Speed while you've manifested your wings."
 			]
@@ -5629,7 +5816,10 @@
 			"traits": [
 				"Duskwalker"
 			],
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"entries": [
 				"You have been granted a sliver of the power of the yamaraj, the magistrates of the dead who agreed to allow duskwalkers to exist at all. You exhale a blast of icy wind and ravenous insects. This is a 30-foot cone that deals {@damage 14d6} slashing damage and {@damage 4d6} {@condition persistent damage ||persistent slashing damage} (basic Reflex save using your class DC or spell DC, whichever is higher). On a critical failure, targets also become {@condition sickened 2}."
 			]

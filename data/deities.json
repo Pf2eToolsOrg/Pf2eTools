@@ -1382,73 +1382,6 @@
 			"hasLore": true
 		},
 		{
-			"name": "Cosmic Caravan",
-			"source": "AV0",
-			"page": 5,
-			"alignment": [
-				"CG"
-			],
-			"category": "Pantheon",
-			"info": [],
-			"devoteeBenefits": {
-				"font": [
-					"harm",
-					"heal"
-				],
-				"ability": {
-					"abilities": [
-						"Dex",
-						"Cha"
-					],
-					"entry": "Dexterity or Charisma"
-				},
-				"skill": [
-					"Occultism"
-				],
-				"domains": [
-					"darkness",
-					"fate",
-					"freedom",
-					"moon"
-				],
-				"alternateDomains": [
-					"star",
-					"void"
-				],
-				"spells": {
-					"1": [
-						"object reading|apg"
-					],
-					"2": [
-						"glitterdust"
-					],
-					"6": [
-						"blanket of stars|apg"
-					]
-				},
-				"weapon": [
-					"starknife"
-				]
-			},
-			"edicts": [
-				"spend time stargazing or meditating in moonlight",
-				"aid those who live in regions where {@deity Zon-Kuthon} (or other religions that espouse the night as a bastion for evil) hold sway",
-				"help the desperate or forlorn to see potential for a better life in the future",
-				"travel with no particular destination in mind"
-			],
-			"anathema": [
-				"portray the night as a time of evil",
-				"destroy astronomical or astrological equipment",
-				"spend the night in the same place twice in a row"
-			],
-			"followerAlignment": [
-				"CG",
-				"CN",
-				"NG"
-			],
-			"hasLore": true
-		},
-		{
 			"name": "Atreia",
 			"alias": [
 				"The Lambent King"
@@ -2894,6 +2827,73 @@
 				},
 				"weapon": [
 					"staff"
+				]
+			},
+			"hasLore": true
+		},
+		{
+			"name": "Cosmic Caravan",
+			"source": "AV0",
+			"page": 5,
+			"alignment": [
+				"CG"
+			],
+			"category": "Pantheon",
+			"info": [],
+			"edicts": [
+				"spend time stargazing or meditating in moonlight",
+				"aid those who live in regions where {@deity Zon-Kuthon} (or other religions that espouse the night as a bastion for evil) hold sway",
+				"help the desperate or forlorn to see potential for a better life in the future",
+				"travel with no particular destination in mind"
+			],
+			"anathema": [
+				"portray the night as a time of evil",
+				"destroy astronomical or astrological equipment",
+				"spend the night in the same place twice in a row"
+			],
+			"followerAlignment": [
+				"CG",
+				"CN",
+				"NG"
+			],
+			"devoteeBenefits": {
+				"font": [
+					"harm",
+					"heal"
+				],
+				"ability": {
+					"abilities": [
+						"Dex",
+						"Cha"
+					],
+					"entry": "Dexterity or Charisma"
+				},
+				"skill": [
+					"Occultism"
+				],
+				"domains": [
+					"darkness",
+					"fate",
+					"freedom",
+					"moon"
+				],
+				"alternateDomains": [
+					"star",
+					"void"
+				],
+				"spells": {
+					"1": [
+						"object reading|apg"
+					],
+					"2": [
+						"glitterdust"
+					],
+					"6": [
+						"blanket of stars|apg"
+					]
+				},
+				"weapon": [
+					"starknife"
 				]
 			},
 			"hasLore": true
@@ -12699,11 +12699,18 @@
 			],
 			"source": "LOGM",
 			"page": 130,
+			"otherSources": {
+				"Expanded": [
+					"SoT4|73"
+				]
+			},
 			"alignment": [
 				"LE"
 			],
 			"category": "Other Gods",
-			"info": [],
+			"info": [
+				"The god-king is the unquestioned ruler of Mzali. His sphere of influence encompasses not only the city, but aspirations for greater conquest of the Mwangi Expanse. He is also a god of exclusion and xenophobia, treating his own people as supreme and foreigners as dangerous influences that taint the purity of his city and its people."
+			],
 			"edicts": [
 				"uphold Mzali's laws",
 				"tend to Walkena and obey his instructions",
@@ -12737,6 +12744,10 @@
 					"sun",
 					"tyranny"
 				],
+				"alternateDomains": [
+					"duty",
+					"fire"
+				],
 				"spells": {
 					"1": [
 						"burning hands"
@@ -12751,7 +12762,8 @@
 				"weapon": [
 					"spear"
 				]
-			}
+			},
+			"hasLore": true
 		},
 		{
 			"name": "Whispering Way",
@@ -13584,7 +13596,7 @@
 			],
 			"category": "Gods of the Inner Sea",
 			"info": [
-				"The Midnight Lord is god of darkness, envy, loss, and pain. Once a god of art, beauty, and music, like Shelyn, he returned from a sojourn in the dark spaces between the planes horribly changed."
+				"The Midnight Lord is god of darkness, envy, loss, and pain. Once a god of art, beauty, and music, like {@deity Shelyn}, he returned from a sojourn in the dark spaces between the planes horribly changed."
 			],
 			"edicts": [
 				"bring pain to the world",

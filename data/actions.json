@@ -1,6 +1,30 @@
 {
 	"action": [
 		{
+			"name": "Accidental Shot",
+			"source": "G&G",
+			"page": 142,
+			"activity": {
+				"number": 2,
+				"unit": "action"
+			},
+			"traits": [
+				"Fortune"
+			],
+			"actionType": {
+				"archetype": [
+					"Unexpected Sharpshooter|G&G"
+				]
+			},
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
+			"entries": [
+				"You make a {@action Strike} with a ranged weapon, rolling the attack and damage twice and using the better results for each. The attack ignores circumstance penalties to the attack roll and any flat check required due to the target being {@condition concealed} or {@condition hidden}."
+			]
+		},
+		{
 			"name": "Act Together",
 			"source": "SoM",
 			"page": 53,
@@ -18,7 +42,10 @@
 					"Summoner|SoM"
 				]
 			},
-			"frequency": "once per round",
+			"frequency": {
+				"unit": "round",
+				"freq": 1
+			},
 			"entries": [
 				"You and your eidolon act as one. Either you or your eidolon takes an action or activity using the same number of actions as Act Together, and the other takes a single action.",
 				"For example, if you spent 2 actions to Act Together, you could cast {@spell burning hands} (2 actions) and your eidolon could {@action Strike} (1 action), or your eidolon could use its Breath Weapon (2 actions) and you could {@action Stride} (1 action).",
@@ -245,7 +272,9 @@
 				"ancestry": "Anadi|LOME",
 				"heritage": "Venomous|LOME"
 			},
-			"frequency": "a number of times per day equal to your level",
+			"frequency": {
+				"special": "a number of times per day equal to your level"
+			},
 			"entries": [
 				"You envenom your fangs. If the next fangs {@action Strike} you make before the end of your turn hits and deals damage, the {@action Strike} deals an additional {@damage 1d6} poison damage. On a critical failure, the poison is wasted as normal. At 12th level, this poison damage increases to {@damage 2d6}."
 			]
@@ -453,7 +482,10 @@
 				"ancestry": "Shisk|LOME",
 				"heritage": "Quillcoat|LOME"
 			},
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"trigger": "You are hit with an unarmed strike or a strike with a non-reach melee weapon.",
 			"entries": [
 				"You break off quills in your attacker's flesh. You deal {@damage 1d8} piercing damage to the triggering creature (basic Reflex save using your class DC or spell DC, whichever is higher.) On a critical failure, the creature also takes {@damage 1d4} {@condition persistent damage||persistent bleed damage} as your quills hook into its flesh. At 3rd level, and every 2 levels thereafter, this damage increases by {@damage 1d8} and the persistent piercing damage increases by 1."
@@ -607,7 +639,10 @@
 				"ancestry": "Conrasu|LOME",
 				"heritage": "Rite of Knowing|LOME"
 			},
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"trigger": "You are about to attempt a check to {@action Recall Knowledge}.",
 			"entries": [
 				"You call upon the knowledge of Axis to ensure the accuracy of your information. You roll a second time and use the higher result. If you roll a critical failure, you get a failure instead. If you roll a success, you get a critical success instead."
@@ -640,21 +675,6 @@
 					]
 				},
 				"{@b Disrupted and Lost Spells} Some abilities and spells can disrupt a spell, causing it to have no effect and be lost. When you lose a spell, you've already expended the spell slot, spent the spell's costs and actions, and used the {@action Cast a Spell} activity. If a spell is disrupted during a Sustain a Spell action, the spell immediately ends. The full rules for disrupting actions appear here."
-			]
-		},
-		{
-			"name": "Detect Magic",
-			"source": "CRB",
-			"page": 479,
-			"traits": [
-				"Exploration",
-				"Concentrate"
-			],
-			"actionType": {
-				"basic": true
-			},
-			"entries": [
-				"You cast {@spell detect magic} at regular intervals. You move at half your travel speed or slower. You have no chance of accidentally overlooking a magic aura at a travel speed up to 300 feet per minute, but must be traveling no more than 150 feet per minute to detect magic auras before the party moves into them."
 			]
 		},
 		{
@@ -928,7 +948,11 @@
 					"Investigator|APG"
 				]
 			},
-			"frequency": "once per 10 minutes",
+			"frequency": {
+				"unit": "minute",
+				"interval": 10,
+				"freq": 1
+			},
 			"trigger": "Another creature attempts a check to investigate a lead you're pursuing.",
 			"entries": [
 				"You share information with the triggering creature. They gain a circumstance bonus to their check equal to your circumstance bonus to checks investigating your subject from {@action Pursue a Lead|APG}. The GM can add any relevant traits to this reaction depending on the situation, such as {@trait auditory} and {@trait linguistic} if you're conveying information verbally."
@@ -1475,6 +1499,21 @@
 			]
 		},
 		{
+			"name": "Detect Magic",
+			"source": "CRB",
+			"page": 479,
+			"traits": [
+				"Exploration",
+				"Concentrate"
+			],
+			"actionType": {
+				"basic": true
+			},
+			"entries": [
+				"You cast {@spell detect magic} at regular intervals. You move at half your travel speed or slower. You have no chance of accidentally overlooking a magic aura at a travel speed up to 300 feet per minute, but must be traveling no more than 150 feet per minute to detect magic auras before the party moves into them."
+			]
+		},
+		{
 			"name": "Devise a Stratagem",
 			"source": "APG",
 			"page": 56,
@@ -1492,7 +1531,10 @@
 					"Investigator|APG"
 				]
 			},
-			"frequency": "once per round",
+			"frequency": {
+				"unit": "round",
+				"freq": 1
+			},
 			"trigger": "Another creature attempts a check to investigate a lead you're pursuing.",
 			"entries": [
 				"You assess a foe's weaknesses in combat and use them to formulate a plan of attack against your enemy. Choose a creature you can see and roll a {@dice d20}. If you {@action Strike} the chosen creature later this round, you must use the result of the roll you made to {@action Devise a Stratagem|APG} for your {@action Strike}'s attack roll instead of rolling. You make this substitution only for the first {@action Strike} you make against the creature this round, not any subsequent attacks.",
@@ -1651,7 +1693,10 @@
 					"Wizard"
 				]
 			},
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"entries": [
 				"You expend the power stored in your bonded item. During your turn, you gain the ability to cast one spell you prepared today and already cast, without spending a spell slot. You must still {@action Cast a Spell|CRB|Cast the Spell} and meet the spell's other requirements."
 			]
@@ -1816,7 +1861,10 @@
 				"ancestry": "Dwarf",
 				"heritage": "Elemental Heart|LOCG"
 			},
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"entries": [
 				"Energy bursts forth from your body. You deal {@dice 1d6} damage of your chosen type to all adjacent creatures (basic Reflex save using your class DC or spell DC, whichever is higher). At 3rd level, and every 2 levels thereafter, this damage increases by {@dice 1d6}."
 			]
@@ -1919,7 +1967,11 @@
 					"Empiricism|APG"
 				]
 			},
-			"frequency": "once per 10 minutes",
+			"frequency": {
+				"unit": "minute",
+				"interval": 10,
+				"freq": 1
+			},
 			"entries": [
 				"You observe and assess your surroundings with great speed. You {@action Recall Knowledge}, {@action Seek}, or {@action Sense Motive}."
 			]
@@ -2786,7 +2838,10 @@
 				"ancestry": "Kitsune|LOAG",
 				"heritage": "Dark Fields|LOAG"
 			},
-			"frequency": "once per hour",
+			"frequency": {
+				"unit": "hour",
+				"freq": 1
+			},
 			"trigger": "A creature within 60 feet gains the {@condition frightened} condition.",
 			"entries": [
 				"You are invigorated by the shock of a prank or the thrum of terror. You gain temporary Hit Points equal to the creature's level or 3, whichever is higher."
@@ -3251,7 +3306,10 @@
 					"Rogue"
 				]
 			},
-			"frequency": "once per round.",
+			"frequency": {
+				"unit": "round",
+				"freq": 1
+			},
 			"trigger": "Your {@action Strike} hits a {@condition flat-footed} creature and deals damage.",
 			"entries": [
 				"The target attempts a Fortitude save at your class DC. It then becomes temporarily immune to your Master Strike for 1 day.",
@@ -3324,7 +3382,10 @@
 					"Mutagenist"
 				]
 			},
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"entries": [
 				"You experience a brief resurgence of a mutagen. Choose one mutagen you've consumed since your last daily preparations. You gain the effects of that mutagen for 1 minute."
 			]
@@ -3354,6 +3415,27 @@
 			]
 		},
 		{
+			"name": "Opportune Riposte",
+			"source": "APG",
+			"page": 86,
+			"activity": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"traits": [
+				"Swashbuckler"
+			],
+			"actionType": {
+				"class": [
+					"Swashbuckler|APG"
+				]
+			},
+			"trigger": "A foe within your reach critically fails a {@action Strike} against you.",
+			"entries": [
+				"You take advantage of an opening from your enemy's fumbled attack. You either make a melee {@action Strike} against the triggering foe or attempt to {@action Disarm} it of the weapon it used for the Strike."
+			]
+		},
+		{
 			"name": "Overdrive",
 			"source": "G&G",
 			"page": 16,
@@ -3370,7 +3452,10 @@
 					"Inventor|G&G"
 				]
 			},
-			"frequency": "once per round",
+			"frequency": {
+				"unit": "round",
+				"freq": 1
+			},
 			"entries": [
 				"Temporarily cranking the gizmos on your body into overdrive, you try to add greater power to your attacks. Attempt a {@skill Crafting} check that has a {@table DCs by Level||standard DC for your level}.",
 				{
@@ -3587,7 +3672,11 @@
 					"Interrogation|APG"
 				]
 			},
-			"frequency": "once per 10 minutes",
+			"frequency": {
+				"unit": "minute",
+				"interval": 10,
+				"freq": 1
+			},
 			"entries": [
 				"You ask a question that charms or needles someone in just the right way. Ask a question of a non-allied creature that you can see and have been conversing with. Attempt a {@skill Diplomacy} check against the creature's Will DC. The creature is then temporarily immune for 1 hour.",
 				{
@@ -3615,7 +3704,11 @@
 					"Investigator|APG"
 				]
 			},
-			"frequency": "once per 10 minutes",
+			"frequency": {
+				"unit": "minute",
+				"interval": 10,
+				"freq": 1
+			},
 			"entries": [
 				"You spend 1 minute examining the details of one potential clue, designating the subject related to that clue as the target of your active investigation. This subject is typically a single creature, item, or small location (such as a room or corridor), but the GM might allow a different scope for your investigation. You don't need to know the identity, purpose, or nature of the subject, but you do need to be aware of its existence. For instance, finding a footprint is enough to investigate the creature that left it, and seeing a hasty sketch of an item or location can be enough to start your investigation of that subject.",
 				"Whenever you attempt a {@skill Perception} or skill check to investigate a designated subject, you gain a +1 circumstance bonus to the check. The exact checks this applies to depend on the actions you use to investigate and are determined by the GM, but checks to investigate are typically {@skill Perception} checks or skill checks that use Intelligence, Wisdom, or Charisma.",
@@ -3886,6 +3979,129 @@
 									"type": "item",
 									"name": "Legendary",
 									"entry": "existence of a long-lost noble heir, secret doctrines of a religion"
+								}
+							]
+						}
+					]
+				},
+				{
+					"type": "pf2-h3",
+					"page": 505,
+					"source": "CRB",
+					"name": "Recall Knowledge",
+					"entries": [
+						"On most topics, you can use simple DCs for checks to {@action Recall Knowledge}. For a check about a specific creature, trap, or other subject with a level, use a {@quickref level-based DCs||4|level-based dcs} (adjusting for rarity as needed). You might adjust the difficulty down, maybe even drastically, if the subject is especially notorious or famed. Knowing simple tales about an infamous dragon's exploits, for example, might be incredibly easy for the dragon's level, or even just a simple trained DC.",
+						{
+							"type": "pf2-h4",
+							"page": 505,
+							"name": "Alternative Skills",
+							"entries": [
+								"As noted in the action's description, a character might attempt to {@action Recall Knowledge} using a different skill than the ones listed as the default options. If the skill is highly applicable, like using {@skill Medicine} to identify a medicinal tonic, you probably don't need to adjust the DC. If its relevance is a stretch, adjust the DC upward as described in {@quickref Adjusting Difficulty||4|Adjusting Difficulty}."
+							]
+						},
+						{
+							"type": "pf2-h4",
+							"page": 505,
+							"name": "Additional Knowledge",
+							"entries": [
+								"Sometimes a character might want to follow up on a check to {@action Recall Knowledge}, rolling another check to discover more information. After a success, further uses of {@action Recall Knowledge} can yield more information, but you should adjust the difficulty to be higher for each attempt. Once a character has attempted an incredibly hard check or failed a check, further attempts are fruitless\u2014the character has recalled everything they know about the subject."
+							]
+						},
+						{
+							"type": "pf2-h4",
+							"page": 505,
+							"name": "Creature Identification",
+							"entries": [
+								"A character who successfully identifies a creature learns one of its best-known attributes\u2014such as a troll's regeneration (and the fact that it can be stopped by acid or fire) or a manticore's tail spikes. On a critical success, the character also learns something subtler, like a demon's weakness or the trigger for one of the creature's reactions.",
+								"The skill used to identify a creature usually depends on that creature's trait, as shown on Table 10\u20137, but you have leeway on which skills apply. For instance, hags are humanoids but have a strong connection to occult spells and live outside society, so you might allow a character to use {@skill Occultism} to identify them without any DC adjustment, while Society is harder. Lore skills can also be used to identify their specific creature. Using the applicable Lore usually has an easy or very easy DC (before adjusting for rarity).",
+								{
+									"name": "Creature Identification Skills",
+									"type": "table",
+									"id": "10-7",
+									"source": "CRB",
+									"page": 506,
+									"colStyles": [
+										"text-left",
+										"text-center"
+									],
+									"rows": [
+										[
+											"Creature Trait",
+											"Skills"
+										],
+										[
+											"Aberration",
+											"{@skill Occultism}"
+										],
+										[
+											"Animal",
+											"{@skill Nature}"
+										],
+										[
+											"Astral",
+											"{@skill Occultism}"
+										],
+										[
+											"Beast",
+											"{@skill Arcana}, {@skill Nature}"
+										],
+										[
+											"Celestial",
+											"{@skill Religion}"
+										],
+										[
+											"Construct",
+											"{@skill Arcana}, {@skill Crafting}"
+										],
+										[
+											"Dragon",
+											"{@skill Arcana}"
+										],
+										[
+											"Elemental",
+											"{@skill Arcana}, {@skill Nature}"
+										],
+										[
+											"Ethereal",
+											"{@skill Occultism}"
+										],
+										[
+											"Fey",
+											"{@skill Nature}"
+										],
+										[
+											"Fiend",
+											"{@skill Religion}"
+										],
+										[
+											"Fungus",
+											"{@skill Nature}"
+										],
+										[
+											"Humanoid",
+											"{@skill Society}"
+										],
+										[
+											"Monitor",
+											"{@skill Religion}"
+										],
+										[
+											"Ooze",
+											"{@skill Occultism}"
+										],
+										[
+											"Plant",
+											"{@skill Nature}"
+										],
+										[
+											"Spirit",
+											"{@skill Occultism}"
+										],
+										[
+											"Undead",
+											"{@skill Religion}"
+										]
+									]
 								}
 							]
 						}
@@ -4583,7 +4799,9 @@
 					"Magus|SoM"
 				]
 			},
-			"frequency": "until recharged (see below)",
+			"frequency": {
+				"special": "until recharged (see below)"
+			},
 			"entries": [
 				"You channel a spell into a punch or sword thrust to deliver a combined attack. You {@action Cast a Spell} that takes 1 or 2 actions to cast and requires a spell attack roll. The effects of the spell don't occur immediately but are imbued into your attack instead. Make a melee Strike with a weapon or unarmed attack. Your spell is coupled with your attack, using your attack roll result to determine the effects of both the Strike and the spell. This counts as two attacks for your multiple attack penalty, but you don't apply the penalty until after you've completed the Spellstrike. The infusion of spell energy grants your {@action Strike} the {@trait arcane} trait, making it {@trait magical}.",
 				"After you use Spellstrike, you can't do so again until you recharge your Spellstrike as a single action, which has the {@trait concentrate} trait. You also recharge your Spellstrike when you cast a {@filter conflux spell|spells||Classes=Magus} that takes at least 1 action to cast; casting a focus spell of another type doesn't recharge your Spellstrike."
@@ -5003,7 +5221,10 @@
 				"ancestry": "Kobold|APG",
 				"heritage": "Venomtail|APG"
 			},
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"requirements": "You are wielding a piercing or slashing weapon.",
 			"entries": [
 				"You apply your tail's venom to a piercing or slashing weapon. If your next {@action Strike} with that weapon before the end of your next turn hits and deals damage, you deal {@condition persistent damage|CRB|persistent poison damage} equal to your level to the target."
@@ -5172,7 +5393,10 @@
 				"ancestry": "Grippli|LOME",
 				"heritage": "Poisonhide|LOME"
 			},
-			"frequency": "once per hour",
+			"frequency": {
+				"unit": "hour",
+				"freq": 1
+			},
 			"trigger": "A creature touches you, such as by Grappling you, successfully hitting you with an unarmed attack, or using a touch-range spell against you.",
 			"entries": [
 				"You exude a deadly toxin. The triggering creature takes {@damage 1d4} poison damage (basic Fortitude save using your class DC or spell DC, whichever is higher). At 3rd level and every 2 levels thereafter, the damage increases by {@damage 1d4}."
@@ -5445,8 +5669,8 @@
 			"source": "G&G",
 			"page": 108,
 			"activity": {
-				"number": 1,
-				"unit": "reaction"
+				"number": 2,
+				"unit": "action"
 			},
 			"traits": [
 				"Gunslinger"
@@ -5461,27 +5685,6 @@
 			},
 			"entries": [
 				"Your careful shot against an unsuspecting opponent pierces a vital artery or organ. Make a ranged {@action Strike}. If the target is {@condition flat-footed}, the {@action Strike} deals an extra die of weapon damage, and the foe takes {@condition persistent damage||persistent bleed damage} equal to the amount of precision damage from your {@action One Shot, One Kill|G&G}."
-			]
-		},
-		{
-			"name": "Accidental Shot",
-			"source": "G&G",
-			"page": 142,
-			"activity": {
-				"number": 2,
-				"unit": "action"
-			},
-			"traits": [
-				"Fortune"
-			],
-			"frequency": "once per day",
-			"actionType": {
-				"archetype": [
-					"Unexpected Sharpshooter|G&G"
-				]
-			},
-			"entries": [
-				"You make a {@action Strike} with a ranged weapon, rolling the attack and damage twice and using the better results for each. The attack ignores circumstance penalties to the attack roll and any flat check required due to the target being {@condition concealed} or {@condition hidden}."
 			]
 		}
 	]

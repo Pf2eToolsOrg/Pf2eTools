@@ -3074,7 +3074,10 @@
 						"transmutation"
 					],
 					"trigger": "The charau-ka's turn begins.",
-					"frequency": "Once per hour",
+					"frequency": {
+						"unit": "hour",
+						"freq": 1
+					},
 					"entries": [
 						"The charau-ka is {@condition quickened} until the end of its turn, and can use the extra action to {@action Stride} or {@action Strike}. Due to its loud wailing while in a shrieking frenzy, the charau-ka can't speak and automatically critically fails all {@skill Stealth} checks."
 					],
@@ -3670,7 +3673,7 @@
 						"unarmed"
 					],
 					"effects": [],
-					"damage": "{@dice 1d4}\u20131 bludgeoning",
+					"damage": "{@dice 1d4-1} bludgeoning",
 					"types": [
 						"bludgeoning"
 					]
@@ -3681,7 +3684,7 @@
 					"attack": 0,
 					"traits": null,
 					"effects": [],
-					"damage": "{@dice 1d6}\u20131 bludgeoning",
+					"damage": "{@dice 1d6-1} bludgeoning",
 					"types": [
 						"bludgeoning"
 					]
@@ -3694,7 +3697,7 @@
 						"thrown 10 feet"
 					],
 					"effects": [],
-					"damage": "{@dice 1d6}\u20131 bludgeoning",
+					"damage": "{@dice 1d6-1} bludgeoning",
 					"types": [
 						"bludgeoning"
 					]

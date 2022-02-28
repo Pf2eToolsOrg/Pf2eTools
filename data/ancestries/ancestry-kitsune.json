@@ -259,7 +259,10 @@
 							"type": "ability",
 							"style": "full",
 							"name": "Invigorating Fear",
-							"frequency": "once per hour",
+							"frequency": {
+								"unit": "hour",
+								"freq": 1
+							},
 							"trigger": "A creature within 60 feet gains the {@condition frightened} condition."
 						}
 					]

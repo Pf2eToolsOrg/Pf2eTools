@@ -180,8 +180,7 @@
 			"source": "LOGM",
 			"page": 105,
 			"level": 2,
-			"featType": {
-			},
+			"featType": {},
 			"traits": [
 				"General",
 				"Skill"
@@ -201,7 +200,10 @@
 				"General"
 			],
 			"prerequisites": "{@feat Diehard}, you have died at least once",
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"entries": [
 				"Your past has left you numb to death's call. The first time each day that you regain Hit Points while you are {@condition dying}, you regain additional Hit Points equal to your level, and you neither gain the {@condition wounded} condition nor increase the value of this condition."
 			]
@@ -226,7 +228,10 @@
 				"Skill"
 			],
 			"prerequisites": "master in {@skill Religion}, you follow a deity",
-			"frequency": "once per hour",
+			"frequency": {
+				"unit": "hour",
+				"freq": 1
+			},
 			"entries": [
 				"You call upon your deity to grant you their protective blessing. Attempt a DC 30 {@skill Religion} check. If you have legendary proficiency in {@skill Religion}, you can instead attempt a DC 40 {@skill Religion} check to increase the temporary Hit Points you gain on a successful check to 15 (25 on a critical success).",
 				{

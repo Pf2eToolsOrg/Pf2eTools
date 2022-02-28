@@ -654,7 +654,10 @@
 						"concentrate",
 						"necromancy"
 					],
-					"frequency": "Once per day",
+					"frequency": {
+						"unit": "day",
+						"freq": 1
+					},
 					"entries": [
 						"The dragon permanently befouls 10 cubic feet of liquid within 90 feet. The liquid becomes undrinkable and unable to support water-breathing life. This destroys liquid magic or alchemical items if they're of a lower level than the dragon (a creature can attempt a DC 28 Will save to protect liquids in its possession). This doesn't affect the liquids in a creature's body."
 					],
@@ -1218,7 +1221,10 @@
 						"concentrate",
 						"evocation"
 					],
-					"frequency": "three times per day.",
+					"frequency": {
+						"unit": "day",
+						"freq": 3
+					},
 					"entries": [
 						"The dragon calls upon the desert wind. This has the same effect as gust of wind (DC 30 Fortitude) but in a 60-foot cone. A creature that fails its save is also {@condition blinded} until the end of its next turn (or for 1 minute on a critical failure)."
 					],
@@ -4091,7 +4097,10 @@
 						"The dragon permanently befouls 10 cubic feet of liquid within 90 feet. The liquid becomes undrinkable and unable to support water-breathing life. This destroys liquid magic or alchemical items if they're of a lower level than the dragon (a creature can attempt a DC 35 Will save to protect liquids in its possession). This doesn't affect the liquids in a creature's body."
 					],
 					"name": "Corrupt Water",
-					"frequency": "Once per day"
+					"frequency": {
+						"unit": "day",
+						"freq": 1
+					}
 				},
 				{
 					"activity": {
@@ -4446,7 +4455,10 @@
 						"evocation"
 					],
 					"requirements": "A storm cloud created by Breath Weapon is within 500 feet, and the dragon can see the cloud.",
-					"frequency": "Once per round",
+					"frequency": {
+						"unit": "round",
+						"freq": 1
+					},
 					"entries": [
 						"The dragon calls down a lightning bolt from a storm cloud created by its Breath Weapon. This creates a vertical line of lightning to the ground that deals {@damage 6d12} electricity damage to all enemies in its path (DC 40 basic Reflex save)."
 					],
@@ -4687,7 +4699,10 @@
 						"The dragon calls upon the desert wind. This has the same effect as gust of wind (DC 37 Fortitude) but in a 60-foot cone. A creature that fails its save is also {@condition blinded} until the end of its next turn (or for 1 minute on a critical failure)."
 					],
 					"name": "Desert Wind",
-					"frequency": "three times per day."
+					"frequency": {
+						"unit": "day",
+						"freq": 3
+					}
 				},
 				{
 					"activity": {
@@ -5328,7 +5343,10 @@
 						"enchantment",
 						"mental"
 					],
-					"frequency": "once per day.",
+					"frequency": {
+						"unit": "day",
+						"freq": 1
+					},
 					"entries": [
 						"The copper dragon tells a fantastic joke. Each creature in a 100-foot emanation must succeed at a DC 39 Will save or suffer the effects of a 9th-level {@spell hideous laughter} spell for 1 minute."
 					],
@@ -7459,7 +7477,10 @@
 					"traits": [
 						"acid"
 					],
-					"frequency": "once per hour",
+					"frequency": {
+						"unit": "hour",
+						"freq": 1
+					},
 					"entries": [
 						"The ankhrav spews acid in a 30-foot cone, dealing {@damage 3d6} acid damage and {@damage 1d6} {@condition persistent damage ||persistent acid damage} (DC 20 basic Reflex save)."
 					],
@@ -9402,7 +9423,10 @@
 					],
 					"name": "Shake It Off",
 					"trigger": "The purple worm would be affected by a condition or adverse effect (such as baleful polymorph).",
-					"frequency": "once per day"
+					"frequency": {
+						"unit": "day",
+						"freq": 1
+					}
 				}
 			],
 			"speed": {
@@ -9775,7 +9799,10 @@
 						"divine",
 						"evocation"
 					],
-					"frequency": "once per day",
+					"frequency": {
+						"unit": "day",
+						"freq": 1
+					},
 					"entries": [
 						"The balisse marks an evil creature within its confessor's aura as irredeemable. It can only do so after a failed attempt to convince the creature to repent. The touched creature takes a \u20131 status penalty to AC and saves, reduces its resistances by 2, and gains weakness 2 to good damage. The duration depends on the target's DC 26 Will save.",
 						{
@@ -10255,7 +10282,10 @@
 						"entry": "{@as F}"
 					},
 					"trigger": "The balor hits a creature, object, or spell effect with a weapon {@action Strike}.",
-					"frequency": "once per round.",
+					"frequency": {
+						"unit": "round",
+						"freq": 1
+					},
 					"entries": [
 						"The balor casts an innate dispel magic on the target of the triggering {@action Strike}."
 					],
@@ -10993,7 +11023,10 @@
 						"number": 1,
 						"unit": "action"
 					},
-					"frequency": "once per round.",
+					"frequency": {
+						"unit": "round",
+						"freq": 1
+					},
 					"entries": [
 						"The barbazu makes a beard {@action Strike}. This {@action Strike} ignores their multiple attack penalty and doesn't count toward that penalty."
 					],
@@ -14602,7 +14635,7 @@
 						"magical"
 					],
 					"effects": [],
-					"damage": "{@dice 1d6}\u20131 bludgeoning plus {@damage 1d4} good",
+					"damage": "{@dice 1d6-1} bludgeoning plus {@damage 1d4} good",
 					"types": [
 						"bludgeoning",
 						"good"
@@ -16890,7 +16923,10 @@
 						"transmutation"
 					],
 					"trigger": "The clay golem's turn begins.",
-					"frequency": "Once per day.",
+					"frequency": {
+						"unit": "day",
+						"freq": 1
+					},
 					"entries": [
 						"It can't trigger this free action on the first turn of combat. The clay golem becomes {@condition quickened} for 1 minute."
 					],
@@ -17865,7 +17901,10 @@
 					],
 					"name": "Shake It Off",
 					"trigger": "The purple worm would be affected by a condition or adverse effect (such as baleful polymorph).",
-					"frequency": "once per day"
+					"frequency": {
+						"unit": "day",
+						"freq": 1
+					}
 				}
 			],
 			"speed": {
@@ -18284,7 +18323,10 @@
 						"fortune"
 					],
 					"trigger": "The cyclops is about to roll a d20.",
-					"frequency": "once per day",
+					"frequency": {
+						"unit": "day",
+						"freq": 1
+					},
 					"entries": [
 						"The cyclops peers into an occluded spectrum of possible futures. It gets a success (but not a critical success) on the roll instead of rolling."
 					],
@@ -20136,7 +20178,7 @@
 						"magical"
 					],
 					"effects": [],
-					"damage": "{@dice 1d4}\u20133 piercing plus {@damage 6d6} negative",
+					"damage": "{@dice 1d4-3} piercing plus {@damage 6d6} negative",
 					"types": [
 						"negative",
 						"piercing"
@@ -20251,7 +20293,9 @@
 					"traits": [
 						"command"
 					],
-					"frequency": "once per day per gem",
+					"frequency": {
+						"special": "once per day per gem"
+					},
 					"entries": [
 						"Ten blight quartz gemstones on the demilich's skull can trap the souls of the living. The Activated gem casts bind soul. This bind soul can target and affect a {@condition dying} creature instead of a corpse. The {@condition dying} creature can attempt a DC 38 Fortitude save; if it succeeds, it doesn't die and its soul is not trapped but it's enervated 2 (or is unaffected entirely on a critical success). When the soul of a creature gets trapped, the creature's body swiftly turns to dust. The gemstones work like the black sapphires used in bind soul, except that they can hold creatures of up to 17th level and have a value of 200 gp apiece. The demilich can Devour a Soul it has trapped."
 					],
@@ -20530,7 +20574,10 @@
 						"mental",
 						"visual"
 					],
-					"frequency": "once per round",
+					"frequency": {
+						"unit": "round",
+						"freq": 1
+					},
 					"entries": [
 						"The magister focuses their gaze on a creature they can see within 30 feet. The target is {@condition dazzled} for 1 round and must succeed at a DC 24 Will saving throw or be {@condition confused} for 1 round."
 					],
@@ -21922,7 +21969,10 @@
 						"arcane",
 						"evocation"
 					],
-					"frequency": "Once per round.",
+					"frequency": {
+						"unit": "round",
+						"freq": 1
+					},
 					"entries": [
 						"The djinni all creatures in its whirlwind pushes back 20 feet, or forces all creatures in the aura to move 20 feet clockwise or counterclockwise. Each creature must attempt a DC 21 Fortitude save. On a success, it avoids being moved, and on a critical failure it falls {@condition prone} in addition to being moved. Creatures with the {@trait air} trait are immune."
 					],
@@ -25171,7 +25221,10 @@
 						"number": 1,
 						"unit": "action"
 					},
-					"frequency": "Once per round",
+					"frequency": {
+						"unit": "round",
+						"freq": 1
+					},
 					"entries": [
 						"The duskwalker makes two longbow Strikes against its hunted prey. If both Strikes hit, combine their damage for the purpose of resistances and weaknesses."
 					],
@@ -25669,7 +25722,10 @@
 						"polymorph",
 						"transmutation"
 					],
-					"frequency": "Once per day.",
+					"frequency": {
+						"unit": "day",
+						"freq": 1
+					},
 					"entries": [
 						"The efreeti changes a creature's size. This works as a 4th-level {@spell enlarge} or {@spell shrink} spell but can target an unwilling creature (DC 29 Fortitude save negates)."
 					],
@@ -25803,7 +25859,10 @@
 						"transmutation"
 					],
 					"trigger": "The elananx takes damage from a {@condition hostile} source.",
-					"frequency": "once per day.",
+					"frequency": {
+						"unit": "day",
+						"freq": 1
+					},
 					"entries": [
 						"The elananx disperses into a cloud of smoke and cinders, filling its space and a 20-foot emanation. While in this form, the elananx can't be attacked or targeted, and it doesn't take up space. Anything inside this cloud is {@condition concealed}, and any creature ending its turn there takes {@damage 2d6} fire damage. At the start of its turn, the elananx returns to its normal form in any square the cloud covered. If the elananx Strikes a creature using its first action after returning to its normal form, the target is {@condition flat-footed} and the {@action Strike} deals an extra {@damage 1d6} fire damage."
 					],
@@ -27326,7 +27385,10 @@
 						"number": 2,
 						"unit": "action"
 					},
-					"frequency": "once per day",
+					"frequency": {
+						"unit": "day",
+						"freq": 1
+					},
 					"entries": [
 						"The ether spider flings a gout of stored webs in a 30-foot cone. These webs can pass between the Material Plane and the Ethereal Plane. Each creature in the area is {@condition immobilized}, as ethereal web trap, unless it succeeds at a DC 22 Reflex save."
 					],
@@ -32079,7 +32141,7 @@
 					"effects": [
 						"giant centipede venom"
 					],
-					"damage": "{@dice 1d4}\u20131 piercing plus giant centipede venom",
+					"damage": "{@dice 1d4-1} piercing plus giant centipede venom",
 					"types": [
 						"piercing"
 					]
@@ -37097,7 +37159,9 @@
 						"occult"
 					],
 					"trigger": "The great cyclops succeeds at an attack roll.",
-					"frequency": "once per day, and recharges when the great cyclops uses Ferocity",
+					"frequency": {
+						"special": "once per day, and recharges when the great cyclops uses Ferocity"
+					},
 					"entries": [
 						"The attack becomes a critical success."
 					],
@@ -42557,7 +42621,7 @@
 					"effects": [
 						"imp venom"
 					],
-					"damage": "{@dice 1d4}\u20131 piercing plus {@damage 1d4} evil and imp venom",
+					"damage": "{@dice 1d4-1} piercing plus {@damage 1d4} evil and imp venom",
 					"types": [
 						"evil",
 						"piercing"
@@ -42630,8 +42694,8 @@
 						{
 							"type": "list",
 							"items": [
-								"{@bold Boar size} Medium; {@ability scent} (imprecise) 30 feet; Speed 40 feet; Melee tusk +9 (finesse), Damage {@dice 1d10}\u20131 piercing",
-								"{@bold Giant Spider size} Medium; Speed 25 feet, climb 25 feet; Melee fangs +9 (finesse, poison), Damage {@dice 1d6}\u20131 piercing plus {@damage 1d4} poison",
+								"{@bold Boar size} Medium; {@ability scent} (imprecise) 30 feet; Speed 40 feet; Melee tusk +9 (finesse), Damage {@dice 1d10-1} piercing",
+								"{@bold Giant Spider size} Medium; Speed 25 feet, climb 25 feet; Melee fangs +9 (finesse, poison), Damage {@dice 1d6-1} piercing plus {@damage 1d4} poison",
 								"Rat {@ability scent}; Speed 20 feet; Melee jaws +9 (agile, finesse), Damage 1 piercing",
 								"Raven {@ability scent}; Speed 10 feet, fly 40 feet; Melee beak +9 (finesse), Damage 1 piercing"
 							]
@@ -42651,7 +42715,10 @@
 						"healing",
 						"necromancy"
 					],
-					"frequency": "once per round.",
+					"frequency": {
+						"unit": "round",
+						"freq": 1
+					},
 					"entries": [
 						"The imp regains {@dice 1d6} Hit Points."
 					],
@@ -42698,7 +42765,10 @@
 						"evil",
 						"fortune"
 					],
-					"frequency": "once per day.",
+					"frequency": {
+						"unit": "day",
+						"freq": 1
+					},
 					"entries": [
 						"The imp offers a non-fiend within 15 feet a bargain, granting a boon of good luck if the creature accepts. The boon lasts for 1 hour once accepted. If the creature dies while the boon is in place, its soul travels to Hell, where it is bound for eternity and unable to be raised or resurrected except by wish or similar magic. Once during the hour, the creature can roll an attack roll or saving throw twice and use the higher result."
 					],
@@ -43275,7 +43345,10 @@
 						"polymorph",
 						"transmutation"
 					],
-					"frequency": "Once per day.",
+					"frequency": {
+						"unit": "day",
+						"freq": 1
+					},
 					"entries": [
 						"The janni changes a creature's size. This works as a 4th-level {@spell enlarge} or {@spell shrink} spell but can target an unwilling creature (DC 21 Fortitude save negates)."
 					],
@@ -44179,7 +44252,7 @@
 						"finesse"
 					],
 					"effects": [],
-					"damage": "{@dice 1d6}\u20131 slashing",
+					"damage": "{@dice 1d6-1} slashing",
 					"types": [
 						"slashing"
 					]
@@ -44192,7 +44265,7 @@
 						"two-hand d8"
 					],
 					"effects": [],
-					"damage": "{@dice 1d4}\u20131 bludgeoning",
+					"damage": "{@dice 1d4-1} bludgeoning",
 					"types": [
 						"bludgeoning"
 					]
@@ -44255,7 +44328,10 @@
 						"move"
 					],
 					"requirements": "The kobold dragon mage is adjacent to at least one enemy.",
-					"frequency": "once per hour",
+					"frequency": {
+						"unit": "hour",
+						"freq": 1
+					},
 					"entries": [
 						"The dragon mage creates an illusion of itself in its square and then becomes {@condition invisible} (with the effects of a 2nd-level {@spell invisibility} spell) for {@dice 1d4} rounds. The dragon mage can move up to half its Speed, but it must end its movement in a space that's not adjacent to any enemies. This is a 1st-level spell that requires a somatic component."
 					],
@@ -46159,7 +46235,7 @@
 						"reach 10 feet"
 					],
 					"effects": [],
-					"damage": "{@dice 1d8}\u20131 piercing",
+					"damage": "{@dice 1d8-1} piercing",
 					"types": [
 						"piercing"
 					]
@@ -51617,8 +51693,8 @@
 				"Cha": -1
 			},
 			"items": [
-				"dart (10)",
-				"shortsword"
+				"{@item dart} (10)",
+				"{@item shortsword}"
 			],
 			"abilitiesTop": [
 				{
@@ -51633,8 +51709,7 @@
 				},
 				{
 					"entries": [
-						"Mitflits can use {@skill Diplomacy} to {@action Make an Impression} on and {@action Request} things of arthropods (insects, spiders, scorpions, crabs, and similar invertebrate animals). Most arthropods have a starting attitude of {@condition indifferent} to mitflits.",
-						"Items dart (10), shortsword."
+						"Mitflits can use {@skill Diplomacy} to {@action Make an Impression} on and {@action Request} things of arthropods (insects, spiders, scorpions, crabs, and similar invertebrate animals). Most arthropods have a starting attitude of {@condition indifferent} to mitflits."
 					],
 					"name": "Vermin Empathy"
 				}
@@ -51680,7 +51755,7 @@
 						"versatile S"
 					],
 					"effects": [],
-					"damage": "{@dice 1d6}\u20131 piercing",
+					"damage": "{@dice 1d6-1} piercing",
 					"types": [
 						"piercing"
 					]
@@ -51695,7 +51770,7 @@
 						"thrown"
 					],
 					"effects": [],
-					"damage": "{@dice 1d4}\u20131 piercing",
+					"damage": "{@dice 1d4-1} piercing",
 					"types": [
 						"piercing"
 					]
@@ -54993,7 +55068,7 @@
 					"effects": [
 						"spirit touch"
 					],
-					"damage": "{@dice 1d4}\u20131 piercing plus spirit touch",
+					"damage": "{@dice 1d4-1} piercing plus spirit touch",
 					"types": [
 						"piercing"
 					]
@@ -57872,7 +57947,10 @@
 					"traits": [
 						"concentrate"
 					],
-					"frequency": "once per round.",
+					"frequency": {
+						"unit": "round",
+						"freq": 1
+					},
 					"entries": [
 						"If the pit fiendʼs next action is to cast an 8th-level or lower innate spell, reduce the number of actions to cast it by 1 (minimum 1 action)."
 					],
@@ -59278,7 +59356,7 @@
 						"versatile S"
 					],
 					"effects": [],
-					"damage": "{@dice 1d6}\u20133 slashing",
+					"damage": "{@dice 1d6-3} slashing",
 					"types": [
 						"slashing"
 					]
@@ -59414,7 +59492,10 @@
 						"entry": "{@as R}"
 					},
 					"trigger": "The purple worm would be affected by a condition or adverse effect (such as baleful polymorph).",
-					"frequency": "once per day",
+					"frequency": {
+						"unit": "day",
+						"freq": 1
+					},
 					"entries": [
 						"The purple worm negates the triggering condition or effect. s from artifacts, deities, or a similarly powerful source can't be avoided in this way."
 					],
@@ -59719,7 +59800,7 @@
 					"effects": [
 						"quasit venom"
 					],
-					"damage": "{@dice 1d6}\u20131 slashing plus {@damage 1d4} evil and quasit venom",
+					"damage": "{@dice 1d6-1} slashing plus {@damage 1d4} evil and quasit venom",
 					"types": [
 						"evil",
 						"slashing"
@@ -59787,7 +59868,10 @@
 						"healing",
 						"necromancy"
 					],
-					"frequency": "once per round",
+					"frequency": {
+						"unit": "round",
+						"freq": 1
+					},
 					"entries": [
 						"The quasit restores {@dice 1d6} HP to itself."
 					],
@@ -59808,10 +59892,10 @@
 						{
 							"type": "list",
 							"items": [
-								"Bat echolocation 40 feet; Speed 15 feet, fly Speed 30 feet; Melee fangs +7, Damage {@dice 1d4}\u20131 piercing; Melee wing +7 (agile), Damage {@dice 1d4}\u20131 bludgeoning",
+								"Bat echolocation 40 feet; Speed 15 feet, fly Speed 30 feet; Melee fangs +7, Damage {@dice 1d4-1} piercing; Melee wing +7 (agile), Damage {@dice 1d4-1} bludgeoning",
 								"{@bold Centipede} Speed 10 feet, climb 10 feet; Melee mandibles +7 (poison), Damage 1 piercing plus {@damage 1d4} poison",
 								"{@bold Toad scent} (imprecise) 30 feet; Speed 5 feet; Melee jaws +7, Damage 1 bludgeoning",
-								"{@bold Wolf size} Medium; {@ability scent} (imprecise) 30 feet; Speed 40 feet, climb 10 feet; Melee jaws +7, Damage {@dice 1d10}\u20131 piercing plus Knockdown"
+								"{@bold Wolf size} Medium; {@ability scent} (imprecise) 30 feet; Speed 40 feet, climb 10 feet; Melee jaws +7, Damage {@dice 1d10-1} piercing plus Knockdown"
 							]
 						}
 					],
@@ -60219,7 +60303,10 @@
 						"incapacitation",
 						"mental"
 					],
-					"frequency": "once per round",
+					"frequency": {
+						"unit": "round",
+						"freq": 1
+					},
 					"entries": [
 						"The quelaunt feeds on the emotional unrest of a single creature within 30 feet that's under a harmful {@trait emotion} effect. The target must succeed at a DC 37 Will save or take {@damage 4d10} mental damage and be {@condition stunned} for 1 round. If the target fails its saving throw, the quelaunt regains the same number of Hit Points and Feed on Emotion does not cost the quelaunt an action, allowing it to use another action this turn."
 					],
@@ -61034,7 +61121,10 @@
 						"unit": "free",
 						"entry": "{@as F}"
 					},
-					"frequency": "once per round.",
+					"frequency": {
+						"unit": "round",
+						"freq": 1
+					},
 					"entries": [
 						"The ratfolk grenadier stores one held item of light or negligible Bulk in its cheek pouches."
 					],
@@ -64690,7 +64780,10 @@
 						"number": 1,
 						"unit": "action"
 					},
-					"frequency": "once per minute",
+					"frequency": {
+						"unit": "minute",
+						"freq": 1
+					},
 					"entries": [
 						"The sewer ooze unleashes a wave of filth, covering all creatures within a 20-foot emanation. Each creature in the area must succeed at a DC 17 Reflex save or take {@damage 1d4} acid damage and take a \u201310-foot penalty to its Speeds for 1 minute (on a critical failure, the creature also falls {@condition prone}). A creature can spend an {@action Interact} action to clean someone off, decreasing the Speed penalty by 5 feet with each action."
 					],
@@ -67979,8 +68072,7 @@
 				},
 				{
 					"entries": [
-						"A creature struck by a slurk's slime squirt becomes {@condition clumsy 1} and takes a \u20135-foot penalty to Speed for 1 hour or until the slime is removed. The slime can be removed with a total of three {@action Interact} actions by the entangled creature or creatures adjacent to the creature. These actions don't need to be consecutive or made by the same creature.",
-						"A snake's hide can be cleanly removed with a successful {@skill Crafting} check or appropriate {@skill Lore} check."
+						"A creature struck by a slurk's slime squirt becomes {@condition clumsy 1} and takes a \u20135-foot penalty to Speed for 1 hour or until the slime is removed. The slime can be removed with a total of three {@action Interact} actions by the entangled creature or creatures adjacent to the creature. These actions don't need to be consecutive or made by the same creature."
 					],
 					"name": "Entangling Slime"
 				}
@@ -69019,7 +69111,7 @@
 						"magical"
 					],
 					"effects": [],
-					"damage": "{@dice 1d6}\u20133 piercing plus 1 fire",
+					"damage": "{@dice 1d6-3} piercing plus 1 fire",
 					"types": [
 						"fire",
 						"piercing"
@@ -70425,7 +70517,10 @@
 						"enchantment",
 						"mental"
 					],
-					"frequency": "Once per round.",
+					"frequency": {
+						"unit": "round",
+						"freq": 1
+					},
 					"entries": [
 						"The succubus engages a creature they have {@condition grabbed} in an embrace or other act of passion to drain its vital essence. The kiss makes the creature {@condition drained 1} or increases its {@condition drained} condition by 1, to a maximum of 4. The creature takes {@damage 3d6} negative damage and the succubus regains Hit Points equal to the damage dealt. The target must succeed at a DC 26 Will save or be affected by a suggestion to submit to more actions of passion rather than trying to {@action Escape}."
 					],
@@ -70441,7 +70536,10 @@
 						"enchantment",
 						"mental"
 					],
-					"frequency": "once per day.",
+					"frequency": {
+						"unit": "day",
+						"freq": 1
+					},
 					"entries": [
 						"The succubus on can give a willing humanoid a profane gift. That creature gains a +1 status bonus to attack rolls, skill checks, and saving throws. As long as the gift persists, the succubus can communicate telepathically with the target at any distance, see through the creature's senses, and target the creature with suggestion through the telepathic link. In addition, the creature uses an outcome one degree of success worse than it rolls on saving throws against the lust demon's suggestions. A humanoid can't have more than one profane gift at a time, and a succubus can't grant more than one profane gift at a time. Removing the gift requires an atone ritual. The succubus can remove the gift as a free action to give the recipient a permanent {@condition stupefied 3} condition. A 4th-level {@spell restoration} spell is required to reduce this {@condition stupefied} condition by 1. A summoned succubus can't grant a profane gift."
 					],
@@ -71132,7 +71230,10 @@
 						"primal"
 					],
 					"requirements": "The terotricus is in a swamp or forested area.",
-					"frequency": "once per day.",
+					"frequency": {
+						"unit": "day",
+						"freq": 1
+					},
 					"entries": [
 						"The terotricus drains nutrients from nearby trees and undergrowth while simultaneously infesting them with fungal growth. All non-magical plant life (though not plant creatures) within a 60-foot emanation withers and sprouts foul mold and slimy mushrooms, removing any cover and concealment provided by trees and undergrowth. The terotricus is healed 200 Hit Points."
 					],
@@ -71579,7 +71680,10 @@
 						"entry": "{@as F}"
 					},
 					"requirements": "The adept hasn't acted yet on this turn.",
-					"frequency": "Once per day",
+					"frequency": {
+						"unit": "day",
+						"freq": 1
+					},
 					"entries": [
 						"The adept expends the power stored in its staff. This gives the adept the ability to cast one prepared spell it had already previously cast today (choosing a different spell level each time), without spending a spell slot. The adept must still {@action Cast a Spell||Cast the Spell} and meet the spell's other requirements."
 					],
@@ -72393,7 +72497,10 @@
 						"primal"
 					],
 					"trigger": "Treerazer hits a creature, object, or spell effect with a weapon {@action Strike} or a defoliation attack.",
-					"frequency": "once per round",
+					"frequency": {
+						"unit": "round",
+						"freq": 1
+					},
 					"entries": [
 						"Treerazer casts his innate dispel magic, targeting the creature he hit with his {@action Strike} or one spell affecting that creature."
 					],
@@ -74235,7 +74342,10 @@
 						"wizard"
 					],
 					"requirements": "The vampire hasn't acted yet on this turn.",
-					"frequency": "Once per day.",
+					"frequency": {
+						"unit": "day",
+						"freq": 1
+					},
 					"entries": [
 						"The vampire expends the power stored in its signet ring. This gives the vampire the ability to cast one prepared spell it had already previously cast today, without spending a spell slot. The vampire must still {@action Cast a Spell||Cast the Spell} and meet the spell's other requirements."
 					],
@@ -75073,7 +75183,7 @@
 					"effects": [
 						"viper venom"
 					],
-					"damage": "{@dice 1d8}\u20133 piercing plus viper venom",
+					"damage": "{@dice 1d8-3} piercing plus viper venom",
 					"types": [
 						"piercing"
 					]
@@ -75251,7 +75361,7 @@
 						"magical"
 					],
 					"effects": [],
-					"damage": "{@dice 1d8}\u20131 piercing plus {@damage 1d4} chaotic",
+					"damage": "{@dice 1d8-1} piercing plus {@damage 1d4} chaotic",
 					"types": [
 						"chaotic",
 						"piercing"
@@ -75269,7 +75379,7 @@
 					"effects": [
 						"confounding lash"
 					],
-					"damage": "{@dice 1d4}\u20131 slashing plus {@damage 1d4} chaotic and confounding lash",
+					"damage": "{@dice 1d4-1} slashing plus {@damage 1d4} chaotic and confounding lash",
 					"types": [
 						"chaotic",
 						"slashing"
@@ -75650,7 +75760,10 @@
 						"incapacitation",
 						"sonic"
 					],
-					"frequency": "once per minute.",
+					"frequency": {
+						"unit": "minute",
+						"freq": 1
+					},
 					"entries": [
 						"The vrock emits a shrill screech. Each non-demon creature within a 30-foot burst must attempt a DC 28 Fortitude save. On a failure, the creature is {@condition stunned 2}, and on a critical failure, it's {@condition stunned 3}."
 					],
@@ -77175,7 +77288,10 @@
 						"mental",
 						"primal"
 					],
-					"frequency": "Three times per day",
+					"frequency": {
+						"unit": "day",
+						"freq": 3
+					},
 					"entries": [
 						"The wendigo unleashes a forlorn howl that can be heard up to 1 mile away. Any creature that hears the howl must succeed at a DC 38 Will save or be {@condition frightened 1}. Any creature that critically fails and is within 120 feet of the wendigo is instead {@condition frightened 3}, and is also {@condition fleeing} for {@dice 1d4} rounds (or until it's no longer {@condition frightened}, whichever comes first). A creature {@condition frightened} by a wendigo's howl still naturally recovers from its fright but can't reduce it below {@condition frightened 1} in this way until 1 hour has passed or magic is used. Whether it succeeds or fails its save, a creature is then temporarily immune to that wendigo's Howl for 24 hours."
 					],

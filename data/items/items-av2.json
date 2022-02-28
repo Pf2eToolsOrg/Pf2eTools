@@ -40,14 +40,6 @@
 				"Magical"
 			],
 			"category": "Contract",
-			"contract": {
-				"devil": "{@creature imp}",
-				"decipher": [
-					"Arcana",
-					"Occultism",
-					"Society"
-				]
-			},
 			"entries": [
 				"You've bargained with an imp, one of the least powerful devils, for a fragment of infernal luck.",
 				"{@b Benefit} Once per day, you can roll a saving throw twice and use the higher result.",
@@ -56,6 +48,14 @@
 				"{@b Termination Clause} If you critically fail a saving throw against a {@trait death} effect and do not die, the contract becomes unenforceable on its terms and is voided."
 			],
 			"generic": false,
+			"contract": {
+				"devil": "{@creature imp}",
+				"decipher": [
+					"Arcana",
+					"Occultism",
+					"Society"
+				]
+			},
 			"consumable": false
 		},
 		{
@@ -90,7 +90,10 @@
 					"components": [
 						"command"
 					],
-					"frequency": "once per day",
+					"frequency": {
+						"unit": "day",
+						"freq": 1
+					},
 					"trigger": null,
 					"requirements": null,
 					"entries": [
@@ -250,13 +253,6 @@
 				"Invested",
 				"Magical"
 			],
-			"contract": {
-				"devil": "{@creature gelugon}",
-				"decipher": [
-					"Nature",
-					"Lore||Games Lore"
-				]
-			},
 			"category": "Contract",
 			"entries": [
 				"Your flesh looks no different, but is cold to the touch.",
@@ -266,6 +262,13 @@
 				"{@b Termination Clause} The contract provides you the benefits of \"the eternal ice of Cocytus.\" If you travel to Cocytus, Hell's seventh layer, and stand within an area at least 100 feet across that contains no ice and has a temperature above freezing, the contract is void. Such locations are exceptionally rare in Cocytus, and the efforts to create such an area are likely to attract unpleasant attention."
 			],
 			"generic": false,
+			"contract": {
+				"devil": "{@creature gelugon}",
+				"decipher": [
+					"Nature",
+					"Lore||Games Lore"
+				]
+			},
 			"consumable": false
 		},
 		{
@@ -281,13 +284,6 @@
 				"Magical",
 				"Necromancy"
 			],
-			"contract": {
-				"devil": "{@creature barbazu}",
-				"decipher": [
-					"Society",
-					"Lore||Warfare Lore"
-				]
-			},
 			"category": "Contract",
 			"entries": [
 				"You negotiate for might and viciousness.",
@@ -297,6 +293,13 @@
 				"{@b Termination Clause} The contract guarantees that you will not \"be slain by the barbazu or by barbazu action.\" This wording is vague; if any barbazu kills you, or if you die from {@condition persistent damage ||persistent bleed damage} from any source, the contract is voided."
 			],
 			"generic": false,
+			"contract": {
+				"devil": "{@creature barbazu}",
+				"decipher": [
+					"Society",
+					"Lore||Warfare Lore"
+				]
+			},
 			"consumable": false
 		},
 		{
@@ -312,13 +315,6 @@
 				"Invested",
 				"Magical"
 			],
-			"contract": {
-				"devil": "{@creature erinys}",
-				"decipher": [
-					"Nature",
-					"Religion"
-				]
-			},
 			"category": "Contract",
 			"entries": [
 				"Profane powers of vengeance are yours to inflict.",
@@ -328,6 +324,13 @@
 				"{@b Termination Clause} The contract demands that you enact bloody vengeance against anyone who has ever wronged you, but the nature of the vengeance is vague. You can end the contract by creating effigies of everyone you believe has ever wronged you, bleeding upon them all at once (at least 1 Hit Point per effigy), and destroying them."
 			],
 			"generic": false,
+			"contract": {
+				"devil": "{@creature erinys}",
+				"decipher": [
+					"Nature",
+					"Religion"
+				]
+			},
 			"consumable": false
 		},
 		{

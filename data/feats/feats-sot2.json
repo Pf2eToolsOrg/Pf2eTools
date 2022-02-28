@@ -57,7 +57,10 @@
 				"Transmutation"
 			],
 			"prerequisites": "Nantambu Chime-Ringer Dedication",
-			"frequency": "once per hour",
+			"frequency": {
+				"unit": "hour",
+				"freq": 1
+			},
 			"entries": [
 				"To rush after a criminal or reach someone in need, you ring a sprightly tone. You and all allies within 30 feet gain a +10-foot status bonus to all Speeds for 1 minute."
 			]
@@ -91,7 +94,12 @@
 						"auditory",
 						"linguistic"
 					],
-					"frequency": "once every 10 minutes",
+					"frequency": {
+						"freq": 1,
+						"recurs": true,
+						"unit": "minute",
+						"interval": 10
+					},
 					"entries": [
 						"You tell a story, designating one of your allies (but not yourself) as the hero of the story, and one enemy as the villain; both must be within 60 feet. The hero gains a +1 status bonus to attack rolls and saving throws against the villain until the start of your next turn. If you Spin a Tale on your next turn, the story continues for another round, for a maximum of 10 rounds. While the tale continues, minor, crude illusions spring into being in your space; these are {@trait arcane} {@trait illusion} effects that have no mechanical impact other than illustrating your tale."
 					]
@@ -208,7 +216,10 @@
 				"Evocation"
 			],
 			"prerequisites": "Nantambu Chime-Ringer Dedication",
-			"frequency": "once per hour",
+			"frequency": {
+				"unit": "hour",
+				"freq": 1
+			},
 			"entries": [
 				"You strike magical tones that can turn the tide of combat.",
 				"You and your allies within 30 feet gain the effects of one of the following runes until the end of your next turn: corrosive, disrupting, flaming, frost, ghost touch, shock, or thundering. The effects apply to a single weapon the creature is holding or one of the creature's unarmed attacks.",
@@ -236,7 +247,10 @@
 				"Transmutation"
 			],
 			"prerequisites": "Nantambu Chime-Ringer Dedication",
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"entries": [
 				"You instill great swiftness into your allies. You and all allies within 30 feet become {@condition quickened} for 1 minute and can use the additional action to {@action Strike}, {@action Stride}, or {@action Step}."
 			]

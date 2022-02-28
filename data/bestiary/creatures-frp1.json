@@ -2831,7 +2831,10 @@
 						"unit": "varies",
 						"entry": "{@as 1} to {@as 3}"
 					},
-					"frequency": "once per round",
+					"frequency": {
+						"unit": "round",
+						"freq": 1
+					},
 					"entries": [
 						"Hana's Hundreds flail their swords wildly at each enemy adjacent to the team (DC 33 basic Reflex save). The damage depends on the number of actions.",
 						"{@as 1} {@damage 2d8} slashing damage",
@@ -3426,7 +3429,10 @@
 					"traits": [
 						"manipulate"
 					],
-					"frequency": "once per minute",
+					"frequency": {
+						"unit": "minute",
+						"freq": 1
+					},
 					"entries": [
 						"Jaiban stomps the ground with intense force. It creates a minor earthquake with the effects of the {@spell earthquake} spell, except that the range is only 100 feet and is contained to a 20-foot burst."
 					],
@@ -6087,7 +6093,10 @@
 						"unit": "action"
 					},
 					"requirements": "Ran-to has a creature {@condition grabbed}",
-					"frequency": "once per round;",
+					"frequency": {
+						"unit": "round",
+						"freq": 1
+					},
 					"entries": [
 						"Ran-to spins the creature he's holding, smashing them against any creatures within his reach, and then throws the creature aside. Ran-to attempts an {@skill Athletics} check against the {@condition grabbed} creature's Fortitude DC. Critical Success Ran-to tosses his foe a great distance. The grapple ends. The {@condition grabbed} creature is thrown into a space within 10 feet, takes {@damage 10d6} bludgeoning damage, and falls {@condition prone}. All creatures adjacent to Ran-to take the same amount of bludgeoning damage (DC 34 basic Reflex save). Success As critical success, except the {@condition grabbed} creatures is thrown into a space within 5 feet, and creatures take {@damage 6d6} bludgeoning damage. Failure Ran-to tosses his foe aside. The grapple ends. The {@condition grabbed} creature falls {@condition prone}. Critical Failure Ran-to loses hold of his foe and the grapple ends."
 					],
@@ -7002,7 +7011,10 @@
 						"primal",
 						"transmutation"
 					],
-					"frequency": "once per day",
+					"frequency": {
+						"unit": "day",
+						"freq": 1
+					},
 					"entries": [
 						"Takatorra expands their wings, gaining a 25-foot fly Speed for 5 minutes."
 					],

@@ -354,11 +354,11 @@
 			},
 			"usage": "attached to firearm (firing mechanism)",
 			"bulk": "\u2014",
+			"category": "Modification",
+			"subCategory": "Firing Mechanism",
 			"appliesTo": [
 				"Weapon"
 			],
-			"category": "Modification",
-			"subCategory": "Firing Mechanism",
 			"entries": [
 				"Air cartridge firing mechanisms use a container of compressed air affixed to a sealed system that releases the air in a small burst to propel ammunition, and they're the default used in Arcadian air repeaters. Any firearm can be modified to replace its normal firing mechanism with an air cartridge firing system, allowing the weapon to be fired underwater or in other conditions that would normally prevent the ignition of black powder. The air cartridges lack much of the propulsive power of black powder, however, imposing a \u201310-foot penalty to the attached firearm's range increment. Weapons with the kickback trait don't gain that trait's benefits when using an air cartridge firing system.",
 				"Attaching an air cartridge firing system takes one hour, though this time can overlap with the standard time required to maintain and clean your firearm to prevent misfires."
@@ -425,6 +425,9 @@
 				"Intelligent",
 				"Occult"
 			],
+			"usage": "held in 2 hands",
+			"bulk": "2",
+			"category": "Held",
 			"perception": {
 				"default": 26,
 				"senses": {
@@ -466,9 +469,6 @@
 					"default": 26
 				}
 			},
-			"usage": "held in 2 hands",
-			"bulk": "2",
-			"category": "Held",
 			"entries": [
 				"The gunsmith that created this marvelous {@runeItem scattergun|G&G|+2 weapon potency||greater striking||spell-storing|} poured so much love and care into its creation that the weapon gained a spark of sentience. However, at first it was completely incapable of expressing itself. This led a seething frustration to grow within the weapon, as it yearned desperately to respond to Animate Dreamer the same love and affection that created it. Through decades of effort, it gained the ability to communicate empathically, then telepathically. Now, the weapon is capable of exerting its influence over other inanimate objects. Despite the weapon's progress, years of feeling helpless have given the animate dreamer a singular goal: to obtain and occupy a body of its own.",
 				"An animate dreamer is cunning, intelligent, and patient. It urges you to create a body for it and is willing to go to any lengths to see its goals come to fruition, including coercion, deception, and violence. An animate dreamer desires a permanent body but isn't picky about the body's form or the methods it has to use in order to gain it. Therefore, an animate dreamer is just as happy in a living body stolen from an innocent as it would be in an artificially constructed body, or even an undead corpse. If you refuse to work towards creating or obtaining a body for the animate dreamer, it will likely use its possession ability to try and take control of you and use your body to find a permanent replacement for itself.",
@@ -513,7 +513,10 @@
 					"components": [
 						"command"
 					],
-					"frequency": "once per day",
+					"frequency": {
+						"unit": "day",
+						"freq": 1
+					},
 					"trigger": null,
 					"requirements": null,
 					"entries": [
@@ -584,7 +587,10 @@
 					"components": [
 						"command"
 					],
-					"frequency": "once per day",
+					"frequency": {
+						"unit": "day",
+						"freq": 1
+					},
 					"trigger": null,
 					"requirements": null,
 					"entries": [
@@ -601,7 +607,10 @@
 						"command",
 						"Interact"
 					],
-					"frequency": "once per day",
+					"frequency": {
+						"unit": "day",
+						"freq": 1
+					},
 					"trigger": null,
 					"requirements": null,
 					"entries": [
@@ -726,6 +735,56 @@
 				}
 			},
 			"consumable": true
+		},
+		{
+			"name": "Backpack Ballista Bolts",
+			"source": "G&G",
+			"page": 63,
+			"equipment": true,
+			"type": "Equipment",
+			"traits": [],
+			"price": {
+				"coin": "sp",
+				"amount": 1,
+				"note": "(price for 10)"
+			},
+			"bulk": 1,
+			"shieldStats": null,
+			"activate": null,
+			"onset": null,
+			"ammunition": null,
+			"category": "Ammunition",
+			"group": "Bow",
+			"entries": [
+				"{@note For use with the {@item Backpack Ballista|G&G}.}"
+			],
+			"craftReq": null,
+			"generic": false
+		},
+		{
+			"name": "Backpack Catapult Stones",
+			"source": "G&G",
+			"page": 63,
+			"equipment": true,
+			"type": "Equipment",
+			"traits": [],
+			"price": {
+				"coin": "sp",
+				"amount": 1,
+				"note": "(price for 10)"
+			},
+			"bulk": 1,
+			"shieldStats": null,
+			"activate": null,
+			"onset": null,
+			"ammunition": null,
+			"category": "Ammunition",
+			"group": "Sling",
+			"entries": [
+				"{@note For use with the {@item Backpack Catapult|G&G}.}"
+			],
+			"craftReq": null,
+			"generic": false
 		},
 		{
 			"name": "Ballista",
@@ -1151,6 +1210,9 @@
 				"Intelligent",
 				"Primal"
 			],
+			"usage": "Held in 1 or 2 hands",
+			"bulk": "1",
+			"category": "Held",
 			"perception": {
 				"default": 11,
 				"senses": {
@@ -1189,9 +1251,6 @@
 					"default": 11
 				}
 			},
-			"usage": "Held in 1 or 2 hands",
-			"bulk": "1",
-			"category": "Held",
 			"entries": [
 				"Possessing a boisterous, proud demeanor, this {@runeItem jezail|g&g|+1 weapon potency|} is an aspiring big game hunter, always quick to share a tale of its bold adventures and predatory conquests\u2014although the veracity of such tales is often questionable. A boastful hunter enjoys tracking and hunting animals of all kinds but takes particular pleasure in taking down large, dangerous, or rare animals. Against an animal, the boastful hunter deals {@damage 1d6} additional damage. On a critical hit against an animal, the boastful hunter also deals {@damage 1d6} {@condition persistent damage ||persistent bleed damage}.",
 				"A boastful hunter urges you to face off against tougher and tougher creatures\u2014a challenge the ambitious rifle may not be adequate to deal with. If the boastful hunter goes one week without participating in a hunt against an animal of at least your level, it becomes bored. A bored boastful hunter complains incessantly and imposes a \u20131 item penalty to attack rolls against non-animal targets. A bored boastful hunter can be appeased by using it in combat against an animal of at least your level.",
@@ -1275,7 +1334,10 @@
 						"Interact (evocation",
 						"magical)"
 					],
-					"frequency": "once per minute",
+					"frequency": {
+						"unit": "minute",
+						"freq": 1
+					},
 					"trigger": null,
 					"requirements": null,
 					"entries": [
@@ -1652,16 +1714,16 @@
 				"amount": 200,
 				"note": null
 			},
-			"ac": 2,
-			"dexCap": 3,
-			"checkPen": 1,
-			"speedPen": 0,
-			"str": 12,
-			"group": "Plate",
 			"usage": "worn armor",
 			"bulk": "2",
+			"ac": 2,
+			"dexCap": 3,
+			"str": 12,
+			"checkPen": 1,
+			"speedPen": 0,
 			"category": "Armor",
 			"subCategory": "Light",
+			"group": "Plate",
 			"entries": [
 				"Sometimes, just disguising one's face just isn't convincing enough. Clockwork disguises were invented to supplement regular disguise kits, which are used all across Golarion. For example, if a spy wants to infiltrate a military camp, they must be wearing the same type of armor as the soldiers stationed there\u2014or else have a very good explanation for their commander as to why they're out of proper uniform! The clockwork disguise is intended to help avoid such awkward, potentially fatal confrontations.",
 				"The clockwork disguise looks like a harness connected to hundreds of small metal plates that cover the user's torso and arms. Each of these plates is equipped with several hinges, allowing them to be shaped into a wide variety of patterns. When these shaped plates are arranged and connected, they can be made to look like almost any basic suit of light or medium metal armor, though armor embellishments such as those worn by highranking officers are beyond this device. The arrangement process takes some time, but once it's completed, the user need only perform a few simple adjustments to a clockwork mechanism in the disguise to make the plate arrangement into a new preset configuration. Afterwards, when the user flips a switch on the harness's belt to one of three positions, the plates shift, overlap, and connect as necessary to transform the disguise into the desired preset configuration. The clockwork disguise can have up to three preset configurations at a time, and most users use a minimum of two: the one required for their current task, and a suitably inconspicuous configuration for when the first configuration is unnecessary.",
@@ -2081,6 +2143,82 @@
 			"consumable": true
 		},
 		{
+			"name": "Darkvision Scope",
+			"source": "G&G",
+			"page": 180,
+			"type": "Item",
+			"level": "5+",
+			"traits": [
+				"Divination",
+				"Magical"
+			],
+			"usage": "attached to firearm or crossbow (scope)",
+			"bulk": "L",
+			"category": "Modification",
+			"subCategory": "Scope",
+			"appliesTo": [
+				"Weapon"
+			],
+			"entries": [
+				"These scopes, popular with snipers and other sneaky sharpshooters who ply their trade in the dead of night, incorporate clouded crystals with magical properties into their design. While relatively useless under normal lighting conditions, these crystals can help bring things into focus when used in dim light. The scope is then given an enchantment to enhance these properties for use in darkness. The scope grants you a +1 item bonus to {@skill Perception} checks involving sight in areas of dim light visible through the scope (as well as in areas of darkness, if the scope has been activated).",
+				{
+					"type": "ability",
+					"activity": {
+						"unit": "action",
+						"number": 1
+					},
+					"components": [
+						"Interact"
+					],
+					"entries": [
+						"You gain {@ability darkvision} until the beginning of your next turn, as long as you continue to look through the scope."
+					]
+				}
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"type": "darkvision scope",
+					"level": 5,
+					"price": {
+						"coin": "gp",
+						"amount": 160,
+						"note": null
+					},
+					"entries": []
+				},
+				{
+					"type": "greater darkvision scope",
+					"level": 15,
+					"price": {
+						"coin": "gp",
+						"amount": 5500,
+						"note": null
+					},
+					"entries": [
+						"The item bonus is +2 and activating the scope grants {@ability greater darkvision} until the beginning of your next turn, as long as you continue to look through the scope."
+					],
+					"_mod": {
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replaceTags": true,
+								"replace": "\\+1",
+								"with": "+2"
+							},
+							{
+								"mode": "replaceTxt",
+								"replaceTags": true,
+								"replace": "\\{@ability darkvision\\}",
+								"with": "{@ability darkvision||greater darkvision}"
+							}
+						],
+						"entriesMode": "generic"
+					}
+				}
+			]
+		},
+		{
 			"name": "Day Goggles",
 			"source": "G&G",
 			"page": 87,
@@ -2330,6 +2468,9 @@
 				"Intelligent",
 				"Occult"
 			],
+			"usage": "held in 2 hands",
+			"bulk": "1",
+			"category": "Held",
 			"perception": {
 				"default": 26,
 				"senses": {
@@ -2374,9 +2515,6 @@
 					"default": 26
 				}
 			},
-			"usage": "held in 2 hands",
-			"bulk": "1",
-			"category": "Held",
 			"entries": [
 				"Patriotic to the extreme, this {@runeItem flintlock musket|G&G|+2 weapon potency||flaming||greater striking|} was among the first firearms forged in the Gunworks and was wielded by Ancil Alkenstar, founder of the Grand Duchy of Alkenstar. In Alkenstar's hands, the musket was used to defend the burgeoning Grand Duchy from outside threats, including mutants of the Mana Wastes, Nexian constructs, and undead from Geb. After Ancil's death, the weapon was passed down, per his own decree, not to his heirs but to the greatest defender of Alkenstar, as determined by the weapon's previous owner. Over time, the devotion and heroism of each successive wielder left a psychic imprint on the weapon, until it developed an intellect and drive of its own.",
 				"A duchy defender is a powerful weapon with a rigid personality. It follows the laws of Alkenstar to the letter, and fights in defense of its nation. If these two priorities ever clash, a duchy defender prioritizes the protection of Alkenstar and its citizens over following the laws themselves, since laws can change, but the people will always need protecting.",
@@ -2391,7 +2529,10 @@
 					"components": [
 						"command"
 					],
-					"frequency": "once per round",
+					"frequency": {
+						"unit": "round",
+						"freq": 1
+					},
 					"trigger": null,
 					"requirements": null,
 					"entries": [
@@ -3220,7 +3361,10 @@
 					"components": [
 						"Interact"
 					],
-					"frequency": "once per hour",
+					"frequency": {
+						"unit": "hour",
+						"freq": 1
+					},
 					"trigger": null,
 					"requirements": null,
 					"entries": [
@@ -3237,7 +3381,10 @@
 					"components": [
 						"Interact"
 					],
-					"frequency": "once per minute",
+					"frequency": {
+						"unit": "minute",
+						"freq": 1
+					},
 					"trigger": null,
 					"requirements": null,
 					"entries": [
@@ -3343,7 +3490,10 @@
 					"components": [
 						"Interact"
 					],
-					"frequency": "once per hour",
+					"frequency": {
+						"unit": "hour",
+						"freq": 1
+					},
 					"trigger": null,
 					"requirements": null,
 					"entries": [
@@ -3360,7 +3510,10 @@
 					"components": [
 						"Interact"
 					],
-					"frequency": "once per day",
+					"frequency": {
+						"unit": "day",
+						"freq": 1
+					},
 					"trigger": null,
 					"requirements": null,
 					"entries": [
@@ -3630,7 +3783,10 @@
 						"Interact (magical",
 						"transmutation)"
 					],
-					"frequency": "once per minute",
+					"frequency": {
+						"unit": "minute",
+						"freq": 1
+					},
 					"trigger": null,
 					"requirements": null,
 					"entries": [
@@ -3896,7 +4052,10 @@
 						"command",
 						"envision"
 					],
-					"frequency": "once per day",
+					"frequency": {
+						"unit": "day",
+						"freq": 1
+					},
 					"trigger": null,
 					"requirements": null,
 					"entries": [
@@ -3912,7 +4071,10 @@
 					"components": [
 						"Interact"
 					],
-					"frequency": "Once per minute",
+					"frequency": {
+						"unit": "minute",
+						"freq": 1
+					},
 					"trigger": null,
 					"requirements": null,
 					"entries": [
@@ -3978,7 +4140,10 @@
 					"components": [
 						"envision"
 					],
-					"frequency": "once per day",
+					"frequency": {
+						"unit": "day",
+						"freq": 1
+					},
 					"trigger": null,
 					"requirements": null,
 					"entries": [
@@ -4306,7 +4471,10 @@
 					"components": [
 						"envision"
 					],
-					"frequency": "once per minute",
+					"frequency": {
+						"unit": "minute",
+						"freq": 1
+					},
 					"trigger": null,
 					"requirements": null,
 					"entries": [
@@ -4323,7 +4491,10 @@
 						"command",
 						"envision (fortune)"
 					],
-					"frequency": "once per minute",
+					"frequency": {
+						"unit": "minute",
+						"freq": 1
+					},
 					"trigger": null,
 					"requirements": null,
 					"entries": [
@@ -4452,7 +4623,10 @@
 					"components": [
 						"Interact"
 					],
-					"frequency": "once per day",
+					"frequency": {
+						"unit": "day",
+						"freq": 1
+					},
 					"trigger": null,
 					"requirements": null,
 					"entries": [
@@ -4588,9 +4762,6 @@
 		},
 		{
 			"name": "Magnetite Scope",
-			"appliesTo": [
-				"Weapon"
-			],
 			"source": "G&G",
 			"page": 181,
 			"type": "Item",
@@ -4603,6 +4774,9 @@
 			"bulk": "L",
 			"category": "Modification",
 			"subCategory": "Scope",
+			"appliesTo": [
+				"Weapon"
+			],
 			"entries": [
 				"More of a field projector than a scope, this small cylinder of magnetite has been enchanted to spread and accelerate the shrapnel of a scatter weapon further than the weapon's natural capabilities. Furthermore, some of the floating magnetite inside the scope's structure can help you when attempting to determine the your allies' locations. The magnetite scope grants you a +2 item bonus to {@skill Survival} checks to {@action Sense Direction} when using the scope to assist you in navigating. This scope can only be attached to firearms with the scatter trait.",
 				{
@@ -5575,8 +5749,8 @@
 			"activate": null,
 			"onset": null,
 			"ammunition": null,
-			"group": "Bow",
 			"category": "Ammunition",
+			"group": "Bow",
 			"entries": [
 				"{@note For use with repeating crossbows.}"
 			],
@@ -5598,56 +5772,6 @@
 					"entries": []
 				}
 			]
-		},
-		{
-			"name": "Backpack Ballista Bolts",
-			"source": "G&G",
-			"page": 63,
-			"equipment": true,
-			"type": "Equipment",
-			"traits": [],
-			"price": {
-				"coin": "sp",
-				"amount": 1,
-				"note": "(price for 10)"
-			},
-			"bulk": 1,
-			"shieldStats": null,
-			"activate": null,
-			"onset": null,
-			"ammunition": null,
-			"group": "Bow",
-			"category": "Ammunition",
-			"entries": [
-				"{@note For use with the {@item Backpack Ballista|G&G}."
-			],
-			"craftReq": null,
-			"generic": false
-		},
-		{
-			"name": "Backpack Catapult Stones",
-			"source": "G&G",
-			"page": 63,
-			"equipment": true,
-			"type": "Equipment",
-			"traits": [],
-			"price": {
-				"coin": "sp",
-				"amount": 1,
-				"note": "(price for 10)"
-			},
-			"bulk": 1,
-			"shieldStats": null,
-			"activate": null,
-			"onset": null,
-			"ammunition": null,
-			"group": "Sling",
-			"category": "Ammunition",
-			"entries": [
-				"{@note For use with the {@item Backpack Catapult|G&G}."
-			],
-			"craftReq": null,
-			"generic": false
 		},
 		{
 			"name": "Rowan Rifle",
@@ -5826,7 +5950,10 @@
 					"components": [
 						"Interact"
 					],
-					"frequency": "Once per day",
+					"frequency": {
+						"unit": "day",
+						"freq": 1
+					},
 					"trigger": null,
 					"requirements": null,
 					"entries": [
@@ -5869,7 +5996,10 @@
 						"magical",
 						"mental"
 					],
-					"frequency": "once per hour",
+					"frequency": {
+						"unit": "hour",
+						"freq": 1
+					},
 					"trigger": null,
 					"requirements": null,
 					"entries": [
@@ -6294,7 +6424,10 @@
 					"components": [
 						"Interact"
 					],
-					"frequency": "once per minute",
+					"frequency": {
+						"unit": "minute",
+						"freq": 1
+					},
 					"trigger": null,
 					"requirements": null,
 					"entries": [
@@ -6310,7 +6443,10 @@
 					"components": [
 						"Interact"
 					],
-					"frequency": "once per hour",
+					"frequency": {
+						"unit": "hour",
+						"freq": 1
+					},
 					"trigger": null,
 					"requirements": null,
 					"entries": [
@@ -6738,7 +6874,10 @@
 						"evocation",
 						"magical)"
 					],
-					"frequency": "once per hour",
+					"frequency": {
+						"unit": "hour",
+						"freq": 1
+					},
 					"trigger": null,
 					"requirements": null,
 					"entries": [
@@ -6756,7 +6895,10 @@
 						"evocation",
 						"magical)"
 					],
-					"frequency": "once per day",
+					"frequency": {
+						"unit": "day",
+						"freq": 1
+					},
 					"trigger": null,
 					"requirements": null,
 					"entries": [
@@ -6780,6 +6922,9 @@
 				"Enchantment",
 				"Intelligent"
 			],
+			"usage": "held in 1 hand",
+			"bulk": "1",
+			"category": "Held",
 			"perception": {
 				"default": 26,
 				"senses": {
@@ -6818,9 +6963,6 @@
 					"default": 16
 				}
 			},
-			"usage": "held in 1 hand",
-			"bulk": "1",
-			"category": "Held",
 			"entries": [
 				"A sunken pistol is imbued with the unfulfilled desires and insatiable greed of its previous wielder, a notorious pirate drowned at sea. Once a beautiful and artistically wrought weapon, a sunken pistol is coated in a fine layer of dried salt and encrusted with barnacles. Each shot fired from this {@runeItem dragon mouth pistol|G&G|+1 weapon potency||striking|} is now coated in a layer of salty ectoplasm and has the effects of a ghost touch rune. You can shoot the sunken pistol underwater, even when using black powder ammunition.",
 				"A sunken pistol urges you to amass a horde of treasure even a dragon would be proud of. The methods used to acquire these riches matter not to the greedy pirate pistol, so long as you amass and hoard excessive wealth. Above all else, a sunken pistol desires the return of its own treasure, which might rest in the wreck of its sunken ship's hold or be {@condition hidden} on a dangerous island.",
@@ -6834,7 +6976,10 @@
 					"components": [
 						"command"
 					],
-					"frequency": "once per minute",
+					"frequency": {
+						"unit": "minute",
+						"freq": 1
+					},
 					"trigger": null,
 					"requirements": null,
 					"entries": [
@@ -6850,7 +6995,10 @@
 					"components": [
 						"command"
 					],
-					"frequency": "once per day",
+					"frequency": {
+						"unit": "day",
+						"freq": 1
+					},
 					"trigger": null,
 					"requirements": null,
 					"entries": [
@@ -6920,7 +7068,10 @@
 					"components": [
 						"Interact"
 					],
-					"frequency": "once per hour",
+					"frequency": {
+						"unit": "hour",
+						"freq": 1
+					},
 					"trigger": null,
 					"requirements": null,
 					"entries": [
@@ -7001,7 +7152,10 @@
 					"components": [
 						"envision"
 					],
-					"frequency": "once per day",
+					"frequency": {
+						"unit": "day",
+						"freq": 1
+					},
 					"trigger": null,
 					"requirements": null,
 					"entries": [
@@ -7224,10 +7378,10 @@
 			"usage": "attached to firearm (firing mechanism)",
 			"bulk": "\u2014",
 			"category": "Modification",
+			"subCategory": "Firing Mechanism",
 			"appliesTo": [
 				"Weapon"
 			],
-			"subCategory": "Firing Mechanism",
 			"entries": [
 				"This device replaces the attached firearm's normal firing mechanism (normally, most of the guns in this chapter use a flintlock or matchlock firing mechanism). When the firearm's wielder fires the weapon, a small rune etched on a piece of stone affixed inside the mechanism releases a magical spark that's propelled through the firing mechanism and into the firearm, launching its bullet. An underwater firing mechanism allows the attached firearm to be fired underwater or in other conditions that would normally prevent the ignition of black powder. Attaching an underwater firing mechanism to a firearm takes 1 hour, though this time can overlap with the standard time required to maintain and clean your firearm to prevent misfires.",
 				"Talismans A talisman is a small object affixed to armor, a shield, or a weapon (which is called the affixed item). You must be wielding or wearing an item to activate a talisman attached to that item. Once activated, a talisman burns out permanently. The talismans included in this section are particularly useful for characters who wield firearms or crossbows."
@@ -7265,7 +7419,10 @@
 					"components": [
 						"Interact"
 					],
-					"frequency": "once per day",
+					"frequency": {
+						"unit": "day",
+						"freq": 1
+					},
 					"trigger": null,
 					"requirements": null,
 					"entries": [
@@ -7382,29 +7539,6 @@
 					]
 				}
 			],
-			"consumable": false
-		},
-		{
-			"name": "Darkvision Scope",
-			"source": "G&G",
-			"page": 180,
-			"type": "Item",
-			"level": "5+",
-			"traits": [
-				"Divination",
-				"Magical"
-			],
-			"usage": "attached to firearm or crossbow (scope)",
-			"bulk": "L",
-			"category": "Modification",
-			"subCategory": "Scope",
-			"appliesTo": [
-				"Weapon"
-			],
-			"entries": [
-				"These scopes, popular with snipers and other sneaky sharpshooters who ply their trade in the dead of night, incorporate clouded crystals with magical properties into their design. While relatively useless under normal lighting conditions, these crystals can help bring things into focus when used in dim light. The scope is then given an enchantment to enhance these properties for use in Magnifying Scope"
-			],
-			"generic": false,
 			"consumable": false
 		}
 	]

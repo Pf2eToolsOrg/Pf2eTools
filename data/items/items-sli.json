@@ -227,7 +227,10 @@
 						"command",
 						"Interact"
 					],
-					"frequency": "once per hour",
+					"frequency": {
+						"unit": "hour",
+						"freq": 1
+					},
 					"trigger": null,
 					"requirements": null,
 					"entries": [
@@ -304,7 +307,11 @@
 					"components": [
 						"a Spell"
 					],
-					"frequency": "once per day, plus overcharge",
+					"frequency": {
+						"freq": 1,
+						"unit": "day",
+						"overcharge": true
+					},
 					"trigger": null,
 					"requirements": null,
 					"entries": [
@@ -385,7 +392,11 @@
 					"components": [
 						"a Spell"
 					],
-					"frequency": "once per day, plus overcharge",
+					"frequency": {
+						"freq": 1,
+						"unit": "day",
+						"overcharge": true
+					},
 					"trigger": null,
 					"requirements": null,
 					"entries": [

@@ -23,7 +23,10 @@
 						"number": 1,
 						"unit": "action"
 					},
-					"frequency": "once per round",
+					"frequency": {
+						"unit": "round",
+						"freq": 1
+					},
 					"entries": [
 						"You {@action Interact} to draw a hand crossbow and {@action Strike} with it, or you {@action Strike} with a loaded hand crossbow you're already holding and then {@action Interact} to stow it."
 					]
@@ -64,7 +67,10 @@
 				"Manipulate"
 			],
 			"prerequisites": "Drow Shootist Dedication",
-			"frequency": "once per round",
+			"frequency": {
+				"unit": "round",
+				"freq": 1
+			},
 			"requirements": "You're holding an unloaded hand crossbow.",
 			"entries": [
 				"You can fire off a single shot even when unprepared. You {@action Interact} to reload your hand crossbow and {@action Strike} with it."

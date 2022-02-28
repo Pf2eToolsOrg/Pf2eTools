@@ -1131,7 +1131,10 @@
 						"number": 1,
 						"unit": "action"
 					},
-					"frequency": "once per turn",
+					"frequency": {
+						"unit": "turn",
+						"freq": 1
+					},
 					"entries": [
 						"Requirements The bruiser must target a creature they Shoved since the end of the bruiser's last turn; The bruiser attempts."
 					],
@@ -1699,7 +1702,10 @@
 						"unit": "reaction"
 					},
 					"trigger": "Evora would be reduced to 0 Hit Points but not immediately killed",
-					"frequency": "once per day;",
+					"frequency": {
+						"unit": "day",
+						"freq": 1
+					},
 					"entries": [
 						"Evora avoids being knocked out and remains at 1 Hit Point, and her {@condition wounded} condition increases by 1."
 					],
@@ -2142,7 +2148,10 @@
 						"light",
 						"visual"
 					],
-					"frequency": "once per day",
+					"frequency": {
+						"unit": "day",
+						"freq": 1
+					},
 					"entries": [
 						"The iridescent elephant blasts a beam of light from its trunk in a 30-foot line. Each creature in the area must attempt a DC 22 Fortitude save. Critical Success The creature is unaffected. Success The creature is {@condition dazzled} for 1 round. Failure The creature is {@condition blinded} for 1 minute. Critical Failure The creature is {@condition blinded} permanently."
 					],
@@ -2446,7 +2455,10 @@
 						"number": 1,
 						"unit": "reaction"
 					},
-					"frequency": "once per day",
+					"frequency": {
+						"unit": "day",
+						"freq": 1
+					},
 					"entries": [
 						"Trigger."
 					],
@@ -2638,7 +2650,10 @@
 						"misfortune"
 					],
 					"requirements": "Mistress Dusklight must have fewer than 98 Hit Points",
-					"frequency": "once per round;",
+					"frequency": {
+						"unit": "round",
+						"freq": 1
+					},
 					"entries": [
 						"Mistress Dusklight spews a hatefully uttered curse at one creature within 30 feet that she can see. If the target fails a DC 32 Will save, whenever it attempts an attack roll or saving throw, it must roll twice and use the lower result. The target is then temporarily immune for 24 hours. The curse persists until it is removed or the target succeeds a later saving throw against it. The victim can attempt a new DC 32 Will save once per hour to end the curse."
 					],
@@ -3453,7 +3468,10 @@
 						"unit": "action"
 					},
 					"requirements": "The spinesnapper has a creature {@condition grabbed} or {@condition restrained}",
-					"frequency": "once per round;",
+					"frequency": {
+						"unit": "round",
+						"freq": 1
+					},
 					"entries": [
 						"The spinesnapper slams the creature against a nearby surface. The target and the surface struck each take {@damage 4d6} bludgeoning damage, and the target must succeed at a DC 22 Fortitude save or become {@condition slowed|CRB|slowed 1} for 1 round, or {@condition stunned} for 1 round on a critical failure."
 					],

@@ -65,7 +65,10 @@
 					"components": [
 						"({@action Interact})"
 					],
-					"frequency": "4 times per year",
+					"frequency": {
+						"freq": 4,
+						"unit": "year"
+					},
 					"trigger": null,
 					"requirements": "You have Legendary proficiency in {@skill Crafting}",
 					"entries": [
@@ -82,7 +85,10 @@
 					"components": [
 						"envision"
 					],
-					"frequency": "once per month",
+					"frequency": {
+						"freq": 1,
+						"unit": "month"
+					},
 					"trigger": null,
 					"requirements": null,
 					"entries": [
@@ -246,7 +252,10 @@
 					"components": [
 						"Interact"
 					],
-					"frequency": "once per day",
+					"frequency": {
+						"unit": "day",
+						"freq": 1
+					},
 					"trigger": null,
 					"requirements": null,
 					"entries": [
@@ -263,7 +272,10 @@
 					"components": [
 						"envision"
 					],
-					"frequency": "once per round",
+					"frequency": {
+						"unit": "round",
+						"freq": 1
+					},
 					"trigger": "You damage an aberration with the Kortos",
 					"requirements": null,
 					"entries": [
@@ -280,7 +292,10 @@
 						"command",
 						"Interact"
 					],
-					"frequency": "once per day",
+					"frequency": {
+						"unit": "day",
+						"freq": 1
+					},
 					"trigger": null,
 					"requirements": null,
 					"entries": [
@@ -387,6 +402,9 @@
 				"Evocation",
 				"Intelligent"
 			],
+			"usage": "held in 1 hand",
+			"bulk": "1",
+			"category": "Held",
 			"perception": {
 				"default": 26,
 				"senses": {
@@ -401,7 +419,7 @@
 			"communication": [
 				{
 					"name": "telepathy",
-					"notes": "{@language Azlanti}, {@language Celestial}, {@language Common}, {@language Utopian}"
+					"notes": "{@language Azlanti|LOWG}, {@language Celestial}, {@language Common}, {@language Utopian|Bst}"
 				}
 			],
 			"skills": {
@@ -425,9 +443,6 @@
 					"default": 31
 				}
 			},
-			"usage": "held in 1 hand",
-			"bulk": "1",
-			"category": "Held",
 			"entries": [
 				"Piereta was a Knight of Ozem during the Shining Crusade, sworn to the service of Aroden's herald, {@deity Arazni|LOGM}. After {@deity Arazni|LOGM} perished at the hands of the Whispering Tyrant, Piereta became the first paladin to swear her service to the newly ascended goddess, {@deity Iomedae}. When she fell in battle, a fragment of her spirit clung to the sword through which she had wielded her faith in countless battles, granting the weapon a sentience of its own. The sword named herself after her fallen bearer and has been a faithful companion to many Iomedaean warriors since.",
 				"Piereta is a {@runeItem rapier||+3 weapon potency||major striking||holy|} devoted to the principles of {@deity Iomedae} as an exemplar of valorous action and as a protector of the innocent.",
@@ -443,7 +458,10 @@
 						"command",
 						"Interact"
 					],
-					"frequency": "once per minute",
+					"frequency": {
+						"unit": "minute",
+						"freq": 1
+					},
 					"trigger": null,
 					"requirements": null,
 					"entries": [
@@ -460,7 +478,10 @@
 						"command",
 						"Interact"
 					],
-					"frequency": "once per day",
+					"frequency": {
+						"unit": "day",
+						"freq": 1
+					},
 					"trigger": null,
 					"requirements": null,
 					"entries": [
@@ -521,7 +542,10 @@
 					"components": [
 						"Interact"
 					],
-					"frequency": "once per round",
+					"frequency": {
+						"unit": "round",
+						"freq": 1
+					},
 					"trigger": null,
 					"requirements": null,
 					"entries": [
@@ -563,7 +587,10 @@
 					"components": [
 						"Interact (force)"
 					],
-					"frequency": "once per minute",
+					"frequency": {
+						"unit": "minute",
+						"freq": 1
+					},
 					"trigger": null,
 					"requirements": null,
 					"entries": [

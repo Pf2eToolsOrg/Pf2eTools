@@ -110,10 +110,10 @@ class Omnidexer {
 				const it = dataArr[i];
 
 				const name = Omnidexer.getProperty(it, arbiter.primary || "name");
-				await pHandleItem(it, i, name);
+				if (it.id) await pHandleItem(it, i, `${it.id}: ${name}`);
+				else await pHandleItem(it, i, name);
 
 				if (it.alias) it.alias.forEach(a => pHandleItem(it, i, a));
-				if (it.id) await pHandleItem(it, i, `${it.id}: ${name}`);
 			}
 		}
 
@@ -800,6 +800,18 @@ class IndexableFileDeities extends IndexableFile {
 	}
 }
 
+class IndexableFileOrganizations extends IndexableFile {
+	constructor () {
+		super({
+			category: Parser.CAT_ID_ORGANIZATION,
+			file: "organizations.json",
+			listProp: "organization",
+			baseUrl: "organizations.html",
+			isHover: true,
+		});
+	}
+}
+
 class IndexableFileHazards extends IndexableFile {
 	constructor () {
 		super({
@@ -964,6 +976,7 @@ Omnidexer.TO_INDEX = [
 	new IndexableFileSubsystems(),
 	new IndexableFileBooks(),
 	new IndexableFileDeities(),
+	new IndexableFileOrganizations(),
 	new IndexableFileHazards(),
 	new IndexableFileTables(),
 

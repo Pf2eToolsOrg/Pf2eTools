@@ -1418,7 +1418,10 @@
 					"unit": "action",
 					"entry": "{@as 1}"
 				},
-				"frequency": "once per hour",
+				"frequency": {
+					"unit": "hour",
+					"freq": 1
+				},
 				"entries": [
 					"The riding drake breathes a 30-foot cone of fire, dealing {@damage 1d6 + floor((#$prompt_number:min=2,title=Character Level,default=2$#)/2)d6|1d6} fire damage for every 2 levels the drake has to all creatures in the area (basic Reflex save). This uses a trained DC using the drake's Constitution modifier or an expert DC if the drake is specialized."
 				]
@@ -1803,7 +1806,10 @@
 				"name": "Feast on the Fallen",
 				"source": "AoA5",
 				"page": 80,
-				"frequency": "once per hour",
+				"frequency": {
+					"unit": "hour",
+					"freq": 1
+				},
 				"activity": {
 					"number": 1,
 					"unit": "reaction",
@@ -1882,6 +1888,148 @@
 			}
 		}
 	],
+	"companionAbility": [
+		{
+			"name": "Nimble",
+			"source": "CRB",
+			"page": 214,
+			"tier": 2,
+			"entries": [
+				"To advance a mature animal companion to a nimble animal companion, increase its Dexterity modifier by 2 and its Strength, Constitution, and Wisdom modifiers by 1. It deals 2 additional damage with its unarmed attacks. Increase its proficiency ranks in {@skill Acrobatics} and unarmored defense to expert. It also learns the advanced maneuver for its type. Its attacks become {@trait magical} for the purpose of ignoring resistances."
+			]
+		},
+		{
+			"name": "Indomitable",
+			"source": "LOWG",
+			"page": 117,
+			"tier": 2,
+			"entries": [
+				"When you pick your animal companion, you can choose to have it be a megafauna animal companion. Megafauna animal companions are mostly similar to other animal companions of the same category, though they look different, and they have one difference in their upgrade path. If you take a feat that would normally allow you to choose to have your companion become a {@companionAbility savage} or {@companionAbility nimble} animal companion, a megafauna companion instead can choose to become a {@companionAbility savage} or {@companionAbility indomitable|lowg} companion. An indomitable companion increases its Constitution modifier by 2 and its Strength, Dexterity, and Wisdom modifiers by 1. It deals 3 additional damage with its unarmed attacks. Increase its proficiency rank in {@skill Athletics} to expert and its proficiency rank in barding to expert. It also learns the advanced maneuver for its type. If your companion is {@trait Medium} or smaller, it grows in size by one category. Its attacks count as {@trait magical} for the purpose of ignoring resistances."
+			]
+		},
+		{
+			"name": "Savage",
+			"source": "CRB",
+			"page": 214,
+			"tier": 2,
+			"entries": [
+				"To advance a mature animal companion to a savage animal companion, increase its Strength modifier by 2 and its Dexterity, Constitution, and Wisdom modifiers by 1. It deals 3 additional damage with its unarmed attacks. Increase its proficiency rank in {@skill Athletics} to expert. It also learns the advanced maneuver for its type. If your companion is {@trait Medium} or smaller, it grows by one size. Its attacks become {@trait magical} for the purpose of ignoring resistances."
+			]
+		},
+		{
+			"name": "Genie-Touched",
+			"source": "LOL",
+			"page": 123,
+			"tier": 2,
+			"traits": [
+				"Rare"
+			],
+			"entries": [
+				"Xerbystes II has had his palace spellcasters work to develop ways to replicate the great powers of the genie-touched horses of Qadira. These spellcasters have a rudimentary method in place that can grant such power to any animal companion, infusing them with elemental power and granting them otherworldly insight. Xerbystes will sometimes gift these companions as a favor to others or have his spellcasters infuse the companions of trusted allies.",
+				"If you take a feat that would normally allow you to choose to have a savage or nimble animal companion, you can instead choose to for it to become a genie-touched companion. When you choose the feat, select the type of genie whose power infuses your companion. The genies and their elemental traits are as follows: djinni ({@trait air}), efreeti ({@trait fire}), marid ({@trait water}), or shaitan ({@trait earth}). A genie-touched companion increases its Wisdom modifier by 2 and its Strength, Dexterity, and Constitution modifiers by 1. It deals 3 additional damage with its unarmed attacks; this damage is fire damage for an efreet-touched companion or of the same type as the unarmed attack for the others. It gains resistance 5 to damage of a type depending on the genie: acid for djinni, fire for efreeti or marid, and electricity for shaitan. If the companion is djinni-touched or efreeti-touched, increase its proficiency rank in {@skill Acrobatics} to expert; if it is marid-touched or shaitan-touched, increase its proficiency rank in {@skill Athletics} to expert. It also learns the advanced maneuver for its type. Its attacks count as {@trait magical} for the purpose of ignoring resistances and gain the genie's elemental trait."
+			]
+		},
+		{
+			"source": "CRB",
+			"tier": 3,
+			"page": 217,
+			"name": "Ambusher",
+			"entries": [
+				"In your companion's natural environment, it can use a Sneak action even if it's currently observed. Its proficiency rank in {@skill Stealth} increases to expert (or master if it was already an expert from its type), and its Dexterity modifier increases by 1. Its proficiency rank for unarmored defense increases to expert, or master if it's nimble."
+			]
+		},
+		{
+			"source": "CRB",
+			"tier": 3,
+			"page": 217,
+			"name": "Bully",
+			"entries": [
+				"Your companion terrorizes foes with dominance displays and pushes them around the battlefield. Its proficiency ranks for {@skill Athletics} and {@skill Intimidation} increase to expert (or master if it was already expert from its type), its Strength modifier increases by 1, and its Charisma modifier increases by 3."
+			]
+		},
+		{
+			"source": "CRB",
+			"tier": 3,
+			"page": 217,
+			"name": "Daredevil",
+			"entries": [
+				"Your companion joins the fray with graceful leaps and dives.",
+				"It gains the deny advantage ability, so it isn't {@condition flat-footed} to hidden, undetected, or flanking creatures unless such a creature's level is greater than yours. Its proficiency rank in {@skill Acrobatics} increases to master, and its Dexterity modifier increases by 1. Its proficiency rank in unarmored defense increases to expert, or master if it's nimble."
+			]
+		},
+		{
+			"source": "CRB",
+			"tier": 3,
+			"page": 217,
+			"name": "Racer",
+			"entries": [
+				"Your companion races. It gains a +10-foot status bonus to its Speed, swim Speed, or fly Speed (your choice). Its proficiency in Fortitude saves increases to legendary, and its Constitution modifier increases by 1."
+			]
+		},
+		{
+			"source": "CRB",
+			"tier": 3,
+			"page": 217,
+			"name": "Tracker",
+			"entries": [
+				"Your companion is an incredible tracker. It can move at full Speed while following tracks. Its proficiency rank in {@skill Survival} increases to expert (or master if it was already an expert from its type), and its Wisdom modifier increases by 1."
+			]
+		},
+		{
+			"source": "CRB",
+			"tier": 3,
+			"page": 217,
+			"name": "Wrecker",
+			"entries": [
+				"Your companion smashes things. Its unarmed attacks ignore half an object's Hardness. Its {@skill Athletics} proficiency increases to master, and its Strength modifier increases by 1."
+			]
+		},
+		{
+			"source": "SoM",
+			"tier": 3,
+			"page": 229,
+			"name": "Shade",
+			"entries": [
+				"Your companion's physical form is made, in whole or in part, of shadow. It gains {@ability darkvision}, resistance 5 to all damage except force, and in areas of dim light or darkness, it can Step 10 feet instead of 5 feet. Its proficiency rank in unarmored defense increases to expert, or master if it's nimble."
+			]
+		},
+		{
+			"source": "LOL",
+			"tier": 3,
+			"page": 123,
+			"name": "Deep Diver",
+			"entries": [
+				"Your companion gains a swim Speed of 30 feet or a +10-foot status bonus to its existing swim Speed and can breathe underwater if it couldn't already. Its Constitution modifier increases by 1. Its proficiency rank for {@skill Athletics} increases to master and for barding increases to expert. This specialization can only be selected by marid-touched companions."
+			]
+		},
+		{
+			"source": "LOL",
+			"tier": 3,
+			"page": 123,
+			"name": "Steadfast Strider",
+			"entries": [
+				"Your companion ignores natural difficult terrain and greater difficult terrain from sediment or stone and can move across quicksand, mud, and similar surfaces as if they were solid. It gains a +2 status bonus to saving throws and DCs to prevent being {@action Shove||Shoved} or {@action Trip||Tripped}. Its Strength modifier increases by 1 and its proficiency for barding increases to expert. This specialization can only be selected by shaitan-touched companions."
+			]
+		},
+		{
+			"source": "LOL",
+			"tier": 3,
+			"page": 123,
+			"name": "Wildfire Scorcher",
+			"entries": [
+				"Your companion gains resistance to fire equal to your level. Any creature that attempts to {@action Grapple} or {@ability Grab} your companion, hits your companion with a melee unarmed attack, or hits your companion with a melee weapon {@action Strike} while adjacent to your companion takes {@damage 2d6} fire damage. Its Dexterity modifier increases by 1 and its proficiency rank increases to legendary for Reflex saves and to expert for unarmored defense. This specialization can only be selected by efreeti-touched companions."
+			]
+		},
+		{
+			"source": "LOL",
+			"tier": 3,
+			"page": 123,
+			"name": "Wind Chaser",
+			"entries": [
+				"Your companion gains a +20-foot status bonus to its Speed or fly Speed (your choice if it has both). Its proficiency in {@skill Acrobatics} increases to master and its Dexterity modifier increases by 1. Its proficiency rank increases to legendary for Reflex saves and to expert for unarmored defense. This specialization can only be selected by djinni-touched companions."
+			]
+		}
+	],
 	"familiar": [
 		{
 			"name": "Aeon Wyrd",
@@ -1957,7 +2105,11 @@
 						"entry": "{@as 1}"
 					},
 					"type": "ability",
-					"frequency": "once per 10 minutes",
+					"frequency": {
+						"unit": "minute",
+						"interval": 10,
+						"freq": 1
+					},
 					"entries": [
 						"The wyrm splatters ink in a 10-foot cone. Each creature in the area must succeed at a Reflex save or become covered in ink. Ink spray has the effects of {@spell glitterdust} except the creature isn't {@condition dazzled}, and it can remove its {@condition blindness} by spending a single action, which has the {@trait manipulate} trait, to wipe off the ink from their face."
 					]
@@ -2021,7 +2173,10 @@
 						"number": 1,
 						"unit": "action"
 					},
-					"frequency": "once per minute",
+					"frequency": {
+						"unit": "minute",
+						"freq": 1
+					},
 					"entries": [
 						"Your clockwork familiar blows a billowing plume of steam into its square around itself. It gains a +1 circumstance bonus to its {@action Intimidation} checks, and any creature in the familiar's square has {@condition concealed||concealment}, though creatures in the square can't use this {@condition concealed||concealment} to {@action Hide} or {@action Sneak}. The steam and its effects remain for 1 round. To use this ability, your clockwork familiar must spend 1 hour of operational time."
 					]
@@ -2076,7 +2231,11 @@
 						"Arcane"
 					],
 					"type": "ability",
-					"frequency": "once per 10 minutes",
+					"frequency": {
+						"unit": "minute",
+						"interval": 10,
+						"freq": 1
+					},
 					"requirements": "The dweomercat cub was targeted by a spell or was within the area of a spell as it was cast since its last turn",
 					"entries": [
 						"The dweomercat cub gains an effect related to the school of the triggering spell. Other than the damage, the effect lasts for {@dice 1d4} rounds or until the dweomercat cub {@action Dismiss|CRB|Dismisses} the effect, whichever comes first.",
@@ -2178,7 +2337,10 @@
 						"evocation",
 						"poison"
 					],
-					"frequency": "once per hour",
+					"frequency": {
+						"unit": "hour",
+						"freq": 1
+					},
 					"entries": [
 						"The faerie dragon breathes euphoric gas in a 10-foot cone. Each creature in the area must attempt a Fortitude save against your class DC or spell DC, whichever is higher. A creature that fails its save is {@condition stupefied||stupefied 2} and {@condition slowed||slowed 1} for {@dice 1d4} rounds; on a critical failure, the duration is 1 minute."
 					]
@@ -2235,7 +2397,10 @@
 						"Evil",
 						"Fortune"
 					],
-					"frequency": "once per day",
+					"frequency": {
+						"unit": "day",
+						"freq": 1
+					},
 					"entries": [
 						"The imp offers a non-fiend within 15 feet a bargain, granting a boon of good luck if the creature accepts. The boon lasts for 1 hour once accepted. If the creature dies while the boon is in place, its soul travels to Hell, where it is bound for eternity and unable to be raised or resurrected except by {@spell wish} or similar magic. Once during the hour, the creature can roll an attack roll or saving throw twice and use the higher result."
 					]
@@ -2283,7 +2448,10 @@
 						"number": 2,
 						"unit": "action"
 					},
-					"frequency": "once per hour",
+					"frequency": {
+						"unit": "hour",
+						"freq": 1
+					},
 					"entries": [
 						"The nosoi croons an entrancing song. Each living or undead creature within a 60-foot emanation must attempt a Will save against your class DC or spell DC, whichever is higher, or be {@condition fascinated} for 1 round. A nosoi can use a 2-action activity, which has the {@trait auditory}, {@trait concentrate}, {@trait divine}, {@trait enchantment}, and {@trait mental} traits, to force affected creatures to attempt another Will save; on a failure, they are {@condition fascinated} for an additional round. A creature that succeeds at any save or has its {@condition fascinated||fascination} broken is temporarily immune for 24 hours. Despite being a {@trait mental} effect, this ability affects {@trait mindless} {@trait undead}. {@trait Psychopomp||Psychopomps} are immune to this ability."
 					]
@@ -2424,7 +2592,11 @@
 					"traits": [
 						"Necromancy"
 					],
-					"frequency": "once per 10 minutes",
+					"frequency": {
+						"unit": "minute",
+						"interval": 10,
+						"freq": 1
+					},
 					"entries": [
 						"The shadow familiar makes a melee attack with an attack roll modifier equal to your spell attack roll modifier. If the {@action Strike} is successful, the target is {@condition enfeebled} 1 and its shadow disappears. After 24 hours, the {@condition enfeebled} condition ends, and they regain their shadow once more. Any effect that reduces or removes the {@condition enfeebled} condition restores their shadow as well.",
 						"This action has the trait matching your tradition of magic, or {@trait occult} if you aren't a spellcaster."
@@ -3573,7 +3745,11 @@
 								"number": 2,
 								"unit": "action"
 							},
-							"frequency": "once per 10 minutes"
+							"frequency": {
+								"unit": "minute",
+								"interval": 10,
+								"freq": 1
+							}
 						}
 					]
 				},

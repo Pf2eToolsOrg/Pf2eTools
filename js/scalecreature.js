@@ -596,7 +596,7 @@ class ScaleCreature {
 					if (e.type === "affliction") e.DC += opts.flatAddProf;
 				} else if (typeof e === "string") {
 					// Do not scale flat check DCs
-					e = e.replaceAll(/DC (\d+)(?!\d* flat)/g, (...m) => {
+					e = e.replaceAll(/(?<!flat)DC (\d+)(?!\d* flat)/g, (...m) => {
 						return `DC ${Number(m[1]) + opts.flatAddProf}`;
 					});
 					// Do not scale status, circumstance, item bonus...
@@ -648,6 +648,7 @@ class ScaleCreature {
 		return Math.round((x - a0) * ((b1 - a1) / (b0 - a0)) + a1);
 	}
 
+	// FIXME: This garbage code might not be the real culprit this time (BUG-78), but it should have prevented the bug nonetheless
 	// FIXME: This code is unreadable and might create undesired results
 	_scaleValue (lvlIn, toLvl, value, map) {
 		const {I: I0, idx} = this._getIntervalAndIdx(lvlIn, map, value);
@@ -883,7 +884,7 @@ class ScaleCreature {
 					}
 				} else if (typeof e === "string") {
 					// Do not scale flat check DCs
-					e = e.replaceAll(/DC (\d+)(?!\d* flat)/g, (...m) => {
+					e = e.replaceAll(/(?<!flat)DC (\d+)(?!\d* flat)/g, (...m) => {
 						return `DC ${this._scaleValue(lvlIn, toLvl, Number(m[1]), this._LvlSpellDC) + opts.flatAddProf}`;
 					});
 					// Do not scale status, circumstance, item bonus...

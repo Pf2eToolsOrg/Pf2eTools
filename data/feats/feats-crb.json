@@ -571,7 +571,10 @@
 				"Evocation"
 			],
 			"prerequisites": "chaotic, evil, good, or lawful deity",
-			"frequency": "once per round",
+			"frequency": {
+				"unit": "round",
+				"freq": 1
+			},
 			"entries": [
 				"You bring a weapon into metaphysical concordance with your deity's beliefs. When you select this feat, choose chaotic, evil, good, or lawful. Your choice must match one of your deity's alignment components. This action has the trait corresponding to the chosen alignment component.",
 				"When you use this action, you touch a weapon. For 1 round, that weapon deals an additional {@dice 1d6} damage of the chosen type to creatures of the opposed alignment. For example, if you chose good, the weapon would deal an extra {@damage 1d6} good damage to evil creatures. If you Align an Armament again, any previously aligned armament loses its additional damage."
@@ -1636,7 +1639,10 @@
 			"traits": [
 				"Sorcerer"
 			],
-			"frequency": "once per turn",
+			"frequency": {
+				"unit": "turn",
+				"freq": 1
+			},
 			"requirements": "Your most recent action was to cast a non-cantrip spell.",
 			"entries": [
 				"You siphon the residual energy from the last spell you cast into one weapon you're wielding.",
@@ -1667,7 +1673,10 @@
 			"traits": [
 				"Wizard"
 			],
-			"frequency": "once per turn",
+			"frequency": {
+				"unit": "turn",
+				"freq": 1
+			},
 			"requirements": "Your most recent action was to cast a non-cantrip spell.",
 			"entries": [
 				"You siphon spell energy into one weapon you're wielding. Until the end of your turn, the weapon deals an extra {@dice 1d6} damage of a type depending on the school of the spell you just cast.",
@@ -1802,7 +1811,10 @@
 				"Metamagic",
 				"Sorcerer"
 			],
-			"frequency": "once per minute",
+			"frequency": {
+				"unit": "minute",
+				"freq": 1
+			},
 			"entries": [
 				"Your inborn magical nature lets you redirect ambient energies to fuel your spells. If your next action is to {@action Cast a Spell} of 5th level or lower that has no duration, you don't expend the spell's slot when you cast it."
 			]
@@ -2656,7 +2668,10 @@
 				"Additive 2",
 				"Alchemist"
 			],
-			"frequency": "once per round",
+			"frequency": {
+				"unit": "round",
+				"freq": 1
+			},
 			"trigger": "You use {@action Quick Alchemy} to craft an alchemical item that has the {@trait elixir} trait and is at least 2 levels lower than your advanced alchemy level.",
 			"entries": [
 				"You've discovered how to mix two elixirs into a single hybrid concoction. You can spend 2 additional batches of infused reagents to add a second elixir to the one you're crafting.",
@@ -3174,7 +3189,10 @@
 				"Additive 2",
 				"Alchemist"
 			],
-			"frequency": "once per round",
+			"frequency": {
+				"unit": "round",
+				"freq": 1
+			},
 			"trigger": "You use {@action Quick Alchemy} to craft an alchemical bomb that is at least 2 levels lower than your advanced alchemy level.",
 			"entries": [
 				"Your bombs impose additional effects on your enemies.",
@@ -3249,7 +3267,11 @@
 			"traits": [
 				"Rogue"
 			],
-			"frequency": "once per 10 minutes",
+			"frequency": {
+				"unit": "minute",
+				"interval": 10,
+				"freq": 1
+			},
 			"trigger": "A physical attack would reduce you to 0 Hit Points.",
 			"entries": [
 				"Dropping into a roll to disperse the force of the blow, you can partially evade a lethal attack and stay conscious. You take half damage from the triggering attack."
@@ -3356,7 +3378,10 @@
 				"Concentrate",
 				"Fighter"
 			],
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"entries": [
 				"Your training allows you to shrug off your foes' spells and conditions when the need is dire. Choose a single nonpermanent spell or condition that is affecting you. If you chose a condition, its effect on you ends. If you chose a spell, attempt to {@quickref counteract|CRB|3|counteracting} the spell (your counteract level is equal to half your level, rounded up, and you attempt a Will save as your counteract check)",
 				"This doesn't remove any Hit Point damage normally dealt by the spell or condition, and it doesn't prevent the spell or debilitating effect from affecting other allies or the environment around you. It can't remove an ongoing affliction or prevent such an affliction from inflicting conditions on you later. It can't remove conditions from the situation (such as {@condition prone} or {@condition flanked}). If the effect comes from a creature, hazard, or item of 20th level or higher, Determination can't remove its effect on you."
@@ -3780,7 +3805,10 @@
 			"traits": [
 				"Cleric"
 			],
-			"frequency": "once per turn",
+			"frequency": {
+				"unit": "turn",
+				"freq": 1
+			},
 			"trigger": "You finish {@action Cast a Spell||Casting a Spell} using one of your divine spell slots on your turn.",
 			"entries": [
 				"You siphon residual spell energy into a weapon you're wielding. Until the end of your turn, the weapon deals an additional {@damage 1d4} force damage. You can instead deal an additional {@dice 1d6} damage of an alignment type that matches one of your deity's alignment components. As usual for aligned damage, this can damage only creatures of the opposite alignment."
@@ -4624,7 +4652,10 @@
 				"Gnome"
 			],
 			"prerequisites": "focus pool, at least one innate spell from a gnome heritage or ancestry feat that shares a tradition with at least one of your focus spells",
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"entries": [
 				"The magic within you provides increased energy you can use to focus. You regain 1 Focus Point, up to your usual maximum."
 			]
@@ -5044,7 +5075,10 @@
 				"Additive 2",
 				"Alchemist"
 			],
-			"frequency": "once per round",
+			"frequency": {
+				"unit": "round",
+				"freq": 1
+			},
 			"trigger": "You craft an alchemical bomb using {@action Quick Alchemy} that's at least 2 levels lower than your advanced alchemy level.",
 			"entries": [
 				"You mix a substance into the bomb to foil resistances. The bomb reduces any resistance the enemy has to its damage type by an amount equal to your level, but only for that attack."
@@ -6273,7 +6307,10 @@
 				"Fortune",
 				"Halfling"
 			],
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"trigger": "You fail a skill check or saving throw.",
 			"entries": [
 				"Your happy-go-lucky nature makes it seem like misfortune avoids you, and to an extent, that might even be true. You can reroll the triggering check, but you must use the new result, even if it's worse than your first roll."
@@ -6513,7 +6550,10 @@
 				"Rogue"
 			],
 			"prerequisites": "legendary in {@skill Stealth}",
-			"frequency": "once per hour",
+			"frequency": {
+				"unit": "hour",
+				"freq": 1
+			},
 			"trigger": "You successfully use {@skill Stealth} to {@action Hide} and become {@condition hidden} from all of your current foes, or use {@skill Stealth} to {@action Sneak} and become {@condition undetected} to all your current foes.",
 			"entries": [
 				"When you put your mind to slipping out of sight, you disappear completely. You become {@condition invisible} for 1 minute, even if you use a {@condition hostile} action. Not even glitterdust, see invisibility, or similar effects can reveal you, though creatures can still use the {@action Seek} action to locate you as normal."
@@ -6590,7 +6630,10 @@
 				"Flourish",
 				"Ranger"
 			],
-			"frequency": "once per round",
+			"frequency": {
+				"unit": "round",
+				"freq": 1
+			},
 			"requirements": "You are wielding a ranged weapon with reload 0.",
 			"entries": [
 				"You take two quick shots against the one you hunt. Make two Strikes against your prey with the required weapon. If both hit the same creature, combine their damage for the purpose of resistances and weaknesses. Apply your multiple attack penalty to each {@action Strike} normally."
@@ -6697,7 +6740,7 @@
 			"prerequisites": "divine ally (steed), {@feat Loyal Warhorse}",
 			"entries": [
 				"Under your care, your mount has realized its innate potential.",
-				"The mount you gained through the {@feat divine ally} class feature is now a {@quickref nimble|CRB|0|nimble animal companions|0} or {@quickref savage|CRB|0|savage animal companions|0} animal companion. During an encounter, even if you don't use the {@action Command an Animal} action, your mount can still use 1 action on your turn to {@action Stride} or {@action Strike}."
+				"The mount you gained through the {@feat divine ally} class feature is now a {@companionAbility nimble} or {@companionAbility savage} animal companion. During an encounter, even if you don't use the {@action Command an Animal} action, your mount can still use 1 action on your turn to {@action Stride} or {@action Strike}."
 			],
 			"leadsTo": [
 				"Auspicious Mount"
@@ -7013,7 +7056,7 @@
 			],
 			"prerequisites": "{@feat Mature Animal Companion (Druid)}",
 			"entries": [
-				"Your animal companion continues to grow and develop. It becomes a {@quickref nimble||0|Nimble Animal Companions} or {@quickref savage||0|Savage Animal Companions} animal companion (your choice), gaining additional capabilities determined by the type of companion."
+				"Your animal companion continues to grow and develop. It becomes a {@companionAbility nimble} or {@companionAbility savage} animal companion (your choice), gaining additional capabilities determined by the type of companion."
 			]
 		},
 		{
@@ -7027,7 +7070,7 @@
 			],
 			"prerequisites": "{@feat Mature Animal Companion (Ranger)}",
 			"entries": [
-				"Your animal companion continues to grow and develop. It becomes a {@quickref nimble||0|Nimble Animal Companions} or {@quickref savage||0|Savage Animal Companions} animal companion (your choice), gaining additional capabilities determined by the type of companion."
+				"Your animal companion continues to grow and develop. It becomes a {@companionAbility nimble} or {@companionAbility savage} animal companion (your choice), gaining additional capabilities determined by the type of companion."
 			],
 			"leadsTo": [
 				"Specialized Companion (Ranger)"
@@ -7060,7 +7103,10 @@
 				"Human"
 			],
 			"prerequisites": "{@feat Clever Improviser}",
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"trigger": "You attempt a check using a skill you're untrained in.",
 			"entries": [
 				"A stroke of brilliance gives you a major advantage with a skill despite your inexperience. Gain a +4 circumstance bonus to the triggering skill check."
@@ -7834,7 +7880,10 @@
 				"Manipulate",
 				"Metamagic"
 			],
-			"frequency": "once per minute",
+			"frequency": {
+				"unit": "minute",
+				"freq": 1
+			},
 			"entries": [
 				"You can cast your spells effortlessly by tapping into the leylines of the world. If your next action is to {@action Cast a Spell} of 5th level or lower that has no duration, you don't expend the prepared spell as you cast it."
 			]
@@ -7915,7 +7964,10 @@
 				"Wizard"
 			],
 			"prerequisites": "arcane bond, arcane school",
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"entries": [
 				"You have linked your bonded item to the well of energy that powers your school spells. When you Drain your Bonded Item to cast a spell of your arcane school, you also regain 1 Focus Point."
 			]
@@ -8437,7 +8489,10 @@
 				"Additive 2",
 				"Alchemist"
 			],
-			"frequency": "once per round",
+			"frequency": {
+				"unit": "round",
+				"freq": 1
+			},
 			"trigger": "You craft an elixir of life using {@action Quick Alchemy}, and that elixir is at least 2 levels lower than your advanced alchemy level.",
 			"entries": [
 				"You mix a special additive into your elixir that calms the drinker's body and mind. The elixir of life attempts to {@quickref counteract|CRB|3|counteracting} one {@trait fear} effect or one effect imposing the {@condition paralyzed} condition on the drinker using the item's level and a counteract modifier equal to your class DC \u2013 10."
@@ -8549,7 +8604,11 @@
 			"traits": [
 				"Alchemist"
 			],
-			"frequency": "once every 10 minutes",
+			"frequency": {
+				"recurs": true,
+				"freq": 1,
+				"unit": "minute"
+			},
 			"entries": [
 				"Your alchemical mastery can resuscitate the recently slain.",
 				"You can administer a true elixir of life to a creature who has been dead for no more than 2 rounds. When you do, that creature is immediately returned to life with 1 Hit Point and becomes {@condition wounded 1}."
@@ -9191,7 +9250,10 @@
 			"traits": [
 				"Orc"
 			],
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"trigger": "You would be reduced to 0 Hit Points but not immediately killed.",
 			"entries": [
 				"Fierceness in battle runs through your blood, and you refuse to fall from your injuries. You avoid being knocked out and remain at 1 Hit Point, and your {@condition wounded} condition increases by 1."
@@ -9487,7 +9549,7 @@
 			"prerequisites": "legendary in {@skill Deception}",
 			"entries": [
 				"You use clever tactics to mislead your foes as you sneak away.",
-				"You {@action Sneak} while leaving a decoy behind. The decoy acts as the spell mislead, though you aren't {@condition invisible}, just {@condition undetected}.",
+				"You {@action Sneak} while leaving a decoy behind. The decoy acts as the spell {@spell mislead}, though you aren't {@condition invisible}, just {@condition undetected}.",
 				"You can continue to concentrate to move your decoy, as with the spell, whether or not you remain {@condition hidden} throughout the duration. Once you use Perfect Distraction, you need to spend 10 minutes to set up another decoy before you can use it again."
 			],
 			"leadsTo": [
@@ -9975,7 +10037,11 @@
 				"Manipulate",
 				"Rage"
 			],
-			"frequency": "once per 10 minutes",
+			"frequency": {
+				"unit": "minute",
+				"interval": 10,
+				"freq": 1
+			},
 			"entries": [
 				"You stomp the ground with such force that it creates a minor earthquake, with the effects of the {@spell earthquake} spell."
 			]
@@ -10285,7 +10351,10 @@
 				"Concentrate",
 				"Metamagic"
 			],
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"entries": [
 				"If your next action is to cast a bard cantrip or a bard spell that is at least 2 levels lower than the highest level bard spell you can cast, reduce the number of actions to cast it by 1 (minimum 1 action)."
 			]
@@ -10306,7 +10375,10 @@
 				"Metamagic",
 				"Sorcerer"
 			],
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"entries": [
 				"In a mentally strenuous process, you modify your casting of a spell to take less time. If your next action is to cast a sorcerer cantrip or a sorcerer spell that is at least 2 levels lower than the highest level sorcerer spell you can cast, reduce the number of actions to cast it by 1 (minimum 1 action)."
 			]
@@ -10327,7 +10399,10 @@
 				"Metamagic",
 				"Wizard"
 			],
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"entries": [
 				"In a mentally strenuous process, you modify your casting of a spell to take less time. If your next action is to cast a wizard cantrip or a wizard spell that is at least 2 levels lower than the highest level sorcerer spell you can cast, reduce the number of actions to cast it by 1 (minimum 1 action)."
 			]
@@ -11753,7 +11828,10 @@
 				"Additive 1",
 				"Alchemist"
 			],
-			"frequency": "once per round",
+			"frequency": {
+				"unit": "round",
+				"freq": 1
+			},
 			"trigger": "You use {@action Quick Alchemy} to craft an alchemical bomb with a level at least 1 lower than your advanced alchemy level.",
 			"entries": [
 				"You cause the bomb to create a cloud of thick smoke, in addition to its normal effects. When thrown, the bomb creates a cloud of smoke in a 10-foot-radius burst. You choose which corner of the target's space (or the space in which the bomb lands) the cloud is centered on. Creatures within that area have the {@condition concealed} condition, and all other creatures are {@condition concealed} to them. The smoke lasts for 1 minute or until dissipated by a strong wind."
@@ -12351,7 +12429,10 @@
 				"Additive 2",
 				"Alchemist"
 			],
-			"frequency": "once per round",
+			"frequency": {
+				"unit": "round",
+				"freq": 1
+			},
 			"trigger": "You use {@action Quick Alchemy} to craft an alchemical bomb, and that bomb's level is at least 2 levels lower than your advanced alchemy level.",
 			"entries": [
 				"You mix in an additive to make your bomb's contents adhere to the target and continue to deal damage. A creature that takes a direct hit from one of your sticky bombs also takes {@condition persistent damage} equal to and of the same type as the bomb's splash damage. If the bomb already deals {@condition persistent damage}, combine the two amounts."
@@ -13393,7 +13474,10 @@
 				"Flourish",
 				"Ranger"
 			],
-			"frequency": "once per round",
+			"frequency": {
+				"unit": "round",
+				"freq": 1
+			},
 			"requirements": "You are wielding two melee weapons, each in a different hand.",
 			"entries": [
 				"You swiftly attack your hunted prey with both weapons. Make two Strikes against your hunted prey, one with each of the required weapons. If both hit the same hunted prey, combine their damage for the purpose of its resistances and weaknesses. Apply your multiple attack penalty to each {@action Strike} normally."
@@ -13653,7 +13737,10 @@
 				"Elf"
 			],
 			"prerequisites": "{@feat Expert Longevity}",
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"entries": [
 				"You've perfected your ability to keep up with all the skills you've learned over your long life, so you're almost never truly untrained at a skill. You reflect on your life experiences, changing the skills you selected with {@feat Ancestral Longevity} and {@feat Expert Longevity}."
 			]
@@ -14433,7 +14520,10 @@
 			"traits": [
 				"Monk"
 			],
-			"frequency": "once per round",
+			"frequency": {
+				"unit": "round",
+				"freq": 1
+			},
 			"entries": [
 				"Any journey consists of more than simply reaching your destination. You use two of the following actions in any order: {@action Stand}, {@action Step}, and {@action Stride}. You can't use the same action twice."
 			]

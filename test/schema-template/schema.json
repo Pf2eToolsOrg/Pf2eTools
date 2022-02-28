@@ -102,7 +102,7 @@
 			"type": "array"
 		},
 		"disease": {
-			"type": "array"
+			"$ref": "diseases.json#/properties/disease"
 		},
 		"curse": {
 			"type": "array"
@@ -141,10 +141,22 @@
 			"$ref": "domains.json#/properties/domain"
 		},
 		"organization": {
-			"type": "array"
+			"$ref": "organizations.json#/properties/organization"
 		},
 		"organizationFluff": {
+			"$ref": "fluff-organizations.json#/properties/organizationFluff"
+		},
+		"eidolon": {
 			"type": "array"
+		},
+		"familiarAbility": {
+			"type": "array"
+		},
+		"optionalfeature": {
+			"type": "array"
+		},
+		"data": {
+			"$ref": "renderdemo.json#/properties/data"
 		}
 	},
 	"additionalProperties": false

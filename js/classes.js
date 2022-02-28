@@ -1281,20 +1281,16 @@ class ClassesPage extends BaseComponent {
 	_render_initSubclassControls ($wrp) {
 		const cls = this.activeClass;
 
-		const $btnSelAll = $(`<button class="btn btn-xs btn-default flex-1" title="Select All"><span class="glyphicon glyphicon-check"/></button>`)
+		const $btnSelAll = $(`<button class="btn btn-xs btn-default flex-1" title="Select All; Ctrl to Deselect All"><span class="glyphicon glyphicon-check"/></button>`)
 			.click(evt => {
 				const allStateKeys = this._getActiveSubclasses().map(sc => UrlUtil.getStateKeySubclass(sc));
 				if (evt.shiftKey) {
 					this._doSelectAllSubclasses();
 				} else if (evt.ctrlKey || evt.metaKey) {
-					const nxtState = {};
-					allStateKeys.forEach(k => nxtState[k] = false);
-					Object.values(this._listsSubclasses).map(l => l.visibleItems)
-						.flat()
-						.filter(it => it.values.mod === "brew" || it.values.mod === "fresh")
-						.map(it => it.values.stateKey)
-						.forEach(stateKey => nxtState[stateKey] = true);
-					this._proxyAssign("state", "_state", "__state", nxtState);
+					const doDeselAll = (list) => list.items.filter(it => it.values.stateKey).forEach(it => this._state[it.values.stateKey] = false);
+					Object.values(this._listsSubclasses).forEach(list => {
+						doDeselAll(list)
+					})
 				} else {
 					const nxtState = {};
 					allStateKeys.forEach(k => nxtState[k] = false);

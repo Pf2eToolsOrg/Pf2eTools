@@ -1188,7 +1188,10 @@
 						"primal"
 					],
 					"trigger": "The forest dragon is targeted with a water spell or effect",
-					"frequency": "once per hour",
+					"frequency": {
+						"unit": "hour",
+						"freq": 1
+					},
 					"entries": [
 						"The forest dragon gains 35 temporary Hit Points."
 					],
@@ -1341,7 +1344,10 @@
 						"negative",
 						"primal"
 					],
-					"frequency": "once per day",
+					"frequency": {
+						"unit": "day",
+						"freq": 1
+					},
 					"entries": [
 						"The dragon draws moisture from the living creatures surrounding them, using the energy to heal their own wounds. Each living creature in a 30-foot emanation takes {@damage 7d10} negative damage (DC 34 basic Fortitude save). Creatures made entirely of water and plant creatures use the outcome one degree of success worse than they rolled. The dragon regains Hit Points equal to half of the highest damage a single creature takes from this effect. In addition, all non-creature plant life in the area withers and dies, eliminating non-magical undergrowth and any resulting {@quickref difficult terrain||3|terrain}, cover, and concealment. Water is also consumed in the same way, typically lowering any standing body of water fully within the area by 1 foot."
 					],
@@ -2287,7 +2293,10 @@
 						"light",
 						"occult"
 					],
-					"frequency": "once per hour"
+					"frequency": {
+						"unit": "hour",
+						"freq": 1
+					}
 				},
 				{
 					"activity": {
@@ -2310,7 +2319,10 @@
 						"mental",
 						"occult"
 					],
-					"frequency": "once per day",
+					"frequency": {
+						"unit": "day",
+						"freq": 1
+					},
 					"entries": [
 						"The dragon chooses a mortal they've {@condition observed} performing an exceptional act and offers their august blessing in exchange for the creature carrying out a specific directive, such as defeating a tyrant or protecting a sacred site. If the creature agrees, until its next daily preparations, it gains a +1 status bonus to the dragon's choice of attack rolls, AC, or all of the following: {@skill Perception}, Will saves, and Charisma-based skill checks. The dragon can {@action Dismiss} this benefit by spending a single action (that has the {@trait concentrate} trait), which they're swift to do if the mortal dares to defy the dragon's directive."
 					],
@@ -2859,7 +2871,10 @@
 						"divine",
 						"earth"
 					],
-					"frequency": "once per day",
+					"frequency": {
+						"unit": "day",
+						"freq": 1
+					},
 					"entries": [
 						"The aghash creates a temporary sandstorm in a 30 foot emanation that lasts for 1 minute. Creatures within the emanation take a \u20134 circumstance penalty to {@skill Perception} checks and must succeed at a DC 18 Fortitude save. On a failure, they're forced to hold their breath or else they start suffocating. A creature within the sandstorm at the end of its turn takes {@damage 1d6} slashing damage. Divs are immune to all effects of an aghash's sandstorm."
 					],
@@ -3560,7 +3575,10 @@
 						"primal"
 					],
 					"trigger": "The forest dragon is targeted with a water spell or effect",
-					"frequency": "once per hour",
+					"frequency": {
+						"unit": "hour",
+						"freq": 1
+					},
 					"entries": [
 						"The forest dragon gains 40 temporary Hit Points."
 					],
@@ -3727,7 +3745,10 @@
 						"negative",
 						"primal"
 					],
-					"frequency": "once per day"
+					"frequency": {
+						"unit": "day",
+						"freq": 1
+					}
 				},
 				{
 					"entries": [
@@ -4096,7 +4117,11 @@
 						"water"
 					],
 					"requirements": "The dragon is in a body of water at least as large as they are",
-					"frequency": "once per 10 minutes;",
+					"frequency": {
+						"unit": "minute",
+						"interval": 10,
+						"freq": 1
+					},
 					"entries": [
 						"The dragon slams their body down, sending a towering wave outward. This wave deals {@damage 10d12} bludgeoning damage in a 90-foot emanation. Each creature in the area must attempt a DC 38 Reflex save. Structures and unattended objects in the area take the full amount of damage with no saving throw.",
 						{
@@ -4746,7 +4771,10 @@
 						"light",
 						"occult"
 					],
-					"frequency": "once per hour"
+					"frequency": {
+						"unit": "hour",
+						"freq": 1
+					}
 				},
 				{
 					"activity": {
@@ -4773,7 +4801,10 @@
 						"The dragon chooses a mortal they've {@condition observed} performing an exceptional act and offers their august blessing in exchange for the creature carrying out a specific directive, such as defeating a tyrant or protecting a sacred site. If the creature agrees, until its next daily preparations, it gains a +2 status bonus to the dragon's choice of attack rolls, AC, or all of the following: {@skill Perception}, Will saves, and Charisma-based skill checks. The dragon can {@action Dismiss} this benefit by spending a single action (that has the {@trait concentrate} trait), which they're swift to do if the mortal dares to defy the dragon's directive."
 					],
 					"name": "Inspire Envoy",
-					"frequency": "once per day"
+					"frequency": {
+						"unit": "day",
+						"freq": 1
+					}
 				}
 			],
 			"inflicts": {
@@ -6465,7 +6496,10 @@
 						"number": 2,
 						"unit": "action"
 					},
-					"frequency": "once per day",
+					"frequency": {
+						"unit": "day",
+						"freq": 1
+					},
 					"entries": [
 						"The sharpshooter becomes {@condition concealed} for 4 rounds, though they can't use the concealment to {@action Hide} or {@action Sneak}, as normal for concealment where their position is obvious."
 					],
@@ -8725,18 +8759,6 @@
 						"The blood painter expends the blood on one claw to paint a illusion with the effects of one of the following spells: {@spell illusory creature}, {@spell illusory disguise}, {@spell illusory object}, or {@spell mirror image}. The Paint action gains the traits of the spell it's reproducing, and the blood painter can {@action Sustain a Spell} on these effects. They use a spell attack modifier of +20 and DC 28 for these effects, which are heightened to 5th level. If they have fresh blood applied to two or more claws, the blood painter can expend the blood on all of them to instead produce the effects of cloak of colors or vibrant pattern. Any effects produced by this ability have a +2 status bonus to attack rolls, damage rolls, saving throws, skill checks, and AC against the creature whose blood was used to Paint and that creature takes a \u20132 status penalty to {@skill Perception} checks and saves against it."
 					],
 					"name": "Paint"
-				},
-				{
-					"entries": [
-						"It uses its Space 100 feet long, 20 feet wide, Crew 1 pilot, 12 crew; Passengers 12."
-					],
-					"name": "Gamemastery Guide."
-				},
-				{
-					"entries": [
-						"(DC Collision {@damage 9d10} bludgeoning plus."
-					],
-					"name": "Piloting Check Sailing Lore"
 				}
 			],
 			"inflicts": {
@@ -9742,7 +9764,10 @@
 						"transmutation"
 					],
 					"requirements": "The buso touches a Small, Medium, or Large plant",
-					"frequency": "twice per day;",
+					"frequency": {
+						"unit": "day",
+						"freq": 2
+					},
 					"entries": [
 						"The plant grows or shrinks by one size, remaining that size for the next 5 minutes. If used on a plant creature, this effect has the effects of enlarge or shrink (buso's choice). Unwilling plant creatures can attempt a DC 18 Fortitude saving throw to resist this effect."
 					],
@@ -9930,7 +9955,10 @@
 						"number": 2,
 						"unit": "action"
 					},
-					"frequency": "once per day",
+					"frequency": {
+						"unit": "day",
+						"freq": 1
+					},
 					"entries": [
 						"The cactus leshy shoots their spines in every direction. All creatures in a 10-foot emanation take {@damage 3d6} piercing damage (DC 18 basic Reflex save)."
 					],
@@ -10536,7 +10564,10 @@
 						"fire",
 						"sonic"
 					],
-					"frequency": "once per day",
+					"frequency": {
+						"unit": "day",
+						"freq": 1
+					},
 					"entries": [
 						"The calikang breathes a blast of energy that deals {@damage 13d6} energy damage to creatures in a 60-foot line (DC 28 basic Reflex save). The calikang can choose the damage type each time: acid, cold, electricity, fire, or sonic. Increase the die size to d8 if the calikang chooses electricity."
 					],
@@ -11942,7 +11973,10 @@
 						"unit": "varies",
 						"entry": "{@as 1} to {@as 3}"
 					},
-					"frequency": "once per round",
+					"frequency": {
+						"unit": "round",
+						"freq": 1
+					},
 					"entries": [
 						"The city guards engage in a coordinated melee attack against each enemy within 10 feet, with a DC 19 basic Reflex save. The damage depends on the number of actions. {@as 1} {@damage 1d10} piercing or slashing damage {@as 2} {@damage 1d10+7} piercing or slashing damage {@as 3} {@damage 1d10+10} piercing or slashing damage."
 					],
@@ -12613,7 +12647,11 @@
 					"traits": [
 						"concentrate"
 					],
-					"frequency": "once per 10 minutes",
+					"frequency": {
+						"unit": "minute",
+						"interval": 10,
+						"freq": 1
+					},
 					"entries": [
 						"The clockwork mage regains a spell it has already cast that day. It must spend 1 hour of its operational time, or 2 hours if the spell is 3rd level or higher."
 					],
@@ -12925,7 +12963,7 @@
 						"finesse"
 					],
 					"effects": [],
-					"damage": "{@dice 1d6}\u20131 bludgeoning",
+					"damage": "{@dice 1d6-1} bludgeoning",
 					"types": [
 						"bludgeoning"
 					]
@@ -13674,16 +13712,11 @@
 						"necromancy"
 					],
 					"entries": [
-						"The corrupted relic is an amulet cursed to contain a malevolent spirit. The statistics in this stat block are for the spirit when it's manifested (see Manifest). The amulet can't take any actions except Sudden."
+						"The corrupted relic is an amulet cursed to contain a malevolent spirit. The statistics in this stat block are for the spirit when it's manifested (see Manifest). The amulet can't take any actions except Sudden Manifestation and Manifest.",
+						"As long as the spirit is manifested, the amulet is immune to spells and magical abilities and uses the saves listed here.",
+						"Regardless of whether the spirit is manifested, the amulet can be targeted by Strikes (AC 21, Hardness 5, BT 10). It is not {@trait incorporeal}. If the amulet becomes {@condition broken}, the spirit is bound within and can't Manifest, and if the amulet is destroyed, so is the spirit. Destroying the spirit frees the amulet from its curse."
 					],
 					"name": "Amulet Relic"
-				},
-				{
-					"entries": [
-						"As long as the spirit is manifested, the amulet is immune to spells and magical abilities and uses the saves listed here.",
-						"Regardless of whether the spirit is manifested, the amulet can be targeted by Strikes (AC 21, Hardness 5, BT 10). It is not incorporeal. If the amulet becomes {@condition broken}, the spirit is bound within and can't Manifest, and if the amulet is destroyed, so is the spirit. Destroying the spirit frees the amulet from its curse."
-					],
-					"name": "Manifestation and Manifest."
 				},
 				{
 					"activity": {
@@ -13767,10 +13800,6 @@
 						"The spirit within the relic manifests in an open space within 10 feet of the amulet. When it does, the relic teleports around its neck. The spirit remains in its manifested state until it no longer senses any living creatures within range of its lifesense."
 					],
 					"name": "Manifest"
-				},
-				{
-					"entries": [],
-					"name": "Gamemastery Guide."
 				}
 			],
 			"inflicts": {
@@ -14154,7 +14183,10 @@
 						"number": 2,
 						"unit": "action"
 					},
-					"frequency": "once per day",
+					"frequency": {
+						"unit": "day",
+						"freq": 1
+					},
 					"entries": [
 						"The spirit guide forms a bond with a mortal creature. While the bond exists, the spirit guide increases their current and maximum Hit Points by 10, gains a +2 status bonus to their attack and damage rolls, and can communicate telepathically with the bonded mortal as long as the two beings are on the same plane. The spirit guide can only be bonded with one mortal at a time, and they can take this action again to end the bond or to form a new bond (which also ends the old bond). The bond also ends if the spirit guide or the mortal dies.",
 						"This bond strengthens the spirit guide's connection to the {@place Material Plane}. While bonded, the spirit guide loses the {@trait incorporeal} and {@trait spirit} traits, loses their immunities and resistances, and changes their Strikes to deal the appropriate physical damage (typically piercing or slashing) instead of force damage."
@@ -16652,7 +16684,10 @@
 						"illusion"
 					],
 					"requirements": "The duende is holding brown or yellow earthen objects, such as ginger or animal dung",
-					"frequency": "once per day;",
+					"frequency": {
+						"unit": "day",
+						"freq": 1
+					},
 					"entries": [
 						"The duende makes the objects look, feel, and smell like gold trinkets of a similar size. A creature that touches or Interacts with an affected object can attempt a DC 18 {@skill Perception} check to {@quickref disbelieve the illusion|CRB|2|disbelieving illusions|0}, and a successful DC 20 check with {@skill Crafting} or an appropriate {@skill Lore} skill (such as {@skill Lore||Mining Lore}) reveals their true nature. The effect ends if the objects are exposed to sunlight."
 					],
@@ -17708,7 +17743,11 @@
 						"number": 2,
 						"unit": "action"
 					},
-					"frequency": "once per 10 minutes",
+					"frequency": {
+						"unit": "minute",
+						"interval": 10,
+						"freq": 1
+					},
 					"entries": [
 						"The sphinx recites a riddle and compels up to 10 creatures within 30 feet to answer (DC 37 Will save). The GM either runs the riddle out of character by timing the players' attempts, or picks an appropriate associated skill for the riddle, such as {@skill Religion} for a riddle involving divine mysteries. The sphinx gains a +2 circumstance bonus to attack rolls and damage rolls against any creature that answers incorrectly even once. This bonus lasts for 1 day.",
 						{
@@ -21004,7 +21043,10 @@
 						"primal",
 						"water"
 					],
-					"frequency": "once per day",
+					"frequency": {
+						"unit": "day",
+						"freq": 1
+					},
 					"entries": [
 						"The fuath surrounds the head of one air-breathing creature within 30 feet in a magical film of viscous water for 1 minute. The target must succeed at a DC 17 Reflex save or begin to choke and must hold their breath to avoid drowning (Core Rulebook 478). The film can be temporarily wiped away with a total of 3 {@action Interact} actions by the choking creature or creatures adjacent to it, allowing a new Reflex save with a +2 circumstance bonus to end the effect. (These actions don't need to be consecutive or made by the same creature.)"
 					],
@@ -21398,7 +21440,10 @@
 						"number": 1,
 						"unit": "action"
 					},
-					"frequency": "once per turn",
+					"frequency": {
+						"unit": "turn",
+						"freq": 1
+					},
 					"entries": [
 						"The martial artist makes two melee Strikes. The martial artist applies their multiple attack penalty to these Strikes normally."
 					],
@@ -23242,7 +23287,10 @@
 						"number": 1,
 						"unit": "action"
 					},
-					"frequency": "once per hour",
+					"frequency": {
+						"unit": "hour",
+						"freq": 1
+					},
 					"entries": [
 						"The giant vulture vomits up its last meal on a creature within 10 feet. The creature takes {@damage 3d6} acid damage with a DC 20 basic Fortitude save. On a failed save, the target is also {@condition sickened 1}."
 					],
@@ -25044,7 +25092,10 @@
 						"mental",
 						"visual"
 					],
-					"frequency": "once per day",
+					"frequency": {
+						"unit": "day",
+						"freq": 1
+					},
 					"entries": [
 						"The grioth cultist waves a hand in a complex pattern to invoke dark powers, dealing {@damage 3d8} mental damage. Each nongrioth creature within 20 feet must attempt a DC 20 Will save.",
 						{
@@ -26714,7 +26765,10 @@
 						"number": 1,
 						"unit": "action"
 					},
-					"frequency": "once per round",
+					"frequency": {
+						"unit": "round",
+						"freq": 1
+					},
 					"requirements": "The hatred siktempora has a creature {@condition grabbed}",
 					"entries": [
 						"The hatred siktempora tightens their garrote, dealing {@damage 5d10} bludgeoning damage to each creature they're Grabbing. Each creature {@condition grabbed} by the siktempora must attempt a DC 40 Fortitude save.",
@@ -26961,7 +27015,10 @@
 						"entry": "{@as F}"
 					},
 					"trigger": "The titan casts plane shift",
-					"frequency": "once per month;",
+					"frequency": {
+						"unit": "month",
+						"freq": 1
+					},
 					"entries": [
 						"The titan arrives in a storm of shattered planar barriers. This has the effects of a 10th-level {@spell storm of vengeance}."
 					],
@@ -27381,7 +27438,10 @@
 							]
 						}
 					],
-					"frequency": "once per round",
+					"frequency": {
+						"unit": "round",
+						"freq": 1
+					},
 					"name": "Swing from the Saddle"
 				},
 				{
@@ -29262,7 +29322,10 @@
 						"divination",
 						"occult"
 					],
-					"frequency": "once per day",
+					"frequency": {
+						"unit": "day",
+						"freq": 1
+					},
 					"entries": [
 						"Up to six of the hyakume's eyes detach from the hyakume's body. Each eye has AC 26, HP 1, and a fly speed of 40 feet. The hyakume can see through all of their eye probes. They can move the probes all in separate directions using a single action. A hyakume can have no more than six eye probes active at a time; using this ability to create more causes the eye or eyes farthest away to shrivel and die. The hyakume can deliver touch spells through their eye probes and can make melee spell attacks through them. In addition, the hyakume can {@action Steal} Memories through an eye probe using a single action by touching the target with the eye."
 					],
@@ -30032,7 +30095,10 @@
 						"incapacitation",
 						"mental"
 					],
-					"frequency": "once per round",
+					"frequency": {
+						"unit": "round",
+						"freq": 1
+					},
 					"entries": [
 						"The japalisura whispers misleading words and falsehoods to one adjacent creature, attempting a {@skill Deception} check against the target's {@skill Perception} DC.",
 						{
@@ -33346,7 +33412,10 @@
 						"number": 1,
 						"unit": "action"
 					},
-					"frequency": "once per round",
+					"frequency": {
+						"unit": "round",
+						"freq": 1
+					},
 					"entries": [
 						"The kurobozu makes two unarmed Strikes. If both hit the same creature, combine their damage for the purpose of resistances and weaknesses, and the target must succeed at a DC 22 Fortitude save or be {@condition stunned 1} (or {@condition stunned 3} on a critical failure); this save has the {@trait incapacitation} trait."
 					],
@@ -33807,7 +33876,10 @@
 						"mental",
 						"primal"
 					],
-					"frequency": "once per round",
+					"frequency": {
+						"unit": "round",
+						"freq": 1
+					},
 					"entries": [
 						"The lampad begins a heart-wrenching fit of weeping, inspiring sympathetic sobbing in nearby creatures. Each non-lampad creature within 30 feet who hears the lampad's weeping must succeed at a DC 20 Will save or be unable to use reactions for 1 round and {@condition slowed 1} on its next turn as it sobs uncontrollably."
 					],
@@ -36469,7 +36541,10 @@
 						"entry": "{@as F}"
 					},
 					"trigger": "a foe's turn begins",
-					"frequency": "once per round;",
+					"frequency": {
+						"unit": "round",
+						"freq": 1
+					},
 					"entries": [
 						"The maharaja's four heads allow them to quickly cast additional spells. They cast one of their 8th-level or lower occult spontaneous spells that normally takes 2 actions or fewer to cast."
 					],
@@ -36669,7 +36744,10 @@
 						"number": 1,
 						"unit": "action"
 					},
-					"frequency": "once per round",
+					"frequency": {
+						"unit": "round",
+						"freq": 1
+					},
 					"entries": [
 						"The paaridar makes two unarmed Strikes or two spike Strikes. If both hit the same creature, combine their damage for the purpose of resistances and weaknesses."
 					],
@@ -37071,7 +37149,7 @@
 						"magical"
 					],
 					"effects": [],
-					"damage": "{@dice 1d6}\u20131 bludgeoning damage",
+					"damage": "{@dice 1d6-1} bludgeoning damage",
 					"types": [
 						"bludgeoning"
 					]
@@ -39679,7 +39757,10 @@
 					"traits": [
 						"primal"
 					],
-					"frequency": "once per day",
+					"frequency": {
+						"unit": "day",
+						"freq": 1
+					},
 					"entries": [
 						"The mothman casts any spell of 5th level or lower that normally takes 2 or fewer actions to cast, whether they have those spells in their innate spells or not. They can use this ability only if doing so steers the flow of fate in its proper course toward a disaster or otherwise significantly memorable event. What the proper flow of fate entails is determined by the GM, but some examples include casting illusory scene to coax someone to a portentous location, casting sending to deliver an important message to someone the exact moment they need to hear it, or casting rusting grasp to weaken a structure and cause some necessary calamity."
 					],
@@ -40097,7 +40178,10 @@
 						"divination",
 						"occult"
 					],
-					"frequency": "once per day",
+					"frequency": {
+						"unit": "day",
+						"freq": 1
+					},
 					"entries": [
 						"By concentrating their psychic energy on a held object, the munavri intuits its use and understands how to effectively wield it. The munavri chooses one item they are holding. They gain the trained proficiency rank in one statistic required to use that item, but only for the purpose of using that specific item. For example, they could become trained in greatswords (to use a specific greatsword) or {@skill Acrobatics} (to use a jade cat talisman). This benefit lasts for 1 hour."
 					],
@@ -40226,7 +40310,10 @@
 						"number": 1,
 						"unit": "action"
 					},
-					"frequency": "once per day",
+					"frequency": {
+						"unit": "day",
+						"freq": 1
+					},
 					"entries": [
 						"The myceloid expels spores in a 10-foot burst centered on a corner of its own space. This cloud lasts until the start of the myceloid's next turn. Each creature that is in the cloud or enters it is exposed to purple pox."
 					],
@@ -40449,7 +40536,10 @@
 						"unit": "action"
 					},
 					"requirements": "The nagaji is afflicted with a poison",
-					"frequency": "once per round;",
+					"frequency": {
+						"unit": "round",
+						"freq": 1
+					},
 					"entries": [
 						"The nagaji accelerates their metabolism. They roll a saving throw against the affliction with a +2 circumstance bonus. If they must attempt an ongoing save against the same poison at the end of their turn, they also get a +2 circumstance bonus to that save."
 					],
@@ -42321,7 +42411,10 @@
 						"unit": "action"
 					},
 					"requirements": "The nosferatu thrall's last action was a greatclub {@action Strike} that missed",
-					"frequency": "once per round;",
+					"frequency": {
+						"unit": "round",
+						"freq": 1
+					},
 					"entries": [
 						"The nosferatu thrall makes another greatclub {@action Strike} against the same target, using the previous {@action Strike}'s multiple attack penalty."
 					],
@@ -42680,7 +42773,7 @@
 						"magical"
 					],
 					"effects": [],
-					"damage": "{@dice 1d6}\u20133 bludgeoning damage",
+					"damage": "{@dice 1d6-3} bludgeoning damage",
 					"types": [
 						"bludgeoning"
 					]
@@ -44599,7 +44692,10 @@
 						"enchantment",
 						"mental"
 					],
-					"frequency": "once per day",
+					"frequency": {
+						"unit": "day",
+						"freq": 1
+					},
 					"entries": [
 						"The pairaka torments a sleeping creature within 100 feet with visions of betrayals by loved ones and friends. The target must attempt a DC 25 Will save, with the effects of the {@spell nightmare} spell."
 					],
@@ -45180,7 +45276,10 @@
 						"occult",
 						"mental"
 					],
-					"frequency": "once per day",
+					"frequency": {
+						"unit": "day",
+						"freq": 1
+					},
 					"entries": [
 						"The skelm gives an impassioned speech calling for his followers to act upon their convictions. Each creature within 30 feet must attempt a DC 24 Will save.",
 						{
@@ -45650,7 +45749,10 @@
 						"divine",
 						"teleportation"
 					],
-					"frequency": "once per hour",
+					"frequency": {
+						"unit": "hour",
+						"freq": 1
+					},
 					"entries": [
 						"The peri {@action Stride||Strides} into an open flame of their size or larger and instantly transports themself to any other flame of sufficient size within 100 miles. Once they enter the first flame, the peri instantly learns the locations of all other flames within range."
 					],
@@ -46809,7 +46911,10 @@
 						"occult",
 						"positive"
 					],
-					"frequency": "once per round",
+					"frequency": {
+						"unit": "round",
+						"freq": 1
+					},
 					"entries": [
 						"The popobawa draws strength from the suffering of others. It regains 10 Hit Points for each enemy within 30 feet that has one of the following conditions, to a maximum of 40."
 					],
@@ -48224,7 +48329,10 @@
 						"unit": "varies",
 						"entry": "{@as 1} to {@as 3}"
 					},
-					"frequency": "once per round",
+					"frequency": {
+						"unit": "round",
+						"freq": 1
+					},
 					"entries": [
 						"The members of the mob wildly swing their weapons\u2014primarily greataxes\u2014in a chaotic attack at each enemy adjacent to the troop (DC 27 basic Reflex save). The damage depends on the number of actions. {@as 1} {@damage 1d12+2} slashing damage {@as 2} {@damage 2d12+9} slashing damage {@as 3} {@damage 3d12+9} slashing damage."
 					],
@@ -49661,7 +49769,10 @@
 						"divination",
 						"occult"
 					],
-					"frequency": "once per day",
+					"frequency": {
+						"unit": "day",
+						"freq": 1
+					},
 					"entries": [
 						"Trigger The samsaran anchorite is about to roll initiative; The anchorite experiences a flash of recognition from a previous existence, gaining a +4 circumstance bonus to the triggering roll. If this causes the anchorite to be the first creature to act, they also become {@condition quickened} for 1 round, but they can use the extra action only to Recall."
 					],
@@ -49683,7 +49794,10 @@
 						"mental"
 					],
 					"trigger": "The samsaran anchorite fails or critically fails a Will save against an {@trait emotion} effect",
-					"frequency": "once per day;",
+					"frequency": {
+						"unit": "day",
+						"freq": 1
+					},
 					"entries": [
 						"Even in the face of overwhelming tribulation, the anchorite finds solace in the notion that all things are merely part of a never-ending cycle. They reroll the saving throw with a +1 status bonus; they must use the second result."
 					],
@@ -51567,7 +51681,10 @@
 						"unit": "varies",
 						"entry": "{@as 1} to {@as 2}"
 					},
-					"frequency": "once per round",
+					"frequency": {
+						"unit": "round",
+						"freq": 1
+					},
 					"entries": [
 						"The shamblers lash out at any enemies in their squares or within 5 feet (DC 18 basic Reflex save). The damage depends on the number of actions. {@as 1} {@damage 2d6+5} bludgeoning damage {@as 2} {@damage 2d6+9} bludgeoning damage."
 					],
@@ -52601,7 +52718,10 @@
 						"occult"
 					],
 					"trigger": "The shulsaga's last action was a successful melee {@action Strike} against an astral form created by the {@ritual astral projection|apg} ritual or a similar effect",
-					"frequency": "once per minute;",
+					"frequency": {
+						"unit": "minute",
+						"freq": 1
+					},
 					"entries": [
 						"The shulsaga attempts to counteract the effect projecting the creature onto the Astral Plane, with the effects of a 5th-level {@spell dispel magic} spell (counteract modifier +18)."
 					],
@@ -52627,7 +52747,10 @@
 						"entry": "{@as F}"
 					},
 					"requirements": "The shulsaga is adjacent to a floating disk they created",
-					"frequency": "once per round;",
+					"frequency": {
+						"unit": "round",
+						"freq": 1
+					},
 					"entries": [
 						"The shulsaga {@action Step||Steps} into the disk's space and rides atop the disk. They can also use this action to dismount from their disk."
 					],
@@ -52973,7 +53096,10 @@
 						"unit": "varies",
 						"entry": "{@as 1} to {@as 3}"
 					},
-					"frequency": "once per round",
+					"frequency": {
+						"unit": "round",
+						"freq": 1
+					},
 					"entries": [
 						"The skeletons engage in a coordinated longspear attack against each enemy within 10 feet (DC 27 basic Reflex save). The damage depends on the number of actions. {@as 1} {@damage 2d8} piercing damage {@as 2} {@damage 3d8+8} piercing damage {@as 3} {@damage 4d8+8} piercing damage."
 					],
@@ -54409,10 +54535,10 @@
 						"magical"
 					],
 					"effects": [
-						"{@dice 1d10}\u20131",
+						"{@dice 1d10-1}",
 						"slippery grease"
 					],
-					"damage": "{@dice 1d10}\u20131 plus {@damage 1d6} fire and slippery grease",
+					"damage": "{@dice 1d10-1} plus {@damage 1d6} fire and slippery grease",
 					"types": [
 						"fire"
 					]
@@ -55793,7 +55919,11 @@
 						"emotion",
 						"mental"
 					],
-					"frequency": "once per 10 minutes",
+					"frequency": {
+						"unit": "minute",
+						"interval": 10,
+						"freq": 1
+					},
 					"trigger": "The kinmate or a strix ally they can see is damaged by an enemy's critical hit",
 					"entries": [
 						"Until the end of their next turn, the kinmate gains a {@damage 1d6|+1d6} status bonus to damage rolls on Strikes they make against the triggering enemy."
@@ -57235,7 +57365,10 @@
 						"number": 2,
 						"unit": "action"
 					},
-					"frequency": "once per minute",
+					"frequency": {
+						"unit": "minute",
+						"freq": 1
+					},
 					"entries": [
 						"The terror bird {@action Stride||Strides} three times in a straight line."
 					],
@@ -57367,7 +57500,10 @@
 						"The terror bird {@action Stride||Strides} three times in a straight line."
 					],
 					"name": "Sprint",
-					"frequency": "once per minute"
+					"frequency": {
+						"unit": "minute",
+						"freq": 1
+					}
 				},
 				{
 					"activity": {
@@ -61263,7 +61399,10 @@
 						"necromancy"
 					],
 					"trigger": "An allied creature within 60 feet who isn't a construct or undead is reduced to 0 Hit Points and their {@condition dying} value is 2 or less",
-					"frequency": "once per day;",
+					"frequency": {
+						"unit": "day",
+						"freq": 1
+					},
 					"entries": [
 						"The valkyrie restores {@dice 5d10} Hit Points to the target."
 					],
@@ -61555,7 +61694,10 @@
 						"number": 1,
 						"unit": "action"
 					},
-					"frequency": "once per round",
+					"frequency": {
+						"unit": "round",
+						"freq": 1
+					},
 					"entries": [
 						"The vanara disciple makes two unarmed Strikes. If both hit the same creature, combine their damage for the purpose of resistances and weaknesses."
 					],
@@ -62360,7 +62502,10 @@
 						"number": 1,
 						"unit": "action"
 					},
-					"frequency": "once per day",
+					"frequency": {
+						"unit": "day",
+						"freq": 1
+					},
 					"entries": [
 						"Using either saliva or blood, the vishkanya applies vishkanyan venom to one weapon they're holding. To use their blood, they must be injured, or they can deal themselves 1 slashing damage as part of the action."
 					],
@@ -65094,7 +65239,10 @@
 						"incapacitation",
 						"mental"
 					],
-					"frequency": "once per day",
+					"frequency": {
+						"unit": "day",
+						"freq": 1
+					},
 					"entries": [
 						"The ximtal attempts to isolate its enemy's companions, forcing an impression that each creature's friends and allies have vanished and they are all alone against an insurmountable threat. The ximtal chooses up to four creatures, each of whom must be adjacent to one other target. Each target must attempt a DC 38 Will save. On a failure, a target becomes out of phase with all allies. The affected creatures can't perceive their allies or interact with them in any way, and they can move into allies' spaces as if their allies simply weren't there. Allies similarly can't perceive or interact with the affected creatures with one exception: an ally can target an effected creature with remove curse to remove the effects. Every 24 hours, an affected creature can attempt a new saving throw to end this effect."
 					],
@@ -65836,7 +65984,10 @@
 						"primal"
 					],
 					"trigger": "The forest dragon is targeted with a water spell or effect",
-					"frequency": "once per hour",
+					"frequency": {
+						"unit": "hour",
+						"freq": 1
+					},
 					"entries": [
 						"The forest dragon gains 30 temporary Hit Points."
 					],
@@ -66954,7 +67105,10 @@
 						"light",
 						"occult"
 					],
-					"frequency": "once per hour",
+					"frequency": {
+						"unit": "hour",
+						"freq": 1
+					},
 					"entries": [
 						"The dragon's golden armor glows with a protective golden light. The dragon gains a +2 status bonus to AC and resistance 10 to energy damage. Each enemy in a 20-foot emanation must succeed at a DC 30 Fortitude save or be {@condition dazzled}. All these effects last until the end of the dragon's next turn."
 					],

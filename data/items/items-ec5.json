@@ -46,7 +46,11 @@
 					"components": [
 						"command"
 					],
-					"frequency": "once per 10 minutes",
+					"frequency": {
+						"unit": "minute",
+						"interval": 10,
+						"freq": 1
+					},
 					"trigger": "You damage a creature using the anchor spear",
 					"requirements": null,
 					"entries": [
@@ -285,7 +289,11 @@
 					"components": [
 						"Interact"
 					],
-					"frequency": "once per 10 minutes",
+					"frequency": {
+						"unit": "minute",
+						"interval": 10,
+						"freq": 1
+					},
 					"trigger": null,
 					"requirements": "You are riding a mount",
 					"entries": [
@@ -329,7 +337,10 @@
 					"components": [
 						"command"
 					],
-					"frequency": "once per day",
+					"frequency": {
+						"unit": "day",
+						"freq": 1
+					},
 					"trigger": null,
 					"requirements": null,
 					"entries": [
@@ -345,7 +356,11 @@
 					"components": [
 						"envision"
 					],
-					"frequency": "once per 10 minutes",
+					"frequency": {
+						"unit": "minute",
+						"interval": 10,
+						"freq": 1
+					},
 					"trigger": "You successfully {@action Strike} a creature with Life's",
 					"requirements": null,
 					"entries": [

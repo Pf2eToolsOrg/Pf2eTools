@@ -1,6 +1,28 @@
 {
 	"trait": [
 		{
+			"name": "[Class]",
+			"source": "SoM",
+			"page": 219,
+			"categories": [
+				"Class"
+			],
+			"entries": [
+				"When you take this feat, it gains the trait appropriate for your class {@note (replacing this one)}."
+			]
+		},
+		{
+			"name": "[Magical Tradition]",
+			"source": "Bst",
+			"page": 342,
+			"categories": [
+				"Schools & Traditions"
+			],
+			"entries": [
+				"{@note Replace this trait with another fitting magic tradition, such as {@trait Arcane}, {@trait Divine}, {@trait Primal}, or {@trait Occult}."
+			]
+		},
+		{
 			"name": "Aasimar",
 			"source": "APG",
 			"page": 266,
@@ -325,14 +347,7 @@
 			],
 			"entries": [
 				"This magic comes from the arcane tradition, which is built on logic and rationality. Anything with this trait is {@trait magical}.",
-				{
-					"type": "entriesOtherSource",
-					"entries": [
-						"This magic comes from the arcane tradition, which is built on logic and rationality. Anything with this trait is magical. A creature with this trait is primarily constituted of or has a strong connection to arcane magic."
-					],
-					"source": "G&G",
-					"page": 230
-				}
+				"A creature with this trait is primarily constituted of or has a strong connection to arcane magic."
 			]
 		},
 		{
@@ -448,15 +463,7 @@
 				"Combat"
 			],
 			"entries": [
-				"An aura is an emanation that continually ebbs out from you, affecting creatures within a certain radius. Aura can also refer to the magical signature of an item or a creature with a strong alignment.",
-				{
-					"type": "entriesOtherSource",
-					"entries": [
-						"An aura is an emanation that continually ebbs out from you, affecting creatures within a certain radius."
-					],
-					"source": "G&G",
-					"page": 230
-				}
+				"An aura is an emanation that continually ebbs out from you, affecting creatures within a certain radius. Aura can also refer to the magical signature of an item or a creature with a strong alignment."
 			]
 		},
 		{
@@ -705,15 +712,6 @@
 						"A creature with this trait is a member of the catfolk ancestry. Catfolk are humanoids with feline features. An ability with this trait can be used or selected only by catfolk. An item with this trait is created and used by catfolk."
 					]
 				}
-			]
-		},
-		{
-			"name": "Lineage",
-			"source": "APG",
-			"page": 268,
-			"categories": [],
-			"entries": [
-				"A feat with this trait indicates a character's descendance from a particular type of creature. You can have only one lineage feat. You can select a lineage feat only at 1st level, and you can't retrain into or out of these feats."
 			]
 		},
 		{
@@ -1088,15 +1086,7 @@
 				"Creature Type"
 			],
 			"entries": [
-				"A construct is an artificial creature empowered by a force other than necromancy. Constructs are often {@trait mindless}; they are immune to disease, the {@condition paralyzed} condition, and poison; and they may have Hardness based on the materials used to construct their bodies. Constructs are not living creatures, nor are they undead. When reduced to 0 Hit Points, a construct creature is destroyed.",
-				{
-					"type": "entriesOtherSource",
-					"entries": [
-						"A construct is an artificial creature empowered by a force other than necromancy. Constructs are often {@trait mindless}; they are immune to {@condition persistent damage||bleed damage}, {@trait death} effects, disease, {@trait healing}, {@trait necromancy}, {@trait nonlethal} attacks, poison, and the {@condition doomed}, {@condition drained}, {@condition fatigued}, {@condition paralyzed}, {@condition sickened}, and {@condition unconscious} conditions; and they may have Hardness based on the materials used to construct their bodies. Constructs are not living creatures, nor are they undead. When reduced to 0 Hit Points, a construct creature is destroyed."
-					],
-					"source": "G&G",
-					"page": 231
-				}
+				"A construct is an artificial creature empowered by a force other than necromancy. Constructs are often {@trait mindless}; they are immune to disease, the {@condition paralyzed} condition, and poison; and they may have Hardness based on the materials used to construct their bodies. Constructs are not living creatures, nor are they undead. When reduced to 0 Hit Points, a construct creature is destroyed."
 			]
 		},
 		{
@@ -1345,6 +1335,11 @@
 			"name": "Dhampir",
 			"source": "Bst",
 			"page": 346,
+			"otherSources": {
+				"Expanded": [
+					"APG|267"
+				]
+			},
 			"categories": [
 				"Ancestry & Heritage",
 				"Creature"
@@ -1383,7 +1378,7 @@
 			"source": "CRB",
 			"page": 282,
 			"otherSources": {
-				"Expanded": [
+				"Reprinted": [
 					"G&G|232"
 				]
 			},
@@ -1391,15 +1386,7 @@
 				"Armor & Weapon"
 			],
 			"entries": [
-				"You can use this weapon to {@action Disarm} with the {@skill Athletics} skill even if you don't have a free hand. This uses the weapon's reach (if different from your own) and adds the weapon's item bonus to attack rolls (if any) as an item bonus to the {@skill Athletics} check. If you critically fail a check to Disarm using the weapon, you can drop the weapon to take the effects of a failure instead of a critical failure. On a critical success, you still need a free hand if you want to take the item.",
-				{
-					"type": "entriesOtherSource",
-					"entries": [
-						"You can use this weapon to {@action Disarm} with the {@skill Athletics} skill even if you don't have a free hand."
-					],
-					"source": "G&G",
-					"page": 232
-				}
+				"You can use this weapon to {@action Disarm} with the {@skill Athletics} skill even if you don't have a free hand. This uses the weapon's reach (if different from your own) and adds the weapon's item bonus to attack rolls (if any) as an item bonus to the {@skill Athletics} check. If you critically fail a check to Disarm using the weapon, you can drop the weapon to take the effects of a failure instead of a critical failure. On a critical success, you still need a free hand if you want to take the item."
 			]
 		},
 		{
@@ -1499,15 +1486,7 @@
 				"Creature Type"
 			],
 			"entries": [
-				"Dragons are reptilian creatures, often winged or with the power of flight. Most are able to use a breath weapon and are immune to {@trait sleep} and {@condition paralyzed|CRB|paralysis}.",
-				{
-					"type": "entriesOtherSource",
-					"entries": [
-						"Dragons are reptilian creatures, often winged or with the power of flight. Most are able to use a breath weapon and are immune to sleep and paralysis."
-					],
-					"source": "SoM",
-					"page": 252
-				}
+				"Dragons are reptilian creatures, often winged or with the power of flight. Most are able to use a breath weapon and are immune to {@trait sleep} and {@condition paralyzed|CRB|paralysis}."
 			]
 		},
 		{
@@ -1592,7 +1571,7 @@
 			"source": "CRB",
 			"page": 631,
 			"otherSources": {
-				"Expanded": [
+				"Reprinted": [
 					"G&G|232"
 				]
 			},
@@ -1601,15 +1580,7 @@
 				"Creature"
 			],
 			"entries": [
-				"A creature with this trait is a member of the dwarf ancestry. Dwarves are stout folk who often live underground and typically have {@ability darkvision}. An ability with this trait can be used or selected only by dwarves. An item with this trait is created and used by dwarves.",
-				{
-					"type": "entriesOtherSource",
-					"entries": [
-						"A creature with this trait is a member of the dwarf ancestry. Dwarves are stout folk who often live underground and typically have darkvision. An ability with this trait can be used or selected only by dwarves."
-					],
-					"source": "G&G",
-					"page": 232
-				}
+				"A creature with this trait is a member of the dwarf ancestry. Dwarves are stout folk who often live underground and typically have {@ability darkvision}. An ability with this trait can be used or selected only by dwarves. An item with this trait is created and used by dwarves."
 			]
 		},
 		{
@@ -2693,6 +2664,15 @@
 			]
 		},
 		{
+			"name": "Hellknight",
+			"source": "LOCG",
+			"page": 133,
+			"categories": [],
+			"entries": [
+				"The Hellknights are a collection of knightly orders focused on maintaining order and upholding the law."
+			]
+		},
+		{
 			"name": "Hex",
 			"source": "APG",
 			"page": 101,
@@ -3002,6 +2982,17 @@
 			]
 		},
 		{
+			"name": "Investigator",
+			"source": "APG",
+			"page": 268,
+			"categories": [
+				"Class"
+			],
+			"entries": [
+				"This indicates abilities from the {@class investigator|apg} class."
+			]
+		},
+		{
 			"name": "Jousting",
 			"source": "CRB",
 			"page": 283,
@@ -3171,6 +3162,15 @@
 			],
 			"entries": [
 				"Light effects overcome non-magical darkness in the area, and can counteract magical {@trait darkness}. You must usually target darkness magic with your light magic directly to counteract the darkness, but some light spells automatically attempt to counteract darkness."
+			]
+		},
+		{
+			"name": "Lineage",
+			"source": "APG",
+			"page": 268,
+			"categories": [],
+			"entries": [
+				"A feat with this trait indicates a character's descendance from a particular type of creature. You can have only one lineage feat. You can select a lineage feat only at 1st level, and you can't retrain into or out of these feats."
 			]
 		},
 		{
@@ -3951,32 +3951,10 @@
 			"source": "SoM",
 			"page": 218,
 			"categories": [
-				"Generic"
+				"General"
 			],
 			"entries": [
 				"{@note For more information read the {@variantrule pervasive magic|som} variant rule.}"
-			]
-		},
-		{
-			"name": "[Class]",
-			"source": "SoM",
-			"page": 219,
-			"categories": [
-				"Class"
-			],
-			"entries": [
-				"When you take this feat, it gains the trait appropriate for your class {@note (replacing this one)}."
-			]
-		},
-		{
-			"name": "[Magical Tradition]",
-			"source": "Bst",
-			"page": 342,
-			"categories": [
-				"Schools & Traditions"
-			],
-			"entries": [
-				"{@note Replace this trait with another fitting magic tradition, such as {@trait Arcane}, {@trait Divine}, {@trait Primal}, or {@trait Occult}."
 			]
 		},
 		{
@@ -4049,16 +4027,28 @@
 				"Effect"
 			],
 			"entries": [
-				"These effects transform the target into a new form. A target can't be under the effect of more than one polymorph effect at a time. If it comes under the effect of a second polymorph effect, the second polymorph effect attempts to counteract the first. If it succeeds, it takes effect, and if it fails, the spell has no effect on that target. Any Strikes specifically granted by a polymorph effect are magical. Unless otherwise stated, polymorph spells don't allow the target to take on the appearance of a specific individual creature, but rather just a generic creature of a general type or ancestry.",
+				"These effects transform the target into a new form. A target can't be under the effect of more than one polymorph effect at a time. If it comes under the effect of a second polymorph effect, the second polymorph effect attempts to counteract the first. If it succeeds, it takes effect, and if it fails, the spell has no effect on that target. Any Strikes specifically granted by a polymorph effect are magical. Unless otherwise stated, polymorph spells don't allow the target to take on the appearance of a specific individual creature, but rather just a General creature of a general type or ancestry.",
 				"If you take on a battle form with a polymorph spell, the special statistics can be adjusted only by circumstance bonuses, status bonuses, and penalties. Unless otherwise noted, the battle form prevents you from casting spells, speaking, and using most manipulate actions that require hands. (If there's doubt about whether you can use an action, the GM decides.) Your gear is absorbed into you; the constant abilities of your gear still function, but you can't activate any items.",
 				{
 					"type": "entriesOtherSource",
 					"entries": [
-						"These effects transform the target into a new form. A target can't be under the effect of more than one {@trait polymorph} effect at a time. If it comes under the effect of a second {@trait polymorph} effect, the second {@trait polymorph} effect attempts to counteract the first. If it succeeds, it takes effect, and if it fails, the spell has no effect on that target. Any Strikes specifically granted by a {@trait polymorph} effect are magical. Unless otherwise stated, polymorph spells don't allow the target to take on the appearance of a specific individual creature, but rather just a generic creature of a type or ancestry."
+						"These effects transform the target into a new form. A target can't be under the effect of more than one {@trait polymorph} effect at a time. If it comes under the effect of a second {@trait polymorph} effect, the second {@trait polymorph} effect attempts to counteract the first. If it succeeds, it takes effect, and if it fails, the spell has no effect on that target. Any Strikes specifically granted by a {@trait polymorph} effect are magical. Unless otherwise stated, polymorph spells don't allow the target to take on the appearance of a specific individual creature, but rather just a General creature of a type or ancestry."
 					],
 					"source": "G&G",
 					"page": 235
 				}
+			]
+		},
+		{
+			"name": "Poppet",
+			"source": "LOTGB",
+			"page": 134,
+			"categories": [
+				"Creature",
+				"Ancestry & Heritage"
+			],
+			"entries": [
+				"Small constructs originally designed to serve as companions or servants. They occasionally gain a greater spark of life, transforming them into independent, sapient creatures."
 			]
 		},
 		{
@@ -4771,18 +4761,6 @@
 			]
 		},
 		{
-			"name": "Strix",
-			"source": "LOAG",
-			"page": 142,
-			"categories": [
-				"Creature",
-				"Ancestry & Heritage"
-			],
-			"entries": [
-				"Winged humanoids, most of whom live in and around Cheliax."
-			]
-		},
-		{
 			"name": "Sprite",
 			"source": "Bst",
 			"page": 347,
@@ -4853,6 +4831,18 @@
 			]
 		},
 		{
+			"name": "Strix",
+			"source": "LOAG",
+			"page": 142,
+			"categories": [
+				"Creature",
+				"Ancestry & Heritage"
+			],
+			"entries": [
+				"Winged humanoids, most of whom live in and around Cheliax."
+			]
+		},
+		{
 			"name": "Structure",
 			"source": "CRB",
 			"page": 596,
@@ -4874,18 +4864,6 @@
 			],
 			"entries": [
 				"All bodies of mass can be centers of gravity with the same force, but only if a non-mindless creature wills it. Unattended items, objects, and {@trait mindless} creatures treat the plane as having microgravity. Creatures on a plane with subjective gravity can move normally along a solid surface by imagining \"down\" near their feet. Designating this downward direction is a free action that has the {@trait concentrate} trait. If suspended in midair, a creature can replicate flight by choosing a \"down\" direction and falling in that direction, moving up to their Speed or fly Speed. This pseudo-flight uses the {@action Fly} action."
-			]
-		},
-		{
-			"name": "Poppet",
-			"source": "LOTGB",
-			"page": 134,
-			"categories": [
-				"Creature",
-				"Ancestry & Heritage"
-			],
-			"entries": [
-				"Small constructs originally designed to serve as companions or servants. They occasionally gain a greater spark of life, transforming them into independent, sapient creatures."
 			]
 		},
 		{
@@ -4919,28 +4897,6 @@
 			]
 		},
 		{
-			"name": "Investigator",
-			"source": "APG",
-			"page": 268,
-			"categories": [
-				"Class"
-			],
-			"entries": [
-				"This indicates abilities from the {@class investigator|apg} class."
-			]
-		},
-		{
-			"name": "Swashbuckler",
-			"source": "APG",
-			"page": 270,
-			"categories": [
-				"Class"
-			],
-			"entries": [
-				"This indicates abilities from the {@class swashbuckler|apg} class."
-			]
-		},
-		{
 			"name": "Summoner",
 			"source": "SoM",
 			"page": 254,
@@ -4965,6 +4921,17 @@
 			],
 			"entries": [
 				"A swarm is a mass or cloud of creatures that functions as one monster. Its size entry gives the size of the entire mass, though for most swarms the individual creatures that make up that mass are Tiny. A swarm can occupy the same space as other creatures, and must do so in order to use its damaging action. A swarm typically has weakness to effects that deal damage over an area (like area spells and splash weapons). Swarms are immune to the grappled, prone, and restrained conditions."
+			]
+		},
+		{
+			"name": "Swashbuckler",
+			"source": "APG",
+			"page": 270,
+			"categories": [
+				"Class"
+			],
+			"entries": [
+				"This indicates abilities from the {@class swashbuckler|apg} class."
 			]
 		},
 		{
@@ -5111,15 +5078,6 @@
 			],
 			"entries": [
 				"You can throw this weapon as a ranged attack; it is a ranged weapon when thrown. You add your Strength modifier to damage as you would for a melee weapon. When this trait appears on a melee weapon, it also includes the range increment. Ranged weapons with this trait use the range increment in the weapon's Range entry."
-			]
-		},
-		{
-			"name": "Hellknight",
-			"source": "LOCG",
-			"page": 133,
-			"categories": [],
-			"entries": [
-				"The Hellknights are a collection of knightly orders focused on maintaining order and upholding the law."
 			]
 		},
 		{

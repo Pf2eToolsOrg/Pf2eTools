@@ -138,7 +138,10 @@
 				"Archetype"
 			],
 			"prerequisites": "{@feat Spellmaster Dedication|LOCG}",
-			"frequency": "once per round",
+			"frequency": {
+				"unit": "round",
+				"freq": 1
+			},
 			"entries": [
 				"Choose one spell with a sustained duration that one of your allies has in effect. You must be within 30 feet of the chosen ally. The ally can {@action Sustain a Spell||Sustain the Spell} once as a free action, triggered at the start of their next turn."
 			]
@@ -252,7 +255,10 @@
 				"Skill"
 			],
 			"prerequisites": "{@feat Pathfinder Agent Dedication|LOWG}, master in a skill used to {@action Recall Knowledge}",
-			"frequency": "once per round",
+			"frequency": {
+				"unit": "round",
+				"freq": 1
+			},
 			"trigger": "You successfully {@action Recall Knowledge} about a creature you can see, using a skill in which you are a master.",
 			"entries": [
 				"Your Pathfinder training allows you to quickly size up numerous threats. Attempt to {@action Recall Knowledge} against a different kind of creature you can see using the same skill. You must still meet the requirements to attempt this check."
@@ -594,8 +600,7 @@
 				"unit": "reaction"
 			},
 			"level": 4,
-			"featType": {
-			},
+			"featType": {},
 			"traits": [
 				"Uncommon",
 				"General",
@@ -918,7 +923,10 @@
 				"Archetype"
 			],
 			"prerequisites": "{@feat Pathfinder Agent Dedication|LOWG}",
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"entries": [
 				"During your training to become a Pathfinder Agent you were schooled on a wide variety of creatures you might encounter, and you can think back to that training to gain crucial insight in times of need. Attempt a check to {@action Recall Knowledge} about a creature you can see, adding your level as a proficiency bonus if you are untrained (rather than 0)",
 				"If you roll a failure (but not a critical failure) on this check, you get a success instead."
@@ -1018,7 +1026,10 @@
 				"Archetype"
 			],
 			"prerequisites": "{@feat Spellmaster's Resilience|LOCG}",
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"trigger": "You critically fail at a saving throw against a foe's spell, and that spell was cast or created with the tradition of magic you selected with the Spellmaster's Resilience feat.",
 			"entries": [
 				"You call upon the power of your spells to protect you from the worst of the magic headed your way. You fail your saving throw instead of critically failing. For 1 minute, increase the circumstance bonus to saving throws from the Spellmaster's Resilience feat to +2, and increase the resistance to damage it grants to 10."
@@ -1112,7 +1123,10 @@
 				"Archetype"
 			],
 			"prerequisites": "{@feat Pathfinder Agent Dedication|LOWG}",
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"entries": [
 				"Your time as a Pathfinder has taught you how to improvise, and you've learned to make use of the resources you find in the field. You Invest a magic item and remove a previously invested item. The previous item no longer counts against your limit of 10 invested items."
 			]

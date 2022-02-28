@@ -1,0 +1,81 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema",
+	"$id": "organizations.json",
+	"title": "Organizations",
+	"description": "The organization data type for Pf2eTools.",
+	"type": "object",
+	"version": "0.0.1",
+	"properties": {
+		"organization": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"source": {
+						"type": "string",
+						"$ref": "utils.json#/definitions/sourceList"
+					},
+					"name": {
+						"type": "string"
+					},
+					"title": {
+						"type": "array"
+					},
+					"scope": {
+						"type": "array"
+					},
+					"goals": {
+						"type": "array"
+					},
+					"headquarters": {
+						"type": "array"
+					},
+					"keyMembers": {
+						"type": "array"
+					},
+					"allies": {
+						"type": "array"
+					},
+					"enemies": {
+						"type": "array"
+					},
+					"assets": {
+						"type": "array"
+					},
+					"requirements": {
+						"type": "array"
+					},
+					"anathema": {
+						"type": "array"
+					},
+					"followerAlignment": {
+						"type": "array"
+					},
+					"hasLore": {
+						"type": "boolean"
+					},
+					"page": {
+						"type": "integer"
+					},
+                    "traits": {
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "$ref": "utils.json#/definitions/anyTraitUpper"
+                        },
+                        "minItems": 1,
+                        "uniqueItems": true
+                    },
+					"values": {
+						"type": "array"
+					}
+				},
+				"additionalProperties": false,
+				"required": ["source", "name", "page"]
+			},
+			"uniqueItems": true
+		}
+	},
+	"additionalProperties": false,
+	"required": ["organization"]
+}

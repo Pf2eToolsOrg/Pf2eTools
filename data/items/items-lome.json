@@ -1,41 +1,6 @@
 {
 	"item": [
 		{
-			"name": "Oath Of The Devoted",
-			"source": "LOME",
-			"page": 231,
-			"level": 9,
-			"type": "Item",
-			"category": "Contract",
-			"traits": [
-				"Rare",
-				"Contract",
-				"Divine",
-				"Invested",
-				"Magical",
-				"Necromancy"
-			],
-			"entries": [
-				"You gain fire and mental resistance 5.",
-				"When you die, you rise as an undead creature with the {@trait zombie} trait on the next round; if you are a PC, you become an NPC under Walkena's control. Your stats remain the same, except that your alignment changes to evil. If you reach 0 Hit Points as a zombie, you are destroyed and do not rise again.",
-				{
-					"type": "ability",
-					"activity": {
-						"unit": "action",
-						"number": 1
-					},
-					"components": [
-						"command"
-					],
-					"frequency": "once per day",
-					"entries": [
-						"You gain a +1 status bonus to Will saves. Choose a weapon or an unarmed {@action Strike}; your chosen attack deals an extra {@damage 1d6} fire damage for the next 1 minute."
-					]
-				}
-			],
-			"special": "If you are a zombie at a time when Mzali is entirely purged of foreigners, your duty is fulfilled and you are immediately destroyed."
-		},
-		{
 			"name": "Genealogy Mask",
 			"source": "LOME",
 			"page": 34,
@@ -67,7 +32,10 @@
 					"components": [
 						"command"
 					],
-					"frequency": "once per day",
+					"frequency": {
+						"unit": "day",
+						"freq": 1
+					},
 					"trigger": null,
 					"requirements": null,
 					"entries": [
@@ -105,7 +73,10 @@
 						"envision",
 						"interact"
 					],
-					"frequency": "once per day",
+					"frequency": {
+						"unit": "day",
+						"freq": 1
+					},
 					"trigger": null,
 					"requirements": null,
 					"entries": [
@@ -114,6 +85,44 @@
 				}
 			],
 			"generic": false
+		},
+		{
+			"name": "Oath Of The Devoted",
+			"source": "LOME",
+			"page": 231,
+			"type": "Item",
+			"level": 9,
+			"traits": [
+				"Rare",
+				"Contract",
+				"Divine",
+				"Invested",
+				"Magical",
+				"Necromancy"
+			],
+			"category": "Contract",
+			"entries": [
+				"You gain fire and mental resistance 5.",
+				"When you die, you rise as an undead creature with the {@trait zombie} trait on the next round; if you are a PC, you become an NPC under Walkena's control. Your stats remain the same, except that your alignment changes to evil. If you reach 0 Hit Points as a zombie, you are destroyed and do not rise again.",
+				{
+					"type": "ability",
+					"activity": {
+						"unit": "action",
+						"number": 1
+					},
+					"components": [
+						"command"
+					],
+					"frequency": {
+						"unit": "day",
+						"freq": 1
+					},
+					"entries": [
+						"You gain a +1 status bonus to Will saves. Choose a weapon or an unarmed {@action Strike}; your chosen attack deals an extra {@damage 1d6} fire damage for the next 1 minute."
+					]
+				}
+			],
+			"special": "If you are a zombie at a time when Mzali is entirely purged of foreigners, your duty is fulfilled and you are immediately destroyed."
 		}
 	]
 }

@@ -10,7 +10,7 @@
 			],
 			"prerequisites": "flame order, stone order, storm order, or wave order",
 			"entries": [
-				"Your connection to one of the great elemental aspects of nature deepens, allowing you further control over its powers. You gain the advanced order spell associated with your order: if you're a member of the flame order, you gain {@spell combustion|SoM}; if you're a member of the stone order, you gain {@spell stone lance|SoM}; if you're a member of the storm order, you gain powerful {@spell inhalation|SoM}; if you're a member of the wave order, you gain {@spell pulverizing cascade|SoM}. Increase the number of Focus Points in your focus pool by 1."
+				"Your connection to one of the great elemental aspects of nature deepens, allowing you further control over its powers. You gain the advanced order spell associated with your order: if you're a member of the flame order, you gain {@spell combustion|SoM}; if you're a member of the stone order, you gain {@spell stone lance|SoM}; if you're a member of the storm order, you gain {@spell powerful inhalation|SoM}; if you're a member of the wave order, you gain {@spell pulverizing cascade|SoM}. Increase the number of Focus Points in your focus pool by 1."
 			]
 		},
 		{
@@ -151,7 +151,10 @@
 				"Magus"
 			],
 			"prerequisites": "{@action Arcane Cascade|SoM}, {@action Spellstrike|SoM}",
-			"frequency": "once per turn",
+			"frequency": {
+				"unit": "turn",
+				"freq": 1
+			},
 			"requirements": "Your most recent action was to {@action Cast a Spell} from a spell slot or make a {@action Spellstrike|SoM} with a spell from a spell slot.",
 			"entries": [
 				"Your spell has a powerful aftereffect, briefly granting you a certain spell depending on the spell you cast. You use {@action Arcane Cascade|SoM} and are subject to an additional aftereffect spell depending on the school of your most recent spell. This aftereffect spell's duration lasts until the end of your next turn or its normal duration, whichever is longer. Using Arcane Shroud again ends any existing spell you gained from Arcane Shroud.",
@@ -224,7 +227,11 @@
 				"Archetype"
 			],
 			"prerequisites": "{@feat Geomancer Dedication|SoM}",
-			"frequency": "once per 10 minutes",
+			"frequency": {
+				"unit": "minute",
+				"interval": 10,
+				"freq": 1
+			},
 			"requirements": "Your previous action was to cast a spell with the {@trait air}, {@trait cold}, {@trait earth}, {@trait fire}, {@trait plant}, or {@trait water} trait",
 			"entries": [
 				"The magic of your spell floods into you, overriding your connection to the land around you. You alter your terrain attunement to a terrain that matches a trait of the spell you just cast. You thereby gain your terrain attunement benefit when you cast further spells with the same descriptor, instead of using the terrain you're actually in. For instance, if you cast {@spell tanglefoot}, your terrain attunement switches to your choice of forest or swamp, and your terrain attunement applies when you cast another plant spell.",
@@ -1283,7 +1290,10 @@
 				"Fire"
 			],
 			"prerequisites": "flame order",
-			"frequency": "once per minute",
+			"frequency": {
+				"unit": "minute",
+				"freq": 1
+			},
 			"trigger": "An opponent adjacent to you hits you with a melee weapon or a melee unarmed attack.",
 			"entries": [
 				"Ignoring your pain, you sear your attacker with a wave of flame. The triggering opponent takes fire damage equal to your level."
@@ -2180,7 +2190,10 @@
 				"Metamagic"
 			],
 			"prerequisites": "{@feat Geomancer Dedication|SoM}, legendary in {@skill Nature}",
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"requirements": "Your previous action was {@feat Attunement Shift|SoM}.",
 			"entries": [
 				"If your next action is to cast a spell that would grant your terrain attunement bonus, reduce the number of actions to cast it by 1 (to a minimum of 1 action)."
@@ -2256,7 +2269,10 @@
 				"Magus"
 			],
 			"prerequisites": "{@action Spellstrike|SoM}",
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"entries": [
 				"You tap into an arcane trick to recover your ability to meld spells and attacks. You recharge your {@action Spellstrike|SoM}."
 			]
@@ -3347,7 +3363,11 @@
 				"Archetype"
 			],
 			"prerequisites": "{@feat Geomancer Dedication|SoM}, master in {@skill Nature}",
-			"frequency": "once per 10 minutes",
+			"frequency": {
+				"unit": "minute",
+				"interval": 10,
+				"freq": 1
+			},
 			"trigger": "A {@action Strike} would damage you.",
 			"requirements": "You gained a terrain attunement benefit since the start of your most recent turn and that attunement matches the terrain you're in.",
 			"entries": [
@@ -3484,7 +3504,11 @@
 				"Archetype"
 			],
 			"prerequisites": "{@feat Wellspring Mage Dedication|SoM}",
-			"frequency": "once per 10 minutes",
+			"frequency": {
+				"unit": "minute",
+				"interval": 10,
+				"freq": 1
+			},
 			"trigger": "An enemy reduces you to 0 HP, an enemy critically hits you, or you critically fail a saving throw against an enemy's effect.",
 			"entries": [
 				"Defeat lets you to tap into your wellspring. Attempt the flat check for wellspring magic. If you critically succeed, you can choose to forgo gaining a temporary spell slot to instead have the triggering enemy undergo a wellspring surge. This surge functions just as it would for you, the only difference being that it emits from the enemy."
@@ -3530,7 +3554,10 @@
 				"Water"
 			],
 			"prerequisites": "{@feat Reflective Ripple Stance|SoM}",
-			"frequency": "once per minute",
+			"frequency": {
+				"unit": "minute",
+				"freq": 1
+			},
 			"requirements": "You're in Reflective Ripple Stance.",
 			"entries": [
 				"You dip and spin, unleashing a wide whirlpool of water. Make an {@skill Athletics} check to {@action Trip} each creature standing on the ground in a 10-foot emanation. These attacks all count toward your multiple attack penalty, but the penalty doesn't increase until after you make all the attacks."

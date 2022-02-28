@@ -368,7 +368,12 @@
 						"number": 1,
 						"unit": "action"
 					},
-					"frequency": "once every 10 minutes",
+					"frequency": {
+						"unit": "minute",
+						"interval": 10,
+						"recurs": true,
+						"freq": 1
+					},
 					"entries": [
 						"Belcorra extends her presence throughout the lowest three levels of Gauntlight until the end of her next turn. She can see with the benefits of all-around vision and can make ghostly hand attacks or use special abilities originating from any surface in this area."
 					],
@@ -379,7 +384,10 @@
 						"number": 1,
 						"unit": "free"
 					},
-					"frequency": "once per day",
+					"frequency": {
+						"unit": "day",
+						"freq": 1
+					},
 					"entries": [],
 					"name": "Quickened Casting"
 				},
@@ -692,7 +700,10 @@
 						"transmutation"
 					],
 					"requirements": "The cavern seer is underground",
-					"frequency": "once per day;",
+					"frequency": {
+						"unit": "day",
+						"freq": 1
+					},
 					"entries": [
 						"Pebbles and dust rise from the stone to impede vision. The cavern seer and their allies within 60 feet become {@condition concealed} for 1 minute. This concealment can't be used to {@action Hide} or {@action Sneak}."
 					],
@@ -1871,7 +1882,10 @@
 						"occult"
 					],
 					"requirements": "An enemy within 15 feet of the dread wisp is under a {@trait fear} effect, {@condition drained}, or {@condition dying}",
-					"frequency": "once per round;",
+					"frequency": {
+						"unit": "round",
+						"freq": 1
+					},
 					"entries": [
 						"The dread wisp feeds on the creature's despair. The dread wisp regains {@dice 2d8} Hit Points and deals {@damage 3d8} negative damage to the creature (DC 25 basic Fortitude save), and if the dread wisp has Gone Dark, their Dread Flickering reignites."
 					],
@@ -2105,7 +2119,10 @@
 						"number": 1,
 						"unit": "action"
 					},
-					"frequency": "once per round",
+					"frequency": {
+						"unit": "round",
+						"freq": 1
+					},
 					"prerequisites": "The hunter is wielding a ranged weapon with a reload of 0",
 					"entries": [
 						"The hunter makes two ranged Strikes against their prey. If both hit and deal damage, the target takes an additional {@damage 1d8} {@condition persistent damage ||persistent bleed damage}."
@@ -2250,7 +2267,10 @@
 						"fortune"
 					],
 					"trigger": "The shootist fails a save",
-					"frequency": "once per day",
+					"frequency": {
+						"unit": "day",
+						"freq": 1
+					},
 					"entries": [
 						"The shootist rerolls the save and uses the better result."
 					],
@@ -2352,7 +2372,10 @@
 						"number": 1,
 						"unit": "action"
 					},
-					"frequency": "once per round",
+					"frequency": {
+						"unit": "round",
+						"freq": 1
+					},
 					"entries": [
 						"The shootist Interacts to draw a repeating hand crossbow and Strikes with it, or Strikes with a loaded repeating hand crossbow they're holding then Interacts to stow it."
 					],
@@ -4554,7 +4577,10 @@
 						"number": 1,
 						"unit": "action"
 					},
-					"frequency": "once per round",
+					"frequency": {
+						"unit": "round",
+						"freq": 1
+					},
 					"entries": [
 						"Quara Interacts to draw a loaded repeating hand crossbow and Strikes with it, or Strikes with a loaded repeating hand crossbow she's holding and then Interacts to stow it."
 					],
@@ -5293,7 +5319,10 @@
 						"metamagic",
 						"necromancy"
 					],
-					"frequency": "once per round",
+					"frequency": {
+						"unit": "round",
+						"freq": 1
+					},
 					"entries": [
 						"The blood mage cuts themself and takes 8 slashing damage. If the blood mage's next action is to {@action Cast a Spell}, the action can't be disrupted, and if the spell has a range, the blood mage can increase that spell's range by 30 feet."
 					],

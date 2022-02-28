@@ -90,7 +90,7 @@
 					]
 				}
 			],
-			"name": "Extensible Weapon (Melee only)",
+			"name": "Extensible Weapon",
 			"entries": [
 				"You've found a way to construct your weapon so that it can extend while leaving its balance unchanged. Your innovation gains the {@trait reach} trait. If the weapon already had the {@trait reach} trait, it increases your reach by an additional 10 feet, instead of the usual additional 5 feet."
 			]
@@ -796,12 +796,15 @@
 						"subclass": {
 							"name": "Construct"
 						}
-					}
+					},
+					"feature": [
+						"{@optfeature Projectile Launcher|G&G}"
+					]
 				}
 			],
 			"name": "Turret Configuration",
 			"entries": [
-				"Your innovation can transform from a mobile construct to a stationary turret. Your construct companion can transform as a single action, which has the {@trait manipulate} trait, turning into a turret in its space (or transforming back from a turret into its normal configuration). While it's a turret, your innovation is {@condition immobilized}, but the damage die from its projectile launcher increases to {@damage 1d6} and the range increment increases to 60 feet. You must have the projectile launcher modification to select this modification."
+				"Your innovation can transform from a mobile construct to a stationary turret. Your construct companion can transform as a single action, which has the {@trait manipulate} trait, turning into a turret in its space (or transforming back from a turret into its normal configuration). While it's a turret, your innovation is {@condition immobilized}, but the damage die from its projectile launcher increases to {@damage 1d6} and the range increment increases to 60 feet. You must have the {@optfeature projectile launcher|G&G} modification to select this modification."
 			]
 		},
 		{
@@ -1583,7 +1586,7 @@
 			"prerequisite": [
 				{
 					"feat": [
-						"{@feat Basic Lesson|APG}"
+						"Basic Lesson|APG"
 					]
 				}
 			],
@@ -1599,7 +1602,7 @@
 			"prerequisite": [
 				{
 					"feat": [
-						"{@feat Basic Lesson|APG}"
+						"Basic Lesson|APG"
 					]
 				}
 			],
@@ -1615,7 +1618,7 @@
 			"prerequisite": [
 				{
 					"feat": [
-						"{@feat Basic Lesson|APG}"
+						"Basic Lesson|APG"
 					]
 				}
 			],
@@ -1631,7 +1634,7 @@
 			"prerequisite": [
 				{
 					"feat": [
-						"{@feat Basic Lesson|APG}"
+						"Basic Lesson|APG"
 					]
 				}
 			],
@@ -1647,7 +1650,7 @@
 			"prerequisite": [
 				{
 					"feat": [
-						"{@feat Basic Lesson|APG}"
+						"Basic Lesson|APG"
 					]
 				}
 			],
@@ -1663,7 +1666,7 @@
 			"prerequisite": [
 				{
 					"feat": [
-						"{@feat Greater Lesson|APG}"
+						"Greater Lesson|APG"
 					]
 				}
 			],
@@ -1679,7 +1682,7 @@
 			"prerequisite": [
 				{
 					"feat": [
-						"{@feat Greater Lesson|APG}"
+						"Greater Lesson|APG"
 					]
 				}
 			],
@@ -1695,7 +1698,7 @@
 			"prerequisite": [
 				{
 					"feat": [
-						"{@feat Greater Lesson|APG}"
+						"Greater Lesson|APG"
 					]
 				}
 			],
@@ -1711,7 +1714,7 @@
 			"prerequisite": [
 				{
 					"feat": [
-						"{@feat Major Lesson|APG}"
+						"Major Lesson|APG"
 					]
 				}
 			],
@@ -1727,7 +1730,7 @@
 			"prerequisite": [
 				{
 					"feat": [
-						"{@feat Major Lesson|APG}"
+						"Major Lesson|APG"
 					]
 				}
 			],
@@ -1746,7 +1749,7 @@
 			"prerequisite": [
 				{
 					"feat": [
-						"{@feat Basic Lesson|APG}"
+						"Basic Lesson|APG"
 					]
 				}
 			],
@@ -1765,7 +1768,7 @@
 			"prerequisite": [
 				{
 					"feat": [
-						"{@feat Major Lesson|APG}"
+						"Major Lesson|APG"
 					]
 				}
 			],

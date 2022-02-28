@@ -181,7 +181,10 @@
 						"poison"
 					],
 					"requirements": "You were within the area of an inhaled poison within the last minute",
-					"frequency": "once per hour",
+					"frequency": {
+						"unit": "hour",
+						"freq": 1
+					},
 					"entries": [
 						"You sharply exhale the poison that previously surrounded you in a 15-foot cone. Creatures in the area are affected by the poison; the poison's DC and effects are unchanged."
 					]
@@ -276,7 +279,10 @@
 				"Prestige"
 			],
 			"prerequisites": "{@feat Golem Grafter Dedication|EC3}",
-			"frequency": "once per turn",
+			"frequency": {
+				"unit": "turn",
+				"freq": 1
+			},
 			"entries": [
 				"You've replaced your heart with one made of animated quicksilver and living adamantine. You reduce your {@condition slowed} condition by 1. Alternatively, if you are not {@condition slowed}, you are {@condition quickened|CRB|quickened 1} during your next turn, and can use your extra action to {@action Stride} or {@action Strike}."
 			]

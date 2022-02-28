@@ -56,20 +56,7 @@
 				"Wis": 2,
 				"Cha": 2
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"Skills {@skill Acrobatics} +13, {@skill Athletics} +14, {@skill Crafting} +13, {@skill Occultism} +11, {@skill Stealth} +11 Str +5, Dex +2, Con +4, Int +4, Wis +2,"
-					],
-					"name": "Undercommon"
-				},
-				{
-					"entries": [
-						"+2."
-					],
-					"name": "Cha"
-				}
-			],
+			"abilitiesTop": [],
 			"ac": {
 				"default": 22,
 				"abilities": null
@@ -1647,7 +1634,10 @@
 						"concentrate"
 					],
 					"requirements": "A creature within 15 feet of the flickerwisp is {@condition confused}",
-					"frequency": "once per round;",
+					"frequency": {
+						"unit": "round",
+						"freq": 1
+					},
 					"entries": [
 						"The flickerwisp feeds on the creature's confusion, even as its flashing body and disjointed gyrations cause existing confusion effects to persist. It regains {@dice 1d4} Hit Points, and if the creature's {@condition confused} condition has a limited duration, it lasts 1 additional round."
 					],
@@ -3721,7 +3711,10 @@
 						"concentrate"
 					],
 					"requirements": "An enemy is affected by a {@trait fear} effect or has the {@condition frightened} or {@condition dying} condition, and is within 25 feet of the voidglutton",
-					"frequency": "once per round;",
+					"frequency": {
+						"unit": "round",
+						"freq": 1
+					},
 					"entries": [
 						"The voidglutton feeds on the creature's terror. It regains {@dice 3d4} Hit Points and its Glow reignites if it had been extinguished. It cannot use Consume Light again for {@dice 1d4} rounds, as it is too glutted on fear to suppress its Glow."
 					],
@@ -3809,14 +3802,7 @@
 				"Wis": 4,
 				"Cha": 2
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+15, {@skill Intimidation} +17, {@skill Occultism} +17, {@skill Religion} +15, {@skill Stealth} +15 Str +4, Dex +6, Con +2, Int +6, Wis +4, Cha +2."
-					],
-					"name": "Deception"
-				}
-			],
+			"abilitiesTop": [],
 			"ac": {
 				"default": 25,
 				"abilities": "all-around vision"
@@ -3865,10 +3851,9 @@
 			"abilitiesMid": [
 				{
 					"entries": [
-						"As worm that walks, but slow-moving leeches give the heroes 2 rounds, rather than 1 round, to dispatch the {@condition fleeing} vermin before they escape."
+						"As {@creature Worm That Walks Cultist|bst2|worm that walks}, but slow-moving leeches give the heroes 2 rounds, rather than 1 round, to dispatch the {@condition fleeing} vermin before they escape."
 					],
-					"name": "Discorporate",
-					"entries_as_xyz": "Ability not found: 'Discorporate As worm that walks, but slow-moving leeches give the heroes 2 rounds, rather than 1 round, to dispatch the {@condition fleeing} vermin before they escape.' in Volluk Azrinae, p.54"
+					"name": "Discorporate"
 				},
 				{
 					"traits": [
@@ -3898,7 +3883,7 @@
 						"reach 10 feet"
 					],
 					"effects": [],
-					"damage": "{@damage 2d8+8} {@condition persistent damage ||persistent piercing damage}",
+					"damage": "{@damage 2d8+8} {@condition persistent damage||persistent piercing damage}",
 					"types": [
 						"persistent"
 					]
@@ -3925,7 +3910,7 @@
 									"name": "mirror image"
 								},
 								{
-									"name": "vomit swarm"
+									"name": "vomit swarm|apg"
 								}
 							]
 						},
@@ -3956,10 +3941,7 @@
 									"name": "suggestion"
 								},
 								{
-									"name": "worm's repast",
-									"notes": [
-										"page 80"
-									]
+									"name": "worm's repast|av1"
 								}
 							]
 						}
@@ -4306,7 +4288,10 @@
 						"prediction",
 						"primal"
 					],
-					"frequency": "once per day",
+					"frequency": {
+						"unit": "day",
+						"freq": 1
+					},
 					"entries": [
 						"Wrin attempts to read the future in the stars by spending an hour studying the night sky\u2014she can't use this ability during the day, on an overcast night, or when she can't otherwise study the stars. Although Wrin usually performs this reading for an individual person or to answer a pressing question she has, for the purposes of this campaign she reads the stars for the party as a whole. She attempts an."
 					],

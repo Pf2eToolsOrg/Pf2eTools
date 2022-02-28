@@ -13,7 +13,10 @@
 				"Uncommon",
 				"Investigator"
 			],
-			"frequency": "once per hour",
+			"frequency": {
+				"unit": "hour",
+				"freq": 1
+			},
 			"entries": [
 				"Your firsthand experience of the subjective nature of time and space has given you new observational insights. Your mind processes information so quickly that time appears to stop for all creatures but you. You can take up to 9 actions in 3 sets of up to 3 actions each. During this time, you can use purely mental and observational abilities such as {@action Recall Knowledge}, {@action Seek}, and {@action Devise a Stratagem|APG}, and you can use an action to move a mental projection of yourself to a location within a 60- foot radius to observe objects more closely and from different angles, though you can't affect your surroundings in any way (for instance, you could move your mental projection more closely to a distant door to read a minute inscription on its handle, but you could not open it to observe the other side)",
 				"When the duration elapses, time resumes its normal flow."
@@ -33,7 +36,10 @@
 				"Cleric"
 			],
 			"prerequisites": "expert in {@skill Performance}",
-			"frequency": "three times a day",
+			"frequency": {
+				"freq": 3,
+				"unit": "day"
+			},
 			"entries": [
 				"You either performed in or stood witness to the dance used to invoke the Celestial Dragon and can harness a sliver of their power. You {@action Stride} in a dance up to half your Speed, attempting a DC 35 {@skill Performance} check. You can perform this dance up to three times per day. The second time you do so in the same day, use the degree of success one worse than your actual roll on the {@skill Performance} check. The third time in a day, use the degree of success two lower than your actual roll.",
 				{
@@ -172,7 +178,10 @@
 				"Necromancy",
 				"Sorcerer"
 			],
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"trigger": "You would be reduced to 0 Hit Points.",
 			"entries": [
 				"In a burst of flame, you return to health like a phoenix rising from the ashes. Change your current Hit Points to 30 and cast a 6th-level {@spell fireball} centered on yourself. This fireball doesn't affect you. Your hair turns brilliant red for 1 hour.",
@@ -195,7 +204,10 @@
 				"Necromancy",
 				"Oracle"
 			],
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"trigger": "Your turn starts or your oracular curse would advance.",
 			"entries": [
 				"Seeing Syndara superimpose creatures with similar metaphysical properties, you've realized a way to manipulate the effects of your oracular curse.",
@@ -322,7 +334,10 @@
 				"Metamagic",
 				"Wizard"
 			],
-			"frequency": "once per hour",
+			"frequency": {
+				"unit": "hour",
+				"freq": 1
+			},
 			"entries": [
 				"Though creating demiplanes usually requires lengthy rituals, you know how to establish minor planar effects in imitation of Syndara's masterpieces. If your next action is to {@action Cast a Spell} of at least 5th level from your spell slots that affects an area, you can apply one of the following planar effects to a 20-foot burst centered within the spell's area.",
 				"The effect persists for 1 minute.",

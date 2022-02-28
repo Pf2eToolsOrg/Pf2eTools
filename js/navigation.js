@@ -32,7 +32,7 @@ class NavBar {
 		};
 		document.getElementById("navigation").prepend(btnShowHide);
 
-		addLi(navBar, "Pf2eTools.html", "Home", {isRoot: true});
+		addLi(navBar, "index.html", "Home", {isRoot: true});
 
 		const ulRules = addDropdown(navBar, "Rules");
 		addLi(ulRules, "quickreference.html", "Quick Reference");
@@ -73,13 +73,15 @@ class NavBar {
 		addLi(ulReferences, "spells.html", "Spells");
 		addDivider(ulReferences);
 		addLi(ulReferences, "afflictions.html", "Afflictions");
-		addLi(ulReferences, "abilities.html", "Creature Abilities");
-		addLi(ulReferences, "deities.html", "Deities");
-		addLi(ulReferences, "languages.html", "Languages");
-		addLi(ulReferences, "places.html", "Planes & Places");
 		addLi(ulReferences, "rituals.html", "Rituals");
 		addLi(ulReferences, "vehicles.html", "Vehicles");
 		addDivider(ulReferences);
+		addLi(ulReferences, "deities.html", "Deities");
+		addLi(ulReferences, "languages.html", "Languages");
+		addLi(ulReferences, "places.html", "Planes & Places");
+		addLi(ulReferences, "organizations.html", "Organizations");
+		addDivider(ulReferences);
+		addLi(ulReferences, "abilities.html", "Creature Abilities");
 		addLi(ulReferences, "traits.html", "Traits");
 
 		const ulUtils = addDropdown(navBar, "Utilities");

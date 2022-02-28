@@ -16,7 +16,7 @@ Parser._parse_bToA = function (abMap, b) {
 	}
 	return b;
 };
-Parser.numberToText = function (number) {
+Parser.numberToText = function (number, freq) {
 	if (number == null) throw new TypeError(`undefined or null object passed to parser`);
 	if (Math.abs(number) >= 100) return `${number}`;
 
@@ -26,9 +26,13 @@ Parser.numberToText = function (number) {
 			case 0:
 				return "zero";
 			case 1:
-				return "one";
+				if (freq) {
+					return "once"
+				} else return "one"
 			case 2:
-				return "two";
+				if (freq) {
+					return "twice"
+				} else return "two"
 			case 3:
 				return "three";
 			case 4:
@@ -70,7 +74,7 @@ Parser.numberToText = function (number) {
 			case 40:
 				return "forty";
 			case 50:
-				return "fiddy"; // :^)
+				return "<span title=\"fiddy\">fifty</span>"; // :^)
 			case 60:
 				return "sixty";
 			case 70:
@@ -86,7 +90,11 @@ Parser.numberToText = function (number) {
 		}
 	}
 
-	return `${number < 0 ? "negative " : ""}${getAsText(number)}`;
+	if (freq) {
+		return `${getAsText(number)} ${number > 2 ? "times" : ""}`
+	} else {
+		return `${number < 0 ? "negative " : ""}${getAsText(number)}`
+	}
 };
 
 Parser._greatestCommonDivisor = function (a, b) {
@@ -618,8 +626,7 @@ Parser.getOrdinalForm = function (i) {
 };
 
 Parser.spLevelToFull = function (level) {
-	if (level === 0) return "Cantrip";
-	else return Parser.getOrdinalForm(level);
+	return Parser.getOrdinalForm(level);
 };
 
 Parser.getArticle = function (str) {
@@ -713,6 +720,7 @@ Parser.CAT_ID_SETTLEMENT = 69;
 Parser.CAT_ID_RITUAL = 70;
 Parser.CAT_ID_VEHICLE = 71;
 Parser.CAT_ID_TRAIT = 4;
+Parser.CAT_ID_ORGANIZATION = 72;
 
 Parser.CAT_ID_PAGE = 99;
 
@@ -757,6 +765,7 @@ Parser.CAT_ID_TO_FULL[Parser.CAT_ID_DEITY] = "Deity";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_LANGUAGE] = "Language";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_PLACE] = "Place";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_PLANE] = "Plane";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ORGANIZATION] = "Organization";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_NATION] = "Nation";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_SETTLEMENT] = "Settlement";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_RITUAL] = "Ritual";
@@ -809,6 +818,7 @@ Parser.CAT_ID_TO_PROP[Parser.CAT_ID_DEITY] = "deity";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_LANGUAGE] = "language";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_PLACE] = "place";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_PLANE] = "place";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_ORGANIZATION] = "organization";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_NATION] = "place";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_SETTLEMENT] = "place";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_RITUAL] = "ritual";
@@ -929,6 +939,12 @@ Parser.timeToFullEntry = function (time) {
 		return "{@as 1}";
 	}
 	return `${time.number} ${time.unit}${time.number >= 2 ? "s" : ""}`;
+}
+
+Parser.freqToFullEntry = function (freq) {
+	if (freq.special != null) return freq.special;
+	freq.number = Parser.numberToText(freq.freq, true)
+	return `${freq.number} ${freq.recurs ? "every" : "per"} ${freq.interval || ""} ${freq.interval >= 2 ? `${freq.unit}s` : freq.customUnit ? freq.customUnit : freq.unit}${freq.overcharge ? ", plus overcharge" : ""}`;
 }
 
 Parser.timeToTableStr = function (time) {
@@ -1608,8 +1624,10 @@ Parser.TAG_TO_DEFAULT_SOURCE = {
 	"familiar": SRC_APG,
 	"familiarAbility": SRC_CRB,
 	"companion": SRC_CRB,
+	"companionAbility": SRC_CRB,
 	"eidolon": SRC_SOM,
 	"optfeature": SRC_APG,
+	"organization": SRC_LOCG,
 };
 Parser.getTagSource = function (tag, source) {
 	if (source && source.trim()) return source;

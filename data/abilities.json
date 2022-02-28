@@ -1,73 +1,6 @@
 {
 	"ability": [
 		{
-			"name": "Find Footing",
-			"activity": {
-				"number": 1,
-				"unit": "action"
-			},
-			"traits": [
-				"Concentrate"
-			],
-			"source": "GMG",
-			"page": 205,
-			"entries": [
-				"The NPC attempts an {@skill Lore||Architecture Lore}, {@skill Lore||Engineering Lore}, or similar skill check to find a stable path across uneven ground. This grants them and anyone they share this information with a +2 circumstance bonus on {@skill Acrobatics} checks to {@action Balance} across that ground."
-			]
-		},
-		{
-			"name": "Quick Transcription",
-			"source": "GMG",
-			"page": 205,
-			"entries": [
-				"The NPC can attempt to copy a document faster than normal, provided they don't alter the content. They attempt a {@skill Lore||Scribing Lore} check, completing the task in half the time on a success (one-quarter on a critical success)."
-			]
-		},
-		{
-			"name": "Local Lore",
-			"source": "GMG",
-			"page": 205,
-			"entries": [
-				"When they first meet a given person from their home settlement, the NPC can automatically attempt one check to {@action Recall Knowledge} about that person. This uses the {@skill Lore} skill for that settlement."
-			]
-		},
-		{
-			"name": "Gone Fishing",
-			"source": "GMG",
-			"page": 205,
-			"entries": [
-				"The NPC can use {@skill Lore||Fishing Lore} to {@action Track} aquatic creatures or to {@action Aid} checks to {@action Track} them."
-			]
-		},
-		{
-			"name": "Child Care",
-			"source": "GMG",
-			"page": 205,
-			"entries": [
-				"When treating infants, the NPC can use their {@skill Lore||Midwifery Lore} skill in place of {@skill Medicine}, and can use {@filter Medicine's trained actions|actions||Trained=Medicine} on infants."
-			]
-		},
-		{
-			"name": "Call Your Bluf",
-			"source": "GMG",
-			"page": 205,
-			"entries": [
-				"When gambling, the NPC may use {@skill Lore||Games Lore} to {@action Sense Motive} instead of {@skill Perception}."
-			]
-		},
-		{
-			"name": "Butter Up",
-			"source": "GMG",
-			"page": 204,
-			"traits": [
-				"Emotion",
-				"Mental"
-			],
-			"entries": [
-				"When someone eats a dish or treat made by this NPC, the NPC can attempt a {@skill Lore||Baking Lore}, {@skill Lore||Cooking Lore}, or similar check against that creature's Will DC, with the same results as the {@action Make an Impression} action of {@skill Diplomacy}. If more than one creature partakes, the NPC uses the same check result against each creature's Will DC."
-			]
-		},
-		{
 			"name": "All-Around Vision",
 			"source": "Bst",
 			"page": 342,
@@ -132,6 +65,26 @@
 			]
 		},
 		{
+			"name": "Butter Up",
+			"source": "GMG",
+			"page": 204,
+			"traits": [
+				"Emotion",
+				"Mental"
+			],
+			"entries": [
+				"When someone eats a dish or treat made by this NPC, the NPC can attempt a {@skill Lore||Baking Lore}, {@skill Lore||Cooking Lore}, or similar check against that creature's Will DC, with the same results as the {@action Make an Impression} action of {@skill Diplomacy}. If more than one creature partakes, the NPC uses the same check result against each creature's Will DC."
+			]
+		},
+		{
+			"name": "Call Your Bluf",
+			"source": "GMG",
+			"page": 205,
+			"entries": [
+				"When gambling, the NPC may use {@skill Lore||Games Lore} to {@action Sense Motive} instead of {@skill Perception}."
+			]
+		},
+		{
 			"name": "Catch Rock",
 			"source": "Bst",
 			"page": 342,
@@ -161,6 +114,14 @@
 			],
 			"entries": [
 				"The monster changes its shape indefinitely. It can use this action again to return to its natural shape or adopt a new shape. Unless otherwise noted, a monster cannot use Change Shape to appear as a specific individual. Using Change Shape counts as creating a disguise for the Impersonate use of {@skill Deception}. The monster's transformation automatically defeats Perception DCs to determine whether the creature is a member of the ancestry or creature type into which it transformed, and it gains a +4 status bonus to its {@skill Deception} DC to prevent others from seeing through its disguise. Change Shape abilities specify what shapes the monster can adopt. The monster doesn't gain any special abilities of the new shape, only its physical form. For example, in each shape, it replaces its normal Speeds and Strikes, and might potentially change its senses or size. Any changes are listed in its stat block."
+			]
+		},
+		{
+			"name": "Child Care",
+			"source": "GMG",
+			"page": 205,
+			"entries": [
+				"When treating infants, the NPC can use their {@skill Lore||Midwifery Lore} skill in place of {@skill Medicine}, and can use {@filter Medicine's trained actions|actions||Trained=Medicine} on infants."
 			]
 		},
 		{
@@ -250,6 +211,21 @@
 			]
 		},
 		{
+			"name": "Find Footing",
+			"source": "GMG",
+			"page": 205,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"traits": [
+				"Concentrate"
+			],
+			"entries": [
+				"The NPC attempts an {@skill Lore||Architecture Lore}, {@skill Lore||Engineering Lore}, or similar skill check to find a stable path across uneven ground. This grants them and anyone they share this information with a +2 circumstance bonus on {@skill Acrobatics} checks to {@action Balance} across that ground."
+			]
+		},
+		{
 			"name": "Frightful Presence",
 			"source": "Bst",
 			"page": 343,
@@ -270,6 +246,14 @@
 						"Critical Failure": "The creature is {@condition frightened} 4."
 					}
 				}
+			]
+		},
+		{
+			"name": "Gone Fishing",
+			"source": "GMG",
+			"page": 205,
+			"entries": [
+				"The NPC can use {@skill Lore||Fishing Lore} to {@action Track} aquatic creatures or to {@action Aid} checks to {@action Track} them."
 			]
 		},
 		{
@@ -363,6 +347,14 @@
 			]
 		},
 		{
+			"name": "Local Lore",
+			"source": "GMG",
+			"page": 205,
+			"entries": [
+				"When they first meet a given person from their home settlement, the NPC can automatically attempt one check to {@action Recall Knowledge} about that person. This uses the {@skill Lore} skill for that settlement."
+			]
+		},
+		{
 			"name": "Low-Light Vision",
 			"source": "Bst",
 			"page": 343,
@@ -389,6 +381,14 @@
 			"requirements": "The monster's last action was a success with a Strike that lists Push in its damage entry.",
 			"entries": [
 				"The monster automatically knocks the target away from the monster. Unless otherwise noted in the ability description, the creature is pushed 5 feet. If the attack was a critical hit, this distance is doubled."
+			]
+		},
+		{
+			"name": "Quick Transcription",
+			"source": "GMG",
+			"page": 205,
+			"entries": [
+				"The NPC can attempt to copy a document faster than normal, provided they don't alter the content. They attempt a {@skill Lore||Scribing Lore} check, completing the task in half the time on a success (one-quarter on a critical success)."
 			]
 		},
 		{

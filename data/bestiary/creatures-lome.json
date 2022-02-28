@@ -1658,7 +1658,10 @@
 					],
 					"name": "Shrieking Frenzy",
 					"trigger": "The charau-ka's turn begins",
-					"frequency": "once per hour;"
+					"frequency": {
+						"unit": "hour",
+						"freq": 1
+					}
 				},
 				{
 					"entries": [
@@ -1894,7 +1897,10 @@
 					],
 					"name": "Shrieking Frenzy",
 					"trigger": "The charau-ka's turn begins",
-					"frequency": "once per hour;"
+					"frequency": {
+						"unit": "hour",
+						"freq": 1
+					}
 				},
 				{
 					"entries": [
@@ -2108,7 +2114,10 @@
 						"transmutation"
 					],
 					"trigger": "The charau-ka's turn begins",
-					"frequency": "once per hour;",
+					"frequency": {
+						"unit": "hour",
+						"freq": 1
+					},
 					"entries": [
 						"The charau-ka is {@condition quickened} until the end of their turn and can use the extra action only to {@action Stride} or {@action Strike}. While in the frenzy, the charau-ka can't speak and automatically critically fails {@skill Stealth} checks, due to their loud wailing."
 					],
@@ -2349,212 +2358,6 @@
 				"TA",
 				"CC",
 				"UW"
-			]
-		},
-		{
-			"name": "Sié Goluo",
-			"isNpc": false,
-			"source": "LOME",
-			"page": 306,
-			"level": 14,
-			"rarity": "Unique",
-			"alignment": "NG",
-			"size": "Huge",
-			"traits": [
-				"Incorporeal"
-			],
-			"creatureType": [
-				"Beast",
-				"Spirit"
-			],
-			"perception": {
-				"default": 25
-			},
-			"senses": {
-				"other": [
-					"imprecise scent 60 feet"
-				]
-			},
-			"languages": {
-				"languages": [
-					"Mwangi (can't speak any language)"
-				],
-				"languageAbilities": []
-			},
-			"skills": {
-				"Athletics": {
-					"default": 31
-				},
-				"Diplomacy": {
-					"default": 28
-				},
-				"Nature": {
-					"default": 31
-				},
-				"Survival": {
-					"default": 28
-				}
-			},
-			"abilityMods": {
-				"Str": 9,
-				"Dex": 5,
-				"Con": 8,
-				"Int": 1,
-				"Wis": 8,
-				"Cha": 4
-			},
-			"abilitiesTop": [],
-			"ac": {
-				"default": 36,
-				"abilities": null
-			},
-			"savingThrows": {
-				"Fort": {
-					"default": 28
-				},
-				"Ref": {
-					"default": 20
-				},
-				"Will": {
-					"default": 28
-				},
-				"abilities": null
-			},
-			"hp": [
-				{
-					"hp": 320,
-					"note": null,
-					"abilities": [
-						"rejuvenation"
-					]
-				}
-			],
-			"resistances": [
-				{
-					"amount": 10,
-					"name": "all damage"
-				}
-			],
-			"abilitiesMid": [
-				{
-					"traits": [
-						"divine",
-						"necromancy"
-					],
-					"entries": [],
-					"name": "Rejuvenation"
-				},
-				{
-					"entries": [
-						"Sié Goluo is destroyed, he reforms, fully healed, at a location of his choosing anywhere on the Material Plane after {@dice 2d4} days. If every person of Mwangi descent rejects belief in Sié Goluo, the spirit is permanently destroyed."
-					],
-					"name": "When"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "free"
-					},
-					"trigger": "A creature on the",
-					"entries": [],
-					"name": "Ancestral Response"
-				},
-				{
-					"entries": [
-						"Plane calls out for Sié Goluo; Sié Goluo instantaneously appears in an unoccupied space within 30 feet of the triggering creature and heals {@dice 8d8} hit points on all allies that can see him within 60 feet.",
-						"Allies healed this way gain a +2 circumstance bonus on saving throws for 1 minute. Creatures that receive these benefits become temporarily immune to them for 1 year."
-					],
-					"name": "Material"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"entries": [],
-					"name": "Ferocity",
-					"generic": true
-				}
-			],
-			"speed": {
-				"abilities": null,
-				"walk": 40
-			},
-			"attacks": [
-				{
-					"range": "Melee",
-					"name": "horn",
-					"attack": 31,
-					"traits": [
-						"reach 10 feet"
-					],
-					"effects": [],
-					"damage": "{@damage 2d10+16} piercing damage plus {@damage 1d12} force damage",
-					"types": [
-						"force",
-						"piercing"
-					]
-				}
-			],
-			"spellcasting": [
-				{
-					"name": "Primal Innate",
-					"type": "Innate",
-					"tradition": "Primal",
-					"DC": 34,
-					"entry": {
-						"3": {
-							"spells": [
-								{
-									"name": "humanoid form",
-									"amount": "at will"
-								}
-							]
-						},
-						"constant": {
-							"1": {
-								"spells": [
-									{
-										"name": "pass without trace"
-									}
-								]
-							}
-						}
-					}
-				}
-			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"entries": [
-						"Sié Goluo {@action Stride||Strides} twice, then makes a horn {@action Strike}. On a hit, Sié Goluo creates a shock wave that deals {@damage 4d12} force damage in a 30-foot cone (DC 34 basic Reflex save). Creatures that fail their save are pushed away 5 feet (10 feet on a critical failure)."
-					],
-					"name": "Spirit Charge"
-				},
-				{
-					"entries": [
-						"Sié Goluo ignores {@quickref difficult terrain||3|terrain} and doesn't trigger traps with his movement."
-					],
-					"name": "Spirit Steps"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"force",
-					"piercing"
-				],
-				"condition": [
-					"{@condition unconscious}"
-				]
-			},
-			"misc": [
-				"MA",
-				"RC",
-				"AD",
-				"CC"
 			]
 		},
 		{
@@ -4124,6 +3927,212 @@
 			},
 			"misc": [
 				"MA",
+				"CC"
+			]
+		},
+		{
+			"name": "Sié Goluo",
+			"isNpc": false,
+			"source": "LOME",
+			"page": 306,
+			"level": 14,
+			"rarity": "Unique",
+			"alignment": "NG",
+			"size": "Huge",
+			"traits": [
+				"Incorporeal"
+			],
+			"creatureType": [
+				"Beast",
+				"Spirit"
+			],
+			"perception": {
+				"default": 25
+			},
+			"senses": {
+				"other": [
+					"imprecise scent 60 feet"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Mwangi (can't speak any language)"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Athletics": {
+					"default": 31
+				},
+				"Diplomacy": {
+					"default": 28
+				},
+				"Nature": {
+					"default": 31
+				},
+				"Survival": {
+					"default": 28
+				}
+			},
+			"abilityMods": {
+				"Str": 9,
+				"Dex": 5,
+				"Con": 8,
+				"Int": 1,
+				"Wis": 8,
+				"Cha": 4
+			},
+			"abilitiesTop": [],
+			"ac": {
+				"default": 36,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 28
+				},
+				"Ref": {
+					"default": 20
+				},
+				"Will": {
+					"default": 28
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 320,
+					"note": null,
+					"abilities": [
+						"rejuvenation"
+					]
+				}
+			],
+			"resistances": [
+				{
+					"amount": 10,
+					"name": "all damage"
+				}
+			],
+			"abilitiesMid": [
+				{
+					"traits": [
+						"divine",
+						"necromancy"
+					],
+					"entries": [],
+					"name": "Rejuvenation"
+				},
+				{
+					"entries": [
+						"Sié Goluo is destroyed, he reforms, fully healed, at a location of his choosing anywhere on the Material Plane after {@dice 2d4} days. If every person of Mwangi descent rejects belief in Sié Goluo, the spirit is permanently destroyed."
+					],
+					"name": "When"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "free"
+					},
+					"trigger": "A creature on the",
+					"entries": [],
+					"name": "Ancestral Response"
+				},
+				{
+					"entries": [
+						"Plane calls out for Sié Goluo; Sié Goluo instantaneously appears in an unoccupied space within 30 feet of the triggering creature and heals {@dice 8d8} hit points on all allies that can see him within 60 feet.",
+						"Allies healed this way gain a +2 circumstance bonus on saving throws for 1 minute. Creatures that receive these benefits become temporarily immune to them for 1 year."
+					],
+					"name": "Material"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"entries": [],
+					"name": "Ferocity",
+					"generic": true
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 40
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "horn",
+					"attack": 31,
+					"traits": [
+						"reach 10 feet"
+					],
+					"effects": [],
+					"damage": "{@damage 2d10+16} piercing damage plus {@damage 1d12} force damage",
+					"types": [
+						"force",
+						"piercing"
+					]
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Primal Innate",
+					"type": "Innate",
+					"tradition": "Primal",
+					"DC": 34,
+					"entry": {
+						"3": {
+							"spells": [
+								{
+									"name": "humanoid form",
+									"amount": "at will"
+								}
+							]
+						},
+						"constant": {
+							"1": {
+								"spells": [
+									{
+										"name": "pass without trace"
+									}
+								]
+							}
+						}
+					}
+				}
+			],
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"entries": [
+						"Sié Goluo {@action Stride||Strides} twice, then makes a horn {@action Strike}. On a hit, Sié Goluo creates a shock wave that deals {@damage 4d12} force damage in a 30-foot cone (DC 34 basic Reflex save). Creatures that fail their save are pushed away 5 feet (10 feet on a critical failure)."
+					],
+					"name": "Spirit Charge"
+				},
+				{
+					"entries": [
+						"Sié Goluo ignores {@quickref difficult terrain||3|terrain} and doesn't trigger traps with his movement."
+					],
+					"name": "Spirit Steps"
+				}
+			],
+			"inflicts": {
+				"damage": [
+					"force",
+					"piercing"
+				],
+				"condition": [
+					"{@condition unconscious}"
+				]
+			},
+			"misc": [
+				"MA",
+				"RC",
+				"AD",
 				"CC"
 			]
 		},

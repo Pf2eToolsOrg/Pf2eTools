@@ -1,0 +1,128 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"$id": "feats.json",
+	"title": "Feats",
+	"description": "The feat data type for Pf2eTools.",
+	"type": "object",
+	"version": "0.0.1",
+	"properties": {
+		"feat": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"source": {
+						"type": "string",
+						"$ref": "utils.json#/definitions/sourceList"
+					},
+					"page": {
+						"type": "integer"
+					},
+					"prerequisites": {
+						"type": "string"
+					},
+					"frequency": {
+						"$ref": "utils.json#/definitions/frequency"
+					},
+					"trigger": {
+						"type": "string"
+					},
+					"cost": {
+						"type": "string"
+					},
+					"requirements": {
+						"type": "string"
+					},
+					"level": {
+						"type": "integer",
+						"exclusiveMinimum": 0
+					},
+					"featType": {
+						"type": "object",
+						"properties": {
+							"class": {
+								"oneOf": [
+									{
+										"type": "string",
+										"$ref": "utils.json#/definitions/classNameUpper"
+									},
+									{
+										"type": "array",
+										"items": {
+											"type": "string",
+											"$ref": "utils.json#/definitions/classNameUpper"
+										},
+										"uniqueItems": true
+									}
+								]
+							},
+							"general": {
+								"type": "boolean",
+								"const": true
+							},
+							"ancestry": {
+								"type": ["string", "array"],
+								"$ref": "utils.json#/definitions/ancestryNameUpper"
+							},
+							"skill": {
+								"not": { "enum": [false] },
+								"type": ["string", "boolean", "array"]
+							},
+							"archetype": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								},
+								"minItems": 1,
+								"uniqueItems": true
+							}
+						}
+					},
+					"activity": {
+						"type": "object",
+						"$ref": "utils.json#/definitions/activity"
+					},
+					"access": {
+						"type": "string"
+					},
+					"traits": {
+						"type": "array",
+						"items":{
+							"type": "string",
+							"$ref": "utils.json#/definitions/anyTraitUpper"
+						},
+						"minItems": 1,
+						"uniqueItems": true
+					},
+					"leadsTo": {
+						"type": "array",
+						"items": {
+							"type": "string"
+						},
+						"uniqueItems": true
+					},
+					"entries": {
+						"type": "array",
+						"items": {
+							"$ref": "entry.json"
+						}
+					},
+					"special": {
+						"type": "string"
+					},
+					"add_hash": {
+						"type": "string"
+					}
+				},
+				"required": ["name", "source", "entries"],
+				"additionalProperties": false
+			},
+			"uniqueItems": true
+		}
+	},
+	"required": ["feat"],
+	"additionalProperties": false
+}

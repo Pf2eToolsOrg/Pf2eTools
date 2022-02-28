@@ -1,6 +1,5 @@
 class RenderDeities {
 	static $getRenderedDeity (deity) {
-		return $$`
-			${Renderer.deity.getCompactRenderedString(deity)}`;
+		return $$`${Renderer.deity.getCompactRenderedString(deity)}`;
 	}
 }

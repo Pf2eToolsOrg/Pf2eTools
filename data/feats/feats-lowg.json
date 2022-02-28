@@ -226,7 +226,9 @@
 				"Necromancy"
 			],
 			"prerequisites": "{@feat Red Mantis Assassin Dedication|LOWG}",
-			"frequency": "A number of times per day equal to your number of class feats from the Red Mantis assassin archetype",
+			"frequency": {
+				"special": "A number of times per day equal to your number of class feats from the {@archetype Red Mantis assassin|aoe3} archetype"
+			},
 			"entries": [
 				"You swathe yourself in a veil of red mist for 1 minute. While the shroud is active, you gain fast healing equal to half your level.",
 				"You can {@action Interact} with your shroud, swirling it around you, to gain a +1 circumstance bonus to AC until the beginning of your next turn. Finally, if you die while the shroud is active, you can choose to have your entire body vanish into red mist, leaving behind only your gear; you make this choice when you activate Crimson Shroud."
@@ -375,7 +377,10 @@
 				"Skill"
 			],
 			"prerequisites": "expert in {@skill Arcana}, {@feat Arcane Sense}",
-			"frequency": "once per day",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
 			"access": "You are a member of the Arclords of Nex.",
 			"entries": [
 				"You open an incandescent third eye upon your forehead. The eye can remain open for 1 minute, and you can close it before then with a single action with the {@trait concentrate} trait. It can remain open for 2 minutes if you're a master in {@skill Arcana}, or 5 minutes if you're legendary. While the eye is open, you gain the following benefits: you gain the effects of the detect magic arcane innate spell from your Arcane Sense at the start of each of your turns without needing to cast the spell; you gain {@ability darkvision}; you gain a +2 status bonus to {@skill Perception} checks to {@action Seek} {@condition undetected} and {@condition hidden} creatures and to your {@skill Perception} DC against {@action Hide} and {@action Sneak}. After your third eye closes, you are {@condition dazzled} for an amount of time equal to how long you had it open."
@@ -567,7 +572,9 @@
 						"(envision)",
 						"or a different activation if otherwise specified"
 					],
-					"frequency": "a number of times each day equal to the number of class feats you have from the {@archetype Living Monolith|LOWG} archetype",
+					"frequency": {
+						"special": "a number of times each day equal to the number of class feats you have from the {@archetype Living Monolith|LOWG} archetype"
+					},
 					"entries": [
 						"You cast {@spell enlarge} on yourself or use one of the other activated abilities granted by a later {@archetype Living Monolith|LOWG} feat."
 					]
