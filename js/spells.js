@@ -32,6 +32,7 @@ class SpellsPage extends ListPage {
 		const source = Parser.sourceJsonToAbv(spell.source);
 		const time = Parser.timeToTableStr(spell.cast);
 		const school = Parser.spSchoolAbvToFull(spell.school);
+		const type = spell.traits.includes("Cantrip") && spell.focus ? "FC" : spell.traits.includes("Cantrip") ? "C" : spell.focus ? "F" : "S";
 
 		eleLi.innerHTML = `<a href="#${hash}" class="lst--border">
 			<span class="bold col-3-8 pl-0">${spell.name}</span>
@@ -86,7 +87,7 @@ class SpellsPage extends ListPage {
 				<span class="bold col-6 pl-0">${spell.name}</span>
 				<span class="capitalise col-1-5 text-center">${Parser.spLevelToFull(spell.level)}</span>
 				<span class="col-2-9 text-center">${time}</span>
-				<span class="capitalise col-1-6 sp__school_${spell.school} text-center" title="${Parser.spSchoolAbvToFull(spell.school)}" ${Parser.spSchoolAbvToStyle(spell.school)}>${school}</span>
+				<span class="capitalise col-1-6 sp__school-${spell.school} text-center" title="${Parser.spSchoolAbvToFull(spell.school)}" ${Parser.spSchoolAbvToStyle(spell.school)}>${school}</span>
 			</a>
 		</li>`).contextmenu(evt => ListUtil.openSubContextMenu(evt, listItem));
 
