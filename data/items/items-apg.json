@@ -136,13 +136,6 @@
 				"Blight bombs contain volatile toxic chemicals that rot flesh. A blight bomb deals the listed poison damage, {@condition persistent damage||persistent poison damage}, and splash damage. Many types grant an item bonus to attack rolls."
 			],
 			"generic": "G",
-			"_vmod": {
-				"entries": {
-					"mode": "replaceTxt",
-					"replace": "A blight bomb deals the listed poison damage, {@condition persistent damage\\|\\|persistent poison damage}, and splash damage. Many types grant an item bonus to attack rolls."
-				},
-				"entriesMode": "generic"
-			},
 			"variants": [
 				{
 					"type": "lesser",
@@ -216,7 +209,14 @@
 						}
 					}
 				}
-			]
+			],
+			"_vmod": {
+				"entries": {
+					"mode": "replaceTxt",
+					"replace": "A blight bomb deals the listed poison damage, {@condition persistent damage\\|\\|persistent poison damage}, and splash damage. Many types grant an item bonus to attack rolls."
+				},
+				"entriesMode": "generic"
+			}
 		},
 		{
 			"name": "Bloodhound Mask",
@@ -976,7 +976,6 @@
 					"components": [
 						"Interact"
 					],
-
 					"frequency": {
 						"unit": "day",
 						"freq": 1
@@ -1119,7 +1118,6 @@
 						"envision",
 						"Interact"
 					],
-
 					"frequency": {
 						"unit": "day",
 						"freq": 1
@@ -1519,7 +1517,6 @@
 					"components": [
 						"envision"
 					],
-
 					"frequency": {
 						"unit": "day",
 						"freq": 1
@@ -1746,7 +1743,6 @@
 					"components": [
 						"Interact"
 					],
-
 					"frequency": {
 						"unit": "day",
 						"freq": 1
@@ -1790,7 +1786,6 @@
 						"envision",
 						"Interact"
 					],
-
 					"frequency": {
 						"unit": "day",
 						"freq": 1
@@ -1848,7 +1843,6 @@
 					"components": [
 						"Interact (visual)"
 					],
-
 					"frequency": {
 						"unit": "day",
 						"freq": 1
@@ -2688,7 +2682,6 @@
 					"components": [
 						"Interact"
 					],
-
 					"frequency": {
 						"unit": "day",
 						"freq": 1
