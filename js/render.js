@@ -4120,6 +4120,11 @@ Renderer.creature = {
 	getCompactRenderedString (cr, opts) {
 		cr = scaleCreature.applyVarRules(cr);
 		opts = opts || {};
+		if (opts.showScaler) {
+			opts.$btnResetScaleLvl = opts.$btnResetScaleLvl || Renderer.creature.$getBtnResetScaleLvl(cr);
+			opts.$btnScaleLvl = opts.$btnScaleLvl || Renderer.creature.$getBtnScaleLvl(cr);
+			opts.asJquery = true;
+		}
 		const traits = [];
 		if (cr.rarity !== "Common") traits.push(cr.rarity);
 		if (cr.alignment != null) traits.push(cr.alignment);
@@ -4242,19 +4247,66 @@ Renderer.creature = {
 		$btnScaleLvl.after($wrp);
 	},
 
+	bindScaleLvlButtons ($content, toRender, renderFn, page, source, hash, meta, sourceData) {
+		$content
+			.find(".mon__btn-scale-lvl")
+			.click(evt => {
+				evt.stopPropagation();
+				const win = (evt.view || {}).window;
+
+				const $btn = $(evt.target).closest("button");
+				const initialLvl = toRender._originalLvl != null ? toRender._originalLvl : toRender.level;
+				const lastLvl = toRender.level;
+
+				Renderer.creature.getLvlScaleTarget(
+					win,
+					$btn,
+					lastLvl,
+					initialLvl,
+					async (targetLvl) => {
+						const original = await Renderer.hover.pCacheAndGet(page, source, hash);
+						if (targetLvl === initialLvl) {
+							toRender = original;
+							sourceData.type = "stats";
+							delete sourceData.level;
+						} else {
+							toRender = await scaleCreature.scale(toRender, targetLvl);
+							sourceData.type = "statsCreatureScaled";
+							sourceData.level = targetLvl;
+						}
+
+						$content.empty().append(renderFn(toRender));
+						meta.windowMeta.$windowTitle.text(toRender._displayName || toRender.name);
+						Renderer.creature.bindScaleLvlButtons($content, toRender, renderFn, page, source, hash, meta, sourceData);
+					},
+					true,
+				);
+			});
+
+		$content
+			.find(".mon__btn-reset-lvl")
+			.click(async () => {
+				toRender = await Renderer.hover.pCacheAndGet(page, source, hash);
+				$content.empty().append(renderFn(toRender));
+				meta.windowMeta.$windowTitle.text(toRender._displayName || toRender.name);
+				Renderer.creature.bindScaleLvlButtons($content, toRender, renderFn, page, source, hash, meta, sourceData);
+			});
+	},
+
 	$getBtnScaleLvl (cr) {
 		const $btnScaleLvl = cr.level != null ? $(`
-			<button id="btn-scale-lvl" title="Scale Creature By Level (Highly Experimental)" class="mon__btn-scale-lvl btn btn-xs btn-default">
+			<button title="Scale Creature By Level (Highly Experimental)" class="mon__btn-scale-lvl btn btn-xs btn-default">
 				<span class="glyphicon glyphicon-signal"/>
 			</button>`) : null;
 		return $btnScaleLvl.off("click");
 	},
 
 	$getBtnResetScaleLvl (cr) {
+		const isScaled = cr.level != null && cr._originalLvl != null;
 		const $btnResetScaleLvl = cr.level != null ? $(`
-			<button id="btn-scale-lvl" title="Reset Level Scaling" class="mon__btn-scale-lvl btn btn-xs btn-default">
+			<button title="Reset Level Scaling" class="mon__btn-reset-lvl btn btn-xs btn-default">
 				<span class="glyphicon glyphicon-refresh"></span>
-			</button>`) : null;
+			</button>`).toggle(isScaled) : null;
 		return $btnResetScaleLvl.off("click");
 	},
 
@@ -5514,47 +5566,13 @@ Renderer.hover = {
 			const renderFn = Renderer.hover._pageToRenderFn(page);
 			if (win._IS_POPOUT) {
 				$content.find(`.mon__btn-scale-lvl`).remove();
-				$content.find(`.mon__btn-scale-lvl`).remove();
+				$content.find(`.mon__btn-reset-lvl`).remove();
 			} else {
-				$content
-					.on("click", ".mon__btn-scale-lvl", (evt) => {
-						evt.stopPropagation();
-						const win = (evt.view || {}).window;
-
-						const $btn = $(evt.target).closest("button");
-						const initialLvl = toRender._originalLvl != null ? toRender._originalLvl : toRender.level;
-						const lastLvl = toRender.level;
-
-						Renderer.creature.getLvlScaleTarget(
-							win,
-							$btn,
-							lastLvl,
-							initialLvl,
-							async (targetLvl) => {
-								const original = await Renderer.hover.pCacheAndGet(page, source, hash);
-								if (targetLvl === initialLvl) {
-									toRender = original;
-									sourceData.type = "stats";
-									delete sourceData.level;
-								} else {
-									toRender = await scaleCreature.scale(toRender, targetLvl);
-									sourceData.type = "statsCreatureScaled";
-									sourceData.level = targetLvl;
-								}
-
-								$content.empty().append(renderFn(toRender));
-								meta.windowMeta.$windowTitle.text(toRender._displayName || toRender.name);
-							},
-							true,
-						);
-					});
-
-				$content
-					.on("click", ".mon__btn-scale-lvl", async () => {
-						toRender = await Renderer.hover.pCacheAndGet(page, source, hash);
-						$content.empty().append(renderFn(toRender));
-						meta.windowMeta.$windowTitle.text(toRender._displayName || toRender.name);
-					});
+				switch (page) {
+					case UrlUtil.PG_BESTIARY: {
+						Renderer.creature.bindScaleLvlButtons($content, toRender, renderFn, page, source, hash, meta, sourceData);
+					}
+				}
 			}
 		}
 	},

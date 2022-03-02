@@ -1034,7 +1034,7 @@ class Panel {
 				}
 			}, true);
 		});
-		$contentStats.off("click", ".mon__btn-scale-lvl").on("click", ".mon__btn-scale-lvl", function () {
+		$contentStats.off("click", ".mon__btn-reset-lvl").on("click", ".mon__btn-reset-lvl", function () {
 			$contentStats.empty().append(Renderer.creature.getCompactRenderedString(creature, {showScaler: true, isScaled: false}));
 			self.set$Tab(
 				self.tabIndex,
