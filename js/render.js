@@ -862,19 +862,16 @@ function Renderer () {
 	this._renderAbility_compact = function (entry, textStack, meta, options) {
 		const renderer = Renderer.get();
 		textStack[0] += `<p class="pf2-stat pf2-stat__section"><strong>${entry.name != null ? entry.name : "Activate"}&nbsp;</strong>`
-		if (entry.activity != null) textStack[0] += `${renderer.render(Parser.timeToFullEntry(entry.activity))} `;
-		if (entry.activity != null && Parser.TIME_ACTIONS.includes(entry.activity.unit)) {
-			textStack[0] += `${entry.components != null ? `${renderer.render(entry.components.join(", "))}${entry.traits != null ? " " : "; "}` : ""}`;
-			textStack[0] += `${entry.traits != null && entry.traits.length ? `(${entry.traits.map(t => renderer.render(`{@trait ${t.toLowerCase()}}`)).join(", ")}); ` : ""}`;
-		} else {
-			if (entry.components) textStack[0] += renderer.render(`${entry.components.join(", ")} `);
-			if (entry.traits) textStack[0] += renderer.render(`(${entry.traits.map(t => renderer.render(`{@trait ${t.toLowerCase()}}`)).join(", ")}); `);
-		}
+		if (entry.activity != null) textStack[0] += `${renderer.render(Parser.timeToFullEntry(entry.activity))}`;
+		if (entry.components != null) textStack[0] += ` ${renderer.render(entry.components.join(", "))}`;
+		if (entry.traits && entry.traits.length) textStack[0] += ` (${entry.traits.map(t => renderer.render(`{@trait ${t.toLowerCase()}}`)).join(", ")})`;
+		// TODO: Egh!
+		if ((entry.components != null && (entry.traits == null || entry.traits.length === 0)) || (entry.activity != null && !Parser.TIME_ACTIONS.includes(entry.activity.unit))) textStack[0] += "; ";
 		if (entry.frequency != null) textStack[0] += `<strong>Frequency&nbsp;</strong>${renderer.render_addTerm(Parser.freqToFullEntry(entry.frequency))} `;
 		if (entry.note != null) textStack[0] += `${renderer.render(entry.note)}; `;
 		if (entry.requirements != null) textStack[0] += `<strong>Requirements&nbsp;</strong>${renderer.render_addTerm(entry.requirements)} `;
 		if (entry.trigger != null) textStack[0] += `<strong>Trigger&nbsp;</strong>${renderer.render_addTerm(entry.trigger)} `;
-		textStack[0] += `${entry.frequency || entry.requirements || entry.trigger || entry.effect === true ? "<strong>Effect&nbsp;</strong>" : ""}`;
+		textStack[0] += `${entry.frequency || entry.requirements || entry.trigger || entry.components || (entry.activity && entry.activity.unit === Parser.TM_VARIES) ? "<strong>Effect&nbsp;</strong>" : ""}`;
 		if (entry.entries) textStack[0] += entry.entries.map(e => renderer.render(e, {isAbility: true})).join(" ");
 		if (entry.special != null) textStack[0] += ` <strong>Special&nbsp;</strong>${renderer.render(entry.special)}`;
 		textStack[0] += `</p>`
@@ -4120,6 +4117,11 @@ Renderer.creature = {
 	getCompactRenderedString (cr, opts) {
 		cr = scaleCreature.applyVarRules(cr);
 		opts = opts || {};
+		if (opts.showScaler) {
+			opts.$btnResetScaleLvl = opts.$btnResetScaleLvl || Renderer.creature.$getBtnResetScaleLvl(cr);
+			opts.$btnScaleLvl = opts.$btnScaleLvl || Renderer.creature.$getBtnScaleLvl(cr);
+			opts.asJquery = true;
+		}
 		const traits = [];
 		if (cr.rarity !== "Common") traits.push(cr.rarity);
 		if (cr.alignment != null) traits.push(cr.alignment);
@@ -4242,19 +4244,66 @@ Renderer.creature = {
 		$btnScaleLvl.after($wrp);
 	},
 
+	bindScaleLvlButtons ($content, toRender, renderFn, page, source, hash, meta, sourceData) {
+		$content
+			.find(".mon__btn-scale-lvl")
+			.click(evt => {
+				evt.stopPropagation();
+				const win = (evt.view || {}).window;
+
+				const $btn = $(evt.target).closest("button");
+				const initialLvl = toRender._originalLvl != null ? toRender._originalLvl : toRender.level;
+				const lastLvl = toRender.level;
+
+				Renderer.creature.getLvlScaleTarget(
+					win,
+					$btn,
+					lastLvl,
+					initialLvl,
+					async (targetLvl) => {
+						const original = await Renderer.hover.pCacheAndGet(page, source, hash);
+						if (targetLvl === initialLvl) {
+							toRender = original;
+							sourceData.type = "stats";
+							delete sourceData.level;
+						} else {
+							toRender = await scaleCreature.scale(toRender, targetLvl);
+							sourceData.type = "statsCreatureScaled";
+							sourceData.level = targetLvl;
+						}
+
+						$content.empty().append(renderFn(toRender));
+						meta.windowMeta.$windowTitle.text(toRender._displayName || toRender.name);
+						Renderer.creature.bindScaleLvlButtons($content, toRender, renderFn, page, source, hash, meta, sourceData);
+					},
+					true,
+				);
+			});
+
+		$content
+			.find(".mon__btn-reset-lvl")
+			.click(async () => {
+				toRender = await Renderer.hover.pCacheAndGet(page, source, hash);
+				$content.empty().append(renderFn(toRender));
+				meta.windowMeta.$windowTitle.text(toRender._displayName || toRender.name);
+				Renderer.creature.bindScaleLvlButtons($content, toRender, renderFn, page, source, hash, meta, sourceData);
+			});
+	},
+
 	$getBtnScaleLvl (cr) {
 		const $btnScaleLvl = cr.level != null ? $(`
-			<button id="btn-scale-lvl" title="Scale Creature By Level (Highly Experimental)" class="mon__btn-scale-lvl btn btn-xs btn-default">
+			<button title="Scale Creature By Level (Highly Experimental)" class="mon__btn-scale-lvl btn btn-xs btn-default">
 				<span class="glyphicon glyphicon-signal"/>
 			</button>`) : null;
 		return $btnScaleLvl.off("click");
 	},
 
 	$getBtnResetScaleLvl (cr) {
+		const isScaled = cr.level != null && cr._originalLvl != null;
 		const $btnResetScaleLvl = cr.level != null ? $(`
-			<button id="btn-scale-lvl" title="Reset Level Scaling" class="mon__btn-scale-lvl btn btn-xs btn-default">
+			<button title="Reset Level Scaling" class="mon__btn-reset-lvl btn btn-xs btn-default">
 				<span class="glyphicon glyphicon-refresh"></span>
-			</button>`) : null;
+			</button>`).toggle(isScaled) : null;
 		return $btnResetScaleLvl.off("click");
 	},
 
@@ -4769,21 +4818,17 @@ Renderer.item = {
 		item.variants.forEach((v) => {
 			renderStack.push(Renderer.utils.getDividerDiv());
 			// FIXME: Optimize this hellish mess
-			renderStack.push(`<p class="pf2-stat pf2-stat__section--wide"><strong>Type&nbsp;</strong>${renderer.render(`{@item ${v.type.toLowerCase().includes(item.name.toLowerCase()) ? `${v.type}` : `${v.name ? v.name : `${v.type} ${item.name}`}`}|${v.source ? v.source : item.source}|${v.type}}`)}`);
+			renderStack.push(`<div class="pf2-stat pf2-stat__section--wide"><strong>Type&nbsp;</strong>${renderer.render(`{@item ${v.type.toLowerCase().includes(item.name.toLowerCase()) ? `${v.type}` : `${v.name ? v.name : `${v.type} ${item.name}`}`}|${v.source ? v.source : item.source}|${v.type}}`)}`);
 			if (v.level != null) renderStack.push(`; <strong>Level&nbsp;</strong>${v.level}`);
 			if (v.traits != null && v.traits.length) renderStack.push(` (${renderer.render(v.traits.map(t => `{@trait ${t.toLowerCase()}}`).join(", "))});`);
 			if (v.price != null) renderStack.push(`; <strong>Price&nbsp;</strong>${Parser.priceToFull(v.price)}`);
 			if (v.bulk != null) renderStack.push(`; <strong>Bulk&nbsp;</strong>${v.bulk}`);
-			// TODO: Make this perhaps more doable
 			if (v.entries != null && v.entries.length) {
-				const firstEntry = v.entries.shift()
-				renderStack.push(`; ${renderer.render(firstEntry)}`);
-				renderer.recursiveRender(v.entries, renderStack, {pf2StatFix: true});
-				v.entries.push(firstEntry)
+				renderer.recursiveRender(v.entries, renderStack, {prefix: "<p class='pf2-stat pf2-stat__text'>", suffix: "</p>"});
 			}
 			if (v.craftReq != null) renderStack.push(`; <strong>Craft Requirements&nbsp;</strong>${renderer.render(v.craftReq)}`);
 			if (v.shieldStats != null) renderStack.push(`; The shield has Hardness ${v.shieldStats.hardness}, HP ${v.shieldStats.hp}, and BT ${v.shieldStats.bt}.`);
-			renderStack.push(`</p>`);
+			renderStack.push(`</div>`);
 		});
 		return renderStack.join("")
 	},
@@ -5526,47 +5571,13 @@ Renderer.hover = {
 			const renderFn = Renderer.hover._pageToRenderFn(page);
 			if (win._IS_POPOUT) {
 				$content.find(`.mon__btn-scale-lvl`).remove();
-				$content.find(`.mon__btn-scale-lvl`).remove();
+				$content.find(`.mon__btn-reset-lvl`).remove();
 			} else {
-				$content
-					.on("click", ".mon__btn-scale-lvl", (evt) => {
-						evt.stopPropagation();
-						const win = (evt.view || {}).window;
-
-						const $btn = $(evt.target).closest("button");
-						const initialLvl = toRender._originalLvl != null ? toRender._originalLvl : toRender.level;
-						const lastLvl = toRender.level;
-
-						Renderer.creature.getLvlScaleTarget(
-							win,
-							$btn,
-							lastLvl,
-							initialLvl,
-							async (targetLvl) => {
-								const original = await Renderer.hover.pCacheAndGet(page, source, hash);
-								if (targetLvl === initialLvl) {
-									toRender = original;
-									sourceData.type = "stats";
-									delete sourceData.level;
-								} else {
-									toRender = await scaleCreature.scale(toRender, targetLvl);
-									sourceData.type = "statsCreatureScaled";
-									sourceData.level = targetLvl;
-								}
-
-								$content.empty().append(renderFn(toRender));
-								meta.windowMeta.$windowTitle.text(toRender._displayName || toRender.name);
-							},
-							true,
-						);
-					});
-
-				$content
-					.on("click", ".mon__btn-scale-lvl", async () => {
-						toRender = await Renderer.hover.pCacheAndGet(page, source, hash);
-						$content.empty().append(renderFn(toRender));
-						meta.windowMeta.$windowTitle.text(toRender._displayName || toRender.name);
-					});
+				switch (page) {
+					case UrlUtil.PG_BESTIARY: {
+						Renderer.creature.bindScaleLvlButtons($content, toRender, renderFn, page, source, hash, meta, sourceData);
+					}
+				}
 			}
 		}
 	},
