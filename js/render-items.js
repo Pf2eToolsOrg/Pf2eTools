@@ -11,6 +11,7 @@ class RenderItems {
 			${renderStack.join("")}
 			${Renderer.item.getVariantsHtml(item)}
 			${Renderer.item.getCraftRequirements(item)}
+			${Renderer.item.getSpecial(item)}
 			${Renderer.utils.getPageP(item)}
 		`;
 	}

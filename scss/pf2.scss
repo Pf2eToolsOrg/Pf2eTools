@@ -904,6 +904,39 @@
 	}
 }
 
+.pf2-combo {
+	display: flex;
+	&__ {
+		&start {
+			width: calc(50% - 3px);
+			padding: 0 1em 0 0;
+		}
+
+		&end {
+			border-left: 1px solid black;
+			padding: 0 1em 0 0.4em;
+			width: calc(50% - 1px);
+		}
+	}
+
+	@media only screen and (max-width: 520px) {
+		flex-direction: column;
+		&__ {
+			&start {
+				width: 100%;
+				padding: 0.05em 0 0 0.2em;
+			}
+
+			&end {
+				border-top: 1px solid black;
+				border-left: 0px;
+				padding: 0.05em 0 0 0.2em;
+				width: 100%;
+			}
+		}
+	}
+}
+
 .pf2-key-box {
 	color: white;
 	background: #5e0000;
@@ -1684,6 +1717,19 @@ $night-pf2-brown: #2e2c27;
 		@media only screen and (max-width: 520px) {
 			&__ab {
 				box-shadow: 0 8px 0 -6px $night-accent-gold;
+			}
+		}
+	}
+
+	.pf2-combo {
+		&__end {
+			border-left: 1px solid white;
+		}
+
+		@media only screen and (max-width: 520px) {
+			&__end {
+				border-top: 1px solid white;
+				border-left: 0px;
 			}
 		}
 	}
