@@ -4839,11 +4839,16 @@ Renderer.item = {
 		} else return ""
 	},
 
+	getSpecial (item) {
+		if (item.special != null) {
+			return `${Renderer.utils.getDividerDiv()}<p class="pf2-stat pf2-stat__section"><strong>Special&nbsp;</strong>${Renderer.get().render(item.special)}</p>`
+		} else return ""
+	},
+
 	getCompactRenderedString (item, opts) {
 		opts = opts || {};
 		const renderStack = [""]
 		Renderer.get().recursiveRender(item.entries, renderStack, {pf2StatFix: true})
-
 		return `${Renderer.utils.getExcludedDiv(item, "item", UrlUtil.PG_ITEMS)}
 			${Renderer.utils.getNameDiv(item, {page: UrlUtil.PG_ITEMS, ...opts})}
 			${Renderer.utils.getDividerDiv()}
@@ -4852,6 +4857,7 @@ Renderer.item = {
 			${renderStack.join("")}
 			${Renderer.item.getVariantsHtml(item)}
 			${Renderer.item.getCraftRequirements(item)}
+			${Renderer.item.getSpecial(item)}
 			${Renderer.utils.getPageP(item)}`;
 	},
 
