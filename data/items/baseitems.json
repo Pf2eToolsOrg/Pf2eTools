@@ -1,6 +1,47 @@
 {
 	"baseitem": [
 		{
+			"name": "Axe Musket",
+			"source": "G&G",
+			"page": 158,
+			"equipment": true,
+			"type": "Equipment",
+			"level": 1,
+			"traits": [
+				"Uncommon"
+			],
+			"price": {
+				"amount": 10,
+				"coin": "gp"
+			},
+			"weaponData": {
+				"type": "Ranged",
+				"group": "Firearm|G&G",
+				"damage": "1d6",
+				"damageType": "P",
+				"hands": 2,
+				"reload": 1,
+				"range": 40,
+				"ammunition": ["Dose or Round of Black Powder|G&G|round"],
+				"bulk": 2,
+				"traits": ["Concussive", "fatal d10"]
+			},
+			"comboWeaponData": {
+				"type": "Melee",
+				"group": "Axe",
+				"damage": "1d8",
+				"damageType": "S",
+				"hands": 2,
+				"bulk": 2,
+				"traits": ["Critical Fusion", "Sweep"]
+			},
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"entries": [
+				"This item, favored by firearms-using dwarves and barbarians, takes the form of a sturdy musket with an axeblade attached near the muzzle."
+			]
+		},
+		{
 			"name": "Adze",
 			"source": "LOAG",
 			"page": 139,
@@ -13,12 +54,9 @@
 			],
 			"price": {
 				"amount": 1,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": "2",
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d10",
 			"damageType": "S",
 			"hands": 2,
@@ -42,11 +80,9 @@
 			],
 			"price": {
 				"amount": 5,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": "L",
-			"onset": null,
 			"ammunition": [
 				"Pellets|G&G"
 			],
@@ -76,14 +112,11 @@
 			],
 			"price": {
 				"coin": "gp",
-				"amount": 2,
-				"note": null
+				"amount": 2
 			},
 			"bulk": 1,
 			"shieldStats": null,
 			"activate": null,
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d8",
 			"damageType": "S",
 			"hands": 1,
@@ -109,11 +142,9 @@
 			],
 			"price": {
 				"amount": 10,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": 2,
-			"onset": null,
 			"ammunition": [
 				"Dose or Round of Black Powder|G&G|round"
 			],
@@ -227,12 +258,9 @@
 			],
 			"price": {
 				"amount": 4,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": "1",
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d8",
 			"damageType": "S",
 			"hands": 1,
@@ -254,12 +282,9 @@
 			],
 			"price": {
 				"amount": 1,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": "1",
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d8",
 			"damageType": "S",
 			"hands": 1,
@@ -283,12 +308,9 @@
 			],
 			"price": {
 				"amount": 2,
-				"coin": "sp",
-				"note": null
+				"coin": "sp"
 			},
 			"bulk": "L",
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d4",
 			"damageType": "P",
 			"hands": "1 or 2*",
@@ -316,12 +338,9 @@
 			],
 			"price": {
 				"amount": 3,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": 1,
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d6",
 			"damageType": "S",
 			"hands": 2,
@@ -344,11 +363,9 @@
 			],
 			"price": {
 				"amount": 1,
-				"coin": "sp",
-				"note": null
+				"coin": "sp"
 			},
 			"bulk": "L",
-			"onset": null,
 			"ammunition": [
 				"Blowgun Dart"
 			],
@@ -377,11 +394,9 @@
 			],
 			"price": {
 				"amount": 8,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": 2,
-			"onset": null,
 			"ammunition": [
 				"Dose or Round of Black Powder|G&G|round"
 			],
@@ -411,12 +426,9 @@
 			],
 			"price": {
 				"amount": 2,
-				"coin": "sp",
-				"note": null
+				"coin": "sp"
 			},
 			"bulk": "2",
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d8",
 			"damageType": "B",
 			"hands": 2,
@@ -441,12 +453,9 @@
 			],
 			"price": {
 				"amount": 8,
-				"coin": "sp",
-				"note": null
+				"coin": "sp"
 			},
 			"bulk": 2,
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d10",
 			"damageType": "P",
 			"hands": 2,
@@ -476,12 +485,9 @@
 			],
 			"price": {
 				"amount": 5,
-				"coin": "sp",
-				"note": null
+				"coin": "sp"
 			},
 			"bulk": "L",
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d6",
 			"damageType": "B",
 			"hands": 1,
@@ -502,22 +508,21 @@
 			"traits": [],
 			"price": {
 				"amount": 8,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
+			},
+			"armorData": {
+				"ac": 4,
+				"dexCap": 1,
+				"str": 16,
+				"checkPen": 2,
+				"speedPen": 5,
+				"group": "Plate"
 			},
 			"bulk": 2,
-			"ac": 4,
-			"dexCap": 1,
-			"str": 16,
-			"checkPen": 2,
-			"speedPen": 5,
-			"onset": null,
-			"ammunition": null,
 			"category": "Armor",
 			"subCategory": "Medium",
-			"group": "Plate",
 			"entries": [
-				"Though referred to as a breastplate, this type of armor consists of several pieces of plate or {@item half plate} armor that protect the torso, chest, neck, and sometimes the hips and lower legs. It strategically grants some of the protection of plate while allowing greater flexibility and speed."
+				"Though referred to as a breastplate, this type of armor consists of several pieces of {@item full plate||plate} or {@item half plate} armor that protect the torso, chest, neck, and sometimes the hips and lower legs. It strategically grants some of the protection of {@item full plate||plate} while allowing greater flexibility and speed."
 			]
 		},
 		{
@@ -529,8 +534,7 @@
 			"traits": [],
 			"price": {
 				"amount": 1,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": "L",
 			"ac": 1,
@@ -540,8 +544,6 @@
 				"bt": 3
 			},
 			"speedPen": 0,
-			"onset": null,
-			"ammunition": null,
 			"category": "Shield",
 			"entries": [
 				"This very small shield is a favorite of duelists and quick, lightly armored warriors. It's typically made of steel and strapped to your forearm. You can {@action Raise a Shield} with your buckler as long as you have that hand free or are holding a light object that's not a weapon in that hand."
@@ -589,12 +591,9 @@
 			],
 			"price": {
 				"amount": 4,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": "1",
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d4",
 			"damageType": "S",
 			"hands": 1,
@@ -617,20 +616,19 @@
 			],
 			"price": {
 				"amount": 6,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
+			},
+			"armorData": {
+				"ac": 4,
+				"dexCap": 1,
+				"str": 16,
+				"checkPen": 2,
+				"speedPen": 5,
+				"group": "Chain"
 			},
 			"bulk": 2,
-			"ac": 4,
-			"dexCap": 1,
-			"str": 16,
-			"checkPen": 2,
-			"speedPen": 5,
-			"onset": null,
-			"ammunition": null,
 			"category": "Armor",
 			"subCategory": "Medium",
-			"group": "Chain",
 			"entries": [
 				"A suit of chain mail consists of several pieces of armor composed of small metal rings linked together in a protective mesh. It typically includes a chain shirt, leggings, a pair of arms, and a coif, collectively protecting most of the body."
 			]
@@ -647,20 +645,19 @@
 			],
 			"price": {
 				"amount": 5,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
+			},
+			"armorData": {
+				"ac": 2,
+				"dexCap": 3,
+				"str": 12,
+				"checkPen": 1,
+				"speedPen": 0,
+				"group": "Chain"
 			},
 			"bulk": 1,
-			"ac": 2,
-			"dexCap": 3,
-			"str": 12,
-			"checkPen": 1,
-			"speedPen": 0,
-			"onset": null,
-			"ammunition": null,
 			"category": "Armor",
 			"subCategory": "Light",
-			"group": "Chain",
 			"entries": [
 				"Sometimes called a hauberk, this is a long shirt constructed of the same metal rings as {@item chainmail}. However, it is much lighter than {@item chainmail} and protects only the torso, upper arms, and upper legs of its wearer."
 			]
@@ -705,12 +702,9 @@
 			],
 			"price": {
 				"amount": 2,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": "L",
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d4",
 			"damageType": "P",
 			"hands": 1,
@@ -735,11 +729,9 @@
 			],
 			"price": {
 				"amount": 5,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": "L",
-			"onset": null,
 			"ammunition": [
 				"Dose or Round of Black Powder|G&G|round"
 			],
@@ -772,12 +764,9 @@
 			],
 			"price": {
 				"amount": 2,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": "L",
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d4",
 			"damageType": "S",
 			"hands": 1,
@@ -799,12 +788,9 @@
 			],
 			"price": {
 				"amount": 0,
-				"coin": "",
-				"note": null
+				"coin": ""
 			},
 			"bulk": "1",
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d6",
 			"damageType": "B",
 			"hands": 1,
@@ -829,12 +815,9 @@
 			],
 			"price": {
 				"amount": 6,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": "L",
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d4",
 			"damageType": "P",
 			"hands": 1,
@@ -863,12 +846,9 @@
 			],
 			"price": {
 				"amount": 9,
-				"coin": "sp",
-				"note": null
+				"coin": "sp"
 			},
 			"bulk": 1,
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d6",
 			"damageType": "P",
 			"hands": 2,
@@ -892,11 +872,9 @@
 			],
 			"price": {
 				"amount": 20,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": 2,
-			"onset": null,
 			"ammunition": [
 				"Arrow"
 			],
@@ -924,11 +902,9 @@
 			],
 			"price": {
 				"amount": 14,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": 1,
-			"onset": null,
 			"ammunition": [
 				"Arrow"
 			],
@@ -953,11 +929,9 @@
 			"traits": [],
 			"price": {
 				"amount": 3,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": 1,
-			"onset": null,
 			"ammunition": [
 				"Bolt"
 			],
@@ -987,12 +961,9 @@
 			],
 			"price": {
 				"amount": 2,
-				"coin": "sp",
-				"note": null
+				"coin": "sp"
 			},
 			"bulk": "L",
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d4",
 			"damageType": "P",
 			"hands": 1,
@@ -1015,12 +986,9 @@
 			],
 			"price": {
 				"amount": 1,
-				"coin": "cp",
-				"note": null
+				"coin": "cp"
 			},
 			"bulk": "L",
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d4",
 			"damageType": "P",
 			"hands": 1,
@@ -1078,12 +1046,9 @@
 			],
 			"price": {
 				"amount": 1,
-				"coin": "sp",
-				"note": null
+				"coin": "sp"
 			},
 			"bulk": "L",
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d6",
 			"damageType": "S",
 			"hands": 1,
@@ -1109,11 +1074,9 @@
 			],
 			"price": {
 				"amount": 11,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": 1,
-			"onset": null,
 			"ammunition": [
 				"Dose or Round of Black Powder|G&G|round"
 			],
@@ -1143,11 +1106,9 @@
 			],
 			"price": {
 				"amount": 7,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": 1,
-			"onset": null,
 			"ammunition": [
 				"Dose or Round of Black Powder|G&G|round"
 			],
@@ -1176,11 +1137,9 @@
 			],
 			"price": {
 				"amount": 9,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": 1,
-			"onset": null,
 			"ammunition": [
 				"Dose or Round of Black Powder|G&G|round"
 			],
@@ -1211,11 +1170,9 @@
 			],
 			"price": {
 				"amount": 12,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": "L",
-			"onset": null,
 			"ammunition": [
 				"Dose or Round of Black Powder|G&G|round"
 			],
@@ -1274,11 +1231,9 @@
 			],
 			"price": {
 				"amount": 10,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": 2,
-			"onset": null,
 			"ammunition": [
 				"Dose or Round of Black Powder|G&G|round"
 			],
@@ -1308,12 +1263,9 @@
 			],
 			"price": {
 				"amount": 3,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": "2",
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d8",
 			"damageType": "S",
 			"hands": 1,
@@ -1366,12 +1318,9 @@
 			],
 			"price": {
 				"amount": 4,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": "2",
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d8",
 			"damageType": "S",
 			"hands": 2,
@@ -1393,19 +1342,18 @@
 			],
 			"price": {
 				"amount": 1,
-				"coin": "sp",
-				"note": null
+				"coin": "sp"
+			},
+			"armorData": {
+				"ac": 0,
+				"dexCap": 5,
+				"checkPen": 0,
+				"speedPen": 0,
+				"group": "Cloth"
 			},
 			"bulk": "L",
-			"ac": 0,
-			"dexCap": 5,
-			"checkPen": 0,
-			"speedPen": 0,
-			"onset": null,
-			"ammunition": null,
 			"category": "Armor",
 			"subCategory": "Unarmored",
-			"group": "Cloth",
 			"entries": [
 				"Adventurers who don't wear armor travel in durable clothing. Though it's not armor and uses your unarmored defense proficiency, it still has a Dex Cap and can grant an item bonus to AC if etched with potency runes (as described on page 581)."
 			]
@@ -1422,12 +1370,9 @@
 			],
 			"price": {
 				"amount": 3,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": "2",
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d10",
 			"damageType": "S",
 			"hands": 2,
@@ -1455,12 +1400,9 @@
 			],
 			"price": {
 				"amount": 4,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": "L",
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d4",
 			"damageType": "S",
 			"hands": 1,
@@ -1486,15 +1428,12 @@
 			],
 			"price": {
 				"coin": "sp",
-				"amount": 14,
-				"note": null
+				"amount": 14
 			},
 			"usage": null,
 			"bulk": "2",
 			"shieldStats": null,
 			"activate": null,
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d8",
 			"damageType": "S",
 			"hands": 2,
@@ -1522,12 +1461,9 @@
 			],
 			"price": {
 				"amount": 11,
-				"coin": "sp",
-				"note": null
+				"coin": "sp"
 			},
 			"bulk": "L",
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d4",
 			"damageType": "S",
 			"hands": 1,
@@ -1555,12 +1491,9 @@
 			],
 			"price": {
 				"amount": 1,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": "L",
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d4",
 			"damageType": "P",
 			"hands": 1,
@@ -1583,11 +1516,9 @@
 			],
 			"price": {
 				"amount": 5,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": 2,
-			"onset": null,
 			"ammunition": [
 				"Dose or Round of Black Powder|G&G|round"
 			],
@@ -1616,12 +1547,9 @@
 			],
 			"price": {
 				"amount": 8,
-				"coin": "sp",
-				"note": null
+				"coin": "sp"
 			},
 			"bulk": "1",
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d6",
 			"damageType": "B",
 			"hands": 1,
@@ -1647,11 +1575,9 @@
 			],
 			"price": {
 				"amount": 6,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": 1,
-			"onset": null,
 			"ammunition": [
 				"Dose or Round of Black Powder|G&G|round"
 			],
@@ -1680,11 +1606,9 @@
 			],
 			"price": {
 				"amount": 7,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": 1,
-			"onset": null,
 			"ammunition": [
 				"Dose or Round of Black Powder|G&G|round"
 			],
@@ -1713,11 +1637,9 @@
 			],
 			"price": {
 				"amount": 6,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": 1,
-			"onset": null,
 			"ammunition": [
 				"Dose or Round of Black Powder|G&G|round"
 			],
@@ -1746,12 +1668,9 @@
 			],
 			"price": {
 				"amount": 3,
-				"coin": "sp",
-				"note": null
+				"coin": "sp"
 			},
 			"bulk": "L",
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d4",
 			"damageType": "P",
 			"hands": 1,
@@ -1774,20 +1693,19 @@
 			],
 			"price": {
 				"amount": 30,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
+			},
+			"armorData": {
+				"group": "Plate",
+				"ac": 6,
+				"dexCap": 0,
+				"str": 18,
+				"checkPen": 3,
+				"speedPen": 10
 			},
 			"bulk": 4,
-			"ac": 6,
-			"dexCap": 0,
-			"str": 18,
-			"checkPen": 3,
-			"speedPen": 10,
-			"onset": null,
-			"ammunition": null,
 			"category": "Armor",
 			"subCategory": "Heavy",
-			"group": "Plate",
 			"entries": [
 				"Plate mail consists of interlocking plates that encase nearly the entire body in a carapace of steel. It is costly and heavy, and the wearer often requires help to don it correctly, but it provides some of the best defense armor can supply. A suit of this armor comes with an undercoat of {@item padded armor|CRB} and a pair of {@item gauntlet|CRB|gauntlets}."
 			]
@@ -1804,12 +1722,9 @@
 			],
 			"price": {
 				"amount": 2,
-				"coin": "sp",
-				"note": null
+				"coin": "sp"
 			},
 			"bulk": "L",
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d4",
 			"damageType": "B",
 			"hands": 1,
@@ -1833,12 +1748,9 @@
 			],
 			"price": {
 				"amount": 1,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": "2",
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d8",
 			"damageType": "S",
 			"hands": 2,
@@ -1862,12 +1774,9 @@
 			],
 			"price": {
 				"amount": 3,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": "2",
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d8",
 			"damageType": "B",
 			"hands": 1,
@@ -1893,12 +1802,9 @@
 			],
 			"price": {
 				"amount": 2,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": "1",
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d6",
 			"damageType": "B",
 			"hands": 1,
@@ -1920,12 +1826,9 @@
 			],
 			"price": {
 				"amount": 2,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": "2",
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d12",
 			"damageType": "S",
 			"hands": 2,
@@ -1948,12 +1851,9 @@
 			],
 			"price": {
 				"amount": 1,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": "2",
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d10",
 			"damageType": "B",
 			"hands": 2,
@@ -1975,12 +1875,9 @@
 			],
 			"price": {
 				"amount": 1,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": "2",
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d10",
 			"damageType": "P",
 			"hands": 2,
@@ -2002,12 +1899,9 @@
 			],
 			"price": {
 				"amount": 2,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": "2",
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d12",
 			"damageType": "S",
 			"hands": 2,
@@ -2030,12 +1924,9 @@
 			],
 			"price": {
 				"amount": 2,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": "2",
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d10",
 			"damageType": "S",
 			"hands": 2,
@@ -2058,12 +1949,9 @@
 			],
 			"price": {
 				"amount": 2,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": "2",
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d10",
 			"damageType": "P",
 			"hands": 2,
@@ -2084,20 +1972,19 @@
 			"traits": [],
 			"price": {
 				"amount": 18,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
+			},
+			"armorData": {
+				"group": "Plate",
+				"ac": 5,
+				"dexCap": 1,
+				"str": 16,
+				"checkPen": 3,
+				"speedPen": 10
 			},
 			"bulk": 3,
-			"ac": 5,
-			"dexCap": 1,
-			"str": 16,
-			"checkPen": 3,
-			"speedPen": 10,
-			"onset": null,
-			"ammunition": null,
 			"category": "Armor",
 			"subCategory": "Heavy",
-			"group": "Plate",
 			"entries": [
 				"Half plate consists of most of the upper body plates used in full plate, with lighter or sparser steel plate protection for the arms and legs. This provides some of the protection of {@item full plate} with greater flexibility and speed. A suit of this armor comes with an undercoat of {@item padded armor|CRB} and a pair of {@item gauntlet|CRB|gauntlets}."
 			]
@@ -2115,11 +2002,9 @@
 			],
 			"price": {
 				"amount": 5,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": 1,
-			"onset": null,
 			"ammunition": [
 				"Sling Bullets"
 			],
@@ -2150,12 +2035,9 @@
 			],
 			"price": {
 				"amount": 5,
-				"coin": "sp",
-				"note": null
+				"coin": "sp"
 			},
 			"bulk": "L",
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d4",
 			"damageType": "S",
 			"hands": 1,
@@ -2178,11 +2060,9 @@
 			],
 			"price": {
 				"amount": 5,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": 1,
-			"onset": null,
 			"ammunition": [
 				"Dose or Round of Black Powder|G&G|round"
 			],
@@ -2207,11 +2087,9 @@
 			"traits": [],
 			"price": {
 				"amount": 3,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": "L",
-			"onset": null,
 			"ammunition": [
 				"Bolt"
 			],
@@ -2239,11 +2117,9 @@
 			],
 			"price": {
 				"amount": 10,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": 2,
-			"onset": null,
 			"ammunition": [
 				"Dose or Round of Black Powder|G&G|round"
 			],
@@ -2272,12 +2148,9 @@
 			],
 			"price": {
 				"amount": 4,
-				"coin": "sp",
-				"note": null
+				"coin": "sp"
 			},
 			"bulk": "L",
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d6",
 			"damageType": "S",
 			"hands": 1,
@@ -2297,11 +2170,9 @@
 			"traits": [],
 			"price": {
 				"amount": 4,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": 2,
-			"onset": null,
 			"ammunition": [
 				"Bolt"
 			],
@@ -2327,19 +2198,19 @@
 				"Bulwark"
 			],
 			"bulk": 3,
-			"ac": 5,
-			"dexCap": 1,
-			"str": 16,
-			"checkPen": 2,
-			"speedPen": 10,
-			"onset": null,
-			"ammunition": null,
+			"armorData": {
+				"group": "Composite",
+				"ac": 5,
+				"dexCap": 1,
+				"str": 16,
+				"checkPen": 2,
+				"speedPen": 10
+			},
 			"category": "Armor",
 			"subCategory": "Heavy",
-			"group": "Composite",
 			"entries": [
 				"If your Strength score is at least 16, you remove the Speed penalty entirely instead of reducing it to \u20135 feet.",
-				"{@note This armor is exclusive to the {@class Inventor|G&G} class with the {@class Inventor|G&G|Armor|Armor|G&G} innovation and the {@b Heavy Construction} {@subclassFeature Breakthrough Innovation|Inventor|G&G|Armor|G&G|7||breakthrough armor modification}. While you may be able to wear this armor as a different class, everyone but the creator of the armor is untrained in it, even if they would normally be trained (or better) in heavy armor.}"
+				"{@note This armor is exclusive to the {@class Inventor|G&G} class with the {@class Inventor|G&G|Armor|Armor|G&G} innovation and the {@optfeature Heavy Construction|G&G|Heavy Construction} breakthrough armor modification. While you may be able to wear this armor as a different class, everyone but the creator of the armor is untrained in it, even if they would normally be trained (or better) in heavy armor.}"
 			]
 		},
 		{
@@ -2355,24 +2226,20 @@
 			],
 			"price": {
 				"coin": "gp",
-				"amount": 35,
-				"note": null
+				"amount": 35
 			},
 			"usage": "worn armor",
-			"bulk": "4",
-			"ac": 6,
-			"dexCap": 0,
-			"shieldStats": null,
-			"str": 18,
-			"checkPen": 3,
-			"speedPen": 10,
-			"activate": null,
-			"onset": null,
-			"ammunition": null,
+			"bulk": 4,
+			"armorData": {
+				"group": "Plate",
+				"ac": 6,
+				"dexCap": 0,
+				"str": 18,
+				"checkPen": 3,
+				"speedPen": 10
+			},
 			"category": "Armor",
 			"subCategory": "Heavy",
-			"group": "Plate",
-			"appliesTo": null,
 			"entries": [
 				"Few armors in the Inner Sea region are as memorable as the iconic Hellknight plate. While each order has its own flourishes, Hellknight plate is instantly recognizable to any who know of the Hellknights.",
 				"Hellknights go to extreme measures to punish non-Hellknights who get their hands on Hellknight plate, and the reward is not usually worth the risk, since for non-Hellknights, the armor is functionally similar to {@item full plate}."
@@ -2387,20 +2254,19 @@
 			"traits": [],
 			"price": {
 				"amount": 2,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
+			},
+			"armorData": {
+				"group": "Leather",
+				"ac": 3,
+				"dexCap": 2,
+				"str": 14,
+				"checkPen": 2,
+				"speedPen": 5
 			},
 			"bulk": 2,
-			"ac": 3,
-			"dexCap": 2,
-			"str": 14,
-			"checkPen": 2,
-			"speedPen": 5,
-			"onset": null,
-			"ammunition": null,
 			"category": "Armor",
 			"subCategory": "Medium",
-			"group": "Leather",
 			"entries": [
 				"A mix of furs, sturdy hide, and sometimes molded boiled leather, this armor provides protection due to its layers of leather, though its bulkiness slows the wearer down and decreases mobility."
 			]
@@ -2447,12 +2313,9 @@
 			],
 			"price": {
 				"amount": 9,
-				"coin": "sp",
-				"note": null
+				"coin": "sp"
 			},
 			"bulk": "2",
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d8",
 			"damageType": "S",
 			"hands": 2,
@@ -2501,12 +2364,9 @@
 			],
 			"price": {
 				"amount": 1,
-				"coin": "sp",
-				"note": null
+				"coin": "sp"
 			},
 			"bulk": "L",
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d6",
 			"damageType": "P",
 			"hands": 1,
@@ -2533,11 +2393,9 @@
 			],
 			"price": {
 				"amount": 11,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": 1,
-			"onset": null,
 			"ammunition": [
 				"Dose or Round of Black Powder|G&G|round"
 			],
@@ -2567,12 +2425,9 @@
 			],
 			"price": {
 				"amount": 1,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": "L",
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d6",
 			"damageType": "S",
 			"hands": 1,
@@ -2597,12 +2452,9 @@
 			],
 			"price": {
 				"amount": 2,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": "1",
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d6",
 			"damageType": "S",
 			"hands": 1,
@@ -2627,12 +2479,9 @@
 			],
 			"price": {
 				"amount": 3,
-				"coin": "sp",
-				"note": null
+				"coin": "sp"
 			},
 			"bulk": "L",
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d4",
 			"damageType": "P",
 			"hands": 1,
@@ -2657,12 +2506,9 @@
 			],
 			"price": {
 				"amount": 2,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": 1,
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d6",
 			"damageType": "B",
 			"hands": 1,
@@ -2685,12 +2531,9 @@
 			],
 			"price": {
 				"amount": 2,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": 1,
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d8",
 			"damageType": "S",
 			"hands": 1,
@@ -2714,12 +2557,9 @@
 			],
 			"price": {
 				"amount": 3,
-				"coin": "sp",
-				"note": null
+				"coin": "sp"
 			},
 			"bulk": "L",
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d4",
 			"damageType": "B",
 			"hands": 1,
@@ -2744,12 +2584,9 @@
 			],
 			"price": {
 				"amount": 6,
-				"coin": "sp",
-				"note": null
+				"coin": "sp"
 			},
 			"bulk": "L",
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d6",
 			"damageType": "S",
 			"hands": 1,
@@ -2773,12 +2610,9 @@
 			],
 			"price": {
 				"amount": 1,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": "2",
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d8",
 			"damageType": "P",
 			"hands": 2,
@@ -2798,20 +2632,20 @@
 			"traits": [],
 			"price": {
 				"amount": 2,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": 1,
-			"ac": 1,
-			"dexCap": 4,
-			"str": 10,
-			"checkPen": 1,
-			"speedPen": 0,
-			"onset": null,
-			"ammunition": null,
+			"armorData": {
+				"group": "Leather",
+				"ac": 1,
+				"dexCap": 4,
+				"str": 10,
+				"checkPen": 1,
+				"speedPen": 0
+			},
+
 			"category": "Armor",
 			"subCategory": "Light",
-			"group": "Leather",
 			"entries": [
 				"A mix of flexible and molded boiled leather, a suit of this type of armor provides some protection with maximum flexibility."
 			]
@@ -2828,12 +2662,9 @@
 			],
 			"price": {
 				"amount": 3,
-				"coin": "sp",
-				"note": null
+				"coin": "sp"
 			},
 			"bulk": "L",
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d6",
 			"damageType": "B",
 			"hands": 1,
@@ -2857,12 +2688,9 @@
 			],
 			"price": {
 				"amount": 4,
-				"coin": "sp",
-				"note": null
+				"coin": "sp"
 			},
 			"bulk": "L",
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d4",
 			"damageType": "B",
 			"hands": 1,
@@ -2885,12 +2713,9 @@
 			],
 			"price": {
 				"amount": 4,
-				"coin": "sp",
-				"note": null
+				"coin": "sp"
 			},
 			"bulk": "L",
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d4",
 			"damageType": "P",
 			"hands": 1,
@@ -2913,11 +2738,9 @@
 			],
 			"price": {
 				"amount": 9,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": 1,
-			"onset": null,
 			"ammunition": [
 				"Pellets|G&G"
 			],
@@ -2945,11 +2768,9 @@
 			],
 			"price": {
 				"amount": 6,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": 2,
-			"onset": null,
 			"ammunition": [
 				"Arrow"
 			],
@@ -2976,12 +2797,9 @@
 			],
 			"price": {
 				"amount": 5,
-				"coin": "sp",
-				"note": null
+				"coin": "sp"
 			},
 			"bulk": "2",
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d8",
 			"damageType": "P",
 			"hands": 2,
@@ -3003,12 +2821,9 @@
 			],
 			"price": {
 				"amount": 1,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": "1",
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d8",
 			"damageType": "S",
 			"hands": 1,
@@ -3030,12 +2845,9 @@
 			],
 			"price": {
 				"amount": 1,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": "1",
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d6",
 			"damageType": "B",
 			"hands": 1,
@@ -3058,12 +2870,9 @@
 			],
 			"price": {
 				"amount": 7,
-				"coin": "sp",
-				"note": null
+				"coin": "sp"
 			},
 			"bulk": "L",
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d6",
 			"damageType": "S",
 			"hands": 1,
@@ -3089,12 +2898,9 @@
 			],
 			"price": {
 				"amount": 5,
-				"coin": "sp",
-				"note": null
+				"coin": "sp"
 			},
 			"bulk": "L",
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d4",
 			"damageType": "P",
 			"hands": 1,
@@ -3119,12 +2925,9 @@
 			],
 			"price": {
 				"amount": 6,
-				"coin": "sp",
-				"note": null
+				"coin": "sp"
 			},
 			"bulk": 1,
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d6",
 			"damageType": "S",
 			"hands": 1,
@@ -3146,12 +2949,9 @@
 			],
 			"price": {
 				"amount": 3,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": "2",
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d12",
 			"damageType": "B",
 			"hands": 2,
@@ -3176,12 +2976,9 @@
 			],
 			"price": {
 				"amount": 3,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": "2",
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d8",
 			"damageType": "B",
 			"hands": 2,
@@ -3207,11 +3004,9 @@
 			],
 			"price": {
 				"amount": 9,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": 1,
-			"onset": null,
 			"ammunition": [
 				"Dose or Round of Black Powder|G&G|round"
 			],
@@ -3238,12 +3033,9 @@
 			],
 			"price": {
 				"amount": 1,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": "1",
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d6",
 			"damageType": "B",
 			"hands": 1,
@@ -3268,12 +3060,9 @@
 			],
 			"price": {
 				"amount": 3,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": 2,
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d8",
 			"damageType": "S",
 			"hands": 2,
@@ -3296,12 +3085,9 @@
 			],
 			"price": {
 				"amount": 9,
-				"coin": "sp",
-				"note": null
+				"coin": "sp"
 			},
 			"bulk": 1,
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d8",
 			"damageType": "S",
 			"hands": 1,
@@ -3327,12 +3113,9 @@
 			],
 			"price": {
 				"amount": 2,
-				"coin": "sp",
-				"note": null
+				"coin": "sp"
 			},
 			"bulk": "L",
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d6",
 			"damageType": "B",
 			"hands": 1,
@@ -3357,12 +3140,9 @@
 			],
 			"price": {
 				"amount": 7,
-				"coin": "sp",
-				"note": null
+				"coin": "sp"
 			},
 			"bulk": "L",
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d6",
 			"damageType": "P",
 			"hands": 1,
@@ -3387,12 +3167,9 @@
 			],
 			"price": {
 				"amount": 2,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": "1",
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d8",
 			"damageType": "S",
 			"hands": 1,
@@ -3414,20 +3191,19 @@
 			],
 			"price": {
 				"amount": 2,
-				"coin": "sp",
-				"note": null
+				"coin": "sp"
 			},
 			"bulk": "L",
-			"ac": 1,
-			"dexCap": 3,
-			"str": 10,
-			"checkPen": 0,
-			"speedPen": 0,
-			"onset": null,
-			"ammunition": null,
+			"armorData": {
+				"group": "Cloth",
+				"ac": 1,
+				"dexCap": 3,
+				"str": 10,
+				"checkPen": 0,
+				"speedPen": 0
+			},
 			"category": "Armor",
 			"subCategory": "Light",
-			"group": "Cloth",
 			"entries": [
 				"This armor is simply a layer of heavy, quilted cloth, but it is sometimes used because it's so inexpensive. Padded armor is easier to damage and destroy than other types of armor. Heavy armor comes with a padded armor undercoat included in its Price, though it loses the comfort trait when worn under heavy armor. You can wear just that padded armor undercoat to sleep in, if your heavy armor is destroyed, or when otherwise not wearing the full heavy armor. This allows you to keep the armor invested and benefit from the power of any runes on the associated heavy armor, but no one else can wear your heavy armor without the padded undercoat."
 			]
@@ -3475,11 +3251,9 @@
 			],
 			"price": {
 				"amount": 12,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": 1,
-			"onset": null,
 			"ammunition": [
 				"Dose or Round of Black Powder|G&G|round"
 			],
@@ -3506,12 +3280,9 @@
 			],
 			"price": {
 				"amount": 7,
-				"coin": "sp",
-				"note": null
+				"coin": "sp"
 			},
 			"bulk": "1",
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d6",
 			"damageType": "P",
 			"hands": 1,
@@ -3563,12 +3334,9 @@
 			],
 			"price": {
 				"amount": 10,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": 1,
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d6",
 			"damageType": "modular",
 			"hands": 1,
@@ -3587,16 +3355,16 @@
 			"type": "Equipment",
 			"traits": [],
 			"bulk": 2,
-			"ac": 4,
-			"dexCap": 1,
-			"str": 16,
-			"checkPen": 2,
-			"speedPen": 5,
-			"onset": null,
-			"ammunition": null,
+			"armorData": {
+				"group": "Composite",
+				"ac": 4,
+				"dexCap": 1,
+				"str": 16,
+				"checkPen": 2,
+				"speedPen": 5
+			},
 			"category": "Armor",
 			"subCategory": "Medium",
-			"group": "Composite",
 			"entries": [
 				"{@note This armor is exclusive to the {@class Inventor|G&G} class with the {@class Inventor|G&G|Armor|Armor|G&G} innovation. While you may be able to wear this armor as a different class, everyone but the creator of the armor is untrained in it, even if they would normally be trained (or better) in medium armor.}"
 			]
@@ -3613,12 +3381,9 @@
 			],
 			"price": {
 				"amount": 2,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": "2",
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d10",
 			"damageType": "P",
 			"hands": 2,
@@ -3642,12 +3407,9 @@
 			],
 			"price": {
 				"amount": 2,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": "1",
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d6",
 			"damageType": "P",
 			"hands": 1,
@@ -3671,12 +3433,9 @@
 			],
 			"price": {
 				"amount": 2,
-				"coin": "sp",
-				"note": null
+				"coin": "sp"
 			},
 			"bulk": "L",
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d4",
 			"damageType": "B",
 			"hands": "1 or 2*",
@@ -3791,12 +3550,9 @@
 			],
 			"price": {
 				"amount": 4,
-				"coin": "sp",
-				"note": null
+				"coin": "sp"
 			},
 			"bulk": "L",
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d6",
 			"damageType": "B",
 			"hands": 1,
@@ -3823,12 +3579,9 @@
 			],
 			"price": {
 				"amount": 6,
-				"coin": "sp",
-				"note": null
+				"coin": "sp"
 			},
 			"bulk": "L",
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d4",
 			"damageType": "P",
 			"hands": 1,
@@ -3851,12 +3604,9 @@
 			],
 			"price": {
 				"amount": 1,
-				"coin": "sp",
-				"note": null
+				"coin": "sp"
 			},
 			"bulk": "L",
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d6",
 			"damageType": "B",
 			"hands": 1,
@@ -3881,12 +3631,9 @@
 			],
 			"price": {
 				"amount": 5,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": "L",
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d6",
 			"damageType": "S",
 			"hands": 1,
@@ -3906,20 +3653,19 @@
 			"traits": [],
 			"price": {
 				"amount": 4,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": 2,
-			"ac": 3,
-			"dexCap": 2,
-			"str": 14,
-			"checkPen": 2,
-			"speedPen": 5,
-			"onset": null,
-			"ammunition": null,
+			"armorData": {
+				"group": "Composite",
+				"ac": 3,
+				"dexCap": 2,
+				"str": 14,
+				"checkPen": 2,
+				"speedPen": 5
+			},
 			"category": "Armor",
 			"subCategory": "Medium",
-			"group": "Composite",
 			"entries": [
 				"Scale mail consists of many metal scales sewn onto a reinforced leather backing, often in the form of a long shirt that protects the torso, arms, and legs."
 			]
@@ -3936,12 +3682,9 @@
 			],
 			"price": {
 				"amount": 1,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": "1",
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d6",
 			"damageType": "S",
 			"hands": 1,
@@ -3968,8 +3711,7 @@
 			],
 			"price": {
 				"coin": "sp",
-				"amount": 1,
-				"note": null
+				"amount": 1
 			},
 			"bulk": "1",
 			"damage": "1d4",
@@ -3994,12 +3736,9 @@
 			],
 			"price": {
 				"amount": 2,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": "2",
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d10",
 			"damageType": "S",
 			"hands": 2,
@@ -4021,12 +3760,9 @@
 			],
 			"price": {
 				"amount": 5,
-				"coin": "sp",
-				"note": null
+				"coin": "sp"
 			},
 			"bulk": null,
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d6",
 			"damageType": "B",
 			"hands": 1,
@@ -4048,12 +3784,9 @@
 			],
 			"price": {
 				"amount": 5,
-				"coin": "sp",
-				"note": null
+				"coin": "sp"
 			},
 			"bulk": null,
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d6",
 			"damageType": "P",
 			"hands": 1,
@@ -4075,11 +3808,9 @@
 			],
 			"price": {
 				"amount": 3,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": 1,
-			"onset": null,
 			"ammunition": [
 				"Arrow"
 			],
@@ -4108,12 +3839,9 @@
 			],
 			"price": {
 				"amount": 9,
-				"coin": "sp",
-				"note": null
+				"coin": "sp"
 			},
 			"bulk": "L",
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d6",
 			"damageType": "P",
 			"hands": 1,
@@ -4138,12 +3866,9 @@
 			],
 			"price": {
 				"amount": 1,
-				"coin": "cp",
-				"note": null
+				"coin": "cp"
 			},
 			"bulk": null,
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d4",
 			"damageType": "P",
 			"hands": 1,
@@ -4169,12 +3894,9 @@
 			],
 			"price": {
 				"amount": 2,
-				"coin": "sp",
-				"note": null
+				"coin": "sp"
 			},
 			"bulk": "L",
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d4",
 			"damageType": "S",
 			"hands": 1,
@@ -4226,11 +3948,9 @@
 			],
 			"price": {
 				"amount": 16,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": 2,
-			"onset": null,
 			"ammunition": [
 				"Dose or Round of Black Powder|G&G|round"
 			],
@@ -4257,11 +3977,9 @@
 			],
 			"price": {
 				"amount": 0,
-				"coin": "",
-				"note": null
+				"coin": ""
 			},
 			"bulk": "L",
-			"onset": null,
 			"ammunition": [
 				"Sling Bullets"
 			],
@@ -4288,12 +4006,9 @@
 			],
 			"price": {
 				"amount": 1,
-				"coin": "sp",
-				"note": null
+				"coin": "sp"
 			},
 			"bulk": "1",
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d6",
 			"damageType": "P",
 			"hands": 1,
@@ -4318,12 +4033,9 @@
 			],
 			"price": {
 				"amount": 3,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": "1",
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d8",
 			"damageType": "S",
 			"hands": 2,
@@ -4346,12 +4058,9 @@
 			],
 			"price": {
 				"amount": 3,
-				"coin": "sp",
-				"note": null
+				"coin": "sp"
 			},
 			"bulk": "L",
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d4",
 			"damageType": "P",
 			"hands": 1,
@@ -4399,20 +4108,19 @@
 			"traits": [],
 			"price": {
 				"amount": 13,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": 3,
-			"ac": 5,
-			"dexCap": 1,
-			"str": 16,
-			"checkPen": 3,
-			"speedPen": 10,
-			"onset": null,
-			"ammunition": null,
 			"category": "Armor",
 			"subCategory": "Heavy",
-			"group": "Composite",
+			"armorData": {
+				"group": "Composite",
+				"ac": 5,
+				"dexCap": 1,
+				"str": 16,
+				"checkPen": 3,
+				"speedPen": 10
+			},
 			"entries": [
 				"This type of armor is {@item chain mail} reinforced with flexible, interlocking metal plates, typically located on the wearer's torso, upper arms, and legs. A suit of this armor comes with an undercoat of {@item padded armor|CRB} and a pair of {@item gauntlet|CRB|gauntlets}."
 			]
@@ -4428,12 +4136,9 @@
 			],
 			"price": {
 				"amount": 0,
-				"coin": "",
-				"note": null
+				"coin": ""
 			},
 			"bulk": "1",
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d4",
 			"damageType": "B",
 			"hands": 1,
@@ -4459,12 +4164,9 @@
 			],
 			"price": {
 				"amount": 2,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": "L",
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d4",
 			"damageType": "P",
 			"hands": 1,
@@ -4484,8 +4186,7 @@
 			"traits": [],
 			"price": {
 				"amount": 2,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": 1,
 			"ac": 2,
@@ -4495,8 +4196,6 @@
 				"bt": 10
 			},
 			"speedPen": 0,
-			"onset": null,
-			"ammunition": null,
 			"category": "Shield",
 			"entries": [
 				"Like wooden shields, steel shields come in a variety of shapes and sizes. Though more expensive than wooden shields, they are much more durable."
@@ -4518,12 +4217,9 @@
 			],
 			"price": {
 				"amount": 8,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": "L",
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d4",
 			"damageType": "P",
 			"hands": 1,
@@ -4543,20 +4239,19 @@
 			"traits": [],
 			"price": {
 				"amount": 3,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": 1,
-			"ac": 2,
-			"dexCap": 3,
-			"str": 12,
-			"checkPen": 1,
-			"speedPen": 0,
-			"onset": null,
-			"ammunition": null,
 			"category": "Armor",
 			"subCategory": "Light",
-			"group": "Leather",
+			"armorData": {
+				"group": "Leather",
+				"ac": 2,
+				"dexCap": 3,
+				"str": 12,
+				"checkPen": 1,
+				"speedPen": 0
+			},
 			"entries": [
 				"This {@item leather armor} is reinforced with metal studs and sometimes small metal plates, providing most of the flexibility of leather armor with more robust protection."
 			]
@@ -4569,16 +4264,16 @@
 			"type": "Equipment",
 			"traits": [],
 			"bulk": 1,
-			"ac": 1,
-			"dexCap": 4,
-			"str": 10,
-			"checkPen": 1,
-			"speedPen": null,
-			"onset": null,
-			"ammunition": null,
 			"category": "Armor",
 			"subCategory": "Medium",
-			"group": "Composite",
+			"armorData": {
+				"group": "Composite",
+				"ac": 1,
+				"dexCap": 4,
+				"str": 10,
+				"checkPen": 1,
+				"speedPen": null
+			},
 			"entries": [
 				"{@note This armor is exclusive to the {@class Inventor|G&G} class with the {@class Inventor|G&G|Armor|Armor|G&G} innovation. While you may be able to wear this armor as a different class, everyone but the creator of the armor is untrained in it, even if they would normally be trained (or better) in medium armor.}"
 			]
@@ -4624,12 +4319,9 @@
 			],
 			"price": {
 				"amount": 5,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": 1,
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d6",
 			"damageType": "P",
 			"hands": 1,
@@ -4655,11 +4347,9 @@
 			],
 			"price": {
 				"amount": 10,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": "1",
-			"onset": null,
 			"ammunition": [
 				"Wooden Taws|LOAG"
 			],
@@ -4691,12 +4381,9 @@
 			],
 			"price": {
 				"amount": 2,
-				"coin": "sp",
-				"note": null
+				"coin": "sp"
 			},
 			"bulk": "L",
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d4",
 			"damageType": "S",
 			"hands": 1,
@@ -4720,12 +4407,9 @@
 			],
 			"price": {
 				"amount": 2,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": "1",
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d8",
 			"damageType": "S",
 			"hands": 1,
@@ -4751,12 +4435,9 @@
 			],
 			"price": {
 				"amount": 4,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": "L",
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d6",
 			"damageType": "S",
 			"hands": 1,
@@ -4780,12 +4461,9 @@
 			],
 			"price": {
 				"amount": 3,
-				"coin": "sp",
-				"note": null
+				"coin": "sp"
 			},
 			"bulk": "L",
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d4",
 			"damageType": "P",
 			"hands": 1,
@@ -4810,12 +4488,9 @@
 			],
 			"price": {
 				"amount": 5,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": "L",
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d6",
 			"damageType": "P",
 			"hands": 1,
@@ -4840,12 +4515,9 @@
 			],
 			"price": {
 				"amount": 2,
-				"coin": "sp",
-				"note": null
+				"coin": "sp"
 			},
 			"bulk": 2,
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d8",
 			"damageType": "B",
 			"hands": 2,
@@ -4894,8 +4566,7 @@
 			"traits": [],
 			"price": {
 				"amount": 2,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": 4,
 			"ac": 2,
@@ -4906,8 +4577,6 @@
 				"bt": 10
 			},
 			"speedPen": 5,
-			"onset": null,
-			"ammunition": null,
 			"category": "Shield",
 			"entries": [
 				"These massive shields can be used to provide cover to nearly the entire body. Due to their size, they are typically made of wood reinforced with metal.",
@@ -4956,12 +4625,9 @@
 			],
 			"price": {
 				"amount": 10,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": "1",
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d6",
 			"damageType": "modular",
 			"hands": 1,
@@ -4983,12 +4649,9 @@
 			],
 			"price": {
 				"amount": 1,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": "1",
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d8",
 			"damageType": "P",
 			"hands": 1,
@@ -5042,12 +4705,9 @@
 			],
 			"price": {
 				"amount": 2,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": 2,
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d6",
 			"damageType": "S",
 			"hands": 1,
@@ -5073,12 +4733,9 @@
 			],
 			"price": {
 				"amount": 1,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": "L",
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d4",
 			"damageType": "S",
 			"hands": 1,
@@ -5102,12 +4759,9 @@
 			],
 			"price": {
 				"amount": 2,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": "2",
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d10",
 			"damageType": "B",
 			"hands": 2,
@@ -5132,12 +4786,9 @@
 			],
 			"price": {
 				"amount": 3,
-				"coin": "sp",
-				"note": null
+				"coin": "sp"
 			},
 			"bulk": "L",
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d4",
 			"damageType": "S",
 			"hands": 1,
@@ -5159,12 +4810,9 @@
 			],
 			"price": {
 				"amount": 1,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": "1",
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d8",
 			"damageType": "B",
 			"hands": 1,
@@ -5190,12 +4838,9 @@
 			],
 			"price": {
 				"amount": 1,
-				"coin": "sp",
-				"note": null
+				"coin": "sp"
 			},
 			"bulk": "1",
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d4",
 			"damageType": "S",
 			"hands": 1,
@@ -5221,12 +4866,9 @@
 			],
 			"price": {
 				"amount": 5,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": "1",
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d6",
 			"damageType": "S",
 			"hands": 2,
@@ -5252,12 +4894,9 @@
 			],
 			"price": {
 				"amount": 5,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": "1",
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d6",
 			"damageType": "S",
 			"hands": 1,
@@ -5285,12 +4924,9 @@
 			],
 			"price": {
 				"amount": 2,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": "L",
-			"onset": null,
-			"ammunition": null,
 			"damage": "1d4",
 			"damageType": "P",
 			"hands": 1,
@@ -5310,8 +4946,7 @@
 			"traits": [],
 			"price": {
 				"amount": 1,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": 1,
 			"ac": 2,
@@ -5321,8 +4956,6 @@
 				"bt": 6
 			},
 			"speedPen": 0,
-			"onset": null,
-			"ammunition": null,
 			"category": "Shield",
 			"entries": [
 				"Though they come in a variety of shapes and sizes, the protection offered by wooden shields comes from the stoutness of their materials. While wooden shields are less expensive than steel shields, they break more easily."
