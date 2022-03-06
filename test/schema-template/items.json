@@ -184,6 +184,9 @@
                     },
                     "add_hash": {
                         "type": "string"
+                    },
+                    "usage": {
+                        "type": "string"
                     }
                 },
                 "additionalProperties": false,
@@ -193,6 +196,14 @@
                     "page"
                 ],
                 "anyOf": [
+                    {
+                        "not": {
+                            "required": [
+                                "generic",
+                                "add_hash"
+                            ]
+                        }
+                    },
                     {
                         "required": [
                             "add_hash"
