@@ -1,6 +1,96 @@
 {
 	"baseitem": [
 		{
+			"name": "Cane Pistol",
+			"source": "G&G",
+			"page": 158,
+			"equipment": true,
+			"type": "Equipment",
+			"level": 1,
+			"traits": [
+				"Uncommon"
+			],
+			"price": {
+				"amount": 8,
+				"coin": "gp"
+			},
+			"bulk": 1,
+			"hands": 1,
+			"weaponData": {
+				"type": "Ranged",
+				"group": "Firearm|G&G",
+				"damage": "1d4",
+				"damageType": "P",
+				"reload": 1,
+				"range": 30,
+				"ammunition": "round (10)|G&G|round",
+				"traits": [
+					"Concussive",
+					"fatal d8"
+				]
+			},
+			"comboWeaponData": {
+				"type": "Melee",
+				"group": "Club",
+				"damage": "1d6",
+				"damageType": "B",
+				"traits": [
+					"Critical Fusion",
+					"Thrown 10 ft."
+				]
+			},
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"entries": [
+				""
+			]
+		},
+		{
+			"name": "Black Powder Knuckle Dusters",
+			"source": "G&G",
+			"page": 158,
+			"equipment": true,
+			"type": "Equipment",
+			"level": 1,
+			"traits": [
+				"Uncommon"
+			],
+			"price": {
+				"amount": 8,
+				"coin": "gp"
+			},
+			"bulk": "L",
+			"hands": 1,
+			"weaponData": {
+				"type": "Ranged",
+				"group": "Firearm|G&G",
+				"damage": "1d4",
+				"damageType": "P",
+				"reload": 1,
+				"range": 30,
+				"ammunition": "round (10)|G&G|round",
+				"traits": [
+					"Concussive",
+					"fatal d8"
+				]
+			},
+			"comboWeaponData": {
+				"type": "Melee",
+				"group": "Brawling",
+				"damage": "1d4",
+				"damageType": "B",
+				"traits": [
+					"Critical Fusion",
+					"Agile"
+				]
+			},
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"entries": [
+				""
+			]
+		},
+		{
 			"name": "Axe Musket",
 			"source": "G&G",
 			"page": 158,
@@ -14,26 +104,30 @@
 				"amount": 10,
 				"coin": "gp"
 			},
+			"bulk": 2,
+			"hands": 2,
 			"weaponData": {
 				"type": "Ranged",
 				"group": "Firearm|G&G",
 				"damage": "1d6",
 				"damageType": "P",
-				"hands": 2,
 				"reload": 1,
 				"range": 40,
-				"ammunition": ["Dose or Round of Black Powder|G&G|round"],
-				"bulk": 2,
-				"traits": ["Concussive", "fatal d10"]
+				"ammunition": "round (10)|G&G|round",
+				"traits": [
+					"Concussive",
+					"fatal d10"
+				]
 			},
 			"comboWeaponData": {
 				"type": "Melee",
 				"group": "Axe",
 				"damage": "1d8",
 				"damageType": "S",
-				"hands": 2,
-				"bulk": 2,
-				"traits": ["Critical Fusion", "Sweep"]
+				"traits": [
+					"Critical Fusion",
+					"Sweep"
+				]
 			},
 			"category": "Weapon",
 			"subCategory": "Martial",
@@ -56,13 +150,15 @@
 				"amount": 1,
 				"coin": "gp"
 			},
-			"bulk": "2",
-			"damage": "1d10",
-			"damageType": "S",
 			"hands": 2,
+			"weaponData": {
+				"damage": "1d10",
+				"damageType": "S",
+				"group": "Axe"
+			},
+			"bulk": 2,
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Axe",
 			"entries": [
 				"A common cutting tool, an adze resembles an axe\u2014but the cutting edge is horizontal, rather than vertical. The adze's shape makes it popular among wood workers, and grippli builders often use them to construct their treetop homes. The tool also serves as an effective weapon, due in part to the immense strength required to swing it."
 			]
@@ -83,17 +179,19 @@
 				"coin": "gp"
 			},
 			"bulk": "L",
-			"ammunition": [
-				"Pellets|G&G"
-			],
-			"damage": "1d4",
-			"damageType": "P",
 			"hands": 1,
-			"reload": 0,
-			"range": 30,
+			"weaponData": {
+				"ammunition":
+					"Pellets|G&G"
+				,
+				"damage": "1d4",
+				"damageType": "P",
+				"reload": 0,
+				"range": 30,
+				"group": "Firearm|G&G"
+			},
 			"category": "Weapon",
 			"subCategory": "Simple",
-			"group": "Firearm|G&G",
 			"entries": [
 				"A thin-barreled firearm that uses a container of pressurized air instead of black powder to propel small metal bullets from an attached cartridge, the air repeater has fallen out of common use in Arcadia due to its poor stopping power, though it's still used occasionally for casual hunting and sport shooting. The air repeater and its {@item long air repeater|G&G|longer-ranged, two-handed variant} are still valued by some for their ability to allow a shooter to fire multiple rounds without needing to stop to reload or crank to a new chamber. A typical air repeater magazine holds 6 {@item pellets|G&G}."
 			]
@@ -114,16 +212,15 @@
 				"coin": "gp",
 				"amount": 2
 			},
+			"weaponData": {
+				"damage": "1d8",
+				"damageType": "S",
+				"hands": 1,
+				"group": "Sword"
+			},
 			"bulk": 1,
-			"shieldStats": null,
-			"activate": null,
-			"damage": "1d8",
-			"damageType": "S",
-			"hands": 1,
 			"category": "Weapon",
 			"subCategory": "Advanced",
-			"group": "Sword",
-			"appliesTo": null,
 			"entries": [
 				"An Aldori dueling sword is a slim, single-bladed dueling sword with a slight curve and a sharp, reinforced point. It deals {@damage 1d8} slashing damage. An aldori dueling sword is an advanced one-handed melee weapon in the sword weapon group."
 			]
@@ -144,18 +241,20 @@
 				"amount": 10,
 				"coin": "gp"
 			},
+			"weaponData": {
+				"ammunition": [
+					"Dose or Round of Black Powder|G&G|round"
+				],
+				"damage": "1d8",
+				"damageType": "P",
+				"hands": 2,
+				"reload": 1,
+				"range": 150,
+				"group": "Firearm|G&G"
+			},
 			"bulk": 2,
-			"ammunition": [
-				"Dose or Round of Black Powder|G&G|round"
-			],
-			"damage": "1d8",
-			"damageType": "P",
-			"hands": 2,
-			"reload": 1,
-			"range": 150,
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Firearm|G&G",
 			"entries": [
 				"This is a long rifle that offers more range than the average firearm, though the long barrel and ferocious kickback make the weapon particularly unsteady unless a tripod or other stand is used to stabilize it. The arquebus is one of the most commonly used long guns among the soldiers of Dongun Hold and Alkenstar."
 			]
@@ -175,13 +274,15 @@
 				"amount": 10,
 				"coin": "gp"
 			},
+			"weaponData": {
+				"damage": "1d6",
+				"damageType": "S",
+				"hands": 1,
+				"group": "Sword"
+			},
 			"bulk": 1,
-			"damage": "1d6",
-			"damageType": "S",
-			"hands": 1,
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Sword",
 			"entries": [
 				"The asp coil, named both for its slithering striking style and its usage among Aspis Consortium agents, has two forms. In sword form, it resembles an elegant, oddly balanced sword. However, with a twist of the pommel, the blade splits into a series of segments connected by elaborate metal cables. Agents of the Aspis Consortium have access to this weapon."
 			]
@@ -201,17 +302,19 @@
 				"coin": "gp"
 			},
 			"bulk": 2,
-			"ammunition": [
-				"Backpack Ballista Bolts|G&G"
-			],
-			"damage": "1d12",
-			"damageType": "P",
-			"hands": "1+",
-			"reload": "1 min.",
-			"range": 180,
+			"weaponData": {
+				"ammunition": [
+					"Backpack Ballista Bolts|G&G"
+				],
+				"damage": "1d12",
+				"damageType": "P",
+				"hands": "1+",
+				"reload": "1 min.",
+				"range": 180,
+				"group": "Bow"
+			},
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Bow",
 			"entries": [
 				"This complex wooden device, worn on the back, contains a miniature ballista on a retractable arm. As an {@action Interact} action, you can pull a lever to deploy or retract the ballista. As long as it remains deployed, you must hold the ballista using that hand or some of the components spill out onto the ground, just like dropping any other weapon. While deployed, the device opens and raises the ballista up over your shoulder. While retracted, the ballista and its mount slide down and are {@condition concealed} within the device. Although a backpack ballista packs a punch, the device is a challenge to operate. Reloading it takes 1 minute and can't be done while worn. As normal, you can't wear a backpack ballista with another backpack."
 			]
@@ -231,18 +334,20 @@
 				"amount": 20,
 				"coin": "gp"
 			},
+			"weaponData": {
+				"ammunition": [
+					"Backpack Catapult Stones|G&G"
+				],
+				"damage": "1d12",
+				"damageType": "B",
+				"hands": "1+",
+				"reload": "1 min.",
+				"range": 240,
+				"group": "Sling"
+			},
 			"bulk": 3,
-			"ammunition": [
-				"Backpack Catapult Stones|G&G"
-			],
-			"damage": "1d12",
-			"damageType": "B",
-			"hands": "1+",
-			"reload": "1 min.",
-			"range": 240,
 			"category": "Weapon",
 			"subCategory": "Advanced",
-			"group": "Sling",
 			"entries": [
 				"This wooden device is worn on the back and contains a miniature catapult mounted on a retractable frame. As an {@action Interact} action, you can pull a lever to deploy or retract the catapult. As long as it remains deployed, you must hold the catapult using that hand or some of the components spill out onto the ground, just like dropping any other weapon. While deployed, the device opens and raises the catapult up over your shoulder. While retracted, the catapult and its mount slide down and are {@condition concealed} within the device. A backpack catapult fires specialized stone spheres that are loaded into the bucket while unworn and retracted, through a sliding hatch; the reloading process takes 1 minute. To prevent misfires and accidental injury, the bucket fully encloses the stone while deployed, only opening when fired. As normal, you can't wear a backpack catapult with another backpack."
 			]
@@ -260,13 +365,15 @@
 				"amount": 4,
 				"coin": "gp"
 			},
-			"bulk": "1",
-			"damage": "1d8",
-			"damageType": "S",
-			"hands": 1,
+			"weaponData": {
+				"damage": "1d8",
+				"damageType": "S",
+				"hands": 1,
+				"group": "Sword"
+			},
+			"bulk": 1,
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Sword",
 			"entries": [
 				"This broad-bladed sword, sometimes called the hand-and-a-half sword, has a longer grip so it can be held in one hand or used with two hands to provide extra piercing or slashing power."
 			]
@@ -284,13 +391,15 @@
 				"amount": 1,
 				"coin": "gp"
 			},
-			"bulk": "1",
-			"damage": "1d8",
-			"damageType": "S",
-			"hands": 1,
+			"bulk": 1,
+			"weaponData": {
+				"damage": "1d8",
+				"damageType": "S",
+				"hands": 1,
+				"group": "Axe"
+			},
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Axe",
 			"entries": [
 				"These axes are designed explicitly as weapons, rather than tools. They typically weigh less, with a shaft reinforced with metal bands or bolts, and have a sharper blade, making them ideal for chopping limbs rather than wood."
 			]
@@ -311,12 +420,14 @@
 				"coin": "sp"
 			},
 			"bulk": "L",
-			"damage": "1d4",
-			"damageType": "P",
-			"hands": "1 or 2*",
+			"weaponData": {
+				"damage": "1d4",
+				"damageType": "P",
+				"hands": "1 or 2*",
+				"group": "Knife"
+			},
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Knife",
 			"entries": [
 				"This blade or spike can be attached to a crossbow or firearm but, unlike other attached weapons, can be wielded in one hand as its own weapon. When used as a separate weapon, it can't benefit from any runes or abilities that function only for attached weapons.",
 				"{@note *An attached bayonet or reinforced stock requires the same number of hands as the weapon it's attached to. A detached bayonet requires one hand.}"
@@ -341,12 +452,14 @@
 				"coin": "gp"
 			},
 			"bulk": 1,
-			"damage": "1d6",
-			"damageType": "S",
-			"hands": 2,
+			"weaponData": {
+				"damage": "1d6",
+				"damageType": "S",
+				"hands": 2,
+				"group": "Flail"
+			},
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Flail",
 			"entries": [
 				"The thin metal plates interwoven throughout this long scarf turn a fashion accessory into a deadly weapon."
 			]
@@ -366,17 +479,19 @@
 				"coin": "sp"
 			},
 			"bulk": "L",
-			"ammunition": [
-				"Blowgun Dart"
-			],
-			"damage": "1",
-			"damageType": "P",
-			"hands": 1,
-			"reload": 1,
-			"range": 20,
+			"weaponData": {
+				"ammunition": [
+					"Blowgun Dart"
+				],
+				"damage": "1",
+				"damageType": "P",
+				"hands": 1,
+				"reload": 1,
+				"range": 20,
+				"group": "Dart"
+			},
 			"category": "Weapon",
 			"subCategory": "Simple",
-			"group": "Dart",
 			"entries": [
 				"This long, narrow tube is used for shooting blowgun darts, using only the power of a forcefully exhaled breath."
 			]
@@ -397,17 +512,19 @@
 				"coin": "gp"
 			},
 			"bulk": 2,
-			"ammunition": [
-				"Dose or Round of Black Powder|G&G|round"
-			],
-			"damage": "1d8",
-			"damageType": "P",
-			"hands": 2,
-			"reload": 1,
-			"range": 40,
+			"weaponData": {
+				"ammunition": [
+					"Dose or Round of Black Powder|G&G|round"
+				],
+				"damage": "1d8",
+				"damageType": "P",
+				"hands": 2,
+				"reload": 1,
+				"range": 40,
+				"group": "Firearm|G&G"
+			},
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Firearm|G&G",
 			"entries": [
 				"This weapon fires pellets from a trumpet-shaped barrel, making it an excellent choice for hunting brush fowl or dealing damage within a short, broad area. Adventuring gunslingers often carry a blunderbuss to deal with swarms of vermin and similar threats."
 			]
@@ -420,21 +537,23 @@
 			"type": "Equipment",
 			"traits": [
 				"Monk",
-				"parry",
-				"reach",
-				"trip"
+				"Parry",
+				"Reach",
+				"Trip"
 			],
 			"price": {
 				"amount": 2,
 				"coin": "sp"
 			},
-			"bulk": "2",
-			"damage": "1d8",
-			"damageType": "B",
-			"hands": 2,
+			"bulk": 2,
+			"weaponData": {
+				"damage": "1d8",
+				"damageType": "B",
+				"hands": 2,
+				"group": "Club"
+			},
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Club",
 			"entries": [
 				"This strong but slender staff is tapered at the ends and well balanced. It's designed to be an offensive and defensive weapon."
 			]
@@ -455,13 +574,15 @@
 				"amount": 8,
 				"coin": "sp"
 			},
+			"weaponData": {
+				"damage": "1d10",
+				"damageType": "P",
+				"hands": 2,
+				"group": "Polearm"
+			},
 			"bulk": 2,
-			"damage": "1d10",
-			"damageType": "P",
-			"hands": 2,
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Polearm",
 			"entries": [
 				"Taking the form of a longspear fitted with crossbars or hooks, a boarding pike provides its wielder a sharp implement that's as adept at shoving enemies off a ship's railings as facilitating the boarding of other vessels. This is a martial melee weapon."
 			]
@@ -487,14 +608,16 @@
 				"amount": 5,
 				"coin": "sp"
 			},
+			"weaponData": {
+				"damage": "1d6",
+				"damageType": "B",
+				"hands": 1,
+				"range": 20,
+				"group": "Sling"
+			},
 			"bulk": "L",
-			"damage": "1d6",
-			"damageType": "B",
-			"hands": 1,
-			"range": 20,
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Sling",
 			"entries": [
 				"This throwing weapon consists of weights tied to the end of long cords, which can be used to bludgeon foes or entangle their legs."
 			]
@@ -505,7 +628,6 @@
 			"page": 275,
 			"equipment": true,
 			"type": "Equipment",
-			"traits": [],
 			"price": {
 				"amount": 8,
 				"coin": "gp"
@@ -531,19 +653,18 @@
 			"page": 277,
 			"equipment": true,
 			"type": "Equipment",
-			"traits": [],
 			"price": {
 				"amount": 1,
 				"coin": "gp"
 			},
 			"bulk": "L",
-			"ac": 1,
-			"shieldStats": {
+			"shieldData": {
 				"hardness": 3,
 				"hp": 6,
-				"bt": 3
+				"bt": 3,
+				"ac": 1,
+				"speedPen": 0
 			},
-			"speedPen": 0,
 			"category": "Shield",
 			"entries": [
 				"This very small shield is a favorite of duelists and quick, lightly armored warriors. It's typically made of steel and strapped to your forearm. You can {@action Raise a Shield} with your buckler as long as you have that hand free or are holding a light object that's not a weapon in that hand."
@@ -556,22 +677,24 @@
 			"equipment": true,
 			"type": "Equipment",
 			"traits": [
-				"uncommon",
-				"orc",
-				"shove",
-				"sweep"
+				"Uncommon",
+				"Orc",
+				"Shove",
+				"Sweep"
 			],
 			"price": {
 				"amount": 8,
 				"coin": "gp"
 			},
+			"weaponData": {
+				"damage": "1d12",
+				"damageType": "S",
+				"hands": 2,
+				"group": "Axe"
+			},
 			"bulk": 2,
-			"damage": "1d12",
-			"damageType": "S",
-			"hands": 2,
 			"category": "Weapon",
 			"subCategory": "Advanced",
-			"group": "Axe",
 			"entries": [
 				"Invented by Belkzen's zealous Steel-Eaters, the butchering axe has an oversized head and a long, thick haft counterbalanced with steel or stone. The weapon's sweeping strokes inflict immense damage, particularly against groups of foes, and can push dangerous opponents away to a safe distance. All of these qualities are particularly useful against the lumbering zombie hordes of the Whispering Tyrant. Correspondingly, butchering axes are often wielded by orc and half-orc Crimson Reclaimers of Lastwall."
 			]
@@ -593,13 +716,15 @@
 				"amount": 4,
 				"coin": "gp"
 			},
-			"bulk": "1",
-			"damage": "1d4",
-			"damageType": "S",
-			"hands": 1,
+			"bulk": 1,
+			"weaponData": {
+				"damage": "1d4",
+				"damageType": "S",
+				"hands": 1,
+				"group": "Sword"
+			},
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Sword",
 			"entries": [
 				"A blade of conrasu design, a buugeng has a unique, curved shape that allows it to rotate smoothly in the hand of a trained warrior. This spinning motion makes it easier to attack multiple foes at once with the weapon."
 			]
@@ -676,13 +801,15 @@
 				"coin": "sp"
 			},
 			"bulk": "L",
-			"damage": "1d8",
-			"damageType": "S",
-			"hands": 1,
-			"range": 20,
+			"weaponData": {
+				"damage": "1d8",
+				"damageType": "S",
+				"hands": 1,
+				"range": 20,
+				"group": "Knife"
+			},
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Knife",
 			"entries": [
 				"Simple, elegant, and portable, the chakram is an open-centered metal discus with a sharpened edge, as well as a grip running along the center so the wielder can hold it safely."
 			]
@@ -705,12 +832,14 @@
 				"coin": "gp"
 			},
 			"bulk": "L",
-			"damage": "1d4",
-			"damageType": "P",
-			"hands": 1,
+			"weaponData": {
+				"damage": "1d4",
+				"damageType": "P",
+				"hands": 1,
+				"group": "Knife"
+			},
 			"category": "Weapon",
 			"subCategory": "Simple",
-			"group": "Knife",
 			"entries": [
 				"This broad dagger is carried by dwarves as a weapon, tool, and designation of clan. Losing or having to surrender a clan dagger is considered a mark of embarrassment to most dwarves."
 			]
@@ -732,17 +861,19 @@
 				"coin": "gp"
 			},
 			"bulk": "L",
-			"ammunition": [
-				"Dose or Round of Black Powder|G&G|round"
-			],
-			"damage": "1d6",
-			"damageType": "P",
-			"hands": 1,
-			"reload": 1,
-			"range": 80,
+			"weaponData": {
+				"ammunition": [
+					"Dose or Round of Black Powder|G&G|round"
+				],
+				"damage": "1d6",
+				"damageType": "P",
+				"hands": 1,
+				"reload": 1,
+				"range": 80,
+				"group": "Firearm|G&G"
+			},
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Firearm|G&G",
 			"entries": [
 				"The tradition of dwarves displaying their clan affiliations with special clan daggers goes back millennia, but many of the dwarf clans of Dongun Hold have their own take on the tradition, with promising young gunsmiths claiming their adulthood by crafting a specialized personal firearm using the clan's unique smithing traditions. Losing or being forced to surrender their clan pistol is a terrible embarrassment for the dwarves that carry them."
 			]
@@ -767,12 +898,14 @@
 				"coin": "gp"
 			},
 			"bulk": "L",
-			"damage": "1d4",
-			"damageType": "S",
 			"hands": 1,
+			"weaponData": {
+				"damage": "1d4",
+				"damageType": "S",
+				"group": "Knife"
+			},
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Knife",
 			"entries": [
 				"The three parallel blades of this handheld weapon extend between the fingers to resemble the natural claws of the amurruns who created them, providing a way for those catfolk without suitable natural claws to share the fighting customs of their kin."
 			]
@@ -786,17 +919,15 @@
 			"traits": [
 				"Thrown 10 ft."
 			],
-			"price": {
-				"amount": 0,
-				"coin": ""
-			},
-			"bulk": "1",
-			"damage": "1d6",
-			"damageType": "B",
+			"bulk": 1,
 			"hands": 1,
+			"weaponData": {
+				"damage": "1d6",
+				"damageType": "B",
+				"group": "Club"
+			},
 			"category": "Weapon",
 			"subCategory": "Simple",
-			"group": "Club",
 			"entries": [
 				"This is a piece of stout wood shaped or repurposed to bludgeon an enemy. Clubs can be intricately carved pieces of martial art or as simple as a tree branch or piece of wood."
 			]
@@ -818,14 +949,16 @@
 				"coin": "gp"
 			},
 			"bulk": "L",
-			"damage": "1d4",
-			"damageType": "P",
 			"hands": 1,
-			"reload": 1,
-			"range": 30,
+			"weaponData": {
+				"damage": "1d4",
+				"damageType": "P",
+				"reload": 1,
+				"range": 30,
+				"group": "Firearm|G&G"
+			},
 			"category": "Weapon",
 			"subCategory": "Simple",
-			"group": "Firearm|G&G",
 			"entries": [
 				"This small pistol is easily concealed inside a jacket or some other article of clothing. Rarely kept as a primary weapon, coat pistols are equally favored by clever assassins and traveling Alkenstar aristocrats."
 			]
@@ -848,13 +981,15 @@
 				"amount": 9,
 				"coin": "sp"
 			},
-			"bulk": 1,
-			"damage": "1d6",
-			"damageType": "P",
 			"hands": 2,
+			"bulk": 1,
+			"weaponData": {
+				"damage": "1d6",
+				"damageType": "P",
+				"group": "Flail"
+			},
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Flail",
 			"entries": [
 				"Although grappling hooks typically serve as a climbing tool, this specially reinforced grapnel attached to a rope up to 10 feet long can be swung as a weapon. This is a martial melee weapon."
 			]
@@ -875,17 +1010,17 @@
 				"coin": "gp"
 			},
 			"bulk": 2,
-			"ammunition": [
-				"Arrow"
-			],
-			"damage": "1d8",
-			"damageType": "P",
 			"hands": "1+",
-			"reload": 0,
-			"range": 100,
+			"weaponData": {
+				"ammunition": "Arrow",
+				"damage": "1d8",
+				"damageType": "P",
+				"reload": 0,
+				"range": 100,
+				"group": "Bow"
+			},
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Bow",
 			"entries": [
 				"This projectile weapon is made from horn, wood, and sinew laminated together to increase the power of its pull and the force of its projectile. Like all longbows, its great size also increases the bow's range and power. You must use two hands to fire it, and it cannot be used while mounted. Any time an ability is specifically restricted to a longbow, such as Erastil's favored weapon, it also applies to composite longbows unless otherwise stated."
 			]
@@ -905,17 +1040,17 @@
 				"coin": "gp"
 			},
 			"bulk": 1,
-			"ammunition": [
-				"Arrow"
-			],
-			"damage": "1d6",
-			"damageType": "P",
 			"hands": "1+",
-			"reload": 0,
-			"range": 60,
+			"weaponData": {
+				"ammunition": "Arrow",
+				"damage": "1d6",
+				"damageType": "P",
+				"reload": 0,
+				"range": 60,
+				"group": "Bow"
+			},
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Bow",
 			"entries": [
 				"This shortbow is made from horn, wood, and sinew laminated together to increase the power of its pull and the force of its projectile. Its compact size and power make it a favorite of mounted archers. Any time an ability is specifically restricted to a shortbow, it also applies to composite shortbows unless otherwise stated."
 			]
@@ -926,23 +1061,22 @@
 			"page": 281,
 			"equipment": true,
 			"type": "Equipment",
-			"traits": [],
 			"price": {
 				"amount": 3,
 				"coin": "gp"
 			},
 			"bulk": 1,
-			"ammunition": [
-				"Bolt"
-			],
-			"damage": "1d8",
-			"damageType": "P",
 			"hands": 2,
-			"reload": 1,
-			"range": 120,
+			"weaponData": {
+				"ammunition": "Bolt",
+				"damage": "1d8",
+				"damageType": "P",
+				"reload": 1,
+				"range": 120,
+				"group": "Bow"
+			},
 			"category": "Weapon",
 			"subCategory": "Simple",
-			"group": "Bow",
 			"entries": [
 				"This ranged weapon has a bow-like assembly mounted on a handled frame called a tiller. The tiller has a mechanism to lock the bowstring in place, attached to a trigger mechanism that releases the tension and launches a bolt."
 			]
@@ -1265,7 +1399,7 @@
 				"amount": 3,
 				"coin": "gp"
 			},
-			"bulk": "2",
+			"bulk": 2,
 			"damage": "1d8",
 			"damageType": "S",
 			"hands": 1,
@@ -1320,7 +1454,7 @@
 				"amount": 4,
 				"coin": "gp"
 			},
-			"bulk": "2",
+			"bulk": 2,
 			"damage": "1d8",
 			"damageType": "S",
 			"hands": 2,
@@ -1372,7 +1506,7 @@
 				"amount": 3,
 				"coin": "gp"
 			},
-			"bulk": "2",
+			"bulk": 2,
 			"damage": "1d10",
 			"damageType": "S",
 			"hands": 2,
@@ -1431,7 +1565,7 @@
 				"amount": 14
 			},
 			"usage": null,
-			"bulk": "2",
+			"bulk": 2,
 			"shieldStats": null,
 			"activate": null,
 			"damage": "1d8",
@@ -1549,7 +1683,7 @@
 				"amount": 8,
 				"coin": "sp"
 			},
-			"bulk": "1",
+			"bulk": 1,
 			"damage": "1d6",
 			"damageType": "B",
 			"hands": 1,
@@ -1750,7 +1884,7 @@
 				"amount": 1,
 				"coin": "gp"
 			},
-			"bulk": "2",
+			"bulk": 2,
 			"damage": "1d8",
 			"damageType": "S",
 			"hands": 2,
@@ -1776,7 +1910,7 @@
 				"amount": 3,
 				"coin": "gp"
 			},
-			"bulk": "2",
+			"bulk": 2,
 			"damage": "1d8",
 			"damageType": "B",
 			"hands": 1,
@@ -1804,7 +1938,7 @@
 				"amount": 2,
 				"coin": "gp"
 			},
-			"bulk": "1",
+			"bulk": 1,
 			"damage": "1d6",
 			"damageType": "B",
 			"hands": 1,
@@ -1828,7 +1962,7 @@
 				"amount": 2,
 				"coin": "gp"
 			},
-			"bulk": "2",
+			"bulk": 2,
 			"damage": "1d12",
 			"damageType": "S",
 			"hands": 2,
@@ -1853,7 +1987,7 @@
 				"amount": 1,
 				"coin": "gp"
 			},
-			"bulk": "2",
+			"bulk": 2,
 			"damage": "1d10",
 			"damageType": "B",
 			"hands": 2,
@@ -1877,7 +2011,7 @@
 				"amount": 1,
 				"coin": "gp"
 			},
-			"bulk": "2",
+			"bulk": 2,
 			"damage": "1d10",
 			"damageType": "P",
 			"hands": 2,
@@ -1901,7 +2035,7 @@
 				"amount": 2,
 				"coin": "gp"
 			},
-			"bulk": "2",
+			"bulk": 2,
 			"damage": "1d12",
 			"damageType": "S",
 			"hands": 2,
@@ -1926,7 +2060,7 @@
 				"amount": 2,
 				"coin": "gp"
 			},
-			"bulk": "2",
+			"bulk": 2,
 			"damage": "1d10",
 			"damageType": "S",
 			"hands": 2,
@@ -1951,7 +2085,7 @@
 				"amount": 2,
 				"coin": "gp"
 			},
-			"bulk": "2",
+			"bulk": 2,
 			"damage": "1d10",
 			"damageType": "P",
 			"hands": 2,
@@ -1969,7 +2103,6 @@
 			"equipment": true,
 			"type": "Equipment",
 			"level": 1,
-			"traits": [],
 			"price": {
 				"amount": 18,
 				"coin": "gp"
@@ -2084,15 +2217,12 @@
 			"page": 281,
 			"equipment": true,
 			"type": "Equipment",
-			"traits": [],
 			"price": {
 				"amount": 3,
 				"coin": "gp"
 			},
 			"bulk": "L",
-			"ammunition": [
-				"Bolt"
-			],
+			"ammunition": "Bolt",
 			"damage": "1d6",
 			"damageType": "P",
 			"hands": 1,
@@ -2167,15 +2297,12 @@
 			"page": 281,
 			"equipment": true,
 			"type": "Equipment",
-			"traits": [],
 			"price": {
 				"amount": 4,
 				"coin": "gp"
 			},
 			"bulk": 2,
-			"ammunition": [
-				"Bolt"
-			],
+			"ammunition": "Bolt",
 			"damage": "1d10",
 			"damageType": "P",
 			"hands": 2,
@@ -2251,7 +2378,6 @@
 			"page": 275,
 			"equipment": true,
 			"type": "Equipment",
-			"traits": [],
 			"price": {
 				"amount": 2,
 				"coin": "gp"
@@ -2315,7 +2441,7 @@
 				"amount": 9,
 				"coin": "sp"
 			},
-			"bulk": "2",
+			"bulk": 2,
 			"damage": "1d8",
 			"damageType": "S",
 			"hands": 2,
@@ -2454,7 +2580,7 @@
 				"amount": 2,
 				"coin": "gp"
 			},
-			"bulk": "1",
+			"bulk": 1,
 			"damage": "1d6",
 			"damageType": "S",
 			"hands": 1,
@@ -2612,7 +2738,7 @@
 				"amount": 1,
 				"coin": "gp"
 			},
-			"bulk": "2",
+			"bulk": 2,
 			"damage": "1d8",
 			"damageType": "P",
 			"hands": 2,
@@ -2629,7 +2755,6 @@
 			"page": 275,
 			"equipment": true,
 			"type": "Equipment",
-			"traits": [],
 			"price": {
 				"amount": 2,
 				"coin": "gp"
@@ -2643,7 +2768,6 @@
 				"checkPen": 1,
 				"speedPen": 0
 			},
-
 			"category": "Armor",
 			"subCategory": "Light",
 			"entries": [
@@ -2771,9 +2895,7 @@
 				"coin": "gp"
 			},
 			"bulk": 2,
-			"ammunition": [
-				"Arrow"
-			],
+			"ammunition": "Arrow",
 			"damage": "1d8",
 			"damageType": "P",
 			"hands": "1+",
@@ -2799,7 +2921,7 @@
 				"amount": 5,
 				"coin": "sp"
 			},
-			"bulk": "2",
+			"bulk": 2,
 			"damage": "1d8",
 			"damageType": "P",
 			"hands": 2,
@@ -2823,7 +2945,7 @@
 				"amount": 1,
 				"coin": "gp"
 			},
-			"bulk": "1",
+			"bulk": 1,
 			"damage": "1d8",
 			"damageType": "S",
 			"hands": 1,
@@ -2847,7 +2969,7 @@
 				"amount": 1,
 				"coin": "gp"
 			},
-			"bulk": "1",
+			"bulk": 1,
 			"damage": "1d6",
 			"damageType": "B",
 			"hands": 1,
@@ -2951,7 +3073,7 @@
 				"amount": 3,
 				"coin": "gp"
 			},
-			"bulk": "2",
+			"bulk": 2,
 			"damage": "1d12",
 			"damageType": "B",
 			"hands": 2,
@@ -2978,7 +3100,7 @@
 				"amount": 3,
 				"coin": "gp"
 			},
-			"bulk": "2",
+			"bulk": 2,
 			"damage": "1d8",
 			"damageType": "B",
 			"hands": 2,
@@ -3035,7 +3157,7 @@
 				"amount": 1,
 				"coin": "gp"
 			},
-			"bulk": "1",
+			"bulk": 1,
 			"damage": "1d6",
 			"damageType": "B",
 			"hands": 1,
@@ -3169,7 +3291,7 @@
 				"amount": 2,
 				"coin": "gp"
 			},
-			"bulk": "1",
+			"bulk": 1,
 			"damage": "1d8",
 			"damageType": "S",
 			"hands": 1,
@@ -3282,7 +3404,7 @@
 				"amount": 7,
 				"coin": "sp"
 			},
-			"bulk": "1",
+			"bulk": 1,
 			"damage": "1d6",
 			"damageType": "P",
 			"hands": 1,
@@ -3353,7 +3475,6 @@
 			"page": 16,
 			"equipment": true,
 			"type": "Equipment",
-			"traits": [],
 			"bulk": 2,
 			"armorData": {
 				"group": "Composite",
@@ -3383,7 +3504,7 @@
 				"amount": 2,
 				"coin": "gp"
 			},
-			"bulk": "2",
+			"bulk": 2,
 			"damage": "1d10",
 			"damageType": "P",
 			"hands": 2,
@@ -3409,7 +3530,7 @@
 				"amount": 2,
 				"coin": "gp"
 			},
-			"bulk": "1",
+			"bulk": 1,
 			"damage": "1d6",
 			"damageType": "P",
 			"hands": 1,
@@ -3650,7 +3771,6 @@
 			"page": 275,
 			"equipment": true,
 			"type": "Equipment",
-			"traits": [],
 			"price": {
 				"amount": 4,
 				"coin": "gp"
@@ -3684,7 +3804,7 @@
 				"amount": 1,
 				"coin": "gp"
 			},
-			"bulk": "1",
+			"bulk": 1,
 			"damage": "1d6",
 			"damageType": "S",
 			"hands": 1,
@@ -3713,7 +3833,7 @@
 				"coin": "sp",
 				"amount": 1
 			},
-			"bulk": "1",
+			"bulk": 1,
 			"damage": "1d4",
 			"damageType": "S",
 			"hands": 1,
@@ -3738,7 +3858,7 @@
 				"amount": 2,
 				"coin": "gp"
 			},
-			"bulk": "2",
+			"bulk": 2,
 			"damage": "1d10",
 			"damageType": "S",
 			"hands": 2,
@@ -3811,9 +3931,7 @@
 				"coin": "gp"
 			},
 			"bulk": 1,
-			"ammunition": [
-				"Arrow"
-			],
+			"ammunition": "Arrow",
 			"damage": "1d6",
 			"damageType": "P",
 			"hands": "1+",
@@ -4008,7 +4126,7 @@
 				"amount": 1,
 				"coin": "sp"
 			},
-			"bulk": "1",
+			"bulk": 1,
 			"damage": "1d6",
 			"damageType": "P",
 			"hands": 1,
@@ -4035,7 +4153,7 @@
 				"amount": 3,
 				"coin": "gp"
 			},
-			"bulk": "1",
+			"bulk": 1,
 			"damage": "1d8",
 			"damageType": "S",
 			"hands": 2,
@@ -4105,7 +4223,6 @@
 			"equipment": true,
 			"type": "Equipment",
 			"level": 1,
-			"traits": [],
 			"price": {
 				"amount": 13,
 				"coin": "gp"
@@ -4138,7 +4255,7 @@
 				"amount": 0,
 				"coin": ""
 			},
-			"bulk": "1",
+			"bulk": 1,
 			"damage": "1d4",
 			"damageType": "B",
 			"hands": 1,
@@ -4183,7 +4300,6 @@
 			"page": 277,
 			"equipment": true,
 			"type": "Equipment",
-			"traits": [],
 			"price": {
 				"amount": 2,
 				"coin": "gp"
@@ -4236,7 +4352,6 @@
 			"page": 275,
 			"equipment": true,
 			"type": "Equipment",
-			"traits": [],
 			"price": {
 				"amount": 3,
 				"coin": "gp"
@@ -4262,7 +4377,6 @@
 			"page": 16,
 			"equipment": true,
 			"type": "Equipment",
-			"traits": [],
 			"bulk": 1,
 			"category": "Armor",
 			"subCategory": "Medium",
@@ -4349,7 +4463,7 @@
 				"amount": 10,
 				"coin": "gp"
 			},
-			"bulk": "1",
+			"bulk": 1,
 			"ammunition": [
 				"Wooden Taws|LOAG"
 			],
@@ -4409,7 +4523,7 @@
 				"amount": 2,
 				"coin": "gp"
 			},
-			"bulk": "1",
+			"bulk": 1,
 			"damage": "1d8",
 			"damageType": "S",
 			"hands": 1,
@@ -4563,7 +4677,6 @@
 			"page": 277,
 			"equipment": true,
 			"type": "Equipment",
-			"traits": [],
 			"price": {
 				"amount": 2,
 				"coin": "gp"
@@ -4627,7 +4740,7 @@
 				"amount": 10,
 				"coin": "gp"
 			},
-			"bulk": "1",
+			"bulk": 1,
 			"damage": "1d6",
 			"damageType": "modular",
 			"hands": 1,
@@ -4651,7 +4764,7 @@
 				"amount": 1,
 				"coin": "gp"
 			},
-			"bulk": "1",
+			"bulk": 1,
 			"damage": "1d8",
 			"damageType": "P",
 			"hands": 1,
@@ -4761,7 +4874,7 @@
 				"amount": 2,
 				"coin": "gp"
 			},
-			"bulk": "2",
+			"bulk": 2,
 			"damage": "1d10",
 			"damageType": "B",
 			"hands": 2,
@@ -4812,7 +4925,7 @@
 				"amount": 1,
 				"coin": "gp"
 			},
-			"bulk": "1",
+			"bulk": 1,
 			"damage": "1d8",
 			"damageType": "B",
 			"hands": 1,
@@ -4840,7 +4953,7 @@
 				"amount": 1,
 				"coin": "sp"
 			},
-			"bulk": "1",
+			"bulk": 1,
 			"damage": "1d4",
 			"damageType": "S",
 			"hands": 1,
@@ -4868,7 +4981,7 @@
 				"amount": 5,
 				"coin": "gp"
 			},
-			"bulk": "1",
+			"bulk": 1,
 			"damage": "1d6",
 			"damageType": "S",
 			"hands": 2,
@@ -4896,7 +5009,7 @@
 				"amount": 5,
 				"coin": "gp"
 			},
-			"bulk": "1",
+			"bulk": 1,
 			"damage": "1d6",
 			"damageType": "S",
 			"hands": 1,
@@ -4943,7 +5056,6 @@
 			"page": 277,
 			"equipment": true,
 			"type": "Equipment",
-			"traits": [],
 			"price": {
 				"amount": 1,
 				"coin": "gp"

@@ -42,7 +42,7 @@ class ItemsPage extends ListPage {
 
 		if (item.equipment) {
 			eleLi.innerHTML = `<a href="#${hash}" class="lst--border">
-				<span class="col-4 pl-0 bold">${item.name}</span>
+			<span class="bold col-3-8 pl-0">${item.name}${item.add_hash ? `<span class="ve-muted"> (${item.add_hash})</span>` : ""}</span>
 				<span class="col-2-2 text-center">${item.category ? `${Array.isArray(item.category) ? item.category.join(", ") : item.category}` : "\u2014"}</span>
 				<span class="col-1-5 text-center">${level}</span>
 				<span class="col-1-8 text-center">${Parser.priceToFull(item.price)}</span>
@@ -76,7 +76,7 @@ class ItemsPage extends ListPage {
 		} else {
 			const cats = typeof item.category === "string" ? [item.category] : Array.isArray(item.category) ? item.category : [];
 			eleLi.innerHTML += `<a href="#${hash}" class="lst--border">
-				<span class="col-4 pl-0">${cats.includes("Rune") ? RuneBuilder.getButtons(itI) : ""}<span class="bold w-100">${item.name}</span></span>
+				<span class="col-4 pl-0">${cats.includes("Rune") ? RuneBuilder.getButtons(itI) : ""}<span class="bold w-100">${item.name}${item.add_hash ? `<span class="ve-muted"> (${item.add_hash})</span>` : ""}</span></span>
 				<span class="col-2-2 text-center">${Array.isArray(item.category) ? item.category.join(", ") : item.category}</span>
 				<span class="col-1-5 text-center">${level}</span>
 				<span class="col-1-8 text-center">${Parser.priceToFull(item.price)}</span>
@@ -125,7 +125,7 @@ class ItemsPage extends ListPage {
 		const $dispCount = $(`<span class="text-center col-2-3 pr-0">${count}</span>`);
 		const $ele = $$`<li class="row">
 			<a href="#${hash}" class="lst--border">
-				<span class="bold col-5-4 pl-0">${item.name}</span>
+				<span class="bold col-5-4 pl-0">${item.name}${item.add_hash ? `<span class="ve-muted"> (${item.add_hash})</span>` : ""}</span>
 				<span class="text-center col-2-3">${Parser.priceToFull(item.price)}</span>
 				<span class="text-center col-2">${item.bulk ? item.bulk : "\u2014"}</span>
 				${$dispCount}
