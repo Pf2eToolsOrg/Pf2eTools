@@ -1074,6 +1074,7 @@
 			"rarity": "Unique",
 			"alignment": "NE",
 			"size": "Medium",
+			"items": ["{@item leather armor}", "gray robes", "{@item trident}", "{@item wooden religious symbol} of {@deity Gozreh} defaced with demonic runes"],
 			"traits": [
 				"Human"
 			],
@@ -1114,7 +1115,7 @@
 			"abilitiesTop": [
 				{
 					"entries": [
-						"The corrupted priest can use {@skill Diplomacy} to {@action Make an Impression} on animals and to make very simple Requests of them."
+						"The corrupted priest can use {@skill Diplomacy} to {@action Make an Impression} on animals and to make very simple {@action Request||Requests} of them."
 					],
 					"name": "Wild Empathy"
 				}
@@ -1178,9 +1179,67 @@
 			"abilitiesBot": [
 				{
 					"entries": [
-						"Corrupted priests deal an extra {@dice 1d8} damage with their tridents, and any trident gains the fatal d10 trait while the priest is using it (both the extra weapon damage die and the {@trait fatal} trait have already been included above)."
+						"Corrupted priests deal an extra {@dice 1d8} damage with their tridents, and any trident gains the {@trait fatal d10} trait while the priest is using it (both the extra weapon damage die and the {@trait fatal} trait have already been included above)."
 					],
 					"name": "Demonic Strength"
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Primal Prepared",
+					"type": "Prepared",
+					"tradition": "Primal",
+					"DC": 20,
+					"attack": 12,
+					"entry": {
+						"0": {
+							"level": 2,
+							"spells": [
+								{
+									"name": "light"
+								},
+								{
+									"name": "produce flame"
+								},
+								{
+									"name": "stabilize"
+								},
+								{
+									"name": "tanglefoot"
+								}
+							]
+						},
+						"1": {
+							"spells": [
+								{
+									"name": "fear"
+								},
+								{
+									"name": "heal"
+								},
+								{
+									"name": "spider sting"
+								},
+								{
+									"name": "summon animal"
+								}
+							]
+						},
+						"2": {
+							"spells": [
+
+								{
+									"name": "barkskin"
+								},
+								{
+									"name": "flaming sphere"
+								},
+								{
+									"name": "summon elemental"
+								}
+							]
+						}
+					}
 				}
 			],
 			"inflicts": {
@@ -1264,6 +1323,7 @@
 					"abilities": null
 				}
 			],
+			"items": ["{@item hide armor}", "gray robes", "{@item trident}", "{@item wooden shield} (Hardness 3)"],
 			"abilitiesMid": [
 				{
 					"activity": {
@@ -1312,7 +1372,7 @@
 			"abilitiesBot": [
 				{
 					"entries": [
-						"Corrupted retainers deal an extra {@dice 1d8} damage with their tridents, and any trident gains the fatal d10 trait while the corrupted retainer is using it (both the extra weapon damage die and the {@trait fatal} trait have already been included in the corrupted retainer's trident {@action Strike} above)."
+						"Corrupted retainers deal an extra {@dice 1d8} damage with their tridents, and any trident gains the {@trait fatal d10} trait while the corrupted retainer is using it (both the extra weapon damage die and the {@trait fatal} trait have already been included in the corrupted retainer's trident {@action Strike} above)."
 					],
 					"name": "Demonic Strength"
 				},
@@ -1327,15 +1387,9 @@
 						"mental"
 					],
 					"entries": [
-						"The corrupted retainer begins to rage and gains 5 temporary."
+						"The corrupted retainer begins to rage and gains 5 temporary Hit Points. The rage lasts for 1 minute or until they fall {@condition unconscious}, whichever happens first. While raging, the corrupted retainer deals 2 additional damage with melee weapons, has a \u20131 penalty to AC, and cannot use actions that have the {@trait concentrate} trait unless those actions also have the {@trait rage} trait. The corrupted retainer can still {@action Seek} while raging."
 					],
 					"name": "Tainted Rage"
-				},
-				{
-					"entries": [
-						"The rage lasts for 1 minute or until they fall {@condition unconscious}, whichever happens first. While raging, the corrupted retainer deals 2 additional damage with melee weapons, has a \u20131 penalty to AC, and cannot use actions that have the {@trait concentrate} trait unless those actions also have the {@trait rage} trait. The corrupted retainer can still {@action Seek} while raging."
-					],
-					"name": "Hit Points."
 				}
 			],
 			"inflicts": {

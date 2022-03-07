@@ -922,6 +922,7 @@ function Renderer () {
 			entry.entries.forEach(it => this._recursiveRender(it, textStack, meta));
 		}
 		textStack[0] = textStack[0].replace(/;$/, ".");
+		textStack[0] += "."
 		if (!options.isAbility) textStack[0] += `</p>`;
 	};
 
@@ -4176,7 +4177,7 @@ Renderer.creature = {
 					${ability.frequency ? `<strong>Frequency&nbsp;</strong>${renderer.render_addTerm(Parser.freqToFullEntry(ability.frequency))}` : ""}
 					${ability.requirements ? `<strong>Requirements&nbsp;</strong>${renderer.render_addTerm(ability.requirements)}` : ""}
 					${ability.trigger ? `<strong>Trigger&nbsp;</strong>${renderer.render_addTerm(ability.trigger)}` : ""}
-					${ability.frequency || ability.requirements || ability.trigger ? "<strong>Effect&nbsp;</strong>" : ""}
+					${ability.frequency || ability.requirements || ability.trigger ? "<strong>Effect</strong>" : ""}
 					${(ability.entries || []).map(it => renderer.render(it, {isAbility: true})).join(" ")}
 					</p>
 					${renderedGenericAbility || ""}`;

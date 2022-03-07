@@ -30875,7 +30875,7 @@
 						"olfactory"
 					],
 					"entries": [
-						"10 feet. See Ghast Abilities; DC 16."
+						"10 feet. A creature entering the aura or starting its turn in the aura must succeed at a DC 16 Fortitude save or become {@condition sickened 1} (plus {@condition slowed 1} as long as it's {@condition sickened} on a critical failure). While within the aura, the creature takes a \u20132 circumstance penalty to saves against {@trait disease} and to recover from the {@condition sickened} condition. A creature that succeeds at its save is temporarily immune for 1 minute."
 					],
 					"name": "Stench"
 				}
@@ -30928,8 +30928,9 @@
 					"traits": [
 						"manipulate"
 					],
+					"requirements": "The ghast is adjacent to the corpse of a creature that died within the last hour.",
 					"entries": [
-						"See Ghast Abilities. The ghast regains {@dice 3d6} Hit Points."
+						"The ghast regains {@dice 3d6} Hit Points. It can regain Hit Points from any given corpse only once."
 					],
 					"name": "Consume Flesh"
 				},
@@ -30938,7 +30939,42 @@
 						"disease"
 					],
 					"entries": [
-						"See Ghast Abilities; DC 16."
+						{
+							"type": "affliction",
+							"savingThrow": "Fortitude",
+							"DC": 16,
+							"stages": [
+								{
+									"stage": 1,
+									"entry": "carrier with no ill effect",
+									"duration": "1 day"
+								},
+								{
+									"stage": 2,
+									"entry": "{@damage 3d8} negative damage and regains half as many Hit Points from all healing",
+									"duration": "1 day"
+								},
+								{
+									"stage": 3,
+									"entry": "as stage 2",
+									"duration": "1 day"
+								},
+								{
+									"stage": 4,
+									"entry": "{@damage 3d8} negative damage and gains no benefit from healing",
+									"duration": "1 day"
+								},
+								{
+									"stage": 5,
+									"entry": "as stage 4",
+									"duration": "1 day"
+								},
+								{
+									"stage": 6,
+									"entry": "dead, and rises as a {@creature ghast|Bst} the next midnight"
+								}
+							]
+						}
 					],
 					"name": "Ghast Fever"
 				},
@@ -30949,22 +30985,22 @@
 						"necromancy"
 					],
 					"entries": [
-						"See Ghast Abilities; DC 16."
+						"Any living creature hit by a ghast's attack must succeed at a DC 15 Fortitude save or become {@condition paralyzed}. It can attempt a new save at the end of each of its turns, and the DC cumulatively decreases by 1 on each such save."
 					],
 					"name": "Paralysis"
 				},
 				{
+					"name": "Swift Leap",
 					"activity": {
-						"number": 1,
-						"unit": "action"
+						"unit": "action",
+						"number": 1
 					},
-					"traits": [
+					"component": [
 						"move"
 					],
 					"entries": [
-						"See Ghast Abilities."
-					],
-					"name": "Swift Leap"
+						"The ghast jumps up to half its Speed. This movement doesn't trigger reactions."
+					]
 				}
 			],
 			"inflicts": {
@@ -31528,8 +31564,9 @@
 					"traits": [
 						"manipulate"
 					],
+					"requirements": "The ghoul is adjacent to the corpse of a creature that died within the last hour.",
 					"entries": [
-						"See Ghoul Abilities. The ghoul regains {@dice 1d6} Hit Points."
+						"The ghoul regains {@dice 1d6} Hit Points. It can regain Hit Points from any given corpse only once."
 					],
 					"name": "Consume Flesh"
 				},
@@ -31538,7 +31575,42 @@
 						"disease"
 					],
 					"entries": [
-						"See Ghoul Abilities; DC 15."
+						{
+							"type": "affliction",
+							"savingThrow": "Fortitude",
+							"DC": 15,
+							"stages": [
+								{
+									"stage": 1,
+									"entry": "carrier with no ill effect",
+									"duration": "1 day"
+								},
+								{
+									"stage": 2,
+									"entry": "{@damage 2d6} negative damage and regains half as many Hit Points from all healing",
+									"duration": "1 day"
+								},
+								{
+									"stage": 3,
+									"entry": "as stage 2",
+									"duration": "1 day"
+								},
+								{
+									"stage": 4,
+									"entry": "{@damage 2d6} negative damage and gains no benefit from healing",
+									"duration": "1 day"
+								},
+								{
+									"stage": 5,
+									"entry": "as stage 4",
+									"duration": "1 day"
+								},
+								{
+									"stage": 6,
+									"entry": "dead, and rises as a {@creature ghoul|bst} the next midnight"
+								}
+							]
+						}
 					],
 					"name": "Ghoul Fever"
 				},
@@ -31549,22 +31621,22 @@
 						"necromancy"
 					],
 					"entries": [
-						"See Ghoul Abilities; DC 15."
+						"Any living, non-elf creature hit by a ghoul's attack must succeed at a DC 15 Fortitude save or become {@condition paralyzed}. It can attempt a new save at the end of each of its turns, and the DC cumulatively decreases by 1 on each such save."
 					],
 					"name": "Paralysis"
 				},
 				{
+					"name": "Swift Leap",
 					"activity": {
-						"number": 1,
-						"unit": "action"
+						"unit": "action",
+						"number": 1
 					},
-					"traits": [
+					"component": [
 						"move"
 					],
 					"entries": [
-						"See Ghoul Abilities."
-					],
-					"name": "Swift Leap"
+						"The ghoul jumps up to half its Speed. This movement doesn't trigger reactions."
+					]
 				}
 			],
 			"inflicts": {
