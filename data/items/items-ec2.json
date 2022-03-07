@@ -30,9 +30,7 @@
 					"components": [
 						"command"
 					],
-					"frequency": null,
 					"trigger": "You fail or critically fail an",
-					"requirements": null,
 					"entries": [
 						"Reroll the {@skill Acrobatics} check and take the better result."
 					]
@@ -59,15 +57,14 @@
 				"amount": 26
 			},
 			"usage": "affixed to armor",
-			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
 					"unit": "free"
 				},
-				"components": "envision",
-				"requirements": null,
-				"frequency": null,
+				"components": [
+					"envision"
+				],
 				"trigger": "You use a feat or ability to reroll a failed or critically failed Reflex saving throw"
 			},
 			"category": "Talisman",
@@ -106,8 +103,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You wave the bullhook to produce the effects of a {@spell command} spell. This spell loses the {@trait linguistic} trait and can target only animals."
 					]
@@ -177,8 +172,6 @@
 						"unit": "day",
 						"freq": 3
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"The chalice fills with one of three different wines of your choosing, as described below. The wine looks, tastes, and smells the same regardless of which type you choose, and detect magic has no effect on the liquid beyond indicating that it is magical.",
 						{
@@ -229,8 +222,6 @@
 						"unit": "hour",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"When you push the left-hand button, the inspiring spotlight emits a beam of bright magical light in a 120-foot line that hangs in the air and remains in place even if you move the spotlight. If the line passes through an area of magical darkness or targets a creature affected by magical darkness, the inspiring spotlight attempts to counteract the darkness. Creatures within the line gain a +1 item bonus to saving throws and Charisma-based skill checks. In addition, creatures in the line who are {@condition frightened} reduce the value of their {@condition frightened} condition by 1 at the beginning of each turn they start in the area of the line. The beam remains in place for 1 minute or until you push the righthand button with another {@action Interact} action to extinguish the light."
 					]
@@ -255,16 +246,14 @@
 				"amount": 60
 			},
 			"usage": "held in 1 hand",
-			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Consumable",
 			"entries": [
@@ -303,9 +292,6 @@
 						"envision",
 						"Interact)"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You blow a tune upon the slide whistle, causing the whistle to expand. The whistle sprouts from one into several, and then creates a large wooden frame and keyboard.",
 						"By the time the unfolding is complete, the whistle fully transforms into a calliope, a wagon-sized contraption consisting of several steam whistles played like an organ. The calliope is heavy and anchored in place.",
@@ -326,8 +312,6 @@
 						"unit": "hour",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You play the calliope, causing it to cast {@spell charm} on one of the listeners."
 					]
@@ -369,7 +353,6 @@
 						"unit": "hour",
 						"freq": 1
 					},
-					"trigger": null,
 					"requirements": "You are within 10 feet of a moonstone pool",
 					"entries": [
 						"You peer into the moonstone pool and gain access to all the visual history recorded within the receptacle by concentrating on the specific subject you wish to see. Conversely, you can choose to deposit your own memories into the pool by concentrating for 1 hour on the information you wish to impart."
@@ -402,9 +385,6 @@
 						"unit": "varies",
 						"entry": "Cast a Spell"
 					},
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You expend a number of charges from the staff to cast a spell from its list."
 					]
@@ -473,16 +453,14 @@
 				"amount": 70
 			},
 			"usage": "held in 1 hand",
-			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Oil",
 			"entries": [
@@ -519,9 +497,7 @@
 					"components": [
 						"(move)"
 					],
-					"frequency": null,
 					"trigger": "You take damage while mounted or your mount Drops {@condition Prone}",
-					"requirements": null,
 					"entries": [
 						"You dismount, moving off your mount into a space adjacent to it."
 					]
@@ -563,8 +539,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You gain 10 temporary Hit Points, which last for 10 minutes."
 					]
@@ -601,9 +575,6 @@
 					"components": [
 						"command"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"Until the end of your current turn, any animals you {@action Strike} with the whip must attempt a DC 25 Will save.",
 						"On a failed or critically failed saving throw, the whip casts a 4th-level {@spell suggestion} spell on the animal with a base duration of 1 round, and the spell loses the {@trait linguistic} trait. The course of action must still fulfill suggestion's requirements. If you can cast spells, you can expend one of your spells of 4th level or higher as a part of activating the whip; if you do so, the suggestions this turn have their normal base duration."

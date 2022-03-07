@@ -20,12 +20,13 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
-			"ammunition": "arrow",
+			"ammunition": [
+				"arrow"
+			],
 			"category": "Consumable",
 			"entries": [
 				"Creation of these arrows was inspired by an encounter with a horned archon scout who sought to peacefully restrain their foes. When an activated antler arrow hits a target, bone antlers extend to pin it down. The target must succeed at a DC 16 Reflex save or become stuck to the surface, taking the critical specialization effects of a bow (Core Rulebook 284)",
@@ -50,15 +51,14 @@
 				"amount": 400
 			},
 			"usage": "affixed to a weapon",
-			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
 					"unit": "free"
 				},
-				"components": "envision",
-				"requirements": null,
-				"frequency": null,
+				"components": [
+					"envision"
+				],
 				"trigger": "You deal damage using the affixed weapon to a creature you have seen commit an evil act."
 			},
 			"category": "Talisman",
@@ -84,15 +84,14 @@
 				"amount": 150
 			},
 			"usage": "affixed to a shield",
-			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
 					"unit": "free"
 				},
-				"components": "envision",
-				"requirements": null,
-				"frequency": null,
+				"components": [
+					"envision"
+				],
 				"trigger": "You {@action Shield Block} a melee attack with the affixed shield."
 			},
 			"category": "Talisman",
@@ -120,10 +119,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Strike",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Strike"
+				]
 			},
 			"category": "Bomb",
 			"entries": [
@@ -229,10 +227,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Consumable",
 			"entries": [
@@ -312,16 +309,14 @@
 				"amount": 2000
 			},
 			"usage": "held in 1 hand",
-			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Consumable",
 			"entries": [
@@ -347,16 +342,14 @@
 				"amount": 60
 			},
 			"usage": "held in 1 hand",
-			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Consumable",
 			"entries": [
@@ -386,10 +379,9 @@
 					"number": 2,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Poison",
 			"entries": [
@@ -457,10 +449,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"ammunition": "any",
 			"category": "Consumable",
@@ -489,10 +480,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Strike",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Strike"
+				]
 			},
 			"category": "Bomb",
 			"entries": [
@@ -577,10 +567,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Elixir",
 			"entries": [
@@ -665,10 +654,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Strike",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Strike"
+				]
 			},
 			"category": "Bomb",
 			"entries": [
@@ -757,16 +745,14 @@
 				"Necromancy"
 			],
 			"usage": "held in 2 hands",
-			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 2,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Consumable",
 			"entries": [
@@ -818,7 +804,6 @@
 				"amount": 6500
 			},
 			"usage": "worn cloak",
-			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"This brown-and-gold robe covers you from head to toe. Its weighty fabric doesn't move with the wind, instead hanging still as if carved of stone.",
@@ -835,8 +820,6 @@
 						"unit": "hour",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You {@action Burrow} through dirt and stone up to your land Speed, leaving no tunnels or signs of your passing. If you end your movement inside solid stone, you are forcibly expelled into the nearest open area, taking {@damage 1d6} bludgeoning damage for every 5 feet between the end of your movement and the open area."
 					]
@@ -880,8 +863,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You hold the box closed and, while envisioning the earth around you, turn the box clockwise three times and then give it three slow shakes. When you open the box, the sand has arranged itself to replicate, in miniature, the stone terrain surrounding you, to a range of 60 feet. This shows details of paths; hills; embankments; boulders; and even artificial structures like walls, ditches, and tunnels, as long as they're made of stone and earth.",
 						"If you're underground, it reveals tunnels and voids in the earth within 60 feet at your current depth. The sand maintains its shape until you close the box."
@@ -937,7 +918,6 @@
 				"amount": 1200
 			},
 			"usage": "worn mask",
-			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"These strange masks consist of a thin stone hood and a shimmering purple veil reminiscent of the pleroma aeon who first gifted them to mortals in the hope that sharing the means of aeon communication would reduce the misunderstandings and conflicts among mortal civilizations. An envisioning mask covers your entire face, though it doesn't hinder your vision or other senses.",
@@ -954,8 +934,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You lose the ability to produce language and instead communicate wordlessly through a series of psychic projections. This acts as telepathy with a range of 100 feet, but it is understandable to all creatures regardless of whether they have a language. When communicating with non-aeons, however, your meaning is often vague and mysterious. This effect lasts for 10 minutes."
 					]
@@ -990,9 +968,7 @@
 					"components": [
 						"Interact"
 					],
-					"frequency": null,
 					"trigger": "The exploding shield is destroyed",
-					"requirements": null,
 					"entries": [
 						"The shield explodes outward, dealing {@damage 4d6} piercing damage to each creature in a 15-foot cone (DC 19 basic Reflex save)."
 					]
@@ -1074,7 +1050,6 @@
 				"amount": 940
 			},
 			"usage": "worn",
-			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"This dark-red ring is engraved with ashen symbols and smells faintly of smoke.",
@@ -1092,8 +1067,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You {@action Stride} (or {@action Burrow} or {@action Fly}, if you have the corresponding Speed) into any fire large enough to contain you, including magical fires. You vanish into the fire and take no damage from it. You can sense all sufficiently large fires within 100 feet of where you vanish, and you reemerge from any of those fires, either within the fire or adjacent to it. If you end your movement in the fire, it affects you as normal."
 					]
@@ -1141,10 +1114,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Elixir",
 			"entries": [
@@ -1224,10 +1196,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Consumable",
 			"entries": [
@@ -1267,9 +1238,6 @@
 					"components": [
 						"Interact"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You twist the gem along the blade corresponding with the desired weapon rune: red for flaming, blue for frost, or yellow for shock. You take {@dice 1d6} damage of the type the chosen rune deals. You can instead twist the black gem to disable the active property rune, taking no damage."
 					]
@@ -1297,10 +1265,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"ammunition": "any",
 			"category": "Consumable",
@@ -1332,10 +1299,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Potion",
 			"entries": [
@@ -1362,10 +1328,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Strike",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Strike"
+				]
 			},
 			"category": "Bomb",
 			"entries": [
@@ -1519,8 +1484,6 @@
 						"unit": "minute",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"{@action Stride}. Each square you move through during your {@action Stride} is scorched with hellish flames, becoming hazardous terrain for 1 minute. A creature that moves through one of these spaces takes {@damage 3d6} fire damage."
 					]
@@ -1544,16 +1507,14 @@
 				"amount": 350
 			},
 			"usage": "held in 1 hands",
-			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Consumable",
 			"entries": [
@@ -1588,9 +1549,6 @@
 					"components": [
 						"Interact"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You twist the sword cane's hilt, magically merging the blade into the cane. While the blade is merged, it can't be drawn and gains the benefits of a 3rd-level {@spell magic aura} spell to appear non-magical. Passive observers can't attempt a check to notice the cane is anything more than a mundane, if superb, fashion accessory. Those carefully examining it can discern the cane is more than it appears, but doing so is extremely difficult (DC 30 {@skill Perception})",
 						"Activating the sword cane again releases the blade, allowing it to be drawn normally."
@@ -1621,10 +1579,9 @@
 					"number": 2,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Poison",
 			"entries": [
@@ -1674,7 +1631,6 @@
 				"amount": 500
 			},
 			"usage": "worn gloves",
-			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"These white silk gloves are adorned in red hearts that glow faintly whenever you are adjacent to someone you feel particularly strongly toward.",
@@ -1692,8 +1648,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You grasp the hands of a willing creature you have strong positive feelings about, regardless of the nature of those feelings.",
 						"The creature gains a +1 status bonus to saving throws and 10 temporary Hit Points for 10 minutes.",
@@ -1716,7 +1670,6 @@
 				"Negative"
 			],
 			"usage": "worn mask",
-			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"This ice-blue half-mask is adorned with a wicked silver grin that covers the wearer's mouth, leaving the rest of the face uncovered. You gain a +2 item bonus to {@skill Intimidation} checks.",
@@ -1734,8 +1687,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"The mask emits a soul-chilling scream that deals {@damage 6d10} negative damage to each living creature in a 20-foot emanation (DC 25 basic Fortitude save)."
 					]
@@ -1791,8 +1742,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You reveal the medusa's face, focusing its gaze on one creature within 30 feet. The shield casts flesh to stone with a range of 30 feet."
 					]
@@ -1888,16 +1837,14 @@
 				"Transmutation"
 			],
 			"usage": "held in 2 hands",
-			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 2,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Oil",
 			"entries": [
@@ -1953,10 +1900,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Oil",
 			"entries": [
@@ -1984,10 +1930,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Oil",
 			"entries": [
@@ -2076,10 +2021,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Elixir",
 			"entries": [
@@ -2134,10 +2078,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Consumable",
 			"entries": [
@@ -2200,10 +2143,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Potion",
 			"entries": [
@@ -2272,10 +2214,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Potion",
 			"entries": [
@@ -2301,10 +2242,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Potion",
 			"entries": [
@@ -2398,10 +2338,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Potion",
 			"entries": [
@@ -2425,7 +2364,6 @@
 				"amount": 3
 			},
 			"usage": "held in 1 hand",
-			"bulk": "\u2014",
 			"category": "Held",
 			"entries": [
 				"This seemingly unremarkable, weathered silver coin bears the bust of an unnamed monarch on the face and a majestic bird on the tail. You can toss the coin without activating it, in which case it follows the normal laws of probability.",
@@ -2438,9 +2376,6 @@
 					"components": [
 						"Interact"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You rub your thumb on one side of the coin with the intent of slightly tweaking the strands of fate, then flip the coin into the air in a coin toss. No matter how the toss is resolved\u2014 letting the coin fall to the ground, slapping it down on the back of your hand, or catching it on your open palm\u2014it always lands with the side you rubbed face up."
 					]
@@ -2466,10 +2401,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Potion",
 			"entries": [
@@ -2573,9 +2507,6 @@
 					"components": [
 						"Interact"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You touch the rod to a {@trait magical} effect or magic item and attempt to counteract the effect or item.",
 						"Regardless of the result, the rod of cancellation can't be activated again for {@dice 2d6} hours.",
@@ -2613,8 +2544,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You hold one end of the rope and point to a destination.",
 						"The rope animates for 1 minute, moving 10 feet per round until it reaches the destination or runs out of length. The rope can move across any non-damaging horizontal or vertical surface, but it can't extend upward without a surface to support it. At any point while the rope is animated, you can use an {@action Interact} action to wiggle the rope, giving it one of the following commands: stop in place, fasten securely to the nearest available object, detach from an object, or knot or unknot itself."
@@ -2682,10 +2611,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Oil",
 			"entries": [
@@ -2712,10 +2640,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Elixir",
 			"entries": [
@@ -2803,9 +2730,6 @@
 					"components": [
 						"Interact"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You {@action Administer First Aid} without requiring healer's tools. You either gain a +2 item bonus to the {@skill Medicine} check, or you can use the skinstitch salve's {@skill Medicine} modifier of +13 instead of your own."
 					]
@@ -2819,9 +2743,7 @@
 					"components": [
 						"Interact"
 					],
-					"frequency": null,
 					"trigger": "You {@action Treat Wounds} or use Battle",
-					"requirements": null,
 					"entries": [
 						"You gain a +2 item bonus to the triggering {@skill Medicine} check. If you roll a success on the {@skill Medicine} check, you get a critical success instead."
 					]
@@ -2858,9 +2780,6 @@
 					"components": [
 						"Interact"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You use a piece of chalk to write up to 25 words on a slate. As you write, the writing also appears on the other slate in its matched pair, no matter how far away it is, as long as it is on the same plane. Wiping one slate clean erases the writing from both slates. Each slate can be activated once per hour."
 					]
@@ -3012,8 +2931,6 @@
 						"unit": "minute",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You aim through the crossbow's crystalline lenses, gaining imprecise vision onto the Ethereal Plane with a range of 60 feet in addition to your normal senses for the rest of your turn. While this effect lasts, your next {@action Strike} with the spiritsight crossbow can also affect targets on the Ethereal Plane during the first 60 feet of its flight."
 					]
@@ -3045,9 +2962,6 @@
 						"unit": "varies",
 						"entry": "Cast a Spell"
 					},
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You expend a number of charges from the staff to cast a spell from its list."
 					]
@@ -3155,9 +3069,6 @@
 						"unit": "varies",
 						"entry": "Cast a Spell"
 					},
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You expend a number of charges from the staff to cast a spell from its list."
 					]
@@ -3248,9 +3159,6 @@
 						"unit": "varies",
 						"entry": "Cast a Spell"
 					},
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You expend a number of charges from the staff to cast a spell from its list."
 					]
@@ -3358,10 +3266,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"ammunition": "any",
 			"category": "Consumable",
@@ -3401,10 +3308,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Potion",
 			"entries": [
@@ -3436,10 +3342,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Consumable",
 			"entries": [
@@ -3464,10 +3369,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Consumable",
 			"entries": [
@@ -3530,7 +3434,6 @@
 				"amount": 700
 			},
 			"usage": "held in 1 hand",
-			"bulk": "\u2014",
 			"category": "Held",
 			"entries": [
 				"This sealed pewter urn contains the ashes of a benevolent ancestor, with a sliver of lingering spirit that strives to protect you.",
@@ -3543,7 +3446,6 @@
 					"components": [
 						"envision"
 					],
-					"frequency": null,
 					"trigger": "You would become {@condition doomed} or your {@condition doomed} value would increase",
 					"requirements": "The ashes aren't {@condition doomed}",
 					"entries": [
@@ -3564,8 +3466,6 @@
 						"unit": "round",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"The urn shoots a bolt of negative energy at a foe within 30 feet. Attempt a spell attack roll against the target's AC, using a modifier of +15 or your own spell attack roll modifier, whichever is higher. On a success, the bolt deals {@damage 4d4} negative damage (doubled on a critical success)."
 					]
@@ -3598,9 +3498,7 @@
 					"components": [
 						"envision"
 					],
-					"frequency": null,
 					"trigger": "You kill or destroy a creature of a level equal to or greater than your victory plate (adjusted as usual if you add fundamental runes to victory plate).",
-					"requirements": null,
 					"entries": [
 						"You direct the armor to commemorate your victory. The coat of arms on the armor's tabard shifts to incorporate heraldry related to the slain creature, and the victory is recorded within the tabard. If you have already recorded four victories, choose one to replace with the new victory."
 					]
@@ -3619,8 +3517,6 @@
 						"unit": "hour",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You touch one of the tabard's four fields representing one of your victories and recall your triumph over that creature. That creature vanishes from the tabard, and for 1 minute, you gain resistance 5 to a damage type based on the creature's trait (you gain resistance to only one type, even if the creature has more than one trait that could apply):",
 						{
@@ -3716,8 +3612,6 @@
 						"freq": 1,
 						"overcharge": true
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You cast {@spell lightning bolt}, but the spell's area is twice as wide (two adjacent and parallel 120-foot lines) and creatures that fail their save are {@condition flat-footed} for 1 round."
 					]
@@ -3798,8 +3692,6 @@
 						"freq": 1,
 						"overcharge": true
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You cast {@spell darkness}. Each creature that ends its turn within the spell's area must succeed at a DC 20 Will save or become {@condition frightened|CRB|frightened 1} ({@condition frightened|CRB|frightened 2} on a critical failure)."
 					]
@@ -3860,8 +3752,6 @@
 						"freq": 1,
 						"overcharge": true
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You cast {@spell heal} at the indicated level. After you cast the spell, at the start of your next turn, excess healing magic wells up from the wand and heals you, as though you cast the 1-action version of heal on yourself at the same spell level.",
 						"You gain this benefit only once, even if you cast multiple {@spell heal} spells from wands of overflowing life in the same turn."
@@ -3963,8 +3853,6 @@
 						"freq": 1,
 						"overcharge": true
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You cast {@spell cone of cold}. The ground within the spell's area is swathed in deep snow, becoming difficult terrain for 1 minute."
 					]
@@ -4024,8 +3912,6 @@
 						"freq": 1,
 						"overcharge": true
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You cast {@spell web}, but the strands of webbing are envenomed. Any creature that fails their {@skill Athletics} check or Reflex save to navigate the web takes {@damage 1d6} poison damage."
 					]
@@ -4087,8 +3973,6 @@
 						"unit": "hour",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You trace the rune on the front of the breastplate and the armor's ephemeral wings grow tangible, granting you a fly Speed of 25 feet or your land Speed, whichever is slower. This effect lasts for 5 minutes or until you {@action Dismiss} it. Once the effect ends, the wings disappear completely, reappearing in their ephemeral form 1 hour later."
 					]

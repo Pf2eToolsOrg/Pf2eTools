@@ -38,7 +38,6 @@
 				"amount": 200
 			},
 			"usage": "worn",
-			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"A bi-resonant wayfinder is inlaid with intricate platinum wires in a complex array of conduits for magical energy. These conduits control the resonant interference of aeon stones. A bi-resonant wayfinder works just like a regular wayfinder (Pathfinder Core Rulebook 617) except it has two aeon stone slots, and the aeon stones in both slots grant their resonant powers without interfering with each other. The bi-resonant wayfinder and the two aeon stones count as two items toward your investiture limit."
@@ -75,8 +74,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You wield your great stature to make a {@action Request} of a creature. If you roll a success on the check, you get a critical success instead."
 					]
@@ -161,16 +158,15 @@
 				"amount": 13
 			},
 			"usage": "affixed to armor, shield, or weapon",
-			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
 					"unit": "free",
 					"entry": "{@as F}"
 				},
-				"components": "envision",
-				"requirements": null,
-				"frequency": null,
+				"components": [
+					"envision"
+				],
 				"trigger": "The affixed object would take damage."
 			},
 			"category": "Talisman",
@@ -241,8 +237,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You place the door knocker against a wall, floor, or ceiling. The door knocker fuses in place and creates a usable door within the surface. Any creature can move through the door normally, as if the door had always been there. The door can penetrate up to 1 foot of material, so thick material, such as heavy stone walls, can cause this effect to fail, expending its use for the day. A thin layer of metal in a wall, floor, or ceiling also causes the effect to fail. You can use an {@action Interact} action to release the door knocker from the surface and return the surface to its previous shape."
 					]
@@ -345,7 +339,6 @@
 				"amount": 30
 			},
 			"usage": "held in 1 hand",
-			"bulk": "\u2014",
 			"category": "Held",
 			"entries": [
 				"This coin usually resembles ancient currency. An intricate matrix of gold and platinum wires inside the coin causes it to float an inch in the air and spin if placed on a wayfinder.",
@@ -359,8 +352,6 @@
 					"components": [
 						"command"
 					],
-					"frequency": null,
-					"trigger": null,
 					"requirements": "The coin is levitating above a wayfinder",
 					"entries": [
 						"You give the coin a message of 25 words or fewer. The message repeats in your voice the next time the coin is floated above a wayfinder. A Pathfinder's coin can hold only one message at a time, and it replays its message only once."
@@ -402,9 +393,6 @@
 					"components": [
 						"Interact"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You switch the pouch to allow access to its extradimensional space instead of its normal space, or vice versa. This lasts until you next activate it. Items in the other space are inaccessible and hard to find until you switch the pouch back."
 					]
@@ -459,7 +447,6 @@
 				"Transmutation"
 			],
 			"usage": "held in 1 hand",
-			"bulk": "\u2014",
 			"category": "Held",
 			"entries": [
 				"The four different types of scroll cases of simplicity often bear adornments appropriate to their magical tradition, such as angelic wings or otherworldly lettering. On the inside, intricate runic diagrams spiral out to surround the scroll stored within. A scroll placed within the case can be converted into energy to cast consistently useful spells depending on its type. You must be able to cast spells of a given tradition to use a scroll case of simplicity of a corresponding type.",
@@ -473,8 +460,6 @@
 					"components": [
 						"Interact"
 					],
-					"frequency": null,
-					"trigger": null,
 					"requirements": "The scroll case contains a single scroll of a 1st-level spell",
 					"entries": [
 						"You transfer the scroll's energy into the scroll case, consuming the scroll, and you can immediately begin casting one of the scroll case's spells. If you use any action other than to {@action Cast a Spell} from the scroll case after activating the scroll case of simplicity, the scroll and its energy are lost."
@@ -542,9 +527,6 @@
 					"components": [
 						"Interact"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You brandish the weapon and focus its power, causing the serrated shards to buzz as they spin at a dizzying speed. On your next hit with the weapon this turn that deals slashing damage, the serrating rune adds an additional {@dice 1d12} damage instead of the additional {@dice 1d4} damage, and then the shards return to their usual speed."
 					]
@@ -570,7 +552,6 @@
 				"amount": 100
 			},
 			"usage": "worn",
-			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"A shining wayfinder is a polished silver compass blessed by the power of benevolent deities. It has the usual functions of a wayfinder, except instead of an activation to cast {@spell light}, the shining wayfinder has the following two activations.",
@@ -585,9 +566,6 @@
 						"command",
 						"Interact"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You hold the wayfinder and ask for guidance. The wayfinder casts guidance on you."
 					]
@@ -607,8 +585,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You call upon the wayfinder's divine blessings for yourself and your allies. The wayfinder casts bless, with an emanation centered on itself. Once per turn, you can use a single action, which has the {@trait concentrate} trait, to increase the emanation's radius by 5 feet."
 					]
@@ -648,9 +624,6 @@
 					"components": [
 						"(envision)"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"With a thought, the wearer activates a disguise. While the sinister knight armor's disguise is active, any identifying insignia or aesthetic of the armor is replaced by generic malevolent aesthetics such as spikes or demonic faces. While in the disguise, the wearer is always considered to be taking precautions against lifesense, and even a creature that successfully notices the wearer with its lifesense mistakes the wearer for an undead unless it critically succeeds at its {@skill Perception} check or the wearer critically fails a {@skill Deception} or {@skill Stealth} check. Finally, while in the disguise, the rune attempts to counteract any effects that would reveal your alignment; on a successful counteract check, rather than negate the effect, the rune causes the effect to perceive your alignment as evil (maintaining any lawful or chaotic component of your alignment)",
 						"The wearer can {@action Dismiss} the disguise, and if the wearer's armor is removed, the disguise deactivates automatically."
@@ -675,16 +648,15 @@
 				"amount": 9
 			},
 			"usage": "affixed to armor",
-			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
 					"unit": "reaction",
 					"entry": "{@as R}"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
+				"components": [
+					"Interact"
+				],
 				"trigger": "You begin to fall."
 			},
 			"category": "Talisman",
@@ -725,7 +697,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
 					"requirements": "You are Impersonating someone else",
 					"entries": [
 						"While conversing or otherwise casually interacting with other creatures, you can adjust the mantle's clasp to modify those creatures' recollections of the last 5 minutes of their interaction with you. Each creature must attempt a DC 25 Will save.",
@@ -797,7 +768,6 @@
 				"amount": 150
 			},
 			"usage": "worn",
-			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"A vanishing wayfinder is crafted of ivory chased with gold and silver. It has the usual functions of a wayfinder and the following additional activation.",
@@ -816,8 +786,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You turn the wayfinder in a circle while invoking its command word, gaining the effects of a 2nd-level {@spell invisibility} spell for 5 minutes."
 					]

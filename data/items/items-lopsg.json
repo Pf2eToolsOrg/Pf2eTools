@@ -208,10 +208,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Elixir",
 			"entries": [
@@ -271,7 +270,6 @@
 				"amount": 200
 			},
 			"usage": "worn",
-			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"Chronicler wayfinders bear a mystical connection to the Pathfinder Chronicles themselves, granting them the ability to assist in situations where unusual lore is needed by drawing on lore from a particular topic. Each chronicler wayfinder is attuned to a specific {@skill Lore} skill, chosen at the time of creation. In addition to the effects of a wayfinder (Core Rulebook 617), a chronicler wayfinder has the following activation.",
@@ -285,9 +283,6 @@
 					"components": [
 						"envision"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You tap into the Pathfinder Chronicles on the chronicler wayfinder's attuned topic, gaining the effects of a {@action Recall Knowledge} action with the chosen {@skill Lore} skill. For the {@skill Lore} check's modifier, use whichever is better of +12 or your own modifier, using your level as your proficiency bonus even if you're untrained in the attuned {@skill Lore} skill."
 					]
@@ -347,7 +342,6 @@
 				"amount": 10
 			},
 			"usage": "worn",
-			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"This simple brass ring is meant to be worn as an ornamentation piece to an outfit, oftentimes as a bangle on the wrist, as the ring closure of a scarf or sash, or as an ornamentation piece of a headdress. While decorative, this serves a cover for the bangle's function as a message bearer. Messages can be coded into the bangle, either through a series of raised dots and dashes or a pattern of notches of different depths and spacings. A bangle is large enough to hold a simple message consisting of a few words like \"Danger. Flee.\" or \"Meeting. Sunset. Fountain.\" Coding a message into a bangle requires 1 minute of time. All Pathfinders with access to communication bangles are taught how to code and read most basic messages, but anyone with a bangle can develop their own communication system.",
@@ -368,7 +362,6 @@
 				"Transmutation"
 			],
 			"usage": "worn",
-			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"Worn on a necklace, this intricate key grants you greater facility with constructs. The key alerts you to constructs lurking around you. Whether or not you are Investigating, the GM automatically rolls secret {@action Recall Knowledge} checks for you when you see a construct pretending to be a normal object, statue, or the like. Typically, this check is {@skill Arcana}, {@skill Crafting}, or an appropriate {@skill Lore} skill. On a success, you recognize the presence of the construct and gain the usual benefits of {@action Recall Knowledge}.",
@@ -388,8 +381,6 @@
 						"unit": "hour",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You turn the key in the air and create a magic glyph.",
 						"The key casts 3rd-level {@spell summon construct}."
@@ -412,8 +403,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You place the key on a Small object and turn it, creating a simple animated object for 1 hour. The animated object has the statistics of an animated broom (Pathfinder Bestiary 20) but has no bristles {@action Strike} and can't attack. It performs simple and broad menial tasks for you in exploration or downtime but is too slow to react to individual commands to assist you in a combat encounter."
 					]
@@ -479,7 +468,6 @@
 						"unit": "minute",
 						"freq": 1
 					},
-					"trigger": null,
 					"requirements": "On your previous action this turn, you used this weapon to hit and damage a creature that has blood or other vital fluids",
 					"entries": [
 						"You learn the secrets the weapon gleaned from the creature's blood. Attempt to {@action Recall Knowledge} about the target of the required attack, gaining an item bonus to the {@action Recall Knowledge} skill check equal to the weapon's item bonus to attack rolls from its potency rune.",
@@ -558,7 +546,6 @@
 				"Magical"
 			],
 			"usage": "worn",
-			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"Pathfinder Society researchers recently created elemental wayfinders with the assistance of the Society's elemental allies. In addition to the effects of a {@item wayfinder}, these wayfinders each grant the ability to cast a particular elemental spell once per day, and can assist Pathfinders in exploring areas associated with their element. Each has the trait associated with its element.",
@@ -572,9 +559,6 @@
 					"components": [
 						"command"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"The wayfinder casts its associated spell."
 					]
@@ -669,10 +653,10 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "envision",
-				"requirements": "You're trained in {@skill Deception}.",
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"envision"
+				],
+				"requirements": "You're trained in {@skill Deception}."
 			},
 			"category": "Talisman",
 			"entries": [
@@ -694,7 +678,6 @@
 				"Magical"
 			],
 			"usage": "worn on belt",
-			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"Constructed of green material and decorated with a white Glyph of the Open Road, a dozen or more small pockets line the inside of this pack. The pack is enchanted so that each pocket contains common, mundane gear, each item worth no more than 1 gp, such as chalk, flint and steel, and string. It doesn't contain any armor, shields, weapons, or items made of any kind of precious material. Keep track of the exact value of the gear you retrieve from the pack. The pack empties after 8 gp worth of items of your choice are removed, after which it becomes a mundane backpack.",
@@ -713,8 +696,6 @@
 						"unit": "hour",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You draw any number of pieces of mundane gear from the pack with a combined value of 1 gp or less."
 					]
@@ -801,7 +782,6 @@
 				"amount": 50
 			},
 			"usage": "worn",
-			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"Fashionable wayfinders allow you to be dressed for success in almost any situation. In addition to the effects of a wayfinder (Core Rulebook 617), a fashionable wayfinder can attune to up to three sets of mundane clothing in your possession during your daily preparations. A fashionable wayfinder has the following activation.",
@@ -815,9 +795,6 @@
 					"components": [
 						"envision"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You call one of the attuned sets of clothing onto yourself, changing clothes instantly and leaving you either holding the old set of clothing or with the old set folded neatly on the floor if you don't have a free hand to hold it. This activation can't change you into or out of a suit of armor of any kind. While the activation can transport the chosen attuned set of clothing onto you from up to 60 feet away, it can't transport any other creatures or items that might have been stored in the clothing."
 					]
@@ -931,7 +908,6 @@
 				"amount": 2750
 			},
 			"usage": "worn",
-			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"Homeward wayfinders are powerful escape tools in the hands of a Pathfinder agent, drawing upon a special connection to the Maze of the Open Road. In addition to the effects of a wayfinder (Core Rulebook 617), a homeward wayfinder attunes itself to the most recent Pathfinder Lodge you've visited and has the following activation.",
@@ -950,8 +926,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You teleport back to the attuned Pathfinder Lodge, as long as you are no more than 100 miles away. This {@trait teleportation} effect fails if you would bring another creature with you, even if you're carrying it in an extradimensional space."
 					]
@@ -976,7 +950,6 @@
 				"amount": 1750
 			},
 			"usage": "worn",
-			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"Hummingbird wayfinders blend a few Arcadian secrets into the original wayfinder design, allowing the wayfinder to gain mobility for a time and act as a spy. In addition to the effects of a wayfinder (Core Rulebook 617), a hummingbird wayfinder has the following activation.",
@@ -995,8 +968,6 @@
 						"unit": "hour",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You cause the wayfinder to transform into a Tiny bee hummingbird, only 2 inches long. Other than the wayfinder being a visible bird, this has the effects of prying eye. In addition to Seeking through the hummingbird, you can activate any aeon stone within the wayfinder as if the wayfinder were still on your person. When the effect ends, the wayfinder transforms back to normal in its current position. Damaging the bird ends the effect but does not destroy the wayfinder."
 					]
@@ -1037,10 +1008,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Consumable",
 			"entries": [
@@ -1185,7 +1155,6 @@
 				"amount": 1200
 			},
 			"usage": "held in one hand",
-			"bulk": "\u2014",
 			"category": "Held",
 			"entries": [
 				"This black-feathered quill has a glowing nib with a small amount of glowing ink inside it.",
@@ -1204,8 +1173,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"Placing the tip of the quill against a wall of wood, plaster, or stone and speaking a command word causes the ink to flow from the nib onto the wall in the shape of a glowing doorway, casting passwall on the touched surface."
 					]
@@ -1247,8 +1214,6 @@
 						"unit": "day",
 						"freq": 3
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You touch an adjacent creature, granting them {@dice 3d8} temporary Hit Points for 1 hour."
 					]
@@ -1267,8 +1232,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You touch an adjacent creature and attempt a counteract check against one poison or disease afflicting the creature. On a success, you halt the effects of the poison or disease for 1 day, rather than removing it. This temporarily relieves any penalties imposed by the affliction but doesn't cure the effect or count against its duration; the poison or disease is merely halted for a time, and it resumes where it left off once this effect ends."
 					]
@@ -1361,7 +1324,6 @@
 				"amount": 5
 			},
 			"usage": "held in 1 hand",
-			"bulk": "\u2014",
 			"shieldStats": null,
 			"activate": null,
 			"ammunition": null,
@@ -1504,7 +1466,6 @@
 				"Magical"
 			],
 			"usage": "worn",
-			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"These folding, wood-framed spectacles hold flat discs of cut crystal as lenses and are held in place with thin cords that wrap around each ear, with another strap holding them around the neck while not in use. While you are wearing the spectacles, you gain a +1 item bonus to checks to {@action Decipher Writing}.",
@@ -1522,8 +1483,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"Unfolding the spectacles onto the bridge of the nose, you gain the effects of 2nd-level {@spell comprehend language} for one hour except that it applies to all languages you see rather than a single language, and it does not apply to language you hear."
 					]
@@ -1588,7 +1547,6 @@
 				"Magical"
 			],
 			"usage": "worn",
-			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"This thin leather cord bears delicate runic markings and threads through an item that can bear affixed talismans.",
@@ -1650,10 +1608,9 @@
 					"number": 3,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Consumable",
 			"entries": [
@@ -1821,7 +1778,6 @@
 				"amount": 5
 			},
 			"usage": "held in 1 hand",
-			"bulk": "\u2014",
 			"category": "Held",
 			"entries": [
 				"A typical Pathfinder writ of authenticity confirms the holder's status as a member of the Pathfinder Society and their intended business. Most writs are pieces of fine parchment folded, bound with gold cord, and sealed with three wax seals. The top seal is always the Glyph of the Open Road and the middle one is the Envoy's Alliance open door emblem. The bottom seal uses the preparer's personal sigil. Inside, the text describes a specific instance of a legitimate business activity, with blanks for the Pathfinder to fill in and personalize the writ to the persons and activity desired. Presenting a writ of authenticity grants a +2 item bonus to Make a {@action Request} for the associated business, assuming the writ is legitimate and the viewer expects to work with the Pathfinder Society for that activity."

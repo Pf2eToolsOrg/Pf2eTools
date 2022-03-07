@@ -31,9 +31,6 @@
 						"command",
 						"Interact"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You throw the anointed waterskin up to 60 feet. The water explodes out of it, with the effects of holy cascade."
 					]
@@ -47,8 +44,6 @@
 					"components": [
 						"Interact"
 					],
-					"frequency": null,
-					"trigger": null,
 					"requirements": "The anointed waterskin is full",
 					"entries": [
 						"You drink the water within the waterskin, granting you the effects of bless. As normal with the spell, you can increase the radius with a single action with the {@trait concentrate} trait."
@@ -65,8 +60,6 @@
 						"(command",
 						"Interact)"
 					],
-					"frequency": null,
-					"trigger": null,
 					"requirements": "The anointed waterskin is full",
 					"entries": [
 						"You decant the water, creating up to 10 vials of holy water. You must provide the vials."
@@ -92,7 +85,6 @@
 				"amount": 25
 			},
 			"usage": "affixed over an entrance",
-			"bulk": "\u2014",
 			"category": "Consumable",
 			"entries": [
 				"This unassuming yellow paper, affixed above a door or gate, flickers in the light. Pick an alignment trait: chaotic, good, lawful, or evil. When a creature with the opposing alignment trait of the fulu (good for an evil fulu, and so on) passes through the entrance, it must succeed at a DC 17 Fortitude save or become {@condition sickened 2}; regardless of whether they succeed, the creature becomes temporarily immune for 1 day."
@@ -115,7 +107,6 @@
 				"amount": 24000
 			},
 			"usage": "worn eyepiece",
-			"bulk": "\u2014",
 			"category": "Apex",
 			"entries": [
 				"This strange contraption slides over your eyes, supernaturally sharpening your mind. While peering through it, you can feel some entity whispering to you, telling all sorts of things about the subject of your gaze. You gain a +3 item bonus to {@skill Occultism} (though some entities might grant a bonus to a different skill, as determined by your GM). In addition, when you employ an exploration tactic other than Investigating, you also gain the benefits of Investigating unless you choose not to.",
@@ -134,8 +125,6 @@
 						"unit": "hour",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"Pushing the glasses up your nose and asking the entity for help, you cause the spectacles to cast either true seeing or a 3rd-level {@spell comprehend language} on you. Because the entity tied to the spectacles chooses which one, the GM picks whichever spell is most immediately useful in your current situation (and chooses the most useful language each time the item casts comprehend language). The spell lasts for 1 minute."
 					]
@@ -172,9 +161,7 @@
 						"command (divination",
 						"magical)"
 					],
-					"frequency": null,
 					"trigger": "You Cast a divination",
-					"requirements": null,
 					"entries": [
 						"The next attack by a creature who was targeted by the triggering divination spell bypasses an amount of resistance equal to the spell's level. If the triggering spell targeted an enemy, this benefit instead applies to the next attack against that enemy, regardless of who makes it.",
 						"This benefit is lost if it isn't used by the end of your next turn. If more than one type of resistance would apply against the attack, the attack bypasses only one\u2014whichever would result in the highest amount of damage getting through, as determined by the GM."
@@ -260,8 +247,6 @@
 						"polymorph",
 						"transmutation"
 					],
-					"frequency": null,
-					"trigger": null,
 					"requirements": "You're under the effect of a {@trait polymorph} spell you prepared from this grimoire that offers a choice of multiple forms",
 					"entries": [
 						"You transform into a different form allowed by the {@trait polymorph} by bending and molding the spell's energy. This reduces the spell's remaining duration by half."
@@ -283,15 +268,15 @@
 				"Transmutation"
 			],
 			"usage": "affixed to a weapon",
-			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
 					"unit": "free"
 				},
-				"components": "envision",
+				"components": [
+					"envision"
+				],
 				"requirements": "You're an expert in {@skill Athletics}.",
-				"frequency": null,
 				"trigger": "Your {@action Strike} with the affixed weapon damages a creature"
 			},
 			"category": "Talisman",
@@ -361,8 +346,6 @@
 						"unit": "round",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You draw magical energy from one of the gems. Roll {@dice 1d4}.",
 						"Until the start of your next turn, the weapon gains the corresponding rune: 1\u2014corrosive, 2\u2014flaming, 3\u2014frost, or 4\u2014shock."
@@ -382,7 +365,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
 					"requirements": "The blade has an energy rune from the first activation",
 					"entries": [
 						"You call upon the energy stored in the blade to explode outward. The blade of four energies casts a 5th-level spell that depends on the active rune: acid arrow for corrosive, fireball for flaming, cone of cold for frost, or lightning bolt for shock."
@@ -448,8 +430,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"If your next action is to cast an evocation spell dealing fire damage that you prepared from this grimoire, you superheat the flames, allowing the spell to ignore up to 10 resistance to fire of creatures affected by the spell."
 					]
@@ -484,9 +464,6 @@
 					"components": [
 						"command (light)"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You plunge your weapon into darkness to return the light. Attempt a counteract check with a counteract level of 5 and a +19 counteract modifier to end a magical {@trait darkness} effect whose area is within reach of the weapon."
 					]
@@ -547,8 +524,6 @@
 					"components": [
 						"Interact"
 					],
-					"frequency": null,
-					"trigger": null,
 					"requirements": "Your previous action was a successful {@action Strike} with the burrs",
 					"entries": [
 						"One of the burrs catches on the {@action Strike}'s target, inflicting {@damage 1d10} {@condition persistent damage ||persistent bleed damage}."
@@ -586,8 +561,6 @@
 						"unit": "hour",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You hurl the axe, which spins at great speed as it flies to a distant point and returns to you, leaving a trail of carnage. Each creature in a 120-foot line must succeed at a DC 28 basic Reflex save or take damage equal to the weapon's melee damage, including your Strength modifier."
 					]
@@ -643,7 +616,6 @@
 				"Magical"
 			],
 			"usage": "held in 1 hand",
-			"bulk": "\u2014",
 			"category": "Held",
 			"entries": [
 				"In an effort to spread the knowledge of magic as widely as possible, worshippers of {@deity Nethys} discovered a way to bind cantrips into cards accessible even to non-spellcasters.",
@@ -658,9 +630,6 @@
 						"or more (envision",
 						"Interact)"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You envision your desired cantrip, causing its card to rise to the top of the deck, and draw the card. The deck casts that cantrip as a 1st-level spell, with a DC of 15 and a spell attack modifier of +5. The card crumbles into dust as the cantrip takes effect. The activation takes the same number of actions as the cantrip you chose takes to cast."
 					]
@@ -767,9 +736,6 @@
 					"components": [
 						"command"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"The scrambled words align into the originally written script. Identifying the parchment reveals that it can be activated with a command, but a critical success to {@action Identify Magic} is needed to learn the command word."
 					]
@@ -783,9 +749,6 @@
 					"components": [
 						"Interact"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You light the parchment on fire, burning the words off while leaving the parchment unharmed and ready to bear more text."
 					]
@@ -858,7 +821,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
 					"requirements": "Your last action was to cast a divination spell prepared from this grimoire",
 					"entries": [
 						"The grimoire offers you a glimpse into the truth of things. {@action Seek} or {@action Recall Knowledge}."
@@ -927,8 +889,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"Your eidolon focuses their will on the collar, allowing the collar to maintain the connection between you at any distance. For the next 5 minutes, you and your eidolon can move any distance from each other without your eidolon unmanifesting. When the duration ends, if your eidolon is more than 150 feet from you, they immediately unmanifest."
 					]
@@ -964,7 +924,6 @@
 					"components": [
 						"envision"
 					],
-					"frequency": null,
 					"trigger": "You {@action Cast a Spell} from a spell slot, and the spell has the acid, cold, electricity, {@trait fire}, or {@trait sonic} trait",
 					"requirements": "The club has no charges",
 					"entries": [
@@ -986,8 +945,6 @@
 						"magical",
 						"evocation"
 					],
-					"frequency": null,
-					"trigger": null,
 					"requirements": "The club has at least 1 charge",
 					"entries": [
 						"You flip the club around to blast a cone of energy from its base. Each creature in a 15-foot cone takes {@dice 1d6} damage per charge stored in the club, with a basic Reflex save against your spell DC or DC 19, whichever is greater. The damage type is the same type the charges were attuned to. The club loses all of its charges."
@@ -1057,7 +1014,6 @@
 				"amount": 200
 			},
 			"usage": "held in 2 hands",
-			"bulk": "\u2014",
 			"category": "Held",
 			"entries": [
 				"This set of 34 parchment cards usually comes in a velvet bag or simple leather wrap. Each card depicts a different creature, monster, or other being that, when the deck is activated, immediately appears as a believable, life-size illusion. You can look at the card's artwork, but no {@trait magical} effect takes place until you Activate the deck, shuffling and drawing randomly.",
@@ -1071,9 +1027,6 @@
 						"envision",
 						"Interact"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You draw a card, chosen randomly from the remaining cards in the deck, and throw it to the ground to create an illusion of the creature depicted. The image is an illusory creature, except it has a range of only 30 feet from where the card was thrown and the illusion lasts until destroyed or until anyone moves or damages the card. The creature takes its actions once on your turn if you're within 60 feet of the card and Sustain the Activation. The illusion ends if you don't Sustain it, or if you activate a new card from the deck."
 					]
@@ -1097,7 +1050,6 @@
 				"amount": 75
 			},
 			"usage": "held in 2 hands",
-			"bulk": "\u2014",
 			"category": "Held",
 			"entries": [
 				"This deck of 54 cards appears nearly identical to standard playing cards. Comprised of four thematic suits of 13 cards each, as well as two wildcards, the deck of mischief is a favorite of scoundrels who prefer not to leave their games to chance\u2014or to at least nudge the odds in their favor.",
@@ -1125,7 +1077,6 @@
 				"amount": 100
 			},
 			"usage": "affixed to armor",
-			"bulk": "\u2014",
 			"category": "Consumable",
 			"entries": [
 				"Given to undisciplined acolytes at risk of breaking their vows, this fulu activates on its own if its wearer begins to perform an act anathema to a specific deity or cause, decided at the time of crafting. The fulu heats up when activated, giving you enough warning to correct your actions; if you proceed, the fulu immolates in a burst of flame. This deals {@damage 4d6} fire damage and brands your skin until you receive an appropriate atone ritual. Either way, activating the fulu consumes it."
@@ -1174,10 +1125,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"ammunition": [
 				"sling bullet"
@@ -1204,16 +1154,15 @@
 				"amount": 20
 			},
 			"usage": "affixed to a melee weapon or a ranged weapon",
-			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": "You're an expert with the affixed weapon.",
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				],
+				"requirements": "You're an expert with the affixed weapon."
 			},
 			"category": "Talisman",
 			"entries": [
@@ -1237,7 +1186,6 @@
 				"amount": 24000
 			},
 			"usage": "worn",
-			"bulk": "\u2014",
 			"category": "Apex",
 			"entries": [
 				"This small, heart-shaped amulet appears to be sculpted from stone with a single streak of dim light running through, like an ember just beneath ashes. When worn, the amulet gives off a gentle warmth, akin to being near a fireplace. You gain poison resistance 15 when wearing this amulet.",
@@ -1313,9 +1261,6 @@
 					"components": [
 						"Interact"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You extend your weapon for an instant, giving you an impossible reach. You {@action Strike} with the weapon, and you have reach 60 feet for the {@action Strike}."
 					]
@@ -1365,15 +1310,15 @@
 				"amount": 25
 			},
 			"usage": "affixed to a weapon",
-			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
 					"unit": "free"
 				},
-				"components": "envision",
+				"components": [
+					"envision"
+				],
 				"requirements": "You're an expert in {@skill Arcana}, Occult, {@skill Nature}, {@skill Religion}, {@skill Society}, or a {@skill Lore} skill.",
-				"frequency": null,
 				"trigger": "You succeed at a {@action Strike} with the affixed weapon"
 			},
 			"category": "Talisman",
@@ -1398,7 +1343,6 @@
 				"amount": 60
 			},
 			"usage": "tattooed on the body",
-			"bulk": "\u2014",
 			"category": "Tattoo",
 			"entries": [
 				"This tattoo typically consists of an image of a small animal or of a familiar's name written in runes. Your familiar can meld into your familiar tattoo to be carried in your skin. The familiar must spend a single action, which has the magical, {@trait move}, and {@trait transmutation} traits, to meld into or exit your tattoo. It must be adjacent to you to meld into your tattoo, and it exits your tattoo in an open space adjacent to you.",
@@ -1498,7 +1442,6 @@
 				"Transmutation"
 			],
 			"usage": "affixed to armor or a weapon",
-			"bulk": "\u2014",
 			"category": "Spellheart",
 			"entries": [
 				"Identical feathers radiate from the center of this spellheart, held in place by woven straw. The spell attack roll of any spell cast by {@action Activate an Item||Activating} this item is +8, and the spell DC is 18.",
@@ -1514,9 +1457,6 @@
 					"components": [
 						"{@action Cast a Spell}"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You cast {@spell gale blast|SoM}."
 					]
@@ -1717,7 +1657,6 @@
 				"Spellheart"
 			],
 			"usage": "affixed to armor or a weapon",
-			"bulk": "\u2014",
 			"category": "Spellheart",
 			"entries": [
 				"A sheen of red crosses the surface of this star-shaped goldstone medallion when the light hits it. The affixed armor or weapon is warm to the touch. The spell attack roll of any spell cast by {@action Activate an Item||Activating} this item is +7, and the spell DC is 17.",
@@ -1733,9 +1672,6 @@
 					"components": [
 						"{@action Cast a Spell}"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You cast {@spell produce flame}."
 					]
@@ -1948,9 +1884,6 @@
 					"components": [
 						"Make an Impression"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"If you share drinks from a flask of fellowship as part of your {@action Make an Impression} action, the drink that pours from the flask happens to be exactly what the target of your efforts would most like to have a dram or two of\u2014wine, spirits, hot ginger tea, or ice cold water with lemon, for example. You gain a +1 item bonus on your {@skill Diplomacy} check.",
 						"The GM can disallow the flask's use if it doesn't make sense in the moment for you to pull out a flask and start pouring, if drinks are inappropriate for the occasion, or if your target is absolutely not interested in sharing a drink with you. Drinks from the flask of fellowship are entirely social; they won't intoxicate anyone, nor alleviate serious thirst."
@@ -2000,7 +1933,6 @@
 				"amount": 21
 			},
 			"usage": "held in 1 hand",
-			"bulk": "\u2014",
 			"category": "Potion",
 			"entries": [
 				"Burnt fulu ashes float in this liquid, lending a distinctive red color and imparting it with a variety of purifying effects. Unlike many fulu items, fu water must be created using divine magic.",
@@ -2013,9 +1945,6 @@
 					"components": [
 						"Interact"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"This potion functions as a bottle of holy water. Like holy water, you throw it as a {@action Strike}. It's a simple thrown weapon with a range increment of 20 feet. Unlike an alchemical bomb, it doesn't add the {@trait manipulate} trait to the attack made with it."
 					]
@@ -2029,9 +1958,6 @@
 					"components": [
 						"Interact"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You drink the fu water to counteract ailments within yourself. Attempt a counteract check with a +9 counteract modifier and a counteract level of 3 against one effect that imposes the {@condition confused}, {@condition fascinated}, {@condition frightened}, or {@condition stupefied} condition. You are then {@condition sickened 1}."
 					]
@@ -2070,8 +1996,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You rip a page from the fulu compendium and cast it in a wide arc; as it flies in that arc, it multiplies into a storm of fulus. All undead creatures in a 30-foot emanation are affected by a spirit-sealing fulu with a save DC of 25."
 					]
@@ -2096,7 +2020,6 @@
 				"amount": 10
 			},
 			"usage": "affixed to a wall",
-			"bulk": "\u2014",
 			"category": "Consumable",
 			"entries": [
 				"Duration 1 week The silver ink on this black paper charm ebbs in and out of sight, especially when caught out of the corner of your eye. Usually placed in the kitchen, this fulu slows the spread of fire in a 30-foot radius by half.",
@@ -2120,7 +2043,6 @@
 				"amount": 10
 			},
 			"usage": "affixed to a wall",
-			"bulk": "\u2014",
 			"category": "Consumable",
 			"entries": [
 				"Duration 1 week This blue fulu bears dark ink that slowly swirls and twists about itself, expanding and contracting on the paper over the course of the day in time with the tides. This fulu is most effective in the lowest area of a building, or near the most valuable or least-waterproof items. They're often seen as the rainy season approaches, with demand spiking just before a particularly large storm hits.",
@@ -2145,15 +2067,14 @@
 				"amount": 25
 			},
 			"usage": "affixed to armor",
-			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
 					"unit": "free"
 				},
-				"components": "envision",
-				"requirements": null,
-				"frequency": null,
+				"components": [
+					"envision"
+				],
 				"trigger": "You attempt a Fortitude save against an ingested poison."
 			},
 			"category": "Consumable",
@@ -2180,15 +2101,14 @@
 				"amount": 25
 			},
 			"usage": "affixed to armor",
-			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
 					"unit": "free"
 				},
-				"components": "envision",
-				"requirements": null,
-				"frequency": null,
+				"components": [
+					"envision"
+				],
 				"trigger": "You attempt a"
 			},
 			"category": "Consumable",
@@ -2213,7 +2133,6 @@
 				"amount": 40
 			},
 			"usage": "affixed to the ground in four spaces along",
-			"bulk": "\u2014",
 			"category": "Consumable",
 			"entries": [
 				"Duration 1 hour This fulu comes in four pieces, one placed in each cardinal direction. Choose one of the following traits when {@action Activate an Item||Activating} the fulus: animal, beast, celestial, fey, fiend, humanoid, monitor, plant, or undead. Those within the fulus' circle upon activation (including the fulus themselves) gain the effect of invisibility sphere, but only against creatures with the chosen trait. If any of the fulus are moved or destroyed after activation, the effect ends."
@@ -2238,15 +2157,14 @@
 				"amount": 40
 			},
 			"usage": "affixed to a weapon",
-			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
 					"unit": "free"
 				},
-				"components": "envision",
-				"requirements": null,
-				"frequency": null,
+				"components": [
+					"envision"
+				],
 				"trigger": "You successfully {@action Strike} an incorporeal creature with the weapon to which the fulu is affixed, but you haven't rolled damage."
 			},
 			"category": "Consumable",
@@ -2278,10 +2196,9 @@
 					"number": 3,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Oil",
 			"entries": [
@@ -2318,9 +2235,6 @@
 					"components": [
 						"envision"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You stare at another creature and instantly remember their name if you've met and exchanged names. The glasses rely on your latent memories, so if the creature is disguising their identity, the glasses don't penetrate the disguise.",
 						"If a doppelganger was disguised as an innkeeper you met, the glasses would give you the innkeeper's name, and if a noble you met before was in disguise as a masked vigilante, the glasses wouldn't reveal their name."
@@ -2363,8 +2277,6 @@
 						"unit": "hour",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You make a thrown {@action Strike} with the gloaming shard at a target within 60 feet. Whether you hit or miss, rather than returning to you, the blade pulls you down into your own shadow and along the connecting thread.",
 						"You instantly teleport to a space adjacent to the target of your {@action Strike}, as dimension door, and then catch the dagger in your hand."
@@ -2394,10 +2306,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"ammunition": [
 				"sling bullet"
@@ -2428,7 +2339,6 @@
 				"Spellheart"
 			],
 			"usage": "affixed to armor or a weapon",
-			"bulk": "\u2014",
 			"category": "Spellheart",
 			"entries": [
 				"One bulb of this tiny hourglass contains black sand, the other white. After even a few grains pass from one side to the other, it reverses its flow to keep the two sides in equilibrium. The spell DC of any spell cast by {@action Activate an Item||Activating} this item is 17.",
@@ -2444,9 +2354,6 @@
 					"components": [
 						"{@action Cast a Spell}"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You cast {@spell chill touch}."
 					]
@@ -2656,7 +2563,6 @@
 						"freq": 1
 					},
 					"trigger": "You successfully {@action Strike} a creature with a thrown {@action Strike} with guiding star",
-					"requirements": null,
 					"entries": [
 						"Soft light outlines the target. At the beginning of your next turn, the guiding star's blades detach and form into darts of starlight, flying up to 40 feet and striking the target unerringly, collectively dealing 4 piercing damage and 1 good damage before re-forming. The piercing damage increases to 6 with a greater striking rune and 8 with a major striking rune."
 					]
@@ -2697,8 +2603,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You tear off a patch of cloth to manifest it into a copy of yourself, dressed in the color and fabric of the patch. The copy follows your specific instructions and performs a single, straightforward task for up to 30 minutes. It takes the copy three times as long to complete the task as it would you, meaning it can perform a task that would take you a maximum of 10 minutes. It doesn't react quickly enough to be of any use during an encounter, and it can't use your spells or other special abilities\u2014just basic actions and skill actions.",
 						"The copy disappears and returns to the hat as a piece of cloth when the given task has been completed, or when you {@action Dismiss} the activation."
@@ -2821,8 +2725,6 @@
 						"unit": "round",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You deal {@damage 1d10} negative damage to yourself. If your next action is to {@action Strike} with the scythe or to {@action Cast a Spell} with the {@trait disease} or {@trait negative} trait, that {@action Strike} or spell deals additional negative damage equal to the damage you took (after any reductions or increases from immunity, resistances, weaknesses)."
 					]
@@ -2908,8 +2810,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"If your next action is to cast a harmful necromancy spell that you prepared from this grimoire and that allows a saving throw, you warp and twist negative energy into the spell to cause intense pain. If the target fails its saving throw against the spell, it becomes {@condition sickened 1} by the pain."
 					]
@@ -2945,9 +2845,6 @@
 					"components": [
 						"envision"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You {@action Stride} and turn partially {@condition invisible}, becoming {@condition concealed} until the end of your next turn or until you use a {@condition hostile} action, whichever comes first. As normal, you can use the concealment from this activation to {@action Hide}."
 					]
@@ -2986,9 +2883,6 @@
 						"command",
 						"Interact"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You cause sand to pour out of the jar at a rate of 1 gallon per round. This doesn't end until the cap is placed back on the jar."
 					]
@@ -3003,9 +2897,6 @@
 						"command",
 						"Interact"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You quickly pour sand over an adjacent square, making it {@quickref difficult terrain||3|terrain}. You can't use either of the jar's activations for 1 minute."
 					]
@@ -3064,9 +2955,6 @@
 					"components": [
 						"{@action Cast a Spell}"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You expend a number of charges from the staff to cast a spell from its list.",
 						{
@@ -3104,16 +2992,15 @@
 				"amount": 300
 			},
 			"usage": "affixed to a weapon",
-			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": "You're {@condition undetected} by a creature and are a master in {@skill Stealth}.",
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				],
+				"requirements": "You're {@condition undetected} by a creature and are a master in {@skill Stealth}."
 			},
 			"category": "Talisman",
 			"entries": [
@@ -3137,7 +3024,6 @@
 				"amount": 15
 			},
 			"usage": "affixed to a door, window, or container",
-			"bulk": "\u2014",
 			"category": "Consumable",
 			"entries": [
 				"Duration 1 hour The symbols on this fulu depict a lock and winding chains. Affixing this fulu over the seam or frame of the target locks it, even if it has no latch or existing lock.",
@@ -3176,9 +3062,7 @@
 					"components": [
 						"envision (visual)"
 					],
-					"frequency": null,
 					"trigger": "You attempt a",
-					"requirements": null,
 					"entries": [
 						"You gain a +4 status bonus to the triggering check. This ability has no effect if you're under the effects of a disguise that hides the mask of allure. Depending on the skill used, the mirrored silver transforms into one of the following appearances.",
 						{
@@ -3214,15 +3098,14 @@
 				"amount": 10
 			},
 			"usage": "affixed to armor",
-			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
 					"unit": "free"
 				},
-				"components": "envision",
-				"requirements": null,
-				"frequency": null,
+				"components": [
+					"envision"
+				],
 				"trigger": "You attempt a {@skill Diplomacy} check to {@action Make an Impression}."
 			},
 			"category": "Consumable",
@@ -3266,7 +3149,6 @@
 						"freq": 1
 					},
 					"trigger": "An enemy misses you with a melee {@action Strike}",
-					"requirements": null,
 					"entries": [
 						"You slip around the attacking creature with ease. You {@action Step}, without moving away from the triggering enemy, and then make a melee {@action Strike} against the triggering enemy if it's within reach. If you do make a {@action Strike}, the target attempts a DC 38 {@skill Perception} check before you roll.",
 						{
@@ -3297,7 +3179,6 @@
 						"freq": 1
 					},
 					"trigger": "An enemy misses you with a melee {@action Strike}",
-					"requirements": null,
 					"entries": [
 						"The cloak hums with power as your whirl it around yourself, disappearing amid a brief flash of light. Teleport up to double your Speed to a location you can see. At the end of the teleportation, you can make a melee {@action Strike} against a creature within reach, if there is one."
 					]
@@ -3346,7 +3227,6 @@
 						"unit": "minute"
 					},
 					"trigger": "Your spell deals cold damage to a creature",
-					"requirements": null,
 					"entries": [
 						"Choose one creature dealt cold damage by the spell. It takes a \u20135-foot status penalty to its Speeds for 1 round."
 					]
@@ -3417,15 +3297,15 @@
 				"amount": 100
 			},
 			"usage": "affixed to armor",
-			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
 					"unit": "free"
 				},
-				"components": "envision",
+				"components": [
+					"envision"
+				],
 				"requirements": "You're a master in {@skill Performance}.",
-				"frequency": null,
 				"trigger": "You attempt a {@skill Performance} check, but you haven't rolled yet"
 			},
 			"category": "Talisman",
@@ -3459,9 +3339,7 @@
 					"components": [
 						"command"
 					],
-					"frequency": null,
 					"trigger": "You successfully {@action Strike} with the flail while activating its {@item extending|SoM} rune",
-					"requirements": null,
 					"entries": [
 						"The head of the flail wraps around the target of the triggering {@action Strike} and drags it in your direction. The target must succeed at a DC 31 Fortitude save or be pulled adjacent to you. A creature pulled in is then {@condition grabbed} by the flail until the end of your next turn unless you move, your target {@action Escape||Escapes} (DC 31), or you use the flail."
 					]
@@ -3475,9 +3353,6 @@
 					"components": [
 						"Interact"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You extend the flail's chain, then wrap it across itself and strike two links together.",
 						"This severs a usable 60-foot loop of chain from the flail, which instantly returns to its normal length. If you use this activation again, any previous chain you created with it disappears after 1 round. As with most obviously magical and temporary constructs, the chain cannot be sold."
@@ -3551,9 +3426,6 @@
 					"components": [
 						"{@action Cast a Spell}"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You cast {@spell spout|SoM}."
 					]
@@ -3752,10 +3624,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Potion",
 			"entries": [
@@ -3788,10 +3659,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Potion",
 			"entries": [
@@ -3814,7 +3684,6 @@
 						"unit": "hour",
 						"freq": 1
 					},
-					"trigger": null,
 					"requirements": "You aren't immune to electricity",
 					"entries": [
 						"A creature within 30 feet of you is targeted by an {@trait electricity} effect or is in the area of an {@trait electricity} effect. Effect You draw the electricity to yourself like a lightning rod in order to shield the target. If the triggering effect was targeted, it targets you instead of the triggering creature. If it was an area effect, it leaps from the triggering creature's space to fill your space instead.",
@@ -3846,10 +3715,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Potion",
 			"entries": [
@@ -3880,10 +3748,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Potion",
 			"entries": [
@@ -3910,10 +3777,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Potion",
 			"entries": [
@@ -3984,15 +3850,14 @@
 				"amount": 125
 			},
 			"usage": "affixed to a shield",
-			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
 					"unit": "free"
 				},
-				"components": "envision",
-				"requirements": null,
-				"frequency": null,
+				"components": [
+					"envision"
+				],
 				"trigger": "You use the Shield"
 			},
 			"category": "Consumable",
@@ -4031,8 +3896,6 @@
 					"components": [
 						"Interact"
 					],
-					"frequency": null,
-					"trigger": null,
 					"requirements": "Your armor has absorbed at least 30 damage",
 					"entries": [
 						"The absorbed energy explodes from your armor in a pulse of force. Creatures in a 30-foot emanation take {@damage 10d6} force damage with a DC 43 basic Fortitude save. On a failure, they're pushed 10 feet away from you, and on a critical failure, they're pushed 20 feet away from you and fall {@condition prone}. The armor's absorbed damage resets to 0."
@@ -4062,10 +3925,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"ammunition": [
 				"arrow, bolt"
@@ -4093,16 +3955,14 @@
 				"amount": 32
 			},
 			"usage": "affixed to a creature",
-			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
 					"unit": "free"
 				},
-				"components": "envision",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"envision"
+				]
 			},
 			"category": "Consumable",
 			"entries": [
@@ -4145,16 +4005,15 @@
 				"Teleportation"
 			],
 			"usage": "affixed to armor",
-			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
 					"unit": "free"
 				},
-				"components": "command",
-				"requirements": "You have a free hand.",
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"command"
+				],
+				"requirements": "You have a free hand."
 			},
 			"category": "Talisman",
 			"entries": [
@@ -4204,7 +4063,6 @@
 				"amount": 1700
 			},
 			"usage": "tattooed on the body",
-			"bulk": "\u2014",
 			"category": "Tattoo",
 			"entries": [
 				"This jagged glyph, one of the {@variantrule Thassilonian Rune Magic|SoM|Thassilonian runes of sin}, reacts to magic of a particular school (there's no rune for divination, as it was considered lesser within sin magic)",
@@ -4228,7 +4086,6 @@
 				"amount": 1000
 			},
 			"usage": "worn",
-			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"Each specialist's ring is dedicated to a single school of magic, and the ring is covered in symbols and glyphs related to that school according to the creator's arcane studies. A specialist's ring has the trait corresponding to its school of magic. You gain a +2 item bonus to {@skill Arcana} checks, and a +1 circumstance bonus to recognize {@trait magical} effects and items of the specific school of magic.",
@@ -4245,8 +4102,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You gain 1 Focus Point, which you can use only to cast a wizard school spell of the corresponding school. If not used by the end of your turn, this Focus Point is lost."
 					]
@@ -4271,7 +4126,6 @@
 				"amount": 24000
 			},
 			"usage": "worn belt",
-			"bulk": "\u2014",
 			"category": "Apex",
 			"entries": [
 				"The thin, glittering strands of rope that comprise this thick belt appear to be spun gold. Strung along the front of the belt are a collection of four multicolored, perfectly spherical beads: jade, turquoise, quartz, and amethyst.",
@@ -4287,9 +4141,6 @@
 						"command",
 						"Interact"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You touch one of the jewels affixed to the sage's lash and speak a command word. Depending on the jewel, a different effect is produced that affects you and all living creatures in a 30-foot emanation. After the effect occurs, all four jewels disappear from the lash, reappearing at the next dawn.",
 						{
@@ -4322,7 +4173,6 @@
 				"amount": 1000
 			},
 			"usage": "worn",
-			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"This obsidian ring allows you to partially warp your spells through the Shadow Plane, allowing them to strike directly at a target's body.",
@@ -4335,9 +4185,6 @@
 					"components": [
 						"command (metamagic)"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"If your next action is to {@action Cast a Spell} that requires a spell attack roll against Armor Class, choose Fortitude DC or Reflex DC.",
 						"You make your spell attack roll against that defense instead of AC. If the spell has multiple targets, the choice of DC applies to all of them."
@@ -4386,7 +4233,6 @@
 				"amount": 40
 			},
 			"usage": "held in 2 hands",
-			"bulk": "\u2014",
 			"category": "Consumable",
 			"entries": [
 				"Though this item looks like a simple cookie in the shape of a humanoid, it springs to life once decorated with icing or other edible substances. The cookie then scrambles away at a Speed of 15 feet, returning to the same spot about 1 hour later, which gives it enough time to travel roughly a half-mile away and then return along the same path. The cookie spy is oblivious to your instructions and can't be given directions, instead following a path of its own choosing. Upon its return, it falls to the ground, never to move again.",
@@ -4426,8 +4272,6 @@
 						"unit": "hour",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You sing, hum, or whistle a note, and your bow provides appropriate accompaniment. Make a {@action Strike} with the bow. If it hits, the bow generates a {@trait magical} effect determined by the note you sung, which has the traits indicated in parentheses. This affects every creature in a 10-foot emanation from the creature you hit. As normal for an emanation, you choose whether the creature you hit is affected.",
 						{
@@ -4497,8 +4341,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You tap the tuning mace against a nearby surface to cast 4th-level {@spell sound burst} with a DC of 25."
 					]
@@ -4590,9 +4432,7 @@
 						"fire",
 						"magical"
 					],
-					"frequency": null,
 					"trigger": "Your spell deals fire damage to a creature",
-					"requirements": null,
 					"entries": [
 						"You gain a +10-foot status bonus to your Speed until the end of your next turn."
 					]
@@ -4633,7 +4473,6 @@
 						"freq": 1
 					},
 					"trigger": "You cast an enchantment spell prepared from this grimoire that has no effect because all targets critically succeeded on their saving throws",
-					"requirements": null,
 					"entries": [
 						"You quickly divert the failed enchantment energy into yourself to retain your favored spell in place of another. You lose another spell you prepared of an equal or higher level to the triggering enchantment spell but retain the ability to cast the enchantment spell again."
 					]
@@ -4655,7 +4494,6 @@
 				"Necromancy"
 			],
 			"usage": "affixed to one undead creature",
-			"bulk": "\u2014",
 			"category": "Consumable",
 			"entries": [
 				"Duration 1 round (or 4 rounds) This classic fulu seals the negative energy within an undead, freezing it in its tracks. Upon affixing, the target undead must attempt a Will save or be {@condition paralyzed} for 1 round."
@@ -4734,9 +4572,6 @@
 					"components": [
 						"{@action Cast a Spell}"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You expend a number of charges from the staff to cast a spell from its list."
 					]
@@ -4824,9 +4659,6 @@
 					"components": [
 						"{@action Cast a Spell}"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You expend a number of charges from the staff to cast a spell from the staff's list."
 					]
@@ -4938,9 +4770,6 @@
 					"components": [
 						"Interact"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You change the staff-storing shield from its shield form into the stored staff, which has an image of the shield on it, or change it from the stored staff back into a shield."
 					]
@@ -5042,8 +4871,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"Parchment scrap recovered from the embers of Salford's School of Conjury... furthermore any student caught practicing conjuration magic outside of class time will be subject to discipline. Professor Rouwan has since caught and released all of the weasels from within their office, but the accursed bag itself has yet to be located..",
 						"Your eidolon Concentrates on the medallion and their connection to you, allowing them to momentarily manifest into a stampede of dozens of copies of themself. The stampede rampages out in every direction, swerving around your allies while trampling any foe on the ground in an emanation around your eidolon with a radius equal to your eidolon's Speed.",
@@ -5109,15 +4936,14 @@
 				"amount": 1900
 			},
 			"usage": "affixed to armor",
-			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
 					"unit": "free"
 				},
-				"components": "command",
-				"requirements": null,
-				"frequency": null,
+				"components": [
+					"command"
+				],
 				"trigger": "You would be forced to move, you would be teleported, or you would take cold, electricity, or sonic damage."
 			},
 			"category": "Consumable",
@@ -5142,16 +4968,15 @@
 				"amount": 100
 			},
 			"usage": "affixed to armor",
-			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": "You're an expert in {@skill Acrobatics}.",
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				],
+				"requirements": "You're an expert in {@skill Acrobatics}."
 			},
 			"category": "Talisman",
 			"entries": [
@@ -5194,7 +5019,6 @@
 						"freq": 1
 					},
 					"trigger": "A creature succeeds, but doesn't critically succeed, at a {@skill Perception} check to {@quickref disbelieve an illusion|CRB|2|disbelieving illusions|0} spell you prepared from this grimoire",
-					"requirements": null,
 					"entries": [
 						"You quickly tell a fib to try to smooth over the inconsistencies in your illusion. Attempt a {@skill Deception} check against the triggering creature's {@skill Perception} DC. If you succeed, the creature doesn't {@quickref disbelieve the illusion|CRB|2|disbelieving illusions|0}."
 					]
@@ -5230,9 +5054,6 @@
 					"components": [
 						"envision (metamagic)"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"If your next action is to cast a conjuration spell prepared from this spellbook that summons one or more creatures, you infuse one of the summoned creatures with the spell's energies, causing it to arrive with 10 temporary Hit Points that last for up to 1 minute."
 					]
@@ -5275,8 +5096,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"The thousand-blade thesis dramatically unfurls, and the weapons contained within it spring forth and array themselves impressively in the air, floating within easy reach. For 1 minute, you can use a free action to {@action Interact} to draw one of the floating weapons. Others can attempt to nab them out of the air, but to do so they must critically succeed at a {@action Disarm} check. You can't place weapons back into the thesis until the minute elapses."
 					]
@@ -5420,7 +5239,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
 					"requirements": "You have two hands free",
 					"entries": [
 						"You clap the gauntlets together with a thunderous crack that deals {@damage 6d10} sonic damage in a 30-foot emanation. Each creature in the area must attempt a DC 35 Fortitude save.",
@@ -5461,10 +5279,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Oil",
 			"entries": [
@@ -5488,16 +5305,14 @@
 				"amount": 25
 			},
 			"usage": "affixed to creature or object",
-			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
 					"unit": "free"
 				},
-				"components": "envision",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"envision"
+				]
 			},
 			"category": "Consumable",
 			"entries": [
@@ -5532,9 +5347,6 @@
 					"components": [
 						"{@action Cast a Spell}"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You cast {@spell scatter scree|SoM}."
 					]
@@ -5721,7 +5533,6 @@
 				"Magical"
 			],
 			"usage": "worn amulet",
-			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"This amulet bears the true name of a single creature with a level no higher than the item's level. These amulets are typically made of gold and engraved, but could be made of anything, including simple clay. The name is clearly visible, though only to you, and only while you have the amulet invested.",
@@ -5790,15 +5601,14 @@
 				"amount": 900
 			},
 			"usage": "affixed to armor",
-			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
 					"unit": "reaction"
 				},
-				"components": "envision",
-				"requirements": null,
-				"frequency": null,
+				"components": [
+					"envision"
+				],
 				"trigger": "You trigger a trap's reaction or an enemy that was {@condition undetected} by you makes an attack against you"
 			},
 			"category": "Talisman",
@@ -5826,15 +5636,14 @@
 				"amount": 10
 			},
 			"usage": "affixed to armor",
-			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
 					"unit": "free"
 				},
-				"components": "envision",
-				"requirements": null,
-				"frequency": null,
+				"components": [
+					"envision"
+				],
 				"trigger": "You attempt a saving throw against an injected poison."
 			},
 			"category": "Consumable",
@@ -5875,8 +5684,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"If your next action is to cast a beneficial abjuration spell on yourself or a single ally, you use the tablets' power to infuse the warding with additional abjurations and attempt to remove a harmful effect.",
 						"Your spell attempts to counteract a harmful spell effect of your choice on the target. This isn't without risks, however. If your attempt fails to remove the harmful effect, the warding energy is consumed by the unyielding malediction, and you lose the abjuration spell's normal effects."
@@ -5898,7 +5705,6 @@
 				"Tattoo"
 			],
 			"usage": "tattooed on the body",
-			"bulk": "\u2014",
 			"category": "Tattoo",
 			"entries": [
 				"Many cultures of Golarion have a tattoo to turn away harm; as such, warding tattoos often resemble whichever dangers are most common to the culture, such as a wild beast or a whirlpool in the high seas of the Shackles.",
@@ -5916,7 +5722,6 @@
 						"freq": 1
 					},
 					"trigger": "An enemy, hazard, or the environment makes an attack against your AC, requires you to attempt a saving throw, or causes you to take damage automatically",
-					"requirements": null,
 					"entries": [
 						"Until the end of the current turn, against the triggering effect, you gain a +1 status bonus to AC and saving throws and gain resistance 2 to damage."
 					]

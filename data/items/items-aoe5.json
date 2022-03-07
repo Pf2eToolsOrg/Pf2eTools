@@ -34,8 +34,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"The cauldron casts nightmare (DC 35) on a target creature that you know by name. The target must be on the same plane as you. If the target fails its save and is 15th level or lower, you add its nightmare to the cauldron. The cauldron can hold only six nightmares at a time; when you add a new nightmare, you choose which six to keep."
 					]
@@ -53,8 +51,6 @@
 						"freq": 1,
 						"unit": "week"
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You spill the nightmarish contents of the cauldron onto the ground and choose one creature whose nightmare is stored in your cauldron. A nightmare copy of the chosen creature springs to life from the bubbling pile of horror.",
 						"The cauldron casts duplicate foe on the target, ignoring the range restriction, and the target automatically fails its saving throw. All enemies within 20 feet of the cauldron are subjected to a {@spell fear} spell (DC 35). All other nightmares stored in the cauldron are lost. The cauldron becomes totally inert and can't be used again for 1 week."
@@ -99,7 +95,6 @@
 						"freq": 1
 					},
 					"trigger": "You're struck by a melee attack with a held weapon",
-					"requirements": null,
 					"entries": [
 						"You deflect the blow and attempt to catch the weapon in the cloak's gears. Make an {@skill Athletics} check to {@action Disarm} the weapon."
 					]
@@ -113,9 +108,6 @@
 					"components": [
 						"Interact"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You wrap the cloak around yourself and the winding gears decelerate your body, causing you to enter standby mode. While in standby mode you don't need to eat, drink, or sleep. You remain aware of your surroundings but take a \u20134 penalty to {@skill Perception} checks. You can stay in standby mode indefinitely, although your body ages normally. You can leave standby mode as a free action. If you do so to initiate combat, you gain a +2 item bonus to your initiative roll."
 					]
@@ -158,7 +150,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
 					"requirements": "You've wound the clockwork helm for 10 minutes within the last 24 hours",
 					"entries": [
 						"You fire a beam of withering heat from the helmet's eye slits at a target. Make a spell or ranged attack roll (your choice) to affect the target. On a hit, the target takes {@damage 10d8} fire damage and is {@condition drained|CRB|drained 2}."
@@ -192,10 +183,10 @@
 					"unit": "varies",
 					"entry": "{@as 1} or {@as 2}"
 				},
-				"components": "Interact",
-				"requirements": "The round you activate the rejuvenator, you must first spend either 1",
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				],
+				"requirements": "The round you activate the rejuvenator, you must first spend either 1"
 			},
 			"category": "Consumable",
 			"entries": [
@@ -265,7 +256,6 @@
 						"freq": 1
 					},
 					"trigger": "You are hit by a melee, ranged, or spell attack",
-					"requirements": null,
 					"entries": [
 						"The attack misses you, dealing no damage as you transform into a cloud of spores. You gain the benefits of a {@spell gaseous form} spell for 1 minute. For the duration, a cloud of deadly spores surrounds you.",
 						"Each breathing creature that begins its turn within 10 feet of you takes {@damage 6d8} poison damage (DC 35 basic Fortitude save). You can {@action Dismiss} the cloud form."
@@ -296,10 +286,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"ammunition": [
 				"bolt"
@@ -344,7 +333,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
 					"requirements": "You've wound the gearblade for 10 minutes within the last 24 hours",
 					"entries": [
 						"The target's weapon is pulled through the gearblade's gears and shoots out the other side, landing 20 feet away in a direction of your choice. The target must attempt a DC 36 Reflex save. On a failure, the limb holding their weapon is also pulled into the gearblade, and the creature takes {@damage 3d12} bludgeoning damage. On a critical failure, they take {@damage 6d12} bludgeoning damage and the limb becomes unusable until healed by a {@spell regenerate} spell or a similar effect."
@@ -385,9 +373,6 @@
 					"components": [
 						"envision"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You switch the mask to its other form."
 					]
@@ -405,8 +390,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You cast {@spell crisis of faith} (DC 34), targeting up to four creatures within 30 feet. If the mask is in its angelic form, you can target only evil and neutral creatures.",
 						"If the mask is in its demonic form, you can target only good and neutral creatures."
@@ -424,8 +407,6 @@
 						"envision",
 						"Interact)"
 					],
-					"frequency": null,
-					"trigger": null,
 					"requirements": "A soul fragment is in the mask",
 					"entries": [
 						"You cast {@spell talking corpse} on the soul fragment, except you communicate telepathically and don't require the fragment's body to speak."
@@ -464,9 +445,6 @@
 						"(emotion",
 						"mental) Interact"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You initiate an intimidating walk, thumping the cudgel menacingly against your palm. As part of activating this item, you can {@action Stride} twice. For the next minute, whenever you successfully {@action Strike} a creature with the nightmare cudgel, you can use a free action to attempt an {@skill Intimidation} check to {@action Demoralize} the struck creature."
 					]

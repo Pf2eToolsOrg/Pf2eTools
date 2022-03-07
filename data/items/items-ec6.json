@@ -24,10 +24,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Elixir",
 			"entries": [
@@ -66,7 +65,6 @@
 						"freq": 4,
 						"unit": "year"
 					},
-					"trigger": null,
 					"requirements": "You have Legendary proficiency in {@skill Crafting}",
 					"entries": [
 						"You craft a magical weapon or armor of up to 20th level. You must attempt a {@skill Crafting} check as usual to create the item, but you need supply only raw materials worth a quarter of the item's Price, and you need not pay the remaining portion of the item's Price or spend additional downtime days working on it. While Aroden's Hearthstone is active, the stars in the sky, including Golarion's sun, appear to glow brighter within a 100-mile radius of the hearthstone."
@@ -86,8 +84,6 @@
 						"freq": 1,
 						"unit": "month"
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"Aroden's Hearthstone draws in heat from the world itself, causing the ambient temperature within 100 miles to drop below 0°F.",
 						"Within 1 mile of the Hearthstone, the temperature drops to \u2013200°F, rivaling the frigid cold of outer space and dealing {@damage 4d6} cold damage each round to every creature in the area. This effect lasts 1 minute, during which time the nearest moon (probably Golarion's) appears an eerie blue color to any observers within 100 miles of the hearthstone. At the end of 1 minute, the hearthstone emits a blast of concentrated heat that deals {@damage 25d6} fire damage to creatures and objects within 150 feet.",
@@ -115,15 +111,14 @@
 				"amount": 12500
 			},
 			"usage": "affixed to armor",
-			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
 					"unit": "free"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
+				"components": [
+					"Interact"
+				],
 				"trigger": "You critically fail a saving throw or are critically hit by an attack."
 			},
 			"category": "Talisman",
@@ -160,9 +155,6 @@
 					"components": [
 						"Strike with Hunter's Dawn"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"The target is marked. Once per day, you can cast a 5th-level {@spell locate} spell on the marked target, regardless of its distance from you or your ability to cast spells. This effect persists until it is dispelled (counterspell DC 46), the creature dies, or a new target is marked."
 					]
@@ -176,9 +168,6 @@
 					"components": [
 						"(Interact) Frequency three times per day"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You shave a curl of wood from Hunter's Dawn and create a roaring fire within 15 feet. You can choose one of the following shapes for the fire to take: a 10-foot square, a 20-foot line, or a 15-foot cone. Each creature in the affected squares take {@damage 6d6} fire damage (DC 46 basic Reflex save)",
 						"Destruction Hunter's Dawn can be destroyed only by placing it on the funeral pyre of a dead god."
@@ -246,8 +235,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You attempt a melee {@action Strike} with the Kortos Diamond against a creature within reach. On a hit, you deal damage as normal and the target's mind is inflicted with a powerful disruptive energy.",
 						"When the creature attempts to {@action Cast a Spell}, it must attempt a DC 44 Will save; on a failure, the spell fails and both the spell and the actions spent to cast it are lost. This effect lasts for up to 1 minute."
@@ -267,7 +254,6 @@
 						"freq": 1
 					},
 					"trigger": "You damage an aberration with the Kortos",
-					"requirements": null,
 					"entries": [
 						"You deal an additional {@damage 2d8} force damage to the struck creature."
 					]
@@ -286,8 +272,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You hold the Kortos Diamond aloft and proclaim your might in a booming voice. You cast {@spell overwhelming presence} (DC 42)",
 						"Destruction A deity who ascended to divinity via the Test of the Starstone can damage and destroy the Kortos Diamond as if it were not an artifact."
@@ -313,7 +297,6 @@
 				"amount": 36000
 			},
 			"usage": "worn necklace",
-			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"As long as this locket of horn and silver is closed, you don't need to sleep. However, you can still overexert your body with too much activity, so you still need to rest to avoid becoming {@condition fatigued} or to remove the {@condition fatigued} condition.",
@@ -330,8 +313,6 @@
 						"envision",
 						"Interact"
 					],
-					"frequency": null,
-					"trigger": null,
 					"requirements": "You aren't {@condition fatigued}",
 					"entries": [
 						"You open the locket to unleash the dreams it has kept at bay. You become {@condition fatigued} and cast one of the following spells at 9th level (DC 41): {@spell hallucination}, {@spell sleep}, or {@spell weird}."
@@ -364,10 +345,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Consumable",
 			"entries": [
@@ -446,8 +426,6 @@
 						"unit": "minute",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"Piereta makes a {@action Retributive Strike}, resolved as though you had used the ability, including any benefits from champion feats you have."
 					]
@@ -466,8 +444,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"Piereta casts a 9th-level {@spell field of life}."
 					]
@@ -507,9 +483,6 @@
 						"envision",
 						"Interact)"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"The ribbon spins and swirls, creating a circular loop in the air through which you can spy on a creature on another plane. This has the effects of a {@spell scrying} spell (DC 40) against the creature but functions more as a mundane \u2014albeit interplanar\u2014window; a similar loop appears before the target, and for the duration, both sides can clearly see and hear each other through the created portal, but nothing can pass through. You can Sustain the Activation to gain the effects of Sustaining the Spell.",
 						"This activation has the {@trait scrying} trait."
@@ -528,8 +501,6 @@
 						"unit": "round",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You extend the ribbon to brush against a foe up to 60 feet away. If that creature fails a DC 42 Reflex save, you exchange positions with the target and all of that creature's allies are {@condition flat-footed} to you until the end of your turn. This activation has the {@trait teleportation} trait."
 					]
@@ -571,8 +542,6 @@
 						"unit": "minute",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You heft the shield and thrust it forward, causing ephemeral reflections of the shield to surround you and then rush outward in a 90-foot line or 60-foot cone (your choice). Make a shield bash {@action Strike} against each enemy within the area, except that the damage dealt is force damage. Each target you hit is moved 10 feet away from you (each target you critically hit is also knocked {@condition prone}). This is forced movement. These shield bashes count against your multiple attack penalty, but the penalty doesn't increase until after you have made all these attacks."
 					]
@@ -608,9 +577,6 @@
 						"unit": "varies",
 						"entry": "Cast a Spell"
 					},
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You expend a number of charges from the staff to cast a spell from its list.",
 						"Cantrips shield, telekinetic projectile 1st gust of wind, longstrider 2nd obscuring mist, web 3rd fireball, wall of wind 4th hallucinatory terrain, solid fog, wall of fire 5th cloudkill, wall of stone 6th fireball, wall of force 7th magnificent mansion, prismatic spray 8th earthquake, scintillating pattern 9th meteor swarm."

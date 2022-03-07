@@ -24,10 +24,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Poison",
 			"entries": [
@@ -93,9 +92,6 @@
 					"components": [
 						"Interact"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You place an object of up to 1 Bulk into the belt, transforming that object into a tool befitting the trade for which the belt was created. As long as there are enough transformed items, the belt can be used as artisan's tools for that trade.",
 						"Each object remains transformed until it has been removed from the belt for 24 hours or someone uses a single {@action Interact} action to return it to its normal form."
@@ -138,8 +134,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You stir the cauldron, and it casts a 4th-level {@spell create food} spell, filling itself with enough delicious vegetable stew to feed 12 Medium creatures."
 					]
@@ -209,8 +203,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"If the next action you use is to {@action Cast a Spell} of 4th level or lower that has the {@trait sleep} trait or is associated with dreams, the spell slot is not expended."
 					]
@@ -244,9 +236,6 @@
 					"components": [
 						"Interact"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You touch the Eye of the Wise to a gem worth at least 10 gp, whereupon the Eye of the Wise assumes the appearance of the touched gemstone. While this connection is active, the carriers of the Eye of the Wise and of the other gemstone can communicate telepathically with one another over any distance, as long as both are on the same plane.",
 						"This connection is {@condition broken} if the other gemstone is damaged, if the Eye of the Wise becomes attuned to another gemstone, or if the bearer of the Eye of the Wise Dismisses the activation."
@@ -261,9 +250,6 @@
 					"components": [
 						"Interact"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You hold the Eye of the Wise up to your own eye and peer through it. The Eye of the Wise grows transparent and grants you a +2 item bonus to attempts to {@action Decipher Writing}, {@action Disable a Device}, {@action Identify Magic}, {@action Pick a Lock}, {@action Seek}, or {@action Sense Motive}. You can Sustain this activation as long as you hold the gem in place."
 					]
@@ -302,9 +288,6 @@
 					"components": [
 						"Interact"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You place the gourd home on the ground (in an open area large enough to contain it) and cause it to expand in size to a 30-foot-square structure with one door. The interior of the gourd is a single large room that can hold 10 Small or Medium creatures with moderate comfort."
 					]
@@ -322,7 +305,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
 					"requirements": "The gourd home must be expanded into its house form atop earth or soil.",
 					"entries": [
 						"By rapping on the door from either outside or inside, you cause the gourd home to shrink back into its normal size and appear to be a non-magical gourd sitting on the ground. For the following 8 hours, the interior of the gourd home becomes an extradimensional space whose size appears unchanged to those within.",
