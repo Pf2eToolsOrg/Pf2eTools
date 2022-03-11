@@ -26,7 +26,6 @@
 				{
 					"type": "pf2-h2",
 					"name": "Overview",
-					"blue": true,
 					"source": "LOWG",
 					"page": 6,
 					"entries": [
@@ -39,7 +38,6 @@
 				},
 				{
 					"type": "pf2-h2",
-					"blue": true,
 					"source": "LOWG",
 					"page": 6,
 					"name": "The World of Golarion",
@@ -149,14 +147,19 @@
 								"Lamashan (October)",
 								"Neth (November)",
 								"Kuthona (December)",
-								"The names of the days are as follows:",
-								"Moonday (Monday)",
-								"Toilday (Tuesday)",
-								"Wealday (Wednesday)",
-								"Oathday (Thursday)",
-								"Fireday (Friday)",
-								"Starday (Saturday)",
-								"Sunday (Sunday)",
+								{
+									"type": "entries",
+									"entries": [
+										"The names of the days are as follows:",
+										"Moonday (Monday)",
+										"Toilday (Tuesday)",
+										"Wealday (Wednesday)",
+										"Oathday (Thursday)",
+										"Fireday (Friday)",
+										"Starday (Saturday)",
+										"Sunday (Sunday)"
+									]
+								},
 								{
 									"type": "pf2-title",
 									"source": "LOWG",
@@ -173,8 +176,18 @@
 									"entries": []
 								},
 								"Applying the archetypes provided in this book requires you to select archetype feats instead of class feats. Once you have the archetype's dedication feat, you can select any feat from that archetype in place of a class feat as long as you meet its prerequisites. The archetype feat you select is still subject to any selection restrictions on the class feat it replaces. Archetype feats you gain in place of a class feat are called archetype class feats.",
-								"Occasionally, an archetype feat works like a skill feat instead of a class feat. These archetype feats have the skill trait, and you select them in place of a skill feat, otherwise following the same rules above. These are not archetype class feats (for instance, to determine the number of Hit Points you gain from the {@feat Fighter Resiliency} archetype feat)",
-								"Each archetype's dedication feat represents a certain portion of your character's time and focus, so once you select a dedication feat for an archetype, you must satisfy its requirements before you can gain another dedication feat. Typically, you satisfy an archetype dedication feat by gaining a certain number of feats from the archetype's list. You cannot retrain a dedication feat as long as you have any other feats from that archetype.",
+								{
+									"type": "entries",
+									"entries": [
+										"Occasionally, an archetype feat works like a skill feat instead of a class feat. These archetype feats have the skill trait, and you select them in place of a skill feat, otherwise following the same rules above. These are not archetype class feats (for instance, to determine the number of Hit Points you gain from the {@feat Fighter Resiliency} archetype feat)"
+									]
+								},
+								{
+									"type": "entries",
+									"entries": [
+										"Each archetype's dedication feat represents a certain portion of your character's time and focus, so once you select a dedication feat for an archetype, you must satisfy its requirements before you can gain another dedication feat. Typically, you satisfy an archetype dedication feat by gaining a certain number of feats from the archetype's list. You cannot retrain a dedication feat as long as you have any other feats from that archetype."
+									]
+								},
 								"Sometimes an archetype feat lets you gain another feat. You must always meet the prerequisites of the feat you gain in this way."
 							]
 						},
