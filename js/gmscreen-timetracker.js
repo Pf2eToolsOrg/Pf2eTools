@@ -290,6 +290,25 @@ class TimeTrackerBase extends TimeTrackerComponent {
 		return pod;
 	}
 
+	static getGolarionDay (i) {
+		return {
+			...TimeTrackerBase._DEFAULT_STATE__DAY,
+			id: CryptUtil.uid(),
+			name: ["Moonday", "Toilday", "Wealday", "Oathday", "Fireday", "Starday", "Sunday"][i],
+			pos: i,
+		};
+	}
+
+	static getGolarionMonth (i) {
+		return {
+			...TimeTrackerBase._DEFAULT_STATE__MONTH,
+			id: CryptUtil.uid(),
+			name: ["Abadius", "Calistril", "Pharast", "Gozran", "Desnus", "Sarenith", "Erastus", "Arodus", "Rova", "Lamashan", "Neth", "Kuthona"][i],
+			days: [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31][i],
+			pos: i,
+		};
+	}
+
 	static getGenericDay (i) {
 		return {
 			...TimeTrackerBase._DEFAULT_STATE__DAY,
@@ -337,6 +356,16 @@ class TimeTrackerBase extends TimeTrackerComponent {
 			out.hasTime = true;
 		}
 		return out;
+	}
+
+	static getGolarionSeason (i) {
+		return {
+			...TimeTrackerBase._DEFAULT_STATE__SEASON,
+			id: CryptUtil.uid(),
+			name: ["Winter", "Spring", "Summer", "Fall", "Winter"][i],
+			startDay: [0, 59, 151, 243, 334][i],
+			endDay: [58, 150, 242, 333, 364][i],
+		};
 	}
 
 	static getGenericSeason (i) {
@@ -554,29 +583,29 @@ TimeTrackerBase._DEFAULT_STATE = {
 
 	// game mechanics
 	hoursPerLongRest: 8,
-	minutesPerShortRest: 60,
+	minutesPerShortRest: 10,
 	secondsPerRound: 6,
 
 	// offsets
-	offsetYears: 0,
+	offsetYears: 2700 + new Date().getFullYear(),
 	offsetMonthStartDay: 0,
 
 	// calendar
 	days: {
 		...[...new Array(7)]
-			.map((_, i) => TimeTrackerBase.getGenericDay(i))
+			.map((_, i) => TimeTrackerBase.getGolarionDay(i))
 			.mergeMap(it => ({[it.id]: it})),
 	},
 	months: {
 		...[...new Array(12)]
-			.map((_, i) => TimeTrackerBase.getGenericMonth(i))
+			.map((_, i) => TimeTrackerBase.getGolarionMonth(i))
 			.mergeMap(it => ({[it.id]: it})),
 	},
 	events: {},
 	encounters: {},
 	seasons: {
-		...[...new Array(4)]
-			.map((_, i) => TimeTrackerBase.getGenericSeason(i))
+		...[...new Array(5)]
+			.map((_, i) => TimeTrackerBase.getGolarionSeason(i))
 			.mergeMap(it => ({[it.id]: it})),
 	},
 	years: {},
