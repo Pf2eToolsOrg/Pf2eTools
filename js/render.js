@@ -441,7 +441,9 @@ function Renderer () {
 	};
 
 	this._renderEntries = function (entry, textStack, meta, options) {
+		textStack[0] += `<p>`
 		entry.entries.forEach(e => this._recursiveRender(e, textStack, meta, options));
+		textStack[0] += `</p>`
 	};
 
 	this._renderText = function (entry, textStack, meta, options) {
