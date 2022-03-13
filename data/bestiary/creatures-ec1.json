@@ -1017,7 +1017,7 @@
 					"effects": [
 						"Grab"
 					],
-					"damage": "{@damage 1d10+2} piercing plus {@damage 1d6} {@condition persistent damage ||persistent acid damage} and Grab",
+					"damage": "{@damage 1d10+2} piercing plus {@damage 1d6} {@condition persistent damage ||persistent acid damage} and {@ability Grab}",
 					"types": [
 						"persistent",
 						"piercing"
@@ -3560,7 +3560,8 @@
 					"default": 10
 				},
 				"Stealth": {
-					"default": 11
+					"default": 11,
+					"in dim light or darker": 14
 				}
 			},
 			"abilityMods": {
@@ -3605,6 +3606,10 @@
 				{
 					"amount": 5,
 					"name": "electricity"
+				},
+				{
+					"amount": 5,
+					"name": "poison"
 				}
 			],
 			"abilitiesMid": [
@@ -3631,7 +3636,7 @@
 					"effects": [
 						"Grab"
 					],
-					"damage": "{@damage 1d10+3} piercing plus {@damage 1d4} fire and Grab",
+					"damage": "{@damage 1d10+3} piercing plus {@damage 1d4} fire and {@ability Grab}",
 					"types": [
 						"fire",
 						"piercing"
