@@ -190,11 +190,7 @@
 						"3": {
 							"spells": [
 								{
-									"name": "lay on hands",
-									"notes": [
-										"Core Rulebook 387"
-									]
-								}
+									"name": "lay on hands"}
 							]
 						}
 					}
@@ -312,9 +308,10 @@
 			"abilitiesMid": [
 				{
 					"entries": [
-						"Antimagic harmed by acid ({@dice 9d10}, {@dice 2d10} from areas or {@condition persistent damage}); healed by fire (area {@dice 2d10} HP); {@condition slowed} by electricity."
+						"harmed by acid ({@dice 9d10}, {@dice 2d10} from areas or {@condition persistent damage}); healed by fire (area {@dice 2d10} HP); {@condition slowed} by electricity."
 					],
-					"name": "Golem"
+					"name": "Golem Antimagic",
+					"generic": true
 				},
 				{
 					"entries": [
@@ -3542,9 +3539,10 @@
 				},
 				{
 					"entries": [
-						"Antimagic harmed by sonic ({@dice 5d8}, {@dice 2d6} from areas or {@condition persistent damage}); healed by acid (area {@dice 2d4} HP); {@condition slowed} by cold."
+						"harmed by sonic ({@dice 5d8}, {@dice 2d6} from areas or {@condition persistent damage}); healed by acid (area {@dice 2d4} HP); {@condition slowed} by cold."
 					],
-					"name": "Golem"
+					"name": "Golem Antimagic",
+					"generic": true
 				},
 				{
 					"entries": [
@@ -16902,9 +16900,10 @@
 				},
 				{
 					"entries": [
-						"Antimagic harmed by cold and water ({@dice 5d10}, {@dice 2d6} from areas or {@condition persistent damage}); healed by acid (area {@dice 2d6} HP); {@condition slowed} by earth."
+						"harmed by cold and water ({@dice 5d10}, {@dice 2d6} from areas or {@condition persistent damage}); healed by acid (area {@dice 2d6} HP); {@condition slowed} by earth."
 					],
-					"name": "Golem"
+					"name": "Golem Antimagic",
+					"generic": true
 				},
 				{
 					"entries": [
@@ -28913,9 +28912,10 @@
 				},
 				{
 					"entries": [
-						"Antimagic harmed by fire ({@dice 5d8}, {@dice 3d4} from areas or {@condition persistent damage}); healed by electricity (area {@dice 2d4} HP); {@condition slowed} by cold."
+						"harmed by fire ({@dice 5d8}, {@dice 3d4} from areas or {@condition persistent damage}); healed by electricity (area {@dice 2d4} HP); {@condition slowed} by cold."
 					],
-					"name": "Golem"
+					"name": "Golem Antimagic",
+					"generic": true
 				},
 				{
 					"entries": [
@@ -43095,9 +43095,10 @@
 			"abilitiesMid": [
 				{
 					"entries": [
-						"Antimagic harmed by acid ({@dice 6d10}, {@dice 2d8} from areas and {@condition persistent damage}); healed by fire (area {@dice 2d8} HP); {@condition slowed} by electricity."
+						"harmed by acid ({@dice 6d10}, {@dice 2d8} from areas and {@condition persistent damage}); healed by fire (area {@dice 2d8} HP); {@condition slowed} by electricity."
 					],
-					"name": "Golem"
+					"name": "Golem Antimagic",
+					"generic": true
 				},
 				{
 					"entries": [
@@ -63458,12 +63459,6 @@
 			],
 			"abilitiesTop": [
 				{
-					"entries": [
-						"+13, {@skill Stealth} +11, {@skill Survival} +8 Str +3, Dex +4, Con +1, Int +1, Wis +2, Cha +5 Items dagger, panpipes, shortbow (20 arrows), wineskin."
-					],
-					"name": "Performance"
-				},
-				{
 					"traits": [
 						"enchantment",
 						"mental",
@@ -63567,24 +63562,14 @@
 									"name": "ghost sound"
 								},
 								{
-									"name": "inspire competence",
-									"notes": [
-										"Core Rulebook 386"
-									]
+									"name": "inspire competence"
 								},
 								{
-									"name": "inspire courage",
-									"notes": [
-										"Core Rulebook 386"
-									]
+									"name": "inspire courage"
 								},
 								{
-									"name": "triple time",
-									"notes": [
-										"Core Rulebook 387"
-									]
-								}
-							]
+									"name": "triple time"
+								}]
 						},
 						"4": {
 							"spells": [
@@ -63623,7 +63608,7 @@
 					],
 					"requirements": "The satyr is holding a musical instrument.",
 					"entries": [
-						"The satyr plays a melody on his instrument to cast {@spell charm}, fear, sleep, or suggestion without expending the spell slot and using his music in place of providing the spell's component actions. The spell gains the {@trait auditory} trait and targets all creatures in a 60-foot emanation instead of its usual targets. A creature that succeeds at its Will save against any spell is then temporarily immune from spells played from that satyr's pipes for 1 minute. Satyrs are immune to this music."
+						"The satyr plays a melody on his instrument to cast {@spell charm}, {@spell fear}, {@spell sleep}, or {@spell suggestion} without expending the spell slot and using his music in place of providing the spell's component actions. The spell gains the {@trait auditory} trait and targets all creatures in a 60-foot emanation instead of its usual targets. A creature that succeeds at its Will save against any spell is then temporarily immune from spells played from that satyr's pipes for 1 minute. Satyrs are immune to this music."
 					],
 					"name": "Play the Pipes"
 				}
@@ -69658,9 +69643,10 @@
 			"abilitiesMid": [
 				{
 					"entries": [
-						"Antimagic harmed by cold and water ({@dice 5d10}, {@dice 2d8} from areas and {@condition persistent damage}); healed by acid (area {@dice 2d8} HP); {@condition slowed} by earth."
+						"harmed by cold and water ({@dice 5d10}, {@dice 2d8} from areas and {@condition persistent damage}); healed by acid (area {@dice 2d8} HP); {@condition slowed} by earth."
 					],
-					"name": "Golem"
+					"name": "Golem Antimagic",
+					"generic": true
 				},
 				{
 					"entries": [
@@ -76742,15 +76728,9 @@
 						"water"
 					],
 					"entries": [
-						"The water mephit puts out all fires in a 5-foot emanation. The mephit extinguishes all non-magical fires automatically and attempts to counteract magical fires (+7 counteract modifier)."
+						"The water mephit puts out all fires in a 5-foot emanation. The mephit extinguishes all non-magical fires automatically and attempts to {@quickref counteract||3|counteracting} magical fires (+7 counteract modifier)."
 					],
 					"name": "Drench"
-				},
-				{
-					"entries": [
-						"Water elementals can be very destructive, but often not intentionally so; just as water can bring life to those in need on the Material Plane, its waves can pound shores and rains can flood cities. Water elementals are similarly difficult to predict."
-					],
-					"name": "Elemental, Water"
 				}
 			],
 			"inflicts": {

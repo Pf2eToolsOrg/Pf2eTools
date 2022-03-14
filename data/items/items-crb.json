@@ -1060,8 +1060,8 @@
 						{
 							"type": "list",
 							"items": [
-								"{@bold Cantrip} know direction",
-								"{@bold 1st} magic fang, {@spell summon animal}"
+								"{@bold Cantrip} {@spell know direction}",
+								"{@bold 1st} {@spell magic fang}, {@spell summon animal}"
 							]
 						}
 					]
@@ -1078,8 +1078,8 @@
 						{
 							"type": "list",
 							"items": [
-								"{@bold 2nd} animal messenger, speak with animals, {@spell summon animal}",
-								"{@bold 3rd} animal form, {@spell summon animal}"
+								"{@bold 2nd} {@spell animal messenger}, {@spell speak with animals}, {@spell summon animal}",
+								"{@bold 3rd} {@spell animal form}, {@spell summon animal}"
 							]
 						}
 					]
@@ -1097,7 +1097,7 @@
 							"type": "list",
 							"items": [
 								"{@bold 4th} {@spell summon animal}",
-								"{@bold 5th} animal form, moon frenzy, {@spell summon animal}"
+								"{@bold 5th} {@spell animal form}, {@spell moon frenzy}, {@spell summon animal}"
 							]
 						}
 					]
@@ -22501,9 +22501,14 @@
 				{
 					"type": "ability",
 					"style": "compact",
+					"idName": "Ventriloquist's Ring",
 					"activity": {
 						"number": 2,
 						"unit": "action"
+					},
+					"frequency": {
+						"unit": "day",
+						"freq": 1
 					},
 					"components": [
 						"Interact"
@@ -22533,9 +22538,38 @@
 						"amount": 670,
 						"note": null
 					},
+					"_mod": {
+						"entriesMode": "generic",
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replaceTags": true,
+								"replace": "\\+1",
+								"with": "+2"
+							},
+							{
+								"mode": "replaceArr",
+								"replaceTags": true,
+								"replace": "Ventriloquist's Ring",
+								"items": {
+									"type": "ability",
+									"style": "compact",
+									"activity": {
+										"number": 2,
+										"unit": "action"
+									},
+									"components": [
+										"Interact"
+									],
+									"entries": [
+										"Twisting the ring around your finger allows you to magically throw your voice, with the effects of a 2nd-level {@spell ventriloquism} (DC 27)."
+									]
+								}
+							}
+						]
+					},
 					"entries": [
-						"The ring grants a +2 bonus. When you activate the ring, you gain the effects of 2nd-level {@spell ventriloquism} (DC 27)",
-						"You can activate the ring any number of times per day."
+						"The ring grants a +2 bonus. When you activate the ring, you gain the effects of 2nd-level {@spell ventriloquism} (DC 27). You can activate the ring any number of times per day."
 					]
 				}
 			]

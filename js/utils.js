@@ -2617,17 +2617,17 @@ DataUtil = {
 				let ixOld;
 				if (modInfo.replace.regex) {
 					const re = new RegExp(modInfo.replace.regex, modInfo.replace.flags || "");
-					ixOld = copyTo[prop].findIndex(it => it.name ? re.test(it.name) : typeof it === "string" ? re.test(it) : false);
+					ixOld = copyTo[prop].findIndex(it => it.name || it.idName ? re.test(it.name || it.idName) : typeof it === "string" ? re.test(it) : false);
 				} else if (modInfo.replace.index != null) {
 					ixOld = modInfo.replace.index;
 				} else {
-					ixOld = copyTo[prop].findIndex(it => it.name ? it.name === modInfo.replace : it === modInfo.replace);
+					ixOld = copyTo[prop].findIndex(it => it.name || it.idName ? it.name || it.idName === modInfo.replace : it === modInfo.replace);
 				}
 
 				if (~ixOld) {
 					copyTo[prop].splice(ixOld, 1, ...modInfo.items);
 					return true;
-				} else if (isThrow) throw new Error(`Could not find "${prop}" item with name "${modInfo.replace}" to replace`);
+				} else if (isThrow) throw new Error(`Could not find "${prop}" item with name or title "${modInfo.replace}" to replace`);
 				return false;
 			}
 
@@ -2646,7 +2646,7 @@ DataUtil = {
 				if (modInfo.names) {
 					doEnsureArray(modInfo, "names");
 					modInfo.names.forEach(nameToRemove => {
-						const ixOld = copyTo[prop].findIndex(it => it.name === nameToRemove);
+						const ixOld = copyTo[prop].findIndex(it => it.name || it.idName === nameToRemove);
 						if (~ixOld) copyTo[prop].splice(ixOld, 1);
 						else {
 							if (!modInfo.force) throw new Error(`Could not find "${prop}" item with name "${nameToRemove}" to remove`);
