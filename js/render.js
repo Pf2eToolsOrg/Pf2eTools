@@ -3995,7 +3995,7 @@ Renderer.creature = {
 		renderStack.push(`, <strong>Will&nbsp;</strong>`)
 		renderStack.push(Renderer.get().render(`{@d20 ${st.Will.default}||Will Save}`))
 		renderStack.push(Renderer.utils.getNotes(st.Will, {exclude: ["default", "abilities"], dice: {name: "Will Save"}}));
-		if (st.abilities != null) renderStack.push(`, ${st.abilities}`);
+		if (st.abilities != null) renderStack.push(`, ${renderer.render(st.abilities)}`);
 		renderStack.push(`</span>`)
 		renderStack.push(`</p>`)
 
