@@ -997,6 +997,11 @@ class ClassesPage extends BaseComponent {
 								.appendTo($classStats);
 						});
 					});
+					/* TODO:
+					const $divNoSubclass = $(`<div class="cls-main__sc-feature" id="no-subclass"></div>`)
+						.fastSetHtml(Renderer.get().render(`{@note No Subclass Selected. You can select one ((here)).}`))
+						.appendTo($classStats);
+					*/
 					incrementScLvl = true;
 				}
 			});
@@ -1231,7 +1236,7 @@ class ClassesPage extends BaseComponent {
 		for (; this._ixDataSubclass < subclasses.length; ++this._ixDataSubclass) {
 			const sc = subclasses[this._ixDataSubclass];
 			if (!this._listsSubclasses[sc.type]) {
-				const $wrpList = $(`<div class="flex-v-center flex-wrap mr-2 w-100 cls-sc-tabs__wrp" data-sc-type="${sc.type}"></div>`).appendTo($wrp);
+				const $wrpList = $(`<div class="flex-v-center flex-wrap mr-2 w-100 cls-sc-tabs__wrp" data-sc-type="${sc.type}" id="subclass-buttons"></div>`).appendTo($wrp);
 				this._listsSubclasses[sc.type] = new List({
 					$wrpList: $wrpList,
 					isUseJquery: true,
