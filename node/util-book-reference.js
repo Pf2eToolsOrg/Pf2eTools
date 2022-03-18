@@ -82,6 +82,9 @@ UtilBookReference = {
 					}
 
 					const toAdd = MiscUtil.copy(ent);
+					if (toAdd.type.includes("box")) {
+						// FIXME: BUG-86: Quickref pf2-titles do not get translated to more appropriate headings
+					}
 					toAdd.type = "section";
 					const discard = !!toAdd.data.allowRefDupe;
 					recursiveSetSource(toAdd, source);
