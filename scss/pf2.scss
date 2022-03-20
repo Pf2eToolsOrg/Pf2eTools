@@ -906,14 +906,28 @@
 
 .pf2-combo {
 	display: flex;
+	margin: 0.3em 0;
+
 	&__ {
+		&title {
+			margin: 0;
+			padding: 0;
+			border-bottom: 1px solid #333;
+			font-family: 'good-pro-condensed', sans-serif;
+			font-size: 1.15em;
+			font-weight: 700;
+			text-transform: uppercase;
+			line-height: 1;
+			text-align: left;
+		}
+
 		&start {
 			width: calc(50% - 3px);
 			padding: 0 1em 0 0;
 		}
 
 		&end {
-			border-left: 1px solid black;
+			border-left: 1px solid #333;
 			padding: 0 1em 0 0.4em;
 			width: calc(50% - 1px);
 		}
@@ -921,6 +935,7 @@
 
 	@media only screen and (max-width: 520px) {
 		flex-direction: column;
+
 		&__ {
 			&start {
 				width: 100%;
@@ -929,7 +944,7 @@
 
 			&end {
 				border-top: 1px solid black;
-				border-left: 0px;
+				border-left: 0;
 				padding: 0.05em 0 0 0.2em;
 				width: 100%;
 			}
@@ -1722,14 +1737,19 @@ $night-pf2-brown: #2e2c27;
 	}
 
 	.pf2-combo {
-		&__end {
-			border-left: 1px solid white;
+		&__ {
+			&end {
+				border-color: #bbb;
+			}
+			&title {
+				border-color: #bbb;
+			}
 		}
 
 		@media only screen and (max-width: 520px) {
 			&__end {
-				border-top: 1px solid white;
-				border-left: 0px;
+				border-top: 1px solid #bbb;
+				border-left: 0;
 			}
 		}
 	}

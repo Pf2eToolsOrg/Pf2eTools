@@ -43,7 +43,8 @@
                         ]
                     },
                     "hands": {
-                        "anyOf": [
+						"$comment": "This is only for tools. Weapons should use the hands key in the weaponData",
+						"anyOf": [
                             {
                                 "type": "number"
                             },
@@ -85,6 +86,15 @@
                         "minItems": 1,
                         "uniqueItems": true
                     },
+					"ammunition": {
+						"type": "array",
+						"items": {
+							"type": "string"
+						},
+						"minItems": 1,
+						"uniqueItems": true,
+						"description": "Items from the Ammunition category list their type of ammunition."
+					},
                     "price": {
                         "$ref": "utils.json#/definitions/price"
                     },
@@ -170,13 +180,16 @@
                         ]
                     },
                     "appliesTo": {
-                        "type": "string",
-                        "enum": [
-                            "Weapon",
-                            "Armor",
-                            "Shield",
-                            "Other"
-                        ]
+						"type": "array",
+						"items": {
+							"type": "string",
+							"enum": [
+								"Weapon",
+								"Armor",
+								"Shield",
+								"Other"
+							]
+						}
                     },
                     "generic": {
                         "type": "string",
@@ -271,6 +284,17 @@
                 "ammunition": {
                     "type": "string"
                 },
+				"hands": {
+					"anyOf": [
+						{
+							"type": "number"
+						},
+						{
+							"type": "string",
+							"pattern": "\\d\\+|1 or 2*"
+						}
+					]
+				},
                 "traits": {
                     "type": "array",
                     "items": {
@@ -290,7 +314,10 @@
             "required": [
                 "group",
                 "ac",
-                "dexCap"
+                "dexCap",
+				"str",
+				"checkPen",
+				"speedPen"
             ],
             "properties": {
                 "group": {

@@ -420,7 +420,7 @@ PropOrder._ITEM = [
 	"ac",
 	"ac2", // FIXME:
 	"dexCap",
-	"shieldStats",
+	"shieldData",
 	"str",
 	"checkPen",
 	"speedPen",
