@@ -1643,6 +1643,7 @@ Parser.getTraitName = function (trait) {
 	const regex = new RegExp(`\\s(?:\\d|[A-Z]$|\\(|d\\d|[A-Z],|${Object.values(Parser.DMGTYPE_JSON_TO_FULL).join("|")}|to \\w+)(.+|$)`);
 	const name = trait.replace(/\|.+/, "").replace(regex, "");
 	if (name === name.toUpperCase()) return name;
+	else if (name.length <= 2) return name.toUpperCase(); // Alignment traits: CG, LE, ...
 	else return name.toTitleCase();
 }
 

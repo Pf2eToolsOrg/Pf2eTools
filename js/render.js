@@ -4674,39 +4674,22 @@ Renderer.item = {
 		const renderer = Renderer.get();
 		if (item.access) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Access&nbsp;</strong>${renderer.render(item.access)}</p>`);
 		if (item.price) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Price&nbsp;</strong>${Parser.priceToFull(item.price)}</p>`);
+		// This ammunition is for ammunition items and should not be confused with the ammunition data of ranged weapons
+		if (item.ammunition) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Ammunition&nbsp;</strong>${renderer.render(Array.isArray(item.ammunition) ? item.ammunition.map(t => `{@item ${t}}`).join(", ") : `{@item ${item.ammunition}}`)}</p>`);
 		if (item.contract != null) {
 			renderStack.push(`<p class="pf2-stat pf2-stat__section">`);
-			if (item.contract.devil != null) renderStack.push(`<strong>Devil&nbsp;</strong>${renderer.render(item.contract.devil)}`)
-			if (item.contract.devil != null && item.contract.decipher != null) renderStack.push("; ")
-			if (item.contract.decipher != null) renderStack.push(`<strong>${renderer.render(`{@action Decipher Writing}`)}&nbsp;</strong>${renderer.render(item.contract.decipher.map(d => `{@skill ${d}}`).join(", "))}`)
-			renderStack.push(`</p>`)
+			if (item.contract.devil != null) renderStack.push(`<strong>Devil&nbsp;</strong>${renderer.render(item.contract.devil)}`);
+			if (item.contract.devil != null && item.contract.decipher != null) renderStack.push("; ");
+			if (item.contract.decipher != null) renderStack.push(`<strong>${renderer.render(`{@action Decipher Writing}`)}&nbsp;</strong>${renderer.render(item.contract.decipher.map(d => `{@skill ${d}}`).join(", "))}`);
+			renderStack.push(`</p>`);
 		}
 
 		if (item.usage != null || item.bulk != null) {
 			renderStack.push(`<p class="pf2-stat pf2-stat__section">`);
-			if (item.usage != null) renderStack.push(`<strong>Usage&nbsp;</strong>${renderer.render(item.usage)}`)
-			if (item.usage != null && item.bulk != null) renderStack.push("; ")
-			if (item.bulk != null) renderStack.push(`<strong>Bulk&nbsp;</strong>${item.bulk}`)
+			if (item.usage != null) renderStack.push(`<strong>Usage&nbsp;</strong>${renderer.render(item.usage)}`);
+			if (item.usage != null && item.bulk != null) renderStack.push("; ");
+			if (item.bulk != null) renderStack.push(`<strong>Bulk&nbsp;</strong>${item.bulk}`);
 			renderStack.push(`</p>`);
-		}
-		if (item.ac != null || item.dexCap != null || item.shieldStats != null) {
-			let tempStack = [];
-			// FIXME: Rework this to be more in line with creature AC
-			if (item.ac != null) tempStack.push(`<strong>AC Bonus&nbsp;</strong>${Parser.numToBonus(item.ac)}${item.ac2 ? `/${Parser.numToBonus(item.ac2)}` : ""}`);
-			if (item.dexCap != null) tempStack.push(`<strong>Dex Cap&nbsp;</strong>${Parser.numToBonus(item.dexCap)}`);
-			if (item.shieldStats) {
-				if (item.shieldStats.hardness != null) tempStack.push(`<strong>Hardness&nbsp;</strong>${item.shieldStats.hardness}`);
-				if (item.shieldStats.hp != null) tempStack.push(`<strong>HP&nbsp;</strong>${item.shieldStats.hp}`);
-				if (item.shieldStats.bt != null) tempStack.push(`<strong>BT&nbsp;</strong>${item.shieldStats.bt}`);
-			}
-			renderStack.push(`<p class="pf2-stat pf2-stat__section">${tempStack.join("; ")}</p>`);
-		}
-		if (item.str != null || item.checkPen != null || item.speedPen != null) {
-			let tempStack = []
-			if (item.str != null) tempStack.push(`<strong>Strength&nbsp;</strong>${item.str}`)
-			if (item.checkPen != null) tempStack.push(`<strong>Check Penalty&nbsp;</strong>${item.checkPen ? `–${item.checkPen}` : "\u2014"}`)
-			if (item.speedPen != null) tempStack.push(`<strong>Speed Penalty&nbsp;</strong>${item.speedPen ? `–${item.speedPen} ft.` : "\u2014"}`)
-			renderStack.push(`<p class="pf2-stat pf2-stat__section">${tempStack.join("; ")}</p>`)
 		}
 		if (item.activate) {
 			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Activate&nbsp;</strong>${renderer.render(Parser.timeToFullEntry(item.activate.activity))} `);
@@ -4727,35 +4710,14 @@ Renderer.item = {
 		if (item.onset) {
 			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Onset&nbsp;</strong>${item.onset}</p>`);
 		}
-		// Weapon Line/s
-		if (item.ammunition || item.damage || item.hands || item.reload || item.range) {
-			renderStack.push(`<p class="pf2-stat pf2-stat__section">`);
-			if (item.damage) {
-				renderStack.push(`<strong>Damage&nbsp;</strong>${renderer.render(`{@damage ${item.damage}}&nbsp;${Parser.dmgTypeToFull(item.damageType)}`)}`);
-				if (item.hands) renderStack.push("; ")
-			}
-			if (item.hands) renderStack.push(`<strong>Hands&nbsp;</strong>${item.hands}`);
-			// Due to how many things ranged weapons introduce to the table, it's best to put it in another line
-			if (item.ammunition || item.range || item.reload) {
-				renderStack.push(`</p><p class="pf2-stat pf2-stat__section">`);
-				if (item.ammunition) {
-					renderStack.push(`<strong>Ammunition&nbsp;</strong>${renderer.render(Array.isArray(item.ammunition) ? item.ammunition.map(t => `{@item ${t}}`).join(", ") : `{@item ${item.ammunition}}`)}`);
 
-					if (item.range != null || item.reload != null) renderStack.push("; ")
-				}
-				if (item.range != null) {
-					renderStack.push(`<strong>Range&nbsp;</strong>${renderer.render(`${item.range} ft.`)}`);
-					if (item.reload != null) renderStack.push("; ")
-				}
-				if (item.reload != null) {
-					renderStack.push(`<strong>Reload&nbsp;</strong>${renderer.render(`${item.reload}`)}`);
-				}
-			}
-			renderStack.push(`</p>`)
-		}
+		renderStack.push(Renderer.item.getshieldData(item));
+		renderStack.push(Renderer.item.getArmorStats(item));
+		renderStack.push(Renderer.item.getWeaponStats(item));
 
 		// General Item Line
-		if (item.category || item.group) {
+		const group = item.weaponData && !item.comboWeaponData ? item.weaponData.group : item.armorData ? item.armorData.group : item.group;
+		if (item.category || group) {
 			renderStack.push(`<p class="pf2-stat pf2-stat__section">`);
 			if (item.category) {
 				renderStack.push(`<strong>Category&nbsp;</strong>`);
@@ -4763,9 +4725,9 @@ Renderer.item = {
 				if (item.category === "Weapon") renderStack.push(`${item.range ? "Ranged" : "Melee"} `);
 				renderStack.push(`${Array.isArray(item.category) ? item.category.join(", ") : item.category}${item.category === "Worn" ? `&nbsp;${item.type}` : ""}`);
 			}
-			if (item.category != null && item.group != null) renderStack.push("; ")
-			if (item.group != null) renderStack.push(`<strong>Group&nbsp;</strong>${renderer.render(`{@group ${item.group}}`)}`);
-			renderStack.push(`</p>`)
+			if (item.category != null && group != null) renderStack.push("; ");
+			if (group != null) renderStack.push(`<strong>Group&nbsp;</strong>${renderer.render(`{@group ${group}}`)}`);
+			renderStack.push(`</p>`);
 		}
 
 		if (renderStack.length !== 0) renderStack.push(`${Renderer.utils.getDividerDiv()}`)
@@ -4816,6 +4778,67 @@ Renderer.item = {
 		return renderStack.join("");
 	},
 
+	getshieldData (item) {
+		if (item.shieldData && Object.keys(item.shieldData).length) {
+			const shieldData = item.shieldData;
+			// FIXME: Rework this to be more in line with creature AC
+			return `<p class="pf2-stat pf2-stat__section">
+					<strong>AC Bonus&nbsp;</strong>${Parser.numToBonus(shieldData.ac)}${shieldData.ac2 ? `/${Parser.numToBonus(shieldData.ac2)}` : ""};
+					${shieldData.dexCap ? `<strong>Dex Cap&nbsp;</strong>${Parser.numToBonus(shieldData.dexCap)};` : ""}
+					<strong>Hardness&nbsp;</strong>${shieldData.hardness};
+					<strong>HP&nbsp;</strong>${shieldData.hp};
+					<strong>BT&nbsp;</strong>${shieldData.bt}
+					</p>
+					${shieldData.speedPen != null ? `<p class="pf2-stat pf2-stat__section"><strong>Speed Penalty&nbsp;</strong>${shieldData.speedPen ? `–${shieldData.speedPen} ft.` : "\u2014"}</p>` : ""}`;
+		} else return "";
+	},
+
+	getArmorStats (item) {
+		if (item.armorData && Object.keys(item.armorData).length) {
+			const armorData = item.armorData;
+
+			return `<p class="pf2-stat pf2-stat__section">
+			<strong>AC Bonus&nbsp;</strong>${Parser.numToBonus(armorData.ac)};
+			<strong>Dex Cap&nbsp;</strong>${Parser.numToBonus(armorData.dexCap)}
+			</p><p class="pf2-stat pf2-stat__section">
+			<strong>Strength&nbsp;</strong>${armorData.str};
+			<strong>Check Penalty&nbsp;</strong>${armorData.checkPen ? `–${armorData.checkPen}` : "\u2014"};
+			<strong>Speed Penalty&nbsp;</strong>${armorData.speedPen ? `–${armorData.speedPen} ft.` : "\u2014"}
+			</p>`;
+		} else return "";
+	},
+
+	getWeaponStats (item) {
+		const weaponData = item.weaponData;
+		const comboWeaponData = item.comboWeaponData;
+		if (weaponData && Object.keys(weaponData).length && comboWeaponData && Object.keys(comboWeaponData).length) {
+			const opts = {doRenderGroup: true};
+			return `<div class="pf2-combo">
+				<div class="pf2-combo__start"><p class="pf2-combo__title">${weaponData.type}</p>${Renderer.item._getRenderedWeaponStats(weaponData, opts)}</div>
+				<div class="pf2-combo__end"><p class="pf2-combo__title">${comboWeaponData.type}</p>${Renderer.item._getRenderedWeaponStats(comboWeaponData, opts)}</div>
+			</div>`
+		} else if (weaponData && Object.keys(weaponData).length) {
+			return Renderer.item._getRenderedWeaponStats(weaponData);
+		} else return "";
+	},
+
+	_getRenderedWeaponStats (data, opts) {
+		opts = opts || {};
+		const renderer = Renderer.get();
+		const rangedEntries = [];
+		if (data.ammunition) rangedEntries.push(`<strong>Ammunition&nbsp;</strong>${renderer.render(`{@item ${data.ammunition}}`)}`);
+		if (data.range) rangedEntries.push(`<strong>Range&nbsp;</strong>${renderer.render(`${data.range} ft.`)}`);
+		if (data.reload) rangedEntries.push(`<strong>Reload&nbsp;</strong>${renderer.render(`${data.reload}`)}`);
+
+		const rangedLine = rangedEntries.join("; ");
+		return `
+		${data.traits && data.traits.length ? `<p class="pf2-stat pf2-stat__section"><strong>Traits&nbsp;</strong>${data.traits.map(t => renderer.render(`{@trait ${t.toLowerCase()}}`)).join(", ")}</p>` : ""}
+		<p class="pf2-stat pf2-stat__section"><strong>Damage&nbsp;</strong>${renderer.render(`{@damage ${data.damage}}&nbsp;${Parser.dmgTypeToFull(data.damageType)}`)}${data.hands ? `; <strong>Hands&nbsp;</strong>${data.hands}` : ""}</p>
+		${rangedLine ? `<p class="pf2-stat pf2-stat__section">${rangedLine}</p>` : ""}
+		${opts.doRenderGroup ? `<p class="pf2-stat pf2-stat__section"><strong>Group&nbsp;</strong>${renderer.render(`{@group ${data.group}}`)}</p>` : ""}
+		`;
+	},
+
 	getVariantsHtml (item) {
 		if (!item.generic || !item.variants || !item.variants.length) return "";
 		const renderStack = [];
@@ -4832,7 +4855,7 @@ Renderer.item = {
 				renderer.recursiveRender(v.entries, renderStack, {prefix: "<p class='pf2-stat pf2-stat__text'>", suffix: "</p>"});
 			}
 			if (v.craftReq != null) renderStack.push(`; <strong>Craft Requirements&nbsp;</strong>${renderer.render(v.craftReq)}`);
-			if (v.shieldStats != null) renderStack.push(`; The shield has Hardness ${v.shieldStats.hardness}, HP ${v.shieldStats.hp}, and BT ${v.shieldStats.bt}.`);
+			if (v.shieldData != null) renderStack.push(`; The shield has Hardness ${v.shieldData.hardness}, HP ${v.shieldData.hp}, and BT ${v.shieldData.bt}.`);
 			renderStack.push(`</div>`);
 		});
 		return renderStack.join("")
