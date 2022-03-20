@@ -1017,7 +1017,7 @@
 					"effects": [
 						"Grab"
 					],
-					"damage": "{@damage 1d10+2} piercing plus {@damage 1d6} {@condition persistent damage ||persistent acid damage} and Grab",
+					"damage": "{@damage 1d10+2} piercing plus {@damage 1d6} {@condition persistent damage ||persistent acid damage} and {@ability Grab}",
 					"types": [
 						"persistent",
 						"piercing"
@@ -1074,7 +1074,12 @@
 			"rarity": "Unique",
 			"alignment": "NE",
 			"size": "Medium",
-			"items": ["{@item leather armor}", "gray robes", "{@item trident}", "{@item wooden religious symbol} of {@deity Gozreh} defaced with demonic runes"],
+			"items": [
+				"{@item leather armor}",
+				"gray robes",
+				"{@item trident}",
+				"{@item wooden religious symbol} of {@deity Gozreh} defaced with demonic runes"
+			],
 			"traits": [
 				"Human"
 			],
@@ -1227,7 +1232,6 @@
 						},
 						"2": {
 							"spells": [
-
 								{
 									"name": "barkskin"
 								},
@@ -1323,7 +1327,12 @@
 					"abilities": null
 				}
 			],
-			"items": ["{@item hide armor}", "gray robes", "{@item trident}", "{@item wooden shield} (Hardness 3)"],
+			"items": [
+				"{@item hide armor}",
+				"gray robes",
+				"{@item trident}",
+				"{@item wooden shield} (Hardness 3)"
+			],
 			"abilitiesMid": [
 				{
 					"activity": {
@@ -3551,7 +3560,8 @@
 					"default": 10
 				},
 				"Stealth": {
-					"default": 11
+					"default": 11,
+					"in dim light or darker": 14
 				}
 			},
 			"abilityMods": {
@@ -3596,6 +3606,10 @@
 				{
 					"amount": 5,
 					"name": "electricity"
+				},
+				{
+					"amount": 5,
+					"name": "poison"
 				}
 			],
 			"abilitiesMid": [
@@ -3622,7 +3636,7 @@
 					"effects": [
 						"Grab"
 					],
-					"damage": "{@damage 1d10+3} piercing plus {@damage 1d4} fire and Grab",
+					"damage": "{@damage 1d10+3} piercing plus {@damage 1d4} fire and {@ability Grab}",
 					"types": [
 						"fire",
 						"piercing"

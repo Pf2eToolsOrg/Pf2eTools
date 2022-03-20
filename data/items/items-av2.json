@@ -90,8 +90,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You exert your will over a mindless creature within 30 feet. If the target is a mindless creature of 3rd level or lower, it must attempt a DC 20 Will save. If you are a devil, the target uses an outcome one degree of success worse than the result of its saving throw.",
 						{
@@ -138,9 +136,6 @@
 					"components": [
 						"once per hour"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You play a pounding rhythm on the drum. If the next action you use is to cast a composition cantrip that has an emanation, increase the area of the emanation by 30 feet."
 					]
@@ -180,9 +175,6 @@
 						"command",
 						"Interact"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"By touching a weapon you wield to the symbol and uttering a plea for {@deity Erastil}'s steadying hand, you grant that weapon the deadly d12 trait. Against undead, the weapon instead gains the fatal d12 trait. This blessing lasts for 1 minute, until you score a critical hit with the weapon, or until you aren't wielding the weapon."
 					]
@@ -215,10 +207,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Elixir",
 			"entries": [
@@ -342,10 +333,9 @@
 					"number": 2,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Poison",
 			"entries": [

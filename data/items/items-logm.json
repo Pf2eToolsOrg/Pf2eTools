@@ -81,9 +81,6 @@
 					"components": [
 						"Interact"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You transform the dagger of eternal sleep into a +1 grievous striking dagger and {@action Strike} an {@condition unconscious} target with the dagger. If you are not in an encounter or otherwise threatened and you roll a hit with your {@action Strike}, you get a critical hit instead. The damage from the {@action Strike} and the bleed from the critical specialization effect do not awaken the target, though the target becomes temporarily immune to this effect until the next time it wakes up, meaning further daggers of eternal sleep awaken it as normal. The dagger disintegrates immediately after use."
 					]
@@ -104,7 +101,6 @@
 			],
 			"access": "follower of Rovagug",
 			"usage": "held in 1 hand",
-			"bulk": "\u2014",
 			"category": "Consumable",
 			"entries": [
 				"Contained in a specially enchanted small leather or hide sack, deteriorating dust is a potent caustic agent and a prized item among Rovagug's more discreet followers.",
@@ -118,9 +114,6 @@
 					"components": [
 						"Interact"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You sprinkle the deteriorating dust over an unattended Medium or smaller object. The dust quickly fades to a transparent color and the object immediately begins to rust, melt, or otherwise fall apart.",
 						"For the listed time, the object takes constant damage; if the object has a Hardness, then the dust gradually reduces the object's Hardness instead. If the deteriorating dust is still active after the object's Hardness is reduced to 0, it deals damage to the object as previously described. If the object survives, reduced Hardness returns after the dust's duration expires, but any damage remains."
@@ -221,9 +214,6 @@
 					"components": [
 						"Interact"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You swing the thurible around you, spreading inky black smoke in a 20-foot emanation that has the effect of obscuring mist.",
 						"Undead creatures can see through the smoke as if it didn't exist. Negative energy also disrupts the magic of the smoke; anyone who uses a {@trait negative} effect, along with creatures affected by a {@trait negative} effect, can see through the smoke for 1 round."
@@ -267,8 +257,6 @@
 						"unit": "round",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You furl one of the colored tails around the pole, causing the glaive to gain the effects of your choice of the corrosive, flaming, frost, shocking, or thundering property runes for 1 round, depending on the tail you chose."
 					]
@@ -287,8 +275,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You thrust the blade of the glaive into the ground, activating the power of the banner. (The blade can penetrate any non-metallic surface when used in this way, and does not leave a mark when withdrawn.) As long as the glaive is thrust into the ground and standing upright, all allies within 60 feet who can see the glaive's banner gain a +2 item bonus to {@skill Performance} checks."
 					]
@@ -316,16 +302,15 @@
 				"note": null
 			},
 			"usage": "affixed to armor",
-			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
 					"unit": "reaction",
 					"entry": "{@as R}"
 				},
-				"components": "envision",
-				"requirements": null,
-				"frequency": null,
+				"components": [
+					"envision"
+				],
 				"trigger": "You fail a Reflex save against a damaging effect."
 			},
 			"category": "Talisman",
@@ -393,9 +378,6 @@
 					"components": [
 						"(command)"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You chant for a minute about a task at hand for the coming week to cast a 4th-level {@spell read omens} spell that grants you cryptic but useful advice."
 					]
@@ -437,8 +419,6 @@
 						"unit": "hour",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You use the mortar of {@condition hidden} meaning to grind tea leaves (or another suitable substance for making a hot beverage). While grinding the tea leaves, which takes no less than 1 minute, you can speak a message into the mortar. After the leaves are steeped in hot water, the first person who drinks from the resulting brew hears the message whispered in their ear."
 					]
@@ -464,7 +444,6 @@
 				"note": null
 			},
 			"usage": "worn",
-			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"This necklace strung with miniature stone throwing knives.",
@@ -479,9 +458,6 @@
 					"components": [
 						"Interact"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You pluck a miniature knife from the necklace, and it grows into a normal stone, steel, or wooden dagger for as long as you hold it, fading away 1 round after it leaves your hand. No matter how many knives you pull from the necklace, you never seem to deplete them. Wooden daggers from the necklace are as effective as ordinary steel daggers and can be useful to stake vampires."
 					]
@@ -524,8 +500,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"While floating down a river on a raft or boat, you plunge the rat-catcher trident into the water. The trident casts a 5th-level {@spell control water} spell on the body of water."
 					]
@@ -565,9 +539,6 @@
 					"components": [
 						"Interact (auditory)"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"While holding the singing bowl of the versatile stance with one hand, you strike the lip of it with a mallet held in the other.",
 						"Anyone within 60 feet currently in a stance can spend a reaction to use one of their stance actions in order to change to a different stance."

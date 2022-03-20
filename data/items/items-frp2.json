@@ -25,10 +25,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Elixir",
 			"entries": [
@@ -68,9 +67,6 @@
 					"components": [
 						"Interact"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"The cape becomes a pair of golden drake wings that grant you a fly Speed of 30 feet for 1 hour."
 					]
@@ -88,8 +84,6 @@
 						"unit": "minute",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"The cloak pushes you onward. You {@action Stride} or {@action Fly} up to your Speed, but you can move only in a straight line. You gain a +15-foot status bonus to your Speed and fly Speed for this movement."
 					]
@@ -115,7 +109,6 @@
 				"amount": 10000
 			},
 			"usage": "worn headband",
-			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"These silk headbands always come in pairs and usually feature a prominent symbol of a nation or team. If both wearers Invest their headbands at the same time and think of the same symbol while doing so, both headbands change to display that symbol until they are removed.",
@@ -133,8 +126,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You remove your headband, which teleports you to a space adjacent to the other Invested wearer's location, if you are within 1 mile of each other."
 					]
@@ -177,8 +168,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You shoot an arrow at an open space on a surface within 500 feet and momentarily vanish into a wind that carries the arrow. You teleport to that location."
 					]
@@ -197,8 +186,6 @@
 						"unit": "hour",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You shoot an arrow at the sky and it tears an extraplanar rift that resembles a storm cloud in a 30-foot burst centered on a point within 200 feet. A torrent of rain pours down from the rift for 1 minute or until you {@action Dismiss} the effect. The area within the torrent becomes difficult terrain for all movement (including Flying). As an {@action Interact} action, you can fire an arrow into the rift to cause a bolt of lightning to strike a creature in the area. The creature takes {@damage 5d12} lightning damage and must attempt a DC 41 basic Reflex save."
 					]
@@ -219,8 +206,6 @@
 						"freq": 1,
 						"unit": "week"
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You fire a volley of arrows into the sky. You create the effects of a successful control weather ritual."
 					]
@@ -246,15 +231,14 @@
 				"amount": 1900
 			},
 			"usage": "affixed to armor",
-			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
 					"unit": "free"
 				},
-				"components": "command",
-				"requirements": null,
-				"frequency": null,
+				"components": [
+					"command"
+				],
 				"trigger": "You would be forced to move, you would be teleported, or you would take cold, electricity, or sonic damage."
 			},
 			"category": "Consumable",
@@ -280,15 +264,14 @@
 				"amount": 1800
 			},
 			"usage": "affixed to armor",
-			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
 					"unit": "free"
 				},
-				"components": "envision",
-				"requirements": null,
-				"frequency": null,
+				"components": [
+					"envision"
+				],
 				"trigger": "You Grab or restrain a creature or become {@condition grabbed} or {@condition restrained} by a creature"
 			},
 			"category": "Talisman",

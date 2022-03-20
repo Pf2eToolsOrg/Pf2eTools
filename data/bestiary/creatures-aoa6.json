@@ -4873,7 +4873,7 @@
 				"Will": {
 					"default": 39
 				},
-				"abilities": "+2 status to all saves vs. {@trait magic}"
+				"abilities": "+2 status to all saves vs. {@trait magical||magic}"
 			},
 			"hp": [
 				{
@@ -5072,9 +5072,9 @@
 						"number": 1,
 						"unit": "reaction"
 					},
-					"trigger": "Tarrasque Grabs a creature with its jaws",
+					"trigger": "Tarrasque {@ability Grab||Grabs} a creature with its jaws",
 					"entries": [
-						"Tarrasque uses Swallow Whole."
+						"Tarrasque uses {@ability Swallow Whole}."
 					],
 					"name": "Fast Swallow"
 				},

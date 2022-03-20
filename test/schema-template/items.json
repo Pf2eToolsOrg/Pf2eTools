@@ -29,6 +29,36 @@
                         "title": "Equipment Boolean",
                         "description": "Determines whether or not an item is available at level 1 and craftable using the Basic Crafter's Book. Mainly for items from Chapter 7 of the Core Rulebook."
                     },
+                    "activate": {
+                        "type": "object",
+                        "properties": {
+                            "frequency": {
+                                "$ref": "utils.json#/definitions/frequency"
+                            },
+                            "components": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "requirements": {
+                                "type": "string"
+                            },
+                            "trigger": {
+                                "type": "string"
+                            },
+                            "activity": {
+                                "$ref": "utils.json#/definitions/activity"
+                            }
+                        }
+                    },
+                    "ammunition": {
+                        "description": "Only to be used for magical ammunition to specify type (such as bolt, arrow, or round)",
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
                     "bulk": {
                         "anyOf": [
                             {
@@ -111,12 +141,12 @@
                     "shieldData": {
                         "$ref": "items.json#/definitions/shieldData"
                     },
-					"entries": {
-						"type": "array",
-						"items": {
-							"$ref": "entry.json"
-						}
-					},
+                    "entries": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "entry.json"
+                        }
+                    },
                     "category": {
                         "type": "string",
                         "enum": [
@@ -180,26 +210,41 @@
                         ]
                     },
                     "appliesTo": {
-						"type": "array",
-						"items": {
-							"type": "string",
-							"enum": [
-								"Weapon",
-								"Armor",
-								"Shield",
-								"Other"
-							]
-						}
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "enum": [
+                                "Weapon",
+                                "Armor",
+                                "Shield",
+                                "Other"
+                            ]
+                        },
+                        "minItems": 1,
+                        "uniqueItems": true
                     },
                     "generic": {
                         "type": "string",
-                        "enum": ["G"]
+                        "enum": [
+                            "G"
+                        ]
                     },
                     "add_hash": {
                         "type": "string"
                     },
                     "usage": {
                         "type": "string"
+                    },
+                    "access": {
+                        "type": "string"
+                    },
+                    "variants": {
+                        "type": "array",
+                        "minItems": 1,
+                        "items": {
+                            "type": "object",
+                            "$ref": "items.json#/properties/item/items"
+                        }
                     }
                 },
                 "additionalProperties": false,

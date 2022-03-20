@@ -65,15 +65,15 @@
 				"amount": 30
 			},
 			"usage": "affixed to armor",
-			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
 					"unit": "free"
 				},
-				"components": "envision",
+				"components": [
+					"envision"
+				],
 				"requirements": "You are an expert in {@skill Athletics}",
-				"frequency": null,
 				"trigger": "You succeed at an {@skill Athletics} check to {@action Disarm}"
 			},
 			"category": "Talisman",
@@ -99,15 +99,15 @@
 				"amount": 65
 			},
 			"usage": "affixed to a weapon",
-			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
 					"unit": "free"
 				},
-				"components": "envision",
+				"components": [
+					"envision"
+				],
 				"requirements": "You are an expert with the affixed weapon.",
-				"frequency": null,
 				"trigger": "You damage a creature that is {@condition sickened|CRB|sickened 1} with a {@action Strike} using the affixed weapon"
 			},
 			"category": "Talisman",
@@ -135,10 +135,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Elixir",
 			"entries": [
@@ -219,8 +218,6 @@
 						"unit": "hour",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"For 1 round, the slime whip deals acid damage rather than slashing damage. If the attack deals {@condition persistent damage}, the {@condition persistent damage} is also acid damage instead of its usual type."
 					]
@@ -246,15 +243,14 @@
 				"amount": 12
 			},
 			"usage": "affixed to armor",
-			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
 					"unit": "free"
 				},
-				"components": "envision",
-				"requirements": null,
-				"frequency": null,
+				"components": [
+					"envision"
+				],
 				"trigger": "You succeed at an"
 			},
 			"category": "Talisman",
@@ -293,8 +289,6 @@
 						"unit": "day",
 						"overcharge": true
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You cast {@spell acid arrow} of the indicated level. A creature that takes acid damage from this spell must succeed at a Fortitude save against your spell DC or become {@condition sickened|CRB|sickened 1}."
 					]
@@ -375,8 +369,6 @@
 						"unit": "day",
 						"overcharge": true
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You cast {@spell false life} of the indicated level. During the duration of the spell, wisps that resemble spirits flit around you as long as you have any temporary Hit Points from false life, and you can use the following action."
 					]
@@ -390,9 +382,7 @@
 					"components": [
 						"envision"
 					],
-					"frequency": null,
 					"trigger": "You successfully impart the {@condition frightened|CRB|frightened 1} condition to a creature",
-					"requirements": null,
 					"entries": [
 						"You end false life and increase the creature's {@condition frightened} condition value to 2."
 					]

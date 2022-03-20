@@ -20,10 +20,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Strike",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Strike"
+				]
 			},
 			"category": "Bomb",
 			"entries": [
@@ -450,7 +449,6 @@
 				"Transmutation"
 			],
 			"usage": "worn",
-			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"Over millennia, these mysterious, intricately cut gemstones have been hoarded by mystics and fanatics hoping to discover their secrets. Despite their myriad forms and functions, these stones are purportedly all fragments of crystal tools used by otherworldly entities to construct the universe in primeval times.",
@@ -745,7 +743,6 @@
 				"Transmutation"
 			],
 			"usage": "worn eyepiece",
-			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"These brass goggles are engraved with flame patterns and have thick, heavy lenses. While worn, they give you a +1 item bonus to {@skill Crafting} checks to {@action Craft} alchemical items and a +1 item bonus to attack rolls with alchemical bombs. You can also ignore lesser cover when making {@action Strike||Strikes} with alchemical bombs."
@@ -830,10 +827,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Strike",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Strike"
+				]
 			},
 			"category": "Bomb",
 			"entries": [
@@ -983,10 +979,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Oil",
 			"entries": [
@@ -1045,9 +1040,6 @@
 						"unit": "varies",
 						"entry": "Cast a Spell"
 					},
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You expend a number of charges from the staff to cast a spell from its list."
 					]
@@ -1068,8 +1060,8 @@
 						{
 							"type": "list",
 							"items": [
-								"{@bold Cantrip} know direction",
-								"{@bold 1st} magic fang, {@spell summon animal}"
+								"{@bold Cantrip} {@spell know direction}",
+								"{@bold 1st} {@spell magic fang}, {@spell summon animal}"
 							]
 						}
 					]
@@ -1086,8 +1078,8 @@
 						{
 							"type": "list",
 							"items": [
-								"{@bold 2nd} animal messenger, speak with animals, {@spell summon animal}",
-								"{@bold 3rd} animal form, {@spell summon animal}"
+								"{@bold 2nd} {@spell animal messenger}, {@spell speak with animals}, {@spell summon animal}",
+								"{@bold 3rd} {@spell animal form}, {@spell summon animal}"
 							]
 						}
 					]
@@ -1105,7 +1097,7 @@
 							"type": "list",
 							"items": [
 								"{@bold 4th} {@spell summon animal}",
-								"{@bold 5th} animal form, moon frenzy, {@spell summon animal}"
+								"{@bold 5th} {@spell animal form}, {@spell moon frenzy}, {@spell summon animal}"
 							]
 						}
 					]
@@ -1129,7 +1121,6 @@
 				"amount": 15000
 			},
 			"usage": "worn anklets",
-			"bulk": "\u2014",
 			"category": "Apex",
 			"entries": [
 				"These gem-studded golden anklets give you a +3 item bonus to {@skill Acrobatics} checks. When you invest the anklets, you either increase your Dexterity score by 2 or increase it to 18, whichever would give you a higher score.",
@@ -1147,8 +1138,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You click the anklets together, gaining a +20-foot status bonus to all your Speeds and the effects of water walk for the next 10 minutes."
 					]
@@ -1173,10 +1162,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Elixir",
 			"entries": [
@@ -1312,7 +1300,6 @@
 						"freq": 1
 					},
 					"trigger": "A spell targets you or includes you in its area",
-					"requirements": null,
 					"entries": [
 						"The armor attempts to counteract the triggering spell with the effect of a 7th-level {@spell dispel magic} spell and a counteract modifier of +26."
 					]
@@ -1344,10 +1331,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Oil",
 			"entries": [
@@ -1374,10 +1360,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Elixir",
 			"entries": [
@@ -1666,7 +1651,6 @@
 						"freq": 1
 					},
 					"trigger": "A ranged weapon {@action Strike} targets a creature within 15 feet of you when you have this shield raised, and the attacker has not yet rolled their attack",
-					"requirements": null,
 					"entries": [
 						"The triggering {@action Strike} targets you instead of its normal target.",
 						"If it hits, you gain the effects of the {@feat Shield Block} reaction."
@@ -1697,10 +1681,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Poison",
 			"entries": [
@@ -1952,8 +1935,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You trace a finger along the wind motifs on the barding, granting your companion wearing the barding a fly Speed of 30 feet for 10 minutes. Even if the companion doesn't have the mount special ability, it can still {@action Fly} while being ridden."
 					]
@@ -1983,10 +1964,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Potion",
 			"entries": [
@@ -2030,10 +2010,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"ammunition": [
 				"arrow",
@@ -2059,7 +2038,6 @@
 			"hands": null,
 			"category": "Adventuring Gear",
 			"entries": [
-				"Using a writing set, you can draft correspondence and scribe scrolls. A set includes stationery, including a variety of paper and parchment, as well as ink, a quill or inkpen, sealing wax, and a simple seal. If you've written a large amount, you can refill your kit with extra ink and paper."
 			]
 		},
 		{
@@ -2150,9 +2128,7 @@
 					"components": [
 						"Interact"
 					],
-					"frequency": null,
 					"trigger": "You are targeted by a thrown rock attack, or a rock would fall on you",
-					"requirements": null,
 					"entries": [
 						"Attempt an {@skill Athletics} check to grab the triggering rock. Use the {@skill Athletics} DC of the creature throwing the rock, the DC of the hazard or other effect, or DC 35 if no other DC is applicable. You must have a free hand to catch the rock, but you can {@action Release} anything you're holding in a hand as part of this reaction.",
 						{
@@ -2202,8 +2178,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You tighten the belt one notch to gain a regeneration effect. For {@dice 2d4} rounds, at the start of your turn each round, you recover 15 Hit Points unless you took acid or fire damage since the start of your previous turn."
 					]
@@ -2246,7 +2220,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
 					"requirements": "You are a dwarf",
 					"entries": [
 						"You tighten the belt one notch to gain temporary Hit Points equal to your level and grant allies within 20 feet of you {@ability darkvision}. Both effects last for 10 minutes."
@@ -2361,10 +2334,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Elixir",
 			"entries": [
@@ -2508,10 +2480,9 @@
 					"number": 3,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Poison",
 			"entries": [
@@ -2567,10 +2538,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Poison",
 			"entries": [
@@ -2647,10 +2617,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Poison",
 			"entries": [
@@ -2722,16 +2691,15 @@
 				"amount": 20
 			},
 			"usage": "affixed to a weapon",
-			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
 					"unit": "free",
 					"entry": "{@as F}"
 				},
-				"components": "envision",
-				"requirements": null,
-				"frequency": null,
+				"components": [
+					"envision"
+				],
 				"trigger": "You hit a {@condition flat-footed} creature with the affixed weapon."
 			},
 			"category": "Talisman",
@@ -2834,10 +2802,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Elixir",
 			"entries": [
@@ -2962,8 +2929,6 @@
 						"unit": "hour",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"Until the end of your turn, you ignore {@quickref difficult terrain||3|terrain} when moving on the ground. If you're wearing a cloak of elvenkind, you also gain a +5-foot status bonus to your land Speed until the end of your turn."
 					]
@@ -3029,8 +2994,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You click the heels of the boots together and gain the {@condition quickened} condition for 1 minute. You can use the extra action to {@action Stride}, {@action Climb}, or {@action Swim}. (You must still attempt an {@skill Athletics} check for the {@action Climb} and {@action Swim} actions unless you have the appropriate movement type.)"
 					]
@@ -3067,9 +3030,6 @@
 					"components": [
 						"Interact"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You draw a breath of air from the bottle. This allows you to breathe even in an airless or toxic environment. Air doesn't escape the mouth of the bottle, so leaving the open bottle in an airless environment doesn't change the environment."
 					]
@@ -3096,10 +3056,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Strike",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Strike"
+				]
 			},
 			"category": "Bomb",
 			"entries": [
@@ -3222,8 +3181,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You gain a +10-foot status bonus to Speed for 1 minute."
 					]
@@ -3341,7 +3298,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
 					"requirements": "You are aware of the attack and not {@condition flat-footed}",
 					"entries": [
 						"The bracers send the missile off-course. You gain a +2 circumstance bonus to AC against the triggering attack. If this would cause the attack to be a failure, the attack misses you."
@@ -3401,10 +3357,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Elixir",
 			"entries": [
@@ -3505,8 +3460,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You grant allies within 100 feet a +2 status bonus to saves against {@trait fear} effects for 1 minute. When you activate this ability, each affected ally who's {@condition frightened} reduces their {@condition frightened} value by 1."
 					]
@@ -3562,10 +3515,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Poison",
 			"entries": [
@@ -3615,16 +3567,16 @@
 				"amount": 7
 			},
 			"usage": "affixed to armor",
-			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
 					"unit": "free",
 					"entry": "{@as F}"
 				},
-				"components": "envision",
+				"components": [
+					"envision"
+				],
 				"requirements": "You are trained in {@skill Athletics}.",
-				"frequency": null,
 				"trigger": "You attempt an {@skill Athletics} check to {@action Shove}, but you haven't rolled yet"
 			},
 			"category": "Talisman",
@@ -3649,7 +3601,6 @@
 				"amount": 30
 			},
 			"usage": "worn",
-			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"This piece of silver or gold jewelry is adorned with miniature images of kite shields and can be used to fasten a cloak or cape. The brooch automatically absorbs {@spell magic missile} spells targeting you. A brooch of shielding can absorb 30 individual magic missiles before it melts and becomes useless.",
@@ -3687,9 +3638,6 @@
 						"command",
 						"Interact"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You name a destination on the same plane, and the broom speeds toward it at a fly Speed of 40 feet. You must either clutch the broom with two hands in order to ride it, or you need to release the broom to send it off with no rider. If you don't have a good idea of the location, layout, and general direction of the destination, or if your named destination is on another plane, the broom wanders aimlessly, circling back to its starting location after 30 minutes.",
 						"If the broom carries a rider, this activation lasts until 4 hours pass (typically 16 miles of travel), the broom reaches its destination, or you {@action Dismiss} the activation.",
@@ -3774,16 +3722,14 @@
 				"amount": 75
 			},
 			"usage": "held in 1 hand",
-			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Consumable",
 			"entries": [
@@ -3828,8 +3774,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You cast {@spell dimension door}. The space you leave and the one you appear in are filled with puffs of smoke that make anyone within {@condition concealed} until they leave the smoke or the end of your next turn, at which point the smoke dissipates.",
 						"Strong winds immediately disperse the smoke."
@@ -3873,8 +3817,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You gain 1 Focus Point, which you can spend only to cast a cleric domain spell for a domain belonging to the deity the cassock is dedicated to. If you don't spend this Focus Point by the end of this turn, it is lost."
 					]
@@ -3904,10 +3846,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Elixir",
 			"entries": [
@@ -3947,8 +3888,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You pull the white thread free, then whirl the sling in circles at high speed. It lets out an ear-piercing wave of sound.",
 						"Each creature in a 30-foot cone takes {@damage 4d6} sonic damage (DC 21 basic Fortitude save). Any creature that fails is {@condition deafened} for 1 round, or 1 hour on a critical failure."
@@ -3993,8 +3932,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"The armor sprouts glowing wings that grant you a fly Speed of 30 feet. The wings shed bright light in a 40-foot radius (and dim light to the next 40 feet). The wings fade away after 10 minutes."
 					]
@@ -4055,7 +3992,6 @@
 				"amount": 56
 			},
 			"usage": "worn",
-			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"This nugget of polished tektite is trapped in a cage of braided wire and hangs from a silken cord. When wearing this amulet, you gain resistance 5 against damage from {@spell harm} spells if you're living, or against {@spell heal} spells if you're undead."
@@ -4079,10 +4015,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Elixir",
 			"entries": [
@@ -4198,9 +4133,6 @@
 					"components": [
 						"Interact"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You aim the chime at a container, door, or lock you want to open and strike the chime. The chime sends out magical vibrations that attempt a {@skill Thievery} check against the lock's DC, with a {@skill Thievery} bonus of +13. This targets only one lock or binding at a time, so you might need to activate the chime multiple times to open a target with several forms of protection."
 					]
@@ -4269,7 +4201,6 @@
 				"amount": 15000
 			},
 			"usage": "worn circlet",
-			"bulk": "\u2014",
 			"category": "Apex",
 			"entries": [
 				"This elegant silver band often resembles curling fig leaves and fits around your brow. You gain a +2 item bonus to {@skill Deception} and {@skill Diplomacy} checks.",
@@ -4288,8 +4219,6 @@
 						"unit": "hour",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You cast a 4th-level {@spell charm} spell (DC 38)."
 					]
@@ -4328,8 +4257,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You pull the cloak's hood up and gain the benefits of nondetection for 1 hour or until you pull the hood back down, whichever comes first."
 					]
@@ -4457,8 +4384,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You draw the hood up and gain the effects of invisibility, with the spell's normal duration or until you pull the hood back down, whichever comes first. If you're also wearing boots of elvenkind, you can activate this ability twice per day."
 					]
@@ -4521,8 +4446,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You can either transform the cloak into bat-like wings that grant you a fly Speed of 30 feet for 10 minutes, or have the cloak turn you into a bat by casting a 4th-level {@spell pest form} spell on you."
 					]
@@ -4585,10 +4508,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Elixir",
 			"entries": [
@@ -5091,9 +5013,6 @@
 					"components": [
 						"envision"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You perceive through your animal companion's senses instead of your own. You can Sustain the Activation. You are unaware of your own surroundings for as long as you are using your animal companion's senses.",
 						"In addition to the obvious use when you are separated from your companion, this ability might allow you to notice sounds, scents, and other stimuli that your companion's senses register but yours alone don't."
@@ -5132,9 +5051,6 @@
 					"components": [
 						"envision"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You touch your animal companion to transform it into a nonthreatening Tiny creature of the same family or a similar creature (for instance, a house cat instead of a tiger, or a puppy instead of a wolf). This has the effects of pest form (2nd level, or 4th level if your companion can fly). The effect lasts until you {@action Dismiss} it."
 					]
@@ -5203,10 +5119,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Elixir",
 			"entries": [
@@ -5330,7 +5245,6 @@
 				"Magical"
 			],
 			"usage": "worn cloak",
-			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"This dusty coat is made of mangy brown-and-gray coyote fur.",
@@ -5374,7 +5288,6 @@
 				"Transmutation"
 			],
 			"usage": "worn eyepiece",
-			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"This rugged metal eyepiece etched with square patterns is designed to be worn over a single eye. Twisting the lens reveals a faint three-dimensional outline of an item you plan to build or repair, with {@condition helpful} labels on the component parts. While worn, this eyepiece gives you a +1 item bonus to {@skill Crafting} checks. When you {@action Repair} an item, increase the Hit Points restored by 15 per proficiency rank instead of 10."
@@ -5466,16 +5379,16 @@
 				"amount": 7
 			},
 			"usage": "affixed to armor",
-			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
 					"unit": "free",
 					"entry": "{@as F}"
 				},
-				"components": "envision",
+				"components": [
+					"envision"
+				],
 				"requirements": "You are trained in {@skill Medicine}.",
-				"frequency": null,
 				"trigger": "You critically fail to Administer"
 			},
 			"category": "Talisman",
@@ -5514,9 +5427,6 @@
 						"envision",
 						"Interact)"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"The crystal ball casts clairvoyance to your specifications."
 					]
@@ -5538,8 +5448,6 @@
 						"unit": "day",
 						"freq": 2
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"The crystal ball casts a DC 33 {@spell scrying} spell to your specifications."
 					]
@@ -5630,10 +5538,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Poison",
 			"entries": [
@@ -5700,8 +5607,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You poison the creature you hit with dagger venom."
 					]
@@ -5758,9 +5663,6 @@
 						"command",
 						"Interact"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You {@action Release} the weapon and it dances through the air, fighting on its own against the last enemy you attacked, or the nearest enemy to it if your target has been defeated. At the end of your turn each round, the weapon can {@action Fly} up to its fly Speed of 40 feet, and then can either {@action Fly} again or {@action Strike} one creature within its reach.",
 						"The weapon has a space of 5 feet, but it doesn't block or impede enemies attempting to move though that space, nor does it benefit from or provide flanking. The weapon can't move through an enemy's space. The weapon can't use reactions, and its {@action Fly} actions don't trigger reactions.",
@@ -5784,7 +5686,6 @@
 				"Visual"
 			],
 			"usage": "worn belt",
-			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"This long and billowing scarf is typically woven of silk or sheer fabric and adorned with bells or other jangling bits of shiny metal. It grants a +1 item bonus to {@skill Performance} checks to dance.",
@@ -5798,8 +5699,6 @@
 					"components": [
 						"Interact"
 					],
-					"frequency": null,
-					"trigger": null,
 					"requirements": "On your most recent action, you succeeded at a {@skill Performance} check to dance",
 					"entries": [
 						"You become {@condition concealed} until the beginning of your next turn."
@@ -5895,10 +5794,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Elixir",
 			"entries": [
@@ -6314,16 +6212,15 @@
 				"amount": 900
 			},
 			"usage": "affixed to a weapon",
-			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
 					"unit": "free",
 					"entry": "{@as F}"
 				},
-				"components": "envision",
-				"requirements": null,
-				"frequency": null,
+				"components": [
+					"envision"
+				],
 				"trigger": "You deal damage to a {@condition flat-footed} creature with the affixed weapon."
 			},
 			"category": "Talisman",
@@ -6354,10 +6251,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Poison",
 			"entries": [
@@ -6422,9 +6318,6 @@
 						"command",
 						"Interact"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"Speaking \"stream,\" you cause water to pour out at a rate of 1 gallon per round."
 					]
@@ -6440,9 +6333,6 @@
 						"command",
 						"Interact"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"Speaking \"fountain,\" you cause water to pour out in a 5-foot-long stream at a rate of 5 gallons per round."
 					]
@@ -6458,9 +6348,6 @@
 						"command",
 						"Interact"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"Speaking \"geyser,\" you cause a powerful deluge of water to erupt at a rate of 15 gallons per round. You can direct the stream at a creature, subjecting it to the effects of hydraulic push (spell attack roll +15). You can repeat this once per round as long as the geyser continues, spending an {@action Interact} action to direct the geyser each time."
 					]
@@ -6504,8 +6391,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You cast {@spell dimension door}."
 					]
@@ -6543,8 +6428,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"The mask casts a {@spell fear} spell with a DC of 20."
 					]
@@ -6611,8 +6494,6 @@
 						"unit": "hour",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You gain the effects of hypercognition."
 					]
@@ -6635,7 +6516,6 @@
 				"amount": 125
 			},
 			"usage": "worn",
-			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"When displayed prominently, this brass badge makes creatures find you more agreeable. You gain a +1 item bonus to {@skill Diplomacy} checks.",
@@ -6653,8 +6533,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"Attempt a DC 20 check to {@action Recall Knowledge} about people of a human ethnicity, a non-human ancestry, or some other type of creature. (The GM determines what your options are.) If you succeed, the badge's bonus increases to +2 for {@skill Diplomacy} checks with creatures of that group for the rest of the day."
 					]
@@ -6725,10 +6603,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"ammunition": [
 				"bolt"
@@ -6756,16 +6633,16 @@
 				"amount": 2400
 			},
 			"usage": "affixed to a weapon",
-			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
 					"unit": "free",
 					"entry": "{@as F}"
 				},
-				"components": "envision",
+				"components": [
+					"envision"
+				],
 				"requirements": "You're a master with the affixed weapon.",
-				"frequency": null,
 				"trigger": "Your {@action Strike} damages a target"
 			},
 			"category": "Talisman",
@@ -6842,7 +6719,6 @@
 				"Magical"
 			],
 			"usage": "worn",
-			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"This item consists of two magically linked rings: an intricate, gleaming golden ring with a square-cut ruby, and a thick, plain iron ring. When you wield a melee weapon in the hand wearing the golden ring, the weapon's fundamental runes are replicated onto any melee weapon you wield in the hand wearing the iron ring. (The fundamental runes are weapon potency and striking, which add an item bonus to attack rolls and extra weapon damage dice, respectively.) Any fundamental runes on the weapon in the hand wearing the iron ring are suppressed.",
@@ -6898,10 +6774,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Poison",
 			"entries": [
@@ -6951,16 +6826,15 @@
 				"amount": 13
 			},
 			"usage": "affixed to armor",
-			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "envision",
-				"requirements": "You're an expert in {@skill Athletics}.",
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"envision"
+				],
+				"requirements": "You're an expert in {@skill Athletics}."
 			},
 			"category": "Talisman",
 			"entries": [
@@ -6986,10 +6860,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Potion",
 			"entries": [
@@ -7367,8 +7240,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You unleash a bout of dragon breath with a shape, damage type, and saving throw corresponding to the type of dragon used to make the armor (shown on the table below). The breath weapon deals {@dice 14d6} damage; each creature in the area must attempt a DC 36 basic saving throw."
 					]
@@ -7419,7 +7290,6 @@
 				"amount": 15000
 			},
 			"usage": "worn eyepiece",
-			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"When tied over your eyes, this ragged strip of black linen gives you a +3 item bonus to {@skill Intimidation} checks and {@ability darkvision}. You can see through the blindfold, but only using {@ability darkvision}.",
@@ -7440,7 +7310,6 @@
 						"freq": 1
 					},
 					"trigger": "You damage a creature with a {@action Strike}",
-					"requirements": null,
 					"entries": [
 						"Your target is gripped by intense fear. This has the effect of a DC 37 {@spell phantasmal killer} spell, but it is an enchantment instead of an illusion. The creature is then temporarily immune for 24 hours."
 					]
@@ -7483,8 +7352,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You gain 1 Focus Point, which you can spend only to cast an order spell. If you don't spend this Focus Point by the end of this turn, it is lost."
 					]
@@ -7508,16 +7375,14 @@
 				"amount": 50
 			},
 			"usage": "held in 1 hand",
-			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Consumable",
 			"entries": [
@@ -7540,16 +7405,14 @@
 				"amount": 135
 			},
 			"usage": "held in 1 hand",
-			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Consumable",
 			"entries": [
@@ -7596,10 +7459,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Elixir",
 			"entries": [
@@ -7702,16 +7564,15 @@
 				"amount": 7
 			},
 			"usage": "affixed to armor",
-			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": "You're an expert in {@skill Acrobatics}.",
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				],
+				"requirements": "You're an expert in {@skill Acrobatics}."
 			},
 			"category": "Talisman",
 			"entries": [
@@ -7753,8 +7614,6 @@
 						"unit": "hour",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You cast a 2nd-level {@spell shocking grasp} with a DC of 29."
 					]
@@ -7778,16 +7637,12 @@
 				"amount": 200
 			},
 			"usage": "held in 1 hand",
-			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 2,
 					"unit": "action"
 				},
-				"components": "command, Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": "command, Interact"
 			},
 			"category": "Consumable",
 			"entries": [
@@ -7814,10 +7669,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Elixir",
 			"entries": [
@@ -7959,10 +7813,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Elixir",
 			"entries": [
@@ -8030,16 +7883,16 @@
 				"amount": 30
 			},
 			"usage": "affixed to armor",
-			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
 					"unit": "free",
 					"entry": "{@as F}"
 				},
-				"components": "envision",
+				"components": [
+					"envision"
+				],
 				"requirements": "You are an expert in {@skill Athletics}.",
-				"frequency": null,
 				"trigger": "You attempt a {@action High Jump} but haven't rolled yet"
 			},
 			"category": "Talisman",
@@ -8129,8 +7982,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You gain the effects of an {@spell ethereal jaunt} spell. This doesn't require concentration and lasts for 10 minutes or until you choose to return to material form as a free action."
 					]
@@ -8195,8 +8046,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"The rolled-up tent expands into a spacious yurt complete with a fire pit, 10 {@item bedroll|crb|bedrolls}, various cooking utensils, and basic food and water.",
 						"The yurt can house and feed you and up to nine other Medium creatures that eat roughly as much as a human does; they need not attempt a {@skill Survival} check to {@action Subsist} when you use the yurt. Fires and light inside the yurt do not extend illumination into the area surrounding the yurt, making it harder to spot from a distance.",
@@ -8222,10 +8071,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"ammunition": [
 				"any"
@@ -8309,16 +8157,16 @@
 				"amount": 400
 			},
 			"usage": "affixed to armor",
-			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
 					"unit": "free",
 					"entry": "{@as F}"
 				},
-				"components": "envision",
+				"components": [
+					"envision"
+				],
 				"requirements": "You are a master in {@skill Perception}.",
-				"frequency": null,
 				"trigger": "You are about to roll {@skill Perception} for initiative but haven't rolled yet"
 			},
 			"category": "Talisman",
@@ -8342,7 +8190,6 @@
 				"amount": 2700
 			},
 			"usage": "worn eyepiece",
-			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"Adherents of Erastil, god of the hunt, create these magical eye patches. An eye of fortune has a jeweled eye symbol on its front, allowing you to magically see through the eye patch as though it were transparent.",
@@ -8357,9 +8204,7 @@
 					"components": [
 						"envision (fortune)"
 					],
-					"frequency": null,
 					"trigger": "You attack a {@condition concealed} or {@condition hidden} creature and haven't attempted the flat check yet",
-					"requirements": null,
 					"entries": [
 						"You can roll the flat check for the {@condition concealed} or {@condition hidden} condition twice and use the higher result."
 					]
@@ -8382,7 +8227,6 @@
 				"amount": 700
 			},
 			"usage": "worn eyepiece",
-			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"These lenses of amber crystal fit over your eyes. They grant you {@ability low-light vision} and a +2 item bonus to {@skill Perception} checks that involve sight."
@@ -8405,16 +8249,16 @@
 				"amount": 320
 			},
 			"usage": "affixed to armor",
-			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
 					"unit": "free",
 					"entry": "{@as F}"
 				},
-				"components": "envision",
+				"components": [
+					"envision"
+				],
 				"requirements": "You are a master in {@skill Stealth}.",
-				"frequency": null,
 				"trigger": "An attack misses you"
 			},
 			"category": "Talisman",
@@ -8441,16 +8285,12 @@
 				"amount": 20
 			},
 			"usage": "affixed to a weapon",
-			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 2,
 					"unit": "action"
 				},
-				"components": "Intimidating Strike",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": "Intimidating Strike"
 			},
 			"category": "Talisman",
 			"entries": [
@@ -8475,16 +8315,15 @@
 				"amount": 8
 			},
 			"usage": "affixed to armor",
-			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
 					"unit": "free",
 					"entry": "{@as F}"
 				},
-				"components": "envision",
-				"requirements": null,
-				"frequency": null,
+				"components": [
+					"envision"
+				],
 				"trigger": "You {@action Stride} or {@action Step}"
 			},
 			"category": "Talisman",
@@ -8506,16 +8345,14 @@
 				"Magical"
 			],
 			"usage": "held in 1 hand",
-			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Consumable",
 			"entries": [
@@ -8667,9 +8504,6 @@
 					"components": [
 						"Interact"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You extend or shorten the trident's haft. When extended, the trident requires two hands to wield and gains the {@trait reach} trait, but loses the trident's normal {@trait thrown} trait."
 					]
@@ -8735,16 +8569,15 @@
 				"amount": 1800
 			},
 			"usage": "affixed to armor",
-			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "envision",
-				"requirements": "You're an expert in Will saves.",
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"envision"
+				],
+				"requirements": "You're an expert in Will saves."
 			},
 			"category": "Talisman",
 			"entries": [
@@ -8778,9 +8611,6 @@
 						"command",
 						"Interact"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You cast the {@spell produce flame} cantrip from the sword as a 7th-level arcane spell, using your melee attack modifier with flametongue as your spell attack modifier."
 					]
@@ -8905,8 +8735,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"The shield magically releases itself and floats off your arm into the air next to you, granting you its bonus automatically, as if you had Raised the Shield. Because you're not wielding the shield, you can't use reactions such as {@feat Shield Block} with the shield, but you gain its benefits even when using both of your hands. After 1 minute, the shield drops to the ground, ending its floating effect. While the shield is adjacent to you, you can {@action Interact} to grasp it, ending its floating effect early."
 					]
@@ -8995,8 +8823,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"The shield surrounds you with a bubble of force that protects you from harm, granting you resistance 5 to physical damage for 1 minute. The bubble disappears if you cease holding the shield."
 					]
@@ -9036,9 +8862,7 @@
 					"components": [
 						"command (fire)"
 					],
-					"frequency": null,
 					"trigger": "You use the forge warden to {@feat Shield Block} an adjacent creature's attack and the shield takes damage",
-					"requirements": null,
 					"entries": [
 						"The attacking creature takes {@damage 2d6} fire damage."
 					]
@@ -9183,9 +9007,6 @@
 						"command",
 						"Interact"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You swing the frost brand into the area of an ongoing magical fire, and the blade attempts to counteract the fire with a counteract modifier of +27. If it fails, it can't attempt to counteract the same fire again."
 					]
@@ -9212,10 +9033,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Strike",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Strike"
+				]
 			},
 			"category": "Bomb",
 			"entries": [
@@ -9317,16 +9137,16 @@
 				"amount": 100
 			},
 			"usage": "affixed to a weapon",
-			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
 					"unit": "free",
 					"entry": "{@as F}"
 				},
-				"components": "Interact",
+				"components": [
+					"Interact"
+				],
 				"requirements": "You're a master in {@skill Intimidation}.",
-				"frequency": null,
 				"trigger": "You attack an adjacent creature and haven't rolled your attack roll"
 			},
 			"category": "Talisman",
@@ -9375,16 +9195,16 @@
 				"amount": 1800
 			},
 			"usage": "affixed to armor",
-			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
 					"unit": "free",
 					"entry": "{@as F}"
 				},
-				"components": "envision",
+				"components": [
+					"envision"
+				],
 				"requirements": "You are legendary in {@skill Stealth}.",
-				"frequency": null,
 				"trigger": "You use an action with the {@trait move} trait"
 			},
 			"category": "Talisman",
@@ -9462,10 +9282,9 @@
 					"number": 3,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Poison",
 			"entries": [
@@ -9520,10 +9339,9 @@
 					"number": 3,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Poison",
 			"entries": [
@@ -9578,10 +9396,9 @@
 					"number": 3,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Poison",
 			"entries": [
@@ -9644,9 +9461,6 @@
 					"components": [
 						"envision"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You change the shape and appearance of this armor to appear as ordinary or fine clothes of your imagining. The armor's statistics do not change. Only a creature that is benefiting from true seeing or a similar effect can attempt to {@quickref disbelieve this illusion|CRB|2|disbelieving illusions|0}, with a DC of 25."
 					]
@@ -9694,7 +9508,6 @@
 				"amount": 340
 			},
 			"usage": "worn gloves",
-			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"An item can be stored inside these supple leather gloves, held in an extradimensional space. When an item is inside the glove, an image of the item appears as a simple, stitched pattern on the back of each glove.",
@@ -9709,8 +9522,6 @@
 					"components": [
 						"Interact"
 					],
-					"frequency": null,
-					"trigger": null,
 					"requirements": "No item is stored in the gloves",
 					"entries": [
 						"One item you're holding with a Bulk of 1 or less vanishes into the gloves' extradimensional space."
@@ -9727,8 +9538,6 @@
 					"components": [
 						"Interact"
 					],
-					"frequency": null,
-					"trigger": null,
 					"requirements": "An item is stored in the gloves, and you have a free hand",
 					"entries": [
 						"The item stored in the gloves appears in your hand. The gloves can't be activated again for 1 minute."
@@ -9748,7 +9557,6 @@
 				"Transmutation"
 			],
 			"usage": "worn eyepiece",
-			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"The opaque crystal lenses of these sleek goggles do not obscure vision, but rather enhance it. While wearing the goggles, you gain a +1 item bonus to {@skill Perception} checks involving sight.",
@@ -9766,8 +9574,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"Rotating the lenses 90 degrees, you gain {@ability darkvision} for 1 hour."
 					]
@@ -9841,8 +9647,6 @@
 					"components": [
 						"command"
 					],
-					"frequency": null,
-					"trigger": null,
 					"requirements": "You're in a non-humanoid form via a {@trait polymorph} effect",
 					"entries": [
 						"You unleash a bestial roar, attempting a single {@skill Intimidation} check compared to the Will DCs of all enemies within 30 feet to impose the effects below. Though this activation has the command component, you can issue this command without the need for language.",
@@ -9929,10 +9733,9 @@
 					"number": 3,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Poison",
 			"entries": [
@@ -10024,16 +9827,16 @@
 				"amount": 55
 			},
 			"usage": "affixed to armor",
-			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
 					"unit": "free",
 					"entry": "{@as F}"
 				},
-				"components": "envision",
+				"components": [
+					"envision"
+				],
 				"requirements": "You are an expert in {@skill Intimidation}.",
-				"frequency": null,
 				"trigger": "You attempt an {@skill Intimidation} check to {@action Coerce} or {@action Demoralize}, but you haven't rolled yet"
 			},
 			"category": "Talisman",
@@ -10129,9 +9932,6 @@
 						"command",
 						"envision"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You cast {@spell mage hand}."
 					]
@@ -10150,7 +9950,6 @@
 				"Transmutation"
 			],
 			"usage": "worn gloves",
-			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"As you invest these embroidered strips of cloth, you must meditate and slowly wrap them around your hands. These handwraps have weapon runes etched into them to give your unarmed attacks the benefits of those runes, making your unarmed attacks work like magic weapons. For example, +1 striking handwraps of mighty blows would give you a +1 item bonus to attack rolls with your unarmed attacks and increase the damage of your unarmed attacks from one weapon die to two (normally {@dice 2d4} instead of {@dice 1d4}, but if your fists have a different weapon damage die or you have other unarmed attacks, use two of that die size instead)",
@@ -10233,7 +10032,6 @@
 				"Magical"
 			],
 			"usage": "worn headwear",
-			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"This ordinary-looking hat allows you to cloak yourself in illusions.",
@@ -10252,8 +10050,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"The hat casts a 1st-level {@spell illusory disguise} spell on you.",
 						"While setting up the disguise, you can magically alter the hat to appear as a comb, ribbon, helm, or other piece of headwear."
@@ -10298,7 +10094,6 @@
 				"Invested"
 			],
 			"usage": "worn headwear",
-			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"This hat comes in many forms, such as a colorful turban or a pointy hat with a brim, and can bear symbols or runes. It grants you a +1 item bonus to {@skill Arcana} checks and allows you to cast the {@spell prestidigitation} cantrip as an arcane innate spell."
@@ -10347,7 +10142,6 @@
 				"amount": 15000
 			},
 			"usage": "worn circlet",
-			"bulk": "\u2014",
 			"category": "Apex",
 			"entries": [
 				"This simple cloth headband remains pristine and clean at all times, no matter the circumstances. When you invest the headband, you either increase your Wisdom score by 2 or increase it to 18, whichever would give you a higher score.",
@@ -10365,8 +10159,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"When you are considering a course of action, you get a gut feeling about whether it's a good idea. You gain the effects of an {@spell augury} spell, except that you receive the result from your own instincts rather than an external source."
 					]
@@ -10387,7 +10179,6 @@
 						"freq": 1
 					},
 					"trigger": "You fail a saving throw against an effect that makes you {@condition confused}, {@condition fascinated}, or {@condition stupefied}",
-					"requirements": null,
 					"entries": [
 						"The headband of inspired wisdom clears your mind. You can reroll the saving throw and use the better result."
 					]
@@ -10424,8 +10215,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You can soothe a willing, living, adjacent creature, restoring {@dice 2d6+7} Hit Points to that creature. This is a {@trait positive} {@trait healing} effect. You can't harm undead with this healing."
 					]
@@ -10514,10 +10303,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Potion",
 			"entries": [
@@ -10642,10 +10430,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Poison",
 			"entries": [
@@ -10762,8 +10549,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You regain HP equal to double the evil creature's level. This is a {@trait good}, {@trait positive}, {@trait healing} effect."
 					]
@@ -10805,9 +10590,6 @@
 						"command",
 						"Interact"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You command the sword and point it at a creature you can see. The sword casts detect alignment to detect evil, but this targets only the selected creature instead of detecting in an area.",
 						"Paladin Wielder If you're a champion of the paladin cause, you also gain the following two benefits.",
@@ -10834,7 +10616,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
 					"requirements": "You hit a creature using the holy avenger on your previous action",
 					"entries": [
 						"You cast {@spell dispel magic} at the same level as your champion focus spells. It must target an illusion the creature you hit created, a spell affecting the creature you hit, or an item the creature you hit wears or carries. The spell or item you attempt to counteract must be within 120 feet of you."
@@ -10857,7 +10638,6 @@
 				"Positive"
 			],
 			"usage": "held in 1 hand",
-			"bulk": "\u2014",
 			"category": "Held",
 			"entries": [
 				"This strand of ordinary-looking prayer beads glows with a soft light and becomes warm to the touch the first time you cast a divine spell while holding it. When you do, the prayer beads become attuned to your deity, changing their form and iconography to prominently incorporate your deity's religious symbol and iconography. The beads don't transform or function for an evil spellcaster.",
@@ -10870,9 +10650,6 @@
 						"unit": "varies",
 						"entry": "Cast a Spell"
 					},
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"Cast {@spell bless} or heal, each once per day."
 					]
@@ -10929,10 +10706,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Strike",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Strike"
+				]
 			},
 			"category": "Consumable",
 			"entries": [
@@ -10973,8 +10749,6 @@
 						"unit": "round",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"When you activate the horn by blowing into it with destructive intent, you create a blast note targeting one creature within 30 feet. The blast deals {@damage 3d6} sonic damage. (DC 28 basic Fortitude save)."
 					]
@@ -10993,8 +10767,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You can blow even louder to create an intense blast wave in a 30-foot cone that deals {@damage 8d6} sonic damage. Each creature attempts a DC 28 Fortitude save with the following effects.",
 						{
@@ -11043,8 +10815,6 @@
 						"unit": "hour",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You activate the horn by blowing deeply into it, causing it to issue forth a low blast and cast a 2nd-level {@spell obscuring mist} spell. You can {@action Dismiss} the mist at any time by blowing a second note on the horn using an {@action Interact} action."
 					]
@@ -11127,16 +10897,16 @@
 				"amount": 6
 			},
 			"usage": "affixed to armor",
-			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
 					"unit": "free",
 					"entry": "{@as F}"
 				},
-				"components": "envision",
+				"components": [
+					"envision"
+				],
 				"requirements": "You are trained in {@skill Survival}.",
-				"frequency": null,
 				"trigger": "An {@condition undetected} enemy hits you with an attack"
 			},
 			"category": "Talisman",
@@ -11167,10 +10937,9 @@
 					"number": 3,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Poison",
 			"entries": [
@@ -11231,9 +11000,6 @@
 					"components": [
 						"Interact"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You push the button to anchor the rod in place. It doesn't move, defying gravity if need be. If the button is pushed again, the rod deactivates, ending the anchoring magic. While anchored, the rod can be moved only if 8,000 pounds of pressure are applied to it or if a creature uses {@skill Athletics} to {@action Force Open} the rod with a DC of 40 (though most intelligent creatures can just push the button to release the rod)."
 					]
@@ -11326,8 +11092,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You command the apparatus to magically jury-rig an item you hold or that's within 5 feet of you. The item is repaired, as a 3rd-level {@spell mending} spell. This lasts for 10 minutes, after which the item returns to its previous state of disrepair unless you've Repaired it before then."
 					]
@@ -11357,10 +11121,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Elixir",
 			"entries": [
@@ -11421,9 +11184,6 @@
 						"command",
 						"Interact"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You toss the cube on the ground, and it immediately unfolds into an adamantine fortress.",
 						"The fortress is 20 feet square and 30 feet high, with adamantine stairs leading up to three sets of battlements at heights of 10 feet and 20 feet and at the top. Arrow slits along the lower battlements and crenelations at the top provide standard cover to anyone within the fortress. There's no roof, leaving an open, 10-foot-square vertical shaft through the center of the structure.",
@@ -11467,8 +11227,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"Whispering the command word, you become {@condition invisible} for 1 minute, gaining the effects of a 2nd-level {@spell invisibility} spell."
 					]
@@ -11525,10 +11283,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Potion",
 			"entries": [
@@ -11552,16 +11309,15 @@
 				"amount": 50
 			},
 			"usage": "affixed to a weapon",
-			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 2,
 					"unit": "action"
 				},
-				"components": "Knockdown",
-				"requirements": "You are an expert with the affixed weapon.",
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Knockdown"
+				],
+				"requirements": "You are an expert with the affixed weapon."
 			},
 			"category": "Talisman",
 			"entries": [
@@ -11586,16 +11342,12 @@
 				"amount": 900
 			},
 			"usage": "affixed to a weapon",
-			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Brutal Finish",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": "Brutal Finish"
 			},
 			"category": "Talisman",
 			"entries": [
@@ -11621,16 +11373,13 @@
 				"amount": 400
 			},
 			"usage": "affixed to a weapon",
-			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
 					"unit": "action"
 				},
 				"components": "Certain Strike",
-				"requirements": "You are a master with the affixed weapon.",
-				"frequency": null,
-				"trigger": null
+				"requirements": "You are a master with the affixed weapon."
 			},
 			"category": "Talisman",
 			"entries": [
@@ -11655,16 +11404,16 @@
 				"amount": 175
 			},
 			"usage": "affixed to armor",
-			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
 					"unit": "free",
 					"entry": "{@as F}"
 				},
-				"components": "envision",
+				"components": [
+					"envision"
+				],
 				"requirements": "You have master proficiency in Will saves or have the bravery class feature.",
-				"frequency": null,
 				"trigger": "You attempt a"
 			},
 			"category": "Talisman",
@@ -11691,16 +11440,15 @@
 				"amount": 100
 			},
 			"usage": "affixed to a melee weapon",
-			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "command",
-				"requirements": "You are a master with the affixed weapon.",
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"command"
+				],
+				"requirements": "You are a master with the affixed weapon."
 			},
 			"category": "Talisman",
 			"entries": [
@@ -11725,16 +11473,15 @@
 				"amount": 6
 			},
 			"usage": "affixed to armor",
-			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
 					"unit": "free",
 					"entry": "{@as F}"
 				},
-				"components": "command",
-				"requirements": null,
-				"frequency": null,
+				"components": [
+					"command"
+				],
 				"trigger": "You fall or attempt an {@skill Acrobatics} check to {@action Balance}"
 			},
 			"category": "Talisman",
@@ -11766,10 +11513,7 @@
 					"number": 2,
 					"unit": "action"
 				},
-				"components": "command, Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": "command, Interact"
 			},
 			"category": "Consumable",
 			"entries": [
@@ -11797,10 +11541,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Elixir",
 			"entries": [
@@ -11935,10 +11678,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Poison",
 			"entries": [
@@ -12032,7 +11774,6 @@
 			"hands": 2,
 			"category": "Adventuring Gear",
 			"entries": [
-				"Plants of supernatural significance provide a primal focus for primal spellcasters, such as druids, when using certain abilities and casting some spells. A bundle of holly and mistletoe must be held in one hand to use it. Other primal foci exist for druids focused on other aspects of nature. "
 			]
 		},
 		{
@@ -12093,10 +11834,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Elixir",
 			"entries": [
@@ -12154,10 +11894,9 @@
 					"number": 3,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Poison",
 			"entries": [
@@ -12217,10 +11956,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Poison",
 			"entries": [
@@ -12283,9 +12021,6 @@
 					"components": [
 						"Interact"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You lift an object of up to 8 Bulk as though it were weightless. This requires two hands, and if the object is locked or otherwise held in place, you can attempt to Force it Open using {@skill Athletics} as part of this activation. The object still has its full weight and Bulk for all other purposes\u2014you just ignore that weight. The effect lasts until the end of your next turn."
 					]
@@ -12327,8 +12062,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You animate the lion's head. You Raise the Shield and make a melee {@action Strike} with it as part of the same action. The shield's biting maw is a martial melee weapon that deals {@damage 2d6} piercing damage and has the deadly {@dice 1d6} trait; it can't be enhanced by runes. The shield remains animated for 1 minute, during which time you can {@action Strike} with it each time you Raise the Shield, as well as with a {@action Strike} action."
 					]
@@ -12433,7 +12166,6 @@
 						"freq": 1
 					},
 					"trigger": "You miss on a {@action Strike} with the luck blade",
-					"requirements": null,
 					"entries": [
 						"Reroll the triggering attack roll and use the new result. This is a {@trait fortune} effect."
 					]
@@ -12495,8 +12227,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You play the instrument, causing it to cast a DC 17 {@spell charm} spell."
 					]
@@ -12667,8 +12397,6 @@
 						"unit": "day",
 						"overcharge": true
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You {@action Cast a Spell||Cast the Spell} at the indicated level."
 					]
@@ -12915,7 +12643,6 @@
 						"freq": 1
 					},
 					"trigger": "You are hit or critically hit with an attack, but damage hasn't been rolled yet",
-					"requirements": null,
 					"entries": [
 						"You force the attacker to reroll the attack roll and use the worse result. This effect has the {@trait misfortune} trait.",
 						"Activating the armor causes the gemstone to turn gray and become inert. You cannot activate the armor again until the stone returns to its original green color. The gem turns green again after 1 week or when a significant foe critically succeeds at an attack roll targeting you. (If an enemy rolls a critical success at an attack against you and you force the attacker to reroll that critical success, that critical success does not recharge the mail of luck.) Even if the armor's power returns before a week has elapsed, it can't be activated more than once per day."
@@ -12946,10 +12673,9 @@
 					"number": 3,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Poison",
 			"entries": [
@@ -13096,9 +12822,6 @@
 					"components": [
 						"Treat Poison or 8 hours (Treat Disease)"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You can activate the tools when you use them to {@action Treat Poison} in order to produce the effects of neutralize poison, or when you {@action Treat Disease} in order to produce the effects of remove disease. Once these medicines have been used to treat a patient's poison or disease, they can't be used again to treat the same affliction for that patient."
 					]
@@ -13182,8 +12905,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You dig furiously with the mattock to non-magically replicate the effects of an {@spell earthquake} spell."
 					]
@@ -13209,16 +12930,16 @@
 				"amount": 525
 			},
 			"usage": "affixed to a shield or weapon",
-			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
 					"unit": "free",
 					"entry": "{@as F}"
 				},
-				"components": "command",
+				"components": [
+					"command"
+				],
 				"requirements": "You are a master in {@skill Crafting}.",
-				"frequency": null,
 				"trigger": "The affixed item would take damage"
 			},
 			"category": "Talisman",
@@ -13250,9 +12971,6 @@
 						"unit": "varies",
 						"entry": "Cast a Spell"
 					},
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You expend a number of charges from the staff to cast a spell from its list."
 					]
@@ -13349,16 +13067,15 @@
 				"amount": 7
 			},
 			"usage": "affixed to armor",
-			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
 					"unit": "free",
 					"entry": "{@as F}"
 				},
-				"components": "envision",
-				"requirements": null,
-				"frequency": null,
+				"components": [
+					"envision"
+				],
 				"trigger": "You attempt a {@skill Deception} check to {@action Feint}, but you haven't rolled yet."
 			},
 			"category": "Talisman",
@@ -13379,7 +13096,6 @@
 				"Magical"
 			],
 			"usage": "worn",
-			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"This silver signet ring changes to match the insignia of a lord or organization you serve (or your own face, if you serve no one else). It grants you a +2 item bonus to {@skill Diplomacy} checks and lets you cast {@spell message} as an arcane innate spell at will.",
@@ -13398,8 +13114,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"The ring casts animal messenger to your specification. The animal is a magical creature that springs from the ring, and its appearance suits the iconography or heraldry of the lord or organization represented by the ring."
 					]
@@ -13455,10 +13169,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Poison",
 			"entries": [
@@ -13525,10 +13238,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Elixir",
 			"entries": [
@@ -13932,16 +13644,15 @@
 				"amount": 6
 			},
 			"usage": "affixed to armor",
-			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Climb",
-				"requirements": "You are trained in {@skill Athletics}",
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Climb"
+				],
+				"requirements": "You are trained in {@skill Athletics}"
 			},
 			"category": "Talisman",
 			"entries": [
@@ -13983,8 +13694,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You touch the stitched image of the new moon on the armor's collar and suppress the {@condition dazzled} condition for 1 minute."
 					]
@@ -14023,16 +13732,15 @@
 				"amount": 175
 			},
 			"usage": "affixed to a weapon",
-			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "command",
-				"requirements": "You are a master in {@skill Perception}.",
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"command"
+				],
+				"requirements": "You are a master in {@skill Perception}."
 			},
 			"category": "Talisman",
 			"entries": [
@@ -14057,16 +13765,16 @@
 				"amount": 66
 			},
 			"usage": "affixed to a weapon",
-			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
 					"unit": "free",
 					"entry": "{@as F}"
 				},
-				"components": "command",
+				"components": [
+					"command"
+				],
 				"requirements": "You are an expert with the affixed weapon.",
-				"frequency": null,
 				"trigger": "You damage a {@condition flat-footed} creature with a {@action Strike} using the affixed weapon"
 			},
 			"category": "Talisman",
@@ -14148,7 +13856,6 @@
 				"Magical"
 			],
 			"usage": "worn",
-			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"This string of beads appears to be a hemp string with lustrous red beads of various sizes hanging from it. When activated, it briefly appears in its true form: a golden chain with golden spheres attached by fine threads.",
@@ -14163,9 +13870,6 @@
 					"components": [
 						"Interact"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You detach a sphere from the necklace, causing it to glow with orange light. After you activate a sphere, if you or anyone else hurls it (an {@action Interact} action with the ranged trait), it detonates as a fireball where it lands. Your toss can place the center of the {@spell fireball} anywhere within 70 feet, though at the GM's discretion you might need to make an attack roll if the throw is unusually challenging. If no one hurls the sphere by the start of your next turn, it turns into a non-magical red bead."
 					]
@@ -14331,10 +14035,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Oil",
 			"entries": [
@@ -14364,10 +14067,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Poison",
 			"entries": [
@@ -14423,10 +14125,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Poison",
 			"entries": [
@@ -14488,9 +14189,6 @@
 					"components": [
 						"command"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You swear an oath to destroy one creature you can see. For the next 7 days or until that creature is slain, your attacks with the bow against that creature deal {@damage 1d6} additional damage, and you gain a +2 circumstance bonus to {@skill Survival} checks to {@action Track} that creature. Your critical hits against the target gain the bow's critical specialization effect (page 283); if they would already do so, they instead increase the DC of the {@skill Athletics} check to {@action Escape} when critically hit to DC 20.",
 						"After you activate the bow, you can't activate it again for 7 days. If you kill the creature you've sworn an oath against, the oath ends and you need to wait only 10 minutes before you can activate it again."
@@ -14521,10 +14219,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Oil",
 			"entries": [
@@ -14572,10 +14269,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Oil",
 			"entries": [
@@ -14606,10 +14302,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Oil",
 			"entries": [
@@ -14662,10 +14357,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Oil",
 			"entries": [
@@ -14695,10 +14389,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Oil",
 			"entries": [
@@ -14732,10 +14425,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Oil",
 			"entries": [
@@ -14820,16 +14512,16 @@
 				"amount": 7
 			},
 			"usage": "affixed to armor",
-			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
 					"unit": "free",
 					"entry": "{@as F}"
 				},
-				"components": "envision",
+				"components": [
+					"envision"
+				],
 				"requirements": "You are trained in {@skill Stealth}.",
-				"frequency": null,
 				"trigger": "You use a {@action Sneak} action"
 			},
 			"category": "Talisman",
@@ -15086,16 +14778,15 @@
 				"amount": 3
 			},
 			"usage": "affixed to a weapon",
-			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
 					"unit": "free",
 					"entry": "{@as F}"
 				},
-				"components": "envision",
-				"requirements": null,
-				"frequency": null,
+				"components": [
+					"envision"
+				],
 				"trigger": "You critically succeed at an attack roll with the affixed weapon."
 			},
 			"category": "Talisman",
@@ -15128,10 +14819,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Potion",
 			"entries": [
@@ -15151,7 +14841,6 @@
 				"Occult"
 			],
 			"usage": "worn",
-			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"This amulet is hollow and shaped in the form of an unblinking eye. Its cavity typically holds some fragment of occult text. While wearing the pendant, you gain a +1 item bonus to {@skill Occultism} checks, and you can cast the {@spell guidance} cantrip as an occult innate spell."
@@ -15203,10 +14892,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"ammunition": [
 				"arrow",
@@ -15232,7 +14920,6 @@
 				"Magical"
 			],
 			"usage": "worn mask",
-			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"Despite covering the entire face, this alabaster mask does not hinder vision or other senses. Wearing the mask grants a +1 item bonus to {@skill Performance} checks while acting, orating, performing comedy, or singing.",
@@ -15246,9 +14933,6 @@
 					"components": [
 						"envision"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You change the mask's appearance into an artistic rendition of a dramatic character of your choice."
 					]
@@ -15303,10 +14987,7 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact or 1 or more days",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": "Interact or 1 or more days"
 			},
 			"category": "Tool",
 			"entries": [
@@ -15352,8 +15033,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You ask for guidance about a particular course of action, gaining the effects of an {@spell augury} spell."
 					]
@@ -15458,9 +15137,6 @@
 						"envision",
 						"Interact"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You place the miniature theater on the ground, filling it with any set dressing and up to six figures you choose. Then, you tap a rhythm on the miniature, causing it to grow into a modest stage 20 feet wide and 15 feet deep. It's dressed with the decorations you selected, and simple mannequins wear the costumes you chose. A wooden proscenium arch frames the stage, and simple curtains along the sides conceal the wings.",
 						"As a magical structure, the stage has the {@trait structure} trait.",
@@ -15500,9 +15176,6 @@
 						"(envision",
 						"Interact)"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"As you flip through the book, you think about a broad topic you want to know more about. Choose one skill: {@skill Arcana}, {@skill Crafting}, {@skill Medicine}, {@skill Nature}, {@skill Occultism}, {@skill Religion}, {@skill Society}, or a single subcategory of {@skill Lore}. The book's pages fill with information about that skill, though only you can see the information. While the pages are full, you can spend an {@action Interact} action perusing the book just before attempting a check to {@action Recall Knowledge} with the chosen skill. This grants you a +3 item bonus to the check, and if you roll a critical failure, you get a failure instead.",
 						"The information within the book disappears after 24 hours or when the tome is activated again."
@@ -15527,22 +15200,21 @@
 				"amount": 4
 			},
 			"usage": "affixed to a weapon",
-			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
 					"unit": "free",
 					"entry": "{@as F}"
 				},
-				"components": "envision",
-				"requirements": null,
-				"frequency": null,
+				"components": [
+					"envision"
+				],
 				"trigger": "You make an attack with the affixed weapon, but you haven't rolled yet."
 			},
 			"category": "Talisman",
 			"entries": [
 				"This fluorite crystal glows with a strange phosphorescence.",
-				"When you activate the crystal, the weapon becomes a +1 striking weapon for the rest of the turn, gaining a +1 item bonus to the attack roll and increasing the damage on a hit to two weapon damage dice."
+				"When you activate the crystal, the weapon becomes a {@item +1 weapon potency||+1} {@item striking} weapon for the rest of the turn, gaining a +1 item bonus to the attack roll and increasing the damage on a hit to two weapon damage dice."
 			]
 		},
 		{
@@ -15564,10 +15236,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Potion",
 			"entries": [
@@ -15630,10 +15301,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Potion",
 			"entries": [
@@ -15663,10 +15333,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Potion",
 			"entries": [
@@ -15692,10 +15361,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Potion",
 			"entries": [
@@ -15782,10 +15450,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Potion",
 			"entries": [
@@ -15849,10 +15516,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Potion",
 			"entries": [
@@ -15882,10 +15548,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Potion",
 			"entries": [
@@ -15915,10 +15580,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Potion",
 			"entries": [
@@ -15936,7 +15600,6 @@
 				"Transmutation"
 			],
 			"usage": "held in 1 hand",
-			"bulk": "\u2014",
 			"category": "Held",
 			"entries": [
 				"This sprig of berry-festooned holly and mistletoe doesn't wilt or rot. It can be used as a primal focus, and it also grants the creature holding it a +1 item bonus to {@skill Nature} checks.",
@@ -15955,8 +15618,6 @@
 						"interval": 10,
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You squeeze juice from one of the berries and smear it onto a non-magical club or staff to cast {@spell shillelagh} upon it."
 					]
@@ -15975,8 +15636,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You can twine the sprig around the wrist of one hand and touch a tree to cast {@spell tree shape} upon yourself, except instead of a becoming a tree, you become a vine on the touched tree."
 					]
@@ -16031,10 +15690,9 @@
 					"number": 3,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Poison",
 			"entries": [
@@ -16086,10 +15744,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Elixir",
 			"entries": [
@@ -16229,7 +15886,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
 					"requirements": "The reflecting shield is raised",
 					"entries": [
 						"You attempt to reflect the spell on its caster, with the effects of a 9th-level {@spell spell turning} with a counteract modifier of +40."
@@ -16562,7 +16218,6 @@
 				"amount": 1750
 			},
 			"usage": "worn",
-			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"Claw-like prongs on his thick golden band bears extend to dig deep into sheer surfaces when you are Climbing. This ring grants you a climb Speed equal to half your land Speed.",
@@ -16586,7 +16241,6 @@
 				"amount": 925
 			},
 			"usage": "worn",
-			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"This ornate silver ring bears two competing geometric designs of brightly colored and wildly clashing inlaid gemstones. A spellcaster can cast a single spell into this ring as long as no spell is currently stored within, expending the normal time, costs, and so forth to {@action Cast a Spell||Cast the Spell}. The spell's effect doesn't occur; the spell's power is instead stored within the ring.",
@@ -16602,9 +16256,7 @@
 					"components": [
 						"envision"
 					],
-					"frequency": null,
 					"trigger": "You are targeted by or within the area of the spell stored within the ring",
-					"requirements": null,
 					"entries": [
 						"You can attempt to counteract the triggering spell, using the level of the spell stored in the ring and a counteract modifier of +19.",
 						"Once you do, the stored spell's energy is spent, and the ring is empty."
@@ -16620,9 +16272,6 @@
 					"components": [
 						"command"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You harmlessly expend the stored spell, having no effect but emptying the ring so that another spell can be cast into it."
 					]
@@ -16641,7 +16290,6 @@
 				"Magical"
 			],
 			"usage": "worn",
-			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"This ring grants you resistance 5 against one type of energy damage: acid, cold, electricity, fire, or sonic. Each ring is crafted to protect against a particular type of energy damage, and its design usually embodies the type of energy it protects the wearer from in some way. For instance, a ring of fire resistance might be capped with a ruby, whereas a ring of cold resistance features a sapphire instead."
@@ -16701,7 +16349,6 @@
 				"amount": 850
 			},
 			"usage": "worn",
-			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"This plain silver ring has an almost oily sheen. While wearing the ring, you gain a +2 item bonus to {@skill Deception} checks.",
@@ -16715,9 +16362,6 @@
 					"components": [
 						"Interact"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"Snapping your fingers on the hand that wears the ring causes the ring to cast {@spell glibness} on you with no visual manifestations of a spell being cast."
 					]
@@ -16736,7 +16380,6 @@
 				"Magical"
 			],
 			"usage": "worn",
-			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"This ring seems like simple tarnished brass, but it enhances your curiosity about traps and devices of all kinds. You can use an {@action Interact} action to pull a set of thieves' tools from the ring. These tools appear in your hand and fold back into the ring if they would leave your possession. They grant you a +2 item bonus to {@skill Thievery} checks to {@action Disable a Device} and to {@action Pick a Lock}, and the ring's insights grant you the same bonus to {@skill Crafting} checks to {@action Craft} and {@action Repair} snares and traps.",
@@ -16755,8 +16398,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You create a 4th-level {@spell glyph of warding} containing fireball. You can have only one glyph of warding from a ring of maniacal devices active at a time, even if you have multiple rings, and the spell ends if you lose your investiture in the ring."
 					]
@@ -16805,7 +16446,6 @@
 				"amount": 67000
 			},
 			"usage": "worn",
-			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"This golden ring has three diamonds set into its face.",
@@ -16820,9 +16460,7 @@
 					"components": [
 						"envision"
 					],
-					"frequency": null,
 					"trigger": "You are targeted by a spell",
-					"requirements": null,
 					"entries": [
 						"The ring replicates the effects of an 8th-level {@spell spell turning} with a counteract modifier of +35, possibly causing the triggering spell to reflect back on its caster. The ring can reflect no more than 9 total levels of spells per day. If you activate the ring to reflect a spell that would exceed this limit, the attempt fails, but the attempted usage of the ring does not count toward the daily limit."
 					]
@@ -16846,7 +16484,6 @@
 				"amount": 325
 			},
 			"usage": "worn",
-			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"This polished wooden ring constantly refreshes your body and mind. You don't need to eat or drink while wearing it, and you need only 2 hours of sleep per day to gain the benefits of 8 hours of sleep. A ring of sustenance doesn't function until it's been worn and invested continuously for a week. Removing it resets this interval."
@@ -16868,7 +16505,6 @@
 				"amount": 1750
 			},
 			"usage": "worn",
-			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"This blue metal ring grants you a swim Speed equal to half your land Speed. Penalties to your Speed (including from your armor) apply before halving."
@@ -16887,7 +16523,6 @@
 				"Magical"
 			],
 			"usage": "worn",
-			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"This heavy iron ring is shaped to look like the head of a ram, with curling horns.",
@@ -16905,8 +16540,6 @@
 						"unit": "minute",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"A ram-shaped blast of force slams into one foe that you can see within 60 feet. The number of actions you spend to {@b Activate} this Item (from 1 to 3) determines the intensity of the force. The blow deals {@damage 2d6} force damage per action spent and pushes the target 5 feet per action spent. The target must attempt a DC 22 Fortitude save.",
 						{
@@ -16960,7 +16593,6 @@
 				"Invested"
 			],
 			"usage": "worn",
-			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"This ring is made from the purest platinum and is covered in esoteric arcane symbols. It does nothing unless you have a spellcasting class feature with the arcane tradition. While wearing the ring of wizardry, you gain a +1 item bonus to {@skill Arcana} checks and have two additional 1st-level arcane spell slots each day. You prepare spells in these slots or cast from them spontaneously, just as you normally cast your spells.",
@@ -17086,9 +16718,6 @@
 					"components": [
 						"Interact"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You pluck an eye from the robe and toss it into the air, where it turns {@condition invisible} and floats to a destination you choose, with the same effect as a 5th-level {@spell prying eye} spell.",
 						"You can Sustain the Activation just as you would be able to {@action Sustain a Spell||Sustain the Spell}."
@@ -17125,9 +16754,7 @@
 					"components": [
 						"command"
 					],
-					"frequency": null,
 					"trigger": "You attempt a saving throw against an arcane spell, but you haven't rolled yet",
-					"requirements": null,
 					"entries": [
 						"You automatically succeed at your save against the triggering arcane spell."
 					]
@@ -17190,9 +16817,6 @@
 					"components": [
 						"Interact"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"This rod emits a thin, gray beam that negates a spell or magic item, casting a 6th-level {@spell dispel magic} spell with a counteract modifier of +23. Once activated, the rod can't be activated again for {@dice 2d6} hours."
 					]
@@ -17231,9 +16855,6 @@
 						"command",
 						"{@action Interact}"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"Choose a creature within 60 feet and roll d% on the table below to determine the rod's effect. If an entry lists only a spell name, the rod casts that spell at its lowest level. You make any decisions for a spell cast by the rod unless otherwise indicated, except that it must target the creature you chose, or the creature you chose must be the center of the spell's area, if it has an area but no targets. If the spell's range is less than 60 feet, increase the range to 60 feet.",
 						"Any spell DC required is DC 27, and any spell attack roll required is +17. If the rod casts a spell on you, you don't get a saving throw or other defense against it.",
@@ -17462,10 +17083,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Elixir",
 			"entries": [
@@ -17529,10 +17149,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Oil",
 			"entries": [
@@ -17595,10 +17214,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Oil",
 			"entries": [
@@ -17623,16 +17241,16 @@
 				"amount": 7
 			},
 			"usage": "affixed to armor",
-			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
 					"unit": "free",
 					"entry": "{@as F}"
 				},
-				"components": "command",
+				"components": [
+					"command"
+				],
 				"requirements": "You're an expert in Reflex.",
-				"frequency": null,
 				"trigger": "You attempt to {@action Grab an Edge} but haven't rolled"
 			},
 			"category": "Talisman",
@@ -17705,10 +17323,7 @@
 					"number": 2,
 					"unit": "action"
 				},
-				"components": "{@action Cast a Spell}",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": "{@action Cast a Spell}"
 			},
 			"category": "Scroll",
 			"entries": [
@@ -17739,10 +17354,7 @@
 					"number": 2,
 					"unit": "action"
 				},
-				"components": "{@action Cast a Spell}",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": "{@action Cast a Spell}"
 			},
 			"category": "Scroll",
 			"entries": [
@@ -17790,10 +17402,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Elixir",
 			"entries": [
@@ -17882,10 +17493,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Elixir",
 			"entries": [
@@ -18050,10 +17660,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Potion",
 			"entries": [
@@ -18141,10 +17750,9 @@
 					"number": 3,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Poison",
 			"entries": [
@@ -18193,16 +17801,16 @@
 				"amount": 23
 			},
 			"usage": "affixed to armor",
-			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
 					"unit": "free",
 					"entry": "{@as F}"
 				},
-				"components": "command",
+				"components": [
+					"command"
+				],
 				"requirements": "You are an expert in {@skill Acrobatics}.",
-				"frequency": null,
 				"trigger": "You attempt to {@action Escape} using {@skill Acrobatics} for your roll, but you haven't rolled yet"
 			},
 			"category": "Talisman",
@@ -18241,9 +17849,6 @@
 					"components": [
 						"Interact"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"The weapon takes the shape of another melee weapon that requires the same number of hands to wield. The weapon's runes and any precious material it's made of apply to the weapon's new shape. Any property runes that can't apply to the new form are suppressed until the item takes a shape to which they can apply."
 					]
@@ -18338,10 +17943,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"onset": "1 minute",
 			"category": "Potion",
@@ -18831,10 +18435,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Tool",
 			"entries": [
@@ -18861,10 +18464,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Elixir",
 			"entries": [
@@ -18995,7 +18597,6 @@
 				"Transmutation"
 			],
 			"usage": "held in 1 hand",
-			"bulk": "\u2014",
 			"category": "Held",
 			"entries": [
 				"A grinning skull tops the bow of this macabre key. This key can be used in place of thieves' tools when attempting to {@action Pick a Lock}, and it grants a +1 item bonus to the {@skill Thievery} check.",
@@ -19016,7 +18617,6 @@
 						"freq": 1
 					},
 					"trigger": "You attempt to {@action Pick a Lock} but haven't rolled yet",
-					"requirements": null,
 					"entries": [
 						"The key casts knock on the lock you're trying to pick."
 					]
@@ -19079,9 +18679,7 @@
 					"components": [
 						"command"
 					],
-					"frequency": null,
 					"trigger": "Your attack roll with the sky hammer is a critical success",
-					"requirements": null,
 					"entries": [
 						"A 6th-level arcane {@spell fireball} spell explodes, centered on the sky hammer. The spell DC is 45. You are immune to the fireball's effect, though your allies are not."
 					]
@@ -19111,10 +18709,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"ammunition": [
 				"arrow"
@@ -19239,8 +18836,6 @@
 						"unit": "hour",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"Tiny, hairlike tendrils extend from the slippers' soles, allowing you to walk on vertical surfaces or even to move upside down along ceilings. For 1 minute, you gain a 20-foot climb Speed and you don't need to use your hands to {@action Climb}. However, the slippers require decent traction for you to walk on a wall, so they provide no benefit when you're moving across greased, icy, or oiled surfaces."
 					]
@@ -19271,10 +18866,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Poison",
 			"entries": [
@@ -19325,10 +18919,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Tool",
 			"entries": [
@@ -19400,10 +18993,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Tool",
 			"entries": [
@@ -19469,16 +19061,15 @@
 				"amount": 22
 			},
 			"usage": "affixed to armor",
-			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": "You are an expert in {@skill Thievery}.",
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				],
+				"requirements": "You are an expert in {@skill Thievery}."
 			},
 			"category": "Talisman",
 			"entries": [
@@ -19555,8 +19146,6 @@
 					"components": [
 						"command"
 					],
-					"frequency": null,
-					"trigger": null,
 					"requirements": "On your previous action this turn, you hit and damaged a creature with this weapon",
 					"entries": [
 						"You unleash the stored spell, which uses the target of the triggering attack as the target of the spell. This empties the spell from the weapon and allows a spell to be cast into it again.",
@@ -19573,9 +19162,6 @@
 					"components": [
 						"command"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"Harmlessly expend the stored spell. This frees the weapon to have a new spell cast into it."
 					]
@@ -19646,10 +19232,7 @@
 					"number": 2,
 					"unit": "action"
 				},
-				"components": "{@action Cast a Spell}",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": "{@action Cast a Spell}"
 			},
 			"ammunition": [
 				"any"
@@ -19939,10 +19522,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Poison",
 			"entries": [
@@ -20027,9 +19609,6 @@
 					"components": [
 						"Interact"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You shoot one of the shield's spines at a target. A fired spine uses the spikes' statistics, but it is a martial ranged weapon with a range increment of 120 feet."
 					]
@@ -20097,9 +19676,6 @@
 						"unit": "varies",
 						"entry": "Cast a Spell"
 					},
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You expend a number of charges from the staff to cast a spell from its list."
 					]
@@ -20189,9 +19765,6 @@
 						"unit": "varies",
 						"entry": "Cast a Spell"
 					},
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You expend a number of charges from the staff to cast a spell from its list."
 					]
@@ -20281,9 +19854,6 @@
 						"unit": "varies",
 						"entry": "Cast a Spell"
 					},
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You expend a number of charges from the staff to cast a spell from its list."
 					]
@@ -20373,9 +19943,6 @@
 						"unit": "varies",
 						"entry": "Cast a Spell"
 					},
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You expend a number of charges from the staff to cast a spell from its list."
 					]
@@ -20468,9 +20035,6 @@
 						"unit": "varies",
 						"entry": "Cast a Spell"
 					},
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You expend a number of charges from the staff to cast a spell from its list."
 					]
@@ -20561,9 +20125,6 @@
 						"unit": "varies",
 						"entry": "Cast a Spell"
 					},
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You expend a number of charges from the staff to cast a spell from its list."
 					]
@@ -20652,9 +20213,6 @@
 						"unit": "varies",
 						"entry": "Cast a Spell"
 					},
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You expend a number of charges from the staff to cast a spell from its list."
 					]
@@ -20771,9 +20329,6 @@
 					"components": [
 						"Interact"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"The gem at the top of the staff glows as a torch, shedding bright light in a 20-foot radius (and dim light to the next 20 feet) for 10 minutes."
 					]
@@ -20786,9 +20341,6 @@
 						"unit": "varies",
 						"entry": "Cast a Spell"
 					},
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You expend a number of charges from the staff to cast a spell from its list.",
 						{
@@ -20829,9 +20381,6 @@
 						"unit": "varies",
 						"entry": "Cast a Spell"
 					},
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You expend a number of charges from the staff to cast a spell from its list."
 					]
@@ -20921,9 +20470,6 @@
 						"unit": "varies",
 						"entry": "Cast a Spell"
 					},
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You expend a number of charges from the staff to cast a spell from its list."
 					]
@@ -21020,9 +20566,6 @@
 						"unit": "varies",
 						"entry": "Cast a Spell"
 					},
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You expend a number of charges from the staff to cast a spell from its list.",
 						{
@@ -21072,9 +20615,6 @@
 						"unit": "varies",
 						"entry": "Cast a Spell"
 					},
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You expend a number of charges from the staff to cast a spell from its list.",
 						{
@@ -21122,9 +20662,6 @@
 						"unit": "varies",
 						"entry": "Cast a Spell"
 					},
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You expend a number of charges from the staff to cast a spell from its list."
 					]
@@ -21241,10 +20778,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"ammunition": [
 				"sling bullets"
@@ -21278,10 +20814,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Elixir",
 			"entries": [
@@ -21310,10 +20845,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"ammunition": [
 				"arrow"
@@ -21364,8 +20898,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You cast a 6th-level {@spell lightning bolt} (DC 33)."
 					]
@@ -21387,7 +20919,6 @@
 						"freq": 1
 					},
 					"trigger": "An {@trait electricity} effect targets you or a creature within 10 feet of you, or has you or a creature within 10 feet of you in its area",
-					"requirements": null,
 					"entries": [
 						"You try to divert the electricity off course, to be absorbed by storm flash. Choose one eligible creature to protect and roll a melee attack roll against the DC of the {@trait electricity} effect. If you succeed, the chosen creature takes no electricity damage from the triggering effect."
 					]
@@ -21672,10 +21203,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Tool",
 			"entries": [
@@ -21742,16 +21272,15 @@
 				"amount": 70
 			},
 			"usage": "affixed to a shield",
-			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
 					"unit": "free",
 					"entry": "{@as F}"
 				},
-				"components": "envision",
-				"requirements": null,
-				"frequency": null,
+				"components": [
+					"envision"
+				],
 				"trigger": "You take damage from a physical attack while you don't have the affixed shield raised."
 			},
 			"category": "Talisman",
@@ -21793,10 +21322,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Strike",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Strike"
+				]
 			},
 			"category": "Bomb",
 			"entries": [
@@ -21966,10 +21494,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Poison",
 			"entries": [
@@ -22167,7 +21694,6 @@
 				"amount": 40000
 			},
 			"usage": "worn",
-			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"When invested, this ornate crown and its incandescent gemstone meld into your head and take the form of a tattoo.",
@@ -22188,8 +21714,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You gain the effects of an 8th-level {@spell true seeing} spell."
 					]
@@ -22261,10 +21785,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Strike",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Strike"
+				]
 			},
 			"category": "Bomb",
 			"entries": [
@@ -22428,9 +21951,6 @@
 					"components": [
 						"Interact"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You light the incense inside the censer, and it burns for 1 hour. During that time, as long you are holding the thurible, you gain a +1 item bonus to {@skill Religion} checks, and any critical failure you roll when you {@action Decipher Writing} of a religious nature is a failure instead."
 					]
@@ -22491,16 +22011,15 @@
 				"amount": 30
 			},
 			"usage": "affixed to a weapon",
-			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
 					"unit": "free",
 					"entry": "{@as F}"
 				},
-				"components": "envision",
-				"requirements": null,
-				"frequency": null,
+				"components": [
+					"envision"
+				],
 				"trigger": "You {@action Strike} with the affixed weapon."
 			},
 			"category": "Talisman",
@@ -22524,16 +22043,14 @@
 				"amount": 2
 			},
 			"usage": "held in 1 hand",
-			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Tool",
 			"entries": [
@@ -22665,9 +22182,6 @@
 						"Interact",
 						"envision"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You imagine a specific simple tool, and the any-tool transforms into it.",
 						"(Usually, you can choose from a tool listed in Chapter 6). This transforms the wooden portion into any haft and the metal caps into spades, hammer heads, or the like, allowing for most basic tools but nothing more complex. You can return the item to its rod form with an {@action Interact} action."
@@ -22736,9 +22250,6 @@
 					"components": [
 						"Interact (auditory)"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You can raise the conch to your lips and blow into it, letting out a long, rumbling note. For the next minute, you and all allies who were within 30 feet of you when you activated the conch gain a +2 item bonus to {@skill Athletics} checks to {@action Swim} and can breathe under water."
 					]
@@ -22768,10 +22279,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Potion",
 			"entries": [
@@ -22803,10 +22313,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Potion",
 			"entries": [
@@ -22851,9 +22360,6 @@
 					"components": [
 						"Interact"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You cause the twigs to rapidly grow or contract, reshaping into a +1 striking staff, a +1 striking bo staff, or its disc form. In its disc form, it has negligible Bulk and must be held in one hand to be activated. In the other forms, it has the same Bulk as a normal weapon of its type. You can switch your grip as part of the activation.",
 						"When you expand the item, you can use the force of the expansion to {@action High Jump} or to try to {@action Force Open} a door or the like by wedging the disc into a gap before activation. The staff makes the {@skill Athletics} check with a +15 modifier."
@@ -22900,7 +22406,6 @@
 						"freq": 1
 					},
 					"trigger": "You critically succeed at an attack roll against a good creature with the weapon",
-					"requirements": null,
 					"entries": [
 						"The target takes {@condition persistent damage||persistent bleed damage} equal to {@dice 1d8} per weapon damage die of the etched weapon."
 					]
@@ -22931,10 +22436,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Strike",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Strike"
+				]
 			},
 			"category": "Consumable",
 			"entries": [
@@ -22960,16 +22464,16 @@
 				"amount": 160
 			},
 			"usage": "affixed to armor",
-			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
 					"unit": "free",
 					"entry": "{@as F}"
 				},
-				"components": "envision",
+				"components": [
+					"envision"
+				],
 				"requirements": "You are a master in {@skill Stealth}.",
-				"frequency": null,
 				"trigger": "You attempt a {@skill Stealth} check for initiative, but you haven't rolled yet"
 			},
 			"category": "Talisman",
@@ -22989,23 +22493,24 @@
 				"Magical"
 			],
 			"usage": "worn",
-			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"This elegant copper ring has miniature images of songbirds engraved around its circumference. You gain a +1 item bonus to {@skill Deception} checks.",
 				{
 					"type": "ability",
 					"style": "compact",
+					"idName": "Ventriloquist's Ring",
 					"activity": {
 						"number": 2,
 						"unit": "action"
 					},
+					"frequency": {
+						"unit": "day",
+						"freq": 1
+					},
 					"components": [
 						"Interact"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"Twisting the ring around your finger allows you to magically throw your voice, with the effects of a {@spell ventriloquism} spell (DC 19)."
 					]
@@ -23031,9 +22536,38 @@
 						"amount": 670,
 						"note": null
 					},
+					"_mod": {
+						"entriesMode": "generic",
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replaceTags": true,
+								"replace": "\\+1",
+								"with": "+2"
+							},
+							{
+								"mode": "replaceArr",
+								"replaceTags": true,
+								"replace": "Ventriloquist's Ring",
+								"items": {
+									"type": "ability",
+									"style": "compact",
+									"activity": {
+										"number": 2,
+										"unit": "action"
+									},
+									"components": [
+										"Interact"
+									],
+									"entries": [
+										"Twisting the ring around your finger allows you to magically throw your voice, with the effects of a 2nd-level {@spell ventriloquism} (DC 27)."
+									]
+								}
+							}
+						]
+					},
 					"entries": [
-						"The ring grants a +2 bonus. When you activate the ring, you gain the effects of 2nd-level {@spell ventriloquism} (DC 27)",
-						"You can activate the ring any number of times per day."
+						"The ring grants a +2 bonus. When you activate the ring, you gain the effects of 2nd-level {@spell ventriloquism} (DC 27). You can activate the ring any number of times per day."
 					]
 				}
 			]
@@ -23062,9 +22596,6 @@
 						"unit": "varies",
 						"entry": "Cast a Spell"
 					},
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You expend a number of charges from the staff to cast a spell from its list."
 					]
@@ -23133,10 +22664,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "command",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"command"
+				]
 			},
 			"ammunition": [
 				"arrow"
@@ -23166,10 +22696,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "command",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"command"
+				]
 			},
 			"ammunition": [
 				"arrow"
@@ -23198,16 +22727,15 @@
 				"amount": 850
 			},
 			"usage": "affixed to a weapon",
-			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
 					"unit": "reaction",
 					"entry": "{@as R}"
 				},
-				"components": "envision",
-				"requirements": null,
-				"frequency": null,
+				"components": [
+					"envision"
+				],
 				"trigger": "A creature within your reach uses a {@trait manipulate} or {@trait move} action, makes a ranged attack, or leaves a square during a move action it's using"
 			},
 			"category": "Talisman",
@@ -23251,9 +22779,7 @@
 						"envision (death",
 						"incapacitation)"
 					],
-					"frequency": null,
 					"trigger": "You roll a natural 20 on a {@action Strike} with the weapon, critically succeed, and deal slashing damage.",
-					"requirements": null,
 					"entries": [
 						"The target must succeed at a DC 37 Fortitude save or be decapitated. This kills any creature except ones that don't require a head to live. For creatures with multiple heads, this usually kills the creature only if you sever its last head."
 					]
@@ -23277,7 +22803,6 @@
 				"amount": 14800
 			},
 			"usage": "worn backpack",
-			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"This leather rucksack has icons burned into it, and every time it's taken to a plane it hasn't been to before, a new icon representing that plane scorches into the surface. The pack grants you a +3 bonus to {@skill Survival} checks.",
@@ -23296,9 +22821,6 @@
 						"envision",
 						"Interact)"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"As you activate the pack, you can harness up to four willing creatures to the ropes on the pack. At the end of the activation time, the pack casts a 7th-level {@spell plane shift} or {@spell teleport} spell, transporting you and everyone attached to the pack. Attempt a DC 45 {@skill Survival} check. On a success, you arrive 25 miles off target using plane shift or halve the distance you're off-target with teleport. On a critical success, you arrive exactly on target."
 					]
@@ -23336,8 +22858,6 @@
 						"overcharge": true
 					},
 					"note": "the activation takes {@as 2} if the spell normally takes {@as 1} to cast, or {@as 3} if the spell normally takes {@as 2}",
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You {@action Cast a Spell||Cast the Spell}, and its duration is increased by half."
 					]
@@ -23461,8 +22981,6 @@
 						"unit": "day",
 						"overcharge": true
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You cast a {@spell heal} spell at the indicated level."
 					]
@@ -23596,8 +23114,6 @@
 						"unit": "day",
 						"overcharge": true
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You cast {@spell magic missile} of the indicated level. After you cast the spell, an additional missile or missiles are released from the wand at the start of each of your turns, as though you cast the 1-action version of magic missile. Choose targets each time. This lasts for 1 minute, until you're no longer wielding the wand, or until you try to activate the wand again."
 					]
@@ -23680,8 +23196,6 @@
 						"unit": "day",
 						"overcharge": true
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You cast {@spell finger of death} of the indicated level. If the spell slays its target, the corpse releases negative energy in a 20-foot emanation, dealing negative damage equal to double the spell's level."
 					]
@@ -23750,8 +23264,6 @@
 						"unit": "day",
 						"overcharge": true
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You cast {@spell fireball} of the indicated level. Each creature that fails its save takes {@condition persistent damage||persistent fire damage}."
 					]
@@ -23872,8 +23384,6 @@
 						"overcharge": true
 					},
 					"note": "this activation takes {@as 2} if the spell normally takes {@as 1} to cast, or {@as 3} if the spell normally takes {@as 2}",
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You {@action Cast a Spell||Cast the Spell}, and increase its area. Add 5 feet to the radius of a burst that normally has a radius of at least 10 feet; add 5 feet to the length of a cone or line that is normally 15 feet long or smaller; or add 10 feet to the length of a larger cone or line."
 					]
@@ -24032,7 +23542,6 @@
 				"note": null
 			},
 			"usage": "worn",
-			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"This compact compass repurposes ancient technology to draw fantastic powers from the mysterious magical items called aeon stones. It serves as a badge of office for agents of the Pathfinder Society and as a status symbol among adventurers of any stripe. A wayfinder functions as a compass.",
@@ -24048,9 +23557,6 @@
 					"components": [
 						"command"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"The wayfinder is targeted by a 1st-level {@spell light} spell."
 					]
@@ -24157,7 +23663,6 @@
 				"note": null
 			},
 			"usage": "worn",
-			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"This delicate necklace contains bottled whispers distilled from a source on the Astral Plane rumored to be connected to the first lie ever told.",
@@ -24174,9 +23679,6 @@
 						"envision",
 						"command"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You unstopper the vial and release the lie, creating the effect of a fabricated truth (DC 47). The vial is emptied and can never be activated again."
 					]
@@ -24220,8 +23722,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You speak a command word and click the boots' heels together to cause the wings to animate and flap rapidly, granting you a fly Speed of 30 feet for 10 minutes."
 					]
@@ -24246,10 +23746,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Elixir",
 			"entries": [
@@ -24311,17 +23810,15 @@
 				"note": null
 			},
 			"usage": "affixed to armor",
-			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
 					"unit": "free",
 					"entry": "{@as F}"
 				},
-				"components": "envision",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"envision"
+				]
 			},
 			"category": "Talisman",
 			"entries": [
@@ -24354,10 +23851,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Poison",
 			"entries": [
@@ -24417,9 +23913,6 @@
 						"command",
 						"Interact"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You activate the statue by placing it on solid ground and then speaking its name, causing the statuette to transform into a living creature or creatures. In creature form, the figurine has the minion trait. It can understand your language and it obeys you to the best of its ability when you use an action to command it. The specifics of each creature, as well as the activation's frequency (if any), appear in its entry below.",
 						"If the figurine is slain while in animal form, it reverts to its statue shape and cannot be activated again until 1 week has passed. If the figurine is destroyed in statue form, it is shattered and its magic is lost."
@@ -24562,10 +24055,9 @@
 					"number": 3,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Poison",
 			"entries": [

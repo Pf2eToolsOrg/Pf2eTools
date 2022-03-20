@@ -441,7 +441,9 @@ function Renderer () {
 	};
 
 	this._renderEntries = function (entry, textStack, meta, options) {
+		textStack[0] += `<p>`
 		entry.entries.forEach(e => this._recursiveRender(e, textStack, meta, options));
+		textStack[0] += `</p>`
 	};
 
 	this._renderText = function (entry, textStack, meta, options) {
@@ -871,7 +873,7 @@ function Renderer () {
 		if (entry.note != null) textStack[0] += `${renderer.render(entry.note)}; `;
 		if (entry.requirements != null) textStack[0] += `<strong>Requirements&nbsp;</strong>${renderer.render_addTerm(entry.requirements)} `;
 		if (entry.trigger != null) textStack[0] += `<strong>Trigger&nbsp;</strong>${renderer.render_addTerm(entry.trigger)} `;
-		textStack[0] += `${entry.frequency || entry.requirements || entry.trigger || entry.components || (entry.activity && entry.activity.unit === Parser.TM_VARIES) ? "<strong>Effect&nbsp;</strong>" : ""}`;
+		textStack[0] += `${entry.frequency || entry.requirements || entry.trigger || entry.components || (entry.activity && entry.activity.unit === Parser.TM_VARIES) ? "<strong>Effect&nbsp;</strong>" : " "}`;
 		if (entry.entries) textStack[0] += entry.entries.map(e => renderer.render(e, {isAbility: true})).join(" ");
 		if (entry.special != null) textStack[0] += ` <strong>Special&nbsp;</strong>${renderer.render(entry.special)}`;
 		textStack[0] += `</p>`
@@ -3993,7 +3995,7 @@ Renderer.creature = {
 		renderStack.push(`, <strong>Will&nbsp;</strong>`)
 		renderStack.push(Renderer.get().render(`{@d20 ${st.Will.default}||Will Save}`))
 		renderStack.push(Renderer.utils.getNotes(st.Will, {exclude: ["default", "abilities"], dice: {name: "Will Save"}}));
-		if (st.abilities != null) renderStack.push(`, ${st.abilities}`);
+		if (st.abilities != null) renderStack.push(`, ${renderer.render(st.abilities)}`);
 		renderStack.push(`</span>`)
 		renderStack.push(`</p>`)
 

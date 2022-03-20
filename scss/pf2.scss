@@ -740,12 +740,16 @@
 	}
 
 	&-- {
+		// FIXME: rd__list markers go into the sidebar... bar
 		&left {
 			float: left;
 			clear: left;
 			border-right: solid 2px #5e0000;
+			border-left: none;
 			width: 50%;
-			max-width: 170px;
+			max-width: 300px;
+			min-width: 170px;
+			padding-right: 1em;
 			margin: 0.4em 1em 0.4em -1em;
 			font-size: 1em;
 
@@ -761,6 +765,10 @@
 				font-family: 'Gin', sans-serif;
 				font-weight: 400;
 			}
+		}
+
+		&full {
+			height: 100%;
 		}
 	}
 
@@ -954,6 +962,7 @@
 
 .pf2-key-box {
 	color: white;
+	overflow: auto;
 	background: #5e0000;
 	border: 2px solid #b29e74;
 	margin: 0.3em 0;
@@ -1026,6 +1035,7 @@
 	font-family: 'good-pro', sans-serif;
 	font-size: 1em;
 	max-width: 100%;
+	overflow: auto;
 
 	&__ {
 		&title {
@@ -1069,6 +1079,7 @@
 	background: #f1e9d4;
 	margin: 0.6em 0;
 	padding: 0.3em 1em;
+	overflow: auto;
 	font-family: 'good-pro', sans-serif;
 	font-size: 1em;
 	max-width: 100%;
@@ -1107,6 +1118,7 @@
 
 .pf2-inset {
 	background: #eae4d8;
+	overflow: auto;
 	border-top: 1px solid #c99a89;
 	border-bottom: 1px solid #c99a89;
 	font-family: 'good-pro', sans-serif;
@@ -1120,6 +1132,7 @@
 }
 
 .pf2-box {
+	// FIXME: Overflows into sidebars and I can't fix it - MrVauxs
 	position: relative;
 	left: 3%;
 	margin: 1.6em 0 0.6em;
