@@ -1159,7 +1159,7 @@ function Renderer () {
 
 	this._renderPf2BrownBox = function (entry, textStack, meta, options) {
 		const dataString = this._getDataString(entry);
-		textStack[0] += `<div ${dataString} style="display: flex; clear: left">`;
+		textStack[0] += `<div ${dataString} class="flex">`;
 		textStack[0] += `<div class="pf2-box pf2-box--brown">`;
 		textStack[0] += this._getPf2BoxSwirl(false, "pf2-box--brown")
 		textStack[0] += `<div class="pf2-box__swirl-connection pf2-box--brown"></div>`
@@ -1180,7 +1180,8 @@ function Renderer () {
 
 	this._renderPf2RedBox = function (entry, textStack, meta, options) {
 		const dataString = this._getDataString(entry);
-		textStack[0] += `<div class="pf2-box pf2-box--red" ${dataString} style="clear: left">`;
+		textStack[0] += `<div ${dataString} class="flex">`;
+		textStack[0] += `<div class="pf2-box pf2-box--red">`;
 		textStack[0] += this._getPf2BoxSwirl(false, "pf2-box--red")
 		textStack[0] += `<div class="pf2-box__swirl-connection pf2-box--red"></div>`
 		textStack[0] += this._getPf2BoxSwirl(true, "pf2-box--red")
@@ -1198,7 +1199,7 @@ function Renderer () {
 				});
 			}
 		}
-		textStack[0] += `</div>`;
+		textStack[0] += `</div></div>`;
 	};
 
 	this._renderPf2KeyBox = function (entry, textStack, meta, options) {

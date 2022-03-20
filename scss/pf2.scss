@@ -189,16 +189,6 @@
 	}
 }
 
-.pf2-big-stat {
-	margin-bottom: 10px;
-	height: 60vh;
-}
-
-.pf2-small-stat {
-	margin-bottom: 10px;
-	height: 30vh;
-}
-
 .pf2-wrp-stat {
 	margin: 1em 0;
 	clear: both;
@@ -740,23 +730,16 @@
 	}
 
 	&-- {
-		// FIXME: rd__list markers go into the sidebar... bar
 		&left {
 			float: left;
 			clear: left;
 			border-right: solid 2px #5e0000;
-			border-left: none;
-			width: 50%;
+			border-left: unset;
+			width: 35%;
 			max-width: 300px;
 			min-width: 170px;
-			padding-right: 1em;
 			margin: 0.4em 1em 0.4em -1em;
 			font-size: 1em;
-
-			@media only screen and (max-width: 220px) {
-				width: calc(100%);
-				max-width: none;
-			}
 		}
 
 		&class {
@@ -1132,7 +1115,6 @@
 }
 
 .pf2-box {
-	// FIXME: Overflows into sidebars and I can't fix it - MrVauxs
 	position: relative;
 	left: 3%;
 	margin: 1.6em 0 0.6em;
@@ -1754,6 +1736,7 @@ $night-pf2-brown: #2e2c27;
 			&end {
 				border-color: #bbb;
 			}
+
 			&title {
 				border-color: #bbb;
 			}
