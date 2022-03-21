@@ -869,7 +869,7 @@ class ScaleCreature {
 					}
 				} else if (typeof e === "string") {
 					// Do not scale flat check DCs
-					e = e.replaceAll(/ DC (\d+)(?!\d* flat)/g, (...m) => {
+					e = e.replaceAll(/ (?:{@dc|DC) (\d+)(?:\}|)(?!\d* flat)/g, (...m) => {
 						return ` DC ${this._scaleValue(lvlIn, toLvl, Number(m[1]), this._LvlSpellDC) + opts.flatAddProf}`;
 					});
 					// Do not scale status, circumstance, item bonus...
