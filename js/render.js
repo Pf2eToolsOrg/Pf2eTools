@@ -349,7 +349,7 @@ function Renderer () {
 					this._renderAttack(entry, textStack, meta, options);
 					break;
 				case "ability":
-					this._renderAbility(entry.abilityData, textStack, meta, options);
+					this._renderAbility(entry, textStack, meta, options);
 					break;
 				case "statblock":
 					this._renderStatblock(entry, textStack, meta, options);
@@ -863,17 +863,16 @@ function Renderer () {
 
 	this._renderAbility_compact = function (entry, textStack, meta, options) {
 		const renderer = Renderer.get();
-		textStack[0] += `<p class="pf2-stat pf2-stat__section"><strong>${entry.name != null ? entry.name : "Activate"}&nbsp;</strong>`
-		if (entry.activity != null) textStack[0] += `${renderer.render(Parser.timeToFullEntry(entry.activity))} `;
-		if (entry.components != null) textStack[0] += `${renderer.render(entry.components.join(", "))} `;
-		if (entry.traits && entry.traits.length) textStack[0] += `(${entry.traits.map(t => renderer.render(`{@trait ${t.toLowerCase()}}`)).join(", ")})`;
-		// TODO: Egh!
-		if ((entry.components != null && (entry.traits == null || entry.traits.length === 0)) || (entry.activity != null && !Parser.TIME_ACTIONS.includes(entry.activity.unit))) textStack[0] += "; ";
+		textStack[0] += `<p class="pf2-stat pf2-stat__section"><strong>${entry.name != null ? entry.name : "Activate"}</strong>`
+		if (entry.activity != null) textStack[0] += ` ${renderer.render(Parser.timeToFullEntry(entry.activity))}`;
+		if (entry.components != null) textStack[0] += ` ${renderer.render(entry.components.join(", "))}`;
+		if (entry.traits && entry.traits.length) textStack[0] += ` (${entry.traits.map(t => renderer.render(`{@trait ${t.toLowerCase()}}`)).join(", ")})`;
+		entry.components != null || entry.traits != null ? textStack[0] += "; " : textStack[0] += "&nbsp;";
 		if (entry.frequency != null) textStack[0] += `<strong>Frequency&nbsp;</strong>${renderer.render_addTerm(Parser.freqToFullEntry(entry.frequency))} `;
 		if (entry.note != null) textStack[0] += `${renderer.render(entry.note)}; `;
 		if (entry.requirements != null) textStack[0] += `<strong>Requirements&nbsp;</strong>${renderer.render_addTerm(entry.requirements)} `;
 		if (entry.trigger != null) textStack[0] += `<strong>Trigger&nbsp;</strong>${renderer.render_addTerm(entry.trigger)} `;
-		textStack[0] += `${entry.frequency || entry.requirements || entry.trigger || entry.components || (entry.activity && entry.activity.unit === Parser.TM_VARIES) ? "<strong>Effect&nbsp;</strong>" : " "}`;
+		textStack[0] += `${entry.frequency || entry.requirements || entry.trigger || entry.components || (entry.activity && entry.activity.unit === Parser.TM_VARIES) ? "<strong>Effect&nbsp;</strong>" : ""}`;
 		if (entry.entries) textStack[0] += entry.entries.map(e => renderer.render(e, {isAbility: true})).join(" ");
 		if (entry.special != null) textStack[0] += ` <strong>Special&nbsp;</strong>${renderer.render(entry.special)}`;
 		textStack[0] += `</p>`
