@@ -5159,7 +5159,7 @@ Renderer.spell = {
 	},
 
 	getHeightenedEntry (sp) {
-		if (!sp.heightened || !sp.heightened.heightened) return "";
+		if (!sp.heightened) return "";
 		const renderer = Renderer.get();
 		const renderStack = [""];
 		const renderArray = (a) => {
@@ -5187,15 +5187,6 @@ Renderer.spell = {
 					renderStack.push(`</p>`);
 				}
 			});
-		}
-		if (sp.heightened.no_x != null) {
-			if (typeof sp.heightened.no_x.entry === "string") {
-				renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Heightened&nbsp;</strong>${renderer.render(sp.heightened.no_x.entry)}</p>`);
-			} else if (Array.isArray(sp.heightened.no_x.entry)) {
-				renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Heightened (+${sp.heightened.plus_x.level})&nbsp;</strong>`)
-				renderArray(sp.heightened.no_x.entry);
-				renderStack.push(`</p>`);
-			}
 		}
 		return renderStack.join("")
 	},
