@@ -1005,21 +1005,23 @@
 				"Archetype",
 				"Dedication"
 			],
-			"prerequisites": "Alchemical {@skill Crafting}; trained in {@skill Crafting}, {@skill Deception}, and {@skill Stealth}",
+			"prerequisites": "{@feat Alchemical Crafting}; trained in {@skill Crafting}, {@skill Deception}, and {@skill Stealth}",
 			"entries": [
 				"You've trained to assassinate your foes, and you do so with tenacity and precision. You gain the Mark for Death activity.",
 				{
 					"type": "ability",
-					"name": "Mark for Death",
-					"activity": {
-						"number": 3,
-						"unit": "action"
-					},
-					"requirements": "Requirements You can see and hear the creature you intend to mark",
-					"entries": [
-						"You designate a single creature as your mark. This lasts until the mark dies or you use Mark for Death again. You gain a +2 circumstance bonus to {@skill Perception} checks to {@action Seek} your mark and on {@skill Deception} checks to {@action Feint} against your mark. Your {@trait agile} and {@trait finesse} weapons and unarmed attacks gain the backstabber and deadly d6 weapon traits when you're attacking your mark.",
-						"If the weapon or unarmed attack already has the {@trait deadly} trait, increase the size of the deadly damage die by one step instead of giving it deadly d6."
-					]
+					"abilityData": {
+						"name": "Mark for Death",
+						"activity": {
+							"number": 3,
+							"unit": "action"
+						},
+						"requirements": "You can see and hear the creature you intend to mark",
+						"entries": [
+							"You designate a single creature as your mark. This lasts until the mark dies or you use Mark for Death again. You gain a +2 circumstance bonus to {@skill Perception} checks to {@action Seek} your mark and on {@skill Deception} checks to {@action Feint} against your mark. Your {@trait agile} and {@trait finesse} weapons and unarmed attacks gain the backstabber and deadly d6 weapon traits when you're attacking your mark.",
+							"If the weapon or unarmed attack already has the {@trait deadly} trait, increase the size of the deadly damage die by one step instead of giving it deadly d6."
+						]
+					}
 				}
 			],
 			"special": "You can't select another dedication feat until you've gained two other feats from the assassin archetype.",
@@ -1942,6 +1944,7 @@
 			"traits": [
 				"Investigator"
 			],
+			"add_hash": "Investigator",
 			"prerequisites": "master in {@skill Perception}",
 			"entries": [
 				"Your battle insights make you more aware of {@condition concealed} and {@condition invisible} opponents. You don't need to succeed at a flat check to target {@condition concealed} creatures. You're not {@condition flat-footed} to creatures that are {@condition hidden} from you (unless you're {@condition flat-footed} to them for reasons other than the {@condition hidden} condition), and you need only a successful DC {@flatDC 5} flat check to target a {@condition hidden} creature.",
@@ -2606,22 +2609,24 @@
 				"The more people you have looking at you, the more content you are, and you take every opportunity to show up others when their performances are less than perfect. You gain the Upstage reaction. In addition, when you {@action Earn Income}, if the level of the task is higher than your level, you gain a +1 circumstance bonus to your check to {@action Earn Income}.",
 				{
 					"type": "ability",
-					"name": "Upstage",
-					"activity": {
-						"unit": "reaction",
-						"number": 1
-					},
-					"trigger": "A foe attempts a skill check and doesn't get a critical success",
-					"entries": [
-						"After your foe has tried their best, you show everyone how it's really done. Attempt a check using the same skill that triggered this reaction.",
-						{
-							"type": "successDegree",
-							"entries": {
-								"Critical Success": "You gain a +1 status bonus to attack rolls, {@skill Perception} checks, saving throws, and skill checks until the end of your next turn.",
-								"Success": "As critical success, except you gain the benefits only if the triggering creature failed their skill check."
+					"abilityData": {
+						"name": "Upstage",
+						"activity": {
+							"unit": "reaction",
+							"number": 1
+						},
+						"trigger": "A foe attempts a skill check and doesn't get a critical success",
+						"entries": [
+							"After your foe has tried their best, you show everyone how it's really done. Attempt a check using the same skill that triggered this reaction.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": "You gain a +1 status bonus to attack rolls, {@skill Perception} checks, saving throws, and skill checks until the end of your next turn.",
+									"Success": "As critical success, except you gain the benefits only if the triggering creature failed their skill check."
+								}
 							}
-						}
-					]
+						]
+					}
 				}
 			],
 			"special": "You can't select another dedication feat until you have gained two other feats from the celebrity archetype.",
@@ -3794,7 +3799,8 @@
 				"The hazard has the following reaction, which you can also trigger as a single action so long as you are within 30 feet of the hazard. The hazard retains its potency until it's triggered, until the inanimate object moves from its space, or until you make your next daily preparations, whichever comes first.",
 				{
 					"type": "ability",
-					"name": "Fire in the Hole",
+					"abilityData": {
+						"name": "Fire in the Hole",
 					"activity": {
 						"unit": "reaction",
 						"number": 1
@@ -3804,6 +3810,8 @@
 						"The hazard explodes, dealing the bombs' damage and splash damage to the inanimate object. Combine this damage for the purpose of resistances and weaknesses, and this damage ignores an amount of the object's Hardness equal to your level. Any creatures adjacent to the hazard take the bombs' splash damage, similarly combined for the purpose of resistances and weaknesses.",
 						"As a reminder, since you didn't throw the bombs, Calculated Splash and similar effects don't apply."
 					]
+					}
+
 				}
 			]
 		},
@@ -5078,7 +5086,8 @@
 				"You also gain Eldritch Shot.",
 				{
 					"type": "ability",
-					"name": "Eldritch Shot",
+					"abilityData": {
+						"name": "Eldritch Shot",
 					"activity": {
 						"number": 3,
 						"unit": "action"
@@ -5087,6 +5096,8 @@
 					"entries": [
 						"You {@action Cast a Spell} that takes 1 or 2 actions to cast and requires a spell attack roll. The effects of the spell do not occur immediately but are imbued into the bow you're wielding. Make a {@action Strike} with that bow. Your spell flies with the ammunition, using your attack roll result to determine the effects of both the {@action Strike} and the spell. This counts as two attacks for your multiple attack penalty, but you don't apply the penalty until after you've completed both attacks."
 					]
+					}
+
 				}
 			],
 			"special": "You can't select another dedication feat until you have gained two other feats from the eldritch archer archetype.",
@@ -8337,7 +8348,7 @@
 			],
 			"prerequisites": "{@feat Investigator Dedication|APG}",
 			"entries": [
-				"You can recall all sorts of information. You gain the {@feat keen recollection|APG} class feature."
+				"You can recall all sorts of information. You gain the {@classFeature keen recollection|investigator|apg|3} class feature."
 			]
 		},
 		{
@@ -10761,17 +10772,20 @@
 				"As a pirate, you sail the seas in search of enemy ships to plunder. You become trained in {@skill Lore||Sailing Lore}, or become an expert in it if you were already trained. You ignore the effects of {@quickref difficult terrain||3|terrain} or uneven ground caused by a ship's movement. Additionally, you gain the Boarding Assault action.",
 				{
 					"type": "ability",
-					"name": "Boarding Assault",
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"traits": [
-						"flourish"
-					],
-					"entries": [
-						"Either {@action Stride} twice or attempt an {@skill Acrobatics} check (DC determined by the GM, but usually DC 20) to swing on a rope up to twice your Speed. If you boarded or disembarked from a boat or similar vehicle during this movement, you can make a melee {@action Strike} that deals one additional weapon damage die."
-					]
+					"abilityData": {
+						"name": "Boarding Assault",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"Flourish"
+						],
+						"entries": [
+							"Either {@action Stride} twice or attempt an {@skill Acrobatics} check (DC determined by the GM, but usually DC 20) to swing on a rope up to twice your Speed. If you boarded or disembarked from a boat or similar vehicle during this movement, you can make a melee {@action Strike} that deals one additional weapon damage die."
+						]
+
+					}
 				}
 			],
 			"special": "You can't select another dedication feat until you have gained two other feats from the pirate archetype.",

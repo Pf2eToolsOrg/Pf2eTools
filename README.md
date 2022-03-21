@@ -1,7 +1,7 @@
 ## Pf2e.Tools
-[![Automated Build](https://github.com/Pf2eTools/Pf2eTools.github.io/actions/workflows/build.yml/badge.svg?branch=master)](https://github.com/Pf2eTools/Pf2eTools.github.io/actions/workflows/build.yml)
+[![Automated Build](https://github.com/Pf2eToolsOrg/Pf2eTools/actions/workflows/build.yml/badge.svg?branch=master)](https://github.com/Pf2eToolsOrg/Pf2eTools/actions/workflows/build.yml)
 
-Visit the main site (not yet) or go to the unofficial GitHub [mirror](https://pf2etools.github.io/Pf2eTools.html).
+Visit the main site (not yet) or go to the unofficial GitHub [mirror](https://pf2etools.com).
 
 [Join the Pf2eTools Discord here!](https://discord.gg/2hzNxErtVu)
 
@@ -77,7 +77,7 @@ Avoid binding ALT-modified events, as these are not available under MacOS or var
 
 ### Dev Server
 
-Do `npm run serve:dev` to launch a local dev server that serves the project files on [`http://localhost:8080/Pf2eTools.html`](http://localhost:8080/Pf2eTools.html).
+Do `npm run serve:dev` to launch a local dev server that serves the project files on [`http://localhost:8080/index.html`](http://localhost:8080/index.html).
 
 ### Version bump
 

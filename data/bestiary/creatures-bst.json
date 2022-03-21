@@ -190,7 +190,8 @@
 						"3": {
 							"spells": [
 								{
-									"name": "lay on hands"}
+									"name": "lay on hands"
+								}
 							]
 						}
 					}
@@ -7865,7 +7866,7 @@
 				"Cha": 1
 			},
 			"items": [
-				"shortsword"
+				"{@item shortsword}"
 			],
 			"abilitiesTop": [
 				{
@@ -20655,7 +20656,7 @@
 			"items": [
 				"aklys (page 85) ",
 				"giant centipede venom (4 doses)",
-				"hand crossbow (20 bolts)"
+				"{@item hand crossbow} (20 {@item bolt||bolts}"
 			],
 			"abilitiesTop": [],
 			"ac": {
@@ -23384,7 +23385,7 @@
 			"items": [
 				"hand crossbow (10 bolts)",
 				"lethargy poison (2; Pathfinder Core Rulebook 552)",
-				"shortsword",
+				"{@item shortsword}",
 				"studded leather armor"
 			],
 			"abilitiesTop": [
@@ -34677,7 +34678,7 @@
 				"Cha": 4
 			},
 			"items": [
-				"+1 striking hand crossbow (20 bolts)"
+				"+1 striking {@item hand crossbow} (20 {@item bolt||bolts}"
 			],
 			"abilitiesTop": [
 				{
@@ -40898,7 +40899,7 @@
 			"items": [
 				"crossbow (20 bolts)",
 				"scale mail",
-				"shortsword"
+				"{@item shortsword}"
 			],
 			"abilitiesTop": [],
 			"ac": {
@@ -43501,7 +43502,7 @@
 				"Cha": 2
 			},
 			"items": [
-				"shortsword"
+				"{@item shortsword}"
 			],
 			"abilitiesTop": [],
 			"ac": {
@@ -44493,7 +44494,7 @@
 			"items": [
 				"crossbow (20 bolts)",
 				"leather armor",
-				"shortsword",
+				"{@item shortsword}",
 				"snare kit"
 			],
 			"abilitiesTop": [],
@@ -50585,7 +50586,7 @@
 			},
 			"items": [
 				"+1 composite shortbow (60 arrows)",
-				"shortsword"
+				"{@item shortsword}"
 			],
 			"abilitiesTop": [],
 			"ac": {
@@ -58136,7 +58137,7 @@
 			},
 			"items": [
 				"longbow (60 arrows)",
-				"shortsword"
+				"{@item shortsword}"
 			],
 			"abilitiesTop": [],
 			"ac": {
@@ -59366,7 +59367,7 @@
 			},
 			"items": [
 				"shortbow (60 arrows)",
-				"shortsword"
+				"{@item shortsword}"
 			],
 			"abilitiesTop": [],
 			"ac": {
@@ -61082,13 +61083,13 @@
 			},
 			"items": [
 				"alchemist's tools",
-				"hand crossbow (20 bolts)",
+				"{@item hand crossbow} (20 {@item bolt||bolts}",
 				"studded leather armor"
 			],
 			"abilitiesTop": [
 				{
 					"entries": [
-						"+9 Str +0, Dex +4, Con +2, Int +4, Wis +2, Cha +1 Items alchemist's tools, hand crossbow (20 bolts), studded leather armor."
+						"+9 Str +0, Dex +4, Con +2, Int +4, Wis +2, Cha +1 Items alchemist's tools, {@item hand crossbow} (20 {@item bolt||bolts}, studded leather armor."
 					],
 					"name": "Thievery"
 				},
@@ -63569,7 +63570,8 @@
 								},
 								{
 									"name": "triple time"
-								}]
+								}
+							]
 						},
 						"4": {
 							"spells": [
@@ -77629,7 +77631,7 @@
 						"primal"
 					],
 					"entries": [
-						"Saving Throw DC 22 Fortitude."
+						"{@b Saving Throw} {@dc 22} Fortitude."
 					],
 					"name": "Curse of the Werebear"
 				},
@@ -77752,9 +77754,9 @@
 				"Cha": 1
 			},
 			"items": [
-				"hand crossbow (20 bolts)",
-				"leather armor",
-				"shortsword"
+				"{@item hand crossbow} (20 {@item bolt||bolts})",
+				"{@item leather armor}",
+				"{@item shortsword}"
 			],
 			"abilitiesTop": [
 				{
@@ -77900,9 +77902,11 @@
 						"primal"
 					],
 					"entries": [
-						"Saving Throw DC 18 Fortitude."
+						"{@b Saving Throw} {@dc 18} Fortitude."
 					],
-					"name": "Curse of the Werebear"
+					"generic": true,
+					"title": "Curse of the Wererat",
+					"name": "Curse of the Werecreature"
 				},
 				{
 					"traits": [
@@ -77911,6 +77915,7 @@
 						"transmutation"
 					],
 					"entries": [],
+					"generic": true,
 					"name": "Moon Frenzy"
 				},
 				{
@@ -78137,7 +78142,7 @@
 						"primal"
 					],
 					"entries": [
-						"Saving Throw DC 19 Fortitude."
+						"{@b Saving Throw} {@dc 19} Fortitude."
 					],
 					"name": "Curse of the Werewolf"
 				},

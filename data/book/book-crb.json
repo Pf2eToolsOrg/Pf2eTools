@@ -11698,7 +11698,7 @@
 						{
 							"type": "pf2-brown-box",
 							"page": 444,
-							"name": "GAME CONVENTIONS",
+							"name": "Game Conventions",
 							"entries": [
 								"Pathfinder has many specific rules, but you'll also want to keep these general guidelines in mind when playing.",
 								{
@@ -11733,7 +11733,10 @@
 									"name": "Ambiguous Rules"
 								},
 								"Sometimes a rule could be interpreted multiple ways. If one version is too good to be true, it probably is. If a rule seems to have wording with problematic repercussions or doesn't work as intended, work with your group to find a good solution, rather than just playing with the rule as printed."
-							]
+							],
+							"data": {
+								"quickref": 4
+							}
 						},
 						{
 							"type": "pf2-h3",
@@ -14228,7 +14231,7 @@
 									"name": "Blindness or Impaired Vision"
 								},
 								"A blind character can't detect anything using vision, critically fails {@skill Perception} checks requiring sight, is immune to {@trait visual} effects, and can't be {@condition blinded} or {@condition dazzled}. You might give this character the {@feat Blind-Fight (Fighter)||Blind-Fight} feat for free.",
-								"A character with impaired vision might take a \u20132 to \u20134 penalty to vision-based {@skill Perception} checks. Spectacles or {@filter other corrective devices|items||Subcategory=Vision} might reduce or remove this.",
+								"A character with impaired vision might take a \u20132 to \u20134 penalty to vision-based {@skill Perception} checks. {@item Basic Corrective Lenses|LOTGB|Spectacles} or {@filter other corrective devices|items||source=|type=|Subcategory=Vision} might reduce or remove this.",
 								{
 									"type": "pf2-title",
 									"name": "Deafness or Being Hard of Hearing"
@@ -14240,8 +14243,8 @@
 									"name": "Missing Limb"
 								},
 								"Some magic items require certain limbs or other body parts. It's fine to allow an alternative form of the item, turning boots into bracers for a character without legs, for example.",
-								"A character with a missing hand or arm might need to spend 2 actions to Interact with an item that requires two hands, or otherwise compensate. Using a two-handed weapon is not possible. A character can acquire a prosthetic hand or arm to compensate.",
-								"Someone missing a foot or leg might take a small penalty to Speed, but can typically acquire a prosthetic to compensate. If they have no legs, they might use a wheelchair, a dependable mount, or levitation or flight magic.",
+								"A character with a missing hand or arm might need to spend 2 actions to {@action Interact} with an item that requires two hands, or otherwise compensate. Using a two-handed weapon is not possible. A character can acquire a {@filter prosthetic hand or arm|items||source=|type=|subcategory=prosthesis} to compensate.",
+								"Someone missing a foot or leg might take a small penalty to Speed, but can typically acquire a prosthetic to compensate. If they have no legs, they might use a {@filter wheelchair|items||source=|type=|subcategory=wheelchair}, a dependable mount, or levitation or flight magic.",
 								{
 									"type": "pf2-title",
 									"name": "Mental Illness and Chronic Illness"
@@ -18587,7 +18590,7 @@
 							"name": "NOTABLE ITEM TRAITS",
 							"entries": [
 								"The following traits apply to items. Some specific categories of item have special traits\u2014such as elixir or scroll\u2014described in their sections.",
-								"{@b {@trait Alchemical}:} Alchemical items are powered by the reactions of alchemical reagents. Alchemical items aren't magical, and they don't radiate a magical aura. Characters can Craft these items only if they have the Alchemical {@skill Crafting} feat (page 258).",
+								"{@b {@trait Alchemical}:} Alchemical items are powered by the reactions of alchemical reagents. Alchemical items aren't magical, and they don't radiate a magical aura. Characters can Craft these items only if they have the {@feat Alchemical Crafting} feat (page 258).",
 								"{@b {@trait Consumable}:} An item with this trait can be used only once. Unless stated otherwise, it's destroyed after activation, though, part of it might be recoverable for other purposes.",
 								"For instance, while a potion is consumable, the vial it comes in is not destroyed when you drink it. Consumable items include alchemical items (page 543) as well as ammunition oils, potions, scrolls, snares, talismans, and other magical consumables (which begin on page 559).",
 								"When a character creates consumable items, she can make them in batches of four, as described in Consumables and Ammunition (page 245).",
@@ -18603,7 +18606,7 @@
 							"page": 535,
 							"name": "Craft Requirements",
 							"entries": [
-								"An item might require the crafter to provide specific raw materials, supply spells, have a certain alignment, or meet other special requirements to Craft it. These appear in the Craft Requirements entry of the stat block. Every item also has default requirements, as listed in the Craft activity on page 244. In addition, creating alchemical items requires the Alchemical {@skill Crafting} feat (page 258), creating magic items requires the Magical {@skill Crafting} feat (page 263), and crafting snares requires the Snare {@skill Crafting} feat (page 266). Finally, crafting higher-level items requires greater proficiency in {@skill Crafting}. Unless stated otherwise, creating items of 9th level and higher requires you to have the master proficiency rank in {@skill Crafting}, and items of 16th level and higher require legendary {@skill Crafting}.",
+								"An item might require the crafter to provide specific raw materials, supply spells, have a certain alignment, or meet other special requirements to Craft it. These appear in the Craft Requirements entry of the stat block. Every item also has default requirements, as listed in the Craft activity on page 244. In addition, creating alchemical items requires the {@feat Alchemical Crafting} feat (page 258), creating magic items requires the Magical {@skill Crafting} feat (page 263), and crafting snares requires the Snare {@skill Crafting} feat (page 266). Finally, crafting higher-level items requires greater proficiency in {@skill Crafting}. Unless stated otherwise, creating items of 9th level and higher requires you to have the master proficiency rank in {@skill Crafting}, and items of 16th level and higher require legendary {@skill Crafting}.",
 								"The GM might allow you to Craft a permanent item from a lower-level version of the same item as an upgrade. For example, you might upgrade a bag of holding from a type I to a type II bag, but you couldn't upgrade a clear spindle aeon stone into an orange prism aeon stone. The cost for this upgrade is the full difference in Price between the items, and the {@skill Crafting} check uses a DC for the item's new level."
 							]
 						}
@@ -18617,7 +18620,7 @@
 						"Alchemical items are not magical. They instead use the properties of volatile chemicals, exotic minerals, potent plants, and other substances, collectively referred to as alchemical reagents. As such, alchemical items don't radiate magical auras, and they can't be dismissed or affected by {@spell dispel magic}. Their effects last for a set amount of time or until they are countered in some way, typically physically.",
 						"Sometimes the reactions of alchemical reagents create effects that seem magical, and at other times they straddle the line between purely reactive and the inexplicable.",
 						"Alchemists can infuse reagents with some of their own essence, allowing them to efficiently create short-lived alchemical items at no monetary cost. Even in these cases, alchemical items don't radiate magic auras, instead using the alchemist's infused essence as one additional catalyst for the item's alchemical effects.",
-						"Rules for creating alchemical items are found in the Craft activity on page 244, and you must have the Alchemical {@skill Crafting} skill feat to use {@skill Crafting} to create alchemical items. Critically failing a {@skill Crafting} check to make alchemical items often causes a dangerous effect, such as an explosion for a bomb or accidental exposure for a poison, in addition to losing some of the materials.",
+						"Rules for creating alchemical items are found in the Craft activity on page 244, and you must have the {@feat Alchemical Crafting} skill feat to use {@skill Crafting} to create alchemical items. Critically failing a {@skill Crafting} check to make alchemical items often causes a dangerous effect, such as an explosion for a bomb or accidental exposure for a poison, in addition to losing some of the materials.",
 						"Some alchemical items have additional requirements beyond those stated in the Craft activity; these items list their requirements in a Craft Requirements entry.",
 						"All alchemical items have the alchemical trait. Most also have the consumable trait, which means that the item is used up once activated. The bomb, elixir, and poison traits indicate special categories of alchemical items, each of which is described on the following pages. Alchemical items without any of these traits are called alchemical tools, and are described further on page 554.",
 						"This section contains the following subcategories.",

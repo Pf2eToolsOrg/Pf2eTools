@@ -21,6 +21,8 @@ jobs:
     - run: npm run build
     - run: npm run build:seo
     - run: npm run build:deploy:prod
+    - run: npm run build:deploy:prod:gtag
+    - run: npm run build:deploy:prod:cdn
 
     - name: Add files
       run: git add -A

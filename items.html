@@ -10,6 +10,7 @@
 
 	<title>Items - Pf2eTools</title>
 
+	<!--PF2ETOOLS_SCRIPT_HEAD_ANCHOR-->
 	<link rel="stylesheet" href="css/bootstrap.css">
 	<link rel="stylesheet" href="css/fontawesome.css">
 	<link rel="stylesheet" href="css/jquery-ui.css">
@@ -59,120 +60,6 @@
 	<script src="js/styleswitch.js"></script>
 	<script src="js/navigation.js"></script>
 	<script src="js/browsercheck.js"></script>
-	<style>
-		ul.list {
-			height: initial;
-			max-height: 100%;
-			min-height: 100px;
-		}
-
-		ul.list.subitems {
-			min-height: initial;
-		}
-
-		span.side-label {
-			position: absolute;
-			transform: rotate(-90deg);
-			transform-origin: 0 0;
-			font-size: 18px;
-			bottom: 0;
-			left: -22px;
-		}
-
-		h3.ele-mundane,
-		h3.ele-magic {
-			position: relative;
-			margin: 0;
-		}
-
-		h3.ele-mundane span.side-label {
-		}
-
-		h3.ele-magic span.side-label {
-		}
-
-		@media (max-width: 991px) {
-			ul.list {
-				max-height: 20em;
-			}
-		}
-
-		@media (max-device-height: 700px) {
-			ul.list {
-				max-height: 20em;
-			}
-
-			.viewport-wrapper {
-				bottom: auto;
-			}
-
-			.view-col-wrapper {
-				flex-direction: column;
-				max-height: none;
-				height: auto;
-			}
-
-			ul.list {
-				max-height: 20em;
-			}
-		}
-
-		.itm__list-divider {
-			width: 100%;
-			height: 1px;
-			background: #ccc;
-		}
-
-		.night-mode .itm__list-divider {
-			background: #555;
-		}
-
-		.itm__wrp-lists {
-			flex: 7;
-		}
-
-		.itm__wrp-stats {
-			flex: 5;
-		}
-
-		.itm__wrp-list {
-			height: 100%;
-		}
-
-		.itm__wrp-list--empty {
-			height: initial;
-			flex-shrink: 0;
-		}
-
-		.style-switch__wide .itm__wrp-list {
-			min-width: calc(50% - 10px);
-			max-width: calc(50% - 10px);
-		}
-
-		.style-switch__wide .itm__wrp-list--mundane {
-			margin-right: 20px;
-		}
-
-		.style-switch__wide #listcontainer.itm__wrp-lists {
-			flex: initial;
-			width: 100%;
-			flex-flow: row;
-		}
-
-		.style-switch__wide .itm__wrp-stats {
-			width: 480px;
-			flex: initial;
-			flex-shrink: 0;
-		}
-
-		.style-switch__wide .side-label {
-			display: none !important;
-		}
-
-		.style-switch__wide .itm__list-divider {
-			display: block !important;
-		}
-	</style>
 </head>
 
 <body>
@@ -195,62 +82,35 @@
 
 	<div class="view-col-group h-100 mh-0">
 		<div class="container view-col-wrapper">
-			<div class="view-col itm__wrp-lists" id="listcontainer">
-				<div class="flex-col min-h-0 w-100 itm__wrp-list itm__wrp-list--empty itm__wrp-list--mundane">
-					<div class="lst__form-top" id="filter-search-group">
-						<div class="w-100 relative">
-							<input type="search" id="lst__search" autocomplete="off" autocapitalize="off"
-								   spellcheck="false" class="search form-control lst__search lst__search--no-border-h">
-							<div id="lst__search-glass" class="lst__wrp-search-glass no-events flex-vh-center"><span
-								class="glyphicon glyphicon-search" type="submit"></span></div>
-							<div class="lst__wrp-search-visible no-events flex-vh-center"></div>
-						</div>
-						<button class="btn btn-xs btn-default" title="Reset Selection" id="reset"><span class="glyphicon glyphicon-refresh"></span></button>
+			<div class="view-col" id="listcontainer" style="flex: 7;">
+				<div class="lst__form-top" id="filter-search-group">
+					<div class="w-100 relative">
+						<input type="search" id="lst__search" autocomplete="off" autocapitalize="off" spellcheck="false"
+							   class="search form-control lst__search lst__search--no-border-h">
+						<div id="lst__search-glass" class="lst__wrp-search-glass no-events flex-vh-center"><span
+							class="glyphicon glyphicon-search" type="submit"></span></div>
+						<div class="lst__wrp-search-visible no-events flex-vh-center"></div>
 					</div>
-
-					<div id="filtertools-mundane" class="ele-mundane input-group input-group--bottom flex no-shrink">
-						<button class="col-4 sort btn btn-default btn-xs" data-sort="name" data-sortby="asc">Name <span
-							class="caret_wrp"></span></button>
-						<button class="col-2-2 sort btn btn-default btn-xs" data-sort="category" data-sortby="asc">
-							Category <span class="caret_wrp"></span></button>
-						<button class="col-1-5 sort btn btn-default btn-xs" data-sort="level" data-sortby="asc">Level
-							<span class="caret_wrp"></span></button>
-						<button class="col-1-8 sort btn btn-default btn-xs" data-sort="price" data-sortby="asc">Price
-							<span class="caret_wrp"></span></button>
-						<button class="col-1-2 sort btn btn-default btn-xs" data-sort="bulk" data-sortby="asc">Bulk
-							<span class="caret_wrp"></span></button>
-						<button class="sort btn btn-default btn-xs ve-grow" data-sort="source" data-sortby="asc">Source
-							<span class="caret_wrp"></span></button>
-					</div>
-
-					<ul class="list list--stats mundane ele-mundane"></ul>
-					<h3 class="ele-mundane"><span class="side-label side-label--mundane clickable"></span></h3>
+					<button class="btn btn-xs btn-default" title="Reset Selection" id="reset"><span class="glyphicon glyphicon-refresh"></span></button>
 				</div>
-
-				<div class="flex-col min-h-0 w-100 itm__wrp-list itm__wrp-list--empty itm__wrp-list--magic">
-					<div class="no-shrink itm__list-divider ele-mundane-and-magic"></div>
-
-					<div id="filtertools-magic" class="ele-magic input-group input-group--bottom flex no-shrink">
-						<button class="fullborder col-4 sort btn btn-default btn-xs" data-sort="name" data-sortby="asc">
-							Name <span class="caret_wrp"></span></button>
-						<button class="fullborder col-2-2 sort btn btn-default btn-xs" data-sort="category"
-								data-sortby="asc">Category <span class="caret_wrp"></span></button>
-						<button class="fullborder col-1-5 sort btn btn-default btn-xs" data-sort="level"
-								data-sortby="asc">Level <span class="caret_wrp"></span></button>
-						<button class="fullborder col-1-8 sort btn btn-default btn-xs" data-sort="price">Price <span
-							class="caret_wrp"></span></button>
-						<button class="fullborder col-1-2 sort btn btn-default btn-xs" data-sort="bulk"
-								data-sortby="asc">Bulk <span class="caret_wrp"></span></button>
-						<button class="fullborder sort btn btn-default btn-xs ve-grow" data-sort="source"
-								data-sortby="asc">Source <span class="caret_wrp"></span></button>
-					</div>
-
-					<ul class="list list--stats magic ele-magic"></ul>
-					<h3 class="ele-magic"><span class="side-label side-label--magic clickable"></span></h3>
+				<div id="filtertools" class="input-group input-group--bottom flex no-shrink">
+					<button class="fullborder col-4 sort btn btn-default btn-xs" data-sort="name" data-sortby="asc">
+						Name <span class="caret_wrp"></span></button>
+					<button class="fullborder col-2-2 sort btn btn-default btn-xs" data-sort="category"
+							data-sortby="asc">Category <span class="caret_wrp"></span></button>
+					<button class="fullborder col-1-5 sort btn btn-default btn-xs" data-sort="level"
+							data-sortby="asc">Level <span class="caret_wrp"></span></button>
+					<button class="fullborder col-1-8 sort btn btn-default btn-xs" data-sort="price">Price <span
+						class="caret_wrp"></span></button>
+					<button class="fullborder col-1-2 sort btn btn-default btn-xs" data-sort="bulk"
+							data-sortby="asc">Bulk <span class="caret_wrp"></span></button>
+					<button class="fullborder sort btn btn-default btn-xs ve-grow" data-sort="source"
+							data-sortby="asc">Source <span class="caret_wrp"></span></button>
 				</div>
+				<ul class="list list--stats items"></ul>
 			</div>
 
-			<div id="contentwrapper" class="view-col itm__wrp-stats">
+			<div id="contentwrapper" class="view-col itm__wrp-stats" style="flex: 5;">
 				<div id="sublistcontainer" class="sublist sublist--resizable">
 					<div id="sublistsort" class="btn-group sublist__wrp-cols">
 						<button class="col-5-4 sort btn btn-default btn-xs" data-sort="name">Name <span class="caret_wrp"></span></button>
@@ -264,7 +124,7 @@
 					<ul id="sublistlist" class="list subitems">
 						<!-- populate with JS -->
 					</ul>
-					<div id="sublistsummary" class="row ve-small" style="padding: 0 2px 1px">
+					<div id="sublistsummary" class="row ve-small" style="padding: 0 2px 1px;">
 						<span class="col-5-4 text-right pl-0 pr-2">Total:</span>
 						<span class="col-2-3 text-center no-wrap clickable" id="totalprice"></span>
 						<span class="col-2 text-center no-wrap" id="totalbulk"></span>
@@ -286,11 +146,12 @@
 
 				<div class="wrp-stats-table">
 					<div id="pagecontent" class="stats pf2-stat">
-						<div class="initial-message">Select an item from the list to view it here</div>
+						<div class="initial-message">Loading...</div>
 					</div>
 				</div>
 
 				<div class="text-center wrp-footer-buttons">
+					<button class="btn btn-warning btn-xs mb-1" id="btn-equip-buy" title="Set filters to buy equipment during character creation">Buy Equipment</button>
 					<button class="btn btn-default btn-xs mb-1" id="btn-runebuild--change" title="Change the item you are adding Runes to">Change Base Item</button>
 					<button class="btn btn-success btn-xs hidden mb-1" id="btn-runebuild" title="Add Runes to basic Items">Rune Builder</button>
 					<button class="btn btn-success btn-xs hidden mb-1" id="btn-runebuild--save" title="Save as new Item and exit Runebuilder">Save & Exit</button>
@@ -302,7 +163,8 @@
 			</div>
 		</div>
 	</div>
-</div>    <!--PF2ETOOLS_SCRIPT_ANCHOR-->
+</div>
+<!--PF2ETOOLS_SCRIPT_ANCHOR-->
 
 <script src="lib/jquery.js"></script>
 <script src="js/scalecreature.js"></script>

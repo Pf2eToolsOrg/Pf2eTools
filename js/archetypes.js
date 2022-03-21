@@ -63,7 +63,7 @@ class ArchetypesPage extends BaseComponent {
 		});
 
 		this._list = ListUtil.initList({listClass: "archetypes", isUseJquery: true, syntax: this._listSyntax});
-		this._listFeat = ListUtil.initList({listClass: "feats", isUseJquery: true, syntax: this._listSyntax}, {input: "#feat-lst__search", glass: "#feat-lst__search-glass", reset: "#feat-reset"});
+		this._listFeat = ListUtil.initList({listClass: "feats", isUseJquery: true, syntax: this._listSyntax, sortByInitial: "level"}, {input: "#feat-lst__search", glass: "#feat-lst__search-glass", reset: "#feat-reset"});
 		ListUtil.setOptions({primaryLists: [this._list, this._listFeat]});
 		SortUtil.initBtnSortHandlers($("#filtertools"), this._list);
 		SortUtil.initBtnSortHandlers($("#feat-filtertools"), this._listFeat);
@@ -251,14 +251,13 @@ class ArchetypesPage extends BaseComponent {
 					const [lvl, name, source] = ft.split("|");
 					const hash = UrlUtil.encodeForHash([name, source]);
 					const mutateExtraFeat = (feat) => {
-						// FIXME:
 						feat.featType = feat.featType || {};
 						feat.featType.archetype = typeof feat.featType.archetype === "object" ? feat.featType.archetype : [];
 						feat.featType.archetype.push(arc.name);
-						feat._fType = ["Archetype"];
 						feat.addSections = feat.addSections || [];
 						feat.addSections.push([[`{@note This version of {@feat ${feat.name}${feat.add_hash ? ` (${feat.add_hash})` : ""}|${source}|${feat.name}} is intended for use with the ${arc.name} Archetype. ${feat.level !== Number(lvl) ? "Its level has been changed accordingly." : ""}}`]]);
 						this._featFilter.mutateForFilters(feat);
+						feat._fType = ["Archetype"];
 						feat.level = Number(lvl);
 						feat.add_hash = arc.name;
 						return feat

@@ -2780,7 +2780,9 @@ class ComponentUiUtil {
 		opts.offset = opts.offset || 0;
 
 		const $ipt = (opts.$ele || $(opts.html || `<input class="form-control input-xs form-control--minimal text-right">`)).disableSpellcheck()
-			.keydown(evt => { if (evt.key === "Escape") $ipt.blur(); })
+			.keydown(evt => {
+				if (evt.key === "Escape") $ipt.blur();
+			})
 			.change(() => {
 				const raw = $ipt.val().trim();
 
@@ -2848,6 +2850,42 @@ class ComponentUiUtil {
 				component._state[prop] = opts.isAllowNull && !nxtVal ? null : nxtVal;
 			},
 		});
+
+		if (opts.autocomplete && opts.autocomplete.length) $ipt.typeahead({source: opts.autocomplete});
+		const hook = () => {
+			if (component._state[prop] == null) $ipt.val(null);
+			else {
+				// If the only difference is start/end whitespace, leave it; otherwise, adding spaces is frustrating
+				if ($ipt.val().trim() !== component._state[prop]) $ipt.val(component._state[prop]);
+			}
+		};
+		component._addHookBase(prop, hook);
+		hook();
+
+		if (opts.asMeta) return this._getIptDecoratedMeta(component, prop, $ipt, hook, opts);
+		else return $ipt;
+	}
+
+	// FIXME: Temporary workaround
+	static $getIptStr2 (component, prop, opts) {
+		opts = opts || {};
+
+		// Validate options
+		if ((opts.decorationLeft || opts.decorationRight) && !opts.asMeta) throw new Error(`Input must be created with "asMeta" option`);
+
+		const $ipt = (opts.$ele || $(opts.html || `<input class="form-control input-xs form-control--minimal">`))
+			.keydown(evt => {
+				try {
+					if (evt.key === "Escape") $ipt.blur();
+				} catch (e) {
+					// $ipt was removed?
+				}
+			})
+			.disableSpellcheck()
+			.change(() => {
+				const nxtVal = opts.isNoTrim ? $ipt.val() : $ipt.val().trim();
+				component._state[prop] = opts.isAllowNull && !nxtVal ? null : nxtVal;
+			});
 
 		if (opts.autocomplete && opts.autocomplete.length) $ipt.typeahead({source: opts.autocomplete});
 		const hook = () => {

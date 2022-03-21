@@ -149,7 +149,7 @@ class ScaleCreature {
 			"25": [46, 42, 38, 36, 32],
 		};
 		this._LvlHP = {
-			"-1": [9, 8, 7, 6, 5],
+			"-1": [9, 9, 8, 7, 6, 5],
 			"0": [20, 17, 16, 14, 13, 11],
 			"1": [26, 24, 21, 19, 16, 14],
 			"2": [40, 36, 32, 28, 25, 21],
@@ -622,43 +622,27 @@ class ScaleCreature {
 		return creature;
 	}
 
-	_getIntervalAndIdx (lvl, map, value) {
-		const ranges = map[lvl];
-		let i = 0;
-		let I = [0, value]
-		let idx = [-1, -1]
-		while (i < ranges.length) {
-			if (ranges[i] >= value) {
-				I[1] = ranges[i]
-				idx[1] = i;
-			} else {
-				I[0] = ranges[i];
-				idx[0] = i;
-				break;
-			}
-			i++;
-		}
-		return {I, idx}
-	}
-
-	_intervalTransform (x, I0, I1) {
-		const [a0, b0] = I0;
-		const [a1, b1] = I1;
-		if (a0 === b0) return a0;
-		return Math.round((x - a0) * ((b1 - a1) / (b0 - a0)) + a1);
-	}
-
-	// FIXME: This garbage code might not be the real culprit this time (BUG-78), but it should have prevented the bug nonetheless
-	// FIXME: This code is unreadable and might create undesired results
 	_scaleValue (lvlIn, toLvl, value, map) {
-		const {I: I0, idx} = this._getIntervalAndIdx(lvlIn, map, value);
-		let I1;
-		// x < value for all x in map[toLvl]
-		if (idx[1] === -1) I1 = [map[toLvl][idx[0]], map[toLvl][idx[0]] + I0[1] - I0[0]];
-		// x >= value for all x in map[toLvl]
-		else if (idx[0] === -1) I1 = [Math.max(1, map[toLvl][idx[1]] - I0[1] + I0[0]), map[toLvl][idx[1]]];
-		else I1 = [map[toLvl][idx[0]], map[toLvl][idx[1]]];
-		return this._intervalTransform(value, I0, I1)
+		const rangesIn = map[lvlIn];
+		const toRanges = map[toLvl];
+		const lowerIdx = rangesIn.findIndex(it => it < value);
+		const upperIdx = rangesIn.length - 1 - rangesIn.reverse().findIndex(it => it >= value);
+
+		const a = rangesIn[lowerIdx] || 0;
+		const b = rangesIn[upperIdx] || value;
+		let c, d;
+		// There was no suggested value less than the value we are scaling.
+		// TODO: Why shouldn't this be less than 1?
+		if (lowerIdx === -1) c = Math.max(1, toRanges[upperIdx] - b + a);
+		else c = toRanges[lowerIdx];
+
+		// There was no suggested value greater than or equal to the value we are scaling.
+		if (upperIdx === rangesIn.length) d = c + b - a;
+		else d = toRanges[upperIdx];
+
+		// Handle singletons, then finally scale the interval [a,b] to [c,d] linearly, and return the scaled value.
+		if (a === b) return a;
+		return Math.round((value - a) * ((d - c) / (b - a)) + c);
 	}
 
 	_getDiceEV (diceExp) {
@@ -671,6 +655,7 @@ class ScaleCreature {
 
 	_scaleDice (initFormula, expectation, opts) {
 		opts = opts || {};
+		if (this._getDiceEV(initFormula) === expectation) return initFormula;
 		// Usually a damage expression works best when roughly half the damage is from dice and half is from the flat modifier.
 		const targetDice = opts.noMod ? expectation : expectation / 2;
 		const dice = Number(initFormula.match(/d(\d+)/)[1]);
@@ -884,7 +869,7 @@ class ScaleCreature {
 					}
 				} else if (typeof e === "string") {
 					// Do not scale flat check DCs
-					e = e.replaceAll(/ DC (\d+)(?!\d* flat)/g, (...m) => {
+					e = e.replaceAll(/ (?:{@dc|DC) (\d+)(?:\}|)(?!\d* flat)/g, (...m) => {
 						return ` DC ${this._scaleValue(lvlIn, toLvl, Number(m[1]), this._LvlSpellDC) + opts.flatAddProf}`;
 					});
 					// Do not scale status, circumstance, item bonus...
@@ -933,7 +918,8 @@ class ScaleCreature {
 	}
 
 	_toggleProfNoLvl_updateButtonClass () {
-		$(`.btn-profnolvl`).toggleClass("active", this._isProfNoLvl);
+		if (this._isProfNoLvl) document.querySelectorAll(".btn-profnolvl").forEach(node => node.className = `${node.className} active`);
+		else document.querySelectorAll(".btn-profnolvl").forEach(node => node.className = node.className.split(" ").filter(it => it !== "active").join(" "));
 	}
 
 	isProfNoLvl () {
