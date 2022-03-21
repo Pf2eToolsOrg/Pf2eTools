@@ -458,11 +458,9 @@
 				"While holding the staff, you aren't affected by its coating or thorns, and you reduce the DC of your flat checks to overcome {@condition persistent damage ||persistent poison damage}.",
 				{
 					"type": "ability",
-					"activity": {
-						"number": 1,
-						"unit": "varies",
-						"entry": "Cast a Spell"
-					},
+					"components": [
+						"Cast a Spell"
+					],
 					"entries": [
 						"You expend a number of charges from the staff to cast a spell from its list."
 					]
@@ -476,8 +474,7 @@
 					"level": 4,
 					"price": {
 						"coin": "gp",
-						"amount": 90,
-						"note": null
+						"amount": 90
 					},
 					"entries": [
 						"You reduce the DC of your flat checks to overcome {@condition persistent damage ||persistent poison damage} from 15 to 13.",
@@ -495,8 +492,7 @@
 					"level": 8,
 					"price": {
 						"coin": "gp",
-						"amount": 450,
-						"note": null
+						"amount": 450
 					},
 					"entries": [
 						"You reduce the DC of your flat checks to overcome {@condition persistent damage ||persistent poison damage} from 15 to 10.",
@@ -514,8 +510,7 @@
 					"level": 14,
 					"price": {
 						"coin": "gp",
-						"amount": 4000,
-						"note": null
+						"amount": 4000
 					},
 					"entries": [
 						"You reduce the DC of your flat checks to overcome {@condition persistent damage ||persistent poison damage} from 15 to 5.",

@@ -1726,21 +1726,6 @@
 				}
 			]
 		},
-		"entryDataAbility": {
-			"type": "object",
-			"properties": {
-				"type": {
-					"const": "ability"
-				},
-				"dataAbility": {
-					"$ref": "abilities.json#/definitions/abilityData"
-				}
-			},
-			"required": [
-				"type",
-				"dataAbility"
-			]
-		},
 		"entryDataCreature": {
 			"type": "object",
 			"properties": {
@@ -2311,9 +2296,6 @@
 		},
 		{
 			"$ref": "#/definitions/entryAttack"
-		},
-		{
-			"$ref": "#/definitions/entryDataAbility"
 		},
 		{
 			"$ref": "#/definitions/entryDataCreature"
