@@ -349,7 +349,7 @@ function Renderer () {
 					this._renderAttack(entry, textStack, meta, options);
 					break;
 				case "ability":
-					this._renderAbility(entry, textStack, meta, options);
+					this._renderAbility(entry.abilityData, textStack, meta, options);
 					break;
 				case "statblock":
 					this._renderStatblock(entry, textStack, meta, options);
