@@ -43,9 +43,7 @@
 							"type": "string"
 						}
 					},
-					"required": [
-						"path"
-					],
+					"required": ["path"],
 					"additionalProperties": false
 				},
 				{
@@ -58,9 +56,7 @@
 							"type": "string"
 						}
 					},
-					"required": [
-						"url"
-					],
+					"required": ["url"],
 					"additionalProperties": false
 				}
 			]
@@ -88,9 +84,7 @@
 					"type": "string"
 				}
 			},
-			"required": [
-				"type"
-			]
+			"required": ["type"]
 		},
 		"entrySection": {
 			"allOf": [
@@ -131,9 +125,7 @@
 							"type": "string"
 						}
 					},
-					"required": [
-						"entries"
-					],
+					"required": ["entries"],
 					"additionalProperties": false
 				}
 			]
@@ -177,9 +169,7 @@
 							"type": "string"
 						}
 					},
-					"required": [
-						"entries"
-					],
+					"required": ["entries"],
 					"additionalProperties": false
 				}
 			]
@@ -194,7 +184,7 @@
 					"type": "object",
 					"properties": {
 						"type": {
-							"anyOf": [
+							"oneOf": [
 								{
 									"const": "pf2-h1"
 								},
@@ -255,9 +245,7 @@
 							"type": "boolean"
 						}
 					},
-					"required": [
-						"entries"
-					],
+					"required": ["entries"],
 					"additionalProperties": false
 				}
 			]
@@ -306,13 +294,13 @@
 							"type": "object",
 							"patternProperties": {
 								"^((Critical )?(Success|Failure))$": {
-									"type": ["array","string"],
+									"type": ["array", "string"],
 									"items": {
 										"$ref": "#"
 									}
 								},
 								"^Special$": {
-									"type": ["array","string"],
+									"type": ["array", "string"],
 									"items": {
 										"$ref": "#"
 									}
@@ -338,12 +326,8 @@
 							"const": "statblock"
 						},
 						"tag": {
-							"type":"string",
-							"enum": [
-								"action",
-								"feat",
-								"item"
-							]
+							"type": "string",
+							"enum": ["action", "feat", "item"]
 						},
 						"name": {
 							"type": "string"
@@ -357,6 +341,136 @@
 				}
 			]
 		},
+
+		"entriesAffliction": {
+			"allOf": [
+				{
+					"$ref": "#/definitions/entry"
+				},
+				{
+					"type": "object",
+					"properties": {
+						"type": {
+							"const": "affliction"
+						},
+						"DC": {
+							"type": "integer"
+						},
+						"savingThrow": {
+							"type": "string",
+							"enum": ["Will", "Fortitude"]
+						},
+						"onset": {
+							"type": "string"
+						},
+						"level": {
+							"type": "integer"
+						},
+						"stages": {
+							"type": "array",
+							"items": [
+								{
+									"properties": {
+										"stage": {
+											"const": 1
+										},
+										"entry": {
+											"type": "string"
+										},
+										"duration": {
+											"type": "string"
+										}
+									},
+									"additionalProperties": false
+								},
+								{
+									"properties": {
+										"stage": {
+											"const": 2
+										},
+										"entry": {
+											"type": "string"
+										},
+										"duration": {
+											"type": "string"
+										}
+									},
+									"additionalProperties": false
+								},
+								{
+									"properties": {
+										"stage": {
+											"const": 3
+										},
+										"entry": {
+											"type": "string"
+										},
+										"duration": {
+											"type": "string"
+										}
+									},
+									"additionalProperties": false
+								},
+								{
+									"properties": {
+										"stage": {
+											"const": 4
+										},
+										"entry": {
+											"type": "string"
+										},
+										"duration": {
+											"type": "string"
+										}
+									},
+									"additionalProperties": false
+								},
+								{
+									"properties": {
+										"stage": {
+											"const": 5
+										},
+										"entry": {
+											"type": "string"
+										},
+										"duration": {
+											"type": "string"
+										}
+									},
+									"additionalProperties": false
+								},
+								{
+									"properties": {
+										"stage": {
+											"const": 6
+										},
+										"entry": {
+											"type": "string"
+										},
+										"duration": {
+											"type": "string"
+										}
+									},
+									"additionalProperties": false
+								}
+							],
+							"additionalItems": false,
+							"uniqueItems": true
+						},
+						"entries": {
+							"type": "array",
+							"items": {
+								"$ref": "#"
+							}
+						}
+					},
+					"additionalProperties": false
+				}
+			]
+		},
+
+
+
 		"entryQuote": {
 			"allOf": [
 				{
@@ -388,9 +502,7 @@
 							"type": "boolean"
 						}
 					},
-					"required": [
-						"entries"
-					],
+					"required": ["entries"],
 					"additionalProperties": false
 				}
 			]
@@ -413,9 +525,7 @@
 							}
 						}
 					},
-					"required": [
-						"entries"
-					],
+					"required": ["entries"],
 					"additionalProperties": false
 				}
 			]
@@ -438,9 +548,7 @@
 							}
 						}
 					},
-					"required": [
-						"entries"
-					],
+					"required": ["entries"],
 					"additionalProperties": false
 				}
 			]
@@ -473,9 +581,7 @@
 							}
 						}
 					},
-					"required": [
-						"entries"
-					],
+					"required": ["entries"],
 					"additionalProperties": false
 				}
 			]
@@ -592,9 +698,7 @@
 							"type": "integer"
 						}
 					},
-					"required": [
-						"rows"
-					],
+					"required": ["rows"],
 					"additionalProperties": false
 				}
 			]
@@ -649,10 +753,7 @@
 							}
 						}
 					},
-					"required": [
-						"type",
-						"row"
-					],
+					"required": ["type", "row"],
 					"additionalProperties": false
 				}
 			]
@@ -686,10 +787,7 @@
 											"type": "boolean"
 										}
 									},
-									"required": [
-										"min",
-										"max"
-									],
+									"required": ["min", "max"],
 									"additionalProperties": false
 								},
 								{
@@ -702,9 +800,7 @@
 											"type": "boolean"
 										}
 									},
-									"required": [
-										"exact"
-									],
+									"required": ["exact"],
 									"additionalProperties": false
 								}
 							]
@@ -754,9 +850,7 @@
 							}
 						}
 					},
-					"required": [
-						"items"
-					],
+					"required": ["items"],
 					"additionalProperties": false
 				}
 			]
@@ -776,9 +870,7 @@
 							"type": "integer"
 						}
 					},
-					"required": [
-						"value"
-					],
+					"required": ["value"],
 					"additionalProperties": false
 				}
 			]
@@ -798,9 +890,7 @@
 							"type": "integer"
 						}
 					},
-					"required": [
-						"value"
-					],
+					"required": ["value"],
 					"additionalProperties": false
 				}
 			]
@@ -836,10 +926,7 @@
 										"type": "boolean"
 									}
 								},
-								"required": [
-									"number",
-									"faces"
-								]
+								"required": ["number", "faces"]
 							}
 						},
 						"rollable": {
@@ -880,10 +967,7 @@
 							}
 						}
 					},
-					"required": [
-						"name",
-						"attributes"
-					],
+					"required": ["name", "attributes"],
 					"additionalProperties": false
 				}
 			]
@@ -918,10 +1002,7 @@
 							}
 						}
 					},
-					"required": [
-						"name",
-						"attributes"
-					],
+					"required": ["name", "attributes"],
 					"additionalProperties": false
 				}
 			]
@@ -958,9 +1039,7 @@
 							}
 						}
 					},
-					"required": [
-						"text"
-					],
+					"required": ["text"],
 					"additionalProperties": false
 				}
 			]
@@ -1062,15 +1141,10 @@
 												}
 											},
 											"additionalProperties": false,
-											"required": [
-												"page",
-												"source"
-											]
+											"required": ["page", "source"]
 										}
 									},
-									"required": [
-										"path"
-									],
+									"required": ["path"],
 									"additionalProperties": false
 								},
 								{
@@ -1083,18 +1157,13 @@
 											"type": "string"
 										}
 									},
-									"required": [
-										"url"
-									],
+									"required": ["url"],
 									"additionalProperties": false
 								}
 							]
 						}
 					},
-					"required": [
-						"text",
-						"href"
-					],
+					"required": ["text", "href"],
 					"additionalProperties": false
 				}
 			]
@@ -1118,9 +1187,7 @@
 							"type": "string"
 						}
 					},
-					"required": [
-						"name"
-					]
+					"required": ["name"]
 				}
 			]
 		},
@@ -1160,9 +1227,7 @@
 							"type": "string"
 						}
 					},
-					"required": [
-						"entries"
-					]
+					"required": ["entries"]
 				}
 			]
 		},
@@ -1196,9 +1261,7 @@
 							"type": "string"
 						}
 					},
-					"required": [
-						"entries"
-					]
+					"required": ["entries"]
 				}
 			]
 		},
@@ -1223,10 +1286,7 @@
 							}
 						}
 					},
-					"required": [
-						"name",
-						"entries"
-					]
+					"required": ["name", "entries"]
 				}
 			]
 		},
@@ -1251,10 +1311,7 @@
 							}
 						}
 					},
-					"required": [
-						"name",
-						"entries"
-					],
+					"required": ["name", "entries"],
 					"additionalProperties": false
 				}
 			]
@@ -1280,10 +1337,7 @@
 							}
 						}
 					},
-					"required": [
-						"name",
-						"entries"
-					],
+					"required": ["name", "entries"],
 					"additionalProperties": false
 				}
 			]
@@ -1311,10 +1365,7 @@
 									"$ref": "#"
 								}
 							},
-							"required": [
-								"name",
-								"entry"
-							],
+							"required": ["name", "entry"],
 							"additionalProperties": false
 						},
 						{
@@ -1336,10 +1387,7 @@
 									}
 								}
 							},
-							"required": [
-								"name",
-								"entries"
-							],
+							"required": ["name", "entries"],
 							"additionalProperties": false
 						}
 					]
@@ -1364,10 +1412,7 @@
 							"$ref": "#"
 						}
 					},
-					"required": [
-						"name",
-						"entry"
-					],
+					"required": ["name", "entry"],
 					"additionalProperties": false
 				}
 			]
@@ -1390,10 +1435,7 @@
 							"$ref": "#"
 						}
 					},
-					"required": [
-						"name",
-						"entry"
-					],
+					"required": ["name", "entry"],
 					"additionalProperties": false
 				}
 			]
@@ -1425,10 +1467,7 @@
 						},
 						"imageType": {
 							"type": "string",
-							"enum": [
-								"map",
-								"mapPlayer"
-							]
+							"enum": ["map", "mapPlayer"]
 						},
 						"grid": {
 							"type": "object",
@@ -1543,9 +1582,7 @@
 							]
 						}
 					},
-					"required": [
-						"href"
-					],
+					"required": ["href"],
 					"additionalProperties": false
 				}
 			]
@@ -1568,9 +1605,7 @@
 							}
 						}
 					},
-					"required": [
-						"images"
-					],
+					"required": ["images"],
 					"additionalProperties": false
 				}
 			]
@@ -1593,11 +1628,7 @@
 							}
 						}
 					},
-					"required": [
-						"type",
-						"name",
-						"entries"
-					],
+					"required": ["type", "name", "entries"],
 					"additionalProperties": false
 				}
 			]
@@ -1616,10 +1647,7 @@
 						"attackType": {
 							"type": "string",
 							"description": "MW: Melee Weapon\n RW: Ranged Weapon",
-							"enum": [
-								"MW",
-								"RW"
-							]
+							"enum": ["MW", "RW"]
 						},
 						"attackEntries": {
 							"type": "array",
@@ -1662,10 +1690,7 @@
 							}
 						}
 					},
-					"required": [
-						"type",
-						"blocks"
-					],
+					"required": ["type", "blocks"],
 					"additionalProperties": false
 				}
 			]
@@ -1691,9 +1716,7 @@
 							"type": "string"
 						}
 					},
-					"required": [
-						"type"
-					],
+					"required": ["type"],
 					"additionalProperties": false
 				}
 			]
@@ -1718,10 +1741,7 @@
 							"type": "number"
 						}
 					},
-					"required": [
-						"type",
-						"entry"
-					],
+					"required": ["type", "entry"],
 					"additionalProperties": false
 				}
 			]
@@ -1736,10 +1756,7 @@
 					"type": "string"
 				}
 			},
-			"required": [
-				"type",
-				"dataCreature"
-			]
+			"required": ["type", "dataCreature"]
 		},
 		"entryDataSpell": {
 			"type": "object",
@@ -1751,10 +1768,7 @@
 					"type": "string"
 				}
 			},
-			"required": [
-				"type",
-				"dataSpell"
-			]
+			"required": ["type", "dataSpell"]
 		},
 		"entryDataTrapHazard": {
 			"type": "object",
@@ -1770,10 +1784,7 @@
 					]
 				}
 			},
-			"required": [
-				"type",
-				"dataTrapHazard"
-			]
+			"required": ["type", "dataTrapHazard"]
 		},
 		"entryDataObject": {
 			"type": "object",
@@ -1785,10 +1796,7 @@
 					"type": "string"
 				}
 			},
-			"required": [
-				"type",
-				"dataObject"
-			]
+			"required": ["type", "dataObject"]
 		},
 		"entryDataItem": {
 			"type": "object",
@@ -1800,10 +1808,7 @@
 					"type": "string"
 				}
 			},
-			"required": [
-				"type",
-				"dataItem"
-			]
+			"required": ["type", "dataItem"]
 		},
 		"entryRefClassFeature": {
 			"description": "For use in classes page content only.",
@@ -1816,10 +1821,7 @@
 					"type": "string"
 				}
 			},
-			"required": [
-				"type",
-				"classFeature"
-			]
+			"required": ["type", "classFeature"]
 		},
 		"entryRefSubclassFeature": {
 			"description": "For use in classes page content only.",
@@ -1832,10 +1834,7 @@
 					"type": "string"
 				}
 			},
-			"required": [
-				"type",
-				"subclassFeature"
-			]
+			"required": ["type", "subclassFeature"]
 		},
 		"entryRefOptionalfeature": {
 			"description": "For use in classes page content only.",
@@ -1851,10 +1850,7 @@
 					"type": "string"
 				}
 			},
-			"required": [
-				"type",
-				"optionalfeature"
-			]
+			"required": ["type", "optionalfeature"]
 		},
 		"entryHr": {
 			"type": "object",
@@ -1863,9 +1859,7 @@
 					"const": "hr"
 				}
 			},
-			"required": [
-				"type"
-			]
+			"required": ["type"]
 		},
 		"entrySpellcasting": {
 			"allOf": [
@@ -1922,36 +1916,12 @@
 											}
 										}
 									},
-									"required": [
-										"spells"
-									],
+									"required": ["spells"],
 									"additionalProperties": false
-								},
-								"1": {
-									"$ref": "#/definitions/entrySpellcasting_level1to9"
-								},
-								"2": {
-									"$ref": "#/definitions/entrySpellcasting_level1to9"
-								},
-								"3": {
-									"$ref": "#/definitions/entrySpellcasting_level1to9"
-								},
-								"4": {
-									"$ref": "#/definitions/entrySpellcasting_level1to9"
-								},
-								"5": {
-									"$ref": "#/definitions/entrySpellcasting_level1to9"
-								},
-								"6": {
-									"$ref": "#/definitions/entrySpellcasting_level1to9"
-								},
-								"7": {
-									"$ref": "#/definitions/entrySpellcasting_level1to9"
-								},
-								"8": {
-									"$ref": "#/definitions/entrySpellcasting_level1to9"
-								},
-								"9": {
+								}
+							},
+							"patternProperties": {
+								"^[1-9]$": {
 									"$ref": "#/definitions/entrySpellcasting_level1to9"
 								}
 							},
@@ -1982,14 +1952,7 @@
 						},
 						"ability": {
 							"type": "string",
-							"enum": [
-								"str",
-								"dex",
-								"con",
-								"int",
-								"wis",
-								"cha"
-							]
+							"enum": ["str", "dex", "con", "int", "wis", "cha"]
 						},
 						"displayAs": {
 							"description": "Implicitly \"trait\"",
@@ -2000,9 +1963,7 @@
 							]
 						}
 					},
-					"required": [
-						"name"
-					],
+					"required": ["name"],
 					"additionalProperties": false
 				}
 			]
@@ -2011,10 +1972,10 @@
 			"type": "object",
 			"properties": {
 				"lower": {
-					"type": "number"
+					"type": "integer"
 				},
 				"slots": {
-					"type": "number"
+					"type": "integer"
 				},
 				"spells": {
 					"type": "array",
@@ -2024,66 +1985,13 @@
 					}
 				}
 			},
-			"required": [
-				"spells"
-			],
+			"required": ["spells"],
 			"additionalProperties": false
 		},
 		"entrySpellcasting_frequency": {
 			"type": "object",
-			"properties": {
-				"1": {
-					"$ref": "#/definitions/_arrayOfSpell"
-				},
-				"2": {
-					"$ref": "#/definitions/_arrayOfSpell"
-				},
-				"3": {
-					"$ref": "#/definitions/_arrayOfSpell"
-				},
-				"4": {
-					"$ref": "#/definitions/_arrayOfSpell"
-				},
-				"5": {
-					"$ref": "#/definitions/_arrayOfSpell"
-				},
-				"6": {
-					"$ref": "#/definitions/_arrayOfSpell"
-				},
-				"7": {
-					"$ref": "#/definitions/_arrayOfSpell"
-				},
-				"8": {
-					"$ref": "#/definitions/_arrayOfSpell"
-				},
-				"9": {
-					"$ref": "#/definitions/_arrayOfSpell"
-				},
-				"9e": {
-					"$ref": "#/definitions/_arrayOfSpell"
-				},
-				"8e": {
-					"$ref": "#/definitions/_arrayOfSpell"
-				},
-				"7e": {
-					"$ref": "#/definitions/_arrayOfSpell"
-				},
-				"6e": {
-					"$ref": "#/definitions/_arrayOfSpell"
-				},
-				"5e": {
-					"$ref": "#/definitions/_arrayOfSpell"
-				},
-				"4e": {
-					"$ref": "#/definitions/_arrayOfSpell"
-				},
-				"3e": {
-					"$ref": "#/definitions/_arrayOfSpell"
-				},
-				"2e": {
-					"$ref": "#/definitions/_arrayOfSpell"
-				},
-				"1e": {
+			"patternProperties": {
+				"^\\de?$": {
 					"$ref": "#/definitions/_arrayOfSpell"
 				}
 			},
@@ -2102,10 +2010,7 @@
 						},
 						"wrapped": {}
 					},
-					"required": [
-						"wrapper",
-						"wrapped"
-					],
+					"required": ["wrapper", "wrapped"],
 					"additionalProperties": false
 				}
 			]
@@ -2123,9 +2028,7 @@
 						}
 					},
 					"additionalProperties": false,
-					"required": [
-						"special"
-					]
+					"required": ["special"]
 				},
 				{
 					"type": "object",
@@ -2144,9 +2047,7 @@
 						}
 					},
 					"additionalProperties": false,
-					"required": [
-						"immune"
-					]
+					"required": ["immune"]
 				}
 			]
 		},
@@ -2163,9 +2064,7 @@
 						}
 					},
 					"additionalProperties": false,
-					"required": [
-						"special"
-					]
+					"required": ["special"]
 				},
 				{
 					"type": "object",
@@ -2184,9 +2083,7 @@
 						}
 					},
 					"additionalProperties": false,
-					"required": [
-						"conditionImmune"
-					]
+					"required": ["conditionImmune"]
 				}
 			]
 		}
@@ -2212,6 +2109,9 @@
 		},
 		{
 			"$ref": "#/definitions/entriesStatblock"
+		},
+		{
+			"$ref": "#/definitions/entriesAffliction"
 		},
 		{
 			"$ref": "#/definitions/entryInlineEntries"

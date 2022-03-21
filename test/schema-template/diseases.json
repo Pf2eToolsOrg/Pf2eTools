@@ -23,7 +23,7 @@
 					},
 					"type": {
 						"type": "string",
-						"enum": ["Disease"]
+						"enum": ["Disease", "Curse"]
 					},
 					"level": {
 						"type": "integer"
@@ -43,10 +43,7 @@
 									"$ref": "utils.json#/definitions/effectNameUpper"
 								},
 								{
-									"enum": [
-										"Virulent",
-										"Curse"
-									]
+									"$ref": "utils.json#/definitions/anyTraitUpper"
 								}
 							]
 						}
