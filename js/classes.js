@@ -856,6 +856,7 @@ class ClassesPage extends BaseComponent {
 			const $dispClassTitle = $(`#class-name`);
 
 			if (this._state.isHideFeatures) {
+				$(`.cls-main__no-sc-selected`).toggleClass("hidden", true);
 				if (this._isAnySubclassActive()) {
 					this._$wrpOutline.toggleClass("hidden", false);
 					this._$divNoContent.toggleClass("hidden", true);
@@ -870,6 +871,7 @@ class ClassesPage extends BaseComponent {
 					$dispFeaturesSubclassHeader.toggleClass("hidden", true);
 				}
 			} else {
+				$(`.cls-main__no-sc-selected`).toggleClass("hidden", this._isAnySubclassActive());
 				$dispClassTitle.toggleClass("hidden", false);
 				this._$wrpOutline.toggleClass("hidden", false);
 				this._$divNoContent.toggleClass("hidden", true);
@@ -901,6 +903,7 @@ class ClassesPage extends BaseComponent {
 			const hkDisplaySubclass = () => {
 				const isVisible = this._state[stateKey];
 				$(`[data-subclass-id="${stateKey}"]`).toggleClass("hidden", !isVisible);
+				$(`.cls-main__no-sc-selected`).toggleClass("hidden", this._state.isHideFeatures || this._isAnySubclassActive());
 			};
 			this._addHookBase(stateKey, () => keepYScroll(hkDisplaySubclass));
 			// Check/update main feature display here, as if there are no subclasses active we can hide more
@@ -982,6 +985,7 @@ class ClassesPage extends BaseComponent {
 					.appendTo($classStats)
 
 				if (feature.gainSubclassFeature) {
+					$(`<div class="cls-main__no-sc-selected">${Renderer.get().render("{@note You have not selected a subclass.}")}</div>`).appendTo($classStats);
 					$divClassFeature.attr("data-feature-type", "gain-subclass");
 					cls.subclasses.forEach(sc => {
 						const scLvlFeatures = sc.subclassFeatures[ixScLvl];
@@ -992,16 +996,9 @@ class ClassesPage extends BaseComponent {
 							const toRender = ptSources && scFeature.entries ? MiscUtil.copy(scFeature) : scFeature;
 							if (ptSources && toRender.entries) toRender.entries.push(ptSources);
 
-							const $divSubclassFeature = $(`<div class="cls-main__sc-feature" data-subclass-id="${UrlUtil.getStateKeySubclass(sc)}"></div>`)
-								.fastSetHtml(Renderer.get().render(toRender.entries))
-								.appendTo($classStats);
+							const $divSubclassFeature = $(`<div class="cls-main__sc-feature" data-subclass-id="${UrlUtil.getStateKeySubclass(sc)}">${Renderer.get().render(toRender.entries)}</div>`).appendTo($classStats);
 						});
 					});
-					/* TODO:
-					const $divNoSubclass = $(`<div class="cls-main__sc-feature" id="no-subclass"></div>`)
-						.fastSetHtml(Renderer.get().render(`{@note No Subclass Selected. You can select one ((here)).}`))
-						.appendTo($classStats);
-					*/
 					incrementScLvl = true;
 				}
 			});
@@ -1473,7 +1470,7 @@ class ClassesPage extends BaseComponent {
 	}
 
 	static _render_$getNoContent () {
-		return $(`<div class="pf2-h1-flavor text-center">Toggle a button to view class information</div>`)
+		return $(`<div class="pf2-h1-flavor" style="text-align: center">Toggle a button to view class information</div>`)
 	}
 
 	_getDefaultState () {

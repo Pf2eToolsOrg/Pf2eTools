@@ -52,17 +52,10 @@
                             }
                         }
                     },
-                    "ammunition": {
-                        "description": "Only to be used for magical ammunition to specify type (such as bolt, arrow, or round)",
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        }
-                    },
                     "bulk": {
                         "anyOf": [
                             {
-                                "type": "number"
+                                "type": "integer"
                             },
                             {
                                 "type": "string",
@@ -76,7 +69,7 @@
 						"$comment": "This is only for tools. Weapons should use the hands key in the weaponData",
 						"anyOf": [
                             {
-                                "type": "number"
+                                "type": "integer"
                             },
                             {
                                 "type": "string",
@@ -99,7 +92,7 @@
                     "level": {
                         "anyOf": [
                             {
-                                "type": "number"
+                                "type": "integer"
                             },
                             {
                                 "type": "string",
@@ -318,7 +311,7 @@
                 "reload": {
                     "anyOf": [
                         {
-                            "type": "number"
+                            "type": "integer"
                         },
                         {
                             "type": "string",
@@ -327,7 +320,7 @@
                     ]
                 },
                 "range": {
-                    "type": "number"
+                    "type": "integer"
                 },
                 "ammunition": {
                     "type": "string"
@@ -372,19 +365,19 @@
                     "$ref": "utils.json#/definitions/armorGroupUpper"
                 },
                 "ac": {
-                    "type": "number"
+                    "type": "integer"
                 },
                 "dexCap": {
-                    "type": "number"
+                    "type": "integer"
                 },
                 "str": {
-                    "type": "number"
+                    "type": "integer"
                 },
                 "checkPen": {
-                    "type": "number"
+                    "type": "integer"
                 },
                 "speedPen": {
-                    "type": "number"
+                    "type": "integer"
                 }
             },
             "additionalProperties": false
@@ -401,22 +394,23 @@
             ],
             "properties": {
                 "ac": {
-                    "type": "number"
+                    "type": "integer"
                 },
                 "ac2": {
-                    "type": "number"
+                    "type": "integer"
                 },
                 "hardness": {
-                    "type": "number"
+                    "type": "integer"
                 },
                 "hp": {
-                    "type": "number"
+                    "type": "integer"
                 },
                 "speedPen": {
-                    "type": "number"
+                    "type": "integer"
                 },
                 "bt": {
-                    "type": "number"
+                    "description": "Breaking Threshold",
+                    "type": "integer"
                 }
             },
             "additionalProperties": false

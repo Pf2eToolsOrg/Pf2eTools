@@ -71,7 +71,6 @@
 				"This heavier-than-air mist emits a soft glow. While this poison lasts, it causes its victims to shine from within with agonizing, brilliant radiance. This effect has the {@trait light} trait (although the poison itself doesn't, so only the {@trait light} effect can be counteracted by {@trait darkness} effects). The {@condition sickened} condition from daylight vapor can't be removed while the poison lasts, and when the victim enters an area of magical darkness, the poison attempts to counteract the darkness with a counteract modifier of +21. If the poison fails, it can't attempt to counteract the same darkness again.",
 				{
 					"type": "affliction",
-					"name": null,
 					"traits": [],
 					"DC": 31,
 					"savingThrow": "Fortitude",
@@ -131,7 +130,6 @@
 				"This poison is made from toxic spores of death knell mushrooms, which are reduced to a gray powder and suffused with necromantic energy. If you're reduced to 0 Hit Points while under the effect of death knell powder, you must succeed at a DC 34 Will save or die (this is a {@trait death} effect). If you die, a random creature adjacent to you is bolstered by your departing life force and gains 20 temporary HP and a +1 status bonus to attack and damage rolls for 10 minutes.",
 				{
 					"type": "affliction",
-					"name": null,
 					"traits": [],
 					"DC": 34,
 					"savingThrow": "Fortitude",
@@ -190,7 +188,6 @@
 				"Cultivated by mashing and fermenting toxic weeds found in lonely graveyards, fearweed is a greenish paste magically infused with psychic horror. The {@condition frightened} condition from fearweed can't be removed while the poison lasts.",
 				{
 					"type": "affliction",
-					"name": null,
 					"traits": [],
 					"DC": 30,
 					"savingThrow": "Fortitude",
@@ -289,7 +286,6 @@
 				"Rendered from the fat of corporeal undead creatures and infused with ghoulish magic, this yellowish oil causes its victims to experience stabbing hunger pangs that only living flesh can abate. If you eat at least a mouthful of humanoid flesh, you ignore the {@condition enfeebled} condition from hunger oil for 1 minute. While under the effect of hunger oil, you regain only half as many Hit Points from {@trait healing} effects unless you've eaten at least a mouthful of humanoid flesh in the last minute.",
 				{
 					"type": "affliction",
-					"name": null,
 					"traits": [],
 					"DC": 30,
 					"savingThrow": "Fortitude",
@@ -350,7 +346,6 @@
 				"You take this damage once per round, even if you lie several times in rapid succession. You're aware of this effect and can choose to not answer or give only evasive, technically truthful, answers; this is a {@trait mental} effect.",
 				{
 					"type": "affliction",
-					"name": null,
 					"traits": [],
 					"DC": 34,
 					"savingThrow": "Fortitude",
@@ -411,7 +406,6 @@
 				"This black slime is carefully culled from coffins and sarcophagi used by the undead, and is then distilled and combined with necromantic energy, creating a dangerous sludge that leeches life force as aggressively as it rots flesh.",
 				{
 					"type": "affliction",
-					"name": null,
 					"traits": [],
 					"DC": 35,
 					"savingThrow": "Fortitude",
@@ -458,11 +452,9 @@
 				"While holding the staff, you aren't affected by its coating or thorns, and you reduce the DC of your flat checks to overcome {@condition persistent damage ||persistent poison damage}.",
 				{
 					"type": "ability",
-					"activity": {
-						"number": 1,
-						"unit": "varies",
-						"entry": "Cast a Spell"
-					},
+					"components": [
+						"Cast a Spell"
+					],
 					"entries": [
 						"You expend a number of charges from the staff to cast a spell from its list."
 					]
@@ -476,8 +468,7 @@
 					"level": 4,
 					"price": {
 						"coin": "gp",
-						"amount": 90,
-						"note": null
+						"amount": 90
 					},
 					"entries": [
 						"You reduce the DC of your flat checks to overcome {@condition persistent damage ||persistent poison damage} from 15 to 13.",
@@ -495,8 +486,7 @@
 					"level": 8,
 					"price": {
 						"coin": "gp",
-						"amount": 450,
-						"note": null
+						"amount": 450
 					},
 					"entries": [
 						"You reduce the DC of your flat checks to overcome {@condition persistent damage ||persistent poison damage} from 15 to 10.",
@@ -514,8 +504,7 @@
 					"level": 14,
 					"price": {
 						"coin": "gp",
-						"amount": 4000,
-						"note": null
+						"amount": 4000
 					},
 					"entries": [
 						"You reduce the DC of your flat checks to overcome {@condition persistent damage ||persistent poison damage} from 15 to 5.",
@@ -566,7 +555,6 @@
 				"Desperate users might consume this poison to keep enemies at bay despite the poison's debilitating effects. While you're {@condition stupefied} from this poison, a creature that starts its turn within 10 feet of you or approaches within 10 feet of you must attempt a DC 35 Will saving throw. On a failure, the creature can't voluntarily move closer to you; this is a {@trait mental} effect. Once the approaching creature has attempted to save, it uses the same result for all saves from that dose of repulsion resin.",
 				{
 					"type": "affliction",
-					"name": null,
 					"traits": [],
 					"DC": 38,
 					"savingThrow": "Fortitude",
@@ -626,7 +614,6 @@
 				"This blackish grit seems to absorb light and resembles particularly dark flakes of black pepper. Infused with the {@spell blindness} spell, sight-theft grit causes the victim's sight to dim and then depart altogether. The {@condition blinded} condition from this poison lasts for an additional 24 hours once the poison has run its course.",
 				{
 					"type": "affliction",
-					"name": null,
 					"traits": [],
 					"DC": 28,
 					"savingThrow": "Fortitude",
@@ -686,7 +673,6 @@
 				"Belladonna cultivated in planes hazardous to living visitors, such as the Shadow Plane or the Boneyard, grow with a strange, skeletal look to their branches. The leaves and berries of these extraplanar plants are partly incorporeal and significantly more toxic than belladonna grown on the Material Plane. When imbued with spirit-twisting magic, spectral nightshade quickly drains away the victim's vitality and makes colors painfully bright and bewildering. Spectral nightshade doesn't affect creatures that have no spirit; if a possessing spirit inhabits a body that takes poison damage from spectral nightshade, the possessor takes an equal amount of force damage, even if the possessor can't be affected directly by poisons.",
 				{
 					"type": "affliction",
-					"name": null,
 					"traits": [],
 					"DC": 33,
 					"savingThrow": "Fortitude",
@@ -746,7 +732,6 @@
 				"This gummy resin contains sparkling motes of magical energy that dramatically impair your cognitive functions and dispel spells as you cast them. Spell energy manifests but then sputters out, as though {@condition drained} away by the sparkling motes. While you're {@condition stupefied} by this poison, the DC of flat checks to avoid disruption from the {@condition stupefied} condition when you {@action Cast a Spell} is 5 + twice the {@condition stupefied} value, rather than 5 + the {@condition stupefied} value.",
 				{
 					"type": "affliction",
-					"name": null,
 					"traits": [],
 					"DC": 31,
 					"savingThrow": "Fortitude",
