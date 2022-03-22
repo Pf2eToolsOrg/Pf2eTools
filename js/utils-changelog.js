@@ -64,7 +64,7 @@ class UtilsChangelog {
 			// FIXME: link to download
 			$wrp.prepend(`<div class="flex-col" id="v${it.ver}">
 				<div class="split-v-center">
-					<h${hLevel} class="bold">v${isLast ? `<a href="#">` : ""}${it.ver}${isLast ? `</a>` : ""}${titlePart}</h${hLevel}>
+					<h${hLevel} class="bold">v${isLast ? `<a href="https://github.com/Pf2eToolsOrg/Pf2eTools/releases/tag/v${it.ver}">` : ""}${it.ver}${isLast ? `</a>` : ""}${titlePart}</h${hLevel}>
 					<span class="text-muted">${it.date}</span>
 				</div>
 
