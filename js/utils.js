@@ -321,6 +321,13 @@ CleanUtil.JSON_REPLACEMENTS_REGEX = new RegExp(Object.keys(CleanUtil.JSON_REPLAC
 
 // SOURCES =============================================================================================================
 SourceUtil = {
+	ADV_BOOK_GROUPS: [
+		{group: "core", displayName: "Core"},
+		{group: "lost-omens", displayName: "Lost Omens"},
+		{group: "homebrew", displayName: "Homebrew"},
+		{group: "other", displayName: "Miscellaneous"},
+	],
+
 	isAdventure (source) {
 		if (source instanceof FilterItem) source = source.item;
 		return Parser.SOURCES_ADVENTURES.has(source);
@@ -2074,6 +2081,21 @@ SortUtil = {
 	_ascSort: (a, b) => {
 		if (b === a) return 0;
 		return b < a ? 1 : -1;
+	},
+
+	ascSortAdventure (a, b) {
+		return SortUtil.ascSortDateString(b.published, a.published)
+			|| SortUtil.ascSortLower(a.parentSource || "", b.parentSource || "")
+			|| SortUtil.ascSort(a.publishedOrder ?? 0, b.publishedOrder ?? 0)
+			|| SortUtil.ascSortLower(a.storyline, b.storyline)
+			|| SortUtil.ascSort(a.level?.start ?? 20, b.level?.start ?? 20)
+			|| SortUtil.ascSortLower(a.name, b.name);
+	},
+
+	ascSortBook (a, b) {
+		return SortUtil.ascSortDateString(b.published, a.published)
+			|| SortUtil.ascSortLower(a.parentSource || "", b.parentSource || "")
+			|| SortUtil.ascSortLower(a.name, b.name);
 	},
 
 	ascSortDate (a, b) {
