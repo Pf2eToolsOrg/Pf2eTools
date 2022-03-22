@@ -18,7 +18,7 @@ class NavBar {
 		NavBar._cachedInstallEvent = null;
 		window.addEventListener("beforeinstallprompt", e => NavBar._cachedInstallEvent = e);
 	}
-
+	// TODO: Replace this with the mothersite's system
 	static initElements () {
 		const navBar = document.getElementById("navbar");
 
@@ -45,6 +45,8 @@ class NavBar {
 		addLi(ulBooks, "book.html", "Core Rulebook", {aHash: "CRB", date: "2019"});
 		addLi(ulBooks, "book.html", "Gamemastery Guide", {aHash: "GMG", date: "2020"});
 		addLi(ulBooks, "book.html", "Secrets of Magic", {aHash: "SoM", date: "2021"});
+		addDivider(ulBooks);
+		addLi(ulBooks, "book.html", "Lost Omens: World Guide", {aHash: "LOWG", date: "2019"});
 
 		const ulPlayers = addDropdown(navBar, "Player");
 		addLi(ulPlayers, "ancestries.html", "Ancestries");
