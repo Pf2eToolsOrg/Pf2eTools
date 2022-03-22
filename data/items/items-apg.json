@@ -563,11 +563,28 @@
 			"category": "Elixir",
 			"entries": [
 				"Your skin grows tough scales like a drake, your eyesight become sharp and your pupils slitted, and your limbs grow wiry and quick, but your mind and reflexes become slow.",
-				"Benefit You gain the listed bonus to AC, a Dexterity cap of +2 (as usual, use your lowest Dexterity cap if you have more than one), and an item bonus to {@skill Perception} checks. If you're wearing armor, you still calculate your proficiency bonus to AC based on your proficiency in the armor you're wearing, even if the drakeheart mutagen has a higher item bonus.",
+				"{@b Benefit} You gain the listed bonus to AC, a Dexterity cap of +2 (as usual, use your lowest Dexterity cap if you have more than one), and an item bonus to {@skill Perception} checks. If you're wearing armor, you still calculate your proficiency bonus to AC based on your proficiency in the armor you're wearing, even if the drakeheart mutagen has a higher item bonus.",
 				"You also gain the Final Surge action.",
-				"Final Surge {@as 1} You {@action Stride} twice. The drakeheart mutagen's duration ends.",
-				"Drawback You take a \u20131 penalty to Will saves, Reflex saves, and all skill checks to {@action Recall Knowledge}."
+				{
+					"type": "ability",
+					"name": "Final Surge",
+					"activity": {
+						"unit": "action",
+						"number": 1
+					},
+					"entries": [
+						"You {@action Stride} twice. The drakeheart mutagen's duration ends."
+					]
+				},
+				"{@b Drawback} You take a \u20131 penalty to Will saves, Reflex saves, and all skill checks to {@action Recall Knowledge}."
 			],
+			"_vmod": {
+				"entries": {
+					"mode": "replaceTxt",
+					"replace": "You gain the listed bonus to AC, a Dexterity cap of \\+2 \\(as usual, use your lowest Dexterity cap if you have more than one\\), and an item bonus to {@skill Perception} checks."
+				},
+				"entriesMode": "generic"
+			},
 			"generic": "G",
 			"variants": [
 				{
@@ -579,7 +596,13 @@
 					},
 					"entries": [
 						"The item bonus to AC is +4, the item bonus to {@skill Perception} is +1, and the duration is 1 minute or until you use Final Surge, whichever comes first."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"replaceTags": true,
+							"with": "You gain a +4 item bonus to AC, a Dexterity cap of +2 (as usual, use your lowest Dexterity cap if you have more than one), and a +1 item bonus to {@skill Perception} checks for 1 minute or until you use Final Surge, whichever comes first."
+						}
+					}
 				},
 				{
 					"type": "moderate",
@@ -590,7 +613,13 @@
 					},
 					"entries": [
 						"The item bonus to AC is +5, the item bonus to {@skill Perception} is +2, and the duration is 10 minutes or until you use Final Surge, whichever comes first."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"replaceTags": true,
+							"with": "You gain a +5 item bonus to AC, a Dexterity cap of +2 (as usual, use your lowest Dexterity cap if you have more than one), and a +2 item bonus to {@skill Perception} checks for 10 minutes or until you use Final Surge, whichever comes first."
+						}
+					}
 				},
 				{
 					"type": "greater",
@@ -601,7 +630,13 @@
 					},
 					"entries": [
 						"The item bonus to AC is +6, the item bonus to {@skill Perception} is +3, and the duration is 1 hour or until you use Final Surge, whichever comes first."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"replaceTags": true,
+							"with": "You gain a +6 item bonus to AC, a Dexterity cap of +3 (as usual, use your lowest Dexterity cap if you have more than one), and a +3 item bonus to {@skill Perception} checks for 1 hour or until you use Final Surge, whichever comes first."
+						}
+					}
 				},
 				{
 					"type": "major",
@@ -612,7 +647,13 @@
 					},
 					"entries": [
 						"The item bonus to AC is +7, the item bonus to {@skill Perception} is +4, and the duration is 1 hour or until you use Final Surge, whichever comes first."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"replaceTags": true,
+							"with": "You gain a +7 item bonus to AC, a Dexterity cap of +4 (as usual, use your lowest Dexterity cap if you have more than one), and a +4 item bonus to {@skill Perception} checks for 1 hour or until you use Final Surge, whichever comes first."
+						}
+					}
 				}
 			]
 		},
