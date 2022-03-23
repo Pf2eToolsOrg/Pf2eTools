@@ -24,6 +24,6 @@ jobs:
     - name: Upload Release
       uses: ncipollo/release-action@v1
       with:
-        generateReleaseNotes: true
+        body: "See the [Changelogs](https://pf2etools.com/changelog.html) page."
         artifacts: "pf2ools-${{ env.RELEASE_VERSION }}.zip"
         token: ${{ secrets.GITHUB_TOKEN }}

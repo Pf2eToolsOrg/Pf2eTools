@@ -50,11 +50,18 @@
 			"category": "Elixir",
 			"entries": [
 				"When created, this mutagen is attuned to your choice of one of four energy types: acid, cold, electricity, or fire.",
-				"When consumed, the mutagen suffuses your body with energy that spills out of you whenever you attack. At higher levels, it can even grant you the ability to unleash the energy in {@condition controlled} bursts.",
-				"Benefit You gain resistance to the attuned energy type. Whenever you score a hit with a melee weapon, add the listed amount of damage of the attuned energy type.",
-				"Drawback You gain weakness 5 to the other three energy types."
+				"When consumed, the mutagen suffuses your body with energy that spills out of you whenever you attack. At higher levels, it can even grant you the ability to unleash the energy in controlled bursts.",
+				"{@b Benefit} You gain resistance to the attuned energy type. Whenever you score a hit with a melee weapon, add the listed amount of damage of the attuned energy type.",
+				"{@b Drawback} You gain weakness 5 to the other three energy types."
 			],
 			"generic": "G",
+			"_vmod": {
+				"entries": {
+					"mode": "replaceTxt",
+					"replace": "You gain resistance to the attuned energy type. Whenever you score a hit with a melee weapon, add the listed amount of damage of the attuned energy type."
+				},
+				"entriesMode": "generic"
+			},
 			"variants": [
 				{
 					"type": "lesser",
@@ -65,7 +72,12 @@
 					},
 					"entries": [
 						"You gain resistance 5, add 1 point of damage on a hit with a melee weapon, and the duration is 1 minute."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "For 1 minute after consuming the elixir, you gain resistance 5 to the attuned energy type. Whenever you score a hit with a melee weapon, add 1 point of damage of the attuned energy type."
+						}
+					}
 				},
 				{
 					"type": "moderate",
@@ -75,8 +87,13 @@
 						"amount": 12
 					},
 					"entries": [
-						"You gain resistance 10, add {@dice 1d4} damage on a hit with a melee weapon, and the duration is 10 minutes."
-					]
+						"You gain resistance 10, add {@damage 1d4} damage on a hit with a melee weapon, and the duration is 10 minutes."
+					],
+					"_mod": {
+						"entries": {
+							"with": "For 10 minutes after consuming the elixir, you gain resistance 10 to the attuned energy type. Whenever you score a hit with a melee weapon, add {@damage 1d4} damage of the attuned energy type."
+						}
+					}
 				},
 				{
 					"type": "greater",
@@ -86,8 +103,13 @@
 						"amount": 300
 					},
 					"entries": [
-						"You gain resistance 15, add {@dice 1d6} damage on a hit with a melee weapon, and the duration is 1 hour. In addition, you can end the benefits of this mutagen to unleash a 30-foot cone of energy that deals {@dice 2d6} damage of the attuned type for every full 10 minutes of duration remaining (DC 25 basic Reflex save)."
-					]
+						"You gain resistance 15, add {@damage 1d6} damage on a hit with a melee weapon, and the duration is 1 hour. In addition, you can end the benefits of this mutagen to unleash a 30-foot cone of energy that deals {@dice 2d6} damage of the attuned type for every full 10 minutes of duration remaining (DC 25 basic Reflex save)."
+					],
+					"_mod": {
+						"entries": {
+							"with": "For an hour after consuming the elixir, you gain resistance 15 to the attuned energy type. Whenever you score a hit with a melee weapon, add {@damage 1d6} damage of the attuned energy type. In addition, you can end the benefits of this mutagen to unleash a 30-foot cone of energy that deals {@damage 2d6} damage of the attuned type for every full 10 minutes of duration remaining (DC 25 basic Reflex save)."
+						}
+					}
 				},
 				{
 					"type": "major",
@@ -97,8 +119,13 @@
 						"amount": 3000
 					},
 					"entries": [
-						"You gain resistance 20, add {@dice 2d6} damage on a hit with a melee weapon, and the duration is 1 hour. In addition, you can end the benefits of this mutagen to unleash a 30-foot cone of energy that deals {@dice 3d6} damage of the attuned type for every full 10 minutes of duration remaining (DC 32 basic Reflex save)."
-					]
+						"You gain resistance 20, add {@damage 2d6} damage on a hit with a melee weapon, and the duration is 1 hour. In addition, you can end the benefits of this mutagen to unleash a 30-foot cone of energy that deals {@dice 3d6} damage of the attuned type for every full 10 minutes of duration remaining (DC 32 basic Reflex save)."
+					],
+					"_mod": {
+						"entries": {
+							"with": "For hour after consuming the elixir, you gain resistance 20 to the attuned energy type. Whenever you score a hit with a melee weapon, add {@damage 2d6} damage of the attuned energy type. In addition, you can end the benefits of this mutagen to unleash a 30-foot cone of energy that deals {@damage 3d6} damage of the attuned type for every full 10 minutes of duration remaining (DC 32 basic Reflex save)."
+						}
+					}
 				}
 			]
 		},

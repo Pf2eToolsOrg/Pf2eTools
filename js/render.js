@@ -5123,7 +5123,7 @@ Renderer.spell = {
 		${Renderer.utils.getTraitsDiv(sp.traits)}
 		${Renderer.spell.getSubHead(sp)}
 		${entryStack.join("")}
-		${sp.heightened && sp.heightened.heightened ? `${Renderer.utils.getDividerDiv()}${Renderer.spell.getHeightenedEntry(sp)}` : ""}
+		${sp.heightened ? `${Renderer.utils.getDividerDiv()}${Renderer.spell.getHeightenedEntry(sp)}` : ""}
 		${opts.noPage ? "" : Renderer.utils.getPageP(sp)}`;
 	},
 
