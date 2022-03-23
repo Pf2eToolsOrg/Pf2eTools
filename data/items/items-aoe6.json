@@ -17,7 +17,7 @@
 			"bulk": "L",
 			"category": "Artifact",
 			"entries": [
-				"A large crystal of warpglass (page 74) floats above the head of this silvery purple +3 anarchic greater striking club. If you successfully {@action Strike} a creature, the cane also affects the target with a warpwave (Pathfinder Bestiary 266). While you carry the cane, you hear a constant, distracting chorus of laughing, incoherent Protean whispers and sing-song voices in your mind. Blatant acts of self-indulgence or narcissism quell these whispers, from a few minutes up to a full day depending on the scope of the act, but they immediately return when you use the artifact's powers.",
+				"A large crystal of {@item warpglass|aoe6} floats above the head of this silvery purple +3 anarchic greater striking club. If you successfully {@action Strike} a creature, the cane also affects the target with a warpwave (Pathfinder Bestiary 266). While you carry the cane, you hear a constant, distracting chorus of laughing, incoherent Protean whispers and sing-song voices in your mind. Blatant acts of self-indulgence or narcissism quell these whispers, from a few minutes up to a full day depending on the scope of the act, but they immediately return when you use the artifact's powers.",
 				"The gradually rising chorus eventually drives away rational thought and renders the cane's owner insane, even if staved off from time to time with self-centered acts. As the artifact's abilities pull material from the Maelstrom, it doesn't function in areas where planar connections are severed.",
 				{
 					"type": "ability",
@@ -65,8 +65,7 @@
 						"When the artifact is destroyed, the terrain imprisoning the demigod crumbles away and the demigod is freed."
 					]
 				}
-			],
-			"consumable": false
+			]
 		},
 		{
 			"name": "Radiant Spark",
@@ -137,8 +136,7 @@
 						}
 					]
 				}
-			],
-			"consumable": false
+			]
 		},
 		{
 			"name": "Ring Of Recalcitrant Wishes",
@@ -174,14 +172,12 @@
 						"Once the wish is cast, the Ring of Recalcitrant Wishes has no powers, though it is rumored that the wearer's death in an act of profound self-sacrifice restores the wish to the ring."
 					]
 				}
-			],
-			"consumable": false
+			]
 		},
 		{
 			"name": "Warpglass",
 			"source": "AoE6",
 			"page": 74,
-			"equipment": true,
 			"type": "Material",
 			"level": "17+",
 			"traits": [
@@ -222,8 +218,7 @@
 					},
 					"entries": []
 				}
-			],
-			"consumable": false
+			]
 		},
 		{
 			"name": "Warpglass Weapon",
@@ -236,9 +231,9 @@
 			],
 			"usage": "varies by weapon",
 			"bulk": "varies",
-			"category": "no category found",
+			"category": "Material",
 			"entries": [
-				"If you critically hit a creature with a {@action Strike} with a warpglass weapon, the target is affected by a warpwave (page 81) and automatically fails its saving throw."
+				"If you critically hit a creature with a {@action Strike} with a warpglass weapon, the target is affected by a {@affliction warpwave|aoe6} and automatically fails its saving throw."
 			],
 			"generic": "G",
 			"variants": [
@@ -253,8 +248,7 @@
 					"craftReq": "at least 7,000 gp of warpglass + 700 gp per Bulk.",
 					"entries": []
 				}
-			],
-			"consumable": false
+			]
 		}
 	]
 }

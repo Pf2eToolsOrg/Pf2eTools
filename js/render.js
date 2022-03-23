@@ -2187,6 +2187,7 @@ function Renderer () {
 						this._recursiveRender(fauxEntry, textStack, meta);
 						break;
 					case "@disease":
+					case "@affliction":
 					case "@curse":
 						fauxEntry.href.path = UrlUtil.PG_AFFLICTIONS;
 						fauxEntry.href.hover = {
@@ -4712,7 +4713,10 @@ Renderer.item = {
 			renderStack.push(`</p>`);
 		}
 		if (item.activate) {
-			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Activate&nbsp;</strong>${renderer.render(Parser.timeToFullEntry(item.activate.activity))} `);
+			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Activate&nbsp;</strong>`);
+			if (item.activate.activity != null) {
+				renderStack.push(`${renderer.render(Parser.timeToFullEntry(item.activate.activity))} `);
+			}
 			if (item.activate.components != null) {
 				renderStack.push(`${renderer.render(item.activate.components)}`);
 			}
@@ -4868,10 +4872,11 @@ Renderer.item = {
 			// FIXME: Optimize this hellish mess
 			renderStack.push(`<div class="pf2-stat pf2-stat__section--wide"><strong>Type&nbsp;</strong>${renderer.render(`{@item ${v.type.toLowerCase().includes(item.name.toLowerCase()) ? `${v.type}` : `${v.name ? v.name : `${v.type} ${item.name}`}`}|${v.source ? v.source : item.source}|${v.type}}`)}`);
 			if (v.level != null) renderStack.push(`; <strong>Level&nbsp;</strong>${v.level}`);
-			if (v.traits != null && v.traits.length) renderStack.push(` (${renderer.render(v.traits.map(t => `{@trait ${t.toLowerCase()}}`).join(", "))});`);
+			if (v.traits != null && v.traits.length) renderStack.push(` (${renderer.render(v.traits.map(t => `{@trait ${t.toLowerCase()}}`).join(", "))})`);
 			if (v.price != null) renderStack.push(`; <strong>Price&nbsp;</strong>${Parser.priceToFull(v.price)}`);
 			if (v.bulk != null) renderStack.push(`; <strong>Bulk&nbsp;</strong>${v.bulk}`);
 			if (v.entries != null && v.entries.length) {
+				renderStack.push(`; `);
 				renderer.recursiveRender(v.entries, renderStack, {prefix: "<p class='pf2-stat pf2-stat__text'>", suffix: "</p>"});
 			}
 			if (v.craftReq != null) renderStack.push(`; <strong>Craft Requirements&nbsp;</strong>${renderer.render(v.craftReq)}`);
@@ -7374,6 +7379,7 @@ Renderer._stripTagLayer = function (str) {
 					case "@condition":
 					case "@creature":
 					case "@disease":
+					case "@affliction":
 					case "@feat":
 					case "@hazard":
 					case "@item":
