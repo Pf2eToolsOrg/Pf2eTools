@@ -1288,23 +1288,44 @@ function Renderer () {
 			textStack[0] += `<p class="pf2-paper-title">${this.render(entry.title)}</p>`;
 		}
 
-		const styles = (entry.style || "").split(" ").map(s => `pf2-${s}`).join(" ");
+		const styles = (entry.style || "").split(" ").filter(Boolean).map(s => `pf2-${s}`).join(" ");
 		textStack[0] += `<div class="pf2-paper ${styles}" ${dataString}>`;
 
-		// textStack[0] += `<div class="pf2-paper__header">`;
-		// textStack[0] += `</div>`;
+		if (entry.head) {
+			textStack[0] += `<div class="pf2-paper__header">`;
+			const len = entry.head.length;
+			for (let i = 0; i < len; ++i) {
+				this._recursiveRender(entry.head[i], textStack, meta, {
+					prefix: `<p class="pf2-paper__text">`,
+					suffix: "</p>",
+				});
+			}
+			textStack[0] += `</div>`;
+		}
 
 		textStack[0] += `<div class="pf2-paper__entries">`;
 		if (entry.entries) {
 			const len = entry.entries.length;
 			for (let i = 0; i < len; ++i) {
 				this._recursiveRender(entry.entries[i], textStack, meta, {
-					prefix: `<p class="pf2-paper__text">`,
+					prefix: `<p class="pf2-paper__text" ${entry.noIndentLastEntry && i === len - 1 ? "style='text-indent: 0;'" : ""}>`,
 					suffix: "</p>",
 				});
 			}
 		}
 		textStack[0] += `</div>`;
+
+		if (entry.signature) {
+			textStack[0] += `<div class="pf2-paper__signature">`;
+			const len = entry.signature.length;
+			for (let i = 0; i < len; ++i) {
+				this._recursiveRender(entry.signature[i], textStack, meta, {
+					prefix: `<p class="pf2-paper__text">`,
+					suffix: "</p>",
+				});
+			}
+			textStack[0] += `</div>`;
+		}
 
 		if (entry.footnotes) {
 			textStack[0] += `<div class="pf2-paper__footer">`;
