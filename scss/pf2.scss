@@ -1247,12 +1247,18 @@
 	border-image-repeat: round;
 
 	&__ {
-		&text {
-			margin: 0;
+		&header {
+			margin-bottom: 0.6em;
+			text-align: end;
 		}
 
-		&header {
-			margin-bottom: 1em;
+		&signature {
+			margin-top: 0.3em;
+			text-align: end;
+		}
+
+		&text {
+			margin: 0;
 		}
 
 		&footer {
@@ -1271,6 +1277,17 @@
 			}
 		}
 	}
+
+	&--dark {
+		color: black !important;
+		border-image-source: url('../img/letter-dark.png');
+	}
+
+	.pf2-title {
+		font-size: 1.3em;
+		font-weight: bold;
+		margin: 0;
+	}
 }
 
 .pf2-paper-title {
@@ -1287,6 +1304,23 @@
 	color: #492706;
 	font-size: 1.18em;
 	font-style: italic;
+
+	.pf2-title {
+		font-size: 1.3em;
+		font-weight: bold;
+		letter-spacing: 0.03em;
+		margin: 0;
+	}
+}
+
+.pf2-research {
+	font-family: 'Albertus', sans-serif;
+
+	.pf2-title {
+		font-weight: normal;
+		font-size: 1.6em;
+		margin: 0;
+	}
 }
 
 .pf2-handwriting {
@@ -1295,9 +1329,6 @@
 	font-style: italic;
 }
 
-.pf2-research {
-	font-family: 'Albertus', sans-serif;
-}
 
 .no-border-left {
 	border-left-style: none !important;
