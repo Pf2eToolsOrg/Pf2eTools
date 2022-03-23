@@ -5182,6 +5182,7 @@ Renderer.spell = {
 	},
 
 	getHeightenedEntry (sp) {
+		console.log("Hi?")
 		if (!sp.heightened) return "";
 		const renderer = Renderer.get();
 		const renderStack = [""];

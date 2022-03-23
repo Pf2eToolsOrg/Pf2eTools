@@ -13,6 +13,11 @@
 				"Mental",
 				"Sorcerer"
 			],
+			"subclass": {
+				"Sorcerer|Bloodline": [
+					"Aberrant"
+				]
+			},
 			"school": "E",
 			"cast": {
 				"number": 1,
@@ -185,6 +190,11 @@
 			"page": 402,
 			"focus": true,
 			"level": 5,
+			"subclass": {
+				"Sorcerer|Bloodline": [
+					"Demonic"
+				]
+			},
 			"traits": [
 				"Uncommon",
 				"Evocation",
@@ -767,6 +777,11 @@
 		{
 			"name": "Ancestral Memories",
 			"source": "CRB",
+			"subclass": {
+				"Sorcerer|Bloodline": [
+					"Imperial"
+				]
+			},
 			"page": 402,
 			"focus": true,
 			"level": 1,
@@ -813,6 +828,11 @@
 			"name": "Angelic Halo",
 			"source": "CRB",
 			"page": 402,
+			"subclass": {
+				"Sorcerer|Bloodline": [
+					"Angelic"
+				]
+			},
 			"focus": true,
 			"level": 1,
 			"traits": [
@@ -857,6 +877,11 @@
 			"name": "Angelic Wings",
 			"source": "CRB",
 			"page": 403,
+			"subclass": {
+				"Sorcerer|Bloodline": [
+					"Angelic"
+				]
+			},
 			"focus": true,
 			"level": 3,
 			"traits": [
@@ -1236,6 +1261,11 @@
 			"page": 403,
 			"focus": true,
 			"level": 5,
+			"subclass": {
+				"Sorcerer|Bloodline": [
+					"Imperial"
+				]
+			},
 			"traits": [
 				"Uncommon",
 				"Abjuration",
@@ -2616,6 +2646,11 @@
 			"name": "Celestial Brand",
 			"source": "CRB",
 			"page": 403,
+			"subclass": {
+				"Sorcerer|Bloodline": [
+					"Angelic"
+				]
+			},
 			"focus": true,
 			"level": 5,
 			"traits": [
@@ -5450,6 +5485,11 @@
 			"name": "Diabolic Edict",
 			"source": "CRB",
 			"page": 403,
+			"subclass": {
+				"Sorcerer|Bloodline": [
+					"Diabolic"
+				]
+			},
 			"focus": true,
 			"level": 1,
 			"traits": [
@@ -6762,7 +6802,19 @@
 			"name": "Dragon Breath",
 			"source": "CRB",
 			"page": 403,
+			"otherSources": {
+				"expanded": [
+					"LOME|75",
+					"SoT3|79"
+				]
+			},
 			"focus": true,
+			"subclass": {
+				"Sorcerer|Bloodline": [
+					"Draconic",
+					"Wyrmblessed"
+				]
+			},
 			"level": 3,
 			"traits": [
 				"Uncommon",
@@ -6775,25 +6827,19 @@
 				"unit": "action"
 			},
 			"components": {
-				"F": false,
-				"M": false,
 				"S": true,
 				"V": true
 			},
 			"area": {
 				"types": [
 					"Cone",
-					"Line"
+					"Line",
+					"Burst"
 				],
-				"entry": "30-foot cone or 60-foot line originating from you"
+				"entry": "30-foot cone or 60-foot line originating from you or 10-foot burst within 30 feet of you"
 			},
 			"savingThrow": "Reflex or Fortitude",
 			"savingThrowBasic": true,
-			"duration": {
-				"type": null
-			},
-			"sustain": false,
-			"dismiss": false,
 			"entries": [
 				"You spew energy from your mouth, dealing {@dice 5d6} damage. The area, damage type, and save depend on the dragon type in your bloodline.",
 				{
@@ -6802,6 +6848,9 @@
 						3,
 						4,
 						2
+					],
+					"footnotes": [
+						"{@note {@sup 1} These are assumed, as the books these dragons originate from do not say what type of Saving Throw they use."
 					],
 					"rows": [
 						[
@@ -6838,6 +6887,56 @@
 							"Silver or white",
 							"30-foot cone of cold",
 							"Reflex"
+						],
+						[
+							"Brine",
+							"60-foot line of acid",
+							"Reflex"
+						],
+						[
+							"Cloud",
+							"30-foot cone of electricity",
+							"Reflex"
+						],
+						[
+							"Crystal",
+							"30-foot cone of piercing",
+							"Reflex{@sup 1}"
+						],
+						[
+							"Magma",
+							"30-foot cone of fire",
+							"Reflex{@sup 1}"
+						],
+						[
+							"Umbral",
+							"30-foot cone of negative",
+							"Reflex{@sup 1}"
+						],
+						[
+							"Forest",
+							"30-foot cone of piercing",
+							"Reflex{@sup 1}"
+						],
+						[
+							"Sea",
+							"10-foot burst within 30 feet of bludgeoning",
+							"Reflex{@sup 1}"
+						],
+						[
+							"Sky",
+							"10-foot burst within 30 feet of electricity",
+							"Reflex{@sup 1}"
+						],
+						[
+							"Sovereign",
+							"30-foot cone of mental",
+							"Reflex{@sup 1}"
+						],
+						[
+							"Underworld",
+							"10-foot burst within 30 feet of fire",
+							"Reflex{@sup 1}"
 						]
 					]
 				}
@@ -6854,6 +6953,12 @@
 			"source": "CRB",
 			"page": 403,
 			"focus": true,
+			"subclass": {
+				"Sorcerer|Bloodline": [
+					"Draconic",
+					"Wyrmblessed"
+				]
+			},
 			"level": 1,
 			"traits": [
 				"Uncommon",
@@ -6984,6 +7089,12 @@
 			"source": "CRB",
 			"page": 403,
 			"focus": true,
+			"subclass": {
+				"Sorcerer|Bloodline": [
+					"Draconic",
+					"Wyrmblessed"
+				]
+			},
 			"level": 5,
 			"traits": [
 				"Uncommon",
@@ -7030,6 +7141,11 @@
 			"source": "CRB",
 			"page": 403,
 			"focus": true,
+			"subclass": {
+				"Sorcerer|Bloodline": [
+					"Undead"
+				]
+			},
 			"level": 3,
 			"traits": [
 				"Uncommon",
@@ -7721,6 +7837,11 @@
 			"page": 404,
 			"focus": true,
 			"level": 5,
+			"subclass": {
+				"Sorcerer|Bloodline": [
+					"Elemental"
+				]
+			},
 			"traits": [
 				"Uncommon",
 				"Evocation",
@@ -7848,6 +7969,11 @@
 			"page": 404,
 			"focus": true,
 			"level": 3,
+			"subclass": {
+				"Sorcerer|Bloodline": [
+					"Elemental"
+				]
+			},
 			"traits": [
 				"Uncommon",
 				"Evocation",
@@ -7939,6 +8065,11 @@
 			"source": "CRB",
 			"page": 404,
 			"focus": true,
+			"subclass": {
+				"Sorcerer|Bloodline": [
+					"Elemental"
+				]
+			},
 			"level": 1,
 			"traits": [
 				"Uncommon",
@@ -7985,6 +8116,11 @@
 			"name": "Embrace The Pit",
 			"source": "CRB",
 			"page": 404,
+			"subclass": {
+				"Sorcerer|Bloodline": [
+					"Diabolic"
+				]
+			},
 			"focus": true,
 			"level": 3,
 			"traits": [
@@ -8611,6 +8747,11 @@
 			"name": "Extend Spell",
 			"source": "CRB",
 			"page": 404,
+			"subclass": {
+				"Sorcerer|Bloodline": [
+					"Imperial"
+				]
+			},
 			"focus": true,
 			"level": 3,
 			"traits": [
@@ -8756,6 +8897,11 @@
 			"page": 404,
 			"focus": true,
 			"level": 1,
+			"subclass": {
+				"Sorcerer|Bloodline": [
+					"Elemental"
+				]
+			},
 			"traits": [
 				"Uncommon",
 				"Enchantment",
@@ -9273,6 +9419,11 @@
 			"page": 404,
 			"focus": true,
 			"level": 3,
+			"subclass": {
+				"Sorcerer|Bloodline": [
+					"Elemental"
+				]
+			},
 			"traits": [
 				"Uncommon",
 				"Enchantment",
@@ -9318,6 +9469,11 @@
 			"page": 404,
 			"focus": true,
 			"level": 5,
+			"subclass": {
+				"Sorcerer|Bloodline": [
+					"Elemental"
+				]
+			},
 			"traits": [
 				"Uncommon",
 				"Illusion",
@@ -10965,6 +11121,11 @@
 			"page": 404,
 			"focus": true,
 			"level": 1,
+			"subclass": {
+				"Sorcerer|Bloodline": [
+					"Demonic"
+				]
+			},
 			"traits": [
 				"Uncommon",
 				"Morph",
@@ -11196,6 +11357,11 @@
 			"page": 404,
 			"focus": true,
 			"level": 5,
+			"subclass": {
+				"Sorcerer|Bloodline": [
+					"Undead"
+				]
+			},
 			"traits": [
 				"Uncommon",
 				"Necromancy",
@@ -11933,6 +12099,11 @@
 			"name": "Hellfire Plume",
 			"source": "CRB",
 			"page": 405,
+			"subclass": {
+				"Sorcerer|Bloodline": [
+					"Diabolic"
+				]
+			},
 			"focus": true,
 			"level": 5,
 			"traits": [
@@ -12255,6 +12426,11 @@
 		},
 		{
 			"name": "Horrific Visage",
+			"subclass": {
+				"Sorcerer|Bloodline": [
+					"Hag"
+				]
+			},
 			"source": "CRB",
 			"page": 405,
 			"focus": true,
@@ -13517,6 +13693,11 @@
 		{
 			"name": "Jealous Hex",
 			"source": "CRB",
+			"subclass": {
+				"Sorcerer|Bloodline": [
+					"Hag"
+				]
+			},
 			"page": 405,
 			"focus": true,
 			"level": 1,
@@ -25010,6 +25191,11 @@
 			"page": 405,
 			"focus": true,
 			"level": 3,
+			"subclass": {
+				"Sorcerer|Bloodline": [
+					"Demonic"
+				]
+			},
 			"traits": [
 				"Uncommon",
 				"Conjuration",
@@ -25978,6 +26164,11 @@
 			"page": 405,
 			"focus": true,
 			"level": 1,
+			"subclass": {
+				"Sorcerer|Bloodline": [
+					"Aberrant"
+				]
+			},
 			"traits": [
 				"Uncommon",
 				"Morph",
@@ -26854,6 +27045,11 @@
 		{
 			"name": "Undeath's Blessing",
 			"source": "CRB",
+			"subclass": {
+				"Sorcerer|Bloodline": [
+					"Undead"
+				]
+			},
 			"page": 405,
 			"focus": true,
 			"level": 1,
@@ -27329,6 +27525,11 @@
 			"name": "Unusual Anatomy",
 			"source": "CRB",
 			"page": 405,
+			"subclass": {
+				"Sorcerer|Bloodline": [
+					"Aberrant"
+				]
+			},
 			"focus": true,
 			"level": 5,
 			"traits": [
@@ -29433,6 +29634,11 @@
 		},
 		{
 			"name": "You're Mine",
+			"subclass": {
+				"Sorcerer|Bloodline": [
+					"Hag"
+				]
+			},
 			"source": "CRB",
 			"page": 406,
 			"focus": true,

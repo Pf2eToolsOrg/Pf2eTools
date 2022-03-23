@@ -143,6 +143,11 @@ class PageFilterSpells extends PageFilter {
 		if (spell.dismiss) spell._fMisc.push("Can be Dismissed");
 		if (spell.hasBattleForm) spell._fMisc.push("Has Battle Form");
 		if (spell.summoning) spell._fMisc.push("Summoning");
+		// "Possible Elementalist Spell" shenanigans, could be optimised?
+		if (!spell._fTraditions.includes("Elemental")
+		&& (spell.traits.some((trait) => trait.includes("Fire" || "Water" || "Earth" || "Air"))
+		|| (spell._fTraditions.includes("Arcane") && spell._fTraditions.includes("Occult") && spell._fTraditions.includes("Primal") && spell._fTraditions.includes("Divine"))
+		)) spell._fMisc.push("Possible Elementalist Spells");
 	}
 
 	addToFilters (spell, isExcluded) {
