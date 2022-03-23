@@ -5182,7 +5182,6 @@ Renderer.spell = {
 	},
 
 	getHeightenedEntry (sp) {
-		console.log("Hi?")
 		if (!sp.heightened) return "";
 		const renderer = Renderer.get();
 		const renderStack = [""];
@@ -5193,21 +5192,17 @@ Renderer.spell = {
 			});
 		};
 		if (sp.heightened.plus_x != null) {
-			if (typeof sp.heightened.plus_x.entry === "string") {
-				renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Heightened (+${sp.heightened.plus_x.level})&nbsp;</strong>${renderer.render(sp.heightened.plus_x.entry)}</p>`);
-			} else if (Array.isArray(sp.heightened.plus_x.entry)) {
-				renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Heightened (+${sp.heightened.plus_x.level})&nbsp;</strong>`)
-				renderArray(sp.heightened.plus_x.entry);
-				renderStack.push(`</p>`);
-			}
+			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Heightened (+${sp.heightened.plus_x.level})&nbsp;</strong>`)
+			renderArray(sp.heightened.plus_x.entries);
+			renderStack.push(`</p>`);
 		}
 		if (sp.heightened.x != null) {
 			sp.heightened.x.forEach(x => {
-				if (typeof x.entry === "string") {
-					renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Heightened (${Parser.getOrdinalForm(x.level)})&nbsp;</strong>${renderer.render(x.entry)}</p>`);
-				} else if (Array.isArray(x.entry)) {
+				if (typeof x.entries === "string") {
+					renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Heightened (${Parser.getOrdinalForm(x.level)})&nbsp;</strong>${renderer.render(x.entries)}</p>`);
+				} else if (Array.isArray(x.entries)) {
 					renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Heightened (${Parser.getOrdinalForm(x.level)})&nbsp;</strong>`);
-					renderArray(x.entry);
+					renderArray(x.entries);
 					renderStack.push(`</p>`);
 				}
 			});
