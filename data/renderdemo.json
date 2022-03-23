@@ -135,7 +135,7 @@
 							"type": "pf2-sidebar",
 							"name": "Sidebars",
 							"entries": [
-								"Sidebars can be give additional CSS classes using the \"style\" property. Use \"pf2-sidebar--left\" to float the sidebar to the left. Sidebars can have multiple titles.",
+								"Sidebars can be give additional CSS classes using the \"style\" array. Use \"pf2-sidebar--left\" to float the sidebar to the left. Use \"pf2-sidebar--full\" to extend the sidebar to the bottom of the screen (this though is stopped by another sidebar if one exists in its way).  Sidebars can have multiple titles.",
 								{
 									"type": "pf2-title",
 									"name": "Dr. Pavel, I'm CIA."
@@ -707,7 +707,6 @@
 															"Arcane",
 															"Primal"
 														],
-														"altTraditions": null,
 														"school": "V",
 														"focus": false,
 														"components": {
@@ -716,7 +715,6 @@
 															"S": true,
 															"V": true
 														},
-														"cost": null,
 														"traits": [
 															"Evocation",
 															"Fire"
@@ -728,8 +726,6 @@
 															"number": 2,
 															"unit": "action"
 														},
-														"requirements": null,
-														"trigger": null,
 														"range": {
 															"entry": "500 feet",
 															"distance": {
@@ -743,20 +739,16 @@
 															],
 															"entry": "20-foot burst"
 														},
-														"targets": null,
 														"duration": {
 															"type": null
 														},
 														"savingThrow": "Reflex",
 														"savingThrowBasic": true,
 														"heightened": {
-															"heightened": true,
 															"plus_x": {
 																"level": 1,
 																"entry": "The damage increases by {@dice 2d6}."
-															},
-															"x": null,
-															"no_x": null
+															}
 														},
 														"dismiss": false,
 														"sustain": false,

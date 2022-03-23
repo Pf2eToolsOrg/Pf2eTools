@@ -1,6 +1,601 @@
 {
 	"baseitem": [
 		{
+			"name": "Alchemical Crossbow",
+			"source": "FoP",
+			"page": 56,
+			"type": "Item",
+			"level": 0,
+			"traits": [
+				"Uncommon",
+				"Alchemical"
+			],
+			"price": {
+				"amount": 25,
+				"coin": "gp"
+			},
+			"bulk": 1,
+			"weaponData": {
+				"ammunition": "Bolt",
+				"damage": "1d8",
+				"damageType": "P",
+				"reload": 1,
+				"range": 120,
+				"group": "Bow"
+			},
+			"hands": 2,
+			"category": "Weapon",
+			"subCategory": "Simple",
+			"entries": [
+				"This crossbow can deliver alchemically infused bolts. The strange weapon has a metal bracket mounted on the side of the stock near the lath. As an action, you can load a single {@filter lesser alchemical bomb|items||Category=Bomb|Item=Alchemical|Type=Specific Variant|Level=[1;1]} into the bracket; this bomb must be one that deals energy damage (such as an {@item lesser acid flask||acid flask}, {@item lesser alchemist's fire||alchemist's fire}, {@item lesser bottled lightning||bottled lightning}, {@item lesser frost vial||frost vial}, or {@item lesser thunderstone||thunderstone}). The next three attacks made with the crossbow deal {@dice 1d6} damage of the bomb's damage type in addition to the crossbow's normal damage. If the second and third attacks are not all made within 1 minute of the first attack, the bomb's energy is wasted. These attacks never deal splash damage or other special effects of the bomb and are not modified by any abilities that add to or modify a bomb's effect. The addition of the bracket serves to unbalance the weapon, reducing its range to 30 feet.",
+				"It otherwise functions as a {@item crossbow} (when determining damage, reload, and so on). Creatures use their crossbow proficiency when using the alchemical crossbow. The alchemical crossbow costs 25 gp."
+			]
+		},
+		{
+			"name": "Three Peaked Tree",
+			"source": "G&G",
+			"access": "The following regions have access to firearms: Alkenstar, Dongun Hold, Tian Xia, Vudra, Arcadia, Ustalav, the Shackles",
+			"level": 1,
+			"page": 158,
+			"equipment": true,
+			"type": "Equipment",
+			"traits": [
+				"Uncommon"
+			],
+			"price": {
+				"amount": 12,
+				"coin": "gp"
+			},
+			"bulk": 2,
+			"hands": 2,
+			"weaponData": {
+				"type": "Ranged",
+				"group": "Firearm|G&G",
+				"damage": "1d4",
+				"damageType": "P",
+				"reload": 1,
+				"range": 60,
+				"ammunition": "round (10)|G&G|round",
+				"traits": [
+					"Concussive",
+					"elf",
+					"fatal d8",
+					"parry"
+				]
+			},
+			"comboWeaponData": {
+				"type": "Melee",
+				"group": "Spear",
+				"damage": "1d8",
+				"damageType": "P",
+				"traits": [
+					"Critical fusion",
+					"elf",
+					"tethered",
+					"thrown 20 ft."
+				]
+			},
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"entries": [
+				"A recently developed weapon created for an elven champion from Jinin, the three-peaked tree can be used as both a trident and a mithral tree. A three-peaked tree has a length of silken rope attached to the butt of its haft, allowing it to be quickly retrieved after thrown."
+			]
+		},
+		{
+			"name": "Rapier Pistol",
+			"source": "G&G",
+			"access": "The following regions have access to firearms: Alkenstar, Dongun Hold, Tian Xia, Vudra, Arcadia, Ustalav, the Shackles",
+			"page": 158,
+			"equipment": true,
+			"type": "Equipment",
+			"traits": [
+				"Uncommon"
+			],
+			"price": {
+				"amount": 10,
+				"coin": "gp"
+			},
+			"bulk": 1,
+			"hands": 1,
+			"weaponData": {
+				"type": "Ranged",
+				"group": "Firearm|G&G",
+				"damage": "1d4",
+				"damageType": "P",
+				"reload": 1,
+				"range": 30,
+				"ammunition": "round (10)|G&G|round",
+				"traits": [
+					"Concussive",
+					"fatal d8"
+				]
+			},
+			"comboWeaponData": {
+				"type": "Melee",
+				"group": "Sword",
+				"damage": "1d4",
+				"damageType": "P",
+				"traits": [
+					"Critical fusion",
+					"deadly d8",
+					"disarm",
+					"finesse"
+				]
+			},
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"entries": [
+				"This elegant weapon is shaped similarly to a rapier with a pistol down the length of the blade."
+			]
+		},
+		{
+			"name": "Piercing Wind",
+			"source": "G&G",
+			"access": "The following regions have access to firearms: Alkenstar, Dongun Hold, Tian Xia, Vudra, Arcadia, Ustalav, the Shackles",
+			"page": 158,
+			"equipment": true,
+			"type": "Equipment",
+			"traits": [
+				"Uncommon"
+			],
+			"price": {
+				"amount": 15,
+				"coin": "gp"
+			},
+			"bulk": 1,
+			"hands": 1,
+			"weaponData": {
+				"type": "Ranged",
+				"group": "Firearm|G&G",
+				"damage": "1d6",
+				"damageType": "P",
+				"reload": 1,
+				"range": 40,
+				"ammunition": "round (10)|G&G|round",
+				"traits": [
+					"Concussive",
+					"fatal aim d10"
+				]
+			},
+			"comboWeaponData": {
+				"type": "Melee",
+				"group": "Sword",
+				"damage": "1d4",
+				"damageType": "S",
+				"traits": [
+					"Critical fusion",
+					"finesse",
+					"forceful",
+					"sweep"
+				]
+			},
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"entries": [
+				"Favored by caravan guards who traverse the Mana Wastes, a piercing wind is similar to a jezail, in that you can carry it in one hand as long as the other hand's free, by holding it under one arm. Additionally, it's fitted with an underslung curved blade."
+			]
+		},
+		{
+			"name": "Mace Multipistol",
+			"source": "G&G",
+			"access": "The following regions have access to firearms: Alkenstar, Dongun Hold, Tian Xia, Vudra, Arcadia, Ustalav, the Shackles",
+			"page": 158,
+			"equipment": true,
+			"type": "Equipment",
+			"traits": [
+				"Uncommon"
+			],
+			"price": {
+				"amount": 13,
+				"coin": "gp"
+			},
+			"bulk": 1,
+			"hands": 1,
+			"weaponData": {
+				"type": "Ranged",
+				"group": "Firearm|G&G",
+				"damage": "1d4",
+				"damageType": "P",
+				"reload": 1,
+				"range": 20,
+				"ammunition": "round (10)|G&G|round",
+				"traits": [
+					"Capacity 3",
+					"concussive",
+					"fatal d8"
+				]
+			},
+			"comboWeaponData": {
+				"type": "Melee",
+				"group": "Club",
+				"damage": "1d6",
+				"damageType": "B",
+				"traits": [
+					"Critical fusion",
+					"shove"
+				]
+			},
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"entries": [
+				"At first glance this weapon looks like nothing more than an iron-bound club. But the top of the weapon features a latch that opens to reveal three rotating pistol muzzles concealed in the mace's head that can be fired and rotated using triggers built into the weapon's haft."
+			]
+		},
+		{
+			"name": "Hammer Gun",
+			"source": "G&G",
+			"access": "The following regions have access to firearms: Alkenstar, Dongun Hold, Tian Xia, Vudra, Arcadia, Ustalav, the Shackles",
+			"page": 158,
+			"equipment": true,
+			"type": "Equipment",
+			"level": 1,
+			"traits": [
+				"Uncommon"
+			],
+			"price": {
+				"amount": 13,
+				"coin": "gp"
+			},
+			"bulk": 2,
+			"hands": 2,
+			"weaponData": {
+				"type": "Ranged",
+				"group": "Firearm|G&G",
+				"damage": "1d6",
+				"damageType": "P",
+				"reload": 1,
+				"range": 60,
+				"ammunition": "round (10)|G&G|round",
+				"traits": [
+					"Concussive",
+					"Fatal d10"
+				]
+			},
+			"comboWeaponData": {
+				"type": "Melee",
+				"group": "Sword",
+				"damage": "1d8",
+				"damageType": "S",
+				"traits": [
+					"Critical fusion",
+					"versatile P"
+				]
+			},
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"entries": [
+				"This weapon, favored by dwarves and those who like smashing and shooting, takes the form of a stoutly built gun designed similarly to an arquebus with a hammer head built into the muzzle, decreasing kickback but limiting range."
+			]
+		},
+		{
+			"name": "Gun Sword",
+			"source": "G&G",
+			"access": "The following regions have access to firearms: Alkenstar, Dongun Hold, Tian Xia, Vudra, Arcadia, Ustalav, the Shackles",
+			"page": 158,
+			"equipment": true,
+			"type": "Equipment",
+			"level": 1,
+			"traits": [
+				"Uncommon"
+			],
+			"price": {
+				"amount": 13,
+				"coin": "gp"
+			},
+			"bulk": 2,
+			"hands": 2,
+			"weaponData": {
+				"type": "Ranged",
+				"group": "Firearm|G&G",
+				"damage": "1d8",
+				"damageType": "P",
+				"reload": 1,
+				"range": 50,
+				"ammunition": "round (10)|G&G|round",
+				"traits": [
+					"Concussive",
+					"kickback"
+				]
+			},
+			"comboWeaponData": {
+				"type": "Melee",
+				"group": "Sword",
+				"damage": "1d8",
+				"damageType": "S",
+				"traits": [
+					"Critical fusion",
+					"versatile P"
+				]
+			},
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"entries": [
+				"This weapon consists of a large sword with a powerful gun based on a harmona gun down the center. Vanguards and other characters who rely on Strength and Dexterity enjoy the power and flexibility of a gun sword."
+			]
+		},
+		{
+			"name": "Gnome Amalgam Musket",
+			"source": "G&G",
+			"access": "The following regions have access to firearms: Alkenstar, Dongun Hold, Tian Xia, Vudra, Arcadia, Ustalav, the Shackles",
+			"page": 158,
+			"equipment": true,
+			"type": "Equipment",
+			"level": 1,
+			"traits": [
+				"Uncommon"
+			],
+			"price": {
+				"amount": 10,
+				"coin": "gp"
+			},
+			"bulk": 2,
+			"hands": 2,
+			"weaponData": {
+				"type": "Ranged",
+				"group": "Firearm|G&G",
+				"damage": "1d6",
+				"damageType": "P",
+				"reload": 2,
+				"range": 40,
+				"ammunition": "round (10)|G&G|round",
+				"traits": [
+					"Concussive",
+					"fatal 1d10",
+					"gnome"
+				]
+			},
+			"comboWeaponData": {
+				"type": "Melee",
+				"group": "Hammer",
+				"damage": "1d8",
+				"damageType": "B",
+				"traits": [
+					"Critical fusion",
+					"gnome",
+					"trip",
+					"versatile P"
+				]
+			},
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"entries": [
+				"Rumored to be the result of a gnomish dare to make a variant of a hooked hammer that's even more intricate and complex, this weapon adds a musket to the mix of an already overcomplicated device."
+			]
+		},
+		{
+			"name": "Dagger Pistol",
+			"source": "G&G",
+			"access": "The following regions have access to firearms: Alkenstar, Dongun Hold, Tian Xia, Vudra, Arcadia, Ustalav, the Shackles",
+			"page": 158,
+			"equipment": true,
+			"type": "Equipment",
+			"traits": [
+				"Uncommon"
+			],
+			"price": {
+				"amount": 8,
+				"coin": "gp"
+			},
+			"bulk": "L",
+			"hands": 1,
+			"weaponData": {
+				"type": "Ranged",
+				"group": "Firearm|G&G",
+				"damage": "1d4",
+				"damageType": "P",
+				"reload": 1,
+				"range": 30,
+				"ammunition": "round (10)|G&G|round",
+				"traits": [
+					"Concussive",
+					"fatal d8"
+				]
+			},
+			"comboWeaponData": {
+				"type": "Melee",
+				"group": "Knife",
+				"damage": "1d4",
+				"damageType": "P",
+				"traits": [
+					"Agile",
+					"critical fusion",
+					"finesse",
+					" thrown 10 ft.",
+					"versatile P"
+				]
+			},
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"entries": [
+				"This weapon, favored by rangers and other wilderness wanderers, takes the form of a stoutly built pistol with a dagger blade attached beneath the barrel and extending out past the muzzle."
+			]
+		},
+		{
+			"name": "Explosive Dogslicer",
+			"source": "G&G",
+			"access": "The following regions have access to firearms: Alkenstar, Dongun Hold, Tian Xia, Vudra, Arcadia, Ustalav, the Shackles",
+			"page": 158,
+			"equipment": true,
+			"type": "Equipment",
+			"level": 1,
+			"traits": [
+				"Uncommon"
+			],
+			"price": {
+				"amount": 10,
+				"coin": "gp"
+			},
+			"bulk": 2,
+			"hands": 2,
+			"weaponData": {
+				"type": "Ranged",
+				"group": "Firearm|G&G",
+				"damage": "1d6",
+				"damageType": "S",
+				"reload": 1,
+				"range": 20,
+				"ammunition": "round (5)|G&G|round",
+				"traits": [
+					"Backstabber",
+					"goblin",
+					"scatter 5 ft."
+				]
+			},
+			"comboWeaponData": {
+				"type": "Melee",
+				"group": "Sword",
+				"damage": "1d6",
+				"damageType": "S",
+				"traits": [
+					"Backstabber",
+					"critical fusion",
+					"finesse",
+					"goblin"
+				]
+			},
+			"category": "Weapon",
+			"subCategory": "Advanced",
+			"entries": [
+				"An explosive dogslicer is a sneaky, explosive weapon that often brings perverse joy to the goblins who use them. At first glance, it appears to be a triple-bladed dogslicer with an oversized guard."
+			]
+		},
+		{
+			"name": "Cane Pistol",
+			"source": "G&G",
+			"access": "The following regions have access to firearms: Alkenstar, Dongun Hold, Tian Xia, Vudra, Arcadia, Ustalav, the Shackles",
+			"page": 158,
+			"equipment": true,
+			"type": "Equipment",
+			"traits": [
+				"Uncommon"
+			],
+			"price": {
+				"amount": 8,
+				"coin": "gp"
+			},
+			"bulk": 1,
+			"hands": 1,
+			"weaponData": {
+				"type": "Ranged",
+				"group": "Firearm|G&G",
+				"damage": "1d4",
+				"damageType": "P",
+				"reload": 1,
+				"range": 30,
+				"ammunition": "round (10)|G&G|round",
+				"traits": [
+					"Concussive",
+					"fatal d8"
+				]
+			},
+			"comboWeaponData": {
+				"type": "Melee",
+				"group": "Club",
+				"damage": "1d6",
+				"damageType": "B",
+				"traits": [
+					"Critical Fusion",
+					"Thrown 10 ft."
+				]
+			},
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"entries": [
+				"This fashionable cane's handle hides a dueling pistol fired through the thin, painted cap at the bottom of the cane."
+			]
+		},
+		{
+			"name": "Black Powder Knuckle Dusters",
+			"source": "G&G",
+			"access": "The following regions have access to firearms: Alkenstar, Dongun Hold, Tian Xia, Vudra, Arcadia, Ustalav, the Shackles",
+			"page": 158,
+			"equipment": true,
+			"type": "Equipment",
+			"traits": [
+				"Uncommon"
+			],
+			"price": {
+				"amount": 8,
+				"coin": "gp"
+			},
+			"bulk": "L",
+			"hands": 1,
+			"weaponData": {
+				"type": "Ranged",
+				"group": "Firearm|G&G",
+				"damage": "1d4",
+				"damageType": "P",
+				"reload": 1,
+				"range": 30,
+				"ammunition": "round (10)|G&G|round",
+				"traits": [
+					"Concussive",
+					"fatal d8"
+				]
+			},
+			"comboWeaponData": {
+				"type": "Melee",
+				"group": "Brawling",
+				"damage": "1d4",
+				"damageType": "B",
+				"traits": [
+					"Critical Fusion",
+					"Agile"
+				]
+			},
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"entries": [
+				"This pair of knuckle dusters is fitted with an explosive charge of black powder within the hollowed spikes of the weapon and a firing mechanism you hold in your hand while in use."
+			]
+		},
+		{
+			"name": "Axe Musket",
+			"source": "G&G",
+			"access": "The following regions have access to firearms: Alkenstar, Dongun Hold, Tian Xia, Vudra, Arcadia, Ustalav, the Shackles",
+			"page": 158,
+			"equipment": true,
+			"type": "Equipment",
+			"level": 1,
+			"traits": [
+				"Uncommon"
+			],
+			"price": {
+				"amount": 10,
+				"coin": "gp"
+			},
+			"bulk": 2,
+			"hands": 2,
+			"weaponData": {
+				"type": "Ranged",
+				"group": "Firearm|G&G",
+				"damage": "1d6",
+				"damageType": "P",
+				"reload": 1,
+				"range": 40,
+				"ammunition": "round (10)|G&G|round",
+				"traits": [
+					"Concussive",
+					"fatal d10"
+				]
+			},
+			"comboWeaponData": {
+				"type": "Melee",
+				"group": "Axe",
+				"damage": "1d8",
+				"damageType": "S",
+				"traits": [
+					"Critical Fusion",
+					"Sweep"
+				]
+			},
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"entries": [
+				"This item, favored by firearms-using dwarves and barbarians, takes the form of a sturdy musket with an axeblade attached near the muzzle."
+			]
+		},
+		{
 			"name": "Adze",
 			"source": "LOAG",
 			"page": 139,
@@ -13,18 +608,17 @@
 			],
 			"price": {
 				"amount": 1,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
-			"bulk": "2",
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d10",
-			"damageType": "S",
 			"hands": 2,
+			"weaponData": {
+				"damage": "1d10",
+				"damageType": "S",
+				"group": "Axe"
+			},
+			"bulk": 2,
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Axe",
 			"entries": [
 				"A common cutting tool, an adze resembles an axe\u2014but the cutting edge is horizontal, rather than vertical. The adze's shape makes it popular among wood workers, and grippli builders often use them to construct their treetop homes. The tool also serves as an effective weapon, due in part to the immense strength required to swing it."
 			]
@@ -32,6 +626,7 @@
 		{
 			"name": "Air Repeater",
 			"source": "G&G",
+			"access": "The following regions have access to firearms: Alkenstar, Dongun Hold, Tian Xia, Vudra, Arcadia, Ustalav, the Shackles",
 			"page": 151,
 			"equipment": true,
 			"type": "Equipment",
@@ -42,22 +637,20 @@
 			],
 			"price": {
 				"amount": 5,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": "L",
-			"onset": null,
-			"ammunition": [
-				"Pellets|G&G"
-			],
-			"damage": "1d4",
-			"damageType": "P",
 			"hands": 1,
-			"reload": 0,
-			"range": 30,
+			"weaponData": {
+				"ammunition": "Pellets|G&G",
+				"damage": "1d4",
+				"damageType": "P",
+				"reload": 0,
+				"range": 30,
+				"group": "Firearm|G&G"
+			},
 			"category": "Weapon",
 			"subCategory": "Simple",
-			"group": "Firearm|G&G",
 			"entries": [
 				"A thin-barreled firearm that uses a container of pressurized air instead of black powder to propel small metal bullets from an attached cartridge, the air repeater has fallen out of common use in Arcadia due to its poor stopping power, though it's still used occasionally for casual hunting and sport shooting. The air repeater and its {@item long air repeater|G&G|longer-ranged, two-handed variant} are still valued by some for their ability to allow a shooter to fire multiple rounds without needing to stop to reload or crank to a new chamber. A typical air repeater magazine holds 6 {@item pellets|G&G}."
 			]
@@ -76,21 +669,17 @@
 			],
 			"price": {
 				"coin": "gp",
-				"amount": 2,
-				"note": null
+				"amount": 2
+			},
+			"hands": 1,
+			"weaponData": {
+				"damage": "1d8",
+				"damageType": "S",
+				"group": "Sword"
 			},
 			"bulk": 1,
-			"shieldStats": null,
-			"activate": null,
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d8",
-			"damageType": "S",
-			"hands": 1,
 			"category": "Weapon",
 			"subCategory": "Advanced",
-			"group": "Sword",
-			"appliesTo": null,
 			"entries": [
 				"An Aldori dueling sword is a slim, single-bladed dueling sword with a slight curve and a sharp, reinforced point. It deals {@damage 1d8} slashing damage. An aldori dueling sword is an advanced one-handed melee weapon in the sword weapon group."
 			]
@@ -98,6 +687,7 @@
 		{
 			"name": "Arquebus",
 			"source": "G&G",
+			"access": "The following regions have access to firearms: Alkenstar, Dongun Hold, Tian Xia, Vudra, Arcadia, Ustalav, the Shackles",
 			"page": 151,
 			"equipment": true,
 			"type": "Equipment",
@@ -109,22 +699,20 @@
 			],
 			"price": {
 				"amount": 10,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
+			},
+			"hands": 2,
+			"weaponData": {
+				"ammunition": "round (10)|G&G|rounds",
+				"damage": "1d8",
+				"damageType": "P",
+				"reload": 1,
+				"range": 150,
+				"group": "Firearm|G&G"
 			},
 			"bulk": 2,
-			"onset": null,
-			"ammunition": [
-				"Dose or Round of Black Powder|G&G|round"
-			],
-			"damage": "1d8",
-			"damageType": "P",
-			"hands": 2,
-			"reload": 1,
-			"range": 150,
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Firearm|G&G",
 			"entries": [
 				"This is a long rifle that offers more range than the average firearm, though the long barrel and ferocious kickback make the weapon particularly unsteady unless a tripod or other stand is used to stabilize it. The arquebus is one of the most commonly used long guns among the soldiers of Dongun Hold and Alkenstar."
 			]
@@ -144,13 +732,15 @@
 				"amount": 10,
 				"coin": "gp"
 			},
-			"bulk": 1,
-			"damage": "1d6",
-			"damageType": "S",
 			"hands": 1,
+			"weaponData": {
+				"damage": "1d6",
+				"damageType": "S",
+				"group": "Sword"
+			},
+			"bulk": 1,
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Sword",
 			"entries": [
 				"The asp coil, named both for its slithering striking style and its usage among Aspis Consortium agents, has two forms. In sword form, it resembles an elegant, oddly balanced sword. However, with a twist of the pommel, the blade splits into a series of segments connected by elaborate metal cables. Agents of the Aspis Consortium have access to this weapon."
 			]
@@ -170,17 +760,17 @@
 				"coin": "gp"
 			},
 			"bulk": 2,
-			"ammunition": [
-				"Backpack Ballista Bolts|G&G"
-			],
-			"damage": "1d12",
-			"damageType": "P",
 			"hands": "1+",
-			"reload": "1 min.",
-			"range": 180,
+			"weaponData": {
+				"ammunition": "Backpack Ballista Bolts|G&G",
+				"damage": "1d12",
+				"damageType": "P",
+				"reload": "1 min.",
+				"range": 180,
+				"group": "Bow"
+			},
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Bow",
 			"entries": [
 				"This complex wooden device, worn on the back, contains a miniature ballista on a retractable arm. As an {@action Interact} action, you can pull a lever to deploy or retract the ballista. As long as it remains deployed, you must hold the ballista using that hand or some of the components spill out onto the ground, just like dropping any other weapon. While deployed, the device opens and raises the ballista up over your shoulder. While retracted, the ballista and its mount slide down and are {@condition concealed} within the device. Although a backpack ballista packs a punch, the device is a challenge to operate. Reloading it takes 1 minute and can't be done while worn. As normal, you can't wear a backpack ballista with another backpack."
 			]
@@ -200,18 +790,18 @@
 				"amount": 20,
 				"coin": "gp"
 			},
-			"bulk": 3,
-			"ammunition": [
-				"Backpack Catapult Stones|G&G"
-			],
-			"damage": "1d12",
-			"damageType": "B",
 			"hands": "1+",
-			"reload": "1 min.",
-			"range": 240,
+			"weaponData": {
+				"ammunition": "Backpack Catapult Stones|G&G",
+				"damage": "1d12",
+				"damageType": "B",
+				"reload": "1 min.",
+				"range": 240,
+				"group": "Sling"
+			},
+			"bulk": 3,
 			"category": "Weapon",
 			"subCategory": "Advanced",
-			"group": "Sling",
 			"entries": [
 				"This wooden device is worn on the back and contains a miniature catapult mounted on a retractable frame. As an {@action Interact} action, you can pull a lever to deploy or retract the catapult. As long as it remains deployed, you must hold the catapult using that hand or some of the components spill out onto the ground, just like dropping any other weapon. While deployed, the device opens and raises the catapult up over your shoulder. While retracted, the catapult and its mount slide down and are {@condition concealed} within the device. A backpack catapult fires specialized stone spheres that are loaded into the bucket while unworn and retracted, through a sliding hatch; the reloading process takes 1 minute. To prevent misfires and accidental injury, the bucket fully encloses the stone while deployed, only opening when fired. As normal, you can't wear a backpack catapult with another backpack."
 			]
@@ -227,18 +817,17 @@
 			],
 			"price": {
 				"amount": 4,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
-			"bulk": "1",
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d8",
-			"damageType": "S",
 			"hands": 1,
+			"weaponData": {
+				"damage": "1d8",
+				"damageType": "S",
+				"group": "Sword"
+			},
+			"bulk": 1,
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Sword",
 			"entries": [
 				"This broad-bladed sword, sometimes called the hand-and-a-half sword, has a longer grip so it can be held in one hand or used with two hands to provide extra piercing or slashing power."
 			]
@@ -254,18 +843,17 @@
 			],
 			"price": {
 				"amount": 1,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
-			"bulk": "1",
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d8",
-			"damageType": "S",
+			"bulk": 1,
 			"hands": 1,
+			"weaponData": {
+				"damage": "1d8",
+				"damageType": "S",
+				"group": "Axe"
+			},
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Axe",
 			"entries": [
 				"These axes are designed explicitly as weapons, rather than tools. They typically weigh less, with a shaft reinforced with metal bands or bolts, and have a sharper blade, making them ideal for chopping limbs rather than wood."
 			]
@@ -283,18 +871,17 @@
 			],
 			"price": {
 				"amount": 2,
-				"coin": "sp",
-				"note": null
+				"coin": "sp"
 			},
 			"bulk": "L",
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d4",
-			"damageType": "P",
 			"hands": "1 or 2*",
+			"weaponData": {
+				"damage": "1d4",
+				"damageType": "P",
+				"group": "Knife"
+			},
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Knife",
 			"entries": [
 				"This blade or spike can be attached to a crossbow or firearm but, unlike other attached weapons, can be wielded in one hand as its own weapon. When used as a separate weapon, it can't benefit from any runes or abilities that function only for attached weapons.",
 				"{@note *An attached bayonet or reinforced stock requires the same number of hands as the weapon it's attached to. A detached bayonet requires one hand.}"
@@ -316,18 +903,17 @@
 			],
 			"price": {
 				"amount": 3,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": 1,
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d6",
-			"damageType": "S",
 			"hands": 2,
+			"weaponData": {
+				"damage": "1d6",
+				"damageType": "S",
+				"group": "Flail"
+			},
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Flail",
 			"entries": [
 				"The thin metal plates interwoven throughout this long scarf turn a fashion accessory into a deadly weapon."
 			]
@@ -344,22 +930,20 @@
 			],
 			"price": {
 				"amount": 1,
-				"coin": "sp",
-				"note": null
+				"coin": "sp"
 			},
 			"bulk": "L",
-			"onset": null,
-			"ammunition": [
-				"Blowgun Dart"
-			],
-			"damage": "1",
-			"damageType": "P",
 			"hands": 1,
-			"reload": 1,
-			"range": 20,
+			"weaponData": {
+				"ammunition": "Blowgun Dart",
+				"damage": "1",
+				"damageType": "P",
+				"reload": 1,
+				"range": 20,
+				"group": "Dart"
+			},
 			"category": "Weapon",
 			"subCategory": "Simple",
-			"group": "Dart",
 			"entries": [
 				"This long, narrow tube is used for shooting blowgun darts, using only the power of a forcefully exhaled breath."
 			]
@@ -367,6 +951,7 @@
 		{
 			"name": "Blunderbuss",
 			"source": "G&G",
+			"access": "The following regions have access to firearms: Alkenstar, Dongun Hold, Tian Xia, Vudra, Arcadia, Ustalav, the Shackles",
 			"page": 151,
 			"equipment": true,
 			"type": "Equipment",
@@ -377,22 +962,20 @@
 			],
 			"price": {
 				"amount": 8,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": 2,
-			"onset": null,
-			"ammunition": [
-				"Dose or Round of Black Powder|G&G|round"
-			],
-			"damage": "1d8",
-			"damageType": "P",
 			"hands": 2,
-			"reload": 1,
-			"range": 40,
+			"weaponData": {
+				"ammunition": "round (10)|G&G|rounds",
+				"damage": "1d8",
+				"damageType": "P",
+				"reload": 1,
+				"range": 40,
+				"group": "Firearm|G&G"
+			},
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Firearm|G&G",
 			"entries": [
 				"This weapon fires pellets from a trumpet-shaped barrel, making it an excellent choice for hunting brush fowl or dealing damage within a short, broad area. Adventuring gunslingers often carry a blunderbuss to deal with swarms of vermin and similar threats."
 			]
@@ -405,24 +988,23 @@
 			"type": "Equipment",
 			"traits": [
 				"Monk",
-				"parry",
-				"reach",
-				"trip"
+				"Parry",
+				"Reach",
+				"Trip"
 			],
 			"price": {
 				"amount": 2,
-				"coin": "sp",
-				"note": null
+				"coin": "sp"
 			},
-			"bulk": "2",
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d8",
-			"damageType": "B",
+			"bulk": 2,
 			"hands": 2,
+			"weaponData": {
+				"damage": "1d8",
+				"damageType": "B",
+				"group": "Club"
+			},
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Club",
 			"entries": [
 				"This strong but slender staff is tapered at the ends and well balanced. It's designed to be an offensive and defensive weapon."
 			]
@@ -441,18 +1023,17 @@
 			],
 			"price": {
 				"amount": 8,
-				"coin": "sp",
-				"note": null
+				"coin": "sp"
+			},
+			"hands": 2,
+			"weaponData": {
+				"damage": "1d10",
+				"damageType": "P",
+				"group": "Polearm"
 			},
 			"bulk": 2,
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d10",
-			"damageType": "P",
-			"hands": 2,
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Polearm",
 			"entries": [
 				"Taking the form of a longspear fitted with crossbars or hooks, a boarding pike provides its wielder a sharp implement that's as adept at shoving enemies off a ship's railings as facilitating the boarding of other vessels. This is a martial melee weapon."
 			]
@@ -476,19 +1057,18 @@
 			],
 			"price": {
 				"amount": 5,
-				"coin": "sp",
-				"note": null
+				"coin": "sp"
+			},
+			"hands": 1,
+			"weaponData": {
+				"damage": "1d6",
+				"damageType": "B",
+				"range": 20,
+				"group": "Sling"
 			},
 			"bulk": "L",
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d6",
-			"damageType": "B",
-			"hands": 1,
-			"range": 20,
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Sling",
 			"entries": [
 				"This throwing weapon consists of weights tied to the end of long cords, which can be used to bludgeon foes or entangle their legs."
 			]
@@ -499,25 +1079,23 @@
 			"page": 275,
 			"equipment": true,
 			"type": "Equipment",
-			"traits": [],
 			"price": {
 				"amount": 8,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
+			},
+			"armorData": {
+				"ac": 4,
+				"dexCap": 1,
+				"str": 16,
+				"checkPen": 2,
+				"speedPen": 5,
+				"group": "Plate"
 			},
 			"bulk": 2,
-			"ac": 4,
-			"dexCap": 1,
-			"str": 16,
-			"checkPen": 2,
-			"speedPen": 5,
-			"onset": null,
-			"ammunition": null,
 			"category": "Armor",
 			"subCategory": "Medium",
-			"group": "Plate",
 			"entries": [
-				"Though referred to as a breastplate, this type of armor consists of several pieces of plate or {@item half plate} armor that protect the torso, chest, neck, and sometimes the hips and lower legs. It strategically grants some of the protection of plate while allowing greater flexibility and speed."
+				"Though referred to as a breastplate, this type of armor consists of several pieces of {@item full plate||plate} or {@item half plate} armor that protect the torso, chest, neck, and sometimes the hips and lower legs. It strategically grants some of the protection of {@item full plate||plate} while allowing greater flexibility and speed."
 			]
 		},
 		{
@@ -526,22 +1104,18 @@
 			"page": 277,
 			"equipment": true,
 			"type": "Equipment",
-			"traits": [],
 			"price": {
 				"amount": 1,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": "L",
-			"ac": 1,
-			"shieldStats": {
+			"shieldData": {
 				"hardness": 3,
 				"hp": 6,
-				"bt": 3
+				"bt": 3,
+				"ac": 1,
+				"speedPen": 0
 			},
-			"speedPen": 0,
-			"onset": null,
-			"ammunition": null,
 			"category": "Shield",
 			"entries": [
 				"This very small shield is a favorite of duelists and quick, lightly armored warriors. It's typically made of steel and strapped to your forearm. You can {@action Raise a Shield} with your buckler as long as you have that hand free or are holding a light object that's not a weapon in that hand."
@@ -554,22 +1128,24 @@
 			"equipment": true,
 			"type": "Equipment",
 			"traits": [
-				"uncommon",
-				"orc",
-				"shove",
-				"sweep"
+				"Uncommon",
+				"Orc",
+				"Shove",
+				"Sweep"
 			],
 			"price": {
 				"amount": 8,
 				"coin": "gp"
 			},
-			"bulk": 2,
-			"damage": "1d12",
-			"damageType": "S",
 			"hands": 2,
+			"weaponData": {
+				"damage": "1d12",
+				"damageType": "S",
+				"group": "Axe"
+			},
+			"bulk": 2,
 			"category": "Weapon",
 			"subCategory": "Advanced",
-			"group": "Axe",
 			"entries": [
 				"Invented by Belkzen's zealous Steel-Eaters, the butchering axe has an oversized head and a long, thick haft counterbalanced with steel or stone. The weapon's sweeping strokes inflict immense damage, particularly against groups of foes, and can push dangerous opponents away to a safe distance. All of these qualities are particularly useful against the lumbering zombie hordes of the Whispering Tyrant. Correspondingly, butchering axes are often wielded by orc and half-orc Crimson Reclaimers of Lastwall."
 			]
@@ -589,18 +1165,17 @@
 			],
 			"price": {
 				"amount": 4,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
-			"bulk": "1",
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d4",
-			"damageType": "S",
 			"hands": 1,
+			"bulk": 1,
+			"weaponData": {
+				"damage": "1d4",
+				"damageType": "S",
+				"group": "Sword"
+			},
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Sword",
 			"entries": [
 				"A blade of conrasu design, a buugeng has a unique, curved shape that allows it to rotate smoothly in the hand of a trained warrior. This spinning motion makes it easier to attack multiple foes at once with the weapon."
 			]
@@ -617,20 +1192,19 @@
 			],
 			"price": {
 				"amount": 6,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
+			},
+			"armorData": {
+				"ac": 4,
+				"dexCap": 1,
+				"str": 16,
+				"checkPen": 2,
+				"speedPen": 5,
+				"group": "Chain"
 			},
 			"bulk": 2,
-			"ac": 4,
-			"dexCap": 1,
-			"str": 16,
-			"checkPen": 2,
-			"speedPen": 5,
-			"onset": null,
-			"ammunition": null,
 			"category": "Armor",
 			"subCategory": "Medium",
-			"group": "Chain",
 			"entries": [
 				"A suit of chain mail consists of several pieces of armor composed of small metal rings linked together in a protective mesh. It typically includes a chain shirt, leggings, a pair of arms, and a coif, collectively protecting most of the body."
 			]
@@ -647,20 +1221,19 @@
 			],
 			"price": {
 				"amount": 5,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
+			},
+			"armorData": {
+				"ac": 2,
+				"dexCap": 3,
+				"str": 12,
+				"checkPen": 1,
+				"speedPen": 0,
+				"group": "Chain"
 			},
 			"bulk": 1,
-			"ac": 2,
-			"dexCap": 3,
-			"str": 12,
-			"checkPen": 1,
-			"speedPen": 0,
-			"onset": null,
-			"ammunition": null,
 			"category": "Armor",
 			"subCategory": "Light",
-			"group": "Chain",
 			"entries": [
 				"Sometimes called a hauberk, this is a long shirt constructed of the same metal rings as {@item chainmail}. However, it is much lighter than {@item chainmail} and protects only the torso, upper arms, and upper legs of its wearer."
 			]
@@ -679,13 +1252,15 @@
 				"coin": "sp"
 			},
 			"bulk": "L",
-			"damage": "1d8",
-			"damageType": "S",
 			"hands": 1,
-			"range": 20,
+			"weaponData": {
+				"damage": "1d8",
+				"damageType": "S",
+				"range": 20,
+				"group": "Knife"
+			},
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Knife",
 			"entries": [
 				"Simple, elegant, and portable, the chakram is an open-centered metal discus with a sharpened edge, as well as a grip running along the center so the wielder can hold it safely."
 			]
@@ -705,18 +1280,17 @@
 			],
 			"price": {
 				"amount": 2,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": "L",
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d4",
-			"damageType": "P",
 			"hands": 1,
+			"weaponData": {
+				"damage": "1d4",
+				"damageType": "P",
+				"group": "Knife"
+			},
 			"category": "Weapon",
 			"subCategory": "Simple",
-			"group": "Knife",
 			"entries": [
 				"This broad dagger is carried by dwarves as a weapon, tool, and designation of clan. Losing or having to surrender a clan dagger is considered a mark of embarrassment to most dwarves."
 			]
@@ -724,6 +1298,7 @@
 		{
 			"name": "Clan Pistol",
 			"source": "G&G",
+			"access": "The following regions have access to firearms: Alkenstar, Dongun Hold, Tian Xia, Vudra, Arcadia, Ustalav, the Shackles",
 			"page": 151,
 			"equipment": true,
 			"type": "Equipment",
@@ -735,22 +1310,20 @@
 			],
 			"price": {
 				"amount": 5,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": "L",
-			"onset": null,
-			"ammunition": [
-				"Dose or Round of Black Powder|G&G|round"
-			],
-			"damage": "1d6",
-			"damageType": "P",
 			"hands": 1,
-			"reload": 1,
-			"range": 80,
+			"weaponData": {
+				"ammunition": "round (10)|G&G|rounds",
+				"damage": "1d6",
+				"damageType": "P",
+				"reload": 1,
+				"range": 80,
+				"group": "Firearm|G&G"
+			},
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Firearm|G&G",
 			"entries": [
 				"The tradition of dwarves displaying their clan affiliations with special clan daggers goes back millennia, but many of the dwarf clans of Dongun Hold have their own take on the tradition, with promising young gunsmiths claiming their adulthood by crafting a specialized personal firearm using the clan's unique smithing traditions. Losing or being forced to surrender their clan pistol is a terrible embarrassment for the dwarves that carry them."
 			]
@@ -772,18 +1345,17 @@
 			],
 			"price": {
 				"amount": 2,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": "L",
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d4",
-			"damageType": "S",
 			"hands": 1,
+			"weaponData": {
+				"damage": "1d4",
+				"damageType": "S",
+				"group": "Knife"
+			},
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Knife",
 			"entries": [
 				"The three parallel blades of this handheld weapon extend between the fingers to resemble the natural claws of the amurruns who created them, providing a way for those catfolk without suitable natural claws to share the fighting customs of their kin."
 			]
@@ -797,20 +1369,19 @@
 			"traits": [
 				"Thrown 10 ft."
 			],
+			"bulk": 1,
 			"price": {
 				"amount": 0,
-				"coin": "",
-				"note": null
+				"coin": "gp"
 			},
-			"bulk": "1",
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d6",
-			"damageType": "B",
 			"hands": 1,
+			"weaponData": {
+				"damage": "1d6",
+				"damageType": "B",
+				"group": "Club"
+			},
 			"category": "Weapon",
 			"subCategory": "Simple",
-			"group": "Club",
 			"entries": [
 				"This is a piece of stout wood shaped or repurposed to bludgeon an enemy. Clubs can be intricately carved pieces of martial art or as simple as a tree branch or piece of wood."
 			]
@@ -818,6 +1389,7 @@
 		{
 			"name": "Coat Pistol",
 			"source": "G&G",
+			"access": "The following regions have access to firearms: Alkenstar, Dongun Hold, Tian Xia, Vudra, Arcadia, Ustalav, the Shackles",
 			"page": 151,
 			"equipment": true,
 			"type": "Equipment",
@@ -829,20 +1401,19 @@
 			],
 			"price": {
 				"amount": 6,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": "L",
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d4",
-			"damageType": "P",
 			"hands": 1,
-			"reload": 1,
-			"range": 30,
+			"weaponData": {
+				"damage": "1d4",
+				"damageType": "P",
+				"reload": 1,
+				"range": 30,
+				"group": "Firearm|G&G"
+			},
 			"category": "Weapon",
 			"subCategory": "Simple",
-			"group": "Firearm|G&G",
 			"entries": [
 				"This small pistol is easily concealed inside a jacket or some other article of clothing. Rarely kept as a primary weapon, coat pistols are equally favored by clever assassins and traveling Alkenstar aristocrats."
 			]
@@ -863,18 +1434,17 @@
 			],
 			"price": {
 				"amount": 9,
-				"coin": "sp",
-				"note": null
+				"coin": "sp"
 			},
-			"bulk": 1,
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d6",
-			"damageType": "P",
 			"hands": 2,
+			"bulk": 1,
+			"weaponData": {
+				"damage": "1d6",
+				"damageType": "P",
+				"group": "Flail"
+			},
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Flail",
 			"entries": [
 				"Although grappling hooks typically serve as a climbing tool, this specially reinforced grapnel attached to a rope up to 10 feet long can be swung as a weapon. This is a martial melee weapon."
 			]
@@ -892,22 +1462,20 @@
 			],
 			"price": {
 				"amount": 20,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": 2,
-			"onset": null,
-			"ammunition": [
-				"Arrow"
-			],
-			"damage": "1d8",
-			"damageType": "P",
 			"hands": "1+",
-			"reload": 0,
-			"range": 100,
+			"weaponData": {
+				"ammunition": "Arrow",
+				"damage": "1d8",
+				"damageType": "P",
+				"reload": 0,
+				"range": 100,
+				"group": "Bow"
+			},
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Bow",
 			"entries": [
 				"This projectile weapon is made from horn, wood, and sinew laminated together to increase the power of its pull and the force of its projectile. Like all longbows, its great size also increases the bow's range and power. You must use two hands to fire it, and it cannot be used while mounted. Any time an ability is specifically restricted to a longbow, such as Erastil's favored weapon, it also applies to composite longbows unless otherwise stated."
 			]
@@ -924,22 +1492,20 @@
 			],
 			"price": {
 				"amount": 14,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": 1,
-			"onset": null,
-			"ammunition": [
-				"Arrow"
-			],
-			"damage": "1d6",
-			"damageType": "P",
 			"hands": "1+",
-			"reload": 0,
-			"range": 60,
+			"weaponData": {
+				"ammunition": "Arrow",
+				"damage": "1d6",
+				"damageType": "P",
+				"reload": 0,
+				"range": 60,
+				"group": "Bow"
+			},
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Bow",
 			"entries": [
 				"This shortbow is made from horn, wood, and sinew laminated together to increase the power of its pull and the force of its projectile. Its compact size and power make it a favorite of mounted archers. Any time an ability is specifically restricted to a shortbow, it also applies to composite shortbows unless otherwise stated."
 			]
@@ -950,25 +1516,22 @@
 			"page": 281,
 			"equipment": true,
 			"type": "Equipment",
-			"traits": [],
 			"price": {
 				"amount": 3,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": 1,
-			"onset": null,
-			"ammunition": [
-				"Bolt"
-			],
-			"damage": "1d8",
-			"damageType": "P",
 			"hands": 2,
-			"reload": 1,
-			"range": 120,
+			"weaponData": {
+				"ammunition": "Bolt",
+				"damage": "1d8",
+				"damageType": "P",
+				"reload": 1,
+				"range": 120,
+				"group": "Bow"
+			},
 			"category": "Weapon",
 			"subCategory": "Simple",
-			"group": "Bow",
 			"entries": [
 				"This ranged weapon has a bow-like assembly mounted on a handled frame called a tiller. The tiller has a mechanism to lock the bowstring in place, attached to a trigger mechanism that releases the tension and launches a bolt."
 			]
@@ -987,18 +1550,17 @@
 			],
 			"price": {
 				"amount": 2,
-				"coin": "sp",
-				"note": null
+				"coin": "sp"
 			},
 			"bulk": "L",
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d4",
-			"damageType": "P",
+			"weaponData": {
+				"damage": "1d4",
+				"damageType": "P",
+				"group": "Knife"
+			},
 			"hands": 1,
 			"category": "Weapon",
 			"subCategory": "Simple",
-			"group": "Knife",
 			"entries": [
 				"This small, bladed weapon is held in one hand and used to stab a creature in close combat. It can also be thrown."
 			]
@@ -1015,20 +1577,18 @@
 			],
 			"price": {
 				"amount": 1,
-				"coin": "cp",
-				"note": null
+				"coin": "cp"
 			},
 			"bulk": "L",
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d4",
-			"damageType": "P",
+			"weaponData": {
+				"damage": "1d4",
+				"damageType": "P",
+				"range": 20,
+				"group": "Dart"
+			},
 			"hands": 1,
-			"reload": null,
-			"range": 20,
 			"category": "Weapon",
 			"subCategory": "Simple",
-			"group": "Dart",
 			"entries": [
 				"This thrown weapon is larger than an arrow but shorter than a javelin. It typically has a short shaft of wood ending in a metal tip and is sometimes stabilized by feathers or fur."
 			]
@@ -1051,14 +1611,16 @@
 				"coin": "gp"
 			},
 			"bulk": 1,
-			"damage": "1",
-			"damageType": "P",
 			"hands": 1,
-			"reload": 1,
-			"range": 30,
+			"weaponData": {
+				"damage": "1",
+				"damageType": "P",
+				"reload": 1,
+				"range": 30,
+				"group": "Dart"
+			},
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Dart",
 			"entries": [
 				"This umbrella fires tiny blowgun darts from its ferrule with a twist of the handle. The darts are loaded into the shaft, and though the damage they deal is minimal, the dart umbrella is an inconspicuous weapon easy to slip past inspections."
 			]
@@ -1078,18 +1640,17 @@
 			],
 			"price": {
 				"amount": 1,
-				"coin": "sp",
-				"note": null
+				"coin": "sp"
 			},
 			"bulk": "L",
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d6",
-			"damageType": "S",
+			"weaponData": {
+				"damage": "1d6",
+				"damageType": "S",
+				"group": "Sword"
+			},
 			"hands": 1,
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Sword",
 			"entries": [
 				"This short, curved, and crude makeshift blade often has holes drilled into it to reduce its weight. It's a favored weapon of goblins."
 			]
@@ -1097,6 +1658,7 @@
 		{
 			"name": "Double-barreled Musket",
 			"source": "G&G",
+			"access": "The following regions have access to firearms: Alkenstar, Dongun Hold, Tian Xia, Vudra, Arcadia, Ustalav, the Shackles",
 			"page": 151,
 			"equipment": true,
 			"type": "Equipment",
@@ -1109,22 +1671,20 @@
 			],
 			"price": {
 				"amount": 11,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": 1,
-			"onset": null,
-			"ammunition": [
-				"Dose or Round of Black Powder|G&G|round"
-			],
-			"damage": "1d6",
-			"damageType": "P",
 			"hands": 2,
-			"reload": 1,
-			"range": 60,
+			"weaponData": {
+				"ammunition": "round (10)|G&G|rounds",
+				"damage": "1d6",
+				"damageType": "P",
+				"reload": 1,
+				"range": 60,
+				"group": "Firearm|G&G"
+			},
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Firearm|G&G",
 			"entries": [
 				"This flintlock breech-loader has two side-by-side barrels. Though less accurate than a standard musket, a double-barreled musket offers versatility in firing options. Many of Alkenstar's famous shield marshals save their earnings to buy a double-barreled musket as their first personal firearm."
 			]
@@ -1132,6 +1692,7 @@
 		{
 			"name": "Double-barreled Pistol",
 			"source": "G&G",
+			"access": "The following regions have access to firearms: Alkenstar, Dongun Hold, Tian Xia, Vudra, Arcadia, Ustalav, the Shackles",
 			"page": 151,
 			"equipment": true,
 			"type": "Equipment",
@@ -1143,22 +1704,20 @@
 			],
 			"price": {
 				"amount": 7,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": 1,
-			"onset": null,
-			"ammunition": [
-				"Dose or Round of Black Powder|G&G|round"
-			],
-			"damage": "1d4",
-			"damageType": "P",
 			"hands": 1,
-			"reload": 1,
-			"range": 30,
+			"weaponData": {
+				"ammunition": "round (10)|G&G|rounds",
+				"damage": "1d4",
+				"damageType": "P",
+				"reload": 1,
+				"range": 30,
+				"group": "Firearm|G&G"
+			},
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Firearm|G&G",
 			"entries": [
 				"This flintlock pistol has two side-by-side barrels. Though less accurate than a standard pistol, a double-barreled pistol is a useful and versatile weapon. It's generally banned in areas where duels with pistols are relatively common, in much the same way that arriving at an aristocratic duel with a scattergun would be considered crass, at best."
 			]
@@ -1166,6 +1725,7 @@
 		{
 			"name": "Dragon Mouth Pistol",
 			"source": "G&G",
+			"access": "The following regions have access to firearms: Alkenstar, Dongun Hold, Tian Xia, Vudra, Arcadia, Ustalav, the Shackles",
 			"page": 151,
 			"equipment": true,
 			"type": "Equipment",
@@ -1176,22 +1736,20 @@
 			],
 			"price": {
 				"amount": 9,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": 1,
-			"onset": null,
-			"ammunition": [
-				"Dose or Round of Black Powder|G&G|round"
-			],
-			"damage": "1d6",
-			"damageType": "P",
 			"hands": 1,
-			"reload": 1,
-			"range": 20,
+			"weaponData": {
+				"ammunition": "round (10)|G&G|rounds",
+				"damage": "1d6",
+				"damageType": "P",
+				"reload": 1,
+				"range": 20,
+				"group": "Firearm|G&G"
+			},
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Firearm|G&G",
 			"entries": [
 				"Similar to the blunderbuss, a dragon-mouth pistol fires pellets from a flared barrel. Though less powerful than a blunderbuss, the dragon-mouth pistol is appreciated for its portability and one-handed design. Though the name was coined because of the destructive belch of this handheld scatter weapon, many gunsmiths craft dragon-mouth pistols with elaborate embellishments that resemble a stylized dragon's maw framing the barrel."
 			]
@@ -1199,6 +1757,7 @@
 		{
 			"name": "Dueling Pistol",
 			"source": "G&G",
+			"access": "The following regions have access to firearms: Alkenstar, Dongun Hold, Tian Xia, Vudra, Arcadia, Ustalav, the Shackles",
 			"page": 151,
 			"equipment": true,
 			"type": "Equipment",
@@ -1211,22 +1770,20 @@
 			],
 			"price": {
 				"amount": 12,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": "L",
-			"onset": null,
-			"ammunition": [
-				"Dose or Round of Black Powder|G&G|round"
-			],
-			"damage": "1d6",
-			"damageType": "P",
-			"hands": 1,
-			"reload": 1,
-			"range": 60,
+			"weaponData": {
+				"ammunition": "round (10)|G&G|rounds",
+				"damage": "1d6",
+				"damageType": "P",
+				"reload": 1,
+				"range": 60,
+				"group": "Firearm|G&G"
+			},
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Firearm|G&G",
+			"hands": 1,
 			"entries": [
 				"Made for settling disputes when diplomacy fails, dueling pistols are finely crafted and made to fit easily into a holster or pocket. Noble and wealthy merchants in both Alkenstar and Dongun Hold often own matching pairs of dueling pistols in case they're called upon to address a challenge\u2014though this practice has become increasingly rare in the modern age."
 			]
@@ -1248,12 +1805,14 @@
 				"coin": "gp"
 			},
 			"bulk": 2,
-			"damage": "1d8",
-			"damageType": "P",
 			"hands": 2,
+			"weaponData": {
+				"damage": "1d8",
+				"damageType": "P",
+				"group": "Spear"
+			},
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Spear",
 			"entries": [
 				"This spear has a spade-like blade at one end and a forked blade at the other, making it resemble a large arrow. It's well balanced for spinning and twisting maneuvers. The spade-like end can be used for slashing and stabbing, while the forked end is effective at wrenching a weapon from an enemy's grasp."
 			]
@@ -1261,6 +1820,7 @@
 		{
 			"name": "Dwarven Scattergun",
 			"source": "G&G",
+			"access": "The following regions have access to firearms: Alkenstar, Dongun Hold, Tian Xia, Vudra, Arcadia, Ustalav, the Shackles",
 			"page": 151,
 			"equipment": true,
 			"type": "Equipment",
@@ -1274,22 +1834,20 @@
 			],
 			"price": {
 				"amount": 10,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": 2,
-			"onset": null,
-			"ammunition": [
-				"Dose or Round of Black Powder|G&G|round"
-			],
-			"damage": "1d8",
-			"damageType": "P",
 			"hands": 2,
-			"reload": 1,
-			"range": 50,
+			"weaponData": {
+				"ammunition": "round (5)|G&G|rounds",
+				"damage": "1d8",
+				"damageType": "P",
+				"reload": 1,
+				"range": 50,
+				"group": "Firearm|G&G"
+			},
 			"category": "Weapon",
 			"subCategory": "Advanced",
-			"group": "Firearm|G&G",
 			"entries": [
 				"A favored weapon of dwarf scouts from Dongun Hold, the dwarven scattergun is a powerful weapon designed to take advantage of a dwarf's sturdy frame. A dwarven scattergun fires a large paper cartridge stuffed with black powder and knuckle-sized lumps of metal, creating a devastating burst so destructive that a foolish dwarf might find themself catching painful ricochets when firing at a too-close target. Some scatterguns are crafted with a clockwork firing tray that can quickly sort and load black powder and shot without needing a prepackaged cartridge, though this is largely an aesthetic feature with no real mechanical benefit."
 			]
@@ -1308,18 +1866,17 @@
 			],
 			"price": {
 				"amount": 3,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
-			"bulk": "2",
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d8",
-			"damageType": "S",
+			"bulk": 2,
+			"weaponData": {
+				"damage": "1d8",
+				"damageType": "S",
+				"group": "Axe"
+			},
 			"hands": 1,
 			"category": "Weapon",
 			"subCategory": "Advanced",
-			"group": "Axe",
 			"entries": [
 				"This favored weapon of the dwarves has a large, ornate head mounted on a thick handle. This powerful axe can be wielded with one hand or two."
 			]
@@ -1342,12 +1899,14 @@
 				"coin": "gp"
 			},
 			"bulk": 1,
-			"damage": "1d6",
-			"damageType": "P",
+			"weaponData": {
+				"damage": "1d6",
+				"damageType": "P",
+				"group": "Spear"
+			},
 			"hands": 2,
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Spear",
 			"entries": [
 				"Several short branches project from this delicate spear's shaft, each angled forward and tipped with a leaflike blade."
 			]
@@ -1366,18 +1925,17 @@
 			],
 			"price": {
 				"amount": 4,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
-			"bulk": "2",
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d8",
-			"damageType": "S",
+			"bulk": 2,
+			"weaponData": {
+				"damage": "1d8",
+				"damageType": "S",
+				"group": "Sword"
+			},
 			"hands": 2,
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Sword",
 			"entries": [
 				"Essentially a longer version of the scimitar, this traditional elven weapon has a thinner blade than its cousin."
 			]
@@ -1393,19 +1951,18 @@
 			],
 			"price": {
 				"amount": 1,
-				"coin": "sp",
-				"note": null
+				"coin": "sp"
+			},
+			"armorData": {
+				"ac": 0,
+				"dexCap": 5,
+				"checkPen": 0,
+				"speedPen": 0,
+				"group": "Cloth"
 			},
 			"bulk": "L",
-			"ac": 0,
-			"dexCap": 5,
-			"checkPen": 0,
-			"speedPen": 0,
-			"onset": null,
-			"ammunition": null,
 			"category": "Armor",
 			"subCategory": "Unarmored",
-			"group": "Cloth",
 			"entries": [
 				"Adventurers who don't wear armor travel in durable clothing. Though it's not armor and uses your unarmored defense proficiency, it still has a Dex Cap and can grant an item bonus to AC if etched with potency runes (as described on page 581)."
 			]
@@ -1422,18 +1979,17 @@
 			],
 			"price": {
 				"amount": 3,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
-			"bulk": "2",
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d10",
-			"damageType": "S",
+			"bulk": 2,
+			"weaponData": {
+				"damage": "1d10",
+				"damageType": "S",
+				"group": "Sword"
+			},
 			"hands": 2,
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Sword",
 			"entries": [
 				"This weapon is a heavier, two-handed version of the curved-bladed scimitar. It is weighted toward the blade's end, making it a powerful slashing weapon."
 			]
@@ -1455,18 +2011,17 @@
 			],
 			"price": {
 				"amount": 4,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": "L",
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d4",
-			"damageType": "S",
+			"weaponData": {
+				"damage": "1d4",
+				"damageType": "S",
+				"group": "Brawling"
+			},
 			"hands": 1,
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Brawling",
 			"entries": [
 				"This kobold wire is thin and hard to see, making it perfect for an ambush. The wielder wraps the wire around a vulnerable spot, such as the neck, and twists it to inflict potentially fatal lacerations. The name derives from the use of a similar wire in traps, or slow fangs, with the word \"slow\" removed, as a fangwire gets quick results."
 			]
@@ -1486,22 +2041,17 @@
 			],
 			"price": {
 				"coin": "sp",
-				"amount": 14,
-				"note": null
+				"amount": 14
 			},
-			"usage": null,
-			"bulk": "2",
-			"shieldStats": null,
-			"activate": null,
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d8",
-			"damageType": "S",
+			"bulk": 2,
+			"weaponData": {
+				"damage": "1d8",
+				"damageType": "S",
+				"group": "Polearm"
+			},
 			"hands": 2,
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Polearm",
-			"appliesTo": null,
 			"entries": [
 				"A fauchard is similar to a {@item glaive}, save that its cutting edge is along the concave side. Fauchards are favored by Crimson Reclaimers for hacking through waves of zombies. The fauchard is a martial melee weapon."
 			]
@@ -1522,18 +2072,17 @@
 			],
 			"price": {
 				"amount": 11,
-				"coin": "sp",
-				"note": null
+				"coin": "sp"
 			},
 			"bulk": "L",
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d4",
-			"damageType": "S",
+			"weaponData": {
+				"damage": "1d4",
+				"damageType": "S",
+				"group": "Knife"
+			},
 			"hands": 1,
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Knife",
 			"entries": [
 				"This fan is useful for elegant dances as well as for slicing unsuspecting foes with the blades along its outer edge. If used in performances, it might be disguised as a frilly accessory, or it might be an obvious, though elegant, weapon."
 			]
@@ -1555,18 +2104,17 @@
 			],
 			"price": {
 				"amount": 1,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": "L",
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d4",
-			"damageType": "P",
+			"weaponData": {
+				"damage": "1d4",
+				"damageType": "P",
+				"group": "Spear"
+			},
 			"hands": 1,
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Spear",
 			"entries": [
 				"This halfling weapon looks like a long, two-pronged fork and is used as both a weapon and a cooking implement."
 			]
@@ -1574,6 +2122,7 @@
 		{
 			"name": "Fire Lance",
 			"source": "G&G",
+			"access": "The following regions have access to firearms: Alkenstar, Dongun Hold, Tian Xia, Vudra, Arcadia, Ustalav, the Shackles",
 			"page": 151,
 			"equipment": true,
 			"type": "Equipment",
@@ -1583,22 +2132,20 @@
 			],
 			"price": {
 				"amount": 5,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": 2,
-			"onset": null,
-			"ammunition": [
-				"Dose or Round of Black Powder|G&G|round"
-			],
-			"damage": "1d6",
-			"damageType": "P",
 			"hands": 2,
-			"reload": 2,
-			"range": 10,
+			"weaponData": {
+				"ammunition": "round (10)|G&G|rounds",
+				"damage": "1d6",
+				"damageType": "P",
+				"reload": 2,
+				"range": 10,
+				"group": "Firearm|G&G"
+			},
 			"category": "Weapon",
 			"subCategory": "Simple",
-			"group": "Firearm|G&G",
 			"entries": [
 				"A thin-barreled firearm that uses a container of pressurized air instead of black powder to propel small metal bullets from an attached cartridge, the air repeater has fallen out of common use in Arcadia due to its poor stopping power, though it's still used occasionally for casual hunting and sport shooting. The air repeater and its {@item long air repeater|G&G|longer-ranged, two-handed variant} are still valued by some for their ability to allow a shooter to fire multiple rounds without needing to stop to reload or crank to a new chamber. A typical air repeater magazine holds 6 {@item pellets}."
 			]
@@ -1616,18 +2163,17 @@
 			],
 			"price": {
 				"amount": 8,
-				"coin": "sp",
-				"note": null
+				"coin": "sp"
 			},
-			"bulk": "1",
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d6",
-			"damageType": "B",
+			"bulk": 1,
+			"weaponData": {
+				"damage": "1d6",
+				"damageType": "B",
+				"group": "Flail"
+			},
 			"hands": 1,
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Flail",
 			"entries": [
 				"This weapon consists of a wooden handle attached to a spiked ball or cylinder by a chain, rope, or strap of leather."
 			]
@@ -1635,6 +2181,7 @@
 		{
 			"name": "Flingflenser",
 			"source": "G&G",
+			"access": "The following regions have access to firearms: Alkenstar, Dongun Hold, Tian Xia, Vudra, Arcadia, Ustalav, the Shackles",
 			"page": 151,
 			"equipment": true,
 			"type": "Equipment",
@@ -1647,22 +2194,20 @@
 			],
 			"price": {
 				"amount": 6,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
-			"bulk": 1,
-			"onset": null,
-			"ammunition": [
-				"Dose or Round of Black Powder|G&G|round"
-			],
-			"damage": "1d6",
-			"damageType": "S",
 			"hands": 2,
-			"reload": 1,
-			"range": 30,
+			"bulk": 1,
+			"weaponData": {
+				"ammunition": "round (5)|G&G|rounds",
+				"damage": "1d6",
+				"damageType": "S",
+				"reload": 1,
+				"range": 30,
+				"group": "Firearm|G&G"
+			},
 			"category": "Weapon",
 			"subCategory": "Advanced",
-			"group": "Firearm|G&G",
 			"entries": [
 				"A flingflenser is a goblin-designed weapon ending in an ovoid tube with a hatch and handle on the narrow end. A cluster of circular blades held together and attached to a black powder packet with a thin leather strap serves as ammunition and is loaded through the hatch before being fired with a flintlock or other external ignition mechanism. The flingflenser's sturdy design also places it among the more reliable goblin weapons."
 			]
@@ -1670,6 +2215,7 @@
 		{
 			"name": "Flintlock Musket",
 			"source": "G&G",
+			"access": "The following regions have access to firearms: Alkenstar, Dongun Hold, Tian Xia, Vudra, Arcadia, Ustalav, the Shackles",
 			"page": 151,
 			"equipment": true,
 			"type": "Equipment",
@@ -1680,22 +2226,20 @@
 			],
 			"price": {
 				"amount": 7,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": 1,
-			"onset": null,
-			"ammunition": [
-				"Dose or Round of Black Powder|G&G|round"
-			],
-			"damage": "1d6",
-			"damageType": "P",
 			"hands": 2,
-			"reload": 1,
-			"range": 70,
+			"weaponData": {
+				"ammunition": "round (10)|G&G|rounds",
+				"damage": "1d6",
+				"damageType": "P",
+				"reload": 1,
+				"range": 70,
+				"group": "Firearm|G&G"
+			},
 			"category": "Weapon",
 			"subCategory": "Simple",
-			"group": "Firearm|G&G",
 			"entries": [
 				"The most commonly available of firearms in Alkenstar, the flintlock musket includes an external firing mechanism and an efficient and relatively compact frame. Though lacking the range and firing power of the {@item arquebus} preferred by Alkenstar and Dongun Hold's military members, the flintlock musket is popular among civilians for its ease of use."
 			]
@@ -1703,6 +2247,7 @@
 		{
 			"name": "Flintlock Pistol",
 			"source": "G&G",
+			"access": "The following regions have access to firearms: Alkenstar, Dongun Hold, Tian Xia, Vudra, Arcadia, Ustalav, the Shackles",
 			"page": 151,
 			"equipment": true,
 			"type": "Equipment",
@@ -1713,22 +2258,20 @@
 			],
 			"price": {
 				"amount": 6,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": 1,
-			"onset": null,
-			"ammunition": [
-				"Dose or Round of Black Powder|G&G|round"
-			],
-			"damage": "1d4",
-			"damageType": "P",
 			"hands": 1,
-			"reload": 1,
-			"range": 40,
+			"weaponData": {
+				"ammunition": "round (10)|G&G|rounds",
+				"damage": "1d4",
+				"damageType": "P",
+				"reload": 1,
+				"range": 40,
+				"group": "Firearm|G&G"
+			},
 			"category": "Weapon",
 			"subCategory": "Simple",
-			"group": "Firearm|G&G",
 			"entries": [
 				"Though less accurate and powerful than a flintlock musket, the flintlock pistol is a preferred weapon of privateers thanks to its more compact size and affordability. Pirate captains often wear a brace of such pistols in a bandolier so they can draw and fire without stopping to reload."
 			]
@@ -1746,18 +2289,17 @@
 			],
 			"price": {
 				"amount": 3,
-				"coin": "sp",
-				"note": null
+				"coin": "sp"
 			},
 			"bulk": "L",
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d4",
-			"damageType": "P",
+			"weaponData": {
+				"damage": "1d4",
+				"group": "Spear",
+				"damageType": "P"
+			},
 			"hands": 1,
 			"category": "Weapon",
 			"subCategory": "Simple",
-			"group": "Spear",
 			"entries": [
 				"Developed by Alkenstar scouts who often don't have time to break down a tripod when beset by the chaotic mutant monsters of the Mana Wastes, this two-pronged stabbing weapon can be used as a bipod to stabilize a gun with potent kickback. A forked bipod can be deployed or retrieved for use as a melee weapon as an {@action Interact} action."
 			]
@@ -1774,20 +2316,19 @@
 			],
 			"price": {
 				"amount": 30,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
+			},
+			"armorData": {
+				"group": "Plate",
+				"ac": 6,
+				"dexCap": 0,
+				"str": 18,
+				"checkPen": 3,
+				"speedPen": 10
 			},
 			"bulk": 4,
-			"ac": 6,
-			"dexCap": 0,
-			"str": 18,
-			"checkPen": 3,
-			"speedPen": 10,
-			"onset": null,
-			"ammunition": null,
 			"category": "Armor",
 			"subCategory": "Heavy",
-			"group": "Plate",
 			"entries": [
 				"Plate mail consists of interlocking plates that encase nearly the entire body in a carapace of steel. It is costly and heavy, and the wearer often requires help to don it correctly, but it provides some of the best defense armor can supply. A suit of this armor comes with an undercoat of {@item padded armor|CRB} and a pair of {@item gauntlet|CRB|gauntlets}."
 			]
@@ -1804,18 +2345,17 @@
 			],
 			"price": {
 				"amount": 2,
-				"coin": "sp",
-				"note": null
+				"coin": "sp"
 			},
 			"bulk": "L",
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d4",
-			"damageType": "B",
+			"weaponData": {
+				"damage": "1d4",
+				"damageType": "B",
+				"group": "Brawling"
+			},
 			"hands": 1,
 			"category": "Weapon",
 			"subCategory": "Simple",
-			"group": "Brawling",
 			"entries": [
 				"A pair of these metal gloves comes with {@item full plate}, {@item half plate}, and {@item splint armor}; they can also be purchased separately and worn with other types of armor. They not only protect your hands but also transform your hands into lethal weapons."
 			]
@@ -1833,18 +2373,17 @@
 			],
 			"price": {
 				"amount": 1,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
-			"bulk": "2",
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d8",
-			"damageType": "S",
+			"bulk": 2,
+			"weaponData": {
+				"damage": "1d8",
+				"damageType": "S",
+				"group": "Polearm"
+			},
 			"hands": 2,
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Polearm",
 			"entries": [
 				"This polearm consists of a long, single-edged blade on the end of a 7-foot pole. It is extremely effective at delivering lethal cuts at a distance."
 			]
@@ -1862,18 +2401,17 @@
 			],
 			"price": {
 				"amount": 3,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
-			"bulk": "2",
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d8",
-			"damageType": "B",
+			"bulk": 2,
+			"weaponData": {
+				"damage": "1d8",
+				"damageType": "B",
+				"group": "Flail"
+			},
 			"hands": 1,
 			"category": "Weapon",
 			"subCategory": "Advanced",
-			"group": "Flail",
 			"entries": [
 				"More a flail than a mace, this weapon has a short handle attached to a length of chain with a ball at the end. The ball is propelled to its reach with the flick of the wrist, the momentum of which brings the ball back to the wielder after the strike."
 			]
@@ -1893,18 +2431,17 @@
 			],
 			"price": {
 				"amount": 2,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
-			"bulk": "1",
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d6",
-			"damageType": "B",
+			"bulk": 1,
+			"weaponData": {
+				"damage": "1d6",
+				"damageType": "B",
+				"group": "Hammer"
+			},
 			"hands": 1,
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Hammer",
 			"entries": [
 				"This gnome tool and weapon features a hammer at one end and a curved pick on the other. It's such a strange and awkward weapon that others think the gnomes are slightly erratic for using it."
 			]
@@ -1920,18 +2457,17 @@
 			],
 			"price": {
 				"amount": 2,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
-			"bulk": "2",
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d12",
-			"damageType": "S",
+			"bulk": 2,
+			"weaponData": {
+				"damage": "1d12",
+				"damageType": "S",
+				"group": "Axe"
+			},
 			"hands": 2,
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Axe",
 			"entries": [
 				"This large battle axe is too heavy to wield with only one hand. Many greataxes incorporate two blades, and they are often \"bearded,\" having a hook at the bottom to increase the strength of their chopping power."
 			]
@@ -1948,18 +2484,17 @@
 			],
 			"price": {
 				"amount": 1,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
-			"bulk": "2",
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d10",
-			"damageType": "B",
+			"bulk": 2,
+			"weaponData": {
+				"damage": "1d10",
+				"damageType": "B",
+				"group": "Club"
+			},
 			"hands": 2,
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Club",
 			"entries": [
 				"While many greatclubs are intricately carved, others are little more than a sturdy tree branch. These massive clubs are too heavy to wield with only one hand."
 			]
@@ -1975,18 +2510,17 @@
 			],
 			"price": {
 				"amount": 1,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
-			"bulk": "2",
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d10",
-			"damageType": "P",
+			"bulk": 2,
+			"weaponData": {
+				"damage": "1d10",
+				"damageType": "P",
+				"group": "Pick"
+			},
 			"hands": 2,
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Pick",
 			"entries": [
 				"This pick has a longer handle and broader head than a regular pick. It is too heavy to wield in one hand."
 			]
@@ -2002,18 +2536,17 @@
 			],
 			"price": {
 				"amount": 2,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
-			"bulk": "2",
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d12",
-			"damageType": "S",
+			"bulk": 2,
+			"weaponData": {
+				"damage": "1d12",
+				"damageType": "S",
+				"group": "Sword"
+			},
 			"hands": 2,
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Sword",
 			"entries": [
 				"This immense two-handed sword is nearly as tall as its wielder. Its lower blade is often somewhat dulled to allow it to be gripped for extra leverage in close-quarter fights."
 			]
@@ -2030,18 +2563,17 @@
 			],
 			"price": {
 				"amount": 2,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
-			"bulk": "2",
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d10",
-			"damageType": "S",
+			"bulk": 2,
+			"weaponData": {
+				"damage": "1d10",
+				"damageType": "S",
+				"group": "Polearm"
+			},
 			"hands": 2,
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Polearm",
 			"entries": [
 				"This polearm bears a long, often one-sided, curved blade with a hook protruding from the blunt side of the blade, which can allow its wielder to trip opponents at a distance. Its shaft is usually 8 feet long."
 			]
@@ -2058,18 +2590,17 @@
 			],
 			"price": {
 				"amount": 2,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
-			"bulk": "2",
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d10",
-			"damageType": "P",
+			"bulk": 2,
+			"weaponData": {
+				"damage": "1d10",
+				"damageType": "P",
+				"group": "Polearm"
+			},
 			"hands": 2,
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Polearm",
 			"entries": [
 				"This polearm has a relatively short, 5-foot shaft. The business end is a long spike with an axe blade attached."
 			]
@@ -2081,23 +2612,21 @@
 			"equipment": true,
 			"type": "Equipment",
 			"level": 1,
-			"traits": [],
 			"price": {
 				"amount": 18,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
+			},
+			"armorData": {
+				"group": "Plate",
+				"ac": 5,
+				"dexCap": 1,
+				"str": 16,
+				"checkPen": 3,
+				"speedPen": 10
 			},
 			"bulk": 3,
-			"ac": 5,
-			"dexCap": 1,
-			"str": 16,
-			"checkPen": 3,
-			"speedPen": 10,
-			"onset": null,
-			"ammunition": null,
 			"category": "Armor",
 			"subCategory": "Heavy",
-			"group": "Plate",
 			"entries": [
 				"Half plate consists of most of the upper body plates used in full plate, with lighter or sparser steel plate protection for the arms and legs. This provides some of the protection of {@item full plate} with greater flexibility and speed. A suit of this armor comes with an undercoat of {@item padded armor|CRB} and a pair of {@item gauntlet|CRB|gauntlets}."
 			]
@@ -2115,22 +2644,20 @@
 			],
 			"price": {
 				"amount": 5,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": 1,
-			"onset": null,
-			"ammunition": [
-				"Sling Bullets"
-			],
-			"damage": "1d10",
-			"damageType": "B",
-			"hands": 2,
-			"reload": 1,
-			"range": 80,
+			"weaponData": {
+				"ammunition": "Sling Bullets",
+				"damage": "1d10",
+				"damageType": "B",
+				"reload": 1,
+				"range": 80,
+				"group": "Sling"
+			},
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Sling",
+			"hands": 2,
 			"entries": [
 				"This staff ends in a Y-shaped split that cradles a sling. The length of the staff provides excellent leverage when used two-handed to fling rocks or bullets from the sling."
 			]
@@ -2150,18 +2677,17 @@
 			],
 			"price": {
 				"amount": 5,
-				"coin": "sp",
-				"note": null
+				"coin": "sp"
 			},
 			"bulk": "L",
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d4",
-			"damageType": "S",
+			"weaponData": {
+				"damage": "1d4",
+				"damageType": "S",
+				"group": "Axe"
+			},
 			"hands": 1,
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Axe",
 			"entries": [
 				"This is a smaller version of an {@item adze|LOAG}, useful for more delicate woodworking or projects in cramped spaces. Gripplis use the hand adze for crafting and as close quarters weapons."
 			]
@@ -2169,6 +2695,7 @@
 		{
 			"name": "Hand Cannon",
 			"source": "G&G",
+			"access": "The following regions have access to firearms: Alkenstar, Dongun Hold, Tian Xia, Vudra, Arcadia, Ustalav, the Shackles",
 			"page": 151,
 			"equipment": true,
 			"type": "Equipment",
@@ -2178,22 +2705,20 @@
 			],
 			"price": {
 				"amount": 5,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": 1,
-			"onset": null,
-			"ammunition": [
-				"Dose or Round of Black Powder|G&G|round"
-			],
-			"damage": "1d6",
-			"damageType": "Mod",
-			"hands": 1,
-			"reload": 1,
-			"range": 30,
+			"weaponData": {
+				"ammunition": "round (10)|G&G|rounds",
+				"damage": "1d6",
+				"damageType": "modular",
+				"reload": 1,
+				"range": 30,
+				"group": "Firearm|G&G"
+			},
 			"category": "Weapon",
 			"subCategory": "Simple",
-			"group": "Firearm|G&G",
+			"hands": 1,
 			"entries": [
 				"Popular among privateers and mercenaries in Goka, hand cannons are little more than a hardened tube with a handle and external ignition attached. A hand cannon can be used to fire almost anything that can be packed into its barrel. The wielder of a hand cannon can change the damage type granted by its {@trait modular} trait as part of the same {@action Interact} action used to reload."
 			]
@@ -2204,25 +2729,22 @@
 			"page": 281,
 			"equipment": true,
 			"type": "Equipment",
-			"traits": [],
 			"price": {
 				"amount": 3,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": "L",
-			"onset": null,
-			"ammunition": [
-				"Bolt"
-			],
-			"damage": "1d6",
-			"damageType": "P",
 			"hands": 1,
-			"reload": 1,
-			"range": 60,
+			"weaponData": {
+				"ammunition": "Bolt",
+				"damage": "1d6",
+				"damageType": "P",
+				"reload": 1,
+				"range": 60,
+				"group": "Bow"
+			},
 			"category": "Weapon",
 			"subCategory": "Simple",
-			"group": "Bow",
 			"entries": [
 				"Sometimes referred to as an alley bow by rogues or ruffians, this small crossbow fires small bolts that are sometimes used to deliver poison to the target. It's small enough to be shot one-handed, but it still requires two hands to load."
 			]
@@ -2230,6 +2752,7 @@
 		{
 			"name": "Harmona Gun",
 			"source": "G&G",
+			"access": "The following regions have access to firearms: Alkenstar, Dongun Hold, Tian Xia, Vudra, Arcadia, Ustalav, the Shackles",
 			"page": 151,
 			"equipment": true,
 			"type": "Equipment",
@@ -2239,24 +2762,22 @@
 			],
 			"price": {
 				"amount": 10,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": 2,
-			"onset": null,
-			"ammunition": [
-				"Dose or Round of Black Powder|G&G|round"
-			],
-			"damage": "1d10",
-			"damageType": "B",
 			"hands": 2,
-			"reload": 1,
-			"range": 150,
+			"weaponData": {
+				"ammunition": "round (10)|G&G|rounds",
+				"damage": "1d10",
+				"damageType": "B",
+				"reload": 1,
+				"range": 150,
+				"group": "Firearm|G&G"
+			},
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Firearm|G&G",
 			"entries": [
-				": A favored weapon of monster hunters in Arcadia, the harmona gun is a large-bore long gun that fires a heavy, slow-moving round. The gun got its name due to the eerie similarity between the buzzing sound its oversized projectiles make flying through the air and the flight of a fey bird called a harmona."
+				"A favored weapon of monster hunters in Arcadia, the harmona gun is a large-bore long gun that fires a heavy, slow-moving round. The gun got its name due to the eerie similarity between the buzzing sound its oversized projectiles make flying through the air and the flight of a fey bird called a harmona."
 			]
 		},
 		{
@@ -2272,18 +2793,17 @@
 			],
 			"price": {
 				"amount": 4,
-				"coin": "sp",
-				"note": null
+				"coin": "sp"
 			},
 			"bulk": "L",
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d6",
-			"damageType": "S",
+			"weaponData": {
+				"damage": "1d6",
+				"damageType": "S",
+				"group": "Axe"
+			},
 			"hands": 1,
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Axe",
 			"entries": [
 				"This small axe can be used in close combat or thrown."
 			]
@@ -2294,25 +2814,22 @@
 			"page": 281,
 			"equipment": true,
 			"type": "Equipment",
-			"traits": [],
 			"price": {
 				"amount": 4,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": 2,
-			"onset": null,
-			"ammunition": [
-				"Bolt"
-			],
-			"damage": "1d10",
-			"damageType": "P",
 			"hands": 2,
-			"reload": 2,
-			"range": 120,
+			"weaponData": {
+				"ammunition": "Bolt",
+				"damage": "1d10",
+				"damageType": "P",
+				"reload": 2,
+				"range": 120,
+				"group": "Bow"
+			},
 			"category": "Weapon",
 			"subCategory": "Simple",
-			"group": "Bow",
 			"entries": [
 				"This large crossbow is harder to load and more substantial than a regular crossbow, but it packs a greater punch."
 			]
@@ -2320,6 +2837,7 @@
 		{
 			"name": "Heavy Power Suit",
 			"source": "G&G",
+			"access": "The following regions have access to firearms: Alkenstar, Dongun Hold, Tian Xia, Vudra, Arcadia, Ustalav, the Shackles",
 			"page": 16,
 			"equipment": true,
 			"type": "Equipment",
@@ -2327,19 +2845,19 @@
 				"Bulwark"
 			],
 			"bulk": 3,
-			"ac": 5,
-			"dexCap": 1,
-			"str": 16,
-			"checkPen": 2,
-			"speedPen": 10,
-			"onset": null,
-			"ammunition": null,
+			"armorData": {
+				"group": "Composite",
+				"ac": 5,
+				"dexCap": 1,
+				"str": 16,
+				"checkPen": 2,
+				"speedPen": 10
+			},
 			"category": "Armor",
 			"subCategory": "Heavy",
-			"group": "Composite",
 			"entries": [
 				"If your Strength score is at least 16, you remove the Speed penalty entirely instead of reducing it to \u20135 feet.",
-				"{@note This armor is exclusive to the {@class Inventor|G&G} class with the {@class Inventor|G&G|Armor|Armor|G&G} innovation and the {@b Heavy Construction} {@subclassFeature Breakthrough Innovation|Inventor|G&G|Armor|G&G|7||breakthrough armor modification}. While you may be able to wear this armor as a different class, everyone but the creator of the armor is untrained in it, even if they would normally be trained (or better) in heavy armor.}"
+				"{@note This armor is exclusive to the {@class Inventor|G&G} class with the {@class Inventor|G&G|Armor|Armor|G&G} innovation and the {@optfeature Heavy Construction|G&G|Heavy Construction} breakthrough armor modification. While you may be able to wear this armor as a different class, everyone but the creator of the armor is untrained in it, even if they would normally be trained (or better) in heavy armor.}"
 			]
 		},
 		{
@@ -2355,24 +2873,20 @@
 			],
 			"price": {
 				"coin": "gp",
-				"amount": 35,
-				"note": null
+				"amount": 35
 			},
 			"usage": "worn armor",
-			"bulk": "4",
-			"ac": 6,
-			"dexCap": 0,
-			"shieldStats": null,
-			"str": 18,
-			"checkPen": 3,
-			"speedPen": 10,
-			"activate": null,
-			"onset": null,
-			"ammunition": null,
+			"bulk": 4,
+			"armorData": {
+				"group": "Plate",
+				"ac": 6,
+				"dexCap": 0,
+				"str": 18,
+				"checkPen": 3,
+				"speedPen": 10
+			},
 			"category": "Armor",
 			"subCategory": "Heavy",
-			"group": "Plate",
-			"appliesTo": null,
 			"entries": [
 				"Few armors in the Inner Sea region are as memorable as the iconic Hellknight plate. While each order has its own flourishes, Hellknight plate is instantly recognizable to any who know of the Hellknights.",
 				"Hellknights go to extreme measures to punish non-Hellknights who get their hands on Hellknight plate, and the reward is not usually worth the risk, since for non-Hellknights, the armor is functionally similar to {@item full plate}."
@@ -2384,23 +2898,21 @@
 			"page": 275,
 			"equipment": true,
 			"type": "Equipment",
-			"traits": [],
 			"price": {
 				"amount": 2,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
+			},
+			"armorData": {
+				"group": "Leather",
+				"ac": 3,
+				"dexCap": 2,
+				"str": 14,
+				"checkPen": 2,
+				"speedPen": 5
 			},
 			"bulk": 2,
-			"ac": 3,
-			"dexCap": 2,
-			"str": 14,
-			"checkPen": 2,
-			"speedPen": 5,
-			"onset": null,
-			"ammunition": null,
 			"category": "Armor",
 			"subCategory": "Medium",
-			"group": "Leather",
 			"entries": [
 				"A mix of furs, sturdy hide, and sometimes molded boiled leather, this armor provides protection due to its layers of leather, though its bulkiness slows the wearer down and decreases mobility."
 			]
@@ -2419,15 +2931,17 @@
 				"amount": 11,
 				"coin": "gp"
 			},
-			"bulk": 2,
-			"damage": "1d8",
-			"damageType": "P",
 			"hands": "1+",
-			"reload": 0,
-			"range": 40,
+			"weaponData": {
+				"damage": "1d8",
+				"damageType": "P",
+				"reload": 0,
+				"range": 40,
+				"group": "Bow"
+			},
+			"bulk": 2,
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Bow",
 			"entries": [
 				"These immense bows are traditionally made from the horns of great beasts, though modern residents of Hongal, the northernmost nation in Tian Xia, often use composite materials or even small trees as the weapon's base. While Hongali hornbows have a shorter range than other bows, they make up for it by focusing the power of the longbow at a short distance and can be used from horseback\u2014perfect for the skirmishing fighting style of mounted Hongali troops. While it's difficult for those in Avistan to get their hands on these Hongali weapons, a small warband of beast-riding orcs from the Hold of Belkzen managed to arm themselves with Hongali hornbows and cut a bloody swathe through adventurers and neighboring militaries alike for several years before they were finally defeated via a desperate ambush. The stories of that warband spread, causing Avistani adventurers with little knowledge of Tian Xia to associate the bows with orcs. Hongali characters have access to the Hongali hornbow."
 			]
@@ -2447,18 +2961,17 @@
 			],
 			"price": {
 				"amount": 9,
-				"coin": "sp",
-				"note": null
+				"coin": "sp"
 			},
-			"bulk": "2",
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d8",
-			"damageType": "S",
+			"bulk": 2,
+			"weaponData": {
+				"damage": "1d8",
+				"damageType": "S",
+				"group": "Polearm"
+			},
 			"hands": 2,
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Polearm",
 			"entries": [
 				"Created by goblins to battle horses, this weapon is essentially a long shaft ending in a blade with a large hook."
 			]
@@ -2480,12 +2993,14 @@
 				"coin": "gp"
 			},
 			"bulk": 1,
-			"damage": "1d8",
-			"damageType": "P",
+			"weaponData": {
+				"damage": "1d8",
+				"damageType": "P",
+				"group": "Spear"
+			},
 			"hands": 2,
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Spear",
 			"entries": [
 				"A hollow receptacle inside this spear's head can store a single dose of poison. A sliding trigger along the spear's shaft can inject the loaded poison into a damaged target."
 			]
@@ -2501,20 +3016,18 @@
 			],
 			"price": {
 				"amount": 1,
-				"coin": "sp",
-				"note": null
+				"coin": "sp"
 			},
 			"bulk": "L",
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d6",
-			"damageType": "P",
 			"hands": 1,
-			"reload": null,
-			"range": 30,
 			"category": "Weapon",
 			"subCategory": "Simple",
-			"group": "Dart",
+			"weaponData": {
+				"damage": "1d6",
+				"damageType": "P",
+				"range": 30,
+				"group": "Dart"
+			},
 			"entries": [
 				"This thin spear is well balanced for throwing but is not designed for melee use."
 			]
@@ -2522,6 +3035,7 @@
 		{
 			"name": "Jezail",
 			"source": "G&G",
+			"access": "The following regions have access to firearms: Alkenstar, Dongun Hold, Tian Xia, Vudra, Arcadia, Ustalav, the Shackles",
 			"page": 151,
 			"equipment": true,
 			"type": "Equipment",
@@ -2533,22 +3047,20 @@
 			],
 			"price": {
 				"amount": 11,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": 1,
-			"onset": null,
-			"ammunition": [
-				"Dose or Round of Black Powder|G&G|round"
-			],
-			"damage": "1d8",
-			"damageType": "P",
 			"hands": 1,
-			"reload": 1,
-			"range": 90,
+			"weaponData": {
+				"ammunition": "round (10)|G&G|rounds",
+				"damage": "1d8",
+				"damageType": "P",
+				"reload": 1,
+				"range": 90,
+				"group": "Firearm|G&G"
+			},
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Firearm|G&G",
 			"entries": [
 				"Jezails are simple, efficient long guns developed in Casmaron that typically feature a custom stock and a flintlock firing mechanism. Though lacking the range and stopping power of an arquebus or the raw force of a harmona gun, the jezail is an elegant, well-balanced weapon suitable for a variety of combat situations. It's even possible to tuck it under one arm to fire a less accurate attack that uses only one hand."
 			]
@@ -2567,18 +3079,17 @@
 			],
 			"price": {
 				"amount": 1,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": "L",
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d6",
-			"damageType": "S",
+			"weaponData": {
+				"damage": "1d6",
+				"damageType": "S",
+				"group": "Knife"
+			},
 			"hands": 1,
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Knife",
 			"entries": [
 				"Similar to a sickle and used in some regions to reap grain, a kama has a short, slightly curved blade and a wooden handle."
 			]
@@ -2597,18 +3108,17 @@
 			],
 			"price": {
 				"amount": 2,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
-			"bulk": "1",
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d6",
-			"damageType": "S",
+			"bulk": 1,
+			"weaponData": {
+				"damage": "1d6",
+				"damageType": "S",
+				"group": "Sword"
+			},
 			"hands": 1,
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Sword",
 			"entries": [
 				"A katana is a curved, single-edged sword known for its wickedly sharped blade."
 			]
@@ -2627,18 +3137,17 @@
 			],
 			"price": {
 				"amount": 3,
-				"coin": "sp",
-				"note": null
+				"coin": "sp"
 			},
 			"bulk": "L",
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d4",
-			"damageType": "P",
+			"weaponData": {
+				"damage": "1d4",
+				"damageType": "P",
+				"group": "Knife"
+			},
 			"hands": 1,
 			"category": "Weapon",
 			"subCategory": "Simple",
-			"group": "Knife",
 			"entries": [
 				"Also known as punching daggers, katars are characterized by their H-shaped hand grip that allows the blade to jut out from the knuckles."
 			]
@@ -2657,18 +3166,17 @@
 			],
 			"price": {
 				"amount": 2,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": 1,
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d6",
-			"damageType": "B",
+			"weaponData": {
+				"damage": "1d6",
+				"damageType": "B",
+				"group": "Club"
+			},
 			"hands": 1,
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Club",
 			"entries": [
 				"This staff is topped by a pointed metal circle from which hang several smaller rings that jingle and clang noisily as the staff is moved, allowing you to announce your presence and scare off wild animals as you walk."
 			]
@@ -2685,18 +3193,17 @@
 			],
 			"price": {
 				"amount": 2,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": 1,
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d8",
-			"damageType": "S",
+			"weaponData": {
+				"damage": "1d8",
+				"damageType": "S",
+				"group": "Sword"
+			},
 			"hands": 1,
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Sword",
 			"entries": [
 				"This curved sickle sword has a pointed tip, allowing it to be swung like a handaxe or thrust like a short sword. The tip of a khopesh is usually hooked so that it can be used to disarm an opponent's shield or weapon."
 			]
@@ -2714,18 +3221,17 @@
 			],
 			"price": {
 				"amount": 3,
-				"coin": "sp",
-				"note": null
+				"coin": "sp"
 			},
 			"bulk": "L",
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d4",
-			"damageType": "B",
+			"weaponData": {
+				"damage": "1d4",
+				"damageType": "B",
+				"group": "Brawling"
+			},
 			"hands": 1,
 			"category": "Weapon",
 			"subCategory": "Simple",
-			"group": "Brawling",
 			"entries": [
 				"This bit of hardened metal, favored by street toughs, is typically made of brass and features four finger holes so that it can sit atop the knuckles, adding extra power to a punch."
 			]
@@ -2744,18 +3250,17 @@
 			],
 			"price": {
 				"amount": 6,
-				"coin": "sp",
-				"note": null
+				"coin": "sp"
 			},
 			"bulk": "L",
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d6",
-			"damageType": "S",
+			"weaponData": {
+				"damage": "1d6",
+				"damageType": "S",
+				"group": "Knife"
+			},
 			"hands": 1,
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Knife",
 			"entries": [
 				"The blade of this foot-long knife curves inward and lacks a cross guard at the hilt."
 			]
@@ -2773,18 +3278,17 @@
 			],
 			"price": {
 				"amount": 1,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
-			"bulk": "2",
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d8",
-			"damageType": "P",
+			"bulk": 2,
+			"weaponData": {
+				"damage": "1d8",
+				"damageType": "P",
+				"group": "Spear"
+			},
 			"hands": 2,
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Spear",
 			"entries": [
 				"This spear-like weapon is used by a mounted creature to deal a great deal of damage."
 			]
@@ -2795,23 +3299,21 @@
 			"page": 275,
 			"equipment": true,
 			"type": "Equipment",
-			"traits": [],
 			"price": {
 				"amount": 2,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": 1,
-			"ac": 1,
-			"dexCap": 4,
-			"str": 10,
-			"checkPen": 1,
-			"speedPen": 0,
-			"onset": null,
-			"ammunition": null,
+			"armorData": {
+				"group": "Leather",
+				"ac": 1,
+				"dexCap": 4,
+				"str": 10,
+				"checkPen": 1,
+				"speedPen": 0
+			},
 			"category": "Armor",
 			"subCategory": "Light",
-			"group": "Leather",
 			"entries": [
 				"A mix of flexible and molded boiled leather, a suit of this type of armor provides some protection with maximum flexibility."
 			]
@@ -2828,18 +3330,17 @@
 			],
 			"price": {
 				"amount": 3,
-				"coin": "sp",
-				"note": null
+				"coin": "sp"
 			},
 			"bulk": "L",
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d6",
-			"damageType": "B",
+			"weaponData": {
+				"damage": "1d6",
+				"damageType": "B",
+				"group": "Hammer"
+			},
 			"hands": 1,
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Hammer",
 			"entries": [
 				"This smaller version of the warhammer has a wooden or metal shaft ending in a metal head. Unlike its heavier cousin, it is light enough to throw."
 			]
@@ -2857,18 +3358,17 @@
 			],
 			"price": {
 				"amount": 4,
-				"coin": "sp",
-				"note": null
+				"coin": "sp"
 			},
 			"bulk": "L",
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d4",
-			"damageType": "B",
+			"weaponData": {
+				"damage": "1d4",
+				"damageType": "B",
+				"group": "Club"
+			},
 			"hands": 1,
 			"category": "Weapon",
 			"subCategory": "Simple",
-			"group": "Club",
 			"entries": [
 				"A light mace has a short wooden or metal shaft ending with a dense metal head. Used much like a club, it delivers heavy bludgeoning blows, but with extra power derived from the head's metal ridges or spikes."
 			]
@@ -2885,18 +3385,17 @@
 			],
 			"price": {
 				"amount": 4,
-				"coin": "sp",
-				"note": null
+				"coin": "sp"
 			},
 			"bulk": "L",
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d4",
-			"damageType": "P",
+			"weaponData": {
+				"damage": "1d4",
+				"damageType": "P",
+				"group": "Pick"
+			},
 			"hands": 1,
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Pick",
 			"entries": [
 				"A light pick is a modified mining implement with a wooden shaft ending in a pick head crafted more to pierce armor and flesh than chip rocks."
 			]
@@ -2904,6 +3403,7 @@
 		{
 			"name": "Long Air Repeater",
 			"source": "G&G",
+			"access": "The following regions have access to firearms: Alkenstar, Dongun Hold, Tian Xia, Vudra, Arcadia, Ustalav, the Shackles",
 			"page": 151,
 			"equipment": true,
 			"type": "Equipment",
@@ -2913,22 +3413,20 @@
 			],
 			"price": {
 				"amount": 9,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": 1,
-			"onset": null,
-			"ammunition": [
-				"Pellets|G&G"
-			],
-			"damage": "1d4",
-			"damageType": "P",
+			"weaponData": {
+				"ammunition": "Pellets|G&G",
+				"damage": "1d4",
+				"damageType": "P",
+				"reload": 0,
+				"range": 60,
+				"group": "Firearm|G&G"
+			},
 			"hands": 2,
-			"reload": 0,
-			"range": 60,
 			"category": "Weapon",
 			"subCategory": "Simple",
-			"group": "Firearm|G&G",
 			"entries": [
 				"Like the {@item air repeater|G&G|one-handed air repeater}, this thin-barreled firearm uses a container of pressurized air instead of black powder to propel small metal pellets from an attached cartridge. The long air repeater has better range and ammo capacity than the {@item air repeater|G&G|one-handed variant}, though it still lacks significant stopping power. A typical long air repeater magazine holds 8 {@item pellets|G&G}."
 			]
@@ -2945,22 +3443,20 @@
 			],
 			"price": {
 				"amount": 6,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": 2,
-			"onset": null,
-			"ammunition": [
-				"Arrow"
-			],
-			"damage": "1d8",
-			"damageType": "P",
+			"weaponData": {
+				"ammunition": "Arrow",
+				"damage": "1d8",
+				"damageType": "P",
+				"reload": 0,
+				"range": 100,
+				"group": "Bow"
+			},
 			"hands": "1+",
-			"reload": 0,
-			"range": 100,
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Bow",
 			"entries": [
 				"This 5-foot-tall bow, usually made of a single piece of elm, hickory, or yew, has a powerful draw and is excellent at propelling arrows with great force and at an extreme distance. You must use two hands to fire a longbow, and it can't be used while mounted."
 			]
@@ -2976,18 +3472,17 @@
 			],
 			"price": {
 				"amount": 5,
-				"coin": "sp",
-				"note": null
+				"coin": "sp"
 			},
-			"bulk": "2",
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d8",
-			"damageType": "P",
+			"bulk": 2,
+			"weaponData": {
+				"damage": "1d8",
+				"damageType": "P",
+				"group": "Spear"
+			},
 			"hands": 2,
 			"category": "Weapon",
 			"subCategory": "Simple",
-			"group": "Spear",
 			"entries": [
 				"This very long spear, sometimes called a pike, is purely for thrusting rather than throwing. Used by many soldiers and city watch for crowd control and defense against charging enemies, it must be wielded with two hands."
 			]
@@ -3003,18 +3498,17 @@
 			],
 			"price": {
 				"amount": 1,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
-			"bulk": "1",
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d8",
-			"damageType": "S",
+			"bulk": 1,
+			"weaponData": {
+				"damage": "1d8",
+				"damageType": "S",
+				"group": "Sword"
+			},
 			"hands": 1,
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Sword",
 			"entries": [
 				"Longswords can be one-edged or two-edged swords. Their blades are heavy and they're between 3 and 4 feet in length."
 			]
@@ -3030,18 +3524,17 @@
 			],
 			"price": {
 				"amount": 1,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
-			"bulk": "1",
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d6",
-			"damageType": "B",
+			"bulk": 1,
+			"weaponData": {
+				"damage": "1d6",
+				"damageType": "B",
+				"group": "Club"
+			},
 			"hands": 1,
 			"category": "Weapon",
 			"subCategory": "Simple",
-			"group": "Club",
 			"entries": [
 				"With a stout haft and a heavy metal head, a mace is sturdy and allows its wielder to deliver powerful blows and dent armor."
 			]
@@ -3058,18 +3551,17 @@
 			],
 			"price": {
 				"amount": 7,
-				"coin": "sp",
-				"note": null
+				"coin": "sp"
 			},
 			"bulk": "L",
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d6",
-			"damageType": "S",
+			"weaponData": {
+				"damage": "1d6",
+				"damageType": "S",
+				"group": "Sword"
+			},
 			"hands": 1,
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Sword",
 			"entries": [
 				"This medium-length sword has a wide blade and long grip. Though it is typically used to hack through heavy foliage, the machete can also be used as a deadly weapon."
 			]
@@ -3089,18 +3581,17 @@
 			],
 			"price": {
 				"amount": 5,
-				"coin": "sp",
-				"note": null
+				"coin": "sp"
 			},
 			"bulk": "L",
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d4",
-			"damageType": "P",
+			"weaponData": {
+				"damage": "1d4",
+				"damageType": "P",
+				"group": "Knife"
+			},
 			"hands": 1,
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Knife",
 			"entries": [
 				"This parrying dagger features a robust guard to protect the wielder's hand."
 			]
@@ -3119,18 +3610,17 @@
 			],
 			"price": {
 				"amount": 6,
-				"coin": "sp",
-				"note": null
+				"coin": "sp"
 			},
 			"bulk": 1,
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d6",
-			"damageType": "S",
+			"weaponData": {
+				"damage": "1d6",
+				"damageType": "S",
+				"group": "Axe"
+			},
 			"hands": 1,
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Axe",
 			"entries": [
 				"Also known as a hunga munga or danisco, this hybrid knife-axe consists of a hilt and a blade that curves backward toward the wielder. The curve of the blade is such that after a victim has been struck by a mambele, more damage is dealt as the weapon is extracted from the victim's body."
 			]
@@ -3146,18 +3636,17 @@
 			],
 			"price": {
 				"amount": 3,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
-			"bulk": "2",
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d12",
-			"damageType": "B",
+			"bulk": 2,
+			"weaponData": {
+				"damage": "1d12",
+				"damageType": "B",
+				"group": "Hammer"
+			},
 			"hands": 2,
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Hammer",
 			"entries": [
 				"Mauls are massive warhammers that must be swung with two hands."
 			]
@@ -3176,18 +3665,17 @@
 			],
 			"price": {
 				"amount": 3,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
-			"bulk": "2",
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d8",
-			"damageType": "B",
+			"bulk": 2,
+			"weaponData": {
+				"damage": "1d8",
+				"damageType": "B",
+				"group": "Flail"
+			},
 			"hands": 2,
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Flail",
 			"entries": [
 				"This weapon consists of a long chain connected to a heavy weight at one end. When a wielder swings the weight by the chain, it builds momentum and can serve as a deadly bludgeon with incredible reach."
 			]
@@ -3195,6 +3683,7 @@
 		{
 			"name": "Mithral Tree",
 			"source": "G&G",
+			"access": "The following regions have access to firearms: Alkenstar, Dongun Hold, Tian Xia, Vudra, Arcadia, Ustalav, the Shackles",
 			"page": 151,
 			"equipment": true,
 			"type": "Equipment",
@@ -3207,22 +3696,20 @@
 			],
 			"price": {
 				"amount": 9,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": 1,
-			"onset": null,
-			"ammunition": [
-				"Dose or Round of Black Powder|G&G|round"
-			],
-			"damage": "1d6",
-			"damageType": "P",
 			"hands": 2,
-			"reload": 1,
-			"range": 150,
+			"weaponData": {
+				"ammunition": "round (10)|G&G|rounds",
+				"damage": "1d6",
+				"damageType": "P",
+				"reload": 1,
+				"range": 150,
+				"group": "Firearm|G&G"
+			},
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Firearm|G&G",
 			"entries": [
 				"Neither mithral nor a tree, this long gun takes its name from the legends of the elves of Jinin and is most commonly found within the nation. An elegant weapon, a mithral tree does somewhat resemble a tree; its fanned stock and long, sweeping barrel reinforced with metal rings enable a wielder to parry melee attacks while moving back into safe firing range."
 			]
@@ -3238,18 +3725,17 @@
 			],
 			"price": {
 				"amount": 1,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
-			"bulk": "1",
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d6",
-			"damageType": "B",
+			"bulk": 1,
+			"weaponData": {
+				"damage": "1d6",
+				"damageType": "B",
+				"group": "Club"
+			},
 			"hands": 1,
 			"category": "Weapon",
 			"subCategory": "Simple",
-			"group": "Club",
 			"entries": [
 				"This weapon has a short shaft ending in a metal ball studded with spikes."
 			]
@@ -3268,18 +3754,17 @@
 			],
 			"price": {
 				"amount": 3,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": 2,
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d8",
-			"damageType": "S",
+			"weaponData": {
+				"damage": "1d8",
+				"damageType": "S",
+				"group": "Polearm"
+			},
 			"hands": 2,
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Polearm",
 			"entries": [
 				"This 6-foot staff has a 2-foot-long, slightly curved, swordlike blade attached at one end. The long pole helps keep the wielder out of reach of swords and shorter weapons."
 			]
@@ -3296,18 +3781,17 @@
 			],
 			"price": {
 				"amount": 9,
-				"coin": "sp",
-				"note": null
+				"coin": "sp"
 			},
 			"bulk": 1,
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d8",
-			"damageType": "S",
+			"weaponData": {
+				"damage": "1d8",
+				"damageType": "S",
+				"group": "Sword"
+			},
 			"hands": 1,
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Sword",
 			"entries": [
 				"This sword has a broad blade, along which are threaded nine heavy metal rings. The rings add weight to the weapon for downward swings, as well as clashing together to make noise."
 			]
@@ -3327,18 +3811,17 @@
 			],
 			"price": {
 				"amount": 2,
-				"coin": "sp",
-				"note": null
+				"coin": "sp"
 			},
 			"bulk": "L",
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d6",
-			"damageType": "B",
+			"weaponData": {
+				"damage": "1d6",
+				"damageType": "B",
+				"group": "Club"
+			},
 			"hands": 1,
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Club",
 			"entries": [
 				"The nunchaku is constructed of two wooden or metal bars connected by a short length of rope or chain."
 			]
@@ -3357,18 +3840,17 @@
 			],
 			"price": {
 				"amount": 7,
-				"coin": "sp",
-				"note": null
+				"coin": "sp"
 			},
 			"bulk": "L",
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d6",
-			"damageType": "P",
+			"weaponData": {
+				"damage": "1d6",
+				"damageType": "P",
+				"group": "Knife"
+			},
 			"hands": 1,
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Knife",
 			"entries": [
 				"This stout, metal blade of orc design has a horizontal basket hilt with blades jutting from each end, or sometimes one blade like that of a katar."
 			]
@@ -3387,18 +3869,17 @@
 			],
 			"price": {
 				"amount": 2,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
-			"bulk": "1",
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d8",
-			"damageType": "S",
+			"bulk": 1,
+			"weaponData": {
+				"damage": "1d8",
+				"damageType": "S",
+				"group": "Axe"
+			},
 			"hands": 1,
 			"category": "Weapon",
 			"subCategory": "Advanced",
-			"group": "Axe",
 			"entries": [
 				"This single-bladed bearded axe has a jagged blade that's perfect for separating bone from tendon and cartilage."
 			]
@@ -3414,20 +3895,19 @@
 			],
 			"price": {
 				"amount": 2,
-				"coin": "sp",
-				"note": null
+				"coin": "sp"
 			},
 			"bulk": "L",
-			"ac": 1,
-			"dexCap": 3,
-			"str": 10,
-			"checkPen": 0,
-			"speedPen": 0,
-			"onset": null,
-			"ammunition": null,
+			"armorData": {
+				"group": "Cloth",
+				"ac": 1,
+				"dexCap": 3,
+				"str": 10,
+				"checkPen": 0,
+				"speedPen": 0
+			},
 			"category": "Armor",
 			"subCategory": "Light",
-			"group": "Cloth",
 			"entries": [
 				"This armor is simply a layer of heavy, quilted cloth, but it is sometimes used because it's so inexpensive. Padded armor is easier to damage and destroy than other types of armor. Heavy armor comes with a padded armor undercoat included in its Price, though it loses the comfort trait when worn under heavy armor. You can wear just that padded armor undercoat to sleep in, if your heavy armor is destroyed, or when otherwise not wearing the full heavy armor. This allows you to keep the armor invested and benefit from the power of any runes on the associated heavy armor, but no one else can wear your heavy armor without the padded undercoat."
 			]
@@ -3451,12 +3931,14 @@
 				"coin": "gp"
 			},
 			"bulk": "L",
-			"damage": "1d4",
-			"damageType": "B",
+			"weaponData": {
+				"damage": "1d4",
+				"damageType": "B",
+				"group": "Brawling"
+			},
 			"hands": 1,
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Brawling",
 			"entries": [
 				"A pantograph gauntlet is a heavy, fist-like weight, mounted on an extendable frame and attached to your outer arm with a series of leather straps. The frame's set of mechanical linkages connected at various hinges allow movements to propagate across the frame based on reshaping parallelograms, further {@condition controlled} by a crossbar grasped in your hand. A pantograph gauntlet is driven by your own motion and mirrors your arm's movements\u2014a punch thrown with your fist moves the pantograph, extending the weight out at a rapid speed to land blows up to 10 feet away. In some regions, such as Alkenstar and Ustalav, pantograph gauntlets are occasionally constructed entirely of metal and fashioned in the likeness of oversized arms, incorporating a complex system of gears or a miniature steam engine in place of the simpler pantograph mechanism."
 			]
@@ -3464,6 +3946,7 @@
 		{
 			"name": "Pepperbox",
 			"source": "G&G",
+			"access": "The following regions have access to firearms: Alkenstar, Dongun Hold, Tian Xia, Vudra, Arcadia, Ustalav, the Shackles",
 			"page": 151,
 			"equipment": true,
 			"type": "Equipment",
@@ -3475,22 +3958,20 @@
 			],
 			"price": {
 				"amount": 12,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": 1,
-			"onset": null,
-			"ammunition": [
-				"Dose or Round of Black Powder|G&G|round"
-			],
-			"damage": "1d4",
-			"damageType": "P",
 			"hands": 1,
-			"reload": 1,
-			"range": 60,
+			"weaponData": {
+				"ammunition": "round (10)|G&G|rounds",
+				"damage": "1d4",
+				"damageType": "P",
+				"reload": 1,
+				"range": 60,
+				"group": "Firearm|G&G"
+			},
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Firearm|G&G",
 			"entries": [
 				"This weapon is a specialty of the smiths of Alkenstar. The pepperbox has three barrels that each hold a single shot, and the shooter can manually rotate the whole barrel assembly to align a loaded barrel with the firing mechanism."
 			]
@@ -3506,18 +3987,17 @@
 			],
 			"price": {
 				"amount": 7,
-				"coin": "sp",
-				"note": null
+				"coin": "sp"
 			},
-			"bulk": "1",
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d6",
-			"damageType": "P",
+			"bulk": 1,
+			"weaponData": {
+				"damage": "1d6",
+				"damageType": "P",
+				"group": "Pick"
+			},
 			"hands": 1,
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Pick",
 			"entries": [
 				"A pick designed solely for combat has a sturdy wooden shaft and a heavy, pointed head to deliver devastating blows."
 			]
@@ -3539,12 +4019,14 @@
 				"coin": "sp"
 			},
 			"bulk": "L",
-			"damage": "1d6",
-			"damageType": "P",
+			"weaponData": {
+				"damage": "1d6",
+				"damageType": "P",
+				"group": "Knife"
+			},
 			"hands": 1,
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Knife",
 			"entries": [
 				"Made of a jagged blade with teeth pointing toward a leather-wrapped hilt, these weapons are particularly effective at disarming opponents. Piranha kisses were occasionally used during the Vidric Revolution, and some Firebrands carry them today. Members of the Firebrands have access to this weapon."
 			]
@@ -3563,18 +4045,17 @@
 			],
 			"price": {
 				"amount": 10,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": 1,
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d6",
-			"damageType": "modular",
+			"weaponData": {
+				"group": "Sword",
+				"damage": "1d6",
+				"damageType": "modular"
+			},
 			"hands": 1,
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Sword",
 			"entries": [
 				"The polytool is a small metal rod with a number of simple tools folded inside. The user can extend a long ceramic blade, as well as an awl, a chisel, a file, flint and steel, a hook, an inkpen, a magnifying glass, pliers, scissors, and a small saw. The flint and steel can be used up to 10 times before needing to be replaced. Though inspired by advanced Numerian technology, the polytool is a simple enough feat of metalworking that any blacksmith could produce it\u2014perfect for the goddess Casandalee to spread innovation farther than actual Numerian tech could reach."
 			]
@@ -3582,21 +4063,21 @@
 		{
 			"name": "Power Suit",
 			"source": "G&G",
+			"access": "The following regions have access to firearms: Alkenstar, Dongun Hold, Tian Xia, Vudra, Arcadia, Ustalav, the Shackles",
 			"page": 16,
 			"equipment": true,
 			"type": "Equipment",
-			"traits": [],
 			"bulk": 2,
-			"ac": 4,
-			"dexCap": 1,
-			"str": 16,
-			"checkPen": 2,
-			"speedPen": 5,
-			"onset": null,
-			"ammunition": null,
+			"armorData": {
+				"group": "Composite",
+				"ac": 4,
+				"dexCap": 1,
+				"str": 16,
+				"checkPen": 2,
+				"speedPen": 5
+			},
 			"category": "Armor",
 			"subCategory": "Medium",
-			"group": "Composite",
 			"entries": [
 				"{@note This armor is exclusive to the {@class Inventor|G&G} class with the {@class Inventor|G&G|Armor|Armor|G&G} innovation. While you may be able to wear this armor as a different class, everyone but the creator of the armor is untrained in it, even if they would normally be trained (or better) in medium armor.}"
 			]
@@ -3613,18 +4094,17 @@
 			],
 			"price": {
 				"amount": 2,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
-			"bulk": "2",
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d10",
-			"damageType": "P",
+			"bulk": 2,
+			"weaponData": {
+				"damage": "1d10",
+				"damageType": "P",
+				"group": "Polearm"
+			},
 			"hands": 2,
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Polearm",
 			"entries": [
 				"This polearm is a long trident with a central prong that's longer than the other two."
 			]
@@ -3642,18 +4122,17 @@
 			],
 			"price": {
 				"amount": 2,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
-			"bulk": "1",
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d6",
-			"damageType": "P",
+			"bulk": 1,
+			"weaponData": {
+				"damage": "1d6",
+				"damageType": "P",
+				"group": "Sword"
+			},
 			"hands": 1,
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Sword",
 			"entries": [
 				"The rapier is a long and thin piercing blade with a basket hilt. It is prized among many as a dueling weapon."
 			]
@@ -3661,6 +4140,7 @@
 		{
 			"name": "Reinforced Stock",
 			"source": "G&G",
+			"access": "The following regions have access to firearms: Alkenstar, Dongun Hold, Tian Xia, Vudra, Arcadia, Ustalav, the Shackles",
 			"page": 150,
 			"equipment": true,
 			"type": "Equipment",
@@ -3671,18 +4151,17 @@
 			],
 			"price": {
 				"amount": 2,
-				"coin": "sp",
-				"note": null
+				"coin": "sp"
 			},
 			"bulk": "L",
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d4",
-			"damageType": "B",
+			"weaponData": {
+				"damage": "1d4",
+				"damageType": "B",
+				"group": "Club"
+			},
 			"hands": "1 or 2*",
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Club",
 			"entries": [
 				"A reinforced stock is a weighted crossbow, firearm haft, or grip customized for striking in melee.",
 				"{@note *An attached bayonet or reinforced stock requires the same number of hands as the weapon it's attached to. A detached bayonet requires one hand.}"
@@ -3703,17 +4182,17 @@
 				"coin": "gp"
 			},
 			"bulk": 1,
-			"ammunition": [
-				"Repeating Crossbow Magazine|G&G"
-			],
-			"damage": "1d6",
-			"damageType": "P",
 			"hands": 2,
-			"reload": 0,
-			"range": 60,
+			"weaponData": {
+				"ammunition": "Repeating Crossbow Magazine|G&G",
+				"damage": "1d6",
+				"damageType": "P",
+				"reload": 0,
+				"range": 60,
+				"group": "Bow"
+			},
 			"category": "Weapon",
 			"subCategory": "Advanced",
-			"group": "Bow",
 			"entries": [
 				"This crossbow has an internal chamber that can be loaded with up to five bolts. An automated catch mechanism at the top of the flight groove, just in front of the latch, locks the bowstring and launches bolts with the pull of a trigger."
 			]
@@ -3733,17 +4212,17 @@
 				"coin": "gp"
 			},
 			"bulk": "L",
-			"ammunition": [
-				"Repeating Hand Crossbow Magazine|G&G"
-			],
-			"damage": "1d6",
-			"damageType": "P",
 			"hands": 1,
-			"reload": 0,
-			"range": 60,
+			"weaponData": {
+				"ammunition": "Repeating Hand Crossbow Magazine|G&G",
+				"damage": "1d6",
+				"damageType": "P",
+				"reload": 0,
+				"range": 60,
+				"group": "Bow"
+			},
 			"category": "Weapon",
 			"subCategory": "Advanced",
-			"group": "Bow",
 			"entries": [
 				"This handheld crossbow features an ingeniously designed catch mechanism at the top of the flight groove, just in front of the latch, which automatically loads a bolt from a magazine and resets the string each time the weapon is fired. A typical repeating hand crossbow magazine holds five bolts."
 			]
@@ -3763,17 +4242,17 @@
 				"coin": "gp"
 			},
 			"bulk": 2,
-			"ammunition": [
-				"Repeating Heavy Crossbow Magazine|G&G"
-			],
-			"damage": "1d10",
-			"damageType": "P",
 			"hands": 2,
-			"reload": 1,
-			"range": 180,
+			"weaponData": {
+				"ammunition": "Repeating Heavy Crossbow Magazine|G&G",
+				"damage": "1d10",
+				"damageType": "P",
+				"reload": 1,
+				"range": 180,
+				"group": "Bow"
+			},
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Bow",
 			"entries": [
 				"This large crossbow has an internal chamber that can be loaded with up to five bolts. While it uses the same automated catch mechanism as other repeating crossbows, a repeating heavy crossbow's design has significant trade-offs. It has increased range and damage and is easier to learn how to use, but requires a small amount of effort to reload."
 			]
@@ -3791,18 +4270,17 @@
 			],
 			"price": {
 				"amount": 4,
-				"coin": "sp",
-				"note": null
+				"coin": "sp"
 			},
 			"bulk": "L",
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d6",
-			"damageType": "B",
+			"weaponData": {
+				"damage": "1d6",
+				"damageType": "B",
+				"group": "Club"
+			},
 			"hands": 1,
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Club",
 			"entries": [
 				"This specialized club is designed for throwing and is useful for both combat and hunting. Rungus were invented by Zenj humans of the Mwangi Expanse and are most common among their tribes, though gripplis have also adopted rungus for hunting creatures that hide high in treetops."
 			]
@@ -3823,18 +4301,17 @@
 			],
 			"price": {
 				"amount": 6,
-				"coin": "sp",
-				"note": null
+				"coin": "sp"
 			},
 			"bulk": "L",
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d4",
-			"damageType": "P",
+			"weaponData": {
+				"damage": "1d4",
+				"damageType": "P",
+				"group": "Knife"
+			},
 			"hands": 1,
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Knife",
 			"entries": [
 				"This piercing dagger is a metal spike flanked by a pair of prongs that can be used to trap an enemy's weapon."
 			]
@@ -3851,18 +4328,17 @@
 			],
 			"price": {
 				"amount": 1,
-				"coin": "sp",
-				"note": null
+				"coin": "sp"
 			},
 			"bulk": "L",
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d6",
-			"damageType": "B",
+			"weaponData": {
+				"damage": "1d6",
+				"damageType": "B",
+				"group": "Club"
+			},
 			"hands": 1,
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Club",
 			"entries": [
 				"A sap has a soft wrapping around a dense core, typically a leather sheath around a lead rod. Its head is wider than its grip to disperse the force of a blow, as the weapon's purpose is to knock out its victim rather than to draw blood."
 			]
@@ -3881,18 +4357,17 @@
 			],
 			"price": {
 				"amount": 5,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": "L",
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d6",
-			"damageType": "S",
+			"weaponData": {
+				"damage": "1d6",
+				"damageType": "S",
+				"group": "Sword"
+			},
 			"hands": 1,
 			"category": "Weapon",
 			"subCategory": "Advanced",
-			"group": "Sword",
 			"entries": [
 				"The signature weapon of the Red Mantis assassins, this curved blade is serrated like a saw, hence the name."
 			]
@@ -3903,23 +4378,21 @@
 			"page": 275,
 			"equipment": true,
 			"type": "Equipment",
-			"traits": [],
 			"price": {
 				"amount": 4,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": 2,
-			"ac": 3,
-			"dexCap": 2,
-			"str": 14,
-			"checkPen": 2,
-			"speedPen": 5,
-			"onset": null,
-			"ammunition": null,
+			"armorData": {
+				"group": "Composite",
+				"ac": 3,
+				"dexCap": 2,
+				"str": 14,
+				"checkPen": 2,
+				"speedPen": 5
+			},
 			"category": "Armor",
 			"subCategory": "Medium",
-			"group": "Composite",
 			"entries": [
 				"Scale mail consists of many metal scales sewn onto a reinforced leather backing, often in the form of a long shirt that protects the torso, arms, and legs."
 			]
@@ -3936,18 +4409,17 @@
 			],
 			"price": {
 				"amount": 1,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
-			"bulk": "1",
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d6",
-			"damageType": "S",
+			"bulk": 1,
+			"weaponData": {
+				"damage": "1d6",
+				"damageType": "S",
+				"group": "Sword"
+			},
 			"hands": 1,
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Sword",
 			"entries": [
 				"This one-handed curved blade is sharp on one side."
 			]
@@ -3968,16 +4440,17 @@
 			],
 			"price": {
 				"coin": "sp",
-				"amount": 1,
-				"note": null
+				"amount": 1
 			},
-			"bulk": "1",
-			"damage": "1d4",
-			"damageType": "S",
+			"bulk": 1,
+			"weaponData": {
+				"damage": "1d4",
+				"damageType": "S",
+				"group": "Flail"
+			},
 			"hands": 1,
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Flail",
 			"entries": [
 				"A scourge\u2014also known as a cat-o'-nine-tails\u2014is a set of several knotted cords made from cotton or leather and attached to a handle. While most scourges are more suitable for torture than combat, the weapons used by the Order of the Scourge have metal barbs woven in to pierce clothing and armor. The scourge is a martial melee weapon."
 			]
@@ -3994,18 +4467,17 @@
 			],
 			"price": {
 				"amount": 2,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
-			"bulk": "2",
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d10",
-			"damageType": "S",
+			"bulk": 2,
+			"weaponData": {
+				"damage": "1d10",
+				"damageType": "S",
+				"group": "Polearm"
+			},
 			"hands": 2,
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Polearm",
 			"entries": [
 				"Derived from a farming tool used to mow down long grains and cereals, this weapon has a long wooden shaft with protruding handles, capped with a curved blade set at a right angle."
 			]
@@ -4021,18 +4493,16 @@
 			],
 			"price": {
 				"amount": 5,
-				"coin": "sp",
-				"note": null
+				"coin": "sp"
 			},
-			"bulk": null,
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d6",
-			"damageType": "B",
+			"weaponData": {
+				"damage": "1d6",
+				"damageType": "B",
+				"group": "Shield"
+			},
 			"hands": 1,
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Shield",
 			"entries": [
 				"Typically a round, convex, or conical piece of thick metal attached to the center of a shield, a shield boss increases the bludgeoning damage of a shield bash."
 			]
@@ -4048,18 +4518,16 @@
 			],
 			"price": {
 				"amount": 5,
-				"coin": "sp",
-				"note": null
+				"coin": "sp"
 			},
-			"bulk": null,
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d6",
-			"damageType": "P",
+			"weaponData": {
+				"damage": "1d6",
+				"damageType": "P",
+				"group": "Shield"
+			},
 			"hands": 1,
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Shield",
 			"entries": [
 				"These metal spikes are strategically placed on the defensive side of the shield to deal piercing damage with a shield bash."
 			]
@@ -4075,22 +4543,20 @@
 			],
 			"price": {
 				"amount": 3,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": 1,
-			"onset": null,
-			"ammunition": [
-				"Arrow"
-			],
-			"damage": "1d6",
-			"damageType": "P",
 			"hands": "1+",
-			"reload": 0,
-			"range": 60,
+			"weaponData": {
+				"ammunition": "Arrow",
+				"damage": "1d6",
+				"damageType": "P",
+				"reload": 0,
+				"range": 60,
+				"group": "Bow"
+			},
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Bow",
 			"entries": [
 				"This smaller bow is made of a single piece of wood and favored by skirmishers and cavalry."
 			]
@@ -4108,18 +4574,17 @@
 			],
 			"price": {
 				"amount": 9,
-				"coin": "sp",
-				"note": null
+				"coin": "sp"
 			},
 			"bulk": "L",
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d6",
-			"damageType": "P",
+			"weaponData": {
+				"damage": "1d6",
+				"damageType": "P",
+				"group": "Sword"
+			},
 			"hands": 1,
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Sword",
 			"entries": [
 				"These blades come in a variety of shapes and styles, but they are typically 2 feet long."
 			]
@@ -4136,22 +4601,20 @@
 				"thrown",
 				"Uncommon"
 			],
+			"hands": 1,
 			"price": {
 				"amount": 1,
-				"coin": "cp",
-				"note": null
+				"coin": "cp"
 			},
-			"bulk": null,
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d4",
-			"damageType": "P",
-			"hands": 1,
-			"reload": 0,
-			"range": 20,
+			"weaponData": {
+				"damage": "1d4",
+				"damageType": "P",
+				"reload": 0,
+				"range": 20,
+				"group": "Dart"
+			},
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Dart",
 			"entries": [
 				"This \"throwing star\" is a small piece of flat metal with sharp edges, designed to be flung with a flick of the wrist."
 			]
@@ -4169,18 +4632,17 @@
 			],
 			"price": {
 				"amount": 2,
-				"coin": "sp",
-				"note": null
+				"coin": "sp"
 			},
 			"bulk": "L",
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d4",
-			"damageType": "S",
+			"weaponData": {
+				"damage": "1d4",
+				"damageType": "S",
+				"group": "Knife"
+			},
 			"hands": 1,
 			"category": "Weapon",
 			"subCategory": "Simple",
-			"group": "Knife",
 			"entries": [
 				"Originally a farming tool used for reaping grain, this one-handed weapon has a short wooden handle ending in a curved blade, sometimes sharpened on both sides."
 			]
@@ -4201,12 +4663,14 @@
 				"coin": "gp"
 			},
 			"bulk": 1,
-			"damage": "1d6",
-			"damageType": "S",
+			"weaponData": {
+				"damage": "1d6",
+				"damageType": "S",
+				"group": "Sword"
+			},
 			"hands": 1,
 			"category": "Weapon",
 			"subCategory": "Advanced",
-			"group": "Sword",
 			"entries": [
 				"A classical weapon of Irrisenis who lacked magical talent, the sickle-saber has seen a resurgence since the coronation of Queen Anastasia. The queen was fascinated with the sickle-sabers in the palace treasury, and now the unusual blades are carried by her honor guard and Irriseni diplomats alike. The sickle-saber's blade curves multiple times along its 4-foot length, and its hilt is similarly curved. A small, secondary grip on the blade lets the wielder rapidly and unpredictably twist the cutting edges. Characters from Irrisen have access to the sickle-saber."
 			]
@@ -4214,6 +4678,7 @@
 		{
 			"name": "Slide Pistol",
 			"source": "G&G",
+			"access": "The following regions have access to firearms: Alkenstar, Dongun Hold, Tian Xia, Vudra, Arcadia, Ustalav, the Shackles",
 			"page": 151,
 			"equipment": true,
 			"type": "Equipment",
@@ -4226,22 +4691,20 @@
 			],
 			"price": {
 				"amount": 16,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": 2,
-			"onset": null,
-			"ammunition": [
-				"Dose or Round of Black Powder|G&G|round"
-			],
-			"damage": "1d6",
-			"damageType": "P",
 			"hands": 1,
-			"reload": 1,
-			"range": 60,
+			"weaponData": {
+				"ammunition": "round (10)|G&G|rounds",
+				"damage": "1d6",
+				"damageType": "P",
+				"reload": 1,
+				"range": 60,
+				"group": "Firearm|G&G"
+			},
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Firearm|G&G",
 			"entries": [
 				"Also known as a harmonica gun, this weapon is essentially a stock, trigger, and firing mechanism attached to a sliding brace of barrels that can each hold a round of ammunition."
 			]
@@ -4257,22 +4720,20 @@
 			],
 			"price": {
 				"amount": 0,
-				"coin": "",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": "L",
-			"onset": null,
-			"ammunition": [
-				"Sling Bullets"
-			],
-			"damage": "1d6",
-			"damageType": "B",
 			"hands": 1,
-			"reload": 1,
-			"range": 50,
+			"weaponData": {
+				"ammunition": "Sling Bullets",
+				"damage": "1d6",
+				"damageType": "B",
+				"reload": 1,
+				"range": 50,
+				"group": "Sling"
+			},
 			"category": "Weapon",
 			"subCategory": "Simple",
-			"group": "Sling",
 			"entries": [
 				"Little more than a leather cup attached to a pair of straps, a sling can be used to fling smooth stones or sling bullets at a range."
 			]
@@ -4288,18 +4749,17 @@
 			],
 			"price": {
 				"amount": 1,
-				"coin": "sp",
-				"note": null
+				"coin": "sp"
 			},
-			"bulk": "1",
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d6",
-			"damageType": "P",
+			"bulk": 1,
+			"weaponData": {
+				"damage": "1d6",
+				"damageType": "P",
+				"group": "Spear"
+			},
 			"hands": 1,
 			"category": "Weapon",
 			"subCategory": "Simple",
-			"group": "Spear",
 			"entries": [
 				"A long metal shaft ending with a metal spike, a spear can be used one-handed as a melee weapon and can be thrown."
 			]
@@ -4318,18 +4778,17 @@
 			],
 			"price": {
 				"amount": 3,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
-			"bulk": "1",
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d8",
-			"damageType": "S",
+			"bulk": 1,
+			"weaponData": {
+				"damage": "1d8",
+				"damageType": "S",
+				"group": "Flail"
+			},
 			"hands": 2,
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Flail",
 			"entries": [
 				"This 4-foot-long length of chain is covered with barbs and has spikes on one or both ends. Some feature metal hoops used as handgrips."
 			]
@@ -4346,18 +4805,17 @@
 			],
 			"price": {
 				"amount": 3,
-				"coin": "sp",
-				"note": null
+				"coin": "sp"
 			},
 			"bulk": "L",
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d4",
-			"damageType": "P",
+			"weaponData": {
+				"damage": "1d4",
+				"damageType": "P",
+				"group": "Brawling"
+			},
 			"hands": 1,
 			"category": "Weapon",
 			"subCategory": "Simple",
-			"group": "Brawling",
 			"entries": [
 				"Providing the same defensive function as a standard gauntlet, this version has a group of spikes protruding from the knuckles to deliver piercing damage with a punch."
 			]
@@ -4379,12 +4837,14 @@
 				"coin": "gp"
 			},
 			"bulk": 1,
-			"damage": "1d6",
-			"damageType": "P",
+			"weaponData": {
+				"damage": "1d6",
+				"damageType": "P",
+				"group": "Sword"
+			},
 			"hands": 1,
 			"category": "Weapon",
 			"subCategory": "Advanced",
-			"group": "Sword",
 			"entries": [
 				"An old Taldan dueling weapon from the empire's height, this rapier has a thicker blade than normal, which is shaped into a corkscrew-like spiral well suited to catching enemy weapons. Characters from Taldor have access to the spiral rapier."
 			]
@@ -4396,23 +4856,21 @@
 			"equipment": true,
 			"type": "Equipment",
 			"level": 1,
-			"traits": [],
 			"price": {
 				"amount": 13,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": 3,
-			"ac": 5,
-			"dexCap": 1,
-			"str": 16,
-			"checkPen": 3,
-			"speedPen": 10,
-			"onset": null,
-			"ammunition": null,
 			"category": "Armor",
 			"subCategory": "Heavy",
-			"group": "Composite",
+			"armorData": {
+				"group": "Composite",
+				"ac": 5,
+				"dexCap": 1,
+				"str": 16,
+				"checkPen": 3,
+				"speedPen": 10
+			},
 			"entries": [
 				"This type of armor is {@item chain mail} reinforced with flexible, interlocking metal plates, typically located on the wearer's torso, upper arms, and legs. A suit of this armor comes with an undercoat of {@item padded armor|CRB} and a pair of {@item gauntlet|CRB|gauntlets}."
 			]
@@ -4428,18 +4886,17 @@
 			],
 			"price": {
 				"amount": 0,
-				"coin": "",
-				"note": null
+				"coin": "gp"
 			},
-			"bulk": "1",
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d4",
-			"damageType": "B",
+			"bulk": 1,
+			"weaponData": {
+				"damage": "1d4",
+				"damageType": "B",
+				"group": "Club"
+			},
 			"hands": 1,
 			"category": "Weapon",
 			"subCategory": "Simple",
-			"group": "Club",
 			"entries": [
 				"This long piece of wood can aid in walking and deliver a mighty blow."
 			]
@@ -4459,18 +4916,17 @@
 			],
 			"price": {
 				"amount": 2,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": "L",
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d4",
-			"damageType": "P",
+			"weaponData": {
+				"damage": "1d4",
+				"damageType": "P",
+				"group": "Knife"
+			},
 			"hands": 1,
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Knife",
 			"entries": [
 				"From a central metal ring, four tapering metal blades extend like points on a compass rose. When gripping a starknife from the center, the wielder can use it as a melee weapon. It can also be thrown short distances."
 			]
@@ -4481,22 +4937,18 @@
 			"page": 277,
 			"equipment": true,
 			"type": "Equipment",
-			"traits": [],
 			"price": {
 				"amount": 2,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": 1,
-			"ac": 2,
-			"shieldStats": {
+			"shieldData": {
+				"ac": 2,
 				"hardness": 5,
 				"hp": 20,
-				"bt": 10
+				"bt": 10,
+				"speedPen": 0
 			},
-			"speedPen": 0,
-			"onset": null,
-			"ammunition": null,
 			"category": "Shield",
 			"entries": [
 				"Like wooden shields, steel shields come in a variety of shapes and sizes. Though more expensive than wooden shields, they are much more durable."
@@ -4518,18 +4970,17 @@
 			],
 			"price": {
 				"amount": 8,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": "L",
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d4",
-			"damageType": "P",
+			"weaponData": {
+				"damage": "1d4",
+				"damageType": "P",
+				"group": "Dart"
+			},
 			"hands": 1,
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Dart",
 			"entries": [
 				"This weapon is a fully functional, lavish ink pen with a clip that can be attached to a pocket or bandoleer and easily retrieved as a free action. Using an action to Interact with the pen allows its wielder to disengage a stiletto blade that slides free of the upper body or reattach the previously removed blade."
 			]
@@ -4540,23 +4991,21 @@
 			"page": 275,
 			"equipment": true,
 			"type": "Equipment",
-			"traits": [],
 			"price": {
 				"amount": 3,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": 1,
-			"ac": 2,
-			"dexCap": 3,
-			"str": 12,
-			"checkPen": 1,
-			"speedPen": 0,
-			"onset": null,
-			"ammunition": null,
 			"category": "Armor",
 			"subCategory": "Light",
-			"group": "Leather",
+			"armorData": {
+				"group": "Leather",
+				"ac": 2,
+				"dexCap": 3,
+				"str": 12,
+				"checkPen": 1,
+				"speedPen": 0
+			},
 			"entries": [
 				"This {@item leather armor} is reinforced with metal studs and sometimes small metal plates, providing most of the flexibility of leather armor with more robust protection."
 			]
@@ -4564,21 +5013,20 @@
 		{
 			"name": "Subterfuge Suit",
 			"source": "G&G",
+			"access": "The following regions have access to firearms: Alkenstar, Dongun Hold, Tian Xia, Vudra, Arcadia, Ustalav, the Shackles",
 			"page": 16,
 			"equipment": true,
 			"type": "Equipment",
-			"traits": [],
 			"bulk": 1,
-			"ac": 1,
-			"dexCap": 4,
-			"str": 10,
-			"checkPen": 1,
-			"speedPen": null,
-			"onset": null,
-			"ammunition": null,
 			"category": "Armor",
 			"subCategory": "Medium",
-			"group": "Composite",
+			"armorData": {
+				"group": "Composite",
+				"ac": 1,
+				"dexCap": 4,
+				"str": 10,
+				"checkPen": 1
+			},
 			"entries": [
 				"{@note This armor is exclusive to the {@class Inventor|G&G} class with the {@class Inventor|G&G|Armor|Armor|G&G} innovation. While you may be able to wear this armor as a different class, everyone but the creator of the armor is untrained in it, even if they would normally be trained (or better) in medium armor.}"
 			]
@@ -4601,12 +5049,14 @@
 				"coin": "gp"
 			},
 			"bulk": 2,
-			"damage": "1d6",
-			"damageType": "P",
+			"weaponData": {
+				"damage": "1d6",
+				"damageType": "P",
+				"group": "Pick"
+			},
 			"hands": 1,
 			"category": "Weapon",
 			"subCategory": "Advanced",
-			"group": "Pick",
 			"entries": [
 				"Another complex gnome invention, the switchscythe is designed for versatility. The curved blade is partly hollow, containing a long rod of wood or metal; the rod can be pulled perpendicular to the blade, turning the switchscythe from a {@trait sweep||sweeping}, axe-like blade into a hooked pick capable of {@trait grapple||grappling} a foe."
 			]
@@ -4624,18 +5074,17 @@
 			],
 			"price": {
 				"amount": 5,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": 1,
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d6",
-			"damageType": "P",
+			"weaponData": {
+				"damage": "1d6",
+				"damageType": "P",
+				"group": "Sword"
+			},
 			"hands": 1,
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Sword",
 			"entries": [
 				"This slender, rapier-like sword is concealed within a wooden or metal cane that serves as a sheath, making it an inconspicuous weapon easy to slip past inspections or into high-society events. A sword cane is typically 4 feet long when sheathed, and its hilt is usually capped with a wooden or metal decoration."
 			]
@@ -4655,22 +5104,20 @@
 			],
 			"price": {
 				"amount": 10,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
-			"bulk": "1",
-			"onset": null,
-			"ammunition": [
-				"Wooden Taws|LOAG"
-			],
-			"damage": "1d6",
-			"damageType": "modular",
+			"bulk": 1,
 			"hands": 2,
-			"reload": 1,
-			"range": 100,
+			"weaponData": {
+				"ammunition": "Wooden Taws|LOAG",
+				"damage": "1d6",
+				"damageType": "modular",
+				"reload": 1,
+				"range": 100,
+				"group": "Bow"
+			},
 			"category": "Weapon",
 			"subCategory": "Advanced",
-			"group": "Bow",
 			"entries": [
 				"Designed by conrasu warriors, this complex device is a crossbow and fires small wooden bullets known as taws. A system of blades within the launcher can rapidly reshape a taw as it's loaded, allowing the launcher to fire taws of different shapes, such as fléchettes."
 			]
@@ -4691,18 +5138,17 @@
 			],
 			"price": {
 				"amount": 2,
-				"coin": "sp",
-				"note": null
+				"coin": "sp"
 			},
 			"bulk": "L",
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d4",
-			"damageType": "S",
+			"weaponData": {
+				"damage": "1d4",
+				"damageType": "S",
+				"group": "Brawling"
+			},
 			"hands": 1,
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Brawling",
 			"entries": [
 				"Four curved blades attached to a sturdy handlebar give the wielder of this close-combat weapon the illusion of having claws that extend from their fist. Adherents of Bastet favor the tekko-kagi for catching their foes off guard."
 			]
@@ -4720,18 +5166,17 @@
 			],
 			"price": {
 				"amount": 2,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
-			"bulk": "1",
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d8",
-			"damageType": "S",
+			"bulk": 1,
+			"weaponData": {
+				"damage": "1d8",
+				"damageType": "S",
+				"group": "Sword"
+			},
 			"hands": 1,
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Sword",
 			"entries": [
 				"This heavy blade is favored by guardians of religious sites. It has a distinctive, crescent-shaped blade that seems to be a mix of a sickle and sword. It often has holes drilled into the blade or the pommel so that bells or other holy trinkets can be affixed to the weapon as an aid for prayer or mediation."
 			]
@@ -4751,18 +5196,17 @@
 			],
 			"price": {
 				"amount": 4,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": "L",
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d6",
-			"damageType": "S",
+			"weaponData": {
+				"damage": "1d6",
+				"damageType": "S",
+				"group": "Sword"
+			},
 			"hands": 1,
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Sword",
 			"entries": [
 				"This fan-shaped sword, designed by members of the tengu ancestry, has five broad blades that join at its hilt. Tengu sailors also use gale blades as makeshift weather vanes, as the sword spins to show the wind's direction when loosely held aloft."
 			]
@@ -4780,18 +5224,17 @@
 			],
 			"price": {
 				"amount": 3,
-				"coin": "sp",
-				"note": null
+				"coin": "sp"
 			},
 			"bulk": "L",
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d4",
-			"damageType": "P",
+			"weaponData": {
+				"damage": "1d4",
+				"damageType": "P",
+				"group": "Knife"
+			},
 			"hands": 1,
 			"category": "Weapon",
 			"subCategory": "Simple",
-			"group": "Knife",
 			"entries": [
 				"This light knife is optimally balanced to be thrown accurately at a greater distance than a common dagger. While this comes at the cost of a significant cutting edge, the difference is worth it for throwing specialists."
 			]
@@ -4810,20 +5253,19 @@
 			],
 			"price": {
 				"amount": 5,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
-			"bulk": "L",
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d6",
-			"damageType": "P",
 			"hands": 1,
-			"reload": 1,
-			"range": 50,
+			"bulk": "L",
+			"weaponData": {
+				"damage": "1d6",
+				"damageType": "P",
+				"reload": 1,
+				"range": 50,
+				"group": "Sling"
+			},
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Sling",
 			"entries": [
 				"Tengu use these specialized slings to fire darts further and with greater force than when thrown by hand, which is particularly effective when attacking from great heights. A thunder sling uses {@item dart|crb|darts} as ammunition. It can also hurl {@item blowgun dart||blowgun darts} as ammunition but deals {@damage 1d4} piercing damage instead of {@damage 1d6} when used this way."
 			]
@@ -4840,18 +5282,17 @@
 			],
 			"price": {
 				"amount": 2,
-				"coin": "sp",
-				"note": null
+				"coin": "sp"
 			},
 			"bulk": 2,
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d8",
-			"damageType": "B",
+			"weaponData": {
+				"damage": "1d8",
+				"damageType": "B",
+				"group": "Club"
+			},
 			"hands": 2,
 			"category": "Weapon",
 			"subCategory": "Simple",
-			"group": "Club",
 			"entries": [
 				"This deceptively dangerous weapon is essentially a mace with a longer haft and larger, often flanged head."
 			]
@@ -4875,12 +5316,14 @@
 				"coin": "sp"
 			},
 			"bulk": "L",
-			"damage": "1d4",
-			"damageType": "B",
+			"weaponData": {
+				"damage": "1d4",
+				"damageType": "B",
+				"group": "Brawling"
+			},
 			"hands": 1,
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Brawling",
 			"entries": [
 				"These L-shaped fighting batons are good for striking and blocking. The wielder holds the handle and either spins the stick or strikes with the stick covering the forearm."
 			]
@@ -4891,27 +5334,23 @@
 			"page": 277,
 			"equipment": true,
 			"type": "Equipment",
-			"traits": [],
 			"price": {
 				"amount": 2,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": 4,
-			"ac": 2,
-			"ac2": 4,
-			"shieldStats": {
+			"shieldData": {
+				"ac": 2,
+				"ac2": 4,
 				"hardness": 5,
 				"hp": 20,
+				"speedPen": 5,
 				"bt": 10
 			},
-			"speedPen": 5,
-			"onset": null,
-			"ammunition": null,
 			"category": "Shield",
 			"entries": [
 				"These massive shields can be used to provide cover to nearly the entire body. Due to their size, they are typically made of wood reinforced with metal.",
-				"{@note Getting the higher bonus for a tower shield requires using the {@action Take Cover} action while the shield is raised.}"
+				"{@note When you have a {@item tower shield} raised, you can use the {@action Take Cover} action to increase the circumstance bonus to AC to +4. This lasts until the shield is no longer raised. If you would normally provide {@quickref lesser cover||3|cover} against an attack, having your tower shield raised provides {@quickref standard cover||3|cover} against it (and other creatures can {@action Take Cover} as normal using the cover from your shield).}"
 			]
 		},
 		{
@@ -4931,12 +5370,14 @@
 				"coin": "sp"
 			},
 			"bulk": "L",
-			"damage": "1d4",
-			"damageType": "P",
+			"weaponData": {
+				"group": "Knife",
+				"damage": "1d4",
+				"damageType": "P"
+			},
 			"hands": 1,
 			"category": "Weapon",
 			"subCategory": "Simple",
-			"group": "Knife",
 			"entries": [
 				"This punching dagger resembles the standard katar, save that a pair of blades can be folded out from the center blade, transforming the weapon into a starburst shape well suited to catching foes' weapons."
 			]
@@ -4956,18 +5397,17 @@
 			],
 			"price": {
 				"amount": 10,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
-			"bulk": "1",
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d6",
-			"damageType": "modular",
+			"bulk": 1,
+			"weaponData": {
+				"damage": "1d6",
+				"damageType": "modular",
+				"group": "Pick"
+			},
 			"hands": 1,
 			"category": "Weapon",
 			"subCategory": "Advanced",
-			"group": "Pick",
 			"entries": [
 				"This ingenious kobold pick conceals several hidden traps, which the wielder can activate to trick and befuddle foes with a variety of damaging blades and bludgeoning surfaces."
 			]
@@ -4983,18 +5423,17 @@
 			],
 			"price": {
 				"amount": 1,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
-			"bulk": "1",
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d8",
-			"damageType": "P",
+			"bulk": 1,
+			"weaponData": {
+				"damage": "1d8",
+				"damageType": "P",
+				"group": "Spear"
+			},
 			"hands": 1,
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Spear",
 			"entries": [
 				"This three-pronged, spear-like weapon typically has a 4-foot shaft. Like a spear, it can be wielded with one hand or thrown."
 			]
@@ -5018,12 +5457,14 @@
 				"coin": "gp"
 			},
 			"bulk": 1,
-			"damage": "1d4",
-			"damageType": "P",
+			"weaponData": {
+				"damage": "1d4",
+				"damageType": "P",
+				"group": "Sword"
+			},
 			"hands": 1,
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Sword",
 			"entries": [
 				"This umbrella's ferrule is a hollow-tipped blade three to four inches in length and often overlooked as decorative.",
 				"A receptacle inside the umbrella's shaft can be loaded with a single dose of injury poison and injected into a damaged target with the pull of a sliding trigger. Reinforced ribs enable you to parry and deflect blows with the umbrella's tear-resistant canopy."
@@ -5042,18 +5483,17 @@
 			],
 			"price": {
 				"amount": 2,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": 2,
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d6",
-			"damageType": "S",
+			"weaponData": {
+				"damage": "1d6",
+				"damageType": "S",
+				"group": "Flail"
+			},
 			"hands": 1,
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Flail",
 			"entries": [
 				"A bouquet of whiplike blades extends from the hilt of this sword."
 			]
@@ -5073,18 +5513,17 @@
 			],
 			"price": {
 				"amount": 1,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": "L",
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d4",
-			"damageType": "S",
+			"weaponData": {
+				"damage": "1d4",
+				"damageType": "S",
+				"group": "Sword"
+			},
 			"hands": 1,
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Sword",
 			"entries": [
 				"This short-bladed, single-edged sword is typically carried as part of a pair alongside a katana."
 			]
@@ -5102,18 +5541,17 @@
 			],
 			"price": {
 				"amount": 2,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
-			"bulk": "2",
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d10",
-			"damageType": "B",
+			"bulk": 2,
+			"weaponData": {
+				"damage": "1d10",
+				"damageType": "B",
+				"group": "Flail"
+			},
 			"hands": 2,
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Flail",
 			"entries": [
 				"This large flail has a long shaft connected to a shorter piece of stout wood or metal that's sometimes inlaid with spikes."
 			]
@@ -5132,18 +5570,17 @@
 			],
 			"price": {
 				"amount": 3,
-				"coin": "sp",
-				"note": null
+				"coin": "sp"
 			},
 			"bulk": "L",
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d4",
-			"damageType": "S",
+			"weaponData": {
+				"damage": "1d4",
+				"damageType": "S",
+				"group": "Knife"
+			},
 			"hands": 1,
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Knife",
 			"entries": [
 				"A war razor is an exaggerated version of the barbers' tool. It is a brittle but extremely sharp weapon that is very easy to slip into a pocket or sleeve."
 			]
@@ -5159,18 +5596,17 @@
 			],
 			"price": {
 				"amount": 1,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
-			"bulk": "1",
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d8",
-			"damageType": "B",
+			"bulk": 1,
+			"weaponData": {
+				"damage": "1d8",
+				"damageType": "B",
+				"group": "Hammer"
+			},
 			"hands": 1,
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Hammer",
 			"entries": [
 				"This weapon has a wooden shaft ending in a large, heavy metal head. The head of the hammer might be single-sided or double-sided, but it's always capable of delivering powerful bludgeoning blows."
 			]
@@ -5190,18 +5626,17 @@
 			],
 			"price": {
 				"amount": 1,
-				"coin": "sp",
-				"note": null
+				"coin": "sp"
 			},
-			"bulk": "1",
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d4",
-			"damageType": "S",
+			"bulk": 1,
+			"weaponData": {
+				"damage": "1d4",
+				"damageType": "S",
+				"group": "Flail"
+			},
 			"hands": 1,
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Flail",
 			"entries": [
 				"This long strand of thick leather, often braided, delivers a painful but nonlethal slash at a distance, usually accompanied by a distinctive cracking sound."
 			]
@@ -5221,18 +5656,17 @@
 			],
 			"price": {
 				"amount": 5,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
-			"bulk": "1",
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d6",
-			"damageType": "S",
+			"bulk": 1,
+			"weaponData": {
+				"damage": "1d6",
+				"damageType": "S",
+				"group": "Flail"
+			},
 			"hands": 2,
 			"category": "Weapon",
 			"subCategory": "Advanced",
-			"group": "Flail",
 			"entries": [
 				"The whip claw is a long tether affixed to clawlike daggers, allowing the wielder to fling and retract them with deadly precision. Catfolk developed this weapon to provide extended reach when hunting dangerous animals and wield them with unmatched expertise."
 			]
@@ -5252,18 +5686,17 @@
 			],
 			"price": {
 				"amount": 5,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
-			"bulk": "1",
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d6",
-			"damageType": "S",
+			"bulk": 1,
+			"weaponData": {
+				"damage": "1d6",
+				"damageType": "S",
+				"group": "Sword"
+			},
 			"hands": 1,
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Sword",
 			"entries": [
 				"Specialized grooves lined with unique, alchemically treated metals capable of retaining energy score the length of this sword. The first wish blades originated from genie smiths, and the knowledge of these weapons has been passed on to generations of geniekin, earning them the name wish blades."
 			]
@@ -5285,18 +5718,17 @@
 			],
 			"price": {
 				"amount": 2,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": "L",
-			"onset": null,
-			"ammunition": null,
-			"damage": "1d4",
-			"damageType": "P",
+			"weaponData": {
+				"damage": "1d4",
+				"damageType": "P",
+				"group": "Knife"
+			},
 			"hands": 1,
 			"category": "Weapon",
 			"subCategory": "Martial",
-			"group": "Knife",
 			"entries": [
 				"Much like a {@item wish blade|LOAG}, the length of this knife is scored with intricate grooves capable of retaining energy. Wish knives are lighter than their counterparts, making them the weapon of choice for agile combatants."
 			]
@@ -5307,22 +5739,18 @@
 			"page": 277,
 			"equipment": true,
 			"type": "Equipment",
-			"traits": [],
 			"price": {
 				"amount": 1,
-				"coin": "gp",
-				"note": null
+				"coin": "gp"
 			},
 			"bulk": 1,
-			"ac": 2,
-			"shieldStats": {
+			"shieldData": {
 				"hardness": 3,
 				"hp": 12,
+				"ac": 2,
+				"speedPen": 0,
 				"bt": 6
 			},
-			"speedPen": 0,
-			"onset": null,
-			"ammunition": null,
 			"category": "Shield",
 			"entries": [
 				"Though they come in a variety of shapes and sizes, the protection offered by wooden shields comes from the stoutness of their materials. While wooden shields are less expensive than steel shields, they break more easily."

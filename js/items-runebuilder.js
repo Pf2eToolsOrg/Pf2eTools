@@ -115,14 +115,14 @@ class RuneBuilder extends ProxyBase {
 			await ListUtil.pDoSublistAdd(id, true);
 
 			// Remove old item from lists & save
-			const itemListIx = ListUtil.getSublistedIds().find(id => UrlUtil.autoEncodeHash(itemsPage._dataList[id]) === this._state.activeKey);
-			if (itemListIx != null) {
-				await ListUtil.pDoSublistRemove(itemListIx);
-				// FIXME: Degen
-				itemsPage._magicList.removeItem(2618);
-				itemsPage._magicList._isDirty = true;
-				itemsPage._magicList.update();
+			const listItem = itemsPage._list.items.find(li => UrlUtil.autoEncodeHash(itemsPage._dataList[li.ix]) === this._state.activeKey);
+			if (listItem) {
+				const itemIx = listItem.ix;
+				if (ListUtil.getSublistedIds().includes(itemIx)) await ListUtil.pDoSublistRemove(itemIx);
+				itemsPage._list.removeItem(itemIx);
+				itemsPage._list.update();
 			}
+
 			this._state.savedRuneItems = Object.keys(this._state.savedRuneItems).filter(k => k !== this._state.activeKey)
 				.reduce((obj, key) => ({...obj, [key]: this._state.savedRuneItems[key]}), {});
 			const name = this.runeItem.name;
@@ -215,6 +215,7 @@ class RuneBuilder extends ProxyBase {
 		$(`#btn-sublist-add`).toggleClass("hidden", true);
 		$(`#btn-sublist-subtract`).toggleClass("hidden", true);
 		$(`#btn-sublist-other`).toggleClass("hidden", true);
+		$(`#btn-equip-buy`).toggleClass("hidden", true);
 		this.renderItem(this.runeItem);
 	}
 
@@ -231,6 +232,7 @@ class RuneBuilder extends ProxyBase {
 		$(`#btn-sublist-add`).toggleClass("hidden", false);
 		$(`#btn-sublist-subtract`).toggleClass("hidden", false);
 		$(`#btn-sublist-other`).toggleClass("hidden", false);
+		$(`#btn-equip-buy`).toggleClass("hidden", false);
 	}
 
 	async activate () {

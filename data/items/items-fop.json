@@ -1,39 +1,6 @@
 {
 	"item": [
 		{
-			"name": "Alchemical Crossbow",
-			"source": "FoP",
-			"page": 56,
-			"type": "Item",
-			"level": 0,
-			"traits": [
-				"Uncommon",
-				"Alchemical"
-			],
-			"price": {
-				"amount": 25,
-				"coin": "gp",
-				"note": null
-			},
-			"bulk": 1,
-			"onset": null,
-			"ammunition": [
-				"Bolt"
-			],
-			"damage": "1d8",
-			"damageType": "P",
-			"hands": 2,
-			"reload": 1,
-			"range": 120,
-			"category": "Weapon",
-			"subCategory": "Simple",
-			"group": "Bow",
-			"entries": [
-				"This crossbow can deliver alchemically infused bolts. The strange weapon has a metal bracket mounted on the side of the stock near the lath. As an action, you can load a single {@filter lesser alchemical bomb|items||Category=Bomb|Item=Alchemical|Type=Specific Variant|Level=[1;1]} into the bracket; this bomb must be one that deals energy damage (such as an {@item lesser acid flask||acid flask}, {@item lesser alchemist's fire||alchemist's fire}, {@item lesser bottled lightning||bottled lightning}, {@item lesser frost vial||frost vial}, or {@item lesser thunderstone||thunderstone}). The next three attacks made with the crossbow deal {@dice 1d6} damage of the bomb's damage type in addition to the crossbow's normal damage. If the second and third attacks are not all made within 1 minute of the first attack, the bomb's energy is wasted. These attacks never deal splash damage or other special effects of the bomb and are not modified by any abilities that add to or modify a bomb's effect. The addition of the bracket serves to unbalance the weapon, reducing its range to 30 feet.",
-				"It otherwise functions as a {@item crossbow} (when determining damage, reload, and so on). Creatures use their crossbow proficiency when using the alchemical crossbow. The alchemical crossbow costs 25 gp."
-			]
-		},
-		{
 			"name": "Bort's Blessing",
 			"source": "FoP",
 			"page": 58,
@@ -46,16 +13,13 @@
 			],
 			"price": {
 				"coin": "gp",
-				"amount": 160,
-				"note": null
+				"amount": 160
 			},
 			"usage": "worn",
-			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"This ornate copper band has a small ruby set in the center, flanked by a pair of dwarven runes. The wearer of this ring gains the ability to understand, read, and speak one common language of their choice, selected each morning as part of their daily preparations. In addition, the wearer receives a +1 item bonus to {@skill Diplomacy} checks to {@action Make an Impression}."
 			],
-			"generic": false,
 			"consumable": false
 		},
 		{
@@ -79,70 +43,91 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Elixir",
 			"entries": [
 				"When created, this mutagen is attuned to your choice of one of four energy types: acid, cold, electricity, or fire.",
-				"When consumed, the mutagen suffuses your body with energy that spills out of you whenever you attack. At higher levels, it can even grant you the ability to unleash the energy in {@condition controlled} bursts.",
-				"Benefit You gain resistance to the attuned energy type. Whenever you score a hit with a melee weapon, add the listed amount of damage of the attuned energy type.",
-				"Drawback You gain weakness 5 to the other three energy types."
+				"When consumed, the mutagen suffuses your body with energy that spills out of you whenever you attack. At higher levels, it can even grant you the ability to unleash the energy in controlled bursts.",
+				"{@b Benefit} You gain resistance to the attuned energy type. Whenever you score a hit with a melee weapon, add the listed amount of damage of the attuned energy type.",
+				"{@b Drawback} You gain weakness 5 to the other three energy types."
 			],
 			"generic": "G",
+			"_vmod": {
+				"entries": {
+					"mode": "replaceTxt",
+					"replace": "You gain resistance to the attuned energy type. Whenever you score a hit with a melee weapon, add the listed amount of damage of the attuned energy type."
+				},
+				"entriesMode": "generic"
+			},
 			"variants": [
 				{
 					"type": "lesser",
 					"level": 1,
 					"price": {
 						"coin": "gp",
-						"amount": 4,
-						"note": null
+						"amount": 4
 					},
 					"entries": [
 						"You gain resistance 5, add 1 point of damage on a hit with a melee weapon, and the duration is 1 minute."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "For 1 minute after consuming the elixir, you gain resistance 5 to the attuned energy type. Whenever you score a hit with a melee weapon, add 1 point of damage of the attuned energy type."
+						}
+					}
 				},
 				{
 					"type": "moderate",
 					"level": 3,
 					"price": {
 						"coin": "gp",
-						"amount": 12,
-						"note": null
+						"amount": 12
 					},
 					"entries": [
-						"You gain resistance 10, add {@dice 1d4} damage on a hit with a melee weapon, and the duration is 10 minutes."
-					]
+						"You gain resistance 10, add {@damage 1d4} damage on a hit with a melee weapon, and the duration is 10 minutes."
+					],
+					"_mod": {
+						"entries": {
+							"with": "For 10 minutes after consuming the elixir, you gain resistance 10 to the attuned energy type. Whenever you score a hit with a melee weapon, add {@damage 1d4} damage of the attuned energy type."
+						}
+					}
 				},
 				{
 					"type": "greater",
 					"level": 11,
 					"price": {
 						"coin": "gp",
-						"amount": 300,
-						"note": null
+						"amount": 300
 					},
 					"entries": [
-						"You gain resistance 15, add {@dice 1d6} damage on a hit with a melee weapon, and the duration is 1 hour. In addition, you can end the benefits of this mutagen to unleash a 30-foot cone of energy that deals {@dice 2d6} damage of the attuned type for every full 10 minutes of duration remaining (DC 25 basic Reflex save)."
-					]
+						"You gain resistance 15, add {@damage 1d6} damage on a hit with a melee weapon, and the duration is 1 hour. In addition, you can end the benefits of this mutagen to unleash a 30-foot cone of energy that deals {@dice 2d6} damage of the attuned type for every full 10 minutes of duration remaining (DC 25 basic Reflex save)."
+					],
+					"_mod": {
+						"entries": {
+							"with": "For an hour after consuming the elixir, you gain resistance 15 to the attuned energy type. Whenever you score a hit with a melee weapon, add {@damage 1d6} damage of the attuned energy type. In addition, you can end the benefits of this mutagen to unleash a 30-foot cone of energy that deals {@damage 2d6} damage of the attuned type for every full 10 minutes of duration remaining (DC 25 basic Reflex save)."
+						}
+					}
 				},
 				{
 					"type": "major",
 					"level": 17,
 					"price": {
 						"coin": "gp",
-						"amount": 3000,
-						"note": null
+						"amount": 3000
 					},
 					"entries": [
-						"You gain resistance 20, add {@dice 2d6} damage on a hit with a melee weapon, and the duration is 1 hour. In addition, you can end the benefits of this mutagen to unleash a 30-foot cone of energy that deals {@dice 3d6} damage of the attuned type for every full 10 minutes of duration remaining (DC 32 basic Reflex save)."
-					]
+						"You gain resistance 20, add {@damage 2d6} damage on a hit with a melee weapon, and the duration is 1 hour. In addition, you can end the benefits of this mutagen to unleash a 30-foot cone of energy that deals {@dice 3d6} damage of the attuned type for every full 10 minutes of duration remaining (DC 32 basic Reflex save)."
+					],
+					"_mod": {
+						"entries": {
+							"with": "For hour after consuming the elixir, you gain resistance 20 to the attuned energy type. Whenever you score a hit with a melee weapon, add {@damage 2d6} damage of the attuned energy type. In addition, you can end the benefits of this mutagen to unleash a 30-foot cone of energy that deals {@damage 3d6} damage of the attuned type for every full 10 minutes of duration remaining (DC 32 basic Reflex save)."
+						}
+					}
 				}
-			],
-			"consumable": true
+			]
 		},
 		{
 			"name": "Merchant's Guile",
@@ -157,11 +142,9 @@
 			],
 			"price": {
 				"coin": "gp",
-				"amount": 160,
-				"note": null
+				"amount": 160
 			},
 			"usage": "worn",
-			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"The band of this ring is made from bluecolored iron and has two sharp, decorative protrusions on each side of the red-stone inlay. It feels quite heavy and reliable.",
@@ -176,15 +159,11 @@
 						"(envision",
 						"interact)"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You can determine if an item is magical simply by handling it. You detect no other indication of its power, only whether or not it is magical, granting the effects of a 1st-level {@spell detect magic} spell that affects only the object."
 					]
 				}
 			],
-			"generic": false,
 			"consumable": false
 		},
 		{
@@ -201,18 +180,15 @@
 			],
 			"price": {
 				"coin": "gp",
-				"amount": 160,
-				"note": null
+				"amount": 160
 			},
 			"usage": "worn",
-			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"This rose-gold ring is adorned in the center by a somewhat ominous-looking horned skull.",
 				"This ring gives you the power to cast the following innate arcane cantrips any number of times each day: detect magic, mage hand, and prestidigitation. Each is cast as a 1st-level spell.",
 				"If you are an arcane spellcaster, these can instead be heightened to the level of your cantrips."
 			],
-			"generic": false,
 			"consumable": false
 		},
 		{
@@ -228,11 +204,9 @@
 			],
 			"price": {
 				"coin": "gp",
-				"amount": 160,
-				"note": null
+				"amount": 160
 			},
 			"usage": "worn",
-			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"This fanciful golden ring has an ornate band cast with delicate, swirling decorations and is inlaid with three bright-green emeralds. While wearing this ring, you gain a +10-foot item bonus to your Speed, but only when determining your overland movement per hour.",
@@ -246,15 +220,11 @@
 						"(envision",
 						"interact)"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You refresh yourself from fatigue. For 10 minutes, you can ignore the penalties from the {@condition fatigued} condition. This does not remove the condition, it merely suppresses the penalties and drawbacks of having the condition. If something would cause you to become {@condition fatigued} again while the ring's power is in effect, the suppression ends, and you immediately take the penalties again."
 					]
 				}
 			],
-			"generic": false,
 			"consumable": false
 		},
 		{
@@ -270,17 +240,14 @@
 			],
 			"price": {
 				"coin": "gp",
-				"amount": 160,
-				"note": null
+				"amount": 160
 			},
 			"usage": "worn",
-			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"This fairly simple ring has no gemstone inlaid, but the band is cast to resembled a fanged wolf's head. Once per day, during your daily preparations, you can meditate on this ring to grant yourself 5 temporary Hit Points.",
 				"These last until your next daily preparation, as long as you are wearing the ring."
 			],
-			"generic": false,
 			"consumable": false
 		},
 		{
@@ -304,10 +271,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Elixir",
 			"entries": [
@@ -322,8 +288,7 @@
 					"level": 5,
 					"price": {
 						"coin": "gp",
-						"amount": 22,
-						"note": null
+						"amount": 22
 					},
 					"entries": [
 						"You gain resistance 5 to physical damage (except bludgeoning) and the duration is 10 minutes."
@@ -334,8 +299,7 @@
 					"level": 12,
 					"price": {
 						"coin": "gp",
-						"amount": 300,
-						"note": null
+						"amount": 300
 					},
 					"entries": [
 						"You gain resistance 5 to physical damage (except bludgeoning) and the duration is 1 hour."
@@ -346,15 +310,13 @@
 					"level": 15,
 					"price": {
 						"coin": "gp",
-						"amount": 920,
-						"note": null
+						"amount": 920
 					},
 					"entries": [
 						"You gain resistance 10 to physical damage (except bludgeoning) and the duration is 1 hour."
 					]
 				}
-			],
-			"consumable": true
+			]
 		},
 		{
 			"name": "Warrior's Training Ring",
@@ -369,11 +331,9 @@
 			],
 			"price": {
 				"coin": "gp",
-				"amount": 160,
-				"note": null
+				"amount": 160
 			},
 			"usage": "worn",
-			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"This ring is utilitarian in design\u2014indicating its martial use. Its band is decorated only with a simple, sharp-edged sculpture on the band's center. While wearing this ring, you add your level to your attack rolls with all weapons with which you are untrained.",
@@ -391,13 +351,11 @@
 						"freq": 1
 					},
 					"trigger": "You make an attack with a weapon in which you're untrained",
-					"requirements": null,
 					"entries": [
 						"You gain a +2 circumstance bonus to the attack roll. If you are an expert in any weapon, you instead gain a +4 circumstance bonus to the attack roll."
 					]
 				}
 			],
-			"generic": false,
 			"consumable": false
 		}
 	]

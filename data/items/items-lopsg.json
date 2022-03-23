@@ -26,8 +26,7 @@
 					"level": 1,
 					"price": {
 						"coin": "gp",
-						"amount": 4,
-						"note": null
+						"amount": 4
 					},
 					"entries": [
 						"The ampoule deals 1 damage and 1 splash damage."
@@ -43,8 +42,7 @@
 					"level": 3,
 					"price": {
 						"coin": "gp",
-						"amount": 12,
-						"note": null
+						"amount": 12
 					},
 					"entries": [
 						"You gain a +1 item bonus to attack rolls. The bomb deals {@damage 1d4} damage and 2 splash damage."
@@ -60,8 +58,7 @@
 					"level": 11,
 					"price": {
 						"coin": "gp",
-						"amount": 300,
-						"note": null
+						"amount": 300
 					},
 					"entries": [
 						"You gain a +2 item bonus to attack rolls. The bomb deals {@damage 2d4} damage and 3 splash damage."
@@ -77,8 +74,7 @@
 					"level": 17,
 					"price": {
 						"coin": "gp",
-						"amount": 3000,
-						"note": null
+						"amount": 3000
 					},
 					"entries": [
 						"You gain a +3 item bonus to attack rolls. The bomb deals {@damage 3d4} damage and 4 splash damage."
@@ -120,8 +116,7 @@
 					"level": 2,
 					"price": {
 						"coin": "gp",
-						"amount": 30,
-						"note": null
+						"amount": 30
 					},
 					"entries": []
 				},
@@ -130,8 +125,7 @@
 					"level": 3,
 					"price": {
 						"coin": "gp",
-						"amount": 50,
-						"note": null
+						"amount": 50
 					},
 					"entries": [
 						"A mariner's astrolabe contains additional stabilizers that make it suitable for use on moving surfaces, such as the deck of a ship."
@@ -153,8 +147,7 @@
 			],
 			"price": {
 				"coin": "gp",
-				"amount": 101,
-				"note": null
+				"amount": 101
 			},
 			"usage": "held in 2 hands",
 			"bulk": "L",
@@ -162,8 +155,7 @@
 			"entries": [
 				"This small silver tin is filled with a herb-infused salve and a shroud of fine silk fabric.",
 				"The salve smells of lavender and hyssop and is waxy to the touch. The shroud, made of spun silk, can a hold a Medium or smaller creature. If you apply the salve and shroud to a creature that died within the past 3 days, a process which normally takes 1 hour, it slows the decomposition process, allowing a creature to be brought back to life with raise dead up to 1 week after its death."
-			],
-			"generic": false
+			]
 		},
 		{
 			"name": "Bookthief Brew",
@@ -178,16 +170,14 @@
 			],
 			"price": {
 				"coin": "gp",
-				"amount": 3,
-				"note": null
+				"amount": 3
 			},
 			"usage": "held in 1 hand",
 			"bulk": "L",
 			"category": "Consumable",
 			"entries": [
 				"This concoction mixes into a thick, paste-like substance when shaken. When exposed to air, the substance dries after one minute. If poured over a book, scroll, or other material featuring words written in ink, the brew will make an exact copy of the words it is in contact with while it dries, though it doesn't contain any {@trait magical} effect or other special properties of the original words. Once dried, you can remove the dried substance as an {@action Interact} action. A single vial of bookthief brew can coat two pages from a book, a single scroll, or a similar amount of area for other surfaces, producing a dried sheet as thick as a piece of paper. Unfortunately, the sheet's copy is flipped, requiring a mirror to properly read."
-			],
-			"generic": false
+			]
 		},
 		{
 			"name": "Boulderhead Bock",
@@ -203,8 +193,7 @@
 			],
 			"price": {
 				"coin": "gp",
-				"amount": 5,
-				"note": null
+				"amount": 5
 			},
 			"usage": "held in 1 hand",
 			"bulk": "L",
@@ -213,16 +202,14 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Elixir",
 			"entries": [
 				"No one is sure if Gorm brews this malty ale himself, but it seems to be an off-duty favorite of the Grand Archive faction leader. The brew packs a heavy punch, and while Gorm officially discourages drinking on the job, boulderhead bock does makes the drinker more self-assured and protects them from conditions that would addle their mental faculties. For 1 hour, you gain a +1 item bonus to saving throws against effects that would make you {@condition stunned} or {@condition stupefied}. However, you also become less aware of your surroundings, taking a \u20132 item penalty to {@skill Perception} for 1 hour."
-			],
-			"generic": false
+			]
 		},
 		{
 			"name": "Buoyancy Vest",
@@ -233,11 +220,10 @@
 			"traits": [],
 			"price": {
 				"coin": "gp",
-				"amount": 5,
-				"note": null
+				"amount": 5
 			},
 			"bulk": 1,
-			"category": "Gear",
+			"category": "Adventuring Gear",
 			"entries": [
 				"This canvas vest has been filled with cork shavings, tightly folded, and sewn shut. Wearing a buoyancy vest allows you to float in water with a lowered risk of sinking. If you end your turn in water while wearing a buoyancy vest and haven't succeeded at a Swim action that turn, attempt a DC 5 flat check. On a success, you do not sink, though you can still get moved by the current, as determined by the GM. The GM can also determine whether the vest is more or less effective in different weather conditions, raising the DC in rough waters or lowering the DC in calm water."
 			]
@@ -253,15 +239,13 @@
 			],
 			"price": {
 				"coin": "gp",
-				"amount": 42,
-				"note": null
+				"amount": 42
 			},
-			"bulk": "1",
+			"bulk": 1,
 			"category": "no category found",
 			"entries": [
 				"This kit includes a {@item writing set}, a compass, a {@item standard astrolabe|LOPSG}, a {@item ruler|LOPSG}, and a survey map."
-			],
-			"generic": false
+			]
 		},
 		{
 			"name": "Chronicler Wayfinder",
@@ -277,11 +261,9 @@
 			],
 			"price": {
 				"coin": "gp",
-				"amount": 200,
-				"note": null
+				"amount": 200
 			},
 			"usage": "worn",
-			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"Chronicler wayfinders bear a mystical connection to the Pathfinder Chronicles themselves, granting them the ability to assist in situations where unusual lore is needed by drawing on lore from a particular topic. Each chronicler wayfinder is attuned to a specific {@skill Lore} skill, chosen at the time of creation. In addition to the effects of a wayfinder (Core Rulebook 617), a chronicler wayfinder has the following activation.",
@@ -295,15 +277,11 @@
 					"components": [
 						"envision"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You tap into the Pathfinder Chronicles on the chronicler wayfinder's attuned topic, gaining the effects of a {@action Recall Knowledge} action with the chosen {@skill Lore} skill. For the {@skill Lore} check's modifier, use whichever is better of +12 or your own modifier, using your level as your proficiency bonus even if you're untrained in the attuned {@skill Lore} skill."
 					]
 				}
-			],
-			"generic": false
+			]
 		},
 		{
 			"name": "Clockwork Dial",
@@ -316,11 +294,10 @@
 			],
 			"price": {
 				"coin": "gp",
-				"amount": 20,
-				"note": null
+				"amount": 20
 			},
 			"hands": 1,
-			"category": "Gear",
+			"category": "Adventuring Gear",
 			"entries": [
 				"This small timepiece allows you to accurately track time, useful for coordinating attacks, cooking, and all other sorts of activities, without the steadiness or care necessary to use an hourglass. As always, spell durations are too inexact to be reliably tracked, as they don't last precisely the duration listed. Protected within a brass or steel case, the clockwork mechanism of this device is turned using a small key. Most dials have a maximum duration of 1 hour, with each turn of the key adding 10 minutes to the timer, though some are crafted with longer or shorter durations and intervals. Setting the timer requires one free hand and an {@action Interact} action."
 			]
@@ -336,12 +313,11 @@
 			],
 			"price": {
 				"coin": "gp",
-				"amount": 3,
-				"note": null
+				"amount": 3
 			},
 			"bulk": 1,
 			"hands": 2,
-			"category": "Gear",
+			"category": "Adventuring Gear",
 			"entries": [
 				"This portable winch consists of a length of cable or chain, two hooks, and a ratcheting drum with a handle. When used with two sections of rope or chain, it allows you to pull a heavy load along a flat surface."
 			]
@@ -357,17 +333,14 @@
 			],
 			"price": {
 				"coin": "gp",
-				"amount": 10,
-				"note": null
+				"amount": 10
 			},
 			"usage": "worn",
-			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"This simple brass ring is meant to be worn as an ornamentation piece to an outfit, oftentimes as a bangle on the wrist, as the ring closure of a scarf or sash, or as an ornamentation piece of a headdress. While decorative, this serves a cover for the bangle's function as a message bearer. Messages can be coded into the bangle, either through a series of raised dots and dashes or a pattern of notches of different depths and spacings. A bangle is large enough to hold a simple message consisting of a few words like \"Danger. Flee.\" or \"Meeting. Sunset. Fountain.\" Coding a message into a bangle requires 1 minute of time. All Pathfinders with access to communication bangles are taught how to code and read most basic messages, but anyone with a bangle can develop their own communication system.",
 				"A creature inspecting a bangle can discover its true purpose by succeeding at a DC 20 {@skill Perception} check. Deciphering a message requires a creature to succeed at a {@skill Society} check against the coder's {@skill Deception} DC."
-			],
-			"generic": false
+			]
 		},
 		{
 			"name": "Cordelia's Construct Key",
@@ -383,7 +356,6 @@
 				"Transmutation"
 			],
 			"usage": "worn",
-			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"Worn on a necklace, this intricate key grants you greater facility with constructs. The key alerts you to constructs lurking around you. Whether or not you are Investigating, the GM automatically rolls secret {@action Recall Knowledge} checks for you when you see a construct pretending to be a normal object, statue, or the like. Typically, this check is {@skill Arcana}, {@skill Crafting}, or an appropriate {@skill Lore} skill. On a success, you recognize the presence of the construct and gain the usual benefits of {@action Recall Knowledge}.",
@@ -403,8 +375,6 @@
 						"unit": "hour",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You turn the key in the air and create a magic glyph.",
 						"The key casts 3rd-level {@spell summon construct}."
@@ -427,8 +397,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You place the key on a Small object and turn it, creating a simple animated object for 1 hour. The animated object has the statistics of an animated broom (Pathfinder Bestiary 20) but has no bristles {@action Strike} and can't attack. It performs simple and broad menial tasks for you in exploration or downtime but is too slow to react to individual commands to assist you in a combat encounter."
 					]
@@ -441,8 +409,7 @@
 					"level": 8,
 					"price": {
 						"coin": "gp",
-						"amount": 450,
-						"note": null
+						"amount": 450
 					},
 					"entries": []
 				},
@@ -451,8 +418,7 @@
 					"level": 12,
 					"price": {
 						"coin": "gp",
-						"amount": 1750,
-						"note": null
+						"amount": 1750
 					},
 					"entries": [
 						"A greater key allows you to fully comprehend and thus partially bypass a construct's resistances. You ignore the first 5 resistance a construct has against your damaging effects, whether martial or magical. Additionally, the key's first activation casts a 5th-level {@spell summon construct}, and its second activation lasts 8 hours."
@@ -473,8 +439,7 @@
 			],
 			"price": {
 				"coin": "gp",
-				"amount": 140,
-				"note": null
+				"amount": 140
 			},
 			"usage": "etched on a slashing or piercing weapon",
 			"category": "Rune",
@@ -495,15 +460,13 @@
 						"unit": "minute",
 						"freq": 1
 					},
-					"trigger": null,
 					"requirements": "On your previous action this turn, you used this weapon to hit and damage a creature that has blood or other vital fluids",
 					"entries": [
 						"You learn the secrets the weapon gleaned from the creature's blood. Attempt to {@action Recall Knowledge} about the target of the required attack, gaining an item bonus to the {@action Recall Knowledge} skill check equal to the weapon's item bonus to attack rolls from its potency rune.",
 						"If the required attack was a critical hit, you also gain a +2 circumstance bonus to this check."
 					]
 				}
-			],
-			"generic": false
+			]
 		},
 		{
 			"name": "Depth Gauge",
@@ -516,12 +479,11 @@
 			],
 			"price": {
 				"coin": "gp",
-				"amount": 1,
-				"note": null
+				"amount": 1
 			},
 			"bulk": "L",
 			"hands": 2,
-			"category": "Gear",
+			"category": "Adventuring Gear",
 			"entries": [
 				"This simple tool consists of a small iron weight attached to a thin rope that is marked at regular intervals (typically every foot). It can be used to measure the depth of a hole or body of water by dropping the weight down into unknown depths and counting the markings on the rope. It can also be used as a plumb bob."
 			]
@@ -539,16 +501,14 @@
 			],
 			"price": {
 				"coin": "gp",
-				"amount": 650,
-				"note": null
+				"amount": 650
 			},
 			"usage": "worn",
 			"bulk": "\u2013",
 			"category": "Worn",
 			"entries": [
 				"The diviner's nose chain is worn by attaching piercings to the ear and nose, creating a connection between the senses of hearing and smell. The diviner's nose chain grants you {@ability scent} out to 30 feet as an imprecise sense, and a +1 item bonus to checks to {@action Seek} or {@action Sense Motive}."
-			],
-			"generic": false
+			]
 		},
 		{
 			"name": "Earplugs",
@@ -558,10 +518,9 @@
 			"type": "Item",
 			"price": {
 				"coin": "cp",
-				"amount": 1,
-				"note": null
+				"amount": 1
 			},
-			"category": "Gear",
+			"category": "Adventuring Gear",
 			"entries": [
 				"Made of waxed cotton or cork, earplugs give you a +1 item bonus to saves against effects with the {@trait auditory} trait. The earplugs make it difficult to hear, however, imposing a \u20132 item penalty on {@skill Perception} checks involving sound. Inserting or removing the earplugs requires an {@action Interact} action."
 			]
@@ -579,7 +538,6 @@
 				"Magical"
 			],
 			"usage": "worn",
-			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"Pathfinder Society researchers recently created elemental wayfinders with the assistance of the Society's elemental allies. In addition to the effects of a {@item wayfinder}, these wayfinders each grant the ability to cast a particular elemental spell once per day, and can assist Pathfinders in exploring areas associated with their element. Each has the trait associated with its element.",
@@ -593,9 +551,6 @@
 					"components": [
 						"command"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"The wayfinder casts its associated spell."
 					]
@@ -611,8 +566,7 @@
 					],
 					"price": {
 						"coin": "gp",
-						"amount": 650,
-						"note": null
+						"amount": 650
 					},
 					"entries": [
 						"The wayfinder can cast 4th-level {@spell lightning bolt}. Additionally, you can cast {@spell feather fall} as a primal innate spell once every 10 minutes."
@@ -626,8 +580,7 @@
 					],
 					"price": {
 						"coin": "gp",
-						"amount": 600,
-						"note": null
+						"amount": 600
 					},
 					"entries": [
 						"The wayfinder can cast 4th-level {@spell stoneskin}. Additionally, you dig twice as quickly as normal."
@@ -641,8 +594,7 @@
 					],
 					"price": {
 						"coin": "gp",
-						"amount": 700,
-						"note": null
+						"amount": 700
 					},
 					"entries": [
 						"The wayfinder can cast 4th-level {@spell fireball}. Additionally, you gain resistance 5 to fire."
@@ -656,8 +608,7 @@
 					],
 					"price": {
 						"coin": "gp",
-						"amount": 900,
-						"note": null
+						"amount": 900
 					},
 					"entries": [
 						"The wayfinder can cast 4th-level {@spell hydraulic torrent}.",
@@ -681,8 +632,7 @@
 			],
 			"price": {
 				"coin": "gp",
-				"amount": 3,
-				"note": null
+				"amount": 3
 			},
 			"usage": "affixed to armor",
 			"bulk": "\u2013",
@@ -691,18 +641,17 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "envision",
-				"requirements": "You're trained in {@skill Deception}.",
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"envision"
+				],
+				"requirements": "You're trained in {@skill Deception}."
 			},
 			"category": "Talisman",
 			"entries": [
 				"In Woodsedge Lodge, this thin red ribbon, typically worn around the neck, symbolizes the reach of Galt's soul-trapping guillotines, the infamous final blades. Each of these talismans stores a specific disguise, chosen at the time of its creation. When activated, the talisman applies a disguise to its wearer, allowing them to {@action Impersonate} without taking the time to assemble a convincing disguise first. The components the disguise creates can appear to be worth up to 3 gp total.",
 				"The instant nature of the disguise leaves a few traces of its haphazard nature, imposing a \u20132 circumstance penalty on checks to {@action Impersonate} using the disguise.",
 				"Wearers with the Quick Disguise feat don't take this penalty. Any objects created as a part of the disguise disappear after 24 hours or after you remove them."
-			],
-			"generic": false
+			]
 		},
 		{
 			"name": "Everyneed Pack",
@@ -717,7 +666,6 @@
 				"Magical"
 			],
 			"usage": "worn on belt",
-			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"Constructed of green material and decorated with a white Glyph of the Open Road, a dozen or more small pockets line the inside of this pack. The pack is enchanted so that each pocket contains common, mundane gear, each item worth no more than 1 gp, such as chalk, flint and steel, and string. It doesn't contain any armor, shields, weapons, or items made of any kind of precious material. Keep track of the exact value of the gear you retrieve from the pack. The pack empties after 8 gp worth of items of your choice are removed, after which it becomes a mundane backpack.",
@@ -736,8 +684,6 @@
 						"unit": "hour",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You draw any number of pieces of mundane gear from the pack with a combined value of 1 gp or less."
 					]
@@ -750,8 +696,7 @@
 					"level": 3,
 					"price": {
 						"coin": "gp",
-						"amount": 20,
-						"note": null
+						"amount": 20
 					},
 					"entries": []
 				},
@@ -760,8 +705,7 @@
 					"level": 7,
 					"price": {
 						"coin": "gp",
-						"amount": 100,
-						"note": null
+						"amount": 100
 					},
 					"entries": [
 						"The pack's pocket contain mundane gear worth no more than 5 gp each. You can draw any number of pieces of mundane gear from the pack with a combined value of 5 gp or less, and the pack empties after 45 gp worth of items are removed."
@@ -780,11 +724,10 @@
 			],
 			"price": {
 				"coin": "gp",
-				"amount": 10,
-				"note": null
+				"amount": 10
 			},
 			"hands": 2,
-			"category": "Gear",
+			"category": "Adventuring Gear",
 			"entries": [
 				"These manacles are nearly indistinguishable from real manacles upon inspection, but contain a hidden release that enables a wearer who knows the location of the release to free themselves with a single {@action Interact} action. An observer who examines the manacles and succeeds at a DC 20 {@skill Perception} check notices their false nature. On a critical success, the observer finds the location of the hidden catch as well."
 			]
@@ -800,11 +743,10 @@
 			],
 			"price": {
 				"coin": "gp",
-				"amount": 5,
-				"note": null
+				"amount": 5
 			},
 			"bulk": 1,
-			"category": "Gear",
+			"category": "Adventuring Gear",
 			"entries": [
 				"This armored case is made to protect any Tiny or smaller creature contained within. It includes air holes (which can be plugged with cork stoppers for underwater travel) and two receptacles for food and water. Any creature inside has neither line of sight nor line of effect to the outside world but also cannot be targeted by attacks that require a line of effect while in the satchel. However, an area effect that deals enough damage to break the case also damages the creature inside. The satchel is made of leather (Hardness 4, HP 16, BT 8). A creature can enter or exit the satchel by using a total of 2 actions: an {@action Interact} action to open the satchel and a single action with the {@trait move} trait to enter or exit."
 			]
@@ -823,11 +765,9 @@
 			],
 			"price": {
 				"coin": "gp",
-				"amount": 50,
-				"note": null
+				"amount": 50
 			},
 			"usage": "worn",
-			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"Fashionable wayfinders allow you to be dressed for success in almost any situation. In addition to the effects of a wayfinder (Core Rulebook 617), a fashionable wayfinder can attune to up to three sets of mundane clothing in your possession during your daily preparations. A fashionable wayfinder has the following activation.",
@@ -841,15 +781,11 @@
 					"components": [
 						"envision"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You call one of the attuned sets of clothing onto yourself, changing clothes instantly and leaving you either holding the old set of clothing or with the old set folded neatly on the floor if you don't have a free hand to hold it. This activation can't change you into or out of a suit of armor of any kind. While the activation can transport the chosen attuned set of clothing onto you from up to 60 feet away, it can't transport any other creatures or items that might have been stored in the clothing."
 					]
 				}
-			],
-			"generic": false
+			]
 		},
 		{
 			"name": "Ganjay Book",
@@ -864,16 +800,14 @@
 			],
 			"price": {
 				"coin": "gp",
-				"amount": 10,
-				"note": null
+				"amount": 10
 			},
 			"bulk": "L or \u2014",
 			"category": "no category found",
 			"entries": [
 				"This item is a formula book, religious text, or spellbook that has been creased\u2014possibly by Princess Ganjay herself\u2014to fold up into an impossibly small shape. When folded up, the book can't be read or used, but its Bulk is reduced by 1 (a book that is 1 Bulk becomes light Bulk, and a book that is light Bulk becomes negligible in weight)",
 				"Activate 1 minute ({@action Interact}) You fold or unfold the Ganjay book, manipulating the cunning creases."
-			],
-			"generic": false
+			]
 		},
 		{
 			"name": "Glass Cutter",
@@ -886,12 +820,11 @@
 			],
 			"price": {
 				"coin": "gp",
-				"amount": 5,
-				"note": null
+				"amount": 5
 			},
 			"bulk": "L",
 			"hands": 2,
-			"category": "Gear",
+			"category": "Adventuring Gear",
 			"entries": [
 				"This small rod has a tiny, sharp cutting wheel made of steel on one end and a thick bulb on the other. You can use the glass cutter's wheel to score ordinary glass and use the bulb to break the piece along your scoring. It typically takes 1 minute of work to cut a hole large enough to fit your hand. If you are attempting to break the glass quietly, you must attempt a {@skill Thievery} check against the {@skill Perception} DC of nearby creatures to go unnoticed."
 			]
@@ -907,8 +840,7 @@
 			],
 			"price": {
 				"coin": "sp",
-				"amount": 2,
-				"note": null
+				"amount": 2
 			},
 			"bulk": "L",
 			"ammunition": [
@@ -931,8 +863,7 @@
 			],
 			"price": {
 				"coin": "sp",
-				"amount": 2,
-				"note": null
+				"amount": 2
 			},
 			"bulk": "L",
 			"ammunition": [
@@ -960,11 +891,9 @@
 			],
 			"price": {
 				"coin": "gp",
-				"amount": 2750,
-				"note": null
+				"amount": 2750
 			},
 			"usage": "worn",
-			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"Homeward wayfinders are powerful escape tools in the hands of a Pathfinder agent, drawing upon a special connection to the Maze of the Open Road. In addition to the effects of a wayfinder (Core Rulebook 617), a homeward wayfinder attunes itself to the most recent Pathfinder Lodge you've visited and has the following activation.",
@@ -983,14 +912,11 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You teleport back to the attuned Pathfinder Lodge, as long as you are no more than 100 miles away. This {@trait teleportation} effect fails if you would bring another creature with you, even if you're carrying it in an extradimensional space."
 					]
 				}
-			],
-			"generic": false
+			]
 		},
 		{
 			"name": "Hummingbird Wayfinder",
@@ -1007,11 +933,9 @@
 			],
 			"price": {
 				"coin": "gp",
-				"amount": 1750,
-				"note": null
+				"amount": 1750
 			},
 			"usage": "worn",
-			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"Hummingbird wayfinders blend a few Arcadian secrets into the original wayfinder design, allowing the wayfinder to gain mobility for a time and act as a spy. In addition to the effects of a wayfinder (Core Rulebook 617), a hummingbird wayfinder has the following activation.",
@@ -1030,14 +954,11 @@
 						"unit": "hour",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You cause the wayfinder to transform into a Tiny bee hummingbird, only 2 inches long. Other than the wayfinder being a visible bird, this has the effects of prying eye. In addition to Seeking through the hummingbird, you can activate any aeon stone within the wayfinder as if the wayfinder were still on your person. When the effect ends, the wayfinder transforms back to normal in its current position. Damaging the bird ends the effect but does not destroy the wayfinder."
 					]
 				}
-			],
-			"generic": false
+			]
 		},
 		{
 			"name": "Marked Playing Cards",
@@ -1047,11 +968,10 @@
 			"type": "Item",
 			"price": {
 				"coin": "gp",
-				"amount": 1,
-				"note": null
+				"amount": 1
 			},
 			"hands": 2,
-			"category": "Gear",
+			"category": "Adventuring Gear",
 			"entries": [
 				"A deck of marked playing cards appears to be an ordinary deck upon initial inspection but bears specific folds, colors, scratches, or other markings on each card that allow an informed user to know what's on the other side of a card. A deck of marked cards grants you a +1 item bonus to {@skill Games Lore} checks or other relevant checks to gamble with the cards. You can determine that an unattended deck of cards is marked with a successful DC 20 Perception check. Determining that a deck is marked during play is more difficult and is typically determined by a {@skill Perception} check against the dealer's {@skill Lore||Games Lore} or {@skill Thievery} DC."
 			]
@@ -1074,10 +994,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Consumable",
 			"entries": [
@@ -1090,8 +1009,7 @@
 					"level": 3,
 					"price": {
 						"coin": "gp",
-						"amount": 11,
-						"note": null
+						"amount": 11
 					},
 					"entries": [
 						"The radius of the burst is 5 feet."
@@ -1107,8 +1025,7 @@
 					"level": 8,
 					"price": {
 						"coin": "gp",
-						"amount": 90,
-						"note": null
+						"amount": 90
 					},
 					"entries": [
 						"The radius of the burst is 10 feet."
@@ -1124,8 +1041,7 @@
 					"level": 13,
 					"price": {
 						"coin": "gp",
-						"amount": 500,
-						"note": null
+						"amount": 500
 					},
 					"entries": [
 						"The radius of the burst is 15 feet."
@@ -1153,11 +1069,10 @@
 			"type": "Item",
 			"price": {
 				"coin": "sp",
-				"amount": 5,
-				"note": null
+				"amount": 5
 			},
 			"hands": 2,
-			"category": "Gear",
+			"category": "Adventuring Gear",
 			"entries": [
 				"A standard deck of cards consists of 54 cards made from thick paper contained within a paper sleeve. The most common deck used for games and gambling is known as the Old Mage deck and features four suits themed with the four essences of magic, each with 13 cards, as well as two wildcards. The name and appearance of the deck varies from region to region, such as the Magician's Deck in Taldor or the Deck of Masks in the Shackles."
 			]
@@ -1173,8 +1088,7 @@
 			],
 			"price": {
 				"coin": "gp",
-				"amount": 10,
-				"note": null
+				"amount": 10
 			},
 			"usage": "worn",
 			"bulk": "L",
@@ -1182,8 +1096,7 @@
 			"entries": [
 				"This set of reflective metal wires takes 10 minutes to properly tie along the wrist's energy meridians, then repels attempts at mental manipulation. You gain a +2 item bonus to your next save against a {@trait mental} effect after tying on the bracelet. After this save, the metal strands tarnish and fall off (possibly alerting the wearer or others that their mind has been tampered with)",
 				"You can remove the bracelet with an {@action Interact} action, but doing so breaks the bracelet's alignment and requires you to spend another 10 minutes to carefully tie it back on."
-			],
-			"generic": false
+			]
 		},
 		{
 			"name": "Quickpatch Glue",
@@ -1198,8 +1111,7 @@
 			],
 			"price": {
 				"coin": "gp",
-				"amount": 10,
-				"note": null
+				"amount": 10
 			},
 			"usage": "held in 1 hand",
 			"bulk": "L",
@@ -1208,8 +1120,7 @@
 				"Quickpatch glue is a fast-setting adhesive designed for rapid but temporary repairs.",
 				"When applied to a {@condition broken} item, the glue adheres the item's pieces back together.",
 				"This does not restore the item's hit points, but it allows the item to be used for its normal function and removes the {@condition broken} condition. The glue is fragile and degrades over time. An item repaired by quickpatch glue regains the {@condition broken} condition after it takes damage or 1 hour passes (whichever comes first). In order to apply a new vial of quickpatch glue to or repair the item, the item's holder must first remove the glue residue, a process that requires 10 minutes of effort and a set of alchemist's tools."
-			],
-			"generic": false
+			]
 		},
 		{
 			"name": "Quill Of Passage",
@@ -1224,11 +1135,9 @@
 			],
 			"price": {
 				"coin": "gp",
-				"amount": 1200,
-				"note": null
+				"amount": 1200
 			},
 			"usage": "held in one hand",
-			"bulk": "\u2014",
 			"category": "Held",
 			"entries": [
 				"This black-feathered quill has a glowing nib with a small amount of glowing ink inside it.",
@@ -1247,14 +1156,11 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"Placing the tip of the quill against a wall of wood, plaster, or stone and speaking a command word causes the ink to flow from the nib onto the wall in the shape of a glowing doorway, casting passwall on the touched surface."
 					]
 				}
-			],
-			"generic": false
+			]
 		},
 		{
 			"name": "Razmiri Wayfinder",
@@ -1270,8 +1176,7 @@
 			],
 			"price": {
 				"coin": "gp",
-				"amount": 900,
-				"note": null
+				"amount": 900
 			},
 			"usage": "worn",
 			"bulk": "\u2013",
@@ -1292,8 +1197,6 @@
 						"unit": "day",
 						"freq": 3
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You touch an adjacent creature, granting them {@dice 3d8} temporary Hit Points for 1 hour."
 					]
@@ -1312,14 +1215,11 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You touch an adjacent creature and attempt a counteract check against one poison or disease afflicting the creature. On a success, you halt the effects of the poison or disease for 1 day, rather than removing it. This temporarily relieves any penalties imposed by the affliction but doesn't cure the effect or count against its duration; the poison or disease is merely halted for a time, and it resumes where it left off once this effect ends."
 					]
 				}
-			],
-			"generic": false
+			]
 		},
 		{
 			"name": "Replacement Filter",
@@ -1330,7 +1230,7 @@
 			"traits": [
 				"Uncommon"
 			],
-			"category": "Gear",
+			"category": "Adventuring Gear",
 			"entries": [
 				"{@note See {@item Water Purifier} for information.}"
 			],
@@ -1385,12 +1285,11 @@
 			],
 			"price": {
 				"coin": "gp",
-				"amount": 1,
-				"note": null
+				"amount": 1
 			},
 			"bulk": 1,
 			"hands": 2,
-			"category": "Gear",
+			"category": "Adventuring Gear",
 			"entries": [
 				"By using a rubbing set, you can quickly make a copy of carvings or etchings you find during your explorations, making them easier to accurately reproduce. This kit consists of a roll of thin onion-skin paper in a waterproof leather case, several thick wax crayons, and a bar of sealing wax that can be melted and used to temporarily hold the paper in place while you take the rubbing. Using the kit consumes the materials and provides a +1 item bonus on checks to document or reproduce artwork or writing that has been carved, etched, or otherwise physically added to a surface."
 			]
@@ -1405,22 +1304,14 @@
 			"traits": [],
 			"price": {
 				"coin": "sp",
-				"amount": 5,
-				"note": null
+				"amount": 5
 			},
 			"usage": "held in 1 hand",
 			"bulk": "\u2014",
-			"shieldStats": null,
-			"activate": null,
-			"onset": null,
-			"ammunition": null,
 			"category": "Held",
-			"appliesTo": null,
 			"entries": [
 				"A ruler is a straight-edged object used for measuring small distances accurately and drawing straight lines."
 			],
-			"craftReq": null,
-			"generic": false,
 			"variants": null
 		},
 		{
@@ -1448,8 +1339,7 @@
 					"level": 4,
 					"price": {
 						"coin": "gp",
-						"amount": 75,
-						"note": null
+						"amount": 75
 					},
 					"entries": []
 				},
@@ -1458,8 +1348,7 @@
 					"level": 7,
 					"price": {
 						"coin": "gp",
-						"amount": 300,
-						"note": null
+						"amount": 300
 					},
 					"entries": []
 				},
@@ -1468,8 +1357,7 @@
 					"level": 11,
 					"price": {
 						"coin": "gp",
-						"amount": 1250,
-						"note": null
+						"amount": 1250
 					},
 					"entries": []
 				},
@@ -1478,8 +1366,7 @@
 					"level": 14,
 					"price": {
 						"coin": "gp",
-						"amount": 3750,
-						"note": null
+						"amount": 3750
 					},
 					"entries": []
 				}
@@ -1496,10 +1383,9 @@
 			],
 			"price": {
 				"coin": "sp",
-				"amount": 1,
-				"note": null
+				"amount": 1
 			},
-			"category": "Gear",
+			"category": "Adventuring Gear",
 			"entries": [
 				"This carefully balanced metal bracket can be attached to the front or top of a shield or {@item tower shield} (but not a {@item buckler}), allowing you to carry a {@item torch} without giving up your shield or holding it in your other hand. While carrying a {@item torch} in this way, you must attempt a DC {@flatDC 11} flat check every time you use the {@action Shield Block} reaction; on a failure, the {@item torch} is extinguished."
 			]
@@ -1512,11 +1398,10 @@
 			"type": "Item",
 			"price": {
 				"coin": "gp",
-				"amount": 10,
-				"note": null
+				"amount": 10
 			},
 			"bulk": 1,
-			"category": "Gear",
+			"category": "Adventuring Gear",
 			"entries": [
 				"These specialized pieces of footwear are designed to distribute the wearer's weight over a larger area to prevent them from sinking while walking on snow. They are typically made with a wood frame and rawhide lacings that are tied over the wearer's other footwear. While wearing snowshoes, you ignore the effects of non-magical difficult terrain caused by snow (reducing greater difficult terrain from snow to ordinary difficult terrain). You take a \u201310-foot item penalty to your Speed if wearing snowshoes while walking on any surface other than snow."
 			]
@@ -1534,16 +1419,14 @@
 			],
 			"price": {
 				"coin": "gp",
-				"amount": 550,
-				"note": null
+				"amount": 550
 			},
 			"usage": "worn",
 			"bulk": "\u2013",
 			"category": "Worn",
 			"entries": [
 				"These magically enhanced snowshoes are practically a necessity when traversing the gelid tundra and snow-drenched taiga of the Saga Lands. The snowshoes of the long trek allow their wearer to walk across ice and snow with the same surety as dry earth, ignoring the uneven ground and {@quickref difficult terrain||3|terrain} caused by ice and the {@quickref difficult terrain||3|terrain} caused by snow (reducing {@quickref greater difficult terrain||3|terrain} from ice or snow to ordinary {@quickref difficult terrain||3|terrain}). In addition, a character wearing snowshoes of the long trek gains a +5-foot status bonus to their Speed while moving across snow or ice and is never at risk of breaking through naturally-occurring loose or soft snow."
-			],
-			"generic": false
+			]
 		},
 		{
 			"name": "Spectacles Of Understanding",
@@ -1558,7 +1441,6 @@
 				"Magical"
 			],
 			"usage": "worn",
-			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"These folding, wood-framed spectacles hold flat discs of cut crystal as lenses and are held in place with thin cords that wrap around each ear, with another strap holding them around the neck while not in use. While you are wearing the spectacles, you gain a +1 item bonus to checks to {@action Decipher Writing}.",
@@ -1576,8 +1458,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"Unfolding the spectacles onto the bridge of the nose, you gain the effects of 2nd-level {@spell comprehend language} for one hour except that it applies to all languages you see rather than a single language, and it does not apply to language you hear."
 					]
@@ -1590,8 +1470,7 @@
 					"level": 5,
 					"price": {
 						"coin": "gp",
-						"amount": 130,
-						"note": null
+						"amount": 130
 					},
 					"entries": []
 				},
@@ -1600,8 +1479,7 @@
 					"level": 11,
 					"price": {
 						"coin": "gp",
-						"amount": 1200,
-						"note": null
+						"amount": 1200
 					},
 					"entries": [
 						"The item bonus is +2, and the ability to comprehend writing from comprehend language lasts until you fold up the spectacles or the item is no longer invested by you, whichever comes first, rather than lasting 1 hour."
@@ -1620,16 +1498,14 @@
 			],
 			"price": {
 				"coin": "gp",
-				"amount": 30,
-				"note": null
+				"amount": 30
 			},
 			"usage": "worn",
-			"bulk": "1",
+			"bulk": 1,
 			"category": "Worn",
 			"entries": [
 				"This heavy backpack of alchemically treated cloth layered over a metal mesh protects its contents from water damage and other harmful effects. It holds up to 4 Bulk of items, and the first 2 Bulk contained within the sturdy satchel do not count against your Bulk limits. The bag has Hardness 5 and 20 Hit Points. As long as the bag remains closed and is not {@condition broken}, water and other liquids can't seep into it."
-			],
-			"generic": false
+			]
 		},
 		{
 			"name": "Talisman Cord",
@@ -1644,7 +1520,6 @@
 				"Magical"
 			],
 			"usage": "worn",
-			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"This thin leather cord bears delicate runic markings and threads through an item that can bear affixed talismans.",
@@ -1657,8 +1532,7 @@
 					"level": 4,
 					"price": {
 						"coin": "gp",
-						"amount": 85,
-						"note": null
+						"amount": 85
 					},
 					"entries": []
 				},
@@ -1667,8 +1541,7 @@
 					"level": 10,
 					"price": {
 						"coin": "gp",
-						"amount": 850,
-						"note": null
+						"amount": 850
 					},
 					"entries": [
 						"This cord is attuned to two schools of magic, and since it's higher level, it can hold higher-level talismans."
@@ -1679,8 +1552,7 @@
 					"level": 16,
 					"price": {
 						"coin": "gp",
-						"amount": 8500,
-						"note": null
+						"amount": 8500
 					},
 					"entries": [
 						"The cord is attuned to three schools of magic, and since it's higher level, it can hold higher-level talismans."
@@ -1706,10 +1578,9 @@
 					"number": 3,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Consumable",
 			"entries": [
@@ -1732,8 +1603,7 @@
 					"level": 3,
 					"price": {
 						"coin": "gp",
-						"amount": 8,
-						"note": null
+						"amount": 8
 					},
 					"entries": [
 						"You gain a +1 item bonus and the save DC is 17."
@@ -1750,8 +1620,7 @@
 					"level": 8,
 					"price": {
 						"coin": "gp",
-						"amount": 75,
-						"note": null
+						"amount": 75
 					},
 					"entries": [
 						"You gain a +2 item bonus and the save DC is 24."
@@ -1767,8 +1636,7 @@
 					"level": 12,
 					"price": {
 						"coin": "gp",
-						"amount": 315,
-						"note": null
+						"amount": 315
 					},
 					"entries": [
 						"You gain a +3 item bonus and the save DC is 29."
@@ -1784,8 +1652,7 @@
 					"level": 16,
 					"price": {
 						"coin": "gp",
-						"amount": 1350,
-						"note": null
+						"amount": 1350
 					},
 					"entries": [
 						"You gain a +4 item bonus and the save DC is 35."
@@ -1816,12 +1683,11 @@
 			],
 			"price": {
 				"coin": "gp",
-				"amount": 5,
-				"note": null
+				"amount": 5
 			},
 			"bulk": "L",
 			"hands": 2,
-			"category": "Gear",
+			"category": "Adventuring Gear",
 			"entries": [
 				"This small tube of metal and glass has an opening at one end into which water can be poured, leading to a series of interconnected chambers filled with purifying agents contained between various perforated walls. The purifier attempts to counteract poisons and other toxins present in water or any other liquid poured into it. Alchemically-treated replacement filters can be purchased to more effectively filter out more dangerous substances, using the filter's listed level as the counteract level. The counteract modifier is +5 for the {@item replacement filter (level 1)|lopsg|level 1 filter}, +9 for the {@item replacement filter (level 5)|lopsg|level 5 filter}, and +17 for the {@item replacement filter (level 10)|lopsg|level 10 filter}. If you pour a liquid other than water, such as a potion or beverage, into the purifier, the filtration process negates the liquid's effects and ruins the taste. The center of the tube can be unscrewed from the ends to access and replace the chambers of purifying agents. Each filter can be used to cleanse up to 10 gallons of water at a rate of about 1 gallon every 20 minutes."
 			]
@@ -1837,15 +1703,13 @@
 			],
 			"price": {
 				"coin": "gp",
-				"amount": 5,
-				"note": null
+				"amount": 5
 			},
-			"bulk": "1",
+			"bulk": 1,
 			"category": "no category found",
 			"entries": [
 				"This leather-bound tome is specially treated to protect from water damage and comes with a key and a treated slipcase that bears a simple lock to keep the tome secure. This journal is commonly used by adventuring scholars and ship navigators for recording their journeys."
-			],
-			"generic": false
+			]
 		},
 		{
 			"name": "Wax Key Blank",
@@ -1858,11 +1722,10 @@
 			],
 			"price": {
 				"coin": "gp",
-				"amount": 1,
-				"note": null
+				"amount": 1
 			},
 			"hands": 2,
-			"category": "Gear",
+			"category": "Adventuring Gear",
 			"entries": [
 				"This small wooden or metal box is slightly larger than a typical large key and folds open along a hinge, revealing two halves filled with wax. When a key is placed within and the box closed, the wax is displaced by the key, leaving an accurate impression of its shape. Once the key is removed, the impression left behind will remain indefinitely and can later be used to cast a duplicate key. Inserting, impressing, or removing a key each requires an {@action Interact} action. The wax inside this blank can be reused, though it must be smoothed over between uses, erasing any previous impression."
 			]
@@ -1878,16 +1741,13 @@
 			],
 			"price": {
 				"coin": "gp",
-				"amount": 5,
-				"note": null
+				"amount": 5
 			},
 			"usage": "held in 1 hand",
-			"bulk": "\u2014",
 			"category": "Held",
 			"entries": [
 				"A typical Pathfinder writ of authenticity confirms the holder's status as a member of the Pathfinder Society and their intended business. Most writs are pieces of fine parchment folded, bound with gold cord, and sealed with three wax seals. The top seal is always the Glyph of the Open Road and the middle one is the Envoy's Alliance open door emblem. The bottom seal uses the preparer's personal sigil. Inside, the text describes a specific instance of a legitimate business activity, with blanks for the Pathfinder to fill in and personalize the writ to the persons and activity desired. Presenting a writ of authenticity grants a +2 item bonus to Make a {@action Request} for the associated business, assuming the writ is legitimate and the viewer expects to work with the Pathfinder Society for that activity."
-			],
-			"generic": false
+			]
 		}
 	]
 }

@@ -4,14 +4,22 @@ class NavBar {
 	static init () {
 		this._initInstallPrompt();
 		// render the visible elements ASAP
-		window.addEventListener(
-			"DOMContentLoaded",
-			function () {
-				NavBar.initElements();
-				NavBar.highlightCurrentPage();
-			},
-		);
-		window.addEventListener("load", NavBar.initHandlers);
+		window.addEventListener("DOMContentLoaded", NavBar._onDomContentLoaded);
+		window.addEventListener("load", NavBar._onLoad);
+	}
+
+	static _onDomContentLoaded () {
+		NavBar._initElements();
+		NavBar.highlightCurrentPage();
+	}
+
+	static _onLoad () {
+		NavBar._dropdowns = [...NavBar._navbar.querySelectorAll(`li.dropdown--navbar`)];
+		document.addEventListener("click", () => NavBar._dropdowns.forEach(ele => ele.classList.remove("open")));
+
+		NavBar._clearAllTimers();
+
+		NavBar._initAdventureBookElements().then(null);
 	}
 
 	static _initInstallPrompt () {
@@ -19,8 +27,11 @@ class NavBar {
 		window.addEventListener("beforeinstallprompt", e => NavBar._cachedInstallEvent = e);
 	}
 
-	static initElements () {
-		const navBar = document.getElementById("navbar");
+	static _initElements () {
+		NavBar._navbar = document.getElementById("navbar");
+		NavBar._tree = new NavBar.Node({
+			body: NavBar._navbar,
+		});
 
 		// create mobile "Menu" button
 		const btnShowHide = document.createElement("button");
@@ -32,78 +43,70 @@ class NavBar {
 		};
 		document.getElementById("navigation").prepend(btnShowHide);
 
-		addLi(navBar, "index.html", "Home", {isRoot: true});
+		this._addElement_li(null, "index.html", "Home", {isRoot: true});
 
-		const ulRules = addDropdown(navBar, "Rules");
-		addLi(ulRules, "quickreference.html", "Quick Reference");
-		addLi(ulRules, "variantrules.html", "Variant Rules");
-		addLi(ulRules, "tables.html", "Tables");
-		addDivider(ulRules);
-		const ulBooks = addDropdown(ulRules, "Books", true);
-		addLi(ulBooks, "books.html", "View All/Homebrew");
-		addDivider(ulBooks);
-		addLi(ulBooks, "book.html", "Core Rulebook", {aHash: "CRB", date: "2019"});
-		addLi(ulBooks, "book.html", "Gamemastery Guide", {aHash: "GMG", date: "2020"});
-		addLi(ulBooks, "book.html", "Secrets of Magic", {aHash: "SoM", date: "2021"});
+		this._addElement_dropdown(null, NavBar._CAT_RULES);
+		this._addElement_li(NavBar._CAT_RULES, "quickreference.html", "Quick Reference");
+		this._addElement_li(NavBar._CAT_RULES, "variantrules.html", "Variant Rules & Subsystems");
+		this._addElement_li(NavBar._CAT_RULES, "tables.html", "Tables");
+		this._addElement_divider(NavBar._CAT_RULES);
+		this._addElement_dropdown(NavBar._CAT_RULES, NavBar._CAT_BOOKS, {isSide: true, page: "books.html"});
+		this._addElement_li(NavBar._CAT_BOOKS, "books.html", "View All/Homebrew");
 
-		const ulPlayers = addDropdown(navBar, "Player");
-		addLi(ulPlayers, "ancestries.html", "Ancestries");
-		addLi(ulPlayers, "backgrounds.html", "Backgrounds");
-		addLi(ulPlayers, "classes.html", "Classes");
-		addLi(ulPlayers, "archetypes.html", "Archetypes");
-		addDivider(ulPlayers);
-		addLi(ulPlayers, "feats.html", "Feats");
-		addLi(ulPlayers, "companionsfamiliars.html", "Companions & Familiars");
-		addLi(ulPlayers, "optionalfeatures.html", "Optional Features");
+		this._addElement_dropdown(null, NavBar._CAT_PLAYER);
+		this._addElement_li(NavBar._CAT_PLAYER, "ancestries.html", "Ancestries");
+		this._addElement_li(NavBar._CAT_PLAYER, "backgrounds.html", "Backgrounds");
+		this._addElement_li(NavBar._CAT_PLAYER, "classes.html", "Classes");
+		this._addElement_li(NavBar._CAT_PLAYER, "feats.html", "Feats");
+		this._addElement_divider(NavBar._CAT_PLAYER);
+		this._addElement_li(NavBar._CAT_PLAYER, "archetypes.html", "Archetypes");
+		this._addElement_li(NavBar._CAT_PLAYER, "companionsfamiliars.html", "Companions & Familiars");
+		this._addElement_li(NavBar._CAT_PLAYER, "optionalfeatures.html", "Optional Features");
 
-		const ulDms = addDropdown(navBar, "Game Master");
-		addLi(ulDms, "gmscreen.html", "GM Screen");
-		addDivider(ulDms);
-		const ulAdventures = addDropdown(ulDms, "Adventures", true);
-		addLi(ulAdventures, "adventures.html", "View All/Homebrew");
-		addDivider(ulAdventures);
-		addLi(ulAdventures, "adventure.html", "Sample Adventure", {isSide: true, aHash: "ID", date: "2019"});
-		addLi(ulDms, "hazards.html", "Hazards");
+		this._addElement_dropdown(null, NavBar._CAT_GAME_MASTER);
+		this._addElement_li(NavBar._CAT_GAME_MASTER, "gmscreen.html", "GM Screen");
+		this._addElement_divider(NavBar._CAT_GAME_MASTER);
+		this._addElement_dropdown(NavBar._CAT_GAME_MASTER, NavBar._CAT_ADVENTURES, {isSide: true, page: "adventures.html"});
+		this._addElement_li(NavBar._CAT_ADVENTURES, "adventures.html", "View All/Homebrew");
+		this._addElement_li(NavBar._CAT_GAME_MASTER, "hazards.html", "Hazards");
 
-		const ulReferences = addDropdown(navBar, "References");
-		addLi(ulReferences, "actions.html", "Actions");
-		addLi(ulReferences, "bestiary.html", "Bestiary");
-		addLi(ulReferences, "conditions.html", "Conditions");
-		addLi(ulReferences, "items.html", "Items");
-		addLi(ulReferences, "spells.html", "Spells");
-		addDivider(ulReferences);
-		addLi(ulReferences, "afflictions.html", "Afflictions");
-		addLi(ulReferences, "rituals.html", "Rituals");
-		addLi(ulReferences, "vehicles.html", "Vehicles");
-		addDivider(ulReferences);
-		addLi(ulReferences, "deities.html", "Deities");
-		addLi(ulReferences, "languages.html", "Languages");
-		addLi(ulReferences, "places.html", "Planes & Places");
-		addLi(ulReferences, "organizations.html", "Organizations");
-		addDivider(ulReferences);
-		addLi(ulReferences, "abilities.html", "Creature Abilities");
-		addLi(ulReferences, "traits.html", "Traits");
+		this._addElement_dropdown(null, NavBar._CAT_REFERENCES);
+		this._addElement_li(NavBar._CAT_REFERENCES, "actions.html", "Actions");
+		this._addElement_li(NavBar._CAT_REFERENCES, "bestiary.html", "Bestiary");
+		this._addElement_li(NavBar._CAT_REFERENCES, "conditions.html", "Conditions");
+		this._addElement_li(NavBar._CAT_REFERENCES, "items.html", "Items");
+		this._addElement_li(NavBar._CAT_REFERENCES, "spells.html", "Spells");
+		this._addElement_divider(NavBar._CAT_REFERENCES);
+		this._addElement_li(NavBar._CAT_REFERENCES, "afflictions.html", "Afflictions");
+		this._addElement_li(NavBar._CAT_REFERENCES, "rituals.html", "Rituals");
+		this._addElement_li(NavBar._CAT_REFERENCES, "vehicles.html", "Vehicles");
+		this._addElement_divider(NavBar._CAT_REFERENCES);
+		this._addElement_li(NavBar._CAT_REFERENCES, "deities.html", "Deities");
+		this._addElement_li(NavBar._CAT_REFERENCES, "languages.html", "Languages");
+		this._addElement_li(NavBar._CAT_REFERENCES, "places.html", "Planes & Places");
+		this._addElement_li(NavBar._CAT_REFERENCES, "organizations.html", "Organizations");
+		this._addElement_divider(NavBar._CAT_REFERENCES);
+		this._addElement_li(NavBar._CAT_REFERENCES, "abilities.html", "Creature Abilities");
+		this._addElement_li(NavBar._CAT_REFERENCES, "traits.html", "Traits");
 
-		const ulUtils = addDropdown(navBar, "Utilities");
-		addLi(ulUtils, "search.html", "Search");
-		addDivider(ulUtils);
-		addLi(ulUtils, "blacklist.html", "Content Blacklist");
-		addLi(ulUtils, "managebrew.html", "Homebrew Manager");
-		addDivider(ulUtils);
-		addLi(ulUtils, "inittrackerplayerview.html", "Initiative Tracker Player View");
-		addDivider(ulUtils);
-		addLi(ulUtils, "renderdemo.html", "Renderer Demo");
-		addDivider(ulUtils);
-		addLi(ulUtils, "changelog.html", "Changelog");
-		addDivider(ulUtils);
-		addLi(ulUtils, "privacy-policy.html", "Privacy Policy");
-		addLi(ulUtils, "licenses.html", "Licenses");
+		this._addElement_dropdown(null, NavBar._CAT_UTILITIES);
+		this._addElement_li(NavBar._CAT_UTILITIES, "search.html", "Search");
+		this._addElement_divider(NavBar._CAT_UTILITIES);
+		this._addElement_li(NavBar._CAT_UTILITIES, "blacklist.html", "Content Blacklist");
+		this._addElement_li(NavBar._CAT_UTILITIES, "managebrew.html", "Homebrew Manager");
+		this._addElement_divider(NavBar._CAT_UTILITIES);
+		this._addElement_li(NavBar._CAT_UTILITIES, "inittrackerplayerview.html", "Initiative Tracker Player View");
+		this._addElement_divider(NavBar._CAT_UTILITIES);
+		this._addElement_li(NavBar._CAT_UTILITIES, "renderdemo.html", "Renderer Demo");
+		this._addElement_divider(NavBar._CAT_UTILITIES);
+		this._addElement_li(NavBar._CAT_UTILITIES, "changelog.html", "Changelog");
+		this._addElement_divider(NavBar._CAT_UTILITIES);
+		this._addElement_li(NavBar._CAT_UTILITIES, "privacy-policy.html", "Privacy Policy");
+		this._addElement_li(NavBar._CAT_UTILITIES, "licenses.html", "Licenses");
 
-		// addLi(navBar, "donate.html", "Donate", {isRoot: true});
-
-		const ulSettings = addDropdown(navBar, "Settings");
-		addButton(
-			ulSettings,
+		this._addElement_dropdown(null, NavBar._CAT_SETTINGS);
+		this._addElement_button(
+			NavBar._CAT_SETTINGS,
 			{
 				html: styleSwitcher.getActiveDayNight() === StyleSwitcher.STYLE_NIGHT ? "Day Mode" : "Night Mode",
 				click: (evt) => {
@@ -113,346 +116,429 @@ class NavBar {
 				className: "nightModeToggle",
 			},
 		);
-		addButton(
-			ulSettings,
+		this._addElement_button(
+			NavBar._CAT_SETTINGS,
 			{
 				html: styleSwitcher.getActiveWide() === true ? "Disable Wide Mode" : "Enable Wide Mode (Experimental)",
-				click: (evt) => {
-					evt.preventDefault();
-					styleSwitcher.toggleWide();
-				},
+				click: (evt) => NavBar.InteractionManager._onClick_button_wideMode(evt),
 				className: "wideModeToggle",
 				title: "This feature is unsupported. Expect bugs.",
 			},
 		);
-		// Re-enable this setting whenever
-		// addDivider(ulSettings);
-		// addButton(
-		// 	ulSettings,
-		// 	{
-		// 		html: scaleCreature.isProfNoLvl() === true ? "Proficiency with Level" : "Proficiency without Level",
-		// 		click: (evt) => {
-		// 			evt.preventDefault();
-		// 			scaleCreature.toggleProfNoLvl();
-		// 		},
-		// 		className: "profNoLvlToggle",
-		// 		title: "This feature is experimental.",
-		// 	},
-		// );
-		addDivider(ulSettings);
-		addButton(
-			ulSettings,
+		this._addElement_divider(NavBar._CAT_SETTINGS);
+		this._addElement_button(
+			NavBar._CAT_SETTINGS,
 			{
 				html: "Save State to File",
-				click: async (evt) => {
-					evt.preventDefault();
-					const sync = StorageUtil.syncGetDump();
-					const async = await StorageUtil.pGetDump();
-					const dump = {sync, async};
-					DataUtil.userDownload("Pf2eTools", dump);
-				},
-				title: "Save any locally-stored data (loaded homebrew, active blacklists, GM Screen configuration,...) to a file.",
+				click: async (evt) => NavBar.InteractionManager._pOnClick_button_saveStateFile(evt),
+				title: "Save any locally-stored data (loaded homebrew, active blacklists, DM Screen configuration,...) to a file.",
 			},
 		);
-		addButton(
-			ulSettings,
+		this._addElement_button(
+			NavBar._CAT_SETTINGS,
 			{
 				html: "Load State from File",
-				click: async (evt) => {
-					evt.preventDefault();
-					const dump = await DataUtil.pUserUpload();
-
-					StorageUtil.syncSetFromDump(dump.sync);
-					await StorageUtil.pSetFromDump(dump.async);
-					location.reload();
-				},
-				title: "Load previously-saved data (loaded homebrew, active blacklists, GM Screen configuration,...) from a file.",
+				click: async (evt) => NavBar.InteractionManager._pOnClick_button_loadStateFile(evt),
+				title: "Load previously-saved data (loaded homebrew, active blacklists, DM Screen configuration,...) from a file.",
 			},
 		);
-		addDivider(ulSettings);
-		addButton(
-			ulSettings,
+		this._addElement_divider(NavBar._CAT_SETTINGS);
+		this._addElement_button(
+			NavBar._CAT_SETTINGS,
 			{
 				html: "Add as App",
-				click: async (evt) => {
-					evt.preventDefault();
-					try {
-						NavBar._cachedInstallEvent.prompt();
-					} catch (e) {
-						// Ignore errors
-					}
-				},
+				click: async (evt) => NavBar.InteractionManager._pOnClick_button_addApp(evt),
 				title: "Add the site to your home screen. When used in conjunction with the Preload Offline Data option, this can create a functional offline copy of the site.",
 			},
 		);
 		/*
-		addButton(
-			ulSettings,
+		this._addElement_button(
+			NavBar._CAT_SETTINGS,
 			{
 				html: "Preload Offline Data",
-				click: async (evt) => {
-					evt.preventDefault();
-
-					if (!navigator.serviceWorker || !navigator.serviceWorker.controller) {
-						JqueryUtil.doToast(`The loader was not yet available! Reload the page and try again. If this problem persists, your browser may not support preloading.`);
-						return;
-					}
-
-					// a pipe with has "port1" and "port2" props; we'll send "port2" to the service worker so it can
-					//   send messages back down the pipe to us
-					const messageChannel = new MessageChannel();
-					let hasSentPort = false;
-					const sendMessage = (data) => {
-						try {
-							// Only send the MessageChannel port once, as the first send will transfer ownership of the
-							//   port over to the service worker (and we can no longer access it to even send it)
-							if (!hasSentPort) {
-								hasSentPort = true;
-								navigator.serviceWorker.controller.postMessage(data, [messageChannel.port2]);
-							} else {
-								navigator.serviceWorker.controller.postMessage(data);
-							}
-						} catch (e) {
-							// Ignore errors
-							setTimeout(() => { throw e; })
-						}
-					};
-
-					if (NavBar._downloadBarMeta) {
-						if (NavBar._downloadBarMeta) {
-							NavBar._downloadBarMeta.$wrpOuter.remove();
-							NavBar._downloadBarMeta = null;
-						}
-						sendMessage({"type": "cache-cancel"});
-					}
-
-					const $dispProgress = $(`<div class="page__disp-download-progress-bar"/>`);
-					const $dispPct = $(`<div class="page__disp-download-progress-text flex-vh-center bold">0%</div>`);
-
-					const $btnCancel = $(`<button class="btn btn-default"><span class="glyphicon glyphicon-remove"></span></button>`)
-						.click(() => {
-							if (NavBar._downloadBarMeta) {
-								NavBar._downloadBarMeta.$wrpOuter.remove();
-								NavBar._downloadBarMeta = null;
-							}
-							sendMessage({"type": "cache-cancel"});
-						});
-
-					const $wrpBar = $$`<div class="page__wrp-download-bar w-100 relative mr-2">${$dispProgress}${$dispPct}</div>`;
-					const $wrpOuter = $$`<div class="page__wrp-download">
-						${$wrpBar}
-						${$btnCancel}
-					</div>`.appendTo($("body"));
-
-					NavBar._downloadBarMeta = {$wrpOuter, $wrpBar, $dispProgress, $dispPct};
-
-					// Trigger the service worker to cache everything
-					messageChannel.port1.onmessage = e => {
-						const msg = e.data;
-						switch (msg.type) {
-							case "download-progress": {
-								if (NavBar._downloadBarMeta) {
-									NavBar._downloadBarMeta.$dispProgress.css("width", msg.data.pct);
-									NavBar._downloadBarMeta.$dispPct.text(msg.data.pct);
-								}
-								break;
-							}
-							case "download-cancelled": {
-								if (NavBar._downloadBarMeta) {
-									NavBar._downloadBarMeta.$wrpOuter.remove();
-									NavBar._downloadBarMeta = null;
-								}
-								break;
-							}
-							case "download-error": {
-								if (NavBar._downloadBarMeta) {
-									NavBar._downloadBarMeta.$wrpBar.addClass("page__wrp-download-bar--error");
-									NavBar._downloadBarMeta.$dispProgress.addClass("page__disp-download-progress-bar--error");
-									NavBar._downloadBarMeta.$dispPct.text("Error!");
-
-									JqueryUtil.doToast(`An error occurred. ${VeCt.STR_SEE_CONSOLE}`);
-								}
-								setTimeout(() => { throw new Error(msg.message); })
-								break;
-							}
-						}
-					};
-
-					sendMessage({"type": "cache-start"});
-				},
+				click: (evt) => NavBar.InteractionManager._pOnClick_button_preloadOffline(evt),
 				title: "Preload the site data for offline use. Warning: slow. If it appears to freeze, cancel it and try again; progress will be saved.",
 			},
 		);
 		*/
-		/**
-		 * Adds a new item to the navigation bar. Can be used either in root, or in a different UL.
-		 * @param appendTo - Element to append this link to.
-		 * @param aHref - Where does this link to.
-		 * @param aText - What text does this link have.
-		 * @param [opts] - Options object.
-		 * @param [opts.isSide] - True if this item is part of a side menu.
-		 * @param [opts.aHash] - Optional hash to be appended to the base href
-		 * @param [opts.isRoot] - If the item is a root navbar element.
-		 * @param [opts.isExternal] - If the item is an external link.
-		 * @param [opts.date] - A date to prefix the list item with.
-		 */
-		function addLi (appendTo, aHref, aText, opts) {
-			opts = opts || {};
-			const hashPart = opts.aHash ? `#${opts.aHash}`.toLowerCase() : "";
-
-			const li = document.createElement("li");
-			li.setAttribute("role", "presentation");
-			li.setAttribute("data-page", `${aHref}${hashPart}`);
-			if (opts.isRoot) {
-				li.classList.add("page__nav-hidden-mobile");
-				li.classList.add("page__btn-nav-root");
-			}
-			if (opts.isSide) {
-				li.onmouseenter = function () { NavBar.handleSideItemMouseEnter(this) }
-			} else {
-				li.onmouseenter = function () { NavBar.handleItemMouseEnter(this) };
-				li.onclick = function () { NavBar._dropdowns.forEach(ele => ele.classList.remove("open")) }
-			}
-
-			const a = document.createElement("a");
-			a.href = `${aHref}${hashPart}`;
-			a.innerHTML = `${opts.date !== undefined ? `<span class="ve-muted ve-small mr-2 page__nav-date inline-block text-right">${opts.date || ""}</span>` : ""}${aText}`;
-			a.classList.add("nav__link");
-
-			if (opts.isExternal) {
-				a.setAttribute("target", "_blank");
-				a.classList.add("inline-split-v-center");
-				a.classList.add("w-100");
-				a.innerHTML = `<span>${aText}</span><span class="glyphicon glyphicon-new-window"/>`
-			}
-
-			li.appendChild(a);
-			appendTo.appendChild(li);
-		}
-
-		function addDivider (appendTo) {
-			const li = document.createElement("li");
-			li.setAttribute("role", "presentation");
-			li.className = "divider";
-
-			appendTo.appendChild(li);
-		}
-
-		/**
-		 * Adds a new dropdown starting list to the navigation bar
-		 * @param appendTo - Element to append this link to.
-		 * @param {String} text - Dropdown text.
-		 * @param {boolean} [isSide=false] - If this is a sideways dropdown.
-		 */
-		function addDropdown (appendTo, text, isSide = false) {
-			const li = document.createElement("li");
-			li.setAttribute("role", "presentation");
-			li.className = `dropdown dropdown--navbar page__nav-hidden-mobile ${isSide ? "" : "page__btn-nav-root"}`;
-			if (isSide) {
-				li.onmouseenter = function () { NavBar.handleSideItemMouseEnter(this); };
-			} else {
-				li.onmouseenter = function () { NavBar.handleItemMouseEnter(this); };
-			}
-
-			const a = document.createElement("a");
-			a.className = "dropdown-toggle";
-			a.href = "#";
-			a.setAttribute("role", "button");
-			a.onclick = function (event) { NavBar.handleDropdownClick(this, event, isSide); };
-			if (isSide) {
-				a.onmouseenter = function () { NavBar.handleSideDropdownMouseEnter(this); };
-				a.onmouseleave = function () { NavBar.handleSideDropdownMouseLeave(this); };
-			}
-			a.innerHTML = `${text} <span class="caret ${isSide ? "caret--right" : ""}"></span>`;
-
-			const ul = document.createElement("li");
-			ul.className = `dropdown-menu ${isSide ? "dropdown-menu--side" : "dropdown-menu--top"}`;
-			ul.onclick = function (event) { event.stopPropagation(); };
-
-			li.appendChild(a);
-			li.appendChild(ul);
-			appendTo.appendChild(li);
-			return ul;
-		}
-
-		/**
-		 * Special LI for buttong
-		 * @param appendTo The element to append to.
-		 * @param options Options.
-		 * @param options.html Button text.
-		 * @param options.click Button click handler.
-		 * @param options.title Button title.
-		 * @param options.className Additional button classes.
-		 */
-		function addButton (appendTo, options) {
-			const li = document.createElement("li");
-			li.setAttribute("role", "presentation");
-
-			const a = document.createElement("a");
-			a.href = "#";
-			if (options.className) a.className = options.className;
-			a.onclick = options.click;
-			a.innerHTML = options.html;
-
-			if (options.title) li.setAttribute("title", options.title);
-
-			li.appendChild(a);
-			appendTo.appendChild(li);
-		}
 	}
 
-	static getCurrentPage () {
+	static _getNode (category) {
+		if (category == null) return NavBar._tree;
+
+		const _getNodeInner = (level) => {
+			for (const [k, v] of Object.entries(level)) {
+				if (k === category) return v;
+
+				const subNode = _getNodeInner(v.children);
+				if (subNode) return subNode;
+			}
+		};
+
+		return _getNodeInner(NavBar._tree.children);
+	}
+
+	/**
+	 * Adventure/book elements are added as a second, asynchronous, step, as they require loading of:
+	 * - An index JSON file.
+	 * - The user's Blacklist.
+	 */
+	static async _initAdventureBookElements () {
+		const [adventureBookIndex] = await Promise.all([
+			DataUtil.loadJSON(`${Renderer.get().baseUrl}data/generated/gendata-nav-adventure-book-index.json`),
+			ExcludeUtil.pInitialise(),
+		]);
+		const brew = await BrewUtil.pAddBrewData();
+
+		[
+			{
+				prop: "book",
+				parentCategory: NavBar._CAT_BOOKS,
+				page: "book.html",
+				fnSort: SortUtil.ascSortBook.bind(SortUtil),
+			},
+			{
+				prop: "adventure",
+				page: "adventure.html",
+				parentCategory: NavBar._CAT_ADVENTURES,
+				fnSort: SortUtil.ascSortAdventure.bind(SortUtil),
+			},
+		].forEach(({prop, parentCategory, page, fnSort}) => {
+			const formBrew = MiscUtil.copy(brew[prop] || []);
+			formBrew.forEach(it => {
+				if (it.parentSource) it.parentName = Parser.sourceJsonToFull(it.parentSource);
+			});
+
+			const metas = [...adventureBookIndex[prop], ...formBrew]
+				.filter(it => !ExcludeUtil.isExcluded(UrlUtil.encodeForHash(it.id), prop, it.source, {isNoCount: true}));
+
+			if (!metas.length) return;
+
+			SourceUtil.ADV_BOOK_GROUPS
+				.forEach(({group, displayName}) => {
+					const inGroup = metas.filter(it => (it.group || "other") === group);
+					if (!inGroup.length) return;
+
+					this._addElement_divider(parentCategory);
+					this._addElement_label(parentCategory, displayName, {isAddDateSpacer: true});
+
+					const seenYears = new Set();
+
+					inGroup
+						.sort(fnSort)
+						.forEach(indexMeta => {
+							const year = indexMeta.published ? (new Date(indexMeta.published).getFullYear()) : null;
+							const isNewYear = year != null && !seenYears.has(year);
+							if (year != null) seenYears.add(year);
+
+							if (indexMeta.parentSource) {
+								if (!this._getNode(indexMeta.parentName)) {
+									this._addElement_accordion(
+										parentCategory,
+										indexMeta.parentName,
+										{
+											date: isNewYear ? year : null,
+											source: indexMeta.parentSource,
+											isAddDateSpacer: !isNewYear,
+										},
+									);
+								}
+
+								let cleanName = indexMeta.name.startsWith(indexMeta.parentName)
+									? indexMeta.name.slice(indexMeta.parentName.length).replace(/^:\s+/, "")
+									: indexMeta.name;
+								this._addElement_li(
+									indexMeta.parentName,
+									page,
+									cleanName,
+									{
+										aHash: indexMeta.id,
+										isAddDateSpacer: true,
+										isSide: true,
+										isInAccordion: true,
+									},
+								);
+
+								return;
+							}
+
+							this._addElement_li(
+								parentCategory,
+								page,
+								indexMeta.name,
+								{
+									aHash: indexMeta.id,
+									date: isNewYear ? year : null,
+									isAddDateSpacer: !isNewYear,
+									source: indexMeta.source,
+									isSide: true,
+								},
+							);
+						});
+				});
+		});
+
+		NavBar.highlightCurrentPage();
+	}
+
+	/**
+	 * Adds a new item to the navigation bar. Can be used either in root, or in a different UL.
+	 * @param parentCategory - Element to append this link to.
+	 * @param page - Where does this link to.
+	 * @param aText - What text does this link have.
+	 * @param [opts] - Options object.
+	 * @param [opts.isSide] - True if this item is part of a side menu.
+	 * @param [opts.aHash] - Optional hash to be appended to the base href
+	 * @param [opts.isRoot] - If the item is a root navbar element.
+	 * @param [opts.isExternal] - If the item is an external link.
+	 * @param [opts.date] - A date to prefix the list item with.
+	 * @param [opts.isAddDateSpacer] - True if this item has no date, but is in a list of items with dates.
+	 * @param [opts.source] - A source associated with this item, which should be displayed as a colored marker.
+	 * @param [opts.isInAccordion] - True if this item is inside an accordion.
+	 *        FIXME(Future) this is a bodge; refactor the navbar CSS to avoid using Bootstrap.
+	 */
+	static _addElement_li (parentCategory, page, aText, opts) {
+		opts = opts || {};
+
+		const parentNode = this._getNode(parentCategory);
+
+		const hashPart = opts.aHash ? `#${opts.aHash}`.toLowerCase() : "";
+		const href = `${page}${hashPart}`;
+
+		const li = document.createElement("li");
+		li.setAttribute("role", "presentation");
+		li.setAttribute("data-page", href);
+		if (opts.isRoot) {
+			li.classList.add("page__nav-hidden-mobile");
+			li.classList.add("page__btn-nav-root");
+		}
+		if (opts.isSide) {
+			li.onmouseenter = function () { NavBar._handleSideItemMouseEnter(this); };
+		} else {
+			li.onmouseenter = function () { NavBar._handleItemMouseEnter(this); };
+			li.onclick = function () { NavBar._dropdowns.forEach(ele => ele.classList.remove("open")); };
+		}
+
+		const a = document.createElement("a");
+		a.href = href;
+		a.innerHTML = `${this._addElement_getDatePrefix({date: opts.date, isAddDateSpacer: opts.isAddDateSpacer})}${this._addElement_getSourcePrefix({source: opts.source})}${aText}`;
+		a.classList.add("nav__link");
+		if (opts.isInAccordion) a.classList.add(`nav2-accord__lnk-item`, `inline-block`, `w-100`);
+
+		if (opts.isExternal) {
+			a.setAttribute("target", "_blank");
+			a.classList.add("inline-split-v-center");
+			a.classList.add("w-100");
+			a.innerHTML = `<span>${aText}</span><span class="glyphicon glyphicon-new-window"/>`;
+		}
+
+		li.appendChild(a);
+		parentNode.body.appendChild(li);
+
+		parentNode.children[href] = new NavBar.NodeLink({
+			parent: parentNode,
+			head: li,
+			isInAccordion: opts.isInAccordion,
+			lnk: a,
+		});
+	}
+
+	static _addElement_accordion (
+		parentCategory,
+		category,
+		{
+			date = null,
+			isAddDateSpacer = false,
+			source = null,
+		} = {},
+	) {
+		const parentNode = this._getNode(parentCategory);
+
+		const li = document.createElement("li");
+		li.className = "nav2-accord__wrp";
+		li.onmouseenter = function () { NavBar._handleItemMouseEnter(this); };
+
+		// region Header button
+		const wrpHead = document.createElement("div");
+		wrpHead.className = "nav2-accord__head split-v-center clickable";
+		wrpHead.onclick = evt => {
+			evt.stopPropagation();
+			evt.preventDefault();
+			node.isExpanded = !node.isExpanded;
+		};
+
+		const dispText = document.createElement("div");
+		dispText.innerHTML = `${this._addElement_getDatePrefix({date, isAddDateSpacer})}${this._addElement_getSourcePrefix({source})}${category}`;
+
+		const dispToggle = document.createElement("div");
+		dispToggle.textContent = NavBar.NodeAccordion.getDispToggleDisplayHtml(false);
+
+		wrpHead.appendChild(dispText);
+		wrpHead.appendChild(dispToggle);
+		// endregion
+
+		// region Body list
+		const wrpBody = document.createElement("div");
+		wrpBody.className = `nav2-accord__body ve-hidden`;
+		wrpBody.onclick = function (event) { event.stopPropagation(); };
+		// endregion
+
+		li.appendChild(wrpHead);
+		li.appendChild(wrpBody);
+		parentNode.body.appendChild(li);
+
+		const node = new NavBar.NodeAccordion({
+			parent: parentNode,
+			head: wrpHead,
+			body: wrpBody,
+			dispToggle,
+		});
+		parentNode.children[category] = node;
+	}
+
+	static _addElement_getDatePrefix ({date, isAddDateSpacer}) { return `${(date != null || isAddDateSpacer) ? `<div class="ve-muted ve-small mr-2 page__nav-date inline-block text-right inline-block">${date || ""}</div>` : ""}`; }
+	static _addElement_getSourcePrefix ({source}) { return `${source != null ? `<div class="nav2-list__disp-source ${Parser.sourceJsonToColor(source)}" ${BrewUtil.sourceJsonToStyle(source)}></div>` : ""}`; }
+
+	static _addElement_divider (parentCategory) {
+		const parentNode = this._getNode(parentCategory);
+
+		const li = document.createElement("li");
+		li.setAttribute("role", "presentation");
+		li.className = "divider";
+
+		parentNode.body.appendChild(li);
+	}
+
+	static _addElement_label (parentCategory, html, {date, isAddDateSpacer} = {}) {
+		const parentNode = this._getNode(parentCategory);
+
+		const li = document.createElement("li");
+		li.setAttribute("role", "presentation");
+		li.className = "italic ve-muted ve-small nav2-list__label";
+		li.innerHTML = `${this._addElement_getDatePrefix({date, isAddDateSpacer})}${html}`;
+
+		parentNode.body.appendChild(li);
+	}
+
+	/**
+	 * Adds a new dropdown starting list to the navigation bar
+	 * @param {String} parentCategory - Element to append this link to.
+	 * @param {String} category - Dropdown text.
+	 * @param {boolean} [isSide=false] - If this is a sideways dropdown.
+	 * @param {String} [page=null] - The page this dropdown is associated with.
+	 */
+	static _addElement_dropdown (parentCategory, category, {isSide = false, page = null} = {}) {
+		const parentNode = this._getNode(parentCategory);
+
+		const li = document.createElement("li");
+		li.setAttribute("role", "presentation");
+		li.className = `dropdown dropdown--navbar page__nav-hidden-mobile ${isSide ? "" : "page__btn-nav-root"}`;
+		if (isSide) {
+			li.onmouseenter = function () { NavBar._handleSideItemMouseEnter(this); };
+		} else {
+			li.onmouseenter = function () { NavBar._handleItemMouseEnter(this); };
+		}
+
+		const a = document.createElement("a");
+		a.className = "dropdown-toggle";
+		a.href = "#";
+		a.setAttribute("role", "button");
+		a.onclick = function (event) { NavBar._handleDropdownClick(this, event, isSide); };
+		if (isSide) {
+			a.onmouseenter = function () { NavBar._handleSideDropdownMouseEnter(this); };
+			a.onmouseleave = function () { NavBar._handleSideDropdownMouseLeave(this); };
+		}
+		a.innerHTML = `${category} <span class="caret ${isSide ? "caret--right" : ""}"></span>`;
+
+		const ul = document.createElement("ul");
+		ul.className = `dropdown-menu ${isSide ? "dropdown-menu--side" : "dropdown-menu--top"}`;
+		ul.onclick = function (event) { event.stopPropagation(); };
+
+		li.appendChild(a);
+		li.appendChild(ul);
+		parentNode.body.appendChild(li);
+
+		parentNode.children[category] = new NavBar.Node({
+			parent: parentNode,
+			head: li,
+			body: ul,
+		});
+	}
+
+	/**
+	 * Special LI for button
+	 * @param parentCategory The element to append to.
+	 * @param options Options.
+	 * @param options.html Button text.
+	 * @param options.click Button click handler.
+	 * @param [options.context] Button context menu handler.
+	 * @param options.title Button title.
+	 * @param options.className Additional button classes.
+	 */
+	static _addElement_button (parentCategory, options) {
+		const parentNode = this._getNode(parentCategory);
+
+		const li = document.createElement("li");
+		li.setAttribute("role", "presentation");
+
+		const a = document.createElement("a");
+		a.href = "#";
+		if (options.className) a.className = options.className;
+		a.onclick = options.click;
+		a.innerHTML = options.html;
+
+		if (options.context) a.oncontextmenu = options.context;
+
+		if (options.title) li.setAttribute("title", options.title);
+
+		li.appendChild(a);
+		parentNode.body.appendChild(li);
+	}
+
+	static _getCurrentPage () {
 		let currentPage = window.location.pathname;
 		currentPage = currentPage.substr(currentPage.lastIndexOf("/") + 1);
 
-		if (!currentPage) currentPage = "Pf2eTools.html";
+		if (!currentPage) currentPage = "index.html";
 		return currentPage.trim();
 	}
 
 	static highlightCurrentPage () {
-		let currentPage = NavBar.getCurrentPage();
-
-		let isSecondLevel = false;
-		if (currentPage.toLowerCase() === "book.html" || currentPage.toLowerCase() === "adventure.html") {
-			const hashPart = window.location.hash.split(",")[0];
-			if (currentPage.toLowerCase() === "adventure.html" || currentPage.toLowerCase() === "book.html") isSecondLevel = true;
-			currentPage += hashPart.toLowerCase();
-		}
-		if (currentPage.toLowerCase() === "adventures.html" || currentPage.toLowerCase() === "books.html") isSecondLevel = true;
+		let currentPage = NavBar._getCurrentPage();
+		let hash = "";
 
 		if (typeof _SEO_PAGE !== "undefined") currentPage = `${_SEO_PAGE}.html`;
+		else if (currentPage.toLowerCase() === "book.html" || currentPage.toLowerCase() === "adventure.html") {
+			hash = window.location.hash.split(",")[0].toLowerCase();
+		}
 
-		try {
-			let current = document.querySelector(`li[data-page="${currentPage}"]`);
-			if (current == null) {
-				currentPage = currentPage.split("#")[0];
-				if (NavBar.ALT_CHILD_PAGES[currentPage]) currentPage = NavBar.ALT_CHILD_PAGES[currentPage];
-				current = document.querySelector(`li[data-page="${currentPage}"]`);
-			}
-			current.parentNode.childNodes.forEach(n => n.classList && n.classList.remove("active"));
-			current.classList.add("active");
+		const href = `${currentPage}${hash}`;
 
-			let closestLi = current.parentNode;
-			const setNearestParentActive = () => {
-				while (closestLi !== null && (closestLi.nodeName !== "LI" || !closestLi.classList.contains("dropdown"))) closestLi = closestLi.parentNode;
-				closestLi && closestLi.classList.add("active");
-			};
-			setNearestParentActive();
-			if (isSecondLevel) {
-				closestLi = closestLi.parentNode;
-				setNearestParentActive();
+		this._doRemoveAllPageHighlights();
+		const node = this._getNode(href);
+		if (!node) {
+			if (NavBar._ALT_CHILD_PAGES[currentPage]) {
+				const nodeFallback = this._getNode(NavBar._ALT_CHILD_PAGES[currentPage]);
+				nodeFallback.isActive = true;
 			}
-		} catch (ignored) { setTimeout(() => { throw ignored }); }
+			return;
+		}
+
+		node.isActive = true;
 	}
 
-	static initHandlers () {
-		NavBar._dropdowns = [...document.getElementById("navbar").querySelectorAll(`li.dropdown--navbar`)];
-		document.addEventListener("click", () => NavBar._dropdowns.forEach(ele => ele.classList.remove("open")));
+	static _doRemoveAllPageHighlights () {
+		const _doRemoveAllPageHighlightsInner = (level) => {
+			for (const node of Object.values(level)) {
+				node.isActive = false;
+				if (node.children) _doRemoveAllPageHighlightsInner(node.children);
+			}
+		};
 
-		NavBar._clearAllTimers();
+		_doRemoveAllPageHighlightsInner(NavBar._tree.children);
 	}
 
-	static handleDropdownClick (ele, event, isSide) {
+	static _handleDropdownClick (ele, event, isSide) {
 		event.preventDefault();
 		event.stopPropagation();
 		if (isSide) return;
@@ -478,7 +564,7 @@ class NavBar {
 		NavBar._dropdowns.filter(ele => !noRemove.has(ele)).forEach(ele => ele.classList.remove("open"));
 	}
 
-	static handleItemMouseEnter (ele) {
+	static _handleItemMouseEnter (ele) {
 		const $ele = $(ele);
 		const timerIds = $ele.siblings("[data-timer-id]").map((i, e) => ({$ele: $(e), timerId: $(e).data("timer-id")})).get();
 		timerIds.forEach(({$ele, timerId}) => {
@@ -493,10 +579,10 @@ class NavBar {
 						const [xStart, yStart] = NavBar._timerMousePos[timerId];
 						// for generalised use, this should be made check against the bounding box for the side menu
 						// and possibly also check Y pos; e.g.
-						// || EventUtil._mouseY > yStart + NavBar.MIN_MOVE_PX
-						if (EventUtil._mouseX > xStart + NavBar.MIN_MOVE_PX) {
+						// || EventUtil._mouseY > yStart + NavBar._MIN_MOVE_PX
+						if (EventUtil._mouseX > xStart + NavBar._MIN_MOVE_PX) {
 							NavBar._timerMousePos[timerId] = [EventUtil._mouseX, EventUtil._mouseY];
-							NavBar._timersClose[timerId] = setTimeout(() => getTimeoutFn(), NavBar.DROP_TIME / 2);
+							NavBar._timersClose[timerId] = setTimeout(() => getTimeoutFn(), NavBar._DROP_TIME / 2);
 						} else {
 							$ele.removeClass("open");
 							delete NavBar._timersClose[timerId];
@@ -507,12 +593,12 @@ class NavBar {
 					}
 				};
 
-				NavBar._timersClose[timerId] = setTimeout(() => getTimeoutFn(), NavBar.DROP_TIME);
+				NavBar._timersClose[timerId] = setTimeout(() => getTimeoutFn(), NavBar._DROP_TIME);
 			}
 		});
 	}
 
-	static handleSideItemMouseEnter (ele) {
+	static _handleSideItemMouseEnter (ele) {
 		const timerId = $(ele).closest(`li.dropdown`).data("timer-id");
 		if (NavBar._timersClose[timerId]) {
 			clearTimeout(NavBar._timersClose[timerId]);
@@ -521,7 +607,7 @@ class NavBar {
 		}
 	}
 
-	static handleSideDropdownMouseEnter (ele) {
+	static _handleSideDropdownMouseEnter (ele) {
 		const $ele = $(ele);
 		const timerId = $ele.parent().data("timer-id") || NavBar._timerId++;
 		$ele.parent().attr("data-timer-id", timerId);
@@ -536,11 +622,11 @@ class NavBar {
 				NavBar._openDropdown(ele);
 				delete NavBar._timersOpen[timerId];
 				NavBar._timerMousePos[timerId] = [EventUtil._mouseX, EventUtil._mouseY];
-			}, NavBar.DROP_TIME);
+			}, NavBar._DROP_TIME);
 		}
 	}
 
-	static handleSideDropdownMouseLeave (ele) {
+	static _handleSideDropdownMouseLeave (ele) {
 		const $ele = $(ele);
 		if (!$ele.parent().data("timer-id")) return;
 		const timerId = $ele.parent().data("timer-id");
@@ -555,16 +641,249 @@ class NavBar {
 		});
 	}
 }
-NavBar.DROP_TIME = 250;
-NavBar.MIN_MOVE_PX = 3;
-NavBar.ALT_CHILD_PAGES = {
+NavBar._DROP_TIME = 250;
+NavBar._MIN_MOVE_PX = 3;
+NavBar._ALT_CHILD_PAGES = {
 	"book.html": "books.html",
 	"adventure.html": "adventures.html",
 };
+NavBar._CAT_RULES = "Rules";
+NavBar._CAT_BOOKS = "Books";
+NavBar._CAT_PLAYER = "Player";
+NavBar._CAT_GAME_MASTER = "Dungeon Master";
+NavBar._CAT_ADVENTURES = "Adventures";
+NavBar._CAT_REFERENCES = "References";
+NavBar._CAT_UTILITIES = "Utilities";
+NavBar._CAT_SETTINGS = "Settings";
+
+NavBar._navbar = null;
+
+NavBar._tree = {};
+
 NavBar._timerId = 1;
 NavBar._timersOpen = {};
 NavBar._timersClose = {};
 NavBar._timerMousePos = {};
 NavBar._cachedInstallEvent = null;
 NavBar._downloadBarMeta = null;
+
+NavBar.InteractionManager = class {
+	static _onClick_button_dayNight (evt) {
+		evt.preventDefault();
+		styleSwitcher.cycleDayNightMode();
+	}
+
+	static _onContext_button_dayNight (evt) {
+		evt.preventDefault();
+		styleSwitcher.cycleDayNightMode(-1);
+	}
+
+	static _onClick_button_wideMode (evt) {
+		evt.preventDefault();
+		styleSwitcher.toggleWide();
+	}
+
+	static async _pOnClick_button_saveStateFile (evt) {
+		evt.preventDefault();
+		const sync = StorageUtil.syncGetDump();
+		const async = await StorageUtil.pGetDump();
+		const dump = {sync, async};
+		DataUtil.userDownload("5etools", dump, {fileType: "5etools"});
+	}
+
+	static async _pOnClick_button_loadStateFile (evt) {
+		evt.preventDefault();
+		const {jsons, errors} = await DataUtil.pUserUpload({expectedFileType: "5etools"});
+
+		DataUtil.doHandleFileLoadErrorsGeneric(errors);
+
+		if (!jsons?.length) return;
+		const dump = jsons[0];
+
+		try {
+			StorageUtil.syncSetFromDump(dump.sync);
+			await StorageUtil.pSetFromDump(dump.async);
+			location.reload();
+		} catch (e) {
+			JqueryUtil.doToast({type: "danger", content: `Failed to load state! ${VeCt.STR_SEE_CONSOLE}`});
+			throw e;
+		}
+	}
+
+	static async _pOnClick_button_addApp (evt) {
+		evt.preventDefault();
+		try {
+			NavBar._cachedInstallEvent.prompt();
+		} catch (e) {
+			// Ignore errors
+		}
+	}
+
+	static async _pOnClick_button_preloadOffline (evt) {
+		evt.preventDefault();
+
+		if (!navigator.serviceWorker || !navigator.serviceWorker.controller) {
+			JqueryUtil.doToast(`The loader was not yet available! Reload the page and try again. If this problem persists, your browser may not support preloading.`);
+			return;
+		}
+
+		// a pipe with has "port1" and "port2" props; we'll send "port2" to the service worker so it can
+		//   send messages back down the pipe to us
+		const messageChannel = new MessageChannel();
+		let hasSentPort = false;
+		const sendMessage = (data) => {
+			try {
+				// Only send the MessageChannel port once, as the first send will transfer ownership of the
+				//   port over to the service worker (and we can no longer access it to even send it)
+				if (!hasSentPort) {
+					hasSentPort = true;
+					navigator.serviceWorker.controller.postMessage(data, [messageChannel.port2]);
+				} else {
+					navigator.serviceWorker.controller.postMessage(data);
+				}
+			} catch (e) {
+				// Ignore errors
+				setTimeout(() => { throw e; });
+			}
+		};
+
+		if (NavBar._downloadBarMeta) {
+			if (NavBar._downloadBarMeta) {
+				NavBar._downloadBarMeta.$wrpOuter.remove();
+				NavBar._downloadBarMeta = null;
+			}
+			sendMessage({"type": "cache-cancel"});
+		}
+
+		const $dispProgress = $(`<div class="page__disp-download-progress-bar"/>`);
+		const $dispPct = $(`<div class="page__disp-download-progress-text ve-flex-vh-center bold">0%</div>`);
+
+		const $btnCancel = $(`<button class="btn btn-default"><span class="glyphicon glyphicon-remove"></span></button>`)
+			.click(() => {
+				if (NavBar._downloadBarMeta) {
+					NavBar._downloadBarMeta.$wrpOuter.remove();
+					NavBar._downloadBarMeta = null;
+				}
+				sendMessage({"type": "cache-cancel"});
+			});
+
+		const $wrpBar = $$`<div class="page__wrp-download-bar w-100 relative mr-2">${$dispProgress}${$dispPct}</div>`;
+		const $wrpOuter = $$`<div class="page__wrp-download">
+			${$wrpBar}
+			${$btnCancel}
+		</div>`.appendTo(document.body);
+
+		NavBar._downloadBarMeta = {$wrpOuter, $wrpBar, $dispProgress, $dispPct};
+
+		// Trigger the service worker to cache everything
+		messageChannel.port1.onmessage = e => {
+			const msg = e.data;
+			switch (msg.type) {
+				case "download-progress": {
+					if (NavBar._downloadBarMeta) {
+						NavBar._downloadBarMeta.$dispProgress.css("width", msg.data.pct);
+						NavBar._downloadBarMeta.$dispPct.text(msg.data.pct);
+					}
+					break;
+				}
+				case "download-cancelled": {
+					if (NavBar._downloadBarMeta) {
+						NavBar._downloadBarMeta.$wrpOuter.remove();
+						NavBar._downloadBarMeta = null;
+					}
+					break;
+				}
+				case "download-error": {
+					if (NavBar._downloadBarMeta) {
+						NavBar._downloadBarMeta.$wrpBar.addClass("page__wrp-download-bar--error");
+						NavBar._downloadBarMeta.$dispProgress.addClass("page__disp-download-progress-bar--error");
+						NavBar._downloadBarMeta.$dispPct.text("Error!");
+
+						JqueryUtil.doToast(`An error occurred. ${VeCt.STR_SEE_CONSOLE}`);
+					}
+					setTimeout(() => { throw new Error(msg.message); });
+					break;
+				}
+			}
+		};
+
+		sendMessage({"type": "cache-start"});
+	}
+};
+
+NavBar.Node = class {
+	constructor ({parent, head, body}) {
+		this.parent = parent;
+		this.head = head;
+		this.body = body;
+		this.children = {};
+
+		this._isActive = false;
+	}
+
+	set isActive (val) {
+		this._isActive = !!val;
+		this?.head?.classList?.toggle("active", this._isActive);
+		if (this.parent) this.parent.isActive = this._isActive;
+	}
+
+	get isActive () {
+		return this._isActive;
+	}
+};
+
+NavBar.NodeLink = class extends NavBar.Node {
+	constructor ({isInAccordion, lnk, ...rest}) {
+		super(rest);
+		this._isInAccordion = !!isInAccordion;
+		this._lnk = lnk;
+	}
+
+	set isActive (val) {
+		if (!this._isInAccordion) {
+			super.isActive = val;
+			return;
+		}
+
+		this._isActive = !!val;
+		this._lnk.classList.toggle("nav2-accord__lnk-item--active", this._isActive);
+		if (this.parent) this.parent.isActive = this._isActive;
+	}
+
+	get isActive () { // Overriding the setter clobbers the getter, so, re-make it
+		return super.isActive;
+	}
+};
+
+NavBar.NodeAccordion = class extends NavBar.Node {
+	static getDispToggleDisplayHtml (val) { return val ? `[\u2012]` : `[+]`; }
+
+	constructor ({dispToggle, ...rest}) {
+		super(rest);
+		this._dispToggle = dispToggle;
+		this._isExpanded = false;
+	}
+
+	set isActive (val) {
+		this._isActive = !!val;
+		this?.head?.classList?.toggle("nav2-accord__head--active", this._isActive);
+		if (val && !this._isExpanded) this.isExpanded = true;
+		if (this.parent) this.parent.isActive = this._isActive;
+	}
+
+	get isActive () { // Overriding the setter clobbers the getter, so, re-make it
+		return super.isActive;
+	}
+
+	set isExpanded (val) {
+		this._isExpanded = val;
+		this?.body?.classList?.toggle("ve-hidden", !val);
+		this._dispToggle.textContent = NavBar.NodeAccordion.getDispToggleDisplayHtml(val);
+	}
+
+	get isExpanded () {
+		return this._isExpanded;
+	}
+};
+
 NavBar.init();

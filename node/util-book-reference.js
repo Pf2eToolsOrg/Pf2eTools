@@ -82,6 +82,15 @@ UtilBookReference = {
 					}
 
 					const toAdd = MiscUtil.copy(ent);
+					if (toAdd.type.includes("box")) {
+						// TODO: Quick and dirty way, but we shouldn't have other titles in boxes anyways.
+						MiscUtil.getWalker().walk(toAdd, {
+							object: (obj) => {
+								if (obj.type === "pf2-title") obj.type = "pf2-h3";
+								return obj;
+							},
+						})
+					}
 					toAdd.type = "section";
 					const discard = !!toAdd.data.allowRefDupe;
 					recursiveSetSource(toAdd, source);

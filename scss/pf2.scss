@@ -189,16 +189,6 @@
 	}
 }
 
-.pf2-big-stat {
-	margin-bottom: 10px;
-	height: 60vh;
-}
-
-.pf2-small-stat {
-	margin-bottom: 10px;
-	height: 30vh;
-}
-
 .pf2-wrp-stat {
 	margin: 1em 0;
 	clear: both;
@@ -744,15 +734,13 @@
 			float: left;
 			clear: left;
 			border-right: solid 2px #5e0000;
-			width: 50%;
-			max-width: 170px;
-			margin: 0.4em 1em 0.4em -1em;
+			border-left: unset;
+			width: 35%;
+			max-width: 300px;
+			min-width: 170px;
+			// FIXME: margin-right 2em is a workaround for lists
+			margin: 0.4em 2em 0.4em -1em;
 			font-size: 1em;
-
-			@media only screen and (max-width: 220px) {
-				width: calc(100%);
-				max-width: none;
-			}
 		}
 
 		&class {
@@ -761,6 +749,10 @@
 				font-family: 'Gin', sans-serif;
 				font-weight: 400;
 			}
+		}
+
+		&full {
+			height: 100%;
 		}
 	}
 
@@ -904,8 +896,57 @@
 	}
 }
 
+.pf2-combo {
+	display: flex;
+	margin: 0.3em 0;
+
+	&__ {
+		&title {
+			margin: 0;
+			padding: 0;
+			border-bottom: 1px solid #333;
+			font-family: 'good-pro-condensed', sans-serif;
+			font-size: 1.15em;
+			font-weight: 700;
+			text-transform: uppercase;
+			line-height: 1;
+			text-align: left;
+		}
+
+		&start {
+			width: calc(50% - 3px);
+			padding: 0 1em 0 0;
+		}
+
+		&end {
+			border-left: 1px solid #333;
+			padding: 0 1em 0 0.4em;
+			width: calc(50% - 1px);
+		}
+	}
+
+	@media only screen and (max-width: 520px) {
+		flex-direction: column;
+
+		&__ {
+			&start {
+				width: 100%;
+				padding: 0.05em 0 0 0.2em;
+			}
+
+			&end {
+				border-top: 1px solid black;
+				border-left: 0;
+				padding: 0.05em 0 0 0.2em;
+				width: 100%;
+			}
+		}
+	}
+}
+
 .pf2-key-box {
 	color: white;
+	overflow: auto;
 	background: #5e0000;
 	border: 2px solid #b29e74;
 	margin: 0.3em 0;
@@ -978,6 +1019,7 @@
 	font-family: 'good-pro', sans-serif;
 	font-size: 1em;
 	max-width: 100%;
+	overflow: auto;
 
 	&__ {
 		&title {
@@ -1021,6 +1063,7 @@
 	background: #f1e9d4;
 	margin: 0.6em 0;
 	padding: 0.3em 1em;
+	overflow: auto;
 	font-family: 'good-pro', sans-serif;
 	font-size: 1em;
 	max-width: 100%;
@@ -1059,6 +1102,7 @@
 
 .pf2-inset {
 	background: #eae4d8;
+	overflow: auto;
 	border-top: 1px solid #c99a89;
 	border-bottom: 1px solid #c99a89;
 	font-family: 'good-pro', sans-serif;
@@ -1684,6 +1728,25 @@ $night-pf2-brown: #2e2c27;
 		@media only screen and (max-width: 520px) {
 			&__ab {
 				box-shadow: 0 8px 0 -6px $night-accent-gold;
+			}
+		}
+	}
+
+	.pf2-combo {
+		&__ {
+			&end {
+				border-color: #bbb;
+			}
+
+			&title {
+				border-color: #bbb;
+			}
+		}
+
+		@media only screen and (max-width: 520px) {
+			&__end {
+				border-top: 1px solid #bbb;
+				border-left: 0;
 			}
 		}
 	}

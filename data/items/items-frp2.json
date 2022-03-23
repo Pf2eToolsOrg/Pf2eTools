@@ -16,8 +16,7 @@
 			],
 			"price": {
 				"coin": "gp",
-				"amount": 2000,
-				"note": null
+				"amount": 2000
 			},
 			"usage": "held in 1 hand",
 			"bulk": "L",
@@ -26,19 +25,16 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Elixir",
 			"entries": [
 				"This yellow fruit's soft flesh is covered by waxy, fibrous leaves reminiscent of a pineapple. When you eat an apricot of bestial might, you transform into a boar-faced battle form with scaly skin. You can use feats with this item as if it were a bestial mutagen, improving your tusk unarmed attack as if it were a claw or jaws attack.",
 				"Benefit You gain 8 resistance to all physical damage and gain a tusk unarmed attack with the deadly d12 trait that deals {@damage 1d10} piercing damage.",
 				"Drawback You become {@condition clumsy|CRB|clumsy 1}. If you perform an action with the {@trait auditory} or {@trait linguistic} traits, you must succeed at a DC {@flatDC 5} flat check or the action is lost."
-			],
-			"generic": false,
-			"consumable": true
+			]
 		},
 		{
 			"name": "Cape Of The Open Sky",
@@ -54,8 +50,7 @@
 			],
 			"price": {
 				"coin": "gp",
-				"amount": 22000,
-				"note": null
+				"amount": 22000
 			},
 			"usage": "worn cloak",
 			"bulk": "L",
@@ -72,9 +67,6 @@
 					"components": [
 						"Interact"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"The cape becomes a pair of golden drake wings that grant you a fly Speed of 30 feet for 1 hour."
 					]
@@ -92,14 +84,11 @@
 						"unit": "minute",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"The cloak pushes you onward. You {@action Stride} or {@action Fly} up to your Speed, but you can move only in a straight line. You gain a +15-foot status bonus to your Speed and fly Speed for this movement."
 					]
 				}
 			],
-			"generic": false,
 			"consumable": false
 		},
 		{
@@ -117,11 +106,9 @@
 			],
 			"price": {
 				"coin": "gp",
-				"amount": 10000,
-				"note": null
+				"amount": 10000
 			},
 			"usage": "worn headband",
-			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"These silk headbands always come in pairs and usually feature a prominent symbol of a nation or team. If both wearers Invest their headbands at the same time and think of the same symbol while doing so, both headbands change to display that symbol until they are removed.",
@@ -139,14 +126,11 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You remove your headband, which teleports you to a space adjacent to the other Invested wearer's location, if you are within 1 mile of each other."
 					]
 				}
 			],
-			"generic": false,
 			"consumable": false
 		},
 		{
@@ -163,8 +147,7 @@
 			],
 			"price": {
 				"coin": "gp",
-				"amount": 40000,
-				"note": null
+				"amount": 40000
 			},
 			"usage": "held in 2 hands",
 			"bulk": "L",
@@ -185,8 +168,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You shoot an arrow at an open space on a surface within 500 feet and momentarily vanish into a wind that carries the arrow. You teleport to that location."
 					]
@@ -205,8 +186,6 @@
 						"unit": "hour",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You shoot an arrow at the sky and it tears an extraplanar rift that resembles a storm cloud in a 30-foot burst centered on a point within 200 feet. A torrent of rain pours down from the rift for 1 minute or until you {@action Dismiss} the effect. The area within the torrent becomes difficult terrain for all movement (including Flying). As an {@action Interact} action, you can fire an arrow into the rift to cause a bolt of lightning to strike a creature in the area. The creature takes {@damage 5d12} lightning damage and must attempt a DC 41 basic Reflex save."
 					]
@@ -227,14 +206,11 @@
 						"freq": 1,
 						"unit": "week"
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You fire a volley of arrows into the sky. You create the effects of a successful control weather ritual."
 					]
 				}
 			],
-			"generic": false,
 			"consumable": false
 		},
 		{
@@ -252,27 +228,23 @@
 			],
 			"price": {
 				"coin": "gp",
-				"amount": 1900,
-				"note": null
+				"amount": 1900
 			},
 			"usage": "affixed to armor",
-			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
 					"unit": "free"
 				},
-				"components": "command",
-				"requirements": null,
-				"frequency": null,
+				"components": [
+					"command"
+				],
 				"trigger": "You would be forced to move, you would be teleported, or you would take cold, electricity, or sonic damage."
 			},
 			"category": "Consumable",
 			"entries": [
 				"This paper tag is inscribed with magical symbols. When you activate the fulu, it vanishes in a wisp of cloud and you gain resistance 15 to cold, electricity, and sonic damage until the end of your next turn. For that duration, you ignore difficult terrain from wind and weather and you can't be forcibly moved or teleported unless the effect counteracts the fulu (DC 40). These protections apply against the triggering effect."
-			],
-			"generic": false,
-			"consumable": true
+			]
 		},
 		{
 			"name": "Tusk And Fang Chain",
@@ -289,19 +261,17 @@
 			],
 			"price": {
 				"coin": "gp",
-				"amount": 1800,
-				"note": null
+				"amount": 1800
 			},
 			"usage": "affixed to armor",
-			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
 					"unit": "free"
 				},
-				"components": "envision",
-				"requirements": null,
-				"frequency": null,
+				"components": [
+					"envision"
+				],
 				"trigger": "You Grab or restrain a creature or become {@condition grabbed} or {@condition restrained} by a creature"
 			},
 			"category": "Talisman",
@@ -316,9 +286,7 @@
 						"Critical Failure": "The creature is {@condition confused} for 1 minute and the creature doesn't receive a flat check to end its confusion if it takes damage. At the end of each of its turns, it attempts a new Will save, ending the effect on a success."
 					}
 				}
-			],
-			"generic": false,
-			"consumable": true
+			]
 		}
 	]
 }

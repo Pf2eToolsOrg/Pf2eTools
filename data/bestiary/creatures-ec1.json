@@ -62,8 +62,7 @@
 				}
 			],
 			"ac": {
-				"default": 13,
-				"abilities": null
+				"default": 13
 			},
 			"savingThrows": {
 				"Fort": {
@@ -74,19 +73,16 @@
 				},
 				"Will": {
 					"default": 2
-				},
-				"abilities": null
+				}
 			},
 			"hp": [
 				{
 					"hp": 8,
-					"note": null,
 					"abilities": null
 				}
 			],
 			"abilitiesMid": [],
 			"speed": {
-				"abilities": null,
 				"walk": 25
 			},
 			"attacks": [
@@ -214,8 +210,7 @@
 			},
 			"abilitiesTop": [],
 			"ac": {
-				"default": 19,
-				"abilities": null
+				"default": 19
 			},
 			"savingThrows": {
 				"Fort": {
@@ -226,13 +221,11 @@
 				},
 				"Will": {
 					"default": 7
-				},
-				"abilities": null
+				}
 			},
 			"hp": [
 				{
 					"hp": 70,
-					"note": null,
 					"abilities": null
 				}
 			],
@@ -255,7 +248,6 @@
 				}
 			],
 			"speed": {
-				"abilities": null,
 				"walk": 25
 			},
 			"attacks": [
@@ -276,7 +268,6 @@
 					"range": "Melee",
 					"name": "jaws",
 					"attack": 14,
-					"traits": null,
 					"effects": [
 						"mutilating bite"
 					],
@@ -406,8 +397,7 @@
 			},
 			"abilitiesTop": [],
 			"ac": {
-				"default": 18,
-				"abilities": null
+				"default": 18
 			},
 			"savingThrows": {
 				"Fort": {
@@ -418,13 +408,11 @@
 				},
 				"Will": {
 					"default": 7
-				},
-				"abilities": null
+				}
 			},
 			"hp": [
 				{
 					"hp": 50,
-					"note": null,
 					"abilities": null
 				}
 			],
@@ -452,7 +440,6 @@
 				}
 			],
 			"speed": {
-				"abilities": null,
 				"walk": 30
 			},
 			"attacks": [
@@ -460,7 +447,6 @@
 					"range": "Melee",
 					"name": "jaws",
 					"attack": 12,
-					"traits": null,
 					"effects": [
 						"Knockdown"
 					],
@@ -564,8 +550,7 @@
 				}
 			],
 			"ac": {
-				"default": 22,
-				"abilities": null
+				"default": 22
 			},
 			"savingThrows": {
 				"Fort": {
@@ -576,13 +561,11 @@
 				},
 				"Will": {
 					"default": 14
-				},
-				"abilities": null
+				}
 			},
 			"hp": [
 				{
 					"hp": 50,
-					"note": null,
 					"abilities": [
 						"negative healing"
 					]
@@ -606,7 +589,6 @@
 			],
 			"abilitiesMid": [],
 			"speed": {
-				"abilities": null,
 				"walk": 25
 			},
 			"attacks": [
@@ -781,8 +763,7 @@
 				}
 			],
 			"ac": {
-				"default": 22,
-				"abilities": null
+				"default": 22
 			},
 			"savingThrows": {
 				"Fort": {
@@ -793,13 +774,11 @@
 				},
 				"Will": {
 					"default": 15
-				},
-				"abilities": null
+				}
 			},
 			"hp": [
 				{
 					"hp": 83,
-					"note": null,
 					"abilities": null
 				}
 			],
@@ -817,7 +796,6 @@
 				}
 			],
 			"speed": {
-				"abilities": null,
 				"walk": 20
 			},
 			"attacks": [
@@ -839,7 +817,6 @@
 					"range": "Melee",
 					"name": "jaws",
 					"attack": 16,
-					"traits": null,
 					"effects": [],
 					"damage": "{@damage 2d8+3} piercing",
 					"types": [
@@ -956,8 +933,7 @@
 			},
 			"abilitiesTop": [],
 			"ac": {
-				"default": 18,
-				"abilities": null
+				"default": 18
 			},
 			"savingThrows": {
 				"Fort": {
@@ -968,13 +944,11 @@
 				},
 				"Will": {
 					"default": 5
-				},
-				"abilities": null
+				}
 			},
 			"hp": [
 				{
 					"hp": 30,
-					"note": null,
 					"abilities": null
 				}
 			],
@@ -1004,7 +978,6 @@
 				}
 			],
 			"speed": {
-				"abilities": null,
 				"walk": 30,
 				"swim ": 30
 			},
@@ -1013,11 +986,10 @@
 					"range": "Melee",
 					"name": "jaws",
 					"attack": 11,
-					"traits": null,
 					"effects": [
 						"Grab"
 					],
-					"damage": "{@damage 1d10+2} piercing plus {@damage 1d6} {@condition persistent damage ||persistent acid damage} and Grab",
+					"damage": "{@damage 1d10+2} piercing plus {@damage 1d6} {@condition persistent damage ||persistent acid damage} and {@ability Grab}",
 					"types": [
 						"persistent",
 						"piercing"
@@ -1074,6 +1046,12 @@
 			"rarity": "Unique",
 			"alignment": "NE",
 			"size": "Medium",
+			"items": [
+				"{@item leather armor}",
+				"gray robes",
+				"{@item trident}",
+				"{@item wooden religious symbol} of {@deity Gozreh} defaced with demonic runes"
+			],
 			"traits": [
 				"Human"
 			],
@@ -1114,14 +1092,13 @@
 			"abilitiesTop": [
 				{
 					"entries": [
-						"The corrupted priest can use {@skill Diplomacy} to {@action Make an Impression} on animals and to make very simple Requests of them."
+						"The corrupted priest can use {@skill Diplomacy} to {@action Make an Impression} on animals and to make very simple {@action Request||Requests} of them."
 					],
 					"name": "Wild Empathy"
 				}
 			],
 			"ac": {
-				"default": 17,
-				"abilities": null
+				"default": 17
 			},
 			"savingThrows": {
 				"Fort": {
@@ -1132,13 +1109,11 @@
 				},
 				"Will": {
 					"default": 11
-				},
-				"abilities": null
+				}
 			},
 			"hp": [
 				{
 					"hp": 45,
-					"note": null,
 					"abilities": null
 				}
 			],
@@ -1156,7 +1131,6 @@
 				}
 			],
 			"speed": {
-				"abilities": null,
 				"walk": 25
 			},
 			"attacks": [
@@ -1178,9 +1152,66 @@
 			"abilitiesBot": [
 				{
 					"entries": [
-						"Corrupted priests deal an extra {@dice 1d8} damage with their tridents, and any trident gains the fatal d10 trait while the priest is using it (both the extra weapon damage die and the {@trait fatal} trait have already been included above)."
+						"Corrupted priests deal an extra {@dice 1d8} damage with their tridents, and any trident gains the {@trait fatal d10} trait while the priest is using it (both the extra weapon damage die and the {@trait fatal} trait have already been included above)."
 					],
 					"name": "Demonic Strength"
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Primal Prepared",
+					"type": "Prepared",
+					"tradition": "Primal",
+					"DC": 20,
+					"attack": 12,
+					"entry": {
+						"0": {
+							"level": 2,
+							"spells": [
+								{
+									"name": "light"
+								},
+								{
+									"name": "produce flame"
+								},
+								{
+									"name": "stabilize"
+								},
+								{
+									"name": "tanglefoot"
+								}
+							]
+						},
+						"1": {
+							"spells": [
+								{
+									"name": "fear"
+								},
+								{
+									"name": "heal"
+								},
+								{
+									"name": "spider sting"
+								},
+								{
+									"name": "summon animal"
+								}
+							]
+						},
+						"2": {
+							"spells": [
+								{
+									"name": "barkskin"
+								},
+								{
+									"name": "flaming sphere"
+								},
+								{
+									"name": "summon elemental"
+								}
+							]
+						}
+					}
 				}
 			],
 			"inflicts": {
@@ -1242,8 +1273,7 @@
 			"abilitiesTop": [],
 			"ac": {
 				"default": 19,
-				"with shield raised": 21,
-				"abilities": null
+				"with shield raised": 21
 			},
 			"savingThrows": {
 				"Fort": {
@@ -1254,15 +1284,19 @@
 				},
 				"Will": {
 					"default": 7
-				},
-				"abilities": null
+				}
 			},
 			"hp": [
 				{
 					"hp": 30,
-					"note": null,
 					"abilities": null
 				}
+			],
+			"items": [
+				"{@item hide armor}",
+				"gray robes",
+				"{@item trident}",
+				"{@item wooden shield} (Hardness 3)"
 			],
 			"abilitiesMid": [
 				{
@@ -1290,7 +1324,6 @@
 				}
 			],
 			"speed": {
-				"abilities": null,
 				"walk": 25
 			},
 			"attacks": [
@@ -1312,7 +1345,7 @@
 			"abilitiesBot": [
 				{
 					"entries": [
-						"Corrupted retainers deal an extra {@dice 1d8} damage with their tridents, and any trident gains the fatal d10 trait while the corrupted retainer is using it (both the extra weapon damage die and the {@trait fatal} trait have already been included in the corrupted retainer's trident {@action Strike} above)."
+						"Corrupted retainers deal an extra {@dice 1d8} damage with their tridents, and any trident gains the {@trait fatal d10} trait while the corrupted retainer is using it (both the extra weapon damage die and the {@trait fatal} trait have already been included in the corrupted retainer's trident {@action Strike} above)."
 					],
 					"name": "Demonic Strength"
 				},
@@ -1327,15 +1360,9 @@
 						"mental"
 					],
 					"entries": [
-						"The corrupted retainer begins to rage and gains 5 temporary."
+						"The corrupted retainer begins to rage and gains 5 temporary Hit Points. The rage lasts for 1 minute or until they fall {@condition unconscious}, whichever happens first. While raging, the corrupted retainer deals 2 additional damage with melee weapons, has a \u20131 penalty to AC, and cannot use actions that have the {@trait concentrate} trait unless those actions also have the {@trait rage} trait. The corrupted retainer can still {@action Seek} while raging."
 					],
 					"name": "Tainted Rage"
-				},
-				{
-					"entries": [
-						"The rage lasts for 1 minute or until they fall {@condition unconscious}, whichever happens first. While raging, the corrupted retainer deals 2 additional damage with melee weapons, has a \u20131 penalty to AC, and cannot use actions that have the {@trait concentrate} trait unless those actions also have the {@trait rage} trait. The corrupted retainer can still {@action Seek} while raging."
-					],
-					"name": "Hit Points."
 				}
 			],
 			"inflicts": {
@@ -1411,8 +1438,7 @@
 				}
 			],
 			"ac": {
-				"default": 17,
-				"abilities": null
+				"default": 17
 			},
 			"savingThrows": {
 				"Fort": {
@@ -1423,19 +1449,16 @@
 				},
 				"Will": {
 					"default": 7
-				},
-				"abilities": null
+				}
 			},
 			"hp": [
 				{
 					"hp": 30,
-					"note": null,
 					"abilities": null
 				}
 			],
 			"abilitiesMid": [],
 			"speed": {
-				"abilities": null,
 				"walk": 25
 			},
 			"attacks": [
@@ -1543,8 +1566,7 @@
 			},
 			"abilitiesTop": [],
 			"ac": {
-				"default": 18,
-				"abilities": null
+				"default": 18
 			},
 			"savingThrows": {
 				"Fort": {
@@ -1555,13 +1577,11 @@
 				},
 				"Will": {
 					"default": 6
-				},
-				"abilities": null
+				}
 			},
 			"hp": [
 				{
 					"hp": 55,
-					"note": null,
 					"abilities": null
 				}
 			],
@@ -1581,7 +1601,6 @@
 			],
 			"abilitiesMid": [],
 			"speed": {
-				"abilities": null,
 				"walk": 30
 			},
 			"attacks": [],
@@ -1677,8 +1696,7 @@
 			},
 			"abilitiesTop": [],
 			"ac": {
-				"default": 19,
-				"abilities": null
+				"default": 19
 			},
 			"savingThrows": {
 				"Fort": {
@@ -1689,19 +1707,16 @@
 				},
 				"Will": {
 					"default": 4
-				},
-				"abilities": null
+				}
 			},
 			"hp": [
 				{
 					"hp": 50,
-					"note": null,
 					"abilities": null
 				}
 			],
 			"abilitiesMid": [],
 			"speed": {
-				"abilities": null,
 				"walk": 30
 			},
 			"attacks": [
@@ -1709,7 +1724,6 @@
 					"range": "Melee",
 					"name": "proboscis",
 					"attack": 10,
-					"traits": null,
 					"effects": [
 						"Suck Blood",
 						"flea fever"
@@ -1803,8 +1817,7 @@
 			],
 			"abilitiesTop": [],
 			"ac": {
-				"default": 14,
-				"abilities": null
+				"default": 14
 			},
 			"savingThrows": {
 				"Fort": {
@@ -1815,19 +1828,16 @@
 				},
 				"Will": {
 					"default": 7
-				},
-				"abilities": null
+				}
 			},
 			"hp": [
 				{
 					"hp": 27,
-					"note": null,
 					"abilities": null
 				}
 			],
 			"abilitiesMid": [],
 			"speed": {
-				"abilities": null,
 				"walk": 25
 			},
 			"attacks": [
@@ -1849,7 +1859,6 @@
 					"range": "Melee",
 					"name": "improvised weapon",
 					"attack": 6,
-					"traits": null,
 					"effects": [
 						"piercing",
 						"or slashing"
@@ -1944,8 +1953,7 @@
 			},
 			"abilitiesTop": [],
 			"ac": {
-				"default": 17,
-				"abilities": null
+				"default": 17
 			},
 			"savingThrows": {
 				"Fort": {
@@ -1956,13 +1964,11 @@
 				},
 				"Will": {
 					"default": 6
-				},
-				"abilities": null
+				}
 			},
 			"hp": [
 				{
 					"hp": 32,
-					"note": null,
 					"abilities": null
 				}
 			],
@@ -1980,7 +1986,6 @@
 				}
 			],
 			"speed": {
-				"abilities": null,
 				"walk": 30
 			},
 			"attacks": [
@@ -2133,8 +2138,7 @@
 			},
 			"abilitiesTop": [],
 			"ac": {
-				"default": 15,
-				"abilities": null
+				"default": 15
 			},
 			"savingThrows": {
 				"Fort": {
@@ -2145,13 +2149,11 @@
 				},
 				"Will": {
 					"default": 5
-				},
-				"abilities": null
+				}
 			},
 			"hp": [
 				{
 					"hp": 16,
-					"note": null,
 					"abilities": null
 				}
 			],
@@ -2167,7 +2169,6 @@
 				}
 			],
 			"speed": {
-				"abilities": null,
 				"walk": 30
 			},
 			"attacks": [
@@ -2175,7 +2176,6 @@
 					"range": "Melee",
 					"name": "tusk",
 					"attack": 8,
-					"traits": null,
 					"effects": [],
 					"damage": "{@damage 1d6+3} piercing",
 					"types": [
@@ -2254,8 +2254,7 @@
 				}
 			],
 			"ac": {
-				"default": 11,
-				"abilities": null
+				"default": 11
 			},
 			"savingThrows": {
 				"Fort": {
@@ -2266,13 +2265,11 @@
 				},
 				"Will": {
 					"default": 6
-				},
-				"abilities": null
+				}
 			},
 			"hp": [
 				{
 					"hp": 80,
-					"note": null,
 					"abilities": null
 				}
 			],
@@ -2306,7 +2303,6 @@
 				}
 			],
 			"speed": {
-				"abilities": null,
 				"walk": 25,
 				"climb ": 15
 			},
@@ -2315,7 +2311,6 @@
 					"range": "Melee",
 					"name": "pseudopod",
 					"attack": 13,
-					"traits": null,
 					"effects": [],
 					"damage": "{@damage 2d8+5} bludgeoning",
 					"types": [
@@ -2414,8 +2409,7 @@
 			},
 			"abilitiesTop": [],
 			"ac": {
-				"default": 17,
-				"abilities": null
+				"default": 17
 			},
 			"savingThrows": {
 				"Fort": {
@@ -2426,13 +2420,11 @@
 				},
 				"Will": {
 					"default": 4
-				},
-				"abilities": null
+				}
 			},
 			"hp": [
 				{
 					"hp": 33,
-					"note": null,
 					"abilities": null
 				}
 			],
@@ -2467,7 +2459,6 @@
 				}
 			],
 			"speed": {
-				"abilities": null,
 				"walk": 25
 			},
 			"attacks": [
@@ -2489,7 +2480,6 @@
 					"range": "Melee",
 					"name": "headbutt",
 					"attack": 11,
-					"traits": null,
 					"effects": [],
 					"damage": "{@damage 2d4+4} bludgeoning",
 					"types": [
@@ -2583,8 +2573,7 @@
 				}
 			],
 			"ac": {
-				"default": 19,
-				"abilities": null
+				"default": 19
 			},
 			"savingThrows": {
 				"Fort": {
@@ -2595,19 +2584,16 @@
 				},
 				"Will": {
 					"default": 11
-				},
-				"abilities": null
+				}
 			},
 			"hp": [
 				{
 					"hp": 45,
-					"note": null,
 					"abilities": null
 				}
 			],
 			"abilitiesMid": [],
 			"speed": {
-				"abilities": null,
 				"walk": 20
 			},
 			"attacks": [
@@ -2823,8 +2809,7 @@
 			},
 			"abilitiesTop": [],
 			"ac": {
-				"default": 19,
-				"abilities": null
+				"default": 19
 			},
 			"savingThrows": {
 				"Fort": {
@@ -2835,13 +2820,11 @@
 				},
 				"Will": {
 					"default": 7
-				},
-				"abilities": null
+				}
 			},
 			"hp": [
 				{
 					"hp": 50,
-					"note": null,
 					"abilities": null
 				}
 			],
@@ -2873,7 +2856,6 @@
 				}
 			],
 			"speed": {
-				"abilities": null,
 				"walk": 25
 			},
 			"attacks": [
@@ -2964,8 +2946,7 @@
 			},
 			"abilitiesTop": [],
 			"ac": {
-				"default": 21,
-				"abilities": null
+				"default": 21
 			},
 			"savingThrows": {
 				"Fort": {
@@ -2976,19 +2957,16 @@
 				},
 				"Will": {
 					"default": 8
-				},
-				"abilities": null
+				}
 			},
 			"hp": [
 				{
 					"hp": 70,
-					"note": null,
 					"abilities": null
 				}
 			],
 			"abilitiesMid": [],
 			"speed": {
-				"abilities": null,
 				"walk": 25
 			},
 			"attacks": [
@@ -3012,7 +2990,6 @@
 					"range": "Melee",
 					"name": "foot",
 					"attack": 13,
-					"traits": null,
 					"effects": [],
 					"damage": "{@damage 1d8+5} bludgeoning",
 					"types": [
@@ -3123,8 +3100,7 @@
 				}
 			],
 			"ac": {
-				"default": 20,
-				"abilities": null
+				"default": 20
 			},
 			"savingThrows": {
 				"Fort": {
@@ -3135,19 +3111,16 @@
 				},
 				"Will": {
 					"default": 7
-				},
-				"abilities": null
+				}
 			},
 			"hp": [
 				{
 					"hp": 46,
-					"note": null,
 					"abilities": null
 				}
 			],
 			"abilitiesMid": [],
 			"speed": {
-				"abilities": null,
 				"walk": 20
 			},
 			"attacks": [
@@ -3264,8 +3237,7 @@
 			],
 			"abilitiesTop": [],
 			"ac": {
-				"default": 19,
-				"abilities": null
+				"default": 19
 			},
 			"savingThrows": {
 				"Fort": {
@@ -3276,13 +3248,11 @@
 				},
 				"Will": {
 					"default": 8
-				},
-				"abilities": null
+				}
 			},
 			"hp": [
 				{
 					"hp": 45,
-					"note": null,
 					"abilities": [
 						"negative healing"
 					]
@@ -3301,7 +3271,6 @@
 				}
 			],
 			"speed": {
-				"abilities": null,
 				"walk": 30,
 				"burrow ": 5
 			},
@@ -3381,8 +3350,6 @@
 							"note": "",
 							"DC": 18,
 							"savingThrow": "Fortitude",
-							"onset": null,
-							"maxDuration": null,
 							"stages": [
 								{
 									"stage": 1,
@@ -3497,7 +3464,8 @@
 					"default": 10
 				},
 				"Stealth": {
-					"default": 11
+					"default": 11,
+					"in dim light or darker": 14
 				}
 			},
 			"abilityMods": {
@@ -3510,8 +3478,7 @@
 			},
 			"abilitiesTop": [],
 			"ac": {
-				"default": 19,
-				"abilities": null
+				"default": 19
 			},
 			"savingThrows": {
 				"Fort": {
@@ -3522,13 +3489,11 @@
 				},
 				"Will": {
 					"default": 6
-				},
-				"abilities": null
+				}
 			},
 			"hp": [
 				{
 					"hp": 45,
-					"note": null,
 					"abilities": null
 				}
 			],
@@ -3542,6 +3507,10 @@
 				{
 					"amount": 5,
 					"name": "electricity"
+				},
+				{
+					"amount": 5,
+					"name": "poison"
 				}
 			],
 			"abilitiesMid": [
@@ -3553,7 +3522,6 @@
 				}
 			],
 			"speed": {
-				"abilities": null,
 				"walk": 30,
 				"climb ": 20
 			},
@@ -3568,7 +3536,7 @@
 					"effects": [
 						"Grab"
 					],
-					"damage": "{@damage 1d10+3} piercing plus {@damage 1d4} fire and Grab",
+					"damage": "{@damage 1d10+3} piercing plus {@damage 1d4} fire and {@ability Grab}",
 					"types": [
 						"fire",
 						"piercing"
@@ -3699,8 +3667,7 @@
 			"abilitiesTop": [],
 			"ac": {
 				"default": 16,
-				"while Inhabiting a Body": 19,
-				"abilities": null
+				"while Inhabiting a Body": 19
 			},
 			"savingThrows": {
 				"Fort": {
@@ -3711,13 +3678,11 @@
 				},
 				"Will": {
 					"default": 6
-				},
-				"abilities": null
+				}
 			},
 			"hp": [
 				{
 					"hp": 55,
-					"note": null,
 					"abilities": null
 				}
 			],
@@ -3744,7 +3709,6 @@
 				}
 			],
 			"speed": {
-				"abilities": null,
 				"walk": 25,
 				"burrow ": 15
 			},
@@ -3753,7 +3717,6 @@
 					"range": "Melee",
 					"name": "bite",
 					"attack": 12,
-					"traits": null,
 					"effects": [],
 					"damage": "{@damage 2d8+3} piercing",
 					"types": [
@@ -3911,8 +3874,7 @@
 			],
 			"abilitiesTop": [],
 			"ac": {
-				"default": 16,
-				"abilities": null
+				"default": 16
 			},
 			"savingThrows": {
 				"Fort": {
@@ -3923,19 +3885,16 @@
 				},
 				"Will": {
 					"default": 8
-				},
-				"abilities": null
+				}
 			},
 			"hp": [
 				{
 					"hp": 40,
-					"note": null,
 					"abilities": null
 				}
 			],
 			"abilitiesMid": [],
 			"speed": {
-				"abilities": null,
 				"walk": 25
 			},
 			"attacks": [
@@ -3943,7 +3902,6 @@
 					"range": "Melee",
 					"name": "flaming baton",
 					"attack": 10,
-					"traits": null,
 					"effects": [],
 					"damage": "{@damage 1d6+2} bludgeoning plus {@damage 1d6} fire",
 					"types": [
@@ -4057,8 +4015,7 @@
 			},
 			"abilitiesTop": [],
 			"ac": {
-				"default": 16,
-				"abilities": null
+				"default": 16
 			},
 			"savingThrows": {
 				"Fort": {
@@ -4069,13 +4026,11 @@
 				},
 				"Will": {
 					"default": 7
-				},
-				"abilities": null
+				}
 			},
 			"hp": [
 				{
 					"hp": 24,
-					"note": null,
 					"abilities": null
 				}
 			],
@@ -4097,7 +4052,6 @@
 				}
 			],
 			"speed": {
-				"abilities": null,
 				"walk": 30
 			},
 			"attacks": [
@@ -4105,7 +4059,6 @@
 					"range": "Melee",
 					"name": "horns",
 					"attack": 8,
-					"traits": null,
 					"effects": [],
 					"damage": "{@damage 1d6+3} bludgeoning",
 					"types": [
@@ -4116,7 +4069,6 @@
 					"range": "Melee",
 					"name": "jaws",
 					"attack": 8,
-					"traits": null,
 					"effects": [],
 					"damage": "{@damage 1d4+3} piercing",
 					"types": [
@@ -4223,8 +4175,7 @@
 				}
 			],
 			"ac": {
-				"default": 18,
-				"abilities": null
+				"default": 18
 			},
 			"savingThrows": {
 				"Fort": {
@@ -4235,13 +4186,11 @@
 				},
 				"Will": {
 					"default": 4
-				},
-				"abilities": null
+				}
 			},
 			"hp": [
 				{
 					"hp": 30,
-					"note": null,
 					"abilities": null
 				}
 			],
@@ -4258,7 +4207,6 @@
 				}
 			],
 			"speed": {
-				"abilities": null,
 				"walk": 25
 			},
 			"attacks": [
@@ -4283,7 +4231,6 @@
 					"range": "Melee",
 					"name": "jaws",
 					"attack": 10,
-					"traits": null,
 					"effects": [
 						"xulgath bile"
 					],
@@ -4356,7 +4303,6 @@
 							"note": "",
 							"DC": 16,
 							"savingThrow": "Fortitude",
-							"onset": null,
 							"maxDuration": "1 hour",
 							"stages": [
 								{

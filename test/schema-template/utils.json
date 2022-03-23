@@ -5,29 +5,15 @@
 	"description": "A file containing various utility functions for Pf2eTools.",
 	"type": "object",
 	"version": "0.0.1",
-
 	"definitions": {
 		"sourceList": {
 			"enum": [
-				"CRB",
-				"Bst",
-				"GMG",
-				"Bst2",
-				"APG",
-				"Bst3",
-				"SoM",
-				"LOWG",
-				"LOCG",
-				"LOGM",
-				"LOGMWS",
-				"LOL",
-				"LOPSG",
-				"LOAG",
-				"LOME",
-				"LOACLO",
 				"AAWS",
-				"G&G",
-				"LOTGB",
+				"APG",
+				"AV0",
+				"AV1",
+				"AV2",
+				"AV3",
 				"AoA0",
 				"AoA1",
 				"AoA2",
@@ -35,13 +21,6 @@
 				"AoA4",
 				"AoA5",
 				"AoA6",
-				"EC0",
-				"EC1",
-				"EC2",
-				"EC3",
-				"EC4",
-				"EC5",
-				"EC6",
 				"AoE0",
 				"AoE1",
 				"AoE2",
@@ -49,14 +28,38 @@
 				"AoE4",
 				"AoE5",
 				"AoE6",
-				"AV0",
-				"AV1",
-				"AV2",
-				"AV3",
+				"Bst",
+				"Bst2",
+				"Bst3",
+				"CRB",
+				"EC0",
+				"EC1",
+				"EC2",
+				"EC3",
+				"EC4",
+				"EC5",
+				"EC6",
 				"FRP0",
 				"FRP1",
 				"FRP2",
 				"FRP3",
+				"FoP",
+				"G&G",
+				"GMG",
+				"LOACLO",
+				"LOAG",
+				"LOCG",
+				"LOGM",
+				"LOGMWS",
+				"LOL",
+				"LOME",
+				"LOPSG",
+				"LOTGB",
+				"LOWG",
+				"LTiBA",
+				"NGD",
+				"Sli",
+				"SoM",
 				"SoT0",
 				"SoT1",
 				"SoT2",
@@ -64,15 +67,9 @@
 				"SoT4",
 				"SoT5",
 				"SoT6",
-				"Sli",
-				"NGD",
-				"FoP",
-				"TiO",
-				"LTiBA"
+				"TiO"
 			]
 		},
-
-
 		"frequency": {
 			"type": "object",
 			"oneOf": [
@@ -84,7 +81,9 @@
 						}
 					},
 					"additionalProperties": false,
-					"required": ["special"]
+					"required": [
+						"special"
+					]
 				},
 				{
 					"properties": {
@@ -129,22 +128,38 @@
 							]
 						},
 						"customUnit": {
-							"$comment": "You could just add these the valid list above, but I feel like as more data is added it's going to become an ever extending list. Better to have a dedicated property for custom strings and keep the validation/pluralisation of standard units separate.",
+							"description": "Name of a custom unit, use the correct single/plural form.",
 							"type": "string",
-							"examples": ["Crimson Shroud", "gem"]
+							"examples": [
+								"epoch",
+								"gem"
+							]
 						}
 					},
 					"additionalProperties": false,
 					"oneOf": [
-						{ "required": ["freq", "unit"] },
-						{ "required": ["freq", "customUnit"] }
+						{
+							"required": [
+								"freq",
+								"unit"
+							]
+						},
+						{
+							"required": [
+								"freq",
+								"customUnit"
+							]
+						}
 					]
 				}
 			]
 		},
 		"activity": {
 			"type": "object",
-			"required": ["number", "unit"],
+			"required": [
+				"number",
+				"unit"
+			],
 			"properties": {
 				"number": {
 					"type": "number"
@@ -178,7 +193,27 @@
 			},
 			"additionalProperties": false
 		},
-
+		"price": {
+			"type": "object",
+			"properties": {
+				"coin": {
+					"type": "string",
+					"enum": [
+						"gp",
+						"sp",
+						"cp",
+						"pp"
+					]
+				},
+				"amount": {
+					"type": "number"
+				}
+			},
+			"required": [
+				"amount",
+				"coin"
+			]
+		},
 		"otherSources": {
 			"type": "object",
 			"patternProperties": {
@@ -193,7 +228,6 @@
 			},
 			"additionalProperties": false
 		},
-
 		"implies": {
 			"type": "object",
 			"properties": {
@@ -242,7 +276,6 @@
 			},
 			"additionalProperties": false
 		},
-
 		"anyTraitUpper": {
 			"type": "string",
 			"anyOf": [
@@ -314,12 +347,15 @@
 						"True Name",
 						"Shadow",
 						"Contract",
-						"Invested"
+						"Invested",
+						"Curse",
+						"Virulent"
 					]
 				},
 				{
 					"enum": [
-						"[Magical Tradition]"
+						"[Magical Tradition]",
+						"[Class]"
 					]
 				},
 				{
@@ -328,9 +364,8 @@
 				}
 			]
 		},
-
 		"loreSubjects": {
-			"type":"string",
+			"type": "string",
 			"enum": [
 				"Dragon",
 				"Kintargo",
@@ -339,8 +374,6 @@
 				"Breachill"
 			]
 		},
-
-
 		"abilityUpper": {
 			"type": "string",
 			"enum": [
@@ -350,11 +383,9 @@
 				"Intelligence",
 				"Wisdom",
 				"Charisma",
-
 				"Free"
 			]
 		},
-
 		"ancestryNameUpper": {
 			"type": "string",
 			"enum": [
@@ -389,7 +420,6 @@
 				"Shisk"
 			]
 		},
-
 		"skillNameUpper": {
 			"type": "string",
 			"description": "A Skill Trait",
@@ -413,7 +443,6 @@
 				"Thievery"
 			]
 		},
-
 		"classNameUpperSourced": {
 			"type": "string",
 			"enum": [
@@ -464,12 +493,15 @@
 				"Wizard"
 			]
 		},
-
 		"rarityUpper": {
 			"type": "string",
-			"enum": ["Common", "Uncommon", "Rare", "Unique"]
+			"enum": [
+				"Common",
+				"Uncommon",
+				"Rare",
+				"Unique"
+			]
 		},
-
 		"traditionUpper": {
 			"type": "string",
 			"enum": [
@@ -479,7 +511,6 @@
 				"Primal"
 			]
 		},
-
 		"schoolUpper": {
 			"type": "string",
 			"enum": [
@@ -493,7 +524,6 @@
 				"Transmutation"
 			]
 		},
-
 		"damageTypeUpper": {
 			"type": "string",
 			"enum": [
@@ -518,7 +548,10 @@
 				"Mental"
 			]
 		},
-
+		"damageTypeTags": {
+			"type": "string",
+			"description": "TODO"
+		},
 		"effectNameUpper": {
 			"type": "string",
 			"enum": [
@@ -542,6 +575,36 @@
 				"Sleep",
 				"Teleportation",
 				"Visual"
+			]
+		},
+		"weaponGroupUpper": {
+			"type": "string",
+			"enum": [
+				"Firearm|G&G",
+				"Axe",
+				"Sword",
+				"Spear",
+				"Sling",
+				"Shield",
+				"Polearm",
+				"Pick",
+				"Knife",
+				"Hammer",
+				"Flail",
+				"Dart",
+				"Club",
+				"Brawling",
+				"Bow"
+			]
+		},
+		"armorGroupUpper": {
+			"type": "string",
+			"enum": [
+				"Plate",
+				"Leather",
+				"Chain",
+				"Cloth",
+				"Composite"
 			]
 		}
 	}

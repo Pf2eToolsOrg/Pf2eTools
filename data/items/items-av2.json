@@ -13,16 +13,14 @@
 			],
 			"price": {
 				"coin": "gp",
-				"amount": 250,
-				"note": null
+				"amount": 250
 			},
 			"usage": "held in 1 hand",
-			"bulk": "1",
+			"bulk": 1,
 			"category": "Held",
 			"entries": [
 				"This +1 striking longsword has a mirror-like blade free of tarnish despite being millennia old. While wielding it, you gain a +2 item bonus to checks to {@action Aid}. If you're an expert with the skill or attack roll you're using to {@action Aid} and you critically succeed, you grant your ally a +3 circumstance bonus to the triggering check instead of a +2 bonus."
 			],
-			"generic": false,
 			"consumable": false
 		},
 		{
@@ -47,7 +45,6 @@
 				"{@b Hidden Condition} The \"termination of mortal life\" clause is carefully worded to hasten your demise. You can't use the benefit against a {@trait death} effect, and if you roll a failure on a saving throw against a {@trait death} effect, you get a critical failure instead.",
 				"{@b Termination Clause} If you critically fail a saving throw against a {@trait death} effect and do not die, the contract becomes unenforceable on its terms and is voided."
 			],
-			"generic": false,
 			"contract": {
 				"devil": "{@creature imp}",
 				"decipher": [
@@ -73,8 +70,7 @@
 			],
 			"price": {
 				"coin": "gp",
-				"amount": 675,
-				"note": null
+				"amount": 675
 			},
 			"usage": "worn bracers",
 			"bulk": "L",
@@ -94,8 +90,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You exert your will over a mindless creature within 30 feet. If the target is a mindless creature of 3rd level or lower, it must attempt a DC 20 Will save. If you are a devil, the target uses an outcome one degree of success worse than the result of its saving throw.",
 						{
@@ -110,7 +104,6 @@
 					]
 				}
 			],
-			"generic": false,
 			"consumable": false
 		},
 		{
@@ -126,8 +119,7 @@
 			],
 			"price": {
 				"coin": "gp",
-				"amount": 160,
-				"note": null
+				"amount": 160
 			},
 			"usage": "varies (see text)",
 			"bulk": "varies (see text)",
@@ -144,15 +136,11 @@
 					"components": [
 						"once per hour"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You play a pounding rhythm on the drum. If the next action you use is to cast a composition cantrip that has an emanation, increase the area of the emanation by 30 feet."
 					]
 				}
 			],
-			"generic": false,
 			"consumable": false
 		},
 		{
@@ -170,8 +158,7 @@
 			],
 			"price": {
 				"coin": "gp",
-				"amount": 80,
-				"note": null
+				"amount": 80
 			},
 			"usage": "worn",
 			"bulk": "L",
@@ -188,15 +175,11 @@
 						"command",
 						"Interact"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"By touching a weapon you wield to the symbol and uttering a plea for {@deity Erastil}'s steadying hand, you grant that weapon the deadly d12 trait. Against undead, the weapon instead gains the fatal d12 trait. This blessing lasts for 1 minute, until you score a critical hit with the weapon, or until you aren't wielding the weapon."
 					]
 				}
 			],
-			"generic": false,
 			"consumable": false
 		},
 		{
@@ -215,8 +198,7 @@
 			],
 			"price": {
 				"coin": "gp",
-				"amount": 24,
-				"note": null
+				"amount": 24
 			},
 			"usage": "held in 1 hand",
 			"bulk": "L",
@@ -225,10 +207,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Elixir",
 			"entries": [
@@ -236,9 +217,7 @@
 				"Benefit For 1 minute, you gain fast healing 2 and automatically succeed at flat checks to recover from {@condition persistent damage ||persistent bleed damage}.",
 				"Drawback Your thickened skin makes quick movement difficult, and your excess skin flakes off with the slightest movement.",
 				"You take a \u20132 penalty to Reflex saves for 1 minute. Any creature attempting to {@action Track} you in the next 24 hours gains a +4 circumstance bonus to their check."
-			],
-			"generic": false,
-			"consumable": true
+			]
 		},
 		{
 			"name": "Icy Disposition",
@@ -261,7 +240,6 @@
 				"{@b Hidden Condition} ({@trait conjuration}, {@trait teleportation}) No more than once per week, the gelugon can move you like a piece on a game board to advance its schemes. The gelugon can appear and transport you and any items you're wearing and holding from your current space to a clear space within 500 feet (the gelugon need not see this location, but must know its relative location and distance from you). This effect doesn't transport any other creatures. The gelugon is unlikely to place you in a less dangerous space than the one you left.",
 				"{@b Termination Clause} The contract provides you the benefits of \"the eternal ice of Cocytus.\" If you travel to Cocytus, Hell's seventh layer, and stand within an area at least 100 feet across that contains no ice and has a temperature above freezing, the contract is void. Such locations are exceptionally rare in Cocytus, and the efforts to create such an area are likely to attract unpleasant attention."
 			],
-			"generic": false,
 			"contract": {
 				"devil": "{@creature gelugon}",
 				"decipher": [
@@ -292,7 +270,6 @@
 				"{@b Hidden Condition} The barbazu owns any weapons you find. No more often than once per month, the barbazu can demand a single weapon of its choice (often the best weapon in your possession). You are compelled to hand over the weapon immediately, without question.",
 				"{@b Termination Clause} The contract guarantees that you will not \"be slain by the barbazu or by barbazu action.\" This wording is vague; if any barbazu kills you, or if you die from {@condition persistent damage ||persistent bleed damage} from any source, the contract is voided."
 			],
-			"generic": false,
 			"contract": {
 				"devil": "{@creature barbazu}",
 				"decipher": [
@@ -323,7 +300,6 @@
 				"{@b Hidden Condition} No more than once per year, the erinys can compel you to attack a creature of the erinys's choice that you can see. You are {@condition controlled} by the erinys and must fight the chosen creature for 1 minute.",
 				"{@b Termination Clause} The contract demands that you enact bloody vengeance against anyone who has ever wronged you, but the nature of the vengeance is vague. You can end the contract by creating effigies of everyone you believe has ever wronged you, bleeding upon them all at once (at least 1 Hit Point per effigy), and destroying them."
 			],
-			"generic": false,
 			"contract": {
 				"devil": "{@creature erinys}",
 				"decipher": [
@@ -348,8 +324,7 @@
 			],
 			"price": {
 				"coin": "gp",
-				"amount": 60,
-				"note": null
+				"amount": 60
 			},
 			"usage": "held in 2 hands",
 			"bulk": "L",
@@ -358,17 +333,15 @@
 					"number": 2,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Poison",
 			"entries": [
 				"This complex toxin makes the muscles beneath a creature's skin loose and malleable, which fleshwarpers find useful in their work. Rough or jerky movements the victim performs concentrate the toxin in subdermal muscles and eventually cause skin and muscle to slough away.",
 				{
 					"type": "affliction",
-					"name": null,
 					"traits": [],
 					"DC": 25,
 					"savingThrow": "Fortitude",
@@ -392,9 +365,7 @@
 						}
 					]
 				}
-			],
-			"generic": false,
-			"consumable": true
+			]
 		}
 	]
 }

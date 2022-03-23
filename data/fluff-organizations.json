@@ -96,80 +96,60 @@
 							"type": "pf2-h2",
 							"name": "Firebrand Options",
 							"source": "LOCG",
+							"collapsible": true,
 							"page": 71,
 							"entries": [
 								"The Firebrands use a variety of unorthodox equipment and techniques to achieve their goals, whether those goals include drawing attention, or subterfuge and subtlety. The following Firebrand options are uncommon, and members of the Firebrands gain access to them once they reach the rank of second mark. The Entourage feat is rare even for members of the Firebrands, as it requires a certain degree of fame and in-world activity to acquire, and potentially requires the player or GM to keep track of additional background NPCs. Typically, only third mark and fourth mark Firebrands have the notoriety and social influence required to maintain an entourage. While Firebrands seek to build an entourage more than most adventurers, it's not unreasonable for any famous character to gain access to it if the players are interested in playing with the {@feat Entourage|LOCG} feat.",
 								{
 									"type": "pf2-h3",
 									"name": "Firebrands Feats",
-									"collapsible": true,
 									"source": "LOCG",
 									"page": 71,
 									"entries": [
 										"The following feats allow Firebrands to easily hide among a populace or gather crowds around them.",
 										{
-											"type": "statblock",
-											"tag": "feat",
-											"name": "Backup Disguise",
-											"source": "LOCG"
-										},
-										{
-											"type": "statblock",
-											"tag": "feat",
-											"name": "Sow Rumor",
-											"source": "LOCG"
-										},
-										{
-											"type": "statblock",
-											"tag": "feat",
-											"name": "Entourage",
-											"source": "LOCG"
+											"type": "list",
+											"columns": 3,
+											"items": [
+												"{@feat Backup Disguise|LOCG}",
+												"{@feat Sow Rumor|LOCG}",
+												"{@feat Entourage|LOCG}"
+											]
 										}
 									]
 								},
 								{
 									"type": "pf2-h3",
 									"name": "Firebrand Items",
-									"collapsible": true,
 									"source": "LOCG",
 									"page": 72,
 									"entries": [
 										"The following are some of the items that Firebrands use to either gain extra attention or escape prying eyes.",
 										{
-											"type": "statblock",
-											"tag": "item",
-											"name": "Cloak of Repute",
-											"source": "LOCG"
-										},
-										{
-											"type": "statblock",
-											"tag": "item",
-											"name": "Insistent Door Knocker",
-											"source": "LOCG"
-										},
-										{
-											"type": "statblock",
-											"tag": "item",
-											"name": "Snapleaf",
-											"source": "LOCG"
-										},
-										{
-											"type": "statblock",
-											"tag": "item",
-											"name": "Unmemorable Mantle",
-											"source": "LOCG"
+											"type": "list",
+											"columns": 3,
+											"items": [
+												"{@item Cloak of Repute|LOCG}",
+												"{@item Insistent Door Knocker|LOCG}",
+												"{@item Snapleaf|LOCG}",
+												"{@item Unmemorable Mantle|LOCG}"
+											]
 										}
 									]
 								},
 								{
 									"type": "pf2-h3",
 									"name": "Firebrand Archetype",
-									"collapsible": true,
 									"source": "LOCG",
 									"page": 72,
 									"entries": [
 										"The following archetype is available to prominent members of the Firebrands.",
-										"{@note You can see the {@archetype Firebrand Braggart|LOCG} archetype on the {@pf2etools archetypes|archetypes.html} page.}"
+										{
+											"type": "list",
+											"items": [
+												"{@archetype Firebrand Braggart|LOCG}"
+											]
+										}
 									]
 								}
 							]
@@ -418,16 +398,12 @@
 									"entries": [
 										"Hellknights employ a variety of equipment in their inquisitions. These include unique weapons that are a trademark for specific orders and the iconic Hellknight armor, Hellknight plate.",
 										{
-											"type": "statblock",
-											"tag": "item",
-											"name": "Hellknight Plate",
-											"source": "LOCG"
-										},
-										{
-											"type": "statblock",
-											"tag": "item",
-											"name": "Scourge",
-											"source": "LOCG"
+											"type": "list",
+											"columns": 2,
+											"items": [
+												"{@item Hellknight Plate|LOCG}",
+												"{@item Scourge|LOCG}"
+											]
 										}
 									]
 								},
@@ -440,22 +416,13 @@
 									"entries": [
 										"The following archetype feats for the {@archetype Hellknight armiger|lowg} archetype are available to all Hellknight armigers and also to characters with the {@archetype Hellknight|locg} and {@archetype Hellknight signifer|locg} archetypes.",
 										{
-											"type": "statblock",
-											"tag": "feat",
-											"name": "Order Training",
-											"source": "LOCG"
-										},
-										{
-											"type": "statblock",
-											"tag": "feat",
-											"name": "Advanced Order Training",
-											"source": "LOCG"
-										},
-										{
-											"type": "statblock",
-											"tag": "feat",
-											"name": "Hellknight Order Cross-Training",
-											"source": "LOCG"
+											"type": "list",
+											"columns": 2,
+											"items": [
+												"{@feat Order Training|LOCG}",
+												"{@feat Advanced Order Training|LOCG}",
+												"{@feat Hellknight Order Cross-Training|LOCG}"
+											]
 										}
 									]
 								},
@@ -762,7 +729,14 @@
 									"page": 84,
 									"entries": [
 										"The following archetypes represent fully inducted members of a Hellknight order. You can select the dedication feats for these archetypes even if you haven't yet gained three feats from the {@archetype Hellknight armiger|lowg} archetype. A character can't have both the {@archetype Hellknight|locg} and {@archetype Hellknight signifer|locg} archetypes.",
-										"{@note You can see the {@archetype Hellknight|LOCG} and {@archetype Hellknight Signifer|LOCG} archetypes on the {@pf2etools archetypes|archetypes.html} page.}"
+										{
+											"type": "list",
+											"columns": 2,
+											"items": [
+												"{@archetype Hellknight|LOCG}",
+												"{@archetype Hellknight Signifer|LOCG}"
+											]
+										}
 									]
 								}
 							]
@@ -879,34 +853,15 @@
 									"entries": [
 										"The following class feats are available to Knights of Lastwall. Those with the {@trait champion} trait are {@class champion} class feats. Those with both the {@trait champion} and {@trait fighter} traits are both {@class champion} class feats and {@class fighter} class feats; when you take one of these feats, it loses the trait that doesn't apply to your class.",
 										{
-											"type": "statblock",
-											"tag": "feat",
-											"name": "EVERSTAND STANCE",
-											"source": "LOCG"
-										},
-										{
-											"type": "statblock",
-											"tag": "feat",
-											"name": "EVERSTAND STRIKE",
-											"source": "LOCG"
-										},
-										{
-											"type": "statblock",
-											"tag": "feat",
-											"name": "LIGHT OF REVELATION",
-											"source": "LOCG"
-										},
-										{
-											"type": "statblock",
-											"tag": "feat",
-											"name": "SUN BLADE",
-											"source": "LOCG"
-										},
-										{
-											"type": "statblock",
-											"tag": "feat",
-											"name": "IMPASSABLE WALL STANCE",
-											"source": "LOCG"
+											"type": "list",
+											"columns": 3,
+											"items": [
+												"{@feat Everstand Stance|LOCG}",
+												"{@feat Everstand Strike|LOCG}",
+												"{@feat Light Of Revelation|LOCG}",
+												"{@feat Sun Blade|LOCG}",
+												"{@feat Impassable Wall Stance|LOCG}"
+											]
 										}
 									]
 								},
@@ -919,22 +874,13 @@
 									"entries": [
 										"The Knights of Lastwall use powerful magic in their efforts to fight wickedness. The {@spell invoke the Crimson Oath|locg} focus spell is unique to the {@archetype knight reclaimant|locg} archetype.",
 										{
-											"type": "statblock",
-											"tag": "spell",
-											"name": "INVOKE THE CRIMSON OATH",
-											"source": "LOCG"
-										},
-										{
-											"type": "statblock",
-											"tag": "feat",
-											"name": "LIGHT OF REVELATION",
-											"source": "LOCG"
-										},
-										{
-											"type": "statblock",
-											"tag": "feat",
-											"name": "SUN BLADE",
-											"source": "LOCG"
+											"type": "list",
+											"columns": 3,
+											"items": [
+												"{@spell Light Of Revelation|LOCG}",
+												"{@spell Sun Blade|LOCG}",
+												"{@spell Invoke The Crimson Oath|LOCG}"
+											]
 										}
 									]
 								},
@@ -947,52 +893,18 @@
 									"entries": [
 										"The following equipment is available to Knights of Lastwall. The fauchard and armored skirt are common items.",
 										{
-											"type": "statblock",
-											"tag": "item",
-											"name": "ARMORED SKIRT",
-											"source": "LOCG"
-										},
-										{
-											"type": "statblock",
-											"tag": "item",
-											"name": "CRIMSON BRAND",
-											"source": "LOCG"
-										},
-										{
-											"type": "statblock",
-											"tag": "item",
-											"name": "FAUCHARD",
-											"source": "LOCG"
-										},
-										{
-											"type": "statblock",
-											"tag": "item",
-											"name": "LASTWALL SOUP",
-											"source": "LOCG"
-										},
-										{
-											"type": "statblock",
-											"tag": "item",
-											"name": "RADIANT LANCE",
-											"source": "LOCG"
-										},
-										{
-											"type": "statblock",
-											"tag": "item",
-											"name": "SINISTER KNIGHT",
-											"source": "LOCG"
-										},
-										{
-											"type": "statblock",
-											"tag": "item",
-											"name": "SERRATING",
-											"source": "LOCG"
-										},
-										{
-											"type": "statblock",
-											"tag": "item",
-											"name": "GLORIOUS PLATE",
-											"source": "LOCG"
+											"type": "list",
+											"columns": 4,
+											"items": [
+												"{@item Armored Skirt|LOCG}",
+												"{@item Crimson Brand|LOCG}",
+												"{@item Fauchard|LOCG}",
+												"{@item Lastwall Soup|LOCG}",
+												"{@item Radiant Lance|LOCG}",
+												"{@item Sinister Knight|LOCG}",
+												"{@item Serrating|LOCG}",
+												"{@item Glorious Plate|LOCG}"
+											]
 										}
 									]
 								},
@@ -1004,7 +916,14 @@
 									"page": 93,
 									"entries": [
 										"The following archetypes are uncommon but are available to members of the Knights of Lastwall. Qualifying characters with the {@archetype Lastwall sentry|lowg} archetype can select one of these dedications even without gaining three feats from the {@archetype Lastwall sentry|lowg} archetype, and each of these archetypes' feats fulfills the {@feat Lastwall Sentry Dedication|lowg}'s special requirement despite not being from the {@archetype Lastwall sentry|lowg} archetype.",
-										"{@note You can see the {@archetype Knight Vigilant|LOCG} and {@archetype Knight Reclaimant|LOCG} archetypes on the {@pf2etools archetypes|archetypes.html} page.}"
+										{
+											"type": "list",
+											"columns": 2,
+											"items": [
+												"{@archetype Knight Vigilant|LOCG}",
+												"{@archetype Knight Reclaimant|LOCG}"
+											]
+										}
 									]
 								}
 							]
@@ -1123,10 +1042,10 @@
 									"entries": [
 										"The following magic item is uncommon, but characters who are Magaambyans of at least attendant rank have access to it. PCs who start a game as members of the Magaambya typically begin at attendant rank.",
 										{
-											"type": "statblock",
-											"tag": "item",
-											"name": "SCROLLSTAFF",
-											"source": "LOCG"
+											"type": "list",
+											"items": [
+												"{@item Scrollstaff|LOCG}"
+											]
 										}
 									]
 								},
@@ -1149,7 +1068,14 @@
 									"page": 101,
 									"entries": [
 										"The following archetypes represent many Magaambyans. These archetypes are uncommon, but characters who are Magaambyans of at least attendant rank have access to them. PCs who start off a campaign as members of the Magaambya typically begin at attendant rank and thus have access to these archetypes.",
-										"{@note You can see the {@archetype Magaambyan Attendant|LOCG} and {@archetype Halcyon Speaker|LOCG} archetypes on the {@pf2etools archetypes|archetypes.html} page.}"
+										{
+											"type": "list",
+											"columns": 2,
+											"items": [
+												"{@archetype Magaambyan Attendant|LOCG}",
+												"{@archetype Halcyon Speaker|LOCG}"
+											]
+										}
 									]
 								}
 							]
@@ -1285,10 +1211,10 @@
 									"entries": [
 										"Many Pathfinders collect volumes of the Pathfinder Chronicles.",
 										{
-											"type": "statblock",
-											"tag": "item",
-											"name": "PATHFINDER CHRONICLE",
-											"source": "LOCG"
+											"type": "list",
+											"items": [
+												"{@item Pathfinder Chronicle|LOCG}"
+											]
 										}
 									]
 								},
@@ -1301,46 +1227,17 @@
 									"entries": [
 										"The following magic items are used by Pathfinders in their endeavors.",
 										{
-											"type": "statblock",
-											"tag": "item",
-											"name": "BI-RESONANT WAYFINDER",
-											"source": "LOCG"
-										},
-										{
-											"type": "statblock",
-											"tag": "item",
-											"name": "FORTIFYING PEBBLE",
-											"source": "LOCG"
-										},
-										{
-											"type": "statblock",
-											"tag": "item",
-											"name": "PATHFINDER'S COIN",
-											"source": "LOCG"
-										},
-										{
-											"type": "statblock",
-											"tag": "item",
-											"name": "PATHFINDER'S POUCH",
-											"source": "LOCG"
-										},
-										{
-											"type": "statblock",
-											"tag": "item",
-											"name": "Scroll Case Of Simplicity",
-											"source": "LOCG"
-										},
-										{
-											"type": "statblock",
-											"tag": "item",
-											"name": "SHINING WAYFINDER",
-											"source": "LOCG"
-										},
-										{
-											"type": "statblock",
-											"tag": "item",
-											"name": "VANISHING WAYFINDER",
-											"source": "LOCG"
+											"type": "list",
+											"columns": 3,
+											"items": [
+												"{@item Bi-Resonant Wayfinder|LOCG}",
+												"{@item Fortifying Pebble|LOCG}",
+												"{@item Pathfinder's Coin|LOCG}",
+												"{@item Pathfinder's Pouch|LOCG}",
+												"{@item Scroll Case Of Simplicity|LOCG}",
+												"{@item Shining Wayfinder|LOCG}",
+												"{@item Vanishing Wayfinder|LOCG}"
+											]
 										}
 									]
 								},
@@ -1353,28 +1250,14 @@
 									"entries": [
 										"The following archetype feats are available to characters with the {@archetype Pathfinder agent|lowg} archetype.",
 										{
-											"type": "statblock",
-											"tag": "feat",
-											"name": "FORCED ENTRY",
-											"source": "LOCG"
-										},
-										{
-											"type": "statblock",
-											"tag": "feat",
-											"name": "RECOGNIZE THREAT",
-											"source": "LOCG"
-										},
-										{
-											"type": "statblock",
-											"tag": "feat",
-											"name": "EVERYONE DUCK!",
-											"source": "LOCG"
-										},
-										{
-											"type": "statblock",
-											"tag": "feat",
-											"name": "EDUCATED ASSESSMENT",
-											"source": "LOCG"
+											"type": "list",
+											"columns": 4,
+											"items": [
+												"{@feat Forced Entry|LOCG}",
+												"{@feat Recognize Threat|LOCG}",
+												"{@feat Everyone Duck!|LOCG}",
+												"{@feat Educated Assessment|LOCG}"
+											]
 										}
 									]
 								},
@@ -1386,7 +1269,15 @@
 									"page": 112,
 									"entries": [
 										"The following archetypes are uncommon, but are available to members of the Pathfinder Society (see page 65 for more information). Qualifying characters with the {@archetype Pathfinder agent|lowg} archetype can select one of these dedication feats even if they have not gained three feats from the {@archetype Pathfinder agent|lowg} archetype, and each of these archetypes' feats fulfills the {@feat Pathfinder Agent Dedication|lowg}'s special requirement despite not being from the {@archetype Pathfinder agent|lowg} archetype.",
-										"{@note You can see the {@archetype Scrollmaster|LOCG}, {@archetype Spellmaster|LOCG}, and {@archetype Swordmaster|LOCG} archetypes on the {@pf2etools archetypes|archetypes.html} page.}"
+										{
+											"type": "list",
+											"columns": 3,
+											"items": [
+												"{@archetype Scrollmaster|LOCG}",
+												"{@archetype Spellmaster|LOCG}",
+												"{@archetype Swordmaster|LOCG}"
+											]
+										}
 									]
 								}
 							]

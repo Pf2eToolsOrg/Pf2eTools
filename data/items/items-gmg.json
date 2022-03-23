@@ -20,10 +20,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Poison",
 			"entries": [
@@ -71,8 +70,7 @@
 						}
 					]
 				}
-			],
-			"generic": false
+			]
 		},
 		{
 			"name": "Arrow Attracting",
@@ -148,16 +146,12 @@
 						"envision",
 						"Interact"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"The axe casts a 10th-level {@spell summon elemental} spell to conjure an elite elemental avalanche (Bestiary 6, 147). The spell is automatically sustained, requiring no action on your part but still allowing you to command the elemental on each of your turns. You can {@action Dismiss} the Spell.",
 						"Destruction If an orc beheads a dwarven king with the Axe of the Dwarven Lords, the axe rusts away to nothing."
 					]
 				}
-			],
-			"generic": false
+			]
 		},
 		{
 			"name": "Backbiting",
@@ -194,12 +188,11 @@
 				"Magical"
 			],
 			"usage": "held in 2 hands",
-			"bulk": "1",
+			"bulk": 1,
 			"category": "Held",
 			"entries": [
 				"This item appears to be and functions as a bag of holding, but is actually a feeding orifice of a bizarre extradimensional creature. Any animal or vegetable matter put in the bag has a chance of triggering the bag's interest. Whenever you reach into the bag to retrieve an item or place an animal or plant."
-			],
-			"generic": false
+			]
 		},
 		{
 			"name": "Bag Of Weasels",
@@ -215,15 +208,14 @@
 				"Magical"
 			],
 			"usage": "held in 2 hands",
-			"bulk": "1",
+			"bulk": 1,
 			"category": "Held",
 			"entries": [
 				"This item appears to be and functions as a type I bag of holding, until you try to retrieve an item from the bag.",
 				"Whenever you retrieve an item from the bag of weasels, roll a DC {@flatDC 11} flat check. On a success, you retrieve the item as normal. On a failure, the item you retrieve is transformed into a weasel; this doesn't affect artifacts, cursed items, or other hard-to-destroy items.",
 				"This weasel has the statistics of a giant rat (Pathfinder Bestiary 276), except that it is Tiny and exudes an aura of transmutation magic. The weasel has no loyalty to you and typically attempts to escape as quickly as possible. If the weasel is targeted with a {@spell remove curse} spell or a similar {@trait magical} effect, it transforms back into the original item that was taken from the bag of weasels. If it dies or is slain, the weasel disappears and the item is permanently destroyed.",
 				"Because the weasel is a transformed item, you don't gain any benefit you would receive from attacking a creature, defeating one, damaging one, or the like, but you do gain any benefit you would gain from destroying an item."
-			],
-			"generic": false
+			]
 		},
 		{
 			"name": "Blood Sap",
@@ -240,8 +232,7 @@
 			],
 			"price": {
 				"coin": "gp",
-				"amount": 4,
-				"note": null
+				"amount": 4
 			},
 			"usage": "held in 1 hand",
 			"bulk": "L",
@@ -250,17 +241,15 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Poison",
 			"entries": [
 				"This potent drug is distilled from a certain tropical vine into a deep-red syrup that, over time, stains the user's lips and teeth a vivid shade of red.",
 				{
 					"type": "affliction",
-					"name": null,
 					"traits": [],
 					"DC": 16,
 					"savingThrow": "Fortitude",
@@ -279,8 +268,7 @@
 						}
 					]
 				}
-			],
-			"generic": false
+			]
 		},
 		{
 			"name": "Bloodbiter",
@@ -318,8 +306,7 @@
 			],
 			"price": {
 				"coin": "sp",
-				"amount": 5,
-				"note": null
+				"amount": 5
 			},
 			"usage": "held in 1 hand",
 			"bulk": "L",
@@ -328,17 +315,15 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Poison",
 			"entries": [
 				"A strong blend including several spices common in the Padishah Empire of Kelesh, bloodeye coffee is a favorite morning drink across the Inner Sea region. The maximum addiction stage of bloodeye coffee never progresses beyond stage 1.",
 				{
 					"type": "affliction",
-					"name": null,
 					"traits": [],
 					"DC": 14,
 					"savingThrow": "Fortitude",
@@ -362,8 +347,7 @@
 						}
 					]
 				}
-			],
-			"generic": false
+			]
 		},
 		{
 			"name": "Boots Of Dancing",
@@ -384,8 +368,7 @@
 			"entries": [
 				"These boots act as greater boots of elvenkind, but they react wildly to strong physical exertion. While you wear the boots, the curse activates whenever you attempt an {@skill Athletics} check or {@action Stride} more than once in a single round during an encounter.",
 				"The boots cast an 8th-level {@spell uncontrollable dance} spell on you,"
-			],
-			"generic": false
+			]
 		},
 		{
 			"name": "Cloak Of Immolation",
@@ -406,8 +389,7 @@
 			"entries": [
 				"Appearing as a magic cloak such as a cloak of elvenkind, this garment is made of highly volatile fabric. While wearing it, if you take fire damage, you also take {@damage 1d10} {@condition persistent damage ||persistent fire damage}. Taking fire damage while the {@condition persistent damage ||persistent fire damage} is in effect has no additional effect. You can extinguish the {@condition persistent damage ||persistent fire damage} as normal.",
 				"Any creature that hits you with a melee unarmed attack while you are taking this {@condition persistent damage ||persistent fire damage} takes fire damage equal to the {@condition persistent damage ||persistent fire damage} you took on your previous turn. Once the curse has activated for the first time, the boots fuse to you."
-			],
-			"generic": false
+			]
 		},
 		{
 			"name": "Cytillesh",
@@ -425,8 +407,7 @@
 			],
 			"price": {
 				"coin": "gp",
-				"amount": 30,
-				"note": null
+				"amount": 30
 			},
 			"usage": "held in 1 hand",
 			"bulk": "L",
@@ -435,21 +416,18 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Poison",
 			"entries": [
 				"Deros use cytillesh in a variety of ways, and some surface-dwellers seek out the fungus for their own use. Memories lost to cytillesh can be restored through modify memory. The save for addiction to cytillesh is DC 20, and the addiction has the {@trait virulent} trait.",
 				{
 					"type": "affliction",
-					"name": null,
 					"traits": [],
 					"DC": 15,
 					"savingThrow": "Fortitude",
-					"onset": null,
 					"maxDuration": "8 hours",
 					"stages": [
 						{
@@ -464,8 +442,7 @@
 						}
 					]
 				}
-			],
-			"generic": false
+			]
 		},
 		{
 			"name": "Deck Of Many Things",
@@ -480,7 +457,6 @@
 				"Transmutation"
 			],
 			"usage": "held in 1 hand",
-			"bulk": "\u2014",
 			"category": "Artifact",
 			"entries": [
 				"These 22 cards of heavy vellum, usually stored in a box or a pouch, bear images or glyphs depicting symbols of magical power. Looking at a card without activating it shows the card face but has no {@trait magical} effect. Once the deck is face down, the cards randomize themselves\u2014if you look at the top card multiple times, you may find it changes. Any card removed from the deck goes missing after a few seconds, reappearing in the deck. Advice on randomly selecting cards appears on page 108.",
@@ -495,9 +471,6 @@
 						"envision",
 						"Interact"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You declare how many cards you will draw facedown from the deck, then draw your first card. The card takes effect immediately. Any further cards must be drawn within the next hour, and any card you don't voluntarily draw flits off the deck and affects you anyway. You can never activate the same deck of many things again.",
 						"Once a card is drawn, it produces its effect immediately and then disappears back into the deck, which immediately shuffles itself. (The Dullard and Jester are exceptions, as described in their entries below.) The effects of each card are as follows.",
@@ -531,8 +504,7 @@
 						"Destruction Trick the Grim Reaper into drawing the Skull card."
 					]
 				}
-			],
-			"generic": false
+			]
 		},
 		{
 			"name": "Degenerating",
@@ -593,8 +565,7 @@
 			],
 			"price": {
 				"coin": "gp",
-				"amount": 13,
-				"note": null
+				"amount": 13
 			},
 			"usage": "held in 1 hand",
 			"bulk": "L",
@@ -603,21 +574,18 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Poison",
 			"entries": [
 				"This lemony tea blended from rare Vudrani herbs and flowers is widely circulated by occult circles looking to transcend the boundaries of reality. The saving throw for addiction to dreamtime tea is DC 19.",
 				{
 					"type": "affliction",
-					"name": null,
 					"traits": [],
 					"DC": 21,
 					"savingThrow": "Fortitude",
-					"onset": null,
 					"maxDuration": "30 minutes",
 					"stages": [
 						{
@@ -632,8 +600,7 @@
 						}
 					]
 				}
-			],
-			"generic": false
+			]
 		},
 		{
 			"name": "Dreary",
@@ -669,7 +636,7 @@
 				"Occult"
 			],
 			"usage": "held in one hand",
-			"bulk": "1",
+			"bulk": 1,
 			"category": "Artifact",
 			"entries": [
 				"This stone tablet is carved with the symbol of a five-branched twig. There are only a limited number of elder signs, and each time one is destroyed, the universe's doom creeps inexorably closer. Reciting one of three different occult mantras (DC 20 {@skill Occultism} check to do so correctly) allows three different activations. All three abilities work only on a creature connected to the Elder Mythos or a cosmic horror, such as a wendigo or gug; the activations refer to them as \"eldritch creatures.\"",
@@ -685,9 +652,6 @@
 						"envision",
 						"Interact"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"The elder sign casts a 10th-level {@spell banishment} spell on an eldritch creature. Even if the creature isn't extraplanar, the elder sign can still banish it, sending it back to the part of the Material Plane from which it originated. If the creature is a Great Old One, the elder sign banishes it automatically (as if it critically failed its save) but is then forever destroyed."
 					]
@@ -704,9 +668,6 @@
 						"envision",
 						"Interact"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"The elder sign casts dispel magic on an effect from an eldritch creature, using a counteract level of 10 and +30 modifier for the roll."
 					]
@@ -723,16 +684,12 @@
 						"envision",
 						"Interact"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"The elder sign casts dimensional lock, though it wards against travel by only eldritch creatures. Each time the elder sign casts dimensional lock in this way, the previous {@spell dimensional lock} spell ends.",
 						"Destruction The only way to destroy an elder sign is to use it to banish a Great Old One."
 					]
 				}
-			],
-			"generic": false
+			]
 		},
 		{
 			"name": "Elven Absinthe",
@@ -749,8 +706,7 @@
 			],
 			"price": {
 				"coin": "gp",
-				"amount": 25,
-				"note": null
+				"amount": 25
 			},
 			"usage": "held in 1 hand",
 			"bulk": "L",
@@ -759,17 +715,15 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Poison",
 			"entries": [
 				"Specialists in Kyonin prepare this emerald-green beverage.",
 				{
 					"type": "affliction",
-					"name": null,
 					"traits": [],
 					"DC": 20,
 					"savingThrow": "Fortitude",
@@ -793,8 +747,7 @@
 						}
 					]
 				}
-			],
-			"generic": false
+			]
 		},
 		{
 			"name": "Erratic Transposing",
@@ -842,8 +795,6 @@
 					"components": [
 						"{@action Interact}"
 					],
-					"frequency": null,
-					"trigger": null,
 					"requirements": "The prism has only one input stream",
 					"entries": [
 						"You alter and rearrange the facets of the essence prism, adjusting the essences to select for a single quality, which might be associated with mental essence, like a personality trait; material essence, like a physical quality; vital essence, like a belief or instinct; or spiritual essence, like an alignment component such as good or lawful. You must succeed at a secret DC 30 skill check with a skill associated with a magical tradition that uses the essence you chose (for instance, {@skill Arcana} or {@skill Occultism} for mental essence, as arcane and occult magic both use mental essence). On a failure, you accidentally set the prism for some other quality."
@@ -860,8 +811,6 @@
 					"components": [
 						"{@action Interact}"
 					],
-					"frequency": null,
-					"trigger": null,
 					"requirements": "The prism has only one input stream, and a creature is encased in magic in the input stream",
 					"entries": [
 						"Over the course of the next hour, the creature in the input stream has its essences refracted through the prism, creating two cocoons of magic in the output streams that each contain a new creature. At the end of the process, the original creature is gone, and the two new creatures break free of their cocoons. Each creature is part of the original, separated from the rest based on the last quality set by the prism's first activation. For instance, if you set the prism to \"good,\" one creature would have all the original creature's good aspects and the other would be the original creature's evil side. Unless you selected a physical quality, both new creatures look just like the original. The new creatures are usually 2 levels lower than the original, but if the original creature was strongly biased with respect to the quality you chose (for instance, if splitting out the good and evil side of a redeemer), the stronger creature is 1 level lower and the weaker creature is 3 or more levels lower. If calibrated correctly, this activation can also reverse the effect of the third activation."
@@ -878,16 +827,13 @@
 					"components": [
 						"{@action Interact}"
 					],
-					"frequency": null,
-					"trigger": null,
 					"requirements": "The prism has two input streams, and a creature is encased in magic in each of the input streams",
 					"entries": [
 						"Over the course of the next hour, the essences of both creatures in the input streams are refracted through the prism, creating a cocoon of magic in the output stream that contains a new creature. At the end of the process, the original creatures are gone, and the new creature breaks free of its cocoon. The new creature is an amalgam of the originals, with a new personality blended from both, and is usually 1 or 2 levels higher than the higher level of the original creatures unless the lower-level creature was much weaker. This activation also reverses the effect of the second activation."
 					]
 				},
 				"{@b Destruction} Forcing the {@i essence prism} to combine two incompatible demigods destroys the prism, though it might also result in a new divinity."
-			],
-			"generic": false
+			]
 		},
 		{
 			"name": "Flayleaf",
@@ -905,8 +851,7 @@
 			],
 			"price": {
 				"coin": "gp",
-				"amount": 1,
-				"note": null
+				"amount": 1
 			},
 			"usage": "held in 1 hand",
 			"bulk": "L",
@@ -915,17 +860,15 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Poison",
 			"entries": [
 				"The flayleaf plant is relatively common, though the mildly euphoric effects of smoking its dried leaves increase when it's sourced from plants specifically grown to produce such effects.",
 				{
 					"type": "affliction",
-					"name": null,
 					"traits": [],
 					"DC": 12,
 					"savingThrow": "Fortitude",
@@ -954,8 +897,7 @@
 						}
 					]
 				}
-			],
-			"generic": false
+			]
 		},
 		{
 			"name": "Forgefather's Seal",
@@ -997,7 +939,6 @@
 						"freq": 1
 					},
 					"trigger": "You are hit by an attack",
-					"requirements": null,
 					"entries": [
 						"The Forgefather's seal glows and your armor shakes as it absorbs the blow. The attack's damage is reduced by 100 and you cast {@spell earthquake} (DC 40), centered directly on the triggering creature. You decide the area of the earthquake when you {@action Cast a Spell||Cast the Spell}, from as small as the size of the creature and up to a 60-foot burst."
 					]
@@ -1016,8 +957,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You call upon on the restorative powers of the seal to repair an item within reach. The rune instantly restores the item to full Hit Points, even if the item was destroyed, using the effects of the {@spell remake} spell, so long as the majority of the item is available for the repair. The seal can restore even magic items and artifacts of its level or lower. Once you have used this ability, the seal's ability to automatically repair shields becomes inactive until the next time you make your daily preparations."
 					]
@@ -1033,17 +972,14 @@
 					"components": [
 						"envision"
 					],
-					"frequency": null,
 					"trigger": "You have not acted yet on your turn",
-					"requirements": null,
 					"entries": [
 						"You call upon Torag to defend your allies and those around you, sacrificing yourself in the process. Creatures of your choosing within 60 feet recover all their Hit Points. If any of the creatures are dead, they are instead brought back to life with half of their maximum Hit Points. The chosen creatures also gain a +4 status bonus to AC and saving throws, and fast healing 15 for 1 hour. You can use this ability to bring back to life a creature that requires a {@spell miracle} spell or divine intervention to raise from the dead, as long as you choose no other creatures within 60 feet to recover.",
 						"Once you use this activation, you are turned into a perfect statue made from stone or metal that depicts you in a glorious pose honoring your sacrifice, and you can never be restored. The Forgefather's seal remains on this statue and can be transferred to another suit of armor or a runestone as normal.",
 						"Destruction Using the Forgefather's seal ability to bring the dead back to life on an evil demigod causes it to shatter in a violent explosion that destroys the seal and the statue made as part of the sacrifice, erasing all knowledge of the user from existence. It does, however, bring the evil demigod back to life."
 					]
 				}
-			],
-			"generic": false
+			]
 		},
 		{
 			"name": "Genius Diadem",
@@ -1146,8 +1082,7 @@
 			"entries": [
 				"These gloves appear and function as gloves of storing but repel any item not stored in the gloves. When wearing them, whenever you {@action Interact} to draw or pick up an item, roll a DC {@flatDC 11} flat check. On a success, you do so as normal. On a failure, you instead fling the item 15 feet in a random direction. You can use a reaction to attempt a DC 23 Reflex save, causing the item to land at your feet instead if you succeed. Removing the stored item from the gloves does not trigger the item's curse.",
 				"The first time the curse activates, the gloves fuse to you."
-			],
-			"generic": false
+			]
 		},
 		{
 			"name": "Grandstanding",
@@ -1184,7 +1119,7 @@
 				"Necromancy"
 			],
 			"usage": "worn headwear",
-			"bulk": "2",
+			"bulk": 2,
 			"category": "Artifact",
 			"entries": [
 				"This imposing helm bears the horns of a powerful black dragon. While wearing the Horns of Naraga, you gain {@ability darkvision||greater darkvision} and immunity to acid. If you are undead, you gain resistance 40 to positive damage. If you are not undead, the helm quickly saps the life from you, dealing {@damage 10d6} negative damage to you every round. If you die from this damage, you rise as an undead of an equal level in {@dice 1d4} rounds.",
@@ -1199,9 +1134,7 @@
 					"components": [
 						"envision"
 					],
-					"frequency": null,
 					"trigger": "You touch a creature as part of an unarmed attack or melee spell attack roll",
-					"requirements": null,
 					"entries": [
 						"The creature takes {@damage 5d6} negative damage. If you are an undead, you regain Hit Points equal to the negative damage the creature took."
 					]
@@ -1220,15 +1153,12 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"The Horns of Naraga transform into Naraga, an ancient black dragon (Bestiary 106). Naraga appears in an adjacent appropriate space, and if no such space is available, she does not appear. Naraga follows your commands without question. She remains for up to 1 hour or until you use an {@action Interact} action to dismiss her, after which she reverts back to the helm. If Naraga is slain, she immediately reverts back to the helm and can't be summoned for 1 week. You don't receive any of the helm's other benefits while it is transformed.",
 						"Destruction The helm is utterly obliterated if crushed between the jaws of an ancient black dragon's skull located in a desert while the sun is at its zenith."
 					]
 				}
-			],
-			"generic": false
+			]
 		},
 		{
 			"name": "Martyr's Shield",
@@ -1244,7 +1174,7 @@
 				"Intelligent"
 			],
 			"usage": "held in 1 hand",
-			"bulk": "1",
+			"bulk": 1,
 			"category": "Held",
 			"perception": {
 				"default": 12,
@@ -1304,8 +1234,7 @@
 			"entries": [
 				"This +2 adamantine scale mail appears to have a fortification rune but grants none of its effects. Whenever you are critically hit, after taking damage, you become {@condition petrified} for 1 round.",
 				"Once the curse has activated for the first time, the armor fuses to you."
-			],
-			"generic": false
+			]
 		},
 		{
 			"name": "Mirror Of Sorshen",
@@ -1337,9 +1266,6 @@
 					"components": [
 						"visual)"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You force a creature looking at the mirror to attempt an additional Will save against the mirror's fascination effect, even if they succeeded at their save."
 					]
@@ -1355,16 +1281,13 @@
 					"components": [
 						"incapacitation)"
 					],
-					"frequency": null,
-					"trigger": null,
 					"requirements": "The target must be {@condition fascinated} by the mirror",
 					"entries": [
 						"You control the target for 30 days, with the effect of a critically failed saving throw against dominate. If the victim sees the mirror again at any point before this duration expires, the control extends for an additional 30 days from the moment it looked at the mirror again. While there is no initial saving throw, the DC to break free due to commands against the creature's nature is 35.",
 						"Destruction The Mirror of Sorshen shatters into a thousand pieces if an intelligent but completely innocent creature resists the mirror's attraction and then accidentally drops it."
 					]
 				}
-			],
-			"generic": false
+			]
 		},
 		{
 			"name": "Monkey's Paw",
@@ -1385,8 +1308,7 @@
 			"entries": [
 				"This dried, gnarled hand is clenched in a fist, waiting for a creature to pick it up. When you pick up the monkey's paw, the hand opens, revealing three withered fingers. The monkey's paw grants you three wishes, curling one finger after every one. Once you pick up the monkey's paw, you cannot discard the hand until it returns to a clenched fist by casting its three wishes. Any attempts to discard the hand, even with the effects of a {@spell miracle} or {@spell wish} spell, are unsuccessful as the monkey's paw reappears among your possessions within {@dice 1d4} hours; it doesn't work for any other creature in the intervening time. The hand returns even if another creature steals it from you. Once you make all three wishes, the monkey's paw uses plane shift to travel to a random point in the multiverse.",
 				"Whenever the monkey's paw hears you utter a statement that sounds like a wish, even if you don't use the words \"I wish,\" it activates and grants a twisted, horrifying version of your wish, producing any effect within the possibility of alter reality, miracle, primal phenomenon, or wish, and potentially a greater effect at the GM's discretion."
-			],
-			"generic": false
+			]
 		},
 		{
 			"name": "Necklace Of Strangulation",
@@ -1407,8 +1329,7 @@
 			"entries": [
 				"This beautiful necklace appears to be a magical item such as a necklace of fireballs or a pendant of the occult. When invested, it magically locks in place, suspiciously tightly, and fuses to you. When you enter a situation of extreme stress (as determined by the GM), the necklace tightens around your neck, suffocating you (Core Rulebook 478) and dealing 30 bludgeoning damage to you at the end of each of your turns.",
 				"Once per round, you can spend a single action to attempt a DC 34 {@skill Athletics} check or Fortitude save; success means you don't take the damage on your current turn, but you continue suffocating. The necklace loosens after you've been dead for a month."
-			],
-			"generic": false
+			]
 		},
 		{
 			"name": "Orb Of Dragonkind",
@@ -1423,7 +1344,7 @@
 				"Enchantment"
 			],
 			"usage": "held in 1 hand",
-			"bulk": "1",
+			"bulk": 1,
 			"category": "Artifact",
 			"entries": [
 				"Each of the legendary orbs of dragonkind contains the essence and personality of a powerful dragon, with each of the 10 most famous orbs preserving a different type of metallic or chromatic dragon's spirit. It is believed that orbs for other types of true dragons exist, though that theory is yet to be confirmed.",
@@ -1441,9 +1362,6 @@
 					"components": [
 						"command"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You cast a 10th-level {@spell dominate} spell (DC 40) on a dragon of the type associated with the orb within 500 feet, except the effect lasts for 1 month rather than unlimited. The dragon does not receive its status bonus to saving throws against magic. The dragon is then temporarily immune to further domination via the orb for 24 hours."
 					]
@@ -1463,15 +1381,12 @@
 						"unit": "day",
 						"freq": 3
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You breathe an elemental blast that deals {@dice 25d6} damage (DC 40 basic Reflex save) in either a 60-foot cone or a 100-foot line (your choice). The breath's damage type matches the Breath Weapon of the dragon type associated with the orb of dragonkind (acid for the black orb, electricity for the blue orb, and so on)",
 						"Destruction An orb of dragonkind violently shatters and explodes when exposed to the Breath Weapon of a dragon who is a descendant of the dragon trapped within. The explosion deals damage as the 2-action activation above to all creatures within 90 feet."
 					]
 				}
-			],
-			"generic": false
+			]
 		},
 		{
 			"name": "Overdramatic",
@@ -1526,8 +1441,6 @@
 						"unit": "minute",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You use the extractor to produce an alchemical item of your level or lower whose formula you know. The extractor can create 56 levels' worth of items per day in this way.",
 						"For example, the extractor could create two true elixirs of life (19th level) and two moderate elixirs of life (9th level), or eight comprehension elixirs (7th level), and so on."
@@ -1544,9 +1457,6 @@
 					"components": [
 						"(Interact)"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You take a sizable portion of a creature (at least two-thirds of its original mass) and filter it through the mechanisms of the extractor. After the end of the process, the philosopher's extractor creates a transmogrifying mutagen that imparts the essence of the creature to the drinker. The extractor can make several transmogrifying mutagens simultaneously using the same activation if enough mass is provided at once, up to a maximum of 10 concurrent mutagens. Drinking a transmogrifying mutagen imparts you with one of the creature's unique abilities for 1 hour. This could grant one of several abilities such as a dragon's Breath Weapon, {@ability darkvision}, flight, frightful presence, or immunity to sleep. The ability functions as it did for the original creature, except it uses your class DC or your spell DC (whichever is higher) instead of the creature's DC.",
 						"The mutagen grants only abilities based on a creature's physiology and never grants magic-related abilities such as innate spells or spellcasting ability. The GM ultimately decides what ability a transmogrifying mutagen grants.",
@@ -1555,8 +1465,7 @@
 						"Destruction Simultaneously feeding the philosopher's extractor sizable portions of an aeon, angel, archon, azata, daemon, demon, devil, protean, and psychopomp, each of at least 14th level, along with a philosopher's stone causes the device to jam, overheat, and explode. Creatures within 60 feet of the explosion must succeed at a DC 55 Reflex save or become covered in an alchemical slurry that transforms them into a horrifying amalgam of at least two of the creatures used to destroy the machine."
 					]
 				}
-			],
-			"generic": false
+			]
 		},
 		{
 			"name": "Poisonous Cloak",
@@ -1638,8 +1547,7 @@
 			],
 			"price": {
 				"coin": "gp",
-				"amount": 2,
-				"note": null
+				"amount": 2
 			},
 			"usage": "held in 1 hand",
 			"bulk": "L",
@@ -1648,17 +1556,15 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Poison",
 			"entries": [
 				"When eaten or smoked, pesh gives users a sense of well-being, sometimes with hallucinations, aggression, and exhaustion.",
 				{
 					"type": "affliction",
-					"name": null,
 					"traits": [],
 					"DC": 12,
 					"savingThrow": "Fortitude",
@@ -1682,8 +1588,7 @@
 						}
 					]
 				}
-			],
-			"generic": false
+			]
 		},
 		{
 			"name": "Ring Of Truth",
@@ -1699,13 +1604,11 @@
 				"Magical"
 			],
 			"usage": "worn",
-			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"This ring appears to be a ring of lies, but when invested, close investigation reveals angelic wings and divine creatures {@condition hidden} on the face of the ring. When you invest the ring, you are rendered unable to tell a deliberate lie, in either speech or writing. If you attempt to omit the truth or phrase things truthfully but deceptively, roll a DC {@flatDC 11} flat check; on a failure, the ring itself blurts out the entire truth (as you believe it) as an answer. Keeping silent does not activate the ring's curse.",
 				"Once the curse has activated for the first time, the ring fuses to you."
-			],
-			"generic": false
+			]
 		},
 		{
 			"name": "Scour",
@@ -1724,8 +1627,7 @@
 			],
 			"price": {
 				"coin": "gp",
-				"amount": 80,
-				"note": null
+				"amount": 80
 			},
 			"usage": "held in 1 hand",
 			"bulk": "L",
@@ -1734,17 +1636,15 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Poison",
 			"entries": [
 				"This gritty powder improves responsiveness but suppresses thoughts and leaves you weakened. The saving throw for addiction to scour is DC 30, and the addiction is virulent.",
 				{
 					"type": "affliction",
-					"name": null,
 					"traits": [],
 					"DC": 25,
 					"savingThrow": "Fortitude",
@@ -1768,8 +1668,7 @@
 						}
 					]
 				}
-			],
-			"generic": false
+			]
 		},
 		{
 			"name": "Serithtial",
@@ -1786,7 +1685,7 @@
 				"Intelligent"
 			],
 			"usage": "held in 1 hand",
-			"bulk": "1",
+			"bulk": 1,
 			"category": "Artifact",
 			"perception": {
 				"default": 28,
@@ -1836,9 +1735,6 @@
 					"components": [
 						"Frequency once per hour"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"Serithtial spends the appropriate number of actions and casts a 9th level {@spell heal} or {@spell zone of truth} spell (DC 45 for either of the two spells)",
 						"Destruction If Kazavon or a great wyrm shadow dragon who is a worshipper of Zon-Kuthon uses its breath weapon on Serithtial while she is unattended, the sword melts into a pool of mundane iron."
@@ -1861,8 +1757,7 @@
 			],
 			"price": {
 				"coin": "gp",
-				"amount": 10,
-				"note": null
+				"amount": 10
 			},
 			"usage": "held in 1 hand",
 			"bulk": "L",
@@ -1871,10 +1766,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Poison",
 			"entries": [
@@ -1882,11 +1776,9 @@
 				"The addiction to shiver has the {@trait virulent} trait.",
 				{
 					"type": "affliction",
-					"name": null,
 					"traits": [],
 					"DC": 19,
 					"savingThrow": "Fortitude",
-					"onset": null,
 					"maxDuration": "4\nhours",
 					"stages": [
 						{
@@ -1906,8 +1798,7 @@
 						}
 					]
 				}
-			],
-			"generic": false
+			]
 		},
 		{
 			"name": "Shot Of The First Vault",
@@ -1939,9 +1830,6 @@
 					"components": [
 						"command"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You recall the shot of the First Vault, which automatically reloads itself into your weapon. If the shot had fragmented, the fragments violently dislodge themselves, dealing 15 {@condition persistent damage ||persistent bleed damage} to each creature in which they were embedded.",
 						"The fragments then unite to re-form the shot of the First Vault, which automatically reloads itself into your weapon."
@@ -1957,8 +1845,6 @@
 					"components": [
 						"Interact"
 					],
-					"frequency": null,
-					"trigger": null,
 					"requirements": "The shot is loaded in your ranged weapon, or at hand if your ranged weapon has a reload of 0",
 					"entries": [
 						"You line up a perfectly aimed attack directly toward the First Vault. You {@action Strike} a creature, then the shot of the First Vault attempts to bring your target with it as it returns to the First Vault. Unless your attack roll is a critical failure, the creature must attempt a DC 45 Reflex save; this effect has the {@trait incapacitation} trait. Regardless, the shot of the First Vault returns to the First Vault.",
@@ -1973,8 +1859,7 @@
 						}
 					]
 				}
-			],
-			"generic": false
+			]
 		},
 		{
 			"name": "Singing Sword",
@@ -1990,7 +1875,7 @@
 				"Occult"
 			],
 			"usage": "held in 1 hand",
-			"bulk": "1",
+			"bulk": 1,
 			"category": "Held",
 			"perception": {
 				"default": 11,
@@ -2042,8 +1927,6 @@
 						"unit": "minute",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"The singing sword casts {@spell inspire courage}."
 					]
@@ -2062,8 +1945,6 @@
 						"unit": "minute",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"The singing sword casts {@spell inspire defense}."
 					]
@@ -2084,7 +1965,6 @@
 						"freq": 1
 					},
 					"trigger": "You or an ally within 60 feet rolls a saving throw against an {@trait auditory} effect",
-					"requirements": null,
 					"entries": [
 						"The singing sword casts {@spell counter performance}."
 					]
@@ -2103,7 +1983,6 @@
 				"Magical",
 				"Transmutation"
 			],
-			"bulk": "\u2014",
 			"category": "Artifact",
 			"entries": [
 				"A sphere of annihilation is a floating black sphere that pulls any matter that comes into contact with it into a void, destroying it utterly. Anything or anyone destroyed by the sphere can be brought back only by a deity's direct intervention. The sphere can't be counteracted by dispel magic or similar effects.",
@@ -2118,8 +1997,6 @@
 					"components": [
 						"command"
 					],
-					"frequency": null,
-					"trigger": null,
 					"requirements": "You are within 40 feet of the sphere",
 					"entries": [
 						"You attempt a DC 30 {@skill Arcana} or {@skill Occultism} check to take control of the sphere. If someone else already controls the sphere, this check uses their Will DC if higher. If you succeed, you take control of the sphere. If you fail, the sphere moves 10 feet closer to you (or 20 feet on a critical failure). You keep control as long as you remain within 80 feet of the sphere and Sustain the Activation each round.",
@@ -2128,8 +2005,7 @@
 						"If a rod of cancellation (Pathfinder Advanced Player's Guide) touches the sphere, both items explode, dealing {@damage 14d6} bludgeoning damage (DC 35 basic Reflex save) to everything in a 60-foot burst from the point of their destruction."
 					]
 				}
-			],
-			"generic": false
+			]
 		},
 		{
 			"name": "Staining",
@@ -2171,8 +2047,7 @@
 			"entries": [
 				"Also known as a loadstone, this small stone appears nonmagical and has a lovely sheen, giving the impression that it could be a valuable or a notable item or a magic stone of some kind. When you've carried the stone on your person for 1 minute, its curse activates: the stone's size does not change, but it suddenly increases in weight to 5 Bulk. This additional weight does not cause the stone to deal more damage if thrown or used as a weapon. It reappears in your possessions within 1 minute if you discard it, and can't be destroyed or thrown away permanently, or even placed in a container that would reduce or negate its Bulk (like a bag of holding), until it is subject to a {@spell remove curse} spell or similar magic effect.",
 				"Once the curse has activated for the first time, the stone fuses to you."
-			],
-			"generic": false
+			]
 		},
 		{
 			"name": "Talisman Of The Sphere",
@@ -2187,15 +2062,13 @@
 				"Magical"
 			],
 			"usage": "held in 1 hand",
-			"bulk": "\u2014",
 			"category": "Artifact",
 			"entries": [
 				"This loop of adamantine can be slung on a chain to be worn as a necklace, but must be held to convey its benefits. A creature that can't cast either arcane or occult spells takes {@damage 8d6} mental damage just from picking up the item, and they take that damage again at the start of each of their turns if they continue to hold it.",
 				"If the wielder can cast arcane or occult spells, they can use the talisman of the sphere to more easily control a sphere of annihilation. This reduces the DC of the check to control the sphere or Sustain the Activation by 10.",
 				"Destruction The talisman of the sphere is destroyed if touched by a sphere of annihilation.",
 				"Much like coins, gems and art objects are valuable currency worth their full Price when sold. When making a treasure hoard, you can choose gems or art objects you like, or roll randomly using percentile dice."
-			],
-			"generic": false
+			]
 		},
 		{
 			"name": "Withering",
@@ -2233,8 +2106,7 @@
 			],
 			"price": {
 				"coin": "gp",
-				"amount": 20,
-				"note": null
+				"amount": 20
 			},
 			"usage": "held in 1 hand",
 			"bulk": "L",
@@ -2243,21 +2115,18 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Poison",
 			"entries": [
 				"This bitter paste is used among some gladiatorial rings for its short-term benefits in a fight.",
 				{
 					"type": "affliction",
-					"name": null,
 					"traits": [],
 					"DC": 20,
 					"savingThrow": "Fortitude",
-					"onset": null,
 					"maxDuration": "1 hour",
 					"stages": [
 						{
@@ -2272,8 +2141,7 @@
 						}
 					]
 				}
-			],
-			"generic": false
+			]
 		}
 	]
 }

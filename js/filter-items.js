@@ -61,7 +61,7 @@ class PageFilterItems extends PageFilter {
 		});
 		this._typeFilter = new Filter({
 			header: "Type",
-			items: ["Equipment", "Treasure", "Generic Variant", "Specific Variant"],
+			items: ["Equipment", "Generic Variant", "Specific Variant"],
 			itemSortFn: null,
 			deselFn: (it) => it === "Specific Variant",
 		})
@@ -96,60 +96,67 @@ class PageFilterItems extends PageFilter {
 			labelSortFn: null,
 		});
 		this._bulkFilter = new RangeFilter({header: "Bulk"});
-		this._rangeFilter = new Filter({header: "Weapon Range", items: ["Melee", "Ranged"]})
+		this._rangeFilter = new Filter({header: "Weapon Range", items: ["Melee", "Ranged"]});
+		this._shieldACFilter = new Filter({header: "AC Bonus", displayFn: it => `${Parser.numToBonus(it)} AC`});
 		this._hpFilter = new RangeFilter({header: "HP"});
 		this._btFilter = new RangeFilter({header: "BT"});
 		this._hardnessFilter = new RangeFilter({header: "Hardness"});
-		this._shieldStatsFilter = new MultiFilter({
+		this._shieldDataFilter = new MultiFilter({
 			header: "Shield Stats",
-			filters: [this._hpFilter, this._btFilter, this._hardnessFilter],
+			filters: [this._shieldACFilter, this._hpFilter, this._btFilter, this._hardnessFilter],
 		});
 		this._ammoFilter = new Filter({header: "Ammunition"});
 		this._miscFilter = new Filter({
 			header: "Miscellaneous",
-			items: ["Consumable"],
 		});
 		this._appliesToFilter = new Filter({header: "Applies to..."});
 
 		this._categoriesRuneItems = new Set();
 	}
 
-	mutateForFilters (item) {
+	mutateForFilters (it) {
+		it.weaponData = it.weaponData || {};
+		it.comboWeaponData = it.comboWeaponData || {};
+		it.armorData = it.armorData || {};
+		it.shieldData = it.shieldData || {};
+
 		// Sorting
-		item._fLvl = PageFilterItems._levelValue(item.level);
-		item._fBulk = PageFilterItems._bulkValue(item.bulk);
-		item._sPrice = Parser.priceToValue(item.price);
+		it._fLvl = PageFilterItems._levelValue(it.level);
+		it._fBulk = PageFilterItems._bulkValue(it.bulk);
+		it._sPrice = Parser.priceToValue(it.price);
 
 		// Filters
-		item._fSources = SourceFilter.getCompleteFilterSources(item);
-		item._fPrice = PageFilterItems._priceCategory(item._sPrice);
-		item._fWeaponRange = item.category === "Weapon" ? (item.range ? "Ranged" : "Melee") : null;
-		item._fMisc = ["Ammunition", "Bomb", "Consumable", "Elixir", "Oil", "Poison", "Potion", "Scroll", "Snare", "Talisman", "Tool"].includes(item.category) ? ["Consumable"] : [];
-		for (let entry of item.entries) {
+		it._fSources = SourceFilter.getCompleteFilterSources(it);
+		it._fType = [];
+		if (it.equipment) it._fType.push("Equipment");
+		if (it.generic === "G") it._fType.push("Generic Variant");
+		if (it.generic === "V") it._fType.push("Specific Variant");
+		it._fSubCategory = it.subCategory ? new FilterItem({
+			item: it.subCategory,
+			nest: it.category,
+		}) : null;
+
+		it._fGroup = [it.group, it.weaponData.group, it.comboWeaponData.group, it.armorData.group, it.shieldData.group].filter(Boolean);
+		it._fWeaponRange = it.category === "Weapon" ? [it.weaponData.range ? "Ranged" : "Melee", it.comboWeaponData ? it.comboWeaponData.range ? "Ranged" : "Melee" : null] : null;
+		it._fHands = [it.hands, it.weaponData.hands, it.comboWeaponData.hands].filter(Boolean).map(it => String(it));
+		it._fPrice = PageFilterItems._priceCategory(it._sPrice);
+		it._fMisc = [];
+		for (let entry of it.entries) {
 			if (typeof entry === "object") {
-				if (entry.type === "ability") item._fMisc.push("Activatable");
+				if (entry.type === "ability") it._fMisc.push("Activatable");
 				if (entry.type === "affliction") {
 					// TODO: More Filters?
 				}
 			}
 		}
-		item._fSubCategory = item.subCategory ? new FilterItem({
-			item: item.subCategory,
-			nest: item.category,
-		}) : null;
-		item._fType = [];
-		item.equipment ? item._fType.push("Equipment") : item._fType.push("Treasure");
-		if (item.generic === "G") item._fType.push("Generic Variant");
-		if (item.generic === "V") item._fType.push("Specific Variant");
-		if (item.appliesTo) item._fAppliesTo = item.appliesTo
 
-		item._fDamage = undefined; // set by trait implies
-		this.handleTraitImplies(item, {traitProp: "traits", entityTypes: ["item"]});
-		item._fTraits = (item.traits || []).map(t => Parser.getTraitName(t));
-		if (!item._fTraits.map(t => Renderer.trait.isTraitInCategory(t, "Rarity")).some(Boolean)) item._fTraits.push("Common");
+		it._fDamage = undefined; // FIXME: set by trait implies
+		this.handleTraitImplies(it, {traitProp: "traits", entityTypes: ["item"]});
+		it._fTraits = (it.traits || []).map(t => Parser.getTraitName(t));
+		if (!it._fTraits.map(t => Renderer.trait.isTraitInCategory(t, "Rarity")).some(Boolean)) it._fTraits.push("Common");
 
 		// RuneItem Builder
-		if (item.appliesTo) this._categoriesRuneItems.add(...item.appliesTo);
+		if (it.appliesTo) this._categoriesRuneItems.add(...it.appliesTo);
 	}
 
 	addToFilters (item, isExcluded) {
@@ -165,20 +172,17 @@ class PageFilterItems extends PageFilter {
 			this._subCategoryFilter.addNest(item.category, {isHidden: true})
 			this._subCategoryFilter.addItem(item._fSubCategory);
 		}
-		if (item.group) this._groupFilter.addItem(item.group);
-		if (item._fDamageType) this._damageTypeFilter.addItem(item._fDamageType);
-		if (item.damageType) this._damageTypeFilter.addItem(item.damageType);
-		if (item.damage) this._damageDiceFilter.addItem(item.damage);
-		if (item.hands) this._handsFilter.addItem(String(item.hands));
-		if (item.shieldStats != null) {
-			this._hpFilter.addItem(item.shieldStats.hp);
-			this._btFilter.addItem(item.shieldStats.bt);
-			this._hardnessFilter.addItem(item.shieldStats.hardness);
-		}
+		if (item._fGroup) this._groupFilter.addItem(item._fGroup);
+		this._damageTypeFilter.addItem([item.weaponData.damageType, item.comboWeaponData.damageType].filter(Boolean));
+		this._damageDiceFilter.addItem([item.weaponData.damage, item.comboWeaponData.damage].filter(Boolean));
+		this._handsFilter.addItem(item._fHands);
+		if (item.shieldData.ac) this._shieldACFilter.addItem(item.shieldData.ac);
+		if (item.shieldData.hp) this._hpFilter.addItem(item.shieldData.hp);
+		if (item.shieldData.bt) this._btFilter.addItem(item.shieldData.bt);
+		if (item.shieldData.hardness) this._hardnessFilter.addItem(item.shieldData.hardness);
 		if (item.ammunition != null) this._ammoFilter.addItem(item.ammunition);
-		if (item.craftReq != null) this._miscFilter.addItem("Has Craft Requirements");
 		this._miscFilter.addItem(item._fMisc);
-		if (item._fAppliesTo) this._appliesToFilter.addItem(item._fAppliesTo);
+		if (item.appliesTo) this._appliesToFilter.addItem(item.appliesTo);
 	}
 
 	async _pPopulateBoxOptions (opts) {
@@ -195,7 +199,7 @@ class PageFilterItems extends PageFilter {
 			this._priceFilter,
 			this._miscFilter,
 			this._bulkFilter,
-			this._shieldStatsFilter,
+			this._shieldDataFilter,
 			this._appliesToFilter,
 		];
 	}
@@ -209,22 +213,23 @@ class PageFilterItems extends PageFilter {
 			it.category,
 			it._fSubCategory,
 			[
-				it.damage,
-				it._fDamageType || it.damageType,
-				String(it.hands),
+				[it.weaponData.damage, it.comboWeaponData.damage],
+				[it.weaponData.damageType, it.comboWeaponData.damageType],
+				it._fHands,
 			],
-			it.group,
+			it._fGroup,
 			it._fWeaponRange,
 			it._fTraits,
 			it._fPrice,
 			it._fMisc,
 			it._fBulk,
 			[
-				it.shieldStats ? it.shieldStats.hp : 0,
-				it.shieldStats ? it.shieldStats.bt : 0,
-				it.shieldStats ? it.shieldStats.hardness : 0,
+				it.shieldData.ac,
+				it.shieldData.hp,
+				it.shieldData.bt,
+				it.shieldData.hardness,
 			],
-			it._fAppliesTo,
+			it.appliesTo,
 		);
 	}
 }

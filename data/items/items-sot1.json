@@ -15,8 +15,7 @@
 			],
 			"price": {
 				"coin": "gp",
-				"amount": 32,
-				"note": null
+				"amount": 32
 			},
 			"usage": "held in 2 hands",
 			"bulk": "L",
@@ -25,18 +24,15 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Poison",
 			"entries": [
 				"Used to write secret messages, a single dose of forgetful ink is enough to pen a page of text, often with flourishes extending to the page's edges. Anyone handling the page is exposed to the poison. This includes casual reading, unless the reader specifically takes precautions not to physically touch it. Unlike other poisons, forgetful ink retains its potency for one year, regardless of the number of victims exposed.",
 				"Saving Throw DC 20 Fortitude (secret); Onset 1 minute; Stage 1 The reader forgets the contents of the writing, recalling it as blank or as inconsequential text."
-			],
-			"generic": false,
-			"consumable": true
+			]
 		},
 		{
 			"name": "Goz Mask",
@@ -51,7 +47,6 @@
 				"Transmutation"
 			],
 			"usage": "worn mask",
-			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"Originally designed by a fanatical sect of Gozren priests, goz masks were designed to help navigate the area around the Eye of Abendego. The masks couldn't contend with the might of the storm, but they remain in use by people all around the Mwangi Expanse. These masks are typically made of wood and crafted to sport round, exaggerated features.",
@@ -64,9 +59,6 @@
 					"components": [
 						"Interact"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You ignore concealment caused by fog, smoke, and other obscuring vapors for 1 minute."
 					]
@@ -79,8 +71,7 @@
 					"level": 2,
 					"price": {
 						"coin": "gp",
-						"amount": 30,
-						"note": null
+						"amount": 30
 					},
 					"entries": []
 				},
@@ -89,8 +80,7 @@
 					"level": 6,
 					"price": {
 						"coin": "gp",
-						"amount": 240,
-						"note": null
+						"amount": 240
 					},
 					"entries": [
 						"The effect lasts for 10 minutes."
@@ -101,8 +91,7 @@
 					"level": 12,
 					"price": {
 						"coin": "gp",
-						"amount": 1900,
-						"note": null
+						"amount": 1900
 					},
 					"entries": [
 						"The major goz mask gives you darkvision and allows you to ignore all concealment from any {@trait environmental} effects for 1 hour."
@@ -126,11 +115,9 @@
 			],
 			"price": {
 				"coin": "gp",
-				"amount": 210,
-				"note": null
+				"amount": 210
 			},
 			"usage": "worn mask",
-			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"All herd masks are linked to at least one other herd mask and are usually sold in sets of multiple masks. Linked herd masks look similar to one another, with only the slightest of differences to tell them apart.",
@@ -147,15 +134,12 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You swap locations with another creature wearing a linked herd mask within 100 feet. If you and the creature you swapped with are disguised as each other, other creatures gain an immediate {@skill Perception} check against the lower of your or the other wearer's {@skill Deception} DCs to {@action Impersonate} each other. On a failure, they don't realize the swap occurred."
 					]
 				}
 			],
 			"craftReq": "Supply a casting of dimension door. You can link a herd mask you create to another herd mask in your possession when you finish crafting it, which causes it to be linked to the chosen mask as well as all other herd masks that are also linked to the chosen mask.",
-			"generic": false,
 			"consumable": false
 		},
 		{
@@ -173,11 +157,9 @@
 			],
 			"price": {
 				"coin": "gp",
-				"amount": 100,
-				"note": null
+				"amount": 100
 			},
 			"usage": "worn mask",
-			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"This porcelain or alabaster mask portrays an angelic visage of kindness and mercy.",
@@ -195,13 +177,11 @@
 						"freq": 1
 					},
 					"trigger": "You are about to roll a variable number of Hit Points you restore from an action with the {@trait healing} trait",
-					"requirements": null,
 					"entries": [
 						"Roll twice to determine the number of Hit Points you restore and take the higher result."
 					]
 				}
 			],
-			"generic": false,
 			"consumable": false
 		},
 		{
@@ -218,11 +198,9 @@
 			],
 			"price": {
 				"coin": "gp",
-				"amount": 475,
-				"note": null
+				"amount": 475
 			},
 			"usage": "worn mask",
-			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"These masks are always decorated with at least one wide, staring eye.",
@@ -237,7 +215,6 @@
 					}
 				}
 			],
-			"generic": false,
 			"consumable": false
 		},
 		{
@@ -254,16 +231,13 @@
 			],
 			"price": {
 				"coin": "gp",
-				"amount": 5,
-				"note": null
+				"amount": 5
 			},
 			"usage": "worn mask",
-			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"These minor magic items are painted to resemble your face, or some metaphorical depiction thereof, to encourage the ushers of death to take the mask in your place. If you begin your turn with a {@condition dying} value of 3 or greater, instead of making your recovery check, you lose the {@condition dying} condition but remain {@condition unconscious} at 0 Hit Points. The mask then cracks in half and is destroyed. The psychopomps won't be so easily fooled again\u2014you are temporarily immune to the effects of any psychopomp mask for 1 year."
 			],
-			"generic": false,
 			"consumable": false
 		},
 		{
@@ -279,7 +253,6 @@
 				"Transmutation"
 			],
 			"usage": "worn mask",
-			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"Covered with thick armor and bearing a thicker horn, this face mask grants you increased momentum. If you {@action Stride} at least 10 feet, your next melee {@action Strike} before the end of your turn ignores the Hardness of objects with a Hardness of 5 or less. If the object has more than Hardness 5, the mask grants no benefit."
@@ -291,8 +264,7 @@
 					"level": 4,
 					"price": {
 						"coin": "gp",
-						"amount": 90,
-						"note": null
+						"amount": 90
 					},
 					"entries": []
 				},
@@ -301,8 +273,7 @@
 					"level": 8,
 					"price": {
 						"coin": "gp",
-						"amount": 425,
-						"note": null
+						"amount": 425
 					},
 					"entries": [
 						"Your melee Strikes ignore the Hardness of objects with a Hardness of 10 or less."
@@ -336,9 +307,6 @@
 					"components": [
 						"Interact"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"The bone begins recording the next 1 minute of ambient sounds (including speech) that require a DC 15 or lower {@skill Perception} check to hear.",
 						"The bone's recording doesn't copy magical {@trait auditory} effects, such as those of spellcasting, a harpy's song, or a banshee's wail. Once the rhythm bone has been activated in this way, it retains the recorded sound for the rest of its existence and can't be activated this way again."
@@ -353,9 +321,6 @@
 					"components": [
 						"Interact"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"The bone replays its recorded sounds."
 					]
@@ -368,8 +333,7 @@
 					"level": 1,
 					"price": {
 						"coin": "gp",
-						"amount": 8,
-						"note": null
+						"amount": 8
 					},
 					"entries": []
 				},
@@ -378,8 +342,7 @@
 					"level": 4,
 					"price": {
 						"coin": "gp",
-						"amount": 64,
-						"note": null
+						"amount": 64
 					},
 					"craftReq": "Supply a casting of ghost sound.",
 					"entries": [
@@ -403,16 +366,13 @@
 			],
 			"price": {
 				"coin": "gp",
-				"amount": 80,
-				"note": null
+				"amount": 80
 			},
 			"usage": "worn mask",
-			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"This simple wooden mask is carved into the shape of an animal, usually tailored to a species of beast that the user favors. While wearing this mask, you can speak even when polymorphed into an animal. The shapespeak mask does not otherwise remove any limitations, such as the inability to cast spells when transformed."
 			],
-			"generic": false,
 			"consumable": false
 		},
 		{
@@ -428,7 +388,7 @@
 				"Transmutation"
 			],
 			"usage": "worn mask",
-			"bulk": "1",
+			"bulk": 1,
 			"category": "Worn",
 			"entries": [
 				"This carved wooden full-head mask sports several holes along each side of the face. The first time each day that you begin your turn {@condition unconscious} and within 25 feet of an enemy, metallic insect legs emerge from the holes in the mask and {@action Step} 5 feet away from the nearest enemy, dragging your body along with the mask. If more than one enemy is equidistant, the mask {@action Step||Steps} away from one of them at random. The mask possesses no special senses and does not react to {@condition hidden} or {@condition undetected} enemies, nor can it distinguish that a creature not acting openly {@condition hostile} is an enemy."
@@ -440,8 +400,7 @@
 					"level": 2,
 					"price": {
 						"coin": "gp",
-						"amount": 30,
-						"note": null
+						"amount": 30
 					},
 					"entries": []
 				},
@@ -450,8 +409,7 @@
 					"level": 8,
 					"price": {
 						"coin": "gp",
-						"amount": 500,
-						"note": null
+						"amount": 500
 					},
 					"entries": [
 						"The mask {@action Step||Steps} 15 feet instead of 5 feet, and for 1 minute, each time you begin your turn {@condition unconscious} and within 25 feet of an enemy, the mask {@action Step||Steps} 15 feet away from the nearest enemy again. An ally can signal the mask with a single action, which has the {@trait auditory} and {@trait concentrate} traits. If the mask hears the signal, it attempts to move you towards that ally when it {@action Step||Steps} away from the nearest enemy."
@@ -490,8 +448,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"Your vision up to 60 feet sees through small amounts of living plant matter as though it were transparent.",
 						"While this effect is active, creatures can't be {@condition concealed} from you due to living plants, such as small trees, vines, and grass. This also prevents them from Hiding or Sneaking past you using only living plants for concealment or cover. Other than the inability to use the cover to {@action Hide} or {@action Sneak}, this ability doesn't prevent plants from providing cover to creatures or blocking line of effect. It also doesn't allow you to see through dead plant matter, such as the wooden walls of a building, or thick plant matter, such as the walls of a dungeon built entirely inside an enormous living tree.",
@@ -506,8 +462,7 @@
 					"level": 5,
 					"price": {
 						"coin": "gp",
-						"amount": 30,
-						"note": null
+						"amount": 30
 					},
 					"entries": []
 				},
@@ -516,8 +471,7 @@
 					"level": 9,
 					"price": {
 						"coin": "gp",
-						"amount": 240,
-						"note": null
+						"amount": 240
 					},
 					"entries": [
 						"The effect lasts for 10 minutes."

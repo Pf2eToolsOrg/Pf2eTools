@@ -14,11 +14,10 @@
 			],
 			"price": {
 				"coin": "gp",
-				"amount": 500,
-				"note": null
+				"amount": 500
 			},
 			"usage": "held in 1 hand",
-			"bulk": "1",
+			"bulk": 1,
 			"category": "Held",
 			"entries": [
 				"This beautiful leather bag is lined in soft fur and purrs quietly when pet.",
@@ -35,8 +34,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You shake the bag to produce a single cat. You cast a 3rd-level {@spell summon animal} to produce a leopard (Bestiary 52)."
 					]
@@ -55,15 +52,12 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You pull the bag over your head and it covers you completely. You then exit the bag in the form of a large cat.",
 						"You gain the effects of 3rd-level {@spell animal form} but must use the cat battle form."
 					]
 				}
 			],
-			"generic": false,
 			"consumable": false
 		},
 		{
@@ -82,8 +76,7 @@
 			],
 			"price": {
 				"coin": "gp",
-				"amount": 250,
-				"note": null
+				"amount": 250
 			},
 			"usage": "worn crown",
 			"bulk": "L",
@@ -104,14 +97,11 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You bow to an ally within 30 feet, creating a magical bond between the two of you. You cast {@spell shield} other targeting the ally. The link remains even if you move more than 30 feet away from them. At the end of the spell's duration, your ally recovers {@dice 4d8} Hit Points and you recover half of what they recover."
 					]
 				}
 			],
-			"generic": false,
 			"consumable": false
 		},
 		{
@@ -128,11 +118,10 @@
 			],
 			"price": {
 				"coin": "gp",
-				"amount": 360,
-				"note": null
+				"amount": 360
 			},
 			"usage": "held in 1 hand",
-			"bulk": "1",
+			"bulk": 1,
 			"category": "Held",
 			"entries": [
 				"This +1 striking returning spear is warm to the touch. The head of the spear is crafted from gold with ivory inlay and has a ruby set into the shaft. You can make the spear glow like a torch or suppress its light by using an action, which has the {@trait concentrate} trait.",
@@ -150,14 +139,11 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You touch the ruby and hurl the spear at a square within 40 feet. When the spear lands, it detonates, dealing {@damage 6d6} fire damage (DC 23 basic Reflex save) to all creatures in a 10-foot emanation. It then flies back to your hand."
 					]
 				}
 			],
-			"generic": false,
 			"consumable": false
 		},
 		{
@@ -173,11 +159,10 @@
 			],
 			"price": {
 				"coin": "gp",
-				"amount": 415,
-				"note": null
+				"amount": 415
 			},
 			"usage": "held in 1 hand",
-			"bulk": "1",
+			"bulk": 1,
 			"category": "Held",
 			"entries": [
 				"Long associated with a notorious crime boss in Nantambu, this stout +1 striking fearsomeAPG club is studded with vicious-looking knobs of obsidian and wrapped in cloth for a better grip.",
@@ -191,15 +176,11 @@
 					"components": [
 						"Interact"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You gesture at a square within 40 feet with Habu's Cudgel. The club causes a frightful wail to unleash from that square and casts fear (DC 24 Will save) targeting the creature in that square and all adjacent creatures."
 					]
 				}
 			],
-			"generic": false,
 			"consumable": false
 		},
 		{
@@ -215,11 +196,10 @@
 			],
 			"price": {
 				"coin": "gp",
-				"amount": 700,
-				"note": null
+				"amount": 700
 			},
 			"usage": "worn armor",
-			"bulk": "2",
+			"bulk": 2,
 			"category": "Armor",
 			"entries": [
 				"Made of cobalt-colored steel rings that flow down the entire length of the garment, this +1 resilient chain mail includes an armored face covering. The armor is said to be based on the same armor once worn by Azure Leopard, one of Old-Mage Jatembe's magic warriors.",
@@ -237,15 +217,12 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You call upon the ferocity and grace of the leopard. The armor's rings flatten out to become a solid piece of flexible armor. You gain a +2 item bonus to {@skill Stealth} checks and {@skill Intimidation} checks to {@action Demoralize}, but take a \u20132 penalty to {@skill Diplomacy} and {@skill Society} checks.",
 						"This lasts for 1 hour, but you can Activate the armor again to revert it back to its original form."
 					]
 				}
 			],
-			"generic": false,
 			"consumable": false
 		},
 		{
@@ -263,27 +240,23 @@
 			],
 			"price": {
 				"coin": "gp",
-				"amount": 28,
-				"note": null
+				"amount": 28
 			},
 			"usage": "affixed to armor",
-			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
 					"unit": "reaction"
 				},
-				"components": "envision",
-				"requirements": null,
-				"frequency": null,
+				"components": [
+					"envision"
+				],
 				"trigger": "You would take physical damage."
 			},
 			"category": "Talisman",
 			"entries": [
 				"This thick brooch is carved from a single piece of rhino hide. It's lacquered and covered in a thin layer of silver dust. When activated, the talisman grants you resistance 5 to physical damage until the end of the current creature's turn. This resistance applies to the triggering attack."
-			],
-			"generic": false,
-			"consumable": true
+			]
 		},
 		{
 			"name": "Singing Muse",
@@ -300,28 +273,24 @@
 			],
 			"price": {
 				"coin": "gp",
-				"amount": 250,
-				"note": null
+				"amount": 250
 			},
 			"usage": "affixed to armor",
-			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
 					"unit": "reaction"
 				},
-				"components": "envision",
-				"requirements": null,
-				"frequency": null,
+				"components": [
+					"envision"
+				],
 				"trigger": "You attempt a"
 			},
 			"category": "Talisman",
 			"entries": [
 				"{@skill Performance} check.",
 				"This small figurine is carved from a single piece of silvery, spiky stone and resembles a beautiful dryad pouring water into a small pool. When you activate the muse, you are momentarily enlightened with inspiration that bolsters your performance. If you roll a success on your triggering check, you get a critical success instead."
-			],
-			"generic": false,
-			"consumable": true
+			]
 		},
 		{
 			"name": "Spellender",
@@ -336,8 +305,7 @@
 			],
 			"price": {
 				"coin": "gp",
-				"amount": 600,
-				"note": null
+				"amount": 600
 			},
 			"usage": "held in 1 hand",
 			"bulk": "L",
@@ -357,14 +325,11 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"The dagger casts a 4th-level {@spell dispel magic} targeting the most powerful spell effect affecting the creature you critically hit. The counteract check is +15."
 					]
 				}
 			],
-			"generic": false,
 			"consumable": false
 		},
 		{
@@ -393,9 +358,6 @@
 						"envision",
 						"Interact"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You ring the chime, unleashing its magic. The specifics of each chime, as well as the activation's frequency (if any), appear in its entry below."
 					]
@@ -408,8 +370,7 @@
 					"level": 6,
 					"price": {
 						"coin": "gp",
-						"amount": 250,
-						"note": null
+						"amount": 250
 					},
 					"entries": [
 						"This chime features carvings of destructive runes.",
@@ -421,8 +382,7 @@
 					"level": 4,
 					"price": {
 						"coin": "gp",
-						"amount": 100,
-						"note": null
+						"amount": 100
 					},
 					"entries": [
 						"A series of shattered mountains are carved into this chime. When activated, you touch the chime against an unattended object, casting shatter upon the object, ignoring the object's Hardness if it's 6 or lower. You can use this chime once per day."
@@ -433,8 +393,7 @@
 					"level": 10,
 					"price": {
 						"coin": "gp",
-						"amount": 1000,
-						"note": null
+						"amount": 1000
 					},
 					"entries": [
 						"This chime's carvings depict skulls and other grim icons.",
@@ -446,8 +405,7 @@
 					"level": 8,
 					"price": {
 						"coin": "gp",
-						"amount": 500,
-						"note": null
+						"amount": 500
 					},
 					"entries": [
 						"This chime's carvings depict a series of warding runes that evoke feelings of serene protection. When activated, you touch the chime to yourself or a willing creature. The target gains the effects of sanctuary (DC 20 Will save)",
@@ -459,8 +417,7 @@
 					"level": 5,
 					"price": {
 						"coin": "gp",
-						"amount": 160,
-						"note": null
+						"amount": 160
 					},
 					"entries": [
 						"This chime features several elemental runes in its carvings. When activated, it creates a defensive aura in a 5-foot emanation. As you activate the chime, choose acid, cold, electricity, fire, or sonic. You and creatures in the aura gain resistance 5 against the damage type you chose. This aura remains active for 10 minutes. This chime can be used once per week."
@@ -471,8 +428,7 @@
 					"level": 12,
 					"price": {
 						"coin": "gp",
-						"amount": 2000,
-						"note": null
+						"amount": 2000
 					},
 					"entries": [
 						"This chime's carvings depict blooming flowers. When activated, it creates a small aura of healing in a 5-foot emanation. Creatures in the aura gain fast healing 15. This aura remains active for 3 rounds. This chime can be used once per week."
@@ -506,8 +462,7 @@
 					"level": 8,
 					"price": {
 						"coin": "gp",
-						"amount": 495,
-						"note": null
+						"amount": 495
 					},
 					"entries": [
 						"This exquisitely crafted statuette is carved into the form of twin panthers climbing a tree. When activated, it transforms into a pair of beautiful leopards (Pathfinder Bestiary 52) that are carved out of bismuth and flash hypnotically as they move. Creatures that come within 5 feet of a bismuth leopard or that end their turn within 5 feet of a bismuth leopard become {@condition dazzled} for 1 round unless they succeed at a DC 24 Will save. A creature that comes within 5 feet of both leopards or ends its turn within 5 feet of both leopards need only attempt one saving throw each time.",
@@ -519,8 +474,7 @@
 					"level": 9,
 					"price": {
 						"coin": "gp",
-						"amount": 700,
-						"note": null
+						"amount": 700
 					},
 					"entries": [
 						"This roughly hewn ruby figurine shimmers with a deep red hue and is carved into the likeness of an ornery hippopotamus. When activated, it transforms into an enraged hippopotamus (Pathfinder Bestiary 2 144) that sees everything within 30 feet of its activation area as its territory. It will relentlessly and ferociously attack anyone within this area except you, but it ignores your commands in favor of defending its area. The hippopotamus is active for 1 minute before reverting to its statue shape, satisfied that it has punished all possible interlopers into its territory. The figurine can be used only once per day."

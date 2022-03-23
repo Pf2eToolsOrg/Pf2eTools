@@ -15,8 +15,7 @@
 			],
 			"price": {
 				"coin": "gp",
-				"amount": 58,
-				"note": null
+				"amount": 58
 			},
 			"usage": "held in 2 hands",
 			"bulk": "L",
@@ -25,10 +24,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Poison",
 			"entries": [
@@ -37,7 +35,6 @@
 				"Once soaked in special reagents and then dried, a dose of addlebrain must be either lit with flame or tossed into a fire to activate, whereupon it unleashes a cloud of toxin as normal for an inhaled poison.",
 				{
 					"type": "affliction",
-					"name": null,
 					"traits": [],
 					"DC": 25,
 					"savingThrow": "Fortitude",
@@ -61,9 +58,7 @@
 						}
 					]
 				}
-			],
-			"generic": false,
-			"consumable": true
+			]
 		},
 		{
 			"name": "Bellflower Toolbelt",
@@ -79,11 +74,10 @@
 			],
 			"price": {
 				"coin": "gp",
-				"amount": 220,
-				"note": null
+				"amount": 220
 			},
 			"usage": "worn belt",
-			"bulk": "1",
+			"bulk": 1,
 			"category": "Worn",
 			"entries": [
 				"Different versions of this belt are customized to appear to suit specific trades, so a belt used for carpentry would look somewhat different than a belt for baking.",
@@ -97,16 +91,12 @@
 					"components": [
 						"Interact"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You place an object of up to 1 Bulk into the belt, transforming that object into a tool befitting the trade for which the belt was created. As long as there are enough transformed items, the belt can be used as artisan's tools for that trade.",
 						"Each object remains transformed until it has been removed from the belt for 24 hours or someone uses a single {@action Interact} action to return it to its normal form."
 					]
 				}
 			],
-			"generic": false,
 			"consumable": false
 		},
 		{
@@ -122,10 +112,9 @@
 			],
 			"price": {
 				"coin": "gp",
-				"amount": 680,
-				"note": null
+				"amount": 680
 			},
-			"bulk": "2",
+			"bulk": 2,
 			"category": "no category found",
 			"entries": [
 				"This mid-sized, silver cauldron is a boon within areas where access to fresh food is limited, for it can be commanded to fill itself with hearty (and delicious) vegetable stew. It can also be put to a much greater use in the pursuit of crafting certain items.",
@@ -144,14 +133,11 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You stir the cauldron, and it casts a 4th-level {@spell create food} spell, filling itself with enough delicious vegetable stew to feed 12 Medium creatures."
 					]
 				}
 			],
-			"generic": false,
 			"consumable": false
 		},
 		{
@@ -181,7 +167,6 @@
 					}
 				}
 			],
-			"generic": false,
 			"consumable": false
 		},
 		{
@@ -197,8 +182,7 @@
 			],
 			"price": {
 				"coin": "gp",
-				"amount": 700,
-				"note": null
+				"amount": 700
 			},
 			"usage": "held in 1 hand",
 			"bulk": "L",
@@ -218,14 +202,11 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"If the next action you use is to {@action Cast a Spell} of 4th level or lower that has the {@trait sleep} trait or is associated with dreams, the spell slot is not expended."
 					]
 				}
 			],
-			"generic": false,
 			"consumable": false
 		},
 		{
@@ -254,9 +235,6 @@
 					"components": [
 						"Interact"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You touch the Eye of the Wise to a gem worth at least 10 gp, whereupon the Eye of the Wise assumes the appearance of the touched gemstone. While this connection is active, the carriers of the Eye of the Wise and of the other gemstone can communicate telepathically with one another over any distance, as long as both are on the same plane.",
 						"This connection is {@condition broken} if the other gemstone is damaged, if the Eye of the Wise becomes attuned to another gemstone, or if the bearer of the Eye of the Wise Dismisses the activation."
@@ -271,15 +249,11 @@
 					"components": [
 						"Interact"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You hold the Eye of the Wise up to your own eye and peer through it. The Eye of the Wise grows transparent and grants you a +2 item bonus to attempts to {@action Decipher Writing}, {@action Disable a Device}, {@action Identify Magic}, {@action Pick a Lock}, {@action Seek}, or {@action Sense Motive}. You can Sustain this activation as long as you hold the gem in place."
 					]
 				}
 			],
-			"generic": false,
 			"consumable": false
 		},
 		{
@@ -297,8 +271,7 @@
 			],
 			"price": {
 				"coin": "gp",
-				"amount": 650,
-				"note": null
+				"amount": 650
 			},
 			"bulk": "L (when not activated)",
 			"category": "Structure",
@@ -314,9 +287,6 @@
 					"components": [
 						"Interact"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You place the gourd home on the ground (in an open area large enough to contain it) and cause it to expand in size to a 30-foot-square structure with one door. The interior of the gourd is a single large room that can hold 10 Small or Medium creatures with moderate comfort."
 					]
@@ -334,7 +304,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
 					"requirements": "The gourd home must be expanded into its house form atop earth or soil.",
 					"entries": [
 						"By rapping on the door from either outside or inside, you cause the gourd home to shrink back into its normal size and appear to be a non-magical gourd sitting on the ground. For the following 8 hours, the interior of the gourd home becomes an extradimensional space whose size appears unchanged to those within.",
@@ -342,7 +311,6 @@
 					]
 				}
 			],
-			"generic": false,
 			"consumable": false
 		}
 	]

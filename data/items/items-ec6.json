@@ -15,8 +15,7 @@
 			],
 			"price": {
 				"coin": "gp",
-				"amount": 6200,
-				"note": null
+				"amount": 6200
 			},
 			"usage": "held in 1 hand",
 			"bulk": "L",
@@ -25,18 +24,15 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Elixir",
 			"entries": [
 				"This elixir is usually stored in a small metal flask or miniature stein. The dark liquid sparkles as if it were full of stars and is considered sacred to {@deity Cayden Cailean} and to the cults of the Failed in Absalom. The next time you would die from damage within 8 hours after you drink the ambrosia, it prevents you from {@condition dying}, you regain 20 Hit Points, the elixir's benefits end, and you become temporarily immune to the ambrosia of undying hope for 24 hours.",
 				"The ambrosia can't protect you from {@trait death} effects or disintegration, but it can protect against almost any other form of death via damage. You can only be under the effect of a single ambrosia of undying hope at a time."
-			],
-			"generic": false,
-			"consumable": true
+			]
 		},
 		{
 			"name": "Aroden's Hearthstone",
@@ -69,7 +65,6 @@
 						"freq": 4,
 						"unit": "year"
 					},
-					"trigger": null,
 					"requirements": "You have Legendary proficiency in {@skill Crafting}",
 					"entries": [
 						"You craft a magical weapon or armor of up to 20th level. You must attempt a {@skill Crafting} check as usual to create the item, but you need supply only raw materials worth a quarter of the item's Price, and you need not pay the remaining portion of the item's Price or spend additional downtime days working on it. While Aroden's Hearthstone is active, the stars in the sky, including Golarion's sun, appear to glow brighter within a 100-mile radius of the hearthstone."
@@ -89,8 +84,6 @@
 						"freq": 1,
 						"unit": "month"
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"Aroden's Hearthstone draws in heat from the world itself, causing the ambient temperature within 100 miles to drop below 0°F.",
 						"Within 1 mile of the Hearthstone, the temperature drops to \u2013200°F, rivaling the frigid cold of outer space and dealing {@damage 4d6} cold damage each round to every creature in the area. This effect lasts 1 minute, during which time the nearest moon (probably Golarion's) appears an eerie blue color to any observers within 100 miles of the hearthstone. At the end of 1 minute, the hearthstone emits a blast of concentrated heat that deals {@damage 25d6} fire damage to creatures and objects within 150 feet.",
@@ -98,7 +91,6 @@
 					]
 				}
 			],
-			"generic": false,
 			"consumable": false
 		},
 		{
@@ -116,27 +108,23 @@
 			],
 			"price": {
 				"coin": "gp",
-				"amount": 12500,
-				"note": null
+				"amount": 12500
 			},
 			"usage": "affixed to armor",
-			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
 					"unit": "free"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
+				"components": [
+					"Interact"
+				],
 				"trigger": "You critically fail a saving throw or are critically hit by an attack."
 			},
 			"category": "Talisman",
 			"entries": [
 				"This strand of hair shimmers like the strands of fate. When you activate the string, it resonates with a single, perfect note. The triggering saving throw becomes a failure or the triggering attack roll becomes a regular hit, not critical one. If the source of the attack or effect is an evil creature, that creature must succeed at a DC 41 Will saving throw or be {@condition enfeebled|CRB|enfeebled 2} and {@condition stupefied|CRB|stupefied 2} until the end of its next turn."
-			],
-			"generic": false,
-			"consumable": true
+			]
 		},
 		{
 			"name": "Hunter's Dawn",
@@ -151,7 +139,7 @@
 				"Enchantment"
 			],
 			"usage": "held in 1 hand",
-			"bulk": "1",
+			"bulk": 1,
 			"category": "Artifact",
 			"entries": [
 				"Hunter's Dawn is a +3 greater striking speed ghost touch club. However, the notched head of the weapon marks it as an atlatl, an ancient tool used for throwing darts and javelins. You can use Hunter's Dawn with a mundane dart or javelin like you would use a bow with an arrow; when you do so, the range of the dart or javelin is doubled, and the dart or javelin uses Hunter's Dawn to determine its attack modifier and damage dice.",
@@ -167,9 +155,6 @@
 					"components": [
 						"Strike with Hunter's Dawn"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"The target is marked. Once per day, you can cast a 5th-level {@spell locate} spell on the marked target, regardless of its distance from you or your ability to cast spells. This effect persists until it is dispelled (counterspell DC 46), the creature dies, or a new target is marked."
 					]
@@ -183,16 +168,12 @@
 					"components": [
 						"(Interact) Frequency three times per day"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You shave a curl of wood from Hunter's Dawn and create a roaring fire within 15 feet. You can choose one of the following shapes for the fire to take: a 10-foot square, a 20-foot line, or a 15-foot cone. Each creature in the affected squares take {@damage 6d6} fire damage (DC 46 basic Reflex save)",
 						"Destruction Hunter's Dawn can be destroyed only by placing it on the funeral pyre of a dead god."
 					]
 				}
 			],
-			"generic": false,
 			"consumable": false
 		},
 		{
@@ -210,17 +191,15 @@
 			],
 			"price": {
 				"coin": "gp",
-				"amount": 14000,
-				"note": null
+				"amount": 14000
 			},
 			"usage": "worn armor",
-			"bulk": "1",
+			"bulk": 1,
 			"category": "Armor",
 			"entries": [
 				"This +2 greater resilient studded leather is traditionally inscribed with a symbol of either {@deity Norgorber} or {@deity Cayden Cailean}. Its leather is light as silk, and its buttons and studs are gleaming crystal. While you wear it, you get a +15-foot item bonus to your Speed, and effects that attempt to impose penalties on your Speed must first counteract the jerkin of liberation or they have no effect on you.",
 				"In addition, you are hard to incapacitate. You use the jerkin's item level or your own level, whichever is higher, to determine effects of the {@trait incapacitation} trait."
 			],
-			"generic": false,
 			"consumable": false
 		},
 		{
@@ -236,7 +215,7 @@
 				"Evocation"
 			],
 			"usage": "held in 1 hand",
-			"bulk": "1",
+			"bulk": 1,
 			"category": "Artifact",
 			"entries": [
 				"The hilt of this +3 major striking axiomatic spell-storing longsword is simple and elegant. The blade itself is made of throneglass\u2014a clear, jewellike crafting material with a razor-sharp edge, capable of absorbing psychic magic and redirecting it at the wielder's enemies.",
@@ -256,8 +235,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You attempt a melee {@action Strike} with the Kortos Diamond against a creature within reach. On a hit, you deal damage as normal and the target's mind is inflicted with a powerful disruptive energy.",
 						"When the creature attempts to {@action Cast a Spell}, it must attempt a DC 44 Will save; on a failure, the spell fails and both the spell and the actions spent to cast it are lost. This effect lasts for up to 1 minute."
@@ -277,7 +254,6 @@
 						"freq": 1
 					},
 					"trigger": "You damage an aberration with the Kortos",
-					"requirements": null,
 					"entries": [
 						"You deal an additional {@damage 2d8} force damage to the struck creature."
 					]
@@ -296,15 +272,12 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You hold the Kortos Diamond aloft and proclaim your might in a booming voice. You cast {@spell overwhelming presence} (DC 42)",
 						"Destruction A deity who ascended to divinity via the Test of the Starstone can damage and destroy the Kortos Diamond as if it were not an artifact."
 					]
 				}
 			],
-			"generic": false,
 			"consumable": false
 		},
 		{
@@ -321,11 +294,9 @@
 			],
 			"price": {
 				"coin": "gp",
-				"amount": 36000,
-				"note": null
+				"amount": 36000
 			},
 			"usage": "worn necklace",
-			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
 				"As long as this locket of horn and silver is closed, you don't need to sleep. However, you can still overexert your body with too much activity, so you still need to rest to avoid becoming {@condition fatigued} or to remove the {@condition fatigued} condition.",
@@ -342,15 +313,12 @@
 						"envision",
 						"Interact"
 					],
-					"frequency": null,
-					"trigger": null,
 					"requirements": "You aren't {@condition fatigued}",
 					"entries": [
 						"You open the locket to unleash the dreams it has kept at bay. You become {@condition fatigued} and cast one of the following spells at 9th level (DC 41): {@spell hallucination}, {@spell sleep}, or {@spell weird}."
 					]
 				}
 			],
-			"generic": false,
 			"consumable": false
 		},
 		{
@@ -368,8 +336,7 @@
 			],
 			"price": {
 				"coin": "gp",
-				"amount": 8000,
-				"note": null
+				"amount": 8000
 			},
 			"usage": "held in 1 hand",
 			"bulk": "L",
@@ -378,17 +345,14 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Consumable",
 			"entries": [
 				"This fruit is slowly, constantly changing shape, transforming from one fruit into another, but always appearing at the peak of ripeness. When you consume the fruit, it attempts to counteract all curses, diseases, and poisons affecting you, and you immediately regain {@dice 8d8+30} Hit Points. The fruit has a counteract level of 9 and a +30 modifier for the rolls against each condition. The fruit's seed remains after consumption and can be planted later, becoming a seed-shaped tree feather token that sprouts a tree bearing many kinds of mundane fruit."
-			],
-			"generic": false,
-			"consumable": true
+			]
 		},
 		{
 			"name": "Piereta",
@@ -403,7 +367,7 @@
 				"Intelligent"
 			],
 			"usage": "held in 1 hand",
-			"bulk": "1",
+			"bulk": 1,
 			"category": "Held",
 			"perception": {
 				"default": 26,
@@ -462,8 +426,6 @@
 						"unit": "minute",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"Piereta makes a {@action Retributive Strike}, resolved as though you had used the ability, including any benefits from champion feats you have."
 					]
@@ -482,14 +444,11 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"Piereta casts a 9th-level {@spell field of life}."
 					]
 				}
 			],
-			"generic": false,
 			"consumable": false
 		},
 		{
@@ -505,8 +464,7 @@
 			],
 			"price": {
 				"coin": "gp",
-				"amount": 60000,
-				"note": null
+				"amount": 60000
 			},
 			"usage": "held in 1 hand",
 			"bulk": "L",
@@ -525,9 +483,6 @@
 						"envision",
 						"Interact)"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"The ribbon spins and swirls, creating a circular loop in the air through which you can spy on a creature on another plane. This has the effects of a {@spell scrying} spell (DC 40) against the creature but functions more as a mundane \u2014albeit interplanar\u2014window; a similar loop appears before the target, and for the duration, both sides can clearly see and hear each other through the created portal, but nothing can pass through. You can Sustain the Activation to gain the effects of Sustaining the Spell.",
 						"This activation has the {@trait scrying} trait."
@@ -546,14 +501,11 @@
 						"unit": "round",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You extend the ribbon to brush against a foe up to 60 feet away. If that creature fails a DC 42 Reflex save, you exchange positions with the target and all of that creature's allies are {@condition flat-footed} to you until the end of your turn. This activation has the {@trait teleportation} trait."
 					]
 				}
 			],
-			"generic": false,
 			"consumable": false
 		},
 		{
@@ -570,8 +522,7 @@
 			],
 			"price": {
 				"coin": "gp",
-				"amount": 70000,
-				"note": null
+				"amount": 70000
 			},
 			"usage": "strapped to 1 hand",
 			"bulk": "L",
@@ -591,14 +542,11 @@
 						"unit": "minute",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You heft the shield and thrust it forward, causing ephemeral reflections of the shield to surround you and then rush outward in a 90-foot line or 60-foot cone (your choice). Make a shield bash {@action Strike} against each enemy within the area, except that the damage dealt is force damage. Each target you hit is moved 10 feet away from you (each target you critically hit is also knocked {@condition prone}). This is forced movement. These shield bashes count against your multiple attack penalty, but the penalty doesn't increase until after you have made all these attacks."
 					]
 				}
 			],
-			"generic": false,
 			"consumable": false
 		},
 		{
@@ -615,31 +563,24 @@
 			],
 			"price": {
 				"coin": "gp",
-				"amount": 65000,
-				"note": null
+				"amount": 65000
 			},
 			"usage": "held in 1 hand",
-			"bulk": "1",
+			"bulk": 1,
 			"category": "Staff",
 			"entries": [
 				"This adamantine staff is fitted with mithral plates resembling battlements on a castle. Lesser cover, cover, and greater cover don't grant any bonus against your spell attacks or to saving throws against your spells that you cast from the staff.",
 				{
 					"type": "ability",
-					"activity": {
-						"number": 1,
-						"unit": "varies",
-						"entry": "Cast a Spell"
-					},
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
+					"components": [
+						"Cast a Spell"
+					],
 					"entries": [
 						"You expend a number of charges from the staff to cast a spell from its list.",
 						"Cantrips shield, telekinetic projectile 1st gust of wind, longstrider 2nd obscuring mist, web 3rd fireball, wall of wind 4th hallucinatory terrain, solid fog, wall of fire 5th cloudkill, wall of stone 6th fireball, wall of force 7th magnificent mansion, prismatic spray 8th earthquake, scintillating pattern 9th meteor swarm."
 					]
 				}
 			],
-			"generic": false,
 			"consumable": false
 		},
 		{
@@ -664,7 +605,6 @@
 				"Once per day, you can attempt to exchange the aeon stone in a given bail for another aeon stone with a successful DC 35 {@skill Arcana} check.",
 				"D6 Bail Default Aeon Stone 1 Patience Gold nodule Active Power: Telepathy with a range of 100 feet 2 Remembrance Tourmaline sphere Active Power: Cast {@spell hypercognition} at will 3 Resilience Clear spindle Active Power: Worn armor gains the antimagic property rune 4 Tenacity Pink rhomboid Active Power: Wielded weapons gain the vorpal property rune 5 Wisdom Orange prism Active Power: Skill checks for downtime activities or to {@action Recall Knowledge} are one degree of success higher 6 Invention Lavender and green ellipsoid Active Power: You can craft items up to 5 levels higher than your actual level Destruction The memories and lessons that echo through the Tears of the Last Azlanti give clues about steps needed to destroy the artifact. After you have gained the power of each of the six aeon stones at least once, you are granted visions of six locations across Golarion. At each of these locations, you must replace one of the necklace's aeon stones with a dull gray aeon stone. Once the final stone is replaced, the powers of the necklace are drawn into its new stones. These stones become pieces of throneglass, and the chain and bails disintegrate."
 			],
-			"generic": false,
 			"consumable": false
 		}
 	]

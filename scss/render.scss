@@ -59,12 +59,13 @@ $rgb-inset-border: #656565;
 			}
 		}
 
-		// FIXME:
 		&list {
 			margin-top: 5px;
 			margin-bottom: 10px;
 			padding-left: 24px;
 			text-indent: 0;
+			// FIXME list bullets with left sidebars
+			// list-style-position: inside;
 
 			// FIXME(future) alternately, `&:has(+ .rd__list) { margin-bottom: 0; }` when browser support exists for :has
 			+ .rd__list {
@@ -207,7 +208,6 @@ $rgb-inset-border: #656565;
 
 		&list-hang {
 			list-style: none;
-
 			// Firefox workaround; list bullets are pseudo-elements "::marker"
 			> li > *:not(::marker) {
 				text-indent: -1.1em;

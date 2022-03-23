@@ -14,16 +14,14 @@
 				"Teleportation"
 			],
 			"usage": "held in 1 hand",
-			"bulk": "\u2014",
 			"activate": {
 				"activity": {
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Consumable",
 			"entries": [
@@ -38,8 +36,7 @@
 					"level": 11,
 					"price": {
 						"coin": "gp",
-						"amount": 300,
-						"note": null
+						"amount": 300
 					},
 					"entries": []
 				},
@@ -48,8 +45,7 @@
 					"level": 14,
 					"price": {
 						"coin": "gp",
-						"amount": 600,
-						"note": null
+						"amount": 600
 					},
 					"entries": [
 						"The Will save DC is 31."
@@ -60,8 +56,7 @@
 					"level": 17,
 					"price": {
 						"coin": "gp",
-						"amount": 3000,
-						"note": null
+						"amount": 3000
 					},
 					"entries": [
 						"The Will save DC is 37."
@@ -72,15 +67,13 @@
 					"level": 20,
 					"price": {
 						"coin": "gp",
-						"amount": 9000,
-						"note": null
+						"amount": 9000
 					},
 					"entries": [
 						"The Will save DC is 43."
 					]
 				}
-			],
-			"consumable": true
+			]
 		},
 		{
 			"name": "Phoenix Fighting Fan",
@@ -111,9 +104,6 @@
 						"envision",
 						"Interact"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You call upon the fan's extradimensional powers to trap a creature in Hao Jin's repository, a small demiplane that holds the countless relics Hao Jin collected over her lifetime (though a trapped creature cannot interact with any of these relics). The fighting fan casts maze on a creature within 30 feet. The fan automatically Sustains the Spell as long as you {@action Strike} a creature with it each round.",
 						"The {@skill Survival} or {@skill Perception} DC to escape the demiplane is 34. The spell ends once the creature escapes, you fail to {@action Strike} a creature with the fan during a round, or after 1 minute, whichever comes first."
@@ -130,15 +120,11 @@
 						"(envision",
 						"Interact)"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"The fan casts 8th-level {@spell raise dead}, consuming the phoenix fighting fan in the process."
 					]
 				}
 			],
-			"generic": false,
 			"consumable": false
 		},
 		{
@@ -155,7 +141,6 @@
 				"Necromancy"
 			],
 			"usage": "worn necklace",
-			"bulk": "\u2014",
 			"category": "Artifact",
 			"entries": [
 				"This brilliant jewelry is made from fine silver interwoven with a uniquely malleable form of ruby that causes the necklace to glimmer like a flickering fire. Hao Jin created the necklaces to mitigate the potential of death during the Ruby Phoenix Tournament pre-qualifier, and she specially attuned each phoenix necklace to the silver feathers she created for the pre-qualifying round. While the silver feathers themselves aren't magical, they are required to activate the necklace's power. Each team starts with 3 feathers {@condition hidden} in their headquarters; they acquire more through challenges and events.",
@@ -170,9 +155,6 @@
 						"command",
 						"envision"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You select any number of willing creatures you can see within 30 feet, including yourself. The selected creatures can make nonlethal attacks without taking a penalty to their attack rolls. This effect remains in place until you remove the necklace or use this activation again."
 					]
@@ -187,16 +169,12 @@
 					"components": [
 						"Interact)"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"The necklace consumes one of the attached silver feathers and casts 7th-level {@spell raise dead}. Activating this ability is particularly costly and every activation requires consuming one more silver feather than the previous activation.",
 						"Destruction Once a phoenix necklace has 10 silver feathers attached, Hao Jin can transform the necklace into a phoenix fighting fan, a process which requires 3 {@action Interact} actions."
 					]
 				}
 			],
-			"generic": false,
 			"consumable": false
 		}
 	]

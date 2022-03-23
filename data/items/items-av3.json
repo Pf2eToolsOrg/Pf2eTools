@@ -14,10 +14,9 @@
 			],
 			"price": {
 				"coin": "gp",
-				"amount": 700,
-				"note": null
+				"amount": 700
 			},
-			"bulk": "1",
+			"bulk": 1,
 			"category": "no category found",
 			"entries": [
 				"This concave lens has a drifting crimson cloud resembling slowly swirling blood within it. While you have the Crimson Fulcrum Lens invested, you seethe with malevolent fury you can barely contain. You gain a +2 item bonus to saving throws against {@trait fear} effects and a +2 item bonus to your melee {@action Strike} damage (this increases to a +4 item bonus to damage if the melee {@action Strike} is a jaws attack). You can also activate the lens in the following ways.",
@@ -30,9 +29,6 @@
 					"components": [
 						"Interact"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You grasp the Crimson Fulcrum Lens in one hand and make a {@action Strike} that doesn't require that hand. The {@action Strike} deals an additional {@damage 1d8} precision damage (or {@damage 2d8} precision damage if you make a jaws {@action Strike}) and doesn't count toward your multiple attack penalty."
 					]
@@ -47,15 +43,11 @@
 						"Interact (attack",
 						"possession)"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"While grasping the lens, make a melee spell attack roll with a modifier of +18. On a hit, you force the splinter of {@deity Nhimbaloth|LOGM}'s essence from the lens to possess the target. You're no longer invested in the lens, and the target gains the benefits as though it had invested the lens but can't activate the lens's other abilities. This effect is permanent, but it can be ended by {@trait any} effect that removes a {@trait possession} effect. The lens doesn't have any magical abilities until the {@trait possession} effect ends; when it does, the essence returns to the lens."
 					]
 				}
 			],
-			"generic": false,
 			"consumable": false
 		},
 		{
@@ -72,8 +64,7 @@
 			],
 			"price": {
 				"coin": "gp",
-				"amount": 2000,
-				"note": null
+				"amount": 2000
 			},
 			"bulk": "L",
 			"category": "no category found",
@@ -111,14 +102,12 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
 					"requirements": "At least one glimmer remains in the Ebon Fulcrum Lens",
 					"entries": [
 						"You draw upon a glimmer of {@deity Nhimbaloth|LOGM}'s essence for power; reduce the number of glimmers remaining in the lens by 1. You're {@condition quickened} for 1 minute and gain a +1 item bonus to attack rolls, saving throws, and DCs. You can use this extra action to {@action Stride} or {@action Step}, or for an action in a special ghost ability you have."
 					]
 				}
 			],
-			"generic": false,
 			"consumable": false
 		},
 		{
@@ -136,8 +125,7 @@
 			],
 			"price": {
 				"coin": "gp",
-				"amount": 1000,
-				"note": null
+				"amount": 1000
 			},
 			"bulk": "3",
 			"category": "no category found",
@@ -157,8 +145,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You grasp the Emerald Fulcrum Lens in one hand, regain 30 Hit Points, and gain a +2 item bonus to saving throws against magic for 1 round."
 					]
@@ -173,15 +159,11 @@
 						"Interact (attack",
 						"possession)"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"as Crimson Fulcrum Lens, but the melee spell attack modifier is +20."
 					]
 				}
 			],
-			"generic": false,
 			"consumable": false
 		},
 		{
@@ -197,17 +179,15 @@
 			],
 			"price": {
 				"coin": "gp",
-				"amount": 1200,
-				"note": null
+				"amount": 1200
 			},
 			"usage": "held in 2 hands",
-			"bulk": "2",
+			"bulk": 2,
 			"category": "Held",
 			"entries": [
 				"This silver and copper framework is shaped to hold four focusing lenses, one behind the other, from smallest to largest. It has a socketed base to be mounted into a stand, such as that found in a lighthouse lantern. The Fulcrum Lattice was specifically designed to hold the four fulcrum lenses from smallest to largest (ebon, crimson, ochre, emerald), and it hums slightly while within 10 feet of any fulcrum lens. A fulcrum lens slotted into the Fulcrum Lattice has no Bulk; the lattice remains at 1 Bulk and can be carried easily. Inserting or removing a lens from the Fulcrum Lattice requires a single {@action Interact} action.",
 				"The Fulcrum Lattice channels the power of fulcrum lenses joined with it. While you hold the Fulcrum Lattice, lenses socketed into it are considered to be in your hand for the purpose of activating their abilities. When you make a melee spell attack with a lens in the Fulcrum Lattice, you use the highest melee spell attack modifier of any lens in the lattice, or you can use your melee attack modifier with simple weapons if it's greater."
 			],
-			"generic": false,
 			"consumable": false
 		},
 		{
@@ -223,8 +203,7 @@
 			],
 			"price": {
 				"coin": "gp",
-				"amount": 21,
-				"note": null
+				"amount": 21
 			},
 			"usage": "Held in 1 hand",
 			"bulk": "L",
@@ -233,18 +212,15 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Consumable",
 			"entries": [
 				"This foul-smelling unguent dulls the odors and traces that fungus creatures detect. For 1 day after you slather this musk on your body, fungus creatures take a \u20134 penalty to {@skill Perception} checks to {@action Seek} you or otherwise notice you. If a fungus creature is mindless, it instead has a \u20136 penalty.",
 				"The musk also grants you a +1 item bonus to AC against melee attacks from fungus creatures with no vision for the same period of time. The effects of fungal walk musk end immediately if you're submerged in water or subject to another olfactory effect."
-			],
-			"generic": false,
-			"consumable": true
+			]
 		},
 		{
 			"name": "Necrotic Bomb",
@@ -266,10 +242,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Strike",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Strike"
+				]
 			},
 			"category": "Bomb",
 			"entries": [
@@ -283,8 +258,7 @@
 					"level": 1,
 					"price": {
 						"coin": "gp",
-						"amount": 3,
-						"note": null
+						"amount": 3
 					},
 					"entries": [
 						"The bomb deals {@damage 1d6} negative damage and 1 negative splash damage. On a critical hit, the target is {@condition sickened|CRB|sickened 1}."
@@ -295,8 +269,7 @@
 					"level": 3,
 					"price": {
 						"coin": "gp",
-						"amount": 10,
-						"note": null
+						"amount": 10
 					},
 					"entries": [
 						"You gain a +1 item bonus to attack rolls. The bomb deals {@damage 2d6} negative damage and 2 negative splash damage. On a critical hit, the target is {@condition sickened|CRB|sickened 2}."
@@ -307,8 +280,7 @@
 					"level": 11,
 					"price": {
 						"coin": "gp",
-						"amount": 250,
-						"note": null
+						"amount": 250
 					},
 					"entries": [
 						"You gain a +2 bonus to attack rolls. The bomb deals {@damage 3d6} negative damage and 3 negative splash damage. On a critical hit, the target is {@condition sickened|CRB|sickened 3}."
@@ -319,15 +291,13 @@
 					"level": 17,
 					"price": {
 						"coin": "gp",
-						"amount": 2500,
-						"note": null
+						"amount": 2500
 					},
 					"entries": [
 						"You gain a +3 bonus to attack rolls. The bomb deals {@damage 4d6} negative damage and 4 negative splash damage. On a critical hit, the target is {@condition sickened|CRB|sickened 4}."
 					]
 				}
-			],
-			"consumable": true
+			]
 		},
 		{
 			"name": "Ochre Fulcrum Lens",
@@ -343,10 +313,9 @@
 			],
 			"price": {
 				"coin": "gp",
-				"amount": 1400,
-				"note": null
+				"amount": 1400
 			},
-			"bulk": "2",
+			"bulk": 2,
 			"category": "no category found",
 			"entries": [
 				"This brownish-orange lens always seems dusty and gritty, even when wet. While you have the Ochre Fulcrum Lens invested, lassitude grips you. You gain resistance 10 to mental damage and a +2 status bonus to saves against {@trait emotion} effects. You can also activate the lens in the following ways.",
@@ -363,8 +332,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You hold up the Ochre Fulcrum Lens in your hand and the item casts crushing despair (DC 31 Will save)."
 					]
@@ -379,15 +346,11 @@
 						"Interact (attack",
 						"possession)"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"as Crimson Fulcrum Lens, but the melee spell attack modifier is +21."
 					]
 				}
 			],
-			"generic": false,
 			"consumable": false
 		},
 		{
@@ -407,8 +370,7 @@
 			],
 			"price": {
 				"coin": "gp",
-				"amount": 16,
-				"note": null
+				"amount": 16
 			},
 			"usage": "held in 2 hands",
 			"bulk": "L",
@@ -417,21 +379,18 @@
 					"number": 2,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Poison",
 			"entries": [
 				"Stupor poison is a more potent distillation of lethargy poison. Further exposure to stupor poison doesn't require the target to attempt additional saving throws; only failing a saving throw against an ongoing exposure can progress its stage.",
 				{
 					"type": "affliction",
-					"name": null,
 					"traits": [],
 					"DC": 20,
 					"savingThrow": "Fortitude",
-					"onset": null,
 					"maxDuration": "6\nhours",
 					"stages": [
 						{
@@ -456,9 +415,7 @@
 						}
 					]
 				}
-			],
-			"generic": false,
-			"consumable": true
+			]
 		}
 	]
 }

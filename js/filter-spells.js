@@ -111,8 +111,7 @@ class PageFilterSpells extends PageFilter {
 		spell._fTraditions = (spell.traditions || [])
 			.concat(spell.spellLists || [])
 			.concat(spell.traditions ? spell.traditions.includes("Primal" || "Arcane") ? "Halcyon" : [] : []);
-		spell._fSpellType = spell.focus ? ["Focus"] : ["Spell"];
-		if (spell.traits.includes("Cantrip")) spell._fSpellType.push("Cantrip");
+		spell._fSpellType = spell.traits.includes("Cantrip") && spell.focus ? ["Focus", "Cantrip"] : spell.traits.includes("Cantrip") ? ["Cantrip"] : spell.focus ? ["Focus"] : ["Spell"];
 		spell._fTraits = spell.traits.map(t => Parser.getTraitName(t));
 		if (!spell._fTraits.map(t => Renderer.trait.isTraitInCategory(t, "Rarity")).some(Boolean)) spell._fTraits.push("Common");
 		spell._fClasses = spell._fTraits.filter(t => Renderer.trait.isTraitInCategory(t, "Class")) || [];
@@ -139,7 +138,7 @@ class PageFilterSpells extends PageFilter {
 		if (spell.requirements !== null) spell._fMisc.push("Has Requirements");
 		if (spell.trigger !== null) spell._fMisc.push("Has Trigger");
 		if (spell.targets !== null) spell._fMisc.push("Has Targets");
-		if (spell.heightened.heightened) spell._fMisc.push("Can be Heightened");
+		if (spell.heightened) spell._fMisc.push("Can be Heightened");
 		if (spell.sustain) spell._fMisc.push("Sustained");
 		if (spell.dismiss) spell._fMisc.push("Can be Dismissed");
 		if (spell.hasBattleForm) spell._fMisc.push("Has Battle Form");

@@ -32,8 +32,6 @@
 						"freq": 1,
 						"unit": "month"
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"A pale blue beam shines from Gauntlight's lens and illuminates a 30-foot-radius burst centered on any point within 1 mile. The light saturates the region, causing any corpses in the area or within 10 feet of the surface of the illuminated area to animate as level \u20131 undead (typically as skeleton guards or zombie shamblers). Once animated, the undead remain active until slain. Until then, they remain uncontrolled and are driven only by the desire to slaughter the living. If Gauntlight is fully restored, the undead instead animate as any Common undead of 15th level or less, as the user wishes."
 					]
@@ -51,15 +49,12 @@
 						"freq": 1,
 						"unit": "month"
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"A pale blue beam shines from Gauntlight's lens and illuminates a 30-foot-radius burst centered on any point within 1 mile. The user chooses one creature of 4th level or less that is physically located within Gauntlight; this creature is then is teleported to any point within this illumination radius. If Gauntlight is fully restored, any number of creatures within Gauntlight of 15th level or lower can be transported. This is a {@trait teleportation} effect.",
 						"Destruction If Belcorra's ghost is permanently destroyed, Gauntlight loses all of its magical properties and collapses in on itself all the way down to its base, leaving an incredibly deep pit in the Fogfen."
 					]
 				}
 			],
-			"generic": false,
 			"consumable": false
 		},
 		{
@@ -75,11 +70,10 @@
 			],
 			"price": {
 				"coin": "gp",
-				"amount": 240,
-				"note": null
+				"amount": 240
 			},
 			"usage": "held in 1 hand",
-			"bulk": "1",
+			"bulk": 1,
 			"category": "Held",
 			"entries": [
 				"It's said that the pale blue light of this eldritch lantern shines from another dimension or even is linked, somehow, to the glow of a ghost when it is consumed by the Outer Goddess {@deity Nhimbaloth|LOGM}. A lantern of empty light is not intrinsically an evil item, though it remains a favored tool of those who would manipulate the minds of others for sinister reasons. It can be used as a normal bull's-eye lantern, but prolonged use tends to instill in the user a vague sense of being watched by unseen eyes.",
@@ -97,8 +91,6 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You direct the lantern's light upon a single living creature within 60 feet. That creature must attempt a DC 20 Will save to resist the light's effects.",
 						{
@@ -113,7 +105,6 @@
 					]
 				}
 			],
-			"generic": false,
 			"consumable": false
 		},
 		{
@@ -135,10 +126,9 @@
 					"number": 1,
 					"unit": "action"
 				},
-				"components": "Interact",
-				"requirements": null,
-				"frequency": null,
-				"trigger": null
+				"components": [
+					"Interact"
+				]
 			},
 			"category": "Elixir",
 			"entries": [
@@ -152,8 +142,7 @@
 					"level": 1,
 					"price": {
 						"coin": "gp",
-						"amount": 4,
-						"note": null
+						"amount": 4
 					},
 					"entries": [
 						"The bonus is +1, and the duration is 1 minute."
@@ -164,8 +153,7 @@
 					"level": 6,
 					"price": {
 						"coin": "gp",
-						"amount": 50,
-						"note": null
+						"amount": 50
 					},
 					"entries": [
 						"The bonus is +2, and the duration is 10 minutes."
@@ -176,15 +164,13 @@
 					"level": 11,
 					"price": {
 						"coin": "gp",
-						"amount": 300,
-						"note": null
+						"amount": 300
 					},
 					"entries": [
 						"The bonus is +3, and the duration is 1 hour."
 					]
 				}
-			],
-			"consumable": true
+			]
 		},
 		{
 			"name": "The Whispering Reeds",
@@ -199,7 +185,7 @@
 				"Occult"
 			],
 			"usage": "held in 2 hands",
-			"bulk": "2",
+			"bulk": 2,
 			"category": "Artifact",
 			"entries": [
 				"This hefty tome was compiled centuries ago by an anonymous author who sought to collect all parables, myths, stories, and encounters with the Outer Goddess {@deity Nhimbaloth|LOGM}. According to the introduction, the author's original intent was to create a work that foes of the Empty Death could use to fight against her influence, but as one reads through the book, it becomes apparent that the opposite effect has been achieved\u2014by compiling these stories, the author inadvertently generated a work that made it easier for {@deity Nhimbaloth|LOGM} to influence the world. Those who venerate the Empty Death seek copies of this book to use as a guide and religious text, while those who don't know better and peruse the book as though it were merely an anthology of stories find themselves unwittingly falling prey to {@deity Nhimbaloth|LOGM}'s cult or agents of the entity herself. Those who study from The Whispering Reeds for too long are often cursed to rise as ghosts after death\u2014 though their existence never lasts for long, as they are inevitably consumed by {@deity Nhimbaloth|LOGM}.",
@@ -217,9 +203,6 @@
 					"components": [
 						"(Investigate)"
 					],
-					"frequency": null,
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You gain a +2 item bonus to skill checks to {@action Recall Knowledge} about {@deity Nhimbaloth|LOGM}, her faith, or creatures associated with her (such as incorporeal undead, vampiric mists, wisps, and other incorporeal creatures associated with death). Each time you use this ability after the first in a 24-hour period, you are exposed to the Empty Death."
 					]
@@ -238,8 +221,6 @@
 						"unit": "hour",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You read aloud a phrase from the book and target a single incorporeal undead creature within 30 feet. That undead creature takes {@damage 5d6} positive damage (DC 27 basic Will save) as portions of their incorporeal being are consumed in patches of seven equally spaced holes. Each time you use this ability after the first in a 24-hour period, you are exposed to the Empty Death."
 					]
@@ -258,25 +239,19 @@
 						"unit": "day",
 						"freq": 1
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You invoke a tale from The Whispering Reeds that parallels the situation, environment, or creatures nearby. Eerie mists and indistinct whispers rise in a 20-foot emanation around you, and clusters of seven perfectly spaced divots manifest in the ground, vegetation, and flesh of creatures in the emanation other than yourself and up to three creatures you designate at the time of activation. Creatures afflicted with these divots suffer from agonizing mental anguish in the form of crippling despair and take {@damage 4d6} mental damage (DC 27 basic Will save). The mists, whispers, and strange divots fade away at the end of the round, but any creature that takes mental damage from the effect also takes a \u20131 penalty to saving throws against effects with the {@trait emotion} trait for 1 minute. You are exposed to the Empty Death each time you use this ability."
 					]
 				},
 				{
 					"type": "ability",
-					"activity": {
-						"number": 1,
-						"unit": "varies",
-						"entry": "Cast a Spell"
-					},
+					"components": [
+						"Cast a Spell"
+					],
 					"frequency": {
 						"unit": "day",
 						"freq": 3
 					},
-					"trigger": null,
-					"requirements": null,
 					"entries": [
 						"You cast one of the following spells at the lowest level possible (unless otherwise specified): {@spell crushing despair} (one target within 30 feet only), {@spell fear} (3rd), {@spell paranoia}, or {@spell phantasmal killer}. You are exposed to the Empty Death each time you use this ability.",
 						"Empty Death (curse, necromancy, occult) Saving Throw DC 27 Will; Effect If you activate The Whispering Reeds and are not a worshipper of {@deity Nhimbaloth|LOGM}, you become {@condition stupefied|CRB|stupefied 2} for 24 hours as your thoughts fill with paranoia that something is watching you from the other side of death. If you die while affected by the Empty Death, you immediately become a chaotic evil ghost. Every 7 days that pass after you become a ghost, you must succeed at a DC {@flatDC 2} flat check\u2014 failure indicates that you are consumed by {@deity Nhimbaloth|LOGM}.",
@@ -285,7 +260,6 @@
 					]
 				}
 			],
-			"generic": false,
 			"consumable": false
 		}
 	]

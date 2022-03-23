@@ -5,6 +5,7 @@ class ItemsPage extends ListPage {
 		super({
 			dataSource: Renderer.item.pBuildList({isAddGroups: true, isBlacklistVariants: true}),
 			pageFilter: new PageFilterItems(),
+			listClass: "items",
 			sublistClass: "subitems",
 			dataProps: ["item"],
 		});
@@ -15,9 +16,6 @@ class ItemsPage extends ListPage {
 		this._$totalBulk = null;
 		this._$totalPrice = null;
 		this._$totalItems = null;
-
-		this._mundaneList = null;
-		this._magicList = null;
 
 		this._itemId = 0;
 		this._runeItems = [];
@@ -40,71 +38,39 @@ class ItemsPage extends ListPage {
 		const source = Parser.sourceJsonToAbv(item.source);
 		const level = item.level != null ? `${typeof item.level === "string" && item.level.endsWith("+") ? `\u00A0\u00A0${item.level}` : item.level}` : "\u2014"
 
-		if (item.equipment) {
-			eleLi.innerHTML = `<a href="#${hash}" class="lst--border">
-				<span class="col-4 pl-0 bold">${item.name}</span>
-				<span class="col-2-2 text-center">${item.category ? `${Array.isArray(item.category) ? item.category.join(", ") : item.category}` : "\u2014"}</span>
-				<span class="col-1-5 text-center">${level}</span>
-				<span class="col-1-8 text-center">${Parser.priceToFull(item.price)}</span>
-				<span class="col-1-2 text-center">${item.bulk ? item.bulk : "\u2014"}</span>
-				<span class="col-1-3 text-center ${Parser.sourceJsonToColor(item.source)} pr-0" title="${Parser.sourceJsonToFull(item.source)}" ${BrewUtil.sourceJsonToStyle(item.source)}>${source}</span>
-			</a>`;
+		const cats = typeof item.category === "string" ? [item.category] : Array.isArray(item.category) ? item.category : [];
+		eleLi.innerHTML = `<a href="#${hash}" class="lst--border">
+			<span class="col-4 pl-0">${cats.includes("Rune") ? RuneBuilder.getButtons(itI) : ""}<span class="bold w-100">${item.name}${item.add_hash ? `<span class="ve-muted"> (${item.add_hash})</span>` : ""}</span></span>
+			<span class="col-2-2 text-center">${cats.join(", ")}</span>
+			<span class="col-1-5 text-center">${level}</span>
+			<span class="col-1-8 text-center">${Parser.priceToFull(item.price)}</span>
+			<span class="col-1-2 text-center">${item.bulk ? item.bulk : "\u2014"}</span>
+			<span class="source col-1-3 text-center ${Parser.sourceJsonToColor(item.source)} pr-0" title="${Parser.sourceJsonToFull(item.source)}" ${BrewUtil.sourceJsonToStyle(item.source)}>${source}</span>
+		</a>`;
 
-			eleLi.firstElementChild.addEventListener("click", evt => this._handleItemsLinkClick(evt));
+		eleLi.firstElementChild.addEventListener("click", evt => this._handleItemsLinkClick(evt));
 
-			listItem = new ListItem(
-				itI,
-				eleLi,
-				item.name,
-				{
-					hash,
-					source,
-					level: item._fLvl,
-					bulk: item._fBulk,
-					price: item._sPrice,
-					category: item.category,
-					_searchStr: item.generic === "G" && item.variants ? item.variants.map(v => `${v.type} ${item.name}`).join(" - ") : "",
-				},
-				{
-					uniqueId: item.uniqueId ? item.uniqueId : itI,
-					isExcluded,
-				},
-			);
-			eleLi.addEventListener("click", (evt) => this._mundaneList.doSelect(listItem, evt));
-			eleLi.addEventListener("contextmenu", (evt) => ListUtil.openContextMenu(evt, this._mundaneList, listItem));
-			return {mundane: listItem};
-		} else {
-			const cats = typeof item.category === "string" ? [item.category] : Array.isArray(item.category) ? item.category : [];
-			eleLi.innerHTML += `<a href="#${hash}" class="lst--border">
-				<span class="col-4 pl-0">${cats.includes("Rune") ? RuneBuilder.getButtons(itI) : ""}<span class="bold w-100">${item.name}</span></span>
-				<span class="col-2-2 text-center">${Array.isArray(item.category) ? item.category.join(", ") : item.category}</span>
-				<span class="col-1-5 text-center">${level}</span>
-				<span class="col-1-8 text-center">${Parser.priceToFull(item.price)}</span>
-				<span class="col-1-2 text-center">${item.bulk ? item.bulk : "\u2014"}</span>
-				<span class="source col-1-3 text-center ${Parser.sourceJsonToColor(item.source)} pr-0" title="${Parser.sourceJsonToFull(item.source)}" ${BrewUtil.sourceJsonToStyle(item.source)}>${source}</span>
-			</a>`;
-
-			eleLi.firstElementChild.addEventListener("click", evt => this._handleItemsLinkClick(evt));
-
-			listItem = new ListItem(
-				itI,
-				eleLi,
-				item.name,
-				{
-					source,
-					hash,
-					level: item._fLvl,
-					price: item._sPrice,
-					bulk: item._fBulk,
-					category: item.category,
-					_searchStr: item.generic === "G" && item.variants ? item.variants.map(v => `${v.type} ${item.name}`).join(" - ") : "",
-				},
-				{uniqueId: item.uniqueId ? item.uniqueId : itI},
-			);
-			eleLi.addEventListener("click", (evt) => this._magicList.doSelect(listItem, evt));
-			eleLi.addEventListener("contextmenu", (evt) => ListUtil.openContextMenu(evt, this._magicList, listItem));
-			return {magic: listItem};
-		}
+		listItem = new ListItem(
+			itI,
+			eleLi,
+			item.name,
+			{
+				hash,
+				source,
+				level: item._fLvl,
+				price: item._sPrice,
+				bulk: item._fBulk,
+				category: cats.join(", "),
+				_searchStr: item.generic === "G" && item.variants ? item.variants.map(v => `${v.type} ${item.name}`).join(" - ") : "",
+			},
+			{
+				uniqueId: item.uniqueId ? item.uniqueId : itI,
+				isExcluded,
+			},
+		);
+		eleLi.addEventListener("click", (evt) => this._list.doSelect(listItem, evt));
+		eleLi.addEventListener("contextmenu", (evt) => ListUtil.openContextMenu(evt, this._list, listItem));
+		return listItem;
 	}
 
 	handleFilterChange () {
@@ -113,8 +79,7 @@ class ItemsPage extends ListPage {
 			const it = this._dataList[li.ix];
 			return this._pageFilter.toDisplay(f, it);
 		}
-		this._mundaneList.filter(listFilter.bind(this));
-		this._magicList.filter(listFilter.bind(this));
+		this._list.filter(listFilter.bind(this));
 		FilterBox.selectFirstVisible(this._dataList);
 	}
 
@@ -125,7 +90,7 @@ class ItemsPage extends ListPage {
 		const $dispCount = $(`<span class="text-center col-2-3 pr-0">${count}</span>`);
 		const $ele = $$`<li class="row">
 			<a href="#${hash}" class="lst--border">
-				<span class="bold col-5-4 pl-0">${item.name}</span>
+				<span class="bold col-5-4 pl-0">${item.name}${item.add_hash ? `<span class="ve-muted"> (${item.add_hash})</span>` : ""}</span>
 				<span class="text-center col-2-3">${Parser.priceToFull(item.price)}</span>
 				<span class="text-center col-2">${item.bulk ? item.bulk : "\u2014"}</span>
 				${$dispCount}
@@ -242,7 +207,7 @@ class ItemsPage extends ListPage {
 				switch (this._sublistCurrencyDisplayMode) {
 					case modes[1]: return Parser.itemValueToFull({value});
 					case modes[2]: {
-						return value ? `${Parser.DEFAULT_CURRENCY_CONVERSION_TABLE.find(it => it.coin === "gp").mult * value} gp` : "";
+						return value ? `${(Parser.DEFAULT_CURRENCY_CONVERSION_TABLE.find(it => it.coin === "gp").mult * value).toFixed(2).replace(/\.?0+$/, "")} gp` : "";
 					}
 					default:
 					case modes[0]: {
@@ -284,6 +249,12 @@ class ItemsPage extends ListPage {
 			$iptSearch: $(`#lst__search`),
 			$wrpFormTop: $(`#filter-search-group`).title("Hotkey: f"),
 			$btnReset: $(`#reset`),
+		});
+		$(`#btn-equip-buy`).on("click", () => {
+			// TODO: keep the source filters?
+			this._pageFilter.filterBox.reset();
+			this._pageFilter.filterBox.setFromValues({Type: {Equipment: 1, "Specific Variant": 2}});
+			this.handleFilterChange();
 		});
 
 		this._printView = new PrintModeView({
@@ -329,68 +300,18 @@ class ItemsPage extends ListPage {
 	}
 
 	async _pPopulateTablesAndFilters (data) {
-		this._mundaneList = ListUtil.initList({
-			listClass: "mundane",
+		this._list = ListUtil.initList({
+			listClass: "items",
 			fnSort: PageFilterItems.sortItems,
 			syntax: this._listSyntax,
 		});
-		this._magicList = ListUtil.initList({
-			listClass: "magic",
-			fnSort: PageFilterItems.sortItems,
-			syntax: this._listSyntax,
-		});
-		this._mundaneList.nextList = this._magicList;
-		this._magicList.prevList = this._mundaneList;
-		ListUtil.setOptions({primaryLists: [this._mundaneList, this._magicList]});
 
-		const $elesMundaneAndMagic = $(`.ele-mundane-and-magic`);
-		$(`.side-label--mundane`).click(() => {
-			const filterValues = this._pageFilter.filterBox.getValues();
-			const curValue = MiscUtil.get(filterValues, "Type", "Equipment");
-			this._pageFilter.filterBox.setFromValues({Type: MiscUtil.merge(filterValues.Type, {Equipment: curValue === 1 ? 0 : 1})});
-			this.handleFilterChange();
-		});
-		$(`.side-label--magic`).click(() => {
-			const filterValues = this._pageFilter.filterBox.getValues();
-			const curValue = MiscUtil.get(filterValues, "Type", "Treasure");
-			this._pageFilter.filterBox.setFromValues({Type: MiscUtil.merge(filterValues.Type, {Treasure: curValue === 1 ? 0 : 1})});
-			this.handleFilterChange();
-		});
 		const $outVisibleResults = $(`.lst__wrp-search-visible`);
-		const $wrpListMundane = $(`.itm__wrp-list--mundane`);
-		const $wrpListMagic = $(`.itm__wrp-list--magic`);
-		this._mundaneList.on("updated", () => {
-			const $elesMundane = $(`.ele-mundane`);
-
-			// Force-show the mundane list if there are no items on display
-			if (this._magicList.visibleItems.length) $elesMundane.toggleVe(!!this._mundaneList.visibleItems.length);
-			else $elesMundane.showVe();
-			$elesMundaneAndMagic.toggleVe(!!(this._mundaneList.visibleItems.length && this._magicList.visibleItems.length));
-
-			const current = this._mundaneList.visibleItems.length + this._magicList.visibleItems.length;
-			const total = this._mundaneList.items.length + this._magicList.items.length;
-			$outVisibleResults.html(`${current}/${total}`);
-
-			// Collapse the mundane section if there are no magic items displayed
-			$wrpListMundane.toggleClass(`itm__wrp-list--empty`, this._mundaneList.visibleItems.length === 0);
+		this._list.on("updated", () => {
+			$outVisibleResults.html(`${this._list.visibleItems.length}/${this._list.items.length}`);
 		});
-		this._magicList.on("updated", () => {
-			const $elesMundane = $(`.ele-mundane`);
-			const $elesMagic = $(`.ele-magic`);
 
-			$elesMagic.toggleVe(!!this._magicList.visibleItems.length);
-			// Force-show the mundane list if there are no items on display
-			if (!this._magicList.visibleItems.length) $elesMundane.showVe();
-			else $elesMundane.toggleVe(!!this._mundaneList.visibleItems.length);
-			$elesMundaneAndMagic.toggleVe(!!(this._mundaneList.visibleItems.length && this._magicList.visibleItems.length));
-
-			const current = this._mundaneList.visibleItems.length + this._magicList.visibleItems.length;
-			const total = this._mundaneList.items.length + this._magicList.items.length;
-			$outVisibleResults.html(`${current}/${total}`);
-
-			// Collapse the magic section if there are no magic items displayed
-			$wrpListMagic.toggleClass(`itm__wrp-list--empty`, this._magicList.visibleItems.length === 0);
-		});
+		ListUtil.setOptions({primaryLists: [this._list]});
 
 		// filtering function
 		this._pageFilter.filterBox.on(
@@ -398,8 +319,7 @@ class ItemsPage extends ListPage {
 			this.handleFilterChange.bind(this),
 		);
 
-		SortUtil.initBtnSortHandlers($("#filtertools-mundane"), this._mundaneList);
-		SortUtil.initBtnSortHandlers($("#filtertools-magic"), this._magicList);
+		SortUtil.initBtnSortHandlers($("#filtertools"), this._list);
 
 		this._subList = ListUtil.initSublist({
 			listClass: "subitems",
@@ -413,11 +333,11 @@ class ItemsPage extends ListPage {
 		this._addItems(data);
 		BrewUtil.pAddBrewData()
 			.then(this._pHandleBrew.bind(this))
-			.then(() => BrewUtil.bind({lists: [this._mundaneList, this._magicList], pHandleBrew: this._pHandleBrew.bind(this)}))
+			.then(() => BrewUtil.bind({lists: [this._list], pHandleBrew: this._pHandleBrew.bind(this)}))
 			.then(() => BrewUtil.pAddLocalBrewData())
 			.then(async () => {
 				BrewUtil.makeBrewButton("manage-brew");
-				BrewUtil.bind({lists: [this._mundaneList, this._magicList], filterBox: this._pageFilter.filterBox, sourceFilter: this._pageFilter.sourceFilter});
+				BrewUtil.bind({lists: [this._list], filterBox: this._pageFilter.filterBox, sourceFilter: this._pageFilter.sourceFilter});
 				await ListUtil.pLoadState();
 				RollerUtil.addListRollButton();
 				ListUtil.addListShowHide();
@@ -441,8 +361,7 @@ class ItemsPage extends ListPage {
 					(a, b) => SortUtil.ascSort(a.name, b.name) || SortUtil.ascSort(a.source, b.source),
 				);
 
-				this._mundaneList.init();
-				this._magicList.init();
+				this._list.init();
 				this._subList.init();
 
 				Hist.init(true);
@@ -469,16 +388,10 @@ class ItemsPage extends ListPage {
 			const item = this._dataList[this._ixData];
 			const listItem = this.getListItem(item, this._ixData);
 			if (!listItem) continue;
-			if (listItem.mundane) this._mundaneList.addItem(listItem.mundane);
-			if (listItem.magic) this._magicList.addItem(listItem.magic);
+			this._list.addItem(listItem);
 		}
 
-		// populate table labels
-		$(`h3.ele-mundane span.side-label`).text("Equipment");
-		$(`h3.ele-magic span.side-label`).text("Treasure");
-
-		this._mundaneList.update();
-		this._magicList.update();
+		this._list.update();
 
 		this._pageFilter.filterBox.render();
 		this.handleFilterChange();
@@ -486,7 +399,7 @@ class ItemsPage extends ListPage {
 		ListUtil.setOptions({
 			itemList: this._dataList,
 			getSublistRow: this.getSublistItem.bind(this),
-			primaryLists: [this._mundaneList, this._magicList],
+			primaryLists: [this._list],
 		});
 		ListUtil.bindAddButton();
 		ListUtil.bindSubtractButton();

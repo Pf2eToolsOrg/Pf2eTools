@@ -60,8 +60,7 @@
 			},
 			"abilitiesTop": [],
 			"ac": {
-				"default": 25,
-				"abilities": null
+				"default": 25
 			},
 			"savingThrows": {
 				"Fort": {
@@ -72,13 +71,11 @@
 				},
 				"Will": {
 					"default": 15
-				},
-				"abilities": null
+				}
 			},
 			"hp": [
 				{
 					"hp": 160,
-					"note": null,
 					"abilities": null
 				}
 			],
@@ -120,7 +117,6 @@
 					"range": "Melee",
 					"name": "jaws",
 					"attack": 18,
-					"traits": null,
 					"effects": [],
 					"damage": "{@damage 2d10+8} piercing",
 					"types": [
@@ -297,8 +293,7 @@
 			},
 			"abilitiesTop": [],
 			"ac": {
-				"default": 21,
-				"abilities": null
+				"default": 21
 			},
 			"savingThrows": {
 				"Fort": {
@@ -309,13 +304,11 @@
 				},
 				"Will": {
 					"default": 11
-				},
-				"abilities": null
+				}
 			},
 			"hp": [
 				{
 					"hp": 60,
-					"note": null,
 					"abilities": null
 				}
 			],
@@ -342,7 +335,6 @@
 				}
 			],
 			"speed": {
-				"abilities": null,
 				"walk": 25
 			},
 			"attacks": [
@@ -454,8 +446,7 @@
 			},
 			"abilitiesTop": [],
 			"ac": {
-				"default": 22,
-				"abilities": null
+				"default": 22
 			},
 			"savingThrows": {
 				"Fort": {
@@ -466,13 +457,11 @@
 				},
 				"Will": {
 					"default": 12
-				},
-				"abilities": null
+				}
 			},
 			"hp": [
 				{
 					"hp": 80,
-					"note": null,
 					"abilities": null
 				}
 			],
@@ -671,8 +660,7 @@
 				}
 			],
 			"ac": {
-				"default": 25,
-				"abilities": null
+				"default": 25
 			},
 			"savingThrows": {
 				"Fort": {
@@ -683,19 +671,16 @@
 				},
 				"Will": {
 					"default": 15
-				},
-				"abilities": null
+				}
 			},
 			"hp": [
 				{
 					"hp": 115,
-					"note": null,
 					"abilities": null
 				}
 			],
 			"abilitiesMid": [],
 			"speed": {
-				"abilities": null,
 				"walk": 25
 			},
 			"attacks": [
@@ -759,7 +744,6 @@
 							"note": "",
 							"DC": 21,
 							"savingThrow": "Fortitude",
-							"onset": null,
 							"maxDuration": "6 rounds",
 							"stages": [
 								{
@@ -894,8 +878,7 @@
 				}
 			],
 			"ac": {
-				"default": 21,
-				"abilities": null
+				"default": 21
 			},
 			"savingThrows": {
 				"Fort": {
@@ -906,13 +889,11 @@
 				},
 				"Will": {
 					"default": 13
-				},
-				"abilities": null
+				}
 			},
 			"hp": [
 				{
 					"hp": 85,
-					"note": null,
 					"abilities": null
 				}
 			],
@@ -1083,8 +1064,7 @@
 			},
 			"abilitiesTop": [],
 			"ac": {
-				"default": 27,
-				"abilities": null
+				"default": 27
 			},
 			"savingThrows": {
 				"Fort": {
@@ -1095,13 +1075,11 @@
 				},
 				"Will": {
 					"default": 20
-				},
-				"abilities": null
+				}
 			},
 			"hp": [
 				{
 					"hp": 140,
-					"note": null,
 					"abilities": null
 				}
 			],
@@ -1124,9 +1102,10 @@
 			"abilitiesMid": [
 				{
 					"entries": [
-						"Antimagic harmed by cold and water ({@dice 5d8}; {@dice 2d6} from areas and {@condition persistent damage}); healed by acid (area {@dice 2d6} HP); {@condition slowed} by earth."
+						"harmed by cold and water ({@dice 5d8}; {@dice 2d6} from areas and {@condition persistent damage}); healed by acid (area {@dice 2d6} HP); {@condition slowed} by earth."
 					],
-					"name": "Golem"
+					"name": "Golem Antimagic",
+					"generic": true
 				},
 				{
 					"entries": [
@@ -1136,7 +1115,6 @@
 				}
 			],
 			"speed": {
-				"abilities": null,
 				"walk": 20
 			},
 			"attacks": [
@@ -1198,15 +1176,9 @@
 				},
 				{
 					"entries": [
-						"Curse Cursebreaker can cast a 10th-level {@spell remove curse} spell at will, targeting every resident of the city."
+						"Cursebreaker can cast a 10th-level {@spell remove curse} spell at will, targeting every resident of the city of Kibwe. Cursebreaker must be stationed in the upper level of the Archive of the Sun with its sun symbols activated to use this ability."
 					],
-					"name": "Undo"
-				},
-				{
-					"entries": [
-						"Kibwe. Cursebreaker must be stationed in the upper level of the Archive of the Sun with its sun symbols activated to use this ability."
-					],
-					"name": "of"
+					"name": "Undo Curse"
 				}
 			],
 			"inflicts": {
@@ -1284,8 +1256,7 @@
 				}
 			],
 			"ac": {
-				"default": 16,
-				"abilities": null
+				"default": 16
 			},
 			"savingThrows": {
 				"Fort": {
@@ -1296,13 +1267,11 @@
 				},
 				"Will": {
 					"default": 11
-				},
-				"abilities": null
+				}
 			},
 			"hp": [
 				{
 					"hp": 160,
-					"note": null,
 					"abilities": null
 				}
 			],
@@ -1335,7 +1304,6 @@
 				}
 			],
 			"speed": {
-				"abilities": null,
 				"walk": 20,
 				"climb ": 20
 			},
@@ -1344,7 +1312,6 @@
 					"range": "Melee",
 					"name": "pseudopod",
 					"attack": 17,
-					"traits": null,
 					"effects": [
 						"Grab"
 					],
@@ -1469,8 +1436,7 @@
 			],
 			"abilitiesTop": [],
 			"ac": {
-				"default": 23,
-				"abilities": null
+				"default": 23
 			},
 			"savingThrows": {
 				"Fort": {
@@ -1481,13 +1447,11 @@
 				},
 				"Will": {
 					"default": 16
-				},
-				"abilities": null
+				}
 			},
 			"hp": [
 				{
 					"hp": 90,
-					"note": null,
 					"abilities": null
 				}
 			],
@@ -1511,7 +1475,6 @@
 				}
 			],
 			"speed": {
-				"abilities": null,
 				"walk": 25
 			},
 			"attacks": [
@@ -1681,8 +1644,7 @@
 				}
 			],
 			"ac": {
-				"default": 28,
-				"abilities": null
+				"default": 28
 			},
 			"savingThrows": {
 				"Fort": {
@@ -1693,13 +1655,11 @@
 				},
 				"Will": {
 					"default": 18
-				},
-				"abilities": null
+				}
 			},
 			"hp": [
 				{
 					"hp": 155,
-					"note": null,
 					"abilities": null
 				}
 			],
@@ -1721,7 +1681,6 @@
 				}
 			],
 			"speed": {
-				"abilities": null,
 				"walk": 25
 			},
 			"attacks": [
@@ -1872,7 +1831,6 @@
 				{
 					"name": "Bard Composition",
 					"type": "Focus",
-					"tradition": null,
 					"DC": 28,
 					"fp": 2,
 					"entry": {

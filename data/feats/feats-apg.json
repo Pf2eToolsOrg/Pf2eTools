@@ -1005,7 +1005,7 @@
 				"Archetype",
 				"Dedication"
 			],
-			"prerequisites": "Alchemical {@skill Crafting}; trained in {@skill Crafting}, {@skill Deception}, and {@skill Stealth}",
+			"prerequisites": "{@feat Alchemical Crafting}; trained in {@skill Crafting}, {@skill Deception}, and {@skill Stealth}",
 			"entries": [
 				"You've trained to assassinate your foes, and you do so with tenacity and precision. You gain the Mark for Death activity.",
 				{
@@ -1015,7 +1015,7 @@
 						"number": 3,
 						"unit": "action"
 					},
-					"requirements": "Requirements You can see and hear the creature you intend to mark",
+					"requirements": "You can see and hear the creature you intend to mark",
 					"entries": [
 						"You designate a single creature as your mark. This lasts until the mark dies or you use Mark for Death again. You gain a +2 circumstance bonus to {@skill Perception} checks to {@action Seek} your mark and on {@skill Deception} checks to {@action Feint} against your mark. Your {@trait agile} and {@trait finesse} weapons and unarmed attacks gain the backstabber and deadly d6 weapon traits when you're attacking your mark.",
 						"If the weapon or unarmed attack already has the {@trait deadly} trait, increase the size of the deadly damage die by one step instead of giving it deadly d6."
@@ -1942,6 +1942,7 @@
 			"traits": [
 				"Investigator"
 			],
+			"add_hash": "Investigator",
 			"prerequisites": "master in {@skill Perception}",
 			"entries": [
 				"Your battle insights make you more aware of {@condition concealed} and {@condition invisible} opponents. You don't need to succeed at a flat check to target {@condition concealed} creatures. You're not {@condition flat-footed} to creatures that are {@condition hidden} from you (unless you're {@condition flat-footed} to them for reasons other than the {@condition hidden} condition), and you need only a successful DC {@flatDC 5} flat check to target a {@condition hidden} creature.",
@@ -7706,7 +7707,7 @@
 			],
 			"prerequisites": "{@feat Predictive Purchase|APG}",
 			"entries": [
-				"It seems impossible, but you've analyzed every angle and are able to just keep pulling out exactly the item you need, even in far-flung locations. You can use Prescient Planner even if you have already used it after purchasing goods, and you can use it as a single action instead of a 2-action activity, during which you {@action Interact} to draw the item. In addition, five times per day, you can use Prescient Planner to pull out a common consumable item up to 6 levels lower than your level."
+				"It seems impossible, but you've analyzed every angle and are able to just keep pulling out exactly the item you need, even in far-flung locations. You can use {@feat Prescient Planner|APG} even if you have already used it after purchasing goods, and you can use it as a single action instead of a 2-action activity, during which you {@action Interact} to draw the item. In addition, five times per day, you can use {@feat Prescient Planner|APG} to pull out a common consumable item up to 6 levels lower than your level."
 			]
 		},
 		{
@@ -7721,8 +7722,7 @@
 			"prerequisites": "{@feat Predictive Purchase|APG}",
 			"entries": [
 				"Even when impossible, you always have exactly what you need.",
-				"You can use Prescient Planner even if you have already used it after purchasing goods, and you can {@action Interact} to draw the item as a single action instead of a 2-action activity. In addition, five times per day, you can use Prescient Planner to pull out a common consumable item up to 6 levels lower than your level.",
-				"Sorcerer Bloodlines The following new bloodlines are available to sorcerers at 1st level. New bloodline spells begin on page 235."
+				"You can use {@feat Prescient Planner|APG} even if you have already used it after purchasing goods, and you can {@action Interact} to draw the item as a single action instead of a 2-action activity. In addition, five times per day, you can use {@feat Prescient Planner|APG} to pull out a common consumable item up to 6 levels lower than your level."
 			]
 		},
 		{
@@ -8338,7 +8338,7 @@
 			],
 			"prerequisites": "{@feat Investigator Dedication|APG}",
 			"entries": [
-				"You can recall all sorts of information. You gain the {@feat keen recollection|APG} class feature."
+				"You can recall all sorts of information. You gain the {@classFeature keen recollection|investigator|apg|3} class feature."
 			]
 		},
 		{
@@ -10765,10 +10765,10 @@
 					"name": "Boarding Assault",
 					"activity": {
 						"number": 2,
-						"unit": "action"
+						"unit": "a"
 					},
 					"traits": [
-						"flourish"
+						"Flourish"
 					],
 					"entries": [
 						"Either {@action Stride} twice or attempt an {@skill Acrobatics} check (DC determined by the GM, but usually DC 20) to swing on a rope up to twice your Speed. If you boarded or disembarked from a boat or similar vehicle during this movement, you can make a melee {@action Strike} that deals one additional weapon damage die."
@@ -11118,7 +11118,7 @@
 				"Investigator"
 			],
 			"entries": [
-				"You have just the thing for the situation. You gain the {@feat Prescient Planner|apg} and {@feat Prescient Consumable|apg} feats. When using Prescient Planner, you can pull out the item as a 2-action activity to remove your backpack (or a similar container) and draw the item, rather than taking 1 minute."
+				"You have just the thing for the situation. You gain the {@feat Prescient Planner|apg} and {@feat Prescient Consumable|apg} feats. When using {@feat Prescient Planner|apg}, you can pull out the item as a 2-action activity to remove your backpack (or a similar container) and draw the item, rather than taking 1 minute."
 			]
 		},
 		{
@@ -11131,7 +11131,7 @@
 				"Rogue"
 			],
 			"entries": [
-				"You somehow manage to have just the thing for the situation. You gain the {@feat Prescient Planner|apg} and {@feat Prescient Consumable|apg} feats. When using Prescient Planner, you can draw the item from your backpack (or a similar container) as a 2-action activity, instead of taking 1 minute to do so."
+				"You somehow manage to have just the thing for the situation. You gain the {@feat Prescient Planner|apg} and {@feat Prescient Consumable|apg} feats. When using {@feat Prescient Planner|apg}, you can draw the item from your backpack (or a similar container) as a 2-action activity, instead of taking 1 minute to do so."
 			]
 		},
 		{
@@ -11201,7 +11201,7 @@
 			"prerequisites": "{@feat Prescient Planner|APG}",
 			"entries": [
 				"You can predict which consumables you might need in advance.",
-				"When using Prescient Planner, you can procure a consumable item from your backpack, instead of a piece of adventuring gear. The consumable item must still be common with a level no higher than half your level, and its Bulk must be low enough that carrying it wouldn't have made you {@condition encumbered}."
+				"When using {@feat Prescient Planner|apg}, you can procure a consumable item from your backpack, instead of a piece of adventuring gear. The consumable item must still be common with a level no higher than half your level, and its Bulk must be low enough that carrying it wouldn't have made you {@condition encumbered}."
 			]
 		},
 		{
@@ -11215,7 +11215,7 @@
 			"cost": "the Price of the chosen item",
 			"requirements": "You haven't used this ability since the last time you were able to purchase goods.",
 			"entries": [
-				"You regularly create convoluted plans and contingencies, using your resources to enact them. You take 1 minute to remove your backpack, then carefully remove an item you hadn't previously declared that you purchased\u2014you intuited that you would come to need the item and purchased it at the latest opportunity. The item must be a piece of adventuring gear (from the table on page 288 of the Core Rulebook or other sources of adventuring gear), and can't be a weapon, armor, alchemical item, magic item, or other treasure. It must be common with a level no higher than half your level, and its Bulk must be low enough that carrying it wouldn't have made you {@condition encumbered}."
+				"You regularly create convoluted plans and contingencies, using your resources to enact them. You take 1 minute to remove your backpack, then carefully remove an item you hadn't previously declared that you purchased\u2014you intuited that you would come to need the item and purchased it at the latest opportunity. The item must be a piece of {@filter adventuring gear|items||type=|category=!armor;!weapon;adventuring gear|item=!alchemical;!magical}, and can't be a weapon, armor, alchemical item, magic item, or other treasure. It must be common with a level no higher than half your level, and its Bulk must be low enough that carrying it wouldn't have made you {@condition encumbered}."
 			],
 			"leadsTo": [
 				"Prescient Consumable|APG"
@@ -12103,7 +12103,7 @@
 			"prerequisites": "{@feat Medic Dedication|APG}, legendary in {@skill Medicine}",
 			"requirements": "You are holding healer's tools or are wearing them and have a hand free.",
 			"entries": [
-				"You can use {@skill Medicine} to resuscitate the dead. Attempt a DC 40 {@skill Medicine} check to revive a dead creature that has been dead for no more than 3 rounds. If you succeed, the target returns to life with the effects of {@ritual raise dead}, except it still has the {@condition wounded} condition it had before {@condition dying}, increased by 1 (or {@condition wounded 1} if it wasn't {@condition wounded} before {@condition dying}). Whether you succeed or fail, the target is temporarily immune to Resuscitate for 1 day."
+				"You can use {@skill Medicine} to resuscitate the dead. Attempt a DC 40 {@skill Medicine} check to revive a dead creature that has been dead for no more than 3 rounds. If you succeed, the target returns to life with the effects of {@spell raise dead}, except it still has the {@condition wounded} condition it had before {@condition dying}, increased by 1 (or {@condition wounded 1} if it wasn't {@condition wounded} before {@condition dying}). Whether you succeed or fail, the target is temporarily immune to Resuscitate for 1 day."
 			]
 		},
 		{
