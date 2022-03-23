@@ -5042,9 +5042,7 @@ Renderer.ritual = {
 		${ritual.requirements ? `<p class="pf2-stat pf2-stat__section"> <strong>Requirements</strong> ${renderer.render(ritual.requirements)} </p>` : ""}
 		${Renderer.utils.getDividerDiv()}
 		${renderStack.join("")}
-		${ritual.heightened && ritual.heightened.heightened
-		? `${Renderer.utils.getDividerDiv()}${Renderer.spell.getHeightenedEntry(ritual)}`
-		: ""}
+		${ritual.heightened ? `${Renderer.utils.getDividerDiv()}${Renderer.spell.getHeightenedEntry(ritual)}` : ""}
 		${opts.noPage ? "" : Renderer.utils.getPageP(ritual)}`;
 	},
 };
