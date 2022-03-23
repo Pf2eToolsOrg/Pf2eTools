@@ -5042,9 +5042,7 @@ Renderer.ritual = {
 		${ritual.requirements ? `<p class="pf2-stat pf2-stat__section"> <strong>Requirements</strong> ${renderer.render(ritual.requirements)} </p>` : ""}
 		${Renderer.utils.getDividerDiv()}
 		${renderStack.join("")}
-		${ritual.heightened && ritual.heightened.heightened
-		? `${Renderer.utils.getDividerDiv()}${Renderer.spell.getHeightenedEntry(ritual)}`
-		: ""}
+		${ritual.heightened ? `${Renderer.utils.getDividerDiv()}${Renderer.spell.getHeightenedEntry(ritual)}` : ""}
 		${opts.noPage ? "" : Renderer.utils.getPageP(ritual)}`;
 	},
 };
@@ -5123,7 +5121,7 @@ Renderer.spell = {
 		${Renderer.utils.getTraitsDiv(sp.traits)}
 		${Renderer.spell.getSubHead(sp)}
 		${entryStack.join("")}
-		${sp.heightened && sp.heightened.heightened ? `${Renderer.utils.getDividerDiv()}${Renderer.spell.getHeightenedEntry(sp)}` : ""}
+		${sp.heightened ? `${Renderer.utils.getDividerDiv()}${Renderer.spell.getHeightenedEntry(sp)}` : ""}
 		${opts.noPage ? "" : Renderer.utils.getPageP(sp)}`;
 	},
 
