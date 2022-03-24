@@ -115,10 +115,10 @@ class PageFilterItems extends PageFilter {
 	}
 
 	mutateForFilters (it) {
-		it.weaponData = it.weaponData || {};
-		it.comboWeaponData = it.comboWeaponData || {};
-		it.armorData = it.armorData || {};
-		it.shieldData = it.shieldData || {};
+		it._fweaponData = it.weaponData || {};
+		it._fcomboWeaponData = it.comboWeaponData || {};
+		it._farmorData = it.armorData || {};
+		it._fshieldData = it.shieldData || {};
 
 		// Sorting
 		it._fLvl = PageFilterItems._levelValue(it.level);
@@ -136,9 +136,9 @@ class PageFilterItems extends PageFilter {
 			nest: it.category,
 		}) : null;
 
-		it._fGroup = [it.group, it.weaponData.group, it.comboWeaponData.group, it.armorData.group, it.shieldData.group].filter(Boolean);
-		it._fWeaponRange = it.category === "Weapon" ? [it.weaponData.range ? "Ranged" : "Melee", it.comboWeaponData ? it.comboWeaponData.range ? "Ranged" : "Melee" : null] : null;
-		it._fHands = [it.hands, it.weaponData.hands, it.comboWeaponData.hands].filter(Boolean).map(it => String(it));
+		it._fGroup = [it.group, it._fweaponData.group, it._fcomboWeaponData.group, it._farmorData.group, it._fshieldData.group].filter(Boolean);
+		it._fWeaponRange = it.category === "Weapon" ? [it._fweaponData.range ? "Ranged" : "Melee", it._fcomboWeaponData ? it._fcomboWeaponData.range ? "Ranged" : "Melee" : null] : null;
+		it._fHands = [it.hands, it._fweaponData.hands, it._fcomboWeaponData.hands].filter(Boolean).map(it => String(it));
 		it._fPrice = PageFilterItems._priceCategory(it._sPrice);
 		it._fMisc = [];
 		for (let entry of it.entries) {
@@ -173,13 +173,13 @@ class PageFilterItems extends PageFilter {
 			this._subCategoryFilter.addItem(item._fSubCategory);
 		}
 		if (item._fGroup) this._groupFilter.addItem(item._fGroup);
-		this._damageTypeFilter.addItem([item.weaponData.damageType, item.comboWeaponData.damageType].filter(Boolean));
-		this._damageDiceFilter.addItem([item.weaponData.damage, item.comboWeaponData.damage].filter(Boolean));
+		this._damageTypeFilter.addItem([item._fweaponData.damageType, item._fcomboWeaponData.damageType].filter(Boolean));
+		this._damageDiceFilter.addItem([item._fweaponData.damage, item._fcomboWeaponData.damage].filter(Boolean));
 		this._handsFilter.addItem(item._fHands);
-		if (item.shieldData.ac) this._shieldACFilter.addItem(item.shieldData.ac);
-		if (item.shieldData.hp) this._hpFilter.addItem(item.shieldData.hp);
-		if (item.shieldData.bt) this._btFilter.addItem(item.shieldData.bt);
-		if (item.shieldData.hardness) this._hardnessFilter.addItem(item.shieldData.hardness);
+		if (item._fshieldData.ac) this._shieldACFilter.addItem(item._fshieldData.ac);
+		if (item._fshieldData.hp) this._hpFilter.addItem(item._fshieldData.hp);
+		if (item._fshieldData.bt) this._btFilter.addItem(item._fshieldData.bt);
+		if (item._fshieldData.hardness) this._hardnessFilter.addItem(item._fshieldData.hardness);
 		if (item.ammunition != null) this._ammoFilter.addItem(item.ammunition);
 		this._miscFilter.addItem(item._fMisc);
 		if (item.appliesTo) this._appliesToFilter.addItem(item.appliesTo);
@@ -213,8 +213,8 @@ class PageFilterItems extends PageFilter {
 			it.category,
 			it._fSubCategory,
 			[
-				[it.weaponData.damage, it.comboWeaponData.damage],
-				[it.weaponData.damageType, it.comboWeaponData.damageType],
+				[it._fweaponData.damage, it._fcomboWeaponData.damage],
+				[it._fweaponData.damageType, it._fcomboWeaponData.damageType],
 				it._fHands,
 			],
 			it._fGroup,
@@ -224,10 +224,10 @@ class PageFilterItems extends PageFilter {
 			it._fMisc,
 			it._fBulk,
 			[
-				it.shieldData.ac,
-				it.shieldData.hp,
-				it.shieldData.bt,
-				it.shieldData.hardness,
+				it._fshieldData.ac,
+				it._fshieldData.hp,
+				it._fshieldData.bt,
+				it._fshieldData.hardness,
 			],
 			it.appliesTo,
 		);

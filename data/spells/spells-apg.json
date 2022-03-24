@@ -102,7 +102,7 @@
 			"heightened": {
 				"plus_x": {
 					"level": 1,
-					"entry": "Increase the damage by {@dice 2d6}."
+					"entries": ["Increase the damage by {@dice 2d6}."]
 				}
 			}
 		},
@@ -193,7 +193,7 @@
 			"heightened": {
 				"plus_x": {
 					"level": 2,
-					"entry": "The resistance increases by 5."
+					"entries": ["The resistance increases by 5."]
 				}
 			}
 		},
@@ -258,7 +258,7 @@
 			"heightened": {
 				"plus_x": {
 					"level": 1,
-					"entry": "The mental damage increases by {@dice 1d4}."
+					"entries": ["The mental damage increases by {@dice 1d4}."]
 				}
 			}
 		},
@@ -311,7 +311,7 @@
 				"x": [
 					{
 						"level": 4,
-						"entry": [
+						"entries": [
 							"Add the following options to the list you can choose from.",
 							{
 								"type": "list",
@@ -376,39 +376,39 @@
 				"x": [
 					{
 						"level": 2,
-						"entry": "{@filter Level 1|bestiary||Level=[-1;1]|Rarity=Common|Creature Type=Undead}."
+						"entries": ["{@filter Level 1|bestiary||Level=[-1;1]|Rarity=Common|Creature Type=Undead}."]
 					},
 					{
 						"level": 3,
-						"entry": "{@filter Level 2|bestiary||Level=[-1;2]|Rarity=Common|Creature Type=Undead}."
+						"entries": ["{@filter Level 2|bestiary||Level=[-1;2]|Rarity=Common|Creature Type=Undead}."]
 					},
 					{
 						"level": 4,
-						"entry": "{@filter Level 3|bestiary||Level=[-1;3]|Rarity=Common|Creature Type=Undead}."
+						"entries": ["{@filter Level 3|bestiary||Level=[-1;3]|Rarity=Common|Creature Type=Undead}."]
 					},
 					{
 						"level": 5,
-						"entry": "{@filter Level 5|bestiary||Level=[-1;5]|Rarity=Common|Creature Type=Undead}."
+						"entries": ["{@filter Level 5|bestiary||Level=[-1;5]|Rarity=Common|Creature Type=Undead}."]
 					},
 					{
 						"level": 6,
-						"entry": "{@filter Level 7|bestiary||Level=[-1;7]|Rarity=Common|Creature Type=Undead}."
+						"entries": ["{@filter Level 7|bestiary||Level=[-1;7]|Rarity=Common|Creature Type=Undead}."]
 					},
 					{
 						"level": 7,
-						"entry": "{@filter Level 9|bestiary||Level=[-1;9]|Rarity=Common|Creature Type=Undead}."
+						"entries": ["{@filter Level 9|bestiary||Level=[-1;9]|Rarity=Common|Creature Type=Undead}."]
 					},
 					{
 						"level": 8,
-						"entry": "{@filter Level 11.|bestiary||Level=[-1;11]|Rarity=Common|Creature Type=Undead}"
+						"entries": ["{@filter Level 11.|bestiary||Level=[-1;11]|Rarity=Common|Creature Type=Undead}"]
 					},
 					{
 						"level": 9,
-						"entry": "{@filter Level 13.|bestiary||Level=[-1;13]|Rarity=Common|Creature Type=Undead}"
+						"entries": ["{@filter Level 13.|bestiary||Level=[-1;13]|Rarity=Common|Creature Type=Undead}"]
 					},
 					{
 						"level": 10,
-						"entry": "{@filter Level 15.|bestiary||Level=[-1;15]|Rarity=Common|Creature Type=Undead}"
+						"entries": ["{@filter Level 15.|bestiary||Level=[-1;15]|Rarity=Common|Creature Type=Undead}"]
 					}
 				]
 			},
@@ -475,7 +475,7 @@
 			"heightened": {
 				"plus_x": {
 					"level": 2,
-					"entry": "The range increases by 50 feet, and you can animate 50 more feet of rope."
+					"entries": ["The range increases by 50 feet, and you can animate 50 more feet of rope."]
 				}
 			}
 		},
@@ -534,7 +534,7 @@
 			"heightened": {
 				"plus_x": {
 					"level": 2,
-					"entry": "The initial damage increases by {@dice 2d10} and the subsequent damage increases by {@dice 1d10}."
+					"entries": ["The initial damage increases by {@dice 2d10} and the subsequent damage increases by {@dice 1d10}."]
 				}
 			}
 		},
@@ -637,7 +637,7 @@
 			"heightened": {
 				"plus_x": {
 					"level": 1,
-					"entry": "Increase the resistance by 1."
+					"entries": ["Increase the resistance by 1."]
 				}
 			}
 		},
@@ -732,11 +732,11 @@
 				"x": [
 					{
 						"level": 6,
-						"entry": "Increase the range to 100 miles and the duration to sustained up to 10 minutes. The target can hear you through the spell, allowing you to Command the Animal or use other actions that have the {@trait auditory} trait."
+						"entries": ["Increase the range to 100 miles and the duration to sustained up to 10 minutes. The target can hear you through the spell, allowing you to Command the Animal or use other actions that have the {@trait auditory} trait."]
 					},
 					{
 						"level": 8,
-						"entry": "Increase the range to planetary and the duration to sustained up to 1 hour. You can communicate telepathically with the target for the duration of the trance."
+						"entries": ["Increase the range to planetary and the duration to sustained up to 1 hour. You can communicate telepathically with the target for the duration of the trance."]
 					}
 				]
 			}
@@ -856,6 +856,11 @@
 			"page": 235,
 			"focus": true,
 			"level": 3,
+			"subclass": {
+				"Sorcerer|Bloodline": [
+					"Nymph"
+				]
+			},
 			"traits": [
 				"Uncommon",
 				"Emotion",
@@ -1025,7 +1030,7 @@
 			"heightened": {
 				"plus_x": {
 					"level": 1,
-					"entry": "The damage of a popped blister increases by {@dice 1d6}."
+					"entries": ["The damage of a popped blister increases by {@dice 1d6}."]
 				}
 			}
 		},
@@ -1086,7 +1091,7 @@
 			"heightened": {
 				"plus_x": {
 					"level": 2,
-					"entry": "You can target two additional creatures, and the {@condition persistent damage} increases by {@dice 2d6}."
+					"entries": ["You can target two additional creatures, and the {@condition persistent damage} increases by {@dice 2d6}."]
 				}
 			},
 			"spellLists": [
@@ -1157,7 +1162,7 @@
 			"heightened": {
 				"plus_x": {
 					"level": 2,
-					"entry": "The {@condition persistent damage ||persistent bleed damage} increases by {@dice 2d6}."
+					"entries": ["The {@condition persistent damage ||persistent bleed damage} increases by {@dice 2d6}."]
 				}
 			}
 		},
@@ -1210,7 +1215,7 @@
 				"x": [
 					{
 						"level": 5,
-						"entry": "The status bonus increases to +2."
+						"entries": ["The status bonus increases to +2."]
 					}
 				]
 			}
@@ -1265,7 +1270,7 @@
 			"heightened": {
 				"plus_x": {
 					"level": 1,
-					"entry": "The mental damage increases by {@dice 1d8}."
+					"entries": ["The mental damage increases by {@dice 1d8}."]
 				}
 			}
 		},
@@ -1360,11 +1365,11 @@
 				"x": [
 					{
 						"level": 6,
-						"entry": "The bonus increases to +3."
+						"entries": ["The bonus increases to +3."]
 					},
 					{
 						"level": 9,
-						"entry": "The bonus increases to +4."
+						"entries": ["The bonus increases to +4."]
 					}
 				]
 			}
@@ -1418,11 +1423,11 @@
 				"x": [
 					{
 						"level": 6,
-						"entry": "If a creature affected by this spell rolls a critical failure on its {@skill Stealth} check to {@action Sneak} within 30 feet of a creature that would spot it, it instead only fails its check, as the spell mildly hypnotizes the spotter."
+						"entries": ["If a creature affected by this spell rolls a critical failure on its {@skill Stealth} check to {@action Sneak} within 30 feet of a creature that would spot it, it instead only fails its check, as the spell mildly hypnotizes the spotter."]
 					},
 					{
 						"level": 8,
-						"entry": "As 6th level, and the status bonus is +4."
+						"entries": ["As 6th level, and the status bonus is +4."]
 					}
 				]
 			}
@@ -1666,7 +1671,7 @@
 			"heightened": {
 				"plus_x": {
 					"level": 1,
-					"entry": "The damage increases by {@dice 1d4}."
+					"entries": ["The damage increases by {@dice 1d4}."]
 				}
 			}
 		},
@@ -1714,6 +1719,11 @@
 			"name": "Consuming Darkness",
 			"source": "APG",
 			"page": 235,
+			"subclass": {
+				"Sorcerer|Bloodline": [
+					"Shadow"
+				]
+			},
 			"focus": true,
 			"level": 5,
 			"traits": [
@@ -1768,7 +1778,7 @@
 			"heightened": {
 				"plus_x": {
 					"level": 1,
-					"entry": "The damage increases by {@dice 1d6}."
+					"entries": ["The damage increases by {@dice 1d6}."]
 				}
 			}
 		},
@@ -1912,7 +1922,7 @@
 			"heightened": {
 				"plus_x": {
 					"level": 1,
-					"entry": "The damage increases by {@dice 2d6}."
+					"entries": ["The damage increases by {@dice 2d6}."]
 				}
 			},
 			"spellLists": [
@@ -2008,7 +2018,7 @@
 			"heightened": {
 				"plus_x": {
 					"level": 1,
-					"entry": "Increase the negative damage taken on a success and during the first three stages of the curse by {@dice 1d6}."
+					"entries": ["Increase the negative damage taken on a success and during the first three stages of the curse by {@dice 1d6}."]
 				}
 			}
 		},
@@ -2083,7 +2093,7 @@
 			"heightened": {
 				"plus_x": {
 					"level": 1,
-					"entry": "The damage increases by {@dice 1d6}."
+					"entries": ["The damage increases by {@dice 1d6}."]
 				}
 			}
 		},
@@ -2176,7 +2186,7 @@
 			"heightened": {
 				"plus_x": {
 					"level": 1,
-					"entry": "The damage increases by {@dice 3d6}."
+					"entries": ["The damage increases by {@dice 3d6}."]
 				}
 			}
 		},
@@ -2221,7 +2231,7 @@
 				"x": [
 					{
 						"level": 6,
-						"entry": "You can appear as any creature of the same size, even with a completely different body shape."
+						"entries": ["You can appear as any creature of the same size, even with a completely different body shape."]
 					}
 				]
 			}
@@ -2276,7 +2286,7 @@
 			"heightened": {
 				"plus_x": {
 					"level": 1,
-					"entry": "The target recovers an additional {@dice 1d8} Hit Points and you can attempt to suspend an additional affliction."
+					"entries": ["The target recovers an additional {@dice 1d8} Hit Points and you can attempt to suspend an additional affliction."]
 				}
 			}
 		},
@@ -2285,6 +2295,11 @@
 			"source": "APG",
 			"page": 236,
 			"focus": true,
+			"subclass": {
+				"Sorcerer|Bloodline": [
+					"Shadow"
+				]
+			},
 			"level": 1,
 			"traits": [
 				"Uncommon",
@@ -2372,7 +2387,7 @@
 				"x": [
 					{
 						"level": 5,
-						"entry": "You can target two creatures instead of one."
+						"entries": ["You can target two creatures instead of one."]
 					}
 				]
 			}
@@ -2428,11 +2443,11 @@
 				"x": [
 					{
 						"level": 4,
-						"entry": "The spell lasts for 10 minutes."
+						"entries": ["The spell lasts for 10 minutes."]
 					},
 					{
 						"level": 6,
-						"entry": "The spell lasts until your next daily preparations."
+						"entries": ["The spell lasts until your next daily preparations."]
 					}
 				]
 			}
@@ -2661,7 +2676,7 @@
 			"heightened": {
 				"plus_x": {
 					"level": 2,
-					"entry": "Increase the additional damage by 1."
+					"entries": ["Increase the additional damage by 1."]
 				}
 			}
 		},
@@ -2719,7 +2734,7 @@
 			"heightened": {
 				"plus_x": {
 					"level": 2,
-					"entry": "The {@condition persistent damage ||persistent negative damage} increases by {@dice 1d8} on a success, or by {@dice 2d8} on a failure or critical failure."
+					"entries": ["The {@condition persistent damage ||persistent negative damage} increases by {@dice 1d8} on a success, or by {@dice 2d8} on a failure or critical failure."]
 				}
 			}
 		},
@@ -2811,6 +2826,11 @@
 			"source": "APG",
 			"page": 236,
 			"focus": true,
+			"subclass": {
+				"Sorcerer|Bloodline": [
+					"Nymph"
+				]
+			},
 			"level": 5,
 			"traits": [
 				"Uncommon",
@@ -2852,7 +2872,7 @@
 			"heightened": {
 				"plus_x": {
 					"level": 2,
-					"entry": "The area increases by 5 feet, and the Strikes deal an additional {@dice 1d8} damage."
+					"entries": ["The area increases by 5 feet, and the Strikes deal an additional {@dice 1d8} damage."]
 				}
 			}
 		},
@@ -3021,7 +3041,7 @@
 			"heightened": {
 				"plus_x": {
 					"level": 1,
-					"entry": "The damage increases by {@dice 2d6}."
+					"entries": ["The damage increases by {@dice 2d6}."]
 				}
 			},
 			"spellLists": [
@@ -3075,7 +3095,7 @@
 				"x": [
 					{
 						"level": 9,
-						"entry": "For the duration, you also gain a status bonus to the damage dealt by produce flame equal to flaming fusillade's spell level."
+						"entries": ["For the duration, you also gain a status bonus to the damage dealt by produce flame equal to flaming fusillade's spell level."]
 					}
 				]
 			}
@@ -3194,7 +3214,7 @@
 			"heightened": {
 				"plus_x": {
 					"level": 2,
-					"entry": "The {@condition persistent damage} increases by {@dice 2d6}, and the weakness increases by 1, or by 2 on a critical failure."
+					"entries": ["The {@condition persistent damage} increases by {@dice 2d6}, and the weakness increases by 1, or by 2 on a critical failure."]
 				}
 			}
 		},
@@ -3202,6 +3222,11 @@
 			"name": "Genie's Veil",
 			"source": "APG",
 			"page": 236,
+			"subclass": {
+				"Sorcerer|Bloodline": [
+					"Genie"
+				]
+			},
 			"focus": true,
 			"level": 1,
 			"traits": [
@@ -3382,7 +3407,7 @@
 			"heightened": {
 				"plus_x": {
 					"level": 1,
-					"entry": "The damage increases by {@dice 2d6}."
+					"entries": ["The damage increases by {@dice 2d6}."]
 				}
 			}
 		},
@@ -3433,7 +3458,7 @@
 			"heightened": {
 				"plus_x": {
 					"level": 1,
-					"entry": "The amount of healing increases by {@dice 1d10}, and the additional healing for the 2-action version increases by 8."
+					"entries": ["The amount of healing increases by {@dice 1d10}, and the additional healing for the 2-action version increases by 8."]
 				}
 			}
 		},
@@ -3443,6 +3468,11 @@
 			"page": 236,
 			"focus": true,
 			"level": 3,
+			"subclass": {
+				"Sorcerer|Bloodline": [
+					"Genie"
+				]
+			},
 			"traits": [
 				"Uncommon",
 				"Emotion",
@@ -3496,7 +3526,7 @@
 			"heightened": {
 				"plus_x": {
 					"level": 2,
-					"entry": "You can target one additional creature."
+					"entries": ["You can target one additional creature."]
 				}
 			}
 		},
@@ -3555,7 +3585,7 @@
 			"heightened": {
 				"plus_x": {
 					"level": 1,
-					"entry": "The initial damage increases by {@dice 2d6} and the {@condition persistent damage} increases by {@dice 1d4}."
+					"entries": ["The initial damage increases by {@dice 2d6} and the {@condition persistent damage} increases by {@dice 1d4}."]
 				}
 			},
 			"spellLists": [
@@ -3731,7 +3761,7 @@
 			"heightened": {
 				"plus_x": {
 					"level": 1,
-					"entry": "The fast healing and temporary Hit Points each increase by 2."
+					"entries": ["The fast healing and temporary Hit Points each increase by 2."]
 				}
 			}
 		},
@@ -3791,7 +3821,7 @@
 			"heightened": {
 				"plus_x": {
 					"level": 2,
-					"entry": "The initial bludgeoning damage and cold damage increase by {@dice 1d8} each, and the cold damage creatures take at the end of their turns increases by 2."
+					"entries": ["The initial bludgeoning damage and cold damage increase by {@dice 1d8} each, and the cold damage creatures take at the end of their turns increases by 2."]
 				}
 			}
 		},
@@ -3910,7 +3940,7 @@
 			"heightened": {
 				"plus_x": {
 					"level": 1,
-					"entry": "The damage increases by {@dice 2d6}."
+					"entries": ["The damage increases by {@dice 2d6}."]
 				}
 			}
 		},
@@ -4008,7 +4038,7 @@
 			"heightened": {
 				"plus_x": {
 					"level": 2,
-					"entry": "Increase the {@condition persistent damage} by {@dice 1d4} and the radius of the emanation by 5 feet."
+					"entries": ["Increase the {@condition persistent damage} by {@dice 1d4} and the radius of the emanation by 5 feet."]
 				}
 			}
 		},
@@ -4113,7 +4143,7 @@
 			"heightened": {
 				"plus_x": {
 					"level": 1,
-					"entry": "The cold damage increases by {@dice 1d6}."
+					"entries": ["The cold damage increases by {@dice 1d6}."]
 				}
 			}
 		},
@@ -4167,11 +4197,11 @@
 				"x": [
 					{
 						"level": 3,
-						"entry": "The duration is until the next time you make your daily preparations."
+						"entries": ["The duration is until the next time you make your daily preparations."]
 					},
 					{
 						"level": 7,
-						"entry": "The duration is unlimited."
+						"entries": ["The duration is unlimited."]
 					}
 				]
 			}
@@ -4317,15 +4347,15 @@
 				"x": [
 					{
 						"level": 3,
-						"entry": "You can target 2 creatures other than you. Increase the initial healing to {@dice 3d4} and the maximum damage reduced and Hit Points lost to 5."
+						"entries": ["You can target 2 creatures other than you. Increase the initial healing to {@dice 3d4} and the maximum damage reduced and Hit Points lost to 5."]
 					},
 					{
 						"level": 6,
-						"entry": "You can target 3 creatures other than you. Increase the initial healing to {@dice 6d4} and the maximum damage reduced and Hit Points lost to 10."
+						"entries": ["You can target 3 creatures other than you. Increase the initial healing to {@dice 6d4} and the maximum damage reduced and Hit Points lost to 10."]
 					},
 					{
 						"level": 9,
-						"entry": "You can target 4 creatures other than you. Increase the initial healing to {@dice 9d4} and the maximum damage reduced and Hit Points lost to 15."
+						"entries": ["You can target 4 creatures other than you. Increase the initial healing to {@dice 9d4} and the maximum damage reduced and Hit Points lost to 15."]
 					}
 				]
 			}
@@ -4381,7 +4411,7 @@
 			"heightened": {
 				"plus_x": {
 					"level": 1,
-					"entry": "Increase the Hit Points restored with an {@action Interact} action by {@dice 1d8}, the positive damage by 1, and the resistance and weakness by 1."
+					"entries": ["Increase the Hit Points restored with an {@action Interact} action by {@dice 1d8}, the positive damage by 1, and the resistance and weakness by 1."]
 				}
 			}
 		},
@@ -4440,7 +4470,7 @@
 			"heightened": {
 				"plus_x": {
 					"level": 1,
-					"entry": "The damage of each bolt increases by {@dice 1d12}. Spells 5"
+					"entries": ["The damage of each bolt increases by {@dice 1d12}. Spells 5"]
 				}
 			}
 		},
@@ -4493,7 +4523,7 @@
 			"heightened": {
 				"plus_x": {
 					"level": 1,
-					"entry": "The weakness increases by 1."
+					"entries": ["The weakness increases by 1."]
 				}
 			}
 		},
@@ -4556,7 +4586,7 @@
 				"x": [
 					{
 						"level": 8,
-						"entry": "The status bonus increases to +3."
+						"entries": ["The status bonus increases to +3."]
 					}
 				]
 			}
@@ -4778,7 +4808,7 @@
 			"heightened": {
 				"plus_x": {
 					"level": 2,
-					"entry": "The {@action Strike} damage increases by {@dice 1d10}."
+					"entries": ["The {@action Strike} damage increases by {@dice 1d10}."]
 				}
 			}
 		},
@@ -4876,7 +4906,7 @@
 			"heightened": {
 				"plus_x": {
 					"level": 1,
-					"entry": "The length of the bridge increases by 20 feet, and its Hit Points increase by 20."
+					"entries": ["The length of the bridge increases by 20 feet, and its Hit Points increase by 20."]
 				}
 			}
 		},
@@ -4930,7 +4960,7 @@
 			"heightened": {
 				"plus_x": {
 					"level": 1,
-					"entry": "Increase the damage by 2."
+					"entries": ["Increase the damage by 2."]
 				}
 			}
 		},
@@ -4983,7 +5013,7 @@
 			"heightened": {
 				"plus_x": {
 					"level": 1,
-					"entry": "The damage increases by {@dice 1d6}."
+					"entries": ["The damage increases by {@dice 1d6}."]
 				}
 			}
 		},
@@ -5046,6 +5076,11 @@
 			"source": "APG",
 			"page": 236,
 			"focus": true,
+			"subclass": {
+				"Sorcerer|Bloodline": [
+					"Nymph"
+				]
+			},
 			"level": 1,
 			"traits": [
 				"Uncommon",
@@ -5081,7 +5116,7 @@
 				"x": [
 					{
 						"level": 4,
-						"entry": "As long as the ally has the token on their person, you can cast spells that have a range of touch on them at a range of 30 feet."
+						"entries": ["As long as the ally has the token on their person, you can cast spells that have a range of touch on them at a range of 30 feet."]
 					}
 				]
 			}
@@ -5130,23 +5165,23 @@
 				"x": [
 					{
 						"level": 2,
-						"entry": "You can learn about an event that occurred within the last month."
+						"entries": ["You can learn about an event that occurred within the last month."]
 					},
 					{
 						"level": 4,
-						"entry": "You can learn about an event that occurred within the last year."
+						"entries": ["You can learn about an event that occurred within the last year."]
 					},
 					{
 						"level": 6,
-						"entry": "You can learn about an event that occurred within the last decade."
+						"entries": ["You can learn about an event that occurred within the last decade."]
 					},
 					{
 						"level": 8,
-						"entry": "You can learn about an event that occurred within the last century."
+						"entries": ["You can learn about an event that occurred within the last century."]
 					},
 					{
 						"level": 9,
-						"entry": "You can learn about an event that occurred within the entirety of the object's history."
+						"entries": ["You can learn about an event that occurred within the entirety of the object's history."]
 					}
 				]
 			}
@@ -5252,7 +5287,7 @@
 			"heightened": {
 				"plus_x": {
 					"level": 1,
-					"entry": "The cold damage and {@condition persistent damage ||persistent cold damage} increase by 1 (2 on a critical failure)."
+					"entries": ["The cold damage and {@condition persistent damage ||persistent cold damage} increase by 1 (2 on a critical failure)."]
 				}
 			}
 		},
@@ -5415,7 +5450,7 @@
 			"heightened": {
 				"plus_x": {
 					"level": 1,
-					"entry": "Increase the resistance by 2."
+					"entries": ["Increase the resistance by 2."]
 				}
 			}
 		},
@@ -5529,7 +5564,7 @@
 			"heightened": {
 				"plus_x": {
 					"level": 1,
-					"entry": "Increase the damage by {@dice 2d4}."
+					"entries": ["Increase the damage by {@dice 2d4}."]
 				}
 			},
 			"spellLists": [
@@ -5592,7 +5627,7 @@
 			"heightened": {
 				"plus_x": {
 					"level": 1,
-					"entry": "Increase the damage to fire creatures by {@dice 2d8}."
+					"entries": ["Increase the damage to fire creatures by {@dice 2d8}."]
 				}
 			},
 			"spellLists": [
@@ -5648,7 +5683,7 @@
 			"heightened": {
 				"plus_x": {
 					"level": 1,
-					"entry": "The bleed damage on a critical failure increases by {@dice 1d4}."
+					"entries": ["The bleed damage on a critical failure increases by {@dice 1d4}."]
 				}
 			}
 		},
@@ -5796,7 +5831,7 @@
 			"heightened": {
 				"plus_x": {
 					"level": 1,
-					"entry": "Increase the initial damage to creatures or hazards by {@dice 2d6}, and increase the maximum Bulk of an item you can target by 1."
+					"entries": ["Increase the initial damage to creatures or hazards by {@dice 2d6}, and increase the maximum Bulk of an item you can target by 1."]
 				}
 			}
 		},
@@ -5858,11 +5893,11 @@
 				"x": [
 					{
 						"level": 5,
-						"entry": "The granted resistance increases to 10, and the area can be 120 feet long."
+						"entries": ["The granted resistance increases to 10, and the area can be 120 feet long."]
 					},
 					{
 						"level": 8,
-						"entry": "The granted resistance increases to 15, and the area can be 500 feet long."
+						"entries": ["The granted resistance increases to 15, and the area can be 500 feet long."]
 					}
 				]
 			},
@@ -5917,7 +5952,7 @@
 			"heightened": {
 				"plus_x": {
 					"level": 1,
-					"entry": "The resistance increases by 1."
+					"entries": ["The resistance increases by 1."]
 				}
 			},
 			"spellLists": [
@@ -5982,7 +6017,7 @@
 				"x": [
 					{
 						"level": 5,
-						"entry": "You can target up to 6 creatures or 6 objects, altering the sounds of all affected creatures or objects in the same way."
+						"entries": ["You can target up to 6 creatures or 6 objects, altering the sounds of all affected creatures or objects in the same way."]
 					}
 				]
 			}
@@ -6044,7 +6079,7 @@
 			"heightened": {
 				"plus_x": {
 					"level": 2,
-					"entry": "The weakness increases by 1, and the maximum level of creature that can be automatically killed increases by 4."
+					"entries": ["The weakness increases by 1, and the maximum level of creature that can be automatically killed increases by 4."]
 				}
 			}
 		},
@@ -6096,6 +6131,11 @@
 			"name": "Sepulchral Mask",
 			"source": "APG",
 			"page": 236,
+			"subclass": {
+				"Sorcerer|Bloodline": [
+					"Psychopomp"
+				]
+			},
 			"focus": true,
 			"level": 1,
 			"traits": [
@@ -6151,7 +6191,7 @@
 			"heightened": {
 				"plus_x": {
 					"level": 2,
-					"entry": "Increase the mental damage by {@dice 2d4} and the emanation's radius by 5 feet."
+					"entries": ["Increase the mental damage by {@dice 2d4} and the emanation's radius by 5 feet."]
 				}
 			}
 		},
@@ -6248,7 +6288,7 @@
 				"x": [
 					{
 						"level": 8,
-						"entry": "When you arrive at your destination, you can become {@condition invisible} until the end of your next turn or until you are no longer in an area of dim light or darkness, whichever comes first. The invisibility is an {@trait illusion} effect."
+						"entries": ["When you arrive at your destination, you can become {@condition invisible} until the end of your next turn or until you are no longer in an area of dim light or darkness, whichever comes first. The invisibility is an {@trait illusion} effect."]
 					}
 				]
 			}
@@ -6303,7 +6343,7 @@
 			"heightened": {
 				"plus_x": {
 					"level": 1,
-					"entry": "The negative damage increases by {@dice 2d4}. Oracle"
+					"entries": ["The negative damage increases by {@dice 2d4}. Oracle"]
 				}
 			}
 		},
@@ -6311,6 +6351,11 @@
 			"name": "Shepherd Of Souls",
 			"source": "APG",
 			"page": 236,
+			"subclass": {
+				"Sorcerer|Bloodline": [
+					"Psychopomp"
+				]
+			},
 			"focus": true,
 			"level": 5,
 			"traits": [
@@ -6352,7 +6397,7 @@
 			"heightened": {
 				"plus_x": {
 					"level": 2,
-					"entry": "The maximum number of Hit Points you can sacrifice increases by 5."
+					"entries": ["The maximum number of Hit Points you can sacrifice increases by 5."]
 				}
 			}
 		},
@@ -6460,7 +6505,7 @@
 			"heightened": {
 				"plus_x": {
 					"level": 1,
-					"entry": "The range of the spell increases by 10 feet."
+					"entries": ["The range of the spell increases by 10 feet."]
 				}
 			}
 		},
@@ -6513,11 +6558,11 @@
 				"x": [
 					{
 						"level": 6,
-						"entry": "You can {@action Sustain a Spell||Sustain the Spell} for up to 2 hours."
+						"entries": ["You can {@action Sustain a Spell||Sustain the Spell} for up to 2 hours."]
 					},
 					{
 						"level": 9,
-						"entry": "You can {@action Sustain a Spell||Sustain the Spell} for up to 4 hours."
+						"entries": ["You can {@action Sustain a Spell||Sustain the Spell} for up to 4 hours."]
 					}
 				]
 			}
@@ -6614,7 +6659,7 @@
 			"heightened": {
 				"plus_x": {
 					"level": 1,
-					"entry": "The amount of healing (or damage to an undead target) increases by {@dice 1d8}, and the {@condition persistent damage ||persistent positive damage} to an undead creature increases by 1."
+					"entries": ["The amount of healing (or damage to an undead target) increases by {@dice 1d8}, and the {@condition persistent damage ||persistent positive damage} to an undead creature increases by 1."]
 				}
 			}
 		},
@@ -6677,7 +6722,7 @@
 			"heightened": {
 				"plus_x": {
 					"level": 1,
-					"entry": "Increase the damage by {@dice 1d4}."
+					"entries": ["Increase the damage by {@dice 1d4}."]
 				}
 			}
 		},
@@ -6736,7 +6781,7 @@
 			"heightened": {
 				"plus_x": {
 					"level": 1,
-					"entry": "Increase the damage by 1."
+					"entries": ["Increase the damage by 1."]
 				}
 			},
 			"spellLists": [
@@ -6793,7 +6838,7 @@
 				"x": [
 					{
 						"level": 6,
-						"entry": "The spell's duration lasts until the next time you make your daily preparations."
+						"entries": ["The spell's duration lasts until the next time you make your daily preparations."]
 					}
 				]
 			}
@@ -6804,6 +6849,11 @@
 			"page": 237,
 			"focus": true,
 			"level": 3,
+			"subclass": {
+				"Sorcerer|Bloodline": [
+					"Psychopomp"
+				]
+			},
 			"traits": [
 				"Uncommon",
 				"Illusion",
@@ -6837,7 +6887,7 @@
 			"heightened": {
 				"plus_x": {
 					"level": 1,
-					"entry": "You can target one additional willing creature within 30 feet. The spell ends if any target physically interacts with an undead creature or uses a {@condition hostile} action."
+					"entries": ["You can target one additional willing creature within 30 feet. The spell ends if any target physically interacts with an undead creature or uses a {@condition hostile} action."]
 				}
 			}
 		},
@@ -6899,13 +6949,18 @@
 			"heightened": {
 				"plus_x": {
 					"level": 1,
-					"entry": "Increase the damage by {@dice 1d4}."
+					"entries": ["Increase the damage by {@dice 1d4}."]
 				}
 			}
 		},
 		{
 			"name": "Steal Shadow",
 			"source": "APG",
+			"subclass": {
+				"Sorcerer|Bloodline": [
+					"Shadow"
+				]
+			},
 			"page": 237,
 			"focus": true,
 			"level": 3,
@@ -6961,7 +7016,7 @@
 			"heightened": {
 				"plus_x": {
 					"level": 1,
-					"entry": "The damage when the spell is cast and when it is sustained increases by {@dice 1d4}."
+					"entries": ["The damage when the spell is cast and when it is sustained increases by {@dice 1d4}."]
 				}
 			}
 		},
@@ -7021,7 +7076,7 @@
 			"heightened": {
 				"plus_x": {
 					"level": 2,
-					"entry": "The status bonus to damage increases by 1."
+					"entries": ["The status bonus to damage increases by 1."]
 				}
 			}
 		},
@@ -7136,7 +7191,7 @@
 			"heightened": {
 				"plus_x": {
 					"level": 1,
-					"entry": "The damage increases by {@dice 1d10}."
+					"entries": ["The damage increases by {@dice 1d10}."]
 				}
 			}
 		},
@@ -7183,7 +7238,7 @@
 				"x": [
 					{
 						"level": 5,
-						"entry": "The instrument is instead a virtuoso handheld instrument."
+						"entries": ["The instrument is instead a virtuoso handheld instrument."]
 					}
 				]
 			}
@@ -7233,7 +7288,7 @@
 				"x": [
 					{
 						"level": 9,
-						"entry": "You can target up to four creatures."
+						"entries": ["You can target up to four creatures."]
 					}
 				]
 			}
@@ -7295,7 +7350,7 @@
 			"heightened": {
 				"plus_x": {
 					"level": 2,
-					"entry": "Increase the resistance by 5 and the electricity damage from the charged water form by 1."
+					"entries": ["Increase the resistance by 5 and the electricity damage from the charged water form by 1."]
 				}
 			}
 		},
@@ -7359,7 +7414,7 @@
 			"heightened": {
 				"plus_x": {
 					"level": 1,
-					"entry": "The bludgeoning and cold damage each increase by {@dice 1d4}. Spells 5"
+					"entries": ["The bludgeoning and cold damage each increase by {@dice 1d4}. Spells 5"]
 				}
 			}
 		},
@@ -7453,11 +7508,11 @@
 				"x": [
 					{
 						"level": 3,
-						"entry": "The spell's range increases to 500 feet."
+						"entries": ["The spell's range increases to 500 feet."]
 					},
 					{
 						"level": 5,
-						"entry": "As 3rd level, and the object's maximum Bulk increases to 1. You can {@action Cast a Spell||Cast the Spell} with 3 actions instead of 1; doing so increases the range to 1 mile and you don't need line of sight to the target, but you must be extremely familiar with the target."
+						"entries": ["As 3rd level, and the object's maximum Bulk increases to 1. You can {@action Cast a Spell||Cast the Spell} with 3 actions instead of 1; doing so increases the range to 1 mile and you don't need line of sight to the target, but you must be extremely familiar with the target."]
 					}
 				]
 			}
@@ -7570,7 +7625,7 @@
 			"heightened": {
 				"plus_x": {
 					"level": 2,
-					"entry": "Increase each type of damage by {@dice 2d6} and the area by 5 feet."
+					"entries": ["Increase each type of damage by {@dice 2d6} and the area by 5 feet."]
 				}
 			}
 		},
@@ -7618,7 +7673,7 @@
 			"heightened": {
 				"plus_x": {
 					"level": 1,
-					"entry": "Increase the damage dealt to a living creature by {@dice 1d6} or increase the Hit Points regained by undead by 6."
+					"entries": ["Increase the damage dealt to a living creature by {@dice 1d6} or increase the Hit Points regained by undead by 6."]
 				}
 			}
 		},
@@ -7689,7 +7744,7 @@
 			"heightened": {
 				"plus_x": {
 					"level": 2,
-					"entry": "Add an additional 10-foot cube to the area, adjacent to at least one of the other cubes."
+					"entries": ["Add an additional 10-foot cube to the area, adjacent to at least one of the other cubes."]
 				}
 			},
 			"spellLists": [
@@ -7752,7 +7807,7 @@
 			"heightened": {
 				"plus_x": {
 					"level": 1,
-					"entry": "The piercing and negative damage increase by {@dice 1d4} each."
+					"entries": ["The piercing and negative damage increase by {@dice 1d4} each."]
 				}
 			}
 		},
@@ -7890,7 +7945,7 @@
 			"heightened": {
 				"plus_x": {
 					"level": 1,
-					"entry": "Increase the damage by {@dice 1d8}."
+					"entries": ["Increase the damage by {@dice 1d8}."]
 				}
 			}
 		},
@@ -8013,7 +8068,7 @@
 			"heightened": {
 				"plus_x": {
 					"level": 2,
-					"entry": "The damage increases by {@dice 3d6}, and you can add another nonoverlapping 5-foot burst to the area. Ranger"
+					"entries": ["The damage increases by {@dice 3d6}, and you can add another nonoverlapping 5-foot burst to the area. Ranger"]
 				}
 			}
 		},
@@ -8085,6 +8140,11 @@
 			"page": 237,
 			"focus": true,
 			"level": 5,
+			"subclass": {
+				"Sorcerer|Bloodline": [
+					"Genie"
+				]
+			},
 			"traits": [
 				"Uncommon",
 				"Sorcerer",
@@ -8146,7 +8206,7 @@
 			"heightened": {
 				"plus_x": {
 					"level": 1,
-					"entry": "Increase the weakness and the reduction to resistances by 1."
+					"entries": ["Increase the weakness and the reduction to resistances by 1."]
 				}
 			}
 		}

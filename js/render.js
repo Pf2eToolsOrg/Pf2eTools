@@ -1288,23 +1288,44 @@ function Renderer () {
 			textStack[0] += `<p class="pf2-paper-title">${this.render(entry.title)}</p>`;
 		}
 
-		const styles = (entry.style || "").split(" ").map(s => `pf2-${s}`).join(" ");
+		const styles = (entry.style || "").split(" ").filter(Boolean).map(s => `pf2-${s}`).join(" ");
 		textStack[0] += `<div class="pf2-paper ${styles}" ${dataString}>`;
 
-		// textStack[0] += `<div class="pf2-paper__header">`;
-		// textStack[0] += `</div>`;
+		if (entry.head) {
+			textStack[0] += `<div class="pf2-paper__header">`;
+			const len = entry.head.length;
+			for (let i = 0; i < len; ++i) {
+				this._recursiveRender(entry.head[i], textStack, meta, {
+					prefix: `<p class="pf2-paper__text">`,
+					suffix: "</p>",
+				});
+			}
+			textStack[0] += `</div>`;
+		}
 
 		textStack[0] += `<div class="pf2-paper__entries">`;
 		if (entry.entries) {
 			const len = entry.entries.length;
 			for (let i = 0; i < len; ++i) {
 				this._recursiveRender(entry.entries[i], textStack, meta, {
-					prefix: `<p class="pf2-paper__text">`,
+					prefix: `<p class="pf2-paper__text" ${entry.noIndentLastEntry && i === len - 1 ? "style='text-indent: 0;'" : ""}>`,
 					suffix: "</p>",
 				});
 			}
 		}
 		textStack[0] += `</div>`;
+
+		if (entry.signature) {
+			textStack[0] += `<div class="pf2-paper__signature">`;
+			const len = entry.signature.length;
+			for (let i = 0; i < len; ++i) {
+				this._recursiveRender(entry.signature[i], textStack, meta, {
+					prefix: `<p class="pf2-paper__text">`,
+					suffix: "</p>",
+				});
+			}
+			textStack[0] += `</div>`;
+		}
 
 		if (entry.footnotes) {
 			textStack[0] += `<div class="pf2-paper__footer">`;
@@ -2166,6 +2187,7 @@ function Renderer () {
 						this._recursiveRender(fauxEntry, textStack, meta);
 						break;
 					case "@disease":
+					case "@affliction":
 					case "@curse":
 						fauxEntry.href.path = UrlUtil.PG_AFFLICTIONS;
 						fauxEntry.href.hover = {
@@ -4691,7 +4713,10 @@ Renderer.item = {
 			renderStack.push(`</p>`);
 		}
 		if (item.activate) {
-			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Activate&nbsp;</strong>${renderer.render(Parser.timeToFullEntry(item.activate.activity))} `);
+			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Activate&nbsp;</strong>`);
+			if (item.activate.activity != null) {
+				renderStack.push(`${renderer.render(Parser.timeToFullEntry(item.activate.activity))} `);
+			}
 			if (item.activate.components != null) {
 				renderStack.push(`${renderer.render(item.activate.components)}`);
 			}
@@ -4847,10 +4872,11 @@ Renderer.item = {
 			// FIXME: Optimize this hellish mess
 			renderStack.push(`<div class="pf2-stat pf2-stat__section--wide"><strong>Type&nbsp;</strong>${renderer.render(`{@item ${v.type.toLowerCase().includes(item.name.toLowerCase()) ? `${v.type}` : `${v.name ? v.name : `${v.type} ${item.name}`}`}|${v.source ? v.source : item.source}|${v.type}}`)}`);
 			if (v.level != null) renderStack.push(`; <strong>Level&nbsp;</strong>${v.level}`);
-			if (v.traits != null && v.traits.length) renderStack.push(` (${renderer.render(v.traits.map(t => `{@trait ${t.toLowerCase()}}`).join(", "))});`);
+			if (v.traits != null && v.traits.length) renderStack.push(` (${renderer.render(v.traits.map(t => `{@trait ${t.toLowerCase()}}`).join(", "))})`);
 			if (v.price != null) renderStack.push(`; <strong>Price&nbsp;</strong>${Parser.priceToFull(v.price)}`);
 			if (v.bulk != null) renderStack.push(`; <strong>Bulk&nbsp;</strong>${v.bulk}`);
 			if (v.entries != null && v.entries.length) {
+				renderStack.push(`; `);
 				renderer.recursiveRender(v.entries, renderStack, {prefix: "<p class='pf2-stat pf2-stat__text'>", suffix: "</p>"});
 			}
 			if (v.craftReq != null) renderStack.push(`; <strong>Craft Requirements&nbsp;</strong>${renderer.render(v.craftReq)}`);
@@ -5166,21 +5192,17 @@ Renderer.spell = {
 			});
 		};
 		if (sp.heightened.plus_x != null) {
-			if (typeof sp.heightened.plus_x.entry === "string") {
-				renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Heightened (+${sp.heightened.plus_x.level})&nbsp;</strong>${renderer.render(sp.heightened.plus_x.entry)}</p>`);
-			} else if (Array.isArray(sp.heightened.plus_x.entry)) {
-				renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Heightened (+${sp.heightened.plus_x.level})&nbsp;</strong>`)
-				renderArray(sp.heightened.plus_x.entry);
-				renderStack.push(`</p>`);
-			}
+			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Heightened (+${sp.heightened.plus_x.level})&nbsp;</strong>`)
+			renderArray(sp.heightened.plus_x.entries);
+			renderStack.push(`</p>`);
 		}
 		if (sp.heightened.x != null) {
 			sp.heightened.x.forEach(x => {
-				if (typeof x.entry === "string") {
-					renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Heightened (${Parser.getOrdinalForm(x.level)})&nbsp;</strong>${renderer.render(x.entry)}</p>`);
-				} else if (Array.isArray(x.entry)) {
+				if (typeof x.entries === "string") {
+					renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Heightened (${Parser.getOrdinalForm(x.level)})&nbsp;</strong>${renderer.render(x.entries)}</p>`);
+				} else if (Array.isArray(x.entries)) {
 					renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Heightened (${Parser.getOrdinalForm(x.level)})&nbsp;</strong>`);
-					renderArray(x.entry);
+					renderArray(x.entries);
 					renderStack.push(`</p>`);
 				}
 			});
@@ -7353,6 +7375,7 @@ Renderer._stripTagLayer = function (str) {
 					case "@condition":
 					case "@creature":
 					case "@disease":
+					case "@affliction":
 					case "@feat":
 					case "@hazard":
 					case "@item":

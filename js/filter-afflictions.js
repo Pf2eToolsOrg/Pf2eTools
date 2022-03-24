@@ -15,6 +15,7 @@ class PageFilterAfflictions extends PageFilter {
 	mutateForFilters (it) {
 		it._fSources = SourceFilter.getCompleteFilterSources(it);
 		it._fType = it.__prop.uppercaseFirst();
+		it._fTraits = []
 		it._fTraits = it.traits.map(t => Parser.getTraitName(t));
 		if (!it._fTraits.map(t => Renderer.trait.isTraitInCategory(t, "Rarity")).some(Boolean)) it._fTraits.push("Common");
 		it._fLvl = PageFilterAfflictions.getFilterLevel(it.level);
