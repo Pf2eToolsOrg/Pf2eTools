@@ -1966,7 +1966,7 @@
 						"freq": 1
 					},
 					"entries": [
-						"You rip a page from the fulu compendium and cast it in a wide arc; as it flies in that arc, it multiplies into a storm of fulus. All undead creatures in a 30-foot emanation are affected by a spirit-sealing fulu with a save DC of 25."
+						"You rip a page from the fulu compendium and cast it in a wide arc; as it flies in that arc, it multiplies into a storm of fulus. All undead creatures in a 30-foot emanation are affected by a {@item spirit-sealing fulu} with a save DC of 25."
 					]
 				}
 			]
@@ -4411,8 +4411,16 @@
 			],
 			"usage": "affixed to one undead creature",
 			"category": "Consumable",
+			"duration": {
+				"type": "timed",
+				"entry": "1 round (or 4 rounds)",
+				"duration": {
+					"number": 1,
+					"unit": "round"
+				}
+			},
 			"entries": [
-				"Duration 1 round (or 4 rounds) This classic fulu seals the negative energy within an undead, freezing it in its tracks. Upon affixing, the target undead must attempt a Will save or be {@condition paralyzed} for 1 round."
+				"This classic fulu seals the negative energy within an undead, freezing it in its tracks. Upon affixing, the target undead must attempt a Will save or be {@condition paralyzed} for 1 round."
 			],
 			"generic": "G",
 			"variants": [
