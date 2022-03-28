@@ -629,10 +629,11 @@
 					"type": "ability",
 					"activity": {
 						"number": 1,
-						"unit": "action"
+						"unit": "varies",
+						"entry": "{@as 1} or more"
 					},
 					"components": [
-						"or more (envision",
+						"(envision",
 						"Interact)"
 					],
 					"entries": [
@@ -650,7 +651,7 @@
 						"amount": 5
 					},
 					"entries": [
-						"This pack contains 5 cards of a single common cantrip (such as light)."
+						"This pack contains 5 cards of a single {@filter common cantrip|spells||rarity=common|spell type=cantrip;!focus} (such as {@spell light})."
 					]
 				},
 				{
@@ -661,7 +662,7 @@
 						"amount": 20
 					},
 					"entries": [
-						"This pack contains 24 cards\u2014one of each cantrip in the Core Rulebook."
+						"This pack contains 24 cards\u2014one of each {@filter cantrip in the Core Rulebook|spells||rarity=common|spell type=cantrip;!focus|source=crb}."
 					]
 				}
 			]

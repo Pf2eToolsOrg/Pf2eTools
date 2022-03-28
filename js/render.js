@@ -591,6 +591,7 @@ function Renderer () {
 		let idxSpan = 0;
 
 		const renderRow = (row, idxRow, minButton) => {
+			renderer = Renderer.get()
 			const lenCol = row.length;
 			const dataStr = idxRow ? this._renderTable_getDataStr(row, entry.rollable) : "";
 			if (row.type === "multiRow") {
@@ -620,7 +621,7 @@ function Renderer () {
 					if (last_end !== span[0]) {
 						textStack[0] += `<div class="${styles}" style="grid-column:${last_end}/${span[0]}" ${idxCol ? dataStr : ""}></div>`;
 					}
-					textStack[0] += `<div class="${styles}" style="grid-column:${span[0]}/${span[1]}" ${idxCol ? dataStr : ""}><span>${row[idxCol]}${span[1] === numCol + 1 ? minButton : ""}</span></div>`;
+					textStack[0] += `<div class="${styles}" style="grid-column:${span[0]}/${span[1]}" ${idxCol ? dataStr : ""}><span>${renderer.render(row[idxCol])}${span[1] === numCol + 1 ? minButton : ""}</span></div>`;
 					last_end = span[1];
 				}
 				if (last_end !== numCol + 1) {
@@ -4887,9 +4888,17 @@ Renderer.item = {
 		return renderStack.join("")
 	},
 
+	// FIXME: Merge getCraftRequirements, getDestruction and getSpecial into a generic object with strings, like we have with successDegree
+
 	getCraftRequirements (item) {
 		if (item.craftReq != null) {
 			return `${Renderer.utils.getDividerDiv()}<p class="pf2-stat pf2-stat__section"><strong>Craft Requirements&nbsp;</strong>${Renderer.get().render(item.craftReq)}</p>`
+		} else return ""
+	},
+
+	getDestruction (item) {
+		if (item.destruction != null) {
+			return `${Renderer.utils.getDividerDiv()}<p class="pf2-stat pf2-stat__section"><strong>Destruction&nbsp;</strong>${Renderer.get().render(item.destruction)}</p>`
 		} else return ""
 	},
 
@@ -4911,6 +4920,7 @@ Renderer.item = {
 			${renderStack.join("")}
 			${Renderer.item.getVariantsHtml(item)}
 			${Renderer.item.getCraftRequirements(item)}
+			${Renderer.item.getDestruction(item)}
 			${Renderer.item.getSpecial(item)}
 			${Renderer.utils.getPageP(item)}`;
 	},
