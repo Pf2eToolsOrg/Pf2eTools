@@ -141,15 +141,16 @@ class PageFilterItems extends PageFilter {
 		it._fHands = [it.hands, it._fweaponData.hands, it._fcomboWeaponData.hands].filter(Boolean).map(it => String(it));
 		it._fPrice = PageFilterItems._priceCategory(it._sPrice);
 		it._fMisc = [];
-		for (let entry of it.entries) {
-			if (typeof entry === "object") {
-				if (entry.type === "ability") it._fMisc.push("Activatable");
-				if (entry.type === "affliction") {
-					// TODO: More Filters?
+		if (it.entries) {
+			for (let entry of it.entries) {
+				if (typeof entry === "object") {
+					if (entry.type === "ability") it._fMisc.push("Activatable");
+					if (entry.type === "affliction") {
+						// TODO: More Filters?
+					}
 				}
 			}
-		}
-
+		} else throw new Error(`"${it.name}" has no entries?`)
 		it._fDamage = undefined; // FIXME: set by trait implies
 		this.handleTraitImplies(it, {traitProp: "traits", entityTypes: ["item"]});
 		it._fTraits = (it.traits || []).map(t => Parser.getTraitName(t));
