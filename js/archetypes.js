@@ -255,6 +255,7 @@ class ArchetypesPage extends BaseComponent {
 						feat.featType.archetype = typeof feat.featType.archetype === "object" ? feat.featType.archetype : [];
 						feat.featType.archetype.push(arc.name);
 						feat.addSections = feat.addSections || [];
+						feat.leadsTo = []
 						feat.addSections.push([[`{@note This version of {@feat ${feat.name}${feat.add_hash ? ` (${feat.add_hash})` : ""}|${source}|${feat.name}} is intended for use with the ${arc.name} Archetype. ${feat.level !== Number(lvl) ? "Its level has been changed accordingly." : ""}}`]]);
 						this._featFilter.mutateForFilters(feat);
 						feat._fType = ["Archetype"];
