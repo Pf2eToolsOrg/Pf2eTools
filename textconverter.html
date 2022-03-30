@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="description" content="">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+
+	<title>Text Converter - Pf2eTools</title>
+
+	<!--PF2ETOOLS_SCRIPT_HEAD_ANCHOR-->
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/jquery-ui.css">
+	<link rel="stylesheet" href="css/jquery-ui-slider-pips.css">
+	<link rel="stylesheet" href="css/style.css">
+
+	<!-- Embeds -->
+	<meta content="Pf2eTools" property="og:site_name">
+	<meta content="Spells" property="og:title">
+	<meta content="https://pf2etools.com/favicon-256x256.png" property="og:image">
+
+	<!-- Favicons -->
+	<link rel="icon" type="image/svg+xml" href="favicon.svg?v=1.115">
+	<link rel="icon" type="image/png" sizes="256x256" href="favicon-256x256.png">
+	<link rel="icon" type="image/png" sizes="144x144" href="favicon-144x144.png">
+	<link rel="icon" type="image/png" sizes="128x128" href="favicon-128x128.png">
+	<link rel="icon" type="image/png" sizes="64x64" href="favicon-64x64.png">
+	<link rel="icon" type="image/png" sizes="48x48" href="favicon-48x48.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+
+	<!-- Chrome Web App Icons -->
+	<link rel="manifest" href="manifest.webmanifest">
+	<meta name="application-name" content="Pf2eTools">
+	<meta name="theme-color" content="#5E0000">
+
+	<!-- Windows Start Menu tiles -->
+	<meta name="msapplication-config" content="browserconfig.xml"/>
+	<meta name="msapplication-TileColor" content="#5E0000">
+
+	<!-- Apple Touch Icons -->
+	<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon-180x180.png">
+	<link rel="apple-touch-icon" sizes="360x360" href="apple-touch-icon-360x360.png">
+	<link rel="apple-touch-icon" sizes="167x167" href="apple-touch-icon-167x167.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="apple-touch-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="apple-touch-icon-120x120.png">
+	<meta name="apple-mobile-web-app-title" content="Pf2eTools">
+
+	<!-- macOS Safari Pinned Tab and Touch Bar -->
+	<link rel="mask-icon" href="safari-pinned-tab.svg" color="#5E0000">
+
+	<!-- OpenSearch -->
+	<link rel="search" href="open-search.xml" title="Search Pf2eTools" type="application/opensearchdescription+xml">
+
+	<script>if ("serviceWorker" in navigator) navigator.serviceWorker.register("/sw.js");</script>
+
+	<script src="js/styleswitch.js"></script>
+	<script src="js/navigation.js"></script>
+	<script src="js/browsercheck.js"></script>
+
+	<style>
+		.inputArea,
+		.outputArea {
+			width: 100%;
+			height: 100%;
+		}
+
+		.select-inline {
+			display: inline-block;
+			width: initial;
+		}
+
+		#lastWarnings {
+			color: #df00ff;
+		}
+
+		#lastError {
+			color: red;
+		}
+
+		#lastWarnings,
+		#lastError {
+			margin-top: 5px;
+			margin-bottom: 10px;
+			display: none;
+			flex-shrink: 0;
+			padding: 9px;
+			font-size: 13px;
+			line-height: 1.4;
+			background-color: whitesmoke;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+		}
+
+		.night-mode #lastError {
+			border-color: #555;
+		}
+
+		.conv__head {
+			margin-top: 0;
+			margin-bottom: 2px;
+		}
+
+		.conv__out_control__wrp {
+			padding: 0 3rem 0 0;
+			flex-shrink: 0;
+		}
+
+		@media (max-width: 991px) {
+			.view-col-wrapper {
+				height: 40vh;
+			}
+		}
+	</style>
+</head>
+
+<body>
+<div class="viewport-wrapper">
+	<div class="sidemenu__toggle">
+		<div class="sidemenu__hotzone"></div>
+		<div class="sidemenu__burger"></div>
+		<div class="sidemenu__burger"></div>
+		<div class="sidemenu__burger"></div>
+		<div class="sidemenu"></div>
+	</div>
+
+	<header class="hidden-xs hidden-sm page__header">
+		<div class="container">
+
+			<h1 class="page__title">Text Converter</h1>
+			<p class="page__subtitle">Input text on left, hit parse, copy JSON from right.</p>
+		</div>
+	</header>
+	<nav class="container page__nav" id="navigation">
+		<ul class="nav nav-pills page__nav-inner" id="navbar">
+		</ul>
+	</nav>
+
+	<div class="view-col-wrapper">
+
+		<div class="view-col">
+			<h3 class="conv__head">Input</h3>
+			<pre id="converter_input" class="inputArea ace_editor"></pre>
+			<div class="text-right">
+				<button id="parsestatblock" class="btn btn-sm btn-default">Parse</button>
+				<button id="parsestatblockadd" class="btn btn-sm btn-default">Parse and Add</button>
+			</div>
+		</div>
+
+		<div class="view-col">
+			<h3 class="conv__head">Output</h3>
+
+			<pre id="converter_output" class="outputArea ace_editor"></pre>
+
+			<div class="split conv__out_control__wrp">
+				<button id="editable" class="btn btn-sm btn-default">Enable Editing</button>
+				<div>
+					<button id="save_local" class="btn btn-sm btn-default">Save to Homebrew</button>
+					<button id="download" class="btn btn-sm btn-default">Download JSON</button>
+				</div>
+			</div>
+
+			<div id="lastWarnings" class="code"></div>
+			<div id="lastError" class="code"></div>
+		</div>
+	</div>
+</div>
+
+<!--PF2ETOOLS_SCRIPT_ANCHOR-->
+<script src="js/parser.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/utils-ui.js"></script>
+<script src="js/utils-proporder.js"></script>
+<script src="lib/localforage.js"></script>
+<script src="js/omnidexer.js"></script>
+<script src="js/omnisearch.js"></script>
+<script src="js/render.js"></script>
+<script src="js/render-dice.js"></script>
+<script src="js/scalecreature.js"></script>
+<script src="js/hist.js"></script>
+<script src="js/tokenizer.js"></script>
+<script src="js/converter.js"></script>
+<script src="js/converterutils.js"></script>
+<script src="js/textconverter.js"></script>
+<script src="js/list2.js"></script>
+<script src="lib/jquery.js"></script>
+<script src="lib/elasticlunr.js"></script>
+<script src="lib/ace.js"></script>
+</body>
+</html>

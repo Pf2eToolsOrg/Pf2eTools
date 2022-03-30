@@ -2379,6 +2379,7 @@ DataUtil = {
 		return `${toCsv(headers)}\n${rows.map(r => toCsv(r)).join("\n")}`;
 	},
 
+	// TODO: Modernize these
 	userDownload (filename, data) {
 		if (typeof data !== "string") data = JSON.stringify(data, null, "\t");
 		return DataUtil._userDownload(`${filename}.json`, data, "text/json");
@@ -2415,6 +2416,16 @@ DataUtil = {
 				reader.readAsText(input.files[0]);
 			}).appendTo($(`body`));
 			$iptAdd.click();
+		});
+	},
+
+	doHandleFileLoadErrorsGeneric (errors) {
+		if (!errors) return;
+		errors.forEach(err => {
+			JqueryUtil.doToast({
+				content: `Could not load file "${err.filename}": <code>${err.message}</code>. ${VeCt.STR_SEE_CONSOLE}`,
+				type: "danger",
+			});
 		});
 	},
 
