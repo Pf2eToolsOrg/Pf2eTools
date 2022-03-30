@@ -4194,6 +4194,8 @@ Renderer.creature = {
 			const genericAbility = Renderer.hover._getFromCache(UrlUtil.PG_ABILITIES, "Bst", hash);
 			renderedGenericAbility = Renderer.creature.getRenderedAbility(genericAbility, {generic: true});
 		}
+		// FIXME: This is a mess that doesn't account for creature abilities that are just class feats or actions. Also where the hell did the buttonClass go?
+		// When this is fixed, search through spellcaster statblocks for things like Eschew Materials, Drain Bonded Item, and metamagic feats.
 		return $$`<p class="pf2-stat pf2-stat__section ${buttonClass} ${options.generic ? "hidden" : ""}"><strong>${ability.generic || options.generic ? `${renderer.render(`{@ability ${ability.name}${ability.title ? `||${ability.title}` : ""}}`)}` : ability.name}</strong>
 					${ability.activity ? renderer.render(Parser.timeToFullEntry(ability.activity)) : ""}
 					${(ability.generic || options.generic) && !options.noButton ? Renderer.creature.getAbilityTextButton(buttonClass, options.generic) : ""}
@@ -4881,7 +4883,6 @@ Renderer.item = {
 				renderStack.push(`; `);
 				renderer.recursiveRender(v.entries, renderStack, {prefix: "<p class='pf2-stat pf2-stat__text'>", suffix: "</p>"});
 			}
-			if (v.craftReq != null) renderStack.push(`; <strong>Craft Requirements&nbsp;</strong>${renderer.render(v.craftReq)}`);
 			if (v.shieldData != null) renderStack.push(`; The shield has Hardness ${v.shieldData.hardness}, HP ${v.shieldData.hp}, and BT ${v.shieldData.bt}.`);
 			renderStack.push(`</div>`);
 		});

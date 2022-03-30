@@ -1,6 +1,69 @@
 {
 	"ability": [
 		{
+			"name": "Warpwave",
+			"source": "AOE6",
+			"page": 81,
+			"traits": [],
+			"entries": [
+				"Many proteans can inflict disorienting alterations in time and space called warpwaves. When a creature fails its saving throw and is affected by a warpwave, roll {@dice 1d8} and consult the table below for the specific effect on that creature. Unless indicated otherwise, a warpwave effect lasts for {@dice 1d4} rounds, and a new warpwave effect negates any previous warpwave effect already affecting a creature.",
+				{
+					"source": "AOE6",
+					"page": 81,
+					"colStyles": [
+						"text-center",
+						"text-center"
+					],
+					"labelRowIdx": [
+						0
+					],
+					"colSizes": [
+						1,
+						9
+					],
+					"rows": [
+						[
+							"{@dice D8}",
+							"Warpwave Effect"
+						],
+						[
+							1,
+							"{@condition Clumsy 2} ({@condition clumsy 3} on a critical failure)"
+						],
+						[
+							2,
+							"{@condition Confused} and gains {@dice 4d6} temporary Hit Points"
+						],
+						[
+							3,
+							"{@condition Dazzled} (permanent on a critical failure)"
+						],
+						[
+							4,
+							"{@condition Enfeebled 2} (3 on a critical failure)"
+						],
+						[
+							5,
+							"{@condition Immobilized} by filaments of energy"
+						],
+						[
+							6,
+							"{@condition Quickened} ({@action Stride}, {@action Strike}, or {@action Step} only)"
+						],
+						[
+							7,
+							"{@condition Slowed 1}"
+						],
+						[
+							8,
+							"{@condition Stupefied 2} (3 on a critical failure)"
+						]
+					],
+					"type": "table"
+				}
+			]
+		},
+		{
 			"name": "Moon Frenzy",
 			"page": 329,
 			"source": "Bst",
