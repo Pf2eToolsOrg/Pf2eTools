@@ -2185,7 +2185,10 @@ class TimeTrackerRoot_Calendar extends TimeTrackerComponent {
 					break;
 				}
 				case 2: {
-					const json = await DataUtil.pUserUpload();
+					const {jsons, errors} = await DataUtil.pUserUpload({expectedFileType: "encounter"});
+					DataUtil.doHandleFileLoadErrorsGeneric(errors);
+					if (!jsons || !jsons.length) return;
+					const json = jsons[0];
 					if (json) {
 						const name = await InputUiUtil.pGetUserString({
 							title: "Enter Encounter Name",

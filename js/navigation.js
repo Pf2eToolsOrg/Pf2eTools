@@ -690,7 +690,7 @@ NavBar.InteractionManager = class {
 
 		DataUtil.doHandleFileLoadErrorsGeneric(errors);
 
-		if (!jsons?.length) return;
+		if (!jsons || !jsons.length) return;
 		const dump = jsons[0];
 
 		try {
