@@ -5140,7 +5140,7 @@
 			"usage": "worn eyepiece",
 			"category": "Worn",
 			"entries": [
-				"This rugged metal eyepiece etched with square patterns is designed to be worn over a single eye. Twisting the lens reveals a faint three-dimensional outline of an item you plan to build or repair, with {@condition helpful} labels on the component parts. While worn, this eyepiece gives you a +1 item bonus to {@skill Crafting} checks. When you {@action Repair} an item, increase the Hit Points restored by 15 per proficiency rank instead of 10."
+				"This rugged metal eyepiece etched with square patterns is designed to be worn over a single eye. Twisting the lens reveals a faint three-dimensional outline of an item you plan to build or repair, with helpful labels on the component parts. While worn, this eyepiece gives you a +1 item bonus to {@skill Crafting} checks. When you {@action Repair} an item, increase the Hit Points restored by 15 per proficiency rank instead of 10."
 			],
 			"generic": "G",
 			"variants": [
@@ -5162,8 +5162,58 @@
 					},
 					"entries": [
 						"The eyepiece grants a +2 item bonus and can be activated.",
-						"{@b Activate} 1 minute ({@action Interact}); {@b Frequency} once per day; {@b Effect} You calibrate the eyepiece to have it cast a 5th-level {@spell creation} spell over the course of 1 minute to construct a temporary item."
-					]
+						{
+							"type": "ability",
+							"style": "compact",
+							"activity": {
+								"number": 1,
+								"unit": "minute"
+							},
+							"components": [
+								"Interact"
+							],
+							"frequency": {
+								"freq": 1,
+								"unit": "day"
+							},
+							"entries": [
+								"You calibrate the eyepiece to have it cast a 5th-level {@spell creation} spell over the course of 1 minute to construct a temporary item."
+							]
+						}
+					],
+					"_mod": {
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"with": "+2",
+								"replace": "\\+1"
+							},
+							{
+								"mode": "appendArr",
+								"items": [
+									{
+										"type": "ability",
+										"style": "compact",
+										"activity": {
+											"number": 1,
+											"unit": "minute"
+										},
+										"components": [
+											"Interact"
+										],
+										"frequency": {
+											"freq": 1,
+											"unit": "day"
+										},
+										"entries": [
+											"You calibrate the eyepiece to have it cast a 5th-level {@spell creation} spell over the course of 1 minute to construct a temporary item."
+										]
+									}
+								]
+							}
+						],
+						"entriesMode": "generic"
+					}
 				}
 			]
 		},
