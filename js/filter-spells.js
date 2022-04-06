@@ -133,7 +133,10 @@ class PageFilterSpells extends PageFilter {
 		spell._fDurationType = Parser.getFilterDuration(spell);
 		spell._areaTypes = spell.area ? spell.area.types : [];
 		spell._fRange = Parser.getFilterRange(spell);
-		spell._fSavingThrow = spell.savingThrow == null ? [] : spell.savingThrowBasic ? [spell.savingThrow, "Basic"] : [spell.savingThrow];
+		if (spell.savingThrow) {
+			if (spell.savingThrow.type) spell._fSavingThrow = spell.savingThrow.type.map(t => Parser.savingThrowAbvToFull(t))
+			if (spell.savingThrow.basic) spell._fSavingThrow.push("Basic");
+		}
 		spell._fComponents = spell.cost == null ? [] : ["Cost"];
 		if (spell.components.F) spell._fComponents.push("Focus");
 		if (spell.components.M) spell._fComponents.push("Material");

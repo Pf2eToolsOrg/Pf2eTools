@@ -219,7 +219,7 @@
 						"type": "string"
 					},
 
-					"savingThrowNew": {
+					"savingThrow": {
 						"type": "object",
 						"properties": {
 							"basic": {
@@ -234,24 +234,16 @@
 										"W"
 									]
 								}
+							},
+							"hidden": {
+								"type": "boolean",
+								"enum": ["true"]
 							}
 						},
 						"additionalProperties": false,
 						"required": [
 							"type"
 						]
-					},
-
-					"savingThrow": {
-						"type": "string",
-						"enum": [
-							"Will",
-							"Reflex",
-							"Fortitude"
-						]
-					},
-					"savingThrowBasic": {
-						"type": "boolean"
 					},
 
 					"duration": {
