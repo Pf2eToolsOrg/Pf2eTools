@@ -1,6 +1,77 @@
 {
 	"baseitem": [
 		{
+			"name": "Big Boom Gun",
+			"source": "G&G",
+			"page": 157,
+			"type": "Item",
+			"level": 1,
+			"traits": [
+				"Uncommon",
+				"Cobbled",
+				"Modular B, P or S",
+				"Fatal d12"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 10
+			},
+			"bulk": 2,
+			"weaponData": {
+				"damage": "1d6",
+				"damageType": "modular",
+				"reload": 1,
+				"range": 20,
+				"group": "Firearm|G&G"
+			},
+			"hands": 1,
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"entries": [
+				"Developed by a goblin weaponsmith who missed the ‘hand' part of ‘hand cannon', this comically-oversized gun has a heavily reinforced barrel and is loaded with a worrisome quantity of gunpowder.",
+				"This {@item hand cannon|G&G} is a martial weapon, instead of a simple weapon. It has the {@trait fatal d12} trait and a range of 20 feet. It also has the following modified critical failure condition:",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Failure": "The attack misses, the weapon misfires, and you take {@damage 1d12} fire damage as it explodes in your face."
+					}
+				}
+			]
+		},
+		{
+			"name": "Spoon Gun",
+			"source": "G&G",
+			"page": 157,
+			"type": "Item",
+			"level": 1,
+			"traits": [
+				"Uncommon",
+				"Cobbled",
+				"Modular B, P or S",
+				"Goblin",
+				"Scatter 5 ft."
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 10
+			},
+			"bulk": 1,
+			"weaponData": {
+				"damage": "1d6",
+				"damageType": "modular",
+				"reload": 1,
+				"range": 30,
+				"group": "Firearm|G&G"
+			},
+			"hands": 1,
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"entries": [
+				"No one's entirely certain who developed the spoon gun, but all authorities agree that it was probably a goblin. Essentially a terrible idea in firearm form, the spoon gun is a spring-powered hand cannon with a modified grip that uses miscellaneous knives, forks, chopsticks, and spoons as ammunition. Users typically upend the entire contents of their cutlery drawer into the gun, aim it in the general direction of the foe, and hope it hits something.",
+				"This {@item hand cannon|G&G} is a martial weapon, instead of a simple weapon. It has the {@trait scatter (5 feet)} trait and uses cutlery or similar-sized objects as ammunition instead of bullets (enough cheap cutlery to fire ten shots costs 1 sp)."
+			]
+		},
+		{
 			"name": "Alchemical Crossbow",
 			"source": "FoP",
 			"page": 56,
@@ -32,12 +103,57 @@
 			]
 		},
 		{
+			"name": "Clockwork Disguise",
+			"source": "G&G",
+			"page": 85,
+			"type": "Item",
+			"level": 6,
+			"traits": [
+				"Uncommon",
+				"Clockwork"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 200
+			},
+			"usage": "worn armor",
+			"bulk": 2,
+			"armorData": {
+				"ac": 2,
+				"dexCap": 3,
+				"str": 12,
+				"checkPen": 1,
+				"speedPen": 0,
+				"group": "Plate"
+			},
+			"category": "Armor",
+			"subCategory": "Light",
+			"entries": [
+				"Sometimes, just disguising one's face just isn't convincing enough. Clockwork disguises were invented to supplement regular disguise kits, which are used all across Golarion. For example, if a spy wants to infiltrate a military camp, they must be wearing the same type of armor as the soldiers stationed there\u2014or else have a very good explanation for their commander as to why they're out of proper uniform! The clockwork disguise is intended to help avoid such awkward, potentially fatal confrontations.",
+				"The clockwork disguise looks like a harness connected to hundreds of small metal plates that cover the user's torso and arms. Each of these plates is equipped with several hinges, allowing them to be shaped into a wide variety of patterns. When these shaped plates are arranged and connected, they can be made to look like almost any basic suit of light or medium metal armor, though armor embellishments such as those worn by highranking officers are beyond this device. The arrangement process takes some time, but once it's completed, the user need only perform a few simple adjustments to a clockwork mechanism in the disguise to make the plate arrangement into a new preset configuration. Afterwards, when the user flips a switch on the harness's belt to one of three positions, the plates shift, overlap, and connect as necessary to transform the disguise into the desired preset configuration. The clockwork disguise can have up to three preset configurations at a time, and most users use a minimum of two: the one required for their current task, and a suitably inconspicuous configuration for when the first configuration is unnecessary.",
+				"Giving a clockwork disguise a new preset configuration requires 20 minutes of work. The clockwork disguise can have a maximum of three preset configurations at a time, and it can only mimic light and medium armor suits made of metal.",
+				"The clockwork disguise is light armor and has the stats listed above, regardless of which type of armor it mimics.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"Interact"
+					],
+					"entries": [
+						"Transform the clockwork disguise into any one current preset configuration of the user's choice."
+					]
+				}
+			]
+		},
+		{
 			"name": "Three Peaked Tree",
 			"source": "G&G",
 			"access": "The following regions have access to firearms: Alkenstar, Dongun Hold, Tian Xia, Vudra, Arcadia, Ustalav, the Shackles",
 			"level": 1,
 			"page": 158,
-			"equipment": true,
 			"type": "Equipment",
 			"traits": [
 				"Uncommon"
@@ -86,7 +202,6 @@
 			"source": "G&G",
 			"access": "The following regions have access to firearms: Alkenstar, Dongun Hold, Tian Xia, Vudra, Arcadia, Ustalav, the Shackles",
 			"page": 158,
-			"equipment": true,
 			"type": "Equipment",
 			"traits": [
 				"Uncommon"
@@ -133,7 +248,6 @@
 			"source": "G&G",
 			"access": "The following regions have access to firearms: Alkenstar, Dongun Hold, Tian Xia, Vudra, Arcadia, Ustalav, the Shackles",
 			"page": 158,
-			"equipment": true,
 			"type": "Equipment",
 			"traits": [
 				"Uncommon"
@@ -180,7 +294,6 @@
 			"source": "G&G",
 			"access": "The following regions have access to firearms: Alkenstar, Dongun Hold, Tian Xia, Vudra, Arcadia, Ustalav, the Shackles",
 			"page": 158,
-			"equipment": true,
 			"type": "Equipment",
 			"traits": [
 				"Uncommon"
@@ -226,7 +339,6 @@
 			"source": "G&G",
 			"access": "The following regions have access to firearms: Alkenstar, Dongun Hold, Tian Xia, Vudra, Arcadia, Ustalav, the Shackles",
 			"page": 158,
-			"equipment": true,
 			"type": "Equipment",
 			"level": 1,
 			"traits": [
@@ -272,7 +384,6 @@
 			"source": "G&G",
 			"access": "The following regions have access to firearms: Alkenstar, Dongun Hold, Tian Xia, Vudra, Arcadia, Ustalav, the Shackles",
 			"page": 158,
-			"equipment": true,
 			"type": "Equipment",
 			"level": 1,
 			"traits": [
@@ -318,7 +429,6 @@
 			"source": "G&G",
 			"access": "The following regions have access to firearms: Alkenstar, Dongun Hold, Tian Xia, Vudra, Arcadia, Ustalav, the Shackles",
 			"page": 158,
-			"equipment": true,
 			"type": "Equipment",
 			"level": 1,
 			"traits": [
@@ -367,7 +477,6 @@
 			"source": "G&G",
 			"access": "The following regions have access to firearms: Alkenstar, Dongun Hold, Tian Xia, Vudra, Arcadia, Ustalav, the Shackles",
 			"page": 158,
-			"equipment": true,
 			"type": "Equipment",
 			"traits": [
 				"Uncommon"
@@ -415,7 +524,6 @@
 			"source": "G&G",
 			"access": "The following regions have access to firearms: Alkenstar, Dongun Hold, Tian Xia, Vudra, Arcadia, Ustalav, the Shackles",
 			"page": 158,
-			"equipment": true,
 			"type": "Equipment",
 			"level": 1,
 			"traits": [
@@ -464,7 +572,6 @@
 			"source": "G&G",
 			"access": "The following regions have access to firearms: Alkenstar, Dongun Hold, Tian Xia, Vudra, Arcadia, Ustalav, the Shackles",
 			"page": 158,
-			"equipment": true,
 			"type": "Equipment",
 			"traits": [
 				"Uncommon"
@@ -509,7 +616,6 @@
 			"source": "G&G",
 			"access": "The following regions have access to firearms: Alkenstar, Dongun Hold, Tian Xia, Vudra, Arcadia, Ustalav, the Shackles",
 			"page": 158,
-			"equipment": true,
 			"type": "Equipment",
 			"traits": [
 				"Uncommon"
@@ -554,7 +660,6 @@
 			"source": "G&G",
 			"access": "The following regions have access to firearms: Alkenstar, Dongun Hold, Tian Xia, Vudra, Arcadia, Ustalav, the Shackles",
 			"page": 158,
-			"equipment": true,
 			"type": "Equipment",
 			"level": 1,
 			"traits": [
@@ -599,7 +704,6 @@
 			"name": "Adze",
 			"source": "LOAG",
 			"page": 139,
-			"equipment": true,
 			"type": "Equipment",
 			"traits": [
 				"Forceful",
@@ -628,7 +732,6 @@
 			"source": "G&G",
 			"access": "The following regions have access to firearms: Alkenstar, Dongun Hold, Tian Xia, Vudra, Arcadia, Ustalav, the Shackles",
 			"page": 151,
-			"equipment": true,
 			"type": "Equipment",
 			"traits": [
 				"Uncommon",
@@ -656,10 +759,40 @@
 			]
 		},
 		{
+			"name": "Nightstick",
+			"source": "AoE1",
+			"page": 78,
+			"type": "Equipment",
+			"level": 0,
+			"traits": [
+				"Agile",
+				"Finesse",
+				"Nonlethal",
+				"Parry",
+				"Uncommon"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 1
+			},
+			"hands": 1,
+			"weaponData": {
+				"damage": "1d4",
+				"damageType": "B",
+				"group": "Club"
+			},
+			"bulk": "L",
+			"category": "Weapon",
+			"subCategory": "Simple",
+			"entries": [
+				"This collapsible baton consists of several nested, telescoping metal shafts that can be extended as a free action by flicking the wrist. Once extended to its full length (usually around 2 feet), the baton locks into shape until the wielder uses an {@action Interact} action to collapse it\u2014a collapsed nightstick is 8 inches long, making it easily {@action conceal an object||concealed}.",
+				"Lighter and more maneuverable than an ordinary {@item club} or truncheon, nightsticks are designed to subdue foes without causing permanent injury. A nightstick is an uncommon simple melee weapon."
+			]
+		},
+		{
 			"name": "Aldori Dueling Sword",
 			"source": "LOWG",
 			"page": 28,
-			"equipment": true,
 			"type": "Equipment",
 			"level": 1,
 			"traits": [
@@ -689,7 +822,6 @@
 			"source": "G&G",
 			"access": "The following regions have access to firearms: Alkenstar, Dongun Hold, Tian Xia, Vudra, Arcadia, Ustalav, the Shackles",
 			"page": 151,
-			"equipment": true,
 			"type": "Equipment",
 			"traits": [
 				"Uncommon",
@@ -721,7 +853,6 @@
 			"name": "Asp Coil",
 			"source": "LOTGB",
 			"page": 107,
-			"equipment": true,
 			"type": "Equipment",
 			"traits": [
 				"uncommon",
@@ -749,7 +880,6 @@
 			"name": "Backpack Ballista",
 			"source": "G&G",
 			"page": 62,
-			"equipment": true,
 			"type": "Item",
 			"level": 1,
 			"traits": [
@@ -779,7 +909,6 @@
 			"name": "Backpack Catapult",
 			"source": "G&G",
 			"page": 63,
-			"equipment": true,
 			"type": "Item",
 			"level": 1,
 			"traits": [
@@ -862,7 +991,6 @@
 			"name": "Bayonet",
 			"source": "G&G",
 			"page": 150,
-			"equipment": true,
 			"type": "Equipment",
 			"traits": [
 				"Agile",
@@ -891,7 +1019,6 @@
 			"name": "Bladed Scarf",
 			"source": "LOGM",
 			"page": 120,
-			"equipment": true,
 			"type": "Equipment",
 			"traits": [
 				"Uncommon",
@@ -916,6 +1043,33 @@
 			"subCategory": "Martial",
 			"entries": [
 				"The thin metal plates interwoven throughout this long scarf turn a fashion accessory into a deadly weapon."
+			]
+		},
+		{
+			"name": "Monkey's Fist",
+			"source": "AoE1",
+			"page": 78,
+			"type": "Equipment",
+			"level": 0,
+			"traits": [
+				"Finesse",
+				"Monk",
+				"Nonlethal"
+			],
+			"price": {
+				"coin": "sp",
+				"amount": 1
+			},
+			"hands": 1,
+			"weaponData": {
+				"damage": "1d6",
+				"damageType": "B",
+				"group": "Flail"
+			},
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"entries": [
+				"Also called a \"slungshot,\" the monkey's fist is a short length of rope ending in a thick knot wrapped around a metal weight. You can tie the loose end of a monkey's fist to your wrist; if you are {@action disarm||disarmed}, the weapon remains secured to your wrist rather than falling to the ground, though you must use an {@action Interact} action to grip it before using it again. A monkey's fist is a martial melee weapon."
 			]
 		},
 		{
@@ -953,7 +1107,6 @@
 			"source": "G&G",
 			"access": "The following regions have access to firearms: Alkenstar, Dongun Hold, Tian Xia, Vudra, Arcadia, Ustalav, the Shackles",
 			"page": 151,
-			"equipment": true,
 			"type": "Equipment",
 			"traits": [
 				"Uncommon",
@@ -1013,7 +1166,6 @@
 			"name": "Boarding Pike",
 			"source": "LOPSG",
 			"page": 81,
-			"equipment": true,
 			"type": "Equipment",
 			"level": 1,
 			"traits": [
@@ -1047,7 +1199,6 @@
 					"LOGM|120"
 				]
 			},
-			"equipment": true,
 			"type": "Equipment",
 			"traits": [
 				"Uncommon",
@@ -1075,9 +1226,9 @@
 		},
 		{
 			"name": "Breastplate",
+			"equipment": true,
 			"source": "CRB",
 			"page": 275,
-			"equipment": true,
 			"type": "Equipment",
 			"price": {
 				"amount": 8,
@@ -1100,9 +1251,9 @@
 		},
 		{
 			"name": "Buckler",
+			"equipment": true,
 			"source": "CRB",
 			"page": 277,
-			"equipment": true,
 			"type": "Equipment",
 			"price": {
 				"amount": 1,
@@ -1125,7 +1276,6 @@
 			"name": "Butchering Axe",
 			"source": "LOTGB",
 			"page": 107,
-			"equipment": true,
 			"type": "Equipment",
 			"traits": [
 				"Uncommon",
@@ -1154,7 +1304,6 @@
 			"name": "Buugeng",
 			"source": "LOAG",
 			"page": 139,
-			"equipment": true,
 			"type": "Equipment",
 			"traits": [
 				"Uncommon",
@@ -1183,8 +1332,8 @@
 		{
 			"name": "Chain Mail",
 			"source": "CRB",
-			"page": 275,
 			"equipment": true,
+			"page": 275,
 			"type": "Equipment",
 			"traits": [
 				"Flexible",
@@ -1211,9 +1360,9 @@
 		},
 		{
 			"name": "Chain Shirt",
+			"equipment": true,
 			"source": "CRB",
 			"page": 275,
-			"equipment": true,
 			"type": "Equipment",
 			"traits": [
 				"Flexible",
@@ -1242,7 +1391,6 @@
 			"name": "Chakram",
 			"source": "LOTGB",
 			"page": 107,
-			"equipment": true,
 			"type": "Equipment",
 			"traits": [
 				"thrown"
@@ -1300,7 +1448,6 @@
 			"source": "G&G",
 			"access": "The following regions have access to firearms: Alkenstar, Dongun Hold, Tian Xia, Vudra, Arcadia, Ustalav, the Shackles",
 			"page": 151,
-			"equipment": true,
 			"type": "Equipment",
 			"traits": [
 				"Uncommon",
@@ -1332,7 +1479,6 @@
 			"name": "Claw Blade",
 			"source": "APG",
 			"page": 248,
-			"equipment": true,
 			"type": "Equipment",
 			"traits": [
 				"Uncommon",
@@ -1391,7 +1537,6 @@
 			"source": "G&G",
 			"access": "The following regions have access to firearms: Alkenstar, Dongun Hold, Tian Xia, Vudra, Arcadia, Ustalav, the Shackles",
 			"page": 151,
-			"equipment": true,
 			"type": "Equipment",
 			"traits": [
 				"Uncommon",
@@ -1422,7 +1567,6 @@
 			"name": "Combat Grapnel",
 			"source": "LOPSG",
 			"page": 81,
-			"equipment": true,
 			"type": "Equipment",
 			"level": 1,
 			"traits": [
@@ -1597,7 +1741,6 @@
 			"name": "Dart Umbrella",
 			"source": "G&G",
 			"page": 63,
-			"equipment": true,
 			"type": "Item",
 			"level": 0,
 			"traits": [
@@ -1660,7 +1803,6 @@
 			"source": "G&G",
 			"access": "The following regions have access to firearms: Alkenstar, Dongun Hold, Tian Xia, Vudra, Arcadia, Ustalav, the Shackles",
 			"page": 151,
-			"equipment": true,
 			"type": "Equipment",
 			"level": 1,
 			"traits": [
@@ -1694,7 +1836,6 @@
 			"source": "G&G",
 			"access": "The following regions have access to firearms: Alkenstar, Dongun Hold, Tian Xia, Vudra, Arcadia, Ustalav, the Shackles",
 			"page": 151,
-			"equipment": true,
 			"type": "Equipment",
 			"traits": [
 				"Uncommon",
@@ -1727,7 +1868,6 @@
 			"source": "G&G",
 			"access": "The following regions have access to firearms: Alkenstar, Dongun Hold, Tian Xia, Vudra, Arcadia, Ustalav, the Shackles",
 			"page": 151,
-			"equipment": true,
 			"type": "Equipment",
 			"traits": [
 				"Uncommon",
@@ -1759,7 +1899,6 @@
 			"source": "G&G",
 			"access": "The following regions have access to firearms: Alkenstar, Dongun Hold, Tian Xia, Vudra, Arcadia, Ustalav, the Shackles",
 			"page": 151,
-			"equipment": true,
 			"type": "Equipment",
 			"level": 1,
 			"traits": [
@@ -1792,7 +1931,6 @@
 			"name": "Dueling Spear",
 			"source": "LOTGB",
 			"page": 107,
-			"equipment": true,
 			"type": "Equipment",
 			"traits": [
 				"uncommon",
@@ -1822,7 +1960,6 @@
 			"source": "G&G",
 			"access": "The following regions have access to firearms: Alkenstar, Dongun Hold, Tian Xia, Vudra, Arcadia, Ustalav, the Shackles",
 			"page": 151,
-			"equipment": true,
 			"type": "Equipment",
 			"level": 1,
 			"traits": [
@@ -1885,7 +2022,6 @@
 			"name": "Elven Branched Spear",
 			"source": "LOTGB",
 			"page": 107,
-			"equipment": true,
 			"type": "Equipment",
 			"traits": [
 				"uncommon",
@@ -1942,9 +2078,9 @@
 		},
 		{
 			"name": "Explorer's Clothing",
+			"equipment": true,
 			"source": "CRB",
 			"page": 275,
-			"equipment": true,
 			"type": "Equipment",
 			"traits": [
 				"Comfort"
@@ -1998,7 +2134,6 @@
 			"name": "Fangwire",
 			"source": "LOAG",
 			"page": 139,
-			"equipment": true,
 			"type": "Equipment",
 			"traits": [
 				"Uncommon",
@@ -2030,7 +2165,6 @@
 			"name": "Fauchard",
 			"source": "LOCG",
 			"page": 92,
-			"equipment": true,
 			"type": "Equipment",
 			"level": 0,
 			"traits": [
@@ -2060,7 +2194,6 @@
 			"name": "Fighting Fan",
 			"source": "LOGM",
 			"page": 120,
-			"equipment": true,
 			"type": "Equipment",
 			"traits": [
 				"Uncommon",
@@ -2124,7 +2257,6 @@
 			"source": "G&G",
 			"access": "The following regions have access to firearms: Alkenstar, Dongun Hold, Tian Xia, Vudra, Arcadia, Ustalav, the Shackles",
 			"page": 151,
-			"equipment": true,
 			"type": "Equipment",
 			"traits": [
 				"Uncommon",
@@ -2183,7 +2315,6 @@
 			"source": "G&G",
 			"access": "The following regions have access to firearms: Alkenstar, Dongun Hold, Tian Xia, Vudra, Arcadia, Ustalav, the Shackles",
 			"page": 151,
-			"equipment": true,
 			"type": "Equipment",
 			"traits": [
 				"Uncommon",
@@ -2217,7 +2348,6 @@
 			"source": "G&G",
 			"access": "The following regions have access to firearms: Alkenstar, Dongun Hold, Tian Xia, Vudra, Arcadia, Ustalav, the Shackles",
 			"page": 151,
-			"equipment": true,
 			"type": "Equipment",
 			"traits": [
 				"Uncommon",
@@ -2249,7 +2379,6 @@
 			"source": "G&G",
 			"access": "The following regions have access to firearms: Alkenstar, Dongun Hold, Tian Xia, Vudra, Arcadia, Ustalav, the Shackles",
 			"page": 151,
-			"equipment": true,
 			"type": "Equipment",
 			"traits": [
 				"Uncommon",
@@ -2280,7 +2409,6 @@
 			"name": "Forked Bipod",
 			"source": "G&G",
 			"page": 150,
-			"equipment": true,
 			"type": "Equipment",
 			"traits": [
 				"Agile",
@@ -2306,9 +2434,9 @@
 		},
 		{
 			"name": "Full Plate",
+			"equipment": true,
 			"source": "CRB",
 			"page": 275,
-			"equipment": true,
 			"type": "Equipment",
 			"level": 2,
 			"traits": [
@@ -2396,7 +2524,7 @@
 			"type": "Equipment",
 			"traits": [
 				"Gnome",
-				"reach",
+				"Reach",
 				"Uncommon"
 			],
 			"price": {
@@ -2607,9 +2735,9 @@
 		},
 		{
 			"name": "Half Plate",
+			"equipment": true,
 			"source": "CRB",
 			"page": 275,
-			"equipment": true,
 			"type": "Equipment",
 			"level": 1,
 			"price": {
@@ -2666,7 +2794,6 @@
 			"name": "Hand Adze",
 			"source": "LOAG",
 			"page": 139,
-			"equipment": true,
 			"type": "Equipment",
 			"traits": [
 				"Agile",
@@ -2697,7 +2824,6 @@
 			"source": "G&G",
 			"access": "The following regions have access to firearms: Alkenstar, Dongun Hold, Tian Xia, Vudra, Arcadia, Ustalav, the Shackles",
 			"page": 151,
-			"equipment": true,
 			"type": "Equipment",
 			"traits": [
 				"Uncommon",
@@ -2754,7 +2880,6 @@
 			"source": "G&G",
 			"access": "The following regions have access to firearms: Alkenstar, Dongun Hold, Tian Xia, Vudra, Arcadia, Ustalav, the Shackles",
 			"page": 151,
-			"equipment": true,
 			"type": "Equipment",
 			"traits": [
 				"Uncommon",
@@ -2839,7 +2964,6 @@
 			"source": "G&G",
 			"access": "The following regions have access to firearms: Alkenstar, Dongun Hold, Tian Xia, Vudra, Arcadia, Ustalav, the Shackles",
 			"page": 16,
-			"equipment": true,
 			"type": "Equipment",
 			"traits": [
 				"Bulwark"
@@ -2864,7 +2988,6 @@
 			"name": "Hellknight Plate",
 			"source": "LOCG",
 			"page": 80,
-			"equipment": true,
 			"type": "Equipment",
 			"level": 2,
 			"traits": [
@@ -2893,10 +3016,10 @@
 			]
 		},
 		{
-			"name": "Hide Armor",
+			"name": "Hide",
 			"source": "CRB",
-			"page": 275,
 			"equipment": true,
+			"page": 275,
 			"type": "Equipment",
 			"price": {
 				"amount": 2,
@@ -2921,7 +3044,6 @@
 			"name": "Hongali Hornbow",
 			"source": "LOTGB",
 			"page": 107,
-			"equipment": true,
 			"type": "Equipment",
 			"traits": [
 				"deadly d6",
@@ -2980,7 +3102,6 @@
 			"name": "Injection Spear",
 			"source": "G&G",
 			"page": 63,
-			"equipment": true,
 			"type": "Item",
 			"level": 0,
 			"traits": [
@@ -3037,7 +3158,6 @@
 			"source": "G&G",
 			"access": "The following regions have access to firearms: Alkenstar, Dongun Hold, Tian Xia, Vudra, Arcadia, Ustalav, the Shackles",
 			"page": 151,
-			"equipment": true,
 			"type": "Equipment",
 			"level": 1,
 			"traits": [
@@ -3156,7 +3276,6 @@
 			"name": "Khakkara",
 			"source": "APG",
 			"page": 248,
-			"equipment": true,
 			"type": "Equipment",
 			"traits": [
 				"Uncommon",
@@ -3185,7 +3304,6 @@
 			"name": "Khopesh",
 			"source": "LOGM",
 			"page": 120,
-			"equipment": true,
 			"type": "Equipment",
 			"traits": [
 				"Uncommon",
@@ -3212,7 +3330,6 @@
 			"name": "Knuckle Duster",
 			"source": "G&G",
 			"page": 150,
-			"equipment": true,
 			"type": "Equipment",
 			"traits": [
 				"Agile",
@@ -3294,10 +3411,10 @@
 			]
 		},
 		{
-			"name": "Leather Armor",
+			"name": "Leather",
+			"equipment": true,
 			"source": "CRB",
 			"page": 275,
-			"equipment": true,
 			"type": "Equipment",
 			"price": {
 				"amount": 2,
@@ -3405,7 +3522,6 @@
 			"source": "G&G",
 			"access": "The following regions have access to firearms: Alkenstar, Dongun Hold, Tian Xia, Vudra, Arcadia, Ustalav, the Shackles",
 			"page": 151,
-			"equipment": true,
 			"type": "Equipment",
 			"traits": [
 				"Uncommon",
@@ -3543,7 +3659,6 @@
 			"name": "Machete",
 			"source": "LOGM",
 			"page": 120,
-			"equipment": true,
 			"type": "Equipment",
 			"traits": [
 				"Deadly d8",
@@ -3600,7 +3715,6 @@
 			"name": "Mambele",
 			"source": "LOGM",
 			"page": 120,
-			"equipment": true,
 			"type": "Equipment",
 			"traits": [
 				"Uncommon",
@@ -3655,7 +3769,6 @@
 			"name": "Meteor Hammer",
 			"source": "LOGM",
 			"page": 120,
-			"equipment": true,
 			"type": "Equipment",
 			"traits": [
 				"Backswing",
@@ -3685,7 +3798,6 @@
 			"source": "G&G",
 			"access": "The following regions have access to firearms: Alkenstar, Dongun Hold, Tian Xia, Vudra, Arcadia, Ustalav, the Shackles",
 			"page": 151,
-			"equipment": true,
 			"type": "Equipment",
 			"traits": [
 				"Uncommon",
@@ -3744,7 +3856,6 @@
 			"name": "Naginata",
 			"source": "LOGM",
 			"page": 120,
-			"equipment": true,
 			"type": "Equipment",
 			"traits": [
 				"Uncommon",
@@ -3773,7 +3884,6 @@
 			"name": "Nine-Ring Sword",
 			"source": "LOGM",
 			"page": 120,
-			"equipment": true,
 			"type": "Equipment",
 			"traits": [
 				"Uncommon",
@@ -3886,9 +3996,9 @@
 		},
 		{
 			"name": "Padded Armor",
+			"equipment": true,
 			"source": "CRB",
 			"page": 275,
-			"equipment": true,
 			"type": "Equipment",
 			"traits": [
 				"Comfort"
@@ -3916,7 +4026,6 @@
 			"name": "Pantograph Gauntlet",
 			"source": "G&G",
 			"page": 63,
-			"equipment": true,
 			"type": "Item",
 			"level": 0,
 			"traits": [
@@ -3948,7 +4057,6 @@
 			"source": "G&G",
 			"access": "The following regions have access to firearms: Alkenstar, Dongun Hold, Tian Xia, Vudra, Arcadia, Ustalav, the Shackles",
 			"page": 151,
-			"equipment": true,
 			"type": "Equipment",
 			"traits": [
 				"Uncommon",
@@ -4006,7 +4114,6 @@
 			"name": "Piranha Kiss",
 			"source": "LOTGB",
 			"page": 107,
-			"equipment": true,
 			"type": "Equipment",
 			"traits": [
 				"uncommon",
@@ -4035,7 +4142,6 @@
 			"name": "Polytool",
 			"source": "LOGM",
 			"page": 120,
-			"equipment": true,
 			"type": "Equipment",
 			"level": 1,
 			"traits": [
@@ -4065,7 +4171,6 @@
 			"source": "G&G",
 			"access": "The following regions have access to firearms: Alkenstar, Dongun Hold, Tian Xia, Vudra, Arcadia, Ustalav, the Shackles",
 			"page": 16,
-			"equipment": true,
 			"type": "Equipment",
 			"bulk": 2,
 			"armorData": {
@@ -4142,7 +4247,6 @@
 			"source": "G&G",
 			"access": "The following regions have access to firearms: Alkenstar, Dongun Hold, Tian Xia, Vudra, Arcadia, Ustalav, the Shackles",
 			"page": 150,
-			"equipment": true,
 			"type": "Equipment",
 			"traits": [
 				"attached to crossbow or firearm",
@@ -4171,7 +4275,6 @@
 			"name": "Repeating Crossbow",
 			"source": "G&G",
 			"page": 63,
-			"equipment": true,
 			"type": "Equipment",
 			"traits": [
 				"Uncommon",
@@ -4201,7 +4304,6 @@
 			"name": "Repeating Hand Crossbow",
 			"source": "G&G",
 			"page": 63,
-			"equipment": true,
 			"type": "Equipment",
 			"traits": [
 				"Uncommon",
@@ -4231,7 +4333,6 @@
 			"name": "Repeating Heavy Crossbow",
 			"source": "G&G",
 			"page": 63,
-			"equipment": true,
 			"type": "Equipment",
 			"traits": [
 				"Uncommon",
@@ -4261,7 +4362,6 @@
 			"name": "Rungu",
 			"source": "LOAG",
 			"page": 139,
-			"equipment": true,
 			"type": "Equipment",
 			"traits": [
 				"grippli",
@@ -4375,8 +4475,8 @@
 		{
 			"name": "Scale Mail",
 			"source": "CRB",
-			"page": 275,
 			"equipment": true,
+			"page": 275,
 			"type": "Equipment",
 			"price": {
 				"amount": 4,
@@ -4428,7 +4528,6 @@
 			"name": "Scourge",
 			"source": "LOCG",
 			"page": 80,
-			"equipment": true,
 			"type": "Equipment",
 			"level": 0,
 			"traits": [
@@ -4651,7 +4750,6 @@
 			"name": "Sickle-Saber",
 			"source": "LOTGB",
 			"page": 107,
-			"equipment": true,
 			"type": "Equipment",
 			"traits": [
 				"uncommon",
@@ -4680,7 +4778,6 @@
 			"source": "G&G",
 			"access": "The following regions have access to firearms: Alkenstar, Dongun Hold, Tian Xia, Vudra, Arcadia, Ustalav, the Shackles",
 			"page": 151,
-			"equipment": true,
 			"type": "Equipment",
 			"level": 1,
 			"traits": [
@@ -4824,7 +4921,6 @@
 			"name": "Spiral Rapier",
 			"source": "LOTGB",
 			"page": 107,
-			"equipment": true,
 			"type": "Equipment",
 			"traits": [
 				"uncommon",
@@ -4851,9 +4947,9 @@
 		},
 		{
 			"name": "Splint Mail",
+			"equipment": true,
 			"source": "CRB",
 			"page": 275,
-			"equipment": true,
 			"type": "Equipment",
 			"level": 1,
 			"price": {
@@ -4933,9 +5029,9 @@
 		},
 		{
 			"name": "Steel Shield",
+			"equipment": true,
 			"source": "CRB",
 			"page": 277,
-			"equipment": true,
 			"type": "Equipment",
 			"price": {
 				"amount": 2,
@@ -4958,7 +5054,6 @@
 			"name": "Stiletto Pen",
 			"source": "LOPSG",
 			"page": 81,
-			"equipment": true,
 			"type": "Equipment",
 			"level": 1,
 			"traits": [
@@ -4986,10 +5081,10 @@
 			]
 		},
 		{
-			"name": "Studded Leather Armor",
+			"name": "Studded Leather",
+			"equipment": true,
 			"source": "CRB",
 			"page": 275,
-			"equipment": true,
 			"type": "Equipment",
 			"price": {
 				"amount": 3,
@@ -5015,7 +5110,6 @@
 			"source": "G&G",
 			"access": "The following regions have access to firearms: Alkenstar, Dongun Hold, Tian Xia, Vudra, Arcadia, Ustalav, the Shackles",
 			"page": 16,
-			"equipment": true,
 			"type": "Equipment",
 			"bulk": 1,
 			"category": "Armor",
@@ -5035,7 +5129,6 @@
 			"name": "Switchscythe",
 			"source": "LOTGB",
 			"page": 107,
-			"equipment": true,
 			"type": "Equipment",
 			"level": 1,
 			"traits": [
@@ -5065,7 +5158,6 @@
 			"name": "Sword Cane",
 			"source": "APG",
 			"page": 248,
-			"equipment": true,
 			"type": "Equipment",
 			"traits": [
 				"Agile",
@@ -5093,7 +5185,6 @@
 			"name": "Taw Launcher",
 			"source": "LOAG",
 			"page": 139,
-			"equipment": true,
 			"type": "Equipment",
 			"traits": [
 				"Uncommon",
@@ -5126,7 +5217,6 @@
 			"name": "Tekko-Kagi",
 			"source": "LOGM",
 			"page": 120,
-			"equipment": true,
 			"type": "Equipment",
 			"traits": [
 				"Uncommon",
@@ -5185,7 +5275,6 @@
 			"name": "Tengu Gale Blade",
 			"source": "APG",
 			"page": 248,
-			"equipment": true,
 			"type": "Equipment",
 			"traits": [
 				"Uncommon",
@@ -5215,7 +5304,6 @@
 			"name": "Throwing Knife",
 			"source": "LOTGB",
 			"page": 107,
-			"equipment": true,
 			"type": "Equipment",
 			"traits": [
 				"agile",
@@ -5243,7 +5331,6 @@
 			"name": "Thunder Sling",
 			"source": "LOAG",
 			"page": 139,
-			"equipment": true,
 			"type": "Equipment",
 			"traits": [
 				"Uncommon",
@@ -5274,7 +5361,6 @@
 			"name": "Thundermace",
 			"source": "LOTGB",
 			"page": 107,
-			"equipment": true,
 			"type": "Equipment",
 			"traits": [
 				"uncommon",
@@ -5301,7 +5387,6 @@
 			"name": "Tonfa",
 			"source": "LOTGB",
 			"page": 107,
-			"equipment": true,
 			"type": "Equipment",
 			"traits": [
 				"uncommon",
@@ -5330,9 +5415,9 @@
 		},
 		{
 			"name": "Tower Shield",
+			"equipment": true,
 			"source": "CRB",
 			"page": 277,
-			"equipment": true,
 			"type": "Equipment",
 			"price": {
 				"amount": 2,
@@ -5357,7 +5442,6 @@
 			"name": "Tri-bladed Katar",
 			"source": "LOTGB",
 			"page": 107,
-			"equipment": true,
 			"type": "Equipment",
 			"traits": [
 				"uncommon",
@@ -5386,7 +5470,6 @@
 			"name": "Tricky Pick",
 			"source": "LOAG",
 			"page": 139,
-			"equipment": true,
 			"type": "Equipment",
 			"traits": [
 				"Uncommon",
@@ -5442,7 +5525,6 @@
 			"name": "Umbrella Injector",
 			"source": "G&G",
 			"page": 64,
-			"equipment": true,
 			"type": "Item",
 			"level": 0,
 			"traits": [
@@ -5474,7 +5556,6 @@
 			"name": "Urumi",
 			"source": "LOGM",
 			"page": 120,
-			"equipment": true,
 			"type": "Equipment",
 			"traits": [
 				"Uncommon",
@@ -5502,7 +5583,6 @@
 			"name": "Wakizashi",
 			"source": "APG",
 			"page": 248,
-			"equipment": true,
 			"type": "Equipment",
 			"traits": [
 				"Uncommon",
@@ -5560,7 +5640,6 @@
 			"name": "War Razor",
 			"source": "LOGM",
 			"page": 120,
-			"equipment": true,
 			"type": "Equipment",
 			"traits": [
 				"Agile",
@@ -5645,7 +5724,6 @@
 			"name": "Whip Claw",
 			"source": "LOAG",
 			"page": 139,
-			"equipment": true,
 			"type": "Equipment",
 			"traits": [
 				"Uncommon",
@@ -5675,7 +5753,6 @@
 			"name": "Wish Blade",
 			"source": "LOAG",
 			"page": 139,
-			"equipment": true,
 			"type": "Equipment",
 			"traits": [
 				"Uncommon",
@@ -5705,7 +5782,6 @@
 			"name": "Wish Knife",
 			"source": "LOAG",
 			"page": 139,
-			"equipment": true,
 			"type": "Equipment",
 			"traits": [
 				"Uncommon",
@@ -5735,9 +5811,9 @@
 		},
 		{
 			"name": "Wooden Shield",
+			"equipment": true,
 			"source": "CRB",
 			"page": 277,
-			"equipment": true,
 			"type": "Equipment",
 			"price": {
 				"amount": 1,

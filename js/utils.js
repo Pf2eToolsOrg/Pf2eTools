@@ -5,7 +5,7 @@ if (typeof module !== "undefined") require("./parser.js");
 
 // in deployment, `IS_DEPLOYED = "<version number>";` should be set below.
 IS_DEPLOYED = undefined;
-VERSION_NUMBER = /* PF2ETOOLS_VERSION__OPEN */"0.3.1"/* PF2ETOOLS_VERSION__CLOSE */;
+VERSION_NUMBER = /* PF2ETOOLS_VERSION__OPEN */"0.3.2"/* PF2ETOOLS_VERSION__CLOSE */;
 DEPLOYED_STATIC_ROOT = ""; // ""; // FIXME re-enable this when we have a CDN again
 IS_VTT = false;
 
@@ -2379,6 +2379,7 @@ DataUtil = {
 		return `${toCsv(headers)}\n${rows.map(r => toCsv(r)).join("\n")}`;
 	},
 
+	// TODO: Modernize these
 	userDownload (filename, data) {
 		if (typeof data !== "string") data = JSON.stringify(data, null, "\t");
 		return DataUtil._userDownload(`${filename}.json`, data, "text/json");
@@ -2415,6 +2416,16 @@ DataUtil = {
 				reader.readAsText(input.files[0]);
 			}).appendTo($(`body`));
 			$iptAdd.click();
+		});
+	},
+
+	doHandleFileLoadErrorsGeneric (errors) {
+		if (!errors) return;
+		errors.forEach(err => {
+			JqueryUtil.doToast({
+				content: `Could not load file "${err.filename}": <code>${err.message}</code>. ${VeCt.STR_SEE_CONSOLE}`,
+				type: "danger",
+			});
 		});
 	},
 

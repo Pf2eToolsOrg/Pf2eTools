@@ -65,8 +65,7 @@
 						"You decant the water, creating up to 10 vials of holy water. You must provide the vials."
 					]
 				}
-			],
-			"consumable": false
+			]
 		},
 		{
 			"name": "Apotropaic Fulu",
@@ -129,8 +128,7 @@
 						"Pushing the glasses up your nose and asking the entity for help, you cause the spectacles to cast either true seeing or a 3rd-level {@spell comprehend language} on you. Because the entity tied to the spectacles chooses which one, the GM picks whichever spell is most immediately useful in your current situation (and chooses the most useful language each time the item casts comprehend language). The spell lasts for 1 minute."
 					]
 				}
-			],
-			"consumable": false
+			]
 		},
 		{
 			"name": "Auspicious Scepter",
@@ -167,8 +165,7 @@
 						"This benefit is lost if it isn't used by the end of your next turn. If more than one type of resistance would apply against the attack, the attack bypasses only one\u2014whichever would result in the highest amount of damage getting through, as determined by the GM."
 					]
 				}
-			],
-			"consumable": false
+			]
 		},
 		{
 			"name": "Backfire Mantle",
@@ -211,8 +208,7 @@
 						"The mantle grants a +2 circumstance bonus and resistance 10."
 					]
 				}
-			],
-			"consumable": false
+			]
 		},
 		{
 			"name": "Bane",
@@ -237,8 +233,7 @@
 			"entries": [
 				"A bane rune causes a weapon to grant you improved understanding of creatures of a particular type, allowing you to deal more damage to those creatures. The crafter chooses aberration, animal, beast, celestial, construct, dragon, elemental, fey, fiend, giant, monitor, ooze, or both fungus and plant. The weapon deals {@damage 1d6} additional damage of the weapon's damage type to creatures with the chosen trait or traits. The benefit doesn't apply against creatures of the chosen type disguised as other creatures. It's up to GM discretion whether the bane rune applies against a creature disguised as a creature of the chosen type.",
 				"The GM might allow bane runes for other creature traits, such as astral, dream, or demon. However, humanoids, undead, and specific types of humanoids (such as elves) are never a valid option."
-			],
-			"consumable": false
+			]
 		},
 		{
 			"name": "Bestiary Of Metamorphosis",
@@ -277,8 +272,7 @@
 						"You transform into a different form allowed by the {@trait polymorph} by bending and molding the spell's energy. This reduces the spell's remaining duration by half."
 					]
 				}
-			],
-			"consumable": false
+			]
 		},
 		{
 			"name": "Binding Coil",
@@ -416,8 +410,7 @@
 						"The blade is a +3 greater striking shifting shortsword and gains the greater corrosive, greater flaming, greater frost, or greater shock runes instead of their base versions. When Activated to {@action Cast a Spell}, the blade casts the spell heightened to 7th level, and the DC is 38."
 					]
 				}
-			],
-			"consumable": false
+			]
 		},
 		{
 			"name": "Book Of Lingering Blaze",
@@ -455,8 +448,7 @@
 						"If your next action is to cast an evocation spell dealing fire damage that you prepared from this grimoire, you superheat the flames, allowing the spell to ignore up to 10 resistance to fire of creatures affected by the spell."
 					]
 				}
-			],
-			"consumable": false
+			]
 		},
 		{
 			"name": "Brilliant",
@@ -512,8 +504,7 @@
 						"The save DC is 41, the counteract level is 9, the counteract modifier is +31, and damage dealt by this weapon ignores the target's fire, good, or positive resistance."
 					]
 				}
-			],
-			"consumable": false
+			]
 		},
 		{
 			"name": "Burr Shield",
@@ -548,8 +539,7 @@
 						"One of the burrs catches on the {@action Strike}'s target, inflicting {@damage 1d10} {@condition persistent damage ||persistent bleed damage}."
 					]
 				}
-			],
-			"consumable": false
+			]
 		},
 		{
 			"name": "Buzzsaw Axe",
@@ -618,8 +608,7 @@
 						"The axe is a +3 major striking battle axe, the circumstance bonus to damage is +4, and the activation's DC is 43."
 					]
 				}
-			],
-			"consumable": false
+			]
 		},
 		{
 			"name": "Cantrip Deck",
@@ -640,10 +629,11 @@
 					"type": "ability",
 					"activity": {
 						"number": 1,
-						"unit": "action"
+						"unit": "varies",
+						"entry": "{@as 1} or more"
 					},
 					"components": [
-						"or more (envision",
+						"(envision",
 						"Interact)"
 					],
 					"entries": [
@@ -661,7 +651,7 @@
 						"amount": 5
 					},
 					"entries": [
-						"This pack contains 5 cards of a single common cantrip (such as light)."
+						"This pack contains 5 cards of a single {@filter common cantrip|spells||rarity=common|spell type=cantrip;!focus} (such as {@spell light})."
 					]
 				},
 				{
@@ -672,11 +662,10 @@
 						"amount": 20
 					},
 					"entries": [
-						"This pack contains 24 cards\u2014one of each cantrip in the Core Rulebook."
+						"This pack contains 24 cards\u2014one of each {@filter cantrip in the Core Rulebook|spells||rarity=common|spell type=cantrip;!focus|source=crb}."
 					]
 				}
-			],
-			"consumable": false
+			]
 		},
 		{
 			"name": "Chatterer Of Follies",
@@ -700,8 +689,7 @@
 			"entries": [
 				"This heavy +1 striking khakarra (Advanced Player's Guide 248) is cast from solid steel and plated with pyrite. Metal charms shaped like grinning idols festoon its great arched ring, and during combat, as tiny tendrils of flame fly off the pyrite, these hanging dolls seem to chatter in tune with the clash and din of battle.",
 				"Whenever you complete a move action during your turn, choose a creature adjacent to you at the end of your movement. Until the end of your turn, that creature takes a \u20131 status penalty to Will saves against your enchantment spells and your illusion spells. Any time you cast your enchantment and illusion spells, you become {@condition concealed} during your move actions for the rest of the turn."
-			],
-			"consumable": false
+			]
 		},
 		{
 			"name": "Cloak Of Feline Rest",
@@ -723,8 +711,7 @@
 			"category": "Worn",
 			"entries": [
 				"This black velvet cloak is featureless and very soft to the touch. Upon wearing it for the first time, you're momentarily overwhelmed with a sense of comfort and coziness. While wearing this cloak you can comfortably rest in any space, so long as it's not wet or particularly hazardous. While sleeping in this cloak you only take a \u20132 status penalty to auditory {@skill Perception} checks, rather than a \u20134 status penalty."
-			],
-			"consumable": false
+			]
 		},
 		{
 			"name": "Codebreaker's Parchment",
@@ -801,8 +788,7 @@
 						"The DC to {@action Decipher Writing} is 40 and requires legendary proficiency."
 					]
 				}
-			],
-			"consumable": false
+			]
 		},
 		{
 			"name": "Codex Of Unimpeded Sight",
@@ -860,8 +846,7 @@
 						"The frequency of the activation is once per hour instead of once per day. When you use it, you gain a +1 item bonus on your {@skill Perception} check to {@action Seek} or skill check to {@action Recall Knowledge}."
 					]
 				}
-			],
-			"consumable": false
+			]
 		},
 		{
 			"name": "Collar Of The Eternal Bond",
@@ -902,8 +887,7 @@
 						"Your eidolon focuses their will on the collar, allowing the collar to maintain the connection between you at any distance. For the next 5 minutes, you and your eidolon can move any distance from each other without your eidolon unmanifesting. When the duration ends, if your eidolon is more than 150 feet from you, they immediately unmanifest."
 					]
 				}
-			],
-			"consumable": false
+			]
 		},
 		{
 			"name": "Conflagration Club",
@@ -959,8 +943,7 @@
 						"You flip the club around to blast a cone of energy from its base. Each creature in a 15-foot cone takes {@dice 1d6} damage per charge stored in the club, with a basic Reflex save against your spell DC or DC 19, whichever is greater. The damage type is the same type the charges were attuned to. The club loses all of its charges."
 					]
 				}
-			],
-			"consumable": false
+			]
 		},
 		{
 			"name": "Dazzling Rosary",
@@ -1038,8 +1021,7 @@
 						"You draw a card, chosen randomly from the remaining cards in the deck, and throw it to the ground to create an illusion of the creature depicted. The image is an illusory creature, except it has a range of only 30 feet from where the card was thrown and the illusion lasts until destroyed or until anyone moves or damages the card. The creature takes its actions once on your turn if you're within 60 feet of the card and Sustain the Activation. The illusion ends if you don't Sustain it, or if you activate a new card from the deck."
 					]
 				}
-			],
-			"consumable": false
+			]
 		},
 		{
 			"name": "Deck Of Mischief",
@@ -1062,8 +1044,7 @@
 				"This deck of 54 cards appears nearly identical to standard playing cards. Comprised of four thematic suits of 13 cards each, as well as two wildcards, the deck of mischief is a favorite of scoundrels who prefer not to leave their games to chance\u2014or to at least nudge the odds in their favor.",
 				"If you know how to activate the deck, you can illusorily transform the ace and face cards into other cards in the deck.",
 				"The deck is true to its name and less likely to comply with your wishes if not well cared for. While surprisingly."
-			],
-			"consumable": false
+			]
 		},
 		{
 			"name": "Detect Anathema Fulu",
@@ -1220,8 +1201,7 @@
 						"You hold the amulet aloft as a ripple of warm orange light exudes outward. Each ally in a 30-foot emanation regains 30 Hit Points and gains a +3 status bonus to Fortitude saves until the end of their next turn."
 					]
 				}
-			],
-			"consumable": false
+			]
 		},
 		{
 			"name": "Endless Grimoire",
@@ -1238,8 +1218,7 @@
 			"category": "Grimoire",
 			"entries": [
 				"When opened, this grimoire has unlimited pages that, oddly, seem almost eager to transcribe spells. Unlike most grimoires, it has no limits to its number of spells. The grimoire's eagerness to contain your spells grants you a."
-			],
-			"consumable": false
+			]
 		},
 		{
 			"name": "Extending",
@@ -1295,8 +1274,7 @@
 						"The activation grants you reach 120 feet for the {@action Strike}."
 					]
 				}
-			],
-			"consumable": false
+			]
 		},
 		{
 			"name": "Eye Of Enlightenment",
@@ -1352,8 +1330,7 @@
 			"entries": [
 				"This tattoo typically consists of an image of a small animal or of a familiar's name written in runes. Your familiar can meld into your familiar tattoo to be carried in your skin. The familiar must spend a single action, which has the magical, {@trait move}, and {@trait transmutation} traits, to meld into or exit your tattoo. It must be adjacent to you to meld into your tattoo, and it exits your tattoo in an open space adjacent to you.",
 				"Any of the familiar's companion items remain on it, but it can't carry any other items with it. This tattoo is non-magical if you don't have a familiar or if your familiar doesn't remain present for the entire tattooing process. If your familiar dies, this tattoo loses its magic and becomes a mundane tattoo."
-			],
-			"consumable": false
+			]
 		},
 		{
 			"name": "Firestarter Pellets",
@@ -1640,8 +1617,7 @@
 						"entriesMode": "generic"
 					}
 				}
-			],
-			"consumable": false
+			]
 		},
 		{
 			"name": "Flaming Star",
@@ -1849,8 +1825,7 @@
 						"entriesMode": "generic"
 					}
 				}
-			],
-			"consumable": false
+			]
 		},
 		{
 			"name": "Flask Of Fellowship",
@@ -1885,8 +1860,7 @@
 						"The GM can disallow the flask's use if it doesn't make sense in the moment for you to pull out a flask and start pouring, if drinks are inappropriate for the occasion, or if your target is absolutely not interested in sharing a drink with you. Drinks from the flask of fellowship are entirely social; they won't intoxicate anyone, nor alleviate serious thirst."
 					]
 				}
-			],
-			"consumable": false
+			]
 		},
 		{
 			"name": "Force Tiles",
@@ -1993,11 +1967,10 @@
 						"freq": 1
 					},
 					"entries": [
-						"You rip a page from the fulu compendium and cast it in a wide arc; as it flies in that arc, it multiplies into a storm of fulus. All undead creatures in a 30-foot emanation are affected by a spirit-sealing fulu with a save DC of 25."
+						"You rip a page from the fulu compendium and cast it in a wide arc; as it flies in that arc, it multiplies into a storm of fulus. All undead creatures in a 30-foot emanation are affected by a {@item spirit-sealing fulu} with a save DC of 25."
 					]
 				}
-			],
-			"consumable": false
+			]
 		},
 		{
 			"name": "Fulu Of Fire Suppression",
@@ -2236,8 +2209,7 @@
 						"If a doppelganger was disguised as an innkeeper you met, the glasses would give you the innkeeper's name, and if a noble you met before was in disguise as a masked vigilante, the glasses wouldn't reveal their name."
 					]
 				}
-			],
-			"consumable": false
+			]
 		},
 		{
 			"name": "Gloaming Shard",
@@ -2278,8 +2250,7 @@
 						"You instantly teleport to a space adjacent to the target of your {@action Strike}, as dimension door, and then catch the dagger in your hand."
 					]
 				}
-			],
-			"consumable": false
+			]
 		},
 		{
 			"name": "Golden Chrysalis",
@@ -2518,8 +2489,7 @@
 						"entriesMode": "generic"
 					}
 				}
-			],
-			"consumable": false
+			]
 		},
 		{
 			"name": "Guiding Star",
@@ -2560,8 +2530,7 @@
 						"Soft light outlines the target. At the beginning of your next turn, the guiding star's blades detach and form into darts of starlight, flying up to 40 feet and striking the target unerringly, collectively dealing 4 piercing damage and 1 good damage before re-forming. The piercing damage increases to 6 with a greater striking rune and 8 with a major striking rune."
 					]
 				}
-			],
-			"consumable": false
+			]
 		},
 		{
 			"name": "Hat Of Many Minds",
@@ -2601,8 +2570,7 @@
 						"The copy disappears and returns to the hat as a piece of cloth when the given task has been completed, or when you {@action Dismiss} the activation."
 					]
 				}
-			],
-			"consumable": false
+			]
 		},
 		{
 			"name": "Healer's Gel",
@@ -2719,8 +2687,7 @@
 						"You deal {@damage 1d10} negative damage to yourself. If your next action is to {@action Strike} with the scythe or to {@action Cast a Spell} with the {@trait disease} or {@trait negative} trait, that {@action Strike} or spell deals additional negative damage equal to the damage you took (after any reductions or increases from immunity, resistances, weaknesses)."
 					]
 				}
-			],
-			"consumable": false
+			]
 		},
 		{
 			"name": "Impactful",
@@ -2763,8 +2730,7 @@
 						"The save DC is 37, and on a failed save, the foe is pushed 10 feet away from you."
 					]
 				}
-			],
-			"consumable": false
+			]
 		},
 		{
 			"name": "Instructions For Lasting Agony",
@@ -2802,8 +2768,7 @@
 						"If your next action is to cast a harmful necromancy spell that you prepared from this grimoire and that allows a saving throw, you warp and twist negative energy into the spell to cause intense pain. If the target fails its saving throw against the spell, it becomes {@condition sickened 1} by the pain."
 					]
 				}
-			],
-			"consumable": false
+			]
 		},
 		{
 			"name": "Invisible Chain Shirt",
@@ -2837,8 +2802,7 @@
 						"You {@action Stride} and turn partially {@condition invisible}, becoming {@condition concealed} until the end of your next turn or until you use a {@condition hostile} action, whichever comes first. As normal, you can use the concealment from this activation to {@action Hide}."
 					]
 				}
-			],
-			"consumable": false
+			]
 		},
 		{
 			"name": "Jar Of Shifting Sands",
@@ -2889,8 +2853,7 @@
 						"You quickly pour sand over an adjacent square, making it {@quickref difficult terrain||3|terrain}. You can't use either of the jar's activations for 1 minute."
 					]
 				}
-			],
-			"consumable": false
+			]
 		},
 		{
 			"name": "Keymaking Tools",
@@ -2913,8 +2876,7 @@
 				"These thieves' tools provide their owner the ability to have continued control over a lock while leaving it in place.",
 				"They grant a +1 item bonus to {@skill Thievery} checks to {@action Pick a Lock}. Upon completely opening a lock by picking it with these tools, the tools produce a temporary copy of the key for the picked lock. This phantom key can lock or unlock the lock just like the original key. The key appears attached to the thieves' tools case by a fine silver chain and lasts for 12 hours before it fades into nothing. Only one key created this way can exist in the same set of thieves' tools.",
 				"Creating a new key replaces the previous one."
-			],
-			"consumable": false
+			]
 		},
 		{
 			"name": "Lini's Leafstick",
@@ -3063,8 +3025,7 @@
 						}
 					]
 				}
-			],
-			"consumable": false
+			]
 		},
 		{
 			"name": "Matchmaker Fulu",
@@ -3170,8 +3131,7 @@
 						"The cloak hums with power as your whirl it around yourself, disappearing amid a brief flash of light. Teleport up to double your Speed to a location you can see. At the end of the teleportation, you can make a melee {@action Strike} against a creature within reach, if there is one."
 					]
 				}
-			],
-			"consumable": false
+			]
 		},
 		{
 			"name": "North Wind's Night Verse",
@@ -3218,8 +3178,7 @@
 						"Choose one creature dealt cold damage by the spell. It takes a \u20135-foot status penalty to its Speeds for 1 round."
 					]
 				}
-			],
-			"consumable": false
+			]
 		},
 		{
 			"name": "Noxious Incense",
@@ -3377,8 +3336,7 @@
 						"The flail is a +3 major striking greater extending war flail, the activation's DC is 43, and the severed chain is 120 feet long."
 					]
 				}
-			],
-			"consumable": false
+			]
 		},
 		{
 			"name": "Perfect Droplet",
@@ -3576,8 +3534,7 @@
 						"entriesMode": "generic"
 					}
 				}
-			],
-			"consumable": false
+			]
 		},
 		{
 			"name": "Phoenix Flask",
@@ -3878,8 +3835,7 @@
 						"The absorbed energy explodes from your armor in a pulse of force. Creatures in a 30-foot emanation take {@damage 10d6} force damage with a DC 43 basic Fortitude save. On a failure, they're pushed 10 feet away from you, and on a critical failure, they're pushed 20 feet away from you and fall {@condition prone}. The armor's absorbed damage resets to 0."
 					]
 				}
-			],
-			"consumable": false
+			]
 		},
 		{
 			"name": "Resonating Ammunition",
@@ -3961,12 +3917,10 @@
 				"amount": 320
 			},
 			"bulk": 1,
-			"category": "no category found",
+			"category": "Structure",
 			"entries": [
-				"This four-person tent provides several benefits for those who rest within. The climate inside the tent is comfortable and allows creatures inside it to withstand most {@condition hostile} weather conditions, but incredible heat or cold, powerful storms, and winds of hurricane force or greater can still damage or destroy the tent. Mundane pests such as solitary ordinary insects avoid the tent, though swarms and giant insects can attack the tent as normal. Once you pitch the tent, only you can easily move it; any other creatures must succeed at a DC 20 {@skill Athletics} check to do so. Finally, the tent automatically camouflages with its surroundings, requiring a {@action Search||Searching} creature to succeed at a DC 22 {@skill Perception} check to notice it.",
-				"Magrithar's Magical Compendium, p.284 After hours of contemplating the seemingly mundane robe at the bottom of the chamber surrounded by traps and guardians, I decided the reward was worth the risk. For a moment, nothing happened after I shrugged on the robe, but as a hundred shifting, monstrous eyes began to open along the robe and within my mind, I saw true, and what I saw was not what the defenses were keeping out, but what they were keeping in."
-			],
-			"consumable": false
+				"This four-person tent provides several benefits for those who rest within. The climate inside the tent is comfortable and allows creatures inside it to withstand most hostile weather conditions, but incredible heat or cold, powerful storms, and winds of hurricane force or greater can still damage or destroy the tent. Mundane pests such as solitary ordinary insects avoid the tent, though swarms and giant insects can attack the tent as normal. Once you pitch the tent, only you can easily move it; any other creatures must succeed at a DC 20 {@skill Athletics} check to do so. Finally, the tent automatically camouflages with its surroundings, requiring a {@action Search||Searching} creature to succeed at a DC 22 {@skill Perception} check to notice it."
+			]
 		},
 		{
 			"name": "Retrieval Prism",
@@ -4042,8 +3996,7 @@
 			"entries": [
 				"This jagged glyph, one of the {@variantrule Thassilonian Rune Magic|SoM|Thassilonian runes of sin}, reacts to magic of a particular school (there's no rune for divination, as it was considered lesser within sin magic)",
 				"When you {@action Cast a Spell} of the school matching the sin, you gain resistance 5 to damage from spells until the start of your next turn. This resistance is increased to 7 against spells of the matching school. This tattoo has the school trait matching the rune: abjuration for envy, necromancy for gluttony, transmutation for greed, enchantment for lust, illusion for pride, conjuration for sloth, and evocation for wrath."
-			],
-			"consumable": false
+			]
 		},
 		{
 			"name": "S Ring",
@@ -4081,8 +4034,7 @@
 						"You gain 1 Focus Point, which you can use only to cast a wizard school spell of the corresponding school. If not used by the end of your turn, this Focus Point is lost."
 					]
 				}
-			],
-			"consumable": false
+			]
 		},
 		{
 			"name": "Sage's Lash",
@@ -4129,8 +4081,7 @@
 						}
 					]
 				}
-			],
-			"consumable": false
+			]
 		},
 		{
 			"name": "Shadow Signet",
@@ -4165,8 +4116,7 @@
 						"You make your spell attack roll against that defense instead of AC. If the spell has multiple targets, the choice of DC applies to all of them."
 					]
 				}
-			],
-			"consumable": false
+			]
 		},
 		{
 			"name": "Shimmering Dust",
@@ -4281,8 +4231,7 @@
 						"The weapon is a +3 {@item greater striking} {@item greater thundering} {@item composite shortbow}, the healing and damage are {@dice 5d10}, and the DC is 38."
 					]
 				}
-			],
-			"consumable": false
+			]
 		},
 		{
 			"name": "Sonic Tuning Mace",
@@ -4342,8 +4291,7 @@
 						"When you activate the mace to cast {@spell sound burst}, the spell is 6th level (DC 30)."
 					]
 				}
-			],
-			"consumable": false
+			]
 		},
 		{
 			"name": "Soothing Scents",
@@ -4408,8 +4356,7 @@
 						"You gain a +10-foot status bonus to your Speed until the end of your next turn."
 					]
 				}
-			],
-			"consumable": false
+			]
 		},
 		{
 			"name": "Spellbook Of Redundant Enchantment",
@@ -4448,8 +4395,7 @@
 						"You quickly divert the failed enchantment energy into yourself to retain your favored spell in place of another. You lose another spell you prepared of an equal or higher level to the triggering enchantment spell but retain the ability to cast the enchantment spell again."
 					]
 				}
-			],
-			"consumable": false
+			]
 		},
 		{
 			"name": "Spirit-sealing Fulu",
@@ -4466,8 +4412,16 @@
 			],
 			"usage": "affixed to one undead creature",
 			"category": "Consumable",
+			"duration": {
+				"type": "timed",
+				"entry": "1 round (or 4 rounds)",
+				"duration": {
+					"number": 1,
+					"unit": "round"
+				}
+			},
 			"entries": [
-				"Duration 1 round (or 4 rounds) This classic fulu seals the negative energy within an undead, freezing it in its tracks. Upon affixing, the target undead must attempt a Will save or be {@condition paralyzed} for 1 round."
+				"This classic fulu seals the negative energy within an undead, freezing it in its tracks. Upon affixing, the target undead must attempt a Will save or be {@condition paralyzed} for 1 round."
 			],
 			"generic": "G",
 			"variants": [
@@ -4601,8 +4555,7 @@
 						}
 					]
 				}
-			],
-			"consumable": false
+			]
 		},
 		{
 			"name": "Staff Of The Desert Winds",
@@ -4703,8 +4656,7 @@
 						}
 					]
 				}
-			],
-			"consumable": false
+			]
 		},
 		{
 			"name": "Staff-storing Shield",
@@ -4796,8 +4748,7 @@
 						"The shield has Hardness 16, HP 96, and BT 48."
 					]
 				}
-			],
-			"consumable": false
+			]
 		},
 		{
 			"name": "Stampede Medallion",
@@ -4869,8 +4820,7 @@
 						"The item bonus is +3, the activation's DC is 38 and the damage is {@dice 14d6}."
 					]
 				}
-			],
-			"consumable": false
+			]
 		},
 		{
 			"name": "Stormbreaker Fulu",
@@ -4978,8 +4928,7 @@
 						"You quickly tell a fib to try to smooth over the inconsistencies in your illusion. Attempt a {@skill Deception} check against the triggering creature's {@skill Perception} DC. If you succeed, the creature doesn't {@quickref disbelieve the illusion|CRB|2|disbelieving illusions|0}."
 					]
 				}
-			],
-			"consumable": false
+			]
 		},
 		{
 			"name": "Summoning Handscroll",
@@ -5013,8 +4962,7 @@
 						"If your next action is to cast a conjuration spell prepared from this spellbook that summons one or more creatures, you infuse one of the summoned creatures with the spell's energies, causing it to arrive with 10 temporary Hit Points that last for up to 1 minute."
 					]
 				}
-			],
-			"consumable": false
+			]
 		},
 		{
 			"name": "Thousand-blade Thesis",
@@ -5055,8 +5003,7 @@
 						"The thousand-blade thesis dramatically unfurls, and the weapons contained within it spring forth and array themselves impressively in the air, floating within easy reach. For 1 minute, you can use a free action to {@action Interact} to draw one of the floating weapons. Others can attempt to nab them out of the air, but to do so they must critically succeed at a {@action Disarm} check. You can't place weapons back into the thesis until the minute elapses."
 					]
 				}
-			],
-			"consumable": false
+			]
 		},
 		{
 			"name": "Thunderbird Tuft",
@@ -5204,8 +5151,7 @@
 						}
 					]
 				}
-			],
-			"consumable": false
+			]
 		},
 		{
 			"name": "Topology Protoplasm",
@@ -5466,8 +5412,7 @@
 						"entriesMode": "generic"
 					}
 				}
-			],
-			"consumable": false
+			]
 		},
 		{
 			"name": "True Name Amulet",
@@ -5525,8 +5470,7 @@
 					},
 					"entries": []
 				}
-			],
-			"consumable": false
+			]
 		},
 		{
 			"name": "Vapor Sphere",
@@ -5633,8 +5577,7 @@
 						"Your spell attempts to counteract a harmful spell effect of your choice on the target. This isn't without risks, however. If your attempt fails to remove the harmful effect, the warding energy is consumed by the unyielding malediction, and you lose the abjuration spell's normal effects."
 					]
 				}
-			],
-			"consumable": false
+			]
 		},
 		{
 			"name": "Warding Tattoo",
@@ -5718,8 +5661,7 @@
 						"You gain resistance 2 to spells cast by fiends and magical attacks by fiends, which increases to 5 when the tattoo is activated."
 					]
 				}
-			],
-			"consumable": false
+			]
 		},
 		{
 			"name": "Waterproofing Wax",

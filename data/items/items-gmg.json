@@ -213,7 +213,7 @@
 			"entries": [
 				"This item appears to be and functions as a type I bag of holding, until you try to retrieve an item from the bag.",
 				"Whenever you retrieve an item from the bag of weasels, roll a DC {@flatDC 11} flat check. On a success, you retrieve the item as normal. On a failure, the item you retrieve is transformed into a weasel; this doesn't affect artifacts, cursed items, or other hard-to-destroy items.",
-				"This weasel has the statistics of a giant rat (Pathfinder Bestiary 276), except that it is Tiny and exudes an aura of transmutation magic. The weasel has no loyalty to you and typically attempts to escape as quickly as possible. If the weasel is targeted with a {@spell remove curse} spell or a similar {@trait magical} effect, it transforms back into the original item that was taken from the bag of weasels. If it dies or is slain, the weasel disappears and the item is permanently destroyed.",
+				"This weasel has the statistics of a {@creature giant rat}, except that it is Tiny and exudes an aura of transmutation magic. The weasel has no loyalty to you and typically attempts to escape as quickly as possible. If the weasel is targeted with a {@spell remove curse} spell or a similar {@trait magical} effect, it transforms back into the original item that was taken from the bag of weasels. If it dies or is slain, the weasel disappears and the item is permanently destroyed.",
 				"Because the weasel is a transformed item, you don't gain any benefit you would receive from attacking a creature, defeating one, damaging one, or the like, but you do gain any benefit you would gain from destroying an item."
 			]
 		},
@@ -481,8 +481,8 @@
 								"{@bold Comet} If you alone defeat the next low-threat or harder {@condition hostile} enemy or enemies you encounter, you gain enough XP to reach the next level. Otherwise, you gain no benefit.",
 								"{@bold Donjon} You're imprisoned by a 10th-level imprisonment ritual. This uses the prison option, typically sequestering you in a distant part of the world. You also lose all your items. Cease drawing cards.",
 								"{@bold Dullard} Immediately reduce your Intelligence score by {@dice 1d4+1}. You can then draw an additional card, and the Dullard card then disappears forever.",
-								"{@bold Euryale} (curse) A medusa's image curses you with a permanent \u20131 status penalty to all saving throws. This can be removed by only a deity or the Fates card.",
-								"{@bold The Fates The} Fates respin the fabric of reality to save you from any situation you choose. This can reverse even a past event, and you can make the decision instantly even if the event would slay you. This intervention saves only you, not anyone else affected by the event. There's no limit on how long you can wait before using this effect.",
+								"{@bold Euryale} ({@trait curse}) A medusa's image curses you with a permanent \u20131 status penalty to all saving throws. This can be removed by only a deity or the Fates card.",
+								"{@bold The Fates} The Fates respin the fabric of reality to save you from any situation you choose. This can reverse even a past event, and you can make the decision instantly even if the event would slay you. This intervention saves only you, not anyone else affected by the event. There's no limit on how long you can wait before using this effect.",
 								"{@bold Flames} A fiend becomes filled with anger, jealousy, envy, or some other reason to despise you. Its hatred for you doesn't cease until either it or you is dead. It attacks you or otherwise attempts to foil you within {@dice 1d20} days. The GM determines the specifics of the fiend.",
 								"{@bold Fool} You lose {@dice 1d10}×100 XP unless you choose to draw two more cards.",
 								"{@bold Gem} Gain your choice of 25 pieces of jewelry worth 200 gp each or 50 gems worth 100 gp each.",
@@ -490,15 +490,15 @@
 								"{@bold Key} Gain a magic weapon of 12th level or higher. The GM determines the item and what runes it has, if any.",
 								"{@bold Knight} A palace guard (page 206) arrives and swears unfailing loyalty to you.",
 								"{@bold Moon} Roll {@dice 1d4} to determine how many wishes the card grants you, which also affects the phase of the moon depicted on the card (1: crescent moon; 2: half moon; 3: gibbous moon; 4: full moon). These wishes each take one action to speak and have the effect of a {@spell wish} spell.",
-								"{@bold Rogue One} NPC ally becomes filled with hatred and immediately turns against you forever. The NPC might keep this hatred secret until an opportune moment.",
+								"{@bold Rogue} One NPC ally becomes filled with hatred and immediately turns against you forever. The NPC might keep this hatred secret until an opportune moment.",
 								"{@bold Ruin} You lose all your nonmagical possessions, including any wealth and property.",
 								"{@bold Skull} You must immediately battle a lesser death (Bestiary 197). If slain in the battle, you can never be revived, except by a deity.",
 								"{@bold Star} Gain an ability boost you must use immediately on one ability score of your choice.",
-								"{@bold Sun Gain 1,000} XP and a beneficial permanent magic item of 6th to 11th level, chosen by the GM.",
+								"{@bold Sun} Gain 1,000 XP and a beneficial permanent magic item of 6th to 11th level, chosen by the GM.",
 								"{@bold Talons} All your magic items disappear permanently, except for the deck and any artifact of higher level than the deck.",
 								"{@bold Throne} You gain a permanent +4 status bonus to {@skill Diplomacy} checks, and you now own a small castle in any open area you wish. You must choose its location within 1 hour.",
 								"{@bold Vizier} Upon request, you can learn the solution to any one problem or the correct answer to any one question, unless that information is obscured by a deity. This doesn't necessarily give you the means to act on that solution. You have 1 year to take the vizier's advice or lose its benefits.",
-								"{@bold The Void} Your mind becomes trapped forever. This card is fickle, but it often throws the psyche into a prison in an object on a distant plane or planet. Wish or similarly powerful magic can reveal your psyche's location, but it doesn't bring you back. Your comatose body continues to function. Cease drawing cards"
+								"{@bold The Void} Your mind becomes trapped forever. This card is fickle, but it often throws the psyche into a prison in an object on a distant plane or planet. Wish or similarly powerful magic can reveal your psyche's location, but it doesn't bring you back. Your comatose body continues to function. Cease drawing cards."
 							]
 						},
 						"Destruction Trick the Grim Reaper into drawing the Skull card."
@@ -2002,7 +2002,7 @@
 						"You attempt a DC 30 {@skill Arcana} or {@skill Occultism} check to take control of the sphere. If someone else already controls the sphere, this check uses their Will DC if higher. If you succeed, you take control of the sphere. If you fail, the sphere moves 10 feet closer to you (or 20 feet on a critical failure). You keep control as long as you remain within 80 feet of the sphere and Sustain the Activation each round.",
 						"When you Sustain the Activation, you must attempt a DC 30 {@skill Arcana} or {@skill Occultism} check. If you succeed, you direct the sphere to move up to 10 feet in a straight line (or up to 20 feet on a critical success). On a failure, you lose control of the sphere, and it moves 10 feet closer to you in a straight line (or 20 feet on a critical failure)",
 						"Destruction When a {@spell gate} spell is cast such that its rift overlaps a sphere of annihilation, roll d%. On a result of 1\u201350, the sphere is destroyed; on a 51\u201385, the spell is disrupted; and on a 86\u2013100, everything within an 180-foot emanation of the sphere is pulled to another plane through a tear in the spatial fabric.",
-						"If a rod of cancellation (Pathfinder Advanced Player's Guide) touches the sphere, both items explode, dealing {@damage 14d6} bludgeoning damage (DC 35 basic Reflex save) to everything in a 60-foot burst from the point of their destruction."
+						"If a {@item rod of cancellation|apg} touches the sphere, both items explode, dealing {@damage 14d6} bludgeoning damage (DC 35 basic Reflex save) to everything in a 60-foot burst from the point of their destruction."
 					]
 				}
 			]

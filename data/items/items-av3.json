@@ -17,7 +17,7 @@
 				"amount": 700
 			},
 			"bulk": 1,
-			"category": "no category found",
+			"category": "Other",
 			"entries": [
 				"This concave lens has a drifting crimson cloud resembling slowly swirling blood within it. While you have the Crimson Fulcrum Lens invested, you seethe with malevolent fury you can barely contain. You gain a +2 item bonus to saving throws against {@trait fear} effects and a +2 item bonus to your melee {@action Strike} damage (this increases to a +4 item bonus to damage if the melee {@action Strike} is a jaws attack). You can also activate the lens in the following ways.",
 				{
@@ -40,15 +40,17 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact (attack",
-						"possession)"
+						"Interact"
+					],
+					"traits": [
+						"attack",
+						"possession"
 					],
 					"entries": [
 						"While grasping the lens, make a melee spell attack roll with a modifier of +18. On a hit, you force the splinter of {@deity Nhimbaloth|LOGM}'s essence from the lens to possess the target. You're no longer invested in the lens, and the target gains the benefits as though it had invested the lens but can't activate the lens's other abilities. This effect is permanent, but it can be ended by {@trait any} effect that removes a {@trait possession} effect. The lens doesn't have any magical abilities until the {@trait possession} effect ends; when it does, the essence returns to the lens."
 					]
 				}
-			],
-			"consumable": false
+			]
 		},
 		{
 			"name": "Ebon Fulcrum Lens",
@@ -67,7 +69,7 @@
 				"amount": 2000
 			},
 			"bulk": "L",
-			"category": "no category found",
+			"category": "Other",
 			"entries": [
 				"This strangest and most powerful of the fulcrum lenses resembles a chip of smooth obsidian containing three dark glimmers of {@deity Nhimbaloth|LOGM}'s essence. Incorporeal creatures can touch and hold the Ebon Fulcrum Lens. While you have the Ebon Fulcrum Lens invested, and you're a corporeal creature, you become insubstantial, gain the {@trait incorporeal} trait, and are {@condition drained|CRB|drained 2}. Your {@condition drained} condition can't be reduced below 2 as long as you have the lens invested. You can activate the lens in the following ways. Both require expenditures of glimmers within the lens; once the lens is depleted of its three glimmers, it retains its ability to make corporeal creatures insubstantial but can't be used for its other abilities until its glimmers are restored (which generally requires a ritual or being steeped in an area of {@deity Nhimbaloth|LOGM}'s power).",
 				{
@@ -107,8 +109,7 @@
 						"You draw upon a glimmer of {@deity Nhimbaloth|LOGM}'s essence for power; reduce the number of glimmers remaining in the lens by 1. You're {@condition quickened} for 1 minute and gain a +1 item bonus to attack rolls, saving throws, and DCs. You can use this extra action to {@action Stride} or {@action Step}, or for an action in a special ghost ability you have."
 					]
 				}
-			],
-			"consumable": false
+			]
 		},
 		{
 			"name": "Emerald Fulcrum Lens",
@@ -128,7 +129,7 @@
 				"amount": 1000
 			},
 			"bulk": "3",
-			"category": "no category found",
+			"category": "Other",
 			"entries": [
 				"This concave green lens is pitted and flawed; its jagged edges can cut those who don't handle it with care. While you have the Emerald Fulcrum Lens invested, your flesh appears waxen and pallid. You gain negative healing and {@spell harm} spells gain a +4 status bonus to the Hit Points they restore to you.",
 				"You can also activate the lens in the following ways.",
@@ -139,7 +140,10 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact (healing)"
+						"Interact"
+					],
+					"traits": [
+						"healing"
 					],
 					"frequency": {
 						"unit": "day",
@@ -156,15 +160,17 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact (attack",
-						"possession)"
+						"Interact"
+					],
+					"traits": [
+						"attack",
+						"possession"
 					],
 					"entries": [
 						"as Crimson Fulcrum Lens, but the melee spell attack modifier is +20."
 					]
 				}
-			],
-			"consumable": false
+			]
 		},
 		{
 			"name": "Fulcrum Lattice",
@@ -187,8 +193,7 @@
 			"entries": [
 				"This silver and copper framework is shaped to hold four focusing lenses, one behind the other, from smallest to largest. It has a socketed base to be mounted into a stand, such as that found in a lighthouse lantern. The Fulcrum Lattice was specifically designed to hold the four fulcrum lenses from smallest to largest (ebon, crimson, ochre, emerald), and it hums slightly while within 10 feet of any fulcrum lens. A fulcrum lens slotted into the Fulcrum Lattice has no Bulk; the lattice remains at 1 Bulk and can be carried easily. Inserting or removing a lens from the Fulcrum Lattice requires a single {@action Interact} action.",
 				"The Fulcrum Lattice channels the power of fulcrum lenses joined with it. While you hold the Fulcrum Lattice, lenses socketed into it are considered to be in your hand for the purpose of activating their abilities. When you make a melee spell attack with a lens in the Fulcrum Lattice, you use the highest melee spell attack modifier of any lens in the lattice, or you can use your melee attack modifier with simple weapons if it's greater."
-			],
-			"consumable": false
+			]
 		},
 		{
 			"name": "Fungal Walk Musk",
@@ -316,7 +321,7 @@
 				"amount": 1400
 			},
 			"bulk": 2,
-			"category": "no category found",
+			"category": "Other",
 			"entries": [
 				"This brownish-orange lens always seems dusty and gritty, even when wet. While you have the Ochre Fulcrum Lens invested, lassitude grips you. You gain resistance 10 to mental damage and a +2 status bonus to saves against {@trait emotion} effects. You can also activate the lens in the following ways.",
 				{
@@ -350,8 +355,7 @@
 						"as Crimson Fulcrum Lens, but the melee spell attack modifier is +21."
 					]
 				}
-			],
-			"consumable": false
+			]
 		},
 		{
 			"name": "Stupor Poison",

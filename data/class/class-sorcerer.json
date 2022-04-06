@@ -163,6 +163,16 @@
 					]
 				},
 				{
+					"name": "Wyrmblessed",
+					"shortName": "Wyrmblessed",
+					"type": "Bloodline",
+					"source": "LOME",
+					"page": 75,
+					"subclassFeatures": [
+						"Bloodline|Sorcerer|CRB|Wyrmblessed|LOME|1"
+					]
+				},
+				{
 					"name": "Draconic",
 					"shortName": "Draconic",
 					"type": "Bloodline",
@@ -260,6 +270,16 @@
 					"page": 138,
 					"subclassFeatures": [
 						"Bloodline|Sorcerer|CRB|Shadow|APG|1"
+					]
+				},
+				{
+					"name": "Phoenix",
+					"shortName": "Phoenix",
+					"type": "Bloodline",
+					"source": "FRP3",
+					"page": 74,
+					"subclassFeatures": [
+						"Bloodline|Sorcerer|CRB|Phoenix|FRP3|1"
 					]
 				}
 			],
@@ -1284,6 +1304,81 @@
 		},
 		{
 			"name": "Bloodline",
+			"source": "LOME",
+			"page": 75,
+			"className": "Sorcerer",
+			"classSource": "CRB",
+			"subclassShortName": "Wyrmblessed",
+			"subclassSource": "LOME",
+			"level": 1,
+			"entries": [
+				{
+					"type": "pf2-h4",
+					"name": "Wyrmblessed",
+					"entries": [
+						"You lay claim to the might of dragons, but your powers are sacred instead of arcane\u2014born from a worship of draconic might so powerful it infused your blood or, perhaps, from a celestial or draconic power blessing one of your ancestors received.",
+						{
+							"type": "pf2-options",
+							"style": "pf2-p",
+							"skipSort": true,
+							"items": [
+								{
+									"type": "item",
+									"name": "Spell List",
+									"entries": [
+										"{@filter divine|spells||tradition & spell list=divine}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "Bloodline Skills",
+									"entries": [
+										"{@skill Intimidation}, {@skill Religion}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "Granted Spells",
+									"entries": [
+										"cantrip: {@i {@spell read aura}}; 1st: {@i {@spell mage armor}}; 2nd: {@i {@spell resist energy}}; 3rd: {@i {@spell haste}}; 4th: {@i {@spell reflective scales|LOGM}}; 5th: {@i {@spell cloak of colors}}; 6th: {@i {@spell repulsion}}; 7th: {@i {@spell mask of terror}}; 8th: {@i {@spell divine inspiration}}; 9th: {@i {@spell overwhelming presence}}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "Bloodline Spells",
+									"entries": [
+										"initial: {@i {@spell dragon claws}}; advanced: {@i {@spell dragon breath}}; greater: {@i {@spell dragon wings}}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "Blood Magic",
+									"entries": [
+										"Draconic might carries in your voice. Either you gain a +1 status bonus to {@skill Intimidation} checks for 1 round, or a target takes a \u20131 status penalty to Will saves for 1 round."
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"type": "pf2-h4",
+					"name": "Dragon Type",
+					"entries": [
+						"At 1st level, choose the type of dragon that influenced your bloodline. You can't change your dragon type later. This choice affects how some of your bloodline spells function. The good metallic dragons and their damage types are brass (fire), bronze (electricity), copper (acid), gold (fire), and silver (cold). The evil chromatic dragons and their damage types are black (acid), blue (electricity), green (poison), red (fire), and white (cold). The primal dragons of planar origin and their damage types are brine (acid), cloud (electricity), crystal (piercing), magma (fire), and umbral (negative). The imperial dragons and their damage types are forest (piercing), sea (bludgeoning), sky (electricity), sovereign (mental), and underworld (fire). For the {@spell dragon breath} focus spell, the area is a 60-foot line for a brine dragon; a 30-foot cone for a cloud, crystal, forest, magma, sovereign, or umbral dragon; and a 10-foot burst within 30 feet for a sea, sky, or underworld dragon."
+					]
+				},
+				{
+					"type": "pf2-h4",
+					"name": "Related Bloodline",
+					"entries": [
+						"Because the wyrmblessed and {@class sorcerer||draconic|draconic} bloodlines have similar origins, they count the same as each other for the purposes of prerequisites and access requirements."
+					]
+				}
+			]
+		},
+		{
+			"name": "Bloodline",
 			"source": "CRB",
 			"page": 196,
 			"className": "Sorcerer",
@@ -1345,7 +1440,70 @@
 					"type": "pf2-h4",
 					"name": "Dragon Type",
 					"entries": [
-						"At 1st level, choose the type of dragon that influenced your bloodline. You can't change your dragon type later. This affects how some of your bloodline spells function. The good metallic dragons and their damage types are brass (fire), bronze (electricity), copper (acid), gold (fire), and silver (cold). The evil chromatic dragons and their damage types are black (acid), blue (electricity), green (poison), red (fire), and white (cold)."
+						"At 1st level, choose the type of dragon that influenced your bloodline. You can't change your dragon type later. This affects how some of your bloodline spells function. The good metallic dragons and their damage types are brass (fire), bronze (electricity), copper (acid), gold (fire), and silver (cold). The evil chromatic dragons and their damage types are black (acid), blue (electricity), green (poison), red (fire), and white (cold).",
+						"{@note While not explicitly stated to be available to Draconic Sorcerers, in {@book Lost Omens: The Mwangi Expanse|LOME} and Strength of Thousands: Hurricane's Howl, the types of dragons have been expanded with the following: The primal dragons of planar origin and their damage types are brine (acid), cloud (electricity), crystal (piercing), magma (fire), and umbral (negative). The imperial dragons and their damage types are forest (piercing), sea (bludgeoning), sky (electricity), sovereign (mental), and underworld (fire).}"
+					]
+				}
+			]
+		},
+		{
+			"name": "Bloodline",
+			"source": "FRP3",
+			"page": 74,
+			"className": "Sorcerer",
+			"classSource": "CRB",
+			"subclassShortName": "Phoenix",
+			"subclassSource": "FRP3",
+			"level": 1,
+			"entries": [
+				{
+					"type": "pf2-h4",
+					"name": "Phoenix ({@trait Uncommon})",
+					"entries": [
+						"You have been blessed by a phoenix, perhaps via some, magical interaction with a similarly blessed individual.",
+						"Grant this new sorcerer bloodline to players who finish the Fists of the Ruby Phoenix Adventure Path. Players can then choose this bloodline for any new sorcerer characters they create for future campaigns.",
+						{
+							"type": "pf2-options",
+							"style": "pf2-p",
+							"skipSort": true,
+							"items": [
+								{
+									"type": "item",
+									"name": "Spell List",
+									"entries": [
+										"{@filter primal|spells||tradition & spell list=primal}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "Bloodline Skills",
+									"entries": [
+										"{@skill Diplomacy}, {@skill Nature}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "Granted Spells",
+									"entries": [
+										"cantrip: {@i {@spell detect magic}}; 1st: {@i {@spell burning hands}}; 2nd: {@i {@spell see invisibility}}; 3rd: {@i {@spell fireball}}; 4th: {@i {@spell remove curse}}; 5th: {@i {@spell breath of life}}; 6th: {@i {@spell disintegrate}}; 7th: {@i {@spell contingency}}; 8th: {@i {@spell moment of renewal}}; 9th: {@i {@spell meteor swarm}}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "Bloodline Spells",
+									"entries": [
+										"initial: {@i {@spell rejuvenating flames|frp3}}; advanced: {@i {@spell shroud of flame|frp3}}; greater: {@i {@spell cleansing flames|frp3}}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "Blood Magic",
+									"entries": [
+										"The primal fire of life and death flows through you or one target. Choose to have either you or a target of the spell gain temporary Hit Points equal to the spell's level for 1 round, or to have a target of the spell take fire damage equal to the spell's level (if the spell already deals initial fire damage, combine this with the spell's initial damage before determining weaknesses and resistances)."
+									]
+								}
+							]
+						}
 					]
 				}
 			]

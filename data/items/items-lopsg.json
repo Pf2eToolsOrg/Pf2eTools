@@ -215,7 +215,6 @@
 			"name": "Buoyancy Vest",
 			"source": "LOPSG",
 			"page": 114,
-			"equipment": true,
 			"type": "Item",
 			"traits": [],
 			"price": {
@@ -242,7 +241,7 @@
 				"amount": 42
 			},
 			"bulk": 1,
-			"category": "no category found",
+			"category": "Adventuring Gear",
 			"entries": [
 				"This kit includes a {@item writing set}, a compass, a {@item standard astrolabe|LOPSG}, a {@item ruler|LOPSG}, and a survey map."
 			]
@@ -287,7 +286,6 @@
 			"name": "Clockwork Dial",
 			"source": "LOPSG",
 			"page": 114,
-			"equipment": true,
 			"type": "Item",
 			"traits": [
 				"Uncommon"
@@ -306,7 +304,6 @@
 			"name": "Comealong",
 			"source": "LOPSG",
 			"page": 114,
-			"equipment": true,
 			"type": "Item",
 			"traits": [
 				"Uncommon"
@@ -398,7 +395,7 @@
 						"freq": 1
 					},
 					"entries": [
-						"You place the key on a Small object and turn it, creating a simple animated object for 1 hour. The animated object has the statistics of an animated broom (Pathfinder Bestiary 20) but has no bristles {@action Strike} and can't attack. It performs simple and broad menial tasks for you in exploration or downtime but is too slow to react to individual commands to assist you in a combat encounter."
+						"You place the key on a Small object and turn it, creating a simple animated object for 1 hour. The animated object has the statistics of an {@creature animated broom} but has no bristles {@action Strike} and can't attack. It performs simple and broad menial tasks for you in exploration or downtime but is too slow to react to individual commands to assist you in a combat encounter."
 					]
 				}
 			],
@@ -472,7 +469,6 @@
 			"name": "Depth Gauge",
 			"source": "LOPSG",
 			"page": 114,
-			"equipment": true,
 			"type": "Item",
 			"traits": [
 				"Uncommon"
@@ -514,7 +510,6 @@
 			"name": "Earplugs",
 			"source": "LOPSG",
 			"page": 114,
-			"equipment": true,
 			"type": "Item",
 			"price": {
 				"coin": "cp",
@@ -717,7 +712,6 @@
 			"name": "False Manacles",
 			"source": "LOPSG",
 			"page": 114,
-			"equipment": true,
 			"type": "Item",
 			"traits": [
 				"Uncommon"
@@ -736,7 +730,6 @@
 			"name": "Familiar satchel",
 			"source": "LOPSG",
 			"page": 114,
-			"equipment": true,
 			"type": "Item",
 			"traits": [
 				"Uncommon"
@@ -803,17 +796,28 @@
 				"amount": 10
 			},
 			"bulk": "L or \u2014",
-			"category": "no category found",
+			"category": "Adventuring Gear",
 			"entries": [
-				"This item is a formula book, religious text, or spellbook that has been creased\u2014possibly by Princess Ganjay herself\u2014to fold up into an impossibly small shape. When folded up, the book can't be read or used, but its Bulk is reduced by 1 (a book that is 1 Bulk becomes light Bulk, and a book that is light Bulk becomes negligible in weight)",
-				"Activate 1 minute ({@action Interact}) You fold or unfold the Ganjay book, manipulating the cunning creases."
+				"This item is a {@item formula book (blank)||formula book}, {@item religious text}, or {@item spellbook (blank)||spellbook} that has been creased\u2014possibly by Princess Ganjay herself\u2014to fold up into an impossibly small shape. When folded up, the book can't be read or used, but its Bulk is reduced by 1 (a book that is 1 Bulk becomes light Bulk, and a book that is light Bulk becomes negligible in weight)",
+				{
+					"type": "ability",
+					"activity": {
+						"unit": "minute",
+						"number": 1
+					},
+					"components": [
+						"{@action Interact}"
+					],
+					"entries": [
+						"You fold or unfold the Ganjay book, manipulating the cunning creases."
+					]
+				}
 			]
 		},
 		{
 			"name": "Glass Cutter",
 			"source": "LOPSG",
 			"page": 114,
-			"equipment": true,
 			"type": "Item",
 			"traits": [
 				"Uncommon"
@@ -833,7 +837,6 @@
 			"name": "Grappling Arrow",
 			"source": "LOPSG",
 			"page": 114,
-			"equipment": true,
 			"type": "Item",
 			"traits": [
 				"Uncommon"
@@ -856,7 +859,6 @@
 			"name": "Grappling Bolt",
 			"source": "LOPSG",
 			"page": 114,
-			"equipment": true,
 			"type": "Item",
 			"traits": [
 				"Uncommon"
@@ -964,7 +966,6 @@
 			"name": "Marked Playing Cards",
 			"source": "LOPSG",
 			"page": 114,
-			"equipment": true,
 			"type": "Item",
 			"price": {
 				"coin": "gp",
@@ -1065,7 +1066,6 @@
 			"name": "Playing Cards",
 			"source": "LOPSG",
 			"page": 114,
-			"equipment": true,
 			"type": "Item",
 			"price": {
 				"coin": "sp",
@@ -1225,14 +1225,13 @@
 			"name": "Replacement Filter",
 			"source": "LOPSG",
 			"page": 114,
-			"equipment": true,
 			"type": "Item",
 			"traits": [
 				"Uncommon"
 			],
 			"category": "Adventuring Gear",
 			"entries": [
-				"{@note See {@item Water Purifier} for information.}"
+				"{@note See {@item Water Purifier|LOPSG} for information.}"
 			],
 			"generic": "G",
 			"variants": [
@@ -1278,7 +1277,6 @@
 			"name": "Rubbing Set",
 			"source": "LOPSG",
 			"page": 114,
-			"equipment": true,
 			"type": "Item",
 			"traits": [
 				"Uncommon"
@@ -1298,7 +1296,6 @@
 			"name": "Ruler",
 			"source": "LOPSG",
 			"page": 35,
-			"equipment": true,
 			"type": "Item",
 			"level": 0,
 			"traits": [],
@@ -1376,7 +1373,6 @@
 			"name": "Shield Sconce",
 			"source": "LOPSG",
 			"page": 114,
-			"equipment": true,
 			"type": "Item",
 			"traits": [
 				"Uncommon"
@@ -1394,7 +1390,6 @@
 			"name": "Snowshoes",
 			"source": "LOPSG",
 			"page": 114,
-			"equipment": true,
 			"type": "Item",
 			"price": {
 				"coin": "gp",
@@ -1676,7 +1671,6 @@
 			"name": "Water Purifier",
 			"source": "LOPSG",
 			"page": 114,
-			"equipment": true,
 			"type": "Item",
 			"traits": [
 				"Uncommon"
@@ -1706,7 +1700,7 @@
 				"amount": 5
 			},
 			"bulk": 1,
-			"category": "no category found",
+			"category": "Adventuring Gear",
 			"entries": [
 				"This leather-bound tome is specially treated to protect from water damage and comes with a key and a treated slipcase that bears a simple lock to keep the tome secure. This journal is commonly used by adventuring scholars and ship navigators for recording their journeys."
 			]
@@ -1715,7 +1709,6 @@
 			"name": "Wax Key Blank",
 			"source": "LOPSG",
 			"page": 114,
-			"equipment": true,
 			"type": "Item",
 			"traits": [
 				"Uncommon"

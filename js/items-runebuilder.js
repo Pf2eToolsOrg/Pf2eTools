@@ -65,6 +65,8 @@ class RuneBuilder extends ProxyBase {
 		$(`#btn-runebuild--change`).toggleClass("hidden", !this.isActive());
 		$(`#btn-runebuild--save`).toggleClass("hidden", !this.isActive());
 		$(`#btn-runebuild--cancel`).toggleClass("hidden", !this.isActive());
+		$(`#btn-printbook`).toggleClass("hidden", this.isActive());
+		$(`#btn-show-table`).toggleClass("hidden", this.isActive());
 	}
 
 	async initState () {

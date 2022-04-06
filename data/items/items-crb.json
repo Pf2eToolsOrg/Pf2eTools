@@ -33,6 +33,7 @@
 				{
 					"type": "lesser",
 					"level": 1,
+					"equipment": true,
 					"price": {
 						"coin": "gp",
 						"amount": 3
@@ -111,7 +112,6 @@
 			"name": "Adamantine",
 			"source": "CRB",
 			"page": 578,
-			"equipment": true,
 			"type": "Material",
 			"level": "8+",
 			"traits": [
@@ -812,6 +812,7 @@
 				{
 					"type": "lesser",
 					"level": 1,
+					"equipment": true,
 					"price": {
 						"coin": "gp",
 						"amount": 3
@@ -1136,6 +1137,7 @@
 				{
 					"type": "lesser",
 					"level": 1,
+					"equipment": true,
 					"price": {
 						"coin": "gp",
 						"amount": 3
@@ -1331,6 +1333,7 @@
 				{
 					"type": "lesser",
 					"level": 1,
+					"equipment": true,
 					"price": {
 						"coin": "gp",
 						"amount": 3
@@ -1544,8 +1547,6 @@
 			"name": "Arrow",
 			"source": "CRB",
 			"page": 282,
-			"equipment": true,
-			"type": "Equipment",
 			"traits": [],
 			"price": {
 				"coin": "sp",
@@ -1922,7 +1923,7 @@
 			"hands": 2,
 			"category": "Adventuring Gear",
 			"entries": [
-				"This book contains the {@quickref formulas|CRB|1|formulas|0} for {@action Craft||Crafting} the {@filter common items in Chapter 6: Equipment of the Core Rulebook|items||Source=CRB|Rarity=Common}."
+				"This book contains the {@quickref formulas|CRB|1|formulas|0} for {@action Craft||Crafting} the {@filter common items in Chapter 6: Equipment of the Core Rulebook|items||Source=CRB|Rarity=Common|Type=Equipment;!Specific Variant}."
 			]
 		},
 		{
@@ -2634,8 +2635,6 @@
 			"name": "Blowgun Dart",
 			"source": "CRB",
 			"page": 281,
-			"equipment": true,
-			"type": "Equipment",
 			"traits": [],
 			"price": {
 				"coin": "cp",
@@ -2652,8 +2651,6 @@
 			"name": "Bolt",
 			"source": "CRB",
 			"page": 281,
-			"equipment": true,
-			"type": "Equipment",
 			"traits": [],
 			"price": {
 				"coin": "sp",
@@ -2976,6 +2973,7 @@
 				{
 					"type": "lesser",
 					"level": 1,
+					"equipment": true,
 					"price": {
 						"coin": "gp",
 						"amount": 3
@@ -3495,7 +3493,7 @@
 			"usage": "worn",
 			"category": "Worn",
 			"entries": [
-				"This piece of silver or gold jewelry is adorned with miniature images of kite shields and can be used to fasten a cloak or cape. The brooch automatically absorbs {@spell magic missile} spells targeting you. A brooch of shielding can absorb 30 individual magic missiles before it melts and becomes useless.",
+				"This piece of silver or gold jewelry is adorned with miniature images of kite shields and can be used to fasten a cloak or cape. The brooch automatically absorbs {@spell magic missile} spells targeting you. A brooch of shielding can absorb 30 individual {@spell magic missile}s before it melts and becomes useless.",
 				"Sometimes when found, a brooch of shielding has already absorbed a number of missiles."
 			]
 		},
@@ -4475,7 +4473,6 @@
 			"name": "Cold Iron",
 			"source": "CRB",
 			"page": 578,
-			"equipment": true,
 			"type": "Material",
 			"level": "2+",
 			"traits": [
@@ -5143,7 +5140,7 @@
 			"usage": "worn eyepiece",
 			"category": "Worn",
 			"entries": [
-				"This rugged metal eyepiece etched with square patterns is designed to be worn over a single eye. Twisting the lens reveals a faint three-dimensional outline of an item you plan to build or repair, with {@condition helpful} labels on the component parts. While worn, this eyepiece gives you a +1 item bonus to {@skill Crafting} checks. When you {@action Repair} an item, increase the Hit Points restored by 15 per proficiency rank instead of 10."
+				"This rugged metal eyepiece etched with square patterns is designed to be worn over a single eye. Twisting the lens reveals a faint three-dimensional outline of an item you plan to build or repair, with helpful labels on the component parts. While worn, this eyepiece gives you a +1 item bonus to {@skill Crafting} checks. When you {@action Repair} an item, increase the Hit Points restored by 15 per proficiency rank instead of 10."
 			],
 			"generic": "G",
 			"variants": [
@@ -5165,8 +5162,58 @@
 					},
 					"entries": [
 						"The eyepiece grants a +2 item bonus and can be activated.",
-						"{@b Activate} 1 minute ({@action Interact}); {@b Frequency} once per day; {@b Effect} You calibrate the eyepiece to have it cast a 5th-level {@spell creation} spell over the course of 1 minute to construct a temporary item."
-					]
+						{
+							"type": "ability",
+							"style": "compact",
+							"activity": {
+								"number": 1,
+								"unit": "minute"
+							},
+							"components": [
+								"Interact"
+							],
+							"frequency": {
+								"freq": 1,
+								"unit": "day"
+							},
+							"entries": [
+								"You calibrate the eyepiece to have it cast a 5th-level {@spell creation} spell over the course of 1 minute to construct a temporary item."
+							]
+						}
+					],
+					"_mod": {
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"with": "+2",
+								"replace": "\\+1"
+							},
+							{
+								"mode": "appendArr",
+								"items": [
+									{
+										"type": "ability",
+										"style": "compact",
+										"activity": {
+											"number": 1,
+											"unit": "minute"
+										},
+										"components": [
+											"Interact"
+										],
+										"frequency": {
+											"freq": 1,
+											"unit": "day"
+										},
+										"entries": [
+											"You calibrate the eyepiece to have it cast a 5th-level {@spell creation} spell over the course of 1 minute to construct a temporary item."
+										]
+									}
+								]
+							}
+						],
+						"entriesMode": "generic"
+					}
 				}
 			]
 		},
@@ -5704,7 +5751,6 @@
 			"name": "Darkwood",
 			"source": "CRB",
 			"page": 578,
-			"equipment": true,
 			"type": "Material",
 			"level": "8+",
 			"traits": [
@@ -6764,7 +6810,6 @@
 			"name": "Dragonhide",
 			"source": "CRB",
 			"page": 579,
-			"equipment": true,
 			"type": "Material",
 			"level": "8+",
 			"traits": [
@@ -7490,6 +7535,7 @@
 				{
 					"type": "minor",
 					"level": 1,
+					"equipment": true,
 					"price": {
 						"coin": "gp",
 						"amount": 3
@@ -8819,6 +8865,7 @@
 				{
 					"type": "lesser",
 					"level": 1,
+					"equipment": true,
 					"price": {
 						"coin": "gp",
 						"amount": 3
@@ -10065,6 +10112,7 @@
 				{
 					"type": "minor",
 					"level": 1,
+					"equipment": true,
 					"price": {
 						"coin": "gp",
 						"amount": 4
@@ -10425,6 +10473,7 @@
 			"name": "Holy Water",
 			"source": "CRB",
 			"page": 571,
+			"equipment": true,
 			"type": "Item",
 			"level": 1,
 			"traits": [
@@ -11975,7 +12024,6 @@
 						"coin": "gp",
 						"amount": 19000
 					},
-					"craftReq": "You must supply a casting of charm of the appropriate level.",
 					"entries": [
 						"The item bonus is +3, and the {@spell charm} spell is 8th level (DC 38)."
 					]
@@ -12068,6 +12116,136 @@
 					"entries": [
 						"This armor has a +3 armor potency rune (increase the item bonus to AC by 3) and a major resilient rune (+3 item bonus to saves)."
 					]
+				}
+			]
+		},
+		{
+			"name": "Scroll",
+			"source": "CRB",
+			"page": 564,
+			"type": "Item",
+			"level": "1+",
+			"traits": [
+				"Consumable",
+				"Magical",
+				"Scroll"
+			],
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"activate": {
+				"components": [
+					"{@action Cast a Spell}"
+				]
+			},
+			"category": "Scroll",
+			"entries": [
+				"A scroll contains a single spell that you can cast without having to expend a spell slot. A scroll can be {@action Craft||Crafted} to contain nearly any spell, so the types of scrolls available are limited only by the number of spells in the game. The exceptions are cantrips, focus spells, and rituals, none of which can be put on scrolls. The spell on a scroll can be cast only once, and the scroll is destroyed as part of the casting. The spell on the scroll is cast at a particular spell level, as determined by the scroll. For instance, a scroll of {@spell magic missile} (1st level) can be used to cast the 1st-level version of {@spell magic missile}, but not a {@spell magic missile} heightened to 2nd level. If no level is listed, the scroll can be used to cast the spell at its lowest level.",
+				"If you find a scroll, you can try to figure out what spell it contains. If the spell is a common spell from your spell list or a spell you know, you can spend a single {@action Recall Knowledge} action and automatically succeed at identifying the scroll's spell. If it's not, you must use {@action Identify Magic} to learn what spell the scroll holds.",
+				"{@note See the following for more details on the rules for {@quickref Scrolls||1|Scrolls}.}"
+			],
+			"craftReq": "Supply a listed-level casting of the spell.",
+			"generic": "G",
+			"variants": [
+				{
+					"type": "1st-level spell",
+					"level": 1,
+					"equipment": true,
+					"price": {
+						"coin": "gp",
+						"amount": 4
+					},
+					"craftReq": "Supply a 1st-level casting of the spell.",
+					"entries": []
+				},
+				{
+					"type": "2nd-level spell",
+					"level": 3,
+					"craftReq": "Supply a 2nd-level casting of the spell.",
+					"price": {
+						"coin": "gp",
+						"amount": 12
+					},
+					"entries": []
+				},
+				{
+					"type": "3rd-level spell",
+					"level": 5,
+					"craftReq": "Supply a 3rd-level casting of the spell.",
+					"price": {
+						"coin": "gp",
+						"amount": 30
+					},
+					"entries": []
+				},
+				{
+					"type": "4th-level spell",
+					"level": 7,
+					"craftReq": "Supply a 4th-level casting of the spell.",
+					"price": {
+						"coin": "gp",
+						"amount": 70
+					},
+					"entries": []
+				},
+				{
+					"type": "5th-level spell",
+					"level": 9,
+					"craftReq": "Supply a 5th-level casting of the spell.",
+					"price": {
+						"coin": "gp",
+						"amount": 150
+					},
+					"entries": []
+				},
+				{
+					"type": "6th-level spell",
+					"level": 11,
+					"craftReq": "Supply a 6th-level casting of the spell.",
+					"price": {
+						"coin": "gp",
+						"amount": 300
+					},
+					"entries": []
+				},
+				{
+					"type": "7th-level spell",
+					"level": 13,
+					"craftReq": "Supply a 7th-level casting of the spell.",
+					"price": {
+						"coin": "gp",
+						"amount": 600
+					},
+					"entries": []
+				},
+				{
+					"type": "8th-level spell",
+					"level": 15,
+					"craftReq": "Supply a 8th-level casting of the spell.",
+					"price": {
+						"coin": "gp",
+						"amount": 1300
+					},
+					"entries": []
+				},
+				{
+					"type": "9th-level spell",
+					"level": 17,
+					"craftReq": "Supply a 9th-level casting of the spell.",
+					"price": {
+						"coin": "gp",
+						"amount": 3000
+					},
+					"entries": []
+				},
+				{
+					"type": "10th-level spell",
+					"level": 19,
+					"craftReq": "Supply a 10th-level casting of the spell.",
+					"price": {
+						"coin": "gp",
+						"amount": 8000
+					},
+					"entries": []
 				}
 			]
 		},
@@ -12978,7 +13156,6 @@
 			"name": "Mithral",
 			"source": "CRB",
 			"page": 579,
-			"equipment": true,
 			"type": "Material",
 			"level": "8+",
 			"traits": [
@@ -13256,7 +13433,7 @@
 			],
 			"usage": "varies by weapon",
 			"bulk": "varies by weapon",
-			"category": "Weapon",
+			"category": "Material",
 			"entries": [
 				"Mithral weapons are slightly lighter than silver. A mithral weapon is 1 Bulk lighter than normal (or light Bulk if its normal Bulk is 1, with no effect on a weapon that normally has light Bulk)."
 			],
@@ -14176,7 +14353,6 @@
 			"name": "Orichalcum",
 			"source": "CRB",
 			"page": 579,
-			"equipment": true,
 			"type": "Material",
 			"level": "17+",
 			"traits": [
@@ -14820,6 +14996,7 @@
 			"name": "Potency Crystal",
 			"source": "CRB",
 			"page": 569,
+			"equipment": true,
 			"type": "Item",
 			"level": 1,
 			"traits": [
@@ -15668,6 +15845,7 @@
 				{
 					"type": "Concealable",
 					"level": 4,
+					"equipment": false,
 					"source": "LOPSG",
 					"page": 114,
 					"traits": [
@@ -15982,7 +16160,7 @@
 			"usage": "worn",
 			"category": "Worn",
 			"entries": [
-				"This ring seems like simple tarnished brass, but it enhances your curiosity about traps and devices of all kinds. You can use an {@action Interact} action to pull a set of thieves' tools from the ring. These tools appear in your hand and fold back into the ring if they would leave your possession. They grant you a +2 item bonus to {@skill Thievery} checks to {@action Disable a Device} and to {@action Pick a Lock}, and the ring's insights grant you the same bonus to {@skill Crafting} checks to {@action Craft} and {@action Repair} snares and traps.",
+				"This ring seems like simple tarnished brass, but it enhances your curiosity about traps and devices of all kinds. You can use an {@action Interact} action to pull a set of {@item thieves' tools} from the ring. These tools appear in your hand and fold back into the ring if they would leave your possession. They grant you a +2 item bonus to {@skill Thievery} checks to {@action Disable a Device} and to {@action Pick a Lock}, and the ring's insights grant you the same bonus to {@skill Crafting} checks to {@action Craft} and {@action Repair} snares and traps.",
 				{
 					"type": "ability",
 					"style": "compact",
@@ -17614,7 +17792,6 @@
 			"name": "Silver",
 			"source": "CRB",
 			"page": 579,
-			"equipment": true,
 			"type": "Material",
 			"level": "2+",
 			"traits": [
@@ -18151,8 +18328,8 @@
 			"usage": "held in 1 hand",
 			"category": "Held",
 			"entries": [
-				"A grinning skull tops the bow of this macabre key. This key can be used in place of thieves' tools when attempting to {@action Pick a Lock}, and it grants a +1 item bonus to the {@skill Thievery} check.",
-				"If the skeleton key becomes {@condition broken} due to a critical failure on the check, it works as normal thieves' tools and loses its benefits until repaired.",
+				"A grinning skull tops the bow of this macabre key. This key can be used in place of {@item thieves' tools} when attempting to {@action Pick a Lock}, and it grants a +1 item bonus to the {@skill Thievery} check.",
+				"If the skeleton key becomes {@condition broken} due to a critical failure on the check, it works as normal {@item thieves' tools} and loses its benefits until repaired.",
 				{
 					"type": "ability",
 					"style": "compact",
@@ -18330,8 +18507,6 @@
 			"name": "Sling Bullets",
 			"source": "CRB",
 			"page": 282,
-			"equipment": true,
-			"type": "Equipment",
 			"traits": [],
 			"price": {
 				"coin": "cp",
@@ -18473,6 +18648,7 @@
 				{
 					"type": "lesser",
 					"level": 1,
+					"equipment": true,
 					"price": {
 						"coin": "gp",
 						"amount": 3
@@ -18706,7 +18882,7 @@
 			]
 		},
 		{
-			"name": "Spellbook (blank)",
+			"name": "Spellbook (Blank)",
 			"source": "CRB",
 			"page": 288,
 			"equipment": true,
@@ -18719,7 +18895,7 @@
 			"hands": 1,
 			"category": "Adventuring Gear",
 			"entries": [
-				"A spellbook holds the written knowledge necessary to learn and prepare various spells, a necessity for wizards (who typically get one for free) and a useful luxury for other spellcasters looking to learn additional spells. Each spellbook can hold up to 100 spells. The Price listed is for a blank spellbook.",
+				"A spellbook holds the written knowledge necessary to learn and prepare various spells, a necessity for {@class wizard||wizards} (who typically get one for free) and a useful luxury for other spellcasters looking to learn additional spells. Each spellbook can hold up to 100 spells. The Price listed is for a blank spellbook.",
 				{
 					"type": "pf2-brown-box",
 					"page": 297,
@@ -19559,7 +19735,7 @@
 							"type": "list",
 							"items": [
 								"{@bold Cantrip} ray of frost",
-								"{@bold 1st} magic missile, shocking grasp",
+								"{@bold 1st} {@spell magic missile}, shocking grasp",
 								"{@bold 2nd} acid arrow, glitterdust"
 							]
 						}
@@ -19576,7 +19752,7 @@
 						{
 							"type": "list",
 							"items": [
-								"{@bold 3rd} lightning bolt, magic missile",
+								"{@bold 3rd} lightning bolt, {@spell magic missile}",
 								"{@bold 4th} fireball, weapon storm"
 							]
 						}
@@ -19593,7 +19769,7 @@
 						{
 							"type": "list",
 							"items": [
-								"{@bold 5th} cone of cold, magic missile",
+								"{@bold 5th} cone of cold, {@spell magic missile}",
 								"{@bold 6th} chain lightning, wall of force"
 							]
 						}
@@ -20051,7 +20227,7 @@
 								"{@bold 2nd} continual flame",
 								"{@bold 3rd} levitate",
 								"{@bold 4th} globe of invulnerability, paralyze",
-								"{@bold 5th} magic missile",
+								"{@bold 5th} {@spell magic missile}",
 								"{@bold 6th} wall of force",
 								"{@bold 7th} cone of cold, fireball, lightning bolt"
 							]
@@ -20665,6 +20841,7 @@
 					"Interact"
 				]
 			},
+			"equipment": true,
 			"category": "Tool",
 			"entries": [
 				"This 1-foot-long, gold-tipped rod glows after it's struck on a hard surface. For the next 6 hours, it sheds bright light in a 20-foot radius (and dim light to the next 40 feet)."
@@ -20795,6 +20972,7 @@
 				{
 					"type": "lesser",
 					"level": 1,
+					"equipment": true,
 					"price": {
 						"coin": "gp",
 						"amount": 3
@@ -21097,6 +21275,7 @@
 				},
 				{
 					"type": "Concealable",
+					"equipment": false,
 					"traits": [
 						"Uncommon"
 					],
@@ -21249,6 +21428,7 @@
 					"entries": [
 						"The bomb deals {@damage 1d4} sonic damage and 1 sonic splash damage, and the DC is 17."
 					],
+					"equipment": true,
 					"_mod": {
 						"entries": [
 							{
@@ -21468,6 +21648,7 @@
 			"name": "Tindertwig",
 			"source": "CRB",
 			"page": 554,
+			"equipment": true,
 			"type": "Item",
 			"level": 1,
 			"traits": [
@@ -21477,7 +21658,8 @@
 			],
 			"price": {
 				"coin": "sp",
-				"amount": 2
+				"amount": 2,
+				"note": "for price of 10"
 			},
 			"usage": "held in 1 hand",
 			"activate": {
@@ -21850,6 +22032,7 @@
 			"name": "Unholy Water",
 			"source": "CRB",
 			"page": 571,
+			"equipment": true,
 			"type": "Item",
 			"level": 1,
 			"traits": [
@@ -22132,7 +22315,7 @@
 			],
 			"category": "Ammunition",
 			"entries": [
-				"The shaft of this arrow is covered in fine green scales, and its iron head comes to a pair of points almost like fangs. After an activated viper arrow hits a target, the arrow transforms into a viper (Pathfinder Bestiary 302). The target is affected by the viper's poison, as if it had been bitten. The viper then lands in an open space adjacent to the target.",
+				"The shaft of this arrow is covered in fine green scales, and its iron head comes to a pair of points almost like fangs. After an activated viper arrow hits a target, the arrow transforms into a {@creature viper}. The target is affected by the viper's poison, as if it had been bitten. The viper then lands in an open space adjacent to the target.",
 				"The viper has the summoned trait and acts at the end of your turn, even though you didn't use the {@action Sustain a Spell} action. It is under the GM's control, but it generally attacks the creature the arrow struck. The viper vanishes after 1 minute or when slain."
 			],
 			"craftReq": "Supply one casting of {@spell summon animal}."
@@ -22525,11 +22708,11 @@
 						"overcharge": true
 					},
 					"entries": [
-						"You cast {@spell magic missile} of the indicated level. After you cast the spell, an additional missile or missiles are released from the wand at the start of each of your turns, as though you cast the 1-action version of magic missile. Choose targets each time. This lasts for 1 minute, until you're no longer wielding the wand, or until you try to activate the wand again."
+						"You cast {@spell magic missile} of the indicated level. After you cast the spell, an additional missile or missiles are released from the wand at the start of each of your turns, as though you cast the 1-action version of {@spell magic missile}. Choose targets each time. This lasts for 1 minute, until you're no longer wielding the wand, or until you try to activate the wand again."
 					]
 				}
 			],
-			"craftReq": "Supply a casting of magic missile of the appropriate level.",
+			"craftReq": "Supply a casting of {@spell magic missile} of the appropriate level.",
 			"generic": "G",
 			"variants": [
 				{
@@ -23198,14 +23381,14 @@
 				},
 				"components": [
 					"envision"
-				]
+				],
+				"trigger": "You successfully {@action Trip} a foe",
+				"requirements": "You are trained in {@skill Athletics}."
 			},
 			"category": "Talisman",
 			"entries": [
 				"This wolf canine is bound in a strip of leather and tied to a buckle or strap of a suit of armor. When you activate the fang, you deal bludgeoning damage equal to your Strength modifier to the target of your {@action Trip}. If your {@action Trip} would already deal physical damage that doesn't include an ability modifier, add your Strength modifier to that damage."
-			],
-			"trigger": "You successfully {@action Trip} a foe",
-			"requirements": "You are trained in {@skill Athletics}."
+			]
 		},
 		{
 			"name": "Wolfsbane",
@@ -23307,7 +23490,7 @@
 						"amount": 900
 					},
 					"entries": [
-						"This statuette depicts a pair of gold lions, and when activated, it becomes a pair of adult lions (Pathfinder Bestiary 52). The lions can be called on only once per day, and they remain in lion form for no more than 1 hour. If either of the lions is slain, that lion cannot be summoned again until 1 week has passed, but this doesn't prevent you from summoning the other."
+						"This statuette depicts a pair of gold lions, and when activated, it becomes a pair of adult {@creature lion||lions}. The lions can be called on only once per day, and they remain in lion form for no more than 1 hour. If either of the lions is slain, that lion cannot be summoned again until 1 week has passed, but this doesn't prevent you from summoning the other."
 					]
 				},
 				{
@@ -23318,7 +23501,7 @@
 						"amount": 340
 					},
 					"entries": [
-						"This tiny statue first appears to be a formless lump of jade until closer inspection reveals it to be a serpentine body curled into a snug knot. When activated, this figurine becomes a giant viper (Pathfinder Bestiary 303). The figurine can be used only once per day, and it can remain in serpent form for no more than 10 minutes."
+						"This tiny statue first appears to be a formless lump of jade until closer inspection reveals it to be a serpentine body curled into a snug knot. When activated, this figurine becomes a {@creature giant viper}. The figurine can be used only once per day, and it can remain in serpent form for no more than 10 minutes."
 					]
 				},
 				{
@@ -23329,7 +23512,7 @@
 						"amount": 2700
 					},
 					"entries": [
-						"Finely carved from a solid piece of marble, this gleaming elephant statuette becomes a fully grown elephant (Pathfinder Bestiary 154) when activated. The elephant can be called upon no more than four times per month.",
+						"Finely carved from a solid piece of marble, this gleaming elephant statuette becomes a fully grown {@creature elephant} when activated. The elephant can be called upon no more than four times per month.",
 						"It remains for 24 hours as long as it is being used as a beast of burden or for transport. If it attempts an attack or otherwise engages in combat, it reverts to statuette form after {@dice 1d4} rounds."
 					]
 				},
@@ -23344,7 +23527,7 @@
 						"amount": 6000
 					},
 					"entries": [
-						"This sinister-looking black statuette resembles a horse rearing up on its hind legs. When activated, this figurine becomes a nightmare (Pathfinder Bestiary 244). It can be called upon once per week for up to 24 hours, though it won't use plane shift or its other abilities on behalf of its rider. Although evil, it allows itself to be ridden by creatures of any alignment, although if a good creature mounts it, the rider must attempt a DC {@flatDC 3} flat check. On a failure, the nightmare uses plane shift to take the rider to a random location in the Abyss, where it promptly returns to statue form, stranding its rider in that nightmarish place."
+						"This sinister-looking black statuette resembles a horse rearing up on its hind legs. When activated, this figurine becomes a {@creature nightmare}. It can be called upon once per week for up to 24 hours, though it won't use plane shift or its other abilities on behalf of its rider. Although evil, it allows itself to be ridden by creatures of any alignment, although if a good creature mounts it, the rider must attempt a DC {@flatDC 3} flat check. On a failure, the nightmare uses plane shift to take the rider to a random location in the Abyss, where it promptly returns to statue form, stranding its rider in that nightmarish place."
 					]
 				},
 				{
@@ -23355,7 +23538,7 @@
 						"amount": 34
 					},
 					"entries": [
-						"This simple onyx statue transforms into a guard dog (Pathfinder Bestiary 102). The dog has a +4 circumstance bonus to {@skill Survival} checks to {@action Track}, and it has {@ability darkvision}.",
+						"This simple onyx statue transforms into a {@creature guard dog}. The dog has a +4 circumstance bonus to {@skill Survival} checks to {@action Track}, and it has {@ability darkvision}.",
 						"When the dog senses a {@condition hidden} creature with its scent, that creature is instead {@condition observed} and {@condition concealed}. The onyx dog can be activated once per week and remains in its form for up to 6 hours."
 					]
 				}

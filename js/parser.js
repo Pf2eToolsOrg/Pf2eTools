@@ -18,6 +18,8 @@ Parser._parse_bToA = function (abMap, b) {
 };
 Parser.numberToText = function (number, freq) {
 	if (number == null) throw new TypeError(`undefined or null object passed to parser`);
+	// TODO: Hacky fix for frequencies
+	if (typeof number === "string") return number;
 	if (Math.abs(number) >= 100) return `${number}`;
 
 	function getAsText (num) {

@@ -591,6 +591,7 @@ function Renderer () {
 		let idxSpan = 0;
 
 		const renderRow = (row, idxRow, minButton) => {
+			renderer = Renderer.get()
 			const lenCol = row.length;
 			const dataStr = idxRow ? this._renderTable_getDataStr(row, entry.rollable) : "";
 			if (row.type === "multiRow") {
@@ -620,7 +621,7 @@ function Renderer () {
 					if (last_end !== span[0]) {
 						textStack[0] += `<div class="${styles}" style="grid-column:${last_end}/${span[0]}" ${idxCol ? dataStr : ""}></div>`;
 					}
-					textStack[0] += `<div class="${styles}" style="grid-column:${span[0]}/${span[1]}" ${idxCol ? dataStr : ""}><span>${row[idxCol]}${span[1] === numCol + 1 ? minButton : ""}</span></div>`;
+					textStack[0] += `<div class="${styles}" style="grid-column:${span[0]}/${span[1]}" ${idxCol ? dataStr : ""}><span>${renderer.render(row[idxCol])}${span[1] === numCol + 1 ? minButton : ""}</span></div>`;
 					last_end = span[1];
 				}
 				if (last_end !== numCol + 1) {
@@ -2187,6 +2188,7 @@ function Renderer () {
 						this._recursiveRender(fauxEntry, textStack, meta);
 						break;
 					case "@disease":
+					case "@affliction":
 					case "@curse":
 						fauxEntry.href.path = UrlUtil.PG_AFFLICTIONS;
 						fauxEntry.href.hover = {
@@ -4192,6 +4194,8 @@ Renderer.creature = {
 			const genericAbility = Renderer.hover._getFromCache(UrlUtil.PG_ABILITIES, "Bst", hash);
 			renderedGenericAbility = Renderer.creature.getRenderedAbility(genericAbility, {generic: true});
 		}
+		// FIXME: This is a mess that doesn't account for creature abilities that are just class feats or actions. Also where the hell did the buttonClass go?
+		// When this is fixed, search through spellcaster statblocks for things like Eschew Materials, Drain Bonded Item, and metamagic feats.
 		return $$`<p class="pf2-stat pf2-stat__section ${buttonClass} ${options.generic ? "hidden" : ""}"><strong>${ability.generic || options.generic ? `${renderer.render(`{@ability ${ability.name}${ability.title ? `||${ability.title}` : ""}}`)}` : ability.name}</strong>
 					${ability.activity ? renderer.render(Parser.timeToFullEntry(ability.activity)) : ""}
 					${(ability.generic || options.generic) && !options.noButton ? Renderer.creature.getAbilityTextButton(buttonClass, options.generic) : ""}
@@ -4711,8 +4715,12 @@ Renderer.item = {
 			if (item.bulk != null) renderStack.push(`<strong>Bulk&nbsp;</strong>${item.bulk}`);
 			renderStack.push(`</p>`);
 		}
+		if (item.duration) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Duration&nbsp;</strong>${renderer.render(item.duration.entry)}</p>`);
 		if (item.activate) {
-			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Activate&nbsp;</strong>${renderer.render(Parser.timeToFullEntry(item.activate.activity))} `);
+			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Activate&nbsp;</strong>`);
+			if (item.activate.activity != null) {
+				renderStack.push(`${renderer.render(Parser.timeToFullEntry(item.activate.activity))} `);
+			}
 			if (item.activate.components != null) {
 				renderStack.push(`${renderer.render(item.activate.components)}`);
 			}
@@ -4734,6 +4742,7 @@ Renderer.item = {
 		renderStack.push(Renderer.item.getshieldData(item));
 		renderStack.push(Renderer.item.getArmorStats(item));
 		renderStack.push(Renderer.item.getWeaponStats(item));
+		if (item.hands) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Hands&nbsp;</strong>${item.hands}</p>`)
 
 		// General Item Line
 		const group = item.weaponData && !item.comboWeaponData ? item.weaponData.group : item.armorData ? item.armorData.group : item.group;
@@ -4853,7 +4862,7 @@ Renderer.item = {
 		const rangedLine = rangedEntries.join("; ");
 		return `
 		${data.traits && data.traits.length ? `<p class="pf2-stat pf2-stat__section"><strong>Traits&nbsp;</strong>${data.traits.map(t => renderer.render(`{@trait ${t.toLowerCase()}}`)).join(", ")}</p>` : ""}
-		<p class="pf2-stat pf2-stat__section"><strong>Damage&nbsp;</strong>${renderer.render(`{@damage ${data.damage}}&nbsp;${Parser.dmgTypeToFull(data.damageType)}`)}${data.hands ? `; <strong>Hands&nbsp;</strong>${data.hands}` : ""}</p>
+		<p class="pf2-stat pf2-stat__section"><strong>Damage&nbsp;</strong>${renderer.render(`{@damage ${data.damage}}&nbsp;${Parser.dmgTypeToFull(data.damageType)}`)}</p>
 		${rangedLine ? `<p class="pf2-stat pf2-stat__section">${rangedLine}</p>` : ""}
 		${opts.doRenderGroup ? `<p class="pf2-stat pf2-stat__section"><strong>Group&nbsp;</strong>${renderer.render(`{@group ${data.group}}`)}</p>` : ""}
 		`;
@@ -4868,22 +4877,30 @@ Renderer.item = {
 			// FIXME: Optimize this hellish mess
 			renderStack.push(`<div class="pf2-stat pf2-stat__section--wide"><strong>Type&nbsp;</strong>${renderer.render(`{@item ${v.type.toLowerCase().includes(item.name.toLowerCase()) ? `${v.type}` : `${v.name ? v.name : `${v.type} ${item.name}`}`}|${v.source ? v.source : item.source}|${v.type}}`)}`);
 			if (v.level != null) renderStack.push(`; <strong>Level&nbsp;</strong>${v.level}`);
-			if (v.traits != null && v.traits.length) renderStack.push(` (${renderer.render(v.traits.map(t => `{@trait ${t.toLowerCase()}}`).join(", "))});`);
+			if (v.traits != null && v.traits.length) renderStack.push(` (${renderer.render(v.traits.map(t => `{@trait ${t.toLowerCase()}}`).join(", "))})`);
 			if (v.price != null) renderStack.push(`; <strong>Price&nbsp;</strong>${Parser.priceToFull(v.price)}`);
 			if (v.bulk != null) renderStack.push(`; <strong>Bulk&nbsp;</strong>${v.bulk}`);
 			if (v.entries != null && v.entries.length) {
+				renderStack.push(`; `);
 				renderer.recursiveRender(v.entries, renderStack, {prefix: "<p class='pf2-stat pf2-stat__text'>", suffix: "</p>"});
 			}
-			if (v.craftReq != null) renderStack.push(`; <strong>Craft Requirements&nbsp;</strong>${renderer.render(v.craftReq)}`);
 			if (v.shieldData != null) renderStack.push(`; The shield has Hardness ${v.shieldData.hardness}, HP ${v.shieldData.hp}, and BT ${v.shieldData.bt}.`);
 			renderStack.push(`</div>`);
 		});
 		return renderStack.join("")
 	},
 
+	// FIXME: Merge getCraftRequirements, getDestruction and getSpecial into a generic object with strings, like we have with successDegree
+
 	getCraftRequirements (item) {
 		if (item.craftReq != null) {
 			return `${Renderer.utils.getDividerDiv()}<p class="pf2-stat pf2-stat__section"><strong>Craft Requirements&nbsp;</strong>${Renderer.get().render(item.craftReq)}</p>`
+		} else return ""
+	},
+
+	getDestruction (item) {
+		if (item.destruction != null) {
+			return `${Renderer.utils.getDividerDiv()}<p class="pf2-stat pf2-stat__section"><strong>Destruction&nbsp;</strong>${Renderer.get().render(item.destruction)}</p>`
 		} else return ""
 	},
 
@@ -4905,6 +4922,7 @@ Renderer.item = {
 			${renderStack.join("")}
 			${Renderer.item.getVariantsHtml(item)}
 			${Renderer.item.getCraftRequirements(item)}
+			${Renderer.item.getDestruction(item)}
 			${Renderer.item.getSpecial(item)}
 			${Renderer.utils.getPageP(item)}`;
 	},
@@ -5187,21 +5205,17 @@ Renderer.spell = {
 			});
 		};
 		if (sp.heightened.plus_x != null) {
-			if (typeof sp.heightened.plus_x.entry === "string") {
-				renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Heightened (+${sp.heightened.plus_x.level})&nbsp;</strong>${renderer.render(sp.heightened.plus_x.entry)}</p>`);
-			} else if (Array.isArray(sp.heightened.plus_x.entry)) {
-				renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Heightened (+${sp.heightened.plus_x.level})&nbsp;</strong>`)
-				renderArray(sp.heightened.plus_x.entry);
-				renderStack.push(`</p>`);
-			}
+			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Heightened (+${sp.heightened.plus_x.level})&nbsp;</strong>`)
+			renderArray(sp.heightened.plus_x.entries);
+			renderStack.push(`</p>`);
 		}
 		if (sp.heightened.x != null) {
 			sp.heightened.x.forEach(x => {
-				if (typeof x.entry === "string") {
-					renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Heightened (${Parser.getOrdinalForm(x.level)})&nbsp;</strong>${renderer.render(x.entry)}</p>`);
-				} else if (Array.isArray(x.entry)) {
+				if (typeof x.entries === "string") {
+					renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Heightened (${Parser.getOrdinalForm(x.level)})&nbsp;</strong>${renderer.render(x.entries)}</p>`);
+				} else if (Array.isArray(x.entries)) {
 					renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Heightened (${Parser.getOrdinalForm(x.level)})&nbsp;</strong>`);
-					renderArray(x.entry);
+					renderArray(x.entries);
 					renderStack.push(`</p>`);
 				}
 			});
@@ -7374,6 +7388,7 @@ Renderer._stripTagLayer = function (str) {
 					case "@condition":
 					case "@creature":
 					case "@disease":
+					case "@affliction":
 					case "@feat":
 					case "@hazard":
 					case "@item":
