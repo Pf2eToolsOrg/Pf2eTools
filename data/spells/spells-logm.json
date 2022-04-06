@@ -90,9 +90,6 @@
 			},
 			"savingThrow": "Reflex",
 			"savingThrowBasic": true,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -169,8 +166,7 @@
 			"school": "A",
 			"cast": {
 				"number": 1,
-				"unit": "reaction",
-				"entry": "{@as R}"
+				"unit": "reaction"
 			},
 			"components": {
 				"S": true
@@ -501,8 +497,7 @@
 			"school": "V",
 			"cast": {
 				"number": 1,
-				"unit": "reaction",
-				"entry": "{@as R}"
+				"unit": "reaction"
 			},
 			"components": {
 				"S": true
@@ -626,9 +621,6 @@
 			},
 			"targets": "1 or more creatures",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -686,9 +678,6 @@
 			},
 			"savingThrow": "Reflex",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -796,8 +785,7 @@
 			"school": "A",
 			"cast": {
 				"number": 1,
-				"unit": "reaction",
-				"entry": "{@as R}"
+				"unit": "reaction"
 			},
 			"components": {
 				"S": true
@@ -911,9 +899,6 @@
 			},
 			"savingThrow": "Fortitude",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -930,7 +915,7 @@
 					"name": "Divine Plague",
 					"type": "affliction",
 					"traits": [
-						"disease"
+						"Disease"
 					],
 					"level": 1,
 					"stages": [
@@ -1310,9 +1295,6 @@
 			},
 			"targets": "1 living creature that has a soul",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -1357,9 +1339,6 @@
 				"V": true
 			},
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -1530,9 +1509,6 @@
 				"entry": "cube of dirt 5 feet across or smaller"
 			},
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -1941,9 +1917,6 @@
 			},
 			"savingThrow": "Reflex",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -2167,9 +2140,6 @@
 			"targets": "1 or more creatures",
 			"savingThrow": "Will",
 			"savingThrowBasic": true,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -2214,9 +2184,6 @@
 			},
 			"targets": "1 creature",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -2479,9 +2446,6 @@
 			"targets": "1 creature",
 			"savingThrow": "Fortitude",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -2697,9 +2661,6 @@
 			},
 			"savingThrow": "Will",
 			"savingThrowBasic": true,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -2787,8 +2748,7 @@
 			"school": "A",
 			"cast": {
 				"number": 1,
-				"unit": "reaction",
-				"entry": "{@as R}"
+				"unit": "reaction"
 			},
 			"components": {
 				"S": true
@@ -2796,9 +2756,6 @@
 			"trigger": "An ally within 30 feet is about to attempt a saving throw against a harmful {@trait emotion} effect, and you would not",
 			"targets": "you and the triggering ally",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -3040,9 +2997,6 @@
 			},
 			"savingThrow": "Reflex",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -3538,9 +3492,6 @@
 			},
 			"targets": "1 creature",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -3593,9 +3544,6 @@
 			},
 			"targets": "1 creature or object",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -3622,11 +3570,9 @@
 			"source": "LOGM",
 			"page": 117,
 			"focus": true,
-			"subclass": {
-				"Cleric|Domain": [
-					"star"
-				]
-			},
+			"domains": [
+				"star"
+			],
 			"level": 1,
 			"traits": [
 				"Divination",

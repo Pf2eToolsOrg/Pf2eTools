@@ -36,9 +36,6 @@
 			"targets": "1 living creature",
 			"savingThrow": "Fortitude",
 			"savingThrowBasic": true,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -87,9 +84,6 @@
 			},
 			"targets": "1 creature",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -181,12 +175,11 @@
 				"S": true,
 				"V": true
 			},
-			"range": {
-				"entry": "5-foot emanation",
-				"distance": {
-					"type": "unknown",
-					"amount": 1
-				}
+			"area": {
+				"types": [
+					"Emanation"
+				],
+				"entry": "5-foot emanation"
 			},
 			"targets": "creatures in the area",
 			"savingThrow": "Will",

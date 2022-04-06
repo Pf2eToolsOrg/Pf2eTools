@@ -81,9 +81,7 @@
 						}
 					},
 					"additionalProperties": false,
-					"required": [
-						"special"
-					]
+					"required": ["special"]
 				},
 				{
 					"properties": {
@@ -130,25 +128,16 @@
 						"customUnit": {
 							"description": "Name of a custom unit, use the correct single/plural form.",
 							"type": "string",
-							"examples": [
-								"epoch",
-								"gem"
-							]
+							"examples": ["epoch", "gem"]
 						}
 					},
 					"additionalProperties": false,
 					"oneOf": [
 						{
-							"required": [
-								"freq",
-								"unit"
-							]
+							"required": ["freq", "unit"]
 						},
 						{
-							"required": [
-								"freq",
-								"customUnit"
-							]
+							"required": ["freq", "customUnit"]
 						}
 					]
 				}
@@ -156,38 +145,27 @@
 		},
 		"activity": {
 			"type": "object",
-			"required": [
-				"number",
-				"unit"
-			],
+			"required": ["number", "unit"],
 			"properties": {
 				"number": {
-					"type": "number"
+					"type": "integer"
 				},
 				"unit": {
 					"type": "string",
 					"enum": [
-						"action",
-						"reaction",
 						"free",
-						"varies",
-						"minute",
+						"reaction",
+						"action",
 						"round",
-						"hour"
+						"minute",
+						"hour",
+						"varies"
 					]
 				},
 				"entry": {
 					"type": "string",
 					"not": {
-						"enum": [
-							"{@as 1}",
-							"{@as 2}",
-							"{@as 3}",
-							"{@as R}",
-							"{@as F}",
-							"{@as r}",
-							"{@as f}"
-						]
+						"pattern": "^{@as [123RFrf]}$"
 					}
 				}
 			},
@@ -198,21 +176,13 @@
 			"properties": {
 				"coin": {
 					"type": "string",
-					"enum": [
-						"gp",
-						"sp",
-						"cp",
-						"pp"
-					]
+					"enum": ["gp", "sp", "cp", "pp"]
 				},
 				"amount": {
 					"type": "number"
 				}
 			},
-			"required": [
-				"amount",
-				"coin"
-			]
+			"required": ["amount", "coin"]
 		},
 		"otherSources": {
 			"type": "object",
@@ -349,14 +319,16 @@
 						"Contract",
 						"Invested",
 						"Curse",
-						"Virulent"
+						"Virulent",
+						"Nonlethal",
+						"Darkness",
+						"Plant",
+						"Fungus",
+						"Olfactory"
 					]
 				},
 				{
-					"enum": [
-						"[Magical Tradition]",
-						"[Class]"
-					]
+					"enum": ["[Magical Tradition]", "[Class]"]
 				},
 				{
 					"type": "string",
@@ -366,13 +338,7 @@
 		},
 		"loreSubjects": {
 			"type": "string",
-			"enum": [
-				"Dragon",
-				"Kintargo",
-				"Dahak",
-				"Architecture",
-				"Breachill"
-			]
+			"enum": ["Dragon", "Kintargo", "Dahak", "Architecture", "Breachill"]
 		},
 		"abilityUpper": {
 			"type": "string",
@@ -495,21 +461,11 @@
 		},
 		"rarityUpper": {
 			"type": "string",
-			"enum": [
-				"Common",
-				"Uncommon",
-				"Rare",
-				"Unique"
-			]
+			"enum": ["Common", "Uncommon", "Rare", "Unique"]
 		},
 		"traditionUpper": {
 			"type": "string",
-			"enum": [
-				"Arcane",
-				"Divine",
-				"Occult",
-				"Primal"
-			]
+			"enum": ["Arcane", "Divine", "Occult", "Primal"]
 		},
 		"schoolUpper": {
 			"type": "string",
@@ -599,12 +555,68 @@
 		},
 		"armorGroupUpper": {
 			"type": "string",
+			"enum": ["Plate", "Leather", "Chain", "Cloth", "Composite"]
+		},
+		"domainsLower": {
+			"type": "string",
 			"enum": [
-				"Plate",
-				"Leather",
-				"Chain",
-				"Cloth",
-				"Composite"
+				"toil",
+				"naga",
+				"travel",
+				"wealth",
+				"creation",
+				"might",
+				"luck",
+				"ambition",
+				"passion",
+				"darkness",
+				"tyranny",
+				"destruction",
+				"sun",
+				"death",
+				"confidence",
+				"air",
+				"water",
+				"dreams",
+				"cities",
+				"fire",
+				"secrecy",
+				"truth",
+				"healing",
+				"earth",
+				"knowledge",
+				"magic",
+				"undeath",
+				"moon",
+				"nature",
+				"indulgence",
+				"perfection",
+				"protection",
+				"fate",
+				"pain",
+				"nightmares",
+				"family",
+				"trickery",
+				"freedom",
+				"zeal",
+				"change",
+				"star",
+				"lightning",
+				"time",
+				"cold",
+				"plague",
+				"void",
+				"wyrmkin",
+				"dust",
+				"duty",
+				"soul",
+				"delirium",
+				"decay",
+				"repose",
+				"glyph",
+				"sorrow",
+				"vigil",
+				"swarm"
 			]
 		}
 	}
