@@ -1,4 +1,5 @@
 {
+	"$schema": "../../test/schema-template/schema.json",
 	"spell": [
 		{
 			"name": "Aberrant Whispers",
@@ -100,9 +101,6 @@
 				}
 			},
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -146,9 +144,6 @@
 			"targets": "1 creature",
 			"savingThrow": "Fortitude",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -167,7 +162,7 @@
 					"type": "affliction",
 					"name": "Abyssal Plague",
 					"traits": [
-						"disease"
+						"Disease"
 					],
 					"level": 9,
 					"note": "The target can't recover from the {@condition drained} condition from Abyssal plague until the disease is cured.",
@@ -221,9 +216,6 @@
 			},
 			"savingThrow": "Reflex",
 			"savingThrowBasic": true,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -274,9 +266,6 @@
 			},
 			"targets": "1 creature",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -327,9 +316,6 @@
 			},
 			"targets": "1 creature",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -448,7 +434,9 @@
 				"Transmutation"
 			],
 			"school": "T",
-			"domains": ["travel"],
+			"domains": [
+				"travel"
+			],
 			"cast": {
 				"number": 1,
 				"unit": "action"
@@ -492,8 +480,7 @@
 			],
 			"cast": {
 				"number": 1,
-				"unit": "reaction",
-				"entry": "{@as R}"
+				"unit": "reaction"
 			},
 			"components": {
 				"F": false,
@@ -718,9 +705,6 @@
 				"V": true
 			},
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -753,8 +737,7 @@
 			],
 			"cast": {
 				"number": 1,
-				"unit": "reaction",
-				"entry": "{@as R}"
+				"unit": "reaction"
 			},
 			"components": {
 				"F": false,
@@ -773,9 +756,6 @@
 			"targets": "the triggering creature",
 			"savingThrow": "Will",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -1231,7 +1211,9 @@
 				"Illusion"
 			],
 			"school": "I",
-			"domains": ["wealth"],
+			"domains": [
+				"wealth"
+			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
@@ -1298,8 +1280,7 @@
 			"school": "A",
 			"cast": {
 				"number": 1,
-				"unit": "reaction",
-				"entry": "{@as R}"
+				"unit": "reaction"
 			},
 			"components": {
 				"F": false,
@@ -1317,9 +1298,6 @@
 			},
 			"targets": "the spell cast by the triggering creature",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -1339,7 +1317,9 @@
 				"Transmutation"
 			],
 			"school": "T",
-			"domains": ["creation"],
+			"domains": [
+				"creation"
+			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
@@ -1402,7 +1382,9 @@
 				"Transmutation"
 			],
 			"school": "T",
-			"domains": ["might"],
+			"domains": [
+				"might"
+			],
 			"cast": {
 				"number": 1,
 				"unit": "action"
@@ -1459,9 +1441,6 @@
 			},
 			"targets": "1 creature you summoned",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -1495,9 +1474,6 @@
 				"V": true
 			},
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -1712,9 +1688,6 @@
 			"targets": "1 creature that isn't on its home plane",
 			"savingThrow": "Will",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -1910,7 +1883,9 @@
 				"Fortune"
 			],
 			"school": "D",
-			"domains": ["luck"],
+			"domains": [
+				"luck"
+			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
@@ -2115,7 +2090,9 @@
 				"Mental"
 			],
 			"school": "E",
-			"domains": ["ambition"],
+			"domains": [
+				"ambition"
+			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
@@ -2197,9 +2174,6 @@
 			"targets": "1 creature",
 			"savingThrow": "Fortitude",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -2328,8 +2302,7 @@
 			],
 			"cast": {
 				"number": 1,
-				"unit": "reaction",
-				"entry": "{@as R}"
+				"unit": "reaction"
 			},
 			"components": {
 				"F": false,
@@ -2347,9 +2320,6 @@
 			},
 			"targets": "the triggering creature",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -2390,9 +2360,6 @@
 			},
 			"savingThrow": "Reflex",
 			"savingThrowBasic": true,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -2443,9 +2410,6 @@
 			},
 			"targets": "1 living creature",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -2540,7 +2504,9 @@
 				"Visual"
 			],
 			"school": "E",
-			"domains": ["passion"],
+			"domains": [
+				"passion"
+			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
@@ -2637,9 +2603,6 @@
 			},
 			"savingThrow": "Reflex",
 			"savingThrowBasic": true,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -2756,9 +2719,6 @@
 			"targets": "1 creature, plus any number of additional creatures",
 			"savingThrow": "Reflex",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -2787,8 +2747,7 @@
 			"school": "A",
 			"cast": {
 				"number": 1,
-				"unit": "reaction",
-				"entry": "{@as R}"
+				"unit": "reaction"
 			},
 			"components": {
 				"F": false,
@@ -2806,9 +2765,6 @@
 			},
 			"targets": "1 ally",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -2908,7 +2864,9 @@
 				"Mental"
 			],
 			"school": "E",
-			"domains": ["passion"],
+			"domains": [
+				"passion"
+			],
 			"cast": {
 				"number": 1,
 				"unit": "action"
@@ -3057,9 +3015,6 @@
 			"targets": "1 living or undead creature",
 			"savingThrow": "Fortitude",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -3117,9 +3072,6 @@
 			},
 			"targets": "1 creature",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -3449,7 +3401,9 @@
 				"Shadow"
 			],
 			"school": "V",
-			"domains": ["darkness"],
+			"domains": [
+				"darkness"
+			],
 			"cast": {
 				"number": 1,
 				"unit": "action"
@@ -3580,9 +3534,6 @@
 			},
 			"targets": "up to 2 creatures",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -3746,7 +3697,9 @@
 				"Mental"
 			],
 			"school": "E",
-			"domains": ["tyranny"],
+			"domains": [
+				"tyranny"
+			],
 			"cast": {
 				"number": 1,
 				"unit": "action"
@@ -3796,7 +3749,9 @@
 				"Mental"
 			],
 			"school": "E",
-			"domains": ["ambition"],
+			"domains": [
+				"ambition"
+			],
 			"cast": {
 				"number": 1,
 				"unit": "action"
@@ -3929,9 +3884,6 @@
 			},
 			"savingThrow": "Reflex",
 			"savingThrowBasic": true,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -4178,9 +4130,6 @@
 				"entry": "50 feet long by 50 feet wide"
 			},
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -4207,8 +4156,7 @@
 			"school": "E",
 			"cast": {
 				"number": 1,
-				"unit": "reaction",
-				"entry": "{@as R}"
+				"unit": "reaction"
 			},
 			"components": {
 				"F": false,
@@ -4224,9 +4172,6 @@
 				"entry": "60-foot emanation"
 			},
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -4267,9 +4212,6 @@
 				}
 			},
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -4333,9 +4275,6 @@
 				}
 			},
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -4437,9 +4376,6 @@
 			"targets": "1 creature",
 			"savingThrow": "Will",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -4612,7 +4548,9 @@
 				"Sonic"
 			],
 			"school": "V",
-			"domains": ["destruction"],
+			"domains": [
+				"destruction"
+			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
@@ -4631,9 +4569,6 @@
 			},
 			"savingThrow": "Fortitude",
 			"savingThrowBasic": true,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -4712,7 +4647,9 @@
 				"Transmutation"
 			],
 			"school": "T",
-			"domains": ["darkness"],
+			"domains": [
+				"darkness"
+			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
@@ -4957,7 +4894,9 @@
 				"Visual"
 			],
 			"school": "V",
-			"domains": ["sun"],
+			"domains": [
+				"sun"
+			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
@@ -4976,9 +4915,6 @@
 			},
 			"savingThrow": "Fortitude",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -5040,9 +4976,6 @@
 			"targets": "1 creature",
 			"savingThrow": "Fortitude",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -5093,9 +5026,6 @@
 			"targets": "1 living creature that has 0 HP",
 			"savingThrow": "Will",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -5171,11 +5101,12 @@
 				"Necromancy"
 			],
 			"school": "N",
-			"domains": ["death"],
+			"domains": [
+				"death"
+			],
 			"cast": {
 				"number": 1,
-				"unit": "reaction",
-				"entry": "{@as R}"
+				"unit": "reaction"
 			},
 			"components": {
 				"F": false,
@@ -5215,7 +5146,9 @@
 				"Mental"
 			],
 			"school": "E",
-			"domains": ["confidence"],
+			"domains": [
+				"confidence"
+			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
@@ -5271,7 +5204,9 @@
 				"Evocation"
 			],
 			"school": "V",
-			"domains": ["destruction"],
+			"domains": [
+				"destruction"
+			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
@@ -5344,9 +5279,6 @@
 				"entry": "30-foot emanation"
 			},
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -5398,9 +5330,6 @@
 				"entry": "30-foot emanation"
 			},
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -5463,9 +5392,6 @@
 			},
 			"targets": "1 object or creature",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -5622,9 +5548,6 @@
 				}
 			},
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -5787,9 +5710,6 @@
 				}
 			},
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -6053,9 +5973,6 @@
 			},
 			"targets": "1 creature or object",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -6097,9 +6014,6 @@
 			"targets": "1 creature or unattended object",
 			"savingThrow": "Fortitude",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -6150,9 +6064,6 @@
 			},
 			"targets": "1 magic item",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -6194,9 +6105,6 @@
 			},
 			"targets": "1 spell effect or unattended magic item",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -6221,11 +6129,12 @@
 				"Transmutation"
 			],
 			"school": "T",
-			"domains": ["air"],
+			"domains": [
+				"air"
+			],
 			"cast": {
 				"number": 1,
-				"unit": "reaction",
-				"entry": "{@as R}"
+				"unit": "reaction"
 			},
 			"components": {
 				"F": false,
@@ -6235,9 +6144,6 @@
 			},
 			"trigger": "You take damage from an enemy or a hazard.",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -6279,9 +6185,6 @@
 			"targets": "1 undead creature",
 			"savingThrow": "Fortitude",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -6511,9 +6414,6 @@
 			},
 			"targets": "1 willing creature",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -6554,9 +6454,6 @@
 			},
 			"targets": "1 creature",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -6671,9 +6568,6 @@
 			},
 			"savingThrow": "Fortitude",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -6829,7 +6723,9 @@
 				"Water"
 			],
 			"school": "V",
-			"domains": ["water"],
+			"domains": [
+				"water"
+			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
@@ -6881,7 +6777,7 @@
 			"source": "CRB",
 			"page": 403,
 			"otherSources": {
-				"expanded": [
+				"Expanded": [
 					"LOME|75",
 					"SoT3|79"
 				]
@@ -7247,9 +7143,6 @@
 			"targets": "1 creature",
 			"savingThrow": "Fortitude",
 			"savingThrowBasic": true,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -7434,7 +7327,9 @@
 				"Mental"
 			],
 			"school": "E",
-			"domains": ["dreams"],
+			"domains": [
+				"dreams"
+			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
@@ -7544,8 +7439,7 @@
 			],
 			"cast": {
 				"number": 1,
-				"unit": "reaction",
-				"entry": "{@as R}"
+				"unit": "reaction"
 			},
 			"components": {
 				"F": false,
@@ -7841,9 +7735,6 @@
 			},
 			"savingThrow": "Reflex",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -7895,9 +7786,6 @@
 			"targets": "1 or 2 creatures",
 			"savingThrow": "Reflex",
 			"savingThrowBasic": true,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -7956,9 +7844,6 @@
 			},
 			"savingThrow": "Reflex",
 			"savingThrowBasic": true,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -8141,9 +8026,6 @@
 				"V": true
 			},
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -8188,9 +8070,6 @@
 			},
 			"targets": "1 creature",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -8377,11 +8256,12 @@
 				"Cleric"
 			],
 			"school": "A",
-			"domains": ["might"],
+			"domains": [
+				"might"
+			],
 			"cast": {
 				"number": 1,
-				"unit": "reaction",
-				"entry": "{@as R}"
+				"unit": "reaction"
 			},
 			"components": {
 				"F": false,
@@ -8391,9 +8271,6 @@
 			},
 			"trigger": "An attack or effect would deal damage to you.",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -8422,8 +8299,7 @@
 			"school": "A",
 			"cast": {
 				"number": 1,
-				"unit": "reaction",
-				"entry": "{@as R}"
+				"unit": "reaction"
 			},
 			"components": {
 				"F": false,
@@ -8433,9 +8309,6 @@
 			},
 			"trigger": "An effect would deal acid, cold, electricity, or fire damage to you.",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -8760,7 +8633,9 @@
 				"Positive"
 			],
 			"school": "N",
-			"domains": ["death"],
+			"domains": [
+				"death"
+			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
@@ -8779,9 +8654,6 @@
 			},
 			"savingThrow": "Fortitude",
 			"savingThrowBasic": true,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -8879,9 +8751,6 @@
 				"V": true
 			},
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -8960,7 +8829,9 @@
 				"Visual"
 			],
 			"school": "I",
-			"domains": ["cities"],
+			"domains": [
+				"cities"
+			],
 			"cast": {
 				"number": 1,
 				"unit": "action"
@@ -9263,9 +9134,6 @@
 			},
 			"targets": "1 creature",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -9369,8 +9237,7 @@
 			],
 			"cast": {
 				"number": 1,
-				"unit": "reaction",
-				"entry": "{@as R}"
+				"unit": "reaction"
 			},
 			"components": {
 				"F": false,
@@ -9794,9 +9661,6 @@
 			"targets": "1 living creature",
 			"savingThrow": "Fortitude",
 			"savingThrowBasic": true,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -9825,7 +9689,9 @@
 				"Fire"
 			],
 			"school": "V",
-			"domains": ["fire"],
+			"domains": [
+				"fire"
+			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
@@ -9845,9 +9711,6 @@
 			},
 			"targets": "1 creature",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -10023,9 +9886,6 @@
 			},
 			"savingThrow": "Reflex",
 			"savingThrowBasic": true,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -10055,11 +9915,12 @@
 				"Cleric"
 			],
 			"school": "A",
-			"domains": ["fire"],
+			"domains": [
+				"fire"
+			],
 			"cast": {
 				"number": 1,
-				"unit": "reaction",
-				"entry": "{@as R}"
+				"unit": "reaction"
 			},
 			"components": {
 				"F": false,
@@ -10077,9 +9938,6 @@
 			},
 			"targets": "the creature that would take fire damage",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -10133,9 +9991,6 @@
 			},
 			"savingThrow": "Reflex",
 			"savingThrowBasic": true,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -10509,9 +10364,6 @@
 			},
 			"targets": "1 creature",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -10538,7 +10390,9 @@
 				"Cleric"
 			],
 			"school": "A",
-			"domains": ["secrecy"],
+			"domains": [
+				"secrecy"
+			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
@@ -10995,9 +10849,6 @@
 			"targets": "1 creature",
 			"savingThrow": "Fortitude",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -11105,7 +10956,9 @@
 				"Revelation"
 			],
 			"school": "D",
-			"domains": ["truth"],
+			"domains": [
+				"truth"
+			],
 			"cast": {
 				"number": 1,
 				"unit": "action"
@@ -11187,9 +11040,6 @@
 			},
 			"savingThrow": "Reflex",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -11393,9 +11243,6 @@
 			"targets": "1 creature",
 			"savingThrow": "Fortitude",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -11534,9 +11381,6 @@
 			},
 			"savingThrow": "Reflex",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -11654,9 +11498,6 @@
 			},
 			"savingThrow": "Fortitude",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -11961,9 +11802,6 @@
 			},
 			"targets": "1 creature",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -12004,9 +11842,6 @@
 			},
 			"targets": "1 living creature or 1 willing undead creature",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -12119,9 +11954,6 @@
 			},
 			"targets": "1 willing living creature or 1 undead creature",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -12173,9 +12005,6 @@
 			},
 			"targets": "1 willing living animal creature",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -12209,7 +12038,9 @@
 				"Necromancy"
 			],
 			"school": "N",
-			"domains": ["healing"],
+			"domains": [
+				"healing"
+			],
 			"cast": {
 				"number": 1,
 				"unit": "action"
@@ -12296,9 +12127,6 @@
 			},
 			"savingThrow": "Reflex",
 			"savingThrowBasic": true,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -12339,9 +12167,6 @@
 			},
 			"trigger": "An attack would bring you to 0 Hit Points.",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -12516,9 +12341,6 @@
 			},
 			"savingThrow": "Reflex",
 			"savingThrowBasic": true,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -12571,9 +12393,6 @@
 			"targets": "any number of living creatures",
 			"savingThrow": "Fortitude",
 			"savingThrowBasic": true,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -12630,9 +12449,6 @@
 			},
 			"savingThrow": "Will",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -12777,7 +12593,9 @@
 				"Evocation"
 			],
 			"school": "V",
-			"domains": ["earth"],
+			"domains": [
+				"earth"
+			],
 			"cast": {
 				"number": 1,
 				"unit": "action"
@@ -12797,9 +12615,6 @@
 			},
 			"targets": "1 creature",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -12856,9 +12671,6 @@
 			},
 			"targets": "1 creature or object",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -12915,9 +12727,6 @@
 			},
 			"savingThrow": "Fortitude",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -12961,9 +12770,6 @@
 				"V": true
 			},
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -13647,9 +13453,6 @@
 				"V": true
 			},
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -13983,9 +13786,6 @@
 				"V": false
 			},
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -14034,9 +13834,6 @@
 			},
 			"savingThrow": "Fortitude",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -14083,9 +13880,6 @@
 				"V": true
 			},
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -14115,9 +13909,6 @@
 				"V": true
 			},
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -14207,9 +13998,6 @@
 				"V": true
 			},
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -14239,11 +14027,12 @@
 				"Fortune"
 			],
 			"school": "D",
-			"domains": ["knowledge"],
+			"domains": [
+				"knowledge"
+			],
 			"cast": {
 				"number": 1,
-				"unit": "reaction",
-				"entry": "{@as R}"
+				"unit": "reaction"
 			},
 			"components": {
 				"F": false,
@@ -14253,9 +14042,6 @@
 			},
 			"trigger": "You roll initiative and can see a creature, you succeed at an attack roll against a creature, or a creature fails a saving throw against one of your spells.",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -14295,9 +14081,6 @@
 			},
 			"targets": "1 willing living creature or 1 undead creature",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -14379,8 +14162,7 @@
 			"school": "N",
 			"cast": {
 				"number": 1,
-				"unit": "reaction",
-				"entry": "{@as R}"
+				"unit": "reaction"
 			},
 			"components": {
 				"F": false,
@@ -14390,9 +14172,6 @@
 			},
 			"trigger": "You expend one of your wizard spell slots to cast a wizard spell of the necromancy school.",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -14495,9 +14274,6 @@
 			},
 			"savingThrow": "Reflex",
 			"savingThrowBasic": true,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -14535,9 +14311,6 @@
 				"V": true
 			},
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -14745,7 +14518,9 @@
 				"Transmutation"
 			],
 			"school": "T",
-			"domains": ["earth"],
+			"domains": [
+				"earth"
+			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
@@ -14765,9 +14540,6 @@
 			},
 			"savingThrow": "Reflex",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -14994,9 +14766,6 @@
 			},
 			"targets": "you or the triggering ally",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -15016,11 +14785,12 @@
 				"Fortune"
 			],
 			"school": "D",
-			"domains": ["luck"],
+			"domains": [
+				"luck"
+			],
 			"cast": {
 				"number": 1,
-				"unit": "reaction",
-				"entry": "{@as R}"
+				"unit": "reaction"
 			},
 			"components": {
 				"F": false,
@@ -15030,9 +14800,6 @@
 			},
 			"trigger": "You fail (but don't critically fail) a saving throw.",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -15322,9 +15089,6 @@
 			},
 			"targets": "1 creature",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -15451,7 +15215,9 @@
 				"Enchantment"
 			],
 			"school": "E",
-			"domains": ["magic"],
+			"domains": [
+				"magic"
+			],
 			"cast": {
 				"number": 1,
 				"unit": "action"
@@ -15549,7 +15315,9 @@
 				"Negative"
 			],
 			"school": "N",
-			"domains": ["undeath"],
+			"domains": [
+				"undeath"
+			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
@@ -15628,9 +15396,6 @@
 			"targets": "1 creature",
 			"savingThrow": "Will",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -15756,9 +15521,6 @@
 			},
 			"savingThrow": "Fortitude",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -15923,9 +15685,6 @@
 			},
 			"targets": "non-magical object of light Bulk or less",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -16056,9 +15815,6 @@
 			},
 			"savingThrow": "Reflex",
 			"savingThrowBasic": true,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -16278,9 +16034,6 @@
 			},
 			"targets": "1 willing creature",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -16311,9 +16064,6 @@
 				"V": true
 			},
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -16564,9 +16314,6 @@
 			},
 			"targets": "up to 6 creatures",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -16719,7 +16466,9 @@
 				"Light"
 			],
 			"school": "V",
-			"domains": ["moon"],
+			"domains": [
+				"moon"
+			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
@@ -16739,9 +16488,6 @@
 			},
 			"targets": "1 creature or object",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -16775,7 +16521,9 @@
 				"Evocation"
 			],
 			"school": "V",
-			"domains": ["magic"],
+			"domains": [
+				"magic"
+			],
 			"cast": {
 				"number": 1,
 				"unit": "action"
@@ -16876,7 +16624,9 @@
 				"Positive"
 			],
 			"school": "C",
-			"domains": ["nature"],
+			"domains": [
+				"nature"
+			],
 			"cast": {
 				"number": 1,
 				"unit": "action"
@@ -16889,9 +16639,6 @@
 			},
 			"requirements": "You have a free hand.",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -17060,9 +16807,6 @@
 			},
 			"targets": "1 creature",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -17272,9 +17016,6 @@
 			"targets": "1 creature",
 			"savingThrow": "Will",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -17302,7 +17043,9 @@
 				"Transmutation"
 			],
 			"school": "T",
-			"domains": ["indulgence"],
+			"domains": [
+				"indulgence"
+			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
@@ -17323,9 +17066,6 @@
 			"targets": "1 living creature",
 			"savingThrow": "Fortitude",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -17672,11 +17412,12 @@
 				"Fortune"
 			],
 			"school": "A",
-			"domains": ["perfection"],
+			"domains": [
+				"perfection"
+			],
 			"cast": {
 				"number": 1,
-				"unit": "reaction",
-				"entry": "{@as R}"
+				"unit": "reaction"
 			},
 			"components": {
 				"F": false,
@@ -17686,9 +17427,6 @@
 			},
 			"trigger": "You fail a saving throw against a morph, petrification, or {@trait polymorph} effect.",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -17707,7 +17445,9 @@
 				"Cleric"
 			],
 			"school": "A",
-			"domains": ["perfection"],
+			"domains": [
+				"perfection"
+			],
 			"cast": {
 				"number": 1,
 				"unit": "action"
@@ -17719,9 +17459,6 @@
 				"V": true
 			},
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -17830,9 +17567,6 @@
 			},
 			"savingThrow": "Will",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -17885,9 +17619,6 @@
 			"targets": "1 living creature",
 			"savingThrow": "Will",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -18131,9 +17862,6 @@
 			},
 			"targets": "1 willing creature, or up to 8 willing creatures joining hands",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -18245,9 +17973,6 @@
 			},
 			"targets": "1 creature",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -18283,7 +18008,9 @@
 				"Positive"
 			],
 			"school": "N",
-			"domains": ["sun"],
+			"domains": [
+				"sun"
+			],
 			"cast": {
 				"number": 1,
 				"unit": "action"
@@ -18629,7 +18356,9 @@
 				"Transmutation"
 			],
 			"school": "T",
-			"domains": ["wealth"],
+			"domains": [
+				"wealth"
+			],
 			"cast": {
 				"number": 1,
 				"unit": "action"
@@ -18821,9 +18550,6 @@
 				"V": true
 			},
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -18864,9 +18590,6 @@
 				"V": true
 			},
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -18961,9 +18684,6 @@
 				"entry": "30-foot cone"
 			},
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -19177,9 +18897,6 @@
 			},
 			"targets": "1 creature",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -19357,11 +19074,12 @@
 				"Cleric"
 			],
 			"school": "A",
-			"domains": ["protection"],
+			"domains": [
+				"protection"
+			],
 			"cast": {
 				"number": 1,
-				"unit": "reaction",
-				"entry": "{@as R}"
+				"unit": "reaction"
 			},
 			"components": {
 				"F": false,
@@ -19378,9 +19096,6 @@
 				}
 			},
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -19408,7 +19123,9 @@
 				"Cleric"
 			],
 			"school": "A",
-			"domains": ["protection"],
+			"domains": [
+				"protection"
+			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
@@ -19511,7 +19228,9 @@
 				"Scrying"
 			],
 			"school": "D",
-			"domains": ["cities"],
+			"domains": [
+				"cities"
+			],
 			"cast": {
 				"number": 3,
 				"unit": "action"
@@ -19530,9 +19249,6 @@
 				}
 			},
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -19647,9 +19363,6 @@
 			},
 			"targets": "1 cubic foot of contaminated food or water",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -19691,9 +19404,6 @@
 			"targets": "1 creature",
 			"savingThrow": "Fortitude",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -19748,7 +19458,9 @@
 				"Conjuration"
 			],
 			"school": "C",
-			"domains": ["air"],
+			"domains": [
+				"air"
+			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
@@ -19769,9 +19481,6 @@
 			"targets": "1 creature",
 			"savingThrow": "Fortitude",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -19879,9 +19588,6 @@
 			},
 			"targets": "1 dead creature of 13th level or lower",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -20012,9 +19718,6 @@
 			},
 			"targets": "1 creature",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -20073,9 +19776,6 @@
 			},
 			"targets": "1 object",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -20115,7 +19815,9 @@
 				"Prediction"
 			],
 			"school": "D",
-			"domains": ["fate"],
+			"domains": [
+				"fate"
+			],
 			"cast": {
 				"number": 1,
 				"unit": "minute",
@@ -20136,9 +19838,6 @@
 			},
 			"targets": "1 creature other than you",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -20174,9 +19873,6 @@
 				"V": true
 			},
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -20197,7 +19893,9 @@
 				"Positive"
 			],
 			"school": "N",
-			"domains": ["healing"],
+			"domains": [
+				"healing"
+			],
 			"cast": {
 				"number": 1,
 				"unit": "varies",
@@ -20217,9 +19915,6 @@
 			},
 			"targets": "1 living creature per action spent to cast this spell",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -20330,9 +20025,6 @@
 				}
 			},
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -20378,9 +20070,6 @@
 			},
 			"targets": "1 creature",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -20422,9 +20111,6 @@
 			},
 			"targets": "1 creature",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -20465,9 +20151,6 @@
 			},
 			"targets": "1 creature",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -20520,9 +20203,6 @@
 			},
 			"targets": "1 creature",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -20807,9 +20487,6 @@
 			},
 			"targets": "1 creature",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -20874,9 +20551,6 @@
 			},
 			"targets": "1 creature",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -20907,11 +20581,12 @@
 				"Nonlethal"
 			],
 			"school": "A",
-			"domains": ["pain"],
+			"domains": [
+				"pain"
+			],
 			"cast": {
 				"number": 1,
-				"unit": "reaction",
-				"entry": "{@as R}"
+				"unit": "reaction"
 			},
 			"components": {
 				"F": false,
@@ -20930,9 +20605,6 @@
 			"targets": "the triggering creature",
 			"savingThrow": "Fortitude",
 			"savingThrowBasic": true,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -21227,7 +20899,9 @@
 				"Mental"
 			],
 			"school": "A",
-			"domains": ["secrecy"],
+			"domains": [
+				"secrecy"
+			],
 			"cast": {
 				"number": 1,
 				"unit": "minute",
@@ -21380,7 +21054,9 @@
 				"Nonlethal"
 			],
 			"school": "E",
-			"domains": ["pain"],
+			"domains": [
+				"pain"
+			],
 			"cast": {
 				"number": 1,
 				"unit": "action"
@@ -21401,9 +21077,6 @@
 			"targets": "1 creature",
 			"savingThrow": "Will",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -21440,11 +21113,12 @@
 				"Fortune"
 			],
 			"school": "D",
-			"domains": ["knowledge"],
+			"domains": [
+				"knowledge"
+			],
 			"cast": {
 				"number": 1,
-				"unit": "reaction",
-				"entry": "{@as R}"
+				"unit": "reaction"
 			},
 			"components": {
 				"F": false,
@@ -21454,9 +21128,6 @@
 			},
 			"trigger": "You attempt a {@skill Perception} check to {@action Seek}, or you attempt a skill check to {@action Recall Knowledge} with a skill you're trained in.",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -21626,9 +21297,6 @@
 			},
 			"targets": "1 creature",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -21788,9 +21456,6 @@
 			},
 			"targets": "1 creature with whom you are familiar",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -21837,9 +21502,6 @@
 			},
 			"savingThrow": "Reflex or Will (target's choice)",
 			"savingThrowBasic": true,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -21871,8 +21533,7 @@
 			],
 			"cast": {
 				"number": 1,
-				"unit": "reaction",
-				"entry": "{@as R}"
+				"unit": "reaction"
 			},
 			"components": {
 				"F": false,
@@ -21890,9 +21551,6 @@
 			},
 			"targets": "the triggering spell",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -21984,9 +21642,6 @@
 			},
 			"targets": "cube of stone 10 feet across or smaller",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -22037,9 +21692,6 @@
 			},
 			"targets": "an unworked piece of wood up to 20 cubic feet in volume",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -22101,7 +21753,9 @@
 				"Mental"
 			],
 			"school": "E",
-			"domains": ["nightmares"],
+			"domains": [
+				"nightmares"
+			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
@@ -22179,9 +21833,6 @@
 			},
 			"targets": "1 unattended object",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -22446,9 +22097,6 @@
 			},
 			"targets": "1 creature",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -22742,9 +22390,6 @@
 			},
 			"savingThrow": "Will",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -22986,9 +22631,6 @@
 			},
 			"targets": "you and up to 9 allies",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -23025,7 +22667,9 @@
 				"Mental"
 			],
 			"school": "E",
-			"domains": ["family"],
+			"domains": [
+				"family"
+			],
 			"cast": {
 				"number": 1,
 				"unit": "action"
@@ -23110,9 +22754,6 @@
 			},
 			"savingThrow": "Fortitude",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -23391,9 +23032,6 @@
 			"targets": "1 creature",
 			"savingThrow": "Will",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -23501,9 +23139,6 @@
 			"targets": "1 creature",
 			"savingThrow": "Fortitude",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -23575,9 +23210,6 @@
 			"targets": "1 creature",
 			"savingThrow": "Fortitude",
 			"savingThrowBasic": true,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -23681,9 +23313,6 @@
 			},
 			"savingThrow": "Fortitude",
 			"savingThrowBasic": true,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -23886,7 +23515,9 @@
 				"Visual"
 			],
 			"school": "I",
-			"domains": ["creation"],
+			"domains": [
+				"creation"
+			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
@@ -24003,9 +23634,6 @@
 			},
 			"targets": "1 {@condition dying} creature",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -24212,9 +23840,6 @@
 			},
 			"targets": "{@condition petrified} creature or human-size stone object",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -24563,11 +24188,12 @@
 				"Illusion"
 			],
 			"school": "A",
-			"domains": ["trickery"],
+			"domains": [
+				"trickery"
+			],
 			"cast": {
 				"number": 1,
-				"unit": "reaction",
-				"entry": "{@as R}"
+				"unit": "reaction"
 			},
 			"components": {
 				"F": false,
@@ -25627,9 +25253,6 @@
 			},
 			"savingThrow": "Reflex",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -25737,7 +25360,9 @@
 				"Sleep"
 			],
 			"school": "E",
-			"domains": ["dreams"],
+			"domains": [
+				"dreams"
+			],
 			"cast": {
 				"number": 3,
 				"unit": "action"
@@ -25930,7 +25555,9 @@
 				"Necromancy"
 			],
 			"school": "N",
-			"domains": ["indulgence"],
+			"domains": [
+				"indulgence"
+			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
@@ -25950,9 +25577,6 @@
 			},
 			"targets": "1 creature",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -26073,9 +25697,6 @@
 			},
 			"targets": "1 creature",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -26240,9 +25861,6 @@
 			},
 			"targets": "1 creature",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -26283,9 +25901,6 @@
 			},
 			"targets": "1 creature",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -26497,9 +26112,6 @@
 			},
 			"targets": "you and up to 4 targets touched, either willing creatures or objects roughly the size of a creature.",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -26571,9 +26183,6 @@
 			"targets": "1 creature",
 			"savingThrow": "Reflex",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -26601,11 +26210,12 @@
 				"Fortune"
 			],
 			"school": "D",
-			"domains": ["fate"],
+			"domains": [
+				"fate"
+			],
 			"cast": {
 				"number": 1,
-				"unit": "reaction",
-				"entry": "{@as R}"
+				"unit": "reaction"
 			},
 			"components": {
 				"F": false,
@@ -26623,9 +26233,6 @@
 			},
 			"targets": "the triggering creature",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -26707,7 +26314,9 @@
 				"Water"
 			],
 			"school": "V",
-			"domains": ["water"],
+			"domains": [
+				"water"
+			],
 			"cast": {
 				"number": 1,
 				"unit": "action"
@@ -26728,9 +26337,6 @@
 			"targets": "1 creature",
 			"savingThrow": "Fortitude",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -26779,9 +26385,6 @@
 				"V": true
 			},
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -26918,7 +26521,9 @@
 				"Mental"
 			],
 			"school": "E",
-			"domains": ["tyranny"],
+			"domains": [
+				"tyranny"
+			],
 			"cast": {
 				"number": 1,
 				"unit": "action"
@@ -26975,7 +26580,9 @@
 				"Light"
 			],
 			"school": "E",
-			"domains": ["moon"],
+			"domains": [
+				"moon"
+			],
 			"cast": {
 				"number": 1,
 				"unit": "action"
@@ -27031,7 +26638,9 @@
 				"Negative"
 			],
 			"school": "N",
-			"domains": ["undeath"],
+			"domains": [
+				"undeath"
+			],
 			"cast": {
 				"number": 1,
 				"unit": "action"
@@ -27052,9 +26661,6 @@
 			"targets": "1 living creature",
 			"savingThrow": "Fortitude",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -27090,7 +26696,9 @@
 				"Evocation"
 			],
 			"school": "V",
-			"domains": ["travel"],
+			"domains": [
+				"travel"
+			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
@@ -27184,9 +26792,6 @@
 				"V": true
 			},
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -27230,7 +26835,9 @@
 				"Visual"
 			],
 			"school": "I",
-			"domains": ["trickery"],
+			"domains": [
+				"trickery"
+			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
@@ -27801,7 +27408,9 @@
 				"Transmutation"
 			],
 			"school": "T",
-			"domains": ["freedom"],
+			"domains": [
+				"freedom"
+			],
 			"cast": {
 				"number": 1,
 				"unit": "action"
@@ -27813,9 +27422,6 @@
 				"V": false
 			},
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -27836,11 +27442,12 @@
 				"Fortune"
 			],
 			"school": "A",
-			"domains": ["family"],
+			"domains": [
+				"family"
+			],
 			"cast": {
 				"number": 1,
-				"unit": "reaction",
-				"entry": "{@as R}"
+				"unit": "reaction"
 			},
 			"components": {
 				"F": false,
@@ -27858,9 +27465,6 @@
 			},
 			"targets": "each ally targeted by the triggering spell",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -28086,9 +27690,6 @@
 			},
 			"savingThrow": "Fortitude",
 			"savingThrowBasic": true,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -28141,9 +27742,6 @@
 			"targets": "1 living creature",
 			"savingThrow": "Fortitude",
 			"savingThrowBasic": true,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -28236,7 +27834,9 @@
 				"Mental"
 			],
 			"school": "E",
-			"domains": ["confidence"],
+			"domains": [
+				"confidence"
+			],
 			"cast": {
 				"number": 1,
 				"unit": "action"
@@ -28396,7 +27996,9 @@
 				"Transmutation"
 			],
 			"school": "T",
-			"domains": ["nature"],
+			"domains": [
+				"nature"
+			],
 			"cast": {
 				"number": 1,
 				"unit": "action"
@@ -28626,9 +28228,6 @@
 			},
 			"savingThrow": "Reflex",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -28692,9 +28291,6 @@
 			"targets": "any number of creatures",
 			"savingThrow": "Fortitude",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -28725,7 +28321,9 @@
 				"Mental"
 			],
 			"school": "E",
-			"domains": ["nightmares"],
+			"domains": [
+				"nightmares"
+			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
@@ -28979,9 +28577,6 @@
 				}
 			},
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -29199,9 +28794,6 @@
 			"targets": "1 creature",
 			"savingThrow": "Will",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -29506,9 +29098,6 @@
 			},
 			"savingThrow": "Reflex",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -29544,7 +29133,9 @@
 				"Evocation"
 			],
 			"school": "V",
-			"domains": ["zeal"],
+			"domains": [
+				"zeal"
+			],
 			"cast": {
 				"number": 1,
 				"unit": "action"
@@ -29564,9 +29155,6 @@
 			},
 			"targets": "1 weapon you're wielding",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -29684,9 +29272,6 @@
 			"targets": "any number of creatures",
 			"savingThrow": "Will",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -29727,9 +29312,6 @@
 				"V": true
 			},
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -30026,9 +29608,6 @@
 				"V": true
 			},
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
@@ -30058,7 +29637,9 @@
 				"Mental"
 			],
 			"school": "E",
-			"domains": ["freedom"],
+			"domains": [
+				"freedom"
+			],
 			"cast": {
 				"number": 1,
 				"unit": "action"
@@ -30106,7 +29687,9 @@
 				"Divination"
 			],
 			"school": "D",
-			"domains": ["truth"],
+			"domains": [
+				"truth"
+			],
 			"cast": {
 				"number": 1,
 				"unit": "action"
@@ -30221,11 +29804,12 @@
 				"Mental"
 			],
 			"school": "E",
-			"domains": ["zeal"],
+			"domains": [
+				"zeal"
+			],
 			"cast": {
 				"number": 1,
-				"unit": "reaction",
-				"entry": "{@as R}"
+				"unit": "reaction"
 			},
 			"components": {
 				"F": false,
@@ -30243,9 +29827,6 @@
 			},
 			"targets": "you and the triggering ally",
 			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [

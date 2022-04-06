@@ -353,6 +353,16 @@
 						"type": {
 							"const": "affliction"
 						},
+						"name": {
+							"type":"string"
+						},
+						"traits": {
+							"type": "array",
+							"items": {
+								"type": "string",
+								"$ref": "utils.json#/definitions/anyTraitUpper"
+							}
+						},
 						"DC": {
 							"type": "integer"
 						},
@@ -360,8 +370,15 @@
 							"type": "string",
 							"enum": ["Will", "Fortitude"]
 						},
+						"note": {
+							"type": "string"
+						},
 						"onset": {
 							"type": "string"
+						},
+						"level": {
+							"type": "integer",
+							"exclusiveMinimum": 0
 						},
 						"stages": {
 							"type": "array",
