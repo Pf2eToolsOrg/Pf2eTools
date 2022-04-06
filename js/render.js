@@ -4388,8 +4388,8 @@ Renderer.deity = {
 			${b.font ? `<p class="pf2-stat__section"><strong>Divine Font&nbsp;</strong>${renderer.render(b.font.map(f => `{@spell ${f}}`).join(" or "))}</p>` : ""}
 			${b.ability ? `<p class="pf2-stat__section"><strong>Divine Ability&nbsp;</strong>${renderer.render(b.ability.entry)}</p>` : ""}
 			${b.skill ? `<p class="pf2-stat__section"><strong>Divine Skill&nbsp;</strong>${renderer.render(b.skill.map(s => `{@skill ${s}}`).join(", "))}</p>` : ""}
-			${b.domains ? `<p class="pf2-stat__section"><strong>Domains&nbsp;</strong>${renderer.render(b.domains.map(it => `{@filter ${it}|spells||subclass=${it}}`).join(", "))}</p>` : ""}
-			${b.alternateDomains ? `<p class="pf2-stat__section"><strong>Alternate Domains&nbsp;</strong>${renderer.render(b.alternateDomains.map(it => `{@filter ${it}|spells||subclass=${it}}`).join(", "))}</p>` : ""}
+			${b.domains ? `<p class="pf2-stat__section"><strong>Domains&nbsp;</strong>${renderer.render(b.domains.map(it => `{@filter ${it}|spells||domains=${it}}`).join(", "))}</p>` : ""}
+			${b.alternateDomains ? `<p class="pf2-stat__section"><strong>Alternate Domains&nbsp;</strong>${renderer.render(b.alternateDomains.map(it => `{@filter ${it}|spells||domains=${it}}`).join(", "))}</p>` : ""}
 			${b.spells ? `<p class="pf2-stat__section"><strong>Cleric Spells&nbsp;</strong>${renderer.render(Renderer.deity.getClericSpells(b.spells))}</p>` : ""}
 			${b.weapon ? `<p class="pf2-stat__section"><strong>Favored Weapon&nbsp;</strong>${renderer.render(b.weapon.map(w => `{@item ${w}}`).join(" or "))}</p>` : ""}
 			${b.avatar ? `<p class="pf2-h3">Avatar</p>${b.avatar.preface ? `<p class="pf2-stat">${renderer.render(b.avatar.preface)}</p>` : ""}<p class="pf2-stat">${renderer.render(b.avatar.entry)}</p>` : ""}
@@ -5184,10 +5184,8 @@ Renderer.spell = {
 		if (sp.duration && sp.duration.type != null) stDurationParts.push(`<strong>Duration&nbsp;</strong>${renderer.render(sp.duration.entry)}`);
 
 		return `${sp.traditions ? `<p class="pf2-stat pf2-stat__section"><strong>Traditions </strong>${renderer.render(sp.traditions.map(it => `{@trait ${it}}`).join(", ").toLowerCase())}</p>` : ""}
-		${sp.subclass ? Object.keys(sp.subclass).map(k => `<p class="pf2-stat pf2-stat__section"><strong>${k.split("|")[1]}</strong>
-		${renderer.render(k.split("|")[1].toLowerCase() === "domain" ? sp.subclass[k].map(it => `{@filter ${it}|deities||domain=${it}}`).join(", ")
-		: k.split("|")[1].toLowerCase() === "mystery" ? sp.subclass[k].map(it => `{@class Oracle|APG|${it}|${it}}`).join(", ")
-			: sp.subclass[k].join(", ")).toLowerCase()}</p>`) : ""}
+		${sp.domains ? `<p class="pf2-stat pf2-stat__section"><strong>Domain${sp.domains.length > 1 ? "s" : ""}</strong> ${renderer.render(sp.domains.map(it => `{@filter ${it}|deities||domain=${it}}`).join(", "))}` : ""}
+		${sp.subclass ? Object.keys(sp.subclass).map(k => `<p class="pf2-stat pf2-stat__section"><strong>${k.split("|")[1]}</strong> ${renderer.render(k.split("|")[1].toLowerCase() === "mystery" ? sp.subclass[k].map(it => `{@class Oracle|APG|${it}|${it}}`).join(", ") : sp.subclass[k].join(", ").toLowerCase())}</p>`) : ""}
 		<p class="pf2-stat pf2-stat__section"><strong>Cast </strong>${renderer.render(Parser.timeToFullEntry(sp.cast))} ${!Parser.TIME_ACTIONS.includes(sp.cast.unit) && components.length ? `(${components.join(", ")})` : components.join(", ")}${castPart}</p>
 		${targetingParts.length ? `<p class="pf2-stat pf2-stat__section">${targetingParts.join("; ")}</p>` : ""}
 		${stDurationParts.length ? `<p class="pf2-stat pf2-stat__section">${stDurationParts.join("; ")}</p>` : ""}
