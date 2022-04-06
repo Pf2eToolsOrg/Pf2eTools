@@ -50,9 +50,14 @@ class PageFilterSpells extends PageFilter {
 			displayFn: (it) => it.toTitleCase(),
 			nests: {},
 		});
+		this._domainFilter = new Filter({
+			header: "Domains",
+			displayFn: (it) => it.toTitleCase(),
+			items: [],
+		});
 		this._multiFocusFilter = new MultiFilter({
 			header: "Focus Spells",
-			filters: [this._classFilter, this._subClassFilter],
+			filters: [this._domainFilter, this._classFilter, this._subClassFilter],
 		});
 		this._componentsFilter = new Filter({
 			header: "Components",
@@ -160,6 +165,7 @@ class PageFilterSpells extends PageFilter {
 		if (spell.spellLists) this._traditionFilter.addItem(spell.spellLists)
 		this._spellTypeFilter.addItem(spell._fSpellType);
 		this._classFilter.addItem(spell._fClasses);
+		this._domainFilter.addItem(spell.domains);
 		spell._fSubClasses.forEach(sc => {
 			this._subClassFilter.addNest(sc.nest, {isHidden: true});
 			this._subClassFilter.addItem(sc);
@@ -204,6 +210,7 @@ class PageFilterSpells extends PageFilter {
 			s._fRange,
 			s._fSavingThrow,
 			[
+				s.domains,
 				s._fClasses,
 				s._fSubClasses,
 			],
