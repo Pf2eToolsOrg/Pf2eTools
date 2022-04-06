@@ -279,6 +279,41 @@
 				}
 			]
 		},
+		"entriesLevelEffect": {
+			"allOf": [
+				{
+					"$ref": "#/definitions/entry"
+				},
+				{
+					"type": "object",
+					"properties": {
+						"type": {
+							"const": "lvlEffect"
+						},
+						"entries": {
+							"type": "array",
+							"items": {
+								"properties": {
+									"entry": {
+										"$ref": "#"
+									},
+									"range": {
+										"type": "string"
+									}
+								},
+								"additionalProperties": false,
+								"required": [
+									"entry",
+									"range"
+								]
+							},
+							"minItems": 1
+						}
+					},
+					"additionalProperties": false
+				}
+			]
+		},
 		"entriesSuccessDegree": {
 			"allOf": [
 				{
@@ -327,7 +362,12 @@
 						},
 						"tag": {
 							"type": "string",
-							"enum": ["action", "feat", "item"]
+							"enum": [
+								"action",
+								"feat",
+								"item",
+								"creature"
+							]
 						},
 						"name": {
 							"type": "string"
@@ -374,6 +414,9 @@
 							"type": "string"
 						},
 						"onset": {
+							"type": "string"
+						},
+						"maxDuration": {
 							"type": "string"
 						},
 						"level": {
@@ -617,6 +660,9 @@
 						"isStriped": {
 							"type": "boolean"
 						},
+						"rollable": {
+							"type": "boolean"
+						},
 						"labelRowIdx": {
 							"type": "array",
 							"description": "Indices of rows that are labels.\n If the value is [ ], no rows are rendered as labels.",
@@ -656,6 +702,14 @@
 									"minItems": 2
 								},
 								"minItems": 1
+							},
+							"minItems": 1
+						},
+						"colSizes": {
+							"type": "array",
+							"items": {
+								"type": "integer",
+								"exclusiveMinimum": 0
 							},
 							"minItems": 1
 						},
@@ -2120,6 +2174,9 @@
 		},
 		{
 			"$ref": "#/definitions/entriesSuccessDegree"
+		},
+		{
+			"$ref": "#/definitions/entriesLevelEffect"
 		},
 		{
 			"$ref": "#/definitions/entriesStatblock"

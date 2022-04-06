@@ -76,12 +76,14 @@
 									"$ref": "utils.json#/definitions/anyTraitUpper"
 								},
 								{
+									"$comment": "Spell only Traits.",
 									"enum": [
 										"Cantrip",
 										"Composition",
 										"Cursebound",
 										"Hex",
-										"Litany"
+										"Litany",
+										"Consecration"
 									]
 								}
 							]
@@ -121,22 +123,27 @@
 						"properties": {
 							"F": {
 								"description": "Focus",
-								"type": "boolean"
+								"type": "boolean",
+								"enum": [true]
 							},
 							"M": {
 								"description": "Material",
-								"type": "boolean"
+								"type": "boolean",
+								"enum": [true]
 							},
 							"S": {
 								"description": "Somatic",
-								"type": "boolean"
+								"type": "boolean",
+								"enum": [true]
 							},
 							"V": {
 								"description": "Verbal",
-								"type": "boolean"
+								"type": "boolean",
+								"enum": [true]
 							}
 						},
-						"additionalProperties": false
+						"additionalProperties": false,
+						"minProperties": 1
 					},
 					"cost": {
 						"type": "string"
@@ -153,6 +160,7 @@
 										"Burst",
 										"Cone",
 										"Line",
+										"Cylinder",
 										"Misc."
 									]
 								}
@@ -188,7 +196,9 @@
 											"touch",
 											"feet",
 											"miles",
-											"unlimited"
+											"planetary",
+											"unlimited",
+											"unknown"
 										]
 									},
 									"amount": {
@@ -209,7 +219,7 @@
 						"type": "string"
 					},
 
-					"savingThrow": {
+					"savingThrowNew": {
 						"type": "object",
 						"properties": {
 							"basic": {
@@ -231,6 +241,19 @@
 							"type"
 						]
 					},
+
+					"savingThrow": {
+						"type": "string",
+						"enum": [
+							"Will",
+							"Reflex",
+							"Fortitude"
+						]
+					},
+					"savingThrowBasic": {
+						"type": "boolean"
+					},
+
 					"duration": {
 						"type": "object",
 						"properties": {
@@ -258,7 +281,9 @@
 											"round",
 											"minute",
 											"hour",
-											"day",											"unlimited",
+											"day",
+											"month",
+											"unlimited",
 											"special"
 										]
 									}
