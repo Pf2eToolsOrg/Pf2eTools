@@ -388,8 +388,7 @@
 					"ranged": {
 						"name": "hearth ember",
 						"range": 120,
-						"traits": [
-						],
+						"traits": [],
 						"damage": "4d6+3",
 						"damageType": "fire",
 						"damage2": "2d6",
@@ -12591,7 +12590,23 @@
 					"warhammer"
 				],
 				"avatar": {
-					"entry": "Speed 50 feet, burrow Speed 30 feet, immune to {@condition immobilized}; shield (15 Hardness, can't be damaged); Melee {@as 1} warhammer ({@trait shove}, {@trait reach 15 feet}), Damage {@damage 6d8+6} bludgeoning.",
+					"speed": {
+						"walk": 50,
+						"burrow": 30
+					},
+					"immune": [
+						"immobilized"
+					],
+					"shield": true,
+					"melee": {
+						"name": "warhammer",
+						"traits": [
+							"shove",
+							"reach 15 feet"
+						],
+						"damage": "6d8+6",
+						"damageType": "bludgeoning"
+					},
 					"preface": ""
 				}
 			},
