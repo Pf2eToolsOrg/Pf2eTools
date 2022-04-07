@@ -651,6 +651,17 @@
 				{
 					"type": "object",
 					"properties": {
+						"name": {
+							"type": "string"
+						},
+						"source": {
+							"type": "string",
+							"$ref": "utils.json#/definitions/sourceList"
+						},
+						"id": {
+							"type": "string",
+							"pattern": "^\\d+-?\\d+$"
+						},
 						"type": {
 							"const": "table"
 						},

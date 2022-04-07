@@ -4,7 +4,6 @@
 			"name": "Blood Feast",
 			"source": "EC4",
 			"page": 74,
-			"focus": false,
 			"level": 5,
 			"traits": [
 				"Uncommon",
@@ -32,9 +31,6 @@
 				}
 			},
 			"targets": "1 creature",
-			"savingThrowBasic": false,
-			"sustain": false,
-			"dismiss": false,
 			"entries": [
 				"Your head splits vertically into an enormous maw, which feasts upon the target's blood, dealing {@damage 12d6} piercing damage, depending on your spell attack roll. After the spell, your head sews back together as if it had never split apart. You gain temporary Hit Points for 1 minute equal to half the piercing damage the target takes.",
 				"If you are a gug, increase the piercing damage by {@dice 2d6} and increase the {@condition persistent damage ||persistent bleed damage} you deal on a critical hit by {@dice 1d8}. This spell doesn't alter a gug's appearance.",
@@ -60,7 +56,6 @@
 			"name": "Entrancing Eyes",
 			"source": "EC4",
 			"page": 74,
-			"focus": false,
 			"level": 7,
 			"traits": [
 				"Uncommon",
@@ -86,7 +81,6 @@
 				],
 				"entry": "30-foot emanation centered on you"
 			},
-			"savingThrowBasic": false,
 			"duration": {
 				"type": "timed",
 				"entry": "sustained up to 1 minute",
@@ -96,7 +90,6 @@
 				}
 			},
 			"sustain": true,
-			"dismiss": false,
 			"entries": [
 				"Your eyes glow with an entrancing radiance that captivates those who meet your gaze. Any creature that ends its turn within the emanation must attempt a Will save.",
 				{
@@ -113,7 +106,6 @@
 			"name": "Necrotic Radiation",
 			"source": "EC4",
 			"page": 75,
-			"focus": false,
 			"level": 4,
 			"traits": [
 				"Uncommon",
@@ -142,7 +134,6 @@
 				}
 			},
 			"targets": "one object or one 10-footsquare area",
-			"savingThrowBasic": false,
 			"duration": {
 				"type": "timed",
 				"entry": "24 hours",
@@ -151,8 +142,6 @@
 					"unit": "hour"
 				}
 			},
-			"sustain": false,
-			"dismiss": false,
 			"entries": [
 				"You imbue the touched object or space with slow-acting necrotic radiation. If you cast the spell on an object, any creature ending its turn holding or carrying the object takes {@damage 2d6} negative damage. If you cast the spell on an area, any creature ending its turn in the area takes {@damage 2d6} negative damage. You can attempt to use this spell on an attended object by touching the object. If you do, the creature attempts a Reflex save to reduce the effect.",
 				{

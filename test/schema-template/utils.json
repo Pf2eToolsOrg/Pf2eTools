@@ -70,6 +70,67 @@
 				"TiO"
 			]
 		},
+		"alignmentTraits": {
+			"type": "string",
+			"anyOf": [
+				{
+					"$ref": "#/definitions/alignmentNames"
+				},
+				{
+					"$ref": "#/definitions/alignmentTags"
+				}
+			]
+		},
+		"alignmentNames": {
+			"type": "string",
+			"description": "L: Lawful\n N: Neutral\n NX: Neutral (law/chaos axis)\n NY: Neutral (good/evil axis)\n C: Chaotic\n G: Good\n E: Evil\n U: Unaligned\n A: Any",
+			"enum": [
+				"Any",
+				"Lawful",
+				"Chaotic",
+				"Good",
+				"Evil",
+				"Neutral",
+				"All"
+			]
+		},
+		"alignmentTags": {
+			"type": "string",
+			"description": "CE: Chaotic Evil\nCG: Chaotic Good\nCN: Chaotic Neutral\nLE: Lawful Evil\nLG: Lawful Good\nLN: Lawful Neutral\nN: Neutral\nNE: Neutral Evil\nNG: Neutral Good",
+			"enum": [
+				"CE",
+				"CG",
+				"CN",
+				"LE",
+				"LG",
+				"LN",
+				"N",
+				"NE",
+				"NG"
+			]
+		},
+
+
+		"speed": {
+			"type": "object",
+			"patternProperties": {
+				"^(walk|climb|fly|burrow|swim)$": {
+					"type": "integer",
+					"exclusiveMinimum": 0
+				}
+			},
+			"properties": {
+				"speedNote": {
+					"type": "string"
+				}
+			},
+			"additionalProperties": {
+				"type": "integer",
+				"exclusiveMinimum": 0
+			}
+		},
+
+
 		"frequency": {
 			"type": "object",
 			"oneOf": [
@@ -198,6 +259,17 @@
 			},
 			"additionalProperties": false
 		},
+		"skillBonus": {
+			"$comment": "Just keeping this around in case we want it later, currently unused",
+			"type": "object",
+			"propertyNames": {
+				"$ref": "#/definitions/skillNameUpper"
+			},
+			"additionalProperties": {
+				"type": "string",
+				"pattern": "^(\\+|-)\\d$"
+			}
+		},
 		"implies": {
 			"type": "object",
 			"properties": {
@@ -248,6 +320,7 @@
 		},
 		"anyTraitUpper": {
 			"type": "string",
+			"description": "Any Trait in the game.",
 			"anyOf": [
 				{
 					"$ref": "#/definitions/rarityUpper"
@@ -269,6 +342,9 @@
 				},
 				{
 					"$ref": "#/definitions/ancestryNameUpper"
+				},
+				{
+					"$ref": "#/definitions/alignmentTraits"
 				},
 				{
 					"enum": [
@@ -324,7 +400,10 @@
 						"Darkness",
 						"Plant",
 						"Fungus",
-						"Olfactory"
+						"Olfactory",
+						"Inhaled",
+						"Incarnate",
+						"Shove"
 					]
 				},
 				{
@@ -333,12 +412,22 @@
 				{
 					"type": "string",
 					"pattern": "Additive \\d"
+				},
+				{
+					"type": "string",
+					"pattern": "^reach \\d+ feet$"
 				}
 			]
 		},
 		"loreSubjects": {
 			"type": "string",
-			"enum": ["Dragon", "Kintargo", "Dahak", "Architecture", "Breachill"]
+			"enum": [
+				"Dragon",
+				"Kintargo",
+				"Dahak",
+				"Architecture",
+				"Breachill"
+			]
 		},
 		"abilityUpper": {
 			"type": "string",
@@ -350,6 +439,17 @@
 				"Wisdom",
 				"Charisma",
 				"Free"
+			]
+		},
+		"abilityAbbvUpper": {
+			"type": "string",
+			"enum": [
+				"Str",
+				"Dex",
+				"Con",
+				"Int",
+				"Wis",
+				"Cha"
 			]
 		},
 		"ancestryNameUpper": {
@@ -504,6 +604,64 @@
 				"Mental"
 			]
 		},
+
+
+
+		"damage": {
+			"$comment": "Draft Damage object style",
+			"type": "object",
+			"propertyNames": {
+				"$ref": "#/definitions/damageTypeLower"
+			},
+			"additionalProperties": {
+				"oneOf": [
+					{
+						"type": "boolean",
+						"enum": [true]
+					},
+					{
+						"type": "object",
+						"properties": {
+							"versatile": {
+								"type": "boolean",
+								"enum": [true]
+							},
+							"persistent": {
+								"type": "boolean",
+								"enum": [true]
+							}
+						},
+						"additionalProperties": false
+					}
+				]
+			}
+		},
+
+
+		"damageTypeLower": {
+			"type": "string",
+			"enum": [
+				"electricity",
+				"sonic",
+				"acid",
+				"poison",
+				"cold",
+				"fire",
+				"slashing",
+				"bludgeoning",
+				"piercing",
+				"positive",
+				"negative",
+				"force",
+				"bleed",
+				"precision",
+				"evil",
+				"good",
+				"chaotic",
+				"lawful",
+				"mental"
+			]
+		},
 		"damageTypeTags": {
 			"type": "string",
 			"description": "TODO"
@@ -557,66 +715,113 @@
 			"type": "string",
 			"enum": ["Plate", "Leather", "Chain", "Cloth", "Composite"]
 		},
+		"conditionsLower": {
+			"type": "string",
+			"enum": [
+				"blinded",
+				"broken",
+				"clumsy",
+				"concealed",
+				"confused",
+				"controlled",
+				"dazzled",
+				"deafened",
+				"doomed",
+				"drained",
+				"dying",
+				"encumbered",
+				"enfeebled",
+				"fascinated",
+				"fatigued",
+				"flat-footed",
+				"fleeing",
+				"friendly",
+				"frightened",
+				"grabbed",
+				"helpful",
+				"hidden",
+				"hostile",
+				"immobilized",
+				"indifferent",
+				"invisible",
+				"observed",
+				"paralyzed",
+				"persistent damage",
+				"petrified",
+				"prone",
+				"quickened",
+				"restrained",
+				"sickened",
+				"slowed",
+				"stunned",
+				"stupefied",
+				"unconscious",
+				"undetected",
+				"unfriendly",
+				"unnoticed",
+				"wounded"
+			]
+		},
 		"domainsLower": {
 			"type": "string",
 			"enum": [
-				"toil",
-				"naga",
-				"travel",
-				"wealth",
-				"creation",
-				"might",
-				"luck",
-				"ambition",
-				"passion",
-				"darkness",
-				"tyranny",
-				"destruction",
-				"sun",
-				"death",
-				"confidence",
 				"air",
-				"water",
-				"dreams",
-				"cities",
-				"fire",
-				"secrecy",
-				"truth",
-				"healing",
-				"earth",
-				"knowledge",
-				"magic",
-				"undeath",
-				"moon",
-				"nature",
-				"indulgence",
-				"perfection",
-				"protection",
-				"fate",
-				"pain",
-				"nightmares",
-				"family",
-				"trickery",
-				"freedom",
-				"zeal",
+				"ambition",
 				"change",
-				"star",
-				"lightning",
-				"time",
+				"cities",
 				"cold",
-				"plague",
-				"void",
-				"wyrmkin",
+				"confidence",
+				"creation",
+				"darkness",
+				"death",
+				"decay",
+				"delirium",
+				"destruction",
+				"dreams",
 				"dust",
 				"duty",
-				"soul",
-				"delirium",
-				"decay",
-				"repose",
+				"earth",
+				"family",
+				"fate",
+				"fire",
+				"freedom",
 				"glyph",
+				"healing",
+				"indulgence",
+				"knowledge",
+				"lightning",
+				"luck",
+				"magic",
+				"might",
+				"moon",
+				"naga",
+				"nature",
+				"nightmares",
+				"pain",
+				"passion",
+				"perfection",
+				"plague",
+				"protection",
+				"repose",
+				"secrecy",
 				"sorrow",
+				"souls",
+				"stars",
+				"sun",
+				"swarm",
+				"time",
+				"toil",
+				"travel",
+				"trickery",
+				"truth",
+				"tyranny",
+				"undeath",
 				"vigil",
-				"swarm"
+				"void",
+				"water",
+				"wealth",
+				"wyrmkin",
+				"zeal"
 			]
 		}
 	}

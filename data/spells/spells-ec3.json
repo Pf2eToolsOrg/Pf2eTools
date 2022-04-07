@@ -4,7 +4,6 @@
 			"name": "Ravening Maw",
 			"source": "EC3",
 			"page": 67,
-			"focus": false,
 			"level": 5,
 			"traits": [
 				"Uncommon",
@@ -34,8 +33,11 @@
 				}
 			},
 			"targets": "one living creature",
-			"savingThrow": "Will",
-			"savingThrowBasic": false,
+			"savingThrow": {
+				"type": [
+					"W"
+				]
+			},
 			"duration": {
 				"type": "timed",
 				"entry": "3 rounds",
@@ -44,8 +46,6 @@
 					"unit": "round"
 				}
 			},
-			"sustain": false,
-			"dismiss": false,
 			"entries": [
 				"You evoke {@deity Zevgavizeb|EC3}'s unceasing hunger and inflict it upon your target. The target becomes overwhelmed with cannibalistic hunger and can restore its vitality by feasting on the flesh of the fallen. On its turn, the target can use 2 actions (these actions have the {@trait manipulate} trait) to cannibalize an adjacent {@condition dying} or dead creature. If the cannibalized creature is {@condition dying}, it dies. If the cannibalized creature is an ally of the target, the target regains {@dice 5d8} HP; otherwise, the target regains {@dice 5d4} HP. Certain monsters (such as those whose blood is acidic or magical) might inflict additional effects on those who cannibalize them at the GM's discretion. Once cannibalized, a particular creature's body doesn't have enough meat to cannibalize again. During any round that there's a {@condition dying} or dead creature within 30 feet of the target, if the target can't or doesn't cannibalize a creature, the target takes {@damage 5d4} mental damage."
 			],

@@ -26,7 +26,8 @@
 					},
 					"level": {
 						"type": "integer",
-						"exclusiveMinimum": 0
+						"exclusiveMinimum": 0,
+						"maximum": 10
 					},
 					"focus": {
 						"type": "boolean"
@@ -49,7 +50,8 @@
 						"type": "array",
 						"items": {
 							"$ref": "utils.json#/definitions/domainsLower"
-						}
+						},
+						"minItems": 1
 					},
 					"traditions": {
 						"type": "array",
@@ -83,7 +85,8 @@
 										"Cursebound",
 										"Hex",
 										"Litany",
-										"Consecration"
+										"Consecration",
+										"Contingency"
 									]
 								}
 							]
@@ -104,6 +107,7 @@
 									"free",
 									"reaction",
 									"action",
+									"round",
 									"minute",
 									"hour",
 									"varies"
@@ -237,7 +241,7 @@
 							},
 							"hidden": {
 								"type": "boolean",
-								"enum": ["true"]
+								"enum": [true]
 							}
 						},
 						"additionalProperties": false,

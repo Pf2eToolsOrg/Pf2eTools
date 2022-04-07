@@ -35,9 +35,6 @@
 				}
 			},
 			"targets": "1 creature",
-			"savingThrowBasic": false,
-			"sustain": false,
-			"dismiss": false,
 			"entries": [
 				"You wrap the target in purifying flames. You can attempt to counteract a single poison or non-curse effect imparting the {@condition clumsy}, {@condition dazzled}, {@condition enfeebled}, {@condition fatigued}, {@condition frightened}, {@condition paralyzed}, {@condition sickened}, or {@condition stupefied} condition.",
 				"The target can choose to empower the flames with their life force, becoming {@condition drained|CRB|drained 1} (or increasing their {@condition drained} value by 1, if already under the condition) to grant you a +1 circumstance bonus to your counteract check."
@@ -76,10 +73,12 @@
 				],
 				"entry": "15-foot cone"
 			},
-			"savingThrow": "Reflex",
-			"savingThrowBasic": true,
-			"sustain": false,
-			"dismiss": false,
+			"savingThrow": {
+				"type": [
+					"R"
+				],
+				"basic": true
+			},
 			"entries": [
 				"You create a gout of flame that both heals and burns. You restore {@dice 1d4} HP to all allies in the area, and those allies gain a +1 status bonus to Fortitude saves for 1 minute. Enemies in the area take {@damage 1d4} fire damage with a basic Reflex save."
 			],
@@ -124,7 +123,6 @@
 				],
 				"entry": "10-foot emanation"
 			},
-			"savingThrowBasic": false,
 			"duration": {
 				"type": "timed",
 				"entry": "sustained up to 1 minute",
@@ -134,7 +132,6 @@
 				}
 			},
 			"sustain": true,
-			"dismiss": false,
 			"entries": [
 				"You encircle yourself in an aura of protective flames.",
 				"Each creature that hits you with an unarmed attack, Grapples you, or otherwise touches you takes 3 fire damage. When you {@action Cast a Spell||Cast the Spell} and the first time you sustain it each round, each creature in the area takes {@damage 3d6} fire damage (basic Reflex save)."
