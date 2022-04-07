@@ -75,7 +75,22 @@
 				],
 				"avatar": {
 					"preface": "",
-					"entry": "{@bold Abadar} Speed 50 feet, burrow Speed 30 feet, immune to {@condition immobilized}; Ranged {@as 1} crossbow (range increment 120 feet, {@trait reload 1}), Damage {@damage 6d10+3} piercing."
+					"speed": {
+						"walk": 50,
+						"burrow": 30
+					},
+					"immune": [
+						"immobilized"
+					],
+					"melee": {},
+					"ranged": {
+						"name": "crossbow",
+						"range": 120,
+						"reload": 1,
+						"traits": [],
+						"damage": "6d10+3",
+						"damageType": "piercing"
+					}
 				}
 			},
 			"intercession": {
@@ -253,7 +268,29 @@
 					"sawtooth saber"
 				],
 				"avatar": {
-					"entry": "{@b Achaekek} Speed 70 feet, climb Speed 50 feet, ignore {@quickref difficult terrain||3|terrain} and {@quickref greater difficult terrain||3|terrain}; Melee {@as 1} mantis claw ({@trait agile}, {@trait backswing}, {@trait finesse}, {@trait reach 15 feet}, {@trait versatile P}), Damage {@damage 6d8+6} slashing; Ranged {@as 1} spine volley (range 60 feet), Damage {@damage 6d6+3} piercing",
+					"speed": {
+						"walk": 70,
+						"climb": 50
+					},
+					"note": "ignore {@quickref difficult terrain||3|terrain} and {@quickref greater difficult terrain||3|terrain}",
+					"melee": {
+						"name": "mantis claw",
+						"traits": [
+							"agile",
+							"backswing",
+							"finesse",
+							"reach 15 feet",
+							"versatile P"
+						],
+						"damage": "6d8+6",
+						"damageType": "slashing"
+					},
+					"ranged": {
+						"name": "spine volley",
+						"range": 60,
+						"damage": "6d6+3",
+						"damageType": "piercing"
+					},
 					"preface": "When casting the {@spell avatar} spell, a worshipper of Achaekek gains the following additional abilities."
 				}
 			},
@@ -331,8 +368,35 @@
 					"kukri"
 				],
 				"avatar": {
+					"speed": {
+						"walk": 70,
+						"climb": 70
+					},
+					"immune": [
+						"immobilized"
+					],
+					"melee": {
+						"name": "claw",
+						"traits": [
+							"agile",
+							"finesse",
+							"reach 15 feet"
+						],
+						"damage": "6d10+6",
+						"damageType": "slashing"
+					},
+					"ranged": {
+						"name": "hearth ember",
+						"range": 120,
+						"traits": [
+						],
+						"damage": "4d6+3",
+						"damageType": "fire",
+						"damage2": "2d6",
+						"damageType2": "persistent fire"
+					},
 					"preface": "When casting the {@spell avatar} spell, a worshipper of Adanye gains the following additional abilities.",
-					"entry": "{@b Adanye} Speed 70 feet, climb speed 70 feet, immune to immobilized; {@b Melee} {@as 1} claw ({@trait agile}, {@trait finesse}, {@trait reach 15 feet}), {@b Damage} {@damage 6d10+6} slashing; {@b Ranged} {@as 1} hearth ember (range 120 feet), {@b Damage} {@damage 4d6+3} fire and {@damage 2d6} persistent fire"
+					"entry": "{@b Ranged} {@as 1} hearth ember (range 120 feet), {@b Damage} {@damage 4d6+3} fire and {@damage 2d6} persistent fire"
 				}
 			},
 			"hasLore": true
@@ -1755,7 +1819,7 @@
 					"mace"
 				],
 				"avatar": {
-					"entry": "{@bold Asmodeus} Speed 70 feet, air walk; Melee {@as 1} mace ({@trait reach 15 feet}), Damage {@damage 6d10+6} bludgeoning; Ranged {@as 1} hellfire (range 120 feet), Damage {@damage 6d6+3} fire.",
+					"entry": "Speed 70 feet, air walk; Melee {@as 1} mace ({@trait reach 15 feet}), Damage {@damage 6d10+6} bludgeoning; Ranged {@as 1} hellfire (range 120 feet), Damage {@damage 6d6+3} fire.",
 					"preface": ""
 				}
 			},
@@ -2789,7 +2853,7 @@
 					"whip"
 				],
 				"avatar": {
-					"entry": "{@bold Calistria} Speed 30 feet, fly Speed 70 feet; Melee {@as 1} whip ({@trait disarm}, {@trait finesse}, {@trait nonlethal}, {@trait reach 20 feet}), Damage {@damage 6d4+6} slashing; Ranged {@as 1} savored sting (range 60 feet), Damage {@damage 6d6+3} poison.",
+					"entry": "Speed 30 feet, fly Speed 70 feet; Melee {@as 1} whip ({@trait disarm}, {@trait finesse}, {@trait nonlethal}, {@trait reach 20 feet}), Damage {@damage 6d4+6} slashing; Ranged {@as 1} savored sting (range 60 feet), Damage {@damage 6d6+3} poison.",
 					"preface": ""
 				}
 			},
@@ -2974,7 +3038,7 @@
 					"rapier"
 				],
 				"avatar": {
-					"entry": "{@bold Cayden Cailean} Speed 70 feet, air walk, ignore {@quickref difficult terrain||3|terrain} and {@quickref greater difficult terrain||3|terrain}; Melee {@as 1} rapier ({@trait deadly}, {@trait reach 15 feet}), Damage {@damage 6d6+6} piercing; Ranged {@as 1} ale splash (range 120 feet), Damage {@damage 6d6+3} poison.",
+					"entry": "Speed 70 feet, air walk, ignore {@quickref difficult terrain||3|terrain} and {@quickref greater difficult terrain||3|terrain}; Melee {@as 1} rapier ({@trait deadly}, {@trait reach 15 feet}), Damage {@damage 6d6+6} piercing; Ranged {@as 1} ale splash (range 120 feet), Damage {@damage 6d6+3} poison.",
 					"preface": ""
 				}
 			},
@@ -3794,7 +3858,7 @@
 					"starknife"
 				],
 				"avatar": {
-					"entry": "{@bold Desna} Speed 30 feet, fly Speed 70 feet; Melee {@as 1} starknife ({@trait agile}, {@trait deadly}, {@trait finesse}, {@trait reach 15 feet}, silver, {@trait thrown 60 feet}), Damage {@damage 6d4+6} piercing; Ranged {@as 1} moonbeam (range 120 feet, silver), Damage {@damage 6d6+3} fire.",
+					"entry": "Speed 30 feet, fly Speed 70 feet; Melee {@as 1} starknife ({@trait agile}, {@trait deadly}, {@trait finesse}, {@trait reach 15 feet}, silver, {@trait thrown 60 feet}), Damage {@damage 6d4+6} piercing; Ranged {@as 1} moonbeam (range 120 feet, silver), Damage {@damage 6d6+3} fire.",
 					"preface": ""
 				}
 			},
@@ -4467,7 +4531,7 @@
 					"longbow"
 				],
 				"avatar": {
-					"entry": "{@bold Erastil} Speed 70 feet, air walk, ignore {@quickref difficult terrain||3|terrain} and {@quickref greater difficult terrain||3|terrain}; Ranged {@as 1} longbow ({@trait deadly d8}, range increment 150 feet), Damage {@damage 6d8+3} piercing.",
+					"entry": "Speed 70 feet, air walk, ignore {@quickref difficult terrain||3|terrain} and {@quickref greater difficult terrain||3|terrain}; Ranged {@as 1} longbow ({@trait deadly d8}, range increment 150 feet), Damage {@damage 6d8+3} piercing.",
 					"preface": ""
 				}
 			},
@@ -5333,7 +5397,7 @@
 					"greatsword"
 				],
 				"avatar": {
-					"entry": "{@bold Gorum} Speed 70 feet, immune to {@condition immobilized}; Melee {@as 1} greatsword ({@trait versatile P}, {@trait reach 15 feet}), Damage {@damage 6d12+6} slashing.",
+					"entry": "Speed 70 feet, immune to {@condition immobilized}; Melee {@as 1} greatsword ({@trait versatile P}, {@trait reach 15 feet}), Damage {@damage 6d12+6} slashing.",
 					"preface": ""
 				}
 			},
@@ -6542,7 +6606,7 @@
 					"longsword"
 				],
 				"avatar": {
-					"entry": "{@bold Iomedae} Speed 70 feet, air walk; shield (15 Hardness, can't be damaged); Melee {@as 1} longsword ({@trait versatile P}, {@trait reach 15 feet}), Damage {@damage 6d8+6} slashing.",
+					"entry": "Speed 70 feet, air walk; shield (15 Hardness, can't be damaged); Melee {@as 1} longsword ({@trait versatile P}, {@trait reach 15 feet}), Damage {@damage 6d8+6} slashing.",
 					"preface": ""
 				}
 			},
@@ -6721,7 +6785,7 @@
 					"fist"
 				],
 				"avatar": {
-					"entry": "{@bold Irori} Speed 80 feet, air walk; Melee {@as 1} unfettered strike ({@trait agile}, {@trait versatile P or S}, {@trait finesse}, {@trait reach 15 feet}), Damage {@damage 6d8+6} bludgeoning; Ranged {@as 1} wind strike (range 60 feet}), Damage {@damage 6d4+6} bludgeoning.",
+					"entry": "Speed 80 feet, air walk; Melee {@as 1} unfettered strike ({@trait agile}, {@trait versatile P or S}, {@trait finesse}, {@trait reach 15 feet}), Damage {@damage 6d8+6} bludgeoning; Ranged {@as 1} wind strike (range 60 feet}), Damage {@damage 6d4+6} bludgeoning.",
 					"preface": ""
 				}
 			},
@@ -7926,7 +7990,7 @@
 					"falchion"
 				],
 				"avatar": {
-					"entry": "{@bold Lamashtu} Speed 30 feet, fly Speed 70 feet; Melee {@as 1} falchion (forceful, {@trait reach 15 feet}), Damage {@damage 6d10+6} slashing; Ranged {@as 1} waters of Lamashtu (range 120 feet), Damage {@damage 6d6+3} poison.",
+					"entry": "Speed 30 feet, fly Speed 70 feet; Melee {@as 1} falchion (forceful, {@trait reach 15 feet}), Damage {@damage 6d10+6} slashing; Ranged {@as 1} waters of Lamashtu (range 120 feet), Damage {@damage 6d6+3} poison.",
 					"preface": ""
 				}
 			},
@@ -9381,7 +9445,7 @@
 					"staff"
 				],
 				"avatar": {
-					"entry": "{@bold Nethys} Speed 70 feet, air walk; Ranged {@as 1} raw magic (range 120 feet; {@trait versatile cold, electricity, or fire}), Damage {@damage 6d6} force.",
+					"entry": "Speed 70 feet, air walk; Ranged {@as 1} raw magic (range 120 feet; {@trait versatile cold, electricity, or fire}), Damage {@damage 6d6} force.",
 					"preface": ""
 				}
 			},
@@ -9700,7 +9764,7 @@
 					"shortsword"
 				],
 				"avatar": {
-					"entry": "{@bold Norgorber} Speed 70 feet, air walk, ignore {@quickref difficult terrain||3|terrain} and {@quickref greater difficult terrain||3|terrain}; Melee {@as 1} shortsword ({@trait agile}, {@trait finesse}, {@trait versatile S}, {@trait reach 15 feet}), Damage {@damage 6d6+6} piercing; Ranged {@as 1} blackfinger toss (range 120 feet), Damage {@damage 6d6+3} poison.",
+					"entry": "Speed 70 feet, air walk, ignore {@quickref difficult terrain||3|terrain} and {@quickref greater difficult terrain||3|terrain}; Melee {@as 1} shortsword ({@trait agile}, {@trait finesse}, {@trait versatile S}, {@trait reach 15 feet}), Damage {@damage 6d6+6} piercing; Ranged {@as 1} blackfinger toss (range 120 feet), Damage {@damage 6d6+3} poison.",
 					"preface": ""
 				}
 			},
@@ -10137,7 +10201,7 @@
 					"dagger"
 				],
 				"avatar": {
-					"entry": "{@bold Pharasma} Speed 70 feet, air walk; Melee {@as 1} dagger ({@trait agile}, {@trait finesse}, {@trait reach 15 feet}, thrown 40 feet), Damage {@damage 6d6+6} slashing; Ranged {@as 1} spiral blast (range 120 feet, damages only undead), Damage {@damage 6d8+3} positive.",
+					"entry": "Speed 70 feet, air walk; Melee {@as 1} dagger ({@trait agile}, {@trait finesse}, {@trait reach 15 feet}, thrown 40 feet), Damage {@damage 6d6+6} slashing; Ranged {@as 1} spiral blast (range 120 feet, damages only undead), Damage {@damage 6d8+3} positive.",
 					"preface": ""
 				}
 			},
@@ -10738,7 +10802,7 @@
 					"greataxe"
 				],
 				"avatar": {
-					"entry": "{@bold Rovagug} Speed 50 feet, burrow Speed 30 feet, immune to {@condition immobilized}; Melee {@as 1} jaws ({@trait reach 15 feet}), Damage {@damage 6d12+6} piercing; Melee {@as 1} leg ({@trait agile}, {@trait versatile P}, {@trait reach 15 feet}), Damage {@damage 6d8+6} bludgeoning.",
+					"entry": "Speed 50 feet, burrow Speed 30 feet, immune to {@condition immobilized}; Melee {@as 1} jaws ({@trait reach 15 feet}), Damage {@damage 6d12+6} piercing; Melee {@as 1} leg ({@trait agile}, {@trait versatile P}, {@trait reach 15 feet}), Damage {@damage 6d8+6} bludgeoning.",
 					"preface": ""
 				}
 			},
@@ -11017,7 +11081,7 @@
 					"scimitar"
 				],
 				"avatar": {
-					"entry": "{@bold Sarenrae} Speed 30 feet, fly Speed 70 feet; Melee {@as 1} scimitar (forceful, {@trait nonlethal}, {@trait reach 15 feet}), Damage {@damage 6d6+6} slashing; Ranged {@as 1} everflame ({@trait nonlethal}, range 120 feet), Damage {@damage 6d6+3} fire.",
+					"entry": "Speed 30 feet, fly Speed 70 feet; Melee {@as 1} scimitar (forceful, {@trait nonlethal}, {@trait reach 15 feet}), Damage {@damage 6d6+6} slashing; Ranged {@as 1} everflame ({@trait nonlethal}, range 120 feet), Damage {@damage 6d6+3} fire.",
 					"preface": ""
 				}
 			},
@@ -11374,7 +11438,7 @@
 					"glaive"
 				],
 				"avatar": {
-					"entry": "{@bold Shelyn} Speed 70 feet, air walk, ignore {@quickref difficult terrain||3|terrain} and {@quickref greater difficult terrain||3|terrain}; Melee {@as 1} glaive ({@trait deadly d8}, {@trait nonlethal}, {@trait reach 20 feet}), Damage {@damage 6d8+6} slashing; Ranged {@as 1} melody of inner beauty, ({@trait nonlethal}, range 120 feet), Damage {@damage 6d6+3} sonic.",
+					"entry": "Speed 70 feet, air walk, ignore {@quickref difficult terrain||3|terrain} and {@quickref greater difficult terrain||3|terrain}; Melee {@as 1} glaive ({@trait deadly d8}, {@trait nonlethal}, {@trait reach 20 feet}), Damage {@damage 6d8+6} slashing; Ranged {@as 1} melody of inner beauty, ({@trait nonlethal}, range 120 feet), Damage {@damage 6d6+3} sonic.",
 					"preface": ""
 				}
 			},
@@ -12527,7 +12591,7 @@
 					"warhammer"
 				],
 				"avatar": {
-					"entry": "{@bold Torag} Speed 50 feet, burrow Speed 30 feet, immune to {@condition immobilized}; shield (15 Hardness, can't be damaged); Melee {@as 1} warhammer ({@trait shove}, {@trait reach 15 feet}), Damage {@damage 6d8+6} bludgeoning.",
+					"entry": "Speed 50 feet, burrow Speed 30 feet, immune to {@condition immobilized}; shield (15 Hardness, can't be damaged); Melee {@as 1} warhammer ({@trait shove}, {@trait reach 15 feet}), Damage {@damage 6d8+6} bludgeoning.",
 					"preface": ""
 				}
 			},
@@ -12909,7 +12973,7 @@
 					"scythe"
 				],
 				"avatar": {
-					"entry": "{@bold Urgathoa} Speed 70 feet, air walk; Melee {@as 1} scythe ({@trait deadly d10}, {@trait trip}, {@trait reach 15 feet}), Damage {@damage 6d10+6} slashing; Ranged {@as 1} pallid plague (range 120 feet), Damage {@damage 6d6+3} negative.",
+					"entry": "Speed 70 feet, air walk; Melee {@as 1} scythe ({@trait deadly d10}, {@trait trip}, {@trait reach 15 feet}), Damage {@damage 6d10+6} slashing; Ranged {@as 1} pallid plague (range 120 feet), Damage {@damage 6d6+3} negative.",
 					"preface": ""
 				}
 			},
@@ -14096,7 +14160,7 @@
 					"spiked chain"
 				],
 				"avatar": {
-					"entry": "{@bold Zon-Kuthon} Speed 70 feet, air walk, ignore {@quickref difficult terrain||3|terrain} and {@quickref greater difficult terrain||3|terrain}; Melee {@as 1} spiked chain ({@trait disarm}, {@trait trip}, {@trait reach 15 feet}), Damage {@damage 6d8+6} slashing; Ranged {@as 1} midnight pain (mental, {@trait nonlethal}, range 120 feet), Damage {@damage 6d6+3} mental.",
+					"entry": "Speed 70 feet, air walk, ignore {@quickref difficult terrain||3|terrain} and {@quickref greater difficult terrain||3|terrain}; Melee {@as 1} spiked chain ({@trait disarm}, {@trait trip}, {@trait reach 15 feet}), Damage {@damage 6d8+6} slashing; Ranged {@as 1} midnight pain (mental, {@trait nonlethal}, range 120 feet), Damage {@damage 6d6+3} mental.",
 					"preface": ""
 				}
 			},

@@ -4381,19 +4381,46 @@ Renderer.deity = {
 
 	getDevoteeBenefits (deity) {
 		if (deity.devoteeBenefits == null) return "";
+		let out = [];
 		const renderer = Renderer.get()
 		const b = deity.devoteeBenefits;
 		// FIXME: See FEAT-39 on Discords
-		return `
-			${b.font ? `<p class="pf2-stat__section"><strong>Divine Font&nbsp;</strong>${renderer.render(b.font.map(f => `{@spell ${f}}`).join(" or "))}</p>` : ""}
-			${b.ability ? `<p class="pf2-stat__section"><strong>Divine Ability&nbsp;</strong>${renderer.render(b.ability.entry)}</p>` : ""}
-			${b.skill ? `<p class="pf2-stat__section"><strong>Divine Skill&nbsp;</strong>${renderer.render(b.skill.map(s => `{@skill ${s}}`).join(", "))}</p>` : ""}
-			${b.domains ? `<p class="pf2-stat__section"><strong>Domains&nbsp;</strong>${renderer.render(b.domains.map(it => `{@filter ${it}|spells||domains=${it}}`).join(", "))}</p>` : ""}
-			${b.alternateDomains ? `<p class="pf2-stat__section"><strong>Alternate Domains&nbsp;</strong>${renderer.render(b.alternateDomains.map(it => `{@filter ${it}|spells||domains=${it}}`).join(", "))}</p>` : ""}
-			${b.spells ? `<p class="pf2-stat__section"><strong>Cleric Spells&nbsp;</strong>${renderer.render(Renderer.deity.getClericSpells(b.spells))}</p>` : ""}
-			${b.weapon ? `<p class="pf2-stat__section"><strong>Favored Weapon&nbsp;</strong>${renderer.render(b.weapon.map(w => `{@item ${w}}`).join(" or "))}</p>` : ""}
-			${b.avatar ? `<p class="pf2-h3">Avatar</p>${b.avatar.preface ? `<p class="pf2-stat">${renderer.render(b.avatar.preface)}</p>` : ""}<p class="pf2-stat">${renderer.render(b.avatar.entry)}</p>` : ""}
-			`;
+		if (b.font) out.push(`<p class="pf2-stat__section"><strong>Divine Font&nbsp;</strong>${renderer.render(b.font.map(f => `{@spell ${f}}`).join(" or "))}</p>`)
+		if (b.ability) out.push(`<p class="pf2-stat__section"><strong>Divine Ability&nbsp;</strong>${renderer.render(b.ability.entry)}</p>`)
+		if (b.skill) out.push(`<p class="pf2-stat__section"><strong>Divine Skill&nbsp;</strong>${renderer.render(b.skill.map(s => `{@skill ${s}}`).join(", "))}</p>`)
+		if (b.domains) out.push(`<p class="pf2-stat__section"><strong>Domains&nbsp;</strong>${renderer.render(b.domains.map(it => `{@filter ${it}|spells||domains=${it}}`).join(", "))}</p>`)
+		if (b.alternateDomains) out.push(`<p class="pf2-stat__section"><strong>Alternate Domains&nbsp;</strong>${renderer.render(b.alternateDomains.map(it => `{@filter ${it}|spells||domains=${it}}`).join(", "))}</p>`)
+		if (b.spells) out.push(`<p class="pf2-stat__section"><strong>Cleric Spells&nbsp;</strong>${renderer.render(Renderer.deity.getClericSpells(b.spells))}</p>`)
+		if (b.weapon) out.push(`<p class="pf2-stat__section"><strong>Favored Weapon&nbsp;</strong>${renderer.render(b.weapon.map(w => `{@item ${w}}`).join(" or "))}</p>`)
+		if (b.avatar) {
+			out.push(`<p class="pf2-h3">Avatar</p>`)
+			if (b.avatar.preface) out.push(`<p class="pf2-stat">${renderer.render(b.avatar.preface)}</p>`)
+			out.push(`<p class="pf2-stat"><strong>${deity.name}</strong> `)
+			if (b.avatar.speed) out.push(`${b.avatar.speed.walk ? `Speed ${b.avatar.speed.walk} feet` : "no land Speed"}${Object.keys(b.avatar.speed).map(s => (s !== "walk") ? ` ${s} Speed ${b.avatar.speed[s]} feet` : "")}`)
+			if (b.avatar.immune) out.push(renderer.render(`, immune to ${b.avatar.immune.map(i => `{@condition ${i}}`).joinConjunct(", ", " and ")}`))
+			if (b.avatar.note) out.push(`, ${renderer.render(b.avatar.note)}`)
+			if (b.avatar.shield === true) out.push(`; shield (15 Hardness, can't be damaged)`)
+			if (b.avatar.melee || b.avatar.ranged) {
+				out.push(`; `)
+				if (b.avatar.melee && Object.keys(b.avatar.melee).length) {
+					out.push(renderer.render(`<strong>Melee</strong> {@as 1} `))
+					out.push(renderer.render(b.avatar.melee.name))
+					if (b.avatar.melee.traits && b.avatar.melee.traits.length) { out.push(renderer.render(` (${b.avatar.melee.traits.map(t => `{@trait ${t.toLowerCase()}}`).join(", ")}), `)) } else out.push(" ")
+					out.push(renderer.render(`<strong>Damage</strong> {@damage ${b.avatar.melee.damage}} ${b.avatar.melee.damageType}`))
+					if (b.avatar.ranged && !Object.keys(b.avatar.ranged).length) out.push(`.`)
+				}
+				if (b.avatar.ranged && Object.keys(b.avatar.ranged).length) {
+					if (b.avatar.melee && Object.keys(b.avatar.melee).length) out.push(`; `)
+					out.push(renderer.render(`<strong>Ranged</strong> {@as 1} `))
+					out.push(renderer.render(b.avatar.ranged.name))
+					out.push(renderer.render(` (${b.avatar.ranged.range ? `range ${b.avatar.ranged.reload ? "increment" : ""} ${b.avatar.ranged.range} feet` : ""}${b.avatar.ranged.reload ? `, reload ${b.avatar.ranged.reload}` : ""}${b.avatar.ranged.traits && b.avatar.ranged.traits.length ? `, ${b.avatar.ranged.traits.map(t => `{@trait ${t.toLowerCase()}}`).join(", ")}` : ""}), `))
+					out.push(renderer.render(`<strong>Damage</strong> {@damage ${b.avatar.ranged.damage}} ${b.avatar.ranged.damageType}${b.avatar.ranged.damageType2 && b.avatar.ranged.damage ? ` and {@damage ${b.avatar.ranged.damage2}} ${b.avatar.ranged.damageType2}.` : `.`}`))
+				}
+			}
+			out.push(`</p>`)
+		}
+
+		return out.join("")
 	},
 
 	getRenderedLore (deity) {
