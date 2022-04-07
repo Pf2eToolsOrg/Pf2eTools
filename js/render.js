@@ -4396,9 +4396,9 @@ Renderer.deity = {
 			out.push(`<p class="pf2-h3">Avatar</p>`)
 			if (b.avatar.preface) out.push(`<p class="pf2-stat">${renderer.render(b.avatar.preface)}</p>`)
 			out.push(`<p class="pf2-stat"><strong>${deity.name}</strong> `)
-			if (b.avatar.speed) out.push(`${b.avatar.speed.walk ? `Speed ${b.avatar.speed.walk} feet` : "no land Speed"}${Object.keys(b.avatar.speed).map(s => (s !== "walk") ? ` ${s} Speed ${b.avatar.speed[s]} feet` : "")}`)
+			if (b.avatar.speed) out.push(`${b.avatar.speed.walk ? `Speed ${b.avatar.speed.walk} feet` : "no land Speed"}${Object.keys(b.avatar.speed).filter(type => type !== "walk").map(s => (typeof b.avatar.speed[s] === "number") ? `, ${s} Speed ${b.avatar.speed[s]} feet` : "").join("")}`)
 			if (b.avatar.immune) out.push(renderer.render(`, immune to ${b.avatar.immune.map(i => `{@condition ${i}}`).joinConjunct(", ", " and ")}`))
-			if (b.avatar.note) out.push(`, ${renderer.render(b.avatar.note)}`)
+			if (b.avatar.speed.speedNote) out.push(`, ${renderer.render(b.avatar.speed.speedNote)}`)
 			if (b.avatar.shield === true) out.push(`; shield (15 Hardness, can't be damaged)`)
 			if (b.avatar.melee || b.avatar.ranged) {
 				out.push(`; `)
