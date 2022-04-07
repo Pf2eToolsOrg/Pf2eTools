@@ -4,7 +4,6 @@
 			"name": "Breath Of Drought",
 			"source": "EC1",
 			"page": 78,
-			"focus": false,
 			"level": 2,
 			"traits": [
 				"Uncommon",
@@ -36,7 +35,6 @@
 				],
 				"entry": "10-foot burst"
 			},
-			"savingThrowBasic": false,
 			"duration": {
 				"type": "timed",
 				"entry": "sustained",
@@ -46,7 +44,6 @@
 				}
 			},
 			"sustain": true,
-			"dismiss": false,
 			"entries": [
 				"You fill the area with an oppressive, arid swelter that overwhelms creatures with heat exhaustion. Objects are unaffected. Each creature in the area when the spell is cast or that ends its turn in the area afterward must attempt a Fortitude save. Water creatures and plant creatures use the outcome one degree of success worse than the result of their saving throw. Creatures whose bodies contain no significant moisture (such as fire elementals) are immune to breath of drought.",
 				{
@@ -79,7 +76,6 @@
 			"name": "Personal Rain Cloud",
 			"source": "EC1",
 			"page": 78,
-			"focus": false,
 			"level": 1,
 			"traits": [
 				"Uncommon",
@@ -107,8 +103,11 @@
 				}
 			},
 			"targets": "1 creature",
-			"savingThrow": "Reflex",
-			"savingThrowBasic": false,
+			"savingThrow": {
+				"type": [
+					"R"
+				]
+			},
 			"duration": {
 				"type": "timed",
 				"entry": "1 minute",
@@ -117,8 +116,6 @@
 					"unit": "minute"
 				}
 			},
-			"sustain": false,
-			"dismiss": false,
 			"entries": [
 				"You conjure a 5-foot-wide rain cloud that follows the target wherever it goes. It stays roughly an arm's length overhead, unless it must drift lower to fit under a ceiling.",
 				"The cloud rains constantly on the target, keeping it wet and dampening the ground in the wake of any movement.",
@@ -137,7 +134,6 @@
 			"name": "Rime Slick",
 			"source": "EC1",
 			"page": 78,
-			"focus": false,
 			"level": 2,
 			"traits": [
 				"Uncommon",
@@ -170,8 +166,12 @@
 				],
 				"entry": "15-foot burst"
 			},
-			"savingThrow": "Reflex",
-			"savingThrowBasic": true,
+			"savingThrow": {
+				"type": [
+					"R"
+				],
+				"basic": true
+			},
 			"duration": {
 				"type": "timed",
 				"entry": "1 minute",
@@ -180,8 +180,6 @@
 					"unit": "minute"
 				}
 			},
-			"sustain": false,
-			"dismiss": false,
 			"entries": [
 				"You call down a chill wind. When you Cast this Spell, you deal {@damage 2d4} cold damage to each creature in the area (basic Reflex save). If a creature in the area critically fails its Reflex save and was standing, it also falls {@condition prone}.",
 				"You also create a layer of ice on all surfaces in the area, which become difficult terrain. Unattended objects in the area become slick with ice, and picking them up requires a successful Reflex save or {@skill Acrobatics} check against your spell DC. The ice melts on any object that takes fire damage as well as in any square included in the area of a higher-level spell or effect with the {@trait fire} trait."
@@ -207,7 +205,6 @@
 			"name": "Scouring Sand",
 			"source": "EC1",
 			"page": 78,
-			"focus": false,
 			"level": 1,
 			"traits": [
 				"Uncommon",
@@ -240,7 +237,6 @@
 				],
 				"entry": "10-foot burst"
 			},
-			"savingThrowBasic": false,
 			"duration": {
 				"type": "timed",
 				"entry": "sustained up to 1 minute",
@@ -250,7 +246,6 @@
 				}
 			},
 			"sustain": true,
-			"dismiss": false,
 			"entries": [
 				"You blast the area with grit that scours away soil and gets into creatures' eyes. For the duration of the spell, any plant-based difficult terrain smaller than a tree becomes loose, allowing each 5-foot square of it to be cleared with a single {@action Interact} action. In addition, scouring sand attempts to counteract entangle and other effects that create or manipulate plant-based terrain in its area.",
 				"Successfully counteracting an effect removes only the portion of its area that overlaps with scouring sand's area.",
@@ -285,7 +280,6 @@
 			"name": "Sea Surge",
 			"source": "EC1",
 			"page": 78,
-			"focus": false,
 			"level": 2,
 			"traits": [
 				"Uncommon",
@@ -305,7 +299,6 @@
 				"S": true,
 				"V": true
 			},
-			"savingThrowBasic": false,
 			"duration": {
 				"type": "timed",
 				"entry": "until the start of your next turn",
@@ -314,8 +307,6 @@
 					"unit": "turn"
 				}
 			},
-			"sustain": false,
-			"dismiss": false,
 			"entries": [
 				"You slap or stomp on a nearby solid or liquid surface, sending a surge of water rushing away from you. The water forms a flat, 5-foot-thick, 10-foot-high wall of water between 5 and 15 feet wide (you decide). It moves 60 feet in a direction of your choice along the struck surface, extinguishing all non-magical fires, carrying along unattended objects of 1 Bulk or less, and pushing larger objects. The wave moves another 60 feet in the same direction at the start of your next turn, then vanishes. Large or smaller creatures in the area or that enter the area the wave moves through must attempt a Fortitude save.",
 				{
@@ -332,7 +323,6 @@
 			"name": "Sudden Bolt",
 			"source": "EC1",
 			"page": 79,
-			"focus": false,
 			"level": 2,
 			"traits": [
 				"Uncommon",
@@ -360,10 +350,12 @@
 				}
 			},
 			"targets": "1 creature or object",
-			"savingThrow": "Reflex",
-			"savingThrowBasic": true,
-			"sustain": false,
-			"dismiss": false,
+			"savingThrow": {
+				"type": [
+					"R"
+				],
+				"basic": true
+			},
 			"entries": [
 				"You call down a small bolt of lightning on the target, dealing {@damage 4d12} electricity damage."
 			],
@@ -380,7 +372,6 @@
 			"name": "Unseasonable Squall",
 			"source": "EC1",
 			"page": 79,
-			"focus": false,
 			"level": 3,
 			"traits": [
 				"Uncommon",
@@ -413,7 +404,6 @@
 				],
 				"entry": "20-foot burst"
 			},
-			"savingThrowBasic": false,
 			"duration": {
 				"type": "timed",
 				"entry": "until the start of your next turn",
@@ -422,8 +412,6 @@
 					"unit": "turn"
 				}
 			},
-			"sustain": false,
-			"dismiss": false,
 			"entries": [
 				"You issue a blast of sudden wind that ripples outward from the center of the burst. The wind extinguishes small non-magical fires, disperses fog and mist, scatters objects of light Bulk or less, and pushes unsecured objects of 1 Bulk or less 5 feet away from the spell's origin point. Each Medium or smaller creature in the area when you {@action Cast a Spell||Cast the Spell} or that moves into spell's area must attempt a Fortitude saving throw.",
 				{
@@ -440,7 +428,6 @@
 			"name": "Verdant Sprout",
 			"source": "EC1",
 			"page": 79,
-			"focus": false,
 			"level": 1,
 			"traits": [
 				"Uncommon",
@@ -467,9 +454,6 @@
 					"amount": 30
 				}
 			},
-			"savingThrowBasic": false,
-			"sustain": false,
-			"dismiss": false,
 			"entries": [
 				"You imbue a single ordinary, inexpensive plant seed with primal energy and throw it onto a surface, where it gradually sprouts into a Medium plant. After 10 minutes, the plant is sturdy enough to provide standard cover, and its space is difficult terrain. The plant is laden with nutritious nuts or fruit sufficient to feed one Medium creature for a day. The plant has AC 10, Hardness 5, and 20 Hit Points."
 			],
