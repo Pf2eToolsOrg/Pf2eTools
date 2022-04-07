@@ -75,13 +75,17 @@
 			"components": {
 				"S": true
 			},
-			"trigger": "A creature within 30 feet fails a",
-			"savingThrowBasic": false,
+			"trigger": "A creature within 30 feet fails a {@skill Deception} or {@skill Diplomacy} check.",
+			"savingThrow": {
+				"basic": true,
+				"type": [
+					"F"
+				]
+			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
-				"{@skill Deception} or {@skill Diplomacy} check.",
-				"Saving Throw Fortitude The deceiving creature's tongue splits like a serpent's tongue. The creature takes {@damage 1d8} slashing damage and must attempt a Fortitude save.",
+				"The deceiving creature's tongue splits like a serpent's tongue. The creature takes {@damage 1d8} slashing damage and must attempt a Fortitude save.",
 				{
 					"type": "successDegree",
 					"entries": {
