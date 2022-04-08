@@ -90,10 +90,13 @@
 			"type": "array"
 		},
 		"condition": {
-			"type": "array"
+			"$ref": "conditions.json#/properties/condition"
 		},
 		"item": {
 			"$ref": "items.json#/properties/item"
+		},
+		"itemFluff": {
+			"$ref": "fluff-items.json#/properties/itemFluff"
 		},
 		"baseitem": {
 			"$ref": "items.json#/properties/item"
@@ -117,7 +120,7 @@
 			"$ref": "deities.json#/properties/deity"
 		},
 		"deityFluff": {
-			"type": "array"
+			"$ref": "fluff-deities.json#/properties/deityFluff"
 		},
 		"language": {
 			"$ref": "languages.json#/properties/language"

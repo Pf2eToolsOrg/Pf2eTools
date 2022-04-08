@@ -1,0 +1,35 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"version": "0.0.1",
+	"$id": "changelog.json",
+	"title": "Changelog Schema",
+	"description": "Schema for Pf2eTools changelog file.",
+
+	"type": "array",
+	"items": {
+		"type": "object",
+		"properties": {
+			"ver": {
+				"type": "string",
+				"$comment": "Semver validation pattern with double escapes",
+				"pattern": "^([0-9]+)\\.([0-9]+)\\.([0-9]+)(?:-([0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*))?(?:\\+[0-9A-Za-z-]+)?$"
+			},
+			"title": {
+				"type": "string"
+			},
+			"date": {
+				"type": "string",
+				"format": "date"
+			},
+			"txt": {
+				"type": "string"
+			}
+		},
+		"required": [
+			"ver",
+			"date",
+			"txt"
+		]
+	},
+	"minItems": 1
+}
