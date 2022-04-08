@@ -1,0 +1,49 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema",
+	"$id": "conditions.json",
+	"title": "Conditions",
+	"description": "The condition data type for Pf2eTools.",
+	"type": "object",
+	"version": "0.0.1",
+	"properties": {
+		"condition": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"source": {
+						"type": "string",
+						"$ref": "utils.json#/definitions/sourceList"
+					},
+					"name": {
+						"type": "string"
+					},
+					"page": {
+						"type": "integer"
+					},
+					"entries": {
+						"type": "array",
+						"items": {
+							"$ref": "entry.json"
+						}
+					},
+					"group": {
+						"type": "string",
+						"enum": [
+							"Senses",
+							"Lowered Abilities",
+							"Death and Dying",
+							"Attitudes",
+							"Degrees of Detection"
+						]
+					}
+				},
+				"additionalProperties": false,
+				"required": ["source", "name", "entries"]
+			},
+			"uniqueItems": true
+		}
+	},
+	"required": ["condition"],
+	"additionalProperties": false
+}

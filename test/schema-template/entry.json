@@ -110,7 +110,8 @@
 							"type": "array",
 							"items": {
 								"$ref": "#"
-							}
+							},
+							"minItems": 1
 						},
 						"data": {
 							"type": "object"
@@ -154,7 +155,8 @@
 							"type": "array",
 							"items": {
 								"$ref": "#"
-							}
+							},
+							"minItems": 1
 						},
 						"data": {
 							"type": "object"
@@ -201,6 +203,9 @@
 									"const": "pf2-h5"
 								},
 								{
+									"const": "pf2-title"
+								},
+								{
 									"const": "pf2-brown-box"
 								},
 								{
@@ -227,7 +232,8 @@
 							"type": "array",
 							"items": {
 								"$ref": "#"
-							}
+							},
+							"minItems": 1
 						},
 						"data": {
 							"type": "object"
@@ -266,7 +272,8 @@
 							"type": "array",
 							"items": {
 								"$ref": "#"
-							}
+							},
+							"minItems": 1
 						},
 						"source": {
 							"type": "string"
@@ -332,13 +339,15 @@
 									"type": ["array", "string"],
 									"items": {
 										"$ref": "#"
-									}
+									},
+									"minItems": 1
 								},
 								"^Special$": {
 									"type": ["array", "string"],
 									"items": {
 										"$ref": "#"
-									}
+									},
+									"minItems": 1
 								}
 							},
 							"additionalProperties": false,
@@ -518,7 +527,8 @@
 							"type": "array",
 							"items": {
 								"$ref": "#"
-							}
+							},
+							"minItems": 1
 						}
 					},
 					"additionalProperties": false
@@ -543,7 +553,8 @@
 							"type": "array",
 							"items": {
 								"$ref": "#"
-							}
+							},
+							"minItems": 1
 						},
 						"by": {
 							"type": "string"
@@ -579,7 +590,8 @@
 							"type": "array",
 							"items": {
 								"$ref": "#"
-							}
+							},
+							"minItems": 1
 						}
 					},
 					"required": ["entries"],
@@ -602,7 +614,8 @@
 							"type": "array",
 							"items": {
 								"$ref": "#"
-							}
+							},
+							"minItems": 1
 						}
 					},
 					"required": ["entries"],
@@ -635,7 +648,8 @@
 							"type": "array",
 							"items": {
 								"$ref": "#"
-							}
+							},
+							"minItems": 1
 						}
 					},
 					"required": ["entries"],
@@ -926,7 +940,8 @@
 							"type": "array",
 							"items": {
 								"$ref": "#"
-							}
+							},
+							"minItems": 1
 						}
 					},
 					"required": ["items"],
@@ -1288,7 +1303,8 @@
 							"type": "array",
 							"items": {
 								"$ref": "#"
-							}
+							},
+							"minItems": 1
 						},
 						"data": {
 							"type": "object"
@@ -1325,7 +1341,8 @@
 							"type": "array",
 							"items": {
 								"$ref": "#"
-							}
+							},
+							"minItems": 1
 						},
 						"page": {
 							"type": "integer"
@@ -1362,7 +1379,8 @@
 							"type": "array",
 							"items": {
 								"$ref": "#"
-							}
+							},
+							"minItems": 1
 						}
 					},
 					"required": ["name", "entries"]
@@ -1387,7 +1405,8 @@
 							"type": "array",
 							"items": {
 								"$ref": "#"
-							}
+							},
+							"minItems": 1
 						}
 					},
 					"required": ["name", "entries"],
@@ -1413,7 +1432,8 @@
 							"type": "array",
 							"items": {
 								"$ref": "#"
-							}
+							},
+							"minItems": 1
 						}
 					},
 					"required": ["name", "entries"],
@@ -1463,7 +1483,8 @@
 									"type": "array",
 									"items": {
 										"$ref": "#"
-									}
+									},
+									"minItems": 1
 								}
 							},
 							"required": ["name", "entries"],
@@ -1704,7 +1725,8 @@
 							"type": "array",
 							"items": {
 								"$ref": "#"
-							}
+							},
+							"minItems": 1
 						}
 					},
 					"required": ["type", "name", "entries"],
@@ -1732,13 +1754,15 @@
 							"type": "array",
 							"items": {
 								"$ref": "#"
-							}
+							},
+							"minItems": 1
 						},
 						"hitEntries": {
 							"type": "array",
 							"items": {
 								"$ref": "#"
-							}
+							},
+							"minItems": 1
 						}
 					},
 					"required": [
@@ -1958,7 +1982,8 @@
 							"type": "array",
 							"items": {
 								"$ref": "#"
-							}
+							},
+							"minItems": 1
 						},
 						"constant": {
 							"$ref": "#/definitions/_arrayOfSpell"
@@ -2027,7 +2052,8 @@
 							"type": "array",
 							"items": {
 								"$ref": "#"
-							}
+							},
+							"minItems": 1
 						},
 						"ability": {
 							"type": "string",
