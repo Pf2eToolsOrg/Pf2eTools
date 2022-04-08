@@ -265,9 +265,9 @@
 				"avatar": {
 					"speed": {
 						"walk": 70,
-						"climb": 50,
-						"speedNote": "ignore {@quickref difficult terrain||3|terrain} and {@quickref greater difficult terrain||3|terrain}"
+						"climb": 50
 					},
+					"ignoreTerrain": true,
 					"melee": {
 						"name": "mantis claw",
 						"traits": [
@@ -284,7 +284,7 @@
 						"name": "spine volley",
 						"range": 60,
 						"damage": "6d6+3",
-						"damageType2": "piercing"	
+						"damageType2": "piercing"
 					},
 					"preface": "When casting the {@spell avatar} spell, a worshipper of Achaekek gains the following additional abilities."
 				}
@@ -2473,7 +2473,7 @@
 						"hideous laughter"
 					],
 					"3": [
-						"enthrall "
+						"enthrall"
 					]
 				},
 				"weapon": [
@@ -2831,7 +2831,7 @@
 				"source": "LOGM",
 				"boon": {
 					"Minor Boon": [
-						"Calistria smiles on the riskiest deceptions. Once, when you roll a failure on a check to {@action Lie}, you get a critical success instead. Calistria typically grants this boon for an extremely consequential lie. "
+						"Calistria smiles on the riskiest deceptions. Once, when you roll a failure on a check to {@action Lie}, you get a critical success instead. Calistria typically grants this boon for an extremely consequential lie."
 					],
 					"Moderate Boon": [
 						"A foot-long wasp finds and befriends you. It serves you as a familiar as long as you maintain Calistria's grace. The wasp always has the burrower and flier familiar abilities."
@@ -12444,7 +12444,7 @@
 					"immune": [
 						"immobilized"
 					],
-					"shield": true,
+					"shield": 15,
 					"melee": {
 						"name": "warhammer",
 						"traits": [

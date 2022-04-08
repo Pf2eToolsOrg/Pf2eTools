@@ -112,7 +112,7 @@
 									"abilities": {
 										"type": "array",
 										"items": {
-											"$ref": "utils.json#/definitions/abilityAbbvUpper"	
+											"$ref": "utils.json#/definitions/abilityAbbvUpper"
 										},
 										"minItems": 1
 									},
@@ -188,6 +188,14 @@
 										"minItems": 1
 									},
 									"shield": {
+										"type": "integer",
+										"enum": [15]
+									},
+									"ignoreTerrain": {
+										"type": "boolean",
+										"enum": [true]
+									},
+									"airWalk": {
 										"type": "boolean",
 										"enum": [true]
 									},
