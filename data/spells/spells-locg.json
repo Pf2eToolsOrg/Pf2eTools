@@ -16,8 +16,6 @@
 				"unit": "action"
 			},
 			"components": {
-				"F": false,
-				"M": false,
 				"S": true,
 				"V": true
 			},
@@ -27,12 +25,6 @@
 				],
 				"entry": "20-foot cone"
 			},
-			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
-			"sustain": false,
-			"dismiss": false,
 			"entries": [
 				"Brandishing your weapon and shouting the final line of the Crimson Oath, you unleash a blast of destructive ruby energy. You must be wielding a melee weapon, and you perform this spell's somatic component by swinging the weapon in a downward arc. You deal normal melee damage for your weapon, including all appropriate bonuses, penalties, modifiers, and properties, to each creature in the spell's area; they must each attempt a basic Fortitude save. A creature that critically fails this save also suffers any additional effect you would normally inflict with your weapon on a critical hit; if the creature that critically fails its save is also immune to critical hits, it merely fails the save instead.",
 				"You can convert all the physical damage from this spell into positive damage against all undead creatures in the area."
@@ -56,8 +48,6 @@
 				"unit": "action"
 			},
 			"components": {
-				"F": false,
-				"M": false,
 				"S": true,
 				"V": true
 			},
@@ -68,7 +58,6 @@
 					"amount": 1
 				}
 			},
-			"savingThrowBasic": false,
 			"duration": {
 				"type": "timed",
 				"entry": "5 minutes",
@@ -77,8 +66,6 @@
 					"unit": "minute"
 				}
 			},
-			"sustain": false,
-			"dismiss": false,
 			"entries": [
 				"You shed a luminous aura, illuminating a 30-foot radius with bright light. You and all allies in this area gain a +1 status bonus to {@skill Perception} checks to detect {@condition hidden} or {@condition undetected} creatures, as well as hidden objects, doors, and other features."
 			]
@@ -97,22 +84,12 @@
 			"school": "D",
 			"cast": {
 				"number": 1,
-				"unit": "reaction",
-				"entry": "{@as R}"
+				"unit": "reaction"
 			},
 			"components": {
-				"F": false,
-				"M": false,
-				"S": false,
 				"V": true
 			},
 			"trigger": "You miss a {@action Strike} with an unarmed attack.",
-			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
-			"sustain": false,
-			"dismiss": false,
 			"entries": [
 				"You call upon insight from your training to recover accuracy. Reroll the missed attack roll and keep the new result."
 			]
@@ -136,8 +113,6 @@
 				"unit": "action"
 			},
 			"components": {
-				"F": false,
-				"M": false,
 				"S": true,
 				"V": true
 			},
@@ -149,12 +124,6 @@
 				}
 			},
 			"targets": "1 creature",
-			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
-			"sustain": false,
-			"dismiss": false,
 			"entries": [
 				"You fire a ray of burning sunlight from your weapon. You must be wielding a {@filter sword|items|group=sword} or {@filter spear|items|group=spear} to cast {@spell sun blade|LOCG}, and you perform this spell's somatic component with the weapon. Make a spell attack roll. The ray deals {@damage 1d4} fire damage. If the target is evil, the ray deals an additional {@damage 1d4} good damage, and if the target is undead, the ray deals an additional {@damage 1d4} positive damage (both effects apply against creatures that are both evil and undead). If you are in an area of bright natural sunlight, increase the die size of each damage die by one step (from d4 to d6).",
 				{

@@ -1,6 +1,77 @@
 {
 	"baseitem": [
 		{
+			"name": "Big Boom Gun",
+			"source": "G&G",
+			"page": 157,
+			"type": "Item",
+			"level": 1,
+			"traits": [
+				"Uncommon",
+				"Cobbled",
+				"Modular B, P or S",
+				"Fatal d12"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 10
+			},
+			"bulk": 2,
+			"weaponData": {
+				"damage": "1d6",
+				"damageType": "modular",
+				"reload": 1,
+				"range": 20,
+				"group": "Firearm|G&G"
+			},
+			"hands": 1,
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"entries": [
+				"Developed by a goblin weaponsmith who missed the ‘hand' part of ‘hand cannon', this comically-oversized gun has a heavily reinforced barrel and is loaded with a worrisome quantity of gunpowder.",
+				"This {@item hand cannon|G&G} is a martial weapon, instead of a simple weapon. It has the {@trait fatal d12} trait and a range of 20 feet. It also has the following modified critical failure condition:",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Failure": "The attack misses, the weapon misfires, and you take {@damage 1d12} fire damage as it explodes in your face."
+					}
+				}
+			]
+		},
+		{
+			"name": "Spoon Gun",
+			"source": "G&G",
+			"page": 157,
+			"type": "Item",
+			"level": 1,
+			"traits": [
+				"Uncommon",
+				"Cobbled",
+				"Modular B, P or S",
+				"Goblin",
+				"Scatter 5 ft."
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 10
+			},
+			"bulk": 1,
+			"weaponData": {
+				"damage": "1d6",
+				"damageType": "modular",
+				"reload": 1,
+				"range": 30,
+				"group": "Firearm|G&G"
+			},
+			"hands": 1,
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"entries": [
+				"No one's entirely certain who developed the spoon gun, but all authorities agree that it was probably a goblin. Essentially a terrible idea in firearm form, the spoon gun is a spring-powered hand cannon with a modified grip that uses miscellaneous knives, forks, chopsticks, and spoons as ammunition. Users typically upend the entire contents of their cutlery drawer into the gun, aim it in the general direction of the foe, and hope it hits something.",
+				"This {@item hand cannon|G&G} is a martial weapon, instead of a simple weapon. It has the {@trait scatter (5 feet)} trait and uses cutlery or similar-sized objects as ammunition instead of bullets (enough cheap cutlery to fire ten shots costs 1 sp)."
+			]
+		},
+		{
 			"name": "Alchemical Crossbow",
 			"source": "FoP",
 			"page": 56,

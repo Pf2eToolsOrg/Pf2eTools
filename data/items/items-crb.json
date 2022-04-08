@@ -920,7 +920,7 @@
 			"hands": 2,
 			"category": "Adventuring Gear",
 			"entries": [
-				"This mobile collection of vials and chemicals can be used for simple alchemical tasks. If you wear your alchemist's tools, you can draw and replace them as part of the action that uses them. "
+				"This mobile collection of vials and chemicals can be used for simple alchemical tasks. If you wear your alchemist's tools, you can draw and replace them as part of the action that uses them."
 			]
 		},
 		{
@@ -1734,7 +1734,7 @@
 			},
 			"category": "Adventuring Gear",
 			"entries": [
-				"A backpack holds up to 4 Bulk of items. and the first 2 Bulk of these items don't count against your Bulk limits. If you're carrying or stowing the pack rather than wearing it on your back, its Bulk is light instead of negligible. "
+				"A backpack holds up to 4 Bulk of items. and the first 2 Bulk of these items don't count against your Bulk limits. If you're carrying or stowing the pack rather than wearing it on your back, its Bulk is light instead of negligible."
 			]
 		},
 		{
@@ -3573,7 +3573,7 @@
 			"hands": 1,
 			"category": "Adventuring Gear",
 			"entries": [
-				"These four-pronged metal spikes can damage a creature's feet. You can scatter caltrops in an empty square adjacent to you with an Interact action. The first creature that moves into that square must succeed at a DC 14 {@skill Acrobatics} check or take 1d4 piercing damage and 1 persistent bleed damage. A creature taking persistent bleed damage from caltrops takes a \u20135-foot penalty to its Speed. Spending an Interact action to pluck the caltrops free reduces the DC to stop the bleeding. Once a creature takes damage from caltrops, enough are ruined that other creatures moving into the square are safe. Deployed caltrops can be salvaged and reused if no creatures took damage from them. Otherwise, enough are ruined that they can't be salvaged. "
+				"These four-pronged metal spikes can damage a creature's feet. You can scatter caltrops in an empty square adjacent to you with an Interact action. The first creature that moves into that square must succeed at a DC 14 {@skill Acrobatics} check or take 1d4 piercing damage and 1 persistent bleed damage. A creature taking persistent bleed damage from caltrops takes a \u20135-foot penalty to its Speed. Spending an Interact action to pluck the caltrops free reduces the DC to stop the bleeding. Once a creature takes damage from caltrops, enough are ruined that other creatures moving into the square are safe. Deployed caltrops can be salvaged and reused if no creatures took damage from them. Otherwise, enough are ruined that they can't be salvaged."
 			]
 		},
 		{
@@ -3590,7 +3590,7 @@
 			"hands": 1,
 			"category": "Adventuring Gear",
 			"entries": [
-				"A lit candle sheds dim light in a 10-foot radius for 8 hours. "
+				"A lit candle sheds dim light in a 10-foot radius for 8 hours."
 			]
 		},
 		{
@@ -3984,7 +3984,7 @@
 			"hands": 2,
 			"category": "Adventuring Gear",
 			"entries": [
-				"A wooden chest can hold up to 8 Bulk of items. "
+				"A wooden chest can hold up to 8 Bulk of items."
 			]
 		},
 		{
@@ -4360,7 +4360,7 @@
 			"type": "Item",
 			"category": "Adventuring Gear",
 			"entries": [
-				"Ordinary clothing is functional with basic tailoring, such as peasant garb, monk's robes, or work clothes. Explorer's clothing is sturdy enough that it can be reinforced to protect you, even though it isn't a suit of armor. It comes in many forms, though the most common sorts look like clerical vestments, monk's garments, or wizard's robes, as members of all three classes are likely to avoid wearing armor. For more information on explorer's clothing, see pages 275\u2013276. Fine clothing, suitable for a noble or royal, is made with expensive fabrics, precious metals, and intricate patterns. You can wear only one tool set of light Bulk with fine clothing, instead of the normal limit of 2 Bulk. You gain a +1 item bonus to checks to Make an Impression on upper-class folk while wearing high-fashion fine clothing. Winter clothing allows you to negate the damage from severe environmental cold and reduce the damage from extreme cold to that of severe cold. "
+				"Ordinary clothing is functional with basic tailoring, such as peasant garb, monk's robes, or work clothes. Explorer's clothing is sturdy enough that it can be reinforced to protect you, even though it isn't a suit of armor. It comes in many forms, though the most common sorts look like clerical vestments, monk's garments, or wizard's robes, as members of all three classes are likely to avoid wearing armor. For more information on explorer's clothing, see pages 275\u2013276. Fine clothing, suitable for a noble or royal, is made with expensive fabrics, precious metals, and intricate patterns. You can wear only one tool set of light Bulk with fine clothing, instead of the normal limit of 2 Bulk. You gain a +1 item bonus to checks to Make an Impression on upper-class folk while wearing high-fashion fine clothing. Winter clothing allows you to negate the damage from severe environmental cold and reduce the damage from extreme cold to that of severe cold."
 			]
 		},
 		{
@@ -5140,7 +5140,7 @@
 			"usage": "worn eyepiece",
 			"category": "Worn",
 			"entries": [
-				"This rugged metal eyepiece etched with square patterns is designed to be worn over a single eye. Twisting the lens reveals a faint three-dimensional outline of an item you plan to build or repair, with {@condition helpful} labels on the component parts. While worn, this eyepiece gives you a +1 item bonus to {@skill Crafting} checks. When you {@action Repair} an item, increase the Hit Points restored by 15 per proficiency rank instead of 10."
+				"This rugged metal eyepiece etched with square patterns is designed to be worn over a single eye. Twisting the lens reveals a faint three-dimensional outline of an item you plan to build or repair, with helpful labels on the component parts. While worn, this eyepiece gives you a +1 item bonus to {@skill Crafting} checks. When you {@action Repair} an item, increase the Hit Points restored by 15 per proficiency rank instead of 10."
 			],
 			"generic": "G",
 			"variants": [
@@ -5162,8 +5162,58 @@
 					},
 					"entries": [
 						"The eyepiece grants a +2 item bonus and can be activated.",
-						"{@b Activate} 1 minute ({@action Interact}); {@b Frequency} once per day; {@b Effect} You calibrate the eyepiece to have it cast a 5th-level {@spell creation} spell over the course of 1 minute to construct a temporary item."
-					]
+						{
+							"type": "ability",
+							"style": "compact",
+							"activity": {
+								"number": 1,
+								"unit": "minute"
+							},
+							"components": [
+								"Interact"
+							],
+							"frequency": {
+								"freq": 1,
+								"unit": "day"
+							},
+							"entries": [
+								"You calibrate the eyepiece to have it cast a 5th-level {@spell creation} spell over the course of 1 minute to construct a temporary item."
+							]
+						}
+					],
+					"_mod": {
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"with": "+2",
+								"replace": "\\+1"
+							},
+							{
+								"mode": "appendArr",
+								"items": [
+									{
+										"type": "ability",
+										"style": "compact",
+										"activity": {
+											"number": 1,
+											"unit": "minute"
+										},
+										"components": [
+											"Interact"
+										],
+										"frequency": {
+											"freq": 1,
+											"unit": "day"
+										},
+										"entries": [
+											"You calibrate the eyepiece to have it cast a 5th-level {@spell creation} spell over the course of 1 minute to construct a temporary item."
+										]
+									}
+								]
+							}
+						],
+						"entriesMode": "generic"
+					}
 				}
 			]
 		},
@@ -6375,7 +6425,7 @@
 			"hands": 2,
 			"category": "Adventuring Gear",
 			"entries": [
-				"This small wooden box contains cosmetics, false facial hair, spirit gum, and a few simple wigs. You usually need a disguise kit to set up a disguise in order to {@action Impersonate} someone using the {@skill Deception} skill. If you've crafted a large number of disguises, you can replenish your cosmetics supply with {@item replacement cosmetics} suitable for the type of your disguise kit. You can draw and replace a worn disguise kit as part of the action that uses it. "
+				"This small wooden box contains cosmetics, false facial hair, spirit gum, and a few simple wigs. You usually need a disguise kit to set up a disguise in order to {@action Impersonate} someone using the {@skill Deception} skill. If you've crafted a large number of disguises, you can replenish your cosmetics supply with {@item replacement cosmetics} suitable for the type of your disguise kit. You can draw and replace a worn disguise kit as part of the action that uses it."
 			],
 			"generic": "G",
 			"variants": [
@@ -8477,7 +8527,7 @@
 			"hands": 2,
 			"category": "Adventuring Gear",
 			"entries": [
-				"Flint and steel are useful in creating a fire if you have the time to catch a spark, though using them is typically too time-consuming to be practical during an encounter. Even in ideal conditions, using flint and steel to light a flame requires using at least 3 actions, and often significantly longer. "
+				"Flint and steel are useful in creating a fire if you have the time to catch a spark, though using them is typically too time-consuming to be practical during an encounter. Even in ideal conditions, using flint and steel to light a flame requires using at least 3 actions, and often significantly longer."
 			]
 		},
 		{
@@ -8656,7 +8706,7 @@
 			"hands": 1,
 			"category": "Adventuring Gear",
 			"entries": [
-				"A formula book holds the formulas necessary to make items other than the common equipment from this chapter; {@class alchemist||alchemists} typically get one for free. Each formula book can hold the formulas for up to 100 different items. Formulas can also appear on parchment sheets, tablets, and almost any other medium; there's no need for you to copy them into a specific book as long as you can keep them on hand to reference them. "
+				"A formula book holds the formulas necessary to make items other than the common equipment from this chapter; {@class alchemist||alchemists} typically get one for free. Each formula book can hold the formulas for up to 100 different items. Formulas can also appear on parchment sheets, tablets, and almost any other medium; there's no need for you to copy them into a specific book as long as you can keep them on hand to reference them."
 			]
 		},
 		{
@@ -9436,7 +9486,7 @@
 			"hands": 1,
 			"category": "Adventuring Gear",
 			"entries": [
-				"You can throw a grappling hook with a rope tied to it to make a climb easier. To anchor a grappling hook, make an attack roll with the secret trait against a DC depending on the target, typically at least DC 20. On a success, your hook has a firm hold, but on a critical failure, the hook seems like it will hold but actually falls when you're partway up. "
+				"You can throw a grappling hook with a rope tied to it to make a climb easier. To anchor a grappling hook, make an attack roll with the secret trait against a DC depending on the target, typically at least DC 20. On a success, your hook has a firm hold, but on a critical failure, the hook seems like it will hold but actually falls when you're partway up."
 			]
 		},
 		{
@@ -10007,7 +10057,7 @@
 			"hands": 2,
 			"category": "Adventuring Gear",
 			"entries": [
-				"This kit of bandages, herbs, and suturing tools is necessary for {@skill Medicine} checks to {@action Administer First Aid}, {@action Treat Disease}, {@action Treat Poison}, or {@action Treat Wounds}. If you wear your healer's tools, you can draw and replace them as part of the action that uses them. "
+				"This kit of bandages, herbs, and suturing tools is necessary for {@skill Medicine} checks to {@action Administer First Aid}, {@action Treat Disease}, {@action Treat Poison}, or {@action Treat Wounds}. If you wear your healer's tools, you can draw and replace them as part of the action that uses them."
 			],
 			"generic": "G",
 			"variants": [
@@ -10249,7 +10299,7 @@
 			"hands": 1,
 			"category": "Adventuring Gear",
 			"entries": [
-				"Plants of supernatural significance provide a primal focus for primal spellcasters, such as druids, when using certain abilities and casting some spells. A bundle of holly and mistletoe must be held in one hand to use it. Other primal foci exist for druids focused on other aspects of nature. "
+				"Plants of supernatural significance provide a primal focus for primal spellcasters, such as druids, when using certain abilities and casting some spells. A bundle of holly and mistletoe must be held in one hand to use it. Other primal foci exist for druids focused on other aspects of nature."
 			]
 		},
 		{
@@ -12417,7 +12467,7 @@
 			"hands": 1,
 			"category": "Adventuring Gear",
 			"entries": [
-				"This quality handheld lens gives you a +1 item bonus to {@skill Perception} checks to notice minute details of documents, fabric, and the like. "
+				"This quality handheld lens gives you a +1 item bonus to {@skill Perception} checks to notice minute details of documents, fabric, and the like."
 			]
 		},
 		{
@@ -12524,7 +12574,7 @@
 			"hands": 2,
 			"category": "Adventuring Gear",
 			"entries": [
-				"You can manacle someone who is willing or otherwise at your mercy as an {@trait exploration} activity taking 10\u201330 seconds depending on the creature's size and how many manacles you apply. A two-legged creature with its legs bound takes a \u201315-foot circumstance penalty to its Speeds, and a two-handed creature with its wrists bound has to succeed at a DC {@flatDC 5} flat check any time it uses a {@trait manipulate} action or else that action fails. This DC may be higher depending on how tightly the manacles constrain the hands. A creature bound to a stationary object is immobilized. For creatures with more or fewer limbs, the GM determines what effect manacles have, if any. Freeing a creature from poor manacles requires two successful DC 17 {@skill Thievery} checks, simple manacles requires three successes at DC 22, average manacles require four successes at DC 27, good manacles require five successes at DC 32, and superior manacles require six successes at DC 42. "
+				"You can manacle someone who is willing or otherwise at your mercy as an {@trait exploration} activity taking 10\u201330 seconds depending on the creature's size and how many manacles you apply. A two-legged creature with its legs bound takes a \u201315-foot circumstance penalty to its Speeds, and a two-handed creature with its wrists bound has to succeed at a DC {@flatDC 5} flat check any time it uses a {@trait manipulate} action or else that action fails. This DC may be higher depending on how tightly the manacles constrain the hands. A creature bound to a stationary object is immobilized. For creatures with more or fewer limbs, the GM determines what effect manacles have, if any. Freeing a creature from poor manacles requires two successful DC 17 {@skill Thievery} checks, simple manacles requires three successes at DC 22, average manacles require four successes at DC 27, good manacles require five successes at DC 32, and superior manacles require six successes at DC 42."
 			],
 			"generic": "G",
 			"variants": [
@@ -12672,7 +12722,7 @@
 			"hands": 1,
 			"category": "Adventuring Gear",
 			"entries": [
-				"This pouch contains material components for those spells that require them. Though the components are used up over time, you can refill spent components during your daily preparations. "
+				"This pouch contains material components for those spells that require them. Though the components are used up over time, you can refill spent components during your daily preparations."
 			]
 		},
 		{
@@ -14014,7 +14064,7 @@
 			"hands": 2,
 			"category": "Adventuring Gear",
 			"entries": [
-				"You can use oil to fuel lanterns, but you can also set a pint of oil aflame and throw it. You must first spend an Interact action preparing the oil, then throw it with another action as a ranged attack. If you hit, it splatters on the creature or in a single 5-foot square you target. You must succeed at a DC {@flatDC 10} flat check for the oil to ignite successfully when it hits. If the oil ignites, the target takes 1d6 fire damage. "
+				"You can use oil to fuel lanterns, but you can also set a pint of oil aflame and throw it. You must first spend an Interact action preparing the oil, then throw it with another action as a ranged attack. If you hit, it splatters on the creature or in a single 5-foot square you target. You must succeed at a DC {@flatDC 10} flat check for the oil to ignite successfully when it hits. If the oil ignites, the target takes 1d6 fire damage."
 			]
 		},
 		{
@@ -14837,7 +14887,7 @@
 			"hands": 1,
 			"category": "Adventuring Gear",
 			"entries": [
-				"These small spikes can be used as anchors to make climbing easier. To affix a piton, you must hold it in one hand and use a hammer to drive it in with your other hand. You can attach a rope to the hammered piton so that you don't fall all the way to the ground on a critical failure while Climbing. "
+				"These small spikes can be used as anchors to make climbing easier. To affix a piton, you must hold it in one hand and use a hammer to drive it in with your other hand. You can attach a rope to the hammered piton so that you don't fall all the way to the ground on a critical failure while Climbing."
 			]
 		},
 		{
@@ -15650,7 +15700,7 @@
 			"hands": 1,
 			"category": "Adventuring Gear",
 			"entries": [
-				"This piece of wood or silver is emblazoned with an image representing a deity. Some divine spellcasters, such as clerics, can use a religious symbol of their deity as a divine focus to use certain abilities and cast some spells. A religious symbol must be held in one hand to use it. "
+				"This piece of wood or silver is emblazoned with an image representing a deity. Some divine spellcasters, such as clerics, can use a religious symbol of their deity as a divine focus to use certain abilities and cast some spells. A religious symbol must be held in one hand to use it."
 			],
 			"generic": "G",
 			"variants": [
@@ -15686,7 +15736,7 @@
 			"hands": 1,
 			"category": "Adventuring Gear",
 			"entries": [
-				"This manuscript contains scripture of a particular religion. Some divine spellcasters, such as clerics, can use a religious text as a divine focus to use certain abilities and cast some spells. A religious text must be held in one hand to use it. "
+				"This manuscript contains scripture of a particular religion. Some divine spellcasters, such as clerics, can use a religious text as a divine focus to use certain abilities and cast some spells. A religious text must be held in one hand to use it."
 			]
 		},
 		{
@@ -15699,7 +15749,7 @@
 			"hands": 2,
 			"category": "Adventuring Gear",
 			"entries": [
-				"A repair kit allows you to perform simple repairs while traveling. It contains a portable anvil, tongs, woodworking tools, a whetstone, and oils for conditioning leather and wood. You can use a repair kit to {@action Repair} items using the {@skill Crafting} skill. You can draw and replace a worn repair kit as part of the action that uses it. "
+				"A repair kit allows you to perform simple repairs while traveling. It contains a portable anvil, tongs, woodworking tools, a whetstone, and oils for conditioning leather and wood. You can use a repair kit to {@action Repair} items using the {@skill Crafting} skill. You can draw and replace a worn repair kit as part of the action that uses it."
 			],
 			"generic": "G",
 			"variants": [
@@ -16763,7 +16813,7 @@
 			"hands": 1,
 			"category": "Adventuring Gear",
 			"entries": [
-				"A sack can hold up to 8 Bulk worth of items. A sack containing 2 Bulk or less can be worn on the body, usually tucked into a belt. You can carry a sack with one hand, but must use two hands to transfer items in and out. "
+				"A sack can hold up to 8 Bulk worth of items. A sack containing 2 Bulk or less can be worn on the body, usually tucked into a belt. You can carry a sack with one hand, but must use two hands to transfer items in and out."
 			]
 		},
 		{
@@ -16780,7 +16830,7 @@
 			"hands": 2,
 			"category": "Adventuring Gear",
 			"entries": [
-				"Saddlebags come in a pair. Each can hold up to 3 Bulk of items, and the first 1 Bulk of items in each doesn't count against your mount's Bulk limit. The Bulk value given is for saddlebags worn by a mount. If you are carrying or stowing saddlebags, they count as 1 Bulk instead of light Bulk. "
+				"Saddlebags come in a pair. Each can hold up to 3 Bulk of items, and the first 1 Bulk of items in each doesn't count against your mount's Bulk limit. The Bulk value given is for saddlebags worn by a mount. If you are carrying or stowing saddlebags, they count as 1 Bulk instead of light Bulk."
 			]
 		},
 		{
@@ -16985,7 +17035,7 @@
 			"hands": 1,
 			"category": "Adventuring Gear",
 			"entries": [
-				"Scholarly journals are uncommon. Each scholarly journal is a folio on a very specific topic, such as vampires or the history of a single town or neighborhood of a city. If you spend 1 minute referencing an academic journal before attempting a skill check to {@action Recall Knowledge} about the subject, you gain a +1 item bonus to the check. The GM determines what scholarly journals are available in any location. "
+				"Scholarly journals are uncommon. Each scholarly journal is a folio on a very specific topic, such as vampires or the history of a single town or neighborhood of a city. If you spend 1 minute referencing an academic journal before attempting a skill check to {@action Recall Knowledge} about the subject, you gain a +1 item bonus to the check. The GM determines what scholarly journals are available in any location."
 			],
 			"generic": "G",
 			"variants": [
@@ -17692,7 +17742,7 @@
 							{
 								"mode": "appendStr",
 								"str": "In addition, you gain a +2 item bonus to {@skill Stealth} checks while shrunken.",
-								"joiner": " "
+								"joiner": ""
 							}
 						],
 						"entriesMode": "generic"
@@ -18681,7 +18731,7 @@
 			"hands": 2,
 			"category": "Adventuring Gear",
 			"entries": [
-				"This kit contains tools and materials for creating snares. A snare kit allows you to {@action Craft} snares using the {@skill Crafting} skill. You can draw and replace a worn snare kit as part of the action to use it. "
+				"This kit contains tools and materials for creating snares. A snare kit allows you to {@action Craft} snares using the {@skill Crafting} skill. You can draw and replace a worn snare kit as part of the action to use it."
 			],
 			"generic": "G",
 			"variants": [
@@ -20811,7 +20861,7 @@
 			"hands": 1,
 			"category": "Adventuring Gear",
 			"entries": [
-				"Maps are uncommon. Most maps you can find are simple and functional. A survey map details a single location in excellent detail. One of these maps gives you a +1 item bonus to {@skill Survival} checks and any skill checks to {@action Recall Knowledge}, provided the checks are related to the location detailed on the map. The GM determines what maps are available in any location. "
+				"Maps are uncommon. Most maps you can find are simple and functional. A survey map details a single location in excellent detail. One of these maps gives you a +1 item bonus to {@skill Survival} checks and any skill checks to {@action Recall Knowledge}, provided the checks are related to the location detailed on the map. The GM determines what maps are available in any location."
 			],
 			"generic": "G",
 			"variants": [
@@ -20832,7 +20882,7 @@
 					},
 					"hands": 2,
 					"entries": [
-						"Maps sometimes come in atlases, containing a number of maps of the same quality, often on similar topics. An atlas costs five times as much as a single map and requires both hands to use. "
+						"Maps sometimes come in atlases, containing a number of maps of the same quality, often on similar topics. An atlas costs five times as much as a single map and requires both hands to use."
 					]
 				}
 			]
@@ -20884,7 +20934,7 @@
 			"bulk": 1,
 			"category": "Adventuring Gear",
 			"entries": [
-				"Tack includes all the gear required to outfit a riding animal, including a saddle, bit and bridle, and stirrups if necessary. Especially large or oddly shaped animals might require specialty saddles. These can be more expensive or hard to find, as determined by the GM. The Bulk value given is for tack worn by a creature. If carried, the Bulk increases to 2. "
+				"Tack includes all the gear required to outfit a riding animal, including a saddle, bit and bridle, and stirrups if necessary. Especially large or oddly shaped animals might require specialty saddles. These can be more expensive or hard to find, as determined by the GM. The Bulk value given is for tack worn by a creature. If carried, the Bulk increases to 2."
 			]
 		},
 		{
@@ -21122,7 +21172,7 @@
 			"hands": 2,
 			"category": "Adventuring Gear",
 			"entries": [
-				"When wielding this long pole, you can use {@action Seek} to search a square up to 10 feet away. The pole is not sturdy enough to use as a weapon. "
+				"When wielding this long pole, you can use {@action Seek} to search a square up to 10 feet away. The pole is not sturdy enough to use as a weapon."
 			]
 		},
 		{
@@ -21180,7 +21230,7 @@
 			"hands": 2,
 			"category": "Adventuring Gear",
 			"entries": [
-				"You need thieves' tools to {@action Pick a Lock||Pick Locks} or {@action Disable a Device||Disable Devices} (of some types) using the {@skill Thievery} skill. If your thieves' tools are broken, you can repair them by replacing the lock picks with {@item replacement picks (generic)||replacement picks} appropriate to your tools; this doesn't require using the {@action Repair} action. If you wear your thieves' tools, you can draw and replace them as part of the action that uses them. "
+				"You need thieves' tools to {@action Pick a Lock||Pick Locks} or {@action Disable a Device||Disable Devices} (of some types) using the {@skill Thievery} skill. If your thieves' tools are broken, you can repair them by replacing the lock picks with {@item replacement picks (generic)||replacement picks} appropriate to your tools; this doesn't require using the {@action Repair} action. If you wear your thieves' tools, you can draw and replace them as part of the action that uses them."
 			],
 			"generic": "G",
 			"variants": [
@@ -21193,7 +21243,7 @@
 							{
 								"mode": "prependArr",
 								"items": [
-									"You need thieves' tools to {@action Pick a Lock||Pick Locks} or {@action Disable a Device||Disable Devices} (of some types) using the {@skill Thievery} skill. If your thieves' tools are broken, you can repair them by replacing the lock picks with {@item replacement picks} appropriate to your tools; this doesn't require using the {@action Repair} action. If you wear your thieves' tools, you can draw and replace them as part of the action that uses them. "
+									"You need thieves' tools to {@action Pick a Lock||Pick Locks} or {@action Disable a Device||Disable Devices} (of some types) using the {@skill Thievery} skill. If your thieves' tools are broken, you can repair them by replacing the lock picks with {@item replacement picks} appropriate to your tools; this doesn't require using the {@action Repair} action. If you wear your thieves' tools, you can draw and replace them as part of the action that uses them."
 								]
 							}
 						],
@@ -21216,7 +21266,7 @@
 							{
 								"mode": "prependArr",
 								"items": [
-									"You need thieves' tools to {@action Pick a Lock||Pick Locks} or {@action Disable a Device||Disable Devices} (of some types) using the {@skill Thievery} skill. If your thieves' tools are broken, you can repair them by replacing the lock picks with {@item infiltrator replacement picks||replacement picks} appropriate to your tools; this doesn't require using the {@action Repair} action. If you wear your thieves' tools, you can draw and replace them as part of the action that uses them. "
+									"You need thieves' tools to {@action Pick a Lock||Pick Locks} or {@action Disable a Device||Disable Devices} (of some types) using the {@skill Thievery} skill. If your thieves' tools are broken, you can repair them by replacing the lock picks with {@item infiltrator replacement picks||replacement picks} appropriate to your tools; this doesn't require using the {@action Repair} action. If you wear your thieves' tools, you can draw and replace them as part of the action that uses them."
 								]
 							}
 						],
@@ -21244,7 +21294,7 @@
 							{
 								"mode": "prependArr",
 								"items": [
-									"You need thieves' tools to {@action Pick a Lock||Pick Locks} or {@action Disable a Device||Disable Devices} (of some types) using the {@skill Thievery} skill. If your thieves' tools are broken, you can repair them by replacing the lock picks with {@item concealable replacement picks|lopsg|replacement picks} appropriate to your tools; this doesn't require using the {@action Repair} action. If you wear your thieves' tools, you can draw and replace them as part of the action that uses them. "
+									"You need thieves' tools to {@action Pick a Lock||Pick Locks} or {@action Disable a Device||Disable Devices} (of some types) using the {@skill Thievery} skill. If your thieves' tools are broken, you can repair them by replacing the lock picks with {@item concealable replacement picks|lopsg|replacement picks} appropriate to your tools; this doesn't require using the {@action Repair} action. If you wear your thieves' tools, you can draw and replace them as part of the action that uses them."
 								]
 							}
 						],
@@ -21634,7 +21684,7 @@
 			"type": "Item",
 			"category": "Adventuring Gear",
 			"entries": [
-				"This entry is a catchall for basic hand tools that don't have a specific adventuring purpose. A hoe, shovel, or sledgehammer is a long tool, and a hand drill, ice hook, or trowel is a short tool. A tool can usually be used as an improvised weapon, dealing {@damage 1d4} damage for a short tool or {@damage 1d6} for a long tool. The GM determines the damage type that's appropriate or adjusts the damage if needed. "
+				"This entry is a catchall for basic hand tools that don't have a specific adventuring purpose. A hoe, shovel, or sledgehammer is a long tool, and a hand drill, ice hook, or trowel is a short tool. A tool can usually be used as an improvised weapon, dealing {@damage 1d4} damage for a short tool or {@damage 1d6} for a long tool. The GM determines the damage type that's appropriate or adjusts the damage if needed."
 			],
 			"generic": "G",
 			"variants": [
@@ -21674,7 +21724,7 @@
 			"hands": 1,
 			"category": "Adventuring Gear",
 			"entries": [
-				"A torch sheds bright light in a 20-foot radius (and dim light to the next 20 feet) for 1 hour. It can be used as an improvised weapon that deals 1d4 bludgeoning damage plus 1 fire damage. "
+				"A torch sheds bright light in a 20-foot radius (and dim light to the next 20 feet) for 1 hour. It can be used as an improvised weapon that deals 1d4 bludgeoning damage plus 1 fire damage."
 			]
 		},
 		{
@@ -23044,7 +23094,7 @@
 			"hands": 1,
 			"category": "Adventuring Gear",
 			"entries": [
-				"When it's full, a waterskin contains roughly 1 day's worth of water for a Small or Medium creature. "
+				"When it's full, a waterskin contains roughly 1 day's worth of water for a Small or Medium creature."
 			]
 		},
 		{

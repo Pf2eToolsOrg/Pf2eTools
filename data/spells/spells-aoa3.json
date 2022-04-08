@@ -4,7 +4,6 @@
 			"name": "Exchange Image",
 			"source": "AoA3",
 			"page": 73,
-			"focus": false,
 			"level": 1,
 			"traits": [
 				"Uncommon",
@@ -21,8 +20,6 @@
 				"unit": "action"
 			},
 			"components": {
-				"F": false,
-				"M": false,
 				"S": true,
 				"V": true
 			},
@@ -35,8 +32,11 @@
 				}
 			},
 			"targets": "you and 1 other humanoid",
-			"savingThrow": "Will",
-			"savingThrowBasic": false,
+			"savingThrow": {
+				"type": [
+					"W"
+				]
+			},
 			"duration": {
 				"type": "timed",
 				"entry": "varies",
@@ -45,7 +45,6 @@
 					"unit": "special"
 				}
 			},
-			"sustain": false,
 			"dismiss": true,
 			"entries": [
 				"To mislead pursuers, the Lacunafex developed the means to swap visages. You trade appearances with the target, with the effects depending on the result of the target's Will saving throw. Willing and {@condition unconscious} targets automatically critically fail this saving throw.",
@@ -64,7 +63,6 @@
 			"name": "Forgotten Lines",
 			"source": "AoA3",
 			"page": 73,
-			"focus": false,
 			"level": 4,
 			"traits": [
 				"Rare",
@@ -81,8 +79,6 @@
 				"unit": "action"
 			},
 			"components": {
-				"F": false,
-				"M": false,
 				"S": true,
 				"V": true
 			},
@@ -94,12 +90,6 @@
 				}
 			},
 			"targets": "1 text or remnants thereof",
-			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
-			"sustain": false,
-			"dismiss": false,
 			"entries": [
 				"Members of the Lacunafex and other allies use this spell to restore material that Thrune agents have redacted from historical or otherwise valuable texts. You learn one piece of information that was removed from the target text after its creation. You can instead learn one piece of information from a text that had been destroyed, but you must have a fragment of the text, such as a piece of the cover, a page, or even a clasp or metal fittings."
 			],
@@ -124,7 +114,6 @@
 			"name": "Imprint Message",
 			"source": "AoA3",
 			"page": 74,
-			"focus": false,
 			"level": 1,
 			"traits": [
 				"Uncommon",
@@ -139,8 +128,6 @@
 				"unit": "action"
 			},
 			"components": {
-				"F": false,
-				"M": false,
 				"S": true,
 				"V": true
 			},
@@ -152,12 +139,6 @@
 				}
 			},
 			"targets": "1 object",
-			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
-			"sustain": false,
-			"dismiss": false,
 			"entries": [
 				"You project psychic vibrations onto the target object, imprinting it with a short message or emotional theme of your design. This imprinted sensation is revealed to anyone casting object reading (see below) on the target object, replacing any emotional events the item was present for.",
 				"If the object is in the area of a {@spell retrocognition} spell, the imprinted messages appear as major events in the timeline, but they don't interfere with any other visions.",
@@ -184,10 +165,7 @@
 				"unit": "action"
 			},
 			"components": {
-				"F": false,
-				"M": false,
-				"S": true,
-				"V": false
+				"S": true
 			},
 			"range": {
 				"entry": "touch",
@@ -197,7 +175,6 @@
 				}
 			},
 			"targets": "2 willing creatures",
-			"savingThrowBasic": false,
 			"duration": {
 				"type": "timed",
 				"entry": "1 round",
@@ -206,8 +183,6 @@
 					"unit": "round"
 				}
 			},
-			"sustain": false,
-			"dismiss": false,
 			"entries": [
 				"With touches to the targets' foreheads, you bring them into mental communion. The targets can share thoughts and experiences, but not words. When one target attempts to {@action Recall Knowledge}, the other can {@action Aid} the first target's skill check, using any {@skill Lore} skill (even if that {@skill Lore} wouldn't normally apply) without having made any preparations to {@action Aid}."
 			],
@@ -224,7 +199,6 @@
 			"name": "Object Reading",
 			"source": "AoA3",
 			"page": 74,
-			"focus": false,
 			"level": 1,
 			"traits": [
 				"Uncommon",
@@ -239,8 +213,6 @@
 				"unit": "action"
 			},
 			"components": {
-				"F": false,
-				"M": false,
 				"S": true,
 				"V": true
 			},
@@ -252,12 +224,6 @@
 				}
 			},
 			"targets": "1 object",
-			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
-			"sustain": false,
-			"dismiss": false,
 			"entries": [
 				"You place a hand on an object to learn a piece of information about an emotional event that occurred involving the object within the past week, determined by the GM. If you cast {@spell object reading|APG} on the same item multiple times, you can either concentrate on a single event to gain additional pieces of information about that event, or you can gain a piece of information about another emotional event in the applicable time frame."
 			],
@@ -315,9 +281,6 @@
 				"unit": "action"
 			},
 			"components": {
-				"F": false,
-				"M": false,
-				"S": false,
 				"V": true
 			},
 			"area": {
@@ -326,7 +289,6 @@
 				],
 				"entry": "60-foot emanation"
 			},
-			"savingThrowBasic": false,
 			"duration": {
 				"type": "timed",
 				"entry": "1 round",
@@ -335,8 +297,6 @@
 					"unit": "round"
 				}
 			},
-			"sustain": false,
-			"dismiss": false,
 			"entries": [
 				"The \"Song of Silver\" was an enchanted song used by the Silver Ravens to battle diabolic forces. You pull from select verses to temporarily replicate some of the legendary song's benefits, albeit on a much smaller scale.",
 				"Weapon and unarmed attacks by allies in the area are treated as silver. In addition, this spell automatically attempts to counteract any dimension door cast by a devil within the area or cast by a devil attempting to enter the area using dimension door. If a devil attempts to enter the area using dimension door and the spell is counteracted, the devil remains where it started."
@@ -346,7 +306,6 @@
 			"name": "Spiritual Anamnesis",
 			"source": "AoA3",
 			"page": 74,
-			"focus": false,
 			"level": 4,
 			"traits": [
 				"Uncommon",
@@ -363,8 +322,6 @@
 				"unit": "action"
 			},
 			"components": {
-				"F": false,
-				"M": false,
 				"S": true,
 				"V": true
 			},
@@ -376,8 +333,11 @@
 				}
 			},
 			"targets": "1 creature",
-			"savingThrow": "Will",
-			"savingThrowBasic": false,
+			"savingThrow": {
+				"type": [
+					"W"
+				]
+			},
 			"duration": {
 				"type": "timed",
 				"entry": "varies",
@@ -386,8 +346,6 @@
 					"unit": "special"
 				}
 			},
-			"sustain": false,
-			"dismiss": false,
 			"entries": [
 				"Memories of a past life that seem incredibly real (and may even be) overwhelm the target's mind. This is especially disorienting for undead and creatures that have lived a previous life (such as celestials, fiends, monitors, and many other extraplanar creatures); if such creatures roll a critical success on their save, they get a success instead, and if they roll a failure, they get a critical failure instead.",
 				{

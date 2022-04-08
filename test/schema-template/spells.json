@@ -1,0 +1,359 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"$id": "spells.json",
+	"title": "Spells",
+	"description": "The spell data type for Pf2eTools.",
+	"type": "object",
+	"version": "0.0.1",
+	"properties": {
+		"spell": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"source": {
+						"type": "string",
+						"$ref": "utils.json#/definitions/sourceList"
+					},
+					"otherSources": {
+						"$ref": "utils.json#/definitions/otherSources"
+					},
+					"page": {
+						"type": "integer"
+					},
+					"level": {
+						"type": "integer",
+						"exclusiveMinimum": 0,
+						"maximum": 10
+					},
+					"focus": {
+						"type": "boolean"
+					},
+					"school": {
+						"type": "string",
+						"description": "A: Abjuration\nC: Conjuration\nD: Divination\nE: Enchantment\nV: Evocation\nI: Illusion\nN: Necromancy\nT:Transmutation",
+						"enum": [
+							"A",
+							"C",
+							"D",
+							"E",
+							"V",
+							"I",
+							"N",
+							"T"
+						]
+					},
+					"domains": {
+						"type": "array",
+						"items": {
+							"$ref": "utils.json#/definitions/domainsLower"
+						},
+						"minItems": 1
+					},
+					"traditions": {
+						"type": "array",
+						"items": {
+							"type": "string",
+							"$ref": "utils.json#/definitions/traditionUpper"
+						}
+					},
+					"spellLists": {
+						"type": "array",
+						"items": {
+							"type": "string",
+							"enum": [
+								"Elemental"
+							]
+						}
+					},
+					"traits": {
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "anyOf": [
+								{
+									"$ref": "utils.json#/definitions/anyTraitUpper"
+								},
+								{
+									"$comment": "Spell only Traits.",
+									"enum": [
+										"Cantrip",
+										"Composition",
+										"Cursebound",
+										"Hex",
+										"Litany",
+										"Consecration",
+										"Contingency"
+									]
+								}
+							]
+                        },
+                        "minItems": 1,
+                        "uniqueItems": true
+                    },
+					"cast": {
+						"type": "object",
+						"properties": {
+							"number": {
+								"type": "integer",
+								"inclusiveMinimum": 0
+							},
+							"unit": {
+								"type":"string",
+								"enum": [
+									"free",
+									"reaction",
+									"action",
+									"round",
+									"minute",
+									"hour",
+									"varies"
+								]
+							},
+							"entry": {
+								"type": "string",
+								"not": {
+									"pattern": "^{@as [123RFrf]}$"
+								}
+							}
+						},
+						"additionalProperties": false
+					},
+					"components": {
+						"type": "object",
+						"properties": {
+							"F": {
+								"description": "Focus",
+								"type": "boolean",
+								"enum": [true]
+							},
+							"M": {
+								"description": "Material",
+								"type": "boolean",
+								"enum": [true]
+							},
+							"S": {
+								"description": "Somatic",
+								"type": "boolean",
+								"enum": [true]
+							},
+							"V": {
+								"description": "Verbal",
+								"type": "boolean",
+								"enum": [true]
+							}
+						},
+						"additionalProperties": false,
+						"minProperties": 1
+					},
+					"cost": {
+						"type": "string"
+					},
+					"area": {
+						"type": "object",
+						"properties": {
+							"types": {
+								"type": "array",
+								"items": {
+									"type": "string",
+									"enum": [
+										"Emanation",
+										"Burst",
+										"Cone",
+										"Line",
+										"Cylinder",
+										"Misc."
+									]
+								}
+							},
+							"entry": {
+								"type": "string"
+							}
+						},
+						"additionalProperties": false,
+						"required": [
+							"types",
+							"entry"
+						]
+					},
+					"requirements": {
+						"type": "string"
+					},
+					"trigger": {
+						"type": "string"
+					},
+					"range": {
+						"type": "object",
+						"properties": {
+							"entry": {
+								"type": "string"
+							},
+							"distance": {
+								"type": "object",
+								"properties": {
+									"type": {
+										"type": "string",
+										"enum": [
+											"touch",
+											"feet",
+											"miles",
+											"planetary",
+											"unlimited",
+											"unknown"
+										]
+									},
+									"amount": {
+										"type": "integer",
+										"inclusiveMinimum": 0
+									}
+								},
+								"additionalProperties": false,
+								"required": [
+									"type",
+									"amount"
+								]
+							}
+						},
+						"additionalProperties": false
+					},
+					"targets": {
+						"type": "string"
+					},
+
+					"savingThrow": {
+						"type": "object",
+						"properties": {
+							"basic": {
+								"type": "boolean"
+							},
+							"type": {
+								"type": "array",
+								"items": {
+									"enum": [
+										"F",
+										"R",
+										"W"
+									]
+								}
+							},
+							"hidden": {
+								"type": "boolean",
+								"enum": [true]
+							}
+						},
+						"additionalProperties": false,
+						"required": [
+							"type"
+						]
+					},
+
+					"duration": {
+						"type": "object",
+						"properties": {
+							"type": {
+								"type": "string",
+								"enum": [
+									"timed"
+								]
+							},
+							"entry": {
+								"type": "string"
+							},
+							"duration": {
+								"type": "object",
+								"properties": {
+									"number": {
+										"type": "integer",
+										"exclusiveMinimum": 0
+									},
+									"unit": {
+										"type":"string",
+										"enum": [
+											"reaction","action",
+											"turn",
+											"round",
+											"minute",
+											"hour",
+											"day",
+											"month",
+											"unlimited",
+											"special"
+										]
+									}
+								},
+								"additionalProperties": false
+							}
+						},
+						"additionalProperties": false
+					},
+					"sustain": {
+						"type": "boolean"
+					},
+					"dismiss": {
+						"type": "boolean"
+					},
+					"entries": {
+						"type": "array",
+						"items": {
+							"$ref": "entry.json"
+						}
+					},
+					"heightened": {
+						"type": "object",
+						"properties": {
+							"x": {
+								"type": "array",
+								"items": {
+									"type": "object",
+									"properties": {
+										"level": {
+											"type": "integer",
+											"exclusiveMinimum": 0
+										},
+										"entries": {
+											"type": "array",
+											"items": {
+												"$ref": "entry.json"
+											}
+										}
+									}
+								}
+							},
+							"plus_x": {
+								"type": "object",
+								"properties": {
+									"level": {
+										"type": "integer",
+										"exclusiveMinimum": 0
+									},
+									"entries": {
+										"type": "array",
+										"items": {
+											"$ref": "entry.json"
+										}
+									}
+								},
+								"additionalProperties": false
+							}
+						},
+						"additionalProperties": false
+					},
+					"summoning": {
+						"type": "boolean"
+					},
+					"hasBattleForm": {
+						"type": "boolean"
+					}
+				},
+				"required": ["name", "source", "entries"],
+				"additionalProperties": false
+			},
+			"uniqueItems": true
+		}
+	},
+	"required": ["spell"],
+	"additionalProperties": false
+}

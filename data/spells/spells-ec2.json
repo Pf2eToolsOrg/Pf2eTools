@@ -4,7 +4,6 @@
 			"name": "Clownish Curse",
 			"source": "EC2",
 			"page": 77,
-			"focus": false,
 			"level": 4,
 			"traits": [
 				"Uncommon",
@@ -24,8 +23,6 @@
 				"unit": "action"
 			},
 			"components": {
-				"F": false,
-				"M": false,
 				"S": true,
 				"V": true
 			},
@@ -37,8 +34,11 @@
 				}
 			},
 			"targets": "1 creature",
-			"savingThrow": "Will",
-			"savingThrowBasic": false,
+			"savingThrow": {
+				"type": [
+					"W"
+				]
+			},
 			"duration": {
 				"type": "timed",
 				"entry": "varies",
@@ -47,8 +47,6 @@
 					"unit": "special"
 				}
 			},
-			"sustain": false,
-			"dismiss": false,
 			"entries": [
 				"You afflict the target with a curse that causes it to emit ridiculous noises as it moves. Furthermore, the target's hands and feet become awkward and uncoordinated, as though it were wearing oversized gloves and shoes.",
 				{
@@ -66,7 +64,6 @@
 			"name": "Favorable Review",
 			"source": "EC2",
 			"page": 77,
-			"focus": false,
 			"level": 4,
 			"traits": [
 				"Uncommon",
@@ -84,8 +81,6 @@
 				"unit": "action"
 			},
 			"components": {
-				"F": false,
-				"M": false,
 				"S": true,
 				"V": true
 			},
@@ -97,8 +92,11 @@
 				}
 			},
 			"targets": "1 creature",
-			"savingThrow": "Will",
-			"savingThrowBasic": false,
+			"savingThrow": {
+				"type": [
+					"W"
+				]
+			},
 			"duration": {
 				"type": "timed",
 				"entry": "varies",
@@ -107,7 +105,6 @@
 					"unit": "special"
 				}
 			},
-			"sustain": false,
 			"dismiss": true,
 			"entries": [
 				"You enchant a creature to ensure they have only good things to say about your show. Identify a single creature, location, or performance, such as \"Dame Ellendia,\" \"Savories Meats,\" or \"the Theater of the Mind's latest magic show.\" The target must attempt Will save. You can {@action Dismiss} the spell.",
@@ -136,7 +133,6 @@
 			"name": "Pillar Of Water",
 			"source": "EC2",
 			"page": 77,
-			"focus": false,
 			"level": 3,
 			"traits": [
 				"Uncommon",
@@ -153,7 +149,6 @@
 				"unit": "action"
 			},
 			"components": {
-				"F": false,
 				"M": true,
 				"S": true,
 				"V": true
@@ -165,7 +160,6 @@
 					"amount": 120
 				}
 			},
-			"savingThrowBasic": false,
 			"duration": {
 				"type": "timed",
 				"entry": "1 minute",
@@ -174,8 +168,6 @@
 					"unit": "minute"
 				}
 			},
-			"sustain": false,
-			"dismiss": false,
 			"entries": [
 				"You create a large, self-contained cylinder of still fresh water.",
 				"The pillar has a maximum radius of 15 feet and a maximum height of 60 feet. Creatures inside the pillar can swim through the water as normal ({@action Swim} DC 10), or, if the spell was cast on solid ground, walk along the bottom (which is difficult terrain)",
@@ -186,7 +178,6 @@
 			"name": "Pyrotechnics",
 			"source": "EC2",
 			"page": 77,
-			"focus": false,
 			"level": 3,
 			"traits": [
 				"Uncommon",
@@ -203,10 +194,8 @@
 				"unit": "action"
 			},
 			"components": {
-				"F": false,
 				"M": true,
-				"S": true,
-				"V": false
+				"S": true
 			},
 			"range": {
 				"entry": "120 feet",
@@ -216,8 +205,11 @@
 				}
 			},
 			"targets": "1 fire",
-			"savingThrow": "Fortitude",
-			"savingThrowBasic": false,
+			"savingThrow": {
+				"type": [
+					"F"
+				]
+			},
 			"duration": {
 				"type": "timed",
 				"entry": "sustained up to 1 minute",
@@ -227,7 +219,6 @@
 				}
 			},
 			"sustain": true,
-			"dismiss": false,
 			"entries": [
 				"You turn a fire into either a burst of blinding fireworks or a thick cloud of choking smoke, chosen when you Cast the Spell. The spell targets one fire source, which is immediately extinguished if it is a non-magical fire the size of a campfire or smaller. If the fire source is a creature, the creature takes {@dice 1d6} points of cold damage and is not extinguished.",
 				"{@b Fireworks} The targeted fire explodes into a colorful array of flashy, fiery, glowing aerial fireworks in a 20-foot-radius burst. The first time you {@action Sustain a Spell||Sustain the Spell} each round, you can cause the area of fireworks to ascend up to 20 feet, but you cannot move the area laterally. Creatures that start their turn within the area of the fireworks must attempt a Fortitude save, and are then temporarily immune for 1 minute.",

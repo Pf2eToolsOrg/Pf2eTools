@@ -814,35 +814,6 @@
 			]
 		},
 		{
-			"name": "Big Boom Gun",
-			"source": "G&G",
-			"page": 157,
-			"type": "Item",
-			"level": 1,
-			"traits": [
-				"Uncommon",
-				"Cobbled",
-				"Goblin"
-			],
-			"price": {
-				"coin": "gp",
-				"amount": 10
-			},
-			"usage": "held in 1 hand",
-			"bulk": 2,
-			"category": "Held",
-			"entries": [
-				"Developed by a goblin weaponsmith who missed the ‘hand' part of ‘hand cannon', this comically-oversized gun has a heavily reinforced barrel and is loaded with a worrisome quantity of gunpowder.",
-				"This hand cannon is a martial weapon, instead of a simple weapon. It has the fatal d12 trait and a range of 20 feet. It also has the following modified critical failure condition:",
-				{
-					"type": "successDegree",
-					"entries": {
-						"Critical Failure": "The attack misses, the weapon misfires, and you take {@damage 1d12} fire damage as it explodes in your face."
-					}
-				}
-			]
-		},
-		{
 			"name": "Binding Snare",
 			"source": "G&G",
 			"page": 78,
@@ -868,7 +839,7 @@
 						"Critical Success": "The creature is unaffected.",
 						"Success": "The creature takes half damage.",
 						"Failure": "The creature takes full damage and is knocked {@condition prone} and {@condition immobilized} for 1 round ({@action Escape} DC 28).",
-						"Critical Failure": "The creature takes double damage, is knocked {@condition prone}, and is {@condition restrained} for 1 round ({@action Escape} DC 28). "
+						"Critical Failure": "The creature takes double damage, is knocked {@condition prone}, and is {@condition restrained} for 1 round ({@action Escape} DC 28)."
 					}
 				}
 			]
@@ -1241,7 +1212,8 @@
 			],
 			"usage": "held in 2 hands",
 			"bulk": 2,
-			"category": "Held",
+			"category": "Weapon",
+			"subCategory": "Beast Gun",
 			"entries": [
 				"A breath blaster is a +1 striking blunderbuss most commonly crafted from the trachea of a dragon, though other creatures with breath weapons or the ability to spit energy are occasionally used. The implementation of the dragon's trachea allows the firearm to unleash a torrent of pure energy in the form of gouts of flame or bolts of electricity.",
 				"A breath blaster's Strikes deal either acid, cold, electricity, fire, or poison damage, depending on the dragon type or other creature from which it was made, though it can otherwise be used like a normal blunderbuss. A breath blaster also can be activated to fire a line of energy in a 30-foot line or 15-foot cone, chosen when it's created and typically corresponding to the shape of the breath weapon used by the type of dragon or creature from which the breath blaster was created.",
@@ -2181,7 +2153,8 @@
 			},
 			"usage": "held in 2 hands",
 			"bulk": 2,
-			"category": "Held",
+			"category": "Weapon",
+			"subCategory": "Beast Gun",
 			"entries": [
 				"A drake rifle is a firearm made from the saliva glands of a drake. The firearm launches small bursts of empowered spittle instead of typical rounds of ammunition. A drake rifle is a {@item +1 weapon potency||+1} weapon. It's a distinct type of martial firearm that deals {@damage 1d10} damage with a range increment of 150 feet and reload 1. It deals acid, cold, electricity, fire, or poison damage, depending on the drake from which it was made. On a critical hit, the spittle clings to the target and they take persistent damage of the same type as the weapon equal to {@damage 1d4} + the number of weapon damage dice. A drake rifle does not add critical specialization effects.",
 				{
@@ -3493,7 +3466,8 @@
 			},
 			"usage": "held in 1 hand",
 			"bulk": 2,
-			"category": "Held",
+			"category": "Weapon",
+			"subCategory": "Beast Gun",
 			"entries": [
 				"A growth gun is a +1 striking hand cannon made from the regenerative flesh of a hydra, troll, or other similar creature. It has an attached flesh sac that slowly replenishes one shot each round and can be loaded like a normal round of ammunition. It fires regenerating gobbets of flesh, bone, or teeth, determined by the damage type selected for its {@trait modular} trait. A growth gun can be fired underwater, though it's still limited by the selected damage type as normal.",
 				{
@@ -3503,8 +3477,11 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact (magical",
-						"transmutation)"
+						"Interact"
+					],
+					"traits": [
+						"magical",
+						"Transmutation"
 					],
 					"frequency": {
 						"unit": "minute",
@@ -4357,8 +4334,8 @@
 							},
 							{
 								"mode": "replaceTxt",
-								"replace": "1 ",
-								"with": "2 "
+								"replace": "1",
+								"with": "2"
 							}
 						],
 						"entriesMode": "generic"
@@ -4383,8 +4360,8 @@
 							},
 							{
 								"mode": "replaceTxt",
-								"replace": "1 ",
-								"with": "3 "
+								"replace": "1",
+								"with": "3"
 							}
 						],
 						"entriesMode": "generic"
@@ -5032,7 +5009,8 @@
 			},
 			"usage": "held in 2 hands",
 			"bulk": 2,
-			"category": "Held",
+			"category": "Weapon",
+			"subCategory": "Beast Gun",
 			"entries": [
 				"Built from the taxidermic body of a basilisk, a petrification cannon functions as a +2 greater striking double-barreled musket. A petrification cannon can be activated to fire a beam of energy that transforms flesh into stone.",
 				{
@@ -5042,8 +5020,11 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact (magical",
-						"transmutation)"
+						"Interact"
+					],
+					"traits": [
+						"magical",
+						"Transmutation"
 					],
 					"entries": [
 						"Frequency once per hour Effect A beam of coiling energy leaps from the petrification cannon at a target within 60 feet. The target must attempt a Fortitude save against DC 34 with the effects of flesh to stone."
@@ -5500,7 +5481,8 @@
 			],
 			"usage": "held in 2 hands",
 			"bulk": 2,
-			"category": "Held",
+			"category": "Weapon",
+			"subCategory": "Beast Gun",
 			"entries": [
 				"Built from the larynx of an owlbear, terror shrike, or similar animal that possesses a frightening screech or similar special ability, a screech shooter is a special +1 striking harmona gun designed to fire terrifying blasts of sound. A screech shooter deals sonic damage but can otherwise be used like a normal harmona gun.",
 				{
@@ -5949,7 +5931,8 @@
 			],
 			"usage": "held in 2 hands",
 			"bulk": 2,
-			"category": "Held",
+			"category": "Weapon",
+			"subCategory": "Beast Gun",
 			"entries": [
 				"A spider gun is a +1 striking weapon. It's a distinct type of martial firearm made from the fangs and spinneret of a Large spider. It deals {@damage 1d10} poison damage with a range Petrification Cannon increment of 30 feet and reload 1. On a critical hit, the venom clings to the target and they take {@condition persistent damage ||persistent poison damage} equal to {@dice 1d4} + the number of weapon damage dice.",
 				"A spider gun does not add critical specialization effects.",
@@ -5961,8 +5944,11 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact (conjuration",
-						"magical)"
+						"Interact"
+					],
+					"traits": [
+						"conjuration",
+						"magical"
 					],
 					"entries": [
 						"You fire a mass of webbing at a square within 30 feet. That square becomes covered in webbing for 1 minute. A square covered with the webbing from a spider gun can be cleared by a single attack or effect that deals at least 5 slashing damage or 1 fire damage. A square has AC 5, and it automatically fails its saving throws. The first time each turn a creature in the webbing begins to use a move action or enters the webbing during a move action, it must attempt an {@skill Athletics} check or Reflex save against DC 20. On a success, it moves normally through the webbing and clears away the webbing from any squares it enters this turn. On a failure, it treats squares of webbing as {@quickref difficult terrain||3|terrain} this turn, and on a critical failure, it's {@condition immobilized} for 1 round or until it Escapes (DC 20) or destroys the webbing."
@@ -6022,7 +6008,8 @@
 			},
 			"usage": "held in 1 or 2 hands",
 			"bulk": 2,
-			"category": "Held",
+			"category": "Weapon",
+			"subCategory": "Beast Gun",
 			"entries": [
 				"Built from the spiked tail of a manticore, a spike launcher is designed to launch large, spear-like projectiles. A spike launcher is a +1 striking weapon. It's a distinct type of martial firearm that deals {@damage 1d8} piercing damage. It has the backstabber, fatal aim d12, and kickback traits with a range increment of 120 feet and reload 2. It uses the critical specialization of the bow weapon group, rather than the firearm critical specialization.",
 				{
@@ -6032,8 +6019,11 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact (evocation",
-						"magical)"
+						"Interact"
+					],
+					"traits": [
+						"evocation",
+						"magical"
 					],
 					"requirements": "The spike launcher is loaded",
 					"entries": [
@@ -6159,29 +6149,6 @@
 						"entriesMode": "generic"
 					}
 				}
-			]
-		},
-		{
-			"name": "Spoon Gun",
-			"source": "G&G",
-			"page": 157,
-			"type": "Item",
-			"level": 1,
-			"traits": [
-				"Uncommon",
-				"Cobbled",
-				"Goblin"
-			],
-			"price": {
-				"coin": "gp",
-				"amount": 10
-			},
-			"usage": "held in 1 hand",
-			"bulk": 1,
-			"category": "Held",
-			"entries": [
-				"No one's entirely certain who developed the spoon gun, but all authorities agree that it was probably a goblin. Essentially a terrible idea in firearm form, the spoon gun is a spring-powered hand cannon with a modified grip that uses miscellaneous knives, forks, chopsticks, and spoons as ammunition. Users typically upend the entire contents of their cutlery drawer into the gun, aim it in the general direction of the foe, and hope it hits something.",
-				"This hand cannon is a martial weapon, instead of a simple weapon. It has the scatter (5 feet) trait and uses cutlery or similar-sized objects as ammunition instead of bullets (enough cheap cutlery to fire ten shots costs 1 sp)."
 			]
 		},
 		{
@@ -6484,7 +6451,8 @@
 			],
 			"usage": "held in 2 hands",
 			"bulk": 2,
-			"category": "Held",
+			"category": "Weapon",
+			"subCategory": "Beast Gun",
 			"entries": [
 				"A tentacle cannon is a +1 striking weapon, built using components from squids, krakens, and sometimes even stranger tentacled creatures like alghollthu. It's a distinct type of martial firearm that deals {@damage 1d8} piercing damage. It has the capacity 5, concussive, and fatal d12 traits, a range increment of 30 feet, and reload 2. The weapon itself resembles a five-barreled handheld cannon with each barrel made from a hollowed out tentacle.",
 				{
@@ -6494,8 +6462,11 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact (magical",
-						"transmutation)"
+						"Interact"
+					],
+					"traits": [
+						"magical",
+						"Transmutation"
 					],
 					"entries": [
 						"You cause one of the tentacles forming the weapon's five barrels to stretch out and attempt to pull and grab a creature within 15 feet. The tentacle attempts to {@action Grapple} with a +13 bonus. It can attempt to {@action Grapple} any creature, regardless of size. On a success, the tentacle pulls the creature up to 10 feet directly towards you, until it's in a square adjacent to you."

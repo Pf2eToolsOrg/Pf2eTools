@@ -1,0 +1,348 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"$id": "deities.json",
+	"title": "Deities",
+	"description": "The deity data type for Pf2eTools.",
+	"type": "object",
+	"version": "0.0.1",
+	"properties": {
+		"deity": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"source": {
+						"type": "string",
+						"$ref": "utils.json#/definitions/sourceList"
+					},
+					"otherSources": {
+						"$ref": "utils.json#/definitions/otherSources"
+					},
+					"page": {
+						"type": "integer"
+					},
+					"alias": {
+						"type": "array",
+						"items": {
+							"type": "string"
+						},
+						"minItems": 1
+					},
+					"core": {
+						"type": "boolean",
+						"enum": [true]
+					},
+					"alignment": {
+						"type": "array",
+						"items": {
+							"$ref": "utils.json#/definitions/alignmentTraits"
+						},
+						"minItems": 1
+					},
+					"followerAlignment": {
+						"type": "array",
+						"items": {
+							"$ref": "utils.json#/definitions/alignmentTraits"
+						},
+						"minItems": 1
+					},
+					"category": {
+						"type": "string",
+						"enum": [
+							"Ancient Osirian Gods",
+							"Archdevils",
+							"Demon Lords",
+							"Dwarven Gods",
+							"Eldest",
+							"Elemental Lords",
+							"Elven Gods",
+							"Empyreal Lords",
+							"Gods of the Inner Sea",
+							"Great Old Ones",
+							"Horsemen",
+							"Monitor Demigods",
+							"Mwangi Gods",
+							"Other Gods",
+							"Outer Gods",
+							"Pantheon",
+							"Philosophy",
+							"Queens of the Night",
+							"Sarkorian Gods",
+							"Tian Gods",
+							"Vudrani Gods"
+						]
+					},
+					"info": {
+						"type": "array",
+						"items": {
+							"$ref": "entry.json"
+						},
+						"minItems": 1
+					},
+					"edicts": {
+						"type": "array",
+						"items": {
+							"type": "string"
+						},
+						"minItems": 1
+					},
+					"anathema": {
+						"type": "array",
+						"items": {
+							"type": "string"
+						},
+						"minItems": 1
+					},
+					"devoteeBenefits": {
+						"type": "object",
+						"properties": {
+							"font": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								},
+								"minItems": 1
+							},
+							"ability": {
+								"type": "object",
+								"properties": {
+									"abilities": {
+										"type": "array",
+										"items": {
+											"$ref": "utils.json#/definitions/abilityAbbvUpper"
+										},
+										"minItems": 1
+									},
+									"entry": {
+										"type": "string"
+									}
+								},
+								"additionalProperties": false,
+								"required": [
+									"abilities"
+								]
+							},
+							"skill": {
+								"type": "array",
+								"items": {
+									"$ref": "utils.json#/definitions/skillNameUpper"
+								},
+								"minItems": 1
+							},
+							"domains": {
+								"type": "array",
+								"items": {
+									"$ref": "utils.json#/definitions/domainsLower"
+								},
+								"minItems": 1
+							},
+							"alternateDomains": {
+								"type": "array",
+								"items": {
+									"$ref": "utils.json#/definitions/domainsLower"
+								},
+								"minItems": 1
+							},
+							"spells": {
+								"type": "object",
+								"patternProperties": {
+									"^(10|[1-9])$": {
+										"type": "array",
+										"items": {
+											"type": "string"
+										},
+										"minItems": 1
+									}
+								},
+								"additionalProperties": false,
+								"minProperties": 1
+							},
+							"weapon": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								},
+								"minItems": 1
+							},
+							"avatar": {
+								"type": "object",
+								"properties": {
+									"preface": {
+										"type": "string",
+										"not": {"enum": [""]}
+									},
+									"entry": {
+										"type": "string"
+									},
+									"speed": {
+										"$ref": "utils.json#/definitions/speed"
+									},
+									"immune": {
+										"type": "array",
+										"items": {
+											"$ref": "utils.json#/definitions/conditionsLower"
+										},
+										"minItems": 1
+									},
+									"shield": {
+										"type": "integer",
+										"enum": [15]
+									},
+									"ignoreTerrain": {
+										"type": "boolean",
+										"enum": [true]
+									},
+									"airWalk": {
+										"type": "boolean",
+										"enum": [true]
+									},
+									"melee": {
+										"type": "object",
+										"properties": {
+											"name": {
+												"type": "string"
+											},
+											"traits": {
+												"type": "array",
+												"items": {
+													"$ref": "utils.json#/definitions/anyTraitUpper"
+												},
+												"minItems": 1
+											},
+											"damage": {
+												"type": "string"
+											},
+											"damageType": {
+												"type": "string",
+												"$ref": "utils.json#/definitions/damageTypeLower"
+											},
+											"damage2": {
+												"type": "string"
+											},
+											"damageType2": {
+												"type": "string",
+												"$ref": "utils.json#/definitions/damageTypeLower"
+											}
+										},
+										"additionalProperties": false,
+										"minProperties": 1
+									},
+									"ranged": {
+										"type": "object",
+										"properties": {
+											"name": {
+												"type": "string"
+											},
+											"range": {
+												"type": "integer",
+												"exclusiveMinimum": 0
+											},
+											"reload": {
+												"type": "integer",
+												"exclusiveMinimum": 0
+											},
+											"traits": {
+												"type": "array",
+												"items": {
+													"$ref": "utils.json#/definitions/anyTraitUpper"
+												},
+												"minItems": 1
+											},
+											"damage": {
+												"type": "string"
+											},
+											"damageType": {
+												"type": "string",
+												"$ref": "utils.json#/definitions/damageTypeLower"
+											},
+											"damage2": {
+												"type": "string"
+											},
+											"damageType2": {
+												"type": "string",
+												"$ref": "utils.json#/definitions/damageTypeLower"
+											}
+										},
+										"additionalProperties": false,
+										"minProperties": 1
+									}
+								},
+								"additionalProperties": false,
+								"minProperties": 1
+							}
+						},
+						"additionalProperties": false,
+						"minProperties": 1
+					},
+					"intercession": {
+						"type": "object",
+						"properties": {
+							"source": {
+								"type": "string",
+								"$ref": "utils.json#/definitions/sourceList"
+							},
+							"page": {
+								"type": "integer"
+							},
+							"flavor": {
+								"type": "array",
+								"items": {
+									"$ref": "entry.json"
+								},
+								"minItems": 1
+							},
+							"boon": {
+								"type": "object",
+								"patternProperties": {
+									"^(Minor|Moderate|Major) (Boon|Blessing)$": {
+										"type": "array",
+										"items": {
+											"$ref": "entry.json"
+										},
+										"minItems": 1
+									}
+								},
+								"additionalProperties": false
+							},
+							"curse": {
+								"type": "object",
+								"patternProperties": {
+									"^(Minor|Moderate|Major) Curse$": {
+										"type": "array",
+										"items": {
+											"$ref": "entry.json"
+										},
+										"minItems": 1
+									}
+								},
+								"additionalProperties": false
+							}
+						},
+						"additionalProperties": false
+					},
+					"hasLore": {
+						"type": "boolean",
+						"enum": [true]
+					},
+					"images": {
+						"type":"array",
+						"items": {
+							"type": "string"
+						}
+					}
+				},
+				"additionalProperties": false,
+				"required": [
+					"name",
+					"source",
+					"page"
+				]
+			}
+		}
+	},
+	"required": ["deity"],
+	"additionalProperties": false
+}

@@ -279,6 +279,41 @@
 				}
 			]
 		},
+		"entriesLevelEffect": {
+			"allOf": [
+				{
+					"$ref": "#/definitions/entry"
+				},
+				{
+					"type": "object",
+					"properties": {
+						"type": {
+							"const": "lvlEffect"
+						},
+						"entries": {
+							"type": "array",
+							"items": {
+								"properties": {
+									"entry": {
+										"$ref": "#"
+									},
+									"range": {
+										"type": "string"
+									}
+								},
+								"additionalProperties": false,
+								"required": [
+									"entry",
+									"range"
+								]
+							},
+							"minItems": 1
+						}
+					},
+					"additionalProperties": false
+				}
+			]
+		},
 		"entriesSuccessDegree": {
 			"allOf": [
 				{
@@ -327,7 +362,12 @@
 						},
 						"tag": {
 							"type": "string",
-							"enum": ["action", "feat", "item"]
+							"enum": [
+								"action",
+								"feat",
+								"item",
+								"creature"
+							]
 						},
 						"name": {
 							"type": "string"
@@ -353,6 +393,16 @@
 						"type": {
 							"const": "affliction"
 						},
+						"name": {
+							"type":"string"
+						},
+						"traits": {
+							"type": "array",
+							"items": {
+								"type": "string",
+								"$ref": "utils.json#/definitions/anyTraitUpper"
+							}
+						},
 						"DC": {
 							"type": "integer"
 						},
@@ -360,8 +410,18 @@
 							"type": "string",
 							"enum": ["Will", "Fortitude"]
 						},
+						"note": {
+							"type": "string"
+						},
 						"onset": {
 							"type": "string"
+						},
+						"maxDuration": {
+							"type": "string"
+						},
+						"level": {
+							"type": "integer",
+							"exclusiveMinimum": 0
 						},
 						"stages": {
 							"type": "array",
@@ -591,6 +651,17 @@
 				{
 					"type": "object",
 					"properties": {
+						"name": {
+							"type": "string"
+						},
+						"source": {
+							"type": "string",
+							"$ref": "utils.json#/definitions/sourceList"
+						},
+						"id": {
+							"type": "string",
+							"pattern": "^\\d+-?\\d+$"
+						},
 						"type": {
 							"const": "table"
 						},
@@ -598,6 +669,9 @@
 							"type": "string"
 						},
 						"isStriped": {
+							"type": "boolean"
+						},
+						"rollable": {
 							"type": "boolean"
 						},
 						"labelRowIdx": {
@@ -639,6 +713,14 @@
 									"minItems": 2
 								},
 								"minItems": 1
+							},
+							"minItems": 1
+						},
+						"colSizes": {
+							"type": "array",
+							"items": {
+								"type": "integer",
+								"exclusiveMinimum": 0
 							},
 							"minItems": 1
 						},
@@ -2103,6 +2185,9 @@
 		},
 		{
 			"$ref": "#/definitions/entriesSuccessDegree"
+		},
+		{
+			"$ref": "#/definitions/entriesLevelEffect"
 		},
 		{
 			"$ref": "#/definitions/entriesStatblock"

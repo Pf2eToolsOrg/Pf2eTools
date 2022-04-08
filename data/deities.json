@@ -74,8 +74,20 @@
 					"crossbow"
 				],
 				"avatar": {
-					"preface": "",
-					"entry": "{@bold Abadar} Speed 50 feet, burrow Speed 30 feet, immune to {@condition immobilized}; Ranged {@as 1} crossbow (range increment 120 feet, {@trait reload 1}), Damage {@damage 6d10+3} piercing."
+					"speed": {
+						"walk": 50,
+						"burrow": 30
+					},
+					"immune": [
+						"immobilized"
+					],
+					"ranged": {
+						"name": "crossbow",
+						"range": 120,
+						"reload": 1,
+						"damage": "6d10+3",
+						"damageType": "piercing"
+					}
 				}
 			},
 			"intercession": {
@@ -123,7 +135,6 @@
 				"CE"
 			],
 			"category": "Demon Lords",
-			"info": [],
 			"edicts": [
 				"learn and hoard forbidden magic",
 				"steal secrets from others"
@@ -202,7 +213,6 @@
 				"LE"
 			],
 			"category": "Gods of the Inner Sea",
-			"info": [],
 			"edicts": [
 				"conduct assassinations",
 				"spread the Red Mantis's infamy",
@@ -253,7 +263,29 @@
 					"sawtooth saber"
 				],
 				"avatar": {
-					"entry": "{@b Achaekek} Speed 70 feet, climb Speed 50 feet, ignore {@quickref difficult terrain||3|terrain} and {@quickref greater difficult terrain||3|terrain}; Melee {@as 1} mantis claw ({@trait agile}, {@trait backswing}, {@trait finesse}, {@trait reach 15 feet}, {@trait versatile P}), Damage {@damage 6d8+6} slashing; Ranged {@as 1} spine volley (range 60 feet), Damage {@damage 6d6+3} piercing",
+					"speed": {
+						"walk": 70,
+						"climb": 50
+					},
+					"ignoreTerrain": true,
+					"melee": {
+						"name": "mantis claw",
+						"traits": [
+							"Agile",
+							"backswing",
+							"finesse",
+							"reach 15 feet",
+							"versatile P"
+						],
+						"damage": "6d8+6",
+						"damageType": "slashing"
+					},
+					"ranged": {
+						"name": "spine volley",
+						"range": 60,
+						"damage": "6d6+3",
+						"damageType2": "piercing"
+					},
 					"preface": "When casting the {@spell avatar} spell, a worshipper of Achaekek gains the following additional abilities."
 				}
 			},
@@ -331,8 +363,33 @@
 					"kukri"
 				],
 				"avatar": {
+					"speed": {
+						"walk": 70,
+						"climb": 70
+					},
+					"immune": [
+						"immobilized"
+					],
+					"melee": {
+						"name": "claw",
+						"traits": [
+							"agile",
+							"finesse",
+							"reach 15 feet"
+						],
+						"damage": "6d10+6",
+						"damageType": "slashing"
+					},
+					"ranged": {
+						"name": "hearth ember",
+						"range": 120,
+						"damage": "4d6+3",
+						"damageType": "fire",
+						"damage2": "2d6",
+						"damageType2": "persistent fire"
+					},
 					"preface": "When casting the {@spell avatar} spell, a worshipper of Adanye gains the following additional abilities.",
-					"entry": "{@b Adanye} Speed 70 feet, climb speed 70 feet, immune to immobilized; {@b Melee} {@as 1} claw ({@trait agile}, {@trait finesse}, {@trait reach 15 feet}), {@b Damage} {@damage 6d10+6} slashing; {@b Ranged} {@as 1} hearth ember (range 120 feet), {@b Damage} {@damage 4d6+3} fire and {@damage 2d6} persistent fire"
+					"entry": "{@b Ranged} {@as 1} hearth ember (range 120 feet), {@b Damage} {@damage 4d6+3} fire and {@damage 2d6} persistent fire"
 				}
 			},
 			"hasLore": true
@@ -348,7 +405,6 @@
 				"CG"
 			],
 			"category": "Sarkorian Gods",
-			"info": [],
 			"edicts": [
 				"strive to perfect an art or craft",
 				"protect the monuments of your people",
@@ -410,7 +466,6 @@
 				"LN"
 			],
 			"category": "Gods of the Inner Sea",
-			"info": [],
 			"edicts": [
 				"offer to protect passageways and guide others through transitions",
 				"treat all other beings with courtesy and respect"
@@ -479,7 +534,6 @@
 				"LG"
 			],
 			"category": "Empyreal Lords",
-			"info": [],
 			"edicts": [
 				"respect elders",
 				"instill good virtues in children",
@@ -547,7 +601,6 @@
 				"CE"
 			],
 			"category": "Demon Lords",
-			"info": [],
 			"edicts": [
 				"commit acts of brutal violence",
 				"test yourself against nature",
@@ -617,7 +670,6 @@
 				"LG"
 			],
 			"category": "Dwarven Gods",
-			"info": [],
 			"edicts": [
 				"seek and destroy evil",
 				"study evil to learn the best way to destroy it",
@@ -850,9 +902,9 @@
 				],
 				"alternateDomains": [
 					"fate",
-					"soul",
-					"star",
-					"zea"
+					"souls",
+					"stars",
+					"zeal"
 				],
 				"spells": {
 					"1": [
@@ -1174,7 +1226,6 @@
 				"NE"
 			],
 			"category": "Horsemen",
-			"info": [],
 			"edicts": [
 				"end all mortal life through disease and poison",
 				"cultivate diseased animals"
@@ -1236,7 +1287,6 @@
 				"LG"
 			],
 			"category": "Other Gods",
-			"info": [],
 			"edicts": [
 				"seek and destroy evil",
 				"travel the world",
@@ -1299,7 +1349,6 @@
 				"NE"
 			],
 			"category": "Gods of the Inner Sea",
-			"info": [],
 			"edicts": [
 				"act with dignity",
 				"do whatever it takes to survive",
@@ -1374,7 +1423,6 @@
 				"LE"
 			],
 			"category": "Queens of the Night",
-			"info": [],
 			"edicts": [
 				"manipulate others with false promises",
 				"aid women who have been unfairly maligned"
@@ -1436,7 +1484,6 @@
 				"NG"
 			],
 			"category": "Empyreal Lords",
-			"info": [],
 			"edicts": [
 				"inspire passion",
 				"comfort and free the repressed",
@@ -1499,7 +1546,6 @@
 				"NG"
 			],
 			"category": "Vudrani Gods",
-			"info": [],
 			"edicts": [
 				"practice herbalism",
 				"tend to sacred flowers",
@@ -1563,7 +1609,6 @@
 				"CG"
 			],
 			"category": "Empyreal Lords",
-			"info": [],
 			"edicts": [
 				"dance even when there is no music",
 				"cast light in places of darkness",
@@ -1626,7 +1671,6 @@
 				"CN"
 			],
 			"category": "Vudrani Gods",
-			"info": [],
 			"edicts": [
 				"hinder travel",
 				"create and enforce physical and emotional boundaries",
@@ -1755,8 +1799,7 @@
 					"mace"
 				],
 				"avatar": {
-					"entry": "{@bold Asmodeus} Speed 70 feet, air walk; Melee {@as 1} mace ({@trait reach 15 feet}), Damage {@damage 6d10+6} bludgeoning; Ranged {@as 1} hellfire (range 120 feet), Damage {@damage 6d6+3} fire.",
-					"preface": ""
+					"entry": "Speed 70 feet, air walk; Melee {@as 1} mace ({@trait reach 15 feet}), Damage {@damage 6d10+6} bludgeoning; Ranged {@as 1} hellfire (range 120 feet), Damage {@damage 6d6+3} fire."
 				}
 			},
 			"intercession": {
@@ -1819,7 +1862,7 @@
 				"offer prayers to a deity"
 			],
 			"followerAlignment": [
-				"all"
+				"All"
 			],
 			"hasLore": true
 		},
@@ -1834,7 +1877,6 @@
 				"NG"
 			],
 			"category": "Elemental Lords",
-			"info": [],
 			"edicts": [
 				"burn away corruption",
 				"clear the way for new growth",
@@ -1898,7 +1940,6 @@
 				"NE"
 			],
 			"category": "Elemental Lords",
-			"info": [],
 			"edicts": [
 				"use the strength of stone to protect yourself and your secrets",
 				"obscure your true motives",
@@ -1962,7 +2003,6 @@
 				"CN"
 			],
 			"category": "Outer Gods",
-			"info": [],
 			"edicts": [
 				"gather a court of devotees",
 				"create discordant piping or babbling"
@@ -2022,7 +2062,6 @@
 				"LE"
 			],
 			"category": "Archdevils",
-			"info": [],
 			"edicts": [
 				"convey yourself with regal dignity",
 				"claim what you desire and deserve",
@@ -2083,7 +2122,6 @@
 				"CE"
 			],
 			"category": "Demon Lords",
-			"info": [],
 			"edicts": [
 				"confuse paths and roads",
 				"outwit your foes instead of overpowering them",
@@ -2146,7 +2184,6 @@
 				"LE"
 			],
 			"category": "Archdevils",
-			"info": [],
 			"edicts": [
 				"veil your motives",
 				"make dangerous deals",
@@ -2207,7 +2244,6 @@
 				"N"
 			],
 			"category": "Monitor Demigods",
-			"info": [],
 			"edicts": [
 				"aid travelers and those who return from the dead",
 				"tend to roadside graves",
@@ -2335,7 +2371,6 @@
 				"LE"
 			],
 			"category": "Archdevils",
-			"info": [],
 			"edicts": [
 				"indulge your basest desires",
 				"create deadly weapons"
@@ -2438,7 +2473,7 @@
 						"hideous laughter"
 					],
 					"3": [
-						"enthrall "
+						"enthrall"
 					]
 				},
 				"weapon": [
@@ -2457,7 +2492,6 @@
 				"NE"
 			],
 			"category": "Gods of the Inner Sea",
-			"info": [],
 			"edicts": [
 				"sail the seas",
 				"stay loyal to captain and crew",
@@ -2529,7 +2563,6 @@
 				"CG"
 			],
 			"category": "Empyreal Lords",
-			"info": [],
 			"edicts": [
 				"study the stars",
 				"notice moments of silence",
@@ -2592,7 +2625,6 @@
 				"NG"
 			],
 			"category": "Dwarven Gods",
-			"info": [],
 			"edicts": [
 				"encourage those seeking love",
 				"seek the beauty in others",
@@ -2655,7 +2687,6 @@
 				"N"
 			],
 			"category": "Gods of the Inner Sea",
-			"info": [],
 			"edicts": [
 				"craft new creations",
 				"pay attention to details",
@@ -2789,8 +2820,7 @@
 					"whip"
 				],
 				"avatar": {
-					"entry": "{@bold Calistria} Speed 30 feet, fly Speed 70 feet; Melee {@as 1} whip ({@trait disarm}, {@trait finesse}, {@trait nonlethal}, {@trait reach 20 feet}), Damage {@damage 6d4+6} slashing; Ranged {@as 1} savored sting (range 60 feet), Damage {@damage 6d6+3} poison.",
-					"preface": ""
+					"entry": "Speed 30 feet, fly Speed 70 feet; Melee {@as 1} whip ({@trait disarm}, {@trait finesse}, {@trait nonlethal}, {@trait reach 20 feet}), Damage {@damage 6d4+6} slashing; Ranged {@as 1} savored sting (range 60 feet), Damage {@damage 6d6+3} poison."
 				}
 			},
 			"intercession": {
@@ -2801,7 +2831,7 @@
 				"source": "LOGM",
 				"boon": {
 					"Minor Boon": [
-						"Calistria smiles on the riskiest deceptions. Once, when you roll a failure on a check to {@action Lie}, you get a critical success instead. Calistria typically grants this boon for an extremely consequential lie. "
+						"Calistria smiles on the riskiest deceptions. Once, when you roll a failure on a check to {@action Lie}, you get a critical success instead. Calistria typically grants this boon for an extremely consequential lie."
 					],
 					"Moderate Boon": [
 						"A foot-long wasp finds and befriends you. It serves you as a familiar as long as you maintain Calistria's grace. The wasp always has the burrower and flier familiar abilities."
@@ -2838,7 +2868,6 @@
 				"N"
 			],
 			"category": "Gods of the Inner Sea",
-			"info": [],
 			"edicts": [
 				"advance the development of artificial intelligence",
 				"encourage understanding between artificial and organic life"
@@ -2974,8 +3003,7 @@
 					"rapier"
 				],
 				"avatar": {
-					"entry": "{@bold Cayden Cailean} Speed 70 feet, air walk, ignore {@quickref difficult terrain||3|terrain} and {@quickref greater difficult terrain||3|terrain}; Melee {@as 1} rapier ({@trait deadly}, {@trait reach 15 feet}), Damage {@damage 6d6+6} piercing; Ranged {@as 1} ale splash (range 120 feet), Damage {@damage 6d6+3} poison.",
-					"preface": ""
+					"entry": "Speed 70 feet, air walk, ignore {@quickref difficult terrain||3|terrain} and {@quickref greater difficult terrain||3|terrain}; Melee {@as 1} rapier ({@trait deadly}, {@trait reach 15 feet}), Damage {@damage 6d6+6} piercing; Ranged {@as 1} ale splash (range 120 feet), Damage {@damage 6d6+3} poison."
 				}
 			},
 			"intercession": {
@@ -3023,7 +3051,6 @@
 				"CG"
 			],
 			"category": "Empyreal Lords",
-			"info": [],
 			"edicts": [
 				"protect forests and other natural areas",
 				"advocate for animals and plants",
@@ -3086,7 +3113,6 @@
 				"NG"
 			],
 			"category": "Gods of the Inner Sea",
-			"info": [],
 			"edicts": [
 				"seek out and challenge oppressors and tyrants",
 				"defend friends and the innocent",
@@ -3157,7 +3183,6 @@
 				"N"
 			],
 			"category": "Vudrani Gods",
-			"info": [],
 			"edicts": [
 				"destroy aberrant creatures and fiends",
 				"live free of social or materialistic chains",
@@ -3221,7 +3246,6 @@
 				"NE"
 			],
 			"category": "Horsemen",
-			"info": [],
 			"edicts": [
 				"end all mortal life",
 				"exploit those who fear death"
@@ -3281,7 +3305,6 @@
 				"CG"
 			],
 			"category": "Pantheon",
-			"info": [],
 			"edicts": [
 				"spend time stargazing or meditating in moonlight",
 				"aid those who live in regions where {@deity Zon-Kuthon} (or other religions that espouse the night as a bastion for evil) hold sway",
@@ -3320,7 +3343,7 @@
 					"moon"
 				],
 				"alternateDomains": [
-					"star",
+					"stars",
 					"void"
 				],
 				"spells": {
@@ -3351,7 +3374,6 @@
 				"CN"
 			],
 			"category": "Eldest",
-			"info": [],
 			"edicts": [
 				"work in shadows",
 				"hide your nature and motives",
@@ -3416,7 +3438,6 @@
 				"CE"
 			],
 			"category": "Demon Lords",
-			"info": [],
 			"edicts": [
 				"corrupt all that exists with parasites or fungus",
 				"promote the growth of fungus",
@@ -3478,7 +3499,6 @@
 				"CE"
 			],
 			"category": "Demon Lords",
-			"info": [],
 			"edicts": [
 				"swim underwater",
 				"improve your own strength",
@@ -3541,7 +3561,6 @@
 				"CE"
 			],
 			"category": "Other Gods",
-			"info": [],
 			"edicts": [
 				"kill metallic dragons",
 				"destroy things at your whim"
@@ -3601,7 +3620,6 @@
 				"N"
 			],
 			"category": "Tian Gods",
-			"info": [],
 			"edicts": [
 				"ensure the health of crops and vegetation",
 				"perfect a craft or trade",
@@ -3666,7 +3684,6 @@
 				"LG"
 			],
 			"category": "Empyreal Lords",
-			"info": [],
 			"edicts": [
 				"perform just executions",
 				"study local laws",
@@ -3794,8 +3811,7 @@
 					"starknife"
 				],
 				"avatar": {
-					"entry": "{@bold Desna} Speed 30 feet, fly Speed 70 feet; Melee {@as 1} starknife ({@trait agile}, {@trait deadly}, {@trait finesse}, {@trait reach 15 feet}, silver, {@trait thrown 60 feet}), Damage {@damage 6d4+6} piercing; Ranged {@as 1} moonbeam (range 120 feet, silver), Damage {@damage 6d6+3} fire.",
-					"preface": ""
+					"entry": "Speed 30 feet, fly Speed 70 feet; Melee {@as 1} starknife ({@trait agile}, {@trait deadly}, {@trait finesse}, {@trait reach 15 feet}, silver, {@trait thrown 60 feet}), Damage {@damage 6d4+6} piercing; Ranged {@as 1} moonbeam (range 120 feet, silver), Damage {@damage 6d6+3} fire."
 				}
 			},
 			"intercession": {
@@ -3843,7 +3859,6 @@
 				"LE"
 			],
 			"category": "Vudrani Gods",
-			"info": [],
 			"edicts": [
 				"infiltrate righteous organizations and governments",
 				"destroy trust",
@@ -3905,7 +3920,6 @@
 				"LN"
 			],
 			"category": "Vudrani Gods",
-			"info": [],
 			"edicts": [
 				"remain celibate and detached from worldly pleasures",
 				"meditate",
@@ -3968,7 +3982,6 @@
 				"LN"
 			],
 			"category": "Archdevils",
-			"info": [],
 			"edicts": [
 				"uphold absolute law",
 				"pursue perfection in your surroundings",
@@ -4031,7 +4044,6 @@
 				"LE"
 			],
 			"category": "Queens of the Night",
-			"info": [],
 			"edicts": [
 				"push the boundaries of science and suffering",
 				"torture other creatures"
@@ -4092,7 +4104,6 @@
 				"LN"
 			],
 			"category": "Dwarven Gods",
-			"info": [],
 			"edicts": [
 				"help reclaim just debts",
 				"seek appropriate vengeance against transgressions"
@@ -4154,7 +4165,6 @@
 				"NE"
 			],
 			"category": "Dwarven Gods",
-			"info": [],
 			"edicts": [
 				"achieve goals at any cost",
 				"continually improve your abilities",
@@ -4214,7 +4224,6 @@
 				"LG"
 			],
 			"category": "Pantheon",
-			"info": [],
 			"edicts": [
 				"develop skills useful to your community (especially crafting, mining, and trading)",
 				"honor your ancestors through traditions and rituals"
@@ -4282,7 +4291,6 @@
 				"LE"
 			],
 			"category": "Queens of the Night",
-			"info": [],
 			"edicts": [
 				"avenge all insults",
 				"claim what you desire and deserve",
@@ -4340,7 +4348,6 @@
 				"CG"
 			],
 			"category": "Pantheon",
-			"info": [],
 			"edicts": [
 				"learn and appreciate traditional elven arts, crafts, and magic",
 				"explore the worlds outside and within"
@@ -4467,8 +4474,7 @@
 					"longbow"
 				],
 				"avatar": {
-					"entry": "{@bold Erastil} Speed 70 feet, air walk, ignore {@quickref difficult terrain||3|terrain} and {@quickref greater difficult terrain||3|terrain}; Ranged {@as 1} longbow ({@trait deadly d8}, range increment 150 feet), Damage {@damage 6d8+3} piercing.",
-					"preface": ""
+					"entry": "Speed 70 feet, air walk, ignore {@quickref difficult terrain||3|terrain} and {@quickref greater difficult terrain||3|terrain}; Ranged {@as 1} longbow ({@trait deadly d8}, range increment 150 feet), Damage {@damage 6d8+3} piercing."
 				}
 			},
 			"intercession": {
@@ -4516,7 +4522,6 @@
 				"LN"
 			],
 			"category": "Other Gods",
-			"info": [],
 			"edicts": [
 				"manipulate dangerous beings and opportunities to your benefit",
 				"thrive in hostile conditions",
@@ -4579,7 +4584,6 @@
 				"NG"
 			],
 			"category": "Empyreal Lords",
-			"info": [],
 			"edicts": [
 				"spread truth",
 				"debate contentious issues",
@@ -4640,7 +4644,6 @@
 				"LN"
 			],
 			"category": "Philosophy",
-			"info": [],
 			"edicts": [
 				"seek out wisdom of ancient cultures (particularly Ancient Osirion)",
 				"provide succor to scholars",
@@ -4681,7 +4684,6 @@
 				"LG"
 			],
 			"category": "Empyreal Lords",
-			"info": [],
 			"edicts": [
 				"wear and make beautiful things",
 				"train for combat",
@@ -4745,7 +4747,6 @@
 				"CG"
 			],
 			"category": "Elven Gods",
-			"info": [],
 			"edicts": [
 				"preserve elven art and architecture",
 				"bless and secure households",
@@ -4808,7 +4809,6 @@
 				"LG"
 			],
 			"category": "Dwarven Gods",
-			"info": [],
 			"edicts": [
 				"maintain the sanctity of a home",
 				"remain patient with others",
@@ -4870,7 +4870,6 @@
 				"NE"
 			],
 			"category": "Tian Gods",
-			"info": [],
 			"edicts": [
 				"punish those who have good fortune they don't deserve",
 				"devour the pleasures of the living",
@@ -4933,7 +4932,6 @@
 				"CN"
 			],
 			"category": "Other Gods",
-			"info": [],
 			"edicts": [
 				"preserve primal areas",
 				"destroy blighted fey and agents of CythV'sug",
@@ -4997,7 +4995,6 @@
 				"LE"
 			],
 			"category": "Tian Gods",
-			"info": [],
 			"edicts": [
 				"seek glory in battle",
 				"loudly proclaim your victories",
@@ -5060,7 +5057,6 @@
 				"LE"
 			],
 			"category": "Archdevils",
-			"info": [],
 			"edicts": [
 				"hoard knowledge",
 				"test the boundaries of taboo",
@@ -5121,7 +5117,6 @@
 				"CE"
 			],
 			"category": "Gods of the Inner Sea",
-			"info": [],
 			"edicts": [
 				"corrupt pieces of land, water sources, and communities",
 				"infect the weak",
@@ -5184,7 +5179,6 @@
 			"source": "LOGM",
 			"page": 95,
 			"category": "Philosophy",
-			"info": [],
 			"edicts": [
 				"The gods of Sarkoris have very few shared edicts, but several are often prominently shared amongst them: protect your clan and your people, educate the clan's children's in the traditions and histories of the clan's god, and carefully record the name and image of each new god when they first appear so that they are not forgotten and can continue to watch over the people."
 			],
@@ -5333,8 +5327,7 @@
 					"greatsword"
 				],
 				"avatar": {
-					"entry": "{@bold Gorum} Speed 70 feet, immune to {@condition immobilized}; Melee {@as 1} greatsword ({@trait versatile P}, {@trait reach 15 feet}), Damage {@damage 6d12+6} slashing.",
-					"preface": ""
+					"entry": "Speed 70 feet, immune to {@condition immobilized}; Melee {@as 1} greatsword ({@trait versatile P}, {@trait reach 15 feet}), Damage {@damage 6d12+6} slashing."
 				}
 			},
 			"intercession": {
@@ -5446,8 +5439,7 @@
 					"trident"
 				],
 				"avatar": {
-					"entry": "{@b Gozreh} no land Speed, fly Speed 70 feet, swim Speed 70 feet; ignore {@quickref difficult terrain||3|terrain} and {@quickref greater difficult terrain||3|terrain}; Melee {@as 1} waves ({@trait shove}, {@trait reach 15 feet}, thrown 20 feet), Damage {@damage 6d8+6} bludgeoning; Ranged {@as 1} wind ({@trait versatile electricity}, range 120 feet}), Damage {@damage 6d6+3} bludgeoning.",
-					"preface": ""
+					"entry": "{@b Gozreh} no land Speed, fly Speed 70 feet, swim Speed 70 feet; ignore {@quickref difficult terrain||3|terrain} and {@quickref greater difficult terrain||3|terrain}; Melee {@as 1} waves ({@trait shove}, {@trait reach 15 feet}, thrown 20 feet), Damage {@damage 6d8+6} bludgeoning; Ranged {@as 1} wind ({@trait versatile electricity}, range 120 feet}), Damage {@damage 6d6+3} bludgeoning."
 				}
 			},
 			"intercession": {
@@ -5501,7 +5493,6 @@
 				"N"
 			],
 			"category": "Gods of the Inner Sea",
-			"info": [],
 			"edicts": [
 				"be skilled and clever",
 				"think for yourself",
@@ -5631,7 +5622,6 @@
 				"CN"
 			],
 			"category": "Gods of the Inner Sea",
-			"info": [],
 			"edicts": [
 				"preach of the upcoming end times",
 				"destroy that which has outlived its usefulness",
@@ -5703,7 +5693,6 @@
 				"CN"
 			],
 			"category": "Gods of the Inner Sea",
-			"info": [],
 			"edicts": [
 				"work toward collective transcendence",
 				"expose and root out malicious lies",
@@ -5780,7 +5769,6 @@
 				"LG"
 			],
 			"category": "Dwarven Gods",
-			"info": [],
 			"edicts": [
 				"attempt to bridge the gap between feuding sides",
 				"maintain just treaties",
@@ -5841,7 +5829,6 @@
 				"CE"
 			],
 			"category": "Other Gods",
-			"info": [],
 			"edicts": [
 				"expose hypocrisy (real or imagined) in others",
 				"make other creatures miserable",
@@ -5903,7 +5890,6 @@
 				"NG"
 			],
 			"category": "Empyreal Lords",
-			"info": [],
 			"edicts": [
 				"cultivate gardens",
 				"share wine",
@@ -5967,7 +5953,6 @@
 				"CN"
 			],
 			"category": "Other Gods",
-			"info": [],
 			"edicts": [
 				"learn how to live off the river",
 				"guard river travelers from unnatural hazards",
@@ -6030,7 +6015,6 @@
 				"CE"
 			],
 			"category": "Great Old Ones",
-			"info": [],
 			"edicts": [
 				"spread Hastur's Yellow Sign",
 				"hide the true nature of your worship",
@@ -6153,7 +6137,6 @@
 				"CN"
 			],
 			"category": "Gods of the Inner Sea",
-			"info": [],
 			"edicts": [
 				"follow your passions",
 				"make token attempts to apologize to those you have wronged",
@@ -6236,15 +6219,15 @@
 				"NG",
 				"N"
 			],
+			"edicts": [
+				"Protect those you have authority over",
+				"maintain harmony in your community"
+			],
+			"anathema": [
+				"Undermine a rightful ruler",
+				"serve a usurper"
+			],
 			"devoteeBenefits": {
-				"edicts": [
-					"Protect those you have authority over",
-					"maintain harmony in your community"
-				],
-				"anathema": [
-					"Undermine a rightful ruler",
-					"serve a usurper"
-				],
 				"font": [
 					"heal"
 				],
@@ -6291,7 +6274,6 @@
 				"NE"
 			],
 			"category": "Elemental Lords",
-			"info": [],
 			"edicts": [
 				"revel in formlessness and freedom",
 				"humiliate terrestrial creatures",
@@ -6355,7 +6337,6 @@
 				"LN"
 			],
 			"category": "Eldest",
-			"info": [],
 			"edicts": [
 				"pursue your own goals",
 				"bring things to their proper ending",
@@ -6418,7 +6399,6 @@
 				"N"
 			],
 			"category": "Monitor Demigods",
-			"info": [],
 			"edicts": [
 				"search for omens in the natural world",
 				"push the boundaries of mathematics",
@@ -6542,8 +6522,7 @@
 					"longsword"
 				],
 				"avatar": {
-					"entry": "{@bold Iomedae} Speed 70 feet, air walk; shield (15 Hardness, can't be damaged); Melee {@as 1} longsword ({@trait versatile P}, {@trait reach 15 feet}), Damage {@damage 6d8+6} slashing.",
-					"preface": ""
+					"entry": "Speed 70 feet, air walk; shield (15 Hardness, can't be damaged); Melee {@as 1} longsword ({@trait versatile P}, {@trait reach 15 feet}), Damage {@damage 6d8+6} slashing."
 				}
 			},
 			"intercession": {
@@ -6591,7 +6570,6 @@
 				"NG"
 			],
 			"category": "Empyreal Lords",
-			"info": [],
 			"edicts": [
 				"read fortunes",
 				"practice calligraphy",
@@ -6721,8 +6699,7 @@
 					"fist"
 				],
 				"avatar": {
-					"entry": "{@bold Irori} Speed 80 feet, air walk; Melee {@as 1} unfettered strike ({@trait agile}, {@trait versatile P or S}, {@trait finesse}, {@trait reach 15 feet}), Damage {@damage 6d8+6} bludgeoning; Ranged {@as 1} wind strike (range 60 feet}), Damage {@damage 6d4+6} bludgeoning.",
-					"preface": ""
+					"entry": "Speed 80 feet, air walk; Melee {@as 1} unfettered strike ({@trait agile}, {@trait versatile P or S}, {@trait finesse}, {@trait reach 15 feet}), Damage {@damage 6d8+6} bludgeoning; Ranged {@as 1} wind strike (range 60 feet}), Damage {@damage 6d4+6} bludgeoning."
 				}
 			},
 			"intercession": {
@@ -6801,7 +6778,7 @@
 					"Arcana"
 				],
 				"domains": [
-					"Family",
+					"family",
 					"healing",
 					"magic",
 					"passion"
@@ -6851,7 +6828,6 @@
 				"NG"
 			],
 			"category": "Other Gods",
-			"info": [],
 			"edicts": [
 				"encourage hard work that benefits all",
 				"ensure the health of crops and vegetation"
@@ -6913,7 +6889,6 @@
 				"NG"
 			],
 			"category": "Empyreal Lords",
-			"info": [],
 			"edicts": [
 				"forgive cowards and offer them guidance",
 				"encourage others to test their mettle",
@@ -6976,7 +6951,6 @@
 				"CE"
 			],
 			"category": "Demon Lords",
-			"info": [],
 			"edicts": [
 				"eat the flesh of your own kind"
 			],
@@ -7037,7 +7011,6 @@
 				"NG"
 			],
 			"category": "Gods of the Inner Sea",
-			"info": [],
 			"edicts": [
 				"defend your people",
 				"provide for those who need you",
@@ -7113,7 +7086,6 @@
 				"NE"
 			],
 			"category": "Elemental Lords",
-			"info": [],
 			"edicts": [
 				"instill hydrophobia in others",
 				"kill your foes by drowning them",
@@ -7177,7 +7149,6 @@
 				"LN"
 			],
 			"category": "Monitor Demigods",
-			"info": [],
 			"edicts": [
 				"clean cluttered spaces",
 				"embrace moments of silence"
@@ -7239,7 +7210,6 @@
 				"CG"
 			],
 			"category": "Elven Gods",
-			"info": [],
 			"edicts": [
 				"hunt and kill demons and undead",
 				"maintain the health of the forest",
@@ -7330,7 +7300,7 @@
 				"domains": [
 					"destruction",
 					"indulgence",
-					"nightmare",
+					"nightmares",
 					"swarm"
 				],
 				"spells": {
@@ -7361,7 +7331,6 @@
 				"CG"
 			],
 			"category": "Tian Gods",
-			"info": [],
 			"edicts": [
 				"support local businesses",
 				"bring prosperity to your community",
@@ -7422,7 +7391,6 @@
 				"LN"
 			],
 			"category": "Dwarven Gods",
-			"info": [],
 			"edicts": [
 				"seek those that break oaths and enforce just restitution",
 				"uphold your promises"
@@ -7485,7 +7453,6 @@
 				"NG"
 			],
 			"category": "Empyreal Lords",
-			"info": [],
 			"edicts": [
 				"forgive those who have wronged you",
 				"embrace a peaceful mindset",
@@ -7548,7 +7515,6 @@
 				"CE"
 			],
 			"category": "Demon Lords",
-			"info": [],
 			"edicts": [
 				"avenge all slights three times over",
 				"kill all witches"
@@ -7608,7 +7574,6 @@
 				"NG"
 			],
 			"category": "Gods of the Inner Sea",
-			"info": [],
 			"edicts": [
 				"compete to your full potential",
 				"claim victory or accept defeat with grace",
@@ -7681,7 +7646,6 @@
 				"NG"
 			],
 			"category": "Tian Gods",
-			"info": [],
 			"edicts": [
 				"create art with words",
 				"master the written language",
@@ -7743,7 +7707,6 @@
 				"CE"
 			],
 			"category": "Tian Gods",
-			"info": [],
 			"edicts": [
 				"revel in destruction",
 				"make natural disasters worse",
@@ -7803,7 +7766,6 @@
 				"CE"
 			],
 			"category": "Vudrani Gods",
-			"info": [],
 			"edicts": [
 				"steal luxuries for yourself",
 				"destroy property for fun",
@@ -7926,8 +7888,7 @@
 					"falchion"
 				],
 				"avatar": {
-					"entry": "{@bold Lamashtu} Speed 30 feet, fly Speed 70 feet; Melee {@as 1} falchion (forceful, {@trait reach 15 feet}), Damage {@damage 6d10+6} slashing; Ranged {@as 1} waters of Lamashtu (range 120 feet), Damage {@damage 6d6+3} poison.",
-					"preface": ""
+					"entry": "Speed 30 feet, fly Speed 70 feet; Melee {@as 1} falchion (forceful, {@trait reach 15 feet}), Damage {@damage 6d10+6} slashing; Ranged {@as 1} waters of Lamashtu (range 120 feet), Damage {@damage 6d6+3} poison."
 				}
 			},
 			"intercession": {
@@ -7975,7 +7936,6 @@
 				"NE"
 			],
 			"category": "Tian Gods",
-			"info": [],
 			"edicts": [
 				"work quietly toward your goals in the shadows",
 				"steal what you need",
@@ -8035,7 +7995,6 @@
 				"LN"
 			],
 			"category": "Philosophy",
-			"info": [],
 			"edicts": [
 				"challenge religious power and the spread of religion",
 				"expose and eradicate hidden worship",
@@ -8079,7 +8038,6 @@
 				"N"
 			],
 			"category": "Vudrani Gods",
-			"info": [],
 			"edicts": [
 				"tell history to others",
 				"sponsor or perform in plays and recitals",
@@ -8143,7 +8101,6 @@
 				"LE"
 			],
 			"category": "Other Gods",
-			"info": [],
 			"edicts": [
 				"work hard and demand others do so as well",
 				"cooperate or avoid conflict with ophidian creatures"
@@ -8204,7 +8161,6 @@
 				"LG"
 			],
 			"category": "Empyreal Lords",
-			"info": [],
 			"edicts": [
 				"help others achieve their desires",
 				"aid and protect sex workers",
@@ -8266,7 +8222,6 @@
 				"NG"
 			],
 			"category": "Elemental Lords",
-			"info": [],
 			"edicts": [
 				"respect and aid natural cycles",
 				"promote life and growth",
@@ -8394,7 +8349,6 @@
 				"LN"
 			],
 			"category": "Eldest",
-			"info": [],
 			"edicts": [
 				"use divination"
 			],
@@ -8455,7 +8409,6 @@
 				"LN"
 			],
 			"category": "Dwarven Gods",
-			"info": [],
 			"edicts": [
 				"perfect a craft or trade",
 				"carve runes",
@@ -8520,7 +8473,6 @@
 				"LE"
 			],
 			"category": "Queens of the Night",
-			"info": [],
 			"edicts": [
 				"become an arbiter of reality",
 				"reject conventional wisdom as falsehood",
@@ -8582,7 +8534,6 @@
 				"LE"
 			],
 			"category": "Archdevils",
-			"info": [],
 			"edicts": [
 				"gain financial control over others",
 				"gather new wealth",
@@ -8610,7 +8561,7 @@
 					"Thievery"
 				],
 				"domains": [
-					"Ambition",
+					"ambition",
 					"creation",
 					"toil",
 					"wealth"
@@ -8643,7 +8594,6 @@
 				"LN"
 			],
 			"category": "Vudrani Gods",
-			"info": [],
 			"edicts": [
 				"aid the persecuted",
 				"accommodate and facilitate others",
@@ -8707,7 +8657,6 @@
 				"LE"
 			],
 			"category": "Archdevils",
-			"info": [],
 			"edicts": [
 				"master laws and use them to your benefit",
 				"enable the desperate",
@@ -8768,7 +8717,6 @@
 				"CG"
 			],
 			"category": "Gods of the Inner Sea",
-			"info": [],
 			"edicts": [
 				"confront oppression in all its forms",
 				"defend the common folk",
@@ -8839,7 +8787,6 @@
 				"LE"
 			],
 			"category": "Archdevils",
-			"info": [],
 			"edicts": [
 				"spread Hell's order through war",
 				"convert communities to sole worship of Moloch",
@@ -8901,7 +8848,6 @@
 				"N"
 			],
 			"category": "Monitor Demigods",
-			"info": [],
 			"edicts": [
 				"ensure balance between opposing forces",
 				"mediate disagreements"
@@ -8962,7 +8908,6 @@
 				"N"
 			],
 			"category": "Monitor Demigods",
-			"info": [],
 			"edicts": [
 				"recycle rot and waste into useful creations",
 				"eat the flesh of your own people",
@@ -9028,7 +8973,6 @@
 				"N"
 			],
 			"category": "Other Gods",
-			"info": [],
 			"edicts": [
 				"comfort and encourage lovers",
 				"help the suffering escape their circumstances in life or in death"
@@ -9090,7 +9034,6 @@
 				"N"
 			],
 			"category": "Tian Gods",
-			"info": [],
 			"edicts": [
 				"seek out magic and use it",
 				"use poison",
@@ -9177,7 +9120,6 @@
 				"N"
 			],
 			"category": "Monitor Demigods",
-			"info": [],
 			"edicts": [
 				"help others through painful changes",
 				"offer harsh punishments to the penitent",
@@ -9239,7 +9181,6 @@
 				"CN"
 			],
 			"category": "Monitor Demigods",
-			"info": [],
 			"edicts": [
 				"divine the future",
 				"transform the bodies of willing creatures",
@@ -9381,8 +9322,7 @@
 					"staff"
 				],
 				"avatar": {
-					"entry": "{@bold Nethys} Speed 70 feet, air walk; Ranged {@as 1} raw magic (range 120 feet; {@trait versatile cold, electricity, or fire}), Damage {@damage 6d6} force.",
-					"preface": ""
+					"entry": "Speed 70 feet, air walk; Ranged {@as 1} raw magic (range 120 feet; {@trait versatile cold, electricity, or fire}), Damage {@damage 6d6} force."
 				}
 			},
 			"intercession": {
@@ -9430,7 +9370,6 @@
 				"CE"
 			],
 			"category": "Outer Gods",
-			"info": [],
 			"edicts": [
 				"create undead",
 				"feast upon carnivores that have recently feasted upon others"
@@ -9489,7 +9428,6 @@
 				"N"
 			],
 			"category": "Gods of the Inner Sea",
-			"info": [],
 			"edicts": [
 				"take risks and savor the consequences whether good or ill",
 				"use stealth and guile over violence when dealing with the fallout from your risk-taking",
@@ -9565,7 +9503,6 @@
 				"CN"
 			],
 			"category": "Gods of the Inner Sea",
-			"info": [],
 			"edicts": [
 				"create art true to yourself",
 				"protect marginalized artists",
@@ -9700,8 +9637,7 @@
 					"shortsword"
 				],
 				"avatar": {
-					"entry": "{@bold Norgorber} Speed 70 feet, air walk, ignore {@quickref difficult terrain||3|terrain} and {@quickref greater difficult terrain||3|terrain}; Melee {@as 1} shortsword ({@trait agile}, {@trait finesse}, {@trait versatile S}, {@trait reach 15 feet}), Damage {@damage 6d6+6} piercing; Ranged {@as 1} blackfinger toss (range 120 feet), Damage {@damage 6d6+3} poison.",
-					"preface": ""
+					"entry": "Speed 70 feet, air walk, ignore {@quickref difficult terrain||3|terrain} and {@quickref greater difficult terrain||3|terrain}; Melee {@as 1} shortsword ({@trait agile}, {@trait finesse}, {@trait versatile S}, {@trait reach 15 feet}), Damage {@damage 6d6+6} piercing; Ranged {@as 1} blackfinger toss (range 120 feet), Damage {@damage 6d6+3} poison."
 				}
 			},
 			"intercession": {
@@ -9749,7 +9685,6 @@
 				"CE"
 			],
 			"category": "Demon Lords",
-			"info": [],
 			"edicts": [
 				"wage war in the desert",
 				"deny water to your foes"
@@ -9810,7 +9745,6 @@
 				"CE"
 			],
 			"category": "Outer Gods",
-			"info": [],
 			"edicts": [
 				"sow discord among allies",
 				"misuse positions of authority by steering events toward apocalyptic ends"
@@ -9917,7 +9851,7 @@
 					"Nature"
 				],
 				"domains": [
-					"Change",
+					"change",
 					"healing",
 					"nature",
 					"souls"
@@ -9949,7 +9883,6 @@
 				"LN"
 			],
 			"category": "Monitor Demigods",
-			"info": [],
 			"edicts": [
 				"relentlessly document and interpret data",
 				"correct cosmic errors"
@@ -10011,7 +9944,6 @@
 				"CE"
 			],
 			"category": "Demon Lords",
-			"info": [],
 			"edicts": [
 				"tempt others to immoral acts",
 				"revel in flight",
@@ -10137,8 +10069,7 @@
 					"dagger"
 				],
 				"avatar": {
-					"entry": "{@bold Pharasma} Speed 70 feet, air walk; Melee {@as 1} dagger ({@trait agile}, {@trait finesse}, {@trait reach 15 feet}, thrown 40 feet), Damage {@damage 6d6+6} slashing; Ranged {@as 1} spiral blast (range 120 feet, damages only undead), Damage {@damage 6d8+3} positive.",
-					"preface": ""
+					"entry": "Speed 70 feet, air walk; Melee {@as 1} dagger ({@trait agile}, {@trait finesse}, {@trait reach 15 feet}, thrown 40 feet), Damage {@damage 6d6+6} slashing; Ranged {@as 1} spiral blast (range 120 feet, damages only undead), Damage {@damage 6d8+3} positive."
 				}
 			},
 			"intercession": {
@@ -10233,7 +10164,6 @@
 				"CG"
 			],
 			"category": "Empyreal Lords",
-			"info": [],
 			"edicts": [
 				"aid travelers",
 				"comfort the lonely",
@@ -10296,7 +10226,6 @@
 				"NG"
 			],
 			"category": "Tian Gods",
-			"info": [],
 			"edicts": [
 				"teach knowledge to others",
 				"relieve suffering despite personal difficulty",
@@ -10421,7 +10350,6 @@
 				"LG"
 			],
 			"category": "Empyreal Lords",
-			"info": [],
 			"edicts": [
 				"avenge the wronged",
 				"destroy evildoers",
@@ -10484,7 +10412,6 @@
 				"N"
 			],
 			"category": "Vudrani Gods",
-			"info": [],
 			"edicts": [
 				"seek enlightenment through worldly experience",
 				"create humor in life",
@@ -10519,7 +10446,7 @@
 					"air",
 					"confidence",
 					"might",
-					"prefection"
+					"perfection"
 				],
 				"spells": {
 					"1": [
@@ -10548,7 +10475,6 @@
 				"NG"
 			],
 			"category": "Elemental Lords",
-			"info": [],
 			"edicts": [
 				"open closed areas to fresh air",
 				"travel throughout your surroundings daily",
@@ -10613,7 +10539,6 @@
 				"NE"
 			],
 			"category": "Vudrani Gods",
-			"info": [],
 			"edicts": [
 				"improve yourself with music and literature",
 				"take what you want",
@@ -10738,8 +10663,7 @@
 					"greataxe"
 				],
 				"avatar": {
-					"entry": "{@bold Rovagug} Speed 50 feet, burrow Speed 30 feet, immune to {@condition immobilized}; Melee {@as 1} jaws ({@trait reach 15 feet}), Damage {@damage 6d12+6} piercing; Melee {@as 1} leg ({@trait agile}, {@trait versatile P}, {@trait reach 15 feet}), Damage {@damage 6d8+6} bludgeoning.",
-					"preface": ""
+					"entry": "Speed 50 feet, burrow Speed 30 feet, immune to {@condition immobilized}; Melee {@as 1} jaws ({@trait reach 15 feet}), Damage {@damage 6d12+6} piercing; Melee {@as 1} leg ({@trait agile}, {@trait versatile P}, {@trait reach 15 feet}), Damage {@damage 6d8+6} bludgeoning."
 				}
 			},
 			"intercession": {
@@ -10787,7 +10711,6 @@
 				"NG"
 			],
 			"category": "Elemental Lords",
-			"info": [],
 			"edicts": [
 				"open closed areas to fresh air",
 				"travel throughout your surroundings daily",
@@ -10852,7 +10775,6 @@
 				"N"
 			],
 			"category": "Monitor Demigods",
-			"info": [],
 			"edicts": [
 				"help creatures grow and find purpose",
 				"offer second chances to failures",
@@ -10912,7 +10834,6 @@
 				"N"
 			],
 			"category": "Philosophy",
-			"info": [],
 			"edicts": [
 				"live selflessly",
 				"heed the wisdom of the learned, the wise, and those in stations of authority"
@@ -11017,8 +10938,7 @@
 					"scimitar"
 				],
 				"avatar": {
-					"entry": "{@bold Sarenrae} Speed 30 feet, fly Speed 70 feet; Melee {@as 1} scimitar (forceful, {@trait nonlethal}, {@trait reach 15 feet}), Damage {@damage 6d6+6} slashing; Ranged {@as 1} everflame ({@trait nonlethal}, range 120 feet), Damage {@damage 6d6+3} fire.",
-					"preface": ""
+					"entry": "Speed 30 feet, fly Speed 70 feet; Melee {@as 1} scimitar (forceful, {@trait nonlethal}, {@trait reach 15 feet}), Damage {@damage 6d6+6} slashing; Ranged {@as 1} everflame ({@trait nonlethal}, range 120 feet), Damage {@damage 6d6+3} fire."
 				}
 			},
 			"intercession": {
@@ -11088,13 +11008,16 @@
 				],
 				"ability": {
 					"entry": "Strength or Wisdom",
-					"abilities": []
+					"abilities": [
+						"Str",
+						"Wis"
+					]
 				},
 				"skill": [
 					"Medicine"
 				],
 				"domains": [
-					"Destruction",
+					"destruction",
 					"healing",
 					"indulgence",
 					"might"
@@ -11148,7 +11071,10 @@
 				],
 				"ability": {
 					"entry": "Dexterity or Wisdom",
-					"abilities": []
+					"abilities": [
+						"Dex",
+						"Wis"
+					]
 				},
 				"skill": [
 					"Medicine"
@@ -11186,7 +11112,6 @@
 				"CE"
 			],
 			"category": "Demon Lords",
-			"info": [],
 			"edicts": [
 				"plot and commit murders",
 				"tell lies",
@@ -11248,7 +11173,6 @@
 				"NG"
 			],
 			"category": "Empyreal Lords",
-			"info": [],
 			"edicts": [
 				"empower local communities",
 				"learn from elders",
@@ -11374,8 +11298,7 @@
 					"glaive"
 				],
 				"avatar": {
-					"entry": "{@bold Shelyn} Speed 70 feet, air walk, ignore {@quickref difficult terrain||3|terrain} and {@quickref greater difficult terrain||3|terrain}; Melee {@as 1} glaive ({@trait deadly d8}, {@trait nonlethal}, {@trait reach 20 feet}), Damage {@damage 6d8+6} slashing; Ranged {@as 1} melody of inner beauty, ({@trait nonlethal}, range 120 feet), Damage {@damage 6d6+3} sonic.",
-					"preface": ""
+					"entry": "Speed 70 feet, air walk, ignore {@quickref difficult terrain||3|terrain} and {@quickref greater difficult terrain||3|terrain}; Melee {@as 1} glaive ({@trait deadly d8}, {@trait nonlethal}, {@trait reach 20 feet}), Damage {@damage 6d8+6} slashing; Ranged {@as 1} melody of inner beauty, ({@trait nonlethal}, range 120 feet), Damage {@damage 6d6+3} sonic."
 				}
 			},
 			"intercession": {
@@ -11423,7 +11346,6 @@
 				"LG"
 			],
 			"category": "Gods of the Inner Sea",
-			"info": [],
 			"edicts": [
 				"practice with a weapon every day",
 				"honor your ancestors",
@@ -11508,7 +11430,6 @@
 				"CE"
 			],
 			"category": "Demon Lords",
-			"info": [],
 			"edicts": [
 				"spread doubt among the faithful",
 				"ruin the reputation of religions",
@@ -11570,7 +11491,6 @@
 				"CN"
 			],
 			"category": "Gods of the Inner Sea",
-			"info": [],
 			"edicts": [
 				"show the beauty in illusions",
 				"pursue the nature of truth",
@@ -11679,7 +11599,7 @@
 					"Athletics"
 				],
 				"domains": [
-					"Might",
+					"might",
 					"protection",
 					"water",
 					"wyrmkin"
@@ -11711,7 +11631,6 @@
 				"NG"
 			],
 			"category": "Empyreal Lords",
-			"info": [],
 			"edicts": [
 				"study monuments",
 				"craft golems and artwork from stone",
@@ -11776,7 +11695,6 @@
 				"N"
 			],
 			"category": "Sarkorian Gods",
-			"info": [],
 			"edicts": [
 				"provide shelter and succor for women and children in need",
 				"act as a responsible steward of your environment"
@@ -11841,7 +11759,6 @@
 				"LG"
 			],
 			"category": "Sarkorian Gods",
-			"info": [],
 			"edicts": [
 				"act with conviction and confidence",
 				"be a passionate and responsible leader to your people or companions"
@@ -11901,7 +11818,6 @@
 				"CN"
 			],
 			"category": "Tian Gods",
-			"info": [],
 			"edicts": [
 				"live life freely",
 				"drink",
@@ -11964,7 +11880,6 @@
 				"NE"
 			],
 			"category": "Horsemen",
-			"info": [],
 			"edicts": [
 				"end all mortal life through war",
 				"obliterate faith"
@@ -12026,7 +11941,6 @@
 				"LG"
 			],
 			"category": "Empyreal Lords",
-			"info": [],
 			"edicts": [
 				"defend lawful borders",
 				"scout or patrol for evil",
@@ -12088,7 +12002,6 @@
 				"CE"
 			],
 			"category": "Other Gods",
-			"info": [],
 			"edicts": [
 				"seize any opportunity that would benefit you",
 				"solve your problems with violence",
@@ -12146,7 +12059,6 @@
 				"LN"
 			],
 			"category": "Pantheon",
-			"info": [],
 			"edicts": [
 				"eliminate chaos at its root",
 				"be an exemplar of order (worthy of not one, but five)",
@@ -12276,7 +12188,6 @@
 				"CN"
 			],
 			"category": "Eldest",
-			"info": [],
 			"edicts": [
 				"play pranks",
 				"seek new jokes",
@@ -12339,7 +12250,6 @@
 				"N"
 			],
 			"category": "Eldest",
-			"info": [],
 			"edicts": [
 				"aid the depressed",
 				"wear somber clothing",
@@ -12527,8 +12437,23 @@
 					"warhammer"
 				],
 				"avatar": {
-					"entry": "{@bold Torag} Speed 50 feet, burrow Speed 30 feet, immune to {@condition immobilized}; shield (15 Hardness, can't be damaged); Melee {@as 1} warhammer ({@trait shove}, {@trait reach 15 feet}), Damage {@damage 6d8+6} bludgeoning.",
-					"preface": ""
+					"speed": {
+						"walk": 50,
+						"burrow": 30
+					},
+					"immune": [
+						"immobilized"
+					],
+					"shield": 15,
+					"melee": {
+						"name": "warhammer",
+						"traits": [
+							"shove",
+							"reach 15 feet"
+						],
+						"damage": "6d8+6",
+						"damageType": "bludgeoning"
+					}
 				}
 			},
 			"intercession": {
@@ -12647,7 +12572,6 @@
 				"NE"
 			],
 			"category": "Horsemen",
-			"info": [],
 			"edicts": [
 				"end all mortal life through wasting consumption and starvation",
 				"violently consume matter and souls"
@@ -12709,7 +12633,6 @@
 				"NG"
 			],
 			"category": "Dwarven Gods",
-			"info": [],
 			"edicts": [
 				"offer your strength to aid others",
 				"protect those weaker than you"
@@ -12769,7 +12692,6 @@
 				"LG"
 			],
 			"category": "Gods of the Inner Sea",
-			"info": [],
 			"edicts": [
 				"provide aid and counsel without judgment to those who seek help",
 				"help the dead find their rest",
@@ -12909,8 +12831,7 @@
 					"scythe"
 				],
 				"avatar": {
-					"entry": "{@bold Urgathoa} Speed 70 feet, air walk; Melee {@as 1} scythe ({@trait deadly d10}, {@trait trip}, {@trait reach 15 feet}), Damage {@damage 6d10+6} slashing; Ranged {@as 1} pallid plague (range 120 feet), Damage {@damage 6d6+3} negative.",
-					"preface": ""
+					"entry": "Speed 70 feet, air walk; Melee {@as 1} scythe ({@trait deadly d10}, {@trait trip}, {@trait reach 15 feet}), Damage {@damage 6d10+6} slashing; Ranged {@as 1} pallid plague (range 120 feet), Damage {@damage 6d6+3} negative."
 				}
 			},
 			"intercession": {
@@ -12958,7 +12879,6 @@
 				"LN"
 			],
 			"category": "Monitor Demigods",
-			"info": [],
 			"edicts": [
 				"complicate magical techniques",
 				"refine arcane fundamentals",
@@ -13021,7 +12941,6 @@
 				"LG"
 			],
 			"category": "Empyreal Lords",
-			"info": [],
 			"edicts": [
 				"sacrifice yourself in pursuit of good",
 				"champion noble causes",
@@ -13248,7 +13167,6 @@
 				"LG"
 			],
 			"category": "Empyreal Lords",
-			"info": [],
 			"edicts": [
 				"serve leaders of ceremonies",
 				"craft ceremonial arms and armor",
@@ -13311,7 +13229,6 @@
 				"NE"
 			],
 			"category": "Great Old Ones",
-			"info": [],
 			"edicts": [
 				"spread fungal growths",
 				"subtly infect others with knowledge of Xhamen-Dor"
@@ -13371,7 +13288,6 @@
 				"LE"
 			],
 			"category": "Tian Gods",
-			"info": [],
 			"edicts": [
 				"commit assassinations for hire",
 				"strike unseen",
@@ -13433,7 +13349,6 @@
 				"N"
 			],
 			"category": "Tian Gods",
-			"info": [],
 			"edicts": [
 				"strive to be self-sufficient",
 				"respect nature",
@@ -13497,7 +13412,6 @@
 				"CN"
 			],
 			"category": "Monitor Demigods",
-			"info": [],
 			"edicts": [
 				"create using words",
 				"chronicle languages and prevent them from dying",
@@ -13628,7 +13542,6 @@
 				"NG"
 			],
 			"category": "Empyreal Lords",
-			"info": [],
 			"edicts": [
 				"teach sustainable fishing",
 				"swim in saltwater",
@@ -13694,7 +13607,6 @@
 				"NE"
 			],
 			"category": "Elemental Lords",
-			"info": [],
 			"edicts": [
 				"inspire your lessers with zeal and strategy",
 				"be passionate and quick of wit",
@@ -13758,7 +13670,6 @@
 				"CN"
 			],
 			"category": "Outer Gods",
-			"info": [],
 			"edicts": [
 				"gather knowledge of gates through space and time",
 				"curse or mutate unborn children"
@@ -13818,7 +13729,6 @@
 				"NG"
 			],
 			"category": "Elven Gods",
-			"info": [],
 			"edicts": [
 				"practice herbalism",
 				"use and enchant gems",
@@ -13972,7 +13882,6 @@
 				"LG"
 			],
 			"category": "Empyreal Lords",
-			"info": [],
 			"edicts": [
 				"solve logic puzzles",
 				"investigate crimes",
@@ -14096,8 +14005,7 @@
 					"spiked chain"
 				],
 				"avatar": {
-					"entry": "{@bold Zon-Kuthon} Speed 70 feet, air walk, ignore {@quickref difficult terrain||3|terrain} and {@quickref greater difficult terrain||3|terrain}; Melee {@as 1} spiked chain ({@trait disarm}, {@trait trip}, {@trait reach 15 feet}), Damage {@damage 6d8+6} slashing; Ranged {@as 1} midnight pain (mental, {@trait nonlethal}, range 120 feet), Damage {@damage 6d6+3} mental.",
-					"preface": ""
+					"entry": "Speed 70 feet, air walk, ignore {@quickref difficult terrain||3|terrain} and {@quickref greater difficult terrain||3|terrain}; Melee {@as 1} spiked chain ({@trait disarm}, {@trait trip}, {@trait reach 15 feet}), Damage {@damage 6d8+6} slashing; Ranged {@as 1} midnight pain (mental, {@trait nonlethal}, range 120 feet), Damage {@damage 6d6+3} mental."
 				}
 			},
 			"intercession": {
@@ -14145,7 +14053,6 @@
 				"CE"
 			],
 			"category": "Demon Lords",
-			"info": [],
 			"edicts": [
 				"drink blood",
 				"seek vampirism",
@@ -14207,7 +14114,6 @@
 				"NE"
 			],
 			"category": "Other Gods",
-			"info": [],
 			"edicts": [
 				"set pointless traps",
 				"spread nihilism",
