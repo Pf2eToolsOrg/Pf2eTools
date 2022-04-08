@@ -823,6 +823,832 @@
 				"wyrmkin",
 				"zeal"
 			]
+		},
+		"genericFluffArray": {
+			"type": "array",
+			"uniqueItems": true,
+			"items": {
+				"anyOf": [
+					{
+						"type": "object",
+						"properties": {
+							"name": {
+								"type": "string"
+							},
+							"page": {
+								"type": "integer"
+							},
+							"source": {
+								"type": "string"
+							},
+							"otherSources": {
+								"$ref": "#/definitions/otherSources"
+							},
+							"images": {
+								"oneOf": [
+									{
+										"type": "array",
+										"items": {
+											"$ref": "entry.json#/definitions/entryImage"
+										}
+									},
+									{
+										"type": "null"
+									}
+								]
+							},
+							"lore": {
+								"type": "array",
+								"items": {
+									"$ref": "entry.json"
+								}
+							},
+							"entries": {
+								"type": "array",
+								"items": {
+									"$ref": "entry.json"
+								}
+							},
+							"_copy": {
+								"type": "object",
+								"properties": {
+									"name": {
+										"type": "string"
+									},
+									"source": {
+										"type": "string"
+									},
+									"pantheon": {
+										"description": "Used in deity data",
+										"type": "string"
+									},
+									"shortName": {
+										"description": "Used in subclass data",
+										"type": "string"
+									},
+									"className": {
+										"description": "Used in subclass data",
+										"type": "string"
+									},
+									"classSource": {
+										"description": "Used in subclass data",
+										"type": "string"
+									},
+									"_mod": {
+										"$ref": "#/definitions/_modObject"
+									},
+									"_trait": {
+										"type": "object",
+										"properties": {
+											"name": {
+												"type": "string"
+											},
+											"source": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"name",
+											"source"
+										]
+									},
+									"_preserve": {
+										"type": "object",
+										"patternProperties": {
+											".*": {
+												"type": "boolean"
+											}
+										}
+									}
+								},
+								"required": [
+									"name",
+									"source"
+								],
+								"additionalProperties": false
+							}
+						},
+						"additionalProperties": false,
+						"required": [
+							"name",
+							"source"
+						]
+					},
+					{
+						"type": "object",
+						"$comment": "This is a custom pre-processor tag, which merges together the array of objects into one. This allows proper inheritance, which JSON schema don't really do.",
+						"properties": {
+							"name": {
+								"type": "string"
+							},
+							"page": {
+								"type": "integer"
+							},
+							"source": {
+								"type": "string"
+							},
+							"otherSources": {
+								"$ref": "#/definitions/otherSources"
+							},
+							"images": {
+								"oneOf": [
+									{
+										"type": "array",
+										"items": {
+											"$ref": "entry.json#/definitions/entryImage"
+										}
+									},
+									{
+										"type": "null"
+									}
+								]
+							},
+							"lore": {
+								"type": "array",
+								"items": {
+									"$ref": "entry.json"
+								}
+							},
+							"entries": {
+								"type": "array",
+								"items": {
+									"$ref": "entry.json"
+								}
+							},
+							"_copy": {
+								"type": "object",
+								"properties": {
+									"name": {
+										"type": "string"
+									},
+									"source": {
+										"type": "string"
+									},
+									"pantheon": {
+										"description": "Used in deity data",
+										"type": "string"
+									},
+									"shortName": {
+										"description": "Used in subclass data",
+										"type": "string"
+									},
+									"className": {
+										"description": "Used in subclass data",
+										"type": "string"
+									},
+									"classSource": {
+										"description": "Used in subclass data",
+										"type": "string"
+									},
+									"_mod": {
+										"$ref": "#/definitions/_modObject"
+									},
+									"_trait": {
+										"type": "object",
+										"properties": {
+											"name": {
+												"type": "string"
+											},
+											"source": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"name",
+											"source"
+										]
+									},
+									"_preserve": {
+										"type": "object",
+										"patternProperties": {
+											".*": {
+												"type": "boolean"
+											}
+										}
+									}
+								},
+								"required": [
+									"name",
+									"source"
+								],
+								"additionalProperties": false
+							}
+						},
+						"additionalProperties": false,
+						"required": [
+							"_copy"
+						]
+					}
+				]
+			}
+		},
+		"_modObject": {
+			"type": "object",
+			"patternProperties": {
+				".*": {
+					"anyOf": [
+						{
+							"type": "string"
+						},
+						{
+							"$ref": "#/definitions/copyModifier"
+						},
+						{
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/copyModifier"
+							}
+						}
+					]
+				}
+			}
+		},
+		"copyModifier": {
+			"anyOf": [
+				{
+					"type": "object",
+					"properties": {
+						"mode": {
+							"const": "replaceTxt"
+						},
+						"replace": {
+							"type": "string"
+						},
+						"with": {
+							"type": "string"
+						},
+						"flags": {
+							"type": "string"
+						},
+						"props": {
+							"description": "If unspecified, defaults to `[null, \"entries\", \"headerEntries\", \"footerEntries\"]`. To apply to _any_ string, including those outside of sub-properties (for instance, when trying to replace text in an array of plain strings), include `null` as one of the props (i.e. `\"props\": [null]`)",
+							"type": "array",
+							"items": {
+								"type": [
+									"string",
+									"null"
+								]
+							}
+						}
+					},
+					"required": [
+						"replace",
+						"with"
+					],
+					"additionalProperties": false
+				},
+				{
+					"type": "object",
+					"properties": {
+						"mode": {
+							"const": "replaceName"
+						},
+						"replace": {
+							"type": "string"
+						},
+						"with": {
+							"type": "string"
+						},
+						"flags": {
+							"type": "string"
+						}
+					},
+					"required": [
+						"replace",
+						"with"
+					],
+					"additionalProperties": false
+				},
+				{
+					"type": "object",
+					"properties": {
+						"mode": {
+							"const": "appendStr"
+						},
+						"str": {
+							"type": "string"
+						},
+						"joiner": {
+							"type": "string"
+						}
+					},
+					"required": [
+						"str"
+					],
+					"additionalProperties": false
+				},
+				{
+					"type": "object",
+					"properties": {
+						"mode": {
+							"const": "prependArr"
+						},
+						"items": {
+							"anyOf": [
+								{
+									"type": "string"
+								},
+								{
+									"type": "object"
+								},
+								{
+									"type": "array"
+								}
+							]
+						}
+					},
+					"required": [
+						"items"
+					],
+					"additionalProperties": false
+				},
+				{
+					"type": "object",
+					"properties": {
+						"mode": {
+							"const": "appendArr"
+						},
+						"items": {
+							"anyOf": [
+								{
+									"type": "string"
+								},
+								{
+									"type": "object"
+								},
+								{
+									"type": "array"
+								}
+							]
+						}
+					},
+					"required": [
+						"items"
+					],
+					"additionalProperties": false
+				},
+				{
+					"type": "object",
+					"properties": {
+						"mode": {
+							"const": "appendIfNotExistsArr"
+						},
+						"items": {
+							"anyOf": [
+								{
+									"type": "string"
+								},
+								{
+									"type": "object"
+								},
+								{
+									"type": "array"
+								}
+							]
+						}
+					},
+					"required": [
+						"items"
+					],
+					"additionalProperties": false
+				},
+				{
+					"type": "object",
+					"properties": {
+						"mode": {
+							"const": "replaceArr"
+						},
+						"replace": {
+							"oneOf": [
+								{
+									"type": "string"
+								},
+								{
+									"type": "object",
+									"properties": {
+										"index": {
+											"type": "integer"
+										}
+									},
+									"required": [
+										"index"
+									],
+									"additionalProperties": false
+								},
+								{
+									"type": "object",
+									"properties": {
+										"regex": {
+											"type": "string"
+										},
+										"flags": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"regex"
+									],
+									"additionalProperties": false
+								}
+							]
+						},
+						"items": {
+							"anyOf": [
+								{
+									"type": "object"
+								},
+								{
+									"type": "array"
+								}
+							]
+						}
+					},
+					"required": [
+						"replace",
+						"items"
+					],
+					"additionalProperties": false
+				},
+				{
+					"type": "object",
+					"properties": {
+						"mode": {
+							"const": "replaceOrAppendArr"
+						},
+						"replace": {
+							"oneOf": [
+								{
+									"type": "string"
+								},
+								{
+									"type": "object",
+									"properties": {
+										"index": {
+											"type": "integer"
+										}
+									},
+									"required": [
+										"index"
+									],
+									"additionalProperties": false
+								},
+								{
+									"type": "object",
+									"properties": {
+										"regex": {
+											"type": "string"
+										},
+										"flags": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"regex"
+									],
+									"additionalProperties": false
+								}
+							]
+						},
+						"items": {
+							"anyOf": [
+								{
+									"type": "object"
+								},
+								{
+									"type": "array"
+								}
+							]
+						}
+					},
+					"required": [
+						"replace",
+						"items"
+					],
+					"additionalProperties": false
+				},
+				{
+					"type": "object",
+					"properties": {
+						"mode": {
+							"const": "insertArr"
+						},
+						"index": {
+							"type": "integer"
+						},
+						"items": {
+							"anyOf": [
+								{
+									"type": "object"
+								},
+								{
+									"type": "string"
+								},
+								{
+									"type": "array"
+								}
+							]
+						}
+					},
+					"required": [
+						"index",
+						"items"
+					],
+					"additionalProperties": false
+				},
+				{
+					"type": "object",
+					"properties": {
+						"mode": {
+							"const": "removeArr"
+						},
+						"names": {
+							"anyOf": [
+								{
+									"type": "string"
+								},
+								{
+									"type": "array"
+								}
+							]
+						},
+						"items": {
+							"anyOf": [
+								{
+									"type": "string"
+								},
+								{
+									"type": "array"
+								}
+							]
+						},
+						"force": {
+							"type": "boolean"
+						}
+					},
+					"additionalProperties": false
+				},
+				{
+					"type": "object",
+					"properties": {
+						"mode": {
+							"const": "calculateProp"
+						},
+						"prop": {
+							"type": "string"
+						},
+						"formula": {
+							"type": "string"
+						}
+					},
+					"required": [
+						"prop",
+						"formula"
+					],
+					"additionalProperties": false
+				},
+				{
+					"type": "object",
+					"properties": {
+						"mode": {
+							"const": "replaceSpells"
+						},
+						"spells": {
+							"type": "object"
+						},
+						"daily": {
+							"type": "object"
+						}
+					},
+					"required": [
+						"mode"
+					],
+					"additionalProperties": false
+				},
+				{
+					"type": "object",
+					"properties": {
+						"mode": {
+							"const": "addSpells"
+						},
+						"spells": {
+							"type": "object"
+						},
+						"will": {
+							"type": "array"
+						},
+						"daily": {
+							"type": "object"
+						},
+						"weekly": {
+							"type": "object"
+						},
+						"yearly": {
+							"type": "object"
+						}
+					},
+					"required": [
+						"mode"
+					],
+					"additionalProperties": false
+				},
+				{
+					"type": "object",
+					"properties": {
+						"mode": {
+							"const": "addSkills"
+						},
+						"skills": {
+							"type": "object"
+						}
+					},
+					"required": [
+						"mode",
+						"skills"
+					],
+					"additionalProperties": false
+				},
+				{
+					"type": "object",
+					"properties": {
+						"mode": {
+							"const": "addSaves"
+						},
+						"saves": {
+							"type": "object"
+						}
+					},
+					"required": [
+						"mode",
+						"saves"
+					],
+					"additionalProperties": false
+				},
+				{
+					"type": "object",
+					"properties": {
+						"mode": {
+							"const": "addAllSkills"
+						},
+						"skills": {
+							"type": "integer"
+						}
+					},
+					"required": [
+						"mode",
+						"skills"
+					],
+					"additionalProperties": false
+				},
+				{
+					"type": "object",
+					"properties": {
+						"mode": {
+							"const": "addAllSaves"
+						},
+						"saves": {
+							"type": "integer"
+						}
+					},
+					"required": [
+						"mode",
+						"saves"
+					],
+					"additionalProperties": false
+				},
+				{
+					"type": "object",
+					"properties": {
+						"mode": {
+							"const": "addSenses"
+						},
+						"senses": {
+							"anyOf": [
+								{
+									"type": "object"
+								},
+								{
+									"type": "array"
+								}
+							]
+						}
+					},
+					"required": [
+						"mode",
+						"senses"
+					],
+					"additionalProperties": false
+				},
+				{
+					"type": "object",
+					"properties": {
+						"mode": {
+							"const": "scalarAddProp"
+						},
+						"prop": {
+							"type": "string"
+						},
+						"scalar": {
+							"type": "number"
+						}
+					},
+					"required": [
+						"mode",
+						"scalar",
+						"prop"
+					],
+					"additionalProperties": false
+				},
+				{
+					"type": "object",
+					"properties": {
+						"mode": {
+							"const": "scalarMultProp"
+						},
+						"prop": {
+							"type": "string"
+						},
+						"scalar": {
+							"type": "number"
+						},
+						"floor": {
+							"type": "boolean"
+						}
+					},
+					"required": [
+						"mode",
+						"scalar",
+						"prop"
+					],
+					"additionalProperties": false
+				},
+				{
+					"type": "object",
+					"properties": {
+						"mode": {
+							"const": "scalarAddHit"
+						},
+						"scalar": {
+							"type": "number"
+						}
+					},
+					"required": [
+						"mode",
+						"scalar"
+					],
+					"additionalProperties": false
+				},
+				{
+					"type": "object",
+					"properties": {
+						"mode": {
+							"const": "scalarAddDc"
+						},
+						"scalar": {
+							"type": "number"
+						}
+					},
+					"required": [
+						"mode",
+						"scalar"
+					],
+					"additionalProperties": false
+				},
+				{
+					"type": "object",
+					"properties": {
+						"mode": {
+							"const": "maxSize"
+						},
+						"max": {
+							"type": "string"
+						}
+					},
+					"required": [
+						"mode",
+						"max"
+					],
+					"additionalProperties": false
+				},
+				{
+					"type": "object",
+					"properties": {
+						"mode": {
+							"const": "scalarMultXp"
+						},
+						"scalar": {
+							"type": "number"
+						},
+						"floor": {
+							"type": "boolean"
+						}
+					},
+					"required": [
+						"mode",
+						"scalar"
+					],
+					"additionalProperties": false
+				}
+			]
 		}
 	}
 }
