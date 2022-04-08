@@ -17,6 +17,9 @@
 				"https://raw.githubusercontent.com/Pf2eTools/Pf2eTools.github.io/master/test/schema-template/schema.json"
 			]
 		},
+		"changelog": {
+			"$ref": "changelog.json#/properties/changelog"
+		},
 		"variantrule": {
 			"type": "array"
 		},
@@ -81,7 +84,7 @@
 			"type": "array"
 		},
 		"hazard": {
-			"type": "array"
+			"$ref": "hazards.json#/properties/hazard"
 		},
 		"action": {
 			"$ref": "actions.json#/properties/action"

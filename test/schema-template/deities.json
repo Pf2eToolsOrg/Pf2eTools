@@ -112,7 +112,7 @@
 									"abilities": {
 										"type": "array",
 										"items": {
-											"$ref": "utils.json#/definitions/abilityAbbvUpper"
+											"$ref": "utils.json#/definitions/abilityAbbv"
 										},
 										"minItems": 1
 									},
@@ -128,21 +128,21 @@
 							"skill": {
 								"type": "array",
 								"items": {
-									"$ref": "utils.json#/definitions/skillNameUpper"
+									"$ref": "utils.json#/definitions/skillName"
 								},
 								"minItems": 1
 							},
 							"domains": {
 								"type": "array",
 								"items": {
-									"$ref": "utils.json#/definitions/domainsLower"
+									"$ref": "utils.json#/definitions/domains"
 								},
 								"minItems": 1
 							},
 							"alternateDomains": {
 								"type": "array",
 								"items": {
-									"$ref": "utils.json#/definitions/domainsLower"
+									"$ref": "utils.json#/definitions/domains"
 								},
 								"minItems": 1
 							},
@@ -183,7 +183,7 @@
 									"immune": {
 										"type": "array",
 										"items": {
-											"$ref": "utils.json#/definitions/conditionsLower"
+											"$ref": "utils.json#/definitions/conditions"
 										},
 										"minItems": 1
 									},
@@ -208,7 +208,7 @@
 											"traits": {
 												"type": "array",
 												"items": {
-													"$ref": "utils.json#/definitions/anyTraitUpper"
+													"$ref": "utils.json#/definitions/anyTrait"
 												},
 												"minItems": 1
 											},
@@ -217,14 +217,14 @@
 											},
 											"damageType": {
 												"type": "string",
-												"$ref": "utils.json#/definitions/damageTypeLower"
+												"$ref": "utils.json#/definitions/damageType"
 											},
 											"damage2": {
 												"type": "string"
 											},
 											"damageType2": {
 												"type": "string",
-												"$ref": "utils.json#/definitions/damageTypeLower"
+												"$ref": "utils.json#/definitions/damageType"
 											}
 										},
 										"additionalProperties": false,
@@ -247,7 +247,7 @@
 											"traits": {
 												"type": "array",
 												"items": {
-													"$ref": "utils.json#/definitions/anyTraitUpper"
+													"$ref": "utils.json#/definitions/anyTrait"
 												},
 												"minItems": 1
 											},
@@ -256,14 +256,14 @@
 											},
 											"damageType": {
 												"type": "string",
-												"$ref": "utils.json#/definitions/damageTypeLower"
+												"$ref": "utils.json#/definitions/damageType"
 											},
 											"damage2": {
 												"type": "string"
 											},
 											"damageType2": {
 												"type": "string",
-												"$ref": "utils.json#/definitions/damageTypeLower"
+												"$ref": "utils.json#/definitions/damageType"
 											}
 										},
 										"additionalProperties": false,

@@ -1,0 +1,337 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"$id": "hazards.json",
+	"title": "Hazard",
+	"description": "The hazard data type for Pf2eTools.",
+	"version": "0.0.1",
+	"type": "object",
+
+	"properties": {
+		"hazard": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"source": {
+						"type": "string",
+						"$ref": "utils.json#/definitions/sourceList"
+					},
+					"name": {
+						"type": "string"
+					},
+					"page": {
+						"type": "integer"
+					},
+					"level": {
+						"type": "integer",
+						"exclusiveMinimum": 0
+					},
+					"traits": {
+						"type": "array",
+						"items": {
+							"type": "string",
+							"anyOf": [
+								{
+									"$ref": "utils.json#/definitions/anyTrait"
+								},
+								{
+									"$comment": "Hazard only traits.",
+									"enum": ["trap", "complex", "mechanical", "environmental", "haunt"]
+								}
+							]
+						},
+						"minItems": 1
+					},
+					"stealth": {
+						"type": "object",
+						"properties": {
+							"dc": {
+								"type": "integer",
+								"exclusiveMinimum": 0
+							},
+							"bonus": {
+								"type": "integer",
+								"exclusiveMinimum": 0
+							},
+							"minProf": {
+								"type": "string",
+								"enum": [
+									"trained",
+									"expert",
+									"master",
+									"legendary"
+								]
+							},
+							"notes": {
+								"type": "string"
+							}
+						},
+						"additionalProperties": false,
+						"required": [
+							
+						]
+					},
+					"description": {
+						"type": "array",
+						"items": {
+							"type": "string"
+						},
+						"minItems": 1
+					},
+					"disable": {
+						"type": "object",
+						"properties": {
+							"entries": {
+								"type": "array",
+								"items": {
+									"$ref": "entry.json"
+								},
+								"minItems": 1
+							}
+						},
+						"additionalProperties": false
+					},
+					"defenses": {
+						"type": "object",
+						"properties": {
+							"ac": {
+								"type": "object",
+								"properties": {
+									"default": {
+										"type": "integer",
+										"exclusiveMinimum": 0
+									},
+									"note": {
+										"type": "string"
+									}
+								},
+								"additionalProperties": false
+							},
+							"savingThrows": {
+								"type": "object",
+								"properties": {
+									"fort": {
+										"type": "integer",
+										"exclusiveMinimum": 0
+									},
+									"ref": {
+										"type": "integer",
+										"exclusiveMinimum": 0
+									},
+									"will": {
+										"type": "integer",
+										"exclusiveMinimum": 0
+									}
+								},
+								"additionalProperties": false,
+								"minProperties": 1
+							},
+							"hardness": {
+								"type": "object",
+								"patternProperties": {
+									"^.+$": {
+										"type": "integer",
+										"exclusiveMinimum": 0
+									}
+								},
+								"additionalProperties": false
+							},
+							"hp": {
+								"description": "Hit Points",
+								"type": "object",
+								"patternProperties": {
+									"^.+$": {
+										"type": "integer",
+										"exclusiveMinimum": 0
+									}
+								},
+								"additionalProperties": false
+							},
+							"bt": {
+								"description": "Broken Threshold",
+								"type": "object",
+								"patternProperties": {
+									"^.+$": {
+										"type": "integer",
+										"exclusiveMinimum": 0
+									}
+								},
+								"additionalProperties": false
+							},
+							"weaknesses": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								},
+								"minItems": 1
+							},
+							"resistances": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								},
+								"minItems": 1
+							},
+							"immunities": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								},
+								"minItems": 1
+							},
+							"notes": {
+								"type": "object",
+								"properties": {
+									"default": {
+										"type": "string"
+									}
+								},
+								"additionalProperties": false
+							}
+						},
+						"additionalProperties": false,
+						"minProperties": 1
+					},
+					"actions": {
+						"type": "array",
+						"items": {
+							"type": "object",
+							"oneOf": [
+								{
+									"properties": {
+										"type": {
+											"const": "ability"
+										},
+										"style": {
+											"type": "string",
+											"enum": [
+												"compact"
+											]
+										},
+										"name": {
+											"type": "string"
+										},
+										"entries": {
+											"type": "array",
+											"items": {
+												"$ref": "entry.json"
+											},
+											"minItems": 1
+										},
+										"trigger": {
+											"type": "string"
+										},
+										"activity": {
+											"type": "object",
+											"$ref": "utils.json#/definitions/activity"
+										},
+										"traits": {
+											"type": "array",
+											"items": {
+												"type": "string",
+												"anyOf": [
+													{
+														"$ref": "utils.json#/definitions/anyTrait"
+													}
+												]
+											},
+											"minItems": 1
+										}
+									},
+									"additionalProperties": false,
+									"required": [
+										"name"
+									]
+								},
+								{
+									"properties": {
+										"type": {
+											"const": "attack"
+										},
+										"name": {
+											"type": "string"
+										},
+										"range": {
+											"type": "string",
+											"enum": [
+												"Ranged",
+												"Melee"
+											]
+										},
+										"attack": {
+											"type": "integer"
+										},
+										"effects": {
+											"type": "array",
+											"items": {
+												
+											},
+											"minItems": 1
+										},
+										"traits": {
+											"type": "array",
+											"items": {
+												"type": "string",
+												"anyOf": [
+													{
+														"$ref": "utils.json#/definitions/anyTrait"
+													}
+												]
+											},
+											"minItems": 1
+										},
+										"damage": {
+											"type": "string"
+										},
+										"types": {
+											"type": "array",
+											"items": {
+												"type": "string",
+												"$ref": "utils.json#/definitions/damageType"
+											},
+											"minItems": 1
+										},
+										"noMAP": {
+											"type": "boolean",
+											"enum": [true]
+										}
+									},
+									"additionalProperties": false,
+									"required": [
+										"name"
+									]
+								}
+							]
+						},
+						"minItems": 1
+					},
+					"routine": {
+						"type": "array",
+						"items": {
+							"$ref": "entry.json"
+						},
+						"minItems": 1
+					},
+					"reset": {
+						"type": "array",
+						"items": {
+							"$ref": "entry.json"
+						},
+						"minItems": 1
+					}
+				},
+				"additionalProperties": false,
+				"required": [
+					"source",
+					"name",
+					"level",
+					"stealth",
+					"description"
+				]
+			},
+			"uniqueItems": true
+		}
+	},
+	"required": ["hazard"],
+	"additionalProperties": false
+}
