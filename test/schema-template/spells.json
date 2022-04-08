@@ -49,7 +49,7 @@
 					"domains": {
 						"type": "array",
 						"items": {
-							"$ref": "utils.json#/definitions/domainsLower"
+							"$ref": "utils.json#/definitions/domains"
 						},
 						"minItems": 1
 					},
@@ -57,7 +57,7 @@
 						"type": "array",
 						"items": {
 							"type": "string",
-							"$ref": "utils.json#/definitions/traditionUpper"
+							"$ref": "utils.json#/definitions/tradition"
 						}
 					},
 					"spellLists": {
@@ -75,7 +75,7 @@
                             "type": "string",
                             "anyOf": [
 								{
-									"$ref": "utils.json#/definitions/anyTraitUpper"
+									"$ref": "utils.json#/definitions/anyTrait"
 								},
 								{
 									"$comment": "Spell only Traits.",

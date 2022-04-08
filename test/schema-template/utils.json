@@ -85,28 +85,28 @@
 			"type": "string",
 			"description": "L: Lawful\n N: Neutral\n NX: Neutral (law/chaos axis)\n NY: Neutral (good/evil axis)\n C: Chaotic\n G: Good\n E: Evil\n U: Unaligned\n A: Any",
 			"enum": [
-				"Any",
-				"Lawful",
-				"Chaotic",
-				"Good",
-				"Evil",
-				"Neutral",
-				"All"
+				"any",
+				"lawful",
+				"chaotic",
+				"good",
+				"evil",
+				"neutral",
+				"all"
 			]
 		},
 		"alignmentTags": {
 			"type": "string",
 			"description": "CE: Chaotic Evil\nCG: Chaotic Good\nCN: Chaotic Neutral\nLE: Lawful Evil\nLG: Lawful Good\nLN: Lawful Neutral\nN: Neutral\nNE: Neutral Evil\nNG: Neutral Good",
 			"enum": [
-				"CE",
-				"CG",
-				"CN",
-				"LE",
-				"LG",
-				"LN",
-				"N",
-				"NE",
-				"NG"
+				"ce",
+				"cg",
+				"cn",
+				"le",
+				"lg",
+				"ln",
+				"n",
+				"ne",
+				"ng"
 			]
 		},
 
@@ -263,7 +263,7 @@
 			"$comment": "Just keeping this around in case we want it later, currently unused",
 			"type": "object",
 			"propertyNames": {
-				"$ref": "#/definitions/skillNameUpper"
+				"$ref": "#/definitions/skillName"
 			},
 			"additionalProperties": {
 				"type": "string",
@@ -318,96 +318,101 @@
 			},
 			"additionalProperties": false
 		},
-		"anyTraitUpper": {
+		"anyTrait": {
 			"type": "string",
 			"description": "Any Trait in the game.",
 			"anyOf": [
 				{
-					"$ref": "#/definitions/rarityUpper"
+					"$ref": "#/definitions/rarity"
 				},
 				{
-					"$ref": "#/definitions/classNameUpper"
+					"$ref": "#/definitions/className"
 				},
 				{
-					"$ref": "#/definitions/schoolUpper"
+					"$ref": "#/definitions/school"
 				},
 				{
-					"$ref": "#/definitions/traditionUpper"
+					"$ref": "#/definitions/tradition"
 				},
 				{
-					"$ref": "#/definitions/damageTypeUpper"
+					"$ref": "#/definitions/damageType"
 				},
 				{
-					"$ref": "#/definitions/effectNameUpper"
+					"$ref": "#/definitions/effectName"
 				},
 				{
-					"$ref": "#/definitions/ancestryNameUpper"
+					"$ref": "#/definitions/ancestryName"
 				},
 				{
 					"$ref": "#/definitions/alignmentTraits"
 				},
 				{
 					"enum": [
-						"Archetype",
-						"Secret",
-						"Dedication",
-						"General",
-						"Skill",
-						"Prestige",
-						"Attack",
-						"Move",
-						"Exploration",
-						"Downtime",
-						"Energy",
-						"Concentrate",
-						"Finisher",
-						"Manipulate",
-						"Auditory",
-						"Flourish",
-						"Tandem",
-						"Stance",
-						"Spellshot",
-						"Unstable",
-						"Reckless",
-						"Verbal",
-						"Open",
-						"Rage",
-						"Lineage",
-						"Metamagic",
-						"Press",
-						"Oath",
-						"Vigilante",
-						"Multiclass",
-						"Social",
-						"Air",
-						"Earth",
-						"Water",
-						"Magical",
-						"Aura",
-						"Modification",
-						"Class",
-						"Extradimensional",
-						"Evolution",
-						"Pervasive Magic",
-						"Eidolon",
-						"True Name",
-						"Shadow",
-						"Contract",
-						"Invested",
-						"Curse",
-						"Virulent",
-						"Nonlethal",
-						"Darkness",
-						"Plant",
-						"Fungus",
-						"Olfactory",
-						"Inhaled",
-						"Incarnate",
-						"Shove"
+						"archetype",
+						"secret",
+						"dedication",
+						"general",
+						"skill",
+						"prestige",
+						"attack",
+						"move",
+						"exploration",
+						"downtime",
+						"energy",
+						"concentrate",
+						"finisher",
+						"manipulate",
+						"auditory",
+						"flourish",
+						"tandem",
+						"stance",
+						"spellshot",
+						"unstable",
+						"reckless",
+						"verbal",
+						"open",
+						"rage",
+						"lineage",
+						"metamagic",
+						"press",
+						"oath",
+						"vigilante",
+						"multiclass",
+						"social",
+						"air",
+						"earth",
+						"water",
+						"magical",
+						"aura",
+						"modification",
+						"class",
+						"extradimensional",
+						"evolution",
+						"pervasive magic",
+						"eidolon",
+						"true name",
+						"shadow",
+						"contract",
+						"invested",
+						"curse",
+						"virulent",
+						"nonlethal",
+						"darkness",
+						"plant",
+						"fungus",
+						"olfactory",
+						"inhaled",
+						"incarnate",
+						"shove",
+						"alchemical",
+						"death",
+						"light",
+						"emotion",
+						"fear"
 					]
 				},
 				{
-					"enum": ["[Magical Tradition]", "[Class]"]
+					"enum": ["[magical tradition]", "[class]"]
 				},
 				{
 					"type": "string",
@@ -416,202 +421,180 @@
 				{
 					"type": "string",
 					"pattern": "^reach \\d+ feet$"
+				},
+				{
+					"type": "string",
+					"pattern": "^deadly \\d*d\\d+$"
 				}
 			]
 		},
 		"loreSubjects": {
 			"type": "string",
 			"enum": [
-				"Dragon",
-				"Kintargo",
-				"Dahak",
-				"Architecture",
-				"Breachill"
+				"dragon",
+				"kintargo",
+				"dahak",
+				"architecture",
+				"breachill"
 			]
 		},
-		"abilityUpper": {
+		"ability": {
 			"type": "string",
 			"enum": [
-				"Strength",
-				"Dexterity",
-				"Constitution",
-				"Intelligence",
-				"Wisdom",
-				"Charisma",
-				"Free"
+				"strength",
+				"dexterity",
+				"constitution",
+				"intelligence",
+				"wisdom",
+				"charisma",
+				"free"
 			]
 		},
-		"abilityAbbvUpper": {
+		"abilityAbbv": {
 			"type": "string",
 			"enum": [
-				"Str",
-				"Dex",
-				"Con",
-				"Int",
-				"Wis",
-				"Cha"
+				"str",
+				"dex",
+				"con",
+				"int",
+				"wis",
+				"cha"
 			]
 		},
-		"ancestryNameUpper": {
+		"ancestryName": {
 			"type": "string",
 			"enum": [
-				"Kitsune",
-				"Kobold",
-				"Grippli",
-				"Aasimar",
-				"Changeling",
-				"Human",
-				"Catfolk",
-				"Elf",
-				"Orc",
-				"Ratfolk",
-				"Dhampir",
-				"Duskwalker",
-				"Gnome",
-				"Goblin",
-				"Tiefling",
-				"Halfling",
-				"Dwarf",
-				"Half-Elf",
-				"Half-Orc",
-				"Tengu",
-				"Automaton",
-				"Hobgoblin",
-				"Poppet",
-				"Goloma",
-				"Anadi",
-				"Gnoll",
-				"Lizardfolk",
-				"Conrasu",
-				"Shisk"
+				"kitsune",
+				"kobold",
+				"grippli",
+				"aasimar",
+				"changeling",
+				"human",
+				"catfolk",
+				"elf",
+				"orc",
+				"ratfolk",
+				"dhampir",
+				"duskwalker",
+				"gnome",
+				"goblin",
+				"tiefling",
+				"halfling",
+				"dwarf",
+				"half-elf",
+				"half-orc",
+				"tengu",
+				"automaton",
+				"hobgoblin",
+				"poppet",
+				"goloma",
+				"anadi",
+				"gnoll",
+				"lizardfolk",
+				"conrasu",
+				"shisk"
 			]
 		},
-		"skillNameUpper": {
+		"skillName": {
 			"type": "string",
 			"description": "A Skill Trait",
 			"enum": [
-				"Acrobatics",
-				"Arcana",
-				"Athletics",
-				"Crafting",
-				"Deception",
-				"Diplomacy",
-				"Intimidation",
-				"Lore",
-				"Medicine",
-				"Nature",
-				"Occultism",
-				"Performance",
-				"Religion",
-				"Society",
-				"Stealth",
-				"Survival",
-				"Thievery"
+				"acrobatics",
+				"arcana",
+				"athletics",
+				"crafting",
+				"deception",
+				"diplomacy",
+				"intimidation",
+				"lore",
+				"medicine",
+				"nature",
+				"occultism",
+				"performance",
+				"religion",
+				"society",
+				"stealth",
+				"survival",
+				"thievery"
 			]
 		},
-		"classNameUpperSourced": {
+		"classNameSourced": {
 			"type": "string",
 			"enum": [
-				"Alchemist",
-				"Barbarian",
-				"Bard",
-				"Champion",
-				"Cleric",
-				"Druid",
-				"Fighter",
-				"Gunslinger|G&G",
-				"Inventor|G&G",
-				"Investigator|APG",
-				"Magus|SoM",
-				"Monk",
-				"Oracle|APG",
-				"Ranger",
-				"Rogue",
-				"Sorcerer",
-				"Summoner|SoM",
-				"Swashbuckler|APG",
-				"Witch|APG",
-				"Wizard"
+				"alchemist",
+				"barbarian",
+				"bard",
+				"champion",
+				"cleric",
+				"druid",
+				"fighter",
+				"gunslinger|G&G",
+				"inventor|G&G",
+				"investigator|APG",
+				"magus|SoM",
+				"monk",
+				"oracle|APG",
+				"ranger",
+				"rogue",
+				"sorcerer",
+				"summoner|SoM",
+				"swashbuckler|APG",
+				"witch|APG",
+				"wizard"
 			]
 		},
-		"classNameUpper": {
+		"className": {
 			"type": "string",
 			"enum": [
-				"Alchemist",
-				"Barbarian",
-				"Bard",
-				"Champion",
-				"Cleric",
-				"Druid",
-				"Fighter",
-				"Gunslinger",
-				"Inventor",
-				"Investigator",
-				"Magus",
-				"Monk",
-				"Oracle",
-				"Ranger",
-				"Rogue",
-				"Sorcerer",
-				"Summoner",
-				"Swashbuckler",
-				"Witch",
-				"Wizard"
+				"alchemist",
+				"barbarian",
+				"bard",
+				"champion",
+				"cleric",
+				"druid",
+				"fighter",
+				"gunslinger",
+				"inventor",
+				"investigator",
+				"magus",
+				"monk",
+				"oracle",
+				"ranger",
+				"rogue",
+				"sorcerer",
+				"summoner",
+				"swashbuckler",
+				"witch",
+				"wizard"
 			]
 		},
-		"rarityUpper": {
+		"rarity": {
 			"type": "string",
-			"enum": ["Common", "Uncommon", "Rare", "Unique"]
+			"enum": ["common", "uncommon", "rare", "unique"]
 		},
-		"traditionUpper": {
+		"tradition": {
 			"type": "string",
-			"enum": ["Arcane", "Divine", "Occult", "Primal"]
+			"enum": ["arcane", "divine", "occult", "primal"]
 		},
-		"schoolUpper": {
+		"school": {
 			"type": "string",
 			"enum": [
-				"Abjuration",
-				"Conjuration",
-				"Divination",
-				"Enchantment",
-				"Evocation",
-				"Illusion",
-				"Necromancy",
-				"Transmutation"
+				"abjuration",
+				"conjuration",
+				"divination",
+				"enchantment",
+				"evocation",
+				"illusion",
+				"necromancy",
+				"transmutation"
 			]
 		},
-		"damageTypeUpper": {
-			"type": "string",
-			"enum": [
-				"Electricity",
-				"Sonic",
-				"Acid",
-				"Poison",
-				"Cold",
-				"Fire",
-				"Slashing",
-				"Bludgeoning",
-				"Piercing",
-				"Positive",
-				"Negative",
-				"Force",
-				"Bleed",
-				"Precision",
-				"Evil",
-				"Good",
-				"Chaotic",
-				"Lawful",
-				"Mental"
-			]
-		},
-
-
 
 		"damage": {
 			"$comment": "Draft Damage object style",
 			"type": "object",
 			"propertyNames": {
-				"$ref": "#/definitions/damageTypeLower"
+				"$ref": "#/definitions/damageType"
 			},
 			"additionalProperties": {
 				"oneOf": [
@@ -637,8 +620,7 @@
 			}
 		},
 
-
-		"damageTypeLower": {
+		"damageType": {
 			"type": "string",
 			"enum": [
 				"electricity",
@@ -666,7 +648,7 @@
 			"type": "string",
 			"description": "TODO"
 		},
-		"effectNameUpper": {
+		"effectName": {
 			"type": "string",
 			"enum": [
 				"Death",
@@ -691,7 +673,7 @@
 				"Visual"
 			]
 		},
-		"weaponGroupUpper": {
+		"weaponGroup": {
 			"type": "string",
 			"enum": [
 				"Firearm|G&G",
@@ -711,11 +693,11 @@
 				"Bow"
 			]
 		},
-		"armorGroupUpper": {
+		"armorGroup": {
 			"type": "string",
 			"enum": ["Plate", "Leather", "Chain", "Cloth", "Composite"]
 		},
-		"conditionsLower": {
+		"conditions": {
 			"type": "string",
 			"enum": [
 				"blinded",
@@ -762,7 +744,7 @@
 				"wounded"
 			]
 		},
-		"domainsLower": {
+		"domains": {
 			"type": "string",
 			"enum": [
 				"air",
