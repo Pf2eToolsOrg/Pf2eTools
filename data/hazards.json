@@ -169,7 +169,6 @@
 					"acid 10",
 					"fire 10",
 					"slashing 10"
-					
 				]
 			},
 			"actions": [
@@ -756,7 +755,6 @@
 			"routine": [
 				"(2 actions) The haunt uses its first action to {@action Stride}, then its second action for a jaws {@action Strike} against its designated target if it is in reach. If the target is not in reach, the haunt resets.",
 				"Speed 60 feet."
-				
 			],
 			"reset": [
 				"If their designated target dies or the hounds can't reach it in a turn, the hounds vanish into noxious smoke, but they manifest again elsewhere in the city after the next sunset."
@@ -826,7 +824,7 @@
 				"(1 action) The gas intensifies. Each creature in the room must make a DC 30 Fortitude save.",
 				{
 					"type": "successDegree",
-					"entries":{
+					"entries": {
 						"Critical Success": [
 							"The creature is unaffected and becomes temporarily immune to the gas for 1 hour, though if the creature has already been {@condition stupefied} by the trap, that condition remains for its normal duration."
 						],
@@ -2149,23 +2147,10 @@
 			],
 			"disable": {
 				"entries": [
-					"DC 43 {@skill Athletics} (master), {@skill Crafting} (master), or."
+					"DC 43 {@skill Athletics} (master), {@skill Crafting} (master), or Engineering Lore (master) to brace the structure to reduce the risk of collapse until the end of the creature's next turn. The DC of the flat check for this round (see Routine) is increased by 4 on a success, or by 8 on a critical success. Increasing the flat check DC to 21 or higher stabilizes the structure, ending this hazard."
 				]
 			},
 			"actions": [
-				{
-					"traits": [
-						"master"
-					],
-					"entries": [
-						"to brace the structure to reduce the risk of collapse until the end of the creature's next turn. The DC of the flat check for this round (see."
-					],
-					"type": "ability",
-					"name": "Engineering Lore"
-				}
-			],
-			"routine": [
-				") is increased by 4 on a success, or by 8 on a critical success. Increasing the flat check DC to 21 or higher stabilizes the structure, ending this hazard.",
 				{
 					"activity": {
 						"number": 1,
@@ -2173,11 +2158,14 @@
 					},
 					"trigger": "Mogaru applies any amount of force to the structure",
 					"entries": [
-						"The building trembles. The floors of the building and the streets within 30 feet of the building become difficult terrain; creatures on this difficult terrain take a \u20132 circumstance penalty to attack rolls, AC, and skill checks. The hazard rolls initiative. Routine (1 action) The GM rolls a DC {@flatDC 9} flat check to determine if the building collapses, increasing the DC as listed above. On a successful check, dust and debris fall within the building and 30 feet around it, providing concealment and dealing {@damage 6d6} bludgeoning damage to {@dice 1d4} randomly chosen targets (DC 35 basic Reflex save; on a critically failed save, the creature is knocked {@condition prone}). On a critical success, the effect is the same, but the debris deals {@damage 12d6} bludgeoning damage to {@dice 2d4} randomly chosen targets instead (DC 35 basic Reflex save; on a critically failed Reflex save, the creature is {@condition restrained} by rubble until freed [{@action Force Open} DC 38, {@action Escape} DC 35])."
+						"The building trembles. The floors of the building and the streets within 30 feet of the building become difficult terrain; creatures on this difficult terrain take a \u20132 circumstance penalty to attack rolls, AC, and skill checks. The hazard rolls initiative."
 					],
 					"type": "ability",
 					"name": "Shake Apart"
 				}
+			],
+			"routine": [
+				"(1 action) The GM rolls a DC {@flatDC 9} flat check to determine if the building collapses, increasing the DC as listed above. On a successful check, dust and debris fall within the building and 30 feet around it, providing concealment and dealing {@damage 6d6} bludgeoning damage to {@dice 1d4} randomly chosen targets (DC 35 basic Reflex save; on a critically failed save, the creature is knocked {@condition prone}). On a critical success, the effect is the same, but the debris deals {@damage 12d6} bludgeoning damage to {@dice 2d4} randomly chosen targets instead (DC 35 basic Reflex save; on a critically failed Reflex save, the creature is {@condition restrained} by rubble until freed [{@action Force Open} DC 38, {@action Escape} DC 35])."
 			],
 			"reset": [
 				"The building becomes susceptible to Shake Apart again {@dice 1d6} rounds after it is stabilized."
@@ -2911,41 +2899,41 @@
 			],
 			"stealth": {
 				"bonus": 0,
-				"notes": "or detect magic {@skill Perception} +16, darkvision 60 feet Recognize Ally A dragon pillar can see through its empty eye sockets, and it can recognize Cinderclaws and their allies. A character disguised as a Cinderclaw can trick a dragon pillar into perceiving it as a Cinderclaw ally by using {@skill Deception} to {@action Impersonate}. A dragon pillar always uses {@skill Perception} for initiative."
+				"notes": "or {@spell detect magic}"
 			},
+			"perception": {
+				"bonus": 16,
+				"notes": "{@ability darkvision} 60 feet"
+			},
+			"abilities": [
+				{
+					"entries": [
+						"A dragon pillar can see through its empty eye sockets, and it can recognize Cinderclaws and their allies. A character disguised as a Cinderclaw can trick a dragon pillar into perceiving it as a Cinderclaw ally by using {@skill Deception} to {@action Impersonate}. A dragon pillar always uses {@skill Perception} for initiative."
+					],
+					"type": "ability",
+					"name": "Recognize Ally"
+				}
+			],
 			"description": [
 				"A 10-foot-tall wooden pole topped by a wooden carving of {@deity Dahak|LOGM}'s head. Each dragon pillar's head has been treated with something to give it a distinct color, as indicated in the specific encounter, but regardless of color, plumes of smoke waft up from the mouth."
 			],
 			"disable": {
 				"entries": [
-					"{@skill Athletics} DC 26 (expert) to push the pillar over, or."
+					"{@skill Athletics} DC 26 (expert) to push the pillar over, or {@skill Thievery} DC 26 (expert) on the pillar to erase the magic runes that power it, or {@spell dispel magic} (4th level; counteract DC 22) to dispel the pillar's magic."
 				]
 			},
 			"actions": [
-				{
-					"entries": [
-						"26 (expert) on the pillar to erase the magic runes that power it, or dispel magic (4th level; counteract DC 22) to dispel the pillar's magic.",
-						"AC 24; Fort +17, Ref +8 Hardness 14, HP 56 (BT 28); Immunities critical hits, fire, object immunities, precision damage."
-					],
-					"type": "ability",
-					"name": "Thievery DC"
-				},
 				{
 					"activity": {
 						"number": 1,
 						"unit": "reaction"
 					},
-					"trigger": "The dragon pillar sees a creature within 120 feet who isn't a recognized",
-					"entries": [],
-					"type": "ability",
-					"name": "Dragon Pillar Glance"
-				},
-				{
+					"trigger": "The dragon pillar sees a creature within 120 feet who isn't a recognized Cinderclaw or Cinderclaw ally.",
 					"entries": [
-						"Cinderclaw ally. The dragon pillar makes an eye beam {@action Strike} against the triggering creature, then rolls initiative."
+						"The dragon pillar makes an eye beam {@action Strike} against the triggering creature, then rolls initiative."
 					],
 					"type": "ability",
-					"name": "Cinderclaw or"
+					"name": "Dragon Pillar Glance"
 				}
 			],
 			"routine": [
@@ -2961,22 +2949,163 @@
 						"range 120 feet"
 					],
 					"effects": [
-						"The target is subjected to an effect determined by the pillar's color",
-						"summarized below. On a critical hit",
-						"defending the dragon pillar from all non-Cinderclaws. While a target is {@condition controlled}"
+						"The target is subjected to an effect determined by the pillar's color and summarized below. On a critical hit, the target's save result is one degree worse.",
+						{
+							"type": "list",
+							"items": [
+								{
+									"type": "item",
+									"name": "Black Eye Beam (area A5)",
+									"traits": [
+										"incapacitation"
+									],
+									"entries": [
+										"DC 24 Fortitude save.",
+										{
+											"type": "successDegree",
+											"entries": {
+												"Critical Success": "The target is unaffected.",
+												"Success": "The target is {@condition blinded} for 1 round.",
+												"Failure": "The target is {@condition blinded} for 1 hour.",
+												"Critical Failure": "The target is {@condition blinded} for 24 hours."
+											}
+										}
+									]
+								},
+								{
+									"type": "item",
+									"name": "Blue Eye Beam (area A7)",
+									"traits": [
+										"incapacitation"
+									],
+									"entries": [
+										"DC 24 Fortitude save.",
+										{
+											"type": "successDegree",
+											"entries": {
+												"Critical Success": "The target is unaffected.",
+												"Success": "The target is {@condition petrified} for 1 round.",
+												"Failure": "The target is {@condition petrified} for 1 hour.",
+												"Critical Failure": "The target is {@condition petrified} permanently."
+											}
+										}
+									]
+								},
+								{
+									"type": "item",
+									"name": "Green Eye Beam (area A8)",
+									"traits": [
+										"poison"
+									],
+									"entries": [
+										"{@damage 6d6} poison damage (DC 24 basic Reflex save)."
+									]
+								},
+								{
+									"type": "item",
+									"name": "Indigo Eye Beam (area A9)",
+									"traits": [
+										"incapacitation"
+									],
+									"entries": [
+										"DC 24 Will save.",
+										{
+											"type": "successDegree",
+											"entries": {
+												"Critical Success": "The target is unaffected.",
+												"Success": "The target is {@condition slowed} for 1 round.",
+												"Failure": "The target is {@condition confused} for 1 hour.",
+												"Critical Failure": "The target is controlled by the dragon pillar and remains within 60 feet of it at all times, defending the dragon pillar from all non-Cinderclaws. While a target is controlled, it is treated as a Cinderclaw ally by the dragon pillar. The dragon pillar can control up to 3 targets at a time; any targets in excess who critically fail this saving throw are instead confused for 1d4+1 rounds. A controlled creature can attempt a new Will save once every 24 hours to escape control, but doing so automatically causes the dragon pillar to attack it with a new eye beam to attempt to re-establish control. The control ends if the pillar is destroyed."
+											}
+										}
+									]
+								},
+								{
+									"type": "item",
+									"name": "Yellow Eye Beam (area A12)",
+									"traits": [
+										"electricity"
+									],
+									"entries": [
+										"{@damage 6d6} electricity damage (DC 24 basic Reflex save)."
+									]
+								},
+								{
+									"type": "item",
+									"name": "Orange Eye Beam (area A15)",
+									"traits": [
+										"acid"
+									],
+									"entries": [
+										"{@damage 6d6} acid damage (DC 24 basic Reflex save)."
+									]
+								},
+								{
+									"type": "item",
+									"name": "Red Eye Beam (area A16)",
+									"traits": [
+										"fire"
+									],
+									"entries": [
+										"{@damage 6d6} fire damage (DC 24 basic Reflex save)."
+									]
+								},
+								{
+									"type": "item",
+									"name": "Violet Eye Beam (area A9)",
+									"traits": [
+										"incapacitation"
+									],
+									"entries": [
+										"DC 24 Will save.",
+										{
+											"type": "successDegree",
+											"entries": {
+												"Critical Success": "The target is unaffected.",
+												"Success": "The target is {@condition stunned 1}.",
+												"Failure": "The target is {@condition stunned 3}.",
+												"Critical Failure": "The target is {@condition stunned 7}."
+											}
+										}
+									]
+								}
+							]
+						}
 					],
-					"damage": "The target is subjected to an effect determined by the pillar's color and summarized below. On a critical hit, the target's save result is one degree worse. • Black Eye Beam (area A5) (incapacitation) DC 24 Fortitude save. Critical Success The target is unaffected. Success The target is {@condition blinded} for 1 round. Failure The target is {@condition blinded} for 1 hour. Critical Failure The target is {@condition blinded} for 24 hours. • Blue Eye Beam (area A7) (incapacitation) DC 24 Fortitude save. Critical Success The target is unaffected. Success The target is {@condition petrified} for 1 round. Failure The target is {@condition petrified} for 1 hour. Critical Failure The target is {@condition petrified} permanently. • Green Eye Beam (area A8) (poison) {@damage 6d6} poison damage (DC 24 basic Reflex save). • Indigo Eye Beam (area A9) (incapacitation) DC 24 Will save. Critical Success The target is unaffected. Success The target is {@condition slowed|CRB|slowed 1} for 1 round. Failure The target is {@condition confused} for 1 round. Critical Failure The target is {@condition controlled} by the dragon pillar and remains within 60 feet of it at all times, defending the dragon pillar from all non-Cinderclaws. While a target is {@condition controlled}, it is treated as a Cinderclaw ally by the dragon pillar. The dragon pillar can control up to 3 targets at a time; any targets in excess who critically fail this saving throw are instead {@condition confused} for {@dice 1d4+1} rounds. A {@condition controlled} creature can attempt a new Will save once every 24 hours to escape control, but doing so automatically causes the dragon pillar to attack it with a new eye beam to attempt to re-establish control. The control ends if the pillar is destroyed. • Yellow Eye Beam (area A12) (electricity) {@damage 6d6} electricity damage (DC 24 basic Reflex save). • Orange Eye Beam (area A15) (acid) {@damage 6d6} acid damage (DC 24 basic Reflex save). • Red Eye Beam (area A16) (fire) {@damage 6d6} fire damage (DC 24 basic Reflex save). • Violet Eye Beam (area B11) (incapacitation) DC 24 Will save. Critical Success The target is unaffected. Success The target is {@condition stunned|CRB|stunned 1}. Failure The target is {@condition stunned|CRB|stunned 3}. Critical Failure The target is {@condition stunned|CRB|stunned 7}.",
 					"types": [
 						"electricity",
 						"round",
 						"targets"
-					],
-					"noMAP": true
+					]
 				}
 			],
 			"reset": [
 				"The dragon pillar deactivates and resets as soon as it perceives no appropriate targets in range."
-			]
+			],
+			"defenses": {
+				"ac": {
+					"default": 24
+				},
+				"savingThrows": {
+					"fort": 17,
+					"ref": 8
+				},
+				"hardness": {
+					"default": 14
+				},
+				"hp": {
+					"default": 56
+				},
+				"bt": {
+					"default": 28
+				},
+				"immunities": [
+					"critical hits",
+					"fire",
+					"object immunities",
+					"precision damage"
+				]
+			}
 		},
 		{
 			"name": "Dragonstorm",
