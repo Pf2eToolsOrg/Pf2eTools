@@ -831,11 +831,12 @@ function Renderer () {
 	}
 
 	this._renderAttack = function (entry, textStack, meta, options) {
+		renderer = Renderer.get()
 		let MAP = -5;
 		if (entry.noMAP) MAP = 0;
 		if (entry.traits && entry.traits.map(t => t.toLowerCase()).includes("agile")) MAP = -4;
 		textStack[0] += `<p class="pf2-stat pf2-stat__section attack">
-			<strong>${entry.range}&nbsp;</strong>${this.render("{@as 1}")} ${entry.name}${entry.attack ? this.render(` {@hit ${entry.attack}||${entry.name.uppercaseFirst()}|MAP=${MAP}}`) : ""}${entry.traits != null ? ` ${this.render(`(${entry.traits.map((t) => `{@trait ${t.toLowerCase()}}`).join(", ")})`)}` : ""}, <strong>Damage&nbsp;</strong>${this.render(entry.damage)}${entry.noMAP ? "; no multiple attack penalty" : ""}</p>`;
+			<strong>${entry.range}&nbsp;</strong>${this.render("{@as 1}")} ${entry.name}${entry.attack ? this.render(` {@hit ${entry.attack}||${entry.name.uppercaseFirst()}|MAP=${MAP}}`) : ""}${entry.traits != null ? ` ${this.render(`(${entry.traits.map((t) => `{@trait ${t.toLowerCase()}}`).join(", ")})`)}` : ""}${entry.effects ? `, ${renderer.render(entry.effects)}` : ""}${entry.damage ? `, <strong>Damage&nbsp;</strong>${this.render(entry.damage)}${entry.noMAP ? "; no multiple attack penalty" : ""}` : ""}</p>`;
 	};
 
 	this._renderAbility = function (entry, textStack, meta, options) {
@@ -4643,6 +4644,27 @@ Renderer.hazard = {
 			if (hazard.stealth.notes) stealthText += ` ${hazard.stealth.notes}`;
 			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Stealth&nbsp;</strong>${renderer.render(stealthText)}</p>`);
 		}
+		if (hazard.perception) {
+			let perceptionText = hazard.perception.dc != null ? `DC ${hazard.perception.dc}` : `{@d20 ${hazard.perception.bonus}||perception}`;
+			if (hazard.perception.minProf) perceptionText += ` (${hazard.perception.minProf})`;
+			if (hazard.perception.notes) perceptionText += ` ${hazard.perception.notes}`;
+			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Perception&nbsp;</strong>${renderer.render(perceptionText)}</p>`);
+		}
+		if (hazard.abilities) {
+			hazard.abilities.forEach(a => {
+				if (a.type === "ability") renderer.recursiveRender(a, renderStack);
+				else {
+					renderStack.push(`<p class="pf2-stat pf2-stat__section">`);
+					renderStack.push(`${a.name} `);
+					renderStack.push(`</span>`);
+					renderStack.push(renderer.render(`${a.name.uppercaseFirst()} `));
+					renderStack.push(`<span>`);
+					if (a.traits != null) renderStack.push(renderer.render(` (${a.traits.map(t => `{@trait ${t.toLowerCase()}}`).join(", ")})`));
+					renderStack.push(`</span>`);
+					renderStack.push(`</p>`);
+				}
+			});
+		}
 		if (hazard.description) {
 			const descriptionStack = [`<p class="pf2-stat pf2-stat__section--wide"><strong>Description&nbsp;</strong>`];
 			renderer.recursiveRender(hazard.description, descriptionStack);
@@ -4701,9 +4723,10 @@ Renderer.hazard = {
 					renderStack.push(renderer.render(`{@hit ${a.attack}||${a.name.uppercaseFirst()} `));
 					renderStack.push(`<span>`);
 					if (a.traits != null) renderStack.push(renderer.render(` (${a.traits.map(t => `{@trait ${t.toLowerCase()}}`).join(", ")})`));
-					renderStack.push(`, <strong>Damage&nbsp;</strong>`);
-					renderStack.push(renderer.render(a.damage));
-
+					if (a.damage != null) {
+						renderStack.push(`, <strong>Damage&nbsp;</strong>`);
+						renderStack.push(renderer.render(a.damage));
+					}
 					renderStack.push(`</span>`);
 					renderStack.push(`</p>`);
 				}
