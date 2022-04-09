@@ -408,7 +408,13 @@
 						"death",
 						"light",
 						"emotion",
-						"fear"
+						"fear",
+						"charm",
+						"summoned",
+						"summon",
+						"clockwork",
+						"kaiju",
+						"steam"
 					]
 				},
 				{
@@ -425,6 +431,10 @@
 				{
 					"type": "string",
 					"pattern": "^deadly \\d*d\\d+$"
+				},
+				{
+					"type": "string",
+					"pattern": "^range \\d+ feet$"
 				}
 			]
 		},
@@ -641,7 +651,9 @@
 				"good",
 				"chaotic",
 				"lawful",
-				"mental"
+				"mental",
+
+				"persistent"
 			]
 		},
 		"damageTypeTags": {
@@ -651,26 +663,26 @@
 		"effectName": {
 			"type": "string",
 			"enum": [
-				"Death",
-				"Detection",
-				"Disease",
-				"Emotion",
-				"Fear",
-				"Fortune",
-				"Healing",
-				"Incapacitation",
-				"Light",
-				"Linguistic",
-				"Misfortune",
-				"Morph",
-				"Polymorph",
-				"Possession",
-				"Prediction",
-				"Revelation",
-				"Scrying",
-				"Sleep",
-				"Teleportation",
-				"Visual"
+				"death",
+				"detection",
+				"disease",
+				"emotion",
+				"fear",
+				"fortune",
+				"healing",
+				"incapacitation",
+				"light",
+				"linguistic",
+				"misfortune",
+				"morph",
+				"polymorph",
+				"possession",
+				"prediction",
+				"revelation",
+				"scrying",
+				"sleep",
+				"teleportation",
+				"visual"
 			]
 		},
 		"weaponGroup": {
