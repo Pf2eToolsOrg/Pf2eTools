@@ -3019,7 +3019,7 @@
 												"Critical Success": "The target is unaffected.",
 												"Success": "The target is {@condition slowed} for 1 round.",
 												"Failure": "The target is {@condition confused} for 1 hour.",
-												"Critical Failure": "The target is controlled by the dragon pillar and remains within 60 feet of it at all times, defending the dragon pillar from all non-Cinderclaws. While a target is controlled, it is treated as a Cinderclaw ally by the dragon pillar. The dragon pillar can control up to 3 targets at a time; any targets in excess who critically fail this saving throw are instead confused for 1d4+1 rounds. A controlled creature can attempt a new Will save once every 24 hours to escape control, but doing so automatically causes the dragon pillar to attack it with a new eye beam to attempt to re-establish control. The control ends if the pillar is destroyed."
+												"Critical Failure": "The target is controlled by the dragon pillar and remains within 60 feet of it at all times, defending the dragon pillar from all non-Cinderclaws. While a target is controlled, it is treated as a Cinderclaw ally by the dragon pillar. The dragon pillar can control up to 3 targets at a time; any targets in excess who critically fail this saving throw are instead confused for {@dice 1d4+1} rounds. A controlled creature can attempt a new Will save once every 24 hours to escape control, but doing so automatically causes the dragon pillar to attack it with a new eye beam to attempt to re-establish control. The control ends if the pillar is destroyed."
 											}
 										}
 									]
@@ -3078,8 +3078,9 @@
 					],
 					"types": [
 						"electricity",
-						"round",
-						"targets"
+						"fire",
+						"poison",
+						"acid"
 					]
 				}
 			],
@@ -6925,7 +6926,8 @@
 				"trap"
 			],
 			"stealth": {
-				"notes": "DC +18 (expert)"
+				"dc": 18,
+				"minProf": "expert"
 			},
 			"description": [
 				"When any creature other than a devil enters the light, the magic interwoven in the light holds the creature in place and rings an alarm."
@@ -8480,7 +8482,8 @@
 				"trap"
 			],
 			"stealth": {
-				"notes": "DC +18 (expert)"
+				"dc": 18,
+				"minProf": "expert"
 			},
 			"description": [
 				"Six long blades, {@condition hidden} in grooves in the walls and floor, zigzag through different parts of this hallway when any pressure plate in the hallway intersection is depressed; there are so many plates it's impossible to avoid them when moving through the room. The blades retreat into the floor and move through the {@condition hidden} grooves before swinging out from the wall again in a different location."

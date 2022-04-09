@@ -67,9 +67,34 @@
 							}
 						},
 						"additionalProperties": false,
-						"required": [
-							
-						]
+						"minProperties": 1
+					},
+					"perception": {
+						"type": "object",
+						"properties": {
+							"dc": {
+								"type": "integer",
+								"minimum": 0
+							},
+							"bonus": {
+								"type": "integer",
+								"minimum": 0
+							},
+							"minProf": {
+								"type": "string",
+								"enum": [
+									"trained",
+									"expert",
+									"master",
+									"legendary"
+								]
+							},
+							"notes": {
+								"type": "string"
+							}
+						},
+						"additionalProperties": false,
+						"minProperties": 1
 					},
 					"description": {
 						"type": "array",
@@ -215,114 +240,26 @@
 						"additionalProperties": false,
 						"minProperties": 1
 					},
+					"abilities": {
+						"type": "array",
+						"items": {
+							"anyOf": [
+								{
+									"$ref": "#/definitions/abilityBlock"
+								}
+							]
+						},
+						"minItems": 1
+					},
 					"actions": {
 						"type": "array",
 						"items": {
-							"type": "object",
-							"oneOf": [
+							"anyOf": [
 								{
-									"properties": {
-										"type": {
-											"const": "ability"
-										},
-										"style": {
-											"type": "string",
-											"enum": [
-												"compact"
-											]
-										},
-										"name": {
-											"type": "string"
-										},
-										"entries": {
-											"type": "array",
-											"items": {
-												"$ref": "entry.json"
-											},
-											"minItems": 1
-										},
-										"trigger": {
-											"type": "string"
-										},
-										"activity": {
-											"type": "object",
-											"$ref": "utils.json#/definitions/activity"
-										},
-										"traits": {
-											"type": "array",
-											"items": {
-												"type": "string",
-												"anyOf": [
-													{
-														"$ref": "utils.json#/definitions/anyTrait"
-													}
-												]
-											},
-											"minItems": 1
-										}
-									},
-									"additionalProperties": false,
-									"required": [
-										"name"
-									]
+									"$ref": "#/definitions/abilityBlock"
 								},
 								{
-									"properties": {
-										"type": {
-											"const": "attack"
-										},
-										"name": {
-											"type": "string"
-										},
-										"range": {
-											"type": "string",
-											"enum": [
-												"Ranged",
-												"Melee"
-											]
-										},
-										"attack": {
-											"type": "integer"
-										},
-										"effects": {
-											"type": "array",
-											"items": {
-												
-											},
-											"minItems": 1
-										},
-										"traits": {
-											"type": "array",
-											"items": {
-												"type": "string",
-												"anyOf": [
-													{
-														"$ref": "utils.json#/definitions/anyTrait"
-													}
-												]
-											},
-											"minItems": 1
-										},
-										"damage": {
-											"type": "string"
-										},
-										"types": {
-											"type": "array",
-											"items": {
-												"type": "string",
-												"$ref": "utils.json#/definitions/damageType"
-											},
-											"minItems": 1
-										},
-										"noMAP": {
-											"type": "boolean",
-											"enum": [true]
-										}
-									},
-									"additionalProperties": false,
-									"required": [
-										"name"
-									]
+									"$ref": "#/definitions/attackBlock"
 								}
 							]
 						},
@@ -333,7 +270,10 @@
 						"items": {
 							"anyOf": [
 								{
-									"$ref": "#/properties/hazard/items/properties/actions/items"
+									"$ref": "#/definitions/abilityBlock"
+								},
+								{
+									"$ref": "#/definitions/attackBlock"
 								},
 								{
 									"$ref": "entry.json"
@@ -363,5 +303,107 @@
 		}
 	},
 	"required": ["hazard"],
-	"additionalProperties": false
+	"additionalProperties": false,
+	"definitions": {
+		"abilityBlock": {
+			"properties": {
+				"type": {
+					"const": "ability"
+				},
+				"style": {
+					"type": "string",
+					"enum": ["compact"]
+				},
+				"name": {
+					"type": "string"
+				},
+				"entries": {
+					"type": "array",
+					"items": {
+						"$ref": "entry.json"
+					},
+					"minItems": 1
+				},
+				"trigger": {
+					"type": "string"
+				},
+				"activity": {
+					"type": "object",
+					"$ref": "utils.json#/definitions/activity"
+				},
+				"traits": {
+					"type": "array",
+					"items": {
+						"type": "string",
+						"anyOf": [
+							{
+								"$ref": "utils.json#/definitions/anyTrait"
+							}
+						]
+					},
+					"minItems": 1
+				}
+			},
+			"additionalProperties": false,
+			"required": ["name"]
+		},
+		"attackBlock": {
+			"properties": {
+				"type": {
+					"const": "attack"
+				},
+				"name": {
+					"type": "string"
+				},
+				"range": {
+					"type": "string",
+					"enum": [
+						"Ranged",
+						"Melee"
+					]
+				},
+				"attack": {
+					"type": "integer"
+				},
+				"effects": {
+					"type": "array",
+					"items": {
+						
+					},
+					"minItems": 1
+				},
+				"traits": {
+					"type": "array",
+					"items": {
+						"type": "string",
+						"anyOf": [
+							{
+								"$ref": "utils.json#/definitions/anyTrait"
+							}
+						]
+					},
+					"minItems": 1
+				},
+				"damage": {
+					"type": "string"
+				},
+				"types": {
+					"type": "array",
+					"items": {
+						"type": "string",
+						"$ref": "utils.json#/definitions/damageType"
+					},
+					"minItems": 1
+				},
+				"noMAP": {
+					"type": "boolean",
+					"enum": [true]
+				}
+			},
+			"additionalProperties": false,
+			"required": [
+				"name"
+			]
+		}
+	}
 }
