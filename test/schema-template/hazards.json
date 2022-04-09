@@ -24,7 +24,7 @@
 					},
 					"level": {
 						"type": "integer",
-						"exclusiveMinimum": 0
+						"minimum": 0
 					},
 					"traits": {
 						"type": "array",
@@ -47,11 +47,11 @@
 						"properties": {
 							"dc": {
 								"type": "integer",
-								"exclusiveMinimum": 0
+								"minimum": 0
 							},
 							"bonus": {
 								"type": "integer",
-								"exclusiveMinimum": 0
+								"minimum": 0
 							},
 							"minProf": {
 								"type": "string",
@@ -112,15 +112,15 @@
 								"properties": {
 									"fort": {
 										"type": "integer",
-										"exclusiveMinimum": 0
+										"minimum": 0
 									},
 									"ref": {
 										"type": "integer",
-										"exclusiveMinimum": 0
+										"minimum": 0
 									},
 									"will": {
 										"type": "integer",
-										"exclusiveMinimum": 0
+										"minimum": 0
 									}
 								},
 								"additionalProperties": false,
@@ -128,10 +128,16 @@
 							},
 							"hardness": {
 								"type": "object",
+								"properties": {
+									"default": {
+										"type": "integer",
+										"minimum": 0
+									}
+								},
 								"patternProperties": {
 									"^.+$": {
 										"type": "integer",
-										"exclusiveMinimum": 0
+										"minimum": 0
 									}
 								},
 								"additionalProperties": false
@@ -139,6 +145,12 @@
 							"hp": {
 								"description": "Hit Points",
 								"type": "object",
+								"properties": {
+									"default": {
+										"type": "integer",
+										"exclusiveMinimum": 0
+									}
+								},
 								"patternProperties": {
 									"^.+$": {
 										"type": "integer",
@@ -150,10 +162,30 @@
 							"bt": {
 								"description": "Broken Threshold",
 								"type": "object",
+								"properties": {
+									"default": {
+										"type": "integer",
+										"minimum": 0
+									}
+								},
 								"patternProperties": {
 									"^.+$": {
 										"type": "integer",
 										"exclusiveMinimum": 0
+									}
+								},
+								"additionalProperties": false
+							},
+							"notes": {
+								"type": "object",
+								"properties": {
+									"default": {
+										"type": "string"
+									}
+								},
+								"patternProperties": {
+									"^.+$": {
+										"type": "string"
 									}
 								},
 								"additionalProperties": false
@@ -178,15 +210,6 @@
 									"type": "string"
 								},
 								"minItems": 1
-							},
-							"notes": {
-								"type": "object",
-								"properties": {
-									"default": {
-										"type": "string"
-									}
-								},
-								"additionalProperties": false
 							}
 						},
 						"additionalProperties": false,
@@ -308,7 +331,14 @@
 					"routine": {
 						"type": "array",
 						"items": {
-							"$ref": "entry.json"
+							"anyOf": [
+								{
+									"$ref": "#/properties/hazard/items/properties/actions/items"
+								},
+								{
+									"$ref": "entry.json"
+								}
+							]
 						},
 						"minItems": 1
 					},

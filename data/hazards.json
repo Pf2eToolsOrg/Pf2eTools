@@ -1522,9 +1522,9 @@
 			"page": 21,
 			"level": 13,
 			"traits": [
-				"Electricity",
+				"electricity",
 				"magical",
-				"Sonic",
+				"sonic",
 				"trap"
 			],
 			"stealth": {
@@ -2035,7 +2035,7 @@
 			"page": 58,
 			"level": 11,
 			"traits": [
-				"Alchemical",
+				"alchemical",
 				"complex",
 				"mechanical",
 				"trap"
@@ -2405,7 +2405,6 @@
 						"the target's save result is one degree worse."
 					],
 					"damage": "The target suffers an effect corresponding to the eye beam's color, as described on page 29, but with a save DC of 32. On a critical hit, the target's save result is one degree worse.",
-					"types": [],
 					"noMAP": true
 				},
 				{
@@ -2430,7 +2429,7 @@
 			"traits": [
 				"unique",
 				"complex",
-				"Fire",
+				"fire",
 				"magical",
 				"trap"
 			],
@@ -2870,14 +2869,19 @@
 					"name": "apocalypse beam",
 					"attack": 16,
 					"effects": [
+						"fire damage from the burning city [a]",
 						"bludgeoning damage from the tsunami [b]",
 						"sonic damage from the earthquake [c]",
 						"mental damage from the monster [d]",
-						"and negative damage from the undead uprising [e])"
+						"negative damage from the undead uprising [e])"
 					],
 					"damage": "{@dice 2d10+13} damage (fire damage from the burning city [a], bludgeoning damage from the tsunami [b], sonic damage from the earthquake [c], mental damage from the monster [d], and negative damage from the undead uprising [e])",
 					"types": [
-						"damage"
+						"fire",
+						"bludgeoning",
+						"sonic",
+						"mental",
+						"negative"
 					],
 					"noMAP": true
 				}
@@ -3447,8 +3451,8 @@
 			"page": 523,
 			"level": 3,
 			"traits": [
-				"Electricity",
-				"Evocation",
+				"electricity",
+				"evocation",
 				"magical",
 				"trap"
 			],
@@ -3761,7 +3765,7 @@
 			"level": 2,
 			"traits": [
 				"environmental",
-				"Fire"
+				"fire"
 			],
 			"stealth": {
 				"dc": 15
@@ -3943,7 +3947,6 @@
 						"target is subjected to a {@spell crushing despair} spell (DC 33)"
 					],
 					"damage": "target is subjected to a {@spell crushing despair} spell (DC 33)",
-					"types": [],
 					"noMAP": true
 				},
 				{
@@ -3962,7 +3965,6 @@
 						"target is subjected to a {@spell feeblemind} spell (DC 36)"
 					],
 					"damage": "target is subjected to a {@spell feeblemind} spell (DC 36)",
-					"types": [],
 					"noMAP": true
 				},
 				{
@@ -3979,7 +3981,6 @@
 						"target is subjected to a {@spell spirit blast} spell (DC 36)"
 					],
 					"damage": "target is subjected to a {@spell spirit blast} spell (DC 36)",
-					"types": [],
 					"noMAP": true
 				},
 				{
@@ -3988,7 +3989,6 @@
 						"unit": "reaction"
 					},
 					"trigger": "The tank reaches its {@condition Broken}",
-					"entries": [],
 					"type": "ability",
 					"name": "Spill Eyeballs"
 				},
@@ -4135,7 +4135,7 @@
 			"level": 20,
 			"traits": [
 				"complex",
-				"Illusion",
+				"illusion",
 				"magical",
 				"trap"
 			],
@@ -4183,7 +4183,6 @@
 						"teleportation"
 					],
 					"trigger": "A creature moves between the two glass faces",
-					"entries": [],
 					"type": "ability",
 					"name": "Spawn Mirror Duplicate"
 				},
@@ -4254,8 +4253,8 @@
 			"page": 524,
 			"level": 5,
 			"traits": [
-				"Evocation",
-				"Fire",
+				"evocation",
+				"fire",
 				"magical",
 				"trap"
 			],
@@ -4300,7 +4299,7 @@
 			"traits": [
 				"rare",
 				"complex",
-				"Fire",
+				"fire",
 				"magical",
 				"trap"
 			],
@@ -4491,7 +4490,7 @@
 			"level": 16,
 			"traits": [
 				"rare",
-				"Cold",
+				"cold",
 				"complex",
 				"magical",
 				"trap"
@@ -5120,8 +5119,7 @@
 					],
 					"damage": "{@damage 6d8+20} bludgeoning plus the target is knocked back 10 feet and must succeed at a DC 30 Will save or be unable to enter the edifice through any entrance for 24 hours (on a critical hit, the target automatically fails the Will save)",
 					"types": [
-						"bludgeoning",
-						"hours"
+						"bludgeoning"
 					],
 					"noMAP": true
 				}
@@ -5683,7 +5681,7 @@
 			"level": 20,
 			"traits": [
 				"complex",
-				"Environment",
+				"environmental",
 				"magical"
 			],
 			"stealth": {
@@ -5775,7 +5773,7 @@
 			"level": 8,
 			"traits": [
 				"rare",
-				"Electricity",
+				"electricity",
 				"mechanical",
 				"trap"
 			],
@@ -5926,15 +5924,10 @@
 					],
 					"trigger": "A creature who doesn't bear the sigil of Kharnas attempts to open the door",
 					"entries": [
-						"A surge of the Radiant Spark's latent power courses through the glyph and washes over the triggering creature. If the creature is undead, it takes {@damage 10d10} positive damage. If it's living, it instead regains {@dice 10d10} Hit Points. It then must succeed at a DC 40 Will save or be affected by a 6th-level {@spell dominate} spell. The spell commands the affected creature to attack the nearest creature who doesn't bear the sigil."
+						"A surge of the Radiant Spark's latent power courses through the glyph and washes over the triggering creature. If the creature is undead, it takes {@damage 10d10} positive damage. If it's living, it instead regains {@dice 10d10} Hit Points. It then must succeed at a DC 40 Will save or be affected by a 6th-level {@spell dominate} spell. The spell commands the affected creature to attack the nearest creature who doesn't bear the sigil of Kharnas."
 					],
 					"type": "ability",
 					"name": "Dominate"
-				},
-				{
-					"entries": [],
-					"type": "ability",
-					"name": "of Kharnas."
 				}
 			],
 			"reset": [
@@ -6256,7 +6249,7 @@
 			"page": 32,
 			"level": 19,
 			"traits": [
-				"Transmutation",
+				"transmutation",
 				"magical",
 				"trap"
 			],
@@ -6364,7 +6357,7 @@
 			"level": 14,
 			"traits": [
 				"uncommon",
-				"Clockwork",
+				"clockwork",
 				"complex",
 				"haunt",
 				"mechanical"
@@ -6397,7 +6390,9 @@
 				"bt": {
 					"default": 35
 				},
-				"notes": "per mannequin",
+				"notes": {
+					"default": "per mannequin"
+				},
 				"immunities": [
 					"critical hits",
 					"object immunities",
@@ -6636,10 +6631,10 @@
 			"level": 21,
 			"traits": [
 				"environmental",
-				"Evocation",
-				"Fire",
-				"Kaiju",
-				"Primal"
+				"evocation",
+				"fire",
+				"kaiju",
+				"primal"
 			],
 			"stealth": {
 				"dc": 10
@@ -6974,10 +6969,10 @@
 			"level": 6,
 			"traits": [
 				"rare",
-				"Auditory",
+				"auditory",
 				"complex",
 				"haunt",
-				"Sonic"
+				"sonic"
 			],
 			"stealth": {
 				"bonus": 10
@@ -7249,8 +7244,7 @@
 				{
 					"activity": {
 						"number": 1,
-						"unit": "free",
-						"entry": "{@as F}"
+						"unit": "free"
 					},
 					"trigger": "A creature within the active gallery finishes an action.",
 					"entries": [
@@ -7926,8 +7920,7 @@
 				{
 					"activity": {
 						"number": 1,
-						"unit": "free",
-						"entry": "{@as F}"
+						"unit": "free"
 					},
 					"trigger": "A Huge or smaller creature walks onto the quicksand.",
 					"entries": [
@@ -9195,7 +9188,7 @@
 			"traits": [
 				"uncommon",
 				"mechanical",
-				"Steam",
+				"steam",
 				"trap"
 			],
 			"stealth": {
@@ -9605,7 +9598,7 @@
 			"level": 18,
 			"traits": [
 				"environmental",
-				"Kaiju"
+				"kaiju"
 			],
 			"stealth": {
 				"dc": 10
@@ -10377,10 +10370,9 @@
 			"page": 10,
 			"level": 8,
 			"traits": [
-				"R",
-				"Are",
+				"rare",
 				"complex",
-				"Fire",
+				"fire",
 				"magical",
 				"trap"
 			],
@@ -10850,8 +10842,7 @@
 					"damage": "{@damage 3d6} bludgeoning and the target is {@condition grabbed} and pulled off the ground ({@action Escape} DC 22). The target takes {@damage 1d6} bludgeoning damage at the end of each of its turns as long as it's caught in the noose.",
 					"types": [
 						"bludgeoning"
-					],
-					"noMAP": false
+					]
 				}
 			]
 		},
@@ -10861,7 +10852,7 @@
 			"page": 17,
 			"level": 2,
 			"traits": [
-				"Mehcanical",
+				"mechanical",
 				"trap"
 			],
 			"stealth": {
@@ -10950,8 +10941,8 @@
 			"page": 34,
 			"level": 18,
 			"traits": [
-				"Curse",
-				"Magic",
+				"curse",
+				"magical",
 				"trap"
 			],
 			"stealth": {
@@ -11035,12 +11026,7 @@
 				}
 			],
 			"routine": [
-				"(1 action) On its initiative, the wrath of the destroyer targets the closest target in area C6 with Face.",
-				{
-					"entries": [],
-					"type": "ability",
-					"name": "of the Fatal Divine."
-				},
+				"(1 action) On its initiative, the wrath of the destroyer targets the closest target in area C6 with Face of the Fatal Divine.",
 				{
 					"activity": {
 						"number": 1,
