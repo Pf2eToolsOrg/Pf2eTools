@@ -3295,7 +3295,7 @@ Renderer.utils = {
 	async pGetQuickRules (prop) {
 		const data = await DataUtil.loadJSON(`${Renderer.get().baseUrl}data/quickrules.json`);
 		const renderer = Renderer.get().setFirstSection(true);
-		const toRender = data[prop];
+		const toRender = data.quickRules[prop];
 		const textStack = [""];
 		renderer.recursiveRender(toRender.entries, textStack, {prefix: "<p class='pf2-p'>", suffix: "</p>"});
 		return $$`${textStack.join("")}${Renderer.utils.getPageP(toRender)}`;
