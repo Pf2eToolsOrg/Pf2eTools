@@ -114,7 +114,8 @@
 								"minItems": 1
 							}
 						},
-						"additionalProperties": false
+						"additionalProperties": false,
+						"minProperties": 1
 					},
 					"defenses": {
 						"type": "object",
@@ -130,7 +131,8 @@
 										"type": "string"
 									}
 								},
-								"additionalProperties": false
+								"additionalProperties": false,
+								"minProperties": 1
 							},
 							"savingThrows": {
 								"type": "object",
@@ -165,7 +167,8 @@
 										"minimum": 0
 									}
 								},
-								"additionalProperties": false
+								"additionalProperties": false,
+								"minProperties": 1
 							},
 							"hp": {
 								"description": "Hit Points",
@@ -182,7 +185,8 @@
 										"exclusiveMinimum": 0
 									}
 								},
-								"additionalProperties": false
+								"additionalProperties": false,
+								"minProperties": 1
 							},
 							"bt": {
 								"description": "Broken Threshold",
@@ -199,7 +203,8 @@
 										"exclusiveMinimum": 0
 									}
 								},
-								"additionalProperties": false
+								"additionalProperties": false,
+								"minProperties": 1
 							},
 							"notes": {
 								"type": "object",
@@ -213,7 +218,8 @@
 										"type": "string"
 									}
 								},
-								"additionalProperties": false
+								"additionalProperties": false,
+								"minProperties": 1
 							},
 							"weaknesses": {
 								"type": "array",
@@ -368,7 +374,7 @@
 				"effects": {
 					"type": "array",
 					"items": {
-						
+						"$ref": "entry.json"
 					},
 					"minItems": 1
 				},
