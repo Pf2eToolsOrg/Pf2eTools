@@ -7,31 +7,7 @@
 	"version": "0.0.1",
 	"properties": {
 		"organizationFluff": {
-			"type": "array",
-			"items": {
-				"type": "object",
-				"properties": {
-					"source": {
-						"type": "string",
-						"$ref": "utils.json#/definitions/sourceList"
-					},
-					"name": {
-						"type": "string"
-					},
-					"page": {
-						"type": "integer"
-					},
-					"lore": {
-						"type": "array",
-						"items": {
-							"$ref": "entry.json"
-						}
-					}
-				},
-				"additionalProperties": false,
-				"required": ["source", "name", "page"]
-			},
-			"uniqueItems": true
+			"$ref": "utils.json#/definitions/genericFluffArray"
 		}
 	},
 	"additionalProperties": false,

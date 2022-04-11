@@ -1294,7 +1294,7 @@
 					"type": "object",
 					"properties": {
 						"type": {
-							"const": "inset"
+							"const": "pf2-inset"
 						},
 						"name": {
 							"type": "string"
@@ -1308,41 +1308,6 @@
 						},
 						"data": {
 							"type": "object"
-						},
-						"page": {
-							"type": "integer"
-						},
-						"source": {
-							"type": "string"
-						},
-						"id": {
-							"type": "string"
-						},
-						"style": {
-							"type": "string"
-						}
-					},
-					"required": ["entries"]
-				}
-			]
-		},
-		"entryInsetReadaloud": {
-			"allOf": [
-				{
-					"$ref": "#/definitions/entry"
-				},
-				{
-					"type": "object",
-					"properties": {
-						"type": {
-							"const": "insetReadaloud"
-						},
-						"entries": {
-							"type": "array",
-							"items": {
-								"$ref": "#"
-							},
-							"minItems": 1
 						},
 						"page": {
 							"type": "integer"
@@ -2271,9 +2236,6 @@
 		},
 		{
 			"$ref": "#/definitions/entryInset"
-		},
-		{
-			"$ref": "#/definitions/entryInsetReadaloud"
 		},
 		{
 			"$ref": "#/definitions/entryVariant"
