@@ -61,7 +61,6 @@
 									"$ref": "utils.json#/definitions/className"
 								}
 							]
-							
 						},
 						"minItems": 1,
 						"uniqueItems": true
@@ -83,9 +82,11 @@
 						"minItems": 1,
 						"uniqueItems": true
 					},
-					"ability":{
+					"ability": {
 						"type": "boolean",
-						"enum": [true]
+						"enum": [
+							true
+						]
 					}
 				},
 				"additionalProperties": false,
@@ -99,5 +100,7 @@
 		}
 	},
 	"additionalProperties": false,
-	"required": ["background"]
+	"required": [
+		"background"
+	]
 }

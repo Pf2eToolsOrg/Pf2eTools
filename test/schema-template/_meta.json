@@ -60,7 +60,9 @@
 						"type": "string",
 						"format": "uri",
 						"not": {
-							"enum": [""]
+							"enum": [
+								""
+							]
 						},
 						"description": "A direct link to the source, if available in web form or on a store."
 					},
@@ -70,7 +72,12 @@
 					}
 				},
 				"additionalProperties": false,
-				"required": ["json", "abbreviation", "full", "version"]
+				"required": [
+					"json",
+					"abbreviation",
+					"full",
+					"version"
+				]
 			},
 			"uniqueItems": true
 		},
@@ -105,7 +112,10 @@
 							"description": "HTML hex color code this source should use when displayed in lists, e.g. 'ff00ff'"
 						}
 					},
-					"required": ["full", "short"]
+					"required": [
+						"full",
+						"short"
+					]
 				}
 			}
 		},
@@ -141,13 +151,16 @@
 								"description": "If true, this currency will be used as a fallback when the copper value of the item is a fractional value (e.g. a single ball bearing is worth 0.1 cp; marking gold as the fallback currency would have this be converted to gold)."
 							}
 						},
-						"required": ["coin", "mult"]
+						"required": [
+							"coin",
+							"mult"
+						]
 					}
 				}
 			}
 		},
 		"dependencies": {
-			"description": "A map of `\"<data property>\": [\"<JsonSource1>\", ..., \"<JsonSourceN>\"]`. Entities from these sources can then be extended/referenced in this file.",
+			"description": "A map of `\"<data property>\": [\"<JsonSource1>\",..., \"<JsonSourceN>\"]`. Entities from these sources can then be extended/referenced in this file.",
 			"type": "object",
 			"patternProperties": {
 				"^[a-zA-Z]+$": {
@@ -175,7 +188,5 @@
 			"type": "boolean"
 		}
 	},
-	"required": [
-		
-	]
+	"required": []
 }

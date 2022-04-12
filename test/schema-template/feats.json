@@ -64,12 +64,23 @@
 								"const": true
 							},
 							"ancestry": {
-								"type": ["string", "array"],
+								"type": [
+									"string",
+									"array"
+								],
 								"$ref": "utils.json#/definitions/ancestryName"
 							},
 							"skill": {
-								"not": { "enum": [false] },
-								"type": ["string", "boolean", "array"]
+								"not": {
+									"enum": [
+										false
+									]
+								},
+								"type": [
+									"string",
+									"boolean",
+									"array"
+								]
 							},
 							"archetype": {
 								"type": "array",
@@ -90,7 +101,7 @@
 					},
 					"traits": {
 						"type": "array",
-						"items":{
+						"items": {
 							"type": "string",
 							"$ref": "utils.json#/definitions/anyTrait"
 						},
@@ -117,12 +128,18 @@
 						"type": "string"
 					}
 				},
-				"required": ["name", "source", "entries"],
+				"required": [
+					"name",
+					"source",
+					"entries"
+				],
 				"additionalProperties": false
 			},
 			"uniqueItems": true
 		}
 	},
-	"required": ["feat"],
+	"required": [
+		"feat"
+	],
 	"additionalProperties": false
 }

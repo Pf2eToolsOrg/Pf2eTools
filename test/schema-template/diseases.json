@@ -23,7 +23,10 @@
 					},
 					"type": {
 						"type": "string",
-						"enum": ["Disease", "Curse"]
+						"enum": [
+							"Disease",
+							"Curse"
+						]
 					},
 					"level": {
 						"oneOf": [
@@ -63,11 +66,18 @@
 					}
 				},
 				"additionalProperties": false,
-				"required": ["source", "name", "entries", "page"]
+				"required": [
+					"source",
+					"name",
+					"entries",
+					"page"
+				]
 			},
 			"uniqueItems": true
 		}
 	},
 	"additionalProperties": false,
-	"required": ["disease"]
+	"required": [
+		"disease"
+	]
 }

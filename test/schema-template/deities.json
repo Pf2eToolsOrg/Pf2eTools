@@ -33,7 +33,9 @@
 					},
 					"core": {
 						"type": "boolean",
-						"enum": [true]
+						"enum": [
+							true
+						]
 					},
 					"alignment": {
 						"type": "array",
@@ -172,7 +174,11 @@
 								"properties": {
 									"preface": {
 										"type": "string",
-										"not": {"enum": [""]}
+										"not": {
+											"enum": [
+												""
+											]
+										}
 									},
 									"entry": {
 										"type": "string"
@@ -189,15 +195,21 @@
 									},
 									"shield": {
 										"type": "integer",
-										"enum": [15]
+										"enum": [
+											15
+										]
 									},
 									"ignoreTerrain": {
 										"type": "boolean",
-										"enum": [true]
+										"enum": [
+											true
+										]
 									},
 									"airWalk": {
 										"type": "boolean",
-										"enum": [true]
+										"enum": [
+											true
+										]
 									},
 									"melee": {
 										"type": "object",
@@ -325,10 +337,12 @@
 					},
 					"hasLore": {
 						"type": "boolean",
-						"enum": [true]
+						"enum": [
+							true
+						]
 					},
 					"images": {
-						"type":"array",
+						"type": "array",
 						"items": {
 							"type": "string"
 						}
@@ -343,6 +357,8 @@
 			}
 		}
 	},
-	"required": ["deity"],
+	"required": [
+		"deity"
+	],
 	"additionalProperties": false
 }
