@@ -68,11 +68,15 @@
 							},
 							"basic": {
 								"type": "boolean",
-								"enum": [true]
+								"enum": [
+									true
+								]
 							},
 							"item": {
 								"type": "boolean",
-								"enum": [true]
+								"enum": [
+									true
+								]
 							},
 							"skill": {
 								"type": "object",
@@ -133,11 +137,17 @@
 					}
 				},
 				"additionalProperties": false,
-				"required": ["source", "name", "entries"]
+				"required": [
+					"source",
+					"name",
+					"entries"
+				]
 			},
 			"uniqueItems": true
 		}
 	},
-	"required": ["action"],
+	"required": [
+		"action"
+	],
 	"additionalProperties": false
 }

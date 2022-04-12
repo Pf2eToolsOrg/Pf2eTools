@@ -25,15 +25,23 @@
 						"type": "array",
 						"items": {
 							"$ref": "entry.json"
-						}
+						},
+						"minItems": 1
 					}
 				},
 				"additionalProperties": false,
-				"required": ["source", "name", "entries", "page"]
+				"required": [
+					"source",
+					"name",
+					"entries",
+					"page"
+				]
 			},
 			"uniqueItems": true
 		}
 	},
 	"additionalProperties": false,
-	"required": ["skill"]
+	"required": [
+		"skill"
+	]
 }

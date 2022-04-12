@@ -42,7 +42,10 @@
 				"properties": {
 					"heritage": {
 						"$ref": "heritages.json#/properties/heritage",
-						"required": ["ancestryName", "ancestrySource"]
+						"required": [
+							"ancestryName",
+							"ancestrySource"
+						]
 					}
 				}
 			}
@@ -135,7 +138,7 @@
 			"$ref": "rituals.json#/properties/ritual"
 		},
 		"vehicle": {
-			"type": "array"
+			"$ref": "vehicles.json#/properties/vehicle"
 		},
 		"trait": {
 			"$ref": "traits.json#/properties/trait"
@@ -171,5 +174,6 @@
 			"$ref": "quickRules.json#/properties/quickRules"
 		}
 	},
-	"additionalProperties": false
+	"additionalProperties": false,
+	"minProperties": 1
 }

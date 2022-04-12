@@ -57,25 +57,31 @@
 					"page": {
 						"type": "integer"
 					},
-                    "traits": {
-                        "type": "array",
-                        "items": {
-                            "type": "string",
-                            "$ref": "utils.json#/definitions/anyTrait"
-                        },
-                        "minItems": 1,
-                        "uniqueItems": true
-                    },
+					"traits": {
+						"type": "array",
+						"items": {
+							"type": "string",
+							"$ref": "utils.json#/definitions/anyTrait"
+						},
+						"minItems": 1,
+						"uniqueItems": true
+					},
 					"values": {
 						"type": "array"
 					}
 				},
 				"additionalProperties": false,
-				"required": ["source", "name", "page"]
+				"required": [
+					"source",
+					"name",
+					"page"
+				]
 			},
 			"uniqueItems": true
 		}
 	},
 	"additionalProperties": false,
-	"required": ["organization"]
+	"required": [
+		"organization"
+	]
 }
