@@ -296,6 +296,16 @@
 				}
 			]
 		},
+		"entriesAbilityBlock": {
+			"allOf": [
+				{
+					"$ref": "#/definitions/entry"
+				},
+				{
+					"$ref": "utils.json#/definitions/abilityBlock"
+				}
+			]
+		},
 		"entriesLevelEffect": {
 			"allOf": [
 				{
@@ -2327,6 +2337,9 @@
 		},
 		{
 			"$ref": "#/definitions/entryPF2-hx"
+		},
+		{
+			"$ref": "#/definitions/entriesAbilityBlock"
 		},
 		{
 			"$ref": "#/definitions/entriesOtherSource"

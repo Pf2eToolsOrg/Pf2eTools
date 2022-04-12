@@ -507,6 +507,9 @@
 				"ratfolk",
 				"dhampir",
 				"duskwalker",
+				"ganzi",
+				"ifrit",
+				"geniekin",
 				"gnome",
 				"goblin",
 				"tiefling",
@@ -523,7 +526,13 @@
 				"gnoll",
 				"lizardfolk",
 				"conrasu",
-				"shisk"
+				"shisk",
+				"oread",
+				"suli",
+				"sylph",
+				"undine",
+				"beastkin",
+				"aphorite"
 			]
 		},
 		"skillName": {
@@ -911,11 +920,16 @@
 				"style": {
 					"type": "string",
 					"enum": [
-						"compact"
+						"compact",
+						"full"
 					]
 				},
 				"name": {
 					"type": "string"
+				},
+				"page": {
+					"type": "integer",
+					"minimum": 0
 				},
 				"entries": {
 					"type": "array",
