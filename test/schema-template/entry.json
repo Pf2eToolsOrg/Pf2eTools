@@ -707,7 +707,7 @@
 						},
 						"id": {
 							"type": "string",
-							"pattern": "^\\d+-?\\d+$"
+							"pattern": "^\\d+(-?\\d+)?$"
 						},
 						"type": {
 							"const": "table"
@@ -766,7 +766,7 @@
 						"colSizes": {
 							"type": "array",
 							"items": {
-								"type": "integer",
+								"type": "number",
 								"exclusiveMinimum": 0
 							},
 							"minItems": 1
@@ -775,25 +775,29 @@
 							"type": "array",
 							"items": {
 								"type": "string"
-							}
+							},
+							"minItems": 1
 						},
 						"colStyles": {
 							"type": "array",
 							"items": {
 								"type": "string"
-							}
+							},
+							"minItems": 1
 						},
 						"rowLabels": {
 							"type": "array",
 							"items": {
 								"type": "string"
-							}
+							},
+							"minItems": 1
 						},
 						"rowStyles": {
 							"type": "array",
 							"items": {
 								"type": "string"
-							}
+							},
+							"minItems": 1
 						},
 						"rows": {
 							"type": "array",
@@ -807,15 +811,27 @@
 									},
 									{
 										"$ref": "#/definitions/entryTableRow"
+									},
+									{
+										"$ref": "#/definitions/entryTableMultiRow"
 									}
 								]
-							}
+							},
+							"minItems": 1
+						},
+						"intro": {
+							"type": "array",
+							"items": {
+								"$ref": "#"
+							},
+							"minItems": 1
 						},
 						"footnotes": {
 							"type": "array",
 							"items": {
 								"$ref": "#"
-							}
+							},
+							"minItems": 1
 						},
 						"data": {
 							"type": "object"
@@ -884,6 +900,45 @@
 					"required": [
 						"type",
 						"row"
+					],
+					"additionalProperties": false
+				}
+			]
+		},
+		"entryTableMultiRow": {
+			"allOf": [
+				{
+					"$ref": "#/definitions/entry"
+				},
+				{
+					"type": "object",
+					"properties": {
+						"type": {
+							"const": "multiRow"
+						},
+						"style": {
+							"type": "string"
+						},
+						"rows": {
+							"type": "array",
+							"items": {
+								"anyOf": [
+									{
+										"type": "array",
+										"items": {
+											"$ref": "#"
+										}
+									},
+									{
+										"$ref": "#/definitions/entryTableRow"
+									}
+								]
+							}
+						}
+					},
+					"required": [
+						"type",
+						"rows"
 					],
 					"additionalProperties": false
 				}
@@ -2373,6 +2428,9 @@
 		},
 		{
 			"$ref": "#/definitions/entryTableRow"
+		},
+		{
+			"$ref": "#/definitions/entryTableMultiRow"
 		},
 		{
 			"$ref": "#/definitions/entryTableCell"
