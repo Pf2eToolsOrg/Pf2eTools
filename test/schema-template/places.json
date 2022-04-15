@@ -384,12 +384,56 @@
 					}
 				},
 				"additionalProperties": false,
-				"required": [
-					"source",
-					"name",
-					"category",
-					"page"
-				]
+				"if": {
+					"properties": {
+						"category": {
+							"const": "Plane"
+						}
+					},
+					"required": [
+						"category"
+					]
+				},
+				"then": {
+					"required": [
+						"source",
+						"name",
+						"category",
+						"page",
+						"planeData",
+						"entries"
+					]
+				},
+				"else": {
+					"if": {
+						"properties": {
+							"category": {
+								"const": "Settlement"
+							}
+						},
+						"required": [
+							"category"
+						]
+					},
+					"then": {
+						"required": [
+							"source",
+							"name",
+							"category",
+							"page",
+							"settlementData"
+						]
+					},
+					"else": {
+						"required": [
+							"source",
+							"name",
+							"category",
+							"page",
+							"nationData"
+						]
+					}
+				}
 			},
 			"uniqueItems": true
 		}
