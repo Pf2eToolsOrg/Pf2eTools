@@ -1478,11 +1478,11 @@
 				},
 				"languages": [
 					"{@language Common}",
-					"Kelish",
-					"Osiriani"
+					"{@language Kelish}",
+					"{@language Osiriani}"
 				],
 				"religions": [
-					"{@deity Besmara}",
+					"{@deity Besmara|LOGM}",
 					"{@deity Cayden Cailean}",
 					"{@deity Gozreh}"
 				],
@@ -1494,7 +1494,9 @@
 				"features": [
 					{
 						"name": "Pirate Town",
-						"entry": "Port Peril thrives on black-market and stolen goods. Items that might be difficult to acquire or dispose of in other settlements due to legality can be purchased and sold more easily in Port Peril. NPCs begin with an attitude one step worse than usual toward characters openly displaying insignia of law-enforcement agencies, religious iconography of lawful deities, or affiliation with a lawful nation."
+						"entries": [
+							"Port Peril thrives on black-market and stolen goods. Items that might be difficult to acquire or dispose of in other settlements due to legality can be purchased and sold more easily in Port Peril. NPCs begin with an attitude one step worse than usual toward characters openly displaying insignia of law-enforcement agencies, religious iconography of lawful deities, or affiliation with a lawful nation."
+						]
 					}
 				]
 			},
@@ -1668,9 +1670,21 @@
 				],
 				"religions": [
 					"Laws of Mortality",
-					"{@b Prohibited:} all divine religions"
+					{
+						"type": "Prohibited",
+						"religions": [
+							"all divine religions"
+						]
+					}
 				],
-				"irreligious": "All worship of deities is prohibited by Rahadoumi law. Religious symbols and items are confiscated and proselytization incurs a heavy fine. Rahadoumi citizens perform healing through only mundane means or non-divine magic.",
+				"features": [
+					{
+						"name": "Irreligious",
+						"entries": [
+							"All worship of deities is prohibited by Rahadoumi law. Religious symbols and items are confiscated and proselytization incurs a heavy fine. Rahadoumi citizens perform healing through only mundane means or non-divine magic."
+						]
+					}
+				],
 				"exports": [
 					"base metals",
 					"fine cloth",
