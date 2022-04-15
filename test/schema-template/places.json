@@ -125,7 +125,31 @@
 							"religions": {
 								"type": "array",
 								"items": {
-									"type": "string"
+									"type": [
+										"string",
+										"object"
+									],
+									"properties": {
+										"type": {
+											"type": "string",
+											"enum": [
+												"Prohibited"
+											]
+										},
+										"religions": {
+											"type": "array",
+											"items": {
+												"type": "string"
+											},
+											"uniqueItems": true,
+											"minItems": 1
+										}
+									},
+									"additionalProperties": false,
+									"required": [
+										"type",
+										"religions"
+									]
 								},
 								"uniqueItems": true,
 								"minItems": 1
@@ -146,14 +170,18 @@
 										"name": {
 											"type": "string"
 										},
-										"entry": {
-											"type": "string"
+										"entries": {
+											"type": "array",
+											"items": {
+												"$ref": "entry.json"
+											},
+											"minItems": 1
 										}
 									},
 									"additionalProperties": false,
 									"required": [
 										"name",
-										"entry"
+										"entries"
 									]
 								},
 								"uniqueItems": true,
@@ -205,13 +233,34 @@
 							"religions": {
 								"type": "array",
 								"items": {
-									"type": "string"
+									"type": [
+										"string",
+										"object"
+									],
+									"properties": {
+										"type": {
+											"type": "string",
+											"enum": [
+												"Prohibited"
+											]
+										},
+										"religions": {
+											"type": "array",
+											"items": {
+												"type": "string"
+											},
+											"uniqueItems": true,
+											"minItems": 1
+										}
+									},
+									"additionalProperties": false,
+									"required": [
+										"type",
+										"religions"
+									]
 								},
 								"uniqueItems": true,
 								"minItems": 1
-							},
-							"irreligious": {
-								"type": "string"
 							},
 							"imports": {
 								"type": "array",
@@ -249,6 +298,31 @@
 								"type": "array",
 								"items": {
 									"type": "string"
+								},
+								"uniqueItems": true,
+								"minItems": 1
+							},
+							"features": {
+								"type": "array",
+								"items": {
+									"type": "object",
+									"properties": {
+										"name": {
+											"type": "string"
+										},
+										"entries": {
+											"type": "array",
+											"items": {
+												"$ref": "entry.json"
+											},
+											"minItems": 1
+										}
+									},
+									"additionalProperties": false,
+									"required": [
+										"name",
+										"entries"
+									]
 								},
 								"uniqueItems": true,
 								"minItems": 1
@@ -310,12 +384,58 @@
 					}
 				},
 				"additionalProperties": false,
-				"required": [
-					"source",
-					"name",
-					"category",
-					"page"
-				]
+				"if": {
+					"properties": {
+						"category": {
+							"const": "Plane"
+						}
+					},
+					"required": [
+						"category"
+					]
+				},
+				"then": {
+					"required": [
+						"source",
+						"name",
+						"category",
+						"page",
+						"planeData",
+						"entries"
+					]
+				},
+				"else": {
+					"if": {
+						"properties": {
+							"category": {
+								"const": "Settlement"
+							}
+						},
+						"required": [
+							"category"
+						]
+					},
+					"then": {
+						"required": [
+							"source",
+							"name",
+							"category",
+							"page",
+							"settlementData",
+							"residents"
+						]
+					},
+					"else": {
+						"required": [
+							"source",
+							"name",
+							"category",
+							"page",
+							"nationData",
+							"residents"
+						]
+					}
+				}
 			},
 			"uniqueItems": true
 		}
