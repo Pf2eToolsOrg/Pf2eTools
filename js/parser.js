@@ -449,11 +449,13 @@ Parser.proficiencyToNumber = function (prof) {
 	}
 }
 Parser.genderToFull = function (g) {
-	switch (g[0].toLowerCase()) {
+	switch (g.toLowerCase()) {
 		case "m": return "male";
 		case "f": return "female";
-		case "nb": return "non-binary";
-		default: return "doom";
+		case "a": return "agender";
+		case "gf": return "genderfluid";
+		case "nb": return "nonbinary";
+		default: return "";
 	}
 }
 Parser.savingThrowAbvToFull = function (abv) {

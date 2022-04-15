@@ -3898,11 +3898,23 @@ Renderer.nation = {
 		const renderer = Renderer.get()
 		const renderStack = []
 		it.residents.forEach(element => {
+			const residentStack = []
 			renderStack.push(`<p class="pf2-stat pf2-stat__section">`)
-			renderStack.push(renderer.render(`<strong>${element.name}</strong> ({@trait ${element.alignment}} ${Parser.genderToFull(element.gender)} ${element.ancestry} ${element.position}) ${element.bond}`))
+			renderStack.push(renderer.render(`<strong>${element.name}</strong> `))
+			if (element.alignment || element.gender || element.ancestry || element.position) {
+				renderStack.push(`(`)
+				if (element.alignment) residentStack.push(`{@trait ${element.alignment}}`)
+				if (element.gender) residentStack.push(Parser.genderToFull(element.gender))
+				if (element.ancestry) residentStack.push(element.ancestry)
+				if (element.position) residentStack.push(element.position)
+				if (element.level) residentStack.push(element.level)
+				renderStack.push(residentStack.join(" "))
+				renderStack.push(`) `)
+			}
+			if (element.bond) renderStack.push(element.bond)
 			renderStack.push(`</p>`)
 		});
-		return renderStack.join("")
+		return renderer.render(renderStack.join(""))
 	},
 }
 
