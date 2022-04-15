@@ -95,7 +95,7 @@
 <script>
 	ExcludeUtil.pInitialise(); // don't await, as this is only used for search
 	DataUtil.loadJSON(`${Renderer.get().baseUrl || "."}/data/licenses.json`).then(licenses => {
-		UtilsLicenses.renderLicenses(licenses);
+		UtilsLicenses.renderLicenses(licenses.licenses);
 	});
 </script>
 </body>
