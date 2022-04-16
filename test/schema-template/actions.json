@@ -41,27 +41,40 @@
 								"items": {
 									"$ref": "utils.json#/definitions/classNameSourced"
 								},
-								"uniqueItems": true
+								"uniqueItems": true,
+								"minItems": 1
 							},
 							"subclass": {
 								"type": "array",
 								"items": {
 									"type": "string"
 								},
-								"uniqueItems": true
+								"uniqueItems": true,
+								"minItems": 1
 							},
 							"archetype": {
 								"type": "array",
 								"items": {
 									"type": "string"
 								},
-								"uniqueItems": true
+								"uniqueItems": true,
+								"minItems": 1
 							},
 							"ancestry": {
-								"type": "string"
+								"type": "array",
+								"items": {
+									"type": "string"
+								},
+								"uniqueItems": true,
+								"minItems": 1
 							},
 							"heritage": {
-								"type": "string"
+								"type": "array",
+								"items": {
+									"type": "string"
+								},
+								"uniqueItems": true,
+								"minItems": 1
 							},
 							"versatileHeritage": {
 								"type": "string"

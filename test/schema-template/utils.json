@@ -671,7 +671,11 @@
 						"flowing",
 						"metamorphic",
 						"unbounded",
-						"town"
+						"town",
+						"humanoid",
+						"construct",
+						"amphibious",
+						"aeon"
 					]
 				},
 				{
@@ -771,7 +775,16 @@
 				"sylph",
 				"undine",
 				"beastkin",
-				"aphorite"
+				"aphorite",
+				"android",
+				"azarketi",
+				"fetchling",
+				"aberration",
+				"leshy",
+				"shoony",
+				"fey",
+				"sprite",
+				"strix"
 			]
 		},
 		"skillName": {
@@ -1166,6 +1179,9 @@
 				"name": {
 					"type": "string"
 				},
+				"source": {
+					"$ref": "#/definitions/sourceList"
+				},
 				"page": {
 					"type": "integer",
 					"minimum": 0
@@ -1180,9 +1196,18 @@
 				"trigger": {
 					"type": "string"
 				},
+				"requirements": {
+					"type": "string"
+				},
+				"frequency": {
+					"$ref": "#/definitions/frequency"
+				},
 				"activity": {
 					"type": "object",
 					"$ref": "#/definitions/activity"
+				},
+				"actionType": {
+					"$ref": "actions.json#/properties/action/items/properties/actionType"
 				},
 				"traits": {
 					"type": "array",

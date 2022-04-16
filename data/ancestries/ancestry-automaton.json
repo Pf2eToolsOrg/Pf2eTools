@@ -4,15 +4,18 @@
 			"name": "Automaton",
 			"source": "G&G",
 			"page": 36,
-			"rarity": "Rare",
+			"rarity": "rare",
 			"hp": 8,
-			"size": "Medium or Small",
+			"size": [
+				"Medium",
+				"Small"
+			],
 			"speed": {
 				"walk": 25
 			},
 			"boosts": [
-				"Strength",
-				"Free"
+				"strength",
+				"free"
 			],
 			"languages": [
 				"{@language Common}",
@@ -20,8 +23,8 @@
 				"Additional languages equal to your Intelligence modifier (if it's positive). Choose from {@language Abyssal}, {@language Aquan}, {@language Auran}, {@language Celestial}, {@language Dwarven}, {@language Elven}, {@language Ignan}, {@language Infernal}, {@language Terran}, and any other languages to which you have access (such as the languages prevalent in your region). At the GM's discretion, if you still have memories from your time in {@place Jistka}, you might speak {@language Jistkan|Bst2} instead of {@language Common}."
 			],
 			"traits": [
-				"Automaton",
-				"Construct"
+				"automaton",
+				"construct"
 			],
 			"features": [
 				{
@@ -199,8 +202,12 @@
 								"unit": "action"
 							},
 							"actionType": {
-								"ancestry": "Automaton|G&G",
-								"heritage": "Sharpshooter Automaton|G&G"
+								"ancestry": [
+									"Automaton|G&G"
+								],
+								"heritage": [
+									"Sharpshooter Automaton|G&G"
+								]
 							},
 							"entries": [
 								"You steady your body and observe the events of the battlefield to maximize the range of your next shot. You reduce the penalty for firing into your weapon's second range increment from \u20132 to 0 for the next ranged attack you make this turn. You can use this action a second time in the same turn to reduce the penalty from firing into your weapon's third range increment from \u20134 to 0 for the next ranged attack you make this turn."
