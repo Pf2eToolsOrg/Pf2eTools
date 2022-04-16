@@ -12,7 +12,7 @@ window.addEventListener("load", async () => {
 });
 
 async function initDemo (data, rendererType) {
-	const defaultJson = data.data[0];
+	const defaultJson = data.renderdemo[0];
 
 	let renderer;
 
