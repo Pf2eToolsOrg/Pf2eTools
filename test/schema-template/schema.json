@@ -51,19 +51,7 @@
 			"$ref": "adventureBooks.json#/properties/adventure"
 		},
 		"ancestry": {
-			"type": "array",
-			"items": {
-				"type": "object",
-				"properties": {
-					"heritage": {
-						"$ref": "heritages.json#/properties/heritage",
-						"required": [
-							"ancestryName",
-							"ancestrySource"
-						]
-					}
-				}
-			}
+			"$ref": "ancestries.json#/properties/ancestry"
 		},
 		"versatileHeritage": {
 			"$ref": "versatileHeritages.json#/properties/versatileHeritage"
