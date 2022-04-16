@@ -4,7 +4,6 @@
 			"name": "Worm's Repast",
 			"source": "AV1",
 			"page": 80,
-			"focus": false,
 			"level": 2,
 			"traits": [
 				"Rare",
@@ -20,8 +19,6 @@
 				"unit": "action"
 			},
 			"components": {
-				"F": false,
-				"M": false,
 				"S": true,
 				"V": true
 			},
@@ -33,8 +30,11 @@
 				}
 			},
 			"targets": "1 corporeal creature",
-			"savingThrow": "Fortitude",
-			"savingThrowBasic": false,
+			"savingThrow": {
+				"type": [
+					"F"
+				]
+			},
 			"duration": {
 				"type": "timed",
 				"entry": "see below",
@@ -43,8 +43,6 @@
 					"unit": "special"
 				}
 			},
-			"sustain": false,
-			"dismiss": false,
 			"entries": [
 				"Gnawing worms materialize within the flesh of the target creature, dealing {@damage 4d6} piercing damage and {@damage 1d6} {@condition persistent damage ||persistent piercing damage}. If the target is a non-skeletal corporeal undead creature, you deal an extra {@damage 2d6} {@condition persistent damage ||persistent piercing damage}. The target must attempt a Fortitude save.",
 				{
@@ -60,7 +58,9 @@
 			"heightened": {
 				"plus_x": {
 					"level": 2,
-					"entries": [": The initial and {@condition persistent damage} increase by {@dice 2d6} and {@dice 1d6}, respectively."]
+					"entries": [
+						": The initial and {@condition persistent damage} increase by {@dice 2d6} and {@dice 1d6}, respectively."
+					]
 				}
 			}
 		}

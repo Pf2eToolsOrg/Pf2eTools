@@ -17,20 +17,38 @@
 				"https://raw.githubusercontent.com/Pf2eTools/Pf2eTools.github.io/master/test/schema-template/schema.json"
 			]
 		},
+		"changelog": {
+			"$ref": "changelog.json#/properties/changelog"
+		},
+		"licenses": {
+			"$ref": "licenses.json#/properties/licenses"
+		},
+		"renderdemo": {
+			"$ref": "renderdemo.json#/properties/renderdemo"
+		},
 		"variantrule": {
-			"type": "array"
+			"$ref": "variantrules.json#/properties/variantrule"
 		},
 		"table": {
-			"type": "array"
+			"$ref": "tables.json#/properties/table"
 		},
 		"tableGroup": {
 			"type": "array"
 		},
+		"data": {
+			"$ref": "adventureBooks.json#/properties/data"
+		},
 		"book": {
-			"type": "array"
+			"$ref": "books.json#/properties/book"
 		},
 		"bookData": {
-			"type": "array"
+			"$ref": "adventureBooks.json#/properties/book"
+		},
+		"adventure": {
+			"$ref": "adventures.json#/properties/adventure"
+		},
+		"adventureData": {
+			"$ref": "adventureBooks.json#/properties/adventure"
 		},
 		"ancestry": {
 			"type": "array",
@@ -39,13 +57,16 @@
 				"properties": {
 					"heritage": {
 						"$ref": "heritages.json#/properties/heritage",
-						"required": ["ancestryName", "ancestrySource"]
+						"required": [
+							"ancestryName",
+							"ancestrySource"
+						]
 					}
 				}
 			}
 		},
 		"versatileHeritage": {
-			"type": "array"
+			"$ref": "versatileHeritages.json#/properties/versatileHeritage"
 		},
 		"background": {
 			"$ref": "backgrounds.json#/properties/background"
@@ -74,14 +95,8 @@
 		"familiar": {
 			"type": "array"
 		},
-		"adventure": {
-			"type": "array"
-		},
-		"adventureData": {
-			"type": "array"
-		},
 		"hazard": {
-			"type": "array"
+			"$ref": "hazards.json#/properties/hazard"
 		},
 		"action": {
 			"$ref": "actions.json#/properties/action"
@@ -90,16 +105,19 @@
 			"type": "array"
 		},
 		"condition": {
-			"type": "array"
+			"$ref": "conditions.json#/properties/condition"
 		},
 		"item": {
 			"$ref": "items.json#/properties/item"
+		},
+		"itemFluff": {
+			"$ref": "fluff-items.json#/properties/itemFluff"
 		},
 		"baseitem": {
 			"$ref": "items.json#/properties/item"
 		},
 		"spell": {
-			"type": "array"
+			"$ref": "spells.json#/properties/spell"
 		},
 		"disease": {
 			"$ref": "diseases.json#/properties/disease"
@@ -114,22 +132,22 @@
 			"$ref": "abilities.json#/properties/ability"
 		},
 		"deity": {
-			"type": "array"
+			"$ref": "deities.json#/properties/deity"
 		},
 		"deityFluff": {
-			"type": "array"
+			"$ref": "fluff-deities.json#/properties/deityFluff"
 		},
 		"language": {
 			"$ref": "languages.json#/properties/language"
 		},
 		"place": {
-			"type": "array"
+			"$ref": "places.json#/properties/place"
 		},
 		"ritual": {
 			"$ref": "rituals.json#/properties/ritual"
 		},
 		"vehicle": {
-			"type": "array"
+			"$ref": "vehicles.json#/properties/vehicle"
 		},
 		"trait": {
 			"$ref": "traits.json#/properties/trait"
@@ -153,11 +171,15 @@
 			"type": "array"
 		},
 		"optionalfeature": {
-			"type": "array"
+			"$ref": "optionalFeatures.json#/properties/optionalFeature"
 		},
-		"data": {
-			"$ref": "renderdemo.json#/properties/data"
+		"skill": {
+			"$ref": "skills.json#/properties/skill"
+		},
+		"quickRules": {
+			"$ref": "quickRules.json#/properties/quickRules"
 		}
 	},
-	"additionalProperties": false
+	"additionalProperties": false,
+	"minProperties": 1
 }

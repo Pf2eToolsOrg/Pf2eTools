@@ -12,6 +12,25 @@
 			]
 		},
 		{
+			"name": "Cursebound",
+			"source": "APG",
+			"page": 267,
+			"entries": [
+				"Spells with this trait increase the severity of your oracular curse when cast. Usually only revelation spells have this trait. You can't cast a cursebound spell if you don't have an oracular curse."
+			]
+		},
+		{
+			"name": "Olfactory",
+			"source": "Bst",
+			"page": 168,
+			"categories": [
+				"Effect"
+			],
+			"entries": [
+				"An olfactory effect can affect only creatures that can smell it. This applies only to olfactory parts of the effect, as determined by the GM."
+			]
+		},
+		{
 			"name": "[Magical Tradition]",
 			"source": "Bst",
 			"page": 342,
@@ -444,7 +463,7 @@
 				]
 			},
 			"categories": [
-				"Combat"
+				"Effect"
 			],
 			"entries": [
 				"Auditory actions and effects rely on sound. An action with the auditory trait can be successfully performed only if the creature using the action can speak or otherwise produce the required sounds. A spell or effect with the auditory trait has its effect only if the target can hear it. This applies only to sound-based parts of the effect, as determined by the GM. This is different from a {@trait sonic} effect, which still affects targets who can't hear it (such as {@condition deafened|CRB|deaf} targets) as long as the effect itself makes sound."
@@ -828,6 +847,22 @@
 			]
 		},
 		{
+			"name": "Kaiju",
+			"source": "FRP2",
+			"page": 89,
+			"entries": [
+				"{@note No entries available.}"
+			]
+		},
+		{
+			"name": "Charm",
+			"source": "Bst",
+			"page": 77,
+			"entries": [
+				"{@note No entries available.}"
+			]
+		},
+		{
 			"name": "Cleric",
 			"source": "CRB",
 			"page": 629,
@@ -842,16 +877,21 @@
 			"name": "Clockwork",
 			"source": "G&G",
 			"page": 231,
+			"otherSources": {
+				"Expanded": [
+					"LOTGB|133"
+				]
+			},
 			"entries": [
-				"Clockworks are intricate, complex constructs that can be programmed to perform specific functions."
-			]
-		},
-		{
-			"name": "Clockwork",
-			"source": "LOTGB",
-			"page": 133,
-			"entries": [
-				"Intricate, complex machines that use clockwork to function. Not all require daily winding, but those that do have the wind-up ability in their stat blocks."
+				"Clockworks are intricate, complex constructs that can be programmed to perform specific functions.",
+				{
+					"type": "entriesOtherSource",
+					"source": "LOTGB",
+					"page": 133,
+					"entries": [
+						"Intricate, complex machines that use clockwork to function. Not all require daily winding, but those that do have the wind-up ability in their stat blocks."
+					]
+				}
 			]
 		},
 		{
@@ -863,7 +903,7 @@
 				"_alignAbv"
 			],
 			"entries": [
-				"{@trait Chaotic} and {@trait neutral}"
+				"{@trait Chaotic} and neutral"
 			]
 		},
 		{
@@ -1947,7 +1987,7 @@
 					"source": "LOAG",
 					"page": 141,
 					"entries": [
-						"A humanoid ancestry that fled to and has been shaped by the Shadow Plane. Typically refer to themselves as kayals. "
+						"A humanoid ancestry that fled to and has been shaped by the Shadow Plane. Typically refer to themselves as kayals."
 					]
 				}
 			]
@@ -3235,7 +3275,7 @@
 				"_alignAbv"
 			],
 			"entries": [
-				"{@trait Lawful} and {@trait neutral}"
+				"{@trait Lawful} and neutral"
 			]
 		},
 		{
@@ -3684,7 +3724,7 @@
 				"_alignAbv"
 			],
 			"entries": [
-				"{@trait Neutral}"
+				"Neutral"
 			]
 		},
 		{
@@ -3696,7 +3736,7 @@
 				"_alignAbv"
 			],
 			"entries": [
-				"{@trait Neutral} and {@trait evil}"
+				"Neutral and {@trait evil}"
 			]
 		},
 		{
@@ -3770,7 +3810,7 @@
 				"_alignAbv"
 			],
 			"entries": [
-				"{@trait Neutral} and {@trait good}"
+				"Neutral and {@trait good}"
 			]
 		},
 		{
@@ -5354,7 +5394,15 @@
 				"Rarity"
 			],
 			"entries": [
-				"A rules element with this trait is one-of-a-kind."
+				"A rules element with this trait is one-of-a-kind.",
+				{
+					"type": "entriesOtherSource",
+					"source": "Bst",
+					"page": 345,
+					"entries": [
+						"A creature with this rarity is one of a kind. The DC of Recall Knowledge checks related to this creature is increased by 10."
+					]
+				}
 			]
 		},
 		{

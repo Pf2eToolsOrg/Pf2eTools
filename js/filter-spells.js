@@ -50,9 +50,14 @@ class PageFilterSpells extends PageFilter {
 			displayFn: (it) => it.toTitleCase(),
 			nests: {},
 		});
+		this._domainFilter = new Filter({
+			header: "Domains",
+			displayFn: (it) => it.toTitleCase(),
+			items: [],
+		});
 		this._multiFocusFilter = new MultiFilter({
 			header: "Focus Spells",
-			filters: [this._classFilter, this._subClassFilter],
+			filters: [this._domainFilter, this._classFilter, this._subClassFilter],
 		});
 		this._componentsFilter = new Filter({
 			header: "Components",
@@ -128,7 +133,10 @@ class PageFilterSpells extends PageFilter {
 		spell._fDurationType = Parser.getFilterDuration(spell);
 		spell._areaTypes = spell.area ? spell.area.types : [];
 		spell._fRange = Parser.getFilterRange(spell);
-		spell._fSavingThrow = spell.savingThrow == null ? [] : spell.savingThrowBasic ? [spell.savingThrow, "Basic"] : [spell.savingThrow];
+		if (spell.savingThrow) {
+			if (spell.savingThrow.type) spell._fSavingThrow = spell.savingThrow.type.map(t => Parser.savingThrowAbvToFull(t))
+			if (spell.savingThrow.basic) spell._fSavingThrow.push("Basic");
+		}
 		spell._fComponents = spell.cost == null ? [] : ["Cost"];
 		if (spell.components.F) spell._fComponents.push("Focus");
 		if (spell.components.M) spell._fComponents.push("Material");
@@ -160,6 +168,7 @@ class PageFilterSpells extends PageFilter {
 		if (spell.spellLists) this._traditionFilter.addItem(spell.spellLists)
 		this._spellTypeFilter.addItem(spell._fSpellType);
 		this._classFilter.addItem(spell._fClasses);
+		this._domainFilter.addItem(spell.domains);
 		spell._fSubClasses.forEach(sc => {
 			this._subClassFilter.addNest(sc.nest, {isHidden: true});
 			this._subClassFilter.addItem(sc);
@@ -204,6 +213,7 @@ class PageFilterSpells extends PageFilter {
 			s._fRange,
 			s._fSavingThrow,
 			[
+				s.domains,
 				s._fClasses,
 				s._fSubClasses,
 			],

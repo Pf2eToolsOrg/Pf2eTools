@@ -3532,7 +3532,7 @@
 										],
 										[
 											"Rushing River (1st)",
-											"DC 15 {@skill Athletics} to swim or hop across stones, DC 13 {@skill Survival} to find a ford nearby;{@b Flash Flood (5th)} DC 20 {@skill Athletics}, DC 18 {@skill Survival} "
+											"DC 15 {@skill Athletics} to swim or hop across stones, DC 13 {@skill Survival} to find a ford nearby;{@b Flash Flood (5th)} DC 20 {@skill Athletics}, DC 18 {@skill Survival}"
 										],
 										[
 											"Steep Hills (1st)",
@@ -5457,7 +5457,7 @@
 			"name": "Cathartic Magic",
 			"source": "SoM",
 			"page": 194,
-			"rarity": "Uncommon",
+			"rarity": "uncommon",
 			"type": "Cathartic Magic",
 			"entries": [
 				{
@@ -5576,7 +5576,7 @@
 			"name": "Ley Lines",
 			"source": "SoM",
 			"page": 214,
-			"rarity": "Rare",
+			"rarity": "rare",
 			"type": "Ley Lines",
 			"entries": [
 				{
@@ -5629,44 +5629,10 @@
 									"entries": [
 										"You can use your magical prowess to temporarily access the power of a ley line. Tapping the Ley Line requires a skill check using the skill associated with its tradition ({@skill Arcana} for arcane, {@skill Nature} for primal, {@skill Occultism} for occult, and {@skill Religion} for divine). In cases where a ley line has multiple associated traditions, you can use any of the appropriate skills to Tap the Ley Line. The benefits of a ley line are always magical in nature and can be counteracted in a similar way to a magic item.",
 										{
-											"type": "ability",
-											"style": "full",
+											"type": "statblock",
+											"tag": "action",
 											"name": "Tap Ley Line",
-											"source": "SoM",
-											"page": 215,
-											"activity": {
-												"number": 1,
-												"unit": "action"
-											},
-											"traits": [
-												"Concentrate"
-											],
-											"actionType": {
-												"basic": true,
-												"variantrule": [
-													"Ley Lines|SoM"
-												],
-												"skill": {
-													"trained": [
-														"Arcana",
-														"Nature",
-														"Occultism",
-														"Religion"
-													]
-												}
-											},
-											"entries": [
-												"You attempt to manipulate the magical essence of a ley line that you're aware of within 30 feet. The GM determines the DC based on the hard DC for the ley line's level.",
-												{
-													"type": "successDegree",
-													"entries": {
-														"Critical Success": "You gain the ley line's benefits until the end of your next turn.",
-														"Success": "You gain the ley line's benefits until the end of your turn.",
-														"Failure": "You take mental damage equal to {@dice 1d6*#$prompt_number:min=1,title=Ley Line Level,default=1$#|1d6 × the ley line's level}. You can't Tap the Ley Line again for 1 hour.",
-														"Critical Failure": "As failure, and you're subject to the ley line's backlash effect. You can't Tap the Ley Line again for 24 hours."
-													}
-												}
-											]
+											"source": "SoM"
 										}
 									]
 								}
@@ -6092,7 +6058,7 @@
 		{
 			"name": "Pervasive Magic",
 			"source": "SoM",
-			"rarity": "Rare",
+			"rarity": "rare",
 			"page": 218,
 			"type": "Pervasive Magic",
 			"entries": [
@@ -6846,7 +6812,7 @@
 			"source": "SoM",
 			"page": 224,
 			"type": "Shadow Magic",
-			"rarity": "Uncommon",
+			"rarity": "uncommon",
 			"entries": [
 				{
 					"type": "pf2-h1",
@@ -7581,7 +7547,7 @@
 								"The most exalted wielders of soulforged weapons have been champions, and they're much more common than other wielders. If you're a {@class champion}, you can tie your soul path to your cause. Being a {@class champion} sets a steady soul path before you; you can choose for your soul path to be the same as the tenets you follow. Corruption still comes about the same way, as it's much easier to corrupt your connection to your soulforged armament than to stray far enough from your alignment or code that you must {@ritual atone}.",
 								"You can also have your blade ally or shield ally be your soulforged armament. You can choose particulars that fit your own story, but doing so usually means the ally is more a reflection of your conscience than a specific spiritual being sent by your deity.",
 								"Finally, if you commit actions that both cause you to lose your champion abilities and corrupt your soulforged armament, undergoing the atone ritual also gives you the effects of the purify soul path ritual with the same degree of success you rolled for {@ritual atone}.",
-								"Characters other than {@class champions} can also choose a {@class champion} cause to tie to their soul path, and devout characters sometimes tie their soul path to their deity's tenets and anathema."
+								"Characters other than {@class champion||champions} can also choose a {@class champion} cause to tie to their soul path, and devout characters sometimes tie their soul path to their deity's tenets and anathema."
 							]
 						},
 						{

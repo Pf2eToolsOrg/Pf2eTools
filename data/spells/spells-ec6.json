@@ -4,7 +4,6 @@
 			"name": "Astral Labyrinth",
 			"source": "EC6",
 			"page": 76,
-			"focus": false,
 			"level": 9,
 			"traits": [
 				"Uncommon",
@@ -22,8 +21,6 @@
 				"unit": "action"
 			},
 			"components": {
-				"F": false,
-				"M": false,
 				"S": true,
 				"V": true
 			},
@@ -40,7 +37,6 @@
 				],
 				"entry": "80-foot burst"
 			},
-			"savingThrowBasic": false,
 			"duration": {
 				"type": "timed",
 				"entry": "1 day",
@@ -49,8 +45,6 @@
 					"unit": "day"
 				}
 			},
-			"sustain": false,
-			"dismiss": false,
 			"entries": [
 				"You connect the entire area with an {@condition invisible} maze of astral energy that interferes with dimensional and mental magic.",
 				"Choose a point in the area that you can see when you cast this spell. Objects other than {@trait force} effects and rare metals can't block this spell's area. Astral labyrinth attempts to counteract magical {@trait mental} effects targeting or including anyone other than the caster in the area, though it has no effect on {@trait mental} effects that began outside the area or before the spell was cast.",
@@ -69,7 +63,9 @@
 				"x": [
 					{
 						"level": 10,
-						"entries": ["You and creatures transported by your spells can't get a result worse than success on the saving throw to teleport into or out of the area."]
+						"entries": [
+							"You and creatures transported by your spells can't get a result worse than success on the saving throw to teleport into or out of the area."
+						]
 					}
 				]
 			}
@@ -78,7 +74,6 @@
 			"name": "Deluge",
 			"source": "EC6",
 			"page": 76,
-			"focus": false,
 			"level": 8,
 			"traits": [
 				"Uncommon",
@@ -95,8 +90,6 @@
 				"unit": "action"
 			},
 			"components": {
-				"F": false,
-				"M": false,
 				"S": true,
 				"V": true
 			},
@@ -113,12 +106,6 @@
 				],
 				"entry": "40-foot burst"
 			},
-			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
-			"sustain": false,
-			"dismiss": false,
 			"entries": [
 				"You unleash a catastrophic downpour in the area that vanishes an instant later. All flying creatures in the area descend 50 feet or until blocked by the ground or firm surface. Each creature whose descent was blocked by the ground or firm surface takes bludgeoning damage equal to the number of feet it fell (the creature does not also take falling damage) and is knocked {@condition prone}. Creatures on the ground, including flying creatures forced to the ground by the spell, must succeed at a Reflex save or be pushed 50 feet away from the center of the area.",
 				"Flimsy structures in the area collapse. The GM can determine other large-scale effects that result from the deluge."
@@ -126,7 +113,9 @@
 			"heightened": {
 				"plus_x": {
 					"level": 1,
-					"entries": ["The area increases by 10 feet, and flying creatures fall an additional 10 feet."]
+					"entries": [
+						"The area increases by 10 feet, and flying creatures fall an additional 10 feet."
+					]
 				}
 			}
 		},
@@ -134,7 +123,6 @@
 			"name": "Devour Life",
 			"source": "EC6",
 			"page": 76,
-			"focus": false,
 			"level": 8,
 			"traits": [
 				"Uncommon",
@@ -153,8 +141,6 @@
 				"unit": "action"
 			},
 			"components": {
-				"F": false,
-				"M": false,
 				"S": true,
 				"V": true
 			},
@@ -166,20 +152,21 @@
 				}
 			},
 			"targets": "1 living creature",
-			"savingThrow": "Fortitude",
-			"savingThrowBasic": true,
-			"duration": {
-				"type": null
+			"savingThrow": {
+				"type": [
+					"F"
+				],
+				"basic": true
 			},
-			"sustain": false,
-			"dismiss": false,
 			"entries": [
 				"You attempt to utterly consume the target's life force. The target takes 60 negative damage with a basic Fortitude save. If this damage reduces the target to 0 Hit Points, it dies immediately. You regain Hit Points equal to half the negative damage the target takes (after applying resistance and the like). Any excess healing is gained as temporary Hit Points, which you lose after 1 minute."
 			],
 			"heightened": {
 				"plus_x": {
 					"level": 1,
-					"entries": ["The damage increases by 10."]
+					"entries": [
+						"The damage increases by 10."
+					]
 				}
 			}
 		},
@@ -187,7 +174,6 @@
 			"name": "Prying Survey",
 			"source": "EC6",
 			"page": 76,
-			"focus": false,
 			"level": 8,
 			"traits": [
 				"Uncommon",
@@ -205,7 +191,6 @@
 				"entry": "1 minute"
 			},
 			"components": {
-				"F": false,
 				"M": true,
 				"S": true,
 				"V": true
@@ -216,7 +201,6 @@
 				],
 				"entry": "120-foot emanation"
 			},
-			"savingThrowBasic": false,
 			"duration": {
 				"type": "timed",
 				"entry": "1 hour",
@@ -225,8 +209,6 @@
 					"unit": "hour"
 				}
 			},
-			"sustain": false,
-			"dismiss": false,
 			"entries": [
 				"You create eight {@condition invisible}, floating eyes, each about 3 inches in diameter, that scan the area around you, transmitting rough impressions of the environment. The eyes constantly examine and send you summaries of their findings. They are solid and can't move through barriers, and they don't follow routes that they fail to find while Searching. Any damage to an eye destroys it. When all eyes are destroyed, the spell ends.",
 				"As a single action, which has the {@trait concentrate} trait, you can concentrate on a location within the area that an eye can reach. An eye travels to that location, and you {@action Seek} visually as if you were there. As an exploration activity, you can travel at half speed while continuing to concentrate on the eyes to gain the benefits of both the {@action Scout} and {@action Search} activities. With the eyes, you can check everything even if you are traveling faster than 300 feet per minute. The eyes use your {@skill Perception} modifier. You can have only one prying survey in effect at a time."
@@ -235,7 +217,9 @@
 				"x": [
 					{
 						"level": 10,
-						"entries": ["The area increases to a 500-foot emanation."]
+						"entries": [
+							"The area increases to a 500-foot emanation."
+						]
 					}
 				]
 			}
@@ -244,7 +228,6 @@
 			"name": "Undermine Reality",
 			"source": "EC6",
 			"page": 76,
-			"focus": false,
 			"level": 8,
 			"traits": [
 				"Uncommon",
@@ -262,8 +245,6 @@
 				"unit": "action"
 			},
 			"components": {
-				"F": false,
-				"M": false,
 				"S": true,
 				"V": true
 			},
@@ -275,7 +256,6 @@
 				}
 			},
 			"targets": "one creature",
-			"savingThrowBasic": false,
 			"duration": {
 				"type": "timed",
 				"entry": "varies",
@@ -284,8 +264,6 @@
 					"unit": "special"
 				}
 			},
-			"sustain": false,
-			"dismiss": false,
 			"entries": [
 				"You lash a target with tendrils of shadow that steal some of its substance, making it quasi-real. As long as it is quasireal, its Strikes deal half damage, it can't critically succeed at any skill check, and creatures attempting saving throws against its spells and effects get a result one degree of success better than they rolled. The target must attempt a Will saving throw.",
 				{
@@ -303,7 +281,6 @@
 			"name": "Upheaval",
 			"source": "EC6",
 			"page": 77,
-			"focus": false,
 			"level": 9,
 			"traits": [
 				"Uncommon",
@@ -320,8 +297,6 @@
 				"unit": "action"
 			},
 			"components": {
-				"F": false,
-				"M": false,
 				"S": true,
 				"V": true
 			},
@@ -338,12 +313,6 @@
 				],
 				"entry": "150-foot burst"
 			},
-			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
-			"sustain": false,
-			"dismiss": false,
 			"entries": [
 				"The ground in the area shudders and crumbles as huge pillars of stone erupt into the air, rending the terrain around them.",
 				"The GM might add additional effects in certain areas.",

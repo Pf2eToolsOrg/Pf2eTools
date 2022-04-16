@@ -253,7 +253,7 @@ class ItemsPage extends ListPage {
 		$(`#btn-equip-buy`).on("click", () => {
 			// TODO: keep the source filters?
 			this._pageFilter.filterBox.reset();
-			this._pageFilter.filterBox.setFromValues({Type: {Equipment: 1, "Specific Variant": 2}});
+			this._pageFilter.filterBox.setFromValues({Type: {Equipment: 1, "Generic Variant": 2}});
 			this.handleFilterChange();
 		});
 

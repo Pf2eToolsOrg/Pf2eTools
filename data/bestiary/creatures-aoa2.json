@@ -78,7 +78,7 @@
 			"abilitiesMid": [],
 			"speed": {
 				"walk": 35,
-				"climb ": 20
+				"climb": 20
 			},
 			"attacks": [
 				{
@@ -214,20 +214,7 @@
 				"Wis": 3,
 				"Cha": 6
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+21, {@skill Performance} +17, {@skill Religion} +18,"
-					],
-					"name": "Intimidation"
-				},
-				{
-					"entries": [
-						"+12, {@skill Survival} +14 Str +5, Dex +3, Con +3, Int \u20131, Wis +3, Cha +6."
-					],
-					"name": "Society"
-				}
-			],
+			"abilitiesTop": [],
 			"ac": {
 				"default": 28
 			},
@@ -251,7 +238,7 @@
 			"abilitiesMid": [],
 			"speed": {
 				"walk": 40,
-				"swim ": 40
+				"swim": 40
 			},
 			"attacks": [
 				{
@@ -379,14 +366,16 @@
 				{
 					"activity": {
 						"number": 1,
-						"unit": "reaction"
+						"unit": "reaction",
+						"entry": "{@as R}"
 					},
 					"traits": [
 						"auditory",
 						"mental"
 					],
+					"trigger": "Belmazog or one of its allies within 60 feet attempts a saving throw against an {@trait auditory} or {@trait sonic} effect.",
 					"entries": [
-						"As boggard swampseer (Pathfinder Bestiary 45)."
+						"Belmazog releases a croak that drowns out other sound. It rolls a {@skill Performance} check. Belmazog and their boggard allies in the area can use the higher result of Belmazog's {@skill Performance} check or their saves to resolve the effects against the {@trait auditory} or {@trait sonic} effect."
 					],
 					"name": "Drowning Drone"
 				},
@@ -398,7 +387,7 @@
 				},
 				{
 					"entries": [
-						"As boggard scout (Pathfinder Bestiary 44)."
+						"Belmazog ignores {@quickref difficult terrain||3|terrain} caused by swamp terrain features."
 					],
 					"name": "Swamp Stride"
 				},
@@ -414,13 +403,13 @@
 						"mental"
 					],
 					"entries": [
-						"As boggard scout (Pathfinder Bestiary 44) except DC 28."
+						"Belmazog unleashes a terrifying croak. Any non-boggard within 30 feet becomes {@condition frightened 1} unless they succeed at a DC 28 Will save; those who critically succeed are temporarily immune for 1 minute."
 					],
 					"name": "Terrifying Croak"
 				},
 				{
 					"entries": [
-						"As boggard scout (Pathfinder Bestiary 44), except AC 25 and 8 HP."
+						"If Belmazog hits a creature with its tongue, that creature becomes {@condition grabbed} by the boggard. Unlike with a normal grab, the creature isn't {@condition immobilized}, but it can't move beyond the reach of Belmazog's tongue. A creature can sever the tongue by hitting AC 13 and dealing at least 2 slashing damage. Though this doesn't deal any damage to Belmazog, it prevents it from using her tongue {@action Strike} until it regrows its tongue, which takes a week."
 					],
 					"name": "Tongue Grab"
 				}
@@ -528,8 +517,8 @@
 			"abilitiesMid": [],
 			"speed": {
 				"walk": 40,
-				"climb ": 20,
-				"fly ": 60
+				"climb": 20,
+				"fly": 60
 			},
 			"attacks": [
 				{
@@ -1093,7 +1082,7 @@
 			"abilitiesMid": [],
 			"speed": {
 				"walk": 25,
-				"climb ": 25
+				"climb": 25
 			},
 			"attacks": [
 				{
@@ -1344,7 +1333,7 @@
 			],
 			"speed": {
 				"walk": 25,
-				"climb ": 25
+				"climb": 25
 			},
 			"attacks": [
 				{
@@ -1596,7 +1585,7 @@
 			],
 			"speed": {
 				"walk": 25,
-				"climb ": 25
+				"climb": 25
 			},
 			"attacks": [
 				{
@@ -1863,7 +1852,7 @@
 			"abilitiesMid": [],
 			"speed": {
 				"walk": 25,
-				"climb ": 25
+				"climb": 25
 			},
 			"attacks": [
 				{
@@ -2739,7 +2728,7 @@
 			"abilitiesMid": [],
 			"speed": {
 				"walk": 25,
-				"climb ": 20
+				"climb": 20
 			},
 			"attacks": [
 				{
@@ -2912,7 +2901,7 @@
 			"abilitiesMid": [],
 			"speed": {
 				"walk": 25,
-				"climb ": 20
+				"climb": 20
 			},
 			"attacks": [
 				{
@@ -3120,7 +3109,7 @@
 			"abilitiesMid": [],
 			"speed": {
 				"walk": 25,
-				"climb ": 20
+				"climb": 20
 			},
 			"attacks": [
 				{
@@ -3952,7 +3941,7 @@
 			],
 			"speed": {
 				"walk": 10,
-				"climb ": 10
+				"climb": 10
 			},
 			"attacks": [
 				{
@@ -4069,7 +4058,7 @@
 			"abilitiesMid": [],
 			"speed": {
 				"walk": 30,
-				"swim ": 30
+				"swim": 30
 			},
 			"attacks": [
 				{
@@ -4283,7 +4272,7 @@
 			"abilitiesMid": [],
 			"speed": {
 				"walk": 35,
-				"climb ": 20
+				"climb": 20
 			},
 			"attacks": [
 				{
@@ -4612,7 +4601,7 @@
 			],
 			"speed": {
 				"walk": 30,
-				"climb ": 30
+				"climb": 30
 			},
 			"attacks": [
 				{
@@ -4803,7 +4792,7 @@
 			"abilitiesMid": [],
 			"speed": {
 				"walk": 25,
-				"fly ": 25
+				"fly": 25
 			},
 			"attacks": [
 				{

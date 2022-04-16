@@ -1,0 +1,17 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema",
+	"$id": "fluff-items.json",
+	"title": "Item Fluff",
+	"description": "The itemFluff data type for Pf2eTools.",
+	"type": "object",
+	"version": "0.0.1",
+	"properties": {
+		"itemFluff": {
+			"$ref": "utils.json#/definitions/genericFluffArray"
+		}
+	},
+	"additionalProperties": false,
+	"required": [
+		"itemFluff"
+	]
+}

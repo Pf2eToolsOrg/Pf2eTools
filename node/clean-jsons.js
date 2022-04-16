@@ -16,4 +16,5 @@ function cleanFolder (folder) {
 }
 
 cleanFolder(`./data`);
+cleanFolder(`./test/schema-template`);
 console.log("Cleaning complete.");

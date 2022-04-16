@@ -18,6 +18,8 @@ Parser._parse_bToA = function (abMap, b) {
 };
 Parser.numberToText = function (number, freq) {
 	if (number == null) throw new TypeError(`undefined or null object passed to parser`);
+	// TODO: Hacky fix for frequencies
+	if (typeof number === "string") return number;
 	if (Math.abs(number) >= 100) return `${number}`;
 
 	function getAsText (num) {
@@ -446,12 +448,28 @@ Parser.proficiencyToNumber = function (prof) {
 		default: return 69;
 	}
 }
+Parser.genderToFull = function (g) {
+	switch (g.toLowerCase()) {
+		case "m": return "male";
+		case "f": return "female";
+		case "a": return "agender";
+		case "gf": return "genderfluid";
+		case "nb": return "nonbinary";
+		default: return "";
+	}
+}
 Parser.savingThrowAbvToFull = function (abv) {
 	switch (abv) {
+		case "f":
+		case "F":
 		case "Fort":
 		case "fort": return "Fortitude";
+		case "r":
+		case "R":
 		case "Ref":
 		case "ref": return "Reflex";
+		case "w":
+		case "W":
 		case "Will":
 		case "will": return "Will";
 		default: throw new Error(`Unknown saving throw abv ${abv}.`)

@@ -4,7 +4,6 @@
 			"name": "Daydreamer's Curse",
 			"source": "AV2",
 			"page": 73,
-			"focus": false,
 			"level": 4,
 			"traits": [
 				"Uncommon",
@@ -24,8 +23,6 @@
 				"unit": "action"
 			},
 			"components": {
-				"F": false,
-				"M": false,
 				"S": true,
 				"V": true
 			},
@@ -37,8 +34,11 @@
 				}
 			},
 			"targets": "1 creature",
-			"savingThrow": "Will",
-			"savingThrowBasic": false,
+			"savingThrow": {
+				"type": [
+					"W"
+				]
+			},
 			"duration": {
 				"type": "timed",
 				"entry": "varies",
@@ -47,8 +47,6 @@
 					"unit": "special"
 				}
 			},
-			"sustain": false,
-			"dismiss": false,
 			"entries": [
 				"You impose a curse upon the target that renders it easily distracted and unable to focus its thoughts on tasks that demand insight or discernment. The target must attempt a Will save.",
 				{
@@ -66,7 +64,6 @@
 			"name": "Savant's Curse",
 			"source": "AV2",
 			"page": 73,
-			"focus": false,
 			"level": 4,
 			"traits": [
 				"Uncommon",
@@ -86,8 +83,6 @@
 				"unit": "action"
 			},
 			"components": {
-				"F": false,
-				"M": false,
 				"S": true,
 				"V": true
 			},
@@ -99,8 +94,11 @@
 				}
 			},
 			"targets": "1 creature",
-			"savingThrow": "Will",
-			"savingThrowBasic": false,
+			"savingThrow": {
+				"type": [
+					"W"
+				]
+			},
 			"duration": {
 				"type": "timed",
 				"entry": "varies",
@@ -109,8 +107,6 @@
 					"unit": "special"
 				}
 			},
-			"sustain": false,
-			"dismiss": false,
 			"entries": [
 				"You afflict the target with a curse that fills its mind with distracting and hyperspecialized minutiae, causing it to second-guess even simple facts. The target must attempt a Will saving throw.",
 				{

@@ -1,5 +1,5 @@
 {
-	"data": [
+	"renderdemo": [
 		{
 			"type": "pf2-h1",
 			"name": "Renderer Demo",
@@ -728,8 +728,6 @@
 														"school": "V",
 														"focus": false,
 														"components": {
-															"F": false,
-															"M": false,
 															"S": true,
 															"V": true
 														},
@@ -760,12 +758,18 @@
 														"duration": {
 															"type": null
 														},
-														"savingThrow": "Reflex",
-														"savingThrowBasic": true,
+														"savingThrow": {
+															"type": [
+																"W"
+															],
+															"basic": true
+														},
 														"heightened": {
 															"plus_x": {
 																"level": 1,
-																"entries": ["The damage increases by {@dice 2d6}."]
+																"entries": [
+																	"The damage increases by {@dice 2d6}."
+																]
 															}
 														},
 														"dismiss": false,

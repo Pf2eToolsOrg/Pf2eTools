@@ -4,7 +4,6 @@
 			"name": "Blightburn Blast",
 			"source": "EC5",
 			"page": 73,
-			"focus": false,
 			"level": 7,
 			"traits": [
 				"Uncommon",
@@ -22,8 +21,6 @@
 				"unit": "action"
 			},
 			"components": {
-				"F": false,
-				"M": false,
 				"S": true,
 				"V": true
 			},
@@ -33,13 +30,12 @@
 				],
 				"entry": "15-foot cone"
 			},
-			"savingThrow": "Fortitude",
-			"savingThrowBasic": true,
-			"duration": {
-				"type": null
+			"savingThrow": {
+				"type": [
+					"F"
+				],
+				"basic": true
 			},
-			"sustain": false,
-			"dismiss": false,
 			"entries": [
 				"You channel a blast of powerful blightburn radiation from your hands. You deal {@damage 4d6} poison damage to creatures in the area. Creatures who fail their save are afflicted with stage 1 of blightburn sickness (see above; on a critical failure, the creature moves immediately to stage 2). The level of blightburn sickness caused by this spell is equal to twice the spell's level, and the disease's save DC uses the caster's DC."
 			]
@@ -48,7 +44,6 @@
 			"name": "Control Sand",
 			"source": "EC5",
 			"page": 73,
-			"focus": false,
 			"level": 7,
 			"traits": [
 				"Uncommon",
@@ -65,8 +60,6 @@
 				"unit": "action"
 			},
 			"components": {
-				"F": false,
-				"M": false,
 				"S": true,
 				"V": true
 			},
@@ -76,7 +69,6 @@
 				],
 				"entry": "5-foot emanation"
 			},
-			"savingThrowBasic": false,
 			"duration": {
 				"type": "timed",
 				"entry": "sustained up to 1 minute",
@@ -86,7 +78,6 @@
 				}
 			},
 			"sustain": true,
-			"dismiss": false,
 			"entries": [
 				"You whip up a small sandstorm around your body. When a creature starts its turn in the area or moves into the area, it must succeed at a Fortitude save or become {@condition dazzled} for as long as it remains in the area; it is then temporarily immune to this dazzling effect for 10 minutes.",
 				"Choose one of the following additional effects when you cast this spell. On subsequent rounds, you can switch to a different effect once per round as a free action triggered by sustaining the spell.",
@@ -102,7 +93,9 @@
 			"heightened": {
 				"plus_x": {
 					"level": 1,
-					"entries": ["Increase the sand shield's Hardness by 2 and its Hit Points by 1, the sandblast damage by {@dice 1d6}, and the sandstorm damage by {@dice 1d4}."]
+					"entries": [
+						"Increase the sand shield's Hardness by 2 and its Hit Points by 1, the sandblast damage by {@dice 1d6}, and the sandstorm damage by {@dice 1d4}."
+					]
 				}
 			}
 		},
@@ -110,7 +103,6 @@
 			"name": "Pillars Of Sand",
 			"source": "EC5",
 			"page": 74,
-			"focus": false,
 			"level": 5,
 			"traits": [
 				"Uncommon",
@@ -127,7 +119,6 @@
 				"unit": "action"
 			},
 			"components": {
-				"F": false,
 				"M": true,
 				"S": true,
 				"V": true
@@ -139,7 +130,6 @@
 					"amount": 120
 				}
 			},
-			"savingThrowBasic": false,
 			"duration": {
 				"type": "timed",
 				"entry": "sustained up to 1 minute",
@@ -149,7 +139,6 @@
 				}
 			},
 			"sustain": true,
-			"dismiss": false,
 			"entries": [
 				"You raise one or more pillars of solid sand from the earth. The total height of the pillars is 30 feet, which must be used in 10-foot increments (for example, you could create three 10-foot-tall pillars, one 20-foot-tall pillar and one 10-foot-tall pillar, or one 30-foot-tall pillar). Each pillar is 5 feet by 5 feet in length and width. The pillars must be conjured on a relatively flat area of natural earthen terrain such as sand, dirt, stone, or clay. Regardless of the terrain, the pillars are always made of tightly compacted sand particles that together become as hard and solid as stone (DC 15 {@skill Athletics} to {@action Climb})",
 				"If a creature occupies the space where you cast this spell, it is carried upward atop the pillar. The creature can attempt a Reflex save (DC equal to the caster's spell DC); on a success, the creature can either attempt to {@action Grab an Edge} or move into an adjacent unoccupied square. If the pillar would rise higher than the ceiling, it firmly abuts the ceiling but does not rise any higher. A creature caught between a pillar and a ceiling takes no damage (subject to GM discretion, such as is in the case of stalactites or other hazards) but becomes {@condition immobilized}. The creature can attempt an {@action Escape} check to free itself, but it must thereafter {@action Grab an Edge}, {@action Climb} down, or fall from the top of the pillar. The {@action Grab an Edge} and {@action Escape} DCs are the same as the Reflex save.",
@@ -158,7 +147,9 @@
 			"heightened": {
 				"plus_x": {
 					"level": 1,
-					"entries": ["The total height of the pillars increases by 10 feet, but must still be used in 10-foot increments (this also increases the total number of pillars that can be created by one)."]
+					"entries": [
+						"The total height of the pillars increases by 10 feet, but must still be used in 10-foot increments (this also increases the total number of pillars that can be created by one)."
+					]
 				}
 			}
 		}

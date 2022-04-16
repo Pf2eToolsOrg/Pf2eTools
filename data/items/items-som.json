@@ -629,10 +629,11 @@
 					"type": "ability",
 					"activity": {
 						"number": 1,
-						"unit": "action"
+						"unit": "varies",
+						"entry": "{@as 1} or more"
 					},
 					"components": [
-						"or more (envision",
+						"(envision",
 						"Interact)"
 					],
 					"entries": [
@@ -650,7 +651,7 @@
 						"amount": 5
 					},
 					"entries": [
-						"This pack contains 5 cards of a single common cantrip (such as light)."
+						"This pack contains 5 cards of a single {@filter common cantrip|spells||rarity=common|spell type=cantrip;!focus} (such as {@spell light})."
 					]
 				},
 				{
@@ -661,7 +662,7 @@
 						"amount": 20
 					},
 					"entries": [
-						"This pack contains 24 cards\u2014one of each cantrip in the Core Rulebook."
+						"This pack contains 24 cards\u2014one of each {@filter cantrip in the Core Rulebook|spells||rarity=common|spell type=cantrip;!focus|source=crb}."
 					]
 				}
 			]
@@ -1216,7 +1217,75 @@
 			"bulk": "L",
 			"category": "Grimoire",
 			"entries": [
-				"When opened, this grimoire has unlimited pages that, oddly, seem almost eager to transcribe spells. Unlike most grimoires, it has no limits to its number of spells. The grimoire's eagerness to contain your spells grants you a."
+				"When opened, this grimoire has unlimited pages that, oddly, seem almost eager to transcribe spells. Unlike most grimoires, it has no limits to its number of spells. The grimoire's eagerness to contain your spells grants you a +1 item bonus to checks to {@action Learn a Spell} if you do so by transcribing the spell into the grimoire. If you use the grimoire during your daily preparations and are capable of preparing spells of the appropriate level, the grimoire's nature leaks into your mind, allowing you to prepare an additional 1st-level spell."
+			],
+			"generic": "G",
+			"_vmod": {
+				"entries": {
+					"mode": "replaceTxt",
+					"replaceTags": true,
+					"replace": "The grimoire's eagerness to contain your spells grants you a \\+1 item bonus to checks to {@action Learn a Spell} if you do so by transcribing the spell into the grimoire. If you use the grimoire during your daily preparations and are capable of preparing spells of the appropriate level, the grimoire's nature leaks into your mind, allowing you to prepare an additional 1st-level spell."
+				},
+				"entriesMode": "generic"
+			},
+			"variants": [
+				{
+					"type": "Endless Grimoire",
+					"level": 6,
+					"price": {
+						"coin": "gp",
+						"amount": 230
+					},
+					"entries": []
+				},
+				{
+					"type": "Greater Endless Grimoire",
+					"level": 10,
+					"price": {
+						"coin": "gp",
+						"amount": 900
+					},
+					"entries": [
+						"The item bonus is +2, and the additional spell is 3rd level."
+					],
+					"_mod": {
+						"entries": {
+							"with": "The grimoire's eagerness to contain your spells grants you a +2 item bonus to checks to {@action Learn a Spell} if you do so by transcribing the spell into the grimoire. If you use the grimoire during your daily preparations and are capable of preparing spells of the appropriate level, the grimoire's nature leaks into your mind, allowing you to prepare an additional 3rd-level spell."
+						}
+					}
+				},
+				{
+					"type": "Major Endless Grimoire",
+					"level": 14,
+					"price": {
+						"coin": "gp",
+						"amount": 4000
+					},
+					"entries": [
+						"The item bonus is +2, and the additional spell is 5th level."
+					],
+					"_mod": {
+						"entries": {
+							"with": "The grimoire's eagerness to contain your spells grants you a +2 item bonus to checks to {@action Learn a Spell} if you do so by transcribing the spell into the grimoire. If you use the grimoire during your daily preparations and are capable of preparing spells of the appropriate level, the grimoire's nature leaks into your mind, allowing you to prepare an additional 5th-level spell."
+						}
+					}
+				},
+				{
+					"type": "True Endless Grimoire",
+					"level": 18,
+					"price": {
+						"coin": "gp",
+						"amount": 23000
+					},
+					"entries": [
+						"The item bonus is +3, and the additional spell is 7th level."
+					],
+					"_mod": {
+						"entries": {
+							"with": "The grimoire's eagerness to contain your spells grants you a +3 item bonus to checks to {@action Learn a Spell} if you do so by transcribing the spell into the grimoire. If you use the grimoire during your daily preparations and are capable of preparing spells of the appropriate level, the grimoire's nature leaks into your mind, allowing you to prepare an additional 7th-level spell."
+						}
+					}
+				}
 			]
 		},
 		{
@@ -1966,7 +2035,7 @@
 						"freq": 1
 					},
 					"entries": [
-						"You rip a page from the fulu compendium and cast it in a wide arc; as it flies in that arc, it multiplies into a storm of fulus. All undead creatures in a 30-foot emanation are affected by a spirit-sealing fulu with a save DC of 25."
+						"You rip a page from the fulu compendium and cast it in a wide arc; as it flies in that arc, it multiplies into a storm of fulus. All undead creatures in a 30-foot emanation are affected by a {@item spirit-sealing fulu} with a save DC of 25."
 					]
 				}
 			]
@@ -4411,8 +4480,16 @@
 			],
 			"usage": "affixed to one undead creature",
 			"category": "Consumable",
+			"duration": {
+				"type": "timed",
+				"entry": "1 round (or 4 rounds)",
+				"duration": {
+					"number": 1,
+					"unit": "round"
+				}
+			},
 			"entries": [
-				"Duration 1 round (or 4 rounds) This classic fulu seals the negative energy within an undead, freezing it in its tracks. Upon affixing, the target undead must attempt a Will save or be {@condition paralyzed} for 1 round."
+				"This classic fulu seals the negative energy within an undead, freezing it in its tracks. Upon affixing, the target undead must attempt a Will save or be {@condition paralyzed} for 1 round."
 			],
 			"generic": "G",
 			"variants": [

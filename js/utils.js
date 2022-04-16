@@ -2379,9 +2379,13 @@ DataUtil = {
 		return `${toCsv(headers)}\n${rows.map(r => toCsv(r)).join("\n")}`;
 	},
 
-	userDownload (filename, data) {
-		if (typeof data !== "string") data = JSON.stringify(data, null, "\t");
-		return DataUtil._userDownload(`${filename}.json`, data, "text/json");
+	userDownload (filename, data, {fileType = null, isSkipAdditionalMetadata = false, propVersion = "siteVersion", valVersion = VERSION_NUMBER} = {}) {
+		filename = `${filename}.json`;
+		if (isSkipAdditionalMetadata || data instanceof Array) return DataUtil._userDownload(filename, JSON.stringify(data, null, "\t"), "text/json");
+
+		data = {[propVersion]: valVersion, ...data};
+		if (fileType != null) data = {fileType, ...data};
+		return DataUtil._userDownload(filename, JSON.stringify(data, null, "\t"), "text/json");
 	},
 
 	userDownloadText (filename, string) {
@@ -2390,31 +2394,64 @@ DataUtil = {
 
 	_userDownload (filename, data, mimeType) {
 		const a = document.createElement("a");
-		const t = new Blob([data], { type: mimeType });
-		a.href = URL.createObjectURL(t);
+		const t = new Blob([data], {type: mimeType});
+		a.href = window.URL.createObjectURL(t);
 		a.download = filename;
-		a.target = "_blank";
-		a.style.display = "none";
-		document.body.appendChild(a);
-		a.click();
-		document.body.removeChild(a);
+		a.dispatchEvent(new MouseEvent("click", {bubbles: true, cancelable: true, view: window}));
+		setTimeout(() => window.URL.revokeObjectURL(a.href), 100);
 	},
 
-	pUserUpload () {
+	/** Always returns an array of files, even in "single" mode. */
+	pUserUpload ({isMultiple = false, expectedFileType = null, propVersion = "siteVersion"} = {}) {
 		return new Promise(resolve => {
-			const $iptAdd = $(`<input type="file" accept=".json" style="position: fixed; top: -100px; left: -100px; display: none;">`).on("change", (evt) => {
+			const $iptAdd = $(`<input type="file" ${isMultiple ? "multiple" : ""} accept=".json" style="position: fixed; top: -100px; left: -100px; display: none;">`).on("change", (evt) => {
 				const input = evt.target;
 
 				const reader = new FileReader();
-				reader.onload = () => {
+				let readIndex = 0;
+				const out = [];
+				const errs = [];
+				reader.onload = async () => {
+					const name = input.files[readIndex - 1].name;
 					const text = reader.result;
-					const json = JSON.parse(text);
-					resolve(json);
+
+					try {
+						const json = JSON.parse(text);
+
+						const isSkipFile = expectedFileType != null && json.fileType && json.fileType !== expectedFileType && !(await InputUiUtil.pGetUserBoolean({
+							textYes: "Yes",
+							textNo: "Cancel",
+							title: "File Type Mismatch",
+							htmlDescription: `The file "${name}" has the type "${json.fileType}" when the expected file type was "${expectedFileType}".<br>Are you sure you want to upload this file?`,
+						}));
+
+						if (!isSkipFile) {
+							delete json.fileType;
+							delete json[propVersion];
+
+							out.push(json);
+						}
+					} catch (e) {
+						errs.push({filename: name, message: e.message});
+					}
+
+					if (input.files[readIndex]) reader.readAsText(input.files[readIndex++]);
+					else resolve({jsons: out, errors: errs});
 				};
 
-				reader.readAsText(input.files[0]);
-			}).appendTo($(`body`));
+				reader.readAsText(input.files[readIndex++]);
+			}).appendTo(document.body);
 			$iptAdd.click();
+		});
+	},
+
+	doHandleFileLoadErrorsGeneric (errors) {
+		if (!errors) return;
+		errors.forEach(err => {
+			JqueryUtil.doToast({
+				content: `Could not load file "${err.filename}": <code>${err.message}</code>. ${VeCt.STR_SEE_CONSOLE}`,
+				type: "danger",
+			});
 		});
 	},
 

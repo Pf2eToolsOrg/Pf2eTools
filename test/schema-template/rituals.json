@@ -38,7 +38,11 @@
 								"entry": "1 day"
 							}
 						],
-						"required": ["number", "unit", "entry"],
+						"required": [
+							"number",
+							"unit",
+							"entry"
+						],
 						"properties": {
 							"number": {
 								"type": "integer"
@@ -54,7 +58,10 @@
 					},
 					"primaryCheck": {
 						"type": "object",
-						"required": ["entry", "skills"],
+						"required": [
+							"entry",
+							"skills"
+						],
 						"properties": {
 							"entry": {
 								"type": "string"
@@ -170,5 +177,7 @@
 			}
 		}
 	},
-	"required": ["ritual"]
+	"required": [
+		"ritual"
+	]
 }

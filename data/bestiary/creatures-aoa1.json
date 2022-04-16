@@ -242,7 +242,7 @@
 			"abilitiesMid": [],
 			"speed": {
 				"walk": 25,
-				"climb ": 25
+				"climb": 25
 			},
 			"attacks": [
 				{
@@ -506,7 +506,7 @@
 			"abilitiesMid": [],
 			"speed": {
 				"walk": 25,
-				"climb ": 25
+				"climb": 25
 			},
 			"attacks": [
 				{
@@ -640,7 +640,7 @@
 			"abilitiesMid": [],
 			"speed": {
 				"walk": 25,
-				"climb ": 25
+				"climb": 25
 			},
 			"attacks": [
 				{
@@ -1662,7 +1662,7 @@
 			"abilitiesMid": [],
 			"speed": {
 				"walk": 15,
-				"fly ": 20
+				"fly": 20
 			},
 			"attacks": [
 				{
@@ -1836,7 +1836,7 @@
 			],
 			"speed": {
 				"walk": 20,
-				"swim ": 30
+				"swim": 30
 			},
 			"attacks": [
 				{
@@ -2017,7 +2017,7 @@
 			],
 			"speed": {
 				"walk": 20,
-				"swim ": 20
+				"swim": 20
 			},
 			"attacks": [
 				{
@@ -2167,7 +2167,7 @@
 			},
 			"abilitiesMid": [],
 			"speed": {
-				"fly ": 25
+				"fly": 25
 			},
 			"attacks": [
 				{
@@ -2316,7 +2316,7 @@
 			"abilitiesMid": [],
 			"speed": {
 				"walk": 25,
-				"climb ": 25
+				"climb": 25
 			},
 			"attacks": [
 				{
@@ -2568,7 +2568,7 @@
 			"abilitiesMid": [],
 			"speed": {
 				"walk": 25,
-				"climb ": 25
+				"climb": 25
 			},
 			"attacks": [
 				{
@@ -2786,7 +2786,7 @@
 			],
 			"speed": {
 				"walk": 25,
-				"climb ": 25
+				"climb": 25
 			},
 			"attacks": [
 				{
@@ -2941,7 +2941,7 @@
 			"abilitiesMid": [],
 			"speed": {
 				"walk": 25,
-				"climb ": 25
+				"climb": 25
 			},
 			"attacks": [
 				{
@@ -3124,7 +3124,7 @@
 			"abilitiesMid": [],
 			"speed": {
 				"walk": 25,
-				"climb ": 25
+				"climb": 25
 			},
 			"attacks": [
 				{
@@ -3247,6 +3247,9 @@
 				},
 				"Library Lore": {
 					"default": 11
+				},
+				"Mercantile Lore": {
+					"default": 11
 				}
 			},
 			"abilityMods": {
@@ -3257,20 +3260,13 @@
 				"Wis": 0,
 				"Cha": 2
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+11, {@skill Occultism} +11, {@skill Religion} +7,"
-					],
-					"name": "Mercantile Lore"
-				},
-				{
-					"entries": [
-						"+11, {@skill Stealth} +10 Str +1, Dex +3, Con +3, Int +4, Wis +0, Cha +2 Items +1 dagger (bonded item), healing potion, scroll of sleep, scroll of true strike."
-					],
-					"name": "Society"
-				}
+			"items": [
+				"{@runeItem dagger||+1 weapon potency||+1 dagger} (bonded item)",
+				"{@item healing potion (generic)||healing potion}",
+				"scroll of sleep",
+				"scroll of true strike"
 			],
+			"abilitiesTop": [],
 			"ac": {
 				"default": 20,
 				"with mage armor": 21
@@ -3338,6 +3334,25 @@
 					"DC": 23,
 					"attack": 15,
 					"entry": {
+						"0": {
+							"spells": [
+								{
+									"name": "chill touch"
+								},
+								{
+									"name": "detect magic"
+								},
+								{
+									"name": "light"
+								},
+								{
+									"name": "read"
+								},
+								{
+									"name": "shield"
+								}
+							]
+						},
 						"1": {
 							"spells": [
 								{
@@ -3394,10 +3409,7 @@
 						"3": {
 							"spells": [
 								{
-									"name": "call of the grave",
-									"notes": [
-										"Pathfinder Core Rulebook 406"
-									]
+									"name": "call of the grave"
 								}
 							]
 						}
@@ -3417,32 +3429,16 @@
 			],
 			"abilitiesBot": [
 				{
-					"traits": [
-						"3rd"
-					],
-					"entries": [
-						"chill touch, detect magic, light, read magic, shield Wizard School Spells DC 23; 3rd (1 Focus Point) call of the grave (Pathfinder Core Rulebook 406) Arcane Rituals DC 23; create undead."
-					],
-					"name": "Cantrips"
-				},
-				{
 					"activity": {
 						"number": 1,
-						"unit": "varies",
-						"entry": "[on{@as F}"
+						"unit": "free"
 					},
-					"traits": [
-						"on"
-					],
 					"entries": [
-						"] (Pathfinder Core Rulebook 205) When Voz uses this ability, she also regains 1 Focus Point."
+						"When Voz uses this ability, she also regains 1 Focus Point."
 					],
 					"name": "Drain Bonded Item"
 				},
 				{
-					"traits": [
-						"Pathfinder Core Rulebook 209"
-					],
 					"entries": [],
 					"name": "Eschew Materials"
 				},
@@ -3451,9 +3447,6 @@
 						"number": 1,
 						"unit": "action"
 					},
-					"traits": [
-						"Pathfinder Core Rulebook 210"
-					],
 					"entries": [],
 					"name": "Reach Spell"
 				}

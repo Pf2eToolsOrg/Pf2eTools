@@ -1,0 +1,228 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema",
+	"$id": "vehicles.json",
+	"title": "Vehicles",
+	"description": "The vehicle data type for Pf2eTools.",
+	"type": "object",
+	"version": "0.0.1",
+	"properties": {
+		"vehicle": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"source": {
+						"type": "string",
+						"$ref": "utils.json#/definitions/sourceList"
+					},
+					"name": {
+						"type": "string"
+					},
+					"page": {
+						"type": "integer"
+					},
+					"level": {
+						"type": "integer",
+						"minimum": 0
+					},
+					"traits": {
+						"type": "array",
+						"items": {
+							"type": "string",
+							"$ref": "utils.json#/definitions/anyTrait"
+						},
+						"minItems": 1,
+						"uniqueItems": true
+					},
+					"size": {
+						"type": "string",
+						"$ref": "utils.json#/definitions/size"
+					},
+					"price": {
+						"$ref": "utils.json#/definitions/price"
+					},
+					"space": {
+						"type": "object",
+						"properties": {
+							"long": {
+								"type": "object",
+								"properties": {
+									"number": {
+										"type": "integer",
+										"exclusiveMinimum": 1
+									},
+									"unit": {
+										"type": "string",
+										"enum": [
+											"feet"
+										]
+									}
+								}
+							},
+							"wide": {
+								"type": "object",
+								"properties": {
+									"number": {
+										"type": "integer",
+										"exclusiveMinimum": 1
+									},
+									"unit": {
+										"type": "string",
+										"enum": [
+											"feet"
+										]
+									}
+								}
+							},
+							"high": {
+								"type": "object",
+								"properties": {
+									"number": {
+										"type": "integer",
+										"exclusiveMinimum": 1
+									},
+									"unit": {
+										"type": "string",
+										"enum": [
+											"feet"
+										]
+									}
+								}
+							}
+						},
+						"additionalProperties": false,
+						"minProperties": 1
+					},
+					"crew": {
+						"type": "array",
+						"items": {
+							"type": "object",
+							"properties": {
+								"type": {
+									"type": "string",
+									"enum": [
+										"pilot",
+										"crew",
+										"rower"
+									]
+								},
+								"number": {
+									"type": "integer",
+									"exclusiveMinimum": 0
+								},
+								"entry": {
+									"type": "string"
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"type",
+								"number"
+							]
+						},
+						"minItems": 1
+					},
+					"passengers": {
+						"type": "integer",
+						"minimum": 0
+					},
+					"pilotingCheck": {
+						"type": "array",
+						"items": {
+							"type": "object",
+							"properties": {
+								"skill": {
+									"type": "string",
+									"anyOf": [
+										{
+											"$ref": "utils.json#/definitions/skillNameUpper"
+										},
+										{
+											"pattern": "^\\w+ Lore$"
+										}
+									]
+								},
+								"dc": {
+									"type": "integer",
+									"exclusiveMinimum": 0
+								},
+								"entry": {
+									"type": "string"
+								}
+							},
+							"additionalProperties": false
+						},
+						"minItems": 1
+					},
+					"defenses": {
+						"$ref": "utils.json#/definitions/defenses"
+					},
+					"speed": {
+						"type": "object",
+						"properties": {
+							"type": {
+								"type": "string",
+								"enum": [
+									"fly",
+									"special",
+									"swim",
+									"walk"
+								]
+							},
+							"speed": {
+								"type": "integer",
+								"exclusiveMinimum": 0
+							},
+							"note": {
+								"type": "string"
+							},
+							"entry": {
+								"type": "string"
+							},
+							"traits": {
+								"type": "array",
+								"items": {
+									"type": "string",
+									"$ref": "utils.json#/definitions/anyTrait"
+								},
+								"minItems": 1,
+								"uniqueItems": true
+							}
+						},
+						"additionalProperties": false
+					},
+					"collision": {
+						"type": "object",
+						"properties": {
+							"damage": {
+								"type": "string"
+							},
+							"dc": {
+								"type": "integer",
+								"exclusiveMinimum": 0
+							}
+						}
+					},
+					"abilities": {
+						"type": "array",
+						"items": {
+							"$ref": "utils.json#/definitions/abilityBlock"
+						},
+						"minItems": 1
+					}
+				},
+				"additionalProperties": false,
+				"required": [
+					"source",
+					"name",
+					"page"
+				]
+			},
+			"uniqueItems": true
+		}
+	},
+	"additionalProperties": false,
+	"required": [
+		"vehicle"
+	]
+}

@@ -41,7 +41,7 @@ const TIME_TRACKER_MOON_SPRITE_LOADER = new Promise(resolve => {
 		resolve();
 	};
 });
-TIME_TRACKER_MOON_SPRITE.src = "img/gmscreen/moon.png";
+TIME_TRACKER_MOON_SPRITE.src = "img/gmscreen/moon.webp";
 
 class Board {
 	constructor () {
@@ -607,11 +607,14 @@ class SideMenu {
 		const $wrpSaveLoadFile = $(`<div class="sidemenu__row flex-vh-center-around"/>`).appendTo($wrpSaveLoad);
 		const $btnSaveFile = $(`<button class="btn btn-primary">Save to File</button>`).appendTo($wrpSaveLoadFile);
 		$btnSaveFile.on("click", () => {
-			DataUtil.userDownload(`gm-screen`, this.board.getSaveableState());
+			DataUtil.userDownload(`gm-screen`, this.board.getSaveableState(), {fileType: "gm-screen"});
 		});
 		const $btnLoadFile = $(`<button class="btn btn-primary">Load from File</button>`).appendTo($wrpSaveLoadFile);
 		$btnLoadFile.on("click", async () => {
-			const json = await DataUtil.pUserUpload();
+			const {jsons, errors} = await DataUtil.pUserUpload({expectedFileType: "gm-screen"});
+			DataUtil.doHandleFileLoadErrorsGeneric(errors);
+			if (!jsons || !jsons.length) return;
+			const json = jsons[0];
 			this.board.doReset();
 			await this.board.pDoLoadStateFrom(json);
 		});

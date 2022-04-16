@@ -131,7 +131,7 @@
 			],
 			"speed": {
 				"walk": 20,
-				"fly ": 40
+				"fly": 40
 			},
 			"attacks": [
 				{
@@ -3183,7 +3183,7 @@
 			"abilitiesMid": [],
 			"speed": {
 				"walk": 35,
-				"fly ": 30
+				"fly": 30
 			},
 			"attacks": [
 				{
@@ -3515,7 +3515,7 @@
 			],
 			"speed": {
 				"walk": 30,
-				"fly ": 30
+				"fly": 30
 			},
 			"attacks": [
 				{
@@ -3765,7 +3765,7 @@
 				}
 			],
 			"speed": {
-				"fly ": 25
+				"fly": 25
 			},
 			"attacks": [
 				{
@@ -3941,7 +3941,7 @@
 					"water walk"
 				],
 				"walk": 25,
-				"swim ": 50
+				"swim": 50
 			},
 			"attacks": [
 				{
@@ -4261,8 +4261,13 @@
 						"number": 2,
 						"unit": "action"
 					},
+					"traits": [
+						"attack",
+						"conjuration",
+						"occult"
+					],
 					"entries": [
-						"As annis hag (Pathfinder Bestiary 202), but with an escape DC of 29, AC 25, Hardness 14, and 56 Hit Points."
+						"Once per day, Rusty Mae can cause a cage built of cold iron fingernails to spring out of nothingness at a range of up to 30 feet, attempting an {@skill Athletics} check to {@action Grapple} against the target's Fortitude DC; if the target has a weakness to cold iron, the annis hag gains a +2 circumstance bonus to this check. Unlike a normal {@action Grapple}, Rusty Mae doesn't need to be within reach and can move as she pleases, and a successful attempt lasts until the creature escapes (DC 29), causing the cage to crumble into rust. Any creature can attempt to destroy the cage by attacking it. It has an AC of 25, Hardness 14, and 56 Hit Points."
 					],
 					"name": "Bonds of Iron"
 				},
@@ -4271,12 +4276,17 @@
 						"number": 1,
 						"unit": "action"
 					},
+					"traits": [
+						"concentrate",
+						"occult",
+						"polymorph",
+						"transmutation"
+					],
 					"entries": [
-						"As annis hag."
+						"Rusty Mae can take on the appearance of any Medium female humanoid. This doesn't change her Speed or her attack and damage bonuses with her Strikes but might change the damage type her Strikes deal (typically to bludgeoning)."
 					],
 					"name": "Change Shape",
-					"generic": true,
-					"entries_as_xyz": "Ability not found: '{@action Change Shape|LOAG} As annis hag.' in Rusty Mae, p.14"
+					"generic": true
 				},
 				{
 					"activity": {

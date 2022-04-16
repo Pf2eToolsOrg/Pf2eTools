@@ -4,7 +4,6 @@
 			"name": "Admonishing Ray",
 			"source": "AoE2",
 			"page": 76,
-			"focus": false,
 			"level": 1,
 			"traits": [
 				"Attack",
@@ -21,8 +20,6 @@
 				"unit": "action"
 			},
 			"components": {
-				"F": false,
-				"M": false,
 				"S": true,
 				"V": true
 			},
@@ -34,12 +31,6 @@
 				}
 			},
 			"targets": "1 creature",
-			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
-			"sustain": false,
-			"dismiss": false,
 			"entries": [
 				"A ray of energy bludgeons your target into submission without causing lasting harm. When you cast this spell, you choose whether the ray feels like a strong punch or slap. Make a spell attack roll. The ray deals {@damage 2d6} bludgeoning damage.",
 				{
@@ -53,7 +44,9 @@
 			"heightened": {
 				"plus_x": {
 					"level": 1,
-					"entries": ["The damage increases by {@dice 2d6}."]
+					"entries": [
+						"The damage increases by {@dice 2d6}."
+					]
 				}
 			}
 		},
@@ -61,7 +54,6 @@
 			"name": "Magical Fetters",
 			"source": "AoE2",
 			"page": 77,
-			"focus": false,
 			"level": 3,
 			"traits": [
 				"Uncommon",
@@ -78,8 +70,6 @@
 				"unit": "action"
 			},
 			"components": {
-				"F": false,
-				"M": false,
 				"S": true,
 				"V": true
 			},
@@ -91,8 +81,11 @@
 				}
 			},
 			"targets": "1 creature",
-			"savingThrow": "Reflex",
-			"savingThrowBasic": false,
+			"savingThrow": {
+				"type": [
+					"R"
+				]
+			},
 			"duration": {
 				"type": "timed",
 				"entry": "see below",
@@ -101,8 +94,6 @@
 					"unit": "special"
 				}
 			},
-			"sustain": false,
-			"dismiss": false,
 			"entries": [
 				"Ghostly manacles launch from your outstretched hand and clasp around the target's limbs, impeding its movements.",
 				"The target must attempt a Reflex save.",
@@ -121,7 +112,6 @@
 			"name": "Maze Of Locked Doors",
 			"source": "AoE2",
 			"page": 77,
-			"focus": false,
 			"level": 7,
 			"traits": [
 				"Uncommon",
@@ -140,8 +130,6 @@
 				"unit": "action"
 			},
 			"components": {
-				"F": false,
-				"M": false,
 				"S": true,
 				"V": true
 			},
@@ -153,8 +141,11 @@
 				}
 			},
 			"targets": "1 creature",
-			"savingThrow": "Will",
-			"savingThrowBasic": false,
+			"savingThrow": {
+				"type": [
+					"W"
+				]
+			},
 			"duration": {
 				"type": "timed",
 				"entry": "sustained",
@@ -164,7 +155,6 @@
 				}
 			},
 			"sustain": true,
-			"dismiss": false,
 			"entries": [
 				"The target of your spell is drawn into a long, twisting, extradimensional hallway blocked at 30-foot intervals with high-grade darkwood doors (Hardness 20, HP 80, BT 40, {@skill Athletics} DC 30 to {@action Force Open}) secured with average locks (DC 25 {@skill Thievery}, 4 successful checks required). A creature trapped within this hallway can escape only when the spell expires, or when they successfully pass through the number of doors determined by their save, either by breaking through the doors or picking the locks (or any combination of these, if the target must pass through multiple doors to escape). {@trait Teleportation} effects of 6th level or lower are automatically suppressed within the extradimensional hallway; higher-level {@trait teleportation} effects require the caster to succeed at a counteract check against your spell DC or they fail.",
 				{
@@ -182,7 +172,6 @@
 			"name": "Putrefy Food And Drink",
 			"source": "AoE2",
 			"page": 77,
-			"focus": false,
 			"level": 1,
 			"traits": [
 				"Necromancy"
@@ -197,8 +186,6 @@
 				"unit": "action"
 			},
 			"components": {
-				"F": false,
-				"M": false,
 				"S": true,
 				"V": true
 			},
@@ -210,12 +197,6 @@
 				}
 			},
 			"targets": "1 cubic foot of clean food or water",
-			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
-			"sustain": false,
-			"dismiss": false,
 			"entries": [
 				"You cause otherwise edible food to rot and spoil instantly, and water and other liquids to become brackish and undrinkable. Holy water, unholy water, and similar food and drink of significance are spoiled by this spell, unless they are associated with a deity of decay or putrefaction, but it has no effect on creatures of any type, potions, or alchemical elixirs. One cubic foot of liquid is roughly 8 gallons."
 			],
@@ -223,11 +204,15 @@
 				"x": [
 					{
 						"level": 2,
-						"entries": ["You can target an alchemical elixir with this spell, attempting a counteract check against it. If you succeed, the elixir spoils and becomes a mundane item."]
+						"entries": [
+							"You can target an alchemical elixir with this spell, attempting a counteract check against it. If you succeed, the elixir spoils and becomes a mundane item."
+						]
 					},
 					{
 						"level": 3,
-						"entries": ["You can target a potion or alchemical elixir with this spell, attempting a counteract check against it. If you succeed, the elixir or potion spoils and becomes a mundane item."]
+						"entries": [
+							"You can target a potion or alchemical elixir with this spell, attempting a counteract check against it. If you succeed, the elixir or potion spoils and becomes a mundane item."
+						]
 					}
 				]
 			}
@@ -249,12 +234,9 @@
 				"unit": "action"
 			},
 			"components": {
-				"F": false,
-				"M": false,
 				"S": true,
 				"V": true
 			},
-			"savingThrowBasic": false,
 			"duration": {
 				"type": "timed",
 				"entry": "1 round",
@@ -263,8 +245,6 @@
 					"unit": "round"
 				}
 			},
-			"sustain": false,
-			"dismiss": false,
 			"entries": [
 				"The air speaks to you. You can precisely sense any motion within 60 feet through vibration and air movement."
 			]
@@ -286,18 +266,9 @@
 				"unit": "reaction"
 			},
 			"components": {
-				"F": false,
-				"M": false,
-				"S": false,
 				"V": true
 			},
 			"trigger": "You make a successful unarmed",
-			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
-			"sustain": false,
-			"dismiss": false,
 			"entries": [
 				"{@action Strike} against a flying creature.",
 				"Targets the creature you hit Saving Throw Fortitude You deny a flying creature the support of the air.",
@@ -314,7 +285,9 @@
 			"heightened": {
 				"plus_x": {
 					"level": 1,
-					"entries": ["Increase the distance the creature must descend by 20 feet."]
+					"entries": [
+						"Increase the distance the creature must descend by 20 feet."
+					]
 				}
 			}
 		}
