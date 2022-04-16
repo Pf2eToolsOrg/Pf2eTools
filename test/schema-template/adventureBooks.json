@@ -1,0 +1,56 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema",
+	"$id": "adventureBooks.json",
+	"title": "Adventures and Books",
+	"description": "The adventure and book data types for Pf2eTools.",
+	"type": "object",
+	"version": "0.0.1",
+	"definitions": {
+		"adventureBookData": {
+			"type": "array",
+			"items": {
+				"$ref": "entry.json"
+			}
+		},
+		"wrappedAdventureBookDataArray": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"source": {
+						"type": "string"
+					},
+					"data": {
+						"$ref": "#/definitions/adventureBookData"
+					}
+				},
+				"required": [
+					"id",
+					"source",
+					"data"
+				],
+				"additionalProperties": false
+			}
+		}
+	},
+	"properties": {
+		"data": {
+			"$ref": "#/definitions/adventureBookData"
+		},
+		"adventure": {
+			"$ref": "#/definitions/wrappedAdventureBookDataArray"
+		},
+		"book": {
+			"$ref": "#/definitions/wrappedAdventureBookDataArray"
+		}
+	},
+	"additionalProperties": false,
+	"required": [
+		"adventureBookData",
+		"adventure",
+		"book"
+	]
+}

@@ -23,6 +23,9 @@
 		"licenses": {
 			"$ref": "licenses.json#/properties/licenses"
 		},
+		"renderdemo": {
+			"$ref": "renderdemo.json#/properties/renderdemo"
+		},
 		"variantrule": {
 			"$ref": "variantrules.json#/properties/variantrule"
 		},
@@ -32,11 +35,20 @@
 		"tableGroup": {
 			"type": "array"
 		},
+		"data": {
+			"$ref": "adventureBooks.json#/properties/data"
+		},
 		"book": {
 			"$ref": "books.json#/properties/book"
 		},
 		"bookData": {
-			"type": "array"
+			"$ref": "adventureBooks.json#/properties/book"
+		},
+		"adventure": {
+			"$ref": "adventures.json#/properties/adventure"
+		},
+		"adventureData": {
+			"$ref": "adventureBooks.json#/properties/adventure"
 		},
 		"ancestry": {
 			"type": "array",
@@ -81,12 +93,6 @@
 			"type": "array"
 		},
 		"familiar": {
-			"type": "array"
-		},
-		"adventure": {
-			"$ref": "adventures.json#/properties/adventure"
-		},
-		"adventureData": {
 			"type": "array"
 		},
 		"hazard": {
@@ -165,10 +171,7 @@
 			"type": "array"
 		},
 		"optionalfeature": {
-			"type": "array"
-		},
-		"data": {
-			"$ref": "renderdemo.json#/properties/data"
+			"$ref": "optionalFeatures.json#/properties/optionalFeature"
 		},
 		"skill": {
 			"$ref": "skills.json#/properties/skill"
