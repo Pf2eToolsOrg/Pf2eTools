@@ -288,6 +288,235 @@
 				"pattern": "^(\\+|-)\\d$"
 			}
 		},
+		"prerequisite": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"level": {
+						"oneOf": [
+							{
+								"type": "object",
+								"properties": {
+									"level": {
+										"type": "integer"
+									},
+									"class": {
+										"type": "object",
+										"properties": {
+											"name": {
+												"$ref": "#/definitions/className"
+											},
+											"source": {
+												"$ref": "#/definitions/sourceList"
+											},
+											"visible": {
+												"description": "Governs whether or not the class name is visible in the list display/prerequisite line. *Not* recommended for features which implicitly carry a class restriction, such as Eldritch Invocations.",
+												"type": "boolean"
+											}
+										},
+										"required": [
+											"name"
+										],
+										"additionalProperties": false
+									},
+									"subclass": {
+										"type": "object",
+										"properties": {
+											"name": {
+												"type": "string"
+											},
+											"source": {
+												"$ref": "#/definitions/sourceList"
+											},
+											"visible": {
+												"description": "Governs whether or not the class name is visible in the list display/prerequisite line. *Not* recommended for features which implicitly carry a class restriction, such as Eldritch Invocations.",
+												"type": "boolean"
+											}
+										},
+										"required": [
+											"name"
+										],
+										"additionalProperties": false
+									}
+								},
+								"required": [
+									"level"
+								],
+								"additionalProperties": false
+							},
+							{
+								"type": "integer",
+								"minimum": 1
+							}
+						]
+					},
+					"pact": {
+						"type": "string",
+						"examples": [
+							"Chain",
+							"Tome",
+							"Blade",
+							"Talisman"
+						]
+					},
+					"patron": {
+						"type": "string",
+						"examples": [
+							"The Archfey",
+							"The Fiend",
+							"The Great Old One",
+							"The Hexblade",
+							"The Raven Queen",
+							"The Seeker"
+						]
+					},
+					"spell": {
+						"type": "array",
+						"items": {
+							"$ref": "entry.json"
+						}
+					},
+					"feat": {
+						"type": "array",
+						"items": {
+							"$ref": "entry.json"
+						}
+					},
+					"feature": {
+						"type": "array",
+						"items": {
+							"$ref": "entry.json"
+						}
+					},
+					"item": {
+						"type": "array",
+						"items": {
+							"$ref": "entry.json"
+						}
+					},
+					"other": {
+						"description": "A free text prerequisite",
+						"type": "string"
+					},
+					"otherSummary": {
+						"description": "A free text prerequisite, with a shortened form for list display.",
+						"type": "object",
+						"properties": {
+							"entry": {
+								"type": "string"
+							},
+							"entrySummary": {
+								"description": "Used in short/list displays",
+								"type": "string"
+							}
+						},
+						"required": [
+							"entry",
+							"entrySummary"
+						],
+						"additionalProperties": false
+					},
+					"race": {
+						"type": "array",
+						"items": {
+							"type": "object",
+							"properties": {
+								"name": {
+									"type": "string"
+								},
+								"displayEntry": {
+									"description": "Optional long-form name to be used in the rendered entity.",
+									"type": "string"
+								},
+								"subrace": {
+									"type": "string"
+								}
+							},
+							"required": [
+								"name"
+							],
+							"additionalProperties": false
+						}
+					},
+					"ability": {
+						"type": "array",
+						"items": {
+							"type": "object",
+							"properties": {
+								"str": {
+									"type": "integer"
+								},
+								"dex": {
+									"type": "integer"
+								},
+								"con": {
+									"type": "integer"
+								},
+								"int": {
+									"type": "integer"
+								},
+								"wis": {
+									"type": "integer"
+								},
+								"cha": {
+									"type": "integer"
+								}
+							},
+							"additionalProperties": false
+						}
+					},
+					"spellcasting": {
+						"type": "boolean"
+					},
+					"spellcasting2020": {
+						"description": "Renders with the updated text found in UA2020: Feats",
+						"type": "boolean"
+					},
+					"psionics": {
+						"type": "boolean"
+					},
+					"proficiency": {
+						"type": "array",
+						"items": {
+							"type": "object",
+							"properties": {
+								"armor": {
+									"type": "string",
+									"enum": [
+										"light",
+										"medium",
+										"heavy"
+									]
+								},
+								"weapon": {
+									"type": "string",
+									"enum": [
+										"simple",
+										"martial"
+									]
+								}
+							},
+							"additionalProperties": false,
+							"minProperties": 1
+						},
+						"minItems": 1
+					},
+					"alignment": {
+						"type": "array",
+						"items": {
+							"$ref": "utils.json#/definitions/alignmentTraits"
+						}
+					},
+					"note": {
+						"description": "An additional note that accompanies the proficiencies, but is not part of them.",
+						"type": "string"
+					}
+				},
+				"additionalProperties": false,
+				"minProperties": 1
+			}
+		},
 		"implies": {
 			"type": "object",
 			"properties": {
