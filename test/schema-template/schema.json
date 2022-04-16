@@ -35,11 +35,20 @@
 		"tableGroup": {
 			"type": "array"
 		},
+		"data": {
+			"$ref": "adventureBooks.json#/properties/data"
+		},
 		"book": {
 			"$ref": "books.json#/properties/book"
 		},
 		"bookData": {
-			"type": "array"
+			"$ref": "adventureBooks.json#/properties/book"
+		},
+		"adventure": {
+			"$ref": "adventures.json#/properties/adventure"
+		},
+		"adventureData": {
+			"$ref": "adventureBooks.json#/properties/adventure"
 		},
 		"ancestry": {
 			"type": "array",
@@ -84,12 +93,6 @@
 			"type": "array"
 		},
 		"familiar": {
-			"type": "array"
-		},
-		"adventure": {
-			"$ref": "adventures.json#/properties/adventure"
-		},
-		"adventureData": {
 			"type": "array"
 		},
 		"hazard": {
