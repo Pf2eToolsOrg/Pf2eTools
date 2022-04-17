@@ -4744,8 +4744,13 @@ Renderer.feat = {
 	getSubHead (feat) {
 		const renderStack = [];
 		const renderer = Renderer.get()
+		// TODO: Fully transition to objects
 		if (feat.prerequisites != null) {
-			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Prerequisites&nbsp;</strong>${renderer.render(feat.prerequisites)}</p>`);
+			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Prerequisites&nbsp;</strong>`)
+			if (Array.isArray(feat.prerequisites)) {
+				renderStack.push(Renderer.utils.getPrerequisiteHtml(feat.prerequisite, {isSkipPrefix: true}))
+			} else renderStack.push(renderer.render(feat.prerequisites))
+			renderStack.push(`</p>`)
 		}
 		if (feat.frequency != null) {
 			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Frequency&nbsp;</strong>${renderer.render(Parser.freqToFullEntry(feat.frequency))}</p>`);

@@ -15,6 +15,21 @@ class PageFilterFeats extends PageFilter {
 		this._archetypeFilter = new Filter({ header: "Archetypes", items: ["Archetype"] });
 		this._classFilter = new Filter({ header: "Classes" });
 		this._skillFilter = new Filter({ header: "Skills" });
+		/* Unused, for the future
+		this._skillTrainedFilter = new Filter({ header: "Trained" });
+		this._skillExpertFilter = new Filter({ header: "Expert" });
+		this._skillMasterFilter = new Filter({ header: "Master" });
+		this._skillLegendaryFilter = new Filter({ header: "Legendary" });
+`		this._skillFilter = new MultiFilter({ header: "Skills",
+			filters: [this._skillTrainedFilter,
+				this._skillExpertFilter,
+				this._skillMasterFilter,
+				this._skillLegendaryFilter,
+			] });
+		this._skillFilter = new MultiFilter({ header: "Prerequisites", filters: [
+			this._skillFilter,
+		]});
+`		*/
 		this._timeFilter = new Filter({
 			header: "Activity",
 			itemSortFn: SortUtil.sortActivities,
@@ -63,7 +78,7 @@ class PageFilterFeats extends PageFilter {
 		if (feat.leadsTo && feat.leadsTo.length) feat._fMisc.push("Leads to...");
 		if (feat._featType.variant === true) feat._fMisc.push("Variant");
 		// FIXME: Temporary workaround until prerequisites data changes
-		if (feat.prerequisites) {
+		if (typeof (feat.prerequisites) === "string") {
 			const regExpSkills = /{@skill (.*?)[}|]/g;
 			feat._featType.skill = feat._featType.skill || [];
 			feat._featType.skill.push(...[...feat.prerequisites.matchAll(regExpSkills)].map(m => m[1]));
