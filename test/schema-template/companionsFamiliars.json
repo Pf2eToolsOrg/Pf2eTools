@@ -1,0 +1,589 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema",
+	"$id": "companionsFamiliars.json",
+	"title": "Companions and Familiars",
+	"description": "The companions and familiars data type for Pf2eTools.",
+	"type": "object",
+	"version": "0.0.1",
+	"properties": {
+		"companion": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"source": {
+						"type": "string",
+						"$ref": "utils.json#/definitions/sourceList"
+					},
+					"name": {
+						"type": "string"
+					},
+					"page": {
+						"type": "integer"
+					},
+					"type": {
+						"type": "string",
+						"enum": [
+							"Companion"
+						]
+					},
+					"special": {
+						"type": "string"
+					},
+					"access": {
+						"type": "string"
+					},
+					"size": {
+						"type": "array",
+						"items": {
+							"$ref": "utils.json#/definitions/size"
+						},
+						"uniqueItems": true,
+						"minItems": 1
+					},
+					"attacks": {
+						"type": "array",
+						"items": {
+							"$ref": "utils.json#/definitions/attackBlock"
+						},
+						"uniqueItems": true,
+						"minItems": 1
+					},
+					"maneuver": {
+						"$ref": "utils.json#/definitions/abilityBlock"
+					},
+					"abilityMods": {
+						"type": "object",
+						"properties": {
+							"Str": {
+								"type": "integer"
+							},
+							"Dex": {
+								"type": "integer"
+							},
+							"Con": {
+								"type": "integer"
+							},
+							"Int": {
+								"type": "integer"
+							},
+							"Wis": {
+								"type": "integer"
+							},
+							"Cha": {
+								"type": "integer"
+							}
+						},
+						"minProperties": 6,
+						"additionalProperties": false
+					},
+					"hp": {
+						"type": "integer",
+						"minimum": 1
+					},
+					"skill": {
+						"type": "string",
+						"$ref": "utils.json#/definitions/skillName"
+					},
+					"senses": {
+						"type": "object",
+						"properties": {
+							"other": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								},
+								"minItems": 1,
+								"uniqueItems": true
+							}
+						}
+					},
+					"speed": {
+						"$ref": "utils.json#/definitions/speed"
+					},
+					"support":{
+						"type": "string"
+					},
+					"fluff": {
+						"type": "array",
+						"items": {
+							"$ref": "entry.json"
+						},
+						"minItems": 1
+					},
+					"traits": {
+						"type": "array",
+						"items": {
+							"type": "string",
+							"$ref": "utils.json#/definitions/anyTrait"
+						},
+						"minItems": 1,
+						"uniqueItems": true
+					}
+				},
+				"additionalProperties": false,
+				"required": [
+					"source",
+					"name",
+					"page"
+				]
+			},
+			"minItems": 1,
+			"uniqueItems": true
+		},
+		"companionAbility": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"source": {
+						"type": "string",
+						"$ref": "utils.json#/definitions/sourceList"
+					},
+					"name": {
+						"type": "string"
+					},
+					"page": {
+						"type": "integer"
+					},
+					"tier": {
+						"type": "integer",
+						"minimum": 1,
+						"maximum": 3
+					},
+					"traits": {
+						"type": "array",
+						"items": {
+							"type": "string",
+							"$ref": "utils.json#/definitions/anyTrait"
+						},
+						"minItems": 1,
+						"uniqueItems": true
+					},
+					"entries": {
+						"type": "array",
+						"items": {
+							"$ref": "entry.json"
+						},
+						"minItems": 1
+					}
+				},
+				"additionalProperties": false,
+				"required": [
+					"source",
+					"name",
+					"page",
+					"tier",
+					"entries"
+				]
+			},
+			"minItems": 1,
+			"uniqueItems": true
+		},
+		"familiar": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"source": {
+						"type": "string",
+						"$ref": "utils.json#/definitions/sourceList"
+					},
+					"name": {
+						"type": "string"
+					},
+					"page": {
+						"type": "integer"
+					},
+					"type": {
+						"type": "string",
+						"enum": [
+							"Familiar"
+						]
+					},
+					"access": {
+						"type": "string"
+					},
+					"requires": {
+						"type": "integer",
+						"minimum": 1
+					},
+					"granted": {
+						"type": "array",
+						"items": {
+							"type": "string"
+						},
+						"uniqueItems": true,
+						"minItems": 1
+					},
+					"abilities": {
+						"type": "array",
+						"items": {
+							"$ref": "utils.json#/definitions/abilityBlock"
+						},
+						"uniqueItems": true,
+						"minItems": 1
+					},
+					"traits": {
+						"type": "array",
+						"items": {
+							"type": "string",
+							"$ref": "utils.json#/definitions/anyTrait"
+						},
+						"minItems": 1,
+						"uniqueItems": true
+					},
+					"alignment": {
+						"type": "string"
+					},
+					"fluff": {
+						"type": "array",
+						"items": {
+							"$ref": "entry.json"
+						},
+						"minItems": 1
+					}
+				},
+				"additionalProperties": false,
+				"required": [
+					"source",
+					"name",
+					"page",
+					"type",
+					"granted"
+				]
+			},
+			"minItems": 1,
+			"uniqueItems": true
+		},
+		"familiarAbility": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"source": {
+						"type": "string",
+						"$ref": "utils.json#/definitions/sourceList"
+					},
+					"name": {
+						"type": "string"
+					},
+					"page": {
+						"type": "integer"
+					},
+					"type": {
+						"type": "string",
+						"enum": [
+							"Familiar",
+							"Master"
+						]
+					},
+					"traits": {
+						"type": "array",
+						"items": {
+							"type": "string",
+							"$ref": "utils.json#/definitions/anyTrait"
+						},
+						"minItems": 1,
+						"uniqueItems": true
+					},
+					"entries": {
+						"type": "array",
+						"items": {
+							"$ref": "entry.json"
+						},
+						"minItems": 1
+					}
+				},
+				"additionalProperties": false,
+				"required": [
+					"source",
+					"name",
+					"page",
+					"type",
+					"entries"
+				]
+			},
+			"minItems": 1,
+			"uniqueItems": true
+		},
+		"eidolon": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"source": {
+						"type": "string",
+						"$ref": "utils.json#/definitions/sourceList"
+					},
+					"name": {
+						"type": "string"
+					},
+					"page": {
+						"type": "integer"
+					},
+					"type": {
+						"type": "string",
+						"enum": [
+							"Eidolon"
+						]
+					},
+					"tradition": {
+						"type": "string",
+						"$ref": "utils.json#/definitions/tradition"
+					},
+					"traits": {
+						"type": "array",
+						"items": {
+							"type": "string",
+							"$ref": "utils.json#/definitions/anyTrait"
+						},
+						"minItems": 1,
+						"uniqueItems": true
+					},
+					"alignment": {
+						"type": "string"
+					},
+					"home": {
+						"type": "string"
+					},
+					"size": {
+						"type": "array",
+						"items": {
+							"$ref": "utils.json#/definitions/size"
+						},
+						"uniqueItems": true,
+						"minItems": 1
+					},
+					"suggestedAttacks": {
+						"type": "array",
+						"items": {
+							"type": "string"
+						},
+						"minItems": 1,
+						"uniqueItems": true
+					},
+					"stats": {
+						"type": "array",
+						"items": {
+							"type": "object",
+							"properties": {
+								"name": {
+									"type": "string"
+								},
+								"abilityMods": {
+									"type": "object",
+									"properties": {
+										"Str": {
+											"type": "integer"
+										},
+										"Dex": {
+											"type": "integer"
+										},
+										"Con": {
+											"type": "integer"
+										},
+										"Int": {
+											"type": "integer"
+										},
+										"Wis": {
+											"type": "integer"
+										},
+										"Cha": {
+											"type": "integer"
+										}
+									},
+									"minProperties": 6,
+									"additionalProperties": false
+								},
+								"ac": {
+									"type": "object",
+									"properties": {
+										"number": {
+											"type": "integer",
+											"minimum": 1
+										},
+										"dexCap": {
+											"type": "integer"
+										}
+									},
+									"additionalProperties": false,
+									"minProperties": 1
+								}
+							},
+							"additionalProperties": false,
+							"minProperties": 1
+						},
+						"uniqueItems": true,
+						"minItems": 1
+					},
+					"fluff": {
+						"type": "array",
+						"items": {
+							"$ref": "entry.json"
+						},
+						"minItems": 1
+					},
+					"skills": {
+						"type": "array",
+						"items": {
+							"$ref": "utils.json#/definitions/skillNameUpper"
+						},
+						"uniqueItems": true,
+						"minItems": 1
+					},
+					"languages": {
+						"type": "array",
+						"items": {
+							"type": "string"
+						},
+						"uniqueItems": true,
+						"minItems": 1
+					},
+					"speed": {
+						"$ref": "utils.json#/definitions/speed"
+					},
+					"senses": {
+						"type": "object",
+						"properties": {
+							"other": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								},
+								"minItems": 1,
+								"uniqueItems": true
+							}
+						},
+						"additionalProperties": false,
+						"minProperties": 1
+					},
+					"abilities": {
+						"type": "array",
+						"items": [
+							{
+								"properties": {
+									"name": {
+										"type": "string"
+									},
+									"type": {
+										"const": "initial"
+									},
+									"entries": {
+										"type": "array",
+										"items": {
+											"$ref": "entry.json"
+										},
+										"minItems": 1
+									},
+									"traits": {
+										"type": "array",
+										"items": {
+											"type": "string",
+											"$ref": "utils.json#/definitions/anyTrait"
+										},
+										"minItems": 1,
+										"uniqueItems": true
+									}
+								},
+								"additionalProperties": false,
+								"required": [
+									"name",
+									"type",
+									"entries"
+								]
+							},
+							{
+								"properties": {
+									"name": {
+										"type": "string"
+									},
+									"type": {
+										"const": "symbiosis"
+									},
+									"level": {
+										"type": "integer",
+										"minimum": 1
+									},
+									"entries": {
+										"type": "array",
+										"items": {
+											"$ref": "entry.json"
+										},
+										"minItems": 1
+									},
+									"traits": {
+										"type": "array",
+										"items": {
+											"type": "string",
+											"$ref": "utils.json#/definitions/anyTrait"
+										},
+										"minItems": 1,
+										"uniqueItems": true
+									}
+								},
+								"additionalProperties": false,
+								"required": [
+									"name",
+									"type",
+									"entries"
+								]
+							},
+							{
+								"properties": {
+									"name": {
+										"type": "string"
+									},
+									"type": {
+										"const": "transcendence"
+									},
+									"level": {
+										"type": "integer",
+										"minimum": 1
+									},
+									"entries": {
+										"type": "array",
+										"items": {
+											"$ref": "entry.json"
+										},
+										"minItems": 1
+									},
+									"traits": {
+										"type": "array",
+										"items": {
+											"type": "string",
+											"$ref": "utils.json#/definitions/anyTrait"
+										},
+										"minItems": 1,
+										"uniqueItems": true
+									}
+								},
+								"additionalProperties": false,
+								"required": [
+									"name",
+									"type",
+									"entries"
+								]
+							}
+						],
+						"uniqueItems": true,
+						"minItems": 3
+					}
+				},
+				"additionalProperties": false,
+				"required": [
+					"source",
+					"name",
+					"page",
+					"type"
+				]
+			},
+			"minItems": 1,
+			"uniqueItems": true
+		}
+	},
+	"additionalProperties": false,
+	"required": [
+		"companion"
+	]
+}

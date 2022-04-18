@@ -78,10 +78,19 @@
 			"$ref": "feats.json#/properties/feat"
 		},
 		"companion": {
-			"type": "array"
+			"$ref": "companionsFamiliars.json#/properties/companion"
+		},
+		"companionAbility":{
+			"$ref": "companionsFamiliars.json#/properties/companionAbility"
 		},
 		"familiar": {
-			"type": "array"
+			"$ref": "companionsFamiliars.json#/properties/familiar"
+		},
+		"familiarAbility": {
+			"$ref": "companionsFamiliars.json#/properties/familiarAbility"
+		},
+		"eidolon": {
+			"$ref": "companionsFamiliars.json#/properties/eidolon"
 		},
 		"hazard": {
 			"$ref": "hazards.json#/properties/hazard"
@@ -112,9 +121,6 @@
 		},
 		"curse": {
 			"$ref": "diseases.json#/properties/disease"
-		},
-		"itemcurse": {
-			"type": "array"
 		},
 		"ability": {
 			"$ref": "abilities.json#/properties/ability"
@@ -151,12 +157,6 @@
 		},
 		"organizationFluff": {
 			"$ref": "fluff-organizations.json#/properties/organizationFluff"
-		},
-		"eidolon": {
-			"type": "array"
-		},
-		"familiarAbility": {
-			"type": "array"
 		},
 		"optionalfeature": {
 			"$ref": "optionalFeatures.json#/properties/optionalFeature"
