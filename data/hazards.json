@@ -11040,7 +11040,16 @@
 					},
 					"trigger": "A creature enters the prayer room",
 					"entries": [
-						"The abbot's spirit appears and begins to channel powerful ki energy. One round later, the room fills with a powerful kinetic storm, dealing {@damage 3d10+15} electricity damage and {@damage 3d10+15} force damage to all creatures in the room. Creatures in the room must attempt a DC 37 Reflex save. Critical Success The creature is unaffected. Success The creature takes half damage. Failure The creature takes full damage and becomes {@condition deafened} for 1 round. Critical Failure The creature takes full damage, {@damage 2d8} {@condition persistent damage ||persistent electricity damage}, and becomes {@condition deafened} for 1 minute."
+						"The abbot's spirit appears and begins to channel powerful ki energy. One round later, the room fills with a powerful kinetic storm, dealing {@damage 3d10+15} electricity damage and {@damage 3d10+15} force damage to all creatures in the room. Creatures in the room must attempt a DC 37 Reflex save.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "The creature is unaffected.",
+								"Success": "The creature takes half damage.",
+								"Failure": "The creature takes full damage and becomes {@condition deafened} for 1 round.",
+								"Critical Failure": "The creature takes full damage, {@damage 2d8} {@condition persistent damage ||persistent electricity damage}, and becomes {@condition deafened} for 1 minute."
+							}
+						}
 					],
 					"type": "ability",
 					"name": "Ki Storm"
