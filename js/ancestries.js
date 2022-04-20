@@ -861,7 +861,8 @@ class AncestriesPage extends BaseComponent {
 			.filter(h => this._state[UrlUtil.getStateKeyHeritage(h)])
 			.map(h => asStateKeys ? UrlUtil.getStateKeyHeritage(h) : h);
 	}
-
+	// FIXME: why is this here and not in render.js
+	// Don't delete this and explain why it's here
 	_render_renderAncestry () {
 		const $ancestryStats = $(`#ancestrystats`).empty();
 		const anc = this.activeAncestry;
@@ -888,11 +889,11 @@ class AncestriesPage extends BaseComponent {
 				...Parser.speedToFullMap(anc.speed),
 			],
 		};
-		if (anc.rarity) statSidebar.entries.unshift({type: "pf2-title", name: "Rarity"}, `{@trait ${anc.rarity}}`);
-		if (anc.boosts) statSidebar.entries.push({type: "pf2-title", name: "Ability Boosts"}, ...anc.boosts);
-		if (anc.flaw) statSidebar.entries.push({type: "pf2-title", name: "Ability Flaw"}, ...anc.flaw);
+		if (anc.rarity) statSidebar.entries.unshift({type: "pf2-title", name: "Rarity"}, `{@trait ${anc.rarity.toTitleCase()}}`);
+		if (anc.boosts) statSidebar.entries.push({type: "pf2-title", name: "Ability Boosts"}, anc.boosts.join(", ").toTitleCase());
+		if (anc.flaw) statSidebar.entries.push({type: "pf2-title", name: "Ability Flaw"}, anc.flaw.join(", ").toTitleCase());
 		if (anc.languages) statSidebar.entries.push({type: "pf2-title", name: "Languages"}, ...anc.languages);
-		if (anc.traits) statSidebar.entries.push({type: "pf2-title", name: "Traits"}, ...anc.traits.map(t => `{@trait ${t}}`));
+		if (anc.traits) statSidebar.entries.push({type: "pf2-title", name: "Traits"}, anc.traits.map(t => `{@trait ${t.toTitleCase()}}`).join(", "));
 		if (anc.feature) statSidebar.entries.push({type: "pf2-title", name: anc.feature.name}, ...anc.feature.entries);
 		if (anc.features) anc.features.forEach(f => statSidebar.entries.push({type: "pf2-title", name: f.name}, ...f.entries));
 		const ancestryName = {

@@ -3685,15 +3685,15 @@ Renderer.ancestry = {
 		renderStack.push(`${Renderer.utils.getNameDiv(anc, { page: UrlUtil.PG_ANCESTRIES, type: "Ancestry", ...opts })}`)
 		renderStack.push(`${Renderer.utils.getDividerDiv()}`)
 		renderStack.push(`<div class="pf2-sidebar--compact">`)
-		if (anc.rarity) renderStack.push(`<div><p class="pf2-title">Rarity</p><p class="pf2-sidebar__text">${anc.rarity}</p></div>`)
+		if (anc.rarity) renderStack.push(renderer.render(`<div><p class="pf2-title">Rarity</p><p class="pf2-sidebar__text">{@trait ${anc.rarity.toTitleCase()}}</p></div>`))
 		renderStack.push(`<div><p class="pf2-title">Hit Points</p><p class="pf2-sidebar__text">${anc.hp}</p></div>`)
 		renderStack.push(`<div><p class="pf2-title">Size</p><p class="pf2-sidebar__text">${anc.size}</p></div>`)
 		renderStack.push(`<div><p class="pf2-title">Speed</p><p class="pf2-sidebar__text">${Parser.speedToFullMap(anc.speed).join(", ")}</p></div>`)
-		if (anc.boosts) renderStack.push(`<div><p class="pf2-title">Ability Boosts</p><p class="pf2-sidebar__text">${anc.boosts.join(", ")}</p></div>`)
-		if (anc.flaw) renderStack.push(`<div><p class="pf2-title">Ability Flaw</p><p class="pf2-sidebar__text">${anc.flaw.join(", ")}</p></div>`)
+		if (anc.boosts) renderStack.push(`<div><p class="pf2-title">Ability Boosts</p><p class="pf2-sidebar__text">${anc.boosts.join(", ").toTitleCase()}</p></div>`)
+		if (anc.flaw) renderStack.push(`<div><p class="pf2-title">Ability Flaw</p><p class="pf2-sidebar__text">${anc.flaw.join(", ").toTitleCase()}</p></div>`)
 		// FIXME: This is a wonky solution to the hover pup-up being spammed with the "you can choose your language" text. Perhaps split the data between languages you always know and ones you can choose?
 		if (anc.languages) renderStack.push(`<div><p class="pf2-title">Languages</p><p class="pf2-sidebar__text">${renderer.render(anc.languages.join(", ").replace(/, Additional languages [\s\S]+region\)\./g, ""))}</p></div>`)
-		if (anc.traits) renderStack.push(`<div><p class="pf2-title">Traits</p><p class="pf2-sidebar__text">${renderer.render(anc.traits.join(", "))}</p></div>`)
+		if (anc.traits) renderStack.push(`<div><p class="pf2-title">Traits</p><p class="pf2-sidebar__text">${renderer.render(anc.traits.join(", ").toTitleCase())}</p></div>`)
 		renderStack.push(`
 			${anc.feature ? `<div><p class="pf2-title">${anc.feature.name}</p><p class="pf2-sidebar__text">${renderer.render(anc.feature.entries)}</p></div>` : ""}
 			${anc.features ? anc.features.map(f => `<div><p class="pf2-title">${f.name}</p><p class="pf2-sidebar__text">${renderer.render(f.entries)}</p></div>`).join("") : ""}
@@ -4029,7 +4029,7 @@ Renderer.eidolon = {
 		${eidolon.alignment ? `<p class="pf2-stat pf2-stat__section"><strong>Alignment&nbsp;</strong>${renderer.render(eidolon.alignment)}</p>` : ""}
 		${eidolon.home ? `<p class="pf2-stat pf2-stat__section"><strong>Home Plane&nbsp;</strong>${renderer.render(eidolon.home)}</p>` : ""}
 		${Renderer.utils.getDividerDiv()}
-		<p class="pf2-stat pf2-stat__section"><strong>Size&nbsp;</strong>${renderer.render(eidolon.size)}</p>
+		<p class="pf2-stat pf2-stat__section"><strong>Size&nbsp;</strong>${renderer.render(eidolon.size.map(t => `{@trait ${t}}`).joinConjunct(", ", " or "))}</p>
 		${eidolon.extraStats ? eidolon.extraStats.map(es => `<p class="pf2-stat pf2-stat__section"><strong>${es.name}&nbsp;</strong>${renderer.render(es.entries)}</p>`) : ""}
 		<p class="pf2-stat pf2-stat__section"><strong>Suggested Attacks&nbsp;</strong>${renderer.render(eidolon.suggestedAttacks)}</p>
 		${eidolon.stats.map(s => `<p class="pf2-stat pf2-stat__section"><strong>${s.name || ""}&nbsp;</strong>${Object.entries(s.abilityMods).map(([k, v]) => `<i>${k}</i> ${v}`).join(", ")}; ${Parser.numToBonus(s.ac.number)} AC (${Parser.numToBonus(s.ac.dexCap)} Dex Cap)</p>`)}
@@ -7309,7 +7309,7 @@ Renderer.hover = {
 			case UrlUtil.PG_TRAITS:
 				return Renderer.trait.getRenderedString;
 			case UrlUtil.PG_PLACES:
-				return Renderer.place.dataGetRenderedString;
+				return Renderer.place.getRenderedString;
 			// region props
 			case "classfeature":
 			case "classFeature":
