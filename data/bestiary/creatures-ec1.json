@@ -754,13 +754,11 @@
 				"Wis": 5,
 				"Cha": 2
 			},
+			"items": [
+				"{@runeItem maul||+1 weapon potency||striking|}", "{@item wooden religious symbol}", "{@item scale mail}", "{@item wand} of {@spell heal} (2nd)"
+
+			],
 			"abilitiesTop": [
-				{
-					"entries": [
-						"+15, {@skill Stealth} +10 Str +3, Dex +0, Con +2, Int +1, Wis +5, Cha +2 Items +1 striking maul, wooden religious symbol, scale mail, wand of heal (2nd)"
-					],
-					"name": "Religion"
-				}
 			],
 			"ac": {
 				"default": 22
@@ -837,13 +835,41 @@
 					]
 				}
 			],
+			"spellcasting": [
+				{
+					"name": "Primal Prepared",
+					"type": "Prepared",
+					"tradition": "Primal",
+					"DC": 20,
+					"attack": 12,
+					"entry": {
+						"0": {
+							"level": 3,
+							"spells": [
+								{
+									"name": "chill touch, divine lance, guidance, shield"
+								},
+								{
+									"name": "produce flame"
+								},
+								{
+									"name": "stabilize"
+								},
+								{
+									"name": "tanglefoot"
+								}
+							]
+						}
+					}
+				}
+			],
 			"abilitiesBot": [
 				{
 					"traits": [
 						"3rd"
 					],
 					"entries": [
-						"chill touch, divine lance, guidance, shield."
+						"."
 					],
 					"name": "Cantrips"
 				},
@@ -4167,12 +4193,6 @@
 				"2 daggers"
 			],
 			"abilitiesTop": [
-				{
-					"entries": [
-						"+8 Str +2, Dex +4, Con +2, Int +1, Wis +0, Cha \u20131 Items 2 daggers."
-					],
-					"name": "Thievery"
-				}
 			],
 			"ac": {
 				"default": 18
@@ -4201,7 +4221,7 @@
 						"olfactory"
 					],
 					"entries": [
-						"30 feet. As xulgath warrior (Pathfinder Bestiary 336). A xulgath bilebearer can activate or deactivate its stench aura as a free action."
+						"30 feet. A creature that enters the area must attempt a DC 16 Fortitude save. On a failure, the creature is {@condition sickened 1}, and on a critical failure, the creature also takes a \u20135-foot status penalty to its Speeds for 1 round. While within the aura, the creature takes a \u20132 circumstance penalty to saves to recover from the {@condition sickened} condition. A creature that succeeds at its save is temporarily immune to all xulgaths' stenches for 1 minute. A xulgath bilebearer can activate or deactivate its stench aura as a free action."
 					],
 					"name": "Stench"
 				}
