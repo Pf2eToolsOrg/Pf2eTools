@@ -1789,3 +1789,9 @@ Parser.typeToSkill = function (type) {
 	}
 	return [...skill].join(" or ")
 };
+
+Parser.getKeyByValue = function (object, value) {
+	return Object.keys(object).filter(function (key) {
+		return object[key] === value;
+	});
+}

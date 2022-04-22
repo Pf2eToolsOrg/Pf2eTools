@@ -2529,9 +2529,17 @@ function Renderer () {
 		else return `${str}${terminator}`;
 	}
 
-	this.renderJoinCommaOrSemi = function (entries) {
-		// TODO: Expand this to allow rendering of other entry types
+	// TODO: Expand this to allow rendering of other entry types
+	/**
+	 * @param andOr true to return "; or " and " or " instead of ", " and "; ".
+	*/
+	this.renderJoinCommaOrSemi = function (entries, options) {
+		options = options || {};
 		if (entries.includes(e => typeof e !== "string")) return this.render(entries);
+		if (options.andOr === true) {
+			if (entries.find(element => element.includes("and" || ","))) return this.render(entries.join("; or "))
+			else return this.render(entries.join(" or "));
+		}
 		if (entries.find(element => element.includes(","))) return this.render(entries.join("; "));
 		else return this.render(entries.join(", "));
 	}
@@ -3361,6 +3369,8 @@ Renderer.utils = {
 						})).joinConjunct(", ", " or ");
 					case "feat":
 						return isListMode ? v.map(x => x.split("|")[0].toTitleCase()).join("/") : v.map(it => `{@feat ${it}}`).joinConjunct(", ", " or ");
+					case "spellcasting":
+						return isListMode ? "spellcasting" : "spell repertoire or ability to prepare spells";
 					case "feature":
 						return isListMode ? v.map(x => Renderer.stripTags(x).toTitleCase()).join("/") : v.map(it => isTextOnly ? Renderer.stripTags(it) : it).joinConjunct(", ", " or ");
 					case "item":
@@ -3400,7 +3410,7 @@ Renderer.utils = {
 									hadMultipleInner = hadMultipleInner || abs.length > 1;
 									if (abs.length > 1) { hadMultiMultipleInner = isMulti = true; }
 									abs = abs.sort(SortUtil.ascSortAtts);
-									return isListMode ? `${abs.map(ab => ab.uppercaseFirst()).join(", ")} ${req}+` : `${abs.map(ab => Parser.attAbvToFull(ab)).joinConjunct(", ", " and ")} ${req} or higher`;
+									return `${abs.map(ab => Parser.attAbvToFull(ab)).joinConjunct(", ", " and ")} ${req}`;
 								},
 								);
 								return isListMode ? `${isMulti || byScore.length > 1 ? "(" : ""}${byScore.join(" & ")}${isMulti || byScore.length > 1 ? ")" : ""}` : isMulti ? byScore.joinConjunct("; ", " and ") : byScore.joinConjunct(", ", " and ");
@@ -3412,44 +3422,28 @@ Renderer.utils = {
 						} else {
 							const isComplex = hadMultiMultipleInner || hadMultipleInner || allValuesEqual == null;
 							const joined = abilityOptions.joinConjunct(hadMultiMultipleInner ? " - " : hadMultipleInner ? "; " : ", ", isComplex ? (isTextOnly ? ` /or/ ` : ` <i>or</i> `) : " or ");
-							return `${joined}${allValuesEqual != null ? ` ${allValuesEqual} or higher` : ""}`;
+							return `${joined}${allValuesEqual != null ? ` ${allValuesEqual}` : ""}`;
 						}
 					}
-					/* TODO: ????
-						"prerequisiteArray": [
-							{
-								"feat": [
-									{
-										"Major Lesson|APG": true
-									}
-								],
-								"weapon": [
-									{
-										"aldori dueling sword": "trained"
-									}
-								],
-								"armor": [
-									{
-										"plate armor": "trained"
-									}
-								],
-								"skill": [
-									{
-										"pirate lore": "trained",
-										"alchemy lore": "trained",
-										"arcana": "expert"
-									},
-									{
-										"crafting": "master"
-									}
-								]
-							}
-						],
-					*/
-					case "proficiency":
+					case "armor":
 					{
-						renderStack = [];
-						return "a";
+						return
+					}
+					case "weapon":
+					{
+						return
+					}
+					case "skill":
+					{
+						renderStack = [...new Set()]
+						v.forEach(element => {
+							array = new Set()
+							Object.keys(element).forEach(key => {
+								array.add(`${element[key]} in ${Parser.getKeyByValue(element, element[key]).map(s => `{@skill ${s.includes("lore") ? `Lore||${s.toTitleCase()}` : s.toTitleCase()}}`).joinConjunct(", ", " and ")}`)
+							});
+							renderStack.push(renderer.renderJoinCommaOrSemi(Array.from(array)))
+						});
+						return renderer.renderJoinCommaOrSemi(renderStack, {andOr: true});
 					}
 					default:
 						throw new Error(`Unhandled key: ${k}`);
@@ -4769,7 +4763,7 @@ Renderer.feat = {
 		}
 		if (feat.prerequisiteArray != null) {
 			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Prerequisites&nbsp;</strong>`)
-			renderStack.push(Renderer.utils.getPrerequisiteHtml(feat.prerequisite, {isSkipPrefix: true}))
+			renderStack.push(Renderer.utils.getPrerequisiteHtml(feat.prerequisiteArray, {isSkipPrefix: true}))
 			renderStack.push(`</p>`)
 		}
 		if (feat.frequency != null) {
