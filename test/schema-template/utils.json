@@ -85,13 +85,13 @@
 			"type": "string",
 			"description": "L: Lawful\n N: Neutral\n NX: Neutral (law/chaos axis)\n NY: Neutral (good/evil axis)\n C: Chaotic\n G: Good\n E: Evil\n U: Unaligned\n A: Any",
 			"enum": [
-				"Any",
-				"Lawful",
-				"Chaotic",
-				"Good",
-				"Evil",
-				"Neutral",
-				"All"
+				"any",
+				"lawful",
+				"chaotic",
+				"good",
+				"evil",
+				"neutral",
+				"all"
 			]
 		},
 		"alignmentTags": {
@@ -138,7 +138,9 @@
 						}
 					},
 					"additionalProperties": false,
-					"required": ["special"]
+					"required": [
+						"special"
+					]
 				},
 				{
 					"properties": {
@@ -185,16 +187,25 @@
 						"customUnit": {
 							"description": "Name of a custom unit, use the correct single/plural form.",
 							"type": "string",
-							"examples": ["epoch", "gem"]
+							"examples": [
+								"epoch",
+								"gem"
+							]
 						}
 					},
 					"additionalProperties": false,
 					"oneOf": [
 						{
-							"required": ["freq", "unit"]
+							"required": [
+								"freq",
+								"unit"
+							]
 						},
 						{
-							"required": ["freq", "customUnit"]
+							"required": [
+								"freq",
+								"customUnit"
+							]
 						}
 					]
 				}
@@ -202,7 +213,10 @@
 		},
 		"activity": {
 			"type": "object",
-			"required": ["number", "unit"],
+			"required": [
+				"number",
+				"unit"
+			],
 			"properties": {
 				"number": {
 					"type": "integer"
@@ -233,16 +247,21 @@
 			"properties": {
 				"coin": {
 					"type": "string",
-					"enum": ["gp", "sp", "cp", "pp"]
+					"enum": [
+						"gp",
+						"sp",
+						"cp",
+						"pp"
+					]
 				},
 				"amount": {
 					"type": "number"
-				},
-				"note": {
-					"type": "string"
 				}
 			},
-			"required": ["amount", "coin"]
+			"required": [
+				"amount",
+				"coin"
+			]
 		},
 		"otherSources": {
 			"type": "object",
@@ -262,11 +281,240 @@
 			"$comment": "Just keeping this around in case we want it later, currently unused",
 			"type": "object",
 			"propertyNames": {
-				"$ref": "#/definitions/skillNameUpper"
+				"$ref": "#/definitions/skillName"
 			},
 			"additionalProperties": {
 				"type": "string",
 				"pattern": "^(\\+|-)\\d$"
+			}
+		},
+		"prerequisite": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"level": {
+						"oneOf": [
+							{
+								"type": "object",
+								"properties": {
+									"level": {
+										"type": "integer"
+									},
+									"class": {
+										"type": "object",
+										"properties": {
+											"name": {
+												"$ref": "#/definitions/className"
+											},
+											"source": {
+												"$ref": "#/definitions/sourceList"
+											},
+											"visible": {
+												"description": "Governs whether or not the class name is visible in the list display/prerequisite line. *Not* recommended for features which implicitly carry a class restriction, such as Eldritch Invocations.",
+												"type": "boolean"
+											}
+										},
+										"required": [
+											"name"
+										],
+										"additionalProperties": false
+									},
+									"subclass": {
+										"type": "object",
+										"properties": {
+											"name": {
+												"type": "string"
+											},
+											"source": {
+												"$ref": "#/definitions/sourceList"
+											},
+											"visible": {
+												"description": "Governs whether or not the class name is visible in the list display/prerequisite line. *Not* recommended for features which implicitly carry a class restriction, such as Eldritch Invocations.",
+												"type": "boolean"
+											}
+										},
+										"required": [
+											"name"
+										],
+										"additionalProperties": false
+									}
+								},
+								"required": [
+									"level"
+								],
+								"additionalProperties": false
+							},
+							{
+								"type": "integer",
+								"minimum": 1
+							}
+						]
+					},
+					"pact": {
+						"type": "string",
+						"examples": [
+							"Chain",
+							"Tome",
+							"Blade",
+							"Talisman"
+						]
+					},
+					"patron": {
+						"type": "string",
+						"examples": [
+							"The Archfey",
+							"The Fiend",
+							"The Great Old One",
+							"The Hexblade",
+							"The Raven Queen",
+							"The Seeker"
+						]
+					},
+					"spell": {
+						"type": "array",
+						"items": {
+							"$ref": "entry.json"
+						}
+					},
+					"feat": {
+						"type": "array",
+						"items": {
+							"$ref": "entry.json"
+						}
+					},
+					"feature": {
+						"type": "array",
+						"items": {
+							"$ref": "entry.json"
+						}
+					},
+					"item": {
+						"type": "array",
+						"items": {
+							"$ref": "entry.json"
+						}
+					},
+					"other": {
+						"description": "A free text prerequisite",
+						"type": "string"
+					},
+					"otherSummary": {
+						"description": "A free text prerequisite, with a shortened form for list display.",
+						"type": "object",
+						"properties": {
+							"entry": {
+								"type": "string"
+							},
+							"entrySummary": {
+								"description": "Used in short/list displays",
+								"type": "string"
+							}
+						},
+						"required": [
+							"entry",
+							"entrySummary"
+						],
+						"additionalProperties": false
+					},
+					"race": {
+						"type": "array",
+						"items": {
+							"type": "object",
+							"properties": {
+								"name": {
+									"type": "string"
+								},
+								"displayEntry": {
+									"description": "Optional long-form name to be used in the rendered entity.",
+									"type": "string"
+								},
+								"subrace": {
+									"type": "string"
+								}
+							},
+							"required": [
+								"name"
+							],
+							"additionalProperties": false
+						}
+					},
+					"ability": {
+						"type": "array",
+						"items": {
+							"type": "object",
+							"properties": {
+								"str": {
+									"type": "integer"
+								},
+								"dex": {
+									"type": "integer"
+								},
+								"con": {
+									"type": "integer"
+								},
+								"int": {
+									"type": "integer"
+								},
+								"wis": {
+									"type": "integer"
+								},
+								"cha": {
+									"type": "integer"
+								}
+							},
+							"additionalProperties": false
+						}
+					},
+					"spellcasting": {
+						"type": "boolean"
+					},
+					"spellcasting2020": {
+						"description": "Renders with the updated text found in UA2020: Feats",
+						"type": "boolean"
+					},
+					"psionics": {
+						"type": "boolean"
+					},
+					"proficiency": {
+						"type": "array",
+						"items": {
+							"type": "object",
+							"properties": {
+								"armor": {
+									"type": "string",
+									"enum": [
+										"light",
+										"medium",
+										"heavy"
+									]
+								},
+								"weapon": {
+									"type": "string",
+									"enum": [
+										"simple",
+										"martial"
+									]
+								}
+							},
+							"additionalProperties": false,
+							"minProperties": 1
+						},
+						"minItems": 1
+					},
+					"alignment": {
+						"type": "array",
+						"items": {
+							"$ref": "utils.json#/definitions/alignmentTraits"
+						}
+					},
+					"note": {
+						"description": "An additional note that accompanies the proficiencies, but is not part of them.",
+						"type": "string"
+					}
+				},
+				"additionalProperties": false,
+				"minProperties": 1
 			}
 		},
 		"implies": {
@@ -317,96 +565,140 @@
 			},
 			"additionalProperties": false
 		},
-		"anyTraitUpper": {
+		"anyTrait": {
 			"type": "string",
 			"description": "Any Trait in the game.",
 			"anyOf": [
 				{
-					"$ref": "#/definitions/rarityUpper"
+					"$ref": "#/definitions/rarity"
 				},
 				{
-					"$ref": "#/definitions/classNameUpper"
+					"$ref": "#/definitions/className"
 				},
 				{
-					"$ref": "#/definitions/schoolUpper"
+					"$ref": "#/definitions/school"
 				},
 				{
-					"$ref": "#/definitions/traditionUpper"
+					"$ref": "#/definitions/tradition"
 				},
 				{
-					"$ref": "#/definitions/damageTypeUpper"
+					"$ref": "#/definitions/damageType"
 				},
 				{
-					"$ref": "#/definitions/effectNameUpper"
+					"$ref": "#/definitions/effectName"
 				},
 				{
-					"$ref": "#/definitions/ancestryNameUpper"
+					"$ref": "#/definitions/ancestryName"
 				},
 				{
 					"$ref": "#/definitions/alignmentTraits"
 				},
 				{
 					"enum": [
-						"Archetype",
-						"Secret",
-						"Dedication",
-						"General",
-						"Skill",
-						"Prestige",
-						"Attack",
-						"Move",
-						"Exploration",
-						"Downtime",
-						"Energy",
-						"Concentrate",
-						"Finisher",
-						"Manipulate",
-						"Auditory",
-						"Flourish",
-						"Tandem",
-						"Stance",
-						"Spellshot",
-						"Unstable",
-						"Reckless",
-						"Verbal",
-						"Open",
-						"Rage",
-						"Lineage",
-						"Metamagic",
-						"Press",
-						"Oath",
-						"Vigilante",
-						"Multiclass",
-						"Social",
-						"Air",
-						"Earth",
-						"Water",
-						"Magical",
-						"Aura",
-						"Modification",
-						"Class",
-						"Extradimensional",
-						"Evolution",
-						"Pervasive Magic",
-						"Eidolon",
-						"True Name",
-						"Shadow",
-						"Contract",
-						"Invested",
-						"Curse",
-						"Virulent",
-						"Nonlethal",
-						"Darkness",
-						"Plant",
-						"Fungus",
-						"Olfactory",
-						"Inhaled",
-						"Incarnate",
-						"Shove"
+						"archetype",
+						"secret",
+						"dedication",
+						"general",
+						"skill",
+						"prestige",
+						"attack",
+						"move",
+						"exploration",
+						"downtime",
+						"energy",
+						"concentrate",
+						"finisher",
+						"manipulate",
+						"auditory",
+						"flourish",
+						"tandem",
+						"stance",
+						"spellshot",
+						"unstable",
+						"reckless",
+						"verbal",
+						"open",
+						"rage",
+						"lineage",
+						"metamagic",
+						"press",
+						"oath",
+						"vigilante",
+						"multiclass",
+						"social",
+						"air",
+						"earth",
+						"water",
+						"magical",
+						"aura",
+						"modification",
+						"class",
+						"extradimensional",
+						"evolution",
+						"pervasive magic",
+						"eidolon",
+						"true name",
+						"shadow",
+						"contract",
+						"invested",
+						"curse",
+						"virulent",
+						"nonlethal",
+						"darkness",
+						"plant",
+						"fungus",
+						"olfactory",
+						"inhaled",
+						"incarnate",
+						"shove",
+						"alchemical",
+						"death",
+						"light",
+						"emotion",
+						"fear",
+						"charm",
+						"summoned",
+						"summon",
+						"clockwork",
+						"kaiju",
+						"steam",
+						"city",
+						"subjective gravity",
+						"timeless",
+						"metropolis",
+						"erratic",
+						"static",
+						"flowing",
+						"metamorphic",
+						"unbounded",
+						"town",
+						"humanoid",
+						"construct",
+						"amphibious",
+						"aeon",
+						"agile",
+						"finesse",
+						"beast",
+						"elemental",
+						"dragon",
+						"demon",
+						"devil",
+						"fiend",
+						"monitor",
+						"psychopomp",
+						"ooze",
+						"angel",
+						"celestial",
+						"ethereal",
+						"phantom",
+						"astral"
 					]
 				},
 				{
-					"enum": ["[Magical Tradition]", "[Class]"]
+					"enum": [
+						"[magical tradition]",
+						"[class]"
+					]
 				},
 				{
 					"type": "string",
@@ -415,74 +707,123 @@
 				{
 					"type": "string",
 					"pattern": "^reach \\d+ feet$"
+				},
+				{
+					"type": "string",
+					"pattern": "^deadly \\d*d\\d+$"
+				},
+				{
+					"type": "string",
+					"pattern": "^range \\d+ feet$"
 				}
 			]
 		},
 		"loreSubjects": {
 			"type": "string",
 			"enum": [
-				"Dragon",
-				"Kintargo",
-				"Dahak",
-				"Architecture",
-				"Breachill"
+				"dragon",
+				"kintargo",
+				"dahak",
+				"architecture",
+				"breachill"
 			]
 		},
-		"abilityUpper": {
+		"ability": {
 			"type": "string",
 			"enum": [
-				"Strength",
-				"Dexterity",
-				"Constitution",
-				"Intelligence",
-				"Wisdom",
-				"Charisma",
-				"Free"
+				"strength",
+				"dexterity",
+				"constitution",
+				"intelligence",
+				"wisdom",
+				"charisma",
+				"free"
 			]
 		},
-		"abilityAbbvUpper": {
+		"abilityAbbv": {
 			"type": "string",
 			"enum": [
-				"Str",
-				"Dex",
-				"Con",
-				"Int",
-				"Wis",
-				"Cha"
+				"str",
+				"dex",
+				"con",
+				"int",
+				"wis",
+				"cha"
 			]
 		},
-		"ancestryNameUpper": {
+		"ancestryName": {
 			"type": "string",
 			"enum": [
-				"Kitsune",
-				"Kobold",
-				"Grippli",
-				"Aasimar",
-				"Changeling",
-				"Human",
-				"Catfolk",
-				"Elf",
-				"Orc",
-				"Ratfolk",
-				"Dhampir",
-				"Duskwalker",
-				"Gnome",
-				"Goblin",
-				"Tiefling",
-				"Halfling",
-				"Dwarf",
-				"Half-Elf",
-				"Half-Orc",
-				"Tengu",
-				"Automaton",
-				"Hobgoblin",
-				"Poppet",
-				"Goloma",
-				"Anadi",
-				"Gnoll",
-				"Lizardfolk",
-				"Conrasu",
-				"Shisk"
+				"kitsune",
+				"kobold",
+				"grippli",
+				"aasimar",
+				"changeling",
+				"human",
+				"catfolk",
+				"elf",
+				"orc",
+				"ratfolk",
+				"dhampir",
+				"duskwalker",
+				"ganzi",
+				"ifrit",
+				"geniekin",
+				"gnome",
+				"goblin",
+				"tiefling",
+				"halfling",
+				"dwarf",
+				"half-elf",
+				"half-orc",
+				"tengu",
+				"automaton",
+				"hobgoblin",
+				"poppet",
+				"goloma",
+				"anadi",
+				"gnoll",
+				"lizardfolk",
+				"conrasu",
+				"shisk",
+				"oread",
+				"suli",
+				"sylph",
+				"undine",
+				"beastkin",
+				"aphorite",
+				"android",
+				"azarketi",
+				"fetchling",
+				"aberration",
+				"leshy",
+				"shoony",
+				"fey",
+				"sprite",
+				"strix"
+			]
+		},
+		"skillName": {
+			"type": "string",
+			"description": "A Skill Trait",
+			"enum": [
+				"acrobatics",
+				"arcana",
+				"athletics",
+				"crafting",
+				"deception",
+				"diplomacy",
+				"intimidation",
+				"lore",
+				"medicine",
+				"nature",
+				"occultism",
+				"performance",
+				"religion",
+				"society",
+				"stealth",
+				"survival",
+				"thievery"
 			]
 		},
 		"skillNameUpper": {
@@ -508,123 +849,137 @@
 				"Thievery"
 			]
 		},
-		"classNameUpperSourced": {
+		"classNameSourced": {
 			"type": "string",
 			"enum": [
-				"Alchemist",
-				"Barbarian",
-				"Bard",
-				"Champion",
-				"Cleric",
-				"Druid",
-				"Fighter",
-				"Gunslinger|G&G",
-				"Inventor|G&G",
-				"Investigator|APG",
-				"Magus|SoM",
-				"Monk",
-				"Oracle|APG",
-				"Ranger",
-				"Rogue",
-				"Sorcerer",
-				"Summoner|SoM",
-				"Swashbuckler|APG",
-				"Witch|APG",
-				"Wizard"
+				"alchemist",
+				"barbarian",
+				"bard",
+				"champion",
+				"cleric",
+				"druid",
+				"fighter",
+				"gunslinger|G&G",
+				"inventor|G&G",
+				"investigator|APG",
+				"magus|SoM",
+				"monk",
+				"oracle|APG",
+				"ranger",
+				"rogue",
+				"sorcerer",
+				"summoner|SoM",
+				"swashbuckler|APG",
+				"witch|APG",
+				"wizard"
 			]
 		},
-		"classNameUpper": {
+		"className": {
 			"type": "string",
 			"enum": [
-				"Alchemist",
-				"Barbarian",
-				"Bard",
-				"Champion",
-				"Cleric",
-				"Druid",
-				"Fighter",
-				"Gunslinger",
-				"Inventor",
-				"Investigator",
-				"Magus",
-				"Monk",
-				"Oracle",
-				"Ranger",
-				"Rogue",
-				"Sorcerer",
-				"Summoner",
-				"Swashbuckler",
-				"Witch",
-				"Wizard"
+				"alchemist",
+				"barbarian",
+				"bard",
+				"champion",
+				"cleric",
+				"druid",
+				"fighter",
+				"gunslinger",
+				"inventor",
+				"investigator",
+				"magus",
+				"monk",
+				"oracle",
+				"ranger",
+				"rogue",
+				"sorcerer",
+				"summoner",
+				"swashbuckler",
+				"witch",
+				"wizard"
 			]
 		},
-		"rarityUpper": {
-			"type": "string",
-			"enum": ["Common", "Uncommon", "Rare", "Unique"]
-		},
-		"traditionUpper": {
-			"type": "string",
-			"enum": ["Arcane", "Divine", "Occult", "Primal"]
-		},
-		"schoolUpper": {
+		"rarity": {
 			"type": "string",
 			"enum": [
-				"Abjuration",
-				"Conjuration",
-				"Divination",
-				"Enchantment",
-				"Evocation",
-				"Illusion",
-				"Necromancy",
-				"Transmutation"
+				"common",
+				"uncommon",
+				"rare",
+				"unique"
 			]
 		},
-		"damageTypeUpper": {
+		"tradition": {
 			"type": "string",
 			"enum": [
-				"Electricity",
-				"Sonic",
-				"Acid",
-				"Poison",
-				"Cold",
-				"Fire",
-				"Slashing",
-				"Bludgeoning",
-				"Piercing",
-				"Positive",
-				"Negative",
-				"Force",
-				"Bleed",
-				"Precision",
-				"Evil",
-				"Good",
-				"Chaotic",
-				"Lawful",
-				"Mental"
+				"arcane",
+				"divine",
+				"occult",
+				"primal"
+			]
+		},
+		"school": {
+			"type": "string",
+			"enum": [
+				"abjuration",
+				"conjuration",
+				"divination",
+				"enchantment",
+				"evocation",
+				"illusion",
+				"necromancy",
+				"transmutation"
+			]
+		},
+		"size": {
+			"type": "string",
+			"enum": [
+				"Tiny",
+				"Small",
+				"Medium",
+				"Large",
+				"Huge",
+				"Gargantuan"
+			]
+		},
+		"sizeAbbv": {
+			"type": "string",
+			"enum": [
+				"T",
+				"S",
+				"M",
+				"L",
+				"H",
+				"G"
 			]
 		},
 		"damage": {
 			"$comment": "Draft Damage object style",
 			"type": "object",
 			"propertyNames": {
-				"$ref": "#/definitions/damageTypeLower"
+				"$ref": "#/definitions/damageType"
 			},
 			"additionalProperties": {
 				"oneOf": [
 					{
 						"type": "boolean",
-						"enum": [true]
+						"enum": [
+							true
+						]
 					},
 					{
 						"type": "object",
 						"properties": {
 							"versatile": {
 								"type": "boolean",
-								"enum": [true]
+								"enum": [
+									true
+								]
 							},
 							"persistent": {
 								"type": "boolean",
-								"enum": [true]
+								"enum": [
+									true
+								]
 							}
 						},
 						"additionalProperties": false
@@ -632,7 +987,7 @@
 				]
 			}
 		},
-		"damageTypeLower": {
+		"damageType": {
 			"type": "string",
 			"enum": [
 				"electricity",
@@ -653,39 +1008,40 @@
 				"good",
 				"chaotic",
 				"lawful",
-				"mental"
+				"mental",
+				"persistent"
 			]
 		},
 		"damageTypeTags": {
 			"type": "string",
 			"description": "TODO"
 		},
-		"effectNameUpper": {
+		"effectName": {
 			"type": "string",
 			"enum": [
-				"Death",
-				"Detection",
-				"Disease",
-				"Emotion",
-				"Fear",
-				"Fortune",
-				"Healing",
-				"Incapacitation",
-				"Light",
-				"Linguistic",
-				"Misfortune",
-				"Morph",
-				"Polymorph",
-				"Possession",
-				"Prediction",
-				"Revelation",
-				"Scrying",
-				"Sleep",
-				"Teleportation",
-				"Visual"
+				"death",
+				"detection",
+				"disease",
+				"emotion",
+				"fear",
+				"fortune",
+				"healing",
+				"incapacitation",
+				"light",
+				"linguistic",
+				"misfortune",
+				"morph",
+				"polymorph",
+				"possession",
+				"prediction",
+				"revelation",
+				"scrying",
+				"sleep",
+				"teleportation",
+				"visual"
 			]
 		},
-		"weaponGroupUpper": {
+		"weaponGroup": {
 			"type": "string",
 			"enum": [
 				"Firearm|G&G",
@@ -705,11 +1061,17 @@
 				"Bow"
 			]
 		},
-		"armorGroupUpper": {
+		"armorGroup": {
 			"type": "string",
-			"enum": ["Plate", "Leather", "Chain", "Cloth", "Composite"]
+			"enum": [
+				"Plate",
+				"Leather",
+				"Chain",
+				"Cloth",
+				"Composite"
+			]
 		},
-		"conditionsLower": {
+		"conditions": {
 			"type": "string",
 			"enum": [
 				"blinded",
@@ -756,7 +1118,7 @@
 				"wounded"
 			]
 		},
-		"domainsLower": {
+		"domains": {
 			"type": "string",
 			"enum": [
 				"air",
@@ -817,6 +1179,271 @@
 				"wyrmkin",
 				"zeal"
 			]
+		},
+		"abilityBlock": {
+			"properties": {
+				"type": {
+					"const": "ability"
+				},
+				"style": {
+					"type": "string",
+					"enum": [
+						"compact",
+						"full"
+					]
+				},
+				"name": {
+					"type": "string"
+				},
+				"source": {
+					"$ref": "#/definitions/sourceList"
+				},
+				"page": {
+					"type": "integer",
+					"minimum": 0
+				},
+				"entries": {
+					"type": "array",
+					"items": {
+						"$ref": "entry.json"
+					},
+					"minItems": 1
+				},
+				"trigger": {
+					"type": "string"
+				},
+				"requirements": {
+					"type": "string"
+				},
+				"frequency": {
+					"$ref": "#/definitions/frequency"
+				},
+				"activity": {
+					"type": "object",
+					"$ref": "#/definitions/activity"
+				},
+				"actionType": {
+					"$ref": "actions.json#/properties/action/items/properties/actionType"
+				},
+				"traits": {
+					"type": "array",
+					"items": {
+						"type": "string",
+						"anyOf": [
+							{
+								"$ref": "#/definitions/anyTrait"
+							}
+						]
+					},
+					"minItems": 1
+				}
+			},
+			"additionalProperties": false,
+			"required": [
+				"name"
+			]
+		},
+		"attackBlock": {
+			"properties": {
+				"type": {
+					"const": "attack"
+				},
+				"name": {
+					"type": "string"
+				},
+				"range": {
+					"type": "string",
+					"enum": [
+						"Ranged",
+						"Melee"
+					]
+				},
+				"attack": {
+					"type": "integer"
+				},
+				"effects": {
+					"type": "array",
+					"items": {
+						"$ref": "entry.json"
+					},
+					"minItems": 1
+				},
+				"traits": {
+					"type": "array",
+					"items": {
+						"type": "string",
+						"anyOf": [
+							{
+								"$ref": "#/definitions/anyTrait"
+							}
+						]
+					},
+					"minItems": 1
+				},
+				"damage": {
+					"type": "string"
+				},
+				"types": {
+					"type": "array",
+					"items": {
+						"type": "string",
+						"$ref": "#/definitions/damageType"
+					},
+					"minItems": 1
+				},
+				"noMAP": {
+					"type": "boolean",
+					"enum": [
+						true
+					]
+				}
+			},
+			"additionalProperties": false,
+			"required": [
+				"name"
+			]
+		},
+		"defenses": {
+			"type": "object",
+			"properties": {
+				"ac": {
+					"type": "object",
+					"properties": {
+						"default": {
+							"type": "integer",
+							"exclusiveMinimum": 0
+						},
+						"note": {
+							"type": "string"
+						}
+					},
+					"additionalProperties": false,
+					"minProperties": 1
+				},
+				"savingThrows": {
+					"type": "object",
+					"properties": {
+						"fort": {
+							"type": "integer",
+							"minimum": 0
+						},
+						"ref": {
+							"type": "integer",
+							"minimum": 0
+						},
+						"will": {
+							"type": "integer",
+							"minimum": 0
+						}
+					},
+					"additionalProperties": false,
+					"minProperties": 1
+				},
+				"hardness": {
+					"type": "object",
+					"properties": {
+						"default": {
+							"type": "integer",
+							"minimum": 0
+						}
+					},
+					"patternProperties": {
+						"^.+$": {
+							"type": "integer",
+							"minimum": 0
+						}
+					},
+					"additionalProperties": false,
+					"minProperties": 1
+				},
+				"hp": {
+					"description": "Hit Points",
+					"type": "object",
+					"properties": {
+						"default": {
+							"type": "integer",
+							"exclusiveMinimum": 0
+						}
+					},
+					"patternProperties": {
+						"^.+$": {
+							"type": "integer",
+							"exclusiveMinimum": 0
+						}
+					},
+					"additionalProperties": false,
+					"minProperties": 1
+				},
+				"bt": {
+					"description": "Broken Threshold",
+					"type": "object",
+					"properties": {
+						"default": {
+							"type": "integer",
+							"minimum": 0
+						}
+					},
+					"patternProperties": {
+						"^.+$": {
+							"type": "integer",
+							"exclusiveMinimum": 0
+						}
+					},
+					"additionalProperties": false,
+					"minProperties": 1
+				},
+				"notes": {
+					"type": "object",
+					"properties": {
+						"default": {
+							"type": "string"
+						}
+					},
+					"patternProperties": {
+						"^.+$": {
+							"type": "string"
+						}
+					},
+					"additionalProperties": false,
+					"minProperties": 1
+				},
+				"weaknesses": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"name": {
+								"type": "string"
+							},
+							"amount": {
+								"type": "integer",
+								"minimum": 0
+							},
+							"note": {
+								"type": "string"
+							}
+						},
+						"additionalProperties": false
+					},
+					"minItems": 1
+				},
+				"resistances": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					},
+					"minItems": 1
+				},
+				"immunities": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					},
+					"minItems": 1
+				}
+			},
+			"additionalProperties": false,
+			"minProperties": 1
 		},
 		"genericFluffArray": {
 			"type": "array",

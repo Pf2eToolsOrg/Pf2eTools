@@ -49,7 +49,7 @@
 					"domains": {
 						"type": "array",
 						"items": {
-							"$ref": "utils.json#/definitions/domainsLower"
+							"$ref": "utils.json#/definitions/domains"
 						},
 						"minItems": 1
 					},
@@ -57,7 +57,7 @@
 						"type": "array",
 						"items": {
 							"type": "string",
-							"$ref": "utils.json#/definitions/traditionUpper"
+							"$ref": "utils.json#/definitions/tradition"
 						}
 					},
 					"spellLists": {
@@ -70,12 +70,12 @@
 						}
 					},
 					"traits": {
-                        "type": "array",
-                        "items": {
-                            "type": "string",
-                            "anyOf": [
+						"type": "array",
+						"items": {
+							"type": "string",
+							"anyOf": [
 								{
-									"$ref": "utils.json#/definitions/anyTraitUpper"
+									"$ref": "utils.json#/definitions/anyTrait"
 								},
 								{
 									"$comment": "Spell only Traits.",
@@ -90,10 +90,10 @@
 									]
 								}
 							]
-                        },
-                        "minItems": 1,
-                        "uniqueItems": true
-                    },
+						},
+						"minItems": 1,
+						"uniqueItems": true
+					},
 					"cast": {
 						"type": "object",
 						"properties": {
@@ -102,7 +102,7 @@
 								"inclusiveMinimum": 0
 							},
 							"unit": {
-								"type":"string",
+								"type": "string",
 								"enum": [
 									"free",
 									"reaction",
@@ -128,22 +128,30 @@
 							"F": {
 								"description": "Focus",
 								"type": "boolean",
-								"enum": [true]
+								"enum": [
+									true
+								]
 							},
 							"M": {
 								"description": "Material",
 								"type": "boolean",
-								"enum": [true]
+								"enum": [
+									true
+								]
 							},
 							"S": {
 								"description": "Somatic",
 								"type": "boolean",
-								"enum": [true]
+								"enum": [
+									true
+								]
 							},
 							"V": {
 								"description": "Verbal",
 								"type": "boolean",
-								"enum": [true]
+								"enum": [
+									true
+								]
 							}
 						},
 						"additionalProperties": false,
@@ -222,7 +230,6 @@
 					"targets": {
 						"type": "string"
 					},
-
 					"savingThrow": {
 						"type": "object",
 						"properties": {
@@ -241,7 +248,9 @@
 							},
 							"hidden": {
 								"type": "boolean",
-								"enum": [true]
+								"enum": [
+									true
+								]
 							}
 						},
 						"additionalProperties": false,
@@ -249,7 +258,6 @@
 							"type"
 						]
 					},
-
 					"duration": {
 						"type": "object",
 						"properties": {
@@ -270,9 +278,10 @@
 										"exclusiveMinimum": 0
 									},
 									"unit": {
-										"type":"string",
+										"type": "string",
 										"enum": [
-											"reaction","action",
+											"reaction",
+											"action",
 											"turn",
 											"round",
 											"minute",
@@ -348,12 +357,18 @@
 						"type": "boolean"
 					}
 				},
-				"required": ["name", "source", "entries"],
+				"required": [
+					"name",
+					"source",
+					"entries"
+				],
 				"additionalProperties": false
 			},
 			"uniqueItems": true
 		}
 	},
-	"required": ["spell"],
+	"required": [
+		"spell"
+	],
 	"additionalProperties": false
 }

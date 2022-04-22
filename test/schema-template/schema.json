@@ -17,35 +17,44 @@
 				"https://raw.githubusercontent.com/Pf2eTools/Pf2eTools.github.io/master/test/schema-template/schema.json"
 			]
 		},
+		"changelog": {
+			"$ref": "changelog.json#/properties/changelog"
+		},
+		"licenses": {
+			"$ref": "licenses.json#/properties/licenses"
+		},
+		"renderdemo": {
+			"$ref": "renderdemo.json#/properties/renderdemo"
+		},
 		"variantrule": {
-			"type": "array"
+			"$ref": "variantrules.json#/properties/variantrule"
 		},
 		"table": {
-			"type": "array"
+			"$ref": "tables.json#/properties/table"
 		},
 		"tableGroup": {
 			"type": "array"
 		},
+		"data": {
+			"$ref": "adventureBooks.json#/properties/data"
+		},
 		"book": {
-			"type": "array"
+			"$ref": "books.json#/properties/book"
 		},
 		"bookData": {
-			"type": "array"
+			"$ref": "adventureBooks.json#/properties/book"
+		},
+		"adventure": {
+			"$ref": "adventures.json#/properties/adventure"
+		},
+		"adventureData": {
+			"$ref": "adventureBooks.json#/properties/adventure"
 		},
 		"ancestry": {
-			"type": "array",
-			"items": {
-				"type": "object",
-				"properties": {
-					"heritage": {
-						"$ref": "heritages.json#/properties/heritage",
-						"required": ["ancestryName", "ancestrySource"]
-					}
-				}
-			}
+			"$ref": "ancestries.json#/properties/ancestry"
 		},
 		"versatileHeritage": {
-			"type": "array"
+			"$ref": "versatileHeritages.json#/properties/versatileHeritage"
 		},
 		"background": {
 			"$ref": "backgrounds.json#/properties/background"
@@ -69,19 +78,22 @@
 			"$ref": "feats.json#/properties/feat"
 		},
 		"companion": {
-			"type": "array"
+			"$ref": "companionsFamiliars.json#/properties/companion"
+		},
+		"companionAbility": {
+			"$ref": "companionsFamiliars.json#/properties/companionAbility"
 		},
 		"familiar": {
-			"type": "array"
+			"$ref": "companionsFamiliars.json#/properties/familiar"
 		},
-		"adventure": {
-			"type": "array"
+		"familiarAbility": {
+			"$ref": "companionsFamiliars.json#/properties/familiarAbility"
 		},
-		"adventureData": {
-			"type": "array"
+		"eidolon": {
+			"$ref": "companionsFamiliars.json#/properties/eidolon"
 		},
 		"hazard": {
-			"type": "array"
+			"$ref": "hazards.json#/properties/hazard"
 		},
 		"action": {
 			"$ref": "actions.json#/properties/action"
@@ -90,10 +102,13 @@
 			"type": "array"
 		},
 		"condition": {
-			"type": "array"
+			"$ref": "conditions.json#/properties/condition"
 		},
 		"item": {
 			"$ref": "items.json#/properties/item"
+		},
+		"itemFluff": {
+			"$ref": "fluff-items.json#/properties/itemFluff"
 		},
 		"baseitem": {
 			"$ref": "items.json#/properties/item"
@@ -106,9 +121,6 @@
 		},
 		"curse": {
 			"$ref": "diseases.json#/properties/disease"
-		},
-		"itemcurse": {
-			"type": "array"
 		},
 		"ability": {
 			"$ref": "abilities.json#/properties/ability"
@@ -123,13 +135,13 @@
 			"$ref": "languages.json#/properties/language"
 		},
 		"place": {
-			"type": "array"
+			"$ref": "places.json#/properties/place"
 		},
 		"ritual": {
 			"$ref": "rituals.json#/properties/ritual"
 		},
 		"vehicle": {
-			"type": "array"
+			"$ref": "vehicles.json#/properties/vehicle"
 		},
 		"trait": {
 			"$ref": "traits.json#/properties/trait"
@@ -146,18 +158,16 @@
 		"organizationFluff": {
 			"$ref": "fluff-organizations.json#/properties/organizationFluff"
 		},
-		"eidolon": {
-			"type": "array"
-		},
-		"familiarAbility": {
-			"type": "array"
-		},
 		"optionalfeature": {
-			"type": "array"
+			"$ref": "optionalFeatures.json#/properties/optionalFeature"
 		},
-		"data": {
-			"$ref": "renderdemo.json#/properties/data"
+		"skill": {
+			"$ref": "skills.json#/properties/skill"
+		},
+		"quickRules": {
+			"$ref": "quickRules.json#/properties/quickRules"
 		}
 	},
-	"additionalProperties": false
+	"additionalProperties": false,
+	"minProperties": 1
 }

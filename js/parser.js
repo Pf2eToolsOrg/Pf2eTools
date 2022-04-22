@@ -448,6 +448,16 @@ Parser.proficiencyToNumber = function (prof) {
 		default: return 69;
 	}
 }
+Parser.genderToFull = function (g) {
+	switch (g.toLowerCase()) {
+		case "m": return "male";
+		case "f": return "female";
+		case "a": return "agender";
+		case "gf": return "genderfluid";
+		case "nb": return "nonbinary";
+		default: return "";
+	}
+}
 Parser.savingThrowAbvToFull = function (abv) {
 	switch (abv) {
 		case "f":

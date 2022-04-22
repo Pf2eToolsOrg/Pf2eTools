@@ -1,0 +1,447 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema",
+	"$id": "places.json",
+	"title": "Places",
+	"description": "The place data type for Pf2eTools.",
+	"type": "object",
+	"version": "0.0.1",
+	"properties": {
+		"place": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"source": {
+						"type": "string",
+						"$ref": "utils.json#/definitions/sourceList"
+					},
+					"name": {
+						"type": "string"
+					},
+					"page": {
+						"type": "integer"
+					},
+					"category": {
+						"type": "string",
+						"enum": [
+							"Plane",
+							"Settlement",
+							"Nation"
+						]
+					},
+					"level": {
+						"type": "integer",
+						"exclusiveMinimum": 0
+					},
+					"description": {
+						"type": "string"
+					},
+					"traits": {
+						"type": "array",
+						"items": {
+							"type": "string",
+							"$ref": "utils.json#/definitions/anyTrait"
+						},
+						"minItems": 1,
+						"uniqueItems": true
+					},
+					"planeData": {
+						"type": "object",
+						"properties": {
+							"category": {
+								"type": "string",
+								"enum": [
+									"inner",
+									"outer",
+									"transitive",
+									"dimension"
+								]
+							},
+							"divinities": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								},
+								"uniqueItems": true,
+								"minItems": 1
+							},
+							"inhabitants": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								},
+								"uniqueItems": true,
+								"minItems": 1
+							}
+						},
+						"additionalProperties": false,
+						"minProperties": 1
+					},
+					"settlementData": {
+						"type": "object",
+						"properties": {
+							"government": {
+								"type": "string"
+							},
+							"population": {
+								"type": "object",
+								"properties": {
+									"total": {
+										"type": "integer",
+										"exclusiveMinimum": 0
+									},
+									"ancestries": {
+										"type": "object",
+										"properties": {
+											"other": {
+												"type": "number",
+												"exclusiveMinimum": 0,
+												"exclusiveMaximum": 100
+											}
+										},
+										"patternProperties": {
+											"^[\\w-\\(\\)]+$": {
+												"type": "number",
+												"exclusiveMinimum": 0,
+												"exclusiveMaximum": 100
+											}
+										},
+										"minProperties": 1
+									}
+								},
+								"additionalProperties": false,
+								"required": [
+									"total"
+								]
+							},
+							"languages": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								},
+								"uniqueItems": true,
+								"minItems": 1
+							},
+							"religions": {
+								"type": "array",
+								"items": {
+									"type": [
+										"string",
+										"object"
+									],
+									"properties": {
+										"type": {
+											"type": "string",
+											"enum": [
+												"Prohibited"
+											]
+										},
+										"religions": {
+											"type": "array",
+											"items": {
+												"type": "string"
+											},
+											"uniqueItems": true,
+											"minItems": 1
+										}
+									},
+									"additionalProperties": false,
+									"required": [
+										"type",
+										"religions"
+									]
+								},
+								"uniqueItems": true,
+								"minItems": 1
+							},
+							"threats": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								},
+								"uniqueItems": true,
+								"minItems": 1
+							},
+							"features": {
+								"type": "array",
+								"items": {
+									"type": "object",
+									"properties": {
+										"name": {
+											"type": "string"
+										},
+										"entries": {
+											"type": "array",
+											"items": {
+												"$ref": "entry.json"
+											},
+											"minItems": 1
+										}
+									},
+									"additionalProperties": false,
+									"required": [
+										"name",
+										"entries"
+									]
+								},
+								"uniqueItems": true,
+								"minItems": 1
+							}
+						},
+						"additionalProperties": false,
+						"minProperties": 1
+					},
+					"nationData": {
+						"type": "object",
+						"properties": {
+							"government": {
+								"type": "string"
+							},
+							"capital": {
+								"type": "object",
+								"properties": {
+									"name": {
+										"type": "string"
+									},
+									"total": {
+										"type": "integer",
+										"exclusiveMinimum": 0
+									}
+								},
+								"additionalProperties": false,
+								"required": [
+									"name",
+									"total"
+								]
+							},
+							"population": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								},
+								"minItems": 1,
+								"uniqueItems": true
+							},
+							"languages": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								},
+								"uniqueItems": true,
+								"minItems": 1
+							},
+							"religions": {
+								"type": "array",
+								"items": {
+									"type": [
+										"string",
+										"object"
+									],
+									"properties": {
+										"type": {
+											"type": "string",
+											"enum": [
+												"Prohibited"
+											]
+										},
+										"religions": {
+											"type": "array",
+											"items": {
+												"type": "string"
+											},
+											"uniqueItems": true,
+											"minItems": 1
+										}
+									},
+									"additionalProperties": false,
+									"required": [
+										"type",
+										"religions"
+									]
+								},
+								"uniqueItems": true,
+								"minItems": 1
+							},
+							"imports": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								},
+								"uniqueItems": true,
+								"minItems": 1
+							},
+							"exports": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								},
+								"uniqueItems": true,
+								"minItems": 1
+							},
+							"enemies": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								},
+								"uniqueItems": true,
+								"minItems": 1
+							},
+							"factions": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								},
+								"uniqueItems": true,
+								"minItems": 1
+							},
+							"threats": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								},
+								"uniqueItems": true,
+								"minItems": 1
+							},
+							"features": {
+								"type": "array",
+								"items": {
+									"type": "object",
+									"properties": {
+										"name": {
+											"type": "string"
+										},
+										"entries": {
+											"type": "array",
+											"items": {
+												"$ref": "entry.json"
+											},
+											"minItems": 1
+										}
+									},
+									"additionalProperties": false,
+									"required": [
+										"name",
+										"entries"
+									]
+								},
+								"uniqueItems": true,
+								"minItems": 1
+							}
+						},
+						"additionalProperties": false,
+						"minProperties": 1
+					},
+					"residents": {
+						"type": "array",
+						"items": {
+							"type": "object",
+							"properties": {
+								"name": {
+									"type": "string"
+								},
+								"alignment": {
+									"$ref": "utils.json#/definitions/alignmentTags"
+								},
+								"gender": {
+									"type": "string",
+									"description": "nb: non-binary\nm: male\nf: female\ngf: genderfluid\na: agender",
+									"enum": [
+										"nb",
+										"m",
+										"f",
+										"gf",
+										"a"
+									]
+								},
+								"ancestry": {
+									"type": "string"
+								},
+								"position": {
+									"type": "string"
+								},
+								"level": {
+									"type": "integer",
+									"exclusiveMinimum": 0
+								},
+								"bond": {
+									"type": "string"
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"name"
+							]
+						},
+						"minItems": 1,
+						"uniqueItems": true
+					},
+					"entries": {
+						"type": "array",
+						"items": {
+							"$ref": "entry.json"
+						},
+						"minItems": 1
+					}
+				},
+				"additionalProperties": false,
+				"if": {
+					"properties": {
+						"category": {
+							"const": "Plane"
+						}
+					},
+					"required": [
+						"category"
+					]
+				},
+				"then": {
+					"required": [
+						"source",
+						"name",
+						"category",
+						"page",
+						"planeData",
+						"entries"
+					]
+				},
+				"else": {
+					"if": {
+						"properties": {
+							"category": {
+								"const": "Settlement"
+							}
+						},
+						"required": [
+							"category"
+						]
+					},
+					"then": {
+						"required": [
+							"source",
+							"name",
+							"category",
+							"page",
+							"settlementData",
+							"residents"
+						]
+					},
+					"else": {
+						"required": [
+							"source",
+							"name",
+							"category",
+							"page",
+							"nationData",
+							"residents"
+						]
+					}
+				}
+			},
+			"uniqueItems": true
+		}
+	},
+	"additionalProperties": false,
+	"required": [
+		"place"
+	]
+}

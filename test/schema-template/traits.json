@@ -23,7 +23,7 @@
 					},
 					"categories": {
 						"type": "array",
-						"items":{
+						"items": {
 							"type": "string",
 							"enum": [
 								"Ancestry & Heritage",
@@ -54,7 +54,7 @@
 					"otherSources": {
 						"$ref": "utils.json#/definitions/otherSources"
 					},
-					"implies":{
+					"implies": {
 						"$ref": "utils.json#/definitions/implies"
 					},
 					"entries": {
@@ -65,11 +65,18 @@
 					}
 				},
 				"additionalProperties": false,
-				"required": ["name", "source", "entries", "page"]
+				"required": [
+					"name",
+					"source",
+					"entries",
+					"page"
+				]
 			},
 			"uniqueItems": true
 		}
 	},
-	"required": ["trait"],
+	"required": [
+		"trait"
+	],
 	"additionalProperties": false
 }

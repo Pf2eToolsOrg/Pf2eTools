@@ -28,7 +28,7 @@
 						"type": "array",
 						"items": {
 							"type": "string",
-							"$ref": "utils.json#/definitions/ancestryNameUpper"
+							"$ref": "utils.json#/definitions/ancestryName"
 						},
 						"minItems": 1,
 						"uniqueItems": true
@@ -58,5 +58,7 @@
 		}
 	},
 	"additionalProperties": false,
-	"required": ["heritage"]
+	"required": [
+		"heritage"
+	]
 }

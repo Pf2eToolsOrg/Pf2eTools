@@ -1,0 +1,225 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema",
+	"$id": "ancestries.json",
+	"title": "Ancestries",
+	"description": "The ancestry data type for Pf2eTools.",
+	"type": "object",
+	"version": "0.0.1",
+	"properties": {
+		"ancestry": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"source": {
+						"type": "string",
+						"$ref": "utils.json#/definitions/sourceList"
+					},
+					"otherSources": {
+						"$ref": "utils.json#/definitions/otherSources"
+					},
+					"name": {
+						"type": "string"
+					},
+					"page": {
+						"type": "integer"
+					},
+					"rarity": {
+						"$ref": "utils.json#/definitions/rarity"
+					},
+					"hp": {
+						"type": "integer",
+						"minimum": 6,
+						"maximum": 12
+					},
+					"size": {
+						"type": "array",
+						"items": {
+							"$ref": "utils.json#/definitions/size"
+						},
+						"uniqueItems": true,
+						"minItems": 1
+					},
+					"speed": {
+						"$ref": "utils.json#/definitions/speed"
+					},
+					"boosts": {
+						"type": "array",
+						"items": {
+							"anyOf": [
+								{
+									"$ref": "utils.json#/definitions/ability"
+								},
+								{
+									"type": "string",
+									"examples": [
+										"strength",
+										"dexterity",
+										"constitution",
+										"intelligence",
+										"wisdom",
+										"charisma",
+										"free"
+									]
+								}
+							]
+						},
+						"minItems": 1,
+						"uniqueItems": true
+					},
+					"flaw": {
+						"type": "array",
+						"items": {
+							"$ref": "utils.json#/definitions/ability"
+						},
+						"minItems": 1,
+						"uniqueItems": true
+					},
+					"languages": {
+						"type": "array",
+						"items": {
+							"type": "string"
+						},
+						"minItems": 1
+					},
+					"traits": {
+						"type": "array",
+						"items": {
+							"type": "string",
+							"$ref": "utils.json#/definitions/anyTrait"
+						},
+						"minItems": 1,
+						"uniqueItems": true
+					},
+					"features": {
+						"type": "array",
+						"items": {
+							"type": "object",
+							"properties": {
+								"name": {
+									"type": "string"
+								},
+								"entries": {
+									"type": "array",
+									"items": {
+										"$ref": "entry.json"
+									},
+									"minItems": 1
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"name",
+								"entries"
+							]
+						},
+						"minItems": 1,
+						"uniqueItems": true
+					},
+					"flavor": {
+						"type": "array",
+						"items": {
+							"$ref": "entry.json"
+						},
+						"minItems": 1
+					},
+					"info": {
+						"type": "array",
+						"items": {
+							"$ref": "entry.json"
+						},
+						"minItems": 1
+					},
+					"heritageInfo": {
+						"type": "array",
+						"items": {
+							"$ref": "entry.json"
+						},
+						"minItems": 1
+					},
+					"heritage": {
+						"type": "array",
+						"items": {
+							"type": "object",
+							"properties": {
+								"name": {
+									"type": "string"
+								},
+								"shortName": {
+									"type": "string"
+								},
+								"source": {
+									"type": "string",
+									"$ref": "utils.json#/definitions/sourceList"
+								},
+								"page": {
+									"type": "integer"
+								},
+								"entries": {
+									"type": "array",
+									"items": {
+										"$ref": "entry.json"
+									},
+									"minItems": 1
+								},
+								"traits": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"$ref": "utils.json#/definitions/anyTrait"
+									},
+									"minItems": 1,
+									"uniqueItems": true
+								},
+								"info": {
+									"type": "array",
+									"items": {
+										"$ref": "entry.json"
+									},
+									"minItems": 1
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"name",
+								"source",
+								"page",
+								"entries"
+							]
+						},
+						"minItems": 1,
+						"uniqueItems": true
+					},
+					"summary": {
+						"type": "object",
+						"properties": {
+							"images": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								},
+								"minItems": 1
+							},
+							"text": {
+								"type": "string"
+							}
+						},
+						"additionalProperties": false,
+						"minProperties": 1
+					}
+				},
+				"additionalProperties": false,
+				"required": [
+					"source",
+					"name",
+					"page"
+				]
+			},
+			"uniqueItems": true
+		}
+	},
+	"additionalProperties": false,
+	"required": [
+		"ancestry"
+	]
+}

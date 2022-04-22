@@ -33,7 +33,7 @@
 							"type": "string",
 							"anyOf": [
 								{
-									"$ref": "utils.json#/definitions/abilityUpper"
+									"$ref": "utils.json#/definitions/ability"
 								}
 							]
 						},
@@ -44,7 +44,7 @@
 						"type": "array",
 						"items": {
 							"type": "string",
-							"$ref": "utils.json#/definitions/skillNameUpper"
+							"$ref": "utils.json#/definitions/skillName"
 						},
 						"minItems": 1,
 						"uniqueItems": true
@@ -58,10 +58,9 @@
 									"$ref": "utils.json#/definitions/loreSubjects"
 								},
 								{
-									"$ref": "utils.json#/definitions/classNameUpper"
+									"$ref": "utils.json#/definitions/className"
 								}
 							]
-							
 						},
 						"minItems": 1,
 						"uniqueItems": true
@@ -70,7 +69,7 @@
 						"type": "array",
 						"items": {
 							"type": "string",
-							"$ref": "utils.json#/definitions/anyTraitUpper"
+							"$ref": "utils.json#/definitions/anyTrait"
 						},
 						"minItems": 1,
 						"uniqueItems": true
@@ -83,9 +82,11 @@
 						"minItems": 1,
 						"uniqueItems": true
 					},
-					"ability":{
+					"ability": {
 						"type": "boolean",
-						"enum": [true]
+						"enum": [
+							true
+						]
 					}
 				},
 				"additionalProperties": false,
@@ -99,5 +100,7 @@
 		}
 	},
 	"additionalProperties": false,
-	"required": ["background"]
+	"required": [
+		"background"
+	]
 }

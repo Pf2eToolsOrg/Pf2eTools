@@ -1,0 +1,94 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema",
+	"$id": "versatileHeritage.json",
+	"title": "Versatile Heritages",
+	"description": "The versatile heritage data type for Pf2eTools.",
+	"type": "object",
+	"version": "0.0.1",
+	"properties": {
+		"versatileHeritage": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"source": {
+						"type": "string",
+						"$ref": "utils.json#/definitions/sourceList"
+					},
+					"name": {
+						"type": "string"
+					},
+					"page": {
+						"type": "integer"
+					},
+					"rarity": {
+						"type": "string",
+						"$ref": "utils.json#/definitions/rarity"
+					},
+					"otherSources": {
+						"$ref": "utils.json#/definitions/otherSources"
+					},
+					"versatile": {
+						"type": "boolean",
+						"enum": [
+							true
+						]
+					},
+					"entries": {
+						"type": "array",
+						"items": {
+							"$ref": "entry.json"
+						},
+						"minItems": 1
+					},
+					"info": {
+						"type": "array",
+						"items": {
+							"$ref": "entry.json"
+						},
+						"minItems": 1
+					},
+					"traits": {
+						"type": "array",
+						"items": {
+							"type": "string",
+							"$ref": "utils.json#/definitions/anyTrait"
+						},
+						"minItems": 1,
+						"uniqueItems": true
+					},
+					"summary": {
+						"type": "object",
+						"properties": {
+							"images": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								},
+								"minItems": 1
+							},
+							"text": {
+								"type": "string"
+							}
+						},
+						"additionalProperties": false,
+						"minProperties": 1
+					}
+				},
+				"additionalProperties": false,
+				"required": [
+					"source",
+					"name",
+					"entries",
+					"page",
+					"versatile"
+				]
+			},
+			"uniqueItems": true
+		}
+	},
+	"additionalProperties": false,
+	"required": [
+		"versatileHeritage"
+	]
+}

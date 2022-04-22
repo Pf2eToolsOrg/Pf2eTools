@@ -450,7 +450,7 @@
 			],
 			"prerequisites": "expert with at least one type of firearm, trained in {@skill Arcana} or {@skill Crafting}, you own a beast gun and have slain the type of creature associated with your beast gun in a fair hunt (see above)",
 			"entries": [
-				"You've bonded to your beast gun and unlocked the first hints of its {@condition hidden} potential. You treat all beast guns as martial firearms when determining your proficiency with them, even beast guns that are normally advanced weapons. You can change your bonded beast gun to another beast gun you own each day during your daily preparations, as long as you've previously performed a ritual hunt associated with the new beast gun.",
+				"You've bonded to your beast gun and unlocked the first hints of its hidden potential. You treat all beast guns as martial firearms when determining your proficiency with them, even beast guns that are normally advanced weapons. You can change your bonded beast gun to another beast gun you own each day during your daily preparations, as long as you've previously performed a ritual hunt associated with the new beast gun.",
 				"The beast gun also acts as a conduit, drawing out and amplifying any latent or active magic power you have. You learn to cast spontaneous spells and gain the {@action Cast a Spell} activity. You gain a spell repertoire with one cantrip of your choice, from either the arcane or primal spell list. You choose this cantrip from the common spells on your chosen spell list or from other spells you have access to on the list. This cantrip must require a spell attack roll. You're trained in spell attack rolls and spell DCs for arcane or primal spells, whichever of the two traditions you chose. Your key spellcasting ability for these spells is Charisma.",
 				"If you already cast arcane or primal spells from spell slots, you learn one additional cantrip from that tradition. If you're a prepared caster, you can prepare this spell in addition to your usual cantrips per day; if you're a spontaneous caster, you add this cantrip to your spell repertoire.",
 				"You also gain Spellsling.",
@@ -1089,9 +1089,9 @@
 			"traits": [
 				"Archetype"
 			],
-			"prerequisites": "{@feat Demolitionist Dedication|G&G}; {@feat Calculated Splash},",
+			"prerequisites": "{@feat Demolitionist Dedication|G&G}; {@feat Calculated Splash}, {@feat Directional Bombs}, or {@feat Expanded Splash}",
 			"entries": [
-				"Directional Bombs, or Expanded Splash You maximize the effectiveness of your explosives by controlling every possible parameter of the blast meticulously. If you have the Directional Bombs feats, you can use it with Set Explosives or Demolition Charge, even though you didn't throw the bombs. If you have the Calculated Splash or Expanded Splash feats, you can apply the additional splash damage to one of the bombs when you Set Explosives or use Demolition Charge, and you can apply the increased splash area from Expanded Splash to all the bombs."
+				"You maximize the effectiveness of your explosives by controlling every possible parameter of the blast meticulously. If you have the {@feat Directional Bombs} feats, you can use it with Set Explosives or Demolition Charge, even though you didn't throw the bombs. If you have the {@feat Calculated Splash} or {@feat Expanded Splash} feats, you can apply the additional splash damage to one of the bombs when you Set Explosives or use Demolition Charge, and you can apply the increased splash area from Expanded Splash to all the bombs."
 			]
 		},
 		{
@@ -1120,7 +1120,7 @@
 			},
 			"entries": [
 				"You create a direct magical connection with your beast gun, allowing you to guide the beast gun's next shot by taking control of the projectile directly, steering it through the air, and swerving and veering it to continue to hit target after target. Make a beast gun {@action Strike} against a creature within the first range increment. On a hit, the shot tears through the target and continues toward another target you can see. You make a {@action Strike} against this new target. The new target must be no farther from the previous target than a distance equal to the beast gun's range increment. For example, the new target must be within 150 feet of the previous target when attacking with a drake rifle. On a hit, you can direct the bullet toward a new target.",
-				"You can continue to make Strikes against new targets in this same way until your attack misses, at which point your shot dissipates. You can't make a {@action Strike} against a target you already attacked during this use of {@condition Controlled} Bullet, but you can otherwise continue to make attacks against valid targets until you miss. Each attack counts toward your multiple attack penalty, but don't increase your penalty until you've made all your attacks."
+				"You can continue to make Strikes against new targets in this same way until your attack misses, at which point your shot dissipates. You can't make a {@action Strike} against a target you already attacked during this use of Controlled Bullet, but you can otherwise continue to make attacks against valid targets until you miss. Each attack counts toward your multiple attack penalty, but don't increase your penalty until you've made all your attacks."
 			]
 		},
 		{
@@ -1361,7 +1361,7 @@
 				"Gunslinger"
 			],
 			"entries": [
-				"You relax your eyes, taking in the smallest movements of objects, stirring of grass and leaves, and other signs of the presence of {@condition hidden} things, granting you the ability to locate {@condition invisible} creatures. Until the start of your next turn, you can see {@condition invisible} creatures and objects as silhouettes defined by the movement of air, slight depressions in the ground, and other tells that less-keen eyes would overlook, which makes them merely {@condition concealed} from you."
+				"You relax your eyes, taking in the smallest movements of objects, stirring of grass and leaves, and other signs of the presence of hidden things, granting you the ability to locate {@condition invisible} creatures. Until the start of your next turn, you can see {@condition invisible} creatures and objects as silhouettes defined by the movement of air, slight depressions in the ground, and other tells that less-keen eyes would overlook, which makes them merely {@condition concealed} from you."
 			]
 		},
 		{
@@ -1816,7 +1816,7 @@
 			],
 			"prerequisites": "construct innovation",
 			"entries": [
-				"Your construct unleashes a broad swath of devastation by separating its limbs, deploying {@condition hidden} armaments, or using a similar technique to wreak havoc. You Command your innovation. Instead of its normal actions, it {@action Stride||Strides} once, then makes a {@action Strike} against each foe within 30 feet of it with a +2 circumstance bonus to its attack rolls. The multiple attack penalty doesn't increase until after the construct makes all the attacks."
+				"Your construct unleashes a broad swath of devastation by separating its limbs, deploying hidden armaments, or using a similar technique to wreak havoc. You Command your innovation. Instead of its normal actions, it {@action Stride||Strides} once, then makes a {@action Strike} against each foe within 30 feet of it with a +2 circumstance bonus to its attack rolls. The multiple attack penalty doesn't increase until after the construct makes all the attacks."
 			]
 		},
 		{
@@ -1986,7 +1986,7 @@
 			"prerequisites": "weapon innovation",
 			"requirements": "Your last action was a successful {@action Strike} against a foe using your weapon innovation.",
 			"entries": [
-				"Thanks to a {@condition hidden} experimental feature you built into your weapon, your weapon explosively deploys levers, tangling hooks, or similar mechanisms to provide significant assistance when you perform a combat maneuver. When you use Explosive Maneuver, choose {@action Grapple}, {@action Shove}, or {@action Trip}. Your weapon innovation must have a weapon trait that matches the action you chose (for instance, to choose {@action Grapple}, your weapon must have the {@trait grapple} trait). You take the chosen action against the same foe as your previous successful {@action Strike}, using the same multiple attack penalty as your previous successful {@action Strike}. You still increase your multiple attack penalty after the {@action Grapple}, {@action Shove}, or {@action Trip}, as normal."
+				"Thanks to a hidden experimental feature you built into your weapon, your weapon explosively deploys levers, tangling hooks, or similar mechanisms to provide significant assistance when you perform a combat maneuver. When you use Explosive Maneuver, choose {@action Grapple}, {@action Shove}, or {@action Trip}. Your weapon innovation must have a weapon trait that matches the action you chose (for instance, to choose {@action Grapple}, your weapon must have the {@trait grapple} trait). You take the chosen action against the same foe as your previous successful {@action Strike}, using the same multiple attack penalty as your previous successful {@action Strike}. You still increase your multiple attack penalty after the {@action Grapple}, {@action Shove}, or {@action Trip}, as normal."
 			]
 		},
 		{
@@ -3067,7 +3067,7 @@
 			],
 			"prerequisites": "armor, construct, or weapon innovation",
 			"entries": [
-				"You activate gears, explosives, and other {@condition hidden} mechanisms in your innovation to make a powerful attack. You make a {@action Strike}, dealing an extra die of weapon damage. If you're at least 10th level, increase this to two extra dice, and if you're at least 18th level, increase it to three extra dice. The type of {@action Strike} you can make depends on your innovation.",
+				"You activate gears, explosives, and other hidden mechanisms in your innovation to make a powerful attack. You make a {@action Strike}, dealing an extra die of weapon damage. If you're at least 10th level, increase this to two extra dice, and if you're at least 18th level, increase it to three extra dice. The type of {@action Strike} you can make depends on your innovation.",
 				{
 					"type": "list",
 					"items": [
@@ -3138,7 +3138,7 @@
 			],
 			"prerequisites": "{@feat Sterling Dynamo Dedication|G&G}",
 			"entries": [
-				"Your dynamo has modular configurations, allowing you to swap between various different possibilities with ease in order to adapt to various situations in combat. Your dynamo attack gains the {@trait modular} trait (page 150), as well as one of the following configurations of your choice: power driver ({@damage 1d6} bludgeoning damage; shove), percussive striker ({@damage 1d4} bludgeoning damage; agile, finesse), rotating sickle ({@damage 1d6} slashing damage; trip), or entangling barbs ({@damage 1d6} piercing damage; grapple). If you have a manually {@condition controlled} dynamo, these damage dice increase by 1 size, as usual, and you can also choose the extendable baton ({@damage 1d4} bludgeoning damage; finesse, reach), which has the damage increase already factored in.",
+				"Your dynamo has modular configurations, allowing you to swap between various different possibilities with ease in order to adapt to various situations in combat. Your dynamo attack gains the {@trait modular} trait (page 150), as well as one of the following configurations of your choice: power driver ({@damage 1d6} bludgeoning damage; shove), percussive striker ({@damage 1d4} bludgeoning damage; agile, finesse), rotating sickle ({@damage 1d6} slashing damage; trip), or entangling barbs ({@damage 1d6} piercing damage; grapple). If you have a manually controlled dynamo, these damage dice increase by 1 size, as usual, and you can also choose the extendable baton ({@damage 1d4} bludgeoning damage; finesse, reach), which has the damage increase already factored in.",
 				"When you use an {@action Interact} action to switch configurations using the {@trait modular} trait, you switch between the initial configuration of dynamo you chose with the Sterling Dynamo Dedication and the new configuration you chose with Modular Dynamo."
 			],
 			"special": "You can select this feat multiple times. Each time, you choose another configuration and add it to the list of options you can choose when you use an {@action Interact} action with the {@trait modular} trait."
@@ -3612,7 +3612,7 @@
 			"prerequisites": "{@feat Trick Driver Dedication|G&G}",
 			"requirements": "You are piloting a vehicle.",
 			"entries": [
-				"You throw the vehicle into a barely {@condition controlled} skid, turning sharply to evade pursuit or bring your weapons to bear. You {@action Drive|GMG} with a \u20132 penalty to your piloting check, gaining the effects of the {@action Drive|GMG} action for the same number of actions you spent to Power Slide. At the end of the movement, if you succeed, you can turn the vehicle up to 90 degrees. If you critically succeed at your piloting check, you can instead turn the vehicle up to 180 degrees."
+				"You throw the vehicle into a barely controlled skid, turning sharply to evade pursuit or bring your weapons to bear. You {@action Drive|GMG} with a \u20132 penalty to your piloting check, gaining the effects of the {@action Drive|GMG} action for the same number of actions you spent to Power Slide. At the end of the movement, if you succeed, you can turn the vehicle up to 90 degrees. If you critically succeed at your piloting check, you can instead turn the vehicle up to 180 degrees."
 			]
 		},
 		{
@@ -4197,14 +4197,7 @@
 				"Gunslinger"
 			],
 			"entries": [
-				"Your ability to react to unexpected circumstances is preternaturally sharp. At the start of each enemy's turn, you gain an additional reaction you can use on only that turn to use a gunslinger reaction.",
-				"Guns and the people who use them remain uncommon in the world of Golarion, as the technology required to produce firearms and black powder is limited to a few technological strongholds scattered across the globe.",
-				"Despite their rarity, or perhaps because of it, firearms leave a lasting impression on those who witness their destructive power and startling impact. Residents of the Inner Sea from outside of the Impossible Lands who behold a gunslinger or other wielder of firearms in action might undertake a pilgrimage to Alkenstar and attempt to negotiate with the Alkenstar Gunworks in order to obtain one of these unusual but potent weapons for themselves.",
-				"Even people who never see or obtain a firearm might have a compelling reason to take these options, however.",
-				"Crossbows are vastly more common than firearms but serve a similar purpose and can be put to many of the same uses. An artillerist leading a cannon team in Alkenstar might have a counterpart in Taldor who uses similar abilities with catapults. The sniping duos who use their arquebuses to guard the walls of Alkenstar from monsters in the Mana Wastes are not terribly different than the elven archers who patrol the forests of Kyonin and brave the demon-haunted swamps of Tanglebriar.",
-				"In the islands of the Shackles, pirate captains fight with swords and pistols while their crew, most of whom can't afford a rare and expensive handgun, might use the same combat style with a similar weapon such as a crossbow or hand crossbow.",
-				"While firearms are still relatively rare in the Inner Sea, the stories they inspire and the combat styles that incorporate them have spread faster than the technology itself. Snipers, drifters, weapon performers, and more have a place in Golarion that is larger than the impact of firearms alone. Even if your world or region doesn't include guns, there might be options perfect for your next character in this section. The options presented here can add new choices and exciting abilities for characters of any campaign world, regardless of the setting's technology level."
-			]
+				"Your ability to react to unexpected circumstances is preternaturally sharp. At the start of each enemy's turn, you gain an additional reaction you can use on only that turn to use a gunslinger reaction."]
 		},
 		{
 			"name": "Smoke Curtain",
@@ -4477,7 +4470,7 @@
 				"Your sterling dynamo prosthesis is especially optimized for combat, granting you a dynamo melee unarmed attack that is in the brawling weapon group and is made of silver (which makes it more effective against certain types of creatures, such as devils and werewolves)",
 				"You have several options to customize your sterling dynamo. First, choose whether you have a power driver dynamo, which deals {@damage 1d6} bludgeoning damage and has the {@trait shove} trait, or a percussive striker dynamo, which deals {@damage 1d4} bludgeoning damage and has the {@trait agile} and {@trait finesse} traits.",
 				"Most dynamos are automated, so they don't require a free hand to use, like other unarmed attacks.",
-				"However, you can instead choose to make your dynamo be manually {@condition controlled} via a handheld switch, lever, or other device; to make an attack with a manually {@condition controlled} dynamo, you must have a hand free to operate it, but the benefit is great control and a more devastating strike. This increases the damage die by one size, to a {@dice 1d8} for a power drive dynamo or {@dice 1d6} for a percussive striker dynamo. Arm dynamos are always manual, but they use the hand on that arm to operate the dynamo when making strikes.",
+				"However, you can instead choose to make your dynamo be manually controlled via a handheld switch, lever, or other device; to make an attack with a manually controlled dynamo, you must have a hand free to operate it, but the benefit is great control and a more devastating strike. This increases the damage die by one size, to a {@dice 1d8} for a power drive dynamo or {@dice 1d6} for a percussive striker dynamo. Arm dynamos are always manual, but they use the hand on that arm to operate the dynamo when making strikes.",
 				"Manual control is required only in the heat of combat, not for less strenuous adventuring or everyday activities.",
 				"You need to keep your sterling dynamo wound, but the process isn't particularly onerous, so in most situations, it won't be an issue. If you spend 1 minute winding up your dynamo, it can remain active for 24 hours before needing additional winding.",
 				"However, enemies can attempt to Disable the dynamo, which has a level equal to your own, to reduce the remaining operational time by 1 hour, or 2 hours on a critical success. Certain other abilities that adversely affect technology might also reduce the dynamo's remaining operational time. When your dynamo is out of operational time, you can still use it as a normal prosthetic, but you cannot use your dynamo unarmed attack or any other abilities from this archetype until you wind the dynamo again. You can wind the dynamo for 1 minute at any time to return it to the maximum 24 hours of operational time."

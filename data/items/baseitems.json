@@ -91,7 +91,7 @@
 				"damage": "1d8",
 				"damageType": "P",
 				"reload": 1,
-				"range": 120,
+				"range": 30,
 				"group": "Bow"
 			},
 			"hands": 2,
@@ -4303,6 +4303,11 @@
 		{
 			"name": "Repeating Hand Crossbow",
 			"source": "G&G",
+			"otherSources": {
+				"Reprinted": [
+					"AV3|73"
+				]
+			},
 			"page": 63,
 			"type": "Equipment",
 			"traits": [
@@ -4441,6 +4446,90 @@
 			"subCategory": "Martial",
 			"entries": [
 				"A sap has a soft wrapping around a dense core, typically a leather sheath around a lead rod. Its head is wider than its grip to disperse the force of a blow, as the weapon's purpose is to knock out its victim rather than to draw blood."
+			]
+		},
+		{
+			"name": "Shauth Lash",
+			"source": "AV3",
+			"page": 73,
+			"equipment": true,
+			"type": "Equipment",
+			"traits": [
+				"deadly d10",
+				"finesse",
+				"trip"
+			],
+			"price": {
+				"amount": 8,
+				"coin": "gp"
+			},
+			"bulk": 1,
+			"weaponData": {
+				"damage": "1d6",
+				"damageType": "S",
+				"group": "Flail"
+			},
+			"hands": 2,
+			"category": "Weapon",
+			"subCategory": "Advanced",
+			"entries": [
+				"This metal chain bears hook-like barbs made of alchemically strengthened urdefhan  teeth. Magical shauth lashes have the same ability to channel an urdefhan wielder's Wicked Bite as magical shauth blades, and urdefhans  hold these weapons with the  same reverence as they do shauth blades."
+			]
+		},
+		{
+			"name": "Rhoka Sword",
+			"source": "AV3",
+			"page": 73,
+			"equipment": true,
+			"type": "Equipment",
+			"traits": [
+				"deadly d8",
+				"two-hand d10"
+			],
+			"price": {
+				"amount": 4,
+				"coin": "gp"
+			},
+			"bulk": 2,
+			"weaponData": {
+				"damage": "1d8",
+				"damageType": "S",
+				"group": "Sword"
+			},
+			"hands": 1,
+			"category": "Weapon",
+			"subCategory": "Advanced",
+			"entries": [
+				"These dual-bladed swords are commonly used by urdefhan warriors."
+			]
+		},
+		{
+			"name": "Shauth Blade",
+			"source": "AV3",
+			"page": 73,
+			"equipment": true,
+			"type": "Equipment",
+			"traits": [
+				"Agile",
+				"deadly d8",
+				"finesse",
+				"versatile P"
+			],
+			"price": {
+				"amount": 2,
+				"coin": "gp"
+			},
+			"bulk": "L",
+			"weaponData": {
+				"damage": "1d4",
+				"damageType": "S",
+				"group": "Knife"
+			},
+			"hands": 1,
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"entries": [
+				"These strange curved blades are jagged and deadly weapons made from the alchemically strengthened teeth of dead urdefhans. Each weapon is typically named for the urdefhan whose teeth were forged into the weapon, which are often carried (and revered) by that urdefhan's descendants. Magical shauth blades allow an urdefhan wielder to channel their Wicked Bite ability through shauth blade Strikes. "
 			]
 		},
 		{
@@ -5420,7 +5509,7 @@
 			"page": 277,
 			"type": "Equipment",
 			"price": {
-				"amount": 2,
+				"amount": 10,
 				"coin": "gp"
 			},
 			"bulk": 4,
