@@ -3330,6 +3330,7 @@ Renderer.utils = {
 	getPrerequisiteHtml: (prerequisites, { isListMode = false, blacklistKeys = new Set(), isTextOnly = false, isSkipPrefix = false } = {}) => {
 		if (!prerequisites) { return isListMode ? "\u2014" : ""; }
 		let cntPrerequisites = 0;
+		// TODO: This fucking thing
 		const renderer = Renderer.get();
 		const listOfChoices = prerequisites.map(pr => {
 			return Object.entries(pr).sort(([kA], [kB]) => Renderer.utils._prereqWeights[kA] - Renderer.utils._prereqWeights[kB]).map(([k, v]) => {
@@ -3414,27 +3415,73 @@ Renderer.utils = {
 							return `${joined}${allValuesEqual != null ? ` ${allValuesEqual} or higher` : ""}`;
 						}
 					}
+					/* TODO: This fucking thing
+					"prerequisiteObject": [
+						{
+							"proficiency": {
+								"feat": [
+									{
+										"feat": [
+											"Major Lesson|APG"
+										]
+									}
+								],
+								"weapon": [
+									{
+										"trained": [
+											{
+												"weapon": ["plate armor"]
+											}
+										]
+									}
+								],
+								"armor": [
+									{
+										"trained": [
+											{
+												"armor": ["plate armor"]
+											}
+										]
+									}
+								],
+								"skill": [
+									{
+										"trained": [
+											{
+												"skill": [
+													"pirate lore"
+												]
+											},
+											{
+												"skill": [
+													"alchemy lore"
+												]
+											}
+										],
+										"expert": [
+											{
+												"skill": [
+													"Arcana"
+												]
+											}
+										]
+									},
+									{
+										"master": [
+											{
+												"skill": "crafting"
+											}
+										]
+									}
+								]
+							}
+						}
+					],
+					*/
 					case "proficiency":
 					{
-						const parts = v.map(obj => {
-							return Object.entries(obj).map(([profType, prof]) => {
-								switch (profType) {
-									case "armor":
-									{
-										return isListMode ? `Prof ${Parser.armorFullToAbv(prof)} armor` : `Proficiency with ${prof} armor`;
-									}
-									case "weapon":
-									{
-										return isListMode ? `Prof ${Parser.weaponFullToAbv(prof)} weapon` : `Proficiency with a ${prof} weapon`;
-									}
-									default:
-										throw new Error(`Unhandled proficiency type: "${profType}"`);
-								}
-							},
-							);
-						},
-						);
-						return isListMode ? parts.join("/") : parts.joinConjunct(", ", " or ");
+						renderStack = [];
+						return "a";
 					}
 					default:
 						throw new Error(`Unhandled key: ${k}`);
@@ -4749,9 +4796,12 @@ Renderer.feat = {
 		// TODO: Fully transition to objects
 		if (feat.prerequisites != null) {
 			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Prerequisites&nbsp;</strong>`)
-			if (Array.isArray(feat.prerequisites)) {
-				renderStack.push(Renderer.utils.getPrerequisiteHtml(feat.prerequisite, {isSkipPrefix: true}))
-			} else renderStack.push(renderer.render(feat.prerequisites))
+			renderStack.push(renderer.render(feat.prerequisites))
+			renderStack.push(`</p>`)
+		}
+		if (feat.prerequisiteObject != null) {
+			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Prerequisites&nbsp;</strong>`)
+			renderStack.push(Renderer.utils.getPrerequisiteHtml(feat.prerequisite, {isSkipPrefix: true}))
 			renderStack.push(`</p>`)
 		}
 		if (feat.frequency != null) {
