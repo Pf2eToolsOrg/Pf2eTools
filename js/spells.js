@@ -127,7 +127,7 @@ class SpellsPage extends ListPage {
 
 	async pDoLoadSubHash (sub) {
 		sub = this._pageFilter.filterBox.setFromSubHashes(sub);
-		await ListUtil.pSetFromSubHashes(sub, pPreloadSublistSources);
+		await ListUtil.pSetFromSubHashes(sub, pPreloadSublistSources.bind(this));
 
 		await this._printView.pHandleSub(sub);
 	}
@@ -335,7 +335,7 @@ class SpellsPage extends ListPage {
 		ListUtil.bindOtherButtons({
 			download: true,
 			upload: {
-				pFnPreLoad: pPreloadSublistSources,
+				pFnPreLoad: pPreloadSublistSources.bind(this),
 			},
 			sendToBrew: {
 				mode: "spellBuilder",
