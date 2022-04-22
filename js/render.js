@@ -3415,68 +3415,36 @@ Renderer.utils = {
 							return `${joined}${allValuesEqual != null ? ` ${allValuesEqual} or higher` : ""}`;
 						}
 					}
-					/* TODO: This fucking thing
-					"prerequisiteObject": [
-						{
-							"proficiency": {
+					/* TODO: ????
+						"prerequisiteArray": [
+							{
 								"feat": [
 									{
-										"feat": [
-											"Major Lesson|APG"
-										]
+										"Major Lesson|APG": true
 									}
 								],
 								"weapon": [
 									{
-										"trained": [
-											{
-												"weapon": ["plate armor"]
-											}
-										]
+										"aldori dueling sword": "trained"
 									}
 								],
 								"armor": [
 									{
-										"trained": [
-											{
-												"armor": ["plate armor"]
-											}
-										]
+										"plate armor": "trained"
 									}
 								],
 								"skill": [
 									{
-										"trained": [
-											{
-												"skill": [
-													"pirate lore"
-												]
-											},
-											{
-												"skill": [
-													"alchemy lore"
-												]
-											}
-										],
-										"expert": [
-											{
-												"skill": [
-													"Arcana"
-												]
-											}
-										]
+										"pirate lore": "trained",
+										"alchemy lore": "trained",
+										"arcana": "expert"
 									},
 									{
-										"master": [
-											{
-												"skill": "crafting"
-											}
-										]
+										"crafting": "master"
 									}
 								]
 							}
-						}
-					],
+						],
 					*/
 					case "proficiency":
 					{
@@ -4799,7 +4767,7 @@ Renderer.feat = {
 			renderStack.push(renderer.render(feat.prerequisites))
 			renderStack.push(`</p>`)
 		}
-		if (feat.prerequisiteObject != null) {
+		if (feat.prerequisiteArray != null) {
 			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Prerequisites&nbsp;</strong>`)
 			renderStack.push(Renderer.utils.getPrerequisiteHtml(feat.prerequisite, {isSkipPrefix: true}))
 			renderStack.push(`</p>`)
