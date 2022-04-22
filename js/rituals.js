@@ -100,7 +100,7 @@ function renderStatblock (ritual) {
 	const $content = $("#pagecontent").empty()
 
 	function buildStatsTab () {
-		$content.append(RenderRituals.$getRenderedRitual(ritual));
+		$content.append(Renderer.ritual.getRenderedString(ritual));
 	}
 	const buildInfoTab = async () => {
 		const quickRules = await Renderer.utils.pGetQuickRules("ritual");

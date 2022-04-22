@@ -861,8 +861,7 @@ class AncestriesPage extends BaseComponent {
 			.filter(h => this._state[UrlUtil.getStateKeyHeritage(h)])
 			.map(h => asStateKeys ? UrlUtil.getStateKeyHeritage(h) : h);
 	}
-	// FIXME: why is this here and not in render.js
-	// Don't delete this and explain why it's here
+
 	_render_renderAncestry () {
 		const $ancestryStats = $(`#ancestrystats`).empty();
 		const anc = this.activeAncestry;
@@ -1303,7 +1302,7 @@ class AncestriesPage extends BaseComponent {
 	_render_renderFeat () {
 		const $featStats = $(`#featstats`).empty();
 		const feat = this.activeFeat;
-		RenderFeats.$getRenderedFeat(feat).appendTo($featStats);
+		Renderer.feat.getRenderedString(feat).appendTo($featStats);
 		$featStats.show();
 		this._updateFeatHref();
 	}

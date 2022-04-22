@@ -316,7 +316,7 @@ class RuneBuilder extends ProxyBase {
 	}
 
 	renderItem (item) {
-		$(`#pagecontent`).empty().append(RenderItems.$getRenderedItem(item));
+		$(`#pagecontent`).empty().append(Renderer.item.getRenderedString(item));
 	}
 
 	async pHandleSubhash (isInitialLoad) {

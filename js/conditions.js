@@ -85,7 +85,7 @@ class ConditionsPage extends ListPage {
 		const it = this._dataList[id];
 
 		function buildStatsTab () {
-			$content.append(RenderCondition.$getRenderedCondition(it));
+			$content.append(Renderer.condition.getRenderedString(it));
 		}
 		const buildInfoTab = async () => {
 			const quickRules = await Renderer.utils.pGetQuickRules("condition");

@@ -93,7 +93,7 @@ class BackgroundPage extends ListPage {
 		const bg = this._dataList[id];
 
 		const buildStatsTab = () => {
-			$pgContent.append(RenderBackgrounds.$getRenderedBackground(bg));
+			$pgContent.append(Renderer.background.getRenderedString(bg));
 		};
 		const buildInfoTab = async () => {
 			const quickRules = await Renderer.utils.pGetQuickRules("background");

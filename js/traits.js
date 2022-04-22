@@ -85,7 +85,7 @@ class TraitsPage extends ListPage {
 		const trtIndex = (this._traitIndex || {})[trt.name.toLowerCase()];
 
 		function buildStatsTab () {
-			$content.append(RenderTraits.$getRenderedTrait(trt));
+			$content.append(Renderer.trait.getRenderedString(trt));
 		}
 		const buildInfoTab = async () => {
 			const quickRules = await Renderer.utils.pGetQuickRules("trait");

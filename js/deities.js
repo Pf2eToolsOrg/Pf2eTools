@@ -114,7 +114,7 @@ function renderStatblock (deity) {
 	const $content = $("#pagecontent").empty()
 
 	function buildStatsTab () {
-		$content.append(RenderDeities.$getRenderedDeity(deity));
+		$content.append(Renderer.deity.getRenderedString(deity));
 	}
 	async function buildLoreTab () {
 		const pGetFluff = async () => {

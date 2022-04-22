@@ -1386,7 +1386,7 @@ function Renderer () {
 	this._renderDataCreature = function (entry, textStack, meta, options) {
 		this._renderPrefix(entry, textStack, meta, options);
 		this._renderDataHeader(textStack);
-		textStack[0] += Renderer.creature.getCompactRenderedString(entry.dataCreature, { isEmbeddedEntity: true });
+		textStack[0] += Renderer.creature.getRenderedString(entry.dataCreature, { isEmbeddedEntity: true });
 		this._renderDataFooter(textStack);
 		this._renderSuffix(entry, textStack, meta, options);
 	};
@@ -1394,7 +1394,7 @@ function Renderer () {
 	this._renderDataSpell = function (entry, textStack, meta, options) {
 		this._renderPrefix(entry, textStack, meta, options);
 		this._renderDataHeader(textStack);
-		textStack[0] += Renderer.spell.getCompactRenderedString(entry.dataSpell, { isEmbeddedEntity: true });
+		textStack[0] += Renderer.spell.getRenderedString(entry.dataSpell, { isEmbeddedEntity: true });
 		this._renderDataFooter(textStack);
 		this._renderSuffix(entry, textStack, meta, options);
 	};
@@ -3483,7 +3483,7 @@ Renderer.get = () => {
 };
 
 Renderer.ability = {
-	getCompactRenderedString (it, opts) {
+	getRenderedString (it, opts) {
 		opts = opts || {};
 
 		return `${Renderer.utils.getExcludedDiv(it, "ability", UrlUtil.PG_ABILITIES)}
@@ -3522,7 +3522,7 @@ Renderer.ability = {
 };
 
 Renderer.action = {
-	getCompactRenderedString (it, opts) {
+	getRenderedString (it, opts) {
 		opts = opts || {};
 
 		return `${Renderer.utils.getExcludedDiv(it, "action", UrlUtil.PG_ACTIONS)}
@@ -3667,7 +3667,7 @@ Renderer.adventureBook = {
 };
 
 Renderer.affliction = {
-	getCompactRenderedString (affliction, opts) {
+	getRenderedString (affliction, opts) {
 		opts = opts || {};
 		const renderer = Renderer.get();
 		const renderStack = [];
@@ -3688,7 +3688,7 @@ Renderer.affliction = {
 };
 
 Renderer.ancestry = {
-	getCompactRenderedString (it, opts) {
+	getRenderedString (it, opts) {
 		if (it.__prop === "ancestry") return Renderer.ancestry.getRenderedAncestry(it, opts);
 		if (it.__prop === "heritage") return Renderer.ancestry.getRenderedHeritage(it, opts);
 		if (it.__prop === "versatileHeritage") return Renderer.ancestry.getRenderedVersatileHeritage(it, opts);
@@ -3759,7 +3759,7 @@ Renderer.ancestry = {
 };
 
 Renderer.archetype = {
-	getCompactRenderedString (archetype) {
+	getRenderedString (archetype) {
 		const renderer = Renderer.get().setFirstSection(true);
 		return `${renderer.render({ type: "pf2-h3", name: archetype.name })}
 		${renderer.render(archetype.entries)}`;
@@ -3767,7 +3767,7 @@ Renderer.archetype = {
 }
 
 Renderer.background = {
-	getCompactRenderedString (bg, opts) {
+	getRenderedString (bg, opts) {
 		opts = opts || {};
 		const renderStack = [];
 		Renderer.get().setFirstSection(true).recursiveRender(bg.entries, renderStack, { pf2StatFix: true });
@@ -3997,7 +3997,7 @@ Renderer.companion = {
 		${companion.special ? `<p class="pf2-stat pf2-stat__section"><strong>Special&nbsp;</strong>${renderer.render(companion.special)}</p>` : ""}
 		${companion.support ? `<p class="pf2-stat pf2-stat__section"><strong>Support Benefit&nbsp;</strong>${renderer.render(companion.support)}</p>` : ""}
 		${companion.maneuver ? `<p class="pf2-stat pf2-stat__section mb-4"><strong>Advanced Maneuver&nbsp;</strong>${companion.maneuver.name}</p>` : ""}
-		${companion.maneuver ? Renderer.action.getCompactRenderedString(companion.maneuver, { noPage: true }) : ""}
+		${companion.maneuver ? Renderer.action.getRenderedString(companion.maneuver, { noPage: true }) : ""}
 		${Renderer.utils.getPageP(companion)}`;
 	},
 	getRenderedCompanionAbility (it, opts) {
@@ -4063,7 +4063,7 @@ Renderer.eidolon = {
 };
 
 Renderer.class = {
-	getCompactRenderedString (cls, opts) {
+	getRenderedString (cls, opts) {
 		opts = opts || {};
 		const renderer = Renderer.get().setFirstSection(true);
 		const fakeEntry = { type: "pf2-h1", name: cls.name, entries: cls.entries.map(e => ({ type: "pf2-h3", ...e })) }
@@ -4081,7 +4081,7 @@ Renderer.class = {
 };
 
 Renderer.condition = {
-	getCompactRenderedString (cond, opts) {
+	getRenderedString (cond, opts) {
 		opts = opts || {};
 		const renderer = Renderer.get();
 		const renderStack = [];
@@ -4100,6 +4100,43 @@ Renderer.condition = {
 };
 
 Renderer.creature = {
+	getRenderedString (cr, opts) {
+		cr = scaleCreature.applyVarRules(cr);
+		opts = opts || {};
+		if (opts.showScaler) {
+			opts.$btnResetScaleLvl = opts.$btnResetScaleLvl || Renderer.creature.$getBtnResetScaleLvl(cr);
+			opts.$btnScaleLvl = opts.$btnScaleLvl || Renderer.creature.$getBtnScaleLvl(cr);
+			opts.asJquery = true;
+		}
+		const traits = [];
+		if (cr.rarity !== "Common") traits.push(cr.rarity);
+		if (cr.alignment != null) traits.push(cr.alignment);
+		if (cr.size != null) traits.push(cr.size);
+		if (cr.traits != null && cr.traits.length) traits.push(...cr.traits);
+		if (cr.creatureType != null) traits.push(...cr.creatureType);
+
+		return $$`<div class="pf2-stat">${Renderer.utils.getExcludedDiv(cr, "creature", UrlUtil.PG_BESTIARY)}
+			${Renderer.utils.getNameDiv(cr, { page: UrlUtil.PG_BESTIARY, type: cr.type || "CREATURE", ...opts })}
+			${Renderer.utils.getDividerDiv()}
+			${Renderer.utils.getTraitsDiv(traits)}
+			${Renderer.creature.getPerception(cr)}
+			${Renderer.creature.getLanguages(cr)}
+			${Renderer.creature.getSkills(cr)}
+			${Renderer.creature.getAbilityMods(cr.abilityMods)}
+			${cr.abilitiesTop != null ? cr.abilitiesTop.map(it => Renderer.creature.getRenderedAbility(it, { noButton: true })) : ""}
+			${Renderer.creature.getItems(cr)}
+			${Renderer.utils.getDividerDiv()}
+			${Renderer.creature.getDefenses(cr)}
+			${cr.abilitiesMid != null ? cr.abilitiesMid.map(it => Renderer.creature.getRenderedAbility(it, { noButton: true })) : ""}
+			${Renderer.utils.getDividerDiv()}
+			${Renderer.creature.getSpeed(cr)}
+			${Renderer.creature.getAttacks(cr)}
+			${Renderer.creature.getSpellcasting(cr)}
+			${Renderer.creature.getRituals(cr)}
+			${cr.abilitiesBot != null ? cr.abilitiesBot.map(it => Renderer.creature.getRenderedAbility(it, { noButton: true })) : ""}
+			${opts.noPage ? "" : Renderer.utils.getPageP(cr)}</div>`;
+	},
+
 	getPerception (cr) {
 		// FIXME:
 		const perception = cr.perception;
@@ -4334,43 +4371,6 @@ Renderer.creature = {
 		return `${cr.rituals.map(rf => `<p class="pf2-stat pf2-stat__section"><strong>${rf.tradition ? `${rf.tradition} ` : ""}Rituals</strong> DC ${rf.DC};${renderer.render(rf.rituals.map(r => renderRitual(r)).join(", "))}`)}`;
 	},
 
-	getCompactRenderedString (cr, opts) {
-		cr = scaleCreature.applyVarRules(cr);
-		opts = opts || {};
-		if (opts.showScaler) {
-			opts.$btnResetScaleLvl = opts.$btnResetScaleLvl || Renderer.creature.$getBtnResetScaleLvl(cr);
-			opts.$btnScaleLvl = opts.$btnScaleLvl || Renderer.creature.$getBtnScaleLvl(cr);
-			opts.asJquery = true;
-		}
-		const traits = [];
-		if (cr.rarity !== "Common") traits.push(cr.rarity);
-		if (cr.alignment != null) traits.push(cr.alignment);
-		if (cr.size != null) traits.push(cr.size);
-		if (cr.traits != null && cr.traits.length) traits.push(...cr.traits);
-		if (cr.creatureType != null) traits.push(...cr.creatureType);
-
-		return $$`<div class="pf2-stat">${Renderer.utils.getExcludedDiv(cr, "creature", UrlUtil.PG_BESTIARY)}
-			${Renderer.utils.getNameDiv(cr, { page: UrlUtil.PG_BESTIARY, type: cr.type || "CREATURE", ...opts })}
-			${Renderer.utils.getDividerDiv()}
-			${Renderer.utils.getTraitsDiv(traits)}
-			${Renderer.creature.getPerception(cr)}
-			${Renderer.creature.getLanguages(cr)}
-			${Renderer.creature.getSkills(cr)}
-			${Renderer.creature.getAbilityMods(cr.abilityMods)}
-			${cr.abilitiesTop != null ? cr.abilitiesTop.map(it => Renderer.creature.getRenderedAbility(it, { noButton: true })) : ""}
-			${Renderer.creature.getItems(cr)}
-			${Renderer.utils.getDividerDiv()}
-			${Renderer.creature.getDefenses(cr)}
-			${cr.abilitiesMid != null ? cr.abilitiesMid.map(it => Renderer.creature.getRenderedAbility(it, { noButton: true })) : ""}
-			${Renderer.utils.getDividerDiv()}
-			${Renderer.creature.getSpeed(cr)}
-			${Renderer.creature.getAttacks(cr)}
-			${Renderer.creature.getSpellcasting(cr)}
-			${Renderer.creature.getRituals(cr)}
-			${cr.abilitiesBot != null ? cr.abilitiesBot.map(it => Renderer.creature.getRenderedAbility(it, { noButton: true })) : ""}
-			${opts.noPage ? "" : Renderer.utils.getPageP(cr)}</div>`;
-	},
-
 	getRenderedAbility (ability, options) {
 		options = options || {};
 		const renderer = Renderer.get();
@@ -4539,7 +4539,7 @@ Renderer.creature = {
 };
 
 Renderer.deity = {
-	getCompactRenderedString (deity, opts) {
+	getRenderedString (deity, opts) {
 		opts = opts || {};
 		const renderer = Renderer.get().setFirstSection(true);
 		const renderStack = [];
@@ -4672,7 +4672,7 @@ Renderer.deity = {
 };
 
 Renderer.organization = {
-	getCompactRenderedString (organization, opts) {
+	getRenderedString (organization, opts) {
 		opts = opts || {};
 		return `
 			${Renderer.utils.getExcludedDiv(organization, "organization", UrlUtil.PG_ORGANIZATIONS)}
@@ -4746,7 +4746,7 @@ Renderer.organization = {
 };
 
 Renderer.domain = {
-	getCompactRenderedString (domain) {
+	getRenderedString (domain) {
 		// TODO: Add filter link to deities and spells?
 		const renderer = Renderer.get().setFirstSection(true);
 		const textStack = [];
@@ -4798,7 +4798,7 @@ Renderer.feat = {
 		} else return "";
 	},
 
-	getCompactRenderedString (feat, opts) {
+	getRenderedString (feat, opts) {
 		opts = opts || {};
 
 		return `${Renderer.utils.getExcludedDiv(feat, "feat", UrlUtil.PG_FEATS)}
@@ -4812,7 +4812,7 @@ Renderer.feat = {
 };
 
 Renderer.group = {
-	getCompactRenderedString (group) {
+	getRenderedString (group) {
 		// TODO: Add filter link to items?
 		const renderer = Renderer.get().setFirstSection(true);
 		const textStack = [];
@@ -4824,7 +4824,7 @@ Renderer.group = {
 }
 
 Renderer.hazard = {
-	getCompactRenderedString (hazard, opts) {
+	getRenderedString (hazard, opts) {
 		opts = opts || {};
 		const renderStack = [""];
 		const renderer = Renderer.get();
@@ -4948,7 +4948,7 @@ Renderer.hazard = {
 };
 
 Renderer.item = {
-	getCompactRenderedString (item, opts) {
+	getRenderedString (item, opts) {
 		opts = opts || {};
 		const renderStack = [""]
 		Renderer.get().recursiveRender(item.entries, renderStack, {pf2StatFix: true})
@@ -5259,7 +5259,7 @@ Renderer.item = {
 };
 
 Renderer.language = {
-	getCompactRenderedString (it, opts) {
+	getRenderedString (it, opts) {
 		opts = opts || {};
 		const textStack = [""];
 		const renderer = Renderer.get().setFirstSection(true);
@@ -5295,7 +5295,7 @@ Renderer.optionalFeature = {
 		const levelPart = prerequisites.find(it => it.level).level;
 		return levelPart.level || levelPart;
 	},
-	getCompactRenderedString (it, opts) {
+	getRenderedString (it, opts) {
 		opts = opts || {};
 		return `
 		${Renderer.utils.getNameDiv(it)}
@@ -5309,7 +5309,7 @@ Renderer.optionalFeature = {
 };
 
 Renderer.ritual = {
-	getCompactRenderedString (ritual, opts) {
+	getRenderedString (ritual, opts) {
 		opts = opts || {};
 		const renderer = Renderer.get();
 		const renderStack = [];
@@ -5342,7 +5342,7 @@ Renderer.ritual = {
 };
 
 Renderer.rule = {
-	getCompactRenderedString (rule) {
+	getRenderedString (rule) {
 		return `
 			<tr><td colspan="6">
 			${Renderer.get().setFirstSection(true).render(rule)}
@@ -5389,7 +5389,7 @@ Renderer.runeItem = {
 };
 
 Renderer.skill = {
-	getCompactRenderedString (it) {
+	getRenderedString (it) {
 		const fakeEntry = {
 			type: "pf2-h3",
 			name: it.name,
@@ -5400,7 +5400,7 @@ Renderer.skill = {
 };
 
 Renderer.spell = {
-	getCompactRenderedString (sp, opts) {
+	getRenderedString (sp, opts) {
 		opts = opts || {};
 		const renderer = Renderer.get().setFirstSection(false);
 		const entryStack = [];
@@ -5486,7 +5486,7 @@ Renderer.spell = {
 };
 
 Renderer.table = {
-	getCompactRenderedString (it) {
+	getRenderedString (it) {
 		it.type = it.type || "table";
 		const cpy = MiscUtil.copy(it);
 		delete cpy.name;
@@ -5552,7 +5552,7 @@ Renderer.trait = {
 };
 
 Renderer.variantrule = {
-	getCompactRenderedString (rule) {
+	getRenderedString (rule) {
 		const textStack = [];
 		Renderer.get().setFirstSection(true).resetHeaderIndex().recursiveRender(rule.entries, textStack);
 		return `
@@ -5564,7 +5564,7 @@ Renderer.variantrule = {
 };
 
 Renderer.vehicle = {
-	getCompactRenderedString (it, opts) {
+	getRenderedString (it, opts) {
 		opts = opts || {};
 		const renderer = Renderer.get();
 		const traits = it.traits || [];
@@ -5620,7 +5620,7 @@ Renderer.vehicle = {
 };
 
 Renderer.generic = {
-	getCompactRenderedString (it) {
+	getRenderedString (it) {
 		return `
 		${Renderer.utils.getNameDiv(it)}
 		${Renderer.get().setFirstSection(true).render({ entries: it.entries })}
@@ -7280,52 +7280,52 @@ Renderer.hover = {
 			case UrlUtil.PG_QUICKREF:
 				return Renderer.hover.getGenericCompactRenderedString;
 			case UrlUtil.PG_CLASSES:
-				return Renderer.class.getCompactRenderedString;
+				return Renderer.class.getRenderedString;
 			case UrlUtil.PG_SPELLS:
-				return Renderer.spell.getCompactRenderedString;
+				return Renderer.spell.getRenderedString;
 			case UrlUtil.PG_RITUALS:
-				return Renderer.ritual.getCompactRenderedString;
+				return Renderer.ritual.getRenderedString;
 			case UrlUtil.PG_ITEMS:
-				return Renderer.item.getCompactRenderedString;
+				return Renderer.item.getRenderedString;
 			case UrlUtil.PG_BESTIARY:
-				return (it, opts) => Renderer.creature.getCompactRenderedString(it, {
+				return (it, opts) => Renderer.creature.getRenderedString(it, {
 					showScaler: true,
 					isScaled: it._originalLvl != null,
 					...opts,
 				});
 			case UrlUtil.PG_ARCHETYPES:
-				return Renderer.archetype.getCompactRenderedString;
+				return Renderer.archetype.getRenderedString;
 			case UrlUtil.PG_CONDITIONS:
-				return Renderer.condition.getCompactRenderedString;
+				return Renderer.condition.getRenderedString;
 			case UrlUtil.PG_AFFLICTIONS:
-				return Renderer.affliction.getCompactRenderedString;
+				return Renderer.affliction.getRenderedString;
 			case UrlUtil.PG_ORGANIZATIONS:
-				return Renderer.organization.getCompactRenderedString;
+				return Renderer.organization.getRenderedString;
 			case UrlUtil.PG_BACKGROUNDS:
-				return Renderer.background.getCompactRenderedString;
+				return Renderer.background.getRenderedString;
 			case UrlUtil.PG_FEATS:
-				return Renderer.feat.getCompactRenderedString;
+				return Renderer.feat.getRenderedString;
 			case UrlUtil.PG_COMPANIONS_FAMILIARS:
 				return Renderer.companionfamiliar.getRenderedString;
 			case UrlUtil.PG_ANCESTRIES:
 				// FIXME: heritage rendering
-				return Renderer.ancestry.getCompactRenderedString;
+				return Renderer.ancestry.getRenderedString;
 			case UrlUtil.PG_DEITIES:
-				return Renderer.deity.getCompactRenderedString;
+				return Renderer.deity.getRenderedString;
 			case UrlUtil.PG_HAZARDS:
-				return Renderer.hazard.getCompactRenderedString;
+				return Renderer.hazard.getRenderedString;
 			case UrlUtil.PG_VARIANTRULES:
-				return Renderer.variantrule.getCompactRenderedString;
+				return Renderer.variantrule.getRenderedString;
 			case UrlUtil.PG_TABLES:
-				return Renderer.table.getCompactRenderedString;
+				return Renderer.table.getRenderedString;
 			case UrlUtil.PG_ACTIONS:
-				return Renderer.action.getCompactRenderedString;
+				return Renderer.action.getRenderedString;
 			case UrlUtil.PG_ABILITIES:
-				return Renderer.ability.getCompactRenderedString;
+				return Renderer.ability.getRenderedString;
 			case UrlUtil.PG_OPTIONAL_FEATURES:
-				return Renderer.optionalFeature.getCompactRenderedString;
+				return Renderer.optionalFeature.getRenderedString;
 			case UrlUtil.PG_LANGUAGES:
-				return Renderer.language.getCompactRenderedString;
+				return Renderer.language.getRenderedString;
 			case UrlUtil.PG_TRAITS:
 				return Renderer.trait.getRenderedString;
 			case UrlUtil.PG_PLACES:
@@ -7337,9 +7337,9 @@ Renderer.hover = {
 			case "subclassfeature":
 			case "subclassFeature":
 				return Renderer.class.getCompactRenderedClassFeature;
-			case "domain": return Renderer.domain.getCompactRenderedString;
-			case "group": return Renderer.group.getCompactRenderedString;
-			case "skill": return Renderer.skill.getCompactRenderedString;
+			case "domain": return Renderer.domain.getRenderedString;
+			case "group": return Renderer.group.getRenderedString;
+			case "skill": return Renderer.skill.getRenderedString;
 			// endregion
 			default:
 				return null;
@@ -7424,7 +7424,7 @@ Renderer.hover = {
 			toRender.entries.unshift(...cachedImages.reverse());
 		}
 
-		return $$`<div class="stats">${Renderer.generic.getCompactRenderedString(toRender)}</div>`;
+		return $$`<div class="stats">${Renderer.generic.getRenderedString(toRender)}</div>`;
 	},
 
 	$getHoverContent_statsCode (toRender) {

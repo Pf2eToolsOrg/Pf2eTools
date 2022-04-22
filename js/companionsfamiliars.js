@@ -85,7 +85,7 @@ class CompanionsFamiliarsPage extends ListPage {
 		const it = this._dataList[id];
 		const $pgContent = $("#pagecontent").empty();
 		const buildStatsTab = () => {
-			$pgContent.append(RenderCompanionsFamiliars.$getRenderedCompanionFamiliar(it));
+			$pgContent.append(Renderer.companionfamiliar.getRenderedString(it));
 		};
 		const buildInfoTab = async () => {
 			const quickRules = await Renderer.utils.pGetQuickRules(it.__prop);

@@ -81,7 +81,7 @@ class VehiclesPage extends ListPage {
 		const it = this._dataList[id];
 
 		function buildStatsTab () {
-			$content.append(RenderVehicles.$getRenderedVehicle(it));
+			$content.append(Renderer.vehicle.getRenderedString(it));
 		}
 		const buildInfoTab = async () => {
 			const quickRules = await Renderer.utils.pGetQuickRules("vehicle");

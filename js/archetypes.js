@@ -727,7 +727,7 @@ class ArchetypesPage extends BaseComponent {
 	_render_renderFeat () {
 		const $featStats = $(`#featstats`).empty();
 		const feat = this.activeFeat;
-		RenderFeats.$getRenderedFeat(feat).appendTo($featStats);
+		Renderer.feat.getRenderedString(feat).appendTo($featStats);
 		$featStats.show();
 		this._updateFeatHref();
 	}

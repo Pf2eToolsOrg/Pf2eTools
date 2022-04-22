@@ -111,7 +111,7 @@ class SpellsPage extends ListPage {
 		const spell = this._dataList[id];
 
 		function buildStatsTab () {
-			$content.append(RenderSpells.$getRenderedSpell(spell));
+			$content.append(Renderer.spell.getRenderedString(spell));
 		}
 
 		const statTab = Renderer.utils.tabButton(
@@ -241,7 +241,7 @@ class SpellsPage extends ListPage {
 
 				const renderSpell = (stack, sp) => {
 					stack.push(`<div class="prntv__wrp-item"><div class="pf2-stat stats stats--book stats--prntv">`);
-					stack.push(Renderer.spell.getCompactRenderedString(sp));
+					stack.push(Renderer.spell.getRenderedString(sp));
 					stack.push(`</div></div>`);
 				};
 

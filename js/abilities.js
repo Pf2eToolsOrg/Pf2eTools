@@ -114,7 +114,7 @@ function renderStatblock (ability) {
 	const $content = $("#pagecontent").empty()
 
 	function buildStatsTab () {
-		$content.append(RenderAbilities.$getRenderedAbility(ability));
+		$content.append(Renderer.ability.getRenderedString(ability));
 	}
 	const buildInfoTab = async () => {
 		const quickRules = await Renderer.utils.pGetQuickRules("ability");
