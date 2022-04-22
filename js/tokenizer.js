@@ -19,42 +19,207 @@ class TokenizerUtils {
 		return [
 			{regex: /^(.+) (SPELL|CANTRIP|FOCUS) (\d{1,2})\n/, type: "SPELL", mode: "spell"},
 			{regex: /^([^\n[]*?) (\[.+] )?FEAT (\d{1,2})\n/, type: "FEAT", mode: "feat"},
+			{regex: /^(.+) (ITEM|RUNE|MATERIAL|SNARE) (\d{1,2}\+?)\n/, type: "ITEM", mode: "item"},
 		]
 	}
 
 	static get traits () {
 		return [
 			{regex: /^MODULAR B, P, OR S\s/, type: "TRAIT"},
+			{regex: /^LG\s/, type: "TRAIT"},
+			{regex: /^NG\s/, type: "TRAIT"},
+			{regex: /^CG\s/, type: "TRAIT"},
+			{regex: /^LN\s/, type: "TRAIT"},
 			{regex: /^N\s/, type: "TRAIT"},
-			{regex: /^[A-Z-]{2,}( [\dBPS])?\s/, type: "TRAIT"},
+			{regex: /^CN\s/, type: "TRAIT"},
+			{regex: /^LE\s/, type: "TRAIT"},
+			{regex: /^NE\s/, type: "TRAIT"},
+			{regex: /^CE\s/, type: "TRAIT"},
+			{regex: /^[A-Z-]{3,}( [\dBPS])?\s/, type: "TRAIT"},
 		]
 	}
 
+	static get access () {
+		return [
+			{regex: /^Access\s/, type: "ACCESS", lookbehind: /(\n|[;.)]\s)$/},
+		]
+	}
+	static get activate () {
+		return [
+			{regex: /^Activate\s/, type: "ACTIVATE", lookbehind: /(\n|[;.)]\s)$/},
+			{regex: /^Activation\s/, type: "ACTIVATE", lookbehind: /(\n|[;.)]\s)$/},
+		]
+	}
+	static get ammunition () {
+		return [
+			{regex: /^Ammunition\s/, type: "AMMUNITION", lookbehind: /(\n|[;.)]\s)$/},
+		]
+	}
+	static get area () {
+		return [
+			{regex: /^Area\s/, type: "AREA", lookbehind: /(\n|[;.)]\s)$/},
+		]
+	}
+	static get bulk () {
+		return [
+			{regex: /^Bulk\s/, type: "BULK", lookbehind: /(\n|[;.)]\s)$/},
+		]
+	}
+	static get cast () {
+		return [
+			{regex: /^Cast(ing)?\s/, type: "CAST", lookbehind: /(\n|[;.)]\s)$/},
+		]
+	}
+	static get cost () {
+		return [
+			{regex: /^Cost\s/, type: "COST", lookbehind: /(\n|[;.)]\s)$/},
+		]
+	}
+	static get duration () {
+		return [
+			{regex: /^Duration\s/, type: "DURATION", lookbehind: /(\n|[;.)]\s)$/},
+		]
+	}
+	static get effect () {
+		return [
+			{regex: /^Effects?\s/, type: "EFFECT", lookbehind: /(\n|[;.)]\s)$/},
+		]
+	}
+	static get frequency () {
+		return [
+			{regex: /^Frequency\s/, type: "FREQUENCY", lookbehind: /(\n|[;.)]\s)$/},
+		]
+	}
+	static get level () {
+		return [
+			{regex: /^Level\s\d+[\s.;]/, type: "LEVEL", lookbehind: /(\n|[;.)]\s)$/, lookaheadIncDepth: 1},
+		]
+	}
+	static get onset () {
+		return [
+			{regex: /^Onset\s/, type: "ONSET", lookbehind: /(\n|[;.)]\s)$/, lookaheadIncDepth: 2},
+		]
+	}
+	static get prerequisites () {
+		return [
+			{regex: /^Prerequisites?\s/, type: "PREREQUISITES", lookbehind: /(\n|[;.)]\s)$/},
+		]
+	}
+	static get price () {
+		return [
+			{regex: /^Price\s/, type: "PRICE", lookbehind: /(\n|[;.)]\s)$/},
+		]
+	}
+	static get range () {
+		return [
+			{regex: /^Range\s/, type: "RANGE", lookbehind: /(\n|[;.)]\s)$/},
+		]
+	}
+	static get requirements () {
+		return [
+			{regex: /^Requirements?\s/, type: "REQUIREMENTS", lookbehind: /(\n|[;.)]\s)$/},
+		]
+	}
+	static get savingThrow () {
+		return [
+			{regex: /^Saving Throw\s/, type: "SAVING_THROW", lookbehind: /(\n|[;.)]\s)$/, lookaheadIncDepth: 2},
+		]
+	}
+	static get shieldData () {
+		return [
+			{regex: /^The\sshield\shas\sHardness\s\d+,\sHP\s\d+,\sand\sBT\s\d+.?\s/i, type: "SHIELD_DATA"},
+		]
+	}
+	static get targets () {
+		return [
+			{regex: /^Targets?\s/, type: "TARGETS", lookbehind: /(\n|[;.)]\s)$/},
+		]
+	}
 	static get traditions () {
 		return [
-			{regex: /^Domain\s/, type: "DOMAIN", class: "Cleric"},
-			{regex: /^Mystery\s/, type: "MYSTERY", class: "Oracle"},
-			{regex: /^Patron\s/, type: "PATRON", class: "Witch"},
+			{regex: /^Traditions?\s/, type: "TRADITIONS", lookbehind: /(\n|[;.)]\s)$/},
+		]
+	}
+	static get traditionsSubclasses () {
+		return [
+			{regex: /^Domain\s/, type: "DOMAIN", class: "Cleric", lookbehind: /(\n|[;.)]\s)$/},
+			{regex: /^Mystery\s/, type: "MYSTERY", class: "Oracle", lookbehind: /(\n|[;.)]\s)$/},
+			{regex: /^Patron\s/, type: "PATRON", class: "Witch", lookbehind: /(\n|[;.)]\s)$/},
+		]
+	}
+	static get trigger () {
+		return [
+			{regex: /^Trigger\s/, type: "TRIGGER", lookbehind: /(\n|[;.)]\s)$/},
+		]
+	}
+	static get usage () {
+		return [
+			{regex: /^Usage\s/, type: "USAGE", lookbehind: /(\n|[;.)]\s)$/},
 		]
 	}
 
-	static get subHeaders () {
+	// TODO: properties_Items, properties_Feats, etc...
+	static get properties () {
 		return [
-			{regex: /^Access\s/, type: "ACCESS"},
-			{regex: /^Area\s/, type: "AREA"},
-			{regex: /^Cast(ing)?\s/, type: "CAST"},
-			{regex: /^Cost\s/, type: "COST"},
-			{regex: /^Duration\s/, type: "DURATION"},
-			{regex: /^Effects?\s/, type: "EFFECT"},
-			{regex: /^Frequency\s/, type: "FREQUENCY"},
-			{regex: /^Prerequisites?\s/, type: "PREREQUISITES"},
-			{regex: /^Range\s/, type: "RANGE"},
-			{regex: /^Requirements?\s/, type: "REQUIREMENTS"},
-			{regex: /^Saving Throw\s/, type: "SAVING_THROW"},
-			{regex: /^Targets?\s/, type: "TARGETS"},
-			{regex: /^Traditions?\s/, type: "TRADITIONS"},
-			{regex: /^Trigger\s/, type: "TRIGGER"},
+			...this.access,
+			...this.activate,
+			...this.ammunition,
+			...this.area,
+			...this.bulk,
+			...this.cast,
+			...this.cost,
+			...this.duration,
+			...this.effect,
+			...this.frequency,
+			...this.onset,
+			...this.prerequisites,
+			...this.price,
+			...this.range,
+			...this.requirements,
+			...this.savingThrow,
+			...this.shieldData,
+			...this.targets,
 			...this.traditions,
+			...this.traditionsSubclasses,
+			...this.trigger,
+			...this.usage,
+		]
+	}
+	static get propertiesItems () {
+		return [
+			...this.access,
+			...this.activate,
+			...this.ammunition,
+			...this.bulk,
+			...this.cost,
+			...this.duration,
+			...this.effect,
+			...this.frequency,
+			...this.level,
+			...this.onset,
+			...this.prerequisites,
+			...this.price,
+			...this.range,
+			...this.requirements,
+			...this.shieldData,
+			...this.targets,
+			...this.trigger,
+			...this.usage,
+		]
+	}
+	static get propertiesItemVariants () {
+		return [
+			...this.bulk,
+			...this.level,
+			...this.craftRequirements,
+			...this.price,
+			...this.shieldData,
+		]
+	}
+
+	static get itemVariants () {
+		return [
+			{regex: /^Type\s/, type: "ITEM_VARIANT", lookbehind: /\n$/},
 		]
 	}
 
@@ -84,11 +249,24 @@ class TokenizerUtils {
 		]
 	}
 
+	static get craftRequirements () {
+		return [
+			{regex: /^Craft\sRequirements?\s/, type: "CRAFT_REQUIREMENTS"},
+		]
+	}
+
+	static get stage () {
+		return [
+			{regex: /^Stage\s\d+\s/, type: "STAGE", lookahead: true},
+		]
+	}
 	static get afflictions () {
 		return [
-			{regex: /^Maximum\sDuration\s/, type: "MAX_DURATION"},
-			{regex: /^Level\s\d+[\s.;]/, type: "AFFLICTION_LEVEL"},
-			{regex: /^Stage\s\d+\s/, type: "STAGE"},
+			{regex: /^Maximum\sDuration\s/, type: "MAX_DURATION", lookaheadIncDepth: 2},
+			...this.stage,
+			...this.onset,
+			...this.savingThrow,
+			...this.level,
 		]
 	}
 
@@ -111,7 +289,7 @@ class TokenizerUtils {
 	static get genericEntries () {
 		return [
 			{regex: /^•/, type: "LIST_MARKER"},
-			{regex: /^\(.*?\)/, type: "PARENTHESIS"},
+			{regex: /^\(.*?\)/s, type: "PARENTHESIS"},
 		]
 	}
 
@@ -139,8 +317,8 @@ class TokenizerUtils {
 			spell: [
 				...this.endData,
 
-				// SUBHEADERS
-				...this.subHeaders,
+				// PROPERTIES
+				...this.properties,
 
 				// DATA ENTRIES
 				...this.traits,
@@ -158,8 +336,8 @@ class TokenizerUtils {
 			feat: [
 				...this.endData,
 
-				// SUBHEADERS
-				...this.subHeaders,
+				// PROPERTIES
+				...this.properties,
 
 				// DATA ENTRIES
 				...this.traits,
@@ -173,17 +351,30 @@ class TokenizerUtils {
 				...this.words,
 				{regex: /^\s+/, type: null},
 			],
+			item: [
+				...this.endData,
+
+				// PROPERTIES
+				...this.properties,
+
+				// DATA ENTRIES
+				...this.traits,
+				...this.successDegrees,
+				...this.afflictions,
+				...this.craftRequirements,
+				...this.itemVariants,
+
+				// Generic
+				...this.actions,
+				...this.genericEntries,
+				...this.words,
+				{regex: /^\s+/, type: null},
+			],
 		}
 	}
 	// endregion
 
 	// region utilities
-	static get breakEntries () {
-		return [
-			...this.afflictions,
-		]
-	}
-
 	static get spellComponents () {
 		return {
 			F: /focus/,
@@ -229,10 +420,60 @@ class TokenizerUtils {
 
 	static get savingThrows () {
 		return [
-			{regex: /Fortitude/, unit: "Fort"},
-			{regex: /Fort/, unit: "Fort"},
-			{regex: /Reflex/, unit: "Reflex"},
-			{regex: /Will/, unit: "Will"},
+			{regex: /Fortitude/, unit: "Fort", full: "Fortitude"},
+			{regex: /Fort/, unit: "Fort", full: "Fortitude"},
+			{regex: /Reflex/, unit: "Reflex", full: "Reflex"},
+			{regex: /Will/, unit: "Will", full: "Will"},
+		]
+	}
+
+	static get activateComponents () {
+		return [
+			{regex: /command/, unit: "command"},
+			{regex: /envision/, unit: "envision"},
+			{regex: /interact/i, unit: "Interact"},
+			{regex: /cast a spell/i, unit: "Cast a Spell"},
+		]
+	}
+
+	static get itemCategories () {
+		return [
+			{cat: "Adjustment"},
+			{cat: "Adventuring Gear"},
+			{cat: "Ammunition"},
+			{cat: "Apex"},
+			{cat: "Artifact"},
+			{cat: "Assistive Item"},
+			{cat: "Bomb"},
+			{cat: "Companion"},
+			{cat: "Contract"},
+			{cat: "Curse"},
+			{cat: "Customization"},
+			{cat: "Elixir"},
+			{cat: "Grimoire"},
+			{cat: "Material"},
+			{cat: "Oil"},
+			{cat: "Poison"},
+			{cat: "Potion"},
+			{cat: "Rune"},
+			{cat: "Scroll"},
+			{cat: "Shield"},
+			{cat: "Siege Weapon"},
+			{cat: "Snare"},
+			{cat: "Spellheart"},
+			{cat: "Staff"},
+			{cat: "Structure"},
+			{cat: "Talisman"},
+			{cat: "Tattoo"},
+			{cat: "Tool"},
+			{cat: "Wand"},
+			// Low priority:
+			{cat: "Armor", reUsage: /^Worn Armor/i},
+			{cat: "Weapon"},
+			{cat: "Consumable"},
+			{cat: "Held", reUsage: /^Held/i},
+			{cat: "Worn", reUsage: /^Worn/i},
+			{cat: "Other"},
 		]
 	}
 
@@ -241,10 +482,10 @@ class TokenizerUtils {
 	}
 
 	static get sentencesNewLine () {
-		return this.sentences.filter(w => w.type.endsWith("NEWLINE"));
+		return this.sentences.filter(w => w.endsWith("NEWLINE"));
 	}
 
-	static get subHeadingEntries () {
+	static get stringEntries () {
 		return [
 			...this.sentences,
 			...this.actions.map(a => a.type),
@@ -276,15 +517,18 @@ class Tokenizer {
 		if (!this.hasMoreTokens()) return null;
 
 		const string = this._string.slice(this._cursor);
+		const lookBehindString = this._string.slice(0, this._cursor);
 
-		for (const {regex, type, mode} of this._config[this._mode]) {
+		for (const {regex, type, mode, lookbehind, ...opts} of this._config[this._mode]) {
 			const value = this._match(regex, string);
 
+			if (lookbehind && value && !this._lookBehind(lookbehind, lookBehindString)) continue;
 			if (value == null) continue;
+			this._cursor += value.length;
 			if (type == null) return this.getNextToken();
 			if (mode) this._mode = mode;
 
-			return {type, value};
+			return {type, value, ...opts};
 		}
 
 		throw new Error(`Unexpected token! "${string.slice(0, 50)}..."`);
@@ -294,8 +538,10 @@ class Tokenizer {
 		const match = regexp.exec(string);
 		if (match == null) return null;
 
-		this._cursor += match[0].length;
 		return match[0];
+	}
+	_lookBehind (regexp, string) {
+		return regexp.test(string);
 	}
 }
 

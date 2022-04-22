@@ -215,7 +215,7 @@ class ConditionTag {
 
 	static _fnTag (str) {
 		return str.replace(ConditionTag._CONDITIONS_REGEX, (...m) => {
-			if (m[2]) return `{@condition ${m[1]}|CRB|${m[1]}${m[2]}}`;
+			if (m[2]) return `{@condition ${m[1]}||${m[1]}${m[2]}}`;
 			else return `{@condition ${m[1]}}`;
 		}).replace(/persistent ((damage)|(?:bludgeoning|piercing|slashing|acid|cold|electricity|fire|sonic|positive|negative|force|chaotic|evil|good|lawful|mental|poison|bleed|precision)(?: damage)?)/gi, (...m) => {
 			return `{@condition persistent damage${m[2] ? "" : ` ||persistent ${m[1]}`}}`

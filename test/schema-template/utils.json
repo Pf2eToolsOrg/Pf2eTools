@@ -109,8 +109,6 @@
 				"NG"
 			]
 		},
-
-
 		"speed": {
 			"type": "object",
 			"patternProperties": {
@@ -129,8 +127,6 @@
 				"exclusiveMinimum": 0
 			}
 		},
-
-
 		"frequency": {
 			"type": "object",
 			"oneOf": [
@@ -241,6 +237,9 @@
 				},
 				"amount": {
 					"type": "number"
+				},
+				"note": {
+					"type": "string"
 				}
 			},
 			"required": ["amount", "coin"]
@@ -604,9 +603,6 @@
 				"Mental"
 			]
 		},
-
-
-
 		"damage": {
 			"$comment": "Draft Damage object style",
 			"type": "object",
@@ -636,8 +632,6 @@
 				]
 			}
 		},
-
-
 		"damageTypeLower": {
 			"type": "string",
 			"enum": [
