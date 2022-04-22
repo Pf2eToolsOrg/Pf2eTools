@@ -55,6 +55,7 @@ class PageFilterFeats extends PageFilter {
 		feat.featType == null ? feat._featType = {} : feat._featType = feat.featType;
 		feat._fSources = SourceFilter.getCompleteFilterSources(feat);
 		feat._slPrereq = Renderer.stripTags(feat.prerequisites || `\u2014`).uppercaseFirst();
+		if (feat.prerequisiteObject) feat._slPrereq = Renderer.utils.getPrerequisiteHtml(feat.prerequisite, {isSkipPrefix: true, isListMode: true});
 		feat._fTraits = feat.traits.map(t => Parser.getTraitName(t));
 		if (!feat._fTraits.map(t => Renderer.trait.isTraitInCategory(t, "Rarity")).some(Boolean)) feat._fTraits.push("Common");
 
