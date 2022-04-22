@@ -755,11 +755,12 @@
 				"Cha": 2
 			},
 			"items": [
-				"{@runeItem maul||+1 weapon potency||striking|}", "{@item wooden religious symbol}", "{@item scale mail}", "{@item wand} of {@spell heal} (2nd)"
-
+				"{@runeItem maul||+1 weapon potency||striking|}",
+				"{@item wooden religious symbol}",
+				"{@item scale mail}",
+				"{@item wand} of {@spell heal} (2nd)"
 			],
-			"abilitiesTop": [
-			],
+			"abilitiesTop": [],
 			"ac": {
 				"default": 22
 			},
@@ -837,17 +838,26 @@
 			],
 			"spellcasting": [
 				{
-					"name": "Primal Prepared",
+					"name": "Divine Prepared",
 					"type": "Prepared",
-					"tradition": "Primal",
-					"DC": 20,
-					"attack": 12,
+					"tradition": "Divine",
+					"DC": 24,
+					"attack": 17,
 					"entry": {
 						"0": {
 							"level": 3,
 							"spells": [
 								{
-									"name": "chill touch, divine lance, guidance, shield"
+									"name": "chill touch"
+								},
+								{
+									"name": "divine lance"
+								},
+								{
+									"name": "guidance"
+								},
+								{
+									"name": "shield"
 								},
 								{
 									"name": "produce flame"
@@ -857,6 +867,48 @@
 								},
 								{
 									"name": "tanglefoot"
+								}
+							]
+						},
+						"1": {
+							"spells": [
+								{
+									"name": "bane"
+								},
+								{
+									"name": "protection"
+								},
+								{
+									"name": "harm",
+									"amount": 2
+								}
+							]
+						},
+						"2": {
+							"spells": [
+								{
+									"name": "death knell"
+								},
+								{
+									"name": "see invisibility"
+								},
+								{
+									"name": "harm",
+									"amount": 2
+								}
+							]
+						},
+						"3": {
+							"spells": [
+								{
+									"name": "chilling darkness"
+								},
+								{
+									"name": "crisis of faith"
+								},
+								{
+									"name": "harm",
+									"amount": 3
 								}
 							]
 						}
@@ -4192,8 +4244,7 @@
 			"items": [
 				"2 daggers"
 			],
-			"abilitiesTop": [
-			],
+			"abilitiesTop": [],
 			"ac": {
 				"default": 18
 			},
