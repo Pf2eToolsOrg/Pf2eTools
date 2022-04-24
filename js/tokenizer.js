@@ -278,11 +278,21 @@ class TokenizerUtils {
 
 	static get actions () {
 		return [
-			{regex: /^\[((one|1).action|>|a)\]\s/, type: "ACTION"},
-			{regex: /^\[((two|2).actions?|>>|aa)\]\s/, type: "TWO_ACTIONS"},
-			{regex: /^\[((three|3).actions?|>>>|aaa)\]\s/, type: "THREE_ACTIONS"},
-			{regex: /^\[(reaction|R|r)\]\s/, type: "REACTION"},
-			{regex: /^\[(free.action|F|f)\]\s/, type: "FREE_ACTION"},
+			{regex: /^\[one.action\]\s/, type: "ACTION"},
+			{regex: /^\[two.actions?\]\s/, type: "TWO_ACTIONS"},
+			{regex: /^\[three.actions?\]\s/, type: "THREE_ACTIONS"},
+			{regex: /^\[reaction\]\s/, type: "REACTION"},
+			{regex: /^\[free.action\]\s/, type: "FREE_ACTION"},
+			{regex: /^\[>\]\s/, type: "ACTION"},
+			{regex: /^\[>>\]\s/, type: "TWO_ACTIONS"},
+			{regex: /^\[>>>\]\s/, type: "THREE_ACTIONS"},
+			{regex: /^\[R|r\]\s/, type: "REACTION"},
+			{regex: /^\[F|f\]\s/, type: "FREE_ACTION"},
+			{regex: /^:a:\s/, type: "ACTION"},
+			{regex: /^:aa:\s/, type: "TWO_ACTIONS"},
+			{regex: /^:aaa:\s/, type: "THREE_ACTIONS"},
+			{regex: /^:r:\s/, type: "REACTION"},
+			{regex: /^:f:\s/, type: "FREE_ACTION"},
 		]
 	}
 
