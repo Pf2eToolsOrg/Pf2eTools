@@ -278,11 +278,11 @@ class TokenizerUtils {
 
 	static get actions () {
 		return [
-			{regex: /^\[one.action]\s/, type: "ACTION"},
-			{regex: /^\[two.actions?]\s/, type: "TWO_ACTIONS"},
-			{regex: /^\[three.actions?]\s/, type: "THREE_ACTIONS"},
-			{regex: /^\[reaction]\s/, type: "REACTION"},
-			{regex: /^\[free.action]\s/, type: "FREE_ACTION"},
+			{regex: /^\[((one|1).action|>|a)\]\s/, type: "ACTION"},
+			{regex: /^\[((two|2).actions?|>>|aa)\]\s/, type: "TWO_ACTIONS"},
+			{regex: /^\[((three|3).actions?|>>>|aaa)\]\s/, type: "THREE_ACTIONS"},
+			{regex: /^\[(reaction|R|r)\]\s/, type: "REACTION"},
+			{regex: /^\[(free.action|F|f)\]\s/, type: "FREE_ACTION"},
 		]
 	}
 
