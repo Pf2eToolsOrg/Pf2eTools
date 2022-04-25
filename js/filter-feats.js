@@ -11,7 +11,7 @@ class PageFilterFeats extends PageFilter {
 			isLabelled: true,
 		});
 		this._typeFilter = new Filter({ header: "Type", selFn: opts.typeDeselFn });
-		this._ancestryFilter = new Filter({ header: "Ancestries" });
+		this._ancestryFilter = new Filter({ header: "Ancestry & Heritage" });
 		this._archetypeFilter = new Filter({ header: "Archetypes", items: ["Archetype"] });
 		this._classFilter = new Filter({ header: "Classes" });
 		this._skillFilter = new Filter({ header: "Skills" });
