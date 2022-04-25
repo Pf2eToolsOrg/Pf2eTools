@@ -1,7 +1,5 @@
 "use strict"
 
-/* eslint no-console: 0 */
-
 if (typeof module !== "undefined") {
 	require("../js/utils.js");
 	require("../js/parser.js");
@@ -14,6 +12,7 @@ class Converter {
 	/**
 	 * @param opts.config
 	 * @param opts.tokenizerUtilsClass
+	 * @param opts.cbWarn
 	 * **/
 	constructor (opts) {
 		opts = opts || {};
@@ -26,6 +25,9 @@ class Converter {
 		this._parsedData = null;
 		this._parsedProperties = null;
 		this._tokenStack = [];
+
+		// eslint-disable-next-line no-console
+		this._cbWarn = opts.cbWarn || console.warn;
 	}
 
 	async init () {
@@ -76,6 +78,8 @@ class Converter {
 			this._push({
 				type: sentence.last().type.replace(/WORD/, "SENTENCE"),
 				value: sentence.map(w => w.value).join(" "),
+				// TODO: Other optional keys?
+				isStartNewLine: sentence[0].isStartNewLine,
 			});
 			sentence = [];
 		}
@@ -88,6 +92,7 @@ class Converter {
 					case "SPELL": (this._parsedData.spell = this._parsedData.spell || []).push(this._parseSpell()); return;
 					case "FEAT": (this._parsedData.feat = this._parsedData.feat || []).push(this._parseFeat()); return;
 					case "ITEM": (this._parsedData.item = this._parsedData.item || []).push(this._parseItem()); return;
+					case "BACKGROUND": (this._parsedData.background = this._parsedData.background || []).push(this._parseBackground()); return;
 					default: throw new Error(`Unexpected data creation! Attempted to create ${dataType}.`);
 				}
 			} else if (this._tokenIsType(this._tokenizerUtils.words, nextToken)) {
@@ -112,16 +117,11 @@ class Converter {
 		spell.source = this._source;
 		spell.page = this._page;
 		spell.entries = [""];
-		spell.traits = this._parseTraits();
-		while (this._tokenStack.length) {
-			const breakOnLength = this._tokenStack.length;
-			if (this._tokenIsType(this._tokenizerUtils.properties)) this._parseProperties(spell);
-			if (breakOnLength === this._tokenStack.length) break;
-		}
+		spell.traits = this._parseTraits(spell, {noEmptyArr: true});
+		this._parseProperties(spell);
 		this._parseEntries(spell);
 		if (this._tokenStack.length > 0) {
-			console.warn(`WARNING: Token stack was not empty after parsing spell "${spell.name}"!`);
-			console.warn(this._tokenStack);
+			this._cbWarn(`Token stack was not empty after parsing spell "${spell.name}"!`);
 			this._tokenStack = [];
 		}
 		return PropOrder.getOrdered(spell, "spell");
@@ -139,16 +139,11 @@ class Converter {
 		feat.source = this._source;
 		feat.page = this._page;
 		feat.entries = [""];
-		feat.traits = this._parseTraits();
-		while (this._tokenStack.length) {
-			const breakOnLength = this._tokenStack.length;
-			if (this._tokenIsType(this._tokenizerUtils.properties)) this._parseProperties(feat);
-			if (breakOnLength === this._tokenStack.length) break;
-		}
+		feat.traits = this._parseTraits(feat, {noEmptyArr: true});
+		this._parseProperties(feat);
 		this._parseEntries(feat);
 		if (this._tokenStack.length > 0) {
-			console.warn(`WARNING: Token stack was not empty after parsing feat "${feat.name}"!`);
-			console.warn(this._tokenStack);
+			this._cbWarn(`Token stack was not empty after parsing feat "${feat.name}"!`);
 			this._tokenStack = [];
 		}
 		return PropOrder.getOrdered(feat, "feat");
@@ -166,13 +161,8 @@ class Converter {
 		item.source = this._source;
 		item.page = this._page;
 		item.entries = [""];
-		item.traits = this._parseTraits();
-		console.log(MiscUtil.copy(this._tokenStack))
-		while (this._tokenStack.length) {
-			const breakOnLength = this._tokenStack.length;
-			if (this._tokenIsType(this._tokenizerUtils.properties)) this._parseProperties(item);
-			if (breakOnLength === this._tokenStack.length) break;
-		}
+		item.traits = this._parseTraits(item, {noEmptyArr: true});
+		this._parseProperties(item);
 		this._parseItemCategory(item);
 		this._parseItemRuneAppliesTo(item);
 		this._parseEntries(item);
@@ -182,23 +172,54 @@ class Converter {
 		}
 		if (item.variants) item.generic = "G";
 		if (this._tokenStack.length > 0) {
-			console.warn(`WARNING: Token stack was not empty after parsing item "${item.name}"!`);
-			console.warn(this._tokenStack);
+			this._cbWarn(`Token stack was not empty after parsing item "${item.name}"!`);
 			this._tokenStack = [];
 		}
 		return PropOrder.getOrdered(item, "item");
 	}
+	_parseBackground () {
+		this._tokenStack.reverse();
+		this._parsedProperties = [];
+		const headerToken = this._consumeToken("BACKGROUND");
+		const [match, name] = this._tokenizerUtils.dataHeaders.find(it => it.type === "BACKGROUND").regex.exec(headerToken.value);
+		const background = {};
+		background.name = name.toTitleCase();
+		background.source = this._source;
+		background.page = this._page;
+		background.entries = [""];
+		background.traits = this._parseTraits(background, {noEmptyArr: true});
+		this._parseProperties(background);
+		this._parseEntries(background);
+		this._parseBackgroundAbilityBoosts(background);
+		this._parseBackgroundSkills(background);
+		this._parseBackgroundFeats(background);
+		this._parseBackgroundMisc(background);
+		if (this._tokenStack.length > 0) {
+			this._cbWarn(`Token stack was not empty after parsing background "${background.name}"!`);
+			this._tokenStack = [];
+		}
+		return PropOrder.getOrdered(background, "background");
+	}
 
-	_parseTraits () {
-		const out = [];
+	_parseTraits (obj, opts) {
+		opts = opts || {};
+		const traits = [];
 		while (this._tokenIsType(this._tokenizerUtils.traits)) {
 			const traitToken = this._consumeToken(this._tokenizerUtils.traits);
-			out.push(traitToken.value.trim().toLowerCase());
+			traits.push(traitToken.value.trim().toLowerCase());
 		}
-		return out;
+		if (opts.noEmptyArr && traits.length === 0) return;
+		obj.traits = traits;
 	}
 
 	_parseProperties (obj) {
+		while (this._tokenStack.length) {
+			const breakOnLength = this._tokenStack.length;
+			if (this._tokenIsType(this._tokenizerUtils.properties)) this._parseProperty(obj);
+			if (breakOnLength === this._tokenStack.length) break;
+		}
+	}
+	_parseProperty (obj) {
 		if (this._tokenIsType(this._tokenizerUtils.access)) this._parseAccess(obj);
 		else if (this._tokenIsType(this._tokenizerUtils.area)) this._parseArea(obj);
 		else if (this._tokenIsType(this._tokenizerUtils.activate)) this._parseActivateProperty(obj);
@@ -288,7 +309,7 @@ class Converter {
 				if (regexp.test(entries[3].value)) components[key] = true;
 			});
 		} else {
-			console.warn(`Encountered unknown data structure while parsing CAST in "${obj.name}".`);
+			this._cbWarn(`Encountered unknown data structure while parsing CAST in "${obj.name}". Skipping...`);
 		}
 
 		if (Object.keys(components).length) obj.components = components;
@@ -372,7 +393,7 @@ class Converter {
 			if (matchedPrice[3]) price.note = matchedPrice[3].trim();
 		} else {
 			price.note = rendered;
-			console.warn(`Encountered unknown data structure while parsing PRICE of "${obj.name}".`);
+			this._cbWarn(`Encountered unknown data structure while parsing PRICE of "${obj.name}".`);
 		}
 		obj.price = price;
 	}
@@ -506,7 +527,7 @@ class Converter {
 			}
 		}
 		item.category = "Unknown";
-		console.warn(`Couldn't determine item category of "${item.name}".`);
+		this._cbWarn(`Couldn't determine item category of "${item.name}".`);
 	}
 	_parseItemRuneAppliesTo (item) {
 		if (item.category !== "Rune") return;
@@ -516,6 +537,35 @@ class Converter {
 			if (match) item.appliesTo = [match[1].toTitleCase()];
 			else item.appliesTo = ["Other"];
 		} else item.appliesTo = ["Other"];
+	}
+
+	_parseBackgroundAbilityBoosts (background) {
+		const reFree = /free\sability\sboost/i;
+		const scores = [];
+		const entriesString = background.entries.filter(e => typeof e === "string").join(" ");
+		this._tokenizerUtils.abilityScores.forEach(it => {
+			if (it.regex.test(entriesString)) scores.push(it.full);
+		});
+		if (reFree.test(entriesString)) scores.push("Free");
+		if (scores.length) background.boosts = scores;
+	}
+	_parseBackgroundSkills (background) {
+		const reLore = /@skill Lore\|\|([^}]*?)}/ig;
+		const reSkill = /@skill ([^}|]*?)}/ig;
+		const entriesString = background.entries.filter(e => typeof e === "string").join(" ");
+		const lore = Array.from(new Set(Array.from(entriesString.matchAll(reLore)).filter(Boolean).map(m => m[1])));
+		const skills = Array.from(new Set(Array.from(entriesString.matchAll(reSkill)).filter(Boolean).map(m => m[1])));
+		if (lore.length) background.lore = lore.map(l => l.replace(/ Lore/i, ""));
+		if (skills.length) background.skills = skills;
+	}
+	_parseBackgroundFeats (background) {
+		const reFeat = /@feat ([^}]*?)}/ig;
+		const entriesString = background.entries.filter(e => typeof e === "string").join(" ");
+		const feats = Array.from(new Set(Array.from(entriesString.matchAll(reFeat)).filter(Boolean).map(m => m[1])));
+		if (feats.length) background.feats = feats;
+	}
+	_parseBackgroundMisc (background) {
+		if (background.entries.some(it => it.type === "ability")) background.ability = true;
 	}
 
 	// FIXME: We might have tokenized some normal word occurrences of properties as property token. Need to check for that!
@@ -532,13 +582,20 @@ class Converter {
 			else if (this._tokenIsType(this._tokenizerUtils.afflictions, token)) entriesOut.push(this._parseAffliction());
 			else if (this._tokenIsType(this._tokenizerUtils.lvlEffect, token)) entriesOut.push(this._parseLvlEffect(obj));
 			else if (this._tokenIsType(this._tokenizerUtils.special, token)) this._parseSpecial(obj);
+			else if (this._tokenIsType(this._tokenizerUtils.effect, token)) entriesOut.push(this._parseAbility());
 		}
 
 		while (this._tokenStack.length) {
 			const breakOnLength = this._tokenStack.length;
 			if (this._tokenIsType(this._tokenizerUtils.stringEntries)) {
 				const lookAhead = this._getLookahead();
-				if (lookAhead) parseEntryTypes(lookAhead);
+				if (lookAhead && this._tokenIsType(this._tokenizerUtils.effect, lookAhead)) {
+					if (strEntries.length) {
+						entriesOut.push(...this._renderEntries(strEntries));
+						strEntries = [];
+					}
+					parseEntryTypes(lookAhead);
+				} else if (lookAhead) parseEntryTypes(lookAhead);
 				else strEntries.push(this._consumeToken(this._tokenizerUtils.stringEntries));
 			} else {
 				if (strEntries.length) {
@@ -558,12 +615,14 @@ class Converter {
 		if (!this._tokenIsType(this._tokenizerUtils.sentences)) return false;
 		const rendered = this._renderToken(this._peek());
 		if (/^[A-Z]\w* [A-Z]/.test(rendered)) return true;
-		else if (/^[A-Z]\w* (a|an|of|and|the|or|for|in|into|by) [A-Z]/.test(rendered)) return true;
+		else if (rendered === rendered.toTitleCase()) return true;
 		return false;
 	}
 	// This is needed because we can only detect afflictions after we would consume its name & traits
+	// Also abilities with names
 	_getLookahead (maxDepth = 3) {
 		if (!this._isAbilityName()) return null;
+		if (!this._peek().isStartNewLine) return null;
 		for (let depth = 1; depth <= maxDepth; depth++) {
 			const peeked = this._peek(depth);
 			if (maxDepth >= 20) break;
@@ -642,7 +701,7 @@ class Converter {
 		let temp = [];
 
 		const returnItem = () => {
-			entries.forEach(it => this._consumeToken(this._tokenizerUtils.stringEntries));
+			entries.forEach(_ => this._consumeToken(this._tokenizerUtils.stringEntries));
 			return this._renderEntries(entries, {asString: true});
 		}
 
@@ -696,6 +755,11 @@ class Converter {
 			// action, components
 			obj.activity = this._renderToken(activationComponentsTraits[0], {asObject: true});
 			obj.components = this._renderEntries([activationComponentsTraits[1]], {asString: true}).split(", ");
+		} else if (checkCase([this._tokenizerUtils.actions, "PARENTHESIS"])) {
+			// TODO: maybe sometimes components?
+			// action, (traits)
+			obj.activity = this._renderToken(activationComponentsTraits[0], {asObject: true});
+			obj.traits = this._renderEntries([activationComponentsTraits[1]], {asString: true}).replace(/[()]/g, "").split(", ");
 		} else if (checkCase([this._tokenizerUtils.actions, this._tokenizerUtils.sentences, "PARENTHESIS"])) {
 			// action, components, (traits)
 			obj.activity = this._renderToken(activationComponentsTraits[0], {asObject: true});
@@ -720,12 +784,12 @@ class Converter {
 			} else if (parts.length === 1) {
 				if (parts[0].some(c => this._tokenizerUtils.activateComponents.some(it => it.regex.test(c)))) obj.components = parts[0];
 				else obj.traits = parts[0];
-			} else console.warn(`Encountered unknown data structure while parsing ACTIVATE traits and activation components.`);
+			} else this._cbWarn(`Encountered unknown data structure while parsing ACTIVATE traits and activation components.`);
 		} else if (checkCase([this._tokenizerUtils.sentences])) {
 			// components: eg. Cast a Spell/Recall Knowledge
 			obj.components = this._renderEntries([activationComponentsTraits[0]], {asString: true}).split(", ");
 		} else {
-			console.warn(`Encountered unknown data structure while parsing ACTIVATE. Skipping...`);
+			this._cbWarn(`Encountered unknown data structure while parsing ACTIVATE. Skipping...`);
 		}
 	}
 	_parseActivate () {
@@ -739,11 +803,19 @@ class Converter {
 			const breakOnLength = this._tokenStack.length;
 			// FIXME: This is probably too aggressive
 			if (this._tokenIsType(this._tokenizerUtils.activate)) break;
-			if (this._tokenIsType(this._tokenizerUtils.properties)) this._parseProperties(ability);
+			if (this._tokenIsType(this._tokenizerUtils.properties)) this._parseProperty(ability);
 			if (breakOnLength === this._tokenStack.length) break;
 		}
 		this._parsedProperties = cachedParsedProps;
 		return ability;
+	}
+	_parseAbility () {
+		const nameToken = this._consumeToken(this._tokenizerUtils.sentences);
+		// push fake token which we consume in this._parseActivate();
+		this._push({type: "ACTIVATE"});
+		const ability = this._parseActivate();
+		ability.name = this._renderToken(nameToken);
+		return PropOrder.getOrdered(ability, "action");
 	}
 	_parseLvlEffect () {
 		const lvlEffect = {type: "lvlEffect", entries: []};
@@ -843,7 +915,7 @@ class Converter {
 			variant.name = this._renderEntries([this._consumeToken(this._tokenizerUtils.sentences)], {asString: true});
 		}
 		while (this._tokenIsType(this._tokenizerUtils.propertiesItemVariants)) {
-			this._parseProperties(variant);
+			this._parseProperty(variant);
 		}
 		if (!this._tokenIsType(this._tokenizerUtils.properties)) this._parseEntries(variant, {isVariantItemEntries: true});
 		this._parsedProperties = cachedParsedProps;

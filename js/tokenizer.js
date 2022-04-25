@@ -17,9 +17,10 @@ class TokenizerUtils {
 
 	static get dataHeaders () {
 		return [
-			{regex: /^(.+) (SPELL|CANTRIP|FOCUS) (\d{1,2})\n/, type: "SPELL", mode: "spell"},
-			{regex: /^([^\n[]*?) (\[.+] )?FEAT (\d{1,2})\n/, type: "FEAT", mode: "feat"},
-			{regex: /^(.+) (ITEM|RUNE|MATERIAL|SNARE) (\d{1,2}\+?)\n/, type: "ITEM", mode: "item"},
+			{regex: /^(.+)\s(SPELL|CANTRIP|FOCUS) (\d{1,2})\n/, type: "SPELL", mode: "spell"},
+			{regex: /^([^\n[]*?)\s(\[.+]\s)?FEAT (\d{1,2})\n/, type: "FEAT", mode: "feat"},
+			{regex: /^(.+)\s(ITEM|RUNE|MATERIAL|SNARE) (\d{1,2}\+?)\n/, type: "ITEM", mode: "item"},
+			{regex: /^(.*?)\sBACKGROUND\n/, type: "BACKGROUND", mode: "background"},
 		]
 	}
 
@@ -82,12 +83,12 @@ class TokenizerUtils {
 	}
 	static get effect () {
 		return [
-			{regex: /^Effects?\s/, type: "EFFECT", lookbehind: /(\n|[;.)]\s)$/},
+			{regex: /^Effects?\s/, type: "EFFECT", lookbehind: /(\n|[;.)]\s)$/, lookahead: true},
 		]
 	}
 	static get frequency () {
 		return [
-			{regex: /^Frequency\s/, type: "FREQUENCY", lookbehind: /(\n|[;.)]\s)$/},
+			{regex: /^Frequency\s/, type: "FREQUENCY", lookbehind: /(\n|[;.)]\s)$/, lookaheadIncDepth: 3},
 		]
 	}
 	static get level () {
@@ -112,7 +113,7 @@ class TokenizerUtils {
 	}
 	static get range () {
 		return [
-			{regex: /^Range\s/, type: "RANGE", lookbehind: /(\n|[;.)]\s)$/},
+			{regex: /^Range\s/, type: "RANGE", lookbehind: /(\n|[;.)]\s)$/, lookaheadIncDepth: 3},
 		]
 	}
 	static get requirements () {
@@ -132,7 +133,7 @@ class TokenizerUtils {
 	}
 	static get targets () {
 		return [
-			{regex: /^Targets?\s/, type: "TARGETS", lookbehind: /(\n|[;.)]\s)$/},
+			{regex: /^Targets?\s/, type: "TARGETS", lookbehind: /(\n|[;.)]\s)$/, lookaheadIncDepth: 3},
 		]
 	}
 	static get traditions () {
@@ -149,7 +150,7 @@ class TokenizerUtils {
 	}
 	static get trigger () {
 		return [
-			{regex: /^Trigger\s/, type: "TRIGGER", lookbehind: /(\n|[;.)]\s)$/},
+			{regex: /^Trigger\s/, type: "TRIGGER", lookbehind: /(\n|[;.)]\s)$/, lookaheadIncDepth: 3},
 		]
 	}
 	static get usage () {
@@ -185,6 +186,18 @@ class TokenizerUtils {
 			...this.usage,
 		]
 	}
+	static get propertiesAbilities () {
+		return [
+			...this.activate,
+			...this.area,
+			...this.effect,
+			...this.frequency,
+			...this.range,
+			...this.requirements,
+			...this.targets,
+			...this.trigger,
+		]
+	}
 	static get propertiesItems () {
 		return [
 			...this.access,
@@ -205,6 +218,12 @@ class TokenizerUtils {
 			...this.targets,
 			...this.trigger,
 			...this.usage,
+		]
+	}
+	static get propertiesBackgrounds () {
+		return [
+			...this.access,
+			...this.propertiesAbilities,
 		]
 	}
 	static get propertiesItemVariants () {
@@ -278,16 +297,16 @@ class TokenizerUtils {
 
 	static get actions () {
 		return [
-			{regex: /^\[one.action\]\s/, type: "ACTION"},
-			{regex: /^\[two.actions?\]\s/, type: "TWO_ACTIONS"},
-			{regex: /^\[three.actions?\]\s/, type: "THREE_ACTIONS"},
-			{regex: /^\[reaction\]\s/, type: "REACTION"},
-			{regex: /^\[free.action\]\s/, type: "FREE_ACTION"},
-			{regex: /^\[>\]\s/, type: "ACTION"},
-			{regex: /^\[>>\]\s/, type: "TWO_ACTIONS"},
-			{regex: /^\[>>>\]\s/, type: "THREE_ACTIONS"},
-			{regex: /^\[R|r\]\s/, type: "REACTION"},
-			{regex: /^\[F|f\]\s/, type: "FREE_ACTION"},
+			{regex: /^\[one.action]\s/, type: "ACTION"},
+			{regex: /^\[two.actions?]\s/, type: "TWO_ACTIONS"},
+			{regex: /^\[three.actions?]\s/, type: "THREE_ACTIONS"},
+			{regex: /^\[reaction]\s/, type: "REACTION"},
+			{regex: /^\[free.action]\s/, type: "FREE_ACTION"},
+			{regex: /^\[>]\s/, type: "ACTION"},
+			{regex: /^\[>>]\s/, type: "TWO_ACTIONS"},
+			{regex: /^\[>>>]\s/, type: "THREE_ACTIONS"},
+			{regex: /^\[R|r]\s/, type: "REACTION"},
+			{regex: /^\[F|f]\s/, type: "FREE_ACTION"},
 			{regex: /^:a:\s/, type: "ACTION"},
 			{regex: /^:aa:\s/, type: "TWO_ACTIONS"},
 			{regex: /^:aaa:\s/, type: "THREE_ACTIONS"},
@@ -380,6 +399,22 @@ class TokenizerUtils {
 				...this.words,
 				{regex: /^\s+/, type: null},
 			],
+			background: [
+				...this.endData,
+
+				// PROPERTIES
+				...this.propertiesBackgrounds,
+
+				// DATA ENTRIES
+				...this.traits,
+				...this.successDegrees,
+
+				// Generic
+				...this.actions,
+				...this.genericEntries,
+				...this.words,
+				{regex: /^\s+/, type: null},
+			],
 		}
 	}
 	// endregion
@@ -434,6 +469,16 @@ class TokenizerUtils {
 			{regex: /Fort/, unit: "Fort", full: "Fortitude"},
 			{regex: /Reflex/, unit: "Reflex", full: "Reflex"},
 			{regex: /Will/, unit: "Will", full: "Will"},
+		]
+	}
+	static get abilityScores () {
+		return [
+			{regex: /Strength/, unit: "str", full: "Strength"},
+			{regex: /Dexterity/, unit: "dex", full: "Dexterity"},
+			{regex: /Constitution/, unit: "con", full: "Constitution"},
+			{regex: /Intelligence/, unit: "int", full: "Intelligence"},
+			{regex: /Wisdom/, unit: "wis", full: "Wisdom"},
+			{regex: /Charisma/, unit: "cha", full: "Charisma"},
 		]
 	}
 
@@ -537,6 +582,7 @@ class Tokenizer {
 			this._cursor += value.length;
 			if (type == null) return this.getNextToken();
 			if (mode) this._mode = mode;
+			if (this._lookBehind(/\n\s*$/, lookBehindString)) opts.isStartNewLine = true;
 
 			return {type, value, ...opts};
 		}

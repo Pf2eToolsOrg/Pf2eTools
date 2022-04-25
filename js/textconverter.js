@@ -413,6 +413,6 @@ async function doPageInit () {
 		actions: actions.action,
 	})
 	converterUi = new ConverterUi();
-	converterUi.converter = new Converter({config: TokenizerUtils.defaultConfig, tokenizerUtilsClass: TokenizerUtils});
+	converterUi.converter = new Converter({config: TokenizerUtils.defaultConfig, tokenizerUtilsClass: TokenizerUtils, cbWarn: converterUi.showWarning.bind(converterUi)});
 	return converterUi.pInit();
 }
