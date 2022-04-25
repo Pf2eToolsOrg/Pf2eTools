@@ -4095,7 +4095,6 @@ Renderer.condition = {
 
 Renderer.creature = {
 	getRenderedString (cr, opts) {
-		console.log(cr, cr.attacks)
 		cr = scaleCreature.applyVarRules(cr);
 		opts = opts || {};
 		if (opts.showScaler) {
