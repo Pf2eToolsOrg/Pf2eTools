@@ -2481,7 +2481,7 @@ DataUtil = {
 		// TODO(future) have this return the data, not a URL
 		// TODO(future) handle homebrew dependencies/refactor "creature" and "spell" + have this be the general form.
 		switch (key) {
-			case "monster": {
+			case "creature": {
 				const index = await DataUtil.loadJSON(`${Renderer.get().baseUrl}data/bestiary/index.json`);
 				if (index[value]) return `${Renderer.get().baseUrl}data/bestiary/${index[value]}`;
 				const brewIndex = await DataUtil.brew.pLoadSourceIndex();
@@ -2491,7 +2491,7 @@ DataUtil = {
 				await BrewUtil.pDoHandleBrewJson((await DataUtil.loadJSON(brewUrl)), UrlUtil.getCurrentPage());
 				return brewUrl;
 			}
-			case "monsterFluff": {
+			case "creatureFluff": {
 				const index = await DataUtil.loadJSON(`${Renderer.get().baseUrl}data/bestiary/fluff-index.json`);
 				if (!index[value]) throw new Error(`Bestiary fluff index did not contain source "${value}"`);
 				return `${Renderer.get().baseUrl}data/bestiary/${index[value]}`;

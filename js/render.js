@@ -4156,14 +4156,14 @@ Renderer.creature = {
 
 	getLanguages (cr) {
 		const renderer = Renderer.get()
-		if (cr.languages != null && (cr.languages.languages.length !== 0 || cr.languages.languageAbilities.length !== 0)) {
+		if (cr.languages != null && (cr.languages.languages.length !== 0 || (cr.languages.languageAbilities && cr.languages.languageAbilities.length !== 0))) {
 			let renderStack = [];
 
 			renderStack.push(`<p class="pf2-stat pf2-stat__section">`)
 			renderStack.push(`<span><strong>Languages&nbsp;</strong></span>`)
 			renderStack.push(`<span>`)
 			renderStack.push(cr.languages.languages.length !== 0 ? cr.languages.languages.join(", ") : "— ")
-			if (cr.languages.languageAbilities.length !== 0) {
+			if (cr.languages.languageAbilities && cr.languages.languageAbilities.length !== 0) {
 				if (cr.languages.languages.length !== 0) renderStack.push("; ")
 				renderStack.push(renderer.render(cr.languages.languageAbilities.join(", ")))
 			}
