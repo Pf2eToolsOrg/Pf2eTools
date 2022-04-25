@@ -4095,6 +4095,7 @@ Renderer.condition = {
 
 Renderer.creature = {
 	getRenderedString (cr, opts) {
+		console.log(cr, cr.attacks)
 		cr = scaleCreature.applyVarRules(cr);
 		opts = opts || {};
 		if (opts.showScaler) {
@@ -4301,7 +4302,7 @@ Renderer.creature = {
 	getAttacks (cr) {
 		if (cr.attacks) {
 			const renderer = Renderer.get();
-			const renderStack = [];
+			const renderStack = [""];
 			cr.attacks.forEach(a => renderer._renderAttack(a, renderStack));
 			return renderStack.join("");
 		}
