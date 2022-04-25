@@ -1302,7 +1302,7 @@ class AncestriesPage extends BaseComponent {
 	_render_renderFeat () {
 		const $featStats = $(`#featstats`).empty();
 		const feat = this.activeFeat;
-		Renderer.feat.getRenderedString(feat).appendTo($featStats);
+		$featStats.append(Renderer.feat.getRenderedString(feat));
 		$featStats.show();
 		this._updateFeatHref();
 	}
