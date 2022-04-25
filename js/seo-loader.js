@@ -28,7 +28,7 @@ window.addEventListener("load", async () => {
 			break;
 		}
 		case "items": $content.append(Renderer.item.getRenderedString(it)); break;
-		case "feats": $content.append(Renderer.feat.getRenderedString(it)); break;
+		case "feats": $content.append(Renderer.feat.getRenderedString(it, {renderLeadsTo: true})); break;
 		case "backgrounds": $content.append(Renderer.background.getRenderedString(it)); break;
 	}
 });
