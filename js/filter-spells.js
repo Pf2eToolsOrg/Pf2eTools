@@ -65,7 +65,7 @@ class PageFilterSpells extends PageFilter {
 			itemSortFn: null,
 		});
 		this._areaFilter = new Filter({
-			header: "Area Types",
+			header: "Area Type",
 		});
 		this._timeFilter = new Filter({
 			header: "Cast Time",

@@ -12,9 +12,9 @@ class PageFilterFeats extends PageFilter {
 		});
 		this._typeFilter = new Filter({ header: "Type", selFn: opts.typeDeselFn });
 		this._ancestryFilter = new Filter({ header: "Ancestry & Heritage" });
-		this._archetypeFilter = new Filter({ header: "Archetypes", items: ["Archetype"] });
-		this._classFilter = new Filter({ header: "Classes" });
-		this._skillFilter = new Filter({ header: "Skills" });
+		this._archetypeFilter = new Filter({ header: "Archetype", items: ["Archetype"] });
+		this._classFilter = new Filter({ header: "Class" });
+		this._skillFilter = new Filter({ header: "Skill" });
 		/* Unused, for the future
 		this._skillTrainedFilter = new Filter({ header: "Trained" });
 		this._skillExpertFilter = new Filter({ header: "Expert" });

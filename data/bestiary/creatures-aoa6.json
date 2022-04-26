@@ -88,13 +88,8 @@
 			"resistances": [
 				{
 					"amount": 15,
-					"name": "all damage"
-				},
-				{
-					"name": "ghost touch"
-				},
-				{
-					"name": "or"
+					"name": "all damage",
+					"note": "(except force, {@item ghost touch}, or positive; double resistance vs. non-magical)"
 				}
 			],
 			"abilitiesMid": [
@@ -107,8 +102,9 @@
 						"conjuration",
 						"teleportation"
 					],
+					"trigger": "A creature within 60 feet uses a {@trait teleportation} effect",
 					"entries": [
-						"Trigger A creature within 60 feet uses a {@trait teleportation} effect; The aiudara wraith teleports with the creature, arriving in an empty space of its choice adjacent to the triggering creature's destination. If the triggering effect targets multiple creatures, the aiudara wraith chooses which creature it arrives beside."
+						"The aiudara wraith teleports with the creature, arriving in an empty space of its choice adjacent to the triggering creature's destination. If the triggering effect targets multiple creatures, the aiudara wraith chooses which creature it arrives beside."
 					],
 					"name": "Teleportation Attachment"
 				}
