@@ -1,4 +1,5 @@
 {
+	"$schema": "../test/schema-template/schema.json",
 	"deity": [
 		{
 			"name": "Abadar",
@@ -42,13 +43,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Con",
-						"Int"
+						"con",
+						"int"
 					],
 					"entry": "Constitution or Intelligence"
 				},
 				"skill": [
-					"Society"
+					"society"
 				],
 				"domains": [
 					"cities",
@@ -153,13 +154,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Wis",
-						"Int"
+						"wis",
+						"int"
 					],
 					"entry": "Intelligence or Wisdom"
 				},
 				"skill": [
-					"Arcana"
+					"arcana"
 				],
 				"domains": [
 					"destruction",
@@ -234,13 +235,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Str",
-						"Dex"
+						"str",
+						"dex"
 					],
 					"entry": "Strength or Dexterity"
 				},
 				"skill": [
-					"Stealth"
+					"stealth"
 				],
 				"domains": [
 					"death",
@@ -271,7 +272,7 @@
 					"melee": {
 						"name": "mantis claw",
 						"traits": [
-							"Agile",
+							"agile",
 							"backswing",
 							"finesse",
 							"reach 15 feet",
@@ -329,13 +330,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Dex",
-						"Wis"
+						"dex",
+						"wis"
 					],
 					"entry": "Dexterity or Wisdom"
 				},
 				"skill": [
-					"Society"
+					"society"
 				],
 				"domains": [
 					"duty",
@@ -388,8 +389,7 @@
 						"damage2": "2d6",
 						"damageType2": "persistent fire"
 					},
-					"preface": "When casting the {@spell avatar} spell, a worshipper of Adanye gains the following additional abilities.",
-					"entry": "{@b Ranged} {@as 1} hearth ember (range 120 feet), {@b Damage} {@damage 4d6+3} fire and {@damage 2d6} persistent fire"
+					"preface": "When casting the {@spell avatar} spell, a worshipper of Adanye gains the following additional abilities."
 				}
 			},
 			"hasLore": true
@@ -425,13 +425,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Str",
-						"Wis"
+						"str",
+						"wis"
 					],
 					"entry": "Strength or Wisdom"
 				},
 				"skill": [
-					"Nature"
+					"nature"
 				],
 				"domains": [
 					"cold",
@@ -485,13 +485,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Int",
-						"Cha"
+						"int",
+						"cha"
 					],
 					"entry": "Intelligence or Charisma"
 				},
 				"skill": [
-					"Diplomacy"
+					"diplomacy"
 				],
 				"domains": [
 					"change",
@@ -514,7 +514,28 @@
 					"dagger"
 				],
 				"avatar": {
-					"entry": "{@b Alseta} Speed 40 feet, dimensional Speed 60 feet; Melee {@as 1} dagger ({@trait agile}, {@trait finesse}, {@trait reach 15 feet}, {@trait thrown 40 feet}, {@trait versatile P}), Damage {@damage 6d6+6} piercing; Ranged {@as 1} portal toss (range 60 feet), Damage {@damage 6d6+3} bludgeoning",
+					"speed": {
+						"walk": 40,
+						"dimensional": 60
+					},
+					"melee": {
+						"damage": "6d6+6",
+						"damageType": "piercing",
+						"name": "dagger",
+						"traits": [
+							"agile",
+							"finesse",
+							"reach 15 feet",
+							"thrown 40 feet",
+							"versatile P"
+						]
+					},
+					"ranged": {
+						"damage": "6d6+3",
+						"damageType": "bludgeoning",
+						"range": 60,
+						"name": "portal toss"
+					},
 					"preface": "When casting the {@spell avatar} spell, a worshipper of Alseta gains the following additional abilities. The dimensional Speed allows the avatar of Alseta to cast {@spell dimension door} at will as a {@trait divine} innate spell, spending a single action to move up to 60 feet. The portal toss {@action Strike} causes the creature to fall through a series of portals before landing in the same spot and taking damage."
 				}
 			},
@@ -554,13 +575,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Cha",
-						"Wis"
+						"cha",
+						"wis"
 					],
 					"entry": "Wisdom or Charisma"
 				},
 				"skill": [
-					"Society"
+					"society"
 				],
 				"domains": [
 					"family",
@@ -619,13 +640,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Str",
-						"Con"
+						"str",
+						"con"
 					],
 					"entry": "Strength or Constitution"
 				},
 				"skill": [
-					"Athletics"
+					"athletics"
 				],
 				"domains": [
 					"destruction",
@@ -689,13 +710,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Str",
-						"Con"
+						"str",
+						"con"
 					],
 					"entry": "Strength or Constitution"
 				},
 				"skill": [
-					"Athletics"
+					"athletics"
 				],
 				"domains": [
 					"fate",
@@ -753,12 +774,12 @@
 				"ability": {
 					"entry": "Dexterity or Wisdom",
 					"abilities": [
-						"Dex",
-						"Wis"
+						"dex",
+						"wis"
 					]
 				},
 				"skill": [
-					"Occultism"
+					"occultism"
 				],
 				"domains": [
 					"death",
@@ -813,13 +834,13 @@
 					"heal"
 				],
 				"skill": [
-					"Diplomacy"
+					"diplomacy"
 				],
 				"ability": {
 					"entry": "Wisdom or Charisma",
 					"abilities": [
-						"Cha",
-						"Wis"
+						"cha",
+						"wis"
 					]
 				},
 				"domains": [
@@ -887,12 +908,12 @@
 				"ability": {
 					"entry": "Dexterity or Wisdom",
 					"abilities": [
-						"Dex",
-						"Wis"
+						"dex",
+						"wis"
 					]
 				},
 				"skill": [
-					"Stealth"
+					"stealth"
 				],
 				"domains": [
 					"cities",
@@ -962,12 +983,12 @@
 				"ability": {
 					"entry": "Intelligence or Charisma",
 					"abilities": [
-						"Int",
-						"Cha"
+						"int",
+						"cha"
 					]
 				},
 				"skill": [
-					"Diplomacy"
+					"diplomacy"
 				],
 				"domains": [
 					"ambition",
@@ -1036,12 +1057,12 @@
 				"ability": {
 					"entry": "Dexterity or Charisma",
 					"abilities": [
-						"Dex",
-						"Cha"
+						"dex",
+						"cha"
 					]
 				},
 				"skill": [
-					"Intimidation"
+					"intimidation"
 				],
 				"domains": [
 					"death",
@@ -1109,12 +1130,12 @@
 				"ability": {
 					"entry": "Strength or Charisma",
 					"abilities": [
-						"Str",
-						"Cha"
+						"str",
+						"cha"
 					]
 				},
 				"skill": [
-					"Intimidation"
+					"intimidation"
 				],
 				"domains": [
 					"fire",
@@ -1182,12 +1203,12 @@
 				"ability": {
 					"entry": "Strength or Constitution",
 					"abilities": [
-						"Str",
-						"Con"
+						"str",
+						"con"
 					]
 				},
 				"skill": [
-					"Athletics"
+					"athletics"
 				],
 				"domains": [
 					"might",
@@ -1245,13 +1266,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Str",
-						"Con"
+						"str",
+						"con"
 					],
 					"entry": "Strength or Constitution"
 				},
 				"skill": [
-					"Medicine"
+					"medicine"
 				],
 				"domains": [
 					"air",
@@ -1307,13 +1328,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Cha",
-						"Wis"
+						"cha",
+						"wis"
 					],
 					"entry": "Wisdom or Charisma"
 				},
 				"skill": [
-					"Diplomacy"
+					"diplomacy"
 				],
 				"domains": [
 					"creation",
@@ -1371,13 +1392,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Int",
-						"Con"
+						"int",
+						"con"
 					],
 					"entry": "Constitution or Intelligence"
 				},
 				"skill": [
-					"Intimidation"
+					"intimidation"
 				],
 				"domains": [
 					"confidence",
@@ -1442,13 +1463,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Int",
-						"Cha"
+						"int",
+						"cha"
 					],
 					"entry": "Intelligence or Charisma"
 				},
 				"skill": [
-					"Diplomacy"
+					"diplomacy"
 				],
 				"domains": [
 					"creation",
@@ -1504,13 +1525,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Cha",
-						"Con"
+						"cha",
+						"con"
 					],
 					"entry": "Constitution or Charisma"
 				},
 				"skill": [
-					"Diplomacy"
+					"diplomacy"
 				],
 				"domains": [
 					"confidence",
@@ -1568,13 +1589,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Int",
-						"Wis"
+						"int",
+						"wis"
 					],
 					"entry": "Intelligence or Wisdom"
 				},
 				"skill": [
-					"Nature"
+					"nature"
 				],
 				"domains": [
 					"healing",
@@ -1629,13 +1650,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Cha",
-						"Dex"
+						"cha",
+						"dex"
 					],
 					"entry": "Dexterity or Charisma"
 				},
 				"skill": [
-					"Performance"
+					"performance"
 				],
 				"domains": [
 					"darkness",
@@ -1693,13 +1714,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Int",
-						"Con"
+						"int",
+						"con"
 					],
 					"entry": "Constitution or Intelligence"
 				},
 				"skill": [
-					"Crafting"
+					"crafting"
 				],
 				"domains": [
 					"earth",
@@ -1762,17 +1783,17 @@
 				],
 				"ability": {
 					"abilities": [
-						"Str",
-						"Dex",
-						"Con",
-						"Int",
-						"Wis",
-						"Cha"
+						"str",
+						"dex",
+						"con",
+						"int",
+						"wis",
+						"cha"
 					],
 					"entry": "any, though characters who commit themselves to Asmodeus this way have their souls bound to the Dark Prince for all eternity"
 				},
 				"skill": [
-					"Deception"
+					"deception"
 				],
 				"domains": [
 					"confidence",
@@ -1849,7 +1870,7 @@
 				]
 			},
 			"alignment": [
-				"Any"
+				"any"
 			],
 			"category": "Philosophy",
 			"info": [
@@ -1862,7 +1883,7 @@
 				"offer prayers to a deity"
 			],
 			"followerAlignment": [
-				"All"
+				"all"
 			],
 			"hasLore": true
 		},
@@ -1898,13 +1919,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Cha",
-						"Wis"
+						"cha",
+						"wis"
 					],
 					"entry": "Wisdom or Charisma"
 				},
 				"skill": [
-					"Performance"
+					"performance"
 				],
 				"domains": [
 					"fire",
@@ -1961,13 +1982,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Con",
-						"Str"
+						"con",
+						"str"
 					],
 					"entry": "Strength or Constitution"
 				},
 				"skill": [
-					"Deception"
+					"deception"
 				],
 				"domains": [
 					"destruction",
@@ -2020,13 +2041,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Cha",
-						"Con"
+						"cha",
+						"con"
 					],
 					"entry": "Constitution or Charisma"
 				},
 				"skill": [
-					"Performance"
+					"performance"
 				],
 				"domains": [
 					"decay",
@@ -2080,13 +2101,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Dex",
-						"Cha"
+						"dex",
+						"cha"
 					],
 					"entry": "Dexterity or Charisma"
 				},
 				"skill": [
-					"Deception"
+					"deception"
 				],
 				"domains": [
 					"air",
@@ -2142,13 +2163,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Wis",
-						"Int"
+						"wis",
+						"int"
 					],
 					"entry": "Intelligence or Wisdom"
 				},
 				"skill": [
-					"Survival"
+					"survival"
 				],
 				"domains": [
 					"indulgence",
@@ -2202,13 +2223,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Wis",
-						"Con"
+						"wis",
+						"con"
 					],
 					"entry": "Constitution or Wisdom"
 				},
 				"skill": [
-					"Nature"
+					"nature"
 				],
 				"domains": [
 					"magic",
@@ -2265,13 +2286,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Wis",
-						"Con"
+						"wis",
+						"con"
 					],
 					"entry": "Constitution or Wisdom"
 				},
 				"skill": [
-					"Survival"
+					"survival"
 				],
 				"domains": [
 					"death",
@@ -2329,13 +2350,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Cha",
-						"Int"
+						"cha",
+						"int"
 					],
 					"entry": "Intelligence or Charisma"
 				},
 				"skill": [
-					"Deception"
+					"deception"
 				],
 				"domains": [
 					"nature",
@@ -2388,13 +2409,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Int",
-						"Cha"
+						"int",
+						"cha"
 					],
 					"entry": "Intelligence or Charisma"
 				},
 				"skill": [
-					"Diplomacy"
+					"diplomacy"
 				],
 				"domains": [
 					"change",
@@ -2452,12 +2473,12 @@
 				"ability": {
 					"entry": "Constitution or Charisma",
 					"abilities": [
-						"Con",
-						"Cha"
+						"con",
+						"cha"
 					]
 				},
 				"skill": [
-					"Performance"
+					"performance"
 				],
 				"domains": [
 					"earth",
@@ -2514,13 +2535,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Dex",
-						"Con"
+						"dex",
+						"con"
 					],
 					"entry": "Dexterity or Constitution"
 				},
 				"skill": [
-					"Athletics"
+					"athletics"
 				],
 				"domains": [
 					"destruction",
@@ -2583,13 +2604,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Wis",
-						"Dex"
+						"wis",
+						"dex"
 					],
 					"entry": "Dexterity or Wisdom"
 				},
 				"skill": [
-					"Stealth"
+					"stealth"
 				],
 				"domains": [
 					"freedom",
@@ -2646,13 +2667,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Wis",
-						"Cha"
+						"wis",
+						"cha"
 					],
 					"entry": "Wisdom or Charisma"
 				},
 				"skill": [
-					"Diplomacy"
+					"diplomacy"
 				],
 				"domains": [
 					"confidence",
@@ -2712,13 +2733,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Dex",
-						"Con"
+						"dex",
+						"con"
 					],
 					"entry": "Dexterity or Constitution"
 				},
 				"skill": [
-					"Crafting"
+					"crafting"
 				],
 				"domains": [
 					"creation",
@@ -2791,13 +2812,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Dex",
-						"Cha"
+						"dex",
+						"cha"
 					],
 					"entry": "Dexterity or Charisma"
 				},
 				"skill": [
-					"Deception"
+					"deception"
 				],
 				"domains": [
 					"pain",
@@ -2890,13 +2911,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Int",
-						"Con"
+						"int",
+						"con"
 					],
 					"entry": "Constitution or Intelligence"
 				},
 				"skill": [
-					"Society"
+					"society"
 				],
 				"domains": [
 					"creation",
@@ -2974,13 +2995,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Con",
-						"Cha"
+						"con",
+						"cha"
 					],
 					"entry": "Constitution or Charisma"
 				},
 				"skill": [
-					"Athletics"
+					"athletics"
 				],
 				"domains": [
 					"cities",
@@ -3072,13 +3093,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Str",
-						"Con"
+						"str",
+						"con"
 					],
 					"entry": "Strength or Constitution"
 				},
 				"skill": [
-					"Survival"
+					"survival"
 				],
 				"domains": [
 					"lightning",
@@ -3134,13 +3155,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Dex",
-						"Cha"
+						"dex",
+						"cha"
 					],
 					"entry": "Dexterity or Charisma"
 				},
 				"skill": [
-					"Thievery"
+					"thievery"
 				],
 				"domains": [
 					"confidence",
@@ -3205,13 +3226,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Str",
-						"Con"
+						"str",
+						"con"
 					],
 					"entry": "Strength or Constitution"
 				},
 				"skill": [
-					"Medicine"
+					"medicine"
 				],
 				"domains": [
 					"healing",
@@ -3266,13 +3287,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Int",
-						"Con"
+						"int",
+						"con"
 					],
 					"entry": "Constitution or Intelligence"
 				},
 				"skill": [
-					"Occultism"
+					"occultism"
 				],
 				"domains": [
 					"death",
@@ -3328,13 +3349,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Dex",
-						"Cha"
+						"dex",
+						"cha"
 					],
 					"entry": "Dexterity or Charisma"
 				},
 				"skill": [
-					"Occultism"
+					"occultism"
 				],
 				"domains": [
 					"darkness",
@@ -3396,13 +3417,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Dex",
-						"Cha"
+						"dex",
+						"cha"
 					],
 					"entry": "Dexterity or Charisma"
 				},
 				"skill": [
-					"Stealth"
+					"stealth"
 				],
 				"domains": [
 					"confidence",
@@ -3457,13 +3478,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Wis",
-						"Con"
+						"wis",
+						"con"
 					],
 					"entry": "Constitution or Wisdom"
 				},
 				"skill": [
-					"Nature"
+					"nature"
 				],
 				"domains": [
 					"change",
@@ -3519,13 +3540,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Str",
-						"Con"
+						"str",
+						"con"
 					],
 					"entry": "Strength or Constitution"
 				},
 				"skill": [
-					"Athletics"
+					"athletics"
 				],
 				"domains": [
 					"change",
@@ -3578,13 +3599,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Str",
-						"Con"
+						"str",
+						"con"
 					],
 					"entry": "Strength or Constitution"
 				},
 				"skill": [
-					"Athletics"
+					"athletics"
 				],
 				"domains": [
 					"destruction",
@@ -3643,13 +3664,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Dex",
-						"Int"
+						"dex",
+						"int"
 					],
 					"entry": "Dexterity or Intelligence"
 				},
 				"skill": [
-					"Crafting"
+					"crafting"
 				],
 				"domains": [
 					"change",
@@ -3705,13 +3726,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Wis",
-						"Con"
+						"wis",
+						"con"
 					],
 					"entry": "Constitution or Wisdom"
 				},
 				"skill": [
-					"Athletics"
+					"athletics"
 				],
 				"domains": [
 					"death",
@@ -3778,13 +3799,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Dex",
-						"Cha"
+						"dex",
+						"cha"
 					],
 					"entry": "Dexterity or Charisma"
 				},
 				"skill": [
-					"Acrobatics"
+					"acrobatics"
 				],
 				"domains": [
 					"dreams",
@@ -3879,13 +3900,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Str",
-						"Cha"
+						"str",
+						"cha"
 					],
 					"entry": "Strength or Charisma"
 				},
 				"skill": [
-					"Deception"
+					"deception"
 				],
 				"domains": [
 					"destruction",
@@ -3941,13 +3962,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Str",
-						"Dex"
+						"str",
+						"dex"
 					],
 					"entry": "Strength or Dexterity"
 				},
 				"skill": [
-					"Athletics"
+					"athletics"
 				],
 				"domains": [
 					"destruction",
@@ -4002,13 +4023,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Str",
-						"Cha"
+						"str",
+						"cha"
 					],
 					"entry": "Strength or Charisma"
 				},
 				"skill": [
-					"Society"
+					"society"
 				],
 				"domains": [
 					"cities",
@@ -4062,13 +4083,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Con",
-						"Wis"
+						"con",
+						"wis"
 					],
 					"entry": "Constitution or Wisdom"
 				},
 				"skill": [
-					"Medicine"
+					"medicine"
 				],
 				"domains": [
 					"creation",
@@ -4124,13 +4145,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Wis",
-						"Con"
+						"wis",
+						"con"
 					],
 					"entry": "Constitution or Wisdom"
 				},
 				"skill": [
-					"Intimidation"
+					"intimidation"
 				],
 				"domains": [
 					"knowledge",
@@ -4186,13 +4207,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Int",
-						"Con"
+						"int",
+						"con"
 					],
 					"entry": "Constitution or Intelligence"
 				},
 				"skill": [
-					"Crafting"
+					"crafting"
 				],
 				"domains": [
 					"duty",
@@ -4245,13 +4266,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Con",
-						"Wis"
+						"con",
+						"wis"
 					],
 					"entry": "Constitution or Wisdom"
 				},
 				"skill": [
-					"Diplomacy"
+					"diplomacy"
 				],
 				"domains": [
 					"creation",
@@ -4309,13 +4330,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Str",
-						"Dex"
+						"str",
+						"dex"
 					],
 					"entry": "Strength or Dexterity"
 				},
 				"skill": [
-					"Intimidation"
+					"intimidation"
 				],
 				"domains": [
 					"ambition",
@@ -4367,13 +4388,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Dex",
-						"Int"
+						"dex",
+						"int"
 					],
 					"entry": "Dexterity or Intelligence"
 				},
 				"skill": [
-					"Survival"
+					"survival"
 				],
 				"domains": [
 					"creation",
@@ -4442,13 +4463,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Con",
-						"Wis"
+						"con",
+						"wis"
 					],
 					"entry": "Constitution or Wisdom"
 				},
 				"skill": [
-					"Survival"
+					"survival"
 				],
 				"domains": [
 					"earth",
@@ -4543,13 +4564,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Wis",
-						"Cha"
+						"wis",
+						"cha"
 					],
 					"entry": "Wisdom or Charisma"
 				},
 				"skill": [
-					"Deception"
+					"deception"
 				],
 				"domains": [
 					"fate",
@@ -4605,13 +4626,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Wis",
-						"Int"
+						"wis",
+						"int"
 					],
 					"entry": "Intelligence or Wisdom"
 				},
 				"skill": [
-					"Diplomacy"
+					"diplomacy"
 				],
 				"domains": [
 					"confidence",
@@ -4662,13 +4683,13 @@
 			"devoteeBenefits": {
 				"ability": {
 					"abilities": [
-						"Wis",
-						"Int"
+						"wis",
+						"int"
 					],
 					"entry": "Intelligence or Wisdom"
 				},
 				"skill": [
-					"Occultism"
+					"occultism"
 				]
 			},
 			"hasLore": true
@@ -4705,13 +4726,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Str",
-						"Cha"
+						"str",
+						"cha"
 					],
 					"entry": "Strength or Charisma"
 				},
 				"skill": [
-					"Athletics"
+					"athletics"
 				],
 				"domains": [
 					"creation",
@@ -4768,13 +4789,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Cha",
-						"Int"
+						"cha",
+						"int"
 					],
 					"entry": "Charisma or Intelligence"
 				},
 				"skill": [
-					"Crafting"
+					"crafting"
 				],
 				"domains": [
 					"cities",
@@ -4829,13 +4850,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Wis",
-						"Con"
+						"wis",
+						"con"
 					],
 					"entry": "Constitution or Wisdom"
 				},
 				"skill": [
-					"Medicine"
+					"medicine"
 				],
 				"domains": [
 					"cities",
@@ -4891,13 +4912,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Con",
-						"Cha"
+						"con",
+						"cha"
 					],
 					"entry": "Constitution or Charisma"
 				},
 				"skill": [
-					"Intimidation"
+					"intimidation"
 				],
 				"domains": [
 					"ambition",
@@ -4954,13 +4975,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Dex",
-						"Cha"
+						"dex",
+						"cha"
 					],
 					"entry": "Dexterity or Charisma"
 				},
 				"skill": [
-					"Stealth"
+					"stealth"
 				],
 				"domains": [
 					"earth",
@@ -5016,13 +5037,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Str",
-						"Dex"
+						"str",
+						"dex"
 					],
 					"entry": "Strength or Dexterity"
 				},
 				"skill": [
-					"Athletics"
+					"athletics"
 				],
 				"domains": [
 					"confidence",
@@ -5075,13 +5096,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Int",
-						"Wis"
+						"int",
+						"wis"
 					],
 					"entry": "Intelligence or Wisdom"
 				},
 				"skill": [
-					"Occultism"
+					"occultism"
 				],
 				"domains": [
 					"might",
@@ -5136,13 +5157,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Wis",
-						"Con"
+						"wis",
+						"con"
 					],
 					"entry": "Constitution or Wisdom"
 				},
 				"skill": [
-					"Nature"
+					"nature"
 				],
 				"domains": [
 					"air",
@@ -5165,8 +5186,22 @@
 					"spear"
 				],
 				"avatar": {
-					"preface": "When casting the {@spell avatar} spell, a worshipper of Ghlaunder gains the following additional abilities.",
-					"entry": "{@b Ghlaunder} Speed 30 feet, fly Speed 70 feet; Melee {@as 1} proboscis ({@trait agile}, {@trait reach 20 feet}), Damage {@damage 6d6+6} piercing plus {@damage 3d6} {@condition persistent damage|CRB|persistent bleed}"
+					"speed": {
+						"walk": 30,
+						"fly": 70
+					},
+					"melee": {
+						"name": "proboscis",
+						"traits": [
+							"agile",
+							"reach 20 feet"
+						],
+						"damage": "6d6+6",
+						"damageType": "piercing",
+						"damage2": "3d6",
+						"damageType2": "persistent bleed"
+					},
+					"preface": "When casting the {@spell avatar} spell, a worshipper of Ghlaunder gains the following additional abilities."
 				}
 			},
 			"hasLore": true,
@@ -5226,13 +5261,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Str",
-						"Wis"
+						"str",
+						"wis"
 					],
 					"entry": "Strength or Wisdom"
 				},
 				"skill": [
-					"Intimidation"
+					"intimidation"
 				],
 				"domains": [
 					"indulgence",
@@ -5298,13 +5333,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Str",
-						"Con"
+						"str",
+						"con"
 					],
 					"entry": "Strength or Constitution"
 				},
 				"skill": [
-					"Athletics"
+					"athletics"
 				],
 				"domains": [
 					"confidence",
@@ -5406,13 +5441,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Con",
-						"Wis"
+						"con",
+						"wis"
 					],
 					"entry": "Constitution or Wisdom"
 				},
 				"skill": [
-					"Survival"
+					"survival"
 				],
 				"domains": [
 					"air",
@@ -5517,13 +5552,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Wis",
-						"Int"
+						"wis",
+						"int"
 					],
 					"entry": "Intelligence or Wisdom"
 				},
 				"skill": [
-					"Crafting"
+					"crafting"
 				],
 				"domains": [
 					"creation",
@@ -5600,13 +5635,13 @@
 			"devoteeBenefits": {
 				"ability": {
 					"abilities": [
-						"Wis",
-						"Con"
+						"wis",
+						"con"
 					],
 					"entry": "Intelligence or Constitution"
 				},
 				"skill": [
-					"Nature"
+					"nature"
 				]
 			},
 			"hasLore": true
@@ -5641,13 +5676,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Str",
-						"Cha"
+						"str",
+						"cha"
 					],
 					"entry": "Strength or Charisma"
 				},
 				"skill": [
-					"Intimidation"
+					"intimidation"
 				],
 				"domains": [
 					"darkness",
@@ -5716,13 +5751,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Int",
-						"Wis"
+						"int",
+						"wis"
 					],
 					"entry": "Intelligence or Wisdom"
 				},
 				"skill": [
-					"Society"
+					"society"
 				],
 				"domains": [
 					"glyph",
@@ -5788,13 +5823,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Cha",
-						"Con"
+						"cha",
+						"con"
 					],
 					"entry": "Constitution or Charisma"
 				},
 				"skill": [
-					"Diplomacy"
+					"diplomacy"
 				],
 				"domains": [
 					"confidence",
@@ -5849,13 +5884,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Wis",
-						"Cha"
+						"wis",
+						"cha"
 					],
 					"entry": "Wisdom or Charisma"
 				},
 				"skill": [
-					"Intimidation"
+					"intimidation"
 				],
 				"domains": [
 					"ambition",
@@ -5912,13 +5947,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Con",
-						"Wis"
+						"con",
+						"wis"
 					],
 					"entry": "Constitution or Wisdom"
 				},
 				"skill": [
-					"Nature"
+					"nature"
 				],
 				"domains": [
 					"indulgence",
@@ -5974,13 +6009,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Str",
-						"Dex"
+						"str",
+						"dex"
 					],
 					"entry": "Strength or Dexterity"
 				},
 				"skill": [
-					"Athletics"
+					"athletics"
 				],
 				"domains": [
 					"death",
@@ -6033,13 +6068,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Cha",
-						"Int"
+						"cha",
+						"int"
 					],
 					"entry": "Intelligence or Charisma"
 				},
 				"skill": [
-					"Deception"
+					"deception"
 				],
 				"domains": [
 					"glyph",
@@ -6097,12 +6132,12 @@
 				"ability": {
 					"entry": "Strength or Charisma",
 					"abilities": [
-						"Str",
-						"Cha"
+						"str",
+						"cha"
 					]
 				},
 				"skill": [
-					"Performance"
+					"performance"
 				],
 				"domains": [
 					"family",
@@ -6160,13 +6195,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Con",
-						"Cha"
+						"con",
+						"cha"
 					],
 					"entry": "Constitution or Charisma"
 				},
 				"skill": [
-					"Performance"
+					"performance"
 				],
 				"domains": [
 					"air",
@@ -6234,12 +6269,12 @@
 				"ability": {
 					"entry": "Strength or Charisma",
 					"abilities": [
-						"Str",
-						"Cha"
+						"str",
+						"cha"
 					]
 				},
 				"skill": [
-					"Diplomacy"
+					"diplomacy"
 				],
 				"domains": [
 					"air",
@@ -6295,13 +6330,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Dex",
-						"Str"
+						"dex",
+						"str"
 					],
 					"entry": "Strength or Dexterity"
 				},
 				"skill": [
-					"Stealth"
+					"stealth"
 				],
 				"domains": [
 					"air",
@@ -6357,13 +6392,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Con",
-						"Wis"
+						"con",
+						"wis"
 					],
 					"entry": "Constitution or Wisdom"
 				},
 				"skill": [
-					"Occultism"
+					"occultism"
 				],
 				"domains": [
 					"dreams",
@@ -6420,13 +6455,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Str",
-						"Int"
+						"str",
+						"int"
 					],
 					"entry": "Strength or Intelligence"
 				},
 				"skill": [
-					"Occultism"
+					"occultism"
 				],
 				"domains": [
 					"death",
@@ -6490,13 +6525,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Str",
-						"Con"
+						"str",
+						"con"
 					],
 					"entry": "Strength or Constitution"
 				},
 				"skill": [
-					"Intimidation"
+					"intimidation"
 				],
 				"domains": [
 					"confidence",
@@ -6592,13 +6627,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Dex",
-						"Int"
+						"dex",
+						"int"
 					],
 					"entry": "Dexterity or Intelligence"
 				},
 				"skill": [
-					"Arcana"
+					"arcana"
 				],
 				"domains": [
 					"fate",
@@ -6666,13 +6701,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Int",
-						"Wis"
+						"int",
+						"wis"
 					],
 					"entry": "Intelligence or Wisdom"
 				},
 				"skill": [
-					"Athletics"
+					"athletics"
 				],
 				"domains": [
 					"knowledge",
@@ -6769,13 +6804,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Wis",
-						"Cha"
+						"wis",
+						"cha"
 					],
 					"entry": "Wisdom or Charisma"
 				},
 				"skill": [
-					"Arcana"
+					"arcana"
 				],
 				"domains": [
 					"family",
@@ -6848,13 +6883,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Str",
-						"Con"
+						"str",
+						"con"
 					],
 					"entry": "Strength or Constitution"
 				},
 				"skill": [
-					"Nature"
+					"nature"
 				],
 				"domains": [
 					"family",
@@ -6910,13 +6945,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Str",
-						"Wis"
+						"str",
+						"wis"
 					],
 					"entry": "Strength or Wisdom"
 				},
 				"skill": [
-					"Intimidation"
+					"intimidation"
 				],
 				"domains": [
 					"confidence",
@@ -6968,13 +7003,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Dex",
-						"Int"
+						"dex",
+						"int"
 					],
 					"entry": "Dexterity or Intelligence"
 				},
 				"skill": [
-					"Stealth"
+					"stealth"
 				],
 				"domains": [
 					"indulgence",
@@ -7034,13 +7069,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Str",
-						"Wis"
+						"str",
+						"wis"
 					],
 					"entry": "Strength or Wisdom"
 				},
 				"skill": [
-					"Society"
+					"society"
 				],
 				"domains": [
 					"family",
@@ -7107,13 +7142,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Con",
-						"Cha"
+						"con",
+						"cha"
 					],
 					"entry": "Constitution or Charisma"
 				},
 				"skill": [
-					"Athletics"
+					"athletics"
 				],
 				"domains": [
 					"destruction",
@@ -7168,13 +7203,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Con",
-						"Wis"
+						"con",
+						"wis"
 					],
 					"entry": "Constitution or Wisdom"
 				},
 				"skill": [
-					"Occultism"
+					"occultism"
 				],
 				"domains": [
 					"darkness",
@@ -7230,13 +7265,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Dex",
-						"Wis"
+						"dex",
+						"wis"
 					],
 					"entry": "Dexterity or Wisdom"
 				},
 				"skill": [
-					"Survival"
+					"survival"
 				],
 				"domains": [
 					"darkness",
@@ -7289,13 +7324,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Dex",
-						"Cha"
+						"dex",
+						"cha"
 					],
 					"entry": "Dexterity or Charisma"
 				},
 				"skill": [
-					"Nature"
+					"nature"
 				],
 				"domains": [
 					"destruction",
@@ -7350,13 +7385,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Con",
-						"Dex"
+						"con",
+						"dex"
 					],
 					"entry": "Dexterity or Constitution"
 				},
 				"skill": [
-					"Performance"
+					"performance"
 				],
 				"domains": [
 					"luck",
@@ -7412,13 +7447,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Str",
-						"Wis"
+						"str",
+						"wis"
 					],
 					"entry": "Strength or Wisdom"
 				},
 				"skill": [
-					"Society"
+					"society"
 				],
 				"domains": [
 					"duty",
@@ -7473,13 +7508,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Cha",
-						"Wis"
+						"cha",
+						"wis"
 					],
 					"entry": "Wisdom or Charisma"
 				},
 				"skill": [
-					"Diplomacy"
+					"diplomacy"
 				],
 				"domains": [
 					"change",
@@ -7533,13 +7568,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Str",
-						"Con"
+						"str",
+						"con"
 					],
 					"entry": "Strength or Constitution"
 				},
 				"skill": [
-					"Athletics"
+					"athletics"
 				],
 				"domains": [
 					"cold",
@@ -7597,13 +7632,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Str",
-						"Con"
+						"str",
+						"con"
 					],
 					"entry": "Strength or Constitution"
 				},
 				"skill": [
-					"Athletics"
+					"athletics"
 				],
 				"domains": [
 					"ambition",
@@ -7666,13 +7701,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Int",
-						"Wis"
+						"int",
+						"wis"
 					],
 					"entry": "Intelligence or Wisdom"
 				},
 				"skill": [
-					"Performance"
+					"performance"
 				],
 				"domains": [
 					"creation",
@@ -7725,13 +7760,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Str",
-						"Con"
+						"str",
+						"con"
 					],
 					"entry": "Strength or Constitution"
 				},
 				"skill": [
-					"Nature"
+					"nature"
 				],
 				"domains": [
 					"destruction",
@@ -7784,13 +7819,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Int",
-						"Dex"
+						"int",
+						"dex"
 					],
 					"entry": "Dexterity or Intelligence"
 				},
 				"skill": [
-					"Thievery"
+					"thievery"
 				],
 				"domains": [
 					"indulgence",
@@ -7856,13 +7891,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Con",
-						"Str"
+						"con",
+						"str"
 					],
 					"entry": "Constitution or Strength"
 				},
 				"skill": [
-					"Survival"
+					"survival"
 				],
 				"domains": [
 					"family",
@@ -7957,13 +7992,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Dex",
-						"Int"
+						"dex",
+						"int"
 					],
 					"entry": "Dexterity or Intelligence"
 				},
 				"skill": [
-					"Thievery"
+					"thievery"
 				],
 				"domains": [
 					"darkness",
@@ -8016,13 +8051,13 @@
 			"devoteeBenefits": {
 				"ability": {
 					"abilities": [
-						"Int",
-						"Con"
+						"int",
+						"con"
 					],
 					"entry": "Constitution or Intelligence"
 				},
 				"skill": [
-					"Medicine"
+					"medicine"
 				]
 			},
 			"hasLore": true
@@ -8060,13 +8095,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Int",
-						"Cha"
+						"int",
+						"cha"
 					],
 					"entry": "Intelligence or Charisma"
 				},
 				"skill": [
-					"Performance"
+					"performance"
 				],
 				"domains": [
 					"creation",
@@ -8120,13 +8155,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Wis",
-						"Int"
+						"wis",
+						"int"
 					],
 					"entry": "Intelligence or Wisdom"
 				},
 				"skill": [
-					"Arcana"
+					"arcana"
 				],
 				"domains": [
 					"fate",
@@ -8181,13 +8216,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Cha",
-						"Wis"
+						"cha",
+						"wis"
 					],
 					"entry": "Wisdom or Charisma"
 				},
 				"skill": [
-					"Society"
+					"society"
 				],
 				"domains": [
 					"change",
@@ -8245,13 +8280,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Con",
-						"Dex"
+						"con",
+						"dex"
 					],
 					"entry": "Dexterity or Constitution"
 				},
 				"skill": [
-					"Survival"
+					"survival"
 				],
 				"domains": [
 					"change",
@@ -8309,12 +8344,12 @@
 				"ability": {
 					"entry": "Intelligence or Wisdom",
 					"abilities": [
-						"Int",
-						"Wis"
+						"int",
+						"wis"
 					]
 				},
 				"skill": [
-					"Society"
+					"society"
 				],
 				"domains": [
 					"knowledge",
@@ -8367,13 +8402,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Int",
-						"Wis"
+						"int",
+						"wis"
 					],
 					"entry": "Intelligence or Wisdom"
 				},
 				"skill": [
-					"Occultism"
+					"occultism"
 				],
 				"domains": [
 					"fate",
@@ -8432,13 +8467,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Con",
-						"Wis"
+						"con",
+						"wis"
 					],
 					"entry": "Constitution or Wisdom"
 				},
 				"skill": [
-					"Crafting"
+					"crafting"
 				],
 				"domains": [
 					"death",
@@ -8492,13 +8527,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Wis",
-						"Cha"
+						"wis",
+						"cha"
 					],
 					"entry": "Wisdom or Charisma"
 				},
 				"skill": [
-					"Deception"
+					"deception"
 				],
 				"domains": [
 					"fate",
@@ -8552,13 +8587,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Cha",
-						"Wis"
+						"cha",
+						"wis"
 					],
 					"entry": "Wisdom or Charisma"
 				},
 				"skill": [
-					"Thievery"
+					"thievery"
 				],
 				"domains": [
 					"ambition",
@@ -8616,13 +8651,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Wis",
-						"Cha"
+						"wis",
+						"cha"
 					],
 					"entry": "Constitution or Wisdom"
 				},
 				"skill": [
-					"Survival"
+					"survival"
 				],
 				"domains": [
 					"cities",
@@ -8675,13 +8710,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Cha",
-						"Int"
+						"cha",
+						"int"
 					],
 					"entry": "Intelligence or Charisma"
 				},
 				"skill": [
-					"Deception"
+					"deception"
 				],
 				"domains": [
 					"glyph",
@@ -8738,13 +8773,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Str",
-						"Wis"
+						"str",
+						"wis"
 					],
 					"entry": "Strength or Wisdom"
 				},
 				"skill": [
-					"Society"
+					"society"
 				],
 				"domains": [
 					"change",
@@ -8806,13 +8841,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Str",
-						"Con"
+						"str",
+						"con"
 					],
 					"entry": "Strength or Constitution"
 				},
 				"skill": [
-					"Athletics"
+					"athletics"
 				],
 				"domains": [
 					"destruction",
@@ -8866,13 +8901,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Int",
-						"Wis"
+						"int",
+						"wis"
 					],
 					"entry": "Intelligence or Wisdom"
 				},
 				"skill": [
-					"Occultism"
+					"occultism"
 				],
 				"domains": [
 					"creation",
@@ -8931,13 +8966,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Con",
-						"Wis"
+						"con",
+						"wis"
 					],
 					"entry": "Constitution or Wisdom"
 				},
 				"skill": [
-					"Survival"
+					"survival"
 				],
 				"domains": [
 					"change",
@@ -8993,13 +9028,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Con",
-						"Cha"
+						"con",
+						"cha"
 					],
 					"entry": "Constitution or Charisma"
 				},
 				"skill": [
-					"Diplomacy"
+					"diplomacy"
 				],
 				"domains": [
 					"death",
@@ -9060,13 +9095,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Wis",
-						"Cha"
+						"wis",
+						"cha"
 					],
 					"entry": "Wisdom or Charisma"
 				},
 				"skill": [
-					"Arcana"
+					"arcana"
 				],
 				"domains": [
 					"glyph",
@@ -9140,13 +9175,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Con",
-						"Wis"
+						"con",
+						"wis"
 					],
 					"entry": "Constitution or Wisdom"
 				},
 				"skill": [
-					"Diplomacy"
+					"diplomacy"
 				],
 				"domains": [
 					"change",
@@ -9201,13 +9236,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Dex",
-						"Wis"
+						"dex",
+						"wis"
 					],
 					"entry": "Dexterity or Wisdom"
 				},
 				"skill": [
-					"Occultism"
+					"occultism"
 				],
 				"domains": [
 					"delirium",
@@ -9272,13 +9307,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Wis",
-						"Int"
+						"wis",
+						"int"
 					],
 					"entry": "Wisdom or Intelligence"
 				},
 				"skill": [
-					"Arcana"
+					"arcana"
 				],
 				"domains": [
 					"destruction",
@@ -9386,13 +9421,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Con",
-						"Wis"
+						"con",
+						"wis"
 					],
 					"entry": "Constitution or Wisdom"
 				},
 				"skill": [
-					"Nature"
+					"nature"
 				],
 				"domains": [
 					"decay",
@@ -9450,13 +9485,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Dex",
-						"Int"
+						"dex",
+						"int"
 					],
 					"entry": "Dexterity or Intelligence"
 				},
 				"skill": [
-					"Stealth"
+					"stealth"
 				],
 				"domains": [
 					"family",
@@ -9524,13 +9559,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Dex",
-						"Cha"
+						"dex",
+						"cha"
 					],
 					"entry": "Dexterity or Charisma"
 				},
 				"skill": [
-					"Society"
+					"society"
 				],
 				"domains": [
 					"change",
@@ -9608,13 +9643,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Dex",
-						"Int"
+						"dex",
+						"int"
 					],
 					"entry": "Dexterity or Intelligence"
 				},
 				"skill": [
-					"Stealth"
+					"stealth"
 				],
 				"domains": [
 					"death",
@@ -9703,13 +9738,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Cha",
-						"Con"
+						"cha",
+						"con"
 					],
 					"entry": "Constitution or Charisma"
 				},
 				"skill": [
-					"Survival"
+					"survival"
 				],
 				"domains": [
 					"destruction",
@@ -9762,13 +9797,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Dex",
-						"Int"
+						"dex",
+						"int"
 					],
 					"entry": "Dexterity or Intelligence"
 				},
 				"skill": [
-					"Arcana"
+					"arcana"
 				],
 				"domains": [
 					"knowledge",
@@ -9842,13 +9877,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Wis",
-						"Con"
+						"wis",
+						"con"
 					],
 					"entry": "Constitution or Wisdom"
 				},
 				"skill": [
-					"Nature"
+					"nature"
 				],
 				"domains": [
 					"change",
@@ -9902,13 +9937,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Dex",
-						"Int"
+						"dex",
+						"int"
 					],
 					"entry": "Dexterity or Intelligence"
 				},
 				"skill": [
-					"Crafting"
+					"crafting"
 				],
 				"domains": [
 					"creation",
@@ -9963,13 +9998,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Dex",
-						"Cha"
+						"dex",
+						"cha"
 					],
 					"entry": "Dexterity or Charisma"
 				},
 				"skill": [
-					"Diplomacy"
+					"diplomacy"
 				],
 				"domains": [
 					"air",
@@ -10035,13 +10070,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Con",
-						"Wis"
+						"con",
+						"wis"
 					],
 					"entry": "Constitution or Wisdom"
 				},
 				"skill": [
-					"Medicine"
+					"medicine"
 				],
 				"domains": [
 					"death",
@@ -10142,13 +10177,13 @@
 			"devoteeBenefits": {
 				"ability": {
 					"abilities": [
-						"Int",
-						"Cha"
+						"int",
+						"cha"
 					],
 					"entry": "Intelligence or Charisma"
 				},
 				"skill": [
-					"Diplomacy"
+					"diplomacy"
 				]
 			},
 			"hasLore": true
@@ -10184,13 +10219,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Con",
-						"Wis"
+						"con",
+						"wis"
 					],
 					"entry": "Constitution or Wisdom"
 				},
 				"skill": [
-					"Survival"
+					"survival"
 				],
 				"domains": [
 					"cold",
@@ -10246,13 +10281,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Wis",
-						"Int"
+						"wis",
+						"int"
 					],
 					"entry": "Intelligence or Wisdom"
 				},
 				"skill": [
-					"Medicine"
+					"medicine"
 				],
 				"domains": [
 					"healing",
@@ -10309,13 +10344,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Str",
-						"Int"
+						"str",
+						"int"
 					],
 					"entry": "Strength or Intelligence"
 				},
 				"skill": [
-					"Society"
+					"society"
 				],
 				"domains": [
 					"fire",
@@ -10370,13 +10405,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Cha",
-						"Str"
+						"cha",
+						"str"
 					],
 					"entry": "Strength or Charisma"
 				},
 				"skill": [
-					"Intimidation"
+					"intimidation"
 				],
 				"domains": [
 					"destruction",
@@ -10434,13 +10469,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Dex",
-						"Wis"
+						"dex",
+						"wis"
 					],
 					"entry": "Dexterity or Wisdom"
 				},
 				"skill": [
-					"Acrobatics"
+					"acrobatics"
 				],
 				"domains": [
 					"air",
@@ -10497,13 +10532,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Cha",
-						"Dex"
+						"cha",
+						"dex"
 					],
 					"entry": "Dexterity or Charisma"
 				},
 				"skill": [
-					"Acrobatics"
+					"acrobatics"
 				],
 				"domains": [
 					"air",
@@ -10561,13 +10596,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Str",
-						"Cha"
+						"str",
+						"cha"
 					],
 					"entry": "Strength or Charisma"
 				},
 				"skill": [
-					"Performance"
+					"performance"
 				],
 				"domains": [
 					"confidence",
@@ -10630,13 +10665,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Str",
-						"Con"
+						"str",
+						"con"
 					],
 					"entry": "Strength or Constitution"
 				},
 				"skill": [
-					"Athletics"
+					"athletics"
 				],
 				"domains": [
 					"air",
@@ -10733,13 +10768,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Cha",
-						"Con"
+						"cha",
+						"con"
 					],
 					"entry": "Constitution or Charisma"
 				},
 				"skill": [
-					"Nature"
+					"nature"
 				],
 				"domains": [
 					"earth",
@@ -10795,13 +10830,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Wis",
-						"Cha"
+						"wis",
+						"cha"
 					],
 					"entry": "Wisdom or Charisma"
 				},
 				"skill": [
-					"Diplomacy"
+					"diplomacy"
 				],
 				"domains": [
 					"change",
@@ -10852,13 +10887,13 @@
 			"devoteeBenefits": {
 				"ability": {
 					"abilities": [
-						"Int",
-						"Wis"
+						"int",
+						"wis"
 					],
 					"entry": "Intelligence or Wisdom"
 				},
 				"skill": [
-					"Religion"
+					"religion"
 				]
 			},
 			"hasLore": true
@@ -10906,13 +10941,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Con",
-						"Wis"
+						"con",
+						"wis"
 					],
 					"entry": "Constitution or Wisdom"
 				},
 				"skill": [
-					"Medicine"
+					"medicine"
 				],
 				"domains": [
 					"fire",
@@ -11009,12 +11044,12 @@
 				"ability": {
 					"entry": "Strength or Wisdom",
 					"abilities": [
-						"Str",
-						"Wis"
+						"str",
+						"wis"
 					]
 				},
 				"skill": [
-					"Medicine"
+					"medicine"
 				],
 				"domains": [
 					"destruction",
@@ -11072,12 +11107,12 @@
 				"ability": {
 					"entry": "Dexterity or Wisdom",
 					"abilities": [
-						"Dex",
-						"Wis"
+						"dex",
+						"wis"
 					]
 				},
 				"skill": [
-					"Medicine"
+					"medicine"
 				],
 				"domains": [
 					"healing",
@@ -11131,13 +11166,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Dex",
-						"Cha"
+						"dex",
+						"cha"
 					],
 					"entry": "Dexterity or Charisma"
 				},
 				"skill": [
-					"Intimidation"
+					"intimidation"
 				],
 				"domains": [
 					"ambition",
@@ -11194,13 +11229,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Cha",
-						"Int"
+						"cha",
+						"int"
 					],
 					"entry": "Intelligence or Charisma"
 				},
 				"skill": [
-					"Society"
+					"society"
 				],
 				"domains": [
 					"family",
@@ -11265,14 +11300,14 @@
 				],
 				"ability": {
 					"abilities": [
-						"Cha",
-						"Wis"
+						"cha",
+						"wis"
 					],
 					"entry": "Wisdom or Charisma"
 				},
 				"skill": [
-					"Crafting",
-					"Performance"
+					"crafting",
+					"performance"
 				],
 				"domains": [
 					"creation",
@@ -11368,13 +11403,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Wis",
-						"Str"
+						"wis",
+						"str"
 					],
 					"entry": "Strength or Wisdom"
 				},
 				"skill": [
-					"Society"
+					"society"
 				],
 				"domains": [
 					"duty",
@@ -11450,13 +11485,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Wis",
-						"Cha"
+						"wis",
+						"cha"
 					],
 					"entry": "Wisdom or Charisma"
 				},
 				"skill": [
-					"Deception"
+					"deception"
 				],
 				"domains": [
 					"nightmares",
@@ -11514,13 +11549,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Wis",
-						"Cha"
+						"wis",
+						"cha"
 					],
 					"entry": "Wisdom or Charisma"
 				},
 				"skill": [
-					"Deception"
+					"deception"
 				],
 				"domains": [
 					"delirium",
@@ -11590,13 +11625,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Con",
-						"Str"
+						"con",
+						"str"
 					],
 					"entry": "Strength or Constitution"
 				},
 				"skill": [
-					"Athletics"
+					"athletics"
 				],
 				"domains": [
 					"might",
@@ -11653,13 +11688,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Str",
-						"Int"
+						"str",
+						"int"
 					],
 					"entry": "Strength or Intelligence"
 				},
 				"skill": [
-					"Arcana"
+					"arcana"
 				],
 				"domains": [
 					"creation",
@@ -11718,13 +11753,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Con",
-						"Int"
+						"con",
+						"int"
 					],
 					"entry": "Constitution or Intelligence"
 				},
 				"skill": [
-					"Medicine"
+					"medicine"
 				],
 				"domains": [
 					"family",
@@ -11777,13 +11812,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Dex",
-						"Cha"
+						"dex",
+						"cha"
 					],
 					"entry": "Dexterity or Charisma"
 				},
 				"skill": [
-					"Diplomacy"
+					"diplomacy"
 				],
 				"domains": [
 					"air",
@@ -11839,13 +11874,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Str",
-						"Cha"
+						"str",
+						"cha"
 					],
 					"entry": "Strength or Charisma"
 				},
 				"skill": [
-					"Acrobatics"
+					"acrobatics"
 				],
 				"domains": [
 					"indulgence",
@@ -11899,13 +11934,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Str",
-						"Con"
+						"str",
+						"con"
 					],
 					"entry": "Strength or Constitution"
 				},
 				"skill": [
-					"Athletics"
+					"athletics"
 				],
 				"domains": [
 					"ambition",
@@ -11961,13 +11996,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Str",
-						"Wis"
+						"str",
+						"wis"
 					],
 					"entry": "Strength or Wisdom"
 				},
 				"skill": [
-					"Stealth"
+					"stealth"
 				],
 				"domains": [
 					"darkness",
@@ -12021,13 +12056,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Dex",
-						"Cha"
+						"dex",
+						"cha"
 					],
 					"entry": "Dexterity or Charisma"
 				},
 				"skill": [
-					"Thievery"
+					"thievery"
 				],
 				"domains": [
 					"ambition",
@@ -12080,13 +12115,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Str",
-						"Int"
+						"str",
+						"int"
 					],
 					"entry": "Strength or Intelligence"
 				},
 				"skill": [
-					"Society"
+					"society"
 				],
 				"domains": [
 					"perfection",
@@ -12146,13 +12181,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Con",
-						"Cha"
+						"con",
+						"cha"
 					],
 					"entry": "Constitution or Charisma"
 				},
 				"skill": [
-					"Nature"
+					"nature"
 				],
 				"domains": [
 					"decay",
@@ -12208,13 +12243,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Int",
-						"Cha"
+						"int",
+						"cha"
 					],
 					"entry": "Intelligence or Charisma"
 				},
 				"skill": [
-					"Deception"
+					"deception"
 				],
 				"domains": [
 					"change",
@@ -12271,13 +12306,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Int",
-						"Wis"
+						"int",
+						"wis"
 					],
 					"entry": "Intelligence or Wisdom"
 				},
 				"skill": [
-					"Society"
+					"society"
 				],
 				"domains": [
 					"knowledge",
@@ -12334,13 +12369,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Int",
-						"Wis"
+						"int",
+						"wis"
 					],
 					"entry": "Intelligence or Wisdom"
 				},
 				"skill": [
-					"Arcana"
+					"arcana"
 				],
 				"domains": [
 					"glyph",
@@ -12405,13 +12440,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Con",
-						"Wis"
+						"con",
+						"wis"
 					],
 					"entry": "Constitution or Wisdom"
 				},
 				"skill": [
-					"Crafting"
+					"crafting"
 				],
 				"domains": [
 					"creation",
@@ -12530,13 +12565,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Str",
-						"Con"
+						"str",
+						"con"
 					],
 					"entry": "Strength or Constitution"
 				},
 				"skill": [
-					"Nature"
+					"nature"
 				],
 				"domains": [
 					"destruction",
@@ -12591,13 +12626,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Wis",
-						"Con"
+						"wis",
+						"con"
 					],
 					"entry": "Constitution or Wisdom"
 				},
 				"skill": [
-					"Nature"
+					"nature"
 				],
 				"domains": [
 					"decay",
@@ -12651,13 +12686,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Con",
-						"Str"
+						"con",
+						"str"
 					],
 					"entry": "Strength or Constitution"
 				},
 				"skill": [
-					"Athletics"
+					"athletics"
 				],
 				"domains": [
 					"confidence",
@@ -12715,13 +12750,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Con",
-						"Int"
+						"con",
+						"int"
 					],
 					"entry": "Constitution or Intelligence"
 				},
 				"skill": [
-					"Occultism"
+					"occultism"
 				],
 				"domains": [
 					"delirium",
@@ -12797,13 +12832,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Con",
-						"Wis"
+						"con",
+						"wis"
 					],
 					"entry": "Constitution or Wisdom"
 				},
 				"skill": [
-					"Intimidation"
+					"intimidation"
 				],
 				"domains": [
 					"indulgence",
@@ -12900,13 +12935,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Wis",
-						"Int"
+						"wis",
+						"int"
 					],
 					"entry": "Intelligence or Wisdom"
 				},
 				"skill": [
-					"Arcana"
+					"arcana"
 				],
 				"domains": [
 					"fate",
@@ -12961,13 +12996,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Cha",
-						"Con"
+						"cha",
+						"con"
 					],
 					"entry": "Constitution or Charisma"
 				},
 				"skill": [
-					"Medicine"
+					"medicine"
 				],
 				"domains": [
 					"duty",
@@ -13024,12 +13059,12 @@
 				"ability": {
 					"entry": "Dexterity or Wisdom",
 					"abilities": [
-						"Dex",
-						"Wis"
+						"dex",
+						"wis"
 					]
 				},
 				"skill": [
-					"Nature"
+					"nature"
 				],
 				"domains": [
 					"protection",
@@ -13092,13 +13127,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Str",
-						"Wis"
+						"str",
+						"wis"
 					],
 					"entry": "Strength or Wisdom"
 				},
 				"skill": [
-					"Deception"
+					"deception"
 				],
 				"domains": [
 					"family",
@@ -13188,13 +13223,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Int",
-						"Wis"
+						"int",
+						"wis"
 					],
 					"entry": "Intelligence or Wisdom"
 				},
 				"skill": [
-					"Occultism"
+					"occultism"
 				],
 				"domains": [
 					"glyph",
@@ -13246,13 +13281,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Con",
-						"Wis"
+						"con",
+						"wis"
 					],
 					"entry": "Constitution or Wisdom"
 				},
 				"skill": [
-					"Nature"
+					"nature"
 				],
 				"domains": [
 					"change",
@@ -13308,13 +13343,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Dex",
-						"Int"
+						"dex",
+						"int"
 					],
 					"entry": "Dexterity or Intelligence"
 				},
 				"skill": [
-					"Stealth"
+					"stealth"
 				],
 				"domains": [
 					"death",
@@ -13371,13 +13406,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Str",
-						"Wis"
+						"str",
+						"wis"
 					],
 					"entry": "Strength or Wisdom"
 				},
 				"skill": [
-					"Athletics"
+					"athletics"
 				],
 				"domains": [
 					"cold",
@@ -13434,13 +13469,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Cha",
-						"Int"
+						"cha",
+						"int"
 					],
 					"entry": "Intelligence or Charisma"
 				},
 				"skill": [
-					"Society"
+					"society"
 				],
 				"domains": [
 					"change",
@@ -13500,13 +13535,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Dex",
-						"Wis"
+						"dex",
+						"wis"
 					],
 					"entry": "Dexterity or Wisdom"
 				},
 				"skill": [
-					"Deception"
+					"deception"
 				],
 				"domains": [
 					"ambition",
@@ -13565,13 +13600,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Dex",
-						"Wis"
+						"dex",
+						"wis"
 					],
 					"entry": "Dexterity or Wisdom"
 				},
 				"skill": [
-					"Acrobatics"
+					"acrobatics"
 				],
 				"domains": [
 					"air",
@@ -13628,13 +13663,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Cha",
-						"Str"
+						"cha",
+						"str"
 					],
 					"entry": "Strength or Charisma"
 				},
 				"skill": [
-					"Intimidation"
+					"intimidation"
 				],
 				"domains": [
 					"destruction",
@@ -13687,13 +13722,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Int",
-						"Cha"
+						"int",
+						"cha"
 					],
 					"entry": "Intelligence or Charisma"
 				},
 				"skill": [
-					"Occultism"
+					"occultism"
 				],
 				"domains": [
 					"knowledge",
@@ -13752,13 +13787,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Int",
-						"Wis"
+						"int",
+						"wis"
 					],
 					"entry": "Intelligence or Wisdom"
 				},
 				"skill": [
-					"Arcana"
+					"arcana"
 				],
 				"domains": [
 					"creation",
@@ -13840,13 +13875,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Str",
-						"Con"
+						"str",
+						"con"
 					],
 					"entry": "Strength or Constitution"
 				},
 				"skill": [
-					"Survival"
+					"survival"
 				],
 				"domains": [
 					"destruction",
@@ -13903,13 +13938,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Int",
-						"Wis"
+						"int",
+						"wis"
 					],
 					"entry": "Intelligence or Wisdom"
 				},
 				"skill": [
-					"Society"
+					"society"
 				],
 				"domains": [
 					"ambition",
@@ -13973,13 +14008,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Con",
-						"Wis"
+						"con",
+						"wis"
 					],
 					"entry": "Constitution or Wisdom"
 				},
 				"skill": [
-					"Intimidation"
+					"intimidation"
 				],
 				"domains": [
 					"ambition",
@@ -14072,13 +14107,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Str",
-						"Cha"
+						"str",
+						"cha"
 					],
 					"entry": "Strength or Charisma"
 				},
 				"skill": [
-					"Diplomacy"
+					"diplomacy"
 				],
 				"domains": [
 					"delirium",
@@ -14133,13 +14168,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Dex",
-						"Con"
+						"dex",
+						"con"
 					],
 					"entry": "Dexterity or Constitution"
 				},
 				"skill": [
-					"Thievery"
+					"thievery"
 				],
 				"domains": [
 					"death",
@@ -14195,13 +14230,13 @@
 					"heal"
 				],
 				"skill": [
-					"Athletics"
+					"athletics"
 				],
 				"ability": {
 					"entry": "Strength or Wisdom",
 					"abilities": [
-						"Str",
-						"Wis"
+						"str",
+						"wis"
 					]
 				},
 				"domains": [
@@ -14266,13 +14301,13 @@
 					"heal"
 				],
 				"skill": [
-					"Crafting"
+					"crafting"
 				],
 				"ability": {
 					"entry": "Intelligence or Charisma",
 					"abilities": [
-						"Cha",
-						"Int"
+						"cha",
+						"int"
 					]
 				},
 				"domains": [

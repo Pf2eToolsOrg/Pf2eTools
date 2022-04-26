@@ -269,21 +269,42 @@
 					}
 				}
 			],
+			"rituals": [
+				{
+					"DC": 23,
+					"rituals": [
+						{
+							"name": "arcane weaving|sot1"
+						}
+					]
+				}
+			],
 			"abilitiesBot": [
 				{
 					"traits": [
 						"poison"
 					],
 					"entries": [
-						"Saving Throw DC 20 Fortitude;"
+						{
+							"type": "affliction",
+							"DC": 20,
+							"savingThrow": "Fortitude",
+							"maxDuration": "4 rounds",
+							"stages": [
+								{
+									"stage": 1,
+									"entry": "{@dice 1d6} poison damage and {@condition flat-footed}",
+									"duration": "1 round"
+								},
+								{
+									"stage": 2,
+									"entry": "{@dice 1d6} poison damage, {@condition flat-footed} and {@condition clumsy 1}",
+									"duration": "1 round"
+								}
+							]
+						}
 					],
 					"name": "Anadi Venom"
-				},
-				{
-					"entries": [
-						"4 rounds; Stage 1 {@damage 1d6} poison damage and {@condition flat-footed} (1 round); Stage 2 {@damage 1d6} poison damage, {@condition flat-footed}, and {@condition clumsy|CRB|clumsy 1} (1 round)"
-					],
-					"name": "Maximum Duration"
 				},
 				{
 					"activity": {
