@@ -4593,24 +4593,65 @@ Renderer.deity = {
 			if (b.avatar.shield) out.push(`; shield (${b.avatar.shield} Hardness, can't be damaged)`)
 			if (b.avatar.melee || b.avatar.ranged) {
 				out.push(`; `)
-				if (b.avatar.melee && Object.keys(b.avatar.melee).length) {
-					out.push(renderer.render(`<strong>Melee</strong> {@as 1} `))
-					out.push(renderer.render(b.avatar.melee.name))
-					if (b.avatar.melee.traits && b.avatar.melee.traits.length) { out.push(renderer.render(` (${b.avatar.melee.traits.map(t => `{@trait ${t.toLowerCase()}}`).join(", ")}), `)) } else out.push(" ")
-					out.push(renderer.render(`<strong>Damage</strong> {@damage ${b.avatar.melee.damage}} ${b.avatar.melee.damageType}${b.avatar.melee.damageType2 && b.avatar.melee.damage ? ` and {@damage ${b.avatar.melee.damage2}} ${b.avatar.melee.damageType2}` : ``}`))
+				if (b.avatar.melee) {
+					if (Array.isArray(b.avatar.melee)) {
+						b.avatar.melee.forEach((element, index, array) => {
+							out.push(Renderer.deity.getRenderedMeleeAttack(element))
+							out.push(array.length - 1 === index ? "" : "; ")
+						});
+					} else {
+						out.push(Renderer.deity.getRenderedMeleeAttack(b.avatar.melee))
+					}
 				}
-				if (b.avatar.ranged && Object.keys(b.avatar.ranged).length) {
+				if (b.avatar.ranged) {
 					if (b.avatar.melee && Object.keys(b.avatar.melee).length) out.push(`; `)
-					out.push(renderer.render(`<strong>Ranged</strong> {@as 1} `))
-					out.push(renderer.render(b.avatar.ranged.name))
-					out.push(renderer.render(` (${b.avatar.ranged.range ? `range ${b.avatar.ranged.reload ? "increment" : ""} ${b.avatar.ranged.range} feet` : ""}${b.avatar.ranged.reload ? `, reload ${b.avatar.ranged.reload}` : ""}${b.avatar.ranged.traits && b.avatar.ranged.traits.length ? `, ${b.avatar.ranged.traits.map(t => `{@trait ${t.toLowerCase()}}`).join(", ")}` : ""}), `))
-					out.push(renderer.render(`<strong>Damage</strong> {@damage ${b.avatar.ranged.damage}} ${b.avatar.ranged.damageType}${b.avatar.ranged.damageType2 && b.avatar.ranged.damage ? ` and {@damage ${b.avatar.ranged.damage2}} ${b.avatar.ranged.damageType2}` : ``}`))
+					if (Array.isArray(b.avatar.ranged)) {
+						b.avatar.ranged.forEach((element, index, array) => {
+							out.push(Renderer.deity.getRenderedRangedAttack(element))
+							out.push(array.length - 1 === index ? "" : "; ")
+						});
+					} else {
+						out.push(Renderer.deity.getRenderedRangedAttack(b.avatar.ranged))
+					}
 				}
 				out.push(`.`)
 			}
 			out.push(`</p>`)
 		}
 
+		return out.join("")
+	},
+
+	getRenderedRangedAttack (attack) {
+		const renderer = Renderer.get()
+		let out = []
+		let rangedTraits = []
+		if (attack.traits && attack.traits.length) rangedTraits = rangedTraits.concat(attack.traits.map(t => `{@trait ${t.toLowerCase()}}`))
+		if (attack.preciousMetal) rangedTraits = rangedTraits.concat(attack.preciousMetal)
+		if (attack.traitNote) rangedTraits.push(attack.traitNote)
+		rangedTraits.push(`${attack.range ? `range ${attack.reload || attack.rangedIncrement ? "increment" : ""} ${attack.range} feet` : ""}${attack.reload ? `, reload ${attack.reload}` : ""}`)
+
+		out.push(renderer.render(`<strong>Ranged</strong> {@as 1} `))
+		out.push(renderer.render(attack.name))
+		out.push(renderer.render(` (${rangedTraits.sort(SortUtil.sortTraits).join(", ")}), `))
+		out.push(renderer.render(`<strong>Damage</strong> {@damage ${attack.damage}} ${attack.damageType}${attack.damageType2 && attack.damage ? ` and {@damage ${attack.damage2}} ${attack.damageType2}` : ``}`))
+		if (attack.note) out.push(renderer.render(`. ${attack.note}`))
+		return out.join("")
+	},
+
+	getRenderedMeleeAttack (attack) {
+		const renderer = Renderer.get()
+		let out = []
+		let meleeTraits = []
+		if (attack.traits && attack.traits.length) meleeTraits = meleeTraits.concat(attack.traits.map(t => `{@trait ${t.toLowerCase()}}`))
+		if (attack.preciousMetal) meleeTraits = meleeTraits.concat(attack.preciousMetal)
+		if (attack.traitNote) meleeTraits.push(attack.traitNote)
+
+		out.push(renderer.render(`<strong>Melee</strong> {@as 1} `))
+		out.push(renderer.render(attack.name))
+		if (meleeTraits.length) { out.push(renderer.render(` (${meleeTraits.join(", ")}), `)) } else out.push(" ")
+		out.push(renderer.render(`<strong>Damage</strong> {@damage ${attack.damage}} ${attack.damageType}${attack.damageType2 && attack.damage ? ` and {@damage ${attack.damage2}} ${attack.damageType2}` : ``}`))
+		if (attack.note) out.push(renderer.render(` ${attack.note}.`))
 		return out.join("")
 	},
 
@@ -5018,7 +5059,7 @@ Renderer.item = {
 			if (item.category) {
 				renderStack.push(`<strong>Category&nbsp;</strong>`);
 				if (item.subCategory != null) renderStack.push(`${item.subCategory} `);
-				if (item.category === "Weapon") renderStack.push(`${item.weaponData.range ? "Ranged" : "Melee"} `);
+				if (item.category === "Weapon") renderStack.push(`${item.weaponData ? item.weaponData.range ? "Ranged" : "Melee" : ""} `);
 				renderStack.push(`${Array.isArray(item.category) ? item.category.join(", ") : item.category}${item.category === "Worn" ? `&nbsp;${item.type}` : ""}`);
 			}
 			if (item.category != null && group != null) renderStack.push("; ");

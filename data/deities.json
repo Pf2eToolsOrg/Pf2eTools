@@ -285,7 +285,7 @@
 						"name": "spine volley",
 						"range": 60,
 						"damage": "6d6+3",
-						"damageType2": "piercing"
+						"damageType": "piercing"
 					},
 					"preface": "When casting the {@spell avatar} spell, a worshipper of Achaekek gains the following additional abilities."
 				}
@@ -675,7 +675,27 @@
 				],
 				"avatar": {
 					"preface": "When casting the {@spell avatar} spell, a worshipper of Angazhan gains the following additional abilities.",
-					"entry": "{@b Angazhan} Speed 60 feet, climb Speed 60 feet, swim Speed 50 feet; {@b Melee} {@as 1} fist ({@trait agile}, {@trait reach 15 feet}), {@b Damage} {@damage 6d6+6} bludgeoning; {@b Ranged} {@as 1} {@b Bellowing Roar} (range increment 100 feet), Damage {@damage 6d6+3} mental"
+					"speed": {
+						"walk": 60,
+						"climb": 60,
+						"swim": 50
+					},
+					"melee": {
+						"name": "fist",
+						"damage": "6d6+6",
+						"damageType": "bludgeoning",
+						"traits": [
+							"reach 15 feet",
+							"agile"
+						]
+					},
+					"ranged": {
+						"name": "Bellowing Roar",
+						"damage": "6d6+3",
+						"range": 100,
+						"rangedIncrement": true,
+						"damageType": "mental"
+					}
 				}
 			},
 			"hasLore": true
@@ -869,7 +889,25 @@
 				],
 				"avatar": {
 					"preface": "When casting the {@spell avatar} spell, a worshipper of Mazludeh gains the following additional abilities.",
-					"entry": "{@b Luhar} Speed 70 feet, climb 50 feet, shield (15 hardness, can't be damaged); {@b Melee} {@as 1} viper strike ({@trait reach 15 feet}), {@b Damage} {@damage 6d10+6} piercing; {@b Ranged} {@as 1} stone rain (range 120 feet), {@b Damage} {@b 6d6+3} bludgeoning"
+					"speed": {
+						"walk": 70,
+						"climb": 50
+					},
+					"shield": 15,
+					"melee": {
+						"name": "viper strike",
+						"traits": [
+							"reach 15 feet"
+						],
+						"damage": "6d10+6",
+						"damageType": "piercing"
+					},
+					"ranged": {
+						"name": "stone rain",
+						"range": 120,
+						"damage": "6d6+3",
+						"damageType": "bludgeoning"
+					}
 				}
 			}
 		},
@@ -943,7 +981,28 @@
 				],
 				"avatar": {
 					"preface": "When casting the {@spell avatar} spell, a worshipper of Luhar gains the following additional abilities.",
-					"entry": "{@b Luhar} Speed 70 feet, ignore difficult terrain and greater difficult terrain; {@b Melee} {@as 1} spiked chain ({@trait disarm}, {@trait finesse}, {@trait trip}, {@trait reach 15 feet}), {@b Damage} {@damage 6d8+6} slashing; {@b Ranged} {@as 1} touch of mercy (range 120 feet), {@b Damage} {@b 6d6+3} negative"
+					"speed": {
+						"walk": 70
+					},
+					"ignoreTerrain": true,
+					"melee": {
+						"name": "spiked chain",
+						"traits": [
+							"disarm",
+							"finesse",
+							"trip",
+							"reach 15 feet"
+						],
+						"damage": "6d8+6",
+						"damageType": "slashing"
+					},
+					"ranged": {
+						"name": "touch of mercy",
+						"range": 120,
+						"rangedIncrement": true,
+						"damage": "6d6+3",
+						"damageType": "negative"
+					}
 				}
 			}
 		},
@@ -1016,7 +1075,27 @@
 				],
 				"avatar": {
 					"preface": "When casting the {@spell avatar} spell, a worshipper of Lubaiko gains the following additional abilities.",
-					"entry": "{@b Lubaiko} Speed 30 feet, fly speed 70 feet; {@b Melee} {@as 1} longspear ({@trait reach 20 feet}), {@b Damage} {@damage 6d12+6} piercing; {@b Ranged} {@as 1} flaming lightning ({@trait versatile fire}, range 120 feet), {@b Damage} {@b 6d6+3} electricity"
+					"speed": {
+						"walk": 30,
+						"fly": 70
+					},
+					"melee": {
+						"name": "longspear",
+						"traits": [
+							"reach 20 feet"
+						],
+						"damage": "6d12+6",
+						"damageType": "piercing"
+					},
+					"ranged": {
+						"name": "flaming lightning",
+						"traits": [
+							"versatile fire"
+						],
+						"range": 120,
+						"damage": "6d6+3",
+						"damageType": "electricity"
+					}
 				}
 			}
 		},
@@ -1091,7 +1170,25 @@
 				],
 				"avatar": {
 					"preface": "When casting the {@spell avatar} spell, a worshipper of Kalekot gains the following additional abilities.",
-					"entry": "{@b Kalekot} Speed 70 feet, ignore difficult terrain; {@b Melee} {@as 1} ivory fangs ({@trait fatal d10}, {@trait reach 10 feet}), {@b Damage} {@damage 6d6+6} piercing; {@b Ranged} {@as 1} whisper of unmaking (range 120 feet), {@b Damage} {@b 6d6+3} slashing"
+					"speed": {
+						"walk": 70
+					},
+					"ignoreTerrain": true,
+					"melee": {
+						"name": "ivory fangs",
+						"traits": [
+							"fatal d10",
+							"reach 10 feet"
+						],
+						"damage": "6d6+6",
+						"damageType": "piercing"
+					},
+					"ranged": {
+						"name": "whisper of unmaking",
+						"range": 120,
+						"damage": "6d6+3",
+						"damageType": "slashing"
+					}
 				}
 			}
 		},
@@ -1165,7 +1262,27 @@
 				],
 				"avatar": {
 					"preface": "When casting the {@spell avatar} spell, a worshipper of Chohar gains the following additional abilities.",
-					"entry": "{@b Chohar} Speed 70 feet, {@spell air walk}; {@b Melee} {@as 1} slam ({@trait agile}, {@trait reach 15 feet}), {@b Damage} {@damage 5d6+6} piercing plus {@damage 1d6} fire damage; {@b Ranged} {@as 1} sunbeam (range 120 feet), {@b Damage} {@damage 6d6+6} fire"
+					"speed": {
+						"walk": 70
+					},
+					"airWalk": true,
+					"melee": {
+						"name": "slam",
+						"traits": [
+							"agile",
+							"reach 15 feet"
+						],
+						"damage": "5d6+6",
+						"damageType": "piercing",
+						"damage2": "1d6",
+						"damageType2": "fire"
+					},
+					"ranged": {
+						"name": "sunbeam",
+						"range": 120,
+						"damage": "6d6+6",
+						"damageType": "fire"
+					}
 				}
 			}
 		},
@@ -1232,7 +1349,27 @@
 				],
 				"avatar": {
 					"preface": "When casting the {@spell avatar} spell, a worshipper of Balumbdar gains the following additional abilities.",
-					"entry": "{@b Balumbdar} Speed 70 feet, climb 50 feet, immune to {@condition immobilized}; {@b Melee} {@as 1} slam ({@trait reach 15 feet}), {@b Damage} {@damage 6d12+4} bludgeoning; {@b Ranged} {@as 1} overbearing pressure (range 120 feet), {@b Damage} {@damage 6d6+3} bludgeoning"
+					"speed": {
+						"walk": 70,
+						"climb": 50
+					},
+					"immune": [
+						"immobilized"
+					],
+					"melee": {
+						"name": "slam",
+						"traits": [
+							"reach 15 feet"
+						],
+						"damage": "6d12+4",
+						"damageType": "bludgeoning"
+					},
+					"ranged": {
+						"name": "overbearing pressure",
+						"range": 120,
+						"damage": "6d6+3",
+						"damageType": "bludgeoning"
+					}
 				}
 			}
 		},
@@ -1425,7 +1562,28 @@
 				],
 				"avatar": {
 					"preface": "When casting the {@spell avatar} spell, a worshipper of Arazni gains the following additional abilities.",
-					"entry": "{@b Arazni} Speed 70 feet, air walk, immune to {@condition immobilized}; Melee {@as 1} rapier ({@trait deadly 3d8}, {@trait reach 15 feet}), Damage {6d8+6} piercing; Ranged {@as 1} call blood (range 120 feet), Damage {@damage 6d6} {@condition persistent damage|CRB|persistent bleed damage}"
+					"speed": {
+						"walk": 70
+					},
+					"airWalk": true,
+					"immune": [
+						"immobilized"
+					],
+					"melee": {
+						"name": "rapier",
+						"traits": [
+							"deadly 3d8",
+							"reach 15 feet"
+						],
+						"damage": "6d8+6",
+						"damageType": "piercing"
+					},
+					"ranged": {
+						"name": "call blood",
+						"range": 120,
+						"damage": "6d6",
+						"damageType": "persistent bleed damage"
+					}
 				}
 			},
 			"hasLore": true,
@@ -1820,7 +1978,24 @@
 					"mace"
 				],
 				"avatar": {
-					"entry": "Speed 70 feet, air walk; Melee {@as 1} mace ({@trait reach 15 feet}), Damage {@damage 6d10+6} bludgeoning; Ranged {@as 1} hellfire (range 120 feet), Damage {@damage 6d6+3} fire."
+					"speed": {
+						"walk": 70
+					},
+					"airWalk": true,
+					"melee": {
+						"name": "mace",
+						"traits": [
+							"reach 15 feet"
+						],
+						"damage": "6d10+6",
+						"damageType": "bludgeoning"
+					},
+					"ranged": {
+						"name": "hellfire",
+						"range": 120,
+						"damage": "6d6+3",
+						"damageType": "fire"
+					}
 				}
 			},
 			"intercession": {
@@ -2565,7 +2740,30 @@
 				],
 				"avatar": {
 					"preface": "When casting the {@spell avatar} spell, a worshipper of Besmara gains the following additional abilities.",
-					"entry": "{@b Besmara} Speed 40 feet, swim Speed 70 feet, immune to {@condition immobilized}; Melee {@as 1} rapier ({@trait deadly 3d8}, {@trait disarm}, {@trait finesse}, {@trait reach 15 feet}), Damage {@damage 6d6+6} piercing; Ranged {@as 1} ship's cannon (range 120 feet), Damage {@damage 6d6+3} bludgeoning"
+					"speed": {
+						"walk": 40,
+						"swim": 70
+					},
+					"immune": [
+						"immobilized"
+					],
+					"melee": {
+						"name": "rapier",
+						"traits": [
+							"deadly 3d8",
+							"disarm",
+							"finesse",
+							"reach 15 feet"
+						],
+						"damage": "6d6+6",
+						"damageType": "piercing"
+					},
+					"ranged": {
+						"name": "ship's cannon",
+						"range": 120,
+						"damage": "6d6+3",
+						"damageType": "bludgeoning"
+					}
 				}
 			},
 			"hasLore": true,
@@ -2763,7 +2961,29 @@
 				],
 				"avatar": {
 					"preface": "When casting the {@spell avatar} spell, a worshipper of Brigh gains the following additional abilities.",
-					"entry": "{@b Brigh} Speed 60 feet, immune to {@condition immobilized}, air walk; Melee {@as 1} light hammer ({@trait agile}, {@trait reach 15 feet}, {@trait thrown 40 feet}), Damage {@damage 6d6+6} bludgeoning; Ranged {@as 1} bolt of molten bronze (range 120 feet), Damage {@damage 6d8+3} fire"
+					"speed": {
+						"walk": 60
+					},
+					"airWalk": true,
+					"immune": [
+						"immobilized"
+					],
+					"melee": {
+						"name": "light hammer",
+						"traits": [
+							"agile",
+							"reach 15 feet",
+							"thrown 40 feet"
+						],
+						"damage": "6d6+6",
+						"damageType": "bludgeoning"
+					},
+					"ranged": {
+						"name": "bolt of molten bronze",
+						"range": 120,
+						"damage": "6d8+3",
+						"damageType": "fire"
+					}
 				}
 			},
 			"hasLore": true,
@@ -2841,7 +3061,27 @@
 					"whip"
 				],
 				"avatar": {
-					"entry": "Speed 30 feet, fly Speed 70 feet; Melee {@as 1} whip ({@trait disarm}, {@trait finesse}, {@trait nonlethal}, {@trait reach 20 feet}), Damage {@damage 6d4+6} slashing; Ranged {@as 1} savored sting (range 60 feet), Damage {@damage 6d6+3} poison."
+					"speed": {
+						"walk": 30,
+						"fly": 70
+					},
+					"melee": {
+						"name": "whip",
+						"traits": [
+							"disarm",
+							"finesse",
+							"nonlethal",
+							"reach 20 feet"
+						],
+						"damage": "6d4+6",
+						"damageType": "slashing"
+					},
+					"ranged": {
+						"name": "savored sting",
+						"range": 60,
+						"damage": "6d6+3",
+						"damageType": "poison"
+					}
 				}
 			},
 			"intercession": {
@@ -2945,7 +3185,25 @@
 				],
 				"avatar": {
 					"preface": "When casting the {@spell avatar} spell, a worshipper of Casandalee gains the following additional abilities.",
-					"entry": "{@b Casandalee} Speed 70 feet, air walk, ignore {@quickref difficult terrain||3|terrain} and {@quickref greater difficult terrain||3|terrain}; Melee {@as 1} polytool ({@trait reach 15 feet}), Damage {@damage 6d6+6} slashing; Ranged {@as 1} logic blast (range 120 feet), Damage {@damage 6d6+3} mental"
+					"speed": {
+						"walk": 70
+					},
+					"airWalk": true,
+					"ignoreTerrain": true,
+					"melee": {
+						"name": "polytool",
+						"traits": [
+							"reach 15 feet"
+						],
+						"damage": "6d6+6",
+						"damageType": "slashing"
+					},
+					"ranged": {
+						"name": "logic blast",
+						"range": 120,
+						"damage": "6d6+3",
+						"damageType": "mental"
+					}
 				}
 			},
 			"hasLore": true,
@@ -3024,7 +3282,26 @@
 					"rapier"
 				],
 				"avatar": {
-					"entry": "Speed 70 feet, air walk, ignore {@quickref difficult terrain||3|terrain} and {@quickref greater difficult terrain||3|terrain}; Melee {@as 1} rapier ({@trait deadly}, {@trait reach 15 feet}), Damage {@damage 6d6+6} piercing; Ranged {@as 1} ale splash (range 120 feet), Damage {@damage 6d6+3} poison."
+					"speed": {
+						"walk": 70
+					},
+					"airWalk": true,
+					"ignoreTerrain": true,
+					"melee": {
+						"name": "rapier",
+						"traits": [
+							"deadly",
+							"reach 15 feet"
+						],
+						"damage": "6d6+6",
+						"damageType": "piercing"
+					},
+					"ranged": {
+						"name": "ale splash",
+						"range": 120,
+						"damage": "6d6+3",
+						"damageType": "poison"
+					}
 				}
 			},
 			"intercession": {
@@ -3185,7 +3462,33 @@
 				],
 				"avatar": {
 					"preface": "When casting the {@spell avatar} spell, a worshipper of Chaldira gains the following additional abilities.",
-					"entry": "{@b Chaldira} Speed 70 feet, air walk, immune to {@condition immobilized}; Melee {@as 1} shortsword ({@trait agil}e, {@trait finesse}, {@trait reach 15 feet}, {@trait versatile S}), Damage {@damage 6d6+6} piercing; Ranged {@as 1} fistful of buttons ({@trait nonlethal}, range 120 feet), Damage {@damage 6d6+3} bludgeoning"
+					"speed": {
+						"walk": 70
+					},
+					"airWalk": true,
+					"immune": [
+						"immobilized"
+					],
+					"melee": {
+						"damage": "6d6+6",
+						"name": "shortsword",
+						"damageType": "piercing",
+						"traits": [
+							"agile",
+							"finesse",
+							"reach 15 feet",
+							"versatile S"
+						]
+					},
+					"ranged": {
+						"name": "fistful of buttons",
+						"traits": [
+							"nonlethal"
+						],
+						"range": 120,
+						"damage": "6d6+3",
+						"damageType": "bludgeoning"
+					}
 				}
 			},
 			"hasLore": true,
@@ -3832,7 +4135,34 @@
 					"starknife"
 				],
 				"avatar": {
-					"entry": "Speed 30 feet, fly Speed 70 feet; Melee {@as 1} starknife ({@trait agile}, {@trait deadly}, {@trait finesse}, {@trait reach 15 feet}, silver, {@trait thrown 60 feet}), Damage {@damage 6d4+6} piercing; Ranged {@as 1} moonbeam (range 120 feet, silver), Damage {@damage 6d6+3} fire."
+					"speed": {
+						"walk": 30,
+						"fly": 70
+					},
+					"melee": {
+						"name": "starknife",
+						"traits": [
+							"agile",
+							"deadly",
+							"finesse",
+							"reach 15 feet",
+							"thrown 60 feet"
+						],
+						"preciousMetal": [
+							"silver"
+						],
+						"damage": "6d4+6",
+						"damageType": "piercing"
+					},
+					"ranged": {
+						"damage": "6d6+3",
+						"damageType": "fire",
+						"name": "moonbeam",
+						"range": 120,
+						"preciousMetal": [
+							"silver"
+						]
+					}
 				}
 			},
 			"intercession": {
@@ -4495,7 +4825,21 @@
 					"longbow"
 				],
 				"avatar": {
-					"entry": "Speed 70 feet, air walk, ignore {@quickref difficult terrain||3|terrain} and {@quickref greater difficult terrain||3|terrain}; Ranged {@as 1} longbow ({@trait deadly d8}, range increment 150 feet), Damage {@damage 6d8+3} piercing."
+					"speed": {
+						"walk": 70
+					},
+					"airWalk": true,
+					"ignoreTerrain": true,
+					"ranged": {
+						"name": "longbow",
+						"range": 150,
+						"rangedIncrement": true,
+						"traits": [
+							"deadly d8"
+						],
+						"damage": "6d8+3",
+						"damageType": "piercing"
+					}
 				}
 			},
 			"intercession": {
@@ -5362,7 +5706,21 @@
 					"greatsword"
 				],
 				"avatar": {
-					"entry": "Speed 70 feet, immune to {@condition immobilized}; Melee {@as 1} greatsword ({@trait versatile P}, {@trait reach 15 feet}), Damage {@damage 6d12+6} slashing."
+					"speed": {
+						"walk": 70
+					},
+					"immune": [
+						"immobilized"
+					],
+					"melee": {
+						"damage": "6d12+6",
+						"damageType": "slashing",
+						"name": "greatsword",
+						"traits": [
+							"versatile P",
+							"reach 15 feet"
+						]
+					}
 				}
 			},
 			"intercession": {
@@ -5474,7 +5832,30 @@
 					"trident"
 				],
 				"avatar": {
-					"entry": "{@b Gozreh} no land Speed, fly Speed 70 feet, swim Speed 70 feet; ignore {@quickref difficult terrain||3|terrain} and {@quickref greater difficult terrain||3|terrain}; Melee {@as 1} waves ({@trait shove}, {@trait reach 15 feet}, thrown 20 feet), Damage {@damage 6d8+6} bludgeoning; Ranged {@as 1} wind ({@trait versatile electricity}, range 120 feet}), Damage {@damage 6d6+3} bludgeoning."
+					"speed": {
+						"fly": 70,
+						"swim": 70
+					},
+					"ignoreTerrain": true,
+					"melee": {
+						"name": "waves",
+						"traits": [
+							"shove",
+							"reach 15 feet",
+							"thrown 20 feet"
+						],
+						"damage": "6d8+6",
+						"damageType": "bludgeoning"
+					},
+					"ranged": {
+						"name": "wind",
+						"traits": [
+							"versatile electricity"
+						],
+						"range": 120,
+						"damage": "6d6+3",
+						"damageType": "bludgeoning"
+					}
 				}
 			},
 			"intercession": {
@@ -5586,7 +5967,30 @@
 				],
 				"avatar": {
 					"preface": "When casting the {@spell avatar} spell, a worshipper of Grandmother Spider gains the following additional abilities.",
-					"entry": "{@b Grandmother Spider} Speed 70 feet, climb Speed 70 feet, immune to {@condition immobilized}; Melee {@as 1} leg ({@trait deadly 3d8}, {@trait finesse}, {@trait reach 15 feet}, {@trait versatile P}), Damage {@damage 6d6+6} bludgeoning; Ranged {@as 1} venom web (range 120 feet), Damage {@damage 6d6+3} poison"
+					"speed": {
+						"walk": 70,
+						"climb": 70
+					},
+					"immune": [
+						"immobilized"
+					],
+					"melee": {
+						"name": "leg",
+						"traits": [
+							"deadly 3d8",
+							"finesse",
+							"reach 15 feet",
+							"versatile P"
+						],
+						"damage": "6d6+6",
+						"damageType": "bludgeoning"
+					},
+					"ranged": {
+						"name": "venom web",
+						"range": 120,
+						"damage": "6d6+3",
+						"damageType": "poison"
+					}
 				}
 			},
 			"hasLore": true,
@@ -5709,7 +6113,28 @@
 				],
 				"avatar": {
 					"preface": "When casting the {@spell avatar} spell, a worshipper of Groetus gains the following additional abilities.",
-					"entry": "{@b Groetus} Speed 70 feet, air walk, ignore {@quickref difficult terrain||3|terrain} and {@quickref greater difficult terrain||3|terrain}; Melee {@as 1} war flail ({@trait disarm}, {@trait reach 15 feet}, {@trait sweep}, {@trait trip}), Damage {@damage 6d10+6} bludgeoning; Ranged {@as 1} dreadful thought (range 120 feet), Damage {@damage 6d6+3} mental"
+					"speed": {
+						"walk": 70
+					},
+					"airWalk": true,
+					"ignoreTerrain": true,
+					"melee": {
+						"name": "war flail",
+						"traits": [
+							"disarm",
+							"reach 15 feet",
+							"sweep",
+							"trip}"
+						],
+						"damage": "6d10+6",
+						"damageType": "bludgeoning"
+					},
+					"ranged": {
+						"name": "dreadful thought",
+						"range": 120,
+						"damage": "6d6+3",
+						"damageType": "mental"
+					}
 				}
 			},
 			"hasLore": true,
@@ -5785,7 +6210,31 @@
 				],
 				"avatar": {
 					"preface": "When casting the {@spell avatar} spell, a worshipper of Gruhastha gains the following additional abilities.",
-					"entry": "{@b Gruhastha} Speed 50 feet, fly Speed 70 feet; Melee {@as 1} fist ({@trait agile}, {@trait finesse}, {@trait nonlethal}, {@trait reach 15 feet}), Damage {@damage 6d6+6} bludgeoning; Ranged {@as 1} arrow of enlightenment ({@trait deadly 3d10}, range increment 120 feet), Damage {@damage 6d6+3} piercing"
+					"speed": {
+						"walk": 50,
+						"fly": 70
+					},
+					"melee": {
+						"name": "fist",
+						"traits": [
+							"agile",
+							"finesse",
+							"nonlethal",
+							"reach 15 feet"
+						],
+						"damage": "6d6+6",
+						"damageType": "bludgeoning"
+					},
+					"ranged": {
+						"name": "arrow of enlightenment",
+						"traits": [
+							"deadly 3d10"
+						],
+						"range": 120,
+						"rangedIncrement": true,
+						"damage": "6d6+3",
+						"damageType": "piercing"
+					}
 				}
 			},
 			"hasLore": true,
@@ -6229,7 +6678,35 @@
 				],
 				"avatar": {
 					"preface": "When casting the {@spell avatar} spell, a worshipper of Hei Feng gains the following additional abilities.",
-					"entry": "{@b Hei Feng} Speed 70 feet, air walk, ignore {@quickref difficult terrain||3|terrain} and {@quickref greater difficult terrain||3|terrain}; Melee {@as 1} drunken sword ({@trait forceful}, {@trait reach 15 feet}), Damage {@damage 4d6+6} slashing plus {@damage 1d6} electricity splash damage; Ranged {@as 1} storm surge (range 120 feet, {@trait air}, {@trait water}), Damage {@damage 4d6+3} bludgeoning plus {@damage 1d6} electricity splash damage. The caster is immune to this splash damage."
+					"speed": {
+						"walk": 70
+					},
+					"airWalk": true,
+					"ignoreTerrain": true,
+					"melee": {
+						"name": "drunken sword",
+						"traits": [
+							"forceful",
+							"reach 15 feet"
+						],
+						"damage": "4d6+6",
+						"damageType": "slashing",
+						"damage2": "1d6",
+						"damageType2": "electricity splash"
+					},
+					"ranged": {
+						"name": "storm surge",
+						"traits": [
+							"air",
+							"water"
+						],
+						"damage": "4d6+3",
+						"damageType": "bludgeoning",
+						"damage2": "1d6",
+						"range": 120,
+						"damageType2": "electricity splash",
+						"note": "The caster is immune to this splash damage"
+					}
 				}
 			},
 			"hasLore": true,
@@ -6557,7 +7034,20 @@
 					"longsword"
 				],
 				"avatar": {
-					"entry": "Speed 70 feet, air walk; shield (15 Hardness, can't be damaged); Melee {@as 1} longsword ({@trait versatile P}, {@trait reach 15 feet}), Damage {@damage 6d8+6} slashing."
+					"speed": {
+						"walk": 70
+					},
+					"airWalk": true,
+					"shield": 15,
+					"melee": {
+						"name": "longsword",
+						"traits": [
+							"versatile P",
+							"reach 15 feet"
+						],
+						"damage": "6d8+6",
+						"damageType": "slashing"
+					}
 				}
 			},
 			"intercession": {
@@ -6734,7 +7224,27 @@
 					"fist"
 				],
 				"avatar": {
-					"entry": "Speed 80 feet, air walk; Melee {@as 1} unfettered strike ({@trait agile}, {@trait versatile P or S}, {@trait finesse}, {@trait reach 15 feet}), Damage {@damage 6d8+6} bludgeoning; Ranged {@as 1} wind strike (range 60 feet}), Damage {@damage 6d4+6} bludgeoning."
+					"speed": {
+						"walk": 80
+					},
+					"airWalk": true,
+					"melee": {
+						"name": "unfettered strike",
+						"damage": "6d8+6",
+						"damageType": "bludgeoning",
+						"traits": [
+							"agile",
+							"versatile P or S",
+							"finesse",
+							"reach 15 feet"
+						]
+					},
+					"ranged": {
+						"name": "wind strike",
+						"damage": "6d4+6",
+						"damageType": "bludgeoning",
+						"range": 60
+					}
 				}
 			},
 			"intercession": {
@@ -7102,7 +7612,27 @@
 				],
 				"avatar": {
 					"preface": "When casting the {@spell avatar} spell, a worshipper of Kazutal gains the following additional abilities.",
-					"entry": "{@b Kazutal} Speed 60 feet, ignore {@quickref difficult terrain||3|terrain}; Melee {@as 1} machete ({@trait agile}, {@trait reach 15 feet}), Damage {@damage 6d6+6} slashing; Ranged {@as 1} jaguar pounce (range 60 feet); Damage {@damage 5d6+3} piercing plus {@damage 1d6} {@condition persistent damage|CRB|persistent bleed}"
+					"speed": {
+						"walk": 60
+					},
+					"ignoreTerrain": true,
+					"melee": {
+						"name": "machete",
+						"traits": [
+							"agile",
+							"reach 15 feet"
+						],
+						"damage": "6d6+6",
+						"damageType": "slashing"
+					},
+					"ranged": {
+						"name": "jaguar pounce",
+						"range": 60,
+						"damage": "5d6+3",
+						"damageType": "piercing",
+						"damage2": "1d6",
+						"damageType2": "persistent bleed"
+					}
 				}
 			},
 			"hasLore": true,
@@ -7662,7 +8192,34 @@
 				],
 				"avatar": {
 					"preface": "When casting the {@spell avatar} spell, a worshipper of Kurgess gains the following additional abilities.",
-					"entry": "{@b Kurgess} Speed 70 feet, climb Speed 50 feet, swim Speed 50 feet, immune to {@condition immobilized}; Melee {@as 1} lashing chain ({@trait disarm}, {@trait reach 20 feet}, {@trait trip}), Damage {@damage 6d6+6} bludgeoning; Ranged {@as 1} javelin (range increment 60 feet, {@trait thrown}), Damage {@damage 6d6+3} piercing"
+					"speed": {
+						"walk": 70,
+						"climb": 50,
+						"swim": 50
+					},
+					"immune": [
+						"immobilized"
+					],
+					"melee": {
+						"name": "lashing chain",
+						"traits": [
+							"disarm",
+							"reach 20 feet",
+							"trip"
+						],
+						"damage": "6d6+6",
+						"damageType": "bludgeoning"
+					},
+					"ranged": {
+						"name": "javelin",
+						"range": 60,
+						"rangedIncrement": true,
+						"traits": [
+							"thrown"
+						],
+						"damage": "6d6+3",
+						"damageType": "piercing"
+					}
 				}
 			},
 			"hasLore": true,
@@ -7923,7 +8480,25 @@
 					"falchion"
 				],
 				"avatar": {
-					"entry": "Speed 30 feet, fly Speed 70 feet; Melee {@as 1} falchion (forceful, {@trait reach 15 feet}), Damage {@damage 6d10+6} slashing; Ranged {@as 1} waters of Lamashtu (range 120 feet), Damage {@damage 6d6+3} poison."
+					"speed": {
+						"walk": 30,
+						"fly": 70
+					},
+					"melee": {
+						"name": "falchion",
+						"traits": [
+							"forceful",
+							"reach 15 feet"
+						],
+						"damage": "6d10+6",
+						"damageType": "slashing"
+					},
+					"ranged": {
+						"name": "waters of Lamashtu",
+						"range": 120,
+						"damage": "6d6+3",
+						"damageType": "poison"
+					}
 				}
 			},
 			"intercession": {
@@ -8803,7 +9378,20 @@
 				],
 				"avatar": {
 					"preface": "When casting the {@spell avatar} spell, a worshipper of Milani gains the following additional abilities.",
-					"entry": "{@b Milani} Speed 50 feet, fly Speed 70 feet; shield (15 Hardness, can't be damaged); Melee {@as 1} morningstar ({@trait versatile P}, {@trait reach 15 feet}), Damage {@damage 6d8+6} bludgeoning"
+					"speed": {
+						"walk": 50,
+						"fly": 70
+					},
+					"shield": 15,
+					"melee": {
+						"name": "morningstar",
+						"traits": [
+							"versatile P",
+							"reach 15 feet"
+						],
+						"damage": "6d8+6",
+						"damageType": "bludgeoning"
+					}
 				}
 			},
 			"hasLore": true,
@@ -9357,7 +9945,19 @@
 					"staff"
 				],
 				"avatar": {
-					"entry": "Speed 70 feet, air walk; Ranged {@as 1} raw magic (range 120 feet; {@trait versatile cold, electricity, or fire}), Damage {@damage 6d6} force."
+					"speed": {
+						"walk": 70
+					},
+					"ranged": {
+						"name": "raw magic",
+						"range": 120,
+						"traits": [
+							"versatile cold, electricity, or fire"
+						],
+						"damage": "6d6",
+						"damageType": "force"
+					},
+					"airWalk": true
 				}
 			},
 			"intercession": {
@@ -9519,7 +10119,22 @@
 				],
 				"avatar": {
 					"preface": "When casting the {@spell avatar} spell, a worshipper of Nivi Rhombodazzle gains the following additional abilities.",
-					"entry": "{@b Nivi Rhombodazzle} Speed 50 feet, burrow Speed 30 feet, immune to {@condition immobilized}; Melee {@as 1} {@item returning} light hammer ({@trait agile}, {@trait thrown 40 feet}), Damage {@damage 6d6+6} bludgeoning"
+					"speed": {
+						"walk": 50,
+						"burrow": 30
+					},
+					"immune": [
+						"immobilized"
+					],
+					"melee": {
+						"name": "returning light hammer",
+						"traits": [
+							"agile",
+							"thrown 40 feet"
+						],
+						"damage": "6d6+6",
+						"damageType": "bludgeoning"
+					}
 				}
 			},
 			"hasLore": true,
@@ -9589,7 +10204,31 @@
 				],
 				"avatar": {
 					"preface": "When casting the {@spell avatar} spell, a worshipper of Nocticula gains the following additional abilities.",
-					"entry": "{@b Nocticula} Speed 70 feet, fly Speed 70 feet; Melee {@as 1} tail stinger ({@trait agile}, {@trait finesse}, {@trait reach 15 feet}, {@trait trip}), Damage {@damage 6d6+6} slashing; Ranged {@as 1} magnanimous smile ({@trait nonlethal}, range 120 feet, {@trait visual}), Damage {@damage 6d6+3} mental"
+					"speed": {
+						"walk": 70,
+						"fly": 70
+					},
+					"melee": {
+						"name": "tail stinger",
+						"traits": [
+							"agile",
+							"finesse",
+							"reach 15 feet",
+							"trip"
+						],
+						"damage": "6d6+6",
+						"damageType": "slashing"
+					},
+					"ranged": {
+						"name": "magnanimous smile",
+						"traits": [
+							"nonlethal",
+							"visual"
+						],
+						"range": 120,
+						"damage": "6d6+3",
+						"damageType": "mental"
+					}
 				}
 			},
 			"hasLore": true,
@@ -9672,7 +10311,28 @@
 					"shortsword"
 				],
 				"avatar": {
-					"entry": "Speed 70 feet, air walk, ignore {@quickref difficult terrain||3|terrain} and {@quickref greater difficult terrain||3|terrain}; Melee {@as 1} shortsword ({@trait agile}, {@trait finesse}, {@trait versatile S}, {@trait reach 15 feet}), Damage {@damage 6d6+6} piercing; Ranged {@as 1} blackfinger toss (range 120 feet), Damage {@damage 6d6+3} poison."
+					"speed": {
+						"walk": 70
+					},
+					"ignoreTerrain": true,
+					"airWalk": true,
+					"melee": {
+						"name": "shortsword",
+						"traits": [
+							"agile",
+							"finesse",
+							"versatile S",
+							"reach 15 feet"
+						],
+						"damage": "6d6+6",
+						"damageType": "piercing"
+					},
+					"ranged": {
+						"name": "blackfinger toss",
+						"range": 120,
+						"damage": "6d6+3",
+						"damageType": "poison"
+					}
 				}
 			},
 			"intercession": {
@@ -10104,7 +10764,28 @@
 					"dagger"
 				],
 				"avatar": {
-					"entry": "Speed 70 feet, air walk; Melee {@as 1} dagger ({@trait agile}, {@trait finesse}, {@trait reach 15 feet}, thrown 40 feet), Damage {@damage 6d6+6} slashing; Ranged {@as 1} spiral blast (range 120 feet, damages only undead), Damage {@damage 6d8+3} positive."
+					"speed": {
+						"walk": 70
+					},
+					"airWalk": true,
+					"melee": {
+						"name": "dagger",
+						"traits": [
+							"agile",
+							"finesse",
+							"reach 15 feet",
+							"thrown 40 feet"
+						],
+						"damage": "6d6+6",
+						"damageType": "slashing"
+					},
+					"ranged": {
+						"name": "spiral blast",
+						"range": 120,
+						"traitNote": "damages only undead",
+						"damage": "6d8+3",
+						"damageType": "positive"
+					}
 				}
 			},
 			"intercession": {
@@ -10698,7 +11379,33 @@
 					"greataxe"
 				],
 				"avatar": {
-					"entry": "Speed 50 feet, burrow Speed 30 feet, immune to {@condition immobilized}; Melee {@as 1} jaws ({@trait reach 15 feet}), Damage {@damage 6d12+6} piercing; Melee {@as 1} leg ({@trait agile}, {@trait versatile P}, {@trait reach 15 feet}), Damage {@damage 6d8+6} bludgeoning."
+					"speed": {
+						"walk": 50,
+						"burrow": 30
+					},
+					"immune": [
+						"immobilized"
+					],
+					"melee": [
+						{
+							"name": "jaws",
+							"traits": [
+								"reach 15 feet"
+							],
+							"damage": "6d12+6",
+							"damageType": "piercing"
+						},
+						{
+							"name": "leg",
+							"traits": [
+								"agile",
+								"versatile P",
+								"reach 15 feet"
+							],
+							"damage": "6d8+6",
+							"damageType": "bludgeoning"
+						}
+					]
 				}
 			},
 			"intercession": {
@@ -10973,7 +11680,23 @@
 					"scimitar"
 				],
 				"avatar": {
-					"entry": "Speed 30 feet, fly Speed 70 feet; Melee {@as 1} scimitar (forceful, {@trait nonlethal}, {@trait reach 15 feet}), Damage {@damage 6d6+6} slashing; Ranged {@as 1} everflame ({@trait nonlethal}, range 120 feet), Damage {@damage 6d6+3} fire."
+					"speed": {
+						"walk": 30,
+						"fly": 70
+					},
+					"melee": {
+						"name": "scimitar",
+						"traits": ["forceful", "nonlethal", "reach 15 feet"],
+						"damage": "6d6+6",
+						"damageType": "slashing"
+					},
+					"ranged": {
+						"name": "everflame",
+						"traits": ["nonlethal"],
+						"range": 120,
+						"damage": "6d6+3",
+						"damageType": "fire"
+					}
 				}
 			},
 			"intercession": {
@@ -11333,7 +12056,24 @@
 					"glaive"
 				],
 				"avatar": {
-					"entry": "Speed 70 feet, air walk, ignore {@quickref difficult terrain||3|terrain} and {@quickref greater difficult terrain||3|terrain}; Melee {@as 1} glaive ({@trait deadly d8}, {@trait nonlethal}, {@trait reach 20 feet}), Damage {@damage 6d8+6} slashing; Ranged {@as 1} melody of inner beauty, ({@trait nonlethal}, range 120 feet), Damage {@damage 6d6+3} sonic."
+					"speed": {
+						"walk": 70
+					},
+					"airWalk": true,
+					"ignoreTerrain": true,
+					"melee": {
+						"name": "glaive",
+						"traits": ["deadly d8", "nonlethal", "reach 20 feet"],
+						"damage": "6d8+6",
+						"damageType": "slashing"
+					},
+					"ranged": {
+						"name": "melody of inner beauty",
+						"traits": ["nonlethal"],
+						"range": 120,
+						"damage": "6d6+3",
+						"damageType": "sonic"
+					}
 				}
 			},
 			"intercession": {
@@ -11436,7 +12176,23 @@
 				],
 				"avatar": {
 					"preface": "When casting the {@spell avatar} spell, a worshipper of Shizuru gains the following additional abilities.",
-					"entry": "{@b Shizuru} Speed 70 feet, air walk, ignore {@quickref difficult terrain||3|terrain} and {@quickref greater difficult terrain||3|terrain}; Melee {@as 1} katana ({@trait deadly 3d8}, {@trait two-hand d10}, {@trait reach 15 feet}, {@trait versatile P}), Damage {@damage 6d6+6} slashing; Ranged {@as 1} sunbolt arrow (range 120 feet), Damage {@damage 6d6+3} fire"
+					"speed": {
+						"walk": 70
+					},
+					"airWalk": true,
+					"ignoreTerrain": true,
+					"melee": {
+						"name": "katana",
+						"damage": "6d6+6",
+						"damageType": "slashing",
+						"traits": ["deadly 3d8", "two-hand d10", "reach 15 feet", "versatile P"]
+					},
+					"ranged": {
+						"name": "sunbolt arrow",
+						"damage": "6d6+3",
+						"range": 120,
+						"damageType": "fire"
+					}
 				}
 			},
 			"hasLore": true,
@@ -11582,7 +12338,28 @@
 				],
 				"avatar": {
 					"preface": "When casting the {@spell avatar} spell, a worshipper of Sivanah gains the following additional abilities.",
-					"entry": "{@b Sivanah} Speed 70 feet, air walk, ignore {@quickref difficult terrain||3|terrain} and {@quickref greater difficult terrain||3|terrain}; Melee {@as 1} bladed scarf ({@trait disarm}, {@trait finesse}, {@trait reach 15 feet}, {@trait trip}), Damage {@damage 6d8+6} slashing; Ranged {@as 1} illusory assault (range 120 feet), Damage {@damage 6d6+3} mental"
+					"speed": {
+						"walk": 70
+					},
+					"airWalk": true,
+					"ignoreTerrain": true,
+					"melee": {
+						"name": "bladed scarf",
+						"traits": [
+							"disarm",
+							"finesse",
+							"reach 15 feet",
+							"trip"
+						],
+						"damage": "6d8+6",
+						"damageType": "slashing"
+					},
+					"ranged": {
+						"name": "illusory assault",
+						"range": 120,
+						"damage": "6d6+3",
+						"damageType": "mental"
+					}
 				}
 			},
 			"hasLore": true,
@@ -12783,7 +13560,31 @@
 				],
 				"avatar": {
 					"preface": "When casting the {@spell avatar} spell, a worshipper of Tsukiyo gains the following additional abilities.",
-					"entry": "{@b Tsukiyo} Speed 70 feet, air walk, ignore {@quickref difficult terrain||3|terrain} and {@quickref greater difficult terrain||3|terrain}; Melee {@as 1} longspear ({@trait reach 20 feet}), Damage {@damage 6d10+6} piercing; Ranged {@as 1} moonbeam ({@trait nonlethal}, range 120 feet, silver), Damage {@damage 6d6+3} mental"
+					"speed": {
+						"walk": 70
+					},
+					"airWalk": true,
+					"ignoreTerrain": true,
+					"melee": {
+						"name": "longspear",
+						"traits": [
+							"reach 20 feet"
+						],
+						"damage": "6d10+6",
+						"damageType": "piercing"
+					},
+					"ranged": {
+						"name": "moonbeam",
+						"traits": [
+							"nonlethal"
+						],
+						"range": 120,
+						"preciousMetal": [
+							"silver"
+						],
+						"damage": "6d6+3",
+						"damageType": "mental"
+					}
 				}
 			},
 			"hasLore": true,
@@ -12866,7 +13667,26 @@
 					"scythe"
 				],
 				"avatar": {
-					"entry": "Speed 70 feet, air walk; Melee {@as 1} scythe ({@trait deadly d10}, {@trait trip}, {@trait reach 15 feet}), Damage {@damage 6d10+6} slashing; Ranged {@as 1} pallid plague (range 120 feet), Damage {@damage 6d6+3} negative."
+					"speed": {
+						"walk": 70
+					},
+					"airWalk": true,
+					"melee": {
+						"name": "scythe",
+						"traits": [
+							"deadly d10",
+							"trip",
+							"reach 15 feet"
+						],
+						"damage": "6d10+6",
+						"damageType": "slashing"
+					},
+					"ranged": {
+						"name": "pallid plague",
+						"range": 120,
+						"damage": "6d6+3",
+						"damageType": "negative"
+					}
 				}
 			},
 			"intercession": {
@@ -13161,7 +13981,26 @@
 				],
 				"avatar": {
 					"preface": "When casting the {@spell avatar} spell, a worshipper of Walkena gains the following additional abilities.",
-					"entry": "{@b Walkena} Speed 60 feet, {@spell air walk}; {@b Melee} {@as 1} holy spear ({@trait reach 20 feet}, {@trait versatile fire}), {@b Damage} {@damage 6d12+6} piercing; {@b Ranged} {@as 1} sunfire (range increment 120 feet), {@b Damage} {@damage 6d6+6} fire"
+					"speed": {
+						"walk": 60
+					},
+					"airWalk": true,
+					"melee": {
+						"damage": "6d12+6",
+						"damageType": "piercing",
+						"name": "holy spear",
+						"traits": [
+							"reach 20 feet",
+							"versatile fire"
+						]
+					},
+					"ranged": {
+						"damage": "6d6+6",
+						"damageType": "fire",
+						"name": "sunfire",
+						"range": 120,
+						"rangedIncrement": true
+					}
 				}
 			},
 			"hasLore": true
@@ -14040,7 +14879,31 @@
 					"spiked chain"
 				],
 				"avatar": {
-					"entry": "Speed 70 feet, air walk, ignore {@quickref difficult terrain||3|terrain} and {@quickref greater difficult terrain||3|terrain}; Melee {@as 1} spiked chain ({@trait disarm}, {@trait trip}, {@trait reach 15 feet}), Damage {@damage 6d8+6} slashing; Ranged {@as 1} midnight pain (mental, {@trait nonlethal}, range 120 feet), Damage {@damage 6d6+3} mental."
+					"speed": {
+						"walk": 70
+					},
+					"airWalk": true,
+					"ignoreTerrain": true,
+					"melee": {
+						"name": "spiked chain",
+						"traits": [
+							"disarm",
+							"trip",
+							"reach 15 feet"
+						],
+						"damage": "6d8+6",
+						"damageType": "slashing"
+					},
+					"ranged": {
+						"name": "midnight pain",
+						"traits": [
+							"nonlethal",
+							"mental"
+						],
+						"range": 120,
+						"damage": "6d6+3",
+						"damageType": "mental"
+					}
 				}
 			},
 			"intercession": {
@@ -14265,7 +15128,29 @@
 				],
 				"avatar": {
 					"preface": "When casting the {@spell avatar} spell, a worshipper of Uvuko gains the following additional abilities.",
-					"entry": "{@b Uvuko} Speed 30 feet, fly speed 70 feet, cannot be {@condition immobilized}; {@b Melee} {@as 1} maul ({@trait shove}, {@trait reach 15 feet}), {@b Damage} {@damage 6d12+6} bludgeoning; {@b Ranged} {@as 1} breath of lightning (range increment 120 feet), {@b Damage} {@damage 6d6+3} electricity"
+					"speed": {
+						"walk": 30,
+						"fly": 70
+					},
+					"immune": [
+						"immobilized"
+					],
+					"melee": {
+						"name": "maul",
+						"traits": [
+							"shove",
+							"reach 15 feet"
+						],
+						"damage": "6d12+6",
+						"damageType": "bludgeoning"
+					},
+					"ranged": {
+						"name": "breath of lightning",
+						"range": 120,
+						"rangedIncrement": true,
+						"damage": "6d6+3",
+						"damageType": "electricity"
+					}
 				}
 			}
 		},
@@ -14338,7 +15223,31 @@
 				],
 				"avatar": {
 					"preface": "When casting the {@spell avatar} spell, a worshipper of Tlehar gains the following additional abilities.",
-					"entry": "{@b Tlehar} Speed 50 feet, fly speed 70 feet, cannot be {@condition immobilized}; {@b Melee} {@as 1} morningstar ({@trait versatile piercing}, {@trait reach 15 feet}), {@b Damage} {@damage 6d6+6} bludgeoning; {@b Ranged} {@as 1} morning light (range 120 feet), {@b Damage} {@damage 3d6+3} fire and {@damage 3d6+3} positive"
+					"speed": {
+						"walk": 50,
+						"fly": 70
+					},
+					"immune": [
+						"immobilized"
+					],
+					"melee": {
+						"name": "morningstar",
+						"traits": [
+							"versatile P",
+							"reach 15 feet"
+						],
+						"damage": "6d6+6",
+						"damageType": "bludgeoning"
+					},
+					"ranged": {
+						"name": "morning light",
+						"range": 120,
+						"rangedIncrement": true,
+						"damage": "3d6+3",
+						"damageType": "fire",
+						"damage2": "3d6+3",
+						"damageType2": "positive"
+					}
 				}
 			}
 		}
