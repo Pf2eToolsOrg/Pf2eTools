@@ -4594,25 +4594,17 @@ Renderer.deity = {
 			if (b.avatar.melee || b.avatar.ranged) {
 				out.push(`; `)
 				if (b.avatar.melee) {
-					if (Array.isArray(b.avatar.melee)) {
-						b.avatar.melee.forEach((element, index, array) => {
-							out.push(Renderer.deity.getRenderedMeleeAttack(element))
-							out.push(array.length - 1 === index ? "" : "; ")
-						});
-					} else {
-						out.push(Renderer.deity.getRenderedMeleeAttack(b.avatar.melee))
-					}
+					b.avatar.melee.forEach((element, index, array) => {
+						out.push(Renderer.deity.getRenderedMeleeAttack(element))
+						out.push(array.length - 1 === index ? "" : "; ")
+					});
 				}
 				if (b.avatar.ranged) {
 					if (b.avatar.melee && Object.keys(b.avatar.melee).length) out.push(`; `)
-					if (Array.isArray(b.avatar.ranged)) {
-						b.avatar.ranged.forEach((element, index, array) => {
-							out.push(Renderer.deity.getRenderedRangedAttack(element))
-							out.push(array.length - 1 === index ? "" : "; ")
-						});
-					} else {
-						out.push(Renderer.deity.getRenderedRangedAttack(b.avatar.ranged))
-					}
+					b.avatar.ranged.forEach((element, index, array) => {
+						out.push(Renderer.deity.getRenderedRangedAttack(element))
+						out.push(array.length - 1 === index ? "" : "; ")
+					});
 				}
 				out.push(`.`)
 			}
