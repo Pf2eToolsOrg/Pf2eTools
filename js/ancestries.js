@@ -303,7 +303,7 @@ class AncestriesPage extends BaseComponent {
 		let names = this._getActiveHeritages().map(it => it.name);
 		names.push(...this._getActiveHeritages().map(it => it.traits).filter(Boolean).flat())
 		names.push(this.activeAncestry.name);
-		Object.keys(this._featFilter._ancestryFilter.getValues().Ancestries).forEach(key => {
+		Object.keys(this._featFilter._ancestryFilter.getValues()[this._featFilter._ancestryFilter.header]).forEach(key => {
 			if (!key.startsWith("_")) this._featFilter._ancestryFilter.setValue(key, 0)
 		});
 		names.forEach(name => { this._featFilter._ancestryFilter.setValue(name, 1) });

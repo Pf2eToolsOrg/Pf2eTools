@@ -306,7 +306,7 @@ class ClassesPage extends BaseComponent {
 		let names = this._getActiveSubclasses().map(it => it.name);
 		names.push(...this._getActiveSubclasses().map(it => it.traits).filter(Boolean).flat())
 		names.push(this.activeClass.name);
-		Object.keys(this._featFilter._classFilter.getValues().Classes).forEach(key => {
+		Object.keys(this._featFilter._classFilter.getValues()[this._featFilter._classFilter.header]).forEach(key => {
 			if (!key.startsWith("_")) this._featFilter._classFilter.setValue(key, 0)
 		});
 		names.forEach(name => {
