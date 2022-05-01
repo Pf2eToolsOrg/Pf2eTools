@@ -303,7 +303,7 @@ class AncestriesPage extends BaseComponent {
 		let names = this._getActiveHeritages().map(it => it.name);
 		names.push(...this._getActiveHeritages().map(it => it.traits).filter(Boolean).flat())
 		names.push(this.activeAncestry.name);
-		Object.keys(this._featFilter._ancestryFilter.getValues().Ancestries).forEach(key => {
+		Object.keys(this._featFilter._ancestryFilter.getValues()[this._featFilter._ancestryFilter.header]).forEach(key => {
 			if (!key.startsWith("_")) this._featFilter._ancestryFilter.setValue(key, 0)
 		});
 		names.forEach(name => { this._featFilter._ancestryFilter.setValue(name, 1) });
@@ -861,8 +861,7 @@ class AncestriesPage extends BaseComponent {
 			.filter(h => this._state[UrlUtil.getStateKeyHeritage(h)])
 			.map(h => asStateKeys ? UrlUtil.getStateKeyHeritage(h) : h);
 	}
-	// FIXME: why is this here and not in render.js
-	// Don't delete this and explain why it's here
+
 	_render_renderAncestry () {
 		const $ancestryStats = $(`#ancestrystats`).empty();
 		const anc = this.activeAncestry;
@@ -1303,7 +1302,7 @@ class AncestriesPage extends BaseComponent {
 	_render_renderFeat () {
 		const $featStats = $(`#featstats`).empty();
 		const feat = this.activeFeat;
-		RenderFeats.$getRenderedFeat(feat).appendTo($featStats);
+		$featStats.append(Renderer.feat.getRenderedString(feat, {renderLeadsTo: true}));
 		$featStats.show();
 		this._updateFeatHref();
 	}

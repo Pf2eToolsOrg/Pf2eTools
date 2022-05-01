@@ -1,4 +1,19 @@
 {
+	"_meta": {
+		"dependencies": {
+			"creature": [
+				"Bst"
+			]
+		},
+		"internalCopies": [
+			"creature"
+		],
+		"otherSources": {
+			"creature": {
+				"Bst": "TiO"
+			}
+		}
+	},
 	"creature": [
 		{
 			"name": "Basilisk",
@@ -3419,129 +3434,31 @@
 			]
 		},
 		{
-			"name": "Shadow",
+			"name": "Karstin Star-Hand, Shadow",
 			"isNpc": false,
 			"source": "TiO",
 			"page": 29,
-			"level": 4,
-			"rarity": "Common",
-			"alignment": "CE",
-			"size": "Medium",
-			"traits": [
-				"Incorporeal"
-			],
-			"creatureType": [
-				"Undead"
-			],
-			"perception": {
-				"default": 10
-			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
-			"skills": {
-				"Acrobatics": {
-					"default": 10
-				},
-				"Stealth": {
-					"default": 14
-				}
-			},
-			"abilityMods": {
-				"Str": -5,
-				"Dex": 4,
-				"Con": 0,
-				"Int": -2,
-				"Wis": 2,
-				"Cha": 3
-			},
-			"abilitiesTop": [],
-			"ac": {
-				"default": 20
-			},
-			"savingThrows": {
-				"Fort": {
-					"default": 8
-				},
-				"Ref": {
-					"default": 14
-				},
-				"Will": {
-					"default": 12
-				}
-			},
-			"hp": [
-				{
-					"hp": 40,
-					"abilities": null
-				}
-			],
-			"immunities": {
-				"damage": [
-					"poison"
-				],
-				"condition": [
-					"sneak attack",
-					"unconscious"
-				]
-			},
-			"weaknesses": [
-				{
-					"name": "light vulnerability"
-				}
-			],
-			"resistances": [
-				{
-					"amount": 5,
-					"name": "all"
-				}
-			],
-			"abilitiesMid": [
-				{
-					"entries": [
-						"A shadow has no body and can pass through physical objects, though it can't end its turn inside an object. Most checks that use Strength and require a body, such as {@action Grapple} and {@action Shove}, don't work against a shadow, and a shadow can't use them against other creatures."
+			"_copy": {
+				"name": "Shadow",
+				"source": "Bst",
+				"_mod": {
+					"abilitiesMid": [
+						{
+							"mode": "insertArr",
+							"items": {
+								"entries": [
+									"A shadow has no body and can pass through physical objects, though it can't end its turn inside an object. Most checks that use Strength and require a body, such as {@action Grapple} and {@action Shove}, don't work against a shadow, and a shadow can't use them against other creatures."
+								],
+								"name": "Incorporeal"
+							}
+						}
 					],
-					"name": "Incorporeal"
-				},
-				{
-					"entries": [
-						"An object shedding magical light (such as from the {@spell light} spell) gains the {@trait magical} trait when used to attack the shadow."
-					],
-					"name": "Light Vulnerability"
+					"abilitiesBot": {
+						"mode": "removeArr",
+						"names": "Shadow Spawn"
+					}
 				}
-			],
-			"speed": {
-				"fly": 30
-			},
-			"attacks": [],
-			"abilitiesBot": [
-				{
-					"entries": [
-						"The shadow can {@action Hide} or end its {@action Sneak} in a creature's or object's shadow."
-					],
-					"name": "Slink in Shadows"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"entries": [
-						"Shadow (divine, necromancy) If the shadow succeeded at hitting a living creature with a shadow hand {@action Strike} on its previous action, it can use this ability to pull at the target's shadow, giving the creature a \u20131 status penalty to {@skill Athletics} checks and to attack rolls and damage rolls that use Strength. The penalty increases each time a shadow uses this ability, to a maximum of \u20134. The penalty decreases by 1 every hour."
-					],
-					"name": "Steal"
-				}
-			],
-			"inflicts": {
-				"damage": [],
-				"condition": []
-			},
-			"misc": []
+			}
 		},
 		{
 			"name": "Skeleton Guard",

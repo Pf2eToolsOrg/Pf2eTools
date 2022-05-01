@@ -191,7 +191,7 @@
 			],
 			"prerequisites": "{@feat Beastmaster Dedication|APG}",
 			"entries": [
-				"Another animal joins you in your travels. It is a young animal companion that has the minion trait. See Beastmaster Animal Companions for rules on how having multiple animal companions works."
+				"Another animal joins you in your travels. It is a {@quickref young animal companion||0|young animal companions} that has the {@trait minion} trait. See Beastmaster Animal Companions for rules on how having multiple animal companions works."
 			],
 			"special": "You can select this feat more than once, gaining an additional animal companion each time, to a maximum of four total companions (including the one you gained from Beastmaster Dedication and possibly one you gained from sources other than the beastmaster archetype)."
 		},
@@ -276,7 +276,7 @@
 			],
 			"prerequisites": "{@feat Basic Deduction|APG}",
 			"entries": [
-				"You gain one {@filter investigator|feats||classes=investigator} feat. For the purpose of meeting its prerequisites, your investigator level is equal to half your character level."
+				"You gain one {@filter investigator|feats||Class=investigator} feat. For the purpose of meeting its prerequisites, your investigator level is equal to half your character level."
 			],
 			"special": "You can select this feat more than once. Each time you select it, you gain another investigator feat."
 		},
@@ -316,7 +316,7 @@
 			],
 			"prerequisites": "{@feat Basic Flair|APG}",
 			"entries": [
-				"You gain one {@filter swashbuckler|feats||classes=swashbuckler} feat. For the purpose of meeting its prerequisites, your swashbuckler level is equal to half your character level."
+				"You gain one {@filter swashbuckler|feats||Class=swashbuckler} feat. For the purpose of meeting its prerequisites, your swashbuckler level is equal to half your character level."
 			],
 			"special": "You can select this feat more than once. Each time you select it, you gain another swashbuckler feat."
 		},
@@ -348,7 +348,7 @@
 			],
 			"prerequisites": "{@feat Basic Mysteries|APG}",
 			"entries": [
-				"You gain one {@filter oracle|feats||classes=oracle} feat. For meeting its prerequisites, your oracle level is equal to half your level."
+				"You gain one {@filter oracle|feats||Class=oracle} feat. For meeting its prerequisites, your oracle level is equal to half your level."
 			],
 			"special": "You can select this feat more than once. Each time, you gain another oracle feat."
 		},
@@ -383,7 +383,7 @@
 			],
 			"prerequisites": "{@feat Basic Witchcraft|APG}",
 			"entries": [
-				"You gain one {@filter witch|feats||classes=witch} feat. For the purpose of meeting its prerequisites, your witch level is equal to half your character level."
+				"You gain one {@filter witch|feats||Class=witch} feat. For the purpose of meeting its prerequisites, your witch level is equal to half your character level."
 			],
 			"special": "You can select this feat more than once. Each time you select it, you gain another witch feat."
 		},
@@ -1336,7 +1336,7 @@
 			],
 			"prerequisites": "{@feat Investigator Dedication|APG}",
 			"entries": [
-				"You gain a {@filter 1st- or 2nd-level investigator|feats||classes=investigator|level=[1;2]} of your choice."
+				"You gain a {@filter 1st- or 2nd-level investigator|feats||Class=investigator|level=[1;2]} of your choice."
 			],
 			"leadsTo": [
 				"Advanced Deduction|APG"
@@ -1379,7 +1379,7 @@
 			],
 			"prerequisites": "{@feat Swashbuckler Dedication|APG}",
 			"entries": [
-				"You gain a {@filter 1st- or 2nd-level swashbuckler|feats||classes=swashbuckler|level=[1;2]} of your choice."
+				"You gain a {@filter 1st- or 2nd-level swashbuckler|feats||Class=swashbuckler|level=[1;2]} of your choice."
 			],
 			"leadsTo": [
 				"Advanced Flair|APG"
@@ -1412,7 +1412,7 @@
 			],
 			"prerequisites": "{@feat Oracle Dedication|APG}",
 			"entries": [
-				"You gain a {@filter 1st- or 2nd-level oracle|feats||classes=oracle|level=[1;2]} of your choice."
+				"You gain a {@filter 1st- or 2nd-level oracle|feats||Class=oracle|level=[1;2]} of your choice."
 			],
 			"leadsTo": [
 				"Advanced Mysteries|APG"
@@ -1504,7 +1504,7 @@
 			],
 			"prerequisites": "{@feat Witch Dedication|APG}",
 			"entries": [
-				"You gain a {@filter 1st- or 2nd-level witch|feats||classes=witch|level=[1;2]} of your choice. Your familiar no longer has one less familiar ability than normal."
+				"You gain a {@filter 1st- or 2nd-level witch|feats||Class=witch|level=[1;2]} of your choice. Your familiar no longer has one less familiar ability than normal."
 			],
 			"leadsTo": [
 				"Advanced Witchcraft|APG"
@@ -1610,7 +1610,7 @@
 			],
 			"prerequisites": "trained in {@skill Nature}",
 			"entries": [
-				"You gain the service of a young animal companion that travels with you and obeys your commands. The rules for animal companions appear on page 214 of the Core Rulebook, with additions on page 144 of this book. Contrary to the usual rules for animal companions, this feat can grant you a second animal companion. If you ever have more than one animal companion, you gain the Call Companion action. See the Beastmaster Animal Companions sidebar for details on this action.",
+				"You gain the service of a {@quickref young animal companion||0|young animal companions} that travels with you and obeys your commands. The rules for animal companions appear on page 214 of the Core Rulebook, with additions on page 144 of this book. Contrary to the usual rules for animal companions, this feat can grant you a second animal companion. If you ever have more than one animal companion, you gain the Call Companion action. See the Beastmaster Animal Companions sidebar for details on this action.",
 				"Certain beastmaster feats give you primal focus spells. The rules for focus spells appear on page 300 of the Core Rulebook.",
 				"When you gain your first beastmaster focus spell, you become trained in primal spell attack rolls and spell DCs, and your spellcasting ability for these spells is Charisma. Feats that grant beastmaster focus spells tell you to increase the number of Focus Points in your pool, but if you don't already have a focus pool, you instead get a focus pool with 1 Focus Point. You can {@action Refocus} by grooming, feeding, playing with, or otherwise tending to an animal companion."
 			],
@@ -2147,7 +2147,8 @@
 				"Whenever you roll a success on an {@skill Athletics} check to {@action Swim}, you get a critical success instead. If you end your turn in water without having succeeded at a {@action Swim} action that round, you don't sink (but you might still be moved by the current)."
 			],
 			"leadsTo": [
-				"Invoke The Elements|LOAG"
+				"Invoke The Elements|LOAG",
+				"Stormy Heart|LOAG"
 			]
 		},
 		{
@@ -2523,7 +2524,7 @@
 			],
 			"prerequisites": "trained in {@skill Nature} or {@skill Society}",
 			"entries": [
-				"You gain a young animal companion (Core Rulebook 214) that serves as your mount. You can choose from animal companions with the mount special ability, as well as any additional options from your pledge, as determined by your GM. You must choose an animal companion that's at least one size larger than you, but if the animal usually starts as Small, you can begin with a Medium version of that animal (changing no statistics other than its size)."
+				"You gain a {@quickref young animal companion||0|young animal companions} that serves as your mount. You can choose from animal companions with the mount special ability, as well as any additional options from your pledge, as determined by your GM. You must choose an animal companion that's at least one size larger than you, but if the animal usually starts as Small, you can begin with a Medium version of that animal (changing no statistics other than its size)."
 			],
 			"special": "You cannot select another dedication feat until you have gained two other feats from the cavalier archetype. This restriction is waived if you have pledged to the organization associated with the other dedication feat. For example, if you are pledged to a Hellknight order, you could take Hellknight dedication feats without needing to gain other feats from the cavalier archetype first.",
 			"leadsTo": [
@@ -4502,6 +4503,7 @@
 				"Dragon Arcana|APG",
 				"Scales Of The Dragon|APG",
 				"Shape Of The Dragon|APG",
+				"Mighty Dragon Shape|APG",
 				"Wings Of The Dragon|APG"
 			]
 		},
@@ -6752,6 +6754,7 @@
 				"Fancy Moves|APG",
 				"Performative Weapons Training|APG",
 				"Play To The Crowd|APG",
+				"Call Your Shot|APG",
 				"Stage Fighting|APG"
 			]
 		},
@@ -8859,6 +8862,9 @@
 			],
 			"entries": [
 				"You can transform into a specific, curious-looking human form. This human form is the same age and body type as your tengu form and has roughly analogous physical traits, such as height, though your nose remains as long as your beak and your complexion has red undertones, no matter the skin color of your human form. Using Long-Nosed Form counts as creating a disguise for the {@action Impersonate} use of {@skill Deception}. Due to your imperfect transformation, your transformation doesn't automatically defeat {@skill Perception} DCs to determine whether you are human, though you may be able to explain away or hide your {@trait tengu} traits. You lose your beak unarmed {@action Strike} in your human form, as well as any other unarmed {@action Strike|CRB|Strikes} you gained from a tengu heritage or ancestry feat. You can remain."
+			],
+			"leadsTo": [
+				"Great Tengu Form|APG"
 			]
 		},
 		{
@@ -9979,6 +9985,9 @@
 			"entries": [
 				"You put all your force into a single mighty, carefully {@condition controlled} blow. Make an unarmed {@action Strike}. If you spend two actions and this {@action Strike} hits, you deal an extra die of weapon damage. You can instead spend 3 actions to perform an even more powerful attack, dealing a second additional die of weapon damage on a hit.",
 				"If you're at least 10th level, the number of additional dice you add from this feat doubles, for a total of 2 additional dice if you spend 2 actions or 4 additional dice if you spend 3 actions. If you're at least 18th level, the number of additional dice you add from this feat triples, for a total of 3 additional dice if you spend 2 actions or 6 additional dice if you spend 3 actions."
+			],
+			"leadsTo": [
+				"One-millimeter Punch|APG"
 			]
 		},
 		{
@@ -10667,6 +10676,9 @@
 			"prerequisites": "Constitution 14",
 			"entries": [
 				"You lead by example and can help others push themselves beyond their normal limits. When Hustling in a group during exploration mode, your group can {@action Hustle} for up to 20 additional minutes, to a maximum of the amount of time the character with the highest Constitution modifier could {@action Hustle} alone."
+			],
+			"leadsTo": [
+				"Caravan Leader|APG"
 			]
 		},
 		{
@@ -10863,6 +10875,9 @@
 						"A +1 circumstance bonus to your next attack roll before the end of your next turn."
 					]
 				}
+			],
+			"leadsTo": [
+				"Call Your Shot|APG"
 			]
 		},
 		{
@@ -11148,6 +11163,9 @@
 			"trigger": "You attempt a saving throw against a hazard, but you haven't rolled yet.",
 			"entries": [
 				"Your deity grants you limited foresight, warning you of dangers an instant before they occur. You gain a +2 circumstance bonus to the triggering saving throw."
+			],
+			"leadsTo": [
+				"Shared Avoidance|APG"
 			]
 		},
 		{
@@ -11170,6 +11188,9 @@
 			"trigger": "You fail a saving throw against a {@trait mental} effect.",
 			"entries": [
 				"Your deity sends you a vision of faith to steel you against mental attacks. Reroll the triggering saving throw with a +2 circumstance bonus. You must use the second result, even if it's worse."
+			],
+			"leadsTo": [
+				"Shared Clarity|APG"
 			]
 		},
 		{
@@ -13109,6 +13130,9 @@
 			"entries": [
 				"You've discovered how to transform yourself into a dragon. Once per day, you can cast 7th-level {@spell dragon form} as an innate arcane spell, transforming into your chosen type of dragon. The spell automatically heightens to 8th level if you're 16th level and 9th level if you're 18th level.",
 				"Any time you score a critical hit with an unarmed {@action Strike} gained from dragon form, you recharge the spell's breath weapon immediately."
+			],
+			"leadsTo": [
+				"Mighty Dragon Shape|APG"
 			]
 		},
 		{
@@ -15986,6 +16010,7 @@
 			],
 			"special": "You can't select another dedication feat until you have gained two other feats from the vigilante archetype.",
 			"leadsTo": [
+				"Hidden Magic|APG",
 				"Many Guises|APG",
 				"Minion Guise|APG",
 				"Quick Change|APG",
@@ -16351,6 +16376,9 @@
 			],
 			"entries": [
 				"You're resilient to performative influences that aren't your own. You gain a +1 circumstance bonus to saving throws against effects with the auditory, illusion, linguistic, {@trait sonic}, or {@trait visual} traits."
+			],
+			"leadsTo": [
+				"Educate Allies|APG"
 			]
 		},
 		{

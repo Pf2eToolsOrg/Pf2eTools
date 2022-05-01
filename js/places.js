@@ -87,7 +87,7 @@ class PlacesPage extends ListPage {
 		const it = this._dataList[id];
 
 		function buildStatsTab () {
-			$content.append(RenderPlaces.$getRenderedGeneric(it));
+			$content.append(Renderer.place.getRenderedString(it));
 		}
 		const buildInfoTab = async () => {
 			const quickRules = await Renderer.utils.pGetQuickRules(it.category);

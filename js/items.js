@@ -124,7 +124,7 @@ class ItemsPage extends ListPage {
 		this._itemId = id;
 
 		function buildStatsTab () {
-			$content.append(RenderItems.$getRenderedItem(item));
+			$content.append(Renderer.item.getRenderedString(item));
 		}
 		async function buildFluffTab () {
 			const pGetFluff = async () => {
@@ -273,7 +273,7 @@ class ItemsPage extends ListPage {
 
 				const renderItem = (it) => {
 					stack.push(`<div class="prntv__wrp-item"><div class="pf2-stat stats stats--book stats--prntv">`);
-					stack.push(Renderer.item.getCompactRenderedString(it));
+					stack.push(Renderer.item.getRenderedString(it));
 					stack.push(`</div></div>`);
 				};
 

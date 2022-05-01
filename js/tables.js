@@ -83,8 +83,13 @@ class TablesPage extends ListPage {
 	doLoadHash (id) {
 		Renderer.get().setFirstSection(true);
 		const it = this._dataList[id];
+		it.type = it.type || "table";
+		const rendered = $$`
+		${Renderer.utils.getExcludedDiv(it, "table")}
+		${Renderer.get().setFirstSection(true).render(it)}
+		${Renderer.utils.getPageP(it)}`;
 
-		$("#pagecontent").empty().append(RenderTables.$getRenderedTable(it));
+		$("#pagecontent").empty().append(rendered);
 
 		ListUtil.updateSelected();
 	}

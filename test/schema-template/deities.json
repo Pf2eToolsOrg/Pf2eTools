@@ -180,9 +180,6 @@
 											]
 										}
 									},
-									"entry": {
-										"type": "string"
-									},
 									"speed": {
 										"$ref": "utils.json#/definitions/speed"
 									},
@@ -212,7 +209,49 @@
 										]
 									},
 									"melee": {
-										"type": "object",
+										"type": "array",
+										"items": {
+											"type": "object",
+											"properties": {
+												"name": {
+													"type": "string"
+												},
+												"traits": {
+													"type": "array",
+													"items": {
+														"$ref": "utils.json#/definitions/anyTrait"
+													},
+													"minItems": 1
+												},
+												"damage": {
+													"type": "string"
+												},
+												"damageType": {
+													"type": "string",
+													"$ref": "utils.json#/definitions/damageType"
+												},
+												"damage2": {
+													"type": "string"
+												},
+												"preciousMetal": {
+													"type": "array",
+													"minItems": 1
+												},
+												"traitNote": {
+													"type": "string"
+												},
+												"note": {
+													"type": "string"
+												},
+												"damageType2": {
+													"type": "string",
+													"$ref": "utils.json#/definitions/damageType"
+												}
+											},
+											"additionalProperties": false,
+											"minProperties": 1
+
+										},
 										"properties": {
 											"name": {
 												"type": "string"
@@ -232,6 +271,16 @@
 												"$ref": "utils.json#/definitions/damageType"
 											},
 											"damage2": {
+												"type": "string"
+											},
+											"preciousMetal": {
+												"type": "array",
+												"minItems": 1
+											},
+											"traitNote": {
+												"type": "string"
+											},
+											"note": {
 												"type": "string"
 											},
 											"damageType2": {
@@ -243,39 +292,63 @@
 										"minProperties": 1
 									},
 									"ranged": {
-										"type": "object",
-										"properties": {
-											"name": {
-												"type": "string"
-											},
-											"range": {
-												"type": "integer",
-												"exclusiveMinimum": 0
-											},
-											"reload": {
-												"type": "integer",
-												"exclusiveMinimum": 0
-											},
-											"traits": {
-												"type": "array",
-												"items": {
-													"$ref": "utils.json#/definitions/anyTrait"
+										"type": "array",
+										"items": {
+											"type": "object",
+											"additionalProperties": false,
+											"minProperties": 1,
+											"properties": {
+												"name": {
+													"type": "string"
 												},
-												"minItems": 1
-											},
-											"damage": {
-												"type": "string"
-											},
-											"damageType": {
-												"type": "string",
-												"$ref": "utils.json#/definitions/damageType"
-											},
-											"damage2": {
-												"type": "string"
-											},
-											"damageType2": {
-												"type": "string",
-												"$ref": "utils.json#/definitions/damageType"
+												"note": {
+													"type": "string"
+												},
+												"traitNote": {
+													"type": "string"
+												},
+												"range": {
+													"type": "integer",
+													"exclusiveMinimum": 0,
+													"examples": [
+														120
+													]
+												},
+												"rangedIncrement": {
+													"type": "boolean",
+													"enum": [
+														true
+													]
+												},
+												"reload": {
+													"type": "integer",
+													"exclusiveMinimum": 0
+												},
+												"traits": {
+													"type": "array",
+													"items": {
+														"$ref": "utils.json#/definitions/anyTrait"
+													},
+													"minItems": 1
+												},
+												"preciousMetal": {
+													"type": "array",
+													"minItems": 1
+												},
+												"damage": {
+													"type": "string"
+												},
+												"damageType": {
+													"type": "string",
+													"$ref": "utils.json#/definitions/damageType"
+												},
+												"damage2": {
+													"type": "string"
+												},
+												"damageType2": {
+													"type": "string",
+													"$ref": "utils.json#/definitions/damageType"
+												}
 											}
 										},
 										"additionalProperties": false,

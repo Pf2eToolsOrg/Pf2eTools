@@ -7776,28 +7776,21 @@
 			},
 			"weaknesses": [
 				{
-					"name": "light vulnerability;"
+					"name": "light vulnerability"
 				}
 			],
 			"resistances": [
 				{
 					"amount": 15,
 					"name": "all"
-				},
-				{
-					"name": "ghost touch"
-				},
-				{
-					"name": "or"
 				}
 			],
 			"abilitiesMid": [
 				{
 					"entries": [
-						"As shadow."
+						"An object shedding magical light (such as from the {@spell light} spell) is treated as magical when used to attack the watchtower shadow."
 					],
-					"name": "Light Vulnerability",
-					"entries_as_xyz": "Ability not found: 'Light Vulnerability As shadow.' in Watchtower Shadow, p.36"
+					"name": "Light Vulnerability"
 				},
 				{
 					"traits": [
@@ -7805,7 +7798,7 @@
 						"occult"
 					],
 					"entries": [
-						"As watchtower poltergeist (page 35)."
+						"When the watchtower shadow is destroyed, it re-forms, fully healed, at the watchtower after 12 hours. Destroying the shadow and lighting its watchtower's brazier permanently destroys it."
 					],
 					"name": "Rejuvenation"
 				}
@@ -7850,17 +7843,15 @@
 			"abilitiesBot": [
 				{
 					"entries": [
-						"As shadow."
+						"When a creature's shadow is pulled free by Steal Shadow, it becomes a shadow spawn under the command of the watchtower shadow that created it. This shadow spawn doesn't have Steal Shadow and is perpetually and incurably {@condition clumsy 2}. If the creature the shadow spawn was pulled from dies, the shadow spawn becomes a full-fledged, autonomous shadow. If the creature recovers from its enfeeblement, its shadow returns to it and the shadow spawn is extinguished."
 					],
-					"name": "Shadow Spawn",
-					"entries_as_xyz": "Ability not found: 'Shadow Spawn As shadow.' in Watchtower Shadow, p.36"
+					"name": "Shadow Spawn"
 				},
 				{
 					"entries": [
-						"As shadow."
+						"The watchtower shadow can {@action Hide} or end its {@action Sneak} in a creature's or object's shadow."
 					],
-					"name": "Slink in Shadows",
-					"entries_as_xyz": "Ability not found: 'Slink in Shadows As shadow.' in Watchtower Shadow, p.36"
+					"name": "Slink in Shadows"
 				},
 				{
 					"activity": {
@@ -7871,11 +7862,11 @@
 						"divine",
 						"necromancy"
 					],
+					"requirements": "The shadow hit a living creature with a shadow hand {@action Strike} on its previous action",
 					"entries": [
-						"As shadow."
+						"The watchtower shadow pulls at the target's shadow, making the creature {@condition enfeebled 1}. This is cumulative with other {@condition enfeebled} conditions from shadows, to a maximum of {@condition enfeebled 4}. If this increases a creature's {@condition enfeebled} value to 3 or more, the target's shadow is separated from its body (see shadow spawn). {@condition Enfeebled} from Steal Shadow decreases by 1 every hour."
 					],
-					"name": "Steal Shadow",
-					"entries_as_xyz": "Ability not found: '{@action Steal} Shadow As shadow.' in Watchtower Shadow, p.36"
+					"name": "Steal Shadow"
 				}
 			],
 			"inflicts": {

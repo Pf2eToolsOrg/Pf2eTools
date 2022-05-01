@@ -11,10 +11,10 @@ class PageFilterFeats extends PageFilter {
 			isLabelled: true,
 		});
 		this._typeFilter = new Filter({ header: "Type", selFn: opts.typeDeselFn });
-		this._ancestryFilter = new Filter({ header: "Ancestries" });
-		this._archetypeFilter = new Filter({ header: "Archetypes", items: ["Archetype"] });
-		this._classFilter = new Filter({ header: "Classes" });
-		this._skillFilter = new Filter({ header: "Skills" });
+		this._ancestryFilter = new Filter({ header: "Ancestry & Heritage" });
+		this._archetypeFilter = new Filter({ header: "Archetype", items: ["Archetype"] });
+		this._classFilter = new Filter({ header: "Class" });
+		this._skillFilter = new Filter({ header: "Skill" });
 		/* Unused, for the future
 		this._skillTrainedFilter = new Filter({ header: "Trained" });
 		this._skillExpertFilter = new Filter({ header: "Expert" });
@@ -55,6 +55,7 @@ class PageFilterFeats extends PageFilter {
 		feat.featType == null ? feat._featType = {} : feat._featType = feat.featType;
 		feat._fSources = SourceFilter.getCompleteFilterSources(feat);
 		feat._slPrereq = Renderer.stripTags(feat.prerequisites || `\u2014`).uppercaseFirst();
+		if (feat.prerequisiteArray) feat._slPrereq = Renderer.utils.getPrerequisiteHtml(feat.prerequisite, {isSkipPrefix: true, isListMode: true});
 		feat._fTraits = feat.traits.map(t => Parser.getTraitName(t));
 		if (!feat._fTraits.map(t => Renderer.trait.isTraitInCategory(t, "Rarity")).some(Boolean)) feat._fTraits.push("Common");
 

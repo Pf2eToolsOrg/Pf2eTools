@@ -310,7 +310,7 @@ class ArchetypesPage extends BaseComponent {
 	_setFeatArchetypeFilters () {
 		let names = [];
 		names.push(this.activeArchetype.name);
-		Object.keys(this._featFilter._archetypeFilter.getValues().Archetypes).forEach(key => {
+		Object.keys(this._featFilter._archetypeFilter.getValues()[this._featFilter._archetypeFilter.header]).forEach(key => {
 			if (!key.startsWith("_")) this._featFilter._archetypeFilter.setValue(key, 0);
 		});
 		names.forEach(name => { this._featFilter._archetypeFilter.setValue(name, 1) });
@@ -727,7 +727,7 @@ class ArchetypesPage extends BaseComponent {
 	_render_renderFeat () {
 		const $featStats = $(`#featstats`).empty();
 		const feat = this.activeFeat;
-		RenderFeats.$getRenderedFeat(feat).appendTo($featStats);
+		$featStats.append(Renderer.feat.getRenderedString(feat, {renderLeadsTo: true}));
 		$featStats.show();
 		this._updateFeatHref();
 	}

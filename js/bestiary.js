@@ -374,7 +374,7 @@ class BestiaryPage extends ListPage {
 
 				const renderCreature = (cr) => {
 					stack.push(`<div class="prntv__wrp-item"><div class="pf2-stat stats stats--book stats--prntv">`);
-					stack.push(Renderer.creature.getCompactRenderedString(cr).html());
+					stack.push(Renderer.creature.getRenderedString(cr).html());
 					stack.push(`</div></div>`);
 				};
 
@@ -456,7 +456,7 @@ class BestiaryPage extends ListPage {
 				.click(() => Hist.setSubhash(VeCt.HASH_CR_SCALED, null))
 				.toggle(isScaled) : null;
 
-			$content.append(RenderBestiary.$getRenderedCreature(cr, {$btnScaleLvl, $btnResetScaleLvl}));
+			$content.append(Renderer.creature.getRenderedString(cr, {asJquery: true, $btnScaleLvl, $btnResetScaleLvl}));
 
 			$(`#wrp-pagecontent`).scroll();
 		}

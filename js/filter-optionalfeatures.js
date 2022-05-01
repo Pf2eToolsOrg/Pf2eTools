@@ -33,9 +33,9 @@ class PageFilterOptionalFeatures extends PageFilter {
 						nest: className,
 					});
 				} else {
-					className = lvlMeta.class ? lvlMeta.class.name : `(No Class)`;
+					className = lvlMeta.class ? lvlMeta.class.name.toTitleCase() : `(No Class)`;
 					item = new FilterItem({
-						item: `${lvlMeta.class ? className : ""}${lvlMeta.subclass ? ` (${lvlMeta.subclass.name})` : ""} Level ${lvlMeta.level}`,
+						item: `${lvlMeta.class ? className.toTitleCase() : ""}${lvlMeta.subclass ? ` (${lvlMeta.subclass.name})` : ""} Level ${lvlMeta.level}`,
 						nest: className,
 					});
 				}

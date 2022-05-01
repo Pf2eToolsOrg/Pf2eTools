@@ -125,7 +125,7 @@
 						"freq": 1
 					},
 					"entries": [
-						"Pushing the glasses up your nose and asking the entity for help, you cause the spectacles to cast either true seeing or a 3rd-level {@spell comprehend language} on you. Because the entity tied to the spectacles chooses which one, the GM picks whichever spell is most immediately useful in your current situation (and chooses the most useful language each time the item casts comprehend language). The spell lasts for 1 minute."
+						"Pushing the glasses up your nose and asking the entity for help, you cause the spectacles to cast either {@spell true seeing} or a 3rd-level {@spell comprehend language} on you. Because the entity tied to the spectacles chooses which one, the GM picks whichever spell is most immediately useful in your current situation (and chooses the most useful language each time the item casts comprehend language). The spell lasts for 1 minute."
 					]
 				}
 			]
@@ -3077,9 +3077,12 @@
 						"unit": "free"
 					},
 					"components": [
-						"envision (visual)"
+						"envision"
 					],
-					"trigger": "You attempt a",
+					"traits": [
+						"visual"
+					],
+					"trigger": "You attempt a {@skill Deception}, {@skill Diplomacy}, {@skill Intimidation}, or {@skill Performance} check",
 					"entries": [
 						"You gain a +4 status bonus to the triggering check. This ability has no effect if you're under the effects of a disguise that hides the mask of allure. Depending on the skill used, the mirrored silver transforms into one of the following appearances.",
 						{

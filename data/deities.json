@@ -1,4 +1,5 @@
 {
+	"$schema": "../test/schema-template/schema.json",
 	"deity": [
 		{
 			"name": "Abadar",
@@ -42,13 +43,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Con",
-						"Int"
+						"con",
+						"int"
 					],
 					"entry": "Constitution or Intelligence"
 				},
 				"skill": [
-					"Society"
+					"society"
 				],
 				"domains": [
 					"cities",
@@ -81,13 +82,13 @@
 					"immune": [
 						"immobilized"
 					],
-					"ranged": {
+					"ranged": [{
 						"name": "crossbow",
 						"range": 120,
 						"reload": 1,
 						"damage": "6d10+3",
 						"damageType": "piercing"
-					}
+					}]
 				}
 			},
 			"intercession": {
@@ -153,13 +154,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Wis",
-						"Int"
+						"wis",
+						"int"
 					],
 					"entry": "Intelligence or Wisdom"
 				},
 				"skill": [
-					"Arcana"
+					"arcana"
 				],
 				"domains": [
 					"destruction",
@@ -234,13 +235,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Str",
-						"Dex"
+						"str",
+						"dex"
 					],
 					"entry": "Strength or Dexterity"
 				},
 				"skill": [
-					"Stealth"
+					"stealth"
 				],
 				"domains": [
 					"death",
@@ -268,10 +269,10 @@
 						"climb": 50
 					},
 					"ignoreTerrain": true,
-					"melee": {
+					"melee": [{
 						"name": "mantis claw",
 						"traits": [
-							"Agile",
+							"agile",
 							"backswing",
 							"finesse",
 							"reach 15 feet",
@@ -279,13 +280,13 @@
 						],
 						"damage": "6d8+6",
 						"damageType": "slashing"
-					},
-					"ranged": {
+					}],
+					"ranged": [{
 						"name": "spine volley",
 						"range": 60,
 						"damage": "6d6+3",
-						"damageType2": "piercing"
-					},
+						"damageType": "piercing"
+					}],
 					"preface": "When casting the {@spell avatar} spell, a worshipper of Achaekek gains the following additional abilities."
 				}
 			},
@@ -329,13 +330,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Dex",
-						"Wis"
+						"dex",
+						"wis"
 					],
 					"entry": "Dexterity or Wisdom"
 				},
 				"skill": [
-					"Society"
+					"society"
 				],
 				"domains": [
 					"duty",
@@ -370,7 +371,7 @@
 					"immune": [
 						"immobilized"
 					],
-					"melee": {
+					"melee": [{
 						"name": "claw",
 						"traits": [
 							"agile",
@@ -379,17 +380,16 @@
 						],
 						"damage": "6d10+6",
 						"damageType": "slashing"
-					},
-					"ranged": {
+					}],
+					"ranged": [{
 						"name": "hearth ember",
 						"range": 120,
 						"damage": "4d6+3",
 						"damageType": "fire",
 						"damage2": "2d6",
 						"damageType2": "persistent fire"
-					},
-					"preface": "When casting the {@spell avatar} spell, a worshipper of Adanye gains the following additional abilities.",
-					"entry": "{@b Ranged} {@as 1} hearth ember (range 120 feet), {@b Damage} {@damage 4d6+3} fire and {@damage 2d6} persistent fire"
+					}],
+					"preface": "When casting the {@spell avatar} spell, a worshipper of Adanye gains the following additional abilities."
 				}
 			},
 			"hasLore": true
@@ -425,13 +425,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Str",
-						"Wis"
+						"str",
+						"wis"
 					],
 					"entry": "Strength or Wisdom"
 				},
 				"skill": [
-					"Nature"
+					"nature"
 				],
 				"domains": [
 					"cold",
@@ -485,13 +485,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Int",
-						"Cha"
+						"int",
+						"cha"
 					],
 					"entry": "Intelligence or Charisma"
 				},
 				"skill": [
-					"Diplomacy"
+					"diplomacy"
 				],
 				"domains": [
 					"change",
@@ -514,7 +514,28 @@
 					"dagger"
 				],
 				"avatar": {
-					"entry": "{@b Alseta} Speed 40 feet, dimensional Speed 60 feet; Melee {@as 1} dagger ({@trait agile}, {@trait finesse}, {@trait reach 15 feet}, {@trait thrown 40 feet}, {@trait versatile P}), Damage {@damage 6d6+6} piercing; Ranged {@as 1} portal toss (range 60 feet), Damage {@damage 6d6+3} bludgeoning",
+					"speed": {
+						"walk": 40,
+						"dimensional": 60
+					},
+					"melee": [{
+						"damage": "6d6+6",
+						"damageType": "piercing",
+						"name": "dagger",
+						"traits": [
+							"agile",
+							"finesse",
+							"reach 15 feet",
+							"thrown 40 feet",
+							"versatile P"
+						]
+					}],
+					"ranged": [{
+						"damage": "6d6+3",
+						"damageType": "bludgeoning",
+						"range": 60,
+						"name": "portal toss"
+					}],
 					"preface": "When casting the {@spell avatar} spell, a worshipper of Alseta gains the following additional abilities. The dimensional Speed allows the avatar of Alseta to cast {@spell dimension door} at will as a {@trait divine} innate spell, spending a single action to move up to 60 feet. The portal toss {@action Strike} causes the creature to fall through a series of portals before landing in the same spot and taking damage."
 				}
 			},
@@ -554,13 +575,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Cha",
-						"Wis"
+						"cha",
+						"wis"
 					],
 					"entry": "Wisdom or Charisma"
 				},
 				"skill": [
-					"Society"
+					"society"
 				],
 				"domains": [
 					"family",
@@ -619,13 +640,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Str",
-						"Con"
+						"str",
+						"con"
 					],
 					"entry": "Strength or Constitution"
 				},
 				"skill": [
-					"Athletics"
+					"athletics"
 				],
 				"domains": [
 					"destruction",
@@ -654,7 +675,27 @@
 				],
 				"avatar": {
 					"preface": "When casting the {@spell avatar} spell, a worshipper of Angazhan gains the following additional abilities.",
-					"entry": "{@b Angazhan} Speed 60 feet, climb Speed 60 feet, swim Speed 50 feet; {@b Melee} {@as 1} fist ({@trait agile}, {@trait reach 15 feet}), {@b Damage} {@damage 6d6+6} bludgeoning; {@b Ranged} {@as 1} {@b Bellowing Roar} (range increment 100 feet), Damage {@damage 6d6+3} mental"
+					"speed": {
+						"walk": 60,
+						"climb": 60,
+						"swim": 50
+					},
+					"melee": [{
+						"name": "fist",
+						"damage": "6d6+6",
+						"damageType": "bludgeoning",
+						"traits": [
+							"reach 15 feet",
+							"agile"
+						]
+					}],
+					"ranged": [{
+						"name": "Bellowing Roar",
+						"damage": "6d6+3",
+						"range": 100,
+						"rangedIncrement": true,
+						"damageType": "mental"
+					}]
 				}
 			},
 			"hasLore": true
@@ -689,13 +730,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Str",
-						"Con"
+						"str",
+						"con"
 					],
 					"entry": "Strength or Constitution"
 				},
 				"skill": [
-					"Athletics"
+					"athletics"
 				],
 				"domains": [
 					"fate",
@@ -753,12 +794,12 @@
 				"ability": {
 					"entry": "Dexterity or Wisdom",
 					"abilities": [
-						"Dex",
-						"Wis"
+						"dex",
+						"wis"
 					]
 				},
 				"skill": [
-					"Occultism"
+					"occultism"
 				],
 				"domains": [
 					"death",
@@ -813,13 +854,13 @@
 					"heal"
 				],
 				"skill": [
-					"Diplomacy"
+					"diplomacy"
 				],
 				"ability": {
 					"entry": "Wisdom or Charisma",
 					"abilities": [
-						"Cha",
-						"Wis"
+						"cha",
+						"wis"
 					]
 				},
 				"domains": [
@@ -848,7 +889,25 @@
 				],
 				"avatar": {
 					"preface": "When casting the {@spell avatar} spell, a worshipper of Mazludeh gains the following additional abilities.",
-					"entry": "{@b Luhar} Speed 70 feet, climb 50 feet, shield (15 hardness, can't be damaged); {@b Melee} {@as 1} viper strike ({@trait reach 15 feet}), {@b Damage} {@damage 6d10+6} piercing; {@b Ranged} {@as 1} stone rain (range 120 feet), {@b Damage} {@b 6d6+3} bludgeoning"
+					"speed": {
+						"walk": 70,
+						"climb": 50
+					},
+					"shield": 15,
+					"melee": [{
+						"name": "viper strike",
+						"traits": [
+							"reach 15 feet"
+						],
+						"damage": "6d10+6",
+						"damageType": "piercing"
+					}],
+					"ranged": [{
+						"name": "stone rain",
+						"range": 120,
+						"damage": "6d6+3",
+						"damageType": "bludgeoning"
+					}]
 				}
 			}
 		},
@@ -887,12 +946,12 @@
 				"ability": {
 					"entry": "Dexterity or Wisdom",
 					"abilities": [
-						"Dex",
-						"Wis"
+						"dex",
+						"wis"
 					]
 				},
 				"skill": [
-					"Stealth"
+					"stealth"
 				],
 				"domains": [
 					"cities",
@@ -922,7 +981,28 @@
 				],
 				"avatar": {
 					"preface": "When casting the {@spell avatar} spell, a worshipper of Luhar gains the following additional abilities.",
-					"entry": "{@b Luhar} Speed 70 feet, ignore difficult terrain and greater difficult terrain; {@b Melee} {@as 1} spiked chain ({@trait disarm}, {@trait finesse}, {@trait trip}, {@trait reach 15 feet}), {@b Damage} {@damage 6d8+6} slashing; {@b Ranged} {@as 1} touch of mercy (range 120 feet), {@b Damage} {@b 6d6+3} negative"
+					"speed": {
+						"walk": 70
+					},
+					"ignoreTerrain": true,
+					"melee": [{
+						"name": "spiked chain",
+						"traits": [
+							"disarm",
+							"finesse",
+							"trip",
+							"reach 15 feet"
+						],
+						"damage": "6d8+6",
+						"damageType": "slashing"
+					}],
+					"ranged": [{
+						"name": "touch of mercy",
+						"range": 120,
+						"rangedIncrement": true,
+						"damage": "6d6+3",
+						"damageType": "negative"
+					}]
 				}
 			}
 		},
@@ -962,12 +1042,12 @@
 				"ability": {
 					"entry": "Intelligence or Charisma",
 					"abilities": [
-						"Int",
-						"Cha"
+						"int",
+						"cha"
 					]
 				},
 				"skill": [
-					"Diplomacy"
+					"diplomacy"
 				],
 				"domains": [
 					"ambition",
@@ -995,7 +1075,27 @@
 				],
 				"avatar": {
 					"preface": "When casting the {@spell avatar} spell, a worshipper of Lubaiko gains the following additional abilities.",
-					"entry": "{@b Lubaiko} Speed 30 feet, fly speed 70 feet; {@b Melee} {@as 1} longspear ({@trait reach 20 feet}), {@b Damage} {@damage 6d12+6} piercing; {@b Ranged} {@as 1} flaming lightning ({@trait versatile fire}, range 120 feet), {@b Damage} {@b 6d6+3} electricity"
+					"speed": {
+						"walk": 30,
+						"fly": 70
+					},
+					"melee": [{
+						"name": "longspear",
+						"traits": [
+							"reach 20 feet"
+						],
+						"damage": "6d12+6",
+						"damageType": "piercing"
+					}],
+					"ranged": [{
+						"name": "flaming lightning",
+						"traits": [
+							"versatile fire"
+						],
+						"range": 120,
+						"damage": "6d6+3",
+						"damageType": "electricity"
+					}]
 				}
 			}
 		},
@@ -1036,12 +1136,12 @@
 				"ability": {
 					"entry": "Dexterity or Charisma",
 					"abilities": [
-						"Dex",
-						"Cha"
+						"dex",
+						"cha"
 					]
 				},
 				"skill": [
-					"Intimidation"
+					"intimidation"
 				],
 				"domains": [
 					"death",
@@ -1070,7 +1170,25 @@
 				],
 				"avatar": {
 					"preface": "When casting the {@spell avatar} spell, a worshipper of Kalekot gains the following additional abilities.",
-					"entry": "{@b Kalekot} Speed 70 feet, ignore difficult terrain; {@b Melee} {@as 1} ivory fangs ({@trait fatal d10}, {@trait reach 10 feet}), {@b Damage} {@damage 6d6+6} piercing; {@b Ranged} {@as 1} whisper of unmaking (range 120 feet), {@b Damage} {@b 6d6+3} slashing"
+					"speed": {
+						"walk": 70
+					},
+					"ignoreTerrain": true,
+					"melee": [{
+						"name": "ivory fangs",
+						"traits": [
+							"fatal d10",
+							"reach 10 feet"
+						],
+						"damage": "6d6+6",
+						"damageType": "piercing"
+					}],
+					"ranged": [{
+						"name": "whisper of unmaking",
+						"range": 120,
+						"damage": "6d6+3",
+						"damageType": "slashing"
+					}]
 				}
 			}
 		},
@@ -1109,12 +1227,12 @@
 				"ability": {
 					"entry": "Strength or Charisma",
 					"abilities": [
-						"Str",
-						"Cha"
+						"str",
+						"cha"
 					]
 				},
 				"skill": [
-					"Intimidation"
+					"intimidation"
 				],
 				"domains": [
 					"fire",
@@ -1144,7 +1262,27 @@
 				],
 				"avatar": {
 					"preface": "When casting the {@spell avatar} spell, a worshipper of Chohar gains the following additional abilities.",
-					"entry": "{@b Chohar} Speed 70 feet, {@spell air walk}; {@b Melee} {@as 1} slam ({@trait agile}, {@trait reach 15 feet}), {@b Damage} {@damage 5d6+6} piercing plus {@damage 1d6} fire damage; {@b Ranged} {@as 1} sunbeam (range 120 feet), {@b Damage} {@damage 6d6+6} fire"
+					"speed": {
+						"walk": 70
+					},
+					"airWalk": true,
+					"melee": [{
+						"name": "slam",
+						"traits": [
+							"agile",
+							"reach 15 feet"
+						],
+						"damage": "5d6+6",
+						"damageType": "piercing",
+						"damage2": "1d6",
+						"damageType2": "fire"
+					}],
+					"ranged": [{
+						"name": "sunbeam",
+						"range": 120,
+						"damage": "6d6+6",
+						"damageType": "fire"
+					}]
 				}
 			}
 		},
@@ -1182,12 +1320,12 @@
 				"ability": {
 					"entry": "Strength or Constitution",
 					"abilities": [
-						"Str",
-						"Con"
+						"str",
+						"con"
 					]
 				},
 				"skill": [
-					"Athletics"
+					"athletics"
 				],
 				"domains": [
 					"might",
@@ -1211,7 +1349,27 @@
 				],
 				"avatar": {
 					"preface": "When casting the {@spell avatar} spell, a worshipper of Balumbdar gains the following additional abilities.",
-					"entry": "{@b Balumbdar} Speed 70 feet, climb 50 feet, immune to {@condition immobilized}; {@b Melee} {@as 1} slam ({@trait reach 15 feet}), {@b Damage} {@damage 6d12+4} bludgeoning; {@b Ranged} {@as 1} overbearing pressure (range 120 feet), {@b Damage} {@damage 6d6+3} bludgeoning"
+					"speed": {
+						"walk": 70,
+						"climb": 50
+					},
+					"immune": [
+						"immobilized"
+					],
+					"melee": [{
+						"name": "slam",
+						"traits": [
+							"reach 15 feet"
+						],
+						"damage": "6d12+4",
+						"damageType": "bludgeoning"
+					}],
+					"ranged": [{
+						"name": "overbearing pressure",
+						"range": 120,
+						"damage": "6d6+3",
+						"damageType": "bludgeoning"
+					}]
 				}
 			}
 		},
@@ -1245,13 +1403,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Str",
-						"Con"
+						"str",
+						"con"
 					],
 					"entry": "Strength or Constitution"
 				},
 				"skill": [
-					"Medicine"
+					"medicine"
 				],
 				"domains": [
 					"air",
@@ -1307,13 +1465,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Cha",
-						"Wis"
+						"cha",
+						"wis"
 					],
 					"entry": "Wisdom or Charisma"
 				},
 				"skill": [
-					"Diplomacy"
+					"diplomacy"
 				],
 				"domains": [
 					"creation",
@@ -1371,13 +1529,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Int",
-						"Con"
+						"int",
+						"con"
 					],
 					"entry": "Constitution or Intelligence"
 				},
 				"skill": [
-					"Intimidation"
+					"intimidation"
 				],
 				"domains": [
 					"confidence",
@@ -1404,7 +1562,28 @@
 				],
 				"avatar": {
 					"preface": "When casting the {@spell avatar} spell, a worshipper of Arazni gains the following additional abilities.",
-					"entry": "{@b Arazni} Speed 70 feet, air walk, immune to {@condition immobilized}; Melee {@as 1} rapier ({@trait deadly 3d8}, {@trait reach 15 feet}), Damage {6d8+6} piercing; Ranged {@as 1} call blood (range 120 feet), Damage {@damage 6d6} {@condition persistent damage|CRB|persistent bleed damage}"
+					"speed": {
+						"walk": 70
+					},
+					"airWalk": true,
+					"immune": [
+						"immobilized"
+					],
+					"melee": [{
+						"name": "rapier",
+						"traits": [
+							"deadly 3d8",
+							"reach 15 feet"
+						],
+						"damage": "6d8+6",
+						"damageType": "piercing"
+					}],
+					"ranged": [{
+						"name": "call blood",
+						"range": 120,
+						"damage": "6d6",
+						"damageType": "persistent bleed damage"
+					}]
 				}
 			},
 			"hasLore": true,
@@ -1442,13 +1621,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Int",
-						"Cha"
+						"int",
+						"cha"
 					],
 					"entry": "Intelligence or Charisma"
 				},
 				"skill": [
-					"Diplomacy"
+					"diplomacy"
 				],
 				"domains": [
 					"creation",
@@ -1504,13 +1683,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Cha",
-						"Con"
+						"cha",
+						"con"
 					],
 					"entry": "Constitution or Charisma"
 				},
 				"skill": [
-					"Diplomacy"
+					"diplomacy"
 				],
 				"domains": [
 					"confidence",
@@ -1568,13 +1747,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Int",
-						"Wis"
+						"int",
+						"wis"
 					],
 					"entry": "Intelligence or Wisdom"
 				},
 				"skill": [
-					"Nature"
+					"nature"
 				],
 				"domains": [
 					"healing",
@@ -1629,13 +1808,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Cha",
-						"Dex"
+						"cha",
+						"dex"
 					],
 					"entry": "Dexterity or Charisma"
 				},
 				"skill": [
-					"Performance"
+					"performance"
 				],
 				"domains": [
 					"darkness",
@@ -1693,13 +1872,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Int",
-						"Con"
+						"int",
+						"con"
 					],
 					"entry": "Constitution or Intelligence"
 				},
 				"skill": [
-					"Crafting"
+					"crafting"
 				],
 				"domains": [
 					"earth",
@@ -1762,17 +1941,17 @@
 				],
 				"ability": {
 					"abilities": [
-						"Str",
-						"Dex",
-						"Con",
-						"Int",
-						"Wis",
-						"Cha"
+						"str",
+						"dex",
+						"con",
+						"int",
+						"wis",
+						"cha"
 					],
 					"entry": "any, though characters who commit themselves to Asmodeus this way have their souls bound to the Dark Prince for all eternity"
 				},
 				"skill": [
-					"Deception"
+					"deception"
 				],
 				"domains": [
 					"confidence",
@@ -1799,7 +1978,24 @@
 					"mace"
 				],
 				"avatar": {
-					"entry": "Speed 70 feet, air walk; Melee {@as 1} mace ({@trait reach 15 feet}), Damage {@damage 6d10+6} bludgeoning; Ranged {@as 1} hellfire (range 120 feet), Damage {@damage 6d6+3} fire."
+					"speed": {
+						"walk": 70
+					},
+					"airWalk": true,
+					"melee": [{
+						"name": "mace",
+						"traits": [
+							"reach 15 feet"
+						],
+						"damage": "6d10+6",
+						"damageType": "bludgeoning"
+					}],
+					"ranged": [{
+						"name": "hellfire",
+						"range": 120,
+						"damage": "6d6+3",
+						"damageType": "fire"
+					}]
 				}
 			},
 			"intercession": {
@@ -1849,7 +2045,7 @@
 				]
 			},
 			"alignment": [
-				"Any"
+				"any"
 			],
 			"category": "Philosophy",
 			"info": [
@@ -1862,7 +2058,7 @@
 				"offer prayers to a deity"
 			],
 			"followerAlignment": [
-				"All"
+				"all"
 			],
 			"hasLore": true
 		},
@@ -1898,13 +2094,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Cha",
-						"Wis"
+						"cha",
+						"wis"
 					],
 					"entry": "Wisdom or Charisma"
 				},
 				"skill": [
-					"Performance"
+					"performance"
 				],
 				"domains": [
 					"fire",
@@ -1961,13 +2157,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Con",
-						"Str"
+						"con",
+						"str"
 					],
 					"entry": "Strength or Constitution"
 				},
 				"skill": [
-					"Deception"
+					"deception"
 				],
 				"domains": [
 					"destruction",
@@ -2020,13 +2216,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Cha",
-						"Con"
+						"cha",
+						"con"
 					],
 					"entry": "Constitution or Charisma"
 				},
 				"skill": [
-					"Performance"
+					"performance"
 				],
 				"domains": [
 					"decay",
@@ -2080,13 +2276,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Dex",
-						"Cha"
+						"dex",
+						"cha"
 					],
 					"entry": "Dexterity or Charisma"
 				},
 				"skill": [
-					"Deception"
+					"deception"
 				],
 				"domains": [
 					"air",
@@ -2142,13 +2338,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Wis",
-						"Int"
+						"wis",
+						"int"
 					],
 					"entry": "Intelligence or Wisdom"
 				},
 				"skill": [
-					"Survival"
+					"survival"
 				],
 				"domains": [
 					"indulgence",
@@ -2202,13 +2398,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Wis",
-						"Con"
+						"wis",
+						"con"
 					],
 					"entry": "Constitution or Wisdom"
 				},
 				"skill": [
-					"Nature"
+					"nature"
 				],
 				"domains": [
 					"magic",
@@ -2265,13 +2461,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Wis",
-						"Con"
+						"wis",
+						"con"
 					],
 					"entry": "Constitution or Wisdom"
 				},
 				"skill": [
-					"Survival"
+					"survival"
 				],
 				"domains": [
 					"death",
@@ -2329,13 +2525,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Cha",
-						"Int"
+						"cha",
+						"int"
 					],
 					"entry": "Intelligence or Charisma"
 				},
 				"skill": [
-					"Deception"
+					"deception"
 				],
 				"domains": [
 					"nature",
@@ -2388,13 +2584,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Int",
-						"Cha"
+						"int",
+						"cha"
 					],
 					"entry": "Intelligence or Charisma"
 				},
 				"skill": [
-					"Diplomacy"
+					"diplomacy"
 				],
 				"domains": [
 					"change",
@@ -2452,12 +2648,12 @@
 				"ability": {
 					"entry": "Constitution or Charisma",
 					"abilities": [
-						"Con",
-						"Cha"
+						"con",
+						"cha"
 					]
 				},
 				"skill": [
-					"Performance"
+					"performance"
 				],
 				"domains": [
 					"earth",
@@ -2514,13 +2710,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Dex",
-						"Con"
+						"dex",
+						"con"
 					],
 					"entry": "Dexterity or Constitution"
 				},
 				"skill": [
-					"Athletics"
+					"athletics"
 				],
 				"domains": [
 					"destruction",
@@ -2544,7 +2740,30 @@
 				],
 				"avatar": {
 					"preface": "When casting the {@spell avatar} spell, a worshipper of Besmara gains the following additional abilities.",
-					"entry": "{@b Besmara} Speed 40 feet, swim Speed 70 feet, immune to {@condition immobilized}; Melee {@as 1} rapier ({@trait deadly 3d8}, {@trait disarm}, {@trait finesse}, {@trait reach 15 feet}), Damage {@damage 6d6+6} piercing; Ranged {@as 1} ship's cannon (range 120 feet), Damage {@damage 6d6+3} bludgeoning"
+					"speed": {
+						"walk": 40,
+						"swim": 70
+					},
+					"immune": [
+						"immobilized"
+					],
+					"melee": [{
+						"name": "rapier",
+						"traits": [
+							"deadly 3d8",
+							"disarm",
+							"finesse",
+							"reach 15 feet"
+						],
+						"damage": "6d6+6",
+						"damageType": "piercing"
+					}],
+					"ranged": [{
+						"name": "ship's cannon",
+						"range": 120,
+						"damage": "6d6+3",
+						"damageType": "bludgeoning"
+					}]
 				}
 			},
 			"hasLore": true,
@@ -2583,13 +2802,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Wis",
-						"Dex"
+						"wis",
+						"dex"
 					],
 					"entry": "Dexterity or Wisdom"
 				},
 				"skill": [
-					"Stealth"
+					"stealth"
 				],
 				"domains": [
 					"freedom",
@@ -2646,13 +2865,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Wis",
-						"Cha"
+						"wis",
+						"cha"
 					],
 					"entry": "Wisdom or Charisma"
 				},
 				"skill": [
-					"Diplomacy"
+					"diplomacy"
 				],
 				"domains": [
 					"confidence",
@@ -2712,13 +2931,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Dex",
-						"Con"
+						"dex",
+						"con"
 					],
 					"entry": "Dexterity or Constitution"
 				},
 				"skill": [
-					"Crafting"
+					"crafting"
 				],
 				"domains": [
 					"creation",
@@ -2742,7 +2961,29 @@
 				],
 				"avatar": {
 					"preface": "When casting the {@spell avatar} spell, a worshipper of Brigh gains the following additional abilities.",
-					"entry": "{@b Brigh} Speed 60 feet, immune to {@condition immobilized}, air walk; Melee {@as 1} light hammer ({@trait agile}, {@trait reach 15 feet}, {@trait thrown 40 feet}), Damage {@damage 6d6+6} bludgeoning; Ranged {@as 1} bolt of molten bronze (range 120 feet), Damage {@damage 6d8+3} fire"
+					"speed": {
+						"walk": 60
+					},
+					"airWalk": true,
+					"immune": [
+						"immobilized"
+					],
+					"melee": [{
+						"name": "light hammer",
+						"traits": [
+							"agile",
+							"reach 15 feet",
+							"thrown 40 feet"
+						],
+						"damage": "6d6+6",
+						"damageType": "bludgeoning"
+					}],
+					"ranged": [{
+						"name": "bolt of molten bronze",
+						"range": 120,
+						"damage": "6d8+3",
+						"damageType": "fire"
+					}]
 				}
 			},
 			"hasLore": true,
@@ -2791,13 +3032,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Dex",
-						"Cha"
+						"dex",
+						"cha"
 					],
 					"entry": "Dexterity or Charisma"
 				},
 				"skill": [
-					"Deception"
+					"deception"
 				],
 				"domains": [
 					"pain",
@@ -2820,7 +3061,27 @@
 					"whip"
 				],
 				"avatar": {
-					"entry": "Speed 30 feet, fly Speed 70 feet; Melee {@as 1} whip ({@trait disarm}, {@trait finesse}, {@trait nonlethal}, {@trait reach 20 feet}), Damage {@damage 6d4+6} slashing; Ranged {@as 1} savored sting (range 60 feet), Damage {@damage 6d6+3} poison."
+					"speed": {
+						"walk": 30,
+						"fly": 70
+					},
+					"melee": [{
+						"name": "whip",
+						"traits": [
+							"disarm",
+							"finesse",
+							"nonlethal",
+							"reach 20 feet"
+						],
+						"damage": "6d4+6",
+						"damageType": "slashing"
+					}],
+					"ranged": [{
+						"name": "savored sting",
+						"range": 60,
+						"damage": "6d6+3",
+						"damageType": "poison"
+					}]
 				}
 			},
 			"intercession": {
@@ -2890,13 +3151,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Int",
-						"Con"
+						"int",
+						"con"
 					],
 					"entry": "Constitution or Intelligence"
 				},
 				"skill": [
-					"Society"
+					"society"
 				],
 				"domains": [
 					"creation",
@@ -2924,7 +3185,25 @@
 				],
 				"avatar": {
 					"preface": "When casting the {@spell avatar} spell, a worshipper of Casandalee gains the following additional abilities.",
-					"entry": "{@b Casandalee} Speed 70 feet, air walk, ignore {@quickref difficult terrain||3|terrain} and {@quickref greater difficult terrain||3|terrain}; Melee {@as 1} polytool ({@trait reach 15 feet}), Damage {@damage 6d6+6} slashing; Ranged {@as 1} logic blast (range 120 feet), Damage {@damage 6d6+3} mental"
+					"speed": {
+						"walk": 70
+					},
+					"airWalk": true,
+					"ignoreTerrain": true,
+					"melee": [{
+						"name": "polytool",
+						"traits": [
+							"reach 15 feet"
+						],
+						"damage": "6d6+6",
+						"damageType": "slashing"
+					}],
+					"ranged": [{
+						"name": "logic blast",
+						"range": 120,
+						"damage": "6d6+3",
+						"damageType": "mental"
+					}]
 				}
 			},
 			"hasLore": true,
@@ -2974,13 +3253,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Con",
-						"Cha"
+						"con",
+						"cha"
 					],
 					"entry": "Constitution or Charisma"
 				},
 				"skill": [
-					"Athletics"
+					"athletics"
 				],
 				"domains": [
 					"cities",
@@ -3003,7 +3282,26 @@
 					"rapier"
 				],
 				"avatar": {
-					"entry": "Speed 70 feet, air walk, ignore {@quickref difficult terrain||3|terrain} and {@quickref greater difficult terrain||3|terrain}; Melee {@as 1} rapier ({@trait deadly}, {@trait reach 15 feet}), Damage {@damage 6d6+6} piercing; Ranged {@as 1} ale splash (range 120 feet), Damage {@damage 6d6+3} poison."
+					"speed": {
+						"walk": 70
+					},
+					"airWalk": true,
+					"ignoreTerrain": true,
+					"melee": [{
+						"name": "rapier",
+						"traits": [
+							"deadly",
+							"reach 15 feet"
+						],
+						"damage": "6d6+6",
+						"damageType": "piercing"
+					}],
+					"ranged": [{
+						"name": "ale splash",
+						"range": 120,
+						"damage": "6d6+3",
+						"damageType": "poison"
+					}]
 				}
 			},
 			"intercession": {
@@ -3072,13 +3370,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Str",
-						"Con"
+						"str",
+						"con"
 					],
 					"entry": "Strength or Constitution"
 				},
 				"skill": [
-					"Survival"
+					"survival"
 				],
 				"domains": [
 					"lightning",
@@ -3134,13 +3432,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Dex",
-						"Cha"
+						"dex",
+						"cha"
 					],
 					"entry": "Dexterity or Charisma"
 				},
 				"skill": [
-					"Thievery"
+					"thievery"
 				],
 				"domains": [
 					"confidence",
@@ -3164,7 +3462,33 @@
 				],
 				"avatar": {
 					"preface": "When casting the {@spell avatar} spell, a worshipper of Chaldira gains the following additional abilities.",
-					"entry": "{@b Chaldira} Speed 70 feet, air walk, immune to {@condition immobilized}; Melee {@as 1} shortsword ({@trait agil}e, {@trait finesse}, {@trait reach 15 feet}, {@trait versatile S}), Damage {@damage 6d6+6} piercing; Ranged {@as 1} fistful of buttons ({@trait nonlethal}, range 120 feet), Damage {@damage 6d6+3} bludgeoning"
+					"speed": {
+						"walk": 70
+					},
+					"airWalk": true,
+					"immune": [
+						"immobilized"
+					],
+					"melee": [{
+						"damage": "6d6+6",
+						"name": "shortsword",
+						"damageType": "piercing",
+						"traits": [
+							"agile",
+							"finesse",
+							"reach 15 feet",
+							"versatile S"
+						]
+					}],
+					"ranged": [{
+						"name": "fistful of buttons",
+						"traits": [
+							"nonlethal"
+						],
+						"range": 120,
+						"damage": "6d6+3",
+						"damageType": "bludgeoning"
+					}]
 				}
 			},
 			"hasLore": true,
@@ -3205,13 +3529,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Str",
-						"Con"
+						"str",
+						"con"
 					],
 					"entry": "Strength or Constitution"
 				},
 				"skill": [
-					"Medicine"
+					"medicine"
 				],
 				"domains": [
 					"healing",
@@ -3266,13 +3590,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Int",
-						"Con"
+						"int",
+						"con"
 					],
 					"entry": "Constitution or Intelligence"
 				},
 				"skill": [
-					"Occultism"
+					"occultism"
 				],
 				"domains": [
 					"death",
@@ -3328,13 +3652,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Dex",
-						"Cha"
+						"dex",
+						"cha"
 					],
 					"entry": "Dexterity or Charisma"
 				},
 				"skill": [
-					"Occultism"
+					"occultism"
 				],
 				"domains": [
 					"darkness",
@@ -3396,13 +3720,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Dex",
-						"Cha"
+						"dex",
+						"cha"
 					],
 					"entry": "Dexterity or Charisma"
 				},
 				"skill": [
-					"Stealth"
+					"stealth"
 				],
 				"domains": [
 					"confidence",
@@ -3457,13 +3781,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Wis",
-						"Con"
+						"wis",
+						"con"
 					],
 					"entry": "Constitution or Wisdom"
 				},
 				"skill": [
-					"Nature"
+					"nature"
 				],
 				"domains": [
 					"change",
@@ -3519,13 +3843,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Str",
-						"Con"
+						"str",
+						"con"
 					],
 					"entry": "Strength or Constitution"
 				},
 				"skill": [
-					"Athletics"
+					"athletics"
 				],
 				"domains": [
 					"change",
@@ -3578,13 +3902,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Str",
-						"Con"
+						"str",
+						"con"
 					],
 					"entry": "Strength or Constitution"
 				},
 				"skill": [
-					"Athletics"
+					"athletics"
 				],
 				"domains": [
 					"destruction",
@@ -3643,13 +3967,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Dex",
-						"Int"
+						"dex",
+						"int"
 					],
 					"entry": "Dexterity or Intelligence"
 				},
 				"skill": [
-					"Crafting"
+					"crafting"
 				],
 				"domains": [
 					"change",
@@ -3705,13 +4029,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Wis",
-						"Con"
+						"wis",
+						"con"
 					],
 					"entry": "Constitution or Wisdom"
 				},
 				"skill": [
-					"Athletics"
+					"athletics"
 				],
 				"domains": [
 					"death",
@@ -3778,13 +4102,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Dex",
-						"Cha"
+						"dex",
+						"cha"
 					],
 					"entry": "Dexterity or Charisma"
 				},
 				"skill": [
-					"Acrobatics"
+					"acrobatics"
 				],
 				"domains": [
 					"dreams",
@@ -3811,7 +4135,34 @@
 					"starknife"
 				],
 				"avatar": {
-					"entry": "Speed 30 feet, fly Speed 70 feet; Melee {@as 1} starknife ({@trait agile}, {@trait deadly}, {@trait finesse}, {@trait reach 15 feet}, silver, {@trait thrown 60 feet}), Damage {@damage 6d4+6} piercing; Ranged {@as 1} moonbeam (range 120 feet, silver), Damage {@damage 6d6+3} fire."
+					"speed": {
+						"walk": 30,
+						"fly": 70
+					},
+					"melee": [{
+						"name": "starknife",
+						"traits": [
+							"agile",
+							"deadly",
+							"finesse",
+							"reach 15 feet",
+							"thrown 60 feet"
+						],
+						"preciousMetal": [
+							"silver"
+						],
+						"damage": "6d4+6",
+						"damageType": "piercing"
+					}],
+					"ranged": [{
+						"damage": "6d6+3",
+						"damageType": "fire",
+						"name": "moonbeam",
+						"range": 120,
+						"preciousMetal": [
+							"silver"
+						]
+					}]
 				}
 			},
 			"intercession": {
@@ -3879,13 +4230,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Str",
-						"Cha"
+						"str",
+						"cha"
 					],
 					"entry": "Strength or Charisma"
 				},
 				"skill": [
-					"Deception"
+					"deception"
 				],
 				"domains": [
 					"destruction",
@@ -3941,13 +4292,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Str",
-						"Dex"
+						"str",
+						"dex"
 					],
 					"entry": "Strength or Dexterity"
 				},
 				"skill": [
-					"Athletics"
+					"athletics"
 				],
 				"domains": [
 					"destruction",
@@ -4002,13 +4353,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Str",
-						"Cha"
+						"str",
+						"cha"
 					],
 					"entry": "Strength or Charisma"
 				},
 				"skill": [
-					"Society"
+					"society"
 				],
 				"domains": [
 					"cities",
@@ -4062,13 +4413,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Con",
-						"Wis"
+						"con",
+						"wis"
 					],
 					"entry": "Constitution or Wisdom"
 				},
 				"skill": [
-					"Medicine"
+					"medicine"
 				],
 				"domains": [
 					"creation",
@@ -4124,13 +4475,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Wis",
-						"Con"
+						"wis",
+						"con"
 					],
 					"entry": "Constitution or Wisdom"
 				},
 				"skill": [
-					"Intimidation"
+					"intimidation"
 				],
 				"domains": [
 					"knowledge",
@@ -4186,13 +4537,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Int",
-						"Con"
+						"int",
+						"con"
 					],
 					"entry": "Constitution or Intelligence"
 				},
 				"skill": [
-					"Crafting"
+					"crafting"
 				],
 				"domains": [
 					"duty",
@@ -4245,13 +4596,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Con",
-						"Wis"
+						"con",
+						"wis"
 					],
 					"entry": "Constitution or Wisdom"
 				},
 				"skill": [
-					"Diplomacy"
+					"diplomacy"
 				],
 				"domains": [
 					"creation",
@@ -4309,13 +4660,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Str",
-						"Dex"
+						"str",
+						"dex"
 					],
 					"entry": "Strength or Dexterity"
 				},
 				"skill": [
-					"Intimidation"
+					"intimidation"
 				],
 				"domains": [
 					"ambition",
@@ -4367,13 +4718,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Dex",
-						"Int"
+						"dex",
+						"int"
 					],
 					"entry": "Dexterity or Intelligence"
 				},
 				"skill": [
-					"Survival"
+					"survival"
 				],
 				"domains": [
 					"creation",
@@ -4442,13 +4793,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Con",
-						"Wis"
+						"con",
+						"wis"
 					],
 					"entry": "Constitution or Wisdom"
 				},
 				"skill": [
-					"Survival"
+					"survival"
 				],
 				"domains": [
 					"earth",
@@ -4474,7 +4825,21 @@
 					"longbow"
 				],
 				"avatar": {
-					"entry": "Speed 70 feet, air walk, ignore {@quickref difficult terrain||3|terrain} and {@quickref greater difficult terrain||3|terrain}; Ranged {@as 1} longbow ({@trait deadly d8}, range increment 150 feet), Damage {@damage 6d8+3} piercing."
+					"speed": {
+						"walk": 70
+					},
+					"airWalk": true,
+					"ignoreTerrain": true,
+					"ranged": [{
+						"name": "longbow",
+						"range": 150,
+						"rangedIncrement": true,
+						"traits": [
+							"deadly d8"
+						],
+						"damage": "6d8+3",
+						"damageType": "piercing"
+					}]
 				}
 			},
 			"intercession": {
@@ -4543,13 +4908,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Wis",
-						"Cha"
+						"wis",
+						"cha"
 					],
 					"entry": "Wisdom or Charisma"
 				},
 				"skill": [
-					"Deception"
+					"deception"
 				],
 				"domains": [
 					"fate",
@@ -4605,13 +4970,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Wis",
-						"Int"
+						"wis",
+						"int"
 					],
 					"entry": "Intelligence or Wisdom"
 				},
 				"skill": [
-					"Diplomacy"
+					"diplomacy"
 				],
 				"domains": [
 					"confidence",
@@ -4662,13 +5027,13 @@
 			"devoteeBenefits": {
 				"ability": {
 					"abilities": [
-						"Wis",
-						"Int"
+						"wis",
+						"int"
 					],
 					"entry": "Intelligence or Wisdom"
 				},
 				"skill": [
-					"Occultism"
+					"occultism"
 				]
 			},
 			"hasLore": true
@@ -4705,13 +5070,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Str",
-						"Cha"
+						"str",
+						"cha"
 					],
 					"entry": "Strength or Charisma"
 				},
 				"skill": [
-					"Athletics"
+					"athletics"
 				],
 				"domains": [
 					"creation",
@@ -4768,13 +5133,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Cha",
-						"Int"
+						"cha",
+						"int"
 					],
 					"entry": "Charisma or Intelligence"
 				},
 				"skill": [
-					"Crafting"
+					"crafting"
 				],
 				"domains": [
 					"cities",
@@ -4829,13 +5194,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Wis",
-						"Con"
+						"wis",
+						"con"
 					],
 					"entry": "Constitution or Wisdom"
 				},
 				"skill": [
-					"Medicine"
+					"medicine"
 				],
 				"domains": [
 					"cities",
@@ -4891,13 +5256,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Con",
-						"Cha"
+						"con",
+						"cha"
 					],
 					"entry": "Constitution or Charisma"
 				},
 				"skill": [
-					"Intimidation"
+					"intimidation"
 				],
 				"domains": [
 					"ambition",
@@ -4954,13 +5319,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Dex",
-						"Cha"
+						"dex",
+						"cha"
 					],
 					"entry": "Dexterity or Charisma"
 				},
 				"skill": [
-					"Stealth"
+					"stealth"
 				],
 				"domains": [
 					"earth",
@@ -5016,13 +5381,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Str",
-						"Dex"
+						"str",
+						"dex"
 					],
 					"entry": "Strength or Dexterity"
 				},
 				"skill": [
-					"Athletics"
+					"athletics"
 				],
 				"domains": [
 					"confidence",
@@ -5075,13 +5440,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Int",
-						"Wis"
+						"int",
+						"wis"
 					],
 					"entry": "Intelligence or Wisdom"
 				},
 				"skill": [
-					"Occultism"
+					"occultism"
 				],
 				"domains": [
 					"might",
@@ -5136,13 +5501,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Wis",
-						"Con"
+						"wis",
+						"con"
 					],
 					"entry": "Constitution or Wisdom"
 				},
 				"skill": [
-					"Nature"
+					"nature"
 				],
 				"domains": [
 					"air",
@@ -5165,8 +5530,22 @@
 					"spear"
 				],
 				"avatar": {
-					"preface": "When casting the {@spell avatar} spell, a worshipper of Ghlaunder gains the following additional abilities.",
-					"entry": "{@b Ghlaunder} Speed 30 feet, fly Speed 70 feet; Melee {@as 1} proboscis ({@trait agile}, {@trait reach 20 feet}), Damage {@damage 6d6+6} piercing plus {@damage 3d6} {@condition persistent damage|CRB|persistent bleed}"
+					"speed": {
+						"walk": 30,
+						"fly": 70
+					},
+					"melee": [{
+						"name": "proboscis",
+						"traits": [
+							"agile",
+							"reach 20 feet"
+						],
+						"damage": "6d6+6",
+						"damageType": "piercing",
+						"damage2": "3d6",
+						"damageType2": "persistent bleed"
+					}],
+					"preface": "When casting the {@spell avatar} spell, a worshipper of Ghlaunder gains the following additional abilities."
 				}
 			},
 			"hasLore": true,
@@ -5226,13 +5605,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Str",
-						"Wis"
+						"str",
+						"wis"
 					],
 					"entry": "Strength or Wisdom"
 				},
 				"skill": [
-					"Intimidation"
+					"intimidation"
 				],
 				"domains": [
 					"indulgence",
@@ -5298,13 +5677,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Str",
-						"Con"
+						"str",
+						"con"
 					],
 					"entry": "Strength or Constitution"
 				},
 				"skill": [
-					"Athletics"
+					"athletics"
 				],
 				"domains": [
 					"confidence",
@@ -5327,7 +5706,21 @@
 					"greatsword"
 				],
 				"avatar": {
-					"entry": "Speed 70 feet, immune to {@condition immobilized}; Melee {@as 1} greatsword ({@trait versatile P}, {@trait reach 15 feet}), Damage {@damage 6d12+6} slashing."
+					"speed": {
+						"walk": 70
+					},
+					"immune": [
+						"immobilized"
+					],
+					"melee": [{
+						"damage": "6d12+6",
+						"damageType": "slashing",
+						"name": "greatsword",
+						"traits": [
+							"versatile P",
+							"reach 15 feet"
+						]
+					}]
 				}
 			},
 			"intercession": {
@@ -5406,13 +5799,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Con",
-						"Wis"
+						"con",
+						"wis"
 					],
 					"entry": "Constitution or Wisdom"
 				},
 				"skill": [
-					"Survival"
+					"survival"
 				],
 				"domains": [
 					"air",
@@ -5439,7 +5832,30 @@
 					"trident"
 				],
 				"avatar": {
-					"entry": "{@b Gozreh} no land Speed, fly Speed 70 feet, swim Speed 70 feet; ignore {@quickref difficult terrain||3|terrain} and {@quickref greater difficult terrain||3|terrain}; Melee {@as 1} waves ({@trait shove}, {@trait reach 15 feet}, thrown 20 feet), Damage {@damage 6d8+6} bludgeoning; Ranged {@as 1} wind ({@trait versatile electricity}, range 120 feet}), Damage {@damage 6d6+3} bludgeoning."
+					"speed": {
+						"fly": 70,
+						"swim": 70
+					},
+					"ignoreTerrain": true,
+					"melee": [{
+						"name": "waves",
+						"traits": [
+							"shove",
+							"reach 15 feet",
+							"thrown 20 feet"
+						],
+						"damage": "6d8+6",
+						"damageType": "bludgeoning"
+					}],
+					"ranged": [{
+						"name": "wind",
+						"traits": [
+							"versatile electricity"
+						],
+						"range": 120,
+						"damage": "6d6+3",
+						"damageType": "bludgeoning"
+					}]
 				}
 			},
 			"intercession": {
@@ -5517,13 +5933,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Wis",
-						"Int"
+						"wis",
+						"int"
 					],
 					"entry": "Intelligence or Wisdom"
 				},
 				"skill": [
-					"Crafting"
+					"crafting"
 				],
 				"domains": [
 					"creation",
@@ -5551,7 +5967,30 @@
 				],
 				"avatar": {
 					"preface": "When casting the {@spell avatar} spell, a worshipper of Grandmother Spider gains the following additional abilities.",
-					"entry": "{@b Grandmother Spider} Speed 70 feet, climb Speed 70 feet, immune to {@condition immobilized}; Melee {@as 1} leg ({@trait deadly 3d8}, {@trait finesse}, {@trait reach 15 feet}, {@trait versatile P}), Damage {@damage 6d6+6} bludgeoning; Ranged {@as 1} venom web (range 120 feet), Damage {@damage 6d6+3} poison"
+					"speed": {
+						"walk": 70,
+						"climb": 70
+					},
+					"immune": [
+						"immobilized"
+					],
+					"melee": [{
+						"name": "leg",
+						"traits": [
+							"deadly 3d8",
+							"finesse",
+							"reach 15 feet",
+							"versatile P"
+						],
+						"damage": "6d6+6",
+						"damageType": "bludgeoning"
+					}],
+					"ranged": [{
+						"name": "venom web",
+						"range": 120,
+						"damage": "6d6+3",
+						"damageType": "poison"
+					}]
 				}
 			},
 			"hasLore": true,
@@ -5600,13 +6039,13 @@
 			"devoteeBenefits": {
 				"ability": {
 					"abilities": [
-						"Wis",
-						"Con"
+						"wis",
+						"con"
 					],
 					"entry": "Intelligence or Constitution"
 				},
 				"skill": [
-					"Nature"
+					"nature"
 				]
 			},
 			"hasLore": true
@@ -5641,13 +6080,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Str",
-						"Cha"
+						"str",
+						"cha"
 					],
 					"entry": "Strength or Charisma"
 				},
 				"skill": [
-					"Intimidation"
+					"intimidation"
 				],
 				"domains": [
 					"darkness",
@@ -5674,7 +6113,28 @@
 				],
 				"avatar": {
 					"preface": "When casting the {@spell avatar} spell, a worshipper of Groetus gains the following additional abilities.",
-					"entry": "{@b Groetus} Speed 70 feet, air walk, ignore {@quickref difficult terrain||3|terrain} and {@quickref greater difficult terrain||3|terrain}; Melee {@as 1} war flail ({@trait disarm}, {@trait reach 15 feet}, {@trait sweep}, {@trait trip}), Damage {@damage 6d10+6} bludgeoning; Ranged {@as 1} dreadful thought (range 120 feet), Damage {@damage 6d6+3} mental"
+					"speed": {
+						"walk": 70
+					},
+					"airWalk": true,
+					"ignoreTerrain": true,
+					"melee": [{
+						"name": "war flail",
+						"traits": [
+							"disarm",
+							"reach 15 feet",
+							"sweep",
+							"trip"
+						],
+						"damage": "6d10+6",
+						"damageType": "bludgeoning"
+					}],
+					"ranged": [{
+						"name": "dreadful thought",
+						"range": 120,
+						"damage": "6d6+3",
+						"damageType": "mental"
+					}]
 				}
 			},
 			"hasLore": true,
@@ -5716,13 +6176,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Int",
-						"Wis"
+						"int",
+						"wis"
 					],
 					"entry": "Intelligence or Wisdom"
 				},
 				"skill": [
-					"Society"
+					"society"
 				],
 				"domains": [
 					"glyph",
@@ -5750,7 +6210,31 @@
 				],
 				"avatar": {
 					"preface": "When casting the {@spell avatar} spell, a worshipper of Gruhastha gains the following additional abilities.",
-					"entry": "{@b Gruhastha} Speed 50 feet, fly Speed 70 feet; Melee {@as 1} fist ({@trait agile}, {@trait finesse}, {@trait nonlethal}, {@trait reach 15 feet}), Damage {@damage 6d6+6} bludgeoning; Ranged {@as 1} arrow of enlightenment ({@trait deadly 3d10}, range increment 120 feet), Damage {@damage 6d6+3} piercing"
+					"speed": {
+						"walk": 50,
+						"fly": 70
+					},
+					"melee": [{
+						"name": "fist",
+						"traits": [
+							"agile",
+							"finesse",
+							"nonlethal",
+							"reach 15 feet"
+						],
+						"damage": "6d6+6",
+						"damageType": "bludgeoning"
+					}],
+					"ranged": [{
+						"name": "arrow of enlightenment",
+						"traits": [
+							"deadly 3d10"
+						],
+						"range": 120,
+						"rangedIncrement": true,
+						"damage": "6d6+3",
+						"damageType": "piercing"
+					}]
 				}
 			},
 			"hasLore": true,
@@ -5788,13 +6272,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Cha",
-						"Con"
+						"cha",
+						"con"
 					],
 					"entry": "Constitution or Charisma"
 				},
 				"skill": [
-					"Diplomacy"
+					"diplomacy"
 				],
 				"domains": [
 					"confidence",
@@ -5849,13 +6333,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Wis",
-						"Cha"
+						"wis",
+						"cha"
 					],
 					"entry": "Wisdom or Charisma"
 				},
 				"skill": [
-					"Intimidation"
+					"intimidation"
 				],
 				"domains": [
 					"ambition",
@@ -5912,13 +6396,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Con",
-						"Wis"
+						"con",
+						"wis"
 					],
 					"entry": "Constitution or Wisdom"
 				},
 				"skill": [
-					"Nature"
+					"nature"
 				],
 				"domains": [
 					"indulgence",
@@ -5974,13 +6458,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Str",
-						"Dex"
+						"str",
+						"dex"
 					],
 					"entry": "Strength or Dexterity"
 				},
 				"skill": [
-					"Athletics"
+					"athletics"
 				],
 				"domains": [
 					"death",
@@ -6033,13 +6517,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Cha",
-						"Int"
+						"cha",
+						"int"
 					],
 					"entry": "Intelligence or Charisma"
 				},
 				"skill": [
-					"Deception"
+					"deception"
 				],
 				"domains": [
 					"glyph",
@@ -6097,12 +6581,12 @@
 				"ability": {
 					"entry": "Strength or Charisma",
 					"abilities": [
-						"Str",
-						"Cha"
+						"str",
+						"cha"
 					]
 				},
 				"skill": [
-					"Performance"
+					"performance"
 				],
 				"domains": [
 					"family",
@@ -6160,13 +6644,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Con",
-						"Cha"
+						"con",
+						"cha"
 					],
 					"entry": "Constitution or Charisma"
 				},
 				"skill": [
-					"Performance"
+					"performance"
 				],
 				"domains": [
 					"air",
@@ -6194,7 +6678,35 @@
 				],
 				"avatar": {
 					"preface": "When casting the {@spell avatar} spell, a worshipper of Hei Feng gains the following additional abilities.",
-					"entry": "{@b Hei Feng} Speed 70 feet, air walk, ignore {@quickref difficult terrain||3|terrain} and {@quickref greater difficult terrain||3|terrain}; Melee {@as 1} drunken sword ({@trait forceful}, {@trait reach 15 feet}), Damage {@damage 4d6+6} slashing plus {@damage 1d6} electricity splash damage; Ranged {@as 1} storm surge (range 120 feet, {@trait air}, {@trait water}), Damage {@damage 4d6+3} bludgeoning plus {@damage 1d6} electricity splash damage. The caster is immune to this splash damage."
+					"speed": {
+						"walk": 70
+					},
+					"airWalk": true,
+					"ignoreTerrain": true,
+					"melee": [{
+						"name": "drunken sword",
+						"traits": [
+							"forceful",
+							"reach 15 feet"
+						],
+						"damage": "4d6+6",
+						"damageType": "slashing",
+						"damage2": "1d6",
+						"damageType2": "electricity splash"
+					}],
+					"ranged": [{
+						"name": "storm surge",
+						"traits": [
+							"air",
+							"water"
+						],
+						"damage": "4d6+3",
+						"damageType": "bludgeoning",
+						"damage2": "1d6",
+						"range": 120,
+						"damageType2": "electricity splash",
+						"note": "The caster is immune to this splash damage"
+					}]
 				}
 			},
 			"hasLore": true,
@@ -6234,12 +6746,12 @@
 				"ability": {
 					"entry": "Strength or Charisma",
 					"abilities": [
-						"Str",
-						"Cha"
+						"str",
+						"cha"
 					]
 				},
 				"skill": [
-					"Diplomacy"
+					"diplomacy"
 				],
 				"domains": [
 					"air",
@@ -6295,13 +6807,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Dex",
-						"Str"
+						"dex",
+						"str"
 					],
 					"entry": "Strength or Dexterity"
 				},
 				"skill": [
-					"Stealth"
+					"stealth"
 				],
 				"domains": [
 					"air",
@@ -6357,13 +6869,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Con",
-						"Wis"
+						"con",
+						"wis"
 					],
 					"entry": "Constitution or Wisdom"
 				},
 				"skill": [
-					"Occultism"
+					"occultism"
 				],
 				"domains": [
 					"dreams",
@@ -6420,13 +6932,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Str",
-						"Int"
+						"str",
+						"int"
 					],
 					"entry": "Strength or Intelligence"
 				},
 				"skill": [
-					"Occultism"
+					"occultism"
 				],
 				"domains": [
 					"death",
@@ -6490,13 +7002,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Str",
-						"Con"
+						"str",
+						"con"
 					],
 					"entry": "Strength or Constitution"
 				},
 				"skill": [
-					"Intimidation"
+					"intimidation"
 				],
 				"domains": [
 					"confidence",
@@ -6522,7 +7034,20 @@
 					"longsword"
 				],
 				"avatar": {
-					"entry": "Speed 70 feet, air walk; shield (15 Hardness, can't be damaged); Melee {@as 1} longsword ({@trait versatile P}, {@trait reach 15 feet}), Damage {@damage 6d8+6} slashing."
+					"speed": {
+						"walk": 70
+					},
+					"airWalk": true,
+					"shield": 15,
+					"melee": [{
+						"name": "longsword",
+						"traits": [
+							"versatile P",
+							"reach 15 feet"
+						],
+						"damage": "6d8+6",
+						"damageType": "slashing"
+					}]
 				}
 			},
 			"intercession": {
@@ -6592,13 +7117,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Dex",
-						"Int"
+						"dex",
+						"int"
 					],
 					"entry": "Dexterity or Intelligence"
 				},
 				"skill": [
-					"Arcana"
+					"arcana"
 				],
 				"domains": [
 					"fate",
@@ -6666,13 +7191,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Int",
-						"Wis"
+						"int",
+						"wis"
 					],
 					"entry": "Intelligence or Wisdom"
 				},
 				"skill": [
-					"Athletics"
+					"athletics"
 				],
 				"domains": [
 					"knowledge",
@@ -6699,7 +7224,27 @@
 					"fist"
 				],
 				"avatar": {
-					"entry": "Speed 80 feet, air walk; Melee {@as 1} unfettered strike ({@trait agile}, {@trait versatile P or S}, {@trait finesse}, {@trait reach 15 feet}), Damage {@damage 6d8+6} bludgeoning; Ranged {@as 1} wind strike (range 60 feet}), Damage {@damage 6d4+6} bludgeoning."
+					"speed": {
+						"walk": 80
+					},
+					"airWalk": true,
+					"melee": [{
+						"name": "unfettered strike",
+						"damage": "6d8+6",
+						"damageType": "bludgeoning",
+						"traits": [
+							"agile",
+							"versatile P or S",
+							"finesse",
+							"reach 15 feet"
+						]
+					}],
+					"ranged": [{
+						"name": "wind strike",
+						"damage": "6d4+6",
+						"damageType": "bludgeoning",
+						"range": 60
+					}]
 				}
 			},
 			"intercession": {
@@ -6769,13 +7314,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Wis",
-						"Cha"
+						"wis",
+						"cha"
 					],
 					"entry": "Wisdom or Charisma"
 				},
 				"skill": [
-					"Arcana"
+					"arcana"
 				],
 				"domains": [
 					"family",
@@ -6848,13 +7393,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Str",
-						"Con"
+						"str",
+						"con"
 					],
 					"entry": "Strength or Constitution"
 				},
 				"skill": [
-					"Nature"
+					"nature"
 				],
 				"domains": [
 					"family",
@@ -6910,13 +7455,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Str",
-						"Wis"
+						"str",
+						"wis"
 					],
 					"entry": "Strength or Wisdom"
 				},
 				"skill": [
-					"Intimidation"
+					"intimidation"
 				],
 				"domains": [
 					"confidence",
@@ -6968,13 +7513,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Dex",
-						"Int"
+						"dex",
+						"int"
 					],
 					"entry": "Dexterity or Intelligence"
 				},
 				"skill": [
-					"Stealth"
+					"stealth"
 				],
 				"domains": [
 					"indulgence",
@@ -7034,13 +7579,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Str",
-						"Wis"
+						"str",
+						"wis"
 					],
 					"entry": "Strength or Wisdom"
 				},
 				"skill": [
-					"Society"
+					"society"
 				],
 				"domains": [
 					"family",
@@ -7067,7 +7612,27 @@
 				],
 				"avatar": {
 					"preface": "When casting the {@spell avatar} spell, a worshipper of Kazutal gains the following additional abilities.",
-					"entry": "{@b Kazutal} Speed 60 feet, ignore {@quickref difficult terrain||3|terrain}; Melee {@as 1} machete ({@trait agile}, {@trait reach 15 feet}), Damage {@damage 6d6+6} slashing; Ranged {@as 1} jaguar pounce (range 60 feet); Damage {@damage 5d6+3} piercing plus {@damage 1d6} {@condition persistent damage|CRB|persistent bleed}"
+					"speed": {
+						"walk": 60
+					},
+					"ignoreTerrain": true,
+					"melee": [{
+						"name": "machete",
+						"traits": [
+							"agile",
+							"reach 15 feet"
+						],
+						"damage": "6d6+6",
+						"damageType": "slashing"
+					}],
+					"ranged": [{
+						"name": "jaguar pounce",
+						"range": 60,
+						"damage": "5d6+3",
+						"damageType": "piercing",
+						"damage2": "1d6",
+						"damageType2": "persistent bleed"
+					}]
 				}
 			},
 			"hasLore": true,
@@ -7107,13 +7672,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Con",
-						"Cha"
+						"con",
+						"cha"
 					],
 					"entry": "Constitution or Charisma"
 				},
 				"skill": [
-					"Athletics"
+					"athletics"
 				],
 				"domains": [
 					"destruction",
@@ -7168,13 +7733,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Con",
-						"Wis"
+						"con",
+						"wis"
 					],
 					"entry": "Constitution or Wisdom"
 				},
 				"skill": [
-					"Occultism"
+					"occultism"
 				],
 				"domains": [
 					"darkness",
@@ -7230,13 +7795,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Dex",
-						"Wis"
+						"dex",
+						"wis"
 					],
 					"entry": "Dexterity or Wisdom"
 				},
 				"skill": [
-					"Survival"
+					"survival"
 				],
 				"domains": [
 					"darkness",
@@ -7289,13 +7854,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Dex",
-						"Cha"
+						"dex",
+						"cha"
 					],
 					"entry": "Dexterity or Charisma"
 				},
 				"skill": [
-					"Nature"
+					"nature"
 				],
 				"domains": [
 					"destruction",
@@ -7350,13 +7915,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Con",
-						"Dex"
+						"con",
+						"dex"
 					],
 					"entry": "Dexterity or Constitution"
 				},
 				"skill": [
-					"Performance"
+					"performance"
 				],
 				"domains": [
 					"luck",
@@ -7412,13 +7977,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Str",
-						"Wis"
+						"str",
+						"wis"
 					],
 					"entry": "Strength or Wisdom"
 				},
 				"skill": [
-					"Society"
+					"society"
 				],
 				"domains": [
 					"duty",
@@ -7473,13 +8038,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Cha",
-						"Wis"
+						"cha",
+						"wis"
 					],
 					"entry": "Wisdom or Charisma"
 				},
 				"skill": [
-					"Diplomacy"
+					"diplomacy"
 				],
 				"domains": [
 					"change",
@@ -7533,13 +8098,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Str",
-						"Con"
+						"str",
+						"con"
 					],
 					"entry": "Strength or Constitution"
 				},
 				"skill": [
-					"Athletics"
+					"athletics"
 				],
 				"domains": [
 					"cold",
@@ -7597,13 +8162,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Str",
-						"Con"
+						"str",
+						"con"
 					],
 					"entry": "Strength or Constitution"
 				},
 				"skill": [
-					"Athletics"
+					"athletics"
 				],
 				"domains": [
 					"ambition",
@@ -7627,7 +8192,34 @@
 				],
 				"avatar": {
 					"preface": "When casting the {@spell avatar} spell, a worshipper of Kurgess gains the following additional abilities.",
-					"entry": "{@b Kurgess} Speed 70 feet, climb Speed 50 feet, swim Speed 50 feet, immune to {@condition immobilized}; Melee {@as 1} lashing chain ({@trait disarm}, {@trait reach 20 feet}, {@trait trip}), Damage {@damage 6d6+6} bludgeoning; Ranged {@as 1} javelin (range increment 60 feet, {@trait thrown}), Damage {@damage 6d6+3} piercing"
+					"speed": {
+						"walk": 70,
+						"climb": 50,
+						"swim": 50
+					},
+					"immune": [
+						"immobilized"
+					],
+					"melee": [{
+						"name": "lashing chain",
+						"traits": [
+							"disarm",
+							"reach 20 feet",
+							"trip"
+						],
+						"damage": "6d6+6",
+						"damageType": "bludgeoning"
+					}],
+					"ranged": [{
+						"name": "javelin",
+						"range": 60,
+						"rangedIncrement": true,
+						"traits": [
+							"thrown"
+						],
+						"damage": "6d6+3",
+						"damageType": "piercing"
+					}]
 				}
 			},
 			"hasLore": true,
@@ -7666,13 +8258,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Int",
-						"Wis"
+						"int",
+						"wis"
 					],
 					"entry": "Intelligence or Wisdom"
 				},
 				"skill": [
-					"Performance"
+					"performance"
 				],
 				"domains": [
 					"creation",
@@ -7725,13 +8317,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Str",
-						"Con"
+						"str",
+						"con"
 					],
 					"entry": "Strength or Constitution"
 				},
 				"skill": [
-					"Nature"
+					"nature"
 				],
 				"domains": [
 					"destruction",
@@ -7784,13 +8376,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Int",
-						"Dex"
+						"int",
+						"dex"
 					],
 					"entry": "Dexterity or Intelligence"
 				},
 				"skill": [
-					"Thievery"
+					"thievery"
 				],
 				"domains": [
 					"indulgence",
@@ -7856,13 +8448,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Con",
-						"Str"
+						"con",
+						"str"
 					],
 					"entry": "Constitution or Strength"
 				},
 				"skill": [
-					"Survival"
+					"survival"
 				],
 				"domains": [
 					"family",
@@ -7888,7 +8480,25 @@
 					"falchion"
 				],
 				"avatar": {
-					"entry": "Speed 30 feet, fly Speed 70 feet; Melee {@as 1} falchion (forceful, {@trait reach 15 feet}), Damage {@damage 6d10+6} slashing; Ranged {@as 1} waters of Lamashtu (range 120 feet), Damage {@damage 6d6+3} poison."
+					"speed": {
+						"walk": 30,
+						"fly": 70
+					},
+					"melee": [{
+						"name": "falchion",
+						"traits": [
+							"forceful",
+							"reach 15 feet"
+						],
+						"damage": "6d10+6",
+						"damageType": "slashing"
+					}],
+					"ranged": [{
+						"name": "waters of Lamashtu",
+						"range": 120,
+						"damage": "6d6+3",
+						"damageType": "poison"
+					}]
 				}
 			},
 			"intercession": {
@@ -7957,13 +8567,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Dex",
-						"Int"
+						"dex",
+						"int"
 					],
 					"entry": "Dexterity or Intelligence"
 				},
 				"skill": [
-					"Thievery"
+					"thievery"
 				],
 				"domains": [
 					"darkness",
@@ -8016,13 +8626,13 @@
 			"devoteeBenefits": {
 				"ability": {
 					"abilities": [
-						"Int",
-						"Con"
+						"int",
+						"con"
 					],
 					"entry": "Constitution or Intelligence"
 				},
 				"skill": [
-					"Medicine"
+					"medicine"
 				]
 			},
 			"hasLore": true
@@ -8060,13 +8670,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Int",
-						"Cha"
+						"int",
+						"cha"
 					],
 					"entry": "Intelligence or Charisma"
 				},
 				"skill": [
-					"Performance"
+					"performance"
 				],
 				"domains": [
 					"creation",
@@ -8120,13 +8730,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Wis",
-						"Int"
+						"wis",
+						"int"
 					],
 					"entry": "Intelligence or Wisdom"
 				},
 				"skill": [
-					"Arcana"
+					"arcana"
 				],
 				"domains": [
 					"fate",
@@ -8181,13 +8791,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Cha",
-						"Wis"
+						"cha",
+						"wis"
 					],
 					"entry": "Wisdom or Charisma"
 				},
 				"skill": [
-					"Society"
+					"society"
 				],
 				"domains": [
 					"change",
@@ -8245,13 +8855,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Con",
-						"Dex"
+						"con",
+						"dex"
 					],
 					"entry": "Dexterity or Constitution"
 				},
 				"skill": [
-					"Survival"
+					"survival"
 				],
 				"domains": [
 					"change",
@@ -8309,12 +8919,12 @@
 				"ability": {
 					"entry": "Intelligence or Wisdom",
 					"abilities": [
-						"Int",
-						"Wis"
+						"int",
+						"wis"
 					]
 				},
 				"skill": [
-					"Society"
+					"society"
 				],
 				"domains": [
 					"knowledge",
@@ -8367,13 +8977,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Int",
-						"Wis"
+						"int",
+						"wis"
 					],
 					"entry": "Intelligence or Wisdom"
 				},
 				"skill": [
-					"Occultism"
+					"occultism"
 				],
 				"domains": [
 					"fate",
@@ -8432,13 +9042,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Con",
-						"Wis"
+						"con",
+						"wis"
 					],
 					"entry": "Constitution or Wisdom"
 				},
 				"skill": [
-					"Crafting"
+					"crafting"
 				],
 				"domains": [
 					"death",
@@ -8492,13 +9102,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Wis",
-						"Cha"
+						"wis",
+						"cha"
 					],
 					"entry": "Wisdom or Charisma"
 				},
 				"skill": [
-					"Deception"
+					"deception"
 				],
 				"domains": [
 					"fate",
@@ -8552,13 +9162,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Cha",
-						"Wis"
+						"cha",
+						"wis"
 					],
 					"entry": "Wisdom or Charisma"
 				},
 				"skill": [
-					"Thievery"
+					"thievery"
 				],
 				"domains": [
 					"ambition",
@@ -8616,13 +9226,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Wis",
-						"Cha"
+						"wis",
+						"cha"
 					],
 					"entry": "Constitution or Wisdom"
 				},
 				"skill": [
-					"Survival"
+					"survival"
 				],
 				"domains": [
 					"cities",
@@ -8675,13 +9285,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Cha",
-						"Int"
+						"cha",
+						"int"
 					],
 					"entry": "Intelligence or Charisma"
 				},
 				"skill": [
-					"Deception"
+					"deception"
 				],
 				"domains": [
 					"glyph",
@@ -8738,13 +9348,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Str",
-						"Wis"
+						"str",
+						"wis"
 					],
 					"entry": "Strength or Wisdom"
 				},
 				"skill": [
-					"Society"
+					"society"
 				],
 				"domains": [
 					"change",
@@ -8768,7 +9378,20 @@
 				],
 				"avatar": {
 					"preface": "When casting the {@spell avatar} spell, a worshipper of Milani gains the following additional abilities.",
-					"entry": "{@b Milani} Speed 50 feet, fly Speed 70 feet; shield (15 Hardness, can't be damaged); Melee {@as 1} morningstar ({@trait versatile P}, {@trait reach 15 feet}), Damage {@damage 6d8+6} bludgeoning"
+					"speed": {
+						"walk": 50,
+						"fly": 70
+					},
+					"shield": 15,
+					"melee": [{
+						"name": "morningstar",
+						"traits": [
+							"versatile P",
+							"reach 15 feet"
+						],
+						"damage": "6d8+6",
+						"damageType": "bludgeoning"
+					}]
 				}
 			},
 			"hasLore": true,
@@ -8806,13 +9429,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Str",
-						"Con"
+						"str",
+						"con"
 					],
 					"entry": "Strength or Constitution"
 				},
 				"skill": [
-					"Athletics"
+					"athletics"
 				],
 				"domains": [
 					"destruction",
@@ -8866,13 +9489,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Int",
-						"Wis"
+						"int",
+						"wis"
 					],
 					"entry": "Intelligence or Wisdom"
 				},
 				"skill": [
-					"Occultism"
+					"occultism"
 				],
 				"domains": [
 					"creation",
@@ -8931,13 +9554,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Con",
-						"Wis"
+						"con",
+						"wis"
 					],
 					"entry": "Constitution or Wisdom"
 				},
 				"skill": [
-					"Survival"
+					"survival"
 				],
 				"domains": [
 					"change",
@@ -8993,13 +9616,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Con",
-						"Cha"
+						"con",
+						"cha"
 					],
 					"entry": "Constitution or Charisma"
 				},
 				"skill": [
-					"Diplomacy"
+					"diplomacy"
 				],
 				"domains": [
 					"death",
@@ -9060,13 +9683,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Wis",
-						"Cha"
+						"wis",
+						"cha"
 					],
 					"entry": "Wisdom or Charisma"
 				},
 				"skill": [
-					"Arcana"
+					"arcana"
 				],
 				"domains": [
 					"glyph",
@@ -9140,13 +9763,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Con",
-						"Wis"
+						"con",
+						"wis"
 					],
 					"entry": "Constitution or Wisdom"
 				},
 				"skill": [
-					"Diplomacy"
+					"diplomacy"
 				],
 				"domains": [
 					"change",
@@ -9201,13 +9824,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Dex",
-						"Wis"
+						"dex",
+						"wis"
 					],
 					"entry": "Dexterity or Wisdom"
 				},
 				"skill": [
-					"Occultism"
+					"occultism"
 				],
 				"domains": [
 					"delirium",
@@ -9272,13 +9895,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Wis",
-						"Int"
+						"wis",
+						"int"
 					],
 					"entry": "Wisdom or Intelligence"
 				},
 				"skill": [
-					"Arcana"
+					"arcana"
 				],
 				"domains": [
 					"destruction",
@@ -9322,7 +9945,19 @@
 					"staff"
 				],
 				"avatar": {
-					"entry": "Speed 70 feet, air walk; Ranged {@as 1} raw magic (range 120 feet; {@trait versatile cold, electricity, or fire}), Damage {@damage 6d6} force."
+					"speed": {
+						"walk": 70
+					},
+					"ranged": [{
+						"name": "raw magic",
+						"range": 120,
+						"traits": [
+							"versatile cold, electricity, or fire"
+						],
+						"damage": "6d6",
+						"damageType": "force"
+					}],
+					"airWalk": true
 				}
 			},
 			"intercession": {
@@ -9386,13 +10021,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Con",
-						"Wis"
+						"con",
+						"wis"
 					],
 					"entry": "Constitution or Wisdom"
 				},
 				"skill": [
-					"Nature"
+					"nature"
 				],
 				"domains": [
 					"decay",
@@ -9450,13 +10085,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Dex",
-						"Int"
+						"dex",
+						"int"
 					],
 					"entry": "Dexterity or Intelligence"
 				},
 				"skill": [
-					"Stealth"
+					"stealth"
 				],
 				"domains": [
 					"family",
@@ -9484,7 +10119,22 @@
 				],
 				"avatar": {
 					"preface": "When casting the {@spell avatar} spell, a worshipper of Nivi Rhombodazzle gains the following additional abilities.",
-					"entry": "{@b Nivi Rhombodazzle} Speed 50 feet, burrow Speed 30 feet, immune to {@condition immobilized}; Melee {@as 1} {@item returning} light hammer ({@trait agile}, {@trait thrown 40 feet}), Damage {@damage 6d6+6} bludgeoning"
+					"speed": {
+						"walk": 50,
+						"burrow": 30
+					},
+					"immune": [
+						"immobilized"
+					],
+					"melee": [{
+						"name": "returning light hammer",
+						"traits": [
+							"agile",
+							"thrown 40 feet"
+						],
+						"damage": "6d6+6",
+						"damageType": "bludgeoning"
+					}]
 				}
 			},
 			"hasLore": true,
@@ -9524,13 +10174,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Dex",
-						"Cha"
+						"dex",
+						"cha"
 					],
 					"entry": "Dexterity or Charisma"
 				},
 				"skill": [
-					"Society"
+					"society"
 				],
 				"domains": [
 					"change",
@@ -9554,7 +10204,31 @@
 				],
 				"avatar": {
 					"preface": "When casting the {@spell avatar} spell, a worshipper of Nocticula gains the following additional abilities.",
-					"entry": "{@b Nocticula} Speed 70 feet, fly Speed 70 feet; Melee {@as 1} tail stinger ({@trait agile}, {@trait finesse}, {@trait reach 15 feet}, {@trait trip}), Damage {@damage 6d6+6} slashing; Ranged {@as 1} magnanimous smile ({@trait nonlethal}, range 120 feet, {@trait visual}), Damage {@damage 6d6+3} mental"
+					"speed": {
+						"walk": 70,
+						"fly": 70
+					},
+					"melee": [{
+						"name": "tail stinger",
+						"traits": [
+							"agile",
+							"finesse",
+							"reach 15 feet",
+							"trip"
+						],
+						"damage": "6d6+6",
+						"damageType": "slashing"
+					}],
+					"ranged": [{
+						"name": "magnanimous smile",
+						"traits": [
+							"nonlethal",
+							"visual"
+						],
+						"range": 120,
+						"damage": "6d6+3",
+						"damageType": "mental"
+					}]
 				}
 			},
 			"hasLore": true,
@@ -9608,13 +10282,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Dex",
-						"Int"
+						"dex",
+						"int"
 					],
 					"entry": "Dexterity or Intelligence"
 				},
 				"skill": [
-					"Stealth"
+					"stealth"
 				],
 				"domains": [
 					"death",
@@ -9637,7 +10311,28 @@
 					"shortsword"
 				],
 				"avatar": {
-					"entry": "Speed 70 feet, air walk, ignore {@quickref difficult terrain||3|terrain} and {@quickref greater difficult terrain||3|terrain}; Melee {@as 1} shortsword ({@trait agile}, {@trait finesse}, {@trait versatile S}, {@trait reach 15 feet}), Damage {@damage 6d6+6} piercing; Ranged {@as 1} blackfinger toss (range 120 feet), Damage {@damage 6d6+3} poison."
+					"speed": {
+						"walk": 70
+					},
+					"ignoreTerrain": true,
+					"airWalk": true,
+					"melee": [{
+						"name": "shortsword",
+						"traits": [
+							"agile",
+							"finesse",
+							"versatile S",
+							"reach 15 feet"
+						],
+						"damage": "6d6+6",
+						"damageType": "piercing"
+					}],
+					"ranged": [{
+						"name": "blackfinger toss",
+						"range": 120,
+						"damage": "6d6+3",
+						"damageType": "poison"
+					}]
 				}
 			},
 			"intercession": {
@@ -9703,13 +10398,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Cha",
-						"Con"
+						"cha",
+						"con"
 					],
 					"entry": "Constitution or Charisma"
 				},
 				"skill": [
-					"Survival"
+					"survival"
 				],
 				"domains": [
 					"destruction",
@@ -9762,13 +10457,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Dex",
-						"Int"
+						"dex",
+						"int"
 					],
 					"entry": "Dexterity or Intelligence"
 				},
 				"skill": [
-					"Arcana"
+					"arcana"
 				],
 				"domains": [
 					"knowledge",
@@ -9842,13 +10537,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Wis",
-						"Con"
+						"wis",
+						"con"
 					],
 					"entry": "Constitution or Wisdom"
 				},
 				"skill": [
-					"Nature"
+					"nature"
 				],
 				"domains": [
 					"change",
@@ -9902,13 +10597,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Dex",
-						"Int"
+						"dex",
+						"int"
 					],
 					"entry": "Dexterity or Intelligence"
 				},
 				"skill": [
-					"Crafting"
+					"crafting"
 				],
 				"domains": [
 					"creation",
@@ -9963,13 +10658,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Dex",
-						"Cha"
+						"dex",
+						"cha"
 					],
 					"entry": "Dexterity or Charisma"
 				},
 				"skill": [
-					"Diplomacy"
+					"diplomacy"
 				],
 				"domains": [
 					"air",
@@ -10035,13 +10730,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Con",
-						"Wis"
+						"con",
+						"wis"
 					],
 					"entry": "Constitution or Wisdom"
 				},
 				"skill": [
-					"Medicine"
+					"medicine"
 				],
 				"domains": [
 					"death",
@@ -10069,7 +10764,28 @@
 					"dagger"
 				],
 				"avatar": {
-					"entry": "Speed 70 feet, air walk; Melee {@as 1} dagger ({@trait agile}, {@trait finesse}, {@trait reach 15 feet}, thrown 40 feet), Damage {@damage 6d6+6} slashing; Ranged {@as 1} spiral blast (range 120 feet, damages only undead), Damage {@damage 6d8+3} positive."
+					"speed": {
+						"walk": 70
+					},
+					"airWalk": true,
+					"melee": [{
+						"name": "dagger",
+						"traits": [
+							"agile",
+							"finesse",
+							"reach 15 feet",
+							"thrown 40 feet"
+						],
+						"damage": "6d6+6",
+						"damageType": "slashing"
+					}],
+					"ranged": [{
+						"name": "spiral blast",
+						"range": 120,
+						"traitNote": "damages only undead",
+						"damage": "6d8+3",
+						"damageType": "positive"
+					}]
 				}
 			},
 			"intercession": {
@@ -10142,13 +10858,13 @@
 			"devoteeBenefits": {
 				"ability": {
 					"abilities": [
-						"Int",
-						"Cha"
+						"int",
+						"cha"
 					],
 					"entry": "Intelligence or Charisma"
 				},
 				"skill": [
-					"Diplomacy"
+					"diplomacy"
 				]
 			},
 			"hasLore": true
@@ -10184,13 +10900,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Con",
-						"Wis"
+						"con",
+						"wis"
 					],
 					"entry": "Constitution or Wisdom"
 				},
 				"skill": [
-					"Survival"
+					"survival"
 				],
 				"domains": [
 					"cold",
@@ -10246,13 +10962,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Wis",
-						"Int"
+						"wis",
+						"int"
 					],
 					"entry": "Intelligence or Wisdom"
 				},
 				"skill": [
-					"Medicine"
+					"medicine"
 				],
 				"domains": [
 					"healing",
@@ -10309,13 +11025,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Str",
-						"Int"
+						"str",
+						"int"
 					],
 					"entry": "Strength or Intelligence"
 				},
 				"skill": [
-					"Society"
+					"society"
 				],
 				"domains": [
 					"fire",
@@ -10370,13 +11086,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Cha",
-						"Str"
+						"cha",
+						"str"
 					],
 					"entry": "Strength or Charisma"
 				},
 				"skill": [
-					"Intimidation"
+					"intimidation"
 				],
 				"domains": [
 					"destruction",
@@ -10434,13 +11150,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Dex",
-						"Wis"
+						"dex",
+						"wis"
 					],
 					"entry": "Dexterity or Wisdom"
 				},
 				"skill": [
-					"Acrobatics"
+					"acrobatics"
 				],
 				"domains": [
 					"air",
@@ -10497,13 +11213,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Cha",
-						"Dex"
+						"cha",
+						"dex"
 					],
 					"entry": "Dexterity or Charisma"
 				},
 				"skill": [
-					"Acrobatics"
+					"acrobatics"
 				],
 				"domains": [
 					"air",
@@ -10561,13 +11277,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Str",
-						"Cha"
+						"str",
+						"cha"
 					],
 					"entry": "Strength or Charisma"
 				},
 				"skill": [
-					"Performance"
+					"performance"
 				],
 				"domains": [
 					"confidence",
@@ -10630,13 +11346,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Str",
-						"Con"
+						"str",
+						"con"
 					],
 					"entry": "Strength or Constitution"
 				},
 				"skill": [
-					"Athletics"
+					"athletics"
 				],
 				"domains": [
 					"air",
@@ -10663,7 +11379,33 @@
 					"greataxe"
 				],
 				"avatar": {
-					"entry": "Speed 50 feet, burrow Speed 30 feet, immune to {@condition immobilized}; Melee {@as 1} jaws ({@trait reach 15 feet}), Damage {@damage 6d12+6} piercing; Melee {@as 1} leg ({@trait agile}, {@trait versatile P}, {@trait reach 15 feet}), Damage {@damage 6d8+6} bludgeoning."
+					"speed": {
+						"walk": 50,
+						"burrow": 30
+					},
+					"immune": [
+						"immobilized"
+					],
+					"melee": [
+						{
+							"name": "jaws",
+							"traits": [
+								"reach 15 feet"
+							],
+							"damage": "6d12+6",
+							"damageType": "piercing"
+						},
+						{
+							"name": "leg",
+							"traits": [
+								"agile",
+								"versatile P",
+								"reach 15 feet"
+							],
+							"damage": "6d8+6",
+							"damageType": "bludgeoning"
+						}
+					]
 				}
 			},
 			"intercession": {
@@ -10733,13 +11475,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Cha",
-						"Con"
+						"cha",
+						"con"
 					],
 					"entry": "Constitution or Charisma"
 				},
 				"skill": [
-					"Nature"
+					"nature"
 				],
 				"domains": [
 					"earth",
@@ -10795,13 +11537,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Wis",
-						"Cha"
+						"wis",
+						"cha"
 					],
 					"entry": "Wisdom or Charisma"
 				},
 				"skill": [
-					"Diplomacy"
+					"diplomacy"
 				],
 				"domains": [
 					"change",
@@ -10852,13 +11594,13 @@
 			"devoteeBenefits": {
 				"ability": {
 					"abilities": [
-						"Int",
-						"Wis"
+						"int",
+						"wis"
 					],
 					"entry": "Intelligence or Wisdom"
 				},
 				"skill": [
-					"Religion"
+					"religion"
 				]
 			},
 			"hasLore": true
@@ -10906,13 +11648,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Con",
-						"Wis"
+						"con",
+						"wis"
 					],
 					"entry": "Constitution or Wisdom"
 				},
 				"skill": [
-					"Medicine"
+					"medicine"
 				],
 				"domains": [
 					"fire",
@@ -10938,7 +11680,23 @@
 					"scimitar"
 				],
 				"avatar": {
-					"entry": "Speed 30 feet, fly Speed 70 feet; Melee {@as 1} scimitar (forceful, {@trait nonlethal}, {@trait reach 15 feet}), Damage {@damage 6d6+6} slashing; Ranged {@as 1} everflame ({@trait nonlethal}, range 120 feet), Damage {@damage 6d6+3} fire."
+					"speed": {
+						"walk": 30,
+						"fly": 70
+					},
+					"melee": [{
+						"name": "scimitar",
+						"traits": ["forceful", "nonlethal", "reach 15 feet"],
+						"damage": "6d6+6",
+						"damageType": "slashing"
+					}],
+					"ranged": [{
+						"name": "everflame",
+						"traits": ["nonlethal"],
+						"range": 120,
+						"damage": "6d6+3",
+						"damageType": "fire"
+					}]
 				}
 			},
 			"intercession": {
@@ -11009,12 +11767,12 @@
 				"ability": {
 					"entry": "Strength or Wisdom",
 					"abilities": [
-						"Str",
-						"Wis"
+						"str",
+						"wis"
 					]
 				},
 				"skill": [
-					"Medicine"
+					"medicine"
 				],
 				"domains": [
 					"destruction",
@@ -11072,12 +11830,12 @@
 				"ability": {
 					"entry": "Dexterity or Wisdom",
 					"abilities": [
-						"Dex",
-						"Wis"
+						"dex",
+						"wis"
 					]
 				},
 				"skill": [
-					"Medicine"
+					"medicine"
 				],
 				"domains": [
 					"healing",
@@ -11131,13 +11889,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Dex",
-						"Cha"
+						"dex",
+						"cha"
 					],
 					"entry": "Dexterity or Charisma"
 				},
 				"skill": [
-					"Intimidation"
+					"intimidation"
 				],
 				"domains": [
 					"ambition",
@@ -11194,13 +11952,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Cha",
-						"Int"
+						"cha",
+						"int"
 					],
 					"entry": "Intelligence or Charisma"
 				},
 				"skill": [
-					"Society"
+					"society"
 				],
 				"domains": [
 					"family",
@@ -11265,14 +12023,14 @@
 				],
 				"ability": {
 					"abilities": [
-						"Cha",
-						"Wis"
+						"cha",
+						"wis"
 					],
 					"entry": "Wisdom or Charisma"
 				},
 				"skill": [
-					"Crafting",
-					"Performance"
+					"crafting",
+					"performance"
 				],
 				"domains": [
 					"creation",
@@ -11298,7 +12056,24 @@
 					"glaive"
 				],
 				"avatar": {
-					"entry": "Speed 70 feet, air walk, ignore {@quickref difficult terrain||3|terrain} and {@quickref greater difficult terrain||3|terrain}; Melee {@as 1} glaive ({@trait deadly d8}, {@trait nonlethal}, {@trait reach 20 feet}), Damage {@damage 6d8+6} slashing; Ranged {@as 1} melody of inner beauty, ({@trait nonlethal}, range 120 feet), Damage {@damage 6d6+3} sonic."
+					"speed": {
+						"walk": 70
+					},
+					"airWalk": true,
+					"ignoreTerrain": true,
+					"melee": [{
+						"name": "glaive",
+						"traits": ["deadly d8", "nonlethal", "reach 20 feet"],
+						"damage": "6d8+6",
+						"damageType": "slashing"
+					}],
+					"ranged": [{
+						"name": "melody of inner beauty",
+						"traits": ["nonlethal"],
+						"range": 120,
+						"damage": "6d6+3",
+						"damageType": "sonic"
+					}]
 				}
 			},
 			"intercession": {
@@ -11368,13 +12143,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Wis",
-						"Str"
+						"wis",
+						"str"
 					],
 					"entry": "Strength or Wisdom"
 				},
 				"skill": [
-					"Society"
+					"society"
 				],
 				"domains": [
 					"duty",
@@ -11401,7 +12176,23 @@
 				],
 				"avatar": {
 					"preface": "When casting the {@spell avatar} spell, a worshipper of Shizuru gains the following additional abilities.",
-					"entry": "{@b Shizuru} Speed 70 feet, air walk, ignore {@quickref difficult terrain||3|terrain} and {@quickref greater difficult terrain||3|terrain}; Melee {@as 1} katana ({@trait deadly 3d8}, {@trait two-hand d10}, {@trait reach 15 feet}, {@trait versatile P}), Damage {@damage 6d6+6} slashing; Ranged {@as 1} sunbolt arrow (range 120 feet), Damage {@damage 6d6+3} fire"
+					"speed": {
+						"walk": 70
+					},
+					"airWalk": true,
+					"ignoreTerrain": true,
+					"melee": [{
+						"name": "katana",
+						"damage": "6d6+6",
+						"damageType": "slashing",
+						"traits": ["deadly 3d8", "two-hand d10", "reach 15 feet", "versatile P"]
+					}],
+					"ranged": [{
+						"name": "sunbolt arrow",
+						"damage": "6d6+3",
+						"range": 120,
+						"damageType": "fire"
+					}]
 				}
 			},
 			"hasLore": true,
@@ -11450,13 +12241,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Wis",
-						"Cha"
+						"wis",
+						"cha"
 					],
 					"entry": "Wisdom or Charisma"
 				},
 				"skill": [
-					"Deception"
+					"deception"
 				],
 				"domains": [
 					"nightmares",
@@ -11514,13 +12305,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Wis",
-						"Cha"
+						"wis",
+						"cha"
 					],
 					"entry": "Wisdom or Charisma"
 				},
 				"skill": [
-					"Deception"
+					"deception"
 				],
 				"domains": [
 					"delirium",
@@ -11547,7 +12338,28 @@
 				],
 				"avatar": {
 					"preface": "When casting the {@spell avatar} spell, a worshipper of Sivanah gains the following additional abilities.",
-					"entry": "{@b Sivanah} Speed 70 feet, air walk, ignore {@quickref difficult terrain||3|terrain} and {@quickref greater difficult terrain||3|terrain}; Melee {@as 1} bladed scarf ({@trait disarm}, {@trait finesse}, {@trait reach 15 feet}, {@trait trip}), Damage {@damage 6d8+6} slashing; Ranged {@as 1} illusory assault (range 120 feet), Damage {@damage 6d6+3} mental"
+					"speed": {
+						"walk": 70
+					},
+					"airWalk": true,
+					"ignoreTerrain": true,
+					"melee": [{
+						"name": "bladed scarf",
+						"traits": [
+							"disarm",
+							"finesse",
+							"reach 15 feet",
+							"trip"
+						],
+						"damage": "6d8+6",
+						"damageType": "slashing"
+					}],
+					"ranged": [{
+						"name": "illusory assault",
+						"range": 120,
+						"damage": "6d6+3",
+						"damageType": "mental"
+					}]
 				}
 			},
 			"hasLore": true,
@@ -11590,13 +12402,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Con",
-						"Str"
+						"con",
+						"str"
 					],
 					"entry": "Strength or Constitution"
 				},
 				"skill": [
-					"Athletics"
+					"athletics"
 				],
 				"domains": [
 					"might",
@@ -11653,13 +12465,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Str",
-						"Int"
+						"str",
+						"int"
 					],
 					"entry": "Strength or Intelligence"
 				},
 				"skill": [
-					"Arcana"
+					"arcana"
 				],
 				"domains": [
 					"creation",
@@ -11718,13 +12530,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Con",
-						"Int"
+						"con",
+						"int"
 					],
 					"entry": "Constitution or Intelligence"
 				},
 				"skill": [
-					"Medicine"
+					"medicine"
 				],
 				"domains": [
 					"family",
@@ -11777,13 +12589,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Dex",
-						"Cha"
+						"dex",
+						"cha"
 					],
 					"entry": "Dexterity or Charisma"
 				},
 				"skill": [
-					"Diplomacy"
+					"diplomacy"
 				],
 				"domains": [
 					"air",
@@ -11839,13 +12651,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Str",
-						"Cha"
+						"str",
+						"cha"
 					],
 					"entry": "Strength or Charisma"
 				},
 				"skill": [
-					"Acrobatics"
+					"acrobatics"
 				],
 				"domains": [
 					"indulgence",
@@ -11899,13 +12711,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Str",
-						"Con"
+						"str",
+						"con"
 					],
 					"entry": "Strength or Constitution"
 				},
 				"skill": [
-					"Athletics"
+					"athletics"
 				],
 				"domains": [
 					"ambition",
@@ -11961,13 +12773,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Str",
-						"Wis"
+						"str",
+						"wis"
 					],
 					"entry": "Strength or Wisdom"
 				},
 				"skill": [
-					"Stealth"
+					"stealth"
 				],
 				"domains": [
 					"darkness",
@@ -12021,13 +12833,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Dex",
-						"Cha"
+						"dex",
+						"cha"
 					],
 					"entry": "Dexterity or Charisma"
 				},
 				"skill": [
-					"Thievery"
+					"thievery"
 				],
 				"domains": [
 					"ambition",
@@ -12075,18 +12887,18 @@
 			],
 			"devoteeBenefits": {
 				"font": [
-					"heal",
+					"harm",
 					"heal"
 				],
 				"ability": {
 					"abilities": [
-						"Str",
-						"Int"
+						"str",
+						"int"
 					],
 					"entry": "Strength or Intelligence"
 				},
 				"skill": [
-					"Society"
+					"society"
 				],
 				"domains": [
 					"perfection",
@@ -12146,13 +12958,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Con",
-						"Cha"
+						"con",
+						"cha"
 					],
 					"entry": "Constitution or Charisma"
 				},
 				"skill": [
-					"Nature"
+					"nature"
 				],
 				"domains": [
 					"decay",
@@ -12208,13 +13020,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Int",
-						"Cha"
+						"int",
+						"cha"
 					],
 					"entry": "Intelligence or Charisma"
 				},
 				"skill": [
-					"Deception"
+					"deception"
 				],
 				"domains": [
 					"change",
@@ -12271,13 +13083,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Int",
-						"Wis"
+						"int",
+						"wis"
 					],
 					"entry": "Intelligence or Wisdom"
 				},
 				"skill": [
-					"Society"
+					"society"
 				],
 				"domains": [
 					"knowledge",
@@ -12334,13 +13146,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Int",
-						"Wis"
+						"int",
+						"wis"
 					],
 					"entry": "Intelligence or Wisdom"
 				},
 				"skill": [
-					"Arcana"
+					"arcana"
 				],
 				"domains": [
 					"glyph",
@@ -12405,13 +13217,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Con",
-						"Wis"
+						"con",
+						"wis"
 					],
 					"entry": "Constitution or Wisdom"
 				},
 				"skill": [
-					"Crafting"
+					"crafting"
 				],
 				"domains": [
 					"creation",
@@ -12445,7 +13257,7 @@
 						"immobilized"
 					],
 					"shield": 15,
-					"melee": {
+					"melee": [{
 						"name": "warhammer",
 						"traits": [
 							"shove",
@@ -12453,7 +13265,7 @@
 						],
 						"damage": "6d8+6",
 						"damageType": "bludgeoning"
-					}
+					}]
 				}
 			},
 			"intercession": {
@@ -12530,13 +13342,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Str",
-						"Con"
+						"str",
+						"con"
 					],
 					"entry": "Strength or Constitution"
 				},
 				"skill": [
-					"Nature"
+					"nature"
 				],
 				"domains": [
 					"destruction",
@@ -12591,13 +13403,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Wis",
-						"Con"
+						"wis",
+						"con"
 					],
 					"entry": "Constitution or Wisdom"
 				},
 				"skill": [
-					"Nature"
+					"nature"
 				],
 				"domains": [
 					"decay",
@@ -12651,13 +13463,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Con",
-						"Str"
+						"con",
+						"str"
 					],
 					"entry": "Strength or Constitution"
 				},
 				"skill": [
-					"Athletics"
+					"athletics"
 				],
 				"domains": [
 					"confidence",
@@ -12715,13 +13527,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Con",
-						"Int"
+						"con",
+						"int"
 					],
 					"entry": "Constitution or Intelligence"
 				},
 				"skill": [
-					"Occultism"
+					"occultism"
 				],
 				"domains": [
 					"delirium",
@@ -12748,7 +13560,31 @@
 				],
 				"avatar": {
 					"preface": "When casting the {@spell avatar} spell, a worshipper of Tsukiyo gains the following additional abilities.",
-					"entry": "{@b Tsukiyo} Speed 70 feet, air walk, ignore {@quickref difficult terrain||3|terrain} and {@quickref greater difficult terrain||3|terrain}; Melee {@as 1} longspear ({@trait reach 20 feet}), Damage {@damage 6d10+6} piercing; Ranged {@as 1} moonbeam ({@trait nonlethal}, range 120 feet, silver), Damage {@damage 6d6+3} mental"
+					"speed": {
+						"walk": 70
+					},
+					"airWalk": true,
+					"ignoreTerrain": true,
+					"melee": [{
+						"name": "longspear",
+						"traits": [
+							"reach 20 feet"
+						],
+						"damage": "6d10+6",
+						"damageType": "piercing"
+					}],
+					"ranged": [{
+						"name": "moonbeam",
+						"traits": [
+							"nonlethal"
+						],
+						"range": 120,
+						"preciousMetal": [
+							"silver"
+						],
+						"damage": "6d6+3",
+						"damageType": "mental"
+					}]
 				}
 			},
 			"hasLore": true,
@@ -12797,13 +13633,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Con",
-						"Wis"
+						"con",
+						"wis"
 					],
 					"entry": "Constitution or Wisdom"
 				},
 				"skill": [
-					"Intimidation"
+					"intimidation"
 				],
 				"domains": [
 					"indulgence",
@@ -12831,7 +13667,26 @@
 					"scythe"
 				],
 				"avatar": {
-					"entry": "Speed 70 feet, air walk; Melee {@as 1} scythe ({@trait deadly d10}, {@trait trip}, {@trait reach 15 feet}), Damage {@damage 6d10+6} slashing; Ranged {@as 1} pallid plague (range 120 feet), Damage {@damage 6d6+3} negative."
+					"speed": {
+						"walk": 70
+					},
+					"airWalk": true,
+					"melee": [{
+						"name": "scythe",
+						"traits": [
+							"deadly d10",
+							"trip",
+							"reach 15 feet"
+						],
+						"damage": "6d10+6",
+						"damageType": "slashing"
+					}],
+					"ranged": [{
+						"name": "pallid plague",
+						"range": 120,
+						"damage": "6d6+3",
+						"damageType": "negative"
+					}]
 				}
 			},
 			"intercession": {
@@ -12900,13 +13755,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Wis",
-						"Int"
+						"wis",
+						"int"
 					],
 					"entry": "Intelligence or Wisdom"
 				},
 				"skill": [
-					"Arcana"
+					"arcana"
 				],
 				"domains": [
 					"fate",
@@ -12961,13 +13816,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Cha",
-						"Con"
+						"cha",
+						"con"
 					],
 					"entry": "Constitution or Charisma"
 				},
 				"skill": [
-					"Medicine"
+					"medicine"
 				],
 				"domains": [
 					"duty",
@@ -13024,12 +13879,12 @@
 				"ability": {
 					"entry": "Dexterity or Wisdom",
 					"abilities": [
-						"Dex",
-						"Wis"
+						"dex",
+						"wis"
 					]
 				},
 				"skill": [
-					"Nature"
+					"nature"
 				],
 				"domains": [
 					"protection",
@@ -13092,13 +13947,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Str",
-						"Wis"
+						"str",
+						"wis"
 					],
 					"entry": "Strength or Wisdom"
 				},
 				"skill": [
-					"Deception"
+					"deception"
 				],
 				"domains": [
 					"family",
@@ -13126,7 +13981,26 @@
 				],
 				"avatar": {
 					"preface": "When casting the {@spell avatar} spell, a worshipper of Walkena gains the following additional abilities.",
-					"entry": "{@b Walkena} Speed 60 feet, {@spell air walk}; {@b Melee} {@as 1} holy spear ({@trait reach 20 feet}, {@trait versatile fire}), {@b Damage} {@damage 6d12+6} piercing; {@b Ranged} {@as 1} sunfire (range increment 120 feet), {@b Damage} {@damage 6d6+6} fire"
+					"speed": {
+						"walk": 60
+					},
+					"airWalk": true,
+					"melee": [{
+						"damage": "6d12+6",
+						"damageType": "piercing",
+						"name": "holy spear",
+						"traits": [
+							"reach 20 feet",
+							"versatile fire"
+						]
+					}],
+					"ranged": [{
+						"damage": "6d6+6",
+						"damageType": "fire",
+						"name": "sunfire",
+						"range": 120,
+						"rangedIncrement": true
+					}]
 				}
 			},
 			"hasLore": true
@@ -13188,13 +14062,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Int",
-						"Wis"
+						"int",
+						"wis"
 					],
 					"entry": "Intelligence or Wisdom"
 				},
 				"skill": [
-					"Occultism"
+					"occultism"
 				],
 				"domains": [
 					"glyph",
@@ -13246,13 +14120,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Con",
-						"Wis"
+						"con",
+						"wis"
 					],
 					"entry": "Constitution or Wisdom"
 				},
 				"skill": [
-					"Nature"
+					"nature"
 				],
 				"domains": [
 					"change",
@@ -13308,13 +14182,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Dex",
-						"Int"
+						"dex",
+						"int"
 					],
 					"entry": "Dexterity or Intelligence"
 				},
 				"skill": [
-					"Stealth"
+					"stealth"
 				],
 				"domains": [
 					"death",
@@ -13371,13 +14245,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Str",
-						"Wis"
+						"str",
+						"wis"
 					],
 					"entry": "Strength or Wisdom"
 				},
 				"skill": [
-					"Athletics"
+					"athletics"
 				],
 				"domains": [
 					"cold",
@@ -13434,13 +14308,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Cha",
-						"Int"
+						"cha",
+						"int"
 					],
 					"entry": "Intelligence or Charisma"
 				},
 				"skill": [
-					"Society"
+					"society"
 				],
 				"domains": [
 					"change",
@@ -13500,13 +14374,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Dex",
-						"Wis"
+						"dex",
+						"wis"
 					],
 					"entry": "Dexterity or Wisdom"
 				},
 				"skill": [
-					"Deception"
+					"deception"
 				],
 				"domains": [
 					"ambition",
@@ -13565,13 +14439,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Dex",
-						"Wis"
+						"dex",
+						"wis"
 					],
 					"entry": "Dexterity or Wisdom"
 				},
 				"skill": [
-					"Acrobatics"
+					"acrobatics"
 				],
 				"domains": [
 					"air",
@@ -13628,13 +14502,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Cha",
-						"Str"
+						"cha",
+						"str"
 					],
 					"entry": "Strength or Charisma"
 				},
 				"skill": [
-					"Intimidation"
+					"intimidation"
 				],
 				"domains": [
 					"destruction",
@@ -13687,13 +14561,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Int",
-						"Cha"
+						"int",
+						"cha"
 					],
 					"entry": "Intelligence or Charisma"
 				},
 				"skill": [
-					"Occultism"
+					"occultism"
 				],
 				"domains": [
 					"knowledge",
@@ -13752,13 +14626,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Int",
-						"Wis"
+						"int",
+						"wis"
 					],
 					"entry": "Intelligence or Wisdom"
 				},
 				"skill": [
-					"Arcana"
+					"arcana"
 				],
 				"domains": [
 					"creation",
@@ -13840,13 +14714,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Str",
-						"Con"
+						"str",
+						"con"
 					],
 					"entry": "Strength or Constitution"
 				},
 				"skill": [
-					"Survival"
+					"survival"
 				],
 				"domains": [
 					"destruction",
@@ -13903,13 +14777,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Int",
-						"Wis"
+						"int",
+						"wis"
 					],
 					"entry": "Intelligence or Wisdom"
 				},
 				"skill": [
-					"Society"
+					"society"
 				],
 				"domains": [
 					"ambition",
@@ -13973,13 +14847,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Con",
-						"Wis"
+						"con",
+						"wis"
 					],
 					"entry": "Constitution or Wisdom"
 				},
 				"skill": [
-					"Intimidation"
+					"intimidation"
 				],
 				"domains": [
 					"ambition",
@@ -14005,7 +14879,31 @@
 					"spiked chain"
 				],
 				"avatar": {
-					"entry": "Speed 70 feet, air walk, ignore {@quickref difficult terrain||3|terrain} and {@quickref greater difficult terrain||3|terrain}; Melee {@as 1} spiked chain ({@trait disarm}, {@trait trip}, {@trait reach 15 feet}), Damage {@damage 6d8+6} slashing; Ranged {@as 1} midnight pain (mental, {@trait nonlethal}, range 120 feet), Damage {@damage 6d6+3} mental."
+					"speed": {
+						"walk": 70
+					},
+					"airWalk": true,
+					"ignoreTerrain": true,
+					"melee": [{
+						"name": "spiked chain",
+						"traits": [
+							"disarm",
+							"trip",
+							"reach 15 feet"
+						],
+						"damage": "6d8+6",
+						"damageType": "slashing"
+					}],
+					"ranged": [{
+						"name": "midnight pain",
+						"traits": [
+							"nonlethal",
+							"mental"
+						],
+						"range": 120,
+						"damage": "6d6+3",
+						"damageType": "mental"
+					}]
 				}
 			},
 			"intercession": {
@@ -14072,13 +14970,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Str",
-						"Cha"
+						"str",
+						"cha"
 					],
 					"entry": "Strength or Charisma"
 				},
 				"skill": [
-					"Diplomacy"
+					"diplomacy"
 				],
 				"domains": [
 					"delirium",
@@ -14133,13 +15031,13 @@
 				],
 				"ability": {
 					"abilities": [
-						"Dex",
-						"Con"
+						"dex",
+						"con"
 					],
 					"entry": "Dexterity or Constitution"
 				},
 				"skill": [
-					"Thievery"
+					"thievery"
 				],
 				"domains": [
 					"death",
@@ -14195,13 +15093,13 @@
 					"heal"
 				],
 				"skill": [
-					"Athletics"
+					"athletics"
 				],
 				"ability": {
 					"entry": "Strength or Wisdom",
 					"abilities": [
-						"Str",
-						"Wis"
+						"str",
+						"wis"
 					]
 				},
 				"domains": [
@@ -14230,7 +15128,29 @@
 				],
 				"avatar": {
 					"preface": "When casting the {@spell avatar} spell, a worshipper of Uvuko gains the following additional abilities.",
-					"entry": "{@b Uvuko} Speed 30 feet, fly speed 70 feet, cannot be {@condition immobilized}; {@b Melee} {@as 1} maul ({@trait shove}, {@trait reach 15 feet}), {@b Damage} {@damage 6d12+6} bludgeoning; {@b Ranged} {@as 1} breath of lightning (range increment 120 feet), {@b Damage} {@damage 6d6+3} electricity"
+					"speed": {
+						"walk": 30,
+						"fly": 70
+					},
+					"immune": [
+						"immobilized"
+					],
+					"melee": [{
+						"name": "maul",
+						"traits": [
+							"shove",
+							"reach 15 feet"
+						],
+						"damage": "6d12+6",
+						"damageType": "bludgeoning"
+					}],
+					"ranged": [{
+						"name": "breath of lightning",
+						"range": 120,
+						"rangedIncrement": true,
+						"damage": "6d6+3",
+						"damageType": "electricity"
+					}]
 				}
 			}
 		},
@@ -14266,13 +15186,13 @@
 					"heal"
 				],
 				"skill": [
-					"Crafting"
+					"crafting"
 				],
 				"ability": {
 					"entry": "Intelligence or Charisma",
 					"abilities": [
-						"Cha",
-						"Int"
+						"cha",
+						"int"
 					]
 				},
 				"domains": [
@@ -14303,7 +15223,31 @@
 				],
 				"avatar": {
 					"preface": "When casting the {@spell avatar} spell, a worshipper of Tlehar gains the following additional abilities.",
-					"entry": "{@b Tlehar} Speed 50 feet, fly speed 70 feet, cannot be {@condition immobilized}; {@b Melee} {@as 1} morningstar ({@trait versatile piercing}, {@trait reach 15 feet}), {@b Damage} {@damage 6d6+6} bludgeoning; {@b Ranged} {@as 1} morning light (range 120 feet), {@b Damage} {@damage 3d6+3} fire and {@damage 3d6+3} positive"
+					"speed": {
+						"walk": 50,
+						"fly": 70
+					},
+					"immune": [
+						"immobilized"
+					],
+					"melee": [{
+						"name": "morningstar",
+						"traits": [
+							"versatile P",
+							"reach 15 feet"
+						],
+						"damage": "6d6+6",
+						"damageType": "bludgeoning"
+					}],
+					"ranged": [{
+						"name": "morning light",
+						"range": 120,
+						"rangedIncrement": true,
+						"damage": "3d6+3",
+						"damageType": "fire",
+						"damage2": "3d6+3",
+						"damageType2": "positive"
+					}]
 				}
 			}
 		}

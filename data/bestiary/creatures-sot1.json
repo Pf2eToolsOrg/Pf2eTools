@@ -1,5 +1,57 @@
 {
+	"_meta": {
+		"dependencies": {
+			"creature": [
+				"Bst3"
+			]
+		},
+		"internalCopies": [
+			"creature"
+		],
+		"otherSources": {
+			"creature": {
+				"Bst3": "SoT1"
+			}
+		}
+	},
 	"creature": [
+		{
+			"name": "Binji",
+			"source": "SoT1",
+			"page": 53,
+			"traits": [
+				"unique",
+				"gremlin"
+			],
+			"languages": {
+				"languages": [
+					"Common",
+					"Undercommon"
+				]
+			},
+			"_copy": {
+				"name": "Grimple",
+				"source": "Bst3",
+				"_mod": {
+					"abilitiesMid": [
+						{
+							"mode": "insertArr",
+							"items": {
+								"entries": [
+									"The prevalence of insects on the Magaambya campus means Binji is more infested with gremlin lice than most grimples. The Reflex DC to avoid infestation from her gremlin lice is 15 rather than 13. {@note Already accounted in the ability.}"
+								],
+								"name": "So Many Lice"
+							}
+						},
+						{
+							"mode": "replaceTxt",
+							"replace": "DC 13 Reflex",
+							"with": "DC 15 Reflex"
+						}
+					]
+				}
+			}
+		},
 		{
 			"name": "Anadi Fateweaver",
 			"isNpc": false,
@@ -217,21 +269,42 @@
 					}
 				}
 			],
+			"rituals": [
+				{
+					"DC": 23,
+					"rituals": [
+						{
+							"name": "arcane weaving|sot1"
+						}
+					]
+				}
+			],
 			"abilitiesBot": [
 				{
 					"traits": [
 						"poison"
 					],
 					"entries": [
-						"Saving Throw DC 20 Fortitude;"
+						{
+							"type": "affliction",
+							"DC": 20,
+							"savingThrow": "Fortitude",
+							"maxDuration": "4 rounds",
+							"stages": [
+								{
+									"stage": 1,
+									"entry": "{@dice 1d6} poison damage and {@condition flat-footed}",
+									"duration": "1 round"
+								},
+								{
+									"stage": 2,
+									"entry": "{@dice 1d6} poison damage, {@condition flat-footed} and {@condition clumsy 1}",
+									"duration": "1 round"
+								}
+							]
+						}
 					],
 					"name": "Anadi Venom"
-				},
-				{
-					"entries": [
-						"4 rounds; Stage 1 {@damage 1d6} poison damage and {@condition flat-footed} (1 round); Stage 2 {@damage 1d6} poison damage, {@condition flat-footed}, and {@condition clumsy|CRB|clumsy 1} (1 round)"
-					],
-					"name": "Maximum Duration"
 				},
 				{
 					"activity": {
@@ -1648,7 +1721,7 @@
 		},
 		{
 			"name": "Kurshkin",
-			"isNpc": false,
+			"isNpc": true,
 			"source": "SoT1",
 			"page": 87,
 			"level": 3,
@@ -2590,7 +2663,7 @@
 		},
 		{
 			"name": "Stone Ghost",
-			"isNpc": false,
+			"isNpc": true,
 			"source": "SoT1",
 			"page": 89,
 			"level": 5,
@@ -2846,7 +2919,7 @@
 		},
 		{
 			"name": "Takulu Ot",
-			"isNpc": false,
+			"isNpc": true,
 			"source": "SoT1",
 			"page": 91,
 			"level": 4,
@@ -2888,6 +2961,9 @@
 				},
 				"Academia Lore": {
 					"default": 13
+				},
+				"Library Lore": {
+					"default": 13
 				}
 			},
 			"abilityMods": {
@@ -2899,18 +2975,11 @@
 				"Cha": 1
 			},
 			"items": [
-				"anteater mask",
-				"potion of minor healing",
-				"staff"
+				"{@item anteater mask}",
+				"{@item potion of minor healing}",
+				"{@item staff}"
 			],
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+11, {@skill Nature} +9, {@skill Performance} +11 Str \u20131, Dex +2, Con +1, Int +5, Wis +3, Cha +1 Items anteater mask, potion of minor healing, staff."
-					],
-					"name": "Library Lore"
-				}
-			],
+			"abilitiesTop": [],
 			"ac": {
 				"default": 21
 			},
@@ -3064,7 +3133,7 @@
 					"Undercommon"
 				],
 				"languageAbilities": [
-					"telepathy 100 feet (myceloids"
+					"telepathy 100 feet (myceloids)"
 				]
 			},
 			"skills": {
@@ -3226,7 +3295,7 @@
 		},
 		{
 			"name": "Urbel",
-			"isNpc": false,
+			"isNpc": true,
 			"source": "SoT1",
 			"page": 55,
 			"level": 4,

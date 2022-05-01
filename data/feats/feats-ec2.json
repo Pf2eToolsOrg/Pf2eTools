@@ -17,7 +17,7 @@
 			],
 			"prerequisites": "Trained in {@skill Nature}",
 			"entries": [
-				"You gain the services of a young animal companion that travels with you and obeys simple commands as best as it can (Core Rulebook 214). This trained animal is trained in {@skill Performance} instead of the skill listed for its type."
+				"You gain the services of a {@quickref young animal companion||0|young animal companions} that travels with you and obeys simple commands as best as it can. This trained animal is trained in {@skill Performance} instead of the skill listed for its type."
 			],
 			"special": "You can't select another dedication feat until you've gained two other feats from the animal trainer archetype."
 		},
@@ -77,6 +77,10 @@
 			"prerequisites": "Animal Trainer Dedication",
 			"entries": [
 				"Your animal companion grows up, becoming a mature animal companion. Increase its proficiency rank in {@skill Performance} to expert instead of one of the three skill increases for mature. It gains the Mesmerizing {@skill Performance} advanced maneuver (see below), rather than the normal advanced maneuver for its type."
+			],
+			"leadsTo": [
+				"Splendid Companion|EC2",
+				"Specialized Companion|EC2"
 			]
 		},
 		{
@@ -115,6 +119,9 @@
 			"prerequisites": "{@feat Mature Trained Companion|ec2}",
 			"entries": [
 				"Your animal companion continues to develop. It becomes a nimble or savage animal companion (your choice), gaining abilities determined by its type. Increase its proficiency rank in {@skill Performance} to master instead of {@skill Athletics} or {@skill Acrobatics}."
+			],
+			"leadsTo": [
+				"Specialized Companion|EC2"
 			]
 		}
 	]

@@ -102,7 +102,7 @@ function renderStatblock (organization) {
 	const $content = $("#pagecontent").empty()
 
 	function buildStatsTab () {
-		$content.append(RenderOrganizations.$getRenderedOrganization(organization));
+		$content.append(Renderer.organization.getRenderedString(organization));
 	}
 	async function buildLoreTab () {
 		const pGetFluff = async () => {

@@ -328,14 +328,28 @@
 						"amount": 400
 					},
 					"bulk": "L",
-					"craftReq": "adamantine worth at least 50 gp The shield has Hardness 8, HP 32, and BT 16.",
+					"shieldData": {
+						"hardness": 8,
+						"hp": 32,
+						"bt": 16
+					},
+					"craftReq": "adamantine worth at least 50 gp",
 					"entries": []
 				},
 				{
 					"type": "standard-grade adamantine shield",
 					"level": 8,
+					"price": {
+						"coin": "gp",
+						"amount": 440
+					},
 					"bulk": 1,
-					"craftReq": "adamantine worth at least 55 gp The shield has Hardness 10, HP 40, and BT 20.",
+					"shieldData": {
+						"hardness": 10,
+						"hp": 40,
+						"bt": 20
+					},
+					"craftReq": "adamantine worth at least 55 gp",
 					"entries": []
 				},
 				{
@@ -347,9 +361,9 @@
 						"hp": 44,
 						"bt": 22
 					},
-					"entries": [
-						"gp; Bulk L; {@action Craft} Requirements adamantine worth at least4,000 gp The shield has Hardness 11, HP 44, and BT 22."
-					]
+					"bulk": "L",
+					"craftReq": "adamantine worth at least 4,000 gp",
+					"entries": []
 				},
 				{
 					"type": "high-grade adamantine shield",
@@ -359,7 +373,12 @@
 						"amount": 8800
 					},
 					"bulk": 1,
-					"craftReq": "adamantine worth at least 4,400 gp The shield has Hardness 13, HP 52, and BT 26.",
+					"shieldData": {
+						"hardness": 13,
+						"hp": 52,
+						"bt": 26
+					},
+					"craftReq": "adamantine worth at least 4,400 gp",
 					"entries": []
 				}
 			]
@@ -6367,7 +6386,7 @@
 						"freq": 1
 					},
 					"entries": [
-						"You gain the effects of hypercognition."
+						"You gain the effects of {@spell hypercognition}."
 					]
 				}
 			]

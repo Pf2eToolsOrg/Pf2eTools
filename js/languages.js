@@ -88,7 +88,7 @@ class LanguagesPage extends ListPage {
 		const it = this._dataList[id];
 
 		function buildStatsTab () {
-			$content.append(RenderLanguages.$getRenderedLanguage(it));
+			$content.append(Renderer.language.getRenderedString(it));
 		}
 		const buildInfoTab = async () => {
 			const quickRules = await Renderer.utils.pGetQuickRules("language");

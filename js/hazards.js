@@ -93,7 +93,7 @@ class HazardsPage extends ListPage {
 		const $pgContent = $("#pagecontent").empty();
 
 		const buildStatsTab = () => {
-			$pgContent.append(RenderHazards.$getRenderedTrapHazard(it));
+			$pgContent.append(Renderer.hazard.getRenderedString(it));
 		};
 		const buildInfoTab = async () => {
 			const quickRules = await Renderer.utils.pGetQuickRules("hazard");

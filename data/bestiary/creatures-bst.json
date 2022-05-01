@@ -10356,7 +10356,7 @@
 						"occult"
 					],
 					"entries": [
-						"The banshee unleashes a soul-chilling wail of the banshee (DC 38). This Wail overcomes silence and similar effects of 5th level or lower. The banshee can instead use Wail as a three-action activity to overcome such effects of up to 8th level.",
+						"The banshee unleashes a soul-chilling {@spell wail of the banshee} (DC 38). This Wail overcomes silence and similar effects of 5th level or lower. The banshee can instead use Wail as a three-action activity to overcome such effects of up to 8th level.",
 						"The banshee's Wail resonates for 1 round, and any creature that comes within the area during that time must attempt a save against the effect. A creature can't be affected more than once by the same Wail. The banshee can't Wail again for {@dice 1d4} rounds."
 					],
 					"name": "Wail"
@@ -19979,7 +19979,7 @@
 				"Cha": 5
 			},
 			"items": [
-				"aklys (see below)"
+				"{@item aklys|bst}"
 			],
 			"abilitiesTop": [],
 			"ac": {
@@ -20016,7 +20016,7 @@
 			"abilitiesMid": [
 				{
 					"entries": [
-						"As dero stalker but 10 damage."
+						"A dero magister takes 10 damage for every hour they're exposed to sunlight."
 					],
 					"name": "Vulnerable to Sunlight"
 				}
@@ -20258,8 +20258,8 @@
 				"Cha": 1
 			},
 			"items": [
-				"aklys (page 85)",
-				"giant centipede venom (4 doses)",
+				"{@item aklys}",
+				"{@item giant centipede venom} (4 doses)",
 				"{@item hand crossbow} (20 {@item bolt||bolts}"
 			],
 			"abilitiesTop": [],
@@ -20459,10 +20459,10 @@
 				"Cha": 2
 			},
 			"items": [
-				"aklys (page 85)",
-				"hand crossbow (10 bolts)",
-				"lethargy poison (5 doses)",
-				"rope (50 feet)"
+				"{@item aklys}",
+				"{@item hand crossbow} (10 {@item bolt||bolts})",
+				"{@item lethargy poison} (5 doses)",
+				"{@item rope (50 feet)}"
 			],
 			"abilitiesTop": [],
 			"ac": {
@@ -21714,47 +21714,6 @@
 					],
 					"name": "Change Shape",
 					"generic": true
-				},
-				{
-					"entries": [
-						"While there are many types of dragons, from the powerful planar dragons to the strange esoteric dragons, few dragon varieties are as well-known and as rightly feared as the chromatic dragons. Differentiated by the hue of their scales, each color of dragon unleashes its own flavor of murderous cruelty\u2014be it by claw, tooth, or breath\u2014and unlike most creatures, dragons only become more powerful as they age. Their lust for treasure, food, bloodshed, and control are legendary. Physically powerful with egos to match, these dragons are often morally depraved and act as criminal masterminds, vicious tyrants, or voracious raiders."
-					],
-					"name": "Dragon, Chromatic"
-				},
-				{
-					"entries": [
-						"Some dragons can take humanoid form, allowing them to infiltrate settlements or influence others without revealing their true nature. They gain the following ability:"
-					],
-					"name": "Shape-Changing Dragons"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"traits": [
-						"arcane",
-						"concentrate",
-						"polymorph",
-						"transmutation"
-					],
-					"entries": [
-						"The dragon takes on the appearance of any Small or Medium humanoid. This doesn't change its Speed or attack and damage bonuses with its Strikes, but might change the damage type its Strikes deal (typically to bludgeoning)."
-					],
-					"name": "Change Shape",
-					"generic": true
-				},
-				{
-					"entries": [
-						"Each type of chromatic dragon features a sidebar on spellcasting dragons of that type. To make a chromatic dragon spellcaster, remove the dragon's Draconic Frenzy and Draconic Momentum abilities, and give it the spells outlined in its sidebar. You can swap out any number of these with other arcane spells, provided you keep the same number of spells for each level. You might also want to increase the dragon's Intelligence or Charisma modifier by 1 or 2 to reflect its mastery of magic."
-					],
-					"name": "Chromatic Dragon Spellcasters"
-				},
-				{
-					"entries": [
-						"The chromatic dragons that dwell around the Inner Sea region are cruel and sinister monsters who inspire as much fear as reverence. These terrible beasts are no mere myth, however, but a very real threat to the people with whom they share their lands. Most dwell in the wild places of the world, and only the most brazen of them regularly meddle in mortal affairs. The dragons of Golarion believe that they are descended from two original beings, Apsu and Tiamat, and their rich mythology attempts to explain the origins of the age-old war between chromatic and metallic dragons."
-					],
-					"name": "Chromatic Dragons of Golarion"
 				}
 			],
 			"inflicts": {
@@ -58713,7 +58672,7 @@
 						{
 							"type": "list",
 							"items": [
-								"Bat echolocation 40 feet; Speed 15 feet, fly Speed 30 feet; Melee fangs +7, Damage {@dice 1d4-1} piercing; Melee wing +7 (agile), Damage {@dice 1d4-1} bludgeoning",
+								"{@bold Bat} echolocation 40 feet; Speed 15 feet, fly Speed 30 feet; Melee fangs +7, Damage {@dice 1d4-1} piercing; Melee wing +7 (agile), Damage {@dice 1d4-1} bludgeoning",
 								"{@bold Centipede} Speed 10 feet, climb 10 feet; Melee mandibles +7 (poison), Damage 1 piercing plus {@damage 1d4} poison",
 								"{@bold Toad scent} (imprecise) 30 feet; Speed 5 feet; Melee jaws +7, Damage 1 bludgeoning",
 								"{@bold Wolf size} Medium; {@ability scent} (imprecise) 30 feet; Speed 40 feet, climb 10 feet; Melee jaws +7, Damage {@dice 1d10-1} piercing plus Knockdown"
@@ -63619,7 +63578,7 @@
 			"abilitiesBot": [
 				{
 					"entries": [
-						"When a creature's shadow is pulled free by {@action Steal} Shadow, it becomes a shadow spawn under the command of the shadow that created it. This shadow spawn doesn't have {@action Steal} Shadow and is perpetually and incurably {@condition clumsy 2}. If the creature the shadow spawn was pulled from dies, the shadow spawn becomes a full-fledged, autonomous shadow. If the creature recovers from its enfeeblement, its shadow returns to it and the shadow spawn is extinguished."
+						"When a creature's shadow is pulled free by Steal Shadow, it becomes a shadow spawn under the command of the shadow that created it. This shadow spawn doesn't have Steal Shadow and is perpetually and incurably {@condition clumsy 2}. If the creature the shadow spawn was pulled from dies, the shadow spawn becomes a full-fledged, autonomous shadow. If the creature recovers from its enfeeblement, its shadow returns to it and the shadow spawn is extinguished."
 					],
 					"name": "Shadow Spawn"
 				},
@@ -63640,7 +63599,7 @@
 					],
 					"requirements": "The shadow hit a living creature with a shadow hand {@action Strike} on its previous action",
 					"entries": [
-						"The shadow pulls at the target's shadow, making the creature {@condition enfeebled 1}. This is cumulative with other {@condition enfeebled} conditions from shadows, to a maximum of {@condition enfeebled 4}. If this increases a creature's {@condition enfeebled} value to 3 or more, the target's shadow is separated from its body (see shadow spawn). {@condition Enfeebled} from {@action Steal} Shadow decreases by 1 every hour."
+						"The shadow pulls at the target's shadow, making the creature {@condition enfeebled 1}. This is cumulative with other {@condition enfeebled} conditions from shadows, to a maximum of {@condition enfeebled 4}. If this increases a creature's {@condition enfeebled} value to 3 or more, the target's shadow is separated from its body (see shadow spawn). {@condition Enfeebled} from Steal Shadow decreases by 1 every hour."
 					],
 					"name": "Steal Shadow"
 				}

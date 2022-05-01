@@ -123,7 +123,7 @@ function renderStatblock (action) {
 	const $content = $("#pagecontent").empty()
 
 	function buildStatsTab () {
-		$content.append(RenderActions.$getRenderedAction(action));
+		$content.append(Renderer.action.getRenderedString(action));
 	}
 	function buildInfoTab () {
 		$content.append(Renderer.action.getQuickRules(action))

@@ -1012,7 +1012,7 @@ class Panel {
 				const originalLvl = creature.level === targetLvl;
 
 				const doRender = (toRender) => {
-					$contentStats.empty().append(Renderer.creature.getCompactRenderedString(toRender, {showScaler: true, isScaled: !originalLvl}));
+					$contentStats.empty().append(Renderer.creature.getRenderedString(toRender, {showScaler: true, isScaled: !originalLvl}));
 
 					const nxtMeta = {
 						...meta,
@@ -1038,7 +1038,7 @@ class Panel {
 			}, true);
 		});
 		$contentStats.off("click", ".mon__btn-reset-lvl").on("click", ".mon__btn-reset-lvl", function () {
-			$contentStats.empty().append(Renderer.creature.getCompactRenderedString(creature, {showScaler: true, isScaled: false}));
+			$contentStats.empty().append(Renderer.creature.getRenderedString(creature, {showScaler: true, isScaled: false}));
 			self.set$Tab(
 				self.tabIndex,
 				PANEL_TYP_STATS,
@@ -1064,7 +1064,7 @@ class Panel {
 			scaleCreature.scale(it, targetLvl).then(initialRender => {
 				const $contentInner = $(`<div class="panel-content-wrapper-inner"/>`);
 				const $contentStats = $(`<table class="stats"/>`).appendTo($contentInner);
-				$contentStats.append(Renderer.creature.getCompactRenderedString(initialRender, {showScaler: true, isScaled: true}));
+				$contentStats.append(Renderer.creature.getRenderedString(initialRender, {showScaler: true, isScaled: true}));
 
 				this._stats_bindLvlScaleClickHandler(it, meta, $contentInner, $contentStats);
 
@@ -1089,7 +1089,7 @@ class Panel {
 		);
 		return RuleLoader.pFill(book).then(() => {
 			const rule = RuleLoader.getFromCache(book, chapter, header);
-			const it = Renderer.rule.getCompactRenderedString(rule);
+			const it = Renderer.rule.getRenderedString(rule);
 			this.set$Tab(
 				ix,
 				PANEL_TYP_RULES,
