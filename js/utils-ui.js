@@ -2258,11 +2258,11 @@ class SourceUiUtil {
 		const $stageInitial = $$`<div class="h-100 w-100 flex-vh-center"><div>
 			<h3 class="text-center">${isEditMode ? "Edit Homebrew Source" : "Add a Homebrew Source"}</h3>
 			<div class="row ui-source__row mb-2"><div class="col-12 flex-v-center">
-				<span class="mr-2 ui-source__name help" title="The name or title for the homebrew you wish to create. This could be the name of a book or PDF; for example, 'Monster Manual'">Title</span>
+				<span class="mr-2 ui-source__name help" title="The name or title for the homebrew you wish to create. This could be the name of a book or PDF; for example, 'Bestiary 1'">Title</span>
 				${$iptName}
 			</div></div>
 			<div class="row ui-source__row mb-2"><div class="col-12 flex-v-center">
-				<span class="mr-2 ui-source__name help" title="An abbreviated form of the title. This will be shown in lists on the site, and in the top-right corner of statblocks or data entries; for example, 'MM'">Abbreviation</span>
+				<span class="mr-2 ui-source__name help" title="An abbreviated form of the title. This will be shown in lists on the site, and in the top-right corner of statblocks or data entries; for example, 'B1'">Abbreviation</span>
 				${$iptAbv}
 			</div></div>
 			<div class="row ui-source__row mb-2"><div class="col-12 flex-v-center">

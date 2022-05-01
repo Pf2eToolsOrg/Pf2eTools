@@ -3234,7 +3234,7 @@ Renderer.utils = {
 
 	/**
 	 * @param entry Data entry to search for fluff on, e.g. a creature
-	 * @param prop The fluff index reference prop, e.g. `"monsterFluff"`
+	 * @param prop The fluff index reference prop, e.g. `"creatureFluff"`
 	 */
 	getPredefinedFluff (entry, prop) {
 		if (!entry.fluff) return null;
