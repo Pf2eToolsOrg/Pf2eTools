@@ -130,7 +130,7 @@ class ConverterUi extends BaseComponent {
 					});
 
 					// TODO: Why?
-					// Omnisearch.pAddToIndex("monster", overwriteMeta.filter(meta => !meta.isOverwrite).map(meta => meta.entry));
+					// Omnisearch.pAddToIndex("creature", overwriteMeta.filter(meta => !meta.isOverwrite).map(meta => meta.entry));
 				} catch (e) {
 					JqueryUtil.doToast({
 						content: `Current output was not valid JSON!`,

@@ -2318,7 +2318,7 @@ DataUtil = {
 		if (data._meta) {
 			if (data._meta.dependencies) {
 				await Promise.all(Object.entries(data._meta.dependencies).map(async ([prop, sources]) => {
-					if (!data[prop]) return; // if e.g. creature dependencies are declared, but there are no monsters to merge with, bail out
+					if (!data[prop]) return; // if e.g. creature dependencies are declared, but there are no creatures to merge with, bail out
 
 					const toLoads = await Promise.all(sources.map(async source => DataUtil.pGetLoadableByMeta(prop, source)));
 					const dependencyData = await Promise.all(toLoads.map(toLoad => DataUtil.loadJSON(toLoad)));

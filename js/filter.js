@@ -1175,7 +1175,7 @@ class Filter extends FilterBase {
 	 * @param [opts.headerHelp] Filter header help text (tooltip)
 	 * @param opts.items Array of filter items, either `FilterItem` or strings. e.g. `["DMG", "VGM"]`
 	 * @param [opts.nests] Key-value object of `"Nest Name": {...nestMeta}`. Nests are used to group/nest filters.
-	 * @param [opts.displayFn] Function which translates an item to a displayable form, e.g. `"MM` -> "Monster Manual"`
+	 * @param [opts.displayFn] Function which translates an item to a displayable form, e.g. `"B3` -> "Bestiary 3"`
 	 * @param [opts.displayFnMini] Function which translates an item to a shortened displayable form, e.g. `"UABravoCharlie` -> "UABC"`
 	 * @param [opts.displayFnTitle] Function which translates an item to a form for displaying in a "title" tooltip
 	 * @param [opts.selFn] Function which returns true if an item should be displayed by default; false otherwise.
