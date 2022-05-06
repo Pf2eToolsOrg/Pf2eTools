@@ -396,26 +396,46 @@
 					"min": 3,
 					"max": 5
 				},
-				"ac": {
-					"default": 29
+				"defenses": {
+					"ac": {
+						"default": 29
+					},
+					"savingThrows": {
+						"fort": 23,
+						"ref": 16
+					},
+					"hardness": {
+						"default": 15
+					},
+					"hp": {
+						"default": 200
+					},
+					"bt": {
+						"default": 100
+					},
+					"immunities": [
+						"object immunities"
+					]
 				},
-				"savingThrows": {
-					"Fort": 23,
-
-					"Ref": 16
-				},
-				"hardness": 15,
-				"hp": 200,
-				"bt": 100,
 				"speed": {
 					"speed": 10,
 					"note": "pulled or pushed"
 				},
-				"space": "15 feet long, 12 feet wide, 15 feet high",
-				"ammunition": "bomb arrows (100 gp, 2 Bulk)",
-				"immunities": [
-					"object immunities"
-				]
+				"space": {
+					"high": {
+						"number": 15,
+						"unit": "feet"
+					},
+					"long": {
+						"number": 15,
+						"unit": "feet"
+					},
+					"wide": {
+						"number": 12,
+						"unit": "feet"
+					}
+				},
+				"ammunition": "bomb arrows (100 gp, 2 Bulk)"
 			},
 			"category": "Siege Weapon",
 			"subCategory": "Martial",
@@ -480,9 +500,100 @@
 				"coin": "gp",
 				"amount": 12000
 			},
+			"siegeWeaponData": {
+				"crew": {
+					"min": 4,
+					"max": 6
+				},
+				"defenses": {
+					"ac": {
+						"default": 32
+					},
+					"savingThrows": {
+						"fort": 26,
+						"ref": 18
+					},
+					"hardness": {
+						"default": 15
+					},
+					"hp": {
+						"default": 200
+					},
+					"bt": {
+						"default": 100
+					},
+					"immunities": [
+						"object immunities"
+					]
+				},
+				"speed": {
+					"speed": 10,
+					"note": "pulled or pushed"
+				},
+				"space": {
+					"high": {
+						"number": 8,
+						"unit": "feet"
+					},
+					"long": {
+						"number": 18,
+						"unit": "feet"
+					},
+					"wide": {
+						"number": 7,
+						"unit": "feet"
+					}
+				},
+				"ammunition": "scattershot barrels (25 gp, 5 Bulk)"
+			},
+			"usage": "mounted (black powder)",
 			"category": "Siege Weapon",
+			"subCategory": "Martial",
 			"entries": [
-				"5 Bulk) Usage mounted (black powder); Space 18 feet long, 7 feet wide, 8 feet high Crew 4 to 6; Proficiency martial AC 32; Fort +26, Reflex +18 Hardness 15; HP 200 (BT 100); Immunities object immunities Speed 10 feet (pulled or pushed)"
+				"Named for Ancil Alkenstar, this bronze cannon is one of the largest pieces of mobile artillery ever deployed, though its immense weight limits just how mobile it actually is. The barrel of an Alkenstar cannon is nearly 3 feet in diameter, making it impractical to manufacture and handle cannonballs of sufficient size. Instead, Alkenstar cannons spray buckshot in a similar way to blunderbusses, firing large barrels that break apart mid-flight and release a rain of scattershot over a massive area. The slow movement and short range make this siege weapon fit fewer situations than most, but when used effectively, such as to stop a charge of Mana Waste mutants against the walls of Alkenstar, the results are devastating.",
+				{
+					"type": "ability",
+					"style": "compact",
+					"name": "Aim",
+					"activity": {
+						"number": 3,
+						"unit": "action"
+					},
+					"entries": [
+						"50 feet, minimum distance 50 feet"
+					]
+				},
+				{
+					"type": "ability",
+					"style": "compact",
+					"name": "Load",
+					"activity": {
+						"number": 3,
+						"unit": "action"
+					},
+					"traits": [
+						"manipulate"
+					],
+					"entries": [
+						"3 times, requires a successful DC 20 Athletics check"
+					]
+				},
+				{
+					"type": "ability",
+					"style": "compact",
+					"name": "Launch",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"traits": [
+						"manipulate",
+						"range increment 50 feet"
+					],
+					"entries": [
+						"{@dice 10d12} bludgeoning, 50-foot burst, DC 33 Reflex"
+					]
+				}
 			]
 		},
 		{
@@ -606,7 +717,7 @@
 				"coin": "gp",
 				"amount": 1500
 			},
-			"bulk": "20",
+			"bulk": 1,
 			"category": "Adventuring Gear",
 			"entries": [
 				"The aquarium lamp is a combination light source and exotic animal aquarium, intended to provide rich nobles amusement and illumination. It takes the shape of a glass cube 50 feet wide and seven feet high filled with sea water, flanked by two much smaller water tanks. A sparse brass frame around the device keeps the tanks themselves from touching the ground and serves as a mounting point for a pair of electrical coils on the top, which are enclosed within separate glass tubes. Six electric eels swim within the central tank, while a number of animals belonging to species considered to be the eels' natural prey swim in the smaller feeding tanks.",
@@ -835,11 +946,101 @@
 				"coin": "gp",
 				"amount": 320
 			},
+			"siegeWeaponData": {
+				"crew": {
+					"min": 2
+				},
+				"defenses": {
+					"ac": {
+						"default": 17
+					},
+					"savingThrows": {
+						"fort": 12,
+						"ref": 11
+					},
+					"hardness": {
+						"default": 10
+					},
+					"hp": {
+						"default": 40
+					},
+					"bt": {
+						"default": 20
+					},
+					"immunities": [
+						"object immunities"
+					]
+				},
+				"speed": {
+					"speed": 20,
+					"note": "pulled or pushed"
+				},
+				"space": {
+					"long": {
+						"number": 10,
+						"unit": "feet"
+					},
+					"wide": {
+						"number": 5,
+						"unit": "feet"
+					},
+					"high": {
+						"name": "tall",
+						"number": 4,
+						"unit": "feet"
+					}
+				},
+				"ammunition": "ballista bolt (5 sp, 1 Bulk)"
+			},
 			"usage": "mounted",
 			"category": "Siege Weapon",
+			"subCategory": "Martial",
 			"entries": [
-				"Crew 2; Proficiency martial AC 17; Fort +12, Ref +11 Hardness 10; HP 40 (BT 20); Immunities object immunities Speed 20 feet (pulled or pushed) Resembling a massive crossbow mounted on a tripod, but with a pair of arms for torsion instead of a single prod, a ballista flings massive bolts. Also referred to as a scorpion, this weapon requires fewer crew members than the larger heavy ballista and can be Aimed and Loaded much more quickly.",
-				"Aim {@as 1} 35 feet, minimum distance 25 feet Load {@as 2} (manipulate) 2 times Launch {@as 1} (attack, manipulate, range increment 120 feet) {@damage 4d12} piercing, single target, DC 19 Reflex."
+				"Resembling a massive crossbow mounted on a tripod, but with a pair of arms for torsion instead of a single prod, a ballista flings massive bolts. Also referred to as a scorpion, this weapon requires fewer crew members than the larger heavy ballista and can be Aimed and Loaded much more quickly.",
+				{
+					"type": "ability",
+					"style": "compact",
+					"name": "Aim",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"entries": [
+						"35 feet, minimum distance 25 feet"
+					]
+				},
+				{
+					"type": "ability",
+					"style": "compact",
+					"name": "Load",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"traits": [
+						"manipulate"
+					],
+					"entries": [
+						"2 times"
+					]
+				},
+				{
+					"type": "ability",
+					"style": "compact",
+					"name": "Launch",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"attack",
+						"manipulate",
+						"range increment 100 feet"
+					],
+					"entries": [
+						"{@damage 4d12} piercing, single target, DC 19 Reflex"
+					]
+				}
 			]
 		},
 		{
@@ -875,12 +1076,71 @@
 				"Large",
 				"Portable"
 			],
+			"siegeWeaponData": {
+				"crew": {
+					"min": 6
+				}
+			},
 			"usage": "portable, held in 12 hands",
-			"bulk": "20",
-			"category": "Held",
+			"bulk": 20,
+			"category": "Siege Weapon",
+			"subCategory": "Martial",
 			"entries": [
-				"Crew 6; Proficiency martial Simple but powerful, a battering ram is a full tree stripped of limbs with one end clad in iron, often shaped like a ram's head.",
-				"Large handles are affixed to the sides so it can be hefted and carried by a crew."
+				"Simple but powerful, a battering ram is a full tree stripped of limbs with one end clad in iron, often shaped like a ram's head. Large handles are affixed to the sides so it can be hefted and carried by a crew.",
+				{
+					"type": "ability",
+					"style": "compact",
+					"name": "Ram",
+					"activity": {
+						"number": 3,
+						"unit": "action"
+					},
+					"requirements": "The other members of the crew have {@action Ready||Readied} to {@action Stride} on your order",
+					"entries": [
+						"You and the crew {@action Stride}, with a maximum distance equal to the slowest crew member's Speed, then make a melee Strike with the ram against a structure or an unattended, stationary object. The damage of this Strike is {@damage 5d8} + the highest Strength modifier among members of the crew."
+					]
+				}
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"type": "battering ram",
+					"level": 5,
+					"price": {
+						"amount": 160,
+						"coin": "gp"
+					}
+				},
+				{
+					"type": "covered battering ram",
+					"level": 6,
+					"price": {
+						"amount": 250,
+						"coin": "gp"
+					},
+					"siegeWeaponData": {
+						"crew": {
+							"min": 6
+						},
+						"defenses": {
+							"ac": {
+								"default": 23
+							},
+							"hardness": {
+								"default": 12
+							},
+							"hp": {
+								"default": 48
+							},
+							"bt": {
+								"default": 24
+							}
+						}
+					},
+					"entries": [
+						"Though it has the same Ram activity as the basic battering ram, a covered battering ram is additionally suspended from a protective roof attached to large wheels. This gives the crew members {@quickref greater cover|CRB|3|cover} against attacks from outside. The cover is on the left and right flank, but open on the front and rear to allow for operating the ram. The roof has AC 23, Hardness 12, HP 48, and BT 24. Breaking the roof doesn't affect the operation of the battering ram but eliminates the cover."
+					]
+				}
 			]
 		},
 		{
@@ -946,6 +1206,10 @@
 					"type": "dose or round",
 					"name": "Dose or Round of Black Powder",
 					"level": 0,
+					"price": {
+						"amount": 1,
+						"coin": "cp"
+					},
 					"entries": [
 						"The smallest unit of black powder that still has a simple use, a dose can be a simple package paper parcel around black powder or it can be packaged with a metal bullet or pellet to be used as ammunition. When ignited with a fuse or exposed to direct flame, a dose of black powder explodes. This isn't powerful enough to deal damage but makes a loud sound and could trigger further explosions. A fuse for a dose can be created with a few twists of paper and causes the dose to explode the round after it's lit."
 					],
@@ -1119,12 +1383,51 @@
 				"amount": 360
 			},
 			"usage": "portable (black powder), held in 8 hands",
-			"bulk": "14",
-			"category": "Held",
+			"bulk": 1,
+			"siegeWeaponData": {
+				"crew": {
+					"min": 4
+				},
+				"ammunition": "ram powder charge (2 gp, 1 Bulk)"
+			},
+			"subCategory": "Martial",
+			"category": "Siege Weapon",
 			"entries": [
-				"Crew 4; Proficiency martial A blasting ram is a smaller battering ram that supplements the crew's size with explosive force. A steel reservoir holds a charge of black powder that ignites on impact. The body of the ram is reinforced to absorb the force of the explosion, while the head itself has a blast shield to protect the crew.",
+				"A blasting ram is a smaller battering ram that supplements the crew's size with explosive force. A steel reservoir holds a charge of black powder that ignites on impact. The body of the ram is reinforced to absorb the force of the explosion, while the head itself has a blast shield to protect the crew.",
 				"Despite being a portable siege weapon, a blast ram has the Load action, which the crew uses to load the powder charge in the ram's head.",
-				"Load {@as 2} (manipulate) 2 times Ram {@as 2} Requirements The other members of the crew have Readied to {@action Stride} on your order; Effect You and the crew {@action Stride}, with a maximum distance equal to the slowest crew member's Speed. Then, make a melee {@action Strike} with the ram against a structure or unattended stationary object. As you do, the black powder in the steel reservoir explodes, significantly increasing the damage of your attack. Due to the black powder's additional force, the damage of this {@action Strike} is {@dice 7d8} + the highest Strength modifier among members of the crew."
+				{
+					"type": "ability",
+					"style": "compact",
+					"name": "Load",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"traits": [
+						"manipulate"
+					],
+					"entries": [
+						"2 times"
+					]
+				},
+				{
+					"type": "ability",
+					"style": "compact",
+					"name": "Ram",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"traits": [
+						"attack",
+						"manipulate",
+						"range increment 100 feet"
+					],
+					"requirements": "The other members of the crew have Readied to {@action Stride} on your order",
+					"entries": [
+						"You and the crew {@action Stride}, with a maximum distance equal to the slowest crew member's Speed. Then, make a melee {@action Strike} with the ram against a structure or unattended stationary object. As you do, the black powder in the steel reservoir explodes, significantly increasing the damage of your attack. Due to the black powder's additional force, the damage of this {@action Strike} is {@dice 7d8} + the highest Strength modifier among members of the crew."
+					]
+				}
 			]
 		},
 		{
@@ -1262,11 +1565,100 @@
 				"coin": "gp",
 				"amount": 300
 			},
+			"siegeWeaponData": {
+				"crew": {
+					"min": 2,
+					"max": 4
+				},
+				"ammunition": "stone spheres (4 gp, 4 Bulk)",
+				"defenses": {
+					"ac": {
+						"default": 17
+					},
+					"savingThrows": {
+						"fort": 12,
+						"ref": 5
+					},
+					"hardness": {
+						"default": 10
+					},
+					"hp": {
+						"default": 40
+					},
+					"bt": {
+						"default": 20
+					},
+					"immunities": [
+						"object immunities"
+					]
+				},
+				"space": {
+					"high": {
+						"number": 5,
+						"unit": "feet"
+					},
+					"long": {
+						"number": 10,
+						"unit": "feet"
+					},
+					"wide": {
+						"number": 4,
+						"unit": "feet"
+					}
+				},
+				"speed": {
+					"note": "pulled or pushed",
+					"speed": 10
+				}
+			},
 			"usage": "mounted (black powder)",
 			"category": "Siege Weapon",
+			"subCategory": "Martial",
 			"entries": [
-				"Crew 2 to 4; Proficiency martial AC 17; Fort +12, Reflex +5 Hardness 10; HP 40 (BT 20); Immunities object immunities Speed 10 feet (pulled or pushed) Bombards are some of the oldest and simplest of black powder siege weapons, devised based on many of the same principles as a hand cannon, but deploying them on a larger scale and scope. A bombard's body is usually made of brass or iron, which causes the bombard to resemble the shape of a large bell. While they are capable of moving very slowly, their {@condition clumsy} and weighty design means bombards usually remain stationary. This in turn means they're often used more defensively than offensively.",
-				"Aim {@as 2} 30 feet, minimum distance 30 feet Load {@as 2} (manipulate) 2 times, requires a successful DC 20 {@skill Athletics} check Launch {@as 1} (manipulate, range increment 150 feet) {@damage 4d10} bludgeoning, 10-foot burst, DC 19 Reflex."
+				"Bombards are some of the oldest and simplest of black powder siege weapons, devised based on many of the same principles as a hand cannon, but deploying them on a larger scale and scope. A bombard's body is usually made of brass or iron, which causes the bombard to resemble the shape of a large bell. While they are capable of moving very slowly, their {@condition clumsy} and weighty design means bombards usually remain stationary. This in turn means they're often used more defensively than offensively.",
+				{
+					"type": "ability",
+					"style": "compact",
+					"name": "Aim",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"entries": [
+						"30 feet, minimum distance 30 feet"
+					]
+				},
+				{
+					"type": "ability",
+					"style": "compact",
+					"name": "Load",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"traits": [
+						"manipulate"
+					],
+					"entries": [
+						"2 times, requires a successful DC 20 {@skill Athletics} check "
+					]
+				},
+				{
+					"type": "ability",
+					"style": "compact",
+					"name": "Launch",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"manipulate",
+						"range increment 150 feet"
+					],
+					"entries": [
+						"{@damage 4d10} bludgeoning, 10-foot burst, DC 19 Reflex"
+					]
+				}
 			]
 		},
 		{
@@ -1295,8 +1687,11 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact (evocation",
-						"magical)"
+						"Interact"
+					],
+					"traits": [
+						"evocation",
+						"magical"
 					],
 					"frequency": {
 						"unit": "minute",
@@ -1433,9 +1828,98 @@
 			},
 			"usage": "mounted (black powder)",
 			"category": "Siege Weapon",
+			"siegeWeaponData": {
+				"crew": {
+					"min": 2,
+					"max": 4
+				},
+				"ammunition": "cannonball (10 gp, 6 Bulk)",
+				"defenses": {
+					"ac": {
+						"default": 22
+					},
+					"savingThrows": {
+						"fort": 16,
+						"ref": 9
+					},
+					"hardness": {
+						"default": 15
+					},
+					"immunities": [
+						"object immunities"
+					],
+					"hp": {
+						"default": 80
+					},
+					"bt": {
+						"default": 40
+					}
+				},
+				"space": {
+					"high": {
+						"number": 4,
+						"unit": "feet"
+					},
+					"long": {
+						"number": 7,
+						"unit": "feet"
+					},
+					"wide": {
+						"number": 5,
+						"unit": "feet"
+					}
+				},
+				"speed": {
+					"speed": 15,
+					"note": "pulled or pushed"
+				}
+			},
+			"subCategory": "Martial",
 			"entries": [
-				"Crew 2 to 4; Proficiency martial AC 22; Fort +16, Reflex +9 Hardness 15; HP 80 (BT 40); Immunities object immunities Speed 15 feet (pulled or pushed) Cannons are perhaps the most well known of all black powder siege weapons, and that's because they represent a good midpoint between power and expense. Keeps and fortresses in Alkenstar prefer to fortify their forces with cannons, as they're relatively easy to construct and their ammunition is cheap enough to build up great supplies.",
-				"Aim {@as 3} 100 feet, minimum distance 50 feet Load {@as 2} (manipulate) 2 times, requires a successful DC 20 {@skill Athletics} check Launch {@as 1} (manipulate, range increment 200 feet) {@damage 6d12} bludgeoning, single target, DC 23 Reflex."
+				"Cannons are perhaps the most well known of all black powder siege weapons, and that's because they represent a good midpoint between power and expense. Keeps and fortresses in Alkenstar prefer to fortify their forces with cannons, as they're relatively easy to construct and their ammunition is cheap enough to build up great supplies.",
+				{
+					"type": "ability",
+					"style": "compact",
+					"name": "Aim",
+					"activity": {
+						"number": 3,
+						"unit": "action"
+					},
+					"entries": [
+						"100 feet, minimum distance 50 feet"
+					]
+				},
+				{
+					"type": "ability",
+					"style": "compact",
+					"name": "Load",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"traits": [
+						"manipulate"
+					],
+					"entries": [
+						"2 times, requires a successful DC 20 {@skill Athletics} check"
+					]
+				},
+				{
+					"type": "ability",
+					"style": "compact",
+					"name": "Launch",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"manipulate",
+						"range increment 200 feet"
+					],
+					"entries": [
+						"{@damage 6d12} bludgeoning, single target, DC 23 Reflex"
+					]
+				}
 			]
 		},
 		{
@@ -1453,11 +1937,102 @@
 				"coin": "gp",
 				"amount": 650
 			},
+			"siegeWeaponData": {
+				"crew": {
+					"min": 2,
+					"max": 4
+				},
+				"defenses": {
+					"ac": {
+						"default": 20
+					},
+					"savingThrows": {
+						"fort": 15,
+						"ref": 8
+					},
+					"hardness": {
+						"default": 10
+					},
+					"hp": {
+						"default": 60
+					},
+					"bt": {
+						"default": 30
+					},
+					"immunities": [
+						"object immunities"
+					]
+				},
+				"space": {
+					"long": {
+						"number": 10,
+						"unit": "feet"
+					},
+					"wide": {
+						"number": 10,
+						"unit": "feet"
+					},
+					"high": {
+						"name": "tall",
+						"number": 6,
+						"unit": "feet"
+					}
+				},
+				"ammunition": "stones (0 gp, 5 Bulk)",
+				"speed": {
+					"speed": 15,
+					"note": "pulled or pushed"
+				}
+			},
 			"usage": "mounted",
 			"category": "Siege Weapon",
+			"subCategory": "Martial",
 			"entries": [
-				"Crew 2 to 4; Proficiency martial AC 20; Fort +15, Ref +8 Hardness 10; HP 60 (BT 30); Immunities object immunities Speed 15 feet (pulled or pushed) A sturdy wooden frame holds the spring-loaded beam that gives this weapon its power. At the end of the beam, a bowl-shaped wooden recession holds the payload, typically heavy stones. The arm is winched back to create torsion, until the release is pulled to abruptly swing the arm forward and fling the payload.",
-				"Aim {@as 2} 50 feet, minimum distance 50 feet Load {@as 2} (manipulate) 2 times, requires a successful DC 20 {@skill Athletics} check Launch {@as 1} (attack, manipulate, range increment 150 feet) {@damage 5d10} bludgeoning, 10-foot burst, DC 22 Reflex."
+				"A sturdy wooden frame holds the spring-loaded beam that gives this weapon its power. At the end of the beam, a bowl-shaped wooden recession holds the payload, typically heavy stones. The arm is winched back to create torsion, until the release is pulled to abruptly swing the arm forward and fling the payload.",
+				{
+					"type": "ability",
+					"style": "compact",
+					"name": "Aim",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"entries": [
+						"50 feet, minimum distance 50 feet"
+					]
+				},
+				{
+					"type": "ability",
+					"style": "compact",
+					"name": "Load",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"traits": [
+						"manipulate"
+					],
+					"entries": [
+						"2 times, requires a successful DC 20 {@skill Athletics} check"
+					]
+				},
+				{
+					"type": "ability",
+					"style": "compact",
+					"name": "Launch",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"attack",
+						"manipulate",
+						"range increment 150 feet"
+					],
+					"entries": [
+						"{@damage 5d10} bludgeoning, 10-foot burst, DC 22 Reflex."
+					]
+				}
 			]
 		},
 		{
@@ -1570,7 +2145,7 @@
 				"coin": "gp",
 				"amount": 15
 			},
-			"bulk": "4",
+			"bulk": 1,
 			"category": "Adventuring Gear",
 			"entries": [
 				"This device was originally created by an inventor who had way more books they wanted to access than available wall space to store them. Each of the bookshelf's six levels is actually loaded with a pair of shelves instead of a single shelf. A simple switch on the side of the bookshelf flips the corresponding shelf to the other side, revealing any books stored in the paired shelf. While this makes the clockwork bookshelf a little deeper than a normal bookshelf, in order to fit both shelves, it effectively allows you to store twice as many books using the same amount of wall space. Those who wish to keep volumes {@condition hidden} from visitors (or perhaps stow a weapon or potion within a false book) often load the {@condition hidden} shelf first, then switch to the second shelf lined with more respectable volumes."
@@ -1590,7 +2165,7 @@
 				"coin": "gp",
 				"amount": 50
 			},
-			"bulk": "4",
+			"bulk": 1,
 			"category": "Adventuring Gear",
 			"entries": [
 				"This handy clockwork device is too expensive for most warehouses and shipping docks to make use of it, but some nobles have purchased the item for their staff as a status symbol, and merchants who are in the shipping trade can afford to slowly reap the benefits of its usage. It takes 1 minute to wind a clockwork box packer; after which, it can function for up to 1 hour.",
@@ -1638,7 +2213,7 @@
 				"amount": 200
 			},
 			"usage": "Worn",
-			"bulk": "4",
+			"bulk": 1,
 			"category": "Adventuring Gear",
 			"entries": [
 				"The clockwork diving suit is a marvel of technology that allows its user to breathe underwater for hours at a time without the aid of magic. Compared to a more traditional magically-assisted diving suit using a bottle of air, a clockwork diving suit is both less expensive and better protected, making clockwork diving suits a good choice for characters who prefer more protection. However, they also come with a built-in time limit, which magical diving suits circumvent. A clockwork diving suit is a bulky, fully sealed suit of armor lined with a complex series of filter-equipped bladders that store and circulate air for the user to breathe.",
@@ -2199,11 +2774,29 @@
 				"amount": 30
 			},
 			"usage": "portable, held in 4 hands",
-			"bulk": "3",
-			"category": "Held",
+			"bulk": 1,
+			"siegeWeaponData": {
+				"crew": {
+					"min": 2
+				}
+			},
+			"subCategory": "Simple",
+			"category": "Siege Weapon",
 			"entries": [
-				"Crew 2; Proficiency simple A door ram is a small siege weapon meant for breaking down doors, palisades, and weak portcullises. It consists of a log with an iron cap, and has handholds carved into it or grips attached to it.",
-				"Ram {@as 2} Requirements The other member of the crew has Readied to {@action Stride} on your order; Effect You and the other crew member {@action Stride}, with a maximum distance equal to the slowest crew member's Speed, then make a melee {@action Strike} with the ram against a structure or an unattended, stationary object. The damage of this {@action Strike} is {@dice 2d8} + the highest Strength modifier among members of the crew."
+				"A door ram is a small siege weapon meant for breaking down doors, palisades, and weak portcullises. It consists of a log with an iron cap, and has handholds carved into it or grips attached to it.",
+				{
+					"type": "ability",
+					"style": "compact",
+					"name": "Ram",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"requirements": "The other member of the crew has {@action Ready||Readied} to {@action Stride} on your order",
+					"entries": [
+						"You and the other crew member {@action Stride}, with a maximum distance equal to the slowest crew member's Speed, then make a melee {@action Strike} with the ram against a structure or an unattended, stationary object. The damage of this {@action Strike} is {@dice 2d8} + the highest Strength modifier among members of the crew."
+					]
+				}
 			]
 		},
 		{
@@ -2945,10 +3538,95 @@
 			},
 			"usage": "mounted (black powder)",
 			"category": "Siege Weapon",
+			"siegeWeaponData": {
+				"crew": {
+					"min": 3,
+					"max": 6
+				},
+				"space": {
+					"long": {
+						"number": 15,
+						"unit": "feet"
+					},
+					"wide": {
+						"number": 15,
+						"unit": "feet"
+					},
+					"high": {
+						"number": 15,
+						"unit": "feet"
+					}
+				},
+				"ammunition": "cannonball (10 gp, 6 Bulk)",
+				"defenses": {
+					"ac": {
+						"default": 26
+					},
+					"savingThrows": {
+						"fort": 21,
+						"ref": 13
+					},
+					"hardness": {
+						"default": 18
+					},
+					"hp": {
+						"default": 90
+					},
+					"bt": {
+						"default": 45
+					},
+					"immunities": [
+						"object immunities"
+					]
+				}
+			},
+			"subCategory": "Martial",
 			"entries": [
-				"Crew 3 to 6; Proficiency martial AC 26; Fort +21, Reflex +13 Hardness 18; HP 90 (BT 45); Immunities object immunities Fiend's mouth cannons are large-scale cannons designed to blast a target at great distance, from a stationary location.",
+				"Fiend's mouth cannons are large-scale cannons designed to blast a target at great distance, from a stationary location.",
 				"They get their name from the fiendish features usually adorning their barrels and frames. Compared to a standard field cannon, a fiend's mouth cannon can be aimed more easily, but flexibility comes at the cost of mobility. The barrel rests on a platform which can be rotated 360 degrees to allow for precise aiming.",
-				"Aim {@as 2} 200 feet, minimum distance 50 feet Load {@as 2} (manipulate) 2 times, requires a successful DC 20 {@skill Athletics} check Launch {@as 1} (manipulate, range increment 300 feet) {@damage 8d12} bludgeoning, single target, DC 27 Reflex."
+				{
+					"type": "ability",
+					"style": "compact",
+					"name": "Aim",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"entries": [
+						"200 feet, minimum distance 50 feet"
+					]
+				},
+				{
+					"type": "ability",
+					"style": "compact",
+					"name": "Load",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"traits": [
+						"manipulate"
+					],
+					"entries": [
+						"2 times, requires a successful DC 20 {@skill Athletics} check"
+					]
+				},
+				{
+					"type": "ability",
+					"style": "compact",
+					"name": "Launch",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"manipulate",
+						"range increment 300 feet"
+					],
+					"entries": [
+						"{@damage 8d12} bludgeoning, single target, DC 27 Reflex."
+					]
+				}
 			]
 		},
 		{
@@ -2994,6 +3672,129 @@
 			"craftReq": null
 		},
 		{
+			"name": "Steelheart 21",
+			"source": "G&G",
+			"page": 175,
+			"type": "Item",
+			"level": 13,
+			"traits": [
+				"Rare",
+				"Large"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 6000
+			},
+			"category": "Siege Weapon",
+			"subCategory": "Martial",
+			"siegeWeaponData": {
+				"crew": {
+					"min": 4,
+					"max": 6
+				},
+				"ammunition": "artillery shell (80 gp, 4 Bulk)",
+				"defenses": {
+					"ac": {
+						"default": 29
+					},
+					"savingThrows": {
+						"fort": 23,
+						"ref": 16
+					},
+					"hardness": {
+						"default": 18
+					},
+					"hp": {
+						"default": 150
+					},
+					"bt": {
+						"default": 75
+					},
+					"immunities": [
+						"object immunities"
+					]
+				},
+				"space": {
+					"high": {
+						"number": 5,
+						"unit": "feet"
+					},
+					"long": {
+						"number": 9,
+						"unit": "feet"
+					},
+					"wide": {
+						"number": 7,
+						"unit": "feet"
+					}
+				},
+				"speed": {
+					"speed": 20,
+					"note": "pulled or pushed"
+				}
+			},
+			"usage": "mounted (black powder)",
+			"entries": [
+				"Named for Brondar Steelheart, one of the most important historical dwarven pioneers in the use of black powder, this remarkable piece of new Dongun artillery uses metallurgy and alchemy to negate nearly all of the immense amount of recoil a shot from a siege weapon usually produces. The barrel of the Steelheart 21 is suspended in a mix of alchemical fluids that first compress to dampen the recoil when fired, then expand to push the barrel back into place afterwards. The result reduces the amount of time needed to reset the aim of the siege weapon. The crew member who launches the Steelheart 21 can use the Quick Aim reaction (below), allowing them to adjust the weapon's aim on the fly as they fire to adapt to a faulty initial target, changing battlefield conditions, the use of illusions by the enemy, or any of a variety of other factors that lead to the need to alter the siege weapon's course.",
+				{
+					"type": "ability",
+					"style": "compact",
+					"name": "Quick Aim",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "You Launch this siege weapon, after determining the effects of the Launch action.",
+					"entries": [
+						"You Aim this siege weapon, moving the aim up to 10 feet instead of its normal distance."
+					]
+				},
+				{
+					"type": "ability",
+					"style": "compact",
+					"name": "Aim",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"entries": [
+						"100 feet, minimum distance 150 feet"
+					]
+				},
+				{
+					"type": "ability",
+					"style": "compact",
+					"name": "Load",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"traits": [
+						"manipulate"
+					],
+					"entries": [
+						"3 times, requires a successful DC 20 {@skill Athletics} check"
+					]
+				},
+				{
+					"type": "ability",
+					"style": "compact",
+					"name": "Launch",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"manipulate",
+						"range increment 500 feet"
+					],
+					"entries": [
+						"{@damage 8d12} bludgeoning, 20-foot burst, DC 30 Reflex"
+					]
+				}
+			]
+		},
+		{
 			"name": "Firedrake",
 			"source": "G&G",
 			"page": 175,
@@ -3008,9 +3809,101 @@
 				"amount": 1000
 			},
 			"category": "Siege Weapon",
+			"subCategory": "Martial",
+			"siegeWeaponData": {
+				"crew": {
+					"min": 3,
+					"max": 5
+				},
+				"ammunition": "alchemical fire barrel (50 gp, 3 Bulk)",
+				"defenses": {
+					"ac": {
+						"default": 22
+					},
+					"bt": {
+						"default": 35
+					},
+					"immunities": [
+						"object immunities"
+					],
+					"resistances": [
+						"fire 10"
+					],
+					"hardness": {
+						"default": 12
+					},
+					"hp": {
+						"default": 70
+					},
+					"savingThrows": {
+						"fort": 16,
+						"ref": 9
+					}
+				},
+				"space": {
+					"high": {
+						"number": 10,
+						"unit": "feet"
+					},
+					"long": {
+						"number": 15,
+						"unit": "feet"
+					},
+					"wide": {
+						"number": 12,
+						"unit": "feet"
+					}
+				},
+				"speed": {
+					"speed": 15,
+					"note": "pulled or pushed"
+				}
+			},
+			"usage": "mounted (black powder)",
 			"entries": [
-				"3 Bulk) Usage mounted (black powder); Space 15 feet long, 12 feet wide, 10 feet high Crew 3 to 5; Proficiency martial AC 22; Fort +16, Reflex +9 Hardness 12; HP 70 (BT 35); Immunities object immunities; Resistances fire 10 Speed 15 feet (pulled or pushed) This alchemical black powder hybrid siege weapon uses a blast of black powder to spray alchemical fire from a long metal nozzle, often sculpted or painted with designs resembling a dragon's neck and head. The nozzle turns on a ratcheted, rotating disc with a reservoir in the center to hold a barrel full of combustible alchemical liquid, using black powder to propel the fire. This main structure is atop a wheeled cart to allow it to be easily moved. Unlike most mounted siege weapons, a firedrake is intended to be wheeled out into the thick of a skirmish rather than shooting from a distance.",
-				"Aim {@as 2} rotate 45º Load {@as 2} (manipulate) 3 times, requires a successful DC 20 {@skill Athletics} check Launch {@as 1} (manipulate) {@damage 8d6} fire plus {@damage 1d6} {@condition persistent damage ||persistent fire}, 60-foot line or 30-foot cone, DC 23 Reflex. Switching between the firedrake's line or cone mode takes an {@action Interact} action, and any of the crew can perform the action."
+				"This alchemical black powder hybrid siege weapon uses a blast of black powder to spray alchemical fire from a long metal nozzle, often sculpted or painted with designs resembling a dragon's neck and head. The nozzle turns on a ratcheted, rotating disc with a reservoir in the center to hold a barrel full of combustible alchemical liquid, using black powder to propel the fire. This main structure is atop a wheeled cart to allow it to be easily moved. Unlike most mounted siege weapons, a firedrake is intended to be wheeled out into the thick of a skirmish rather than shooting from a distance.",
+				{
+					"type": "ability",
+					"style": "compact",
+					"name": "Aim",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"entries": [
+						"rotate 45º"
+					]
+				},
+				{
+					"type": "ability",
+					"style": "compact",
+					"name": "Load",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"traits": [
+						"manipulate"
+					],
+					"entries": [
+						"3 times, requires a successful DC 20 {@skill Athletics} check"
+					]
+				},
+				{
+					"type": "ability",
+					"style": "compact",
+					"name": "Launch",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"manipulate"
+					],
+					"entries": [
+						"{@damage 8d6} fire plus {@damage 1d6} {@condition persistent damage ||persistent fire}, 60-foot line or 30-foot cone, DC 23 Reflex. Switching between the firedrake's line or cone mode takes an {@action Interact} action, and any of the crew can perform the action."
+					]
+				}
 			]
 		},
 		{
@@ -3155,7 +4048,7 @@
 				"coin": "gp",
 				"amount": 475
 			},
-			"bulk": "3",
+			"bulk": 1,
 			"category": "Assistive Item",
 			"subCategory": "Wheelchair",
 			"entries": [
@@ -3673,9 +4566,82 @@
 			},
 			"usage": "mounted",
 			"category": "Siege Weapon",
+			"subCategory": "Martial",
+			"siegeWeaponData": {
+				"ammunition": "heavy ballista bolt (3 gp, 3 Bulk)",
+				"crew": {
+					"min": 3,
+					"max": 6
+				},
+				"defenses": {
+					"ac": {
+						"default": 22
+					},
+					"hardness": {
+						"default": 15
+					},
+					"hp": {
+						"default": 80
+					},
+					"savingThrows": {
+						"fort": 18,
+						"ref": 12
+					},
+					"bt": {
+						"default": 40
+					},
+					"immunities": [
+						"object immunities"
+					]
+				},
+				"space": {
+					"high": {
+						"number": 12,
+						"unit": "feet"
+					},
+					"long": {
+						"number": 15,
+						"unit": "feet"
+					},
+					"wide": {
+						"number": 12,
+						"unit": "feet"
+					}
+				},
+				"speed": {
+					"speed": 15,
+					"note": "pulled or pushed"
+				}
+			},
 			"entries": [
-				"Crew 3 to 6; Proficiency martial AC 22; Fort +18, Ref +12 Hardness 15; HP 80 (BT 40); Immunities object immunities Speed 15 feet (pulled or pushed) Capable of launching bolts the size of fully grown trees, a heavy ballista is best suited to smashing down castle gates, walls, or similar fortifications.",
-				"Aim {@as 2} 60 feet, minimum distance 40 feet Load {@as 2} (manipulate) 3 times, requires a successful DC 20 {@skill Athletics} check."
+				"Capable of launching bolts the size of fully grown trees, a heavy ballista is best suited to smashing down castle gates, walls, or similar fortifications.",
+				{
+					"type": "ability",
+					"style": "compact",
+					"name": "Aim",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"entries": [
+						"60 feet, minimum distance 40 feet"
+					]
+				},
+				{
+					"type": "ability",
+					"style": "compact",
+					"name": "Load",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"traits": [
+						"manipulate"
+					],
+					"entries": [
+						"3 times, requires a successful DC 20 {@skill Athletics} check."
+					]
+				}
 			]
 		},
 		{
@@ -3692,10 +4658,100 @@
 				"coin": "gp",
 				"amount": 1400
 			},
+			"siegeWeaponData": {
+				"crew": {
+					"min": 3,
+					"max": 6
+				},
+				"defenses": {
+					"ac": {
+						"default": 23
+					},
+					"hardness": {
+						"default": 18
+					},
+					"hp": {
+						"default": 50
+					},
+					"bt": {
+						"default": 25
+					},
+					"immunities": [
+						"object immunities"
+					],
+					"savingThrows": {
+						"fort": 18,
+						"ref": 10
+					}
+				},
+				"ammunition": "large stone spheres (8 gp, 16 Bulk)",
+				"space": {
+					"high": {
+						"number": 6,
+						"unit": "feet"
+					},
+					"long": {
+						"number": 17,
+						"unit": "feet"
+					},
+					"wide": {
+						"number": 6,
+						"unit": "feet"
+					}
+				},
+				"speed": {
+					"speed": 10,
+					"note": "pulled or pushed"
+				}
+			},
+			"usage": "mounted (black powder)",
 			"category": "Siege Weapon",
+			"subCategory": "Martial",
 			"entries": [
-				"Bulk) Usage mounted (black powder); Space 17 feet long, 6 feet wide, 6 feet high Crew 3 to 6; Proficiency martial AC 23; Fort +18, Reflex +10 Hardness 18; HP 50 (BT 25); Immunities object immunities A heavy bombard looks like little more than a large metal cylinder, resembling the barrel of a firearm so large that it's immobile. The sheer size of the weapon allows it to strike far and hard.",
-				"Aim {@as 3} 50 feet, minimum distance 50 feet Load {@as 2} (manipulate) 3 times, requires a successful DC 20 {@skill Athletics} check Launch {@as 1} (manipulate, range increment 250 feet) {@damage 7d10} bludgeoning, 20-foot burst, DC 25 Reflex."
+				"A heavy bombard looks like little more than a large metal cylinder, resembling the barrel of a firearm so large that it's immobile. The sheer size of the weapon allows it to strike far and hard.",
+				{
+					"type": "ability",
+					"style": "compact",
+					"name": "Aim",
+					"activity": {
+						"number": 3,
+						"unit": "action"
+					},
+					"entries": [
+						"50 feet, minimum distance 50 feet"
+					]
+				},
+				{
+					"type": "ability",
+					"style": "compact",
+					"name": "Load",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"traits": [
+						"manipulate"
+					],
+					"entries": [
+						"3 times, requires a successful DC 20 {@skill Athletics} check"
+					]
+				},
+				{
+					"type": "ability",
+					"style": "compact",
+					"name": "Launch",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"manipulate",
+						"range increment 250 feet"
+					],
+					"entries": [
+						"{@damage 7d10} bludgeoning, 20-foot burst, DC 25 Reflex."
+					]
+				}
 			]
 		},
 		{
@@ -3754,12 +4810,99 @@
 				"amount": 180
 			},
 			"usage": "mounted (black powder)",
+			"siegeWeaponData": {
+				"crew": {
+					"min": 1,
+					"max": 4
+				},
+				"defenses": {
+					"ac": {
+						"default": 16
+					},
+					"hardness": {
+						"default": 5
+					},
+					"hp": {
+						"default": 40
+					},
+					"bt": {
+						"default": 20
+					},
+					"immunities": [
+						"object immunities"
+					],
+					"savingThrows": {
+						"fort": 11,
+						"ref": 4
+					}
+				},
+				"ammunition": "100 hwacha arrows (2 gp, 1 Bulk)",
+				"space": {
+					"high": {
+						"number": 6,
+						"unit": "feet"
+					},
+					"long": {
+						"number": 8,
+						"unit": "feet"
+					},
+					"wide": {
+						"number": 6,
+						"unit": "feet"
+					}
+				},
+				"speed": {
+					"speed": 25,
+					"note": "pulled or pushed"
+				}
+			},
 			"category": "Siege Weapon",
+			"subCategory": "Simple",
 			"entries": [
-				"Crew 1 to 4; Proficiency simple AC 16; Fort +11, Reflex +4 Hardness 5; HP 40 (BT 20); Immunities object immunities Speed 25 feet (pulled or pushed) Rather than a shoot a single, large projectile like a boulder, the hwacha fires dozens of rocket-propelled arrows at once. The frame of the hwacha holds 100 tubes, each loaded with an arrow or a small bundle of arrows wrapped with a small amount Fiend's Mouth Cannon Hwacha of black powder and attached to a fuse. By lighting a master fuse, you can make all of the arrows fire in rapid succession.",
-				"Aim {@as 2} 40 feet, minimum distance 40 feet Load {@as 3} (manipulate) Each Load action loads 10 hwacha arrows. Taking the Launch action requires three Load actions to load 30 hwacha arrows, but you can continue to Load more arrows to increase the effect of the next Launch action, as detailed below.",
-				"Launch {@as 1} (manipulate, range increment 300 feet) {@damage 4d8} piercing, 20-foot burst, DC 18 Reflex. If you loaded at least 70 hwacha arrows, the area increases to a 25-foot burst.",
-				"If you loaded 100 hwacha arrows, the area increases to a 30-foot burst and the damage to {@damage 5d8} piercing."
+				"Rather than a shoot a single, large projectile like a boulder, the hwacha fires dozens of rocket-propelled arrows at once. The frame of the hwacha holds 100 tubes, each loaded with an arrow or a small bundle of arrows wrapped with a small amount Fiend's Mouth Cannon Hwacha of black powder and attached to a fuse. By lighting a master fuse, you can make all of the arrows fire in rapid succession.",
+				{
+					"type": "ability",
+					"style": "compact",
+					"name": "Aim",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"entries": [
+						"40 feet, minimum distance 40 feet"
+					]
+				},
+				{
+					"type": "ability",
+					"style": "compact",
+					"name": "Load",
+					"activity": {
+						"number": 3,
+						"unit": "action"
+					},
+					"traits": [
+						"manipulate"
+					],
+					"entries": [
+						"Each Load action loads 10 hwacha arrows. Taking the Launch action requires three Load actions to load 30 hwacha arrows, but you can continue to Load more arrows to increase the effect of the next Launch action, as detailed below."
+					]
+				},
+				{
+					"type": "ability",
+					"style": "compact",
+					"name": "Launch",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"manipulate",
+						"range increment 300 feet"
+					],
+					"entries": [
+						"{@damage 4d8} piercing, 20-foot burst, DC 18 Reflex. If you loaded at least 70 hwacha arrows, the area increases to a 25-foot burst. If you loaded 100 hwacha arrows, the area increases to a 30-foot burst and the damage to {@damage 5d8} piercing."
+					]
+				}
 			]
 		},
 		{
@@ -4813,11 +5956,100 @@
 				"amount": 720
 			},
 			"usage": "mounted (black powder)",
+			"siegeWeaponData": {
+				"crew": {
+					"min": 3,
+					"max": 4
+				},
+				"defenses": {
+					"ac": {
+						"default": 20
+					},
+					"savingThrows": {
+						"fort": 15,
+						"ref": 8
+					},
+					"hardness": {
+						"default": 12
+					},
+					"hp": {
+						"default": 40
+					},
+					"bt": {
+						"default": 20
+					},
+					"immunities": [
+						"object immunities"
+					]
+				},
+				"ammunition": "mortar round (5 gp, 1 Bulk)",
+				"space": {
+					"high": {
+						"number": 25,
+						"unit": "feet"
+					},
+					"long": {
+						"number": 25,
+						"unit": "feet"
+					},
+					"wide": {
+						"number": 15,
+						"unit": "feet"
+					}
+				},
+				"peed": {
+					"speed": 20,
+					"note": "pulled or pushed"
+				}
+			},
 			"category": "Siege Weapon",
+			"subCategory": "Martial",
 			"entries": [
-				"Crew 3 to 4; Proficiency martial AC 20; Fort +15, Reflex +8 Hardness 12; HP 40 (BT 20); Immunities object immunities Speed 20 feet (pulled or pushed) A mortar fires its shells at a high angle, allowing it to bypass obstacles and strike from above. A crew typically sets up such a weapon behind a wall or in another hard-to-access area to protect themselves while retaining full functionality.",
+				"A mortar fires its shells at a high angle, allowing it to bypass obstacles and strike from above. A crew typically sets up such a weapon behind a wall or in another hard-to-access area to protect themselves while retaining full functionality.",
 				"Due to the steep angle of its arc, such mortars are especially useful when opposing barricaded targets.",
-				"Aim {@as 2} 40 feet, minimum distance 50 feet Load {@as 2} (manipulate) 3 times Launch {@as 2} (manipulate, range increment 100 feet) {@damage 5d10} slashing, 20-foot burst, DC 21. Because a mortar launches its round at a high angle, the mortar round descends on the center of the burst from above, not in a straight line from the mortar. This affects whether creatures have cover from the mortar launch."
+				{
+					"type": "ability",
+					"style": "compact",
+					"name": "Aim",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"entries": [
+						"40 feet, minimum distance 50 feet"
+					]
+				},
+				{
+					"type": "ability",
+					"style": "compact",
+					"name": "Load",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"traits": [
+						"manipulate"
+					],
+					"entries": [
+						"3 times"
+					]
+				},
+				{
+					"type": "ability",
+					"style": "compact",
+					"name": "Launch",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"traits": [
+						"manipulate",
+						"range increment 100 feet"
+					],
+					"entries": [
+						"{@damage 5d10} slashing, 20-foot burst, DC 21. Because a mortar launches its round at a high angle, the mortar round descends on the center of the burst from above, not in a straight line from the mortar. This affects whether creatures have cover from the mortar launch."
+					]
+				}
 			]
 		},
 		{
@@ -4904,7 +6136,7 @@
 				"coin": "gp",
 				"amount": 125
 			},
-			"bulk": "4",
+			"bulk": 1,
 			"category": "Adventuring Gear",
 			"entries": [
 				"The nightbreeze machine can turn a scorching hot room into a comfortable one with just the pull of a lever. Its outer shell is a brass cube half as tall as the average human that houses a series of flat metal \"blades\" in a circular arrangement. When placed on a flat surface, a creature within reach can {@action Interact} to flip the lever, turning the machine on. When the machine is active, the blades begin to spin rapidly, setting the air in the room into motion, which cools off the room's inhabitants. A front-mounted metal grate prevents anyone from coming into accidental contact with the spinning blades without impeding airflow.",
@@ -5248,7 +6480,7 @@
 				"coin": "gp",
 				"amount": 600
 			},
-			"bulk": "20",
+			"bulk": 1,
 			"category": "Adventuring Gear",
 			"entries": [
 				"The printing press is a revolutionary machine that combines movable type with a mechanical inking system and screw press, allowing for the mass production of large volumes of text. Using the press, a worker can produce up to 3,600 identical pages per day. In order to use the printing press, you must first set the type for the page you want to print.",
@@ -5948,7 +7180,7 @@
 				"coin": "gp",
 				"amount": 1800
 			},
-			"bulk": "3",
+			"bulk": 1,
 			"category": "Assistive Item",
 			"subCategory": "Wheelchair",
 			"entries": [
@@ -6151,7 +7383,7 @@
 						"coin": "gp",
 						"amount": 150
 					},
-					"bulk": "16",
+					"bulk": 1,
 					"entries": []
 				},
 				{
@@ -6172,7 +7404,7 @@
 						"coin": "gp",
 						"amount": 1250
 					},
-					"bulk": "16",
+					"bulk": 1,
 					"entries": [
 						"This spirit-singer is fine-tuned to the point that you can analyze its song more intricately. Increase the item bonus to {@skill Performance} checks near spiritual disturbances, and the item bonus to detecting haunts and incorporeal undead to +2. While playing the spirit-singer, you can notice haunts that normally require you to have a master proficiency in {@skill Perception} to detect."
 					],
@@ -6238,10 +7470,100 @@
 				"amount": 700
 			},
 			"usage": "mounted",
+			"siegeWeaponData": {
+				"ammunition": "springald arrows (5 sp, 2 Bulk)",
+				"space": {
+					"high": {
+						"number": 15,
+						"unit": "feet"
+					},
+					"long": {
+						"number": 15,
+						"unit": "feet"
+					},
+					"wide": {
+						"number": 12,
+						"unit": "feet"
+					}
+				},
+				"crew": {
+					"min": 3,
+					"max": 5
+				},
+				"defenses": {
+					"ac": {
+						"default": 20
+					},
+					"savingThrows": {
+						"fort": 16,
+						"ref": 13
+					},
+					"hardness": {
+						"default": 10
+					},
+					"hp": {
+						"default": 40
+					},
+					"bt": {
+						"default": 20
+					},
+					"immunities": [
+						"object immunities"
+					]
+				},
+				"speed": {
+					"speed": 10,
+					"note": "pulled or pushed"
+				}
+			},
 			"category": "Siege Weapon",
+			"subCategory": "Martial",
 			"entries": [
-				"Crew 3 to 5; Proficiency martial AC 20; Fort +16, Ref +13 Hardness 10; HP 40 (BT 20); Immunities object immunities Speed 10 feet (pulled or pushed) A springald consists of a wooden board cranked backward and chutes that hold up to three oversized arrows. Rather than having a nock, each arrow has a flat back end. Releasing the board strikes the backs of the arrows, sending them hurtling through the air.",
-				"Aim {@as 2} 30 feet, minimum distance 50 feet Load {@as 2} (manipulate) 3 times Launch {@as 1} (attack, manipulate, range increment 100 feet) {@damage 5d8} piercing, three different targets within a 15-foot burst, DC 22 Reflex."
+				"A springald consists of a wooden board cranked backward and chutes that hold up to three oversized arrows. Rather than having a nock, each arrow has a flat back end. Releasing the board strikes the backs of the arrows, sending them hurtling through the air.",
+				{
+					"type": "ability",
+					"style": "compact",
+					"name": "Aim",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"entries": [
+						"30 feet, minimum distance 50 feet"
+					]
+				},
+				{
+					"type": "ability",
+					"style": "compact",
+					"name": "Load",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"traits": [
+						"manipulate"
+					],
+					"entries": [
+						"3 times"
+					]
+				},
+				{
+					"type": "ability",
+					"style": "compact",
+					"name": "Launch",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"traits": [
+						"attack",
+						"manipulate",
+						"range increment 100 feet"
+					],
+					"entries": [
+						"{@damage 5d8} piercing, three different targets within a 15-foot burst, DC 22 Reflex."
+					]
+				}
 			]
 		},
 		{
@@ -6370,7 +7692,7 @@
 				"coin": "gp",
 				"amount": 4400
 			},
-			"bulk": "3",
+			"bulk": 1,
 			"category": "Assistive Item",
 			"subCategory": "Wheelchair",
 			"entries": [
@@ -6678,7 +8000,7 @@
 						"coin": "gp",
 						"amount": 10
 					},
-					"bulk": "3",
+					"bulk": 1,
 					"entries": [
 						"Desktop clocks have been designed to be small enough to only take up a quarter of a typical writing desk's surface area, but they're still too bulky and heavy to be lugged around casually."
 					]
@@ -6690,7 +8012,7 @@
 						"coin": "gp",
 						"amount": 50
 					},
-					"bulk": "16",
+					"bulk": 1,
 					"entries": [
 						"These towering, ten-foot-tall clocks have been painstakingly handcrafted by skilled artisans and feature loud chimes that can be heard hourly throughout a manor. Owners of grand clocks usually tend to display them prominently in a study, lounge area, or foyer."
 					]
@@ -6745,7 +8067,7 @@
 				"coin": "gp",
 				"amount": 5
 			},
-			"bulk": "3",
+			"bulk": 1,
 			"category": "Assistive Item",
 			"subCategory": "Wheelchair",
 			"entries": [
@@ -6769,10 +8091,96 @@
 				"amount": 2000
 			},
 			"usage": "mounted",
+			"siegeWeaponData": {
+				"crew": {
+					"min": 4,
+					"max": 6
+				},
+				"defenses": {
+					"ac": {
+						"default": 24
+					},
+					"savingThrows": {
+						"fort": 21,
+						"ref": 16
+					},
+					"hardness": {
+						"default": 17
+					},
+					"hp": {
+						"default": 68
+					},
+					"bt": {
+						"default": 34
+					},
+					"immunities": [
+						"object immunities"
+					]
+				},
+				"ammunition": "stones (0 gp, 6 Bulk)",
+				"space": {
+					"high": {
+						"number": 25,
+						"unit": "feet"
+					},
+					"long": {
+						"number": 25,
+						"unit": "feet"
+					},
+					"wide": {
+						"number": 15,
+						"unit": "feet"
+					}
+				}
+			},
 			"category": "Siege Weapon",
+			"subCategory": "Martial",
 			"entries": [
-				"Crew 4 to 6; Proficiency martial AC 24; Fort +21, Ref +16 Hardness 17; HP 68 (BT 34); Immunities object immunities Built with a long wooden arm and a heavy counterweight, a trebuchet can hurl massive projectiles from a large sling, releasing the projectile at the ideal point in the arm's arc.",
-				"Aim {@as 2} 100 feet, minimum distance 200 feet Load {@as 2} (manipulate) 3 times, requires a successful DC 20 {@skill Athletics} check Launch {@as 1} (attack, manipulate, range increment 400 feet) {@damage 8d10} bludgeoning, 20-foot burst, DC 26 Reflex Siege Tools Some contraptions rolled onto the battlefield aren't used directly to attack, but rather to move troops."
+				"Built with a long wooden arm and a heavy counterweight, a trebuchet can hurl massive projectiles from a large sling, releasing the projectile at the ideal point in the arm's arc.",
+				{
+					"type": "ability",
+					"style": "compact",
+					"name": "Aim",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"entries": [
+						"100 feet, minimum distance 200 feet"
+					]
+				},
+				{
+					"type": "ability",
+					"style": "compact",
+					"name": "Load",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"traits": [
+						"manipulate"
+					],
+					"entries": [
+						"3 times, requires a successful DC 20 {@skill Athletics} check"
+					]
+				},
+				{
+					"type": "ability",
+					"style": "compact",
+					"name": "Launch",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"attack",
+						"manipulate",
+						"range increment 400 feet"
+					],
+					"entries": [
+						"{@damage 8d10} bludgeoning, 20-foot burst, DC 26 Reflex"
+					]
+				}
 			]
 		},
 		{

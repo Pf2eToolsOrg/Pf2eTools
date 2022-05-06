@@ -513,6 +513,7 @@ class Converter {
 			return;
 		}
 		for (let cat of cats.map(c => c.cat)) {
+			// FIXME:
 			if (item.traits.map(t => t.toLowerCase()).includes(cat.toLowerCase())) {
 				item.category = cat;
 				return;

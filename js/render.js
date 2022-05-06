@@ -5145,46 +5145,31 @@ Renderer.item = {
 			renderStack.push(`</p>`);
 			renderStack.push(Renderer.utils.getDividerDiv());
 		}
-		if (siegeData.usage || item.bulk || siegeData.space || siegeData.crew || item.subCategory) {
+		if (item.usage || item.bulk || siegeData.space || siegeData.crew || item.subCategory) {
 			let miniStack = [];
 			renderStack.push(`<p class="pf2-stat pf2-stat__section">`)
 			if (item.usage) miniStack.push(`<strong>Usage&nbsp;</strong>${item.usage}`);
 			if (item.bulk) miniStack.push(`<strong>Bulk&nbsp;</strong>${item.bulk}`);
-			if (siegeData.space) miniStack.push(`<strong>Space&nbsp;</strong>${siegeData.space}`);
+			if (siegeData.space) miniStack.push(`<strong>Space&nbsp;</strong>${Object.entries(siegeData.space).map(([k, v]) => `${v.number} ${v.unit} ${k}`).join(", ")}`);
 			renderStack.push(miniStack.join("; "));
 			renderStack.push(`</p>`);
 
 			miniStack = [];
 			renderStack.push(`<p class="pf2-stat pf2-stat__section">`)
-			if (siegeData.crew) miniStack.push(`<strong>Crew&nbsp;</strong>${siegeData.crew.min} ${siegeData.crew.max ? `to ${siegeData.crew.max}` : ""}`);
+			if (siegeData.crew) miniStack.push(`<strong>Crew&nbsp;</strong>${siegeData.crew.min}${siegeData.crew.max ? ` to ${siegeData.crew.max}` : ""}`);
 			if (item.subCategory) miniStack.push(`<strong>Proficiency&nbsp;</strong>${item.subCategory.toLowerCase()}`);
 			renderStack.push(miniStack.join("; "));
 			renderStack.push(`</p>`);
 			renderStack.push(Renderer.utils.getDividerDiv());
 		}
-		if (siegeData.ac || siegeData.savingThrows || siegeData.hp || siegeData.bt || siegeData.weaknesses || siegeData.immunities || siegeData.resistances || siegeData.hardness) {
-			let miniStack = [];
-			renderStack.push(`<p class="pf2-stat pf2-stat__section">`)
-			if (siegeData.ac) miniStack.push(`<strong>AC&nbsp;</strong>${siegeData.ac.default}${Renderer.utils.getNotes(siegeData.ac, { exclude: ["default", "abilities"] })}`);
-			if (siegeData.savingThrows) {
-				miniStack.push(Object.keys(siegeData.savingThrows).filter(k => siegeData.savingThrows[k] != null)
-					.map(k => `<strong>${k.uppercaseFirst()}&nbsp;</strong>{@d20 ${siegeData.savingThrows[k]}||${Parser.savingThrowAbvToFull(k)}}`).join(", "));
-			}
-			renderStack.push(miniStack.join("; "));
-			renderStack.push(`</p>`);
-
-			miniStack = []
-			renderStack.push(`<p class="pf2-stat pf2-stat__section">`)
-			if (siegeData.hardness) miniStack.push(`<strong>Hardness&nbsp;</strong>${siegeData.bt}`);
-			if (siegeData.hp) miniStack.push(`<strong>HP&nbsp;</strong>${siegeData.hp}${siegeData.bt ? ` (BT&nbsp;${siegeData.bt})` : ""}`);
-			if (siegeData.immunities) miniStack.push(`<strong>Immunities&nbsp;</strong>${siegeData.immunities.join(", ")}`);
-			if (siegeData.weaknesses) miniStack.push(`<strong>Weaknesses&nbsp;</strong>${siegeData.weaknesses.join(", ")}`);
-			if (siegeData.resistances) miniStack.push(`<strong>Resistances&nbsp;</strong>${siegeData.resistances.join(", ")}`);
-			renderStack.push(miniStack.join("; "));
-			renderStack.push(`</p>`);
+		if (siegeData.defenses) {
+			renderStack.push(Renderer.vehicle.getDefenses(siegeData))
 			renderStack.push(Renderer.utils.getDividerDiv());
 		}
-		if (siegeData.speed) renderStack.push(`<strong>Speed&nbsp;</strong>${siegeData.speed.speed} feet${siegeData.speed.note ? ` (${siegeData.speed.note})` : ""}`);
+		if (siegeData.speed) {
+			renderStack.push(`<strong>Speed&nbsp;</strong>${siegeData.speed.speed} feet${siegeData.speed.note ? ` (${siegeData.speed.note})` : ""}`)
+			renderStack.push(Renderer.utils.getDividerDiv());
+		}
 		return renderer.render(renderStack.join(""));
 	},
 
@@ -5663,6 +5648,27 @@ Renderer.vehicle = {
 		const renderer = Renderer.get();
 		const traits = it.traits || [];
 		traits.push(it.size);
+		// FIXME: This is becoming a mess
+		// <p class="pf2-stat pf2-stat__section"><strong>Crew&nbsp;</strong>${it.crew.pilot} pilot${it.crew.pilot > 1 ? "s" : ""}${it.crew.crew ? `, ${it.crew.crew} crew` : ""}${it.passengers != null ? `; <strong>Passengers&nbsp;</strong>${it.passengers}` : ""}</p>
+		return `${Renderer.utils.getExcludedDiv(it, "vehicle", UrlUtil.PG_VEHICLES)}
+		${Renderer.utils.getNameDiv(it, { type: "Vehicle", ...opts })}
+		${Renderer.utils.getDividerDiv()}
+		${Renderer.utils.getTraitsDiv(traits)}
+		${it.price ? `<p class="pf2-stat pf2-stat__section"><strong>Price&nbsp;</strong>${Parser.priceToFull(it.price)}</p>` : ""}
+		${Renderer.utils.getDividerDiv()}
+		<p class="pf2-stat pf2-stat__section"><strong>Space&nbsp;</strong>${Object.entries(siegeData.space).map(([k, v]) => `${v.number} ${v.unit} ${v.name !== null ? v.name : k}`).join(", ")}</p>
+		<p class="pf2-stat pf2-stat__section"><strong>Crew&nbsp;</strong>${it.crew.map(c => `${c.number} ${c.entry ? c.entry : c.type}`).join(", ")}${it.passengers != null ? `; <strong>Passengers&nbsp;</strong>${it.passengers}` : ""}</p>
+		<p class="pf2-stat pf2-stat__section"><strong>Piloting Check&nbsp;</strong>${it.pilotingCheck.length > 1 ? `${it.pilotingCheck.slice(0, -1).map(c => `${c.entry ? `${renderer.render(c.entry)}` : `${c.skill.includes("Lore") ? renderer.render(`{@skill Lore||${c.skill}}`) : renderer.render(`{@skill ${c.skill}}`)} (DC ${c.dc})`}`).join(", ")} or ${it.pilotingCheck.map(c => `${c.entry ? `${renderer.render(c.entry)}` : `${c.skill.includes("Lore") ? renderer.render(`{@skill Lore||${c.skill}}`) : renderer.render(`{@skill ${c.skill}}`)} (DC ${c.dc})`}`).slice(-1)}` : it.pilotingCheck.map(c => `${c.entry ? `${renderer.render(c.entry)}` : `${c.skill.includes("Lore") ? renderer.render(`{@skill Lore||${c.skill}}`) : renderer.render(`{@skill ${c.skill}}`)} (DC ${c.dc})`}`)}</p>
+		${Renderer.utils.getDividerDiv()}
+		${Renderer.vehicle.getDefenses(it, opts)}
+		${Renderer.utils.getDividerDiv()}
+		<p class="pf2-stat pf2-stat__section"><strong>Speed&nbsp;</strong>${it.speed.type === "special" ? it.speed.entry : `${it.speed.type !== "walk" ? `${it.speed.type} ` : ""}${it.speed.speed} feet ${it.speed.traits ? `(${renderer.render(it.speed.traits.map(t => `{@trait ${t.toLowerCase()}}`).join(", "))})` : ""} ${it.speed.note ? `(${renderer.render(it.speed.note)})` : ""}`}</p>
+		<p class="pf2-stat pf2-stat__section"><strong>Collision&nbsp;</strong>${renderer.render(it.collision.damage)}${it.collision.type ? ` ${it.collision.type}` : ""} DC (${it.collision.dc})</p>
+		${it.abilities ? it.abilities.map(a => Renderer.creature.getRenderedAbility(a)[0].outerHTML).join("") : ""}
+		${Renderer.utils.getPageP(it)}`;
+	},
+	getDefenses (it, opts) {
+		const renderer = Renderer.get();
 		const defensesStack = [];
 		if (it.defenses) {
 			const def = it.defenses;
@@ -5692,24 +5698,7 @@ Renderer.vehicle = {
 			defensesStack.push(renderer.render(sectionTwo.join("; ")));
 			defensesStack.push(`</p>`);
 		}
-		// FIXME: This is becoming a mess
-		// <p class="pf2-stat pf2-stat__section"><strong>Crew&nbsp;</strong>${it.crew.pilot} pilot${it.crew.pilot > 1 ? "s" : ""}${it.crew.crew ? `, ${it.crew.crew} crew` : ""}${it.passengers != null ? `; <strong>Passengers&nbsp;</strong>${it.passengers}` : ""}</p>
-		return `${Renderer.utils.getExcludedDiv(it, "vehicle", UrlUtil.PG_VEHICLES)}
-		${Renderer.utils.getNameDiv(it, { type: "Vehicle", ...opts })}
-		${Renderer.utils.getDividerDiv()}
-		${Renderer.utils.getTraitsDiv(traits)}
-		${it.price ? `<p class="pf2-stat pf2-stat__section"><strong>Price&nbsp;</strong>${Parser.priceToFull(it.price)}</p>` : ""}
-		${Renderer.utils.getDividerDiv()}
-		<p class="pf2-stat pf2-stat__section"><strong>Space&nbsp;</strong>${it.space.long.number} ${it.space.long.unit} long, ${it.space.wide.number} ${it.space.wide.unit} wide, ${it.space.high.number} ${it.space.high.unit} high</p>
-		<p class="pf2-stat pf2-stat__section"><strong>Crew&nbsp;</strong>${it.crew.map(c => `${c.number} ${c.entry ? c.entry : c.type}`).join(", ")}${it.passengers != null ? `; <strong>Passengers&nbsp;</strong>${it.passengers}` : ""}</p>
-		<p class="pf2-stat pf2-stat__section"><strong>Piloting Check&nbsp;</strong>${it.pilotingCheck.length > 1 ? `${it.pilotingCheck.slice(0, -1).map(c => `${c.entry ? `${renderer.render(c.entry)}` : `${c.skill.includes("Lore") ? renderer.render(`{@skill Lore||${c.skill}}`) : renderer.render(`{@skill ${c.skill}}`)} (DC ${c.dc})`}`).join(", ")} or ${it.pilotingCheck.map(c => `${c.entry ? `${renderer.render(c.entry)}` : `${c.skill.includes("Lore") ? renderer.render(`{@skill Lore||${c.skill}}`) : renderer.render(`{@skill ${c.skill}}`)} (DC ${c.dc})`}`).slice(-1)}` : it.pilotingCheck.map(c => `${c.entry ? `${renderer.render(c.entry)}` : `${c.skill.includes("Lore") ? renderer.render(`{@skill Lore||${c.skill}}`) : renderer.render(`{@skill ${c.skill}}`)} (DC ${c.dc})`}`)}</p>
-		${Renderer.utils.getDividerDiv()}
-		${defensesStack.join("")}
-		${Renderer.utils.getDividerDiv()}
-		<p class="pf2-stat pf2-stat__section"><strong>Speed&nbsp;</strong>${it.speed.type === "special" ? it.speed.entry : `${it.speed.type} ${it.speed.speed} feet ${it.speed.traits ? `(${renderer.render(it.speed.traits.map(t => `{@trait ${t.toLowerCase()}}`).join(", "))})` : ""} ${it.speed.note ? `(${renderer.render(it.speed.note)})` : ""}`}</p>
-		<p class="pf2-stat pf2-stat__section"><strong>Collision&nbsp;</strong>${renderer.render(it.collision.damage)}${it.collision.type ? ` ${it.collision.type}` : ""} DC (${it.collision.dc})</p>
-		${it.abilities ? it.abilities.map(a => Renderer.creature.getRenderedAbility(a)[0].outerHTML).join("") : ""}
-		${Renderer.utils.getPageP(it)}`;
+		return defensesStack.join("")
 	},
 };
 
