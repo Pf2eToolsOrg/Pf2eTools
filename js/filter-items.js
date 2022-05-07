@@ -20,11 +20,13 @@ class PageFilterItems extends PageFilter {
 		return 0;
 	}
 
+	// FIXME: This is often broken and shows incorrect items, such as 11 gp items on >25 gp filter. Or 30 gp items on >50 gp filter.
 	static _priceCategory (value) {
 		if (typeof value !== "number") return "0 gp";
 		if (value === 0) return "0 gp";
 		else if (value <= 5 * 100) return "5 gp";
 		else if (value <= 10 * 100) return "10 gp";
+		else if (value <= 25 * 100) return "25 gp";
 		else if (value <= 50 * 100) return "50 gp";
 		else if (value <= 100 * 100) return "100 gp";
 		else if (value <= 500 * 100) return "500 gp";
@@ -92,7 +94,7 @@ class PageFilterItems extends PageFilter {
 		this._priceFilter = new RangeFilter({
 			header: "Price",
 			isLabelled: true,
-			labels: ["0 gp", "5 gp", "10 gp", "50 gp", "100 gp", "250 gp", "500 gp", "750 gp", "1,000 gp", "2,500 gp", "5,000 gp", "10,000 gp", "25,000 gp", "50,000 gp", "100,000 gp", "100,000+ gp"],
+			labels: ["0 gp", "5 gp", "10 gp", "25 gp", "50 gp", "100 gp", "250 gp", "500 gp", "750 gp", "1,000 gp", "2,500 gp", "5,000 gp", "10,000 gp", "25,000 gp", "50,000 gp", "100,000 gp", "100,000+ gp"],
 			labelSortFn: null,
 		});
 		this._bulkFilter = new RangeFilter({header: "Bulk"});
@@ -193,13 +195,13 @@ class PageFilterItems extends PageFilter {
 			this._typeFilter,
 			this._categoryFilter,
 			this._subCategoryFilter,
+			this._priceFilter,
+			this._bulkFilter,
 			this._damageFilter,
 			this._groupFilter,
 			this._rangeFilter,
 			this._traitFilter,
-			this._priceFilter,
 			this._miscFilter,
-			this._bulkFilter,
 			this._shieldDataFilter,
 			this._appliesToFilter,
 		];
@@ -213,6 +215,8 @@ class PageFilterItems extends PageFilter {
 			it._fType,
 			it.category,
 			it._fSubCategory,
+			it._fPrice,
+			it._fBulk,
 			[
 				[it._fweaponData.damage, it._fcomboWeaponData.damage],
 				[it._fweaponData.damageType, it._fcomboWeaponData.damageType],
@@ -221,9 +225,7 @@ class PageFilterItems extends PageFilter {
 			it._fGroup,
 			it._fWeaponRange,
 			it._fTraits,
-			it._fPrice,
 			it._fMisc,
-			it._fBulk,
 			[
 				it._fshieldData.ac,
 				it._fshieldData.hp,
