@@ -82,6 +82,10 @@
 		}
 	}
 
+	p {
+		margin-bottom: 5px;
+	}
+
 	.rnd-name {
 		font-size: 22.4px;
 	}
@@ -110,6 +114,14 @@
 		user-select: none;
 		display: flex;
 		justify-content: space-between;
+	}
+
+	.hwin__top-border-icon {
+		display: none;
+	}
+
+	&[data-perm=true] .hwin__top-border-icon {
+		display: block;
 	}
 
 	.glyphicon {

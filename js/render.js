@@ -5946,6 +5946,7 @@ Renderer.hover = {
 				isPermanent: meta.isPermanent,
 				pageUrl: `${Renderer.get().baseUrl}${page}#${hash}`,
 				cbClose: () => meta.isHovered = meta.isPermanent = meta.isLoading = meta.isFluff = false,
+				sourceData: toRender,
 			},
 			sourceData,
 		);
@@ -6033,6 +6034,7 @@ Renderer.hover = {
 				title: toRender.data && toRender.data.hoverTitle != null ? toRender.data.hoverTitle : toRender.name,
 				isPermanent: meta.isPermanent,
 				cbClose: () => meta.isHovered = meta.isPermanent = meta.isLoading = false,
+				sourceData: toRender,
 			},
 		);
 
@@ -6456,6 +6458,31 @@ Renderer.hover = {
 
 					doClose();
 				}).appendTo($brdTopRhs);
+		}
+
+		if (opts.sourceData) {
+			const btnPopout = e_({
+				tag: "span",
+				clazz: `hwin__top-border-icon hwin__top-border-icon--text`,
+				title: "Show Source Data",
+				text: "{}",
+				click: evt => {
+					evt.stopPropagation();
+					evt.preventDefault();
+
+					const $content = Renderer.hover.$getHoverContent_statsCode(opts.sourceData);
+					Renderer.hover.getShowWindow(
+						$content,
+						Renderer.hover.getWindowPositionFromEvent(evt),
+						{
+							title: [opts.sourceData._displayName || opts.sourceData.name, "Source Data"].filter(Boolean).join(" \u2014 "),
+							isPermanent: true,
+							isBookContent: true,
+						},
+					);
+				},
+			});
+			$brdTopRhs.append(btnPopout);
 		}
 
 		const $btnClose = $(`<span class="delete-icon glyphicon glyphicon-remove hvr__close" title="Close"></span>`)
