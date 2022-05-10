@@ -845,6 +845,8 @@ Parser.CAT_ID_TO_PROP[Parser.CAT_ID_TRAIT] = "trait";
 
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_PAGE] = null;
 
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_GENERIC_DATA] = "generic";
+
 Parser.pageCategoryToProp = function (catId) {
 	return Parser._parse_aToB(Parser.CAT_ID_TO_PROP, catId);
 };

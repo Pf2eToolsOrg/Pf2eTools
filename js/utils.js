@@ -1898,6 +1898,7 @@ UrlUtil.PG_CHANGELOG = "changelog.html";
 UrlUtil.PG_PLACES = "places.html";
 UrlUtil.PG_OPTIONAL_FEATURES = "optionalfeatures.html";
 UrlUtil.PG_SEARCH = "search.html";
+UrlUtil.PG_GENERIC_DATA = "genericData";
 
 UrlUtil.URL_TO_HASH_BUILDER = {};
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_BESTIARY] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
@@ -2022,6 +2023,8 @@ UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_VEHICLE] = UrlUtil.PG_VEHICLES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_TRAIT] = UrlUtil.PG_TRAITS;
 
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_PAGE] = null;
+
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_GENERIC_DATA] = UrlUtil.PG_GENERIC_DATA;
 
 UrlUtil.CAT_TO_HOVER_PAGE = {};
 UrlUtil.CAT_TO_HOVER_PAGE[Parser.CAT_ID_CLASS_FEATURE] = "classfeature";

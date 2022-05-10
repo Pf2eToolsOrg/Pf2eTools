@@ -335,7 +335,11 @@ function Renderer () {
 				case "paper":
 					this._renderPaper(entry, textStack, meta, options);
 					break;
-				// pf2-statblock
+				case "quote":
+					this._renderQuote(entry, textStack, meta, options);
+					break
+
+				// pf2-abilities
 				case "affliction":
 					this._renderAffliction(entry, textStack, meta, options);
 					break;
@@ -351,12 +355,6 @@ function Renderer () {
 				case "ability":
 					this._renderAbility(entry, textStack, meta, options);
 					break;
-				case "statblock":
-					this._renderStatblock(entry, textStack, meta, options);
-					break;
-				case "quote":
-					this._renderQuote(entry, textStack, meta, options);
-					break
 
 				// inline
 				case "inline":
@@ -375,18 +373,12 @@ function Renderer () {
 				// list items
 				case "item": this._renderItem(entry, textStack, meta, options); break;
 
-				// entire data records
-				case "dataCreature":
-					this._renderDataCreature(entry, textStack, meta, options);
-					break;
-				case "dataSpell":
-					this._renderDataSpell(entry, textStack, meta, options);
-					break;
-				case "dataGeneric":
-					this._renderDataGeneric(entry, textStack, meta, options);
-					break;
+				// entire in-line data records
 				case "data":
 					this._renderData(entry, textStack, meta, options);
+					break;
+				case "statblock":
+					this._renderStatblock(entry, textStack, meta, options);
 					break;
 
 				// images
@@ -7454,6 +7446,7 @@ Renderer.hover = {
 			case "domain": return Renderer.domain.getRenderedString;
 			case "group": return Renderer.group.getRenderedString;
 			case "skill": return Renderer.skill.getRenderedString;
+			case "genericData": return Renderer.generic.dataGetRenderedString;
 			// endregion
 			default:
 				throw new Error(`Unknown page: ${page} in _pageToRenderFn`);
