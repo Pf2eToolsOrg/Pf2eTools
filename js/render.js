@@ -5208,7 +5208,7 @@ Renderer.item = {
 		const rangedEntries = [];
 		if (data.ammunition) rangedEntries.push(`<strong>Ammunition&nbsp;</strong>${renderer.render(`{@item ${data.ammunition}}`)}`);
 		if (data.range) rangedEntries.push(`<strong>Range&nbsp;</strong>${renderer.render(`${data.range} ft.`)}`);
-		if (data.reload !== null) rangedEntries.push(`<strong>Reload&nbsp;</strong>${renderer.render(`${data.reload}`)}`);
+		if (data.reload || data.reload === 0) rangedEntries.push(`<strong>Reload&nbsp;</strong>${renderer.render(`${data.reload}`)}`);
 
 		const rangedLine = rangedEntries.join("; ");
 		return `
