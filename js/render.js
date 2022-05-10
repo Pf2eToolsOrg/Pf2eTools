@@ -378,6 +378,7 @@ function Renderer () {
 					this._renderData(entry, textStack, meta, options);
 					break;
 				case "statblock":
+					console.log(`Statblock entries should be removed!`)
 					this._renderStatblock(entry, textStack, meta, options);
 					break;
 
@@ -1343,18 +1344,6 @@ function Renderer () {
 		textStack[0] += `</div></div>`;
 	};
 
-	this._renderStatblock = async function (entry, textStack, meta, options) {
-		const cat_id = Parser._parse_bToA(Parser.CAT_ID_TO_PROP, entry.tag);
-		const page = UrlUtil.CAT_TO_PAGE[cat_id];
-		const hash = entry.hash || UrlUtil.URL_TO_HASH_BUILDER[page](entry);
-		const renderFn = Renderer.hover._pageToRenderFn(page);
-		textStack[0] += `<div class="pf2-wrp-stat pf2-stat" data-stat-hash="${hash}">${Renderer.get().render(`{@${entry.tag} ${entry.name}|${entry.source}}`)}</div>`
-		const toRender = await Renderer.hover.pCacheAndGet(page, entry.source, hash);
-		const $wrp = $(`[data-stat-hash="${hash}"]`);
-		if (toRender) $wrp.html(renderFn(toRender, { noPage: true }));
-		else throw new Error(`Could not find ${entries.tag}: ${hash}`);
-	};
-
 	this._renderInline = function (entry, textStack, meta, options) {
 		if (entry.entries) {
 			const len = entry.entries.length;
@@ -1375,31 +1364,19 @@ function Renderer () {
 		textStack[0] += Renderer.getEntryDice(entry, entry.name, this._isAddHandlers);
 	};
 
-	this._renderDataCreature = function (entry, textStack, meta, options) {
-		this._renderPrefix(entry, textStack, meta, options);
-		this._renderDataHeader(textStack);
-		textStack[0] += Renderer.creature.getRenderedString(entry.dataCreature, { isEmbeddedEntity: true });
-		this._renderDataFooter(textStack);
-		this._renderSuffix(entry, textStack, meta, options);
+	this._renderStatblock = async function (entry, textStack, meta, options) {
+		const cat_id = Parser._parse_bToA(Parser.CAT_ID_TO_PROP, entry.tag);
+		const page = UrlUtil.CAT_TO_PAGE[cat_id];
+		const hash = entry.hash || UrlUtil.URL_TO_HASH_BUILDER[page](entry);
+		const renderFn = Renderer.hover._pageToRenderFn(page);
+		textStack[0] += `<div class="pf2-wrp-stat pf2-stat" data-stat-hash="${hash}">${Renderer.get().render(`{@${entry.tag} ${entry.name}|${entry.source}}`)}</div>`
+		const toRender = await Renderer.hover.pCacheAndGet(page, entry.source, hash);
+		const $wrp = $(`[data-stat-hash="${hash}"]`);
+		if (toRender) $wrp.html(renderFn(toRender, { noPage: true }));
+		else throw new Error(`Could not find ${entries.tag}: ${hash}`);
 	};
 
-	this._renderDataSpell = function (entry, textStack, meta, options) {
-		this._renderPrefix(entry, textStack, meta, options);
-		this._renderDataHeader(textStack);
-		textStack[0] += Renderer.spell.getRenderedString(entry.dataSpell, { isEmbeddedEntity: true });
-		this._renderDataFooter(textStack);
-		this._renderSuffix(entry, textStack, meta, options);
-	};
-
-	this._renderDataGeneric = function (entry, textStack, meta, options) {
-		const isEmbedded = entry.style !== "book";
-		this._renderPrefix(entry, textStack, meta, options);
-		this._renderDataHeader(textStack, isEmbedded);
-		textStack[0] += Renderer.generic.dataGetRenderedString(entry.dataGeneric, { isEmbedded, noPage: true });
-		this._renderDataFooter(textStack, isEmbedded);
-		this._renderSuffix(entry, textStack, meta, options);
-	};
-
+	// TODO: Merge with renderStatblock
 	this._renderData = function (entry, textStack, meta, options) {
 		this._renderPrefix(entry, textStack, meta, options);
 		this._renderDataHeader(textStack);
