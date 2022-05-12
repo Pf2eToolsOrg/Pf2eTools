@@ -45,11 +45,19 @@
 						"minItems": 1
 					},
 					"followerAlignment": {
-						"type": "array",
-						"items": {
-							"$ref": "utils.json#/definitions/alignmentTraits"
-						},
-						"minItems": 1
+						"type": "object",
+						"properties": {
+							"entry": {
+								"type": "string"
+							},
+							"alignment": {
+								"type": "array",
+								"items": {
+									"$ref": "utils.json#/definitions/alignmentTraits"
+								},
+								"minItems": 1
+							}
+						}
 					},
 					"category": {
 						"type": "string",
