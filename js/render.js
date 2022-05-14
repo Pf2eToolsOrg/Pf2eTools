@@ -3055,19 +3055,13 @@ Renderer.utils = {
 		return `<div class="pf2-stat pf2-stat__line"></div>`
 	},
 
-	getTraitsDiv: (traits) => {
+	getTraitsDiv: (traits, options) => {
 		traits = traits || [];
+		options = options || {};
 		let source;
+		renderer = Renderer.get()
 		const traitsHtml = [];
-		for (let trait of traits.sort(SortUtil.sortTraits)) {
-			[trait, source] = trait.split("|");
-			const hash = BrewUtil.hasSourceJson(source) ? UrlUtil.encodeForHash([Parser.getTraitName(trait), source]) : UrlUtil.encodeForHash([Parser.getTraitName(trait)]);
-			const url = `${UrlUtil.PG_TRAITS}#${hash}`;
-			source = source || "TRT";
-
-			const procHash = hash.replace(/'/g, "\\'");
-			const hoverMeta = Renderer.get()._getHoverString(UrlUtil.PG_TRAITS, source, procHash, null);
-
+		for (let trait of options.doNotSortTraits ? traits : traits.sort(SortUtil.sortTraits)) {
 			const styles = ["pf2-trait"];
 			if (traits.indexOf(trait) === 0) {
 				styles.push("pf2-trait--left");
@@ -3075,19 +3069,37 @@ Renderer.utils = {
 			if (traits.indexOf(trait) === traits.length - 1) {
 				styles.push("pf2-trait--right");
 			}
-			switch (trait.toLowerCase()) {
+			switch (Renderer.stripTags(trait.toLowerCase())) {
 				case "uncommon": styles.push("pf2-trait--uncommon"); break;
 				case "rare": styles.push("pf2-trait--rare"); break;
 				case "unique": styles.push("pf2-trait--unique"); break;
 			}
-			if (Renderer.trait.isTraitInCategory(trait, "Size")) {
+			if (Renderer.trait.isTraitInCategory(Renderer.stripTags(trait), "Size")) {
 				styles.push("pf2-trait--size");
-			} else if (Renderer.trait.isTraitInCategory(trait, "_alignAbv")) {
+			} else if (Renderer.trait.isTraitInCategory(Renderer.stripTags(trait), "_alignAbv")) {
 				styles.push("pf2-trait--alignment");
-			} else if (Renderer.trait.isTraitInCategory(trait, "_settlement")) {
+			} else if (Renderer.trait.isTraitInCategory(Renderer.stripTags(trait), "_settlement")) {
 				styles.push("pf2-trait--settlement");
 			}
-			traitsHtml.push(`<a href="${url}" class="${styles.join(" ")}" ${hoverMeta}>${trait}</a>`);
+			if (options.doNotTagTraits) {
+				let finishedTrait = "";
+				if (trait.includes(`{@`)) {
+					console.log(trait)
+					let traitRender = renderer.render(trait)
+					finishedTrait = [traitRender.slice(0, 2), ` class="${styles.join(" ")}" `, traitRender.slice(2)].join("");
+				} else finishedTrait = `<a class="${styles.join(" ")}">${trait}</a>`
+				traitsHtml.push(finishedTrait)
+			} else {
+				[trait, source] = trait.split("|");
+				const hash = BrewUtil.hasSourceJson(source) ? UrlUtil.encodeForHash([Parser.getTraitName(trait), source]) : UrlUtil.encodeForHash([Parser.getTraitName(trait)]);
+				const url = `${UrlUtil.PG_TRAITS}#${hash}`;
+				source = source || "TRT";
+
+				const procHash = hash.replace(/'/g, "\\'");
+				const hoverMeta = Renderer.get()._getHoverString(UrlUtil.PG_TRAITS, source, procHash, null);
+
+				traitsHtml.push(`<a href="${url}" class="${styles.join(" ")}" ${hoverMeta}>${trait}</a>`)
+			}
 		}
 		return traitsHtml.join("")
 	},
@@ -5686,7 +5698,7 @@ Renderer.generic = {
 		return `
 		${Renderer.utils.getNameDiv(it, { "isEmbedded": options.isEmbedded, "activity": `${it.activity ? Parser.timeToFullEntry(it.activity) : ""}`, "type": `${it.category ? it.category : ""} `, "level": typeof it.level !== "number" ? it.level : undefined })}
 		${Renderer.utils.getDividerDiv()}
-		${Renderer.utils.getTraitsDiv(traits)}
+		${Renderer.utils.getTraitsDiv(traits, { doNotTagTraits: it.doNotTagTraits, doNotSortTraits: it.doNotSortTraits })}
 		${Renderer.ability.getSubHead(it)}
 		${renderedSections.join(Renderer.utils.getDividerDiv())}
 		${options.noPage ? "" : Renderer.utils.getPageP(it)}`;
