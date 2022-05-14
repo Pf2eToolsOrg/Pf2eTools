@@ -3084,7 +3084,6 @@ Renderer.utils = {
 			if (options.doNotTagTraits) {
 				let finishedTrait = "";
 				if (trait.includes(`{@`)) {
-					console.log(trait)
 					let traitRender = renderer.render(trait)
 					finishedTrait = [traitRender.slice(0, 2), ` class="${styles.join(" ")}" `, traitRender.slice(2)].join("");
 				} else finishedTrait = `<a class="${styles.join(" ")}">${trait}</a>`
