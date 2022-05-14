@@ -148,7 +148,7 @@
 			"bulk": 1,
 			"category": "Held",
 			"entries": [
-				"This imperious +1 striking mace has a glowing orb in the shape of an eye set in its flanged head. When you succeed at a check to {@action Recall Knowledge} about a creature after you've dealt it damage with the auspicious scepter, you learn one of its resistances in addition to any other information.",
+				"This imperious {@runeItem mace||+1 weapon potency||striking|} has a glowing orb in the shape of an eye set in its flanged head. When you succeed at a check to {@action Recall Knowledge} about a creature after you've dealt it damage with the auspicious scepter, you learn one of its resistances in addition to any other information.",
 				{
 					"type": "ability",
 					"activity": {
@@ -156,10 +156,18 @@
 						"unit": "free"
 					},
 					"components": [
-						"command (divination",
-						"magical)"
+						"command"
 					],
-					"trigger": "You Cast a divination",
+					"traits": [
+						"divination",
+						"magical"
+					],
+					"frequency": {
+						"freq": 1,
+						"interval": 10,
+						"unit": "minute"
+					},
+					"trigger": "You Cast a divination spell",
 					"entries": [
 						"The next attack by a creature who was targeted by the triggering divination spell bypasses an amount of resistance equal to the spell's level. If the triggering spell targeted an enemy, this benefit instead applies to the next attack against that enemy, regardless of who makes it.",
 						"This benefit is lost if it isn't used by the end of your next turn. If more than one type of resistance would apply against the attack, the attack bypasses only one\u2014whichever would result in the highest amount of damage getting through, as determined by the GM."

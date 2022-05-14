@@ -5030,7 +5030,7 @@ Renderer.item = {
 			if (item.category) {
 				renderStack.push(`<strong>Category&nbsp;</strong>`);
 				if (item.subCategory != null) renderStack.push(`${item.subCategory} `);
-				if (item.category === "Weapon") renderStack.push(`${item.weaponData ? item.weaponData.range ? "Ranged" : "Melee" : ""} `);
+				if (item.category === "Weapon") renderStack.push(`${item.weaponData ? item.weaponData.range ? "Ranged" : "Melee " : ""}`);
 				renderStack.push(`${Array.isArray(item.category) ? item.category.join(", ") : item.category}${item.category === "Worn" ? `&nbsp;${item.type}` : ""}`);
 			}
 			if (item.category != null && group != null) renderStack.push("; ");
@@ -5126,7 +5126,7 @@ Renderer.item = {
 			miniStack = [];
 			renderStack.push(`<p class="pf2-stat pf2-stat__section">`)
 			if (siegeData.crew) miniStack.push(`<strong>Crew&nbsp;</strong>${siegeData.crew.min}${siegeData.crew.max ? ` to ${siegeData.crew.max}` : ""}`);
-			if (item.subCategory) miniStack.push(`<strong>Proficiency&nbsp;</strong>${item.subCategory.toLowerCase()}`);
+			if (item.subCategory) miniStack.push(`<strong>Proficiency&nbsp;</strong>${siegeData.proficiency.toLowerCase()}`);
 			renderStack.push(miniStack.join("; "));
 			renderStack.push(`</p>`);
 			renderStack.push(Renderer.utils.getDividerDiv());
