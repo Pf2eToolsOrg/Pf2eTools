@@ -3086,7 +3086,10 @@ Renderer.utils = {
 				if (trait.includes(`{@`)) {
 					let traitRender = renderer.render(trait)
 					finishedTrait = [traitRender.slice(0, 2), ` class="${styles.join(" ")}" `, traitRender.slice(2)].join("");
-				} else finishedTrait = `<a class="${styles.join(" ")}">${trait}</a>`
+				} else {
+					styles.push("pf2-trait--notag");
+					finishedTrait = `<a class="${styles.join(" ")}">${trait}</a>`
+				}
 				traitsHtml.push(finishedTrait)
 			} else {
 				[trait, source] = trait.split("|");
