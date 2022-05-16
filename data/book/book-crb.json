@@ -12073,7 +12073,77 @@
 									"page": 565,
 									"name": "Sample Scrolls",
 									"entries": [
-										"A wide variety of spells can appear on scrolls. The following specific scrolls are just examples."
+										"A wide variety of spells can appear on scrolls. The following specific scrolls are just examples.",
+										{
+											"type": "data",
+											"tag": "item",
+											"data": {
+												"name": "Scroll of Illusory Disguise",
+												"source": "CRB",
+												"page": 565,
+												"type": "Item",
+												"level": 1,
+												"traits": [
+													"Consumable",
+													"Illusion",
+													"Magical",
+													"Scroll"
+												],
+												"price": {
+													"coin": "gp",
+													"amount": 3
+												},
+												"usage": "held in 1 hand",
+												"bulk": "L",
+												"activate": {
+													"activity": {
+														"number": 2,
+														"unit": "action"
+													},
+													"components": "{@action Cast a Spell}"
+												},
+												"category": "Scroll",
+												"entries": [
+													"This scroll can cast {@spell illusory disguise} as a 1st-level spell."
+												],
+												"craftReq": "Supply one casting of illusory disguise."
+											}
+										},
+										{
+											"type": "data",
+											"tag": "item",
+											"data": {
+												"name": "Scroll of Glitterdust",
+												"source": "CRB",
+												"page": 565,
+												"type": "Item",
+												"level": 3,
+												"traits": [
+													"Consumable",
+													"Evocation",
+													"Magical",
+													"Scroll"
+												],
+												"price": {
+													"coin": "gp",
+													"amount": 12
+												},
+												"usage": "held in 1 hand",
+												"bulk": "L",
+												"activate": {
+													"activity": {
+														"number": 2,
+														"unit": "action"
+													},
+													"components": "{@action Cast a Spell}"
+												},
+												"category": "Scroll",
+												"entries": [
+													"This scroll can be used to cast {@spell glitterdust} as a 2nd-level spell."
+												],
+												"craftReq": "Supply one casting of glitterdust."
+											}
+										}
 									]
 								}
 							],
@@ -12497,10 +12567,128 @@
 									"entries": [
 										"This example {@item magic wand (generic)} has the {@spell heal} spell.",
 										{
-											"type": "statblock",
+											"type": "data",
 											"tag": "item",
-											"source": "CRB",
-											"name": "Wand of Heal (generic)"
+											"data": {
+												"name": "Wand of Heal",
+												"source": "CRB",
+												"page": 597,
+												"type": "Item",
+												"level": "3+",
+												"traits": [
+													"Magical",
+													"Necromancy",
+													"Positive",
+													"Wand"
+												],
+												"usage": "held in 1 hand",
+												"bulk": "L",
+												"category": "Wand",
+												"entries": [
+													"The golden end caps on this white wooden wand are adorned with ruby cabochons.",
+													{
+														"type": "ability",
+														"style": "compact",
+														"components": [
+															"{@action Cast a Spell}"
+														],
+														"frequency": {
+															"freq": 1,
+															"unit": "day",
+															"overcharge": true,
+															"number": "once "
+														},
+														"entries": [
+															"You cast a {@spell heal} spell at the indicated level."
+														]
+													}
+												],
+												"craftReq": "Supply a listed-level casting of heal.",
+												"generic": "G",
+												"variants": [
+													{
+														"type": "1st-level spell",
+														"level": 3,
+														"price": {
+															"coin": "gp",
+															"amount": 60
+														},
+														"entries": []
+													},
+													{
+														"type": "2nd-level spell",
+														"level": 5,
+														"price": {
+															"coin": "gp",
+															"amount": 160
+														},
+														"entries": []
+													},
+													{
+														"type": "3rd-level spell",
+														"level": 7,
+														"price": {
+															"coin": "gp",
+															"amount": 360
+														},
+														"entries": []
+													},
+													{
+														"type": "4th-level spell",
+														"level": 9,
+														"price": {
+															"coin": "gp",
+															"amount": 700
+														},
+														"entries": []
+													},
+													{
+														"type": "5th-level spell",
+														"level": 11,
+														"price": {
+															"coin": "gp",
+															"amount": 1500
+														},
+														"entries": []
+													},
+													{
+														"type": "6th-level spell",
+														"level": 13,
+														"price": {
+															"coin": "gp",
+															"amount": 3000
+														},
+														"entries": []
+													},
+													{
+														"type": "7th-level spell",
+														"level": 15,
+														"price": {
+															"coin": "gp",
+															"amount": 6500
+														},
+														"entries": []
+													},
+													{
+														"type": "8th-level spell",
+														"level": 17,
+														"price": {
+															"coin": "gp",
+															"amount": 15000
+														},
+														"entries": []
+													},
+													{
+														"type": "9th-level spell",
+														"level": 19,
+														"price": {
+															"coin": "gp",
+															"amount": 40000
+														},
+														"entries": []
+													}
+												]
+											}
 										}
 									]
 								}

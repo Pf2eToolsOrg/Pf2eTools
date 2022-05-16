@@ -12050,95 +12050,6 @@
 			]
 		},
 		{
-			"name": "Magic Armor",
-			"source": "CRB",
-			"page": 556,
-			"type": "Item",
-			"level": "5+",
-			"traits": [
-				"Abjuration",
-				"Invested",
-				"Magical"
-			],
-			"usage": "worn armor",
-			"bulk": "varies by armor",
-			"category": "Armor",
-			"entries": [
-				"A suit of magic armor is simply a suit of armor or explorer's clothing etched with fundamental runes. An armor potency rune increases the armor's item bonus to AC, and a resilient rune adds an item bonus to saving throws.",
-				"The Prices here are for all types of armor.",
-				"You don't need to adjust the Price from leather armor to full plate or the like. These armors are made of standard materials, not precious materials such as mithral."
-			],
-			"generic": "G",
-			"variants": [
-				{
-					"type": "+1 armor",
-					"level": 5,
-					"price": {
-						"coin": "gp",
-						"amount": 160
-					},
-					"entries": [
-						"This armor has a +1 armor potency rune (increase the item bonus to AC by 1)."
-					]
-				},
-				{
-					"type": "+1 resilient armor",
-					"level": 8,
-					"price": {
-						"coin": "gp",
-						"amount": 500
-					},
-					"entries": [
-						"This armor has a +1 armor potency rune (increase the item bonus to AC by 1) and a resilient rune (+1 item bonus to saves)."
-					]
-				},
-				{
-					"type": "+2 resilient armor",
-					"level": 11,
-					"price": {
-						"coin": "gp",
-						"amount": 1400
-					},
-					"entries": [
-						"This armor has a +2 armor potency rune (increase the item bonus to AC by 2) and a resilient rune (+1 item bonus to saves)."
-					]
-				},
-				{
-					"type": "+2 greater resilient armor",
-					"level": 14,
-					"price": {
-						"coin": "gp",
-						"amount": 4500
-					},
-					"entries": [
-						"This armor has a +2 armor potency rune (increase the item bonus to AC by 2) and a greater resilient rune (+2 item bonus to saves)."
-					]
-				},
-				{
-					"type": "+3 greater resilient armor",
-					"level": 18,
-					"price": {
-						"coin": "gp",
-						"amount": 24000
-					},
-					"entries": [
-						"This armor has a +3 armor potency rune (increase the item bonus to AC by 3) and a greater resilient rune (+2 item bonus to saves)."
-					]
-				},
-				{
-					"type": "+3 major resilient armor",
-					"level": 20,
-					"price": {
-						"coin": "gp",
-						"amount": 70000
-					},
-					"entries": [
-						"This armor has a +3 armor potency rune (increase the item bonus to AC by 3) and a major resilient rune (+3 item bonus to saves)."
-					]
-				}
-			]
-		},
-		{
 			"name": "Scroll",
 			"source": "CRB",
 			"page": 564,
@@ -12160,6 +12071,17 @@
 			"entries": [
 				"A scroll contains a single spell that you can cast without having to expend a spell slot. A scroll can be {@action Craft||Crafted} to contain nearly any spell, so the types of scrolls available are limited only by the number of spells in the game. The exceptions are cantrips, focus spells, and rituals, none of which can be put on scrolls. The spell on a scroll can be cast only once, and the scroll is destroyed as part of the casting. The spell on the scroll is cast at a particular spell level, as determined by the scroll. For instance, a scroll of {@spell magic missile} (1st level) can be used to cast the 1st-level version of {@spell magic missile}, but not a {@spell magic missile} heightened to 2nd level. If no level is listed, the scroll can be used to cast the spell at its lowest level.",
 				"If you find a scroll, you can try to figure out what spell it contains. If the spell is a common spell from your spell list or a spell you know, you can spend a single {@action Recall Knowledge} action and automatically succeed at identifying the scroll's spell. If it's not, you must use {@action Identify Magic} to learn what spell the scroll holds.",
+				{
+					"type": "pf2-h4",
+					"page": 564,
+					"name": "Casting a Spell from a Scroll",
+					"entries": [
+						"{@action Cast a Spell||Casting a Spell} from a scroll requires holding the scroll in one hand and activating it with a {@action Cast a Spell} activity using the normal number of actions for that spell.",
+						"To {@action Cast a Spell} from a scroll, the spell must appear on your spell list. Because you're the one {@action Cast a Spell||Casting the Spell}, use your spell attack roll and spell DC. The spell also gains the appropriate trait for your tradition (arcane, divine, occult, or primal).",
+						"Any physical material components and costs are provided when a scroll is created, so you don't need to provide them when {@action Cast a Spell||Casting a Spell} from a scroll. You must replace any required material component for that spell with a somatic component. If the spell requires a focus, you must have that focus to {@action Cast a Spell||Cast the Spell} from a scroll."
+					],
+					"source": "CRB"
+				},
 				"{@note See the following for more details on the rules for {@quickref Scrolls||1|Scrolls}.}"
 			],
 			"craftReq": "Supply a listed-level casting of the spell.",
@@ -12382,93 +12304,6 @@
 						"amount": 40000
 					},
 					"entries": []
-				}
-			]
-		},
-		{
-			"name": "Magic Weapon",
-			"source": "CRB",
-			"page": 599,
-			"type": "Item",
-			"level": "2+",
-			"traits": [
-				"Evocation",
-				"Magical"
-			],
-			"usage": "held in 1 hand",
-			"category": "Weapon",
-			"entries": [
-				"A magic weapon is a weapon etched with only fundamental runes. A weapon potency rune gives an item bonus to attack rolls with the weapon, and a striking rune increases the weapon's number of weapon damage dice.",
-				"The Prices here are for all types of weapons. You don't need to adjust the Price from a club to a greataxe or the like. These weapons are made of standard materials, not precious materials such as cold iron."
-			],
-			"generic": "G",
-			"variants": [
-				{
-					"type": "+1 weapon",
-					"level": 2,
-					"price": {
-						"coin": "gp",
-						"amount": 35
-					},
-					"entries": [
-						"This weapon has a +1 weapon potency rune (+1 item bonus to attack rolls with the weapon)."
-					]
-				},
-				{
-					"type": "+1 striking weapon",
-					"level": 4,
-					"price": {
-						"coin": "gp",
-						"amount": 100
-					},
-					"entries": [
-						"This weapon has a +1 weapon potency rune (+1 item bonus to attack rolls with the weapon) and a striking rune (one extra damage die)."
-					]
-				},
-				{
-					"type": "+2 striking weapon",
-					"level": 10,
-					"price": {
-						"coin": "gp",
-						"amount": 1000
-					},
-					"entries": [
-						"This weapon has a +2 weapon potency rune (+2 item bonus to attack rolls with the weapon) and a striking rune (one additional damage die)."
-					]
-				},
-				{
-					"type": "+2 greater striking weapon",
-					"level": 12,
-					"price": {
-						"coin": "gp",
-						"amount": 2000
-					},
-					"entries": [
-						"This weapon has a +2 weapon potency rune (+2 item bonus to attack rolls with the weapon) and a greater striking rune (two extra damage dice)."
-					]
-				},
-				{
-					"type": "+3 greater striking weapon",
-					"level": 16,
-					"price": {
-						"coin": "gp",
-						"amount": 10000
-					},
-					"entries": [
-						"This weapon has a +3 weapon potency rune (+3 item bonus to attack rolls with the weapon) and a greater striking rune (two extra damage dice)."
-					]
-				},
-				{
-					"type": "+3 major striking weapon",
-					"level": 19,
-					"price": {
-						"coin": "gp",
-						"amount": 40000
-					},
-					"entries": [
-						"This weapon has a +3 weapon potency rune (+3 item bonus to attack rolls with the weapon) and a major striking rune (three extra damage dice)",
-						"Specific Magic Weapons These weapons have abilities far different from what can be gained by simply etching runes. A specific magic weapon lists its fundamental runes, which you can upgrade, add, or transfer as normal. You can't etch any property runes onto a specific weapon that it doesn't already have."
-					]
 				}
 			]
 		},
@@ -17079,68 +16914,6 @@
 					]
 				}
 			]
-		},
-		{
-			"name": "Scroll of Glitterdust",
-			"source": "CRB",
-			"page": 565,
-			"type": "Item",
-			"level": 3,
-			"traits": [
-				"Consumable",
-				"Evocation",
-				"Magical",
-				"Scroll"
-			],
-			"price": {
-				"coin": "gp",
-				"amount": 12
-			},
-			"usage": "held in 1 hand",
-			"bulk": "L",
-			"activate": {
-				"activity": {
-					"number": 2,
-					"unit": "action"
-				},
-				"components": "{@action Cast a Spell}"
-			},
-			"category": "Scroll",
-			"entries": [
-				"This scroll can be used to cast {@spell glitterdust} as a 2nd-level spell."
-			],
-			"craftReq": "Supply one casting of glitterdust."
-		},
-		{
-			"name": "Scroll of Illusory Disguise",
-			"source": "CRB",
-			"page": 565,
-			"type": "Item",
-			"level": 1,
-			"traits": [
-				"Consumable",
-				"Illusion",
-				"Magical",
-				"Scroll"
-			],
-			"price": {
-				"coin": "gp",
-				"amount": 3
-			},
-			"usage": "held in 1 hand",
-			"bulk": "L",
-			"activate": {
-				"activity": {
-					"number": 2,
-					"unit": "action"
-				},
-				"components": "{@action Cast a Spell}"
-			},
-			"category": "Scroll",
-			"entries": [
-				"This scroll can cast {@spell illusory disguise} as a 1st-level spell."
-			],
-			"craftReq": "Supply one casting of illusory disguise."
 		},
 		{
 			"name": "Scything Blade Snare",
@@ -22556,125 +22329,6 @@
 				},
 				{
 					"type": "8th-level spell",
-					"level": 19,
-					"price": {
-						"coin": "gp",
-						"amount": 40000
-					},
-					"entries": []
-				}
-			]
-		},
-		{
-			"name": "Wand of Heal",
-			"source": "CRB",
-			"page": 597,
-			"type": "Item",
-			"level": "3+",
-			"traits": [
-				"Magical",
-				"Necromancy",
-				"Positive",
-				"Wand"
-			],
-			"usage": "held in 1 hand",
-			"bulk": "L",
-			"category": "Wand",
-			"entries": [
-				"The golden end caps on this white wooden wand are adorned with ruby cabochons.",
-				{
-					"type": "ability",
-					"style": "compact",
-					"components": [
-						"{@action Cast a Spell}"
-					],
-					"frequency": {
-						"freq": 1,
-						"unit": "day",
-						"overcharge": true
-					},
-					"entries": [
-						"You cast a {@spell heal} spell at the indicated level."
-					]
-				}
-			],
-			"craftReq": "Supply a listed-level casting of heal.",
-			"generic": "G",
-			"variants": [
-				{
-					"type": "1st-level spell",
-					"level": 3,
-					"price": {
-						"coin": "gp",
-						"amount": 60
-					},
-					"entries": []
-				},
-				{
-					"type": "2nd-level spell",
-					"level": 5,
-					"price": {
-						"coin": "gp",
-						"amount": 160
-					},
-					"entries": []
-				},
-				{
-					"type": "3rd-level spell",
-					"level": 7,
-					"price": {
-						"coin": "gp",
-						"amount": 360
-					},
-					"entries": []
-				},
-				{
-					"type": "4th-level spell",
-					"level": 9,
-					"price": {
-						"coin": "gp",
-						"amount": 700
-					},
-					"entries": []
-				},
-				{
-					"type": "5th-level spell",
-					"level": 11,
-					"price": {
-						"coin": "gp",
-						"amount": 1500
-					},
-					"entries": []
-				},
-				{
-					"type": "6th-level spell",
-					"level": 13,
-					"price": {
-						"coin": "gp",
-						"amount": 3000
-					},
-					"entries": []
-				},
-				{
-					"type": "7th-level spell",
-					"level": 15,
-					"price": {
-						"coin": "gp",
-						"amount": 6500
-					},
-					"entries": []
-				},
-				{
-					"type": "8th-level spell",
-					"level": 17,
-					"price": {
-						"coin": "gp",
-						"amount": 15000
-					},
-					"entries": []
-				},
-				{
-					"type": "9th-level spell",
 					"level": 19,
 					"price": {
 						"coin": "gp",
