@@ -6412,7 +6412,7 @@ Renderer.hover = {
 
 							<style>
 								html, body { width: 100%; height: 100%; }
-								body { overflow-y: scroll; }
+								body { overflow: hidden; }
 								.hwin--popout { max-width: 100%; max-height: 100%; box-shadow: initial; width: 100%; overflow-y: auto; }
 							</style>
 						</head><body class="rd__body-popout">
