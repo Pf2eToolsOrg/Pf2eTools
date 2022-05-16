@@ -15,11 +15,11 @@
 				"entry": "1 day"
 			},
 			"primaryCheck": {
-				"entry": "{@skill Religion} (expert; you must be a demon)",
 				"skills": [
 					"Religion"
 				],
-				"prof": "expert"
+				"prof": "expert",
+				"mustBe": ["demon"]
 			},
 			"entries": [
 				"You call in a favor from another demon whose level is no more than double {@i Abyssal pact's} spell level, two demons whose levels are each at least 2 less than double the spell level, or three demons whose levels are each at least 3 less than double the spell level.",
@@ -49,9 +49,11 @@
 				"entry": "1 day"
 			},
 			"primaryCheck": {
-				"entry": "{@skill Religion} (expert; you must be a angel)",
 				"skills": [
 					"Religion"
+				],
+				"mustBe": [
+					"angel"
 				],
 				"prof": "expert"
 			},
@@ -200,7 +202,6 @@
 				"number": 1
 			},
 			"primaryCheck": {
-				"entry": "{@skill Arcana} or {@skill Occultism} (expert)",
 				"skills": [
 					"Arcana",
 					"Occultism"
@@ -208,7 +209,6 @@
 				"prof": "expert"
 			},
 			"secondaryCheck": {
-				"entry": "{@skill Arcana}, {@skill Crafting}, or {@skill Occultism}",
 				"skills": [
 					"Arcana",
 					"Crafting",
@@ -239,8 +239,7 @@
 			],
 			"cast": {
 				"number": 1,
-				"unit": "hour",
-				"entry": "1 hour"
+				"unit": "hour"
 			},
 			"cost": "parchment, ink, and an item of value from each bettor worth at least 50 gp",
 			"secondaryCasters": {
@@ -248,14 +247,12 @@
 				"note": "to 9"
 			},
 			"primaryCheck": {
-				"entry": "{@skill Occultism} (expert)",
 				"skills": [
 					"Occultism"
 				],
 				"prof": "expert"
 			},
 			"secondaryCheck": {
-				"entry": "{@skill Society}",
 				"skills": [
 					"Society"
 				]
@@ -1369,9 +1366,12 @@
 				"entry": "1 day"
 			},
 			"primaryCheck": {
-				"entry": "{@skill Religion} (expert; you must be a demon or an urdefhan)",
 				"skills": [
 					"Religion"
+				],
+				"mustBe": [
+					"demon",
+					"urdefhan"
 				],
 				"prof": "expert"
 			},
@@ -1403,9 +1403,11 @@
 				"entry": "1 day"
 			},
 			"primaryCheck": {
-				"entry": "{@skill Religion} (expert; you must be a div)",
 				"skills": [
 					"Religion"
+				],
+				"mustBe": [
+					"div"
 				],
 				"prof": "expert"
 			},
@@ -2343,7 +2345,10 @@
 				"entry": "1 day"
 			},
 			"primaryCheck": {
-				"entry": "{@skill Religion} (expert; you must be a devil)",
+				"mustBe": [
+					"devil"
+				]
+				,
 				"skills": [
 					"Religion"
 				],

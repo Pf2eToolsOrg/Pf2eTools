@@ -5377,7 +5377,7 @@ Renderer.ritual = {
 		const renderStack = [];
 		renderer.recursiveRender(ritual.entries, renderStack, { pf2StatFix: true });
 
-		return `${Renderer.utils.getExcludedDiv(ritual, "ritual", UrlUtil.PG_RITUALS)}
+		return renderer.render(`${Renderer.utils.getExcludedDiv(ritual, "ritual", UrlUtil.PG_RITUALS)}
 		${Renderer.utils.getNameDiv(ritual, { page: UrlUtil.PG_RITUALS, type: ritual.type || "Ritual", ...opts })}
 		${Renderer.utils.getDividerDiv()}
 		${Renderer.utils.getTraitsDiv(ritual.traits)}
@@ -5387,8 +5387,8 @@ Renderer.ritual = {
 		`${ritual.secondaryCasters ? `<strong>Secondary Casters&nbsp;</strong>${ritual.secondaryCasters.entry ? ritual.secondaryCasters.entry : ritual.secondaryCasters.number}${ritual.secondaryCasters.note ? `, ${ritual.secondaryCasters.note}` : ""}` : ""}`].filter(Boolean).join("; ")}
 		</p>
 		<p class="pf2-stat pf2-stat__section">
-		${[`<strong>Primary&nbsp;Check&nbsp;</strong>${renderer.render(ritual.primaryCheck.entry)}`,
-		`${ritual.secondaryCheck ? `<strong>Secondary&nbsp;Checks&nbsp;</strong>${renderer.render(ritual.secondaryCheck.entry)}` : ""}`].filter(Boolean).join("; ")}
+		${[`<strong>Primary&nbsp;Check&nbsp;</strong>${ritual.primaryCheck.entry ? renderer.render(ritual.primaryCheck.entry) : `${ritual.primaryCheck.skills.map(s => `{@skill ${s}}`).joinConjunct(", ", " or ")} (${ritual.primaryCheck.prof}${ritual.primaryCheck.mustBe ? `; you must be a ${ritual.primaryCheck.mustBe.joinConjunct(", ", " or ")}` : ""})`}`,
+		`${ritual.secondaryCheck ? `<strong>Secondary&nbsp;Checks&nbsp;</strong>${ritual.secondaryCheck.entry ? renderer.render(ritual.secondaryCheck.entry) : `${ritual.secondaryCheck.skills.map(s => `{@skill ${s}}`).joinConjunct(", ", " or ")} ${ritual.secondaryCheck.prof ? `(${ritual.secondaryCheck.prof})` : ""}`}` : ""}`].filter(Boolean).join("; ")}
 		</p>
 		${ritual.area || ritual.targets || ritual.range
 		? `<p class="pf2-stat pf2-stat__section">${[`${ritual.range && ritual.range.entry ? `<strong>Range&nbsp;</strong>${renderer.render(ritual.range.entry)}` : ""}`,
@@ -5399,7 +5399,7 @@ Renderer.ritual = {
 		${Renderer.utils.getDividerDiv()}
 		${renderStack.join("")}
 		${ritual.heightened ? `${Renderer.utils.getDividerDiv()}${Renderer.spell.getHeightenedEntry(ritual)}` : ""}
-		${opts.noPage ? "" : Renderer.utils.getPageP(ritual)}`;
+		${opts.noPage ? "" : Renderer.utils.getPageP(ritual)}`);
 	},
 };
 
