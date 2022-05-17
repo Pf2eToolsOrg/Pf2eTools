@@ -513,39 +513,89 @@ Parser.getClassSideBarEntries = function (cls) {
 			`${Parser.proficiencyAbvToFull(initProf.will)} in Will`,
 		]});
 
+	function initProfParser (thing, entry) {
+		Object.keys(thing).forEach(k => {
+			switch (k) {
+				case "u": {
+					thing.u.forEach(element => {
+						if (typeof element === "object") {
+							if (element.entry) {
+								return entry.push(`{@indentSubsequent Untrained in ${element.entry}}`);
+							} else {
+								return entry.push(`{@indentSubsequent Untrained in ${element.skill.map(s => `${s}`).joinConjunct(", ", " or ")}}`);
+							}
+						} else return entry.push(`{@indentSubsequent Untrained in ${element}}`);
+					});
+					break;
+				}
+				case "t": {
+					thing.t.forEach(element => {
+						if (typeof element === "object") {
+							if (element.entry) {
+								return entry.push(`{@indentSubsequent Trained in ${element.entry}}`);
+							} else {
+								return entry.push(`{@indentSubsequent Trained in ${element.skill.map(s => `${s}`).joinConjunct(", ", " or ")}}`);
+							}
+						} else return entry.push(`{@indentSubsequent Trained in ${element}}`);
+					});
+					break;
+				}
+				case "e": {
+					thing.e.forEach(element => {
+						if (typeof element === "object") {
+							if (element.entry) {
+								return entry.push(`{@indentSubsequent Expert in ${element.entry}}`);
+							} else {
+								return entry.push(`{@indentSubsequent Expert in ${element.skill.map(s => `${s}`).joinConjunct(", ", " or ")}}`);
+							}
+						} else return entry.push(`{@indentSubsequent Expert in ${element}}`);
+					});
+					break;
+				}
+				case "m": {
+					thing.m.forEach(element => {
+						if (typeof element === "object") {
+							if (element.entry) {
+								return entry.push(`{@indentSubsequent Master in ${element.entry}}`);
+							} else {
+								return entry.push(`{@indentSubsequent Master in ${element.skill.map(s => `${s}`).joinConjunct(", ", " or ")}}`);
+							}
+						} else return entry.push(`{@indentSubsequent Master in ${element}}`);
+					});
+					break;
+				}
+				case "l": {
+					thing.l.forEach(element => {
+						if (typeof element === "object") {
+							if (element.entry) {
+								return entry.push(`{@indentSubsequent Legendary in ${element.entry}}`);
+							} else {
+								return entry.push(`{@indentSubsequent Legendary in ${element.skill.map(s => `${s}`).joinConjunct(", ", " or ")}}`);
+							}
+						} else return entry.push(`{@indentSubsequent Legendary in ${element}}`);
+					});
+					break;
+				}
+				case "add": return entry.push(`{@indentSubsequent Trained in a number of additional skills equal to ${thing.add} plus your Intelligence modifier}`);
+				default:
+			}
+		});
+	}
+
 	const skillsEntries = [];
-	if (initProf.skills.u) initProf.skills.u.forEach(it => skillsEntries.push(`{@indentSubsequent Untrained in ${it}}`));
-	if (initProf.skills.t) initProf.skills.t.forEach(it => skillsEntries.push(`{@indentSubsequent Trained in ${it}}`));
-	if (initProf.skills.e) initProf.skills.e.forEach(it => skillsEntries.push(`{@indentSubsequent Expert in ${it}}`));
-	if (initProf.skills.m) initProf.skills.m.forEach(it => skillsEntries.push(`{@indentSubsequent Master in ${it}}`));
-	if (initProf.skills.l) initProf.skills.l.forEach(it => skillsEntries.push(`{@indentSubsequent Legendary in ${it}}`));
-	if (initProf.skills.add) skillsEntries.push(`{@indentSubsequent Trained in a number of additional skills equal to ${initProf.skills.add} plus your Intelligence modifier}`);
-	out.push({name: "SKILLS", entries: skillsEntries});
-
 	const attacksEntries = [];
-	if (initProf.attacks.u) initProf.attacks.u.forEach(it => attacksEntries.push(`Untrained in ${it}`));
-	if (initProf.attacks.t) initProf.attacks.t.forEach(it => attacksEntries.push(`Trained in ${it}`));
-	if (initProf.attacks.e) initProf.attacks.e.forEach(it => attacksEntries.push(`Expert in ${it}`));
-	if (initProf.attacks.m) initProf.attacks.m.forEach(it => attacksEntries.push(`Master in ${it}`));
-	if (initProf.attacks.l) initProf.attacks.l.forEach(it => attacksEntries.push(`Legendary in ${it}`));
-	out.push({name: "ATTACKS", entries: attacksEntries});
-
 	const defensesEntries = [];
-	if (initProf.defenses.u) initProf.defenses.u.forEach(it => defensesEntries.push(`Untrained in ${it}`));
-	if (initProf.defenses.t) initProf.defenses.t.forEach(it => defensesEntries.push(`Trained in ${it}`));
-	if (initProf.defenses.e) initProf.defenses.e.forEach(it => defensesEntries.push(`Expert in ${it}`));
-	if (initProf.defenses.m) initProf.defenses.m.forEach(it => defensesEntries.push(`Master in ${it}`));
-	if (initProf.defenses.l) initProf.defenses.l.forEach(it => defensesEntries.push(`Legendary in ${it}`));
+	initProfParser(initProf.skills, skillsEntries)
+	out.push({name: "SKILLS", entries: skillsEntries});
+	initProfParser(initProf.attacks, attacksEntries)
+	out.push({name: "ATTACKS", entries: attacksEntries});
+	initProfParser(initProf.defenses, defensesEntries)
 	out.push({name: "DEFENSES", entries: defensesEntries});
 
 	if (initProf.classDc) out.push({name: "CLASS DC", entries: [initProf.classDc.entry]});
 	if (initProf.spells) {
 		const spellsEntries = [];
-		if (initProf.spells.u) initProf.spells.u.forEach(it => spellsEntries.push(`Untrained in ${it}`));
-		if (initProf.spells.t) initProf.spells.t.forEach(it => spellsEntries.push(`Trained in ${it}`));
-		if (initProf.spells.e) initProf.spells.e.forEach(it => spellsEntries.push(`Expert in ${it}`));
-		if (initProf.spells.m) initProf.spells.m.forEach(it => spellsEntries.push(`Master in ${it}`));
-		if (initProf.spells.l) initProf.spells.l.forEach(it => spellsEntries.push(`Legendary in ${it}`));
+		initProfParser(initProf.spells, spellsEntries)
 		out.push({name: "SPELLS", entries: spellsEntries});
 	}
 	return out

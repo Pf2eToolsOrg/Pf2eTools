@@ -8,6 +8,12 @@ class PageFilterClasses extends PageFilter {
 		this._refFilter = new Filter({header: "Reflex"});
 		this._willFilter = new Filter({header: "Will"});
 		this._skillsFilter = new Filter({header: "Skills"})
+		// TODO: Implement this without breaking the page
+		this._additionalSkillsFilter = new RangeFilter({
+			header: "Additional Skills",
+			isLabelled: true,
+			labelSortFn: null,
+		});
 		this._proficienciesFilter = new MultiFilter({
 			header: "Initial Proficiencies",
 			filters: [this._perceptionFilter, this._fortFilter, this._refFilter, this._willFilter, this._skillsFilter],
@@ -53,13 +59,25 @@ class PageFilterClasses extends PageFilter {
 		cls._fRef = Parser.proficiencyAbvToFull(cls.initialProficiencies.ref);
 		cls._fWill = Parser.proficiencyAbvToFull(cls.initialProficiencies.will);
 		cls._fSkills = [];
+		cls._fAdditionalSkills = 0;
 		Object.keys(cls.initialProficiencies.skills).forEach(pr => {
-			switch (pr) {
-				case "t": cls._fSkills.push(cls.initialProficiencies.skills[pr]); break;
-				case "e": cls._fSkills.push(cls.initialProficiencies.skills[pr].map(s => `${s} (Expert)`)); break;
-				case "m": cls._fSkills.push(cls.initialProficiencies.skills[pr].map(s => `${s} (Master)`)); break;
-				case "l": cls._fSkills.push(cls.initialProficiencies.skills[pr].map(s => `${s} (Legendary)`)); break;
-				default: break;
+			if (typeof cls.initialProficiencies.skills[pr] !== "number") {
+				let prof = "";
+				switch (pr) {
+					case "t": prof = ""; break;
+					case "e": prof = " (Expert)"; break;
+					case "m": prof = " (Master)"; break;
+					case "l": prof = " (Legendary)"; break;
+				}
+				cls.initialProficiencies.skills[pr].forEach(skill => {
+					if (typeof skill === "string") {
+						cls._fSkills.push(`${skill}${prof}`);
+					} else {
+						cls._fSkills.push(...skill.skill.map(t => `${t}${prof}`));
+					}
+				});
+			} else {
+				cls._fAdditionalSkills = cls.initialProficiencies.skills[pr]
 			}
 		});
 		cls._fMisc = [];
@@ -87,6 +105,8 @@ class PageFilterClasses extends PageFilter {
 		this._fortFilter.addItem(cls._fFort);
 		this._refFilter.addItem(cls._fRef);
 		this._willFilter.addItem(cls._fWill);
+		this._skillsFilter.addItem(cls._fSkills);
+		this._additionalSkillsFilter.addItem(cls._fAdditionalSkills);
 		this._miscFilter.addItem(cls._fMisc);
 	}
 

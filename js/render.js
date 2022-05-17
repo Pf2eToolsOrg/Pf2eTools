@@ -3531,7 +3531,7 @@ Renderer.action = {
 				renderStack.push(`</p>`)
 			}
 			if (it.actionType.class) {
-				renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Class&nbsp;</strong>${renderer.render(`${it.actionType.class.map(c => `{@class ${c}}`).join(", ")}`)}`);
+				renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Class&nbsp;</strong>${renderer.render(`${it.actionType.class.map(c => `{@class ${c.toTitleCase()}}`).join(", ")}`)}`);
 				if (it.actionType.subclass) {
 					const subClasses = [];
 					for (let i = 0; i < it.actionType.subclass.length; i++) {
