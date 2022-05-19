@@ -1232,6 +1232,10 @@ SRC_LOACLO = "LOACLO";
 SRC_AAWS = "AAWS";
 SRC_GNG = "G&G";
 SRC_LOTGB = "LOTGB"
+SRC_LOMM = "LOMM"
+SRC_LOKL = "LOKL"
+SRC_LOTG = "LOTG"
+SRC_BTD = "BTD"
 SRC_AOA0 = "AoA0";
 SRC_AOA1 = "AoA1";
 SRC_AOA2 = "AoA2";
@@ -1334,6 +1338,10 @@ Parser.SOURCE_JSON_TO_FULL[SRC_LOACLO] = "Lost Omens: Absalom, City of Lost Omen
 Parser.SOURCE_JSON_TO_FULL[SRC_AAWS] = "Azarketi Ancestry Web Supplement";
 Parser.SOURCE_JSON_TO_FULL[SRC_GNG] = "Guns & Gears";
 Parser.SOURCE_JSON_TO_FULL[SRC_LOTGB] = "Lost Omens: The Grand Bazaar";
+Parser.SOURCE_JSON_TO_FULL[SRC_LOMM] = "Lost Omens: Monsters of Myth";
+Parser.SOURCE_JSON_TO_FULL[SRC_BTD] = "Book of the Dead";
+Parser.SOURCE_JSON_TO_FULL[SRC_LOTG] = "Lost Omens: Travel Guide";
+Parser.SOURCE_JSON_TO_FULL[SRC_LOKL] = "Lost Omens: Knights of Lastwall";
 
 // Adventure Paths
 Parser.SOURCE_JSON_TO_FULL[SRC_AOA0] = "Age of Ashes Player's Guide";
@@ -1404,6 +1412,10 @@ Parser.SOURCE_JSON_TO_ABV[SRC_LOACLO] = "LOACLO";
 Parser.SOURCE_JSON_TO_ABV[SRC_AAWS] = "AAWS";
 Parser.SOURCE_JSON_TO_ABV[SRC_GNG] = "G&G";
 Parser.SOURCE_JSON_TO_ABV[SRC_LOTGB] = "LOTGB";
+Parser.SOURCE_JSON_TO_ABV[SRC_LOMM] = "LOMM";
+Parser.SOURCE_JSON_TO_ABV[SRC_BTD] = "BTD";
+Parser.SOURCE_JSON_TO_ABV[SRC_LOTG] = "LOTG";
+Parser.SOURCE_JSON_TO_ABV[SRC_LOKL] = "LOKL";
 
 // Adventure Paths
 Parser.SOURCE_JSON_TO_ABV[SRC_AOA0] = "AoA0";
@@ -1474,6 +1486,8 @@ Parser.SOURCE_JSON_TO_DATE[SRC_BST3] = "2021-07-07";
 Parser.SOURCE_JSON_TO_DATE[SRC_SOM] = "2021-08-25";
 Parser.SOURCE_JSON_TO_DATE[SRC_GNG] = "2021-10-13";
 Parser.SOURCE_JSON_TO_DATE[SRC_LOTGB] = "2021-10-13";
+Parser.SOURCE_JSON_TO_DATE[SRC_LOMM] = "2021-12-22";
+Parser.SOURCE_JSON_TO_DATE[SRC_BTD] = "2022-04-27";
 // Turn JSON to Paizo Store
 Parser.SOURCE_JSON_TO_STORE = {};
 Parser.SOURCE_JSON_TO_STORE[SRC_CRB] = "https://paizo.com/products/btq01zp3";
@@ -1495,6 +1509,10 @@ Parser.SOURCE_JSON_TO_STORE[SRC_BST3] = "https://paizo.com/products/btq027mn";
 Parser.SOURCE_JSON_TO_STORE[SRC_SOM] = "https://paizo.com/products/btq027uy";
 Parser.SOURCE_JSON_TO_STORE[SRC_GNG] = "https://paizo.com/products/btq026mw";
 Parser.SOURCE_JSON_TO_STORE[SRC_LOTGB] = "https://paizo.com/products/btq027kc";
+Parser.SOURCE_JSON_TO_STORE[SRC_LOMM] = "https://paizo.com/products/btq027u2";
+Parser.SOURCE_JSON_TO_STORE[SRC_BTD] = "https://paizo.com/products/btq02c0j";
+Parser.SOURCE_JSON_TO_STORE[SRC_LOTG] = "https://paizo.com/products/btq02c20";
+Parser.SOURCE_JSON_TO_STORE[SRC_LOKL] = "https://paizo.com/products/btq02c3a";
 // Adventure Paths
 Parser.SOURCE_JSON_TO_STORE[SRC_AOA0] = "https://paizo.com/products/btq024wj";
 Parser.SOURCE_JSON_TO_STORE[SRC_AOA1] = "https://paizo.com/products/btq024tw";
@@ -1606,6 +1624,10 @@ Parser.SOURCES_AVAILABLE_DOCS_BOOK = {};
 	SRC_AAWS,
 	SRC_GNG,
 	SRC_LOTGB,
+	SRC_LOMM,
+	SRC_BTD,
+	SRC_LOTG,
+	SRC_LOKL,
 ].forEach(src => {
 	Parser.SOURCES_AVAILABLE_DOCS_BOOK[src] = src;
 	Parser.SOURCES_AVAILABLE_DOCS_BOOK[src.toLowerCase()] = src;
