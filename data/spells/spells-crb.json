@@ -367,12 +367,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "1 minute",
+				"dismiss": true,
 				"duration": {
 					"number": 1,
 					"unit": "minute"
 				}
 			},
-			"dismiss": true,
 			"entries": [
 				"You harness your mastery of primal forces to reshape your body into a Medium flying animal battle form. When you cast this spell, choose bat, bird, pterosaur, or wasp. You can decide the specific type of animal (such as an owl or eagle for bird), but this has no effect on the form's Size or statistics. While in this form, you gain the {@trait animal} trait. You can {@action Dismiss} the spell.",
 				"You gain the following statistics and abilities regardless of which battle form you choose:",
@@ -407,7 +407,9 @@
 					}
 				]
 			},
-			"hasBattleForm": true
+			"miscTags": [
+				"BF"
+			]
 		},
 		{
 			"name": "Agile Feet",
@@ -906,12 +908,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "1 minute",
+				"dismiss": true,
 				"duration": {
 					"number": 1,
 					"unit": "minute"
 				}
 			},
-			"dismiss": true,
 			"entries": [
 				"You call upon primal energy to transform yourself into a Medium animal battle form. When you first cast this spell, choose ape, bear, bull, canine, cat, deer, frog, shark, or snake. You can decide the specific type of animal (such as lion or snow leopard for cat), but this has no effect on the form's Size or statistics. While in this form, you gain the {@trait animal} trait. You can {@action Dismiss} the spell.",
 				"You gain the following statistics and abilities regardless of which battle form you choose:",
@@ -957,7 +959,9 @@
 					}
 				]
 			},
-			"hasBattleForm": true
+			"miscTags": [
+				"BF"
+			]
 		},
 		{
 			"name": "Animal Messenger",
@@ -1127,12 +1131,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "sustained up to 1 minute",
+				"sustain": true,
 				"duration": {
 					"number": 1,
 					"unit": "minute"
 				}
 			},
-			"sustain": true,
 			"entries": [
 				"You repel all magic from the target area, preventing spells and other magic from functioning. Spells can't penetrate the area, magic items cease to function within it, and no one inside can cast spells or use magic abilities. Likewise, spells\u2014 such as dispel magic\u2014can't affect the field itself unless they are of a higher level. Magic effects resume the moment they pass outside the field. For example, a ray fired from one side of the field could target a creature on the other side (as long as caster and target are both outside the field). A summoned creature winks out of existence but reappears if the field moves or ends. Invested magic items cease to function, but they remain invested and resume functioning when they exit the field; the ability boost from an apex item isn't suppressed within the field. Spells of a higher level than the antimagic field overcome its effects, and can even be cast by a creature within the field.",
 				"The field disrupts only magic, so a +3 longsword still functions as a longsword. Magically created creatures (such as golems) function normally within an antimagic field."
@@ -1184,12 +1188,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "sustained up to 1 minute",
+				"sustain": true,
 				"duration": {
 					"number": 1,
 					"unit": "minute"
 				}
 			},
-			"sustain": true,
 			"entries": [
 				"You create a brief vision of immense wealth filling the spell's area. Each creature within 20 feet of the area that could be enticed by material wealth must attempt a Will saving throw. A creature that enters the area automatically {@quickref disbelieves the illusion|CRB|2|disbelieving illusions|0}, and disbelieving the illusion ends any {@condition fascinated} condition imposed by the spell. As long as you {@action Sustain a Spell||Sustain the Spell}, other creatures react to the treasure like they would any other illusion, but they are not at risk of becoming {@condition fascinated}.",
 				{
@@ -1440,12 +1444,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "1 minute",
+				"dismiss": true,
 				"duration": {
 					"number": 1,
 					"unit": "minute"
 				}
 			},
-			"dismiss": true,
 			"entries": [
 				"You transform into an avatar of your deity, assuming a {@trait Huge} battle form. You must have space to expand or the spell is lost.",
 				"You have hands in this battle form and can take manipulate actions. You can {@action Dismiss} this spell.",
@@ -1468,7 +1472,9 @@
 					]
 				}
 			],
-			"hasBattleForm": true
+			"miscTags": [
+				"BF"
+			]
 		},
 		{
 			"name": "Baleful Polymorph",
@@ -1676,12 +1682,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "10 minutes",
+				"dismiss": true,
 				"duration": {
 					"number": 10,
 					"unit": "minute"
 				}
 			},
-			"dismiss": true,
 			"entries": [
 				"The target's skin becomes covered in bark. The target gains resistance 2 to bludgeoning and piercing damage and weakness 3 to fire. After the target takes fire damage, it can {@action Dismiss} the spell as a free action triggered by taking the damage; doing so doesn't reduce the fire damage the target was dealt."
 			],
@@ -1872,12 +1878,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "1 minute",
+				"dismiss": true,
 				"duration": {
 					"number": 1,
 					"unit": "minute"
 				}
 			},
-			"dismiss": true,
 			"entries": [
 				"Oily black tentacles rise up and attempt to {@action Grapple} each creature in the area. Make spell attack rolls against the Fortitude DC of each creature. Any creature you succeed against is {@condition grabbed} and takes {@damage 3d6} bludgeoning damage. Whenever a creature ends its turn in the area, the tentacles attempt to grab that creature if they haven't already, and they deal {@damage 1d6} bludgeoning damage to any creature already {@condition grabbed}.",
 				"The tentacles' {@action Escape} DC is equal to your spell DC. A creature can attack a tentacle in an attempt to release its grip. Its AC is equal to your spell DC, and it is destroyed if it takes 12 or more damage. Even if destroyed, additional tentacles continue to grow in the area until the duration ends. You can {@action Dismiss} the spell."
@@ -2367,12 +2373,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "sustained up to 1 minute",
+				"sustain": true,
 				"duration": {
 					"number": 1,
 					"unit": "minute"
 				}
 			},
-			"sustain": true,
 			"entries": [
 				"You forcibly calm creatures in the area, soothing them into a nonviolent state; each creature must attempt a Will save.",
 				{
@@ -2705,12 +2711,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "1 hour",
+				"dismiss": true,
 				"duration": {
 					"number": 1,
 					"unit": "hour"
 				}
 			},
-			"dismiss": true,
 			"entries": [
 				"To the target, your words are honey and your visage seems bathed in a dreamy haze. It must attempt a Will save, with a +4 circumstance bonus if you or your allies recently threatened it or used {@condition hostile} actions against it.",
 				"You can {@action Dismiss} the spell. If you use {@condition hostile} actions against the target, the spell ends. When the spell ends, the target doesn't necessarily realize it was charmed unless its friendship with you or the actions you convinced it to take clash with its expectations, meaning you could potentially convince the target to continue being your friend via mundane means.",
@@ -2784,12 +2790,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "10 minutes",
+				"dismiss": true,
 				"duration": {
 					"number": 10,
 					"unit": "minute"
 				}
 			},
-			"dismiss": true,
 			"entries": [
 				"You infuse your target with attraction, causing it to act friendlier toward you. The target attempts a Will save. It gains a +4 circumstance bonus to this save if you or your allies recently threatened or were {@condition hostile} to it.",
 				{
@@ -3356,12 +3362,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "1 minute",
+				"dismiss": true,
 				"duration": {
 					"number": 1,
 					"unit": "minute"
 				}
 			},
-			"dismiss": true,
 			"entries": [
 				"You conjure a poisonous fog. This functions as {@spell obscuring mist}, except the area moves 10 feet away from you each round. You deal {@damage 6d8} poison damage to each breathing creature that starts its turn in the spell's area. You can {@action Dismiss} the spell."
 			],
@@ -3633,12 +3639,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "sustained up to 1 minute",
+				"sustain": true,
 				"duration": {
 					"number": 1,
 					"unit": "minute"
 				}
 			},
-			"sustain": true,
 			"entries": [
 				"Your competitiveness drives you to prove yourself against the opposition. You gain a +1 status bonus to attack rolls and skill checks. If an enemy within 20 feet critically succeeds at an attack roll or skill check, your status bonus increases to +3 attack rolls or that specific skill check (whichever the foe critically succeeded at) for 1 round."
 			],
@@ -3802,12 +3808,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "1 minute",
+				"dismiss": true,
 				"duration": {
 					"number": 1,
 					"unit": "minute"
 				}
 			},
-			"dismiss": true,
 			"entries": [
 				"You befuddle your target with strange impulses, causing it to act randomly. The effects are determined by the target's Will save. You can {@action Dismiss} the spell.",
 				{
@@ -4457,12 +4463,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "sustained",
+				"sustain": true,
 				"duration": {
 					"number": 1,
 					"unit": "unlimited"
 				}
 			},
-			"sustain": true,
 			"entries": [
 				"You create up to four floating lights, no two of which are more than 10 feet apart. Each sheds light like a torch. When you {@action Sustain a Spell||Sustain the Spell}, you can move any number of lights up to 60 feet. Each light must remain within 120 feet of you and within 10 feet of all others, or it winks out."
 			],
@@ -5541,12 +5547,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "1 minute",
+				"dismiss": true,
 				"duration": {
 					"number": 1,
 					"unit": "minute"
 				}
 			},
-			"dismiss": true,
 			"entries": [
 				"You channel the primal forces of nature to transform into a Large animal battle form, specifically that of a powerful and terrifying dinosaur. You must have space to expand or the spell is lost.",
 				"When you cast this spell, choose ankylosaurus, brontosaurus, deinonychus, stegosaurus, triceratops, or tyrannosaurus. You can decide the specific type of animal, but this has no effect on the form's Size or statistics. While in this form, you gain the {@trait animal} and {@trait dinosaur} traits. You can {@action Dismiss} the spell.",
@@ -5584,7 +5590,9 @@
 					}
 				]
 			},
-			"hasBattleForm": true
+			"miscTags": [
+				"BF"
+			]
 		},
 		{
 			"name": "Dirge Of Doom",
@@ -6052,12 +6060,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "sustained up to 1 minute",
+				"sustain": true,
 				"duration": {
 					"number": 1,
 					"unit": "minute"
 				}
 			},
-			"sustain": true,
 			"entries": [
 				"Divine power wards the targets, granting each a +1 status bonus to AC and saves while in the area.",
 				"Choose an alignment your deity has (chaotic, evil, good, or lawful). You can't cast this spell if you don't have a deity or your deity is true neutral. This spell gains the trait of the alignment you chose. The bonuses granted by the spell increase to +2 against attacks by\u2014and effects created by\u2014creatures with an alignment opposite to the spell (lawful if you chose chaotic, evil if you chose good). These bonuses increase to +4 against effects created by such creatures that attempt to impose the {@condition controlled} condition on a target of your divine aura, as well as against attacks made by creatures summoned by anything opposite in alignment to your divine aura.",
@@ -6736,12 +6744,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "1 minute",
+				"dismiss": true,
 				"duration": {
 					"number": 1,
 					"unit": "minute"
 				}
 			},
-			"dismiss": true,
 			"entries": [
 				"Calling upon powerful transformative magic, you gain a Large dragon battle form. You must have space to expand or the spell is lost. When you cast this spell, choose one type of chromatic or metallic dragon. While in this form, you gain the {@trait dragon} trait.",
 				"You have hands in this battle form and can take manipulate actions. You can {@action Dismiss} the spell.",
@@ -6786,7 +6794,9 @@
 					}
 				]
 			},
-			"hasBattleForm": true
+			"miscTags": [
+				"BF"
+			]
 		},
 		{
 			"name": "Dragon Wings",
@@ -6926,12 +6936,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "sustained up to 1 minute",
+				"sustain": true,
 				"duration": {
 					"number": 1,
 					"unit": "minute"
 				}
 			},
-			"sustain": true,
 			"entries": [
 				"You emit an aura of terror. Foes in the area are {@condition frightened 1} and unable to reduce the condition."
 			]
@@ -7180,12 +7190,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "sustained up to 1 minute",
+				"sustain": true,
 				"duration": {
 					"number": 1,
 					"unit": "minute"
 				}
 			},
-			"sustain": true,
 			"entries": [
 				"The target appears to fall down dead, though it actually turns {@condition invisible}. Its illusory corpse remains where it fell, complete with a believable fatal wound. This illusion looks and feels like a dead body. If the target's death seems absurd\u2014for instance, a barbarian at full health appears to be slain by 2 damage\u2014the GM can grant the attacker an immediate {@skill Perception} check to {@quickref disbelieve the illusion|CRB|2|disbelieving illusions|0}. If the target uses {@condition hostile} actions, the spell ends. This ends the entire spell, so the illusory corpse disappears too."
 			],
@@ -7240,12 +7250,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "sustained up to 1 minute",
+				"sustain": true,
 				"duration": {
 					"number": 1,
 					"unit": "minute"
 				}
 			},
-			"sustain": true,
 			"entries": [
 				"You try to create a temporary duplicate of an enemy to fight on your behalf. The target can attempt a Fortitude save to disrupt the spell. The duplicate appears in an unoccupied space adjacent to the target and has the target's attack modifier, AC, saving throw modifiers, {@skill Perception}, and skill modifiers, but it has only 70 Hit Points and lacks the target's special abilities, including immunities, resistances, and weaknesses. It has no magic items except weapon potency runes.",
 				"The duplicate gains the minion trait, and it can only {@action Stride} and {@action Strike}. Its Strikes deal the target's normal damage but don't apply added effects, since it doesn't have special abilities. The spell automatically ends if the duplicate's Hit Points drop to 0.",
@@ -7607,12 +7617,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "1 minute",
+				"dismiss": true,
 				"duration": {
 					"number": 1,
 					"unit": "minute"
 				}
 			},
-			"dismiss": true,
 			"entries": [
 				"You call upon the power of the planes to transform into a Medium elemental battle form. When you cast this spell, choose air, earth, fire, or water. While in this form, you gain the corresponding trait and the {@trait elemental} trait. You have hands in this battle form and can take manipulate actions.",
 				"You can {@action Dismiss} the spell.",
@@ -7648,7 +7658,9 @@
 					}
 				]
 			},
-			"hasBattleForm": true,
+			"miscTags": [
+				"BF"
+			],
 			"spellLists": [
 				"Elemental"
 			]
@@ -8275,12 +8287,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "sustained",
+				"sustain": true,
 				"duration": {
 					"number": 1,
 					"unit": "unlimited"
 				}
 			},
-			"sustain": true,
 			"entries": [
 				"Your words fascinate your targets. You speak or sing without interruption throughout the casting and duration. Targets who notice your speech or song might give their undivided attention; each target must attempt a Will save. The GM might grant a circumstance bonus (to a maximum of +4) if the target is of an opposing religion, ancestry, or political leaning, or is otherwise unlikely to agree with what you're saying.",
 				"Each creature that comes within range has to attempt a save when you {@action Sustain a Spell||Sustain the Spell}. If you're speaking, enthrall gains the {@trait linguistic} trait.",
@@ -8373,12 +8385,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "sustained up to 1 minute",
+				"sustain": true,
 				"duration": {
 					"number": 1,
 					"unit": "minute"
 				}
 			},
-			"sustain": true,
 			"entries": [
 				"You travel to the Ethereal Plane, which overlaps the Material Plane. Material Plane creatures can't see you, and you can move through things on the Material Plane. You move at half your normal Speeds, but can move in any direction (including up and down)",
 				"You can see onto the Material Plane within a radius of 60 feet; it is gray, hazy, and {@condition concealed} from you. You can't affect the Material Plane, and you can't be affected by the Material Plane except by {@trait force} effects and abjurations originating there.",
@@ -9178,12 +9190,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "sustained up to 1 minute",
+				"sustain": true,
 				"duration": {
 					"number": 1,
 					"unit": "minute"
 				}
 			},
-			"sustain": true,
 			"entries": [
 				"A field of positive energy fills the area, exuding warmth and rejuvenating those within. Each living creature that starts its turn in the area regains {@dice 1d8} Hit Points, and any undead creature that starts its turn in the area takes {@damage 1d8} positive damage."
 			],
@@ -9676,12 +9688,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "sustained up to 1 minute",
+				"sustain": true,
 				"duration": {
 					"number": 1,
 					"unit": "minute"
 				}
 			},
-			"sustain": true,
 			"entries": [
 				"You create a sphere of flame in a square within range. The sphere must be supported by a solid surface, such as a stone floor. The sphere deals {@damage 3d6} fire damage to each creature in the square where it first appears; each creature must attempt a basic Reflex save. On subsequent rounds, the first time you {@action Sustain a Spell||Sustain this Spell} each round, leaving the sphere in its square or rolling it to another square within range and dealing {@damage 3d6} fire damage; each creature in its square must attempt a basic Reflex save.",
 				"Creatures that succeed at their save take no damage (instead of half)."
@@ -9922,12 +9934,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "sustained up to 1 minute",
+				"sustain": true,
 				"duration": {
 					"number": 1,
 					"unit": "minute"
 				}
 			},
-			"sustain": true,
 			"entries": [
 				"You ward an ally against the attacks and {@condition hostile} spells from the target enemy. The target ally gains a +1 status bonus to Armor Class and saving throws against the target enemy's attacks, spells, and other effects."
 			],
@@ -10170,12 +10182,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "5 minutes",
+				"dismiss": true,
 				"duration": {
 					"number": 5,
 					"unit": "minute"
 				}
 			},
-			"dismiss": true,
 			"entries": [
 				"The target transforms into a vaporous state. In this state, the target is amorphous and loses any item bonus to AC.",
 				"It gains resistance 8 to physical damage and is immune to precision damage. It can't cast spells, activate items, or use actions that have the {@trait attack} or {@trait manipulate} trait. It gains a fly Speed of 10 feet and can slip through tiny cracks. The target can {@action Dismiss} the spell."
@@ -10220,12 +10232,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "sustained up to 1 minute",
+				"sustain": true,
 				"duration": {
 					"number": 1,
 					"unit": "minute"
 				}
 			},
-			"sustain": true,
 			"entries": [
 				"You tear open a rift to another plane, creating a portal that creatures can travel through in either direction. This portal is vertical and circular, with a radius of 40 feet. The portal appears at a location of your choice on the destination plane, assuming you have a clear idea of both the destination's location on the plane and what the destination looks like. If you attempt to create a gate into or out of the realm of a deity or another powerful being, that being can prevent the gate from forming."
 			],
@@ -10326,12 +10338,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "sustained",
+				"sustain": true,
 				"duration": {
 					"number": 1,
 					"unit": "unlimited"
 				}
 			},
-			"sustain": true,
 			"entries": [
 				"You create an auditory illusion of simple sounds that has a maximum volume equal to four normal humans shouting.",
 				"The sounds emanate from a square you designate within range. You can't create intelligible words or other intricate sounds (such as music)."
@@ -10759,12 +10771,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "unlimited",
+				"dismiss": true,
 				"duration": {
 					"number": 1,
 					"unit": "unlimited"
 				}
 			},
-			"dismiss": true,
 			"entries": [
 				"You craft a trap by binding a {@condition hostile} spell into a symbol. While {@action Cast a Spell||Casting this Spell}, you also {@action Cast a Spell} of a lower spell level to store in the glyph. The stored spell must take 3 actions or fewer to cast, have a {@condition hostile} effect, and target one creature or have an area. You can set a password, a trigger, or both for the glyph. Any creature that moves, opens, or touches the target container or enters the target area that doesn't speak the password or that matches the trigger activates the glyph, releasing the harmful spell within.",
 				"Once a spell is stored in the glyph, the glyph gains all the traits of that spell. If the stored spell targets one or more creatures, it targets the creature that set off the glyph. If it has an area, that area is centered on the creature that set off the glyph. Glyph of warding's duration ends when the glyph is triggered. The glyph counts as a magical trap, using your spell DC for both the {@skill Perception} check to notice it and the {@skill Thievery} check to disable it; both checks require the creature attempting them to be trained in order to succeed.",
@@ -11811,12 +11823,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "sustained",
+				"sustain": true,
 				"duration": {
 					"number": 1,
 					"unit": "unlimited"
 				}
 			},
-			"sustain": true,
 			"entries": [
 				"The target is overtaken with uncontrollable laughter. It must attempt a Will save.",
 				{
@@ -12078,12 +12090,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "10 minutes",
+				"dismiss": true,
 				"duration": {
 					"number": 10,
 					"unit": "minute"
 				}
 			},
-			"dismiss": true,
 			"entries": [
 				"You transform your appearance to that of a Small or Medium humanoid, such as a dwarf, elf, goblin, halfling, human, orc, or lizardfolk. You gain the {@trait humanoid} trait in addition to your other traits while in this form, as well as any trait related to the creature's kind (such as goblin or human). If this transformation reduces your size, it reduces your reach accordingly (as the {@spell shrink} spell). This transformation doesn't change your statistics in any way, and you don't gain any special abilities of the humanoid form you assume. You can still wear and use your gear, which changes size (if necessary) to match your new form.",
 				"If items leave your person, they return to their usual size.",
@@ -12335,12 +12347,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "sustained up to 1 minute",
+				"sustain": true,
 				"duration": {
 					"number": 1,
 					"unit": "minute"
 				}
 			},
-			"sustain": true,
 			"entries": [
 				"You create a pattern of shifting colors that hovers in the air in a geometric cloud. Creatures are {@condition dazzled} while inside the pattern. In addition, a creature must attempt a Will saving throw if it is inside the pattern when you cast it, when it enters the pattern, when it ends its turn within the pattern, or if it uses a {@action Seek} or {@action Interact} action on the pattern. A creature currently {@condition fascinated} by the pattern doesn't attempt new saves.",
 				{
@@ -12388,12 +12400,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "sustained",
+				"sustain": true,
 				"duration": {
 					"number": 1,
 					"unit": "unlimited"
 				}
 			},
-			"sustain": true,
 			"entries": [
 				"You create an illusory image of a Large or smaller creature. It generates the appropriate sounds, smells, and feels believable to the touch. If you and the image are ever farther than 500 feet apart, the spell ends.",
 				"The image can't speak, but you can use your actions to speak through the creature, with the spell disguising your voice as appropriate. You might need to attempt a {@skill Deception} or {@skill Performance} check to mimic the creature, as determined by the GM. This is especially likely if you're trying to imitate a specific person and engage with someone that person knows.",
@@ -12439,12 +12451,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "1 hour",
+				"dismiss": true,
 				"duration": {
 					"number": 1,
 					"unit": "hour"
 				}
 			},
-			"dismiss": true,
 			"entries": [
 				"You create an illusion that causes you to appear as another creature of the same body shape, and with roughly similar height (within 6 inches) and weight (within 50 pounds), as yourself. The disguise is typically good enough to hide your identity, but not to impersonate a specific individual. The spell doesn't change your voice, scent, or mannerisms. You can change the appearance of your clothing and worn items, such as making your armor look like a dress. Held items are unaffected, and any worn item you remove returns to its true appearance.",
 				"Casting illusory disguise counts as setting up a disguise for the {@action Impersonate} use of {@skill Deception}; it ignores any circumstance penalties you might take for disguising yourself as a dissimilar creature, it gives you a +4 status bonus to {@skill Deception} checks to prevent others from seeing through your disguise, and you add your level even if you're untrained. You can {@action Dismiss} this spell."
@@ -12634,12 +12646,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "sustained up to 1 minute",
+				"sustain": true,
 				"duration": {
 					"number": 1,
 					"unit": "minute"
 				}
 			},
-			"sustain": true,
 			"entries": [
 				"The ground within the area transforms into a mass of dangerous briars that assault and impede your foes. The first time you {@action Sustain a Spell||Sustain this Spell} each round, you can select one of the following effects to occur in the area.",
 				{
@@ -12693,12 +12705,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "sustained up to 1 minute",
+				"sustain": true,
 				"duration": {
 					"number": 1,
 					"unit": "minute"
 				}
 			},
-			"sustain": true,
 			"entries": [
 				"You crush the target by causing it to collapse in on itself, dealing 75 damage. The first time you {@action Sustain a Spell||Sustain this Spell} each round, you must choose a new target to be subject to the same effect; the same creature can never be targeted more than once with a single casting of this spell. You also can't affect more than one creature per turn with implosion. You can't target a creature that's incorporeal, gaseous, or liquid, or one that otherwise lacks a solid form."
 			],
@@ -12737,12 +12749,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "1 minute",
+				"dismiss": true,
 				"duration": {
 					"number": 1,
 					"unit": "minute"
 				}
 			},
-			"dismiss": true,
 			"entries": [
 				"You envision a simple bug and transform into a Medium animal battle form. When you cast this spell, choose ant, beetle, centipede, mantis, scorpion, or spider. You can decide the specific type of animal (such as such as a ladybug or scarab for beetle), but this has no effect on the form's Size or statistics. While in this form, you gain the {@trait animal} trait. You can {@action Dismiss} this spell.",
 				"You gain the following statistics and abilities regardless of which battle form you choose:",
@@ -12779,7 +12791,9 @@
 					}
 				]
 			},
-			"hasBattleForm": true
+			"miscTags": [
+				"BF"
+			]
 		},
 		{
 			"name": "Inspire Competence",
@@ -14024,12 +14038,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "sustained",
+				"sustain": true,
 				"duration": {
 					"number": 1,
 					"unit": "unlimited"
 				}
 			},
-			"sustain": true,
 			"entries": [
 				"You learn the direction to the target (if you picked a specific object, such as \"my mother's sword\") or the nearest target (if you picked a type of object, such as \"swords\"). If the target is a specific object, you must have {@condition observed} it directly with your own senses. If it's a type of object, you still need to have an accurate mental image of the type of object. If there's lead or running water between you and the target, this spell can't locate the object. This means you might find a type of object farther away if the nearest one is behind lead or running water."
 			],
@@ -14079,12 +14093,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "1 day",
+				"dismiss": true,
 				"duration": {
 					"number": 1,
 					"unit": "day"
 				}
 			},
-			"dismiss": true,
 			"entries": [
 				"The target's latch mechanism clinks shut, held fast by unseen magical restraints. When you magically lock a target, you set an {@skill Athletics} and {@skill Thievery} DC to open it equal to your spell DC or the base lock DC with a +4 status bonus, whichever is higher.",
 				"Any key or combination that once opened a lock affected by this spell does not do so for the duration of the spell, though the key or combination does grant a +4 circumstance bonus to checks to open the door.",
@@ -14312,12 +14326,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "sustained",
+				"sustain": true,
 				"duration": {
 					"number": 1,
 					"unit": "unlimited"
 				}
 			},
-			"sustain": true,
 			"entries": [
 				"You create a single magical hand, either {@condition invisible} or ghostlike, that grasps the target object and moves it slowly up to 20 feet. Because you're levitating the object, you can move it in any direction. When you {@action Sustain a Spell||Sustain the Spell}, you can move the object an additional 20 feet. If the object is in the air when the spell ends, the object falls."
 			],
@@ -14618,12 +14632,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "sustained up to 1 minute",
+				"sustain": true,
 				"duration": {
 					"number": 1,
 					"unit": "minute"
 				}
 			},
-			"sustain": true,
 			"entries": [
 				"A creature becomes a receptacle for pure magical energy sent by your deity. The target gains a +1 status bonus to saving throws. Each time you {@action Cast a Spell} from your spell slots, you automatically Sustain this Spell and grant its target resistance to damage from spells until the start of your next turn. This resistance is equal to the level of the spell you cast."
 			]
@@ -14949,12 +14963,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "sustained",
+				"sustain": true,
 				"duration": {
 					"number": 1,
 					"unit": "unlimited"
 				}
 			},
-			"sustain": true,
 			"entries": [
 				"You transport the target into an extradimensional maze of eldritch origin and trap it there. Once each turn, the target can spend 1 action to attempt a {@skill Survival} check or {@skill Perception} check against your spell DC to escape the maze. The possible outcomes are as follows.",
 				{
@@ -14995,12 +15009,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "10 minutes",
+				"dismiss": true,
 				"duration": {
 					"number": 10,
 					"unit": "minute"
 				}
 			},
-			"dismiss": true,
 			"entries": [
 				"You merge with an adjacent block of stone with enough volume to fit you and your worn and held possessions. You must touch the stone when you {@action Cast a Spell||Cast the Spell}. You can hear, but not see, what's going on outside the stone, and you can cast spells while in the stone as long as they don't require line of effect beyond the stone.",
 				"Significant physical damage to the stone while you are inside it expels you and deals {@dice 10d6} damage to you. Passwall expels you without dealing damage and ends meld into stone.",
@@ -15275,12 +15289,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "sustained up to 1 minute",
+				"sustain": true,
 				"duration": {
 					"number": 1,
 					"unit": "minute"
 				}
 			},
-			"sustain": true,
 			"entries": [
 				"You cast your thoughts through a creature's mind, sifting for information. You access the target's memories and knowledge unless it fends you off with a Will save.",
 				{
@@ -15335,12 +15349,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "1 round or sustained up to 1 minute",
+				"sustain": true,
 				"duration": {
 					"number": 1,
 					"unit": "minute"
 				}
 			},
-			"sustain": true,
 			"entries": [
 				"With a cursory mental touch, you attempt to read the target's mind. It must attempt a Will save. The target then becomes temporarily immune to your mind reading for 1 hour.",
 				{
@@ -15499,12 +15513,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "until the next time you make your daily preparations",
+				"dismiss": true,
 				"duration": {
 					"number": 1,
 					"unit": "special"
 				}
 			},
-			"dismiss": true,
 			"entries": [
 				"You reshape the magic aura of one creature or object to resemble that of another. You designate one target as the primary target and the other as the secondary target.",
 				"Effects that would detect auras on the primary target instead detect the same types of auras from the secondary target.",
@@ -15537,12 +15551,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "sustained up to 1 minute",
+				"sustain": true,
 				"duration": {
 					"number": 1,
 					"unit": "minute"
 				}
 			},
-			"sustain": true,
 			"entries": [
 				"You turn yourself {@condition invisible} and create an illusory duplicate of yourself. When you {@action Sustain a Spell||Sustain the Spell}, you can mentally dictate a course of action for your duplicate to follow that round. Your duplicate acts as though it had your full number of actions, though it can't actually affect anything in the environment.",
 				"Both the duplicate and your invisibility persist for the spell's duration. Performing a {@condition hostile} action doesn't end mislead's invisibility, just like a 4th-level {@spell invisibility} spell. A creature that determines the duplicate is an illusion doesn't necessarily know you're {@condition invisible}, and one that can see your {@condition invisible} form doesn't necessarily know your duplicate is an illusion.",
@@ -15680,12 +15694,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "1 minute",
+				"dismiss": true,
 				"duration": {
 					"number": 1,
 					"unit": "minute"
 				}
 			},
-			"dismiss": true,
 			"entries": [
 				"You transform into the shape of a legendary monster, assuming a Huge battle form. You must have enough space to expand into or the spell is lost. When you cast this spell, choose phoenix, purple worm, or sea serpent. While in this form, you gain the {@trait beast} trait (for phoenix) or the {@trait animal} trait (for purple worm or sea serpent). You can {@action Dismiss} the spell.",
 				"You gain the following statistics and abilities regardless of which battle form you choose:",
@@ -15713,7 +15727,9 @@
 					}
 				]
 			},
-			"hasBattleForm": true
+			"miscTags": [
+				"BF"
+			]
 		},
 		{
 			"name": "Moon Frenzy",
@@ -15901,12 +15917,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "1 minute",
+				"dismiss": true,
 				"duration": {
 					"number": 1,
 					"unit": "minute"
 				}
 			},
-			"dismiss": true,
 			"entries": [
 				"The primal power of the world flows through you. You transform into an incarnation of nature, either a green man or a kaiju. Your battle form is Medium for a green man or Gargantuan (30-foot-by-30-foot space) for a kaiju. You must have enough space to expand into or the spell is lost. While in this form, you gain the {@trait plant} trait (for a green man) or the {@trait beast} trait (for a kaiju). You can {@action Dismiss} the spell.",
 				"You gain the following statistics and abilities regardless of which battle form you choose:",
@@ -15923,7 +15939,9 @@
 					]
 				}
 			],
-			"hasBattleForm": true
+			"miscTags": [
+				"BF"
+			]
 		},
 		{
 			"name": "Nature's Bounty",
@@ -16260,12 +16278,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "1 minute",
+				"dismiss": true,
 				"duration": {
 					"number": 1,
 					"unit": "minute"
 				}
 			},
-			"dismiss": true,
 			"entries": [
 				"You call forth a cloud of mist. All creatures within the mist become {@condition concealed}, and all creatures outside the mist become {@condition concealed} to creatures within it. You can {@action Dismiss} the cloud."
 			],
@@ -16772,12 +16790,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "10 minutes",
+				"dismiss": true,
 				"duration": {
 					"number": 10,
 					"unit": "minute"
 				}
 			},
-			"dismiss": true,
 			"entries": [
 				"You transform into a the battle form of a Tiny animal, such as a cat, insect, lizard, or rat. You can decide the specific type of animal (such as a rat or praying mantis), but this has no effect on the form's Size or statistics. While in this form, you gain the {@trait animal} trait. You can {@action Dismiss} the spell.",
 				"You gain the following statistics and abilities:",
@@ -16802,7 +16820,9 @@
 					}
 				]
 			},
-			"hasBattleForm": true
+			"miscTags": [
+				"BF"
+			]
 		},
 		{
 			"name": "Phantasmal Calamity",
@@ -17166,12 +17186,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "1 minute",
+				"dismiss": true,
 				"duration": {
 					"number": 1,
 					"unit": "minute"
 				}
 			},
-			"dismiss": true,
 			"entries": [
 				"Taking inspiration from verdant creatures, you transform into a Large plant battle form. You must have space to expand into or the spell is lost. When you cast this spell, choose arboreal, flytrap, or shambler. You can substitute a similar specific plant to turn into (such as a pitcher plant instead of a flytrap), but this has no effect on the form's Size or statistics. While in this form, you gain the {@trait plant} trait. You can {@action Dismiss} the spell.",
 				"You gain the following statistics and abilities regardless of which battle form you choose:",
@@ -17200,7 +17220,9 @@
 					}
 				]
 			},
-			"hasBattleForm": true
+			"miscTags": [
+				"BF"
+			]
 		},
 		{
 			"name": "Polar Ray",
@@ -17283,12 +17305,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "1 minute",
+				"dismiss": true,
 				"duration": {
 					"number": 1,
 					"unit": "minute"
 				}
 			},
-			"dismiss": true,
 			"entries": [
 				"Drawing life force into yourself, you become a beacon of positive energy. You glow with bright light in a 10-foot emanation, and you gain an internal pool of light called a luminance reservoir, which begins with a value of 4. At the start of each of your turns, you can use a free action to increase the luminance reservoir by 4. If you do, the radius of your light increases by 10 feet.",
 				"If an undead creature damages you with an attack or spell while it's within the area of your light, that creature takes positive damage equal to half your luminance reservoir value.",
@@ -17347,12 +17369,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "1 minute",
+				"dismiss": true,
 				"duration": {
 					"number": 1,
 					"unit": "minute"
 				}
 			},
-			"dismiss": true,
 			"entries": [
 				"You send your mind and soul into the target's body, attempting to take control. The target must attempt a Will save. You can choose to use the effects of a degree of success more favorable to the target if you prefer.",
 				"While you're possessing a target, your own body is {@condition unconscious} and can't wake up normally. You can sense everything the possessed target does. You can {@action Dismiss} this spell. If the possessed body dies, the spell ends and you must succeed at a Fortitude save against your spell DC or be {@condition paralyzed} for 1 hour, or 24 hours on a critical failure. If the spell ends during an encounter, you act just before the possessed creature's initiative count.",
@@ -17679,12 +17701,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "sustained",
+				"sustain": true,
 				"duration": {
 					"number": 1,
 					"unit": "unlimited"
 				}
 			},
-			"sustain": true,
 			"entries": [
 				"The simplest magic does your bidding. You can perform simple {@trait magical} effects for as long as you {@action Sustain a Spell||Sustain the Spell}. Each time you {@action Sustain a Spell||Sustain the Spell}, you can choose one of four options.",
 				{
@@ -17737,12 +17759,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "1 minute",
+				"dismiss": true,
 				"duration": {
 					"number": 1,
 					"unit": "minute"
 				}
 			},
-			"dismiss": true,
 			"entries": [
 				"Summoning the power of the natural world, you transform the targets into a herd of mammoths, and they each assume a Huge battle form. Each target must have enough space to expand into or the spell fails for that target. Each target gains the {@trait animal} trait. Each target can {@action Dismiss} the spell's effects on themself. Each target gains the following while transformed:",
 				{
@@ -17758,7 +17780,9 @@
 					]
 				}
 			],
-			"hasBattleForm": true
+			"miscTags": [
+				"BF"
+			]
 		},
 		{
 			"name": "Primal Phenomenon",
@@ -18010,12 +18034,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "1 hour",
+				"dismiss": true,
 				"duration": {
 					"number": 1,
 					"unit": "hour"
 				}
 			},
-			"dismiss": true,
 			"entries": [
 				"You create an opaque wall of shimmering, multicolored light.",
 				"The wall is straight and vertical, stretching 60 feet long and 30 feet high. You must form the wall in an unbroken open space so its edges don't pass through any creatures or objects, or the spell is lost. You can pass through the wall and ignore its effects.",
@@ -18159,12 +18183,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "sustained up to 1 minute",
+				"sustain": true,
 				"duration": {
 					"number": 1,
 					"unit": "minute"
 				}
 			},
-			"sustain": true,
 			"entries": [
 				"You project an illusory image of yourself. You must stay within range of the image, and if at any point you can't see the image, the spell ends. Whenever you {@action Cast a Spell} other than one whose area is an emanation, you can cause the spell effect to originate from either yourself or the image. Because the image is an illusion, it can't benefit from spells, though visual manifestations of the spell appear. The image has the same AC and saves as you. If it is hit by an attack or fails a save, the spell ends."
 			],
@@ -18253,12 +18277,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "sustained up to 1 minute",
+				"sustain": true,
 				"duration": {
 					"number": 1,
 					"unit": "minute"
 				}
 			},
-			"sustain": true,
 			"entries": [
 				"You emanate a shimmering aura of protective magic. You and any allies in the area gain a +1 status bonus to AC. Each time you {@action Sustain a Spell||Sustain the Spell}, the emanation's radius increases by 5 feet, to a maximum of 30 feet."
 			]
@@ -18342,12 +18366,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "sustained up to 1 minute",
+				"sustain": true,
 				"duration": {
 					"number": 1,
 					"unit": "minute"
 				}
 			},
-			"sustain": true,
 			"entries": [
 				"A protective aura emanates out from you, safeguarding you and your allies. You gain resistance 3 to all damage. Your allies also gain this resistance while they are within the area."
 			],
@@ -18397,12 +18421,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "sustained",
+				"sustain": true,
 				"duration": {
 					"number": 1,
 					"unit": "unlimited"
 				}
 			},
-			"sustain": true,
 			"entries": [
 				"You create an {@condition invisible}, floating eye, 1 inch in diameter, at a location you can see within 500 feet. It sees in all directions with your normal visual senses and continuously transmits what it sees to you.",
 				"The first time you {@action Sustain a Spell||Sustain the Spell} each round, you can either move the eye up to 30 feet, seeing only things in front of the eye, or move it up to 10 feet, seeing everything in all directions around it. There is no limit to how far from you the eye can move, but the spell ends immediately if you and the eye ever cease to be on the same plane of existence. You can attempt {@action Seek} actions through the eye if you want to attempt {@skill Perception} checks with it. Any damage dealt to the eye destroys it and ends the spell."
@@ -18505,12 +18529,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "sustained up to 1 minute",
+				"sustain": true,
 				"duration": {
 					"number": 1,
 					"unit": "minute"
 				}
 			},
-			"sustain": true,
 			"entries": [
 				"Violent winds and a powerful downdraft fill the area, forming a cyclone. All flying creatures in the area descend 40 feet. The entire area is {@quickref greater difficult terrain||3|terrain} for Flying creatures, and {@quickref difficult terrain||3|terrain} for creatures on the ground or Climbing. Any creature that ends its turn Flying within the area descends 20 feet. Any creature pushed into a surface by this spell's winds takes bludgeoning damage as though it had fallen.",
 				"The squares at the outside vertical edges of the cylinder prevent creatures from leaving. These squares are {@quickref greater difficult terrain||3|terrain}, and a creature attempting to push through must succeed at an {@skill Athletics} check or {@skill Acrobatics} check to {@action Maneuver in Flight} against your spell DC to get through. A creature that fails ends its current action but can try again."
@@ -19768,12 +19792,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "sustained",
+				"sustain": true,
 				"duration": {
 					"number": 1,
 					"unit": "unlimited"
 				}
 			},
-			"sustain": true,
 			"entries": [
 				"Opening your mind to occult echoes, you gain impressions from past events that occurred in your current location.",
 				"Retrocognition reveals psychic impressions from events that occurred over the course of the last day throughout the first minute of the duration, followed by impressions from the next day back the next minute, and so on. These echoes don't play out like a vision but instead reveal impressions of emotions and metaphors that provide cryptic clues and details of the past. If you witness a traumatic or turbulent event through an impression, the spell ends unless you succeed at a Will save with a DC of at least 30 and possibly as much as 50, depending on the severity of the event. The GM determines whether an event is traumatic and chooses the DC."
@@ -19882,12 +19906,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "sustained up to 1 minute",
+				"sustain": true,
 				"duration": {
 					"number": 1,
 					"unit": "minute"
 				}
 			},
-			"sustain": true,
 			"entries": [
 				"A burst of healing energy soothes living creatures and temporarily rouses those recently slain. All living targets regain {@dice 10d8+40} Hit Points. In addition, you return any number of dead targets to life temporarily, with the same effects and limitations as raise dead (page 362). The raised creatures have a number of temporary Hit Points equal to the Hit Points you gave living creatures, but no normal Hit Points. The raised creatures can't regain Hit Points or gain temporary Hit Points in other ways, and once revival's duration ends, they lose all temporary Hit Points and die. Revival can't resurrect creatures killed by {@spell disintegrate} or a {@trait death} effect. It has no effect on undead."
 			]
@@ -19919,12 +19943,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "1 minute",
+				"dismiss": true,
 				"duration": {
 					"number": 1,
 					"unit": "minute"
 				}
 			},
-			"dismiss": true,
 			"entries": [
 				"You focus all your divine energy and transform yourself into a Medium battle form, similar to your normal form but armed with powerful divine armaments granted by your deity. While in this form, you gain the statistics and abilities listed below. You have hands in this battle form and can use manipulate actions. You can {@action Dismiss} the spell.",
 				"You gain the following statistics and abilities:",
@@ -19951,7 +19975,9 @@
 					}
 				]
 			},
-			"hasBattleForm": true
+			"miscTags": [
+				"BF"
+			]
 		},
 		{
 			"name": "Rope Trick",
@@ -20282,12 +20308,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "sustained up to 1 minute",
+				"sustain": true,
 				"duration": {
 					"number": 1,
 					"unit": "minute"
 				}
 			},
-			"sustain": true,
 			"entries": [
 				"A field of cascading, ever-changing colors manifests in the air.",
 				"Creatures are {@condition dazzled} while inside the pattern, as are those within 20 feet of the pattern's area. A creature must attempt a Will save if it is inside the pattern when you cast it, enters the pattern, ends its turn within the pattern, or uses a {@action Seek} or {@action Interact} action on the pattern. A creature currently affected by the pattern doesn't need to attempt new saves.",
@@ -20344,12 +20370,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "sustained up to 10 minutes",
+				"sustain": true,
 				"duration": {
 					"number": 10,
 					"unit": "minute"
 				}
 			},
-			"sustain": true,
 			"entries": [
 				"You magically spy on a creature of your choice. Scrying works like clairvoyance (page 324), except that the image you receive is less precise, insufficient for teleport and similar spells.",
 				"Instead of creating an eye in a set location within 500 feet, you instead create an eye that manifests just above the target. You can choose a target either by name or by touching one of its possessions or a piece of its body. If you haven't met the target in person, scrying's DC is 2 lower, and if you are unaware of the target's identity (perhaps because you found an unknown creature's fang at a crime scene), the DC is instead 10 lower.",
@@ -20684,12 +20710,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "8 hours",
+				"dismiss": true,
 				"duration": {
 					"number": 8,
 					"unit": "hour"
 				}
 			},
-			"dismiss": true,
 			"entries": [
 				"You access the Shadow Plane, using its warped nature to spread your travels. The targets enter the edge of the Shadow Plane where it borders the Material Plane. Targets can't see the Material Plane while on the Shadow Plane (although elements of that plane can sometimes be a hazy reflection of the Material Plane). While on the Shadow Plane, the targets are exposed to potential encounters with that plane's denizens. The shadows on the border between the planes bend space, speeding up your movement with respect to the Material Plane. Every 3 minutes the targets travel along this border, they move as far as they would through the Material Plane in 1 hour. At any point, a target can {@action Dismiss} the spell's effects, although this affects only that target. The shadow bending is inexact, so when the spell ends, the targets appear roughly 1 mile from their intended location on the Material Plane (though those who are traveling together and {@action Dismiss} the spell at the same point on the Plane of Shadow appear together)."
 			]
@@ -20803,12 +20829,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "1 minute",
+				"dismiss": true,
 				"duration": {
 					"number": 1,
 					"unit": "minute"
 				}
 			},
-			"dismiss": true,
 			"entries": [
 				"Harnessing your mastery of transformative magic, you take on a mutable form. You transform yourself into any form you could choose with a polymorph spell in your spell repertoire or that you could prepare of 8th level or lower (including any 8th-level or lower heightened versions of spells you know). You choose the type of creature as you {@action Cast a Spell||Cast the Spell} rather than when you prepare it. You can change your form to any other form you could choose with this spell by using a single action, which has the {@trait concentrate} trait. You can {@action Dismiss} this spell."
 			]
@@ -21056,12 +21082,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "1 minute",
+				"dismiss": true,
 				"duration": {
 					"number": 1,
 					"unit": "minute"
 				}
 			},
-			"dismiss": true,
 			"entries": [
 				"You gain one of the following abilities of your choice. You can {@action Dismiss} this spell.",
 				{
@@ -21253,12 +21279,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "1 day",
+				"dismiss": true,
 				"duration": {
 					"number": 1,
 					"unit": "day"
 				}
 			},
-			"dismiss": true,
 			"entries": [
 				"You shrink the target to roughly the size of a coin. This reduces it to negligible Bulk. You can {@action Dismiss} the spell, and the spell ends if you toss the object onto a solid surface. The object can't be used to attack or cause damage during the process of it returning to normal size. If there isn't room for the object to return to normal size when the spell ends, the spell's duration continues until the object is in a location large enough to accommodate its normal size."
 			]
@@ -21563,12 +21589,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "1 minute",
+				"dismiss": true,
 				"duration": {
 					"number": 1,
 					"unit": "minute"
 				}
 			},
-			"dismiss": true,
 			"entries": [
 				"You conjure a bank of fog so thick it impedes movement as well as sight. This functions as {@spell obscuring mist}, except that the area is also {@quickref difficult terrain||3|terrain}. You can {@action Dismiss} the spell."
 			],
@@ -22262,12 +22288,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "10 minutes",
+				"dismiss": true,
 				"duration": {
 					"number": 10,
 					"unit": "minute"
 				}
 			},
-			"dismiss": true,
 			"entries": [
 				"You form a spiritual link with another creature, allowing you to take in its pain. When you {@action Cast a Spell||Cast this Spell} and at the start of each of your turns, if the target is below maximum Hit Points, it regains 2 Hit Points (or the difference between its current and maximum Hit Points, if that's lower). You lose as many Hit Points as the target regained.",
 				"This is a spiritual transfer, so no effects apply that would increase the Hit Points the target regains or decrease the Hit Points you lose. This transfer also ignores any temporary Hit Points you or the target have. Since this effect doesn't involve positive or negative energy, spirit link works even if you or the target is undead. While the duration persists, you gain no benefit from regeneration or fast healing. You can {@action Dismiss} this spell, and if you're ever at 0 Hit Points, spirit link ends automatically."
@@ -22421,12 +22447,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "sustained up to 1 minute",
+				"sustain": true,
 				"duration": {
 					"number": 1,
 					"unit": "minute"
 				}
 			},
-			"sustain": true,
 			"entries": [
 				"A Medium guardian made of magical force appears and attacks foes you designate within range. The spiritual guardian is translucent and appears to be holding your deity's favored weapon.",
 				"When you {@action Cast a Spell||Cast the Spell}, the spiritual guardian appears in an unoccupied space next to a foe of your choice within range and makes a {@action Strike} against it. Each time you {@action Sustain a Spell||Sustain the Spell}, you can move the spiritual guardian to an unoccupied space next to a target within range (if necessary) and make a {@action Strike} with it. The guardian uses and contributes to your multiple attack penalty. Alternatively, when you {@action Sustain a Spell||Sustain the Spell}, you can have the guardian move adjacent to an ally and protect that ally. If you do, each time the ally would take damage, the guardian takes the first 10 damage instead of your ally. It continues to do so until you move the guardian to attack an enemy or defend a different ally, or until the guardian is destroyed (it has 50 Hit Points and can't recover Hit Points by any means). The guardian can't usually take damage except when protecting an ally, though {@spell disintegrate} automatically destroys it if it hits the spiritual guardian's AC of 25.",
@@ -22476,12 +22502,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "sustained up to 1 minute",
+				"sustain": true,
 				"duration": {
 					"number": 1,
 					"unit": "minute"
 				}
 			},
-			"sustain": true,
 			"entries": [
 				"A weapon made of pure magical force materializes and attacks foes you designate within range. This weapon has a ghostly appearance and manifests as a club, a dagger, or your deity's favored weapon.",
 				"When you cast the spell, the weapon appears next to a foe you choose within range and makes a {@action Strike} against it. Each time you {@action Sustain a Spell||Sustain the Spell}, you can move the weapon to a new target within range (if needed) and {@action Strike} with it. The spiritual weapon uses and contributes to your multiple attack penalty.",
@@ -22933,12 +22959,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "sustained up to 1 minute",
+				"sustain": true,
 				"duration": {
 					"number": 1,
 					"unit": "minute"
 				}
 			},
-			"sustain": true,
 			"entries": [
 				"The sky above you darkens in a matter of moments, swirling with ominous clouds punctuated by flashes of lighting. The first time you {@action Sustain a Spell||Sustain this Spell} each round, you can select one of the following effects to occur in the area.",
 				{
@@ -22995,12 +23021,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "sustained up to 1 minute",
+				"sustain": true,
 				"duration": {
 					"number": 1,
 					"unit": "minute"
 				}
 			},
-			"sustain": true,
 			"entries": [
 				"A massive storm cloud forms in the air in a 360-foot burst.",
 				"Beneath it, rain begins to fall, and gales impose a \u20134 circumstance penalty to physical ranged attacks and weapon ranged attacks, and the air in the area becomes {@quickref greater difficult terrain||3|terrain} for flying creatures. When you {@action Cast a Spell||Cast this Spell} and the first time each round you {@action Sustain a Spell||Sustain the Spell}, you can choose one of the following storm effects. You can't choose the same effect twice in a row.",
@@ -23287,12 +23313,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "sustained up to 1 minute",
+				"sustain": true,
 				"duration": {
 					"number": 1,
 					"unit": "minute"
 				}
 			},
-			"sustain": true,
 			"entries": [
 				"You conjure an animal to fight for you. You summon a common creature that has the {@trait animal} trait and whose level is {@filter \u20131|bestiary||Level=[-1;-1]|Rarity=Common|Creature Type=Animal}.",
 				"Heightening the spell increases the maximum level of creature you can summon."
@@ -23355,7 +23381,9 @@
 					}
 				]
 			},
-			"summoning": true
+			"miscTags": [
+				"SM"
+			]
 		},
 		{
 			"name": "Summon Celestial",
@@ -23390,12 +23418,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "sustained up to 1 minute",
+				"sustain": true,
 				"duration": {
 					"number": 1,
 					"unit": "minute"
 				}
 			},
-			"sustain": true,
 			"entries": [
 				"You conjure a celestial to fight on your behalf. This works like {@spell summon animal}, except you summon a common creature that has the {@trait celestial} trait and whose level is {@filter 5 or lower|bestiary||Level=[-1;5]|Rarity=Common|Creature Type=Celestial}. You can't summon a creature unless its alignment is one of your deity's preferred alignments (or, if you don't have a deity, is within one step of your alignment). At the GM's discretion, some deities might restrict specific types of celestials, even if their alignments match."
 			],
@@ -23433,7 +23461,9 @@
 					}
 				]
 			},
-			"summoning": true
+			"miscTags": [
+				"SM"
+			]
 		},
 		{
 			"name": "Summon Construct",
@@ -23468,12 +23498,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "sustained up to 1 minute",
+				"sustain": true,
 				"duration": {
 					"number": 1,
 					"unit": "minute"
 				}
 			},
-			"sustain": true,
 			"entries": [
 				"You conjure a construct to fight for you. This works like {@spell summon animal}, except you summon a common creature that has the {@trait construct} trait and whose level is {@filter \u20131|bestiary||Level=[-1;-1]|Rarity=Common|Creature Type=Construct}."
 			],
@@ -23535,7 +23565,9 @@
 					}
 				]
 			},
-			"summoning": true
+			"miscTags": [
+				"SM"
+			]
 		},
 		{
 			"name": "Summon Dragon",
@@ -23570,12 +23602,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "sustained up to 1 minute",
+				"sustain": true,
 				"duration": {
 					"number": 1,
 					"unit": "minute"
 				}
 			},
-			"sustain": true,
 			"entries": [
 				"You conjure a dragon to fight for you. This works like {@spell summon animal}, except you summon a common creature that has the {@trait dragon} trait and whose level is {@filter 5 or lower|bestiary||Level=[-1;5]|Rarity=Common|Creature Type=Dragon}."
 			],
@@ -23613,7 +23645,9 @@
 					}
 				]
 			},
-			"summoning": true
+			"miscTags": [
+				"SM"
+			]
 		},
 		{
 			"name": "Summon Elemental",
@@ -23649,12 +23683,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "sustained up to 1 minute",
+				"sustain": true,
 				"duration": {
 					"number": 1,
 					"unit": "minute"
 				}
 			},
-			"sustain": true,
 			"entries": [
 				"You conjure an elemental to fight for you. This works like {@spell summon animal}, except you summon a common creature that has the {@trait elemental} trait and whose level is {@filter 1 or lower|bestiary||Level=[-1;1]|Rarity=Common|Creature Type=Elemental}."
 			],
@@ -23710,7 +23744,9 @@
 					}
 				]
 			},
-			"summoning": true,
+			"miscTags": [
+				"SM"
+			],
 			"spellLists": [
 				"Elemental"
 			]
@@ -23748,12 +23784,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "sustained up to 1 minute",
+				"sustain": true,
 				"duration": {
 					"number": 1,
 					"unit": "minute"
 				}
 			},
-			"sustain": true,
 			"entries": [
 				"You conjure an aberration to fight for you. This works like {@spell summon animal}, except you summon a common creature that has the {@trait aberration} trait and whose level is {@filter 5 or lower|bestiary||Level=[-1;5]|Rarity=Common|Creature Type=aberration}."
 			],
@@ -23791,7 +23827,9 @@
 					}
 				]
 			},
-			"summoning": true
+			"miscTags": [
+				"SM"
+			]
 		},
 		{
 			"name": "Summon Fey",
@@ -23827,12 +23865,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "sustained up to 1 minute",
+				"sustain": true,
 				"duration": {
 					"number": 1,
 					"unit": "minute"
 				}
 			},
-			"sustain": true,
 			"entries": [
 				"You conjure a fey to fight for you. This works like {@spell summon animal}, except you summon a common creature that has the {@trait fey} trait and whose level is {@filter \u20131|bestiary||Level=[-1;-1]|Rarity=Common|Creature Type=Fey}."
 			],
@@ -23894,7 +23932,9 @@
 					}
 				]
 			},
-			"summoning": true
+			"miscTags": [
+				"SM"
+			]
 		},
 		{
 			"name": "Summon Fiend",
@@ -23929,12 +23969,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "sustained up to 1 minute",
+				"sustain": true,
 				"duration": {
 					"number": 1,
 					"unit": "minute"
 				}
 			},
-			"sustain": true,
 			"entries": [
 				"You conjure a fiend to fight on your behalf. This works like {@spell summon animal}, except you summon a common creature that has the {@trait fiend} trait and whose level is {@filter 5 or lower|bestiary||Level=[-1;5]|Rarity=Common|Creature Type=fiend}. You can't summon a creature unless its alignment is one of your deity's preferred alignments (or, if you don't have a deity, is within one step of your alignment). At the GM's discretion, some deities might restrict specific types of fiends, even if their alignments match."
 			],
@@ -23972,7 +24012,9 @@
 					}
 				]
 			},
-			"summoning": true
+			"miscTags": [
+				"SM"
+			]
 		},
 		{
 			"name": "Summon Giant",
@@ -24007,12 +24049,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "sustained up to 1 minute",
+				"sustain": true,
 				"duration": {
 					"number": 1,
 					"unit": "minute"
 				}
 			},
-			"sustain": true,
 			"entries": [
 				"You conjure a giant to fight for you. This works like {@spell summon animal}, except you summon a common creature that has the {@trait giant} trait and whose level is {@filter 5 or lower|bestiary||Level=[-1;5]|Rarity=Common|Creature Type=giant}."
 			],
@@ -24050,7 +24092,9 @@
 					}
 				]
 			},
-			"summoning": true,
+			"miscTags": [
+				"SM"
+			],
 			"spellLists": [
 				"Elemental"
 			]
@@ -24088,12 +24132,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "sustained up to 1 minute",
+				"sustain": true,
 				"duration": {
 					"number": 1,
 					"unit": "minute"
 				}
 			},
-			"sustain": true,
 			"entries": [
 				"You conjure a plant or fungus to fight for you. This works like {@spell summon animal}, except you summon a common creature that has the {@trait plant} or {@trait fungus} trait and whose level is {@filter \u20131|bestiary||Level=[-1;-1]|Rarity=Common|Creature Type=Plant;Fungus}."
 			],
@@ -24155,7 +24199,9 @@
 					}
 				]
 			},
-			"summoning": true
+			"miscTags": [
+				"SM"
+			]
 		},
 		{
 			"name": "Sunburst",
@@ -24751,12 +24797,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "sustained up to 1 minute",
+				"sustain": true,
 				"duration": {
 					"number": 1,
 					"unit": "minute"
 				}
 			},
-			"sustain": true,
 			"entries": [
 				"You move the target up to 20 feet, potentially suspending it in midair. When you {@action Sustain a Spell||Sustain the Spell}, you can do so again, or you can choose a different eligible target to move."
 			]
@@ -26156,12 +26202,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "sustained up to 1 minute",
+				"sustain": true,
 				"duration": {
 					"number": 1,
 					"unit": "minute"
 				}
 			},
-			"sustain": true,
 			"entries": [
 				"Fleeting notes of a strange and unnatural song fill the air, overtaking the mind. Each target must attempt a Will save when you cast the spell, and again the first time you {@action Sustain a Spell||Sustain this Spell} each round. A creature needs to attempt only one save against the song each round, and you have to keep the same targets when you {@action Sustain a Spell||Sustain the Spell}.",
 				{
@@ -26426,12 +26472,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "sustained",
+				"sustain": true,
 				"duration": {
 					"number": 1,
 					"unit": "unlimited"
 				}
 			},
-			"sustain": true,
 			"entries": [
 				"You summon an {@creature unseen servant|CRB}, which you can command as part of {@action Sustain a Spell||Sustaining the Spell}. It serves you until its Hit Points are reduced to 0, at which point the spell ends, or until you stop {@action Sustain a Spell||Sustaining the Spell}. The {@creature unseen servant|crb} gains the {@trait summoned} trait.",
 				{
@@ -26448,7 +26494,9 @@
 					]
 				}
 			],
-			"summoning": true
+			"miscTags": [
+				"SM"
+			]
 		},
 		{
 			"name": "Unusual Anatomy",
@@ -26643,12 +26691,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "1 hour",
+				"dismiss": true,
 				"duration": {
 					"number": 1,
 					"unit": "hour"
 				}
 			},
-			"dismiss": true,
 			"entries": [
 				"You disguise the targets as other creatures of the same body shape and roughly similar height (within 6 inches) and weight (within 50 pounds). The disguise can hide the targets' identities or let them appear to be of another ancestry, but it's not precise enough to impersonate specific individuals. The spell doesn't change voice, scent, or mannerisms. You choose the disguise for each target; for example, you could make one target appear to be a dwarf and another an elf.",
 				"Casting veil counts as setting up a disguise for the purpose of the {@action Impersonate} action. It allows the target to ignore any circumstance penalties they might take for being disguised as dissimilar creatures, and it gives the targets a +4 status bonus to {@skill Deception} checks to prevent others from seeing through their disguises, and add their level even if untrained. You can {@action Dismiss} any or all of these disguises."
@@ -26804,12 +26852,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "sustained up to 1 minute",
+				"sustain": true,
 				"duration": {
 					"number": 1,
 					"unit": "minute"
 				}
 			},
-			"sustain": true,
 			"entries": [
 				"You create a pattern of lights that pulses with intensity.",
 				"Creatures are {@condition dazzled} while inside the pattern.",
@@ -28463,12 +28511,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "sustained up to 1 minute",
+				"sustain": true,
 				"duration": {
 					"number": 1,
 					"unit": "minute"
 				}
 			},
-			"sustain": true,
 			"entries": [
 				"You speak a statement you believe to be true and that is free of any attempt to deceive through twisting words, omission, and so on. The statement must be 25 words or fewer. A symbol of your deity glows above your head, and anyone who sees you and hears your statement knows that you believe it to be true.",
 				"Each time you Sustain this Spell, you can repeat this effect."
