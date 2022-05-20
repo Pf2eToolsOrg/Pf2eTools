@@ -75,19 +75,19 @@
 							"type": "string",
 							"anyOf": [
 								{
-									"$ref": "utils.json#/definitions/anyTrait"
-								},
-								{
 									"$comment": "Spell only Traits.",
 									"enum": [
-										"Cantrip",
-										"Composition",
-										"Cursebound",
-										"Hex",
-										"Litany",
-										"Consecration",
-										"Contingency"
+										"cantrip",
+										"composition",
+										"cursebound",
+										"hex",
+										"litany",
+										"consecration",
+										"contingency"
 									]
+								},
+								{
+									"$ref": "utils.json#/definitions/anyTrait"
 								}
 							]
 						},

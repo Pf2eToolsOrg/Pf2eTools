@@ -575,7 +575,12 @@
 				"entry": "{@as 1} to {@as 3}"
 			},
 			"components": [
-				{}
+				{
+					"S": true
+				},
+				{
+					"V": true
+				}
 			],
 			"range": {
 				"entry": "30 feet",
@@ -595,9 +600,9 @@
 			},
 			"entries": [
 				"Channeling forth the power to persevere in the face of adversity, you grant the target the means to deny danger and avoid dire harm. Choose one saving throw: Fortitude, Reflex, or Will. The target gets a +4 status bonus to that saving throw for 1 round. The potency and number of targets of this blessing depend on how many actions you spend when {@action Cast a Spell||Casting the Spell}.",
-				"{@as 1} (somatic) The spell targets you or one willing ally within range.",
-				"{@as 2} (verbal) The spell targets you or one willing ally within range. If you choose Fortitude, the target gains resistance 15 to poison. If you choose Reflex, the target gains a +15-foot status bonus to its Speeds. If you choose Will, the target gains resistance 15 to mental damage.",
-				"{@as 3} (verbal) The spell targets you and all willing allies within 30 feet."
+				"{@b {@as 1} (somatic)} The spell targets you or one willing ally within range.",
+				"{@b {@as 2} (verbal)} The spell targets you or one willing ally within range. If you choose Fortitude, the target gains resistance 15 to poison. If you choose Reflex, the target gains a +15-foot status bonus to its Speeds. If you choose Will, the target gains resistance 15 to mental damage.",
+				"{@b {@as 3} (verbal)} The spell targets you and all willing allies within 30 feet."
 			]
 		},
 		{
@@ -1692,9 +1697,9 @@
 			},
 			"entries": [
 				"You unleash a dangerous consonance of reverberating sound, focusing on a single target or spreading out to damage many foes. The number of actions you spend Casting this Spell determines its targets, range, area, and other parameters.",
-				"{@as 1} (verbal) The spell deals {@damage 1d4} sonic damage to a single enemy, with a basic Fortitude save.",
-				"{@as 2} (somatic, verbal) The spell deals {@damage 2d4} sonic damage to all creatures in a 10-foot burst, with a basic Fortitude save.",
-				"{@as 3} (material, somatic, verbal) The spell deals {@damage 2d4} sonic damage to all creatures in a 30-foot emanation, with a basic Fortitude save."
+				"{@b {@as 1} (verbal)} The spell deals {@damage 1d4} sonic damage to a single enemy, with a basic Fortitude save.",
+				"{@b {@as 2} (somatic, verbal)} The spell deals {@damage 2d4} sonic damage to all creatures in a 10-foot burst, with a basic Fortitude save.",
+				"{@b {@as 3} (material, somatic, verbal)} The spell deals {@damage 2d4} sonic damage to all creatures in a 30-foot emanation, with a basic Fortitude save."
 			],
 			"heightened": {
 				"plus_x": {
@@ -2842,7 +2847,15 @@
 				"entry": "{@as 2} to 2 rounds"
 			},
 			"components": [
-				{}
+				{
+					"S": true,
+					"V": true
+				},
+				{
+					"S": true,
+					"M": true,
+					"V": true
+				}
 			],
 			"area": {
 				"types": [
@@ -2858,8 +2871,8 @@
 			},
 			"entries": [
 				"You draw elemental power from your surroundings, and combining it with your own magical energy, unleash a wave of utter destruction and swirling colors that deals {@damage 1d6} fire damage and {@damage 3d6} bludgeoning damage with a basic Reflex save. The number of actions you spend when Casting this Spell determines the area and other parameters.",
-				"{@as 2} (somatic, verbal) The spell is a 30-foot cone.",
-				"{@as 3} (material, somatic, verbal) The spell is a 30-foot cone.",
+				"{@b {@as 2} (somatic, verbal)} The spell is a 30-foot cone.",
+				"{@b {@as 3} (material, somatic, verbal)} The spell is a 30-foot cone.",
 				"On a failed saving throw, creatures are pushed 5 feet away from you, and on a critical failure they are pushed 10 feet away and are knocked {@condition prone}.",
 				"Two Rounds If you spend 3 actions {@action Cast a Spell||Casting the Spell}, you can avoid finishing the spell and spend another 3 actions on your next turn to empower the spell even further. If you do, the spell is as 3 actions, but the area is a 60-foot cone, and for 1 round, the elements linger in the cone, racing off into the distance and making approaching you difficult, with the effects of gust of wind."
 			],
@@ -4096,7 +4109,18 @@
 				"entry": "{@as 1} to {@as 3}"
 			},
 			"components": [
-				{}
+				{
+					"S": true
+				},
+				{
+					"S": true,
+					"V": true
+				},
+				{
+					"S": true,
+					"M": true,
+					"V": true
+				}
 			],
 			"range": {
 				"entry": "30 feet",
@@ -4114,9 +4138,9 @@
 			"entries": [
 				"By suddenly altering gravity, you pull the target toward you.",
 				"The target is pulled 10 feet closer to you unless it succeeds at a Fortitude save. On a critical failure, it's also knocked {@condition prone}. The effects of this spell change depending on the number of actions you spend when you {@action Cast a Spell||Cast this Spell}.",
-				"{@as 1} (somatic) The spell targets one creature.",
-				"{@as 2} (somatic, verbal) The spell targets one creature and pulls the target 20 feet instead of 10.",
-				"{@as 3} (material, somatic, verbal) The spell targets up to 5 creatures."
+				"{@b {@as 1} (somatic)} The spell targets one creature.",
+				"{@b {@as 2} (somatic, verbal)} The spell targets one creature and pulls the target 20 feet instead of 10.",
+				"{@b {@as 3} (material, somatic, verbal)} The spell targets up to 5 creatures."
 			]
 		},
 		{
@@ -4377,7 +4401,15 @@
 				"entry": "{@as 2} to 2 rounds"
 			},
 			"components": [
-				{}
+				{
+					"S": true,
+					"V": true
+				},
+				{
+					"S": true,
+					"M": true,
+					"V": true
+				}
 			],
 			"range": {
 				"entry": "varies",
@@ -4389,8 +4421,8 @@
 			"targets": "1 creature",
 			"entries": [
 				"You gather magical energy into your palm, forming a concentrated ball of electricity that crackles and rumbles like impossibly distant thunder. Make a ranged spell attack roll against your target's AC. On a success, you deal {@damage 3d6} electricity damage. On a critical success, the target takes double damage and is {@condition dazzled} for 1 round. The number of actions you spend when Casting this Spell determines the range and other parameters.",
-				"{@as 2} (somatic, verbal) This spell has a range of 30 feet.",
-				"{@as 3} (material, somatic, verbal) This spell has a range of 60 feet and deals half damage on a failure (but not a critical failure) as the electricity lashes out and jolts the target.",
+				"{@b {@as 2} (somatic, verbal)} This spell has a range of 30 feet.",
+				"{@b {@as 3} (material, somatic, verbal)} This spell has a range of 60 feet and deals half damage on a failure (but not a critical failure) as the electricity lashes out and jolts the target.",
 				"Two Rounds If you spend 3 actions {@action Cast a Spell||Casting the Spell}, you can avoid finishing the spell and spend another 3 actions on your next turn to empower the spell even further. If you do, after attacking the target, whether you hit or miss, the ball of lightning explodes, dealing {@damage 2d6} electricity damage to all other creatures in a 10-foot emanation around the target (basic Reflex save)",
 				"Additionally, you spark with electricity for 1 minute, dealing 1 electricity damage to creatures that Grab you or that hit you with an unarmed {@action Strike} or a non-reach melee weapon."
 			],
@@ -4762,7 +4794,15 @@
 				"entry": "{@as 2} to 2 rounds"
 			},
 			"components": [
-				{}
+				{
+					"S": true,
+					"V": true
+				},
+				{
+					"S": true,
+					"M": true,
+					"V": true
+				}
 			],
 			"area": {
 				"types": [
@@ -4779,9 +4819,9 @@
 			"entries": [
 				"You gradually manifest your spiritual energy into your cupped hands before firing off a storm of bolts and beams that deal {@damage 4d4} force damage to all creatures in a 60-foot line. Creatures in the area must attempt a basic Reflex save. On a critical failure, they're also {@condition blinded} for 1 round.",
 				"The number of actions you spend when Casting this Spell determines the area. If the line passes through an area of magical darkness or targets a creature affected by magical darkness, inner radiance torrent attempts to counteract the darkness.",
-				"{@as 2} (somatic, verbal) The line is 60 feet long.",
-				"{@as 3} (material, somatic, verbal) The line is 120 feet long.",
-				"Two Rounds The line is 120 feet long. If you spend 3 actions casting the spell, you can avoid finishing the spell and spend another 3 actions on your next turn to empower the spell even further. If you choose to do so, the damage dealt by this spell increases by {@dice 4d4}, and you enter a shining state for 1 minute, causing you to glow with light and deal 1 force damage to creatures that end their turn adjacent to you."
+				"{@b {@as 2} (somatic, verbal)} The line is 60 feet long.",
+				"{@b {@as 3} (material, somatic, verbal)} The line is 120 feet long.",
+				"{@b Two Rounds} The line is 120 feet long. If you spend 3 actions casting the spell, you can avoid finishing the spell and spend another 3 actions on your next turn to empower the spell even further. If you choose to do so, the damage dealt by this spell increases by {@dice 4d4}, and you enter a shining state for 1 minute, causing you to glow with light and deal 1 force damage to creatures that end their turn adjacent to you."
 			],
 			"heightened": {
 				"plus_x": {
@@ -4881,8 +4921,20 @@
 			},
 			"entries": [
 				"Upon casting this spell, the armor you're wearing is whisked away into an extradimensional space that's linked to you. If the armor is magical and invested by you, it remains invested while in this space, though you don't gain its benefits. You then gain the Armor Up! action; once you use the action, the spell ends. If the action hasn't been used by the time the spell's duration ends, the extradimensional space collapses, ejecting the armor's pieces on the ground under you.",
-				"Armor Up! {@as 1} (manipulate) Effect You snap your fingers.",
-				"The armor returns to your body."
+				{
+					"type": "ability",
+					"name": "Armor Up!",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"(manipulate)"
+					],
+					"entries": [
+						"You snap your fingers. The armor returns to your body."
+					]
+				}
 			]
 		},
 		{
@@ -7810,7 +7862,18 @@
 				"entry": "{@as 1} to {@as 3}"
 			},
 			"components": [
-				{}
+				{
+					"S": true
+				},
+				{
+					"S": true,
+					"V": true
+				},
+				{
+					"S": true,
+					"M": true,
+					"V": true
+				}
 			],
 			"range": {
 				"entry": "30 feet",
@@ -7828,9 +7891,9 @@
 			},
 			"entries": [
 				"You supernaturally rip the spirit from a living creature's body, dooming the target to pain and death. The target takes {@damage 5d6} negative damage, depending on its basic Fortitude save, and is {@condition drained 1} if it fails its save. The spell's effect is based on how many actions you spend when {@action Cast a Spell||Casting the Spell}.",
-				"{@as 1} (somatic) The spell targets one living creature in range.",
-				"{@as 2} (somatic, verbal) The spell targets one living creature in range and the damage is {@damage 10d6} negative instead of {@dice 5d6}.",
-				"{@as 3} (material, somatic, verbal) The spell targets all living creatures in a 30-foot emanation."
+				"{@b {@as 1} (somatic)} The spell targets one living creature in range.",
+				"{@b {@as 2} (somatic, verbal)} The spell targets one living creature in range and the damage is {@damage 10d6} negative instead of {@dice 5d6}.",
+				"{@b {@as 3} (material, somatic, verbal)} The spell targets all living creatures in a 30-foot emanation."
 			],
 			"heightened": {
 				"plus_x": {

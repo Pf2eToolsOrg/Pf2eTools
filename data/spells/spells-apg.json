@@ -3366,7 +3366,12 @@
 				"entry": "{@as 1} or {@as 2}"
 			},
 			"components": [
-				{}
+				{
+					"S": true
+				},
+				{
+					"V": true
+				}
 			],
 			"range": {
 				"entry": "touch or 30 feet",
@@ -3378,8 +3383,8 @@
 			"targets": "your animal companion",
 			"entries": [
 				"You harness positive energy to heal your animal companion's wounds. You restore {@dice 1d10} Hit Points to your animal companion. The number of actions you spend {@action Cast a Spell||Casting this Spell} determines range and other parameters.",
-				"{@as 1} (somatic) The spell has a range of touch.",
-				"{@as 2} (verbal) The spell has a range of 30 feet and restores an additional 8 Hit Points to the target."
+				"{@b {@as 1} (somatic)} The spell has a range of touch.",
+				"{@b {@as 2} (verbal)} The spell has a range of 30 feet and restores an additional 8 Hit Points to the target."
 			],
 			"heightened": {
 				"plus_x": {
@@ -7354,7 +7359,11 @@
 				"entry": "1 minute"
 			},
 			"components": [
-				{}
+				{
+					"S": true,
+					"M": true,
+					"V": true
+				}
 			],
 			"duration": {
 				"type": "timed",

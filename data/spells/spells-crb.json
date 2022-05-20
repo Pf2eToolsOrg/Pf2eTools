@@ -11367,7 +11367,18 @@
 				"entry": "{@as 1} to {@as 3}"
 			},
 			"components": [
-				{}
+				{
+					"S": true
+				},
+				{
+					"S": true,
+					"V": true
+				},
+				{
+					"S": true,
+					"M": true,
+					"V": true
+				}
 			],
 			"range": {
 				"entry": "varies",
@@ -11380,9 +11391,9 @@
 			"entries": [
 				"You channel negative energy to harm the living or heal the undead. If the target is a living creature, you deal {@damage 1d8} negative damage to it, and it gets a basic Fortitude save.",
 				"If the target is a willing undead creature, you restore that amount of Hit Points. The number of actions you spend when {@action Cast a Spell||Casting this Spell} determines its targets, range, area, and other parameters.",
-				"{@as 1} (somatic) The spell has a range of touch.",
-				"{@as 2} (verbal, somatic) The spell has a range of 30 feet. If you're healing an undead creature, increase the Hit Points restored by 8.",
-				"{@as 3} (material, verbal, somatic) You disperse negative energy in a 30-foot emanation. This targets all living and undead creatures in the area."
+				"{@b {@as 1} (somatic)} The spell has a range of touch.",
+				"{@b {@as 2} (verbal, somatic)} The spell has a range of 30 feet. If you're healing an undead creature, increase the Hit Points restored by 8.",
+				"{@b {@as 3} (material, verbal, somatic)} You disperse negative energy in a 30-foot emanation. This targets all living and undead creatures in the area."
 			],
 			"heightened": {
 				"plus_x": {
@@ -11468,7 +11479,18 @@
 				"entry": "{@as 1} to {@as 3}"
 			},
 			"components": [
-				{}
+				{
+					"S": true
+				},
+				{
+					"S": true,
+					"V": true
+				},
+				{
+					"S": true,
+					"M": true,
+					"V": true
+				}
 			],
 			"range": {
 				"entry": "varies",
@@ -11480,9 +11502,9 @@
 			"targets": "1 willing living creature or 1 undead creature",
 			"entries": [
 				"You channel positive energy to heal the living or damage the undead. If the target is a willing living creature, you restore {@dice 1d8} Hit Points. If the target is undead, you deal that amount of positive damage to it, and it gets a basic Fortitude save. The number of actions you spend when {@action Cast a Spell||Casting this Spell} determines its targets, range, area, and other parameters.",
-				"{@as 1} (somatic) The spell has a range of touch.",
-				"{@as 2} (verbal, somatic) The spell has a range of 30 feet. If you're healing a living creature, increase the Hit Points restored by 8.",
-				"{@as 3} (material, somatic, verbal) You disperse positive energy in a 30-foot emanation. This targets all living and undead creatures in the burst."
+				"{@b {@as 1} (somatic)} The spell has a range of touch.",
+				"{@b {@as 2} (verbal, somatic)} The spell has a range of 30 feet. If you're healing a living creature, increase the Hit Points restored by 8.",
+				"{@b {@as 3} (material, somatic, verbal)} You disperse positive energy in a 30-foot emanation. This targets all living and undead creatures in the burst."
 			],
 			"heightened": {
 				"plus_x": {
@@ -15677,7 +15699,7 @@
 						"{@skill Athletics} modifier of +30, unless your own modifier is higher. You also gain specific abilities based on the type of monster you choose:",
 						"{@bold Phoenix} Speed 30 feet, fly Speed 90 feet; Melee {@as 1} beak (reach 15 feet), Damage {@damage 2d6+12} piercing plus {@damage 2d4} fire and {@damage 2d4} {@condition persistent damage ||persistent fire}; Melee {@as 1} talon (agile, reach 15 feet), Damage {@damage 2d8+12} slashing; Shroud of Flame (aura, evocation, fire, primal) 20 feet. You gain an aura of fire that extends out from you. A creature that enters or ends its turn within the aura takes {@damage 2d6} fire damage. A creature can take this damage only once per turn. You can use a single action, which has the {@trait concentrate} trait, to activate or deactivate this aura.",
 						"{@bold Purple Worm} Speed 40 feet, burrow Speed 30 feet, swim Speed 20 feet; Melee {@as 1} jaws (reach 10 feet), Damage {@damage 2d12+20} piercing; Melee {@as 1} stinger (agile, reach 10 feet), Damage {@damage 2d8+15} piercing plus {@damage 2d6} {@condition persistent damage ||persistent poison}; Melee {@as 1} body (reach 10 feet) Damage {@damage 2d8+20} bludgeoning; Inexorable You automatically recover from the {@condition paralyzed}, {@condition slowed}, and {@condition stunned} conditions at the end of each of your turns. You're also immune to being {@condition immobilized} and ignore {@quickref difficult terrain||3|terrain} and {@quickref greater difficult terrain||3|terrain}.",
-						"{@bold Sea Serpent} Speed 20 feet, swim Speed 90 feet; Melee {@as 1} jaws (reach 15 feet), Damage {@damage 2d12+20} piercing; Melee {@as 1} tail (reach 25 feet), Damage {@damage 2d8+20} bludgeoning; Spine Rake {@as 2} (move) You extend your spines and {@action Swim} or {@action Stride}. Each creature you're adjacent to at any point during your movement takes {@damage 4d8+10} slashing damage (basic Reflex against your spell DC)."
+						"{@bold Sea Serpent} Speed 20 feet, swim Speed 90 feet; Melee {@as 1} jaws (reach 15 feet), Damage {@damage 2d12+20} piercing; Melee {@as 1} tail (reach 25 feet), Damage {@damage 2d8+20} bludgeoning; Spine Rake {@as 2} ({@trait move}) You extend your spines and {@action Swim} or {@action Stride}. Each creature you're adjacent to at any point during your movement takes {@damage 4d8+10} slashing damage (basic Reflex against your spell DC)."
 					]
 				}
 			],
