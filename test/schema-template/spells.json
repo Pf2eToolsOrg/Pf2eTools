@@ -123,39 +123,44 @@
 						"additionalProperties": false
 					},
 					"components": {
-						"type": "object",
-						"properties": {
-							"F": {
-								"description": "Focus",
-								"type": "boolean",
-								"enum": [
-									true
-								]
-							},
-							"M": {
-								"description": "Material",
-								"type": "boolean",
-								"enum": [
-									true
-								]
-							},
-							"S": {
-								"description": "Somatic",
-								"type": "boolean",
-								"enum": [
-									true
-								]
-							},
-							"V": {
-								"description": "Verbal",
-								"type": "boolean",
-								"enum": [
-									true
-								]
+						"type": "array",
+						"items": [
+							{
+								"type": "object",
+								"properties": {
+									"F": {
+										"description": "Focus",
+										"type": "boolean",
+										"enum": [
+											true
+										]
+									},
+									"M": {
+										"description": "Material",
+										"type": "boolean",
+										"enum": [
+											true
+										]
+									},
+									"S": {
+										"description": "Somatic",
+										"type": "boolean",
+										"enum": [
+											true
+										]
+									},
+									"V": {
+										"description": "Verbal",
+										"type": "boolean",
+										"enum": [
+											true
+										]
+									}
+								},
+								"additionalProperties": false,
+								"minProperties": 1
 							}
-						},
-						"additionalProperties": false,
-						"minProperties": 1
+						]
 					},
 					"cost": {
 						"type": "string"

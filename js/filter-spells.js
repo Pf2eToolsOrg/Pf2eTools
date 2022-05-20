@@ -115,7 +115,7 @@ class PageFilterSpells extends PageFilter {
 		spell._fSources = SourceFilter.getCompleteFilterSources(spell);
 		spell._fTraditions = (spell.traditions || [])
 			.concat(spell.spellLists || [])
-			.concat(spell.traditions ? spell.traditions.includes("Primal" || "Arcane") ? "Halcyon" : [] : []);
+			.concat(spell.traditions ? spell.traditions.includes("Primal" || "Arcane") ? "Halcyon" : [] : []).map(t => t.toTitleCase());
 		spell._fSpellType = spell.traits.includes("Cantrip") && spell.focus ? ["Focus", "Cantrip"] : spell.traits.includes("Cantrip") ? ["Cantrip"] : spell.focus ? ["Focus"] : ["Spell"];
 		spell._fTraits = spell.traits.map(t => Parser.getTraitName(t));
 		if (!spell._fTraits.map(t => Renderer.trait.isTraitInCategory(t, "Rarity")).some(Boolean)) spell._fTraits.push("Common");
@@ -138,10 +138,18 @@ class PageFilterSpells extends PageFilter {
 			if (spell.savingThrow.basic) spell._fSavingThrow.push("Basic");
 		}
 		spell._fComponents = spell.cost == null ? [] : ["Cost"];
-		if (spell.components.F) spell._fComponents.push("Focus");
-		if (spell.components.M) spell._fComponents.push("Material");
-		if (spell.components.S) spell._fComponents.push("Somatic");
-		if (spell.components.V) spell._fComponents.push("Verbal");
+		// TODO: Figure out how to make various configurations of components work in filters
+		// Example: [V], [V and S], [V and S and M]
+		// Current Data: [{V: true},{V: true, S: true},{V: true, S: true, M: true}]
+		// Right now we'll just live with this.
+		if (spell.components) {
+			spell.components.forEach(element => {
+				if (element.F) spell._fComponents.push("Focus");
+				if (element.M) spell._fComponents.push("Material");
+				if (element.S) spell._fComponents.push("Somatic");
+				if (element.V) spell._fComponents.push("Verbal");
+			});
+		}
 		spell._fMisc = [];
 		if (spell.requirements !== null) spell._fMisc.push("Has Requirements");
 		if (spell.trigger !== null) spell._fMisc.push("Has Trigger");
