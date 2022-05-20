@@ -270,6 +270,12 @@
 							"entry": {
 								"type": "string"
 							},
+							"sustain": {
+								"type": "boolean"
+							},
+							"dismiss": {
+								"type": "boolean"
+							},
 							"duration": {
 								"type": "object",
 								"properties": {
@@ -298,11 +304,16 @@
 						},
 						"additionalProperties": false
 					},
-					"sustain": {
-						"type": "boolean"
-					},
-					"dismiss": {
-						"type": "boolean"
+					"miscTags": {
+						"type": "array",
+						"items": {
+							"type": "string",
+							"enum": [
+								"THP",
+								"SM",
+								"BF"
+							]
+						}
 					},
 					"entries": {
 						"type": "array",
