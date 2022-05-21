@@ -133,8 +133,8 @@
 			"bulk": 3,
 			"category": "Artifact",
 			"entries": [
-				"The blade of this +4 major striking keen returning speed dwarven waraxe is carved with an intricate design depicting countless generations of great dwarven warriors and leaders.",
-				"The axe has the thrown 30 feet weapon trait, in addition to the normal weapon traits for a dwarven waraxe. Strikes with the axe deal an additional {@dice 1d6} damage to orcs. While the axe is in your possession, you gain a +4 item bonus when {@skill Crafting} armor, jewelry, metalworking, stonemasonry, snares, traps, and weapons. If you are a dwarf, you gain {@ability darkvision||greater darkvision} while holding the axe. If you are not a dwarf, you are {@condition stupefied 4} while holding the axe, and if you are an orc, you are also {@condition drained 4} and {@condition enfeebled 4} while holding it.",
+				"The blade of this {@runeItem Dwarven War Axe||+4 weapon potency|GMG|major striking||keen||returning||speed|} is carved with an intricate design depicting countless generations of great dwarven warriors and leaders.",
+				"The axe has the {@trait thrown 30 feet} weapon trait, in addition to the normal weapon traits for a dwarven waraxe. {@action Strike||Strikes} with the axe deal an additional {@dice 1d6} damage to orcs. While the axe is in your possession, you gain a +4 item bonus when {@action Craft||Crafting} armor, jewelry, metalworking, stonemasonry, snares, traps, and weapons. If you are a dwarf, you gain {@ability darkvision||greater darkvision} while holding the axe. If you are not a dwarf, you are {@condition stupefied 4} while holding the axe, and if you are an orc, you are also {@condition drained 4} and {@condition enfeebled 4} while holding it.",
 				{
 					"type": "ability",
 					"style": "compact",
@@ -147,11 +147,11 @@
 						"Interact"
 					],
 					"entries": [
-						"The axe casts a 10th-level {@spell summon elemental} spell to conjure an elite elemental avalanche (Bestiary 6, 147). The spell is automatically sustained, requiring no action on your part but still allowing you to command the elemental on each of your turns. You can {@action Dismiss} the Spell.",
-						"Destruction If an orc beheads a dwarven king with the Axe of the Dwarven Lords, the axe rusts away to nothing."
+						"The axe casts a 10th-level {@spell summon elemental} spell to conjure an elite {@creature elemental avalanche}. The spell is automatically sustained, requiring no action on your part but still allowing you to command the elemental on each of your turns. You can {@action Dismiss} the Spell."
 					]
 				}
-			]
+			],
+			"destruction": "If an orc beheads a dwarven king with the Axe of the Dwarven Lords, the axe rusts away to nothing."
 		},
 		{
 			"name": "Backbiting",
@@ -211,7 +211,7 @@
 			"bulk": 1,
 			"category": "Held",
 			"entries": [
-				"This item appears to be and functions as a type I bag of holding, until you try to retrieve an item from the bag.",
+				"This item appears to be and functions as a {@item Bag of Holding (Type I)|crb|type I bag of holding}, until you try to retrieve an item from the bag.",
 				"Whenever you retrieve an item from the bag of weasels, roll a DC {@flatDC 11} flat check. On a success, you retrieve the item as normal. On a failure, the item you retrieve is transformed into a weasel; this doesn't affect artifacts, cursed items, or other hard-to-destroy items.",
 				"This weasel has the statistics of a {@creature giant rat}, except that it is Tiny and exudes an aura of transmutation magic. The weasel has no loyalty to you and typically attempts to escape as quickly as possible. If the weasel is targeted with a {@spell remove curse} spell or a similar {@trait magical} effect, it transforms back into the original item that was taken from the bag of weasels. If it dies or is slain, the weasel disappears and the item is permanently destroyed.",
 				"Because the weasel is a transformed item, you don't gain any benefit you would receive from attacking a creature, defeating one, damaging one, or the like, but you do gain any benefit you would gain from destroying an item."
@@ -1721,26 +1721,25 @@
 				}
 			},
 			"entries": [
-				"The legendary blade Serithtial is said to have been forged by Iomedae, goddess of honor, justice, and valor. She is an intelligent +4 major striking holy bastard sword. Although the sword is made of steel, Serithtial is also treated as cold iron and silver (Core Rulebook 578), allowing her to deal more damage to certain supernatural creatures. She glows as bright as a torch, but you or Serithtial can suppress or resume this glow as a single action, which has the {@trait concentrate} trait. In addition, Strikes with Serithtial deal an additional {@dice 2d6} damage against creatures that are worshippers of Zon-Kuthon, and while wielding Serithtial, you constantly benefit from {@spell death ward} and {@spell freedom of movement} spells that function only against effects created by followers of Zon-Kuthon.",
-				"Serithtial was forged as a bastard sword, and she reverts to this shape when no one wields her, but she can also detect what sort of blade her current wielder prefers and transform into it (choosing from dagger, shortsword, longsword, scimitar, falchion, greatsword, rapier, or bastard sword) using an action, which she does when first held. The wielder can empathically tell Serithtial to transform at any time by using a single action, which has the {@trait concentrate} trait, after which Serithtial uses an action to transform.",
-				"Serithtial is willing to work with a partner of almost any alignment as long as they are dedicated to defeating the great wyrm Kazavon and the forces of Zon-Kuthon. If you ignore those threats and pursue your own agenda instead, before long Serithtial attempts to seize control of your body (DC 45 Will save to resist her control), though she typically remains in control for only long enough to find a more worthy partner. You can attempt a new Will save each day to retake control of your body.",
+				"The legendary blade Serithtial is said to have been forged by {@deity Iomedae}, goddess of honor, justice, and valor. She is an {@trait intelligent} {@runeItem bastard sword||+4 weapon potency|GMG|major striking||holy|}. Although the sword is made of steel, Serithtial is also treated as {@item cold iron weapon (generic)||cold iron} and {@item silver weapon (generic)||silver}, allowing her to deal more damage to certain supernatural creatures. She glows as bright as a torch, but you or Serithtial can suppress or resume this glow as a single action, which has the {@trait concentrate} trait. In addition, {@action Strike||Strikes} with Serithtial deal an additional {@dice 2d6} damage against creatures that are worshippers of {@deity Zon-Kuthon}, and while wielding Serithtial, you constantly benefit from {@spell death ward} and {@spell freedom of movement} spells that function only against effects created by followers of {@deity Zon-Kuthon}.",
+				"Serithtial was forged as a {@item bastard sword}, and she reverts to this shape when no one wields her, but she can also detect what sort of blade her current wielder prefers and transform into it (choosing from {@item dagger}, {@item shortsword}, {@item longsword}, {@item scimitar}, {@item falchion}, {@item greatsword}, {@item rapier}, or {@item bastard sword}) using an action, which she does when first held. The wielder can empathically tell Serithtial to transform at any time by using a single action, which has the {@trait concentrate} trait, after which Serithtial uses an action to transform.",
+				"Serithtial is willing to work with a partner of almost any alignment as long as they are dedicated to defeating the great wyrm Kazavon and the forces of {@deity Zon-Kuthon}. If you ignore those threats and pursue your own agenda instead, before long Serithtial attempts to seize control of your body (DC 45 Will save to resist her control), though she typically remains in control for only long enough to find a more worthy partner. You can attempt a new Will save each day to retake control of your body.",
 				{
 					"type": "ability",
 					"style": "compact",
-					"activity": {
-						"number": 1,
-						"unit": "varies",
-						"entry": "envision;"
-					},
 					"components": [
-						"Frequency once per hour"
+						"envision"
 					],
+					"frequency": {
+						"unit": "hour",
+						"freq": 1
+					},
 					"entries": [
-						"Serithtial spends the appropriate number of actions and casts a 9th level {@spell heal} or {@spell zone of truth} spell (DC 45 for either of the two spells)",
-						"Destruction If Kazavon or a great wyrm shadow dragon who is a worshipper of Zon-Kuthon uses its breath weapon on Serithtial while she is unattended, the sword melts into a pool of mundane iron."
+						"Serithtial spends the appropriate number of actions and casts a 9th level {@spell heal} or {@spell zone of truth} spell (DC 45 for either of the two spells)."
 					]
 				}
-			]
+			],
+			"destruction": "If Kazavon or a great wyrm shadow dragon who is a worshipper of {@deity Zon-Kuthon} uses its breath weapon on Serithtial while she is unattended, the sword melts into a pool of mundane iron."
 		},
 		{
 			"name": "Shiver",

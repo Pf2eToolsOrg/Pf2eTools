@@ -3790,17 +3790,15 @@ Renderer.settlement = {
 		const renderStack = [];
 		renderer.recursiveRender(it.entries, renderStack, { pf2StatFix: true });
 
-		return `
-		${Renderer.utils.getExcludedDiv(it, "settlement", UrlUtil.PG_SETTLEMENTS)}
-		${Renderer.utils.getNameDiv(it, { page: UrlUtil.PG_SETTLEMENTS, type: "SETTLEMENT", ...opts })}
-		${Renderer.utils.getDividerDiv()}
-		${Renderer.utils.getTraitsDiv(it.traits || [])}
-		${Renderer.settlement.getSubHeadTop(it)}
-		${Renderer.settlement.getSubHeadBot(it)}
-		${renderStack.push(Renderer.nation.getResidents(it))}
-		${renderStack.join("")}
-		${Renderer.utils.getPageP(it)}
-		`;
+		renderStack.push(Renderer.utils.getExcludedDiv(it, "settlement", UrlUtil.PG_SETTLEMENTS))
+		renderStack.push(Renderer.utils.getNameDiv(it, { page: UrlUtil.PG_SETTLEMENTS, type: "SETTLEMENT", ...opts }))
+		renderStack.push(Renderer.utils.getDividerDiv())
+		renderStack.push(Renderer.utils.getTraitsDiv(it.traits || []))
+		renderStack.push(Renderer.settlement.getSubHeadTop(it))
+		renderStack.push(Renderer.settlement.getSubHeadBot(it))
+		renderStack.push(Renderer.nation.getResidents(it))
+		renderStack.push(Renderer.utils.getPageP(it))
+		return renderStack.join("")
 	},
 	getSubHeadTop (it) {
 		const renderer = Renderer.get()
@@ -5214,7 +5212,7 @@ Renderer.item = {
 			if (v.traits != null && v.traits.length) renderStack.push(` (${renderer.render(v.traits.map(t => `{@trait ${t.toLowerCase()}}`).join(", "))})`);
 			if (v.price != null) renderStack.push(`; <strong>Price&nbsp;</strong>${Parser.priceToFull(v.price)}`);
 			if (v.bulk != null) renderStack.push(`; <strong>Bulk&nbsp;</strong>${v.bulk}`);
-			if (v.craftReq != null) renderStack.push(`; <strong>Craft Requirements&nbsp;</strong>${v.craftReq}`);
+			if (v.craftReq != null) renderStack.push(`; <strong>Craft Requirements&nbsp;</strong>${renderer.render(v.craftReq)}`);
 			renderStack.push(`</p>`);
 			if (v.entries != null && v.entries.length) {
 				renderer.recursiveRender(v.entries, renderStack, { prefix: "<p class='pf2-stat pf2-stat__section--wide'>", suffix: "</p>" });
