@@ -39,8 +39,8 @@ class ActionsPage extends ListPage {
 		let time;
 		if (it.activity) time = Parser.timeToTableStr(it.activity);
 		else if (it.traits) {
-			if (it.traits.includes("Exploration")) time = "Exploration";
-			if (it.traits.includes("Downtime")) time = "Downtime";
+			if (it.traits.includes("exploration")) time = "Exploration";
+			if (it.traits.includes("downtime")) time = "Downtime";
 		} else time = "\u2014"
 
 		eleLi.innerHTML = `<a href="#${hash}" class="lst--border">

@@ -515,70 +515,46 @@ Parser.getClassSideBarEntries = function (cls) {
 
 	function initProfParser (thing, entry) {
 		Object.keys(thing).forEach(k => {
+			let thingArray = [];
+			let prof = "";
 			switch (k) {
 				case "u": {
-					thing.u.forEach(element => {
-						if (typeof element === "object") {
-							if (element.entry) {
-								return entry.push(`{@indentSubsequent Untrained in ${element.entry}}`);
-							} else {
-								return entry.push(`{@indentSubsequent Untrained in ${element.skill.map(s => `${s}`).joinConjunct(", ", " or ")}}`);
-							}
-						} else return entry.push(`{@indentSubsequent Untrained in ${element}}`);
-					});
+					thingArray = thing.u
+					prof = "Untrained"
 					break;
 				}
 				case "t": {
-					thing.t.forEach(element => {
-						if (typeof element === "object") {
-							if (element.entry) {
-								return entry.push(`{@indentSubsequent Trained in ${element.entry}}`);
-							} else {
-								return entry.push(`{@indentSubsequent Trained in ${element.skill.map(s => `${s}`).joinConjunct(", ", " or ")}}`);
-							}
-						} else return entry.push(`{@indentSubsequent Trained in ${element}}`);
-					});
+					thingArray = thing.t
+					prof = "Trained"
 					break;
 				}
 				case "e": {
-					thing.e.forEach(element => {
-						if (typeof element === "object") {
-							if (element.entry) {
-								return entry.push(`{@indentSubsequent Expert in ${element.entry}}`);
-							} else {
-								return entry.push(`{@indentSubsequent Expert in ${element.skill.map(s => `${s}`).joinConjunct(", ", " or ")}}`);
-							}
-						} else return entry.push(`{@indentSubsequent Expert in ${element}}`);
-					});
+					thingArray = thing.e
+					prof = "Expert"
 					break;
 				}
 				case "m": {
-					thing.m.forEach(element => {
-						if (typeof element === "object") {
-							if (element.entry) {
-								return entry.push(`{@indentSubsequent Master in ${element.entry}}`);
-							} else {
-								return entry.push(`{@indentSubsequent Master in ${element.skill.map(s => `${s}`).joinConjunct(", ", " or ")}}`);
-							}
-						} else return entry.push(`{@indentSubsequent Master in ${element}}`);
-					});
+					thingArray = thing.m
+					prof = "Master"
 					break;
 				}
 				case "l": {
-					thing.l.forEach(element => {
-						if (typeof element === "object") {
-							if (element.entry) {
-								return entry.push(`{@indentSubsequent Legendary in ${element.entry}}`);
-							} else {
-								return entry.push(`{@indentSubsequent Legendary in ${element.skill.map(s => `${s}`).joinConjunct(", ", " or ")}}`);
-							}
-						} else return entry.push(`{@indentSubsequent Legendary in ${element}}`);
-					});
+					thingArray = thing.l
+					prof = "Legendary"
 					break;
 				}
 				case "add": return entry.push(`{@indentSubsequent Trained in a number of additional skills equal to ${thing.add} plus your Intelligence modifier}`);
 				default:
 			}
+			thingArray.forEach(element => {
+				if (typeof element === "object") {
+					if (element.entry) {
+						return entry.push(`{@indentSubsequent ${prof} in ${element.entry}}`);
+					} else {
+						return entry.push(`{@indentSubsequent ${prof} in your choice of ${element.skill.map(s => `{@skill ${s}}`).joinConjunct(", ", " or ")}}`);
+					}
+				} else return entry.push(`{@indentSubsequent ${prof} in ${element}}`);
+			});
 		});
 	}
 

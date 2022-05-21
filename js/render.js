@@ -378,7 +378,7 @@ function Renderer () {
 					this._renderData(entry, textStack, meta, options);
 					break;
 				case "statblock":
-					console.log(`Statblock entries should be removed!`)
+					console.warn(`Statblock entries should be removed!`)
 					this._renderStatblock(entry, textStack, meta, options);
 					break;
 
@@ -3524,10 +3524,10 @@ Renderer.action = {
 		if (it.actionType) {
 			if (it.actionType.skill) {
 				renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Skill&nbsp;</strong>`);
-				if (it.actionType.skill.untrained) renderStack.push(`${renderer.render(`${it.actionType.skill.untrained.map(a => `{@skill ${a}}`).join(", ")} (untrained)`)}`)
-				if (it.actionType.skill.trained) renderStack.push(`${renderer.render(`${it.actionType.skill.trained.map(a => `{@skill ${a}}`).join(", ")} (trained)`)}`)
-				if (it.actionType.skill.expert) renderStack.push(`${renderer.render(`${it.actionType.skill.expert.map(a => `{@skill ${a}}`).join(", ")} (expert)`)}`)
-				if (it.actionType.skill.legendary) renderStack.push(`${renderer.render(`${it.actionType.skill.legendary.map(a => `{@skill ${a}}`).join(", ")} (legendary)`)}`)
+				if (it.actionType.skill.untrained) renderStack.push(`${renderer.render(`${it.actionType.skill.untrained.map(a => `{@skill ${a.toTitleCase()}}`).join(", ")} (untrained)`)}`)
+				if (it.actionType.skill.trained) renderStack.push(`${renderer.render(`${it.actionType.skill.trained.map(a => `{@skill ${a.toTitleCase()}}`).join(", ")} (trained)`)}`)
+				if (it.actionType.skill.expert) renderStack.push(`${renderer.render(`${it.actionType.skill.expert.map(a => `{@skill ${a.toTitleCase()}}`).join(", ")} (expert)`)}`)
+				if (it.actionType.skill.legendary) renderStack.push(`${renderer.render(`${it.actionType.skill.legendary.map(a => `{@skill ${a.toTitleCase()}}`).join(", ")} (legendary)`)}`)
 				renderStack.push(`</p>`)
 			}
 			if (it.actionType.class) {
