@@ -5482,7 +5482,7 @@ Renderer.spell = {
 	getSubHead (sp) {
 		const renderer = Renderer.get()
 
-		const componentsRender = sp.components.length === 1 ? Object.keys(sp.components[0]).filter(it => sp.components[0][it]).map(it => Parser.COMPONENTS_TO_FULL[it]) : "";
+		const componentsRender = sp.components.length === 1 ? Object.keys(sp.components[0]).filter(it => sp.components[0][it]).map(it => Parser.COMPONENTS_TO_FULL[it]).join(", ") : "";
 
 		let castPart = ``;
 		if (sp.cost != null) castPart += `; <strong>Cost&nbsp;</strong>${renderer.render(sp.cost)}`;
