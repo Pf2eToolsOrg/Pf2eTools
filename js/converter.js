@@ -201,6 +201,17 @@ class Converter {
 		return PropOrder.getOrdered(background, "background");
 	}
 
+	// FIXME: Reverted to the previous version of _parseTraits.
+	_parseTraits () {
+		const out = [];
+		while (this._tokenIsType(this._tokenizerUtils.traits)) {
+			const traitToken = this._consumeToken(this._tokenizerUtils.traits);
+			out.push(traitToken.value.trim().toLowerCase());
+		}
+		return out;
+	}
+
+	/* TODO: See the function below this one and see what's wrong with it. It keeps returning undefined and [] at all times.
 	_parseTraits (obj, opts) {
 		opts = opts || {};
 		const traits = [];
@@ -211,6 +222,7 @@ class Converter {
 		if (opts.noEmptyArr && traits.length === 0) return;
 		obj.traits = traits;
 	}
+	*/
 
 	_parseProperties (obj) {
 		while (this._tokenStack.length) {
