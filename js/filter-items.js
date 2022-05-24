@@ -97,7 +97,11 @@ class PageFilterItems extends PageFilter {
 			labels: ["0 gp", "5 gp", "10 gp", "25 gp", "50 gp", "100 gp", "250 gp", "500 gp", "750 gp", "1,000 gp", "2,500 gp", "5,000 gp", "10,000 gp", "25,000 gp", "50,000 gp", "100,000 gp", "100,000+ gp"],
 			labelSortFn: null,
 		});
-		this._bulkFilter = new RangeFilter({header: "Bulk"});
+		this._bulkFilter = new RangeFilter({header: "Bulk",
+			isLabelled: true,
+			labels: [],
+			labelDisplayFn: (it) => it === 0.1 ? "L" : it,
+		});
 		this._rangeFilter = new Filter({header: "Weapon Range", items: ["Melee", "Ranged"]});
 		this._shieldACFilter = new Filter({header: "AC Bonus", displayFn: it => `${Parser.numToBonus(it)} AC`});
 		this._hpFilter = new RangeFilter({header: "HP"});
