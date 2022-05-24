@@ -1009,7 +1009,7 @@ class FilterBase extends BaseComponent {
 	}
 
 	_getRenderedHeader () {
-		return `<span ${this._headerHelp ? `title="${this._headerHelp.escapeQuotes()}" class="help--subtle"` : ""}>${this.header}</span>`;
+		return `<span ${this._headerHelp ? `title="${this._headerHelp.escapeQuotes()}" class="help--subtle"` : ""}>${this.header}${this._headerHelp ? ` <sup>[?]</sup>` : ""}</span>`;
 	}
 
 	set filterBox (it) { this._filterBox = it; }
