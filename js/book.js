@@ -56,7 +56,6 @@ function addBooks (data) {
 	let tempString = "";
 	for (; bkI < books.length; bkI++) {
 		const book = books[bkI];
-
 		tempString += BookUtil.getContentsItem(bkI, book, {book, addOnclick: true, defaultHeadersHidden: true});
 	}
 	allContents.append(tempString);

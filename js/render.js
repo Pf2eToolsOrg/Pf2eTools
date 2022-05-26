@@ -1276,9 +1276,9 @@ function Renderer () {
 			this._recursiveRender(entry.entries[i], textStack, meta, { prefix: "<i>", suffix: "</i>" });
 			textStack[0] += `${i === len - 1 && !entry.skipMarks ? "&rdquo;" : ""}</p>`;
 		}
-		if (entry.by || entry.from) {
+		if (entry.by || entry.source) {
 			textStack[0] += `<p> <span class="rd__quote-by">\u2014 `;
-			textStack[0] += `${entry.by != null ? `${renderer.render(entry.by)}` : ""}${entry.from ? `, <i>${renderer.render(entry.from)}</i>` : ""}</span>`;
+			textStack[0] += `${entry.by != null ? `${renderer.render(entry.by)}` : entry.source != null ? `${Parser.sourceJsonToFull(entry.source)}` : ""}${entry.from ? `, <i>${renderer.render(entry.from)}</i>` : entry.source && entry.page ? `, <i>p. ${entry.page}</i>` : ""}</span>`;
 			textStack[0] += `</p>`;
 		}
 	};
