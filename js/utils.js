@@ -279,6 +279,7 @@ CleanUtil = {
 		if (isJsonDump) {
 			return str
 				.replace(CleanUtil.STR_REPLACEMENTS_REGEX, (match) => CleanUtil.STR_REPLACEMENTS[match])
+				.replace(/"traits":(\[.*?\])/g, (match) => match.toLowerCase());
 		} else {
 			return str
 				.replace(CleanUtil.JSON_REPLACEMENTS_REGEX, (match) => CleanUtil.JSON_REPLACEMENTS[match])
