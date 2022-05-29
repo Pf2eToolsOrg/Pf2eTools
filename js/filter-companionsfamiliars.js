@@ -3,15 +3,23 @@
 class PageFilterCompanionsFamiliars extends PageFilter {
 	constructor () {
 		super();
-		this._typeFilter = new Filter({header: "Type"});
-		this._traitsFilter = new TraitsFilter({header: "Traits"});
-		this._skillFilter = new Filter({header: "Skills"});
-		this._strengthFilter = new RangeFilter({header: "Strength", min: -5, max: 5});
-		this._dexterityFilter = new RangeFilter({header: "Dexterity", min: -5, max: 5});
-		this._constitutionFilter = new RangeFilter({header: "Constitution", min: -5, max: 5});
-		this._intelligenceFilter = new RangeFilter({header: "Intelligence", min: -5, max: 5});
-		this._wisdomFilter = new RangeFilter({header: "Wisdom", min: -5, max: 5});
-		this._charismaFilter = new RangeFilter({header: "Charisma", min: -5, max: 5});
+		this._typeFilter = new Filter({ header: "Type" });
+		this._traitsFilter = new TraitsFilter({
+			header: "Traits",
+			filterOpts: {
+				"Alignment": {
+					displayFn: Parser.alignAbvToFull,
+					itemSortFn: SortUtil.ascSort,
+				},
+			},
+		});
+		this._skillFilter = new Filter({ header: "Skills" });
+		this._strengthFilter = new RangeFilter({ header: "Strength", min: -5, max: 5 });
+		this._dexterityFilter = new RangeFilter({ header: "Dexterity", min: -5, max: 5 });
+		this._constitutionFilter = new RangeFilter({ header: "Constitution", min: -5, max: 5 });
+		this._intelligenceFilter = new RangeFilter({ header: "Intelligence", min: -5, max: 5 });
+		this._wisdomFilter = new RangeFilter({ header: "Wisdom", min: -5, max: 5 });
+		this._charismaFilter = new RangeFilter({ header: "Charisma", min: -5, max: 5 });
 		this._abilityFilter = new MultiFilter({
 			header: "Ability Modifiers",
 			filters: [this._strengthFilter, this._dexterityFilter, this._constitutionFilter, this._intelligenceFilter, this._wisdomFilter, this._charismaFilter],
@@ -31,10 +39,10 @@ class PageFilterCompanionsFamiliars extends PageFilter {
 			header: "Speeds",
 			filters: [this._speedFilter, this._speedTypeFilter],
 		});
-		this._requiredFilter = new RangeFilter({header: "Required Number of Abilities"});
-		this._grantedFilter = new Filter({header: "Granted Abilities", displayFn: StrUtil.toTitleCase});
-		this._traditionFilter = new Filter({header: "Tradition", displayFn: StrUtil.toTitleCase});
-		this._languageFilter = new Filter({header: "Languages", displayFn: StrUtil.toTitleCase});
+		this._requiredFilter = new RangeFilter({ header: "Required Number of Abilities" });
+		this._grantedFilter = new Filter({ header: "Granted Abilities", displayFn: StrUtil.toTitleCase });
+		this._traditionFilter = new Filter({ header: "Tradition", displayFn: StrUtil.toTitleCase });
+		this._languageFilter = new Filter({ header: "Languages", displayFn: StrUtil.toTitleCase });
 		this._preciseSenseFilter = new Filter({
 			header: "Precise Senses",
 			displayFn: (x) => x.uppercaseFirst(),
@@ -55,7 +63,7 @@ class PageFilterCompanionsFamiliars extends PageFilter {
 			header: "Senses",
 			filters: [this._preciseSenseFilter, this._impreciseSenseFilter, this._vagueSenseFilter, this._otherSenseFilter],
 		});
-		this._miscFilter = new Filter({header: "Miscellaneous"});
+		this._miscFilter = new Filter({ header: "Miscellaneous" });
 	}
 
 	mutateForFilters (it) {
@@ -88,7 +96,7 @@ class PageFilterCompanionsFamiliars extends PageFilter {
 			it._fWis = Math.floor((Math.max(...it.stats.map(s => s.abilityMods.Wis)) - 10) / 2);
 			it._fCha = Math.floor((Math.max(...it.stats.map(s => s.abilityMods.Cha)) - 10) / 2);
 		}
-		it._fSenses = {precise: [], imprecise: [], vague: [], other: []}
+		it._fSenses = { precise: [], imprecise: [], vague: [], other: [] }
 		if (it.senses) {
 			it._fSenses.precise.push(...(it.senses.precise || []).map(s => Renderer.stripTags(s).replace(/\s(?:\d|\().+/, "")));
 			it._fSenses.imprecise.push(...(it.senses.imprecise || []).map(s => Renderer.stripTags(s).replace(/\s(?:\d|\().+/, "").replace(/within.+/, "")));

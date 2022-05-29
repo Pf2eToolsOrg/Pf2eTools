@@ -4025,7 +4025,7 @@ Renderer.eidolon = {
 		${Renderer.utils.getNameDiv(eidolon, { type: "Eidolon", ...opts })}
 		${Renderer.utils.getDividerDiv()}
 		${Renderer.utils.getTraitsDiv(eidolon.traits)}
-		${eidolon.tradition ? `<p class="pf2-stat pf2-stat__section"><strong>Tradition&nbsp;</strong>${renderer.render(eidolon.tradition)}</p>` : ""}
+		${eidolon.tradition ? `<p class="pf2-stat pf2-stat__section"><strong>Tradition&nbsp;</strong>${renderer.render(eidolon.tradition)} ${renderer.render(eidolon.traditionNote)}</p>` : ""}
 		${eidolon.alignment ? `<p class="pf2-stat pf2-stat__section"><strong>Alignment&nbsp;</strong>${renderer.render(eidolon.alignment)}</p>` : ""}
 		${eidolon.home ? `<p class="pf2-stat pf2-stat__section"><strong>Home Plane&nbsp;</strong>${renderer.render(eidolon.home)}</p>` : ""}
 		${Renderer.utils.getDividerDiv()}
