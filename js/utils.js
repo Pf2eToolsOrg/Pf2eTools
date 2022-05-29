@@ -4601,14 +4601,15 @@ BrewUtil = {
 			}
 		}
 
-		if (sc) {
+		// FIXME: What is this for? It breaks the class page when you have homebrew automatically loaded.
+		/* if (sc) {
 			const forClass = sc.class;
 			BrewUtil.homebrew.subclass.splice(index, 1);
 			BrewUtil._persistHomebrewDebounced();
 
 			if (typeof ClassesPage === "undefined") return;
 			await classesPage.pDeleteSubclassBrew(uniqueId, sc);
-		}
+		} */
 	},
 
 	_genPDeleteGenericBrew (category) {
