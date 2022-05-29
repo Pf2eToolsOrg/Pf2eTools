@@ -109,14 +109,14 @@ class PageFilterSpells extends PageFilter {
 		// used for sorting
 		spell._normalisedTime = Parser.getNormalisedTime(spell.cast);
 		spell._normalisedRange = Parser.getNormalisedRange(spell.range);
-		spell._normalisedType = spell.traits.includes("Cantrip") && spell.focus ? "FC" : spell.traits.includes("Cantrip") ? "C" : spell.focus ? "F" : "S";
+		spell._normalisedType = spell.traits.includes("cantrip") && spell.focus ? "FC" : spell.traits.includes("cantrip") ? "C" : spell.focus ? "F" : "S";
 
 		// used for filtering
 		spell._fSources = SourceFilter.getCompleteFilterSources(spell);
 		spell._fTraditions = (spell.traditions || [])
 			.concat(spell.spellLists || [])
 			.concat(spell.traditions ? spell.traditions.includes("Primal" || "Arcane") ? "Halcyon" : [] : []).map(t => t.toTitleCase());
-		spell._fSpellType = spell.traits.includes("Cantrip") && spell.focus ? ["Focus", "Cantrip"] : spell.traits.includes("Cantrip") ? ["Cantrip"] : spell.focus ? ["Focus"] : ["Spell"];
+		spell._fSpellType = spell.traits.includes("cantrip") && spell.focus ? ["Focus", "Cantrip"] : spell.traits.includes("cantrip") ? ["Cantrip"] : spell.focus ? ["Focus"] : ["Spell"];
 		spell._fTraits = spell.traits.map(t => Parser.getTraitName(t));
 		if (!spell._fTraits.map(t => Renderer.trait.isTraitInCategory(t, "Rarity")).some(Boolean)) spell._fTraits.push("Common");
 		spell._fClasses = spell._fTraits.filter(t => Renderer.trait.isTraitInCategory(t, "Class")) || [];
