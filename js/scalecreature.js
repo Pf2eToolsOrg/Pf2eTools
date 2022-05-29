@@ -577,17 +577,19 @@ class ScaleCreature {
 				if (sc.attack) sc.attack += opts.flatAddProf;
 			});
 		}
-		creature.attacks.forEach(a => {
-			a.attack += opts.flatAddProf;
-			a.damage = a.damage.replace(/(\d+d\d+)([+-]?\d*)/, (formula, formulaNoMod, mod) => {
-				if (!mod) return `${formula}${Parser.numToBonus(opts.flatAddDamage)}`;
-				else {
-					const newMod = Number(mod) + opts.flatAddDamage;
-					if (newMod === 0) return `${formulaNoMod}`;
-					else return `${formulaNoMod}${Parser.numToBonus(newMod)}`;
-				}
+		if (creature.attacks) {
+			creature.attacks.forEach(a => {
+				a.attack += opts.flatAddProf;
+				a.damage = a.damage.replace(/(\d+d\d+)([+-]?\d*)/, (formula, formulaNoMod, mod) => {
+					if (!mod) return `${formula}${Parser.numToBonus(opts.flatAddDamage)}`;
+					else {
+						const newMod = Number(mod) + opts.flatAddDamage;
+						if (newMod === 0) return `${formulaNoMod}`;
+						else return `${formulaNoMod}${Parser.numToBonus(newMod)}`;
+					}
+				});
 			});
-		});
+		}
 		const adjustAbility = (ab) => {
 			const {isLimited, isArea} = this._isAbilityAreaLimited(ab);
 			const bonus = isLimited ? opts.flatAddDamageLimited : opts.flatAddDamage;
@@ -616,9 +618,9 @@ class ScaleCreature {
 			});
 			return ab
 		};
-		creature.abilitiesTop.map(ab => adjustAbility(ab));
-		creature.abilitiesMid.map(ab => adjustAbility(ab));
-		creature.abilitiesBot.map(ab => adjustAbility(ab));
+		if (creature.abilitiesTop) creature.abilitiesTop.map(ab => adjustAbility(ab));
+		if (creature.abilitiesMid) creature.abilitiesMid.map(ab => adjustAbility(ab));
+		if (creature.abilitiesBot) creature.abilitiesBot.map(ab => adjustAbility(ab));
 		return creature;
 	}
 
@@ -642,6 +644,7 @@ class ScaleCreature {
 
 		// Handle singletons, then finally scale the interval [a,b] to [c,d] linearly, and return the scaled value.
 		if (a === b) return a;
+		// CRITICAL FIXME: This rounding is making everything wrong. You could floor it instead but it doesn't alleviate the issue of wrong calculations from the start.
 		return Math.round((value - a) * ((d - c) / (b - a)) + c);
 	}
 

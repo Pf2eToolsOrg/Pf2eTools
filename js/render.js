@@ -4084,7 +4084,7 @@ Renderer.condition = {
 
 Renderer.creature = {
 	getRenderedString (cr, opts) {
-		cr = scaleCreature.applyVarRules(cr);
+		cr = scaleCreature._isProfNoLvl ? scaleCreature.applyVarRules(cr) : cr;
 		opts = opts || {};
 		if (opts.showScaler) {
 			opts.$btnResetScaleLvl = opts.$btnResetScaleLvl || Renderer.creature.$getBtnResetScaleLvl(cr);
