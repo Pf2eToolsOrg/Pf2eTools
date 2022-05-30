@@ -342,14 +342,7 @@ PropOrder._CREATURE = [
 	"creatureType",
 
 	"perception",
-	new PropOrder._ObjectKey("senses", {
-		order: [
-			"precise",
-			"imprecise",
-			"vague",
-			"other",
-		],
-	}),
+	"senses",
 	new PropOrder._ObjectKey("languages", {
 		order: [
 			"languages",

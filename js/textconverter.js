@@ -209,45 +209,54 @@ class ConverterUi extends BaseComponent {
 		$("#parsestatblock").on("click", () => doConversion(false));
 		$(`#parsestatblockadd`).on("click", () => doConversion(true));
 
-		this.initSideMenu();
+		this.initHelp();
+		this.initSettings();
 
 		window.dispatchEvent(new Event("toolsLoaded"));
 	}
 
-	initSideMenu () {
-		const $mnu = $(`.sidemenu`);
+	initHelp () {
+		const $helpButton = $(`#help`);
+		$helpButton.click(() => {
+			const {$modalInner, doClose} = UiUtil.getShowModal({
+				isHeight100: true,
+				isUncappedHeight: true,
+				title: "Help",
+			});
 
-		// TODO: Allow for parsing of any number of different statblocks
-		const $selConverter = ComponentUiUtil.$getSelEnum(
-			this,
-			"converter",
-			{
-				values: [
-					"All",
-				],
-				html: `<select class="form-control input-sm"/>`,
-			},
-		);
+			// TODO:
+			$$`<p>Insightful help text.</p>`.appendTo($modalInner);
 
-		$$`<div class="sidemenu__row split-v-center"><div class="sidemenu__row__label">Mode</div>${$selConverter}</div>`
-			.appendTo($mnu);
-
-		ConverterUiUtil.renderSideMenuDivider($mnu);
-
-		const $wrpSourcePart = $(`<div class="w-100 ve-flex-col"/>`).appendTo($mnu);
-		const pod = this.getPod();
-		this._renderSidebarPagePart(pod, $wrpSourcePart);
-		this._renderSidebarSourcePart(pod, $wrpSourcePart);
+			$(`<button class="btn btn-sm btn-primary mt-auto mb-2 w-20 flex-h-center center-block">OK</button>`).click(doClose).appendTo($modalInner);
+		})
 	}
 
-	_renderSidebarPagePart (parent, $wrpSidebar) {
+	initSettings () {
+		const $settingsButton = $(`#settings`);
+		$settingsButton.click(() => {
+			const {$modalInner, doClose} = UiUtil.getShowModal({
+				isHeight100: true,
+				isUncappedHeight: true,
+				title: "Settings",
+			});
+
+			const $wrpSourcePart = $(`<div class="w-100 ve-flex-col mt-2"/>`).appendTo($modalInner);
+			const pod = this.getPod();
+			this._renderSettingsSourcePart(pod, $wrpSourcePart);
+			this._renderSettingsPagePart(pod, $wrpSourcePart);
+			ConverterUiUtil.renderSideMenuDivider($modalInner);
+			this._renderSettingsSelectMode(pod, $wrpSourcePart);
+
+			$(`<button class="btn btn-sm btn-primary mt-auto mb-2 w-20 flex-h-center center-block">OK</button>`).click(doClose).appendTo($modalInner);
+		})
+	}
+
+	_renderSettingsPagePart (parent, $wrp) {
 		const $iptPage = ComponentUiUtil.$getIptInt(this, "page", 0, {html: `<input class="form-control input-sm text-right" style="max-width: 9rem;">`});
-		$$`<div class="sidemenu__row split-v-center"><div class="sidemenu__row__label">Initial Page</div>${$iptPage}</div>`.appendTo($wrpSidebar);
-
-		ConverterUiUtil.renderSideMenuDivider($wrpSidebar);
+		$$`<div class="w-100 mb-2 split-v-center"><div class="pr-2">Initial Page</div>${$iptPage}</div>`.appendTo($wrp);
 	}
 
-	_renderSidebarSourcePart (parent, $wrpSidebar) {
+	_renderSettingsSourcePart (parent, $wrp) {
 		const $wrpSourceOverlay = $(`<div class="h-100 w-100"/>`);
 		let modalMeta = null;
 
@@ -286,8 +295,9 @@ class ConverterUi extends BaseComponent {
 		Object.keys(Parser.SOURCE_JSON_TO_FULL)
 			.forEach(src => $(`<option/>`, {val: src, text: Parser.sourceJsonToFull(src)}).appendTo($selSource));
 
-		$$`<div class="sidemenu__row split-v-center"><div class="sidemenu__row__label">Source</div>${$selSource}</div>`.appendTo($wrpSidebar);
+		$$`<div class="w-100 mb-2 split-v-center"><div class="pr-2">Source</div>${$selSource}</div>`.appendTo($wrp);
 
+		// TODO: Delete Source?
 		const $btnSourceEdit = $(`<button class="btn btn-default btn-sm mr-2">Edit Selected Source</button>`)
 			.click(() => {
 				const curSourceJson = this._state.source;
@@ -306,7 +316,6 @@ class ConverterUi extends BaseComponent {
 				});
 				$wrpSourceOverlay.appendTo(modalMeta.$modalInner);
 			});
-		$$`<div class="sidemenu__row">${$btnSourceEdit}</div>`.appendTo($wrpSidebar);
 
 		const $btnSourceAdd = $(`<button class="btn btn-default btn-sm">Add New Source</button>`).click(() => {
 			rebuildStageSource({mode: "add"});
@@ -317,7 +326,7 @@ class ConverterUi extends BaseComponent {
 			});
 			$wrpSourceOverlay.appendTo(modalMeta.$modalInner);
 		});
-		$$`<div class="sidemenu__row">${$btnSourceAdd}</div>`.appendTo($wrpSidebar);
+		$$`<div class="w-100 text-right mb-2">${$btnSourceEdit}${$btnSourceAdd}</div>`.appendTo($wrp);
 
 		const hkSource = () => {
 			$selSource.val(this._state.source);
@@ -356,8 +365,10 @@ class ConverterUi extends BaseComponent {
 		};
 		parent.addHook("availableSources", hkAvailSources);
 		hkAvailSources();
+	}
 
-		ConverterUiUtil.renderSideMenuDivider($wrpSidebar);
+	_renderSettingsSelectMode (parent, $wrp) {
+		// TODO:
 	}
 
 	showWarning (text) {
@@ -368,7 +379,8 @@ class ConverterUi extends BaseComponent {
 	doCleanAndOutput (obj, append) {
 		if (append) {
 			// FIXME: Check if this._outText is malformed
-			const out = MiscUtil.merge(JSON.parse(this._outText), obj);
+			const mergeWith = this._outText.length ? JSON.parse(this._outText) : {};
+			const out = MiscUtil.merge(mergeWith, obj);
 			this._outText = CleanUtil.getCleanJson(out);
 		} else {
 			this._outText = CleanUtil.getCleanJson(obj);
@@ -380,7 +392,7 @@ class ConverterUi extends BaseComponent {
 	get _outText () { return this._editorOut.getValue(); }
 	set _outText (text) { this._editorOut.setValue(text, -1); }
 
-	get inText () { return CleanUtil.getCleanString((this._editorIn.getValue() || "").trim()); }
+	get inText () { return this._editorIn.getValue(); }
 	set inText (text) { this._editorIn.setValue(text, -1); }
 
 	_getDefaultState () { return MiscUtil.copy(ConverterUi._DEFAULT_STATE); }

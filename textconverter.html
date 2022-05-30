@@ -118,14 +118,6 @@
 
 <body>
 <div class="viewport-wrapper">
-	<div class="sidemenu__toggle">
-		<div class="sidemenu__hotzone"></div>
-		<div class="sidemenu__burger"></div>
-		<div class="sidemenu__burger"></div>
-		<div class="sidemenu__burger"></div>
-		<div class="sidemenu"></div>
-	</div>
-
 	<header class="hidden-xs hidden-sm page__header">
 		<div class="container">
 
@@ -143,9 +135,15 @@
 		<div class="view-col">
 			<h3 class="conv__head">Input</h3>
 			<pre id="converter_input" class="inputArea ace_editor"></pre>
-			<div class="text-right">
-				<button id="parsestatblock" class="btn btn-sm btn-default">Parse</button>
-				<button id="parsestatblockadd" class="btn btn-sm btn-default">Parse and Add</button>
+			<div class="split conv__out_control__wrp pr-0">
+				<div>
+					<button id="help" class="btn btn-sm btn-default">Help</button>
+					<button id="settings" class="btn btn-sm btn-default"><span class="glyphicon glyphicon-cog"></span> Settings</button>
+				</div>
+				<div>
+					<button id="parsestatblock" class="btn btn-sm btn-default">Parse</button>
+					<button id="parsestatblockadd" class="btn btn-sm btn-default">Parse and Add</button>
+				</div>
 			</div>
 		</div>
 

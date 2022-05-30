@@ -628,7 +628,7 @@ class ScaleCreature {
 		const rangesIn = map[lvlIn];
 		const toRanges = map[toLvl];
 		const lowerIdx = rangesIn.findIndex(it => it < value);
-		const upperIdx = rangesIn.length - 1 - rangesIn.reverse().findIndex(it => it >= value);
+		const upperIdx = rangesIn.length - 1 - MiscUtil.copy(rangesIn).reverse().findIndex(it => it >= value);
 
 		const a = rangesIn[lowerIdx] || 0;
 		const b = rangesIn[upperIdx] || value;
