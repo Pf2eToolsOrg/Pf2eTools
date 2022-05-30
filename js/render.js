@@ -3749,7 +3749,7 @@ Renderer.archetype = {
 		return `${renderer.render({ type: "pf2-h3", name: archetype.name })}
 		${renderer.render(archetype.entries)}`;
 	},
-}
+};
 
 Renderer.background = {
 	getRenderedString (bg, opts) {
@@ -3775,173 +3775,6 @@ Renderer.background = {
 		});
 	},
 };
-
-Renderer.place = {
-	getRenderedString (it, opts) {
-		if (it.category.toLowerCase() === "plane") return Renderer.plane.getRenderedString(it, opts)
-		if (it.category.toLowerCase() === "settlement") return Renderer.settlement.getRenderedString(it, opts)
-		if (it.category.toLowerCase() === "nation") return Renderer.nation.getRenderedString(it, opts)
-	},
-}
-
-Renderer.settlement = {
-	getRenderedString (it, opts) {
-		const renderer = Renderer.get().setFirstSection(true);
-		const renderStack = [];
-		renderer.recursiveRender(it.entries, renderStack, { pf2StatFix: true });
-
-		renderStack.push(Renderer.utils.getExcludedDiv(it, "settlement", UrlUtil.PG_SETTLEMENTS))
-		renderStack.push(Renderer.utils.getNameDiv(it, { page: UrlUtil.PG_SETTLEMENTS, type: "SETTLEMENT", ...opts }))
-		renderStack.push(Renderer.utils.getDividerDiv())
-		renderStack.push(Renderer.utils.getTraitsDiv(it.traits || []))
-		renderStack.push(Renderer.settlement.getSubHeadTop(it))
-		renderStack.push(Renderer.settlement.getSubHeadBot(it))
-		renderStack.push(Renderer.nation.getResidents(it))
-		renderStack.push(Renderer.utils.getPageP(it))
-		return renderStack.join("")
-	},
-	getSubHeadTop (it) {
-		const renderer = Renderer.get()
-		const renderStack = []
-		if (it.description) renderStack.push(`<p class="pf2-stat pf2-stat__section">${it.description}</p>`)
-		if (it.settlementData.government) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Government&nbsp;</strong>${it.settlementData.government}</p>`)
-		if (it.settlementData.population) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Population&nbsp;</strong>${Renderer.settlement.getPopulation(it.settlementData.population)}</p>`)
-		if (it.settlementData.languages) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Languages&nbsp;</strong>${renderer.renderJoinCommaOrSemi(it.settlementData.languages)}</p>`)
-		renderStack.push(Renderer.utils.getDividerDiv())
-		return renderStack.join("")
-	},
-	getSubHeadBot (it) {
-		const renderer = Renderer.get()
-		const renderStack = []
-		if (it.settlementData.religions) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Religions&nbsp;</strong>${renderer.renderJoinCommaOrSemi(it.settlementData.religions)}</p>`)
-		if (it.settlementData.threats) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Threats&nbsp;</strong>${renderer.renderJoinCommaOrSemi(it.settlementData.threats)}</p>`)
-		if (it.settlementData.features) renderStack.push(renderer.render(Renderer.nation.getFeatures(it.settlementData)))
-		renderStack.push(Renderer.utils.getDividerDiv())
-		return renderStack.join("")
-	},
-	getPopulation (it) {
-		const renderer = Renderer.get()
-		const renderStack = []
-		const textStack = []
-		renderStack.push(`${it.total.toLocaleString()}`)
-		if (it.ancestries) {
-			renderStack.push(` (`)
-			for (const [key, value] of Object.entries(it.ancestries)) {
-				textStack.push(renderer.render(`{@dice ${it.total}*${(value) / 100}|${value}%} ${key}`))
-			}
-			renderStack.push(textStack.join(", "))
-			renderStack.push(`)`)
-		}
-		return renderStack.join("")
-	},
-}
-
-Renderer.nation = {
-	getRenderedString (it, opts) {
-		opts = opts | {}
-		const renderer = Renderer.get()
-		const renderStack = []
-		renderStack.push(Renderer.utils.getExcludedDiv(it, "nation", UrlUtil.PLACES))
-		renderStack.push(Renderer.utils.getNameDiv(it, { page: UrlUtil.PLACES, type: "NATION", ...opts }))
-		renderStack.push(Renderer.utils.getDividerDiv())
-		renderStack.push(Renderer.utils.getTraitsDiv(it.traits || []))
-		renderStack.push(Renderer.nation.getSubHeadTop(it))
-		renderStack.push(Renderer.nation.getSubHeadBot(it))
-		renderStack.push(Renderer.nation.getResidents(it))
-		renderStack.push(Renderer.utils.getPageP(it))
-		return renderStack.join("");
-	},
-	getSubHeadTop (it) {
-		const renderer = Renderer.get()
-		const renderStack = []
-		if (it.description) renderStack.push(`<p class="pf2-stat pf2-stat__section">${it.description}</p>`)
-		if (it.nationData.government) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Government&nbsp;</strong>${it.nationData.government}</p>`)
-		if (it.nationData.capital) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Capital&nbsp;</strong>${it.nationData.capital.name} (${it.nationData.capital.total.toLocaleString()})</p>`)
-		if (it.nationData.population) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Population&nbsp;</strong>${renderer.renderJoinCommaOrSemi(it.nationData.population)}</p>`)
-		if (it.nationData.languages) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Languages&nbsp;</strong>${renderer.renderJoinCommaOrSemi(it.nationData.languages)}</p>`)
-		if (it.nationData.religions) renderStack.push(renderer.render(Renderer.nation.getReligions(it)))
-		if (it.nationData.features) renderStack.push(renderer.render(Renderer.nation.getFeatures(it.nationData)))
-		renderStack.push(Renderer.utils.getDividerDiv())
-		return renderStack.join("")
-	},
-	getReligions (it) {
-		const renderer = Renderer.get()
-		const renderStack = []
-		renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Religions&nbsp;</strong>`)
-		renderStack.push(it.nationData.religions.map(r => typeof r === "object" ? `{@b ${r.type.toTitleCase()}} ${renderer.renderJoinCommaOrSemi(r.religions)}` : r).join(", "))
-		renderStack.push(`</p>`)
-		return renderStack.join("")
-	},
-	getFeatures (it) {
-		const renderer = Renderer.get()
-		const renderStack = []
-		it.features.forEach(element => {
-			renderStack.push(`<p class="pf2-stat pf2-stat__section">`)
-			renderStack.push(`<strong>${element.name}</strong> ${renderer.render(element.entries)}`)
-			renderStack.push(`</p>`)
-		});
-		return renderStack.join("")
-	},
-	getSubHeadBot (it) {
-		const renderer = Renderer.get()
-		const renderStack = []
-		const data = it.nationData
-		if (data.exports) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Primary&nbsp;Exports&nbsp;</strong>${renderer.renderJoinCommaOrSemi(data.exports)}</p>`)
-		if (data.imports) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Primary&nbsp;Imports&nbsp;</strong>${renderer.renderJoinCommaOrSemi(data.imports)}</p>`)
-		if (data.enemies) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Enemies&nbsp;</strong>${renderer.renderJoinCommaOrSemi(data.enemies)}</p>`)
-		if (data.factions) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Factions&nbsp;</strong>${renderer.renderJoinCommaOrSemi(data.factions)}</p>`)
-		if (data.threats) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Threats&nbsp;</strong>${renderer.renderJoinCommaOrSemi(data.threats)}</p>`)
-		if (renderStack.length !== 0) renderStack.push(Renderer.utils.getDividerDiv())
-		return renderStack.join("")
-	},
-	getResidents (it) {
-		const renderer = Renderer.get()
-		const renderStack = []
-		it.residents.forEach(element => {
-			const residentStack = []
-			renderStack.push(`<p class="pf2-stat pf2-stat__section">`)
-			renderStack.push(renderer.render(`<strong>${element.name}</strong> `))
-			if (element.alignment || element.gender || element.ancestry || element.position) {
-				renderStack.push(`(`)
-				if (element.alignment) residentStack.push(`{@trait ${element.alignment}}`)
-				if (element.gender) residentStack.push(Parser.genderToFull(element.gender))
-				if (element.ancestry) residentStack.push(element.ancestry)
-				if (element.position) residentStack.push(element.position)
-				if (element.level) residentStack.push(element.level)
-				renderStack.push(residentStack.join(" "))
-				renderStack.push(`) `)
-			}
-			if (element.bond) renderStack.push(element.bond)
-			renderStack.push(`</p>`)
-		});
-		return renderer.render(renderStack.join(""))
-	},
-}
-
-Renderer.plane = {
-	getRenderedString (it, opts) {
-		opts = opts | {}
-		const renderer = Renderer.get()
-		const renderStack = []
-		renderStack.push(Renderer.utils.getExcludedDiv(it, "plane", UrlUtil.PLACES))
-		renderStack.push(Renderer.utils.getNameDiv(it, { page: UrlUtil.PLACES, type: "PLANE", ...opts }))
-		renderStack.push(Renderer.utils.getDividerDiv())
-		renderStack.push(Renderer.utils.getTraitsDiv(it.traits || []))
-		renderStack.push(Renderer.plane.getSubHead(it))
-		renderer.recursiveRender(it.entries, renderStack, { pf2StatFix: true })
-		renderStack.push(Renderer.utils.getPageP(it))
-		return renderStack.join("");
-	},
-	getSubHead (it) {
-		const renderer = Renderer.get()
-		const renderStack = []
-		renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Category&nbsp;</strong>${it.planeData.category.toTitleCase()} Plane</p>`)
-		renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Divinities&nbsp;</strong>${renderer.renderJoinCommaOrSemi(it.planeData.divinities)}</p>`)
-		renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Native Inhabitants&nbsp;</strong>${renderer.renderJoinCommaOrSemi(it.planeData.inhabitants)}</p>`)
-		renderStack.push(Renderer.utils.getDividerDiv())
-		return renderStack.join("")
-	},
-}
 
 Renderer.companionfamiliar = {
 	getRenderedString (it, opts) {
@@ -4084,7 +3917,7 @@ Renderer.condition = {
 
 Renderer.creature = {
 	getRenderedString (cr, opts) {
-		cr = scaleCreature._isProfNoLvl ? scaleCreature.applyVarRules(cr) : cr;
+		cr = scaleCreature.applyVarRules(cr);
 		opts = opts || {};
 		if (opts.showScaler) {
 			opts.$btnResetScaleLvl = opts.$btnResetScaleLvl || Renderer.creature.$getBtnResetScaleLvl(cr);
@@ -4687,80 +4520,6 @@ Renderer.deity = {
 	},
 };
 
-Renderer.organization = {
-	getRenderedString (organization, opts) {
-		opts = opts || {};
-		return `
-			${Renderer.utils.getExcludedDiv(organization, "organization", UrlUtil.PG_ORGANIZATIONS)}
-			${Renderer.utils.getNameDiv(organization, { type: `${organization.alignment && organization.alignment.length === 1 ? `${organization.alignment[0]}` : ""} organization`, ...opts })}
-			${Renderer.utils.getDividerDiv()}
-			${Renderer.utils.getTraitsDiv(organization.traits || [])}
-			${Renderer.organization.getTitleScopeGoals(organization)}
-			${Renderer.utils.getDividerDiv()}
-			${Renderer.organization.getDetails(organization)}
-			${Renderer.utils.getDividerDiv()}
-			${Renderer.organization.getMembership(organization)}
-			${opts.noPage ? "" : Renderer.utils.getPageP(organization)}`;
-	},
-
-	getTitleScopeGoals (organization) {
-		let out = [];
-		const renderer = Renderer.get();
-		if (organization.title) out.push(`<p class="pf2-stat__section"><i>${organization.title.join(", ")}</i></p>`);
-		if (organization.scope) out.push(`<p class="pf2-stat__section"><strong>Scope and Influence&nbsp;</strong>${renderer.renderJoinCommaOrSemi(organization.scope)}</p>`);
-		if (organization.goals) out.push(`<p class="pf2-stat__section"><strong>Goals&nbsp;</strong>${renderer.renderJoinCommaOrSemi(organization.goals)}</p>`);
-		return out.join("");
-	},
-
-	getDetails (organization) {
-		let out = [];
-		const renderer = Renderer.get();
-		if (organization.headquarters) out.push(`<p class="pf2-stat__section"><strong>Headquarters&nbsp;</strong>${renderer.renderJoinCommaOrSemi(organization.headquarters)}</p>`);
-		if (organization.keyMembers) out.push(`<p class="pf2-stat__section"><strong>Key Members&nbsp;</strong>${renderer.renderJoinCommaOrSemi(organization.keyMembers)}</p>`);
-		if (organization.allies) out.push(`<p class="pf2-stat__section"><strong>Allies&nbsp;</strong>${renderer.renderJoinCommaOrSemi(organization.allies)}</p>`);
-		if (organization.enemies) out.push(`<p class="pf2-stat__section"><strong>Enemies&nbsp;</strong>${renderer.renderJoinCommaOrSemi(organization.enemies)}</p>`);
-		if (organization.assets) out.push(`<p class="pf2-stat__section"><strong>Assets&nbsp;</strong>${renderer.renderJoinCommaOrSemi(organization.assets)}</p>`);
-		return out.join("")
-	},
-
-	getMembership (organization) {
-		let out = [];
-		const renderer = Renderer.get();
-		if (organization.requirements) out.push(`<p class="pf2-stat__section"><strong>Membership Requirements&nbsp;</strong>${renderer.renderJoinCommaOrSemi(organization.requirements)}</p>`);
-		if (organization.followerAlignment) {
-			out.push(`<p class="pf2-stat__section"><strong>Accepted Alignments&nbsp;</strong>${renderer.render(organization.followerAlignment.map(it => it.entry ? it.entry : `{@trait ${it.main}}${it.secondaryCustom ? ` (${it.secondaryCustom})` : it.secondary ? ` (${it.secondary.map(it => `{@trait ${it}}`).join(", ")}${it.note ? `; ${it.note}` : ""})` : ""}`).join(", "))}</p>`);
-		}
-		if (organization.values) out.push(`<p class="pf2-stat__section"><strong>Values&nbsp;</strong>${renderer.renderJoinCommaOrSemi(organization.values)}</p>`);
-		if (organization.anathema) out.push(`<p class="pf2-stat__section"><strong>Anathema&nbsp;</strong>${renderer.renderJoinCommaOrSemi(organization.anathema)}</p>`);
-		return out.join("");
-	},
-
-	getRenderedLore (organization) {
-		const textStack = [""];
-		const renderer = Renderer.get().setFirstSection(true);
-		if (organization.lore) organization.lore.forEach(l => renderer.recursiveRender(l, textStack));
-		return textStack.join("");
-	},
-
-	getImage (organization) {
-		const textStack = [""];
-		if (organization.images) {
-			const img = organization.images[0];
-			if (img.includes("2e.aonprd.com")) textStack.push(`<a target="_blank" rel="noopener noreferrer" title="Shift/Ctrl to open in a new window/tab." href="${img}">Images available on the Archives of Nethys.</a>`);
-			else textStack.push(`<p><img style="display: block; margin-left: auto; margin-right: auto; width: 50%;" src="${img}" alt="No Image Found."></p>`);
-		}
-		return textStack.join("");
-	},
-
-	async pGetFluff (organization) {
-		return Renderer.utils.pGetFluff({
-			entity: organization,
-			fluffUrl: `data/fluff-organizations.json`,
-			fluffProp: "organizationFluff",
-		});
-	},
-};
-
 Renderer.domain = {
 	getRenderedString (domain) {
 		// TODO: Add filter link to deities and spells?
@@ -4838,7 +4597,7 @@ Renderer.group = {
 		${textStack.join("")}
 		${Renderer.utils.getPageP(group)}`;
 	},
-}
+};
 
 Renderer.hazard = {
 	getRenderedString (hazard, opts) {
@@ -5348,6 +5107,88 @@ Renderer.language = {
 	},
 };
 
+Renderer.nation = {
+	getRenderedString (it, opts) {
+		opts = opts | {}
+		const renderer = Renderer.get()
+		const renderStack = []
+		renderStack.push(Renderer.utils.getExcludedDiv(it, "nation", UrlUtil.PLACES))
+		renderStack.push(Renderer.utils.getNameDiv(it, { page: UrlUtil.PLACES, type: "NATION", ...opts }))
+		renderStack.push(Renderer.utils.getDividerDiv())
+		renderStack.push(Renderer.utils.getTraitsDiv(it.traits || []))
+		renderStack.push(Renderer.nation.getSubHeadTop(it))
+		renderStack.push(Renderer.nation.getSubHeadBot(it))
+		renderStack.push(Renderer.nation.getResidents(it))
+		renderStack.push(Renderer.utils.getPageP(it))
+		return renderStack.join("");
+	},
+	getSubHeadTop (it) {
+		const renderer = Renderer.get()
+		const renderStack = []
+		if (it.description) renderStack.push(`<p class="pf2-stat pf2-stat__section">${it.description}</p>`)
+		if (it.nationData.government) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Government&nbsp;</strong>${it.nationData.government}</p>`)
+		if (it.nationData.capital) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Capital&nbsp;</strong>${it.nationData.capital.name} (${it.nationData.capital.total.toLocaleString()})</p>`)
+		if (it.nationData.population) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Population&nbsp;</strong>${renderer.renderJoinCommaOrSemi(it.nationData.population)}</p>`)
+		if (it.nationData.languages) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Languages&nbsp;</strong>${renderer.renderJoinCommaOrSemi(it.nationData.languages)}</p>`)
+		if (it.nationData.religions) renderStack.push(renderer.render(Renderer.nation.getReligions(it)))
+		if (it.nationData.features) renderStack.push(renderer.render(Renderer.nation.getFeatures(it.nationData)))
+		renderStack.push(Renderer.utils.getDividerDiv())
+		return renderStack.join("")
+	},
+	getReligions (it) {
+		const renderer = Renderer.get()
+		const renderStack = []
+		renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Religions&nbsp;</strong>`)
+		renderStack.push(it.nationData.religions.map(r => typeof r === "object" ? `{@b ${r.type.toTitleCase()}} ${renderer.renderJoinCommaOrSemi(r.religions)}` : r).join(", "))
+		renderStack.push(`</p>`)
+		return renderStack.join("")
+	},
+	getFeatures (it) {
+		const renderer = Renderer.get()
+		const renderStack = []
+		it.features.forEach(element => {
+			renderStack.push(`<p class="pf2-stat pf2-stat__section">`)
+			renderStack.push(`<strong>${element.name}</strong> ${renderer.render(element.entries)}`)
+			renderStack.push(`</p>`)
+		});
+		return renderStack.join("")
+	},
+	getSubHeadBot (it) {
+		const renderer = Renderer.get()
+		const renderStack = []
+		const data = it.nationData
+		if (data.exports) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Primary&nbsp;Exports&nbsp;</strong>${renderer.renderJoinCommaOrSemi(data.exports)}</p>`)
+		if (data.imports) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Primary&nbsp;Imports&nbsp;</strong>${renderer.renderJoinCommaOrSemi(data.imports)}</p>`)
+		if (data.enemies) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Enemies&nbsp;</strong>${renderer.renderJoinCommaOrSemi(data.enemies)}</p>`)
+		if (data.factions) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Factions&nbsp;</strong>${renderer.renderJoinCommaOrSemi(data.factions)}</p>`)
+		if (data.threats) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Threats&nbsp;</strong>${renderer.renderJoinCommaOrSemi(data.threats)}</p>`)
+		if (renderStack.length !== 0) renderStack.push(Renderer.utils.getDividerDiv())
+		return renderStack.join("")
+	},
+	getResidents (it) {
+		const renderer = Renderer.get()
+		const renderStack = []
+		it.residents.forEach(element => {
+			const residentStack = []
+			renderStack.push(`<p class="pf2-stat pf2-stat__section">`)
+			renderStack.push(renderer.render(`<strong>${element.name}</strong> `))
+			if (element.alignment || element.gender || element.ancestry || element.position) {
+				renderStack.push(`(`)
+				if (element.alignment) residentStack.push(`{@trait ${element.alignment}}`)
+				if (element.gender) residentStack.push(Parser.genderToFull(element.gender))
+				if (element.ancestry) residentStack.push(element.ancestry)
+				if (element.position) residentStack.push(element.position)
+				if (element.level) residentStack.push(element.level)
+				renderStack.push(residentStack.join(" "))
+				renderStack.push(`) `)
+			}
+			if (element.bond) renderStack.push(element.bond)
+			renderStack.push(`</p>`)
+		});
+		return renderer.render(renderStack.join(""))
+	},
+};
+
 Renderer.optionalFeature = {
 	// FIXME: Add prerequisite showing
 	getListPrerequisiteLevelText (prerequisites) {
@@ -5365,6 +5206,113 @@ Renderer.optionalFeature = {
 		${it.traits ? Renderer.utils.getDividerDiv() : it.prerequisite ? Renderer.utils.getDividerDiv() : ""}
 		${Renderer.generic.getRenderedEntries(it)}
 		${opts.noPage ? "" : Renderer.utils.getPageP(it)}`;
+	},
+};
+
+Renderer.organization = {
+	getRenderedString (organization, opts) {
+		opts = opts || {};
+		return `
+			${Renderer.utils.getExcludedDiv(organization, "organization", UrlUtil.PG_ORGANIZATIONS)}
+			${Renderer.utils.getNameDiv(organization, { type: `${organization.alignment && organization.alignment.length === 1 ? `${organization.alignment[0]}` : ""} organization`, ...opts })}
+			${Renderer.utils.getDividerDiv()}
+			${Renderer.utils.getTraitsDiv(organization.traits || [])}
+			${Renderer.organization.getTitleScopeGoals(organization)}
+			${Renderer.utils.getDividerDiv()}
+			${Renderer.organization.getDetails(organization)}
+			${Renderer.utils.getDividerDiv()}
+			${Renderer.organization.getMembership(organization)}
+			${opts.noPage ? "" : Renderer.utils.getPageP(organization)}`;
+	},
+
+	getTitleScopeGoals (organization) {
+		let out = [];
+		const renderer = Renderer.get();
+		if (organization.title) out.push(`<p class="pf2-stat__section"><i>${organization.title.join(", ")}</i></p>`);
+		if (organization.scope) out.push(`<p class="pf2-stat__section"><strong>Scope and Influence&nbsp;</strong>${renderer.renderJoinCommaOrSemi(organization.scope)}</p>`);
+		if (organization.goals) out.push(`<p class="pf2-stat__section"><strong>Goals&nbsp;</strong>${renderer.renderJoinCommaOrSemi(organization.goals)}</p>`);
+		return out.join("");
+	},
+
+	getDetails (organization) {
+		let out = [];
+		const renderer = Renderer.get();
+		if (organization.headquarters) out.push(`<p class="pf2-stat__section"><strong>Headquarters&nbsp;</strong>${renderer.renderJoinCommaOrSemi(organization.headquarters)}</p>`);
+		if (organization.keyMembers) out.push(`<p class="pf2-stat__section"><strong>Key Members&nbsp;</strong>${renderer.renderJoinCommaOrSemi(organization.keyMembers)}</p>`);
+		if (organization.allies) out.push(`<p class="pf2-stat__section"><strong>Allies&nbsp;</strong>${renderer.renderJoinCommaOrSemi(organization.allies)}</p>`);
+		if (organization.enemies) out.push(`<p class="pf2-stat__section"><strong>Enemies&nbsp;</strong>${renderer.renderJoinCommaOrSemi(organization.enemies)}</p>`);
+		if (organization.assets) out.push(`<p class="pf2-stat__section"><strong>Assets&nbsp;</strong>${renderer.renderJoinCommaOrSemi(organization.assets)}</p>`);
+		return out.join("")
+	},
+
+	getMembership (organization) {
+		let out = [];
+		const renderer = Renderer.get();
+		if (organization.requirements) out.push(`<p class="pf2-stat__section"><strong>Membership Requirements&nbsp;</strong>${renderer.renderJoinCommaOrSemi(organization.requirements)}</p>`);
+		if (organization.followerAlignment) {
+			out.push(`<p class="pf2-stat__section"><strong>Accepted Alignments&nbsp;</strong>${renderer.render(organization.followerAlignment.map(it => it.entry ? it.entry : `{@trait ${it.main}}${it.secondaryCustom ? ` (${it.secondaryCustom})` : it.secondary ? ` (${it.secondary.map(it => `{@trait ${it}}`).join(", ")}${it.note ? `; ${it.note}` : ""})` : ""}`).join(", "))}</p>`);
+		}
+		if (organization.values) out.push(`<p class="pf2-stat__section"><strong>Values&nbsp;</strong>${renderer.renderJoinCommaOrSemi(organization.values)}</p>`);
+		if (organization.anathema) out.push(`<p class="pf2-stat__section"><strong>Anathema&nbsp;</strong>${renderer.renderJoinCommaOrSemi(organization.anathema)}</p>`);
+		return out.join("");
+	},
+
+	getRenderedLore (organization) {
+		const textStack = [""];
+		const renderer = Renderer.get().setFirstSection(true);
+		if (organization.lore) organization.lore.forEach(l => renderer.recursiveRender(l, textStack));
+		return textStack.join("");
+	},
+
+	getImage (organization) {
+		const textStack = [""];
+		if (organization.images) {
+			const img = organization.images[0];
+			if (img.includes("2e.aonprd.com")) textStack.push(`<a target="_blank" rel="noopener noreferrer" title="Shift/Ctrl to open in a new window/tab." href="${img}">Images available on the Archives of Nethys.</a>`);
+			else textStack.push(`<p><img style="display: block; margin-left: auto; margin-right: auto; width: 50%;" src="${img}" alt="No Image Found."></p>`);
+		}
+		return textStack.join("");
+	},
+
+	async pGetFluff (organization) {
+		return Renderer.utils.pGetFluff({
+			entity: organization,
+			fluffUrl: `data/fluff-organizations.json`,
+			fluffProp: "organizationFluff",
+		});
+	},
+};
+
+Renderer.place = {
+	getRenderedString (it, opts) {
+		if (it.category.toLowerCase() === "plane") return Renderer.plane.getRenderedString(it, opts)
+		if (it.category.toLowerCase() === "settlement") return Renderer.settlement.getRenderedString(it, opts)
+		if (it.category.toLowerCase() === "nation") return Renderer.nation.getRenderedString(it, opts)
+	},
+};
+
+Renderer.plane = {
+	getRenderedString (it, opts) {
+		opts = opts | {}
+		const renderer = Renderer.get()
+		const renderStack = []
+		renderStack.push(Renderer.utils.getExcludedDiv(it, "plane", UrlUtil.PLACES))
+		renderStack.push(Renderer.utils.getNameDiv(it, { page: UrlUtil.PLACES, type: "PLANE", ...opts }))
+		renderStack.push(Renderer.utils.getDividerDiv())
+		renderStack.push(Renderer.utils.getTraitsDiv(it.traits || []))
+		renderStack.push(Renderer.plane.getSubHead(it))
+		renderer.recursiveRender(it.entries, renderStack, { pf2StatFix: true })
+		renderStack.push(Renderer.utils.getPageP(it))
+		return renderStack.join("");
+	},
+	getSubHead (it) {
+		const renderer = Renderer.get()
+		const renderStack = []
+		renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Category&nbsp;</strong>${it.planeData.category.toTitleCase()} Plane</p>`)
+		renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Divinities&nbsp;</strong>${renderer.renderJoinCommaOrSemi(it.planeData.divinities)}</p>`)
+		renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Native Inhabitants&nbsp;</strong>${renderer.renderJoinCommaOrSemi(it.planeData.inhabitants)}</p>`)
+		renderStack.push(Renderer.utils.getDividerDiv())
+		return renderStack.join("")
 	},
 };
 
@@ -5445,6 +5393,58 @@ Renderer.runeItem = {
 		runeItem.runeItem = true;
 		delete runeItem.equipment;
 		return runeItem;
+	},
+};
+
+Renderer.settlement = {
+	getRenderedString (it, opts) {
+		const renderer = Renderer.get().setFirstSection(true);
+		const renderStack = [];
+		renderer.recursiveRender(it.entries, renderStack, { pf2StatFix: true });
+
+		renderStack.push(Renderer.utils.getExcludedDiv(it, "settlement", UrlUtil.PG_SETTLEMENTS))
+		renderStack.push(Renderer.utils.getNameDiv(it, { page: UrlUtil.PG_SETTLEMENTS, type: "SETTLEMENT", ...opts }))
+		renderStack.push(Renderer.utils.getDividerDiv())
+		renderStack.push(Renderer.utils.getTraitsDiv(it.traits || []))
+		renderStack.push(Renderer.settlement.getSubHeadTop(it))
+		renderStack.push(Renderer.settlement.getSubHeadBot(it))
+		renderStack.push(Renderer.nation.getResidents(it))
+		renderStack.push(Renderer.utils.getPageP(it))
+		return renderStack.join("")
+	},
+	getSubHeadTop (it) {
+		const renderer = Renderer.get()
+		const renderStack = []
+		if (it.description) renderStack.push(`<p class="pf2-stat pf2-stat__section">${it.description}</p>`)
+		if (it.settlementData.government) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Government&nbsp;</strong>${it.settlementData.government}</p>`)
+		if (it.settlementData.population) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Population&nbsp;</strong>${Renderer.settlement.getPopulation(it.settlementData.population)}</p>`)
+		if (it.settlementData.languages) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Languages&nbsp;</strong>${renderer.renderJoinCommaOrSemi(it.settlementData.languages)}</p>`)
+		renderStack.push(Renderer.utils.getDividerDiv())
+		return renderStack.join("")
+	},
+	getSubHeadBot (it) {
+		const renderer = Renderer.get()
+		const renderStack = []
+		if (it.settlementData.religions) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Religions&nbsp;</strong>${renderer.renderJoinCommaOrSemi(it.settlementData.religions)}</p>`)
+		if (it.settlementData.threats) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Threats&nbsp;</strong>${renderer.renderJoinCommaOrSemi(it.settlementData.threats)}</p>`)
+		if (it.settlementData.features) renderStack.push(renderer.render(Renderer.nation.getFeatures(it.settlementData)))
+		renderStack.push(Renderer.utils.getDividerDiv())
+		return renderStack.join("")
+	},
+	getPopulation (it) {
+		const renderer = Renderer.get()
+		const renderStack = []
+		const textStack = []
+		renderStack.push(`${it.total.toLocaleString()}`)
+		if (it.ancestries) {
+			renderStack.push(` (`)
+			for (const [key, value] of Object.entries(it.ancestries)) {
+				textStack.push(renderer.render(`{@dice ${it.total}*${(value) / 100}|${value}%} ${key}`))
+			}
+			renderStack.push(textStack.join(", "))
+			renderStack.push(`)`)
+		}
+		return renderStack.join("")
 	},
 };
 
