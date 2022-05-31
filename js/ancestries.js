@@ -1068,7 +1068,7 @@ class AncestriesPage extends BaseComponent {
 				...boxSubhashes,
 				...cpySubHashes,
 				`flop.ancestries.ancestriessource:extend`,
-			].filter(Boolean), true);
+			].filter(Boolean), {force: true});
 			this._listHeritage.visibleItems.filter(it => it.values.stateKey).forEach(it => this._state[it.values.stateKey] = true);
 			this._listVeHeritage.visibleItems.filter(it => it.values.stateKey).forEach(it => this._state[it.values.stateKey] = true);
 			$selFilterPreset.val("-1");

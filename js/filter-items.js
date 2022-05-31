@@ -20,27 +20,6 @@ class PageFilterItems extends PageFilter {
 		return 0;
 	}
 
-	// FIXME: This is often broken and shows incorrect items, such as 11 gp items on >25 gp filter. Or 30 gp items on >50 gp filter.
-	static _priceCategory (value) {
-		if (typeof value !== "number") return "0 gp";
-		if (value === 0) return "0 gp";
-		else if (value <= 5 * 100) return "5 gp";
-		else if (value <= 10 * 100) return "10 gp";
-		else if (value <= 25 * 100) return "25 gp";
-		else if (value <= 50 * 100) return "50 gp";
-		else if (value <= 100 * 100) return "100 gp";
-		else if (value <= 500 * 100) return "500 gp";
-		else if (value <= 750 * 100) return "750 gp";
-		else if (value <= 1000 * 100) return "1,000 gp";
-		else if (value <= 2500 * 100) return "2,500 gp";
-		else if (value <= 5000 * 100) return "5,000 gp";
-		else if (value <= 10000 * 100) return "10,000 gp";
-		else if (value <= 25000 * 100) return "25,000 gp";
-		else if (value <= 50000 * 100) return "50,000 gp";
-		else if (value <= 100000 * 100) return "100,000 gp";
-		else return "100,000+ gp";
-	}
-
 	static sortItems (a, b, o) {
 		if (o.sortBy === "name") return SortUtil.compareListNames(a, b);
 		else if (o.sortBy === "category") return SortUtil.ascSortLower(a.values.category, b.values.category) || SortUtil.compareListNames(a, b);
@@ -94,8 +73,10 @@ class PageFilterItems extends PageFilter {
 		this._priceFilter = new RangeFilter({
 			header: "Price",
 			isLabelled: true,
-			labels: ["0 gp", "5 gp", "10 gp", "25 gp", "50 gp", "100 gp", "250 gp", "500 gp", "750 gp", "1,000 gp", "2,500 gp", "5,000 gp", "10,000 gp", "25,000 gp", "50,000 gp", "100,000 gp", "100,000+ gp"],
-			labelSortFn: null,
+			isSparseLabels: true,
+			isAllowGreater: true,
+			labels: [0, 1, 5, 10, 25, 50, 75, 100, 250, 500, 1000, 2500, 5000, 10000, 25000, 50000, 100000].map(n => n * 100),
+			labelDisplayFn: x => `${Parser._addCommas(x / 100)} gp`,
 		});
 		this._bulkFilter = new RangeFilter({header: "Bulk",
 			isLabelled: true,
@@ -145,7 +126,6 @@ class PageFilterItems extends PageFilter {
 		it._fGroup = [it.group, it._fweaponData.group, it._fcomboWeaponData.group, it._farmorData.group, it._fshieldData.group].filter(Boolean);
 		it._fWeaponRange = it.category === "Weapon" ? [it._fweaponData.range ? "Ranged" : "Melee", it._fcomboWeaponData ? it._fcomboWeaponData.range ? "Ranged" : "Melee" : null] : null;
 		it._fHands = [it.hands, it._fweaponData.hands, it._fcomboWeaponData.hands].filter(Boolean).map(it => String(it));
-		it._fPrice = PageFilterItems._priceCategory(it._sPrice);
 		it._fMisc = [];
 		if (it.entries) {
 			for (let entry of it.entries) {
@@ -173,7 +153,6 @@ class PageFilterItems extends PageFilter {
 		this._levelFilter.addItem(Math.floor(item._fLvl));
 		this._categoryFilter.addItem(item.category);
 		this._traitFilter.addItem(item._fTraits)
-		this._priceFilter.addItem(item._fPrice);
 		this._bulkFilter.addItem(item._fBulk);
 		if (item._fSubCategory) {
 			this._subCategoryFilter.addNest(item.category, {isHidden: true})
@@ -219,7 +198,7 @@ class PageFilterItems extends PageFilter {
 			it._fType,
 			it.category,
 			it._fSubCategory,
-			it._fPrice,
+			it._sPrice,
 			it._fBulk,
 			[
 				[it._fweaponData.damage, it._fcomboWeaponData.damage],

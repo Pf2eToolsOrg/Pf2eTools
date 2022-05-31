@@ -2943,10 +2943,10 @@ class TimeTrackerRoot_Settings extends TimeTrackerComponent {
 		const $sectSeasons = $$`<div class="no-shrink w-100">
 			<div class="flex w-100 mb-1 mt-1">
 				<div class="w-100 flex-v-center">Name</div>
-				<div class="w-15 no-shrink text-center mr-2 help-subtle" title="In hours. For example, to have the sun rise at 05:00, enter &quot;5&quot;.">Sunrise</div>
-				<div class="w-15 no-shrink text-center mr-2 help-subtle" title="In hours. For example, to have the sun set at 22:00, enter &quot;22&quot;.">Sunset</div>
-				<div class="w-15 no-shrink text-center mr-2 help-subtle" title="For example, to have a season start on the 1st day of the year, enter &quot;1&quot;.">Start</div>
-				<div class="w-15 no-shrink text-center mr-2 help-subtle" title="For example, to have a season end on the 90th day of the year, enter &quot;90&quot;.">End</div>
+				<div class="w-15 no-shrink text-center mr-2 help--subtle" title="In hours. For example, to have the sun rise at 05:00, enter &quot;5&quot;.">Sunrise</div>
+				<div class="w-15 no-shrink text-center mr-2 help--subtle" title="In hours. For example, to have the sun set at 22:00, enter &quot;22&quot;.">Sunset</div>
+				<div class="w-15 no-shrink text-center mr-2 help--subtle" title="For example, to have a season start on the 1st day of the year, enter &quot;1&quot;.">Start</div>
+				<div class="w-15 no-shrink text-center mr-2 help--subtle" title="For example, to have a season end on the 90th day of the year, enter &quot;90&quot;.">End</div>
 				${metaSeasons.$btnAdd.addClass("no-shrink")}
 			</div>
 			${metaSeasons.$wrp}
@@ -2981,8 +2981,8 @@ class TimeTrackerRoot_Settings extends TimeTrackerComponent {
 		const $sectMoons = $$`<div class="no-shrink w-100">
 			<div class="flex w-100 mb-1 mt-1">
 				<div class="w-100 flex-v-center">Moon</div>
-				<div class="w-25 no-shrink text-center mr-2 help-subtle" title="For example, to have a new moon appear on the third day of the first year, enter &quot;3&quot;.">Offset</div>
-				<div class="w-25 no-shrink text-center mr-2 help-subtle" title="Measured in days. Multiples of eight are recommended, as there are eight distinct moon phases.">Period</div>
+				<div class="w-25 no-shrink text-center mr-2 help--subtle" title="For example, to have a new moon appear on the third day of the first year, enter &quot;3&quot;.">Offset</div>
+				<div class="w-25 no-shrink text-center mr-2 help--subtle" title="Measured in days. Multiples of eight are recommended, as there are eight distinct moon phases.">Period</div>
 				${metaMoons.$btnAdd.addClass("no-shrink")}
 			</div>
 			${metaMoons.$wrp}

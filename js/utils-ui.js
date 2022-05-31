@@ -547,6 +547,17 @@ class UiUtil {
 				if (fnClick) fnClick();
 			});
 	}
+
+	static async pDoForceFocus (ele, {timeout = 250} = {}) {
+		if (!ele) return;
+		ele.focus();
+
+		const forceFocusStart = Date.now();
+		while ((Date.now() < forceFocusStart + timeout) && document.activeElement !== ele) {
+			await MiscUtil.pDelay(33);
+			ele.focus();
+		}
+	}
 }
 UiUtil.SEARCH_RESULTS_CAP = 75;
 UiUtil.TYPE_TIMEOUT_MS = 100; // auto-search after 100ms
@@ -738,6 +749,28 @@ class ListUiUtil {
 			}).appendTo(item.ele);
 		} else elePreviewWrp = item.ele.lastElementChild;
 		return elePreviewWrp;
+	}
+
+	static bindPreviewAllButton ($btnAll, list) {
+		$btnAll.click(async () => {
+			const nxtHtml = $btnAll.html() === ListUiUtil.HTML_GLYPHICON_EXPAND
+				? ListUiUtil.HTML_GLYPHICON_CONTRACT
+				: ListUiUtil.HTML_GLYPHICON_EXPAND;
+
+			if (nxtHtml === ListUiUtil.HTML_GLYPHICON_CONTRACT && list.visibleItems.length > 500) {
+				const isSure = await InputUiUtil.pGetUserBoolean({
+					title: "Are You Sure?",
+					htmlDescription: `You are about to expand ${list.visibleItems.length} rows. This may seriously degrade performance.<br>Are you sure you want to continue?`,
+				});
+				if (!isSure) return;
+			}
+
+			$btnAll.html(nxtHtml);
+
+			list.visibleItems.forEach(listItem => {
+				if (listItem.data.btnShowHidePreview.innerHTML !== nxtHtml) listItem.data.btnShowHidePreview.click();
+			});
+		});
 	}
 }
 ListUiUtil.HTML_GLYPHICON_EXPAND = `[+]`;

@@ -241,6 +241,7 @@ Parser.sourceJsonToFullCompactPrefix = function (source) {
 	Object.keys(Parser.SOURCE_PREFIX_TO_SHORT).forEach(prefix => {
 		compact = compact.replace(prefix, Parser.SOURCE_PREFIX_TO_SHORT[prefix] || prefix);
 	});
+	Parser.COMPACT_PREFIX_MAP.forEach(it => compact = compact.replace(it.re, it.replaceWith));
 	return compact;
 };
 Parser.sourceJsonToAbv = function (source) {
@@ -1256,8 +1257,6 @@ SRC_TIO = "TiO";
 
 SRC_3PP_SUFFIX = " 3pp";
 
-// region Adventure Paths
-
 AP_PREFIX = "Adventure Path: ";
 AP_PREFIX_SHORT = "AP: ";
 
@@ -1279,10 +1278,17 @@ AoA_PREFIX_SHORT = "AoA: "
 SoT_PREFIX = "Strength of Thousands: "
 SoT_PREFIX_SHORT = "SoT: "
 
-// endregion
-
 LO_PREFIX = "Lost Omens: ";
 LO_PREFIX_SHORT = "LO: ";
+
+Parser.COMPACT_PREFIX_MAP = [
+	{re: /Fists of the Ruby Phoenix #(\d): /, replaceWith: "FotRP$1: "},
+	{re: /Abomination Vaults #(\d): /, replaceWith: "AV$1: "},
+	{re: /Agents of Edgewatch #(\d): /, replaceWith: "AoE$1: "},
+	{re: /Extinction Curse #(\d): /, replaceWith: "EC$1: "},
+	{re: /Age of Ashes #(\d): /, replaceWith: "AoA$1: "},
+	{re: /Strength of Thousands #(\d): /, replaceWith: "SoT$1: "},
+];
 
 Parser.SOURCE_PREFIX_TO_SHORT = {};
 Parser.SOURCE_PREFIX_TO_SHORT[LO_PREFIX] = LO_PREFIX_SHORT;
@@ -1321,46 +1327,46 @@ Parser.SOURCE_JSON_TO_FULL[SRC_LOKL] = "Lost Omens: Knights of Lastwall";
 
 // Adventure Paths
 Parser.SOURCE_JSON_TO_FULL[SRC_AOA0] = "Age of Ashes Player's Guide";
-Parser.SOURCE_JSON_TO_FULL[SRC_AOA1] = "Age of Ashes: Hellknight Hill";
-Parser.SOURCE_JSON_TO_FULL[SRC_AOA2] = "Age of Ashes: Cult of Cinders";
-Parser.SOURCE_JSON_TO_FULL[SRC_AOA3] = "Age of Ashes: Tomorrow Must Burn";
-Parser.SOURCE_JSON_TO_FULL[SRC_AOA4] = "Age of Ashes: Fires of the Haunted City";
-Parser.SOURCE_JSON_TO_FULL[SRC_AOA5] = "Age of Ashes: Against the Scarlet Triad";
-Parser.SOURCE_JSON_TO_FULL[SRC_AOA6] = "Age of Ashes: Broken Promises";
+Parser.SOURCE_JSON_TO_FULL[SRC_AOA1] = "Age of Ashes #1: Hellknight Hill";
+Parser.SOURCE_JSON_TO_FULL[SRC_AOA2] = "Age of Ashes #2: Cult of Cinders";
+Parser.SOURCE_JSON_TO_FULL[SRC_AOA3] = "Age of Ashes #3: Tomorrow Must Burn";
+Parser.SOURCE_JSON_TO_FULL[SRC_AOA4] = "Age of Ashes #4: Fires of the Haunted City";
+Parser.SOURCE_JSON_TO_FULL[SRC_AOA5] = "Age of Ashes #5: Against the Scarlet Triad";
+Parser.SOURCE_JSON_TO_FULL[SRC_AOA6] = "Age of Ashes #6: Broken Promises";
 
 Parser.SOURCE_JSON_TO_FULL[SRC_EC0] = "Extinction Curse Player's Guide";
-Parser.SOURCE_JSON_TO_FULL[SRC_EC1] = "Extinction Curse: The Show Must Go On";
-Parser.SOURCE_JSON_TO_FULL[SRC_EC2] = "Extinction Curse: Legacy of the Lost God";
-Parser.SOURCE_JSON_TO_FULL[SRC_EC3] = "Extinction Curse: Life's Long Shadows";
-Parser.SOURCE_JSON_TO_FULL[SRC_EC4] = "Extinction Curse: Siege of the Dinosaurs";
-Parser.SOURCE_JSON_TO_FULL[SRC_EC5] = "Extinction Curse: Lord of the Black Sands";
-Parser.SOURCE_JSON_TO_FULL[SRC_EC6] = "Extinction Curse: The Apocalypse Prophet";
+Parser.SOURCE_JSON_TO_FULL[SRC_EC1] = "Extinction Curse #1: The Show Must Go On";
+Parser.SOURCE_JSON_TO_FULL[SRC_EC2] = "Extinction Curse #2: Legacy of the Lost God";
+Parser.SOURCE_JSON_TO_FULL[SRC_EC3] = "Extinction Curse #3: Life's Long Shadows";
+Parser.SOURCE_JSON_TO_FULL[SRC_EC4] = "Extinction Curse #4: Siege of the Dinosaurs";
+Parser.SOURCE_JSON_TO_FULL[SRC_EC5] = "Extinction Curse #5: Lord of the Black Sands";
+Parser.SOURCE_JSON_TO_FULL[SRC_EC6] = "Extinction Curse #6: The Apocalypse Prophet";
 
 Parser.SOURCE_JSON_TO_FULL[SRC_AOE0] = "Agents of Edgewatch Player's Guide";
-Parser.SOURCE_JSON_TO_FULL[SRC_AOE1] = "Agents of Edgewatch: Devil at the Dreaming Palace";
-Parser.SOURCE_JSON_TO_FULL[SRC_AOE2] = "Agents of Edgewatch: Sixty Feet Under";
-Parser.SOURCE_JSON_TO_FULL[SRC_AOE3] = "Agents of Edgewatch: All or Nothing";
-Parser.SOURCE_JSON_TO_FULL[SRC_AOE4] = "Agents of Edgewatch: Assault on Hunting Lodge Seven";
-Parser.SOURCE_JSON_TO_FULL[SRC_AOE5] = "Agents of Edgewatch: Belly of the Black Whale";
-Parser.SOURCE_JSON_TO_FULL[SRC_AOE6] = "Agents of Edgewatch: Ruins of the Radiant Siege";
+Parser.SOURCE_JSON_TO_FULL[SRC_AOE1] = "Agents of Edgewatch #1: Devil at the Dreaming Palace";
+Parser.SOURCE_JSON_TO_FULL[SRC_AOE2] = "Agents of Edgewatch #2: Sixty Feet Under";
+Parser.SOURCE_JSON_TO_FULL[SRC_AOE3] = "Agents of Edgewatch #3: All or Nothing";
+Parser.SOURCE_JSON_TO_FULL[SRC_AOE4] = "Agents of Edgewatch #4: Assault on Hunting Lodge Seven";
+Parser.SOURCE_JSON_TO_FULL[SRC_AOE5] = "Agents of Edgewatch #5: Belly of the Black Whale";
+Parser.SOURCE_JSON_TO_FULL[SRC_AOE6] = "Agents of Edgewatch #6: Ruins of the Radiant Siege";
 
 Parser.SOURCE_JSON_TO_FULL[SRC_AV0] = "Abomination Vaults Player's Guide";
-Parser.SOURCE_JSON_TO_FULL[SRC_AV1] = "Abomination Vaults: Ruins of Gauntlight";
-Parser.SOURCE_JSON_TO_FULL[SRC_AV2] = "Abomination Vaults: Hands of the Devil";
-Parser.SOURCE_JSON_TO_FULL[SRC_AV3] = "Abomination Vaults: Eyes of Empty Death";
+Parser.SOURCE_JSON_TO_FULL[SRC_AV1] = "Abomination Vaults #1: Ruins of Gauntlight";
+Parser.SOURCE_JSON_TO_FULL[SRC_AV2] = "Abomination Vaults #2: Hands of the Devil";
+Parser.SOURCE_JSON_TO_FULL[SRC_AV3] = "Abomination Vaults #3: Eyes of Empty Death";
 
 Parser.SOURCE_JSON_TO_FULL[SRC_FRP0] = "Fists of the Ruby Phoenix Player's Guide";
-Parser.SOURCE_JSON_TO_FULL[SRC_FRP1] = "Fists of the Ruby Phoenix: Despair on Danger Island";
-Parser.SOURCE_JSON_TO_FULL[SRC_FRP2] = "Fists of the Ruby Phoenix: Ready? Fight!";
-Parser.SOURCE_JSON_TO_FULL[SRC_FRP3] = "Fists of the Ruby Phoenix: King of the Mountain";
+Parser.SOURCE_JSON_TO_FULL[SRC_FRP1] = "Fists of the Ruby Phoenix #1: Despair on Danger Island";
+Parser.SOURCE_JSON_TO_FULL[SRC_FRP2] = "Fists of the Ruby Phoenix #2: Ready? Fight!";
+Parser.SOURCE_JSON_TO_FULL[SRC_FRP3] = "Fists of the Ruby Phoenix #3: King of the Mountain";
 
 Parser.SOURCE_JSON_TO_FULL[SRC_SOT0] = "Strength of Thousands Player's Guide";
-Parser.SOURCE_JSON_TO_FULL[SRC_SOT1] = "Strength of Thousands: Kindled Magic";
-Parser.SOURCE_JSON_TO_FULL[SRC_SOT2] = "Strength of Thousands: Spoken on the Song Wind";
-Parser.SOURCE_JSON_TO_FULL[SRC_SOT3] = "Strength of Thousands: Hurricane's Howl";
-Parser.SOURCE_JSON_TO_FULL[SRC_SOT4] = "Strength of Thousands: Secrets of the Temple-City";
-Parser.SOURCE_JSON_TO_FULL[SRC_SOT5] = "Strength of Thousands: Doorway to the Red Star";
-Parser.SOURCE_JSON_TO_FULL[SRC_SOT6] = "Strength of Thousands: Shadows of the Ancients";
+Parser.SOURCE_JSON_TO_FULL[SRC_SOT1] = "Strength of Thousands #1: Kindled Magic";
+Parser.SOURCE_JSON_TO_FULL[SRC_SOT2] = "Strength of Thousands #2: Spoken on the Song Wind";
+Parser.SOURCE_JSON_TO_FULL[SRC_SOT3] = "Strength of Thousands #3: Hurricane's Howl";
+Parser.SOURCE_JSON_TO_FULL[SRC_SOT4] = "Strength of Thousands #4: Secrets of the Temple-City";
+Parser.SOURCE_JSON_TO_FULL[SRC_SOT5] = "Strength of Thousands #5: Doorway to the Red Star";
+Parser.SOURCE_JSON_TO_FULL[SRC_SOT6] = "Strength of Thousands #6: Shadows of the Ancients";
 
 Parser.SOURCE_JSON_TO_FULL[SRC_SLI] = "The Slithering";
 Parser.SOURCE_JSON_TO_FULL[SRC_NGD] = "Night of the Gray Death";

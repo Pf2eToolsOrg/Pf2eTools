@@ -203,6 +203,13 @@ String.prototype.toChunks = String.prototype.toChunks || function (size) {
 	return chunks
 };
 
+String.prototype.toAscii = String.prototype.toAscii || function () {
+	return this
+		.normalize("NFD") // replace diacritics with their individual graphemes
+		.replace(/[\u0300-\u036f]/g, "") // remove accent graphemes
+		.replace(/Æ/g, "AE").replace(/æ/g, "ae");
+};
+
 Array.prototype.joinConjunct = Array.prototype.joinConjunct || function (joiner, lastJoiner, nonOxford) {
 	if (this.length === 0) return "";
 	if (this.length === 1) return this[0];
