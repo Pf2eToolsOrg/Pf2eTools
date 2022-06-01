@@ -70,16 +70,15 @@ class PageFilterItems extends PageFilter {
 				"Equipment": true,
 			},
 		});
+		// FIXME: A buttload of Undefined's, what the fuck?
 		this._priceFilter = new RangeFilter({
 			header: "Price",
 			isLabelled: true,
-			isSparseLabels: true,
 			isAllowGreater: true,
-			labels: [0, 1, 5, 10, 25, 50, 75, 100, 250, 500, 1000, 2500, 5000, 10000, 25000, 50000, 100000].map(n => n * 100),
+			labels: [0, 1, 10, 50].concat([1, 5, 10, 25, 50, 75, 100, 250, 500, 1000, 2500, 5000, 10000, 25000, 50000, 100000].map(n => n * 100)),
 			labelDisplayFn: x => `${Parser._addCommas(x / 100)} gp`,
 		});
 		this._bulkFilter = new RangeFilter({header: "Bulk",
-			isLabelled: true,
 			labels: [],
 			labelDisplayFn: (it) => it === 0.1 ? "L" : it,
 		});
