@@ -151,7 +151,7 @@ class TokenizerUtils {
 	}
 	static get trigger () {
 		return [
-			{regex: /^Trigger\s/, type: "TRIGGER", lookbehind: /(\n|[;.)]\s)$/, lookaheadIncDepth: 3},
+			{regex: /^Trigger\s/, type: "TRIGGER", lookbehind: /(\n|[;.)\]]\s)$/, lookaheadIncDepth: 3},
 		]
 	}
 	static get usage () {
@@ -337,7 +337,6 @@ class TokenizerUtils {
 			...this.traditionsSubclasses,
 			...this.trigger,
 			...this.usage,
-			...this.propertiesCreatures,
 		]
 	}
 	static get propertiesSpells () {
@@ -428,7 +427,6 @@ class TokenizerUtils {
 			...this.skills,
 			...this.items,
 			...this.creatureAbilityScores,
-			...this.propertiesAbilities,
 			...this.ac,
 			...this.creatureSavingThrows,
 			...this.hp,
@@ -634,6 +632,7 @@ class TokenizerUtils {
 
 				// PROPERTIES
 				...this.propertiesCreatures,
+				...this.propertiesAbilities,
 
 				// DATA ENTRIES
 				...this.traits,

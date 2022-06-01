@@ -451,7 +451,7 @@ class Converter {
 		const matched = regExpSavingThrow.exec(rendered);
 		if (matched) {
 			obj.savingThrow = {type: this._tokenizerUtils.savingThrows.find(u => u.regex.test(matched[2])).unit};
-			if (matched[1]) obj.basic = true;
+			if (matched[1]) obj.savingThrow.basic = true;
 		} else {
 			obj.savingThrow = {type: rendered};
 		}
@@ -754,7 +754,7 @@ class Converter {
 	_parseWeakResistAmount (str) {
 		const amountRegExp = /(.*?)\s(\d+)(.+)?/;
 		const match = amountRegExp.exec(str);
-		if (match) return {name: match[1], amount: Number(match[2]), note: match[3]};
+		if (match) return {name: match[1], amount: Number(match[2]), note: match[3] ? match[3].trim() : undefined};
 		return {name: str}
 	}
 	_parseSpeed (creature) {
@@ -762,14 +762,16 @@ class Converter {
 		const speed = {};
 		const entries = this._getEntries();
 		const ixSemiColon = entries.findIndex(e => this._tokenIsType(this._tokenizerUtils.sentencesSemiColon, e));
-		const entriesSpeeds = entries.splice(0, ixSemiColon + 1);
+		// this is trash
+		const entriesSpeeds = ixSemiColon === -1 ? entries : entries.slice(0, ixSemiColon + 1);
+		const entriesAbilities = ixSemiColon === -1 ? [] : entries.slice(ixSemiColon + 1);
 		const reSpeed = /(.*? )?(\d+) feet/;
 		this._renderEntries(entriesSpeeds, {asString: true}).split(", ").forEach(se => {
 			const match = reSpeed.exec(se);
 			const name = (match[1] || "_").trim();
 			speed[name] = Number(match[2]);
 		});
-		if (entries.length) speed.abilities = this._splitSemiOrComma(entries);
+		if (entriesAbilities.length) speed.abilities = this._splitSemiOrComma(entriesAbilities);
 		creature.speed = speed;
 	}
 	_parseAttacks (creature) {
@@ -871,6 +873,12 @@ class Converter {
 	_parseSpells_parseSpells () {
 		const spells = [];
 		const reLevel = /(\d+)(st|nd|rd|th)/;
+		let tokens = [];
+		const renderSpellTokens = () => {
+			const rendered = this._renderEntries(tokens, {asString: true, noTags: true}).replace(/[;,.]$/, "").replace(/; /, ", ");
+			spells.push(...rendered.split(", ").map(s => this._parseSpells_genSpellObj(s)));
+			tokens = [];
+		}
 		while (this._tokenIsType(this._tokenizerUtils.sentences)) {
 			if (this._isAbilityName()) break;
 			const breakOnLength = this._tokenStack.length;
@@ -882,17 +890,18 @@ class Converter {
 				this._push({...splitToken, value: splitToken.value.slice(0, matchLevel.index).trim()});
 			}
 			const token = this._consumeToken(this._tokenizerUtils.sentences);
-			// FIXME: broken for spells like this: ray of \n enfeeblement
-			const rendered = this._renderToken(token).replace(/[;,.]$/, "");
-			spells.push(...rendered.split(", ").map(s => this._parseSpells_genSpellObj(s)));
+			tokens.push(token);
+
 			if (this._tokenIsType("PARENTHESIS")) {
 				// Constant spell levels are in parentheses
 				if (reLevel.test(this._peek().value)) break;
 				const innerText = this._getParenthesisInnerText(this._consumeToken("PARENTHESIS"));
+				renderSpellTokens();
 				this._parseSpells_parseParenthesisText(innerText, spells);
 			}
 			if (breakOnLength === this._tokenStack.length) break;
 		}
+		renderSpellTokens();
 		return spells;
 	}
 	// FIXME/TODO: Abstract this
@@ -994,7 +1003,7 @@ class Converter {
 			this._parseProperties(ability);
 			if (ability.entries == null) {
 				const entries = this._getEntries({checkContinuedLines: true, checkLookahead: true});
-				ability.entries = this._renderEntries(entries);
+				ability.entries = entries.length ? this._renderEntries(entries) : [];
 			}
 			this._parsedProperties = cachedParsedProps;
 
@@ -1021,7 +1030,7 @@ class Converter {
 	_splitSemiOrComma (entries, opts) {
 		// TODO:
 		opts = opts || {};
-		const rendered = opts.isText ? entries : this._renderEntries(entries, {asString: true});
+		const rendered = opts.isText ? entries : this._renderEntries(entries, {asString: true, noTags: true});
 		return rendered.split(", ")
 	}
 
@@ -1373,7 +1382,9 @@ class Converter {
 				if (Math.abs(Math.round(len / this._avgLineLength) * this._avgLineLength - len) / this._avgLineLength > 0.08) entries.push("");
 			}
 		}
+		if (opts.asString && opts.noTags) return entries.join(" ").replace(/;$/, "");
 		if (opts.asString) return TagJsons.doTagStr(entries.join(" ")).replace(/;$/, "");
+		if (opts.noTags) return entries;
 		return entries.map(e => TagJsons.doTagStr(e));
 	}
 	_getParenthesisInnerText (token, opts) {
@@ -1466,7 +1477,7 @@ class Converter {
 		while (this._tokenIsType(this._tokenizerUtils.stringEntries)) {
 			if (this._isParsingCreature && this._isAbilityName()) break;
 			if (opts.checkLookahead && this._getLookahead()) break;
-			if (opts.noCap && /^[A-Z]/.test(this._renderToken(this._peek()))) break;
+			if (opts.noCap && /^[A-Z0-9]/.test(this._renderToken(this._peek()))) break;
 			entries.push(this._consumeToken(this._tokenizerUtils.stringEntries));
 			if (opts.checkContinuedLines && !this._isContinuedLine(entries.last())) break;
 			if (opts.breakAfterNewline && this._tokenIsType(this._tokenizerUtils.sentencesNewLine, entries.last())) break;
