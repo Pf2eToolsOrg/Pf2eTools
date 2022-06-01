@@ -59,7 +59,7 @@ class TokenizerUtils {
 	}
 	static get area () {
 		return [
-			{regex: /^Area\s/, type: "AREA", lookbehind: /(\n|[;.)]\s)$/},
+			{regex: /^Area\s/, type: "AREA", lookbehind: /(\n|[;.)\]]\s)$/},
 		]
 	}
 	static get bulk () {
@@ -84,12 +84,12 @@ class TokenizerUtils {
 	}
 	static get effect () {
 		return [
-			{regex: /^Effects?\s/, type: "EFFECT", lookbehind: /(\n|[;.)]\s)$/, lookahead: true},
+			{regex: /^Effects?\s/, type: "EFFECT", lookbehind: /(\n|[;.)\]]\s)$/, lookahead: true},
 		]
 	}
 	static get frequency () {
 		return [
-			{regex: /^Frequency\s/, type: "FREQUENCY", lookbehind: /(\n|[;.)]\s)$/, lookaheadIncDepth: 3},
+			{regex: /^Frequency\s/, type: "FREQUENCY", lookbehind: /(\n|[;.)\]]\s)$/, lookaheadIncDepth: 3},
 		]
 	}
 	static get level () {
@@ -119,7 +119,7 @@ class TokenizerUtils {
 	}
 	static get requirements () {
 		return [
-			{regex: /^Requirements?\s/, type: "REQUIREMENTS", lookbehind: /(\n|[;.)]\s)$/},
+			{regex: /^Requirements?\s/, type: "REQUIREMENTS", lookbehind: /(\n|[;.)\]]\s)$/},
 		]
 	}
 	static get savingThrow () {
@@ -134,7 +134,7 @@ class TokenizerUtils {
 	}
 	static get targets () {
 		return [
-			{regex: /^Targets?\s/, type: "TARGETS", lookbehind: /(\n|[;.)]\s)$/, lookaheadIncDepth: 3},
+			{regex: /^Targets?\s/, type: "TARGETS", lookbehind: /(\n|[;.)\]]\s)$/, lookaheadIncDepth: 3},
 		]
 	}
 	static get traditions () {
