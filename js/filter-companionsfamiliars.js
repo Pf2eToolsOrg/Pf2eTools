@@ -69,13 +69,13 @@ class PageFilterCompanionsFamiliars extends PageFilter {
 	mutateForFilters (it) {
 		it._fSources = SourceFilter.getCompleteFilterSources(it);
 		it._fHP = it.hp != null ? it.hp : 0;
-		it._fspeedtypes = [];
-		it._fspeed = 0;
+		it._fSpeedtypes = [];
+		it._fSpeed = 0;
 		if (it.speed) {
 			Object.keys(it.speed).forEach((k) => {
 				if (k !== "abilities") {
-					it._fspeed = Math.max(it.speed[k], it._fspeed);
-					it._fspeedtypes.push(k)
+					it._fSpeed = Math.max(it.speed[k], it._fSpeed);
+					it._fSpeedtypes.push(k)
 				}
 			});
 		}
@@ -114,8 +114,8 @@ class PageFilterCompanionsFamiliars extends PageFilter {
 		if (it.skill) this._skillFilter.addItem(it.skill);
 		if (it.skills) this._skillFilter.addItem(it.skills);
 		this._HPFilter.addItem(it._fHP);
-		this._speedFilter.addItem(it._fspeed);
-		this._speedTypeFilter.addItem(it._fspeedtypes);
+		this._speedFilter.addItem(it._fSpeed);
+		this._speedTypeFilter.addItem(it._fSpeedtypes);
 		if (it.requires) this._requiredFilter.addItem(it.requires);
 		this._grantedFilter.addItem(it._fGranted);
 		if (it.tradition) this._traditionFilter.addItem(it.tradition);
@@ -160,8 +160,8 @@ class PageFilterCompanionsFamiliars extends PageFilter {
 			],
 			it._fHP,
 			[
-				it._fspeed,
-				it._fspeedtypes,
+				it._fSpeed,
+				it._fSpeedtypes,
 			],
 			it.requires,
 			it._fGranted,

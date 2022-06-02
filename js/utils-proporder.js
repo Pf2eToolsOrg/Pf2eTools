@@ -334,10 +334,6 @@ PropOrder._CREATURE = [
 	}),
 
 	"level",
-	"rarity",
-	"alignment",
-	"size",
-	"type",
 	"traits",
 	"creatureType",
 
@@ -352,16 +348,15 @@ PropOrder._CREATURE = [
 	"skills",
 	new PropOrder._ObjectKey("abilityMods", {
 		order: [
-			"Str",
-			"Dex",
-			"Con",
-			"Int",
-			"Wis",
-			"Cha",
+			"str",
+			"dex",
+			"con",
+			"int",
+			"wis",
+			"cha",
 		],
 	}),
 	"items",
-	"abilitiesTop",
 
 	"ac",
 	"savingThrows",
@@ -370,16 +365,18 @@ PropOrder._CREATURE = [
 	"immunities",
 	"weaknesses",
 	"resistances",
-	"abilitiesMid",
 
 	"speed",
 	"attacks",
 	"spellcasting",
 	"rituals",
-	"abilitiesBot",
-
-	"inflicts",
-	"misc",
+	new PropOrder._ObjectKey("abilities", {
+		order: [
+			"top",
+			"mid",
+			"bot",
+		],
+	}),
 ];
 PropOrder._CREATURE__COPY_MOD = [
 	"*",

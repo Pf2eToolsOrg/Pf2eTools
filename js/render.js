@@ -2508,7 +2508,9 @@ function Renderer () {
 
 	// TODO: Expand this to allow rendering of other entry types
 	/**
-	 * @param andOr true to return "; or " and " or " instead of ", " and "; ".
+	 * @param [entries]
+	 * @param [options]
+	 * @param [options.andOr] true to return "; or " and " or " instead of ", " and "; ".
 	*/
 	this.renderJoinCommaOrSemi = function (entries, options) {
 		options = options || {};
@@ -3059,7 +3061,7 @@ Renderer.utils = {
 		traits = traits || [];
 		options = options || {};
 		let source;
-		renderer = Renderer.get()
+		const renderer = Renderer.get()
 		const traitsHtml = [];
 		for (let trait of options.doNotSortTraits ? traits : traits.sort(SortUtil.sortTraits)) {
 			const styles = ["pf2-trait"];
@@ -3924,56 +3926,37 @@ Renderer.creature = {
 			opts.$btnScaleLvl = opts.$btnScaleLvl || Renderer.creature.$getBtnScaleLvl(cr);
 			opts.asJquery = true;
 		}
-		const traits = [];
-		if (cr.rarity !== "Common") traits.push(cr.rarity);
-		if (cr.alignment != null) traits.push(cr.alignment);
-		if (cr.size != null) traits.push(cr.size);
-		if (cr.traits != null && cr.traits.length) traits.push(...cr.traits);
-		if (cr.creatureType != null) traits.push(...cr.creatureType);
 
 		return $$`<div class="pf2-stat">${Renderer.utils.getExcludedDiv(cr, "creature", UrlUtil.PG_BESTIARY)}
 			${Renderer.utils.getNameDiv(cr, { page: UrlUtil.PG_BESTIARY, type: cr.type || "CREATURE", ...opts })}
 			${Renderer.utils.getDividerDiv()}
-			${Renderer.utils.getTraitsDiv(traits)}
+			${Renderer.utils.getTraitsDiv(cr.traits)}
 			${Renderer.creature.getPerception(cr)}
 			${Renderer.creature.getLanguages(cr)}
 			${Renderer.creature.getSkills(cr)}
 			${Renderer.creature.getAbilityMods(cr.abilityMods)}
-			${cr.abilitiesTop != null ? cr.abilitiesTop.map(it => Renderer.creature.getRenderedAbility(it, { noButton: true })) : ""}
+			${cr.abilities && cr.abilities.top ? cr.abilities.top.map(it => Renderer.creature.getRenderedAbility(it, {noButton: true})) : ""}
 			${Renderer.creature.getItems(cr)}
 			${Renderer.utils.getDividerDiv()}
 			${Renderer.creature.getDefenses(cr)}
-			${cr.abilitiesMid != null ? cr.abilitiesMid.map(it => Renderer.creature.getRenderedAbility(it, { noButton: true })) : ""}
+			${cr.abilities && cr.abilities.mid ? cr.abilities.mid.map(it => Renderer.creature.getRenderedAbility(it, {noButton: true})) : ""}
 			${Renderer.utils.getDividerDiv()}
 			${Renderer.creature.getSpeed(cr)}
 			${Renderer.creature.getAttacks(cr)}
-			${Renderer.creature.getSpellcasting(cr)}
+			${Renderer.creature.getSpellCasting(cr)}
 			${Renderer.creature.getRituals(cr)}
-			${cr.abilitiesBot != null ? cr.abilitiesBot.map(it => Renderer.creature.getRenderedAbility(it, { noButton: true })) : ""}
+			${cr.abilities && cr.abilities.bot ? cr.abilities.bot.map(it => Renderer.creature.getRenderedAbility(it, {noButton: true})) : ""}
 			${opts.noPage ? "" : Renderer.utils.getPageP(cr)}</div>`;
 	},
 
 	getPerception (cr) {
-		// FIXME:
-		const perception = cr.perception;
-		const senses = cr.senses || {};
 		const renderer = Renderer.get();
-		const renderStack = [];
-		renderStack.push(`<p class="pf2-stat pf2-stat__section">`);
-		renderStack.push(`<strong>Perception&nbsp;</strong>${renderer.render(`{@d20 ${perception.default}||Perception}`)}${Renderer.utils.getNotes(perception, { exclude: ["default"], dice: { name: "Perception" } })}`);
-		let sensesStack = [];
-		if (senses.precise) sensesStack.push(senses.precise.concat([""]).join(" (precise), "));
-		if (senses.imprecise) sensesStack.push(senses.imprecise.concat([""]).join(" (imprecise), "));
-		if (senses.vague) sensesStack.push(senses.vague.concat([""]).join(" (vague), "));
-		if (senses.other) sensesStack.push(senses.other.join(", "));
-		let sensesString = sensesStack.join("");
-		if (sensesString !== "") {
-			renderStack.push("; ");
-			renderStack.push(renderer.render(sensesString));
-		}
-		renderStack.push(`</p>`)
-
-		return renderStack.join("")
+		const perception = cr.perception;
+		const senses = cr.senses || [];
+		const rdPerception = renderer.render(`{@d20 ${perception.std}||Perception}`);
+		const rdOtherPerception = Renderer.utils.getNotes(perception, {exclude: ["std"], dice: {name: "Perception"}});
+		const rdSenses = renderer.renderJoinCommaOrSemi(senses.map(s => `${s.name}${s.type ? ` (${s.type})` : ""}${s.range != null ? ` ${s.range} feet` : ""}`));
+		return `<p class="pf2-stat pf2-stat__section"><strong>Perception&nbsp;</strong>${rdPerception}${rdOtherPerception}${rdSenses.length ? "; " : ""}${rdSenses}</p>`;
 	},
 
 	getLanguages (cr) {
@@ -4005,7 +3988,7 @@ Renderer.creature = {
 			renderStack.push(`<strong>Skills&nbsp;</strong>`)
 			let skills = []
 			Object.keys(cr.skills).forEach(skill => {
-				let renderedSkill = `${skill} ${renderer.render(`{@d20 ${cr.skills[skill]["default"]}||${skill}}`)}${Renderer.utils.getNotes(cr.skills[skill], { exclude: ["default"], dice: { name: skill } })}`;
+				let renderedSkill = `${skill} ${renderer.render(`{@d20 ${cr.skills[skill].std}||${skill}}`)}${Renderer.utils.getNotes(cr.skills[skill], { exclude: ["std"], dice: { name: skill } })}`;
 				skills.push(renderedSkill)
 			});
 
@@ -4017,22 +4000,15 @@ Renderer.creature = {
 	},
 
 	getAbilityMods (mods) {
-		let renderStack = [];
-		renderStack.push(`<p class="pf2-stat pf2-stat__section">`)
-		renderStack.push(`<span><strong>Str&nbsp;</strong></span>`)
-		renderStack.push(Renderer.get().render(`{@d20 ${mods.Str}||Strength}`))
-		renderStack.push(`<span>, <strong>Dex&nbsp;</strong></span>`)
-		renderStack.push(Renderer.get().render(`{@d20 ${mods.Dex}||Dexterity}`))
-		renderStack.push(`<span>, <strong>Con&nbsp;</strong></span>`)
-		renderStack.push(Renderer.get().render(`{@d20 ${mods.Con}||Constitution}`))
-		renderStack.push(`<span>, <strong>Int&nbsp;</strong></span>`)
-		renderStack.push(Renderer.get().render(`{@d20 ${mods.Int}||Intelligence}`))
-		renderStack.push(`<span>, <strong>Wis&nbsp;</strong></span>`)
-		renderStack.push(Renderer.get().render(`{@d20 ${mods.Wis}||Wisdom}`))
-		renderStack.push(`<span>, <strong>Cha&nbsp;</strong></span>`)
-		renderStack.push(Renderer.get().render(`{@d20 ${mods.Cha}||Charisma}`))
-		renderStack.push(`</p>`)
-		return renderStack.join("")
+		const renderer = Renderer.get();
+		return `<p class="pf2-stat pf2-stat__section">
+			<strong>Str&nbsp;</strong>${renderer.render(`{@d20 ${mods.str}||Strength}`)}
+			<strong>Dex&nbsp;</strong>${renderer.render(`{@d20 ${mods.dex}||Dexterity}`)}
+			<strong>Con&nbsp;</strong>${renderer.render(`{@d20 ${mods.con}||Constitution}`)}
+			<strong>Int&nbsp;</strong>${renderer.render(`{@d20 ${mods.int}||Intelligence}`)}
+			<strong>Wis&nbsp;</strong>${renderer.render(`{@d20 ${mods.wis}||Wisdom}`)}
+			<strong>Cha&nbsp;</strong>${renderer.render(`{@d20 ${mods.cha}||Charisma}`)}
+		</p>`;
 	},
 
 	getItems (cr) {
@@ -4049,38 +4025,34 @@ Renderer.creature = {
 	getDefenses (cr) {
 		let renderStack = [];
 		const renderer = Renderer.get();
-		renderStack.push(`<p class="pf2-stat pf2-stat__section">`)
-		const ac = cr.ac
-		renderStack.push(`<span><strong>AC&nbsp;</strong>${ac.default}${Renderer.utils.getNotes(ac, { exclude: ["default", "abilities"] })}`)
+		renderStack.push(`<p class="pf2-stat pf2-stat__section">`);
+		const ac = cr.ac;
+		renderStack.push(`<span><strong>AC&nbsp;</strong>${ac.std}${Renderer.utils.getNotes(ac, { exclude: ["std", "abilities"] })}`);
 		if (ac.abilities != null) renderStack.push(`; ${renderer.render(ac.abilities)}`);
 		const st = cr.savingThrows
-		renderStack.push(`; <strong>Fort&nbsp;</strong>`)
-		renderStack.push(Renderer.get().render(`{@d20 ${st.Fort.default}||Fortitude Save}`))
-		renderStack.push(Renderer.utils.getNotes(st.Fort, { exclude: ["default", "abilities"], dice: { name: "Fortitude Save" } }));
-		renderStack.push(`, <strong>Ref&nbsp;</strong>`)
-		renderStack.push(Renderer.get().render(`{@d20 ${st.Ref.default}||Reflex Save}`))
-		renderStack.push(Renderer.utils.getNotes(st.Ref, { exclude: ["default", "abilities"], dice: { name: "Reflex Save" } }));
-		renderStack.push(`, <strong>Will&nbsp;</strong>`)
-		renderStack.push(Renderer.get().render(`{@d20 ${st.Will.default}||Will Save}`))
-		renderStack.push(Renderer.utils.getNotes(st.Will, { exclude: ["default", "abilities"], dice: { name: "Will Save" } }));
+		renderStack.push(`; <strong>Fort&nbsp;</strong>`);
+		renderStack.push(Renderer.get().render(`{@d20 ${st.fort.std}||Fortitude Save}`));
+		renderStack.push(Renderer.utils.getNotes(st.fort, { exclude: ["std", "abilities"], dice: { name: "Fortitude Save" } }));
+		renderStack.push(`, <strong>Ref&nbsp;</strong>`);
+		renderStack.push(Renderer.get().render(`{@d20 ${st.ref.std}||Reflex Save}`));
+		renderStack.push(Renderer.utils.getNotes(st.ref, { exclude: ["std", "abilities"], dice: { name: "Reflex Save" } }));
+		renderStack.push(`, <strong>Will&nbsp;</strong>`);
+		renderStack.push(Renderer.get().render(`{@d20 ${st.will.std}||Will Save}`));
+		renderStack.push(Renderer.utils.getNotes(st.will, { exclude: ["std", "abilities"], dice: { name: "Will Save" } }));
 		if (st.abilities != null) renderStack.push(`, ${renderer.render(st.abilities)}`);
 		renderStack.push(`</span>`)
 		renderStack.push(`</p>`)
 
 		renderStack.push(`<p class="pf2-stat pf2-stat__section">`)
-		const hp = cr.hp
-		for (let i = 0; i < hp.length; i++) {
-			renderStack.push(`<span><strong>HP&nbsp;</strong>${hp[i].note != null ? `${hp[i].note} ` : ``}${hp[i].hp}`)
-			renderStack.push(`${renderer.render(`${hp[i].abilities != null ? `, ${hp[i].abilities.join(", ")}` : ``}`)}`)
-			renderStack.push(`${(i === hp.length - 1) ? `` : ` `}`)
-		}
+		renderStack.push(cr.hp.map(hp => {
+			return `<span><strong>HP&nbsp;</strong>${hp.note != null ? `${hp.note} ` : ``}${hp.hp}${renderer.render(`${hp.abilities != null ? `, ${hp.abilities.join(", ")}` : ``}`)}`;
+		}).join(" "));
 		if (cr.hardness != null) {
 			renderStack.push(`; <strong>Hardness&nbsp;</strong>${cr.hardness}`)
 		}
 		if (cr.immunities != null) {
 			renderStack.push(`; <strong>Immunities&nbsp;</strong>`)
-			// FIXME: This is stupid
-			renderStack.push(`${(cr.immunities.damage ? cr.immunities.damage.concat(cr.immunities.condition) : cr.immunities.condition).sort().join(", ")}`)
+			renderStack.push(renderer.render(cr.immunities.join(", ")));
 		}
 		if (cr.weaknesses != null) {
 			renderStack.push(`; <strong>Weaknesses&nbsp;</strong>`)
@@ -4129,7 +4101,7 @@ Renderer.creature = {
 		}
 	},
 
-	getSpellcasting (cr) {
+	getSpellCasting (cr) {
 		if (cr.spellcasting != null) {
 			const renderer = Renderer.get()
 			let renderStack = [];

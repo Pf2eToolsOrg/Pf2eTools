@@ -596,7 +596,7 @@ class Converter {
 		const perception = {};
 		const perceptionToken = this._consumeToken(this._tokenizerUtils.perception);
 		const match = this._tokenizerUtils.perception.find(it => it.type === perceptionToken.type).regex.exec(perceptionToken.value);
-		perception._ = Number(match[1]);
+		perception.std = Number(match[1]);
 		if (this._tokenIsType("PARENTHESIS")) {
 			const parenthesisText = this._renderToken(this._consumeToken("PARENTHESIS"));
 			const regexOtherBonus = /\+(\d+)\sto\s([\w\s]+)/g;
@@ -638,7 +638,7 @@ class Converter {
 		while (this._tokenIsType(this._tokenizerUtils.skills)) {
 			const skill = this._consumeToken(this._tokenizerUtils.skills).type.toLowerCase();
 			const bonusToken = this._consumeToken(this._tokenizerUtils.sentences);
-			skills[skill] = {_: Number(regexBonus.exec(bonusToken.value)[1])};
+			skills[skill] = {std: Number(regexBonus.exec(bonusToken.value)[1])};
 			if (this._tokenIsType("PARENTHESIS")) {
 				const parenthesisText = this._renderToken(this._consumeToken("PARENTHESIS"));
 				Array.from(parenthesisText.matchAll(regexOtherBonus)).forEach(m => skills[skill][m[2]] = Number(m[1]));
@@ -649,7 +649,7 @@ class Converter {
 	_parseAbilityScores (creature) {
 		const token = this._consumeToken(this._tokenizerUtils.creatureAbilityScores);
 		const match = this._tokenizerUtils.creatureAbilityScores.find(it => it.type === token.type).regex.exec(token.value);
-		const abilityScores = {};
+		const abilityMods = {};
 		const convertScore = (string) => {
 			string = string.trim();
 			string = string.replace(/[,;]/g, "");
@@ -657,13 +657,13 @@ class Converter {
 			if (Number.isNaN(Number(string))) return 0;
 			return Number(string);
 		}
-		abilityScores.str = convertScore(match[1]);
-		abilityScores.dex = convertScore(match[2]);
-		abilityScores.con = convertScore(match[3]);
-		abilityScores.int = convertScore(match[4]);
-		abilityScores.wis = convertScore(match[5]);
-		abilityScores.cha = convertScore(match[6]);
-		creature.abilityScores = abilityScores;
+		abilityMods.str = convertScore(match[1]);
+		abilityMods.dex = convertScore(match[2]);
+		abilityMods.con = convertScore(match[3]);
+		abilityMods.int = convertScore(match[4]);
+		abilityMods.wis = convertScore(match[5]);
+		abilityMods.cha = convertScore(match[6]);
+		creature.abilityMods = abilityMods;
 	}
 	_parseItems (creature) {
 		this._consumeToken(this._tokenizerUtils.items);
@@ -675,7 +675,7 @@ class Converter {
 		this._consumeToken(this._tokenizerUtils.ac);
 		const ac = {};
 		const stdACToken = this._consumeToken(this._tokenizerUtils.sentences);
-		ac._ = Number(stdACToken.value.trim().replace(/[,;]/g, ""));
+		ac.std = Number(stdACToken.value.trim().replace(/[,;]/g, ""));
 		if (this._tokenIsType("PARENTHESIS")) {
 			const parenthesisText = this._renderToken(this._consumeToken("PARENTHESIS")).replace(/^\(|\)$/g, "");
 			const regexOtherAC = /.*(\d+)\s(.+)/g;
@@ -693,7 +693,7 @@ class Converter {
 		const savingThrows = {};
 		const convertSavingThrow = (prop) => {
 			const bonus = this._getBonusPushAbilities();
-			savingThrows[prop] = {_: bonus};
+			savingThrows[prop] = {std: bonus};
 			if (this._tokenIsType("PARENTHESIS")) {
 				const parenthesisText = this._getParenthesisInnerText(this._consumeToken("PARENTHESIS"));
 				const regexOtherST = /\+(\d+)\s(.+)/g;
@@ -728,10 +728,10 @@ class Converter {
 		creature.hardness = Number(rendered);
 	}
 	_parseImmunities (creature) {
+		// FIXME: data structure?
 		this._consumeToken(this._tokenizerUtils.immunities);
 		const entries = this._getEntries();
 		creature.immunities = this._splitSemiOrComma(entries);
-		// TODO: use this data structure?
 		// const immunities = this._splitSemiOrComma(entries);
 		// const filterFunc = i => Object.values(Parser.DMGTYPE_JSON_TO_FULL).includes(i.toLowerCase()) || /damage/.test(i);
 		// creature.immunities = {
@@ -754,7 +754,7 @@ class Converter {
 	_parseWeakResistAmount (str) {
 		const amountRegExp = /(.*?)\s(\d+)(.+)?/;
 		const match = amountRegExp.exec(str);
-		if (match) return {name: match[1], amount: Number(match[2]), note: match[3] ? match[3].trim() : undefined};
+		if (match) return {name: match[1], amount: Number(match[2]), note: match[3] ? match[3].trimAnyChar(" ();,.") : undefined};
 		return {name: str}
 	}
 	_parseSpeed (creature) {
@@ -768,7 +768,7 @@ class Converter {
 		const reSpeed = /(.*? )?(\d+) feet/;
 		this._renderEntries(entriesSpeeds, {asString: true}).split(", ").forEach(se => {
 			const match = reSpeed.exec(se);
-			const name = (match[1] || "_").trim();
+			const name = (match[1] || "walk").trim();
 			speed[name] = Number(match[2]);
 		});
 		if (entriesAbilities.length) speed.abilities = this._splitSemiOrComma(entriesAbilities);

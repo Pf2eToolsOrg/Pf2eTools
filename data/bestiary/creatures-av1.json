@@ -6,26 +6,24 @@
 			"source": "AV1",
 			"page": 43,
 			"level": 5,
-			"rarity": "Unique",
-			"alignment": "CE",
-			"size": "Medium",
 			"traits": [
-				"ghoul"
+				"unique",
+				"ce",
+				"medium",
+				"ghoul",
+				"undead"
 			],
 			"creatureType": [
 				"Undead"
 			],
 			"perception": {
-				"default": 15
+				"std": 15
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Aklo",
@@ -36,39 +34,38 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 13
+					"std": 13
 				},
 				"Athletics": {
-					"default": 14
+					"std": 14
 				},
 				"Occultism": {
-					"default": 11
+					"std": 11
 				},
 				"Stealth": {
-					"default": 11
+					"std": 11
 				}
 			},
 			"abilityMods": {
-				"Str": 5,
-				"Dex": 2,
-				"Con": 4,
-				"Int": 4,
-				"Wis": 2,
-				"Cha": 2
+				"str": 5,
+				"dex": 2,
+				"con": 4,
+				"int": 4,
+				"wis": 2,
+				"cha": 2
 			},
-			"abilitiesTop": [],
 			"ac": {
-				"default": 22
+				"std": 22
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 14
+				"fort": {
+					"std": 14
 				},
-				"Ref": {
-					"default": 12
+				"ref": {
+					"std": 12
 				},
-				"Will": {
-					"default": 10
+				"will": {
+					"std": 10
 				}
 			},
 			"hp": [
@@ -79,7 +76,6 @@
 					]
 				}
 			],
-			"abilitiesMid": [],
 			"speed": {
 				"walk": 30,
 				"burrow": 5
@@ -114,62 +110,54 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
+			"abilities": {
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"manipulate"
+						],
+						"entries": [
+							"Requirements Aller is adjacent to a tattooed scrap of flesh or to the corpse of a creature that died within the last hour; Aller devours a bite of flesh and regains {@dice 4d6} Hit Points.",
+							"If the piece of flesh was tattooed, he is also {@condition quickened|CRB|quickened 1} and can use this extra action to make a jaws {@action Strike}. Aller then can't Consume Flesh for {@dice 1d4} rounds. He has one piece of tattooed flesh on his person."
+						],
+						"name": "Consume Tattooed Flesh"
 					},
-					"traits": [
-						"manipulate"
-					],
-					"entries": [
-						"Requirements Aller is adjacent to a tattooed scrap of flesh or to the corpse of a creature that died within the last hour; Aller devours a bite of flesh and regains {@dice 4d6} Hit Points.",
-						"If the piece of flesh was tattooed, he is also {@condition quickened|CRB|quickened 1} and can use this extra action to make a jaws {@action Strike}. Aller then can't Consume Flesh for {@dice 1d4} rounds. He has one piece of tattooed flesh on his person."
-					],
-					"name": "Consume Tattooed Flesh"
-				},
-				{
-					"traits": [
-						"disease"
-					],
-					"entries": [
-						"As Canker cultist (page 41), but DC 22."
-					],
-					"name": "Ghoul Fever"
-				},
-				{
-					"traits": [
-						"incapacitation",
-						"occult",
-						"necromancy"
-					],
-					"entries": [
-						"As Canker cultist (page 42), but DC 22."
-					],
-					"name": "Paralysis"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
+					{
+						"traits": [
+							"disease"
+						],
+						"entries": [
+							"As Canker cultist (page 41), but DC 22."
+						],
+						"name": "Ghoul Fever"
 					},
-					"entries": [
-						"As Canker cultist (page 42)."
-					],
-					"name": "Swift Leap"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"piercing",
-					"slashing"
-				],
-				"condition": []
-			},
-			"misc": [
-				"MA"
-			]
+					{
+						"traits": [
+							"incapacitation",
+							"occult",
+							"necromancy"
+						],
+						"entries": [
+							"As Canker cultist (page 42), but DC 22."
+						],
+						"name": "Paralysis"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"As Canker cultist (page 42)."
+						],
+						"name": "Swift Leap"
+					}
+				]
+			}
 		},
 		{
 			"name": "Augrael",
@@ -177,26 +165,24 @@
 			"source": "AV1",
 			"page": 35,
 			"level": 3,
-			"rarity": "Unique",
-			"alignment": "CN",
-			"size": "Medium",
 			"traits": [
-				"ghoul"
+				"unique",
+				"cn",
+				"medium",
+				"ghoul",
+				"undead"
 			],
 			"creatureType": [
 				"Undead"
 			],
 			"perception": {
-				"default": 8
+				"std": 8
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Aklo",
@@ -208,55 +194,42 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 8
+					"std": 8
 				},
 				"Athletics": {
-					"default": 9,
+					"std": 9,
 					"to Climb": 12
 				},
 				"Crafting": {
-					"default": 9
+					"std": 9
 				},
 				"Occultism": {
-					"default": 10
+					"std": 10
 				},
 				"Stealth": {
-					"default": 10
+					"std": 10
 				}
 			},
 			"abilityMods": {
-				"Str": 4,
-				"Dex": 3,
-				"Con": 1,
-				"Int": 1,
-				"Wis": 3,
-				"Cha": 1
+				"str": 4,
+				"dex": 3,
+				"con": 1,
+				"int": 1,
+				"wis": 3,
+				"cha": 1
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+10, {@skill Stealth} +10 Str +4, Dex +3, Con +1, Int +1, Wis +3, Cha +1."
-					],
-					"name": "Occultism"
-				},
-				{
-					"entries": [],
-					"name": "Light Blindness",
-					"generic": true
-				}
-			],
 			"ac": {
-				"default": 18
+				"std": 18
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 8
+				"fort": {
+					"std": 8
 				},
-				"Ref": {
-					"default": 12
+				"ref": {
+					"std": 12
 				},
-				"Will": {
-					"default": 10
+				"will": {
+					"std": 10
 				}
 			},
 			"hp": [
@@ -267,17 +240,12 @@
 					]
 				}
 			],
-			"immunities": {
-				"damage": [
-					"poison"
-				],
-				"condition": [
-					"death effects",
-					"disease",
-					"paralyzed"
-				]
-			},
-			"abilitiesMid": [],
+			"immunities": [
+				"poison",
+				"death effects",
+				"disease",
+				"paralyzed"
+			],
 			"speed": {
 				"walk": 30,
 				"burrow": 5,
@@ -313,106 +281,106 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"+10, {@skill Stealth} +10 Str +4, Dex +3, Con +1, Int +1, Wis +3, Cha +1."
+						],
+						"name": "Occultism"
 					},
-					"traits": [
-						"manipulate"
-					],
-					"requirements": "Augrael is adjacent to the corpse of an undead creature that was destroyed within the last hour",
-					"entries": [
-						"Augrael devours a chunk of the destroyed undead creature and regains {@dice 2d6} Hit Points. He can regain Hit Points from any given corpse only once."
-					],
-					"name": "Consume Flesh"
-				},
-				{
-					"entries": [
-						{
-							"type": "affliction",
-							"name": "",
-							"traits": [
-								"disease"
-							],
-							"note": "",
-							"DC": 20,
-							"savingThrow": "Fortitude",
-							"stages": [
-								{
-									"stage": 1,
-									"entry": "carrier with no ill effects",
-									"duration": "1 day"
-								},
-								{
-									"stage": 2,
-									"entry": "{@damage 2d6} negative damage and regains half as many Hit Points from all healing",
-									"duration": "1 day"
-								},
-								{
-									"stage": 3,
-									"entry": "as stage 2",
-									"duration": "1 day"
-								},
-								{
-									"stage": 4,
-									"entry": "{@damage 2d6} negative damage and gains no benefit from healing",
-									"duration": "1 day"
-								},
-								{
-									"stage": 5,
-									"entry": "as stage 4 ;",
-									"duration": "1 day"
-								}
-							]
-						}
-					],
-					"name": "Ghoul Fever"
-				},
-				{
-					"traits": [
-						"incapacitation",
-						"occult",
-						"necromancy"
-					],
-					"entries": [
-						"Any living, non-elf creature hit by a ghoul's attack must succeed at a DC 20 Fortitude save or become {@condition paralyzed}. It can attempt a new save at the end of each of its turns, and the DC cumulatively decreases by 1 on each save."
-					],
-					"name": "Paralysis"
-				},
-				{
-					"entries": [
-						"Attack Augrael deals an extra {@damage 1d6} precision damage to {@condition flat-footed} creatures."
-					],
-					"name": "Sneak"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"entries": [
-						"Augrael jumps up to half his Speed. This movement doesn't trigger reactions."
-					],
-					"name": "Swift Leap"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"negative",
-					"piercing",
-					"precision",
-					"slashing"
+					{
+						"entries": [],
+						"name": "Light Blindness",
+						"generic": true
+					}
 				],
-				"condition": [
-					"{@condition paralyzed}"
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"manipulate"
+						],
+						"requirements": "Augrael is adjacent to the corpse of an undead creature that was destroyed within the last hour",
+						"entries": [
+							"Augrael devours a chunk of the destroyed undead creature and regains {@dice 2d6} Hit Points. He can regain Hit Points from any given corpse only once."
+						],
+						"name": "Consume Flesh"
+					},
+					{
+						"entries": [
+							{
+								"type": "affliction",
+								"name": "",
+								"traits": [
+									"disease"
+								],
+								"note": "",
+								"DC": 20,
+								"savingThrow": "Fortitude",
+								"stages": [
+									{
+										"stage": 1,
+										"entry": "carrier with no ill effects",
+										"duration": "1 day"
+									},
+									{
+										"stage": 2,
+										"entry": "{@damage 2d6} negative damage and regains half as many Hit Points from all healing",
+										"duration": "1 day"
+									},
+									{
+										"stage": 3,
+										"entry": "as stage 2",
+										"duration": "1 day"
+									},
+									{
+										"stage": 4,
+										"entry": "{@damage 2d6} negative damage and gains no benefit from healing",
+										"duration": "1 day"
+									},
+									{
+										"stage": 5,
+										"entry": "as stage 4 ;",
+										"duration": "1 day"
+									}
+								]
+							}
+						],
+						"name": "Ghoul Fever"
+					},
+					{
+						"traits": [
+							"incapacitation",
+							"occult",
+							"necromancy"
+						],
+						"entries": [
+							"Any living, non-elf creature hit by a ghoul's attack must succeed at a DC 20 Fortitude save or become {@condition paralyzed}. It can attempt a new save at the end of each of its turns, and the DC cumulatively decreases by 1 on each save."
+						],
+						"name": "Paralysis"
+					},
+					{
+						"entries": [
+							"Attack Augrael deals an extra {@damage 1d6} precision damage to {@condition flat-footed} creatures."
+						],
+						"name": "Sneak"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"Augrael jumps up to half his Speed. This movement doesn't trigger reactions."
+						],
+						"name": "Swift Leap"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"CC"
-			]
+			}
 		},
 		{
 			"name": "Bloodsiphon",
@@ -420,26 +388,25 @@
 			"source": "AV1",
 			"page": 23,
 			"level": 4,
-			"rarity": "Unique",
-			"alignment": "NE",
-			"size": "Medium",
 			"traits": [
-				"amphibious"
+				"unique",
+				"ne",
+				"medium",
+				"amphibious",
+				"undead"
 			],
 			"creatureType": [
 				"Undead"
 			],
 			"perception": {
-				"default": 10
+				"std": 10
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"{@ability tremorsense} 30 feet"
-				]
-			},
+			"senses": [
+				{
+					"name": "{@ability tremorsense}",
+					"range": 30
+				}
+			],
 			"languages": {
 				"languages": [
 					"Aklo (cannot speak any language)"
@@ -448,30 +415,29 @@
 			},
 			"skills": {
 				"Athletics": {
-					"default": 12
+					"std": 12
 				}
 			},
 			"abilityMods": {
-				"Str": 4,
-				"Dex": 1,
-				"Con": 3,
-				"Int": -2,
-				"Wis": 3,
-				"Cha": -2
+				"str": 4,
+				"dex": 1,
+				"con": 3,
+				"int": -2,
+				"wis": 3,
+				"cha": -2
 			},
-			"abilitiesTop": [],
 			"ac": {
-				"default": 19
+				"std": 19
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 11
+				"fort": {
+					"std": 11
 				},
-				"Ref": {
-					"default": 7
+				"ref": {
+					"std": 7
 				},
-				"Will": {
-					"default": 11
+				"will": {
+					"std": 11
 				}
 			},
 			"hp": [
@@ -482,34 +448,9 @@
 					]
 				}
 			],
-			"immunities": {
-				"damage": [],
-				"condition": [
-					"death effects",
-					"disease"
-				]
-			},
-			"abilitiesMid": [
-				{
-					"traits": [
-						"aura",
-						"necromancy",
-						"occult"
-					],
-					"entries": [
-						"When the bloodsiphon dies, its body explodes in a cloudy red burst of necrotic dried blood in a 20-foot area. Creatures in range must attempt a DC 21 Reflex save.",
-						{
-							"type": "successDegree",
-							"entries": {
-								"Critical Success": "The creature is unaffected.",
-								"Success": "The creature takes {@damage 2d6} negative damage.",
-								"Failure": "The creature takes {@damage 4d6} negative damage.",
-								"Critical Failure": "The creature takes {@damage 6d6} negative damage and is {@condition enfeebled|CRB|enfeebled 2} for 1 hour."
-							}
-						}
-					],
-					"name": "Death Burst"
-				}
+			"immunities": [
+				"death effects",
+				"disease"
 			],
 			"speed": {
 				"walk": 10,
@@ -542,34 +483,43 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"requirements": "The bloodsiphon has a creature {@condition grabbed} or {@condition restrained}",
-					"entries": [
-						"The bloodsiphon drains blood from the creature it has {@condition grabbed}. This deals {@dice 4d4} damage and the bloodsiphon grows temporarily moist and slimy as it regains 8 Hit Points, gaining any excess as temporary Hit Points that last for 1 minute. A creature that has its blood {@condition drained} by the bloodsiphon is {@condition drained|CRB|drained 1} until it receives any type of healing."
-					],
-					"name": "Blood Drain"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"negative",
-					"piercing"
+			"abilities": {
+				"mid": [
+					{
+						"traits": [
+							"aura",
+							"necromancy",
+							"occult"
+						],
+						"entries": [
+							"When the bloodsiphon dies, its body explodes in a cloudy red burst of necrotic dried blood in a 20-foot area. Creatures in range must attempt a DC 21 Reflex save.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": "The creature is unaffected.",
+									"Success": "The creature takes {@damage 2d6} negative damage.",
+									"Failure": "The creature takes {@damage 4d6} negative damage.",
+									"Critical Failure": "The creature takes {@damage 6d6} negative damage and is {@condition enfeebled|CRB|enfeebled 2} for 1 hour."
+								}
+							}
+						],
+						"name": "Death Burst"
+					}
 				],
-				"condition": [
-					"{@condition enfeebled}",
-					"{@condition grabbed}"
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"requirements": "The bloodsiphon has a creature {@condition grabbed} or {@condition restrained}",
+						"entries": [
+							"The bloodsiphon drains blood from the creature it has {@condition grabbed}. This deals {@dice 4d4} damage and the bloodsiphon grows temporarily moist and slimy as it regains 8 Hit Points, gaining any excess as temporary Hit Points that last for 1 minute. A creature that has its blood {@condition drained} by the bloodsiphon is {@condition drained|CRB|drained 1} until it receives any type of healing."
+						],
+						"name": "Blood Drain"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"RA",
-				"CC"
-			]
+			}
 		},
 		{
 			"name": "Boss Skrawng",
@@ -577,28 +527,29 @@
 			"source": "AV1",
 			"page": 11,
 			"level": 1,
-			"rarity": "Unique",
-			"alignment": "LE",
-			"size": "Small",
 			"traits": [
+				"unique",
+				"le",
+				"small",
+				"fey",
 				"gremlin"
 			],
 			"creatureType": [
 				"Fey"
 			],
 			"perception": {
-				"default": 7
+				"std": 7
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [
-					"scent 30 feet"
-				],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"type": "imprecise",
+					"name": "scent",
+					"range": 30
+				}
+			],
 			"languages": {
 				"languages": [
 					"Common",
@@ -608,69 +559,42 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 7
+					"std": 7
 				},
 				"Diplomacy": {
-					"default": 4,
+					"std": 4,
 					"vs. arthropods": 10
 				},
 				"Nature": {
-					"default": 5
+					"std": 5
 				},
 				"Stealth": {
-					"default": 7
+					"std": 7
 				},
 				"Thievery": {
-					"default": 7
+					"std": 7
 				}
 			},
 			"abilityMods": {
-				"Str": 1,
-				"Dex": 4,
-				"Con": 1,
-				"Int": 0,
-				"Wis": 2,
-				"Cha": 1
+				"str": 1,
+				"dex": 4,
+				"con": 1,
+				"int": 0,
+				"wis": 2,
+				"cha": 1
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+5, {@skill Stealth} +7, {@skill Thievery} +7 Str +1, Dex +4, Con +1, Int +0, Wis +2, Cha +1."
-					],
-					"name": "Nature"
-				},
-				{
-					"traits": [
-						"emotion",
-						"mental"
-					],
-					"entries": [
-						"As mitflit."
-					],
-					"name": "Self-Loathing",
-					"entries_as_xyz": "Ability not found: 'Self-Loathing As mitflit.' in Boss Skrawng, p.11"
-				},
-				{
-					"entries": [
-						"As mitflit.",
-						"Items blowgun (10 darts, 2 with spear frog poison), mud and bug crown, trident."
-					],
-					"name": "Vermin Empathy",
-					"entries_as_xyz": "Ability not found: 'Vermin Empathy As mitflit.' in Boss Skrawng, p.11"
-				}
-			],
 			"ac": {
-				"default": 16
+				"std": 16
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 4
+				"fort": {
+					"std": 4
 				},
-				"Ref": {
-					"default": 9
+				"ref": {
+					"std": 9
 				},
-				"Will": {
-					"default": 8
+				"will": {
+					"std": 8
 				}
 			},
 			"hp": [
@@ -679,7 +603,6 @@
 					"abilities": null
 				}
 			],
-			"abilitiesMid": [],
 			"speed": {
 				"walk": 20,
 				"climb": 20
@@ -761,50 +684,63 @@
 					}
 				}
 			],
-			"abilitiesBot": [
-				{
-					"traits": [
-						"poison"
-					],
-					"entries": [
-						"Saving Throw DC 15 Fortitude;"
-					],
-					"name": "Spear Frog Poison"
-				},
-				{
-					"entries": [
-						"6 rounds; Stage 1 {@damage 1d4} poison damage (1 round); Stage 2 {@damage 1d6} poison damage and {@condition enfeebled|CRB|enfeebled 1} (1 round)"
-					],
-					"name": "Maximum Duration"
-				},
-				{
-					"traits": [
-						"emotion",
-						"mental"
-					],
-					"entries": [
-						"As mitflit."
-					],
-					"name": "Vengeful Anger",
-					"entries_as_xyz": "Ability not found: 'Vengeful Anger As mitflit.' in Boss Skrawng, p.11"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"piercing",
-					"poison"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"+5, {@skill Stealth} +7, {@skill Thievery} +7 Str +1, Dex +4, Con +1, Int +0, Wis +2, Cha +1."
+						],
+						"name": "Nature"
+					},
+					{
+						"traits": [
+							"emotion",
+							"mental"
+						],
+						"entries": [
+							"As mitflit."
+						],
+						"name": "Self-Loathing",
+						"entries_as_xyz": "Ability not found: 'Self-Loathing As mitflit.' in Boss Skrawng, p.11"
+					},
+					{
+						"entries": [
+							"As mitflit.",
+							"Items blowgun (10 darts, 2 with spear frog poison), mud and bug crown, trident."
+						],
+						"name": "Vermin Empathy",
+						"entries_as_xyz": "Ability not found: 'Vermin Empathy As mitflit.' in Boss Skrawng, p.11"
+					}
 				],
-				"condition": [
-					"{@condition enfeebled}"
+				"bot": [
+					{
+						"traits": [
+							"poison"
+						],
+						"entries": [
+							"Saving Throw DC 15 Fortitude;"
+						],
+						"name": "Spear Frog Poison"
+					},
+					{
+						"entries": [
+							"6 rounds; Stage 1 {@damage 1d4} poison damage (1 round); Stage 2 {@damage 1d6} poison damage and {@condition enfeebled|CRB|enfeebled 1} (1 round)"
+						],
+						"name": "Maximum Duration"
+					},
+					{
+						"traits": [
+							"emotion",
+							"mental"
+						],
+						"entries": [
+							"As mitflit."
+						],
+						"name": "Vengeful Anger",
+						"entries_as_xyz": "Ability not found: 'Vengeful Anger As mitflit.' in Boss Skrawng, p.11"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"RA",
-				"TA",
-				"CC",
-				"UW"
-			]
+			}
 		},
 		{
 			"name": "Canker Cultist",
@@ -812,26 +748,24 @@
 			"source": "AV1",
 			"page": 41,
 			"level": 3,
-			"rarity": "Uncommon",
-			"alignment": "CE",
-			"size": "Medium",
 			"traits": [
-				"ghoul"
+				"uncommon",
+				"ce",
+				"medium",
+				"ghoul",
+				"undead"
 			],
 			"creatureType": [
 				"Undead"
 			],
 			"perception": {
-				"default": 11
+				"std": 11
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Aklo",
@@ -843,55 +777,47 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 9
+					"std": 9
 				},
 				"Athletics": {
-					"default": 10
+					"std": 10
 				},
 				"Intimidation": {
-					"default": 10
+					"std": 10
 				},
 				"Occultism": {
-					"default": 8
+					"std": 8
 				},
 				"Religion": {
-					"default": 8
+					"std": 8
 				},
 				"Stealth": {
-					"default": 9
+					"std": 9
 				}
 			},
 			"abilityMods": {
-				"Str": 4,
-				"Dex": 3,
-				"Con": 1,
-				"Int": 1,
-				"Wis": 3,
-				"Cha": 3
+				"str": 4,
+				"dex": 3,
+				"con": 1,
+				"int": 1,
+				"wis": 3,
+				"cha": 3
 			},
 			"items": [
 				"2 lumps of decayed flesh strung on a necklace"
 			],
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+8, {@skill Religion} +8, {@skill Stealth} +9 Str +4, Dex +3, Con +1, Int +1, Wis +3, Cha +3 Items 2 lumps of decayed flesh strung on a necklace."
-					],
-					"name": "Occultism"
-				}
-			],
 			"ac": {
-				"default": 19
+				"std": 19
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 7
+				"fort": {
+					"std": 7
 				},
-				"Ref": {
-					"default": 9
+				"ref": {
+					"std": 9
 				},
-				"Will": {
-					"default": 12
+				"will": {
+					"std": 12
 				}
 			},
 			"hp": [
@@ -902,14 +828,10 @@
 					]
 				}
 			],
-			"immunities": {
-				"damage": [],
-				"condition": [
-					"death effects",
-					"disease"
-				]
-			},
-			"abilitiesMid": [],
+			"immunities": [
+				"death effects",
+				"disease"
+			],
 			"speed": {
 				"walk": 30,
 				"burrow": 5
@@ -995,100 +917,96 @@
 					}
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"traits": [
-						"manipulate"
-					],
-					"requirements": "The Canker cultist is adjacent to the corpse of a creature that died within the last hour, or is carrying a specially prepared lump of decaying flesh",
-					"entries": [
-						"The Canker cultist devours a chunk of the corpse or the lump of decaying flesh and regains Hit Points. They regain {@dice 1d6} Hit Points from consuming the flesh of a creature that died within the last hour, and {@dice 2d6} Hit Points from the lump. The cultist can regain Hit Points from any given corpse only once."
-					],
-					"name": "Consume Flesh"
-				},
-				{
-					"entries": [
-						{
-							"type": "affliction",
-							"name": "",
-							"traits": [
-								"disease"
-							],
-							"note": "",
-							"DC": 20,
-							"savingThrow": "Fortitude",
-							"stages": [
-								{
-									"stage": 1,
-									"entry": "carrier with no ill effects",
-									"duration": "1 day"
-								},
-								{
-									"stage": 2,
-									"entry": "{@damage 2d6} negative damage and regains half as many Hit Points from all healing",
-									"duration": "1 day"
-								},
-								{
-									"stage": 3,
-									"entry": "as stage 2",
-									"duration": "1 day"
-								},
-								{
-									"stage": 4,
-									"entry": "{@damage 2d6} negative damage and gains no benefit from healing",
-									"duration": "1 day"
-								},
-								{
-									"stage": 5,
-									"entry": "as stage 4 ;",
-									"duration": "1 day"
-								}
-							]
-						}
-					],
-					"name": "Ghoul Fever"
-				},
-				{
-					"traits": [
-						"incapacitation",
-						"occult",
-						"necromancy"
-					],
-					"entries": [
-						"Any living, non-elf creature hit by a Canker cultist's attack must succeed at a DC 20 Fortitude save or become {@condition paralyzed}.",
-						"It can attempt a new save at the end of each of its turns, and the DC cumulatively decreases by 1 on each save."
-					],
-					"name": "Paralysis"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"entries": [
-						"The cultist jumps up to half its Speed. This movement doesn't trigger reactions."
-					],
-					"name": "Swift Leap"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"negative",
-					"piercing",
-					"slashing"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"+8, {@skill Religion} +8, {@skill Stealth} +9 Str +4, Dex +3, Con +1, Int +1, Wis +3, Cha +3 Items 2 lumps of decayed flesh strung on a necklace."
+						],
+						"name": "Occultism"
+					}
 				],
-				"condition": [
-					"{@condition paralyzed}"
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"manipulate"
+						],
+						"requirements": "The Canker cultist is adjacent to the corpse of a creature that died within the last hour, or is carrying a specially prepared lump of decaying flesh",
+						"entries": [
+							"The Canker cultist devours a chunk of the corpse or the lump of decaying flesh and regains Hit Points. They regain {@dice 1d6} Hit Points from consuming the flesh of a creature that died within the last hour, and {@dice 2d6} Hit Points from the lump. The cultist can regain Hit Points from any given corpse only once."
+						],
+						"name": "Consume Flesh"
+					},
+					{
+						"entries": [
+							{
+								"type": "affliction",
+								"name": "",
+								"traits": [
+									"disease"
+								],
+								"note": "",
+								"DC": 20,
+								"savingThrow": "Fortitude",
+								"stages": [
+									{
+										"stage": 1,
+										"entry": "carrier with no ill effects",
+										"duration": "1 day"
+									},
+									{
+										"stage": 2,
+										"entry": "{@damage 2d6} negative damage and regains half as many Hit Points from all healing",
+										"duration": "1 day"
+									},
+									{
+										"stage": 3,
+										"entry": "as stage 2",
+										"duration": "1 day"
+									},
+									{
+										"stage": 4,
+										"entry": "{@damage 2d6} negative damage and gains no benefit from healing",
+										"duration": "1 day"
+									},
+									{
+										"stage": 5,
+										"entry": "as stage 4 ;",
+										"duration": "1 day"
+									}
+								]
+							}
+						],
+						"name": "Ghoul Fever"
+					},
+					{
+						"traits": [
+							"incapacitation",
+							"occult",
+							"necromancy"
+						],
+						"entries": [
+							"Any living, non-elf creature hit by a Canker cultist's attack must succeed at a DC 20 Fortitude save or become {@condition paralyzed}.",
+							"It can attempt a new save at the end of each of its turns, and the DC cumulatively decreases by 1 on each save."
+						],
+						"name": "Paralysis"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"The cultist jumps up to half its Speed. This movement doesn't trigger reactions."
+						],
+						"name": "Swift Leap"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"CC"
-			]
+			}
 		},
 		{
 			"name": "Chandriu Invisar",
@@ -1096,28 +1014,27 @@
 			"source": "AV1",
 			"page": 50,
 			"level": 6,
-			"rarity": "Unique",
-			"alignment": "CE",
-			"size": "Medium",
 			"traits": [
+				"unique",
+				"ce",
+				"medium",
 				"ghost",
-				"incorporeal"
+				"incorporeal",
+				"spirit",
+				"undead"
 			],
 			"creatureType": [
 				"Spirit",
 				"Undead"
 			],
 			"perception": {
-				"default": 17
+				"std": 17
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Common",
@@ -1128,44 +1045,35 @@
 			},
 			"skills": {
 				"Society": {
-					"default": 16
+					"std": 16
 				},
 				"Stealth": {
-					"default": 15
+					"std": 15
 				},
 				"Scriptorium Lore": {
-					"default": 18
+					"std": 18
 				}
 			},
 			"abilityMods": {
-				"Str": -5,
-				"Dex": 5,
-				"Con": 0,
-				"Int": 4,
-				"Wis": 3,
-				"Cha": 2
+				"str": -5,
+				"dex": 5,
+				"con": 0,
+				"int": 4,
+				"wis": 3,
+				"cha": 2
 			},
-			"abilitiesTop": [
-				{
-					"traits": [
-						"area c36 and c37"
-					],
-					"entries": [],
-					"name": "Site Bound"
-				}
-			],
 			"ac": {
-				"default": 23
+				"std": 23
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 12
+				"fort": {
+					"std": 12
 				},
-				"Ref": {
-					"default": 17
+				"ref": {
+					"std": 17
 				},
-				"Will": {
-					"default": 11
+				"will": {
+					"std": 11
 				}
 			},
 			"hp": [
@@ -1175,19 +1083,6 @@
 						"negative healing",
 						"rejuvenation"
 					]
-				}
-			],
-			"abilitiesMid": [
-				{
-					"traits": [
-						"divine",
-						"necromancy"
-					],
-					"entries": [
-						"To put Chandriu to rest permanently, a hero must convince her to stop pining over Volluk with a successful DC 21 {@skill Diplomacy} check.",
-						"Regardless of the result of this check, Chandriu flies into a rage and attacks, but if the {@skill Diplomacy} check is successful, she is {@condition slowed|CRB|slowed 1} for 10 rounds while she fights. If defeated while she is {@condition slowed}, she is put to rest."
-					],
-					"name": "Rejuvenation"
 				}
 			],
 			"speed": {
@@ -1210,37 +1105,49 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"traits": [
-						"auditory",
-						"divine",
-						"emotion",
-						"enchantment",
-						"mental"
-					],
-					"entries": [
-						"Chandriu wails in despair at her loss and betrayal, forcing each living creature within 30 feet to attempt a DC 24 Will save. On a failure, a creature becomes {@condition slowed|CRB|slowed 1} ({@condition slowed|CRB|slowed 2} on a critical failure) for 1 round as they are overcome with sadness over their own missed opportunities. On a success, a creature is temporarily immune to Chandriu's Despairing Cry for 1 minute."
-					],
-					"name": "Despairing Cry"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"negative"
+			"abilities": {
+				"top": [
+					{
+						"traits": [
+							"area c36 and c37"
+						],
+						"entries": [],
+						"name": "Site Bound"
+					}
 				],
-				"condition": [
-					"{@condition slowed}"
+				"mid": [
+					{
+						"traits": [
+							"divine",
+							"necromancy"
+						],
+						"entries": [
+							"To put Chandriu to rest permanently, a hero must convince her to stop pining over Volluk with a successful DC 21 {@skill Diplomacy} check.",
+							"Regardless of the result of this check, Chandriu flies into a rage and attacks, but if the {@skill Diplomacy} check is successful, she is {@condition slowed|CRB|slowed 1} for 10 rounds while she fights. If defeated while she is {@condition slowed}, she is put to rest."
+						],
+						"name": "Rejuvenation"
+					}
+				],
+				"bot": [
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"auditory",
+							"divine",
+							"emotion",
+							"enchantment",
+							"mental"
+						],
+						"entries": [
+							"Chandriu wails in despair at her loss and betrayal, forcing each living creature within 30 feet to attempt a DC 24 Will save. On a failure, a creature becomes {@condition slowed|CRB|slowed 1} ({@condition slowed|CRB|slowed 2} on a critical failure) for 1 round as they are overcome with sadness over their own missed opportunities. On a success, a creature is temporarily immune to Chandriu's Despairing Cry for 1 minute."
+						],
+						"name": "Despairing Cry"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"CC"
-			]
+			}
 		},
 		{
 			"name": "Corpselight",
@@ -1248,25 +1155,28 @@
 			"source": "AV1",
 			"page": 82,
 			"level": 2,
-			"rarity": "Rare",
-			"alignment": "CE",
-			"size": "Medium",
+			"traits": [
+				"rare",
+				"ce",
+				"medium",
+				"undead"
+			],
 			"creatureType": [
 				"Undead"
 			],
 			"perception": {
-				"default": 7
+				"std": 7
 			},
-			"senses": {
-				"precise": [
-					"corpse sense 30 feet"
-				],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"type": "precise",
+					"name": "corpse sense",
+					"range": 30
+				},
+				{
+					"name": "darkvision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Common",
@@ -1276,43 +1186,35 @@
 			},
 			"skills": {
 				"Athletics": {
-					"default": 7
+					"std": 7
 				},
 				"Intimidation": {
-					"default": 8
+					"std": 8
 				},
 				"Stealth": {
-					"default": 8
+					"std": 8
 				}
 			},
 			"abilityMods": {
-				"Str": 3,
-				"Dex": 4,
-				"Con": 1,
-				"Int": 1,
-				"Wis": 1,
-				"Cha": 2
+				"str": 3,
+				"dex": 4,
+				"con": 1,
+				"int": 1,
+				"wis": 1,
+				"cha": 2
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"A corpselight can sense dead bodies within range. This is a precise sense that functions through solid barriers less than 5 feet thick."
-					],
-					"name": "Corpse Sense"
-				}
-			],
 			"ac": {
-				"default": 17
+				"std": 17
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 5
+				"fort": {
+					"std": 5
 				},
-				"Ref": {
-					"default": 10
+				"ref": {
+					"std": 10
 				},
-				"Will": {
-					"default": 7
+				"will": {
+					"std": 7
 				}
 			},
 			"hp": [
@@ -1323,45 +1225,16 @@
 					]
 				}
 			],
-			"immunities": {
-				"damage": [],
-				"condition": [
-					"death effects",
-					"disease",
-					"fear",
-					"paralyzed"
-				]
-			},
+			"immunities": [
+				"death effects",
+				"disease",
+				"fear",
+				"paralyzed"
+			],
 			"weaknesses": [
 				{
 					"amount": 5,
 					"name": "bludgeoning"
-				}
-			],
-			"abilitiesMid": [
-				{
-					"entries": [
-						"A corpselight exposed to sunlight is {@condition stunned|CRB|stunned 2} and {@condition clumsy|CRB|clumsy 2}, and cannot Claim a Corpse."
-					],
-					"name": "Sunlight Powerlessness"
-				},
-				{
-					"entries": [
-						"When a corpselight is reduced to 0 Hit Points while merged with a corpse, it is instead reduced to 1."
-					],
-					"name": "Wisp Form"
-				},
-				{
-					"entries": [
-						"Point as the corpse collapses to the ground and the corpselight emerges in its wisp form. While in wisp form, a corpselight is Tiny and can take no actions other than."
-					],
-					"name": "Hit"
-				},
-				{
-					"entries": [
-						"A corpselight that starts its turn in wisp form must attempt a DC {@flatDC 16} flat check at the end of its turn; if it fails, it loses 1 Hit Point. A corpselight reduced to 0 Hit Points while in wisp form is destroyed."
-					],
-					"name": "Claim Corpse or Fly."
 				}
 			],
 			"speed": {
@@ -1393,70 +1266,91 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"traits": [
-						"necromancy"
-					],
-					"prerequisites": "The corpselight is in wisp form and is adjacent to a Medium or Small corpse that hasn't been claimed by a corpselight in the past 24 hours",
-					"entries": [
-						"The corpselight merges with the corpse, causes the corpse to {@action Stand}, and regains {@dice 3d6} Hit Points."
-					],
-					"name": "Claim Corpse"
-				},
-				{
-					"activity": {
-						"number": 3,
-						"unit": "action"
-					},
-					"traits": [
-						"emotion",
-						"fear",
-						"mental",
-						"necromancy",
-						"occult"
-					],
-					"prerequisites": "The corpselight is in a corpse",
-					"entries": [
-						"The corpselight emits a sickly blue beam of light from its mouth and eyes in a 20-foot cone. All living creatures in this area must attempt a DC 18 Fortitude saving throw. If at least 1 creature fails its save, the corpselight regains {@dice 2d6} Hit Points, gaining any that exceed its maximum as temporary Hit Points that last for 1 minute. The corpselight can't use."
-					],
-					"name": "Death Light"
-				},
-				{
-					"entries": [
-						"Light again for {@dice 1d4} rounds.",
-						{
-							"type": "successDegree",
-							"entries": {
-								"Critical Success": "The creature is unaffected.",
-								"Success": "The creature takes {@damage 1d6} negative damage.",
-								"Failure": "The creature takes {@damage 2d6} negative damage and is {@condition frightened|CRB|frightened 1}.",
-								"Critical Failure": "The creature takes {@damage 4d6} negative damage and is {@condition frightened|CRB|frightened 3}."
-							}
-						}
-					],
-					"name": "Death"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"negative",
-					"piercing",
-					"slashing"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"A corpselight can sense dead bodies within range. This is a precise sense that functions through solid barriers less than 5 feet thick."
+						],
+						"name": "Corpse Sense"
+					}
 				],
-				"condition": [
-					"{@condition frightened}",
-					"{@condition stunned}"
+				"mid": [
+					{
+						"entries": [
+							"A corpselight exposed to sunlight is {@condition stunned|CRB|stunned 2} and {@condition clumsy|CRB|clumsy 2}, and cannot Claim a Corpse."
+						],
+						"name": "Sunlight Powerlessness"
+					},
+					{
+						"entries": [
+							"When a corpselight is reduced to 0 Hit Points while merged with a corpse, it is instead reduced to 1."
+						],
+						"name": "Wisp Form"
+					},
+					{
+						"entries": [
+							"Point as the corpse collapses to the ground and the corpselight emerges in its wisp form. While in wisp form, a corpselight is Tiny and can take no actions other than."
+						],
+						"name": "Hit"
+					},
+					{
+						"entries": [
+							"A corpselight that starts its turn in wisp form must attempt a DC {@flatDC 16} flat check at the end of its turn; if it fails, it loses 1 Hit Point. A corpselight reduced to 0 Hit Points while in wisp form is destroyed."
+						],
+						"name": "Claim Corpse or Fly."
+					}
+				],
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"necromancy"
+						],
+						"prerequisites": "The corpselight is in wisp form and is adjacent to a Medium or Small corpse that hasn't been claimed by a corpselight in the past 24 hours",
+						"entries": [
+							"The corpselight merges with the corpse, causes the corpse to {@action Stand}, and regains {@dice 3d6} Hit Points."
+						],
+						"name": "Claim Corpse"
+					},
+					{
+						"activity": {
+							"number": 3,
+							"unit": "action"
+						},
+						"traits": [
+							"emotion",
+							"fear",
+							"mental",
+							"necromancy",
+							"occult"
+						],
+						"prerequisites": "The corpselight is in a corpse",
+						"entries": [
+							"The corpselight emits a sickly blue beam of light from its mouth and eyes in a 20-foot cone. All living creatures in this area must attempt a DC 18 Fortitude saving throw. If at least 1 creature fails its save, the corpselight regains {@dice 2d6} Hit Points, gaining any that exceed its maximum as temporary Hit Points that last for 1 minute. The corpselight can't use."
+						],
+						"name": "Death Light"
+					},
+					{
+						"entries": [
+							"Light again for {@dice 1d4} rounds.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": "The creature is unaffected.",
+									"Success": "The creature takes {@damage 1d6} negative damage.",
+									"Failure": "The creature takes {@damage 2d6} negative damage and is {@condition frightened|CRB|frightened 1}.",
+									"Critical Failure": "The creature takes {@damage 4d6} negative damage and is {@condition frightened|CRB|frightened 3}."
+								}
+							}
+						],
+						"name": "Death"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"CC"
-			]
+			}
 		},
 		{
 			"name": "Flickerwisp",
@@ -1464,26 +1358,24 @@
 			"source": "AV1",
 			"page": 83,
 			"level": 2,
-			"rarity": "Uncommon",
-			"alignment": "CE",
-			"size": "Small",
 			"traits": [
+				"uncommon",
+				"ce",
+				"small",
+				"aberration",
 				"air"
 			],
 			"creatureType": [
 				"Aberration"
 			],
 			"perception": {
-				"default": 9
+				"std": 9
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Aklo",
@@ -1493,39 +1385,38 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 8
+					"std": 8
 				},
 				"Deception": {
-					"default": 7
+					"std": 7
 				},
 				"Intimidation": {
-					"default": 5
+					"std": 5
 				},
 				"Stealth": {
-					"default": 8
+					"std": 8
 				}
 			},
 			"abilityMods": {
-				"Str": -5,
-				"Dex": 4,
-				"Con": 0,
-				"Int": 0,
-				"Wis": 3,
-				"Cha": 1
+				"str": -5,
+				"dex": 4,
+				"con": 0,
+				"int": 0,
+				"wis": 3,
+				"cha": 1
 			},
-			"abilitiesTop": [],
 			"ac": {
-				"default": 20
+				"std": 20
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 6
+				"fort": {
+					"std": 6
 				},
-				"Ref": {
-					"default": 10
+				"ref": {
+					"std": 10
 				},
-				"Will": {
-					"default": 7
+				"will": {
+					"std": 7
 				}
 			},
 			"hp": [
@@ -1534,35 +1425,8 @@
 					"abilities": null
 				}
 			],
-			"immunities": {
-				"damage": [],
-				"condition": [
-					"magic"
-				]
-			},
-			"abilitiesMid": [
-				{
-					"traits": [
-						"aura",
-						"light"
-					],
-					"entries": [
-						"5 feet. A flickerwisp is itself naturally {@condition invisible}, but glows with pale yellow light, casting bright light in the aura and making it visible."
-					],
-					"name": "Glow"
-				},
-				{
-					"entries": [
-						"A flickerwisp's appearance registers strangely in the minds of creatures who are {@condition confused}. A creature with the {@condition confused} condition never targets a flickerwisp with attacks unless the creature has been damaged by the flickerwisp's shock ability within the last 24 hours."
-					],
-					"name": "Innocuous"
-				},
-				{
-					"entries": [
-						"A flickerwisp is immune to all spells except faerie fire, gust of wind, magic missile, and maze."
-					],
-					"name": "Magic Immunity"
-				}
+			"immunities": [
+				"magic"
 			],
 			"speed": {
 				"fly": 25
@@ -1582,54 +1446,68 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
+			"abilities": {
+				"mid": [
+					{
+						"traits": [
+							"aura",
+							"light"
+						],
+						"entries": [
+							"5 feet. A flickerwisp is itself naturally {@condition invisible}, but glows with pale yellow light, casting bright light in the aura and making it visible."
+						],
+						"name": "Glow"
 					},
-					"traits": [
-						"concentrate"
-					],
-					"requirements": "A creature within 15 feet of the flickerwisp is {@condition confused}",
-					"frequency": {
-						"unit": "round",
-						"freq": 1
+					{
+						"entries": [
+							"A flickerwisp's appearance registers strangely in the minds of creatures who are {@condition confused}. A creature with the {@condition confused} condition never targets a flickerwisp with attacks unless the creature has been damaged by the flickerwisp's shock ability within the last 24 hours."
+						],
+						"name": "Innocuous"
 					},
-					"entries": [
-						"The flickerwisp feeds on the creature's confusion, even as its flashing body and disjointed gyrations cause existing confusion effects to persist. It regains {@dice 1d4} Hit Points, and if the creature's {@condition confused} condition has a limited duration, it lasts 1 additional round."
-					],
-					"name": "Consume Confusion"
-				},
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"traits": [
-						"emotion",
-						"enchantment",
-						"mental",
-						"visual"
-					],
-					"entries": [
-						"The flickerwisp churns and flits in the air around an adjacent creature's head, and its length flashes and sparkles in a bewildering array of distracting pulsations. The creature must succeed at a DC 18 Will save or become {@condition confused} for 1 round (2 rounds on a critical failure). On a critical success, the creature is temporarily immune to Flicker for 24 hours."
-					],
-					"name": "Flicker"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"electricity"
+					{
+						"entries": [
+							"A flickerwisp is immune to all spells except faerie fire, gust of wind, magic missile, and maze."
+						],
+						"name": "Magic Immunity"
+					}
 				],
-				"condition": [
-					"{@condition confused}"
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"concentrate"
+						],
+						"requirements": "A creature within 15 feet of the flickerwisp is {@condition confused}",
+						"frequency": {
+							"unit": "round",
+							"freq": 1
+						},
+						"entries": [
+							"The flickerwisp feeds on the creature's confusion, even as its flashing body and disjointed gyrations cause existing confusion effects to persist. It regains {@dice 1d4} Hit Points, and if the creature's {@condition confused} condition has a limited duration, it lasts 1 additional round."
+						],
+						"name": "Consume Confusion"
+					},
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"emotion",
+							"enchantment",
+							"mental",
+							"visual"
+						],
+						"entries": [
+							"The flickerwisp churns and flits in the air around an adjacent creature's head, and its length flashes and sparkles in a bewildering array of distracting pulsations. The creature must succeed at a DC 18 Will save or become {@condition confused} for 1 round (2 rounds on a critical failure). On a critical success, the creature is temporarily immune to Flicker for 24 hours."
+						],
+						"name": "Flicker"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"CC"
-			]
+			}
 		},
 		{
 			"name": "Jarelle Kaldrian",
@@ -1637,28 +1515,27 @@
 			"source": "AV1",
 			"page": 40,
 			"level": 5,
-			"rarity": "Unique",
-			"alignment": "LE",
-			"size": "Medium",
 			"traits": [
+				"unique",
+				"le",
+				"medium",
 				"ghost",
-				"incorporeal"
+				"incorporeal",
+				"spirit",
+				"undead"
 			],
 			"creatureType": [
 				"Spirit",
 				"Undead"
 			],
 			"perception": {
-				"default": 12
+				"std": 12
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Aklo",
@@ -1670,41 +1547,32 @@
 			},
 			"skills": {
 				"Stealth": {
-					"default": 14
+					"std": 14
 				},
 				"Library Lore": {
-					"default": 15
+					"std": 15
 				}
 			},
 			"abilityMods": {
-				"Str": -5,
-				"Dex": 5,
-				"Con": 0,
-				"Int": 2,
-				"Wis": 3,
-				"Cha": 0
+				"str": -5,
+				"dex": 5,
+				"con": 0,
+				"int": 2,
+				"wis": 3,
+				"cha": 0
 			},
-			"abilitiesTop": [
-				{
-					"traits": [
-						"area c13"
-					],
-					"entries": [],
-					"name": "Site Bound"
-				}
-			],
 			"ac": {
-				"default": 21
+				"std": 21
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 9
+				"fort": {
+					"std": 9
 				},
-				"Ref": {
-					"default": 14
+				"ref": {
+					"std": 14
 				},
-				"Will": {
-					"default": 12
+				"will": {
+					"std": 12
 				}
 			},
 			"hp": [
@@ -1716,23 +1584,8 @@
 					]
 				}
 			],
-			"immunities": {
-				"damage": [],
-				"condition": [
-					"death"
-				]
-			},
-			"abilitiesMid": [
-				{
-					"traits": [
-						"divine",
-						"necromancy"
-					],
-					"entries": [
-						"Removing this room's tables and tools allows Jarelle to move on to the afterlife."
-					],
-					"name": "Rejuvenation"
-				}
+			"immunities": [
+				"death"
 			],
 			"speed": {
 				"fly": 25
@@ -1754,53 +1607,63 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"traits": [
-						"divine",
-						"incapacitation",
-						"mental",
-						"necromancy",
-						"possession"
-					],
-					"entries": [
-						"Jarelle attempts to possess an adjacent corporeal creature. This has the same effect as the {@spell possession} spell (with a spell DC of 22), except since Jarelle doesn't have a physical body, she is unaffected by that restriction of the spell."
-					],
-					"name": "Malevolent Possession"
-				},
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"traits": [
-						"divine",
-						"necromancy",
-						"poison"
-					],
-					"entries": [
-						"Jarelle exhales a 15-foot cone of toxic mist that deals {@damage 5d6} poison damage (DC 22 basic Fortitude save; on a critical failure, the target is also {@condition enfeebled|CRB|enfeebled 1} for 24 hours). She then can't use Poisoned Breath again for {@dice 1d4} rounds."
-					],
-					"name": "Poisoned Breath"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"negative",
-					"poison"
+			"abilities": {
+				"top": [
+					{
+						"traits": [
+							"area c13"
+						],
+						"entries": [],
+						"name": "Site Bound"
+					}
 				],
-				"condition": [
-					"{@condition enfeebled}"
+				"mid": [
+					{
+						"traits": [
+							"divine",
+							"necromancy"
+						],
+						"entries": [
+							"Removing this room's tables and tools allows Jarelle to move on to the afterlife."
+						],
+						"name": "Rejuvenation"
+					}
+				],
+				"bot": [
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"divine",
+							"incapacitation",
+							"mental",
+							"necromancy",
+							"possession"
+						],
+						"entries": [
+							"Jarelle attempts to possess an adjacent corporeal creature. This has the same effect as the {@spell possession} spell (with a spell DC of 22), except since Jarelle doesn't have a physical body, she is unaffected by that restriction of the spell."
+						],
+						"name": "Malevolent Possession"
+					},
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"divine",
+							"necromancy",
+							"poison"
+						],
+						"entries": [
+							"Jarelle exhales a 15-foot cone of toxic mist that deals {@damage 5d6} poison damage (DC 22 basic Fortitude save; on a critical failure, the target is also {@condition enfeebled|CRB|enfeebled 1} for 24 hours). She then can't use Poisoned Breath again for {@dice 1d4} rounds."
+						],
+						"name": "Poisoned Breath"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"CC"
-			]
+			}
 		},
 		{
 			"name": "Jaul Mezmin",
@@ -1808,30 +1671,32 @@
 			"source": "AV1",
 			"page": 59,
 			"level": 6,
-			"rarity": "Unique",
-			"alignment": "NE",
-			"size": "Medium",
 			"traits": [
-				"werecreature",
-				"human"
+				"unique",
+				"ne",
+				"medium",
+				"beast",
+				"human",
+				"humanoid",
+				"werecreature"
 			],
 			"creatureType": [
 				"Humanoid",
 				"Beast"
 			],
 			"perception": {
-				"default": 14
+				"std": 14
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [
-					"scent 30 feet"
-				],
-				"vague": [],
-				"other": [
-					"low-light vision"
-				]
-			},
+			"senses": [
+				{
+					"name": "low-light vision"
+				},
+				{
+					"type": "imprecise",
+					"name": "scent",
+					"range": 30
+				}
+			],
 			"languages": {
 				"languages": [
 					"Common"
@@ -1842,50 +1707,38 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 12
+					"std": 12
 				},
 				"Athletics": {
-					"default": 15
+					"std": 15
 				},
 				"Deception": {
-					"default": 12
+					"std": 12
 				},
 				"Survival": {
-					"default": 14
+					"std": 14
 				}
 			},
 			"abilityMods": {
-				"Str": 5,
-				"Dex": 2,
-				"Con": 0,
-				"Int": -1,
-				"Wis": 4,
-				"Cha": 2
+				"str": 5,
+				"dex": 2,
+				"con": 0,
+				"int": -1,
+				"wis": 4,
+				"cha": 2
 			},
-			"abilitiesTop": [
-				{
-					"traits": [
-						"divination",
-						"primal"
-					],
-					"entries": [
-						"Jaul can communicate with lupines."
-					],
-					"name": "Wolf Empathy"
-				}
-			],
 			"ac": {
-				"default": 24
+				"std": 24
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 12
+				"fort": {
+					"std": 12
 				},
-				"Ref": {
-					"default": 14
+				"ref": {
+					"std": 14
 				},
-				"Will": {
-					"default": 16
+				"will": {
+					"std": 16
 				}
 			},
 			"hp": [
@@ -1900,7 +1753,6 @@
 					"name": "silver"
 				}
 			],
-			"abilitiesMid": [],
 			"speed": {
 				"walk": 25
 			},
@@ -2014,37 +1866,39 @@
 					}
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"traits": [
-						"concentrate",
-						"polymorph",
-						"primal",
-						"transmutation"
-					],
-					"entries": [
-						"As werecreature (Pathfinder Bestiary 329); human with fist +16 for {@damage 1d6+7} bludgeoning, or wolf with."
-					],
-					"name": "Change Shape",
-					"generic": true
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning",
-					"piercing",
-					"slashing"
+			"abilities": {
+				"top": [
+					{
+						"traits": [
+							"divination",
+							"primal"
+						],
+						"entries": [
+							"Jaul can communicate with lupines."
+						],
+						"name": "Wolf Empathy"
+					}
 				],
-				"condition": []
-			},
-			"misc": [
-				"MA",
-				"UW"
-			]
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"concentrate",
+							"polymorph",
+							"primal",
+							"transmutation"
+						],
+						"entries": [
+							"As werecreature (Pathfinder Bestiary 329); human with fist +16 for {@damage 1d6+7} bludgeoning, or wolf with."
+						],
+						"name": "Change Shape",
+						"generic": true
+					}
+				]
+			}
 		},
 		{
 			"name": "Jaul's Wolf",
@@ -2052,60 +1906,62 @@
 			"source": "AV1",
 			"page": 60,
 			"level": 4,
-			"rarity": "Unique",
-			"alignment": "N",
-			"size": "Medium",
+			"traits": [
+				"unique",
+				"n",
+				"medium",
+				"animal"
+			],
 			"creatureType": [
 				"Animal"
 			],
 			"perception": {
-				"default": 11
+				"std": 11
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [
-					"scent 30 feet"
-				],
-				"vague": [],
-				"other": [
-					"low-light vision"
-				]
-			},
+			"senses": [
+				{
+					"name": "low-light vision"
+				},
+				{
+					"type": "imprecise",
+					"name": "scent",
+					"range": 30
+				}
+			],
 			"skills": {
 				"Acrobatics": {
-					"default": 9
+					"std": 9
 				},
 				"Athletics": {
-					"default": 11
+					"std": 11
 				},
 				"Stealth": {
-					"default": 11
+					"std": 11
 				},
 				"Survival": {
-					"default": 9
+					"std": 9
 				}
 			},
 			"abilityMods": {
-				"Str": 5,
-				"Dex": 3,
-				"Con": 2,
-				"Int": -4,
-				"Wis": 3,
-				"Cha": 0
+				"str": 5,
+				"dex": 3,
+				"con": 2,
+				"int": -4,
+				"wis": 3,
+				"cha": 0
 			},
-			"abilitiesTop": [],
 			"ac": {
-				"default": 21
+				"std": 21
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 10
+				"fort": {
+					"std": 10
 				},
-				"Ref": {
-					"default": 13
+				"ref": {
+					"std": 13
 				},
-				"Will": {
-					"default": 9
+				"will": {
+					"std": 9
 				}
 			},
 			"hp": [
@@ -2114,7 +1970,6 @@
 					"abilities": null
 				}
 			],
-			"abilitiesMid": [],
 			"speed": {
 				"walk": 35
 			},
@@ -2130,28 +1985,21 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"entries": [],
-					"name": "Knockdown",
-					"generic": true
-				},
-				{
-					"entries": [
-						"The wolf deals {@damage 1d6} extra damage to creatures within Jaul's reach."
-					],
-					"name": "Jaul Coordination"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"piercing"
-				],
-				"condition": []
-			},
-			"misc": [
-				"MA"
-			]
+			"abilities": {
+				"bot": [
+					{
+						"entries": [],
+						"name": "Knockdown",
+						"generic": true
+					},
+					{
+						"entries": [
+							"The wolf deals {@damage 1d6} extra damage to creatures within Jaul's reach."
+						],
+						"name": "Jaul Coordination"
+					}
+				]
+			}
 		},
 		{
 			"name": "Morlock Cultist",
@@ -2159,26 +2007,24 @@
 			"source": "AV1",
 			"page": 85,
 			"level": 4,
-			"rarity": "Uncommon",
-			"alignment": "CE",
-			"size": "Medium",
 			"traits": [
+				"uncommon",
+				"ce",
+				"medium",
+				"humanoid",
 				"morlock"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 11
+				"std": 11
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Aklo",
@@ -2188,58 +2034,45 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 10
+					"std": 10
 				},
 				"Athletics": {
-					"default": 11,
+					"std": 11,
 					"Climbing": 13
 				},
 				"Crafting": {
-					"default": 11
+					"std": 11
 				},
 				"Occultism": {
-					"default": 13
+					"std": 13
 				},
 				"Stealth": {
-					"default": 11
+					"std": 11
 				}
 			},
 			"abilityMods": {
-				"Str": 3,
-				"Dex": 3,
-				"Con": 1,
-				"Int": 5,
-				"Wis": 3,
-				"Cha": 0
+				"str": 3,
+				"dex": 3,
+				"con": 1,
+				"int": 5,
+				"wis": 3,
+				"cha": 0
 			},
 			"items": [
 				"club"
 			],
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+11 ({@action Repair} only), {@skill Occultism} +13, {@skill Stealth} +11 Str +3, Dex +3, Con +1, Int +5, Wis +3, Cha +0 Items club."
-					],
-					"name": "Crafting"
-				},
-				{
-					"entries": [],
-					"name": "Light Blindness",
-					"generic": true
-				}
-			],
 			"ac": {
-				"default": 21
+				"std": 21
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 9
+				"fort": {
+					"std": 9
 				},
-				"Ref": {
-					"default": 11
+				"ref": {
+					"std": 11
 				},
-				"Will": {
-					"default": 11
+				"will": {
+					"std": 11
 				}
 			},
 			"hp": [
@@ -2248,7 +2081,6 @@
 					"abilities": null
 				}
 			],
-			"abilitiesMid": [],
 			"speed": {
 				"walk": 30,
 				"climb": 20
@@ -2328,41 +2160,41 @@
 					}
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"+11 ({@action Repair} only), {@skill Occultism} +13, {@skill Stealth} +11 Str +3, Dex +3, Con +1, Int +5, Wis +3, Cha +0 Items club."
+						],
+						"name": "Crafting"
 					},
-					"entries": [
-						"The morlock cultist {@action Stride||Strides} up to half its speed, ignoring difficult terrain caused by natural cavern features like rubble or stalagmites.",
-						"At any point during its movement, the morlock cultist can {@action Cast a Spell} that normally takes two actions or fewer to cast."
-					],
-					"name": "Occult Attack"
-				},
-				{
-					"entries": [
-						"The morlock deals an extra {@damage 1d6} precision damage to {@condition flat-footed} creatures."
-					],
-					"name": "Sneak Attack",
-					"generic": true
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning",
-					"piercing",
-					"precision"
+					{
+						"entries": [],
+						"name": "Light Blindness",
+						"generic": true
+					}
 				],
-				"condition": [
-					"{@condition flat-footed}"
+				"bot": [
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"The morlock cultist {@action Stride||Strides} up to half its speed, ignoring difficult terrain caused by natural cavern features like rubble or stalagmites.",
+							"At any point during its movement, the morlock cultist can {@action Cast a Spell} that normally takes two actions or fewer to cast."
+						],
+						"name": "Occult Attack"
+					},
+					{
+						"entries": [
+							"The morlock deals an extra {@damage 1d6} precision damage to {@condition flat-footed} creatures."
+						],
+						"name": "Sneak Attack",
+						"generic": true
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"RA",
-				"CC"
-			]
+			}
 		},
 		{
 			"name": "Morlock Engineer",
@@ -2370,26 +2202,24 @@
 			"source": "AV1",
 			"page": 84,
 			"level": 3,
-			"rarity": "Uncommon",
-			"alignment": "CE",
-			"size": "Medium",
 			"traits": [
+				"uncommon",
+				"ce",
+				"medium",
+				"humanoid",
 				"morlock"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 8
+				"std": 8
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Undercommon"
@@ -2398,50 +2228,43 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 8
+					"std": 8
 				},
 				"Athletics": {
-					"default": 9,
+					"std": 9,
 					"Climbing": 11
 				},
 				"Crafting": {
-					"default": 10
+					"std": 10
 				},
 				"Stealth": {
-					"default": 10
+					"std": 10
 				}
 			},
 			"abilityMods": {
-				"Str": 4,
-				"Dex": 3,
-				"Con": 2,
-				"Int": 1,
-				"Wis": 3,
-				"Cha": 0
+				"str": 4,
+				"dex": 3,
+				"con": 2,
+				"int": 1,
+				"wis": 3,
+				"cha": 0
 			},
 			"items": [
 				"projectile launcher (5 handfuls of junk)",
 				"warhammer"
 			],
-			"abilitiesTop": [
-				{
-					"entries": [],
-					"name": "Light Blindness",
-					"generic": true
-				}
-			],
 			"ac": {
-				"default": 18
+				"std": 18
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 7
+				"fort": {
+					"std": 7
 				},
-				"Ref": {
-					"default": 12
+				"ref": {
+					"std": 12
 				},
-				"Will": {
-					"default": 10
+				"will": {
+					"std": 10
 				}
 			},
 			"hp": [
@@ -2450,7 +2273,6 @@
 					"abilities": null
 				}
 			],
-			"abilitiesMid": [],
 			"speed": {
 				"walk": 30,
 				"climb": 20
@@ -2498,65 +2320,58 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"entries": [
-						"The morlock engineer quickly crafts an improvised projectile from objects it carries or that are readily accessible in adjacent squares. Where unusual materials are available, an improvised projectile might deal damage other than bludgeoning or piercing\u2014for example, a morlock engineer by a campfire could build a projectile that deals fire damage."
-					],
-					"name": "Improvised Projectile"
-				},
-				{
-					"entries": [
-						"The morlock deals an extra {@damage 1d6} precision damage to {@condition flat-footed} creatures."
-					],
-					"name": "Sneak Attack",
-					"generic": true
-				},
-				{
-					"entries": [
-						"A morlock can share the same space as another morlock, but no more than two morlocks can occupy the same space. When morlocks share the same space, they gain a +1 circumstance bonus to attack rolls."
-					],
-					"name": "Swarming Stance"
-				},
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"entries": [
-						"The morlock engineer tinkers with an adjacent construct or mechanical hazard. They attempt a {@skill Crafting} check against the construct's or hazard's Fortitude DC. The morlock can't get an outcome better than failure if the target's level is more than double the morlock's. This ability reflects hasty battlefield repairs; once a construct or hazard regains Hit Points from this ability, it can't do so again until it's been Repaired.",
-						{
-							"type": "successDegree",
-							"entries": {
-								"Critical Success": "The target regains {@dice 8d6} Hit Points and a +1 circumstance bonus to attack rolls for 1 minute. Alternately, the morlock can deal {@dice 8d6} damage (bludgeoning, piercing, or slashing, as chosen by the morlock engineer) to the construct or hazard.",
-								"Success": "As critical success, but the target regains {@dice 4d6} Hit Points or the morlock deals {@dice 4d6} damage.",
-								"Critical Failure": "The morlock injures themself, taking {@dice 3d6} damage (typically bludgeoning, piercing, or slashing, but potentially a different type at the GM's discretion)."
-							}
-						}
-					],
-					"name": "Uncanny Tinker"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning",
-					"piercing",
-					"precision"
+			"abilities": {
+				"top": [
+					{
+						"entries": [],
+						"name": "Light Blindness",
+						"generic": true
+					}
 				],
-				"condition": [
-					"{@condition flat-footed}"
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"The morlock engineer quickly crafts an improvised projectile from objects it carries or that are readily accessible in adjacent squares. Where unusual materials are available, an improvised projectile might deal damage other than bludgeoning or piercing\u2014for example, a morlock engineer by a campfire could build a projectile that deals fire damage."
+						],
+						"name": "Improvised Projectile"
+					},
+					{
+						"entries": [
+							"The morlock deals an extra {@damage 1d6} precision damage to {@condition flat-footed} creatures."
+						],
+						"name": "Sneak Attack",
+						"generic": true
+					},
+					{
+						"entries": [
+							"A morlock can share the same space as another morlock, but no more than two morlocks can occupy the same space. When morlocks share the same space, they gain a +1 circumstance bonus to attack rolls."
+						],
+						"name": "Swarming Stance"
+					},
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"The morlock engineer tinkers with an adjacent construct or mechanical hazard. They attempt a {@skill Crafting} check against the construct's or hazard's Fortitude DC. The morlock can't get an outcome better than failure if the target's level is more than double the morlock's. This ability reflects hasty battlefield repairs; once a construct or hazard regains Hit Points from this ability, it can't do so again until it's been Repaired.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": "The target regains {@dice 8d6} Hit Points and a +1 circumstance bonus to attack rolls for 1 minute. Alternately, the morlock can deal {@dice 8d6} damage (bludgeoning, piercing, or slashing, as chosen by the morlock engineer) to the construct or hazard.",
+									"Success": "As critical success, but the target regains {@dice 4d6} Hit Points or the morlock deals {@dice 4d6} damage.",
+									"Critical Failure": "The morlock injures themself, taking {@dice 3d6} damage (typically bludgeoning, piercing, or slashing, but potentially a different type at the GM's discretion)."
+								}
+							}
+						],
+						"name": "Uncanny Tinker"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"RA",
-				"CC",
-				"UW"
-			]
+			}
 		},
 		{
 			"name": "Morlock Scavenger",
@@ -2564,26 +2379,23 @@
 			"source": "AV1",
 			"page": 84,
 			"level": 1,
-			"rarity": "Common",
-			"alignment": "CE",
-			"size": "Small",
 			"traits": [
+				"ce",
+				"small",
+				"humanoid",
 				"morlock"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 6
+				"std": 6
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Undercommon"
@@ -2592,46 +2404,39 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 7
+					"std": 7
 				},
 				"Athletics": {
-					"default": 5,
+					"std": 5,
 					"Climbing": 7
 				},
 				"Stealth": {
-					"default": 7
+					"std": 7
 				}
 			},
 			"abilityMods": {
-				"Str": 2,
-				"Dex": 4,
-				"Con": 1,
-				"Int": -2,
-				"Wis": 3,
-				"Cha": 1
+				"str": 2,
+				"dex": 4,
+				"con": 1,
+				"int": -2,
+				"wis": 3,
+				"cha": 1
 			},
 			"items": [
 				"dagger"
 			],
-			"abilitiesTop": [
-				{
-					"entries": [],
-					"name": "Light Blindness",
-					"generic": true
-				}
-			],
 			"ac": {
-				"default": 16
+				"std": 16
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 4
+				"fort": {
+					"std": 4
 				},
-				"Ref": {
-					"default": 9
+				"ref": {
+					"std": 9
 				},
-				"Will": {
-					"default": 6
+				"will": {
+					"std": 6
 				}
 			},
 			"hp": [
@@ -2640,7 +2445,6 @@
 					"abilities": null
 				}
 			],
-			"abilitiesMid": [],
 			"speed": {
 				"walk": 30,
 				"climb": 20
@@ -2690,47 +2494,40 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"entries": [
-						"The morlock scavenger {@action Stride||Strides} twice, ignoring difficult terrain caused by natural cavern features like rubble or stalagmites. At any point during its movement, the morlock can make a melee {@action Strike} against an enemy in its reach."
-					],
-					"name": "Scuttling Attack"
-				},
-				{
-					"entries": [
-						"The morlock deals an extra {@damage 1d6} precision damage to {@condition flat-footed} creatures."
-					],
-					"name": "Sneak Attack",
-					"generic": true
-				},
-				{
-					"entries": [
-						"A morlock can share the same space as another morlock, but no more than two morlocks can occupy the same space. When morlocks share the same space, they gain a +1 circumstance bonus to attack rolls."
-					],
-					"name": "Swarming Stance"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"piercing",
-					"precision"
+			"abilities": {
+				"top": [
+					{
+						"entries": [],
+						"name": "Light Blindness",
+						"generic": true
+					}
 				],
-				"condition": [
-					"{@condition flat-footed}"
+				"bot": [
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"The morlock scavenger {@action Stride||Strides} twice, ignoring difficult terrain caused by natural cavern features like rubble or stalagmites. At any point during its movement, the morlock can make a melee {@action Strike} against an enemy in its reach."
+						],
+						"name": "Scuttling Attack"
+					},
+					{
+						"entries": [
+							"The morlock deals an extra {@damage 1d6} precision damage to {@condition flat-footed} creatures."
+						],
+						"name": "Sneak Attack",
+						"generic": true
+					},
+					{
+						"entries": [
+							"A morlock can share the same space as another morlock, but no more than two morlocks can occupy the same space. When morlocks share the same space, they gain a +1 circumstance bonus to attack rolls."
+						],
+						"name": "Swarming Stance"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"RA",
-				"TA",
-				"CC",
-				"UW"
-			]
+			}
 		},
 		{
 			"name": "Nhakazarin",
@@ -2738,26 +2535,24 @@
 			"source": "AV1",
 			"page": 48,
 			"level": 5,
-			"rarity": "Unique",
-			"alignment": "CE",
-			"size": "Medium",
 			"traits": [
-				"ghoul"
+				"unique",
+				"ce",
+				"medium",
+				"ghoul",
+				"undead"
 			],
 			"creatureType": [
 				"Undead"
 			],
 			"perception": {
-				"default": 10
+				"std": 10
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Aklo",
@@ -2769,55 +2564,47 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 11
+					"std": 11
 				},
 				"Athletics": {
-					"default": 13
+					"std": 13
 				},
 				"Intimidation": {
-					"default": 14
+					"std": 14
 				},
 				"Occultism": {
-					"default": 11
+					"std": 11
 				},
 				"Religion": {
-					"default": 10
+					"std": 10
 				},
 				"Stealth": {
-					"default": 11
+					"std": 11
 				}
 			},
 			"abilityMods": {
-				"Str": 4,
-				"Dex": 2,
-				"Con": 4,
-				"Int": 2,
-				"Wis": -1,
-				"Cha": 5
+				"str": 4,
+				"dex": 2,
+				"con": 4,
+				"int": 2,
+				"wis": -1,
+				"cha": 5
 			},
 			"items": [
 				"staff of necromancy"
 			],
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+11, {@skill Religion} +10, {@skill Stealth} +11 Str +4, Dex +2, Con +4, Int +2, Wis \u20131, Cha +5 Items staff of necromancy."
-					],
-					"name": "Occultism"
-				}
-			],
 			"ac": {
-				"default": 21
+				"std": 21
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 15
+				"fort": {
+					"std": 15
 				},
-				"Ref": {
-					"default": 12
+				"ref": {
+					"std": 12
 				},
-				"Will": {
-					"default": 9
+				"will": {
+					"std": 9
 				}
 			},
 			"hp": [
@@ -2828,14 +2615,10 @@
 					]
 				}
 			],
-			"immunities": {
-				"damage": [],
-				"condition": [
-					"death effects",
-					"disease"
-				]
-			},
-			"abilitiesMid": [],
+			"immunities": [
+				"death effects",
+				"disease"
+			],
 			"speed": {
 				"walk": 30,
 				"burrow": 5
@@ -2960,83 +2743,81 @@
 					}
 				}
 			],
-			"abilitiesBot": [
-				{
-					"entries": [
-						"1 Focus Point, DC 22; 3rd touch of undeath (Core Rulebook 398)"
-					],
-					"name": "Domain Spells"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"traits": [
-						"manipulate"
-					],
-					"requirements": "Nhakazarin is adjacent to the corpse of a creature that died within the last hour",
-					"entries": [
-						"Nhakazarin devours a chunk of the corpse and regains {@dice 3d6} Hit Points. Nhakazarin can regain Hit Points from any given corpse only once."
-					],
-					"name": "Consume Flesh"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"traits": [
-						"manipulate"
-					],
-					"entries": [
-						"Requirements Nhakazarin is adjacent to the rotting statue of Belcorra in area C34; Nhakazarin devours a chunk of flesh from the statue and regains {@dice 3d6} Hit Points and is {@condition quickened|CRB|quickened 1} for 1 round. She can use this extra action only to make a jaws {@action Strike} or {@action Cast a Spell}. She can feed from the statue only once each day."
-					],
-					"name": "Consume Masterpiece"
-				},
-				{
-					"traits": [
-						"disease"
-					],
-					"entries": [
-						"As Canker cultist (page 41), but DC 22."
-					],
-					"name": "Ghoul Fever"
-				},
-				{
-					"traits": [
-						"incapacitation",
-						"occult",
-						"necromancy"
-					],
-					"entries": [
-						"As Canker cultist (page 42), but DC 22."
-					],
-					"name": "Paralysis"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"entries": [
-						"As Canker cultist (page 42)."
-					],
-					"name": "Swift Leap"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning",
-					"piercing",
-					"slashing"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"+11, {@skill Religion} +10, {@skill Stealth} +11 Str +4, Dex +2, Con +4, Int +2, Wis \u20131, Cha +5 Items staff of necromancy."
+						],
+						"name": "Occultism"
+					}
 				],
-				"condition": []
-			},
-			"misc": [
-				"MA",
-				"UW"
-			]
+				"bot": [
+					{
+						"entries": [
+							"1 Focus Point, DC 22; 3rd touch of undeath (Core Rulebook 398)"
+						],
+						"name": "Domain Spells"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"manipulate"
+						],
+						"requirements": "Nhakazarin is adjacent to the corpse of a creature that died within the last hour",
+						"entries": [
+							"Nhakazarin devours a chunk of the corpse and regains {@dice 3d6} Hit Points. Nhakazarin can regain Hit Points from any given corpse only once."
+						],
+						"name": "Consume Flesh"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"manipulate"
+						],
+						"entries": [
+							"Requirements Nhakazarin is adjacent to the rotting statue of Belcorra in area C34; Nhakazarin devours a chunk of flesh from the statue and regains {@dice 3d6} Hit Points and is {@condition quickened|CRB|quickened 1} for 1 round. She can use this extra action only to make a jaws {@action Strike} or {@action Cast a Spell}. She can feed from the statue only once each day."
+						],
+						"name": "Consume Masterpiece"
+					},
+					{
+						"traits": [
+							"disease"
+						],
+						"entries": [
+							"As Canker cultist (page 41), but DC 22."
+						],
+						"name": "Ghoul Fever"
+					},
+					{
+						"traits": [
+							"incapacitation",
+							"occult",
+							"necromancy"
+						],
+						"entries": [
+							"As Canker cultist (page 42), but DC 22."
+						],
+						"name": "Paralysis"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"As Canker cultist (page 42)."
+						],
+						"name": "Swift Leap"
+					}
+				]
+			}
 		},
 		{
 			"name": "Otari Ilvashti",
@@ -3044,28 +2825,27 @@
 			"source": "AV1",
 			"page": 89,
 			"level": 9,
-			"rarity": "Unique",
-			"alignment": "CG",
-			"size": "Medium",
 			"traits": [
+				"unique",
+				"cg",
+				"medium",
 				"ghost",
-				"incorporeal"
+				"incorporeal",
+				"spirit",
+				"undead"
 			],
 			"creatureType": [
 				"Spirit",
 				"Undead"
 			],
 			"perception": {
-				"default": 18
+				"std": 18
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Common",
@@ -3076,50 +2856,35 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 18
+					"std": 18
 				},
 				"Society": {
-					"default": 18
+					"std": 18
 				},
 				"Thievery": {
-					"default": 20
+					"std": 20
 				}
 			},
 			"abilityMods": {
-				"Str": -5,
-				"Dex": 6,
-				"Con": 0,
-				"Int": 4,
-				"Wis": 3,
-				"Cha": 4
+				"str": -5,
+				"dex": 6,
+				"con": 0,
+				"int": 4,
+				"wis": 3,
+				"cha": 4
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+4."
-					],
-					"name": "Cha"
-				},
-				{
-					"traits": [
-						"area d18"
-					],
-					"entries": [],
-					"name": "Site Bound"
-				}
-			],
 			"ac": {
-				"default": 25
+				"std": 25
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 16
+				"fort": {
+					"std": 16
 				},
-				"Ref": {
-					"default": 20
+				"ref": {
+					"std": 20
 				},
-				"Will": {
-					"default": 17
+				"will": {
+					"std": 17
 				}
 			},
 			"hp": [
@@ -3129,14 +2894,6 @@
 						"negative healing",
 						"rejuvenation"
 					]
-				}
-			],
-			"abilitiesMid": [
-				{
-					"entries": [
-						"Securing the four icons of the Roseguard and placing them on the altar in area D13 allows Otari to move on to the afterlife."
-					],
-					"name": "Rejuvenation"
 				}
 			],
 			"speed": {
@@ -3159,81 +2916,92 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"entries": [
-						{
-							"type": "affliction",
-							"name": "",
-							"traits": [
-								"disease"
-							],
-							"note": " The {@condition sickened} and {@condition unconscious}\nconditions from filth fever don't improve on their\nown until the disease is cured.",
-							"DC": 25,
-							"savingThrow": "Fortitude",
-							"stages": [
-								{
-									"stage": 1,
-									"entry": "carrier with no ill effect",
-									"duration": "{@dice 1d4} hours"
-								},
-								{
-									"stage": 2,
-									"entry": "{@condition sickened|CRB|sickened 1}",
-									"duration": "1 day"
-								},
-								{
-									"stage": 3,
-									"entry": "{@condition sickened|CRB|sickened 1} and {@condition slowed|CRB|slowed 1} as long as the affected creature remains {@condition sickened}",
-									"duration": "1 day"
-								},
-								{
-									"stage": 4,
-									"entry": "{@condition unconscious} ;",
-									"duration": "1 day"
-								}
-							]
-						}
-					],
-					"name": "Filth Fever"
-				},
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"+4."
+						],
+						"name": "Cha"
 					},
-					"traits": [
-						"conjuration",
-						"divine",
-						"teleportation"
-					],
-					"entries": [
-						"Otari fades away, momentarily emerges from the shadow of another creature within 30 feet, and makes a ghostly hand {@action Strike} against a single target within reach of this creature (but not against the creature whose shadow he infests). On a successful {@action Strike}, the target is also {@condition flat-footed} until the start of Otari's next turn. Otari then reappears at his starting point. The creature whose shadow Otari infests is exposed to filth fever."
-					],
-					"name": "Infested Shadow"
-				},
-				{
-					"entries": [
-						"Otari deals {@dice 2d6} extra precision damage to {@condition flat-footed} creatures."
-					],
-					"name": "Sneak Attack",
-					"generic": true
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"negative"
+					{
+						"traits": [
+							"area d18"
+						],
+						"entries": [],
+						"name": "Site Bound"
+					}
 				],
-				"condition": [
-					"{@condition flat-footed}",
-					"{@condition sickened}",
-					"{@condition unconscious}"
+				"mid": [
+					{
+						"entries": [
+							"Securing the four icons of the Roseguard and placing them on the altar in area D13 allows Otari to move on to the afterlife."
+						],
+						"name": "Rejuvenation"
+					}
+				],
+				"bot": [
+					{
+						"entries": [
+							{
+								"type": "affliction",
+								"name": "",
+								"traits": [
+									"disease"
+								],
+								"note": " The {@condition sickened} and {@condition unconscious}\nconditions from filth fever don't improve on their\nown until the disease is cured.",
+								"DC": 25,
+								"savingThrow": "Fortitude",
+								"stages": [
+									{
+										"stage": 1,
+										"entry": "carrier with no ill effect",
+										"duration": "{@dice 1d4} hours"
+									},
+									{
+										"stage": 2,
+										"entry": "{@condition sickened|CRB|sickened 1}",
+										"duration": "1 day"
+									},
+									{
+										"stage": 3,
+										"entry": "{@condition sickened|CRB|sickened 1} and {@condition slowed|CRB|slowed 1} as long as the affected creature remains {@condition sickened}",
+										"duration": "1 day"
+									},
+									{
+										"stage": 4,
+										"entry": "{@condition unconscious} ;",
+										"duration": "1 day"
+									}
+								]
+							}
+						],
+						"name": "Filth Fever"
+					},
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"conjuration",
+							"divine",
+							"teleportation"
+						],
+						"entries": [
+							"Otari fades away, momentarily emerges from the shadow of another creature within 30 feet, and makes a ghostly hand {@action Strike} against a single target within reach of this creature (but not against the creature whose shadow he infests). On a successful {@action Strike}, the target is also {@condition flat-footed} until the start of Otari's next turn. Otari then reappears at his starting point. The creature whose shadow Otari infests is exposed to filth fever."
+						],
+						"name": "Infested Shadow"
+					},
+					{
+						"entries": [
+							"Otari deals {@dice 2d6} extra precision damage to {@condition flat-footed} creatures."
+						],
+						"name": "Sneak Attack",
+						"generic": true
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"CC"
-			]
+			}
 		},
 		{
 			"name": "Scalathrax",
@@ -3241,23 +3009,23 @@
 			"source": "AV1",
 			"page": 86,
 			"level": 4,
-			"rarity": "Uncommon",
-			"alignment": "NE",
-			"size": "Medium",
+			"traits": [
+				"uncommon",
+				"ne",
+				"medium",
+				"aberration"
+			],
 			"creatureType": [
 				"Aberration"
 			],
 			"perception": {
-				"default": 11
+				"std": 11
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Undercommon"
@@ -3266,36 +3034,35 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 11
+					"std": 11
 				},
 				"Athletics": {
-					"default": 11
+					"std": 11
 				},
 				"Stealth": {
-					"default": 13
+					"std": 13
 				}
 			},
 			"abilityMods": {
-				"Str": 3,
-				"Dex": 5,
-				"Con": 3,
-				"Int": -2,
-				"Wis": 3,
-				"Cha": 0
+				"str": 3,
+				"dex": 5,
+				"con": 3,
+				"int": -2,
+				"wis": 3,
+				"cha": 0
 			},
-			"abilitiesTop": [],
 			"ac": {
-				"default": 21
+				"std": 21
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 11
+				"fort": {
+					"std": 11
 				},
-				"Ref": {
-					"default": 13
+				"ref": {
+					"std": 13
 				},
-				"Will": {
-					"default": 9
+				"will": {
+					"std": 9
 				}
 			},
 			"hp": [
@@ -3314,14 +3081,6 @@
 				{
 					"amount": 5,
 					"name": "poison"
-				}
-			],
-			"abilitiesMid": [
-				{
-					"entries": [
-						"A scalathrax constantly sweats a glistening oil that makes it exceptionally slick. It treats the results of {@skill Acrobatics} checks to {@action Squeeze} or of any skill check to {@action Escape} as one degree of success greater than the rolled result. A scalathrax loses this benefit for 1 minute after it takes any amount of fire damage."
-					],
-					"name": "Oily Scales"
 				}
 			],
 			"speed": {
@@ -3358,60 +3117,56 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"traits": [
-						"poison"
-					],
-					"entries": [
-						"Saving Throw Fortitude DC 21;"
-					],
-					"name": "Scalathrax Venom"
-				},
-				{
-					"entries": [
-						"6 rounds; Stage 1 {@condition clumsy|CRB|clumsy 1} (1 round); Stage 2 {@condition clumsy|CRB|clumsy 1} and {@condition slowed|CRB|slowed 1} (1 round); Stage 3 {@condition clumsy|CRB|clumsy 1} and {@condition slowed|CRB|slowed 2} (1 round)"
-					],
-					"name": "Maximum Duration"
-				},
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"traits": [
-						"conjuration",
-						"primal"
-					],
-					"entries": [
-						"The scalathrax disgorges a gout of toxic oil from its mouth in a 15-foot cone. Creatures in the area must attempt a DC 21 Reflex save. The scalathrax can't use Toxic Oil Spray again for {@dice 1d4} rounds.",
-						{
-							"type": "successDegree",
-							"entries": {
-								"Critical Success": "The creature is unaffected.",
-								"Success": "The creature takes {@damage 1d8} poison damage.",
-								"Failure": "The creature takes {@damage 2d8} poison damage. For 1 minute, the creature gains weakness to fire 5, and whenever the creature critically fails with an attack roll with a wielded weapon, it drops the weapon.",
-								"Critical Failure": "As failure, but {@damage 4d8} poison damage."
-							}
-						}
-					],
-					"name": "Spray Toxic Oil"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"piercing",
-					"poison"
+			"abilities": {
+				"mid": [
+					{
+						"entries": [
+							"A scalathrax constantly sweats a glistening oil that makes it exceptionally slick. It treats the results of {@skill Acrobatics} checks to {@action Squeeze} or of any skill check to {@action Escape} as one degree of success greater than the rolled result. A scalathrax loses this benefit for 1 minute after it takes any amount of fire damage."
+						],
+						"name": "Oily Scales"
+					}
 				],
-				"condition": [
-					"{@condition clumsy}"
+				"bot": [
+					{
+						"traits": [
+							"poison"
+						],
+						"entries": [
+							"Saving Throw Fortitude DC 21;"
+						],
+						"name": "Scalathrax Venom"
+					},
+					{
+						"entries": [
+							"6 rounds; Stage 1 {@condition clumsy|CRB|clumsy 1} (1 round); Stage 2 {@condition clumsy|CRB|clumsy 1} and {@condition slowed|CRB|slowed 1} (1 round); Stage 3 {@condition clumsy|CRB|clumsy 1} and {@condition slowed|CRB|slowed 2} (1 round)"
+						],
+						"name": "Maximum Duration"
+					},
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"conjuration",
+							"primal"
+						],
+						"entries": [
+							"The scalathrax disgorges a gout of toxic oil from its mouth in a 15-foot cone. Creatures in the area must attempt a DC 21 Reflex save. The scalathrax can't use Toxic Oil Spray again for {@dice 1d4} rounds.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": "The creature is unaffected.",
+									"Success": "The creature takes {@damage 1d8} poison damage.",
+									"Failure": "The creature takes {@damage 2d8} poison damage. For 1 minute, the creature gains weakness to fire 5, and whenever the creature critically fails with an attack roll with a wielded weapon, it drops the weapon.",
+									"Critical Failure": "As failure, but {@damage 4d8} poison damage."
+								}
+							}
+						],
+						"name": "Spray Toxic Oil"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"RA",
-				"CC"
-			]
+			}
 		},
 		{
 			"name": "Voidglutton",
@@ -3419,26 +3174,24 @@
 			"source": "AV1",
 			"page": 87,
 			"level": 8,
-			"rarity": "Rare",
-			"alignment": "CE",
-			"size": "Medium",
 			"traits": [
+				"rare",
+				"ce",
+				"medium",
+				"aberration",
 				"air"
 			],
 			"creatureType": [
 				"Aberration"
 			],
 			"perception": {
-				"default": 18
+				"std": 18
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Aklo",
@@ -3448,42 +3201,41 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 18
+					"std": 18
 				},
 				"Deception": {
-					"default": 15
+					"std": 15
 				},
 				"Intimidation": {
-					"default": 15
+					"std": 15
 				},
 				"Occultism": {
-					"default": 18
+					"std": 18
 				},
 				"Stealth": {
-					"default": 18
+					"std": 18
 				}
 			},
 			"abilityMods": {
-				"Str": 0,
-				"Dex": 6,
-				"Con": 3,
-				"Int": 6,
-				"Wis": 4,
-				"Cha": 3
+				"str": 0,
+				"dex": 6,
+				"con": 3,
+				"int": 6,
+				"wis": 4,
+				"cha": 3
 			},
-			"abilitiesTop": [],
 			"ac": {
-				"default": 30
+				"std": 30
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 13
+				"fort": {
+					"std": 13
 				},
-				"Ref": {
-					"default": 18
+				"ref": {
+					"std": 18
 				},
-				"Will": {
-					"default": 16
+				"will": {
+					"std": 16
 				}
 			},
 			"hp": [
@@ -3492,29 +3244,8 @@
 					"abilities": null
 				}
 			],
-			"immunities": {
-				"damage": [],
-				"condition": [
-					"magic"
-				]
-			},
-			"abilitiesMid": [
-				{
-					"traits": [
-						"aura",
-						"light"
-					],
-					"entries": [
-						"30 feet. The tips of a voidglutton's fingers and its seven eyes glow, casting bright light in the area and making it visible if it was {@condition invisible}."
-					],
-					"name": "Glow"
-				},
-				{
-					"entries": [
-						"A voidglutton is immune to all spells except faerie fire, glitterdust, magic missile, maze, and spells with the {@trait light} trait."
-					],
-					"name": "Magic Immunity"
-				}
+			"immunities": [
+				"magic"
 			],
 			"speed": {
 				"fly": 40
@@ -3569,84 +3300,90 @@
 					}
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "free"
+			"abilities": {
+				"mid": [
+					{
+						"traits": [
+							"aura",
+							"light"
+						],
+						"entries": [
+							"30 feet. The tips of a voidglutton's fingers and its seven eyes glow, casting bright light in the area and making it visible if it was {@condition invisible}."
+						],
+						"name": "Glow"
 					},
-					"traits": [
-						"darkness",
-						"evocation",
-						"occult"
-					],
-					"trigger": "The voidglutton casts darkness",
-					"entries": [
-						"The voidglutton extinguishes its Glow as part of Casting the Spell. It becomes {@condition invisible} as long as it remains in the area of darkness. If the voidglutton uses a {@condition hostile} action, its invisibility ends as soon as the {@condition hostile} action is completed."
-					],
-					"name": "Consume Light"
-				},
-				{
-					"traits": [
-						"conjuration",
-						"occult"
-					],
-					"entries": [
-						"A creature hit by the voidglutton's ectoplasmic web trap is {@condition immobilized} and stuck to the nearest surface until it succeeds at a DC 26 check to {@action Escape}."
-					],
-					"name": "Ectoplasmic Web Trap"
-				},
-				{
-					"entries": [
-						"Trap can immobilize incorporeal creatures."
-					],
-					"name": "Ectoplasmic Web"
-				},
-				{
-					"traits": [
-						"emotion",
-						"fear",
-						"mental",
-						"occult"
-					],
-					"entries": [
-						"When the voidglutton damages a creature with its claw {@action Strike}, the creature must succeed at a DC 26 Will save or become {@condition frightened|CRB|frightened 1} ({@condition frightened|CRB|frightened 2} on a critical failure)."
-					],
-					"name": "Fearful Strike"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"traits": [
-						"concentrate"
-					],
-					"requirements": "An enemy is affected by a {@trait fear} effect or has the {@condition frightened} or {@condition dying} condition, and is within 25 feet of the voidglutton",
-					"frequency": {
-						"unit": "round",
-						"freq": 1
-					},
-					"entries": [
-						"The voidglutton feeds on the creature's terror. It regains {@dice 3d4} Hit Points and its Glow reignites if it had been extinguished. It cannot use Consume Light again for {@dice 1d4} rounds, as it is too glutted on fear to suppress its Glow."
-					],
-					"name": "Feed on Fear"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"piercing"
+					{
+						"entries": [
+							"A voidglutton is immune to all spells except faerie fire, glitterdust, magic missile, maze, and spells with the {@trait light} trait."
+						],
+						"name": "Magic Immunity"
+					}
 				],
-				"condition": [
-					"{@condition frightened}",
-					"{@condition immobilized}"
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "free"
+						},
+						"traits": [
+							"darkness",
+							"evocation",
+							"occult"
+						],
+						"trigger": "The voidglutton casts darkness",
+						"entries": [
+							"The voidglutton extinguishes its Glow as part of Casting the Spell. It becomes {@condition invisible} as long as it remains in the area of darkness. If the voidglutton uses a {@condition hostile} action, its invisibility ends as soon as the {@condition hostile} action is completed."
+						],
+						"name": "Consume Light"
+					},
+					{
+						"traits": [
+							"conjuration",
+							"occult"
+						],
+						"entries": [
+							"A creature hit by the voidglutton's ectoplasmic web trap is {@condition immobilized} and stuck to the nearest surface until it succeeds at a DC 26 check to {@action Escape}."
+						],
+						"name": "Ectoplasmic Web Trap"
+					},
+					{
+						"entries": [
+							"Trap can immobilize incorporeal creatures."
+						],
+						"name": "Ectoplasmic Web"
+					},
+					{
+						"traits": [
+							"emotion",
+							"fear",
+							"mental",
+							"occult"
+						],
+						"entries": [
+							"When the voidglutton damages a creature with its claw {@action Strike}, the creature must succeed at a DC 26 Will save or become {@condition frightened|CRB|frightened 1} ({@condition frightened|CRB|frightened 2} on a critical failure)."
+						],
+						"name": "Fearful Strike"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"concentrate"
+						],
+						"requirements": "An enemy is affected by a {@trait fear} effect or has the {@condition frightened} or {@condition dying} condition, and is within 25 feet of the voidglutton",
+						"frequency": {
+							"unit": "round",
+							"freq": 1
+						},
+						"entries": [
+							"The voidglutton feeds on the creature's terror. It regains {@dice 3d4} Hit Points and its Glow reignites if it had been extinguished. It cannot use Consume Light again for {@dice 1d4} rounds, as it is too glutted on fear to suppress its Glow."
+						],
+						"name": "Feed on Fear"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"RA",
-				"CC"
-			]
+			}
 		},
 		{
 			"name": "Volluk Azrinae",
@@ -3654,28 +3391,29 @@
 			"source": "AV1",
 			"page": 54,
 			"level": 7,
-			"rarity": "Unique",
-			"alignment": "CE",
-			"size": "Medium",
 			"traits": [
+				"unique",
+				"ce",
+				"medium",
+				"aberration",
 				"swarm"
 			],
 			"creatureType": [
 				"Aberration"
 			],
 			"perception": {
-				"default": 15
+				"std": 15
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [
-					"{@ability tremorsense} 30 feet"
-				],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"type": "imprecise",
+					"name": "{@ability tremorsense}",
+					"range": 30
+				}
+			],
 			"languages": {
 				"languages": [
 					"Aklo",
@@ -3687,47 +3425,46 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 17
+					"std": 17
 				},
 				"Crafting": {
-					"default": 15,
+					"std": 15,
 					"when painting": 17
 				},
 				"Deception": {
-					"default": 15
+					"std": 15
 				},
 				"Intimidation": {
-					"default": 17
+					"std": 17
 				},
 				"Occultism": {
-					"default": 17
+					"std": 17
 				},
 				"Stealth": {
-					"default": 15
+					"std": 15
 				}
 			},
 			"abilityMods": {
-				"Str": 4,
-				"Dex": 6,
-				"Con": 2,
-				"Int": 6,
-				"Wis": 4,
-				"Cha": 2
+				"str": 4,
+				"dex": 6,
+				"con": 2,
+				"int": 6,
+				"wis": 4,
+				"cha": 2
 			},
-			"abilitiesTop": [],
 			"ac": {
-				"default": 25,
+				"std": 25,
 				"abilities": "all-around vision"
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 13
+				"fort": {
+					"std": 13
 				},
-				"Ref": {
-					"default": 17
+				"ref": {
+					"std": 17
 				},
-				"Will": {
-					"default": 15
+				"will": {
+					"std": 15
 				}
 			},
 			"hp": [
@@ -3738,15 +3475,11 @@
 					]
 				}
 			],
-			"immunities": {
-				"damage": [
-					"poison"
-				],
-				"condition": [
-					"disease",
-					"paralyzed"
-				]
-			},
+			"immunities": [
+				"poison",
+				"disease",
+				"paralyzed"
+			],
 			"weaknesses": [
 				{
 					"name": "area"
@@ -3756,27 +3489,6 @@
 				{
 					"amount": 7,
 					"name": "physical"
-				}
-			],
-			"abilitiesMid": [
-				{
-					"entries": [
-						"As {@creature Worm That Walks Cultist|bst2|worm that walks}, but slow-moving leeches give the heroes 2 rounds, rather than 1 round, to dispatch the {@condition fleeing} vermin before they escape."
-					],
-					"name": "Discorporate"
-				},
-				{
-					"traits": [
-						"enchantment",
-						"emotion",
-						"mental",
-						"occult",
-						"visual"
-					],
-					"entries": [
-						"If Volluk can see an accurate depiction of his former appearance as a living drow at the start of his turn, he must attempt a DC 28 Will save or become filled with self-loathing and become {@condition slowed|CRB|slowed 1} for 1 round."
-					],
-					"name": "Hateful Memories"
 				}
 			],
 			"speed": {
@@ -3885,45 +3597,54 @@
 					}
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
+			"abilities": {
+				"mid": [
+					{
+						"entries": [
+							"As {@creature Worm That Walks Cultist|bst2|worm that walks}, but slow-moving leeches give the heroes 2 rounds, rather than 1 round, to dispatch the {@condition fleeing} vermin before they escape."
+						],
+						"name": "Discorporate"
 					},
-					"entries": [
-						"Volluk {@action Stride||Strides}, ending his movement sharing a space with a creature, and deals {@damage 3d8} piercing damage to the creature. The creature can attempt a DC 23 basic Reflex save."
-					],
-					"name": "Squirming Embrace"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"traits": [
-						"concentrate"
-					],
-					"entries": [
-						"Volluk collapses into a shapeless swarm of leeches. He drops all held, worn, and carried items. While discorporated, he can't use attack actions and can't cast spells, but he can move through areas small enough for his individual leeches to fit without having to {@action Squeeze}. He can use the same action to coalesce back into his normal form."
-					],
-					"name": "Swarm Shape"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"piercing"
+					{
+						"traits": [
+							"enchantment",
+							"emotion",
+							"mental",
+							"occult",
+							"visual"
+						],
+						"entries": [
+							"If Volluk can see an accurate depiction of his former appearance as a living drow at the start of his turn, he must attempt a DC 28 Will save or become filled with self-loathing and become {@condition slowed|CRB|slowed 1} for 1 round."
+						],
+						"name": "Hateful Memories"
+					}
 				],
-				"condition": [
-					"{@condition fleeing}",
-					"{@condition slowed}"
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"Volluk {@action Stride||Strides}, ending his movement sharing a space with a creature, and deals {@damage 3d8} piercing damage to the creature. The creature can attempt a DC 23 basic Reflex save."
+						],
+						"name": "Squirming Embrace"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"concentrate"
+						],
+						"entries": [
+							"Volluk collapses into a shapeless swarm of leeches. He drops all held, worn, and carried items. While discorporated, he can't use attack actions and can't cast spells, but he can move through areas small enough for his individual leeches to fit without having to {@action Squeeze}. He can use the same action to coalesce back into his normal form."
+						],
+						"name": "Swarm Shape"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"RC",
-				"CC"
-			]
+			}
 		},
 		{
 			"name": "Wrin Sivinxi",
@@ -3931,29 +3652,30 @@
 			"source": "AV1",
 			"page": 90,
 			"level": 5,
-			"rarity": "Unique",
-			"alignment": "CG",
-			"size": "Medium",
 			"traits": [
-				"tiefling",
-				"elf"
+				"unique",
+				"cg",
+				"medium",
+				"elf",
+				"humanoid",
+				"tiefling"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 12
+				"std": 12
 			},
-			"senses": {
-				"precise": [
-					"spirit sight 30 feet"
-				],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"low-light vision"
-				]
-			},
+			"senses": [
+				{
+					"name": "low-light vision"
+				},
+				{
+					"type": "precise",
+					"name": "spirit sight",
+					"range": 30
+				}
+			],
 			"languages": {
 				"languages": [
 					"Aklo",
@@ -3966,71 +3688,44 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 12
+					"std": 12
 				},
 				"Nature": {
-					"default": 12
+					"std": 12
 				},
 				"Occultism": {
-					"default": 12
+					"std": 12
 				},
 				"Performance": {
-					"default": 10
+					"std": 10
 				},
 				"Religion": {
-					"default": 13
+					"std": 13
 				},
 				"Astrology Lore": {
-					"default": 12
+					"std": 12
 				}
 			},
 			"abilityMods": {
-				"Str": 0,
-				"Dex": 3,
-				"Con": 0,
-				"Int": 2,
-				"Wis": 3,
-				"Cha": 4
+				"str": 0,
+				"dex": 3,
+				"con": 0,
+				"int": 2,
+				"wis": 3,
+				"cha": 4
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+12, {@skill Performance} +10, {@skill Religion} +13, Spirit."
-					],
-					"name": "Occultism"
-				},
-				{
-					"entries": [
-						"+16 Str +0, Dex +3, Con +0, Int +2, Wis +3, Cha +4."
-					],
-					"name": "Lore"
-				},
-				{
-					"entries": [
-						"Wrin becomes overwhelmed when she's underground, or when she's in an indoor space that's smaller than 10 feet in diameter. At these times, she is {@condition sickened|CRB|sickened 2} and cannot reduce her {@condition sickened} condition until she's outside of the enclosed area."
-					],
-					"name": "Claustrophobia"
-				},
-				{
-					"entries": [
-						"Wrin can see creatures with the {@trait spirit} trait within 30 feet, regardless of whether they are visible to the naked eye. This ability sometimes allows Wrin to notice other supernatural auras, such as the buildup of spiritual energy atop Gauntlight.",
-						"Items harrow fortune-telling deck, silver religious symbol, +1 starknife, violin."
-					],
-					"name": "Spirit Sight"
-				}
-			],
 			"ac": {
-				"default": 20
+				"std": 20
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 9
+				"fort": {
+					"std": 9
 				},
-				"Ref": {
-					"default": 15
+				"ref": {
+					"std": 15
 				},
-				"Will": {
-					"default": 12
+				"will": {
+					"std": 12
 				}
 			},
 			"hp": [
@@ -4039,7 +3734,6 @@
 					"abilities": null
 				}
 			],
-			"abilitiesMid": [],
 			"speed": {
 				"walk": 25
 			},
@@ -4173,68 +3867,80 @@
 					}
 				}
 			],
-			"abilitiesBot": [
-				{
-					"entries": [
-						"1 Focus Point, DC 22; 3rd faerie dust (Core Rulebook 404)"
-					],
-					"name": "Bloodline Spells"
-				},
-				{
-					"entries": [
-						"Wrin casts charm, enthrall, faerie dust, ghost sound, or hideous laughter, fey glamours dance around Wrin or one target of the spell, causing them to be {@condition concealed} for 1 round. Such obvious concealment can't be used to {@action Hide}."
-					],
-					"name": "Blood Magic When"
-				},
-				{
-					"traits": [
-						"divination",
-						"exploration",
-						"prediction",
-						"primal"
-					],
-					"frequency": {
-						"unit": "day",
-						"freq": 1
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"+12, {@skill Performance} +10, {@skill Religion} +13, Spirit."
+						],
+						"name": "Occultism"
 					},
-					"entries": [
-						"Wrin attempts to read the future in the stars by spending an hour studying the night sky\u2014she can't use this ability during the day, on an overcast night, or when she can't otherwise study the stars. Although Wrin usually performs this reading for an individual person or to answer a pressing question she has, for the purposes of this campaign she reads the stars for the party as a whole. She attempts an."
-					],
-					"name": "Read the Stars"
-				},
-				{
-					"entries": [
-						"{@skill Lore} check, using the DC appropriate for the heroes' current level (see Table 10\u20135: DCs by Level, Core Rulebook 503).",
-						{
-							"type": "successDegree",
-							"entries": {
-								"Critical Success": "The results of Wrin's astrological readings have the effects of read omens, and the heroes gain a +1 circumstance bonus to saving throws for 24 hours.",
-								"Success": "The results of Wrin's astrological readings have the effects of augury, but can predict results up to 24 hours into the future.",
-								"Failure": "No reading.",
-								"Critical Failure": "Wrin brushes against {@condition hostile} spiritual forces, and cannot Read the Stars for 1 week."
-							}
-						}
-					],
-					"name": "Astrology"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning",
-					"piercing"
+					{
+						"entries": [
+							"+16 Str +0, Dex +3, Con +0, Int +2, Wis +3, Cha +4."
+						],
+						"name": "Lore"
+					},
+					{
+						"entries": [
+							"Wrin becomes overwhelmed when she's underground, or when she's in an indoor space that's smaller than 10 feet in diameter. At these times, she is {@condition sickened|CRB|sickened 2} and cannot reduce her {@condition sickened} condition until she's outside of the enclosed area."
+						],
+						"name": "Claustrophobia"
+					},
+					{
+						"entries": [
+							"Wrin can see creatures with the {@trait spirit} trait within 30 feet, regardless of whether they are visible to the naked eye. This ability sometimes allows Wrin to notice other supernatural auras, such as the buildup of spiritual energy atop Gauntlight.",
+							"Items harrow fortune-telling deck, silver religious symbol, +1 starknife, violin."
+						],
+						"name": "Spirit Sight"
+					}
 				],
-				"condition": [
-					"{@condition dying}",
-					"{@condition sickened}"
+				"bot": [
+					{
+						"entries": [
+							"1 Focus Point, DC 22; 3rd faerie dust (Core Rulebook 404)"
+						],
+						"name": "Bloodline Spells"
+					},
+					{
+						"entries": [
+							"Wrin casts charm, enthrall, faerie dust, ghost sound, or hideous laughter, fey glamours dance around Wrin or one target of the spell, causing them to be {@condition concealed} for 1 round. Such obvious concealment can't be used to {@action Hide}."
+						],
+						"name": "Blood Magic When"
+					},
+					{
+						"traits": [
+							"divination",
+							"exploration",
+							"prediction",
+							"primal"
+						],
+						"frequency": {
+							"unit": "day",
+							"freq": 1
+						},
+						"entries": [
+							"Wrin attempts to read the future in the stars by spending an hour studying the night sky\u2014she can't use this ability during the day, on an overcast night, or when she can't otherwise study the stars. Although Wrin usually performs this reading for an individual person or to answer a pressing question she has, for the purposes of this campaign she reads the stars for the party as a whole. She attempts an."
+						],
+						"name": "Read the Stars"
+					},
+					{
+						"entries": [
+							"{@skill Lore} check, using the DC appropriate for the heroes' current level (see Table 10\u20135: DCs by Level, Core Rulebook 503).",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": "The results of Wrin's astrological readings have the effects of read omens, and the heroes gain a +1 circumstance bonus to saving throws for 24 hours.",
+									"Success": "The results of Wrin's astrological readings have the effects of augury, but can predict results up to 24 hours into the future.",
+									"Failure": "No reading.",
+									"Critical Failure": "Wrin brushes against {@condition hostile} spiritual forces, and cannot Read the Stars for 1 week."
+								}
+							}
+						],
+						"name": "Astrology"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"RA",
-				"TA",
-				"CC",
-				"UW"
-			]
+			}
 		}
 	]
 }

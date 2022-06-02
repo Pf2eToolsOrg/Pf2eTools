@@ -210,6 +210,20 @@ String.prototype.toAscii = String.prototype.toAscii || function () {
 		.replace(/Æ/g, "AE").replace(/æ/g, "ae");
 };
 
+String.prototype.trimChar = String.prototype.trimChar || function (ch) {
+	let start = 0; let end = this.length;
+	while (start < end && this[start] === ch) ++start;
+	while (end > start && this[end - 1] === ch) --end;
+	return (start > 0 || end < this.length) ? this.substring(start, end) : this;
+};
+
+String.prototype.trimAnyChar = String.prototype.trimAnyChar || function (chars) {
+	let start = 0; let end = this.length;
+	while (start < end && chars.indexOf(this[start]) >= 0) ++start;
+	while (end > start && chars.indexOf(this[end - 1]) >= 0) --end;
+	return (start > 0 || end < this.length) ? this.substring(start, end) : this;
+};
+
 Array.prototype.joinConjunct = Array.prototype.joinConjunct || function (joiner, lastJoiner, nonOxford) {
 	if (this.length === 0) return "";
 	if (this.length === 1) return this[0];
@@ -286,7 +300,6 @@ CleanUtil = {
 		if (isJsonDump) {
 			return str
 				.replace(CleanUtil.STR_REPLACEMENTS_REGEX, (match) => CleanUtil.STR_REPLACEMENTS[match])
-				.replace(/"traits":(\[.*?\])/g, (match) => match.toLowerCase());
 		} else {
 			return str
 				.replace(CleanUtil.JSON_REPLACEMENTS_REGEX, (match) => CleanUtil.JSON_REPLACEMENTS[match])
@@ -2603,6 +2616,20 @@ DataUtil = {
 			});
 
 			// mod helpers /////////////////
+			// FIXME: Get back to this.
+			function getPropertyFromPath (obj, path) {
+				return path.split(".").reduce((o, i) => o[i], obj);
+			}
+
+			function setPropertyFromPath (obj, setTo, path) {
+				const split = path.split(".");
+				if (split.length === 0) obj[path] = setTo;
+				else {
+					const top = split.shift();
+					setPropertyFromPath(obj[top], setTo, split.join("."));
+				}
+			}
+
 			function doEnsureArray (obj, prop) {
 				if (!(obj[prop] instanceof Array)) obj[prop] = [obj[prop]];
 			}
@@ -2612,8 +2639,8 @@ DataUtil = {
 				else copyTo[prop] = modInfo.str;
 			}
 
-			function doMod_replaceTxt (modInfo, prop) {
-				if (!copyTo[prop]) return;
+			function doMod_replaceTxt (modInfo, path) {
+				if (!copyTo[path]) return;
 
 				DataUtil.generic._walker_replaceTxt = DataUtil.generic._walker_replaceTxt || MiscUtil.getWalker();
 				const re = new RegExp(modInfo.replace, `g${modInfo.flags || ""}`);
@@ -2636,14 +2663,15 @@ DataUtil = {
 				};
 
 				// Handle any pure strings, e.g. `"legendaryHeader"`
-				copyTo[prop] = copyTo[prop].map(it => {
+				const setTo = getPropertyFromPath(copyTo, path).map(it => {
 					if (typeof it !== "string") return it;
 					return DataUtil.generic._walker_replaceTxt.walk(it, handlers);
 				});
+				setPropertyFromPath(copyTo, setTo, path);
 
 				// TODO: This is getting out of hand
 				const typesToReplaceIn = ["successDegree", "ability", "affliction", "lvlEffect"];
-				copyTo[prop].forEach(it => {
+				getPropertyFromPath(copyTo, path).forEach(it => {
 					if (it.entries) it.entries = DataUtil.generic._walker_replaceTxt.walk(it.entries, handlers);
 					if (it.items) it.items = DataUtil.generic._walker_replaceTxt.walk(it.items, handlers);
 					if (typesToReplaceIn.includes(it.type)) {
@@ -2702,28 +2730,28 @@ DataUtil = {
 				if (!didReplace) doMod_appendArr(modInfo, prop);
 			}
 
-			function doMod_insertArr (modInfo, prop) {
+			function doMod_insertArr (modInfo, path) {
 				doEnsureArray(modInfo, "items");
-				if (!copyTo[prop]) throw new Error(`Could not find "${prop}" array`);
-				copyTo[prop].splice(modInfo.index, 0, ...modInfo.items);
+				if (!getPropertyFromPath(copyTo, path)) throw new Error(`Could not find "${path}" array`);
+				getPropertyFromPath(copyTo, path).splice(modInfo.index, 0, ...modInfo.items);
 			}
 
-			function doMod_removeArr (modInfo, prop) {
+			function doMod_removeArr (modInfo, path) {
 				if (modInfo.names) {
 					doEnsureArray(modInfo, "names");
 					modInfo.names.forEach(nameToRemove => {
-						const ixOld = copyTo[prop].findIndex(it => it.idName || it.name === nameToRemove);
-						if (~ixOld) copyTo[prop].splice(ixOld, 1);
+						const ixOld = getPropertyFromPath(copyTo, path).findIndex(it => it.idName || it.name === nameToRemove);
+						if (~ixOld) getPropertyFromPath(copyTo, path).splice(ixOld, 1);
 						else {
-							if (!modInfo.force) throw new Error(`Could not find "${prop}" item with name "${nameToRemove}" to remove`);
+							if (!modInfo.force) throw new Error(`Could not find "${path}" item with name "${nameToRemove}" to remove`);
 						}
 					});
 				} else if (modInfo.items) {
 					doEnsureArray(modInfo, "items");
 					modInfo.items.forEach(itemToRemove => {
-						const ixOld = copyTo[prop].findIndex(it => it === itemToRemove);
-						if (~ixOld) copyTo[prop].splice(ixOld, 1);
-						else throw new Error(`Could not find "${prop}" item "${itemToRemove}" to remove`);
+						const ixOld = getPropertyFromPath(copyTo, path).findIndex(it => it === itemToRemove);
+						if (~ixOld) getPropertyFromPath(copyTo, path).splice(ixOld, 1);
+						else throw new Error(`Could not find "${path}" item "${itemToRemove}" to remove`);
 					});
 				} else throw new Error(`One of "names" or "items" must be provided!`)
 			}
@@ -2818,12 +2846,12 @@ DataUtil = {
 					);
 				});
 
-				Object.entries(copyMeta._mod).forEach(([prop, modInfos]) => {
-					if (prop === "*") doMod(modInfos, "abilitiesTop", "abilitiesMid", "attacks", "abilitiesBot");
-					else if (prop === "_") doMod(modInfos);
-					else if (prop === "entriesMode") {
+				Object.entries(copyMeta._mod).forEach(([path, modInfos]) => {
+					if (path === "*") doMod(modInfos, "attacks", "abilities.top", "abilities.mid", "abilities.bot");
+					else if (path === "_") doMod(modInfos);
+					else if (path === "entriesMode") {
 						/* do nothing */
-					} else doMod(modInfos, prop);
+					} else doMod(modInfos, path);
 				});
 			}
 

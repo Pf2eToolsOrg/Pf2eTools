@@ -6,78 +6,60 @@
 			"source": "SoT2",
 			"page": 80,
 			"level": 4,
-			"rarity": "Common",
-			"alignment": "N",
-			"size": "Medium",
+			"traits": [
+				"n",
+				"medium",
+				"animal"
+			],
 			"creatureType": [
 				"Animal"
 			],
 			"perception": {
-				"default": 12
+				"std": 12
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"echolocation 60 feet",
-					"low-light vision"
-				]
-			},
+			"senses": [
+				{
+					"name": "echolocation",
+					"range": 60
+				},
+				{
+					"name": "low-light vision"
+				}
+			],
 			"skills": {
 				"Acrobatics": {
-					"default": 10
+					"std": 10
 				},
 				"Athletics": {
-					"default": 12
+					"std": 12
 				},
 				"Stealth": {
-					"default": 10
+					"std": 10
 				},
 				"Survival": {
-					"default": 10
+					"std": 10
 				}
 			},
 			"abilityMods": {
-				"Str": 4,
-				"Dex": 4,
-				"Con": 3,
-				"Int": -4,
-				"Wis": 2,
-				"Cha": 0
+				"str": 4,
+				"dex": 4,
+				"con": 3,
+				"int": -4,
+				"wis": 2,
+				"cha": 0
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+10 Str +4, Dex +4, Con +3, Int \u20134, Wis +2, Cha +0."
-					],
-					"name": "Survival"
-				},
-				{
-					"entries": [
-						"A damibwa can hold its breath for 5 minutes."
-					],
-					"name": "Deep Breath"
-				},
-				{
-					"entries": [
-						"A damibwa's hearing is a precise sense at the listed range."
-					],
-					"name": "Echolocation"
-				}
-			],
 			"ac": {
-				"default": 21
+				"std": 21
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 11
+				"fort": {
+					"std": 11
 				},
-				"Ref": {
-					"default": 14
+				"ref": {
+					"std": 14
 				},
-				"Will": {
-					"default": 8
+				"will": {
+					"std": 8
 				}
 			},
 			"hp": [
@@ -86,7 +68,6 @@
 					"abilities": null
 				}
 			],
-			"abilitiesMid": [],
 			"speed": {
 				"walk": 30,
 				"swim": 30
@@ -105,49 +86,59 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"+10 Str +4, Dex +4, Con +3, Int \u20134, Wis +2, Cha +0."
+						],
+						"name": "Survival"
 					},
-					"traits": [
-						"attack",
-						"move"
-					],
-					"requirements": "The damibwa has a",
-					"entries": [
-						"Small or smaller creature {@condition grabbed} in water; The damibwa attempts an {@skill Athletics} check against the creature's Fortitude DC. Critical Success The damibwa moves up to its swim Speed, dragging the {@condition grabbed} creature along with it. Success The damibwa moves up to half its swim Speed, dragging the {@condition grabbed} creature along with it. Failure The damibwa doesn't move and the creature isn't dragged. Critical Failure The damibwa no longer has the creature {@condition grabbed}."
-					],
-					"name": "Fetch"
-				},
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
+					{
+						"entries": [
+							"A damibwa can hold its breath for 5 minutes."
+						],
+						"name": "Deep Breath"
 					},
-					"traits": [
-						"move"
-					],
-					"requirements": "The damibwa is in or adjacent to water",
-					"entries": [
-						"The damibwa moves up to double its swim Speed, descending at least 10 feet, and then makes a jaws {@action Strike}. If it was {@condition undetected} at the start of predatory dive, it remains {@condition undetected} until after the attack."
-					],
-					"name": "Predatory Dive"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"piercing"
+					{
+						"entries": [
+							"A damibwa's hearing is a precise sense at the listed range."
+						],
+						"name": "Echolocation"
+					}
 				],
-				"condition": [
-					"{@condition grabbed}"
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"attack",
+							"move"
+						],
+						"requirements": "The damibwa has a",
+						"entries": [
+							"Small or smaller creature {@condition grabbed} in water; The damibwa attempts an {@skill Athletics} check against the creature's Fortitude DC. Critical Success The damibwa moves up to its swim Speed, dragging the {@condition grabbed} creature along with it. Success The damibwa moves up to half its swim Speed, dragging the {@condition grabbed} creature along with it. Failure The damibwa doesn't move and the creature isn't dragged. Critical Failure The damibwa no longer has the creature {@condition grabbed}."
+						],
+						"name": "Fetch"
+					},
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"move"
+						],
+						"requirements": "The damibwa is in or adjacent to water",
+						"entries": [
+							"The damibwa moves up to double its swim Speed, descending at least 10 feet, and then makes a jaws {@action Strike}. If it was {@condition undetected} at the start of predatory dive, it remains {@condition undetected} until after the attack."
+						],
+						"name": "Predatory Dive"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"CC"
-			]
+			}
 		},
 		{
 			"name": "Fire-pot Ubanu",
@@ -155,17 +146,18 @@
 			"source": "SoT2",
 			"page": 89,
 			"level": 8,
-			"rarity": "Unique",
-			"alignment": "CN",
-			"size": "Medium",
 			"traits": [
-				"human"
+				"unique",
+				"cn",
+				"medium",
+				"human",
+				"humanoid"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 16
+				"std": 16
 			},
 			"languages": {
 				"languages": [
@@ -178,59 +170,45 @@
 			},
 			"skills": {
 				"Arcana": {
-					"default": 16
+					"std": 16
 				},
 				"Crafting": {
-					"default": 20
+					"std": 20
 				},
 				"Intimidation": {
-					"default": 16
+					"std": 16
 				},
 				"Nature": {
-					"default": 15
+					"std": 15
 				},
 				"Weapons Lore": {
-					"default": 16
+					"std": 16
 				}
 			},
 			"abilityMods": {
-				"Str": 1,
-				"Dex": 3,
-				"Con": 1,
-				"Int": 4,
-				"Wis": 1,
-				"Cha": 4
+				"str": 1,
+				"dex": 3,
+				"con": 1,
+				"int": 4,
+				"wis": 1,
+				"cha": 4
 			},
 			"items": [
 				"smock (as padded armor)",
 				"fulminating spear (page 76)"
 			],
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+15, {@skill Lore||Weapons Lore} +16 Str +1, Dex +3, Con +1, Int +4, Wis +1, Cha +4 Items smock (as padded armor), fulminating spear (page 76)"
-					],
-					"name": "Nature"
-				},
-				{
-					"entries": [
-						"Ubanu carries these infused items: 8 moderate alchemist's fires, 2 lesser elixirs of life, and 2 moderate tanglefoot bags. These items last for 24 hours, or until the next time Ubanu makes his daily preparations."
-					],
-					"name": "Infused Items"
-				}
-			],
 			"ac": {
-				"default": 26
+				"std": 26
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 17
+				"fort": {
+					"std": 17
 				},
-				"Ref": {
-					"default": 19
+				"ref": {
+					"std": 19
 				},
-				"Will": {
-					"default": 13
+				"will": {
+					"std": 13
 				}
 			},
 			"hp": [
@@ -239,7 +217,6 @@
 					"abilities": null
 				}
 			],
-			"abilitiesMid": [],
 			"speed": {
 				"walk": 25
 			},
@@ -351,48 +328,49 @@
 					}
 				}
 			],
-			"abilitiesBot": [
-				{
-					"traits": [
-						"4th"
-					],
-					"entries": [
-						"acid splash, detect magic, guidance, prestidigitation, produce flame."
-					],
-					"name": "Cantrips"
-				},
-				{
-					"entries": [
-						"Creatures who fail a saving throw against one of Ubanu's spells are {@condition flat-footed} to his attacks until the end of his turn or until the end of his next turn on a critical failure."
-					],
-					"name": "Distracting Spells"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"+15, {@skill Lore||Weapons Lore} +16 Str +1, Dex +3, Con +1, Int +4, Wis +1, Cha +4 Items smock (as padded armor), fulminating spear (page 76)"
+						],
+						"name": "Nature"
 					},
-					"entries": [
-						"Ubanu Interacts to draw a bomb, then Strikes with it."
-					],
-					"name": "Quick Bomber"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"fire",
-					"piercing"
+					{
+						"entries": [
+							"Ubanu carries these infused items: 8 moderate alchemist's fires, 2 lesser elixirs of life, and 2 moderate tanglefoot bags. These items last for 24 hours, or until the next time Ubanu makes his daily preparations."
+						],
+						"name": "Infused Items"
+					}
 				],
-				"condition": [
-					"{@condition flat-footed}"
+				"bot": [
+					{
+						"traits": [
+							"4th"
+						],
+						"entries": [
+							"acid splash, detect magic, guidance, prestidigitation, produce flame."
+						],
+						"name": "Cantrips"
+					},
+					{
+						"entries": [
+							"Creatures who fail a saving throw against one of Ubanu's spells are {@condition flat-footed} to his attacks until the end of his turn or until the end of his next turn on a critical failure."
+						],
+						"name": "Distracting Spells"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"Ubanu Interacts to draw a bomb, then Strikes with it."
+						],
+						"name": "Quick Bomber"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"RA",
-				"CC",
-				"UW"
-			]
+			}
 		},
 		{
 			"name": "Froglegs",
@@ -400,26 +378,24 @@
 			"source": "SoT2",
 			"page": 91,
 			"level": 8,
-			"rarity": "Unique",
-			"alignment": "NE",
-			"size": "Small",
 			"traits": [
-				"grippli"
+				"unique",
+				"ne",
+				"small",
+				"grippli",
+				"humanoid"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 16
+				"std": 16
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Common",
@@ -431,69 +407,53 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 16
+					"std": 16
 				},
 				"Athletics": {
-					"default": 15
+					"std": 15
 				},
 				"Deception": {
-					"default": 16
+					"std": 16
 				},
 				"Intimidation": {
-					"default": 16
+					"std": 16
 				},
 				"Stealth": {
-					"default": 16
+					"std": 16
 				},
 				"Thievery": {
-					"default": 18
+					"std": 18
 				},
 				"Underworld Lore": {
-					"default": 15
+					"std": 15
 				}
 			},
 			"abilityMods": {
-				"Str": 3,
-				"Dex": 4,
-				"Con": 0,
-				"Int": 1,
-				"Wis": 2,
-				"Cha": 4
+				"str": 3,
+				"dex": 4,
+				"con": 0,
+				"int": 1,
+				"wis": 2,
+				"cha": 4
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+16, {@skill Stealth} +16, {@skill Thievery} +18 (+20 to {@action Pick a Lock}), {@skill Lore||Underworld Lore} +15 Str +3, Dex +4, Con +0, Int +1, Wis +2, Cha +4 Items +1 daggers (4), Habu's Cudgel (page 76), leather armor, infiltrator thieves' tools."
-					],
-					"name": "Intimidation"
-				}
-			],
 			"ac": {
-				"default": 27
+				"std": 27
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 14
+				"fort": {
+					"std": 14
 				},
-				"Ref": {
-					"default": 18
+				"ref": {
+					"std": 18
 				},
-				"Will": {
-					"default": 16
+				"will": {
+					"std": 16
 				}
 			},
 			"hp": [
 				{
 					"hp": 135,
 					"abilities": null
-				}
-			],
-			"abilitiesMid": [
-				{
-					"entries": [
-						"Advantage Froglegs isn't {@condition flat-footed} to creatures of 8th level or lower that are {@condition hidden}, {@condition undetected}, flanking, or using surprise attack."
-					],
-					"name": "Deny"
 				}
 			],
 			"speed": {
@@ -553,61 +513,62 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"entries": [
-						"Fighter Froglegs deals an additional {@damage 2d6} precision damage with weapons from the {@group knife}, and knives gain the deadly d10 weapon property while she wields them."
-					],
-					"name": "Knife"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "free"
-					},
-					"trigger": "Froglegs successfully Tumbles",
-					"entries": [
-						"Through an enemy's space; Froglegs attempts."
-					],
-					"name": "Roll and Snatch"
-				},
-				{
-					"entries": [
-						"{@action Trip} the enemy. She can use her tongue for this attempt and does not need to have a free hand."
-					],
-					"name": "to Disarm or"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"traits": [
-						"flourish"
-					],
-					"entries": [
-						"Froglegs makes two dagger Strikes."
-					],
-					"name": "Twin Slash"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning",
-					"piercing",
-					"precision"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"+16, {@skill Stealth} +16, {@skill Thievery} +18 (+20 to {@action Pick a Lock}), {@skill Lore||Underworld Lore} +15 Str +3, Dex +4, Con +0, Int +1, Wis +2, Cha +4 Items +1 daggers (4), Habu's Cudgel (page 76), leather armor, infiltrator thieves' tools."
+						],
+						"name": "Intimidation"
+					}
 				],
-				"condition": [
-					"{@condition flat-footed}"
+				"mid": [
+					{
+						"entries": [
+							"Advantage Froglegs isn't {@condition flat-footed} to creatures of 8th level or lower that are {@condition hidden}, {@condition undetected}, flanking, or using surprise attack."
+						],
+						"name": "Deny"
+					}
+				],
+				"bot": [
+					{
+						"entries": [
+							"Fighter Froglegs deals an additional {@damage 2d6} precision damage with weapons from the {@group knife}, and knives gain the deadly d10 weapon property while she wields them."
+						],
+						"name": "Knife"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "free"
+						},
+						"trigger": "Froglegs successfully Tumbles",
+						"entries": [
+							"Through an enemy's space; Froglegs attempts."
+						],
+						"name": "Roll and Snatch"
+					},
+					{
+						"entries": [
+							"{@action Trip} the enemy. She can use her tongue for this attempt and does not need to have a free hand."
+						],
+						"name": "to Disarm or"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"flourish"
+						],
+						"entries": [
+							"Froglegs makes two dagger Strikes."
+						],
+						"name": "Twin Slash"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"RA",
-				"TA",
-				"CC",
-				"UW"
-			]
+			}
 		},
 		{
 			"name": "Gbahali",
@@ -615,89 +576,66 @@
 			"source": "SoT2",
 			"page": 81,
 			"level": 9,
-			"rarity": "Uncommon",
-			"alignment": "N",
-			"size": "Huge",
+			"traits": [
+				"uncommon",
+				"n",
+				"huge",
+				"beast"
+			],
 			"creatureType": [
 				"Beast"
 			],
 			"perception": {
-				"default": 17
+				"std": 17
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [
-					"scent 30 feet"
-				],
-				"vague": [],
-				"other": [
-					"low-light vision"
-				]
-			},
+			"senses": [
+				{
+					"name": "low-light vision"
+				},
+				{
+					"type": "imprecise",
+					"name": "scent",
+					"range": 30
+				}
+			],
 			"skills": {
 				"Athletics": {
-					"default": 20
+					"std": 20
 				},
 				"Stealth": {
-					"default": 17,
+					"std": 17,
 					"in water": 21
 				},
 				"Survival": {
-					"default": 17
+					"std": 17
 				}
 			},
 			"abilityMods": {
-				"Str": 7,
-				"Dex": 4,
-				"Con": 5,
-				"Int": -3,
-				"Wis": 4,
-				"Cha": -2
+				"str": 7,
+				"dex": 4,
+				"con": 5,
+				"int": -3,
+				"wis": 4,
+				"cha": -2
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+17."
-					],
-					"name": "Survival"
-				},
-				{
-					"entries": [
-						"A gbahali can hold its breath for 2 hours.",
-						"Str +7, Dex +4, Con +5, Int \u20133, Wis +4, Cha \u20132."
-					],
-					"name": "Deep Breath"
-				}
-			],
 			"ac": {
-				"default": 28
+				"std": 28
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 20
+				"fort": {
+					"std": 20
 				},
-				"Ref": {
-					"default": 17
+				"ref": {
+					"std": 17
 				},
-				"Will": {
-					"default": 17
+				"will": {
+					"std": 17
 				}
 			},
 			"hp": [
 				{
 					"hp": 170,
 					"abilities": null
-				}
-			],
-			"abilitiesMid": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"entries": [],
-					"name": "Attack of Opportunity",
-					"generic": true
 				}
 			],
 			"speed": {
@@ -753,51 +691,67 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"+17."
+						],
+						"name": "Survival"
 					},
-					"entries": [
-						"40 feet."
-					],
-					"name": "Aquatic Ambush",
-					"generic": true
-				},
-				{
-					"entries": [
-						"A gbahali jumps 10 feet up on a successful {@action High Jump} or 20 feet up on a critical success."
-					],
-					"name": "Powerful Jumper"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"traits": [
-						"attack"
-					],
-					"entries": [
-						"Medium, {@damage 2d8+7} bludgeoning, Rupture 20."
-					],
-					"name": "Swallow Whole",
-					"generic": true
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning",
-					"piercing",
-					"slashing"
+					{
+						"entries": [
+							"A gbahali can hold its breath for 2 hours.",
+							"Str +7, Dex +4, Con +5, Int \u20133, Wis +4, Cha \u20132."
+						],
+						"name": "Deep Breath"
+					}
 				],
-				"condition": []
-			},
-			"misc": [
-				"MA",
-				"RC"
-			]
+				"mid": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"entries": [],
+						"name": "Attack of Opportunity",
+						"generic": true
+					}
+				],
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"40 feet."
+						],
+						"name": "Aquatic Ambush",
+						"generic": true
+					},
+					{
+						"entries": [
+							"A gbahali jumps 10 feet up on a successful {@action High Jump} or 20 feet up on a critical success."
+						],
+						"name": "Powerful Jumper"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"attack"
+						],
+						"entries": [
+							"Medium, {@damage 2d8+7} bludgeoning, Rupture 20."
+						],
+						"name": "Swallow Whole",
+						"generic": true
+					}
+				]
+			}
 		},
 		{
 			"name": "Great Grodair",
@@ -805,28 +759,27 @@
 			"source": "SoT2",
 			"page": 59,
 			"level": 7,
-			"rarity": "Unique",
-			"alignment": "CN",
-			"size": "Large",
 			"traits": [
-				"water",
-				"amphibious"
+				"unique",
+				"cn",
+				"large",
+				"amphibious",
+				"beast",
+				"fey",
+				"water"
 			],
 			"creatureType": [
 				"Fey",
 				"Beast"
 			],
 			"perception": {
-				"default": 16
+				"std": 16
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Aquan",
@@ -837,68 +790,47 @@
 			},
 			"skills": {
 				"Athletics": {
-					"default": 17
+					"std": 17
 				},
 				"Intimidation": {
-					"default": 15
+					"std": 15
 				},
 				"Nature": {
-					"default": 15
+					"std": 15
 				},
 				"Performance": {
-					"default": 17
+					"std": 17
 				},
 				"Survival": {
-					"default": 14
+					"std": 14
 				}
 			},
 			"abilityMods": {
-				"Str": 5,
-				"Dex": 1,
-				"Con": 4,
-				"Int": 1,
-				"Wis": 2,
-				"Cha": 4
+				"str": 5,
+				"dex": 1,
+				"con": 4,
+				"int": 1,
+				"wis": 2,
+				"cha": 4
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+17, {@skill Survival} +14 Str +5, Dex +1, Con +4, Int +1, Wis +2, Cha +4."
-					],
-					"name": "Performance"
-				}
-			],
 			"ac": {
-				"default": 23
+				"std": 23
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 18
+				"fort": {
+					"std": 18
 				},
-				"Ref": {
-					"default": 12
+				"ref": {
+					"std": 12
 				},
-				"Will": {
-					"default": 14
+				"will": {
+					"std": 14
 				}
 			},
 			"hp": [
 				{
 					"hp": 130,
 					"abilities": null
-				}
-			],
-			"abilitiesMid": [
-				{
-					"traits": [
-						"conjuration",
-						"primal",
-						"water"
-					],
-					"entries": [
-						"When the great grodair dies, his body explodes in a blast of pressurized water that deals {@damage 6d6} bludgeoning damage to creatures within a 15-foot emanation (DC 25 basic Reflex save). A creature that fails its save is pushed 5 feet (or 10 feet on a critical failure)."
-					],
-					"name": "Death Flood"
 				}
 			],
 			"speed": {
@@ -962,52 +894,62 @@
 					}
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"traits": [
-						"primal",
-						"transmutation",
-						"water"
-					],
-					"entries": [
-						"The great grodair transforms all soil, sand, or similar sediment in a 10-foot emanation into mud for 1 round. This mud is difficult terrain for creatures other than grodairs."
-					],
-					"name": "Muddy Field"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"traits": [
-						"conjuration",
-						"manipulate",
-						"primal",
-						"water"
-					],
-					"entries": [
-						"The great grodair causes water to pour from a magical sac on his spine, either a stream of water at a rate of 1 gallon per round, or a fountain in a 5-foot-long stream at a rate of 5 gallons per round. He can stop the flow of water as a single action."
-					],
-					"name": "Organ of Endless Water"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning",
-					"piercing"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"+17, {@skill Survival} +14 Str +5, Dex +1, Con +4, Int +1, Wis +2, Cha +4."
+						],
+						"name": "Performance"
+					}
 				],
-				"condition": []
-			},
-			"misc": [
-				"MA",
-				"RC",
-				"RA",
-				"AD"
-			]
+				"mid": [
+					{
+						"traits": [
+							"conjuration",
+							"primal",
+							"water"
+						],
+						"entries": [
+							"When the great grodair dies, his body explodes in a blast of pressurized water that deals {@damage 6d6} bludgeoning damage to creatures within a 15-foot emanation (DC 25 basic Reflex save). A creature that fails its save is pushed 5 feet (or 10 feet on a critical failure)."
+						],
+						"name": "Death Flood"
+					}
+				],
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"primal",
+							"transmutation",
+							"water"
+						],
+						"entries": [
+							"The great grodair transforms all soil, sand, or similar sediment in a 10-foot emanation into mud for 1 round. This mud is difficult terrain for creatures other than grodairs."
+						],
+						"name": "Muddy Field"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"conjuration",
+							"manipulate",
+							"primal",
+							"water"
+						],
+						"entries": [
+							"The great grodair causes water to pour from a magical sac on his spine, either a stream of water at a rate of 1 gallon per round, or a fountain in a 5-foot-long stream at a rate of 5 gallons per round. He can stop the flow of water as a single action."
+						],
+						"name": "Organ of Endless Water"
+					}
+				]
+			}
 		},
 		{
 			"name": "Grippli Jinxer",
@@ -1015,26 +957,23 @@
 			"source": "SoT2",
 			"page": 83,
 			"level": 6,
-			"rarity": "Common",
-			"alignment": "NE",
-			"size": "Small",
 			"traits": [
-				"grippli"
+				"ne",
+				"small",
+				"grippli",
+				"humanoid"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 16
+				"std": 16
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Common",
@@ -1044,75 +983,54 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 14
+					"std": 14
 				},
 				"Athletics": {
-					"default": 12
+					"std": 12
 				},
 				"Intimidation": {
-					"default": 12
+					"std": 12
 				},
 				"Nature": {
-					"default": 14
+					"std": 14
 				},
 				"Occultism": {
-					"default": 10
+					"std": 10
 				},
 				"Stealth": {
-					"default": 14
+					"std": 14
 				}
 			},
 			"abilityMods": {
-				"Str": 2,
-				"Dex": 4,
-				"Con": 2,
-				"Int": 0,
-				"Wis": 4,
-				"Cha": 0
+				"str": 2,
+				"dex": 4,
+				"con": 2,
+				"int": 0,
+				"wis": 4,
+				"cha": 0
 			},
 			"items": [
 				"dart (8)",
 				"staff"
 			],
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+14 Str +2, Dex +4, Con +2, Int +0, Wis +4, Cha +0 Items dart (8), staff."
-					],
-					"name": "Stealth"
-				}
-			],
 			"ac": {
-				"default": 23
+				"std": 23
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 12
+				"fort": {
+					"std": 12
 				},
-				"Ref": {
-					"default": 14
+				"ref": {
+					"std": 14
 				},
-				"Will": {
-					"default": 16
+				"will": {
+					"std": 16
 				}
 			},
 			"hp": [
 				{
 					"hp": 95,
 					"abilities": null
-				}
-			],
-			"abilitiesMid": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"trigger": "A {@condition hostile} creature targets the jinxer with a melee {@action Strike}",
-					"entries": [
-						"Tattoos on the jinxer's body swirl and shift in mesmerizing patterns. The creature must attempt a DC 22 Will save. Critical Success The creature is unaffected and is temporarily immune for 1 hour. Success The creature is unaffected and is temporarily immune for 1 minute. Failure The creature treats the jinxer as {@condition concealed} until the end of its turn. Critical Failure The creature treats the jinxer as {@condition hidden} until the end of its turn."
-					],
-					"name": "Hypnotic Tattoos"
 				}
 			],
 			"speed": {
@@ -1236,60 +1154,66 @@
 					}
 				}
 			],
-			"abilitiesBot": [
-				{
-					"traits": [
-						"poison"
-					],
-					"entries": [
-						"Saving Throw Fortitude DC 24;"
-					],
-					"name": "Baneback Poison"
-				},
-				{
-					"entries": [
-						"6 rounds; Stage 1 {@damage 2d4} poison damage and {@condition stupefied|CRB|stupefied 1} (1 round); Stage 2 {@damage 3d4} poison damage and {@condition stupefied|CRB|stupefied 2} (1 round); Stage 3 {@damage 4d4} poison damage, {@condition stupefied|CRB|stupefied 3}, and {@condition flat-footed} (1 round)"
-					],
-					"name": "Maximum Duration"
-				},
-				{
-					"activity": {
-						"number": 3,
-						"unit": "action"
-					},
-					"traits": [
-						"necromancy",
-						"occult"
-					],
-					"entries": [
-						"The jinxer magically intensifies toxins in their foes. Creatures within 30 feet of the jinxer that are currently afflicted by a poison immediately attempt their next saving throw against the poison with a \u20132 status penalty, then are temporarily immune to Curse of Baleful Venom for 1 hour."
-					],
-					"name": "Curse of Baneful Venom"
-				},
-				{
-					"entries": [
-						"Gripplis ignore difficult terrain in forests and jungles."
-					],
-					"name": "Jungle Stride"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning",
-					"piercing",
-					"poison"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"+14 Str +2, Dex +4, Con +2, Int +0, Wis +4, Cha +0 Items dart (8), staff."
+						],
+						"name": "Stealth"
+					}
 				],
-				"condition": [
-					"{@condition stupefied}"
+				"mid": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"trigger": "A {@condition hostile} creature targets the jinxer with a melee {@action Strike}",
+						"entries": [
+							"Tattoos on the jinxer's body swirl and shift in mesmerizing patterns. The creature must attempt a DC 22 Will save. Critical Success The creature is unaffected and is temporarily immune for 1 hour. Success The creature is unaffected and is temporarily immune for 1 minute. Failure The creature treats the jinxer as {@condition concealed} until the end of its turn. Critical Failure The creature treats the jinxer as {@condition hidden} until the end of its turn."
+						],
+						"name": "Hypnotic Tattoos"
+					}
+				],
+				"bot": [
+					{
+						"traits": [
+							"poison"
+						],
+						"entries": [
+							"Saving Throw Fortitude DC 24;"
+						],
+						"name": "Baneback Poison"
+					},
+					{
+						"entries": [
+							"6 rounds; Stage 1 {@damage 2d4} poison damage and {@condition stupefied|CRB|stupefied 1} (1 round); Stage 2 {@damage 3d4} poison damage and {@condition stupefied|CRB|stupefied 2} (1 round); Stage 3 {@damage 4d4} poison damage, {@condition stupefied|CRB|stupefied 3}, and {@condition flat-footed} (1 round)"
+						],
+						"name": "Maximum Duration"
+					},
+					{
+						"activity": {
+							"number": 3,
+							"unit": "action"
+						},
+						"traits": [
+							"necromancy",
+							"occult"
+						],
+						"entries": [
+							"The jinxer magically intensifies toxins in their foes. Creatures within 30 feet of the jinxer that are currently afflicted by a poison immediately attempt their next saving throw against the poison with a \u20132 status penalty, then are temporarily immune to Curse of Baleful Venom for 1 hour."
+						],
+						"name": "Curse of Baneful Venom"
+					},
+					{
+						"entries": [
+							"Gripplis ignore difficult terrain in forests and jungles."
+						],
+						"name": "Jungle Stride"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"RA",
-				"TA",
-				"CC",
-				"UW"
-			]
+			}
 		},
 		{
 			"name": "Grippli Skirmisher",
@@ -1297,26 +1221,23 @@
 			"source": "SoT2",
 			"page": 82,
 			"level": 4,
-			"rarity": "Common",
-			"alignment": "NE",
-			"size": "Small",
 			"traits": [
-				"grippli"
+				"ne",
+				"small",
+				"grippli",
+				"humanoid"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 12
+				"std": 12
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Common",
@@ -1326,28 +1247,28 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 12
+					"std": 12
 				},
 				"Athletics": {
-					"default": 10
+					"std": 10
 				},
 				"Stealth": {
-					"default": 12
+					"std": 12
 				},
 				"Survival": {
-					"default": 11
+					"std": 11
 				},
 				"Thievery": {
-					"default": 10
+					"std": 10
 				}
 			},
 			"abilityMods": {
-				"Str": 2,
-				"Dex": 4,
-				"Con": 3,
-				"Int": 0,
-				"Wis": 3,
-				"Cha": -1
+				"str": 2,
+				"dex": 4,
+				"con": 3,
+				"int": 0,
+				"wis": 3,
+				"cha": -1
 			},
 			"items": [
 				"composite shortbow (30 arrows)",
@@ -1355,45 +1276,24 @@
 				"leather armor",
 				"thieves' tools"
 			],
-			"abilitiesTop": [
-				{
-					"entries": [
-						"When the skirmisher uses the {@action Step} action they ignore difficult terrain and may move up to 10 feet instead of 5 feet."
-					],
-					"name": "Springing Step"
-				}
-			],
 			"ac": {
-				"default": 22
+				"std": 22
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 11
+				"fort": {
+					"std": 11
 				},
-				"Ref": {
-					"default": 14
+				"ref": {
+					"std": 14
 				},
-				"Will": {
-					"default": 9
+				"will": {
+					"std": 9
 				}
 			},
 			"hp": [
 				{
 					"hp": 60,
 					"abilities": null
-				}
-			],
-			"abilitiesMid": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"trigger": "A creature misses the skirmisher with a melee {@action Strike}",
-					"entries": [
-						"The skirmisher quickly takes advantage of the attacker's error and {@action Step||Steps}."
-					],
-					"name": "Hopping Dodge"
 				}
 			],
 			"speed": {
@@ -1440,71 +1340,76 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"entries": [
-						{
-							"type": "affliction",
-							"name": "",
-							"traits": [
-								"poison"
-							],
-							"note": "",
-							"DC": 21,
-							"savingThrow": "Fortitude",
-							"maxDuration": "6 rounds",
-							"stages": [
-								{
-									"stage": 1,
-									"entry": "{@damage 1d4} poison damage and {@condition stupefied|CRB|stupefied 1}",
-									"duration": "1 round"
-								},
-								{
-									"stage": 2,
-									"entry": "{@damage 2d4} poison damage and {@condition stupefied|CRB|stupefied 2}",
-									"duration": "1 round"
-								},
-								{
-									"stage": 3,
-									"entry": "{@damage 2d4} poison damage, {@condition stupefied|CRB|stupefied 3}, and {@condition flat-footed}",
-									"duration": "1 round"
-								}
-							]
-						}
-					],
-					"name": "Baneback Poison"
-				},
-				{
-					"entries": [
-						"Gripplis ignore difficult terrain in forests and jungles."
-					],
-					"name": "Jungle Stride"
-				},
-				{
-					"entries": [
-						"The skirmisher deals an extra {@damage 1d6} precision damage to {@condition flat-footed} creatures and creatures afflicted by a poison."
-					],
-					"name": "Wily Attack"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"piercing",
-					"poison",
-					"precision",
-					"slashing"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"When the skirmisher uses the {@action Step} action they ignore difficult terrain and may move up to 10 feet instead of 5 feet."
+						],
+						"name": "Springing Step"
+					}
 				],
-				"condition": [
-					"{@condition flat-footed}",
-					"{@condition stupefied}"
+				"mid": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"trigger": "A creature misses the skirmisher with a melee {@action Strike}",
+						"entries": [
+							"The skirmisher quickly takes advantage of the attacker's error and {@action Step||Steps}."
+						],
+						"name": "Hopping Dodge"
+					}
+				],
+				"bot": [
+					{
+						"entries": [
+							{
+								"type": "affliction",
+								"name": "",
+								"traits": [
+									"poison"
+								],
+								"note": "",
+								"DC": 21,
+								"savingThrow": "Fortitude",
+								"maxDuration": "6 rounds",
+								"stages": [
+									{
+										"stage": 1,
+										"entry": "{@damage 1d4} poison damage and {@condition stupefied|CRB|stupefied 1}",
+										"duration": "1 round"
+									},
+									{
+										"stage": 2,
+										"entry": "{@damage 2d4} poison damage and {@condition stupefied|CRB|stupefied 2}",
+										"duration": "1 round"
+									},
+									{
+										"stage": 3,
+										"entry": "{@damage 2d4} poison damage, {@condition stupefied|CRB|stupefied 3}, and {@condition flat-footed}",
+										"duration": "1 round"
+									}
+								]
+							}
+						],
+						"name": "Baneback Poison"
+					},
+					{
+						"entries": [
+							"Gripplis ignore difficult terrain in forests and jungles."
+						],
+						"name": "Jungle Stride"
+					},
+					{
+						"entries": [
+							"The skirmisher deals an extra {@damage 1d6} precision damage to {@condition flat-footed} creatures and creatures afflicted by a poison."
+						],
+						"name": "Wily Attack"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"RA",
-				"CC",
-				"UW"
-			]
+			}
 		},
 		{
 			"name": "I'iko Dragon",
@@ -1512,28 +1417,29 @@
 			"source": "SoT2",
 			"page": 84,
 			"level": 6,
-			"rarity": "Uncommon",
-			"alignment": "CN",
-			"size": "Small",
 			"traits": [
-				"amphibious"
+				"uncommon",
+				"cn",
+				"small",
+				"amphibious",
+				"dragon"
 			],
 			"creatureType": [
 				"Dragon"
 			],
 			"perception": {
-				"default": 12
+				"std": 12
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [
-					"scent 30 feet"
-				],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"type": "imprecise",
+					"name": "scent",
+					"range": 30
+				}
+			],
 			"languages": {
 				"languages": [
 					"Common",
@@ -1543,42 +1449,41 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 13
+					"std": 13
 				},
 				"Athletics": {
-					"default": 14
+					"std": 14
 				},
 				"Intimidation": {
-					"default": 14
+					"std": 14
 				},
 				"Stealth": {
-					"default": 15
+					"std": 15
 				},
 				"Thievery": {
-					"default": 13
+					"std": 13
 				}
 			},
 			"abilityMods": {
-				"Str": 4,
-				"Dex": 5,
-				"Con": 2,
-				"Int": 0,
-				"Wis": 2,
-				"Cha": 4
+				"str": 4,
+				"dex": 5,
+				"con": 2,
+				"int": 0,
+				"wis": 2,
+				"cha": 4
 			},
-			"abilitiesTop": [],
 			"ac": {
-				"default": 23
+				"std": 23
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 14
+				"fort": {
+					"std": 14
 				},
-				"Ref": {
-					"default": 17
+				"ref": {
+					"std": 17
 				},
-				"Will": {
-					"default": 10
+				"will": {
+					"std": 10
 				}
 			},
 			"hp": [
@@ -1587,7 +1492,6 @@
 					"abilities": null
 				}
 			],
-			"abilitiesMid": [],
 			"speed": {
 				"walk": 30,
 				"climb": 30,
@@ -1620,93 +1524,80 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
+			"abilities": {
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"arcane",
+							"evocation"
+						],
+						"entries": [
+							"The i'iko dragon breathes a spray of jagged glass shards that deals {@damage 7d6} piercing damage in a 15-foot cone (DC 23 basic Reflex save). They can't use Breath Weapon again for {@dice 1d4} rounds."
+						],
+						"name": "Breath Weapon"
 					},
-					"traits": [
-						"arcane",
-						"evocation"
-					],
-					"entries": [
-						"The i'iko dragon breathes a spray of jagged glass shards that deals {@damage 7d6} piercing damage in a 15-foot cone (DC 23 basic Reflex save). They can't use Breath Weapon again for {@dice 1d4} rounds."
-					],
-					"name": "Breath Weapon"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"attack"
+						],
+						"entries": [
+							"The i'iko dragon attempts to capsize an aquatic vessel of Medium size or smaller that they're on or adjacent to. They must succeed at an {@skill Athletics} check with a DC of 25 or the pilot's {@skill Lore||Sailing Lore} DC, whichever is higher."
+						],
+						"name": "Cunning Capsize"
 					},
-					"traits": [
-						"attack"
-					],
-					"entries": [
-						"The i'iko dragon attempts to capsize an aquatic vessel of Medium size or smaller that they're on or adjacent to. They must succeed at an {@skill Athletics} check with a DC of 25 or the pilot's {@skill Lore||Sailing Lore} DC, whichever is higher."
-					],
-					"name": "Cunning Capsize"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"emotion",
+							"fear",
+							"mental"
+						],
+						"entries": [
+							"The i'iko dragon spreads their wings, bares their teeth, and threatens their opponent in a terrifying display of draconic majesty. All creatures within 30 feet must attempt a DC 24 Will save. Regardless of the result of the saving throw, the creatures are temporarily immune."
+						],
+						"name": "Draconic Grandeur"
 					},
-					"traits": [
-						"emotion",
-						"fear",
-						"mental"
-					],
-					"entries": [
-						"The i'iko dragon spreads their wings, bares their teeth, and threatens their opponent in a terrifying display of draconic majesty. All creatures within 30 feet must attempt a DC 24 Will save. Regardless of the result of the saving throw, the creatures are temporarily immune."
-					],
-					"name": "Draconic Grandeur"
-				},
-				{
-					"entries": [
-						"Grandeur for 1 minute.",
-						{
-							"type": "successDegree",
-							"entries": {
-								"Critical Success": "The creature is unaffected.",
-								"Success": "The creature is {@condition frightened|CRB|frightened 1}.",
-								"Failure": "The creature is {@condition frightened|CRB|frightened 2}.",
-								"Critical Failure": "The creature is {@condition frightened|CRB|frightened 4}."
+					{
+						"entries": [
+							"Grandeur for 1 minute.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": "The creature is unaffected.",
+									"Success": "The creature is {@condition frightened|CRB|frightened 1}.",
+									"Failure": "The creature is {@condition frightened|CRB|frightened 2}.",
+									"Critical Failure": "The creature is {@condition frightened|CRB|frightened 4}."
+								}
 							}
-						}
-					],
-					"name": "to Draconic"
-				},
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
+						],
+						"name": "to Draconic"
 					},
-					"traits": [
-						"move"
-					],
-					"entries": [
-						"The i'iko dragon Flies up to their fly Speed, descending at least 10 feet, and then makes a jaws {@action Strike}. If the jaws {@action Strike} hits and the target is Medium or smaller, the target is knocked {@condition prone}."
-					],
-					"name": "Tackle"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"piercing",
-					"slashing"
-				],
-				"condition": [
-					"{@condition frightened}",
-					"{@condition prone}"
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"move"
+						],
+						"entries": [
+							"The i'iko dragon Flies up to their fly Speed, descending at least 10 feet, and then makes a jaws {@action Strike}. If the jaws {@action Strike} hits and the target is Medium or smaller, the target is knocked {@condition prone}."
+						],
+						"name": "Tackle"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"AD",
-				"CC"
-			]
+			}
 		},
 		{
 			"name": "Kiru",
@@ -1714,26 +1605,24 @@
 			"source": "SoT2",
 			"page": 27,
 			"level": 3,
-			"rarity": "Unique",
-			"alignment": "CE",
-			"size": "Medium",
 			"traits": [
-				"elf"
+				"unique",
+				"ce",
+				"medium",
+				"elf",
+				"humanoid"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 9
+				"std": 9
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"low-light vision"
-				]
-			},
+			"senses": [
+				{
+					"name": "low-light vision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Common",
@@ -1743,54 +1632,46 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 9
+					"std": 9
 				},
 				"Intimidation": {
-					"default": 9
+					"std": 9
 				},
 				"Stealth": {
-					"default": 9
+					"std": 9
 				},
 				"Thievery": {
-					"default": 11
+					"std": 11
 				},
 				"Underworld Lore": {
-					"default": 8
+					"std": 8
 				}
 			},
 			"abilityMods": {
-				"Str": 1,
-				"Dex": 4,
-				"Con": 0,
-				"Int": 1,
-				"Wis": 2,
-				"Cha": 2
+				"str": 1,
+				"dex": 4,
+				"con": 0,
+				"int": 1,
+				"wis": 2,
+				"cha": 2
 			},
 			"items": [
 				"dagger (6)",
 				"studded leather armor",
 				"thieves' tools"
 			],
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+11, {@skill Lore||Underworld Lore} +8 Str +1, Dex +4, Con +0, Int +1, Wis +2, Cha +2 Items dagger (6), studded leather armor, thieves' tools."
-					],
-					"name": "Thievery"
-				}
-			],
 			"ac": {
-				"default": 20
+				"std": 20
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 7
+				"fort": {
+					"std": 7
 				},
-				"Ref": {
-					"default": 11
+				"ref": {
+					"std": 11
 				},
-				"Will": {
-					"default": 9
+				"will": {
+					"std": 9
 				}
 			},
 			"hp": [
@@ -1799,7 +1680,6 @@
 					"abilities": null
 				}
 			],
-			"abilitiesMid": [],
 			"speed": {
 				"walk": 30
 			},
@@ -1839,43 +1719,36 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"entries": [
-						"Creatures hit by Kiru's dagger {@action Strike} must succeed at a DC 20 Fortitude save or become {@condition clumsy|CRB|clumsy 1} for 1 round (1 minute on a critical failure). If Kiru's {@action Strike} is a critical hit, the DC increases to 25."
-					],
-					"name": "Knife Jab"
-				},
-				{
-					"entries": [
-						"Attack Kiru deals an extra {@damage 1d6} precision damage to {@condition flat-footed} creatures."
-					],
-					"name": "Sneak"
-				},
-				{
-					"entries": [
-						"On the first round of combat, creatures that haven't acted yet are {@condition flat-footed} to Kiru."
-					],
-					"name": "Surprise Attack"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"piercing",
-					"precision"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"+11, {@skill Lore||Underworld Lore} +8 Str +1, Dex +4, Con +0, Int +1, Wis +2, Cha +2 Items dagger (6), studded leather armor, thieves' tools."
+						],
+						"name": "Thievery"
+					}
 				],
-				"condition": [
-					"{@condition clumsy}",
-					"{@condition flat-footed}"
+				"bot": [
+					{
+						"entries": [
+							"Creatures hit by Kiru's dagger {@action Strike} must succeed at a DC 20 Fortitude save or become {@condition clumsy|CRB|clumsy 1} for 1 round (1 minute on a critical failure). If Kiru's {@action Strike} is a critical hit, the DC increases to 25."
+						],
+						"name": "Knife Jab"
+					},
+					{
+						"entries": [
+							"Attack Kiru deals an extra {@damage 1d6} precision damage to {@condition flat-footed} creatures."
+						],
+						"name": "Sneak"
+					},
+					{
+						"entries": [
+							"On the first round of combat, creatures that haven't acted yet are {@condition flat-footed} to Kiru."
+						],
+						"name": "Surprise Attack"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"RA",
-				"TA",
-				"CC",
-				"UW"
-			]
+			}
 		},
 		{
 			"name": "Kolbo",
@@ -1883,26 +1756,24 @@
 			"source": "SoT2",
 			"page": 49,
 			"level": 6,
-			"rarity": "Unique",
-			"alignment": "NE",
-			"size": "Medium",
 			"traits": [
-				"dwarf"
+				"unique",
+				"ne",
+				"medium",
+				"dwarf",
+				"humanoid"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 12
+				"std": 12
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Common",
@@ -1914,69 +1785,47 @@
 			},
 			"skills": {
 				"Athletics": {
-					"default": 14
+					"std": 14
 				},
 				"Deception": {
-					"default": 15
+					"std": 15
 				},
 				"Intimidation": {
-					"default": 13
+					"std": 13
 				},
 				"Society": {
-					"default": 12
+					"std": 12
 				},
 				"Thievery": {
-					"default": 14
+					"std": 14
 				}
 			},
 			"abilityMods": {
-				"Str": 4,
-				"Dex": 2,
-				"Con": 4,
-				"Int": 2,
-				"Wis": 1,
-				"Cha": 3
+				"str": 4,
+				"dex": 2,
+				"con": 4,
+				"int": 2,
+				"wis": 1,
+				"cha": 3
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+12, {@skill Thievery} +14 Str +4, Dex +2, Con +4, Int +2, Wis +1, Cha +3 Items heavy crossbow (10 bolts), lesser elixir of life, leather armor, longsword, strongbox key, thieves' tools."
-					],
-					"name": "Society"
-				},
-				{
-					"entries": [
-						"If Kolbo is aware of his opponents and isn't prevented from speaking, he rolls {@skill Deception} for initiative."
-					],
-					"name": "A Quick Word"
-				}
-			],
 			"ac": {
-				"default": 24
+				"std": 24
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 16
+				"fort": {
+					"std": 16
 				},
-				"Ref": {
-					"default": 14
+				"ref": {
+					"std": 14
 				},
-				"Will": {
-					"default": 13
+				"will": {
+					"std": 13
 				}
 			},
 			"hp": [
 				{
 					"hp": 115,
 					"abilities": null
-				}
-			],
-			"abilitiesMid": [
-				{
-					"entries": [
-						"Advantage Kolbo isn't {@condition flat-footed} to creatures of 6th level or lower that are {@condition hidden}, {@condition undetected}, flanking, or using surprise attack."
-					],
-					"name": "Deny"
 				}
 			],
 			"speed": {
@@ -2011,41 +1860,49 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"+12, {@skill Thievery} +14 Str +4, Dex +2, Con +4, Int +2, Wis +1, Cha +3 Items heavy crossbow (10 bolts), lesser elixir of life, leather armor, longsword, strongbox key, thieves' tools."
+						],
+						"name": "Society"
 					},
-					"requirements": "Kolbo successfully Feints an opponent",
-					"entries": [
-						"The foe is knocked {@condition prone}."
-					],
-					"name": "Low Blow"
-				},
-				{
-					"entries": [
-						"Attack Kolbo deals an extra {@damage 2d6} precision damage to {@condition flat-footed} creatures."
-					],
-					"name": "Sneak"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"piercing",
-					"precision",
-					"slashing"
+					{
+						"entries": [
+							"If Kolbo is aware of his opponents and isn't prevented from speaking, he rolls {@skill Deception} for initiative."
+						],
+						"name": "A Quick Word"
+					}
 				],
-				"condition": [
-					"{@condition flat-footed}",
-					"{@condition prone}"
+				"mid": [
+					{
+						"entries": [
+							"Advantage Kolbo isn't {@condition flat-footed} to creatures of 6th level or lower that are {@condition hidden}, {@condition undetected}, flanking, or using surprise attack."
+						],
+						"name": "Deny"
+					}
+				],
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"requirements": "Kolbo successfully Feints an opponent",
+						"entries": [
+							"The foe is knocked {@condition prone}."
+						],
+						"name": "Low Blow"
+					},
+					{
+						"entries": [
+							"Attack Kolbo deals an extra {@damage 2d6} precision damage to {@condition flat-footed} creatures."
+						],
+						"name": "Sneak"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"CC",
-				"UW"
-			]
+			}
 		},
 		{
 			"name": "Kreekoss",
@@ -2053,24 +1910,25 @@
 			"source": "SoT2",
 			"page": 53,
 			"level": 6,
-			"rarity": "Unique",
-			"alignment": "NE",
-			"size": "Large",
+			"traits": [
+				"unique",
+				"ne",
+				"large",
+				"beast",
+				"fiend"
+			],
 			"creatureType": [
 				"Fiend",
 				"Beast"
 			],
 			"perception": {
-				"default": 15
+				"std": 15
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"low-light vision"
-				]
-			},
+			"senses": [
+				{
+					"name": "low-light vision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Auran",
@@ -2081,33 +1939,32 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 15
+					"std": 15
 				},
 				"Athletics": {
-					"default": 12
+					"std": 12
 				}
 			},
 			"abilityMods": {
-				"Str": 4,
-				"Dex": 5,
-				"Con": 2,
-				"Int": 0,
-				"Wis": 3,
-				"Cha": 1
+				"str": 4,
+				"dex": 5,
+				"con": 2,
+				"int": 0,
+				"wis": 3,
+				"cha": 1
 			},
-			"abilitiesTop": [],
 			"ac": {
-				"default": 24
+				"std": 24
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 11
+				"fort": {
+					"std": 11
 				},
-				"Ref": {
-					"default": 16
+				"ref": {
+					"std": 16
 				},
-				"Will": {
-					"default": 14
+				"will": {
+					"std": 14
 				}
 			},
 			"hp": [
@@ -2126,14 +1983,6 @@
 				{
 					"amount": 6,
 					"name": "fire"
-				}
-			],
-			"abilitiesMid": [
-				{
-					"entries": [
-						"When Kreekoss rolls a success on a Reflex save, he gets a critical success instead."
-					],
-					"name": "Evasion"
 				}
 			],
 			"speed": {
@@ -2165,37 +2014,34 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"entries": [],
-					"name": "Grab",
-					"generic": true
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"entries": [
-						"Kreekoss Flies up to double his fly Speed in a straight line, descending at least 10 feet, and then makes a talon {@action Strike}.",
-						"Snatch Kreekoss can {@action Fly} at half Speed while he has a creature {@condition grabbed} or {@condition restrained} in his talons, carrying that creature along with it."
-					],
-					"name": "Eagle Dive"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"piercing",
-					"slashing"
+			"abilities": {
+				"mid": [
+					{
+						"entries": [
+							"When Kreekoss rolls a success on a Reflex save, he gets a critical success instead."
+						],
+						"name": "Evasion"
+					}
 				],
-				"condition": [
-					"{@condition grabbed}"
+				"bot": [
+					{
+						"entries": [],
+						"name": "Grab",
+						"generic": true
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"Kreekoss Flies up to double his fly Speed in a straight line, descending at least 10 feet, and then makes a talon {@action Strike}.",
+							"Snatch Kreekoss can {@action Fly} at half Speed while he has a creature {@condition grabbed} or {@condition restrained} in his talons, carrying that creature along with it."
+						],
+						"name": "Eagle Dive"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"CC"
-			]
+			}
 		},
 		{
 			"name": "Loakan",
@@ -2203,17 +2049,18 @@
 			"source": "SoT2",
 			"page": 28,
 			"level": 6,
-			"rarity": "Unique",
-			"alignment": "NE",
-			"size": "Medium",
 			"traits": [
+				"unique",
+				"ne",
+				"medium",
+				"humanoid",
 				"lizardfolk"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 13
+				"std": 13
 			},
 			"languages": {
 				"languages": [
@@ -2225,50 +2072,42 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 12
+					"std": 12
 				},
 				"Athletics": {
-					"default": 14
+					"std": 14
 				},
 				"Thievery": {
-					"default": 12
+					"std": 12
 				},
 				"Cooking Lore": {
-					"default": 10
+					"std": 10
 				}
 			},
 			"abilityMods": {
-				"Str": 4,
-				"Dex": 4,
-				"Con": 1,
-				"Int": 0,
-				"Wis": 3,
-				"Cha": 0
+				"str": 4,
+				"dex": 4,
+				"con": 1,
+				"int": 0,
+				"wis": 3,
+				"cha": 0
 			},
 			"items": [
 				"+1 greatclub",
 				"recipe books"
 			],
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+12 Str +4, Dex +4, Con +1, Int +0, Wis +3, Cha +0 Items +1 greatclub, recipe books."
-					],
-					"name": "Thievery"
-				}
-			],
 			"ac": {
-				"default": 23
+				"std": 23
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 11
+				"fort": {
+					"std": 11
 				},
-				"Ref": {
-					"default": 14
+				"ref": {
+					"std": 14
 				},
-				"Will": {
-					"default": 13
+				"will": {
+					"std": 13
 				}
 			},
 			"hp": [
@@ -2277,7 +2116,6 @@
 					"abilities": null
 				}
 			],
-			"abilitiesMid": [],
 			"speed": {
 				"walk": 25,
 				"swim": 15
@@ -2332,39 +2170,34 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"entries": [
-						"Loakan makes a greatclub {@action Strike} and two tail Strikes against the same creature. If the greatclub {@action Strike} hits, the target is {@condition flat-footed} against both tail Strikes."
-					],
-					"name": "Battering Tail"
-				},
-				{
-					"entries": [
-						"Breath Loakan can hold her breath for 200 rounds (20 minutes)."
-					],
-					"name": "Deep"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning",
-					"piercing"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"+12 Str +4, Dex +4, Con +1, Int +0, Wis +3, Cha +0 Items +1 greatclub, recipe books."
+						],
+						"name": "Thievery"
+					}
 				],
-				"condition": [
-					"{@condition flat-footed}"
+				"bot": [
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"Loakan makes a greatclub {@action Strike} and two tail Strikes against the same creature. If the greatclub {@action Strike} hits, the target is {@condition flat-footed} against both tail Strikes."
+						],
+						"name": "Battering Tail"
+					},
+					{
+						"entries": [
+							"Breath Loakan can hold her breath for 200 rounds (20 minutes)."
+						],
+						"name": "Deep"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"RA",
-				"CC",
-				"UW"
-			]
+			}
 		},
 		{
 			"name": "Mashkudu The Bully",
@@ -2372,17 +2205,18 @@
 			"source": "SoT2",
 			"page": 27,
 			"level": 5,
-			"rarity": "Unique",
-			"alignment": "CE",
-			"size": "Medium",
 			"traits": [
-				"human"
+				"unique",
+				"ce",
+				"medium",
+				"human",
+				"humanoid"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 13
+				"std": 13
 			},
 			"languages": {
 				"languages": [
@@ -2392,49 +2226,41 @@
 			},
 			"skills": {
 				"Athletics": {
-					"default": 13
+					"std": 13
 				},
 				"Deception": {
-					"default": 9
+					"std": 9
 				},
 				"Intimidation": {
-					"default": 11
+					"std": 11
 				},
 				"Stealth": {
-					"default": 11
+					"std": 11
 				},
 				"Thievery": {
-					"default": 13
+					"std": 13
 				}
 			},
 			"abilityMods": {
-				"Str": 4,
-				"Dex": 4,
-				"Con": 2,
-				"Int": 0,
-				"Wis": 4,
-				"Cha": 0
+				"str": 4,
+				"dex": 4,
+				"con": 2,
+				"int": 0,
+				"wis": 4,
+				"cha": 0
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+11, {@skill Thievery} +13 Str +4, Dex +4, Con +2, Int +0, Wis +4, Cha +0 Items hand crossbow (10 bolts), leather armor, longsword, thieves' tools."
-					],
-					"name": "Stealth"
-				}
-			],
 			"ac": {
-				"default": 22
+				"std": 22
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 12
+				"fort": {
+					"std": 12
 				},
-				"Ref": {
-					"default": 14
+				"ref": {
+					"std": 14
 				},
-				"Will": {
-					"default": 11
+				"will": {
+					"std": 11
 				}
 			},
 			"hp": [
@@ -2443,7 +2269,6 @@
 					"abilities": null
 				}
 			],
-			"abilitiesMid": [],
 			"speed": {
 				"walk": 25
 			},
@@ -2476,52 +2301,46 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"trigger": "Mashkudu Shoves,",
-					"entries": [],
-					"name": "Opportunistic Maneuver"
-				},
-				{
-					"entries": [
-						"Disarms a creature; Mashkudu attempts a {@skill Thievery} check to {@action Steal} an object the target carries."
-					],
-					"name": "Trips, or"
-				},
-				{
-					"entries": [
-						"Mashkudu deals an extra {@damage 1d6} precision damage to {@condition flat-footed} creatures."
-					],
-					"name": "Sneak Attack",
-					"generic": true
-				},
-				{
-					"entries": [
-						"On the first round of combat, creatures that haven't acted yet are {@condition flat-footed} to Mashkudu."
-					],
-					"name": "Surprise Attack"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"piercing",
-					"precision",
-					"slashing"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"+11, {@skill Thievery} +13 Str +4, Dex +4, Con +2, Int +0, Wis +4, Cha +0 Items hand crossbow (10 bolts), leather armor, longsword, thieves' tools."
+						],
+						"name": "Stealth"
+					}
 				],
-				"condition": [
-					"{@condition flat-footed}"
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"trigger": "Mashkudu Shoves,",
+						"entries": [],
+						"name": "Opportunistic Maneuver"
+					},
+					{
+						"entries": [
+							"Disarms a creature; Mashkudu attempts a {@skill Thievery} check to {@action Steal} an object the target carries."
+						],
+						"name": "Trips, or"
+					},
+					{
+						"entries": [
+							"Mashkudu deals an extra {@damage 1d6} precision damage to {@condition flat-footed} creatures."
+						],
+						"name": "Sneak Attack",
+						"generic": true
+					},
+					{
+						"entries": [
+							"On the first round of combat, creatures that haven't acted yet are {@condition flat-footed} to Mashkudu."
+						],
+						"name": "Surprise Attack"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"RA",
-				"CC",
-				"UW"
-			]
+			}
 		},
 		{
 			"name": "Mpeshi",
@@ -2529,58 +2348,55 @@
 			"source": "SoT2",
 			"page": 85,
 			"level": 6,
-			"rarity": "Rare",
-			"alignment": "N",
-			"size": "Large",
 			"traits": [
+				"rare",
+				"n",
+				"large",
+				"beast",
 				"electricity"
 			],
 			"creatureType": [
 				"Beast"
 			],
 			"perception": {
-				"default": 14
+				"std": 14
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
 			"skills": {
 				"Athletics": {
-					"default": 16
+					"std": 16
 				},
 				"Nature": {
-					"default": 14
+					"std": 14
 				},
 				"Stealth": {
-					"default": 12
+					"std": 12
 				}
 			},
 			"abilityMods": {
-				"Str": 6,
-				"Dex": 2,
-				"Con": 4,
-				"Int": -2,
-				"Wis": 4,
-				"Cha": 0
+				"str": 6,
+				"dex": 2,
+				"con": 4,
+				"int": -2,
+				"wis": 4,
+				"cha": 0
 			},
-			"abilitiesTop": [],
 			"ac": {
-				"default": 24
+				"std": 24
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 16
+				"fort": {
+					"std": 16
 				},
-				"Ref": {
-					"default": 12
+				"ref": {
+					"std": 12
 				},
-				"Will": {
-					"default": 14
+				"will": {
+					"std": 14
 				}
 			},
 			"hp": [
@@ -2589,39 +2405,13 @@
 					"abilities": null
 				}
 			],
-			"immunities": {
-				"damage": [
-					"electricity"
-				],
-				"condition": []
-			},
+			"immunities": [
+				"electricity"
+			],
 			"resistances": [
 				{
 					"amount": 10,
 					"name": "sonic"
-				}
-			],
-			"abilitiesMid": [
-				{
-					"traits": [
-						"aura",
-						"electricity"
-					],
-					"entries": [
-						"5 feet. A buzzing static electricity surrounds the mpeshi. When a creature within the aura takes electricity damage, the damage arcs to a random adjacent creature, dealing {@damage 1d6} electricity damage. A creature can only receive arcing damage once from each attack or effect."
-					],
-					"name": "Lightning Aura"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"trigger": "The mpeshi falls at least 10 feet",
-					"entries": [
-						"The mpeshi reorients itself to slam headfirst into the ground with a thundering crash. Creatures within 10 feet of the mpeshi take sonic damage equal to the bludgeoning damage the mpeshi took from the fall (DC 23 basic Fortitude save). Creatures that fail this save are {@condition stunned|CRB|stunned 1} ({@condition stunned|CRB|stunned 2} on a critical failure)."
-					],
-					"name": "Thunderous Fall"
 				}
 			],
 			"speed": {
@@ -2662,38 +2452,49 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
+			"abilities": {
+				"mid": [
+					{
+						"traits": [
+							"aura",
+							"electricity"
+						],
+						"entries": [
+							"5 feet. A buzzing static electricity surrounds the mpeshi. When a creature within the aura takes electricity damage, the damage arcs to a random adjacent creature, dealing {@damage 1d6} electricity damage. A creature can only receive arcing damage once from each attack or effect."
+						],
+						"name": "Lightning Aura"
 					},
-					"entries": [
-						"The mpeshi leaps up to 40 feet in any direction, including straight up. The mpeshi makes a horn {@action Strike} at any point during this leap."
-					],
-					"name": "Charging Leap"
-				},
-				{
-					"entries": [
-						"The mpeshi can tread on clouds or fog as though on solid ground."
-					],
-					"name": "Cloud Walk"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning",
-					"electricity"
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"trigger": "The mpeshi falls at least 10 feet",
+						"entries": [
+							"The mpeshi reorients itself to slam headfirst into the ground with a thundering crash. Creatures within 10 feet of the mpeshi take sonic damage equal to the bludgeoning damage the mpeshi took from the fall (DC 23 basic Fortitude save). Creatures that fail this save are {@condition stunned|CRB|stunned 1} ({@condition stunned|CRB|stunned 2} on a critical failure)."
+						],
+						"name": "Thunderous Fall"
+					}
 				],
-				"condition": [
-					"{@condition stunned}"
+				"bot": [
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"The mpeshi leaps up to 40 feet in any direction, including straight up. The mpeshi makes a horn {@action Strike} at any point during this leap."
+						],
+						"name": "Charging Leap"
+					},
+					{
+						"entries": [
+							"The mpeshi can tread on clouds or fog as though on solid ground."
+						],
+						"name": "Cloud Walk"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"RC",
-				"CC"
-			]
+			}
 		},
 		{
 			"name": "Mutated Sewer Ooze",
@@ -2701,62 +2502,55 @@
 			"source": "SoT2",
 			"page": 37,
 			"level": 6,
-			"rarity": "Unique",
-			"alignment": "N",
-			"size": "Large",
 			"traits": [
+				"unique",
+				"n",
+				"large",
 				"mindless",
-				"mutant"
+				"mutant",
+				"ooze"
 			],
 			"creatureType": [
 				"Ooze"
 			],
 			"perception": {
-				"default": 10
+				"std": 10
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"motion sense 60 feet",
-					"no vision"
-				]
-			},
+			"senses": [
+				{
+					"name": "motion sense",
+					"range": 60
+				},
+				{
+					"name": "no vision"
+				}
+			],
 			"skills": {
 				"Stealth": {
-					"default": 9,
+					"std": 9,
 					"in sewers": 12
 				}
 			},
 			"abilityMods": {
-				"Str": 5,
-				"Dex": -2,
-				"Con": 4,
-				"Int": -5,
-				"Wis": 0,
-				"Cha": -5
+				"str": 5,
+				"dex": -2,
+				"con": 4,
+				"int": -5,
+				"wis": 0,
+				"cha": -5
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"A sewer ooze can sense nearby motion through vibration and air movements."
-					],
-					"name": "Motion Sense"
-				}
-			],
 			"ac": {
-				"default": 16
+				"std": 16
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 16
+				"fort": {
+					"std": 16
 				},
-				"Ref": {
-					"default": 8
+				"ref": {
+					"std": 8
 				},
-				"Will": {
-					"default": 10
+				"will": {
+					"std": 10
 				}
 			},
 			"hp": [
@@ -2765,28 +2559,11 @@
 					"abilities": null
 				}
 			],
-			"immunities": {
-				"damage": [
-					"acid",
-					"mental",
-					"precision"
-				],
-				"condition": [
-					"critical hits"
-				]
-			},
-			"abilitiesMid": [
-				{
-					"traits": [
-						"aura",
-						"olfactory"
-					],
-					"entries": [
-						"30 feet. A creature that enters the area must attempt a DC 23 Fortitude save.",
-						"On a failure, the creature is {@condition sickened|CRB|sickened 1} ({@condition sickened|CRB|sickened 2} on a critical failure). A creature taking {@condition persistent damage ||persistent acid damage} from the ooze's pseudopod can't recover from the {@condition sickened} condition. A creature that succeeds at its save is temporarily immune for 1 minute."
-					],
-					"name": "Noxious Scent"
-				}
+			"immunities": [
+				"acid",
+				"mental",
+				"precision",
+				"critical hits"
 			],
 			"speed": {
 				"walk": 10
@@ -2811,44 +2588,51 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"frequency": {
-						"unit": "minute",
-						"freq": 1
-					},
-					"entries": [
-						"The sewer ooze unleashes a wave of filth, covering all creatures within a 20-foot emanation. Each creature in the area must succeed at a DC 24 Reflex save or take {@damage 1d4} acid damage and a \u201310-foot penalty to its Speeds for 1 minute (on a critical failure, the creature also falls {@condition prone}). A creature can spend an {@action Interact} action to clean someone off, decreasing."
-					],
-					"name": "Filth Wave"
-				},
-				{
-					"entries": [
-						"Speed penalty by 5 feet with each action."
-					],
-					"name": "the"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"acid",
-					"bludgeoning"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"A sewer ooze can sense nearby motion through vibration and air movements."
+						],
+						"name": "Motion Sense"
+					}
 				],
-				"condition": [
-					"{@condition prone}",
-					"{@condition sickened}"
+				"mid": [
+					{
+						"traits": [
+							"aura",
+							"olfactory"
+						],
+						"entries": [
+							"30 feet. A creature that enters the area must attempt a DC 23 Fortitude save.",
+							"On a failure, the creature is {@condition sickened|CRB|sickened 1} ({@condition sickened|CRB|sickened 2} on a critical failure). A creature taking {@condition persistent damage ||persistent acid damage} from the ooze's pseudopod can't recover from the {@condition sickened} condition. A creature that succeeds at its save is temporarily immune for 1 minute."
+						],
+						"name": "Noxious Scent"
+					}
+				],
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"frequency": {
+							"unit": "minute",
+							"freq": 1
+						},
+						"entries": [
+							"The sewer ooze unleashes a wave of filth, covering all creatures within a 20-foot emanation. Each creature in the area must succeed at a DC 24 Reflex save or take {@damage 1d4} acid damage and a \u201310-foot penalty to its Speeds for 1 minute (on a critical failure, the creature also falls {@condition prone}). A creature can spend an {@action Interact} action to clean someone off, decreasing."
+						],
+						"name": "Filth Wave"
+					},
+					{
+						"entries": [
+							"Speed penalty by 5 feet with each action."
+						],
+						"name": "the"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"AD",
-				"AC",
-				"CC"
-			]
+			}
 		},
 		{
 			"name": "Old Thrasher",
@@ -2856,53 +2640,52 @@
 			"source": "SoT2",
 			"page": 40,
 			"level": 8,
-			"rarity": "Unique",
-			"alignment": "N",
-			"size": "Large",
+			"traits": [
+				"unique",
+				"n",
+				"large",
+				"animal"
+			],
 			"creatureType": [
 				"Animal"
 			],
 			"perception": {
-				"default": 16
+				"std": 16
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"low-light vision"
-				]
-			},
+			"senses": [
+				{
+					"name": "low-light vision"
+				}
+			],
 			"skills": {
 				"Athletics": {
-					"default": 18
+					"std": 18
 				},
 				"Stealth": {
-					"default": 16,
+					"std": 16,
 					"in water": 20
 				}
 			},
 			"abilityMods": {
-				"Str": 6,
-				"Dex": 2,
-				"Con": 4,
-				"Int": -5,
-				"Wis": 3,
-				"Cha": -2
+				"str": 6,
+				"dex": 2,
+				"con": 4,
+				"int": -5,
+				"wis": 3,
+				"cha": -2
 			},
-			"abilitiesTop": [],
 			"ac": {
-				"default": 26
+				"std": 26
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 18
+				"fort": {
+					"std": 18
 				},
-				"Ref": {
-					"default": 16
+				"ref": {
+					"std": 16
 				},
-				"Will": {
-					"default": 15
+				"will": {
+					"std": 15
 				}
 			},
 			"hp": [
@@ -2911,7 +2694,6 @@
 					"abilities": null
 				}
 			],
-			"abilitiesMid": [],
 			"speed": {
 				"walk": 20,
 				"swim": 25
@@ -2944,64 +2726,51 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
+			"abilities": {
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"attack"
+						],
+						"requirements": "Old Thrasher must have a creature {@condition grabbed}",
+						"entries": [
+							"Old Thrasher tucks its legs and rolls rapidly, twisting its victim. It makes a jaws {@action Strike} with a +2 circumstance bonus to the attack roll against the {@condition grabbed} creature. If it hits, it also knocks the creature {@condition prone}. If it fails, it releases the creature."
+						],
+						"name": "Death Roll"
 					},
-					"traits": [
-						"attack"
-					],
-					"requirements": "Old Thrasher must have a creature {@condition grabbed}",
-					"entries": [
-						"Old Thrasher tucks its legs and rolls rapidly, twisting its victim. It makes a jaws {@action Strike} with a +2 circumstance bonus to the attack roll against the {@condition grabbed} creature. If it hits, it also knocks the creature {@condition prone}. If it fails, it releases the creature."
-					],
-					"name": "Death Roll"
-				},
-				{
-					"entries": [
-						"Thrasher can hold its breath for about 4 hours."
-					],
-					"name": "Deep Breath Old"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
+					{
+						"entries": [
+							"Thrasher can hold its breath for about 4 hours."
+						],
+						"name": "Deep Breath Old"
 					},
-					"requirements": "Old Thrasher must have a creature {@condition grabbed}",
-					"entries": [
-						"Old Thrasher Swims, bringing its victim along with it."
-					],
-					"name": "Into the Deep"
-				},
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"requirements": "Old Thrasher must have a creature {@condition grabbed}",
+						"entries": [
+							"Old Thrasher Swims, bringing its victim along with it."
+						],
+						"name": "Into the Deep"
 					},
-					"entries": [
-						"Old Thrasher makes up to three tail Strikes against different targets. Any target hit must succeed at a DC 25 Fortitude save (DC 30 on a critical hit) or be knocked {@condition prone}."
-					],
-					"name": "Thunderous Tail"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning",
-					"piercing"
-				],
-				"condition": [
-					"{@condition grabbed}",
-					"{@condition prone}"
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"Old Thrasher makes up to three tail Strikes against different targets. Any target hit must succeed at a DC 25 Fortitude save (DC 30 on a critical hit) or be knocked {@condition prone}."
+						],
+						"name": "Thunderous Tail"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"RC",
-				"CC"
-			]
+			}
 		},
 		{
 			"name": "Reth",
@@ -3009,17 +2778,18 @@
 			"source": "SoT2",
 			"page": 29,
 			"level": 7,
-			"rarity": "Unique",
-			"alignment": "NE",
-			"size": "Medium",
 			"traits": [
+				"unique",
+				"ne",
+				"medium",
+				"humanoid",
 				"lizardfolk"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 13
+				"std": 13
 			},
 			"languages": {
 				"languages": [
@@ -3031,52 +2801,44 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 15
+					"std": 15
 				},
 				"Intimidation": {
-					"default": 15
+					"std": 15
 				},
 				"Society": {
-					"default": 12
+					"std": 12
 				},
 				"Stealth": {
-					"default": 15
+					"std": 15
 				},
 				"Survival": {
-					"default": 13
+					"std": 13
 				},
 				"Thievery": {
-					"default": 15
+					"std": 15
 				}
 			},
 			"abilityMods": {
-				"Str": 3,
-				"Dex": 4,
-				"Con": 1,
-				"Int": 1,
-				"Wis": 2,
-				"Cha": 2
+				"str": 3,
+				"dex": 4,
+				"con": 1,
+				"int": 1,
+				"wis": 2,
+				"cha": 2
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+15, {@skill Survival} +13, {@skill Thievery} +15 Str +3, Dex +4, Con +1, Int +1, Wis +2, Cha +2 Items +1 hand crossbow (10 bolts), keyring, leather armor, thieves' tools."
-					],
-					"name": "Stealth"
-				}
-			],
 			"ac": {
-				"default": 25
+				"std": 25
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 14
+				"fort": {
+					"std": 14
 				},
-				"Ref": {
-					"default": 17
+				"ref": {
+					"std": 17
 				},
-				"Will": {
-					"default": 11
+				"will": {
+					"std": 11
 				}
 			},
 			"hp": [
@@ -3085,7 +2847,6 @@
 					"abilities": null
 				}
 			],
-			"abilitiesMid": [],
 			"speed": {
 				"walk": 25,
 				"swim": 15
@@ -3128,64 +2889,61 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"traits": [
-						"stance"
-					],
-					"requirements": "Reth is wielding a crossbow",
-					"entries": [
-						"Reth gains a deadly focus with crossbows while in this stance. His crossbow Strikes deal an additional {@damage 3d8} precision damage. He doesn't provoke reactions for making ranged Strikes with crossbows."
-					],
-					"name": "Deadly Bolts"
-				},
-				{
-					"entries": [
-						"Breath Reth can hold his breath for 200 rounds (20 minutes)."
-					],
-					"name": "Deep"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"entries": [
-						"Reth {@action Stride||Strides}, {@action Step||Steps}, or {@action Sneak||Sneaks}, then Interacts to reload."
-					],
-					"name": "Running Reload"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"traits": [
-						"flourish"
-					],
-					"entries": [
-						"Reth {@action Stride||Strides} or {@action Step||Steps}, then Strikes with his hand crossbow."
-					],
-					"name": "Skirmishing Shot"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning",
-					"piercing",
-					"precision"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"+15, {@skill Survival} +13, {@skill Thievery} +15 Str +3, Dex +4, Con +1, Int +1, Wis +2, Cha +2 Items +1 hand crossbow (10 bolts), keyring, leather armor, thieves' tools."
+						],
+						"name": "Stealth"
+					}
 				],
-				"condition": []
-			},
-			"misc": [
-				"MA",
-				"RA",
-				"UW"
-			]
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"stance"
+						],
+						"requirements": "Reth is wielding a crossbow",
+						"entries": [
+							"Reth gains a deadly focus with crossbows while in this stance. His crossbow Strikes deal an additional {@damage 3d8} precision damage. He doesn't provoke reactions for making ranged Strikes with crossbows."
+						],
+						"name": "Deadly Bolts"
+					},
+					{
+						"entries": [
+							"Breath Reth can hold his breath for 200 rounds (20 minutes)."
+						],
+						"name": "Deep"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"Reth {@action Stride||Strides}, {@action Step||Steps}, or {@action Sneak||Sneaks}, then Interacts to reload."
+						],
+						"name": "Running Reload"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"flourish"
+						],
+						"entries": [
+							"Reth {@action Stride||Strides} or {@action Step||Steps}, then Strikes with his hand crossbow."
+						],
+						"name": "Skirmishing Shot"
+					}
+				]
+			}
 		},
 		{
 			"name": "Salathiss",
@@ -3193,29 +2951,30 @@
 			"source": "SoT2",
 			"page": 93,
 			"level": 9,
-			"rarity": "Unique",
-			"alignment": "NE",
-			"size": "Medium",
 			"traits": [
-				"serpentfolk",
-				"mutant"
+				"unique",
+				"ne",
+				"medium",
+				"humanoid",
+				"mutant",
+				"serpentfolk"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 19
+				"std": 19
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [
-					"scent 30 feet"
-				],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"type": "imprecise",
+					"name": "scent",
+					"range": 30
+				}
+			],
 			"languages": {
 				"languages": [
 					"Aklo",
@@ -3227,55 +2986,47 @@
 			},
 			"skills": {
 				"Arcana": {
-					"default": 18
+					"std": 18
 				},
 				"Deception": {
-					"default": 21
+					"std": 21
 				},
 				"Diplomacy": {
-					"default": 19
+					"std": 19
 				},
 				"Intimidation": {
-					"default": 19
+					"std": 19
 				},
 				"Occultism": {
-					"default": 18
+					"std": 18
 				},
 				"Society": {
-					"default": 18
+					"std": 18
 				},
 				"Stealth": {
-					"default": 18
+					"std": 18
 				}
 			},
 			"abilityMods": {
-				"Str": 4,
-				"Dex": 3,
-				"Con": 2,
-				"Int": 5,
-				"Wis": 4,
-				"Cha": 6
+				"str": 4,
+				"dex": 3,
+				"con": 2,
+				"int": 5,
+				"wis": 4,
+				"cha": 6
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+19, {@skill Occultism} +18, {@skill Society} +18, {@skill Stealth} +18 Str +4, Dex +3, Con +2, Int +5, Wis +4, Cha +6 Items bracers of armor type I, choker of elocution (imparts Xanmba, a regional language spoken by many in Nantambu)"
-					],
-					"name": "Intimidation"
-				}
-			],
 			"ac": {
-				"default": 27
+				"std": 27
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 14
+				"fort": {
+					"std": 14
 				},
-				"Ref": {
-					"default": 17
+				"ref": {
+					"std": 17
 				},
-				"Will": {
-					"default": 20
+				"will": {
+					"std": 20
 				}
 			},
 			"hp": [
@@ -3284,7 +3035,6 @@
 					"abilities": null
 				}
 			],
-			"abilitiesMid": [],
 			"speed": {
 				"walk": 25
 			},
@@ -3460,65 +3210,60 @@
 					}
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"traits": [
-						"morph",
-						"occult",
-						"transmutation"
-					],
-					"entries": [
-						"Salathiss transforms one of his hands into a tentacle with a blade at the end, allowing him to make morphic weapon Strikes. If he's disguised, whether by magical or mundane means, his disguise immediately ends. He can return his hand to normal with another use of this ability, but doing so doesn't restore his disguise."
-					],
-					"name": "Morphic Weapon"
-				},
-				{
-					"traits": [
-						"divination",
-						"exploration",
-						"fortune",
-						"occult"
-					],
-					"entries": [
-						"If Salathiss interacts with a creature for 10 minutes, he can choose to expertly duplicate that person. He can roll any {@skill Deception} check to {@action Impersonate} that person twice and take the higher result. This benefit lasts for 24 hours or until he uses this ability on a different creature."
-					],
-					"name": "Peerless Duplicate"
-				},
-				{
-					"traits": [
-						"poison"
-					],
-					"entries": [
-						"Saving Throw DC 26 Fortitude;"
-					],
-					"name": "Serpentfolk Venom"
-				},
-				{
-					"entries": [
-						"6 rounds; Stage 1 {@damage 2d4} poison damage and {@condition enfeebled|CRB|enfeebled 1} (1 round); Stage 2 {@damage 3d4} poison damage and {@condition enfeebled|CRB|enfeebled 2} (1 round)"
-					],
-					"name": "Maximum Duration"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"piercing",
-					"poison",
-					"slashing"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"+19, {@skill Occultism} +18, {@skill Society} +18, {@skill Stealth} +18 Str +4, Dex +3, Con +2, Int +5, Wis +4, Cha +6 Items bracers of armor type I, choker of elocution (imparts Xanmba, a regional language spoken by many in Nantambu)"
+						],
+						"name": "Intimidation"
+					}
 				],
-				"condition": [
-					"{@condition enfeebled}"
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"morph",
+							"occult",
+							"transmutation"
+						],
+						"entries": [
+							"Salathiss transforms one of his hands into a tentacle with a blade at the end, allowing him to make morphic weapon Strikes. If he's disguised, whether by magical or mundane means, his disguise immediately ends. He can return his hand to normal with another use of this ability, but doing so doesn't restore his disguise."
+						],
+						"name": "Morphic Weapon"
+					},
+					{
+						"traits": [
+							"divination",
+							"exploration",
+							"fortune",
+							"occult"
+						],
+						"entries": [
+							"If Salathiss interacts with a creature for 10 minutes, he can choose to expertly duplicate that person. He can roll any {@skill Deception} check to {@action Impersonate} that person twice and take the higher result. This benefit lasts for 24 hours or until he uses this ability on a different creature."
+						],
+						"name": "Peerless Duplicate"
+					},
+					{
+						"traits": [
+							"poison"
+						],
+						"entries": [
+							"Saving Throw DC 26 Fortitude;"
+						],
+						"name": "Serpentfolk Venom"
+					},
+					{
+						"entries": [
+							"6 rounds; Stage 1 {@damage 2d4} poison damage and {@condition enfeebled|CRB|enfeebled 1} (1 round); Stage 2 {@damage 3d4} poison damage and {@condition enfeebled|CRB|enfeebled 2} (1 round)"
+						],
+						"name": "Maximum Duration"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"RC",
-				"CC"
-			]
+			}
 		},
 		{
 			"name": "Serpentfolk Granitescale",
@@ -3526,29 +3271,30 @@
 			"source": "SoT2",
 			"page": 86,
 			"level": 6,
-			"rarity": "Uncommon",
-			"alignment": "NE",
-			"size": "Medium",
 			"traits": [
-				"serpentfolk",
-				"mutant"
+				"uncommon",
+				"ne",
+				"medium",
+				"humanoid",
+				"mutant",
+				"serpentfolk"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 13
+				"std": 13
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [
-					"scent 30 feet"
-				],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"type": "imprecise",
+					"name": "scent",
+					"range": 30
+				}
+			],
 			"languages": {
 				"languages": [
 					"Aklo",
@@ -3561,41 +3307,40 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 13
+					"std": 13
 				},
 				"Athletics": {
-					"default": 15
+					"std": 15
 				},
 				"Intimidation": {
-					"default": 13
+					"std": 13
 				}
 			},
 			"abilityMods": {
-				"Str": 5,
-				"Dex": 4,
-				"Con": 4,
-				"Int": -2,
-				"Wis": 1,
-				"Cha": 1
+				"str": 5,
+				"dex": 4,
+				"con": 4,
+				"int": -2,
+				"wis": 1,
+				"cha": 1
 			},
 			"items": [
 				"javelin (5)",
 				"longspear"
 			],
-			"abilitiesTop": [],
 			"ac": {
-				"default": 24,
+				"std": 24,
 				"with shed scales": 22
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 17
+				"fort": {
+					"std": 17
 				},
-				"Ref": {
-					"default": 14
+				"ref": {
+					"std": 14
 				},
-				"Will": {
-					"default": 12,
+				"will": {
+					"std": 12,
 					"status vs. mental": 2
 				}
 			},
@@ -3609,32 +3354,6 @@
 				{
 					"amount": 8,
 					"name": "poison"
-				}
-			],
-			"abilitiesMid": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"entries": [],
-					"name": "Attack of Opportunity",
-					"generic": true
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"trigger": "The granitescale takes piercing or slashing damage",
-					"frequency": {
-						"unit": "day",
-						"freq": 1
-					},
-					"entries": [
-						"The granitescale twists to take the blow on their hardest scales, which they shed to reduce the incoming force. The granitescale reduces the damage by 10, but their AC is reduced by 2 for 1 day, when the shed scales regrow."
-					],
-					"name": "Chipping Scales"
 				}
 			],
 			"speed": {
@@ -3680,55 +3399,67 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
+			"abilities": {
+				"mid": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"entries": [],
+						"name": "Attack of Opportunity",
+						"generic": true
 					},
-					"traits": [
-						"auditory",
-						"emotion",
-						"mental"
-					],
-					"requirements": "The granitescale's last action was a successful spear {@action Strike}",
-					"entries": [
-						"The granitescale rattles the base of their spear, attempting an {@skill Intimidation} check to {@action Demoralize} all enemies within 30 feet (compare the granitescale's {@skill Intimidation} check result to the targets' Will DCs individually)."
-					],
-					"name": "Rattling Spear"
-				},
-				{
-					"traits": [
-						"poison"
-					],
-					"entries": [
-						"Saving Throw DC 22 Fortitude;"
-					],
-					"name": "Serpentfolk Venom"
-				},
-				{
-					"entries": [
-						"6 rounds; Stage 1 {@damage 1d4} poison damage and {@condition enfeebled|CRB|enfeebled 1} (1 round); Stage 2 {@damage 2d4} poison damage and {@condition enfeebled|CRB|enfeebled 1} (1 round)"
-					],
-					"name": "Maximum Duration"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"piercing",
-					"poison"
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"trigger": "The granitescale takes piercing or slashing damage",
+						"frequency": {
+							"unit": "day",
+							"freq": 1
+						},
+						"entries": [
+							"The granitescale twists to take the blow on their hardest scales, which they shed to reduce the incoming force. The granitescale reduces the damage by 10, but their AC is reduced by 2 for 1 day, when the shed scales regrow."
+						],
+						"name": "Chipping Scales"
+					}
 				],
-				"condition": [
-					"{@condition enfeebled}"
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"auditory",
+							"emotion",
+							"mental"
+						],
+						"requirements": "The granitescale's last action was a successful spear {@action Strike}",
+						"entries": [
+							"The granitescale rattles the base of their spear, attempting an {@skill Intimidation} check to {@action Demoralize} all enemies within 30 feet (compare the granitescale's {@skill Intimidation} check result to the targets' Will DCs individually)."
+						],
+						"name": "Rattling Spear"
+					},
+					{
+						"traits": [
+							"poison"
+						],
+						"entries": [
+							"Saving Throw DC 22 Fortitude;"
+						],
+						"name": "Serpentfolk Venom"
+					},
+					{
+						"entries": [
+							"6 rounds; Stage 1 {@damage 1d4} poison damage and {@condition enfeebled|CRB|enfeebled 1} (1 round); Stage 2 {@damage 2d4} poison damage and {@condition enfeebled|CRB|enfeebled 1} (1 round)"
+						],
+						"name": "Maximum Duration"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"RC",
-				"RA",
-				"CC",
-				"UW"
-			]
+			}
 		},
 		{
 			"name": "Serpentfolk Venom Caller",
@@ -3736,28 +3467,29 @@
 			"source": "SoT2",
 			"page": 87,
 			"level": 7,
-			"rarity": "Uncommon",
-			"alignment": "NE",
-			"size": "Medium",
 			"traits": [
+				"uncommon",
+				"ne",
+				"medium",
+				"humanoid",
 				"serpentfolk"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 15
+				"std": 15
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [
-					"scent 30 feet"
-				],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"type": "imprecise",
+					"name": "scent",
+					"range": 30
+				}
+			],
 			"languages": {
 				"languages": [
 					"Aklo",
@@ -3771,56 +3503,48 @@
 			},
 			"skills": {
 				"Arcana": {
-					"default": 17
+					"std": 17
 				},
 				"Deception": {
-					"default": 15
+					"std": 15
 				},
 				"Nature": {
-					"default": 15
+					"std": 15
 				},
 				"Occultism": {
-					"default": 17
+					"std": 17
 				},
 				"Society": {
-					"default": 15
+					"std": 15
 				},
 				"Survival": {
-					"default": 15
+					"std": 15
 				}
 			},
 			"abilityMods": {
-				"Str": 0,
-				"Dex": 4,
-				"Con": 2,
-				"Int": 6,
-				"Wis": 4,
-				"Cha": 2
+				"str": 0,
+				"dex": 4,
+				"con": 2,
+				"int": 6,
+				"wis": 4,
+				"cha": 2
 			},
 			"items": [
 				"shortbow (20 arrows)",
 				"sickle"
 			],
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+15 Str +0, Dex +4, Con +2, Int +6, Wis +4, Cha +2 Items shortbow (20 arrows), sickle."
-					],
-					"name": "Survival"
-				}
-			],
 			"ac": {
-				"default": 24
+				"std": 24
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 13
+				"fort": {
+					"std": 13
 				},
-				"Ref": {
-					"default": 15
+				"ref": {
+					"std": 15
 				},
-				"Will": {
-					"default": 17,
+				"will": {
+					"std": 17,
 					"status vs. mental": 4
 				}
 			},
@@ -3830,7 +3554,6 @@
 					"abilities": null
 				}
 			],
-			"abilitiesMid": [],
 			"speed": {
 				"walk": 25
 			},
@@ -4011,50 +3734,47 @@
 					}
 				}
 			],
-			"abilitiesBot": [
-				{
-					"traits": [
-						"poison"
-					],
-					"entries": [
-						"As granitescale, but DC 23."
-					],
-					"name": "Serpentfolk Venom",
-					"entries_as_xyz": "Ability not found: 'Serpentfolk Venom As granitescale, but DC 23.' in Serpentfolk Venom Caller, p.87"
-				},
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"traits": [
-						"arcane",
-						"conjuration",
-						"poison"
-					],
-					"frequency": {
-						"unit": "day",
-						"freq": 1
-					},
-					"entries": [
-						"The venom caller conjures a 10-foot burst of liquid poison within 60 feet. Each creature that begins its turn in the area takes {@damage 4d6} poison damage (DC 25 basic Fortitude save). On a critical failure, creatures also take {@damage 1d6} {@condition persistent damage ||persistent poison damage}. Once per turn, starting the turn after the venom caller uses Venom Pool, the venom caller can use a single action, which has the {@trait concentrate} trait, to increase the radius of the burst by 5 feet. The pool of venom lasts for 1 minute, at which time it evaporates without a trace."
-					],
-					"name": "Venom Pool"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"piercing",
-					"poison"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"+15 Str +0, Dex +4, Con +2, Int +6, Wis +4, Cha +2 Items shortbow (20 arrows), sickle."
+						],
+						"name": "Survival"
+					}
 				],
-				"condition": []
-			},
-			"misc": [
-				"MA",
-				"RA",
-				"AD",
-				"UW"
-			]
+				"bot": [
+					{
+						"traits": [
+							"poison"
+						],
+						"entries": [
+							"As granitescale, but DC 23."
+						],
+						"name": "Serpentfolk Venom",
+						"entries_as_xyz": "Ability not found: 'Serpentfolk Venom As granitescale, but DC 23.' in Serpentfolk Venom Caller, p.87"
+					},
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"arcane",
+							"conjuration",
+							"poison"
+						],
+						"frequency": {
+							"unit": "day",
+							"freq": 1
+						},
+						"entries": [
+							"The venom caller conjures a 10-foot burst of liquid poison within 60 feet. Each creature that begins its turn in the area takes {@damage 4d6} poison damage (DC 25 basic Fortitude save). On a critical failure, creatures also take {@damage 1d6} {@condition persistent damage ||persistent poison damage}. Once per turn, starting the turn after the venom caller uses Venom Pool, the venom caller can use a single action, which has the {@trait concentrate} trait, to increase the radius of the burst by 5 feet. The pool of venom lasts for 1 minute, at which time it evaporates without a trace."
+						],
+						"name": "Venom Pool"
+					}
+				]
+			}
 		}
 	]
 }

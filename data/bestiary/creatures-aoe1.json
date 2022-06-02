@@ -6,25 +6,28 @@
 			"source": "AoE1",
 			"page": 16,
 			"level": 1,
-			"rarity": "Uncommon",
-			"alignment": "N",
-			"size": "Small",
+			"traits": [
+				"uncommon",
+				"n",
+				"small",
+				"beast"
+			],
 			"creatureType": [
 				"Beast"
 			],
 			"perception": {
-				"default": 8
+				"std": 8
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [
-					"scent 30 feet"
-				],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"type": "imprecise",
+					"name": "scent",
+					"range": 30
+				}
+			],
 			"languages": {
 				"languages": [
 					"Sylvan (can't speak any language)"
@@ -33,53 +36,44 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 7
+					"std": 7
 				},
 				"Occultism": {
-					"default": 7
+					"std": 7
 				},
 				"Stealth": {
-					"default": 7
+					"std": 7
 				},
 				"Survival": {
-					"default": 5
+					"std": 5
 				}
 			},
 			"abilityMods": {
-				"Str": 2,
-				"Dex": 4,
-				"Con": 1,
-				"Int": -3,
-				"Wis": 2,
-				"Cha": 3
+				"str": 2,
+				"dex": 4,
+				"con": 1,
+				"int": -3,
+				"wis": 2,
+				"cha": 3
 			},
-			"abilitiesTop": [],
 			"ac": {
-				"default": 16
+				"std": 16
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 6
+				"fort": {
+					"std": 6
 				},
-				"Ref": {
-					"default": 11
+				"ref": {
+					"std": 11
 				},
-				"Will": {
-					"default": 5
+				"will": {
+					"std": 5
 				}
 			},
 			"hp": [
 				{
 					"hp": 20,
 					"abilities": null
-				}
-			],
-			"abilitiesMid": [
-				{
-					"entries": [
-						"An almiraj takes a \u20132 status penalty to saving throws against occult spells. Any beneficial occult spells with a duration of 1 round or longer cast on the almiraj last twice as long."
-					],
-					"name": "Magic Susceptibility"
 				}
 			],
 			"speed": {
@@ -102,26 +96,24 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"entries": [
-						"Any living creature slain by the almiraj's horn {@action Strike} immediately becomes {@condition petrified} with no saving throw, in addition to {@condition dying}. A severed almiraj horn retains a wisp of its former magic; in combat, the horn can be wielded as a +1 dagger or, if affixed to a shaft, a +1 spear."
-					],
-					"name": "Magic Horn"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"piercing"
+			"abilities": {
+				"mid": [
+					{
+						"entries": [
+							"An almiraj takes a \u20132 status penalty to saving throws against occult spells. Any beneficial occult spells with a duration of 1 round or longer cast on the almiraj last twice as long."
+						],
+						"name": "Magic Susceptibility"
+					}
 				],
-				"condition": [
-					"{@condition petrified}"
+				"bot": [
+					{
+						"entries": [
+							"Any living creature slain by the almiraj's horn {@action Strike} immediately becomes {@condition petrified} with no saving throw, in addition to {@condition dying}. A severed almiraj horn retains a wisp of its former magic; in combat, the horn can be wielded as a +1 dagger or, if affixed to a shaft, a +1 spear."
+						],
+						"name": "Magic Horn"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"CC"
-			]
+			}
 		},
 		{
 			"name": "Antaro Boldblade",
@@ -129,17 +121,17 @@
 			"source": "AoE1",
 			"page": 8,
 			"level": -1,
-			"rarity": "Common",
-			"alignment": "CG",
-			"size": "Medium",
 			"traits": [
-				"human"
+				"cg",
+				"medium",
+				"human",
+				"humanoid"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 4
+				"std": 4
 			},
 			"languages": {
 				"languages": [
@@ -150,42 +142,41 @@
 			},
 			"skills": {
 				"Athletics": {
-					"default": 4
+					"std": 4
 				},
 				"Diplomacy": {
-					"default": 6
+					"std": 6
 				},
 				"Religion": {
-					"default": 4
+					"std": 4
 				}
 			},
 			"abilityMods": {
-				"Str": 2,
-				"Dex": 0,
-				"Con": 1,
-				"Int": 0,
-				"Wis": 2,
-				"Cha": 2
+				"str": 2,
+				"dex": 0,
+				"con": 1,
+				"int": 0,
+				"wis": 2,
+				"cha": 2
 			},
 			"items": [
 				"rapier",
 				"wooden shield",
 				"splint mail"
 			],
-			"abilitiesTop": [],
 			"ac": {
-				"default": 15,
+				"std": 15,
 				"with Shield Raised": 17
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 5
+				"fort": {
+					"std": 5
 				},
-				"Ref": {
-					"default": 2
+				"ref": {
+					"std": 2
 				},
-				"Will": {
-					"default": 8
+				"will": {
+					"std": 8
 				}
 			},
 			"hp": [
@@ -194,7 +185,6 @@
 					"abilities": null
 				}
 			],
-			"abilitiesMid": [],
 			"speed": {
 				"walk": 15
 			},
@@ -242,17 +232,6 @@
 						}
 					}
 				}
-			],
-			"abilitiesBot": [],
-			"inflicts": {
-				"damage": [
-					"piercing"
-				],
-				"condition": []
-			},
-			"misc": [
-				"MA",
-				"UW"
 			]
 		},
 		{
@@ -261,26 +240,24 @@
 			"source": "AoE1",
 			"page": 27,
 			"level": 2,
-			"rarity": "Unique",
-			"alignment": "LE",
-			"size": "Small",
 			"traits": [
+				"unique",
+				"le",
+				"small",
+				"humanoid",
 				"kobold"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 10
+				"std": 10
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Draconic"
@@ -289,36 +266,35 @@
 			},
 			"skills": {
 				"Athletics": {
-					"default": 9
+					"std": 9
 				},
 				"Intimidation": {
-					"default": 7
+					"std": 7
 				},
 				"Stealth": {
-					"default": 6
+					"std": 6
 				}
 			},
 			"abilityMods": {
-				"Str": 3,
-				"Dex": 2,
-				"Con": 4,
-				"Int": -1,
-				"Wis": 1,
-				"Cha": 1
+				"str": 3,
+				"dex": 2,
+				"con": 4,
+				"int": -1,
+				"wis": 1,
+				"cha": 1
 			},
-			"abilitiesTop": [],
 			"ac": {
-				"default": 17
+				"std": 17
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 12
+				"fort": {
+					"std": 12
 				},
-				"Ref": {
-					"default": 8
+				"ref": {
+					"std": 8
 				},
-				"Will": {
-					"default": 5
+				"will": {
+					"std": 5
 				}
 			},
 			"hp": [
@@ -327,7 +303,6 @@
 					"abilities": null
 				}
 			],
-			"abilitiesMid": [],
 			"speed": {
 				"walk": 20
 			},
@@ -374,35 +349,21 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"requirements": "Rekarek is adjacent to two or more enemies",
-					"entries": [
-						"Rekarek makes three melee weapon Strikes, two of which must be against different enemies. These attacks count toward her multiple attack penalty, but only after all three Strikes have been made. After taking this activity, Rekarek is {@condition flat-footed} until the beginning of her next turn."
-					],
-					"name": "Haphazard Hack"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning",
-					"piercing"
-				],
-				"condition": [
-					"{@condition flat-footed}"
+			"abilities": {
+				"bot": [
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"requirements": "Rekarek is adjacent to two or more enemies",
+						"entries": [
+							"Rekarek makes three melee weapon Strikes, two of which must be against different enemies. These attacks count toward her multiple attack penalty, but only after all three Strikes have been made. After taking this activity, Rekarek is {@condition flat-footed} until the beginning of her next turn."
+						],
+						"name": "Haphazard Hack"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"RC",
-				"RA",
-				"CC",
-				"UW"
-			]
+			}
 		},
 		{
 			"name": "Binumir",
@@ -410,27 +371,25 @@
 			"source": "AoE1",
 			"page": 82,
 			"level": 3,
-			"rarity": "Common",
-			"alignment": "LE",
-			"size": "Medium",
 			"traits": [
-				"incorporeal"
+				"le",
+				"medium",
+				"incorporeal",
+				"spirit",
+				"undead"
 			],
 			"creatureType": [
 				"Spirit",
 				"Undead"
 			],
 			"perception": {
-				"default": 10
+				"std": 10
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Common"
@@ -439,30 +398,29 @@
 			},
 			"skills": {
 				"Society": {
-					"default": 10
+					"std": 10
 				}
 			},
 			"abilityMods": {
-				"Str": -4,
-				"Dex": 4,
-				"Con": 3,
-				"Int": 0,
-				"Wis": 1,
-				"Cha": 0
+				"str": -4,
+				"dex": 4,
+				"con": 3,
+				"int": 0,
+				"wis": 1,
+				"cha": 0
 			},
-			"abilitiesTop": [],
 			"ac": {
-				"default": 19
+				"std": 19
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 9
+				"fort": {
+					"std": 9
 				},
-				"Ref": {
-					"default": 12
+				"ref": {
+					"std": 12
 				},
-				"Will": {
-					"default": 8
+				"will": {
+					"std": 8
 				}
 			},
 			"hp": [
@@ -473,24 +431,13 @@
 					]
 				}
 			],
-			"immunities": {
-				"damage": [],
-				"condition": [
-					"death effects",
-					"disease"
-				]
-			},
+			"immunities": [
+				"death effects",
+				"disease"
+			],
 			"resistances": [
 				{
 					"name": "all"
-				}
-			],
-			"abilitiesMid": [
-				{
-					"entries": [
-						"The binumir's dual spirit takes longer to be affected by detrimental effects. When the binumir is the target of an effect that imparts the {@condition confused}, {@condition controlled}, {@condition fascinated}, {@condition frightened}, {@condition sickened}, {@condition slowed}, or {@condition stunned} condition, the condition is automatically suppressed until the end of the binumir's next turn."
-					],
-					"name": "Delay Condition"
 				}
 			],
 			"speed": {
@@ -513,65 +460,62 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"traits": [
-						"auditory",
-						"concentrate"
-					],
-					"entries": [
-						"The binumir unleashes a distressing cry that fills others with wrenching sadness. Creatures within 30 feet must attempt a DC 17 Will save.",
-						{
-							"type": "successDegree",
-							"entries": {
-								"Critical Success": "The target is unaffected and is temporarily immune to"
-							}
-						}
-					],
-					"name": "Agonizing Wail"
-				},
-				{
-					"entries": [
-						"Wail for 1 minute.",
-						{
-							"type": "successDegree",
-							"entries": {
-								"Success": "The target can't use reactions for 1 round.",
-								"Failure": "The target is {@condition slowed|CRB|slowed 1} and can't use reactions for 1 minute as it sobs uncontrollably. It can attempt a new Will save to end the effect at the end of each of its turns.",
-								"Critical Failure": "As failure, but the target can't make saves to end the effect."
-							}
-						}
-					],
-					"name": "Agonizing"
-				},
-				{
-					"activity": {
-						"number": 3,
-						"unit": "action"
-					},
-					"entries": [
-						"The binumir makes four Strikes; no more than two can be against the same target. These attacks count toward the binumir's multiple attack penalty, but the penalty doesn't increase until after all the attacks have been made."
-					],
-					"name": "Dual Assault"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"negative"
+			"abilities": {
+				"mid": [
+					{
+						"entries": [
+							"The binumir's dual spirit takes longer to be affected by detrimental effects. When the binumir is the target of an effect that imparts the {@condition confused}, {@condition controlled}, {@condition fascinated}, {@condition frightened}, {@condition sickened}, {@condition slowed}, or {@condition stunned} condition, the condition is automatically suppressed until the end of the binumir's next turn."
+						],
+						"name": "Delay Condition"
+					}
 				],
-				"condition": [
-					"{@condition confused}",
-					"{@condition slowed}"
+				"bot": [
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"auditory",
+							"concentrate"
+						],
+						"entries": [
+							"The binumir unleashes a distressing cry that fills others with wrenching sadness. Creatures within 30 feet must attempt a DC 17 Will save.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": "The target is unaffected and is temporarily immune to"
+								}
+							}
+						],
+						"name": "Agonizing Wail"
+					},
+					{
+						"entries": [
+							"Wail for 1 minute.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Success": "The target can't use reactions for 1 round.",
+									"Failure": "The target is {@condition slowed|CRB|slowed 1} and can't use reactions for 1 minute as it sobs uncontrollably. It can attempt a new Will save to end the effect at the end of each of its turns.",
+									"Critical Failure": "As failure, but the target can't make saves to end the effect."
+								}
+							}
+						],
+						"name": "Agonizing"
+					},
+					{
+						"activity": {
+							"number": 3,
+							"unit": "action"
+						},
+						"entries": [
+							"The binumir makes four Strikes; no more than two can be against the same target. These attacks count toward the binumir's multiple attack penalty, but the penalty doesn't increase until after all the attacks have been made."
+						],
+						"name": "Dual Assault"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"CC"
-			]
+			}
 		},
 		{
 			"name": "Bolar Of Stonemoor",
@@ -579,26 +523,23 @@
 			"source": "AoE1",
 			"page": 8,
 			"level": -1,
-			"rarity": "Common",
-			"alignment": "CN",
-			"size": "Medium",
 			"traits": [
-				"dwarf"
+				"cn",
+				"medium",
+				"dwarf",
+				"humanoid"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 3
+				"std": 3
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Common",
@@ -608,40 +549,39 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 4
+					"std": 4
 				},
 				"Athletics": {
-					"default": 6
+					"std": 6
 				},
 				"Intimidation": {
-					"default": 2
+					"std": 2
 				}
 			},
 			"abilityMods": {
-				"Str": 4,
-				"Dex": 2,
-				"Con": 3,
-				"Int": -1,
-				"Wis": 1,
-				"Cha": -2
+				"str": 4,
+				"dex": 2,
+				"con": 3,
+				"int": -1,
+				"wis": 1,
+				"cha": -2
 			},
 			"items": [
 				"battle axe",
 				"studded leather armor"
 			],
-			"abilitiesTop": [],
 			"ac": {
-				"default": 14
+				"std": 14
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 7
+				"fort": {
+					"std": 7
 				},
-				"Ref": {
-					"default": 6
+				"ref": {
+					"std": 6
 				},
-				"Will": {
-					"default": 3
+				"will": {
+					"std": 3
 				}
 			},
 			"hp": [
@@ -650,7 +590,6 @@
 					"abilities": null
 				}
 			],
-			"abilitiesMid": [],
 			"speed": {
 				"walk": 20
 			},
@@ -669,38 +608,26 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"traits": [
-						"concentrate",
-						"emotion",
-						"mental"
-					],
-					"requirements": "Bolar isn't {@condition fatigued} or raging",
-					"entries": [
-						"Bolar gains 3 temporary Hit Points that last until the rage ends. While raging, he deals 2 additional damage with melee attacks and takes a \u20131 penalty to AC. The rage lasts for 1 minute, until there are no enemies Bolar can perceive, or until Bolar falls {@condition unconscious}. Once the rage ends, Bolar can't {@action Rage} again for 1 minute."
-					],
-					"name": "Rage"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"slashing"
-				],
-				"condition": [
-					"{@condition fatigued}",
-					"{@condition unconscious}"
+			"abilities": {
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"concentrate",
+							"emotion",
+							"mental"
+						],
+						"requirements": "Bolar isn't {@condition fatigued} or raging",
+						"entries": [
+							"Bolar gains 3 temporary Hit Points that last until the rage ends. While raging, he deals 2 additional damage with melee attacks and takes a \u20131 penalty to AC. The rage lasts for 1 minute, until there are no enemies Bolar can perceive, or until Bolar falls {@condition unconscious}. Once the rage ends, Bolar can't {@action Rage} again for 1 minute."
+						],
+						"name": "Rage"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"CC",
-				"UW"
-			]
+			}
 		},
 		{
 			"name": "Cobbleswarm",
@@ -708,10 +635,10 @@
 			"source": "AoE1",
 			"page": 83,
 			"level": 2,
-			"rarity": "Common",
-			"alignment": "N",
-			"size": "Large",
 			"traits": [
+				"n",
+				"large",
+				"aberration",
 				"earth",
 				"swarm"
 			],
@@ -719,58 +646,43 @@
 				"Aberration"
 			],
 			"perception": {
-				"default": 9
+				"std": 9
 			},
-			"senses": {
-				"precise": [
-					"{@ability tremorsense} 40 feet"
-				],
-				"imprecise": [],
-				"vague": [],
-				"other": []
-			},
+			"senses": [
+				{
+					"type": "precise",
+					"name": "{@ability tremorsense}",
+					"range": 40
+				}
+			],
 			"skills": {
 				"Athletics": {
-					"default": 10
+					"std": 10
 				},
 				"Stealth": {
-					"default": 13
+					"std": 13
 				}
 			},
 			"abilityMods": {
-				"Str": 1,
-				"Dex": 4,
-				"Con": 2,
-				"Int": -3,
-				"Wis": 3,
-				"Cha": 0
+				"str": 1,
+				"dex": 4,
+				"con": 2,
+				"int": -3,
+				"wis": 3,
+				"cha": 0
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"The cobbleswarm's space is difficult terrain."
-					],
-					"name": "Clutching Cobbles"
-				},
-				{
-					"entries": [
-						"The cobbleswarm's {@ability tremorsense} is a precise sense out to 40 feet and an imprecise sense out to 80 feet. The cobbleswarm can't sense anything beyond the range of its {@ability tremorsense}."
-					],
-					"name": "Precise Tremorsense"
-				}
-			],
 			"ac": {
-				"default": 17
+				"std": 17
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 10
+				"fort": {
+					"std": 10
 				},
-				"Ref": {
-					"default": 12
+				"ref": {
+					"std": 12
 				},
-				"Will": {
-					"default": 7
+				"will": {
+					"std": 7
 				}
 			},
 			"hp": [
@@ -779,14 +691,10 @@
 					"abilities": null
 				}
 			],
-			"immunities": {
-				"damage": [
-					"precision"
-				],
-				"condition": [
-					"swarm mind"
-				]
-			},
+			"immunities": [
+				"precision",
+				"swarm mind"
+			],
 			"weaknesses": [
 				{
 					"amount": 3,
@@ -797,55 +705,59 @@
 					"name": "splash damage"
 				}
 			],
-			"abilitiesMid": [],
 			"speed": {
 				"walk": 20,
 				"burrow": 10
 			},
 			"attacks": [],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"The cobbleswarm's space is difficult terrain."
+						],
+						"name": "Clutching Cobbles"
 					},
-					"traits": [
-						"attack"
-					],
-					"entries": [
-						"The cobbleswarm attempts an {@skill Athletics} check and compares the result to the Fortitude DC of all creatures in its space.",
-						{
-							"type": "successDegree",
-							"entries": {
-								"Critical Success": "The creature falls {@condition prone} and takes {@damage 1d6} bludgeoning damage, and is {@condition restrained} by the cobbleswarm until the end of the cobbleswarm's next turn.",
-								"Success": "The creature falls {@condition prone}, and is {@condition grabbed} by the cobbleswarm until the creature until the end of the cobbleswarm's next turn."
-							}
-						}
-					],
-					"name": "Grasping Bites"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"entries": [
-						"Each enemy in the cobbleswarm's space takes {@damage 2d4} bludgeoning damage (DC 17 basic Reflex save)."
-					],
-					"name": "Pummeling Assault"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning"
+					{
+						"entries": [
+							"The cobbleswarm's {@ability tremorsense} is a precise sense out to 40 feet and an imprecise sense out to 80 feet. The cobbleswarm can't sense anything beyond the range of its {@ability tremorsense}."
+						],
+						"name": "Precise Tremorsense"
+					}
 				],
-				"condition": [
-					"{@condition prone}"
+				"bot": [
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"attack"
+						],
+						"entries": [
+							"The cobbleswarm attempts an {@skill Athletics} check and compares the result to the Fortitude DC of all creatures in its space.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": "The creature falls {@condition prone} and takes {@damage 1d6} bludgeoning damage, and is {@condition restrained} by the cobbleswarm until the end of the cobbleswarm's next turn.",
+									"Success": "The creature falls {@condition prone}, and is {@condition grabbed} by the cobbleswarm until the creature until the end of the cobbleswarm's next turn."
+								}
+							}
+						],
+						"name": "Grasping Bites"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"Each enemy in the cobbleswarm's space takes {@damage 2d4} bludgeoning damage (DC 17 basic Reflex save)."
+						],
+						"name": "Pummeling Assault"
+					}
 				]
-			},
-			"misc": [
-				"CC"
-			]
+			}
 		},
 		{
 			"name": "Eunice",
@@ -853,17 +765,17 @@
 			"source": "AoE1",
 			"page": 12,
 			"level": 0,
-			"rarity": "Common",
-			"alignment": "CG",
-			"size": "Medium",
 			"traits": [
-				"human"
+				"cg",
+				"medium",
+				"human",
+				"humanoid"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 7
+				"std": 7
 			},
 			"languages": {
 				"languages": [
@@ -874,40 +786,39 @@
 			},
 			"skills": {
 				"Arcana": {
-					"default": 7
+					"std": 7
 				},
 				"Occultism": {
-					"default": 6
+					"std": 6
 				},
 				"Farming Lore": {
-					"default": 5
+					"std": 5
 				}
 			},
 			"abilityMods": {
-				"Str": 0,
-				"Dex": 4,
-				"Con": 0,
-				"Int": 4,
-				"Wis": -1,
-				"Cha": -1
+				"str": 0,
+				"dex": 4,
+				"con": 0,
+				"int": 4,
+				"wis": -1,
+				"cha": -1
 			},
 			"items": [
 				"dagger",
 				"spellbook"
 			],
-			"abilitiesTop": [],
 			"ac": {
-				"default": 15
+				"std": 15
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 4
+				"fort": {
+					"std": 4
 				},
-				"Ref": {
-					"default": 8
+				"ref": {
+					"std": 8
 				},
-				"Will": {
-					"default": 10
+				"will": {
+					"std": 10
 				}
 			},
 			"hp": [
@@ -916,7 +827,6 @@
 					"abilities": null
 				}
 			],
-			"abilitiesMid": [],
 			"speed": {
 				"walk": 25
 			},
@@ -937,18 +847,6 @@
 						"piercing"
 					]
 				}
-			],
-			"abilitiesBot": [],
-			"inflicts": {
-				"damage": [
-					"piercing"
-				],
-				"condition": []
-			},
-			"misc": [
-				"MA",
-				"TA",
-				"UW"
 			]
 		},
 		{
@@ -957,26 +855,24 @@
 			"source": "AoE1",
 			"page": 34,
 			"level": 2,
-			"rarity": "Unique",
-			"alignment": "LE",
-			"size": "Small",
 			"traits": [
+				"unique",
+				"le",
+				"small",
+				"humanoid",
 				"ratfolk"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 9
+				"std": 9
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Common",
@@ -986,39 +882,38 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 8
+					"std": 8
 				},
 				"Deception": {
-					"default": 6
+					"std": 6
 				},
 				"Stealth": {
-					"default": 8
+					"std": 8
 				},
 				"Thievery": {
-					"default": 8
+					"std": 8
 				}
 			},
 			"abilityMods": {
-				"Str": 2,
-				"Dex": 4,
-				"Con": 2,
-				"Int": -1,
-				"Wis": 2,
-				"Cha": 0
+				"str": 2,
+				"dex": 4,
+				"con": 2,
+				"int": -1,
+				"wis": 2,
+				"cha": 0
 			},
-			"abilitiesTop": [],
 			"ac": {
-				"default": 17
+				"std": 17
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 9
+				"fort": {
+					"std": 9
 				},
-				"Ref": {
-					"default": 12
+				"ref": {
+					"std": 12
 				},
-				"Will": {
-					"default": 4
+				"will": {
+					"std": 4
 				}
 			},
 			"hp": [
@@ -1027,7 +922,6 @@
 					"abilities": null
 				}
 			],
-			"abilitiesMid": [],
 			"speed": {
 				"walk": 25
 			},
@@ -1077,47 +971,38 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"entries": [
-						"277."
-					],
-					"name": "Cheek Pouches See Pathfinder Bestiary"
-				},
-				{
-					"entries": [
-						"The smugglers have trained extensively with the katar blade. Any katar they wield gains the {@trait finesse} trait."
-					],
-					"name": "Katar Specialist"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "free"
+			"abilities": {
+				"bot": [
+					{
+						"entries": [
+							"277."
+						],
+						"name": "Cheek Pouches See Pathfinder Bestiary"
 					},
-					"entries": [
-						"See Pathfinder Bestiary 277."
-					],
-					"name": "Quick Stow"
-				},
-				{
-					"entries": [
-						"277."
-					],
-					"name": "Swarming See Pathfinder Bestiary"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"piercing"
-				],
-				"condition": []
-			},
-			"misc": [
-				"MA",
-				"RA",
-				"UW"
-			]
+					{
+						"entries": [
+							"The smugglers have trained extensively with the katar blade. Any katar they wield gains the {@trait finesse} trait."
+						],
+						"name": "Katar Specialist"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "free"
+						},
+						"entries": [
+							"See Pathfinder Bestiary 277."
+						],
+						"name": "Quick Stow"
+					},
+					{
+						"entries": [
+							"277."
+						],
+						"name": "Swarming See Pathfinder Bestiary"
+					}
+				]
+			}
 		},
 		{
 			"name": "Grick",
@@ -1125,25 +1010,27 @@
 			"source": "AoE1",
 			"page": 35,
 			"level": 3,
-			"rarity": "Common",
-			"alignment": "N",
-			"size": "Medium",
+			"traits": [
+				"n",
+				"medium",
+				"aberration"
+			],
 			"creatureType": [
 				"Aberration"
 			],
 			"perception": {
-				"default": 12
+				"std": 12
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [
-					"scent 30 feet"
-				],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"type": "imprecise",
+					"name": "scent",
+					"range": 30
+				}
+			],
 			"languages": {
 				"languages": [
 					"Aklo (can't speak any language)"
@@ -1152,39 +1039,38 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 11
+					"std": 11
 				},
 				"Athletics": {
-					"default": 10
+					"std": 10
 				},
 				"Stealth": {
-					"default": 10
+					"std": 10
 				},
 				"Survival": {
-					"default": 8
+					"std": 8
 				}
 			},
 			"abilityMods": {
-				"Str": 3,
-				"Dex": 4,
-				"Con": 1,
-				"Int": -3,
-				"Wis": 3,
-				"Cha": -1
+				"str": 3,
+				"dex": 4,
+				"con": 1,
+				"int": -3,
+				"wis": 3,
+				"cha": -1
 			},
-			"abilitiesTop": [],
 			"ac": {
-				"default": 19
+				"std": 19
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 10
+				"fort": {
+					"std": 10
 				},
-				"Ref": {
-					"default": 11
+				"ref": {
+					"std": 11
 				},
-				"Will": {
-					"default": 12
+				"will": {
+					"std": 12
 				}
 			},
 			"hp": [
@@ -1197,17 +1083,6 @@
 				{
 					"amount": 3,
 					"name": "physical"
-				}
-			],
-			"abilitiesMid": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"entries": [],
-					"name": "Attack of Opportunity",
-					"generic": true
 				}
 			],
 			"speed": {
@@ -1240,33 +1115,33 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"entries": [
-						"Any creature a grick critically hits is {@condition flat-footed} against its attacks until the end of the grick's next turn."
-					],
-					"name": "Unbalancing Blow"
-				},
-				{
-					"entries": [
-						"When a grick takes a {@action Stride} action to move half its Speed or less, that movement doesn't trigger reactions."
-					],
-					"name": "Vermicular Movement"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"piercing",
-					"slashing"
+			"abilities": {
+				"mid": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"entries": [],
+						"name": "Attack of Opportunity",
+						"generic": true
+					}
 				],
-				"condition": [
-					"{@condition flat-footed}"
+				"bot": [
+					{
+						"entries": [
+							"Any creature a grick critically hits is {@condition flat-footed} against its attacks until the end of the grick's next turn."
+						],
+						"name": "Unbalancing Blow"
+					},
+					{
+						"entries": [
+							"When a grick takes a {@action Stride} action to move half its Speed or less, that movement doesn't trigger reactions."
+						],
+						"name": "Vermicular Movement"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"CC"
-			]
+			}
 		},
 		{
 			"name": "Grospek Lavarsus",
@@ -1274,17 +1149,18 @@
 			"source": "AoE1",
 			"page": 87,
 			"level": 7,
-			"rarity": "Unique",
-			"alignment": "LN",
-			"size": "Medium",
 			"traits": [
-				"human"
+				"unique",
+				"ln",
+				"medium",
+				"human",
+				"humanoid"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 17
+				"std": 17
 			},
 			"languages": {
 				"languages": [
@@ -1295,61 +1171,47 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 12
+					"std": 12
 				},
 				"Athletics": {
-					"default": 17
+					"std": 17
 				},
 				"Diplomacy": {
-					"default": 16
+					"std": 16
 				},
 				"Intimidation": {
-					"default": 18
+					"std": 18
 				},
 				"Society": {
-					"default": 15
+					"std": 15
 				},
 				"Absalom Lore": {
-					"default": 15
+					"std": 15
 				},
 				"Legal Lore": {
-					"default": 15
+					"std": 15
 				}
 			},
 			"abilityMods": {
-				"Str": 4,
-				"Dex": 1,
-				"Con": 5,
-				"Int": 2,
-				"Wis": 1,
-				"Cha": 3
+				"str": 4,
+				"dex": 1,
+				"con": 5,
+				"int": 2,
+				"wis": 1,
+				"cha": 3
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+16, {@skill Intimidation} +18, {@skill Lore||Legal Lore} +15,"
-					],
-					"name": "Diplomacy"
-				},
-				{
-					"entries": [
-						"+15 Str +4, Dex +1, Con +5, Int +2, Wis +1, Cha +3 Items breastplate, hand crossbow with 10 bolts, good handcuffs (page 77), lesser healing potion, Lawkeeper (+1 striking pacifying club; page 78)"
-					],
-					"name": "Society"
-				}
-			],
 			"ac": {
-				"default": 24
+				"std": 24
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 18
+				"fort": {
+					"std": 18
 				},
-				"Ref": {
-					"default": 12
+				"ref": {
+					"std": 12
 				},
-				"Will": {
-					"default": 16
+				"will": {
+					"std": 16
 				}
 			},
 			"hp": [
@@ -1358,7 +1220,6 @@
 					"abilities": null
 				}
 			],
-			"abilitiesMid": [],
 			"speed": {
 				"walk": 25
 			},
@@ -1392,33 +1253,36 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"entries": [
-						"Lavarsus adds double his Strength modifier to any nonlethal melee Strikes he makes with a bludgeoning weapon."
-					],
-					"name": "Furious Pacifier"
-				},
-				{
-					"entries": [
-						"Lavarsus has trained to take down suspects without killing them. He can choose to make nonlethal attacks with any bludgeoning weapon without taking the usual penalty to his attack roll."
-					],
-					"name": "Nonlethal Training"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning",
-					"piercing"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"+16, {@skill Intimidation} +18, {@skill Lore||Legal Lore} +15,"
+						],
+						"name": "Diplomacy"
+					},
+					{
+						"entries": [
+							"+15 Str +4, Dex +1, Con +5, Int +2, Wis +1, Cha +3 Items breastplate, hand crossbow with 10 bolts, good handcuffs (page 77), lesser healing potion, Lawkeeper (+1 striking pacifying club; page 78)"
+						],
+						"name": "Society"
+					}
 				],
-				"condition": []
-			},
-			"misc": [
-				"MA",
-				"RA",
-				"TA",
-				"UW"
-			]
+				"bot": [
+					{
+						"entries": [
+							"Lavarsus adds double his Strength modifier to any nonlethal melee Strikes he makes with a bludgeoning weapon."
+						],
+						"name": "Furious Pacifier"
+					},
+					{
+						"entries": [
+							"Lavarsus has trained to take down suspects without killing them. He can choose to make nonlethal attacks with any bludgeoning weapon without taking the usual penalty to his attack roll."
+						],
+						"name": "Nonlethal Training"
+					}
+				]
+			}
 		},
 		{
 			"name": "Hendrid Pratchett",
@@ -1426,27 +1290,25 @@
 			"source": "AoE1",
 			"page": 89,
 			"level": 6,
-			"rarity": "Unique",
-			"alignment": "CE",
-			"size": "Medium",
 			"traits": [
+				"unique",
+				"ce",
+				"medium",
 				"elf",
-				"human"
+				"human",
+				"humanoid"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 17
+				"std": 17
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"low-light vision"
-				]
-			},
+			"senses": [
+				{
+					"name": "low-light vision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Common",
@@ -1457,58 +1319,50 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 14
+					"std": 14
 				},
 				"Arcana": {
-					"default": 12
+					"std": 12
 				},
 				"Deception": {
-					"default": 15
+					"std": 15
 				},
 				"Medicine": {
-					"default": 14
+					"std": 14
 				},
 				"Occultism": {
-					"default": 12
+					"std": 12
 				},
 				"Religion": {
-					"default": 13
+					"std": 13
 				},
 				"Society": {
-					"default": 14
+					"std": 14
 				},
 				"Stealth": {
-					"default": 14
+					"std": 14
 				}
 			},
 			"abilityMods": {
-				"Str": 3,
-				"Dex": 4,
-				"Con": 0,
-				"Int": 2,
-				"Wis": 1,
-				"Cha": 5
+				"str": 3,
+				"dex": 4,
+				"con": 0,
+				"int": 2,
+				"wis": 1,
+				"cha": 5
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+14 Str +3, Dex +4, Con +0, Int +2, Wis +1, Cha +5 Items armored coat (as leather armor), corpseward pendant (page 80), lesser healing potions (3), hunting spider venom (3 doses, in Reaper's Lancet), Reaper's Lancet (page 81; bonded item)"
-					],
-					"name": "Stealth"
-				}
-			],
 			"ac": {
-				"default": 24
+				"std": 24
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 12
+				"fort": {
+					"std": 12
 				},
-				"Ref": {
-					"default": 16
+				"ref": {
+					"std": 16
 				},
-				"Will": {
-					"default": 15
+				"will": {
+					"std": 15
 				}
 			},
 			"hp": [
@@ -1517,7 +1371,6 @@
 					"abilities": null
 				}
 			],
-			"abilitiesMid": [],
 			"speed": {
 				"walk": 30
 			},
@@ -1599,24 +1452,24 @@
 					}
 				}
 			],
-			"abilitiesBot": [
-				{
-					"entries": [
-						"Each round, Pratchett can {@action Strike} once with each component of a sword cane without incurring the usual multiple attack penalty. Subsequent attacks incur the multiple attack penalty as usual."
-					],
-					"name": "Sword Cane Duelist"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning",
-					"piercing"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"+14 Str +3, Dex +4, Con +0, Int +2, Wis +1, Cha +5 Items armored coat (as leather armor), corpseward pendant (page 80), lesser healing potions (3), hunting spider venom (3 doses, in Reaper's Lancet), Reaper's Lancet (page 81; bonded item)"
+						],
+						"name": "Stealth"
+					}
 				],
-				"condition": []
-			},
-			"misc": [
-				"MA"
-			]
+				"bot": [
+					{
+						"entries": [
+							"Each round, Pratchett can {@action Strike} once with each component of a sword cane without incurring the usual multiple attack penalty. Subsequent attacks incur the multiple attack penalty as usual."
+						],
+						"name": "Sword Cane Duelist"
+					}
+				]
+			}
 		},
 		{
 			"name": "Kekker",
@@ -1624,26 +1477,24 @@
 			"source": "AoE1",
 			"page": 34,
 			"level": 2,
-			"rarity": "Unique",
-			"alignment": "LE",
-			"size": "Small",
 			"traits": [
+				"unique",
+				"le",
+				"small",
+				"humanoid",
 				"ratfolk"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 9
+				"std": 9
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Common",
@@ -1653,39 +1504,38 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 8
+					"std": 8
 				},
 				"Deception": {
-					"default": 6
+					"std": 6
 				},
 				"Stealth": {
-					"default": 8
+					"std": 8
 				},
 				"Thievery": {
-					"default": 8
+					"std": 8
 				}
 			},
 			"abilityMods": {
-				"Str": 2,
-				"Dex": 4,
-				"Con": 2,
-				"Int": -1,
-				"Wis": 2,
-				"Cha": 0
+				"str": 2,
+				"dex": 4,
+				"con": 2,
+				"int": -1,
+				"wis": 2,
+				"cha": 0
 			},
-			"abilitiesTop": [],
 			"ac": {
-				"default": 17
+				"std": 17
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 9
+				"fort": {
+					"std": 9
 				},
-				"Ref": {
-					"default": 12
+				"ref": {
+					"std": 12
 				},
-				"Will": {
-					"default": 4
+				"will": {
+					"std": 4
 				}
 			},
 			"hp": [
@@ -1694,7 +1544,6 @@
 					"abilities": null
 				}
 			],
-			"abilitiesMid": [],
 			"speed": {
 				"walk": 25
 			},
@@ -1744,47 +1593,38 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"entries": [
-						"277."
-					],
-					"name": "Cheek Pouches See Pathfinder Bestiary"
-				},
-				{
-					"entries": [
-						"The smugglers have trained extensively with the katar blade. Any katar they wield gains the {@trait finesse} trait."
-					],
-					"name": "Katar Specialist"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "free"
+			"abilities": {
+				"bot": [
+					{
+						"entries": [
+							"277."
+						],
+						"name": "Cheek Pouches See Pathfinder Bestiary"
 					},
-					"entries": [
-						"See Pathfinder Bestiary 277."
-					],
-					"name": "Quick Stow"
-				},
-				{
-					"entries": [
-						"277."
-					],
-					"name": "Swarming See Pathfinder Bestiary"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"piercing"
-				],
-				"condition": []
-			},
-			"misc": [
-				"MA",
-				"RA",
-				"UW"
-			]
+					{
+						"entries": [
+							"The smugglers have trained extensively with the katar blade. Any katar they wield gains the {@trait finesse} trait."
+						],
+						"name": "Katar Specialist"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "free"
+						},
+						"entries": [
+							"See Pathfinder Bestiary 277."
+						],
+						"name": "Quick Stow"
+					},
+					{
+						"entries": [
+							"277."
+						],
+						"name": "Swarming See Pathfinder Bestiary"
+					}
+				]
+			}
 		},
 		{
 			"name": "Kemeneles",
@@ -1792,17 +1632,17 @@
 			"source": "AoE1",
 			"page": 53,
 			"level": 2,
-			"rarity": "Common",
-			"alignment": "NG",
-			"size": "Medium",
 			"traits": [
-				"human"
+				"ng",
+				"medium",
+				"human",
+				"humanoid"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 9
+				"std": 9
 			},
 			"languages": {
 				"languages": [
@@ -1816,37 +1656,36 @@
 			},
 			"skills": {
 				"Arcana": {
-					"default": 8
+					"std": 8
 				},
 				"Crafting": {
-					"default": 8
+					"std": 8
 				},
 				"Occultism": {
-					"default": 8
+					"std": 8
 				}
 			},
 			"abilityMods": {
-				"Str": 0,
-				"Dex": 4,
-				"Con": -2,
-				"Int": 4,
-				"Wis": 3,
-				"Cha": 1
+				"str": 0,
+				"dex": 4,
+				"con": -2,
+				"int": 4,
+				"wis": 3,
+				"cha": 1
 			},
-			"abilitiesTop": [],
 			"ac": {
-				"default": 15,
+				"std": 15,
 				"without mage armor": 14
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 3
+				"fort": {
+					"std": 3
 				},
-				"Ref": {
-					"default": 8
+				"ref": {
+					"std": 8
 				},
-				"Will": {
-					"default": 11
+				"will": {
+					"std": 11
 				}
 			},
 			"hp": [
@@ -1855,7 +1694,6 @@
 					"abilities": null
 				}
 			],
-			"abilitiesMid": [],
 			"speed": {
 				"walk": 25
 			},
@@ -1927,27 +1765,20 @@
 					}
 				}
 			],
-			"abilitiesBot": [
-				{
-					"entries": [
-						"See page 209 of the Pathfinder Core."
-					],
-					"name": "Eschew Materials"
-				},
-				{
-					"entries": [],
-					"name": "Rulebook."
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning"
-				],
-				"condition": []
-			},
-			"misc": [
-				"MA"
-			]
+			"abilities": {
+				"bot": [
+					{
+						"entries": [
+							"See page 209 of the Pathfinder Core."
+						],
+						"name": "Eschew Materials"
+					},
+					{
+						"entries": [],
+						"name": "Rulebook."
+					}
+				]
+			}
 		},
 		{
 			"name": "Lyrma Swampwalker",
@@ -1955,26 +1786,23 @@
 			"source": "AoE1",
 			"page": 54,
 			"level": 2,
-			"rarity": "Common",
-			"alignment": "CG",
-			"size": "Small",
 			"traits": [
-				"gnome"
+				"cg",
+				"small",
+				"gnome",
+				"humanoid"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 11
+				"std": 11
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"low-light vision"
-				]
-			},
+			"senses": [
+				{
+					"name": "low-light vision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Common",
@@ -1985,55 +1813,47 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 8
+					"std": 8
 				},
 				"Athletics": {
-					"default": 9
+					"std": 9
 				},
 				"Medicine": {
-					"default": 9
+					"std": 9
 				},
 				"Nature": {
-					"default": 7
+					"std": 7
 				},
 				"Stealth": {
-					"default": 8
+					"std": 8
 				},
 				"Survival": {
-					"default": 9
+					"std": 9
 				}
 			},
 			"abilityMods": {
-				"Str": 3,
-				"Dex": 4,
-				"Con": 1,
-				"Int": -1,
-				"Wis": 3,
-				"Cha": 0
+				"str": 3,
+				"dex": 4,
+				"con": 1,
+				"int": -1,
+				"wis": 3,
+				"cha": 0
 			},
 			"items": [
 				"trident"
 			],
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+8, {@skill Survival} +9 Str +3, Dex +4, Con +1, Int \u20131, Wis +3, Cha +0 Items trident."
-					],
-					"name": "Stealth"
-				}
-			],
 			"ac": {
-				"default": 14
+				"std": 14
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 7
+				"fort": {
+					"std": 7
 				},
-				"Ref": {
-					"default": 10
+				"ref": {
+					"std": 10
 				},
-				"Will": {
-					"default": 9
+				"will": {
+					"std": 9
 				}
 			},
 			"hp": [
@@ -2042,7 +1862,6 @@
 					"abilities": null
 				}
 			],
-			"abilitiesMid": [],
 			"speed": {
 				"walk": 25
 			},
@@ -2061,18 +1880,16 @@
 					]
 				}
 			],
-			"abilitiesBot": [],
-			"inflicts": {
-				"damage": [
-					"piercing"
-				],
-				"condition": []
-			},
-			"misc": [
-				"MA",
-				"TA",
-				"UW"
-			]
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"+8, {@skill Survival} +9 Str +3, Dex +4, Con +1, Int \u20131, Wis +3, Cha +0 Items trident."
+						],
+						"name": "Stealth"
+					}
+				]
+			}
 		},
 		{
 			"name": "Miriel Grayleaf",
@@ -2080,26 +1897,23 @@
 			"source": "AoE1",
 			"page": 7,
 			"level": -1,
-			"rarity": "Common",
-			"alignment": "CG",
-			"size": "Medium",
 			"traits": [
-				"elf"
+				"cg",
+				"medium",
+				"elf",
+				"humanoid"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 2
+				"std": 2
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"low-light vision"
-				]
-			},
+			"senses": [
+				{
+					"name": "low-light vision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Common",
@@ -2109,40 +1923,39 @@
 			},
 			"skills": {
 				"Arcana": {
-					"default": 5
+					"std": 5
 				},
 				"Occultism": {
-					"default": 5
+					"std": 5
 				},
 				"Library Lore": {
-					"default": 5
+					"std": 5
 				}
 			},
 			"abilityMods": {
-				"Str": 0,
-				"Dex": 3,
-				"Con": -1,
-				"Int": 3,
-				"Wis": 0,
-				"Cha": 2
+				"str": 0,
+				"dex": 3,
+				"con": -1,
+				"int": 3,
+				"wis": 0,
+				"cha": 2
 			},
 			"items": [
 				"crossbow with 10 bolts",
 				"dagger"
 			],
-			"abilitiesTop": [],
 			"ac": {
-				"default": 13
+				"std": 13
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 1
+				"fort": {
+					"std": 1
 				},
-				"Ref": {
-					"default": 7
+				"ref": {
+					"std": 7
 				},
-				"Will": {
-					"default": 4
+				"will": {
+					"std": 4
 				}
 			},
 			"hp": [
@@ -2151,7 +1964,6 @@
 					"abilities": null
 				}
 			],
-			"abilitiesMid": [],
 			"speed": {
 				"walk": 30
 			},
@@ -2187,29 +1999,19 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"traits": [
-						"1st"
-					],
-					"entries": [
-						"mage hand, tanglefoot."
-					],
-					"name": "Cantrips"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"piercing"
-				],
-				"condition": []
-			},
-			"misc": [
-				"MA",
-				"RA",
-				"TA",
-				"UW"
-			]
+			"abilities": {
+				"bot": [
+					{
+						"traits": [
+							"1st"
+						],
+						"entries": [
+							"mage hand, tanglefoot."
+						],
+						"name": "Cantrips"
+					}
+				]
+			}
 		},
 		{
 			"name": "Pickled Punk",
@@ -2217,23 +2019,22 @@
 			"source": "AoE1",
 			"page": 59,
 			"level": 1,
-			"rarity": "Common",
-			"alignment": "NE",
-			"size": "Tiny",
+			"traits": [
+				"ne",
+				"tiny",
+				"undead"
+			],
 			"creatureType": [
 				"Undead"
 			],
 			"perception": {
-				"default": 8
+				"std": 8
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Common"
@@ -2242,43 +2043,35 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 7
+					"std": 7
 				},
 				"Athletics": {
-					"default": 5
+					"std": 5
 				},
 				"Stealth": {
-					"default": 7
+					"std": 7
 				}
 			},
 			"abilityMods": {
-				"Str": 2,
-				"Dex": 4,
-				"Con": 3,
-				"Int": -3,
-				"Wis": 0,
-				"Cha": -3
+				"str": 2,
+				"dex": 4,
+				"con": 3,
+				"int": -3,
+				"wis": 0,
+				"cha": -3
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+7 Languages Common Str +2, Dex +4, Con +3, Int \u20133, Wis +0, Cha \u20133."
-					],
-					"name": "Stealth"
-				}
-			],
 			"ac": {
-				"default": 16
+				"std": 16
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 8
+				"fort": {
+					"std": 8
 				},
-				"Ref": {
-					"default": 9
+				"ref": {
+					"std": 9
 				},
-				"Will": {
-					"default": 3
+				"will": {
+					"std": 3
 				}
 			},
 			"hp": [
@@ -2287,63 +2080,58 @@
 					"abilities": null
 				}
 			],
-			"immunities": {
-				"damage": [],
-				"condition": [
-					"death effects",
-					"disease",
-					"paralyzed"
-				]
-			},
+			"immunities": [
+				"death effects",
+				"disease",
+				"paralyzed"
+			],
 			"weaknesses": [
 				{
 					"amount": 2,
 					"name": "fire"
 				}
 			],
-			"abilitiesMid": [
-				{
-					"entries": [
-						"The first time each round that a pickled punk takes fire damage, its fumes combust, dealing 5 fire damage to all other creatures within the area of its Suffocating Fumes aura."
-					],
-					"name": "Combustible"
-				},
-				{
-					"traits": [
-						"aura",
-						"inhaled",
-						"poison"
-					],
-					"entries": [
-						"5 feet. A creature that enters or begins its turn within the aura must attempt a DC 14 Fortitude save, or DC 17 if the pickled punk is attached to the creature. On a failed save, the creature is {@condition sickened|CRB|sickened 1}, and on a critical failure, it's also {@condition enfeebled|CRB|enfeebled 1} for 1 minute."
-					],
-					"name": "Suffocating Fumes"
-				}
-			],
 			"speed": {
 				"walk": 20
 			},
 			"attacks": [],
-			"abilitiesBot": [
-				{
-					"entries": [
-						"When a pickled punk hits a target larger than itself, it uses bizarre excretions to adhere to that creature. This is similar to Grabbing the creature, but the pickled punk is not {@condition flat-footed}, and it moves with that creature rather than holding it in place. Each turn while attached, the pickled punk automatically deals the damage from its jaws {@action Strike} to the creature to which it's attached. It also wriggles about, gaining a +2 circumstance bonus to AC as long as it's not also {@condition grabbed} or {@condition restrained}."
-					],
-					"name": "Attach"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"fire"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"+7 Languages Common Str +2, Dex +4, Con +3, Int \u20133, Wis +0, Cha \u20133."
+						],
+						"name": "Stealth"
+					}
 				],
-				"condition": [
-					"{@condition flat-footed}",
-					"{@condition sickened}"
+				"mid": [
+					{
+						"entries": [
+							"The first time each round that a pickled punk takes fire damage, its fumes combust, dealing 5 fire damage to all other creatures within the area of its Suffocating Fumes aura."
+						],
+						"name": "Combustible"
+					},
+					{
+						"traits": [
+							"aura",
+							"inhaled",
+							"poison"
+						],
+						"entries": [
+							"5 feet. A creature that enters or begins its turn within the aura must attempt a DC 14 Fortitude save, or DC 17 if the pickled punk is attached to the creature. On a failed save, the creature is {@condition sickened|CRB|sickened 1}, and on a critical failure, it's also {@condition enfeebled|CRB|enfeebled 1} for 1 minute."
+						],
+						"name": "Suffocating Fumes"
+					}
+				],
+				"bot": [
+					{
+						"entries": [
+							"When a pickled punk hits a target larger than itself, it uses bizarre excretions to adhere to that creature. This is similar to Grabbing the creature, but the pickled punk is not {@condition flat-footed}, and it moves with that creature rather than holding it in place. Each turn while attached, the pickled punk automatically deals the damage from its jaws {@action Strike} to the creature to which it's attached. It also wriggles about, gaining a +2 circumstance bonus to AC as long as it's not also {@condition grabbed} or {@condition restrained}."
+						],
+						"name": "Attach"
+					}
 				]
-			},
-			"misc": [
-				"CC"
-			]
+			}
 		},
 		{
 			"name": "Ralso",
@@ -2351,27 +2139,25 @@
 			"source": "AoE1",
 			"page": 91,
 			"level": 4,
-			"rarity": "Unique",
-			"alignment": "NE",
-			"size": "Medium",
 			"traits": [
+				"unique",
+				"ne",
+				"medium",
 				"human",
+				"humanoid",
 				"orc"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 14
+				"std": 14
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Common"
@@ -2380,55 +2166,47 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 12
+					"std": 12
 				},
 				"Deception": {
-					"default": 12
+					"std": 12
 				},
 				"Diplomacy": {
-					"default": 10
+					"std": 10
 				},
 				"Intimidation": {
-					"default": 12
+					"std": 12
 				},
 				"Society": {
-					"default": 7
+					"std": 7
 				},
 				"Stealth": {
-					"default": 12
+					"std": 12
 				},
 				"Thievery": {
-					"default": 12
+					"std": 12
 				}
 			},
 			"abilityMods": {
-				"Str": 3,
-				"Dex": 4,
-				"Con": 2,
-				"Int": -1,
-				"Wis": 1,
-				"Cha": 2
+				"str": 3,
+				"dex": 4,
+				"con": 2,
+				"int": -1,
+				"wis": 1,
+				"cha": 2
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+12, {@skill Society} +7, {@skill Stealth} +12, {@skill Thievery} +12 Str +3, Dex +4, Con +2, Int \u20131, Wis +1, Cha +2 Items caltrops, daggers (2), lesser healing potion, ring of discretion (page 80), shortswords (2), studded leather armor."
-					],
-					"name": "Intimidation"
-				}
-			],
 			"ac": {
-				"default": 22
+				"std": 22
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 8
+				"fort": {
+					"std": 8
 				},
-				"Ref": {
-					"default": 14
+				"ref": {
+					"std": 14
 				},
-				"Will": {
-					"default": 9
+				"will": {
+					"std": 9
 				}
 			},
 			"hp": [
@@ -2437,7 +2215,6 @@
 					"abilities": null
 				}
 			],
-			"abilitiesMid": [],
 			"speed": {
 				"walk": 25
 			},
@@ -2474,45 +2251,39 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"requirements": "Ralso is wielding two piercing weapons",
-					"frequency": {
-						"unit": "round",
-						"freq": 1
-					},
-					"entries": [
-						"Ralso makes two Strikes against a single creature within reach, one {@action Strike} per weapon. These attacks count toward Ralso's multiple attack penalty, but the penalty doesn't increase until after both attacks."
-					],
-					"name": "Double Stab"
-				},
-				{
-					"entries": [
-						"Attack Ralso deals an extra {@damage 1d6} precision damage to {@condition flat-footed} creatures."
-					],
-					"name": "Sneak"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"piercing",
-					"precision"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"+12, {@skill Society} +7, {@skill Stealth} +12, {@skill Thievery} +12 Str +3, Dex +4, Con +2, Int \u20131, Wis +1, Cha +2 Items caltrops, daggers (2), lesser healing potion, ring of discretion (page 80), shortswords (2), studded leather armor."
+						],
+						"name": "Intimidation"
+					}
 				],
-				"condition": [
-					"{@condition flat-footed}"
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"requirements": "Ralso is wielding two piercing weapons",
+						"frequency": {
+							"unit": "round",
+							"freq": 1
+						},
+						"entries": [
+							"Ralso makes two Strikes against a single creature within reach, one {@action Strike} per weapon. These attacks count toward Ralso's multiple attack penalty, but the penalty doesn't increase until after both attacks."
+						],
+						"name": "Double Stab"
+					},
+					{
+						"entries": [
+							"Attack Ralso deals an extra {@damage 1d6} precision damage to {@condition flat-footed} creatures."
+						],
+						"name": "Sneak"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"RA",
-				"TA",
-				"CC",
-				"UW"
-			]
+			}
 		},
 		{
 			"name": "Shredskin",
@@ -2520,23 +2291,22 @@
 			"source": "AoE1",
 			"page": 60,
 			"level": 2,
-			"rarity": "Common",
-			"alignment": "NE",
-			"size": "Tiny",
+			"traits": [
+				"ne",
+				"tiny",
+				"undead"
+			],
 			"creatureType": [
 				"Undead"
 			],
 			"perception": {
-				"default": 11
+				"std": 11
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Common (can't speak any language)"
@@ -2545,39 +2315,38 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 10
+					"std": 10
 				},
 				"Athletics": {
-					"default": 8
+					"std": 8
 				},
 				"Deception": {
-					"default": 8
+					"std": 8
 				},
 				"Stealth": {
-					"default": 8
+					"std": 8
 				}
 			},
 			"abilityMods": {
-				"Str": 2,
-				"Dex": 4,
-				"Con": 0,
-				"Int": -1,
-				"Wis": 0,
-				"Cha": 2
+				"str": 2,
+				"dex": 4,
+				"con": 0,
+				"int": -1,
+				"wis": 0,
+				"cha": 2
 			},
-			"abilitiesTop": [],
 			"ac": {
-				"default": 18
+				"std": 18
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 6
+				"fort": {
+					"std": 6
 				},
-				"Ref": {
-					"default": 10
+				"ref": {
+					"std": 10
 				},
-				"Will": {
-					"default": 8
+				"will": {
+					"std": 8
 				}
 			},
 			"hp": [
@@ -2586,14 +2355,10 @@
 					"abilities": null
 				}
 			],
-			"immunities": {
-				"damage": [],
-				"condition": [
-					"critical hits (except slashing)",
-					"death effects"
-				]
-			},
-			"abilitiesMid": [],
+			"immunities": [
+				"critical hits (except slashing)",
+				"death effects"
+			],
 			"speed": {
 				"fly": 30
 			},
@@ -2624,50 +2389,38 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
+			"abilities": {
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"{@damage 1d4+4} bludgeoning, DC 16."
+						],
+						"name": "Constrict",
+						"generic": true
 					},
-					"entries": [
-						"{@damage 1d4+4} bludgeoning, DC 16."
-					],
-					"name": "Constrict",
-					"generic": true
-				},
-				{
-					"entries": [
-						"When a shredskin successfully Squeezes, it moves through the tight space at full speed. Narrow confines are not difficult terrain for a shredskin."
-					],
-					"name": "Compression"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
+					{
+						"entries": [
+							"When a shredskin successfully Squeezes, it moves through the tight space at full speed. Narrow confines are not difficult terrain for a shredskin."
+						],
+						"name": "Compression"
 					},
-					"requirements": "The shredskin is adjacent to a Medium or Small humanoidshaped corpse",
-					"entries": [
-						"The shredskin wraps itself around the corpse and takes control of the host body. While controlling a host, the shredskin uses the host's Speed but its own attacks, and it loses its Grab and Enshroud abilities. Attacks that target the shredskin while it controls a body deal half of the damage to the shredskin and half of the damage to the host body. Attacks that target an area deal damage to both the shredskin and host body normally. The shredskin can release the host body as a free action at the start of its turn. If the host is destroyed, the shredskin automatically releases the body and is {@condition flat-footed} for 1 round. A Medium corpse typically has 15 Hit Points, while a Small corpse typically has 10 Hit Points. Creatures can notice that a corpse is {@condition controlled} by a shredskin by succeeding a."
-					],
-					"name": "Control Body"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning",
-					"piercing",
-					"slashing"
-				],
-				"condition": [
-					"{@condition flat-footed}"
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"requirements": "The shredskin is adjacent to a Medium or Small humanoidshaped corpse",
+						"entries": [
+							"The shredskin wraps itself around the corpse and takes control of the host body. While controlling a host, the shredskin uses the host's Speed but its own attacks, and it loses its Grab and Enshroud abilities. Attacks that target the shredskin while it controls a body deal half of the damage to the shredskin and half of the damage to the host body. Attacks that target an area deal damage to both the shredskin and host body normally. The shredskin can release the host body as a free action at the start of its turn. If the host is destroyed, the shredskin automatically releases the body and is {@condition flat-footed} for 1 round. A Medium corpse typically has 15 Hit Points, while a Small corpse typically has 10 Hit Points. Creatures can notice that a corpse is {@condition controlled} by a shredskin by succeeding a."
+						],
+						"name": "Control Body"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"CC"
-			]
+			}
 		},
 		{
 			"name": "Siege Shard",
@@ -2675,53 +2428,52 @@
 			"source": "AoE1",
 			"page": 84,
 			"level": 3,
-			"rarity": "Uncommon",
-			"alignment": "N",
-			"size": "Tiny",
+			"traits": [
+				"uncommon",
+				"n",
+				"tiny",
+				"construct"
+			],
 			"creatureType": [
 				"Construct"
 			],
 			"perception": {
-				"default": 9
+				"std": 9
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
 			"skills": {
 				"Athletics": {
-					"default": 9
+					"std": 9
 				},
 				"Stealth": {
-					"default": 10
+					"std": 10
 				}
 			},
 			"abilityMods": {
-				"Str": 2,
-				"Dex": 3,
-				"Con": 2,
-				"Int": -4,
-				"Wis": 2,
-				"Cha": -4
+				"str": 2,
+				"dex": 3,
+				"con": 2,
+				"int": -4,
+				"wis": 2,
+				"cha": -4
 			},
-			"abilitiesTop": [],
 			"ac": {
-				"default": 19,
+				"std": 19,
 				"when broken": 15
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 12
+				"fort": {
+					"std": 12
 				},
-				"Ref": {
-					"default": 6
+				"ref": {
+					"std": 6
 				},
-				"Will": {
-					"default": 9
+				"will": {
+					"std": 9
 				}
 			},
 			"hp": [
@@ -2731,34 +2483,10 @@
 				}
 			],
 			"hardness": 5,
-			"immunities": {
-				"damage": [
-					"bleed"
-				],
-				"condition": [
-					"death effects",
-					"disease"
-				]
-			},
-			"abilitiesMid": [
-				{
-					"entries": [
-						"Mental damage ignores a siege shard's hardness. Additionally, proving the siege shard's generative conflict is over with the."
-					],
-					"name": "Exorcism"
-				},
-				{
-					"entries": [
-						"Peace activity reverts the creature to ordinary stone."
-					],
-					"name": "Prove"
-				},
-				{
-					"entries": [
-						"While a siege shard is embedded within a structure while using meld into stone, the structure and all objects within it take twice as long to repair."
-					],
-					"name": "Surreptitious Siege"
-				}
+			"immunities": [
+				"bleed",
+				"death effects",
+				"disease"
 			],
 			"speed": {
 				"fly": 25
@@ -2801,57 +2529,69 @@
 					}
 				}
 			],
-			"abilitiesBot": [
-				{
-					"traits": [
-						"2nd"
-					],
-					"entries": [
-						"mage hand, telekinetic projectile."
-					],
-					"name": "Cantrips"
-				},
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
+			"abilities": {
+				"mid": [
+					{
+						"entries": [
+							"Mental damage ignores a siege shard's hardness. Additionally, proving the siege shard's generative conflict is over with the."
+						],
+						"name": "Exorcism"
 					},
-					"traits": [
-						"emotion",
-						"enchantment",
-						"mental",
-						"occult"
-					],
-					"frequency": {
-						"unit": "minute",
-						"freq": 1
+					{
+						"entries": [
+							"Peace activity reverts the creature to ordinary stone."
+						],
+						"name": "Prove"
 					},
-					"entries": [
-						"The siege shard emits a disorienting psychic blast. All creatures within a 15 feet take {@damage 4d6} mental damage (DC 20 basic Will save)."
-					],
-					"name": "Overwhelming Anguish"
-				},
-				{
-					"traits": [
-						"abjuration",
-						"occult"
-					],
-					"entries": [
-						"When a siege shard is destroyed within 100 feet of a structure, it reforms after {@dice 2d4} days within the nearest structure, fully healed. A siege shard within a structure can be permanently destroyed by the Prove Peace activity."
-					],
-					"name": "Rejuvenation"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning",
-					"mental"
+					{
+						"entries": [
+							"While a siege shard is embedded within a structure while using meld into stone, the structure and all objects within it take twice as long to repair."
+						],
+						"name": "Surreptitious Siege"
+					}
 				],
-				"condition": []
-			},
-			"misc": [
-				"MA"
-			]
+				"bot": [
+					{
+						"traits": [
+							"2nd"
+						],
+						"entries": [
+							"mage hand, telekinetic projectile."
+						],
+						"name": "Cantrips"
+					},
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"emotion",
+							"enchantment",
+							"mental",
+							"occult"
+						],
+						"frequency": {
+							"unit": "minute",
+							"freq": 1
+						},
+						"entries": [
+							"The siege shard emits a disorienting psychic blast. All creatures within a 15 feet take {@damage 4d6} mental damage (DC 20 basic Will save)."
+						],
+						"name": "Overwhelming Anguish"
+					},
+					{
+						"traits": [
+							"abjuration",
+							"occult"
+						],
+						"entries": [
+							"When a siege shard is destroyed within 100 feet of a structure, it reforms after {@dice 2d4} days within the nearest structure, fully healed. A siege shard within a structure can be permanently destroyed by the Prove Peace activity."
+						],
+						"name": "Rejuvenation"
+					}
+				]
+			}
 		},
 		{
 			"name": "Skebs",
@@ -2859,17 +2599,17 @@
 			"source": "AoE1",
 			"page": 8,
 			"level": -1,
-			"rarity": "Common",
-			"alignment": "CN",
-			"size": "Small",
 			"traits": [
-				"halfling"
+				"cn",
+				"small",
+				"halfling",
+				"humanoid"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 4
+				"std": 4
 			},
 			"languages": {
 				"languages": [
@@ -2880,56 +2620,42 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 5
+					"std": 5
 				},
 				"Deception": {
-					"default": 2
+					"std": 2
 				},
 				"Stealth": {
-					"default": 5
+					"std": 5
 				},
 				"Thievery": {
-					"default": 5
+					"std": 5
 				}
 			},
 			"abilityMods": {
-				"Str": 0,
-				"Dex": 3,
-				"Con": 1,
-				"Int": 1,
-				"Wis": 2,
-				"Cha": 0
+				"str": 0,
+				"dex": 3,
+				"con": 1,
+				"int": 1,
+				"wis": 2,
+				"cha": 0
 			},
 			"items": [
 				"daggers (4)",
 				"studded leather armor"
 			],
-			"abilitiesTop": [
-				{
-					"entries": [
-						"Shadows Skebs can use creatures that are at least one size larger than themself as cover for the {@action Hide}."
-					],
-					"name": "Distracting"
-				},
-				{
-					"entries": [
-						"{@action Sneak} actions."
-					],
-					"name": "and"
-				}
-			],
 			"ac": {
-				"default": 15
+				"std": 15
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 3
+				"fort": {
+					"std": 3
 				},
-				"Ref": {
-					"default": 7
+				"ref": {
+					"std": 7
 				},
-				"Will": {
-					"default": 4
+				"will": {
+					"std": 4
 				}
 			},
 			"hp": [
@@ -2938,7 +2664,6 @@
 					"abilities": null
 				}
 			],
-			"abilitiesMid": [],
 			"speed": {
 				"walk": 25
 			},
@@ -2976,43 +2701,44 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"Shadows Skebs can use creatures that are at least one size larger than themself as cover for the {@action Hide}."
+						],
+						"name": "Distracting"
 					},
-					"entries": [
-						"{@damage 1d4} piercing Ranged dagger +8 (agile, finesse, thrown 10 feet, versatile S), Damage {@damage 1d4} piercing."
-					],
-					"name": "S), Damage"
-				},
-				{
-					"traits": [
-						"precision"
-					],
-					"entries": [
-						"Skebs deals {@dice 1d6} extra precision damage to {@condition flat-footed} creatures."
-					],
-					"name": "Sneak Attack",
-					"generic": true
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"piercing"
+					{
+						"entries": [
+							"{@action Sneak} actions."
+						],
+						"name": "and"
+					}
 				],
-				"condition": [
-					"{@condition flat-footed}"
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"{@damage 1d4} piercing Ranged dagger +8 (agile, finesse, thrown 10 feet, versatile S), Damage {@damage 1d4} piercing."
+						],
+						"name": "S), Damage"
+					},
+					{
+						"traits": [
+							"precision"
+						],
+						"entries": [
+							"Skebs deals {@dice 1d6} extra precision damage to {@condition flat-footed} creatures."
+						],
+						"name": "Sneak Attack",
+						"generic": true
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"RA",
-				"TA",
-				"CC",
-				"UW"
-			]
+			}
 		},
 		{
 			"name": "Vargouille",
@@ -3020,24 +2746,24 @@
 			"source": "AoE1",
 			"page": 35,
 			"level": 2,
-			"rarity": "Common",
-			"alignment": "NE",
-			"size": "Small",
+			"traits": [
+				"ne",
+				"small",
+				"beast",
+				"fiend"
+			],
 			"creatureType": [
 				"Fiend",
 				"Beast"
 			],
 			"perception": {
-				"default": 11
+				"std": 11
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Infernal"
@@ -3046,33 +2772,32 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 8
+					"std": 8
 				},
 				"Stealth": {
-					"default": 8
+					"std": 8
 				}
 			},
 			"abilityMods": {
-				"Str": 3,
-				"Dex": 4,
-				"Con": 4,
-				"Int": -2,
-				"Wis": 3,
-				"Cha": -1
+				"str": 3,
+				"dex": 4,
+				"con": 4,
+				"int": -2,
+				"wis": 3,
+				"cha": -1
 			},
-			"abilitiesTop": [],
 			"ac": {
-				"default": 18
+				"std": 18
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 10
+				"fort": {
+					"std": 10
 				},
-				"Ref": {
-					"default": 8
+				"ref": {
+					"std": 8
 				},
-				"Will": {
-					"default": 7
+				"will": {
+					"std": 7
 				}
 			},
 			"hp": [
@@ -3081,7 +2806,6 @@
 					"abilities": null
 				}
 			],
-			"abilitiesMid": [],
 			"speed": {
 				"fly": 25
 			},
@@ -3102,109 +2826,99 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
+			"abilities": {
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"The vargouille kisses an adjacent creature that's asleep, {@condition paralyzed}, or {@condition unconscious}, exposing it to the vargouille transformation disease."
+						],
+						"name": "Kiss"
 					},
-					"entries": [
-						"The vargouille kisses an adjacent creature that's asleep, {@condition paralyzed}, or {@condition unconscious}, exposing it to the vargouille transformation disease."
-					],
-					"name": "Kiss"
-				},
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"auditory",
+							"concentrate",
+							"visual"
+						],
+						"entries": [
+							"The vargouille shrieks, its scream so terrible that all non-vargouilles within 60 feet must succeed at a DC 16 Fortitude save or be {@condition paralyzed} for 3 rounds. The effect ends early for a creature if the vargouille moves out of sight, moves farther than 60 feet from the creature, or attacks the creature with its fangs. After attempting its save, a creature is immune to that particular vargouille's Shriek for 24 hours."
+						],
+						"name": "Shriek"
 					},
-					"traits": [
-						"auditory",
-						"concentrate",
-						"visual"
-					],
-					"entries": [
-						"The vargouille shrieks, its scream so terrible that all non-vargouilles within 60 feet must succeed at a DC 16 Fortitude save or be {@condition paralyzed} for 3 rounds. The effect ends early for a creature if the vargouille moves out of sight, moves farther than 60 feet from the creature, or attacks the creature with its fangs. After attempting its save, a creature is immune to that particular vargouille's Shriek for 24 hours."
-					],
-					"name": "Shriek"
-				},
-				{
-					"entries": [
-						{
-							"type": "affliction",
-							"name": "",
-							"traits": [
-								"disease"
-							],
-							"note": " Exposing the victim\nto sunlight or any {@spell light} spell of 3rd level or higher\npauses the progression of the disease until the victim\nis no longer in light.",
-							"DC": 18,
-							"savingThrow": "Fortitude",
-							"stages": [
-								{
-									"stage": 1,
-									"entry": "carrier with no effect",
-									"duration": "{@dice 1d6} hours"
-								},
-								{
-									"stage": 2,
-									"entry": "victim's hair falls out",
-									"duration": "{@dice 1d6} hours"
-								},
-								{
-									"stage": 3,
-									"entry": "victim's ears grow into leathery wings, tentacles sprout on the chin and scalp, and the teeth become long, pointed fangs",
-									"duration": "1 day"
-								},
-								{
-									"stage": 4,
-									"entry": "victim's mind regresses to a vicious and unintelligent shell of its former self",
-									"duration": "{@dice 1d6} hours"
-								},
-								{
-									"stage": 5,
-									"entry": "victim's head breaks free of the body",
-									"duration": "which dies"
-								}
-							]
-						}
-					],
-					"name": "Vargouille Transformation"
-				},
-				{
-					"entries": [
-						{
-							"type": "affliction",
-							"name": "",
-							"traits": [
-								"poison"
-							],
-							"note": "",
-							"DC": 18,
-							"savingThrow": "Fortitude",
-							"stages": [
-								{
-									"stage": 1,
-									"entry": "Damage the victim has taken from vargouille fangs can't be healed magically.",
-									"duration": null
-								}
-							]
-						}
-					],
-					"name": "Vargouille Venom"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"piercing"
-				],
-				"condition": [
-					"{@condition paralyzed}"
+					{
+						"entries": [
+							{
+								"type": "affliction",
+								"name": "",
+								"traits": [
+									"disease"
+								],
+								"note": " Exposing the victim\nto sunlight or any {@spell light} spell of 3rd level or higher\npauses the progression of the disease until the victim\nis no longer in light.",
+								"DC": 18,
+								"savingThrow": "Fortitude",
+								"stages": [
+									{
+										"stage": 1,
+										"entry": "carrier with no effect",
+										"duration": "{@dice 1d6} hours"
+									},
+									{
+										"stage": 2,
+										"entry": "victim's hair falls out",
+										"duration": "{@dice 1d6} hours"
+									},
+									{
+										"stage": 3,
+										"entry": "victim's ears grow into leathery wings, tentacles sprout on the chin and scalp, and the teeth become long, pointed fangs",
+										"duration": "1 day"
+									},
+									{
+										"stage": 4,
+										"entry": "victim's mind regresses to a vicious and unintelligent shell of its former self",
+										"duration": "{@dice 1d6} hours"
+									},
+									{
+										"stage": 5,
+										"entry": "victim's head breaks free of the body",
+										"duration": "which dies"
+									}
+								]
+							}
+						],
+						"name": "Vargouille Transformation"
+					},
+					{
+						"entries": [
+							{
+								"type": "affliction",
+								"name": "",
+								"traits": [
+									"poison"
+								],
+								"note": "",
+								"DC": 18,
+								"savingThrow": "Fortitude",
+								"stages": [
+									{
+										"stage": 1,
+										"entry": "Damage the victim has taken from vargouille fangs can't be healed magically.",
+										"duration": null
+									}
+								]
+							}
+						],
+						"name": "Vargouille Venom"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"CC"
-			]
+			}
 		},
 		{
 			"name": "Zrukbat",
@@ -3212,23 +2926,22 @@
 			"source": "AoE1",
 			"page": 85,
 			"level": 2,
-			"rarity": "Common",
-			"alignment": "CN",
-			"size": "Small",
+			"traits": [
+				"cn",
+				"small",
+				"fey"
+			],
 			"creatureType": [
 				"Fey"
 			],
 			"perception": {
-				"default": 7
+				"std": 7
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Common",
@@ -3238,39 +2951,38 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 10
+					"std": 10
 				},
 				"Athletics": {
-					"default": 9
+					"std": 9
 				},
 				"Deception": {
-					"default": 5
+					"std": 5
 				},
 				"Stealth": {
-					"default": 10
+					"std": 10
 				}
 			},
 			"abilityMods": {
-				"Str": 3,
-				"Dex": 4,
-				"Con": 3,
-				"Int": 1,
-				"Wis": -1,
-				"Cha": -1
+				"str": 3,
+				"dex": 4,
+				"con": 3,
+				"int": 1,
+				"wis": -1,
+				"cha": -1
 			},
-			"abilitiesTop": [],
 			"ac": {
-				"default": 18
+				"std": 18
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 9
+				"fort": {
+					"std": 9
 				},
-				"Ref": {
-					"default": 10
+				"ref": {
+					"std": 10
 				},
-				"Will": {
-					"default": 5
+				"will": {
+					"std": 5
 				}
 			},
 			"hp": [
@@ -3279,13 +2991,9 @@
 					"abilities": null
 				}
 			],
-			"immunities": {
-				"damage": [],
-				"condition": [
-					"sleep"
-				]
-			},
-			"abilitiesMid": [],
+			"immunities": [
+				"sleep"
+			],
 			"speed": {
 				"walk": 20,
 				"climb": 20,
@@ -3313,38 +3021,27 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"traits": [
-						"concentrate",
-						"polymorph",
-						"primal",
-						"transmutation"
-					],
-					"entries": [
-						"The zrukbat assumes the shape of any Small object or ornamentation, although the zrukbat's mimicked objects usually have unrealistic or suspicious quirks. This doesn't change the zrukbat's size but can alter their coloration and visual appearance. They have an automatic result of 23 on {@skill Deception} checks and DCs to pass as the mimicked object.",
-						"Go for the Eyes {@as 2} The zrukbat flies up to its Speed and makes a claw {@action Strike} at the end of its move. If the claw attack hits, the target must succeed on a DC 15 Fortitude saving throw or be {@condition blinded} for 1 round (or {@condition blinded} for 1 minute on a critical failure). If the {@action Strike} was a critical hit, the target's save result is one degree of success worse."
-					],
-					"name": "Dubious Shifting"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"piercing",
-					"slashing"
-				],
-				"condition": [
-					"{@condition blinded}"
+			"abilities": {
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"concentrate",
+							"polymorph",
+							"primal",
+							"transmutation"
+						],
+						"entries": [
+							"The zrukbat assumes the shape of any Small object or ornamentation, although the zrukbat's mimicked objects usually have unrealistic or suspicious quirks. This doesn't change the zrukbat's size but can alter their coloration and visual appearance. They have an automatic result of 23 on {@skill Deception} checks and DCs to pass as the mimicked object.",
+							"Go for the Eyes {@as 2} The zrukbat flies up to its Speed and makes a claw {@action Strike} at the end of its move. If the claw attack hits, the target must succeed on a DC 15 Fortitude saving throw or be {@condition blinded} for 1 round (or {@condition blinded} for 1 minute on a critical failure). If the {@action Strike} was a critical hit, the target's save result is one degree of success worse."
+						],
+						"name": "Dubious Shifting"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"CC"
-			]
+			}
 		}
 	]
 }

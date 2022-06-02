@@ -70,11 +70,11 @@ class PageFilterAncestries extends PageFilter {
 				ancestry._fAbilities.push(obj.name)
 			});
 		}
-		ancestry._fspeedtypes = []
-		ancestry._fspeed = 0
+		ancestry._fSpeedtypes = []
+		ancestry._fSpeed = 0
 		Object.keys(ancestry.speed).forEach((k) => {
-			ancestry._fspeed = Math.max(ancestry.speed[k], ancestry._fspeed);
-			ancestry._fspeedtypes.push(k);
+			ancestry._fSpeed = Math.max(ancestry.speed[k], ancestry._fSpeed);
+			ancestry._fSpeedtypes.push(k);
 		});
 	}
 
@@ -116,8 +116,8 @@ class PageFilterAncestries extends PageFilter {
 			a.flaw || [],
 			a.hp,
 			a.size,
-			a._fspeed,
-			a._fspeedtypes,
+			a._fSpeed,
+			a._fSpeedtypes,
 			a._flanguages,
 			a.traits,
 			a.rarity,
