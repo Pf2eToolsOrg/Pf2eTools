@@ -221,14 +221,18 @@ class ConverterUi extends BaseComponent {
 			const {$modalInner, doClose} = UiUtil.getShowModal({
 				isHeight100: true,
 				isUncappedHeight: true,
+				isMaxWidth640p: true, // For being able to see the converter. Also looks prettier than the wide text.
 				title: "Help",
 			});
 
-			// FIXME:
-			$$`<p><b>Note:</b> This feature is still under development. We can't guarantee a bug-free experience.</p>`.appendTo($modalInner);
-			$$`<p>Use this converter to parse text copied from Paizo's pdfs into Pf2eTools data; see the samples below.</p>`.appendTo($modalInner);
-			$$`<p class="ve-muted">Sorry this text isn't very helpful.</p>`.appendTo($modalInner);
+			$$`<div class="alert alert-warning"><p><b>Note:</b> This feature is still under development. We can't guarantee a bug-free experience.</p></div>`.appendTo($modalInner);
+			$$`<p>The Text Converter converts properly formatted text (meaning, Pf2e Statblock formatting) into Pf2eTools data. Mainly tested and used on Paizo's PDFs, but it should also work for anything using Pf2e's formatting.</p>`.appendTo($modalInner);
+			$$`<p>This page also allows you to create homebrew directly to the website. <b>Please note that everything is stored locally. If this websites cookies / local storage gets deleted, so is your homebrew. <u style="font-size:1.1em">Backup responsibly.</u></b> Currently you can only do so using <i>Save State to File</i> in Settings next to the Searchbar. An option to export the homebrew fully will be available in the future.</p>`.appendTo($modalInner);
+			$$`<p>A simple way to start creating homebrew is to go to <i>Converter Settings</i>, select <i>Add New Source</i>, and enter your desired name and abbreviation for the homebrew; additional details optional. If the new source does not get selected in the dropdown menu above the button, select it. Leave the menu and Parse to your hearts content, upon which click <i>Save to Homebrew</i>.</p>`.appendTo($modalInner);
+			$$`<p>You can convert multiple things at once by putting a new line between each separate entry. In <i>another</i> newline, you can also type in the page number, which will be used for the subsequent entries until a new page number is written.</p>`.appendTo($modalInner);
+			$$`<p class="ve-muted">For more information on how to create homebrew, please go to our <a href="https://discord.gg/2hzNxErtVu">Discord</a>.</p>`.appendTo($modalInner);
 			ConverterUiUtil.renderSideMenuDivider($modalInner);
+			$$`<p class="ve-muted">You can click on and see examples below. The buttons also tell you what the Text Converter can currently convert. Anything outside of that (ex. classes, rituals, traps) is unavailable and has to be done manually.</p>`.appendTo($modalInner);
 			const $wrpSamples = $$`<div class="w-100 mb-2"></div>`.appendTo($modalInner);
 			const $getSampleBtn = (btnText, sample) => {
 				return $(`<button class="btn btn-default btn-sm mr-2">${btnText}</button>`).on("click", () => this.inText = sample.trim());
@@ -249,7 +253,7 @@ class ConverterUi extends BaseComponent {
 			const {$modalInner, doClose} = UiUtil.getShowModal({
 				isHeight100: true,
 				isUncappedHeight: true,
-				title: "Settings",
+				title: "Converter Settings",
 			});
 
 			const $wrpSourcePart = $(`<div class="w-100 ve-flex-col mt-2"/>`).appendTo($modalInner);
@@ -265,7 +269,7 @@ class ConverterUi extends BaseComponent {
 
 	_renderSettingsPagePart (parent, $wrp) {
 		const $iptPage = ComponentUiUtil.$getIptInt(this, "page", 0, {html: `<input class="form-control input-sm text-right" style="max-width: 9rem;">`});
-		$$`<div class="w-100 mb-2 split-v-center"><div class="pr-2">Initial Page</div>${$iptPage}</div>`.appendTo($wrp);
+		$$`<div class="w-100 mb-2 split-v-center"><div class="pr-2 help" title="Determines what's the default page of the content you're converting. If left blank, assumes 0.\nThis has the same effect as putting the page number in front of the statblock. Any subsequent statblock after that will use that page number.">Initial Page</div>${$iptPage}</div>`.appendTo($wrp);
 	}
 
 	_renderSettingsSourcePart (parent, $wrp) {
