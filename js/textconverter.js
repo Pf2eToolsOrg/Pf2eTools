@@ -224,8 +224,10 @@ class ConverterUi extends BaseComponent {
 				title: "Help",
 			});
 
-			// TODO:
-			$$`<p>Insightful help text.</p>`.appendTo($modalInner);
+			// FIXME:
+			$$`<p><b>Note:</b> This feature is still under development. We can't guarantee a bug-free experience.</p>`.appendTo($modalInner);
+			$$`<p>Use this converter to parse text copied from Paizo's pdfs into Pf2eTools data; see the samples below.</p>`.appendTo($modalInner);
+			$$`<p class="ve-muted">Sorry this text isn't very helpful.</p>`.appendTo($modalInner);
 			ConverterUiUtil.renderSideMenuDivider($modalInner);
 			const $wrpSamples = $$`<div class="w-100 mb-2"></div>`.appendTo($modalInner);
 			const $getSampleBtn = (btnText, sample) => {
