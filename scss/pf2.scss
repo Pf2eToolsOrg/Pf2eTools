@@ -299,6 +299,13 @@
 	}
 
 	&-- {
+		&notag {
+			&:hover {
+				text-decoration: none !important;
+				color: white !important;
+			}
+		}
+
 		&unique {
 			background: #54166e;
 		}
@@ -406,6 +413,10 @@
 
 	+ .pf2-h1-flavor {
 		text-indent: 1em;
+	}
+
+	&--centered {
+		text-align: center;
 	}
 }
 
@@ -1242,7 +1253,7 @@
 	min-width: 120px;
 	border-style: solid;
 	border-width: 30px;
-	border-image-source: url('../img/letter.png');
+	border-image-source: url('../img/letter.webp');
 	border-image-slice: 30 fill;
 	border-image-repeat: round;
 
@@ -1280,7 +1291,7 @@
 
 	&--dark {
 		color: black !important;
-		border-image-source: url('../img/letter-dark.png');
+		border-image-source: url('../img/letter-dark.webp');
 	}
 
 	.pf2-title {
@@ -1646,6 +1657,13 @@ $night-pf2-brown: #2e2c27;
 		color: #dbdbdb;
 
 		&-- {
+			&notag {
+				&:hover {
+					text-decoration: none !important;
+					color: #dbdbdb !important;
+				}
+			}
+
 			&alignment {
 				background: #4c505e;
 			}

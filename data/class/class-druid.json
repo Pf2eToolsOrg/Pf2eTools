@@ -13,8 +13,17 @@
 				"will": "E",
 				"skills": {
 					"t": [
-						"{@skill Nature}",
-						"one skill determined by your druidic order"
+						{
+							"skill": [
+								"Nature"
+							]
+						},
+						{
+							"skill": [
+								"Subclass Dependant"
+							],
+							"entry": "one skill determined by your druidic order"
+						}
 					],
 					"add": 2
 				},
@@ -751,7 +760,7 @@
 			"classSource": "CRB",
 			"level": 2,
 			"entries": [
-				"At 2nd level and every 2 levels thereafter, you gain a {@filter druid class feat|feats||type=class|classes=druid|level=[1;2]}."
+				"At 2nd level and every 2 levels thereafter, you gain a {@filter druid class feat|feats||type=class|Class=druid|level=[1;2]}."
 			]
 		},
 		{
@@ -784,7 +793,7 @@
 			"classSource": "CRB",
 			"level": 3,
 			"entries": [
-				"At 3rd level and every 4 levels thereafter, you gain a {@filter general feat|feats||type=general}. "
+				"At 3rd level and every 4 levels thereafter, you gain a {@filter general feat|feats||type=general}."
 			]
 		},
 		{

@@ -104,7 +104,7 @@
 	DataUtil.loadJSON(`${Renderer.get().baseUrl || "."}/data/changelog.json`)
 		.then(changelog => {
 			const $wrp = $(`#pagecontent`).empty();
-			UtilsChangelog.renderChangelog(changelog, $wrp);
+			UtilsChangelog.renderChangelog(changelog.changelog, $wrp);
 		});
 </script>
 </body>

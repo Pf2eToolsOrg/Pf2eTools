@@ -13,7 +13,12 @@
 				"will": "E",
 				"skills": {
 					"t": [
-						"one or more skills determined by your Eidolon"
+						{
+							"skill": [
+								"Subclass Dependant"
+							],
+							"entry": "one or more skills determined by your Eidolon"
+						}
 					],
 					"add": 3
 				},
@@ -94,7 +99,10 @@
 			"classFeatures": [
 				"Ancestry and Background|Summoner|SoM|1",
 				"Initial Proficiencies|Summoner|SoM|1",
-				"Eidolon|Summoner|SoM|1",
+				{
+					"classFeature": "Eidolon|Summoner|SoM|1",
+					"gainSubclassFeature": true
+				},
 				"Summoner Spellcasting|Summoner|SoM|1",
 				"Spell Repertoire|Summoner|SoM|1",
 				"Link Spells|Summoner|SoM|1",
@@ -132,6 +140,108 @@
 					"name": "Class Features",
 					"entries": [
 						"You gain all of the following abilities as a summoner. Abilities gained at higher levels than 1st level always list the level at which you gain them next to the features' names."
+					]
+				}
+			],
+			"subclasses": [
+				{
+					"name": "Angel",
+					"type": "Eidolon",
+					"shortName": "Angel",
+					"source": "SoM",
+					"page": 59,
+					"subclassFeatures": [
+						"Eidolon|Summoner|SoM|Angel|SoM|1"
+					]
+				},
+				{
+					"name": "Anger Phantom",
+					"type": "Eidolon",
+					"shortName": "Anger Phantom",
+					"source": "SoM",
+					"page": 59,
+					"subclassFeatures": [
+						"Eidolon|Summoner|SoM|Anger Phantom|SoM|1"
+					]
+				},
+				{
+					"name": "Beast",
+					"type": "Eidolon",
+					"shortName": "Beast",
+					"source": "SoM",
+					"page": 61,
+					"subclassFeatures": [
+						"Eidolon|Summoner|SoM|Beast|SoM|1"
+					]
+				},
+				{
+					"name": "Construct",
+					"type": "Eidolon",
+					"shortName": "Construct",
+					"source": "SoM",
+					"page": 61,
+					"subclassFeatures": [
+						"Eidolon|Summoner|SoM|Construct|SoM|1"
+					]
+				},
+				{
+					"name": "Demon",
+					"type": "Eidolon",
+					"shortName": "Demon",
+					"source": "SoM",
+					"page": 62,
+					"subclassFeatures": [
+						"Eidolon|Summoner|SoM|Demon|SoM|1"
+					]
+				},
+				{
+					"name": "Devotion Phantom",
+					"type": "Eidolon",
+					"shortName": "Devotion Phantom",
+					"source": "SoM",
+					"page": 63,
+					"subclassFeatures": [
+						"Eidolon|Summoner|SoM|Devotion Phantom|SoM|1"
+					]
+				},
+				{
+					"name": "Dragon",
+					"type": "Eidolon",
+					"shortName": "Dragon",
+					"source": "SoM",
+					"page": 63,
+					"subclassFeatures": [
+						"Eidolon|Summoner|SoM|Dragon|SoM|1"
+					]
+				},
+				{
+					"name": "Fey",
+					"type": "Eidolon",
+					"shortName": "Fey",
+					"source": "SoM",
+					"page": 64,
+					"subclassFeatures": [
+						"Eidolon|Summoner|SoM|Fey|SoM|1"
+					]
+				},
+				{
+					"name": "Plant",
+					"type": "Eidolon",
+					"shortName": "Plant",
+					"source": "SoM",
+					"page": 65,
+					"subclassFeatures": [
+						"Eidolon|Summoner|SoM|Plant|SoM|1"
+					]
+				},
+				{
+					"name": "Psychopomp",
+					"type": "Eidolon",
+					"shortName": "Psychopomp",
+					"source": "SoM",
+					"page": 66,
+					"subclassFeatures": [
+						"Eidolon|Summoner|SoM|Psychopomp|SoM|1"
 					]
 				}
 			],
@@ -319,6 +429,7 @@
 				{
 					"type": "pf2-h4",
 					"page": 53,
+					"collapsible": true,
 					"name": "Gear and your Eidolon",
 					"entries": [
 						"Your eidolon can't wear or use magic items, except for items with the {@trait eidolon} trait. An eidolon can have up to two items invested. Your eidolon's link to you means it can benefit from certain magic items invested by you.",
@@ -335,6 +446,7 @@
 				{
 					"type": "pf2-h4",
 					"page": 54,
+					"collapsible": true,
 					"name": "Lost and Altered Actions",
 					"entries": [
 						"If you or your eidolon becomes {@condition slowed}, {@condition stunned}, {@condition quickened}, or otherwise affected by something that changes the actions you gain at the start of each turn, it affects your shared actions. However, if you are both subject to such an effect, apply only the more severe one. For instance, if you or your eidolon were {@condition slowed} 1, you would start your turn with one fewer action, but if you were both {@condition slowed} 1, you would still lose only one action, rather than adding the two slowed effects together. However, if you were {@condition slowed} 1 and your eidolon {@condition slowed} 2, you'd have two fewer actions, because that's the more severe effect. If only one of you becomes restricted in how you can spend your actions, that restriction doesn't automatically extend to the other; for example, if your eidolon became {@condition immobilized} or {@condition petrified}, it wouldn't be able to move, but you could still use your actions to move. The GM resolves any situation that's unclear.",
@@ -368,7 +480,7 @@
 					"page": 54,
 					"name": "Cantrips",
 					"entries": [
-						"A cantrip is a special type of spell that doesn't use spell slots. You can cast a cantrip at will, any number of times per day. A cantrip is always automatically heightened to half your level rounded up\u2014this is usually equal to the highest level of spell you can cast as a summoner. For example, as a 1stlevel summoner, your cantrips are 1st-level spells, and as a 5th-level summoner, your cantrips are 3rd-level spells."
+						"A cantrip is a special type of spell that doesn't use spell slots. You can cast a cantrip at will, any number of times per day. A cantrip is always automatically heightened to half your level rounded up\u2014this is usually equal to the highest level of spell you can cast as a summoner. For example, as a 1st-level summoner, your cantrips are 1st-level spells, and as a 5th-level summoner, your cantrips are 3rd-level spells."
 					]
 				},
 				{
@@ -726,7 +838,7 @@
 			"classSource": "SoM",
 			"level": 1,
 			"entries": [
-				"Evolution feats are a special type of summoner class feat that allow you to customize your eidolon through your shared link. You gain an evolution feat for your eidolon at 1st level, representing the differences that make it unique from other eidolons of its type. If you retrain this feat, the feat you replace it with must also be an evolution feat."
+				"{@trait Evolution} feats are a special type of summoner class feat that allow you to customize your eidolon through your shared link. You gain an {@filter evolution feat|feats||general=evolution|level=[1;1]} for your eidolon at 1st level, representing the differences that make it unique from other eidolons of its type. If you retrain this feat, the feat you replace it with must also be an {@filter evolution feat|feats||general=evolution|level=[1;1]}."
 			]
 		},
 		{
@@ -748,7 +860,7 @@
 			"classSource": "SoM",
 			"level": 2,
 			"entries": [
-				"At 2nd level and every even-numbered level thereafter, you gain a {@filter summoner class feat|feats||type=class|classes=Summoner|level=[1;2]}."
+				"At 2nd level and every even-numbered level thereafter, you gain a {@filter summoner class feat|feats||type=class|Class=Summoner|level=[1;2]}."
 			]
 		},
 		{
@@ -1004,6 +1116,265 @@
 			"level": 19,
 			"entries": [
 				"You can manifest your eidolon with incredible speed. You can use {@action Manifest Eidolon|SoM} as a single action, instead of a three-action activity."
+			]
+		}
+	],
+	"subclassFeature": [
+		{
+			"name": "Eidolon",
+			"source": "SoM",
+			"page": 59,
+			"className": "Summoner",
+			"classSource": "SoM",
+			"subclassShortName": "Angel",
+			"subclassSource": "SoM",
+			"level": 1,
+			"entries": [
+				{
+					"type": "pf2-h4",
+					"name": "Angel",
+					"entries": [
+						"Your eidolon is a celestial messenger, a member of the angelic host with a unique link to you, allowing them to carry a special message to the mortal world at your side. Most angel eidolons are roughly humanoid in form, with feathered wings, glowing eyes, halos, or similar angelic features. However, some take the form of smaller angelic servitors like the winged helmet cassisian angel instead. The two of you are destined for an important role in the plans of the celestial realms. Though a true angel, your angel eidolon's link to you as a mortal prevents them from casting the {@ritual angelic messenger|bst} ritual, even if they somehow learn it.",
+						{
+							"type": "statblock",
+							"tag": "eidolon",
+							"name": "Angel Eidolon",
+							"source": "SoM"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Eidolon",
+			"source": "SoM",
+			"page": 59,
+			"className": "Summoner",
+			"classSource": "SoM",
+			"subclassShortName": "Anger Phantom",
+			"subclassSource": "SoM",
+			"level": 1,
+			"entries": [
+				{
+					"type": "pf2-h4",
+					"name": "Anger Phantom Eidolon",
+					"entries": [
+						"Your eidolon is a lost soul, bound to the mortal world by undying anger or a bitter grudge. Most phantom eidolons are humanoids with a spectral or ectoplasmic appearance, though some take far stranger forms. Your link with your eidolon prevents it from succumbing to corruption and undeath. Together, you will need to decide whether to work with your eidolon to control its anger, or channel its wrath into power.",
+						{
+							"type": "statblock",
+							"tag": "eidolon",
+							"name": "Anger Phantom Eidolon",
+							"source": "SoM"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Eidolon",
+			"source": "SoM",
+			"page": 61,
+			"className": "Summoner",
+			"classSource": "SoM",
+			"subclassShortName": "Beast",
+			"subclassSource": "SoM",
+			"level": 1,
+			"entries": [
+				{
+					"type": "pf2-h4",
+					"name": "Beast Eidolon",
+					"entries": [
+						"Your eidolon is a manifestation of the life force of nature in the form of a powerful magical beast that often has animal features, possibly even several from different species. You might have learned the way to connect with the world's life force via a specific philosophy or practice, such as the beliefs of the god callers of Sarkoris, or formed a bond on your own. Regardless, your link to your eidolon allows you both to grow in power and influence to keep your home safe from those who would despoil it.",
+						{
+							"type": "statblock",
+							"tag": "eidolon",
+							"name": "Beast Eidolon",
+							"source": "SoM"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Eidolon",
+			"source": "SoM",
+			"page": 61,
+			"className": "Summoner",
+			"classSource": "SoM",
+			"subclassShortName": "Construct",
+			"subclassSource": "SoM",
+			"level": 1,
+			"entries": [
+				{
+					"type": "pf2-h4",
+					"name": "Construct",
+					"entries": [
+						"Your eidolon is a mental construct based on an astral thoughtform and given physical presence and life by its connection to you, its shape limited only by your imagination. Your eidolon's appearance and physical form vary based on your shared vision for its construction, from clockworks to stuffed dolls and everything between, and it's not uncommon for that appearance to change greatly as your construct gains evolutions. Because it arises from an astral entity, your construct is no mindless servitor, but a fully thinking being with its own ideas, goals, and even emotions. These entities are extremely diverse; while many construct eidolons come from a powerful symbiotic connection with astral denizens, just as many arise from the forgotten memories of ancient empires and craftworks drifting across the Silver Sea of the Astral Plane.",
+						{
+							"type": "statblock",
+							"tag": "eidolon",
+							"name": "Construct Eidolon",
+							"source": "SoM"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Eidolon",
+			"source": "SoM",
+			"page": 62,
+			"className": "Summoner",
+			"classSource": "SoM",
+			"subclassShortName": "Demon",
+			"subclassSource": "SoM",
+			"level": 1,
+			"entries": [
+				{
+					"type": "pf2-h4",
+					"name": "Demon",
+					"entries": [
+						{
+							"type": "pf2-sidebar",
+							"name": "Embodiments of Sin",
+							"entries": [
+								"While all demon eidolons have an associated sin, those sins can be incredibly varied. While many demon summoners conjure up easily recognizable eidolons, such as tempter demons appearing in the form of seductive succubi or wrecker demons taking on the form of destructive abrikandilus, other demons may also answer the call, including ones no one has ever seen before on the Material Plane. A greed-filled summoner might find that their eidolon is in truth one of the fearsome boar demons known as a nalfeshnee, while a summoner whose secret sins are stranger and darker than the average person might ever contemplate could conjure up a demonic presence whose appearance has never been recorded in the history of the mortal world."
+							]
+						},
+						"Your eidolon is a demon, born of mortal sin congealed amid the chaos and evil of the Abyss, using its link to you to spread chaos at your side. Choose an associated sin for your demon. Demon eidolons have appearances as varied as the infinite Abyss. While demons are inherently untrustworthy, your demon eidolon has reached an accord with you and generally keeps it, though that doesn't mean your eidolon isn't actively working to bring your life deeper into its associated sin. Though a true demon, your demon eidolon's link to you as a mortal prevents them from casting the {@ritual abyssal pact|Bst} ritual, even if they somehow learn it.",
+						{
+							"type": "statblock",
+							"tag": "eidolon",
+							"name": "Demon Eidolon",
+							"source": "SoM"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Eidolon",
+			"source": "SoM",
+			"page": 63,
+			"className": "Summoner",
+			"classSource": "SoM",
+			"subclassShortName": "Devotion Phantom",
+			"subclassSource": "SoM",
+			"level": 1,
+			"entries": [
+				{
+					"type": "pf2-h4",
+					"name": "Devotion Phantom",
+					"entries": [
+						"Your eidolon is a demon, born of mortal sin congealed amid the chaos and evil of the Abyss, using its link to you to spread chaos at your side. Choose an associated sin for your demon. Demon eidolons have appearances as varied as the infinite Abyss. While demons are inherently untrustworthy, your demon eidolon has reached an accord with you and generally keeps it, though that doesn't mean your eidolon isn't actively working to bring your life deeper into its associated sin. Though a true demon, your demon eidolon's link to you as a mortal prevents them from casting the {@ritual abyssal pact|Bst} ritual, even if they somehow learn it.",
+						{
+							"type": "statblock",
+							"tag": "eidolon",
+							"name": "Devotion Phantom Eidolon",
+							"source": "SoM"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Eidolon",
+			"source": "SoM",
+			"page": 63,
+			"className": "Summoner",
+			"classSource": "SoM",
+			"subclassShortName": "Dragon",
+			"subclassSource": "SoM",
+			"level": 1,
+			"entries": [
+				{
+					"type": "pf2-h4",
+					"name": "Dragon Eidolon",
+					"entries": [
+						"Because dragons have a strong connection to magic, their minds can often leave an echo floating in the Astral Plane. Such an entity is extremely powerful but unable to interact with the outside world on its own. Dragon eidolons manifest in the powerful, scaled forms they had in life; most take the form of true dragons (albeit smaller), but some manifest as drakes or other draconic beings. You have forged a connection with such a dragon eidolon and together, you seek to grow as powerful as an ancient wyrm.",
+						{
+							"type": "statblock",
+							"tag": "eidolon",
+							"name": "Dragon Eidolon",
+							"source": "SoM"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Eidolon",
+			"source": "SoM",
+			"page": 64,
+			"className": "Summoner",
+			"classSource": "SoM",
+			"subclassShortName": "Fey",
+			"subclassSource": "SoM",
+			"level": 1,
+			"entries": [
+				{
+					"type": "pf2-h4",
+					"name": "Fey Eidolon",
+					"entries": [
+						"Your eidolon is a fey, a capricious being of the mysterious First World. Many fey appear similar to mortal humanoids with unusual features such as pointed ears, wings, or bodies composed of natural elements, but the full variety of fey is endless, and many others appear completely inhuman. Fey from the First World never truly die, instead forming a new creature. Fey eidolons usually come about when a summoner helps stabilize a difficult reformation. This means your fey eidolon likely lived a different life just before meeting you and might remember fragments of its old memories. Together, you might have to unravel a memory from your eidolon's past life among the fey.",
+						{
+							"type": "statblock",
+							"tag": "eidolon",
+							"name": "Fey Eidolon",
+							"source": "SoM"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Eidolon",
+			"source": "SoM",
+			"page": 65,
+			"className": "Summoner",
+			"classSource": "SoM",
+			"subclassShortName": "Plant",
+			"subclassSource": "SoM",
+			"level": 1,
+			"entries": [
+				{
+					"type": "pf2-h4",
+					"name": "Plant Eidolon",
+					"entries": [
+						"Your eidolon is an intelligent plant, formed from the same disembodied fragments of nature's life energy that become leshys. Plant eidolons tend to be curious and adaptable, with temperaments based on the parts of mortal culture they feel affinity toward. Despite coming from the same source, plant eidolons don't always look like leshys. Plant eidolons have forms that vary greatly and can look like almost any kind of plant creature in existence. Some even resemble plant creatures so strange they are impossible to identify.",
+						{
+							"type": "statblock",
+							"tag": "eidolon",
+							"name": "Plant Eidolon",
+							"source": "SoM"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Eidolon",
+			"source": "SoM",
+			"page": 66,
+			"className": "Summoner",
+			"classSource": "SoM",
+			"subclassShortName": "Psychopomp",
+			"subclassSource": "SoM",
+			"level": 1,
+			"entries": [
+				{
+					"type": "pf2-h4",
+					"name": "Psychopomp Eidolon",
+					"entries": [
+						"Your eidolon is a psychopomp, a creature whose sworn duty is to usher souls safely to the afterlife and maintain the courts of the dead. Psychopomp eidolons have a variety of appearances, but since they often traffic with mortals, their form typically includes an elaborate mask. You and your psychopomp eidolon share an important fate together, whether it relates directly to your own soul or to a mission that will somehow protect the souls of others.",
+						{
+							"type": "statblock",
+							"tag": "eidolon",
+							"name": "Psychopomp Eidolon",
+							"source": "SoM"
+						}
+					]
+				}
 			]
 		}
 	]

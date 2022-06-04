@@ -21,7 +21,7 @@
 					"page": {
 						"type": "integer"
 					},
-					"type":{
+					"type": {
 						"type": "string",
 						"enum": [
 							"Armor",
@@ -36,11 +36,18 @@
 					}
 				},
 				"additionalProperties": false,
-				"required": ["source", "name", "specialization", "page"]
+				"required": [
+					"source",
+					"name",
+					"specialization",
+					"page"
+				]
 			},
 			"uniqueItems": true
 		}
 	},
 	"additionalProperties": false,
-	"required": ["domain"]
+	"required": [
+		"domain"
+	]
 }

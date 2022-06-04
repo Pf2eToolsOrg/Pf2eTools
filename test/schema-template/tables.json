@@ -1,0 +1,31 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema",
+	"$id": "tables.json",
+	"title": "Tables",
+	"description": "The table data type for Pf2eTools.",
+	"type": "object",
+	"version": "0.0.1",
+	"properties": {
+		"table": {
+			"type": "array",
+			"items": {
+				"allOf": [
+					{
+						"$ref": "entry.json#/definitions/entryTable/allOf/1"
+					},
+					{
+						"required": [
+							"name",
+							"source",
+							"page"
+						]
+					}
+				]
+			}
+		}
+	},
+	"additionalProperties": false,
+	"required": [
+		"table"
+	]
+}

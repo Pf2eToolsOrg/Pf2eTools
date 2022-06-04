@@ -4,27 +4,26 @@
 			"name": "Divinity Leech",
 			"source": "AoE6",
 			"page": 75,
-			"focus": false,
 			"level": 9,
 			"traits": [
-				"Rare",
-				"Enchantment"
+				"rare",
+				"enchantment"
 			],
 			"school": "E",
 			"traditions": [
-				"Arcane",
-				"Occult"
+				"arcane",
+				"occult"
 			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"F": false,
-				"M": false,
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"range": {
 				"entry": "30 feet",
 				"distance": {
@@ -33,18 +32,20 @@
 				}
 			},
 			"targets": "1 creature",
-			"savingThrow": "Will",
-			"savingThrowBasic": false,
+			"savingThrow": {
+				"type": [
+					"W"
+				]
+			},
 			"duration": {
 				"type": "timed",
 				"entry": "sustained up to 1 minute",
+				"sustain": true,
 				"duration": {
 					"number": 1,
 					"unit": "minute"
 				}
 			},
-			"sustain": true,
-			"dismiss": false,
 			"entries": [
 				"You disrupt the connection between a divine caster or deific servitor and their deity, blocking their use of divine power.",
 				"If the target fails its save, it is {@condition fatigued}. For the spell's duration, whenever the target casts a divine spell, you regain {@dice 6d6} HP and the target must attempt another Will save with the following effects.",
@@ -63,29 +64,26 @@
 			"name": "Prismatic Shield",
 			"source": "AoE6",
 			"page": 75,
-			"focus": false,
 			"level": 9,
 			"traits": [
-				"Rare",
-				"Abjuration",
-				"Light"
+				"rare",
+				"abjuration",
+				"light"
 			],
 			"school": "A",
 			"traditions": [
-				"Arcane",
-				"Occult"
+				"arcane",
+				"occult"
 			],
 			"cast": {
 				"number": 1,
 				"unit": "action"
 			},
-			"components": {
-				"F": false,
-				"M": false,
-				"S": false,
-				"V": true
-			},
-			"savingThrowBasic": false,
+			"components": [
+				{
+					"V": true
+				}
+			],
 			"duration": {
 				"type": "timed",
 				"entry": "until the start of your next turn",
@@ -94,8 +92,6 @@
 					"unit": "turn"
 				}
 			},
-			"sustain": false,
-			"dismiss": false,
 			"entries": [
 				"Shield-sized shards of multicolored light manifest in the air around you, each rotating quickly to intercept attacks. Melee attacks against you impact a randomly colored shard, subjecting the attacker to a random effect from prismatic spray, with a saving throw of the type indicated in that spell. The shards automatically block physical ranged attacks the size of a spear or smaller, such as arrows, bolts, and javelins. You gain a +2 circumstance bonus to your AC against attacks with larger ranged weapons. Any spell that targets you requires the caster to succeed at a counteract check against your spell DC, or it fails to affect you."
 			]

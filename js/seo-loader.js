@@ -21,14 +21,14 @@ window.addEventListener("load", async () => {
 	});
 
 	switch (_SEO_PAGE) {
-		case "spells": $content.append(RenderSpells.$getRenderedSpell(it, {})); break;
+		case "spells": $content.append(Renderer.spell.getRenderedString(it)); break;
 		case "bestiary": {
-			$content.append(RenderBestiary.$getRenderedCreature(it));
+			$content.append(Renderer.creature.getRenderedString(it));
 			$(`.mon__name--token`).css({paddingRight: 5});
 			break;
 		}
-		case "items": $content.append(RenderItems.$getRenderedItem(it)); break;
-		case "feats": $content.append(RenderFeats.$getRenderedFeat(it)); break;
-		case "backgrounds": $content.append(RenderBackgrounds.$getRenderedBackground(it)); break;
+		case "items": $content.append(Renderer.item.getRenderedString(it)); break;
+		case "feats": $content.append(Renderer.feat.getRenderedString(it, {renderLeadsTo: true})); break;
+		case "backgrounds": $content.append(Renderer.background.getRenderedString(it)); break;
 	}
 });

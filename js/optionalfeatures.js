@@ -81,7 +81,7 @@ class OptionalFeaturesPage extends ListPage {
 		const it = this._dataList[id];
 		const $pgContent = $("#pagecontent").empty();
 		const buildStatsTab = () => {
-			$pgContent.append(RenderOptionalFeatures.$getRenderedOptionalFeature(it));
+			$pgContent.append(Renderer.optionalFeature.getRenderedString(it));
 
 			const $wrpTab = $(`#stat-tabs`);
 			$wrpTab.find(`.opt-feature-type`).remove();

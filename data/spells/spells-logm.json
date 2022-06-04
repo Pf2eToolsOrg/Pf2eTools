@@ -4,27 +4,26 @@
 			"name": "Acid Storm",
 			"source": "LOGM",
 			"page": 106,
-			"focus": false,
 			"level": 5,
 			"traits": [
-				"Acid",
-				"Evocation"
+				"acid",
+				"evocation"
 			],
 			"school": "V",
 			"traditions": [
-				"Arcane",
-				"Primal"
+				"arcane",
+				"primal"
 			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"F": false,
-				"M": false,
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"range": {
 				"entry": "120 feet",
 				"distance": {
@@ -38,7 +37,6 @@
 				],
 				"entry": "20-foot-radius burst"
 			},
-			"savingThrowBasic": false,
 			"duration": {
 				"type": "timed",
 				"entry": "1 minute",
@@ -47,15 +45,15 @@
 					"unit": "minute"
 				}
 			},
-			"sustain": false,
-			"dismiss": false,
 			"entries": [
 				"You evoke a storm of acid rain that pelts the area for the spell's duration. A creature that begins its turn in the area takes {@damage 3d8} acid damage (basic Reflex save)."
 			],
 			"heightened": {
 				"plus_x": {
 					"level": 2,
-					"entries": ["The damage increases by {@dice 1d8}."]
+					"entries": [
+						"The damage increases by {@dice 1d8}."
+					]
 				}
 			}
 		},
@@ -63,47 +61,47 @@
 			"name": "Acidic Burst",
 			"source": "LOGM",
 			"page": 106,
-			"focus": false,
 			"level": 1,
 			"traits": [
-				"Acid",
-				"Evocation"
+				"acid",
+				"evocation"
 			],
 			"school": "V",
 			"traditions": [
-				"Arcane",
-				"Primal"
+				"arcane",
+				"primal"
 			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"F": false,
-				"M": false,
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"area": {
 				"types": [
 					"Emanation"
 				],
 				"entry": "5-foot emanation"
 			},
-			"savingThrow": "Reflex",
-			"savingThrowBasic": true,
-			"duration": {
-				"type": null
+			"savingThrow": {
+				"type": [
+					"R"
+				],
+				"basic": true
 			},
-			"sustain": false,
-			"dismiss": false,
 			"entries": [
 				"You create a shell of acid around yourself that immediately bursts outward, dealing {@damage 2d6} acid damage to each creature in the area."
 			],
 			"heightened": {
 				"plus_x": {
 					"level": 1,
-					"entries": ["The damage increases by {@dice 2d6}."]
+					"entries": [
+						"The damage increases by {@dice 2d6}."
+					]
 				}
 			}
 		},
@@ -113,22 +111,24 @@
 			"page": 112,
 			"focus": true,
 			"level": 1,
+			"domains": [
+				"change"
+			],
 			"traits": [
-				"Morph",
-				"Transmutation"
+				"morph",
+				"transmutation"
 			],
 			"school": "T",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"F": false,
-				"M": false,
-				"S": true,
-				"V": true
-			},
-			"savingThrowBasic": false,
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"duration": {
 				"type": "timed",
 				"entry": "1 minute",
@@ -137,8 +137,6 @@
 					"unit": "minute"
 				}
 			},
-			"sustain": false,
-			"dismiss": false,
 			"entries": [
 				"You make subtle changes to yourself to adapt to the situation.",
 				"Choose one of the following options that applies to you.",
@@ -158,24 +156,24 @@
 			"source": "LOGM",
 			"page": 112,
 			"focus": true,
+			"domains": [
+				"change"
+			],
 			"level": 4,
 			"traits": [
-				"Abjuration"
+				"abjuration"
 			],
 			"school": "A",
 			"cast": {
 				"number": 1,
-				"unit": "reaction",
-				"entry": "{@as R}"
+				"unit": "reaction"
 			},
-			"components": {
-				"F": false,
-				"M": false,
-				"S": true,
-				"V": false
-			},
+			"components": [
+				{
+					"S": true
+				}
+			],
 			"trigger": "You take acid, cold, electricity, fire, or sonic damage.",
-			"savingThrowBasic": false,
 			"duration": {
 				"type": "timed",
 				"entry": "1 minute",
@@ -184,15 +182,15 @@
 					"unit": "minute"
 				}
 			},
-			"sustain": false,
-			"dismiss": false,
 			"entries": [
 				"You shift yourself to adapt to the mystical wavelengths of the energy damage, protecting yourself from further harm. You gain resistance 5 to the triggering energy type; you gain this resistance after you take the triggering damage, so it applies only to future damage you take during the duration."
 			],
 			"heightened": {
 				"plus_x": {
 					"level": 2,
-					"entries": ["Increase the resistance by 5."]
+					"entries": [
+						"Increase the resistance by 5."
+					]
 				}
 			}
 		},
@@ -200,28 +198,27 @@
 			"name": "Agitate",
 			"source": "LOGM",
 			"page": 106,
-			"focus": false,
 			"level": 1,
 			"traits": [
-				"Enchantment",
-				"Mental",
-				"Nonlethal"
+				"enchantment",
+				"mental",
+				"nonlethal"
 			],
 			"school": "E",
 			"traditions": [
-				"Arcane",
-				"Occult"
+				"arcane",
+				"occult"
 			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"F": false,
-				"M": false,
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"range": {
 				"entry": "30 feet",
 				"distance": {
@@ -230,8 +227,11 @@
 				}
 			},
 			"targets": "1 creature",
-			"savingThrow": "Will",
-			"savingThrowBasic": false,
+			"savingThrow": {
+				"type": [
+					"W"
+				]
+			},
 			"duration": {
 				"type": "timed",
 				"entry": "varies",
@@ -240,8 +240,6 @@
 					"unit": "special"
 				}
 			},
-			"sustain": false,
-			"dismiss": false,
 			"entries": [
 				"You send the target's mind and body into overdrive, forcing it to become restless and hyperactive.",
 				"During the duration, the target must {@action Stride}, {@action Fly}, or {@action Swim} at least once each turn or take {@damage 2d8} mental damage that turn. The duration of this effect depends on the target's Will save. The GM might decide to add additional move actions to the list for creatures who possess only a more unusual form of movement.",
@@ -258,7 +256,9 @@
 			"heightened": {
 				"plus_x": {
 					"level": 1,
-					"entries": ["The damage increases by {@dice 2d8}."]
+					"entries": [
+						"The damage increases by {@dice 2d8}."
+					]
 				}
 			}
 		},
@@ -266,38 +266,39 @@
 			"name": "Animus Mine",
 			"source": "LOGM",
 			"page": 106,
-			"focus": false,
 			"level": 2,
 			"traits": [
-				"Abjuration",
-				"Mental"
+				"abjuration",
+				"mental"
 			],
 			"school": "A",
 			"traditions": [
-				"Occult"
+				"occult"
 			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"F": false,
-				"M": false,
-				"S": true,
-				"V": true
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
+			"savingThrow": {
+				"type": [
+					"W"
+				]
 			},
-			"savingThrow": "Will",
-			"savingThrowBasic": false,
 			"duration": {
 				"type": "timed",
 				"entry": "1 hour",
+				"dismiss": true,
 				"duration": {
 					"number": 1,
 					"unit": "hour"
 				}
 			},
-			"sustain": false,
-			"dismiss": true,
 			"entries": [
 				"You implant a mental mine within your psyche that detonates against anyone attempting to {@footnote manipulate your thoughts|The animus mine spell should only the deal the mental damage on {@trait magical} {@trait mental} effects that send their magic into your mind, not if a creature tries to do something mundane like talk to you.|{@link Lost Omens Gods & Magic Errata|https://paizo.com/pathfinder/faq}}. You can use a single action, which has the {@trait concentrate} trait, to suppress the effects of the mine for 1 round to allow someone to safely use a {@trait mental} effect on you. You can {@action Dismiss} the spell.",
 				"The first creature that uses a {@trait magical} {@trait mental} effect against you triggers the animus mine, causing the spell to end. The animus mine deals {@damage 4d8} mental damage to the triggering creature, which must attempt a Will save.",
@@ -314,7 +315,9 @@
 			"heightened": {
 				"plus_x": {
 					"level": 1,
-					"entries": ["The damage increases by {@dice 2d8}."]
+					"entries": [
+						"The damage increases by {@dice 2d8}."
+					]
 				}
 			}
 		},
@@ -322,26 +325,25 @@
 			"name": "Anticipate Peril",
 			"source": "LOGM",
 			"page": 107,
-			"focus": false,
 			"level": 1,
 			"traits": [
-				"Divination"
+				"divination"
 			],
 			"school": "D",
 			"traditions": [
-				"Arcane",
-				"Occult"
+				"arcane",
+				"occult"
 			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"F": false,
-				"M": false,
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"range": {
 				"entry": "30 feet",
 				"distance": {
@@ -350,7 +352,6 @@
 				}
 			},
 			"targets": "1 creature",
-			"savingThrowBasic": false,
 			"duration": {
 				"type": "timed",
 				"entry": "10 minutes",
@@ -359,15 +360,15 @@
 					"unit": "minute"
 				}
 			},
-			"sustain": false,
-			"dismiss": false,
 			"entries": [
 				"You grant the target brief foresight. The target gains a +1 status bonus to its next initiative roll, after which the spell ends."
 			],
 			"heightened": {
 				"plus_x": {
 					"level": 2,
-					"entries": ["The status bonus increases by 1, to a maximum of +4 at 7th level."]
+					"entries": [
+						"The status bonus increases by 1, to a maximum of +4 at 7th level."
+					]
 				}
 			}
 		},
@@ -377,21 +378,25 @@
 			"page": 117,
 			"focus": true,
 			"level": 4,
+			"domains": [
+				"stars"
+			],
 			"traits": [
-				"Evocation",
-				"Light"
+				"evocation",
+				"light"
 			],
 			"school": "V",
 			"cast": {
 				"number": 3,
 				"unit": "action"
 			},
-			"components": {
-				"F": false,
-				"M": true,
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"M": true,
+					"S": true,
+					"V": true
+				}
+			],
 			"range": {
 				"entry": "150 feet",
 				"distance": {
@@ -399,18 +404,21 @@
 					"amount": 150
 				}
 			},
-			"savingThrow": "Reflex",
-			"savingThrowBasic": true,
+			"savingThrow": {
+				"type": [
+					"R"
+				],
+				"basic": true
+			},
 			"duration": {
 				"type": "timed",
 				"entry": "1 minute",
+				"dismiss": true,
 				"duration": {
 					"number": 1,
 					"unit": "minute"
 				}
 			},
-			"sustain": false,
-			"dismiss": true,
 			"entries": [
 				"Lines of burning starlight form a constellation around you.",
 				"Draw five lines, one at a time; each line must anchor at you or a creature or object already connected to a previous line, and it must end at a creature or object within 30 feet of its anchor (possibly allowing the asterism to extend to its full 150-foot range). A creature that begins its turn in one of these lines or enters one of these lines on its turn takes {@damage 4d6} fire damage (basic Reflex save). A creature can take this damage only once per turn, even if it moves through several lines. Targets that are part of the asterism do not take damage from it. If the distance between two targets (or you and a target) ever exceeds 30 feet, the line of starlight between the two breaks, and any lines that now no longer have a direct path back to you also break. You can {@action Dismiss} the spell."
@@ -418,7 +426,9 @@
 			"heightened": {
 				"plus_x": {
 					"level": 1,
-					"entries": ["The damage increases by {@dice 1d6}."]
+					"entries": [
+						"The damage increases by {@dice 1d6}."
+					]
 				}
 			}
 		},
@@ -426,27 +436,26 @@
 			"name": "Befuddle",
 			"source": "LOGM",
 			"page": 107,
-			"focus": false,
 			"level": 1,
 			"traits": [
-				"Emotion",
-				"Enchantment",
-				"Mental"
+				"emotion",
+				"enchantment",
+				"mental"
 			],
 			"school": "E",
 			"traditions": [
-				"Arcane"
+				"arcane"
 			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"F": false,
-				"M": false,
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"range": {
 				"entry": "30 feet",
 				"distance": {
@@ -455,8 +464,12 @@
 				}
 			},
 			"targets": "1 creature",
-			"savingThrow": "Will",
-			"savingThrowBasic": true,
+			"savingThrow": {
+				"type": [
+					"W"
+				],
+				"basic": true
+			},
 			"duration": {
 				"type": "timed",
 				"entry": "1 round",
@@ -465,8 +478,6 @@
 					"unit": "round"
 				}
 			},
-			"sustain": false,
-			"dismiss": false,
 			"entries": [
 				"You sow seeds of confusion in your target's mind, causing their actions and thoughts to become {@condition clumsy}.",
 				{
@@ -485,25 +496,25 @@
 			"source": "LOGM",
 			"page": 115,
 			"focus": true,
+			"domains": [
+				"lightning"
+			],
 			"level": 4,
 			"traits": [
-				"Electricity",
-				"Evocation"
+				"electricity",
+				"evocation"
 			],
 			"school": "V",
 			"cast": {
 				"number": 1,
-				"unit": "reaction",
-				"entry": "{@as R}"
+				"unit": "reaction"
 			},
-			"components": {
-				"F": false,
-				"M": false,
-				"S": true,
-				"V": false
-			},
+			"components": [
+				{
+					"S": true
+				}
+			],
 			"trigger": "You would take electricity damage.",
-			"savingThrowBasic": false,
 			"duration": {
 				"type": "timed",
 				"entry": "1 minute",
@@ -512,8 +523,6 @@
 					"unit": "minute"
 				}
 			},
-			"sustain": false,
-			"dismiss": false,
 			"entries": [
 				"When lightning is turned at you, you store the charge safely within yourself, unleashing it when the time is right. You gain electricity resistance 10 against the triggering effect. If you successfully prevent damage in this way, at any time during the spell's duration, you can spend a single action, which has the {@trait attack} trait, to expend the charge and make a melee spell attack at an adjacent target or a ranged spell attack at a target within 60 feet. This attack deals electricity damage equal to the damage prevented by bottle the storm. If you cast {@spell bottle the storm|LOGM} a second time before the original duration elapses, or if you do not make this attack, the stored charge dissipates harmlessly."
 			],
@@ -521,11 +530,15 @@
 				"x": [
 					{
 						"level": 7,
-						"entries": ["The resistance increases to 15, and you can immediately make the spell attack roll granted by bottle the storm as part of the reaction used to cast the spell."]
+						"entries": [
+							"The resistance increases to 15, and you can immediately make the spell attack roll granted by bottle the storm as part of the reaction used to cast the spell."
+						]
 					},
 					{
 						"level": 10,
-						"entries": ["The resistance increases to 20, and you can immediately make the spell attack roll granted by bottle the storm as part of the reaction used to cast the spell."]
+						"entries": [
+							"The resistance increases to 20, and you can immediately make the spell attack roll granted by bottle the storm as part of the reaction used to cast the spell."
+						]
 					}
 				]
 			}
@@ -534,26 +547,25 @@
 			"name": "Brand The Impenitent",
 			"source": "LOGM",
 			"page": 107,
-			"focus": false,
 			"level": 2,
 			"traits": [
-				"Abjuration",
-				"Curse"
+				"abjuration",
+				"curse"
 			],
 			"school": "A",
 			"traditions": [
-				"Divine"
+				"divine"
 			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"F": false,
-				"M": false,
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"range": {
 				"entry": "touch",
 				"distance": {
@@ -562,8 +574,11 @@
 				}
 			},
 			"targets": "1 creature",
-			"savingThrow": "Fortitude",
-			"savingThrowBasic": false,
+			"savingThrow": {
+				"type": [
+					"F"
+				]
+			},
 			"duration": {
 				"type": "timed",
 				"entry": "varies",
@@ -572,8 +587,6 @@
 					"unit": "special"
 				}
 			},
-			"sustain": false,
-			"dismiss": false,
 			"entries": [
 				"You brand the target with an ethereal copy of your deity's religious symbol. This brand can't be {@condition hidden}, but it is visible only to followers of your faith, who see it as clearly as a lit torch. Followers of your faith ignore the target's {@condition concealed} condition, if any, and the target gains a \u20131 status penalty to AC against attacks by followers of your faith. If the target is a follower of your deity in good standing, the spell fails.",
 				{
@@ -593,22 +606,25 @@
 			"page": 115,
 			"focus": true,
 			"level": 1,
+			"domains": [
+				"lightning"
+			],
 			"traits": [
-				"Attack",
-				"Electricity",
-				"Evocation"
+				"attack",
+				"electricity",
+				"evocation"
 			],
 			"school": "V",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"F": false,
-				"M": false,
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"range": {
 				"entry": "60 feet",
 				"distance": {
@@ -617,12 +633,6 @@
 				}
 			},
 			"targets": "1 or more creatures",
-			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
-			"sustain": false,
-			"dismiss": false,
 			"entries": [
 				"You fire a javelin of electricity that leaves a charged field around its target. Make a spell attack roll. The javelin deals {@damage 1d6} electricity damage and 1 {@condition persistent damage ||persistent electricity damage}.",
 				{
@@ -636,7 +646,9 @@
 			"heightened": {
 				"plus_x": {
 					"level": 1,
-					"entries": ["The initial damage increases by {@dice 1d6}, and the {@condition persistent damage} increases by 1."]
+					"entries": [
+						"The initial damage increases by {@dice 1d6}, and the {@condition persistent damage} increases by 1."
+					]
 				}
 			}
 		},
@@ -649,40 +661,37 @@
 					"APG|217"
 				]
 			},
-			"focus": false,
 			"level": 1,
 			"traits": [
-				"Cold",
-				"Evocation"
+				"cold",
+				"evocation"
 			],
 			"school": "V",
 			"traditions": [
-				"Arcane",
-				"Primal"
+				"arcane",
+				"primal"
 			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"F": false,
-				"M": false,
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"area": {
 				"types": [
 					"Cone"
 				],
 				"entry": "15-foot cone"
 			},
-			"savingThrow": "Reflex",
-			"savingThrowBasic": false,
-			"duration": {
-				"type": null
+			"savingThrow": {
+				"type": [
+					"R"
+				]
 			},
-			"sustain": false,
-			"dismiss": false,
 			"entries": [
 				"A cone of icy shards bursts from your spread hands and coats the targets in a layer of frost. You deal {@damage 2d4} cold damage to creatures in the area; they must each attempt a Reflex save.",
 				{
@@ -698,7 +707,9 @@
 			"heightened": {
 				"plus_x": {
 					"level": 1,
-					"entries": ["The damage increases by {@dice 2d4}."]
+					"entries": [
+						"The damage increases by {@dice 2d4}."
+					]
 				}
 			}
 		},
@@ -706,28 +717,28 @@
 			"name": "Cup Of Dust",
 			"source": "LOGM",
 			"page": 107,
-			"focus": false,
 			"level": 3,
 			"traits": [
-				"Curse",
-				"Necromancy"
+				"curse",
+				"necromancy"
 			],
 			"school": "N",
 			"traditions": [
-				"Arcane",
-				"Occult",
-				"Primal"
+				"arcane",
+				"occult",
+				"primal"
 			],
 			"cast": {
 				"number": 3,
 				"unit": "action"
 			},
-			"components": {
-				"F": false,
-				"M": true,
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"M": true,
+					"S": true,
+					"V": true
+				}
+			],
 			"range": {
 				"entry": "30 feet",
 				"distance": {
@@ -736,18 +747,20 @@
 				}
 			},
 			"targets": "1 living creature",
-			"savingThrow": "Fortitude",
-			"savingThrowBasic": false,
+			"savingThrow": {
+				"type": [
+					"F"
+				]
+			},
 			"duration": {
 				"type": "timed",
 				"entry": "1 day",
+				"dismiss": true,
 				"duration": {
 					"number": 1,
 					"unit": "day"
 				}
 			},
-			"sustain": false,
-			"dismiss": true,
 			"entries": [
 				"You curse the target with a thirst no drink can quench. You can {@action Dismiss} the spell. The target must attempt a Fortitude save.",
 				{
@@ -763,7 +776,9 @@
 			"heightened": {
 				"plus_x": {
 					"level": 3,
-					"entries": ["The thirst becomes more unbearable, increasing the damage each hour by {@dice 1d4}, or by {@dice 2d4} on a critical failure."]
+					"entries": [
+						"The thirst becomes more unbearable, increasing the damage each hour by {@dice 1d4}, or by {@dice 2d4} on a critical failure."
+					]
 				}
 			},
 			"spellLists": [
@@ -776,21 +791,22 @@
 			"page": 118,
 			"focus": true,
 			"level": 1,
+			"domains": [
+				"time"
+			],
 			"traits": [
-				"Abjuration"
+				"abjuration"
 			],
 			"school": "A",
 			"cast": {
 				"number": 1,
-				"unit": "reaction",
-				"entry": "{@as R}"
+				"unit": "reaction"
 			},
-			"components": {
-				"F": false,
-				"M": false,
-				"S": true,
-				"V": false
-			},
+			"components": [
+				{
+					"S": true
+				}
+			],
 			"trigger": "A creature or object within range is hit by an attack.",
 			"range": {
 				"entry": "30 feet",
@@ -800,17 +816,15 @@
 				}
 			},
 			"targets": "the triggering creature",
-			"savingThrowBasic": false,
 			"duration": {
 				"type": "timed",
 				"entry": "1 round",
+				"dismiss": true,
 				"duration": {
 					"number": 1,
 					"unit": "round"
 				}
 			},
-			"sustain": false,
-			"dismiss": true,
 			"entries": [
 				"You transpose the moment that the target would be injured to later in its timestream. Roll damage normally, but do not reduce Hit Points or apply any other effects of the attack until the spell's duration has elapsed. When the spell ends, the target is immediately affected by the attack, taking damage and being affected by any additional effects. You can {@action Dismiss} this spell."
 			]
@@ -818,42 +832,48 @@
 		{
 			"name": "Diamond Dust",
 			"source": "LOGM",
+			"domains": [
+				"cold"
+			],
 			"page": 112,
 			"focus": true,
 			"level": 4,
 			"traits": [
-				"Cold",
-				"Evocation"
+				"cold",
+				"evocation"
 			],
 			"school": "V",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"F": false,
-				"M": false,
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"area": {
 				"types": [
 					"Emanation"
 				],
 				"entry": "15-foot emanation centered on you"
 			},
-			"savingThrow": "Fortitude",
-			"savingThrowBasic": true,
+			"savingThrow": {
+				"type": [
+					"F"
+				],
+				"basic": true
+			},
 			"duration": {
 				"type": "timed",
 				"entry": "1 minute",
+				"dismiss": true,
 				"duration": {
 					"number": 1,
 					"unit": "minute"
 				}
 			},
-			"sustain": false,
-			"dismiss": true,
 			"entries": [
 				"You supercool the nearby air, forming a cloud of dancing ice crystals in an emanation around you. A creature other than you that enters the area or ends its turn within the area takes {@damage 2d6} cold damage. A creature can take this damage only once per turn. The crystals scatter and refract light; if a {@trait light} effect enters diamond dust's area, any creatures that effect goes on to affect gain a +2 status bonus to AC and saves against it.",
 				"While the spell persists, you can activate or deactivate this aura by using a single action, which has the {@trait concentrate} trait.",
@@ -862,7 +882,9 @@
 			"heightened": {
 				"plus_x": {
 					"level": 2,
-					"entries": ["The damage increases by {@dice 1d6}."]
+					"entries": [
+						"The damage increases by {@dice 1d6}."
+					]
 				}
 			}
 		},
@@ -872,21 +894,24 @@
 			"page": 115,
 			"focus": true,
 			"level": 1,
+			"domains": [
+				"plague"
+			],
 			"traits": [
-				"Disease",
-				"Necromancy"
+				"disease",
+				"necromancy"
 			],
 			"school": "N",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"F": false,
-				"M": false,
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"range": {
 				"entry": "15 feet",
 				"distance": {
@@ -894,13 +919,11 @@
 					"amount": 15
 				}
 			},
-			"savingThrow": "Fortitude",
-			"savingThrowBasic": false,
-			"duration": {
-				"type": null
+			"savingThrow": {
+				"type": [
+					"F"
+				]
 			},
-			"sustain": false,
-			"dismiss": false,
 			"entries": [
 				"Your deity sends wracking plagues. The target must attempt a Fortitude save. When you {@action Cast a Spell||Cast the Spell}, decide whether the disease inflicts the {@condition clumsy}, {@condition enfeebled}, or {@condition stupefied} condition.",
 				{
@@ -941,7 +964,9 @@
 				"x": [
 					{
 						"level": 5,
-						"entries": ["The divine plague disease gains the {@trait virulent} trait. The condition value for the {@condition clumsy}, {@condition enfeebled}, or {@condition stupefied} condition is 2 instead of 1."]
+						"entries": [
+							"The divine plague disease gains the {@trait virulent} trait. The condition value for the {@condition clumsy}, {@condition enfeebled}, or {@condition stupefied} condition is 2 instead of 1."
+						]
 					}
 				]
 			}
@@ -952,20 +977,23 @@
 			"page": 119,
 			"focus": true,
 			"level": 4,
+			"domains": [
+				"void"
+			],
 			"traits": [
-				"Conjuration"
+				"conjuration"
 			],
 			"school": "C",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"F": false,
-				"M": false,
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"range": {
 				"entry": "5 feet",
 				"distance": {
@@ -979,18 +1007,20 @@
 				],
 				"entry": "20-foot emanation"
 			},
-			"savingThrow": "Fortitude",
-			"savingThrowBasic": false,
+			"savingThrow": {
+				"type": [
+					"F"
+				]
+			},
 			"duration": {
 				"type": "timed",
 				"entry": "1 minute",
+				"dismiss": true,
 				"duration": {
 					"number": 1,
 					"unit": "minute"
 				}
 			},
-			"sustain": false,
-			"dismiss": true,
 			"entries": [
 				"Striking at thin air, you create hairline cracks in an unoccupied adjacent space that lead somewhere outside reality. Air rushes through the cracks, drawing Large or smaller creatures and objects of light Bulk or less toward the center. Large or smaller creatures in the area must attempt a Fortitude save at the start of their turn; creatures that move into the area must attempt the save on entering.",
 				{
@@ -1005,7 +1035,9 @@
 			"heightened": {
 				"plus_x": {
 					"level": 1,
-					"entries": ["The damage increases by {@dice 1d6}."]
+					"entries": [
+						"The damage increases by {@dice 1d6}."
+					]
 				}
 			}
 		},
@@ -1015,21 +1047,23 @@
 			"page": 119,
 			"focus": true,
 			"level": 1,
+			"domains": [
+				"wyrmkin"
+			],
 			"traits": [
-				"Evocation"
+				"evocation"
 			],
 			"school": "V",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"F": false,
-				"M": false,
-				"S": true,
-				"V": true
-			},
-			"savingThrowBasic": false,
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"duration": {
 				"type": "timed",
 				"entry": "1 minute",
@@ -1038,8 +1072,6 @@
 					"unit": "minute"
 				}
 			},
-			"sustain": false,
-			"dismiss": false,
 			"entries": [
 				"You shape energy into one incorporeal tiny dragon (or serpentine creature) that flits around you. The specific dragon is random; roll {@dice 1d6} on the table below for each dragon evoked to determine which type of dragon you create. While the spell persists, you can command one of your dragons to spit a missile of energy at a creature within 60 feet by using a single action, which has the {@trait concentrate} trait. This is a ranged {@action Strike} that uses your spell attack bonus and deals {@dice 1d6} damage plus your spellcasting ability modifier, with the damage type depending on the dragon. A dragon's breath {@action Strike} uses and contributes to your multiple attack penalty. Once a dragon has used its breath {@action Strike}, it winks out of existence; when you have no dragons remaining, the spell ends.",
 				{
@@ -1092,7 +1124,9 @@
 			"heightened": {
 				"plus_x": {
 					"level": 1,
-					"entries": ["You shape 1 additional dragon, and the {@action Strike} damage increases by {@dice 1d6}."]
+					"entries": [
+						"You shape 1 additional dragon, and the {@action Strike} damage increases by {@dice 1d6}."
+					]
 				}
 			}
 		},
@@ -1102,22 +1136,25 @@
 			"page": 114,
 			"focus": true,
 			"level": 4,
+			"domains": [
+				"dust"
+			],
 			"traits": [
-				"Air",
-				"Conjuration",
-				"Nonlethal"
+				"air",
+				"conjuration",
+				"nonlethal"
 			],
 			"school": "C",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"F": false,
-				"M": false,
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"range": {
 				"entry": "120 feet",
 				"distance": {
@@ -1131,7 +1168,6 @@
 				],
 				"entry": "20-foot-radius burst"
 			},
-			"savingThrowBasic": false,
 			"duration": {
 				"type": "timed",
 				"entry": "1 minute",
@@ -1140,15 +1176,15 @@
 					"unit": "minute"
 				}
 			},
-			"sustain": false,
-			"dismiss": false,
 			"entries": [
 				"You call forth a swirling storm of dust. The dust storm obscures vision, with the effect of obscuring mist. The dust also makes the air unbreathable; creatures in the area must hold their breath (Core Rulebook 478), though wearing a scarf or similar clothing over the mouth increases the time the creature can hold its breath to 5 rounds. Creatures entering or starting their turn in the dust storm take {@damage 1d6} slashing damage. Creatures that have the {@trait water} trait or that are made primarily of liquid take double damage."
 			],
 			"heightened": {
 				"plus_x": {
 					"level": 2,
-					"entries": ["The damage increases by {@dice 1d6}."]
+					"entries": [
+						"The damage increases by {@dice 1d6}."
+					]
 				}
 			}
 		},
@@ -1158,20 +1194,23 @@
 			"page": 114,
 			"focus": true,
 			"level": 4,
+			"domains": [
+				"duty"
+			],
 			"traits": [
-				"Abjuration"
+				"abjuration"
 			],
 			"school": "A",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"F": false,
-				"M": false,
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"range": {
 				"entry": "30 feet",
 				"distance": {
@@ -1180,24 +1219,24 @@
 				}
 			},
 			"targets": "1 creature",
-			"savingThrowBasic": false,
 			"duration": {
 				"type": "timed",
 				"entry": "1 minute",
+				"dismiss": true,
 				"duration": {
 					"number": 1,
 					"unit": "minute"
 				}
 			},
-			"sustain": false,
-			"dismiss": true,
 			"entries": [
 				"As you challenge an enemy, you take some of its attention away from your allies. The target takes a \u20131 status penalty to attack rolls, damage rolls, and skill checks against creatures other than you, and you take a \u20131 status penalty to attack rolls, damage rolls, and skill checks against creatures other than the target. Each time a creature other than you uses a {@condition hostile} action that affects the challenged enemy, the enemy can attempt a Will save. On a success, the enemy no longer takes the penalty against that creature. You can {@action Dismiss} the spell, and it ends automatically if you or the target is defeated."
 			],
 			"heightened": {
 				"plus_x": {
 					"level": 3,
-					"entries": ["The status penalties increase by 1."]
+					"entries": [
+						"The status penalties increase by 1."
+					]
 				}
 			}
 		},
@@ -1207,20 +1246,23 @@
 			"page": 117,
 			"focus": true,
 			"level": 4,
+			"domains": [
+				"souls"
+			],
 			"traits": [
-				"Necromancy"
+				"necromancy"
 			],
 			"school": "N",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"F": false,
-				"M": false,
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"range": {
 				"entry": "30 feet",
 				"distance": {
@@ -1234,17 +1276,15 @@
 				],
 				"entry": "15-foot emanation"
 			},
-			"savingThrowBasic": false,
 			"duration": {
 				"type": "timed",
 				"entry": "sustained up to 1 minute",
+				"sustain": true,
 				"duration": {
 					"number": 1,
 					"unit": "minute"
 				}
 			},
-			"sustain": true,
-			"dismiss": false,
 			"entries": [
 				"You force the Material and Ethereal Planes to partially overlap, creating a zone that causes incorporeal and spiritual entities to take on many of the aspects of corporeal creatures. Within the ectoplasmic interstice, incorporeal creatures cannot pass through solid objects or corporeal creatures, and they can manipulate and attempt Strength-based checks against physical creatures and objects. An incorporeal PC or other creature with a normal Strength modifier simply uses that modifier, but if the creature had a Strength modifier of \u20135, like most incorporeal monsters, it uses a +4 modifier instead, increasing its {@skill Athletics} modifier by 9 accordingly. Attacks against creatures that are within the interstice overcome resistances as if they were by ghost touch weapons."
 			]
@@ -1255,21 +1295,24 @@
 			"page": 117,
 			"focus": true,
 			"level": 1,
+			"domains": [
+				"souls"
+			],
 			"traits": [
-				"Incapacitation",
-				"Necromancy"
+				"incapacitation",
+				"necromancy"
 			],
 			"school": "N",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"F": false,
-				"M": false,
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"range": {
 				"entry": "touch",
 				"distance": {
@@ -1278,12 +1321,6 @@
 				}
 			},
 			"targets": "1 living creature that has a soul",
-			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
-			"sustain": false,
-			"dismiss": false,
 			"entries": [
 				"Your touch disrupts the connection between body and soul, possibly forcing the soul out of the body altogether. The target must attempt a Fortitude save. You can allow allies to choose the degree of success instead of rolling a saving throw.",
 				{
@@ -1298,7 +1335,9 @@
 			"heightened": {
 				"plus_x": {
 					"level": 3,
-					"entries": ["If a willing ally chooses to critically fail, it can stay in soul form for 1 additional round."]
+					"entries": [
+						"If a willing ally chooses to critically fail, it can stay in soul form for 1 additional round."
+					]
 				}
 			}
 		},
@@ -1308,27 +1347,23 @@
 			"page": 119,
 			"focus": true,
 			"level": 1,
+			"domains": [
+				"void"
+			],
 			"traits": [
-				"Abjuration",
-				"Mental"
+				"abjuration",
+				"mental"
 			],
 			"school": "A",
 			"cast": {
 				"number": 1,
 				"unit": "action"
 			},
-			"components": {
-				"F": false,
-				"M": false,
-				"S": false,
-				"V": true
-			},
-			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
-			"sustain": false,
-			"dismiss": false,
+			"components": [
+				{
+					"V": true
+				}
+			],
 			"entries": [
 				"You inject a sliver of the void into your mind, momentarily remaking it into a bleak and empty place. Attempt a counteract check against one {@trait emotion} effect affecting you."
 			],
@@ -1336,7 +1371,9 @@
 				"x": [
 					{
 						"level": 5,
-						"entries": ["You can attempt counteract checks against any number of {@trait emotion} effects affecting you."]
+						"entries": [
+							"You can attempt counteract checks against any number of {@trait emotion} effects affecting you."
+						]
 					}
 				]
 			}
@@ -1344,28 +1381,29 @@
 		{
 			"name": "Endure",
 			"source": "LOGM",
+			"miscTags": [
+				"THP"
+			],
 			"page": 107,
-			"focus": false,
 			"level": 1,
 			"traits": [
-				"Enchantment",
-				"Mental"
+				"enchantment",
+				"mental"
 			],
 			"school": "E",
 			"traditions": [
-				"Arcane",
-				"Occult"
+				"arcane",
+				"occult"
 			],
 			"cast": {
 				"number": 1,
 				"unit": "action"
 			},
-			"components": {
-				"F": false,
-				"M": false,
-				"S": true,
-				"V": false
-			},
+			"components": [
+				{
+					"S": true
+				}
+			],
 			"range": {
 				"entry": "touch",
 				"distance": {
@@ -1374,7 +1412,6 @@
 				}
 			},
 			"targets": "1 creature",
-			"savingThrowBasic": false,
 			"duration": {
 				"type": "timed",
 				"entry": "1 round",
@@ -1383,15 +1420,15 @@
 					"unit": "round"
 				}
 			},
-			"sustain": false,
-			"dismiss": false,
 			"entries": [
 				"You invigorate the touched creature's mind and urge it to press on. You grant the touched creature 5 temporary Hit Points."
 			],
 			"heightened": {
 				"plus_x": {
 					"level": 1,
-					"entries": ["Increase the temporary Hit Points by 5."]
+					"entries": [
+						"Increase the temporary Hit Points by 5."
+					]
 				}
 			}
 		},
@@ -1399,24 +1436,28 @@
 			"name": "Ephemeral Hazards",
 			"source": "LOGM",
 			"page": 113,
+			"domains": [
+				"delirium"
+			],
 			"focus": true,
 			"level": 4,
 			"traits": [
-				"Illusion",
-				"Mental",
-				"Visual"
+				"illusion",
+				"mental",
+				"visual"
 			],
 			"school": "I",
 			"cast": {
 				"number": 3,
 				"unit": "action"
 			},
-			"components": {
-				"F": false,
-				"M": true,
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"M": true,
+					"S": true,
+					"V": true
+				}
+			],
 			"range": {
 				"entry": "60 feet",
 				"distance": {
@@ -1424,7 +1465,6 @@
 					"amount": 60
 				}
 			},
-			"savingThrowBasic": false,
 			"duration": {
 				"type": "timed",
 				"entry": "1 minute",
@@ -1433,8 +1473,6 @@
 					"unit": "minute"
 				}
 			},
-			"sustain": false,
-			"dismiss": false,
 			"entries": [
 				"You create illusory hazards, such as spinning blades or a puddle of acid, in four 10-foot-by-10-foot spaces within range.",
 				"The hazards are merely a mental projection, and a creature receives a Will save each time it touches a hazard or is occupying one's space at the start of its turn. Depending on the result, the creature takes {@damage 4d6} mental damage and might have difficulty moving through the area. A creature can take this damage only once per turn, even if it moves through several hazards. Choose bludgeoning, slashing, piercing, acid, cold, electricity, fire, or sonic damage when you cast {@spell ephemeral hazards|LOGM}; resistances and weaknesses to those damage types apply if the target thinks they do, as judged by the GM. You can freely choose the appearance and damage type of each hazard as long as its appearance reflects the type of damage it deals (for instance, a hazard that deals piercing damage might take the form of sharpened spikes).",
@@ -1451,7 +1489,9 @@
 			"heightened": {
 				"plus_x": {
 					"level": 1,
-					"entries": ["The damage increases by {@dice 1d6}."]
+					"entries": [
+						"The damage increases by {@dice 1d6}."
+					]
 				}
 			}
 		},
@@ -1459,27 +1499,26 @@
 			"name": "Expeditious Excavation",
 			"source": "LOGM",
 			"page": 107,
-			"focus": false,
 			"level": 2,
 			"traits": [
-				"Earth",
-				"Transmutation"
+				"earth",
+				"transmutation"
 			],
 			"school": "T",
 			"traditions": [
-				"Arcane",
-				"Primal"
+				"arcane",
+				"primal"
 			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"F": false,
-				"M": false,
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"range": {
 				"entry": "touch",
 				"distance": {
@@ -1493,12 +1532,6 @@
 				],
 				"entry": "cube of dirt 5 feet across or smaller"
 			},
-			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
-			"sustain": false,
-			"dismiss": false,
 			"entries": [
 				"You remove loose dirt, dust, gravel, sand, and the like (though not solid stone) up to the size of a 5-foot cube. Any Medium or smaller creature standing atop the earth when the spell is cast must attempt a Reflex save or {@skill Acrobatics} check.",
 				{
@@ -1513,7 +1546,9 @@
 			"heightened": {
 				"plus_x": {
 					"level": 2,
-					"entries": ["The spell can excavate an additional 5-foot cube of earth. If you excavate all four 5-foot cubes beneath a Large creature, it must attempt a Reflex save or {@skill Acrobatics} check, as above."]
+					"entries": [
+						"The spell can excavate an additional 5-foot cube of earth. If you excavate all four 5-foot cubes beneath a Large creature, it must attempt a Reflex save or {@skill Acrobatics} check, as above."
+					]
 				}
 			},
 			"spellLists": [
@@ -1524,23 +1559,26 @@
 			"name": "Fallow Field",
 			"source": "LOGM",
 			"page": 113,
+			"domains": [
+				"decay"
+			],
 			"focus": true,
 			"level": 4,
 			"traits": [
-				"Necromancy",
-				"Negative"
+				"necromancy",
+				"negative"
 			],
 			"school": "N",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"F": false,
-				"M": false,
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"range": {
 				"entry": "60 feet",
 				"distance": {
@@ -1554,18 +1592,20 @@
 				],
 				"entry": "15-foot emanation"
 			},
-			"savingThrow": "Will",
-			"savingThrowBasic": false,
+			"savingThrow": {
+				"type": [
+					"W"
+				]
+			},
 			"duration": {
 				"type": "timed",
 				"entry": "sustained up to 1 minute",
+				"sustain": true,
 				"duration": {
 					"number": 1,
 					"unit": "minute"
 				}
 			},
-			"sustain": true,
-			"dismiss": false,
 			"entries": [
 				"A sickly yellow light fills the area as entropic forces prevent healing. When a creature within the area would regain Hit Points, such as from a {@trait healing} effect or an ability like fast healing or regeneration, it must attempt a Will save.",
 				{
@@ -1583,28 +1623,28 @@
 			"name": "Feast Of Ashes",
 			"source": "LOGM",
 			"page": 107,
-			"focus": false,
 			"level": 2,
 			"traits": [
-				"Curse",
-				"Necromancy"
+				"curse",
+				"necromancy"
 			],
 			"school": "N",
 			"traditions": [
-				"Arcane",
-				"Occult",
-				"Primal"
+				"arcane",
+				"occult",
+				"primal"
 			],
 			"cast": {
 				"number": 3,
 				"unit": "action"
 			},
-			"components": {
-				"F": false,
-				"M": true,
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"M": true,
+					"S": true,
+					"V": true
+				}
+			],
 			"range": {
 				"entry": "30 feet",
 				"distance": {
@@ -1613,18 +1653,20 @@
 				}
 			},
 			"targets": "1 living creature",
-			"savingThrow": "Fortitude",
-			"savingThrowBasic": false,
+			"savingThrow": {
+				"type": [
+					"F"
+				]
+			},
 			"duration": {
 				"type": "timed",
 				"entry": "1 week",
+				"dismiss": true,
 				"duration": {
 					"number": 1,
 					"unit": "special"
 				}
 			},
-			"sustain": false,
-			"dismiss": true,
 			"entries": [
 				"You curse the target with a hunger no food can sate. You can {@action Dismiss} the spell. The target must attempt a Fortitude save.",
 				{
@@ -1640,7 +1682,9 @@
 			"heightened": {
 				"plus_x": {
 					"level": 1,
-					"entries": ["The hunger becomes more unbearable, increasing the damage each day by {@dice 1d4}, or by {@dice 2d4} on a critical failure."]
+					"entries": [
+						"The hunger becomes more unbearable, increasing the damage each day by {@dice 1d4}, or by {@dice 2d4} on a critical failure."
+					]
 				}
 			}
 		},
@@ -1649,23 +1693,26 @@
 			"source": "LOGM",
 			"page": 116,
 			"focus": true,
+			"domains": [
+				"repose"
+			],
 			"level": 4,
 			"traits": [
-				"Abjuration",
-				"Emotion",
-				"Mental"
+				"abjuration",
+				"emotion",
+				"mental"
 			],
 			"school": "A",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"F": false,
-				"M": false,
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"range": {
 				"entry": "30 feet",
 				"distance": {
@@ -1679,7 +1726,6 @@
 				],
 				"entry": "15-foot emanation"
 			},
-			"savingThrowBasic": false,
 			"duration": {
 				"type": "timed",
 				"entry": "1 minute",
@@ -1688,8 +1734,6 @@
 					"unit": "minute"
 				}
 			},
-			"sustain": false,
-			"dismiss": false,
 			"entries": [
 				"A divine beacon radiates serenity, soothing nearby allies.",
 				"Allies within the area gain a +1 status bonus to saving throws against {@trait emotion} effects. An ally can touch the font as an {@action Interact} action; if they do so, the spell attempts to counteract one {@trait emotion} effect affecting the ally of the ally's choice, after which that {@trait emotion} effect is temporarily immune for 1 day.",
@@ -1698,7 +1742,9 @@
 			"heightened": {
 				"plus_x": {
 					"level": 4,
-					"entries": ["The bonus increases by 1."]
+					"entries": [
+						"The bonus increases by 1."
+					]
 				}
 			}
 		},
@@ -1708,21 +1754,24 @@
 			"page": 115,
 			"focus": true,
 			"level": 4,
+			"domains": [
+				"plague"
+			],
 			"traits": [
-				"Disease",
-				"Necromancy"
+				"disease",
+				"necromancy"
 			],
 			"school": "N",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"F": false,
-				"M": false,
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"range": {
 				"entry": "30 feet",
 				"distance": {
@@ -1731,8 +1780,11 @@
 				}
 			},
 			"targets": "1 creature affected by a disease",
-			"savingThrow": "Will",
-			"savingThrowBasic": false,
+			"savingThrow": {
+				"type": [
+					"W"
+				]
+			},
 			"duration": {
 				"type": "timed",
 				"entry": "1 minute",
@@ -1741,8 +1793,6 @@
 					"unit": "minute"
 				}
 			},
-			"sustain": false,
-			"dismiss": false,
 			"entries": [
 				"You multiply the disease within a creature, drawing it into an infectious mist outside their body where it can spread to other creatures. The target must attempt a Will save. If the target is willing, it can choose to take the effects of critical failure.",
 				{
@@ -1760,27 +1810,25 @@
 			"name": "Fungal Hyphae",
 			"source": "LOGM",
 			"page": 108,
-			"focus": false,
 			"level": 2,
 			"traits": [
-				"Fungus",
-				"Necromancy"
+				"fungus",
+				"necromancy"
 			],
 			"school": "N",
 			"traditions": [
-				"Primal"
+				"primal"
 			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"F": false,
-				"M": false,
-				"S": true,
-				"V": true
-			},
-			"savingThrowBasic": false,
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"duration": {
 				"type": "timed",
 				"entry": "1 minute",
@@ -1789,8 +1837,6 @@
 					"unit": "minute"
 				}
 			},
-			"sustain": false,
-			"dismiss": false,
 			"entries": [
 				"Thin hyphae grow from your feet and plunge into the earth, creating a symbiotic fungal network that attaches to plants within 30 feet and connects you to their root systems.",
 				"You gain an imprecise {@ability tremorsense} allowing you to sense anything directly touching plants within that distance. If you move, the hyphae snap and the spell ends."
@@ -1799,11 +1845,15 @@
 				"x": [
 					{
 						"level": 4,
-						"entries": ["You can control plants in the area to a small degree, allowing you to make Strikes with tree branches, exposed roots, or similarly solid plants. To do so, you use a {@action Strike} action, but you can {@action Strike} any creature you can detect with your {@ability tremorsense}. These are melee spell attacks that deal {@damage 2d8} bludgeoning damage plus your spellcasting ability modifier. Unusual plants, such as thorny vines, might deal a different type of damage at the GM's discretion. You can't make any other attacks through these plants, or take any other actions through them, other than these Strikes."]
+						"entries": [
+							"You can control plants in the area to a small degree, allowing you to make Strikes with tree branches, exposed roots, or similarly solid plants. To do so, you use a {@action Strike} action, but you can {@action Strike} any creature you can detect with your {@ability tremorsense}. These are melee spell attacks that deal {@damage 2d8} bludgeoning damage plus your spellcasting ability modifier. Unusual plants, such as thorny vines, might deal a different type of damage at the GM's discretion. You can't make any other attacks through these plants, or take any other actions through them, other than these Strikes."
+						]
 					},
 					{
 						"level": 6,
-						"entries": ["As 4th level, but you can use other simple manipulate actions through the plants, including having a branch pick an object up or open a door, though more complex actions, such as picking a lock or disabling a trap, remain impossible."]
+						"entries": [
+							"As 4th level, but you can use other simple manipulate actions through the plants, including having a branch pick an object up or open a door, though more complex actions, such as picking a lock or disabling a trap, remain impossible."
+						]
 					}
 				]
 			}
@@ -1814,21 +1864,24 @@
 			"page": 115,
 			"focus": true,
 			"level": 4,
+			"domains": [
+				"glyph"
+			],
 			"traits": [
-				"Illusion",
-				"Visual"
+				"illusion",
+				"visual"
 			],
 			"school": "I",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"F": false,
-				"M": true,
-				"S": true,
-				"V": false
-			},
+			"components": [
+				{
+					"M": true,
+					"S": true
+				}
+			],
 			"range": {
 				"entry": "30 feet",
 				"distance": {
@@ -1837,17 +1890,15 @@
 				}
 			},
 			"targets": "1 creature",
-			"savingThrowBasic": false,
 			"duration": {
 				"type": "timed",
 				"entry": "1 minute",
+				"dismiss": true,
 				"duration": {
 					"number": 1,
 					"unit": "minute"
 				}
 			},
-			"sustain": false,
-			"dismiss": true,
 			"entries": [
 				"Glowing letters assemble in the air, providing a transcription of the target's speech in all languages you speak. For the spell's duration, any words spoken aloud by the target are spelled out in letters in front of them. When you {@action Cast a Spell||Cast the Spell}, you can choose whether these letters are visible to all creatures or only certain creatures you specify. Any words the target mouths silently are similarly spelled out, allowing the target to communicate silently or in areas where sound doesn't carry. This even allows the target to provide verbal casting components in such areas, but only if you choose to make the letters visible to all creatures. Furthermore, any of the target's {@trait auditory} abilities can affect creatures even in areas where sound does not carry as long as you have made the glyphs visible to them and they have line of sight to the target; in this case, they gain the {@trait visual} trait. You can {@action Dismiss} the spell."
 			]
@@ -1861,26 +1912,25 @@
 					"SoM|109"
 				]
 			},
-			"focus": false,
 			"level": 3,
 			"traits": [
-				"Evocation"
+				"evocation"
 			],
 			"school": "V",
 			"traditions": [
-				"Arcane",
-				"Occult"
+				"arcane",
+				"occult"
 			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"F": false,
-				"M": false,
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"range": {
 				"entry": "120 feet",
 				"distance": {
@@ -1894,15 +1944,13 @@
 				],
 				"entry": "30-foot-radius burst"
 			},
-			"savingThrow": "Reflex",
-			"savingThrowBasic": false,
-			"duration": {
-				"type": null
+			"savingThrow": {
+				"type": [
+					"R"
+				]
 			},
-			"sustain": false,
-			"dismiss": false,
 			"entries": [
-				"You create a sphere of altered gravity. All creatures and unsecured objects in the area move towards the center, depending on their Reflex saving throws. This follows the rules for {@quickref forced movement||3|forced movement} (Pathfinder Core Rulebook 475)",
+				"You create a sphere of altered gravity. All creatures and unsecured objects in the area move towards the center, depending on their Reflex saving throws. This follows the rules for {@quickref forced movement||3|forced movement}.",
 				"If there's not enough space near the center of the sphere, creatures and objects nearer to the center move first, and others move as far as they can without being blocked, up to the amount set by their saving throw outcomes.",
 				{
 					"type": "successDegree",
@@ -1919,22 +1967,25 @@
 			"name": "Hyperfocus",
 			"source": "LOGM",
 			"page": 113,
+			"domains": [
+				"delirium"
+			],
 			"focus": true,
 			"level": 1,
 			"traits": [
-				"Divination"
+				"divination"
 			],
 			"school": "D",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"F": false,
-				"M": false,
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"range": {
 				"entry": "30 feet",
 				"distance": {
@@ -1943,8 +1994,11 @@
 				}
 			},
 			"targets": "1 creature",
-			"savingThrow": "Will",
-			"savingThrowBasic": false,
+			"savingThrow": {
+				"type": [
+					"W"
+				]
+			},
 			"duration": {
 				"type": "timed",
 				"entry": "varies",
@@ -1953,8 +2007,6 @@
 					"unit": "special"
 				}
 			},
-			"sustain": false,
-			"dismiss": false,
 			"entries": [
 				"You sharpen a creature's senses, though more distant objects become hazy, indistinct, or muted to it. The target gains a +1 status bonus to {@skill Perception} checks attempted with any of its precise senses. Furthermore, any imprecise senses the target has are sharpened to precise senses (though they do not receive the status bonus). However, the target cannot perceive anything beyond a range of 20 feet with any of its senses. The duration is determined by the target's Will save.",
 				"You can allow allies to choose the outcome instead of rolling a saving throw.",
@@ -1972,11 +2024,15 @@
 				"x": [
 					{
 						"level": 3,
-						"entries": ["You can target up to 2 creatures."]
+						"entries": [
+							"You can target up to 2 creatures."
+						]
 					},
 					{
 						"level": 6,
-						"entries": ["You can target up to 4 creatures."]
+						"entries": [
+							"You can target up to 4 creatures."
+						]
 					}
 				]
 			}
@@ -1985,27 +2041,26 @@
 			"name": "Ill Omen",
 			"source": "LOGM",
 			"page": 108,
-			"focus": false,
 			"level": 1,
 			"traits": [
-				"Curse",
-				"Divination",
-				"Misfortune"
+				"curse",
+				"divination",
+				"misfortune"
 			],
 			"school": "D",
 			"traditions": [
-				"Occult"
+				"occult"
 			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"F": false,
-				"M": false,
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"range": {
 				"entry": "30 feet",
 				"distance": {
@@ -2014,7 +2069,6 @@
 				}
 			},
 			"targets": "1 creature",
-			"savingThrowBasic": false,
 			"duration": {
 				"type": "timed",
 				"entry": "1 round",
@@ -2023,8 +2077,6 @@
 					"unit": "round"
 				}
 			},
-			"sustain": false,
-			"dismiss": false,
 			"entries": [
 				"The target is struck with misfortune, which throws them off balance. The target must attempt a Will save.",
 				{
@@ -2041,27 +2093,25 @@
 			"name": "Iron Gut",
 			"source": "LOGM",
 			"page": 108,
-			"focus": false,
 			"level": 2,
 			"traits": [
-				"Transmutation"
+				"transmutation"
 			],
 			"school": "T",
 			"traditions": [
-				"Arcane",
-				"Primal"
+				"arcane",
+				"primal"
 			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"F": false,
-				"M": true,
-				"S": true,
-				"V": false
-			},
-			"savingThrowBasic": false,
+			"components": [
+				{
+					"M": true,
+					"S": true
+				}
+			],
 			"duration": {
 				"type": "timed",
 				"entry": "1 hour",
@@ -2070,8 +2120,6 @@
 					"unit": "hour"
 				}
 			},
-			"sustain": false,
-			"dismiss": false,
 			"entries": [
 				"Your mouth, esophagus, and stomach become incredibly elastic and tougher than metal. For the duration of the spell, you can reach down your throat to store or retrieve a single object of light or negligible Bulk in your stomach, as though your stomach were a backpack or other container. Storing and retrieving an item in this way requires an {@action Interact} action.",
 				"The object must be small enough to reasonably fit within your stomach. It is very difficult for other creatures to notice that you are hiding an object in this way; passive observers can't possibly notice and you gain a +4 circumstance bonus to your {@skill Stealth} checks to Conceal the Object unless the searcher specifically searches your mouth and stomach. If at the end of the spell's duration you still have an object stored in your stomach, it is violently expelled, dealing {@dice 1d6} damage to you."
@@ -2080,7 +2128,9 @@
 				"x": [
 					{
 						"level": 3,
-						"entries": ["The duration increases to 8 hours."]
+						"entries": [
+							"The duration increases to 8 hours."
+						]
 					}
 				]
 			}
@@ -2089,25 +2139,28 @@
 			"name": "Lament",
 			"source": "LOGM",
 			"page": 116,
+			"domains": [
+				"sorrow"
+			],
 			"focus": true,
 			"level": 1,
 			"traits": [
-				"Auditory",
-				"Emotion",
-				"Enchantment",
-				"Mental"
+				"auditory",
+				"emotion",
+				"enchantment",
+				"mental"
 			],
 			"school": "E",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"F": false,
-				"M": false,
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"range": {
 				"entry": "30-foot cone",
 				"distance": {
@@ -2116,20 +2169,21 @@
 				}
 			},
 			"targets": "1 or more creatures",
-			"savingThrow": "Will",
-			"savingThrowBasic": true,
-			"duration": {
-				"type": null
+			"savingThrow": {
+				"type": [
+					"W"
+				],
+				"basic": true
 			},
-			"sustain": false,
-			"dismiss": false,
 			"entries": [
 				"You let out your negative emotions in a guttural wail that shakes your enemies' hearts and deals {@damage 1d8} mental damage (basic Will save). If you have any harmful conditions imposed by {@trait emotion} effects, lament deals additional mental damage equal to the counteract level of the highest-level effect."
 			],
 			"heightened": {
 				"plus_x": {
 					"level": 1,
-					"entries": ["The damage increases by {@dice 1d8}."]
+					"entries": [
+						"The damage increases by {@dice 1d8}."
+					]
 				}
 			}
 		},
@@ -2137,26 +2191,24 @@
 			"name": "Liberating Command",
 			"source": "LOGM",
 			"page": 108,
-			"focus": false,
 			"level": 1,
 			"traits": [
-				"Enchantment",
-				"Mental"
+				"enchantment",
+				"mental"
 			],
 			"school": "E",
 			"traditions": [
-				"Occult"
+				"occult"
 			],
 			"cast": {
 				"number": 1,
 				"unit": "action"
 			},
-			"components": {
-				"F": false,
-				"M": false,
-				"S": false,
-				"V": true
-			},
+			"components": [
+				{
+					"V": true
+				}
+			],
 			"range": {
 				"entry": "60 feet",
 				"distance": {
@@ -2165,12 +2217,6 @@
 				}
 			},
 			"targets": "1 creature",
-			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
-			"sustain": false,
-			"dismiss": false,
 			"entries": [
 				"You call out a liberating cry, urging an ally to break free of an effect that holds them in place. If the target is {@condition grabbed}, {@condition immobilized}, or {@condition restrained}, it can immediately use a reaction to attempt to {@action Escape}."
 			]
@@ -2179,29 +2225,29 @@
 			"name": "Message Rune",
 			"source": "LOGM",
 			"page": 108,
-			"focus": false,
 			"level": 1,
 			"traits": [
-				"Divination",
-				"Linguistic",
-				"Mental"
+				"divination",
+				"linguistic",
+				"mental"
 			],
 			"school": "D",
 			"traditions": [
-				"Arcane",
-				"Occult"
+				"arcane",
+				"occult"
 			],
 			"cast": {
 				"number": 5,
 				"unit": "minute",
 				"entry": "5 minutes"
 			},
-			"components": {
-				"F": false,
-				"M": true,
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"M": true,
+					"S": true,
+					"V": true
+				}
+			],
 			"range": {
 				"entry": "touch",
 				"distance": {
@@ -2210,20 +2256,18 @@
 				}
 			},
 			"targets": "1 flat unattended surface",
-			"savingThrowBasic": false,
 			"duration": {
 				"type": "timed",
 				"entry": "1 day",
+				"dismiss": true,
 				"duration": {
 					"number": 1,
 					"unit": "day"
 				}
 			},
-			"sustain": false,
-			"dismiss": true,
 			"entries": [
 				"You record a message up to 5 minutes long and inscribe a special rune on any flat unattended surface within reach. The nature of the rune's appearance is up to you, but it is visible to everyone and it must be no smaller than 2 inches in diameter.",
-				"You also specify a trigger that creatures must meet to activate the rune (Pathfinder Core Rulebook 305). For the duration of the spell, creatures who meet the criteria of the trigger can touch the rune to hear the recorded message in their head as though you were speaking to them telepathically. You know when someone is listening to the message, but you do not know who is listening to it. You can {@action Dismiss} the spell."
+				"You also specify a {@quickref trigger||2|setting triggers} that creatures must meet to activate the rune. For the duration of the spell, creatures who meet the criteria of the trigger can touch the rune to hear the recorded message in their head as though you were speaking to them telepathically. You know when someone is listening to the message, but you do not know who is listening to it. You can {@action Dismiss} the spell."
 			]
 		},
 		{
@@ -2232,22 +2276,23 @@
 			"page": 114,
 			"focus": true,
 			"level": 1,
+			"domains": [
+				"duty"
+			],
 			"traits": [
-				"Conjuration"
+				"conjuration"
 			],
 			"school": "C",
 			"cast": {
 				"number": 1,
 				"unit": "free"
 			},
-			"components": {
-				"F": false,
-				"M": false,
-				"S": false,
-				"V": true
-			},
+			"components": [
+				{
+					"V": true
+				}
+			],
 			"trigger": "You make a promise or deal.",
-			"savingThrowBasic": false,
 			"duration": {
 				"type": "timed",
 				"entry": "1 hour",
@@ -2256,8 +2301,6 @@
 					"unit": "hour"
 				}
 			},
-			"sustain": false,
-			"dismiss": false,
 			"entries": [
 				"A magical indicator assures a creature that you've upheld your end of a bargain. When you {@action Cast a Spell||Cast the Spell}, you create a bracelet, flower, or other such trinket. If, while the spell persists, you complete the terms of the promise or deal you made, the trinket fades away with a pleasant chime; if you violate the terms instead, the trinket breaks with a dissonant crash."
 			],
@@ -2265,19 +2308,27 @@
 				"x": [
 					{
 						"level": 3,
-						"entries": ["The duration becomes 1 day."]
+						"entries": [
+							"The duration becomes 1 day."
+						]
 					},
 					{
 						"level": 5,
-						"entries": ["The duration becomes 1 week."]
+						"entries": [
+							"The duration becomes 1 week."
+						]
 					},
 					{
 						"level": 7,
-						"entries": ["The duration becomes 1 month."]
+						"entries": [
+							"The duration becomes 1 month."
+						]
 					},
 					{
 						"level": 9,
-						"entries": ["The duration becomes 1 year."]
+						"entries": [
+							"The duration becomes 1 year."
+						]
 					}
 				]
 			}
@@ -2288,22 +2339,24 @@
 			"page": 118,
 			"focus": true,
 			"level": 1,
+			"domains": [
+				"vigil"
+			],
 			"traits": [
-				"Divination"
+				"divination"
 			],
 			"school": "D",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"F": false,
-				"M": false,
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"targets": "1 weapon or tool",
-			"savingThrowBasic": false,
 			"duration": {
 				"type": "timed",
 				"entry": "1 minute",
@@ -2312,8 +2365,6 @@
 					"unit": "minute"
 				}
 			},
-			"sustain": false,
-			"dismiss": false,
 			"entries": [
 				"By touching an object, you draw forth the experience of those who created and used it. If you touch a weapon, your proficiency rank with that weapon temporarily increases to trained (if it is not already higher). If you touch a tool, your proficiency rank with the next skill check you attempt with that tool (such as a {@skill Crafting} check with a blacksmith's hammer) within the spell's duration temporarily increases to trained (if it is not already higher). This spell has no benefit for activities that take longer than a minute to complete."
 			],
@@ -2321,7 +2372,9 @@
 				"x": [
 					{
 						"level": 6,
-						"entries": ["Your proficiency rank increases to expert instead of trained."]
+						"entries": [
+							"Your proficiency rank increases to expert instead of trained."
+						]
 					}
 				]
 			}
@@ -2330,43 +2383,48 @@
 			"name": "Overflowing Sorrow",
 			"source": "LOGM",
 			"page": 116,
+			"domains": [
+				"sorrow"
+			],
 			"focus": true,
 			"level": 4,
 			"traits": [
-				"Emotion",
-				"Enchantment",
-				"Incapacitation",
-				"Mental"
+				"emotion",
+				"enchantment",
+				"incapacitation",
+				"mental"
 			],
 			"school": "E",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"F": false,
-				"M": false,
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"area": {
 				"types": [
 					"Emanation"
 				],
 				"entry": "15-foot emanation, centered on you"
 			},
-			"savingThrow": "Will",
-			"savingThrowBasic": false,
+			"savingThrow": {
+				"type": [
+					"W"
+				]
+			},
 			"duration": {
 				"type": "timed",
 				"entry": "sustained up to 1 minute",
+				"sustain": true,
 				"duration": {
 					"number": 1,
 					"unit": "minute"
 				}
 			},
-			"sustain": true,
-			"dismiss": false,
 			"entries": [
 				"Sadness flows out of you into nearby creatures, blotting out any other thoughts they had. The first time a creature begins its turn in the area or enters the area, it must attempt a Will save. If it later leaves and reenters the area, it uses the same effect as before.",
 				{
@@ -2382,7 +2440,9 @@
 			"heightened": {
 				"plus_x": {
 					"level": 2,
-					"entries": ["When you {@action Cast a Spell||Cast the Spell}, you can choose to increase the area by 5 feet."]
+					"entries": [
+						"When you {@action Cast a Spell||Cast the Spell}, you can choose to increase the area by 5 feet."
+					]
 				}
 			}
 		},
@@ -2390,23 +2450,26 @@
 			"name": "Parch",
 			"source": "LOGM",
 			"page": 114,
+			"domains": [
+				"dust"
+			],
 			"focus": true,
 			"level": 1,
 			"traits": [
-				"Air",
-				"Evocation"
+				"air",
+				"evocation"
 			],
 			"school": "V",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"F": false,
-				"M": false,
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"range": {
 				"entry": "60 feet",
 				"distance": {
@@ -2415,13 +2478,11 @@
 				}
 			},
 			"targets": "1 creature",
-			"savingThrow": "Fortitude",
-			"savingThrowBasic": false,
-			"duration": {
-				"type": null
+			"savingThrow": {
+				"type": [
+					"F"
+				]
 			},
-			"sustain": false,
-			"dismiss": false,
 			"entries": [
 				"Dry winds dehydrate a creature. The target must attempt a Fortitude save; if used on a creature with the {@trait water} trait or a creature made primarily of liquid (such as many oozes), the creature uses the outcome for one degree of success worse than the result. Creatures whose bodies contain no significant moisture (such as earth elementals) are immune to parch.",
 				{
@@ -2438,7 +2499,9 @@
 				"x": [
 					{
 						"level": 4,
-						"entries": ["You can target up to 4 creatures."]
+						"entries": [
+							"You can target up to 4 creatures."
+						]
 					}
 				]
 			}
@@ -2447,27 +2510,26 @@
 			"name": "Penumbral Shroud",
 			"source": "LOGM",
 			"page": 109,
-			"focus": false,
 			"level": 1,
 			"traits": [
-				"Darkness",
-				"Evocation"
+				"darkness",
+				"evocation"
 			],
 			"school": "V",
 			"traditions": [
-				"Arcane",
-				"Occult"
+				"arcane",
+				"occult"
 			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"F": false,
-				"M": false,
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"range": {
 				"entry": "30 feet",
 				"distance": {
@@ -2476,7 +2538,6 @@
 				}
 			},
 			"targets": "1 creature",
-			"savingThrowBasic": false,
 			"duration": {
 				"type": "timed",
 				"entry": "10 minutes",
@@ -2485,8 +2546,6 @@
 					"unit": "minute"
 				}
 			},
-			"sustain": false,
-			"dismiss": false,
 			"entries": [
 				"You envelop the target in a shroud of shadow. The target perceives light as one step lower than it actually is (bright light becomes dim light, for example), affecting their ability to sense creatures and objects accordingly. The shroud also provides the target a +1 status bonus to saving throws against {@trait light} effects. While this effect is {@condition helpful} to creatures sensitive to light, if the creature is unwilling, it can attempt a Reflex save to avoid the shroud and reduce the effect.",
 				{
@@ -2505,20 +2564,23 @@
 			"page": 114,
 			"focus": true,
 			"level": 1,
+			"domains": [
+				"glyph"
+			],
 			"traits": [
-				"Transmutation"
+				"transmutation"
 			],
 			"school": "T",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"F": false,
-				"M": true,
-				"S": true,
-				"V": false
-			},
+			"components": [
+				{
+					"M": true,
+					"S": true
+				}
+			],
 			"range": {
 				"entry": "30 feet",
 				"distance": {
@@ -2527,7 +2589,6 @@
 				}
 			},
 			"targets": "unattended written materials of up to 1 Bulk or less",
-			"savingThrowBasic": false,
 			"duration": {
 				"type": "timed",
 				"entry": "1 day",
@@ -2536,8 +2597,6 @@
 					"unit": "day"
 				}
 			},
-			"sustain": false,
-			"dismiss": false,
 			"entries": [
 				"You strike mention of a specific name from one or more documents. When you cast the spell, give one proper name, be it a creature, location, or object. Any mention of that name within the document becomes blurred, smudged, or otherwise completely illegible. Epithets and unambiguous references to the name are redacted as well; for instance, redacting the name of the goddess Sarenrae from a book would also remove references to her title \"the Dawnflower.\""
 			],
@@ -2545,11 +2604,15 @@
 				"x": [
 					{
 						"level": 3,
-						"entries": ["Instead of striking out a given name, you can replace it with a different name you choose. Epithets and references are substituted with similar ones relating to the replacement name. Anyone reading the text can attempt a {@skill Perception} or {@skill Society} check against your spell DC to notice the altered text, though that doesn't tell them what the original said."]
+						"entries": [
+							"Instead of striking out a given name, you can replace it with a different name you choose. Epithets and references are substituted with similar ones relating to the replacement name. Anyone reading the text can attempt a {@skill Perception} or {@skill Society} check against your spell DC to notice the altered text, though that doesn't tell them what the original said."
+						]
 					},
 					{
 						"level": 4,
-						"entries": ["At your choice, the duration is unlimited."]
+						"entries": [
+							"At your choice, the duration is unlimited."
+						]
 					}
 				]
 			}
@@ -2558,27 +2621,25 @@
 			"name": "Reflective Scales",
 			"source": "LOGM",
 			"page": 109,
-			"focus": false,
 			"level": 4,
 			"traits": [
-				"Abjuration"
+				"abjuration"
 			],
 			"school": "A",
 			"traditions": [
-				"Arcane",
-				"Primal"
+				"arcane",
+				"primal"
 			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"F": false,
-				"M": false,
-				"S": true,
-				"V": true
-			},
-			"savingThrowBasic": false,
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"duration": {
 				"type": "timed",
 				"entry": "1 minute",
@@ -2587,8 +2648,6 @@
 					"unit": "minute"
 				}
 			},
-			"sustain": false,
-			"dismiss": false,
 			"entries": [
 				"You grow a set of colored glowing scales or scaled armor that stores energy before releasing it in a final burst. When you cast this spell, choose acid, cold, fire, electricity, or poison damage. You gain resistance 5 against that type of damage. The scales' color depends on the damage type you chose and is usually the color of a type of dragon or other creature associated with that damage type, such as red or gold for fire damage.",
 				"The scales store up energy as they protect you. Keep track of how much damage the scales have prevented. As a 2-action activity that has the {@trait concentrate} and {@trait manipulate} traits, you can explode your scales outward in a 20-foot radius around you, dealing {@dice 1d6} damage of the chosen type to all creatures in the area for every 10 damage the scales have prevented, to a maximum of {@dice 10d6} damage (after preventing 100 damage). Once you do so, the spell ends."
@@ -2596,7 +2655,9 @@
 			"heightened": {
 				"plus_x": {
 					"level": 2,
-					"entries": ["The resistance increases by 5 and the maximum damage from the scale explosion increases by {@dice 5d6}."]
+					"entries": [
+						"The resistance increases by 5 and the maximum damage from the scale explosion increases by {@dice 5d6}."
+					]
 				}
 			}
 		},
@@ -2606,41 +2667,45 @@
 			"page": 119,
 			"focus": true,
 			"level": 4,
+			"domains": [
+				"vigil"
+			],
 			"traits": [
-				"Divination",
-				"Mental"
+				"divination",
+				"mental"
 			],
 			"school": "D",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"F": false,
-				"M": false,
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"area": {
 				"types": [
 					"Emanation"
 				],
 				"entry": "30-foot-radius emanation centered on you"
 			},
-			"savingThrow": "Will",
-			"savingThrowBasic": true,
-			"duration": {
-				"type": null
+			"savingThrow": {
+				"type": [
+					"W"
+				],
+				"basic": true
 			},
-			"sustain": false,
-			"dismiss": false,
 			"entries": [
 				"You call upon the lost and forgotten, assailing your foes' minds with the memories of those who died with a grievance toward them. Enemies in the area take {@damage 6d6} mental damage (basic Will save) and are {@condition frightened 1} on a critical failure. If you know the names of anyone murdered or grievously wronged by an enemy in the area, you can chant those victims' names when you cast the spell to improve the clarity of the visions, increasing the damage to the corresponding enemy from {@dice 6d6} to {@dice 6d10}; you can do so for multiple enemies if you know victims of each enemy. The visions are personal to each foe in the area, and you can't use this spell to discern a murderer by guessing a name. A creature that truly knows no one who died with any sort of grievance to that creature is immune to this effect."
 			],
 			"heightened": {
 				"plus_x": {
 					"level": 1,
-					"entries": ["The damage increases by {@dice 2d6} (or {@dice 2d10} to an enemy when you name a specific victim)."]
+					"entries": [
+						"The damage increases by {@dice 2d6} (or {@dice 2d10} to an enemy when you name a specific victim)."
+					]
 				}
 			}
 		},
@@ -2650,31 +2715,37 @@
 			"page": 119,
 			"focus": true,
 			"level": 4,
+			"domains": [
+				"wyrmkin"
+			],
 			"traits": [
-				"Auditory",
-				"Emotion",
-				"Enchantment",
-				"Mental"
+				"auditory",
+				"emotion",
+				"enchantment",
+				"mental"
 			],
 			"school": "E",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"F": false,
-				"M": false,
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"area": {
 				"types": [
 					"Emanation"
 				],
 				"entry": "30-foot emanation"
 			},
-			"savingThrow": "Will",
-			"savingThrowBasic": false,
+			"savingThrow": {
+				"type": [
+					"W"
+				]
+			},
 			"duration": {
 				"type": "timed",
 				"entry": "varies",
@@ -2683,8 +2754,6 @@
 					"unit": "special"
 				}
 			},
-			"sustain": false,
-			"dismiss": false,
 			"entries": [
 				"You channel the might of dragons into your voice, letting out a roar that engenders respect in dragonkind but that instills fear in most other creatures. The impressive roar grants you a +2 circumstance bonus to {@skill Diplomacy} checks for 10 minutes against dragons that were in the area at the time of casting.",
 				"All enemies within the area other than dragons must attempt a Will save; to these enemies, roar of the wyrm is a {@trait fear} effect.",
@@ -2705,31 +2774,26 @@
 			"source": "LOGM",
 			"page": 116,
 			"focus": true,
+			"domains": [
+				"repose"
+			],
 			"level": 1,
 			"traits": [
-				"Abjuration",
-				"Mental"
+				"abjuration",
+				"mental"
 			],
 			"school": "A",
 			"cast": {
 				"number": 1,
-				"unit": "reaction",
-				"entry": "{@as R}"
+				"unit": "reaction"
 			},
-			"components": {
-				"F": false,
-				"M": false,
-				"S": true,
-				"V": false
-			},
+			"components": [
+				{
+					"S": true
+				}
+			],
 			"trigger": "An ally within 30 feet is about to attempt a saving throw against a harmful {@trait emotion} effect, and you would not",
 			"targets": "you and the triggering ally",
-			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
-			"sustain": false,
-			"dismiss": false,
 			"entries": [
 				"You shoulder some of your ally's pain. Both you and your ally use the outcome one degree of success better than the result of your ally's saving throw, even if the triggering effect usually affects only one target."
 			]
@@ -2738,27 +2802,20 @@
 			"name": "Share Lore",
 			"source": "LOGM",
 			"page": 109,
-			"focus": false,
 			"level": 1,
 			"traits": [
-				"Divination",
-				"Mental"
+				"divination",
+				"mental"
 			],
 			"school": "D",
 			"traditions": [
-				"Arcane",
-				"Occult"
+				"arcane",
+				"occult"
 			],
 			"cast": {
 				"number": 1,
 				"unit": "minute",
 				"entry": "1 minute"
-			},
-			"components": {
-				"F": false,
-				"M": false,
-				"S": false,
-				"V": false
 			},
 			"range": {
 				"entry": "touch",
@@ -2768,7 +2825,6 @@
 				}
 			},
 			"targets": "up to 3 creatures",
-			"savingThrowBasic": false,
 			"duration": {
 				"type": "timed",
 				"entry": "10 minutes",
@@ -2777,8 +2833,6 @@
 					"unit": "minute"
 				}
 			},
-			"sustain": false,
-			"dismiss": false,
 			"entries": [
 				"You share your knowledge with the touched creatures.",
 				"Choose one {@skill Lore} skill in which you are trained. The targets become trained in that {@skill Lore} skill for the duration of the spell."
@@ -2787,11 +2841,15 @@
 				"x": [
 					{
 						"level": 3,
-						"entries": ["The duration of the spell is 1 hour and you can target up to five creatures."]
+						"entries": [
+							"The duration of the spell is 1 hour and you can target up to five creatures."
+						]
 					},
 					{
 						"level": 5,
-						"entries": ["The duration of the spell is 8 hours, you can target up to five creatures, and you can share up to two {@skill Lore} skills in which you are trained."]
+						"entries": [
+							"The duration of the spell is 8 hours, you can target up to five creatures, and you can share up to two {@skill Lore} skills in which you are trained."
+						]
 					}
 				]
 			}
@@ -2800,27 +2858,26 @@
 			"name": "Shattering Gem",
 			"source": "LOGM",
 			"page": 109,
-			"focus": false,
 			"level": 1,
 			"traits": [
-				"Abjuration",
-				"Earth"
+				"abjuration",
+				"earth"
 			],
 			"school": "A",
 			"traditions": [
-				"Arcane",
-				"Primal"
+				"arcane",
+				"primal"
 			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"F": false,
-				"M": false,
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"range": {
 				"entry": "touch",
 				"distance": {
@@ -2829,7 +2886,6 @@
 				}
 			},
 			"targets": "1 creature",
-			"savingThrowBasic": false,
 			"duration": {
 				"type": "timed",
 				"entry": "1 minute",
@@ -2838,15 +2894,15 @@
 					"unit": "minute"
 				}
 			},
-			"sustain": false,
-			"dismiss": false,
 			"entries": [
 				"A large gem floats around the target in an erratic pattern. The gem has 5 Hit Points. Each time a creature Strikes the target, the target attempts a DC {@flatDC 11} flat check. On a success, the gem blocks the attack, so the attack first damages the gem and then applies any remaining damage to the target. If the gem is reduced to 0 Hit Points, it shatters, immediately dealing the creature that destroyed it {@damage 1d8} slashing damage (basic Reflex save), as long as that creature is within 10 feet of the target."
 			],
 			"heightened": {
 				"plus_x": {
 					"level": 1,
-					"entries": ["The gem has 5 additional HP, and the damage dealt by its detonation increases by {@dice 1d8}."]
+					"entries": [
+						"The gem has 5 additional HP, and the damage dealt by its detonation increases by {@dice 1d8}."
+					]
 				}
 			},
 			"spellLists": [
@@ -2857,27 +2913,27 @@
 			"name": "Shifting Sand",
 			"source": "LOGM",
 			"page": 110,
-			"focus": false,
 			"level": 3,
 			"traits": [
-				"Earth",
-				"Transmutation"
+				"earth",
+				"transmutation"
 			],
 			"school": "T",
 			"traditions": [
-				"Arcane",
-				"Primal"
+				"arcane",
+				"primal"
 			],
 			"cast": {
 				"number": 3,
 				"unit": "action"
 			},
-			"components": {
-				"F": false,
-				"M": true,
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"M": true,
+					"S": true,
+					"V": true
+				}
+			],
 			"range": {
 				"entry": "30 feet",
 				"distance": {
@@ -2891,19 +2947,17 @@
 				],
 				"entry": "a horizontal earthen or sandy surface within a 20-foot burst"
 			},
-			"savingThrowBasic": false,
 			"duration": {
 				"type": "timed",
 				"entry": "sustained up to 1 minute",
+				"sustain": true,
 				"duration": {
 					"number": 1,
 					"unit": "minute"
 				}
 			},
-			"sustain": true,
-			"dismiss": false,
 			"entries": [
-				"You cause the surface to heave. The area becomes {@quickref difficult terrain||3|terrain} and any tracks in the area are destroyed by the churning ground. Creatures standing in the area take a \u20131 status penalty to {@skill Acrobatics} checks to {@action Balance} and {@action Tumble Through} and {@skill Athletics} checks to {@action High Jump} and {@action Long Jump}. The first time each round you {@action Sustain a Spell|CRB|{@action Sustain a Spell||Sustain the Spell}}, you can move the churning area up to 10 feet in any direction. Creatures {@condition immobilized} by the spell are carried along with the shifting sand in the same direction, if possible; this movement is {@quickref forced movement||3|forced movement} (Pathfinder Core Rulebook 475). Creatures that enter or begin their turn standing in the shifting sand must attempt a Reflex save.",
+				"You cause the surface to heave. The area becomes {@quickref difficult terrain||3|terrain} and any tracks in the area are destroyed by the churning ground. Creatures standing in the area take a \u20131 status penalty to {@skill Acrobatics} checks to {@action Balance} and {@action Tumble Through} and {@skill Athletics} checks to {@action High Jump} and {@action Long Jump}. The first time each round you {@action Sustain a Spell|CRB|{@action Sustain a Spell||Sustain the Spell}}, you can move the churning area up to 10 feet in any direction. Creatures {@condition immobilized} by the spell are carried along with the shifting sand in the same direction, if possible; this movement is {@quickref forced movement||3|forced movement}. Creatures that enter or begin their turn standing in the shifting sand must attempt a Reflex save.",
 				{
 					"type": "successDegree",
 					"entries": {
@@ -2918,15 +2972,21 @@
 				"x": [
 					{
 						"level": 5,
-						"entries": ["The status penalty increases to \u20132 and the spell's range increases to 60 feet."]
+						"entries": [
+							"The status penalty increases to \u20132 and the spell's range increases to 60 feet."
+						]
 					},
 					{
 						"level": 7,
-						"entries": ["The status penalty increases to \u20133, the spell's range increases to 60 feet, and the spell's area increases to a 30-foot burst."]
+						"entries": [
+							"The status penalty increases to \u20133, the spell's range increases to 60 feet, and the spell's area increases to a 30-foot burst."
+						]
 					},
 					{
 						"level": 9,
-						"entries": ["The status penalty increases to \u20134, the spell's range increases to 60 feet, and the spell's area increases to a 40-foot burst."]
+						"entries": [
+							"The status penalty increases to \u20134, the spell's range increases to 60 feet, and the spell's area increases to a 40-foot burst."
+						]
 					}
 				]
 			},
@@ -2938,40 +2998,37 @@
 			"name": "Shockwave",
 			"source": "LOGM",
 			"page": 110,
-			"focus": false,
 			"level": 1,
 			"traits": [
-				"Earth",
-				"Evocation"
+				"earth",
+				"evocation"
 			],
 			"school": "V",
 			"traditions": [
-				"Arcane",
-				"Primal"
+				"arcane",
+				"primal"
 			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"F": false,
-				"M": false,
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"area": {
 				"types": [
 					"Cone"
 				],
 				"entry": "15-foot cone"
 			},
-			"savingThrow": "Reflex",
-			"savingThrowBasic": false,
-			"duration": {
-				"type": null
+			"savingThrow": {
+				"type": [
+					"R"
+				]
 			},
-			"sustain": false,
-			"dismiss": false,
 			"entries": [
 				"You create a wave of energy that ripples through the earth.",
 				"Terrestrial creatures in the affected area must attempt a Reflex save to avoid stumbling as the shockwave shakes the ground.",
@@ -2988,7 +3045,9 @@
 			"heightened": {
 				"plus_x": {
 					"level": 1,
-					"entries": ["The area increases by 5 feet (to a 20-foot cone at 2nd level, and so on)."]
+					"entries": [
+						"The area increases by 5 feet (to a 20-foot cone at 2nd level, and so on)."
+					]
 				}
 			},
 			"spellLists": [
@@ -2999,28 +3058,28 @@
 			"name": "Show The Way",
 			"source": "LOGM",
 			"page": 110,
-			"focus": false,
 			"level": 3,
 			"traits": [
-				"Detection",
-				"Divination"
+				"detection",
+				"divination"
 			],
 			"school": "D",
 			"traditions": [
-				"Divine",
-				"Primal"
+				"divine",
+				"primal"
 			],
 			"cast": {
 				"number": 10,
 				"unit": "minute",
 				"entry": "10 minutes"
 			},
-			"components": {
-				"F": false,
-				"M": true,
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"M": true,
+					"S": true,
+					"V": true
+				}
+			],
 			"area": {
 				"types": [
 					"Emanation"
@@ -3028,7 +3087,6 @@
 				"entry": "5-foot emanation"
 			},
 			"targets": "you and allies in the area",
-			"savingThrowBasic": false,
 			"duration": {
 				"type": "timed",
 				"entry": "8 hours",
@@ -3037,8 +3095,6 @@
 					"unit": "hour"
 				}
 			},
-			"sustain": false,
-			"dismiss": false,
 			"entries": [
 				"You and affected allies gain preternatural knowledge of the path ahead, allowing you to intuit the best way forward and avoid potential obstacles such as difficult or confusing terrain. For the purpose of long-distance overland travel during exploration mode, traveling through {@quickref difficult terrain||3|terrain} reduces you to only three-quarters your travel Speed instead of half, and traveling through {@quickref greater difficult terrain||3|terrain} reduces your travel Speed to only half your travel Speed instead of one-third. Show the way does not prevent you from falling into traps or encountering other artificial obstacles and hazards."
 			],
@@ -3046,7 +3102,9 @@
 				"x": [
 					{
 						"level": 6,
-						"entries": ["For the purpose of long-distance overland travel during exploration mode, traveling through {@quickref difficult terrain||3|terrain} doesn't reduce your travel Speed at all, and traveling through {@quickref greater difficult terrain||3|terrain} reduces your travel Speed to only three-quarters of its normal value instead of one-third."]
+						"entries": [
+							"For the purpose of long-distance overland travel during exploration mode, traveling through {@quickref difficult terrain||3|terrain} doesn't reduce your travel Speed at all, and traveling through {@quickref greater difficult terrain||3|terrain} reduces your travel Speed to only three-quarters of its normal value instead of one-third."
+						]
 					}
 				]
 			}
@@ -3055,27 +3113,25 @@
 			"name": "Slough Skin",
 			"source": "LOGM",
 			"page": 110,
-			"focus": false,
 			"level": 2,
 			"traits": [
-				"Necromancy"
+				"necromancy"
 			],
 			"school": "N",
 			"traditions": [
-				"Arcane",
-				"Primal"
+				"arcane",
+				"primal"
 			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"F": false,
-				"M": false,
-				"S": true,
-				"V": true
-			},
-			"savingThrowBasic": false,
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"duration": {
 				"type": "timed",
 				"entry": "1 hour",
@@ -3084,8 +3140,6 @@
 					"unit": "hour"
 				}
 			},
-			"sustain": false,
-			"dismiss": false,
 			"entries": [
 				"You continually and harmlessly slough off the top layer of your skin while new skin regenerates immediately, quickly moving damaging substances away from your body. The flat check to remove {@condition persistent damage} from effects that coat your skin (such as most {@condition persistent damage ||persistent acid damage}) is reduced to 5, and you gain a +2 status bonus to your initial save against contact poison (but not to further saves, since by that point, the toxin has already entered your system)",
 				"If you're suffering from an effect other than {@condition persistent damage} that depends on continuous contact with your skin, if that effect allows a saving throw, you receive a new saving throw against that effect at the end of each turn when you attempt your flat checks against {@condition persistent damage}, and you also receive a +2 status bonus to those saving throws.",
@@ -3098,21 +3152,24 @@
 			"page": 118,
 			"focus": true,
 			"level": 4,
+			"domains": [
+				"time"
+			],
 			"traits": [
-				"Incapacitation",
-				"Transmutation"
+				"incapacitation",
+				"transmutation"
 			],
 			"school": "T",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"F": false,
-				"M": false,
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"range": {
 				"entry": "30 feet",
 				"distance": {
@@ -3121,8 +3178,11 @@
 				}
 			},
 			"targets": "1 creature or up to 1 Bulk of objects",
-			"savingThrow": "Will",
-			"savingThrowBasic": false,
+			"savingThrow": {
+				"type": [
+					"W"
+				]
+			},
 			"duration": {
 				"type": "timed",
 				"entry": "varies",
@@ -3131,8 +3191,6 @@
 					"unit": "special"
 				}
 			},
-			"sustain": false,
-			"dismiss": false,
 			"entries": [
 				"The flow of time congeals around an object or creature, holding it in place. The target must attempt a Will save (an unattended object automatically critically fails its save).",
 				{
@@ -3150,34 +3208,35 @@
 			"name": "Swarm Form",
 			"source": "LOGM",
 			"page": 118,
+			"domains": [
+				"swarm"
+			],
 			"focus": true,
 			"level": 4,
 			"traits": [
-				"Transmutation",
-				"Polymorph"
+				"transmutation",
+				"polymorph"
 			],
 			"school": "T",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"F": false,
-				"M": false,
-				"S": true,
-				"V": true
-			},
-			"savingThrowBasic": false,
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"duration": {
 				"type": "timed",
 				"entry": "5 minutes",
+				"dismiss": true,
 				"duration": {
 					"number": 5,
 					"unit": "minute"
 				}
 			},
-			"sustain": false,
-			"dismiss": true,
 			"entries": [
 				"You discorporate into a swarm of Tiny creatures. While in swarm form, you have the {@trait swarm} trait and you gain resistance 5 to slashing and piercing damage and weakness 5 to area and splash damage. You can fit into spaces only a few inches wide, moving your constituent creatures through the gap.",
 				"You don't gain the swarm mind ability, so you are still affected normally by {@trait mental} effects. As a swarm, you can't speak, cast spells, use manipulate actions requiring your hands, activate your magic items, or make any of your Strikes with your normal body. You can {@action Dismiss} the Spell."
@@ -3185,7 +3244,9 @@
 			"heightened": {
 				"plus_x": {
 					"level": 2,
-					"entries": ["Increase your resistances and weaknesses each by 5."]
+					"entries": [
+						"Increase your resistances and weaknesses each by 5."
+					]
 				}
 			}
 		},
@@ -3193,10 +3254,13 @@
 			"name": "Swarmsense",
 			"source": "LOGM",
 			"page": 117,
+			"domains": [
+				"swarm"
+			],
 			"focus": true,
 			"level": 1,
 			"traits": [
-				"Divination"
+				"divination"
 			],
 			"school": "D",
 			"cast": {
@@ -3204,23 +3268,21 @@
 				"unit": "minute",
 				"entry": "1 minute"
 			},
-			"components": {
-				"F": false,
-				"M": false,
-				"S": true,
-				"V": true
-			},
-			"savingThrowBasic": false,
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"duration": {
 				"type": "timed",
 				"entry": "sustained",
+				"sustain": true,
 				"duration": {
 					"number": 1,
 					"unit": "unlimited"
 				}
 			},
-			"sustain": true,
-			"dismiss": false,
 			"entries": [
 				"You extend your senses through a multitude of crawling and flying creatures. You create a crawling swarm in your square.",
 				"You can hear through the swarm as if using your normal auditory senses. The first time you {@action Sustain a Spell||Sustain the Spell} each round, you can move the swarm 10 feet along the ground in any direction. The swarm has AC 15 and a +0 bonus to its saves. Any damage dealt to the swarm destroys it and ends the spell."
@@ -3229,15 +3291,21 @@
 				"x": [
 					{
 						"level": 3,
-						"entries": ["The swarm has the benefits of spider climb."]
+						"entries": [
+							"The swarm has the benefits of spider climb."
+						]
 					},
 					{
 						"level": 5,
-						"entries": ["The swarm has a fly Speed of 10 feet. You can see through the swarm using your visual senses."]
+						"entries": [
+							"The swarm has a fly Speed of 10 feet. You can see through the swarm using your visual senses."
+						]
 					},
 					{
 						"level": 7,
-						"entries": ["The swarm gains a 10-foot status bonus to its Speeds."]
+						"entries": [
+							"The swarm gains a 10-foot status bonus to its Speeds."
+						]
 					}
 				]
 			}
@@ -3246,37 +3314,27 @@
 			"name": "Temporary Tool",
 			"source": "LOGM",
 			"page": 110,
-			"focus": false,
 			"level": 1,
 			"traits": [
-				"Conjuration"
+				"conjuration"
 			],
 			"school": "C",
 			"traditions": [
-				"Arcane"
+				"arcane"
 			],
 			"cast": {
 				"number": 1,
 				"unit": "minute",
 				"entry": "1 minute"
 			},
-			"components": {
-				"F": false,
-				"M": false,
-				"S": false,
-				"V": false
-			},
-			"savingThrowBasic": false,
 			"duration": {
 				"type": "timed",
-				"entry": "until used or 1 minute",
+				"entry": "until used or 1 minute; see text",
 				"duration": {
 					"number": 1,
 					"unit": "minute"
 				}
 			},
-			"sustain": false,
-			"dismiss": false,
 			"entries": [
 				"You conjure a temporary simple tool, such as a shovel or rope into your hands. It lasts until it is used for a single activity or for 1 minute, whichever comes first, after which it disappears. The tool is obviously temporarily conjured, and thus can't be sold or passed off as a genuine item."
 			]
@@ -3285,26 +3343,25 @@
 			"name": "Tether",
 			"source": "LOGM",
 			"page": 111,
-			"focus": false,
 			"level": 1,
 			"traits": [
-				"Abjuration"
+				"abjuration"
 			],
 			"school": "A",
 			"traditions": [
-				"Arcane",
-				"Primal"
+				"arcane",
+				"primal"
 			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"F": false,
-				"M": false,
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"range": {
 				"entry": "30 feet",
 				"distance": {
@@ -3313,8 +3370,11 @@
 				}
 			},
 			"targets": "1 creature",
-			"savingThrow": "Reflex",
-			"savingThrowBasic": false,
+			"savingThrow": {
+				"type": [
+					"R"
+				]
+			},
 			"duration": {
 				"type": "timed",
 				"entry": "1 minute or until dismissed; see text",
@@ -3323,8 +3383,6 @@
 					"unit": "minute"
 				}
 			},
-			"sustain": false,
-			"dismiss": false,
 			"entries": [
 				"You use magical chains, vines, or other tethers to bind your target to you. The creature can still try to {@action Escape}, and it or others can break the tethers by attacking them (the tethers have AC 15 and 10 Hit Points). You must stay within 30 feet of the target while it is tethered; moving more than 30 feet away from your target ends the spell. The target must attempt a Reflex save.",
 				{
@@ -3340,7 +3398,9 @@
 			"heightened": {
 				"plus_x": {
 					"level": 1,
-					"entries": ["The tethers' AC increases by 3 and their Hit Points increase by 10."]
+					"entries": [
+						"The tethers' AC increases by 3 and their Hit Points increase by 10."
+					]
 				}
 			}
 		},
@@ -3348,27 +3408,24 @@
 			"name": "Time Beacon",
 			"source": "LOGM",
 			"page": 111,
-			"focus": false,
 			"level": 7,
 			"traits": [
-				"Divination"
+				"divination"
 			],
 			"school": "D",
 			"traditions": [
-				"Arcane",
-				"Occult"
+				"arcane",
+				"occult"
 			],
 			"cast": {
 				"number": 1,
 				"unit": "action"
 			},
-			"components": {
-				"F": false,
-				"M": true,
-				"S": false,
-				"V": false
-			},
-			"savingThrowBasic": false,
+			"components": [
+				{
+					"M": true
+				}
+			],
 			"duration": {
 				"type": "timed",
 				"entry": "until the end of your turn",
@@ -3377,8 +3434,6 @@
 					"unit": "turn"
 				}
 			},
-			"sustain": false,
-			"dismiss": false,
 			"entries": [
 				"You create a beacon in time, intending to return to it if things go wrong. You can cast {@spell time beacon|LOGM} on only your turn. Keep careful track of everything that happens this turn after you cast {@spell time beacon|LOGM}. At the end of your turn, you can choose to rewind time back to just after you cast {@spell time beacon|LOGM}, removing all effects of your turn since then. Curses, traps, and other harmful effects that happen during your turn might prevent you from returning to the beacon if they are powerful enough. If you suffered any harmful effects during your turn after casting time beacon, to return to your beacon, time beacon attempts a counteract check against each such effect. If it fails at any of these checks, you can't return. After returning to the time beacon, the spell ends."
 			]
@@ -3387,45 +3442,44 @@
 			"name": "Whirling Scarves",
 			"source": "LOGM",
 			"page": 111,
-			"focus": false,
 			"level": 3,
 			"traits": [
-				"Abjuration",
-				"Force"
+				"abjuration",
+				"force"
 			],
 			"school": "A",
 			"traditions": [
-				"Divine",
-				"Occult"
+				"divine",
+				"occult"
 			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"F": false,
-				"M": false,
-				"S": true,
-				"V": true
-			},
-			"savingThrowBasic": false,
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"duration": {
 				"type": "timed",
 				"entry": "1 minute",
+				"dismiss": true,
 				"duration": {
 					"number": 1,
 					"unit": "minute"
 				}
 			},
-			"sustain": false,
-			"dismiss": true,
 			"entries": [
 				"You surround yourself in a vortex of whirling colorful scarves of force that obfuscate you and disorient your foes. You gain the benefits of the {@condition concealed} condition, but only against ranged and melee attacks. When a melee attack fails to hit you because of the flat check for the {@condition concealed} condition, the scarves snag the weapon or unarmed attack, and the creature takes a \u20131 circumstance penalty to further attacks with that weapon or unarmed attack until the end of its turn (or the end of its next turn, if it wasn't the creature's turn). The timing of the scarves' movement is harder to predict for ranged attackers, so the flat check for the {@condition concealed} condition against ranged attacks increases from DC 5 to DC 6. You can {@action Dismiss} this spell."
 			],
 			"heightened": {
 				"plus_x": {
 					"level": 2,
-					"entries": ["The circumstance penalty to further attacks with a melee weapon or unarmed attack the scarves snag increases by 1. The DC of the flat check for the {@condition concealed} condition against ranged attacks increases by 1."]
+					"entries": [
+						"The circumstance penalty to further attacks with a melee weapon or unarmed attack the scarves snag increases by 1. The DC of the flat check for the {@condition concealed} condition against ranged attacks increases by 1."
+					]
 				}
 			}
 		},
@@ -3433,24 +3487,27 @@
 			"name": "Winter Bolt",
 			"source": "LOGM",
 			"page": 112,
+			"domains": [
+				"cold"
+			],
 			"focus": true,
 			"level": 1,
 			"traits": [
-				"Attack",
-				"Cold",
-				"Evocation"
+				"attack",
+				"cold",
+				"evocation"
 			],
 			"school": "V",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"F": false,
-				"M": false,
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"range": {
 				"entry": "60 feet",
 				"distance": {
@@ -3459,12 +3516,6 @@
 				}
 			},
 			"targets": "1 creature",
-			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
-			"sustain": false,
-			"dismiss": false,
 			"entries": [
 				"You fling a hollow icicle filled with winter's wrath. Make a spell attack against a target within range. The bolt deals {@damage 1d8} piercing damage and lodges in the target. At the end of the target's next turn, the bolt shatters, releasing a whirl of snow and ice that deals {@damage 1d12} cold damage to the target and all adjacent creatures. The bolt can be removed with an {@action Interact} action, which causes it to melt harmlessly without detonating.",
 				{
@@ -3478,7 +3529,9 @@
 			"heightened": {
 				"plus_x": {
 					"level": 1,
-					"entries": ["The initial damage increases by {@dice 1d8} and the secondary damage increases by {@dice 1d12}."]
+					"entries": [
+						"The initial damage increases by {@dice 1d8} and the secondary damage increases by {@dice 1d12}."
+					]
 				}
 			}
 		},
@@ -3487,22 +3540,25 @@
 			"source": "LOGM",
 			"page": 112,
 			"focus": true,
+			"domains": [
+				"decay"
+			],
 			"level": 1,
 			"traits": [
-				"Necromancy",
-				"Negative"
+				"necromancy",
+				"negative"
 			],
 			"school": "N",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"F": false,
-				"M": false,
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"range": {
 				"entry": "touch",
 				"distance": {
@@ -3511,12 +3567,6 @@
 				}
 			},
 			"targets": "1 creature or object",
-			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
-			"sustain": false,
-			"dismiss": false,
 			"entries": [
 				"Your touch rots organic material and decays objects. Make a melee spell attack roll. Your touch deals {@damage 1d12} negative damage plus {@damage 1d4} {@condition persistent damage ||persistent negative damage}. If a creature uses an item to block withering grasp, such as with the {@feat Shield Block} reaction, the item is automatically affected, but the creature does not take damage (even if there is Domains damage left over after the shield's Hardness). Unlike normal negative damage, the negative damage from withering grasp damages objects, constructs, and the like by eroding them away.",
 				{
@@ -3530,7 +3580,9 @@
 			"heightened": {
 				"plus_x": {
 					"level": 1,
-					"entries": ["The damage increases by {@dice 1d12} and the {@condition persistent damage} increases by 1. If you target an object, lower its Hardness by an additional 1 point on both a success and a critical success."]
+					"entries": [
+						"The damage increases by {@dice 1d12} and the {@condition persistent damage} increases by 1. If you target an object, lower its Hardness by an additional 1 point on both a success and a critical success."
+					]
 				}
 			}
 		},
@@ -3539,22 +3591,25 @@
 			"source": "LOGM",
 			"page": 117,
 			"focus": true,
+			"domains": [
+				"stars"
+			],
 			"level": 1,
 			"traits": [
-				"Divination",
-				"Light"
+				"divination",
+				"light"
 			],
 			"school": "D",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"F": false,
-				"M": false,
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"range": {
 				"entry": "60 feet",
 				"distance": {
@@ -3563,18 +3618,20 @@
 				}
 			},
 			"targets": "1 creature",
-			"savingThrow": "Fortitude",
-			"savingThrowBasic": false,
+			"savingThrow": {
+				"type": [
+					"F"
+				]
+			},
 			"duration": {
 				"type": "timed",
 				"entry": "1 day",
+				"dismiss": true,
 				"duration": {
 					"number": 1,
 					"unit": "day"
 				}
 			},
-			"sustain": false,
-			"dismiss": true,
 			"entries": [
 				"You call a tiny star to orbit a creature in a sparkling halo before shooting up into the heavens, where it marks the creature's rough location. The target must attempt a Fortitude save.",
 				{
@@ -3590,12 +3647,16 @@
 			"heightened": {
 				"plus_x": {
 					"level": 1,
-					"entries": ["The duration increases by 1 day. Heightened (4th) You ignore the {@condition concealed} condition against targets marked by zenith star."]
+					"entries": [
+						"The duration increases by 1 day. Heightened (4th) You ignore the {@condition concealed} condition against targets marked by zenith star."
+					]
 				},
 				"x": [
 					{
 						"level": 4,
-						"entries": ["You ignore the {@condition concealed} condition against targets marked by zenith star."]
+						"entries": [
+							"You ignore the {@condition concealed} condition against targets marked by zenith star."
+						]
 					}
 				]
 			}

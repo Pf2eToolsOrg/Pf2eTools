@@ -6,13 +6,15 @@
 	"type": "object",
 	"version": "0.0.1",
 	"properties": {
-		"data": {
+		"renderdemo": {
 			"type": "array",
 			"items": {
 				"$ref": "entry.json"
-			}
+			},
+			"minItems": 1
 		}
 	},
-	"additionalProperties": false,
-	"required": ["data"]
+	"required": [
+		"renderdemo"
+	]
 }

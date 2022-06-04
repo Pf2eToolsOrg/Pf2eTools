@@ -71,16 +71,17 @@ class EncounterBuilder extends ProxyBase {
 			await MiscUtil.pCopyTextToClipboard(parts.join(HASH_PART_SEP));
 			JqueryUtil.showCopiedEffect($btnSvUrl);
 		});
-		$(`.ecgen__sv_file`).click(() => DataUtil.userDownload(`encounter`, this.getSaveableState()));
+		$(`.ecgen__sv_file`).click(() => DataUtil.userDownload(`encounter`, this.getSaveableState(), {fileType: "encounter"}));
 		$(`.ecgen__ld_file`).click(async () => {
-			const json = await DataUtil.pUserUpload();
-			if (json.items && json.sources) { // if it's a bestiary sublist
-				json.l = {
-					items: json.items,
-					sources: json.sources,
-				}
+			const {jsons, errors} = await DataUtil.pUserUpload({expectedFileType: "encounter"});
+			DataUtil.doHandleFileLoadErrorsGeneric(errors);
+			if (jsons && jsons.length && jsons[0].items && jsons[0].sources) {
+				jsons.l = {
+					items: jsons.items,
+					sources: jsons.sources,
+				};
 			}
-			this.pDoLoadState(json);
+			await this.pDoLoadState(jsons[0]);
 		});
 		$(`.ecgen__reset`).title(`SHIFT-click to reset players`).click(evt => confirm("Are you sure?") && encounterBuilder.pReset({isNotResetPlayers: !evt.shiftKey, isNotAddInitialPlayers: !evt.shiftKey}));
 
@@ -465,7 +466,7 @@ class EncounterBuilder extends ProxyBase {
 
 		const addToEncounter = (encounter, xp) => {
 			const existing = encounter.filter(it => it.xp === xp);
-			if (existing.length && RollerUtil.roll(100) < 85) { // 85% chance to add another copy of an existing monster
+			if (existing.length && RollerUtil.roll(100) < 85) { // 85% chance to add another copy of an existing creature
 				RollerUtil.rollOnArray(existing).count++;
 			} else {
 				const rolled = RollerUtil.rollOnArray(this._cache[xp]);
@@ -908,7 +909,7 @@ class EncounterBuilder extends ProxyBase {
 		const $btnSub = $(`<button title="Subtract (SHIFT for 5)" class="btn btn-danger btn-xs ecgen__btn_list"><span class="glyphicon glyphicon-minus"/></button>`)
 			.click(evt => encounterBuilder.handleClick(evt, monId, false, customHashId));
 
-		const $btnRandomize = $(`<button title="Randomize Monster" class="btn btn-default btn-xs ecgen__btn_list"><span class="glyphicon glyphicon-random" style="right: 1px"/></button>`)
+		const $btnRandomize = $(`<button title="Randomize Creature" class="btn btn-default btn-xs ecgen__btn_list"><span class="glyphicon glyphicon-random" style="right: 1px"/></button>`)
 			.click(() => encounterBuilder.pHandleShuffleClick(monId));
 
 		return $$`<span class="ecgen__visible col-1-5 no-wrap pl-0">

@@ -1,13 +1,75 @@
 {
 	"ability": [
 		{
+			"name": "Warpwave",
+			"source": "AoE6",
+			"page": 81,
+			"entries": [
+				"Many proteans can inflict disorienting alterations in time and space called warpwaves. When a creature fails its saving throw and is affected by a warpwave, roll {@dice 1d8} and consult the table below for the specific effect on that creature. Unless indicated otherwise, a warpwave effect lasts for {@dice 1d4} rounds, and a new warpwave effect negates any previous warpwave effect already affecting a creature.",
+				{
+					"source": "AoE6",
+					"page": 81,
+					"colStyles": [
+						"text-center",
+						"text-center"
+					],
+					"labelRowIdx": [
+						0
+					],
+					"colSizes": [
+						1,
+						9
+					],
+					"rows": [
+						[
+							"{@dice D8}",
+							"Warpwave Effect"
+						],
+						[
+							1,
+							"{@condition Clumsy 2} ({@condition clumsy 3} on a critical failure)"
+						],
+						[
+							2,
+							"{@condition Confused} and gains {@dice 4d6} temporary Hit Points"
+						],
+						[
+							3,
+							"{@condition Dazzled} (permanent on a critical failure)"
+						],
+						[
+							4,
+							"{@condition Enfeebled 2} (3 on a critical failure)"
+						],
+						[
+							5,
+							"{@condition Immobilized} by filaments of energy"
+						],
+						[
+							6,
+							"{@condition Quickened} ({@action Stride}, {@action Strike}, or {@action Step} only)"
+						],
+						[
+							7,
+							"{@condition Slowed 1}"
+						],
+						[
+							8,
+							"{@condition Stupefied 2} (3 on a critical failure)"
+						]
+					],
+					"type": "table"
+				}
+			]
+		},
+		{
 			"name": "Moon Frenzy",
 			"page": 329,
 			"source": "Bst",
 			"traits": [
-				"Polymorph",
-				"Primal",
-				"Transmutation"
+				"polymorph",
+				"primal",
+				"transmutation"
 			],
 			"entries": [
 				"When a full moon appears in the night sky, the werecreature must enter hybrid form, can't {@ability Change Shape} thereafter, becomes one size larger, increases its reach by 5 feet, and increases the damage of its jaws by 2. When the moon sets or the sun rises, the werecreature returns to humanoid form and is fatigued for 2d4 hours."
@@ -99,8 +161,8 @@
 			"source": "GMG",
 			"page": 204,
 			"traits": [
-				"Emotion",
-				"Mental"
+				"emotion",
+				"mental"
 			],
 			"entries": [
 				"When someone eats a dish or treat made by this NPC, the NPC can attempt a {@skill Lore||Baking Lore}, {@skill Lore||Cooking Lore}, or similar check against that creature's Will DC, with the same results as the {@action Make an Impression} action of {@skill Diplomacy}. If more than one creature partakes, the NPC uses the same check result against each creature's Will DC."
@@ -137,8 +199,8 @@
 				"unit": "action"
 			},
 			"traits": [
-				"Concentrate",
-				"[Magical Tradition]",
+				"concentrate",
+				"[magical tradition]",
 				"Polymorph",
 				"Transmutation"
 			],
@@ -151,9 +213,9 @@
 			"source": "Bst",
 			"page": 329,
 			"traits": [
-				"Curse",
-				"Necromancy",
-				"Primal"
+				"curse",
+				"necromancy",
+				"primal"
 			],
 			"entries": [
 				"This curse affects only humanoids.",
@@ -200,9 +262,9 @@
 			"source": "Bst",
 			"page": 342,
 			"traits": [
-				"Divination",
-				"Mental",
-				"Occult"
+				"divination",
+				"mental",
+				"occult"
 			],
 			"entries": [
 				"This monster can form a coven with two or more other creatures who also have the coven ability. This involves performing an 8-hour ceremony with all prospective coven members. After the coven is formed, each of its members gains elite adjustments, adjusting their levels accordingly. Coven members can sense other members' locations and conditions by spending a single action, which has the {@trait concentrate}, and can sense what another coven member is sensing as a two-action activity, which has the {@trait concentrate} as well.",
@@ -270,7 +332,7 @@
 				"unit": "action"
 			},
 			"traits": [
-				"Concentrate"
+				"concentrate"
 			],
 			"entries": [
 				"The NPC attempts an {@skill Lore||Architecture Lore}, {@skill Lore||Engineering Lore}, or similar skill check to find a stable path across uneven ground. This grants them and anyone they share this information with a +2 circumstance bonus on {@skill Acrobatics} checks to {@action Balance} across that ground."
@@ -281,10 +343,10 @@
 			"source": "Bst",
 			"page": 343,
 			"traits": [
-				"Aura",
-				"Emotion",
-				"Fear",
-				"Mental"
+				"aura",
+				"emotion",
+				"fear",
+				"mental"
 			],
 			"entries": [
 				"A creature that first enters the area must attempt a Will save. Regardless of the result of the saving throw, the creature is temporarily immune to this monster's Frightful Presence for 1 minute.",
@@ -395,6 +457,14 @@
 			"page": 343,
 			"entries": [
 				"When first exposed to bright light, the monster is {@condition blinded} until the end of its next turn. After this exposure, light doesn't blind the monster again until after it spends 1 hour in {@spell darkness|CRB}. However, as long as the monster is in an area of bright light, it's {@condition dazzled}."
+			]
+		},
+		{
+			"name": "Negative Healing",
+			"source": "Bst2",
+			"page": 305,
+			"entries": [
+				"A creature with negative healing draws health from negative energy rather than positive energy. It is damaged by positive damage and is not healed by positive healing effects. It does not take negative damage, and it is healed by negative effects that heal undead."
 			]
 		},
 		{
@@ -515,7 +585,7 @@
 				"unit": "action"
 			},
 			"traits": [
-				"Attack"
+				"attack"
 			],
 			"entries": [
 				"The monster attempts to swallow a creature of the listed size or smaller that it has {@condition grabbed} in its jaws or mouth. If a swallowed creature is of the maximum size listed, the monster can't use Swallow Whole again. If the creature is smaller than the maximum, the monster can usually swallow more creatures; the GM determines the maximum. The monster attempts an {@skill Athletics} check opposed by the {@condition grabbed} creature's Reflex DC. If it succeeds, it swallows the creature. The monster's mouth or jaws no longer grab a creature it has swallowed, so the monster is free to use them to {@action Strike|CRB} or Grab once again. The monster can't attack creatures it has swallowed.",
@@ -536,9 +606,9 @@
 			"source": "Bst",
 			"page": 344,
 			"traits": [
-				"Aura",
-				"Divination",
-				"Magical"
+				"aura",
+				"divination",
+				"magical"
 			],
 			"entries": [
 				"A monster with {@spell telepathy|CRB} can communicate mentally with any creatures within the listed radius, as long as they share a language. This doesn't give any special access to their thoughts, and communicates no more information than normal speech would."

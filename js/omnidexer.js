@@ -812,6 +812,18 @@ class IndexableFileOrganizations extends IndexableFile {
 	}
 }
 
+class IndexableFilePlaces extends IndexableFile {
+	constructor () {
+		super({
+			category: Parser.CAT_ID_PLACE,
+			file: "places.json",
+			listProp: "place",
+			baseUrl: "places.html",
+			isHover: true,
+		});
+	}
+}
+
 class IndexableFileHazards extends IndexableFile {
 	constructor () {
 		super({
@@ -977,6 +989,7 @@ Omnidexer.TO_INDEX = [
 	new IndexableFileBooks(),
 	new IndexableFileDeities(),
 	new IndexableFileOrganizations(),
+	new IndexableFilePlaces(),
 	new IndexableFileHazards(),
 	new IndexableFileTables(),
 

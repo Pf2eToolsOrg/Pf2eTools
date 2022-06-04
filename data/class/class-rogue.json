@@ -13,8 +13,17 @@
 				"will": "E",
 				"skills": {
 					"t": [
-						"{@skill Stealth}",
-						"One or more skills determined by your rogue's racket"
+						{
+							"skill": [
+								"Stealth"
+							]
+						},
+						{
+							"skill": [
+								"Subclass Dependant"
+							],
+							"entry": "one or more skills determined by your rogue's racket"
+						}
 					],
 					"add": 7
 				},
@@ -160,7 +169,7 @@
 					"name": "Mastermind",
 					"type": "Rogue's Racket",
 					"shortName": "Mastermind",
-					"source": "CRB",
+					"source": "APG",
 					"page": 134,
 					"subclassFeatures": [
 						"Rogue's Racket|Rogue|CRB|Mastermind|APG|1"
@@ -241,8 +250,8 @@
 						{
 							"type": "list",
 							"items": [
-								"Hone your skills through intense practice, both on your own and out in the world. ",
-								"Know where to attain illicit goods. ",
+								"Hone your skills through intense practice, both on your own and out in the world.",
+								"Know where to attain illicit goods.",
 								"Skirt or break the law because you think it's meaningless or have your own code."
 							]
 						}
@@ -305,7 +314,7 @@
 			"classSource": "CRB",
 			"level": 1,
 			"entries": [
-				"At 1st level and every even-numbered level, you gain a {@filter rogue class feat|feats||type=class|classes=rogue|level=[1;1]}."
+				"At 1st level and every even-numbered level, you gain a {@filter rogue class feat|feats||type=class|Class=rogue|level=[1;1]}."
 			]
 		},
 		{
@@ -318,7 +327,7 @@
 			"level": 1,
 			"type": "Rogue's Racket",
 			"entries": [
-				"As you started on the path of the rogue, you began to develop your own style to pursue your illicit activities. Your racket shapes your rogue techniques and the way you approach a job, while building your reputation in the criminal underworld for a certain type of work. A client with deep pockets might even hire a team of rogues for a particular heist, each specializing in a different racket, in order to cover all the bases. Choose a rogue's racket. "
+				"As you started on the path of the rogue, you began to develop your own style to pursue your illicit activities. Your racket shapes your rogue techniques and the way you approach a job, while building your reputation in the criminal underworld for a certain type of work. A client with deep pockets might even hire a team of rogues for a particular heist, each specializing in a different racket, in order to cover all the bases. Choose a rogue's racket."
 			]
 		},
 		{
@@ -329,7 +338,7 @@
 			"classSource": "CRB",
 			"level": 1,
 			"entries": [
-				"At 1st level and every level thereafter, you gain a {@filter skill feat|feats||type=skill;!archetype}. "
+				"At 1st level and every level thereafter, you gain a {@filter skill feat|feats||type=skill;!archetype}."
 			]
 		},
 		{
@@ -386,7 +395,7 @@
 			"classSource": "CRB",
 			"level": 3,
 			"entries": [
-				"At 3rd level and every 4 levels thereafter, you gain a {@filter general feat|feats||type=general}. "
+				"At 3rd level and every 4 levels thereafter, you gain a {@filter general feat|feats||type=general}."
 			]
 		},
 		{

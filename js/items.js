@@ -124,7 +124,7 @@ class ItemsPage extends ListPage {
 		this._itemId = id;
 
 		function buildStatsTab () {
-			$content.append(RenderItems.$getRenderedItem(item));
+			$content.append(Renderer.item.getRenderedString(item));
 		}
 		async function buildFluffTab () {
 			const pGetFluff = async () => {
@@ -176,7 +176,7 @@ class ItemsPage extends ListPage {
 			const count = it.values.count;
 			cntItems += it.values.count;
 			if (item._fBulk) bulk += item._fBulk * count;
-			if (item._fPrice) value += item._sPrice * count;
+			if (item._sPrice) value += item._sPrice * count;
 		});
 
 		this._$totalBulk.text(`${Math.floor(bulk)}`);
@@ -253,7 +253,7 @@ class ItemsPage extends ListPage {
 		$(`#btn-equip-buy`).on("click", () => {
 			// TODO: keep the source filters?
 			this._pageFilter.filterBox.reset();
-			this._pageFilter.filterBox.setFromValues({Type: {Equipment: 1, "Specific Variant": 2}});
+			this._pageFilter.filterBox.setFromValues({Type: {Equipment: 1, "Generic Variant": 2}});
 			this.handleFilterChange();
 		});
 
@@ -273,7 +273,7 @@ class ItemsPage extends ListPage {
 
 				const renderItem = (it) => {
 					stack.push(`<div class="prntv__wrp-item"><div class="pf2-stat stats stats--book stats--prntv">`);
-					stack.push(Renderer.item.getCompactRenderedString(it));
+					stack.push(Renderer.item.getRenderedString(it));
 					stack.push(`</div></div>`);
 				};
 

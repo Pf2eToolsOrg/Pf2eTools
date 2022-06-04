@@ -98,6 +98,7 @@ class NavBar {
 		this._addElement_li(NavBar._CAT_UTILITIES, "inittrackerplayerview.html", "Initiative Tracker Player View");
 		this._addElement_divider(NavBar._CAT_UTILITIES);
 		this._addElement_li(NavBar._CAT_UTILITIES, "renderdemo.html", "Renderer Demo");
+		this._addElement_li(NavBar._CAT_UTILITIES, "textconverter.html", "Text Converter");
 		this._addElement_divider(NavBar._CAT_UTILITIES);
 		this._addElement_li(NavBar._CAT_UTILITIES, "changelog.html", "Changelog");
 		this._addElement_divider(NavBar._CAT_UTILITIES);
@@ -109,10 +110,7 @@ class NavBar {
 			NavBar._CAT_SETTINGS,
 			{
 				html: styleSwitcher.getActiveDayNight() === StyleSwitcher.STYLE_NIGHT ? "Day Mode" : "Night Mode",
-				click: (evt) => {
-					evt.preventDefault();
-					styleSwitcher.toggleDayNight();
-				},
+				click: (evt) => NavBar.InteractionManager._onClick_button_dayNight(evt),
 				className: "nightModeToggle",
 			},
 		);
@@ -650,7 +648,7 @@ NavBar._ALT_CHILD_PAGES = {
 NavBar._CAT_RULES = "Rules";
 NavBar._CAT_BOOKS = "Books";
 NavBar._CAT_PLAYER = "Player";
-NavBar._CAT_GAME_MASTER = "Dungeon Master";
+NavBar._CAT_GAME_MASTER = "Game Master";
 NavBar._CAT_ADVENTURES = "Adventures";
 NavBar._CAT_REFERENCES = "References";
 NavBar._CAT_UTILITIES = "Utilities";
@@ -670,12 +668,7 @@ NavBar._downloadBarMeta = null;
 NavBar.InteractionManager = class {
 	static _onClick_button_dayNight (evt) {
 		evt.preventDefault();
-		styleSwitcher.cycleDayNightMode();
-	}
-
-	static _onContext_button_dayNight (evt) {
-		evt.preventDefault();
-		styleSwitcher.cycleDayNightMode(-1);
+		styleSwitcher.toggleDayNight();
 	}
 
 	static _onClick_button_wideMode (evt) {
@@ -688,16 +681,16 @@ NavBar.InteractionManager = class {
 		const sync = StorageUtil.syncGetDump();
 		const async = await StorageUtil.pGetDump();
 		const dump = {sync, async};
-		DataUtil.userDownload("5etools", dump, {fileType: "5etools"});
+		DataUtil.userDownload("pf2etools", dump, {fileType: "pf2etools"});
 	}
 
 	static async _pOnClick_button_loadStateFile (evt) {
 		evt.preventDefault();
-		const {jsons, errors} = await DataUtil.pUserUpload({expectedFileType: "5etools"});
+		const {jsons, errors} = await DataUtil.pUserUpload({expectedFileType: "pf2etools"});
 
 		DataUtil.doHandleFileLoadErrorsGeneric(errors);
 
-		if (!jsons?.length) return;
+		if (!jsons || !jsons.length) return;
 		const dump = jsons[0];
 
 		try {

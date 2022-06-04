@@ -13,8 +13,17 @@
 				"will": "E",
 				"skills": {
 					"t": [
-						"{@skill Acrobatics}",
-						"one skill determined by your swashbuckler's style"
+						{
+							"skill": [
+								"Acrobatics"
+							]
+						},
+						{
+							"skill": [
+								"Subclass Dependant"
+							],
+							"entry": "one skill determined by your swashbuckler's style"
+						}
 					],
 					"add": 4
 				},
@@ -94,7 +103,7 @@
 				],
 				"stylishTricks": {
 					"name": "Stylish Tricks",
-					"entry": "{@filter stylish trick|feats||type=skill;!archetype|level=[0;${level}]|skills=Acrobatics}",
+					"entry": "{@filter stylish trick|feats||type=skill;!archetype|level=[0;${level}]|Skill=Acrobatics}",
 					"levels": [
 						3,
 						7,
@@ -360,7 +369,7 @@
 			"classSource": "APG",
 			"level": 1,
 			"entries": [
-				"At 1st level and every even-numbered level, you gain an {@filter swashbuckler class feat|feats||type=class|classes=swashbuckler|level=[1;1]}."
+				"At 1st level and every even-numbered level, you gain an {@filter swashbuckler class feat|feats||type=class|Class=swashbuckler|level=[1;1]}."
 			]
 		},
 		{

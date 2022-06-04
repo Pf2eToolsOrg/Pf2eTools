@@ -24,7 +24,7 @@
 					"page": {
 						"type": "integer"
 					},
-					"type":{
+					"type": {
 						"type": "string",
 						"enum": [
 							"Uncommon",
@@ -34,7 +34,7 @@
 							"Secret"
 						]
 					},
-					"typicalSpeakers":{
+					"typicalSpeakers": {
 						"type": "array",
 						"items": {
 							"type": "string"
@@ -42,7 +42,7 @@
 						"uniqueItems": true,
 						"minItems": 1
 					},
-					"regions":{
+					"regions": {
 						"type": "array",
 						"items": {
 							"type": "string"
@@ -64,11 +64,17 @@
 					}
 				},
 				"additionalProperties": false,
-				"required": ["source", "name", "page"]
+				"required": [
+					"source",
+					"name",
+					"page"
+				]
 			},
 			"uniqueItems": true
 		}
 	},
 	"additionalProperties": false,
-	"required": ["language"]
+	"required": [
+		"language"
+	]
 }

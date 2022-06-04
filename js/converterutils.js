@@ -3,119 +3,6 @@ if (typeof module !== "undefined") {
 	require("./utils");
 }
 
-class Source {
-	constructor (name, patEvenPage, patOddPage) {
-		this.name = name;
-		this.pageOffset = 0;
-		this.patEvenPage = patEvenPage;
-		this.patOddPage = patOddPage;
-	}
-
-	static fromString (str) {
-		switch (str) {
-			case "CRB": {
-				const patEvenPage = new RegExp(/\n\d? ?Core Rulebook\n(\d{1,3})/);
-				const patOddPage = new RegExp(/(?:\n.*?\d)?\n(\d{1,3})\n?.*?\nIntroduction\nAncestries &\nBackgrounds\nClasses\nSkills\nFeats\nEquipment\nSpells\nThe Age of\nLost OMENS\nPlaying the\nGame\nGame\nmastering\n{@skill Crafting}\n& Treasure\nAppendix/);
-				const crb = new Source("CRB", patEvenPage, patOddPage);
-				crb.patTraits = new RegExp(/\n([A-Z 0-9-]+)\n([A-Z ]+\n)?/);
-				return crb;
-			}
-			case "SoM": {
-				const patEvenPage = new RegExp(/(\d+)\nIntroduction\nEssentials\nof Magic\nClasses\nSpells\nMagic Items\nBook of\nUnlimited\nMagic\nglossary\n& Index\nSecrets\nof\nMagic\n/);
-				const patOddPage = new RegExp(/\n(\d+)\n/);
-				const crb = new Source("SoM", patEvenPage, patOddPage);
-				crb.patTraits = new RegExp(/\n([A-Z 0-9-]+)\n([A-Z ]+\n)?/);
-				return crb;
-			}
-			case "G&G": {
-				const patEvenPage = new RegExp(/\n(\d+)\nIntroduction\nGears\nCharacters\nGears\nEquipment\nGuns\nCharacters\nGuns\nEquipment\nThe Rotating\nGear\nGlossary\nAnd Index\nGuns &\nGEARS/);
-				const patOddPage = new RegExp(/\n(\d+)\n/);
-				const gg = new Source("G&G", patEvenPage, patOddPage);
-				return gg;
-			}
-			case "LOTGB": {
-				const patEvenPage = new RegExp(/\nGRAND\nBAZAAR\nINTRODUCTION.*?\n(\d+)\n/s);
-				const patOddPage = new RegExp(/\n(\d+)\n/);
-				const lotgb = new Source("LOTGB", patEvenPage, patOddPage);
-				return lotgb;
-			}
-			default: throw new Error(`Unknown source string ${str}.`);
-		}
-	}
-}
-
-class ConverterBase {
-	constructor (source, textToConvert) {
-		this.source = source;
-		this.source.txt = textToConvert.replace(/\r\n/g, "\n").replace(/\r/g, "");
-		this.converting = null;
-		this.matches = [];
-		this.converted = [];
-	}
-
-	get last () { return this.converted.last() }
-
-	postConversion () { /* Implement as needed */ }
-
-	convert (match) { throw new Error("Unimplemented") }
-
-	convertAll () {
-		this.matches.forEach((match, idx) => {
-			this.converting = match;
-			this.convertingIdx = idx;
-			const converted = this.convert(this.converting);
-			this.converted.push(converted)
-		});
-		this.postConversion();
-	}
-
-	getPageNumber () {
-		const sliced = this.source.txt.slice(this.converting.index + this.converting[0].length);
-		const nextEven = sliced.match(this.source.patEvenPage);
-		const nextOdd = sliced.match(this.source.patOddPage);
-		if (nextEven.index < nextOdd.index) return Number(nextEven[1]) + this.source.pageOffset;
-		else return Number(nextOdd[1]) + this.source.pageOffset;
-	}
-}
-
-class ConverterUtils {
-	static cleanString (string, opts) {
-		opts = opts || {};
-		if (!opts.ignoreMultiLinebreak) {
-			string = string.replace(/\n\n\n.+/s, "");
-		}
-		if (opts.removePageNumbers) {
-			string = string.replace(this.source.patEvenPage, "\n");
-			string = string.replace(this.source.patOddPage, "\n");
-		}
-		if (opts.cleanWhitespace) {
-			string = string.replace(/\s+/g, " ").trim();
-		}
-		return string
-	}
-
-	static cleanEntry (rawEntry) {
-		let entries = [];
-		if (rawEntry.includes("•")) {
-			const bullets = rawEntry.split("•").map(it => it.trim()).filter(it => it.length);
-			entries.push(ConverterUtils.cleanString(bullets[0], {cleanWhitespace: true}));
-			const list = {"type": "list", "items": bullets.slice(1, bullets.length - 1)}
-			// TODO: Clean *this*
-			const afterList = bullets.last().split(".\n").map(s => s.trim().replace(/(?<![\W])$/, "."));
-			list.items.push(afterList[0]);
-			list.items = list.items.map(s => ConverterUtils.cleanString(s, {cleanWhitespace: true}));
-			// .replace(/^(?:[A-Z]\S+ (\S+ )?)+(?=[A-Z]\S*|[([])/, (...m) => `{@b ${m[0].trim()}}`)
-			entries.push(list);
-			entries.push(...afterList.slice(1).map(it => ConverterUtils.cleanString(it, {cleanWhitespace: true})));
-		} else {
-			entries = rawEntry.split(".\n").filter(it => it.replace(/\s/g, "").length)
-				.map(s => s.trim().replace(/(?<![\W])$/, "."))
-				.map(s => ConverterUtils.cleanString(s, {cleanWhitespace: true}));
-		}
-		return entries;
-	}
-}
-
 class TaggerUtils {
 	/**
 	 *
@@ -328,7 +215,7 @@ class ConditionTag {
 
 	static _fnTag (str) {
 		return str.replace(ConditionTag._CONDITIONS_REGEX, (...m) => {
-			if (m[2]) return `{@condition ${m[1]}|CRB|${m[1]}${m[2]}}`;
+			if (m[2]) return `{@condition ${m[1]}||${m[1]}${m[2]}}`;
 			else return `{@condition ${m[1]}}`;
 		}).replace(/persistent ((damage)|(?:bludgeoning|piercing|slashing|acid|cold|electricity|fire|sonic|positive|negative|force|chaotic|evil|good|lawful|mental|poison|bleed|precision)(?: damage)?)/gi, (...m) => {
 			return `{@condition persistent damage${m[2] ? "" : ` ||persistent ${m[1]}`}}`
@@ -343,11 +230,404 @@ ConditionTag._CONDITIONS = ["Blinded", "Broken", "Clumsy", "Concealed", "Confuse
 	"Unnoticed", "Wounded"]
 ConditionTag._CONDITIONS_REGEX = new RegExp(`(?<![a-z])(${ConditionTag._CONDITIONS.join("|")})( [0-9]+)?(?![a-z])`, "gi")
 
+// region with entries
+
+const LAST_KEY_WHITELIST = new Set([
+	"entries",
+	"entry",
+	"items",
+	"entriesHigherLevel",
+	"rows",
+	"row",
+	"fluff",
+]);
+
+class TagJsons {
+	static async pInit (opts) {
+		opts = opts || {};
+		SpellTag.init(opts.spells);
+		FeatTag.init(opts.feats);
+		await ItemTag.pInit(opts.items);
+		ActionTag.init(opts.actions);
+		TraitTag.init(opts.traits);
+		DeityTag.init(opts.deities);
+		GroupTag.init();
+	}
+
+	static doTag (json) {
+		if (json instanceof Array) return json;
+
+		Object.keys(json).forEach(k => {
+			json[k] = TaggerUtils.WALKER.walk(json[k],
+				{
+					object: (obj, lastKey) => {
+						if (lastKey != null && !LAST_KEY_WHITELIST.has(lastKey)) return obj
+
+						this.runTags(obj);
+
+						return obj;
+					},
+				},
+			);
+		});
+		return json;
+	}
+
+	static runTags (obj) {
+		obj = ActionSymbolTag.tryRun(obj);
+		obj = DiceTag.tryRun(obj);
+		obj = TraitTag.tryRun(obj);
+		if (SpellTag._INIT) obj = SpellTag.tryRun(obj);
+		if (FeatTag._INIT) obj = FeatTag.tryRun(obj);
+		obj = ConditionTag.tryRun(obj);
+		if (DeityTag._INIT) obj = DeityTag.tryRun(obj);
+		if (GroupTag._INIT) obj = GroupTag.tryRun(obj);
+		if (ActionTag._INIT) obj = ActionTag.tryRun(obj);
+		obj = SkillTag.tryRun(obj);
+		// obj = ItemTag.tryRun(obj);
+	}
+
+	static doTagStr (string) {
+		let obj = {string};
+		this.runTags(obj);
+		return obj.string;
+	}
+}
+
+class SpellTag {
+	static init (spells) {
+		spells = spells || [];
+		spells.forEach(sp => {
+			SpellTag._SPELL_NAMES[sp.name.toLowerCase()] = {name: sp.name, source: sp.source};
+		});
+
+		SpellTag._SPELL_NAME_REGEX = new RegExp(`(${Object.keys(SpellTag._SPELL_NAMES).map(it => it.escapeRegexp()).join("|")})`, "gi");
+		SpellTag._SPELL_NAME_REGEX_LEVEL_CAST = new RegExp(`(level|cast) (${Object.keys(SpellTag._SPELL_NAMES).map(it => it.escapeRegexp()).join("|")})`, "gi");
+		SpellTag._SPELL_NAME_REGEX_AS_LEVEL = new RegExp(`(${Object.keys(SpellTag._SPELL_NAMES).map(it => it.escapeRegexp()).join("|")}) (as a [0-9]+[a-z]{2}.level)`, "gi");
+		SpellTag._SPELL_NAME_REGEX_SPELL = new RegExp(`(${Object.keys(SpellTag._SPELL_NAMES).map(it => it.escapeRegexp()).join("|")}) ((?:metamagic )?(?:focus |composition |devotion )?(?:spell|cantrip))`, "gi");
+		SpellTag._SPELL_NAME_REGEX_AND = new RegExp(`(${Object.keys(SpellTag._SPELL_NAMES).map(it => it.escapeRegexp()).join("|")}),? ((?:and|or) {@spell)`, "gi");
+		if (spells.length) SpellTag._INIT = true;
+	}
+
+	static tryRun (it) {
+		return TaggerUtils.WALKER.walk(
+			it,
+			{
+				string: (str) => {
+					const ptrStack = {_: ""};
+					TaggerUtils.walkerStringHandler(
+						["@spell"],
+						ptrStack,
+						0,
+						0,
+						str,
+						{
+							fnTag: this._fnTag,
+						},
+					);
+					return ptrStack._;
+				},
+			},
+		);
+	}
+
+	static _fnTag (strMod) {
+		return strMod
+			.replace(SpellTag._SPELL_NAME_REGEX_SPELL, (...m) => {
+				const spellMeta = SpellTag._SPELL_NAMES[m[1].toLowerCase()];
+				return `{@spell ${m[1]}${spellMeta.source !== SRC_CRB ? `|${spellMeta.source}` : ""}} ${m[2]}`;
+			})
+			.replace(SpellTag._SPELL_NAME_REGEX_AND, (...m) => {
+				const spellMeta = SpellTag._SPELL_NAMES[m[1].toLowerCase()];
+				return `{@spell ${m[1]}${spellMeta.source !== SRC_CRB ? `|${spellMeta.source}` : ""}} ${m[2]}`;
+			})
+			.replace(SpellTag._SPELL_NAME_REGEX_AS_LEVEL, (...m) => {
+				const spellMeta = SpellTag._SPELL_NAMES[m[1].toLowerCase()];
+				return `{@spell ${m[1]}${spellMeta.source !== SRC_CRB ? `|${spellMeta.source}` : ""}} ${m[2]}`;
+			})
+			.replace(/(spells(?:|[^.!?:{]*): )([^.!?]+)/gi, (...m) => {
+				const spellPart = m[2].replace(SpellTag._SPELL_NAME_REGEX, (...n) => {
+					const spellMeta = SpellTag._SPELL_NAMES[n[1].toLowerCase()];
+					return `{@spell ${n[1]}${spellMeta.source !== SRC_CRB ? `|${spellMeta.source}` : ""}}`;
+				});
+				return `${m[1]}${spellPart}`;
+			})
+			.replace(SpellTag._SPELL_NAME_REGEX_LEVEL_CAST, (...m) => {
+				const spellMeta = SpellTag._SPELL_NAMES[m[2].toLowerCase()];
+				return `${m[1]} {@spell ${m[2]}${spellMeta.source !== SRC_CRB ? `|${spellMeta.source}` : ""}}`
+			});
+	}
+}
+SpellTag._INIT = false;
+SpellTag._SPELL_NAMES = {};
+SpellTag._SPELL_NAME_REGEX = null;
+SpellTag._SPELL_NAME_REGEX_SPELL = null;
+SpellTag._SPELL_NAME_REGEX_AND = null;
+SpellTag._SPELL_NAME_REGEX_AS_LEVEL = null;
+SpellTag._SPELL_NAME_REGEX_LEVEL_CAST = null;
+
+// FIXME/TODO:
+class ItemTag {
+	static pInit (items) {
+		items = items || [];
+	}
+
+	static tryRun (it) {
+		return TaggerUtils.WALKER.walk(
+			it,
+			{
+				string: (str) => {
+					const ptrStack = {_: ""};
+					TaggerUtils.walkerStringHandler(
+						["@item"],
+						ptrStack,
+						0,
+						0,
+						str,
+						{
+							fnTag: this._fnTag,
+						},
+					);
+					return ptrStack._;
+				},
+			},
+		);
+	}
+
+	static _fnTag (strMod) {
+		return strMod;
+	}
+}
+
+class FeatTag {
+	static init (feats) {
+		feats = feats || [];
+		feats.forEach(f => {
+			FeatTag._FEAT_NAMES[f.name.toLowerCase()] = {name: f.name, source: f.source};
+		});
+		FeatTag._FEATS_REGEX_NAMES = new RegExp(`(${Object.keys(FeatTag._FEAT_NAMES).map(it => it.toTitleCase().escapeRegexp()).join("|")})(?: .page [0-9]+.)?`, "g")
+		FeatTag._FEATS_REGEX_FEAT = new RegExp(`(${Object.keys(FeatTag._FEAT_NAMES).map(it => it.escapeRegexp()).join("|")}) ([a-z]+ feat)`, "gi")
+		if (feats.length) FeatTag._INIT = true;
+	}
+
+	static tryRun (it) {
+		return TaggerUtils.WALKER.walk(
+			it,
+			{
+				string: FeatTag._walkerStringHandler,
+			},
+		);
+	}
+
+	static _walkerStringHandler (str, lastKey) {
+		str = str.replace(FeatTag._FEATS_REGEX_FEAT, (...m) => {
+			const featMeta = FeatTag._FEAT_NAMES[m[1].toLowerCase()];
+			return `{@feat ${m[1]}${featMeta.source !== SRC_CRB ? `|${featMeta.source}` : ""}} ${m[2]}`
+		});
+		if (lastKey === "prerequisites") {
+			str = str.replace(FeatTag._FEATS_REGEX_NAMES, (...m) => {
+				const featMeta = FeatTag._FEAT_NAMES[m[1].toLowerCase()];
+				return `{@feat ${m[1]}${featMeta.source !== SRC_CRB ? `|${featMeta.source}` : ""}}`
+			});
+		}
+		return str
+	}
+}
+FeatTag._INIT = false;
+FeatTag._FEAT_NAMES = {};
+FeatTag._FEATS_REGEX_FEAT = null;
+FeatTag._FEATS_REGEX_NAMES = null;
+
+class TraitTag {
+	static init (traits) {
+		traits = (traits || []).map(t => t.name);
+		TraitTag._TRAITS_REGEX_EFFECT = new RegExp(` (${traits.join("|")}) (effect|trait)`, "gi");
+		TraitTag._TRAITS_REGEX_AND = new RegExp(` (${traits.join("|")})(,? and|,? or) {@trait`, "gi");
+		if (traits.length) TraitTag._INIT = true;
+	}
+
+	static tryRun (it) {
+		return TaggerUtils.WALKER.walk(
+			it,
+			{
+				string: (str) => {
+					const ptrStack = {_: ""};
+					TaggerUtils.walkerStringHandler(
+						["@trait"],
+						ptrStack,
+						0,
+						0,
+						str,
+						{
+							fnTag: this._fnTag,
+						},
+					);
+					return ptrStack._;
+				},
+			},
+		);
+	}
+
+	static _fnTag (str) {
+		return str.replace(TraitTag._TRAITS_REGEX_EFFECT, (...m) => {
+			return ` {@trait ${m[1]}} ${m[2]}`;
+		}).replace(TraitTag._TRAITS_REGEX_AND, (...m) => {
+			return ` {@trait ${m[1]}}${m[2]} {@trait`;
+		});
+	}
+}
+TraitTag._INIT = false;
+TraitTag._TRAITS_REGEX_EFFECT = null;
+TraitTag._TRAITS_REGEX_AND = null;
+
+// To tag Cast a Spell-isms it's ` (?<!"|\{|\||@action )(Cast .+? Spell)(?<!"|\}|\|) `
+class ActionTag {
+	static init (actions) {
+		actions = actions || [];
+		actions.forEach(a => {
+			ActionTag._ACTIONS[a.name] = {name: a.name, source: a.source};
+			// try and catch some conjugates
+			ActionTag._ACTIONS[a.name.replace(/([\w]+)\s(.+)/, "$1ing $2")] = {name: a.name, source: a.source};
+			ActionTag._ACTIONS[a.name.replace(/([\w]+)\w\s(.+)/, "$1ing $2")] = {name: a.name, source: a.source};
+			ActionTag._ACTIONS[a.name.replace(/([\w]+)(\w)\s(.+)/, "$1$2$2ing $3")] = {name: a.name, source: a.source};
+		});
+
+		ActionTag._ACTIONS_REGEX = new RegExp(`(${Object.keys(ActionTag._ACTIONS).map(it => it.escapeRegexp()).join("|")})(?![a-z])`, "g");
+		if (actions.length) ActionTag._INIT = true;
+	}
+
+	static tryRun (it) {
+		return TaggerUtils.WALKER.walk(
+			it,
+			{
+				string: (str) => {
+					const ptrStack = {_: ""};
+					TaggerUtils.walkerStringHandler(
+						["@trait"],
+						ptrStack,
+						0,
+						0,
+						str,
+						{
+							fnTag: this._fnTag,
+						},
+					);
+					return ptrStack._;
+				},
+			},
+		);
+	}
+
+	static _fnTag (str) {
+		return str.replace(ActionTag._ACTIONS_REGEX, (...m) => {
+			const meta = ActionTag._ACTIONS[m[1]];
+			const pipes = [meta.name];
+			if (meta.source !== SRC_CRB) pipes.push(meta.source);
+			if (meta.source === SRC_CRB && meta.name !== m[1]) pipes.push("");
+			if (meta.name !== m[1]) pipes.push(m[1]);
+			return `{@action ${pipes.join("|")}}`
+		})
+	}
+}
+ActionTag._INIT = false;
+ActionTag._ACTIONS = {};
+ActionTag._ACTIONS_REGEX = null;
+
+class DeityTag {
+	static init (deities) {
+		deities = deities || [];
+		deities.forEach(a => {
+			DeityTag._DEITIES[a.name] = {name: a.name, source: a.source};
+			// FIXME: Leaving parts of the deities name untagged (such as {@deity Abadar}'s) is ugly. MrVauxs unfortunately cannot figure out how to add such cases to be tagged as well.
+		});
+		DeityTag._DEITIES_REGEX = new RegExp(`(${Object.keys(DeityTag._DEITIES).map(it => it.escapeRegexp()).join("|")})(?![a-z])`, "g");
+		if (deities.length) DeityTag._INIT = true;
+	}
+
+	static tryRun (it) {
+		return TaggerUtils.WALKER.walk(
+			it,
+			{
+				string: (str) => {
+					const ptrStack = {_: ""};
+					TaggerUtils.walkerStringHandler(
+						["@deity"],
+						ptrStack,
+						0,
+						0,
+						str,
+						{
+							fnTag: this._fnTag,
+						},
+					);
+					return ptrStack._;
+				},
+			},
+		);
+	}
+
+	static _fnTag (str) {
+		return str.replace(DeityTag._DEITIES_REGEX, (...m) => {
+			const meta = DeityTag._DEITIES[m[1]];
+			const pipes = [meta.name];
+			if (meta.source !== SRC_CRB) pipes.push(meta.source);
+			if (meta.source === SRC_CRB && meta.name !== m[1]) pipes.push("");
+			if (meta.name !== m[1]) pipes.push(m[1]);
+			return `{@deity ${pipes.join("|")}}`
+		})
+	}
+}
+DeityTag._INIT = false;
+DeityTag._DEITIES = {};
+DeityTag._DEITIES_REGEX = null;
+
+class GroupTag {
+	static init (groups) {
+		groups = groups || [];
+		groups.forEach(a => {
+			GroupTag._GROUPS[a.name] = {name: a.name, source: a.source};
+		});
+		GroupTag._GROUPS_REGEX = new RegExp(`(${Object.keys(GroupTag._GROUPS).map(it => it.escapeRegexp()).join("|")})(?![a-z])(weapon|armor|) group`, "gi");
+		if (groups.length) GroupTag._INIT = true;
+	}
+
+	static tryRun (it) {
+		return TaggerUtils.WALKER.walk(
+			it,
+			{
+				string: (str) => {
+					const ptrStack = {_: ""};
+					TaggerUtils.walkerStringHandler(
+						["@group"],
+						ptrStack,
+						0,
+						0,
+						str,
+						{
+							fnTag: this._fnTag,
+						},
+					);
+					return ptrStack._;
+				},
+			},
+		);
+	}
+
+	static _fnTag (str) {
+		return str.replace(GroupTag._GROUPS_REGEX, (...m) => {
+			const groupMeta = GroupTag._GROUPS[m[1].toLowerCase()];
+			return `{@group ${m[1]}}`
+		})
+	}
+}
+GroupTag._INIT = false;
+GroupTag._GROUPS = {};
+GroupTag._GROUPS_REGEX = null;
+
+// endregion
+
 if (typeof module !== "undefined") {
 	module.exports = {
-		Source,
-		ConverterBase,
-		ConverterUtils,
 		TaggerUtils,
 		ActionSymbolTag,
 		DiceTag,

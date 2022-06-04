@@ -13,7 +13,11 @@
 				"will": "T",
 				"skills": {
 					"t": [
-						"{@skill Crafting}"
+						{
+							"skill": [
+								"Crafting"
+							]
+						}
 					],
 					"add": 3
 				},
@@ -406,7 +410,7 @@
 			"level": 1,
 			"entries": [
 				"You understand the complex interactions of natural and unnatural substances and can concoct alchemical items to meet your needs. You can do this using normal reagents and the {@action Craft} activity, or you can use special infused reagents that allow you to craft temporary items quickly and at no cost. Over time, you can create more and more alchemical items for free, and since each of, them becomes more and more powerful, you advance in power dramatically, leaving behind those who don't understand your strange science.",
-				"You gain the {@feat Alchemical Crafting|CRB} feat, even if you don't meet that feat's prerequisites, and you gain the four {@filter common 1st-level alchemical formulas|items||item=alchemical|level=[1;1]|rarity=common|type=null} granted by that feat. You can use this feat to create alchemical items as long as you have the items' formulas in your formula book.",
+				"You gain the {@feat Alchemical Crafting|CRB} feat, even if you don't meet that feat's prerequisites, and you gain the four {@filter common 1st-level alchemical formulas|items||item=alchemical|level=[1;1]|rarity=common|type=!equipment} granted by that feat. You can use this feat to create alchemical items as long as you have the items' formulas in your formula book.",
 				{
 					"type": "pf2-h4",
 					"page": 72,
@@ -448,7 +452,7 @@
 			"classSource": "CRB",
 			"level": 1,
 			"entries": [
-				"An alchemist keeps meticulous records of the formulas for every item they can create. You start with a standard {@item formula book} worth 10 sp or less for free. The formula book contains the formulas for two {@filter common 1st-level alchemical items|items||general=alchemical|level=[1;1]|rarity=common|type=null} of your choice, in addition to those you gained from {@feat Alchemical Crafting} and your research field.",
+				"An alchemist keeps meticulous records of the formulas for every item they can create. You start with a standard {@item formula book (blank)||formula book} worth 10 sp or less for free. The formula book contains the formulas for two {@filter common 1st-level alchemical items|items||item=alchemical|level=[1;1]|rarity=common|type=!equipment} of your choice, in addition to those you gained from {@feat Alchemical Crafting} and your research field.",
 				"Each time you gain a level, you can add the formulas for two common alchemical items to your formula book. These new formulas can be for any level of item you can create. You learn these formulas automatically, but it's also possible to find or buy additional formulas in settlements or from other alchemists, or to invent them with the {@feat Inventor} feat."
 			]
 		},
@@ -472,7 +476,7 @@
 			"classSource": "CRB",
 			"level": 1,
 			"entries": [
-				"At 1st level and every even-numbered level thereafter, you gain an {@filter alchemist class feat|feats||type=class|classes=alchemist|level=[1;1]}."
+				"At 1st level and every even-numbered level thereafter, you gain an {@filter alchemist class feat|feats||type=class|Class=alchemist|level=[1;1]}."
 			]
 		},
 		{
@@ -494,7 +498,7 @@
 			"classSource": "CRB",
 			"level": 3,
 			"entries": [
-				"At 3rd level and every 4 levels thereafter, you gain a {@filter general feat|feats||type=general}. "
+				"At 3rd level and every 4 levels thereafter, you gain a {@filter general feat|feats||type=general}."
 			]
 		},
 		{

@@ -6,17 +6,18 @@
 			"source": "AV2",
 			"page": 87,
 			"level": 6,
-			"rarity": "Unique",
-			"alignment": "NE",
-			"size": "Medium",
 			"traits": [
-				"Human"
+				"unique",
+				"ne",
+				"medium",
+				"human",
+				"humanoid"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 12
+				"std": 12
 			},
 			"languages": {
 				"languages": [
@@ -26,71 +27,50 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 15
+					"std": 15
 				},
 				"Athletics": {
-					"default": 14
+					"std": 14
 				},
 				"Intimidation": {
-					"default": 14
+					"std": 14
 				},
 				"Society": {
-					"default": 10
+					"std": 10
 				},
 				"Stealth": {
-					"default": 15
+					"std": 15
 				},
 				"Thievery": {
-					"default": 15
+					"std": 15
 				}
 			},
 			"abilityMods": {
-				"Str": 4,
-				"Dex": 5,
-				"Con": 1,
-				"Int": 0,
-				"Wis": 0,
-				"Cha": 2
+				"str": 4,
+				"dex": 5,
+				"con": 1,
+				"int": 0,
+				"wis": 0,
+				"cha": 2
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+15 Str +4, Dex +5, Con +1, Int +0, Wis +0, Cha +2 Items Cooperative Blade (page 71), light hammer (4), +1 studded leather armor, thieves' tools, 110 gp."
-					],
-					"name": "Thievery"
-				}
-			],
 			"ac": {
-				"default": 24
+				"std": 24
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 13
+				"fort": {
+					"std": 13
 				},
-				"Ref": {
-					"default": 17
+				"ref": {
+					"std": 17
 				},
-				"Will": {
-					"default": 10
+				"will": {
+					"std": 10
 				}
 			},
 			"hp": [
 				{
 					"hp": 95,
 					"abilities": null
-				}
-			],
-			"abilitiesMid": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"trigger": "Carman is targeted with a ranged attack by a thrown weapon and has a hand free",
-					"entries": [
-						"Carman gains a +2 circumstance bonus to his AC against the triggering attack. If the attack misses, Carman catches the weapon and can immediately make a ranged {@action Strike} with it."
-					],
-					"name": "Skillful Catch"
 				}
 			],
 			"speed": {
@@ -103,7 +83,7 @@
 					"attack": 17,
 					"traits": [
 						"magical",
-						"versatile P"
+						"versatile p"
 					],
 					"effects": [],
 					"damage": "{@damage 2d8+8} slashing",
@@ -139,51 +119,57 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"entries": [
-						"Carman deals an extra {@damage 2d6} precision damage to {@condition flat-footed} creatures."
-					],
-					"name": "Sneak Attack",
-					"generic": true
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"traits": [
-						"flourish"
-					],
-					"entries": [
-						"Carman quickly draws a thrown weapon and makes a ranged {@action Strike} with it. His target must succeed at a DC 22 {@skill Perception} check or be caught {@condition flat-footed} by the attack."
-					],
-					"name": "Sudden Throw"
-				},
-				{
-					"entries": [
-						"On the first round of combat, creatures that haven't acted yet are {@condition flat-footed} to Carman."
-					],
-					"name": "Surprise Attacker"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning",
-					"precision",
-					"slashing"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"+15 Str +4, Dex +5, Con +1, Int +0, Wis +0, Cha +2 Items Cooperative Blade (page 71), light hammer (4), +1 studded leather armor, thieves' tools, 110 gp."
+						],
+						"name": "Thievery"
+					}
 				],
-				"condition": [
-					"{@condition flat-footed}"
+				"mid": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"trigger": "Carman is targeted with a ranged attack by a thrown weapon and has a hand free",
+						"entries": [
+							"Carman gains a +2 circumstance bonus to his AC against the triggering attack. If the attack misses, Carman catches the weapon and can immediately make a ranged {@action Strike} with it."
+						],
+						"name": "Skillful Catch"
+					}
+				],
+				"bot": [
+					{
+						"entries": [
+							"Carman deals an extra {@damage 2d6} precision damage to {@condition flat-footed} creatures."
+						],
+						"name": "Sneak Attack",
+						"generic": true
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"flourish"
+						],
+						"entries": [
+							"Carman quickly draws a thrown weapon and makes a ranged {@action Strike} with it. His target must succeed at a DC 22 {@skill Perception} check or be caught {@condition flat-footed} by the attack."
+						],
+						"name": "Sudden Throw"
+					},
+					{
+						"entries": [
+							"On the first round of combat, creatures that haven't acted yet are {@condition flat-footed} to Carman."
+						],
+						"name": "Surprise Attacker"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"RA",
-				"TA",
-				"CC",
-				"UW"
-			]
+			}
 		},
 		{
 			"name": "Chafkhem",
@@ -191,26 +177,24 @@
 			"source": "AV2",
 			"page": 19,
 			"level": 8,
-			"rarity": "Unique",
-			"alignment": "LE",
-			"size": "Medium",
 			"traits": [
-				"Mummy"
+				"unique",
+				"le",
+				"medium",
+				"mummy",
+				"undead"
 			],
 			"creatureType": [
 				"Undead"
 			],
 			"perception": {
-				"default": 17
+				"std": 17
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Aklo",
@@ -221,64 +205,50 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 16
+					"std": 16
 				},
 				"Arcana": {
-					"default": 19
+					"std": 19
 				},
 				"Athletics": {
-					"default": 15
+					"std": 15
 				},
 				"Diplomacy": {
-					"default": 16
+					"std": 16
 				},
 				"Intimidation": {
-					"default": 16
+					"std": 16
 				},
 				"Occultism": {
-					"default": 17
+					"std": 17
 				},
 				"Religion": {
-					"default": 15
+					"std": 15
 				}
 			},
 			"abilityMods": {
-				"Str": 3,
-				"Dex": 4,
-				"Con": 3,
-				"Int": 7,
-				"Wis": 3,
-				"Cha": 4
+				"str": 3,
+				"dex": 4,
+				"con": 3,
+				"int": 7,
+				"wis": 3,
+				"cha": 4
 			},
 			"items": [
 				"staff of abjuration"
 			],
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+16, {@skill Intimidation} +16, {@skill Occultism} +17,"
-					],
-					"name": "Diplomacy"
-				},
-				{
-					"entries": [
-						"+15 Str +3, Dex +4, Con +3, Int +7, Wis +3, Cha +4 Items staff of abjuration."
-					],
-					"name": "Religion"
-				}
-			],
 			"ac": {
-				"default": 26
+				"std": 26
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 15
+				"fort": {
+					"std": 15
 				},
-				"Ref": {
-					"default": 16
+				"ref": {
+					"std": 16
 				},
-				"Will": {
-					"default": 17
+				"will": {
+					"std": 17
 				}
 			},
 			"hp": [
@@ -289,54 +259,8 @@
 					]
 				}
 			],
-			"immunities": {
-				"damage": [],
-				"condition": [
-					"death effects"
-				]
-			},
-			"abilitiesMid": [
-				{
-					"traits": [
-						"aura",
-						"divine",
-						"emotion",
-						"enchantment",
-						"fear",
-						"incapacitation",
-						"mental"
-					],
-					"entries": [
-						"30 feet. Living creatures are {@condition frightened|CRB|frightened 1} while in Chafkhem's despair aura. They can't naturally recover from this fear while in the area but recover instantly once they leave it. When a creature first enters the area, it must succeed at a DC 24 Will save (after taking the penalty from being {@condition frightened}) or be {@condition paralyzed} for 1 round. The creature is then temporarily immune for 24 hours."
-					],
-					"name": "Despair"
-				},
-				{
-					"traits": [
-						"divine",
-						"necromancy"
-					],
-					"entries": [
-						"When Chafkhem is destroyed, necromantic energies rebuild his body in the magic circle in his room over {@dice 1d10} days. If the re-forming body is destroyed during that time, the process starts anew. Chafkhem can be destroyed for good with a consecrate ritual, or if the magic circle is destroyed."
-					],
-					"name": "Rejuvenation"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"traits": [
-						"abjuration",
-						"arcane",
-						"manipulation"
-					],
-					"trigger": "A creature Chafkhem can see makes a melee",
-					"entries": [
-						"{@action Strike} against Chafkhem; Chafkhem traces a magical glyph in the air that glows and fades. The triggering creature must attempt a DC 25 Fortitude save. Success The target is unaffected. Failure The target is {@condition blinded} until the start of its next turn. Critical Failure The target is {@condition blinded} for 1 minute."
-					],
-					"name": "Warding Script"
-				}
+			"immunities": [
+				"death effects"
 			],
 			"speed": {
 				"walk": 20
@@ -467,55 +391,98 @@
 					}
 				}
 			],
-			"abilitiesBot": [
-				{
-					"entries": [
-						{
-							"type": "affliction",
-							"name": "",
-							"traits": [
-								"curse",
-								"disease",
-								"divine",
-								"necromancy",
-								"negative"
-							],
-							"note": "\nThis disease and any damage from it can't be healed\nuntil this curse is removed. A creature killed by mummy\nrot turns to dust and can't be resurrected except by a\n7th-level resurrect ritual or similar magic.",
-							"DC": 24,
-							"savingThrow": "Fortitude",
-							"stages": [
-								{
-									"stage": 1,
-									"entry": "carrier with no ill effect",
-									"duration": "1 minute"
-								},
-								{
-									"stage": 2,
-									"entry": "{@damage 6d6} negative damage and {@condition stupefied|CRB|stupefied 1}",
-									"duration": "1 day"
-								}
-							]
-						}
-					],
-					"name": "Mummy Rot"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning",
-					"negative"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"+16, {@skill Intimidation} +16, {@skill Occultism} +17,"
+						],
+						"name": "Diplomacy"
+					},
+					{
+						"entries": [
+							"+15 Str +3, Dex +4, Con +3, Int +7, Wis +3, Cha +4 Items staff of abjuration."
+						],
+						"name": "Religion"
+					}
 				],
-				"condition": [
-					"{@condition blinded}",
-					"{@condition frightened}",
-					"{@condition stupefied}"
+				"mid": [
+					{
+						"traits": [
+							"aura",
+							"divine",
+							"emotion",
+							"enchantment",
+							"fear",
+							"incapacitation",
+							"mental"
+						],
+						"entries": [
+							"30 feet. Living creatures are {@condition frightened|CRB|frightened 1} while in Chafkhem's despair aura. They can't naturally recover from this fear while in the area but recover instantly once they leave it. When a creature first enters the area, it must succeed at a DC 24 Will save (after taking the penalty from being {@condition frightened}) or be {@condition paralyzed} for 1 round. The creature is then temporarily immune for 24 hours."
+						],
+						"name": "Despair"
+					},
+					{
+						"traits": [
+							"divine",
+							"necromancy"
+						],
+						"entries": [
+							"When Chafkhem is destroyed, necromantic energies rebuild his body in the magic circle in his room over {@dice 1d10} days. If the re-forming body is destroyed during that time, the process starts anew. Chafkhem can be destroyed for good with a consecrate ritual, or if the magic circle is destroyed."
+						],
+						"name": "Rejuvenation"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"traits": [
+							"abjuration",
+							"arcane",
+							"manipulation"
+						],
+						"trigger": "A creature Chafkhem can see makes a melee",
+						"entries": [
+							"{@action Strike} against Chafkhem; Chafkhem traces a magical glyph in the air that glows and fades. The triggering creature must attempt a DC 25 Fortitude save. Success The target is unaffected. Failure The target is {@condition blinded} until the start of its next turn. Critical Failure The target is {@condition blinded} for 1 minute."
+						],
+						"name": "Warding Script"
+					}
+				],
+				"bot": [
+					{
+						"entries": [
+							{
+								"type": "affliction",
+								"name": "",
+								"traits": [
+									"curse",
+									"disease",
+									"divine",
+									"necromancy",
+									"negative"
+								],
+								"note": "\nThis disease and any damage from it can't be healed\nuntil this curse is removed. A creature killed by mummy\nrot turns to dust and can't be resurrected except by a\n7th-level resurrect ritual or similar magic.",
+								"DC": 24,
+								"savingThrow": "Fortitude",
+								"stages": [
+									{
+										"stage": 1,
+										"entry": "carrier with no ill effect",
+										"duration": "1 minute"
+									},
+									{
+										"stage": 2,
+										"entry": "{@damage 6d6} negative damage and {@condition stupefied|CRB|stupefied 1}",
+										"duration": "1 day"
+									}
+								]
+							}
+						],
+						"name": "Mummy Rot"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"CC",
-				"UW"
-			]
+			}
 		},
 		{
 			"name": "Dreshkan",
@@ -523,24 +490,25 @@
 			"source": "AV2",
 			"page": 78,
 			"level": 4,
-			"rarity": "Uncommon",
-			"alignment": "N",
-			"size": "Medium",
+			"traits": [
+				"uncommon",
+				"n",
+				"medium",
+				"aberration",
+				"construct"
+			],
 			"creatureType": [
 				"Construct",
 				"Aberration"
 			],
 			"perception": {
-				"default": 11
+				"std": 11
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Undercommon"
@@ -549,58 +517,39 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 11
+					"std": 11
 				},
 				"Athletics": {
-					"default": 12,
+					"std": 12,
 					"to Climb": 14
 				},
 				"Intimidation": {
-					"default": 10
+					"std": 10
 				},
 				"Stealth": {
-					"default": 13
+					"std": 13
 				}
 			},
 			"abilityMods": {
-				"Str": 4,
-				"Dex": 5,
-				"Con": 2,
-				"Int": -2,
-				"Wis": 3,
-				"Cha": 2
+				"str": 4,
+				"dex": 5,
+				"con": 2,
+				"int": -2,
+				"wis": 3,
+				"cha": 2
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+10, {@skill Stealth} +13 Str +4, Dex +5, Con +2, Int \u20132, Wis +3,"
-					],
-					"name": "Intimidation"
-				},
-				{
-					"entries": [
-						"+2."
-					],
-					"name": "Cha"
-				},
-				{
-					"entries": [],
-					"name": "Light Blindness",
-					"generic": true
-				}
-			],
 			"ac": {
-				"default": 20
+				"std": 20
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 10
+				"fort": {
+					"std": 10
 				},
-				"Ref": {
-					"default": 13
+				"ref": {
+					"std": 13
 				},
-				"Will": {
-					"default": 11
+				"will": {
+					"std": 11
 				}
 			},
 			"hp": [
@@ -609,34 +558,12 @@
 					"abilities": null
 				}
 			],
-			"immunities": {
-				"damage": [
-					"electricity"
-				],
-				"condition": []
-			},
-			"abilitiesMid": [
-				{
-					"entries": [
-						"A dreshkan is partially technological. Positive {@trait healing} effects only heal a dreshkan half as much as normal."
-					],
-					"name": "Partially Technological"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"trigger": "A creature critically fails a melee {@action Strike} against the dreshkan",
-					"entries": [
-						"The dreshkan makes a needle {@action Strike} against that creature."
-					],
-					"name": "Defensive Needle"
-				}
+			"immunities": [
+				"electricity"
 			],
 			"speed": {
 				"walk": 30,
-				"climb ": 30
+				"climb": 30
 			},
 			"attacks": [
 				{
@@ -668,36 +595,64 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 3,
-						"unit": "action"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"+10, {@skill Stealth} +13 Str +4, Dex +5, Con +2, Int \u20132, Wis +3,"
+						],
+						"name": "Intimidation"
 					},
-					"entries": [
-						"The dreshkan braces itself on all four limbs and sprays needles at as many creatures as it would like in a 30-foot cone, dealing {@damage 2d4} piercing plus {@damage 2d8} electricity damage. Each targeted creature in the area must attempt a basic Reflex save."
-					],
-					"name": "Needle Spray"
-				},
-				{
-					"entries": [
-						"A dreshkan can share the same space as a morlock or another dreshkan, but no more than two such creatures can occupy the same space. When these creatures share the same space, they gain a +1 circumstance bonus to attack rolls."
-					],
-					"name": "Swarming Stance"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"piercing",
-					"slashing"
+					{
+						"entries": [
+							"+2."
+						],
+						"name": "Cha"
+					},
+					{
+						"entries": [],
+						"name": "Light Blindness",
+						"generic": true
+					}
 				],
-				"condition": []
-			},
-			"misc": [
-				"MA",
-				"RA",
-				"AD"
-			]
+				"mid": [
+					{
+						"entries": [
+							"A dreshkan is partially technological. Positive {@trait healing} effects only heal a dreshkan half as much as normal."
+						],
+						"name": "Partially Technological"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"trigger": "A creature critically fails a melee {@action Strike} against the dreshkan",
+						"entries": [
+							"The dreshkan makes a needle {@action Strike} against that creature."
+						],
+						"name": "Defensive Needle"
+					}
+				],
+				"bot": [
+					{
+						"activity": {
+							"number": 3,
+							"unit": "action"
+						},
+						"entries": [
+							"The dreshkan braces itself on all four limbs and sprays needles at as many creatures as it would like in a 30-foot cone, dealing {@damage 2d4} piercing plus {@damage 2d8} electricity damage. Each targeted creature in the area must attempt a basic Reflex save."
+						],
+						"name": "Needle Spray"
+					},
+					{
+						"entries": [
+							"A dreshkan can share the same space as a morlock or another dreshkan, but no more than two such creatures can occupy the same space. When these creatures share the same space, they gain a +1 circumstance bonus to attack rolls."
+						],
+						"name": "Swarming Stance"
+					}
+				]
+			}
 		},
 		{
 			"name": "Gibtanius",
@@ -705,25 +660,28 @@
 			"source": "AV2",
 			"page": 81,
 			"level": 8,
-			"rarity": "Uncommon",
-			"alignment": "CN",
-			"size": "Large",
+			"traits": [
+				"uncommon",
+				"cn",
+				"large",
+				"aberration"
+			],
 			"creatureType": [
 				"Aberration"
 			],
 			"perception": {
-				"default": 16
+				"std": 16
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [
-					"scent 30 feet"
-				],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"type": "imprecise",
+					"name": "scent",
+					"range": 30
+				}
+			],
 			"languages": {
 				"languages": [
 					"Aklo (can't speak any language)"
@@ -732,44 +690,36 @@
 			},
 			"skills": {
 				"Athletics": {
-					"default": 18,
+					"std": 18,
 					"to High Jump or Long Jump": 22
 				},
 				"Intimidation": {
-					"default": 15
+					"std": 15
 				},
 				"Survival": {
-					"default": 16
+					"std": 16
 				}
 			},
 			"abilityMods": {
-				"Str": 6,
-				"Dex": 3,
-				"Con": 6,
-				"Int": -3,
-				"Wis": 2,
-				"Cha": 3
+				"str": 6,
+				"dex": 3,
+				"con": 6,
+				"int": -3,
+				"wis": 2,
+				"cha": 3
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+16 Str +6, Dex +3, Con +6, Int \u20133, Wis +2, Cha +3."
-					],
-					"name": "Survival"
-				}
-			],
 			"ac": {
-				"default": 28
+				"std": 28
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 20
+				"fort": {
+					"std": 20
 				},
-				"Ref": {
-					"default": 15
+				"ref": {
+					"std": 15
 				},
-				"Will": {
-					"default": 16
+				"will": {
+					"std": 16
 				}
 			},
 			"hp": [
@@ -778,29 +728,13 @@
 					"abilities": null
 				}
 			],
-			"immunities": {
-				"damage": [
-					"acid"
-				],
-				"condition": []
-			},
+			"immunities": [
+				"acid"
+			],
 			"resistances": [
 				{
 					"amount": 10,
 					"name": "bludgeoning"
-				}
-			],
-			"abilitiesMid": [
-				{
-					"traits": [
-						"aura",
-						"olfactory"
-					],
-					"entries": [
-						"20 feet. A creature that enters the aura must succeed at a DC 26 Fortitude save.",
-						"On a failure, the creature is {@condition sickened|CRB|sickened 2}; on a critical failure, the creature is also {@condition slowed|CRB|slowed 1} for as long as it is {@condition sickened}. A creature that succeeds at its save is temporarily immune for 1 minute."
-					],
-					"name": "Powerful Stench"
 				}
 			],
 			"speed": {
@@ -838,50 +772,56 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"entries": [
-						"The gibtanius Leaps and can end this {@action Leap} occupying the same space as other creatures. It deals {@damage 5d6} bludgeoning damage to each creature in the space it Leaps to (DC 26 basic Reflex save), then Shoves each of those creatures. If it fails to {@action Shove} any creature out of its space, it bounces to the closest available space of its choosing that does not contain any creatures. Bouncing Crush counts as one attack when determining the gibtanius's multiple attack penalty."
-					],
-					"name": "Bouncing Crush"
-				},
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"traits": [
-						"acid",
-						"evocation",
-						"primal"
-					],
-					"entries": [
-						"The gibtanius vomits a stream of acid that deals {@damage 9d6} acid damage to all creatures in a 60-foot line (DC 26 basic Reflex save). It can't use Breath Weapon again for {@dice 1d4} rounds."
-					],
-					"name": "Breath Weapon"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"acid",
-					"bludgeoning",
-					"piercing"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"+16 Str +6, Dex +3, Con +6, Int \u20133, Wis +2, Cha +3."
+						],
+						"name": "Survival"
+					}
 				],
-				"condition": [
-					"{@condition sickened}"
+				"mid": [
+					{
+						"traits": [
+							"aura",
+							"olfactory"
+						],
+						"entries": [
+							"20 feet. A creature that enters the aura must succeed at a DC 26 Fortitude save.",
+							"On a failure, the creature is {@condition sickened|CRB|sickened 2}; on a critical failure, the creature is also {@condition slowed|CRB|slowed 1} for as long as it is {@condition sickened}. A creature that succeeds at its save is temporarily immune for 1 minute."
+						],
+						"name": "Powerful Stench"
+					}
+				],
+				"bot": [
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"The gibtanius Leaps and can end this {@action Leap} occupying the same space as other creatures. It deals {@damage 5d6} bludgeoning damage to each creature in the space it Leaps to (DC 26 basic Reflex save), then Shoves each of those creatures. If it fails to {@action Shove} any creature out of its space, it bounces to the closest available space of its choosing that does not contain any creatures. Bouncing Crush counts as one attack when determining the gibtanius's multiple attack penalty."
+						],
+						"name": "Bouncing Crush"
+					},
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"acid",
+							"evocation",
+							"primal"
+						],
+						"entries": [
+							"The gibtanius vomits a stream of acid that deals {@damage 9d6} acid damage to all creatures in a 60-foot line (DC 26 basic Reflex save). It can't use Breath Weapon again for {@dice 1d4} rounds."
+						],
+						"name": "Breath Weapon"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"RC",
-				"RA",
-				"AD",
-				"CC"
-			]
+			}
 		},
 		{
 			"name": "Gibtas Bounder",
@@ -889,25 +829,28 @@
 			"source": "AV2",
 			"page": 80,
 			"level": 5,
-			"rarity": "Uncommon",
-			"alignment": "CN",
-			"size": "Small",
+			"traits": [
+				"uncommon",
+				"cn",
+				"small",
+				"aberration"
+			],
 			"creatureType": [
 				"Aberration"
 			],
 			"perception": {
-				"default": 13
+				"std": 13
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [
-					"scent 30 feet"
-				],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"type": "imprecise",
+					"name": "scent",
+					"range": 30
+				}
+			],
 			"languages": {
 				"languages": [
 					"Aklo (can't speak any language)"
@@ -916,37 +859,36 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 11
+					"std": 11
 				},
 				"Athletics": {
-					"default": 12,
+					"std": 12,
 					"to High Jump or Long Jump": 16
 				},
 				"Survival": {
-					"default": 11
+					"std": 11
 				}
 			},
 			"abilityMods": {
-				"Str": 5,
-				"Dex": 4,
-				"Con": 2,
-				"Int": -3,
-				"Wis": 2,
-				"Cha": 2
+				"str": 5,
+				"dex": 4,
+				"con": 2,
+				"int": -3,
+				"wis": 2,
+				"cha": 2
 			},
-			"abilitiesTop": [],
 			"ac": {
-				"default": 22
+				"std": 22
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 13
+				"fort": {
+					"std": 13
 				},
-				"Ref": {
-					"default": 13
+				"ref": {
+					"std": 13
 				},
-				"Will": {
-					"default": 11
+				"will": {
+					"std": 11
 				}
 			},
 			"hp": [
@@ -955,13 +897,9 @@
 					"abilities": null
 				}
 			],
-			"immunities": {
-				"damage": [
-					"acid"
-				],
-				"condition": []
-			},
-			"abilitiesMid": [],
+			"immunities": [
+				"acid"
+			],
 			"speed": {
 				"walk": 30
 			},
@@ -996,44 +934,35 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
+			"abilities": {
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"The gibtas Leaps toward a Medium or smaller creature, landing in the creature's space and Shoving the creature. If the {@action Shove} fails, the gibtas bounces out of the target's square to an adjacent square of the target's choosing."
+						],
+						"name": "Bouncing Slam"
 					},
-					"entries": [
-						"The gibtas Leaps toward a Medium or smaller creature, landing in the creature's space and Shoving the creature. If the {@action Shove} fails, the gibtas bounces out of the target's square to an adjacent square of the target's choosing."
-					],
-					"name": "Bouncing Slam"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"requirements": "The gibtas's last action was a",
+						"entries": [],
+						"name": "Pinning Chomp"
 					},
-					"requirements": "The gibtas's last action was a",
-					"entries": [],
-					"name": "Pinning Chomp"
-				},
-				{
-					"entries": [
-						"Slam and the gibtas successfully Shoved the target; The gibtas attempts to {@action Trip} the target of its Bouncing Slam, then makes a jaws {@action Strike} against the target. The {@action Trip} and {@action Strike} both count against the gibtas's multiple attack penalty, but the penalty doesn't increase until after both attacks."
-					],
-					"name": "Bouncing"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"acid",
-					"piercing"
-				],
-				"condition": []
-			},
-			"misc": [
-				"MA",
-				"RA"
-			]
+					{
+						"entries": [
+							"Slam and the gibtas successfully Shoved the target; The gibtas attempts to {@action Trip} the target of its Bouncing Slam, then makes a jaws {@action Strike} against the target. The {@action Trip} and {@action Strike} both count against the gibtas's multiple attack penalty, but the penalty doesn't increase until after both attacks."
+						],
+						"name": "Bouncing"
+					}
+				]
+			}
 		},
 		{
 			"name": "Gibtas Spawn Swarm",
@@ -1041,57 +970,57 @@
 			"source": "AV2",
 			"page": 80,
 			"level": 6,
-			"rarity": "Uncommon",
-			"alignment": "CN",
-			"size": "Large",
 			"traits": [
-				"Swarm"
+				"uncommon",
+				"cn",
+				"large",
+				"aberration",
+				"swarm"
 			],
 			"creatureType": [
 				"Aberration"
 			],
 			"perception": {
-				"default": 14
+				"std": 14
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [
-					"scent 30 feet"
-				],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"type": "imprecise",
+					"name": "scent",
+					"range": 30
+				}
+			],
 			"skills": {
 				"Acrobatics": {
-					"default": 15
+					"std": 15
 				},
 				"Survival": {
-					"default": 12
+					"std": 12
 				}
 			},
 			"abilityMods": {
-				"Str": -4,
-				"Dex": 5,
-				"Con": 4,
-				"Int": -4,
-				"Wis": 2,
-				"Cha": 2
+				"str": -4,
+				"dex": 5,
+				"con": 4,
+				"int": -4,
+				"wis": 2,
+				"cha": 2
 			},
-			"abilitiesTop": [],
 			"ac": {
-				"default": 23
+				"std": 23
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 14
+				"fort": {
+					"std": 14
 				},
-				"Ref": {
-					"default": 17
+				"ref": {
+					"std": 17
 				},
-				"Will": {
-					"default": 12
+				"will": {
+					"std": 12
 				}
 			},
 			"hp": [
@@ -1100,15 +1029,11 @@
 					"abilities": null
 				}
 			],
-			"immunities": {
-				"damage": [
-					"acid",
-					"precision"
-				],
-				"condition": [
-					"swarm mind"
-				]
-			},
+			"immunities": [
+				"acid",
+				"precision",
+				"swarm mind"
+			],
 			"weaknesses": [
 				{
 					"amount": 5,
@@ -1129,48 +1054,43 @@
 					"name": "slashing"
 				}
 			],
-			"abilitiesMid": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"trigger": "A creature that the gibtas spawn swarm can see targets the swarm with an attack",
-					"entries": [
-						"The swarm bounces to the side and gains a +2 circumstance bonus to AC against the triggering attack. After the attack, the swarm can {@action Stride} up to its Speed in a straight line as part of the reaction."
-					],
-					"name": "Bounce"
-				}
-			],
 			"speed": {
 				"walk": 20
 			},
 			"attacks": [],
-			"abilitiesBot": [
-				{
-					"entries": [
-						"The gibtas spawn swarm moves in loping bounces. The swarm ignores difficult terrain."
-					],
-					"name": "Bounding Swarm"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"entries": [
-						"Each enemy in the swarm's space takes {@damage 2d8} piercing damage and {@damage 1d6} acid damage (DC 22 basic Reflex save). A creature that fails its save against Swarming Bites also takes {@damage 1d4} {@condition persistent damage ||persistent acid damage}."
-					],
-					"name": "Swarming Bites"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"piercing"
+			"abilities": {
+				"mid": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"trigger": "A creature that the gibtas spawn swarm can see targets the swarm with an attack",
+						"entries": [
+							"The swarm bounces to the side and gains a +2 circumstance bonus to AC against the triggering attack. After the attack, the swarm can {@action Stride} up to its Speed in a straight line as part of the reaction."
+						],
+						"name": "Bounce"
+					}
 				],
-				"condition": []
-			},
-			"misc": []
+				"bot": [
+					{
+						"entries": [
+							"The gibtas spawn swarm moves in loping bounces. The swarm ignores difficult terrain."
+						],
+						"name": "Bounding Swarm"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"Each enemy in the swarm's space takes {@damage 2d8} piercing damage and {@damage 1d6} acid damage (DC 22 basic Reflex save). A creature that fails its save against Swarming Bites also takes {@damage 1d4} {@condition persistent damage ||persistent acid damage}."
+						],
+						"name": "Swarming Bites"
+					}
+				]
+			}
 		},
 		{
 			"name": "Gulzash",
@@ -1178,26 +1098,24 @@
 			"source": "AV2",
 			"page": 35,
 			"level": 4,
-			"rarity": "Unique",
-			"alignment": "CE",
-			"size": "Medium",
 			"traits": [
-				"Xulgath"
+				"unique",
+				"ce",
+				"medium",
+				"humanoid",
+				"xulgath"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 10
+				"std": 10
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Common",
@@ -1208,75 +1126,44 @@
 			},
 			"skills": {
 				"Athletics": {
-					"default": 12
+					"std": 12
 				},
 				"Intimidation": {
-					"default": 10
+					"std": 10
 				},
 				"Performance": {
-					"default": 12
+					"std": 12
 				},
 				"Stealth": {
-					"default": 10
+					"std": 10
 				}
 			},
 			"abilityMods": {
-				"Str": 4,
-				"Dex": 2,
-				"Con": 1,
-				"Int": 0,
-				"Wis": 2,
-				"Cha": 2
+				"str": 4,
+				"dex": 2,
+				"con": 1,
+				"int": 0,
+				"wis": 2,
+				"cha": 2
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+12, {@skill Stealth} +10 Str +4, Dex +2, Con +1, Int +0, Wis +2, Cha +2 Items +1 striking battle lute (page 73), daggers (4), leather armor."
-					],
-					"name": "Performance"
-				}
-			],
 			"ac": {
-				"default": 20
+				"std": 20
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 11
+				"fort": {
+					"std": 11
 				},
-				"Ref": {
-					"default": 10
+				"ref": {
+					"std": 10
 				},
-				"Will": {
-					"default": 13
+				"will": {
+					"std": 13
 				}
 			},
 			"hp": [
 				{
 					"hp": 72,
 					"abilities": null
-				}
-			],
-			"abilitiesMid": [
-				{
-					"traits": [
-						"aura",
-						"olfactory"
-					],
-					"entries": [
-						"30 feet. A creature that enters the area must attempt a DC 20 Fortitude save. On a failure, the creature is {@condition sickened|CRB|sickened 1}, and on a critical failure, the creature also takes a \u20135-foot status penalty to its Speeds for 1 round. While within the aura, the creature takes a \u20132 circumstance penalty to saves to recover from the {@condition sickened} condition.",
-						"A creature that succeeds at its save is temporarily immune to all xulgaths' stenches for 1 minute."
-					],
-					"name": "Stench"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "free"
-					},
-					"entries": [
-						"Gulzash can suppress or resume his stench as a free action."
-					],
-					"name": "Stench Suppression"
 				}
 			],
 			"speed": {
@@ -1326,7 +1213,7 @@
 					"attack": 13,
 					"traits": [
 						"agile",
-						"versatile S"
+						"versatile s"
 					],
 					"effects": [],
 					"damage": "{@damage 1d4+6} piercing",
@@ -1341,7 +1228,7 @@
 					"traits": [
 						"agile",
 						"thrown 10 feet",
-						"versatile S"
+						"versatile s"
 					],
 					"effects": [],
 					"damage": "{@damage 1d4+6} piercing",
@@ -1350,41 +1237,57 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"entries": [
-						"Gulzash Leaps to a square adjacent to a creature, then Shoves that creature. If Gulzash rolls a success on."
-					],
-					"name": "Mosh"
-				},
-				{
-					"entries": [
-						"{@action Shove}, he gets a critical success instead."
-					],
-					"name": "the"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning",
-					"piercing",
-					"slashing"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"+12, {@skill Stealth} +10 Str +4, Dex +2, Con +1, Int +0, Wis +2, Cha +2 Items +1 striking battle lute (page 73), daggers (4), leather armor."
+						],
+						"name": "Performance"
+					}
 				],
-				"condition": [
-					"{@condition sickened}"
+				"mid": [
+					{
+						"traits": [
+							"aura",
+							"olfactory"
+						],
+						"entries": [
+							"30 feet. A creature that enters the area must attempt a DC 20 Fortitude save. On a failure, the creature is {@condition sickened|CRB|sickened 1}, and on a critical failure, the creature also takes a \u20135-foot status penalty to its Speeds for 1 round. While within the aura, the creature takes a \u20132 circumstance penalty to saves to recover from the {@condition sickened} condition.",
+							"A creature that succeeds at its save is temporarily immune to all xulgaths' stenches for 1 minute."
+						],
+						"name": "Stench"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "free"
+						},
+						"entries": [
+							"Gulzash can suppress or resume his stench as a free action."
+						],
+						"name": "Stench Suppression"
+					}
+				],
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"Gulzash Leaps to a square adjacent to a creature, then Shoves that creature. If Gulzash rolls a success on."
+						],
+						"name": "Mosh"
+					},
+					{
+						"entries": [
+							"{@action Shove}, he gets a critical success instead."
+						],
+						"name": "the"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"RA",
-				"TA",
-				"CC",
-				"UW"
-			]
+			}
 		},
 		{
 			"name": "Jafaki",
@@ -1392,27 +1295,28 @@
 			"source": "AV2",
 			"page": 88,
 			"level": 8,
-			"rarity": "Unique",
-			"alignment": "CE",
-			"size": "Large",
 			"traits": [
-				"Seugathi"
+				"unique",
+				"ce",
+				"large",
+				"aberration",
+				"seugathi"
 			],
 			"creatureType": [
 				"Aberration"
 			],
 			"perception": {
-				"default": 18
+				"std": 18
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision",
-					"{@ability tremorsense} 30 feet"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"name": "{@ability tremorsense}",
+					"range": 30
+				}
+			],
 			"languages": {
 				"languages": [
 					"Aklo",
@@ -1425,61 +1329,47 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 18
+					"std": 18
 				},
 				"Crafting": {
-					"default": 18
+					"std": 18
 				},
 				"Diplomacy": {
-					"default": 15
+					"std": 15
 				},
 				"Intimidation": {
-					"default": 17
+					"std": 17
 				},
 				"Medicine": {
-					"default": 16
+					"std": 16
 				},
 				"Nature": {
-					"default": 16
+					"std": 16
 				},
 				"Stealth": {
-					"default": 18
+					"std": 18
 				}
 			},
 			"abilityMods": {
-				"Str": 3,
-				"Dex": 6,
-				"Con": 4,
-				"Int": 4,
-				"Wis": 4,
-				"Cha": 3
+				"str": 3,
+				"dex": 6,
+				"con": 4,
+				"int": 4,
+				"wis": 4,
+				"cha": 3
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+17, {@skill Medicine} +16, {@skill Nature} +16, {@skill Occultism} +18, {@skill Stealth} +18 Str +3, Dex +6, Con +4, Int +4, Wis +4, Cha +3 Items +1 striking rapier, wand of gentle repose, wand of 2nd-level {@spell magic missile}, expanded alchemist's tools, keys to areas B11 and C7."
-					],
-					"name": "Intimidation"
-				},
-				{
-					"entries": [
-						"Items Jafaki carries these infused items: 2 moderate acid flasks, 2 moderate bottled lightnings, 2 moderate cognitive mutagens, 2 lesser elixirs of life, 2 moderate mistform elixirs, and 2 doses of wyvern poison (one of which they have already applied to their rapier). These items last for 24 hours, or until the next time Jafaki makes their daily preparations."
-					],
-					"name": "Infused"
-				}
-			],
 			"ac": {
-				"default": 26
+				"std": 26
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 14
+				"fort": {
+					"std": 14
 				},
-				"Ref": {
-					"default": 18
+				"ref": {
+					"std": 18
 				},
-				"Will": {
-					"default": 16
+				"will": {
+					"std": 16
 				}
 			},
 			"hp": [
@@ -1488,41 +1378,9 @@
 					"abilities": null
 				}
 			],
-			"immunities": {
-				"damage": [
-					"mental",
-					"poison"
-				],
-				"condition": []
-			},
-			"abilitiesMid": [
-				{
-					"traits": [
-						"enchantment",
-						"mental"
-					],
-					"entries": [
-						"20 feet. A creature that starts its turn in the aura must succeed at a DC 23 Will save or become {@condition confused} for 1 round; on a success, that creature is temporarily immune for 1 minute. Jafaki can suppress or activate this aura as a single action with the {@trait concentrate} trait."
-					],
-					"name": "Mindfog Aura"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"trigger": "A creature fails its save against Jafaki's mindfog aura",
-					"entries": [
-						"Jafaki determines who the {@condition confused} creature attacks for that round, instead of the target being randomly determined by."
-					],
-					"name": "Command Confusion"
-				},
-				{
-					"entries": [
-						"If the chosen target is the {@condition confused} creature's ally, the creature can immediately attempt a DC 21 Will save; on a success, its target is determined randomly as normal, and on a critical success the target is no longer {@condition confused}."
-					],
-					"name": "the GM."
-				}
+			"immunities": [
+				"mental",
+				"poison"
 			],
 			"speed": {
 				"walk": 25
@@ -1647,74 +1505,100 @@
 					}
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"+17, {@skill Medicine} +16, {@skill Nature} +16, {@skill Occultism} +18, {@skill Stealth} +18 Str +3, Dex +6, Con +4, Int +4, Wis +4, Cha +3 Items +1 striking rapier, wand of gentle repose, wand of 2nd-level {@spell magic missile}, expanded alchemist's tools, keys to areas B11 and C7."
+						],
+						"name": "Intimidation"
 					},
-					"traits": [
-						"manipulate"
-					],
-					"entries": [
-						"Jafaki applies their innate seugathi venom to one weapon they wield."
-					],
-					"name": "Envenom Weapon"
-				},
-				{
-					"entries": [
-						"Mastery Jafaki can {@action Cast a Spell} from magic items even if the spell isn't on their spell list. All such spells are occult spells and use Jafaki's innate spell DC and attack modifier."
-					],
-					"name": "Magic Item"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"traits": [
-						"flourish"
-					],
-					"entries": [
-						"Jafaki Interacts to draw an elixir or mutagen, then drinks it."
-					],
-					"name": "Quick Consumption"
-				},
-				{
-					"traits": [
-						"poison"
-					],
-					"entries": [
-						"Saving Throw DC 24 Fortitude;"
-					],
-					"name": "Seugathi Venom"
-				},
-				{
-					"entries": [
-						"6 rounds; Stage 1 {@damage 1d6} poison damage and {@condition stupefied|CRB|stupefied 1} (1 round); Stage 2 {@damage 2d6} poison damage and {@condition deafened} and {@condition stupefied|CRB|stupefied 2} (1 round)"
-					],
-					"name": "Maximum Duration"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"acid",
-					"electricity",
-					"piercing",
-					"poison"
+					{
+						"entries": [
+							"Items Jafaki carries these infused items: 2 moderate acid flasks, 2 moderate bottled lightnings, 2 moderate cognitive mutagens, 2 lesser elixirs of life, 2 moderate mistform elixirs, and 2 doses of wyvern poison (one of which they have already applied to their rapier). These items last for 24 hours, or until the next time Jafaki makes their daily preparations."
+						],
+						"name": "Infused"
+					}
 				],
-				"condition": [
-					"{@condition confused}",
-					"{@condition stupefied}"
+				"mid": [
+					{
+						"traits": [
+							"enchantment",
+							"mental"
+						],
+						"entries": [
+							"20 feet. A creature that starts its turn in the aura must succeed at a DC 23 Will save or become {@condition confused} for 1 round; on a success, that creature is temporarily immune for 1 minute. Jafaki can suppress or activate this aura as a single action with the {@trait concentrate} trait."
+						],
+						"name": "Mindfog Aura"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"trigger": "A creature fails its save against Jafaki's mindfog aura",
+						"entries": [
+							"Jafaki determines who the {@condition confused} creature attacks for that round, instead of the target being randomly determined by."
+						],
+						"name": "Command Confusion"
+					},
+					{
+						"entries": [
+							"If the chosen target is the {@condition confused} creature's ally, the creature can immediately attempt a DC 21 Will save; on a success, its target is determined randomly as normal, and on a critical success the target is no longer {@condition confused}."
+						],
+						"name": "the GM."
+					}
+				],
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"manipulate"
+						],
+						"entries": [
+							"Jafaki applies their innate seugathi venom to one weapon they wield."
+						],
+						"name": "Envenom Weapon"
+					},
+					{
+						"entries": [
+							"Mastery Jafaki can {@action Cast a Spell} from magic items even if the spell isn't on their spell list. All such spells are occult spells and use Jafaki's innate spell DC and attack modifier."
+						],
+						"name": "Magic Item"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"flourish"
+						],
+						"entries": [
+							"Jafaki Interacts to draw an elixir or mutagen, then drinks it."
+						],
+						"name": "Quick Consumption"
+					},
+					{
+						"traits": [
+							"poison"
+						],
+						"entries": [
+							"Saving Throw DC 24 Fortitude;"
+						],
+						"name": "Seugathi Venom"
+					},
+					{
+						"entries": [
+							"6 rounds; Stage 1 {@damage 1d6} poison damage and {@condition stupefied|CRB|stupefied 1} (1 round); Stage 2 {@damage 2d6} poison damage and {@condition deafened} and {@condition stupefied|CRB|stupefied 2} (1 round)"
+						],
+						"name": "Maximum Duration"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"RC",
-				"RA",
-				"CC",
-				"UW"
-			]
+			}
 		},
 		{
 			"name": "Kragala",
@@ -1722,27 +1606,25 @@
 			"source": "AV2",
 			"page": 35,
 			"level": 4,
-			"rarity": "Unique",
-			"alignment": "LE",
-			"size": "Medium",
 			"traits": [
-				"Duergar",
-				"Dwarf"
+				"unique",
+				"le",
+				"medium",
+				"duergar",
+				"dwarf",
+				"humanoid"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 8
+				"std": 8
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Common",
@@ -1753,71 +1635,51 @@
 			},
 			"skills": {
 				"Athletics": {
-					"default": 11
+					"std": 11
 				},
 				"Crafting": {
-					"default": 8
+					"std": 8
 				},
 				"Intimidation": {
-					"default": 12
+					"std": 12
 				},
 				"Performance": {
-					"default": 12
+					"std": 12
 				},
 				"Survival": {
-					"default": 8
+					"std": 8
 				}
 			},
 			"abilityMods": {
-				"Str": 3,
-				"Dex": 0,
-				"Con": 4,
-				"Int": 2,
-				"Wis": 0,
-				"Cha": 2
+				"str": 3,
+				"dex": 0,
+				"con": 4,
+				"int": 2,
+				"wis": 0,
+				"cha": 2
 			},
 			"items": [
 				"drumstick (2; as light hammer)",
 				"folding drums (page 72)"
 			],
-			"abilitiesTop": [
-				{
-					"entries": [],
-					"name": "Light Blindness",
-					"generic": true
-				}
-			],
 			"ac": {
-				"default": 21
+				"std": 21
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 14
+				"fort": {
+					"std": 14
 				},
-				"Ref": {
-					"default": 8
+				"ref": {
+					"std": 8
 				},
-				"Will": {
-					"default": 11
+				"will": {
+					"std": 11
 				}
 			},
 			"hp": [
 				{
 					"hp": 62,
 					"abilities": null
-				}
-			],
-			"abilitiesMid": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"trigger": "Kragala is holding a drumstick and is targeted with a ranged weapon attack by an attacker she can see",
-					"entries": [
-						"Kragala gains a +2 circumstance bonus to AC against the triggering attack."
-					],
-					"name": "Knock It Away"
 				}
 			],
 			"speed": {
@@ -1890,40 +1752,57 @@
 					}
 				}
 			],
-			"abilitiesBot": [
-				{
-					"traits": [
-						"2nd"
-					],
-					"entries": [
-						"daze, ghost sound, guidance, mending, telekinetic projectile Occult Innate Spells DC 21; 2nd enlarge (self only), invisibility (self only)"
-					],
-					"name": "Cantrips"
-				},
-				{
-					"traits": [
-						"casts"
-					],
-					"entries": [
-						"guidance while using a percussive instrument, her targets don't become temporarily immune to her guidance."
-					],
-					"name": "Guiding Rhythm When Kragala"
-				},
-				{
-					"traits": [
-						"deals"
-					],
-					"entries": [
-						"an additional {@dice 1d6} damage with hammers, including drumsticks (already included in the Strikes' damage)."
-					],
-					"name": "Percussive Reverberation Kragala"
-				}
-			],
-			"inflicts": {
-				"damage": [],
-				"condition": []
-			},
-			"misc": []
+			"abilities": {
+				"top": [
+					{
+						"entries": [],
+						"name": "Light Blindness",
+						"generic": true
+					}
+				],
+				"mid": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"trigger": "Kragala is holding a drumstick and is targeted with a ranged weapon attack by an attacker she can see",
+						"entries": [
+							"Kragala gains a +2 circumstance bonus to AC against the triggering attack."
+						],
+						"name": "Knock It Away"
+					}
+				],
+				"bot": [
+					{
+						"traits": [
+							"2nd"
+						],
+						"entries": [
+							"daze, ghost sound, guidance, mending, telekinetic projectile Occult Innate Spells DC 21; 2nd enlarge (self only), invisibility (self only)"
+						],
+						"name": "Cantrips"
+					},
+					{
+						"traits": [
+							"casts"
+						],
+						"entries": [
+							"guidance while using a percussive instrument, her targets don't become temporarily immune to her guidance."
+						],
+						"name": "Guiding Rhythm When Kragala"
+					},
+					{
+						"traits": [
+							"deals"
+						],
+						"entries": [
+							"an additional {@dice 1d6} damage with hammers, including drumsticks (already included in the Strikes' damage)."
+						],
+						"name": "Percussive Reverberation Kragala"
+					}
+				]
+			}
 		},
 		{
 			"name": "Mulventok",
@@ -1931,23 +1810,23 @@
 			"source": "AV2",
 			"page": 79,
 			"level": 7,
-			"rarity": "Uncommon",
-			"alignment": "N",
-			"size": "Medium",
+			"traits": [
+				"uncommon",
+				"n",
+				"medium",
+				"aberration"
+			],
 			"creatureType": [
 				"Aberration"
 			],
 			"perception": {
-				"default": 15
+				"std": 15
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Aklo",
@@ -1958,52 +1837,39 @@
 			},
 			"skills": {
 				"Athletics": {
-					"default": 17
+					"std": 17
 				},
 				"Intimidation": {
-					"default": 17
+					"std": 17
 				},
 				"Survival": {
-					"default": 15
+					"std": 15
 				},
 				"Purpose Lore": {
-					"default": 15
+					"std": 15
 				}
 			},
 			"abilityMods": {
-				"Str": 6,
-				"Dex": 0,
-				"Con": 4,
-				"Int": 2,
-				"Wis": 4,
-				"Cha": 6
+				"str": 6,
+				"dex": 0,
+				"con": 4,
+				"int": 2,
+				"wis": 4,
+				"cha": 6
 			},
-			"abilitiesTop": [
-				{
-					"traits": [
-						"emotion",
-						"mental"
-					],
-					"entries": [
-						"A mulventok's fervor inspires its allies. Allies within 30 feet that can see or hear the mulventok gain a +1 status bonus to attack rolls and skill checks as long as their actions don't impede the mulventok's imprinted purpose.",
-						"Items +1 tamchal chakram (page 73), steel shield (Hardness 5, HP 20, BT 10)"
-					],
-					"name": "War Leader"
-				}
-			],
 			"ac": {
-				"default": 24,
+				"std": 24,
 				"with shield raised": 26
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 15
+				"fort": {
+					"std": 15
 				},
-				"Ref": {
-					"default": 11
+				"ref": {
+					"std": 11
 				},
-				"Will": {
-					"default": 17
+				"will": {
+					"std": 17
 				}
 			},
 			"hp": [
@@ -2014,40 +1880,8 @@
 					]
 				}
 			],
-			"immunities": {
-				"damage": [],
-				"condition": [
-					"death effects"
-				]
-			},
-			"abilitiesMid": [
-				{
-					"traits": [
-						"necromancy",
-						"negative",
-						"occult"
-					],
-					"entries": [
-						"When a mulventok dies, its mirrored flesh ruptures and explodes in a 20-foot radius. Creatures caught in the blast are covered with viscera and take {@damage 8d6} negative damage (DC 22 basic Reflex save)."
-					],
-					"name": "Explosive Decay"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"traits": [
-						"healing",
-						"necromancy",
-						"occult"
-					],
-					"trigger": "An allied creature within 30 feet reaches 0 HP",
-					"entries": [
-						"The mulventok imparts some of its own energy to keep the ally fighting. The target creature gains 1 Hit Point, and the mulventok takes {@damage 2d6} mental damage."
-					],
-					"name": "Stay in the Fight"
-				}
+			"immunities": [
+				"death effects"
 			],
 			"speed": {
 				"walk": 25
@@ -2098,46 +1932,76 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"traits": [
-						"auditory",
-						"mental"
-					],
-					"entries": [
-						"The mulventok shouts an order to one of its allies within 30 feet. That ally immediately takes a {@action Raise a Shield} or {@action Step} action. A creature can benefit from Fervent Command only once per round."
-					],
-					"name": "Fervent Command"
-				},
-				{
-					"traits": [
-						"occult",
-						"transmutation"
-					],
-					"entries": [
-						"A thrown weapon gains the effects of a returning rune when a mulventok throws it. Thrown weapons the mulventok uses deal an additional {@damage 1d6} mental damage, whether used in melee or thrown."
-					],
-					"name": "Psychokinetic Honing"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning",
-					"mental",
-					"negative",
-					"slashing"
+			"abilities": {
+				"top": [
+					{
+						"traits": [
+							"emotion",
+							"mental"
+						],
+						"entries": [
+							"A mulventok's fervor inspires its allies. Allies within 30 feet that can see or hear the mulventok gain a +1 status bonus to attack rolls and skill checks as long as their actions don't impede the mulventok's imprinted purpose.",
+							"Items +1 tamchal chakram (page 73), steel shield (Hardness 5, HP 20, BT 10)"
+						],
+						"name": "War Leader"
+					}
 				],
-				"condition": []
-			},
-			"misc": [
-				"MA",
-				"RA",
-				"TA"
-			]
+				"mid": [
+					{
+						"traits": [
+							"necromancy",
+							"negative",
+							"occult"
+						],
+						"entries": [
+							"When a mulventok dies, its mirrored flesh ruptures and explodes in a 20-foot radius. Creatures caught in the blast are covered with viscera and take {@damage 8d6} negative damage (DC 22 basic Reflex save)."
+						],
+						"name": "Explosive Decay"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"traits": [
+							"healing",
+							"necromancy",
+							"occult"
+						],
+						"trigger": "An allied creature within 30 feet reaches 0 HP",
+						"entries": [
+							"The mulventok imparts some of its own energy to keep the ally fighting. The target creature gains 1 Hit Point, and the mulventok takes {@damage 2d6} mental damage."
+						],
+						"name": "Stay in the Fight"
+					}
+				],
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"auditory",
+							"mental"
+						],
+						"entries": [
+							"The mulventok shouts an order to one of its allies within 30 feet. That ally immediately takes a {@action Raise a Shield} or {@action Step} action. A creature can benefit from Fervent Command only once per round."
+						],
+						"name": "Fervent Command"
+					},
+					{
+						"traits": [
+							"occult",
+							"transmutation"
+						],
+						"entries": [
+							"A thrown weapon gains the effects of a returning rune when a mulventok throws it. Thrown weapons the mulventok uses deal an additional {@damage 1d6} mental damage, whether used in melee or thrown."
+						],
+						"name": "Psychokinetic Honing"
+					}
+				]
+			}
 		},
 		{
 			"name": "Murschen",
@@ -2145,26 +2009,24 @@
 			"source": "AV2",
 			"page": 39,
 			"level": 8,
-			"rarity": "Unique",
-			"alignment": "CE",
-			"size": "Medium",
 			"traits": [
-				"Skulk"
+				"unique",
+				"ce",
+				"medium",
+				"humanoid",
+				"skulk"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 16
+				"std": 16
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"low-light vision"
-				]
-			},
+			"senses": [
+				{
+					"name": "low-light vision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Common",
@@ -2174,52 +2036,38 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 16
+					"std": 16
 				},
 				"Athletics": {
-					"default": 17
+					"std": 17
 				},
 				"Deception": {
-					"default": 13
+					"std": 13
 				},
 				"Survival": {
-					"default": 17
+					"std": 17
 				}
 			},
 			"abilityMods": {
-				"Str": 3,
-				"Dex": 4,
-				"Con": 3,
-				"Int": 0,
-				"Wis": 3,
-				"Cha": 1
+				"str": 3,
+				"dex": 4,
+				"con": 3,
+				"int": 0,
+				"wis": 3,
+				"cha": 1
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"{@action Step} Murschen gains the benefit of the {@action Cover Tracks} action in forests and subterranean settings without moving at half Speed."
-					],
-					"name": "Camouflaged"
-				},
-				{
-					"entries": [
-						"Murschen's skin shifts and changes to match the surroundings. As long as most of his body isn't covered by clothing or armor, he gains a +2 circumstance bonus to {@skill Stealth} checks to {@action Hide}."
-					],
-					"name": "Chameleon Skin"
-				}
-			],
 			"ac": {
-				"default": 27
+				"std": 27
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 17
+				"fort": {
+					"std": 17
 				},
-				"Ref": {
-					"default": 16
+				"ref": {
+					"std": 16
 				},
-				"Will": {
-					"default": 15
+				"will": {
+					"std": 15
 				}
 			},
 			"hp": [
@@ -2228,7 +2076,6 @@
 					"abilities": null
 				}
 			],
-			"abilitiesMid": [],
 			"speed": {
 				"walk": 30
 			},
@@ -2278,60 +2125,58 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"{@action Step} Murschen gains the benefit of the {@action Cover Tracks} action in forests and subterranean settings without moving at half Speed."
+						],
+						"name": "Camouflaged"
 					},
-					"frequency": {
-						"unit": "turn",
-						"freq": 1
-					},
-					"entries": [
-						"Murschen makes two unarmed Strikes. If both hit the same creature, combine their damage for the purposes of resistances and weaknesses. Murschen's multiple attack penalty applies normally to these Strikes."
-					],
-					"name": "Flurry of Blows"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"traits": [
-						"stance"
-					],
-					"requirements": "Murschen is unarmored",
-					"entries": [
-						"Murschen takes the stance of the red ruin, designed to tear away chunks of flesh like a ferocious beast. Murschen can make red claw unarmed attacks. These attacks deal {@damage 1d10} slashing damage; are in the {@group brawling}; and have the finesse, {@trait sweep}, and {@trait unarmed} traits. While in this stance, when Murschen would reduce his {@condition frightened} condition value by 1, he reduces it to 0."
-					],
-					"name": "Red Ruin Stance"
-				},
-				{
-					"entries": [
-						"Strikes deals an additional {@damage 1d6} precision damage to {@condition flat-footed} creatures."
-					],
-					"name": "Sneak Attack Murschen's"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning",
-					"piercing",
-					"precision",
-					"slashing"
+					{
+						"entries": [
+							"Murschen's skin shifts and changes to match the surroundings. As long as most of his body isn't covered by clothing or armor, he gains a +2 circumstance bonus to {@skill Stealth} checks to {@action Hide}."
+						],
+						"name": "Chameleon Skin"
+					}
 				],
-				"condition": [
-					"{@condition flat-footed}",
-					"{@condition frightened}"
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"frequency": {
+							"unit": "turn",
+							"freq": 1
+						},
+						"entries": [
+							"Murschen makes two unarmed Strikes. If both hit the same creature, combine their damage for the purposes of resistances and weaknesses. Murschen's multiple attack penalty applies normally to these Strikes."
+						],
+						"name": "Flurry of Blows"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"stance"
+						],
+						"requirements": "Murschen is unarmored",
+						"entries": [
+							"Murschen takes the stance of the red ruin, designed to tear away chunks of flesh like a ferocious beast. Murschen can make red claw unarmed attacks. These attacks deal {@damage 1d10} slashing damage; are in the {@group brawling}; and have the finesse, {@trait sweep}, and {@trait unarmed} traits. While in this stance, when Murschen would reduce his {@condition frightened} condition value by 1, he reduces it to 0."
+						],
+						"name": "Red Ruin Stance"
+					},
+					{
+						"entries": [
+							"Strikes deals an additional {@damage 1d6} precision damage to {@condition flat-footed} creatures."
+						],
+						"name": "Sneak Attack Murschen's"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"RA",
-				"CC",
-				"UW"
-			]
+			}
 		},
 		{
 			"name": "Nox",
@@ -2339,26 +2184,24 @@
 			"source": "AV2",
 			"page": 36,
 			"level": 4,
-			"rarity": "Unique",
-			"alignment": "N",
-			"size": "Medium",
 			"traits": [
-				"Caligni"
+				"unique",
+				"n",
+				"medium",
+				"caligni",
+				"humanoid"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 11
+				"std": 11
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"greater darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "greater darkvision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Caligni",
@@ -2369,72 +2212,47 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 11
+					"std": 11
 				},
 				"Deception": {
-					"default": 10
+					"std": 10
 				},
 				"Performance": {
-					"default": 12
+					"std": 12
 				},
 				"Society": {
-					"default": 8
+					"std": 8
 				},
 				"Stealth": {
-					"default": 11
+					"std": 11
 				}
 			},
 			"abilityMods": {
-				"Str": 1,
-				"Dex": 3,
-				"Con": 0,
-				"Int": 0,
-				"Wis": 3,
-				"Cha": 4
+				"str": 1,
+				"dex": 3,
+				"con": 0,
+				"int": 0,
+				"wis": 3,
+				"cha": 4
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+8, {@skill Stealth} +11 Str +1, Dex +3, Con +0, Int +0, Wis +3, Cha +4 Items hand crossbow (10 bolts), kukri, leather armor, virtuoso handheld musical instrument (theorbo)"
-					],
-					"name": "Society"
-				},
-				{
-					"entries": [],
-					"name": "Light Blindness",
-					"generic": true
-				}
-			],
 			"ac": {
-				"default": 21
+				"std": 21
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 8
+				"fort": {
+					"std": 8
 				},
-				"Ref": {
-					"default": 13
+				"ref": {
+					"std": 13
 				},
-				"Will": {
-					"default": 11
+				"will": {
+					"std": 11
 				}
 			},
 			"hp": [
 				{
 					"hp": 60,
 					"abilities": null
-				}
-			],
-			"abilitiesMid": [
-				{
-					"traits": [
-						"light"
-					],
-					"entries": [
-						"When Nox dies, their body combusts in a flash of white-hot flame that deals {@damage 5d6} fire damage to creatures in a 20-foot burst (DC 21 basic Reflex save)",
-						"Nox's gear and treasure are unaffected by the flames and are left in a pile where they died."
-					],
-					"name": "Death Flame"
 				}
 			],
 			"speed": {
@@ -2505,38 +2323,47 @@
 					}
 				}
 			],
-			"abilitiesBot": [
-				{
-					"entries": [
-						"When Nox has a musical instrument in hand, they can use {@skill Performance} to {@action Feint} or {@action Demoralize}."
-					],
-					"name": "Intense Performer"
-				},
-				{
-					"entries": [
-						"Attack Nox deals an additional {@damage 1d6} precision damage to {@condition flat-footed} creatures."
-					],
-					"name": "Sneak"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"fire",
-					"piercing",
-					"precision",
-					"slashing"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"+8, {@skill Stealth} +11 Str +1, Dex +3, Con +0, Int +0, Wis +3, Cha +4 Items hand crossbow (10 bolts), kukri, leather armor, virtuoso handheld musical instrument (theorbo)"
+						],
+						"name": "Society"
+					},
+					{
+						"entries": [],
+						"name": "Light Blindness",
+						"generic": true
+					}
 				],
-				"condition": [
-					"{@condition flat-footed}"
+				"mid": [
+					{
+						"traits": [
+							"light"
+						],
+						"entries": [
+							"When Nox dies, their body combusts in a flash of white-hot flame that deals {@damage 5d6} fire damage to creatures in a 20-foot burst (DC 21 basic Reflex save)",
+							"Nox's gear and treasure are unaffected by the flames and are left in a pile where they died."
+						],
+						"name": "Death Flame"
+					}
+				],
+				"bot": [
+					{
+						"entries": [
+							"When Nox has a musical instrument in hand, they can use {@skill Performance} to {@action Feint} or {@action Demoralize}."
+						],
+						"name": "Intense Performer"
+					},
+					{
+						"entries": [
+							"Attack Nox deals an additional {@damage 1d6} precision damage to {@condition flat-footed} creatures."
+						],
+						"name": "Sneak"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"RA",
-				"AD",
-				"CC",
-				"UW"
-			]
+			}
 		},
 		{
 			"name": "Ryta",
@@ -2544,26 +2371,24 @@
 			"source": "AV2",
 			"page": 36,
 			"level": 4,
-			"rarity": "Unique",
-			"alignment": "LN",
-			"size": "Small",
 			"traits": [
-				"Ratfolk"
+				"unique",
+				"ln",
+				"small",
+				"humanoid",
+				"ratfolk"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 10
+				"std": 10
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Common",
@@ -2573,74 +2398,53 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 11
+					"std": 11
 				},
 				"Diplomacy": {
-					"default": 12
+					"std": 12
 				},
 				"Intimidation": {
-					"default": 12
+					"std": 12
 				},
 				"Performance": {
-					"default": 12
+					"std": 12
 				},
 				"Society": {
-					"default": 9
+					"std": 9
 				},
 				"Stealth": {
-					"default": 11
+					"std": 11
 				}
 			},
 			"abilityMods": {
-				"Str": 1,
-				"Dex": 3,
-				"Con": 0,
-				"Int": 1,
-				"Wis": 2,
-				"Cha": 4
+				"str": 1,
+				"dex": 3,
+				"con": 0,
+				"int": 1,
+				"wis": 2,
+				"cha": 4
 			},
 			"items": [
 				"studded leather armor"
 			],
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+12, {@skill Society} +9, {@skill Stealth} +11 Str +1, Dex +3, Con +0, Int +1, Wis +2, Cha +4 Items studded leather armor."
-					],
-					"name": "Performance"
-				}
-			],
 			"ac": {
-				"default": 21
+				"std": 21
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 8
+				"fort": {
+					"std": 8
 				},
-				"Ref": {
-					"default": 13
+				"ref": {
+					"std": 13
 				},
-				"Will": {
-					"default": 10
+				"will": {
+					"std": 10
 				}
 			},
 			"hp": [
 				{
 					"hp": 60,
 					"abilities": null
-				}
-			],
-			"abilitiesMid": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"trigger": "Ryta is targeted with a melee or ranged attack by an attacker she can see",
-					"entries": [
-						"Ryta {@action Step||Steps} and gains a +2 circumstance bonus to AC against the triggering attack."
-					],
-					"name": "Dance Moves"
 				}
 			],
 			"speed": {
@@ -2724,41 +2528,54 @@
 					}
 				}
 			],
-			"abilitiesBot": [
-				{
-					"entries": [
-						"Pouches Ryta has stretchy cheek pouches that can store up to 1 cubic foot of objects (though no more than four light items). She can remove or store an item using."
-					],
-					"name": "Cheek"
-				},
-				{
-					"entries": [
-						"{@action Interact} action. As long as she has at least one object in her cheek pouches, her speech is noticeably difficult to understand.",
-						"Swarming Ryta can end her movement in the same square as an ally that also has this ability. Only two such creatures can share the same space."
-					],
-					"name": "the"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"entries": [
-						"Ryta sets up devastating vibrations that echo in her throat and her cheek pouches. Until the start of her next turn, her fangs Strikes deal an additional {@damage 2d8} sonic damage. Ryta can't use Vocal Warm-up if she has an object in her cheek pouches."
-					],
-					"name": "Vocal Warm-Up"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"piercing",
-					"sonic"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"+12, {@skill Society} +9, {@skill Stealth} +11 Str +1, Dex +3, Con +0, Int +1, Wis +2, Cha +4 Items studded leather armor."
+						],
+						"name": "Performance"
+					}
 				],
-				"condition": []
-			},
-			"misc": [
-				"MA"
-			]
+				"mid": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"trigger": "Ryta is targeted with a melee or ranged attack by an attacker she can see",
+						"entries": [
+							"Ryta {@action Step||Steps} and gains a +2 circumstance bonus to AC against the triggering attack."
+						],
+						"name": "Dance Moves"
+					}
+				],
+				"bot": [
+					{
+						"entries": [
+							"Pouches Ryta has stretchy cheek pouches that can store up to 1 cubic foot of objects (though no more than four light items). She can remove or store an item using."
+						],
+						"name": "Cheek"
+					},
+					{
+						"entries": [
+							"{@action Interact} action. As long as she has at least one object in her cheek pouches, her speech is noticeably difficult to understand.",
+							"Swarming Ryta can end her movement in the same square as an ally that also has this ability. Only two such creatures can share the same space."
+						],
+						"name": "the"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"Ryta sets up devastating vibrations that echo in her throat and her cheek pouches. Until the start of her next turn, her fangs Strikes deal an additional {@damage 2d8} sonic damage. Ryta can't use Vocal Warm-up if she has an object in her cheek pouches."
+						],
+						"name": "Vocal Warm-Up"
+					}
+				]
+			}
 		},
 		{
 			"name": "Sacuishu",
@@ -2766,26 +2583,24 @@
 			"source": "AV2",
 			"page": 57,
 			"level": 9,
-			"rarity": "Unique",
-			"alignment": "CE",
-			"size": "Small",
 			"traits": [
-				"Air"
+				"unique",
+				"ce",
+				"small",
+				"aberration",
+				"air"
 			],
 			"creatureType": [
 				"Aberration"
 			],
 			"perception": {
-				"default": 21
+				"std": 21
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Aklo",
@@ -2797,49 +2612,41 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 19
+					"std": 19
 				},
 				"Deception": {
-					"default": 17
+					"std": 17
 				},
 				"Intimidation": {
-					"default": 17
+					"std": 17
 				},
 				"Religion": {
-					"default": 19
+					"std": 19
 				},
 				"Stealth": {
-					"default": 19
+					"std": 19
 				}
 			},
 			"abilityMods": {
-				"Str": -5,
-				"Dex": 6,
-				"Con": 0,
-				"Int": 3,
-				"Wis": 6,
-				"Cha": 4
+				"str": -5,
+				"dex": 6,
+				"con": 0,
+				"int": 3,
+				"wis": 6,
+				"cha": 4
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+19, {@skill Stealth} +19 Str \u20135, Dex +6, Con +0, Int +3, Wis +6, Cha +4."
-					],
-					"name": "Religion"
-				}
-			],
 			"ac": {
-				"default": 30
+				"std": 30
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 16
+				"fort": {
+					"std": 16
 				},
-				"Ref": {
-					"default": 18
+				"ref": {
+					"std": 18
 				},
-				"Will": {
-					"default": 20
+				"will": {
+					"std": 20
 				}
 			},
 			"hp": [
@@ -2848,32 +2655,11 @@
 					"abilities": null
 				}
 			],
-			"immunities": {
-				"damage": [],
-				"condition": [
-					"magic"
-				]
-			},
-			"abilitiesMid": [
-				{
-					"traits": [
-						"aura",
-						"light"
-					],
-					"entries": [
-						"20 feet. Sacuishu is naturally {@condition invisible} but glows with a sickly green light, casting bright light in the aura and making her visible."
-					],
-					"name": "Glow"
-				},
-				{
-					"entries": [
-						"Immunity Sacuishu is immune to all spells except faerie fire, glitterdust, magic missile, and maze."
-					],
-					"name": "Magic"
-				}
+			"immunities": [
+				"magic"
 			],
 			"speed": {
-				"fly ": 50
+				"fly": 50
 			},
 			"attacks": [
 				{
@@ -2986,44 +2772,63 @@
 					}
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"traits": [
-						"concentrate"
-					],
-					"entries": [
-						"As spellvoid (page 62), but DC 28."
-					],
-					"name": "Feed on Magic"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"traits": [
-						"concentrate"
-					],
-					"entries": [
-						"Sacuishu extinguishes her glow, becoming {@condition invisible}.",
-						"She can end this effect with another use of this action. If she uses her shock attack while {@condition invisible}, the arc of electricity lets any observer determine her location, making Sacuishu {@condition hidden} to observers only until she moves."
-					],
-					"name": "Go Dark"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"electricity"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"+19, {@skill Stealth} +19 Str \u20135, Dex +6, Con +0, Int +3, Wis +6, Cha +4."
+						],
+						"name": "Religion"
+					}
 				],
-				"condition": []
-			},
-			"misc": [
-				"MA"
-			]
+				"mid": [
+					{
+						"traits": [
+							"aura",
+							"light"
+						],
+						"entries": [
+							"20 feet. Sacuishu is naturally {@condition invisible} but glows with a sickly green light, casting bright light in the aura and making her visible."
+						],
+						"name": "Glow"
+					},
+					{
+						"entries": [
+							"Immunity Sacuishu is immune to all spells except faerie fire, glitterdust, magic missile, and maze."
+						],
+						"name": "Magic"
+					}
+				],
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"concentrate"
+						],
+						"entries": [
+							"As spellvoid (page 62), but DC 28."
+						],
+						"name": "Feed on Magic"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"concentrate"
+						],
+						"entries": [
+							"Sacuishu extinguishes her glow, becoming {@condition invisible}.",
+							"She can end this effect with another use of this action. If she uses her shock attack while {@condition invisible}, the arc of electricity lets any observer determine her location, making Sacuishu {@condition hidden} to observers only until she moves."
+						],
+						"name": "Go Dark"
+					}
+				]
+			}
 		},
 		{
 			"name": "Seugathi Reality Warper",
@@ -3031,27 +2836,28 @@
 			"source": "AV2",
 			"page": 83,
 			"level": 9,
-			"rarity": "Uncommon",
-			"alignment": "CE",
-			"size": "Large",
 			"traits": [
-				"Seugathi"
+				"uncommon",
+				"ce",
+				"large",
+				"aberration",
+				"seugathi"
 			],
 			"creatureType": [
 				"Aberration"
 			],
 			"perception": {
-				"default": 17
+				"std": 17
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision",
-					"{@ability tremorsense} 30 feet"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"name": "{@ability tremorsense}",
+					"range": 30
+				}
+			],
 			"languages": {
 				"languages": [
 					"Aklo",
@@ -3063,61 +2869,53 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 19
+					"std": 19
 				},
 				"Arcana": {
-					"default": 19
+					"std": 19
 				},
 				"Crafting": {
-					"default": 19
+					"std": 19
 				},
 				"Deception": {
-					"default": 20
+					"std": 20
 				},
 				"Intimidation": {
-					"default": 18
+					"std": 18
 				},
 				"Nature": {
-					"default": 17
+					"std": 17
 				},
 				"Occultism": {
-					"default": 19
+					"std": 19
 				},
 				"Stealth": {
-					"default": 19
+					"std": 19
 				}
 			},
 			"abilityMods": {
-				"Str": 4,
-				"Dex": 6,
-				"Con": 3,
-				"Int": 4,
-				"Wis": 2,
-				"Cha": 5
+				"str": 4,
+				"dex": 6,
+				"con": 3,
+				"int": 4,
+				"wis": 2,
+				"cha": 5
 			},
 			"items": [
 				"+1 battle axe"
 			],
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+17, {@skill Occultism} +19, {@skill Stealth} +19 Str +4, Dex +6, Con +3, Int +4, Wis +2, Cha +5 Items +1 battle axe."
-					],
-					"name": "Nature"
-				}
-			],
 			"ac": {
-				"default": 27
+				"std": 27
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 18
+				"fort": {
+					"std": 18
 				},
-				"Ref": {
-					"default": 21
+				"ref": {
+					"std": 21
 				},
-				"Will": {
-					"default": 15
+				"will": {
+					"std": 15
 				}
 			},
 			"hp": [
@@ -3126,46 +2924,14 @@
 					"abilities": null
 				}
 			],
-			"immunities": {
-				"damage": [
-					"mental",
-					"poison"
-				],
-				"condition": []
-			},
+			"immunities": [
+				"mental",
+				"poison"
+			],
 			"resistances": [
 				{
 					"amount": 10,
 					"name": "bludgeoning"
-				}
-			],
-			"abilitiesMid": [
-				{
-					"traits": [
-						"enchantment",
-						"mental"
-					],
-					"entries": [
-						"20 feet. As seugathi servant, but DC 25."
-					],
-					"name": "Mindfog Aura",
-					"entries_as_xyz": [
-						"20 feet. A creature that starts its turn in the aura must succeed at a DC 21 Will save or become {@condition confused} for 1 round; on a success, that creature is temporarily immune for 1 minute. A seugathi can suppress or activate this aura as a single action with the {@trait concentrate} trait."
-					]
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"entries": [
-						"As seugathi servant, but DC 25."
-					],
-					"name": "Command Confusion",
-					"trigger": "A creature fails its save against the seugathi's mindfog aura",
-					"entries_as_xyz": [
-						"The seugathi determines who the {@condition confused} creature attacks for that round, instead of the target being randomly determined by the GM. If the chosen target is the {@condition confused} creature's ally, the creature can immediately attempt a DC 21 Will save; on a success, its target is determined randomly as normal for confusion, and on a critical success the target is no longer {@condition confused}."
-					]
 				}
 			],
 			"speed": {
@@ -3280,96 +3046,115 @@
 					}
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"traits": [
-						"manipulate"
-					],
-					"entries": [
-						"The seugathi applies their seugathi venom to one weapon they wield."
-					],
-					"name": "Envenom Weapon"
-				},
-				{
-					"entries": [
-						"A seugathi can {@action Cast a Spell} from a magic item even if the spell isn't on their spell list. All such spells are occult spells and use the seugathi's innate spell DC and attack modifier."
-					],
-					"name": "Magic Item Mastery"
-				},
-				{
-					"traits": [
-						"poison"
-					],
-					"entries": [
-						"As seugathi servant, but DC 25."
-					],
-					"name": "Seugathi Venom",
-					"entries_as_xyz": [
-						{
-							"type": "affliction",
-							"name": "",
-							"traits": [
-								"poison"
-							],
-							"note": "",
-							"DC": 21,
-							"savingThrow": "Fortitude",
-							"maxDuration": "6 rounds",
-							"stages": [
-								{
-									"stage": 1,
-									"entry": "{@damage 1d6} poison damage and {@condition stupefied|CRB|stupefied 1}",
-									"duration": "1 round"
-								},
-								{
-									"stage": 2,
-									"entry": "{@damage 2d6} poison damage and {@condition deafened} and {@condition stupefied|CRB|stupefied 2}",
-									"duration": "1 round"
-								}
-							]
-						}
-					]
-				},
-				{
-					"activity": {
-						"number": 3,
-						"unit": "action"
-					},
-					"traits": [
-						"concentrate",
-						"occult",
-						"transmutation"
-					],
-					"entries": [
-						"The seugathi bends reality in their choice of a 10-foot emanation or a 60-foot line, altering the terrain of the area. The terrain becomes a different type of terrain (such as aquatic, arctic, or desert) and becomes normal or difficult terrain, as the seugathi chooses. Structures, general geographic features, and creatures in the area aren't transformed, but creatures in the area take {@damage 5d6} chaotic damage (DC 28 basic Fortitude save) as reality tries to bend them along with the terrain. Though changes to the area are permanent, the natural environment might eventually revert the land back to its original state (aquatic areas drain, arctic areas thaw, and so on)."
-					],
-					"name": "Warp Reality"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning",
-					"chaotic",
-					"piercing",
-					"poison"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"+17, {@skill Occultism} +19, {@skill Stealth} +19 Str +4, Dex +6, Con +3, Int +4, Wis +2, Cha +5 Items +1 battle axe."
+						],
+						"name": "Nature"
+					}
 				],
-				"condition": [
-					"{@condition confused}",
-					"{@condition deafened}",
-					"{@condition stupefied}"
+				"mid": [
+					{
+						"traits": [
+							"enchantment",
+							"mental"
+						],
+						"entries": [
+							"20 feet. As seugathi servant, but DC 25."
+						],
+						"name": "Mindfog Aura",
+						"entries_as_xyz": [
+							"20 feet. A creature that starts its turn in the aura must succeed at a DC 21 Will save or become {@condition confused} for 1 round; on a success, that creature is temporarily immune for 1 minute. A seugathi can suppress or activate this aura as a single action with the {@trait concentrate} trait."
+						]
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"entries": [
+							"As seugathi servant, but DC 25."
+						],
+						"name": "Command Confusion",
+						"trigger": "A creature fails its save against the seugathi's mindfog aura",
+						"entries_as_xyz": [
+							"The seugathi determines who the {@condition confused} creature attacks for that round, instead of the target being randomly determined by the GM. If the chosen target is the {@condition confused} creature's ally, the creature can immediately attempt a DC 21 Will save; on a success, its target is determined randomly as normal for confusion, and on a critical success the target is no longer {@condition confused}."
+						]
+					}
+				],
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"manipulate"
+						],
+						"entries": [
+							"The seugathi applies their seugathi venom to one weapon they wield."
+						],
+						"name": "Envenom Weapon"
+					},
+					{
+						"entries": [
+							"A seugathi can {@action Cast a Spell} from a magic item even if the spell isn't on their spell list. All such spells are occult spells and use the seugathi's innate spell DC and attack modifier."
+						],
+						"name": "Magic Item Mastery"
+					},
+					{
+						"traits": [
+							"poison"
+						],
+						"entries": [
+							"As seugathi servant, but DC 25."
+						],
+						"name": "Seugathi Venom",
+						"entries_as_xyz": [
+							{
+								"type": "affliction",
+								"name": "",
+								"traits": [
+									"poison"
+								],
+								"note": "",
+								"DC": 21,
+								"savingThrow": "Fortitude",
+								"maxDuration": "6 rounds",
+								"stages": [
+									{
+										"stage": 1,
+										"entry": "{@damage 1d6} poison damage and {@condition stupefied|CRB|stupefied 1}",
+										"duration": "1 round"
+									},
+									{
+										"stage": 2,
+										"entry": "{@damage 2d6} poison damage and {@condition deafened} and {@condition stupefied|CRB|stupefied 2}",
+										"duration": "1 round"
+									}
+								]
+							}
+						]
+					},
+					{
+						"activity": {
+							"number": 3,
+							"unit": "action"
+						},
+						"traits": [
+							"concentrate",
+							"occult",
+							"transmutation"
+						],
+						"entries": [
+							"The seugathi bends reality in their choice of a 10-foot emanation or a 60-foot line, altering the terrain of the area. The terrain becomes a different type of terrain (such as aquatic, arctic, or desert) and becomes normal or difficult terrain, as the seugathi chooses. Structures, general geographic features, and creatures in the area aren't transformed, but creatures in the area take {@damage 5d6} chaotic damage (DC 28 basic Fortitude save) as reality tries to bend them along with the terrain. Though changes to the area are permanent, the natural environment might eventually revert the land back to its original state (aquatic areas drain, arctic areas thaw, and so on)."
+						],
+						"name": "Warp Reality"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"RC",
-				"AD",
-				"CC",
-				"UW"
-			]
+			}
 		},
 		{
 			"name": "Seugathi Servant",
@@ -3377,27 +3162,28 @@
 			"source": "AV2",
 			"page": 82,
 			"level": 6,
-			"rarity": "Uncommon",
-			"alignment": "CE",
-			"size": "Large",
 			"traits": [
-				"Seugathi"
+				"uncommon",
+				"ce",
+				"large",
+				"aberration",
+				"seugathi"
 			],
 			"creatureType": [
 				"Aberration"
 			],
 			"perception": {
-				"default": 14
+				"std": 14
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision",
-					"{@ability tremorsense} 30 feet"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"name": "{@ability tremorsense}",
+					"range": 30
+				}
+			],
 			"languages": {
 				"languages": [
 					"Aklo",
@@ -3409,55 +3195,47 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 15
+					"std": 15
 				},
 				"Crafting": {
-					"default": 12
+					"std": 12
 				},
 				"Intimidation": {
-					"default": 15
+					"std": 15
 				},
 				"Occultism": {
-					"default": 12
+					"std": 12
 				},
 				"Stealth": {
-					"default": 13
+					"std": 13
 				},
 				"Survival": {
-					"default": 10
+					"std": 10
 				}
 			},
 			"abilityMods": {
-				"Str": 2,
-				"Dex": 5,
-				"Con": 2,
-				"Int": 2,
-				"Wis": 4,
-				"Cha": 5
+				"str": 2,
+				"dex": 5,
+				"con": 2,
+				"int": 2,
+				"wis": 4,
+				"cha": 5
 			},
 			"items": [
 				"longsword"
 			],
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+10 Str +2, Dex +5, Con +2, Int +2, Wis +4, Cha +5 Items longsword."
-					],
-					"name": "Survival"
-				}
-			],
 			"ac": {
-				"default": 23
+				"std": 23
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 14
+				"fort": {
+					"std": 14
 				},
-				"Ref": {
-					"default": 17
+				"ref": {
+					"std": 17
 				},
-				"Will": {
-					"default": 12
+				"will": {
+					"std": 12
 				}
 			},
 			"hp": [
@@ -3466,40 +3244,14 @@
 					"abilities": null
 				}
 			],
-			"immunities": {
-				"damage": [
-					"mental",
-					"poison"
-				],
-				"condition": []
-			},
+			"immunities": [
+				"mental",
+				"poison"
+			],
 			"resistances": [
 				{
 					"amount": 5,
 					"name": "bludgeoning"
-				}
-			],
-			"abilitiesMid": [
-				{
-					"traits": [
-						"enchantment",
-						"mental"
-					],
-					"entries": [
-						"20 feet. A creature that starts its turn in the aura must succeed at a DC 21 Will save or become {@condition confused} for 1 round; on a success, that creature is temporarily immune for 1 minute. A seugathi can suppress or activate this aura as a single action with the {@trait concentrate} trait."
-					],
-					"name": "Mindfog Aura"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"trigger": "A creature fails its save against the seugathi's mindfog aura",
-					"entries": [
-						"The seugathi determines who the {@condition confused} creature attacks for that round, instead of the target being randomly determined by the GM. If the chosen target is the {@condition confused} creature's ally, the creature can immediately attempt a DC 21 Will save; on a success, its target is determined randomly as normal for confusion, and on a critical success the target is no longer {@condition confused}."
-					],
-					"name": "Command Confusion"
 				}
 			],
 			"speed": {
@@ -3528,7 +3280,7 @@
 					"attack": 14,
 					"traits": [
 						"reach 10 feet",
-						"versatile P"
+						"versatile p"
 					],
 					"effects": [],
 					"damage": "{@damage 1d8+5} piercing",
@@ -3579,72 +3331,88 @@
 					}
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"traits": [
-						"manipulate"
-					],
-					"entries": [
-						"The seugathi applies their seugathi venom to one weapon they wield."
-					],
-					"name": "Envenom Weapon"
-				},
-				{
-					"entries": [
-						"A seugathi can {@action Cast a Spell} from a magic item even if the spell isn't on their spell list. All such spells are occult spells and use the seugathi's innate spell DC and attack modifier."
-					],
-					"name": "Magic Item Mastery"
-				},
-				{
-					"entries": [
-						{
-							"type": "affliction",
-							"name": "",
-							"traits": [
-								"poison"
-							],
-							"note": "",
-							"DC": 21,
-							"savingThrow": "Fortitude",
-							"maxDuration": "6 rounds",
-							"stages": [
-								{
-									"stage": 1,
-									"entry": "{@damage 1d6} poison damage and {@condition stupefied|CRB|stupefied 1}",
-									"duration": "1 round"
-								},
-								{
-									"stage": 2,
-									"entry": "{@damage 2d6} poison damage and {@condition deafened} and {@condition stupefied|CRB|stupefied 2}",
-									"duration": "1 round"
-								}
-							]
-						}
-					],
-					"name": "Seugathi Venom"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"piercing",
-					"poison"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"+10 Str +2, Dex +5, Con +2, Int +2, Wis +4, Cha +5 Items longsword."
+						],
+						"name": "Survival"
+					}
 				],
-				"condition": [
-					"{@condition confused}",
-					"{@condition deafened}",
-					"{@condition stupefied}"
+				"mid": [
+					{
+						"traits": [
+							"enchantment",
+							"mental"
+						],
+						"entries": [
+							"20 feet. A creature that starts its turn in the aura must succeed at a DC 21 Will save or become {@condition confused} for 1 round; on a success, that creature is temporarily immune for 1 minute. A seugathi can suppress or activate this aura as a single action with the {@trait concentrate} trait."
+						],
+						"name": "Mindfog Aura"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"trigger": "A creature fails its save against the seugathi's mindfog aura",
+						"entries": [
+							"The seugathi determines who the {@condition confused} creature attacks for that round, instead of the target being randomly determined by the GM. If the chosen target is the {@condition confused} creature's ally, the creature can immediately attempt a DC 21 Will save; on a success, its target is determined randomly as normal for confusion, and on a critical success the target is no longer {@condition confused}."
+						],
+						"name": "Command Confusion"
+					}
+				],
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"manipulate"
+						],
+						"entries": [
+							"The seugathi applies their seugathi venom to one weapon they wield."
+						],
+						"name": "Envenom Weapon"
+					},
+					{
+						"entries": [
+							"A seugathi can {@action Cast a Spell} from a magic item even if the spell isn't on their spell list. All such spells are occult spells and use the seugathi's innate spell DC and attack modifier."
+						],
+						"name": "Magic Item Mastery"
+					},
+					{
+						"entries": [
+							{
+								"type": "affliction",
+								"name": "",
+								"traits": [
+									"poison"
+								],
+								"note": "",
+								"DC": 21,
+								"savingThrow": "Fortitude",
+								"maxDuration": "6 rounds",
+								"stages": [
+									{
+										"stage": 1,
+										"entry": "{@damage 1d6} poison damage and {@condition stupefied|CRB|stupefied 1}",
+										"duration": "1 round"
+									},
+									{
+										"stage": 2,
+										"entry": "{@damage 2d6} poison damage and {@condition deafened} and {@condition stupefied|CRB|stupefied 2}",
+										"duration": "1 round"
+									}
+								]
+							}
+						],
+						"name": "Seugathi Venom"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"RC",
-				"CC",
-				"UW"
-			]
+			}
 		},
 		{
 			"name": "Shanrigol Behemoth",
@@ -3652,56 +3420,59 @@
 			"source": "AV2",
 			"page": 85,
 			"level": 9,
-			"rarity": "Uncommon",
-			"alignment": "N",
-			"size": "Gargantuan",
+			"traits": [
+				"uncommon",
+				"n",
+				"gargantuan",
+				"aberration",
+				"undead"
+			],
 			"creatureType": [
 				"Aberration",
 				"Undead"
 			],
 			"perception": {
-				"default": 18
+				"std": 18
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [
-					"{@ability tremorsense} 30 feet"
-				],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"type": "imprecise",
+					"name": "{@ability tremorsense}",
+					"range": 30
+				}
+			],
 			"skills": {
 				"Athletics": {
-					"default": 20
+					"std": 20
 				},
 				"Stealth": {
-					"default": 16
+					"std": 16
 				}
 			},
 			"abilityMods": {
-				"Str": 7,
-				"Dex": 4,
-				"Con": 3,
-				"Int": -4,
-				"Wis": 3,
-				"Cha": -5
+				"str": 7,
+				"dex": 4,
+				"con": 3,
+				"int": -4,
+				"wis": 3,
+				"cha": -5
 			},
-			"abilitiesTop": [],
 			"ac": {
-				"default": 27,
+				"std": 27,
 				"abilities": "all-around vision"
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 21
+				"fort": {
+					"std": 21
 				},
-				"Ref": {
-					"default": 18
+				"ref": {
+					"std": 18
 				},
-				"Will": {
-					"default": 16
+				"will": {
+					"std": 16
 				}
 			},
 			"hp": [
@@ -3712,13 +3483,10 @@
 					]
 				}
 			],
-			"immunities": {
-				"damage": [],
-				"condition": [
-					"death effects",
-					"disease"
-				]
-			},
+			"immunities": [
+				"death effects",
+				"disease"
+			],
 			"weaknesses": [
 				{
 					"amount": 10,
@@ -3731,23 +3499,10 @@
 					"name": "slashing"
 				}
 			],
-			"abilitiesMid": [
-				{
-					"traits": [
-						"divine",
-						"necromancy",
-						"negative"
-					],
-					"entries": [
-						"When the shanrigol behemoth dies, its flesh rots away and sublimates into a foul-smelling gas that fills a 5-foot emanation around the body. This gas deals {@damage 9d6} negative damage to creatures in this area as their flesh curdles and rots as well (DC 27 basic Fortitude save)."
-					],
-					"name": "Necrotic Decay"
-				}
-			],
 			"speed": {
 				"walk": 30,
-				"climb ": 20,
-				"swim ": 20
+				"climb": 20,
+				"swim": 20
 			},
 			"attacks": [
 				{
@@ -3773,7 +3528,7 @@
 					"traits": [
 						"agile",
 						"range increment 30 feet",
-						"versatile P"
+						"versatile p"
 					],
 					"effects": [],
 					"damage": "{@damage 1d12+11} bludgeoning",
@@ -3795,63 +3550,60 @@
 					"types": []
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"entries": [
-						"As shanrigol heap, but {@damage 1d10+11} bludgeoning and {@damage 1d6} {@condition persistent damage ||persistent bleed}, DC 25."
-					],
-					"name": "Sapping Squeeze",
-					"requirements": "The shanrigol has a creature {@condition grabbed}",
-					"entries_as_xyz": [
-						"The shanrigol squeezes the life essence from its target, dealing {@damage 1d6+5} bludgeoning and {@damage 1d4} {@condition persistent damage ||persistent bleed damage} (DC 18 basic Fortitude save). The shanrigol regains temporary Hit Points equal to half the amount of bludgeoning damage a single target takes; these temporary Hit Points last for 1 minute."
-					]
-				},
-				{
-					"entries": [
-						"A shanrigol behemoth's attacks brutally rend its foes. Creatures critically hit by the shanrigol's fleshy slap {@action Strike} take an additional {@damage 2d6} {@condition persistent damage ||persistent bleed damage} and are {@condition enfeebled|CRB|enfeebled 1} for as long as they are bleeding."
-					],
-					"name": "Shred Flesh"
-				},
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"entries": [
-						"The shanrigol separates its flesh from its bones to fit through small spaces. It {@action Stride||Strides}, ignoring difficult terrain and fitting through tight spaces as though it were a Tiny creature.",
-						"It can't use any actions other than Undulating {@action Step} until it occupies an area large enough for its normal form."
-					],
-					"name": "Undulating Step"
-				},
-				{
-					"entries": [
-						"A creature hit by the shanrigol behemoth's web attack is {@condition immobilized} and stuck to the nearest surface until it can {@action Escape} (DC 25)."
-					],
-					"name": "Web Trap"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning",
-					"negative"
+			"abilities": {
+				"mid": [
+					{
+						"traits": [
+							"divine",
+							"necromancy",
+							"negative"
+						],
+						"entries": [
+							"When the shanrigol behemoth dies, its flesh rots away and sublimates into a foul-smelling gas that fills a 5-foot emanation around the body. This gas deals {@damage 9d6} negative damage to creatures in this area as their flesh curdles and rots as well (DC 27 basic Fortitude save)."
+						],
+						"name": "Necrotic Decay"
+					}
 				],
-				"condition": [
-					"{@condition enfeebled}",
-					"{@condition grabbed}",
-					"{@condition immobilized}"
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"As shanrigol heap, but {@damage 1d10+11} bludgeoning and {@damage 1d6} {@condition persistent damage ||persistent bleed}, DC 25."
+						],
+						"name": "Sapping Squeeze",
+						"requirements": "The shanrigol has a creature {@condition grabbed}",
+						"entries_as_xyz": [
+							"The shanrigol squeezes the life essence from its target, dealing {@damage 1d6+5} bludgeoning and {@damage 1d4} {@condition persistent damage ||persistent bleed damage} (DC 18 basic Fortitude save). The shanrigol regains temporary Hit Points equal to half the amount of bludgeoning damage a single target takes; these temporary Hit Points last for 1 minute."
+						]
+					},
+					{
+						"entries": [
+							"A shanrigol behemoth's attacks brutally rend its foes. Creatures critically hit by the shanrigol's fleshy slap {@action Strike} take an additional {@damage 2d6} {@condition persistent damage ||persistent bleed damage} and are {@condition enfeebled|CRB|enfeebled 1} for as long as they are bleeding."
+						],
+						"name": "Shred Flesh"
+					},
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"The shanrigol separates its flesh from its bones to fit through small spaces. It {@action Stride||Strides}, ignoring difficult terrain and fitting through tight spaces as though it were a Tiny creature.",
+							"It can't use any actions other than Undulating {@action Step} until it occupies an area large enough for its normal form."
+						],
+						"name": "Undulating Step"
+					},
+					{
+						"entries": [
+							"A creature hit by the shanrigol behemoth's web attack is {@condition immobilized} and stuck to the nearest surface until it can {@action Escape} (DC 25)."
+						],
+						"name": "Web Trap"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"RC",
-				"RA",
-				"AD",
-				"CC"
-			]
+			}
 		},
 		{
 			"name": "Shanrigol Heap",
@@ -3859,56 +3611,58 @@
 			"source": "AV2",
 			"page": 84,
 			"level": 4,
-			"rarity": "Common",
-			"alignment": "N",
-			"size": "Medium",
+			"traits": [
+				"n",
+				"medium",
+				"aberration",
+				"undead"
+			],
 			"creatureType": [
 				"Aberration",
 				"Undead"
 			],
 			"perception": {
-				"default": 9
+				"std": 9
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [
-					"{@ability tremorsense} 30 feet"
-				],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"type": "imprecise",
+					"name": "{@ability tremorsense}",
+					"range": 30
+				}
+			],
 			"skills": {
 				"Athletics": {
-					"default": 12
+					"std": 12
 				},
 				"Stealth": {
-					"default": 10
+					"std": 10
 				}
 			},
 			"abilityMods": {
-				"Str": 5,
-				"Dex": 2,
-				"Con": 3,
-				"Int": -4,
-				"Wis": 1,
-				"Cha": -5
+				"str": 5,
+				"dex": 2,
+				"con": 3,
+				"int": -4,
+				"wis": 1,
+				"cha": -5
 			},
-			"abilitiesTop": [],
 			"ac": {
-				"default": 20,
+				"std": 20,
 				"abilities": "all-around vision"
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 14
+				"fort": {
+					"std": 14
 				},
-				"Ref": {
-					"default": 11
+				"ref": {
+					"std": 11
 				},
-				"Will": {
-					"default": 9
+				"will": {
+					"std": 9
 				}
 			},
 			"hp": [
@@ -3919,16 +3673,12 @@
 					]
 				}
 			],
-			"immunities": {
-				"damage": [
-					"poison"
-				],
-				"condition": [
-					"death effects",
-					"disease",
-					"paralyzed"
-				]
-			},
+			"immunities": [
+				"poison",
+				"death effects",
+				"disease",
+				"paralyzed"
+			],
 			"resistances": [
 				{
 					"amount": 5,
@@ -3939,11 +3689,10 @@
 					"name": "piercing"
 				}
 			],
-			"abilitiesMid": [],
 			"speed": {
 				"walk": 20,
-				"climb ": 20,
-				"swim ": 20
+				"climb": 20,
+				"swim": 20
 			},
 			"attacks": [
 				{
@@ -3968,7 +3717,7 @@
 					"traits": [
 						"agile",
 						"range increment 20 feet",
-						"versatile P"
+						"versatile p"
 					],
 					"effects": [],
 					"damage": "{@damage 1d8+8} bludgeoning",
@@ -3977,50 +3726,38 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
+			"abilities": {
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"requirements": "The shanrigol has a creature {@condition grabbed}",
+						"entries": [
+							"The shanrigol squeezes the life essence from its target, dealing {@damage 1d6+5} bludgeoning and {@damage 1d4} {@condition persistent damage ||persistent bleed damage} (DC 18 basic Fortitude save). The shanrigol regains temporary Hit Points equal to half the amount of bludgeoning damage a single target takes; these temporary Hit Points last for 1 minute."
+						],
+						"name": "Sapping Squeeze"
 					},
-					"requirements": "The shanrigol has a creature {@condition grabbed}",
-					"entries": [
-						"The shanrigol squeezes the life essence from its target, dealing {@damage 1d6+5} bludgeoning and {@damage 1d4} {@condition persistent damage ||persistent bleed damage} (DC 18 basic Fortitude save). The shanrigol regains temporary Hit Points equal to half the amount of bludgeoning damage a single target takes; these temporary Hit Points last for 1 minute."
-					],
-					"name": "Sapping Squeeze"
-				},
-				{
-					"entries": [
-						"A shanrigol rips flesh away from targets in great chunks. Creatures critically hit by the shanrigol's fleshy slap {@action Strike} take an additional {@damage 1d6} {@condition persistent damage ||persistent bleed damage} and are {@condition enfeebled|CRB|enfeebled 1} for as long as they are bleeding."
-					],
-					"name": "Shred Flesh"
-				},
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
+					{
+						"entries": [
+							"A shanrigol rips flesh away from targets in great chunks. Creatures critically hit by the shanrigol's fleshy slap {@action Strike} take an additional {@damage 1d6} {@condition persistent damage ||persistent bleed damage} and are {@condition enfeebled|CRB|enfeebled 1} for as long as they are bleeding."
+						],
+						"name": "Shred Flesh"
 					},
-					"entries": [
-						"The shanrigol separates its flesh from its bones to fit through small spaces. It {@action Stride||Strides}, ignoring difficult terrain and fitting through tight spaces as though it were a Tiny creature.",
-						"It can't use any actions other than Undulating {@action Step} until it occupies an area large enough for its normal form."
-					],
-					"name": "Undulating Step"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning"
-				],
-				"condition": [
-					"{@condition enfeebled}",
-					"{@condition grabbed}"
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"The shanrigol separates its flesh from its bones to fit through small spaces. It {@action Stride||Strides}, ignoring difficult terrain and fitting through tight spaces as though it were a Tiny creature.",
+							"It can't use any actions other than Undulating {@action Step} until it occupies an area large enough for its normal form."
+						],
+						"name": "Undulating Step"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"RA",
-				"CC"
-			]
+			}
 		},
 		{
 			"name": "Urevian",
@@ -4028,26 +3765,24 @@
 			"source": "AV2",
 			"page": 90,
 			"level": 9,
-			"rarity": "Unique",
-			"alignment": "LE",
-			"size": "Medium",
 			"traits": [
-				"Devil"
+				"unique",
+				"le",
+				"medium",
+				"devil",
+				"fiend"
 			],
 			"creatureType": [
 				"Fiend"
 			],
 			"perception": {
-				"default": 19
+				"std": 19
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"greater darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "greater darkvision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Abyssal",
@@ -4060,61 +3795,47 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 17
+					"std": 17
 				},
 				"Deception": {
-					"default": 21
+					"std": 21
 				},
 				"Diplomacy": {
-					"default": 19
+					"std": 19
 				},
 				"Intimidation": {
-					"default": 19
+					"std": 19
 				},
 				"Religion": {
-					"default": 19
+					"std": 19
 				},
 				"Thievery": {
-					"default": 18
+					"std": 18
 				},
 				"Legal Lore": {
-					"default": 23
+					"std": 23
 				}
 			},
 			"abilityMods": {
-				"Str": 3,
-				"Dex": 4,
-				"Con": 3,
-				"Int": 6,
-				"Wis": 4,
-				"Cha": 6
+				"str": 3,
+				"dex": 4,
+				"con": 3,
+				"int": 6,
+				"wis": 4,
+				"cha": 6
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"Undercommon; telepathy 100 feet, tongues Skills {@skill Acrobatics} +17, {@skill Deception} +21, {@skill Diplomacy} +19,"
-					],
-					"name": "Necril,"
-				},
-				{
-					"entries": [
-						"+19, {@skill Lore||Legal Lore} +23, {@skill Religion} +19, {@skill Society} +19, {@skill Thievery} +18 Str +3, Dex +4, Con +3, Int +6, Wis +4, Cha +6."
-					],
-					"name": "Intimidation"
-				}
-			],
 			"ac": {
-				"default": 28
+				"std": 28
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 18
+				"fort": {
+					"std": 18
 				},
-				"Ref": {
-					"default": 17
+				"ref": {
+					"std": 17
 				},
-				"Will": {
-					"default": 22
+				"will": {
+					"std": 22
 				}
 			},
 			"hp": [
@@ -4123,14 +3844,10 @@
 					"abilities": null
 				}
 			],
-			"immunities": {
-				"damage": [
-					"fire"
-				],
-				"condition": [
-					"ward contract"
-				]
-			},
+			"immunities": [
+				"fire",
+				"ward contract"
+			],
 			"weaknesses": [
 				{
 					"amount": 10,
@@ -4140,20 +3857,6 @@
 			"resistances": [
 				{
 					"name": "physical"
-				}
-			],
-			"abilitiesMid": [
-				{
-					"entries": [
-						"Declaration Urevian keeps a few sly words at the ready to distract enemies. He always uses {@skill Deception} for initiative."
-					],
-					"name": "Distracting"
-				},
-				{
-					"entries": [
-						"Any signed contract Urevian carries (including any draped over his horns) is immune to damage from creatures other than Urevian. In addition, Urevian is immune to {@trait mental} effects that would make him alter, nullify, or destroy a contract."
-					],
-					"name": "Ward Contract"
 				}
 			],
 			"speed": {
@@ -4284,60 +3987,80 @@
 					}
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 3,
-						"unit": "action"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"Undercommon; telepathy 100 feet, tongues Skills {@skill Acrobatics} +17, {@skill Deception} +21, {@skill Diplomacy} +19,"
+						],
+						"name": "Necril,"
 					},
-					"traits": [
-						"conjuration",
-						"divine",
-						"manipulate"
-					],
-					"entries": [
-						"Urevian produces an infernal contract for a single living mortal. This contract can grant a wide range of abilities and effects, akin to the power of a {@spell wish} spell but fulfilled to the letter by Urevian. To receive any of those benefits, the mortal must willingly sign its true name to the contract. At that point, the mortal's soul is bound to Urevian and to Hell.",
-						"While the contract is in effect, the mortal can't be restored to life except by wish or similar magic. If the mortal is restored to life by those means, Urevian knows which mortal came to life and can locate the creature or creatures who restored the mortal to life for 1 year, gaining the effects of a {@spell locate} spell with unlimited range.",
-						"Avoiding the terms of an infernal contract is difficult and often dangerous."
-					],
-					"name": "Draft Contract"
-				},
-				{
-					"traits": [
-						"divine",
-						"necromancy"
-					],
-					"entries": [
-						"Urevian's Strikes also deal {@damage 2d6} {@condition persistent damage ||persistent bleed damage} that resists attempts to heal them. The flat check to stop the bleeding starts at DC 20. The DC is reduced to 15 only if the bleeding creature or an ally successfully assists with the recovery."
-					],
-					"name": "Infernal Wound"
-				},
-				{
-					"traits": [
-						"a"
-					],
-					"entries": [
-						"creature with an infernal wound is increased by 5. A spellcaster or item attempting to use healing magic on a creature suffering from an infernal wound must succeed at a DC 28 counteract check or the magic fails to heal the creature."
-					],
-					"name": "The DC to Administer First Aid to"
-				},
-				{
-					"entries": [
-						"Inspection Urevian can cast his innate {@spell scrying} spell at will, but only to target a creature with which he has a contract, a specific creature named in a contract he has, or a descendant of any of those creatures. The outcome of the target's saving throw is one step worse than the result it rolled."
-					],
-					"name": "Right of"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"piercing"
+					{
+						"entries": [
+							"+19, {@skill Lore||Legal Lore} +23, {@skill Religion} +19, {@skill Society} +19, {@skill Thievery} +18 Str +3, Dex +4, Con +3, Int +6, Wis +4, Cha +6."
+						],
+						"name": "Intimidation"
+					}
 				],
-				"condition": []
-			},
-			"misc": [
-				"MA",
-				"RC"
-			]
+				"mid": [
+					{
+						"entries": [
+							"Declaration Urevian keeps a few sly words at the ready to distract enemies. He always uses {@skill Deception} for initiative."
+						],
+						"name": "Distracting"
+					},
+					{
+						"entries": [
+							"Any signed contract Urevian carries (including any draped over his horns) is immune to damage from creatures other than Urevian. In addition, Urevian is immune to {@trait mental} effects that would make him alter, nullify, or destroy a contract."
+						],
+						"name": "Ward Contract"
+					}
+				],
+				"bot": [
+					{
+						"activity": {
+							"number": 3,
+							"unit": "action"
+						},
+						"traits": [
+							"conjuration",
+							"divine",
+							"manipulate"
+						],
+						"entries": [
+							"Urevian produces an infernal contract for a single living mortal. This contract can grant a wide range of abilities and effects, akin to the power of a {@spell wish} spell but fulfilled to the letter by Urevian. To receive any of those benefits, the mortal must willingly sign its true name to the contract. At that point, the mortal's soul is bound to Urevian and to Hell.",
+							"While the contract is in effect, the mortal can't be restored to life except by wish or similar magic. If the mortal is restored to life by those means, Urevian knows which mortal came to life and can locate the creature or creatures who restored the mortal to life for 1 year, gaining the effects of a {@spell locate} spell with unlimited range.",
+							"Avoiding the terms of an infernal contract is difficult and often dangerous."
+						],
+						"name": "Draft Contract"
+					},
+					{
+						"traits": [
+							"divine",
+							"necromancy"
+						],
+						"entries": [
+							"Urevian's Strikes also deal {@damage 2d6} {@condition persistent damage ||persistent bleed damage} that resists attempts to heal them. The flat check to stop the bleeding starts at DC 20. The DC is reduced to 15 only if the bleeding creature or an ally successfully assists with the recovery."
+						],
+						"name": "Infernal Wound"
+					},
+					{
+						"traits": [
+							"a"
+						],
+						"entries": [
+							"creature with an infernal wound is increased by 5. A spellcaster or item attempting to use healing magic on a creature suffering from an infernal wound must succeed at a DC 28 counteract check or the magic fails to heal the creature."
+						],
+						"name": "The DC to Administer First Aid to"
+					},
+					{
+						"entries": [
+							"Inspection Urevian can cast his innate {@spell scrying} spell at will, but only to target a creature with which he has a contract, a specific creature named in a contract he has, or a descendant of any of those creatures. The outcome of the target's saving throw is one step worse than the result it rolled."
+						],
+						"name": "Right of"
+					}
+				]
+			}
 		},
 		{
 			"name": "Vischari",
@@ -4345,26 +4068,24 @@
 			"source": "AV2",
 			"page": 34,
 			"level": 7,
-			"rarity": "Unique",
-			"alignment": "NE",
-			"size": "Medium",
 			"traits": [
-				"Urdefhan"
+				"unique",
+				"ne",
+				"medium",
+				"humanoid",
+				"urdefhan"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 15
+				"std": 15
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"greater darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "greater darkvision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Aklo",
@@ -4375,49 +4096,41 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 15
+					"std": 15
 				},
 				"Athletics": {
-					"default": 17
+					"std": 17
 				},
 				"Intimidation": {
-					"default": 15
+					"std": 15
 				},
 				"Medicine": {
-					"default": 13
+					"std": 13
 				},
 				"Survival": {
-					"default": 15
+					"std": 15
 				}
 			},
 			"abilityMods": {
-				"Str": 6,
-				"Dex": 4,
-				"Con": 2,
-				"Int": 0,
-				"Wis": 2,
-				"Cha": 4
+				"str": 6,
+				"dex": 4,
+				"con": 2,
+				"int": 0,
+				"wis": 2,
+				"cha": 4
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+15, {@skill Medicine} +13, {@skill Survival} +15 Str +6, Dex +4, Con +2, Int +0, Wis +2, Cha +4."
-					],
-					"name": "Shove), Intimidation"
-				}
-			],
 			"ac": {
-				"default": 25
+				"std": 25
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 15
+				"fort": {
+					"std": 15
 				},
-				"Ref": {
-					"default": 17
+				"ref": {
+					"std": 17
 				},
-				"Will": {
-					"default": 13
+				"will": {
+					"std": 13
 				}
 			},
 			"hp": [
@@ -4428,39 +4141,14 @@
 					]
 				}
 			],
-			"immunities": {
-				"damage": [],
-				"condition": [
-					"death effects",
-					"disease"
-				]
-			},
+			"immunities": [
+				"death effects",
+				"disease"
+			],
 			"weaknesses": [
 				{
 					"amount": 10,
 					"name": "positive"
-				}
-			],
-			"abilitiesMid": [
-				{
-					"traits": [
-						"divine",
-						"necromancy",
-						"negative"
-					],
-					"entries": [
-						"When Vischari dies, her {@condition invisible} flesh rots away and sublimates into a foul-smelling gas that fills a 5-foot emanation around her body. This gas deals {@damage 7d6} negative damage to creatures in this area as their flesh curdles and rots (DC 24 basic Fortitude save)."
-					],
-					"name": "Necrotic Decay"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"entries": [],
-					"name": "Attack of Opportunity",
-					"generic": true
 				}
 			],
 			"speed": {
@@ -4535,67 +4223,81 @@
 					}
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"traits": [
-						"incapacitation"
-					],
-					"entries": [
-						"Vischari makes a fist {@action Strike} that shuts down her target's motor control.",
-						"The target must make a DC 25 Fortitude save. If the {@action Strike} was a critical hit, treat the target's save result as one degree worse. The target is then temporarily immune for 1 hour.",
-						{
-							"type": "successDegree",
-							"entries": {
-								"Critical Success": "The target is unaffected.",
-								"Success": "The target is {@condition stunned|CRB|stunned 1}.",
-								"Failure": "The target is {@condition paralyzed} for 1 round.",
-								"Critical Failure": "The target is {@condition paralyzed} for 1 minute. At the end of each of its turns, it can attempt a new Fortitude save to reduce the remaining duration by 1 round or end it entirely on a critical success."
-							}
-						}
-					],
-					"name": "Immobilizing Blow"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"requirements": "Vischari damaged a creature with a jaws {@action Strike} on her last action",
-					"entries": [
-						"Vischari maintains contact, turning the creature's flesh translucent around the site of the injury. Vischari chooses one of two options, each of which requires the target to attempt a DC 25 Fortitude save. If her jaws {@action Strike} was a critical hit, the creature suffers both effects, using the same save result for both.",
-						{
-							"type": "list",
-							"items": [
-								"{@bold Drain Blood} Vischari drinks some of the creature's blood. On a failed save, the creature is {@condition drained|CRB|drained 1} and Vischari regains 10 HP (on a critical failure, it's {@condition drained|CRB|drained 2} and Vischari regains 20 HP).",
-								"{@bold Drain Vitality} (necromancy) Vischari draws out some of the creature's vital essence. The creature becomes {@condition enfeebled|CRB|enfeebled 1} for 1 hour on a failed save (or {@condition enfeebled|CRB|enfeebled 2} for 1 hour on a critical failure)."
-							]
-						}
-					],
-					"name": "Wicked Bite"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning",
-					"negative",
-					"piercing"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"+15, {@skill Medicine} +13, {@skill Survival} +15 Str +6, Dex +4, Con +2, Int +0, Wis +2, Cha +4."
+						],
+						"name": "Shove), Intimidation"
+					}
 				],
-				"condition": [
-					"{@condition drained}",
-					"{@condition enfeebled}",
-					"{@condition paralyzed}",
-					"{@condition stunned}"
+				"mid": [
+					{
+						"traits": [
+							"divine",
+							"necromancy",
+							"negative"
+						],
+						"entries": [
+							"When Vischari dies, her {@condition invisible} flesh rots away and sublimates into a foul-smelling gas that fills a 5-foot emanation around her body. This gas deals {@damage 7d6} negative damage to creatures in this area as their flesh curdles and rots (DC 24 basic Fortitude save)."
+						],
+						"name": "Necrotic Decay"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"entries": [],
+						"name": "Attack of Opportunity",
+						"generic": true
+					}
+				],
+				"bot": [
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"incapacitation"
+						],
+						"entries": [
+							"Vischari makes a fist {@action Strike} that shuts down her target's motor control.",
+							"The target must make a DC 25 Fortitude save. If the {@action Strike} was a critical hit, treat the target's save result as one degree worse. The target is then temporarily immune for 1 hour.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": "The target is unaffected.",
+									"Success": "The target is {@condition stunned|CRB|stunned 1}.",
+									"Failure": "The target is {@condition paralyzed} for 1 round.",
+									"Critical Failure": "The target is {@condition paralyzed} for 1 minute. At the end of each of its turns, it can attempt a new Fortitude save to reduce the remaining duration by 1 round or end it entirely on a critical success."
+								}
+							}
+						],
+						"name": "Immobilizing Blow"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"requirements": "Vischari damaged a creature with a jaws {@action Strike} on her last action",
+						"entries": [
+							"Vischari maintains contact, turning the creature's flesh translucent around the site of the injury. Vischari chooses one of two options, each of which requires the target to attempt a DC 25 Fortitude save. If her jaws {@action Strike} was a critical hit, the creature suffers both effects, using the same save result for both.",
+							{
+								"type": "list",
+								"items": [
+									"{@bold Drain Blood} Vischari drinks some of the creature's blood. On a failed save, the creature is {@condition drained|CRB|drained 1} and Vischari regains 10 HP (on a critical failure, it's {@condition drained|CRB|drained 2} and Vischari regains 20 HP).",
+									"{@bold Drain Vitality} (necromancy) Vischari draws out some of the creature's vital essence. The creature becomes {@condition enfeebled|CRB|enfeebled 1} for 1 hour on a failed save (or {@condition enfeebled|CRB|enfeebled 2} for 1 hour on a critical failure)."
+								]
+							}
+						],
+						"name": "Wicked Bite"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"AD",
-				"CC"
-			]
+			}
 		}
 	]
 }

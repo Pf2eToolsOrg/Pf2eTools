@@ -18,6 +18,8 @@ Parser._parse_bToA = function (abMap, b) {
 };
 Parser.numberToText = function (number, freq) {
 	if (number == null) throw new TypeError(`undefined or null object passed to parser`);
+	// TODO: Hacky fix for frequencies
+	if (typeof number === "string") return number;
 	if (Math.abs(number) >= 100) return `${number}`;
 
 	function getAsText (num) {
@@ -239,6 +241,7 @@ Parser.sourceJsonToFullCompactPrefix = function (source) {
 	Object.keys(Parser.SOURCE_PREFIX_TO_SHORT).forEach(prefix => {
 		compact = compact.replace(prefix, Parser.SOURCE_PREFIX_TO_SHORT[prefix] || prefix);
 	});
+	Parser.COMPACT_PREFIX_MAP.forEach(it => compact = compact.replace(it.re, it.replaceWith));
 	return compact;
 };
 Parser.sourceJsonToAbv = function (source) {
@@ -446,12 +449,28 @@ Parser.proficiencyToNumber = function (prof) {
 		default: return 69;
 	}
 }
+Parser.genderToFull = function (g) {
+	switch (g.toLowerCase()) {
+		case "m": return "male";
+		case "f": return "female";
+		case "a": return "agender";
+		case "gf": return "genderfluid";
+		case "nb": return "nonbinary";
+		default: return "";
+	}
+}
 Parser.savingThrowAbvToFull = function (abv) {
 	switch (abv) {
+		case "f":
+		case "F":
 		case "Fort":
 		case "fort": return "Fortitude";
+		case "r":
+		case "R":
 		case "Ref":
 		case "ref": return "Reflex";
+		case "w":
+		case "W":
 		case "Will":
 		case "will": return "Will";
 		default: throw new Error(`Unknown saving throw abv ${abv}.`)
@@ -495,39 +514,65 @@ Parser.getClassSideBarEntries = function (cls) {
 			`${Parser.proficiencyAbvToFull(initProf.will)} in Will`,
 		]});
 
+	function initProfParser (thing, entry) {
+		Object.keys(thing).forEach(k => {
+			let thingArray = [];
+			let prof = "";
+			switch (k) {
+				case "u": {
+					thingArray = thing.u
+					prof = "Untrained"
+					break;
+				}
+				case "t": {
+					thingArray = thing.t
+					prof = "Trained"
+					break;
+				}
+				case "e": {
+					thingArray = thing.e
+					prof = "Expert"
+					break;
+				}
+				case "m": {
+					thingArray = thing.m
+					prof = "Master"
+					break;
+				}
+				case "l": {
+					thingArray = thing.l
+					prof = "Legendary"
+					break;
+				}
+				case "add": return entry.push(`{@indentSubsequent Trained in a number of additional skills equal to ${thing.add} plus your Intelligence modifier}`);
+				default:
+			}
+			thingArray.forEach(element => {
+				if (typeof element === "object") {
+					if (element.entry) {
+						return entry.push(`{@indentSubsequent ${prof} in ${element.entry}}`);
+					} else {
+						return entry.push(`{@indentSubsequent ${prof} in your choice of ${element.skill.map(s => `{@skill ${s}}`).joinConjunct(", ", " or ")}}`);
+					}
+				} else return entry.push(`{@indentSubsequent ${prof} in ${element}}`);
+			});
+		});
+	}
+
 	const skillsEntries = [];
-	if (initProf.skills.u) initProf.skills.u.forEach(it => skillsEntries.push(`{@indentSubsequent Untrained in ${it}}`));
-	if (initProf.skills.t) initProf.skills.t.forEach(it => skillsEntries.push(`{@indentSubsequent Trained in ${it}}`));
-	if (initProf.skills.e) initProf.skills.e.forEach(it => skillsEntries.push(`{@indentSubsequent Expert in ${it}}`));
-	if (initProf.skills.m) initProf.skills.m.forEach(it => skillsEntries.push(`{@indentSubsequent Master in ${it}}`));
-	if (initProf.skills.l) initProf.skills.l.forEach(it => skillsEntries.push(`{@indentSubsequent Legendary in ${it}}`));
-	if (initProf.skills.add) skillsEntries.push(`{@indentSubsequent Trained in a number of additional skills equal to ${initProf.skills.add} plus your Intelligence modifier}`);
-	out.push({name: "SKILLS", entries: skillsEntries});
-
 	const attacksEntries = [];
-	if (initProf.attacks.u) initProf.attacks.u.forEach(it => attacksEntries.push(`Untrained in ${it}`));
-	if (initProf.attacks.t) initProf.attacks.t.forEach(it => attacksEntries.push(`Trained in ${it}`));
-	if (initProf.attacks.e) initProf.attacks.e.forEach(it => attacksEntries.push(`Expert in ${it}`));
-	if (initProf.attacks.m) initProf.attacks.m.forEach(it => attacksEntries.push(`Master in ${it}`));
-	if (initProf.attacks.l) initProf.attacks.l.forEach(it => attacksEntries.push(`Legendary in ${it}`));
-	out.push({name: "ATTACKS", entries: attacksEntries});
-
 	const defensesEntries = [];
-	if (initProf.defenses.u) initProf.defenses.u.forEach(it => defensesEntries.push(`Untrained in ${it}`));
-	if (initProf.defenses.t) initProf.defenses.t.forEach(it => defensesEntries.push(`Trained in ${it}`));
-	if (initProf.defenses.e) initProf.defenses.e.forEach(it => defensesEntries.push(`Expert in ${it}`));
-	if (initProf.defenses.m) initProf.defenses.m.forEach(it => defensesEntries.push(`Master in ${it}`));
-	if (initProf.defenses.l) initProf.defenses.l.forEach(it => defensesEntries.push(`Legendary in ${it}`));
+	initProfParser(initProf.skills, skillsEntries)
+	out.push({name: "SKILLS", entries: skillsEntries});
+	initProfParser(initProf.attacks, attacksEntries)
+	out.push({name: "ATTACKS", entries: attacksEntries});
+	initProfParser(initProf.defenses, defensesEntries)
 	out.push({name: "DEFENSES", entries: defensesEntries});
 
 	if (initProf.classDc) out.push({name: "CLASS DC", entries: [initProf.classDc.entry]});
 	if (initProf.spells) {
 		const spellsEntries = [];
-		if (initProf.spells.u) initProf.spells.u.forEach(it => spellsEntries.push(`Untrained in ${it}`));
-		if (initProf.spells.t) initProf.spells.t.forEach(it => spellsEntries.push(`Trained in ${it}`));
-		if (initProf.spells.e) initProf.spells.e.forEach(it => spellsEntries.push(`Expert in ${it}`));
-		if (initProf.spells.m) initProf.spells.m.forEach(it => spellsEntries.push(`Master in ${it}`));
-		if (initProf.spells.l) initProf.spells.l.forEach(it => spellsEntries.push(`Legendary in ${it}`));
+		initProfParser(initProf.spells, spellsEntries)
 		out.push({name: "SPELLS", entries: spellsEntries});
 	}
 	return out
@@ -826,6 +871,8 @@ Parser.CAT_ID_TO_PROP[Parser.CAT_ID_VEHICLE] = "vehicle";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_TRAIT] = "trait";
 
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_PAGE] = null;
+
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_GENERIC_DATA] = "generic";
 
 Parser.pageCategoryToProp = function (catId) {
 	return Parser._parse_aToB(Parser.CAT_ID_TO_PROP, catId);
@@ -1162,6 +1209,10 @@ SRC_LOACLO = "LOACLO";
 SRC_AAWS = "AAWS";
 SRC_GNG = "G&G";
 SRC_LOTGB = "LOTGB"
+SRC_LOMM = "LOMM"
+SRC_LOKL = "LOKL"
+SRC_LOTG = "LOTG"
+SRC_BTD = "BTD"
 SRC_AOA0 = "AoA0";
 SRC_AOA1 = "AoA1";
 SRC_AOA2 = "AoA2";
@@ -1206,8 +1257,6 @@ SRC_TIO = "TiO";
 
 SRC_3PP_SUFFIX = " 3pp";
 
-// region Adventure Paths
-
 AP_PREFIX = "Adventure Path: ";
 AP_PREFIX_SHORT = "AP: ";
 
@@ -1229,10 +1278,17 @@ AoA_PREFIX_SHORT = "AoA: "
 SoT_PREFIX = "Strength of Thousands: "
 SoT_PREFIX_SHORT = "SoT: "
 
-// endregion
-
 LO_PREFIX = "Lost Omens: ";
 LO_PREFIX_SHORT = "LO: ";
+
+Parser.COMPACT_PREFIX_MAP = [
+	{re: /Fists of the Ruby Phoenix #(\d): /, replaceWith: "FotRP$1: "},
+	{re: /Abomination Vaults #(\d): /, replaceWith: "AV$1: "},
+	{re: /Agents of Edgewatch #(\d): /, replaceWith: "AoE$1: "},
+	{re: /Extinction Curse #(\d): /, replaceWith: "EC$1: "},
+	{re: /Age of Ashes #(\d): /, replaceWith: "AoA$1: "},
+	{re: /Strength of Thousands #(\d): /, replaceWith: "SoT$1: "},
+];
 
 Parser.SOURCE_PREFIX_TO_SHORT = {};
 Parser.SOURCE_PREFIX_TO_SHORT[LO_PREFIX] = LO_PREFIX_SHORT;
@@ -1264,49 +1320,53 @@ Parser.SOURCE_JSON_TO_FULL[SRC_LOACLO] = "Lost Omens: Absalom, City of Lost Omen
 Parser.SOURCE_JSON_TO_FULL[SRC_AAWS] = "Azarketi Ancestry Web Supplement";
 Parser.SOURCE_JSON_TO_FULL[SRC_GNG] = "Guns & Gears";
 Parser.SOURCE_JSON_TO_FULL[SRC_LOTGB] = "Lost Omens: The Grand Bazaar";
+Parser.SOURCE_JSON_TO_FULL[SRC_LOMM] = "Lost Omens: Monsters of Myth";
+Parser.SOURCE_JSON_TO_FULL[SRC_BTD] = "Book of the Dead";
+Parser.SOURCE_JSON_TO_FULL[SRC_LOTG] = "Lost Omens: Travel Guide";
+Parser.SOURCE_JSON_TO_FULL[SRC_LOKL] = "Lost Omens: Knights of Lastwall";
 
 // Adventure Paths
 Parser.SOURCE_JSON_TO_FULL[SRC_AOA0] = "Age of Ashes Player's Guide";
-Parser.SOURCE_JSON_TO_FULL[SRC_AOA1] = "Age of Ashes: Hellknight Hill";
-Parser.SOURCE_JSON_TO_FULL[SRC_AOA2] = "Age of Ashes: Cult of Cinders";
-Parser.SOURCE_JSON_TO_FULL[SRC_AOA3] = "Age of Ashes: Tomorrow Must Burn";
-Parser.SOURCE_JSON_TO_FULL[SRC_AOA4] = "Age of Ashes: Fires of the Haunted City";
-Parser.SOURCE_JSON_TO_FULL[SRC_AOA5] = "Age of Ashes: Against the Scarlet Triad";
-Parser.SOURCE_JSON_TO_FULL[SRC_AOA6] = "Age of Ashes: Broken Promises";
+Parser.SOURCE_JSON_TO_FULL[SRC_AOA1] = "Age of Ashes #1: Hellknight Hill";
+Parser.SOURCE_JSON_TO_FULL[SRC_AOA2] = "Age of Ashes #2: Cult of Cinders";
+Parser.SOURCE_JSON_TO_FULL[SRC_AOA3] = "Age of Ashes #3: Tomorrow Must Burn";
+Parser.SOURCE_JSON_TO_FULL[SRC_AOA4] = "Age of Ashes #4: Fires of the Haunted City";
+Parser.SOURCE_JSON_TO_FULL[SRC_AOA5] = "Age of Ashes #5: Against the Scarlet Triad";
+Parser.SOURCE_JSON_TO_FULL[SRC_AOA6] = "Age of Ashes #6: Broken Promises";
 
 Parser.SOURCE_JSON_TO_FULL[SRC_EC0] = "Extinction Curse Player's Guide";
-Parser.SOURCE_JSON_TO_FULL[SRC_EC1] = "Extinction Curse: The Show Must Go On";
-Parser.SOURCE_JSON_TO_FULL[SRC_EC2] = "Extinction Curse: Legacy of the Lost God";
-Parser.SOURCE_JSON_TO_FULL[SRC_EC3] = "Extinction Curse: Life's Long Shadows";
-Parser.SOURCE_JSON_TO_FULL[SRC_EC4] = "Extinction Curse: Siege of the Dinosaurs";
-Parser.SOURCE_JSON_TO_FULL[SRC_EC5] = "Extinction Curse: Lord of the Black Sands";
-Parser.SOURCE_JSON_TO_FULL[SRC_EC6] = "Extinction Curse: The Apocalypse Prophet";
+Parser.SOURCE_JSON_TO_FULL[SRC_EC1] = "Extinction Curse #1: The Show Must Go On";
+Parser.SOURCE_JSON_TO_FULL[SRC_EC2] = "Extinction Curse #2: Legacy of the Lost God";
+Parser.SOURCE_JSON_TO_FULL[SRC_EC3] = "Extinction Curse #3: Life's Long Shadows";
+Parser.SOURCE_JSON_TO_FULL[SRC_EC4] = "Extinction Curse #4: Siege of the Dinosaurs";
+Parser.SOURCE_JSON_TO_FULL[SRC_EC5] = "Extinction Curse #5: Lord of the Black Sands";
+Parser.SOURCE_JSON_TO_FULL[SRC_EC6] = "Extinction Curse #6: The Apocalypse Prophet";
 
 Parser.SOURCE_JSON_TO_FULL[SRC_AOE0] = "Agents of Edgewatch Player's Guide";
-Parser.SOURCE_JSON_TO_FULL[SRC_AOE1] = "Agents of Edgewatch: Devil at the Dreaming Palace";
-Parser.SOURCE_JSON_TO_FULL[SRC_AOE2] = "Agents of Edgewatch: Sixty Feet Under";
-Parser.SOURCE_JSON_TO_FULL[SRC_AOE3] = "Agents of Edgewatch: All or Nothing";
-Parser.SOURCE_JSON_TO_FULL[SRC_AOE4] = "Agents of Edgewatch: Assault on Hunting Lodge Seven";
-Parser.SOURCE_JSON_TO_FULL[SRC_AOE5] = "Agents of Edgewatch: Belly of the Black Whale";
-Parser.SOURCE_JSON_TO_FULL[SRC_AOE6] = "Agents of Edgewatch: Ruins of the Radiant Siege";
+Parser.SOURCE_JSON_TO_FULL[SRC_AOE1] = "Agents of Edgewatch #1: Devil at the Dreaming Palace";
+Parser.SOURCE_JSON_TO_FULL[SRC_AOE2] = "Agents of Edgewatch #2: Sixty Feet Under";
+Parser.SOURCE_JSON_TO_FULL[SRC_AOE3] = "Agents of Edgewatch #3: All or Nothing";
+Parser.SOURCE_JSON_TO_FULL[SRC_AOE4] = "Agents of Edgewatch #4: Assault on Hunting Lodge Seven";
+Parser.SOURCE_JSON_TO_FULL[SRC_AOE5] = "Agents of Edgewatch #5: Belly of the Black Whale";
+Parser.SOURCE_JSON_TO_FULL[SRC_AOE6] = "Agents of Edgewatch #6: Ruins of the Radiant Siege";
 
 Parser.SOURCE_JSON_TO_FULL[SRC_AV0] = "Abomination Vaults Player's Guide";
-Parser.SOURCE_JSON_TO_FULL[SRC_AV1] = "Abomination Vaults: Ruins of Gauntlight";
-Parser.SOURCE_JSON_TO_FULL[SRC_AV2] = "Abomination Vaults: Hands of the Devil";
-Parser.SOURCE_JSON_TO_FULL[SRC_AV3] = "Abomination Vaults: Eyes of Empty Death";
+Parser.SOURCE_JSON_TO_FULL[SRC_AV1] = "Abomination Vaults #1: Ruins of Gauntlight";
+Parser.SOURCE_JSON_TO_FULL[SRC_AV2] = "Abomination Vaults #2: Hands of the Devil";
+Parser.SOURCE_JSON_TO_FULL[SRC_AV3] = "Abomination Vaults #3: Eyes of Empty Death";
 
 Parser.SOURCE_JSON_TO_FULL[SRC_FRP0] = "Fists of the Ruby Phoenix Player's Guide";
-Parser.SOURCE_JSON_TO_FULL[SRC_FRP1] = "Fists of the Ruby Phoenix: Despair on Danger Island";
-Parser.SOURCE_JSON_TO_FULL[SRC_FRP2] = "Fists of the Ruby Phoenix: Ready? Fight!";
-Parser.SOURCE_JSON_TO_FULL[SRC_FRP3] = "Fists of the Ruby Phoenix: King of the Mountain";
+Parser.SOURCE_JSON_TO_FULL[SRC_FRP1] = "Fists of the Ruby Phoenix #1: Despair on Danger Island";
+Parser.SOURCE_JSON_TO_FULL[SRC_FRP2] = "Fists of the Ruby Phoenix #2: Ready? Fight!";
+Parser.SOURCE_JSON_TO_FULL[SRC_FRP3] = "Fists of the Ruby Phoenix #3: King of the Mountain";
 
 Parser.SOURCE_JSON_TO_FULL[SRC_SOT0] = "Strength of Thousands Player's Guide";
-Parser.SOURCE_JSON_TO_FULL[SRC_SOT1] = "Strength of Thousands: Kindled Magic";
-Parser.SOURCE_JSON_TO_FULL[SRC_SOT2] = "Strength of Thousands: Spoken on the Song Wind";
-Parser.SOURCE_JSON_TO_FULL[SRC_SOT3] = "Strength of Thousands: Hurricane's Howl";
-Parser.SOURCE_JSON_TO_FULL[SRC_SOT4] = "Strength of Thousands: Secrets of the Temple-City";
-Parser.SOURCE_JSON_TO_FULL[SRC_SOT5] = "Strength of Thousands: Doorway to the Red Star";
-Parser.SOURCE_JSON_TO_FULL[SRC_SOT6] = "Strength of Thousands: Shadows of the Ancients";
+Parser.SOURCE_JSON_TO_FULL[SRC_SOT1] = "Strength of Thousands #1: Kindled Magic";
+Parser.SOURCE_JSON_TO_FULL[SRC_SOT2] = "Strength of Thousands #2: Spoken on the Song Wind";
+Parser.SOURCE_JSON_TO_FULL[SRC_SOT3] = "Strength of Thousands #3: Hurricane's Howl";
+Parser.SOURCE_JSON_TO_FULL[SRC_SOT4] = "Strength of Thousands #4: Secrets of the Temple-City";
+Parser.SOURCE_JSON_TO_FULL[SRC_SOT5] = "Strength of Thousands #5: Doorway to the Red Star";
+Parser.SOURCE_JSON_TO_FULL[SRC_SOT6] = "Strength of Thousands #6: Shadows of the Ancients";
 
 Parser.SOURCE_JSON_TO_FULL[SRC_SLI] = "The Slithering";
 Parser.SOURCE_JSON_TO_FULL[SRC_NGD] = "Night of the Gray Death";
@@ -1334,6 +1394,10 @@ Parser.SOURCE_JSON_TO_ABV[SRC_LOACLO] = "LOACLO";
 Parser.SOURCE_JSON_TO_ABV[SRC_AAWS] = "AAWS";
 Parser.SOURCE_JSON_TO_ABV[SRC_GNG] = "G&G";
 Parser.SOURCE_JSON_TO_ABV[SRC_LOTGB] = "LOTGB";
+Parser.SOURCE_JSON_TO_ABV[SRC_LOMM] = "LOMM";
+Parser.SOURCE_JSON_TO_ABV[SRC_BTD] = "BTD";
+Parser.SOURCE_JSON_TO_ABV[SRC_LOTG] = "LOTG";
+Parser.SOURCE_JSON_TO_ABV[SRC_LOKL] = "LOKL";
 
 // Adventure Paths
 Parser.SOURCE_JSON_TO_ABV[SRC_AOA0] = "AoA0";
@@ -1404,6 +1468,8 @@ Parser.SOURCE_JSON_TO_DATE[SRC_BST3] = "2021-07-07";
 Parser.SOURCE_JSON_TO_DATE[SRC_SOM] = "2021-08-25";
 Parser.SOURCE_JSON_TO_DATE[SRC_GNG] = "2021-10-13";
 Parser.SOURCE_JSON_TO_DATE[SRC_LOTGB] = "2021-10-13";
+Parser.SOURCE_JSON_TO_DATE[SRC_LOMM] = "2021-12-22";
+Parser.SOURCE_JSON_TO_DATE[SRC_BTD] = "2022-04-27";
 // Turn JSON to Paizo Store
 Parser.SOURCE_JSON_TO_STORE = {};
 Parser.SOURCE_JSON_TO_STORE[SRC_CRB] = "https://paizo.com/products/btq01zp3";
@@ -1425,6 +1491,10 @@ Parser.SOURCE_JSON_TO_STORE[SRC_BST3] = "https://paizo.com/products/btq027mn";
 Parser.SOURCE_JSON_TO_STORE[SRC_SOM] = "https://paizo.com/products/btq027uy";
 Parser.SOURCE_JSON_TO_STORE[SRC_GNG] = "https://paizo.com/products/btq026mw";
 Parser.SOURCE_JSON_TO_STORE[SRC_LOTGB] = "https://paizo.com/products/btq027kc";
+Parser.SOURCE_JSON_TO_STORE[SRC_LOMM] = "https://paizo.com/products/btq027u2";
+Parser.SOURCE_JSON_TO_STORE[SRC_BTD] = "https://paizo.com/products/btq02c0j";
+Parser.SOURCE_JSON_TO_STORE[SRC_LOTG] = "https://paizo.com/products/btq02c20";
+Parser.SOURCE_JSON_TO_STORE[SRC_LOKL] = "https://paizo.com/products/btq02c3a";
 // Adventure Paths
 Parser.SOURCE_JSON_TO_STORE[SRC_AOA0] = "https://paizo.com/products/btq024wj";
 Parser.SOURCE_JSON_TO_STORE[SRC_AOA1] = "https://paizo.com/products/btq024tw";
@@ -1536,6 +1606,10 @@ Parser.SOURCES_AVAILABLE_DOCS_BOOK = {};
 	SRC_AAWS,
 	SRC_GNG,
 	SRC_LOTGB,
+	SRC_LOMM,
+	SRC_BTD,
+	SRC_LOTG,
+	SRC_LOKL,
 ].forEach(src => {
 	Parser.SOURCES_AVAILABLE_DOCS_BOOK[src] = src;
 	Parser.SOURCES_AVAILABLE_DOCS_BOOK[src.toLowerCase()] = src;
@@ -1641,7 +1715,7 @@ Parser.getTagSource = function (tag, source) {
 Parser.getTraitName = function (trait) {
 	// TODO: This implementation is not perfect, but for now it will do
 	const regex = new RegExp(`\\s(?:\\d|[A-Za-z]$|\\(|d\\d|[A-Z],|${Object.values(Parser.DMGTYPE_JSON_TO_FULL).join("|")}|to \\w+)(.+|$)`);
-	const name = trait.replace(/\|.+/, "").replace(regex, "");
+	const name = trait ? trait.replace(/\|.+/, "").replace(regex, "") : "";
 	if (name === name.toUpperCase()) return name;
 	else if (name.length <= 2) return name.toUpperCase(); // Alignment traits: CG, LE, ...
 	else return name.toTitleCase();
@@ -1771,3 +1845,9 @@ Parser.typeToSkill = function (type) {
 	}
 	return [...skill].join(" or ")
 };
+
+Parser.getKeyByValue = function (object, value) {
+	return Object.keys(object).filter(function (key) {
+		return object[key] === value;
+	});
+}

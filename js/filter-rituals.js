@@ -47,7 +47,8 @@ class PageFilterRituals extends PageFilter {
 		});
 		this._miscFilter = new Filter({
 			header: "Miscellaneous",
-			items: ["Can be Heightened", "Has a Cost"],
+			deselFn: (it) => it === "Must be a Creature",
+			items: ["Can be Heightened", "Has a Cost", "Must be a Creature"],
 		});
 	}
 
@@ -67,6 +68,7 @@ class PageFilterRituals extends PageFilter {
 		it._fMisc = [];
 		if (it.heightened) it._fMisc.push("Can be Heightened");
 		if (it.cost) it._fMisc.push("Has a Cost");
+		if (it.primaryCheck.mustBe) it._fMisc.push("Must be a Creature");
 	}
 
 	addToFilters (it, isExcluded) {

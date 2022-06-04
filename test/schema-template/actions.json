@@ -25,7 +25,7 @@
 						"type": "array",
 						"items": {
 							"type": "string",
-							"$ref": "utils.json#/definitions/anyTraitUpper"
+							"$ref": "utils.json#/definitions/anyTrait"
 						},
 						"minItems": 1,
 						"uniqueItems": true
@@ -39,48 +39,65 @@
 							"class": {
 								"type": "array",
 								"items": {
-									"$ref": "utils.json#/definitions/classNameUpperSourced"
+									"$ref": "utils.json#/definitions/classNameSourced"
 								},
-								"uniqueItems": true
+								"uniqueItems": true,
+								"minItems": 1
 							},
 							"subclass": {
 								"type": "array",
 								"items": {
 									"type": "string"
 								},
-								"uniqueItems": true
+								"uniqueItems": true,
+								"minItems": 1
 							},
 							"archetype": {
 								"type": "array",
 								"items": {
 									"type": "string"
 								},
-								"uniqueItems": true
+								"uniqueItems": true,
+								"minItems": 1
 							},
 							"ancestry": {
-								"type": "string"
+								"type": "array",
+								"items": {
+									"type": "string"
+								},
+								"uniqueItems": true,
+								"minItems": 1
 							},
 							"heritage": {
-								"type": "string"
+								"type": "array",
+								"items": {
+									"type": "string"
+								},
+								"uniqueItems": true,
+								"minItems": 1
 							},
 							"versatileHeritage": {
 								"type": "string"
 							},
 							"basic": {
 								"type": "boolean",
-								"enum": [true]
+								"enum": [
+									true
+								]
 							},
 							"item": {
 								"type": "boolean",
-								"enum": [true]
+								"enum": [
+									true
+								]
 							},
 							"skill": {
 								"type": "object",
 								"patternProperties": {
-									"^((un)?trained)$": {
+									"^(un)?trained$": {
 										"type": "array",
 										"items": {
-											"$ref": "utils.json#/definitions/skillNameUpper"
+											"$ref": "utils.json#/definitions/skillName"
 										},
 										"uniqueItems": true
 									}
@@ -133,11 +150,17 @@
 					}
 				},
 				"additionalProperties": false,
-				"required": ["source", "name", "entries"]
+				"required": [
+					"source",
+					"name",
+					"entries"
+				]
 			},
 			"uniqueItems": true
 		}
 	},
-	"required": ["action"],
+	"required": [
+		"action"
+	],
 	"additionalProperties": false
 }

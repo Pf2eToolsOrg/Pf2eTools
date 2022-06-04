@@ -10,7 +10,7 @@
 			},
 			"level": 9,
 			"traits": [
-				"Grippli"
+				"grippli"
 			],
 			"prerequisites": "You are not immune to diseases or poisons",
 			"trigger": "You attempt a saving throw against a {@trait disease} or {@trait poison} effect that affects an area.",
@@ -24,7 +24,7 @@
 			"page": 118,
 			"level": 5,
 			"traits": [
-				"Goloma"
+				"goloma"
 			],
 			"entries": [
 				"You gain a +2 circumstance bonus to {@skill Perception} checks attempted as initiative rolls.",
@@ -37,7 +37,7 @@
 			"page": 106,
 			"level": 1,
 			"traits": [
-				"Anadi"
+				"anadi"
 			],
 			"entries": [
 				"You've learned how to provide for your community, be it through hard-earned sustenance or useful crafts. You gain the trained proficiency rank in {@skill Crafting} and {@skill Survival}. If you would automatically become trained in one of those skills (from your background or class, for example), you become trained in a skill of your choice. You also become trained in {@skill Lore||Anadi Lore}."
@@ -49,7 +49,7 @@
 			"page": 114,
 			"level": 13,
 			"traits": [
-				"Gnoll"
+				"gnoll"
 			],
 			"entries": [
 				"You transform into an enormous otherworldly hyena. You can cast {@spell animal form} (canine form only) once per day as a 5th-level occult innate spell."
@@ -61,7 +61,7 @@
 			"page": 118,
 			"level": 13,
 			"traits": [
-				"Goloma"
+				"goloma"
 			],
 			"prerequisites": "ability to cast the {@spell detect magic} cantrip",
 			"entries": [
@@ -74,7 +74,7 @@
 			"page": 205,
 			"level": 17,
 			"traits": [
-				"Lizardfolk"
+				"lizardfolk"
 			],
 			"entries": [
 				"Using your ancestors' bones, you manifest their spirits around you in a fossilized form, terrifying your foes. You can cast {@spell mask of terror} on yourself as a primal innate spell once per day. When you do, you appear as a skeletal lizardfolk ancestor, twisted in a way that inspires the deepest fears of those who observe you."
@@ -86,7 +86,7 @@
 			"page": 114,
 			"level": 9,
 			"traits": [
-				"Gnoll"
+				"gnoll"
 			],
 			"prerequisites": "sweetbreath gnoll heritage",
 			"entries": [
@@ -103,7 +103,7 @@
 			},
 			"level": 5,
 			"traits": [
-				"Shisk"
+				"shisk"
 			],
 			"entries": [
 				"You curl into a posture that splays out your bone spines.",
@@ -117,7 +117,7 @@
 			"page": 117,
 			"level": 1,
 			"traits": [
-				"Goloma"
+				"goloma"
 			],
 			"entries": [
 				"You are quick at recognizing broad details about people and things around you. You are trained in {@skill Society} and gain the {@feat Eye for Numbers|APG} skill feat (Advanced Player's Guide 206)",
@@ -130,7 +130,7 @@
 			"page": 110,
 			"level": 9,
 			"traits": [
-				"Conrasu"
+				"conrasu"
 			],
 			"entries": [
 				"Your patron aeon has allowed you to call upon their gifts to serve their ends. You can cast {@spell augury} and calm emotions each once per day as 2nd-level divine innate spells."
@@ -142,10 +142,10 @@
 			"page": 110,
 			"level": 9,
 			"traits": [
-				"Conrasu"
+				"conrasu"
 			],
 			"entries": [
-				"Your patron aeon graced you with powers of protection. You can cast {@spell resist energy} and shield other each once per day as 2nd-level divine innate spells."
+				"Your patron aeon graced you with powers of protection. You can cast {@spell resist energy} and {@spell shield other} each once per day as 2nd-level divine innate spells."
 			]
 		},
 		{
@@ -154,7 +154,7 @@
 			"page": 110,
 			"level": 9,
 			"traits": [
-				"Conrasu"
+				"conrasu"
 			],
 			"prerequisites": "{@feat Ceremony of Protection|LOME}",
 			"entries": [
@@ -167,7 +167,7 @@
 			"page": 110,
 			"level": 13,
 			"traits": [
-				"Conrasu"
+				"conrasu"
 			],
 			"entries": [
 				"You can alter your exoskeleton's size. You constantly gain the effects of enlarge. You can dismiss or resume these effects as an action, which has the {@trait concentrate} trait."
@@ -179,7 +179,7 @@
 			"page": 109,
 			"level": 5,
 			"traits": [
-				"Conrasu"
+				"conrasu"
 			],
 			"entries": [
 				"You tap into aeon knowledge. You gain the {@feat Untrained Improvisation} general feat. In addition, you can attempt skill actions that normally require you to be trained, even if you are untrained."
@@ -195,11 +195,14 @@
 			},
 			"level": 1,
 			"traits": [
-				"Conrasu",
-				"Manipulate"
+				"conrasu",
+				"manipulate"
 			],
 			"entries": [
 				"You manipulate your exoskeleton to overlap itself. You gain a +1 circumstance bonus to AC until the start of your next turn."
+			],
+			"leadsTo": [
+				"Ceremony Of Fortification|LOME"
 			]
 		},
 		{
@@ -208,7 +211,7 @@
 			"page": 110,
 			"level": 17,
 			"traits": [
-				"Conrasu"
+				"conrasu"
 			],
 			"entries": [
 				"Your connection to the sun has become an unbreakable bond. You don't become temporarily immune to the effects of your Sunlight Healing, and instead of rolling to recover Hit Points, you gain the maximum number of HP possible (for example, 64 HP instead of {@dice 8d8})."
@@ -220,7 +223,7 @@
 			"page": 109,
 			"level": 5,
 			"traits": [
-				"Conrasu"
+				"conrasu"
 			],
 			"entries": [
 				"You have learned how to master the power contained within sunlight, just like the trees that form your body. Your Sunlight Healing recovers {@dice 1d8} Hit Points per level."
@@ -232,12 +235,15 @@
 			"page": 109,
 			"level": 1,
 			"traits": [
-				"Conrasu"
+				"conrasu"
 			],
 			"entries": [
 				"You have cultivated your exoskeleton's form for close combat, using knots, whorls, and reinforced branches. When you select this feat, you gain a claws unarmed attack that deals {@damage 1d4} slashing damage and has the {@trait agile} and {@trait finesse} traits or a branch unarmed attack that deals {@damage 1d6} bludgeoning damage and has the {@trait backswing} trait. Each of these unarmed attacks is in the brawling weapon group and uses one of your hands."
 			],
-			"special": "You can select this feat twice, choosing the other unarmed attack the second time you take it."
+			"special": "You can select this feat twice, choosing the other unarmed attack the second time you take it.",
+			"leadsTo": [
+				"Ceremony Of The Strengthened Hand|LOME"
+			]
 		},
 		{
 			"name": "Ceremony Of The Strengthened Hand",
@@ -245,7 +251,7 @@
 			"page": 110,
 			"level": 9,
 			"traits": [
-				"Conrasu"
+				"conrasu"
 			],
 			"prerequisites": "{@feat Ceremony of the Evened Hand|LOME}",
 			"entries": [
@@ -258,7 +264,7 @@
 			"page": 109,
 			"level": 1,
 			"traits": [
-				"Conrasu"
+				"conrasu"
 			],
 			"entries": [
 				"You have learned about your history and your people from shapers. You gain the trained proficiency rank in {@skill Crafting} and {@skill Occultism}. If you would automatically become trained in one of those skills (from your background or class, for example), you instead become trained in a skill of your choice. You also become trained in {@skill Lore||Conrasu Lore}."
@@ -270,7 +276,7 @@
 			"page": 110,
 			"level": 13,
 			"traits": [
-				"Conrasu"
+				"conrasu"
 			],
 			"entries": [
 				"Whenever you gain a class feature that grants you expert or greater proficiency in certain weapons, you also gain that proficiency for composite shortbow, glaive, longspear, longsword, shortbow, spear, and all conrasu weapons in which you are trained."
@@ -282,7 +288,7 @@
 			"page": 109,
 			"level": 1,
 			"traits": [
-				"Conrasu"
+				"conrasu"
 			],
 			"entries": [
 				"You have taken it upon yourself to learn the ways of combat to aid with your tasks, perhaps in a role as a corrector. You are trained with the {@item composite shortbow}, {@item glaive}, {@item longspear}, {@item longsword}, {@item shortbow}, and {@item spear}. You also gain access to all {@filter uncommon conrasu weapons|items||Category=Weapon|rarity=uncommon|ancestry & heritage=conrasu}. For the purpose of determining your proficiency, martial conrasu weapons are simple weapons and advanced conrasu weapons are martial weapons."
@@ -294,7 +300,7 @@
 			"page": 110,
 			"level": 5,
 			"traits": [
-				"Conrasu"
+				"conrasu"
 			],
 			"entries": [
 				"You have come to know conrasu weapons as you know yourself. Whenever you critically hit using a composite shortbow, glaive, longspear, longsword, shortbow, spear, or a conrasu weapon, you apply the weapon's critical specialization effect."
@@ -306,7 +312,7 @@
 			"page": 118,
 			"level": 9,
 			"traits": [
-				"Goloma"
+				"goloma"
 			],
 			"prerequisites": "{@feat Watchful Gaze|LOME}",
 			"entries": [
@@ -319,7 +325,7 @@
 			"page": 113,
 			"level": 1,
 			"traits": [
-				"Gnoll"
+				"gnoll"
 			],
 			"entries": [
 				"Your jaws can crush bone and bite through armor. Your jaws unarmed attack deals {@damage 1d8} piercing damage instead of {@dice 1d6} and gains the {@trait grapple} trait."
@@ -335,7 +341,7 @@
 			},
 			"level": 9,
 			"traits": [
-				"Goloma"
+				"goloma"
 			],
 			"requirements": "you are adjacent to at least two enemies",
 			"entries": [
@@ -348,7 +354,7 @@
 			"page": 126,
 			"level": 13,
 			"traits": [
-				"Shisk"
+				"shisk"
 			],
 			"entries": [
 				"Subterranean life taught you to swim through the ground like water. You gain a burrow Speed of 10 feet through loose soil or dirt."
@@ -360,7 +366,7 @@
 			"page": 60,
 			"level": 1,
 			"traits": [
-				"Elf"
+				"elf"
 			],
 			"entries": [
 				"You gain a +1 circumstance bonus to damage with weapons and unarmed attacks against demons. If your attack would deal more than one weapon die of damage (as is common at higher levels than 1st), the bonus is equal to the number of weapon dice or unarmed attack dice. If your actions force a demon to take damage from its sin vulnerability, increase that damage by 2."
@@ -376,8 +382,8 @@
 			},
 			"level": 5,
 			"traits": [
-				"Uncommon",
-				"Orc"
+				"uncommon",
+				"orc"
 			],
 			"prerequisites": "tusks unarmed attack",
 			"frequency": {
@@ -396,7 +402,7 @@
 			"page": 126,
 			"level": 9,
 			"traits": [
-				"Shisk"
+				"shisk"
 			],
 			"entries": [
 				"You are an endless well of knowledge and can remember several vital pieces of information at once. You can cast {@spell hypercognition} as an innate occult spell once per day."
@@ -408,7 +414,7 @@
 			"page": 106,
 			"level": 9,
 			"traits": [
-				"Anadi"
+				"anadi"
 			],
 			"prerequisites": "Venomous Anadi",
 			"entries": [
@@ -421,7 +427,7 @@
 			"page": 113,
 			"level": 5,
 			"traits": [
-				"Gnoll"
+				"gnoll"
 			],
 			"prerequisites": "witch gnoll heritage",
 			"entries": [
@@ -434,7 +440,7 @@
 			"page": 125,
 			"level": 1,
 			"traits": [
-				"Shisk"
+				"shisk"
 			],
 			"entries": [
 				"You have an amazing memory for sound. You gain the Assurance ({@skill Performance}) feat.",
@@ -447,7 +453,7 @@
 			"page": 122,
 			"level": 13,
 			"traits": [
-				"Grippli"
+				"grippli"
 			],
 			"entries": [
 				"With a combination of your poison glands and herbal concoctions, you can consistently deliver venomous attacks when you hit an enemy's weak points. When you critically hit using a {@action Strike} with a weapon or unarmed attack and deal slashing or piercing damage with that {@action Strike}, you deal an additional {@damage 1d4} {@condition persistent damage ||persistent poison damage} to your target."
@@ -463,7 +469,7 @@
 			},
 			"level": 17,
 			"traits": [
-				"Shisk"
+				"shisk"
 			],
 			"frequency": {
 				"unit": "round",
@@ -484,7 +490,7 @@
 			"page": 106,
 			"level": 5,
 			"traits": [
-				"Anadi"
+				"anadi"
 			],
 			"entries": [
 				"The shared bond between you and your allies allows you to act on their behalf.",
@@ -497,7 +503,7 @@
 			"page": 113,
 			"level": 1,
 			"traits": [
-				"Gnoll"
+				"gnoll"
 			],
 			"entries": [
 				"You paid attention to your senior hunters to learn their tricks. You gain the trained proficiency rank in {@skill Stealth} and {@skill Survival}. If you would automatically become trained in one of those skills (from your background or class, for example), you instead become trained in a skill of your choice. You also become trained in {@skill Lore||Gnoll Lore}."
@@ -509,7 +515,7 @@
 			"page": 114,
 			"level": 13,
 			"traits": [
-				"Gnoll"
+				"gnoll"
 			],
 			"prerequisites": "{@feat Gnoll Weapon Practicality|LOME}",
 			"entries": [
@@ -522,7 +528,7 @@
 			"page": 113,
 			"level": 1,
 			"traits": [
-				"Gnoll"
+				"gnoll"
 			],
 			"entries": [
 				"You were taught to be a hunter and a raider. You are trained with {@item flail||flails}, {@item khopesh|LOGM|khopeshes}, {@item mambele|LOGM|mambeles}, {@item spear||spears}, and {@item war flail||war flails}."
@@ -538,7 +544,7 @@
 			"page": 114,
 			"level": 5,
 			"traits": [
-				"Gnoll"
+				"gnoll"
 			],
 			"prerequisites": "{@feat Gnoll Weapon Familiarity|LOME}",
 			"entries": [
@@ -554,7 +560,7 @@
 			"page": 117,
 			"level": 1,
 			"traits": [
-				"Goloma"
+				"goloma"
 			],
 			"entries": [
 				"The most important thing you've learned living with fear is how to overcome it. When you roll a success on a saving throw against a {@trait fear} effect, you get a critical success instead. In addition, you gain a +1 circumstance bonus to Will saves against {@trait fear} effects and a +2 circumstance bonus to your Will DC against attempts to {@action Demoralize} you."
@@ -566,7 +572,7 @@
 			"page": 117,
 			"level": 1,
 			"traits": [
-				"Goloma"
+				"goloma"
 			],
 			"entries": [
 				"You lived an insulated life focused on avoiding danger. You gain the trained proficiency rank in {@skill Stealth} and {@skill Survival}.",
@@ -579,7 +585,7 @@
 			"page": 114,
 			"level": 9,
 			"traits": [
-				"Gnoll"
+				"gnoll"
 			],
 			"entries": [
 				"You carry the bones of your ancestors with you, and you can ask them for counsel.",
@@ -596,7 +602,7 @@
 			},
 			"level": 5,
 			"traits": [
-				"Grippli"
+				"grippli"
 			],
 			"prerequisites": "windweb grippli",
 			"requirements": "You must have at least one hand free.",
@@ -610,7 +616,7 @@
 			"page": 120,
 			"level": 1,
 			"traits": [
-				"Grippli"
+				"grippli"
 			],
 			"entries": [
 				"You are well versed in grippli culture and tactics. You gain the trained proficiency in {@skill Nature} and {@skill Stealth}. If you would automatically become trained in one of those skills, you instead become trained in a skill of your choice. You also become trained in {@skill Lore||Grippli Lore}."
@@ -622,7 +628,7 @@
 			"page": 122,
 			"level": 13,
 			"traits": [
-				"Grippli"
+				"grippli"
 			],
 			"prerequisites": "{@feat Grippli Weapon Familiarity|LOME}",
 			"entries": [
@@ -635,7 +641,7 @@
 			"page": 120,
 			"level": 1,
 			"traits": [
-				"Grippli"
+				"grippli"
 			],
 			"entries": [
 				"You've trained with weapons ideally suited to marshes and dense forests. You are trained with {@item blowgun||blowguns}, {@item hatchet||hatchets}, {@item scythe||scythes}, {@item shortbow||shortbows}, and {@item composite shortbow||composite shortbows}.",
@@ -652,7 +658,7 @@
 			"page": 121,
 			"level": 5,
 			"traits": [
-				"Grippli"
+				"grippli"
 			],
 			"prerequisites": "{@feat Grippli Weapon Familiarity|LOME}",
 			"entries": [
@@ -669,7 +675,7 @@
 			},
 			"level": 1,
 			"traits": [
-				"Grippli"
+				"grippli"
 			],
 			"prerequisites": "trained in {@skill Nature}",
 			"frequency": {
@@ -687,7 +693,7 @@
 			"page": 106,
 			"level": 5,
 			"traits": [
-				"Anadi"
+				"anadi"
 			],
 			"entries": [
 				"Your fangs are exceptionally painful. Whenever you score a critical hit with your fangs unarmed attack, you apply the unarmed attack's critical specialization effect."
@@ -699,7 +705,7 @@
 			"page": 106,
 			"level": 5,
 			"traits": [
-				"Anadi"
+				"anadi"
 			],
 			"entries": [
 				"Mastery of your shapeshifting lets you combine the best features of your humanoid and spider forms. When using your Change Shape ability, you can assume a bipedal hybrid shape. This form gains all the benefits of your spider shape as well as the ability to use items and take manipulate actions just as easily as your human shape."
@@ -711,7 +717,7 @@
 			"page": 113,
 			"level": 1,
 			"traits": [
-				"Gnoll"
+				"gnoll"
 			],
 			"entries": [
 				"Hyenas serve gnolls as pets, trackers, and in your case, vessels for spirits. You gain a Tiny hyena as a familiar."
@@ -723,7 +729,7 @@
 			"page": 125,
 			"level": 5,
 			"traits": [
-				"Shisk"
+				"shisk"
 			],
 			"entries": [
 				"Your have a love for extreme heat.",
@@ -736,7 +742,7 @@
 			"page": 121,
 			"level": 1,
 			"traits": [
-				"Grippli"
+				"grippli"
 			],
 			"entries": [
 				"You are adept at dodging roots, foliage, and other jungle obstacles. You ignore {@quickref difficult terrain||3|terrain} in forests and jungles. In addition, when you use the {@skill Acrobatics} skill to {@action Balance} on narrow surfaces or uneven ground made of plant material, you aren't {@condition flat-footed}, and when you roll a success at one of these {@skill Acrobatics} checks, you get a critical success instead."
@@ -748,7 +754,7 @@
 			"page": 114,
 			"level": 9,
 			"traits": [
-				"Gnoll"
+				"gnoll"
 			],
 			"prerequisites": "master in {@skill Intimidation}",
 			"entries": [
@@ -761,7 +767,7 @@
 			"page": 121,
 			"level": 5,
 			"traits": [
-				"Grippli"
+				"grippli"
 			],
 			"prerequisites": "snaptongue grippli",
 			"entries": [
@@ -774,7 +780,7 @@
 			"page": 121,
 			"level": 1,
 			"traits": [
-				"Grippli"
+				"grippli"
 			],
 			"entries": [
 				"You tend to do most of your hunting and work at night and have adapted to the requirements of nocturnal life. You gain {@ability darkvision}, allowing you to see in darkness and dim light just as well as you can in bright light. However, in darkness, you see in black and white only."
@@ -787,7 +793,7 @@
 			"page": 126,
 			"level": 13,
 			"traits": [
-				"Shisk"
+				"shisk"
 			],
 			"entries": [
 				"Even magical means have a hard time prying information from you. You gain nondetection as an innate occult spell once per day, which can only be cast on yourself and is automatically heightened to half your level rounded up."
@@ -799,7 +805,7 @@
 			"page": 113,
 			"level": 1,
 			"traits": [
-				"Gnoll"
+				"gnoll"
 			],
 			"entries": [
 				"You were taught how to hunt as part of a pack. You gain a +2 circumstance bonus to checks to {@action Aid}, and your allies gain a +2 circumstance bonus to checks to {@action Aid} you."
@@ -814,7 +820,7 @@
 			"page": 114,
 			"level": 5,
 			"traits": [
-				"Gnoll"
+				"gnoll"
 			],
 			"prerequisites": "expert in {@skill Stealth}, {@feat Pack Hunter|LOME}",
 			"entries": [
@@ -827,7 +833,7 @@
 			"page": 117,
 			"level": 1,
 			"traits": [
-				"Goloma"
+				"goloma"
 			],
 			"prerequisites": "low-light vision",
 			"entries": [
@@ -842,7 +848,7 @@
 			"page": 126,
 			"level": 9,
 			"traits": [
-				"Shisk"
+				"shisk"
 			],
 			"prerequisites": "{@feat Spine Stabber|LOME}",
 			"entries": [
@@ -855,7 +861,7 @@
 			"page": 118,
 			"level": 5,
 			"traits": [
-				"Goloma"
+				"goloma"
 			],
 			"prerequisites": "vicious goloma heritage",
 			"entries": [
@@ -872,7 +878,7 @@
 			},
 			"level": 9,
 			"traits": [
-				"Shisk"
+				"shisk"
 			],
 			"prerequisites": "quillcoat shisk or quill unarmed attack",
 			"frequency": {
@@ -893,9 +899,9 @@
 			},
 			"level": 1,
 			"traits": [
-				"Anadi",
-				"Auditory",
-				"Visual"
+				"anadi",
+				"auditory",
+				"visual"
 			],
 			"trigger": "An ally within 30 feet gains the {@condition frightened} condition.",
 			"entries": [
@@ -909,7 +915,7 @@
 			"page": 126,
 			"level": 5,
 			"traits": [
-				"Shisk"
+				"shisk"
 			],
 			"prerequisites": "quillcoat shisk",
 			"entries": [
@@ -922,7 +928,7 @@
 			"page": 122,
 			"level": 9,
 			"traits": [
-				"Grippli"
+				"grippli"
 			],
 			"prerequisites": "master in {@skill Athletics}, {@feat Wall Jump}",
 			"entries": [
@@ -936,7 +942,7 @@
 			"page": 114,
 			"level": 5,
 			"traits": [
-				"Gnoll"
+				"gnoll"
 			],
 			"entries": [
 				"It's said that the flesh of the right side of a hyena can heal diseases, but that of the left side is poisonous. You can take 1 damage to feed someone blood from your right side and {@action Administer First Aid} or take {@dice 2d8} damage to {@action Treat Disease} or {@action Treat Wounds}; in either case, you don't need healer's tools, and gain a +1 item bonus. Blood from your left side causes the check to critically fail automatically."
@@ -948,7 +954,7 @@
 			"page": 126,
 			"level": 13,
 			"traits": [
-				"Shisk"
+				"shisk"
 			],
 			"entries": [
 				"You can call forth an {@condition invisible} eye to let you peek on secrets. Once per day, you can cast {@spell prying eye} as an innate occult spell."
@@ -960,7 +966,7 @@
 			"page": 118,
 			"level": 13,
 			"traits": [
-				"Goloma"
+				"goloma"
 			],
 			"entries": [
 				"You notice things that others can't see at all. While you're adjacent to an {@condition undetected} creature of your level or lower, it is instead only {@condition hidden} from you. You only need a successful DC {@flatDC 5} flat check to target a {@condition hidden} creature."
@@ -972,7 +978,7 @@
 			"page": 113,
 			"level": 1,
 			"traits": [
-				"Gnoll"
+				"gnoll"
 			],
 			"entries": [
 				"Your large black nose isn't just for show. You gain imprecise {@ability scent} with a range of 30 feet."
@@ -985,7 +991,7 @@
 			"page": 125,
 			"level": 1,
 			"traits": [
-				"Shisk"
+				"shisk"
 			],
 			"entries": [
 				"You hoard knowledge like a dragon hoards gold. You gain the trained proficiency rank in three {@skill Lore} skills of your choice. You also become trained in {@skill Lore||Shisk Lore}."
@@ -997,7 +1003,7 @@
 			"page": 106,
 			"level": 1,
 			"traits": [
-				"Anadi"
+				"anadi"
 			],
 			"entries": [
 				"You can ask questions of, receive answers from, and use the {@skill Diplomacy} skill with spiders and other arachnids. The GM determines which creatures count for this ability."
@@ -1009,7 +1015,7 @@
 			"page": 125,
 			"level": 1,
 			"traits": [
-				"Shisk"
+				"shisk"
 			],
 			"entries": [
 				"Living underground, you have learned to find your way without landmarks or even solid ground. If you roll a success on an {@skill Survival} check to {@action Sense Direction} or an {@skill Athletics} check to {@action Climb}, you get a critical success instead. You're not {@condition flat-footed} when you attempt to {@action Climb}."
@@ -1021,7 +1027,7 @@
 			"page": 125,
 			"level": 1,
 			"traits": [
-				"Shisk"
+				"shisk"
 			],
 			"entries": [
 				"The quills on your arms are particularly sharp and sturdy. You gain a quills unarmed attack that deals {@damage 1d6} piercing damage. Your quills are in the knife weapon group and have the {@trait finesse} and {@trait unarmed} traits."
@@ -1036,7 +1042,7 @@
 			"page": 106,
 			"level": 9,
 			"traits": [
-				"Anadi"
+				"anadi"
 			],
 			"entries": [
 				"Your eight legs serve you well when climbing walls and webs alike. You gain a climb speed of 25 feet in your spider shape."
@@ -1048,7 +1054,7 @@
 			"page": 106,
 			"level": 9,
 			"traits": [
-				"Anadi"
+				"anadi"
 			],
 			"prerequisites": "{@feat Studious Magic|LOME}",
 			"entries": [
@@ -1062,7 +1068,7 @@
 			"page": 106,
 			"level": 1,
 			"traits": [
-				"Anadi"
+				"anadi"
 			],
 			"entries": [
 				"You've taken an interest in anadi arcane traditions. Choose one cantrip from the arcane spell list. You can cast this spell as an arcane innate spell at will. A cantrip is heightened to a spell level equal to half your level rounded up."
@@ -1077,7 +1083,7 @@
 			"page": 122,
 			"level": 5,
 			"traits": [
-				"Grippli"
+				"grippli"
 			],
 			"entries": [
 				"Escaping your nets is no simple task. The {@skill Athletics} DC to {@action Force Open} or {@action Escape} your nets increases from 16 to 18. After a creature you {@condition grabbed} with a net {@action Escape||Escapes} or Forces Open the net, stray strands of the net cling to the creature, causing them to remain {@condition flat-footed} until the beginning of their next turn."
@@ -1089,7 +1095,7 @@
 			"page": 122,
 			"level": 9,
 			"traits": [
-				"Grippli"
+				"grippli"
 			],
 			"prerequisites": "snaptongue grippli",
 			"entries": [
@@ -1106,10 +1112,10 @@
 			},
 			"level": 17,
 			"traits": [
-				"Arcane",
-				"Concentrate",
-				"Divination",
-				"Goloma"
+				"arcane",
+				"concentrate",
+				"divination",
+				"goloma"
 			],
 			"frequency": {
 				"unit": "hour",
@@ -1129,8 +1135,8 @@
 			},
 			"level": 1,
 			"traits": [
-				"Concentrate",
-				"Goloma"
+				"concentrate",
+				"goloma"
 			],
 			"entries": [
 				"You use your many eyes to look in all directions at once, making you extremely observant for a short period of time. You gain all-around vision until the start of your next turn. This lets you see in all directions and prevents you from being flanked."
@@ -1145,7 +1151,7 @@
 			"page": 106,
 			"level": 9,
 			"traits": [
-				"Anadi"
+				"anadi"
 			],
 			"entries": [
 				"Through the careful cultivation of highly sensitive hairs, you've developed the ability to sense creatures without seeing them. You gain imprecise {@ability tremorsense} at a range of 15 feet. When you and a creature are both touching the same anchored, threadlike object (such as a rope, webbing, or wire), your imprecise {@ability tremorsense} can sense that creature at a range of 60 feet."
@@ -1157,7 +1163,7 @@
 			"page": 106,
 			"level": 1,
 			"traits": [
-				"Anadi"
+				"anadi"
 			],
 			"entries": [
 				"You have plenty of practice navigating webs. You gain a +2 circumstance bonus to saves and AC against the {@spell web} spell, natural webbing, and effects that entrap you in webbing, as well as a +1 circumstance bonus against other effects that snare and entangle you, like the {@spell entangle} spell. Whenever you roll a success on a saving throw against an effect involving a web, you get a critical success instead."
@@ -1169,7 +1175,7 @@
 			"page": 106,
 			"level": 1,
 			"traits": [
-				"Anadi"
+				"anadi"
 			],
 			"entries": [
 				"You can produce a soft silk to weave into useful items. You gain the {@feat Specialty Crafting} feat with a specialty in weaving. You can use your webbing to {@action Craft} simple, nonconsumable threaded items, such as clothing and rope, at zero cost as long as their base Price is 1 sp or less. These items have no resale value, and they naturally degrade after 24 hours without regular (if minor) maintenance. You can maintain up to 10 such items at a time; if you create a new one, your oldest creation breaks down from neglect. These temporary items take you only 1 day to {@action Craft} instead of 4. If you're an expert in {@skill Crafting}, you can {@action Craft} these items in 1 hour; if you're a master, you can {@action Craft} them in 10 minutes; if you're legendary, you can {@action Craft} them in 1 minute."
@@ -1185,7 +1191,7 @@
 			},
 			"level": 13,
 			"traits": [
-				"Anadi"
+				"anadi"
 			],
 			"frequency": {
 				"unit": "minute",
@@ -1193,8 +1199,7 @@
 				"freq": 1
 			},
 			"entries": [
-				"Your natural ability to create silken webs blends with your magical powers, allowing you to create impossibly large webs with great frequency. This has the effects of a 2nd-level {@spell web} spell using your class DC or spell DC, whichever is higher.",
-				"Anadi Enclaves Mostly found in their home nation of Nurvatcha, anadi settlements are traditionally built with techniques developed before the discovery of transformation magic. As a result, these cities have often been built upon cliffsides or in dense jungles that can support anadi webs. In the capital city of Domithari, a council of elected officials congregate around the Empty Throne, an honorary seat reserved for Grandmother Spider, though no one expects her to assume the mantle of monarch. In the city of Majabi, the finest scholars among the anadi people make homes above and below the surface. Majabi also houses the First Weave, a tapestry of arcane infused webbing that documents the earliest anadi transformation spells."
+				"Your natural ability to create silken webs blends with your magical powers, allowing you to create impossibly large webs with great frequency. This has the effects of a 2nd-level {@spell web} spell using your class DC or spell DC, whichever is higher."
 			]
 		}
 	]

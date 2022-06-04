@@ -7,21 +7,20 @@
 			"focus": true,
 			"level": 3,
 			"traits": [
-				"Rare",
-				"Electricity",
-				"Evocation"
+				"rare",
+				"electricity",
+				"evocation"
 			],
 			"school": "V",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"F": false,
-				"M": false,
-				"S": true,
-				"V": false
-			},
+			"components": [
+				{
+					"S": true
+				}
+			],
 			"range": {
 				"entry": "touch",
 				"distance": {
@@ -30,19 +29,15 @@
 				}
 			},
 			"targets": "1 hinge or latch",
-			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
-			"sustain": false,
-			"dismiss": false,
 			"entries": [
-				"You create an electric latch rune hazard (Core Rulebook 523) on the target, creating a special crystalline lock on the object. You can also substitute your spell DC for any of the hazard's listed DCs. You can have only one such hazard active at a time, and if you cast this spell while a previous electric latch rune is active, the older hazard discharges harmlessly."
+				"You create an {@hazard electric latch rune} hazard on the target, creating a special crystalline lock on the object. You can also substitute your spell DC for any of the hazard's listed DCs. You can have only one such hazard active at a time, and if you cast this spell while a previous electric latch rune is active, the older hazard discharges harmlessly."
 			],
 			"heightened": {
 				"plus_x": {
 					"level": 2,
-					"entries": ["The hazard's damage increases by {@dice 1d12}."]
+					"entries": [
+						"The hazard's damage increases by {@dice 1d12}."
+					]
 				}
 			}
 		},
@@ -53,26 +48,23 @@
 			"focus": true,
 			"level": 1,
 			"traits": [
-				"Uncommon",
-				"Cleric",
-				"Divination"
+				"uncommon",
+				"cleric",
+				"divination"
 			],
 			"school": "D",
-			"subclass": {
-				"Cleric|Domain": [
-					"toil"
-				]
-			},
+			"domains": [
+				"toil"
+			],
 			"cast": {
 				"number": 1,
 				"unit": "reaction"
 			},
-			"components": {
-				"F": false,
-				"M": false,
-				"S": true,
-				"V": false
-			},
+			"components": [
+				{
+					"S": true
+				}
+			],
 			"trigger": "You or an ally within range fails a skill check for a skill in which you or they are trained.",
 			"range": {
 				"entry": "30 feet",
@@ -81,12 +73,6 @@
 					"amount": 30
 				}
 			},
-			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
-			"sustain": false,
-			"dismiss": false,
 			"entries": [
 				"The target gains a +2 status bonus to the triggering check, or a +3 bonus if the target has master or better proficiency in the skill. This bonus can change the outcome of the target's check."
 			]
@@ -98,25 +84,23 @@
 			"focus": true,
 			"level": 4,
 			"traits": [
-				"Healing",
-				"Necromancy"
+				"healing",
+				"necromancy"
 			],
 			"school": "N",
-			"subclass": {
-				"Cleric|Domain": [
-					"toil"
-				]
-			},
+			"domains": [
+				"toil"
+			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"F": false,
-				"M": false,
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"range": {
 				"entry": "30 feet",
 				"distance": {
@@ -125,17 +109,15 @@
 				}
 			},
 			"targets": "1 creature",
-			"savingThrowBasic": false,
 			"duration": {
 				"type": "timed",
 				"entry": "sustained up to 1 minute",
+				"sustain": true,
 				"duration": {
 					"number": 1,
 					"unit": "minute"
 				}
 			},
-			"sustain": true,
-			"dismiss": false,
 			"entries": [
 				"You suppress your choice of one of the following conditions that's affecting the target: {@condition clumsy}, {@condition encumbered}, {@condition enfeebled}, or {@condition fatigued}. If you don't remove the effect that caused the condition, the condition returns after the spell's duration expires."
 			]

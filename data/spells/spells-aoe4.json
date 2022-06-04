@@ -4,29 +4,28 @@
 			"name": "Imp Sting",
 			"source": "AoE4",
 			"page": 80,
-			"focus": false,
 			"level": 2,
 			"traits": [
-				"Uncommon",
-				"Evil",
-				"Necromancy",
-				"Poison"
+				"uncommon",
+				"evil",
+				"necromancy",
+				"poison"
 			],
 			"school": "N",
 			"traditions": [
-				"Divine",
-				"Occult"
+				"divine",
+				"occult"
 			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"F": false,
-				"M": false,
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"range": {
 				"entry": "touch",
 				"distance": {
@@ -35,13 +34,11 @@
 				}
 			},
 			"targets": "1 creature",
-			"savingThrow": "Fortitude",
-			"savingThrowBasic": false,
-			"duration": {
-				"type": null
+			"savingThrow": {
+				"type": [
+					"F"
+				]
 			},
-			"sustain": false,
-			"dismiss": false,
 			"entries": [
 				"You reproduce an imp's evil, poisonous sting, stabbing at an enemy and possibly affecting them with the devil's benumbing venom. You deal {@damage 1d4} piercing damage to the touched creature and afflict the creature with imp venom.",
 				"If the target takes piercing damage, they also take {@damage 1d6} evil damage and must attempt a Fortitude save.",
@@ -60,28 +57,27 @@
 			"name": "Leng Sting",
 			"source": "AoE4",
 			"page": 80,
-			"focus": false,
 			"level": 7,
 			"traits": [
-				"Uncommon",
-				"Necromancy",
-				"Poison"
+				"uncommon",
+				"necromancy",
+				"poison"
 			],
 			"school": "N",
 			"traditions": [
-				"Arcane",
-				"Occult"
+				"arcane",
+				"occult"
 			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"F": false,
-				"M": false,
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"range": {
 				"entry": "touch",
 				"distance": {
@@ -90,13 +86,11 @@
 				}
 			},
 			"targets": "1 creature",
-			"savingThrow": "Fortitude",
-			"savingThrowBasic": false,
-			"duration": {
-				"type": null
+			"savingThrow": {
+				"type": [
+					"F"
+				]
 			},
-			"sustain": false,
-			"dismiss": false,
 			"entries": [
 				"You use the power of nightmares to magically replicate the venomous attack of the aberrant and cunning Leng spiders. You deal {@damage 2d6} piercing damage to the touched creature and afflict it with Leng spider venom. If the target takes piercing damage, they must attempt a Fortitude save.",
 				{
@@ -114,29 +108,28 @@
 			"name": "Linnorm Sting",
 			"source": "AoE4",
 			"page": 81,
-			"focus": false,
 			"level": 9,
 			"traits": [
-				"Uncommon",
-				"Fire",
-				"Necromancy",
-				"Poison"
+				"uncommon",
+				"fire",
+				"necromancy",
+				"poison"
 			],
 			"school": "N",
 			"traditions": [
-				"Arcane",
-				"Primal"
+				"arcane",
+				"primal"
 			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"F": false,
-				"M": false,
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"range": {
 				"entry": "touch",
 				"distance": {
@@ -145,13 +138,11 @@
 				}
 			},
 			"targets": "1 creature",
-			"savingThrow": "Fortitude",
-			"savingThrowBasic": false,
-			"duration": {
-				"type": null
+			"savingThrow": {
+				"type": [
+					"F"
+				]
 			},
-			"sustain": false,
-			"dismiss": false,
 			"entries": [
 				"You replicate the fiery venom of the tor linnorm and inflict an enemy with the dread dragon's debilitating bite.",
 				"You deal {@damage 2d12} piercing damage to the targeted creature and afflict it with tor linnorm venom. If the target takes piercing damage, they must attempt a Fortitude save.",
@@ -170,28 +161,27 @@
 			"name": "Swarming Wasp Stings",
 			"source": "AoE4",
 			"page": 81,
-			"focus": false,
 			"level": 4,
 			"traits": [
-				"Uncommon",
-				"Necromancy",
-				"Poison"
+				"uncommon",
+				"necromancy",
+				"poison"
 			],
 			"school": "N",
 			"traditions": [
-				"Arcane",
-				"Primal"
+				"arcane",
+				"primal"
 			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"F": false,
-				"M": false,
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"range": {
 				"entry": "30 feet",
 				"distance": {
@@ -205,13 +195,11 @@
 				],
 				"entry": "10-foot burst"
 			},
-			"savingThrow": "Fortitude",
-			"savingThrowBasic": false,
-			"duration": {
-				"type": null
+			"savingThrow": {
+				"type": [
+					"F"
+				]
 			},
-			"sustain": false,
-			"dismiss": false,
 			"entries": [
 				"You manifest a swarm of disembodied wasp stingers that stab creatures in the area, possibly poisoning them.",
 				"Creatures in the affected area take {@damage 1d6} piercing damage.",
@@ -231,28 +219,27 @@
 			"name": "Wyvern Sting",
 			"source": "AoE4",
 			"page": 81,
-			"focus": false,
 			"level": 5,
 			"traits": [
-				"Uncommon",
-				"Necromancy",
-				"Poison"
+				"uncommon",
+				"necromancy",
+				"poison"
 			],
 			"school": "N",
 			"traditions": [
-				"Arcane",
-				"Primal"
+				"arcane",
+				"primal"
 			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"F": false,
-				"M": false,
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"range": {
 				"entry": "touch",
 				"distance": {
@@ -261,13 +248,11 @@
 				}
 			},
 			"targets": "1 creature",
-			"savingThrow": "Fortitude",
-			"savingThrowBasic": false,
-			"duration": {
-				"type": null
+			"savingThrow": {
+				"type": [
+					"F"
+				]
 			},
-			"sustain": false,
-			"dismiss": false,
 			"entries": [
 				"You duplicate the venomous sting of a wyvern. You deal {@damage 3d4} piercing damage to the touched creature and afflict it with wyvern venom. If the target takes piercing damage, they must attempt a Fortitude save.",
 				{

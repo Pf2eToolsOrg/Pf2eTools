@@ -1,0 +1,194 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"$id": "hazards.json",
+	"title": "Hazard",
+	"description": "The hazard data type for Pf2eTools.",
+	"version": "0.0.1",
+	"type": "object",
+	"properties": {
+		"hazard": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"source": {
+						"type": "string",
+						"$ref": "utils.json#/definitions/sourceList"
+					},
+					"name": {
+						"type": "string"
+					},
+					"page": {
+						"type": "integer"
+					},
+					"level": {
+						"type": "integer",
+						"minimum": 0
+					},
+					"traits": {
+						"type": "array",
+						"items": {
+							"type": "string",
+							"anyOf": [
+								{
+									"$ref": "utils.json#/definitions/anyTrait"
+								},
+								{
+									"$comment": "Hazard only traits.",
+									"enum": [
+										"trap",
+										"complex",
+										"mechanical",
+										"environmental",
+										"haunt"
+									]
+								}
+							]
+						},
+						"minItems": 1
+					},
+					"stealth": {
+						"type": "object",
+						"properties": {
+							"dc": {
+								"type": "integer",
+								"minimum": 0
+							},
+							"bonus": {
+								"type": "integer",
+								"minimum": 0
+							},
+							"minProf": {
+								"type": "string",
+								"enum": [
+									"trained",
+									"expert",
+									"master",
+									"legendary"
+								]
+							},
+							"notes": {
+								"type": "string"
+							}
+						},
+						"additionalProperties": false,
+						"minProperties": 1
+					},
+					"perception": {
+						"type": "object",
+						"properties": {
+							"dc": {
+								"type": "integer",
+								"minimum": 0
+							},
+							"bonus": {
+								"type": "integer",
+								"minimum": 0
+							},
+							"minProf": {
+								"type": "string",
+								"enum": [
+									"trained",
+									"expert",
+									"master",
+									"legendary"
+								]
+							},
+							"notes": {
+								"type": "string"
+							}
+						},
+						"additionalProperties": false,
+						"minProperties": 1
+					},
+					"description": {
+						"type": "array",
+						"items": {
+							"type": "string"
+						},
+						"minItems": 1
+					},
+					"disable": {
+						"type": "object",
+						"properties": {
+							"entries": {
+								"type": "array",
+								"items": {
+									"$ref": "entry.json"
+								},
+								"minItems": 1
+							}
+						},
+						"additionalProperties": false,
+						"minProperties": 1
+					},
+					"defenses": {
+						"$ref": "utils.json#/definitions/defenses"
+					},
+					"abilities": {
+						"type": "array",
+						"items": {
+							"anyOf": [
+								{
+									"$ref": "utils.json#/definitions/abilityBlock"
+								}
+							]
+						},
+						"minItems": 1
+					},
+					"actions": {
+						"type": "array",
+						"items": {
+							"anyOf": [
+								{
+									"$ref": "utils.json#/definitions/abilityBlock"
+								},
+								{
+									"$ref": "utils.json#/definitions/attackBlock"
+								}
+							]
+						},
+						"minItems": 1
+					},
+					"routine": {
+						"type": "array",
+						"items": {
+							"anyOf": [
+								{
+									"$ref": "utils.json#/definitions/abilityBlock"
+								},
+								{
+									"$ref": "utils.json#/definitions/attackBlock"
+								},
+								{
+									"$ref": "entry.json"
+								}
+							]
+						},
+						"minItems": 1
+					},
+					"reset": {
+						"type": "array",
+						"items": {
+							"$ref": "entry.json"
+						},
+						"minItems": 1
+					}
+				},
+				"additionalProperties": false,
+				"required": [
+					"source",
+					"name",
+					"level",
+					"stealth",
+					"description"
+				]
+			},
+			"uniqueItems": true
+		}
+	},
+	"required": [
+		"hazard"
+	],
+	"additionalProperties": false
+}

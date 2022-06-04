@@ -13,8 +13,17 @@
 				"will": "E",
 				"skills": {
 					"t": [
-						"{@skill Religion}",
-						"one or more skills determined by your mystery"
+						{
+							"skill": [
+								"Religion"
+							]
+						},
+						{
+							"skill": [
+								"Subclass Dependant"
+							],
+							"entry": "one or more skills determined by your mystery"
+						}
 					],
 					"add": 3
 				},
@@ -777,7 +786,7 @@
 						"Drawing on multiple disparate sources of power inevitably places an incredible stress on your body, manifesting as a supernatural curse. The more revelation spells you cast, the worse the effects of your curse, but these increasingly conflicting energies can also provide you with divine benefits.",
 						"The specific effects of your curse are tied to your mystery, but all curses follow the same progression. A curse continually gives you a mild but constant reminder that you carry otherworldly power. As you cast revelation spells, your curse intensifies, first to a minor effect and then to a moderate effect.",
 						"Your curse progresses to its minor stage the first time you finish casting a revelation spell after your daily preparations. Once your minor curse has manifested, it remains in effect until you rest for 8 hours and again make your daily preparations. If you cast a revelation spell while your minor curse is in effect, you progress to the moderate curse effect immediately after you finish {@action Cast a Spell||Casting the Spell}. The minor effect continues to affect you, though some moderate curse effects might alter the specifics of your minor curse. At higher levels, you can cast more revelation spells, progressing your curse to its major stage and then an extreme stage; these stronger curses are cumulative with the effects of the lower stages and can alter them. When you {@action Refocus} while under the effects of your moderate or stronger curse, you reduce your curse's severity to minor in addition to regaining a Focus Point.",
-						"Drawing upon your mystery's power while your curse is at its worst causes an irreconcilable conflict between you and the sources of your power. Immediately after casting a revelation spell while under the moderate effect of your curse, you are overwhelmed. While overwhelmed, you can't Cast or Sustain any revelation spells\u2014you effectively lose access to those spells. You can still {@action Refocus} to reduce the effects of your curse and regain a Focus Point, but doing so doesn't allow you to cast further revelation spells. These effects last until you rest for 8 hours and make your daily preparations, at which point your curse returns to its basic state. At higher levels, you can grow to withstand your curse's major and even extreme effects, enabling you to cast more revelation spells without becoming overwhelmed.",
+						"Drawing upon your mystery's power while your curse is at its worst causes an irreconcilable conflict between you and the sources of your power. Immediately after casting a revelation spell while under the moderate effect of your curse, you are overwhelmed. While overwhelmed, you can't {@action Cast a Spell||Cast} or {@action Sustain a Spell||Sustain} any revelation spells\u2014you effectively lose access to those spells. You can still {@action Refocus} to reduce the effects of your curse and regain a Focus Point, but doing so doesn't allow you to cast further revelation spells. These effects last until you rest for 8 hours and make your daily preparations, at which point your curse returns to its basic state. At higher levels, you can grow to withstand your curse's major and even extreme effects, enabling you to cast more revelation spells without becoming overwhelmed.",
 						"Your curse has the {@trait curse}, {@trait divine}, and {@trait necromancy} traits. You can't mitigate, reduce, or remove the effects of your oracular curse by any means other than {@action Refocus|CRB|Refocusing} and resting for 8 hours. For example, if your curse makes creatures concealed from you, you can't negate that concealed condition through a magic item or spell, such as true strike (though you would still benefit from the other effects of that item or spell). Likewise, remove curse and similar spells don't affect your curse at all."
 					]
 				}
@@ -791,7 +800,7 @@
 			"classSource": "APG",
 			"level": 2,
 			"entries": [
-				"At 2nd level and every 2 levels thereafter, you gain an {@filter oracle class feat|feats||type=class|classes=oracle|level=[1;2]}."
+				"At 2nd level and every 2 levels thereafter, you gain an {@filter oracle class feat|feats||type=class|Class=oracle|level=[1;2]}."
 			]
 		},
 		{
@@ -1017,7 +1026,7 @@
 			"classSource": "APG",
 			"level": 19,
 			"entries": [
-				"You now fully grasp the nature of the divine power behind your mystery, allowing you to work magic akin to miracles. Add two {@filter 10th-level divine spells|spells||level=10|tradition & spell list=divine|rarity=common} to your repertoire. You gain a single 10th-level spell slot you can use to cast one of those two spells using oracle spellcasting. You don't gain more 10th-level spells as you level up, unlike other spell slots, and you can't use 10th-level slots with abilities that give you more spell slots or that let you cast spells without expending spell slots. You can take the {@feat Oracular Providence} feat to gain a second slot."
+				"You now fully grasp the nature of the divine power behind your mystery, allowing you to work magic akin to miracles. Add two {@filter 10th-level divine spells|spells||level=10|tradition & spell list=divine|rarity=common} to your repertoire. You gain a single 10th-level spell slot you can use to cast one of those two spells using oracle spellcasting. You don't gain more 10th-level spells as you level up, unlike other spell slots, and you can't use 10th-level slots with abilities that give you more spell slots or that let you cast spells without expending spell slots. You can take the {@feat Oracular Providence|APG} feat to gain a second slot."
 			]
 		}
 	],
@@ -1037,7 +1046,7 @@
 					"page": 73,
 					"name": "Ancestors",
 					"entries": [
-						"The voices of generations past speak to you, and you hear their words. You might resent the constant interruption, or you might revere the spirits of those who came before. Perhaps you hail from a culture with strong ancestral traditions, such as the Shoanti Skoan- Quah (Skull Clan), a traditional dwarven community that worships {@deity Torag}'s family pantheon, or a group that reveres {@deity Erastil} or {@deity Pharasma}. You might commune with powerful psychopomps who shepherd souls to the afterlife, with the River of Souls itself, or with those spirits who have become trapped outside of the great cycle of spiritual rebirth. You learn from their whispers and the fragments of their memories, but opening your mind to their knowledge and experience also allows them to meddle in your worldly affairs.",
+						"The voices of generations past speak to you, and you hear their words. You might resent the constant interruption, or you might revere the spirits of those who came before. Perhaps you hail from a culture with strong ancestral traditions, such as the {@deity Shoanti Animism|LOGM|Shoanti} Skoan-Quah (Skull Clan), a traditional dwarven community that worships {@deity Torag}'s family {@deity dwarven pantheon|logm|pantheon}, or a group that reveres {@deity Erastil} or {@deity Pharasma}. You might commune with powerful psychopomps who shepherd souls to the afterlife, with the River of Souls itself, or with those spirits who have become trapped outside of the great cycle of spiritual rebirth. You learn from their whispers and the fragments of their memories, but opening your mind to their knowledge and experience also allows them to meddle in your worldly affairs.",
 						{
 							"type": "pf2-options",
 							"style": "pf2-p",
@@ -1286,7 +1295,7 @@
 					"page": 74,
 					"name": "Bones",
 					"entries": [
-						"Your mystery imparts an understanding of death and undeath in all their macabre complexity. You might have had a brush with death yourself\u2014maybe even dying and returning to life\u2014or carry the touch of undeath in your blood. If you commune with deities, you might speak with guardians of death like {@deity Pharasma} and the psychopomp ushers (the most powerful among creatures that guide souls through the afterlife); a bringer of death like the Mantis God {@deity Achaekek} or the Horseman of the Apocalypse {@deity Charon}; or a herald of undeath such as {@deity Urgathoa}.",
+						"Your mystery imparts an understanding of death and undeath in all their macabre complexity. You might have had a brush with death yourself\u2014maybe even dying and returning to life\u2014or carry the touch of undeath in your blood. If you commune with deities, you might speak with guardians of death like {@deity Pharasma} and the psychopomp ushers (the most powerful among creatures that guide souls through the afterlife); a bringer of death like the Mantis God {@deity Achaekek|LOGM} or the Horseman of the Apocalypse {@deity Charon|LOGM}; or a herald of undeath such as {@deity Urgathoa}.",
 						{
 							"type": "pf2-options",
 							"style": "pf2-p",
@@ -1378,7 +1387,7 @@
 					"page": 74,
 					"name": "Cosmos",
 					"entries": [
-						"Celestial bodies great and small exert influence on you, giving you sublime cosmic power. Perhaps you see the glittering stars as a divine blessing, or perhaps you feel drawn to the infinitely dark spaces between. You might uphold deities like {@deity Desna}, {@deity Sarenrae}, or the deific lovers {@deity Shizuru} and {@deity Tsukiyo} who represent the sun and the moon\u2014or you might draw power from dark entities from beyond the stars, like certain Outer Gods, or destructive gods of the night like {@deity Zon-Kuthon} or the rat goddess {@deity Lao Shu Po}.",
+						"Celestial bodies great and small exert influence on you, giving you sublime cosmic power. Perhaps you see the glittering stars as a divine blessing, or perhaps you feel drawn to the infinitely dark spaces between. You might uphold deities like {@deity Desna}, {@deity Sarenrae}, or the deific lovers {@deity Shizuru|LOGM} and {@deity Tsukiyo|LOGM} who represent the sun and the moon\u2014or you might draw power from dark entities from beyond the stars, like certain Outer Gods, or destructive gods of the night like {@deity Zon-Kuthon} or the rat goddess {@deity Lao Shu Po|LOGM}.",
 						{
 							"type": "pf2-options",
 							"style": "pf2-p",
@@ -1470,7 +1479,7 @@
 					"page": 74,
 					"name": "Flames",
 					"entries": [
-						"Fire lives at the center of the world, the center of the sun, and the center of civilization. You might revere this elemental force, siphon power from the Elemental Plane of Fire, or venerate a collection of deities such as {@deity Asmodeus}, {@deity Sarenrae}, the Tian goddess of disasters and volcanoes {@deity Lady Nanbyo}, or the elemental lord of fire {@deity Ymeri}.",
+						"Fire lives at the center of the world, the center of the sun, and the center of civilization. You might revere this elemental force, siphon power from the Elemental Plane of Fire, or venerate a collection of deities such as {@deity Asmodeus}, {@deity Sarenrae}, the Tian goddess of disasters and volcanoes {@deity Lady Nanbyo|LOGM}, or the elemental lord of fire {@deity Ymeri|LOGM}.",
 						{
 							"type": "pf2-options",
 							"style": "pf2-p",
@@ -1564,7 +1573,7 @@
 					"page": 74,
 					"name": "Life",
 					"entries": [
-						"The never-ending flow of positive energy within living beings is palpable to you. You might uphold the sanctity of life, or perhaps you seek to undermine it. You might draw power from the collective vitality of the world's living creatures, hold some connection to the Positive Energy Plane, or revere a collection of deities including {@deity Irori}, {@deity Pharasma}, {@deity Sarenrae}, and the god of medicine {@deity Qi Zhong}.",
+						"The never-ending flow of positive energy within living beings is palpable to you. You might uphold the sanctity of life, or perhaps you seek to undermine it. You might draw power from the collective vitality of the world's living creatures, hold some connection to the Positive Energy Plane, or revere a collection of deities including {@deity Irori}, {@deity Pharasma}, {@deity Sarenrae}, and the god of medicine {@deity Qi Zhong|LOGM}.",
 						{
 							"type": "pf2-options",
 							"style": "pf2-p",
@@ -1657,7 +1666,7 @@
 					"page": 74,
 					"name": "Lore",
 					"entries": [
-						"Knowledge and information come freely to you. You might use this lore to gain power or perhaps to understand the divine mysteries of the multiverse. You might have a conduit to the fabled Akashic Record, maintain a subtle telepathic connection to the collective subconscious of all living creatures, or follow in the footsteps of deities such as {@deity Abadar}, {@deity Irori}, {@deity Nethys}, Irori's scholarly nephew {@deity Gruhastha}, the fey triune goddess of fate {@deity Magdh}, or the lawful aeon god-figure known as the {@deity Monad}.",
+						"Knowledge and information come freely to you. You might use this lore to gain power or perhaps to understand the divine mysteries of the multiverse. You might have a conduit to the fabled Akashic Record, maintain a subtle telepathic connection to the collective subconscious of all living creatures, or follow in the footsteps of deities such as {@deity Abadar}, {@deity Irori}, {@deity Nethys}, Irori's scholarly nephew {@deity Gruhastha|LOGM}, the fey triune goddess of fate {@deity Magdh|LOGM}, or the lawful aeon god-figure known as the {@deity Monad|LOGM}.",
 						{
 							"type": "pf2-options",
 							"style": "pf2-p",
@@ -1749,7 +1758,7 @@
 					"page": 74,
 					"name": "Tempest",
 					"entries": [
-						"The fury of the wind and waves pounds in your heart, whether your power flows from natural storms, a conduit to the elemental Planes of Air and Water, or through reverence of deities such as {@deity Gozreh}, the tengu god of storms {@deity Hei Feng}, the demon lord {@deity Dagon}, or the elemental lords of air and water.",
+						"The fury of the wind and waves pounds in your heart, whether your power flows from natural storms, a conduit to the elemental Planes of Air and Water, or through reverence of deities such as {@deity Gozreh}, the tengu god of storms {@deity Hei Feng|LOGM}, the demon lord {@deity Dagon|LOGM}, or the elemental lords of air and water.",
 						{
 							"type": "pf2-options",
 							"style": "pf2-p",

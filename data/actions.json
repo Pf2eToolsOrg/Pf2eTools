@@ -1,6 +1,51 @@
 {
 	"action": [
 		{
+			"name": "Practical Research",
+			"source": "SoT1",
+			"page": 63,
+			"traits": [
+				"downtime"
+			],
+			"requirements": "You are a conversant or lore-speaker.",
+			"entries": [
+				"You identify something interesting in the field and perform special research on it. This requires an appropriate check, which the GM will describe when the opportunity arises. The results of the check vary. While they typically include all the benefits of the Study activity, some opportunities for Practical Research also offer unique benefits, such as access to new character options."
+			]
+		},
+		{
+			"name": "Cram",
+			"source": "SoT1",
+			"page": 63,
+			"traits": [
+				"downtime"
+			],
+			"requirements": "You are an initiate, attendant, or conversant, and your branch level for either your primary or secondary branch is 2 or more levels below the limit.",
+			"entries": [
+				"Realizing that you're falling behind in your studies, you cram more than you probably should. You Study twice, each in a branch that satisfies the activity requirements. However, the extra studying comes at a price. Until the next time you take the Study downtime activity, you're particularly tired from all the extra hours cramming; at the start of each day of adventuring, you must succeed at a DC {@flatDC 8} flat check or be {@condition fatigued} for that day."
+			]
+		},
+		{
+			"name": "Study",
+			"source": "SoT1",
+			"page": 63,
+			"traits": [
+				"downtime"
+			],
+			"requirements": "You are an initiate, attendant, or conversant.",
+			"entries": [
+				"You give everything you have to your studies, in keeping with your branch. Choose either your primary or secondary branch and attempt a skill check with one of the branch's associated skills against a standard DC of the branch's level.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "Incredible results! You ace every exam and cause a stir that all the instructors notice. Increase the level of the branch you chose by 2.",
+						"Success": "You succeed in your studies admirably. Increase the level of the branch you chose by 1.",
+						"Failure": "You need to work harder and try again. Your branch level remains the same.",
+						"Critical Failure": "You make a major mistake that requires you to perform remedial studies. The next time you would get an opportunity to attempt this activity, you must skip that opportunity to catch up."
+					}
+				}
+			]
+		},
+		{
 			"name": "Accidental Shot",
 			"source": "G&G",
 			"page": 142,
@@ -9,7 +54,7 @@
 				"unit": "action"
 			},
 			"traits": [
-				"Fortune"
+				"fortune"
 			],
 			"actionType": {
 				"archetype": [
@@ -34,12 +79,12 @@
 				"entry": "{@as 1} to {@as 3}"
 			},
 			"traits": [
-				"Summoner",
-				"Tandem"
+				"summoner",
+				"tandem"
 			],
 			"actionType": {
 				"class": [
-					"Summoner|SoM"
+					"summoner|SoM"
 				]
 			},
 			"frequency": {
@@ -171,13 +216,13 @@
 				"unit": "action"
 			},
 			"traits": [
-				"Manipulate"
+				"manipulate"
 			],
 			"actionType": {
 				"basic": true,
 				"skill": {
 					"untrained": [
-						"Medicine"
+						"medicine"
 					]
 				}
 			},
@@ -209,7 +254,7 @@
 				"unit": "action"
 			},
 			"traits": [
-				"Manipulate"
+				"manipulate"
 			],
 			"actionType": {
 				"basic": true
@@ -223,8 +268,8 @@
 			"source": "CRB",
 			"page": 565,
 			"traits": [
-				"Exploration",
-				"Manipulate"
+				"exploration",
+				"manipulate"
 			],
 			"actionType": {
 				"basic": true
@@ -269,8 +314,12 @@
 				"unit": "action"
 			},
 			"actionType": {
-				"ancestry": "Anadi|LOME",
-				"heritage": "Venomous|LOME"
+				"ancestry": [
+					"Anadi|LOME"
+				],
+				"heritage": [
+					"Venomous|LOME"
+				]
 			},
 			"frequency": {
 				"special": "a number of times per day equal to your level"
@@ -288,13 +337,13 @@
 				"unit": "action"
 			},
 			"traits": [
-				"Concentrate",
-				"Magus",
-				"Stance"
+				"concentrate",
+				"magus",
+				"stance"
 			],
 			"actionType": {
 				"class": [
-					"Magus|SoM"
+					"magus|SoM"
 				]
 			},
 			"requirements": "You used your most recent action to {@action Cast a Spell} or make a {@action Spellstrike|SoM}.",
@@ -345,7 +394,7 @@
 			},
 			"actionType": {
 				"class": [
-					"Fighter"
+					"fighter"
 				]
 			},
 			"trigger": "A creature within your reach uses a {@trait manipulate} action or a {@trait move} action, makes a ranged attack, or leaves a square during a move action it's using.",
@@ -362,8 +411,12 @@
 				"unit": "action"
 			},
 			"actionType": {
-				"ancestry": "Automaton|G&G",
-				"heritage": "Sharpshooter Automaton|G&G"
+				"ancestry": [
+					"Automaton|G&G"
+				],
+				"heritage": [
+					"Sharpshooter Automaton|G&G"
+				]
 			},
 			"entries": [
 				"You steady your body and observe the events of the battlefield to maximize the range of your next shot. You reduce the penalty for firing into your weapon's second range increment from \u20132 to 0 for the next ranged attack you make this turn. You can use this action a second time in the same turn to reduce the penalty from firing into your weapon's third range increment from \u20134 to 0 for the next ranged attack you make this turn."
@@ -389,7 +442,7 @@
 			"source": "CRB",
 			"page": 479,
 			"traits": [
-				"Exploration"
+				"exploration"
 			],
 			"actionType": {
 				"basic": true
@@ -407,13 +460,13 @@
 				"unit": "action"
 			},
 			"traits": [
-				"Move"
+				"move"
 			],
 			"actionType": {
 				"basic": true,
 				"skill": {
 					"untrained": [
-						"Acrobatics"
+						"acrobatics"
 					]
 				}
 			},
@@ -479,8 +532,12 @@
 				"unit": "reaction"
 			},
 			"actionType": {
-				"ancestry": "Shisk|LOME",
-				"heritage": "Quillcoat|LOME"
+				"ancestry": [
+					"Shisk|LOME"
+				],
+				"heritage": [
+					"Quillcoat|LOME"
+				]
 			},
 			"frequency": {
 				"unit": "day",
@@ -500,7 +557,7 @@
 				"unit": "action"
 			},
 			"traits": [
-				"Move"
+				"move"
 			],
 			"actionType": {
 				"variantrule": [
@@ -517,14 +574,14 @@
 			"source": "CRB",
 			"page": 241,
 			"traits": [
-				"Concentrate",
-				"Exploration"
+				"concentrate",
+				"exploration"
 			],
 			"actionType": {
 				"basic": true,
 				"skill": {
 					"trained": [
-						"Arcana"
+						"arcana"
 					]
 				}
 			},
@@ -544,8 +601,8 @@
 			"source": "GMG",
 			"page": 163,
 			"traits": [
-				"Downtime",
-				"Secret"
+				"downtime",
+				"secret"
 			],
 			"actionType": {
 				"variantrule": [
@@ -575,7 +632,7 @@
 				"unit": "reaction"
 			},
 			"traits": [
-				"Flourish"
+				"flourish"
 			],
 			"actionType": {
 				"variantrule": [
@@ -597,7 +654,7 @@
 				"unit": "action"
 			},
 			"traits": [
-				"Move"
+				"move"
 			],
 			"actionType": {
 				"basic": true
@@ -616,8 +673,12 @@
 				"unit": "reaction"
 			},
 			"actionType": {
-				"ancestry": "Dwarf",
-				"heritage": "Ancient-Blooded"
+				"ancestry": [
+					"Dwarf"
+				],
+				"heritage": [
+					"Ancient-Blooded"
+				]
 			},
 			"trigger": "You attempt a saving throw against a {@trait magical} effect, but you haven't rolled yet.",
 			"entries": [
@@ -633,11 +694,15 @@
 				"unit": "free"
 			},
 			"traits": [
-				"Fortune"
+				"fortune"
 			],
 			"actionType": {
-				"ancestry": "Conrasu|LOME",
-				"heritage": "Rite of Knowing|LOME"
+				"ancestry": [
+					"Conrasu|LOME"
+				],
+				"heritage": [
+					"Rite of Knowing|LOME"
+				]
 			},
 			"frequency": {
 				"unit": "day",
@@ -685,19 +750,21 @@
 				"unit": "action"
 			},
 			"traits": [
-				"Concentrate",
-				"Divine",
-				"Kitsune",
-				"Polymorph",
-				"Transmutation"
+				"concentrate",
+				"divine",
+				"kitsune",
+				"polymorph",
+				"transmutation"
 			],
 			"actionType": {
-				"ancestry": "Kitsune|LOAG"
+				"ancestry": [
+					"kitsune|LOAG"
+				]
 			},
 			"entries": [
 				"You transform into a specific alternate form determined by your heritage. If your heritage doesn't list a form, your alternate form is a tailless form, which is a {@filter common Medium humanoid ancestry|ancestries|Traits=Humanoid|Size=Medium|Rarity=Common} prevalent where you grew up (typically {@ancestry human}). This form is the same age and body type as your true form and has roughly analogous physical traits, such as hair color. Using Change Shape counts as creating a disguise for the {@action Impersonate} use of {@skill Deception}. You lose any unarmed {@action Strike||Strikes} you gained from a kitsune heritage or ancestry feat in this form. You can remain in your alternate form indefinitely, and you can shift back to your true kitsune form by using this action again."
 			],
-			"add_hash": "Kitsune"
+			"add_hash": "kitsune"
 		},
 		{
 			"name": "Change Shape",
@@ -708,10 +775,10 @@
 				"unit": "action"
 			},
 			"traits": [
-				"Concentrate",
-				"Polymorph",
-				"Primal",
-				"Transmutation"
+				"concentrate",
+				"polymorph",
+				"primal",
+				"transmutation"
 			],
 			"actionType": {
 				"versatileHeritage": "Beastkin|LOAG"
@@ -730,7 +797,7 @@
 				"unit": "action"
 			},
 			"traits": [
-				"Magical"
+				"magical"
 			],
 			"actionType": {
 				"variantrule": [
@@ -747,7 +814,7 @@
 			"source": "SoM",
 			"page": 234,
 			"traits": [
-				"Exploration"
+				"exploration"
 			],
 			"actionType": {
 				"variantrule": [
@@ -767,11 +834,11 @@
 				"unit": "action"
 			},
 			"traits": [
-				"Gunslinger"
+				"gunslinger"
 			],
 			"actionType": {
 				"class": [
-					"Gunslinger|G&G"
+					"gunslinger|G&G"
 				],
 				"subclass": [
 					"Vanguard|G&G"
@@ -791,13 +858,13 @@
 				"unit": "action"
 			},
 			"traits": [
-				"Move"
+				"move"
 			],
 			"actionType": {
 				"basic": true,
 				"skill": {
 					"untrained": [
-						"Athletics"
+						"athletics"
 					]
 				}
 			},
@@ -940,12 +1007,12 @@
 				"unit": "reaction"
 			},
 			"traits": [
-				"Concentrate",
-				"Investigator"
+				"concentrate",
+				"investigator"
 			],
 			"actionType": {
 				"class": [
-					"Investigator|APG"
+					"investigator|APG"
 				]
 			},
 			"frequency": {
@@ -967,18 +1034,18 @@
 				"unit": "action"
 			},
 			"traits": [
-				"Auditory",
-				"Concentrate",
-				"Emotion",
-				"Exploration",
-				"Linguistic",
-				"Mental"
+				"auditory",
+				"concentrate",
+				"emotion",
+				"exploration",
+				"linguistic",
+				"mental"
 			],
 			"actionType": {
 				"basic": true,
 				"skill": {
 					"untrained": [
-						"Intimidation"
+						"intimidation"
 					]
 				}
 			},
@@ -1004,14 +1071,14 @@
 				"unit": "action"
 			},
 			"traits": [
-				"Auditory",
-				"Concentrate"
+				"auditory",
+				"concentrate"
 			],
 			"actionType": {
 				"basic": true,
 				"skill": {
 					"untrained": [
-						"Nature"
+						"nature"
 					]
 				}
 			},
@@ -1038,14 +1105,14 @@
 				"unit": "action"
 			},
 			"traits": [
-				"Manipulate",
-				"Secret"
+				"manipulate",
+				"secret"
 			],
 			"actionType": {
 				"basic": true,
 				"skill": {
 					"untrained": [
-						"Stealth"
+						"stealth"
 					]
 				}
 			},
@@ -1070,7 +1137,7 @@
 				"unit": "free"
 			},
 			"traits": [
-				"Energy"
+				"energy"
 			],
 			"actionType": {
 				"item": true
@@ -1089,12 +1156,12 @@
 				"unit": "action"
 			},
 			"traits": [
-				"Finisher",
-				"Swashbuckler"
+				"finisher",
+				"swashbuckler"
 			],
 			"actionType": {
 				"class": [
-					"Swashbuckler|APG"
+					"swashbuckler|APG"
 				]
 			},
 			"entries": [
@@ -1112,15 +1179,15 @@
 			"source": "CRB",
 			"page": 252,
 			"traits": [
-				"Concentrate",
-				"Exploration",
-				"Move"
+				"concentrate",
+				"exploration",
+				"move"
 			],
 			"actionType": {
 				"basic": true,
 				"skill": {
 					"trained": [
-						"Survival"
+						"survival"
 					]
 				}
 			},
@@ -1138,11 +1205,11 @@
 				"unit": "action"
 			},
 			"traits": [
-				"Gunslinger"
+				"gunslinger"
 			],
 			"actionType": {
 				"class": [
-					"Gunslinger|G&G"
+					"gunslinger|G&G"
 				],
 				"subclass": [
 					"Sniper|G&G"
@@ -1157,14 +1224,14 @@
 			"source": "CRB",
 			"page": 244,
 			"traits": [
-				"Downtime",
-				"Manipulate"
+				"downtime",
+				"manipulate"
 			],
 			"actionType": {
 				"basic": true,
 				"skill": {
 					"trained": [
-						"Crafting"
+						"crafting"
 					]
 				}
 			},
@@ -1227,7 +1294,7 @@
 				"unit": "action"
 			},
 			"traits": [
-				"Move"
+				"move"
 			],
 			"actionType": {
 				"basic": true
@@ -1246,13 +1313,13 @@
 				"unit": "action"
 			},
 			"traits": [
-				"Mental"
+				"mental"
 			],
 			"actionType": {
 				"basic": true,
 				"skill": {
 					"untrained": [
-						"Deception"
+						"deception"
 					]
 				}
 			},
@@ -1273,14 +1340,14 @@
 			"source": "CRB",
 			"page": 251,
 			"traits": [
-				"Downtime",
-				"Secret"
+				"downtime",
+				"secret"
 			],
 			"actionType": {
 				"basic": true,
 				"skill": {
 					"trained": [
-						"Society"
+						"society"
 					]
 				}
 			},
@@ -1307,16 +1374,16 @@
 				"unit": "free"
 			},
 			"traits": [
-				"Rogue"
+				"rogue"
 			],
 			"actionType": {
 				"class": [
-					"Rogue"
+					"rogue"
 				]
 			},
 			"trigger": "Your {@action Strike} hits a {@condition flat-footed} creature and deals damage.",
 			"entries": [
-				"You apply one of the following debilitations, which lasts until the end of your next turn. ",
+				"You apply one of the following debilitations, which lasts until the end of your next turn.",
 				{
 					"type": "list",
 					"items": [
@@ -1335,7 +1402,7 @@
 				"unit": "reaction"
 			},
 			"traits": [
-				"Misfortune"
+				"misfortune"
 			],
 			"actionType": {
 				"variantrule": [
@@ -1353,9 +1420,9 @@
 			"source": "CRB",
 			"page": 234,
 			"traits": [
-				"Concentrate",
-				"Exploration",
-				"Secret"
+				"concentrate",
+				"exploration",
+				"secret"
 			],
 			"actionType": {
 				"basic": true
@@ -1413,7 +1480,7 @@
 			"source": "CRB",
 			"page": 479,
 			"traits": [
-				"Exploration"
+				"exploration"
 			],
 			"actionType": {
 				"basic": true
@@ -1448,16 +1515,17 @@
 				"unit": "action"
 			},
 			"traits": [
-				"Auditory",
-				"Concentrate",
-				"Emotion",
-				"Mental"
+				"auditory",
+				"concentrate",
+				"emotion",
+				"fear",
+				"mental"
 			],
 			"actionType": {
 				"basic": true,
 				"skill": {
 					"untrained": [
-						"Intimidation"
+						"intimidation"
 					]
 				}
 			},
@@ -1481,12 +1549,12 @@
 				"unit": "reaction"
 			},
 			"traits": [
-				"Uncommon",
-				"Champion"
+				"uncommon",
+				"champion"
 			],
 			"actionType": {
 				"class": [
-					"Champion"
+					"champion"
 				],
 				"subclass": [
 					"Antipaladin|APG"
@@ -1503,8 +1571,8 @@
 			"source": "CRB",
 			"page": 479,
 			"traits": [
-				"Exploration",
-				"Concentrate"
+				"exploration",
+				"concentrate"
 			],
 			"actionType": {
 				"basic": true
@@ -1522,13 +1590,13 @@
 				"unit": "action"
 			},
 			"traits": [
-				"Concentrate",
-				"Fortune",
-				"Investigator"
+				"concentrate",
+				"fortune",
+				"investigator"
 			],
 			"actionType": {
 				"class": [
-					"Investigator|APG"
+					"investigator|APG"
 				]
 			},
 			"frequency": {
@@ -1551,13 +1619,13 @@
 				"unit": "action"
 			},
 			"traits": [
-				"Manipulate"
+				"manipulate"
 			],
 			"actionType": {
 				"basic": true,
 				"skill": {
 					"trained": [
-						"Thievery"
+						"thievery"
 					]
 				}
 			},
@@ -1584,13 +1652,13 @@
 				"unit": "action"
 			},
 			"traits": [
-				"Attack"
+				"attack"
 			],
 			"actionType": {
 				"basic": true,
 				"skill": {
 					"trained": [
-						"Athletics"
+						"athletics"
 					]
 				}
 			},
@@ -1612,8 +1680,8 @@
 			"source": "GMG",
 			"page": 151,
 			"traits": [
-				"Concentrate",
-				"Secret"
+				"concentrate",
+				"secret"
 			],
 			"actionType": {
 				"variantrule": [
@@ -1642,7 +1710,7 @@
 				"unit": "action"
 			},
 			"traits": [
-				"Concentrate"
+				"concentrate"
 			],
 			"actionType": {
 				"basic": true
@@ -1660,13 +1728,13 @@
 				"number": 2
 			},
 			"traits": [
-				"Abjuration",
-				"Magical",
-				"Spellshot"
+				"abjuration",
+				"magical",
+				"spellshot"
 			],
 			"actionType": {
 				"class": [
-					"Gunslinger|G&G"
+					"gunslinger|G&G"
 				],
 				"archetype": [
 					"Spellshot|G&G"
@@ -1685,12 +1753,12 @@
 				"unit": "free"
 			},
 			"traits": [
-				"Arcane",
-				"Wizard"
+				"arcane",
+				"wizard"
 			],
 			"actionType": {
 				"class": [
-					"Wizard"
+					"wizard"
 				]
 			},
 			"frequency": {
@@ -1710,11 +1778,11 @@
 				"unit": "action"
 			},
 			"traits": [
-				"Gunslinger"
+				"gunslinger"
 			],
 			"actionType": {
 				"class": [
-					"Gunslinger|G&G"
+					"gunslinger|G&G"
 				],
 				"subclass": [
 					"Drifter|G&G"
@@ -1734,7 +1802,7 @@
 				"entry": "(Varies)"
 			},
 			"traits": [
-				"Move"
+				"move"
 			],
 			"actionType": {
 				"variantrule": [
@@ -1758,7 +1826,7 @@
 				"unit": "action"
 			},
 			"traits": [
-				"Move"
+				"move"
 			],
 			"actionType": {
 				"basic": true
@@ -1776,7 +1844,7 @@
 				"unit": "reaction"
 			},
 			"traits": [
-				"Magical"
+				"magical"
 			],
 			"actionType": {
 				"variantrule": [
@@ -1794,7 +1862,7 @@
 			"source": "CRB",
 			"page": 236,
 			"traits": [
-				"Downtime"
+				"downtime"
 			],
 			"actionType": {
 				"basic": true
@@ -1858,8 +1926,12 @@
 				"unit": "action"
 			},
 			"actionType": {
-				"ancestry": "Dwarf",
-				"heritage": "Elemental Heart|LOCG"
+				"ancestry": [
+					"Dwarf"
+				],
+				"heritage": [
+					"Elemental Heart|LOCG"
+				]
 			},
 			"frequency": {
 				"unit": "day",
@@ -1878,13 +1950,13 @@
 				"number": 1
 			},
 			"traits": [
-				"Evocation",
-				"Magical",
-				"Spellshot"
+				"evocation",
+				"magical",
+				"spellshot"
 			],
 			"actionType": {
 				"class": [
-					"Gunslinger|G&G"
+					"gunslinger|G&G"
 				],
 				"archetype": [
 					"Spellshot|G&G"
@@ -1904,13 +1976,13 @@
 				"number": 1
 			},
 			"traits": [
-				"Evocation",
-				"Magical",
-				"Spellshot"
+				"evocation",
+				"magical",
+				"spellshot"
 			],
 			"actionType": {
 				"class": [
-					"Gunslinger|G&G"
+					"gunslinger|G&G"
 				],
 				"archetype": [
 					"Spellshot|G&G"
@@ -1930,7 +2002,7 @@
 				"unit": "action"
 			},
 			"traits": [
-				"Attack"
+				"attack"
 			],
 			"actionType": {
 				"basic": true
@@ -1956,12 +2028,12 @@
 				"unit": "free"
 			},
 			"traits": [
-				"Investigator",
-				"Manipulate"
+				"investigator",
+				"manipulate"
 			],
 			"actionType": {
 				"class": [
-					"Investigator|APG"
+					"investigator|APG"
 				],
 				"subclass": [
 					"Empiricism|APG"
@@ -1985,14 +2057,14 @@
 				"unit": "action"
 			},
 			"traits": [
-				"Fire",
-				"Unstable",
-				"Inventor",
-				"Manipulate"
+				"fire",
+				"unstable",
+				"inventor",
+				"manipulate"
 			],
 			"actionType": {
 				"class": [
-					"Inventor|G&G"
+					"inventor|G&G"
 				]
 			},
 			"entries": [
@@ -2010,13 +2082,13 @@
 				"unit": "action"
 			},
 			"traits": [
-				"Mental"
+				"mental"
 			],
 			"actionType": {
 				"basic": true,
 				"skill": {
 					"trained": [
-						"Deception"
+						"deception"
 					]
 				}
 			},
@@ -2042,11 +2114,11 @@
 				"unit": "action"
 			},
 			"traits": [
-				"Gunslinger"
+				"gunslinger"
 			],
 			"actionType": {
 				"class": [
-					"Gunslinger|G&G"
+					"gunslinger|G&G"
 				],
 				"subclass": [
 					"Drifter|G&G"
@@ -2066,12 +2138,12 @@
 				"unit": "action"
 			},
 			"traits": [
-				"Flourish",
-				"Monk"
+				"flourish",
+				"monk"
 			],
 			"actionType": {
 				"class": [
-					"Monk"
+					"monk"
 				]
 			},
 			"entries": [
@@ -2087,7 +2159,7 @@
 				"unit": "action"
 			},
 			"traits": [
-				"Move"
+				"move"
 			],
 			"actionType": {
 				"basic": true
@@ -2102,10 +2174,10 @@
 			"source": "CRB",
 			"page": 479,
 			"traits": [
-				"Auditory",
-				"Concentrate",
-				"Exploration",
-				"Visual"
+				"auditory",
+				"concentrate",
+				"exploration",
+				"visual"
 			],
 			"actionType": {
 				"basic": true
@@ -2123,13 +2195,13 @@
 				"unit": "action"
 			},
 			"traits": [
-				"Attack"
+				"attack"
 			],
 			"actionType": {
 				"basic": true,
 				"skill": {
 					"untrained": [
-						"Athletics"
+						"athletics"
 					]
 				}
 			},
@@ -2189,8 +2261,8 @@
 			"source": "GMG",
 			"page": 163,
 			"traits": [
-				"Downtime",
-				"Secret"
+				"downtime",
+				"secret"
 			],
 			"actionType": {
 				"variantrule": [
@@ -2227,7 +2299,7 @@
 			"source": "GMG",
 			"page": 163,
 			"traits": [
-				"Downtime"
+				"downtime"
 			],
 			"actionType": {
 				"variantrule": [
@@ -2252,14 +2324,14 @@
 			"source": "CRB",
 			"page": 246,
 			"traits": [
-				"Exploration",
-				"Secret"
+				"exploration",
+				"secret"
 			],
 			"actionType": {
 				"basic": true,
 				"skill": {
 					"untrained": [
-						"Diplomacy"
+						"diplomacy"
 					]
 				}
 			},
@@ -2322,12 +2394,12 @@
 				"unit": "action"
 			},
 			"traits": [
-				"Gunslinger",
-				"Flourish"
+				"gunslinger",
+				"flourish"
 			],
 			"actionType": {
 				"class": [
-					"Gunslinger|G&G"
+					"gunslinger|G&G"
 				],
 				"subclass": [
 					"Sniper|G&G"
@@ -2346,11 +2418,11 @@
 				"unit": "reaction"
 			},
 			"traits": [
-				"Champion"
+				"champion"
 			],
 			"actionType": {
 				"class": [
-					"Champion"
+					"champion"
 				],
 				"subclass": [
 					"Redeemer"
@@ -2373,8 +2445,8 @@
 			"source": "GMG",
 			"page": 163,
 			"traits": [
-				"Downtime",
-				"Secret"
+				"downtime",
+				"secret"
 			],
 			"actionType": {
 				"variantrule": [
@@ -2428,13 +2500,13 @@
 				"unit": "action"
 			},
 			"traits": [
-				"Attack"
+				"attack"
 			],
 			"actionType": {
 				"basic": true,
 				"skill": {
 					"untrained": [
-						"Athletics"
+						"athletics"
 					]
 				}
 			},
@@ -2461,16 +2533,16 @@
 				"unit": "action"
 			},
 			"traits": [
-				"Gunslinger",
-				"Auditory",
-				"Emotion",
-				"Fear",
-				"Mental",
-				"Linguistic"
+				"gunslinger",
+				"auditory",
+				"emotion",
+				"fear",
+				"mental",
+				"linguistic"
 			],
 			"actionType": {
 				"class": [
-					"Gunslinger|G&G"
+					"gunslinger|G&G"
 				],
 				"subclass": [
 					"Pistolero|G&G"
@@ -2498,13 +2570,13 @@
 				"unit": "action"
 			},
 			"traits": [
-				"Secret"
+				"secret"
 			],
 			"actionType": {
 				"basic": true,
 				"skill": {
 					"untrained": [
-						"Stealth"
+						"stealth"
 					]
 				}
 			},
@@ -2534,7 +2606,7 @@
 				"basic": true,
 				"skill": {
 					"untrained": [
-						"Athletics"
+						"athletics"
 					]
 				}
 			},
@@ -2569,12 +2641,12 @@
 				"unit": "action"
 			},
 			"traits": [
-				"Concentrate",
-				"Ranger"
+				"concentrate",
+				"ranger"
 			],
 			"actionType": {
 				"class": [
-					"Ranger"
+					"ranger"
 				]
 			},
 			"entries": [
@@ -2588,8 +2660,8 @@
 			"source": "CRB",
 			"page": 480,
 			"traits": [
-				"Exploration",
-				"Move"
+				"exploration",
+				"move"
 			],
 			"actionType": {
 				"basic": true
@@ -2607,15 +2679,15 @@
 				"unit": "minute"
 			},
 			"traits": [
-				"Concentrate",
-				"Exploration",
-				"Secret"
+				"concentrate",
+				"exploration",
+				"secret"
 			],
 			"actionType": {
 				"basic": true,
 				"skill": {
 					"trained": [
-						"Crafting"
+						"crafting"
 					]
 				}
 			},
@@ -2637,9 +2709,9 @@
 			"source": "CRB",
 			"page": 238,
 			"traits": [
-				"Concentrate",
-				"Exploration",
-				"Secret"
+				"concentrate",
+				"exploration",
+				"secret"
 			],
 			"actionType": {
 				"basic": true
@@ -2700,16 +2772,16 @@
 			"source": "CRB",
 			"page": 245,
 			"traits": [
-				"Concentrate",
-				"Exploration",
-				"Manipulate",
-				"Secret"
+				"concentrate",
+				"exploration",
+				"manipulate",
+				"secret"
 			],
 			"actionType": {
 				"basic": true,
 				"skill": {
 					"untrained": [
-						"Deception"
+						"deception"
 					]
 				}
 			},
@@ -2731,8 +2803,8 @@
 			"source": "GMG",
 			"page": 151,
 			"traits": [
-				"Concentrate",
-				"Linguistic"
+				"concentrate",
+				"linguistic"
 			],
 			"actionType": {
 				"variantrule": [
@@ -2761,7 +2833,7 @@
 				"unit": "action"
 			},
 			"traits": [
-				"Manipulate"
+				"manipulate"
 			],
 			"actionType": {
 				"basic": true
@@ -2779,11 +2851,11 @@
 				"unit": "free"
 			},
 			"traits": [
-				"Gunslinger"
+				"gunslinger"
 			],
 			"actionType": {
 				"class": [
-					"Gunslinger|G&G"
+					"gunslinger|G&G"
 				],
 				"subclass": [
 					"Drifter|G&G"
@@ -2816,8 +2888,8 @@
 			"source": "CRB",
 			"page": 480,
 			"traits": [
-				"Concentrate",
-				"Exploration"
+				"concentrate",
+				"exploration"
 			],
 			"actionType": {
 				"basic": true
@@ -2835,8 +2907,12 @@
 				"unit": "reaction"
 			},
 			"actionType": {
-				"ancestry": "Kitsune|LOAG",
-				"heritage": "Dark Fields|LOAG"
+				"ancestry": [
+					"kitsune|LOAG"
+				],
+				"heritage": [
+					"Dark Fields|LOAG"
+				]
 			},
 			"frequency": {
 				"unit": "hour",
@@ -2856,8 +2932,12 @@
 				"unit": "reaction"
 			},
 			"actionType": {
-				"ancestry": "Kitsune|LOAG",
-				"heritage": "Celestial Envoy|LOAG"
+				"ancestry": [
+					"kitsune|LOAG"
+				],
+				"heritage": [
+					"Celestial Envoy|LOAG"
+				]
 			},
 			"trigger": "You attempt a saving throw against a {@trait divine} effect, but you haven't rolled yet.",
 			"entries": [
@@ -2873,16 +2953,16 @@
 				"unit": "reaction"
 			},
 			"traits": [
-				"Uncommon",
-				"Champion",
-				"Divine",
-				"Emotion",
-				"Enchantment",
-				"Mental"
+				"uncommon",
+				"champion",
+				"divine",
+				"emotion",
+				"enchantment",
+				"mental"
 			],
 			"actionType": {
 				"class": [
-					"Champion"
+					"champion"
 				],
 				"subclass": [
 					"Tyrant|APG"
@@ -2923,8 +3003,8 @@
 			"source": "CRB",
 			"page": 238,
 			"traits": [
-				"Concentrate",
-				"Exploration"
+				"concentrate",
+				"exploration"
 			],
 			"actionType": {
 				"basic": true
@@ -2958,9 +3038,9 @@
 			"source": "SoM",
 			"page": 245,
 			"traits": [
-				"Rare",
-				"Downtime",
-				"Secret"
+				"rare",
+				"downtime",
+				"secret"
 			],
 			"actionType": {
 				"variantrule": [
@@ -2989,11 +3069,11 @@
 				"unit": "reaction"
 			},
 			"traits": [
-				"Champion"
+				"champion"
 			],
 			"actionType": {
 				"class": [
-					"Champion"
+					"champion"
 				],
 				"subclass": [
 					"Liberator|APG"
@@ -3014,17 +3094,17 @@
 				"entry": "at least 1 Round"
 			},
 			"traits": [
-				"Auditory",
-				"Concentrate",
-				"Linguistic",
-				"Mental",
-				"Secret"
+				"auditory",
+				"concentrate",
+				"linguistic",
+				"mental",
+				"secret"
 			],
 			"actionType": {
 				"basic": true,
 				"skill": {
 					"untrained": [
-						"Deception"
+						"deception"
 					]
 				}
 			},
@@ -3049,11 +3129,11 @@
 				"unit": "free"
 			},
 			"traits": [
-				"Gunslinger"
+				"gunslinger"
 			],
 			"actionType": {
 				"class": [
-					"Gunslinger|G&G"
+					"gunslinger|G&G"
 				],
 				"subclass": [
 					"Vanguard|G&G"
@@ -3076,7 +3156,7 @@
 				"basic": true,
 				"skill": {
 					"untrained": [
-						"Athletics"
+						"athletics"
 					]
 				}
 			},
@@ -3098,7 +3178,7 @@
 			"source": "CRB",
 			"page": 481,
 			"traits": [
-				"Downtime"
+				"downtime"
 			],
 			"actionType": {
 				"basic": true
@@ -3134,17 +3214,17 @@
 			"source": "CRB",
 			"page": 246,
 			"traits": [
-				"Auditory",
-				"Concentrate",
-				"Exploration",
-				"Linguistic",
-				"Mental"
+				"auditory",
+				"concentrate",
+				"exploration",
+				"linguistic",
+				"mental"
 			],
 			"actionType": {
 				"basic": true,
 				"skill": {
 					"untrained": [
-						"Diplomacy"
+						"diplomacy"
 					]
 				}
 			},
@@ -3190,13 +3270,13 @@
 				"unit": "action"
 			},
 			"traits": [
-				"Move"
+				"move"
 			],
 			"actionType": {
 				"basic": true,
 				"skill": {
 					"trained": [
-						"Acrobatics"
+						"acrobatics"
 					]
 				}
 			},
@@ -3256,15 +3336,15 @@
 				"unit": "action"
 			},
 			"traits": [
-				"Concentrate",
-				"Conjuration",
-				"Manipulate",
-				"Summoner",
-				"Teleportation"
+				"concentrate",
+				"conjuration",
+				"manipulate",
+				"summoner",
+				"teleportation"
 			],
 			"actionType": {
 				"class": [
-					"Summoner|SoM"
+					"summoner|SoM"
 				]
 			},
 			"entries": [
@@ -3278,7 +3358,7 @@
 			"source": "GMG",
 			"page": 173,
 			"traits": [
-				"Concentrate"
+				"concentrate"
 			],
 			"actionType": {
 				"variantrule": [
@@ -3298,12 +3378,12 @@
 				"unit": "free"
 			},
 			"traits": [
-				"Incapacitation",
-				"Rogue"
+				"incapacitation",
+				"rogue"
 			],
 			"actionType": {
 				"class": [
-					"Rogue"
+					"rogue"
 				]
 			},
 			"frequency": {
@@ -3333,11 +3413,11 @@
 				"unit": "free"
 			},
 			"traits": [
-				"Barbarian"
+				"barbarian"
 			],
 			"actionType": {
 				"class": [
-					"Barbarian"
+					"barbarian"
 				]
 			},
 			"trigger": "You use the {@action Rage} action on your turn.",
@@ -3354,7 +3434,7 @@
 				"unit": "action"
 			},
 			"traits": [
-				"Move"
+				"move"
 			],
 			"actionType": {
 				"basic": true
@@ -3372,11 +3452,11 @@
 				"unit": "free"
 			},
 			"traits": [
-				"Alchemist"
+				"alchemist"
 			],
 			"actionType": {
 				"class": [
-					"Alchemist"
+					"alchemist"
 				],
 				"subclass": [
 					"Mutagenist"
@@ -3399,11 +3479,11 @@
 				"unit": "free"
 			},
 			"traits": [
-				"Gunslinger"
+				"gunslinger"
 			],
 			"actionType": {
 				"class": [
-					"Gunslinger|G&G"
+					"gunslinger|G&G"
 				],
 				"subclass": [
 					"Sniper|G&G"
@@ -3423,11 +3503,11 @@
 				"unit": "reaction"
 			},
 			"traits": [
-				"Swashbuckler"
+				"swashbuckler"
 			],
 			"actionType": {
 				"class": [
-					"Swashbuckler|APG"
+					"swashbuckler|APG"
 				]
 			},
 			"trigger": "A foe within your reach critically fails a {@action Strike} against you.",
@@ -3444,12 +3524,12 @@
 				"unit": "action"
 			},
 			"traits": [
-				"Inventor",
-				"Manipulate"
+				"inventor",
+				"manipulate"
 			],
 			"actionType": {
 				"class": [
-					"Inventor|G&G"
+					"inventor|G&G"
 				]
 			},
 			"frequency": {
@@ -3479,13 +3559,13 @@
 				"unit": "action"
 			},
 			"traits": [
-				"Manipulate"
+				"manipulate"
 			],
 			"actionType": {
 				"basic": true,
 				"skill": {
 					"untrained": [
-						"Thievery"
+						"thievery"
 					]
 				}
 			},
@@ -3509,13 +3589,13 @@
 				"unit": "action"
 			},
 			"traits": [
-				"Concentrate"
+				"concentrate"
 			],
 			"actionType": {
 				"basic": true,
 				"skill": {
 					"untrained": [
-						"Performance"
+						"performance"
 					]
 				}
 			},
@@ -3580,13 +3660,13 @@
 				"unit": "action"
 			},
 			"traits": [
-				"Manipulate"
+				"manipulate"
 			],
 			"actionType": {
 				"basic": true,
 				"skill": {
 					"trained": [
-						"Thievery"
+						"thievery"
 					]
 				}
 			},
@@ -3612,11 +3692,11 @@
 				"unit": "reaction"
 			},
 			"traits": [
-				"Gunslinger"
+				"gunslinger"
 			],
 			"actionType": {
 				"class": [
-					"Gunslinger|G&G"
+					"gunslinger|G&G"
 				],
 				"subclass": [
 					"Pistolero|G&G"
@@ -3637,9 +3717,9 @@
 				"unit": "action"
 			},
 			"traits": [
-				"Auditory",
-				"Manipulate",
-				"Visual"
+				"auditory",
+				"manipulate",
+				"visual"
 			],
 			"actionType": {
 				"basic": true
@@ -3658,15 +3738,15 @@
 				"unit": "action"
 			},
 			"traits": [
-				"Auditory",
-				"Concentrate",
-				"Investigator",
-				"Linguistic",
-				"Mental"
+				"auditory",
+				"concentrate",
+				"investigator",
+				"linguistic",
+				"mental"
 			],
 			"actionType": {
 				"class": [
-					"Investigator|APG"
+					"investigator|APG"
 				],
 				"subclass": [
 					"Interrogation|APG"
@@ -3695,13 +3775,13 @@
 			"source": "APG",
 			"page": 56,
 			"traits": [
-				"Concentrate",
-				"Exploration",
-				"Investigator"
+				"concentrate",
+				"exploration",
+				"investigator"
 			],
 			"actionType": {
 				"class": [
-					"Investigator|APG"
+					"investigator|APG"
 				]
 			},
 			"frequency": {
@@ -3724,12 +3804,12 @@
 				"unit": "action"
 			},
 			"traits": [
-				"Alchemist",
-				"Manipulate"
+				"alchemist",
+				"manipulate"
 			],
 			"actionType": {
 				"class": [
-					"Alchemist"
+					"alchemist"
 				]
 			},
 			"cost": "1 batch of infused reagents",
@@ -3747,12 +3827,12 @@
 				"unit": "action"
 			},
 			"traits": [
-				"Investigator",
-				"Manipulate"
+				"investigator",
+				"manipulate"
 			],
 			"actionType": {
 				"class": [
-					"Investigator|APG"
+					"investigator|APG"
 				],
 				"subclass": [
 					"Alchemical Sciences|APG"
@@ -3773,11 +3853,11 @@
 				"unit": "action"
 			},
 			"traits": [
-				"Gunslinger"
+				"gunslinger"
 			],
 			"actionType": {
 				"class": [
-					"Gunslinger|G&G"
+					"gunslinger|G&G"
 				],
 				"subclass": [
 					"Pistolero|G&G"
@@ -3796,14 +3876,14 @@
 				"unit": "action"
 			},
 			"traits": [
-				"Barbarian",
-				"Concentrate",
-				"Emotion",
-				"Mental"
+				"barbarian",
+				"concentrate",
+				"emotion",
+				"mental"
 			],
 			"actionType": {
 				"class": [
-					"Barbarian"
+					"barbarian"
 				]
 			},
 			"requirements": "You aren't {@condition fatigued} or raging.",
@@ -3841,11 +3921,11 @@
 			"source": "GMG",
 			"page": 201,
 			"traits": [
-				"Auditory",
-				"Emotion",
-				"Exploration",
-				"Linguistic",
-				"Mental"
+				"auditory",
+				"emotion",
+				"exploration",
+				"linguistic",
+				"mental"
 			],
 			"actionType": {
 				"variantrule": [
@@ -3867,7 +3947,7 @@
 				"unit": "action"
 			},
 			"traits": [
-				"Concentrate"
+				"concentrate"
 			],
 			"actionType": {
 				"basic": true
@@ -3886,14 +3966,14 @@
 				"number": 1
 			},
 			"traits": [
-				"Conjuration",
-				"Magical",
-				"Spellshot",
-				"Teleportation"
+				"conjuration",
+				"magical",
+				"spellshot",
+				"teleportation"
 			],
 			"actionType": {
 				"class": [
-					"Gunslinger|G&G"
+					"gunslinger|G&G"
 				],
 				"archetype": [
 					"Spellshot|G&G"
@@ -3913,8 +3993,8 @@
 				"unit": "action"
 			},
 			"traits": [
-				"Concentrate",
-				"Secret"
+				"concentrate",
+				"secret"
 			],
 			"actionType": {
 				"basic": true
@@ -4114,7 +4194,7 @@
 			"source": "GMG",
 			"page": 173,
 			"traits": [
-				"Concentrate"
+				"concentrate"
 			],
 			"actionType": {
 				"variantrule": [
@@ -4136,8 +4216,8 @@
 				"entry": "10 minutes"
 			},
 			"traits": [
-				"Concentrate",
-				"Exploration"
+				"concentrate",
+				"exploration"
 			],
 			"actionType": {
 				"basic": true
@@ -4156,7 +4236,7 @@
 				"unit": "free"
 			},
 			"traits": [
-				"Manipulate"
+				"manipulate"
 			],
 			"actionType": {
 				"basic": true
@@ -4175,11 +4255,11 @@
 				"unit": "action"
 			},
 			"traits": [
-				"Gunslinger"
+				"gunslinger"
 			],
 			"actionType": {
 				"class": [
-					"Gunslinger|G&G"
+					"gunslinger|G&G"
 				],
 				"subclass": [
 					"Drifter|G&G"
@@ -4200,14 +4280,14 @@
 				"entry": "10 minutes"
 			},
 			"traits": [
-				"Exploration",
-				"Manipulate"
+				"exploration",
+				"manipulate"
 			],
 			"actionType": {
 				"basic": true,
 				"skill": {
 					"untrained": [
-						"Crafting"
+						"crafting"
 					]
 				}
 			},
@@ -4229,8 +4309,8 @@
 			"source": "CRB",
 			"page": 480,
 			"traits": [
-				"Concentrate",
-				"Exploration"
+				"concentrate",
+				"exploration"
 			],
 			"actionType": {
 				"basic": true
@@ -4249,16 +4329,16 @@
 				"unit": "action"
 			},
 			"traits": [
-				"Auditory",
-				"Concentrate",
-				"Linguistic",
-				"Mental"
+				"auditory",
+				"concentrate",
+				"linguistic",
+				"mental"
 			],
 			"actionType": {
 				"basic": true,
 				"skill": {
 					"untrained": [
-						"Diplomacy"
+						"diplomacy"
 					]
 				}
 			},
@@ -4280,9 +4360,9 @@
 			"source": "GMG",
 			"page": 154,
 			"traits": [
-				"Concentrate",
-				"Exploration",
-				"Linguistic"
+				"concentrate",
+				"exploration",
+				"linguistic"
 			],
 			"actionType": {
 				"variantrule": [
@@ -4306,7 +4386,7 @@
 			"source": "CRB",
 			"page": 481,
 			"traits": [
-				"Downtime"
+				"downtime"
 			],
 			"actionType": {
 				"basic": true
@@ -4371,11 +4451,11 @@
 				"unit": "reaction"
 			},
 			"traits": [
-				"Champion"
+				"champion"
 			],
 			"actionType": {
 				"class": [
-					"Champion"
+					"champion"
 				],
 				"subclass": [
 					"Paladin|APG"
@@ -4395,8 +4475,8 @@
 				"unit": "action"
 			},
 			"traits": [
-				"Move",
-				"Reckless"
+				"move",
+				"reckless"
 			],
 			"actionType": {
 				"variantrule": [
@@ -4414,8 +4494,8 @@
 			"source": "CRB",
 			"page": 480,
 			"traits": [
-				"Concentrate",
-				"Exploration"
+				"concentrate",
+				"exploration"
 			],
 			"actionType": {
 				"basic": true
@@ -4429,8 +4509,8 @@
 			"source": "GMG",
 			"page": 163,
 			"traits": [
-				"Downtime",
-				"Secret"
+				"downtime",
+				"secret"
 			],
 			"actionType": {
 				"variantrule": [
@@ -4454,8 +4534,8 @@
 			"source": "CRB",
 			"page": 480,
 			"traits": [
-				"Concentrate",
-				"Exploration"
+				"concentrate",
+				"exploration"
 			],
 			"actionType": {
 				"basic": true
@@ -4469,7 +4549,7 @@
 			"source": "GMG",
 			"page": 163,
 			"traits": [
-				"Downtime"
+				"downtime"
 			],
 			"actionType": {
 				"variantrule": [
@@ -4496,8 +4576,8 @@
 				"unit": "action"
 			},
 			"traits": [
-				"Concentrate",
-				"Secret"
+				"concentrate",
+				"secret"
 			],
 			"actionType": {
 				"basic": true
@@ -4524,12 +4604,12 @@
 				"unit": "reaction"
 			},
 			"traits": [
-				"Uncommon",
-				"Champion"
+				"uncommon",
+				"champion"
 			],
 			"actionType": {
 				"class": [
-					"Champion"
+					"champion"
 				],
 				"subclass": [
 					"Desecrator|APG"
@@ -4546,14 +4626,14 @@
 			"source": "CRB",
 			"page": 252,
 			"traits": [
-				"Exploration",
-				"Secret"
+				"exploration",
+				"secret"
 			],
 			"actionType": {
 				"basic": true,
 				"skill": {
 					"untrained": [
-						"Survival"
+						"survival"
 					]
 				}
 			},
@@ -4616,8 +4696,8 @@
 				"unit": "action"
 			},
 			"traits": [
-				"Concentrate",
-				"Secret"
+				"concentrate",
+				"secret"
 			],
 			"actionType": {
 				"basic": true
@@ -4663,14 +4743,14 @@
 				"unit": "action"
 			},
 			"traits": [
-				"Concentrate",
-				"Divination",
-				"Scrying",
-				"Summoner"
+				"concentrate",
+				"divination",
+				"scrying",
+				"summoner"
 			],
 			"actionType": {
 				"class": [
-					"Summoner|SoM"
+					"summoner|SoM"
 				]
 			},
 			"requirements": "Your eidolon is manifested.",
@@ -4688,13 +4768,13 @@
 				"unit": "action"
 			},
 			"traits": [
-				"Attack"
+				"attack"
 			],
 			"actionType": {
 				"basic": true,
 				"skill": {
 					"untrained": [
-						"Athletics"
+						"athletics"
 					]
 				}
 			},
@@ -4729,12 +4809,12 @@
 				"unit": "action"
 			},
 			"traits": [
-				"Gunslinger",
-				"Flourish"
+				"gunslinger",
+				"flourish"
 			],
 			"actionType": {
 				"class": [
-					"Gunslinger|G&G"
+					"gunslinger|G&G"
 				],
 				"subclass": [
 					"Vanguard|G&G"
@@ -4755,14 +4835,14 @@
 				"unit": "action"
 			},
 			"traits": [
-				"Move",
-				"Secret"
+				"move",
+				"secret"
 			],
 			"actionType": {
 				"basic": true,
 				"skill": {
 					"untrained": [
-						"Stealth"
+						"stealth"
 					]
 				}
 			},
@@ -4792,11 +4872,11 @@
 				"unit": "action"
 			},
 			"traits": [
-				"Magus"
+				"magus"
 			],
 			"actionType": {
 				"class": [
-					"Magus|SoM"
+					"magus|SoM"
 				]
 			},
 			"frequency": {
@@ -4804,7 +4884,7 @@
 			},
 			"entries": [
 				"You channel a spell into a punch or sword thrust to deliver a combined attack. You {@action Cast a Spell} that takes 1 or 2 actions to cast and requires a spell attack roll. The effects of the spell don't occur immediately but are imbued into your attack instead. Make a melee Strike with a weapon or unarmed attack. Your spell is coupled with your attack, using your attack roll result to determine the effects of both the Strike and the spell. This counts as two attacks for your multiple attack penalty, but you don't apply the penalty until after you've completed the Spellstrike. The infusion of spell energy grants your {@action Strike} the {@trait arcane} trait, making it {@trait magical}.",
-				"After you use Spellstrike, you can't do so again until you recharge your Spellstrike as a single action, which has the {@trait concentrate} trait. You also recharge your Spellstrike when you cast a {@filter conflux spell|spells||Classes=Magus} that takes at least 1 action to cast; casting a focus spell of another type doesn't recharge your Spellstrike."
+				"After you use Spellstrike, you can't do so again until you recharge your Spellstrike as a single action, which has the {@trait concentrate} trait. You also recharge your Spellstrike when you cast a {@filter conflux spell|spells||Class=Magus} that takes at least 1 action to cast; casting a focus spell of another type doesn't recharge your Spellstrike."
 			],
 			"info": [
 				{
@@ -4832,11 +4912,11 @@
 				"unit": "action"
 			},
 			"traits": [
-				"Gunslinger"
+				"gunslinger"
 			],
 			"actionType": {
 				"class": [
-					"Gunslinger|G&G"
+					"gunslinger|G&G"
 				],
 				"subclass": [
 					"Vanguard|G&G"
@@ -4852,14 +4932,14 @@
 			"source": "CRB",
 			"page": 241,
 			"traits": [
-				"Exploration",
-				"Move"
+				"exploration",
+				"move"
 			],
 			"actionType": {
 				"basic": true,
 				"skill": {
 					"trained": [
-						"Acrobatics"
+						"acrobatics"
 					]
 				}
 			},
@@ -4908,7 +4988,7 @@
 				"unit": "action"
 			},
 			"traits": [
-				"Move"
+				"move"
 			],
 			"actionType": {
 				"basic": true
@@ -4926,13 +5006,13 @@
 				"unit": "action"
 			},
 			"traits": [
-				"Manipulate"
+				"manipulate"
 			],
 			"actionType": {
 				"basic": true,
 				"skill": {
 					"untrained": [
-						"Thievery"
+						"thievery"
 					]
 				}
 			},
@@ -4958,7 +5038,7 @@
 				"unit": "action"
 			},
 			"traits": [
-				"Move"
+				"move"
 			],
 			"actionType": {
 				"basic": true
@@ -4978,7 +5058,7 @@
 				"unit": "action"
 			},
 			"traits": [
-				"Manipulate"
+				"manipulate"
 			],
 			"actionType": {
 				"variantrule": [
@@ -4999,7 +5079,7 @@
 				"unit": "action"
 			},
 			"traits": [
-				"Move"
+				"move"
 			],
 			"actionType": {
 				"basic": true
@@ -5017,7 +5097,7 @@
 				"unit": "action"
 			},
 			"traits": [
-				"Attack"
+				"attack"
 			],
 			"actionType": {
 				"basic": true
@@ -5038,7 +5118,7 @@
 			"source": "CRB",
 			"page": 240,
 			"traits": [
-				"Downtime"
+				"downtime"
 			],
 			"actionType": {
 				"basic": true
@@ -5106,7 +5186,7 @@
 				"unit": "action"
 			},
 			"traits": [
-				"Concentrate"
+				"concentrate"
 			],
 			"actionType": {
 				"basic": true
@@ -5143,13 +5223,13 @@
 				"unit": "action"
 			},
 			"traits": [
-				"Move"
+				"move"
 			],
 			"actionType": {
 				"basic": true,
 				"skill": {
 					"untrained": [
-						"Athletics"
+						"athletics"
 					]
 				}
 			},
@@ -5214,12 +5294,16 @@
 				"unit": "action"
 			},
 			"traits": [
-				"Kobold",
-				"Poison"
+				"kobold",
+				"poison"
 			],
 			"actionType": {
-				"ancestry": "Kobold|APG",
-				"heritage": "Venomtail|APG"
+				"ancestry": [
+					"Kobold|APG"
+				],
+				"heritage": [
+					"Venomtail|APG"
+				]
 			},
 			"frequency": {
 				"unit": "day",
@@ -5235,7 +5319,7 @@
 			"source": "GMG",
 			"page": 200,
 			"traits": [
-				"Exploration"
+				"exploration"
 			],
 			"actionType": {
 				"variantrule": [
@@ -5256,7 +5340,7 @@
 				"unit": "action"
 			},
 			"traits": [
-				"Manipulate"
+				"manipulate"
 			],
 			"actionType": {
 				"variantrule": [
@@ -5293,7 +5377,7 @@
 				"unit": "action"
 			},
 			"traits": [
-				"Concentrate"
+				"concentrate"
 			],
 			"actionType": {
 				"basic": true,
@@ -5302,10 +5386,10 @@
 				],
 				"skill": {
 					"trained": [
-						"Arcana",
-						"Nature",
-						"Occultism",
-						"Religion"
+						"arcana",
+						"nature",
+						"occultism",
+						"religion"
 					]
 				}
 			},
@@ -5331,11 +5415,11 @@
 				"unit": "free"
 			},
 			"traits": [
-				"Gunslinger"
+				"gunslinger"
 			],
 			"actionType": {
 				"class": [
-					"Gunslinger|G&G"
+					"gunslinger|G&G"
 				],
 				"subclass": [
 					"Pistolero|G&G"
@@ -5355,7 +5439,7 @@
 				"number": 1
 			},
 			"traits": [
-				"Gunslinger"
+				"gunslinger"
 			],
 			"entries": [
 				"As you sink deep into a state of analytical calm and focus on the foe before you, your hands reload a bullet instinctively. Attempt a {@action Recall Knowledge} check against an opponent you can see and then {@action Interact} to reload."
@@ -5370,8 +5454,12 @@
 				"unit": "action"
 			},
 			"actionType": {
-				"ancestry": "Lizardfolk|LOCG",
-				"heritage": "Frilled|LOCG"
+				"ancestry": [
+					"Lizardfolk|LOCG"
+				],
+				"heritage": [
+					"Frilled|LOCG"
+				]
 			},
 			"entries": [
 				"You {@action Stride} to be adjacent to a foe and {@action Demoralize} that foe. If you succeed, the foe is {@condition frightened} 2 instead of {@condition frightened} 1."
@@ -5386,12 +5474,16 @@
 				"unit": "reaction"
 			},
 			"traits": [
-				"Grippli",
-				"Poison"
+				"grippli",
+				"poison"
 			],
 			"actionType": {
-				"ancestry": "Grippli|LOME",
-				"heritage": "Poisonhide|LOME"
+				"ancestry": [
+					"grippli|LOME"
+				],
+				"heritage": [
+					"poisonhide|LOME"
+				]
 			},
 			"frequency": {
 				"unit": "hour",
@@ -5407,15 +5499,15 @@
 			"source": "CRB",
 			"page": 252,
 			"traits": [
-				"Concentrate",
-				"Exploration",
-				"Move"
+				"concentrate",
+				"exploration",
+				"move"
 			],
 			"actionType": {
 				"basic": true,
 				"skill": {
 					"trained": [
-						"Survival"
+						"survival"
 					]
 				}
 			},
@@ -5476,7 +5568,7 @@
 			"source": "GMG",
 			"page": 172,
 			"traits": [
-				"Move"
+				"move"
 			],
 			"actionType": {
 				"variantrule": [
@@ -5498,14 +5590,14 @@
 				"entry": "at least 8 hours"
 			},
 			"traits": [
-				"Downtime",
-				"Manipulate"
+				"downtime",
+				"manipulate"
 			],
 			"actionType": {
 				"basic": true,
 				"skill": {
 					"trained": [
-						"Medicine"
+						"medicine"
 					]
 				}
 			},
@@ -5531,13 +5623,13 @@
 				"unit": "action"
 			},
 			"traits": [
-				"Manipulate"
+				"manipulate"
 			],
 			"actionType": {
 				"basic": true,
 				"skill": {
 					"trained": [
-						"Medicine"
+						"medicine"
 					]
 				}
 			},
@@ -5564,15 +5656,15 @@
 				"entry": "10 minutes"
 			},
 			"traits": [
-				"Exploration",
-				"Healing",
-				"Manipulate"
+				"exploration",
+				"healing",
+				"manipulate"
 			],
 			"actionType": {
 				"basic": true,
 				"skill": {
 					"trained": [
-						"Medicine"
+						"medicine"
 					]
 				}
 			},
@@ -5601,13 +5693,13 @@
 				"unit": "action"
 			},
 			"traits": [
-				"Attack"
+				"attack"
 			],
 			"actionType": {
 				"basic": true,
 				"skill": {
 					"untrained": [
-						"Athletics"
+						"athletics"
 					]
 				}
 			},
@@ -5643,13 +5735,13 @@
 				"unit": "action"
 			},
 			"traits": [
-				"Move"
+				"move"
 			],
 			"actionType": {
 				"basic": true,
 				"skill": {
 					"untrained": [
-						"Acrobatics"
+						"acrobatics"
 					]
 				}
 			},
@@ -5673,11 +5765,11 @@
 				"unit": "action"
 			},
 			"traits": [
-				"Gunslinger"
+				"gunslinger"
 			],
 			"actionType": {
 				"class": [
-					"Gunslinger|G&G"
+					"gunslinger|G&G"
 				],
 				"subclass": [
 					"Sniper|G&G"

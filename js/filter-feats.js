@@ -10,11 +10,26 @@ class PageFilterFeats extends PageFilter {
 			max: 20,
 			isLabelled: true,
 		});
-		this._typeFilter = new Filter({header: "Type", selFn: opts.typeDeselFn});
-		this._ancestryFilter = new Filter({header: "Ancestries"});
-		this._archetypeFilter = new Filter({header: "Archetypes", items: ["Archetype"]});
-		this._classFilter = new Filter({header: "Classes"});
-		this._skillFilter = new Filter({header: "Skills"});
+		this._typeFilter = new Filter({ header: "Type", selFn: opts.typeDeselFn });
+		this._ancestryFilter = new Filter({ header: "Ancestry & Heritage" });
+		this._archetypeFilter = new Filter({ header: "Archetype", items: ["Archetype"] });
+		this._classFilter = new Filter({ header: "Class" });
+		this._skillFilter = new Filter({ header: "Skill" });
+		/* Unused, for the future
+		this._skillTrainedFilter = new Filter({ header: "Trained" });
+		this._skillExpertFilter = new Filter({ header: "Expert" });
+		this._skillMasterFilter = new Filter({ header: "Master" });
+		this._skillLegendaryFilter = new Filter({ header: "Legendary" });
+`		this._skillFilter = new MultiFilter({ header: "Skills",
+			filters: [this._skillTrainedFilter,
+				this._skillExpertFilter,
+				this._skillMasterFilter,
+				this._skillLegendaryFilter,
+			] });
+		this._skillFilter = new MultiFilter({ header: "Prerequisites", filters: [
+			this._skillFilter,
+		]});
+`		*/
 		this._timeFilter = new Filter({
 			header: "Activity",
 			itemSortFn: SortUtil.sortActivities,
@@ -37,9 +52,10 @@ class PageFilterFeats extends PageFilter {
 	}
 
 	mutateForFilters (feat) {
-		if (feat.featType == null) feat.featType = {};
+		feat.featType == null ? feat._featType = {} : feat._featType = feat.featType;
 		feat._fSources = SourceFilter.getCompleteFilterSources(feat);
 		feat._slPrereq = Renderer.stripTags(feat.prerequisites || `\u2014`).uppercaseFirst();
+		if (feat.prerequisiteArray) feat._slPrereq = Renderer.utils.getPrerequisiteHtml(feat.prerequisite, {isSkipPrefix: true, isListMode: true});
 		feat._fTraits = feat.traits.map(t => Parser.getTraitName(t));
 		if (!feat._fTraits.map(t => Renderer.trait.isTraitInCategory(t, "Rarity")).some(Boolean)) feat._fTraits.push("Common");
 
@@ -61,12 +77,12 @@ class PageFilterFeats extends PageFilter {
 		if (feat.cost != null) feat._fMisc.push("Has Cost");
 		if (feat.special != null) feat._fMisc.push("Has Special");
 		if (feat.leadsTo && feat.leadsTo.length) feat._fMisc.push("Leads to...");
-		if (feat.featType.variant === true) feat._fMisc.push("Variant");
+		if (feat._featType.variant === true) feat._fMisc.push("Variant");
 		// FIXME: Temporary workaround until prerequisites data changes
-		if (feat.prerequisites) {
+		if (typeof (feat.prerequisites) === "string") {
 			const regExpSkills = /{@skill (.*?)[}|]/g;
-			feat.featType.skill = feat.featType.skill || [];
-			feat.featType.skill.push(...[...feat.prerequisites.matchAll(regExpSkills)].map(m => m[1]));
+			feat._featType.skill = feat._featType.skill || [];
+			feat._featType.skill.push(...[...feat.prerequisites.matchAll(regExpSkills)].map(m => m[1]));
 		}
 	}
 
@@ -75,8 +91,8 @@ class PageFilterFeats extends PageFilter {
 
 		this._typeFilter.addItem(feat._fType);
 		this._traitsFilter.addItem(feat._fTraits);
-		if (typeof (feat.featType.archetype) !== "boolean") this._archetypeFilter.addItem(feat.featType.archetype);
-		if (typeof (feat.featType.skill) !== "boolean") this._skillFilter.addItem(feat.featType.skill);
+		if (typeof (feat._featType.archetype) !== "boolean") this._archetypeFilter.addItem(feat._featType.archetype);
+		if (typeof (feat._featType.skill) !== "boolean") this._skillFilter.addItem(feat._featType.skill);
 
 		this._ancestryFilter.addItem(Renderer.trait.filterTraitsByCats(feat._fTraits, ["Ancestry & Heritage"]));
 		this._classFilter.addItem(Renderer.trait.filterTraitsByCats(feat._fTraits, ["Class"]));
@@ -107,9 +123,9 @@ class PageFilterFeats extends PageFilter {
 			ft._fType,
 			ft.level,
 			ft._fTraits, // Ancestry should be in the traits
-			ft.featType.archetype,
+			ft._featType.archetype,
 			ft._fTraits, // Class as well
-			ft.featType.skill,
+			ft._featType.skill,
 			ft._fTime,
 			ft._fTraits,
 			ft._fMisc,

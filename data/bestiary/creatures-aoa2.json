@@ -6,23 +6,22 @@
 			"source": "AoA2",
 			"page": 80,
 			"level": 6,
-			"rarity": "Common",
-			"alignment": "CE",
-			"size": "Large",
+			"traits": [
+				"ce",
+				"large",
+				"humanoid"
+			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 17
+				"std": 17
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Mwangi"
@@ -31,42 +30,41 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 14
+					"std": 14
 				},
 				"Athletics": {
-					"default": 16
+					"std": 16
 				},
 				"Intimidation": {
-					"default": 15
+					"std": 15
 				},
 				"Stealth": {
-					"default": 16
+					"std": 16
 				},
 				"Survival": {
-					"default": 14
+					"std": 14
 				}
 			},
 			"abilityMods": {
-				"Str": 5,
-				"Dex": 4,
-				"Con": 2,
-				"Int": -3,
-				"Wis": 1,
-				"Cha": -2
+				"str": 5,
+				"dex": 4,
+				"con": 2,
+				"int": -3,
+				"wis": 1,
+				"cha": -2
 			},
-			"abilitiesTop": [],
 			"ac": {
-				"default": 24
+				"std": 24
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 15
+				"fort": {
+					"std": 15
 				},
-				"Ref": {
-					"default": 17
+				"ref": {
+					"std": 17
 				},
-				"Will": {
-					"default": 10
+				"will": {
+					"std": 10
 				}
 			},
 			"hp": [
@@ -75,10 +73,9 @@
 					"abilities": null
 				}
 			],
-			"abilitiesMid": [],
 			"speed": {
 				"walk": 35,
-				"climb ": 20
+				"climb": 20
 			},
 			"attacks": [
 				{
@@ -111,33 +108,21 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"requirements": "A {@condition grabbed}, {@condition paralyzed}, {@condition restrained}, {@condition unconscious}, or willing creature is within reach of the asanbosam's jaws.",
-					"entries": [
-						"The asanbosam sinks its teeth into the creature to drink its blood. If the victim is {@condition grabbed}, this is automatic; otherwise, the asanbosam must succeed at an {@skill Athletics} check against the victim's Fortitude DC. The victim becomes {@condition drained|CRB|drained 1} and the asanbosam regains 10 HP, gaining any excess HP as temporary Hit Points. Drinking Blood from a creature that's already {@condition drained} increases the victim's {@condition drained} value by 1, but doesn't restore any HP to the asanbosam. A victim's {@condition drained} condition decreases by 1 each week. A blood transfusion, which requires a successful DC 20 {@skill Medicine} check and a blood donor or sufficient blood, reduces the {@condition drained} value by 1 after 10 minutes."
-					],
-					"name": "Drink Blood"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"piercing",
-					"slashing"
-				],
-				"condition": [
-					"{@condition grabbed}"
+			"abilities": {
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"requirements": "A {@condition grabbed}, {@condition paralyzed}, {@condition restrained}, {@condition unconscious}, or willing creature is within reach of the asanbosam's jaws.",
+						"entries": [
+							"The asanbosam sinks its teeth into the creature to drink its blood. If the victim is {@condition grabbed}, this is automatic; otherwise, the asanbosam must succeed at an {@skill Athletics} check against the victim's Fortitude DC. The victim becomes {@condition drained|CRB|drained 1} and the asanbosam regains 10 HP, gaining any excess HP as temporary Hit Points. Drinking Blood from a creature that's already {@condition drained} increases the victim's {@condition drained} value by 1, but doesn't restore any HP to the asanbosam. A victim's {@condition drained} condition decreases by 1 each week. A blood transfusion, which requires a successful DC 20 {@skill Medicine} check and a blood donor or sufficient blood, reduces the {@condition drained} value by 1 after 10 minutes."
+						],
+						"name": "Drink Blood"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"RC",
-				"CC"
-			]
+			}
 		},
 		{
 			"name": "Belmazog",
@@ -145,31 +130,33 @@
 			"source": "AoA2",
 			"page": 77,
 			"level": 9,
-			"rarity": "Unique",
-			"alignment": "CE",
-			"size": "Medium",
 			"traits": [
-				"Boggard",
-				"Amphibious",
-				"Acid"
+				"unique",
+				"ce",
+				"medium",
+				"acid",
+				"amphibious",
+				"boggard",
+				"dragon",
+				"humanoid"
 			],
 			"creatureType": [
 				"Humanoid",
 				"Dragon"
 			],
 			"perception": {
-				"default": 18
+				"std": 18
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [
-					"scent 60 feet"
-				],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"type": "imprecise",
+					"name": "scent",
+					"range": 60
+				}
+			],
 			"languages": {
 				"languages": [
 					"Abyssal",
@@ -182,64 +169,50 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 16
+					"std": 16
 				},
 				"Athletics": {
-					"default": 18
+					"std": 18
 				},
 				"Deception": {
-					"default": 19
+					"std": 19
 				},
 				"Intimidation": {
-					"default": 21
+					"std": 21
 				},
 				"Performance": {
-					"default": 17
+					"std": 17
 				},
 				"Religion": {
-					"default": 18
+					"std": 18
 				},
 				"Society": {
-					"default": 12
+					"std": 12
 				},
 				"Survival": {
-					"default": 14
+					"std": 14
 				}
 			},
 			"abilityMods": {
-				"Str": 5,
-				"Dex": 3,
-				"Con": 3,
-				"Int": -1,
-				"Wis": 3,
-				"Cha": 6
+				"str": 5,
+				"dex": 3,
+				"con": 3,
+				"int": -1,
+				"wis": 3,
+				"cha": 6
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+21, {@skill Performance} +17, {@skill Religion} +18,"
-					],
-					"name": "Intimidation"
-				},
-				{
-					"entries": [
-						"+12, {@skill Survival} +14 Str +5, Dex +3, Con +3, Int \u20131, Wis +3, Cha +6."
-					],
-					"name": "Society"
-				}
-			],
 			"ac": {
-				"default": 28
+				"std": 28
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 18
+				"fort": {
+					"std": 18
 				},
-				"Ref": {
-					"default": 16
+				"ref": {
+					"std": 16
 				},
-				"Will": {
-					"default": 18
+				"will": {
+					"std": 18
 				}
 			},
 			"hp": [
@@ -248,10 +221,9 @@
 					"abilities": null
 				}
 			],
-			"abilitiesMid": [],
 			"speed": {
 				"walk": 40,
-				"swim ": 40
+				"swim": 40
 			},
 			"attacks": [
 				{
@@ -360,84 +332,75 @@
 					}
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
+			"abilities": {
+				"bot": [
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"arcane",
+							"acid"
+						],
+						"entries": [
+							"Belmazog spews a gout of acid that deals {@damage 10d6} acid damage in a 30-foot cone (DC 28 basic Reflex save)",
+							"Belmazog can't use Breath Weapon again for {@dice 1d4} rounds."
+						],
+						"name": "Breath Weapon"
 					},
-					"traits": [
-						"arcane",
-						"acid"
-					],
-					"entries": [
-						"Belmazog spews a gout of acid that deals {@damage 10d6} acid damage in a 30-foot cone (DC 28 basic Reflex save)",
-						"Belmazog can't use Breath Weapon again for {@dice 1d4} rounds."
-					],
-					"name": "Breath Weapon"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction",
+							"entry": "{@as R}"
+						},
+						"traits": [
+							"auditory",
+							"mental"
+						],
+						"trigger": "Belmazog or one of its allies within 60 feet attempts a saving throw against an {@trait auditory} or {@trait sonic} effect.",
+						"entries": [
+							"Belmazog releases a croak that drowns out other sound. It rolls a {@skill Performance} check. Belmazog and their boggard allies in the area can use the higher result of Belmazog's {@skill Performance} check or their saves to resolve the effects against the {@trait auditory} or {@trait sonic} effect."
+						],
+						"name": "Drowning Drone"
 					},
-					"traits": [
-						"auditory",
-						"mental"
-					],
-					"entries": [
-						"As boggard swampseer (Pathfinder Bestiary 45)."
-					],
-					"name": "Drowning Drone"
-				},
-				{
-					"entries": [
-						"This rare and highly specialized ritual, taught to Belmazog by the Scarlet Triad, allowed her to use the fossilized remains of {@deity Dahak|LOGM} to erect powerful defenses in the region in the form of dragon pillars, but the resources and time required to perform the ritual again are not available to Belmazog during the course of this adventure. As a result, and since there is no way for the PCs to learn or benefit from the ritual, further information beyond the repercussions detailed in the adventure itself are not presented here."
-					],
-					"name": "Nul-Acrumi Vazghul Ritual"
-				},
-				{
-					"entries": [
-						"As boggard scout (Pathfinder Bestiary 44)."
-					],
-					"name": "Swamp Stride"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
+					{
+						"entries": [
+							"This rare and highly specialized ritual, taught to Belmazog by the Scarlet Triad, allowed her to use the fossilized remains of {@deity Dahak|LOGM} to erect powerful defenses in the region in the form of dragon pillars, but the resources and time required to perform the ritual again are not available to Belmazog during the course of this adventure. As a result, and since there is no way for the PCs to learn or benefit from the ritual, further information beyond the repercussions detailed in the adventure itself are not presented here."
+						],
+						"name": "Nul-Acrumi Vazghul Ritual"
 					},
-					"traits": [
-						"auditory",
-						"emotion",
-						"fear",
-						"mental"
-					],
-					"entries": [
-						"As boggard scout (Pathfinder Bestiary 44) except DC 28."
-					],
-					"name": "Terrifying Croak"
-				},
-				{
-					"entries": [
-						"As boggard scout (Pathfinder Bestiary 44), except AC 25 and 8 HP."
-					],
-					"name": "Tongue Grab"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"acid",
-					"piercing",
-					"slashing"
-				],
-				"condition": []
-			},
-			"misc": [
-				"MA",
-				"RC",
-				"AD"
-			]
+					{
+						"entries": [
+							"Belmazog ignores {@quickref difficult terrain||3|terrain} caused by swamp terrain features."
+						],
+						"name": "Swamp Stride"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"auditory",
+							"emotion",
+							"fear",
+							"mental"
+						],
+						"entries": [
+							"Belmazog unleashes a terrifying croak. Any non-boggard within 30 feet becomes {@condition frightened 1} unless they succeed at a DC 28 Will save; those who critically succeed are temporarily immune for 1 minute."
+						],
+						"name": "Terrifying Croak"
+					},
+					{
+						"entries": [
+							"If Belmazog hits a creature with its tongue, that creature becomes {@condition grabbed} by the boggard. Unlike with a normal grab, the creature isn't {@condition immobilized}, but it can't move beyond the reach of Belmazog's tongue. A creature can sever the tongue by hitting AC 13 and dealing at least 2 slashing damage. Though this doesn't deal any damage to Belmazog, it prevents it from using her tongue {@action Strike} until it regrows its tongue, which takes a week."
+						],
+						"name": "Tongue Grab"
+					}
+				]
+			}
 		},
 		{
 			"name": "Bida",
@@ -445,25 +408,28 @@
 			"source": "AoA2",
 			"page": 81,
 			"level": 8,
-			"rarity": "Uncommon",
-			"alignment": "LE",
-			"size": "Huge",
+			"traits": [
+				"uncommon",
+				"le",
+				"huge",
+				"dragon"
+			],
 			"creatureType": [
 				"Dragon"
 			],
 			"perception": {
-				"default": 15
+				"std": 15
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [
-					"scent 30 feet"
-				],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"type": "imprecise",
+					"name": "scent",
+					"range": 30
+				}
+			],
 			"languages": {
 				"languages": [
 					"Common",
@@ -474,42 +440,41 @@
 			},
 			"skills": {
 				"Deception": {
-					"default": 20
+					"std": 20
 				},
 				"Diplomacy": {
-					"default": 18
+					"std": 18
 				},
 				"Intimidation": {
-					"default": 18
+					"std": 18
 				},
 				"Society": {
-					"default": 16
+					"std": 16
 				},
 				"Stealth": {
-					"default": 16
+					"std": 16
 				}
 			},
 			"abilityMods": {
-				"Str": 6,
-				"Dex": 2,
-				"Con": 3,
-				"Int": 4,
-				"Wis": 3,
-				"Cha": 6
+				"str": 6,
+				"dex": 2,
+				"con": 3,
+				"int": 4,
+				"wis": 3,
+				"cha": 6
 			},
-			"abilitiesTop": [],
 			"ac": {
-				"default": 27
+				"std": 27
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 18
+				"fort": {
+					"std": 18
 				},
-				"Ref": {
-					"default": 15
+				"ref": {
+					"std": 15
 				},
-				"Will": {
-					"default": 18
+				"will": {
+					"std": 18
 				}
 			},
 			"hp": [
@@ -518,18 +483,14 @@
 					"abilities": null
 				}
 			],
-			"immunities": {
-				"damage": [],
-				"condition": [
-					"paralyzed",
-					"sleep"
-				]
-			},
-			"abilitiesMid": [],
+			"immunities": [
+				"paralyzed",
+				"sleep"
+			],
 			"speed": {
 				"walk": 40,
-				"climb ": 20,
-				"fly ": 60
+				"climb": 20,
+				"fly": 60
 			},
 			"attacks": [
 				{
@@ -585,49 +546,37 @@
 					}
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
+			"abilities": {
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"{@damage 1d6+6} bludgeoning, DC 26."
+						],
+						"name": "Constrict",
+						"generic": true
 					},
-					"entries": [
-						"{@damage 1d6+6} bludgeoning, DC 26."
-					],
-					"name": "Constrict",
-					"generic": true
-				},
-				{
-					"entries": [
-						"A bida can {@action Strike} with its tail even while Grabbing creatures with it. The bida can have up to eight Medium or smaller creatures {@condition grabbed} with its tail at a time; it can also grab Large creatures, but they count as four Medium creatures for this purpose."
-					],
-					"name": "Eight Coils"
-				},
-				{
-					"traits": [
-						"arcane",
-						"illusion"
-					],
-					"entries": [
-						"By concentrating for 4 hours, the bida hides a small settlement. This is a 5thlevel {@spell hallucinatory terrain} spell, except the area is a 500-foot burst and creatures are {@condition invisible} while inside structures in the area. The bida can conceal only one settlement at a time, and must concentrate on the effect for 10 minutes at the beginning of each day to maintain the illusion."
-					],
-					"name": "Mask Settlement"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning",
-					"piercing"
-				],
-				"condition": [
-					"{@condition grabbed}"
+					{
+						"entries": [
+							"A bida can {@action Strike} with its tail even while Grabbing creatures with it. The bida can have up to eight Medium or smaller creatures {@condition grabbed} with its tail at a time; it can also grab Large creatures, but they count as four Medium creatures for this purpose."
+						],
+						"name": "Eight Coils"
+					},
+					{
+						"traits": [
+							"arcane",
+							"illusion"
+						],
+						"entries": [
+							"By concentrating for 4 hours, the bida hides a small settlement. This is a 5thlevel {@spell hallucinatory terrain} spell, except the area is a 500-foot burst and creatures are {@condition invisible} while inside structures in the area. The bida can conceal only one settlement at a time, and must concentrate on the effect for 10 minutes at the beginning of each day to maintain the illusion."
+						],
+						"name": "Mask Settlement"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"RC",
-				"CC"
-			]
+			}
 		},
 		{
 			"name": "Biloko Veteran",
@@ -635,25 +584,27 @@
 			"source": "AoA2",
 			"page": 83,
 			"level": 4,
-			"rarity": "Common",
-			"alignment": "NE",
-			"size": "Small",
+			"traits": [
+				"ne",
+				"small",
+				"fey"
+			],
 			"creatureType": [
 				"Fey"
 			],
 			"perception": {
-				"default": 11
+				"std": 11
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [
-					"scent 30 feet"
-				],
-				"vague": [],
-				"other": [
-					"low-light vision"
-				]
-			},
+			"senses": [
+				{
+					"name": "low-light vision"
+				},
+				{
+					"type": "imprecise",
+					"name": "scent",
+					"range": 30
+				}
+			],
 			"languages": {
 				"languages": [
 					"Mwangi",
@@ -663,73 +614,54 @@
 			},
 			"skills": {
 				"Athletics": {
-					"default": 10
+					"std": 10
 				},
 				"Crafting": {
-					"default": 10
+					"std": 10
 				},
 				"Intimidation": {
-					"default": 12
+					"std": 12
 				},
 				"Nature": {
-					"default": 9
+					"std": 9
 				},
 				"Stealth": {
-					"default": 13
+					"std": 13
 				},
 				"Survival": {
-					"default": 11
+					"std": 11
 				}
 			},
 			"abilityMods": {
-				"Str": 4,
-				"Dex": 4,
-				"Con": 0,
-				"Int": 0,
-				"Wis": 3,
-				"Cha": 2
+				"str": 4,
+				"dex": 4,
+				"con": 0,
+				"int": 0,
+				"wis": 3,
+				"cha": 2
 			},
 			"items": [
 				"longspear",
 				"shortbow (20 arrows)"
 			],
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+11 Str +4, Dex +4, Con +0, Int +0, Wis +3, Cha +2 Items longspear, shortbow (20 arrows)"
-					],
-					"name": "Survival"
-				}
-			],
 			"ac": {
-				"default": 21
+				"std": 21
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 8
+				"fort": {
+					"std": 8
 				},
-				"Ref": {
-					"default": 13
+				"ref": {
+					"std": 13
 				},
-				"Will": {
-					"default": 11
+				"will": {
+					"std": 11
 				}
 			},
 			"hp": [
 				{
 					"hp": 58,
 					"abilities": null
-				}
-			],
-			"abilitiesMid": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"entries": [],
-					"name": "Attack of Opportunity",
-					"generic": true
 				}
 			],
 			"speed": {
@@ -792,52 +724,61 @@
 					}
 				}
 			],
-			"abilitiesBot": [
-				{
-					"traits": [
-						"emotion",
-						"mental"
-					],
-					"entries": [
-						"If a biloko feasts on a human corpse for 1 minute or more, they gain a +1 status bonus to attack rolls and a +2 status bonus to damage rolls for 1 hour."
-					],
-					"name": "Inspired Feast"
-				},
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"entries": [
-						"The veteran makes a melee {@action Strike} and compares the attack roll result."
-					],
-					"name": "Swipe"
-				},
-				{
-					"entries": [
-						"AC of up to two foes, each of whom must be within their melee reach and adjacent to each other. Roll damage only once and apply it to each creature hit."
-					],
-					"name": "to the"
-				},
-				{
-					"entries": [
-						"Swipe counts as two attacks for the veteran's multiple attack penalty."
-					],
-					"name": "A"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"piercing"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"+11 Str +4, Dex +4, Con +0, Int +0, Wis +3, Cha +2 Items longspear, shortbow (20 arrows)"
+						],
+						"name": "Survival"
+					}
 				],
-				"condition": []
-			},
-			"misc": [
-				"MA",
-				"RC",
-				"RA",
-				"UW"
-			]
+				"mid": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"entries": [],
+						"name": "Attack of Opportunity",
+						"generic": true
+					}
+				],
+				"bot": [
+					{
+						"traits": [
+							"emotion",
+							"mental"
+						],
+						"entries": [
+							"If a biloko feasts on a human corpse for 1 minute or more, they gain a +1 status bonus to attack rolls and a +2 status bonus to damage rolls for 1 hour."
+						],
+						"name": "Inspired Feast"
+					},
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"The veteran makes a melee {@action Strike} and compares the attack roll result."
+						],
+						"name": "Swipe"
+					},
+					{
+						"entries": [
+							"AC of up to two foes, each of whom must be within their melee reach and adjacent to each other. Roll damage only once and apply it to each creature hit."
+						],
+						"name": "to the"
+					},
+					{
+						"entries": [
+							"Swipe counts as two attacks for the veteran's multiple attack penalty."
+						],
+						"name": "A"
+					}
+				]
+			}
 		},
 		{
 			"name": "Biloko Warrior",
@@ -845,25 +786,27 @@
 			"source": "AoA2",
 			"page": 82,
 			"level": 1,
-			"rarity": "Common",
-			"alignment": "NE",
-			"size": "Small",
+			"traits": [
+				"ne",
+				"small",
+				"fey"
+			],
 			"creatureType": [
 				"Fey"
 			],
 			"perception": {
-				"default": 7
+				"std": 7
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [
-					"scent 30 feet"
-				],
-				"vague": [],
-				"other": [
-					"low-light vision"
-				]
-			},
+			"senses": [
+				{
+					"name": "low-light vision"
+				},
+				{
+					"type": "imprecise",
+					"name": "scent",
+					"range": 30
+				}
+			],
 			"languages": {
 				"languages": [
 					"Mwangi",
@@ -873,59 +816,47 @@
 			},
 			"skills": {
 				"Athletics": {
-					"default": 7
+					"std": 7
 				},
 				"Crafting": {
-					"default": 7
+					"std": 7
 				},
 				"Nature": {
-					"default": 5
+					"std": 5
 				},
 				"Stealth": {
-					"default": 6
+					"std": 6
 				},
 				"Survival": {
-					"default": 6
+					"std": 6
 				}
 			},
 			"abilityMods": {
-				"Str": 3,
-				"Dex": 2,
-				"Con": -1,
-				"Int": 0,
-				"Wis": 2,
-				"Cha": 1
+				"str": 3,
+				"dex": 2,
+				"con": -1,
+				"int": 0,
+				"wis": 2,
+				"cha": 1
 			},
-			"abilitiesTop": [],
 			"ac": {
-				"default": 16
+				"std": 16
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 4
+				"fort": {
+					"std": 4
 				},
-				"Ref": {
-					"default": 7
+				"ref": {
+					"std": 7
 				},
-				"Will": {
-					"default": 7
+				"will": {
+					"std": 7
 				}
 			},
 			"hp": [
 				{
 					"hp": 19,
 					"abilities": null
-				}
-			],
-			"abilitiesMid": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"entries": [],
-					"name": "Shield Block",
-					"generic": true
 				}
 			],
 			"speed": {
@@ -983,30 +914,31 @@
 					}
 				}
 			],
-			"abilitiesBot": [
-				{
-					"traits": [
-						"emotion",
-						"mental"
-					],
-					"entries": [
-						"If a biloko feasts on a human corpse for 1 minute or more, they gain a +1 status bonus to attack rolls and a +2 status bonus to damage rolls for 1 hour."
-					],
-					"name": "Inspired Feast"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"piercing"
+			"abilities": {
+				"mid": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"entries": [],
+						"name": "Shield Block",
+						"generic": true
+					}
 				],
-				"condition": []
-			},
-			"misc": [
-				"MA",
-				"RA",
-				"TA",
-				"UW"
-			]
+				"bot": [
+					{
+						"traits": [
+							"emotion",
+							"mental"
+						],
+						"entries": [
+							"If a biloko feasts on a human corpse for 1 minute or more, they gain a +1 status bonus to attack rolls and a +2 status bonus to damage rolls for 1 hour."
+						],
+						"name": "Inspired Feast"
+					}
+				]
+			}
 		},
 		{
 			"name": "Charau-ka Acolyte Of Angazhan",
@@ -1014,28 +946,28 @@
 			"source": "AoA2",
 			"page": 85,
 			"level": 3,
-			"rarity": "Common",
-			"alignment": "CE",
-			"size": "Small",
 			"traits": [
-				"Charau-ka"
+				"ce",
+				"small",
+				"charau-ka",
+				"humanoid"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 9
+				"std": 9
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [
-					"scent 30 feet"
-				],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"type": "imprecise",
+					"name": "scent",
+					"range": 30
+				}
+			],
 			"languages": {
 				"languages": [
 					"Abyssal",
@@ -1046,42 +978,41 @@
 			},
 			"skills": {
 				"Athletics": {
-					"default": 7
+					"std": 7
 				},
 				"Intimidation": {
-					"default": 7
+					"std": 7
 				},
 				"Nature": {
-					"default": 9
+					"std": 9
 				},
 				"Religion": {
-					"default": 11
+					"std": 11
 				},
 				"Stealth": {
-					"default": 7
+					"std": 7
 				}
 			},
 			"abilityMods": {
-				"Str": 2,
-				"Dex": 2,
-				"Con": 1,
-				"Int": 0,
-				"Wis": 4,
-				"Cha": 2
+				"str": 2,
+				"dex": 2,
+				"con": 1,
+				"int": 0,
+				"wis": 4,
+				"cha": 2
 			},
-			"abilitiesTop": [],
 			"ac": {
-				"default": 19
+				"std": 19
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 8
+				"fort": {
+					"std": 8
 				},
-				"Ref": {
-					"default": 7
+				"ref": {
+					"std": 7
 				},
-				"Will": {
-					"default": 11
+				"will": {
+					"std": 11
 				}
 			},
 			"hp": [
@@ -1090,10 +1021,9 @@
 					"abilities": null
 				}
 			],
-			"abilitiesMid": [],
 			"speed": {
 				"walk": 25,
-				"climb ": 25
+				"climb": 25
 			},
 			"attacks": [
 				{
@@ -1206,45 +1136,34 @@
 					}
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "free"
+			"abilities": {
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "free"
+						},
+						"traits": [
+							"primal",
+							"transmutation"
+						],
+						"entries": [
+							"Trigger The charau-ka's turn begins. ; The charau-ka is {@condition quickened} until the end of its turn, and can use the extra action to {@action Stride} or {@action Strike}. While in the frenzy, the charau-ka can't speak and automatically critically fails {@skill Stealth} checks, due to its loud wailing."
+						],
+						"name": "Shrieking Frenzy",
+						"frequency": {
+							"unit": "hour",
+							"freq": 1
+						}
 					},
-					"traits": [
-						"primal",
-						"transmutation"
-					],
-					"entries": [
-						"Trigger The charau-ka's turn begins. ; The charau-ka is {@condition quickened} until the end of its turn, and can use the extra action to {@action Stride} or {@action Strike}. While in the frenzy, the charau-ka can't speak and automatically critically fails {@skill Stealth} checks, due to its loud wailing."
-					],
-					"name": "Shrieking Frenzy",
-					"frequency": {
-						"unit": "hour",
-						"freq": 1
+					{
+						"entries": [
+							"Any weapon a charau-ka throws gains the deadly d6 weapon trait. Furthermore, when a charau-ka throws an improvised weapon, it does not take the \u20132 penalty for doing so, nor does it take a penalty for using a thrown improvised weapon with the {@trait nonlethal} trait to make a lethal attack."
+						],
+						"name": "Thrown Weapon Mastery"
 					}
-				},
-				{
-					"entries": [
-						"Any weapon a charau-ka throws gains the deadly d6 weapon trait. Furthermore, when a charau-ka throws an improvised weapon, it does not take the \u20132 penalty for doing so, nor does it take a penalty for using a thrown improvised weapon with the {@trait nonlethal} trait to make a lethal attack."
-					],
-					"name": "Thrown Weapon Mastery"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning",
-					"piercing"
-				],
-				"condition": []
-			},
-			"misc": [
-				"MA",
-				"RA",
-				"TA",
-				"UW"
-			]
+				]
+			}
 		},
 		{
 			"name": "Charau-ka Butcher",
@@ -1252,28 +1171,28 @@
 			"source": "AoA2",
 			"page": 85,
 			"level": 6,
-			"rarity": "Common",
-			"alignment": "CE",
-			"size": "Small",
 			"traits": [
-				"Charau-ka"
+				"ce",
+				"small",
+				"charau-ka",
+				"humanoid"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 11
+				"std": 11
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [
-					"scent 30 feet"
-				],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"type": "imprecise",
+					"name": "scent",
+					"range": 30
+				}
+			],
 			"languages": {
 				"languages": [
 					"Draconic",
@@ -1283,46 +1202,45 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 11
+					"std": 11
 				},
 				"Athletics": {
-					"default": 15
+					"std": 15
 				},
 				"Intimidation": {
-					"default": 14
+					"std": 14
 				},
 				"Religion": {
-					"default": 9
+					"std": 9
 				},
 				"Stealth": {
-					"default": 13
+					"std": 13
 				}
 			},
 			"abilityMods": {
-				"Str": 5,
-				"Dex": 3,
-				"Con": 3,
-				"Int": 0,
-				"Wis": 1,
-				"Cha": 2
+				"str": 5,
+				"dex": 3,
+				"con": 3,
+				"int": 0,
+				"wis": 1,
+				"cha": 2
 			},
 			"items": [
 				"hide armor",
 				"+1 striking trident"
 			],
-			"abilitiesTop": [],
 			"ac": {
-				"default": 23
+				"std": 23
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 17
+				"fort": {
+					"std": 17
 				},
-				"Ref": {
-					"default": 11
+				"ref": {
+					"std": 11
 				},
-				"Will": {
-					"default": 13
+				"will": {
+					"std": 13
 				}
 			},
 			"hp": [
@@ -1331,20 +1249,9 @@
 					"abilities": null
 				}
 			],
-			"abilitiesMid": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"entries": [],
-					"name": "Attack of Opportunity",
-					"generic": true
-				}
-			],
 			"speed": {
 				"walk": 25,
-				"climb ": 25
+				"climb": 25
 			},
 			"attacks": [
 				{
@@ -1404,76 +1311,75 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"traits": [
-						"manipulate"
-					],
-					"trigger": "The charau-ka butcher deals bleed damage to a creature.",
-					"entries": [
-						"The charau-ka licks blood from its weapon, becoming furious. It regains 5 HP and gains a +1 status bonus to attack rolls until the end of its turn."
-					],
-					"name": "Blood Fury"
-				},
-				{
-					"entries": [
-						"While the charau-ka butcher is raging, its melee Strikes deal {@damage 1d4} {@condition persistent damage ||persistent bleed damage}."
-					],
-					"name": "Mauler"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"entries": [
-						"As the barbarian class ability; AC 22, +9 HP, +2 melee damage."
-					],
-					"name": "Rage"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "free"
-					},
-					"traits": [
-						"primal",
-						"transmutation"
-					],
-					"entries": [
-						"Trigger The charau-ka's turn begins. ; The charau-ka is {@condition quickened} until the end of its turn, and can use the extra action to {@action Stride} or {@action Strike}. While in the frenzy, the charau-ka can't speak and automatically critically fails {@skill Stealth} checks, due to its loud wailing."
-					],
-					"name": "Shrieking Frenzy",
-					"frequency": {
-						"unit": "hour",
-						"freq": 1
+			"abilities": {
+				"mid": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"entries": [],
+						"name": "Attack of Opportunity",
+						"generic": true
 					}
-				},
-				{
-					"entries": [
-						"Any weapon a charau-ka throws gains the deadly d6 weapon trait. Furthermore, when a charau-ka throws an improvised weapon, it does not take the \u20132 penalty for doing so, nor does it take a penalty for using a thrown improvised weapon with the {@trait nonlethal} trait to make a lethal attack."
-					],
-					"name": "Thrown Weapon Mastery"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning",
-					"piercing",
-					"slashing"
 				],
-				"condition": []
-			},
-			"misc": [
-				"MA",
-				"RA",
-				"TA",
-				"UW"
-			]
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"traits": [
+							"manipulate"
+						],
+						"trigger": "The charau-ka butcher deals bleed damage to a creature.",
+						"entries": [
+							"The charau-ka licks blood from its weapon, becoming furious. It regains 5 HP and gains a +1 status bonus to attack rolls until the end of its turn."
+						],
+						"name": "Blood Fury"
+					},
+					{
+						"entries": [
+							"While the charau-ka butcher is raging, its melee Strikes deal {@damage 1d4} {@condition persistent damage ||persistent bleed damage}."
+						],
+						"name": "Mauler"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"As the barbarian class ability; AC 22, +9 HP, +2 melee damage."
+						],
+						"name": "Rage"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "free"
+						},
+						"traits": [
+							"primal",
+							"transmutation"
+						],
+						"entries": [
+							"Trigger The charau-ka's turn begins. ; The charau-ka is {@condition quickened} until the end of its turn, and can use the extra action to {@action Stride} or {@action Strike}. While in the frenzy, the charau-ka can't speak and automatically critically fails {@skill Stealth} checks, due to its loud wailing."
+						],
+						"name": "Shrieking Frenzy",
+						"frequency": {
+							"unit": "hour",
+							"freq": 1
+						}
+					},
+					{
+						"entries": [
+							"Any weapon a charau-ka throws gains the deadly d6 weapon trait. Furthermore, when a charau-ka throws an improvised weapon, it does not take the \u20132 penalty for doing so, nor does it take a penalty for using a thrown improvised weapon with the {@trait nonlethal} trait to make a lethal attack."
+						],
+						"name": "Thrown Weapon Mastery"
+					}
+				]
+			}
 		},
 		{
 			"name": "Charau-ka Dragon Priest",
@@ -1481,32 +1387,33 @@
 			"source": "AoA2",
 			"page": 59,
 			"level": 6,
-			"rarity": "Common",
-			"alignment": "CE",
-			"size": "Small",
 			"traits": [
-				"Fire",
-				"Charau-ka",
-				"Ncommon",
-				"U"
+				"ce",
+				"small",
+				"charau-ka",
+				"dragon",
+				"fire",
+				"humanoid",
+				"ncommon",
+				"u"
 			],
 			"creatureType": [
 				"Humanoid",
 				"Dragon"
 			],
 			"perception": {
-				"default": 15
+				"std": 15
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [
-					"scent 30 feet"
-				],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"type": "imprecise",
+					"name": "scent",
+					"range": 30
+				}
+			],
 			"languages": {
 				"languages": [
 					"Abyssal",
@@ -1517,53 +1424,45 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 12
+					"std": 12
 				},
 				"Athletics": {
-					"default": 13
+					"std": 13
 				},
 				"Intimidation": {
-					"default": 15
+					"std": 15
 				},
 				"Religion": {
-					"default": 15
+					"std": 15
 				},
 				"Survival": {
-					"default": 13
+					"std": 13
 				}
 			},
 			"abilityMods": {
-				"Str": 4,
-				"Dex": 3,
-				"Con": 2,
-				"Int": 0,
-				"Wis": 5,
-				"Cha": 3
+				"str": 4,
+				"dex": 3,
+				"con": 2,
+				"int": 0,
+				"wis": 5,
+				"cha": 3
 			},
 			"items": [
 				"leather armor",
 				"+1 striking longsword"
 			],
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+15, {@skill Survival} +13 Str +4, Dex +3, Con +2, Int +0, Wis +5, Cha +3 Items leather armor, +1 striking longsword."
-					],
-					"name": "Religion"
-				}
-			],
 			"ac": {
-				"default": 23
+				"std": 23
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 14
+				"fort": {
+					"std": 14
 				},
-				"Ref": {
-					"default": 12
+				"ref": {
+					"std": 12
 				},
-				"Will": {
-					"default": 15
+				"will": {
+					"std": 15
 				}
 			},
 			"hp": [
@@ -1572,31 +1471,14 @@
 					"abilities": null
 				}
 			],
-			"immunities": {
-				"damage": [
-					"fire"
-				],
-				"condition": [
-					"paralyzed",
-					"sleep"
-				]
-			},
-			"abilitiesMid": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"trigger": "A creature within reach of the priest's tail uses a move action or leaves a square during a move action it's using.",
-					"entries": [
-						"The priest makes a tail {@action Strike} at the creature with a \u20132 penalty. If it hits, it disrupts the creature's action."
-					],
-					"name": "Twisting Tail"
-				}
+			"immunities": [
+				"fire",
+				"paralyzed",
+				"sleep"
 			],
 			"speed": {
 				"walk": 25,
-				"climb ": 25
+				"climb": 25
 			},
 			"attacks": [
 				{
@@ -1720,70 +1602,73 @@
 					}
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"traits": [
-						"divine",
-						"evocation",
-						"fire"
-					],
-					"entries": [
-						"The priest breathes fire that deals {@damage 7d6} fire damage in a 30-foot cone (DC 23 basic Reflex save). It can't use Breath Weapon again for {@dice 1d4} rounds."
-					],
-					"name": "Breath Weapon"
-				},
-				{
-					"entries": [
-						"As charau-ka warrior (page 84)."
-					],
-					"name": "Shrieking Frenzy"
-				},
-				{
-					"entries": [
-						"As charau-ka warrior (page 84)."
-					],
-					"name": "Thrown Weapon Mastery"
-				},
-				{
-					"activity": {
-						"number": 3,
-						"unit": "action"
-					},
-					"traits": [
-						"divine",
-						"evocation",
-						"fire"
-					],
-					"entries": [
-						"Requirement The priest is standing on the ground. The priest slams his fists into the ground, causing fire to erupt from the earth. Each non-worshipper of {@deity Dahak|LOGM} standing on the ground in a 15-foot emanation must succeed at a DC 25 Reflex save or fall {@condition prone} and take {@damage 1d6} bludgeoning damage and {@damage 2d6} fire damage."
-					],
-					"name": "Volcanic Eruption"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning",
-					"fire",
-					"piercing",
-					"slashing"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"+15, {@skill Survival} +13 Str +4, Dex +3, Con +2, Int +0, Wis +5, Cha +3 Items leather armor, +1 striking longsword."
+						],
+						"name": "Religion"
+					}
 				],
-				"condition": [
-					"{@condition prone}"
+				"mid": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"trigger": "A creature within reach of the priest's tail uses a move action or leaves a square during a move action it's using.",
+						"entries": [
+							"The priest makes a tail {@action Strike} at the creature with a \u20132 penalty. If it hits, it disrupts the creature's action."
+						],
+						"name": "Twisting Tail"
+					}
+				],
+				"bot": [
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"divine",
+							"evocation",
+							"fire"
+						],
+						"entries": [
+							"The priest breathes fire that deals {@damage 7d6} fire damage in a 30-foot cone (DC 23 basic Reflex save). It can't use Breath Weapon again for {@dice 1d4} rounds."
+						],
+						"name": "Breath Weapon"
+					},
+					{
+						"entries": [
+							"As charau-ka warrior (page 84)."
+						],
+						"name": "Shrieking Frenzy"
+					},
+					{
+						"entries": [
+							"As charau-ka warrior (page 84)."
+						],
+						"name": "Thrown Weapon Mastery"
+					},
+					{
+						"activity": {
+							"number": 3,
+							"unit": "action"
+						},
+						"traits": [
+							"divine",
+							"evocation",
+							"fire"
+						],
+						"entries": [
+							"Requirement The priest is standing on the ground. The priest slams his fists into the ground, causing fire to erupt from the earth. Each non-worshipper of {@deity Dahak|LOGM} standing on the ground in a 15-foot emanation must succeed at a DC 25 Reflex save or fall {@condition prone} and take {@damage 1d6} bludgeoning damage and {@damage 2d6} fire damage."
+						],
+						"name": "Volcanic Eruption"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"RC",
-				"RA",
-				"TA",
-				"AD",
-				"AC",
-				"CC"
-			]
+			}
 		},
 		{
 			"name": "Charau-ka Warrior",
@@ -1791,28 +1676,28 @@
 			"source": "AoA2",
 			"page": 84,
 			"level": 1,
-			"rarity": "Common",
-			"alignment": "CE",
-			"size": "Small",
 			"traits": [
-				"Charau-ka"
+				"ce",
+				"small",
+				"charau-ka",
+				"humanoid"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 6
+				"std": 6
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [
-					"scent 30 feet"
-				],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"type": "imprecise",
+					"name": "scent",
+					"range": 30
+				}
+			],
 			"languages": {
 				"languages": [
 					"Draconic",
@@ -1822,36 +1707,35 @@
 			},
 			"skills": {
 				"Athletics": {
-					"default": 6
+					"std": 6
 				},
 				"Religion": {
-					"default": 4
+					"std": 4
 				},
 				"Stealth": {
-					"default": 6
+					"std": 6
 				}
 			},
 			"abilityMods": {
-				"Str": 3,
-				"Dex": 3,
-				"Con": 2,
-				"Int": -1,
-				"Wis": 1,
-				"Cha": 0
+				"str": 3,
+				"dex": 3,
+				"con": 2,
+				"int": -1,
+				"wis": 1,
+				"cha": 0
 			},
-			"abilitiesTop": [],
 			"ac": {
-				"default": 18
+				"std": 18
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 7
+				"fort": {
+					"std": 7
 				},
-				"Ref": {
-					"default": 8
+				"ref": {
+					"std": 8
 				},
-				"Will": {
-					"default": 4
+				"will": {
+					"std": 4
 				}
 			},
 			"hp": [
@@ -1860,10 +1744,9 @@
 					"abilities": null
 				}
 			],
-			"abilitiesMid": [],
 			"speed": {
 				"walk": 25,
-				"climb ": 25
+				"climb": 25
 			},
 			"attacks": [
 				{
@@ -1887,7 +1770,7 @@
 					"traits": [
 						"agile",
 						"finesse",
-						"versatile S"
+						"versatile s"
 					],
 					"effects": [],
 					"damage": "{@damage 1d4+3} piercing",
@@ -1933,7 +1816,7 @@
 						"agile",
 						"deadly d6",
 						"thrown 10 feet",
-						"versatile S"
+						"versatile s"
 					],
 					"effects": [],
 					"damage": "{@damage 1d4+3} piercing",
@@ -1956,46 +1839,34 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "free"
+			"abilities": {
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "free"
+						},
+						"traits": [
+							"primal",
+							"transmutation"
+						],
+						"frequency": {
+							"unit": "hour",
+							"freq": 1
+						},
+						"entries": [
+							"Trigger The charau-ka's turn begins. ; The charau-ka is {@condition quickened} until the end of its turn, and can use the extra action to {@action Stride} or {@action Strike}. While in the frenzy, the charau-ka can't speak and automatically critically fails {@skill Stealth} checks, due to its loud wailing."
+						],
+						"name": "Shrieking Frenzy"
 					},
-					"traits": [
-						"primal",
-						"transmutation"
-					],
-					"frequency": {
-						"unit": "hour",
-						"freq": 1
-					},
-					"entries": [
-						"Trigger The charau-ka's turn begins. ; The charau-ka is {@condition quickened} until the end of its turn, and can use the extra action to {@action Stride} or {@action Strike}. While in the frenzy, the charau-ka can't speak and automatically critically fails {@skill Stealth} checks, due to its loud wailing."
-					],
-					"name": "Shrieking Frenzy"
-				},
-				{
-					"entries": [
-						"Any weapon a charau-ka throws gains the deadly d6 weapon trait. Furthermore, when a charau-ka throws an improvised weapon, it does not take the \u20132 penalty for doing so, nor does it take a penalty for using a thrown improvised weapon with the {@trait nonlethal} trait to make a lethal attack."
-					],
-					"name": "Thrown Weapon Mastery"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning",
-					"piercing",
-					"slashing"
-				],
-				"condition": []
-			},
-			"misc": [
-				"MA",
-				"RA",
-				"TA",
-				"UW"
-			]
+					{
+						"entries": [
+							"Any weapon a charau-ka throws gains the deadly d6 weapon trait. Furthermore, when a charau-ka throws an improvised weapon, it does not take the \u20132 penalty for doing so, nor does it take a penalty for using a thrown improvised weapon with the {@trait nonlethal} trait to make a lethal attack."
+						],
+						"name": "Thrown Weapon Mastery"
+					}
+				]
+			}
 		},
 		{
 			"name": "Ekujae Guardian",
@@ -2003,26 +1874,23 @@
 			"source": "AoA2",
 			"page": 11,
 			"level": 2,
-			"rarity": "Common",
-			"alignment": "CG",
-			"size": "Medium",
 			"traits": [
-				"Elf"
+				"cg",
+				"medium",
+				"elf",
+				"humanoid"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 8
+				"std": 8
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"low-light vision"
-				]
-			},
+			"senses": [
+				{
+					"name": "low-light vision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Elven",
@@ -2032,49 +1900,41 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 7
+					"std": 7
 				},
 				"Athletics": {
-					"default": 7
+					"std": 7
 				},
 				"Nature": {
-					"default": 6
+					"std": 6
 				},
 				"Stealth": {
-					"default": 7
+					"std": 7
 				},
 				"Survival": {
-					"default": 6
+					"std": 6
 				}
 			},
 			"abilityMods": {
-				"Str": 3,
-				"Dex": 3,
-				"Con": 0,
-				"Int": 1,
-				"Wis": 2,
-				"Cha": 0
+				"str": 3,
+				"dex": 3,
+				"con": 0,
+				"int": 1,
+				"wis": 2,
+				"cha": 0
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+6 Str +3, Dex +3, Con +0, Int +1, Wis +2, Cha +0 Items black adder venom (6), cold iron dagger, silver dagger, longbow (20 arrows), studded leather."
-					],
-					"name": "Survival"
-				}
-			],
 			"ac": {
-				"default": 19
+				"std": 19
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 6
+				"fort": {
+					"std": 6
 				},
-				"Ref": {
-					"default": 9
+				"ref": {
+					"std": 9
 				},
-				"Will": {
-					"default": 6
+				"will": {
+					"std": 6
 				}
 			},
 			"hp": [
@@ -2083,7 +1943,6 @@
 					"abilities": null
 				}
 			],
-			"abilitiesMid": [],
 			"speed": {
 				"walk": 30
 			},
@@ -2094,7 +1953,7 @@
 					"attack": 11,
 					"traits": [
 						"agile",
-						"versatile S"
+						"versatile s"
 					],
 					"effects": [],
 					"damage": "{@damage 1d4+3} piercing",
@@ -2127,7 +1986,7 @@
 					"traits": [
 						"agile",
 						"thrown 10 feet",
-						"versatile S"
+						"versatile s"
 					],
 					"effects": [],
 					"damage": "{@damage 1d4+3} piercing",
@@ -2163,47 +2022,45 @@
 					}
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"entries": [
-						"The Ekujae guardian makes two Strikes against the same target, one with each of their daggers. The guardian combines the damage of any attacks that hit and applies precision damage, resistance, and weaknesses only once. Both attacks count toward the guardian's multiple attack penalty, but the penalty increases only after both attacks.",
-						"Primal Innate Spells DC 16; Cantrips (1st) dancing lights, detect magic, disrupt undead, tanglefoot."
-					],
-					"name": "Double Slice"
-				},
-				{
-					"traits": [
-						"precision"
-					],
-					"entries": [
-						"{@dice 1d6}."
-					],
-					"name": "Sneak Attack",
-					"generic": true
-				},
-				{
-					"entries": [
-						"Ekujae guardian ignores difficult terrain from plants."
-					],
-					"name": "Woodland Stride The"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"piercing"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"+6 Str +3, Dex +3, Con +0, Int +1, Wis +2, Cha +0 Items black adder venom (6), cold iron dagger, silver dagger, longbow (20 arrows), studded leather."
+						],
+						"name": "Survival"
+					}
 				],
-				"condition": []
-			},
-			"misc": [
-				"MA",
-				"RA",
-				"TA",
-				"UW"
-			]
+				"bot": [
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"The Ekujae guardian makes two Strikes against the same target, one with each of their daggers. The guardian combines the damage of any attacks that hit and applies precision damage, resistance, and weaknesses only once. Both attacks count toward the guardian's multiple attack penalty, but the penalty increases only after both attacks.",
+							"Primal Innate Spells DC 16; Cantrips (1st) dancing lights, detect magic, disrupt undead, tanglefoot."
+						],
+						"name": "Double Slice"
+					},
+					{
+						"traits": [
+							"precision"
+						],
+						"entries": [
+							"{@dice 1d6}."
+						],
+						"name": "Sneak Attack",
+						"generic": true
+					},
+					{
+						"entries": [
+							"Ekujae guardian ignores difficult terrain from plants."
+						],
+						"name": "Woodland Stride The"
+					}
+				]
+			}
 		},
 		{
 			"name": "Eloko",
@@ -2211,25 +2068,27 @@
 			"source": "AoA2",
 			"page": 83,
 			"level": 7,
-			"rarity": "Common",
-			"alignment": "NE",
-			"size": "Small",
+			"traits": [
+				"ne",
+				"small",
+				"fey"
+			],
 			"creatureType": [
 				"Fey"
 			],
 			"perception": {
-				"default": 15
+				"std": 15
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [
-					"scent 30 feet"
-				],
-				"vague": [],
-				"other": [
-					"low-light vision"
-				]
-			},
+			"senses": [
+				{
+					"name": "low-light vision"
+				},
+				{
+					"type": "imprecise",
+					"name": "scent",
+					"range": 30
+				}
+			],
 			"languages": {
 				"languages": [
 					"Aklo",
@@ -2240,56 +2099,48 @@
 			},
 			"skills": {
 				"Athletics": {
-					"default": 18
+					"std": 18
 				},
 				"Crafting": {
-					"default": 13
+					"std": 13
 				},
 				"Deception": {
-					"default": 15
+					"std": 15
 				},
 				"Nature": {
-					"default": 13
+					"std": 13
 				},
 				"Stealth": {
-					"default": 16
+					"std": 16
 				},
 				"Survival": {
-					"default": 13
+					"std": 13
 				}
 			},
 			"abilityMods": {
-				"Str": 6,
-				"Dex": 5,
-				"Con": 1,
-				"Int": 0,
-				"Wis": 4,
-				"Cha": 1
+				"str": 6,
+				"dex": 5,
+				"con": 1,
+				"int": 0,
+				"wis": 4,
+				"cha": 1
 			},
 			"items": [
 				"blowgun (10 poisoned darts)",
 				"+1 dagger"
 			],
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+13 Str +6, Dex +5, Con +1, Int +0, Wis +4, Cha +1 Items blowgun (10 poisoned darts), +1 dagger."
-					],
-					"name": "Survival"
-				}
-			],
 			"ac": {
-				"default": 25
+				"std": 25
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 12
+				"fort": {
+					"std": 12
 				},
-				"Ref": {
-					"default": 18
+				"ref": {
+					"std": 18
 				},
-				"Will": {
-					"default": 15
+				"will": {
+					"std": 15
 				}
 			},
 			"hp": [
@@ -2298,7 +2149,6 @@
 					"abilities": null
 				}
 			],
-			"abilitiesMid": [],
 			"speed": {
 				"walk": 20
 			},
@@ -2320,7 +2170,7 @@
 					"traits": [
 						"agile",
 						"magical",
-						"versatile S"
+						"versatile s"
 					],
 					"effects": [],
 					"damage": "{@damage 1d4+8} piercing",
@@ -2353,7 +2203,7 @@
 						"agile",
 						"magical",
 						"thrown 10 feet",
-						"versatile S"
+						"versatile s"
 					],
 					"effects": [],
 					"damage": "{@damage 1d4+8} piercing",
@@ -2379,56 +2229,53 @@
 					}
 				}
 			],
-			"abilitiesBot": [
-				{
-					"traits": [
-						"emotion",
-						"mental"
-					],
-					"entries": [
-						"If a biloko feasts on a human corpse for 1 minute or more, they gain a +1 status bonus to attack rolls and a +2 status bonus to damage rolls for 1 hour."
-					],
-					"name": "Inspired Feast"
-				},
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"traits": [
-						"polymorph",
-						"primal",
-						"transmutation"
-					],
-					"entries": [
-						"The eloko is affected by a 4th-level {@spell enlarge} spell. This lasts for 1 minute, and the eloko can {@action Dismiss} the Spell."
-					],
-					"name": "Size Alteration"
-				},
-				{
-					"traits": [
-						"precision"
-					],
-					"entries": [
-						"The eloko deals {@dice 2d6} extra precision damage to flatfooted creatures."
-					],
-					"name": "Sneak Attack",
-					"generic": true
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"piercing",
-					"poison"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"+13 Str +6, Dex +5, Con +1, Int +0, Wis +4, Cha +1 Items blowgun (10 poisoned darts), +1 dagger."
+						],
+						"name": "Survival"
+					}
 				],
-				"condition": []
-			},
-			"misc": [
-				"MA",
-				"RA",
-				"TA",
-				"UW"
-			]
+				"bot": [
+					{
+						"traits": [
+							"emotion",
+							"mental"
+						],
+						"entries": [
+							"If a biloko feasts on a human corpse for 1 minute or more, they gain a +1 status bonus to attack rolls and a +2 status bonus to damage rolls for 1 hour."
+						],
+						"name": "Inspired Feast"
+					},
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"polymorph",
+							"primal",
+							"transmutation"
+						],
+						"entries": [
+							"The eloko is affected by a 4th-level {@spell enlarge} spell. This lasts for 1 minute, and the eloko can {@action Dismiss} the Spell."
+						],
+						"name": "Size Alteration"
+					},
+					{
+						"traits": [
+							"precision"
+						],
+						"entries": [
+							"The eloko deals {@dice 2d6} extra precision damage to flatfooted creatures."
+						],
+						"name": "Sneak Attack",
+						"generic": true
+					}
+				]
+			}
 		},
 		{
 			"name": "Gerhard Pendergrast",
@@ -2436,17 +2283,18 @@
 			"source": "AoA2",
 			"page": 37,
 			"level": 8,
-			"rarity": "Unique",
-			"alignment": "LE",
-			"size": "Medium",
 			"traits": [
-				"Human"
+				"unique",
+				"le",
+				"medium",
+				"human",
+				"humanoid"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 19
+				"std": 19
 			},
 			"languages": {
 				"languages": [
@@ -2457,80 +2305,53 @@
 			},
 			"skills": {
 				"Deception": {
-					"default": 18
+					"std": 18
 				},
 				"Diplomacy": {
-					"default": 12
+					"std": 12
 				},
 				"Intimidation": {
-					"default": 18
+					"std": 18
 				},
 				"Nature": {
-					"default": 16
+					"std": 16
 				},
 				"Performance": {
-					"default": 16
+					"std": 16
 				},
 				"Survival": {
-					"default": 18
+					"std": 18
 				},
 				"Azlanti Lore": {
-					"default": 14
+					"std": 14
 				}
 			},
 			"abilityMods": {
-				"Str": 3,
-				"Dex": 4,
-				"Con": 5,
-				"Int": 0,
-				"Wis": -1,
-				"Cha": 6
+				"str": 3,
+				"dex": 4,
+				"con": 5,
+				"int": 0,
+				"wis": -1,
+				"cha": 6
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+14, {@skill Intimidation} +18, {@skill Nature} +16,"
-					],
-					"name": "Engineering Lore"
-				},
-				{
-					"entries": [
-						"+16, {@skill Survival} +18 Str +3, Dex +4, Con +5, Int +0, Wis \u20131, Cha +6 Items bag of holding type I (containing three kegs of black powder he intends to use at area A10, or empty if the PCs already confronted him at A10; see that area for more details), shoddy blunderbuss, daggers (10), grapeshot (10), gunpowder (10), +1 leather armor, monocle, tindertwigs (5), +1 striking whip."
-					],
-					"name": "Performance"
-				}
-			],
 			"ac": {
-				"default": 26
+				"std": 26
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 17
+				"fort": {
+					"std": 17
 				},
-				"Ref": {
-					"default": 16
+				"ref": {
+					"std": 16
 				},
-				"Will": {
-					"default": 11
+				"will": {
+					"std": 11
 				}
 			},
 			"hp": [
 				{
 					"hp": 135,
 					"abilities": null
-				}
-			],
-			"abilitiesMid": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"trigger": "A creature within 10 feet of Gerhard uses an action with the {@trait move} trait to leave a square.",
-					"entries": [
-						"Gerhard attempts to {@action Trip} the triggering creature. On a success, the creature also takes damage as if Gerhard hit with his whip {@action Strike}, and if the creature was flying, it falls 30 feet."
-					],
-					"name": "Whiplash"
 				}
 			],
 			"speed": {
@@ -2574,7 +2395,7 @@
 					"traits": [
 						"agile",
 						"finesse",
-						"versatile S"
+						"versatile s"
 					],
 					"effects": [],
 					"damage": "{@damage 1d4+6} piercing",
@@ -2589,7 +2410,7 @@
 					"traits": [
 						"agile",
 						"thrown 10 feet",
-						"versatile S"
+						"versatile s"
 					],
 					"effects": [],
 					"damage": "{@damage 1d4+6} piercing",
@@ -2598,58 +2419,69 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"entries": [
-						"A creature struck by Gerhard's punch must succeed at a DC 23 Fortitude save or be {@condition stunned|CRB|stunned 1} (or {@condition stunned|CRB|stunned 3} on a critical failure)."
-					],
-					"name": "Manly Left Hook"
-				},
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"+14, {@skill Intimidation} +18, {@skill Nature} +16,"
+						],
+						"name": "Engineering Lore"
 					},
-					"entries": [
-						"Gerhard fires an explosive shot from his blunderbuss that deals {@damage 4d6} bludgeoning damage plus {@damage 2d10} fire damage to all creatures in a 30- foot cone (DC 26 basic Reflex)",
-						"When firing the blunderbuss, Gerhard must succeed at a DC 20 {@skill Crafting} or {@skill Lore||Engineering Lore} check or the weapon explodes, damaging him for the same amount as the creatures in the cone and destroying itself. If someone other than Gerhard uses the weapon, they must critically succeed at the check. A successful DC 22 {@skill Crafting} check is enough to confirm the weapon's unstable nature if someone examines it beforehand.",
-						"Reloading the blunderbuss takes 3 {@action Interact} actions: adding 1 dose of gunpowder, adding 1 grapeshot canister, and packing the contents."
-					],
-					"name": "Shoddy Blunderbuss"
-				},
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"traits": [
-						"move"
-					],
-					"requirements": "Gerhard is in a jungle, dense forest, or an area with numerous overhead beams.",
-					"entries": [
-						"Gerhard uses his whip to lash upward to wrap around an overhanging tree branch; he then swings up to 30 feet in a straight line, and must end the movement on solid ground or fall."
-					],
-					"name": "Whip Swing"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning",
-					"piercing",
-					"slashing"
+					{
+						"entries": [
+							"+16, {@skill Survival} +18 Str +3, Dex +4, Con +5, Int +0, Wis \u20131, Cha +6 Items bag of holding type I (containing three kegs of black powder he intends to use at area A10, or empty if the PCs already confronted him at A10; see that area for more details), shoddy blunderbuss, daggers (10), grapeshot (10), gunpowder (10), +1 leather armor, monocle, tindertwigs (5), +1 striking whip."
+						],
+						"name": "Performance"
+					}
 				],
-				"condition": [
-					"{@condition stunned}"
+				"mid": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"trigger": "A creature within 10 feet of Gerhard uses an action with the {@trait move} trait to leave a square.",
+						"entries": [
+							"Gerhard attempts to {@action Trip} the triggering creature. On a success, the creature also takes damage as if Gerhard hit with his whip {@action Strike}, and if the creature was flying, it falls 30 feet."
+						],
+						"name": "Whiplash"
+					}
+				],
+				"bot": [
+					{
+						"entries": [
+							"A creature struck by Gerhard's punch must succeed at a DC 23 Fortitude save or be {@condition stunned|CRB|stunned 1} (or {@condition stunned|CRB|stunned 3} on a critical failure)."
+						],
+						"name": "Manly Left Hook"
+					},
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"Gerhard fires an explosive shot from his blunderbuss that deals {@damage 4d6} bludgeoning damage plus {@damage 2d10} fire damage to all creatures in a 30- foot cone (DC 26 basic Reflex)",
+							"When firing the blunderbuss, Gerhard must succeed at a DC 20 {@skill Crafting} or {@skill Lore||Engineering Lore} check or the weapon explodes, damaging him for the same amount as the creatures in the cone and destroying itself. If someone other than Gerhard uses the weapon, they must critically succeed at the check. A successful DC 22 {@skill Crafting} check is enough to confirm the weapon's unstable nature if someone examines it beforehand.",
+							"Reloading the blunderbuss takes 3 {@action Interact} actions: adding 1 dose of gunpowder, adding 1 grapeshot canister, and packing the contents."
+						],
+						"name": "Shoddy Blunderbuss"
+					},
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"move"
+						],
+						"requirements": "Gerhard is in a jungle, dense forest, or an area with numerous overhead beams.",
+						"entries": [
+							"Gerhard uses his whip to lash upward to wrap around an overhanging tree branch; he then swings up to 30 feet in a straight line, and must end the movement on solid ground or fall."
+						],
+						"name": "Whip Swing"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"RC",
-				"RA",
-				"TA",
-				"CC",
-				"UW"
-			]
+			}
 		},
 		{
 			"name": "Grippli Archer",
@@ -2657,26 +2489,23 @@
 			"source": "AoA2",
 			"page": 87,
 			"level": 3,
-			"rarity": "Common",
-			"alignment": "N",
-			"size": "Small",
 			"traits": [
-				"Grippli"
+				"n",
+				"small",
+				"grippli",
+				"humanoid"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 10
+				"std": 10
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Common",
@@ -2686,48 +2515,47 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 9
+					"std": 9
 				},
 				"Athletics": {
-					"default": 6
+					"std": 6
 				},
 				"Nature": {
-					"default": 8
+					"std": 8
 				},
 				"Stealth": {
-					"default": 11,
+					"std": 11,
 					"in forests": 13
 				},
 				"Survival": {
-					"default": 8
+					"std": 8
 				}
 			},
 			"abilityMods": {
-				"Str": 1,
-				"Dex": 4,
-				"Con": 2,
-				"Int": 0,
-				"Wis": 3,
-				"Cha": -1
+				"str": 1,
+				"dex": 4,
+				"con": 2,
+				"int": 0,
+				"wis": 3,
+				"cha": -1
 			},
 			"items": [
 				"leather armor",
 				"shortbow (30 arrows)",
 				"shortsword"
 			],
-			"abilitiesTop": [],
 			"ac": {
-				"default": 20
+				"std": 20
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 9
+				"fort": {
+					"std": 9
 				},
-				"Ref": {
-					"default": 11
+				"ref": {
+					"std": 11
 				},
-				"Will": {
-					"default": 10
+				"will": {
+					"std": 10
 				}
 			},
 			"hp": [
@@ -2736,10 +2564,9 @@
 					"abilities": null
 				}
 			],
-			"abilitiesMid": [],
 			"speed": {
 				"walk": 25,
-				"climb ": 20
+				"climb": 20
 			},
 			"attacks": [
 				{
@@ -2749,7 +2576,7 @@
 					"traits": [
 						"agile",
 						"finesse",
-						"versatile S"
+						"versatile s"
 					],
 					"effects": [],
 					"damage": "{@damage 1d6+3} piercing",
@@ -2773,35 +2600,26 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
+			"abilities": {
+				"bot": [
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"The grippli archer makes three ranged Strikes with their shortbow, all against a single target. Combine the damage of any Strikes that hit for the purpose of resistances and weaknesses."
+						],
+						"name": "Hail of Arrows"
 					},
-					"entries": [
-						"The grippli archer makes three ranged Strikes with their shortbow, all against a single target. Combine the damage of any Strikes that hit for the purpose of resistances and weaknesses."
-					],
-					"name": "Hail of Arrows"
-				},
-				{
-					"entries": [
-						"A grippli ignores difficult terrain in forests and jungles."
-					],
-					"name": "Jungle Stride"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"piercing"
-				],
-				"condition": []
-			},
-			"misc": [
-				"MA",
-				"RA",
-				"UW"
-			]
+					{
+						"entries": [
+							"A grippli ignores difficult terrain in forests and jungles."
+						],
+						"name": "Jungle Stride"
+					}
+				]
+			}
 		},
 		{
 			"name": "Grippli Greenspeaker",
@@ -2809,26 +2627,23 @@
 			"source": "AoA2",
 			"page": 87,
 			"level": 5,
-			"rarity": "Common",
-			"alignment": "N",
-			"size": "Small",
 			"traits": [
-				"Grippli"
+				"n",
+				"small",
+				"grippli",
+				"humanoid"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 13
+				"std": 13
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Common",
@@ -2838,69 +2653,54 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 11
+					"std": 11
 				},
 				"Athletics": {
-					"default": 9
+					"std": 9
 				},
 				"Diplomacy": {
-					"default": 10
+					"std": 10
 				},
 				"Medicine": {
-					"default": 11
+					"std": 11
 				},
 				"Nature": {
-					"default": 14
+					"std": 14
 				},
 				"Religion": {
-					"default": 11
+					"std": 11
 				},
 				"Stealth": {
-					"default": 11
+					"std": 11
 				},
 				"Survival": {
-					"default": 11
+					"std": 11
 				}
 			},
 			"abilityMods": {
-				"Str": 2,
-				"Dex": 4,
-				"Con": 1,
-				"Int": 1,
-				"Wis": 4,
-				"Cha": 0
+				"str": 2,
+				"dex": 4,
+				"con": 1,
+				"int": 1,
+				"wis": 4,
+				"cha": 0
 			},
 			"items": [
 				"dart (4)",
 				"staff"
 			],
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+11, {@skill Stealth} +11, {@skill Survival} +11 Str +2, Dex +4, Con +1, Int +1, Wis +4, Cha +0."
-					],
-					"name": "Religion"
-				},
-				{
-					"entries": [
-						"The greenspeaker can use {@skill Diplomacy} to {@action Make an Impression} on and make very simple Requests of plants and fungi.",
-						"Items dart (4), staff."
-					],
-					"name": "Green Empathy"
-				}
-			],
 			"ac": {
-				"default": 21
+				"std": 21
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 10
+				"fort": {
+					"std": 10
 				},
-				"Ref": {
-					"default": 13
+				"ref": {
+					"std": 13
 				},
-				"Will": {
-					"default": 13
+				"will": {
+					"std": 13
 				}
 			},
 			"hp": [
@@ -2909,10 +2709,9 @@
 					"abilities": null
 				}
 			],
-			"abilitiesMid": [],
 			"speed": {
 				"walk": 25,
-				"climb ": 20
+				"climb": 20
 			},
 			"attacks": [
 				{
@@ -3010,26 +2809,31 @@
 					}
 				}
 			],
-			"abilitiesBot": [
-				{
-					"entries": [
-						"A grippli ignores difficult terrain in forests and jungles."
-					],
-					"name": "Jungle Stride"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning",
-					"piercing"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"+11, {@skill Stealth} +11, {@skill Survival} +11 Str +2, Dex +4, Con +1, Int +1, Wis +4, Cha +0."
+						],
+						"name": "Religion"
+					},
+					{
+						"entries": [
+							"The greenspeaker can use {@skill Diplomacy} to {@action Make an Impression} on and make very simple Requests of plants and fungi.",
+							"Items dart (4), staff."
+						],
+						"name": "Green Empathy"
+					}
 				],
-				"condition": []
-			},
-			"misc": [
-				"MA",
-				"TA",
-				"UW"
-			]
+				"bot": [
+					{
+						"entries": [
+							"A grippli ignores difficult terrain in forests and jungles."
+						],
+						"name": "Jungle Stride"
+					}
+				]
+			}
 		},
 		{
 			"name": "Grippli Scout",
@@ -3037,26 +2841,23 @@
 			"source": "AoA2",
 			"page": 86,
 			"level": 1,
-			"rarity": "Common",
-			"alignment": "N",
-			"size": "Small",
 			"traits": [
-				"Grippli"
+				"n",
+				"small",
+				"grippli",
+				"humanoid"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 8
+				"std": 8
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Common",
@@ -3066,29 +2867,29 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 7
+					"std": 7
 				},
 				"Athletics": {
-					"default": 4
+					"std": 4
 				},
 				"Nature": {
-					"default": 6
+					"std": 6
 				},
 				"Stealth": {
-					"default": 7,
+					"std": 7,
 					"in forests": 9
 				},
 				"Survival": {
-					"default": 6
+					"std": 6
 				}
 			},
 			"abilityMods": {
-				"Str": 1,
-				"Dex": 4,
-				"Con": 2,
-				"Int": 0,
-				"Wis": 3,
-				"Cha": -1
+				"str": 1,
+				"dex": 4,
+				"con": 2,
+				"int": 0,
+				"wis": 3,
+				"cha": -1
 			},
 			"items": [
 				"dart (5)",
@@ -3096,19 +2897,18 @@
 				"net",
 				"sickle"
 			],
-			"abilitiesTop": [],
 			"ac": {
-				"default": 18
+				"std": 18
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 7
+				"fort": {
+					"std": 7
 				},
-				"Ref": {
-					"default": 9
+				"ref": {
+					"std": 9
 				},
-				"Will": {
-					"default": 6
+				"will": {
+					"std": 6
 				}
 			},
 			"hp": [
@@ -3117,10 +2917,9 @@
 					"abilities": null
 				}
 			],
-			"abilitiesMid": [],
 			"speed": {
 				"walk": 25,
-				"climb ": 20
+				"climb": 20
 			},
 			"attacks": [
 				{
@@ -3153,41 +2952,27 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
+			"abilities": {
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"requirements": "The grippli is wielding a net in two hands.",
+						"entries": [
+							"The grippli makes a ranged {@action Strike} (with a +9 modifier) against a Medium or smaller creature within 20 feet. On a hit, the target is {@condition flat-footed} and takes a \u201310-foot circumstance penalty to its Speeds. On a critical hit, the creature is {@condition restrained} instead. The DC to {@action Escape} the net is 16. A creature adjacent to the target can {@action Interact} with the net to remove it."
+						],
+						"name": "Hurl Net"
 					},
-					"requirements": "The grippli is wielding a net in two hands.",
-					"entries": [
-						"The grippli makes a ranged {@action Strike} (with a +9 modifier) against a Medium or smaller creature within 20 feet. On a hit, the target is {@condition flat-footed} and takes a \u201310-foot circumstance penalty to its Speeds. On a critical hit, the creature is {@condition restrained} instead. The DC to {@action Escape} the net is 16. A creature adjacent to the target can {@action Interact} with the net to remove it."
-					],
-					"name": "Hurl Net"
-				},
-				{
-					"entries": [
-						"A grippli ignores difficult terrain in forests and jungles."
-					],
-					"name": "Jungle Stride"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"piercing",
-					"slashing"
-				],
-				"condition": [
-					"{@condition flat-footed}"
+					{
+						"entries": [
+							"A grippli ignores difficult terrain in forests and jungles."
+						],
+						"name": "Jungle Stride"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"RA",
-				"TA",
-				"CC",
-				"UW"
-			]
+			}
 		},
 		{
 			"name": "Hezle",
@@ -3195,26 +2980,24 @@
 			"source": "AoA2",
 			"page": 50,
 			"level": 8,
-			"rarity": "Unique",
-			"alignment": "CN",
-			"size": "Small",
 			"traits": [
-				"Kobold"
+				"unique",
+				"cn",
+				"small",
+				"humanoid",
+				"kobold"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 14
+				"std": 14
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Common",
@@ -3225,52 +3008,44 @@
 			},
 			"skills": {
 				"Arcana": {
-					"default": 18
+					"std": 18
 				},
 				"Crafting": {
-					"default": 16
+					"std": 16
 				},
 				"Nature": {
-					"default": 12
+					"std": 12
 				},
 				"Stealth": {
-					"default": 16
+					"std": 16
 				},
 				"Survival": {
-					"default": 12
+					"std": 12
 				},
 				"Mining Lore": {
-					"default": 16
+					"std": 16
 				}
 			},
 			"abilityMods": {
-				"Str": -1,
-				"Dex": 4,
-				"Con": 2,
-				"Int": 6,
-				"Wis": 2,
-				"Cha": 3
+				"str": -1,
+				"dex": 4,
+				"con": 2,
+				"int": 6,
+				"wis": 2,
+				"cha": 3
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+16, {@skill Survival} +12 Str \u20131, Dex +4, Con +2, Int +6, Wis +2, Cha +3 Items greater antidote, +1 crossbow (16 regular bolts and 4 wyvern poisoned bolts), +1 dagger, moderate healing potions (2), infused reagents (5), leather armor, greater staff of fire."
-					],
-					"name": "Stealth"
-				}
-			],
 			"ac": {
-				"default": 27
+				"std": 27
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 14
+				"fort": {
+					"std": 14
 				},
-				"Ref": {
-					"default": 18
+				"ref": {
+					"std": 18
 				},
-				"Will": {
-					"default": 16
+				"will": {
+					"std": 16
 				}
 			},
 			"hp": [
@@ -3279,7 +3054,6 @@
 					"abilities": null
 				}
 			],
-			"abilitiesMid": [],
 			"speed": {
 				"walk": 25
 			},
@@ -3292,7 +3066,7 @@
 						"agile",
 						"finesse",
 						"magical",
-						"versatile S"
+						"versatile s"
 					],
 					"effects": [],
 					"damage": "{@damage 1d4+2} piercing",
@@ -3337,7 +3111,7 @@
 						"agile",
 						"magical",
 						"thrown 10 feet",
-						"versatile S"
+						"versatile s"
 					],
 					"effects": [],
 					"damage": "{@damage 1d4+2} piercing",
@@ -3346,72 +3120,63 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"traits": [
-						"alchemical",
-						"fire",
-						"interact"
-					],
-					"entries": [
-						"Cost 1 batch of infused reagents. Hezle quickly cobbles together an explosive bomb and lobs it up to 30 feet. All creatures in a 5-foot burst take {@damage 5d6} fire damage (DC 26 basic Reflex save)."
-					],
-					"name": "Kobold Explosives"
-				},
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"traits": [
-						"manipulate"
-					],
-					"requirements": "Hezle must be adjacent to at least one enemy.",
-					"entries": [
-						"Cost 1 batch of infused reagents. Hezle throws a mix of special powders centered on a corner of her space, creating a plume of smoke filling a 5-foot burst until the end of her turn that causes her to be {@condition hidden}. She then immediately {@action Sneak||Sneaks}, but must end her movement in a space that's not adjacent to any enemies. All creatures other than Hezle in the smoke cloud must attempt a DC 26 Fortitude save. Critical Success The creature is unaffected. Success The creature is {@condition sickened|CRB|sickened 1}. Failure The creature is {@condition sickened|CRB|sickened 2}. Critical Failure The creature is {@condition sickened|CRB|sickened 3} and {@condition stunned|CRB|stunned 1}."
-					],
-					"name": "Smoky Retreat"
-				},
-				{
-					"traits": [
-						"precision"
-					],
-					"entries": [
-						"{@dice 2d6}."
-					],
-					"name": "Sneak Attack",
-					"generic": true
-				},
-				{
-					"entries": [
-						"Although Hezle does not cast spells, her obsession with fire and long hours of practice allow her to cast spells from her staff of fire as if she had the spells on her spell list and could cast them. She still must expend charges from the staff normally; when she prepares the staff each morning, she is capable of placing 4 charges in the staff."
-					],
-					"name": "Staff Mastery"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning",
-					"fire",
-					"piercing"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"+16, {@skill Survival} +12 Str \u20131, Dex +4, Con +2, Int +6, Wis +2, Cha +3 Items greater antidote, +1 crossbow (16 regular bolts and 4 wyvern poisoned bolts), +1 dagger, moderate healing potions (2), infused reagents (5), leather armor, greater staff of fire."
+						],
+						"name": "Stealth"
+					}
 				],
-				"condition": [
-					"{@condition sickened}"
+				"bot": [
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"alchemical",
+							"fire",
+							"interact"
+						],
+						"entries": [
+							"Cost 1 batch of infused reagents. Hezle quickly cobbles together an explosive bomb and lobs it up to 30 feet. All creatures in a 5-foot burst take {@damage 5d6} fire damage (DC 26 basic Reflex save)."
+						],
+						"name": "Kobold Explosives"
+					},
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"manipulate"
+						],
+						"requirements": "Hezle must be adjacent to at least one enemy.",
+						"entries": [
+							"Cost 1 batch of infused reagents. Hezle throws a mix of special powders centered on a corner of her space, creating a plume of smoke filling a 5-foot burst until the end of her turn that causes her to be {@condition hidden}. She then immediately {@action Sneak||Sneaks}, but must end her movement in a space that's not adjacent to any enemies. All creatures other than Hezle in the smoke cloud must attempt a DC 26 Fortitude save. Critical Success The creature is unaffected. Success The creature is {@condition sickened|CRB|sickened 1}. Failure The creature is {@condition sickened|CRB|sickened 2}. Critical Failure The creature is {@condition sickened|CRB|sickened 3} and {@condition stunned|CRB|stunned 1}."
+						],
+						"name": "Smoky Retreat"
+					},
+					{
+						"traits": [
+							"precision"
+						],
+						"entries": [
+							"{@dice 2d6}."
+						],
+						"name": "Sneak Attack",
+						"generic": true
+					},
+					{
+						"entries": [
+							"Although Hezle does not cast spells, her obsession with fire and long hours of practice allow her to cast spells from her staff of fire as if she had the spells on her spell list and could cast them. She still must expend charges from the staff normally; when she prepares the staff each morning, she is capable of placing 4 charges in the staff."
+						],
+						"name": "Staff Mastery"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"RA",
-				"TA",
-				"AD",
-				"AC",
-				"CC",
-				"UW"
-			]
+			}
 		},
 		{
 			"name": "Jahsi",
@@ -3419,26 +3184,24 @@
 			"source": "AoA2",
 			"page": 11,
 			"level": 8,
-			"rarity": "Unique",
-			"alignment": "NG",
-			"size": "Medium",
 			"traits": [
-				"Elf"
+				"unique",
+				"ng",
+				"medium",
+				"elf",
+				"humanoid"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 14
+				"std": 14
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"low-light vision"
-				]
-			},
+			"senses": [
+				{
+					"name": "low-light vision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Common",
@@ -3449,69 +3212,44 @@
 			},
 			"skills": {
 				"Athletics": {
-					"default": 14
+					"std": 14
 				},
 				"Diplomacy": {
-					"default": 17
+					"std": 17
 				},
 				"Religion": {
-					"default": 16
+					"std": 16
 				},
 				"Survival": {
-					"default": 14
+					"std": 14
 				}
 			},
 			"abilityMods": {
-				"Str": 4,
-				"Dex": 4,
-				"Con": 1,
-				"Int": 1,
-				"Wis": 2,
-				"Cha": 3
+				"str": 4,
+				"dex": 4,
+				"con": 1,
+				"int": 1,
+				"wis": 2,
+				"cha": 3
 			},
-			"abilitiesTop": [],
 			"ac": {
-				"default": 28
+				"std": 28
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 16
+				"fort": {
+					"std": 16
 				},
-				"Ref": {
-					"default": 17
+				"ref": {
+					"std": 17
 				},
-				"Will": {
-					"default": 15
+				"will": {
+					"std": 15
 				}
 			},
 			"hp": [
 				{
 					"hp": 135,
 					"abilities": null
-				}
-			],
-			"abilitiesMid": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"trigger": "An enemy damages one of Jahsi's allies within 15 feet of him.",
-					"entries": [
-						"The foe must choose one: The ally is unharmed by the triggering damage, or the ally gains resistance 10 against the triggering damage, and the enemy is {@condition enfeebled|CRB|enfeebled 2} until the end of its next turn."
-					],
-					"name": "Glimpse of Redemption"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"trigger": "Jahsi rolls a success on a Will save against an enemy's effect.",
-					"entries": [
-						"Jahsi gets a critical success instead."
-					],
-					"name": "Divine Providence"
 				}
 			],
 			"speed": {
@@ -3525,7 +3263,7 @@
 					"traits": [
 						"agile",
 						"magical",
-						"versatile S"
+						"versatile s"
 					],
 					"effects": [],
 					"damage": "{@damage 1d4+7} piercing plus {@damage 1d6} positive to undead",
@@ -3541,7 +3279,7 @@
 					"traits": [
 						"agile",
 						"magical",
-						"versatile S"
+						"versatile s"
 					],
 					"effects": [],
 					"damage": "{@damage 2d4+7} piercing",
@@ -3574,7 +3312,7 @@
 						"agile",
 						"magical",
 						"thrown 10 feet",
-						"versatile S"
+						"versatile s"
 					],
 					"effects": [],
 					"damage": "{@damage 1d4+7} piercing plus {@damage 1d6} positive to undead",
@@ -3591,7 +3329,7 @@
 						"agile",
 						"magical",
 						"thrown 10 feet",
-						"versatile S"
+						"versatile s"
 					],
 					"effects": [],
 					"damage": "{@damage 2d4+7} piercing",
@@ -3642,29 +3380,40 @@
 					}
 				}
 			],
-			"abilitiesBot": [
-				{
-					"entries": [
-						"Ekujae guardian."
-					],
-					"name": "Woodland Stride As"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"piercing"
+			"abilities": {
+				"mid": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"trigger": "An enemy damages one of Jahsi's allies within 15 feet of him.",
+						"entries": [
+							"The foe must choose one: The ally is unharmed by the triggering damage, or the ally gains resistance 10 against the triggering damage, and the enemy is {@condition enfeebled|CRB|enfeebled 2} until the end of its next turn."
+						],
+						"name": "Glimpse of Redemption"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"trigger": "Jahsi rolls a success on a Will save against an enemy's effect.",
+						"entries": [
+							"Jahsi gets a critical success instead."
+						],
+						"name": "Divine Providence"
+					}
 				],
-				"condition": [
-					"{@condition enfeebled}"
+				"bot": [
+					{
+						"entries": [
+							"Ekujae guardian."
+						],
+						"name": "Woodland Stride As"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"RA",
-				"TA",
-				"CC",
-				"UW"
-			]
+			}
 		},
 		{
 			"name": "Kishi",
@@ -3672,23 +3421,22 @@
 			"source": "AoA2",
 			"page": 88,
 			"level": 8,
-			"rarity": "Common",
-			"alignment": "NE",
-			"size": "Medium",
+			"traits": [
+				"ne",
+				"medium",
+				"fey"
+			],
 			"creatureType": [
 				"Fey"
 			],
 			"perception": {
-				"default": 14
+				"std": 14
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"low-light vision"
-				]
-			},
+			"senses": [
+				{
+					"name": "low-light vision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Common",
@@ -3698,49 +3446,41 @@
 			},
 			"skills": {
 				"Athletics": {
-					"default": 20
+					"std": 20
 				},
 				"Deception": {
-					"default": 20
+					"std": 20
 				},
 				"Diplomacy": {
-					"default": 19
+					"std": 19
 				},
 				"Society": {
-					"default": 15
+					"std": 15
 				},
 				"Stealth": {
-					"default": 18
+					"std": 18
 				}
 			},
 			"abilityMods": {
-				"Str": 6,
-				"Dex": 4,
-				"Con": 1,
-				"Int": 1,
-				"Wis": 2,
-				"Cha": 5
+				"str": 6,
+				"dex": 4,
+				"con": 1,
+				"int": 1,
+				"wis": 2,
+				"cha": 5
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+15, {@skill Stealth} +18 Str +6, Dex +4, Con +1, Int +1, Wis +2, Cha +5."
-					],
-					"name": "Society"
-				}
-			],
 			"ac": {
-				"default": 25
+				"std": 25
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 13
+				"fort": {
+					"std": 13
 				},
-				"Ref": {
-					"default": 18
+				"ref": {
+					"std": 18
 				},
-				"Will": {
-					"default": 17
+				"will": {
+					"std": 17
 				}
 			},
 			"hp": [
@@ -3755,7 +3495,6 @@
 					"name": "piercing"
 				}
 			],
-			"abilitiesMid": [],
 			"speed": {
 				"walk": 25
 			},
@@ -3804,58 +3543,55 @@
 					}
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"entries": [
-						"{@damage 1d10+9} piercing, DC 26 ({@condition grabbed} by jaws only)"
-					],
-					"name": "Constrict",
-					"generic": true
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "free"
-					},
-					"entries": [
-						"The kishi switches between showing its attractive human face and its snarling hyena face. A kishi can use its innate spell and its {@skill Deception} and {@skill Diplomacy} skills only when its human face is showing, and it can use its jaws {@action Strike} only when its hyena face is showing."
-					],
-					"name": "Head Spin"
-				},
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"entries": [
-						"The kishi {@action Stride||Strides} twice. If it ends its movement within melee reach of at least one enemy, it can make a melee {@action Strike} against that enemy."
-					],
-					"name": "Sudden Charge"
-				},
-				{
-					"entries": [
-						"A creature {@condition grabbed} in the kishi's jaws can't speak, including providing verbal components for spells. In addition, the creature takes a \u20132 circumstance penalty to {@action Escape}."
-					],
-					"name": "Vice-Like Jaws"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"piercing",
-					"slashing"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"+15, {@skill Stealth} +18 Str +6, Dex +4, Con +1, Int +1, Wis +2, Cha +5."
+						],
+						"name": "Society"
+					}
 				],
-				"condition": [
-					"{@condition grabbed}"
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"{@damage 1d10+9} piercing, DC 26 ({@condition grabbed} by jaws only)"
+						],
+						"name": "Constrict",
+						"generic": true
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "free"
+						},
+						"entries": [
+							"The kishi switches between showing its attractive human face and its snarling hyena face. A kishi can use its innate spell and its {@skill Deception} and {@skill Diplomacy} skills only when its human face is showing, and it can use its jaws {@action Strike} only when its hyena face is showing."
+						],
+						"name": "Head Spin"
+					},
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"The kishi {@action Stride||Strides} twice. If it ends its movement within melee reach of at least one enemy, it can make a melee {@action Strike} against that enemy."
+						],
+						"name": "Sudden Charge"
+					},
+					{
+						"entries": [
+							"A creature {@condition grabbed} in the kishi's jaws can't speak, including providing verbal components for spells. In addition, the creature takes a \u20132 circumstance penalty to {@action Escape}."
+						],
+						"name": "Vice-Like Jaws"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"CC"
-			]
+			}
 		},
 		{
 			"name": "Living Sap",
@@ -3863,63 +3599,56 @@
 			"source": "AoA2",
 			"page": 89,
 			"level": 6,
-			"rarity": "Uncommon",
-			"alignment": "N",
-			"size": "Medium",
 			"traits": [
-				"Mindless"
+				"uncommon",
+				"n",
+				"medium",
+				"mindless",
+				"ooze"
 			],
 			"creatureType": [
 				"Ooze"
 			],
 			"perception": {
-				"default": 7
+				"std": 7
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"motion sense 60 feet",
-					"no vision"
-				]
-			},
+			"senses": [
+				{
+					"name": "motion sense",
+					"range": 60
+				},
+				{
+					"name": "no vision"
+				}
+			],
 			"skills": {
 				"Athletics": {
-					"default": 17
+					"std": 17
 				},
 				"Stealth": {
-					"default": 10
+					"std": 10
 				}
 			},
 			"abilityMods": {
-				"Str": 5,
-				"Dex": -3,
-				"Con": 4,
-				"Int": -5,
-				"Wis": -5,
-				"Cha": -5
+				"str": 5,
+				"dex": -3,
+				"con": 4,
+				"int": -5,
+				"wis": -5,
+				"cha": -5
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"Living sap can sense nearby motion through vibration and air movement."
-					],
-					"name": "Motion Sense"
-				}
-			],
 			"ac": {
-				"default": 13
+				"std": 13
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 18
+				"fort": {
+					"std": 18
 				},
-				"Ref": {
-					"default": 7
+				"ref": {
+					"std": 7
 				},
-				"Will": {
-					"default": 5
+				"will": {
+					"std": 5
 				}
 			},
 			"hp": [
@@ -3928,31 +3657,19 @@
 					"abilities": null
 				}
 			],
-			"immunities": {
-				"damage": [
-					"mental"
-				],
-				"condition": [
-					"critical hits"
-				]
-			},
+			"immunities": [
+				"mental",
+				"critical hits"
+			],
 			"weaknesses": [
 				{
 					"amount": 10,
 					"name": "cold"
 				}
 			],
-			"abilitiesMid": [
-				{
-					"entries": [
-						"A creature that Strikes a living sap with a melee weapon must succeed at a DC 24 Reflex save or be disarmed of that weapon. If the creature critically fails, the weapon ends up in the living sap's space. A creature that hits a living sap with an unarmed attack must succeed at a DC 24 Reflex save or become {@condition grabbed} by the living sap until the end of its next turn."
-					],
-					"name": "Adhesive Body"
-				}
-			],
 			"speed": {
 				"walk": 10,
-				"climb ": 10
+				"climb": 10
 			},
 			"attacks": [
 				{
@@ -3968,38 +3685,43 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"entries": [
-						"DC 22, {@damage 2d6} acid, {@action Escape} DC 24, Rupture 10."
-					],
-					"name": "Engulf",
-					"generic": true
-				},
-				{
-					"entries": [
-						"A creature hit by a living sap's pseudopod {@action Strike} must succeed at a DC 24 Reflex save or become {@condition grabbed} until the end of the living sap's next turn."
-					],
-					"name": "Entangling Residue"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"acid",
-					"bludgeoning"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"Living sap can sense nearby motion through vibration and air movement."
+						],
+						"name": "Motion Sense"
+					}
 				],
-				"condition": [
-					"{@condition grabbed}"
+				"mid": [
+					{
+						"entries": [
+							"A creature that Strikes a living sap with a melee weapon must succeed at a DC 24 Reflex save or be disarmed of that weapon. If the creature critically fails, the weapon ends up in the living sap's space. A creature that hits a living sap with an unarmed attack must succeed at a DC 24 Reflex save or become {@condition grabbed} by the living sap until the end of its next turn."
+						],
+						"name": "Adhesive Body"
+					}
+				],
+				"bot": [
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"DC 22, {@damage 2d6} acid, {@action Escape} DC 24, Rupture 10."
+						],
+						"name": "Engulf",
+						"generic": true
+					},
+					{
+						"entries": [
+							"A creature hit by a living sap's pseudopod {@action Strike} must succeed at a DC 24 Reflex save or become {@condition grabbed} until the end of the living sap's next turn."
+						],
+						"name": "Entangling Residue"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"CC"
-			]
+			}
 		},
 		{
 			"name": "Mokele-mbembe",
@@ -4007,57 +3729,59 @@
 			"source": "AoA2",
 			"page": 90,
 			"level": 9,
-			"rarity": "Uncommon",
-			"alignment": "N",
-			"size": "Huge",
+			"traits": [
+				"uncommon",
+				"n",
+				"huge",
+				"animal"
+			],
 			"creatureType": [
 				"Animal"
 			],
 			"perception": {
-				"default": 15
+				"std": 15
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [
-					"scent 30 feet"
-				],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"type": "imprecise",
+					"name": "scent",
+					"range": 30
+				}
+			],
 			"skills": {
 				"Athletics": {
-					"default": 20
+					"std": 20
 				},
 				"Stealth": {
-					"default": 19
+					"std": 19
 				},
 				"Survival": {
-					"default": 17
+					"std": 17
 				}
 			},
 			"abilityMods": {
-				"Str": 7,
-				"Dex": 4,
-				"Con": 6,
-				"Int": -4,
-				"Wis": 2,
-				"Cha": 0
+				"str": 7,
+				"dex": 4,
+				"con": 6,
+				"int": -4,
+				"wis": 2,
+				"cha": 0
 			},
-			"abilitiesTop": [],
 			"ac": {
-				"default": 27
+				"std": 27
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 21
+				"fort": {
+					"std": 21
 				},
-				"Ref": {
-					"default": 15
+				"ref": {
+					"std": 15
 				},
-				"Will": {
-					"default": 17
+				"will": {
+					"std": 17
 				}
 			},
 			"hp": [
@@ -4066,10 +3790,9 @@
 					"abilities": null
 				}
 			],
-			"abilitiesMid": [],
 			"speed": {
 				"walk": 30,
-				"swim ": 30
+				"swim": 30
 			},
 			"attacks": [
 				{
@@ -4112,55 +3835,43 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 3,
-						"unit": "action"
+			"abilities": {
+				"bot": [
+					{
+						"activity": {
+							"number": 3,
+							"unit": "action"
+						},
+						"entries": [
+							"Large or smaller, foot, DC 28."
+						],
+						"name": "Trample",
+						"generic": true
 					},
-					"entries": [
-						"Large or smaller, foot, DC 28."
-					],
-					"name": "Trample",
-					"generic": true
-				},
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"traits": [
-						"sonic"
-					],
-					"entries": [
-						"The mokele-mbembe cracks its tail, creating a sonic boom in a 5-foot burst centered on a corner within reach of its tail {@action Strike}. Each creature in the burst's area must attempt a DC 28 Fortitude save. Mokele-mbembes are immune.",
-						{
-							"type": "successDegree",
-							"entries": {
-								"Critical Success": "The creature is unaffected.",
-								"Success": "The creature is {@condition stunned|CRB|stunned 1}.",
-								"Failure": "The creature is {@condition stunned|CRB|stunned 2}.",
-								"Critical Failure": "The creature is {@condition stunned|CRB|stunned 3}."
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"sonic"
+						],
+						"entries": [
+							"The mokele-mbembe cracks its tail, creating a sonic boom in a 5-foot burst centered on a corner within reach of its tail {@action Strike}. Each creature in the burst's area must attempt a DC 28 Fortitude save. Mokele-mbembes are immune.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": "The creature is unaffected.",
+									"Success": "The creature is {@condition stunned|CRB|stunned 1}.",
+									"Failure": "The creature is {@condition stunned|CRB|stunned 2}.",
+									"Critical Failure": "The creature is {@condition stunned|CRB|stunned 3}."
+								}
 							}
-						}
-					],
-					"name": "Whip Tail"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning",
-					"piercing"
-				],
-				"condition": [
-					"{@condition stunned}"
+						],
+						"name": "Whip Tail"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"RC",
-				"CC"
-			]
+			}
 		},
 		{
 			"name": "Nketiah",
@@ -4168,27 +3879,25 @@
 			"source": "AoA2",
 			"page": 79,
 			"level": 6,
-			"rarity": "Unique",
-			"alignment": "CG",
-			"size": "Medium",
 			"traits": [
-				"Elf",
-				"Human"
+				"unique",
+				"cg",
+				"medium",
+				"elf",
+				"human",
+				"humanoid"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 12
+				"std": 12
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"low-light vision"
-				]
-			},
+			"senses": [
+				{
+					"name": "low-light vision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Celestial",
@@ -4201,77 +3910,57 @@
 			},
 			"skills": {
 				"Arcana": {
-					"default": 11
+					"std": 11
 				},
 				"Athletics": {
-					"default": 9,
+					"std": 9,
 					"to Climb": 13
 				},
 				"Deception": {
-					"default": 12
+					"std": 12
 				},
 				"Diplomacy": {
-					"default": 13
+					"std": 13
 				},
 				"Nature": {
-					"default": 10
+					"std": 10
 				},
 				"Occultism": {
-					"default": 11
+					"std": 11
 				},
 				"Performance": {
-					"default": 14
+					"std": 14
 				},
 				"Society": {
-					"default": 15
+					"std": 15
 				},
 				"Survival": {
-					"default": 10
+					"std": 10
 				},
 				"Ekujae Lore": {
-					"default": 15
+					"std": 15
 				}
 			},
 			"abilityMods": {
-				"Str": 1,
-				"Dex": 3,
-				"Con": 0,
-				"Int": 3,
-				"Wis": 2,
-				"Cha": 4
+				"str": 1,
+				"dex": 3,
+				"con": 0,
+				"int": 3,
+				"wis": 2,
+				"cha": 4
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"Skills {@skill Arcana} +11, {@skill Athletics} +9 (+13 to {@action Climb}), {@skill Deception} +12,"
-					],
-					"name": "Mwangi, Sylvan"
-				},
-				{
-					"entries": [
-						"+13, {@skill Lore||Ekujae Lore} +15, {@skill Nature} +10, {@skill Occultism} +11,"
-					],
-					"name": "Diplomacy"
-				},
-				{
-					"entries": [
-						"+14, {@skill Society} +15, {@skill Survival} +10 Str +1, Dex +3, Con +0, Int +3, Wis +2, Cha +4 Items black adder venom (2), +1 striking longbow (20 arrows), studded leather, verdant staff."
-					],
-					"name": "Performance"
-				}
-			],
 			"ac": {
-				"default": 23
+				"std": 23
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 8
+				"fort": {
+					"std": 8
 				},
-				"Ref": {
-					"default": 13
+				"ref": {
+					"std": 13
 				},
-				"Will": {
-					"default": 12
+				"will": {
+					"std": 12
 				}
 			},
 			"hp": [
@@ -4280,10 +3969,9 @@
 					"abilities": null
 				}
 			],
-			"abilitiesMid": [],
 			"speed": {
 				"walk": 35,
-				"climb ": 20
+				"climb": 20
 			},
 			"attacks": [
 				{
@@ -4465,42 +4153,51 @@
 					}
 				}
 			],
-			"abilitiesBot": [
-				{
-					"traits": [
-						"primal"
-					],
-					"entries": [
-						"This magical limb functions in all ways as Nketiah's original arm. The arm can extend a vine to attack in melee, and using the arm, Nketiah has a climb Speed of 20 feet and Climbs as if she had master proficiency in {@skill Athletics}. Finally, the arm's primal magic allows her to use the spells from her verdant staff as if she had all of those spells on her spell list."
-					],
-					"name": "Arborean Arm"
-				},
-				{
-					"entries": [
-						"Elf Nketiah can move at half her Speed on a successful {@action Climb} check and at full Speed on a critical success. She can always {@action Take Cover} within forest terrain to gain cover, even if she's not next to a wall or obstacle."
-					],
-					"name": "Woodland"
-				},
-				{
-					"entries": [
-						"{@action Stride} Nketiah ignores difficult terrain caused by plants."
-					],
-					"name": "Woodland"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning",
-					"piercing"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"Skills {@skill Arcana} +11, {@skill Athletics} +9 (+13 to {@action Climb}), {@skill Deception} +12,"
+						],
+						"name": "Mwangi, Sylvan"
+					},
+					{
+						"entries": [
+							"+13, {@skill Lore||Ekujae Lore} +15, {@skill Nature} +10, {@skill Occultism} +11,"
+						],
+						"name": "Diplomacy"
+					},
+					{
+						"entries": [
+							"+14, {@skill Society} +15, {@skill Survival} +10 Str +1, Dex +3, Con +0, Int +3, Wis +2, Cha +4 Items black adder venom (2), +1 striking longbow (20 arrows), studded leather, verdant staff."
+						],
+						"name": "Performance"
+					}
 				],
-				"condition": []
-			},
-			"misc": [
-				"MA",
-				"RC",
-				"RA",
-				"UW"
-			]
+				"bot": [
+					{
+						"traits": [
+							"primal"
+						],
+						"entries": [
+							"This magical limb functions in all ways as Nketiah's original arm. The arm can extend a vine to attack in melee, and using the arm, Nketiah has a climb Speed of 20 feet and Climbs as if she had master proficiency in {@skill Athletics}. Finally, the arm's primal magic allows her to use the spells from her verdant staff as if she had all of those spells on her spell list."
+						],
+						"name": "Arborean Arm"
+					},
+					{
+						"entries": [
+							"Elf Nketiah can move at half her Speed on a successful {@action Climb} check and at full Speed on a critical success. She can always {@action Take Cover} within forest terrain to gain cover, even if she's not next to a wall or obstacle."
+						],
+						"name": "Woodland"
+					},
+					{
+						"entries": [
+							"{@action Stride} Nketiah ignores difficult terrain caused by plants."
+						],
+						"name": "Woodland"
+					}
+				]
+			}
 		},
 		{
 			"name": "Racharak",
@@ -4508,30 +4205,32 @@
 			"source": "AoA2",
 			"page": 34,
 			"level": 8,
-			"rarity": "Unique",
-			"alignment": "CE",
-			"size": "Small",
 			"traits": [
-				"Charau-ka",
-				"Fire"
+				"unique",
+				"ce",
+				"small",
+				"charau-ka",
+				"dragon",
+				"fire",
+				"humanoid"
 			],
 			"creatureType": [
 				"Humanoid",
 				"Dragon"
 			],
 			"perception": {
-				"default": 16
+				"std": 16
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [
-					"scent 30 feet"
-				],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"type": "imprecise",
+					"name": "scent",
+					"range": 30
+				}
+			],
 			"languages": {
 				"languages": [
 					"Draconic",
@@ -4541,45 +4240,44 @@
 			},
 			"skills": {
 				"Arcana": {
-					"default": 12
+					"std": 12
 				},
 				"Athletics": {
-					"default": 18
+					"std": 18
 				},
 				"Crafting": {
-					"default": 10
+					"std": 10
 				},
 				"Religion": {
-					"default": 14
+					"std": 14
 				},
 				"Stealth": {
-					"default": 15
+					"std": 15
 				},
 				"Survival": {
-					"default": 14
+					"std": 14
 				}
 			},
 			"abilityMods": {
-				"Str": 6,
-				"Dex": 3,
-				"Con": 5,
-				"Int": 0,
-				"Wis": 4,
-				"Cha": 1
+				"str": 6,
+				"dex": 3,
+				"con": 5,
+				"int": 0,
+				"wis": 4,
+				"cha": 1
 			},
-			"abilitiesTop": [],
 			"ac": {
-				"default": 27
+				"std": 27
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 19
+				"fort": {
+					"std": 19
 				},
-				"Ref": {
-					"default": 13
+				"ref": {
+					"std": 13
 				},
-				"Will": {
-					"default": 16
+				"will": {
+					"std": 16
 				}
 			},
 			"hp": [
@@ -4588,31 +4286,14 @@
 					"abilities": null
 				}
 			],
-			"immunities": {
-				"damage": [
-					"fire"
-				],
-				"condition": [
-					"paralyzed",
-					"sleep"
-				]
-			},
-			"abilitiesMid": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"trigger": "A creature within reach of Racharak's tail uses a move action or leaves a square during a move action it's using.",
-					"entries": [
-						"Racharak makes a tail {@action Strike} at the creature with a \u20132 penalty. If it hits, she disrupts the creature's action."
-					],
-					"name": "Tail Swipe"
-				}
+			"immunities": [
+				"fire",
+				"paralyzed",
+				"sleep"
 			],
 			"speed": {
 				"walk": 30,
-				"climb ": 30
+				"climb": 30
 			},
 			"attacks": [
 				{
@@ -4667,62 +4348,61 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"traits": [
-						"divine",
-						"evocation",
-						"fire"
-					],
-					"entries": [
-						"Racharak breathes flames that deals {@damage 9d6} fire damage to all creatures in a 30-foot cone (DC 26 basic Reflex save)",
-						"She can't use Breath Weapon again for {@dice 1d4} rounds."
-					],
-					"name": "Breath Weapon"
-				},
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"entries": [
-						"Racharak makes two claw Strikes and one bite {@action Strike} in any order."
-					],
-					"name": "Draconic Frenzy"
-				},
-				{
-					"entries": [
-						"As charau-ka warrior (page 84)."
-					],
-					"name": "Shrieking Frenzy"
-				},
-				{
-					"entries": [
-						"As charau-ka warrior (page 84)."
-					],
-					"name": "Thrown Weapon Mastery"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning",
-					"fire",
-					"piercing",
-					"slashing"
+			"abilities": {
+				"mid": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"trigger": "A creature within reach of Racharak's tail uses a move action or leaves a square during a move action it's using.",
+						"entries": [
+							"Racharak makes a tail {@action Strike} at the creature with a \u20132 penalty. If it hits, she disrupts the creature's action."
+						],
+						"name": "Tail Swipe"
+					}
 				],
-				"condition": []
-			},
-			"misc": [
-				"MA",
-				"RC",
-				"RA",
-				"TA",
-				"AD"
-			]
+				"bot": [
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"divine",
+							"evocation",
+							"fire"
+						],
+						"entries": [
+							"Racharak breathes flames that deals {@damage 9d6} fire damage to all creatures in a 30-foot cone (DC 26 basic Reflex save)",
+							"She can't use Breath Weapon again for {@dice 1d4} rounds."
+						],
+						"name": "Breath Weapon"
+					},
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"Racharak makes two claw Strikes and one bite {@action Strike} in any order."
+						],
+						"name": "Draconic Frenzy"
+					},
+					{
+						"entries": [
+							"As charau-ka warrior (page 84)."
+						],
+						"name": "Shrieking Frenzy"
+					},
+					{
+						"entries": [
+							"As charau-ka warrior (page 84)."
+						],
+						"name": "Thrown Weapon Mastery"
+					}
+				]
+			}
 		},
 		{
 			"name": "Sabosan",
@@ -4730,26 +4410,31 @@
 			"source": "AoA2",
 			"page": 91,
 			"level": 5,
-			"rarity": "Common",
-			"alignment": "NE",
-			"size": "Medium",
+			"traits": [
+				"ne",
+				"medium",
+				"humanoid"
+			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 10
+				"std": 10
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [
-					"scent 30 feet"
-				],
-				"vague": [],
-				"other": [
-					"echolocation 20 feet",
-					"low-light vision"
-				]
-			},
+			"senses": [
+				{
+					"name": "echolocation",
+					"range": 20
+				},
+				{
+					"name": "low-light vision"
+				},
+				{
+					"type": "imprecise",
+					"name": "scent",
+					"range": 30
+				}
+			],
 			"languages": {
 				"languages": [
 					"Abyssal",
@@ -4759,39 +4444,38 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 16
+					"std": 16
 				},
 				"Athletics": {
-					"default": 11
+					"std": 11
 				},
 				"Stealth": {
-					"default": 16
+					"std": 16
 				}
 			},
 			"abilityMods": {
-				"Str": 4,
-				"Dex": 5,
-				"Con": 2,
-				"Int": -1,
-				"Wis": 1,
-				"Cha": 0
+				"str": 4,
+				"dex": 5,
+				"con": 2,
+				"int": -1,
+				"wis": 1,
+				"cha": 0
 			},
 			"items": [
 				"spear"
 			],
-			"abilitiesTop": [],
 			"ac": {
-				"default": 22
+				"std": 22
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 11
+				"fort": {
+					"std": 11
 				},
-				"Ref": {
-					"default": 14
+				"ref": {
+					"std": 14
 				},
-				"Will": {
-					"default": 10
+				"will": {
+					"std": 10
 				}
 			},
 			"hp": [
@@ -4800,10 +4484,9 @@
 					"abilities": null
 				}
 			],
-			"abilitiesMid": [],
 			"speed": {
 				"walk": 25,
-				"fly ": 25
+				"fly": 25
 			},
 			"attacks": [
 				{
@@ -4857,61 +4540,45 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
+			"abilities": {
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"requirements": "The sabosan has a creature {@condition grabbed}.",
+						"entries": [
+							"The sabosan drains blood from the creature. The creature must succeed at a DC 23 Fortitude save or become {@condition drained|CRB|drained 1}. The sabosan gains a number of temporary Hit Points equal to the number of Hit Points lost by the creature."
+						],
+						"name": "Drain Blood"
 					},
-					"requirements": "The sabosan has a creature {@condition grabbed}.",
-					"entries": [
-						"The sabosan drains blood from the creature. The creature must succeed at a DC 23 Fortitude save or become {@condition drained|CRB|drained 1}. The sabosan gains a number of temporary Hit Points equal to the number of Hit Points lost by the creature."
-					],
-					"name": "Drain Blood"
-				},
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"auditory"
+						],
+						"entries": [
+							"The sabosan emits a deafening cry in a 30-foot cone.",
+							"Non-sabosan creatures in this area must each succeed at a DC 23 Fortitude save or be {@condition deafened} for 1 minute."
+						],
+						"name": "Fell Shriek"
 					},
-					"traits": [
-						"auditory"
-					],
-					"entries": [
-						"The sabosan emits a deafening cry in a 30-foot cone.",
-						"Non-sabosan creatures in this area must each succeed at a DC 23 Fortitude save or be {@condition deafened} for 1 minute."
-					],
-					"name": "Fell Shriek"
-				},
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"entries": [
-						"The sabosan {@action Stride||Strides} up to double its Speed and then makes a claw {@action Strike}. If the sabosan moved at least 20 feet, it deals an additional {@dice 1d6} damage on a hit."
-					],
-					"name": "Powerful Charge"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"piercing",
-					"slashing"
-				],
-				"condition": [
-					"{@condition deafened}",
-					"{@condition drained}",
-					"{@condition grabbed}"
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"The sabosan {@action Stride||Strides} up to double its Speed and then makes a claw {@action Strike}. If the sabosan moved at least 20 feet, it deals an additional {@dice 1d6} damage on a hit."
+						],
+						"name": "Powerful Charge"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"RA",
-				"TA",
-				"CC",
-				"UW"
-			]
+			}
 		}
 	]
 }

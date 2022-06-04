@@ -303,7 +303,7 @@ class AncestriesPage extends BaseComponent {
 		let names = this._getActiveHeritages().map(it => it.name);
 		names.push(...this._getActiveHeritages().map(it => it.traits).filter(Boolean).flat())
 		names.push(this.activeAncestry.name);
-		Object.keys(this._featFilter._ancestryFilter.getValues().Ancestries).forEach(key => {
+		Object.keys(this._featFilter._ancestryFilter.getValues()[this._featFilter._ancestryFilter.header]).forEach(key => {
 			if (!key.startsWith("_")) this._featFilter._ancestryFilter.setValue(key, 0)
 		});
 		names.forEach(name => { this._featFilter._ancestryFilter.setValue(name, 1) });
@@ -888,11 +888,11 @@ class AncestriesPage extends BaseComponent {
 				...Parser.speedToFullMap(anc.speed),
 			],
 		};
-		if (anc.rarity) statSidebar.entries.unshift({type: "pf2-title", name: "Rarity"}, `{@trait ${anc.rarity}}`);
-		if (anc.boosts) statSidebar.entries.push({type: "pf2-title", name: "Ability Boosts"}, ...anc.boosts);
-		if (anc.flaw) statSidebar.entries.push({type: "pf2-title", name: "Ability Flaw"}, ...anc.flaw);
+		if (anc.rarity) statSidebar.entries.unshift({type: "pf2-title", name: "Rarity"}, `{@trait ${anc.rarity.toTitleCase()}}`);
+		if (anc.boosts) statSidebar.entries.push({type: "pf2-title", name: "Ability Boosts"}, anc.boosts.join(", ").toTitleCase());
+		if (anc.flaw) statSidebar.entries.push({type: "pf2-title", name: "Ability Flaw"}, anc.flaw.join(", ").toTitleCase());
 		if (anc.languages) statSidebar.entries.push({type: "pf2-title", name: "Languages"}, ...anc.languages);
-		if (anc.traits) statSidebar.entries.push({type: "pf2-title", name: "Traits"}, ...anc.traits.map(t => `{@trait ${t}}`));
+		if (anc.traits) statSidebar.entries.push({type: "pf2-title", name: "Traits"}, anc.traits.map(t => `{@trait ${t.toTitleCase()}}`).join(", "));
 		if (anc.feature) statSidebar.entries.push({type: "pf2-title", name: anc.feature.name}, ...anc.feature.entries);
 		if (anc.features) anc.features.forEach(f => statSidebar.entries.push({type: "pf2-title", name: f.name}, ...f.entries));
 		const ancestryName = {
@@ -1068,7 +1068,7 @@ class AncestriesPage extends BaseComponent {
 				...boxSubhashes,
 				...cpySubHashes,
 				`flop.ancestries.ancestriessource:extend`,
-			].filter(Boolean), true);
+			].filter(Boolean), {force: true});
 			this._listHeritage.visibleItems.filter(it => it.values.stateKey).forEach(it => this._state[it.values.stateKey] = true);
 			this._listVeHeritage.visibleItems.filter(it => it.values.stateKey).forEach(it => this._state[it.values.stateKey] = true);
 			$selFilterPreset.val("-1");
@@ -1208,8 +1208,8 @@ class AncestriesPage extends BaseComponent {
 				anc.flaw || [],
 				anc.hp,
 				anc.size,
-				anc._fspeed,
-				anc._fspeedtypes,
+				anc._fSpeed,
+				anc._fSpeedtypes,
 				anc._flanguages,
 				anc.traits,
 				anc._fMisc,
@@ -1226,8 +1226,8 @@ class AncestriesPage extends BaseComponent {
 				anc.flaw || [],
 				anc.hp,
 				anc.size,
-				anc._fspeed,
-				anc._fspeedtypes,
+				anc._fSpeed,
+				anc._fSpeedtypes,
 				anc._flanguages,
 				anc.traits,
 				anc._fMisc,
@@ -1302,7 +1302,7 @@ class AncestriesPage extends BaseComponent {
 	_render_renderFeat () {
 		const $featStats = $(`#featstats`).empty();
 		const feat = this.activeFeat;
-		RenderFeats.$getRenderedFeat(feat).appendTo($featStats);
+		$featStats.append(Renderer.feat.getRenderedString(feat, {renderLeadsTo: true}));
 		$featStats.show();
 		this._updateFeatHref();
 	}

@@ -6,17 +6,18 @@
 			"source": "AoA1",
 			"page": 19,
 			"level": 2,
-			"rarity": "Unique",
-			"alignment": "LN",
-			"size": "Medium",
 			"traits": [
-				"Human"
+				"unique",
+				"ln",
+				"medium",
+				"human",
+				"humanoid"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 7
+				"std": 7
 			},
 			"languages": {
 				"languages": [
@@ -28,63 +29,49 @@
 			},
 			"skills": {
 				"Athletics": {
-					"default": 8
+					"std": 8
 				},
 				"Intimidation": {
-					"default": 4
+					"std": 4
 				},
 				"Religion": {
-					"default": 5
+					"std": 5
 				},
 				"Society": {
-					"default": 4
+					"std": 4
 				}
 			},
 			"abilityMods": {
-				"Str": 4,
-				"Dex": 1,
-				"Con": 3,
-				"Int": 0,
-				"Wis": 1,
-				"Cha": 0
+				"str": 4,
+				"dex": 1,
+				"con": 3,
+				"int": 0,
+				"wis": 1,
+				"cha": 0
 			},
 			"items": [
 				"full plate armor",
 				"greatsword",
 				"javelin (2)"
 			],
-			"abilitiesTop": [],
 			"ac": {
-				"default": 20
+				"std": 20
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 9
+				"fort": {
+					"std": 9
 				},
-				"Ref": {
-					"default": 7
+				"ref": {
+					"std": 7
 				},
-				"Will": {
-					"default": 5
+				"will": {
+					"std": 5
 				}
 			},
 			"hp": [
 				{
 					"hp": 34,
 					"abilities": null
-				}
-			],
-			"abilitiesMid": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"entries": [
-						"]"
-					],
-					"name": "Attack of Opportunity",
-					"generic": true
 				}
 			],
 			"speed": {
@@ -96,7 +83,7 @@
 					"name": "greatsword",
 					"attack": 10,
 					"traits": [
-						"versatile P"
+						"versatile p"
 					],
 					"effects": [],
 					"damage": "{@damage 1d12+4} slashing",
@@ -109,7 +96,7 @@
 					"name": "javelin",
 					"attack": 7,
 					"traits": [
-						"versatile P"
+						"versatile p"
 					],
 					"effects": [],
 					"damage": "{@damage 1d6+4} piercing",
@@ -118,42 +105,45 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"traits": [
-						"Pathfinder Core Rulebook 146"
-					],
-					"entries": [],
-					"name": "Intimidating Strike"
-				},
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"traits": [
-						"Pathfinder Core Rulebook 144"
-					],
-					"entries": [],
-					"name": "Power Attack"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"piercing",
-					"slashing"
+			"abilities": {
+				"mid": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"entries": [
+							"]"
+						],
+						"name": "Attack of Opportunity",
+						"generic": true
+					}
 				],
-				"condition": []
-			},
-			"misc": [
-				"MA",
-				"RA",
-				"UW"
-			]
+				"bot": [
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"pathfinder core rulebook 146"
+						],
+						"entries": [],
+						"name": "Intimidating Strike"
+					},
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"pathfinder core rulebook 144"
+						],
+						"entries": [],
+						"name": "Power Attack"
+					}
+				]
+			}
 		},
 		{
 			"name": "Anadi Elder",
@@ -161,17 +151,18 @@
 			"source": "AoA1",
 			"page": 85,
 			"level": 6,
-			"rarity": "Uncommon",
-			"alignment": "CG",
-			"size": "Medium",
 			"traits": [
-				"Anadi"
+				"uncommon",
+				"cg",
+				"medium",
+				"anadi",
+				"humanoid"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 15
+				"std": 15
 			},
 			"languages": {
 				"languages": [
@@ -182,55 +173,54 @@
 			},
 			"skills": {
 				"Athletics": {
-					"default": 12,
+					"std": 12,
 					"to Climb in true or spider form": 14
 				},
 				"Crafting": {
-					"default": 13,
+					"std": 13,
 					"weaving": 17
 				},
 				"Deception": {
-					"default": 12
+					"std": 12
 				},
 				"Diplomacy": {
-					"default": 10
+					"std": 10
 				},
 				"Nature": {
-					"default": 14
+					"std": 14
 				},
 				"Society": {
-					"default": 9
+					"std": 9
 				},
 				"Survival": {
-					"default": 12
+					"std": 12
 				}
 			},
 			"abilityMods": {
-				"Str": 2,
-				"Dex": 4,
-				"Con": 0,
-				"Int": 1,
-				"Wis": 4,
-				"Cha": 2
+				"str": 2,
+				"dex": 4,
+				"con": 0,
+				"int": 1,
+				"wis": 4,
+				"cha": 2
 			},
 			"items": [
 				"composite longbow (20 arrows)",
 				"hide armor",
 				"shortsword"
 			],
-			"abilitiesTop": [],
 			"ac": {
-				"default": 23
+				"std": 23
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 10
+				"fort": {
+					"std": 10
 				},
-				"Ref": {
-					"default": 14
+				"ref": {
+					"std": 14
 				},
-				"Will": {
-					"default": 16
+				"will": {
+					"std": 16
 				}
 			},
 			"hp": [
@@ -239,10 +229,9 @@
 					"abilities": null
 				}
 			],
-			"abilitiesMid": [],
 			"speed": {
 				"walk": 25,
-				"climb ": 25
+				"climb": 25
 			},
 			"attacks": [
 				{
@@ -252,7 +241,7 @@
 					"traits": [
 						"agile",
 						"finesse",
-						"versatile S"
+						"versatile s"
 					],
 					"effects": [],
 					"damage": "{@damage 1d6+5} piercing",
@@ -360,76 +349,63 @@
 					}
 				}
 			],
-			"abilitiesBot": [
-				{
-					"entries": [
-						{
-							"type": "affliction",
-							"name": "",
-							"traits": [
-								"poison"
-							],
-							"note": "",
-							"DC": 22,
-							"savingThrow": "Fortitude",
-							"maxDuration": "6 rounds",
-							"stages": [
-								{
-									"stage": 1,
-									"entry": "{@damage 2d6} poison damage and {@condition flat-footed}",
-									"duration": "1 round"
-								},
-								{
-									"stage": 2,
-									"entry": "{@damage 2d6} poison damage, {@condition flat-footed}, and {@condition clumsy|CRB|clumsy 1}",
-									"duration": "1 round"
-								}
-							]
-						}
-					],
-					"name": "Anadi Venom"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
+			"abilities": {
+				"bot": [
+					{
+						"entries": [
+							{
+								"type": "affliction",
+								"name": "",
+								"traits": [
+									"poison"
+								],
+								"note": "",
+								"DC": 22,
+								"savingThrow": "Fortitude",
+								"maxDuration": "6 rounds",
+								"stages": [
+									{
+										"stage": 1,
+										"entry": "{@damage 2d6} poison damage and {@condition flat-footed}",
+										"duration": "1 round"
+									},
+									{
+										"stage": 2,
+										"entry": "{@damage 2d6} poison damage, {@condition flat-footed}, and {@condition clumsy|CRB|clumsy 1}",
+										"duration": "1 round"
+									}
+								]
+							}
+						],
+						"name": "Anadi Venom"
 					},
-					"traits": [
-						"arcane",
-						"concentrate",
-						"polymorph",
-						"transmutation"
-					],
-					"entries": [
-						"As anadi hunter."
-					],
-					"name": "Change Shape",
-					"generic": true,
-					"entries_as_xyz": "Ability not found: '{@action Change Shape|LOAG} As anadi hunter.' in Anadi Elder, p.85"
-				},
-				{
-					"entries": [
-						"As anadi hunter."
-					],
-					"name": "Spin Silk",
-					"entries_as_xyz": "Ability not found: 'Spin Silk As anadi hunter.' in Anadi Elder, p.85"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"piercing",
-					"poison"
-				],
-				"condition": [
-					"{@condition flat-footed}"
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"arcane",
+							"concentrate",
+							"polymorph",
+							"transmutation"
+						],
+						"entries": [
+							"As anadi hunter."
+						],
+						"name": "Change Shape",
+						"generic": true,
+						"entries_as_xyz": "Ability not found: '{@action Change Shape|LOAG} As anadi hunter.' in Anadi Elder, p.85"
+					},
+					{
+						"entries": [
+							"As anadi hunter."
+						],
+						"name": "Spin Silk",
+						"entries_as_xyz": "Ability not found: 'Spin Silk As anadi hunter.' in Anadi Elder, p.85"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"RA",
-				"CC",
-				"UW"
-			]
+			}
 		},
 		{
 			"name": "Anadi Hunter",
@@ -437,17 +413,18 @@
 			"source": "AoA1",
 			"page": 84,
 			"level": 2,
-			"rarity": "Uncommon",
-			"alignment": "CG",
-			"size": "Medium",
 			"traits": [
-				"Anadi"
+				"uncommon",
+				"cg",
+				"medium",
+				"anadi",
+				"humanoid"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 7
+				"std": 7
 			},
 			"languages": {
 				"languages": [
@@ -458,43 +435,42 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 8
+					"std": 8
 				},
 				"Athletics": {
-					"default": 6
+					"std": 6
 				},
 				"Crafting": {
-					"default": 6,
+					"std": 6,
 					"weaving": 10
 				},
 				"Nature": {
-					"default": 5
+					"std": 5
 				},
 				"Stealth": {
-					"default": 8
+					"std": 8
 				}
 			},
 			"abilityMods": {
-				"Str": 2,
-				"Dex": 4,
-				"Con": 2,
-				"Int": 0,
-				"Wis": 1,
-				"Cha": 0
+				"str": 2,
+				"dex": 4,
+				"con": 2,
+				"int": 0,
+				"wis": 1,
+				"cha": 0
 			},
-			"abilitiesTop": [],
 			"ac": {
-				"default": 19
+				"std": 19
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 6
+				"fort": {
+					"std": 6
 				},
-				"Ref": {
-					"default": 10
+				"ref": {
+					"std": 10
 				},
-				"Will": {
-					"default": 7
+				"will": {
+					"std": 7
 				}
 			},
 			"hp": [
@@ -503,10 +479,9 @@
 					"abilities": null
 				}
 			],
-			"abilitiesMid": [],
 			"speed": {
 				"walk": 25,
-				"climb ": 25
+				"climb": 25
 			},
 			"attacks": [
 				{
@@ -516,7 +491,7 @@
 					"traits": [
 						"agile",
 						"finesse",
-						"versatile S"
+						"versatile s"
 					],
 					"effects": [],
 					"damage": "{@damage 1d6+2} piercing",
@@ -537,17 +512,6 @@
 						"piercing"
 					]
 				}
-			],
-			"abilitiesBot": [],
-			"inflicts": {
-				"damage": [
-					"piercing"
-				],
-				"condition": []
-			},
-			"misc": [
-				"MA",
-				"UW"
 			]
 		},
 		{
@@ -556,17 +520,18 @@
 			"source": "AoA1",
 			"page": 85,
 			"level": 4,
-			"rarity": "Uncommon",
-			"alignment": "CG",
-			"size": "Medium",
 			"traits": [
-				"Anadi"
+				"uncommon",
+				"cg",
+				"medium",
+				"anadi",
+				"humanoid"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 12
+				"std": 12
 			},
 			"languages": {
 				"languages": [
@@ -577,58 +542,50 @@
 			},
 			"skills": {
 				"Athletics": {
-					"default": 6,
+					"std": 6,
 					"to Climb in true or spider form": 8
 				},
 				"Crafting": {
-					"default": 9,
+					"std": 9,
 					"weaving": 13
 				},
 				"Deception": {
-					"default": 8
+					"std": 8
 				},
 				"Diplomacy": {
-					"default": 10
+					"std": 10
 				},
 				"Nature": {
-					"default": 12
+					"std": 12
 				},
 				"Survival": {
-					"default": 10
+					"std": 10
 				}
 			},
 			"abilityMods": {
-				"Str": 0,
-				"Dex": 2,
-				"Con": 0,
-				"Int": 1,
-				"Wis": 4,
-				"Cha": 2
+				"str": 0,
+				"dex": 2,
+				"con": 0,
+				"int": 1,
+				"wis": 4,
+				"cha": 2
 			},
 			"items": [
 				"hide armor",
 				"shortsword"
 			],
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+8, {@skill Diplomacy} +10, {@skill Nature} +12, {@skill Survival} +10 Str +0, Dex +2, Con +0, Int +1, Wis +4, Cha +2 Items hide armor, shortsword."
-					],
-					"name": "Deception"
-				}
-			],
 			"ac": {
-				"default": 21
+				"std": 21
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 8
+				"fort": {
+					"std": 8
 				},
-				"Ref": {
-					"default": 10
+				"ref": {
+					"std": 10
 				},
-				"Will": {
-					"default": 12
+				"will": {
+					"std": 12
 				}
 			},
 			"hp": [
@@ -637,10 +594,9 @@
 					"abilities": null
 				}
 			],
-			"abilitiesMid": [],
 			"speed": {
 				"walk": 25,
-				"climb ": 25
+				"climb": 25
 			},
 			"attacks": [
 				{
@@ -650,7 +606,7 @@
 					"traits": [
 						"agile",
 						"finesse",
-						"versatile S"
+						"versatile s"
 					],
 					"effects": [],
 					"damage": "{@damage 1d6+3} piercing",
@@ -724,75 +680,71 @@
 					}
 				}
 			],
-			"abilitiesBot": [
-				{
-					"entries": [
-						{
-							"type": "affliction",
-							"name": "",
-							"traits": [
-								"poison"
-							],
-							"note": "",
-							"DC": 20,
-							"savingThrow": "Fortitude",
-							"maxDuration": "4 rounds",
-							"stages": [
-								{
-									"stage": 1,
-									"entry": "{@damage 1d6} poison damage and {@condition flat-footed}",
-									"duration": "1 round"
-								},
-								{
-									"stage": 2,
-									"entry": "{@damage 1d6} poison damage, {@condition flat-footed}, and {@condition clumsy|CRB|clumsy 1}",
-									"duration": "1 round"
-								}
-							]
-						}
-					],
-					"name": "Anadi Venom"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"traits": [
-						"arcane",
-						"concentrate",
-						"polymorph",
-						"transmutation"
-					],
-					"entries": [
-						"As anadi hunter."
-					],
-					"name": "Change Shape",
-					"generic": true,
-					"entries_as_xyz": "Ability not found: '{@action Change Shape|LOAG} As anadi hunter.' in Anadi Sage, p.85"
-				},
-				{
-					"entries": [
-						"As anadi hunter."
-					],
-					"name": "Spin Silk",
-					"entries_as_xyz": "Ability not found: 'Spin Silk As anadi hunter.' in Anadi Sage, p.85"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"piercing",
-					"poison"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"+8, {@skill Diplomacy} +10, {@skill Nature} +12, {@skill Survival} +10 Str +0, Dex +2, Con +0, Int +1, Wis +4, Cha +2 Items hide armor, shortsword."
+						],
+						"name": "Deception"
+					}
 				],
-				"condition": [
-					"{@condition flat-footed}"
+				"bot": [
+					{
+						"entries": [
+							{
+								"type": "affliction",
+								"name": "",
+								"traits": [
+									"poison"
+								],
+								"note": "",
+								"DC": 20,
+								"savingThrow": "Fortitude",
+								"maxDuration": "4 rounds",
+								"stages": [
+									{
+										"stage": 1,
+										"entry": "{@damage 1d6} poison damage and {@condition flat-footed}",
+										"duration": "1 round"
+									},
+									{
+										"stage": 2,
+										"entry": "{@damage 1d6} poison damage, {@condition flat-footed}, and {@condition clumsy|CRB|clumsy 1}",
+										"duration": "1 round"
+									}
+								]
+							}
+						],
+						"name": "Anadi Venom"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"arcane",
+							"concentrate",
+							"polymorph",
+							"transmutation"
+						],
+						"entries": [
+							"As anadi hunter."
+						],
+						"name": "Change Shape",
+						"generic": true,
+						"entries_as_xyz": "Ability not found: '{@action Change Shape|LOAG} As anadi hunter.' in Anadi Sage, p.85"
+					},
+					{
+						"entries": [
+							"As anadi hunter."
+						],
+						"name": "Spin Silk",
+						"entries_as_xyz": "Ability not found: 'Spin Silk As anadi hunter.' in Anadi Sage, p.85"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"CC",
-				"UW"
-			]
+			}
 		},
 		{
 			"name": "Bloody Blade Mercenary",
@@ -800,19 +752,19 @@
 			"source": "AoA1",
 			"page": 50,
 			"level": 1,
-			"rarity": "Common",
-			"alignment": "NE",
-			"size": "Medium",
 			"traits": [
-				"Half-orc",
-				"Human",
-				"Orc"
+				"ne",
+				"medium",
+				"half-orc",
+				"human",
+				"humanoid",
+				"orc"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 6
+				"std": 6
 			},
 			"languages": {
 				"languages": [
@@ -823,55 +775,47 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 6
+					"std": 6
 				},
 				"Athletics": {
-					"default": 7
+					"std": 7
 				},
 				"Intimidation": {
-					"default": 2
+					"std": 2
 				},
 				"Nature": {
-					"default": 4
+					"std": 4
 				},
 				"Stealth": {
-					"default": 6
+					"std": 6
 				},
 				"Survival": {
-					"default": 4
+					"std": 4
 				},
 				"Thievery": {
-					"default": 6
+					"std": 6
 				}
 			},
 			"abilityMods": {
-				"Str": 4,
-				"Dex": 3,
-				"Con": 1,
-				"Int": 0,
-				"Wis": 1,
-				"Cha": -1
+				"str": 4,
+				"dex": 3,
+				"con": 1,
+				"int": 0,
+				"wis": 1,
+				"cha": -1
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+6, {@skill Survival} +4, {@skill Thievery} +6 Str +4, Dex +3, Con +1, Int +0, Wis +1, Cha \u20131 Items longsword, shortbow (20 arrows), studded leather, 15 sp."
-					],
-					"name": "Stealth"
-				}
-			],
 			"ac": {
-				"default": 18
+				"std": 18
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 6
+				"fort": {
+					"std": 6
 				},
-				"Ref": {
-					"default": 9
+				"ref": {
+					"std": 9
 				},
-				"Will": {
-					"default": 4
+				"will": {
+					"std": 4
 				}
 			},
 			"hp": [
@@ -880,7 +824,6 @@
 					"abilities": null
 				}
 			],
-			"abilitiesMid": [],
 			"speed": {
 				"walk": 25
 			},
@@ -890,7 +833,7 @@
 					"name": "longsword",
 					"attack": 9,
 					"traits": [
-						"versatile P"
+						"versatile p"
 					],
 					"effects": [],
 					"damage": "{@damage 1d8+4} slashing",
@@ -914,45 +857,43 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"entries": [],
-					"name": "Hunt Prey"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"traits": [
-						"Pathfinder Core Rulebook 171"
-					],
-					"entries": [],
-					"name": "Hunted Shot"
-				},
-				{
-					"entries": [
-						"The first time the mercenary hits their hunted prey in a round, they deal {@dice 1d8} additional precision damage."
-					],
-					"name": "Precision"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"piercing",
-					"slashing"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"+6, {@skill Survival} +4, {@skill Thievery} +6 Str +4, Dex +3, Con +1, Int +0, Wis +1, Cha \u20131 Items longsword, shortbow (20 arrows), studded leather, 15 sp."
+						],
+						"name": "Stealth"
+					}
 				],
-				"condition": []
-			},
-			"misc": [
-				"MA",
-				"RA",
-				"UW"
-			]
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [],
+						"name": "Hunt Prey"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"pathfinder core rulebook 171"
+						],
+						"entries": [],
+						"name": "Hunted Shot"
+					},
+					{
+						"entries": [
+							"The first time the mercenary hits their hunted prey in a round, they deal {@dice 1d8} additional precision damage."
+						],
+						"name": "Precision"
+					}
+				]
+			}
 		},
 		{
 			"name": "Calmont",
@@ -960,26 +901,24 @@
 			"source": "AoA1",
 			"page": 27,
 			"level": 3,
-			"rarity": "Unique",
-			"alignment": "LE",
-			"size": "Small",
 			"traits": [
-				"Halfling"
+				"unique",
+				"le",
+				"small",
+				"halfling",
+				"humanoid"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 6
+				"std": 6
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"keen eyes"
-				]
-			},
+			"senses": [
+				{
+					"name": "keen eyes"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Common",
@@ -990,92 +929,59 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 9
+					"std": 9
 				},
 				"Athletics": {
-					"default": 7
+					"std": 7
 				},
 				"Deception": {
-					"default": 7
+					"std": 7
 				},
 				"Intimidation": {
-					"default": 7
+					"std": 7
 				},
 				"Society": {
-					"default": 7
+					"std": 7
 				},
 				"Stealth": {
-					"default": 11
+					"std": 11
 				},
 				"Thievery": {
-					"default": 11
+					"std": 11
 				},
 				"Breachill Lore": {
-					"default": 8
+					"std": 8
 				},
 				"Mercantile Lore": {
-					"default": 4
+					"std": 4
 				}
 			},
 			"abilityMods": {
-				"Str": 2,
-				"Dex": 4,
-				"Con": 1,
-				"Int": -1,
-				"Wis": -1,
-				"Cha": 2
+				"str": 2,
+				"dex": 4,
+				"con": 1,
+				"int": -1,
+				"wis": -1,
+				"cha": 2
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+7, {@skill Intimidation} +7, {@skill Lore||Mercantile Lore} +4,"
-					],
-					"name": "Deception"
-				},
-				{
-					"entries": [
-						"+7, {@skill Stealth} +11, {@skill Thievery} +11 Str +2, Dex +4, Con +1, Int \u20131, Wis \u20131, Cha +2 Items dagger, leather armor, lesser healing potion (2), +1 shortbow (20 arrows), thieves' tools."
-					],
-					"name": "Society"
-				}
-			],
 			"ac": {
-				"default": 20
+				"std": 20
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 6
+				"fort": {
+					"std": 6
 				},
-				"Ref": {
-					"default": 11
+				"ref": {
+					"std": 11
 				},
-				"Will": {
-					"default": 6
+				"will": {
+					"std": 6
 				}
 			},
 			"hp": [
 				{
 					"hp": 35,
 					"abilities": null
-				}
-			],
-			"abilitiesMid": [
-				{
-					"entries": [
-						"Advantage Calmont isn't {@condition flat-footed} to {@condition hidden}, {@condition undetected}, or flanking creatures of level 3 or lower."
-					],
-					"name": "Deny"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"traits": [
-						"Pathfinder Core Rulebook 183"
-					],
-					"entries": [],
-					"name": "Nimble Dodge"
 				}
 			],
 			"speed": {
@@ -1089,7 +995,7 @@
 					"traits": [
 						"agile",
 						"finesse",
-						"versatile S"
+						"versatile s"
 					],
 					"effects": [],
 					"damage": "{@damage 1d4+4} piercing",
@@ -1119,7 +1025,7 @@
 					"traits": [
 						"agile",
 						"thrown 10 feet",
-						"versatile S"
+						"versatile s"
 					],
 					"effects": [],
 					"damage": "{@damage 1d4+4} piercing",
@@ -1128,46 +1034,66 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"+7, {@skill Intimidation} +7, {@skill Lore||Mercantile Lore} +4,"
+						],
+						"name": "Deception"
 					},
-					"traits": [
-						"Pathfinder Core Rulebook 184"
-					],
-					"entries": [],
-					"name": "Quick Draw"
-				},
-				{
-					"entries": [
-						"Attack Calmont deals {@damage 1d6} extra damage to flatfooted creatures."
-					],
-					"name": "Sneak"
-				},
-				{
-					"entries": [
-						"If Calmont used {@skill Deception} or {@skill Stealth} for initiative, creatures that haven't acted are {@condition flat-footed} to Calmont on the first round of combat."
-					],
-					"name": "Surprise Attack"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"piercing"
+					{
+						"entries": [
+							"+7, {@skill Stealth} +11, {@skill Thievery} +11 Str +2, Dex +4, Con +1, Int \u20131, Wis \u20131, Cha +2 Items dagger, leather armor, lesser healing potion (2), +1 shortbow (20 arrows), thieves' tools."
+						],
+						"name": "Society"
+					}
 				],
-				"condition": [
-					"{@condition flat-footed}"
+				"mid": [
+					{
+						"entries": [
+							"Advantage Calmont isn't {@condition flat-footed} to {@condition hidden}, {@condition undetected}, or flanking creatures of level 3 or lower."
+						],
+						"name": "Deny"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"traits": [
+							"pathfinder core rulebook 183"
+						],
+						"entries": [],
+						"name": "Nimble Dodge"
+					}
+				],
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"pathfinder core rulebook 184"
+						],
+						"entries": [],
+						"name": "Quick Draw"
+					},
+					{
+						"entries": [
+							"Attack Calmont deals {@damage 1d6} extra damage to flatfooted creatures."
+						],
+						"name": "Sneak"
+					},
+					{
+						"entries": [
+							"If Calmont used {@skill Deception} or {@skill Stealth} for initiative, creatures that haven't acted are {@condition flat-footed} to Calmont on the first round of combat."
+						],
+						"name": "Surprise Attack"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"RA",
-				"TA",
-				"CC",
-				"UW"
-			]
+			}
 		},
 		{
 			"name": "Dmiri Yoltosha",
@@ -1175,26 +1101,24 @@
 			"source": "AoA1",
 			"page": 51,
 			"level": 4,
-			"rarity": "Unique",
-			"alignment": "LE",
-			"size": "Medium",
 			"traits": [
-				"Goblin"
+				"unique",
+				"le",
+				"medium",
+				"goblin",
+				"humanoid"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 14
+				"std": 14
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Common",
@@ -1204,48 +1128,47 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 10
+					"std": 10
 				},
 				"Athletics": {
-					"default": 9
+					"std": 9
 				},
 				"Deception": {
-					"default": 5
+					"std": 5
 				},
 				"Nature": {
-					"default": 7
+					"std": 7
 				},
 				"Stealth": {
-					"default": 10
+					"std": 10
 				},
 				"Survival": {
-					"default": 7
+					"std": 7
 				},
 				"Thievery": {
-					"default": 10
+					"std": 10
 				}
 			},
 			"abilityMods": {
-				"Str": 3,
-				"Dex": 4,
-				"Con": 1,
-				"Int": 0,
-				"Wis": 1,
-				"Cha": -1
+				"str": 3,
+				"dex": 4,
+				"con": 1,
+				"int": 0,
+				"wis": 1,
+				"cha": -1
 			},
-			"abilitiesTop": [],
 			"ac": {
-				"default": 22
+				"std": 22
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 10
+				"fort": {
+					"std": 10
 				},
-				"Ref": {
-					"default": 12
+				"ref": {
+					"std": 12
 				},
-				"Will": {
-					"default": 9
+				"will": {
+					"std": 9
 				}
 			},
 			"hp": [
@@ -1254,7 +1177,6 @@
 					"abilities": null
 				}
 			],
-			"abilitiesMid": [],
 			"speed": {
 				"walk": 25
 			},
@@ -1281,7 +1203,7 @@
 					"traits": [
 						"agile",
 						"finesse",
-						"versatile S"
+						"versatile s"
 					],
 					"effects": [],
 					"damage": "{@damage 1d4+3} piercing",
@@ -1311,7 +1233,7 @@
 					"traits": [
 						"agile",
 						"thrown 10 feet",
-						"versatile S"
+						"versatile s"
 					],
 					"effects": [],
 					"damage": "{@damage 1d4+3} piercing",
@@ -1320,67 +1242,57 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"entries": [
-						"Dmira's multiple attack penalty against her hunted prey is \u20133 (\u20132 with an agile weapon) on her second attack and \u20136 (\u20134 with an agile weapon) on her third or subsequent attacks."
-					],
-					"name": "Flurry"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
+			"abilities": {
+				"bot": [
+					{
+						"entries": [
+							"Dmira's multiple attack penalty against her hunted prey is \u20133 (\u20132 with an agile weapon) on her second attack and \u20136 (\u20134 with an agile weapon) on her third or subsequent attacks."
+						],
+						"name": "Flurry"
 					},
-					"entries": [],
-					"name": "Hunt Prey"
-				},
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [],
+						"name": "Hunt Prey"
 					},
-					"traits": [
-						"Pathfinder Core Rulebook 172"
-					],
-					"entries": [],
-					"name": "Hunter's Aim"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"pathfinder core rulebook 172"
+						],
+						"entries": [],
+						"name": "Hunter's Aim"
 					},
-					"traits": [
-						"Pathfinder Core Rulebook 172"
-					],
-					"entries": [],
-					"name": "Twin Parry"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"pathfinder core rulebook 172"
+						],
+						"entries": [],
+						"name": "Twin Parry"
 					},
-					"traits": [
-						"Pathfinder Core Rulebook 171"
-					],
-					"entries": [],
-					"name": "Twin Takedown"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"piercing"
-				],
-				"condition": []
-			},
-			"misc": [
-				"MA",
-				"RA",
-				"TA",
-				"UW"
-			]
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"pathfinder core rulebook 171"
+						],
+						"entries": [],
+						"name": "Twin Takedown"
+					}
+				]
+			}
 		},
 		{
 			"name": "Doorwarden",
@@ -1388,24 +1300,26 @@
 			"source": "AoA1",
 			"page": 86,
 			"level": 5,
-			"rarity": "Uncommon",
-			"alignment": "LN",
-			"size": "Large",
+			"traits": [
+				"uncommon",
+				"ln",
+				"large",
+				"construct"
+			],
 			"creatureType": [
 				"Construct"
 			],
 			"perception": {
-				"default": 13
+				"std": 13
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"low-light vision",
-					"see invisibility"
-				]
-			},
+			"senses": [
+				{
+					"name": "low-light vision"
+				},
+				{
+					"name": "see invisibility"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Common"
@@ -1414,34 +1328,33 @@
 			},
 			"skills": {
 				"Athletics": {
-					"default": 13
+					"std": 13
 				},
 				"Intimidation": {
-					"default": 11
+					"std": 11
 				}
 			},
 			"abilityMods": {
-				"Str": 6,
-				"Dex": 0,
-				"Con": 3,
-				"Int": -1,
-				"Wis": 1,
-				"Cha": 2
+				"str": 6,
+				"dex": 0,
+				"con": 3,
+				"int": -1,
+				"wis": 1,
+				"cha": 2
 			},
-			"abilitiesTop": [],
 			"ac": {
-				"default": 22,
+				"std": 22,
 				"with shield raised": 24
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 12
+				"fort": {
+					"std": 12
 				},
-				"Ref": {
-					"default": 7
+				"ref": {
+					"std": 7
 				},
-				"Will": {
-					"default": 10
+				"will": {
+					"std": 10
 				}
 			},
 			"hp": [
@@ -1450,52 +1363,15 @@
 					"abilities": null
 				}
 			],
-			"immunities": {
-				"damage": [
-					"bleed"
-				],
-				"condition": [
-					"death effects",
-					"disease",
-					"doomed"
-				]
-			},
+			"immunities": [
+				"bleed",
+				"death effects",
+				"disease",
+				"doomed"
+			],
 			"resistances": [
 				{
 					"name": "physical"
-				}
-			],
-			"abilitiesMid": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"entries": [],
-					"name": "Attack of Opportunity",
-					"generic": true
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"trigger": "An enemy hits the doorwarden with a melee {@action Strike}.",
-					"entries": [
-						"The doorwarden can Raise its Shield and gain its shield's benefit to AC against the triggering attack."
-					],
-					"name": "Reactive Shield"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"entries": [
-						"When the doorwarden uses Shield Block against a melee attack from a creature within 5 feet, it can also push the creature 5 feet."
-					],
-					"name": "Shield Block",
-					"generic": true
 				}
 			],
 			"speed": {
@@ -1508,7 +1384,7 @@
 					"attack": 15,
 					"traits": [
 						"reach 10 feet",
-						"versatile P"
+						"versatile p"
 					],
 					"effects": [],
 					"damage": "{@damage 1d8+9} slashing",
@@ -1554,55 +1430,75 @@
 					}
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
+			"abilities": {
+				"mid": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"entries": [],
+						"name": "Attack of Opportunity",
+						"generic": true
 					},
-					"traits": [
-						"concentrate"
-					],
-					"entries": [
-						"Until the next time it acts, the doorwarden appears to be a door. It has an automatic result of 31."
-					],
-					"name": "Imitate Door"
-				},
-				{
-					"entries": [
-						"{@skill Deception} checks and DCs to pass as a door."
-					],
-					"name": "on"
-				},
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"trigger": "An enemy hits the doorwarden with a melee {@action Strike}.",
+						"entries": [
+							"The doorwarden can Raise its Shield and gain its shield's benefit to AC against the triggering attack."
+						],
+						"name": "Reactive Shield"
 					},
-					"traits": [
-						"concentrate"
-					],
-					"entries": [
-						"The door opens and slams its doors, making two door Strikes against one creature. If both hit, the creature is {@condition grabbed}\u2014stuck between the doors. The doorwarden's multiple attack penalty doesn't increase until it has finished both attacks."
-					],
-					"name": "Slam Doors"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning",
-					"slashing"
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"entries": [
+							"When the doorwarden uses Shield Block against a melee attack from a creature within 5 feet, it can also push the creature 5 feet."
+						],
+						"name": "Shield Block",
+						"generic": true
+					}
 				],
-				"condition": [
-					"{@condition grabbed}"
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"concentrate"
+						],
+						"entries": [
+							"Until the next time it acts, the doorwarden appears to be a door. It has an automatic result of 31."
+						],
+						"name": "Imitate Door"
+					},
+					{
+						"entries": [
+							"{@skill Deception} checks and DCs to pass as a door."
+						],
+						"name": "on"
+					},
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"concentrate"
+						],
+						"entries": [
+							"The door opens and slams its doors, making two door Strikes against one creature. If both hit, the creature is {@condition grabbed}\u2014stuck between the doors. The doorwarden's multiple attack penalty doesn't increase until it has finished both attacks."
+						],
+						"name": "Slam Doors"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"RC",
-				"CC",
-				"UW"
-			]
+			}
 		},
 		{
 			"name": "Emperor Bird",
@@ -1610,47 +1506,49 @@
 			"source": "AoA1",
 			"page": 87,
 			"level": 2,
-			"rarity": "Uncommon",
-			"alignment": "N",
-			"size": "Medium",
+			"traits": [
+				"uncommon",
+				"n",
+				"medium",
+				"animal"
+			],
 			"creatureType": [
 				"Animal"
 			],
 			"perception": {
-				"default": 8
+				"std": 8
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 9
+					"std": 9
 				},
 				"Intimidation": {
-					"default": 7
+					"std": 7
 				},
 				"Survival": {
-					"default": 7
+					"std": 7
 				}
 			},
 			"abilityMods": {
-				"Str": 2,
-				"Dex": 3,
-				"Con": 0,
-				"Int": -4,
-				"Wis": 1,
-				"Cha": 3
+				"str": 2,
+				"dex": 3,
+				"con": 0,
+				"int": -4,
+				"wis": 1,
+				"cha": 3
 			},
-			"abilitiesTop": [],
 			"ac": {
-				"default": 18
+				"std": 18
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 6
+				"fort": {
+					"std": 6
 				},
-				"Ref": {
-					"default": 9
+				"ref": {
+					"std": 9
 				},
-				"Will": {
-					"default": 7
+				"will": {
+					"std": 7
 				}
 			},
 			"hp": [
@@ -1659,10 +1557,9 @@
 					"abilities": null
 				}
 			],
-			"abilitiesMid": [],
 			"speed": {
 				"walk": 15,
-				"fly ": 20
+				"fly": 20
 			},
 			"attacks": [
 				{
@@ -1690,58 +1587,45 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"traits": [
-						"enchantment",
-						"mental",
-						"primal",
-						"visual"
-					],
-					"entries": [
-						"The emperor bird flaps its mesmerizing wings. Each creature within 15 feet that can see the emperor bird must attempt a DC 19 Will save.",
-						{
-							"type": "successDegree",
-							"entries": {
-								"Critical Success": "The creature is unaffected.",
-								"Success": "The creature is {@condition dazzled} for 1 round.",
-								"Failure": "The creature is {@condition dazzled} for {@dice 1d4} rounds.",
-								"Critical Failure": "The creature is {@condition confused} for {@dice 1d4} rounds."
+			"abilities": {
+				"bot": [
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"enchantment",
+							"mental",
+							"primal",
+							"visual"
+						],
+						"entries": [
+							"The emperor bird flaps its mesmerizing wings. Each creature within 15 feet that can see the emperor bird must attempt a DC 19 Will save.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": "The creature is unaffected.",
+									"Success": "The creature is {@condition dazzled} for 1 round.",
+									"Failure": "The creature is {@condition dazzled} for {@dice 1d4} rounds.",
+									"Critical Failure": "The creature is {@condition confused} for {@dice 1d4} rounds."
+								}
 							}
-						}
-					],
-					"name": "Dazzling Display"
-				},
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
+						],
+						"name": "Dazzling Display"
 					},
-					"entries": [
-						"The emperor bird makes tail Strikes against two different creatures within reach. The emperor bird's multiple attack penalty does not increase until it has finished both attacks."
-					],
-					"name": "Tail Lash"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"piercing",
-					"slashing"
-				],
-				"condition": [
-					"{@condition confused}",
-					"{@condition dazzled}"
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"The emperor bird makes tail Strikes against two different creatures within reach. The emperor bird's multiple attack penalty does not increase until it has finished both attacks."
+						],
+						"name": "Tail Lash"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"RC",
-				"CC"
-			]
+			}
 		},
 		{
 			"name": "Grauladon",
@@ -1749,25 +1633,28 @@
 			"source": "AoA1",
 			"page": 88,
 			"level": 2,
-			"rarity": "Uncommon",
-			"alignment": "N",
-			"size": "Large",
+			"traits": [
+				"uncommon",
+				"n",
+				"large",
+				"dragon"
+			],
 			"creatureType": [
 				"Dragon"
 			],
 			"perception": {
-				"default": 7
+				"std": 7
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [
-					"scent 30 feet"
-				],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"type": "imprecise",
+					"name": "scent",
+					"range": 30
+				}
+			],
 			"languages": {
 				"languages": [
 					"Draconic (can't speak any language)"
@@ -1776,36 +1663,35 @@
 			},
 			"skills": {
 				"Athletics": {
-					"default": 10
+					"std": 10
 				},
 				"Stealth": {
-					"default": 6
+					"std": 6
 				},
 				"Survival": {
-					"default": 5
+					"std": 5
 				}
 			},
 			"abilityMods": {
-				"Str": 4,
-				"Dex": 0,
-				"Con": 4,
-				"Int": -3,
-				"Wis": 1,
-				"Cha": -2
+				"str": 4,
+				"dex": 0,
+				"con": 4,
+				"int": -3,
+				"wis": 1,
+				"cha": -2
 			},
-			"abilitiesTop": [],
 			"ac": {
-				"default": 17
+				"std": 17
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 12
+				"fort": {
+					"std": 12
 				},
-				"Ref": {
-					"default": 6
+				"ref": {
+					"std": 6
 				},
-				"Will": {
-					"default": 7
+				"will": {
+					"std": 7
 				}
 			},
 			"hp": [
@@ -1814,29 +1700,13 @@
 					"abilities": null
 				}
 			],
-			"immunities": {
-				"damage": [],
-				"condition": [
-					"paralyzed",
-					"sleep"
-				]
-			},
-			"abilitiesMid": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"trigger": "The grauladon takes damage from an adjacent creature.",
-					"entries": [
-						"The grauladon uses Noxious Breath, including the triggering creature in the area."
-					],
-					"name": "Reactive Breath"
-				}
+			"immunities": [
+				"paralyzed",
+				"sleep"
 			],
 			"speed": {
 				"walk": 20,
-				"swim ": 30
+				"swim": 30
 			},
 			"attacks": [
 				{
@@ -1863,64 +1733,65 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"requirements": "More than one enemy is adjacent to the grauladon.",
-					"entries": [
-						"The grauladon swings its tail at each adjacent enemy and attempts."
-					],
-					"name": "Body Slam"
-				},
-				{
-					"entries": [
-						"{@action Trip} each creature adjacent to it. It rolls only a single {@skill Athletics} check and compares the result to the Fortitude DC of each target."
-					],
-					"name": "to"
-				},
-				{
-					"entries": [
-						"A grauladon can hold its breath for 225 rounds (22-1/2 minutes)."
-					],
-					"name": "Deep Breath"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"entries": [
-						"The grauladon hisses and unleashes a nauseating cloud of halitosis in a 15-foot cone. Each creature in the area must succeed at a DC 18 Fortitude saving throw or be {@condition sickened|CRB|sickened 1} ({@condition sickened|CRB|sickened 2} on a critical failure). The grauladon can't use."
-					],
-					"name": "Noxious Breath"
-				},
-				{
-					"traits": [
-						"again"
-					],
-					"entries": [
-						"for {@dice 1d4} rounds."
-					],
-					"name": "Noxious Breath or Reactive Breath"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning",
-					"piercing"
+			"abilities": {
+				"mid": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"trigger": "The grauladon takes damage from an adjacent creature.",
+						"entries": [
+							"The grauladon uses Noxious Breath, including the triggering creature in the area."
+						],
+						"name": "Reactive Breath"
+					}
 				],
-				"condition": [
-					"{@condition sickened}"
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"requirements": "More than one enemy is adjacent to the grauladon.",
+						"entries": [
+							"The grauladon swings its tail at each adjacent enemy and attempts."
+						],
+						"name": "Body Slam"
+					},
+					{
+						"entries": [
+							"{@action Trip} each creature adjacent to it. It rolls only a single {@skill Athletics} check and compares the result to the Fortitude DC of each target."
+						],
+						"name": "to"
+					},
+					{
+						"entries": [
+							"A grauladon can hold its breath for 225 rounds (22-1/2 minutes)."
+						],
+						"name": "Deep Breath"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"The grauladon hisses and unleashes a nauseating cloud of halitosis in a 15-foot cone. Each creature in the area must succeed at a DC 18 Fortitude saving throw or be {@condition sickened|CRB|sickened 1} ({@condition sickened|CRB|sickened 2} on a critical failure). The grauladon can't use."
+						],
+						"name": "Noxious Breath"
+					},
+					{
+						"traits": [
+							"again"
+						],
+						"entries": [
+							"for {@dice 1d4} rounds."
+						],
+						"name": "Noxious Breath or Reactive Breath"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"AC",
-				"CC"
-			]
+			}
 		},
 		{
 			"name": "Graveshell",
@@ -1928,25 +1799,28 @@
 			"source": "AoA1",
 			"page": 89,
 			"level": 1,
-			"rarity": "Uncommon",
-			"alignment": "N",
-			"size": "Large",
+			"traits": [
+				"uncommon",
+				"n",
+				"large",
+				"beast"
+			],
 			"creatureType": [
 				"Beast"
 			],
 			"perception": {
-				"default": 4
+				"std": 4
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [
-					"wavesense 30 feet"
-				],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"type": "imprecise",
+					"name": "wavesense",
+					"range": 30
+				}
+			],
 			"languages": {
 				"languages": [
 					"Common",
@@ -1956,44 +1830,33 @@
 			},
 			"skills": {
 				"Athletics": {
-					"default": 6
+					"std": 6
 				},
 				"Stealth": {
-					"default": 4
+					"std": 4
 				}
 			},
 			"abilityMods": {
-				"Str": 3,
-				"Dex": -1,
-				"Con": 3,
-				"Int": -3,
-				"Wis": 1,
-				"Cha": 0
+				"str": 3,
+				"dex": -1,
+				"con": 3,
+				"int": -3,
+				"wis": 1,
+				"cha": 0
 			},
-			"abilitiesTop": [
-				{
-					"traits": [
-						"exploration"
-					],
-					"entries": [
-						"The graveshell conceals its true nature over the course of a few minutes by impaling a corpse (typically humanoid) on its spiky shell before partially submerging itself in water. It has an automatic result of 22 on {@skill Deception} checks and DCs to pass as a corpse floating in the water."
-					],
-					"name": "Corpse Disguise"
-				}
-			],
 			"ac": {
-				"default": 17,
+				"std": 17,
 				"while withdrawn into its shell": 19
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 8
+				"fort": {
+					"std": 8
 				},
-				"Ref": {
-					"default": 2
+				"ref": {
+					"std": 2
 				},
-				"Will": {
-					"default": 4
+				"will": {
+					"std": 4
 				}
 			},
 			"hp": [
@@ -2002,22 +1865,9 @@
 					"abilities": null
 				}
 			],
-			"abilitiesMid": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"trigger": "The graveshell takes damage from a physical attack while withdrawn into its shell (see Shell Game below).",
-					"entries": [
-						"The graveshell reduces the damage from the attack by an amount equal to its shell's Hardness. A graveshell's shell has a Hardness of 6, 10 Hit Points, and a {@condition Broken} Threshold of 5. If its shell is {@condition broken}, the graveshell can't attack with shell spikes, nor can it use Shell Game. If the shell is destroyed, the graveshell's AC is reduced to 16. As long as a graveshell is alive, its shell naturally repairs itself after a week."
-					],
-					"name": "Shell Block"
-				}
-			],
 			"speed": {
 				"walk": 20,
-				"swim ": 20
+				"swim": 20
 			},
 			"attacks": [
 				{
@@ -2054,40 +1904,56 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"entries": [
-						"The graveshell can hold its breath for 200 rounds (20 minutes)."
-					],
-					"name": "Deep Breath"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"entries": [
-						"The graveshell withdraws into its shell, gaining a +2 circumstance bonus."
-					],
-					"name": "Shell Game"
-				},
-				{
-					"entries": [
-						"AC and allowing it to use Shell Block. This lasts until the graveshell moves or attacks with any attack other than its shell spikes. The graveshell can't take this action or get any benefit from it if its shell is {@condition broken}."
-					],
-					"name": "to"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"piercing",
-					"slashing"
+			"abilities": {
+				"top": [
+					{
+						"traits": [
+							"exploration"
+						],
+						"entries": [
+							"The graveshell conceals its true nature over the course of a few minutes by impaling a corpse (typically humanoid) on its spiky shell before partially submerging itself in water. It has an automatic result of 22 on {@skill Deception} checks and DCs to pass as a corpse floating in the water."
+						],
+						"name": "Corpse Disguise"
+					}
 				],
-				"condition": []
-			},
-			"misc": [
-				"MA"
-			]
+				"mid": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"trigger": "The graveshell takes damage from a physical attack while withdrawn into its shell (see Shell Game below).",
+						"entries": [
+							"The graveshell reduces the damage from the attack by an amount equal to its shell's Hardness. A graveshell's shell has a Hardness of 6, 10 Hit Points, and a {@condition Broken} Threshold of 5. If its shell is {@condition broken}, the graveshell can't attack with shell spikes, nor can it use Shell Game. If the shell is destroyed, the graveshell's AC is reduced to 16. As long as a graveshell is alive, its shell naturally repairs itself after a week."
+						],
+						"name": "Shell Block"
+					}
+				],
+				"bot": [
+					{
+						"entries": [
+							"The graveshell can hold its breath for 200 rounds (20 minutes)."
+						],
+						"name": "Deep Breath"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"The graveshell withdraws into its shell, gaining a +2 circumstance bonus."
+						],
+						"name": "Shell Game"
+					},
+					{
+						"entries": [
+							"AC and allowing it to use Shell Block. This lasts until the graveshell moves or attacks with any attack other than its shell spikes. The graveshell can't take this action or get any benefit from it if its shell is {@condition broken}."
+						],
+						"name": "to"
+					}
+				]
+			}
 		},
 		{
 			"name": "Hellcrown",
@@ -2095,23 +1961,23 @@
 			"source": "AoA1",
 			"page": 90,
 			"level": 1,
-			"rarity": "Uncommon",
-			"alignment": "LE",
-			"size": "Tiny",
+			"traits": [
+				"uncommon",
+				"le",
+				"tiny",
+				"undead"
+			],
 			"creatureType": [
 				"Undead"
 			],
 			"perception": {
-				"default": 10
+				"std": 10
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Common"
@@ -2120,33 +1986,32 @@
 			},
 			"skills": {
 				"Intimidation": {
-					"default": 8
+					"std": 8
 				},
 				"Stealth": {
-					"default": 7
+					"std": 7
 				}
 			},
 			"abilityMods": {
-				"Str": -2,
-				"Dex": 4,
-				"Con": 3,
-				"Int": -1,
-				"Wis": 1,
-				"Cha": 1
+				"str": -2,
+				"dex": 4,
+				"con": 3,
+				"int": -1,
+				"wis": 1,
+				"cha": 1
 			},
-			"abilitiesTop": [],
 			"ac": {
-				"default": 16
+				"std": 16
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 4
+				"fort": {
+					"std": 4
 				},
-				"Ref": {
-					"default": 6
+				"ref": {
+					"std": 6
 				},
-				"Will": {
-					"default": 10
+				"will": {
+					"std": 10
 				}
 			},
 			"hp": [
@@ -2157,17 +2022,13 @@
 					]
 				}
 			],
-			"immunities": {
-				"damage": [],
-				"condition": [
-					"death effects",
-					"disease",
-					"paralyzed"
-				]
-			},
-			"abilitiesMid": [],
+			"immunities": [
+				"death effects",
+				"disease",
+				"paralyzed"
+			],
 			"speed": {
-				"fly ": 25
+				"fly": 25
 			},
 			"attacks": [
 				{
@@ -2186,43 +2047,32 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"entries": [
-						"If the hellcrown hits with a nail {@action Strike}, the target must attempt a DC 16 Fortitude save. On a failure, the nail is embedded in the creature, making it {@condition enfeebled|CRB|enfeebled 1} for 1 minute and giving it 1 {@condition persistent damage ||persistent bleed damage} ({@condition enfeebled|CRB|enfeebled 2} and {@damage 1d4} {@condition persistent damage ||persistent bleed damage} on a critical failure). Each additional embedded nail increases the {@condition enfeebled} value by 1 (to a maximum of {@condition enfeebled|CRB|enfeebled 4}) and the bleed damage by 1. A creature can remove a nail with an {@action Interact} action to reduce the enfeeblement and amount of bleed damage. Pulling out the last nail removes both conditions."
-					],
-					"name": "Bleeding Nail"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
+			"abilities": {
+				"bot": [
+					{
+						"entries": [
+							"If the hellcrown hits with a nail {@action Strike}, the target must attempt a DC 16 Fortitude save. On a failure, the nail is embedded in the creature, making it {@condition enfeebled|CRB|enfeebled 1} for 1 minute and giving it 1 {@condition persistent damage ||persistent bleed damage} ({@condition enfeebled|CRB|enfeebled 2} and {@damage 1d4} {@condition persistent damage ||persistent bleed damage} on a critical failure). Each additional embedded nail increases the {@condition enfeebled} value by 1 (to a maximum of {@condition enfeebled|CRB|enfeebled 4}) and the bleed damage by 1. A creature can remove a nail with an {@action Interact} action to reduce the enfeeblement and amount of bleed damage. Pulling out the last nail removes both conditions."
+						],
+						"name": "Bleeding Nail"
 					},
-					"traits": [
-						"fear",
-						"mental",
-						"visual"
-					],
-					"entries": [
-						"All creatures that can see the hellcrown and are suffering from its bleeding nail must attempt a DC 16 Will saving throw.",
-						"A creature that fails is {@condition frightened|CRB|frightened 1}, and on a critical failure becomes {@condition fleeing} for as long as it's {@condition frightened}. Any creature that attempts a save is then temporarily immune for 10 minutes."
-					],
-					"name": "Terrifying Stare"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"piercing"
-				],
-				"condition": [
-					"{@condition enfeebled}",
-					"{@condition frightened}"
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"fear",
+							"mental",
+							"visual"
+						],
+						"entries": [
+							"All creatures that can see the hellcrown and are suffering from its bleeding nail must attempt a DC 16 Will saving throw.",
+							"A creature that fails is {@condition frightened|CRB|frightened 1}, and on a critical failure becomes {@condition fleeing} for as long as it's {@condition frightened}. Any creature that attempts a save is then temporarily immune for 10 minutes."
+						],
+						"name": "Terrifying Stare"
+					}
 				]
-			},
-			"misc": [
-				"RA",
-				"CC"
-			]
+			}
 		},
 		{
 			"name": "Malarunk",
@@ -2230,28 +2080,29 @@
 			"source": "AoA1",
 			"page": 58,
 			"level": 5,
-			"rarity": "Unique",
-			"alignment": "CE",
-			"size": "Small",
 			"traits": [
-				"Charau-ka"
+				"unique",
+				"ce",
+				"small",
+				"charau-ka",
+				"humanoid"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 13
+				"std": 13
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [
-					"scent 30 feet"
-				],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"type": "imprecise",
+					"name": "scent",
+					"range": 30
+				}
+			],
 			"languages": {
 				"languages": [
 					"Boggard",
@@ -2262,49 +2113,41 @@
 			},
 			"skills": {
 				"Athletics": {
-					"default": 10
+					"std": 10
 				},
 				"Intimidation": {
-					"default": 11
+					"std": 11
 				},
 				"Religion": {
-					"default": 13
+					"std": 13
 				},
 				"Stealth": {
-					"default": 8
+					"std": 8
 				},
 				"Dragon Lore": {
-					"default": 11
+					"std": 11
 				}
 			},
 			"abilityMods": {
-				"Str": 3,
-				"Dex": 2,
-				"Con": 2,
-				"Int": 0,
-				"Wis": 4,
-				"Cha": 2
+				"str": 3,
+				"dex": 2,
+				"con": 2,
+				"int": 0,
+				"wis": 4,
+				"cha": 2
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+13, {@skill Stealth} +8 Str +3, Dex +2, Con +2, Int +0, Wis +4, Cha +2 Items +1 chain shirt, Cinderclaw gauntlet (page 77), gold religious symbol of {@deity Dahak|LOGM} (worth 20 gp), hatchet, hunter's arrowhead (page 77)"
-					],
-					"name": "Religion"
-				}
-			],
 			"ac": {
-				"default": 22
+				"std": 22
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 11
+				"fort": {
+					"std": 11
 				},
-				"Ref": {
-					"default": 9
+				"ref": {
+					"std": 9
 				},
-				"Will": {
-					"default": 13
+				"will": {
+					"std": 13
 				}
 			},
 			"hp": [
@@ -2313,10 +2156,9 @@
 					"abilities": null
 				}
 			],
-			"abilitiesMid": [],
 			"speed": {
 				"walk": 25,
-				"climb ": 25
+				"climb": 25
 			},
 			"attacks": [
 				{
@@ -2326,7 +2168,7 @@
 					"traits": [
 						"agile",
 						"free-hand",
-						"versatile S"
+						"versatile s"
 					],
 					"effects": [],
 					"damage": "{@damage 2d4+5} piercing plus {@damage 1d6} fire on a critical hit",
@@ -2430,49 +2272,45 @@
 					}
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"traits": [
-						"Pathfinder Core Rulebook 122"
-					],
-					"entries": [],
-					"name": "Channel Smite"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "free"
-					},
-					"entries": [
-						"As charau-ka; see page 37."
-					],
-					"name": "Shrieking Frenzy"
-				},
-				{
-					"entries": [
-						"As charau-ka; see page 37."
-					],
-					"name": "Thrown Weapon Mastery"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning",
-					"piercing",
-					"slashing"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"+13, {@skill Stealth} +8 Str +3, Dex +2, Con +2, Int +0, Wis +4, Cha +2 Items +1 chain shirt, Cinderclaw gauntlet (page 77), gold religious symbol of {@deity Dahak|LOGM} (worth 20 gp), hatchet, hunter's arrowhead (page 77)"
+						],
+						"name": "Religion"
+					}
 				],
-				"condition": []
-			},
-			"misc": [
-				"MA",
-				"RA",
-				"TA",
-				"UW"
-			]
+				"bot": [
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"pathfinder core rulebook 122"
+						],
+						"entries": [],
+						"name": "Channel Smite"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "free"
+						},
+						"entries": [
+							"As charau-ka; see page 37."
+						],
+						"name": "Shrieking Frenzy"
+					},
+					{
+						"entries": [
+							"As charau-ka; see page 37."
+						],
+						"name": "Thrown Weapon Mastery"
+					}
+				]
+			}
 		},
 		{
 			"name": "Renali",
@@ -2480,17 +2318,18 @@
 			"source": "AoA1",
 			"page": 79,
 			"level": 4,
-			"rarity": "Unique",
-			"alignment": "CG",
-			"size": "Medium",
 			"traits": [
-				"Anadi"
+				"unique",
+				"cg",
+				"medium",
+				"anadi",
+				"humanoid"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 12
+				"std": 12
 			},
 			"languages": {
 				"languages": [
@@ -2501,62 +2340,48 @@
 			},
 			"skills": {
 				"Athletics": {
-					"default": 6
+					"std": 6
 				},
 				"Crafting": {
-					"default": 10,
+					"std": 10,
 					"weaving": 14
 				},
 				"Deception": {
-					"default": 7
+					"std": 7
 				},
 				"Medicine": {
-					"default": 12
+					"std": 12
 				},
 				"Nature": {
-					"default": 10
+					"std": 10
 				},
 				"Stealth": {
-					"default": 10
+					"std": 10
 				},
 				"Survival": {
-					"default": 10
+					"std": 10
 				}
 			},
 			"abilityMods": {
-				"Str": 0,
-				"Dex": 2,
-				"Con": 0,
-				"Int": 2,
-				"Wis": 4,
-				"Cha": 1
+				"str": 0,
+				"dex": 2,
+				"con": 0,
+				"int": 2,
+				"wis": 4,
+				"cha": 1
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+7, {@skill Medicine} +12, {@skill Nature} +10,"
-					],
-					"name": "Deception"
-				},
-				{
-					"entries": [
-						"+10, {@skill Survival} +10 Str +0, Dex +2, Con +0, Int +2, Wis +4, Cha +1."
-					],
-					"name": "Stealth"
-				}
-			],
 			"ac": {
-				"default": 18
+				"std": 18
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 8
+				"fort": {
+					"std": 8
 				},
-				"Ref": {
-					"default": 10
+				"ref": {
+					"std": 10
 				},
-				"Will": {
-					"default": 12
+				"will": {
+					"std": 12
 				}
 			},
 			"hp": [
@@ -2565,10 +2390,9 @@
 					"abilities": null
 				}
 			],
-			"abilitiesMid": [],
 			"speed": {
 				"walk": 25,
-				"climb ": 25
+				"climb": 25
 			},
 			"attacks": [
 				{
@@ -2637,59 +2461,62 @@
 					}
 				}
 			],
-			"abilitiesBot": [
-				{
-					"traits": [
-						"poison"
-					],
-					"entries": [
-						"Saving Throw DC 20 Fortitude;"
-					],
-					"name": "Anadi Venom"
-				},
-				{
-					"entries": [
-						"4 rounds; Stage 1 {@damage 1d6} poison damage and {@condition flat-footed} (1 round); Stage 2 {@damage 1d6} poison damage, {@condition flat-footed}, and {@condition clumsy|CRB|clumsy 1} (1 round)"
-					],
-					"name": "Maximum Duration"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"+7, {@skill Medicine} +12, {@skill Nature} +10,"
+						],
+						"name": "Deception"
 					},
-					"traits": [
-						"arcane",
-						"concentrate",
-						"polymorph",
-						"transmutation"
-					],
-					"entries": [
-						"As anadi hunter (page 84)."
-					],
-					"name": "Change Shape",
-					"generic": true
-				},
-				{
-					"entries": [
-						"As anadi hunter (page 84)."
-					],
-					"name": "Spin Silk"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"piercing",
-					"poison"
+					{
+						"entries": [
+							"+10, {@skill Survival} +10 Str +0, Dex +2, Con +0, Int +2, Wis +4, Cha +1."
+						],
+						"name": "Stealth"
+					}
 				],
-				"condition": [
-					"{@condition flat-footed}"
+				"bot": [
+					{
+						"traits": [
+							"poison"
+						],
+						"entries": [
+							"Saving Throw DC 20 Fortitude;"
+						],
+						"name": "Anadi Venom"
+					},
+					{
+						"entries": [
+							"4 rounds; Stage 1 {@damage 1d6} poison damage and {@condition flat-footed} (1 round); Stage 2 {@damage 1d6} poison damage, {@condition flat-footed}, and {@condition clumsy|CRB|clumsy 1} (1 round)"
+						],
+						"name": "Maximum Duration"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"arcane",
+							"concentrate",
+							"polymorph",
+							"transmutation"
+						],
+						"entries": [
+							"As anadi hunter (page 84)."
+						],
+						"name": "Change Shape",
+						"generic": true
+					},
+					{
+						"entries": [
+							"As anadi hunter (page 84)."
+						],
+						"name": "Spin Silk"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"CC"
-			]
+			}
 		},
 		{
 			"name": "Skeletal Hellknight",
@@ -2697,26 +2524,24 @@
 			"source": "AoA1",
 			"page": 40,
 			"level": 2,
-			"rarity": "Unique",
-			"alignment": "LE",
-			"size": "Medium",
 			"traits": [
-				"Skeleton"
+				"unique",
+				"le",
+				"medium",
+				"skeleton",
+				"undead"
 			],
 			"creatureType": [
 				"Undead"
 			],
 			"perception": {
-				"default": 7
+				"std": 7
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Common",
@@ -2726,37 +2551,36 @@
 			},
 			"skills": {
 				"Athletics": {
-					"default": 9
+					"std": 9
 				},
 				"Intimidation": {
-					"default": 7
+					"std": 7
 				}
 			},
 			"abilityMods": {
-				"Str": 4,
-				"Dex": 2,
-				"Con": 3,
-				"Int": -1,
-				"Wis": 0,
-				"Cha": 1
+				"str": 4,
+				"dex": 2,
+				"con": 3,
+				"int": -1,
+				"wis": 0,
+				"cha": 1
 			},
 			"items": [
 				"+1 halberd",
 				"half plate"
 			],
-			"abilitiesTop": [],
 			"ac": {
-				"default": 20
+				"std": 20
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 9
+				"fort": {
+					"std": 9
 				},
-				"Ref": {
-					"default": 8
+				"ref": {
+					"std": 8
 				},
-				"Will": {
-					"default": 4
+				"will": {
+					"std": 4
 				}
 			},
 			"hp": [
@@ -2767,26 +2591,12 @@
 					]
 				}
 			],
-			"immunities": {
-				"damage": [],
-				"condition": [
-					"death effects"
-				]
-			},
-			"abilitiesMid": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"entries": [],
-					"name": "Attack of Opportunity",
-					"generic": true
-				}
+			"immunities": [
+				"death effects"
 			],
 			"speed": {
 				"walk": 25,
-				"climb ": 25
+				"climb": 25
 			},
 			"attacks": [
 				{
@@ -2795,7 +2605,7 @@
 					"attack": 11,
 					"traits": [
 						"reach 10 feet",
-						"versatile S"
+						"versatile s"
 					],
 					"effects": [
 						"Invoke Reckoning"
@@ -2819,49 +2629,47 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"traits": [
-						"divine",
-						"necromancy"
-					],
-					"entries": [
-						"The skeletal Hellknight can direct the actions of the nearby skeleton guards, commanding them to perform tactics such as flanking foes and focusing their attacks on specific targets. As long as the skeletal Hellknight is active and commanding the skeletons, they gain the {@action Attack of Opportunity} reaction."
-					],
-					"name": "Command Skeletons"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"traits": [
-						"divine",
-						"enchantment",
-						"mental"
-					],
-					"trigger": "The skeletal Hellknight hits a foe with a {@action Strike}.",
-					"entries": [
-						"The skeletal Hellknight causes the creature struck to endure the pain of an Order of the Nail's reckoning\u2014a rite of mortification Hellknights of that order use to focus their minds. The creature struck feels as if nails are being driven into their body, and must succeed at a DC 17 Will save or be {@condition stunned|CRB|stunned 1} from the pain. On a critical failure, the pain manifests as actual puncture wounds, dealing an additional {@dice 2d6} points of piercing damage to the victim."
-					],
-					"name": "Invoke Reckoning"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"piercing",
-					"slashing"
+			"abilities": {
+				"mid": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"entries": [],
+						"name": "Attack of Opportunity",
+						"generic": true
+					}
 				],
-				"condition": [
-					"{@condition stunned}"
+				"bot": [
+					{
+						"traits": [
+							"divine",
+							"necromancy"
+						],
+						"entries": [
+							"The skeletal Hellknight can direct the actions of the nearby skeleton guards, commanding them to perform tactics such as flanking foes and focusing their attacks on specific targets. As long as the skeletal Hellknight is active and commanding the skeletons, they gain the {@action Attack of Opportunity} reaction."
+						],
+						"name": "Command Skeletons"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"traits": [
+							"divine",
+							"enchantment",
+							"mental"
+						],
+						"trigger": "The skeletal Hellknight hits a foe with a {@action Strike}.",
+						"entries": [
+							"The skeletal Hellknight causes the creature struck to endure the pain of an Order of the Nail's reckoning\u2014a rite of mortification Hellknights of that order use to focus their minds. The creature struck feels as if nails are being driven into their body, and must succeed at a DC 17 Will save or be {@condition stunned|CRB|stunned 1} from the pain. On a critical failure, the pain manifests as actual puncture wounds, dealing an additional {@dice 2d6} points of piercing damage to the victim."
+						],
+						"name": "Invoke Reckoning"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"RC",
-				"CC",
-				"UW"
-			]
+			}
 		},
 		{
 			"name": "Skorp And Venak",
@@ -2869,28 +2677,28 @@
 			"source": "AoA1",
 			"page": 37,
 			"level": 1,
-			"rarity": "Common",
-			"alignment": "CE",
-			"size": "Small",
 			"traits": [
-				"Charau-ka"
+				"ce",
+				"small",
+				"charau-ka",
+				"humanoid"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 6
+				"std": 6
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [
-					"scent 30 feet"
-				],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"type": "imprecise",
+					"name": "scent",
+					"range": 30
+				}
+			],
 			"languages": {
 				"languages": [
 					"Draconic",
@@ -2900,36 +2708,35 @@
 			},
 			"skills": {
 				"Athletics": {
-					"default": 6
+					"std": 6
 				},
 				"Religion": {
-					"default": 4
+					"std": 4
 				},
 				"Stealth": {
-					"default": 6
+					"std": 6
 				}
 			},
 			"abilityMods": {
-				"Str": 3,
-				"Dex": 3,
-				"Con": 2,
-				"Int": -1,
-				"Wis": 1,
-				"Cha": 0
+				"str": 3,
+				"dex": 3,
+				"con": 2,
+				"int": -1,
+				"wis": 1,
+				"cha": 0
 			},
-			"abilitiesTop": [],
 			"ac": {
-				"default": 18
+				"std": 18
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 7
+				"fort": {
+					"std": 7
 				},
-				"Ref": {
-					"default": 8
+				"ref": {
+					"std": 8
 				},
-				"Will": {
-					"default": 4
+				"will": {
+					"std": 4
 				}
 			},
 			"hp": [
@@ -2938,10 +2745,9 @@
 					"abilities": null
 				}
 			],
-			"abilitiesMid": [],
 			"speed": {
 				"walk": 25,
-				"climb ": 25
+				"climb": 25
 			},
 			"attacks": [
 				{
@@ -2991,47 +2797,35 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "free"
+			"abilities": {
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "free"
+						},
+						"traits": [
+							"primal",
+							"transmutation"
+						],
+						"trigger": "The charau-ka's turn begins.",
+						"frequency": {
+							"unit": "hour",
+							"freq": 1
+						},
+						"entries": [
+							"The charau-ka is {@condition quickened} until the end of its turn, and can use the extra action to {@action Stride} or {@action Strike}. Due to its loud wailing while in a shrieking frenzy, the charau-ka can't speak and automatically critically fails all {@skill Stealth} checks."
+						],
+						"name": "Shrieking Frenzy"
 					},
-					"traits": [
-						"primal",
-						"transmutation"
-					],
-					"trigger": "The charau-ka's turn begins.",
-					"frequency": {
-						"unit": "hour",
-						"freq": 1
-					},
-					"entries": [
-						"The charau-ka is {@condition quickened} until the end of its turn, and can use the extra action to {@action Stride} or {@action Strike}. Due to its loud wailing while in a shrieking frenzy, the charau-ka can't speak and automatically critically fails all {@skill Stealth} checks."
-					],
-					"name": "Shrieking Frenzy"
-				},
-				{
-					"entries": [
-						"When a charau-ka throws a weapon, the weapon gains the deadly d6 weapon trait. When it throws an improvised weapon, it doesn't take the \u20132 penalty for using an improvised weapon, nor does it take the penalty for using that weapon to make a lethal attack instead of a nonlethal attack."
-					],
-					"name": "Thrown Weapon Mastery"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning",
-					"slashing"
-				],
-				"condition": []
-			},
-			"misc": [
-				"MA",
-				"RC",
-				"RA",
-				"TA",
-				"UW"
-			]
+					{
+						"entries": [
+							"When a charau-ka throws a weapon, the weapon gains the deadly d6 weapon trait. When it throws an improvised weapon, it doesn't take the \u20132 penalty for using an improvised weapon, nor does it take the penalty for using that weapon to make a lethal attack instead of a nonlethal attack."
+						],
+						"name": "Thrown Weapon Mastery"
+					}
+				]
+			}
 		},
 		{
 			"name": "Tixitog",
@@ -3039,25 +2833,28 @@
 			"source": "AoA1",
 			"page": 91,
 			"level": 3,
-			"rarity": "Uncommon",
-			"alignment": "NE",
-			"size": "Medium",
+			"traits": [
+				"uncommon",
+				"ne",
+				"medium",
+				"aberration"
+			],
 			"creatureType": [
 				"Aberration"
 			],
 			"perception": {
-				"default": 9
+				"std": 9
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [
-					"web sense 60 feet"
-				],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"type": "imprecise",
+					"name": "web sense",
+					"range": 60
+				}
+			],
 			"languages": {
 				"languages": [
 					"Aklo",
@@ -3067,52 +2864,38 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 8
+					"std": 8
 				},
 				"Athletics": {
-					"default": 10
+					"std": 10
 				},
 				"Occultism": {
-					"default": 7
+					"std": 7
 				},
 				"Stealth": {
-					"default": 10
+					"std": 10
 				}
 			},
 			"abilityMods": {
-				"Str": 3,
-				"Dex": 3,
-				"Con": 2,
-				"Int": 0,
-				"Wis": 2,
-				"Cha": -1
+				"str": 3,
+				"dex": 3,
+				"con": 2,
+				"int": 0,
+				"wis": 2,
+				"cha": -1
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+9, {@skill Stealth} +10 Str +3, Dex +3, Con +2, Int +0, Wis +2, Cha \u20131."
-					],
-					"name": "Spider Lore"
-				},
-				{
-					"entries": [
-						"The tixitog can detect the vibrations of creatures touching a web that the tixitog is also touching."
-					],
-					"name": "Web Sense"
-				}
-			],
 			"ac": {
-				"default": 19
+				"std": 19
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 9
+				"fort": {
+					"std": 9
 				},
-				"Ref": {
-					"default": 10
+				"ref": {
+					"std": 10
 				},
-				"Will": {
-					"default": 7
+				"will": {
+					"std": 7
 				}
 			},
 			"hp": [
@@ -3121,10 +2904,9 @@
 					"abilities": null
 				}
 			],
-			"abilitiesMid": [],
 			"speed": {
 				"walk": 25,
-				"climb ": 25
+				"climb": 25
 			},
 			"attacks": [
 				{
@@ -3164,37 +2946,42 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"+9, {@skill Stealth} +10 Str +3, Dex +3, Con +2, Int +0, Wis +2, Cha \u20131."
+						],
+						"name": "Spider Lore"
 					},
-					"entries": [
-						"Small, {@damage 1d12+3} bludgeoning, Rupture 10."
-					],
-					"name": "Swallow Whole",
-					"generic": true
-				},
-				{
-					"entries": [
-						"When a tixitog hits a Small or smaller creature with its tongue {@action Strike}, the target is pulled into the tixitog's mouth.",
-						"The tixitog can then attempt to Swallow it Whole."
-					],
-					"name": "Tongue Pull"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning",
-					"piercing"
+					{
+						"entries": [
+							"The tixitog can detect the vibrations of creatures touching a web that the tixitog is also touching."
+						],
+						"name": "Web Sense"
+					}
 				],
-				"condition": []
-			},
-			"misc": [
-				"MA",
-				"RC"
-			]
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"Small, {@damage 1d12+3} bludgeoning, Rupture 10."
+						],
+						"name": "Swallow Whole",
+						"generic": true
+					},
+					{
+						"entries": [
+							"When a tixitog hits a Small or smaller creature with its tongue {@action Strike}, the target is pulled into the tixitog's mouth.",
+							"The tixitog can then attempt to Swallow it Whole."
+						],
+						"name": "Tongue Pull"
+					}
+				]
+			}
 		},
 		{
 			"name": "Voz Lirayne",
@@ -3202,18 +2989,19 @@
 			"source": "AoA1",
 			"page": 81,
 			"level": 5,
-			"rarity": "Unique",
-			"alignment": "NE",
-			"size": "Medium",
 			"traits": [
-				"Elf",
-				"Human"
+				"unique",
+				"ne",
+				"medium",
+				"elf",
+				"human",
+				"humanoid"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 7
+				"std": 7
 			},
 			"languages": {
 				"languages": [
@@ -3228,62 +3016,57 @@
 			},
 			"skills": {
 				"Arcana": {
-					"default": 13
+					"std": 13
 				},
 				"Deception": {
-					"default": 11
+					"std": 11
 				},
 				"Occultism": {
-					"default": 11
+					"std": 11
 				},
 				"Religion": {
-					"default": 7
+					"std": 7
 				},
 				"Society": {
-					"default": 11
+					"std": 11
 				},
 				"Stealth": {
-					"default": 10
+					"std": 10
 				},
 				"Library Lore": {
-					"default": 11
+					"std": 11
+				},
+				"Mercantile Lore": {
+					"std": 11
 				}
 			},
 			"abilityMods": {
-				"Str": 1,
-				"Dex": 3,
-				"Con": 3,
-				"Int": 4,
-				"Wis": 0,
-				"Cha": 2
+				"str": 1,
+				"dex": 3,
+				"con": 3,
+				"int": 4,
+				"wis": 0,
+				"cha": 2
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+11, {@skill Occultism} +11, {@skill Religion} +7,"
-					],
-					"name": "Mercantile Lore"
-				},
-				{
-					"entries": [
-						"+11, {@skill Stealth} +10 Str +1, Dex +3, Con +3, Int +4, Wis +0, Cha +2 Items +1 dagger (bonded item), healing potion, scroll of sleep, scroll of true strike."
-					],
-					"name": "Society"
-				}
+			"items": [
+				"{@runeItem dagger||+1 weapon potency||+1 dagger} (bonded item)",
+				"{@item healing potion (generic)||healing potion}",
+				"scroll of sleep",
+				"scroll of true strike"
 			],
 			"ac": {
-				"default": 20,
+				"std": 20,
 				"with mage armor": 21
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 10
+				"fort": {
+					"std": 10
 				},
-				"Ref": {
-					"default": 12
+				"ref": {
+					"std": 12
 				},
-				"Will": {
-					"default": 9
+				"will": {
+					"std": 9
 				}
 			},
 			"hp": [
@@ -3292,7 +3075,6 @@
 					"abilities": null
 				}
 			],
-			"abilitiesMid": [],
 			"speed": {
 				"walk": 25
 			},
@@ -3305,7 +3087,7 @@
 						"agile",
 						"finesse",
 						"magical",
-						"versatile S"
+						"versatile s"
 					],
 					"effects": [],
 					"damage": "{@damage 1d4+3} piercing",
@@ -3321,7 +3103,7 @@
 						"agile",
 						"magical",
 						"thrown 10 feet",
-						"versatile S"
+						"versatile s"
 					],
 					"effects": [],
 					"damage": "{@damage 1d4+3} piercing",
@@ -3338,6 +3120,25 @@
 					"DC": 23,
 					"attack": 15,
 					"entry": {
+						"0": {
+							"spells": [
+								{
+									"name": "chill touch"
+								},
+								{
+									"name": "detect magic"
+								},
+								{
+									"name": "light"
+								},
+								{
+									"name": "read"
+								},
+								{
+									"name": "shield"
+								}
+							]
+						},
 						"1": {
 							"spells": [
 								{
@@ -3394,10 +3195,7 @@
 						"3": {
 							"spells": [
 								{
-									"name": "call of the grave",
-									"notes": [
-										"Pathfinder Core Rulebook 406"
-									]
+									"name": "call of the grave"
 								}
 							]
 						}
@@ -3415,61 +3213,32 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"traits": [
-						"3rd"
-					],
-					"entries": [
-						"chill touch, detect magic, light, read magic, shield Wizard School Spells DC 23; 3rd (1 Focus Point) call of the grave (Pathfinder Core Rulebook 406) Arcane Rituals DC 23; create undead."
-					],
-					"name": "Cantrips"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "varies",
-						"entry": "[on{@as F}"
+			"abilities": {
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "free"
+						},
+						"entries": [
+							"When Voz uses this ability, she also regains 1 Focus Point."
+						],
+						"name": "Drain Bonded Item"
 					},
-					"traits": [
-						"on"
-					],
-					"entries": [
-						"] (Pathfinder Core Rulebook 205) When Voz uses this ability, she also regains 1 Focus Point."
-					],
-					"name": "Drain Bonded Item"
-				},
-				{
-					"traits": [
-						"Pathfinder Core Rulebook 209"
-					],
-					"entries": [],
-					"name": "Eschew Materials"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
+					{
+						"entries": [],
+						"name": "Eschew Materials"
 					},
-					"traits": [
-						"Pathfinder Core Rulebook 210"
-					],
-					"entries": [],
-					"name": "Reach Spell"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"piercing"
-				],
-				"condition": []
-			},
-			"misc": [
-				"MA",
-				"RA",
-				"TA",
-				"UW"
-			]
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [],
+						"name": "Reach Spell"
+					}
+				]
+			}
 		},
 		{
 			"name": "Warbal Bumblebrasher",
@@ -3477,26 +3246,24 @@
 			"source": "AoA1",
 			"page": 83,
 			"level": 1,
-			"rarity": "Unique",
-			"alignment": "NG",
-			"size": "Small",
 			"traits": [
-				"Goblin"
+				"unique",
+				"ng",
+				"small",
+				"goblin",
+				"humanoid"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 3
+				"std": 3
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Common",
@@ -3506,63 +3273,44 @@
 			},
 			"skills": {
 				"Diplomacy": {
-					"default": 8
+					"std": 8
 				},
 				"Nature": {
-					"default": 5
+					"std": 5
 				},
 				"Religion": {
-					"default": 5
+					"std": 5
 				},
 				"Society": {
-					"default": 7
+					"std": 7
 				},
 				"Survival": {
-					"default": 3
+					"std": 3
 				},
 				"Goblin Lore": {
-					"default": 9
+					"std": 9
 				}
 			},
 			"abilityMods": {
-				"Str": -1,
-				"Dex": 2,
-				"Con": 2,
-				"Int": 2,
-				"Wis": 0,
-				"Cha": 3
+				"str": -1,
+				"dex": 2,
+				"con": 2,
+				"int": 2,
+				"wis": 0,
+				"cha": 3
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+7, {@skill Survival} +3 Str \u20131, Dex +2, Con +2, Int +2, Wis +0, Cha +3 Items book titled History of the Bumblebrashers in Isger, religious symbol of {@deity Desna}, scholar's robes."
-					],
-					"name": "Society"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"trigger": "A goblin ally ends a move action adjacent to Warbal.",
-					"entries": [
-						"Warbal {@action Step||Steps}."
-					],
-					"name": "Goblin Scuttle"
-				}
-			],
 			"ac": {
-				"default": 15
+				"std": 15
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 5
+				"fort": {
+					"std": 5
 				},
-				"Ref": {
-					"default": 5
+				"ref": {
+					"std": 5
 				},
-				"Will": {
-					"default": 5
+				"will": {
+					"std": 5
 				}
 			},
 			"hp": [
@@ -3571,7 +3319,6 @@
 					"abilities": null
 				}
 			],
-			"abilitiesMid": [],
 			"speed": {
 				"walk": 25
 			},
@@ -3616,18 +3363,27 @@
 					]
 				}
 			],
-			"abilitiesBot": [],
-			"inflicts": {
-				"damage": [
-					"bludgeoning"
-				],
-				"condition": []
-			},
-			"misc": [
-				"MA",
-				"RA",
-				"TA"
-			]
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"+7, {@skill Survival} +3 Str \u20131, Dex +2, Con +2, Int +2, Wis +0, Cha +3 Items book titled History of the Bumblebrashers in Isger, religious symbol of {@deity Desna}, scholar's robes."
+						],
+						"name": "Society"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"trigger": "A goblin ally ends a move action adjacent to Warbal.",
+						"entries": [
+							"Warbal {@action Step||Steps}."
+						],
+						"name": "Goblin Scuttle"
+					}
+				]
+			}
 		}
 	]
 }

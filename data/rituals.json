@@ -6,8 +6,8 @@
 			"page": 347,
 			"level": 1,
 			"traits": [
-				"Uncommon",
-				"Conjuration"
+				"uncommon",
+				"conjuration"
 			],
 			"cast": {
 				"number": 1,
@@ -15,11 +15,13 @@
 				"entry": "1 day"
 			},
 			"primaryCheck": {
-				"entry": "{@skill Religion} (expert; you must be a demon)",
 				"skills": [
 					"Religion"
 				],
-				"prof": "expert"
+				"prof": "expert",
+				"mustBe": [
+					"demon"
+				]
 			},
 			"entries": [
 				"You call in a favor from another demon whose level is no more than double {@i Abyssal pact's} spell level, two demons whose levels are each at least 2 less than double the spell level, or three demons whose levels are each at least 3 less than double the spell level.",
@@ -40,8 +42,8 @@
 			"page": 348,
 			"level": 1,
 			"traits": [
-				"Uncommon",
-				"Conjuration"
+				"uncommon",
+				"conjuration"
 			],
 			"cast": {
 				"number": 1,
@@ -49,9 +51,11 @@
 				"entry": "1 day"
 			},
 			"primaryCheck": {
-				"entry": "{@skill Religion} (expert; you must be a angel)",
 				"skills": [
 					"Religion"
+				],
+				"mustBe": [
+					"angel"
 				],
 				"prof": "expert"
 			},
@@ -74,8 +78,8 @@
 			"page": 75,
 			"level": 10,
 			"traits": [
-				"Rare",
-				"Abjuration"
+				"rare",
+				"abjuration"
 			],
 			"cast": {
 				"number": 1,
@@ -135,8 +139,8 @@
 			"page": 409,
 			"level": 2,
 			"traits": [
-				"Uncommon",
-				"Transmutation"
+				"uncommon",
+				"transmutation"
 			],
 			"cast": {
 				"number": 1,
@@ -187,8 +191,8 @@
 			"page": 79,
 			"level": 3,
 			"traits": [
-				"Uncommon",
-				"Divination"
+				"uncommon",
+				"divination"
 			],
 			"cast": {
 				"number": 1,
@@ -200,7 +204,6 @@
 				"number": 1
 			},
 			"primaryCheck": {
-				"entry": "{@skill Arcana} or {@skill Occultism} (expert)",
 				"skills": [
 					"Arcana",
 					"Occultism"
@@ -208,7 +211,6 @@
 				"prof": "expert"
 			},
 			"secondaryCheck": {
-				"entry": "{@skill Arcana}, {@skill Crafting}, or {@skill Occultism}",
 				"skills": [
 					"Arcana",
 					"Crafting",
@@ -233,14 +235,13 @@
 			"page": 147,
 			"level": 6,
 			"traits": [
-				"Rare",
-				"Divination",
-				"Linguistic"
+				"rare",
+				"divination",
+				"linguistic"
 			],
 			"cast": {
 				"number": 1,
-				"unit": "hour",
-				"entry": "1 hour"
+				"unit": "hour"
 			},
 			"cost": "parchment, ink, and an item of value from each bettor worth at least 50 gp",
 			"secondaryCasters": {
@@ -248,14 +249,12 @@
 				"note": "to 9"
 			},
 			"primaryCheck": {
-				"entry": "{@skill Occultism} (expert)",
 				"skills": [
 					"Occultism"
 				],
 				"prof": "expert"
 			},
 			"secondaryCheck": {
-				"entry": "{@skill Society}",
 				"skills": [
 					"Society"
 				]
@@ -294,8 +293,8 @@
 			"page": 240,
 			"level": 5,
 			"traits": [
-				"Uncommon",
-				"Divination"
+				"uncommon",
+				"divination"
 			],
 			"cast": {
 				"number": 1,
@@ -340,7 +339,7 @@
 						"Critical Success": "All targets are able to navigate independently in the Astral Plane. Each target's silver cord is stronger than usual, providing them a +4 circumstance bonus to their Fortitude save to avoid dying if their astral form dies.",
 						"Success": "You successfully project the targets.",
 						"Failure": "You fail to project the targets.",
-						"Critical Failure": "The process of separating the targets' spirits from their bodies is complicated, and something goes catastrophically wrong. All casters become doomed 1, are immediately reduced to 0 Hit Points, and begin dying."
+						"Critical Failure": "The process of separating the targets' spirits from their bodies is complicated, and something goes catastrophically wrong. All casters become {@condition doomed 1}, are immediately reduced to 0 Hit Points, and begin dying."
 					}
 				}
 			]
@@ -351,8 +350,8 @@
 			"page": 409,
 			"level": 4,
 			"traits": [
-				"Uncommon",
-				"Abjuration"
+				"uncommon",
+				"abjuration"
 			],
 			"cast": {
 				"number": 1,
@@ -402,7 +401,9 @@
 			"heightened": {
 				"plus_x": {
 					"level": 1,
-					"entries": ["Increase the maximum target level by 2 and the base cost by 20 gp."]
+					"entries": [
+						"Increase the maximum target level by 2 and the base cost by 20 gp."
+					]
 				}
 			}
 		},
@@ -412,9 +413,9 @@
 			"page": 409,
 			"level": 6,
 			"traits": [
-				"Uncommon",
-				"Divination",
-				"Mental"
+				"uncommon",
+				"divination",
+				"mental"
 			],
 			"cast": {
 				"number": 1,
@@ -467,9 +468,9 @@
 			"page": 147,
 			"level": 6,
 			"traits": [
-				"Uncommon",
-				"Divination",
-				"Mental"
+				"uncommon",
+				"divination",
+				"mental"
 			],
 			"cast": {
 				"number": 1,
@@ -516,8 +517,8 @@
 			"page": 79,
 			"level": 3,
 			"traits": [
-				"Rare",
-				"Conjuration"
+				"rare",
+				"conjuration"
 			],
 			"cast": {
 				"number": 1,
@@ -588,8 +589,8 @@
 			"page": 148,
 			"level": 8,
 			"traits": [
-				"Rare",
-				"Necromancy"
+				"rare",
+				"necromancy"
 			],
 			"cast": {
 				"number": 1,
@@ -644,10 +645,10 @@
 			"page": 410,
 			"level": 4,
 			"traits": [
-				"Uncommon",
-				"Necromancy",
-				"Negative",
-				"Plant"
+				"uncommon",
+				"necromancy",
+				"negative",
+				"plant"
 			],
 			"cast": {
 				"number": 1,
@@ -703,8 +704,8 @@
 			"page": 410,
 			"level": 5,
 			"traits": [
-				"Uncommon",
-				"Necromancy"
+				"uncommon",
+				"necromancy"
 			],
 			"cast": {
 				"number": 1,
@@ -758,8 +759,8 @@
 			"page": 240,
 			"level": 9,
 			"traits": [
-				"Rare",
-				"Necromancy"
+				"rare",
+				"necromancy"
 			],
 			"cast": {
 				"number": 7,
@@ -806,9 +807,9 @@
 			"page": 410,
 			"level": 6,
 			"traits": [
-				"Uncommon",
-				"Divination",
-				"Prediction"
+				"uncommon",
+				"divination",
+				"prediction"
 			],
 			"cast": {
 				"number": 1,
@@ -861,9 +862,9 @@
 			"page": 410,
 			"level": 6,
 			"traits": [
-				"Uncommon",
-				"Divination",
-				"Prediction"
+				"uncommon",
+				"divination",
+				"prediction"
 			],
 			"cast": {
 				"number": 1,
@@ -905,9 +906,9 @@
 			"page": 75,
 			"level": 4,
 			"traits": [
-				"Rare",
-				"Emotion",
-				"Transmutation"
+				"rare",
+				"emotion",
+				"transmutation"
 			],
 			"cast": {
 				"number": 1,
@@ -941,7 +942,7 @@
 				},
 				"entry": "10 feet"
 			},
-			"targets": "1 damaged or {@condition broken} public work no larger than 3,000 cubic feet (the size of a {@trait Huge} creature) ",
+			"targets": "1 damaged or {@condition broken} public work no larger than 3,000 cubic feet (the size of a {@trait Huge} creature)",
 			"entries": [
 				"You lead your community in repairing a public work, such as a bridge, well, or mural, through the power of memory and art. The primary caster serves as an emcee or leader, while each secondary caster provides a heartfelt anecdote that somehow involves the public work; for instance, recounting a story of playing at a fountain each summer. The anecdotes don't need to be firsthand accounts\u2014a community member might sing of how their grandparents fell in love crossing a bridge every day\u2014but they must be directly connected in some way. The GM can offer a +1 circumstance bonus to the secondary caster whose anecdote seems most moving.",
 				"If the public work was destroyed intentionally by one of the casters, the ritual automatically critically fails.",
@@ -962,10 +963,10 @@
 			"page": 148,
 			"level": 4,
 			"traits": [
-				"Uncommon",
-				"Curse",
-				"Divination",
-				"Mental"
+				"uncommon",
+				"curse",
+				"divination",
+				"mental"
 			],
 			"cast": {
 				"number": 6,
@@ -1026,9 +1027,9 @@
 			"page": 410,
 			"level": 2,
 			"traits": [
-				"Uncommon",
-				"Consecration",
-				"Evocation"
+				"uncommon",
+				"consecration",
+				"evocation"
 			],
 			"cast": {
 				"number": 3,
@@ -1090,7 +1091,9 @@
 				"x": [
 					{
 						"level": 7,
-						"entries": ["The consecrated area also gains the effects of the {@spell dimensional lock} spell, but the effect doesn't attempt to counteract teleportation by worshippers of your deity. The cost increases to 200 gp × the spell level."]
+						"entries": [
+							"The consecrated area also gains the effects of the {@spell dimensional lock} spell, but the effect doesn't attempt to counteract teleportation by worshippers of your deity. The cost increases to 200 gp × the spell level."
+						]
 					}
 				]
 			}
@@ -1101,8 +1104,8 @@
 			"page": 411,
 			"level": 8,
 			"traits": [
-				"Uncommon",
-				"Evocation"
+				"uncommon",
+				"evocation"
 			],
 			"cast": {
 				"number": 1,
@@ -1164,7 +1167,9 @@
 				"x": [
 					{
 						"level": 9,
-						"entries": ["You can create unseasonable weather and contradictory weather effects, such as extreme cold and a hurricane. You can make the weather calm and normal weather for a different season or choose weather effects from any season's list."]
+						"entries": [
+							"You can create unseasonable weather and contradictory weather effects, such as extreme cold and a hurricane. You can make the weather calm and normal weather for a different season or choose weather effects from any season's list."
+						]
 					}
 				]
 			}
@@ -1175,9 +1180,9 @@
 			"page": 241,
 			"level": 8,
 			"traits": [
-				"Rare",
-				"Conjuration",
-				"Teleportation"
+				"rare",
+				"conjuration",
+				"teleportation"
 			],
 			"cast": {
 				"number": 9,
@@ -1251,8 +1256,8 @@
 			"page": 76,
 			"level": 6,
 			"traits": [
-				"Uncommon",
-				"Transmutation"
+				"uncommon",
+				"transmutation"
 			],
 			"cast": {
 				"number": 1,
@@ -1299,9 +1304,9 @@
 			"page": 411,
 			"level": 2,
 			"traits": [
-				"Uncommon",
-				"Evil",
-				"Necromancy"
+				"uncommon",
+				"evil",
+				"necromancy"
 			],
 			"cast": {
 				"number": 1,
@@ -1354,8 +1359,8 @@
 			"page": 311,
 			"level": 1,
 			"traits": [
-				"Uncommon",
-				"Conjuration"
+				"uncommon",
+				"conjuration"
 			],
 			"cast": {
 				"number": 1,
@@ -1363,9 +1368,12 @@
 				"entry": "1 day"
 			},
 			"primaryCheck": {
-				"entry": "{@skill Religion} (expert; you must be a demon or an urdefhan)",
 				"skills": [
 					"Religion"
+				],
+				"mustBe": [
+					"demon",
+					"urdefhan"
 				],
 				"prof": "expert"
 			},
@@ -1388,8 +1396,8 @@
 			"page": 311,
 			"level": 1,
 			"traits": [
-				"Uncommon",
-				"Conjuration"
+				"uncommon",
+				"conjuration"
 			],
 			"cast": {
 				"number": 1,
@@ -1397,9 +1405,11 @@
 				"entry": "1 day"
 			},
 			"primaryCheck": {
-				"entry": "{@skill Religion} (expert; you must be a div)",
 				"skills": [
 					"Religion"
+				],
+				"mustBe": [
+					"div"
 				],
 				"prof": "expert"
 			},
@@ -1422,12 +1432,12 @@
 			"page": 149,
 			"level": 5,
 			"traits": [
-				"Uncommon",
-				"Consecration",
-				"Emotion",
-				"Enchantment",
-				"Fear",
-				"Mental"
+				"uncommon",
+				"consecration",
+				"emotion",
+				"enchantment",
+				"fear",
+				"mental"
 			],
 			"cast": {
 				"number": 2,
@@ -1484,11 +1494,15 @@
 				"x": [
 					{
 						"level": 7,
-						"entries": ["The dread ambience costs 750 gp and remains in place for 10 years."]
+						"entries": [
+							"The dread ambience costs 750 gp and remains in place for 10 years."
+						]
 					},
 					{
 						"level": 9,
-						"entries": ["The dread ambience costs 5,000 gp and remains in place for an unlimited duration."]
+						"entries": [
+							"The dread ambience costs 5,000 gp and remains in place for an unlimited duration."
+						]
 					}
 				]
 			}
@@ -1499,8 +1513,8 @@
 			"page": 150,
 			"level": 1,
 			"traits": [
-				"Uncommon",
-				"Conjuration"
+				"uncommon",
+				"conjuration"
 			],
 			"cast": {
 				"number": 1,
@@ -1541,11 +1555,15 @@
 				"x": [
 					{
 						"level": 4,
-						"entries": ["The range of the telepathic link increases, allowing the wisp to contact you anywhere on the same planet. Its {@skill Perception} modifier increases to +10, or +12 on a critical success."]
+						"entries": [
+							"The range of the telepathic link increases, allowing the wisp to contact you anywhere on the same planet. Its {@skill Perception} modifier increases to +10, or +12 on a critical success."
+						]
 					},
 					{
 						"level": 6,
-						"entries": ["As 4th level, except the wisp can see invisibility, and its {@skill Perception} modifier increases to +15, or +17 on a critical success."]
+						"entries": [
+							"As 4th level, except the wisp can see invisibility, and its {@skill Perception} modifier increases to +15, or +17 on a critical success."
+						]
 					}
 				]
 			}
@@ -1556,8 +1574,8 @@
 			"page": 216,
 			"level": 7,
 			"traits": [
-				"Rare",
-				"Evocation"
+				"rare",
+				"evocation"
 			],
 			"cast": {
 				"number": 1,
@@ -1614,9 +1632,9 @@
 			"page": 217,
 			"level": 5,
 			"traits": [
-				"Rare",
-				"Consecration",
-				"Transmutation"
+				"rare",
+				"consecration",
+				"transmutation"
 			],
 			"cast": {
 				"number": 1,
@@ -1672,8 +1690,8 @@
 			"page": 240,
 			"level": 9,
 			"traits": [
-				"Rare",
-				"Illusion"
+				"rare",
+				"illusion"
 			],
 			"cast": {
 				"number": 1,
@@ -1687,7 +1705,8 @@
 			"primaryCheck": {
 				"entry": "{@skill Arcana} or {@skill Occultism} (legendary)",
 				"skills": [
-					"Crafting"
+					"Arcana",
+					"Occultism"
 				],
 				"prof": "legendary"
 			},
@@ -1729,7 +1748,9 @@
 				"x": [
 					{
 						"level": 10,
-						"entries": ["The cost increases to 100,000 gp and the radius can be up to 5 miles."]
+						"entries": [
+							"The cost increases to 100,000 gp and the radius can be up to 5 miles."
+						]
 					}
 				]
 			}
@@ -1740,8 +1761,8 @@
 			"page": 23,
 			"level": 1,
 			"traits": [
-				"Rare",
-				"Abjuration"
+				"rare",
+				"abjuration"
 			],
 			"cast": {
 				"number": 1,
@@ -1801,8 +1822,8 @@
 			"page": 411,
 			"level": 8,
 			"traits": [
-				"Uncommon",
-				"Abjuration"
+				"uncommon",
+				"abjuration"
 			],
 			"cast": {
 				"number": 1,
@@ -1854,11 +1875,11 @@
 			"page": 150,
 			"level": 4,
 			"traits": [
-				"Uncommon",
-				"Consecration",
-				"Necromancy",
-				"Plant",
-				"Poison"
+				"uncommon",
+				"consecration",
+				"necromancy",
+				"plant",
+				"poison"
 			],
 			"cast": {
 				"number": 1,
@@ -1918,10 +1939,10 @@
 			"page": 412,
 			"level": 3,
 			"traits": [
-				"Uncommon",
-				"Curse",
-				"Enchantment",
-				"Mental"
+				"uncommon",
+				"curse",
+				"enchantment",
+				"mental"
 			],
 			"cast": {
 				"number": 1,
@@ -1975,15 +1996,21 @@
 				"x": [
 					{
 						"level": 5,
-						"entries": ["You can use geas on an unwilling creature; it can attempt a Will save to negate the effect. If the target fails this Will save, the geas lasts up to 1 week. A {@spell remove curse} spell can counteract a geas on an unwilling creature, in addition to powerful magic such as a {@spell wish} spell. A clever unwilling creature can subvert the geas by contriving situations that prevent it from complying, but in that case it becomes {@condition sickened} (as described above)."]
+						"entries": [
+							"You can use geas on an unwilling creature; it can attempt a Will save to negate the effect. If the target fails this Will save, the geas lasts up to 1 week. A {@spell remove curse} spell can counteract a geas on an unwilling creature, in addition to powerful magic such as a {@spell wish} spell. A clever unwilling creature can subvert the geas by contriving situations that prevent it from complying, but in that case it becomes {@condition sickened} (as described above)."
+						]
 					},
 					{
 						"level": 7,
-						"entries": ["As 5th level, but the geas lasts for up to 1 year on an unwilling creature."]
+						"entries": [
+							"As 5th level, but the geas lasts for up to 1 year on an unwilling creature."
+						]
 					},
 					{
 						"level": 9,
-						"entries": ["As 5th level, but the geas lasts for a duration you choose (even unlimited) on an unwilling creature."]
+						"entries": [
+							"As 5th level, but the geas lasts for a duration you choose (even unlimited) on an unwilling creature."
+						]
 					}
 				]
 			}
@@ -1994,9 +2021,9 @@
 			"page": 150,
 			"level": 3,
 			"traits": [
-				"Uncommon",
-				"Abjuration",
-				"Divination"
+				"uncommon",
+				"abjuration",
+				"divination"
 			],
 			"cast": {
 				"number": 1,
@@ -2050,8 +2077,8 @@
 			"page": 311,
 			"level": 2,
 			"traits": [
-				"Uncommon",
-				"Abjuration"
+				"uncommon",
+				"abjuration"
 			],
 			"cast": {
 				"number": 1,
@@ -2101,7 +2128,9 @@
 				"x": [
 					{
 						"level": 6,
-						"entries": ["Increase the cost to a total value of 600 gp. On a success, secondary casters in the ritual permanently gain the effects of a 6th-level {@spell telepathy} spell, but only with each other."]
+						"entries": [
+							"Increase the cost to a total value of 600 gp. On a success, secondary casters in the ritual permanently gain the effects of a 6th-level {@spell telepathy} spell, but only with each other."
+						]
 					}
 				]
 			}
@@ -2112,8 +2141,8 @@
 			"page": 242,
 			"level": 5,
 			"traits": [
-				"Uncommon",
-				"Conjuration"
+				"uncommon",
+				"conjuration"
 			],
 			"cast": {
 				"number": 4,
@@ -2166,9 +2195,9 @@
 			"page": 151,
 			"level": 6,
 			"traits": [
-				"Uncommon",
-				"Enchantment",
-				"Mental"
+				"uncommon",
+				"enchantment",
+				"mental"
 			],
 			"cast": {
 				"number": 6,
@@ -2217,7 +2246,9 @@
 			"heightened": {
 				"plus_x": {
 					"level": 2,
-					"entries": ["Increase the damage to the target by {@dice 1d6} per body part component, and the damage to the casters on a critical failure by {@dice 3d6}."]
+					"entries": [
+						"Increase the damage to the target by {@dice 1d6} per body part component, and the damage to the casters on a critical failure by {@dice 3d6}."
+					]
 				}
 			}
 		},
@@ -2227,8 +2258,8 @@
 			"page": 412,
 			"level": 8,
 			"traits": [
-				"Uncommon",
-				"Evocation"
+				"uncommon",
+				"evocation"
 			],
 			"cast": {
 				"number": 1,
@@ -2289,11 +2320,15 @@
 				"x": [
 					{
 						"level": 9,
-						"entries": ["You can use the object form of imprisonment in addition to the other options, and you can target a creature of up to 18th level. The base cost increases to 2,000 gp."]
+						"entries": [
+							"You can use the object form of imprisonment in addition to the other options, and you can target a creature of up to 18th level. The base cost increases to 2,000 gp."
+						]
 					},
 					{
 						"level": 10,
-						"entries": ["You can use the object and oubliette forms of imprisonment in addition to the other options, and you can target a creature of up to 20th level. The base cost increases to 6,000 gp."]
+						"entries": [
+							"You can use the object and oubliette forms of imprisonment in addition to the other options, and you can target a creature of up to 20th level. The base cost increases to 6,000 gp."
+						]
 					}
 				]
 			}
@@ -2304,8 +2339,8 @@
 			"page": 348,
 			"level": 1,
 			"traits": [
-				"Uncommon",
-				"Conjuration"
+				"uncommon",
+				"conjuration"
 			],
 			"cast": {
 				"number": 1,
@@ -2313,7 +2348,9 @@
 				"entry": "1 day"
 			},
 			"primaryCheck": {
-				"entry": "{@skill Religion} (expert; you must be a devil)",
+				"mustBe": [
+					"devil"
+				],
 				"skills": [
 					"Religion"
 				],
@@ -2338,9 +2375,9 @@
 			"page": 413,
 			"level": 2,
 			"traits": [
-				"Uncommon",
-				"Enchantment",
-				"Mental"
+				"uncommon",
+				"enchantment",
+				"mental"
 			],
 			"cast": {
 				"number": 1,
@@ -2390,7 +2427,9 @@
 				"x": [
 					{
 						"level": 6,
-						"entries": ["You can use inveigle on a creature up to 1 mile away throughout the casting, as long as you have a lock of hair, a drop of blood, or some other piece of the creature's body, which you mix into the oils used in the cost. The base cost increases to 100 gp. The duration is shorter than normal, based on how large a piece of the creature's body you use. Blood, hair, scales, and the like cause the ritual to last 1 week, while a hand or other substantial body part causes the ritual to last 1 month."]
+						"entries": [
+							"You can use inveigle on a creature up to 1 mile away throughout the casting, as long as you have a lock of hair, a drop of blood, or some other piece of the creature's body, which you mix into the oils used in the cost. The base cost increases to 100 gp. The duration is shorter than normal, based on how large a piece of the creature's body you use. Blood, hair, scales, and the like cause the ritual to last 1 week, while a hand or other substantial body part causes the ritual to last 1 month."
+						]
 					}
 				]
 			}
@@ -2401,8 +2440,8 @@
 			"page": 413,
 			"level": 7,
 			"traits": [
-				"Uncommon",
-				"Divination"
+				"uncommon",
+				"divination"
 			],
 			"cast": {
 				"number": 1,
@@ -2447,10 +2486,10 @@
 			"page": 151,
 			"level": 5,
 			"traits": [
-				"Rare",
-				"Mental",
-				"Necromancy",
-				"Possession"
+				"rare",
+				"mental",
+				"necromancy",
+				"possession"
 			],
 			"cast": {
 				"number": 1,
@@ -2508,7 +2547,9 @@
 				"x": [
 					{
 						"level": 9,
-						"entries": ["You can cast the ritual without a duration, leaving no magic to counteract. The effects are reversible only by another mind swap ritual or powerful magic like wish. This increases the cost of the ritual to 10,000 gp and is an evil act unless both targets are willing."]
+						"entries": [
+							"You can cast the ritual without a duration, leaving no magic to counteract. The effects are reversible only by another mind swap ritual or powerful magic like wish. This increases the cost of the ritual to 10,000 gp and is an evil act unless both targets are willing."
+						]
 					}
 				]
 			}
@@ -2519,8 +2560,8 @@
 			"page": 152,
 			"level": 3,
 			"traits": [
-				"Uncommon",
-				"Conjuration"
+				"uncommon",
+				"conjuration"
 			],
 			"cast": {
 				"number": 1,
@@ -2570,7 +2611,9 @@
 			"heightened": {
 				"plus_x": {
 					"level": 1,
-					"entries": ["The carriage's AC, Fortitude save, and Hardness increase by 2, its Hit Points increase by 20, and its {@condition Broken} Threshold increases by 10."]
+					"entries": [
+						"The carriage's AC, Fortitude save, and Hardness increase by 2, its Hit Points increase by 20, and its {@condition Broken} Threshold increases by 10."
+					]
 				}
 			}
 		},
@@ -2580,8 +2623,8 @@
 			"page": 41,
 			"level": 3,
 			"traits": [
-				"Uncommon",
-				"Conjuration"
+				"uncommon",
+				"conjuration"
 			],
 			"cast": {
 				"number": 1,
@@ -2617,8 +2660,8 @@
 			"page": 413,
 			"level": 5,
 			"traits": [
-				"Uncommon",
-				"Conjuration"
+				"uncommon",
+				"conjuration"
 			],
 			"cast": {
 				"number": 1,
@@ -2659,7 +2702,7 @@
 						"Critical Success": "Your deity sends a servitor, and the servitor's payment costs only half as much as normal. If you ask for a particular servitor by name, your deity is likely to send that servitor unless the servitor is busy.",
 						"Success": "Your deity sends a servitor.",
 						"Failure": "Your deity does not send a servitor.",
-						"Critical Failure": "Your deity is offended and sends a sign of displeasure or possibly even a servitor to scold or attack you, depending on your deity's nature. You must conduct an atone ritual to regain your former standing with your deity."
+						"Critical Failure": "Your deity is offended and sends a sign of displeasure or possibly even a servitor to scold or attack you, depending on your deity's nature. You must conduct an {@ritual atone} ritual to regain your former standing with your deity."
 					}
 				}
 			]
@@ -2670,9 +2713,9 @@
 			"page": 414,
 			"level": 6,
 			"traits": [
-				"Uncommon",
-				"Abjuration",
-				"Conjuration"
+				"uncommon",
+				"abjuration",
+				"conjuration"
 			],
 			"cast": {
 				"number": 1,
@@ -2738,10 +2781,10 @@
 			"page": 415,
 			"level": 4,
 			"traits": [
-				"Uncommon",
-				"Necromancy",
-				"Plant",
-				"Positive"
+				"uncommon",
+				"necromancy",
+				"plant",
+				"positive"
 			],
 			"cast": {
 				"number": 1,
@@ -2799,9 +2842,9 @@
 			"page": 153,
 			"level": 5,
 			"traits": [
-				"Uncommon",
-				"Curse",
-				"Necromancy"
+				"uncommon",
+				"curse",
+				"necromancy"
 			],
 			"cast": {
 				"number": 7,
@@ -2857,9 +2900,9 @@
 			"page": 415,
 			"level": 6,
 			"traits": [
-				"Uncommon",
-				"Abjuration",
-				"Conjuration"
+				"uncommon",
+				"abjuration",
+				"conjuration"
 			],
 			"cast": {
 				"number": 1,
@@ -2911,8 +2954,8 @@
 			"page": 234,
 			"level": 2,
 			"traits": [
-				"Uncommon",
-				"Abjuration"
+				"uncommon",
+				"abjuration"
 			],
 			"cast": {
 				"number": 1,
@@ -2941,7 +2984,9 @@
 			"heightened": {
 				"plus_x": {
 					"level": 1,
-					"entries": ["Increase the maximum target level by 2 and the base cost by 10 gp."]
+					"entries": [
+						"Increase the maximum target level by 2 and the base cost by 10 gp."
+					]
 				}
 			}
 		},
@@ -2951,9 +2996,9 @@
 			"page": 223,
 			"level": 7,
 			"traits": [
-				"Rare",
-				"Evil",
-				"Necromancy"
+				"rare",
+				"evil",
+				"necromancy"
 			],
 			"cast": {
 				"number": 1,
@@ -2998,8 +3043,8 @@
 			"page": 242,
 			"level": 3,
 			"traits": [
-				"Uncommon",
-				"Necromancy"
+				"uncommon",
+				"necromancy"
 			],
 			"cast": {
 				"number": 4,
@@ -3049,27 +3094,39 @@
 				"x": [
 					{
 						"level": 4,
-						"entries": ["The maximum level of the target increases to 10. The cost is the target's level (minimum 1) × 40 gp."]
+						"entries": [
+							"The maximum level of the target increases to 10. The cost is the target's level (minimum 1) × 40 gp."
+						]
 					},
 					{
 						"level": 5,
-						"entries": ["The maximum level of the target increases to 12. The cost is the target's level (minimum 1) × 75 gp."]
+						"entries": [
+							"The maximum level of the target increases to 12. The cost is the target's level (minimum 1) × 75 gp."
+						]
 					},
 					{
 						"level": 6,
-						"entries": ["The maximum level of the target increases to 14. The cost is the target's level (minimum 1) × 125 gp. The target must have died within the past month."]
+						"entries": [
+							"The maximum level of the target increases to 14. The cost is the target's level (minimum 1) × 125 gp. The target must have died within the past month."
+						]
 					},
 					{
 						"level": 7,
-						"entries": ["The maximum level of the target increases to 16. The cost is the target's level (minimum 1) × 200 gp. The target must have died within the past month."]
+						"entries": [
+							"The maximum level of the target increases to 16. The cost is the target's level (minimum 1) × 200 gp. The target must have died within the past month."
+						]
 					},
 					{
 						"level": 8,
-						"entries": ["The maximum level of the target increases to 18. The cost is the target's level (minimum 1) × 300 gp. The target must have died within the past year."]
+						"entries": [
+							"The maximum level of the target increases to 18. The cost is the target's level (minimum 1) × 300 gp. The target must have died within the past year."
+						]
 					},
 					{
 						"level": 9,
-						"entries": ["The maximum level of the target increases to 20. The cost is the target's level (minimum 1) × 600 gp. The target must have died within the past decade."]
+						"entries": [
+							"The maximum level of the target increases to 20. The cost is the target's level (minimum 1) × 600 gp. The target must have died within the past decade."
+						]
 					}
 				]
 			}
@@ -3080,8 +3137,8 @@
 			"page": 244,
 			"level": 4,
 			"traits": [
-				"Uncommon",
-				"Necromancy"
+				"uncommon",
+				"necromancy"
 			],
 			"cast": {
 				"number": 1,
@@ -3133,9 +3190,9 @@
 			"page": 415,
 			"level": 5,
 			"traits": [
-				"Uncommon",
-				"Healing",
-				"Necromancy"
+				"uncommon",
+				"healing",
+				"necromancy"
 			],
 			"cast": {
 				"number": 1,
@@ -3184,23 +3241,33 @@
 				"x": [
 					{
 						"level": 6,
-						"entries": ["You can resurrect a target of up to 12th level, and the base cost is 125 gp."]
+						"entries": [
+							"You can resurrect a target of up to 12th level, and the base cost is 125 gp."
+						]
 					},
 					{
 						"level": 7,
-						"entries": ["You can use resurrect even with only a small portion of the body; the ritual creates a new body on a success or critical success. The target must have died within the past decade. The ritual requires four secondary casters, each of whom must be at least half the target's level. The target can be up to 14th level, and the base cost is 200 gp."]
+						"entries": [
+							"You can use resurrect even with only a small portion of the body; the ritual creates a new body on a success or critical success. The target must have died within the past decade. The ritual requires four secondary casters, each of whom must be at least half the target's level. The target can be up to 14th level, and the base cost is 200 gp."
+						]
 					},
 					{
 						"level": 8,
-						"entries": ["As 7th level, but the target can be up to 16th level and the base cost is 300 gp."]
+						"entries": [
+							"As 7th level, but the target can be up to 16th level and the base cost is 300 gp."
+						]
 					},
 					{
 						"level": 9,
-						"entries": ["You can use resurrect even without the body as long as you know the target's name and have touched a portion of its body at any time. The target must have died within the past century, and it doesn't gain the negative conditions on a success. The ritual requires eight secondary casters, each of whom must be at least half the target's level. The target can be up to 18th level, and the base cost is 600 gp."]
+						"entries": [
+							"You can use resurrect even without the body as long as you know the target's name and have touched a portion of its body at any time. The target must have died within the past century, and it doesn't gain the negative conditions on a success. The ritual requires eight secondary casters, each of whom must be at least half the target's level. The target can be up to 18th level, and the base cost is 600 gp."
+						]
 					},
 					{
 						"level": 10,
-						"entries": ["As 9th level, except it doesn't matter how long ago the target died. The ritual requires 16 secondary casters, each of whom must be at least half the target's level. The target can be up to 20th level, and the ritual's base cost is 1,000 gp."]
+						"entries": [
+							"As 9th level, except it doesn't matter how long ago the target died. The ritual requires 16 secondary casters, each of whom must be at least half the target's level. The target can be up to 20th level, and the ritual's base cost is 1,000 gp."
+						]
 					}
 				]
 			}
@@ -3211,8 +3278,8 @@
 			"page": 244,
 			"level": 4,
 			"traits": [
-				"Uncommon",
-				"Illusion"
+				"uncommon",
+				"illusion"
 			],
 			"cast": {
 				"number": 1,
@@ -3271,8 +3338,8 @@
 			"page": 75,
 			"level": 6,
 			"traits": [
-				"Rare",
-				"Polymorph"
+				"rare",
+				"polymorph"
 			],
 			"cast": {
 				"number": 1,
@@ -3324,11 +3391,11 @@
 			"page": 38,
 			"level": 3,
 			"traits": [
-				"Rare",
-				"Auditory",
-				"Divination",
-				"Linguistic",
-				"Mental"
+				"rare",
+				"auditory",
+				"divination",
+				"linguistic",
+				"mental"
 			],
 			"cast": {
 				"number": 1,
@@ -3377,9 +3444,9 @@
 			"page": 244,
 			"level": 7,
 			"traits": [
-				"Uncommon",
-				"Conjuration",
-				"Teleportation"
+				"uncommon",
+				"conjuration",
+				"teleportation"
 			],
 			"cast": {
 				"number": 1,
@@ -3439,11 +3506,15 @@
 				"x": [
 					{
 						"level": 9,
-						"entries": ["The cost increases to 2,000 gp, the duration increases to 1 month, and the destination can be anywhere on the same planet."]
+						"entries": [
+							"The cost increases to 2,000 gp, the duration increases to 1 month, and the destination can be anywhere on the same planet."
+						]
 					},
 					{
 						"level": 10,
-						"entries": ["The cost increases to 10,000 gp, the duration is unlimited, and the destination can be anywhere on the same planet."]
+						"entries": [
+							"The cost increases to 10,000 gp, the duration is unlimited, and the destination can be anywhere on the same planet."
+						]
 					}
 				]
 			}
@@ -3454,8 +3525,8 @@
 			"page": 74,
 			"level": 6,
 			"traits": [
-				"Uncommon",
-				"Necromancy"
+				"uncommon",
+				"necromancy"
 			],
 			"cast": {
 				"number": 1,
@@ -3500,8 +3571,8 @@
 						"source": "EC5",
 						"page": 74,
 						"traits": [
-							"Curse",
-							"Disease"
+							"curse",
+							"disease"
 						],
 						"entries": [
 							"Failing or critically failing this disease's Fortitude save causes the disease to progress to the next stage as normal; however, succeeding or critically succeeding at the save has no effect. The disease can be removed only by first successfully counteracting the curse and then counteracting the disease.",
@@ -3554,9 +3625,9 @@
 			"page": 153,
 			"level": 5,
 			"traits": [
-				"Uncommon",
-				"Divination",
-				"Fortune"
+				"uncommon",
+				"divination",
+				"fortune"
 			],
 			"cast": {
 				"number": 1,
@@ -3610,8 +3681,8 @@
 			"page": 80,
 			"level": 8,
 			"traits": [
-				"Rare",
-				"Abjuration"
+				"rare",
+				"abjuration"
 			],
 			"cast": {
 				"number": 1,
@@ -3671,8 +3742,8 @@
 			"page": 245,
 			"level": 2,
 			"traits": [
-				"Uncommon",
-				"Conjuration"
+				"uncommon",
+				"conjuration"
 			],
 			"cast": {
 				"number": 1,
@@ -3729,7 +3800,9 @@
 				"x": [
 					{
 						"level": 6,
-						"entries": ["If destroyed, the unseen servants reform the next morning. The cost increases to 30 gp."]
+						"entries": [
+							"If destroyed, the unseen servants reform the next morning. The cost increases to 30 gp."
+						]
 					}
 				]
 			}
@@ -3740,8 +3813,8 @@
 			"page": 245,
 			"level": 6,
 			"traits": [
-				"Uncommon",
-				"Abjuration"
+				"uncommon",
+				"abjuration"
 			],
 			"cast": {
 				"number": 1,
@@ -3800,7 +3873,9 @@
 			"heightened": {
 				"plus_x": {
 					"level": 1,
-					"entries": ["The ward covers an additional area 100 feet × 100 feet, up to 50 feet high, which must be contiguous with the original area."]
+					"entries": [
+						"The ward covers an additional area 100 feet × 100 feet, up to 50 feet high, which must be contiguous with the original area."
+					]
 				}
 			}
 		},
@@ -3810,9 +3885,9 @@
 			"page": 245,
 			"level": 7,
 			"traits": [
-				"Rare",
-				"Conjuration",
-				"Teleportation"
+				"rare",
+				"conjuration",
+				"teleportation"
 			],
 			"cast": {
 				"number": 7,

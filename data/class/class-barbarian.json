@@ -13,7 +13,11 @@
 				"will": "E",
 				"skills": {
 					"t": [
-						"{@skill Athletics}"
+						{
+							"skill": [
+								"Athletics"
+							]
+						}
 					],
 					"add": 3
 				},
@@ -132,7 +136,7 @@
 			],
 			"subclasses": [
 				{
-					"name": "Animal Instinct",
+					"name": "Animal",
 					"shortName": "Animal",
 					"type": "Instinct",
 					"source": "CRB",
@@ -144,7 +148,7 @@
 					]
 				},
 				{
-					"name": "Dragon Instinct",
+					"name": "Dragon",
 					"shortName": "Dragon",
 					"type": "Instinct",
 					"source": "CRB",
@@ -156,7 +160,7 @@
 					]
 				},
 				{
-					"name": "Fury Instinct",
+					"name": "Fury",
 					"shortName": "Fury",
 					"type": "Instinct",
 					"source": "CRB",
@@ -168,7 +172,7 @@
 					]
 				},
 				{
-					"name": "Giant Instinct",
+					"name": "Giant",
 					"shortName": "Giant",
 					"type": "Instinct",
 					"source": "CRB",
@@ -180,7 +184,7 @@
 					]
 				},
 				{
-					"name": "Spirit Instinct",
+					"name": "Spirit",
 					"shortName": "Spirit",
 					"type": "Instinct",
 					"source": "CRB",
@@ -192,7 +196,7 @@
 					]
 				},
 				{
-					"name": "Superstition Instinct",
+					"name": "Superstition",
 					"shortName": "Superstition",
 					"type": "Instinct",
 					"source": "APG",
@@ -339,7 +343,7 @@
 			"classSource": "CRB",
 			"level": 1,
 			"entries": [
-				"At 1st level and every even-numbered level thereafter, you gain an {@filter barbarian class feat|feats||type=class|classes=barbarian|level=[1;1]}."
+				"At 1st level and every even-numbered level thereafter, you gain an {@filter barbarian class feat|feats||type=class|Class=barbarian|level=[1;1]}."
 			]
 		},
 		{
@@ -372,7 +376,7 @@
 			"classSource": "CRB",
 			"level": 3,
 			"entries": [
-				"At 3rd level and every 4 levels thereafter, you gain a {@filter general feat|feats||type=general}. "
+				"At 3rd level and every 4 levels thereafter, you gain a {@filter general feat|feats||type=general}."
 			]
 		},
 		{
@@ -629,7 +633,7 @@
 										[
 											"Bear",
 											"Jaws",
-											"{@damage 1d10} B",
+											"{@damage 1d10} P",
 											"{@trait Unarmed}"
 										],
 										[
@@ -923,7 +927,7 @@
 					"type": "pf2-h4",
 					"name": "Anathema and Instinct Ability",
 					"entries": [
-						"You don't have an anathema or an instinct ability. Instead, you gain an additional {@filter 1st-level barbarian feat|feats||classes=barbarian|level=[1;1]|type=class}."
+						"You don't have an anathema or an instinct ability. Instead, you gain an additional {@filter 1st-level barbarian feat|feats||Class=barbarian|level=[1;1]|type=class}."
 					]
 				}
 			]

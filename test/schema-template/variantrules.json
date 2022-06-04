@@ -1,0 +1,78 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema",
+	"$id": "variantrules.json",
+	"title": "Variant Rules",
+	"description": "The variant rule data type for Pf2eTools.",
+	"type": "object",
+	"version": "0.0.1",
+	"properties": {
+		"variantrule": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"source": {
+						"type": "string",
+						"$ref": "utils.json#/definitions/sourceList"
+					},
+					"name": {
+						"type": "string"
+					},
+					"page": {
+						"type": "integer"
+					},
+					"rarity": {
+						"type": "string",
+						"$ref": "utils.json#/definitions/rarity"
+					},
+					"type": {
+						"type": "string",
+						"enum": [
+							"Ability Score Variant",
+							"Proficiency Without Level",
+							"Minor Alignment Variant",
+							"Major Alignment Variant",
+							"Deep Backgrounds",
+							"Level 0 Characters",
+							"Feats and Features",
+							"Subsystem",
+							"Magic Item Variants",
+							"Thassilonian Rune Magic",
+							"Ley Lines",
+							"Cathartic Magic",
+							"Skill Points",
+							"Elementalism",
+							"Flexible Preparation",
+							"Geomancy",
+							"Pervasive Magic",
+							"Shadow Magic",
+							"Soul Seeds",
+							"Soulforged Armaments",
+							"Wellspring Magic",
+							"True Names"
+						]
+					},
+					"entries": {
+						"type": "array",
+						"items": {
+							"$ref": "entry.json"
+						},
+						"minItems": 1
+					}
+				},
+				"additionalProperties": false,
+				"required": [
+					"source",
+					"name",
+					"entries",
+					"page"
+				]
+			},
+			"uniqueItems": true
+		}
+	},
+	"additionalProperties": false,
+	"required": [
+		"variantrule"
+	]
+}

@@ -70,6 +70,63 @@
 				"TiO"
 			]
 		},
+		"alignmentTraits": {
+			"type": "string",
+			"anyOf": [
+				{
+					"$ref": "#/definitions/alignmentNames"
+				},
+				{
+					"$ref": "#/definitions/alignmentTags"
+				}
+			]
+		},
+		"alignmentNames": {
+			"type": "string",
+			"description": "L: Lawful\n N: Neutral\n NX: Neutral (law/chaos axis)\n NY: Neutral (good/evil axis)\n C: Chaotic\n G: Good\n E: Evil\n U: Unaligned\n A: Any",
+			"enum": [
+				"any",
+				"lawful",
+				"chaotic",
+				"good",
+				"evil",
+				"neutral",
+				"all"
+			]
+		},
+		"alignmentTags": {
+			"type": "string",
+			"description": "CE: Chaotic Evil\nCG: Chaotic Good\nCN: Chaotic Neutral\nLE: Lawful Evil\nLG: Lawful Good\nLN: Lawful Neutral\nN: Neutral\nNE: Neutral Evil\nNG: Neutral Good",
+			"enum": [
+				"CE",
+				"CG",
+				"CN",
+				"LE",
+				"LG",
+				"LN",
+				"N",
+				"NE",
+				"NG"
+			]
+		},
+		"speed": {
+			"type": "object",
+			"patternProperties": {
+				"^(walk|climb|fly|burrow|swim)$": {
+					"type": "integer",
+					"exclusiveMinimum": 0
+				}
+			},
+			"properties": {
+				"speedNote": {
+					"type": "string"
+				}
+			},
+			"additionalProperties": {
+				"type": "integer",
+				"exclusiveMinimum": 0
+			}
+		},
 		"frequency": {
 			"type": "object",
 			"oneOf": [
@@ -162,32 +219,24 @@
 			],
 			"properties": {
 				"number": {
-					"type": "number"
+					"type": "integer"
 				},
 				"unit": {
 					"type": "string",
 					"enum": [
-						"action",
-						"reaction",
 						"free",
-						"varies",
-						"minute",
+						"reaction",
+						"action",
 						"round",
-						"hour"
+						"minute",
+						"hour",
+						"varies"
 					]
 				},
 				"entry": {
 					"type": "string",
 					"not": {
-						"enum": [
-							"{@as 1}",
-							"{@as 2}",
-							"{@as 3}",
-							"{@as R}",
-							"{@as F}",
-							"{@as r}",
-							"{@as f}"
-						]
+						"pattern": "^{@as [123RFrf]}$"
 					}
 				}
 			},
@@ -227,6 +276,246 @@
 				}
 			},
 			"additionalProperties": false
+		},
+		"skillBonus": {
+			"$comment": "Just keeping this around in case we want it later, currently unused",
+			"type": "object",
+			"propertyNames": {
+				"$ref": "#/definitions/skillName"
+			},
+			"additionalProperties": {
+				"type": "string",
+				"pattern": "^(\\+|-)\\d$"
+			}
+		},
+		"prerequisite": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"level": {
+						"oneOf": [
+							{
+								"type": "object",
+								"properties": {
+									"level": {
+										"type": "integer"
+									},
+									"class": {
+										"type": "object",
+										"properties": {
+											"name": {
+												"$ref": "#/definitions/className"
+											},
+											"source": {
+												"$ref": "#/definitions/sourceList"
+											},
+											"visible": {
+												"description": "Governs whether or not the class name is visible in the list display/prerequisite line. *Not* recommended for features which implicitly carry a class restriction, such as Eldritch Invocations.",
+												"type": "boolean"
+											}
+										},
+										"required": [
+											"name"
+										],
+										"additionalProperties": false
+									},
+									"subclass": {
+										"type": "object",
+										"properties": {
+											"name": {
+												"type": "string"
+											},
+											"source": {
+												"$ref": "#/definitions/sourceList"
+											},
+											"visible": {
+												"description": "Governs whether or not the class name is visible in the list display/prerequisite line. *Not* recommended for features which implicitly carry a class restriction, such as Eldritch Invocations.",
+												"type": "boolean"
+											}
+										},
+										"required": [
+											"name"
+										],
+										"additionalProperties": false
+									}
+								},
+								"required": [
+									"level"
+								],
+								"additionalProperties": false
+							},
+							{
+								"type": "integer",
+								"minimum": 1
+							}
+						]
+					},
+					"pact": {
+						"type": "string",
+						"examples": [
+							"Chain",
+							"Tome",
+							"Blade",
+							"Talisman"
+						]
+					},
+					"patron": {
+						"type": "string",
+						"examples": [
+							"The Archfey",
+							"The Fiend",
+							"The Great Old One",
+							"The Hexblade",
+							"The Raven Queen",
+							"The Seeker"
+						]
+					},
+					"spell": {
+						"type": "array",
+						"items": {
+							"$ref": "entry.json"
+						}
+					},
+					"feat": {
+						"type": "array",
+						"items": {
+							"$ref": "entry.json"
+						}
+					},
+					"feature": {
+						"type": "array",
+						"items": {
+							"$ref": "entry.json"
+						}
+					},
+					"item": {
+						"type": "array",
+						"items": {
+							"$ref": "entry.json"
+						}
+					},
+					"other": {
+						"description": "A free text prerequisite",
+						"type": "string"
+					},
+					"otherSummary": {
+						"description": "A free text prerequisite, with a shortened form for list display.",
+						"type": "object",
+						"properties": {
+							"entry": {
+								"type": "string"
+							},
+							"entrySummary": {
+								"description": "Used in short/list displays",
+								"type": "string"
+							}
+						},
+						"required": [
+							"entry",
+							"entrySummary"
+						],
+						"additionalProperties": false
+					},
+					"race": {
+						"type": "array",
+						"items": {
+							"type": "object",
+							"properties": {
+								"name": {
+									"type": "string"
+								},
+								"displayEntry": {
+									"description": "Optional long-form name to be used in the rendered entity.",
+									"type": "string"
+								},
+								"subrace": {
+									"type": "string"
+								}
+							},
+							"required": [
+								"name"
+							],
+							"additionalProperties": false
+						}
+					},
+					"ability": {
+						"type": "array",
+						"items": {
+							"type": "object",
+							"properties": {
+								"str": {
+									"type": "integer"
+								},
+								"dex": {
+									"type": "integer"
+								},
+								"con": {
+									"type": "integer"
+								},
+								"int": {
+									"type": "integer"
+								},
+								"wis": {
+									"type": "integer"
+								},
+								"cha": {
+									"type": "integer"
+								}
+							},
+							"additionalProperties": false
+						}
+					},
+					"spellcasting": {
+						"type": "boolean"
+					},
+					"spellcasting2020": {
+						"description": "Renders with the updated text found in UA2020: Feats",
+						"type": "boolean"
+					},
+					"psionics": {
+						"type": "boolean"
+					},
+					"proficiency": {
+						"type": "array",
+						"items": {
+							"type": "object",
+							"properties": {
+								"armor": {
+									"type": "string",
+									"enum": [
+										"light",
+										"medium",
+										"heavy"
+									]
+								},
+								"weapon": {
+									"type": "string",
+									"enum": [
+										"simple",
+										"martial"
+									]
+								}
+							},
+							"additionalProperties": false,
+							"minProperties": 1
+						},
+						"minItems": 1
+					},
+					"alignment": {
+						"type": "array",
+						"items": {
+							"$ref": "utils.json#/definitions/alignmentTraits"
+						}
+					},
+					"note": {
+						"description": "An additional note that accompanies the proficiencies, but is not part of them.",
+						"type": "string"
+					}
+				},
+				"additionalProperties": false,
+				"minProperties": 1
+			}
 		},
 		"implies": {
 			"type": "object",
@@ -276,148 +565,265 @@
 			},
 			"additionalProperties": false
 		},
-		"anyTraitUpper": {
+		"anyTrait": {
 			"type": "string",
+			"description": "Any Trait in the game.",
 			"anyOf": [
 				{
-					"$ref": "#/definitions/rarityUpper"
+					"$ref": "#/definitions/rarity"
 				},
 				{
-					"$ref": "#/definitions/classNameUpper"
+					"$ref": "#/definitions/className"
 				},
 				{
-					"$ref": "#/definitions/schoolUpper"
+					"$ref": "#/definitions/school"
 				},
 				{
-					"$ref": "#/definitions/traditionUpper"
+					"$ref": "#/definitions/tradition"
 				},
 				{
-					"$ref": "#/definitions/damageTypeUpper"
+					"$ref": "#/definitions/damageType"
 				},
 				{
-					"$ref": "#/definitions/effectNameUpper"
+					"$ref": "#/definitions/effectName"
 				},
 				{
-					"$ref": "#/definitions/ancestryNameUpper"
+					"$ref": "#/definitions/ancestryName"
+				},
+				{
+					"$ref": "#/definitions/alignmentTraits"
 				},
 				{
 					"enum": [
-						"Archetype",
-						"Secret",
-						"Dedication",
-						"General",
-						"Skill",
-						"Prestige",
-						"Attack",
-						"Move",
-						"Exploration",
-						"Downtime",
-						"Energy",
-						"Concentrate",
-						"Finisher",
-						"Manipulate",
-						"Auditory",
-						"Flourish",
-						"Tandem",
-						"Stance",
-						"Spellshot",
-						"Unstable",
-						"Reckless",
-						"Verbal",
-						"Open",
-						"Rage",
-						"Lineage",
-						"Metamagic",
-						"Press",
-						"Oath",
-						"Vigilante",
-						"Multiclass",
-						"Social",
-						"Air",
-						"Earth",
-						"Water",
-						"Magical",
-						"Aura",
-						"Modification",
-						"Class",
-						"Extradimensional",
-						"Evolution",
-						"Pervasive Magic",
-						"Eidolon",
-						"True Name",
-						"Shadow",
-						"Contract",
-						"Invested",
-						"Curse",
-						"Virulent"
+						"archetype",
+						"secret",
+						"dedication",
+						"general",
+						"skill",
+						"prestige",
+						"attack",
+						"move",
+						"exploration",
+						"downtime",
+						"energy",
+						"concentrate",
+						"finisher",
+						"manipulate",
+						"auditory",
+						"flourish",
+						"tandem",
+						"stance",
+						"spellshot",
+						"unstable",
+						"reckless",
+						"verbal",
+						"open",
+						"rage",
+						"lineage",
+						"metamagic",
+						"press",
+						"oath",
+						"vigilante",
+						"multiclass",
+						"social",
+						"air",
+						"earth",
+						"water",
+						"magical",
+						"aura",
+						"modification",
+						"class",
+						"extradimensional",
+						"evolution",
+						"pervasive magic",
+						"eidolon",
+						"true name",
+						"shadow",
+						"contract",
+						"invested",
+						"curse",
+						"virulent",
+						"nonlethal",
+						"darkness",
+						"plant",
+						"fungus",
+						"olfactory",
+						"inhaled",
+						"incarnate",
+						"shove",
+						"alchemical",
+						"death",
+						"light",
+						"emotion",
+						"fear",
+						"charm",
+						"summoned",
+						"summon",
+						"clockwork",
+						"kaiju",
+						"steam",
+						"city",
+						"subjective gravity",
+						"timeless",
+						"metropolis",
+						"erratic",
+						"static",
+						"flowing",
+						"metamorphic",
+						"unbounded",
+						"town",
+						"humanoid",
+						"construct",
+						"amphibious",
+						"aeon",
+						"agile",
+						"finesse",
+						"beast",
+						"elemental",
+						"dragon",
+						"demon",
+						"devil",
+						"fiend",
+						"monitor",
+						"psychopomp",
+						"ooze",
+						"angel",
+						"celestial",
+						"ethereal",
+						"phantom",
+						"astral"
 					]
 				},
 				{
 					"enum": [
-						"[Magical Tradition]",
-						"[Class]"
+						"[magical tradition]",
+						"[class]"
 					]
 				},
 				{
 					"type": "string",
 					"pattern": "Additive \\d"
+				},
+				{
+					"type": "string",
+					"pattern": "^reach \\d+ feet$"
+				},
+				{
+					"type": "string",
+					"pattern": "^deadly \\d*d\\d+$"
+				},
+				{
+					"type": "string",
+					"pattern": "^range \\d+ feet$"
 				}
 			]
 		},
 		"loreSubjects": {
 			"type": "string",
 			"enum": [
-				"Dragon",
-				"Kintargo",
-				"Dahak",
-				"Architecture",
-				"Breachill"
+				"dragon",
+				"kintargo",
+				"dahak",
+				"architecture",
+				"breachill"
 			]
 		},
-		"abilityUpper": {
+		"ability": {
 			"type": "string",
 			"enum": [
-				"Strength",
-				"Dexterity",
-				"Constitution",
-				"Intelligence",
-				"Wisdom",
-				"Charisma",
-				"Free"
+				"strength",
+				"dexterity",
+				"constitution",
+				"intelligence",
+				"wisdom",
+				"charisma",
+				"free"
 			]
 		},
-		"ancestryNameUpper": {
+		"abilityAbbv": {
 			"type": "string",
 			"enum": [
-				"Kitsune",
-				"Kobold",
-				"Grippli",
-				"Aasimar",
-				"Changeling",
-				"Human",
-				"Catfolk",
-				"Elf",
-				"Orc",
-				"Ratfolk",
-				"Dhampir",
-				"Duskwalker",
-				"Gnome",
-				"Goblin",
-				"Tiefling",
-				"Halfling",
-				"Dwarf",
-				"Half-Elf",
-				"Half-Orc",
-				"Tengu",
-				"Automaton",
-				"Hobgoblin",
-				"Poppet",
-				"Goloma",
-				"Anadi",
-				"Gnoll",
-				"Lizardfolk",
-				"Conrasu",
-				"Shisk"
+				"str",
+				"dex",
+				"con",
+				"int",
+				"wis",
+				"cha"
+			]
+		},
+		"ancestryName": {
+			"type": "string",
+			"enum": [
+				"kitsune",
+				"kobold",
+				"grippli",
+				"aasimar",
+				"changeling",
+				"human",
+				"catfolk",
+				"elf",
+				"orc",
+				"ratfolk",
+				"dhampir",
+				"duskwalker",
+				"ganzi",
+				"ifrit",
+				"geniekin",
+				"gnome",
+				"goblin",
+				"tiefling",
+				"halfling",
+				"dwarf",
+				"half-elf",
+				"half-orc",
+				"tengu",
+				"automaton",
+				"hobgoblin",
+				"poppet",
+				"goloma",
+				"anadi",
+				"gnoll",
+				"lizardfolk",
+				"conrasu",
+				"shisk",
+				"oread",
+				"suli",
+				"sylph",
+				"undine",
+				"beastkin",
+				"aphorite",
+				"android",
+				"azarketi",
+				"fetchling",
+				"aberration",
+				"leshy",
+				"shoony",
+				"fey",
+				"sprite",
+				"strix"
+			]
+		},
+		"skillName": {
+			"type": "string",
+			"description": "A Skill Trait",
+			"enum": [
+				"acrobatics",
+				"arcana",
+				"athletics",
+				"crafting",
+				"deception",
+				"diplomacy",
+				"intimidation",
+				"lore",
+				"medicine",
+				"nature",
+				"occultism",
+				"performance",
+				"religion",
+				"society",
+				"stealth",
+				"survival",
+				"thievery"
 			]
 		},
 		"skillNameUpper": {
@@ -443,141 +849,200 @@
 				"Thievery"
 			]
 		},
-		"classNameUpperSourced": {
+		"classNameSourced": {
 			"type": "string",
 			"enum": [
-				"Alchemist",
-				"Barbarian",
-				"Bard",
-				"Champion",
-				"Cleric",
-				"Druid",
-				"Fighter",
-				"Gunslinger|G&G",
-				"Inventor|G&G",
-				"Investigator|APG",
-				"Magus|SoM",
-				"Monk",
-				"Oracle|APG",
-				"Ranger",
-				"Rogue",
-				"Sorcerer",
-				"Summoner|SoM",
-				"Swashbuckler|APG",
-				"Witch|APG",
-				"Wizard"
+				"alchemist",
+				"barbarian",
+				"bard",
+				"champion",
+				"cleric",
+				"druid",
+				"fighter",
+				"gunslinger|G&G",
+				"inventor|G&G",
+				"investigator|APG",
+				"magus|SoM",
+				"monk",
+				"oracle|APG",
+				"ranger",
+				"rogue",
+				"sorcerer",
+				"summoner|SoM",
+				"swashbuckler|APG",
+				"witch|APG",
+				"wizard"
 			]
 		},
-		"classNameUpper": {
+		"className": {
 			"type": "string",
 			"enum": [
-				"Alchemist",
-				"Barbarian",
-				"Bard",
-				"Champion",
-				"Cleric",
-				"Druid",
-				"Fighter",
-				"Gunslinger",
-				"Inventor",
-				"Investigator",
-				"Magus",
-				"Monk",
-				"Oracle",
-				"Ranger",
-				"Rogue",
-				"Sorcerer",
-				"Summoner",
-				"Swashbuckler",
-				"Witch",
-				"Wizard"
+				"alchemist",
+				"barbarian",
+				"bard",
+				"champion",
+				"cleric",
+				"druid",
+				"fighter",
+				"gunslinger",
+				"inventor",
+				"investigator",
+				"magus",
+				"monk",
+				"oracle",
+				"ranger",
+				"rogue",
+				"sorcerer",
+				"summoner",
+				"swashbuckler",
+				"witch",
+				"wizard"
 			]
 		},
-		"rarityUpper": {
+		"rarity": {
 			"type": "string",
 			"enum": [
-				"Common",
-				"Uncommon",
-				"Rare",
-				"Unique"
+				"common",
+				"uncommon",
+				"rare",
+				"unique"
 			]
 		},
-		"traditionUpper": {
+		"tradition": {
 			"type": "string",
 			"enum": [
-				"Arcane",
-				"Divine",
-				"Occult",
-				"Primal"
+				"arcane",
+				"divine",
+				"occult",
+				"primal"
 			]
 		},
-		"schoolUpper": {
+		"school": {
 			"type": "string",
 			"enum": [
-				"Abjuration",
-				"Conjuration",
-				"Divination",
-				"Enchantment",
-				"Evocation",
-				"Illusion",
-				"Necromancy",
-				"Transmutation"
+				"abjuration",
+				"conjuration",
+				"divination",
+				"enchantment",
+				"evocation",
+				"illusion",
+				"necromancy",
+				"transmutation"
 			]
 		},
-		"damageTypeUpper": {
+		"size": {
 			"type": "string",
 			"enum": [
-				"Electricity",
-				"Sonic",
-				"Acid",
-				"Poison",
-				"Cold",
-				"Fire",
-				"Slashing",
-				"Bludgeoning",
-				"Piercing",
-				"Positive",
-				"Negative",
-				"Force",
-				"Bleed",
-				"Precision",
-				"Evil",
-				"Good",
-				"Chaotic",
-				"Lawful",
-				"Mental"
+				"Tiny",
+				"Small",
+				"Medium",
+				"Large",
+				"Huge",
+				"Gargantuan"
+			]
+		},
+		"sizeAbbv": {
+			"type": "string",
+			"enum": [
+				"T",
+				"S",
+				"M",
+				"L",
+				"H",
+				"G"
+			]
+		},
+		"damage": {
+			"$comment": "Draft Damage object style",
+			"type": "object",
+			"propertyNames": {
+				"$ref": "#/definitions/damageType"
+			},
+			"additionalProperties": {
+				"oneOf": [
+					{
+						"type": "boolean",
+						"enum": [
+							true
+						]
+					},
+					{
+						"type": "object",
+						"properties": {
+							"versatile": {
+								"type": "boolean",
+								"enum": [
+									true
+								]
+							},
+							"persistent": {
+								"type": "boolean",
+								"enum": [
+									true
+								]
+							}
+						},
+						"additionalProperties": false
+					}
+				]
+			}
+		},
+		"damageType": {
+			"type": "string",
+			"enum": [
+				"electricity",
+				"sonic",
+				"acid",
+				"poison",
+				"cold",
+				"fire",
+				"slashing",
+				"bludgeoning",
+				"piercing",
+				"positive",
+				"negative",
+				"force",
+				"bleed",
+				"precision",
+				"evil",
+				"good",
+				"chaotic",
+				"lawful",
+				"mental",
+				"persistent"
 			]
 		},
 		"damageTypeTags": {
 			"type": "string",
 			"description": "TODO"
 		},
-		"effectNameUpper": {
+		"effectName": {
 			"type": "string",
 			"enum": [
-				"Death",
-				"Detection",
-				"Disease",
-				"Emotion",
-				"Fear",
-				"Fortune",
-				"Healing",
-				"Incapacitation",
-				"Light",
-				"Linguistic",
-				"Misfortune",
-				"Morph",
-				"Polymorph",
-				"Possession",
-				"Prediction",
-				"Revelation",
-				"Scrying",
-				"Sleep",
-				"Teleportation",
-				"Visual"
+				"death",
+				"contingency",
+				"detection",
+				"disease",
+				"emotion",
+				"fear",
+				"fortune",
+				"healing",
+				"incapacitation",
+				"light",
+				"linguistic",
+				"misfortune",
+				"morph",
+				"polymorph",
+				"possession",
+				"prediction",
+				"revelation",
+				"scrying",
+				"sleep",
+				"teleportation",
+				"visual"
 			]
 		},
-		"weaponGroupUpper": {
+		"weaponGroup": {
 			"type": "string",
 			"enum": [
 				"Firearm|G&G",
@@ -597,7 +1062,7 @@
 				"Bow"
 			]
 		},
-		"armorGroupUpper": {
+		"armorGroup": {
 			"type": "string",
 			"enum": [
 				"Plate",
@@ -605,6 +1070,1206 @@
 				"Chain",
 				"Cloth",
 				"Composite"
+			]
+		},
+		"conditions": {
+			"type": "string",
+			"enum": [
+				"blinded",
+				"broken",
+				"clumsy",
+				"concealed",
+				"confused",
+				"controlled",
+				"dazzled",
+				"deafened",
+				"doomed",
+				"drained",
+				"dying",
+				"encumbered",
+				"enfeebled",
+				"fascinated",
+				"fatigued",
+				"flat-footed",
+				"fleeing",
+				"friendly",
+				"frightened",
+				"grabbed",
+				"helpful",
+				"hidden",
+				"hostile",
+				"immobilized",
+				"indifferent",
+				"invisible",
+				"observed",
+				"paralyzed",
+				"persistent damage",
+				"petrified",
+				"prone",
+				"quickened",
+				"restrained",
+				"sickened",
+				"slowed",
+				"stunned",
+				"stupefied",
+				"unconscious",
+				"undetected",
+				"unfriendly",
+				"unnoticed",
+				"wounded"
+			]
+		},
+		"domains": {
+			"type": "string",
+			"enum": [
+				"air",
+				"ambition",
+				"change",
+				"cities",
+				"cold",
+				"confidence",
+				"creation",
+				"darkness",
+				"death",
+				"decay",
+				"delirium",
+				"destruction",
+				"dreams",
+				"dust",
+				"duty",
+				"earth",
+				"family",
+				"fate",
+				"fire",
+				"freedom",
+				"glyph",
+				"healing",
+				"indulgence",
+				"knowledge",
+				"lightning",
+				"luck",
+				"magic",
+				"might",
+				"moon",
+				"naga",
+				"nature",
+				"nightmares",
+				"pain",
+				"passion",
+				"perfection",
+				"plague",
+				"protection",
+				"repose",
+				"secrecy",
+				"sorrow",
+				"souls",
+				"stars",
+				"sun",
+				"swarm",
+				"time",
+				"toil",
+				"travel",
+				"trickery",
+				"truth",
+				"tyranny",
+				"undeath",
+				"vigil",
+				"void",
+				"water",
+				"wealth",
+				"wyrmkin",
+				"zeal"
+			]
+		},
+		"abilityBlock": {
+			"properties": {
+				"type": {
+					"const": "ability"
+				},
+				"style": {
+					"type": "string",
+					"enum": [
+						"compact",
+						"full"
+					]
+				},
+				"name": {
+					"type": "string"
+				},
+				"source": {
+					"$ref": "#/definitions/sourceList"
+				},
+				"page": {
+					"type": "integer",
+					"minimum": 0
+				},
+				"entries": {
+					"type": "array",
+					"items": {
+						"$ref": "entry.json"
+					},
+					"minItems": 1
+				},
+				"trigger": {
+					"type": "string"
+				},
+				"requirements": {
+					"type": "string"
+				},
+				"frequency": {
+					"$ref": "#/definitions/frequency"
+				},
+				"activity": {
+					"type": "object",
+					"$ref": "#/definitions/activity"
+				},
+				"actionType": {
+					"$ref": "actions.json#/properties/action/items/properties/actionType"
+				},
+				"traits": {
+					"type": "array",
+					"items": {
+						"type": "string",
+						"anyOf": [
+							{
+								"$ref": "#/definitions/anyTrait"
+							}
+						]
+					},
+					"minItems": 1
+				}
+			},
+			"additionalProperties": false,
+			"required": [
+				"name"
+			]
+		},
+		"attackBlock": {
+			"properties": {
+				"type": {
+					"const": "attack"
+				},
+				"name": {
+					"type": "string"
+				},
+				"range": {
+					"type": "string",
+					"enum": [
+						"Ranged",
+						"Melee"
+					]
+				},
+				"attack": {
+					"type": "integer"
+				},
+				"effects": {
+					"type": "array",
+					"items": {
+						"$ref": "entry.json"
+					},
+					"minItems": 1
+				},
+				"traits": {
+					"type": "array",
+					"items": {
+						"type": "string",
+						"anyOf": [
+							{
+								"$ref": "#/definitions/anyTrait"
+							}
+						]
+					},
+					"minItems": 1
+				},
+				"damage": {
+					"type": "string"
+				},
+				"types": {
+					"type": "array",
+					"items": {
+						"type": "string",
+						"$ref": "#/definitions/damageType"
+					},
+					"minItems": 1
+				},
+				"noMAP": {
+					"type": "boolean",
+					"enum": [
+						true
+					]
+				}
+			},
+			"additionalProperties": false,
+			"required": [
+				"name"
+			]
+		},
+		"defenses": {
+			"type": "object",
+			"properties": {
+				"ac": {
+					"type": "object",
+					"properties": {
+						"default": {
+							"type": "integer",
+							"exclusiveMinimum": 0
+						},
+						"note": {
+							"type": "string"
+						}
+					},
+					"additionalProperties": false,
+					"minProperties": 1
+				},
+				"savingThrows": {
+					"type": "object",
+					"properties": {
+						"fort": {
+							"type": "integer",
+							"minimum": 0
+						},
+						"ref": {
+							"type": "integer",
+							"minimum": 0
+						},
+						"will": {
+							"type": "integer",
+							"minimum": 0
+						}
+					},
+					"additionalProperties": false,
+					"minProperties": 1
+				},
+				"hardness": {
+					"type": "object",
+					"properties": {
+						"default": {
+							"type": "integer",
+							"minimum": 0
+						}
+					},
+					"patternProperties": {
+						"^.+$": {
+							"type": "integer",
+							"minimum": 0
+						}
+					},
+					"additionalProperties": false,
+					"minProperties": 1
+				},
+				"hp": {
+					"description": "Hit Points",
+					"type": "object",
+					"properties": {
+						"default": {
+							"type": "integer",
+							"exclusiveMinimum": 0
+						}
+					},
+					"patternProperties": {
+						"^.+$": {
+							"type": "integer",
+							"exclusiveMinimum": 0
+						}
+					},
+					"additionalProperties": false,
+					"minProperties": 1
+				},
+				"bt": {
+					"description": "Broken Threshold",
+					"type": "object",
+					"properties": {
+						"default": {
+							"type": "integer",
+							"minimum": 0
+						}
+					},
+					"patternProperties": {
+						"^.+$": {
+							"type": "integer",
+							"exclusiveMinimum": 0
+						}
+					},
+					"additionalProperties": false,
+					"minProperties": 1
+				},
+				"notes": {
+					"type": "object",
+					"properties": {
+						"default": {
+							"type": "string"
+						}
+					},
+					"patternProperties": {
+						"^.+$": {
+							"type": "string"
+						}
+					},
+					"additionalProperties": false,
+					"minProperties": 1
+				},
+				"weaknesses": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"name": {
+								"type": "string"
+							},
+							"amount": {
+								"type": "integer",
+								"minimum": 0
+							},
+							"note": {
+								"type": "string"
+							}
+						},
+						"additionalProperties": false
+					},
+					"minItems": 1
+				},
+				"resistances": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					},
+					"minItems": 1
+				},
+				"immunities": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					},
+					"minItems": 1
+				}
+			},
+			"additionalProperties": false,
+			"minProperties": 1
+		},
+		"genericFluffArray": {
+			"type": "array",
+			"uniqueItems": true,
+			"items": {
+				"anyOf": [
+					{
+						"type": "object",
+						"properties": {
+							"name": {
+								"type": "string"
+							},
+							"page": {
+								"type": "integer"
+							},
+							"source": {
+								"type": "string"
+							},
+							"otherSources": {
+								"$ref": "#/definitions/otherSources"
+							},
+							"images": {
+								"oneOf": [
+									{
+										"type": "array",
+										"items": {
+											"$ref": "entry.json#/definitions/entryImage"
+										}
+									},
+									{
+										"type": "null"
+									}
+								]
+							},
+							"lore": {
+								"type": "array",
+								"items": {
+									"$ref": "entry.json"
+								}
+							},
+							"entries": {
+								"type": "array",
+								"items": {
+									"$ref": "entry.json"
+								}
+							},
+							"_copy": {
+								"type": "object",
+								"properties": {
+									"name": {
+										"type": "string"
+									},
+									"source": {
+										"type": "string"
+									},
+									"pantheon": {
+										"description": "Used in deity data",
+										"type": "string"
+									},
+									"shortName": {
+										"description": "Used in subclass data",
+										"type": "string"
+									},
+									"className": {
+										"description": "Used in subclass data",
+										"type": "string"
+									},
+									"classSource": {
+										"description": "Used in subclass data",
+										"type": "string"
+									},
+									"_mod": {
+										"$ref": "#/definitions/_modObject"
+									},
+									"_trait": {
+										"type": "object",
+										"properties": {
+											"name": {
+												"type": "string"
+											},
+											"source": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"name",
+											"source"
+										]
+									},
+									"_preserve": {
+										"type": "object",
+										"patternProperties": {
+											".*": {
+												"type": "boolean"
+											}
+										}
+									}
+								},
+								"required": [
+									"name",
+									"source"
+								],
+								"additionalProperties": false
+							}
+						},
+						"additionalProperties": false,
+						"required": [
+							"name",
+							"source"
+						]
+					},
+					{
+						"type": "object",
+						"$comment": "This is a custom pre-processor tag, which merges together the array of objects into one. This allows proper inheritance, which JSON schema don't really do.",
+						"properties": {
+							"name": {
+								"type": "string"
+							},
+							"page": {
+								"type": "integer"
+							},
+							"source": {
+								"type": "string"
+							},
+							"otherSources": {
+								"$ref": "#/definitions/otherSources"
+							},
+							"images": {
+								"oneOf": [
+									{
+										"type": "array",
+										"items": {
+											"$ref": "entry.json#/definitions/entryImage"
+										}
+									},
+									{
+										"type": "null"
+									}
+								]
+							},
+							"lore": {
+								"type": "array",
+								"items": {
+									"$ref": "entry.json"
+								}
+							},
+							"entries": {
+								"type": "array",
+								"items": {
+									"$ref": "entry.json"
+								}
+							},
+							"_copy": {
+								"type": "object",
+								"properties": {
+									"name": {
+										"type": "string"
+									},
+									"source": {
+										"type": "string"
+									},
+									"pantheon": {
+										"description": "Used in deity data",
+										"type": "string"
+									},
+									"shortName": {
+										"description": "Used in subclass data",
+										"type": "string"
+									},
+									"className": {
+										"description": "Used in subclass data",
+										"type": "string"
+									},
+									"classSource": {
+										"description": "Used in subclass data",
+										"type": "string"
+									},
+									"_mod": {
+										"$ref": "#/definitions/_modObject"
+									},
+									"_trait": {
+										"type": "object",
+										"properties": {
+											"name": {
+												"type": "string"
+											},
+											"source": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"name",
+											"source"
+										]
+									},
+									"_preserve": {
+										"type": "object",
+										"patternProperties": {
+											".*": {
+												"type": "boolean"
+											}
+										}
+									}
+								},
+								"required": [
+									"name",
+									"source"
+								],
+								"additionalProperties": false
+							}
+						},
+						"additionalProperties": false,
+						"required": [
+							"_copy"
+						]
+					}
+				]
+			}
+		},
+		"_modObject": {
+			"type": "object",
+			"patternProperties": {
+				".*": {
+					"anyOf": [
+						{
+							"type": "string"
+						},
+						{
+							"$ref": "#/definitions/copyModifier"
+						},
+						{
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/copyModifier"
+							}
+						}
+					]
+				}
+			}
+		},
+		"copyModifier": {
+			"anyOf": [
+				{
+					"type": "object",
+					"properties": {
+						"mode": {
+							"const": "replaceTxt"
+						},
+						"replace": {
+							"type": "string"
+						},
+						"with": {
+							"type": "string"
+						},
+						"flags": {
+							"type": "string"
+						},
+						"props": {
+							"description": "If unspecified, defaults to `[null, \"entries\", \"headerEntries\", \"footerEntries\"]`. To apply to _any_ string, including those outside of sub-properties (for instance, when trying to replace text in an array of plain strings), include `null` as one of the props (i.e. `\"props\": [null]`)",
+							"type": "array",
+							"items": {
+								"type": [
+									"string",
+									"null"
+								]
+							}
+						}
+					},
+					"required": [
+						"replace",
+						"with"
+					],
+					"additionalProperties": false
+				},
+				{
+					"type": "object",
+					"properties": {
+						"mode": {
+							"const": "replaceName"
+						},
+						"replace": {
+							"type": "string"
+						},
+						"with": {
+							"type": "string"
+						},
+						"flags": {
+							"type": "string"
+						}
+					},
+					"required": [
+						"replace",
+						"with"
+					],
+					"additionalProperties": false
+				},
+				{
+					"type": "object",
+					"properties": {
+						"mode": {
+							"const": "appendStr"
+						},
+						"str": {
+							"type": "string"
+						},
+						"joiner": {
+							"type": "string"
+						}
+					},
+					"required": [
+						"str"
+					],
+					"additionalProperties": false
+				},
+				{
+					"type": "object",
+					"properties": {
+						"mode": {
+							"const": "prependArr"
+						},
+						"items": {
+							"anyOf": [
+								{
+									"type": "string"
+								},
+								{
+									"type": "object"
+								},
+								{
+									"type": "array"
+								}
+							]
+						}
+					},
+					"required": [
+						"items"
+					],
+					"additionalProperties": false
+				},
+				{
+					"type": "object",
+					"properties": {
+						"mode": {
+							"const": "appendArr"
+						},
+						"items": {
+							"anyOf": [
+								{
+									"type": "string"
+								},
+								{
+									"type": "object"
+								},
+								{
+									"type": "array"
+								}
+							]
+						}
+					},
+					"required": [
+						"items"
+					],
+					"additionalProperties": false
+				},
+				{
+					"type": "object",
+					"properties": {
+						"mode": {
+							"const": "appendIfNotExistsArr"
+						},
+						"items": {
+							"anyOf": [
+								{
+									"type": "string"
+								},
+								{
+									"type": "object"
+								},
+								{
+									"type": "array"
+								}
+							]
+						}
+					},
+					"required": [
+						"items"
+					],
+					"additionalProperties": false
+				},
+				{
+					"type": "object",
+					"properties": {
+						"mode": {
+							"const": "replaceArr"
+						},
+						"replace": {
+							"oneOf": [
+								{
+									"type": "string"
+								},
+								{
+									"type": "object",
+									"properties": {
+										"index": {
+											"type": "integer"
+										}
+									},
+									"required": [
+										"index"
+									],
+									"additionalProperties": false
+								},
+								{
+									"type": "object",
+									"properties": {
+										"regex": {
+											"type": "string"
+										},
+										"flags": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"regex"
+									],
+									"additionalProperties": false
+								}
+							]
+						},
+						"items": {
+							"anyOf": [
+								{
+									"type": "object"
+								},
+								{
+									"type": "array"
+								}
+							]
+						}
+					},
+					"required": [
+						"replace",
+						"items"
+					],
+					"additionalProperties": false
+				},
+				{
+					"type": "object",
+					"properties": {
+						"mode": {
+							"const": "replaceOrAppendArr"
+						},
+						"replace": {
+							"oneOf": [
+								{
+									"type": "string"
+								},
+								{
+									"type": "object",
+									"properties": {
+										"index": {
+											"type": "integer"
+										}
+									},
+									"required": [
+										"index"
+									],
+									"additionalProperties": false
+								},
+								{
+									"type": "object",
+									"properties": {
+										"regex": {
+											"type": "string"
+										},
+										"flags": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"regex"
+									],
+									"additionalProperties": false
+								}
+							]
+						},
+						"items": {
+							"anyOf": [
+								{
+									"type": "object"
+								},
+								{
+									"type": "array"
+								}
+							]
+						}
+					},
+					"required": [
+						"replace",
+						"items"
+					],
+					"additionalProperties": false
+				},
+				{
+					"type": "object",
+					"properties": {
+						"mode": {
+							"const": "insertArr"
+						},
+						"index": {
+							"type": "integer"
+						},
+						"items": {
+							"anyOf": [
+								{
+									"type": "object"
+								},
+								{
+									"type": "string"
+								},
+								{
+									"type": "array"
+								}
+							]
+						}
+					},
+					"required": [
+						"index",
+						"items"
+					],
+					"additionalProperties": false
+				},
+				{
+					"type": "object",
+					"properties": {
+						"mode": {
+							"const": "removeArr"
+						},
+						"names": {
+							"anyOf": [
+								{
+									"type": "string"
+								},
+								{
+									"type": "array"
+								}
+							]
+						},
+						"items": {
+							"anyOf": [
+								{
+									"type": "string"
+								},
+								{
+									"type": "array"
+								}
+							]
+						},
+						"force": {
+							"type": "boolean"
+						}
+					},
+					"additionalProperties": false
+				},
+				{
+					"type": "object",
+					"properties": {
+						"mode": {
+							"const": "calculateProp"
+						},
+						"prop": {
+							"type": "string"
+						},
+						"formula": {
+							"type": "string"
+						}
+					},
+					"required": [
+						"prop",
+						"formula"
+					],
+					"additionalProperties": false
+				},
+				{
+					"type": "object",
+					"properties": {
+						"mode": {
+							"const": "replaceSpells"
+						},
+						"spells": {
+							"type": "object"
+						},
+						"daily": {
+							"type": "object"
+						}
+					},
+					"required": [
+						"mode"
+					],
+					"additionalProperties": false
+				},
+				{
+					"type": "object",
+					"properties": {
+						"mode": {
+							"const": "addSpells"
+						},
+						"spells": {
+							"type": "object"
+						},
+						"will": {
+							"type": "array"
+						},
+						"daily": {
+							"type": "object"
+						},
+						"weekly": {
+							"type": "object"
+						},
+						"yearly": {
+							"type": "object"
+						}
+					},
+					"required": [
+						"mode"
+					],
+					"additionalProperties": false
+				},
+				{
+					"type": "object",
+					"properties": {
+						"mode": {
+							"const": "addSkills"
+						},
+						"skills": {
+							"type": "object"
+						}
+					},
+					"required": [
+						"mode",
+						"skills"
+					],
+					"additionalProperties": false
+				},
+				{
+					"type": "object",
+					"properties": {
+						"mode": {
+							"const": "addSaves"
+						},
+						"saves": {
+							"type": "object"
+						}
+					},
+					"required": [
+						"mode",
+						"saves"
+					],
+					"additionalProperties": false
+				},
+				{
+					"type": "object",
+					"properties": {
+						"mode": {
+							"const": "addAllSkills"
+						},
+						"skills": {
+							"type": "integer"
+						}
+					},
+					"required": [
+						"mode",
+						"skills"
+					],
+					"additionalProperties": false
+				},
+				{
+					"type": "object",
+					"properties": {
+						"mode": {
+							"const": "addAllSaves"
+						},
+						"saves": {
+							"type": "integer"
+						}
+					},
+					"required": [
+						"mode",
+						"saves"
+					],
+					"additionalProperties": false
+				},
+				{
+					"type": "object",
+					"properties": {
+						"mode": {
+							"const": "addSenses"
+						},
+						"senses": {
+							"anyOf": [
+								{
+									"type": "object"
+								},
+								{
+									"type": "array"
+								}
+							]
+						}
+					},
+					"required": [
+						"mode",
+						"senses"
+					],
+					"additionalProperties": false
+				},
+				{
+					"type": "object",
+					"properties": {
+						"mode": {
+							"const": "scalarAddProp"
+						},
+						"prop": {
+							"type": "string"
+						},
+						"scalar": {
+							"type": "number"
+						}
+					},
+					"required": [
+						"mode",
+						"scalar",
+						"prop"
+					],
+					"additionalProperties": false
+				},
+				{
+					"type": "object",
+					"properties": {
+						"mode": {
+							"const": "scalarMultProp"
+						},
+						"prop": {
+							"type": "string"
+						},
+						"scalar": {
+							"type": "number"
+						},
+						"floor": {
+							"type": "boolean"
+						}
+					},
+					"required": [
+						"mode",
+						"scalar",
+						"prop"
+					],
+					"additionalProperties": false
+				},
+				{
+					"type": "object",
+					"properties": {
+						"mode": {
+							"const": "scalarAddHit"
+						},
+						"scalar": {
+							"type": "number"
+						}
+					},
+					"required": [
+						"mode",
+						"scalar"
+					],
+					"additionalProperties": false
+				},
+				{
+					"type": "object",
+					"properties": {
+						"mode": {
+							"const": "scalarAddDc"
+						},
+						"scalar": {
+							"type": "number"
+						}
+					},
+					"required": [
+						"mode",
+						"scalar"
+					],
+					"additionalProperties": false
+				},
+				{
+					"type": "object",
+					"properties": {
+						"mode": {
+							"const": "maxSize"
+						},
+						"max": {
+							"type": "string"
+						}
+					},
+					"required": [
+						"mode",
+						"max"
+					],
+					"additionalProperties": false
+				},
+				{
+					"type": "object",
+					"properties": {
+						"mode": {
+							"const": "scalarMultXp"
+						},
+						"scalar": {
+							"type": "number"
+						},
+						"floor": {
+							"type": "boolean"
+						}
+					},
+					"required": [
+						"mode",
+						"scalar"
+					],
+					"additionalProperties": false
+				}
 			]
 		}
 	}

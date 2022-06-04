@@ -7,22 +7,22 @@
 			"focus": true,
 			"level": 10,
 			"traits": [
-				"Uncommon",
-				"Druid",
-				"Polymorph",
-				"Transmutation"
+				"uncommon",
+				"druid",
+				"polymorph",
+				"transmutation"
 			],
 			"school": "T",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"F": false,
-				"M": false,
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"range": {
 				"entry": "30 feet",
 				"distance": {
@@ -31,7 +31,6 @@
 				}
 			},
 			"targets": "1 animal companion in your service",
-			"savingThrowBasic": false,
 			"duration": {
 				"type": "timed",
 				"entry": "1 minute",
@@ -40,8 +39,6 @@
 					"unit": "minute"
 				}
 			},
-			"sustain": false,
-			"dismiss": false,
 			"entries": [
 				"You focus on the energies of all members of your animal companion's species, transforming your animal companion into its apex battle form. Your animal companion gains the following statistics and abilities while in its apex form.",
 				{
@@ -64,22 +61,22 @@
 			"focus": true,
 			"level": 10,
 			"traits": [
-				"Uncommon",
-				"Bard",
-				"Composition",
-				"Necromancy"
+				"uncommon",
+				"bard",
+				"composition",
+				"necromancy"
 			],
 			"school": "N",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"F": true,
-				"M": false,
-				"S": false,
-				"V": true
-			},
+			"components": [
+				{
+					"F": true,
+					"V": true
+				}
+			],
 			"range": {
 				"entry": "30 feet",
 				"distance": {
@@ -88,17 +85,15 @@
 				}
 			},
 			"targets": "up to 4 dead creatures or up to 4 undead creatures",
-			"savingThrowBasic": false,
 			"duration": {
 				"type": "timed",
 				"entry": "sustained up to 1 minute",
+				"sustain": true,
 				"duration": {
 					"number": 1,
 					"unit": "minute"
 				}
 			},
-			"sustain": true,
-			"dismiss": false,
 			"entries": [
 				"You chant a dirge or an elegy that either rouses the dead to action or reminds undead that they should lay to rest.",
 				"If you target dead creatures, the bodies animate and can continue acting as if they were alive. A creature animated in this way has 60 temporary Hit Points. The animated creatures are {@condition slowed|CRB|slowed 1} but can otherwise act normally. Creatures animated with this spell die again once the spell ends.",

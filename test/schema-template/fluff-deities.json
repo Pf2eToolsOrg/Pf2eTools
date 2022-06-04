@@ -1,0 +1,17 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema",
+	"$id": "fluff-deities.json",
+	"title": "Deity Fluff",
+	"description": "The deityFluff data type for Pf2eTools.",
+	"type": "object",
+	"version": "0.0.1",
+	"properties": {
+		"deityFluff": {
+			"$ref": "utils.json#/definitions/genericFluffArray"
+		}
+	},
+	"additionalProperties": false,
+	"required": [
+		"deityFluff"
+	]
+}

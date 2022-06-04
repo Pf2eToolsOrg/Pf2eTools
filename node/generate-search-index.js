@@ -5,12 +5,15 @@ async function main () {
 	console.log("Creating primary index...");
 	const index = await utS.UtilSearchIndex.pGetIndex();
 	fs.writeFileSync("search/index.json", JSON.stringify(index), "utf8");
+
 	console.log("Creating secondary index: Items...");
 	const indexItems = await utS.UtilSearchIndex.pGetIndexAdditionalItem();
 	fs.writeFileSync("search/index-item.json", JSON.stringify(indexItems), "utf8");
+
 	console.log("Creating trait index...");
 	const indexTraits = await utS.UtilSearchIndex.pGetIndexTraits();
 	fs.writeFileSync("search/traits.json", JSON.stringify(indexTraits), "utf8");
+
 	console.log("Creating alternate index: Spells...");
 	const indexAltSpells = await utS.UtilSearchIndex.pGetIndexAlternate("spell");
 	fs.writeFileSync("search/index-alt-spell.json", JSON.stringify(indexAltSpells), "utf8");

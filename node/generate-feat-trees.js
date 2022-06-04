@@ -9,6 +9,7 @@ function getHash (feat) {
 }
 
 function getChildren (hash) {
+	hash = hash.toLowerCase();
 	const out = new Set();
 	if (FEAT_LEADS_TO[hash]) {
 		FEAT_LEADS_TO[hash].forEach(h => {
@@ -44,7 +45,7 @@ function generateFeatTrees (args) {
 			const hash = getHash(f);
 			const prerequisites = Array.from((f.prerequisites || "").matchAll(/{@feat ([^}]*?)}/gi)).map(it => {
 				const {name, source} = DataUtil.generic.unpackUid(it[1], "@feat");
-				return `${name}${source !== SRC_CRB ? `|${source}` : ""}`
+				return `${name}${source !== SRC_CRB ? `|${source}` : ""}`.toLowerCase();
 			});
 			prerequisites.forEach(p => {
 				const leadsTo = (FEAT_LEADS_TO[p] = FEAT_LEADS_TO[p] || new Set());

@@ -13,8 +13,16 @@
 				"will": "T",
 				"skills": {
 					"t": [
-						"{@skill Nature}",
-						"{@skill Survival}"
+						{
+							"skill": [
+								"Nature"
+							]
+						},
+						{
+							"skill": [
+								"Survival"
+							]
+						}
 					],
 					"add": 4
 				},
@@ -301,7 +309,7 @@
 			"classSource": "CRB",
 			"level": 1,
 			"entries": [
-				"At 1st level and every even-numbered level, you gain a {@filter ranger class feat|feats||type=class|classes=ranger|level=[1;1]}."
+				"At 1st level and every even-numbered level, you gain a {@filter ranger class feat|feats||type=class|Class=ranger|level=[1;1]}."
 			]
 		},
 		{
@@ -323,7 +331,7 @@
 			"classSource": "CRB",
 			"level": 3,
 			"entries": [
-				"At 3rd level and every 4 levels thereafter, you gain a {@filter general feat|feats||type=general}. "
+				"At 3rd level and every 4 levels thereafter, you gain a {@filter general feat|feats||type=general}."
 			]
 		},
 		{

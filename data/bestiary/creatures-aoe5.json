@@ -6,17 +6,18 @@
 			"source": "AoE5",
 			"page": 35,
 			"level": 12,
-			"rarity": "Uncommon",
-			"alignment": "LN",
-			"size": "Medium",
 			"traits": [
-				"Human"
+				"uncommon",
+				"ln",
+				"medium",
+				"human",
+				"humanoid"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 23
+				"std": 23
 			},
 			"languages": {
 				"languages": [
@@ -26,55 +27,41 @@
 			},
 			"skills": {
 				"Athletics": {
-					"default": 23
+					"std": 23
 				},
 				"Intimidation": {
-					"default": 24
+					"std": 24
 				},
 				"Games Lore": {
-					"default": 17
+					"std": 17
 				}
 			},
 			"abilityMods": {
-				"Str": 5,
-				"Dex": 3,
-				"Con": 5,
-				"Int": -1,
-				"Wis": 0,
-				"Cha": 4
+				"str": 5,
+				"dex": 3,
+				"con": 5,
+				"int": -1,
+				"wis": 0,
+				"cha": 4
 			},
-			"abilitiesTop": [],
 			"ac": {
-				"default": 32
+				"std": 32
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 23
+				"fort": {
+					"std": 23
 				},
-				"Ref": {
-					"default": 21
+				"ref": {
+					"std": 21
 				},
-				"Will": {
-					"default": 18
+				"will": {
+					"std": 18
 				}
 			},
 			"hp": [
 				{
 					"hp": 230,
 					"abilities": null
-				}
-			],
-			"abilitiesMid": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"trigger": "An enemy within reach of the Black",
-					"entries": [
-						"Whale guard attempts to move away; The guard {@action Stride||Strides} up to their Speed, following the enemy and keeping the enemy in reach throughout its movement until the enemy stops moving or the guard moves their full Speed."
-					],
-					"name": "No Escape"
 				}
 			],
 			"speed": {
@@ -108,56 +95,57 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"entries": [
-						"The guard makes a club {@action Strike}. On a hit, if the target is {@condition flat-footed}, the target must succeed at a DC 33 Fortitude save or be {@condition stunned|CRB|stunned 2}."
-					],
-					"name": "Clobber"
-				},
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"entries": [
-						"The guard makes three club Strikes against a single target, ignoring the multiple attack penalty until after all three attacks are completed."
-					],
-					"name": "Hammering Flurry"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"traits": [
-						"press"
-					],
-					"requirements": "A {@condition frightened} creature is within melee reach of the Black Whale guard",
-					"entries": [
-						"The guard makes a melee {@action Strike} against the {@condition frightened} creature. If they hit and deal damage, the target becomes {@condition flat-footed} as long as it's {@condition frightened}. If the target is already {@condition flat-footed}, it can't reduce its {@condition frightened} value below 1 until the start of the guard's next turn."
-					],
-					"name": "Shatter Defenses"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning"
+			"abilities": {
+				"mid": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"trigger": "An enemy within reach of the Black",
+						"entries": [
+							"Whale guard attempts to move away; The guard {@action Stride||Strides} up to their Speed, following the enemy and keeping the enemy in reach throughout its movement until the enemy stops moving or the guard moves their full Speed."
+						],
+						"name": "No Escape"
+					}
 				],
-				"condition": [
-					"{@condition flat-footed}",
-					"{@condition frightened}"
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"The guard makes a club {@action Strike}. On a hit, if the target is {@condition flat-footed}, the target must succeed at a DC 33 Fortitude save or be {@condition stunned|CRB|stunned 2}."
+						],
+						"name": "Clobber"
+					},
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"The guard makes three club Strikes against a single target, ignoring the multiple attack penalty until after all three attacks are completed."
+						],
+						"name": "Hammering Flurry"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"press"
+						],
+						"requirements": "A {@condition frightened} creature is within melee reach of the Black Whale guard",
+						"entries": [
+							"The guard makes a melee {@action Strike} against the {@condition frightened} creature. If they hit and deal damage, the target becomes {@condition flat-footed} as long as it's {@condition frightened}. If the target is already {@condition flat-footed}, it can't reduce its {@condition frightened} value below 1 until the start of the guard's next turn."
+						],
+						"name": "Shatter Defenses"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"TA",
-				"CC"
-			]
+			}
 		},
 		{
 			"name": "Bloody Barber Goon",
@@ -165,17 +153,18 @@
 			"source": "AoE5",
 			"page": 21,
 			"level": 12,
-			"rarity": "Uncommon",
-			"alignment": "CE",
-			"size": "Medium",
 			"traits": [
-				"Human"
+				"uncommon",
+				"ce",
+				"medium",
+				"human",
+				"humanoid"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 25
+				"std": 25
 			},
 			"languages": {
 				"languages": [
@@ -185,71 +174,52 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 25
+					"std": 25
 				},
 				"Deception": {
-					"default": 17
+					"std": 17
 				},
 				"Intimidation": {
-					"default": 19
+					"std": 19
 				},
 				"Stealth": {
-					"default": 23
+					"std": 23
 				},
 				"Thievery": {
-					"default": 23
+					"std": 23
 				}
 			},
 			"abilityMods": {
-				"Str": 5,
-				"Dex": 5,
-				"Con": 5,
-				"Int": -2,
-				"Wis": 2,
-				"Cha": 1
+				"str": 5,
+				"dex": 5,
+				"con": 5,
+				"int": -2,
+				"wis": 2,
+				"cha": 1
 			},
 			"items": [
 				"+1 striking club",
 				"daggers (8)",
 				"+1 leather armor"
 			],
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+23, {@skill Thievery} +23 Str +5, Dex +5, Con +5, Int \u20132, Wis +2, Cha +1 Items +1 striking club, daggers (8), +1 leather armor."
-					],
-					"name": "Stealth"
-				}
-			],
 			"ac": {
-				"default": 32
+				"std": 32
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 23
+				"fort": {
+					"std": 23
 				},
-				"Ref": {
-					"default": 25
+				"ref": {
+					"std": 25
 				},
-				"Will": {
-					"default": 18
+				"will": {
+					"std": 18
 				}
 			},
 			"hp": [
 				{
 					"hp": 210,
 					"abilities": null
-				}
-			],
-			"abilitiesMid": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"entries": [],
-					"name": "Attack of Opportunity",
-					"generic": true
 				}
 			],
 			"speed": {
@@ -263,7 +233,7 @@
 					"traits": [
 						"agile",
 						"finesse",
-						"versatile S"
+						"versatile s"
 					],
 					"effects": [],
 					"damage": "{@damage 1d4+9} piercing",
@@ -291,7 +261,7 @@
 					"traits": [
 						"agile",
 						"finesse",
-						"versatile S"
+						"versatile s"
 					],
 					"effects": [],
 					"damage": "{@damage 1d4+9} piercing",
@@ -300,52 +270,56 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"entries": [
-						"As the fighter feat (Pathfinder Core Rulebook 145); the goon ignores the two-handed weapon requirement."
-					],
-					"name": "Brutish Shove"
-				},
-				{
-					"entries": [
-						"The goon deals an additional {@damage 2d6} precision damage to {@condition flat-footed} creatures."
-					],
-					"name": "Sneak Attack",
-					"generic": true
-				},
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"entries": [
-						"‘n' Slice The Bloody Barber goon makes one dagger {@action Strike} and one club {@action Strike}, ignoring the multiple attack penalty until after the second {@action Strike}. Each {@action Strike} deals an additional {@damage 1d8} slashing or piercing damage (for the dagger) or bludgeoning damage (for the club)."
-					],
-					"name": "Thunk"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning",
-					"piercing",
-					"precision",
-					"slashing"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"+23, {@skill Thievery} +23 Str +5, Dex +5, Con +5, Int \u20132, Wis +2, Cha +1 Items +1 striking club, daggers (8), +1 leather armor."
+						],
+						"name": "Stealth"
+					}
 				],
-				"condition": [
-					"{@condition flat-footed}"
+				"mid": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"entries": [],
+						"name": "Attack of Opportunity",
+						"generic": true
+					}
+				],
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"As the fighter feat (Pathfinder Core Rulebook 145); the goon ignores the two-handed weapon requirement."
+						],
+						"name": "Brutish Shove"
+					},
+					{
+						"entries": [
+							"The goon deals an additional {@damage 2d6} precision damage to {@condition flat-footed} creatures."
+						],
+						"name": "Sneak Attack",
+						"generic": true
+					},
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"'n' Slice The Bloody Barber goon makes one dagger {@action Strike} and one club {@action Strike}, ignoring the multiple attack penalty until after the second {@action Strike}. Each {@action Strike} deals an additional {@damage 1d8} slashing or piercing damage (for the dagger) or bludgeoning damage (for the club)."
+						],
+						"name": "Thunk"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"RA",
-				"CC",
-				"UW"
-			]
+			}
 		},
 		{
 			"name": "Calennia",
@@ -353,17 +327,18 @@
 			"source": "AoE5",
 			"page": 32,
 			"level": 16,
-			"rarity": "Unique",
-			"alignment": "LE",
-			"size": "Medium",
 			"traits": [
-				"Human"
+				"unique",
+				"le",
+				"medium",
+				"human",
+				"humanoid"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 28
+				"std": 28
 			},
 			"languages": {
 				"languages": [
@@ -374,65 +349,39 @@
 			},
 			"skills": {
 				"Athletics": {
-					"default": 31
+					"std": 31
 				},
 				"Diplomacy": {
-					"default": 28
+					"std": 28
 				},
 				"Intimidation": {
-					"default": 30
+					"std": 30
 				},
 				"Religion": {
-					"default": 25
+					"std": 25
 				}
 			},
 			"abilityMods": {
-				"Str": 5,
-				"Dex": 0,
-				"Con": 5,
-				"Int": 2,
-				"Wis": 3,
-				"Cha": 4
+				"str": 5,
+				"dex": 0,
+				"con": 5,
+				"int": 2,
+				"wis": 3,
+				"cha": 4
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+26, {@skill Intimidation} +30, {@skill Lore||Legal Lore} +24, {@skill Religion} +25 Str +5, Dex +0, Con +5, Int +2, Wis +3,"
-					],
-					"name": "Lore"
-				},
-				{
-					"entries": [
-						"+4 Items +1 striking heavy crossbow (with 10 bolts), +2 resilient Hellknight plate (Pathfinder Lost."
-					],
-					"name": "Cha"
-				},
-				{
-					"entries": [
-						"80), +2 greater striking axiomatic scourge (Pathfinder Lost Omens Character Guide 80), tower shield (Hardness 5, HP 20, BT 10)"
-					],
-					"name": "Omens Character Guide"
-				},
-				{
-					"entries": [
-						"When making a {@action Recall Knowledge} check about a devil she's observing, whenever Calennia rolls a critical failure, she gets a failure instead."
-					],
-					"name": "Diabolic Certitude"
-				}
-			],
 			"ac": {
-				"default": 39,
+				"std": 39,
 				"with shield raised": 41
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 29
+				"fort": {
+					"std": 29
 				},
-				"Ref": {
-					"default": 22
+				"ref": {
+					"std": 22
 				},
-				"Will": {
-					"default": 25
+				"will": {
+					"std": 25
 				}
 			},
 			"hp": [
@@ -449,17 +398,6 @@
 				{
 					"amount": 5,
 					"name": "slashing"
-				}
-			],
-			"abilitiesMid": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"entries": [],
-					"name": "Shield Block",
-					"generic": true
 				}
 			],
 			"speed": {
@@ -501,47 +439,74 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"+26, {@skill Intimidation} +30, {@skill Lore||Legal Lore} +24, {@skill Religion} +25 Str +5, Dex +0, Con +5, Int +2, Wis +3,"
+						],
+						"name": "Lore"
 					},
-					"traits": [
-						"flourish"
-					],
-					"entries": [
-						"Calennia Strikes with her scourge. On a hit, she rolls damage three times. This damage is combined (for the purpose of overcoming damage resistance, for example)."
-					],
-					"name": "Flog Mercilessly"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "free"
+					{
+						"entries": [
+							"+4 Items +1 striking heavy crossbow (with 10 bolts), +2 resilient Hellknight plate (Pathfinder Lost."
+						],
+						"name": "Cha"
 					},
-					"traits": [
-						"divine"
-					],
-					"trigger": "A living creature within 30 feet is reduced to 0 Hit Points",
-					"entries": [
-						"Calennia targets the creature with a {@spell death knell} spell (DC 34). If the target dies, all of Calennia's enemies within 60 feet are targeted by a {@spell fear} spell (DC 34). A creature that succeeds at either save is temporarily immune to this ability for 24 hours."
-					],
-					"name": "Terrible Justice"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"piercing",
-					"slashing"
+					{
+						"entries": [
+							"80), +2 greater striking axiomatic scourge (Pathfinder Lost Omens Character Guide 80), tower shield (Hardness 5, HP 20, BT 10)"
+						],
+						"name": "Omens Character Guide"
+					},
+					{
+						"entries": [
+							"When making a {@action Recall Knowledge} check about a devil she's observing, whenever Calennia rolls a critical failure, she gets a failure instead."
+						],
+						"name": "Diabolic Certitude"
+					}
 				],
-				"condition": []
-			},
-			"misc": [
-				"MA",
-				"RA",
-				"UW"
-			]
+				"mid": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"entries": [],
+						"name": "Shield Block",
+						"generic": true
+					}
+				],
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"flourish"
+						],
+						"entries": [
+							"Calennia Strikes with her scourge. On a hit, she rolls damage three times. This damage is combined (for the purpose of overcoming damage resistance, for example)."
+						],
+						"name": "Flog Mercilessly"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "free"
+						},
+						"traits": [
+							"divine"
+						],
+						"trigger": "A living creature within 30 feet is reduced to 0 Hit Points",
+						"entries": [
+							"Calennia targets the creature with a {@spell death knell} spell (DC 34). If the target dies, all of Calennia's enemies within 60 feet are targeted by a {@spell fear} spell (DC 34). A creature that succeeds at either save is temporarily immune to this ability for 24 hours."
+						],
+						"name": "Terrible Justice"
+					}
+				]
+			}
 		},
 		{
 			"name": "Child Of Venom",
@@ -549,18 +514,20 @@
 			"source": "AoE5",
 			"page": 16,
 			"level": 13,
-			"rarity": "Uncommon",
-			"alignment": "NE",
-			"size": "Medium",
 			"traits": [
-				"Human"
+				"uncommon",
+				"ne",
+				"medium",
+				"human",
+				"humanoid",
+				"ooze"
 			],
 			"creatureType": [
 				"Humanoid",
 				"Ooze"
 			],
 			"perception": {
-				"default": 23
+				"std": 23
 			},
 			"languages": {
 				"languages": [
@@ -570,42 +537,41 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 27
+					"std": 27
 				},
 				"Athletics": {
-					"default": 24
+					"std": 24
 				},
 				"Stealth": {
-					"default": 27
+					"std": 27
 				},
 				"Thievery": {
-					"default": 27
+					"std": 27
 				}
 			},
 			"abilityMods": {
-				"Str": 5,
-				"Dex": 8,
-				"Con": 5,
-				"Int": 0,
-				"Wis": 3,
-				"Cha": 0
+				"str": 5,
+				"dex": 8,
+				"con": 5,
+				"int": 0,
+				"wis": 3,
+				"cha": 0
 			},
 			"items": [
 				"+1 striking shortsword"
 			],
-			"abilitiesTop": [],
 			"ac": {
-				"default": 31
+				"std": 31
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 24
+				"fort": {
+					"std": 24
 				},
-				"Ref": {
-					"default": 27
+				"ref": {
+					"std": 27
 				},
-				"Will": {
-					"default": 20
+				"will": {
+					"std": 20
 				}
 			},
 			"hp": [
@@ -614,30 +580,18 @@
 					"abilities": null
 				}
 			],
-			"immunities": {
-				"damage": [
-					"acid",
-					"piercing",
-					"precision"
-				],
-				"condition": [
-					"critical hits"
-				]
-			},
-			"abilitiesMid": [
-				{
-					"entries": [
-						"When a child of venom is hit by an attack that would deal slashing or piercing damage and the child of venom has at least 20 HP, the creature splits into two identical children of venom with half the original's HP. One child of venom is in the same space as the original, and the other appears in an adjacent unoccupied space. If no adjacent space is unoccupied, they automatically push creatures and objects out of the way to fill a space."
-					],
-					"name": "Split"
-				}
+			"immunities": [
+				"acid",
+				"piercing",
+				"precision",
+				"critical hits"
 			],
 			"speed": {
 				"abilities": [
 					"suction"
 				],
 				"walk": 30,
-				"climb ": 30
+				"climb": 30
 			},
 			"attacks": [
 				{
@@ -648,7 +602,7 @@
 						"agile",
 						"finesse",
 						"magical",
-						"versatile S"
+						"versatile s"
 					],
 					"effects": [],
 					"damage": "{@damage 2d6+9} piercing plus {@damage 3d6} acid",
@@ -687,39 +641,31 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"entries": [
-						"The child of venom deals an additional {@damage 3d6} precision damage to {@condition flat-footed} creatures."
-					],
-					"name": "Sneak Attack",
-					"generic": true
-				},
-				{
-					"entries": [
-						"The child of venom can climb on ceilings and other inverted surfaces, though such surfaces are difficult terrain for them."
-					],
-					"name": "Suction"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"acid",
-					"bludgeoning",
-					"piercing",
-					"precision"
+			"abilities": {
+				"mid": [
+					{
+						"entries": [
+							"When a child of venom is hit by an attack that would deal slashing or piercing damage and the child of venom has at least 20 HP, the creature splits into two identical children of venom with half the original's HP. One child of venom is in the same space as the original, and the other appears in an adjacent unoccupied space. If no adjacent space is unoccupied, they automatically push creatures and objects out of the way to fill a space."
+						],
+						"name": "Split"
+					}
 				],
-				"condition": [
-					"{@condition flat-footed}"
+				"bot": [
+					{
+						"entries": [
+							"The child of venom deals an additional {@damage 3d6} precision damage to {@condition flat-footed} creatures."
+						],
+						"name": "Sneak Attack",
+						"generic": true
+					},
+					{
+						"entries": [
+							"The child of venom can climb on ceilings and other inverted surfaces, though such surfaces are difficult terrain for them."
+						],
+						"name": "Suction"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"RC",
-				"RA",
-				"CC",
-				"UW"
-			]
+			}
 		},
 		{
 			"name": "Clockwork Amalgam",
@@ -727,45 +673,45 @@
 			"source": "AoE5",
 			"page": 81,
 			"level": 20,
-			"rarity": "Rare",
-			"alignment": "N",
-			"size": "Large",
 			"traits": [
-				"Mindless",
-				"Clockwork"
+				"rare",
+				"n",
+				"large",
+				"clockwork",
+				"construct",
+				"mindless"
 			],
 			"creatureType": [
 				"Construct"
 			],
 			"perception": {
-				"default": 36
+				"std": 36
 			},
 			"skills": {
 				"Athletics": {
-					"default": 38
+					"std": 38
 				}
 			},
 			"abilityMods": {
-				"Str": 10,
-				"Dex": 7,
-				"Con": 6,
-				"Int": -5,
-				"Wis": 0,
-				"Cha": -5
+				"str": 10,
+				"dex": 7,
+				"con": 6,
+				"int": -5,
+				"wis": 0,
+				"cha": -5
 			},
-			"abilitiesTop": [],
 			"ac": {
-				"default": 43
+				"std": 43
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 34
+				"fort": {
+					"std": 34
 				},
-				"Ref": {
-					"default": 35
+				"ref": {
+					"std": 35
 				},
-				"Will": {
-					"default": 28
+				"will": {
+					"std": 28
 				}
 			},
 			"hp": [
@@ -774,18 +720,14 @@
 					"abilities": null
 				}
 			],
-			"immunities": {
-				"damage": [
-					"bleed"
-				],
-				"condition": [
-					"death effects",
-					"disease",
-					"doomed",
-					"drained",
-					"fatigued"
-				]
-			},
+			"immunities": [
+				"bleed",
+				"death effects",
+				"disease",
+				"doomed",
+				"drained",
+				"fatigued"
+			],
 			"weaknesses": [
 				{
 					"amount": 20,
@@ -800,24 +742,6 @@
 				{
 					"amount": 15,
 					"name": "physical"
-				}
-			],
-			"abilitiesMid": [
-				{
-					"entries": [
-						"A clockwork amalgam must be wound up (see the clockwork assassin's Wind Up on page 50), but it can function for 7 days each time it is wound."
-					],
-					"name": "Efficient Winding"
-				},
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"entries": [
-						"The clockwork amalgam can recalibrate its internal structure to shed damaged components and replace them with new ones, restoring 125 HP to the construct. Each time it uses this ability, the clockwork amalgam permanently deactivates one of its five melee attacks as the components from that arm reassemble within the core of the machine."
-					],
-					"name": "Recalibrate"
 				}
 			],
 			"speed": {
@@ -915,36 +839,42 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 3,
-						"unit": "action"
+			"abilities": {
+				"mid": [
+					{
+						"entries": [
+							"A clockwork amalgam must be wound up (see the clockwork assassin's Wind Up on page 50), but it can function for 7 days each time it is wound."
+						],
+						"name": "Efficient Winding"
 					},
-					"frequency": {
-						"unit": "round",
-						"freq": 1
-					},
-					"entries": [
-						"The clockwork amalgam becomes a blur of spinning weaponry. It makes up to five melee Strikes (one for each active melee attack it has available), taking a \u20134 penalty to the attack roll for each attack, but ignoring the multiple attack penalty until it has made all of its attacks. It can use each melee attack only once and it can target each creature in reach only once. If the clockwork amalgam used Whirring Doom in the previous round, it can use it again this round using only 1 action instead of 3. The amalgam's movement Speed is halved until the end of its next turn."
-					],
-					"name": "Whirring Doom"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning",
-					"fire",
-					"piercing",
-					"slashing"
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"The clockwork amalgam can recalibrate its internal structure to shed damaged components and replace them with new ones, restoring 125 HP to the construct. Each time it uses this ability, the clockwork amalgam permanently deactivates one of its five melee attacks as the components from that arm reassemble within the core of the machine."
+						],
+						"name": "Recalibrate"
+					}
 				],
-				"condition": []
-			},
-			"misc": [
-				"MA",
-				"RC",
-				"RA"
-			]
+				"bot": [
+					{
+						"activity": {
+							"number": 3,
+							"unit": "action"
+						},
+						"frequency": {
+							"unit": "round",
+							"freq": 1
+						},
+						"entries": [
+							"The clockwork amalgam becomes a blur of spinning weaponry. It makes up to five melee Strikes (one for each active melee attack it has available), taking a \u20134 penalty to the attack roll for each attack, but ignoring the multiple attack penalty until it has made all of its attacks. It can use each melee attack only once and it can target each creature in reach only once. If the clockwork amalgam used Whirring Doom in the previous round, it can use it again this round using only 1 action instead of 3. The amalgam's movement Speed is halved until the end of its next turn."
+						],
+						"name": "Whirring Doom"
+					}
+				]
+			}
 		},
 		{
 			"name": "Clockwork Assassin",
@@ -952,82 +882,59 @@
 			"source": "AoE5",
 			"page": 50,
 			"level": 13,
-			"rarity": "Uncommon",
-			"alignment": "N",
-			"size": "Medium",
 			"traits": [
-				"Mindless",
-				"Clockwork"
+				"uncommon",
+				"n",
+				"medium",
+				"clockwork",
+				"construct",
+				"mindless"
 			],
 			"creatureType": [
 				"Construct"
 			],
 			"perception": {
-				"default": 23
+				"std": 23
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision",
-					"smoke vision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"name": "smoke vision"
+				}
+			],
 			"skills": {
 				"Acrobatics": {
-					"default": 29
+					"std": 29
 				},
 				"Athletics": {
-					"default": 25
+					"std": 25
 				},
 				"Stealth": {
-					"default": 27
+					"std": 27
 				}
 			},
 			"abilityMods": {
-				"Str": 6,
-				"Dex": 8,
-				"Con": 4,
-				"Int": -5,
-				"Wis": 0,
-				"Cha": -5
+				"str": 6,
+				"dex": 8,
+				"con": 4,
+				"int": -5,
+				"wis": 0,
+				"cha": -5
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"A projectile launcher is integrated into a clockwork assassin's systems, containing 10 spinning blades and 5 smoke bombs. When the assassin is destroyed, the launcher and its ammunition are also destroyed."
-					],
-					"name": "Integrated Launcher"
-				},
-				{
-					"entries": [
-						"The assassin ignores the {@condition concealed} condition from smoke."
-					],
-					"name": "Smoke Vision"
-				},
-				{
-					"entries": [
-						"For the clockwork assassin to act, it must be wound by another creature using a unique key. This takes 1 minute. Once wound, it remains operational for 24 hours, after which time it becomes unaware of its surroundings and can't act until it's wound again.",
-						"The assassin can enter standby mode as a 3-action activity. Its operational time doesn't decrease in standby, but it can sense its surroundings (with a \u20132 penalty to {@skill Perception}). It can't act, with one exception: When it perceives a creature, it can exit standby as a reaction (rolling initiative if appropriate)",
-						"A creature can attempt a DC 31 {@skill Thievery} check to {@action Disable a Device} to wind the clockwork down. For each success, the clockwork loses 1 hour of operational time.",
-						"This can be done even if the clockwork is in standby mode."
-					],
-					"name": "Wind-Up"
-				}
-			],
 			"ac": {
-				"default": 34
+				"std": 34
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 23
+				"fort": {
+					"std": 23
 				},
-				"Ref": {
-					"default": 29
+				"ref": {
+					"std": 29
 				},
-				"Will": {
-					"default": 19
+				"will": {
+					"std": 19
 				}
 			},
 			"hp": [
@@ -1036,16 +943,12 @@
 					"abilities": null
 				}
 			],
-			"immunities": {
-				"damage": [
-					"bleed"
-				],
-				"condition": [
-					"death effects",
-					"disease",
-					"doomed"
-				]
-			},
+			"immunities": [
+				"bleed",
+				"death effects",
+				"disease",
+				"doomed"
+			],
 			"weaknesses": [
 				{
 					"amount": 15,
@@ -1056,20 +959,9 @@
 					"name": "orichalcum"
 				}
 			],
-			"abilitiesMid": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"entries": [],
-					"name": "Attack of Opportunity",
-					"generic": true
-				}
-			],
 			"speed": {
 				"walk": 30,
-				"climb ": 20
+				"climb": 20
 			},
 			"attacks": [
 				{
@@ -1107,63 +999,84 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"A projectile launcher is integrated into a clockwork assassin's systems, containing 10 spinning blades and 5 smoke bombs. When the assassin is destroyed, the launcher and its ammunition are also destroyed."
+						],
+						"name": "Integrated Launcher"
 					},
-					"traits": [
-						"manipulate"
-					],
-					"entries": [
-						"The clockwork assassin reduces its operational time by 1 hour to repair itself, regaining 25 Hit Points and refilling its integrated projectile launcher with 4 spinning blades (to a maximum of 10) and 2 smoke bombs (to a maximum of 5)."
-					],
-					"name": "Rapid Repair"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
+					{
+						"entries": [
+							"The assassin ignores the {@condition concealed} condition from smoke."
+						],
+						"name": "Smoke Vision"
 					},
-					"traits": [
-						"manipulate"
-					],
-					"entries": [
-						"The clockwork assassin launches a smoke bomb. A screen of thick, opaque smoke fills a 10-foot burst within 60 feet of the clockwork assassin. All creatures within the area are {@condition concealed}, and all other creatures are {@condition concealed} to them.",
-						"The smoke lasts for 1 minute or until dispersed by a strong wind."
-					],
-					"name": "Smoke Bomb Launcher"
-				},
-				{
-					"entries": [
-						"The clockwork assassin's Strikes deal an additional {@damage 3d6} precision damage to {@condition flat-footed} creatures."
-					],
-					"name": "Sneak Attack",
-					"generic": true
-				},
-				{
-					"entries": [
-						"Creatures hit by the clockwork assassin's rapier hand {@action Strike} are {@condition flat-footed} until the start of the clockwork assassin's next turn."
-					],
-					"name": "Unbalancing Blow"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"piercing",
-					"precision",
-					"slashing"
+					{
+						"entries": [
+							"For the clockwork assassin to act, it must be wound by another creature using a unique key. This takes 1 minute. Once wound, it remains operational for 24 hours, after which time it becomes unaware of its surroundings and can't act until it's wound again.",
+							"The assassin can enter standby mode as a 3-action activity. Its operational time doesn't decrease in standby, but it can sense its surroundings (with a \u20132 penalty to {@skill Perception}). It can't act, with one exception: When it perceives a creature, it can exit standby as a reaction (rolling initiative if appropriate)",
+							"A creature can attempt a DC 31 {@skill Thievery} check to {@action Disable a Device} to wind the clockwork down. For each success, the clockwork loses 1 hour of operational time.",
+							"This can be done even if the clockwork is in standby mode."
+						],
+						"name": "Wind-Up"
+					}
 				],
-				"condition": [
-					"{@condition flat-footed}"
+				"mid": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"entries": [],
+						"name": "Attack of Opportunity",
+						"generic": true
+					}
+				],
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"manipulate"
+						],
+						"entries": [
+							"The clockwork assassin reduces its operational time by 1 hour to repair itself, regaining 25 Hit Points and refilling its integrated projectile launcher with 4 spinning blades (to a maximum of 10) and 2 smoke bombs (to a maximum of 5)."
+						],
+						"name": "Rapid Repair"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"manipulate"
+						],
+						"entries": [
+							"The clockwork assassin launches a smoke bomb. A screen of thick, opaque smoke fills a 10-foot burst within 60 feet of the clockwork assassin. All creatures within the area are {@condition concealed}, and all other creatures are {@condition concealed} to them.",
+							"The smoke lasts for 1 minute or until dispersed by a strong wind."
+						],
+						"name": "Smoke Bomb Launcher"
+					},
+					{
+						"entries": [
+							"The clockwork assassin's Strikes deal an additional {@damage 3d6} precision damage to {@condition flat-footed} creatures."
+						],
+						"name": "Sneak Attack",
+						"generic": true
+					},
+					{
+						"entries": [
+							"Creatures hit by the clockwork assassin's rapier hand {@action Strike} are {@condition flat-footed} until the start of the clockwork assassin's next turn."
+						],
+						"name": "Unbalancing Blow"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"RA",
-				"CC"
-			]
+			}
 		},
 		{
 			"name": "Garrote Master Assassin",
@@ -1171,17 +1084,18 @@
 			"source": "AoE5",
 			"page": 14,
 			"level": 16,
-			"rarity": "Uncommon",
-			"alignment": "LE",
-			"size": "Medium",
 			"traits": [
-				"Human"
+				"uncommon",
+				"le",
+				"medium",
+				"human",
+				"humanoid"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 30
+				"std": 30
 			},
 			"languages": {
 				"languages": [
@@ -1191,68 +1105,47 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 32
+					"std": 32
 				},
 				"Athletics": {
-					"default": 29
+					"std": 29
 				},
 				"Deception": {
-					"default": 26
+					"std": 26
 				},
 				"Stealth": {
-					"default": 32
+					"std": 32
 				},
 				"Thievery": {
-					"default": 30
+					"std": 30
 				}
 			},
 			"abilityMods": {
-				"Str": 5,
-				"Dex": 6,
-				"Con": 3,
-				"Int": 1,
-				"Wis": 4,
-				"Cha": 0
+				"str": 5,
+				"dex": 6,
+				"con": 3,
+				"int": 1,
+				"wis": 4,
+				"cha": 0
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+32, {@skill Thievery} +30 Str +5, Dex +6, Con +3, Int +1, Wis +4, Cha +0 Items +2 striking crossbow with 20 bolts, +2 striking dagger, garrote bolts (4; page 77), +2 resilient studded leather armor."
-					],
-					"name": "Stealth"
-				}
-			],
 			"ac": {
-				"default": 38
+				"std": 38
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 26
+				"fort": {
+					"std": 26
 				},
-				"Ref": {
-					"default": 31
+				"ref": {
+					"std": 31
 				},
-				"Will": {
-					"default": 27
+				"will": {
+					"std": 27
 				}
 			},
 			"hp": [
 				{
 					"hp": 300,
 					"abilities": null
-				}
-			],
-			"abilitiesMid": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"trigger": "The attack roll for a {@action Strike} targeting the assassin fails or critically fails",
-					"entries": [
-						"The assassin deftly steps out of the way of the attack. If there's another creature adjacent to the assassin and within reach of the triggering attack, the assassin redirects the attack to that adjacent creature. The attacker then rerolls the {@action Strike}'s attack roll against the new target."
-					],
-					"name": "Sidestep"
 				}
 			],
 			"speed": {
@@ -1267,7 +1160,7 @@
 						"agile",
 						"finesse",
 						"magical",
-						"versatile S"
+						"versatile s"
 					],
 					"effects": [],
 					"damage": "{@damage 2d4+11} piercing",
@@ -1299,7 +1192,7 @@
 						"finesse",
 						"magical",
 						"thrown 10 feet",
-						"versatile S"
+						"versatile s"
 					],
 					"effects": [],
 					"damage": "{@damage 2d4+11} piercing",
@@ -1308,86 +1201,93 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"traits": [
-						"flourish"
-					],
-					"entries": [
-						"The master assassin makes a crossbow {@action Strike} against an adjacent enemy; unlike most ranged Strikes, this {@action Strike} doesn't provoke reactions. If successful, the attack deals an additional {@damage 4d8} precision damage."
-					],
-					"name": "Point Blank"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"entries": [
-						"The master assassin {@action Stride||Strides}, {@action Step||Steps}, or {@action Sneak||Sneaks}, then Interacts to reload her crossbow."
-					],
-					"name": "Running Reload"
-				},
-				{
-					"activity": {
-						"number": 3,
-						"unit": "action"
-					},
-					"entries": [
-						"The master assassin observes a single target she can see, allowing her to use her Vorpal Garrote during the next round."
-					],
-					"name": "Study Target"
-				},
-				{
-					"entries": [
-						"The master assassin deals an additional {@damage 3d6} precision damage to {@condition flat-footed} creatures."
-					],
-					"name": "Sneak Attack",
-					"generic": true
-				},
-				{
-					"activity": {
-						"number": 3,
-						"unit": "action"
-					},
-					"traits": [
-						"death",
-						"incapacitation"
-					],
-					"entries": [
-						"Requirements The master assassin used Study Target during the previous round and must have a garrote bolt; The master assassin makes a crossbow {@action Strike} against the target she previously studied. If she rolls a success on her attack roll, she gets a critical success instead. The target must attempt a DC 36 Fortitude save.",
-						{
-							"type": "successDegree",
-							"entries": {
-								"Success": "No additional effect.",
-								"Failure": "The target takes an additional {@damage 3d12} precision damage.",
-								"Critical Failure": "The target is decapitated and instantly dies unless it doesn't require a head to live."
-							}
-						}
-					],
-					"name": "Vorpal Garrote"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"piercing",
-					"precision"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"+32, {@skill Thievery} +30 Str +5, Dex +6, Con +3, Int +1, Wis +4, Cha +0 Items +2 striking crossbow with 20 bolts, +2 striking dagger, garrote bolts (4; page 77), +2 resilient studded leather armor."
+						],
+						"name": "Stealth"
+					}
 				],
-				"condition": [
-					"{@condition flat-footed}"
+				"mid": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"trigger": "The attack roll for a {@action Strike} targeting the assassin fails or critically fails",
+						"entries": [
+							"The assassin deftly steps out of the way of the attack. If there's another creature adjacent to the assassin and within reach of the triggering attack, the assassin redirects the attack to that adjacent creature. The attacker then rerolls the {@action Strike}'s attack roll against the new target."
+						],
+						"name": "Sidestep"
+					}
+				],
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"flourish"
+						],
+						"entries": [
+							"The master assassin makes a crossbow {@action Strike} against an adjacent enemy; unlike most ranged Strikes, this {@action Strike} doesn't provoke reactions. If successful, the attack deals an additional {@damage 4d8} precision damage."
+						],
+						"name": "Point Blank"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"The master assassin {@action Stride||Strides}, {@action Step||Steps}, or {@action Sneak||Sneaks}, then Interacts to reload her crossbow."
+						],
+						"name": "Running Reload"
+					},
+					{
+						"activity": {
+							"number": 3,
+							"unit": "action"
+						},
+						"entries": [
+							"The master assassin observes a single target she can see, allowing her to use her Vorpal Garrote during the next round."
+						],
+						"name": "Study Target"
+					},
+					{
+						"entries": [
+							"The master assassin deals an additional {@damage 3d6} precision damage to {@condition flat-footed} creatures."
+						],
+						"name": "Sneak Attack",
+						"generic": true
+					},
+					{
+						"activity": {
+							"number": 3,
+							"unit": "action"
+						},
+						"traits": [
+							"death",
+							"incapacitation"
+						],
+						"entries": [
+							"Requirements The master assassin used Study Target during the previous round and must have a garrote bolt; The master assassin makes a crossbow {@action Strike} against the target she previously studied. If she rolls a success on her attack roll, she gets a critical success instead. The target must attempt a DC 36 Fortitude save.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Success": "No additional effect.",
+									"Failure": "The target takes an additional {@damage 3d12} precision damage.",
+									"Critical Failure": "The target is decapitated and instantly dies unless it doesn't require a head to live."
+								}
+							}
+						],
+						"name": "Vorpal Garrote"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"RA",
-				"TA",
-				"CC",
-				"UW"
-			]
+			}
 		},
 		{
 			"name": "Graem And Grinlowe",
@@ -1395,27 +1295,25 @@
 			"source": "AoE5",
 			"page": 40,
 			"level": 16,
-			"rarity": "Unique",
-			"alignment": "CE",
-			"size": "Medium",
 			"traits": [
-				"Hag",
-				"Amphibious"
+				"unique",
+				"ce",
+				"medium",
+				"amphibious",
+				"hag",
+				"humanoid"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 29
+				"std": 29
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Aklo",
@@ -1426,60 +1324,41 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 28
+					"std": 28
 				},
 				"Athletics": {
-					"default": 31
+					"std": 31
 				},
 				"Deception": {
-					"default": 27
+					"std": 27
 				},
 				"Occultism": {
-					"default": 29
+					"std": 29
 				},
 				"Stealth": {
-					"default": 29
+					"std": 29
 				}
 			},
 			"abilityMods": {
-				"Str": 9,
-				"Dex": 6,
-				"Con": 9,
-				"Int": 5,
-				"Wis": 6,
-				"Cha": 5
+				"str": 9,
+				"dex": 6,
+				"con": 9,
+				"int": 5,
+				"wis": 6,
+				"cha": 5
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+29, {@skill Stealth} +29 Str +9, Dex +6, Con +9, Int +5, Wis +6, Cha +5."
-					],
-					"name": "Occultism"
-				},
-				{
-					"entries": [],
-					"name": "Planar Coven As Myrna Rath."
-				},
-				{
-					"entries": [
-						"As sea hag."
-					],
-					"name": "Sea Hag's Bargain",
-					"entries_as_xyz": "Ability not found: 'Sea Hag's Bargain As sea hag.' in Graem And Grinlowe, p.40"
-				}
-			],
 			"ac": {
-				"default": 39
+				"std": 39
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 31
+				"fort": {
+					"std": 31
 				},
-				"Ref": {
-					"default": 28
+				"ref": {
+					"std": 28
 				},
-				"Will": {
-					"default": 28
+				"will": {
+					"std": 28
 				}
 			},
 			"hp": [
@@ -1488,10 +1367,9 @@
 					"abilities": null
 				}
 			],
-			"abilitiesMid": [],
 			"speed": {
 				"walk": 25,
-				"swim ": 35
+				"swim": 35
 			},
 			"attacks": [
 				{
@@ -1509,44 +1387,56 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"+29, {@skill Stealth} +29 Str +9, Dex +6, Con +9, Int +5, Wis +6, Cha +5."
+						],
+						"name": "Occultism"
 					},
-					"entries": [
-						"As sea hag, but DC 37."
-					],
-					"name": "Dread Gaze",
-					"entries_as_xyz": "Ability not found: 'Dread Gaze As sea hag, but DC 37.' in Graem And Grinlowe, p.40"
-				},
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
+					{
+						"entries": [],
+						"name": "Planar Coven As Myrna Rath."
 					},
-					"traits": [
-						"conjuration",
-						"extradimensional",
-						"teleportation"
-					],
-					"requirements": "A creature within 60 feet of Graem or",
-					"entries": [
-						"Grinlowe is in contact with the waters of Stormholt; The hag casts maze (DC 37) on the creature, magically pulling the creature beneath the water (regardless of its actual depth) into an extradimensional underwater maze of shipwrecks. Between the two of them, Graem and Grinlowe can have only one creature trapped in the maze, but either hag can use the {@action Sustain a Spell} action to sustain the effect."
-					],
-					"name": "Pull Under"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"slashing"
+					{
+						"entries": [
+							"As sea hag."
+						],
+						"name": "Sea Hag's Bargain",
+						"entries_as_xyz": "Ability not found: 'Sea Hag's Bargain As sea hag.' in Graem And Grinlowe, p.40"
+					}
 				],
-				"condition": []
-			},
-			"misc": [
-				"MA"
-			]
+				"bot": [
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"As sea hag, but DC 37."
+						],
+						"name": "Dread Gaze",
+						"entries_as_xyz": "Ability not found: 'Dread Gaze As sea hag, but DC 37.' in Graem And Grinlowe, p.40"
+					},
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"conjuration",
+							"extradimensional",
+							"teleportation"
+						],
+						"requirements": "A creature within 60 feet of Graem or",
+						"entries": [
+							"Grinlowe is in contact with the waters of Stormholt; The hag casts maze (DC 37) on the creature, magically pulling the creature beneath the water (regardless of its actual depth) into an extradimensional underwater maze of shipwrecks. Between the two of them, Graem and Grinlowe can have only one creature trapped in the maze, but either hag can use the {@action Sustain a Spell} action to sustain the effect."
+						],
+						"name": "Pull Under"
+					}
+				]
+			}
 		},
 		{
 			"name": "Grimwold",
@@ -1554,17 +1444,18 @@
 			"source": "AoE5",
 			"page": 7,
 			"level": 14,
-			"rarity": "Unique",
-			"alignment": "CN",
-			"size": "Medium",
 			"traits": [
-				"Human"
+				"unique",
+				"cn",
+				"medium",
+				"human",
+				"humanoid"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 27
+				"std": 27
 			},
 			"languages": {
 				"languages": [
@@ -1575,46 +1466,38 @@
 			},
 			"skills": {
 				"Deception": {
-					"default": 22
+					"std": 22
 				},
 				"Diplomacy": {
-					"default": 20
+					"std": 20
 				},
 				"Society": {
-					"default": 24
+					"std": 24
 				},
 				"Stealth": {
-					"default": 24
+					"std": 24
 				}
 			},
 			"abilityMods": {
-				"Str": 6,
-				"Dex": 2,
-				"Con": 2,
-				"Int": 4,
-				"Wis": 4,
-				"Cha": 0
+				"str": 6,
+				"dex": 2,
+				"con": 2,
+				"int": 4,
+				"wis": 4,
+				"cha": 0
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+24, {@skill Society} +24, {@skill Stealth} +24 Str +6, Dex +2, Con +2, Int +4, Wis +4, Cha +0 Items +1 resilient chain shirt, crossbow (with 20 bolts), elite disguise kit, +2 greater striking longsword, tinted goggles."
-					],
-					"name": "Legal Lore"
-				}
-			],
 			"ac": {
-				"default": 36
+				"std": 36
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 26
+				"fort": {
+					"std": 26
 				},
-				"Ref": {
-					"default": 24
+				"ref": {
+					"std": 24
 				},
-				"Will": {
-					"default": 26
+				"will": {
+					"std": 26
 				}
 			},
 			"hp": [
@@ -1623,7 +1506,6 @@
 					"abilities": null
 				}
 			],
-			"abilitiesMid": [],
 			"speed": {
 				"walk": 25
 			},
@@ -1634,7 +1516,7 @@
 					"attack": 28,
 					"traits": [
 						"magical",
-						"versatile P"
+						"versatile p"
 					],
 					"effects": [],
 					"damage": "{@damage 3d8+12} slashing",
@@ -1657,41 +1539,38 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"entries": [
-						"As long as he has one free hand, Grimwold can parry attacks against him with his longsword. He gains a +2 circumstance bonus to AC until the start of his next turn as long as his other hand remains free."
-					],
-					"name": "Dueling Parry"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"entries": [
-						"Grimwold studies his foe for weaknesses to exploit. His next successful {@action Strike} against that target deals an additional {@damage 4d6} precision damage."
-					],
-					"name": "Studied Strike"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"piercing",
-					"precision",
-					"slashing"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"+24, {@skill Society} +24, {@skill Stealth} +24 Str +6, Dex +2, Con +2, Int +4, Wis +4, Cha +0 Items +1 resilient chain shirt, crossbow (with 20 bolts), elite disguise kit, +2 greater striking longsword, tinted goggles."
+						],
+						"name": "Legal Lore"
+					}
 				],
-				"condition": []
-			},
-			"misc": [
-				"MA",
-				"RA",
-				"UW"
-			]
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"As long as he has one free hand, Grimwold can parry attacks against him with his longsword. He gains a +2 circumstance bonus to AC until the start of his next turn as long as his other hand remains free."
+						],
+						"name": "Dueling Parry"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"Grimwold studies his foe for weaknesses to exploit. His next successful {@action Strike} against that target deals an additional {@damage 4d6} precision damage."
+						],
+						"name": "Studied Strike"
+					}
+				]
+			}
 		},
 		{
 			"name": "Ixusoth",
@@ -1699,24 +1578,26 @@
 			"source": "AoE5",
 			"page": 50,
 			"level": 15,
-			"rarity": "Unique",
-			"alignment": "NE",
-			"size": "Large",
+			"traits": [
+				"unique",
+				"ne",
+				"large",
+				"aberration"
+			],
 			"creatureType": [
 				"Aberration"
 			],
 			"perception": {
-				"default": 29
+				"std": 29
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision",
-					"light blindness"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"name": "light blindness"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Aklo",
@@ -1728,69 +1609,54 @@
 			},
 			"skills": {
 				"Arcana": {
-					"default": 30
+					"std": 30
 				},
 				"Crafting": {
-					"default": 30
+					"std": 30
 				},
 				"Medicine": {
-					"default": 25
+					"std": 25
 				},
 				"Nature": {
-					"default": 25
+					"std": 25
 				},
 				"Occultism": {
-					"default": 30
+					"std": 30
 				},
 				"Society": {
-					"default": 28
+					"std": 28
 				},
 				"Thievery": {
-					"default": 25
+					"std": 25
 				},
 				"Bardic Lore": {
-					"default": 28
+					"std": 28
 				}
 			},
 			"abilityMods": {
-				"Str": 4,
-				"Dex": 6,
-				"Con": 4,
-				"Int": 9,
-				"Wis": 6,
-				"Cha": 4
+				"str": 4,
+				"dex": 6,
+				"con": 4,
+				"int": 9,
+				"wis": 6,
+				"cha": 4
 			},
 			"items": [
 				"robe of eyes"
 			],
-			"abilitiesTop": [
-				{
-					"entries": [],
-					"name": "Light Blindness",
-					"generic": true
-				},
-				{
-					"entries": [
-						"Master Ixusoth retains a vast amount of knowledge.",
-						"She can use her {@skill Lore||Bardic Lore} skill to {@action Recall Knowledge} on any topic, and she knows any languages common to an area she has spent a day or more in.",
-						"Items robe of eyes."
-					],
-					"name": "Lore"
-				}
-			],
 			"ac": {
-				"default": 36,
+				"std": 36,
 				"abilities": "all-around vision"
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 23
+				"fort": {
+					"std": 23
 				},
-				"Ref": {
-					"default": 25
+				"ref": {
+					"std": 25
 				},
-				"Will": {
-					"default": 29
+				"will": {
+					"std": 29
 				}
 			},
 			"hp": [
@@ -1799,13 +1665,9 @@
 					"abilities": null
 				}
 			],
-			"immunities": {
-				"damage": [],
-				"condition": [
-					"confusion"
-				]
-			},
-			"abilitiesMid": [],
+			"immunities": [
+				"confusion"
+			],
 			"speed": {
 				"walk": 25
 			},
@@ -1896,78 +1758,81 @@
 					}
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 3,
-						"unit": "action"
+			"abilities": {
+				"top": [
+					{
+						"entries": [],
+						"name": "Light Blindness",
+						"generic": true
 					},
-					"traits": [
-						"divination",
-						"occult"
-					],
-					"frequency": {
-						"unit": "day",
-						"freq": 1
-					},
-					"entries": [
-						"Up to six of Ixusoth's eyes detach from her body. Each eye has AC 26, HP 1, and a fly speed of 40 feet. Ixusoth can see through all of her eye probes. She can move the probes all in separate directions using a single action. Ixusoth can have no more than six eye probes active at a time; using this ability to create more causes the eye or eyes farthest away to shrivel and die. Ixusoth can deliver touch spells through her eye probes and can make melee spell attacks through them. In addition, she can {@action Steal} Memories through an eye probe using a single action by touching the target with the eye."
-					],
-					"name": "Eye Probe"
-				},
-				{
-					"activity": {
-						"number": 3,
-						"unit": "action"
-					},
-					"traits": [
-						"emotion",
-						"mental",
-						"necromancy",
-						"occult"
-					],
-					"entries": [
-						"Ixusoth reaches out with her mind and attempts to steal memories from a creature within 30 feet. The target must succeed at a DC 40 Will saving throw or become {@condition stupefied|CRB|stupefied 2} and have some of its memories stolen. When Ixusoth steals memories, she learns some of the creature's memories (chosen by the GM). These memories are then lost to that creature."
-					],
-					"name": "Steal Memories"
-				},
-				{
-					"traits": [
-						"divination",
-						"enchantment",
-						"incapacitation",
-						"mental",
-						"occult"
-					],
-					"entries": [
-						"A creature hit by Ixusoth's fist {@action Strike} must attempt a DC 36 Will save. The creature is then temporarily immune until the start of its next turn.",
-						{
-							"type": "successDegree",
-							"entries": {
-								"Critical Success": "The creature is unaffected.",
-								"Success": "The creature is {@condition stunned|CRB|stunned 1}.",
-								"Failure": "The creature is {@condition stunned|CRB|stunned 2}.",
-								"Critical Failure": "The creature is {@condition stunned|CRB|stunned 3}, and the hyakume can use {@action Steal} Memories on the target as part of this action."
-							}
-						}
-					],
-					"name": "Scatterbrain Palm"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning"
+					{
+						"entries": [
+							"Master Ixusoth retains a vast amount of knowledge.",
+							"She can use her {@skill Lore||Bardic Lore} skill to {@action Recall Knowledge} on any topic, and she knows any languages common to an area she has spent a day or more in.",
+							"Items robe of eyes."
+						],
+						"name": "Lore"
+					}
 				],
-				"condition": [
-					"{@condition stunned}",
-					"{@condition stupefied}"
+				"bot": [
+					{
+						"activity": {
+							"number": 3,
+							"unit": "action"
+						},
+						"traits": [
+							"divination",
+							"occult"
+						],
+						"frequency": {
+							"unit": "day",
+							"freq": 1
+						},
+						"entries": [
+							"Up to six of Ixusoth's eyes detach from her body. Each eye has AC 26, HP 1, and a fly speed of 40 feet. Ixusoth can see through all of her eye probes. She can move the probes all in separate directions using a single action. Ixusoth can have no more than six eye probes active at a time; using this ability to create more causes the eye or eyes farthest away to shrivel and die. Ixusoth can deliver touch spells through her eye probes and can make melee spell attacks through them. In addition, she can {@action Steal} Memories through an eye probe using a single action by touching the target with the eye."
+						],
+						"name": "Eye Probe"
+					},
+					{
+						"activity": {
+							"number": 3,
+							"unit": "action"
+						},
+						"traits": [
+							"emotion",
+							"mental",
+							"necromancy",
+							"occult"
+						],
+						"entries": [
+							"Ixusoth reaches out with her mind and attempts to steal memories from a creature within 30 feet. The target must succeed at a DC 40 Will saving throw or become {@condition stupefied|CRB|stupefied 2} and have some of its memories stolen. When Ixusoth steals memories, she learns some of the creature's memories (chosen by the GM). These memories are then lost to that creature."
+						],
+						"name": "Steal Memories"
+					},
+					{
+						"traits": [
+							"divination",
+							"enchantment",
+							"incapacitation",
+							"mental",
+							"occult"
+						],
+						"entries": [
+							"A creature hit by Ixusoth's fist {@action Strike} must attempt a DC 36 Will save. The creature is then temporarily immune until the start of its next turn.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": "The creature is unaffected.",
+									"Success": "The creature is {@condition stunned|CRB|stunned 1}.",
+									"Failure": "The creature is {@condition stunned|CRB|stunned 2}.",
+									"Critical Failure": "The creature is {@condition stunned|CRB|stunned 3}, and the hyakume can use {@action Steal} Memories on the target as part of this action."
+								}
+							}
+						],
+						"name": "Scatterbrain Palm"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"RC",
-				"CC"
-			]
+			}
 		},
 		{
 			"name": "Kapral",
@@ -1975,17 +1840,18 @@
 			"source": "AoE5",
 			"page": 7,
 			"level": 14,
-			"rarity": "Unique",
-			"alignment": "LN",
-			"size": "Medium",
 			"traits": [
-				"Elf"
+				"unique",
+				"ln",
+				"medium",
+				"elf",
+				"humanoid"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 28
+				"std": 28
 			},
 			"languages": {
 				"languages": [
@@ -1997,68 +1863,44 @@
 			},
 			"skills": {
 				"Arcana": {
-					"default": 27
+					"std": 27
 				},
 				"Intimidation": {
-					"default": 21
+					"std": 21
 				},
 				"Stealth": {
-					"default": 27
+					"std": 27
 				},
 				"Legal Lore": {
-					"default": 25
+					"std": 25
 				}
 			},
 			"abilityMods": {
-				"Str": 1,
-				"Dex": 5,
-				"Con": 4,
-				"Int": 5,
-				"Wis": 4,
-				"Cha": -1
+				"str": 1,
+				"dex": 5,
+				"con": 4,
+				"int": 5,
+				"wis": 4,
+				"cha": -1
 			},
-			"abilitiesTop": [],
 			"ac": {
-				"default": 34
+				"std": 34
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 26
+				"fort": {
+					"std": 26
 				},
-				"Ref": {
-					"default": 27
+				"ref": {
+					"std": 27
 				},
-				"Will": {
-					"default": 28
+				"will": {
+					"std": 28
 				}
 			},
 			"hp": [
 				{
 					"hp": 220,
 					"abilities": null
-				}
-			],
-			"abilitiesMid": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"traits": [
-						"arcane",
-						"conjuration",
-						"magical",
-						"teleportation"
-					],
-					"trigger": "Kapral is targeted by an attack",
-					"frequency": {
-						"unit": "day",
-						"freq": 1
-					},
-					"entries": [
-						"Kapral casts blink on herself."
-					],
-					"name": "Contingency Plan"
 				}
 			],
 			"speed": {
@@ -2180,27 +2022,42 @@
 					}
 				}
 			],
-			"abilitiesBot": [
-				{
-					"traits": [
-						"7th"
-					],
-					"entries": [
-						"detect magic, ghost sound, message, shield, telekinetic projectile."
-					],
-					"name": "Cantrips"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning"
+			"abilities": {
+				"mid": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"traits": [
+							"arcane",
+							"conjuration",
+							"magical",
+							"teleportation"
+						],
+						"trigger": "Kapral is targeted by an attack",
+						"frequency": {
+							"unit": "day",
+							"freq": 1
+						},
+						"entries": [
+							"Kapral casts blink on herself."
+						],
+						"name": "Contingency Plan"
+					}
 				],
-				"condition": []
-			},
-			"misc": [
-				"MA",
-				"UW"
-			]
+				"bot": [
+					{
+						"traits": [
+							"7th"
+						],
+						"entries": [
+							"detect magic, ghost sound, message, shield, telekinetic projectile."
+						],
+						"name": "Cantrips"
+					}
+				]
+			}
 		},
 		{
 			"name": "Lord Guirden",
@@ -2208,17 +2065,18 @@
 			"source": "AoE5",
 			"page": 37,
 			"level": 19,
-			"rarity": "Unique",
-			"alignment": "LN",
-			"size": "Medium",
 			"traits": [
-				"Human"
+				"unique",
+				"ln",
+				"medium",
+				"human",
+				"humanoid"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 37
+				"std": 37
 			},
 			"languages": {
 				"languages": [
@@ -2228,69 +2086,50 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 33
+					"std": 33
 				},
 				"Athletics": {
-					"default": 36
+					"std": 36
 				},
 				"Diplomacy": {
-					"default": 31
+					"std": 31
 				},
 				"Intimidation": {
-					"default": 31
+					"std": 31
 				},
 				"Legal Lore": {
-					"default": 30
+					"std": 30
 				}
 			},
 			"abilityMods": {
-				"Str": 6,
-				"Dex": 5,
-				"Con": 5,
-				"Int": 2,
-				"Wis": 2,
-				"Cha": 1
+				"str": 6,
+				"dex": 5,
+				"con": 5,
+				"int": 2,
+				"wis": 2,
+				"cha": 1
 			},
 			"items": [
 				"+3 greater striking speed handwraps of mighty blows"
 			],
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+31, {@skill Lore||Legal Lore} +30 Str +6, Dex +5, Con +5, Int +2, Wis +2, Cha +1 Items +3 greater striking speed handwraps of mighty blows."
-					],
-					"name": "Intimidation"
-				}
-			],
 			"ac": {
-				"default": 41
+				"std": 41
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 34
+				"fort": {
+					"std": 34
 				},
-				"Ref": {
-					"default": 34
+				"ref": {
+					"std": 34
 				},
-				"Will": {
-					"default": 31
+				"will": {
+					"std": 31
 				}
 			},
 			"hp": [
 				{
 					"hp": 450,
 					"abilities": null
-				}
-			],
-			"abilitiesMid": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"entries": [],
-					"name": "Attack of Opportunity",
-					"generic": true
 				}
 			],
 			"speed": {
@@ -2314,59 +2153,68 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"traits": [
-						"flourish"
-					],
-					"entries": [
-						"Lord Guirden makes two fist Strikes, ignoring the multiple attack penalty until after both Strikes."
-					],
-					"name": "Double Punch"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"traits": [
-						"flourish"
-					],
-					"requirements": "Lord Guirden has a Medium or smaller creature {@condition grabbed}",
-					"entries": [
-						"Lord Guirden hurls the {@condition grabbed} creature into a target adjacent to him. He makes a fist {@action Strike} against the adjacent target. On a success, the target and hurled creature both take {@damage 3d10+14} bludgeoning damage and are knocked {@condition prone}. On a failure, only the thrown creature takes the damage and is knocked {@condition prone}."
-					],
-					"name": "Hurl"
-				},
-				{
-					"entries": [
-						"Guirden makes a fist {@action Strike} and hits, he can choose to apply either the Grab,"
-					],
-					"name": "Master Brawler Whenever Lord"
-				},
-				{
-					"entries": [
-						"Push ability to his attack."
-					],
-					"name": "Knockdown, or"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"+31, {@skill Lore||Legal Lore} +30 Str +6, Dex +5, Con +5, Int +2, Wis +2, Cha +1 Items +3 greater striking speed handwraps of mighty blows."
+						],
+						"name": "Intimidation"
+					}
 				],
-				"condition": [
-					"{@condition grabbed}"
+				"mid": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"entries": [],
+						"name": "Attack of Opportunity",
+						"generic": true
+					}
+				],
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"flourish"
+						],
+						"entries": [
+							"Lord Guirden makes two fist Strikes, ignoring the multiple attack penalty until after both Strikes."
+						],
+						"name": "Double Punch"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"flourish"
+						],
+						"requirements": "Lord Guirden has a Medium or smaller creature {@condition grabbed}",
+						"entries": [
+							"Lord Guirden hurls the {@condition grabbed} creature into a target adjacent to him. He makes a fist {@action Strike} against the adjacent target. On a success, the target and hurled creature both take {@damage 3d10+14} bludgeoning damage and are knocked {@condition prone}. On a failure, only the thrown creature takes the damage and is knocked {@condition prone}."
+						],
+						"name": "Hurl"
+					},
+					{
+						"entries": [
+							"Guirden makes a fist {@action Strike} and hits, he can choose to apply either the Grab,"
+						],
+						"name": "Master Brawler Whenever Lord"
+					},
+					{
+						"entries": [
+							"Push ability to his attack."
+						],
+						"name": "Knockdown, or"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"CC"
-			]
+			}
 		},
 		{
 			"name": "Lusca",
@@ -2374,29 +2222,32 @@
 			"source": "AoE5",
 			"page": 83,
 			"level": 17,
-			"rarity": "Uncommon",
-			"alignment": "CE",
-			"size": "Gargantuan",
 			"traits": [
-				"Aquatic"
+				"uncommon",
+				"ce",
+				"gargantuan",
+				"aberration",
+				"aquatic"
 			],
 			"creatureType": [
 				"Aberration"
 			],
 			"perception": {
-				"default": 31
+				"std": 31
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [
-					"scent 100 feet"
-				],
-				"vague": [],
-				"other": [
-					"blood scent",
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "blood scent"
+				},
+				{
+					"name": "darkvision"
+				},
+				{
+					"type": "imprecise",
+					"name": "scent",
+					"range": 100
+				}
+			],
 			"languages": {
 				"languages": [
 					"Aquan",
@@ -2406,43 +2257,35 @@
 			},
 			"skills": {
 				"Athletics": {
-					"default": 34
+					"std": 34
 				},
 				"Intimidation": {
-					"default": 30
+					"std": 30
 				},
 				"Survival": {
-					"default": 31
+					"std": 31
 				}
 			},
 			"abilityMods": {
-				"Str": 9,
-				"Dex": 5,
-				"Con": 9,
-				"Int": 0,
-				"Wis": 6,
-				"Cha": 5
+				"str": 9,
+				"dex": 5,
+				"con": 9,
+				"int": 0,
+				"wis": 6,
+				"cha": 5
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"The lusca can smell blood in the water up to 1 mile away."
-					],
-					"name": "Blood Scent"
-				}
-			],
 			"ac": {
-				"default": 40
+				"std": 40
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 32
+				"fort": {
+					"std": 32
 				},
-				"Ref": {
-					"default": 26
+				"ref": {
+					"std": 26
 				},
-				"Will": {
-					"default": 29
+				"will": {
+					"std": 29
 				}
 			},
 			"hp": [
@@ -2451,44 +2294,12 @@
 					"abilities": null
 				}
 			],
-			"immunities": {
-				"damage": [
-					"electricity"
-				],
-				"condition": []
-			},
-			"abilitiesMid": [
-				{
-					"entries": [],
-					"name": "All-Around Vision",
-					"generic": true
-				},
-				{
-					"traits": [
-						"aura",
-						"evocation",
-						"primal"
-					],
-					"entries": [
-						"When the lusca is near the surface for more than 1 hour, clouds appear and deliver a thunderstorm with a 2-mile radius centered on its location. The weather returns to normal 1 hour after the lusca departs."
-					],
-					"name": "Storm Bringer"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"entries": [
-						"The lusca gains 2 extra reactions at the start of each of its turns that it can use only to make an {@action Attack of Opportunity} with its jaws. It can't use more than one {@action Attack of Opportunity} triggered by the same action."
-					],
-					"name": "Attack of Opportunity",
-					"generic": true
-				}
+			"immunities": [
+				"electricity"
 			],
 			"speed": {
 				"walk": 10,
-				"swim ": 50
+				"swim": 50
 			},
 			"attacks": [
 				{
@@ -2550,100 +2361,124 @@
 					}
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"traits": [
-						"attack"
-					],
-					"entries": [
-						"The lusca tries to capsize an adjacent aquatic vessel of its size or smaller. It must succeed at an {@skill Athletics} check with a DC of 35 (reduced by 5 for each size smaller the vessel is than the lusca) or the pilot's {@skill Lore||Sailing Lore} DC, whichever is higher."
-					],
-					"name": "Capsize"
-				},
-				{
-					"entries": [
-						{
-							"type": "affliction",
-							"name": "",
-							"traits": [
-								"poison"
-							],
-							"note": "",
-							"DC": 38,
-							"savingThrow": "Fortitude",
-							"maxDuration": "6 rounds",
-							"stages": [
-								{
-									"stage": 1,
-									"entry": "{@damage 4d6} poison damage and {@condition clumsy|CRB|clumsy 1}",
-									"duration": "1 round"
-								},
-								{
-									"stage": 2,
-									"entry": "{@damage 6d6} poison damage and {@condition clumsy|CRB|clumsy 2}",
-									"duration": "1 round"
-								}
-							]
-						}
-					],
-					"name": "Lusca Venom"
-				},
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"entries": [
-						"The lusca makes three jaws Strikes, each against a different target. These attacks count toward the lusca's multiple attack penalty, but the penalty doesn't increase until after the lusca makes all of these attacks. If the lusca subsequently uses the Grab action, it Grabs any number of creatures it hit with Ravenous Jaws."
-					],
-					"name": "Ravenous Jaws"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"traits": [
-						"jaws"
-					],
-					"entries": [],
-					"name": "Rend",
-					"generic": true
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"traits": [
-						"attack"
-					],
-					"entries": [
-						"Huge, {@damage 4d12+9} bludgeoning, Rupture 38."
-					],
-					"name": "Swallow Whole",
-					"generic": true
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning",
-					"piercing",
-					"poison"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"The lusca can smell blood in the water up to 1 mile away."
+						],
+						"name": "Blood Scent"
+					}
 				],
-				"condition": [
-					"{@condition clumsy}"
+				"mid": [
+					{
+						"entries": [],
+						"name": "All-Around Vision",
+						"generic": true
+					},
+					{
+						"traits": [
+							"aura",
+							"evocation",
+							"primal"
+						],
+						"entries": [
+							"When the lusca is near the surface for more than 1 hour, clouds appear and deliver a thunderstorm with a 2-mile radius centered on its location. The weather returns to normal 1 hour after the lusca departs."
+						],
+						"name": "Storm Bringer"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"entries": [
+							"The lusca gains 2 extra reactions at the start of each of its turns that it can use only to make an {@action Attack of Opportunity} with its jaws. It can't use more than one {@action Attack of Opportunity} triggered by the same action."
+						],
+						"name": "Attack of Opportunity",
+						"generic": true
+					}
+				],
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"attack"
+						],
+						"entries": [
+							"The lusca tries to capsize an adjacent aquatic vessel of its size or smaller. It must succeed at an {@skill Athletics} check with a DC of 35 (reduced by 5 for each size smaller the vessel is than the lusca) or the pilot's {@skill Lore||Sailing Lore} DC, whichever is higher."
+						],
+						"name": "Capsize"
+					},
+					{
+						"entries": [
+							{
+								"type": "affliction",
+								"name": "",
+								"traits": [
+									"poison"
+								],
+								"note": "",
+								"DC": 38,
+								"savingThrow": "Fortitude",
+								"maxDuration": "6 rounds",
+								"stages": [
+									{
+										"stage": 1,
+										"entry": "{@damage 4d6} poison damage and {@condition clumsy|CRB|clumsy 1}",
+										"duration": "1 round"
+									},
+									{
+										"stage": 2,
+										"entry": "{@damage 6d6} poison damage and {@condition clumsy|CRB|clumsy 2}",
+										"duration": "1 round"
+									}
+								]
+							}
+						],
+						"name": "Lusca Venom"
+					},
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"The lusca makes three jaws Strikes, each against a different target. These attacks count toward the lusca's multiple attack penalty, but the penalty doesn't increase until after the lusca makes all of these attacks. If the lusca subsequently uses the Grab action, it Grabs any number of creatures it hit with Ravenous Jaws."
+						],
+						"name": "Ravenous Jaws"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"jaws"
+						],
+						"entries": [],
+						"name": "Rend",
+						"generic": true
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"attack"
+						],
+						"entries": [
+							"Huge, {@damage 4d12+9} bludgeoning, Rupture 38."
+						],
+						"name": "Swallow Whole",
+						"generic": true
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"RC",
-				"CC"
-			]
+			}
 		},
 		{
 			"name": "Minchgorm",
@@ -2651,29 +2486,30 @@
 			"source": "AoE5",
 			"page": 84,
 			"level": 18,
-			"rarity": "Rare",
-			"alignment": "NE",
-			"size": "Huge",
 			"traits": [
-				"Water",
-				"Amphibious"
+				"rare",
+				"ne",
+				"huge",
+				"amphibious",
+				"fey",
+				"water"
 			],
 			"creatureType": [
 				"Fey"
 			],
 			"perception": {
-				"default": 30
+				"std": 30
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [
-					"wavesense 100 feet"
-				],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"type": "imprecise",
+					"name": "wavesense",
+					"range": 100
+				}
+			],
 			"languages": {
 				"languages": [
 					"Aquan",
@@ -2686,36 +2522,35 @@
 			},
 			"skills": {
 				"Athletics": {
-					"default": 34
+					"std": 34
 				},
 				"Intimidation": {
-					"default": 34
+					"std": 34
 				},
 				"Performance": {
-					"default": 36
+					"std": 36
 				}
 			},
 			"abilityMods": {
-				"Str": 8,
-				"Dex": 0,
-				"Con": 6,
-				"Int": 5,
-				"Wis": 2,
-				"Cha": 8
+				"str": 8,
+				"dex": 0,
+				"con": 6,
+				"int": 5,
+				"wis": 2,
+				"cha": 8
 			},
-			"abilitiesTop": [],
 			"ac": {
-				"default": 42
+				"std": 42
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 30
+				"fort": {
+					"std": 30
 				},
-				"Ref": {
-					"default": 27
+				"ref": {
+					"std": 27
 				},
-				"Will": {
-					"default": 33
+				"will": {
+					"std": 33
 				}
 			},
 			"hp": [
@@ -2730,10 +2565,9 @@
 					"name": "cold iron"
 				}
 			],
-			"abilitiesMid": [],
 			"speed": {
 				"walk": 5,
-				"swim ": 20
+				"swim": 20
 			},
 			"attacks": [
 				{
@@ -2776,99 +2610,86 @@
 					}
 				}
 			],
-			"abilitiesBot": [
-				{
-					"entries": [
-						"Primal Innate Spells DC 40; 9th hydraulic torrent; 5th control water (×3);"
-					],
-					"name": "Improved Grab",
-					"generic": true
-				},
-				{
-					"traits": [
-						"5th"
-					],
-					"entries": [
-						"tongues."
-					],
-					"name": "Constant"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
+			"abilities": {
+				"bot": [
+					{
+						"entries": [
+							"Primal Innate Spells DC 40; 9th hydraulic torrent; 5th control water (×3);"
+						],
+						"name": "Improved Grab",
+						"generic": true
 					},
-					"trigger": "The minchgorm Grabs a creature in its jaws",
-					"entries": [
-						"The minchgorm uses Swallow Whole."
-					],
-					"name": "Fast Swallow"
-				},
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
+					{
+						"traits": [
+							"5th"
+						],
+						"entries": [
+							"tongues."
+						],
+						"name": "Constant"
 					},
-					"traits": [
-						"conjuration",
-						"primal",
-						"water"
-					],
-					"entries": [
-						"Tentacles of water rise up and attempt."
-					],
-					"name": "Riptide"
-				},
-				{
-					"entries": [
-						"{@action Grapple} all enemies within 15 feet of the minchgorm. The minchgorm attempts an {@skill Athletics} check against the Fortitude DC of each creature in the area. On a success, the creature is {@condition grabbed} ({@action Escape} DC 40). On a critical success, or a success against a creature that is already {@condition grabbed}, the target begins to drown (Pathfinder Core Rulebook 478)."
-					],
-					"name": "to"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"trigger": "The minchgorm Grabs a creature in its jaws",
+						"entries": [
+							"The minchgorm uses Swallow Whole."
+						],
+						"name": "Fast Swallow"
 					},
-					"entries": [
-						"Large, {@damage 3d10+16} bludgeoning, Rupture 36."
-					],
-					"name": "Swallow Whole",
-					"generic": true
-				},
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"conjuration",
+							"primal",
+							"water"
+						],
+						"entries": [
+							"Tentacles of water rise up and attempt."
+						],
+						"name": "Riptide"
 					},
-					"traits": [
-						"concentrate",
-						"conjuration",
-						"primal",
-						"water"
-					],
-					"entries": [
-						"The minchgorm raises up to eight figures from nearby water, each appearing in an empty space within 60 feet of the minchgorm. A simulacrum can take any shape of size Medium or smaller that the minchgorm desires, including that of a specific individual or object, but is always plainly made of water. The minchgorm can speak, cast spells, and use its senses through its simulacra, spending actions for a simulacrum on a one-for-one basis. By using a single action with the {@trait concentrate} trait, the minchgorm can cause any number of simulacra to {@action Fly}, {@action Step}, {@action Stride}, or {@action Swim} up to 60 feet. A simulacrum uses the minchgorm's AC and saving throws and has 30 Hit Points. A minchgorm can have up to eight simulacra in existence at once.",
-						"Simulacra dissolve immediately when more than 60 feet from the minchgorm, or if the minchgorm dies or falls {@condition unconscious}. The minchgorm can dismiss any number of its simulacra as a free action."
-					],
-					"name": "Watery Simulacra"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning",
-					"piercing"
-				],
-				"condition": [
-					"{@condition grabbed}",
-					"{@condition unconscious}"
+					{
+						"entries": [
+							"{@action Grapple} all enemies within 15 feet of the minchgorm. The minchgorm attempts an {@skill Athletics} check against the Fortitude DC of each creature in the area. On a success, the creature is {@condition grabbed} ({@action Escape} DC 40). On a critical success, or a success against a creature that is already {@condition grabbed}, the target begins to drown (Pathfinder Core Rulebook 478)."
+						],
+						"name": "to"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"Large, {@damage 3d10+16} bludgeoning, Rupture 36."
+						],
+						"name": "Swallow Whole",
+						"generic": true
+					},
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"concentrate",
+							"conjuration",
+							"primal",
+							"water"
+						],
+						"entries": [
+							"The minchgorm raises up to eight figures from nearby water, each appearing in an empty space within 60 feet of the minchgorm. A simulacrum can take any shape of size Medium or smaller that the minchgorm desires, including that of a specific individual or object, but is always plainly made of water. The minchgorm can speak, cast spells, and use its senses through its simulacra, spending actions for a simulacrum on a one-for-one basis. By using a single action with the {@trait concentrate} trait, the minchgorm can cause any number of simulacra to {@action Fly}, {@action Step}, {@action Stride}, or {@action Swim} up to 60 feet. A simulacrum uses the minchgorm's AC and saving throws and has 30 Hit Points. A minchgorm can have up to eight simulacra in existence at once.",
+							"Simulacra dissolve immediately when more than 60 feet from the minchgorm, or if the minchgorm dies or falls {@condition unconscious}. The minchgorm can dismiss any number of its simulacra as a free action."
+						],
+						"name": "Watery Simulacra"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"RC",
-				"CC"
-			]
+			}
 		},
 		{
 			"name": "Miogimo",
@@ -2876,23 +2697,23 @@
 			"source": "AoE5",
 			"page": 89,
 			"level": 17,
-			"rarity": "Unique",
-			"alignment": "CE",
-			"size": "Medium",
+			"traits": [
+				"unique",
+				"ce",
+				"medium",
+				"undead"
+			],
 			"creatureType": [
 				"Undead"
 			],
 			"perception": {
-				"default": 31
+				"std": 31
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Common",
@@ -2903,71 +2724,47 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 31
+					"std": 31
 				},
 				"Athletics": {
-					"default": 28
+					"std": 28
 				},
 				"Deception": {
-					"default": 33
+					"std": 33
 				},
 				"Diplomacy": {
-					"default": 35
+					"std": 35
 				},
 				"Occultism": {
-					"default": 28
+					"std": 28
 				},
 				"Society": {
-					"default": 28
+					"std": 28
 				},
 				"Stealth": {
-					"default": 31
+					"std": 31
 				}
 			},
 			"abilityMods": {
-				"Str": 5,
-				"Dex": 4,
-				"Con": 0,
-				"Int": 3,
-				"Wis": 5,
-				"Cha": 8
+				"str": 5,
+				"dex": 4,
+				"con": 0,
+				"int": 3,
+				"wis": 5,
+				"cha": 8
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+35, {@skill Occultism} +28, {@skill Society} +28, {@skill Stealth} +31,"
-					],
-					"name": "Diplomacy"
-				},
-				{
-					"entries": [
-						"+28 Str +5, Dex +4, Con +0, Int +3, Wis +5, Cha +8 Items darts (20), +2 greater striking katana, Miogimo's mask (page 77), +2 resilient studded leather."
-					],
-					"name": "Underworld Lore"
-				},
-				{
-					"entries": [
-						"Each time a creature willingly performs a service, quest, or task for the zealborn, the creature takes a cumulative \u20131 status penalty to saving throws against the zealborn's mental spells and abilities (maximum \u20134)."
-					],
-					"name": "Little Favors",
-					"traits": [
-						"mental",
-						"occult"
-					]
-				}
-			],
 			"ac": {
-				"default": 40
+				"std": 40
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 26
+				"fort": {
+					"std": 26
 				},
-				"Ref": {
-					"default": 30
+				"ref": {
+					"std": 30
 				},
-				"Will": {
-					"default": 31
+				"will": {
+					"std": 31
 				}
 			},
 			"hp": [
@@ -2978,47 +2775,13 @@
 					]
 				}
 			],
-			"immunities": {
-				"damage": [],
-				"condition": [
-					"death"
-				]
-			},
+			"immunities": [
+				"death"
+			],
 			"resistances": [
 				{
 					"amount": 10,
 					"name": "chaotic"
-				}
-			],
-			"abilitiesMid": [
-				{
-					"traits": [
-						"necromancy",
-						"occult"
-					],
-					"entries": [
-						"When a zealborn is destroyed, it re-forms, fully healed, near a follower of its choice in {@dice 1d10} days.",
-						"For the purposes of rejuvenation, a follower is defined as an intelligent creature who's well acquainted with the zealborn and is a true believer in the zealborn's mission, not merely a lukewarm supporter. A zealborn can be permanently destroyed only if they have no current followers or can be convinced to end their own life."
-					],
-					"name": "Rejuvenation"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"trigger": "An effect would cause Miogimo to become {@condition immobilized}, {@condition grabbed}, or {@condition restrained} or would slow his movement",
-					"entries": [
-						"Miogimo casts freedom of movement on himself."
-					],
-					"name": "Trickster's Ace"
-				},
-				{
-					"entries": [
-						"A zealborn can't regain Hit Points through resting or negative healing; they feed only on the idealism of their supporters, regaining 10 Hit Points per day for each creature under the effects of a geas cast by the zealborn. Creatures under a zealborn's geas have their maximum HP reduced by 10 each day until they are burned away to a husk and perish. After 24 hours, such creatures rise as zeal-damned ghouls under the zealborn's control. Zeal-damned ghouls eat only the flesh of evil or chaotic creatures and deal an additional {@damage 1d6} chaotic and {@damage 1d6} negative damage with their attacks.",
-						"(See page 9 for an example of zeal-damned ghoul statistics.)"
-					],
-					"name": "Zealous Restoration"
 				}
 			],
 			"speed": {
@@ -3034,7 +2797,7 @@
 						"disarm",
 						"magical",
 						"two-hand 3d10",
-						"versatile P"
+						"versatile p"
 					],
 					"effects": [],
 					"damage": "{@damage 3d6+13} slashing plus {@damage 2d6} chaotic and {@damage 2d6} negative",
@@ -3138,31 +2901,71 @@
 					}
 				}
 			],
-			"abilitiesBot": [
-				{
-					"entries": [
-						"DC 39; geas, unfettered mark."
-					],
-					"name": "Occult Ritual"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"chaotic",
-					"piercing",
-					"slashing"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"+35, {@skill Occultism} +28, {@skill Society} +28, {@skill Stealth} +31,"
+						],
+						"name": "Diplomacy"
+					},
+					{
+						"entries": [
+							"+28 Str +5, Dex +4, Con +0, Int +3, Wis +5, Cha +8 Items darts (20), +2 greater striking katana, Miogimo's mask (page 77), +2 resilient studded leather."
+						],
+						"name": "Underworld Lore"
+					},
+					{
+						"entries": [
+							"Each time a creature willingly performs a service, quest, or task for the zealborn, the creature takes a cumulative \u20131 status penalty to saving throws against the zealborn's mental spells and abilities (maximum \u20134)."
+						],
+						"name": "Little Favors",
+						"traits": [
+							"mental",
+							"occult"
+						]
+					}
 				],
-				"condition": [
-					"{@condition immobilized}"
+				"mid": [
+					{
+						"traits": [
+							"necromancy",
+							"occult"
+						],
+						"entries": [
+							"When a zealborn is destroyed, it re-forms, fully healed, near a follower of its choice in {@dice 1d10} days.",
+							"For the purposes of rejuvenation, a follower is defined as an intelligent creature who's well acquainted with the zealborn and is a true believer in the zealborn's mission, not merely a lukewarm supporter. A zealborn can be permanently destroyed only if they have no current followers or can be convinced to end their own life."
+						],
+						"name": "Rejuvenation"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"trigger": "An effect would cause Miogimo to become {@condition immobilized}, {@condition grabbed}, or {@condition restrained} or would slow his movement",
+						"entries": [
+							"Miogimo casts freedom of movement on himself."
+						],
+						"name": "Trickster's Ace"
+					},
+					{
+						"entries": [
+							"A zealborn can't regain Hit Points through resting or negative healing; they feed only on the idealism of their supporters, regaining 10 Hit Points per day for each creature under the effects of a geas cast by the zealborn. Creatures under a zealborn's geas have their maximum HP reduced by 10 each day until they are burned away to a husk and perish. After 24 hours, such creatures rise as zeal-damned ghouls under the zealborn's control. Zeal-damned ghouls eat only the flesh of evil or chaotic creatures and deal an additional {@damage 1d6} chaotic and {@damage 1d6} negative damage with their attacks.",
+							"(See page 9 for an example of zeal-damned ghoul statistics.)"
+						],
+						"name": "Zealous Restoration"
+					}
+				],
+				"bot": [
+					{
+						"entries": [
+							"DC 39; geas, unfettered mark."
+						],
+						"name": "Occult Ritual"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"RA",
-				"TA",
-				"CC",
-				"UW"
-			]
+			}
 		},
 		{
 			"name": "Mother Venom",
@@ -3170,23 +2973,23 @@
 			"source": "AoE5",
 			"page": 19,
 			"level": 17,
-			"rarity": "Unique",
-			"alignment": "NE",
-			"size": "Large",
+			"traits": [
+				"unique",
+				"ne",
+				"large",
+				"aberration"
+			],
 			"creatureType": [
 				"Aberration"
 			],
 			"perception": {
-				"default": 33
+				"std": 33
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Aklo",
@@ -3197,48 +3000,47 @@
 			},
 			"skills": {
 				"Arcana": {
-					"default": 29
+					"std": 29
 				},
 				"Athletics": {
-					"default": 29
+					"std": 29
 				},
 				"Crafting": {
-					"default": 31
+					"std": 31
 				},
 				"Nature": {
-					"default": 30
+					"std": 30
 				},
 				"Society": {
-					"default": 29
+					"std": 29
 				},
 				"Stealth": {
-					"default": 31
+					"std": 31
 				},
 				"Ooze Lore": {
-					"default": 31
+					"std": 31
 				}
 			},
 			"abilityMods": {
-				"Str": 7,
-				"Dex": 6,
-				"Con": 9,
-				"Int": 3,
-				"Wis": 4,
-				"Cha": 8
+				"str": 7,
+				"dex": 6,
+				"con": 9,
+				"int": 3,
+				"wis": 4,
+				"cha": 8
 			},
-			"abilitiesTop": [],
 			"ac": {
-				"default": 38
+				"std": 38
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 32
+				"fort": {
+					"std": 32
 				},
-				"Ref": {
-					"default": 29
+				"ref": {
+					"std": 29
 				},
-				"Will": {
-					"default": 28
+				"will": {
+					"std": 28
 				}
 			},
 			"hp": [
@@ -3247,10 +3049,9 @@
 					"abilities": null
 				}
 			],
-			"abilitiesMid": [],
 			"speed": {
 				"walk": 40,
-				"swim ": 20
+				"swim": 20
 			},
 			"attacks": [
 				{
@@ -3445,47 +3246,32 @@
 					}
 				}
 			],
-			"abilitiesBot": [
-				{
-					"traits": [
-						"poison"
-					],
-					"entries": [
-						"DC 38; Maximum Duration 6 rounds; Stage 1 {@damage 2d6} poison damage and {@condition enfeebled|CRB|enfeebled 1} (1 round); Stage 2 {@damage 3d6} poison damage and {@condition enfeebled|CRB|enfeebled 2} (1 round); Stage 3 {@damage 4d6} poison damage and {@condition enfeebled|CRB|enfeebled 3} (1 round)."
-					],
-					"name": "Mother Venom Poison"
-				},
-				{
-					"entries": [
-						"Venom can command her minions and the oozes that cover her dungeon to attack foes.",
-						"As long as she's conscious, she can make melee ooze tendril Strikes that originate from any slime-covered terrain in her dungeon, including the dungeon's walls and doors, or from a space occupied by one of her children of venom."
-					],
-					"name": "Ooze Tendril Mother"
-				},
-				{
-					"entries": [
-						"A creature hit by Mother Venom's spit attack is {@condition immobilized} and stuck to the nearest surface ({@action Escape} DC 38)."
-					],
-					"name": "Spit"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning",
-					"piercing",
-					"poison"
-				],
-				"condition": [
-					"{@condition enfeebled}",
-					"{@condition immobilized}"
+			"abilities": {
+				"bot": [
+					{
+						"traits": [
+							"poison"
+						],
+						"entries": [
+							"DC 38; Maximum Duration 6 rounds; Stage 1 {@damage 2d6} poison damage and {@condition enfeebled|CRB|enfeebled 1} (1 round); Stage 2 {@damage 3d6} poison damage and {@condition enfeebled|CRB|enfeebled 2} (1 round); Stage 3 {@damage 4d6} poison damage and {@condition enfeebled|CRB|enfeebled 3} (1 round)."
+						],
+						"name": "Mother Venom Poison"
+					},
+					{
+						"entries": [
+							"Venom can command her minions and the oozes that cover her dungeon to attack foes.",
+							"As long as she's conscious, she can make melee ooze tendril Strikes that originate from any slime-covered terrain in her dungeon, including the dungeon's walls and doors, or from a space occupied by one of her children of venom."
+						],
+						"name": "Ooze Tendril Mother"
+					},
+					{
+						"entries": [
+							"A creature hit by Mother Venom's spit attack is {@condition immobilized} and stuck to the nearest surface ({@action Escape} DC 38)."
+						],
+						"name": "Spit"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"RC",
-				"RA",
-				"CC"
-			]
+			}
 		},
 		{
 			"name": "Myrna Rath",
@@ -3493,29 +3279,32 @@
 			"source": "AoE5",
 			"page": 39,
 			"level": 16,
-			"rarity": "Unique",
-			"alignment": "NE",
-			"size": "Medium",
 			"traits": [
-				"Hag"
+				"unique",
+				"ne",
+				"medium",
+				"fiend",
+				"hag",
+				"humanoid"
 			],
 			"creatureType": [
 				"Humanoid",
 				"Fiend"
 			],
 			"perception": {
-				"default": 30
+				"std": 30
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision",
-					"detect alignment",
-					"detect magic"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"name": "detect alignment"
+				},
+				{
+					"name": "detect magic"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Abyssal",
@@ -3528,66 +3317,45 @@
 			},
 			"skills": {
 				"Arcana": {
-					"default": 30
+					"std": 30
 				},
 				"Deception": {
-					"default": 31
+					"std": 31
 				},
 				"Diplomacy": {
-					"default": 29
+					"std": 29
 				},
 				"Intimidation": {
-					"default": 27
+					"std": 27
 				},
 				"Occultism": {
-					"default": 32
+					"std": 32
 				}
 			},
 			"abilityMods": {
-				"Str": 8,
-				"Dex": 7,
-				"Con": 9,
-				"Int": 6,
-				"Wis": 8,
-				"Cha": 5
+				"str": 8,
+				"dex": 7,
+				"con": 9,
+				"int": 6,
+				"wis": 8,
+				"cha": 5
 			},
 			"items": [
 				"greater cloak of the bat",
 				"heartstone"
 			],
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+27, {@skill Occultism} +32 Str +8, Dex +7, Con +9, Int +6, Wis +8, Cha +5 Items greater cloak of the bat, heartstone."
-					],
-					"name": "Intimidation"
-				},
-				{
-					"entries": [
-						"As night hag."
-					],
-					"name": "Nightmare Rider",
-					"entries_as_xyz": "Ability not found: 'Nightmare Rider As night hag.' in Myrna Rath, p.39"
-				},
-				{
-					"entries": [
-						"As long as at least one other member of Myrna's coven is on the demiplane of Stormholt, the coven members add chain lightning, lightning bolt, plane shift, and punishing winds to their spells, each of which can be cast at up to 8th level."
-					],
-					"name": "Planar Coven"
-				}
-			],
 			"ac": {
-				"default": 39
+				"std": 39
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 31
+				"fort": {
+					"std": 31
 				},
-				"Ref": {
-					"default": 27
+				"ref": {
+					"std": 27
 				},
-				"Will": {
-					"default": 30
+				"will": {
+					"std": 30
 				}
 			},
 			"hp": [
@@ -3596,19 +3364,15 @@
 					"abilities": null
 				}
 			],
-			"immunities": {
-				"damage": [],
-				"condition": [
-					"sleep"
-				]
-			},
+			"immunities": [
+				"sleep"
+			],
 			"weaknesses": [
 				{
 					"amount": 15,
 					"name": "cold iron"
 				}
 			],
-			"abilitiesMid": [],
 			"speed": {
 				"walk": 25
 			},
@@ -3734,78 +3498,88 @@
 					}
 				}
 			],
-			"abilitiesBot": [
-				{
-					"entries": [
-						{
-							"type": "affliction",
-							"name": "",
-							"traits": [
-								"disease"
-							],
-							"note": " A creature can't recover from\n{@condition drained} until Abyssal plague is cured",
-							"DC": 41,
-							"savingThrow": "Fortitude",
-							"stages": [
-								{
-									"stage": 1,
-									"entry": "{@condition drained|CRB|drained 1}",
-									"duration": "1 day"
-								},
-								{
-									"stage": 2,
-									"entry": "{@condition drained|CRB|drained 3}",
-									"duration": "1 day"
-								}
-							]
-						}
-					],
-					"name": "Abyssal Plague"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"+27, {@skill Occultism} +32 Str +8, Dex +7, Con +9, Int +6, Wis +8, Cha +5 Items greater cloak of the bat, heartstone."
+						],
+						"name": "Intimidation"
 					},
-					"entries": [
-						"As night hag."
-					],
-					"name": "Change Shape",
-					"generic": true,
-					"entries_as_xyz": "Ability not found: '{@action Change Shape|LOAG} As night hag.' in Myrna Rath, p.39"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
+					{
+						"entries": [
+							"As night hag."
+						],
+						"name": "Nightmare Rider",
+						"entries_as_xyz": "Ability not found: 'Nightmare Rider As night hag.' in Myrna Rath, p.39"
 					},
-					"entries": [
-						"As night hag."
-					],
-					"name": "Dream Haunting",
-					"entries_as_xyz": "Ability not found: 'Dream Haunting As night hag.' in Myrna Rath, p.39"
-				},
-				{
-					"entries": [
-						"As night hag."
-					],
-					"name": "Spell Ambush",
-					"entries_as_xyz": "Ability not found: 'Spell Ambush As night hag.' in Myrna Rath, p.39"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"piercing",
-					"slashing"
+					{
+						"entries": [
+							"As long as at least one other member of Myrna's coven is on the demiplane of Stormholt, the coven members add chain lightning, lightning bolt, plane shift, and punishing winds to their spells, each of which can be cast at up to 8th level."
+						],
+						"name": "Planar Coven"
+					}
 				],
-				"condition": [
-					"{@condition drained}"
+				"bot": [
+					{
+						"entries": [
+							{
+								"type": "affliction",
+								"name": "",
+								"traits": [
+									"disease"
+								],
+								"note": " A creature can't recover from\n{@condition drained} until Abyssal plague is cured",
+								"DC": 41,
+								"savingThrow": "Fortitude",
+								"stages": [
+									{
+										"stage": 1,
+										"entry": "{@condition drained|CRB|drained 1}",
+										"duration": "1 day"
+									},
+									{
+										"stage": 2,
+										"entry": "{@condition drained|CRB|drained 3}",
+										"duration": "1 day"
+									}
+								]
+							}
+						],
+						"name": "Abyssal Plague"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"As night hag."
+						],
+						"name": "Change Shape",
+						"generic": true,
+						"entries_as_xyz": "Ability not found: '{@action Change Shape|LOAG} As night hag.' in Myrna Rath, p.39"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"As night hag."
+						],
+						"name": "Dream Haunting",
+						"entries_as_xyz": "Ability not found: 'Dream Haunting As night hag.' in Myrna Rath, p.39"
+					},
+					{
+						"entries": [
+							"As night hag."
+						],
+						"name": "Spell Ambush",
+						"entries_as_xyz": "Ability not found: 'Spell Ambush As night hag.' in Myrna Rath, p.39"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"CC"
-			]
+			}
 		},
 		{
 			"name": "Myrucarx",
@@ -3813,25 +3587,28 @@
 			"source": "AoE5",
 			"page": 85,
 			"level": 18,
-			"rarity": "Rare",
-			"alignment": "NE",
-			"size": "Large",
+			"traits": [
+				"rare",
+				"ne",
+				"large",
+				"aberration"
+			],
 			"creatureType": [
 				"Aberration"
 			],
 			"perception": {
-				"default": 33
+				"std": 33
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [
-					"{@ability tremorsense} 60 feet"
-				],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"type": "imprecise",
+					"name": "{@ability tremorsense}",
+					"range": 60
+				}
+			],
 			"languages": {
 				"languages": [
 					"Aklo",
@@ -3842,49 +3619,41 @@
 			},
 			"skills": {
 				"Athletics": {
-					"default": 33
+					"std": 33
 				},
 				"Deception": {
-					"default": 34
+					"std": 34
 				},
 				"Occultism": {
-					"default": 31
+					"std": 31
 				},
 				"Society": {
-					"default": 31
+					"std": 31
 				},
 				"Stealth": {
-					"default": 34
+					"std": 34
 				}
 			},
 			"abilityMods": {
-				"Str": 9,
-				"Dex": 6,
-				"Con": 6,
-				"Int": 5,
-				"Wis": 3,
-				"Cha": 6
+				"str": 9,
+				"dex": 6,
+				"con": 6,
+				"int": 5,
+				"wis": 3,
+				"cha": 6
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"A myrucarx emits no smell and can't be detected by scent."
-					],
-					"name": "Odorless"
-				}
-			],
 			"ac": {
-				"default": 41
+				"std": 41
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 32
+				"fort": {
+					"std": 32
 				},
-				"Ref": {
-					"default": 28
+				"ref": {
+					"std": 28
 				},
-				"Will": {
-					"default": 30
+				"will": {
+					"std": 30
 				}
 			},
 			"hp": [
@@ -3899,25 +3668,12 @@
 					"name": "cold"
 				}
 			],
-			"abilitiesMid": [
-				{
-					"entries": [],
-					"name": "Light Blindness",
-					"generic": true
-				},
-				{
-					"entries": [
-						"When attempting a save against a {@trait light} effect, a myrucarx gets a result one degree of success lower than it rolled. A myrucarx caught in sunlight is {@condition stunned|CRB|stunned 2} and {@condition clumsy|CRB|clumsy 2}."
-					],
-					"name": "Painful Light"
-				}
-			],
 			"speed": {
 				"abilities": [
 					"freedom of movement"
 				],
 				"walk": 30,
-				"climb ": 30
+				"climb": 30
 			},
 			"attacks": [
 				{
@@ -3985,51 +3741,61 @@
 					}
 				}
 			],
-			"abilitiesBot": [
-				{
-					"entries": [
-						"Plane only) 5th hallucinatory terrain (at will); 2nd invisibility (at will, self only); Constant (8th) freedom of movement."
-					],
-					"name": "Shadow"
-				},
-				{
-					"entries": [
-						"The illusion created by the myrucarx's project image can resemble any Medium humanoid, including any specific individual it has seen, and has appropriate voice, scent, and mannerisms, allowing the myrucarx to use its {@skill Deception} check to {@action Impersonate} that humanoid if it chooses."
-					],
-					"name": "Illusory Persona"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"frequency": {
-						"unit": "round",
-						"freq": 1
-					},
-					"entries": [
-						"The fanged mouths at the ends of a myrucarx's tendrils twist around obstacles. The myrucarx makes two jaws Strikes against the same target, ignoring the target's cover. Both attacks count toward the myrucarx's multiple attack penalty, but the penalty doesn't increase until after both attacks are made. The myrucarx can't Grab as its next action after."
-					],
-					"name": "Twisting Reach"
-				},
-				{
-					"entries": [],
-					"name": "Twisting Reach."
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"piercing"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"A myrucarx emits no smell and can't be detected by scent."
+						],
+						"name": "Odorless"
+					}
 				],
-				"condition": [
-					"{@condition stunned}"
+				"mid": [
+					{
+						"entries": [],
+						"name": "Light Blindness",
+						"generic": true
+					},
+					{
+						"entries": [
+							"When attempting a save against a {@trait light} effect, a myrucarx gets a result one degree of success lower than it rolled. A myrucarx caught in sunlight is {@condition stunned|CRB|stunned 2} and {@condition clumsy|CRB|clumsy 2}."
+						],
+						"name": "Painful Light"
+					}
+				],
+				"bot": [
+					{
+						"entries": [
+							"Plane only) 5th hallucinatory terrain (at will); 2nd invisibility (at will, self only); Constant (8th) freedom of movement."
+						],
+						"name": "Shadow"
+					},
+					{
+						"entries": [
+							"The illusion created by the myrucarx's project image can resemble any Medium humanoid, including any specific individual it has seen, and has appropriate voice, scent, and mannerisms, allowing the myrucarx to use its {@skill Deception} check to {@action Impersonate} that humanoid if it chooses."
+						],
+						"name": "Illusory Persona"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"frequency": {
+							"unit": "round",
+							"freq": 1
+						},
+						"entries": [
+							"The fanged mouths at the ends of a myrucarx's tendrils twist around obstacles. The myrucarx makes two jaws Strikes against the same target, ignoring the target's cover. Both attacks count toward the myrucarx's multiple attack penalty, but the penalty doesn't increase until after both attacks are made. The myrucarx can't Grab as its next action after."
+						],
+						"name": "Twisting Reach"
+					},
+					{
+						"entries": [],
+						"name": "Twisting Reach."
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"RC",
-				"CC"
-			]
+			}
 		},
 		{
 			"name": "Obrousian",
@@ -4037,23 +3803,23 @@
 			"source": "AoE5",
 			"page": 86,
 			"level": 14,
-			"rarity": "Uncommon",
-			"alignment": "NE",
-			"size": "Medium",
+			"traits": [
+				"uncommon",
+				"ne",
+				"medium",
+				"undead"
+			],
 			"creatureType": [
 				"Undead"
 			],
 			"perception": {
-				"default": 26
+				"std": 26
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Aquan",
@@ -4064,50 +3830,42 @@
 			},
 			"skills": {
 				"Athletics": {
-					"default": 26,
+					"std": 26,
 					"to Swim": 28
 				},
 				"Deception": {
-					"default": 27
+					"std": 27
 				},
 				"Intimidation": {
-					"default": 25
+					"std": 25
 				},
 				"Nature": {
-					"default": 24
+					"std": 24
 				},
 				"Stealth": {
-					"default": 26
+					"std": 26
 				}
 			},
 			"abilityMods": {
-				"Str": 6,
-				"Dex": 4,
-				"Con": 3,
-				"Int": 0,
-				"Wis": 4,
-				"Cha": 7
+				"str": 6,
+				"dex": 4,
+				"con": 3,
+				"int": 0,
+				"wis": 4,
+				"cha": 7
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+24, {@skill Stealth} +26 Str +6, Dex +4, Con +3, Int +0, Wis +4, Cha +7."
-					],
-					"name": "Nature"
-				}
-			],
 			"ac": {
-				"default": 36
+				"std": 36
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 25
+				"fort": {
+					"std": 25
 				},
-				"Ref": {
-					"default": 22
+				"ref": {
+					"std": 22
 				},
-				"Will": {
-					"default": 28
+				"will": {
+					"std": 28
 				}
 			},
 			"hp": [
@@ -4118,31 +3876,13 @@
 					]
 				}
 			],
-			"immunities": {
-				"damage": [],
-				"condition": [
-					"death effects",
-					"disease"
-				]
-			},
-			"abilitiesMid": [
-				{
-					"traits": [
-						"aura",
-						"divine",
-						"enchantment",
-						"incapacitation",
-						"mental"
-					],
-					"entries": [
-						"30 feet. When a creature ends its turn in the aura, it is overwhelmed by the sorrow that suffuses the obrousian's being. The creature must succeed at a DC 33 Will save or become {@condition paralyzed} for 1 round."
-					],
-					"name": "Waves of Sorrow"
-				}
+			"immunities": [
+				"death effects",
+				"disease"
 			],
 			"speed": {
 				"walk": 5,
-				"swim ": 30
+				"swim": 30
 			},
 			"attacks": [
 				{
@@ -4188,37 +3928,50 @@
 					}
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"traits": [
-						"concentrate",
-						"divine",
-						"polymorph",
-						"transmutation"
-					],
-					"entries": [
-						"The obrousian can take on the appearance of any Small or Medium humanoid. This increases their."
-					],
-					"name": "Change Shape",
-					"generic": true
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"slashing"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"+24, {@skill Stealth} +26 Str +6, Dex +4, Con +3, Int +0, Wis +4, Cha +7."
+						],
+						"name": "Nature"
+					}
 				],
-				"condition": [
-					"{@condition paralyzed}"
+				"mid": [
+					{
+						"traits": [
+							"aura",
+							"divine",
+							"enchantment",
+							"incapacitation",
+							"mental"
+						],
+						"entries": [
+							"30 feet. When a creature ends its turn in the aura, it is overwhelmed by the sorrow that suffuses the obrousian's being. The creature must succeed at a DC 33 Will save or become {@condition paralyzed} for 1 round."
+						],
+						"name": "Waves of Sorrow"
+					}
+				],
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"concentrate",
+							"divine",
+							"polymorph",
+							"transmutation"
+						],
+						"entries": [
+							"The obrousian can take on the appearance of any Small or Medium humanoid. This increases their."
+						],
+						"name": "Change Shape",
+						"generic": true
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"CC"
-			]
+			}
 		},
 		{
 			"name": "Reginald Vancaskerkin",
@@ -4226,15 +3979,19 @@
 			"source": "AoE5",
 			"page": 91,
 			"level": 18,
-			"rarity": "Unique",
-			"alignment": "NE",
-			"size": "Medium",
+			"traits": [
+				"unique",
+				"ne",
+				"medium",
+				"aberration",
+				"humanoid"
+			],
 			"creatureType": [
 				"Humanoid",
 				"Aberration"
 			],
 			"perception": {
-				"default": 33
+				"std": 33
 			},
 			"languages": {
 				"languages": [
@@ -4246,64 +4003,44 @@
 			},
 			"skills": {
 				"Deception": {
-					"default": 34
+					"std": 34
 				},
 				"Occultism": {
-					"default": 31
+					"std": 31
 				},
 				"Religion": {
-					"default": 28
+					"std": 28
 				},
 				"Thievery": {
-					"default": 29
+					"std": 29
 				},
 				"Absalom Lore": {
-					"default": 31
+					"std": 31
 				},
 				"Engineering Lore": {
-					"default": 31
+					"std": 31
 				}
 			},
 			"abilityMods": {
-				"Str": 6,
-				"Dex": 3,
-				"Con": 0,
-				"Int": 5,
-				"Wis": 2,
-				"Cha": 8
+				"str": 6,
+				"dex": 3,
+				"con": 0,
+				"int": 5,
+				"wis": 2,
+				"cha": 8
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"{@skill Lore||Skills Absalom Lore} +31, {@skill Acrobatics} +32, {@skill Deception} +34, {@skill Diplomacy} +34, {@skill Lore||Engineering Lore} +31,"
-					],
-					"name": "Daemonic, Infernal"
-				},
-				{
-					"entries": [
-						"+31, {@skill Religion} +28,"
-					],
-					"name": "Occultism"
-				},
-				{
-					"entries": [
-						"+29 Str +6, Dex +3, Con +0, Int +5, Wis +2, Cha +8."
-					],
-					"name": "Thievery"
-				}
-			],
 			"ac": {
-				"default": 42
+				"std": 42
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 26
+				"fort": {
+					"std": 26
 				},
-				"Ref": {
-					"default": 29
+				"ref": {
+					"std": 29
 				},
-				"Will": {
-					"default": 28
+				"will": {
+					"std": 28
 				}
 			},
 			"hp": [
@@ -4316,45 +4053,6 @@
 				{
 					"amount": 10,
 					"name": "physical"
-				}
-			],
-			"abilitiesMid": [
-				{
-					"entries": [
-						"Each time Reginald is reborn in his lair, his machines graft him with a new clockwork modification. He chooses one of his abilities with the {@trait clockwork} trait. He gains access to this ability but can't use any of his other clockwork abilities. He can't choose the same ability twice in a row. He begins with Ink Blood active."
-					],
-					"name": "Clockwork Reconstruction"
-				},
-				{
-					"traits": [
-						"necromancy",
-						"occult"
-					],
-					"entries": [
-						"If a creature with less than 5 Secret Knowledge points reduces Reginald to 0 HP (or dealt the last damage to him before he dies from using {@action Overdrive|G&G} Engine), Reginald's body dissipates into a puddle of ink and releases a black wave of psychic energy. Each creature within 30 feet is bathed in a torrent of forbidden secrets and gains 1 Secret Knowledge point. Reginald's body reforms {@dice 1d6} rounds later in his sanctum at full health at a location of his choosing (typically the Pool of Secrets, area."
-					],
-					"name": "Secret of Rebirth"
-				},
-				{
-					"entries": [
-						"This ability activates automatically with no action necessary on Vancaskerkin's behalf."
-					],
-					"name": "L11)."
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"traits": [
-						"clockwork",
-						"poison"
-					],
-					"trigger": "An adjacent creature Strikes",
-					"entries": [
-						"Reginald's body is filled with toxic ink; Reginald with a melee weapon or unarmed attack and deals damage; The creature is exposed to Reginald's poison ink."
-					],
-					"name": "Ink Blood"
 				}
 			],
 			"speed": {
@@ -4391,117 +4089,160 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"{@skill Lore||Skills Absalom Lore} +31, {@skill Acrobatics} +32, {@skill Deception} +34, {@skill Diplomacy} +34, {@skill Lore||Engineering Lore} +31,"
+						],
+						"name": "Daemonic, Infernal"
 					},
-					"traits": [
-						"clockwork",
-						"evocation",
-						"magical",
-						"poison"
-					],
-					"entries": [
-						"Reginald's lungs are equipped with ink canisters, allowing him to spew a 60-foot line of ink that deals {@damage 9d6} poison damage (DC 39 basic Reflex save; on a failure, the creature is also subjected to Reginald's poison ink)."
-					],
-					"name": "Breath Weapon"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "free"
+					{
+						"entries": [
+							"+31, {@skill Religion} +28,"
+						],
+						"name": "Occultism"
 					},
-					"traits": [
-						"clockwork"
-					],
-					"entries": [
-						"Reginald is equipped with clockwork organs to power his body; Requirements Reginald has 175 Hit Points or fewer; Reginald gains 200 temporary."
-					],
-					"name": "Overdrive Engine"
-				},
-				{
-					"entries": [
-						"Points, a +15-foot status bonus to Speed, and a +2 status bonus to melee attack rolls. His body begins to overheat, spewing steam that deals {@damage 9d6} fire damage at the beginning of his turn to all creatures within 30 feet (DC 40 basic Reflex save)",
-						"After 2 rounds, Reginald explodes, dealing {@damage 19d6} fire damage to all creatures within 60 feet (DC 40 basic Reflex save)",
-						"Reginald dies. For the purposes of his."
-					],
-					"name": "Hit"
-				},
-				{
-					"entries": [
-						"Rebirth ability, the last creature to damage Reginald counts as killing him."
-					],
-					"name": "Secret of"
-				},
-				{
-					"entries": [
-						{
-							"type": "affliction",
-							"name": "",
-							"traits": [
-								"poison"
-							],
-							"note": " Reginald is immune to the\ntoxic ink that flows through his veins",
-							"DC": 38,
-							"savingThrow": "Fortitude",
-							"maxDuration": "10 rounds",
-							"stages": [
-								{
-									"stage": 1,
-									"entry": "{@damage 3d6} poison and {@condition sickened|CRB|sickened 1}",
-									"duration": "1 round"
-								},
-								{
-									"stage": 2,
-									"entry": "{@damage 4d6} poison {@condition sickened|CRB|sickened 2} .",
-									"duration": "1 round"
-								}
-							]
-						}
-					],
-					"name": "Poison Ink"
-				},
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"traits": [
-						"clockwork"
-					],
-					"entries": [
-						"Reginald is equipped with a cannon and hundreds of steel quills. He makes two steel quill attacks against every creature in a 60-foot cone, ignoring the multiple attack penalty until after all attacks are made. He can't use Quill Cannon again for {@dice 1d4} rounds.",
-						"Reflective Plating {@as 1} (clockwork, occult) Reginald engages his defensive plating, which casts spell turning on him (counteract modifier +32)."
-					],
-					"name": "Quill Cannon"
-				},
-				{
-					"entries": [
-						"With his body composed of ink and gears, Reginald can move through tight spaces as if he were a Tiny creature, treating them as difficult terrain."
-					],
-					"name": "Slither"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning",
-					"fire",
-					"piercing",
-					"poison"
+					{
+						"entries": [
+							"+29 Str +6, Dex +3, Con +0, Int +5, Wis +2, Cha +8."
+						],
+						"name": "Thievery"
+					}
 				],
-				"condition": [
-					"{@condition sickened}"
+				"mid": [
+					{
+						"entries": [
+							"Each time Reginald is reborn in his lair, his machines graft him with a new clockwork modification. He chooses one of his abilities with the {@trait clockwork} trait. He gains access to this ability but can't use any of his other clockwork abilities. He can't choose the same ability twice in a row. He begins with Ink Blood active."
+						],
+						"name": "Clockwork Reconstruction"
+					},
+					{
+						"traits": [
+							"necromancy",
+							"occult"
+						],
+						"entries": [
+							"If a creature with less than 5 Secret Knowledge points reduces Reginald to 0 HP (or dealt the last damage to him before he dies from using {@action Overdrive|G&G} Engine), Reginald's body dissipates into a puddle of ink and releases a black wave of psychic energy. Each creature within 30 feet is bathed in a torrent of forbidden secrets and gains 1 Secret Knowledge point. Reginald's body reforms {@dice 1d6} rounds later in his sanctum at full health at a location of his choosing (typically the Pool of Secrets, area."
+						],
+						"name": "Secret of Rebirth"
+					},
+					{
+						"entries": [
+							"This ability activates automatically with no action necessary on Vancaskerkin's behalf."
+						],
+						"name": "L11)."
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"traits": [
+							"clockwork",
+							"poison"
+						],
+						"trigger": "An adjacent creature Strikes",
+						"entries": [
+							"Reginald's body is filled with toxic ink; Reginald with a melee weapon or unarmed attack and deals damage; The creature is exposed to Reginald's poison ink."
+						],
+						"name": "Ink Blood"
+					}
+				],
+				"bot": [
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"clockwork",
+							"evocation",
+							"magical",
+							"poison"
+						],
+						"entries": [
+							"Reginald's lungs are equipped with ink canisters, allowing him to spew a 60-foot line of ink that deals {@damage 9d6} poison damage (DC 39 basic Reflex save; on a failure, the creature is also subjected to Reginald's poison ink)."
+						],
+						"name": "Breath Weapon"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "free"
+						},
+						"traits": [
+							"clockwork"
+						],
+						"entries": [
+							"Reginald is equipped with clockwork organs to power his body; Requirements Reginald has 175 Hit Points or fewer; Reginald gains 200 temporary."
+						],
+						"name": "Overdrive Engine"
+					},
+					{
+						"entries": [
+							"Points, a +15-foot status bonus to Speed, and a +2 status bonus to melee attack rolls. His body begins to overheat, spewing steam that deals {@damage 9d6} fire damage at the beginning of his turn to all creatures within 30 feet (DC 40 basic Reflex save)",
+							"After 2 rounds, Reginald explodes, dealing {@damage 19d6} fire damage to all creatures within 60 feet (DC 40 basic Reflex save)",
+							"Reginald dies. For the purposes of his."
+						],
+						"name": "Hit"
+					},
+					{
+						"entries": [
+							"Rebirth ability, the last creature to damage Reginald counts as killing him."
+						],
+						"name": "Secret of"
+					},
+					{
+						"entries": [
+							{
+								"type": "affliction",
+								"name": "",
+								"traits": [
+									"poison"
+								],
+								"note": " Reginald is immune to the\ntoxic ink that flows through his veins",
+								"DC": 38,
+								"savingThrow": "Fortitude",
+								"maxDuration": "10 rounds",
+								"stages": [
+									{
+										"stage": 1,
+										"entry": "{@damage 3d6} poison and {@condition sickened|CRB|sickened 1}",
+										"duration": "1 round"
+									},
+									{
+										"stage": 2,
+										"entry": "{@damage 4d6} poison {@condition sickened|CRB|sickened 2} .",
+										"duration": "1 round"
+									}
+								]
+							}
+						],
+						"name": "Poison Ink"
+					},
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"clockwork"
+						],
+						"entries": [
+							"Reginald is equipped with a cannon and hundreds of steel quills. He makes two steel quill attacks against every creature in a 60-foot cone, ignoring the multiple attack penalty until after all attacks are made. He can't use Quill Cannon again for {@dice 1d4} rounds.",
+							"Reflective Plating {@as 1} (clockwork, occult) Reginald engages his defensive plating, which casts spell turning on him (counteract modifier +32)."
+						],
+						"name": "Quill Cannon"
+					},
+					{
+						"entries": [
+							"With his body composed of ink and gears, Reginald can move through tight spaces as if he were a Tiny creature, treating them as difficult terrain."
+						],
+						"name": "Slither"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"RA",
-				"TA",
-				"AD",
-				"CC"
-			]
+			}
 		},
 		{
 			"name": "Starwatch Commando",
@@ -4509,17 +4250,18 @@
 			"source": "AoE5",
 			"page": 26,
 			"level": 11,
-			"rarity": "Uncommon",
-			"alignment": "LN",
-			"size": "Medium",
 			"traits": [
-				"Human"
+				"uncommon",
+				"ln",
+				"medium",
+				"human",
+				"humanoid"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 24
+				"std": 24
 			},
 			"languages": {
 				"languages": [
@@ -4529,49 +4271,41 @@
 			},
 			"skills": {
 				"Athletics": {
-					"default": 21
+					"std": 21
 				},
 				"Diplomacy": {
-					"default": 18
+					"std": 18
 				},
 				"Intimidation": {
-					"default": 20
+					"std": 20
 				},
 				"Society": {
-					"default": 18
+					"std": 18
 				},
 				"Stealth": {
-					"default": 20
+					"std": 20
 				}
 			},
 			"abilityMods": {
-				"Str": 4,
-				"Dex": 3,
-				"Con": 5,
-				"Int": 1,
-				"Wis": 2,
-				"Cha": 1
+				"str": 4,
+				"dex": 3,
+				"con": 5,
+				"int": 1,
+				"wis": 2,
+				"cha": 1
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+20, {@skill Society} +18, {@skill Stealth} +20 Str +4, Dex +3, Con +5, Int +1, Wis +2, Cha +1 Items +1 chain shirt, +1 striking crossbow (with 20 bolts), infused greater thunderstone (3), +1 striking longsword, tinted goggles."
-					],
-					"name": "Legal Lore"
-				}
-			],
 			"ac": {
-				"default": 31
+				"std": 31
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 22
+				"fort": {
+					"std": 22
 				},
-				"Ref": {
-					"default": 20
+				"ref": {
+					"std": 20
 				},
-				"Will": {
-					"default": 19
+				"will": {
+					"std": 19
 				}
 			},
 			"hp": [
@@ -4580,7 +4314,6 @@
 					"abilities": null
 				}
 			],
-			"abilitiesMid": [],
 			"speed": {
 				"walk": 25
 			},
@@ -4618,46 +4351,40 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"entries": [
-						"A commando's thunderstone is infused with special reagents to produce a blinding flash of light. In addition to the thunderstone's normal effects, creatures that fail the saving throw against the thunderstone are also {@condition dazzled} for 1 round. Creatures that critically fail are {@condition blinded} for 1 round. Creatures who protect their eyes, such as by wearing tinted goggles, are immune to the infused thunderstone's blinding effect."
-					],
-					"name": "Binding Blast"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"entries": [
-						"The commando designates a single creature as their culprit. The commando gains a +2 circumstance bonus to {@skill Perception} checks to {@action Seek} their culprit and a +2 circumstance bonus to {@skill Survival} checks."
-					],
-					"name": "Target Culprit"
-				},
-				{
-					"entries": [
-						"{@action Track} their culprit. The commando's attacks deal an additional {@damage 2d8} precision damage to the culprit. This designation lasts for 24 hours or until the commando targets another creature with this ability."
-					],
-					"name": "to"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"piercing",
-					"precision",
-					"sonic"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"+20, {@skill Society} +18, {@skill Stealth} +20 Str +4, Dex +3, Con +5, Int +1, Wis +2, Cha +1 Items +1 chain shirt, +1 striking crossbow (with 20 bolts), infused greater thunderstone (3), +1 striking longsword, tinted goggles."
+						],
+						"name": "Legal Lore"
+					}
 				],
-				"condition": [
-					"{@condition dazzled}",
-					"{@condition deafened}"
+				"bot": [
+					{
+						"entries": [
+							"A commando's thunderstone is infused with special reagents to produce a blinding flash of light. In addition to the thunderstone's normal effects, creatures that fail the saving throw against the thunderstone are also {@condition dazzled} for 1 round. Creatures that critically fail are {@condition blinded} for 1 round. Creatures who protect their eyes, such as by wearing tinted goggles, are immune to the infused thunderstone's blinding effect."
+						],
+						"name": "Binding Blast"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"The commando designates a single creature as their culprit. The commando gains a +2 circumstance bonus to {@skill Perception} checks to {@action Seek} their culprit and a +2 circumstance bonus to {@skill Survival} checks."
+						],
+						"name": "Target Culprit"
+					},
+					{
+						"entries": [
+							"{@action Track} their culprit. The commando's attacks deal an additional {@damage 2d8} precision damage to the culprit. This designation lasts for 24 hours or until the commando targets another creature with this ability."
+						],
+						"name": "to"
+					}
 				]
-			},
-			"misc": [
-				"RA",
-				"CC",
-				"UW"
-			]
+			}
 		},
 		{
 			"name": "Tiderunner Aquamancer",
@@ -4665,18 +4392,19 @@
 			"source": "AoE5",
 			"page": 41,
 			"level": 13,
-			"rarity": "Uncommon",
-			"alignment": "N",
-			"size": "Medium",
 			"traits": [
-				"Azarketi",
-				"Amphibious"
+				"uncommon",
+				"n",
+				"medium",
+				"amphibious",
+				"azarketi",
+				"humanoid"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 27
+				"std": 27
 			},
 			"languages": {
 				"languages": [
@@ -4688,52 +4416,44 @@
 			},
 			"skills": {
 				"Arcana": {
-					"default": 26
+					"std": 26
 				},
 				"Diplomacy": {
-					"default": 19
+					"std": 19
 				},
 				"Medicine": {
-					"default": 23
+					"std": 23
 				},
 				"Aquatic Lore": {
-					"default": 26
+					"std": 26
 				},
 				"Warfare Lore": {
-					"default": 26
+					"std": 26
 				}
 			},
 			"abilityMods": {
-				"Str": 0,
-				"Dex": 5,
-				"Con": 3,
-				"Int": 5,
-				"Wis": 4,
-				"Cha": 0
+				"str": 0,
+				"dex": 5,
+				"con": 3,
+				"int": 5,
+				"wis": 4,
+				"cha": 0
 			},
 			"items": [
 				"+2 striking spear"
 			],
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+23, {@skill Lore||Warfare Lore} +26 Str +0, Dex +5, Con +3, Int +5, Wis +4, Cha +0 Items +2 striking spear."
-					],
-					"name": "Medicine"
-				}
-			],
 			"ac": {
-				"default": 34
+				"std": 34
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 22
+				"fort": {
+					"std": 22
 				},
-				"Ref": {
-					"default": 26
+				"ref": {
+					"std": 26
 				},
-				"Will": {
-					"default": 25
+				"will": {
+					"std": 25
 				}
 			},
 			"hp": [
@@ -4742,18 +4462,9 @@
 					"abilities": null
 				}
 			],
-			"abilitiesMid": [
-				{
-					"entries": [
-						"The aquamancer is surrounded by a bubble of water that buffers attacks. Each round, the shield absorbs the first 25 damage that would be dealt to the aquamancer. The shield can absorb only bludgeoning, piercing, slashing, acid, cold, and fire damage types.",
-						"The aquamancer can dismiss or raise their shield by spending a single action."
-					],
-					"name": "Water Shield"
-				}
-			],
 			"speed": {
 				"walk": 25,
-				"swim ": 30
+				"swim": 30
 			},
 			"attacks": [
 				{
@@ -4903,19 +4614,25 @@
 					}
 				}
 			],
-			"abilitiesBot": [],
-			"inflicts": {
-				"damage": [
-					"piercing"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"+23, {@skill Lore||Warfare Lore} +26 Str +0, Dex +5, Con +3, Int +5, Wis +4, Cha +0 Items +2 striking spear."
+						],
+						"name": "Medicine"
+					}
 				],
-				"condition": []
-			},
-			"misc": [
-				"MA",
-				"RA",
-				"TA",
-				"UW"
-			]
+				"mid": [
+					{
+						"entries": [
+							"The aquamancer is surrounded by a bubble of water that buffers attacks. Each round, the shield absorbs the first 25 damage that would be dealt to the aquamancer. The shield can absorb only bludgeoning, piercing, slashing, acid, cold, and fire damage types.",
+							"The aquamancer can dismiss or raise their shield by spending a single action."
+						],
+						"name": "Water Shield"
+					}
+				]
+			}
 		},
 		{
 			"name": "Twisted Jack",
@@ -4923,27 +4640,25 @@
 			"source": "AoE5",
 			"page": 22,
 			"level": 17,
-			"rarity": "Unique",
-			"alignment": "CE",
-			"size": "Medium",
 			"traits": [
-				"Tiefling",
-				"Human"
+				"unique",
+				"ce",
+				"medium",
+				"human",
+				"humanoid",
+				"tiefling"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 32
+				"std": 32
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Abyssal",
@@ -4953,49 +4668,41 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 34
+					"std": 34
 				},
 				"Deception": {
-					"default": 30
+					"std": 30
 				},
 				"Intimidation": {
-					"default": 30
+					"std": 30
 				},
 				"Stealth": {
-					"default": 31
+					"std": 31
 				},
 				"Thievery": {
-					"default": 31
+					"std": 31
 				}
 			},
 			"abilityMods": {
-				"Str": 3,
-				"Dex": 6,
-				"Con": 5,
-				"Int": 1,
-				"Wis": 4,
-				"Cha": 5
+				"str": 3,
+				"dex": 6,
+				"con": 5,
+				"int": 1,
+				"wis": 4,
+				"cha": 5
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+31, {@skill Thievery} +31 Str +3, Dex +6, Con +5, Int +1, Wis +4, Cha +5 Items daggers (16), +2 resilient studded leather, +2 greater striking war razor (Pathfinder Lost Omens Gods & Magic 120)"
-					],
-					"name": "Stealth"
-				}
-			],
 			"ac": {
-				"default": 41
+				"std": 41
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 30
+				"fort": {
+					"std": 30
 				},
-				"Ref": {
-					"default": 33
+				"ref": {
+					"std": 33
 				},
-				"Will": {
-					"default": 26
+				"will": {
+					"std": 26
 				}
 			},
 			"hp": [
@@ -5004,7 +4711,6 @@
 					"abilities": null
 				}
 			],
-			"abilitiesMid": [],
 			"speed": {
 				"walk": 25
 			},
@@ -5034,7 +4740,7 @@
 						"agile",
 						"finesse",
 						"thrown 20 feet",
-						"versatile S"
+						"versatile s"
 					],
 					"effects": [],
 					"damage": "{@damage 1d4+11} piercing",
@@ -5043,64 +4749,56 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"entries": [
-						"Twisted Jack {@action Stride||Strides} three times. Once per {@action Stride}, he can attempt a war razor {@action Strike} against a creature in his reach at any point during the {@action Stride}; he must make each {@action Strike} against a different creature, but he doesn't apply his multiple attack penalty until after making all his Strikes. If any of the Strikes are a critical failure, Bloody Mayhem immediately ends."
-					],
-					"name": "Bloody Mayhem"
-				},
-				{
-					"entries": [
-						"Jack deals slashing damage, the target takes an additional {@damage 2d10} {@condition persistent damage ||persistent bleed damage}."
-					],
-					"name": "Close Cutter Whenever Twisted"
-				},
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"entries": [
-						"Twisted Jack makes three ranged dagger Strikes, each against a separate target; he ignores the multiple attack penalty until after making all three Strikes. On a critical hit, the target takes {@damage 2d10} {@condition persistent damage ||persistent bleed damage} and is {@condition blinded} for 1 round."
-					],
-					"name": "Fan of Daggers"
-				},
-				{
-					"entries": [
-						"Jack's ranged dagger Strikes have a range increment of 20 feet instead of 10 feet."
-					],
-					"name": "Knife Thrower Twisted"
-				},
-				{
-					"entries": [
-						"Jack deals an additional {@damage 3d6} precision damage to {@condition flat-footed} targets."
-					],
-					"name": "Sneak Attack Twisted"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"piercing",
-					"precision",
-					"slashing"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"+31, {@skill Thievery} +31 Str +3, Dex +6, Con +5, Int +1, Wis +4, Cha +5 Items daggers (16), +2 resilient studded leather, +2 greater striking war razor (Pathfinder Lost Omens Gods & Magic 120)"
+						],
+						"name": "Stealth"
+					}
 				],
-				"condition": [
-					"{@condition blinded}",
-					"{@condition flat-footed}"
+				"bot": [
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"Twisted Jack {@action Stride||Strides} three times. Once per {@action Stride}, he can attempt a war razor {@action Strike} against a creature in his reach at any point during the {@action Stride}; he must make each {@action Strike} against a different creature, but he doesn't apply his multiple attack penalty until after making all his Strikes. If any of the Strikes are a critical failure, Bloody Mayhem immediately ends."
+						],
+						"name": "Bloody Mayhem"
+					},
+					{
+						"entries": [
+							"Jack deals slashing damage, the target takes an additional {@damage 2d10} {@condition persistent damage ||persistent bleed damage}."
+						],
+						"name": "Close Cutter Whenever Twisted"
+					},
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"Twisted Jack makes three ranged dagger Strikes, each against a separate target; he ignores the multiple attack penalty until after making all three Strikes. On a critical hit, the target takes {@damage 2d10} {@condition persistent damage ||persistent bleed damage} and is {@condition blinded} for 1 round."
+						],
+						"name": "Fan of Daggers"
+					},
+					{
+						"entries": [
+							"Jack's ranged dagger Strikes have a range increment of 20 feet instead of 10 feet."
+						],
+						"name": "Knife Thrower Twisted"
+					},
+					{
+						"entries": [
+							"Jack deals an additional {@damage 3d6} precision damage to {@condition flat-footed} targets."
+						],
+						"name": "Sneak Attack Twisted"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"RA",
-				"TA",
-				"CC",
-				"UW"
-			]
+			}
 		},
 		{
 			"name": "Water",
@@ -5108,18 +4806,19 @@
 			"source": "AoE5",
 			"page": 82,
 			"level": 16,
-			"rarity": "Uncommon",
-			"alignment": "N",
-			"size": "Large",
 			"traits": [
-				"Aquatic",
-				"Water"
+				"uncommon",
+				"n",
+				"large",
+				"aquatic",
+				"elemental",
+				"water"
 			],
 			"creatureType": [
 				"Elemental"
 			],
 			"perception": {
-				"default": 28
+				"std": 28
 			},
 			"languages": {
 				"languages": [
@@ -5131,43 +4830,32 @@
 			},
 			"skills": {
 				"Athletics": {
-					"default": 32
+					"std": 32
 				},
 				"Stealth": {
-					"default": 32
+					"std": 32
 				}
 			},
 			"abilityMods": {
-				"Str": 8,
-				"Dex": 8,
-				"Con": 8,
-				"Int": 0,
-				"Wis": 0,
-				"Cha": 0
+				"str": 8,
+				"dex": 8,
+				"con": 8,
+				"int": 0,
+				"wis": 0,
+				"cha": 0
 			},
-			"abilitiesTop": [
-				{
-					"traits": [
-						"mental"
-					],
-					"entries": [
-						"By performing an hour-long ritual, an elemental vessel can form a spell circle with an arcane or primal spellcaster. After the spell circle is formed, other spellcasters can join the spell circle by performing the same hour-long ritual while assisted by at least one spellcaster already in the spell circle. Each member of the spell circle must contribute at least one spell to the elemental vessel. The spellcaster permanently loses access to a spell slot equal to the spell's level and the elemental vessel adds the contributed spell to its list of arcane innate spells (regardless of the spell's original type). An elemental vessel can be imbued with no more than three spells per spell level. If the elemental vessel is destroyed, all members of the spell circle regain the spell slots they contributed to the creature. The arcane innate spells shown below represent a typical spell list for an elemental vessel, but each elemental vessel is likely to have different spells depending on what its spell circle has contributed."
-					],
-					"name": "Spell Circle"
-				}
-			],
 			"ac": {
-				"default": 40
+				"std": 40
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 30
+				"fort": {
+					"std": 30
 				},
-				"Ref": {
-					"default": 28
+				"ref": {
+					"std": 28
 				},
-				"Will": {
-					"default": 22
+				"will": {
+					"std": 22
 				}
 			},
 			"hp": [
@@ -5176,49 +4864,21 @@
 					"abilities": null
 				}
 			],
-			"immunities": {
-				"damage": [
-					"bleed",
-					"poison"
-				],
-				"condition": [
-					"paralyzed",
-					"sleep"
-				]
-			},
+			"immunities": [
+				"bleed",
+				"poison",
+				"paralyzed",
+				"sleep"
+			],
 			"resistances": [
 				{
 					"amount": 15,
 					"name": "fire"
 				}
 			],
-			"abilitiesMid": [
-				{
-					"entries": [
-						"Whenever a creature successfully counteracts one of its spells, the vessel permanently loses access to that spell and takes damage equal to 4 × the spell's level. The spell circle member who contributed that spell regains access to their contributed spell slot."
-					],
-					"name": "Dispel Vulnerability"
-				},
-				{
-					"traits": [
-						"mental"
-					],
-					"entries": [
-						"Any member of the elemental vessel's spell circle can spend 3 actions to mentally inhabit the vessel for 1 round. While they inhabit the vessel, the inhabiter controls the vessel's actions, and the vessel uses the inhabiter's."
-					],
-					"name": "Inhabit Vessel"
-				},
-				{
-					"entries": [
-						"Charisma modifiers for all checks.",
-						"Only one creature can inhabit an elemental vessel at a time."
-					],
-					"name": "Intelligence, Wisdom, and"
-				}
-			],
 			"speed": {
 				"walk": 35,
-				"swim ": 100
+				"swim": 100
 			},
 			"attacks": [
 				{
@@ -5332,39 +4992,66 @@
 					}
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"entries": [
-						"DC 35, no damage, {@action Escape} DC 35, Rupture 28."
-					],
-					"name": "Engulf",
-					"generic": true
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"entries": [
-						"The elemental vessel targets an engulfed creature with one of its spells. The spell must have a range of touch."
-					],
-					"name": "Internal Spell Strike"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning"
+			"abilities": {
+				"top": [
+					{
+						"traits": [
+							"mental"
+						],
+						"entries": [
+							"By performing an hour-long ritual, an elemental vessel can form a spell circle with an arcane or primal spellcaster. After the spell circle is formed, other spellcasters can join the spell circle by performing the same hour-long ritual while assisted by at least one spellcaster already in the spell circle. Each member of the spell circle must contribute at least one spell to the elemental vessel. The spellcaster permanently loses access to a spell slot equal to the spell's level and the elemental vessel adds the contributed spell to its list of arcane innate spells (regardless of the spell's original type). An elemental vessel can be imbued with no more than three spells per spell level. If the elemental vessel is destroyed, all members of the spell circle regain the spell slots they contributed to the creature. The arcane innate spells shown below represent a typical spell list for an elemental vessel, but each elemental vessel is likely to have different spells depending on what its spell circle has contributed."
+						],
+						"name": "Spell Circle"
+					}
 				],
-				"condition": []
-			},
-			"misc": [
-				"MA",
-				"RC"
-			]
+				"mid": [
+					{
+						"entries": [
+							"Whenever a creature successfully counteracts one of its spells, the vessel permanently loses access to that spell and takes damage equal to 4 × the spell's level. The spell circle member who contributed that spell regains access to their contributed spell slot."
+						],
+						"name": "Dispel Vulnerability"
+					},
+					{
+						"traits": [
+							"mental"
+						],
+						"entries": [
+							"Any member of the elemental vessel's spell circle can spend 3 actions to mentally inhabit the vessel for 1 round. While they inhabit the vessel, the inhabiter controls the vessel's actions, and the vessel uses the inhabiter's."
+						],
+						"name": "Inhabit Vessel"
+					},
+					{
+						"entries": [
+							"Charisma modifiers for all checks.",
+							"Only one creature can inhabit an elemental vessel at a time."
+						],
+						"name": "Intelligence, Wisdom, and"
+					}
+				],
+				"bot": [
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"DC 35, no damage, {@action Escape} DC 35, Rupture 28."
+						],
+						"name": "Engulf",
+						"generic": true
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"The elemental vessel targets an engulfed creature with one of its spells. The spell must have a range of touch."
+						],
+						"name": "Internal Spell Strike"
+					}
+				]
+			}
 		},
 		{
 			"name": "Zeal-damned Ghoul",
@@ -5372,26 +5059,24 @@
 			"source": "AoE5",
 			"page": 9,
 			"level": 10,
-			"rarity": "Uncommon",
-			"alignment": "CE",
-			"size": "Medium",
 			"traits": [
-				"Ghoul"
+				"uncommon",
+				"ce",
+				"medium",
+				"ghoul",
+				"undead"
 			],
 			"creatureType": [
 				"Undead"
 			],
 			"perception": {
-				"default": 21
+				"std": 21
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Common",
@@ -5401,46 +5086,38 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 22
+					"std": 22
 				},
 				"Athletics": {
-					"default": 20
+					"std": 20
 				},
 				"Deception": {
-					"default": 18
+					"std": 18
 				},
 				"Stealth": {
-					"default": 22
+					"std": 22
 				}
 			},
 			"abilityMods": {
-				"Str": 4,
-				"Dex": 6,
-				"Con": 3,
-				"Int": 0,
-				"Wis": 3,
-				"Cha": 2
+				"str": 4,
+				"dex": 6,
+				"con": 3,
+				"int": 0,
+				"wis": 3,
+				"cha": 2
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+22 Str +4, Dex +6, Con +3, Int +0, Wis +3, Cha +2."
-					],
-					"name": "Stealth"
-				}
-			],
 			"ac": {
-				"default": 29
+				"std": 29
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 19
+				"fort": {
+					"std": 19
 				},
-				"Ref": {
-					"default": 22
+				"ref": {
+					"std": 22
 				},
-				"Will": {
-					"default": 19
+				"will": {
+					"std": 19
 				}
 			},
 			"hp": [
@@ -5451,16 +5128,12 @@
 					]
 				}
 			],
-			"immunities": {
-				"damage": [],
-				"condition": [
-					"death effects"
-				]
-			},
-			"abilitiesMid": [],
+			"immunities": [
+				"death effects"
+			],
 			"speed": {
 				"walk": 30,
-				"burrow ": 5
+				"burrow": 5
 			},
 			"attacks": [
 				{
@@ -5500,68 +5173,68 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"traits": [
-						"manipulate"
-					],
-					"entries": [
-						"As ghoul, but the zealdamned ghoul can consume only the flesh of corpses of evil or chaotic creatures and regains {@dice 6d6} hit points."
-					],
-					"name": "Consume Flesh",
-					"entries_as_xyz": "Ability not found: 'Consume Flesh As ghoul, but the zealdamned ghoul can consume only the flesh of corpses of evil or chaotic creatures and regains {@dice 6d6} hit points.' in Zeal-damned Ghoul, p.9"
-				},
-				{
-					"traits": [
-						"disease"
-					],
-					"entries": [
-						"As ghoul, but DC 27 and the victim rises as a zeal-damned ghoul."
-					],
-					"name": "Ghoul Fever",
-					"entries_as_xyz": "Ability not found: 'Ghoul Fever As ghoul, but DC 27 and the victim rises as a zeal-damned ghoul.' in Zeal-damned Ghoul, p.9"
-				},
-				{
-					"traits": [
-						"incapacitation",
-						"occult",
-						"necromancy"
-					],
-					"entries": [
-						"As ghoul, but DC 27."
-					],
-					"name": "Paralysis",
-					"entries_as_xyz": "Ability not found: 'Paralysis As ghoul, but DC 27.' in Zeal-damned Ghoul, p.9"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"traits": [
-						"move"
-					],
-					"entries": [
-						"As ghoul."
-					],
-					"name": "Swift Leap",
-					"entries_as_xyz": "Ability not found: 'Swift {@action Leap} As ghoul.' in Zeal-damned Ghoul, p.9"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"piercing",
-					"slashing"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"+22 Str +4, Dex +6, Con +3, Int +0, Wis +3, Cha +2."
+						],
+						"name": "Stealth"
+					}
 				],
-				"condition": []
-			},
-			"misc": [
-				"MA"
-			]
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"manipulate"
+						],
+						"entries": [
+							"As ghoul, but the zealdamned ghoul can consume only the flesh of corpses of evil or chaotic creatures and regains {@dice 6d6} hit points."
+						],
+						"name": "Consume Flesh",
+						"entries_as_xyz": "Ability not found: 'Consume Flesh As ghoul, but the zealdamned ghoul can consume only the flesh of corpses of evil or chaotic creatures and regains {@dice 6d6} hit points.' in Zeal-damned Ghoul, p.9"
+					},
+					{
+						"traits": [
+							"disease"
+						],
+						"entries": [
+							"As ghoul, but DC 27 and the victim rises as a zeal-damned ghoul."
+						],
+						"name": "Ghoul Fever",
+						"entries_as_xyz": "Ability not found: 'Ghoul Fever As ghoul, but DC 27 and the victim rises as a zeal-damned ghoul.' in Zeal-damned Ghoul, p.9"
+					},
+					{
+						"traits": [
+							"incapacitation",
+							"occult",
+							"necromancy"
+						],
+						"entries": [
+							"As ghoul, but DC 27."
+						],
+						"name": "Paralysis",
+						"entries_as_xyz": "Ability not found: 'Paralysis As ghoul, but DC 27.' in Zeal-damned Ghoul, p.9"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"move"
+						],
+						"entries": [
+							"As ghoul."
+						],
+						"name": "Swift Leap",
+						"entries_as_xyz": "Ability not found: 'Swift {@action Leap} As ghoul.' in Zeal-damned Ghoul, p.9"
+					}
+				]
+			}
 		},
 		{
 			"name": "Zealborn",
@@ -5569,23 +5242,23 @@
 			"source": "AoE5",
 			"page": 87,
 			"level": 12,
-			"rarity": "Uncommon",
-			"alignment": "CE",
-			"size": "Medium",
+			"traits": [
+				"uncommon",
+				"ce",
+				"medium",
+				"undead"
+			],
 			"creatureType": [
 				"Undead"
 			],
 			"perception": {
-				"default": 23
+				"std": 23
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Common",
@@ -5595,58 +5268,46 @@
 			},
 			"skills": {
 				"Athletics": {
-					"default": 25
+					"std": 25
 				},
 				"Deception": {
-					"default": 25
+					"std": 25
 				},
 				"Diplomacy": {
-					"default": 27
+					"std": 27
 				},
 				"Society": {
-					"default": 19
+					"std": 19
 				},
 				"Stealth": {
-					"default": 22
+					"std": 22
 				}
 			},
 			"abilityMods": {
-				"Str": 5,
-				"Dex": 4,
-				"Con": 0,
-				"Int": 1,
-				"Wis": 5,
-				"Cha": 7
+				"str": 5,
+				"dex": 4,
+				"con": 0,
+				"int": 1,
+				"wis": 5,
+				"cha": 7
 			},
 			"items": [
 				"breastplate",
 				"+1 striking morningstar",
 				"sling with 20 bullets"
 			],
-			"abilitiesTop": [
-				{
-					"traits": [
-						"mental",
-						"occult"
-					],
-					"entries": [
-						"Each time a creature willingly performs a service, quest, or task for the zealborn, the creature takes a cumulative \u20131 status penalty to saving throws against the zealborn's mental spells and abilities (maximum \u20134)."
-					],
-					"name": "Little Favors"
-				}
-			],
 			"ac": {
-				"default": 33
+				"std": 33
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 18
+				"fort": {
+					"std": 18
 				},
-				"Ref": {
-					"default": 22
+				"ref": {
+					"std": 22
 				},
-				"Will": {
-					"default": 24
+				"will": {
+					"std": 24
 				}
 			},
 			"hp": [
@@ -5657,32 +5318,9 @@
 					]
 				}
 			],
-			"immunities": {
-				"damage": [],
-				"condition": [
-					"death effects",
-					"disease"
-				]
-			},
-			"abilitiesMid": [
-				{
-					"traits": [
-						"necromancy",
-						"occult"
-					],
-					"entries": [
-						"When a zealborn is destroyed, it re-forms, fully healed, near a follower of its choice in {@dice 1d10} days.",
-						"For the purposes of rejuvenation, a follower is defined as an intelligent creature who's well acquainted with the zealborn and is a true believer in the zealborn's mission, not merely a lukewarm supporter. A zealborn can be permanently destroyed only if they have no current followers or can be convinced to end their own life."
-					],
-					"name": "Rejuvenation"
-				},
-				{
-					"entries": [
-						"A zealborn can't regain Hit Points through resting or negative healing; they feed only on the idealism of their supporters, regaining 10 Hit Points per day for each creature under the effects of a geas cast by the zealborn. Creatures under a zealborn's geas have their maximum HP reduced by 10 each day until they are burned away to a husk and perish. After 24 hours, such creatures rise as zeal-damned ghouls under the zealborn's control. Zeal-damned ghouls eat only the flesh of evil or chaotic creatures and deal an additional {@damage 1d6} chaotic and {@damage 1d6} negative damage with their attacks.",
-						"(See page 9 for an example of zeal-damned ghoul statistics.)"
-					],
-					"name": "Zealous Restoration"
-				}
+			"immunities": [
+				"death effects",
+				"disease"
 			],
 			"speed": {
 				"walk": 25
@@ -5694,7 +5332,7 @@
 					"attack": 24,
 					"traits": [
 						"magical",
-						"versatile P"
+						"versatile p"
 					],
 					"effects": [],
 					"damage": "{@damage 2d6+9} bludgeoning plus {@damage 2d6} chaotic and {@damage 2d6} negative",
@@ -5774,26 +5412,48 @@
 					}
 				}
 			],
-			"abilitiesBot": [
-				{
-					"entries": [
-						"DC 33; geas."
-					],
-					"name": "Occult Ritual"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning",
-					"chaotic"
+			"abilities": {
+				"top": [
+					{
+						"traits": [
+							"mental",
+							"occult"
+						],
+						"entries": [
+							"Each time a creature willingly performs a service, quest, or task for the zealborn, the creature takes a cumulative \u20131 status penalty to saving throws against the zealborn's mental spells and abilities (maximum \u20134)."
+						],
+						"name": "Little Favors"
+					}
 				],
-				"condition": []
-			},
-			"misc": [
-				"MA",
-				"RA",
-				"UW"
-			]
+				"mid": [
+					{
+						"traits": [
+							"necromancy",
+							"occult"
+						],
+						"entries": [
+							"When a zealborn is destroyed, it re-forms, fully healed, near a follower of its choice in {@dice 1d10} days.",
+							"For the purposes of rejuvenation, a follower is defined as an intelligent creature who's well acquainted with the zealborn and is a true believer in the zealborn's mission, not merely a lukewarm supporter. A zealborn can be permanently destroyed only if they have no current followers or can be convinced to end their own life."
+						],
+						"name": "Rejuvenation"
+					},
+					{
+						"entries": [
+							"A zealborn can't regain Hit Points through resting or negative healing; they feed only on the idealism of their supporters, regaining 10 Hit Points per day for each creature under the effects of a geas cast by the zealborn. Creatures under a zealborn's geas have their maximum HP reduced by 10 each day until they are burned away to a husk and perish. After 24 hours, such creatures rise as zeal-damned ghouls under the zealborn's control. Zeal-damned ghouls eat only the flesh of evil or chaotic creatures and deal an additional {@damage 1d6} chaotic and {@damage 1d6} negative damage with their attacks.",
+							"(See page 9 for an example of zeal-damned ghoul statistics.)"
+						],
+						"name": "Zealous Restoration"
+					}
+				],
+				"bot": [
+					{
+						"entries": [
+							"DC 33; geas."
+						],
+						"name": "Occult Ritual"
+					}
+				]
+			}
 		}
 	]
 }

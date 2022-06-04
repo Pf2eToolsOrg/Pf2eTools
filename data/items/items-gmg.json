@@ -7,11 +7,11 @@
 			"type": "Item",
 			"level": 0,
 			"traits": [
-				"Alchemical",
-				"Consumable",
-				"Drug",
-				"Ingested",
-				"Poison"
+				"alchemical",
+				"consumable",
+				"drug",
+				"ingested",
+				"poison"
 			],
 			"usage": "held in 1 hand",
 			"bulk": "L",
@@ -79,10 +79,10 @@
 			"type": "Item",
 			"level": 8,
 			"traits": [
-				"Rare",
-				"Abjuration",
-				"Cursed",
-				"Magical"
+				"rare",
+				"abjuration",
+				"cursed",
+				"magical"
 			],
 			"usage": "curses armor or shield",
 			"category": "Curse",
@@ -101,11 +101,11 @@
 			"type": "Item",
 			"level": 7,
 			"traits": [
-				"Rare",
-				"Cursed",
-				"Evocation",
-				"Fire",
-				"Magical"
+				"rare",
+				"cursed",
+				"evocation",
+				"fire",
+				"magical"
 			],
 			"usage": "curses a ring, staff, or wand",
 			"category": "Curse",
@@ -123,18 +123,18 @@
 			"type": "Item",
 			"level": 26,
 			"traits": [
-				"Unique",
-				"Artifact",
-				"Conjuration",
-				"Magical",
-				"Transmutation"
+				"unique",
+				"artifact",
+				"conjuration",
+				"magical",
+				"transmutation"
 			],
 			"usage": "held in 2 hands",
-			"bulk": "3",
+			"bulk": 3,
 			"category": "Artifact",
 			"entries": [
-				"The blade of this +4 major striking keen returning speed dwarven waraxe is carved with an intricate design depicting countless generations of great dwarven warriors and leaders.",
-				"The axe has the thrown 30 feet weapon trait, in addition to the normal weapon traits for a dwarven waraxe. Strikes with the axe deal an additional {@dice 1d6} damage to orcs. While the axe is in your possession, you gain a +4 item bonus when {@skill Crafting} armor, jewelry, metalworking, stonemasonry, snares, traps, and weapons. If you are a dwarf, you gain {@ability darkvision||greater darkvision} while holding the axe. If you are not a dwarf, you are {@condition stupefied 4} while holding the axe, and if you are an orc, you are also {@condition drained 4} and {@condition enfeebled 4} while holding it.",
+				"The blade of this {@runeItem Dwarven War Axe||+4 weapon potency|GMG|major striking||keen||returning||speed|} is carved with an intricate design depicting countless generations of great dwarven warriors and leaders.",
+				"The axe has the {@trait thrown 30 feet} weapon trait, in addition to the normal weapon traits for a dwarven waraxe. {@action Strike||Strikes} with the axe deal an additional {@dice 1d6} damage to orcs. While the axe is in your possession, you gain a +4 item bonus when {@action Craft||Crafting} armor, jewelry, metalworking, stonemasonry, snares, traps, and weapons. If you are a dwarf, you gain {@ability darkvision||greater darkvision} while holding the axe. If you are not a dwarf, you are {@condition stupefied 4} while holding the axe, and if you are an orc, you are also {@condition drained 4} and {@condition enfeebled 4} while holding it.",
 				{
 					"type": "ability",
 					"style": "compact",
@@ -147,11 +147,11 @@
 						"Interact"
 					],
 					"entries": [
-						"The axe casts a 10th-level {@spell summon elemental} spell to conjure an elite elemental avalanche (Bestiary 6, 147). The spell is automatically sustained, requiring no action on your part but still allowing you to command the elemental on each of your turns. You can {@action Dismiss} the Spell.",
-						"Destruction If an orc beheads a dwarven king with the Axe of the Dwarven Lords, the axe rusts away to nothing."
+						"The axe casts a 10th-level {@spell summon elemental} spell to conjure an elite {@creature elemental avalanche}. The spell is automatically sustained, requiring no action on your part but still allowing you to command the elemental on each of your turns. You can {@action Dismiss} the Spell."
 					]
 				}
-			]
+			],
+			"destruction": "If an orc beheads a dwarven king with the Axe of the Dwarven Lords, the axe rusts away to nothing."
 		},
 		{
 			"name": "Backbiting",
@@ -160,10 +160,10 @@
 			"type": "Item",
 			"level": 4,
 			"traits": [
-				"Rare",
-				"Cursed",
-				"Evocation",
-				"Magical"
+				"rare",
+				"cursed",
+				"evocation",
+				"magical"
 			],
 			"usage": "curses a weapon",
 			"category": "Curse",
@@ -181,11 +181,11 @@
 			"type": "Item",
 			"level": "7+",
 			"traits": [
-				"Rare",
-				"Conjuration",
-				"Cursed",
-				"Extradimensional",
-				"Magical"
+				"rare",
+				"conjuration",
+				"cursed",
+				"extradimensional",
+				"magical"
 			],
 			"usage": "held in 2 hands",
 			"bulk": 1,
@@ -201,19 +201,19 @@
 			"type": "Item",
 			"level": 4,
 			"traits": [
-				"Rare",
-				"Conjuration",
-				"Cursed",
-				"Extradimensional",
-				"Magical"
+				"rare",
+				"conjuration",
+				"cursed",
+				"extradimensional",
+				"magical"
 			],
 			"usage": "held in 2 hands",
 			"bulk": 1,
 			"category": "Held",
 			"entries": [
-				"This item appears to be and functions as a type I bag of holding, until you try to retrieve an item from the bag.",
+				"This item appears to be and functions as a {@item Bag of Holding (Type I)|crb|type I bag of holding}, until you try to retrieve an item from the bag.",
 				"Whenever you retrieve an item from the bag of weasels, roll a DC {@flatDC 11} flat check. On a success, you retrieve the item as normal. On a failure, the item you retrieve is transformed into a weasel; this doesn't affect artifacts, cursed items, or other hard-to-destroy items.",
-				"This weasel has the statistics of a giant rat (Pathfinder Bestiary 276), except that it is Tiny and exudes an aura of transmutation magic. The weasel has no loyalty to you and typically attempts to escape as quickly as possible. If the weasel is targeted with a {@spell remove curse} spell or a similar {@trait magical} effect, it transforms back into the original item that was taken from the bag of weasels. If it dies or is slain, the weasel disappears and the item is permanently destroyed.",
+				"This weasel has the statistics of a {@creature giant rat}, except that it is Tiny and exudes an aura of transmutation magic. The weasel has no loyalty to you and typically attempts to escape as quickly as possible. If the weasel is targeted with a {@spell remove curse} spell or a similar {@trait magical} effect, it transforms back into the original item that was taken from the bag of weasels. If it dies or is slain, the weasel disappears and the item is permanently destroyed.",
 				"Because the weasel is a transformed item, you don't gain any benefit you would receive from attacking a creature, defeating one, damaging one, or the like, but you do gain any benefit you would gain from destroying an item."
 			]
 		},
@@ -224,11 +224,11 @@
 			"type": "Item",
 			"level": 1,
 			"traits": [
-				"Alchemical",
-				"Consumable",
-				"Drug",
-				"Ingested",
-				"Poison"
+				"alchemical",
+				"consumable",
+				"drug",
+				"ingested",
+				"poison"
 			],
 			"price": {
 				"coin": "gp",
@@ -277,10 +277,10 @@
 			"type": "Item",
 			"level": 6,
 			"traits": [
-				"Rare",
-				"Cursed",
-				"Magical",
-				"Necromancy"
+				"rare",
+				"cursed",
+				"magical",
+				"necromancy"
 			],
 			"usage": "curses a piercing or slashing weapon",
 			"category": "Curse",
@@ -298,11 +298,11 @@
 			"type": "Item",
 			"level": 0,
 			"traits": [
-				"Alchemical",
-				"Consumable",
-				"Drug",
-				"Ingested",
-				"Poison"
+				"alchemical",
+				"consumable",
+				"drug",
+				"ingested",
+				"poison"
 			],
 			"price": {
 				"coin": "sp",
@@ -356,11 +356,11 @@
 			"type": "Item",
 			"level": 11,
 			"traits": [
-				"Rare",
-				"Cursed",
-				"Enchantment",
-				"Invested",
-				"Magical"
+				"rare",
+				"cursed",
+				"enchantment",
+				"invested",
+				"magical"
 			],
 			"usage": "worn shoes",
 			"bulk": "L",
@@ -377,11 +377,11 @@
 			"type": "Item",
 			"level": 7,
 			"traits": [
-				"Rare",
-				"Cursed",
-				"Evocation",
-				"Invested",
-				"Magical"
+				"rare",
+				"cursed",
+				"evocation",
+				"invested",
+				"magical"
 			],
 			"usage": "worn cloak",
 			"bulk": "L",
@@ -398,12 +398,12 @@
 			"type": "Item",
 			"level": 5,
 			"traits": [
-				"Uncommon",
-				"Alchemical",
-				"Consumable",
-				"Drug",
-				"Ingested",
-				"Poison"
+				"uncommon",
+				"alchemical",
+				"consumable",
+				"drug",
+				"ingested",
+				"poison"
 			],
 			"price": {
 				"coin": "gp",
@@ -451,10 +451,10 @@
 			"type": "Item",
 			"level": 22,
 			"traits": [
-				"Rare",
-				"Artifact",
-				"Magical",
-				"Transmutation"
+				"rare",
+				"artifact",
+				"magical",
+				"transmutation"
 			],
 			"usage": "held in 1 hand",
 			"category": "Artifact",
@@ -513,11 +513,11 @@
 			"type": "Item",
 			"level": 5,
 			"traits": [
-				"Rare",
-				"Acid",
-				"Cursed",
-				"Necromancy",
-				"Magical"
+				"rare",
+				"acid",
+				"cursed",
+				"necromancy",
+				"magical"
 			],
 			"usage": "curses a weapon",
 			"category": "Curse",
@@ -535,10 +535,10 @@
 			"type": "Item",
 			"level": 9,
 			"traits": [
-				"Rare",
-				"Cursed",
-				"Magical",
-				"Transmutation"
+				"rare",
+				"cursed",
+				"magical",
+				"transmutation"
 			],
 			"usage": "curses gear used for skills or a weapon",
 			"category": "Curse",
@@ -557,11 +557,11 @@
 			"type": "Item",
 			"level": 4,
 			"traits": [
-				"Alchemical",
-				"Consumable",
-				"Drug",
-				"Ingested",
-				"Poison"
+				"alchemical",
+				"consumable",
+				"drug",
+				"ingested",
+				"poison"
 			],
 			"price": {
 				"coin": "gp",
@@ -609,10 +609,10 @@
 			"type": "Item",
 			"level": 3,
 			"traits": [
-				"Rare",
-				"Conjuration",
-				"Cursed",
-				"Magical"
+				"rare",
+				"conjuration",
+				"cursed",
+				"magical"
 			],
 			"usage": "curses armor",
 			"category": "Curse",
@@ -630,10 +630,10 @@
 			"type": "Item",
 			"level": 25,
 			"traits": [
-				"Rare",
-				"Abjuration",
-				"Artifact",
-				"Occult"
+				"rare",
+				"abjuration",
+				"artifact",
+				"occult"
 			],
 			"usage": "held in one hand",
 			"bulk": 1,
@@ -698,11 +698,11 @@
 			"type": "Item",
 			"level": 5,
 			"traits": [
-				"Alchemical",
-				"Consumable",
-				"Drug",
-				"Ingested",
-				"Poison"
+				"alchemical",
+				"consumable",
+				"drug",
+				"ingested",
+				"poison"
 			],
 			"price": {
 				"coin": "gp",
@@ -756,10 +756,10 @@
 			"type": "Item",
 			"level": 11,
 			"traits": [
-				"Rare",
-				"Conjuration",
-				"Cursed",
-				"Magical"
+				"rare",
+				"conjuration",
+				"cursed",
+				"magical"
 			],
 			"usage": "curses a weapon",
 			"category": "Curse",
@@ -777,11 +777,11 @@
 			"type": "Item",
 			"level": 28,
 			"traits": [
-				"Unique",
-				"Artifact",
-				"Transmutation"
+				"unique",
+				"artifact",
+				"transmutation"
 			],
-			"bulk": "5",
+			"bulk": 5,
 			"category": "Artifact",
 			"entries": [
 				"This enormous, multifaceted prism normally rests on a pedestal, eerily refracting many-colored lights even when no light source is present. In reality, the prism refracts the four magical essences into the visible spectrum (see page 300 in the Core Rulebook for more on the four essences). A creature adjacent to the prism can adjust its facets with an {@action Interact} action to change between two polarities. Two essences flow from two input streams into the prism, where the prism combines them into a single output stream; alternatively, a single essence flows from one input stream into the prism and is split into two output streams. A creature that enters and stays within an input essence stream for 1 minute is slowly encased in solid magic, at which point it is {@condition paralyzed} until anyone reverses the prism's flow or finishes activating the prism. A creature stepping into an output essence stream is gently pushed back and out of the stream.",
@@ -842,12 +842,12 @@
 			"type": "Item",
 			"level": 0,
 			"traits": [
-				"Alchemical",
-				"Consumable",
-				"Drug",
-				"Ingested",
-				"Inhaled",
-				"Poison"
+				"alchemical",
+				"consumable",
+				"drug",
+				"ingested",
+				"inhaled",
+				"poison"
 			],
 			"price": {
 				"coin": "gp",
@@ -906,10 +906,10 @@
 			"type": "Item",
 			"level": 24,
 			"traits": [
-				"Rare",
-				"Abjuration",
-				"Artifact",
-				"Divine"
+				"rare",
+				"abjuration",
+				"artifact",
+				"divine"
 			],
 			"usage": "etched onto armor",
 			"category": [
@@ -988,12 +988,12 @@
 			"type": "Item",
 			"level": 18,
 			"traits": [
-				"Rare",
-				"N",
-				"Apex",
-				"Arcane",
-				"Divination",
-				"Intelligent"
+				"rare",
+				"n",
+				"apex",
+				"arcane",
+				"divination",
+				"intelligent"
 			],
 			"usage": "worn circlet",
 			"bulk": "L",
@@ -1069,12 +1069,12 @@
 			"type": "Item",
 			"level": 7,
 			"traits": [
-				"Rare",
-				"Abjuration",
-				"Cursed",
-				"Extradimensional",
-				"Invested",
-				"Magical"
+				"rare",
+				"abjuration",
+				"cursed",
+				"extradimensional",
+				"invested",
+				"magical"
 			],
 			"usage": "worn gloves",
 			"bulk": "L",
@@ -1091,10 +1091,10 @@
 			"type": "Item",
 			"level": 11,
 			"traits": [
-				"Rare",
-				"Cursed",
-				"Enchantment",
-				"Magical"
+				"rare",
+				"cursed",
+				"enchantment",
+				"magical"
 			],
 			"usage": "curses a weapon",
 			"category": "Curse",
@@ -1112,11 +1112,11 @@
 			"type": "Item",
 			"level": 26,
 			"traits": [
-				"Unique",
-				"Artifact",
-				"Invested",
-				"Magical",
-				"Necromancy"
+				"unique",
+				"artifact",
+				"invested",
+				"magical",
+				"necromancy"
 			],
 			"usage": "worn headwear",
 			"bulk": 2,
@@ -1167,11 +1167,11 @@
 			"type": "Item",
 			"level": 7,
 			"traits": [
-				"Rare",
-				"LG",
-				"Abjuration",
-				"Divine",
-				"Intelligent"
+				"rare",
+				"lg",
+				"abjuration",
+				"divine",
+				"intelligent"
 			],
 			"usage": "held in 1 hand",
 			"bulk": 1,
@@ -1222,14 +1222,14 @@
 			"type": "Item",
 			"level": 14,
 			"traits": [
-				"Rare",
-				"Cursed",
-				"Invested",
-				"Magical",
-				"Transmutation"
+				"rare",
+				"cursed",
+				"invested",
+				"magical",
+				"transmutation"
 			],
 			"usage": "worn armor",
-			"bulk": "3",
+			"bulk": 3,
 			"category": "Armor",
 			"entries": [
 				"This +2 adamantine scale mail appears to have a fortification rune but grants none of its effects. Whenever you are critically hit, after taking damage, you become {@condition petrified} for 1 round.",
@@ -1243,10 +1243,10 @@
 			"type": "Item",
 			"level": 25,
 			"traits": [
-				"Unique",
-				"Artifact",
-				"Enchantment",
-				"Magical"
+				"unique",
+				"artifact",
+				"enchantment",
+				"magical"
 			],
 			"usage": "bonded (see below)",
 			"bulk": "L",
@@ -1296,11 +1296,11 @@
 			"type": "Item",
 			"level": 20,
 			"traits": [
-				"Rare",
-				"Cursed",
-				"Magical",
-				"Misfortune",
-				"Necromancy"
+				"rare",
+				"cursed",
+				"magical",
+				"misfortune",
+				"necromancy"
 			],
 			"usage": "held in 1 hand",
 			"bulk": "L",
@@ -1317,11 +1317,11 @@
 			"type": "Item",
 			"level": 15,
 			"traits": [
-				"Rare",
-				"Cursed",
-				"Invested",
-				"Magical",
-				"Transmutation"
+				"rare",
+				"cursed",
+				"invested",
+				"magical",
+				"transmutation"
 			],
 			"usage": "worn necklace",
 			"bulk": "L",
@@ -1338,10 +1338,10 @@
 			"type": "Item",
 			"level": 25,
 			"traits": [
-				"Unique",
-				"Arcane",
-				"Artifact",
-				"Enchantment"
+				"unique",
+				"arcane",
+				"artifact",
+				"enchantment"
 			],
 			"usage": "held in 1 hand",
 			"bulk": 1,
@@ -1395,10 +1395,10 @@
 			"type": "Item",
 			"level": 5,
 			"traits": [
-				"Rare",
-				"Cursed",
-				"Evocation",
-				"Magical"
+				"rare",
+				"cursed",
+				"evocation",
+				"magical"
 			],
 			"usage": "curses a weapon",
 			"category": "Curse",
@@ -1416,13 +1416,13 @@
 			"type": "Item",
 			"level": 28,
 			"traits": [
-				"Rare",
-				"Artifact",
-				"Evocation",
-				"Magical",
-				"Transmutation"
+				"rare",
+				"artifact",
+				"evocation",
+				"magical",
+				"transmutation"
 			],
-			"bulk": "8",
+			"bulk": 8,
 			"category": "Artifact",
 			"entries": [
 				"This bizarre machine is a complex arrangement of flasks, tubes, and other alchemical equipment. The philosopher's extractor is designed to create the ultimate alchemical concoctions.",
@@ -1474,11 +1474,11 @@
 			"type": "Item",
 			"level": "13+",
 			"traits": [
-				"Rare",
-				"Cursed",
-				"Invested",
-				"Magical",
-				"Transmutation"
+				"rare",
+				"cursed",
+				"invested",
+				"magical",
+				"transmutation"
 			],
 			"usage": "worn cloak",
 			"bulk": "L",
@@ -1495,10 +1495,10 @@
 			"type": "Item",
 			"level": 3,
 			"traits": [
-				"Rare",
-				"Cursed",
-				"Magical",
-				"Transmutation"
+				"rare",
+				"cursed",
+				"magical",
+				"transmutation"
 			],
 			"usage": "curses gear or a weapon",
 			"category": "Curse",
@@ -1517,10 +1517,10 @@
 			"type": "Item",
 			"level": 1,
 			"traits": [
-				"Rare",
-				"Cursed",
-				"Evocation",
-				"Magical"
+				"rare",
+				"cursed",
+				"evocation",
+				"magical"
 			],
 			"usage": "curses a ring, staff, or wand",
 			"category": "Curse",
@@ -1538,12 +1538,12 @@
 			"type": "Item",
 			"level": 1,
 			"traits": [
-				"Alchemical",
-				"Consumable",
-				"Drug",
-				"Ingested",
-				"Inhaled",
-				"Poison"
+				"alchemical",
+				"consumable",
+				"drug",
+				"ingested",
+				"inhaled",
+				"poison"
 			],
 			"price": {
 				"coin": "gp",
@@ -1597,11 +1597,11 @@
 			"type": "Item",
 			"level": 10,
 			"traits": [
-				"Rare",
-				"Cursed",
-				"Enchantment",
-				"Invested",
-				"Magical"
+				"rare",
+				"cursed",
+				"enchantment",
+				"invested",
+				"magical"
 			],
 			"usage": "worn",
 			"category": "Worn",
@@ -1617,13 +1617,13 @@
 			"type": "Item",
 			"level": 8,
 			"traits": [
-				"Uncommon",
-				"Alchemical",
-				"Consumable",
-				"Drug",
-				"Ingested",
-				"Inhaled",
-				"Poison"
+				"uncommon",
+				"alchemical",
+				"consumable",
+				"drug",
+				"ingested",
+				"inhaled",
+				"poison"
 			],
 			"price": {
 				"coin": "gp",
@@ -1677,12 +1677,12 @@
 			"type": "Item",
 			"level": 23,
 			"traits": [
-				"Unique",
-				"LG",
-				"Abjuration",
-				"Artifact",
-				"Divine",
-				"Intelligent"
+				"unique",
+				"lg",
+				"abjuration",
+				"artifact",
+				"divine",
+				"intelligent"
 			],
 			"usage": "held in 1 hand",
 			"bulk": 1,
@@ -1721,26 +1721,25 @@
 				}
 			},
 			"entries": [
-				"The legendary blade Serithtial is said to have been forged by Iomedae, goddess of honor, justice, and valor. She is an intelligent +4 major striking holy bastard sword. Although the sword is made of steel, Serithtial is also treated as cold iron and silver (Core Rulebook 578), allowing her to deal more damage to certain supernatural creatures. She glows as bright as a torch, but you or Serithtial can suppress or resume this glow as a single action, which has the {@trait concentrate} trait. In addition, Strikes with Serithtial deal an additional {@dice 2d6} damage against creatures that are worshippers of Zon-Kuthon, and while wielding Serithtial, you constantly benefit from {@spell death ward} and {@spell freedom of movement} spells that function only against effects created by followers of Zon-Kuthon.",
-				"Serithtial was forged as a bastard sword, and she reverts to this shape when no one wields her, but she can also detect what sort of blade her current wielder prefers and transform into it (choosing from dagger, shortsword, longsword, scimitar, falchion, greatsword, rapier, or bastard sword) using an action, which she does when first held. The wielder can empathically tell Serithtial to transform at any time by using a single action, which has the {@trait concentrate} trait, after which Serithtial uses an action to transform.",
-				"Serithtial is willing to work with a partner of almost any alignment as long as they are dedicated to defeating the great wyrm Kazavon and the forces of Zon-Kuthon. If you ignore those threats and pursue your own agenda instead, before long Serithtial attempts to seize control of your body (DC 45 Will save to resist her control), though she typically remains in control for only long enough to find a more worthy partner. You can attempt a new Will save each day to retake control of your body.",
+				"The legendary blade Serithtial is said to have been forged by {@deity Iomedae}, goddess of honor, justice, and valor. She is an {@trait intelligent} {@runeItem bastard sword||+4 weapon potency|GMG|major striking||holy|}. Although the sword is made of steel, Serithtial is also treated as {@item cold iron weapon (generic)||cold iron} and {@item silver weapon (generic)||silver}, allowing her to deal more damage to certain supernatural creatures. She glows as bright as a torch, but you or Serithtial can suppress or resume this glow as a single action, which has the {@trait concentrate} trait. In addition, {@action Strike||Strikes} with Serithtial deal an additional {@dice 2d6} damage against creatures that are worshippers of {@deity Zon-Kuthon}, and while wielding Serithtial, you constantly benefit from {@spell death ward} and {@spell freedom of movement} spells that function only against effects created by followers of {@deity Zon-Kuthon}.",
+				"Serithtial was forged as a {@item bastard sword}, and she reverts to this shape when no one wields her, but she can also detect what sort of blade her current wielder prefers and transform into it (choosing from {@item dagger}, {@item shortsword}, {@item longsword}, {@item scimitar}, {@item falchion}, {@item greatsword}, {@item rapier}, or {@item bastard sword}) using an action, which she does when first held. The wielder can empathically tell Serithtial to transform at any time by using a single action, which has the {@trait concentrate} trait, after which Serithtial uses an action to transform.",
+				"Serithtial is willing to work with a partner of almost any alignment as long as they are dedicated to defeating the great wyrm Kazavon and the forces of {@deity Zon-Kuthon}. If you ignore those threats and pursue your own agenda instead, before long Serithtial attempts to seize control of your body (DC 45 Will save to resist her control), though she typically remains in control for only long enough to find a more worthy partner. You can attempt a new Will save each day to retake control of your body.",
 				{
 					"type": "ability",
 					"style": "compact",
-					"activity": {
-						"number": 1,
-						"unit": "varies",
-						"entry": "envision;"
-					},
 					"components": [
-						"Frequency once per hour"
+						"envision"
 					],
+					"frequency": {
+						"unit": "hour",
+						"freq": 1
+					},
 					"entries": [
-						"Serithtial spends the appropriate number of actions and casts a 9th level {@spell heal} or {@spell zone of truth} spell (DC 45 for either of the two spells)",
-						"Destruction If Kazavon or a great wyrm shadow dragon who is a worshipper of Zon-Kuthon uses its breath weapon on Serithtial while she is unattended, the sword melts into a pool of mundane iron."
+						"Serithtial spends the appropriate number of actions and casts a 9th level {@spell heal} or {@spell zone of truth} spell (DC 45 for either of the two spells)."
 					]
 				}
-			]
+			],
+			"destruction": "If Kazavon or a great wyrm shadow dragon who is a worshipper of {@deity Zon-Kuthon} uses its breath weapon on Serithtial while she is unattended, the sword melts into a pool of mundane iron."
 		},
 		{
 			"name": "Shiver",
@@ -1749,11 +1748,11 @@
 			"type": "Item",
 			"level": 3,
 			"traits": [
-				"Alchemical",
-				"Consumable",
-				"Drug",
-				"Ingested",
-				"Poison"
+				"alchemical",
+				"consumable",
+				"drug",
+				"ingested",
+				"poison"
 			],
 			"price": {
 				"coin": "gp",
@@ -1807,10 +1806,10 @@
 			"type": "Item",
 			"level": 23,
 			"traits": [
-				"Rare",
-				"Artifact",
-				"Divine",
-				"Evocation"
+				"rare",
+				"artifact",
+				"divine",
+				"evocation"
 			],
 			"ammunition": [
 				"any"
@@ -1868,11 +1867,11 @@
 			"type": "Item",
 			"level": 5,
 			"traits": [
-				"Rare",
-				"CG",
-				"Enchantment",
-				"Intelligent",
-				"Occult"
+				"rare",
+				"cg",
+				"enchantment",
+				"intelligent",
+				"occult"
 			],
 			"usage": "held in 1 hand",
 			"bulk": 1,
@@ -1978,10 +1977,10 @@
 			"type": "Item",
 			"level": 27,
 			"traits": [
-				"Rare",
-				"Artifact",
-				"Magical",
-				"Transmutation"
+				"rare",
+				"artifact",
+				"magical",
+				"transmutation"
 			],
 			"category": "Artifact",
 			"entries": [
@@ -2002,7 +2001,7 @@
 						"You attempt a DC 30 {@skill Arcana} or {@skill Occultism} check to take control of the sphere. If someone else already controls the sphere, this check uses their Will DC if higher. If you succeed, you take control of the sphere. If you fail, the sphere moves 10 feet closer to you (or 20 feet on a critical failure). You keep control as long as you remain within 80 feet of the sphere and Sustain the Activation each round.",
 						"When you Sustain the Activation, you must attempt a DC 30 {@skill Arcana} or {@skill Occultism} check. If you succeed, you direct the sphere to move up to 10 feet in a straight line (or up to 20 feet on a critical success). On a failure, you lose control of the sphere, and it moves 10 feet closer to you in a straight line (or 20 feet on a critical failure)",
 						"Destruction When a {@spell gate} spell is cast such that its rift overlaps a sphere of annihilation, roll d%. On a result of 1\u201350, the sphere is destroyed; on a 51\u201385, the spell is disrupted; and on a 86\u2013100, everything within an 180-foot emanation of the sphere is pulled to another plane through a tear in the spatial fabric.",
-						"If a rod of cancellation (Pathfinder Advanced Player's Guide) touches the sphere, both items explode, dealing {@damage 14d6} bludgeoning damage (DC 35 basic Reflex save) to everything in a 60-foot burst from the point of their destruction."
+						"If a {@item rod of cancellation|apg} touches the sphere, both items explode, dealing {@damage 14d6} bludgeoning damage (DC 35 basic Reflex save) to everything in a 60-foot burst from the point of their destruction."
 					]
 				}
 			]
@@ -2014,10 +2013,10 @@
 			"type": "Item",
 			"level": 1,
 			"traits": [
-				"Rare",
-				"Cursed",
-				"Magical",
-				"Transmutation"
+				"rare",
+				"cursed",
+				"magical",
+				"transmutation"
 			],
 			"usage": "curses gear or a weapon",
 			"category": "Curse",
@@ -2036,10 +2035,10 @@
 			"type": "Item",
 			"level": 2,
 			"traits": [
-				"Rare",
-				"Conjuration",
-				"Cursed",
-				"Magical"
+				"rare",
+				"conjuration",
+				"cursed",
+				"magical"
 			],
 			"usage": "held in 1 hand",
 			"bulk": "L",
@@ -2056,10 +2055,10 @@
 			"type": "Item",
 			"level": 20,
 			"traits": [
-				"Rare",
-				"Artifact",
-				"Evocation",
-				"Magical"
+				"rare",
+				"artifact",
+				"evocation",
+				"magical"
 			],
 			"usage": "held in 1 hand",
 			"category": "Artifact",
@@ -2077,10 +2076,10 @@
 			"type": "Item",
 			"level": 13,
 			"traits": [
-				"Rare",
-				"Cursed",
-				"Magical",
-				"Necromancy"
+				"rare",
+				"cursed",
+				"magical",
+				"necromancy"
 			],
 			"usage": "curses a ring, staff, or wand",
 			"category": "Curse",
@@ -2098,11 +2097,11 @@
 			"type": "Item",
 			"level": 4,
 			"traits": [
-				"Alchemical",
-				"Consumable",
-				"Drug",
-				"Injury",
-				"Poison"
+				"alchemical",
+				"consumable",
+				"drug",
+				"injury",
+				"poison"
 			],
 			"price": {
 				"coin": "gp",

@@ -1,0 +1,71 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema",
+	"$id": "optionalFeatures.json",
+	"title": "Optional Features",
+	"description": "The optionalFeature data type for Pf2eTools.",
+	"type": "object",
+	"version": "0.0.1",
+	"properties": {
+		"optionalFeature": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"source": {
+						"type": "string",
+						"$ref": "utils.json#/definitions/sourceList"
+					},
+					"name": {
+						"type": "string"
+					},
+					"page": {
+						"type": "integer"
+					},
+					"type": {
+						"type": "string",
+						"enum": [
+							"Revolutionary Modification",
+							"Breakthrough Modification",
+							"Initial Modification",
+							"Basic Lesson",
+							"Greater Lesson",
+							"Major Lesson"
+						]
+					},
+					"traits": {
+						"type": "array",
+						"items": {
+							"type": "string",
+							"$ref": "utils.json#/definitions/anyTrait"
+						},
+						"minItems": 1,
+						"uniqueItems": true
+					},
+					"prerequisite": {
+						"$ref": "utils.json#/definitions/prerequisite"
+					},
+					"entries": {
+						"type": "array",
+						"items": {
+							"$ref": "entry.json"
+						},
+						"minItems": 1
+					}
+				},
+				"additionalProperties": false,
+				"required": [
+					"source",
+					"name",
+					"entries",
+					"page",
+					"type"
+				]
+			},
+			"uniqueItems": true
+		}
+	},
+	"additionalProperties": false,
+	"required": [
+		"optionalFeature"
+	]
+}

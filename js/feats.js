@@ -96,7 +96,7 @@ class FeatsPage extends ListPage {
 		const feat = this._dataList[id];
 		const $pgContent = $("#pagecontent").empty();
 		const buildStatsTab = () => {
-			$pgContent.append(RenderFeats.$getRenderedFeat(feat));
+			$pgContent.append(Renderer.feat.getRenderedString(feat, {renderLeadsTo: true}));
 		};
 		const buildInfoTab = async () => {
 			const quickRules = await Renderer.utils.pGetQuickRules("feat");

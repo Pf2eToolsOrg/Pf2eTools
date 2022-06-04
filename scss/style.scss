@@ -52,14 +52,14 @@
 		min-height: 33px;
 		flex-shrink: 0;
 
-		@media (max-width: $width-screen-sm) {
+		@media (max-width: $max-width-screen-sm) {
 			width: 100%;
 			display: flex;
 		}
 	}
 
 	&nav-inner {
-		@media (max-width: $width-screen-sm) {
+		@media (max-width: $max-width-screen-sm) {
 			display: flex;
 			margin-top: 3px;
 			flex-direction: column;
@@ -139,7 +139,7 @@
 }
 
 #navigation .page__nav-hidden-mobile {
-	@media (max-width: $width-screen-sm) {
+	@media (max-width: $max-width-screen-sm) {
 		display: none;
 		margin-left: 0;
 	}
@@ -153,7 +153,7 @@
 	}
 }
 
-@media (max-width: $width-screen-sm) {
+@media (max-width: $max-width-screen-sm) {
 	.nav > li > a {
 		border: 1px solid $rgb-border-grey;
 	}
@@ -202,7 +202,7 @@
 	height: 100vh;
 	width: 100%;
 
-	@media (max-width: $width-screen-md) {
+	@media (max-width: $max-width-screen-md) {
 		bottom: auto;
 		height: initial;
 		min-height: 100vh;
@@ -223,7 +223,7 @@
 	height: 100%;
 	min-height: 0;
 
-	@media (max-width: $width-screen-md) {
+	@media (max-width: $max-width-screen-md) {
 		flex-direction: column;
 		max-height: none;
 		height: initial;
@@ -380,23 +380,23 @@ input[type=checkbox].sidemenu__row__label__cb {
 			min-width: 270px;
 		}
 
-		@media only screen and (min-width: $width-screen-xs) {
+		@media only screen and (min-width: $min-width-screen-xs) {
 			max-width: 460px;
 			min-width: 430px;
 		}
 
-		@media only screen and (min-width: $width-screen-sm) {
+		@media only screen and (min-width: $min-width-screen-sm) {
 			max-width: 740px;
 			min-width: 500px;
 		}
 
-		@media only screen and (max-width: $width-screen-sm) {
+		@media only screen and (max-width: $max-width-screen-sm) {
 			top: 40px;
 		}
 	}
 
 	&wrp-input {
-		@media only screen and (max-width: $width-screen-sm) {
+		@media only screen and (max-width: $max-width-screen-sm) {
 			margin-top: 2px;
 			margin-left: 0;
 		}
@@ -445,7 +445,7 @@ input[type=checkbox].sidemenu__row__label__cb {
 		height: 32px;
 		min-width: 100px;
 
-		@media (min-width: 992px) {
+		@media (min-width: $min-width-screen-md) {
 			border-top-left-radius: 0;
 			border-top-color: transparent;
 		}
@@ -455,7 +455,7 @@ input[type=checkbox].sidemenu__row__label__cb {
 		height: 32px;
 		padding: 3px 7px;
 
-		@media (min-width: 992px) {
+		@media (min-width: $min-width-screen-md) {
 			border-top-right-radius: 0;
 			border-top-color: transparent;
 		}
@@ -510,6 +510,30 @@ input[type=checkbox].sidemenu__row__label__cb {
 
 .name-pronounce {
 	display: none;
+}
+
+.hwin__top-border-icon {
+	top: 0;
+	margin-left: auto;
+	padding: 2px;
+	color: $rgb-bg--alt;
+	cursor: pointer;
+	font-size: 12px;
+	width: 18px;
+	text-align: center;
+
+	&--text {
+		line-height: 11px;
+		font-weight: bolder;
+		font-family: monospace;
+	}
+
+	&:hover,
+	&:active,
+	&:visited {
+		color: darken($rgb-bg--alt, $pct-darken-hover);
+		text-decoration: none;
+	}
 }
 
 .glyphicon.top-border-icon,
@@ -786,7 +810,7 @@ input[type=checkbox].sidemenu__row__label__cb {
 	flex-shrink: 1;
 	background: #f6f4f2;
 
-	@media (max-width: $width-screen-md) {
+	@media (max-width: $max-width-screen-md) {
 		overflow-y: initial;
 	}
 }
@@ -833,13 +857,13 @@ input[type=checkbox].sidemenu__row__label__cb {
 	font-size: 0.8em;
 
 	&--stats {
-		@media (min-width: $width-screen-md) {
+		@media (min-width: $min-width-screen-md) {
 			overflow-y: scroll;
 			margin-right: -9px;
 		}
 	}
 
-	@media (max-width: $width-screen-md) {
+	@media (max-width: $max-width-screen-md) {
 		max-height: 40vh;
 	}
 
@@ -2058,28 +2082,28 @@ tr.regionaleffect {
 	padding: 0 20px;
 }
 
-@media (max-width: $width-screen-lg) {
+@media (max-width: $max-width-screen-lg) {
 	.f-all-wrapper {
 		right: calc((50vw - (970px / 2)) + 1.5em);
 		left: calc(((100vw - (970px * (4 / 6))) / 2) + 1.5em);
 	}
 }
 
-@media (max-width: $width-screen-md) {
+@media (max-width: $max-width-screen-md) {
 	.f-all-wrapper {
 		right: calc(((100vw - 750px) / 2) + 1.5em);
 		left: calc(((100vw - 750px) / 2) + 1.5em);
 	}
 }
 
-@media only screen and (max-width: $width-screen-sm) {
+@media only screen and (max-width: $max-width-screen-sm) {
 	.f-all-wrapper {
 		right: calc(((100vw - 750px) / 2) + 1.5em);
 		left: calc(((100vw - 750px) / 2) + 1.5em);
 	}
 }
 
-@media only screen and (max-width: $width-screen-xs) {
+@media only screen and (max-width: $max-width-screen-xs) {
 	.f-all-wrapper {
 		right: calc(3.5em);
 		left: calc(3.5em);
@@ -2310,7 +2334,7 @@ th.border {
 			right: 10px;
 			padding: 2px 0;
 
-			@media (max-width: $width-screen-sm) {
+			@media (max-width: $max-width-screen-sm) {
 				display: none;
 			}
 		}
@@ -2817,6 +2841,14 @@ ul.list.books > li > a > span.name:hover {
 		color: $rgb-link-blue--night;
 	}
 
+	.hwin__top-border-icon {
+		color: $rgb-font--night;
+
+		&:hover {
+			color: lighten($rgb-font--night, $pct-darken-hover);
+		}
+	}
+
 	.text-muted {
 		a,
 		.roller {
@@ -3096,7 +3128,7 @@ ul.list.books > li > a > span.name:hover {
 		}
 
 		&input {
-			@media (min-width: 992px) {
+			@media (min-width: $min-width-screen-md) {
 				border-top-color: transparent;
 			}
 
@@ -3108,7 +3140,7 @@ ul.list.books > li > a > span.name:hover {
 		&submit {
 			border-top-color: $rgb-border-grey--night;
 
-			@media (min-width: 992px) {
+			@media (min-width: $min-width-screen-md) {
 				border-top-color: transparent;
 			}
 

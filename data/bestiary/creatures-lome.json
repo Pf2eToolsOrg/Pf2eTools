@@ -6,21 +6,27 @@
 			"source": "LOME",
 			"page": 293,
 			"level": 8,
-			"rarity": "Uncommon",
-			"alignment": "CE",
-			"size": "Large",
+			"traits": [
+				"uncommon",
+				"ce",
+				"large",
+				"giant",
+				"humanoid"
+			],
 			"creatureType": [
 				"Giant",
 				"Humanoid"
 			],
 			"perception": {
-				"default": 19
+				"std": 19
 			},
-			"senses": {
-				"imprecise": [
-					"scent 30 feet"
-				]
-			},
+			"senses": [
+				{
+					"type": "imprecise",
+					"name": "scent",
+					"range": 30
+				}
+			],
 			"languages": {
 				"languages": [
 					"Mwangi"
@@ -29,51 +35,36 @@
 			},
 			"skills": {
 				"Athletics": {
-					"default": 18
+					"std": 18
 				},
 				"Intimidation": {
-					"default": 16
+					"std": 16
 				},
 				"Stealth": {
-					"default": 14,
+					"std": 14,
 					"in deserts": 18
 				}
 			},
 			"abilityMods": {
-				"Str": 6,
-				"Dex": 4,
-				"Con": 6,
-				"Int": -2,
-				"Wis": 3,
-				"Cha": 0
+				"str": 6,
+				"dex": 4,
+				"con": 6,
+				"int": -2,
+				"wis": 3,
+				"cha": 0
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"An aigamuxa's eyes are located on the bottom of their feet, making it difficult for them to see.",
-						"An aigamuxa is typically blind. If they {@action Seek}, they can see normally until the end of their turn."
-					],
-					"name": "Limited Vision"
-				},
-				{
-					"entries": [
-						"If an aigamuxa takes damage from {@action Stride||Striding} or {@action Step||Stepping} into hazardous terrain or a square with similar grounded hazards (such as caltrops), they can't {@action Seek} until the end of their next turn."
-					],
-					"name": "Weak Feet"
-				}
-			],
 			"ac": {
-				"default": 27
+				"std": 27
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 19
+				"fort": {
+					"std": 19
 				},
-				"Ref": {
-					"default": 16
+				"ref": {
+					"std": 16
 				},
-				"Will": {
-					"default": 13
+				"will": {
+					"std": 13
 				}
 			},
 			"hp": [
@@ -82,7 +73,6 @@
 					"abilities": null
 				}
 			],
-			"abilitiesMid": [],
 			"speed": {
 				"walk": 30
 			},
@@ -114,65 +104,67 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"An aigamuxa's eyes are located on the bottom of their feet, making it difficult for them to see.",
+							"An aigamuxa is typically blind. If they {@action Seek}, they can see normally until the end of their turn."
+						],
+						"name": "Limited Vision"
 					},
-					"requirements": "The aigamuxa is Hiding in dirt, sand, or another soft surface",
-					"entries": [
-						"The aigamuxa makes a claw {@action Strike} against a creature within reach. On a hit, the aigamuxa automatically Grabs the creature. Whether or not they hit, the aigamuxa then {@action Stride||Strides}. If they have a creature {@condition grabbed}, the creature moves with the aigamuxa."
-					],
-					"name": "Burrowed Ambush"
-				},
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"requirements": "The aigamuxa is standing on dirt, sand, or another soft surface",
-					"entries": [
-						"The aigamuxa quickly digs into the surface and Hides. They leave their feet partially exposed, allowing them to see out from the surface. The aigamuxa can hold their breath for up to 10 minutes while hiding in this way."
-					],
-					"name": "Burrowing Concealment"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"traits": [
-						"attack"
-					],
-					"entries": [
-						"Small, {@damage 2d12+4} bludgeoning, Rupture 22."
-					],
-					"name": "Swallow Whole",
-					"generic": true
-				},
-				{
-					"entries": [
-						"Stories say aigamuxas were once giants who entered into a wager with Lamashtu, claiming they could stand on their hands longer than any other creature. Lamashtu produced a simple chimpanzee, pointed to its feet and called them hands. The giants could not hold their positions and fell. Lamashtu moved their eyes to their feet and told them, \"If you wish to boast of your ability, let this be your blessing.\""
-					],
-					"name": "The First Aigamuxas"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning",
-					"piercing",
-					"slashing"
+					{
+						"entries": [
+							"If an aigamuxa takes damage from {@action Stride||Striding} or {@action Step||Stepping} into hazardous terrain or a square with similar grounded hazards (such as caltrops), they can't {@action Seek} until the end of their next turn."
+						],
+						"name": "Weak Feet"
+					}
 				],
-				"condition": [
-					"{@condition grabbed}"
+				"bot": [
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"requirements": "The aigamuxa is Hiding in dirt, sand, or another soft surface",
+						"entries": [
+							"The aigamuxa makes a claw {@action Strike} against a creature within reach. On a hit, the aigamuxa automatically Grabs the creature. Whether or not they hit, the aigamuxa then {@action Stride||Strides}. If they have a creature {@condition grabbed}, the creature moves with the aigamuxa."
+						],
+						"name": "Burrowed Ambush"
+					},
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"requirements": "The aigamuxa is standing on dirt, sand, or another soft surface",
+						"entries": [
+							"The aigamuxa quickly digs into the surface and Hides. They leave their feet partially exposed, allowing them to see out from the surface. The aigamuxa can hold their breath for up to 10 minutes while hiding in this way."
+						],
+						"name": "Burrowing Concealment"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"attack"
+						],
+						"entries": [
+							"Small, {@damage 2d12+4} bludgeoning, Rupture 22."
+						],
+						"name": "Swallow Whole",
+						"generic": true
+					},
+					{
+						"entries": [
+							"Stories say aigamuxas were once giants who entered into a wager with Lamashtu, claiming they could stand on their hands longer than any other creature. Lamashtu produced a simple chimpanzee, pointed to its feet and called them hands. The giants could not hold their positions and fell. Lamashtu moved their eyes to their feet and told them, \"If you wish to boast of your ability, let this be your blessing.\""
+						],
+						"name": "The First Aigamuxas"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"RC",
-				"CC"
-			]
+			}
 		},
 		{
 			"name": "Anadi Elder",
@@ -180,17 +172,18 @@
 			"source": "LOME",
 			"page": 292,
 			"level": 6,
-			"rarity": "Uncommon",
-			"alignment": "CG",
-			"size": "Medium",
 			"traits": [
-				"Anadi"
+				"uncommon",
+				"cg",
+				"medium",
+				"anadi",
+				"humanoid"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 15
+				"std": 15
 			},
 			"languages": {
 				"languages": [
@@ -201,54 +194,53 @@
 			},
 			"skills": {
 				"Athletics": {
-					"default": 15,
+					"std": 15,
 					"to Climb in hybrid or spider form": 17
 				},
 				"Crafting": {
-					"default": 13
+					"std": 13
 				},
 				"Deception": {
-					"default": 13
+					"std": 13
 				},
 				"Diplomacy": {
-					"default": 11
+					"std": 11
 				},
 				"Nature": {
-					"default": 15
+					"std": 15
 				},
 				"Society": {
-					"default": 11
+					"std": 11
 				},
 				"Survival": {
-					"default": 13
+					"std": 13
 				}
 			},
 			"abilityMods": {
-				"Str": 2,
-				"Dex": 4,
-				"Con": 0,
-				"Int": 1,
-				"Wis": 4,
-				"Cha": 2
+				"str": 2,
+				"dex": 4,
+				"con": 0,
+				"int": 1,
+				"wis": 4,
+				"cha": 2
 			},
 			"items": [
 				"composite longbow (20 arrows)",
 				"hide armor",
 				"shortsword"
 			],
-			"abilitiesTop": [],
 			"ac": {
-				"default": 23
+				"std": 23
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 11
+				"fort": {
+					"std": 11
 				},
-				"Ref": {
-					"default": 14
+				"ref": {
+					"std": 14
 				},
-				"Will": {
-					"default": 17
+				"will": {
+					"std": 17
 				}
 			},
 			"hp": [
@@ -257,10 +249,9 @@
 					"abilities": null
 				}
 			],
-			"abilitiesMid": [],
 			"speed": {
 				"walk": 25,
-				"climb ": 25
+				"climb": 25
 			},
 			"attacks": [
 				{
@@ -270,7 +261,7 @@
 					"traits": [
 						"agile",
 						"finesse",
-						"versatile S"
+						"versatile s"
 					],
 					"effects": [],
 					"damage": "{@damage 2d6+6} piercing",
@@ -378,78 +369,65 @@
 					}
 				}
 			],
-			"abilitiesBot": [
-				{
-					"entries": [
-						{
-							"type": "affliction",
-							"traits": [
-								"poison"
-							],
-							"note": "",
-							"DC": 22,
-							"savingThrow": "Fortitude",
-							"maxDuration": "6 rounds",
-							"stages": [
-								{
-									"stage": 1,
-									"entry": "{@damage 2d6} poison damage and {@condition flat-footed}",
-									"duration": "1 round"
-								},
-								{
-									"stage": 2,
-									"entry": "{@damage 2d6} poison damage, {@condition flat-footed}, and {@condition clumsy 1}",
-									"duration": "1 round"
-								}
-							]
-						}
-					],
-					"name": "Anadi Venom"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
+			"abilities": {
+				"bot": [
+					{
+						"entries": [
+							{
+								"type": "affliction",
+								"traits": [
+									"poison"
+								],
+								"note": "",
+								"DC": 22,
+								"savingThrow": "Fortitude",
+								"maxDuration": "6 rounds",
+								"stages": [
+									{
+										"stage": 1,
+										"entry": "{@damage 2d6} poison damage and {@condition flat-footed}",
+										"duration": "1 round"
+									},
+									{
+										"stage": 2,
+										"entry": "{@damage 2d6} poison damage, {@condition flat-footed}, and {@condition clumsy 1}",
+										"duration": "1 round"
+									}
+								]
+							}
+						],
+						"name": "Anadi Venom"
 					},
-					"traits": [
-						"arcane",
-						"concentrate",
-						"polymorph",
-						"transmutation"
-					],
-					"entries": [
-						"The anadi changes into their hybrid form, spider form, or human form. The above statistics assume the anadi is in their hybrid form. While in their human form, the anadi hunter can't use their fangs attack and loses their climb Speed. When in spider form, they can't use weapons."
-					],
-					"name": "Change Shape",
-					"generic": true
-				},
-				{
-					"entries": [
-						"By spending several minutes, an anadi can produce silk to craft items made of cloth. A single anadi can produce enough silk in a day to craft a single garment."
-					],
-					"name": "Spin Silk",
-					"traits": [
-						"concentrate",
-						"exploration",
-						"manipulate"
-					]
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"piercing",
-					"poison"
-				],
-				"condition": [
-					"{@condition flat-footed}"
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"arcane",
+							"concentrate",
+							"polymorph",
+							"transmutation"
+						],
+						"entries": [
+							"The anadi changes into their hybrid form, spider form, or human form. The above statistics assume the anadi is in their hybrid form. While in their human form, the anadi hunter can't use their fangs attack and loses their climb Speed. When in spider form, they can't use weapons."
+						],
+						"name": "Change Shape",
+						"generic": true
+					},
+					{
+						"entries": [
+							"By spending several minutes, an anadi can produce silk to craft items made of cloth. A single anadi can produce enough silk in a day to craft a single garment."
+						],
+						"name": "Spin Silk",
+						"traits": [
+							"concentrate",
+							"exploration",
+							"manipulate"
+						]
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"RA",
-				"CC",
-				"UW"
-			]
+			}
 		},
 		{
 			"name": "Anadi Hunter",
@@ -457,17 +435,18 @@
 			"source": "LOME",
 			"page": 291,
 			"level": 2,
-			"rarity": "Uncommon",
-			"alignment": "CG",
-			"size": "Medium",
 			"traits": [
-				"Anadi"
+				"uncommon",
+				"cg",
+				"medium",
+				"anadi",
+				"humanoid"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 9
+				"std": 9
 			},
 			"languages": {
 				"languages": [
@@ -478,48 +457,47 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 8
+					"std": 8
 				},
 				"Athletics": {
-					"default": 6
+					"std": 6
 				},
 				"Crafting": {
-					"default": 6,
+					"std": 6,
 					"to weaving": 10
 				},
 				"Nature": {
-					"default": 5
+					"std": 5
 				},
 				"Stealth": {
-					"default": 8
+					"std": 8
 				}
 			},
 			"abilityMods": {
-				"Str": 2,
-				"Dex": 4,
-				"Con": 2,
-				"Int": 0,
-				"Wis": 1,
-				"Cha": 0
+				"str": 2,
+				"dex": 4,
+				"con": 2,
+				"int": 0,
+				"wis": 1,
+				"cha": 0
 			},
 			"items": [
 				"composite shortbow (20 arrows)",
 				"leather armor",
 				"shortsword"
 			],
-			"abilitiesTop": [],
 			"ac": {
-				"default": 17
+				"std": 17
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 4
+				"fort": {
+					"std": 4
 				},
-				"Ref": {
-					"default": 10
+				"ref": {
+					"std": 10
 				},
-				"Will": {
-					"default": 7
+				"will": {
+					"std": 7
 				}
 			},
 			"hp": [
@@ -528,10 +506,9 @@
 					"abilities": null
 				}
 			],
-			"abilitiesMid": [],
 			"speed": {
 				"walk": 25,
-				"climb ": 25
+				"climb": 25
 			},
 			"attacks": [
 				{
@@ -541,7 +518,7 @@
 					"traits": [
 						"agile",
 						"finesse",
-						"versatile S"
+						"versatile s"
 					],
 					"effects": [],
 					"damage": "{@damage 1d6+4} piercing",
@@ -581,78 +558,65 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"entries": [
-						{
-							"type": "affliction",
-							"traits": [
-								"poison"
-							],
-							"note": "",
-							"DC": 15,
-							"savingThrow": "Fortitude",
-							"maxDuration": "4 rounds",
-							"stages": [
-								{
-									"stage": 1,
-									"entry": "{@damage 1d6} poison damage and {@condition flat-footed}",
-									"duration": "1 round"
-								},
-								{
-									"stage": 2,
-									"entry": "{@damage 1d6} poison damage, {@condition flat-footed}, and {@condition clumsy 1}",
-									"duration": "1 round"
-								}
-							]
-						}
-					],
-					"name": "Anadi Venom"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
+			"abilities": {
+				"bot": [
+					{
+						"entries": [
+							{
+								"type": "affliction",
+								"traits": [
+									"poison"
+								],
+								"note": "",
+								"DC": 15,
+								"savingThrow": "Fortitude",
+								"maxDuration": "4 rounds",
+								"stages": [
+									{
+										"stage": 1,
+										"entry": "{@damage 1d6} poison damage and {@condition flat-footed}",
+										"duration": "1 round"
+									},
+									{
+										"stage": 2,
+										"entry": "{@damage 1d6} poison damage, {@condition flat-footed}, and {@condition clumsy 1}",
+										"duration": "1 round"
+									}
+								]
+							}
+						],
+						"name": "Anadi Venom"
 					},
-					"traits": [
-						"arcane",
-						"concentrate",
-						"polymorph",
-						"transmutation"
-					],
-					"entries": [
-						"The anadi changes into their hybrid form, spider form, or human form. The above statistics assume the anadi is in their hybrid form. While in their human form, the anadi hunter can't use their fangs attack and loses their climb Speed. When in spider form, they can't use weapons."
-					],
-					"name": "Change Shape",
-					"generic": true
-				},
-				{
-					"traits": [
-						"concentrate",
-						"exploration",
-						"manipulate"
-					],
-					"entries": [
-						"By spending several minutes, an anadi can produce silk to craft items made of cloth. A single anadi can produce enough silk in a day to craft a single garment."
-					],
-					"name": "Spin Silk"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"piercing",
-					"poison"
-				],
-				"condition": [
-					"{@condition flat-footed}"
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"arcane",
+							"concentrate",
+							"polymorph",
+							"transmutation"
+						],
+						"entries": [
+							"The anadi changes into their hybrid form, spider form, or human form. The above statistics assume the anadi is in their hybrid form. While in their human form, the anadi hunter can't use their fangs attack and loses their climb Speed. When in spider form, they can't use weapons."
+						],
+						"name": "Change Shape",
+						"generic": true
+					},
+					{
+						"traits": [
+							"concentrate",
+							"exploration",
+							"manipulate"
+						],
+						"entries": [
+							"By spending several minutes, an anadi can produce silk to craft items made of cloth. A single anadi can produce enough silk in a day to craft a single garment."
+						],
+						"name": "Spin Silk"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"RA",
-				"CC",
-				"UW"
-			]
+			}
 		},
 		{
 			"name": "Anadi Sage",
@@ -660,17 +624,18 @@
 			"source": "LOME",
 			"page": 292,
 			"level": 4,
-			"rarity": "Uncommon",
-			"alignment": "CG",
-			"size": "Medium",
 			"traits": [
-				"Anadi"
+				"uncommon",
+				"cg",
+				"medium",
+				"anadi",
+				"humanoid"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 12
+				"std": 12
 			},
 			"languages": {
 				"languages": [
@@ -681,50 +646,49 @@
 			},
 			"skills": {
 				"Athletics": {
-					"default": 12,
+					"std": 12,
 					"to Climb in hybrid or spider form": 14
 				},
 				"Crafting": {
-					"default": 10
+					"std": 10
 				},
 				"Deception": {
-					"default": 8
+					"std": 8
 				},
 				"Diplomacy": {
-					"default": 10
+					"std": 10
 				},
 				"Nature": {
-					"default": 12
+					"std": 12
 				},
 				"Survival": {
-					"default": 10
+					"std": 10
 				}
 			},
 			"abilityMods": {
-				"Str": 0,
-				"Dex": 2,
-				"Con": 0,
-				"Int": 1,
-				"Wis": 4,
-				"Cha": 2
+				"str": 0,
+				"dex": 2,
+				"con": 0,
+				"int": 1,
+				"wis": 4,
+				"cha": 2
 			},
 			"items": [
 				"hide armor",
 				"shortsword"
 			],
-			"abilitiesTop": [],
 			"ac": {
-				"default": 20
+				"std": 20
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 8
+				"fort": {
+					"std": 8
 				},
-				"Ref": {
-					"default": 11
+				"ref": {
+					"std": 11
 				},
-				"Will": {
-					"default": 14
+				"will": {
+					"std": 14
 				}
 			},
 			"hp": [
@@ -733,10 +697,9 @@
 					"abilities": null
 				}
 			],
-			"abilitiesMid": [],
 			"speed": {
 				"walk": 25,
-				"climb ": 25
+				"climb": 25
 			},
 			"attacks": [
 				{
@@ -746,7 +709,7 @@
 					"traits": [
 						"agile",
 						"finesse",
-						"versatile S"
+						"versatile s"
 					],
 					"effects": [],
 					"damage": "{@damage 1d6+3} piercing",
@@ -820,77 +783,65 @@
 					}
 				}
 			],
-			"abilitiesBot": [
-				{
-					"entries": [
-						{
-							"type": "affliction",
-							"traits": [
-								"poison"
-							],
-							"note": "",
-							"DC": 19,
-							"savingThrow": "Fortitude",
-							"maxDuration": "4 rounds",
-							"stages": [
-								{
-									"stage": 1,
-									"entry": "{@damage 1d6} poison damage and {@condition flat-footed}",
-									"duration": "1 round"
-								},
-								{
-									"stage": 2,
-									"entry": "{@damage 1d6} poison damage, {@condition flat-footed}, and {@condition clumsy 1}",
-									"duration": "1 round"
-								}
-							]
-						}
-					],
-					"name": "Anadi Venom"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
+			"abilities": {
+				"bot": [
+					{
+						"entries": [
+							{
+								"type": "affliction",
+								"traits": [
+									"poison"
+								],
+								"note": "",
+								"DC": 19,
+								"savingThrow": "Fortitude",
+								"maxDuration": "4 rounds",
+								"stages": [
+									{
+										"stage": 1,
+										"entry": "{@damage 1d6} poison damage and {@condition flat-footed}",
+										"duration": "1 round"
+									},
+									{
+										"stage": 2,
+										"entry": "{@damage 1d6} poison damage, {@condition flat-footed}, and {@condition clumsy 1}",
+										"duration": "1 round"
+									}
+								]
+							}
+						],
+						"name": "Anadi Venom"
 					},
-					"traits": [
-						"arcane",
-						"concentrate",
-						"polymorph",
-						"transmutation"
-					],
-					"entries": [
-						"The anadi changes into their hybrid form, spider form, or human form. The above statistics assume the anadi is in their hybrid form. While in their human form, the anadi hunter can't use their fangs attack and loses their climb Speed. When in spider form, they can't use weapons."
-					],
-					"name": "Change Shape",
-					"generic": true
-				},
-				{
-					"entries": [
-						"By spending several minutes, an anadi can produce silk to craft items made of cloth. A single anadi can produce enough silk in a day to craft a single garment."
-					],
-					"name": "Spin Silk",
-					"traits": [
-						"concentrate",
-						"exploration",
-						"manipulate"
-					]
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"piercing",
-					"poison"
-				],
-				"condition": [
-					"{@condition flat-footed}"
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"arcane",
+							"concentrate",
+							"polymorph",
+							"transmutation"
+						],
+						"entries": [
+							"The anadi changes into their hybrid form, spider form, or human form. The above statistics assume the anadi is in their hybrid form. While in their human form, the anadi hunter can't use their fangs attack and loses their climb Speed. When in spider form, they can't use weapons."
+						],
+						"name": "Change Shape",
+						"generic": true
+					},
+					{
+						"entries": [
+							"By spending several minutes, an anadi can produce silk to craft items made of cloth. A single anadi can produce enough silk in a day to craft a single garment."
+						],
+						"name": "Spin Silk",
+						"traits": [
+							"concentrate",
+							"exploration",
+							"manipulate"
+						]
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"CC",
-				"UW"
-			]
+			}
 		},
 		{
 			"name": "Asanbosam",
@@ -898,20 +849,22 @@
 			"source": "LOME",
 			"page": 294,
 			"level": 6,
-			"rarity": "Common",
-			"alignment": "CE",
-			"size": "Large",
+			"traits": [
+				"ce",
+				"large",
+				"humanoid"
+			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 17
+				"std": 17
 			},
-			"senses": {
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Mwangi"
@@ -920,42 +873,41 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 13
+					"std": 13
 				},
 				"Athletics": {
-					"default": 16
+					"std": 16
 				},
 				"Intimidation": {
-					"default": 11
+					"std": 11
 				},
 				"Stealth": {
-					"default": 15
+					"std": 15
 				},
 				"Survival": {
-					"default": 13
+					"std": 13
 				}
 			},
 			"abilityMods": {
-				"Str": 5,
-				"Dex": 4,
-				"Con": 2,
-				"Int": -3,
-				"Wis": 1,
-				"Cha": -2
+				"str": 5,
+				"dex": 4,
+				"con": 2,
+				"int": -3,
+				"wis": 1,
+				"cha": -2
 			},
-			"abilitiesTop": [],
 			"ac": {
-				"default": 24
+				"std": 24
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 15
+				"fort": {
+					"std": 15
 				},
-				"Ref": {
-					"default": 17
+				"ref": {
+					"std": 17
 				},
-				"Will": {
-					"default": 10
+				"will": {
+					"std": 10
 				}
 			},
 			"hp": [
@@ -964,10 +916,9 @@
 					"abilities": null
 				}
 			],
-			"abilitiesMid": [],
 			"speed": {
 				"walk": 35,
-				"climb ": 20
+				"climb": 20
 			},
 			"attacks": [
 				{
@@ -1000,48 +951,35 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
+			"abilities": {
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"requirements": "A {@condition grabbed}, {@condition paralyzed}, {@condition restrained}, {@condition unconscious}, or willing creature is within reach of the asanbosam's jaws",
+						"entries": [
+							"The asanbosam sinks its teeth into the creature to drink its blood. If the victim is {@condition grabbed}, this is automatic; otherwise, the asanbosam must succeed at an {@skill Athletics} check against the victim's Fortitude."
+						],
+						"name": "Drink Blood"
 					},
-					"requirements": "A {@condition grabbed}, {@condition paralyzed}, {@condition restrained}, {@condition unconscious}, or willing creature is within reach of the asanbosam's jaws",
-					"entries": [
-						"The asanbosam sinks its teeth into the creature to drink its blood. If the victim is {@condition grabbed}, this is automatic; otherwise, the asanbosam must succeed at an {@skill Athletics} check against the victim's Fortitude."
-					],
-					"name": "Drink Blood"
-				},
-				{
-					"entries": [
-						"The victim becomes {@condition drained 1} and the asanbosam regains 10 HP, gaining any excess Hit Points beyond its maximum as temporary."
-					],
-					"name": "DC."
-				},
-				{
-					"entries": [
-						"These temporary Hit Points remain for 1 minute. Drinking Blood from a creature that's already {@condition drained} increases the victim's {@condition drained} value by 1 to a maximum of {@condition drained 3}, but doesn't restore any HP to the asanbosam.",
-						"A victim's {@condition drained} condition decreases by 1 each week.",
-						"A blood transfusion, which requires a successful DC 20 {@skill Medicine} check and a blood donor or sufficient blood, reduces the {@condition drained} value by 1 after 10 minutes."
-					],
-					"name": "Hit Points."
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"piercing",
-					"slashing"
-				],
-				"condition": [
-					"{@condition drained}",
-					"{@condition grabbed}"
+					{
+						"entries": [
+							"The victim becomes {@condition drained 1} and the asanbosam regains 10 HP, gaining any excess Hit Points beyond its maximum as temporary."
+						],
+						"name": "DC."
+					},
+					{
+						"entries": [
+							"These temporary Hit Points remain for 1 minute. Drinking Blood from a creature that's already {@condition drained} increases the victim's {@condition drained} value by 1 to a maximum of {@condition drained 3}, but doesn't restore any HP to the asanbosam.",
+							"A victim's {@condition drained} condition decreases by 1 each week.",
+							"A blood transfusion, which requires a successful DC 20 {@skill Medicine} check and a blood donor or sufficient blood, reduces the {@condition drained} value by 1 after 10 minutes."
+						],
+						"name": "Hit Points."
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"RC",
-				"CC"
-			]
+			}
 		},
 		{
 			"name": "Biloko Veteran",
@@ -1049,23 +987,27 @@
 			"source": "LOME",
 			"page": 296,
 			"level": 4,
-			"rarity": "Common",
-			"alignment": "NE",
-			"size": "Small",
+			"traits": [
+				"ne",
+				"small",
+				"fey"
+			],
 			"creatureType": [
 				"Fey"
 			],
 			"perception": {
-				"default": 11
+				"std": 11
 			},
-			"senses": {
-				"imprecise": [
-					"scent 30 feet"
-				],
-				"other": [
-					"low-light vision"
-				]
-			},
+			"senses": [
+				{
+					"name": "low-light vision"
+				},
+				{
+					"type": "imprecise",
+					"name": "scent",
+					"range": 30
+				}
+			],
 			"languages": {
 				"languages": [
 					"Mwangi",
@@ -1075,66 +1017,54 @@
 			},
 			"skills": {
 				"Athletics": {
-					"default": 10
+					"std": 10
 				},
 				"Crafting": {
-					"default": 10
+					"std": 10
 				},
 				"Intimidation": {
-					"default": 12
+					"std": 12
 				},
 				"Nature": {
-					"default": 9
+					"std": 9
 				},
 				"Stealth": {
-					"default": 13
+					"std": 13
 				},
 				"Survival": {
-					"default": 11
+					"std": 11
 				}
 			},
 			"abilityMods": {
-				"Str": 4,
-				"Dex": 4,
-				"Con": 0,
-				"Int": 0,
-				"Wis": 3,
-				"Cha": 2
+				"str": 4,
+				"dex": 4,
+				"con": 0,
+				"int": 0,
+				"wis": 3,
+				"cha": 2
 			},
 			"items": [
 				"longspear",
 				"shortbow (20 arrows)"
 			],
-			"abilitiesTop": [],
 			"ac": {
-				"default": 21
+				"std": 21
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 8
+				"fort": {
+					"std": 8
 				},
-				"Ref": {
-					"default": 14
+				"ref": {
+					"std": 14
 				},
-				"Will": {
-					"default": 11
+				"will": {
+					"std": 11
 				}
 			},
 			"hp": [
 				{
 					"hp": 58,
 					"abilities": null
-				}
-			],
-			"abilitiesMid": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"entries": [],
-					"name": "Attack of Opportunity",
-					"generic": true
 				}
 			],
 			"speed": {
@@ -1197,40 +1127,41 @@
 					}
 				}
 			],
-			"abilitiesBot": [
-				{
-					"traits": [
-						"emotion",
-						"mental"
-					],
-					"entries": [
-						"If a biloko feasts on a human corpse for 1 minute or more, they gain a +1 status bonus to attack rolls and a +2 status bonus to damage rolls for 1 hour."
-					],
-					"name": "Inspired Feast"
-				},
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"entries": [
-						"The veteran makes a melee {@action Strike} and compares the attack roll result to the AC of up to two foes, each of whom must be within their melee reach and adjacent to each other. Roll damage only once and apply it to each creature hit. A Swipe counts as two attacks for the biloko veteran's multiple attack penalty."
-					],
-					"name": "Swipe"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"piercing"
+			"abilities": {
+				"mid": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"entries": [],
+						"name": "Attack of Opportunity",
+						"generic": true
+					}
 				],
-				"condition": []
-			},
-			"misc": [
-				"MA",
-				"RC",
-				"RA",
-				"UW"
-			]
+				"bot": [
+					{
+						"traits": [
+							"emotion",
+							"mental"
+						],
+						"entries": [
+							"If a biloko feasts on a human corpse for 1 minute or more, they gain a +1 status bonus to attack rolls and a +2 status bonus to damage rolls for 1 hour."
+						],
+						"name": "Inspired Feast"
+					},
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"The veteran makes a melee {@action Strike} and compares the attack roll result to the AC of up to two foes, each of whom must be within their melee reach and adjacent to each other. Roll damage only once and apply it to each creature hit. A Swipe counts as two attacks for the biloko veteran's multiple attack penalty."
+						],
+						"name": "Swipe"
+					}
+				]
+			}
 		},
 		{
 			"name": "Biloko Warrior",
@@ -1238,23 +1169,27 @@
 			"source": "LOME",
 			"page": 296,
 			"level": 1,
-			"rarity": "Common",
-			"alignment": "NE",
-			"size": "Small",
+			"traits": [
+				"ne",
+				"small",
+				"fey"
+			],
 			"creatureType": [
 				"Fey"
 			],
 			"perception": {
-				"default": 7
+				"std": 7
 			},
-			"senses": {
-				"imprecise": [
-					"scent 30 feet"
-				],
-				"other": [
-					"low-light vision"
-				]
-			},
+			"senses": [
+				{
+					"name": "low-light vision"
+				},
+				{
+					"type": "imprecise",
+					"name": "scent",
+					"range": 30
+				}
+			],
 			"languages": {
 				"languages": [
 					"Mwangi",
@@ -1264,64 +1199,52 @@
 			},
 			"skills": {
 				"Athletics": {
-					"default": 7
+					"std": 7
 				},
 				"Crafting": {
-					"default": 7
+					"std": 7
 				},
 				"Nature": {
-					"default": 5
+					"std": 5
 				},
 				"Stealth": {
-					"default": 6
+					"std": 6
 				},
 				"Survival": {
-					"default": 6
+					"std": 6
 				}
 			},
 			"abilityMods": {
-				"Str": 3,
-				"Dex": 2,
-				"Con": -1,
-				"Int": 0,
-				"Wis": 2,
-				"Cha": 1
+				"str": 3,
+				"dex": 2,
+				"con": -1,
+				"int": 0,
+				"wis": 2,
+				"cha": 1
 			},
 			"items": [
 				"spear",
 				"wooden shield (Hardness 3, HP 12, BT 6)"
 			],
-			"abilitiesTop": [],
 			"ac": {
-				"default": 16,
+				"std": 16,
 				"with shield raised": 18
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 4
+				"fort": {
+					"std": 4
 				},
-				"Ref": {
-					"default": 7
+				"ref": {
+					"std": 7
 				},
-				"Will": {
-					"default": 7
+				"will": {
+					"std": 7
 				}
 			},
 			"hp": [
 				{
 					"hp": 19,
 					"abilities": null
-				}
-			],
-			"abilitiesMid": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"entries": [],
-					"name": "Shield Block",
-					"generic": true
 				}
 			],
 			"speed": {
@@ -1379,30 +1302,31 @@
 					}
 				}
 			],
-			"abilitiesBot": [
-				{
-					"traits": [
-						"emotion",
-						"mental"
-					],
-					"entries": [
-						"If a biloko feasts on a human corpse for 1 minute or more, they gain a +1 status bonus to attack rolls and a +2 status bonus to damage rolls for 1 hour."
-					],
-					"name": "Inspired Feast"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"piercing"
+			"abilities": {
+				"mid": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"entries": [],
+						"name": "Shield Block",
+						"generic": true
+					}
 				],
-				"condition": []
-			},
-			"misc": [
-				"MA",
-				"RA",
-				"TA",
-				"UW"
-			]
+				"bot": [
+					{
+						"traits": [
+							"emotion",
+							"mental"
+						],
+						"entries": [
+							"If a biloko feasts on a human corpse for 1 minute or more, they gain a +1 status bonus to attack rolls and a +2 status bonus to damage rolls for 1 hour."
+						],
+						"name": "Inspired Feast"
+					}
+				]
+			}
 		},
 		{
 			"name": "Charau-ka Acolyte Of Angazhan",
@@ -1410,26 +1334,28 @@
 			"source": "LOME",
 			"page": 298,
 			"level": 3,
-			"rarity": "Common",
-			"alignment": "NE",
-			"size": "Small",
 			"traits": [
-				"Charau-ka"
+				"ne",
+				"small",
+				"charau-ka",
+				"humanoid"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 8
+				"std": 8
 			},
-			"senses": {
-				"imprecise": [
-					"scent 30 feet"
-				],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"type": "imprecise",
+					"name": "scent",
+					"range": 30
+				}
+			],
 			"languages": {
 				"languages": [
 					"Abyssal",
@@ -1440,46 +1366,45 @@
 			},
 			"skills": {
 				"Athletics": {
-					"default": 7
+					"std": 7
 				},
 				"Intimidation": {
-					"default": 7
+					"std": 7
 				},
 				"Nature": {
-					"default": 9
+					"std": 9
 				},
 				"Religion": {
-					"default": 11
+					"std": 11
 				},
 				"Stealth": {
-					"default": 7
+					"std": 7
 				}
 			},
 			"abilityMods": {
-				"Str": 2,
-				"Dex": 2,
-				"Con": 1,
-				"Int": 0,
-				"Wis": 4,
-				"Cha": 2
+				"str": 2,
+				"dex": 2,
+				"con": 1,
+				"int": 0,
+				"wis": 4,
+				"cha": 2
 			},
 			"items": [
 				"hide armor",
 				"spear"
 			],
-			"abilitiesTop": [],
 			"ac": {
-				"default": 19
+				"std": 19
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 8
+				"fort": {
+					"std": 8
 				},
-				"Ref": {
-					"default": 7
+				"ref": {
+					"std": 7
 				},
-				"Will": {
-					"default": 11
+				"will": {
+					"std": 11
 				}
 			},
 			"hp": [
@@ -1488,10 +1413,9 @@
 					"abilities": null
 				}
 			],
-			"abilitiesMid": [],
 			"speed": {
 				"walk": 25,
-				"climb ": 25
+				"climb": 25
 			},
 			"attacks": [
 				{
@@ -1604,47 +1528,36 @@
 					}
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "free"
+			"abilities": {
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "free"
+						},
+						"traits": [
+							"primal",
+							"transmutation"
+						],
+						"entries": [
+							"The charau-ka is {@condition quickened} until the end of their turn and can use the extra action only to {@action Stride} or {@action Strike}. While in the frenzy, the charau-ka can't speak and automatically critically fails {@skill Stealth} checks, due to their loud wailing."
+						],
+						"name": "Shrieking Frenzy",
+						"trigger": "The charau-ka's turn begins",
+						"frequency": {
+							"unit": "hour",
+							"freq": 1
+						}
 					},
-					"traits": [
-						"primal",
-						"transmutation"
-					],
-					"entries": [
-						"The charau-ka is {@condition quickened} until the end of their turn and can use the extra action only to {@action Stride} or {@action Strike}. While in the frenzy, the charau-ka can't speak and automatically critically fails {@skill Stealth} checks, due to their loud wailing."
-					],
-					"name": "Shrieking Frenzy",
-					"trigger": "The charau-ka's turn begins",
-					"frequency": {
-						"unit": "hour",
-						"freq": 1
+					{
+						"entries": [
+							"Any weapon a charau-ka throws gains the deadly d6 weapon trait. Furthermore, when a charau-ka throws an improvised weapon, they do not take the \u20132 penalty for doing so, nor does they take a penalty for using a thrown improvised weapon with the {@trait nonlethal} trait to make a lethal attack.",
+							"Charau-ka aColyte of angazhan Even with the Gorilla King's fall, many charau-ka still worship the terrible might of the god Angazhan (page 133). The strongest of these acolytes guard the steps of the High Throne in Usaro, ensuring that no one without Angazhan's favor or suitable physical prowess can approach the top of the massive stone step pyramid."
+						],
+						"name": "Thrown Weapon Mastery"
 					}
-				},
-				{
-					"entries": [
-						"Any weapon a charau-ka throws gains the deadly d6 weapon trait. Furthermore, when a charau-ka throws an improvised weapon, they do not take the \u20132 penalty for doing so, nor does they take a penalty for using a thrown improvised weapon with the {@trait nonlethal} trait to make a lethal attack.",
-						"Charau-ka aColyte of angazhan Even with the Gorilla King's fall, many charau-ka still worship the terrible might of the god Angazhan (page 133). The strongest of these acolytes guard the steps of the High Throne in Usaro, ensuring that no one without Angazhan's favor or suitable physical prowess can approach the top of the massive stone step pyramid."
-					],
-					"name": "Thrown Weapon Mastery"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning",
-					"piercing"
-				],
-				"condition": []
-			},
-			"misc": [
-				"MA",
-				"RA",
-				"TA",
-				"UW"
-			]
+				]
+			}
 		},
 		{
 			"name": "Charau-ka Butcher",
@@ -1652,26 +1565,28 @@
 			"source": "LOME",
 			"page": 298,
 			"level": 6,
-			"rarity": "Common",
-			"alignment": "NE",
-			"size": "Small",
 			"traits": [
-				"Charau-ka"
+				"ne",
+				"small",
+				"charau-ka",
+				"humanoid"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 13
+				"std": 13
 			},
-			"senses": {
-				"imprecise": [
-					"scent 30 feet"
-				],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"type": "imprecise",
+					"name": "scent",
+					"range": 30
+				}
+			],
 			"languages": {
 				"languages": [
 					"Draconic",
@@ -1681,53 +1596,45 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 11
+					"std": 11
 				},
 				"Athletics": {
-					"default": 15
+					"std": 15
 				},
 				"Intimidation": {
-					"default": 14
+					"std": 14
 				},
 				"Religion": {
-					"default": 9
+					"std": 9
 				},
 				"Stealth": {
-					"default": 13
+					"std": 13
 				}
 			},
 			"abilityMods": {
-				"Str": 5,
-				"Dex": 3,
-				"Con": 3,
-				"Int": 0,
-				"Wis": 1,
-				"Cha": 2
+				"str": 5,
+				"dex": 3,
+				"con": 3,
+				"int": 0,
+				"wis": 1,
+				"cha": 2
 			},
 			"items": [
 				"hide armor",
 				"+1 striking trident"
 			],
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+13 Str +5, Dex +3, Con +3, Int +0, Wis +1, Cha +2 Items hide armor, +1 striking trident."
-					],
-					"name": "Stealth"
-				}
-			],
 			"ac": {
-				"default": 21
+				"std": 21
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 16
+				"fort": {
+					"std": 16
 				},
-				"Ref": {
-					"default": 12
+				"ref": {
+					"std": 12
 				},
-				"Will": {
-					"default": 13
+				"will": {
+					"std": 13
 				}
 			},
 			"hp": [
@@ -1736,34 +1643,9 @@
 					"abilities": null
 				}
 			],
-			"abilitiesMid": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"entries": [],
-					"name": "Attack of Opportunity",
-					"generic": true
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"traits": [
-						"manipulate"
-					],
-					"trigger": "The charau-ka butcher deals bleed damage to a creature",
-					"entries": [
-						"The charau-ka licks blood from their weapon, becoming furious. They regain 5 Hit Points and gains a +1 status bonus to attack rolls until the end of their turn."
-					],
-					"name": "Blood Fury"
-				}
-			],
 			"speed": {
 				"walk": 25,
-				"climb ": 25
+				"climb": 25
 			},
 			"attacks": [
 				{
@@ -1823,64 +1705,85 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"entries": [
-						"While the charau-ka butcher is raging, their melee Strikes deal an additional {@damage 1d4} {@condition persistent damage ||persistent bleed damage}."
-					],
-					"name": "Mauler"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"entries": [
-						"As the barbarian class ability; AC 22, +9 Hit Points, +2 melee damage."
-					],
-					"name": "Rage"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "free"
-					},
-					"traits": [
-						"primal",
-						"transmutation"
-					],
-					"entries": [
-						"The charau-ka is {@condition quickened} until the end of their turn and can use the extra action only to {@action Stride} or {@action Strike}. While in the frenzy, the charau-ka can't speak and automatically critically fails {@skill Stealth} checks, due to their loud wailing."
-					],
-					"name": "Shrieking Frenzy",
-					"trigger": "The charau-ka's turn begins",
-					"frequency": {
-						"unit": "hour",
-						"freq": 1
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"+13 Str +5, Dex +3, Con +3, Int +0, Wis +1, Cha +2 Items hide armor, +1 striking trident."
+						],
+						"name": "Stealth"
 					}
-				},
-				{
-					"entries": [
-						"Any weapon a charau-ka throws gains the deadly d6 weapon trait. Furthermore, when a charau-ka throws an improvised weapon, they do not take the \u20132 penalty for doing so, nor does they take a penalty for using a thrown improvised weapon with the {@trait nonlethal} trait to make a lethal attack.",
-						"Charau-ka aColyte of angazhan Even with the Gorilla King's fall, many charau-ka still worship the terrible might of the god Angazhan (page 133). The strongest of these acolytes guard the steps of the High Throne in Usaro, ensuring that no one without Angazhan's favor or suitable physical prowess can approach the top of the massive stone step pyramid."
-					],
-					"name": "Thrown Weapon Mastery"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning",
-					"piercing",
-					"slashing"
 				],
-				"condition": []
-			},
-			"misc": [
-				"MA",
-				"RA",
-				"TA",
-				"UW"
-			]
+				"mid": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"entries": [],
+						"name": "Attack of Opportunity",
+						"generic": true
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"traits": [
+							"manipulate"
+						],
+						"trigger": "The charau-ka butcher deals bleed damage to a creature",
+						"entries": [
+							"The charau-ka licks blood from their weapon, becoming furious. They regain 5 Hit Points and gains a +1 status bonus to attack rolls until the end of their turn."
+						],
+						"name": "Blood Fury"
+					}
+				],
+				"bot": [
+					{
+						"entries": [
+							"While the charau-ka butcher is raging, their melee Strikes deal an additional {@damage 1d4} {@condition persistent damage ||persistent bleed damage}."
+						],
+						"name": "Mauler"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"As the barbarian class ability; AC 22, +9 Hit Points, +2 melee damage."
+						],
+						"name": "Rage"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "free"
+						},
+						"traits": [
+							"primal",
+							"transmutation"
+						],
+						"entries": [
+							"The charau-ka is {@condition quickened} until the end of their turn and can use the extra action only to {@action Stride} or {@action Strike}. While in the frenzy, the charau-ka can't speak and automatically critically fails {@skill Stealth} checks, due to their loud wailing."
+						],
+						"name": "Shrieking Frenzy",
+						"trigger": "The charau-ka's turn begins",
+						"frequency": {
+							"unit": "hour",
+							"freq": 1
+						}
+					},
+					{
+						"entries": [
+							"Any weapon a charau-ka throws gains the deadly d6 weapon trait. Furthermore, when a charau-ka throws an improvised weapon, they do not take the \u20132 penalty for doing so, nor does they take a penalty for using a thrown improvised weapon with the {@trait nonlethal} trait to make a lethal attack.",
+							"Charau-ka aColyte of angazhan Even with the Gorilla King's fall, many charau-ka still worship the terrible might of the god Angazhan (page 133). The strongest of these acolytes guard the steps of the High Throne in Usaro, ensuring that no one without Angazhan's favor or suitable physical prowess can approach the top of the massive stone step pyramid."
+						],
+						"name": "Thrown Weapon Mastery"
+					}
+				]
+			}
 		},
 		{
 			"name": "Charau-ka Warrior",
@@ -1888,26 +1791,28 @@
 			"source": "LOME",
 			"page": 229977,
 			"level": 1,
-			"rarity": "Common",
-			"alignment": "NE",
-			"size": "Small",
 			"traits": [
-				"Charau-ka"
+				"ne",
+				"small",
+				"charau-ka",
+				"humanoid"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 6
+				"std": 6
 			},
-			"senses": {
-				"imprecise": [
-					"scent 30 feet"
-				],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"type": "imprecise",
+					"name": "scent",
+					"range": 30
+				}
+			],
 			"languages": {
 				"languages": [
 					"Draconic",
@@ -1917,41 +1822,40 @@
 			},
 			"skills": {
 				"Athletics": {
-					"default": 6
+					"std": 6
 				},
 				"Religion": {
-					"default": 4
+					"std": 4
 				},
 				"Stealth": {
-					"default": 6
+					"std": 6
 				}
 			},
 			"abilityMods": {
-				"Str": 3,
-				"Dex": 3,
-				"Con": 2,
-				"Int": -1,
-				"Wis": 1,
-				"Cha": 0
+				"str": 3,
+				"dex": 3,
+				"con": 2,
+				"int": -1,
+				"wis": 1,
+				"cha": 0
 			},
 			"items": [
 				"dagger",
 				"hatchet",
 				"hide armor"
 			],
-			"abilitiesTop": [],
 			"ac": {
-				"default": 16
+				"std": 16
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 7
+				"fort": {
+					"std": 7
 				},
-				"Ref": {
-					"default": 8
+				"ref": {
+					"std": 8
 				},
-				"Will": {
-					"default": 4
+				"will": {
+					"std": 4
 				}
 			},
 			"hp": [
@@ -1960,10 +1864,9 @@
 					"abilities": null
 				}
 			],
-			"abilitiesMid": [],
 			"speed": {
 				"walk": 25,
-				"climb ": 25
+				"climb": 25
 			},
 			"attacks": [
 				{
@@ -1987,7 +1890,7 @@
 					"traits": [
 						"agile",
 						"finesse",
-						"versatile S"
+						"versatile s"
 					],
 					"effects": [],
 					"damage": "{@damage 1d4+3} piercing",
@@ -2033,7 +1936,7 @@
 						"agile",
 						"deadly d6",
 						"thrown 10 feet",
-						"versatile S"
+						"versatile s"
 					],
 					"effects": [],
 					"damage": "{@damage 1d4+3} piercing",
@@ -2056,48 +1959,36 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "free"
+			"abilities": {
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "free"
+						},
+						"traits": [
+							"primal",
+							"transmutation"
+						],
+						"trigger": "The charau-ka's turn begins",
+						"frequency": {
+							"unit": "hour",
+							"freq": 1
+						},
+						"entries": [
+							"The charau-ka is {@condition quickened} until the end of their turn and can use the extra action only to {@action Stride} or {@action Strike}. While in the frenzy, the charau-ka can't speak and automatically critically fails {@skill Stealth} checks, due to their loud wailing."
+						],
+						"name": "Shrieking Frenzy"
 					},
-					"traits": [
-						"primal",
-						"transmutation"
-					],
-					"trigger": "The charau-ka's turn begins",
-					"frequency": {
-						"unit": "hour",
-						"freq": 1
-					},
-					"entries": [
-						"The charau-ka is {@condition quickened} until the end of their turn and can use the extra action only to {@action Stride} or {@action Strike}. While in the frenzy, the charau-ka can't speak and automatically critically fails {@skill Stealth} checks, due to their loud wailing."
-					],
-					"name": "Shrieking Frenzy"
-				},
-				{
-					"entries": [
-						"Any weapon a charau-ka throws gains the deadly d6 weapon trait. Furthermore, when a charau-ka throws an improvised weapon, they do not take the \u20132 penalty for doing so, nor does they take a penalty for using a thrown improvised weapon with the {@trait nonlethal} trait to make a lethal attack.",
-						"Charau-ka aColyte of angazhan Even with the Gorilla King's fall, many charau-ka still worship the terrible might of the god Angazhan (page 133). The strongest of these acolytes guard the steps of the High Throne in Usaro, ensuring that no one without Angazhan's favor or suitable physical prowess can approach the top of the massive stone step pyramid."
-					],
-					"name": "Thrown Weapon Mastery"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning",
-					"piercing",
-					"slashing"
-				],
-				"condition": []
-			},
-			"misc": [
-				"MA",
-				"RA",
-				"TA",
-				"UW"
-			]
+					{
+						"entries": [
+							"Any weapon a charau-ka throws gains the deadly d6 weapon trait. Furthermore, when a charau-ka throws an improvised weapon, they do not take the \u20132 penalty for doing so, nor does they take a penalty for using a thrown improvised weapon with the {@trait nonlethal} trait to make a lethal attack.",
+							"Charau-ka aColyte of angazhan Even with the Gorilla King's fall, many charau-ka still worship the terrible might of the god Angazhan (page 133). The strongest of these acolytes guard the steps of the High Throne in Usaro, ensuring that no one without Angazhan's favor or suitable physical prowess can approach the top of the massive stone step pyramid."
+						],
+						"name": "Thrown Weapon Mastery"
+					}
+				]
+			}
 		},
 		{
 			"name": "Eloko",
@@ -2105,23 +1996,27 @@
 			"source": "LOME",
 			"page": 296,
 			"level": 7,
-			"rarity": "Common",
-			"alignment": "NE",
-			"size": "Small",
+			"traits": [
+				"ne",
+				"small",
+				"fey"
+			],
 			"creatureType": [
 				"Fey"
 			],
 			"perception": {
-				"default": 15
+				"std": 15
 			},
-			"senses": {
-				"imprecise": [
-					"scent 30 feet"
-				],
-				"other": [
-					"low-light vision"
-				]
-			},
+			"senses": [
+				{
+					"name": "low-light vision"
+				},
+				{
+					"type": "imprecise",
+					"name": "scent",
+					"range": 30
+				}
+			],
 			"languages": {
 				"languages": [
 					"Aklo",
@@ -2132,39 +2027,38 @@
 			},
 			"skills": {
 				"Athletics": {
-					"default": 18
+					"std": 18
 				},
 				"Crafting": {
-					"default": 13
+					"std": 13
 				},
 				"Nature": {
-					"default": 13
+					"std": 13
 				},
 				"Survival": {
-					"default": 13
+					"std": 13
 				}
 			},
 			"abilityMods": {
-				"Str": 6,
-				"Dex": 5,
-				"Con": 1,
-				"Int": 0,
-				"Wis": 4,
-				"Cha": 1
+				"str": 6,
+				"dex": 5,
+				"con": 1,
+				"int": 0,
+				"wis": 4,
+				"cha": 1
 			},
-			"abilitiesTop": [],
 			"ac": {
-				"default": 25
+				"std": 25
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 12
+				"fort": {
+					"std": 12
 				},
-				"Ref": {
-					"default": 18
+				"ref": {
+					"std": 18
 				},
-				"Will": {
-					"default": 15
+				"will": {
+					"std": 15
 				}
 			},
 			"hp": [
@@ -2173,7 +2067,6 @@
 					"abilities": null
 				}
 			],
-			"abilitiesMid": [],
 			"speed": {
 				"walk": 20
 			},
@@ -2195,7 +2088,7 @@
 					"traits": [
 						"agile",
 						"magical",
-						"versatile S"
+						"versatile s"
 					],
 					"effects": [],
 					"damage": "{@damage 1d4+8} piercing",
@@ -2228,7 +2121,7 @@
 						"agile",
 						"magical",
 						"thrown 10 feet",
-						"versatile S"
+						"versatile s"
 					],
 					"effects": [],
 					"damage": "{@damage 1d4+8} piercing",
@@ -2254,59 +2147,45 @@
 					}
 				}
 			],
-			"abilitiesBot": [
-				{
-					"traits": [
-						"emotion",
-						"mental"
-					],
-					"entries": [
-						"If a biloko feasts on a human corpse for 1 minute or more, they gain a +1 status bonus to attack rolls and a +2 status bonus to damage rolls for 1 hour."
-					],
-					"name": "Inspired Feast"
-				},
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
+			"abilities": {
+				"bot": [
+					{
+						"traits": [
+							"emotion",
+							"mental"
+						],
+						"entries": [
+							"If a biloko feasts on a human corpse for 1 minute or more, they gain a +1 status bonus to attack rolls and a +2 status bonus to damage rolls for 1 hour."
+						],
+						"name": "Inspired Feast"
 					},
-					"traits": [
-						"polymorph",
-						"primal",
-						"transmutation"
-					],
-					"entries": [
-						"The eloko is affected by a 4th-level {@spell enlarge} spell. This lasts for 1 minute, and the eloko can {@action Dismiss} the Spell."
-					],
-					"name": "Size Alteration"
-				},
-				{
-					"traits": [
-						"precision"
-					],
-					"entries": [
-						"The eloko deals {@dice 2d6} extra precision damage to {@condition flat-footed} creatures."
-					],
-					"name": "Sneak Attack",
-					"generic": true
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"piercing",
-					"poison"
-				],
-				"condition": [
-					"{@condition flat-footed}"
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"polymorph",
+							"primal",
+							"transmutation"
+						],
+						"entries": [
+							"The eloko is affected by a 4th-level {@spell enlarge} spell. This lasts for 1 minute, and the eloko can {@action Dismiss} the Spell."
+						],
+						"name": "Size Alteration"
+					},
+					{
+						"traits": [
+							"precision"
+						],
+						"entries": [
+							"The eloko deals {@dice 2d6} extra precision damage to {@condition flat-footed} creatures."
+						],
+						"name": "Sneak Attack",
+						"generic": true
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"RA",
-				"TA",
-				"CC",
-				"UW"
-			]
+			}
 		},
 		{
 			"name": "Grootslang",
@@ -2314,23 +2193,28 @@
 			"source": "LOME",
 			"page": 298,
 			"level": 16,
-			"rarity": "Uncommon",
-			"alignment": "CE",
-			"size": "Gargantuan",
+			"traits": [
+				"uncommon",
+				"ce",
+				"gargantuan",
+				"beast"
+			],
 			"creatureType": [
 				"Beast"
 			],
 			"perception": {
-				"default": 28
+				"std": 28
 			},
-			"senses": {
-				"imprecise": [
-					"scent 60 feet"
-				],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"type": "imprecise",
+					"name": "scent",
+					"range": 60
+				}
+			],
 			"languages": {
 				"languages": [
 					"Aquan",
@@ -2341,46 +2225,38 @@
 			},
 			"skills": {
 				"Athletics": {
-					"default": 34
+					"std": 34
 				},
 				"Intimidation": {
-					"default": 28
+					"std": 28
 				},
 				"Nature": {
-					"default": 26
+					"std": 26
 				},
 				"Stealth": {
-					"default": 23
+					"std": 23
 				}
 			},
 			"abilityMods": {
-				"Str": 9,
-				"Dex": 5,
-				"Con": 8,
-				"Int": 5,
-				"Wis": 6,
-				"Cha": 0
+				"str": 9,
+				"dex": 5,
+				"con": 8,
+				"int": 5,
+				"wis": 6,
+				"cha": 0
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"A grootslang can hold its breath for 1 hour."
-					],
-					"name": "Deep Breath"
-				}
-			],
 			"ac": {
-				"default": 38
+				"std": 38
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 30
+				"fort": {
+					"std": 30
 				},
-				"Ref": {
-					"default": 27
+				"ref": {
+					"std": 27
 				},
-				"Will": {
-					"default": 26
+				"will": {
+					"std": 26
 				}
 			},
 			"hp": [
@@ -2389,20 +2265,9 @@
 					"abilities": null
 				}
 			],
-			"abilitiesMid": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"entries": [],
-					"name": "Attack of Opportunity",
-					"generic": true
-				}
-			],
 			"speed": {
 				"walk": 40,
-				"swim ": 30
+				"swim": 30
 			},
 			"attacks": [
 				{
@@ -2468,91 +2333,97 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"traits": [
-						"concentrate",
-						"conjuration",
-						"teleportation",
-						"primal"
-					],
-					"requirements": "The grootslang is fully immersed in water",
-					"entries": [
-						"The grootslang teleports to another body of water within 1 mile that is wide enough to hold the grootslang."
-					],
-					"name": "Aquatic Elusion"
-				},
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"entries": [
-						"The grootslang coils its body. It gains 20 resistance against physical attacks until the start of its next turn."
-					],
-					"name": "Defensive Coil"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"entries": [
-						"tail only, {@damage 2d12+12} bludgeoning, DC 34."
-					],
-					"name": "Greater Constrict",
-					"generic": true
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"entries": [
-						"jaws only, Huge, {@damage 3d12+10} bludgeoning, Rupture 37."
-					],
-					"name": "Swallow Whole",
-					"generic": true
-				},
-				{
-					"activity": {
-						"number": 3,
-						"unit": "action"
-					},
-					"entries": [
-						"The grootslang makes a foot {@action Strike} against a creature in reach. Whether or not the {@action Strike} hits, all creatures within 10 feet of the grootslang must attempt a DC 37 Reflex save.",
-						{
-							"type": "successDegree",
-							"entries": {
-								"Critical Success": "The creature is unaffected.",
-								"Success": "The creature is {@condition flat-footed} until the end of its turn.",
-								"Failure": "The creature is knocked {@condition prone} and takes {@damage 2d8} bludgeoning damage.",
-								"Critical Failure": "As failure, except the creature takes {@damage 4d8} bludgeoning damage."
-							}
-						}
-					],
-					"name": "Thunderous Slam"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning",
-					"piercing"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"A grootslang can hold its breath for 1 hour."
+						],
+						"name": "Deep Breath"
+					}
 				],
-				"condition": [
-					"{@condition flat-footed}",
-					"{@condition prone}"
+				"mid": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"entries": [],
+						"name": "Attack of Opportunity",
+						"generic": true
+					}
+				],
+				"bot": [
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"concentrate",
+							"conjuration",
+							"teleportation",
+							"primal"
+						],
+						"requirements": "The grootslang is fully immersed in water",
+						"entries": [
+							"The grootslang teleports to another body of water within 1 mile that is wide enough to hold the grootslang."
+						],
+						"name": "Aquatic Elusion"
+					},
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"The grootslang coils its body. It gains 20 resistance against physical attacks until the start of its next turn."
+						],
+						"name": "Defensive Coil"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"tail only, {@damage 2d12+12} bludgeoning, DC 34."
+						],
+						"name": "Greater Constrict",
+						"generic": true
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"jaws only, Huge, {@damage 3d12+10} bludgeoning, Rupture 37."
+						],
+						"name": "Swallow Whole",
+						"generic": true
+					},
+					{
+						"activity": {
+							"number": 3,
+							"unit": "action"
+						},
+						"entries": [
+							"The grootslang makes a foot {@action Strike} against a creature in reach. Whether or not the {@action Strike} hits, all creatures within 10 feet of the grootslang must attempt a DC 37 Reflex save.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": "The creature is unaffected.",
+									"Success": "The creature is {@condition flat-footed} until the end of its turn.",
+									"Failure": "The creature is knocked {@condition prone} and takes {@damage 2d8} bludgeoning damage.",
+									"Critical Failure": "As failure, except the creature takes {@damage 4d8} bludgeoning damage."
+								}
+							}
+						],
+						"name": "Thunderous Slam"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"RC",
-				"CC"
-			]
+			}
 		},
 		{
 			"name": "K'nonna",
@@ -2560,23 +2431,27 @@
 			"source": "LOME",
 			"page": 300,
 			"level": 8,
-			"rarity": "Common",
-			"alignment": "NE",
-			"size": "Medium",
+			"traits": [
+				"ne",
+				"medium",
+				"aberration"
+			],
 			"creatureType": [
 				"Aberration"
 			],
 			"perception": {
-				"default": 16
+				"std": 16
 			},
-			"senses": {
-				"imprecise": [
-					"scent 60 feet"
-				],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"type": "imprecise",
+					"name": "scent",
+					"range": 60
+				}
+			],
 			"languages": {
 				"languages": [
 					"Mwangi (half; see Half Speaker)"
@@ -2585,59 +2460,38 @@
 			},
 			"skills": {
 				"Athletics": {
-					"default": 21
+					"std": 21
 				},
 				"Stealth": {
-					"default": 16
+					"std": 16
 				}
 			},
 			"abilityMods": {
-				"Str": 7,
-				"Dex": 4,
-				"Con": 6,
-				"Int": 3,
-				"Wis": 4,
-				"Cha": 3
+				"str": 7,
+				"dex": 4,
+				"con": 6,
+				"int": 3,
+				"wis": 4,
+				"cha": 3
 			},
-			"abilitiesTop": [],
 			"ac": {
-				"default": 26
+				"std": 26
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 19
+				"fort": {
+					"std": 19
 				},
-				"Ref": {
-					"default": 11
+				"ref": {
+					"std": 11
 				},
-				"Will": {
-					"default": 11
+				"will": {
+					"std": 11
 				}
 			},
 			"hp": [
 				{
 					"hp": 140,
 					"abilities": null
-				}
-			],
-			"abilitiesMid": [
-				{
-					"entries": [
-						"When offered a gift worth at least 50 gp, the k'nonna must attempt a DC 20 Will saving throw; if the gift is worth at least 100 gp, the DC is instead 25. If they fail the save, the k'nonna accepts the gift, becomes {@condition fascinated} until the end of their next turn, and cannot attack while {@condition fascinated}. On a critical failure, the fascination lasts for 1 minute. Offering a gift is an {@action Interact} action, and offering multiple gifts in the same round has no additional effect."
-					],
-					"name": "Gilded Fascination"
-				},
-				{
-					"entries": [
-						"A k'nonna can communicate easily with other k'nonna, but when communicating with other creatures, only half of the spoken words make sense. In order to convey information to a k'nonna or understand what they're saying, a non-k'nonna must succeed at a DC 20 {@skill Perception} check."
-					],
-					"name": "Half-Speaker"
-				},
-				{
-					"entries": [
-						"Even though k'nonna are split in half, they still move and {@action Stride} as though they have two arms and legs. However, binding just one wrist or ankle leaves them incapable of using that limb, as if it were bound to another."
-					],
-					"name": "Half Steps"
 				}
 			],
 			"speed": {
@@ -2670,31 +2524,40 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
+			"abilities": {
+				"mid": [
+					{
+						"entries": [
+							"When offered a gift worth at least 50 gp, the k'nonna must attempt a DC 20 Will saving throw; if the gift is worth at least 100 gp, the DC is instead 25. If they fail the save, the k'nonna accepts the gift, becomes {@condition fascinated} until the end of their next turn, and cannot attack while {@condition fascinated}. On a critical failure, the fascination lasts for 1 minute. Offering a gift is an {@action Interact} action, and offering multiple gifts in the same round has no additional effect."
+						],
+						"name": "Gilded Fascination"
 					},
-					"entries": [
-						"The k'nonna {@action Stride||Strides} and makes a {@action Strike} at the end of that movement. If the k'nonna began this action {@condition hidden}, they remain {@condition hidden} until after this ability's {@action Strike}."
-					],
-					"name": "Pounce"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning",
-					"piercing"
+					{
+						"entries": [
+							"A k'nonna can communicate easily with other k'nonna, but when communicating with other creatures, only half of the spoken words make sense. In order to convey information to a k'nonna or understand what they're saying, a non-k'nonna must succeed at a DC 20 {@skill Perception} check."
+						],
+						"name": "Half-Speaker"
+					},
+					{
+						"entries": [
+							"Even though k'nonna are split in half, they still move and {@action Stride} as though they have two arms and legs. However, binding just one wrist or ankle leaves them incapable of using that limb, as if it were bound to another."
+						],
+						"name": "Half Steps"
+					}
 				],
-				"condition": [
-					"{@condition fascinated}"
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"The k'nonna {@action Stride||Strides} and makes a {@action Strike} at the end of that movement. If the k'nonna began this action {@condition hidden}, they remain {@condition hidden} until after this ability's {@action Strike}."
+						],
+						"name": "Pounce"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"CC"
-			]
+			}
 		},
 		{
 			"name": "Kaava Stalker",
@@ -2702,20 +2565,22 @@
 			"source": "LOME",
 			"page": 301,
 			"level": 1,
-			"rarity": "Common",
-			"alignment": "N",
-			"size": "Small",
+			"traits": [
+				"n",
+				"small",
+				"humanoid"
+			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 7
+				"std": 7
 			},
-			"senses": {
-				"other": [
-					"low-light vision"
-				]
-			},
+			"senses": [
+				{
+					"name": "low-light vision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Kaava",
@@ -2725,60 +2590,46 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 7
+					"std": 7
 				},
 				"Athletics": {
-					"default": 6
+					"std": 6
 				},
 				"Intimidation": {
-					"default": 5
+					"std": 5
 				},
 				"Stealth": {
-					"default": 9,
+					"std": 9,
 					"in forests or jungles": 11
 				},
 				"Survival": {
-					"default": 7
+					"std": 7
 				}
 			},
 			"abilityMods": {
-				"Str": 3,
-				"Dex": 4,
-				"Con": 0,
-				"Int": 0,
-				"Wis": 2,
-				"Cha": 0
+				"str": 3,
+				"dex": 4,
+				"con": 0,
+				"int": 0,
+				"wis": 2,
+				"cha": 0
 			},
 			"items": [
 				"obsidian sickle",
 				"spear (3)"
 			],
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+9 (+11 in forests or jungles), {@skill Survival} +7 Str +3, Dex +4, Con +0, Int +0, Wis +2, Cha +0 Items obsidian sickle, spear (3)"
-					],
-					"name": "Stealth"
-				},
-				{
-					"entries": [
-						"A kaava moving at half their Speed or less steps so lightly that they leave virtually no trace. The DCs of checks to {@action Track} a kaava are increased by 10."
-					],
-					"name": "Trackless"
-				}
-			],
 			"ac": {
-				"default": 16
+				"std": 16
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 5
+				"fort": {
+					"std": 5
 				},
-				"Ref": {
-					"default": 9
+				"ref": {
+					"std": 9
 				},
-				"Will": {
-					"default": 7
+				"will": {
+					"std": 7
 				}
 			},
 			"hp": [
@@ -2787,7 +2638,6 @@
 					"abilities": null
 				}
 			],
-			"abilitiesMid": [],
 			"speed": {
 				"walk": 30
 			},
@@ -2831,30 +2681,30 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"entries": [
-						"If a kaava stalker starts their turn {@condition hidden} from or {@condition undetected} by a creature, that creature is {@condition flat-footed} against the kaava's attacks until the end of the turn."
-					],
-					"name": "Skulking Attack"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"piercing",
-					"slashing"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"+9 (+11 in forests or jungles), {@skill Survival} +7 Str +3, Dex +4, Con +0, Int +0, Wis +2, Cha +0 Items obsidian sickle, spear (3)"
+						],
+						"name": "Stealth"
+					},
+					{
+						"entries": [
+							"A kaava moving at half their Speed or less steps so lightly that they leave virtually no trace. The DCs of checks to {@action Track} a kaava are increased by 10."
+						],
+						"name": "Trackless"
+					}
 				],
-				"condition": [
-					"{@condition flat-footed}"
+				"bot": [
+					{
+						"entries": [
+							"If a kaava stalker starts their turn {@condition hidden} from or {@condition undetected} by a creature, that creature is {@condition flat-footed} against the kaava's attacks until the end of the turn."
+						],
+						"name": "Skulking Attack"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"RA",
-				"TA",
-				"CC",
-				"UW"
-			]
+			}
 		},
 		{
 			"name": "Karina",
@@ -2862,21 +2712,24 @@
 			"source": "LOME",
 			"page": 302,
 			"level": 5,
-			"rarity": "Common",
-			"alignment": "NE",
-			"size": "Large",
+			"traits": [
+				"ne",
+				"large",
+				"beast",
+				"fiend"
+			],
 			"creatureType": [
 				"Beast",
 				"Fiend"
 			],
 			"perception": {
-				"default": 12
+				"std": 12
 			},
-			"senses": {
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Mwangi (can't speak any language)"
@@ -2885,46 +2738,38 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 13
+					"std": 13
 				},
 				"Athletics": {
-					"default": 12
+					"std": 12
 				},
 				"Deception": {
-					"default": 12
+					"std": 12
 				},
 				"Stealth": {
-					"default": 15
+					"std": 15
 				}
 			},
 			"abilityMods": {
-				"Str": 3,
-				"Dex": 5,
-				"Con": 3,
-				"Int": -2,
-				"Wis": 1,
-				"Cha": 6
+				"str": 3,
+				"dex": 5,
+				"con": 3,
+				"int": -2,
+				"wis": 1,
+				"cha": 6
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"A karina who succeeds at a {@skill Deception} check to {@action Lie} can mimic any voice they have heard. They have a +4 circumstance bonus to this check."
-					],
-					"name": "Sound Imitation"
-				}
-			],
 			"ac": {
-				"default": 21
+				"std": 21
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 12
+				"fort": {
+					"std": 12
 				},
-				"Ref": {
-					"default": 15
+				"ref": {
+					"std": 15
 				},
-				"Will": {
-					"default": 10
+				"will": {
+					"std": 10
 				}
 			},
 			"hp": [
@@ -2933,10 +2778,9 @@
 					"abilities": null
 				}
 			],
-			"abilitiesMid": [],
 			"speed": {
 				"walk": 10,
-				"fly ": 40
+				"fly": 40
 			},
 			"attacks": [
 				{
@@ -2987,68 +2831,62 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"entries": [
-						{
-							"type": "affliction",
-							"traits": [
-								"disease"
-							],
-							"note": "",
-							"DC": 19,
-							"savingThrow": "Fortitude",
-							"stages": [
-								{
-									"stage": 1,
-									"entry": "carrier with no ill effect",
-									"duration": "1 day"
-								},
-								{
-									"stage": 2,
-									"entry": "{@damage 1d6} poison damage, {@condition sickened 1}",
-									"duration": "1 day"
-								},
-								{
-									"stage": 3,
-									"entry": "{@damage 1d8} poison damage, every hour the victim must succeed at another Fortitude save or be {@condition confused} for 1 minute, {@condition sickened 2}",
-									"duration": "1 day"
-								}
-							]
-						}
-					],
-					"name": "Grave Blight"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"traits": [
-						"auditory"
-					],
-					"entries": [
-						"The karina mimics a voice and mocks a creature within 30 feet. They attempt a {@skill Deception} check to {@action Demoralize} the creature. Regardless of whether the check succeeds, the target creature is temporarily immune to the karina's Mocking Cry for 1 hour."
-					],
-					"name": "Mocking Cry"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"piercing",
-					"poison",
-					"slashing"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"A karina who succeeds at a {@skill Deception} check to {@action Lie} can mimic any voice they have heard. They have a +4 circumstance bonus to this check."
+						],
+						"name": "Sound Imitation"
+					}
 				],
-				"condition": [
-					"{@condition confused}",
-					"{@condition sickened}"
+				"bot": [
+					{
+						"entries": [
+							{
+								"type": "affliction",
+								"traits": [
+									"disease"
+								],
+								"note": "",
+								"DC": 19,
+								"savingThrow": "Fortitude",
+								"stages": [
+									{
+										"stage": 1,
+										"entry": "carrier with no ill effect",
+										"duration": "1 day"
+									},
+									{
+										"stage": 2,
+										"entry": "{@damage 1d6} poison damage, {@condition sickened 1}",
+										"duration": "1 day"
+									},
+									{
+										"stage": 3,
+										"entry": "{@damage 1d8} poison damage, every hour the victim must succeed at another Fortitude save or be {@condition confused} for 1 minute, {@condition sickened 2}",
+										"duration": "1 day"
+									}
+								]
+							}
+						],
+						"name": "Grave Blight"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"auditory"
+						],
+						"entries": [
+							"The karina mimics a voice and mocks a creature within 30 feet. They attempt a {@skill Deception} check to {@action Demoralize} the creature. Regardless of whether the check succeeds, the target creature is temporarily immune to the karina's Mocking Cry for 1 hour."
+						],
+						"name": "Mocking Cry"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"RC",
-				"CC"
-			]
+			}
 		},
 		{
 			"name": "Maliadi",
@@ -3056,24 +2894,31 @@
 			"source": "LOME",
 			"page": 302,
 			"level": 17,
-			"rarity": "Uncommon",
-			"alignment": "LE",
-			"size": "Gargantuan",
+			"traits": [
+				"uncommon",
+				"le",
+				"gargantuan",
+				"beast"
+			],
 			"creatureType": [
 				"Beast"
 			],
 			"perception": {
-				"default": 29
+				"std": 29
 			},
-			"senses": {
-				"imprecise": [
-					"scent 60 feet"
-				],
-				"other": [
-					"darkvision",
-					"true seeing"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"type": "imprecise",
+					"name": "scent",
+					"range": 60
+				},
+				{
+					"name": "true seeing"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Aklo",
@@ -3085,49 +2930,41 @@
 			},
 			"skills": {
 				"Athletics": {
-					"default": 36
+					"std": 36
 				},
 				"Deception": {
-					"default": 28
+					"std": 28
 				},
 				"Intimidation": {
-					"default": 28
+					"std": 28
 				},
 				"Nature": {
-					"default": 29
+					"std": 29
 				},
 				"Survival": {
-					"default": 29
+					"std": 29
 				}
 			},
 			"abilityMods": {
-				"Str": 9,
-				"Dex": 3,
-				"Con": 9,
-				"Int": 1,
-				"Wis": 6,
-				"Cha": 3
+				"str": 9,
+				"dex": 3,
+				"con": 9,
+				"int": 1,
+				"wis": 6,
+				"cha": 3
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"The maliadi can hold its breath for 1 day."
-					],
-					"name": "Deep Breath"
-				}
-			],
 			"ac": {
-				"default": 40
+				"std": 40
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 34
+				"fort": {
+					"std": 34
 				},
-				"Ref": {
-					"default": 25
+				"ref": {
+					"std": 25
 				},
-				"Will": {
-					"default": 28
+				"will": {
+					"std": 28
 				}
 			},
 			"hp": [
@@ -3136,49 +2973,16 @@
 					"abilities": null
 				}
 			],
-			"immunities": {
-				"damage": [
-					"fire"
-				],
-				"condition": [
-					"death effects"
-				]
-			},
-			"abilitiesMid": [
-				{
-					"traits": [
-						"abjuration",
-						"fire",
-						"primal"
-					],
-					"entries": [
-						"The maliadi has resistance 20 to physical ranged attacks, such as arrows, bolts, javelins, and thrown rocks, as such attacks are magically diverted through its collar of fire. Nonmagical weapons and ammunition affected by this ability are incinerated and destroyed."
-					],
-					"name": "Collar of Fire"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"traits": [
-						"evocation",
-						"fire",
-						"primal"
-					],
-					"trigger": "A creature within 100 feet of the maliadi that the maliadi can see {@action Cast a Spell||Casts a Spell} that targets the maliadi",
-					"entries": [
-						"The maliadi casts one of its innate {@spell wall of fire} spells, with a duration of 1 round. If the spell that triggered this reaction passes through the wall of fire, the wall attempts to counteract it, with a counteract modifier of +28."
-					],
-					"name": "Counterspelling Wall"
-				}
+			"immunities": [
+				"fire",
+				"death effects"
 			],
 			"speed": {
 				"abilities": [
 					"freedom of movement"
 				],
 				"walk": 30,
-				"swim ": 20
+				"swim": 20
 			},
 			"attacks": [
 				{
@@ -3282,49 +3086,77 @@
 					}
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"entries": [],
-					"name": "Improved Grab",
-					"generic": true
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"entries": [
-						"The maliadi tries to capsize an adjacent aquatic vessel of its size or smaller. The maliadi must succeed at a DC 35 {@skill Athletics} check (reduced by 5 for each size smaller the vessel is than the maliadi) or the pilot's {@skill Lore||Sailing Lore} DC, whichever is higher."
-					],
-					"name": "Capsize"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"entries": [
-						"The maliadi can take on the appearance of any Large, Huge, or Gargantuan animal. This doesn't change its."
-					],
-					"name": "Change Shape",
-					"generic": true
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning",
-					"piercing"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"The maliadi can hold its breath for 1 day."
+						],
+						"name": "Deep Breath"
+					}
 				],
-				"condition": []
-			},
-			"misc": [
-				"MA",
-				"RC"
-			]
+				"mid": [
+					{
+						"traits": [
+							"abjuration",
+							"fire",
+							"primal"
+						],
+						"entries": [
+							"The maliadi has resistance 20 to physical ranged attacks, such as arrows, bolts, javelins, and thrown rocks, as such attacks are magically diverted through its collar of fire. Nonmagical weapons and ammunition affected by this ability are incinerated and destroyed."
+						],
+						"name": "Collar of Fire"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"traits": [
+							"evocation",
+							"fire",
+							"primal"
+						],
+						"trigger": "A creature within 100 feet of the maliadi that the maliadi can see {@action Cast a Spell||Casts a Spell} that targets the maliadi",
+						"entries": [
+							"The maliadi casts one of its innate {@spell wall of fire} spells, with a duration of 1 round. If the spell that triggered this reaction passes through the wall of fire, the wall attempts to counteract it, with a counteract modifier of +28."
+						],
+						"name": "Counterspelling Wall"
+					}
+				],
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [],
+						"name": "Improved Grab",
+						"generic": true
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"The maliadi tries to capsize an adjacent aquatic vessel of its size or smaller. The maliadi must succeed at a DC 35 {@skill Athletics} check (reduced by 5 for each size smaller the vessel is than the maliadi) or the pilot's {@skill Lore||Sailing Lore} DC, whichever is higher."
+						],
+						"name": "Capsize"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"The maliadi can take on the appearance of any Large, Huge, or Gargantuan animal. This doesn't change its."
+						],
+						"name": "Change Shape",
+						"generic": true
+					}
+				]
+			}
 		},
 		{
 			"name": "Mamlambo",
@@ -3332,81 +3164,56 @@
 			"source": "LOME",
 			"page": 304,
 			"level": 9,
-			"rarity": "Uncommon",
-			"alignment": "NE",
-			"size": "Huge",
 			"traits": [
-				"Aquatic"
+				"uncommon",
+				"ne",
+				"huge",
+				"aquatic",
+				"beast"
 			],
 			"creatureType": [
 				"Beast"
 			],
 			"perception": {
-				"default": 19
+				"std": 19
 			},
-			"senses": {
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
 			"skills": {
 				"Athletics": {
-					"default": 21
+					"std": 21
 				},
 				"Stealth": {
-					"default": 19
+					"std": 19
 				},
 				"Survival": {
-					"default": 17,
+					"std": 17,
 					"to Track": 19
 				}
 			},
 			"abilityMods": {
-				"Str": 7,
-				"Dex": 4,
-				"Con": 5,
-				"Int": -3,
-				"Wis": 4,
-				"Cha": 0
+				"str": 7,
+				"dex": 4,
+				"con": 5,
+				"int": -3,
+				"wis": 4,
+				"cha": 0
 			},
-			"abilitiesTop": [
-				{
-					"traits": [
-						"aura",
-						"emotion",
-						"enchantment",
-						"incapacitation",
-						"light",
-						"mental",
-						"primal"
-					],
-					"entries": [
-						"30 feet. The mamlambo emits dim light from its skin. A creature that enters or begins its turn in the aura must attempt a DC 23 Will save. Humanoids take a \u20132 penalty to this saving throw. Regardless of the save's result, the creature is temporarily immune for 10 minutes.",
-						{
-							"type": "successDegree",
-							"entries": {
-								"Critical Success": "The creature is unaffected.",
-								"Success": "The creature is {@condition slowed 1} for 1 round.",
-								"Failure": "The creature is {@condition fascinated}, and for as long as it is in the aura it must spend at least 1 of its actions on each of its turns to move closer to the mamlambo as expediently as possible, while avoiding obvious dangers. If the creature ends its movement or turn adjacent to the mamlambo, it is {@condition slowed 1} until it is out of the aura or until the mamlambo makes a {@action Strike} against it. The target can attempt a new Will save at the beginning of each of their subsequent turns, and on a success, the effect ends.",
-								"Critical Failure": "As failure, but the creature must spend each of its actions moving closer to the mamlambo, and if it ends its movement or turn adjacent to the mamlambo, it is {@condition paralyzed} until it is out of the aura or until the mamlambo makes a {@action Strike} against it."
-							}
-						}
-					],
-					"name": "Luminous Lure"
-				}
-			],
 			"ac": {
-				"default": 28
+				"std": 28
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 19
+				"fort": {
+					"std": 19
 				},
-				"Ref": {
-					"default": 20
+				"ref": {
+					"std": 20
 				},
-				"Will": {
-					"default": 15
+				"will": {
+					"std": 15
 				}
 			},
 			"hp": [
@@ -3415,22 +3222,9 @@
 					"abilities": null
 				}
 			],
-			"abilitiesMid": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"entries": [
-						"Tail only."
-					],
-					"name": "Attack of Opportunity",
-					"generic": true
-				}
-			],
 			"speed": {
 				"walk": 10,
-				"swim ": 40
+				"swim": 40
 			},
 			"attacks": [
 				{
@@ -3463,52 +3257,76 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"entries": [],
-					"name": "Aquatic Ambush",
-					"generic": true
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"requirements": "The mamlambo has a creature {@condition grabbed} or {@condition restrained}, or there is a {@condition dying}, {@condition immobilized}, or {@condition unconscious} creature within the mamlambo's reach",
-					"entries": [
-						"The mamlambo deals {@damage 2d8+11} piercing damage to the creature (DC 28 basic Fortitude save). On a failure, the creature also takes an additional {@damage 2d6} {@condition persistent damage ||persistent bleed damage}, or {@damage 4d6} {@condition persistent damage ||persistent bleed damage} on a critical failure."
-					],
-					"name": "Face Eater"
-				},
-				{
-					"entries": [
-						"Mamlambos have an unusually strong aversion to river otters, despite being much larger and more dangerous.",
-						"Since mamlambos rarely remain in an area inhabited by otters for long, river-dwelling people in the Mwangi Expanse often keep trained otters to aid in fishing and to ward off the potential presence of a mamlambo."
-					],
-					"name": "An Unusual Phobia"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning",
-					"piercing"
+			"abilities": {
+				"top": [
+					{
+						"traits": [
+							"aura",
+							"emotion",
+							"enchantment",
+							"incapacitation",
+							"light",
+							"mental",
+							"primal"
+						],
+						"entries": [
+							"30 feet. The mamlambo emits dim light from its skin. A creature that enters or begins its turn in the aura must attempt a DC 23 Will save. Humanoids take a \u20132 penalty to this saving throw. Regardless of the save's result, the creature is temporarily immune for 10 minutes.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": "The creature is unaffected.",
+									"Success": "The creature is {@condition slowed 1} for 1 round.",
+									"Failure": "The creature is {@condition fascinated}, and for as long as it is in the aura it must spend at least 1 of its actions on each of its turns to move closer to the mamlambo as expediently as possible, while avoiding obvious dangers. If the creature ends its movement or turn adjacent to the mamlambo, it is {@condition slowed 1} until it is out of the aura or until the mamlambo makes a {@action Strike} against it. The target can attempt a new Will save at the beginning of each of their subsequent turns, and on a success, the effect ends.",
+									"Critical Failure": "As failure, but the creature must spend each of its actions moving closer to the mamlambo, and if it ends its movement or turn adjacent to the mamlambo, it is {@condition paralyzed} until it is out of the aura or until the mamlambo makes a {@action Strike} against it."
+								}
+							}
+						],
+						"name": "Luminous Lure"
+					}
 				],
-				"condition": [
-					"{@condition fascinated}",
-					"{@condition grabbed}",
-					"{@condition paralyzed}",
-					"{@condition slowed}"
+				"mid": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"entries": [
+							"Tail only."
+						],
+						"name": "Attack of Opportunity",
+						"generic": true
+					}
+				],
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [],
+						"name": "Aquatic Ambush",
+						"generic": true
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"requirements": "The mamlambo has a creature {@condition grabbed} or {@condition restrained}, or there is a {@condition dying}, {@condition immobilized}, or {@condition unconscious} creature within the mamlambo's reach",
+						"entries": [
+							"The mamlambo deals {@damage 2d8+11} piercing damage to the creature (DC 28 basic Fortitude save). On a failure, the creature also takes an additional {@damage 2d6} {@condition persistent damage ||persistent bleed damage}, or {@damage 4d6} {@condition persistent damage ||persistent bleed damage} on a critical failure."
+						],
+						"name": "Face Eater"
+					},
+					{
+						"entries": [
+							"Mamlambos have an unusually strong aversion to river otters, despite being much larger and more dangerous.",
+							"Since mamlambos rarely remain in an area inhabited by otters for long, river-dwelling people in the Mwangi Expanse often keep trained otters to aid in fishing and to ward off the potential presence of a mamlambo."
+						],
+						"name": "An Unusual Phobia"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"RC",
-				"CC"
-			]
+			}
 		},
 		{
 			"name": "Pygmy Kaava",
@@ -3516,20 +3334,22 @@
 			"source": "LOME",
 			"page": 301,
 			"level": 0,
-			"rarity": "Common",
-			"alignment": "N",
-			"size": "Small",
+			"traits": [
+				"n",
+				"small",
+				"humanoid"
+			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 6
+				"std": 6
 			},
-			"senses": {
-				"other": [
-					"low-light vision"
-				]
-			},
+			"senses": [
+				{
+					"name": "low-light vision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Kaava",
@@ -3539,57 +3359,43 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 5
+					"std": 5
 				},
 				"Intimidation": {
-					"default": 4
+					"std": 4
 				},
 				"Stealth": {
-					"default": 7,
+					"std": 7,
 					"in forests or jungles": 9
 				},
 				"Survival": {
-					"default": 6
+					"std": 6
 				}
 			},
 			"abilityMods": {
-				"Str": 2,
-				"Dex": 3,
-				"Con": 1,
-				"Int": 1,
-				"Wis": 2,
-				"Cha": 0
+				"str": 2,
+				"dex": 3,
+				"con": 1,
+				"int": 1,
+				"wis": 2,
+				"cha": 0
 			},
 			"items": [
 				"obsidian sickle",
 				"spear"
 			],
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+6 Str +2, Dex +3, Con +1, Int +1, Wis +2, Cha +0 Items obsidian sickle, spear."
-					],
-					"name": "Survival"
-				},
-				{
-					"entries": [
-						"A kaava moving at half their Speed or less steps so lightly that they leave virtually no trace. The DCs of checks to {@action Track} a kaava are increased by 10."
-					],
-					"name": "Trackless"
-				}
-			],
 			"ac": {
-				"default": 15
+				"std": 15
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 5
+				"fort": {
+					"std": 5
 				},
-				"Ref": {
-					"default": 7
+				"ref": {
+					"std": 7
 				},
-				"Will": {
-					"default": 6
+				"will": {
+					"std": 6
 				}
 			},
 			"hp": [
@@ -3598,7 +3404,6 @@
 					"abilities": null
 				}
 			],
-			"abilitiesMid": [],
 			"speed": {
 				"walk": 30
 			},
@@ -3642,27 +3447,30 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"entries": [
-						"A kaava ignores {@quickref difficult terrain||3|terrain} and {@quickref greater difficult terrain||3|terrain} from non-magical foliage."
-					],
-					"name": "Woodland Stride"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"piercing",
-					"slashing"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"+6 Str +2, Dex +3, Con +1, Int +1, Wis +2, Cha +0 Items obsidian sickle, spear."
+						],
+						"name": "Survival"
+					},
+					{
+						"entries": [
+							"A kaava moving at half their Speed or less steps so lightly that they leave virtually no trace. The DCs of checks to {@action Track} a kaava are increased by 10."
+						],
+						"name": "Trackless"
+					}
 				],
-				"condition": []
-			},
-			"misc": [
-				"MA",
-				"RA",
-				"TA",
-				"UW"
-			]
+				"bot": [
+					{
+						"entries": [
+							"A kaava ignores {@quickref difficult terrain||3|terrain} and {@quickref greater difficult terrain||3|terrain} from non-magical foliage."
+						],
+						"name": "Woodland Stride"
+					}
+				]
+			}
 		},
 		{
 			"name": "Rompo",
@@ -3670,62 +3478,58 @@
 			"source": "LOME",
 			"page": 305,
 			"level": 5,
-			"rarity": "Common",
-			"alignment": "N",
-			"size": "Medium",
+			"traits": [
+				"n",
+				"medium",
+				"beast"
+			],
 			"creatureType": [
 				"Beast"
 			],
 			"perception": {
-				"default": 15
+				"std": 15
 			},
-			"senses": {
-				"imprecise": [
-					"scent 30 feet"
-				],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"type": "imprecise",
+					"name": "scent",
+					"range": 30
+				}
+			],
 			"skills": {
 				"Athletics": {
-					"default": 13
+					"std": 13
 				},
 				"Stealth": {
-					"default": 12
+					"std": 12
 				},
 				"Survival": {
-					"default": 12
+					"std": 12
 				}
 			},
 			"abilityMods": {
-				"Str": 5,
-				"Dex": 2,
-				"Con": 2,
-				"Int": -3,
-				"Wis": 2,
-				"Cha": 0
+				"str": 5,
+				"dex": 2,
+				"con": 2,
+				"int": -3,
+				"wis": 2,
+				"cha": 0
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"The rompo can change its coloration to match its surroundings. It doesn't need cover to attempt to {@action Hide} with a {@skill Stealth} check."
-					],
-					"name": "Camouflage"
-				}
-			],
 			"ac": {
-				"default": 21
+				"std": 21
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 15
+				"fort": {
+					"std": 15
 				},
-				"Ref": {
-					"default": 9
+				"ref": {
+					"std": 9
 				},
-				"Will": {
-					"default": 11
+				"will": {
+					"std": 11
 				}
 			},
 			"hp": [
@@ -3734,10 +3538,9 @@
 					"abilities": null
 				}
 			],
-			"abilitiesMid": [],
 			"speed": {
 				"walk": 30,
-				"climb ": 25
+				"climb": 25
 			},
 			"attacks": [
 				{
@@ -3766,79 +3569,72 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"traits": [
-						"enchantment",
-						"incapacitation",
-						"mental",
-						"primal"
-					],
-					"entries": [
-						"60 feet. The rompo hums in a low voice. Each creature within the emanation must succeed at a DC 19 Will save or become {@condition fascinated} and compelled to move away from the rompo, traveling to the furthest edge of the emanation.",
-						"{@condition Fascinated} creatures are also {@condition flat-footed}. The effect lasts for 1 round, but if the rompo spends a single action on subsequent rounds, it can extend the duration by 1 round for all affected creatures. If the rompo attacks, the {@condition fascinated} condition ends only for the creature that is attacked. On a successful save, a creature is temporarily immune to Crooning Cry for 24 hours."
-					],
-					"name": "Crooning Cry"
-				},
-				{
-					"entries": [
-						{
-							"type": "affliction",
-							"traits": [
-								"disease"
-							],
-							"note": "The target can't reduce its {@condition sickened} condition while affected by rompo chills",
-							"DC": 19,
-							"savingThrow": "Fortitude",
-							"onset": "1 day",
-							"stages": [
-								{
-									"stage": 1,
-									"entry": "{@condition clumsy 1}",
-									"duration": "1 day"
-								},
-								{
-									"stage": 2,
-									"entry": "{@condition clumsy 1} and {@condition sickened 1}",
-									"duration": "1 day"
-								},
-								{
-									"stage": 3,
-									"entry": "{@condition clumsy 2} and {@condition sickened 2}",
-									"duration": "1 day"
-								},
-								{
-									"stage": 4,
-									"entry": "{@condition unconscious} ;",
-									"duration": "1 day"
-								}
-							]
-						}
-					],
-					"name": "Rompo Chills"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"piercing",
-					"slashing"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"The rompo can change its coloration to match its surroundings. It doesn't need cover to attempt to {@action Hide} with a {@skill Stealth} check."
+						],
+						"name": "Camouflage"
+					}
 				],
-				"condition": [
-					"{@condition clumsy}",
-					"{@condition fascinated}",
-					"{@condition flat-footed}",
-					"{@condition sickened}",
-					"{@condition unconscious}"
+				"bot": [
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"enchantment",
+							"incapacitation",
+							"mental",
+							"primal"
+						],
+						"entries": [
+							"60 feet. The rompo hums in a low voice. Each creature within the emanation must succeed at a DC 19 Will save or become {@condition fascinated} and compelled to move away from the rompo, traveling to the furthest edge of the emanation.",
+							"{@condition Fascinated} creatures are also {@condition flat-footed}. The effect lasts for 1 round, but if the rompo spends a single action on subsequent rounds, it can extend the duration by 1 round for all affected creatures. If the rompo attacks, the {@condition fascinated} condition ends only for the creature that is attacked. On a successful save, a creature is temporarily immune to Crooning Cry for 24 hours."
+						],
+						"name": "Crooning Cry"
+					},
+					{
+						"entries": [
+							{
+								"type": "affliction",
+								"traits": [
+									"disease"
+								],
+								"note": "The target can't reduce its {@condition sickened} condition while affected by rompo chills",
+								"DC": 19,
+								"savingThrow": "Fortitude",
+								"onset": "1 day",
+								"stages": [
+									{
+										"stage": 1,
+										"entry": "{@condition clumsy 1}",
+										"duration": "1 day"
+									},
+									{
+										"stage": 2,
+										"entry": "{@condition clumsy 1} and {@condition sickened 1}",
+										"duration": "1 day"
+									},
+									{
+										"stage": 3,
+										"entry": "{@condition clumsy 2} and {@condition sickened 2}",
+										"duration": "1 day"
+									},
+									{
+										"stage": 4,
+										"entry": "{@condition unconscious} ;",
+										"duration": "1 day"
+									}
+								]
+							}
+						],
+						"name": "Rompo Chills"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"CC"
-			]
+			}
 		},
 		{
 			"name": "Sié Goluo",
@@ -3846,24 +3642,27 @@
 			"source": "LOME",
 			"page": 306,
 			"level": 14,
-			"rarity": "Unique",
-			"alignment": "NG",
-			"size": "Huge",
 			"traits": [
-				"Incorporeal"
+				"unique",
+				"ng",
+				"huge",
+				"beast",
+				"incorporeal",
+				"spirit"
 			],
 			"creatureType": [
 				"Beast",
 				"Spirit"
 			],
 			"perception": {
-				"default": 25
+				"std": 25
 			},
-			"senses": {
-				"other": [
-					"imprecise scent 60 feet"
-				]
-			},
+			"senses": [
+				{
+					"name": "imprecise scent",
+					"range": 60
+				}
+			],
 			"languages": {
 				"languages": [
 					"Mwangi (can't speak any language)"
@@ -3872,39 +3671,38 @@
 			},
 			"skills": {
 				"Athletics": {
-					"default": 31
+					"std": 31
 				},
 				"Diplomacy": {
-					"default": 28
+					"std": 28
 				},
 				"Nature": {
-					"default": 31
+					"std": 31
 				},
 				"Survival": {
-					"default": 28
+					"std": 28
 				}
 			},
 			"abilityMods": {
-				"Str": 9,
-				"Dex": 5,
-				"Con": 8,
-				"Int": 1,
-				"Wis": 8,
-				"Cha": 4
+				"str": 9,
+				"dex": 5,
+				"con": 8,
+				"int": 1,
+				"wis": 8,
+				"cha": 4
 			},
-			"abilitiesTop": [],
 			"ac": {
-				"default": 36
+				"std": 36
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 28
+				"fort": {
+					"std": 28
 				},
-				"Ref": {
-					"default": 20
+				"ref": {
+					"std": 20
 				},
-				"Will": {
-					"default": 28
+				"will": {
+					"std": 28
 				}
 			},
 			"hp": [
@@ -3919,47 +3717,6 @@
 				{
 					"amount": 10,
 					"name": "all damage"
-				}
-			],
-			"abilitiesMid": [
-				{
-					"traits": [
-						"divine",
-						"necromancy"
-					],
-					"entries": [],
-					"name": "Rejuvenation"
-				},
-				{
-					"entries": [
-						"Sié Goluo is destroyed, he reforms, fully healed, at a location of his choosing anywhere on the Material Plane after {@dice 2d4} days. If every person of Mwangi descent rejects belief in Sié Goluo, the spirit is permanently destroyed."
-					],
-					"name": "When"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "free"
-					},
-					"trigger": "A creature on the",
-					"entries": [],
-					"name": "Ancestral Response"
-				},
-				{
-					"entries": [
-						"Plane calls out for Sié Goluo; Sié Goluo instantaneously appears in an unoccupied space within 30 feet of the triggering creature and heals {@dice 8d8} hit points on all allies that can see him within 60 feet.",
-						"Allies healed this way gain a +2 circumstance bonus on saving throws for 1 minute. Creatures that receive these benefits become temporarily immune to them for 1 year."
-					],
-					"name": "Material"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"entries": [],
-					"name": "Ferocity",
-					"generic": true
 				}
 			],
 			"speed": {
@@ -4008,39 +3765,67 @@
 					}
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
+			"abilities": {
+				"mid": [
+					{
+						"traits": [
+							"divine",
+							"necromancy"
+						],
+						"entries": [],
+						"name": "Rejuvenation"
 					},
-					"entries": [
-						"Sié Goluo {@action Stride||Strides} twice, then makes a horn {@action Strike}. On a hit, Sié Goluo creates a shock wave that deals {@damage 4d12} force damage in a 30-foot cone (DC 34 basic Reflex save). Creatures that fail their save are pushed away 5 feet (10 feet on a critical failure)."
-					],
-					"name": "Spirit Charge"
-				},
-				{
-					"entries": [
-						"Sié Goluo ignores {@quickref difficult terrain||3|terrain} and doesn't trigger traps with his movement."
-					],
-					"name": "Spirit Steps"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"force",
-					"piercing"
+					{
+						"entries": [
+							"Sié Goluo is destroyed, he reforms, fully healed, at a location of his choosing anywhere on the Material Plane after {@dice 2d4} days. If every person of Mwangi descent rejects belief in Sié Goluo, the spirit is permanently destroyed."
+						],
+						"name": "When"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "free"
+						},
+						"trigger": "A creature on the",
+						"entries": [],
+						"name": "Ancestral Response"
+					},
+					{
+						"entries": [
+							"Plane calls out for Sié Goluo; Sié Goluo instantaneously appears in an unoccupied space within 30 feet of the triggering creature and heals {@dice 8d8} hit points on all allies that can see him within 60 feet.",
+							"Allies healed this way gain a +2 circumstance bonus on saving throws for 1 minute. Creatures that receive these benefits become temporarily immune to them for 1 year."
+						],
+						"name": "Material"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"entries": [],
+						"name": "Ferocity",
+						"generic": true
+					}
 				],
-				"condition": [
-					"{@condition unconscious}"
+				"bot": [
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"Sié Goluo {@action Stride||Strides} twice, then makes a horn {@action Strike}. On a hit, Sié Goluo creates a shock wave that deals {@damage 4d12} force damage in a 30-foot cone (DC 34 basic Reflex save). Creatures that fail their save are pushed away 5 feet (10 feet on a critical failure)."
+						],
+						"name": "Spirit Charge"
+					},
+					{
+						"entries": [
+							"Sié Goluo ignores {@quickref difficult terrain||3|terrain} and doesn't trigger traps with his movement."
+						],
+						"name": "Spirit Steps"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"RC",
-				"AD",
-				"CC"
-			]
+			}
 		},
 		{
 			"name": "Solar Ibis",
@@ -4048,21 +3833,25 @@
 			"source": "LOME",
 			"page": 307,
 			"level": 7,
-			"rarity": "Common",
-			"alignment": "NG",
-			"size": "Medium",
+			"traits": [
+				"ng",
+				"medium",
+				"beast"
+			],
 			"creatureType": [
 				"Beast"
 			],
 			"perception": {
-				"default": 17
+				"std": 17
 			},
-			"senses": {
-				"other": [
-					"darkvision",
-					"low-light vision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"name": "low-light vision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Mwangi",
@@ -4072,33 +3861,32 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 18
+					"std": 18
 				},
 				"Athletics": {
-					"default": 14
+					"std": 14
 				}
 			},
 			"abilityMods": {
-				"Str": 4,
-				"Dex": 6,
-				"Con": 2,
-				"Int": 0,
-				"Wis": 3,
-				"Cha": 3
+				"str": 4,
+				"dex": 6,
+				"con": 2,
+				"int": 0,
+				"wis": 3,
+				"cha": 3
 			},
-			"abilitiesTop": [],
 			"ac": {
-				"default": 25
+				"std": 25
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 12
+				"fort": {
+					"std": 12
 				},
-				"Ref": {
-					"default": 17
+				"ref": {
+					"std": 17
 				},
-				"Will": {
-					"default": 15
+				"will": {
+					"std": 15
 				}
 			},
 			"hp": [
@@ -4107,28 +3895,9 @@
 					"abilities": null
 				}
 			],
-			"abilitiesMid": [
-				{
-					"traits": [
-						"arcane",
-						"aura",
-						"light"
-					],
-					"entries": [
-						"30 feet. The solar ibis's halo sheds bright light. Creatures that start their turn in the aura must succeed at a DC 22 Fortitude save or be {@condition dazzled} for 1 minute. A creature that critically fails its save is instead {@condition blinded} for 1 minute. Creatures who successfully save are temporarily immune to this effect for 24 hours. The solar ibis can extinguish or resume the halo's light as a single action, which has the {@trait concentrate} trait."
-					],
-					"name": "Blinding Halo"
-				},
-				{
-					"entries": [
-						"When a solar ibis succeeds at a Reflex save, it gets a critical success instead."
-					],
-					"name": "Evasion"
-				}
-			],
 			"speed": {
 				"walk": 10,
-				"fly ": 60
+				"fly": 60
 			},
 			"attacks": [
 				{
@@ -4157,50 +3926,56 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
+			"abilities": {
+				"mid": [
+					{
+						"traits": [
+							"arcane",
+							"aura",
+							"light"
+						],
+						"entries": [
+							"30 feet. The solar ibis's halo sheds bright light. Creatures that start their turn in the aura must succeed at a DC 22 Fortitude save or be {@condition dazzled} for 1 minute. A creature that critically fails its save is instead {@condition blinded} for 1 minute. Creatures who successfully save are temporarily immune to this effect for 24 hours. The solar ibis can extinguish or resume the halo's light as a single action, which has the {@trait concentrate} trait."
+						],
+						"name": "Blinding Halo"
 					},
-					"entries": [
-						"The solar ibis Flies up to double its fly Speed in a straight line, descends at least 10 feet, and then makes a talon {@action Strike}."
-					],
-					"name": "Ibis Dive"
-				},
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"traits": [
-						"arcane",
-						"evocation",
-						"fire",
-						"good",
-						"light"
-					],
-					"entries": [
-						"The solar ibis detonates its halo, sending shards of burning light in all directions that deal {@damage 6d8} fire damage to all creatures in a 20-foot emanation (DC 22 basic Reflex save). The shards deal an extra {@damage 6d8} good damage against fiends and undead. The solar ibis can't use Light Shatter again for {@dice 1d4} rounds, and its Blinding Halo is extinguished during this time. The halo is restored automatically once the {@dice 1d4} rounds have passed."
-					],
-					"name": "Light Shatter"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"fire",
-					"piercing",
-					"slashing"
+					{
+						"entries": [
+							"When a solar ibis succeeds at a Reflex save, it gets a critical success instead."
+						],
+						"name": "Evasion"
+					}
 				],
-				"condition": [
-					"{@condition dazzled}"
+				"bot": [
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"The solar ibis Flies up to double its fly Speed in a straight line, descends at least 10 feet, and then makes a talon {@action Strike}."
+						],
+						"name": "Ibis Dive"
+					},
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"arcane",
+							"evocation",
+							"fire",
+							"good",
+							"light"
+						],
+						"entries": [
+							"The solar ibis detonates its halo, sending shards of burning light in all directions that deal {@damage 6d8} fire damage to all creatures in a 20-foot emanation (DC 22 basic Reflex save). The shards deal an extra {@damage 6d8} good damage against fiends and undead. The solar ibis can't use Light Shatter again for {@dice 1d4} rounds, and its Blinding Halo is extinguished during this time. The halo is restored automatically once the {@dice 1d4} rounds have passed."
+						],
+						"name": "Light Shatter"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"AD",
-				"CC"
-			]
+			}
 		},
 		{
 			"name": "Zinba",
@@ -4208,26 +3983,29 @@
 			"source": "LOME",
 			"page": 308,
 			"level": 10,
-			"rarity": "Rare",
-			"alignment": "N",
-			"size": "Large",
 			"traits": [
-				"Amphibious"
+				"rare",
+				"n",
+				"large",
+				"amphibious",
+				"beast"
 			],
 			"creatureType": [
 				"Beast"
 			],
 			"perception": {
-				"default": 20
+				"std": 20
 			},
-			"senses": {
-				"imprecise": [
-					"scent 60 feet"
-				],
-				"other": [
-					"low-light vision"
-				]
-			},
+			"senses": [
+				{
+					"name": "low-light vision"
+				},
+				{
+					"type": "imprecise",
+					"name": "scent",
+					"range": 60
+				}
+			],
 			"languages": {
 				"languages": [
 					"Sylvan (can't speak any language)"
@@ -4236,39 +4014,38 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 18
+					"std": 18
 				},
 				"Athletics": {
-					"default": 25
+					"std": 25
 				},
 				"Stealth": {
-					"default": 18
+					"std": 18
 				},
 				"Survival": {
-					"default": 18
+					"std": 18
 				}
 			},
 			"abilityMods": {
-				"Str": 8,
-				"Dex": 3,
-				"Con": 7,
-				"Int": -3,
-				"Wis": 3,
-				"Cha": 0
+				"str": 8,
+				"dex": 3,
+				"con": 7,
+				"int": -3,
+				"wis": 3,
+				"cha": 0
 			},
-			"abilitiesTop": [],
 			"ac": {
-				"default": 28
+				"std": 28
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 23
+				"fort": {
+					"std": 23
 				},
-				"Ref": {
-					"default": 20
+				"ref": {
+					"std": 20
 				},
-				"Will": {
-					"default": 18
+				"will": {
+					"std": 18
 				}
 			},
 			"hp": [
@@ -4277,24 +4054,11 @@
 					"abilities": null
 				}
 			],
-			"abilitiesMid": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"trigger": "A creature {@condition grabbed} or {@condition restrained} by the zinba attempts to {@action Escape}",
-					"entries": [
-						"The DC of the {@action Escape} check is increased by 2."
-					],
-					"name": "Tighten Coils"
-				}
-			],
 			"speed": {
 				"walk": 30,
-				"burrow ": 10,
-				"climb ": 30,
-				"swim ": 30
+				"burrow": 10,
+				"climb": 30,
+				"swim": 30
 			},
 			"attacks": [
 				{
@@ -4322,94 +4086,94 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"entries": [
-						"{@damage 2d10+6} bludgeoning, DC 29."
-					],
-					"name": "Greater Constrict",
-					"generic": true
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"entries": [
-						"The zinba {@action Stride||Strides}, Climbs, or Swims up to half its Speed, pulling any creatures it has {@condition grabbed} with it."
-					],
-					"name": "Slither"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"traits": [
-						"attack"
-					],
-					"entries": [
-						"Medium, {@damage 2d10+6} bludgeoning, Rupture 23."
-					],
-					"name": "Swallow Whole",
-					"generic": true
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"traits": [
-						"necromancy",
-						"positive"
-					],
-					"entries": [
-						"The zinba bites a creature within reach and delivers a restorative healing remedy instead of its venom. The creature takes 1 point of piercing damage, but then gains fast healing 5 for 1 minute. In addition, the restorative attempts a counteract check against any poison or disease affecting the creature with a counteract modifier of +22. A creature that receives the restorative is temporarily immune to the zinba's restorative for 24 hours."
-					],
-					"name": "Zinba Restoration"
-				},
-				{
-					"entries": [
-						{
-							"type": "affliction",
-							"traits": [
-								"poison"
-							],
-							"note": "",
-							"DC": 29,
-							"savingThrow": "Fortitude",
-							"maxDuration": "6 rounds",
-							"stages": [
-								{
-									"stage": 1,
-									"entry": "{@damage 3d6} poison ;",
-									"duration": "1 round"
-								}
-							]
-						}
-					],
-					"name": "Zinba Venom"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning",
-					"piercing",
-					"poison"
+			"abilities": {
+				"mid": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"trigger": "A creature {@condition grabbed} or {@condition restrained} by the zinba attempts to {@action Escape}",
+						"entries": [
+							"The DC of the {@action Escape} check is increased by 2."
+						],
+						"name": "Tighten Coils"
+					}
 				],
-				"condition": [
-					"{@condition grabbed}"
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"{@damage 2d10+6} bludgeoning, DC 29."
+						],
+						"name": "Greater Constrict",
+						"generic": true
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"The zinba {@action Stride||Strides}, Climbs, or Swims up to half its Speed, pulling any creatures it has {@condition grabbed} with it."
+						],
+						"name": "Slither"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"attack"
+						],
+						"entries": [
+							"Medium, {@damage 2d10+6} bludgeoning, Rupture 23."
+						],
+						"name": "Swallow Whole",
+						"generic": true
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"necromancy",
+							"positive"
+						],
+						"entries": [
+							"The zinba bites a creature within reach and delivers a restorative healing remedy instead of its venom. The creature takes 1 point of piercing damage, but then gains fast healing 5 for 1 minute. In addition, the restorative attempts a counteract check against any poison or disease affecting the creature with a counteract modifier of +22. A creature that receives the restorative is temporarily immune to the zinba's restorative for 24 hours."
+						],
+						"name": "Zinba Restoration"
+					},
+					{
+						"entries": [
+							{
+								"type": "affliction",
+								"traits": [
+									"poison"
+								],
+								"note": "",
+								"DC": 29,
+								"savingThrow": "Fortitude",
+								"maxDuration": "6 rounds",
+								"stages": [
+									{
+										"stage": 1,
+										"entry": "{@damage 3d6} poison ;",
+										"duration": "1 round"
+									}
+								]
+							}
+						],
+						"name": "Zinba Venom"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"RC",
-				"CC"
-			]
+			}
 		}
 	]
 }
