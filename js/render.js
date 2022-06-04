@@ -378,7 +378,8 @@ function Renderer () {
 					this._renderData(entry, textStack, meta, options);
 					break;
 				case "statblock":
-					console.warn(`Statblock entries should be removed!`)
+					// eslint-disable-next-line no-console
+					console.warn(`Statblock entries should be removed!`);
 					this._renderStatblock(entry, textStack, meta, options);
 					break;
 

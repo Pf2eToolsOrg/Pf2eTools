@@ -770,6 +770,7 @@ class FilterBox extends ProxyBase {
 					if (prefix === VeCt.FILTER_BOX_SUB_HASH_SEARCH_PREFIX) filterInitialSearch = data.clean[0];
 					else filterBoxState[prefix] = data.clean;
 					consumed.add(data.raw);
+				// eslint-disable-next-line no-console
 				} else if (FilterUtil.SUB_HASH_PREFIXES.has(prefix)) console.warn(`Could not find filter with header ${urlHeader} for subhash ${data.raw}`)
 				// FIXME: Removed for sake of traits reference filter working. Also allows for *partially* correct filter tags. Below is what it was.
 				// throw new Error(`Could not find filter with header ${urlHeader} for subhash ${data.raw}`)
