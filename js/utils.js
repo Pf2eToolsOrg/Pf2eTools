@@ -2623,9 +2623,10 @@ DataUtil = {
 
 			function setPropertyFromPath (obj, setTo, path) {
 				const split = path.split(".");
-				if (split.length === 0) obj[path] = setTo;
+				if (split.length === 1) obj[path] = setTo;
 				else {
 					const top = split.shift();
+					if (!MiscUtil.isObject(obj[top])) obj[top] = {};
 					setPropertyFromPath(obj[top], setTo, split.join("."));
 				}
 			}
