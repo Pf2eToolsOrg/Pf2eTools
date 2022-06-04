@@ -296,11 +296,32 @@ Parser.priceToValue = function (price) {
 	if (price.note != null) offset = 0.1;
 	return mult * amount + offset
 };
-Parser.priceToFull = function (price) {
+Parser.priceToFull = function (price, noPlatinum) {
 	if (price == null) return "\u2014";
 	if (typeof price === "object") {
 		if (price.amount == null || price.coin == null) return "\u2014";
 		return `${Parser._addCommas(price.amount)} ${price.coin}${price.note ? ` ${price.note}` : ""}`
+	} else if (typeof price === "number" && !isNaN(price)) {
+		// assume it's all copper (1/100 gp)
+		let coin = "";
+		let divide = 1;
+		if (noPlatinum) {
+			switch (Math.floor(Math.log10(price))) {
+				case 3: case 4: case 5: case 6: case 7: case 8: case 9: case 10:
+				case 2: coin = "gp"; divide = 100; break;
+				case 1: coin = "sp"; divide = 10; break;
+				case 0: coin = "cp"; divide = 1; break;
+			}
+		} else {
+			switch (Math.floor(Math.log10(price))) {
+				case 4: case 5: case 6: case 7: case 8: case 9: case 10:
+				case 3: coin = "pp"; divide = 1000; break;
+				case 2: coin = "gp"; divide = 100; break;
+				case 1: coin = "sp"; divide = 10; break;
+				case 0: coin = "cp"; divide = 1; break;
+			}
+		}
+		return `${Parser._addCommas(price / divide)} ${coin}`
 	}
 	return "\u2014"
 };

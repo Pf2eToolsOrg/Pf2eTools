@@ -53,13 +53,13 @@ class PageFilterItems extends PageFilter {
 			header: "Subcategory",
 			nests: {},
 		});
-		this._damageDiceFilter = new Filter({header: "Damage", itemSortFn: SortUtil.sortDice})
-		this._damageTypeFilter = new Filter({header: "Damage Type", displayFn: (it) => Parser.dmgTypeToFull(it).toTitleCase()})
+		this._damageDiceFilter = new Filter({ header: "Damage", itemSortFn: SortUtil.sortDice })
+		this._damageTypeFilter = new Filter({ header: "Damage Type", displayFn: (it) => Parser.dmgTypeToFull(it).toTitleCase() })
 		this._handsFilter = new Filter({
 			header: "Hands",
 			displayFnMini: (it) => `${it} hand${Number(it) === 1 ? "" : "s"}`,
 		});
-		this._damageFilter = new MultiFilter({header: "Weapon Damage", filters: [this._damageDiceFilter, this._damageTypeFilter, this._handsFilter]})
+		this._damageFilter = new MultiFilter({ header: "Weapon Damage", filters: [this._damageDiceFilter, this._damageTypeFilter, this._handsFilter] })
 		this._groupFilter = new Filter({
 			header: "Group",
 			displayFn: (it) => it.split("|")[0],
@@ -70,32 +70,40 @@ class PageFilterItems extends PageFilter {
 				"Equipment": true,
 			},
 		});
-		// FIXME: A buttload of Undefined's, what the fuck?
 		this._priceFilter = new RangeFilter({
 			header: "Price",
 			isLabelled: true,
 			isAllowGreater: true,
-			labels: [0, 1, 10, 50].concat([1, 5, 10, 25, 50, 75, 100, 250, 500, 1000, 2500, 5000, 10000, 25000, 50000, 100000].map(n => n * 100)),
-			labelDisplayFn: x => `${Parser._addCommas(x / 100)} gp`,
+			labels: Array.from(new Set([
+				0,
+				...[...new Array(9)].map((_, i) => i + 1),
+				...[...new Array(9)].map((_, i) => 10 * (i + 1)),
+				...[...new Array(99)].map((_, i) => 100 * (i + 1)),
+				...[...new Array(99)].map((_, i) => 1000 * (i + 1)),
+				...[...new Array(99)].map((_, i) => 10000 * (i + 1)),
+				...[...new Array(100)].map((_, i) => 100000 * (i + 1)),
+			])),
+			labelDisplayFn: x => Parser.priceToFull(x, true),
 		});
-		this._bulkFilter = new RangeFilter({header: "Bulk",
+		this._bulkFilter = new RangeFilter({
+			header: "Bulk",
 			labels: [],
 			labelDisplayFn: (it) => it === 0.1 ? "L" : it,
 		});
-		this._rangeFilter = new Filter({header: "Weapon Range", items: ["Melee", "Ranged"]});
-		this._shieldACFilter = new Filter({header: "AC Bonus", displayFn: it => `${Parser.numToBonus(it)} AC`});
-		this._hpFilter = new RangeFilter({header: "HP"});
-		this._btFilter = new RangeFilter({header: "BT"});
-		this._hardnessFilter = new RangeFilter({header: "Hardness"});
+		this._rangeFilter = new Filter({ header: "Weapon Range", items: ["Melee", "Ranged"] });
+		this._shieldACFilter = new Filter({ header: "AC Bonus", displayFn: it => `${Parser.numToBonus(it)} AC` });
+		this._hpFilter = new RangeFilter({ header: "HP" });
+		this._btFilter = new RangeFilter({ header: "BT" });
+		this._hardnessFilter = new RangeFilter({ header: "Hardness" });
 		this._shieldDataFilter = new MultiFilter({
 			header: "Shield Stats",
 			filters: [this._shieldACFilter, this._hpFilter, this._btFilter, this._hardnessFilter],
 		});
-		this._ammoFilter = new Filter({header: "Ammunition"});
+		this._ammoFilter = new Filter({ header: "Ammunition" });
 		this._miscFilter = new Filter({
 			header: "Miscellaneous",
 		});
-		this._appliesToFilter = new Filter({header: "Applies to..."});
+		this._appliesToFilter = new Filter({ header: "Applies to..." });
 
 		this._categoriesRuneItems = new Set();
 	}
@@ -110,7 +118,6 @@ class PageFilterItems extends PageFilter {
 		it._fLvl = PageFilterItems._levelValue(it.level);
 		it._fBulk = PageFilterItems._bulkValue(it.bulk);
 		it._sPrice = Parser.priceToValue(it.price);
-
 		// Filters
 		it._fSources = SourceFilter.getCompleteFilterSources(it);
 		it._fType = [];
@@ -137,7 +144,7 @@ class PageFilterItems extends PageFilter {
 			}
 		} else throw new Error(`"${it.name}" has no entries?`)
 		it._fDamage = undefined; // FIXME: set by trait implies
-		this.handleTraitImplies(it, {traitProp: "traits", entityTypes: ["item"]});
+		this.handleTraitImplies(it, { traitProp: "traits", entityTypes: ["item"] });
 		it._fTraits = (it.traits || []).map(t => Parser.getTraitName(t));
 		if (!it._fTraits.map(t => Renderer.trait.isTraitInCategory(t, "Rarity")).some(Boolean)) it._fTraits.push("Common");
 
@@ -154,7 +161,7 @@ class PageFilterItems extends PageFilter {
 		this._traitFilter.addItem(item._fTraits)
 		this._bulkFilter.addItem(item._fBulk);
 		if (item._fSubCategory) {
-			this._subCategoryFilter.addNest(item.category, {isHidden: true})
+			this._subCategoryFilter.addNest(item.category, { isHidden: true })
 			this._subCategoryFilter.addItem(item._fSubCategory);
 		}
 		if (item._fGroup) this._groupFilter.addItem(item._fGroup);
@@ -231,11 +238,11 @@ class ModalFilterBaseItems extends ModalFilter {
 
 	_$getColumnHeaders () {
 		const btnMeta = [
-			{sort: "name", text: "Name", width: "4-2"},
-			{sort: "category", text: "Category", width: "2-2"},
-			{sort: "price", text: "Price", width: "2"},
-			{sort: "bulk", text: "Bulk", width: "1-3"},
-			{sort: "source", text: "Source", width: "1-3"},
+			{ sort: "name", text: "Name", width: "4-2" },
+			{ sort: "category", text: "Category", width: "2-2" },
+			{ sort: "price", text: "Price", width: "2" },
+			{ sort: "bulk", text: "Bulk", width: "1-3" },
+			{ sort: "source", text: "Source", width: "1-3" },
 		];
 		return ModalFilter._$getFilterColumnHeaders(btnMeta);
 	}
