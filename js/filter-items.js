@@ -72,16 +72,16 @@ class PageFilterItems extends PageFilter {
 		});
 		this._priceFilter = new RangeFilter({
 			header: "Price",
-			isLabelled: true,
 			isAllowGreater: true,
+			isLabelled: true,
+			isSparseLabels: true,
 			labels: Array.from(new Set([
 				0,
-				...[...new Array(9)].map((_, i) => i + 1),
-				...[...new Array(9)].map((_, i) => 10 * (i + 1)),
-				...[...new Array(99)].map((_, i) => 100 * (i + 1)),
-				...[...new Array(99)].map((_, i) => 1000 * (i + 1)),
-				...[...new Array(99)].map((_, i) => 10000 * (i + 1)),
-				...[...new Array(100)].map((_, i) => 100000 * (i + 1)),
+				...[...new Array(10)].map((_, i) => i + 1),
+				...[...new Array(10)].map((_, i) => 10 * (i + 1)),
+				...[...new Array(100)].map((_, i) => 100 * (i + 1)),
+				...[...new Array(100)].map((_, i) => 1000 * (i + 1)),
+				...[...new Array(100)].map((_, i) => 10000 * (i + 1)),
 			])),
 			labelDisplayFn: x => Parser.priceToFull(x, true),
 		});
@@ -117,7 +117,8 @@ class PageFilterItems extends PageFilter {
 		// Sorting
 		it._fLvl = PageFilterItems._levelValue(it.level);
 		it._fBulk = PageFilterItems._bulkValue(it.bulk);
-		it._sPrice = Parser.priceToValue(it.price);
+		it._sPrice = Math.floor(Parser.priceToValue(it.price));
+
 		// Filters
 		it._fSources = SourceFilter.getCompleteFilterSources(it);
 		it._fType = [];
