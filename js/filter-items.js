@@ -117,7 +117,7 @@ class PageFilterItems extends PageFilter {
 		// Sorting
 		it._fLvl = PageFilterItems._levelValue(it.level);
 		it._fBulk = PageFilterItems._bulkValue(it.bulk);
-		it._sPrice = Math.floor(Parser.priceToValue(it.price));
+		it._sPrice = Parser.priceToValue(it.price);
 
 		// Filters
 		it._fSources = SourceFilter.getCompleteFilterSources(it);
