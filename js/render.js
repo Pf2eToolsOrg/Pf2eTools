@@ -3552,26 +3552,29 @@ Renderer.action = {
 				renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Archetype&nbsp;</strong>${renderer.render(`${it.actionType.archetype.map(a => `{@archetype ${a}}`).join(", ")}`)}</p>`);
 			}
 			if (it.actionType.ancestry || it.actionType.heritage || it.actionType.versatileHeritage) {
-				// Honestly speaking, just bullshit that prepares the source strings to be actually easy to work with
-				ancestryName = it.actionType.ancestry ? it.actionType.ancestry.split(`|`)[0] : null
-				ancestrySource = it.actionType.ancestry ? it.actionType.ancestry.split(`|`)[1] || "" : ""
-				heritageName = it.actionType.heritage ? it.actionType.heritage.split(`|`)[0] : null
-				heritageSource = it.actionType.heritage ? it.actionType.heritage.split(`|`)[1] || "" : ""
-				versatileHeritageName = it.actionType.versatileHeritage ? it.actionType.versatileHeritage.split(`|`)[0] : null
-				versatileHeritageSource = it.actionType.versatileHeritage ? it.actionType.versatileHeritage.split(`|`)[1] || "" : ""
-
-				// The Actual Rendering Magic
 				if (it.actionType.ancestry) {
-					renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Ancestry&nbsp;</strong>${renderer.render(`{@ancestry ${ancestryName}|${ancestrySource}|`)}`);
-					if (it.actionType.heritage || it.actionType.versatileHeritage) renderStack.push(`; `)
+					it.actionType.ancestry.forEach(a => {
+						ancestryName = a ? a.split(`|`)[0] : null
+						ancestrySource = a ? a.split(`|`)[1] || "" : ""
+						renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Ancestry&nbsp;</strong>${renderer.render(`{@ancestry ${ancestryName}|${ancestrySource}|`)}`);
+						if (it.actionType.heritage || it.actionType.versatileHeritage) renderStack.push(`; `)
+					})
 				}
 				if (it.actionType.heritage) {
-					renderStack.push(`<strong>Heritage&nbsp;</strong>${renderer.render(`{@ancestry ${ancestryName}|${ancestrySource}|${heritageName}|${heritageName}|${heritageSource}|}`)}`);
-					if (it.actionType.versatileHeritage) renderStack.push(`; `)
+					it.actionType.heritage.forEach(h => {
+						heritageName = h ? h.split(`|`)[0] : null
+						heritageSource = h ? h.split(`|`)[1] || "" : ""
+						renderStack.push(`<strong>Heritage&nbsp;</strong>${renderer.render(`{@ancestry ${ancestryName}|${ancestrySource}|${heritageName}|${heritageName}|${heritageSource}|}`)}`);
+						if (it.actionType.versatileHeritage) renderStack.push(`; `)
+					})
 				}
 				if (it.actionType.versatileHeritage) {
-					if (!it.actionType.ancestry) renderStack.push(`<p class="pf2-stat pf2-stat__section">`);
-					renderStack.push(`<strong>Versatile Heritage&nbsp;</strong>${renderer.render(`{@ancestry ${ancestryName ? `${ancestryName}|${ancestrySource}` : "Human|CRB"}|${versatileHeritageName}|${versatileHeritageName}|${versatileHeritageSource}|}`)}`);
+					it.actionType.versatileHeritage.forEach(v => {
+						versatileHeritageName = v ? v.split(`|`)[0] : null
+						versatileHeritageSource = v ? v.split(`|`)[1] || "" : ""
+						if (!it.actionType.ancestry) renderStack.push(`<p class="pf2-stat pf2-stat__section">`);
+						renderStack.push(`<strong>Versatile Heritage&nbsp;</strong>${renderer.render(`{@ancestry ${ancestryName ? `${ancestryName}|${ancestrySource}` : "Human|CRB"}|${versatileHeritageName}|${versatileHeritageName}|${versatileHeritageSource}|}`)}`);
+					})
 				}
 				renderStack.push(`</p>`)
 			}
@@ -3936,17 +3939,17 @@ Renderer.creature = {
 			${Renderer.creature.getLanguages(cr)}
 			${Renderer.creature.getSkills(cr)}
 			${Renderer.creature.getAbilityMods(cr.abilityMods)}
-			${cr.abilities && cr.abilities.top ? cr.abilities.top.map(it => Renderer.creature.getRenderedAbility(it, {noButton: true})) : ""}
+			${cr.abilities && cr.abilities.top ? cr.abilities.top.map(it => Renderer.creature.getRenderedAbility(it, { noButton: true })) : ""}
 			${Renderer.creature.getItems(cr)}
 			${Renderer.utils.getDividerDiv()}
 			${Renderer.creature.getDefenses(cr)}
-			${cr.abilities && cr.abilities.mid ? cr.abilities.mid.map(it => Renderer.creature.getRenderedAbility(it, {noButton: true})) : ""}
+			${cr.abilities && cr.abilities.mid ? cr.abilities.mid.map(it => Renderer.creature.getRenderedAbility(it, { noButton: true })) : ""}
 			${Renderer.utils.getDividerDiv()}
 			${Renderer.creature.getSpeed(cr)}
 			${Renderer.creature.getAttacks(cr)}
 			${Renderer.creature.getSpellCasting(cr)}
 			${Renderer.creature.getRituals(cr)}
-			${cr.abilities && cr.abilities.bot ? cr.abilities.bot.map(it => Renderer.creature.getRenderedAbility(it, {noButton: true})) : ""}
+			${cr.abilities && cr.abilities.bot ? cr.abilities.bot.map(it => Renderer.creature.getRenderedAbility(it, { noButton: true })) : ""}
 			${opts.noPage ? "" : Renderer.utils.getPageP(cr)}</div>`;
 	},
 
@@ -3955,7 +3958,7 @@ Renderer.creature = {
 		const perception = cr.perception;
 		const senses = cr.senses || [];
 		const rdPerception = renderer.render(`{@d20 ${perception.std}||Perception}`);
-		const rdOtherPerception = Renderer.utils.getNotes(perception, {exclude: ["std"], dice: {name: "Perception"}});
+		const rdOtherPerception = Renderer.utils.getNotes(perception, { exclude: ["std"], dice: { name: "Perception" } });
 		const rdSenses = renderer.renderJoinCommaOrSemi(senses.map(s => `${s.name}${s.type ? ` (${s.type})` : ""}${s.range != null ? ` ${s.range} feet` : ""}`));
 		return `<p class="pf2-stat pf2-stat__section"><strong>Perception&nbsp;</strong>${rdPerception}${rdOtherPerception}${rdSenses.length ? "; " : ""}${rdSenses}</p>`;
 	},

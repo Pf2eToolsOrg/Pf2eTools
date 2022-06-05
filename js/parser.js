@@ -1233,7 +1233,7 @@ SRC_LOTGB = "LOTGB"
 SRC_LOMM = "LOMM"
 SRC_LOKL = "LOKL"
 SRC_LOTG = "LOTG"
-SRC_BTD = "BTD"
+SRC_BD = "BD"
 SRC_AOA0 = "AoA0";
 SRC_AOA1 = "AoA1";
 SRC_AOA2 = "AoA2";
@@ -1270,6 +1270,14 @@ SRC_SOT3 = "SoT3";
 SRC_SOT4 = "SoT4";
 SRC_SOT5 = "SoT5";
 SRC_SOT6 = "SoT6";
+SRC_OoA0 = "OoA0";
+SRC_OoA1 = "OoA1";
+SRC_OoA2 = "OoA2";
+SRC_OoA3 = "OoA3";
+SRC_QFF0 = "QFF0";
+SRC_QFF1 = "QFF1";
+SRC_QFF2 = "QFF2";
+SRC_QFF3 = "QFF3";
 SRC_SLI = "Sli";
 SRC_NGD = "NGD";
 SRC_FOP = "FoP";
@@ -1299,6 +1307,12 @@ AoA_PREFIX_SHORT = "AoA: "
 SoT_PREFIX = "Strength of Thousands: "
 SoT_PREFIX_SHORT = "SoT: "
 
+OoA_PREFIX = "Outlaws of Alkenstar: "
+OoA_PREFIX_SHORT = "OoA: "
+
+OoA_PREFIX = "Quest for the Frozen Flame: "
+OoA_PREFIX_SHORT = "QFF: "
+
 LO_PREFIX = "Lost Omens: ";
 LO_PREFIX_SHORT = "LO: ";
 
@@ -1309,6 +1323,8 @@ Parser.COMPACT_PREFIX_MAP = [
 	{re: /Extinction Curse #(\d): /, replaceWith: "EC$1: "},
 	{re: /Age of Ashes #(\d): /, replaceWith: "AoA$1: "},
 	{re: /Strength of Thousands #(\d): /, replaceWith: "SoT$1: "},
+	{re: /Outlaws of Alkenstar #(\d): /, replaceWith: "OoA$1: "},
+	{re: /Quest for the Frozen Flame #(\d): /, replaceWith: "QFF$1: "},
 ];
 
 Parser.SOURCE_PREFIX_TO_SHORT = {};
@@ -1320,6 +1336,7 @@ Parser.SOURCE_PREFIX_TO_SHORT[AoE_PREFIX] = AoE_PREFIX_SHORT;
 Parser.SOURCE_PREFIX_TO_SHORT[EC_PREFIX] = EC_PREFIX_SHORT;
 Parser.SOURCE_PREFIX_TO_SHORT[AoA_PREFIX] = AoA_PREFIX_SHORT;
 Parser.SOURCE_PREFIX_TO_SHORT[SoT_PREFIX] = SoT_PREFIX_SHORT;
+Parser.SOURCE_PREFIX_TO_SHORT[OoA_PREFIX] = OoA_PREFIX_SHORT;
 // Turn JSON to Full Title
 Parser.SOURCE_JSON_TO_FULL = {};
 Parser.SOURCE_JSON_TO_FULL[SRC_CRB] = "Core Rulebook";
@@ -1342,7 +1359,7 @@ Parser.SOURCE_JSON_TO_FULL[SRC_AAWS] = "Azarketi Ancestry Web Supplement";
 Parser.SOURCE_JSON_TO_FULL[SRC_GNG] = "Guns & Gears";
 Parser.SOURCE_JSON_TO_FULL[SRC_LOTGB] = "Lost Omens: The Grand Bazaar";
 Parser.SOURCE_JSON_TO_FULL[SRC_LOMM] = "Lost Omens: Monsters of Myth";
-Parser.SOURCE_JSON_TO_FULL[SRC_BTD] = "Book of the Dead";
+Parser.SOURCE_JSON_TO_FULL[SRC_BD] = "Book of the Dead";
 Parser.SOURCE_JSON_TO_FULL[SRC_LOTG] = "Lost Omens: Travel Guide";
 Parser.SOURCE_JSON_TO_FULL[SRC_LOKL] = "Lost Omens: Knights of Lastwall";
 
@@ -1389,6 +1406,16 @@ Parser.SOURCE_JSON_TO_FULL[SRC_SOT4] = "Strength of Thousands #4: Secrets of the
 Parser.SOURCE_JSON_TO_FULL[SRC_SOT5] = "Strength of Thousands #5: Doorway to the Red Star";
 Parser.SOURCE_JSON_TO_FULL[SRC_SOT6] = "Strength of Thousands #6: Shadows of the Ancients";
 
+Parser.SOURCE_JSON_TO_FULL[SRC_OoA0] = "Outlaws of Alkenstar Player's Guide";
+Parser.SOURCE_JSON_TO_FULL[SRC_OoA1] = "Outlaws of Alkenstar #1: Punks in a Powder Keg";
+Parser.SOURCE_JSON_TO_FULL[SRC_OoA2] = "Outlaws of Alkenstar #2: Cradle of Quartz";
+Parser.SOURCE_JSON_TO_FULL[SRC_OoA3] = "Outlaws of Alkenstar #3: The Smoking Gun";
+
+Parser.SOURCE_JSON_TO_FULL[SRC_QFF0] = "Quest for the Frozen Flame Player's Guide";
+Parser.SOURCE_JSON_TO_FULL[SRC_QFF1] = "Quest for the Frozen Flame #1: Broken Tusk Moon";
+Parser.SOURCE_JSON_TO_FULL[SRC_QFF2] = "Quest for the Frozen Flame #2: Lost Mammoth Valley";
+Parser.SOURCE_JSON_TO_FULL[SRC_QFF3] = "Quest for the Frozen Flame #3: Burning Tundra";
+
 Parser.SOURCE_JSON_TO_FULL[SRC_SLI] = "The Slithering";
 Parser.SOURCE_JSON_TO_FULL[SRC_NGD] = "Night of the Gray Death";
 Parser.SOURCE_JSON_TO_FULL[SRC_FOP] = "The Fall of Plaguestone";
@@ -1416,7 +1443,7 @@ Parser.SOURCE_JSON_TO_ABV[SRC_AAWS] = "AAWS";
 Parser.SOURCE_JSON_TO_ABV[SRC_GNG] = "G&G";
 Parser.SOURCE_JSON_TO_ABV[SRC_LOTGB] = "LOTGB";
 Parser.SOURCE_JSON_TO_ABV[SRC_LOMM] = "LOMM";
-Parser.SOURCE_JSON_TO_ABV[SRC_BTD] = "BTD";
+Parser.SOURCE_JSON_TO_ABV[SRC_BD] = "BD";
 Parser.SOURCE_JSON_TO_ABV[SRC_LOTG] = "LOTG";
 Parser.SOURCE_JSON_TO_ABV[SRC_LOKL] = "LOKL";
 
@@ -1463,6 +1490,16 @@ Parser.SOURCE_JSON_TO_ABV[SRC_SOT4] = "SoT4";
 Parser.SOURCE_JSON_TO_ABV[SRC_SOT5] = "SoT5";
 Parser.SOURCE_JSON_TO_ABV[SRC_SOT6] = "SoT6";
 
+Parser.SOURCE_JSON_TO_ABV[SRC_OoA0] = "OoA0";
+Parser.SOURCE_JSON_TO_ABV[SRC_OoA1] = "OoA1";
+Parser.SOURCE_JSON_TO_ABV[SRC_OoA2] = "OoA2";
+Parser.SOURCE_JSON_TO_ABV[SRC_OoA3] = "OoA3";
+
+Parser.SOURCE_JSON_TO_ABV[SRC_QFF0] = "QFF0";
+Parser.SOURCE_JSON_TO_ABV[SRC_QFF1] = "QFF1";
+Parser.SOURCE_JSON_TO_ABV[SRC_QFF2] = "QFF2";
+Parser.SOURCE_JSON_TO_ABV[SRC_QFF3] = "QFF3";
+
 Parser.SOURCE_JSON_TO_ABV[SRC_SLI] = "Sli";
 Parser.SOURCE_JSON_TO_ABV[SRC_NGD] = "NGD";
 Parser.SOURCE_JSON_TO_ABV[SRC_FOP] = "FoP";
@@ -1490,7 +1527,7 @@ Parser.SOURCE_JSON_TO_DATE[SRC_SOM] = "2021-08-25";
 Parser.SOURCE_JSON_TO_DATE[SRC_GNG] = "2021-10-13";
 Parser.SOURCE_JSON_TO_DATE[SRC_LOTGB] = "2021-10-13";
 Parser.SOURCE_JSON_TO_DATE[SRC_LOMM] = "2021-12-22";
-Parser.SOURCE_JSON_TO_DATE[SRC_BTD] = "2022-04-27";
+Parser.SOURCE_JSON_TO_DATE[SRC_BD] = "2022-04-27";
 // Turn JSON to Paizo Store
 Parser.SOURCE_JSON_TO_STORE = {};
 Parser.SOURCE_JSON_TO_STORE[SRC_CRB] = "https://paizo.com/products/btq01zp3";
@@ -1513,7 +1550,7 @@ Parser.SOURCE_JSON_TO_STORE[SRC_SOM] = "https://paizo.com/products/btq027uy";
 Parser.SOURCE_JSON_TO_STORE[SRC_GNG] = "https://paizo.com/products/btq026mw";
 Parser.SOURCE_JSON_TO_STORE[SRC_LOTGB] = "https://paizo.com/products/btq027kc";
 Parser.SOURCE_JSON_TO_STORE[SRC_LOMM] = "https://paizo.com/products/btq027u2";
-Parser.SOURCE_JSON_TO_STORE[SRC_BTD] = "https://paizo.com/products/btq02c0j";
+Parser.SOURCE_JSON_TO_STORE[SRC_BD] = "https://paizo.com/products/btq02c0j";
 Parser.SOURCE_JSON_TO_STORE[SRC_LOTG] = "https://paizo.com/products/btq02c20";
 Parser.SOURCE_JSON_TO_STORE[SRC_LOKL] = "https://paizo.com/products/btq02c3a";
 // Adventure Paths
@@ -1558,6 +1595,16 @@ Parser.SOURCE_JSON_TO_STORE[SRC_SOT3] = "https://paizo.com/products/btq027kb";
 Parser.SOURCE_JSON_TO_STORE[SRC_SOT4] = "https://paizo.com/products/btq027nz";
 Parser.SOURCE_JSON_TO_STORE[SRC_SOT5] = "https://paizo.com/products/btq027s2";
 Parser.SOURCE_JSON_TO_STORE[SRC_SOT6] = "https://paizo.com/products/btq027u1";
+
+Parser.SOURCE_JSON_TO_STORE[SRC_OoA0] = "https://paizo.com/community/blog/v5748dyo6si08";
+Parser.SOURCE_JSON_TO_STORE[SRC_OoA1] = "https://paizo.com/products/btq02ajl";
+Parser.SOURCE_JSON_TO_STORE[SRC_OoA2] = "https://paizo.com/products/btq02am3";
+Parser.SOURCE_JSON_TO_STORE[SRC_OoA3] = "https://paizo.com/products/btq02aot";
+
+Parser.SOURCE_JSON_TO_STORE[SRC_QFF0] = "https://paizo.com/community/blog/v5748dyo6shx3";
+Parser.SOURCE_JSON_TO_STORE[SRC_QFF1] = "https://paizo.com/products/btq02asv";
+Parser.SOURCE_JSON_TO_STORE[SRC_QFF2] = "https://paizo.com/products/btq029ud";
+Parser.SOURCE_JSON_TO_STORE[SRC_QFF3] = "https://paizo.com/products/btq029wg";
 
 Parser.SOURCE_JSON_TO_STORE[SRC_SLI] = "https://paizo.com/products/btq023hg";
 Parser.SOURCE_JSON_TO_STORE[SRC_NGD] = "https://paizo.com/products/btq027o0";
@@ -1607,6 +1654,14 @@ Parser.SOURCES_ADVENTURES = new Set([
 	SRC_LTIBA,
 	SRC_FOP,
 	SRC_TIO,
+	SRC_OoA0,
+	SRC_OoA1,
+	SRC_OoA2,
+	SRC_OoA3,
+	SRC_QFF0,
+	SRC_QFF1,
+	SRC_QFF2,
+	SRC_QFF3,
 ]);
 Parser.SOURCES_CORE_SUPPLEMENTS = new Set(Object.keys(Parser.SOURCE_JSON_TO_FULL).filter(it => !Parser.SOURCES_ADVENTURES.has(it)));
 Parser.SOURCES_VANILLA = new Set([SRC_CRB, SRC_BST, SRC_GMG, SRC_APG, SRC_SOM, SRC_GNG]);
@@ -1628,7 +1683,7 @@ Parser.SOURCES_AVAILABLE_DOCS_BOOK = {};
 	SRC_GNG,
 	SRC_LOTGB,
 	SRC_LOMM,
-	SRC_BTD,
+	SRC_BD,
 	SRC_LOTG,
 	SRC_LOKL,
 ].forEach(src => {
