@@ -6355,7 +6355,7 @@ Renderer.hover = {
 							<title>${opts.title}</title>
 							${$(`link[rel="stylesheet"][href]`).map((i, e) => e.outerHTML).get().join("\n")}
 							<!-- Favicons -->
-							<link rel="icon" type="image/svg+xml" href="favicon.svg?v=1.115">
+							<link rel="icon" type="image/svg+xml" href="favicon.svg">
 							<link rel="icon" type="image/png" sizes="256x256" href="favicon-256x256.png">
 							<link rel="icon" type="image/png" sizes="144x144" href="favicon-144x144.png">
 							<link rel="icon" type="image/png" sizes="128x128" href="favicon-128x128.png">

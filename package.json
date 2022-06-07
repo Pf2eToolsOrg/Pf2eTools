@@ -1,7 +1,7 @@
 {
 	"name": "pf2etools",
 	"author": "Pf2eTools",
-	"version": "0.4.1",
+	"version": "0.4.3",
 	"license": "MIT",
 	"description": "A site dedicated to making playing games with your friends as easy as possible.",
 	"scripts": {
@@ -25,9 +25,10 @@
 		"build:deploy:prod:cdn": "bash build/deploy-prep-prod--cdn.sh",
 		"build:deploy:prod:gtag": "bash build/deploy-prep-prod--gtag.sh",
 		"build:seo": "node node/generate-seo.js",
-		"build:sw": "node node/generate-service-worker.js",
-		"build": "npm run clean-jsons && npm run gen-all && npm run build:css && npm run build:sw",
 		"preversion": "npm test",
+		"build:sw": "node node/build-sw.mjs",
+		"build:sw:prod": "node node/build-sw.mjs prod",
+		"build": "npm run clean-jsons && npm run gen-all && npm run build:css && npm run build:sw:prod",
 		"version": "node node/version-bump.js"
 	},
 	"repository": {
@@ -36,18 +37,22 @@
 	},
 	"devDependencies": {
 		"ajv": "^8.6.0",
-		"eslint": "^7.28.0",
+		"esbuild": "^0.14.38",
+		"eslint": "^8.5.0",
 		"http-server": "^14.1.0",
+		"json-source-map": "^0.6.1",
 		"node-sass": "^7.0.1",
 		"postcss": "^8.3.4",
 		"postcss-cli": "^8.3.1",
 		"postcss-syntax": "^0.36.2",
 		"probe-image-size": "^7.2.1",
 		"readline-sync": "^1.4.10",
+		"sass": "^1.45.0",
 		"simple-git": "^3.5.0",
 		"stylelint": "^13.13.1",
 		"stylelint-config-sass-guidelines": "^7.1.0",
 		"terser": "^5.9.0",
+		"workbox-cli": "^6.5.3",
 		"xmlbuilder": "^15.1.1"
 	},
 	"bugs": {
