@@ -149,10 +149,11 @@ class NavBar {
 				title: "Add the site to your home screen. When used in conjunction with the Preload Offline Data option, this can create a functional offline copy of the site.",
 			},
 		);
+		this._addElement_divider(NavBar._CAT_SETTINGS);
 		this._addElement_button(
 			NavBar._CAT_SETTINGS,
 			{
-				html: "Preload Images <small>(~23 MB)</small>",
+				html: "Preload Images <small class=\"help--subtle\">(~23 MB)</small>",
 				click: (evt) => NavBar.InteractionManager._pOnClick_button_preloadOffline(evt, /./),
 				title: "Preload all images for offline use. Mainly books covers.",
 			},
