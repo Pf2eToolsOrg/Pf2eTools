@@ -6,6 +6,9 @@
 	"description": "A site dedicated to making playing games with your friends as easy as possible.",
 	"scripts": {
 		"serve:dev": "http-server -c-1 --cors",
+		"build": "npm run clean-jsons && npm run gen-all && npm run build:css && npm run build:sw:prod",
+		"build:sw": "node node/build-sw.mjs",
+		"build:sw:prod": "node node/build-sw.mjs prod",
 		"version-bump": "npm version -m \"chore(version): bump\"",
 		"gen-all": "node node/generate-all.js",
 		"clean-jsons": "node node/clean-jsons.js",
@@ -23,12 +26,8 @@
 		"build:deploy:dev": "bash build/deploy-prep-dev.sh",
 		"build:deploy:prod": "bash build/deploy-prep-prod.sh",
 		"build:deploy:prod:cdn": "bash build/deploy-prep-prod--cdn.sh",
-		"build:deploy:prod:gtag": "bash build/deploy-prep-prod--gtag.sh",
 		"build:seo": "node node/generate-seo.js",
 		"preversion": "npm test",
-		"build:sw": "node node/build-sw.mjs",
-		"build:sw:prod": "node node/build-sw.mjs prod",
-		"build": "npm run clean-jsons && npm run gen-all && npm run build:css && npm run build:sw:prod",
 		"version": "node node/version-bump.js"
 	},
 	"repository": {
