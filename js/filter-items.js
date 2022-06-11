@@ -20,25 +20,6 @@ class PageFilterItems extends PageFilter {
 		return 0;
 	}
 
-	static _priceCategory (value) {
-		if (typeof value !== "number") return "0 gp";
-		if (value === 0) return "0 gp";
-		else if (value <= 5 * 100) return "5 gp";
-		else if (value <= 10 * 100) return "10 gp";
-		else if (value <= 50 * 100) return "50 gp";
-		else if (value <= 100 * 100) return "100 gp";
-		else if (value <= 500 * 100) return "500 gp";
-		else if (value <= 750 * 100) return "750 gp";
-		else if (value <= 1000 * 100) return "1,000 gp";
-		else if (value <= 2500 * 100) return "2,500 gp";
-		else if (value <= 5000 * 100) return "5,000 gp";
-		else if (value <= 10000 * 100) return "10,000 gp";
-		else if (value <= 25000 * 100) return "25,000 gp";
-		else if (value <= 50000 * 100) return "50,000 gp";
-		else if (value <= 100000 * 100) return "100,000 gp";
-		else return "100,000+ gp";
-	}
-
 	static sortItems (a, b, o) {
 		if (o.sortBy === "name") return SortUtil.compareListNames(a, b);
 		else if (o.sortBy === "category") return SortUtil.ascSortLower(a.values.category, b.values.category) || SortUtil.compareListNames(a, b);
@@ -72,13 +53,13 @@ class PageFilterItems extends PageFilter {
 			header: "Subcategory",
 			nests: {},
 		});
-		this._damageDiceFilter = new Filter({header: "Damage", itemSortFn: SortUtil.sortDice})
-		this._damageTypeFilter = new Filter({header: "Damage Type", displayFn: (it) => Parser.dmgTypeToFull(it).toTitleCase()})
+		this._damageDiceFilter = new Filter({ header: "Damage", itemSortFn: SortUtil.sortDice })
+		this._damageTypeFilter = new Filter({ header: "Damage Type", displayFn: (it) => Parser.dmgTypeToFull(it).toTitleCase() })
 		this._handsFilter = new Filter({
 			header: "Hands",
 			displayFnMini: (it) => `${it} hand${Number(it) === 1 ? "" : "s"}`,
 		});
-		this._damageFilter = new MultiFilter({header: "Weapon Damage", filters: [this._damageDiceFilter, this._damageTypeFilter, this._handsFilter]})
+		this._damageFilter = new MultiFilter({ header: "Weapon Damage", filters: [this._damageDiceFilter, this._damageTypeFilter, this._handsFilter] })
 		this._groupFilter = new Filter({
 			header: "Group",
 			displayFn: (it) => it.split("|")[0],
@@ -91,25 +72,38 @@ class PageFilterItems extends PageFilter {
 		});
 		this._priceFilter = new RangeFilter({
 			header: "Price",
+			isAllowGreater: true,
 			isLabelled: true,
-			labels: ["0 gp", "5 gp", "10 gp", "50 gp", "100 gp", "250 gp", "500 gp", "750 gp", "1,000 gp", "2,500 gp", "5,000 gp", "10,000 gp", "25,000 gp", "50,000 gp", "100,000 gp", "100,000+ gp"],
-			labelSortFn: null,
+			isSparseLabels: true,
+			labels: Array.from(new Set([
+				0,
+				...[...new Array(10)].map((_, i) => i + 1),
+				...[...new Array(10)].map((_, i) => 10 * (i + 1)),
+				...[...new Array(100)].map((_, i) => 100 * (i + 1)),
+				...[...new Array(100)].map((_, i) => 1000 * (i + 1)),
+				...[...new Array(100)].map((_, i) => 10000 * (i + 1)),
+			])),
+			labelDisplayFn: x => Parser.priceToFull(x, true),
 		});
-		this._bulkFilter = new RangeFilter({header: "Bulk"});
-		this._rangeFilter = new Filter({header: "Weapon Range", items: ["Melee", "Ranged"]});
-		this._shieldACFilter = new Filter({header: "AC Bonus", displayFn: it => `${Parser.numToBonus(it)} AC`});
-		this._hpFilter = new RangeFilter({header: "HP"});
-		this._btFilter = new RangeFilter({header: "BT"});
-		this._hardnessFilter = new RangeFilter({header: "Hardness"});
+		this._bulkFilter = new RangeFilter({
+			header: "Bulk",
+			labels: [],
+			labelDisplayFn: (it) => it === 0.1 ? "L" : it,
+		});
+		this._rangeFilter = new Filter({ header: "Weapon Range", items: ["Melee", "Ranged"] });
+		this._shieldACFilter = new Filter({ header: "AC Bonus", displayFn: it => `${Parser.numToBonus(it)} AC` });
+		this._hpFilter = new RangeFilter({ header: "HP" });
+		this._btFilter = new RangeFilter({ header: "BT" });
+		this._hardnessFilter = new RangeFilter({ header: "Hardness" });
 		this._shieldDataFilter = new MultiFilter({
 			header: "Shield Stats",
 			filters: [this._shieldACFilter, this._hpFilter, this._btFilter, this._hardnessFilter],
 		});
-		this._ammoFilter = new Filter({header: "Ammunition"});
+		this._ammoFilter = new Filter({ header: "Ammunition" });
 		this._miscFilter = new Filter({
 			header: "Miscellaneous",
 		});
-		this._appliesToFilter = new Filter({header: "Applies to..."});
+		this._appliesToFilter = new Filter({ header: "Applies to..." });
 
 		this._categoriesRuneItems = new Set();
 	}
@@ -139,7 +133,6 @@ class PageFilterItems extends PageFilter {
 		it._fGroup = [it.group, it._fweaponData.group, it._fcomboWeaponData.group, it._farmorData.group, it._fshieldData.group].filter(Boolean);
 		it._fWeaponRange = it.category === "Weapon" ? [it._fweaponData.range ? "Ranged" : "Melee", it._fcomboWeaponData ? it._fcomboWeaponData.range ? "Ranged" : "Melee" : null] : null;
 		it._fHands = [it.hands, it._fweaponData.hands, it._fcomboWeaponData.hands].filter(Boolean).map(it => String(it));
-		it._fPrice = PageFilterItems._priceCategory(it._sPrice);
 		it._fMisc = [];
 		if (it.entries) {
 			for (let entry of it.entries) {
@@ -152,7 +145,7 @@ class PageFilterItems extends PageFilter {
 			}
 		} else throw new Error(`"${it.name}" has no entries?`)
 		it._fDamage = undefined; // FIXME: set by trait implies
-		this.handleTraitImplies(it, {traitProp: "traits", entityTypes: ["item"]});
+		this.handleTraitImplies(it, { traitProp: "traits", entityTypes: ["item"] });
 		it._fTraits = (it.traits || []).map(t => Parser.getTraitName(t));
 		if (!it._fTraits.map(t => Renderer.trait.isTraitInCategory(t, "Rarity")).some(Boolean)) it._fTraits.push("Common");
 
@@ -167,10 +160,9 @@ class PageFilterItems extends PageFilter {
 		this._levelFilter.addItem(Math.floor(item._fLvl));
 		this._categoryFilter.addItem(item.category);
 		this._traitFilter.addItem(item._fTraits)
-		this._priceFilter.addItem(item._fPrice);
 		this._bulkFilter.addItem(item._fBulk);
 		if (item._fSubCategory) {
-			this._subCategoryFilter.addNest(item.category, {isHidden: true})
+			this._subCategoryFilter.addNest(item.category, { isHidden: true })
 			this._subCategoryFilter.addItem(item._fSubCategory);
 		}
 		if (item._fGroup) this._groupFilter.addItem(item._fGroup);
@@ -193,13 +185,13 @@ class PageFilterItems extends PageFilter {
 			this._typeFilter,
 			this._categoryFilter,
 			this._subCategoryFilter,
+			this._priceFilter,
+			this._bulkFilter,
 			this._damageFilter,
 			this._groupFilter,
 			this._rangeFilter,
 			this._traitFilter,
-			this._priceFilter,
 			this._miscFilter,
-			this._bulkFilter,
 			this._shieldDataFilter,
 			this._appliesToFilter,
 		];
@@ -213,6 +205,8 @@ class PageFilterItems extends PageFilter {
 			it._fType,
 			it.category,
 			it._fSubCategory,
+			it._sPrice,
+			it._fBulk,
 			[
 				[it._fweaponData.damage, it._fcomboWeaponData.damage],
 				[it._fweaponData.damageType, it._fcomboWeaponData.damageType],
@@ -221,9 +215,7 @@ class PageFilterItems extends PageFilter {
 			it._fGroup,
 			it._fWeaponRange,
 			it._fTraits,
-			it._fPrice,
 			it._fMisc,
-			it._fBulk,
 			[
 				it._fshieldData.ac,
 				it._fshieldData.hp,
@@ -247,11 +239,11 @@ class ModalFilterBaseItems extends ModalFilter {
 
 	_$getColumnHeaders () {
 		const btnMeta = [
-			{sort: "name", text: "Name", width: "4-2"},
-			{sort: "category", text: "Category", width: "2-2"},
-			{sort: "price", text: "Price", width: "2"},
-			{sort: "bulk", text: "Bulk", width: "1-3"},
-			{sort: "source", text: "Source", width: "1-3"},
+			{ sort: "name", text: "Name", width: "4-2" },
+			{ sort: "category", text: "Category", width: "2-2" },
+			{ sort: "price", text: "Price", width: "2" },
+			{ sort: "bulk", text: "Bulk", width: "1-3" },
+			{ sort: "source", text: "Source", width: "1-3" },
 		];
 		return ModalFilter._$getFilterColumnHeaders(btnMeta);
 	}

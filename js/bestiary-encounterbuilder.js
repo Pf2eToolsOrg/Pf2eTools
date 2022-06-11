@@ -466,7 +466,7 @@ class EncounterBuilder extends ProxyBase {
 
 		const addToEncounter = (encounter, xp) => {
 			const existing = encounter.filter(it => it.xp === xp);
-			if (existing.length && RollerUtil.roll(100) < 85) { // 85% chance to add another copy of an existing monster
+			if (existing.length && RollerUtil.roll(100) < 85) { // 85% chance to add another copy of an existing creature
 				RollerUtil.rollOnArray(existing).count++;
 			} else {
 				const rolled = RollerUtil.rollOnArray(this._cache[xp]);
@@ -909,7 +909,7 @@ class EncounterBuilder extends ProxyBase {
 		const $btnSub = $(`<button title="Subtract (SHIFT for 5)" class="btn btn-danger btn-xs ecgen__btn_list"><span class="glyphicon glyphicon-minus"/></button>`)
 			.click(evt => encounterBuilder.handleClick(evt, monId, false, customHashId));
 
-		const $btnRandomize = $(`<button title="Randomize Monster" class="btn btn-default btn-xs ecgen__btn_list"><span class="glyphicon glyphicon-random" style="right: 1px"/></button>`)
+		const $btnRandomize = $(`<button title="Randomize Creature" class="btn btn-default btn-xs ecgen__btn_list"><span class="glyphicon glyphicon-random" style="right: 1px"/></button>`)
 			.click(() => encounterBuilder.pHandleShuffleClick(monId));
 
 		return $$`<span class="ecgen__visible col-1-5 no-wrap pl-0">

@@ -6,23 +6,25 @@
 			"page": 76,
 			"level": 1,
 			"traits": [
-				"Attack",
-				"Necromancy",
-				"Nonlethal"
+				"attack",
+				"necromancy",
+				"nonlethal"
 			],
 			"school": "N",
 			"traditions": [
-				"Arcane",
-				"Divine"
+				"arcane",
+				"divine"
 			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"range": {
 				"entry": "60 feet",
 				"distance": {
@@ -56,23 +58,25 @@
 			"page": 77,
 			"level": 3,
 			"traits": [
-				"Uncommon",
-				"Conjuration",
-				"Incapacitation"
+				"uncommon",
+				"conjuration",
+				"incapacitation"
 			],
 			"school": "C",
 			"traditions": [
-				"Arcane",
-				"Occult"
+				"arcane",
+				"occult"
 			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"range": {
 				"entry": "60 feet",
 				"distance": {
@@ -114,25 +118,27 @@
 			"page": 77,
 			"level": 7,
 			"traits": [
-				"Uncommon",
-				"Conjuration",
-				"Extradimensional",
-				"Incapacitation",
-				"Teleportation"
+				"uncommon",
+				"conjuration",
+				"extradimensional",
+				"incapacitation",
+				"teleportation"
 			],
 			"school": "C",
 			"traditions": [
-				"Arcane",
-				"Occult"
+				"arcane",
+				"occult"
 			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"range": {
 				"entry": "120 feet",
 				"distance": {
@@ -149,12 +155,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "sustained",
+				"sustain": true,
 				"duration": {
 					"number": 1,
 					"unit": "unlimited"
 				}
 			},
-			"sustain": true,
 			"entries": [
 				"The target of your spell is drawn into a long, twisting, extradimensional hallway blocked at 30-foot intervals with high-grade darkwood doors (Hardness 20, HP 80, BT 40, {@skill Athletics} DC 30 to {@action Force Open}) secured with average locks (DC 25 {@skill Thievery}, 4 successful checks required). A creature trapped within this hallway can escape only when the spell expires, or when they successfully pass through the number of doors determined by their save, either by breaking through the doors or picking the locks (or any combination of these, if the target must pass through multiple doors to escape). {@trait Teleportation} effects of 6th level or lower are automatically suppressed within the extradimensional hallway; higher-level {@trait teleportation} effects require the caster to succeed at a counteract check against your spell DC or they fail.",
 				{
@@ -174,21 +180,23 @@
 			"page": 77,
 			"level": 1,
 			"traits": [
-				"Necromancy"
+				"necromancy"
 			],
 			"school": "N",
 			"traditions": [
-				"Divine",
-				"Primal"
+				"divine",
+				"primal"
 			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"range": {
 				"entry": "touch",
 				"distance": {
@@ -224,19 +232,21 @@
 			"focus": true,
 			"level": 6,
 			"traits": [
-				"Uncommon",
-				"Air",
-				"Divination"
+				"uncommon",
+				"air",
+				"divination"
 			],
 			"school": "D",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"duration": {
 				"type": "timed",
 				"entry": "1 round",
@@ -256,18 +266,20 @@
 			"focus": true,
 			"level": 5,
 			"traits": [
-				"Uncommon",
-				"Air",
-				"Evocation"
+				"uncommon",
+				"air",
+				"evocation"
 			],
 			"school": "V",
 			"cast": {
 				"number": 1,
 				"unit": "reaction"
 			},
-			"components": {
-				"V": true
-			},
+			"components": [
+				{
+					"V": true
+				}
+			],
 			"trigger": "You make a successful unarmed",
 			"entries": [
 				"{@action Strike} against a flying creature.",

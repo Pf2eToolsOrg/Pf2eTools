@@ -21,6 +21,9 @@
 					"name": {
 						"type": "string"
 					},
+					"destruction": {
+						"type": "string"
+					},
 					"page": {
 						"type": "integer"
 					},
@@ -127,6 +130,9 @@
 					"comboWeaponData": {
 						"title": "Data for secondary combo weapon stats. Usually melee stats of ranged weapons.",
 						"$ref": "items.json#/definitions/weaponData"
+					},
+					"siegeWeaponData": {
+						"$ref": "items.json#/definitions/siegeWeaponData"
 					},
 					"armorData": {
 						"$ref": "items.json#/definitions/armorData"
@@ -236,7 +242,10 @@
 						"minItems": 1,
 						"items": {
 							"type": "object",
-							"$ref": "items.json#/properties/item/items"
+							"$ref": "items.json#/properties/item/items",
+							"required": [
+								"type"
+							]
 						}
 					},
 					"craftReq": {
@@ -411,6 +420,45 @@
 				"bt": {
 					"description": "Breaking Threshold",
 					"type": "integer"
+				}
+			},
+			"additionalProperties": false
+		},
+		"siegeWeaponData": {
+			"type": "object",
+			"title": "Siege Object Data",
+			"description": "Describes the statistics of a siege weapon item.",
+			"properties": {
+				"ammunition": {
+					"type": "string"
+				},
+				"proficiency": {
+					"type": "string",
+					"enum": [
+						"Martial",
+						"Simple",
+						"Advanced"
+					]
+				},
+				"crew": {
+					"type": "object",
+					"properties": {
+						"min": {
+							"type": "integer"
+						},
+						"max": {
+							"type": "integer"
+						}
+					}
+				},
+				"space": {
+					"$ref": "vehicles.json#/properties/vehicle/items/properties/space"
+				},
+				"defenses": {
+					"$ref": "utils.json#/definitions/defenses"
+				},
+				"speed": {
+					"$ref": "vehicles.json#/properties/vehicle/items/properties/speed"
 				}
 			},
 			"additionalProperties": false

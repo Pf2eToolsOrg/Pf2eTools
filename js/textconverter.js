@@ -130,7 +130,7 @@ class ConverterUi extends BaseComponent {
 					});
 
 					// TODO: Why?
-					// Omnisearch.pAddToIndex("monster", overwriteMeta.filter(meta => !meta.isOverwrite).map(meta => meta.entry));
+					// Omnisearch.pAddToIndex("creature", overwriteMeta.filter(meta => !meta.isOverwrite).map(meta => meta.entry));
 				} catch (e) {
 					JqueryUtil.doToast({
 						content: `Current output was not valid JSON!`,
@@ -209,45 +209,70 @@ class ConverterUi extends BaseComponent {
 		$("#parsestatblock").on("click", () => doConversion(false));
 		$(`#parsestatblockadd`).on("click", () => doConversion(true));
 
-		this.initSideMenu();
+		this.initHelp();
+		this.initSettings();
 
 		window.dispatchEvent(new Event("toolsLoaded"));
 	}
 
-	initSideMenu () {
-		const $mnu = $(`.sidemenu`);
+	initHelp () {
+		const $helpButton = $(`#help`);
+		$helpButton.click(() => {
+			const {$modalInner, doClose} = UiUtil.getShowModal({
+				isHeight100: true,
+				isUncappedHeight: true,
+				isMaxWidth640p: true, // For being able to see the converter. Also looks prettier than the wide text.
+				title: "Help",
+			});
 
-		// TODO: Allow for parsing of any number of different statblocks
-		const $selConverter = ComponentUiUtil.$getSelEnum(
-			this,
-			"converter",
-			{
-				values: [
-					"All",
-				],
-				html: `<select class="form-control input-sm"/>`,
-			},
-		);
+			$$`<div class="alert alert-warning"><p><b>Note:</b> This feature is still under development. We can't guarantee a bug-free experience.</p></div>`.appendTo($modalInner);
+			$$`<p>The Text Converter converts properly formatted text (meaning, Pf2e Statblock formatting) into Pf2eTools data. Mainly tested and used on Paizo's PDFs, but it should also work for anything using Pf2e's formatting.</p>`.appendTo($modalInner);
+			$$`<p>This page also allows you to create homebrew directly to the website. <b>Please note that everything is stored locally. If this websites cookies / local storage gets deleted, so is your homebrew. <u style="font-size:1.1em">Backup responsibly.</u></b> Currently you can only do so using <i>Save State to File</i> in Settings next to the Searchbar. An option to export the homebrew fully will be available in the future.</p>`.appendTo($modalInner);
+			$$`<p>A simple way to start creating homebrew is to go to <i>Converter Settings</i>, select <i>Add New Source</i>, and enter your desired name and abbreviation for the homebrew; additional details optional. If the new source does not get selected in the dropdown menu above the button, select it. Leave the menu and <i>Parse</i> to your hearts content, upon which click <i>Save to Homebrew</i>.</p>`.appendTo($modalInner);
+			$$`<p>You can convert multiple things at once by putting a new line between each separate entry. In <i>another</i> newline, you can also type in the page number, which will be used for the subsequent entries until a new page number is written.</p>`.appendTo($modalInner);
+			$$`<p class="ve-muted">For more information on how to create homebrew, please go to our <a href="https://discord.gg/2hzNxErtVu">Discord</a>.</p>`.appendTo($modalInner);
+			ConverterUiUtil.renderSideMenuDivider($modalInner);
+			$$`<p class="ve-muted">You can click on and see examples below. The buttons also tell you what the Text Converter can currently convert. Anything outside of that (ex. classes, rituals, traps) is unavailable and has to be done manually.</p>`.appendTo($modalInner);
+			const $wrpSamples = $$`<div class="w-100 mb-2"></div>`.appendTo($modalInner);
+			const $getSampleBtn = (btnText, sample) => {
+				return $(`<button class="btn btn-default btn-sm mr-2">${btnText}</button>`).on("click", () => this.inText = sample.trim());
+			}
+			$getSampleBtn("Sample Creature", ConverterUi.SAMPLE_CREATURE).appendTo($wrpSamples);
+			$getSampleBtn("Sample Feat", ConverterUi.SAMPLE_FEAT).appendTo($wrpSamples);
+			$getSampleBtn("Sample Item", ConverterUi.SAMPLE_ITEM).appendTo($wrpSamples);
+			$getSampleBtn("Sample Spell", ConverterUi.SAMPLE_SPELL).appendTo($wrpSamples);
+			$getSampleBtn("Sample Background", ConverterUi.SAMPLE_BACKGROUND).appendTo($wrpSamples);
 
-		$$`<div class="sidemenu__row split-v-center"><div class="sidemenu__row__label">Mode</div>${$selConverter}</div>`
-			.appendTo($mnu);
-
-		ConverterUiUtil.renderSideMenuDivider($mnu);
-
-		const $wrpSourcePart = $(`<div class="w-100 ve-flex-col"/>`).appendTo($mnu);
-		const pod = this.getPod();
-		this._renderSidebarPagePart(pod, $wrpSourcePart);
-		this._renderSidebarSourcePart(pod, $wrpSourcePart);
+			$(`<button class="btn btn-sm btn-primary mt-auto mb-2 w-20 flex-h-center center-block">OK</button>`).click(doClose).appendTo($modalInner);
+		})
 	}
 
-	_renderSidebarPagePart (parent, $wrpSidebar) {
+	initSettings () {
+		const $settingsButton = $(`#settings`);
+		$settingsButton.click(() => {
+			const {$modalInner, doClose} = UiUtil.getShowModal({
+				isHeight100: true,
+				isUncappedHeight: true,
+				title: "Converter Settings",
+			});
+
+			const $wrpSourcePart = $(`<div class="w-100 ve-flex-col mt-2"/>`).appendTo($modalInner);
+			const pod = this.getPod();
+			this._renderSettingsSourcePart(pod, $wrpSourcePart);
+			this._renderSettingsPagePart(pod, $wrpSourcePart);
+			ConverterUiUtil.renderSideMenuDivider($modalInner);
+			this._renderSettingsSelectMode(pod, $wrpSourcePart);
+
+			$(`<button class="btn btn-sm btn-primary mt-auto mb-2 w-20 flex-h-center center-block">OK</button>`).click(doClose).appendTo($modalInner);
+		})
+	}
+
+	_renderSettingsPagePart (parent, $wrp) {
 		const $iptPage = ComponentUiUtil.$getIptInt(this, "page", 0, {html: `<input class="form-control input-sm text-right" style="max-width: 9rem;">`});
-		$$`<div class="sidemenu__row split-v-center"><div class="sidemenu__row__label">Initial Page</div>${$iptPage}</div>`.appendTo($wrpSidebar);
-
-		ConverterUiUtil.renderSideMenuDivider($wrpSidebar);
+		$$`<div class="w-100 mb-2 split-v-center"><div class="pr-2 help" title="Determines what's the default page of the content you're converting. If left blank, assumes 0.\nThis has the same effect as putting the page number in front of the statblock. Any subsequent statblock after that will use that page number.">Initial Page</div>${$iptPage}</div>`.appendTo($wrp);
 	}
 
-	_renderSidebarSourcePart (parent, $wrpSidebar) {
+	_renderSettingsSourcePart (parent, $wrp) {
 		const $wrpSourceOverlay = $(`<div class="h-100 w-100"/>`);
 		let modalMeta = null;
 
@@ -286,8 +311,9 @@ class ConverterUi extends BaseComponent {
 		Object.keys(Parser.SOURCE_JSON_TO_FULL)
 			.forEach(src => $(`<option/>`, {val: src, text: Parser.sourceJsonToFull(src)}).appendTo($selSource));
 
-		$$`<div class="sidemenu__row split-v-center"><div class="sidemenu__row__label">Source</div>${$selSource}</div>`.appendTo($wrpSidebar);
+		$$`<div class="w-100 mb-2 split-v-center"><div class="pr-2">Source</div>${$selSource}</div>`.appendTo($wrp);
 
+		// TODO: Delete Source?
 		const $btnSourceEdit = $(`<button class="btn btn-default btn-sm mr-2">Edit Selected Source</button>`)
 			.click(() => {
 				const curSourceJson = this._state.source;
@@ -306,7 +332,6 @@ class ConverterUi extends BaseComponent {
 				});
 				$wrpSourceOverlay.appendTo(modalMeta.$modalInner);
 			});
-		$$`<div class="sidemenu__row">${$btnSourceEdit}</div>`.appendTo($wrpSidebar);
 
 		const $btnSourceAdd = $(`<button class="btn btn-default btn-sm">Add New Source</button>`).click(() => {
 			rebuildStageSource({mode: "add"});
@@ -317,7 +342,7 @@ class ConverterUi extends BaseComponent {
 			});
 			$wrpSourceOverlay.appendTo(modalMeta.$modalInner);
 		});
-		$$`<div class="sidemenu__row">${$btnSourceAdd}</div>`.appendTo($wrpSidebar);
+		$$`<div class="w-100 text-right mb-2">${$btnSourceEdit}${$btnSourceAdd}</div>`.appendTo($wrp);
 
 		const hkSource = () => {
 			$selSource.val(this._state.source);
@@ -356,8 +381,10 @@ class ConverterUi extends BaseComponent {
 		};
 		parent.addHook("availableSources", hkAvailSources);
 		hkAvailSources();
+	}
 
-		ConverterUiUtil.renderSideMenuDivider($wrpSidebar);
+	_renderSettingsSelectMode (parent, $wrp) {
+		// TODO:
 	}
 
 	showWarning (text) {
@@ -368,7 +395,8 @@ class ConverterUi extends BaseComponent {
 	doCleanAndOutput (obj, append) {
 		if (append) {
 			// FIXME: Check if this._outText is malformed
-			const out = MiscUtil.merge(JSON.parse(this._outText), obj);
+			const mergeWith = this._outText.length ? JSON.parse(this._outText) : {};
+			const out = MiscUtil.merge(mergeWith, obj);
 			this._outText = CleanUtil.getCleanJson(out);
 		} else {
 			this._outText = CleanUtil.getCleanJson(obj);
@@ -380,7 +408,7 @@ class ConverterUi extends BaseComponent {
 	get _outText () { return this._editorOut.getValue(); }
 	set _outText (text) { this._editorOut.setValue(text, -1); }
 
-	get inText () { return CleanUtil.getCleanString((this._editorIn.getValue() || "").trim()); }
+	get inText () { return this._editorIn.getValue(); }
 	set inText (text) { this._editorIn.setValue(text, -1); }
 
 	_getDefaultState () { return MiscUtil.copy(ConverterUi._DEFAULT_STATE); }
@@ -390,6 +418,89 @@ ConverterUi.STORAGE_STATE = "converterState";
 ConverterUi._DEFAULT_STATE = {
 	converter: "All",
 };
+ConverterUi.SAMPLE_SPELL = `
+FIREBALL SPELL 3
+EVOCATION FIRE
+Traditions arcane, primal
+Cast [two-actions] somatic, verbal
+Range 500 feet; Area 20-foot burst
+Saving Throw basic Reflex
+A roaring blast of fire appears at a spot you designate, dealing
+6d6 fire damage.
+Heightened (+1) The damage increases by 2d6.`;
+ConverterUi.SAMPLE_FEAT = `
+REACTIVE DISTRACTION [reaction] FEAT 20
+CONCENTRATE MANIPULATE ROGUE
+Prerequisites legendary in Deception, Perfect Distraction
+Trigger You would be hit by an attack or targeted by an effect,
+or you are within an effect’s area.
+Requirements You have Perfect Distraction ready to use.
+You reactively switch with your decoy to foil your foe. You use
+Perfection Distraction, even if you were observed, as long as
+you end the movement of your Sneak while concealed or in a
+location with cover or greater cover. Your decoy is targeted
+by the attack or effect instead of you. In the case of an area
+effect, if your Sneak doesn’t move you out of the area, both
+you and the decoy are targeted by the effect.`;
+ConverterUi.SAMPLE_ITEM = `
+DECANTER OF ENDLESS WATER ITEM 7
+CONJURATION MAGICAL WATER
+Price 320 gp
+Usage held in 2 hands; Bulk L
+This item looks like an ordinary glass flask full of water.
+The stopper can’t be removed unless you speak one of
+the item’s three command words, each of which causes water
+to pour forth in a different way. Pulling the stopper straight
+out creates fresh water, and rotating it as you pull creates salt
+water. Any effect of the decanter lasts until the decanter is
+plugged (with its own stopper, a finger, or the like).
+Activate [one-action] command, Interact; Effect Speaking “stream,”
+you cause water to pour at a rate of 1 gallon per round.
+Activate [one-action] command, Interact; Effect Speaking “fountain,”
+you cause water to pour in a 5-foot-long stream at a rate
+of 5 gallons per round.
+Activate [one-action] command, Interact; Effect Speaking “geyser,”
+you cause a powerful deluge of water to erupt at a
+rate of 15 gallons per round. You can direct the
+stream at a creature, subjecting it to the effects
+of hydraulic push (spell attack roll +15). You
+can repeat this once per round as long as the
+geyser continues, spending an Interact
+action to direct the geyser each time.`;
+ConverterUi.SAMPLE_BACKGROUND = `
+HERMIT BACKGROUND
+In an isolated place—like a cave, remote oasis, or secluded
+mansion—you lived a life of solitude. Adventuring might
+represent your first foray out among other people in some time.
+This might be a welcome reprieve from solitude or an unwanted
+change, but in either case, you’re likely still rough around
+the edges.
+Choose two ability boosts. One must be to Constitution or
+Intelligence, and one is a free ability boost.
+You’re trained in the Nature or Occultism skill, plus a Lore
+skill related to the terrain you lived in as a hermit (such as Cave
+Lore or Desert Lore). You gain the Dubious Knowledge skill feat.`;
+ConverterUi.SAMPLE_CREATURE = `
+LICH CREATURE 12
+RARE
+NE
+MEDIUM
+UNDEAD
+Perception +20; darkvision
+Languages Abyssal, Aklo, Common, Draconic, Elf, Infernal, Necril, Undercommon
+Skills Arcana +28, Crafting +24 (can craft magic items), Deception +17, Diplomacy +19, Religion +22, Stealth +20
+Str +0, Dex +4, Con +0, Int +6, Wis +4, Cha +3
+Items potion of invisibility, scroll of teleport, greater staff of fire
+AC 31; Fort +17, Ref +21, Will +23; +1 status to all saves vs. positive
+HP 190, negative healing, rejuvenation; Immunities death effects, disease, paralyzed, poison, unconscious; Resistances cold 10, physical 10 (except magic bludgeoning)
+Frightful Presence (aura, emotion, fear, mental) 60 feet, DC 29
+Counterspell [reaction] Trigger A creature casts a spell the lich has prepared. Effect The lich expends a prepared spell to counter the triggering creature’s casting of that same spell. The lich loses its spell slot as if it had cast the triggering spell. The lich then attempts to counteract the triggering spell.
+Speed 25 feet
+Melee [one-action] hand +24 (finesse, magical), Damage 4d8 negative plus paralyzing touch
+Arcane Prepared Spells DC 36, attack +26; 6th chain lightning, dominate, vampiric exsanguination; 5th cloudkill, cone of cold (×2), wall of ice; 4th dimension door, dispel magic, fire shield, fly; 3rd blindness, locate, magic missile, vampiric touch; 2nd false life, mirror image, resist energy, see invisibility; 1st fleet step, ray of enfeeblement (×2), true strike; Cantrips (6th) detect magic, mage hand, message, ray of frost, shield
+Drain Phylactery [free-action] 6th level
+Paralyzing Touch (arcane, curse, incapacitation, necromancy) DC 32
+Steady Spellcasting If a reaction would disrupt the lich’s spellcasting action, the lich attempts a DC 15 flat check. On a success, the action isn’t disrupted.`;
 
 let converterUi;
 async function doPageInit () {

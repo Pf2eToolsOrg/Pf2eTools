@@ -149,16 +149,23 @@ class NavBar {
 				title: "Add the site to your home screen. When used in conjunction with the Preload Offline Data option, this can create a functional offline copy of the site.",
 			},
 		);
-		/*
+		this._addElement_divider(NavBar._CAT_SETTINGS);
 		this._addElement_button(
 			NavBar._CAT_SETTINGS,
 			{
-				html: "Preload Offline Data",
-				click: (evt) => NavBar.InteractionManager._pOnClick_button_preloadOffline(evt),
-				title: "Preload the site data for offline use. Warning: slow. If it appears to freeze, cancel it and try again; progress will be saved.",
+				html: "Preload Images <small class=\"help--subtle\">(~23 MB)</small>",
+				click: (evt) => NavBar.InteractionManager._pOnClick_button_preloadOffline(evt, /./),
+				title: "Preload all images for offline use. Mainly books covers.",
 			},
 		);
-		*/
+		this._addElement_button(
+			NavBar._CAT_SETTINGS,
+			{
+				html: "Reset Preloaded Data",
+				click: (evt) => NavBar.InteractionManager._pOnClick_button_clearOffline(evt),
+				title: "Remove all preloaded data, and clear away any caches.",
+			},
+		);
 	}
 
 	static _getNode (category) {
@@ -712,95 +719,26 @@ NavBar.InteractionManager = class {
 		}
 	}
 
-	static async _pOnClick_button_preloadOffline (evt) {
+	static async _pOnClick_button_preloadOffline (evt, route) {
 		evt.preventDefault();
 
-		if (!navigator.serviceWorker || !navigator.serviceWorker.controller) {
+		if (globalThis.swCacheRoutes === undefined) {
 			JqueryUtil.doToast(`The loader was not yet available! Reload the page and try again. If this problem persists, your browser may not support preloading.`);
 			return;
 		}
 
-		// a pipe with has "port1" and "port2" props; we'll send "port2" to the service worker so it can
-		//   send messages back down the pipe to us
-		const messageChannel = new MessageChannel();
-		let hasSentPort = false;
-		const sendMessage = (data) => {
-			try {
-				// Only send the MessageChannel port once, as the first send will transfer ownership of the
-				//   port over to the service worker (and we can no longer access it to even send it)
-				if (!hasSentPort) {
-					hasSentPort = true;
-					navigator.serviceWorker.controller.postMessage(data, [messageChannel.port2]);
-				} else {
-					navigator.serviceWorker.controller.postMessage(data);
-				}
-			} catch (e) {
-				// Ignore errors
-				setTimeout(() => { throw e; });
-			}
-		};
+		globalThis.swCacheRoutes(route);
+	}
 
-		if (NavBar._downloadBarMeta) {
-			if (NavBar._downloadBarMeta) {
-				NavBar._downloadBarMeta.$wrpOuter.remove();
-				NavBar._downloadBarMeta = null;
-			}
-			sendMessage({"type": "cache-cancel"});
+	static async _pOnClick_button_clearOffline (evt) {
+		evt.preventDefault();
+
+		if (globalThis.swResetAll === undefined) {
+			JqueryUtil.doToast(`The loader was not yet available! Reload the page and try again. If this problem persists, your browser may not support preloading.`);
+			return;
 		}
 
-		const $dispProgress = $(`<div class="page__disp-download-progress-bar"/>`);
-		const $dispPct = $(`<div class="page__disp-download-progress-text ve-flex-vh-center bold">0%</div>`);
-
-		const $btnCancel = $(`<button class="btn btn-default"><span class="glyphicon glyphicon-remove"></span></button>`)
-			.click(() => {
-				if (NavBar._downloadBarMeta) {
-					NavBar._downloadBarMeta.$wrpOuter.remove();
-					NavBar._downloadBarMeta = null;
-				}
-				sendMessage({"type": "cache-cancel"});
-			});
-
-		const $wrpBar = $$`<div class="page__wrp-download-bar w-100 relative mr-2">${$dispProgress}${$dispPct}</div>`;
-		const $wrpOuter = $$`<div class="page__wrp-download">
-			${$wrpBar}
-			${$btnCancel}
-		</div>`.appendTo(document.body);
-
-		NavBar._downloadBarMeta = {$wrpOuter, $wrpBar, $dispProgress, $dispPct};
-
-		// Trigger the service worker to cache everything
-		messageChannel.port1.onmessage = e => {
-			const msg = e.data;
-			switch (msg.type) {
-				case "download-progress": {
-					if (NavBar._downloadBarMeta) {
-						NavBar._downloadBarMeta.$dispProgress.css("width", msg.data.pct);
-						NavBar._downloadBarMeta.$dispPct.text(msg.data.pct);
-					}
-					break;
-				}
-				case "download-cancelled": {
-					if (NavBar._downloadBarMeta) {
-						NavBar._downloadBarMeta.$wrpOuter.remove();
-						NavBar._downloadBarMeta = null;
-					}
-					break;
-				}
-				case "download-error": {
-					if (NavBar._downloadBarMeta) {
-						NavBar._downloadBarMeta.$wrpBar.addClass("page__wrp-download-bar--error");
-						NavBar._downloadBarMeta.$dispProgress.addClass("page__disp-download-progress-bar--error");
-						NavBar._downloadBarMeta.$dispPct.text("Error!");
-
-						JqueryUtil.doToast(`An error occurred. ${VeCt.STR_SEE_CONSOLE}`);
-					}
-					setTimeout(() => { throw new Error(msg.message); });
-					break;
-				}
-			}
-		};
-
-		sendMessage({"type": "cache-start"});
+		globalThis.swResetAll();
 	}
 };
 

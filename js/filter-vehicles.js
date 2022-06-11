@@ -2,24 +2,6 @@
 
 // noinspection JSUnresolvedVariable
 class PageFilterVehicles extends PageFilter {
-	static _priceCategory (value) {
-		if (typeof value !== "number") return "0 gp";
-		if (value < 5 * 100) return "0 gp";
-		else if (value < 10 * 100) return "5 gp";
-		else if (value < 50 * 100) return "10 gp";
-		else if (value < 100 * 100) return "50 gp";
-		else if (value < 500 * 100) return "100 gp";
-		else if (value < 750 * 100) return "500 gp";
-		else if (value < 1000 * 100) return "750 gp";
-		else if (value < 2500 * 100) return "1,000 gp";
-		else if (value < 5000 * 100) return "2,500 gp";
-		else if (value < 10000 * 100) return "5,000 gp";
-		else if (value < 25000 * 100) return "10,000 gp";
-		else if (value < 50000 * 100) return "25,000 gp";
-		else if (value < 100000 * 100) return "50,000 gp";
-		else return "100,000+ gp";
-	}
-
 	constructor () {
 		super();
 		this._levelFilter = new RangeFilter({header: "Level"});
@@ -27,8 +9,10 @@ class PageFilterVehicles extends PageFilter {
 		this._priceFilter = new RangeFilter({
 			header: "Price",
 			isLabelled: true,
-			labels: ["0 gp", "5 gp", "10 gp", "50 gp", "100 gp", "250 gp", "500 gp", "750 gp", "1,000 gp", "2,500 gp", "5,000 gp", "10,000 gp", "25,000 gp", "50,000 gp", "100,000+ gp"],
-			labelSortFn: null,
+			isAllowGreater: true,
+			isSparseLabels: true,
+			labels: [0, 1, 5, 10, 25, 50, 75, 100, 250, 500, 1000, 2500, 5000, 10000, 25000, 50000, 100000].map(n => n * 100),
+			labelDisplayFn: x => `${Parser._addCommas(x / 100)} gp`,
 		});
 		this._longFilter = new RangeFilter({header: "Long"});
 		this._wideFilter = new RangeFilter({header: "Wide"});
@@ -95,7 +79,6 @@ class PageFilterVehicles extends PageFilter {
 		if (!it._fTraits.map(t => Renderer.trait.isTraitInCategory(t, "Rarity")).some(Boolean)) it._fTraits.push("Common");
 		it._fCrewSize = (it.crew || []).map(it => it.number).reduce((a, b) => a + b, 0);
 		it._fCrewTypes = (it.crew || []).map(it => it.type);
-		it._fPrice = PageFilterVehicles._priceCategory(it._sPrice);
 		it._fAC = Math.max(...Object.values(it.defenses.ac));
 		it._fHardness = Math.max(...Object.values(it.defenses.hardness));
 		it._fHP = Math.max(...Object.values(it.defenses.hp));
@@ -109,7 +92,6 @@ class PageFilterVehicles extends PageFilter {
 		this._sourceFilter.addItem(it._fSources);
 		this._levelFilter.addItem(it.level);
 		this._traitFilter.addItem(it._fTraits);
-		this._priceFilter.addItem(it._fPrice);
 		this._longFilter.addItem(it.space.long.number);
 		this._wideFilter.addItem(it.space.wide.number);
 		this._highFilter.addItem(it.space.high.number);
@@ -153,7 +135,7 @@ class PageFilterVehicles extends PageFilter {
 			it._fSources,
 			it.level,
 			it._fTraits,
-			it._fPrice,
+			it._sPrice,
 			[
 				it.space.long.number,
 				it.space.wide.number,

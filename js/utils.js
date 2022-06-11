@@ -5,7 +5,7 @@ if (typeof module !== "undefined") require("./parser.js");
 
 // in deployment, `IS_DEPLOYED = "<version number>";` should be set below.
 IS_DEPLOYED = undefined;
-VERSION_NUMBER = /* PF2ETOOLS_VERSION__OPEN */"0.3.2"/* PF2ETOOLS_VERSION__CLOSE */;
+VERSION_NUMBER = /* PF2ETOOLS_VERSION__OPEN */"0.4.3"/* PF2ETOOLS_VERSION__CLOSE */;
 DEPLOYED_STATIC_ROOT = ""; // ""; // FIXME re-enable this when we have a CDN again
 IS_VTT = false;
 
@@ -201,6 +201,27 @@ String.prototype.toChunks = String.prototype.toChunks || function (size) {
 	const chunks = new Array(numChunks)
 	for (let i = 0, o = 0; i < numChunks; ++i, o += size) chunks[i] = this.substr(o, size);
 	return chunks
+};
+
+String.prototype.toAscii = String.prototype.toAscii || function () {
+	return this
+		.normalize("NFD") // replace diacritics with their individual graphemes
+		.replace(/[\u0300-\u036f]/g, "") // remove accent graphemes
+		.replace(/Æ/g, "AE").replace(/æ/g, "ae");
+};
+
+String.prototype.trimChar = String.prototype.trimChar || function (ch) {
+	let start = 0; let end = this.length;
+	while (start < end && this[start] === ch) ++start;
+	while (end > start && this[end - 1] === ch) --end;
+	return (start > 0 || end < this.length) ? this.substring(start, end) : this;
+};
+
+String.prototype.trimAnyChar = String.prototype.trimAnyChar || function (chars) {
+	let start = 0; let end = this.length;
+	while (start < end && chars.indexOf(this[start]) >= 0) ++start;
+	while (end > start && chars.indexOf(this[end - 1]) >= 0) --end;
+	return (start > 0 || end < this.length) ? this.substring(start, end) : this;
 };
 
 Array.prototype.joinConjunct = Array.prototype.joinConjunct || function (joiner, lastJoiner, nonOxford) {
@@ -615,9 +636,12 @@ JqueryUtil = {
 
 	_ACTIVE_TOAST: [],
 	/**
-	 * @param {Object|string} options
+	 * @param {{content: jQuery|string, type?: string, autoHideTime?: number} | string} options The options for the toast.
 	 * @param {(jQuery|string)} options.content Toast contents. Supports jQuery objects.
 	 * @param {string} options.type Toast type. Can be any Bootstrap alert type ("success", "info", "warning", or "danger").
+	 *  @param {number} options.autoHideTime The time in ms before the toast will be automatically hidden.
+	 * Defaults to 5000 ms.
+	 * A value of 0 will cause the toast to never automatically hide.
 	 */
 	doToast (options) {
 		if (typeof window === "undefined") return;
@@ -629,6 +653,8 @@ JqueryUtil = {
 			};
 		}
 		options.type = options.type || "info";
+
+		options.autoHideTime = options.autoHideTime ?? 5000;
 
 		const doCleanup = ($toast) => {
 			$toast.removeClass("toast--animate");
@@ -646,7 +672,11 @@ JqueryUtil = {
 		</div>`.prependTo($(`body`)).data("pos", 0);
 
 		setTimeout(() => $toast.addClass(`toast--animate`), 5);
-		setTimeout(() => doCleanup($toast), 5000);
+		if (options.autoHideTime !== 0) {
+			setTimeout(() => {
+				doCleanup($toast);
+			}, options.autoHideTime);
+		}
 
 		if (JqueryUtil._ACTIVE_TOAST.length) {
 			JqueryUtil._ACTIVE_TOAST.forEach($oldToast => {
@@ -1893,11 +1923,11 @@ UrlUtil.PG_LANGUAGES = "languages.html";
 UrlUtil.PG_TRAITS = "traits.html"
 UrlUtil.PG_VEHICLES = "vehicles.html"
 UrlUtil.PG_GM_SCREEN = "gmscreen.html";
-UrlUtil.PG_ENCOUNTERGEN = "encountergen.html";
 UrlUtil.PG_CHANGELOG = "changelog.html";
 UrlUtil.PG_PLACES = "places.html";
 UrlUtil.PG_OPTIONAL_FEATURES = "optionalfeatures.html";
 UrlUtil.PG_SEARCH = "search.html";
+UrlUtil.PG_GENERIC_DATA = "genericData";
 
 UrlUtil.URL_TO_HASH_BUILDER = {};
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_BESTIARY] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
@@ -1969,7 +1999,6 @@ UrlUtil.PG_TO_NAME[UrlUtil.PG_ACTIONS] = "Actions";
 UrlUtil.PG_TO_NAME[UrlUtil.PG_ABILITIES] = "Creature Abilities";
 UrlUtil.PG_TO_NAME[UrlUtil.PG_LANGUAGES] = "Languages";
 UrlUtil.PG_TO_NAME[UrlUtil.PG_GM_SCREEN] = "GM Screen";
-UrlUtil.PG_TO_NAME[UrlUtil.PG_ENCOUNTERGEN] = "Encounter Generator";
 UrlUtil.PG_TO_NAME[UrlUtil.PG_CHANGELOG] = "Changelog";
 UrlUtil.PG_TO_NAME[UrlUtil.PG_PLACES] = "Planes and Places";
 UrlUtil.PG_TO_NAME[UrlUtil.PG_OPTIONAL_FEATURES] = "Optional Features";
@@ -2022,6 +2051,8 @@ UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_VEHICLE] = UrlUtil.PG_VEHICLES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_TRAIT] = UrlUtil.PG_TRAITS;
 
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_PAGE] = null;
+
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_GENERIC_DATA] = UrlUtil.PG_GENERIC_DATA;
 
 UrlUtil.CAT_TO_HOVER_PAGE = {};
 UrlUtil.CAT_TO_HOVER_PAGE[Parser.CAT_ID_CLASS_FEATURE] = "classfeature";
@@ -2318,7 +2349,7 @@ DataUtil = {
 		if (data._meta) {
 			if (data._meta.dependencies) {
 				await Promise.all(Object.entries(data._meta.dependencies).map(async ([prop, sources]) => {
-					if (!data[prop]) return; // if e.g. creature dependencies are declared, but there are no monsters to merge with, bail out
+					if (!data[prop]) return; // if e.g. creature dependencies are declared, but there are no creatures to merge with, bail out
 
 					const toLoads = await Promise.all(sources.map(async source => DataUtil.pGetLoadableByMeta(prop, source)));
 					const dependencyData = await Promise.all(toLoads.map(toLoad => DataUtil.loadJSON(toLoad)));
@@ -2594,6 +2625,21 @@ DataUtil = {
 			});
 
 			// mod helpers /////////////////
+			// FIXME: Get back to this.
+			function getPropertyFromPath (obj, path) {
+				return path.split(".").reduce((o, i) => o[i], obj);
+			}
+
+			function setPropertyFromPath (obj, setTo, path) {
+				const split = path.split(".");
+				if (split.length === 1) obj[path] = setTo;
+				else {
+					const top = split.shift();
+					if (!MiscUtil.isObject(obj[top])) obj[top] = {};
+					setPropertyFromPath(obj[top], setTo, split.join("."));
+				}
+			}
+
 			function doEnsureArray (obj, prop) {
 				if (!(obj[prop] instanceof Array)) obj[prop] = [obj[prop]];
 			}
@@ -2603,8 +2649,8 @@ DataUtil = {
 				else copyTo[prop] = modInfo.str;
 			}
 
-			function doMod_replaceTxt (modInfo, prop) {
-				if (!copyTo[prop]) return;
+			function doMod_replaceTxt (modInfo, path) {
+				if (!copyTo[path]) return;
 
 				DataUtil.generic._walker_replaceTxt = DataUtil.generic._walker_replaceTxt || MiscUtil.getWalker();
 				const re = new RegExp(modInfo.replace, `g${modInfo.flags || ""}`);
@@ -2627,14 +2673,15 @@ DataUtil = {
 				};
 
 				// Handle any pure strings, e.g. `"legendaryHeader"`
-				copyTo[prop] = copyTo[prop].map(it => {
+				const setTo = getPropertyFromPath(copyTo, path).map(it => {
 					if (typeof it !== "string") return it;
 					return DataUtil.generic._walker_replaceTxt.walk(it, handlers);
 				});
+				setPropertyFromPath(copyTo, setTo, path);
 
 				// TODO: This is getting out of hand
 				const typesToReplaceIn = ["successDegree", "ability", "affliction", "lvlEffect"];
-				copyTo[prop].forEach(it => {
+				getPropertyFromPath(copyTo, path).forEach(it => {
 					if (it.entries) it.entries = DataUtil.generic._walker_replaceTxt.walk(it.entries, handlers);
 					if (it.items) it.items = DataUtil.generic._walker_replaceTxt.walk(it.items, handlers);
 					if (typesToReplaceIn.includes(it.type)) {
@@ -2693,28 +2740,28 @@ DataUtil = {
 				if (!didReplace) doMod_appendArr(modInfo, prop);
 			}
 
-			function doMod_insertArr (modInfo, prop) {
+			function doMod_insertArr (modInfo, path) {
 				doEnsureArray(modInfo, "items");
-				if (!copyTo[prop]) throw new Error(`Could not find "${prop}" array`);
-				copyTo[prop].splice(modInfo.index, 0, ...modInfo.items);
+				if (!getPropertyFromPath(copyTo, path)) throw new Error(`Could not find "${path}" array`);
+				getPropertyFromPath(copyTo, path).splice(modInfo.index, 0, ...modInfo.items);
 			}
 
-			function doMod_removeArr (modInfo, prop) {
+			function doMod_removeArr (modInfo, path) {
 				if (modInfo.names) {
 					doEnsureArray(modInfo, "names");
 					modInfo.names.forEach(nameToRemove => {
-						const ixOld = copyTo[prop].findIndex(it => it.idName || it.name === nameToRemove);
-						if (~ixOld) copyTo[prop].splice(ixOld, 1);
+						const ixOld = getPropertyFromPath(copyTo, path).findIndex(it => it.idName || it.name === nameToRemove);
+						if (~ixOld) getPropertyFromPath(copyTo, path).splice(ixOld, 1);
 						else {
-							if (!modInfo.force) throw new Error(`Could not find "${prop}" item with name "${nameToRemove}" to remove`);
+							if (!modInfo.force) throw new Error(`Could not find "${path}" item with name "${nameToRemove}" to remove`);
 						}
 					});
 				} else if (modInfo.items) {
 					doEnsureArray(modInfo, "items");
 					modInfo.items.forEach(itemToRemove => {
-						const ixOld = copyTo[prop].findIndex(it => it === itemToRemove);
-						if (~ixOld) copyTo[prop].splice(ixOld, 1);
-						else throw new Error(`Could not find "${prop}" item "${itemToRemove}" to remove`);
+						const ixOld = getPropertyFromPath(copyTo, path).findIndex(it => it === itemToRemove);
+						if (~ixOld) getPropertyFromPath(copyTo, path).splice(ixOld, 1);
+						else throw new Error(`Could not find "${path}" item "${itemToRemove}" to remove`);
 					});
 				} else throw new Error(`One of "names" or "items" must be provided!`)
 			}
@@ -2809,12 +2856,12 @@ DataUtil = {
 					);
 				});
 
-				Object.entries(copyMeta._mod).forEach(([prop, modInfos]) => {
-					if (prop === "*") doMod(modInfos, "abilitiesTop", "abilitiesMid", "attacks", "abilitiesBot");
-					else if (prop === "_") doMod(modInfos);
-					else if (prop === "entriesMode") {
+				Object.entries(copyMeta._mod).forEach(([path, modInfos]) => {
+					if (path === "*") doMod(modInfos, "attacks", "abilities.top", "abilities.mid", "abilities.bot");
+					else if (path === "_") doMod(modInfos);
+					else if (path === "entriesMode") {
 						/* do nothing */
-					} else doMod(modInfos, prop);
+					} else doMod(modInfos, path);
 				});
 			}
 
@@ -2977,7 +3024,7 @@ DataUtil = {
 			variant._copy._mod = MiscUtil.merge(generic._vmod, variant._mod, variant._copy._mod);
 			const entriesMode = variant._copy._mod.entriesMode || "concat";
 			if (entriesMode === "concat") {
-				variant.entries = MiscUtil.copy([...generic.entries, ...variant.entries]);
+				variant.entries = MiscUtil.copy([...generic.entries, ...variant.entries || []]);
 			} else if (entriesMode === "generic") {
 				variant.entries = MiscUtil.copy([...generic.entries]);
 			} else if (entriesMode === "variant") {
@@ -4599,14 +4646,15 @@ BrewUtil = {
 			}
 		}
 
-		if (sc) {
+		// FIXME: What is this for? It breaks the class page when you have homebrew automatically loaded.
+		/* if (sc) {
 			const forClass = sc.class;
 			BrewUtil.homebrew.subclass.splice(index, 1);
 			BrewUtil._persistHomebrewDebounced();
 
 			if (typeof ClassesPage === "undefined") return;
 			await classesPage.pDeleteSubclassBrew(uniqueId, sc);
-		}
+		} */
 	},
 
 	_genPDeleteGenericBrew (category) {

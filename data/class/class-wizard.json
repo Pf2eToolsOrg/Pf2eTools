@@ -13,7 +13,11 @@
 				"will": "E",
 				"skills": {
 					"t": [
-						"{@skill Arcana}"
+						{
+							"skill": [
+								"Arcana"
+							]
+						}
 					],
 					"add": 2
 				},
@@ -387,9 +391,9 @@
 			"entries": [
 				"Through dedicated study and practice, you can harness arcane power to cast spells. You can cast arcane spells using the {@action Cast a Spell} activity, and you can supply material, somatic, and verbal components when casting spells .",
 				"At 1st level, you can prepare up to two 1st-level spells and five cantrips each morning from the spells in your spellbook (see below), plus one extra cantrip and spell of your chosen school of each level you can cast if you are a specialist wizard. Prepared spells remain available to you until you cast them or until you prepare your spells again. The number of spells you can prepare is called your spell slots.",
-				"As you increase in level as a wizard, your number of spell slots and the highest level of spells you can cast from spell slots increase, shown in Table 3\u201319: Wizard Spells per Day on page 205.",
+				"As you increase in level as a wizard, your number of spell slots and the highest level of spells you can cast from spell slots increase, shown in Table 3\u201319: Wizard Spells per Day below.",
 				"Some of your spells require you to attempt a spell attack roll to see how effective they are, or have your enemies roll against your spell DC (typically by attempting a saving throw). Since your key ability is Intelligence, your spell attack rolls and spell DCs use your Intelligence modifier.",
-				"Details on calculating these statistics appear on page 447.",
+				"Details on calculating these statistics appear {@quickref here|CRB|3|Spell Attack Rolls}.",
 				{
 					"type": "pf2-h4",
 					"page": 204,
@@ -412,10 +416,10 @@
 					"page": 204,
 					"name": "Spellbook",
 					"entries": [
-						"Every arcane spell has a written version, usually recorded in a spellbook. You start with a spellbook worth 10 sp or less (as detailed on page 291), which you receive for free and must study to prepare your spells each day. The spellbook contains your choice of 10 {@filter arcane cantrips|spells||spell type=cantrip|tradition & spell list=arcane|rarity=common} and five {@filter 1st-level arcane spells|spells||spell type=spell;!cantrip|level=1|tradition & spell list=arcane|rarity=common}. You choose these from the common spells on the arcane spell list from this book or from other arcane spells you gain access to.",
+						"Every arcane spell has a written version, usually recorded in a spellbook. You start with a {@item spellbook} worth 10 sp or less, which you receive for free and must study to prepare your spells each day. The spellbook contains your choice of 10 {@filter arcane cantrips|spells||spell type=cantrip|tradition & spell list=arcane|rarity=common} and five {@filter 1st-level arcane spells|spells||spell type=spell;!cantrip|level=1|tradition & spell list=arcane|rarity=common}. You choose these from the common spells on the arcane spell list from this book or from other arcane spells you gain access to.",
 						"Your spellbook's form and name are up to you. It might be a musty, leather-bound tome or an assortment of thin metal disks connected to a brass ring; its name might be {@i esoteric, like The Crimson Libram, or something more academic, like A Field Study in Practical Transmutation.}",
 						"Each time you gain a level, you add two more arcane spells to your spellbook, of any level of spell you can cast.",
-						"You can also use the {@skill Arcana} skill to add other spells that you find in your adventures, as described on page 241."
+						"You can also use the {@skill Arcana} skill to add other spells that you find in your adventures, as described in the {@action Learn a Spell} and {@action Borrow an Arcane Spell} activities."
 					]
 				},
 				{
@@ -779,10 +783,8 @@
 			"level": 1,
 			"type": "Arcane School",
 			"entries": [
-				"Many arcane spellcasters delve deeply into a single school of magic in an attempt to master its secrets. If you want to be a specialist wizard, choose a school in which to specialize.",
-				"You gain additional spells and spell slots for spells of your school. Arcane schools are described in detail on this page.",
+				"Many arcane spellcasters delve deeply into a single school of magic in an attempt to master its secrets. If you want to be a specialist wizard, choose a school in which to specialize. You gain additional spells and spell slots for spells of your school.",
 				"If you don't choose a school, you're a universalist, a wizard who believes that the path to true knowledge of magic requires a multidisciplinary understanding of all eight schools working together. Though a universalist lacks the focus of a specialist wizard, they have greater flexibility.",
-				"Universalist wizards are described {@class Wizard||here|Universalist}.",
 				{
 					"type": "pf2-brown-box",
 					"name": "Arcane Schools",

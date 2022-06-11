@@ -6,17 +6,17 @@
 			"source": "EC1",
 			"page": 9,
 			"level": -1,
-			"rarity": "Common",
-			"alignment": "NE",
-			"size": "Medium",
 			"traits": [
-				"Human"
+				"ne",
+				"medium",
+				"human",
+				"humanoid"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 4
+				"std": 4
 			},
 			"languages": {
 				"languages": [
@@ -26,53 +26,45 @@
 			},
 			"skills": {
 				"Athletics": {
-					"default": 5
+					"std": 5
 				},
 				"Deception": {
-					"default": 3
+					"std": 3
 				},
 				"Intimidation": {
-					"default": 3
+					"std": 3
 				},
 				"Thievery": {
-					"default": 3
+					"std": 3
 				},
 				"Gambling Lore": {
-					"default": 1
+					"std": 1
 				}
 			},
 			"abilityMods": {
-				"Str": 3,
-				"Dex": 1,
-				"Con": 2,
-				"Int": -1,
-				"Wis": 2,
-				"Cha": 1
+				"str": 3,
+				"dex": 1,
+				"con": 2,
+				"int": -1,
+				"wis": 2,
+				"cha": 1
 			},
 			"items": [
 				"bottles (2)",
 				"dagger"
 			],
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+3, {@skill Thievery} +3 Str +3, Dex +1, Con +2, Int \u20131, Wis +2, Cha +1 Items bottles (2), dagger."
-					],
-					"name": "Intimidation"
-				}
-			],
 			"ac": {
-				"default": 13
+				"std": 13
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 5
+				"fort": {
+					"std": 5
 				},
-				"Ref": {
-					"default": 5
+				"ref": {
+					"std": 5
 				},
-				"Will": {
-					"default": 2
+				"will": {
+					"std": 2
 				}
 			},
 			"hp": [
@@ -81,7 +73,6 @@
 					"abilities": null
 				}
 			],
-			"abilitiesMid": [],
 			"speed": {
 				"walk": 25
 			},
@@ -93,7 +84,7 @@
 					"traits": [
 						"agile",
 						"thrown 10 feet",
-						"versatile S"
+						"versatile s"
 					],
 					"effects": [],
 					"damage": "{@damage 1d4+3} piercing",
@@ -129,32 +120,29 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"requirements": "The ruffian hasn't acted yet on their turn",
-					"entries": [
-						"The ruffian uses an {@action Interact} action to draw their dagger, then uses {@action Demoralize}."
-					],
-					"name": "Opening Threat"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning",
-					"piercing"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"+3, {@skill Thievery} +3 Str +3, Dex +1, Con +2, Int \u20131, Wis +2, Cha +1 Items bottles (2), dagger."
+						],
+						"name": "Intimidation"
+					}
 				],
-				"condition": []
-			},
-			"misc": [
-				"MA",
-				"RA",
-				"TA",
-				"UW"
-			]
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"requirements": "The ruffian hasn't acted yet on their turn",
+						"entries": [
+							"The ruffian uses an {@action Interact} action to draw their dagger, then uses {@action Demoralize}."
+						],
+						"name": "Opening Threat"
+					}
+				]
+			}
 		},
 		{
 			"name": "Abrikandilu",
@@ -162,26 +150,23 @@
 			"source": "EC1",
 			"page": 81,
 			"level": 4,
-			"rarity": "Common",
-			"alignment": "CE",
-			"size": "Medium",
 			"traits": [
-				"Demon"
+				"ce",
+				"medium",
+				"demon",
+				"fiend"
 			],
 			"creatureType": [
 				"Fiend"
 			],
 			"perception": {
-				"default": 10
+				"std": 10
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Abyssal",
@@ -194,33 +179,32 @@
 			},
 			"skills": {
 				"Athletics": {
-					"default": 12
+					"std": 12
 				},
 				"Intimidation": {
-					"default": 8
+					"std": 8
 				}
 			},
 			"abilityMods": {
-				"Str": 4,
-				"Dex": 1,
-				"Con": 3,
-				"Int": -2,
-				"Wis": 2,
-				"Cha": 0
+				"str": 4,
+				"dex": 1,
+				"con": 3,
+				"int": -2,
+				"wis": 2,
+				"cha": 0
 			},
-			"abilitiesTop": [],
 			"ac": {
-				"default": 19
+				"std": 19
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 15
+				"fort": {
+					"std": 15
 				},
-				"Ref": {
-					"default": 9
+				"ref": {
+					"std": 9
 				},
-				"Will": {
-					"default": 7
+				"will": {
+					"std": 7
 				}
 			},
 			"hp": [
@@ -237,14 +221,6 @@
 				{
 					"amount": 5,
 					"name": "good"
-				}
-			],
-			"abilitiesMid": [
-				{
-					"entries": [
-						"A wrecker demon loathes the sight of its own reflection. When a creature Interacts with a mirror within sight of the wrecker demon, the demon takes a \u20132 penalty to Will saves against {@skill Intimidation} checks. A wrecker demon that ends its turn adjacent to a mirror or that is attacked by a creature holding a mirror takes {@damage 1d6} mental damage (this usually leads wrecker demons to focus their efforts on destroying nearby mirrors using Wreck)."
-					],
-					"name": "Hatred of Mirrors"
 				}
 			],
 			"speed": {
@@ -308,44 +284,41 @@
 					}
 				}
 			],
-			"abilitiesBot": [
-				{
-					"traits": [
-						"curse",
-						"divine",
-						"necromancy"
-					],
-					"entries": [
-						"When the wrecker demon hits a creature with a jaws {@action Strike}, the creature must succeed at a DC 21 Fortitude save or become physically mutilated. The creature then takes a \u20131 status penalty to Charisma-based checks.",
-						"This penalty is cumulative up to \u20133, and remains even if the wounds are healed.",
-						"The penalty is reduced by 1 every 24 hours until it reaches 0."
-					],
-					"name": "Mutilating Bite"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"entries": [
-						"The wrecker demon makes two claw Strikes against an object (if the object is worn or held by a creature, this action gains the {@trait manipulate} trait). If both Strikes hit, combine their damage for the purpose of overcoming its Hardness. These Strikes do not count toward the wrecker demon's multiple attack penalty, nor does that penalty apply to these Strikes."
-					],
-					"name": "Wreck"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning",
-					"mental",
-					"piercing",
-					"slashing"
+			"abilities": {
+				"mid": [
+					{
+						"entries": [
+							"A wrecker demon loathes the sight of its own reflection. When a creature Interacts with a mirror within sight of the wrecker demon, the demon takes a \u20132 penalty to Will saves against {@skill Intimidation} checks. A wrecker demon that ends its turn adjacent to a mirror or that is attacked by a creature holding a mirror takes {@damage 1d6} mental damage (this usually leads wrecker demons to focus their efforts on destroying nearby mirrors using Wreck)."
+						],
+						"name": "Hatred of Mirrors"
+					}
 				],
-				"condition": []
-			},
-			"misc": [
-				"MA",
-				"RA"
-			]
+				"bot": [
+					{
+						"traits": [
+							"curse",
+							"divine",
+							"necromancy"
+						],
+						"entries": [
+							"When the wrecker demon hits a creature with a jaws {@action Strike}, the creature must succeed at a DC 21 Fortitude save or become physically mutilated. The creature then takes a \u20131 status penalty to Charisma-based checks.",
+							"This penalty is cumulative up to \u20133, and remains even if the wounds are healed.",
+							"The penalty is reduced by 1 every 24 hours until it reaches 0."
+						],
+						"name": "Mutilating Bite"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"The wrecker demon makes two claw Strikes against an object (if the object is worn or held by a creature, this action gains the {@trait manipulate} trait). If both Strikes hit, combine their damage for the purpose of overcoming its Hardness. These Strikes do not count toward the wrecker demon's multiple attack penalty, nor does that penalty apply to these Strikes."
+						],
+						"name": "Wreck"
+					}
+				]
+			}
 		},
 		{
 			"name": "Blood Wolf",
@@ -353,61 +326,64 @@
 			"source": "EC1",
 			"page": 43,
 			"level": 3,
-			"rarity": "Uncommon",
-			"alignment": "NE",
-			"size": "Medium",
+			"traits": [
+				"uncommon",
+				"ne",
+				"medium",
+				"animal",
+				"fiend"
+			],
 			"creatureType": [
 				"Animal",
 				"Fiend"
 			],
 			"perception": {
-				"default": 9
+				"std": 9
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [
-					"scent 30 feet"
-				],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"type": "imprecise",
+					"name": "scent",
+					"range": 30
+				}
+			],
 			"skills": {
 				"Acrobatics": {
-					"default": 8
+					"std": 8
 				},
 				"Athletics": {
-					"default": 10
+					"std": 10
 				},
 				"Intimidation": {
-					"default": 8
+					"std": 8
 				},
 				"Survival": {
-					"default": 9
+					"std": 9
 				}
 			},
 			"abilityMods": {
-				"Str": 5,
-				"Dex": 3,
-				"Con": 2,
-				"Int": -4,
-				"Wis": 2,
-				"Cha": -1
+				"str": 5,
+				"dex": 3,
+				"con": 2,
+				"int": -4,
+				"wis": 2,
+				"cha": -1
 			},
-			"abilitiesTop": [],
 			"ac": {
-				"default": 18
+				"std": 18
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 11
+				"fort": {
+					"std": 11
 				},
-				"Ref": {
-					"default": 9
+				"ref": {
+					"std": 9
 				},
-				"Will": {
-					"default": 7
+				"will": {
+					"std": 7
 				}
 			},
 			"hp": [
@@ -428,17 +404,6 @@
 					"name": "electricity"
 				}
 			],
-			"abilitiesMid": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"entries": [],
-					"name": "Attack of Opportunity",
-					"generic": true
-				}
-			],
 			"speed": {
 				"walk": 30
 			},
@@ -456,36 +421,40 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"traits": [
-						"move"
-					],
-					"entries": [
-						"The blood wolf moves up to half its Speed. This movement doesn't trigger reactions. At the end of the movement, it attempts an {@skill Intimidation} check to {@action Demoralize} a target within 5 feet of it. This {@skill Intimidation} check doesn't take the \u20134 circumstance penalty for the wolf not speaking a language."
-					],
-					"name": "Aggressive Rush"
-				},
-				{
-					"entries": [
-						"The blood wolf's Strikes deal an extra {@dice 1d6} damage to creatures within reach of at least two of the wolf's allies."
-					],
-					"name": "Pack Attack"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"piercing"
+			"abilities": {
+				"mid": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"entries": [],
+						"name": "Attack of Opportunity",
+						"generic": true
+					}
 				],
-				"condition": []
-			},
-			"misc": [
-				"MA"
-			]
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"move"
+						],
+						"entries": [
+							"The blood wolf moves up to half its Speed. This movement doesn't trigger reactions. At the end of the movement, it attempts an {@skill Intimidation} check to {@action Demoralize} a target within 5 feet of it. This {@skill Intimidation} check doesn't take the \u20134 circumstance penalty for the wolf not speaking a language."
+						],
+						"name": "Aggressive Rush"
+					},
+					{
+						"entries": [
+							"The blood wolf's Strikes deal an extra {@dice 1d6} damage to creatures within reach of at least two of the wolf's allies."
+						],
+						"name": "Pack Attack"
+					}
+				]
+			}
 		},
 		{
 			"name": "Bone Croupier",
@@ -493,23 +462,22 @@
 			"source": "EC1",
 			"page": 80,
 			"level": 5,
-			"rarity": "Common",
-			"alignment": "NE",
-			"size": "Medium",
+			"traits": [
+				"ne",
+				"medium",
+				"undead"
+			],
 			"creatureType": [
 				"Undead"
 			],
 			"perception": {
-				"default": 11
+				"std": 11
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Common"
@@ -518,49 +486,41 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 14
+					"std": 14
 				},
 				"Deception": {
-					"default": 14
+					"std": 14
 				},
 				"Diplomacy": {
-					"default": 14
+					"std": 14
 				},
 				"Stealth": {
-					"default": 14
+					"std": 14
 				},
 				"Thievery": {
-					"default": 14
+					"std": 14
 				}
 			},
 			"abilityMods": {
-				"Str": 2,
-				"Dex": 5,
-				"Con": 2,
-				"Int": 1,
-				"Wis": 2,
-				"Cha": 5
+				"str": 2,
+				"dex": 5,
+				"con": 2,
+				"int": 1,
+				"wis": 2,
+				"cha": 5
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+12, {@skill Stealth} +14, {@skill Thievery} +14 Str +2, Dex +5, Con +2, Int +1, Wis +2, Cha +5."
-					],
-					"name": "Lore"
-				}
-			],
 			"ac": {
-				"default": 22
+				"std": 22
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 9
+				"fort": {
+					"std": 9
 				},
-				"Ref": {
-					"default": 14
+				"ref": {
+					"std": 14
 				},
-				"Will": {
-					"default": 14
+				"will": {
+					"std": 14
 				}
 			},
 			"hp": [
@@ -571,13 +531,10 @@
 					]
 				}
 			],
-			"immunities": {
-				"damage": [],
-				"condition": [
-					"death effects",
-					"disease"
-				]
-			},
+			"immunities": [
+				"death effects",
+				"disease"
+			],
 			"resistances": [
 				{
 					"amount": 5,
@@ -587,7 +544,6 @@
 					"name": "piercing"
 				}
 			],
-			"abilitiesMid": [],
 			"speed": {
 				"walk": 25
 			},
@@ -646,54 +602,52 @@
 					}
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "free"
-					},
-					"traits": [
-						"divination",
-						"misfortune",
-						"occult"
-					],
-					"trigger": "A creature within 30 feet of the bone croupier attempts a check that uses a d20, but hasn't rolled yet",
-					"frequency": {
-						"unit": "day",
-						"freq": 1
-					},
-					"entries": [
-						"The bone croupier pulls on the threads of luck that bind all things. Instead of rolling its check, the target automatically gets a failure."
-					],
-					"name": "Change of Luck"
-				},
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"traits": [
-						"death",
-						"occult"
-					],
-					"entries": [
-						"The bone croupier targets an adjacent creature that is {@condition dying}. That creature can either increase its {@condition dying} value by 1 or roll a d4. On a 4, the creature is no longer {@condition dying} and is {@condition unconscious} at 0 HP. On a 1, 2, or 3, however, the creature increases its {@condition dying} value by that amount. Regardless, the creature is temporarily immune for the next 24 hours."
-					],
-					"name": "Roll the Bones"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"slashing"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"+12, {@skill Stealth} +14, {@skill Thievery} +14 Str +2, Dex +5, Con +2, Int +1, Wis +2, Cha +5."
+						],
+						"name": "Lore"
+					}
 				],
-				"condition": [
-					"{@condition dying}"
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "free"
+						},
+						"traits": [
+							"divination",
+							"misfortune",
+							"occult"
+						],
+						"trigger": "A creature within 30 feet of the bone croupier attempts a check that uses a d20, but hasn't rolled yet",
+						"frequency": {
+							"unit": "day",
+							"freq": 1
+						},
+						"entries": [
+							"The bone croupier pulls on the threads of luck that bind all things. Instead of rolling its check, the target automatically gets a failure."
+						],
+						"name": "Change of Luck"
+					},
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"death",
+							"occult"
+						],
+						"entries": [
+							"The bone croupier targets an adjacent creature that is {@condition dying}. That creature can either increase its {@condition dying} value by 1 or roll a d4. On a 4, the creature is no longer {@condition dying} and is {@condition unconscious} at 0 HP. On a 1, 2, or 3, however, the creature increases its {@condition dying} value by that amount. Regardless, the creature is temporarily immune for the next 24 hours."
+						],
+						"name": "Roll the Bones"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"CC"
-			]
+			}
 		},
 		{
 			"name": "Cavnakash",
@@ -701,26 +655,24 @@
 			"source": "EC1",
 			"page": 89,
 			"level": 5,
-			"rarity": "Unique",
-			"alignment": "NE",
-			"size": "Medium",
 			"traits": [
-				"Xulgath"
+				"unique",
+				"ne",
+				"medium",
+				"humanoid",
+				"xulgath"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 12
+				"std": 12
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Common",
@@ -731,28 +683,28 @@
 			},
 			"skills": {
 				"Arcana": {
-					"default": 10
+					"std": 10
 				},
 				"Athletics": {
-					"default": 13
+					"std": 13
 				},
 				"Intimidation": {
-					"default": 13
+					"std": 13
 				},
 				"Religion": {
-					"default": 15
+					"std": 15
 				},
 				"Stealth": {
-					"default": 10
+					"std": 10
 				}
 			},
 			"abilityMods": {
-				"Str": 3,
-				"Dex": 0,
-				"Con": 2,
-				"Int": 1,
-				"Wis": 5,
-				"Cha": 2
+				"str": 3,
+				"dex": 0,
+				"con": 2,
+				"int": 1,
+				"wis": 5,
+				"cha": 2
 			},
 			"items": [
 				"{@runeItem maul||+1 weapon potency||striking|}",
@@ -760,38 +712,24 @@
 				"{@item scale mail}",
 				"{@item wand} of {@spell heal} (2nd)"
 			],
-			"abilitiesTop": [],
 			"ac": {
-				"default": 22
+				"std": 22
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 13
+				"fort": {
+					"std": 13
 				},
-				"Ref": {
-					"default": 10
+				"ref": {
+					"std": 10
 				},
-				"Will": {
-					"default": 15
+				"will": {
+					"std": 15
 				}
 			},
 			"hp": [
 				{
 					"hp": 83,
 					"abilities": null
-				}
-			],
-			"abilitiesMid": [
-				{
-					"traits": [
-						"aura",
-						"olfactory"
-					],
-					"entries": [
-						"30 feet. A creature that enters the aura must attempt a DC 22 Fortitude save. On a failure, the creature is {@condition sickened|CRB|sickened 1}, and on a critical failure, the creature also takes a \u20135-foot status penalty to its Speeds for 1 round. While within the aura, the creature takes a \u20132 circumstance penalty to saves to recover from the {@condition sickened} condition.",
-						"A creature that succeeds at its save is temporarily immune to all xulgaths' stenches for 1 minute."
-					],
-					"name": "Stench"
 				}
 			],
 			"speed": {
@@ -915,54 +853,54 @@
 					}
 				}
 			],
-			"abilitiesBot": [
-				{
-					"traits": [
-						"3rd"
-					],
-					"entries": [
-						"."
-					],
-					"name": "Cantrips"
-				},
-				{
-					"entries": [
-						"1 Focus Point, DC 22; 3rd cry of destruction (Core Rulebook 390)"
-					],
-					"name": "Cleric Domain Spell"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"entries": [
-						"Cavnakash expends a {@spell harm} spell and attempts a melee {@action Strike}. If he hits, he adds the spell's negative damage to his {@action Strike} damage. If he misses, the {@spell harm} spell is still expended."
-					],
-					"name": "Channel Smite"
-				},
-				{
-					"entries": [
-						"Gift Cavnakash has a profane gift from Balenni, giving him a +1 status bonus to attack rolls, skill checks, and saving throws (already factored into his statistics)."
-					],
-					"name": "Profane"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning",
-					"piercing",
-					"slashing"
+			"abilities": {
+				"mid": [
+					{
+						"traits": [
+							"aura",
+							"olfactory"
+						],
+						"entries": [
+							"30 feet. A creature that enters the aura must attempt a DC 22 Fortitude save. On a failure, the creature is {@condition sickened|CRB|sickened 1}, and on a critical failure, the creature also takes a \u20135-foot status penalty to its Speeds for 1 round. While within the aura, the creature takes a \u20132 circumstance penalty to saves to recover from the {@condition sickened} condition.",
+							"A creature that succeeds at its save is temporarily immune to all xulgaths' stenches for 1 minute."
+						],
+						"name": "Stench"
+					}
 				],
-				"condition": [
-					"{@condition sickened}"
+				"bot": [
+					{
+						"traits": [
+							"3rd"
+						],
+						"entries": [
+							"."
+						],
+						"name": "Cantrips"
+					},
+					{
+						"entries": [
+							"1 Focus Point, DC 22; 3rd cry of destruction (Core Rulebook 390)"
+						],
+						"name": "Cleric Domain Spell"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"Cavnakash expends a {@spell harm} spell and attempts a melee {@action Strike}. If he hits, he adds the spell's negative damage to his {@action Strike} damage. If he misses, the {@spell harm} spell is still expended."
+						],
+						"name": "Channel Smite"
+					},
+					{
+						"entries": [
+							"Gift Cavnakash has a profane gift from Balenni, giving him a +1 status bonus to attack rolls, skill checks, and saving throws (already factored into his statistics)."
+						],
+						"name": "Profane"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"CC",
-				"UW"
-			]
+			}
 		},
 		{
 			"name": "Corrosive Lizard",
@@ -970,58 +908,61 @@
 			"source": "EC1",
 			"page": 45,
 			"level": 2,
-			"rarity": "Uncommon",
-			"alignment": "NE",
-			"size": "Medium",
+			"traits": [
+				"uncommon",
+				"ne",
+				"medium",
+				"animal",
+				"fiend"
+			],
 			"creatureType": [
 				"Animal",
 				"Fiend"
 			],
 			"perception": {
-				"default": 7
+				"std": 7
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [
-					"scent 30 feet"
-				],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"type": "imprecise",
+					"name": "scent",
+					"range": 30
+				}
+			],
 			"skills": {
 				"Acrobatics": {
-					"default": 6
+					"std": 6
 				},
 				"Athletics": {
-					"default": 8
+					"std": 8
 				},
 				"Stealth": {
-					"default": 6
+					"std": 6
 				}
 			},
 			"abilityMods": {
-				"Str": 2,
-				"Dex": 2,
-				"Con": 4,
-				"Int": -4,
-				"Wis": 1,
-				"Cha": -2
+				"str": 2,
+				"dex": 2,
+				"con": 4,
+				"int": -4,
+				"wis": 1,
+				"cha": -2
 			},
-			"abilitiesTop": [],
 			"ac": {
-				"default": 18
+				"std": 18
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 10
+				"fort": {
+					"std": 10
 				},
-				"Ref": {
-					"default": 8
+				"ref": {
+					"std": 8
 				},
-				"Will": {
-					"default": 5
+				"will": {
+					"std": 5
 				}
 			},
 			"hp": [
@@ -1030,29 +971,13 @@
 					"abilities": null
 				}
 			],
-			"immunities": {
-				"damage": [
-					"acid"
-				],
-				"condition": []
-			},
+			"immunities": [
+				"acid"
+			],
 			"weaknesses": [
 				{
 					"amount": 3,
 					"name": "good"
-				}
-			],
-			"abilitiesMid": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"trigger": "A creature {@condition grabbed} by the corrosive lizard's jaws fails a check to {@action Escape}",
-					"entries": [
-						"The lizard's jaws deal {@damage 1d6} piercing damage and {@damage 1d6} acid damage to the triggering creature."
-					],
-					"name": "Gnashing Bite"
 				}
 			],
 			"speed": {
@@ -1074,46 +999,47 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"traits": [
-						"acid",
-						"primal"
-					],
-					"entries": [
-						"The corrosive lizard vomits a gout of acid in a 15-foot cone. Each creature in this area takes {@damage 3d6} acid damage (DC 20 basic Reflex save). The lizard can't use Gout of Acid again for {@dice 1d4} rounds."
-					],
-					"name": "Gout of Acid"
-				},
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"entries": [
-						"The corrosive lizard {@action Stride||Strides} up to double its Speed and then makes a jaws {@action Strike}. If the lizard moved at least 20 feet away from its starting position, it gains a +2 circumstance bonus to this attack roll."
-					],
-					"name": "Lurching Charge"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"acid",
-					"piercing"
+			"abilities": {
+				"mid": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"trigger": "A creature {@condition grabbed} by the corrosive lizard's jaws fails a check to {@action Escape}",
+						"entries": [
+							"The lizard's jaws deal {@damage 1d6} piercing damage and {@damage 1d6} acid damage to the triggering creature."
+						],
+						"name": "Gnashing Bite"
+					}
 				],
-				"condition": [
-					"{@condition grabbed}"
+				"bot": [
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"acid",
+							"primal"
+						],
+						"entries": [
+							"The corrosive lizard vomits a gout of acid in a 15-foot cone. Each creature in this area takes {@damage 3d6} acid damage (DC 20 basic Reflex save). The lizard can't use Gout of Acid again for {@dice 1d4} rounds."
+						],
+						"name": "Gout of Acid"
+					},
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"The corrosive lizard {@action Stride||Strides} up to double its Speed and then makes a jaws {@action Strike}. If the lizard moved at least 20 feet away from its starting position, it gains a +2 circumstance bonus to this attack roll."
+						],
+						"name": "Lurching Charge"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"AD",
-				"CC"
-			]
+			}
 		},
 		{
 			"name": "Corrupted Priest",
@@ -1121,23 +1047,18 @@
 			"source": "EC1",
 			"page": 39,
 			"level": 3,
-			"rarity": "Unique",
-			"alignment": "NE",
-			"size": "Medium",
-			"items": [
-				"{@item leather armor}",
-				"gray robes",
-				"{@item trident}",
-				"{@item wooden religious symbol} of {@deity Gozreh} defaced with demonic runes"
-			],
 			"traits": [
-				"Human"
+				"unique",
+				"ne",
+				"medium",
+				"human",
+				"humanoid"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 11
+				"std": 11
 			},
 			"languages": {
 				"languages": [
@@ -1147,65 +1068,50 @@
 			},
 			"skills": {
 				"Diplomacy": {
-					"default": 7
+					"std": 7
 				},
 				"Nature": {
-					"default": 9
+					"std": 9
 				},
 				"Survival": {
-					"default": 9
+					"std": 9
 				},
 				"Gozreh Lore": {
-					"default": 8
+					"std": 8
 				}
 			},
 			"abilityMods": {
-				"Str": 1,
-				"Dex": 0,
-				"Con": 1,
-				"Int": 1,
-				"Wis": 4,
-				"Cha": 2
+				"str": 1,
+				"dex": 0,
+				"con": 1,
+				"int": 1,
+				"wis": 4,
+				"cha": 2
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"The corrupted priest can use {@skill Diplomacy} to {@action Make an Impression} on animals and to make very simple {@action Request||Requests} of them."
-					],
-					"name": "Wild Empathy"
-				}
+			"items": [
+				"{@item leather armor}",
+				"gray robes",
+				"{@item trident}",
+				"{@item wooden religious symbol} of {@deity Gozreh} defaced with demonic runes"
 			],
 			"ac": {
-				"default": 17
+				"std": 17
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 8
+				"fort": {
+					"std": 8
 				},
-				"Ref": {
-					"default": 5
+				"ref": {
+					"std": 5
 				},
-				"Will": {
-					"default": 11
+				"will": {
+					"std": 11
 				}
 			},
 			"hp": [
 				{
 					"hp": 45,
 					"abilities": null
-				}
-			],
-			"abilitiesMid": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"trigger": "The corrupted priest is targeted by an effect with the {@trait mental} trait or that requires a Will save",
-					"entries": [
-						"The hermit's mind is a storm of chaos due to demonic influences. The creator of the triggering effect takes {@damage 3d8} mental damage (DC 20 basic Will save)."
-					],
-					"name": "Roiling Mind"
 				}
 			],
 			"speed": {
@@ -1225,14 +1131,6 @@
 					"types": [
 						"piercing"
 					]
-				}
-			],
-			"abilitiesBot": [
-				{
-					"entries": [
-						"Corrupted priests deal an extra {@dice 1d8} damage with their tridents, and any trident gains the {@trait fatal d10} trait while the priest is using it (both the extra weapon damage die and the {@trait fatal} trait have already been included above)."
-					],
-					"name": "Demonic Strength"
 				}
 			],
 			"spellcasting": [
@@ -1292,18 +1190,37 @@
 					}
 				}
 			],
-			"inflicts": {
-				"damage": [
-					"mental",
-					"piercing"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"The corrupted priest can use {@skill Diplomacy} to {@action Make an Impression} on animals and to make very simple {@action Request||Requests} of them."
+						],
+						"name": "Wild Empathy"
+					}
 				],
-				"condition": []
-			},
-			"misc": [
-				"MA",
-				"TA",
-				"UW"
-			]
+				"mid": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"trigger": "The corrupted priest is targeted by an effect with the {@trait mental} trait or that requires a Will save",
+						"entries": [
+							"The hermit's mind is a storm of chaos due to demonic influences. The creator of the triggering effect takes {@damage 3d8} mental damage (DC 20 basic Will save)."
+						],
+						"name": "Roiling Mind"
+					}
+				],
+				"bot": [
+					{
+						"entries": [
+							"Corrupted priests deal an extra {@dice 1d8} damage with their tridents, and any trident gains the {@trait fatal d10} trait while the priest is using it (both the extra weapon damage die and the {@trait fatal} trait have already been included above)."
+						],
+						"name": "Demonic Strength"
+					}
+				]
+			}
 		},
 		{
 			"name": "Corrupted Retainer",
@@ -1311,17 +1228,17 @@
 			"source": "EC1",
 			"page": 35,
 			"level": 2,
-			"rarity": "Common",
-			"alignment": "CE",
-			"size": "Medium",
 			"traits": [
-				"Human"
+				"ce",
+				"medium",
+				"human",
+				"humanoid"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 6
+				"std": 6
 			},
 			"languages": {
 				"languages": [
@@ -1331,74 +1248,48 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 6
+					"std": 6
 				},
 				"Athletics": {
-					"default": 6
+					"std": 6
 				},
 				"Survival": {
-					"default": 6
+					"std": 6
 				}
 			},
 			"abilityMods": {
-				"Str": 2,
-				"Dex": 2,
-				"Con": 3,
-				"Int": 0,
-				"Wis": 2,
-				"Cha": 0
+				"str": 2,
+				"dex": 2,
+				"con": 3,
+				"int": 0,
+				"wis": 2,
+				"cha": 0
 			},
-			"abilitiesTop": [],
-			"ac": {
-				"default": 19,
-				"with shield raised": 21
-			},
-			"savingThrows": {
-				"Fort": {
-					"default": 9
-				},
-				"Ref": {
-					"default": 6
-				},
-				"Will": {
-					"default": 7
-				}
-			},
-			"hp": [
-				{
-					"hp": 30,
-					"abilities": null
-				}
-			],
 			"items": [
 				"{@item hide armor}",
 				"gray robes",
 				"{@item trident}",
 				"{@item wooden shield} (Hardness 3)"
 			],
-			"abilitiesMid": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"traits": [
-						"rage"
-					],
-					"trigger": "A foe within the corrupted retainer's reach attempts to move away from them",
-					"entries": [
-						"The corrupted retainer keeps pace with the triggering foe. The corrupted retainer {@action Stride||Strides} up to their Speed, following that foe and keeping it in reach throughout its movement until it stops moving or the corrupted retainer has moved their full Speed."
-					],
-					"name": "No Escape"
+			"ac": {
+				"std": 19,
+				"with shield raised": 21
+			},
+			"savingThrows": {
+				"fort": {
+					"std": 9
 				},
+				"ref": {
+					"std": 6
+				},
+				"will": {
+					"std": 7
+				}
+			},
+			"hp": [
 				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"entries": [],
-					"name": "Shield Block",
-					"generic": true
+					"hp": 30,
+					"abilities": null
 				}
 			],
 			"speed": {
@@ -1420,43 +1311,56 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"entries": [
-						"Corrupted retainers deal an extra {@dice 1d8} damage with their tridents, and any trident gains the {@trait fatal d10} trait while the corrupted retainer is using it (both the extra weapon damage die and the {@trait fatal} trait have already been included in the corrupted retainer's trident {@action Strike} above)."
-					],
-					"name": "Demonic Strength"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
+			"abilities": {
+				"mid": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"traits": [
+							"rage"
+						],
+						"trigger": "A foe within the corrupted retainer's reach attempts to move away from them",
+						"entries": [
+							"The corrupted retainer keeps pace with the triggering foe. The corrupted retainer {@action Stride||Strides} up to their Speed, following that foe and keeping it in reach throughout its movement until it stops moving or the corrupted retainer has moved their full Speed."
+						],
+						"name": "No Escape"
 					},
-					"traits": [
-						"concentrate",
-						"emotion",
-						"mental"
-					],
-					"entries": [
-						"The corrupted retainer begins to rage and gains 5 temporary Hit Points. The rage lasts for 1 minute or until they fall {@condition unconscious}, whichever happens first. While raging, the corrupted retainer deals 2 additional damage with melee weapons, has a \u20131 penalty to AC, and cannot use actions that have the {@trait concentrate} trait unless those actions also have the {@trait rage} trait. The corrupted retainer can still {@action Seek} while raging."
-					],
-					"name": "Tainted Rage"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"piercing"
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"entries": [],
+						"name": "Shield Block",
+						"generic": true
+					}
 				],
-				"condition": [
-					"{@condition unconscious}"
+				"bot": [
+					{
+						"entries": [
+							"Corrupted retainers deal an extra {@dice 1d8} damage with their tridents, and any trident gains the {@trait fatal d10} trait while the corrupted retainer is using it (both the extra weapon damage die and the {@trait fatal} trait have already been included in the corrupted retainer's trident {@action Strike} above)."
+						],
+						"name": "Demonic Strength"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"concentrate",
+							"emotion",
+							"mental"
+						],
+						"entries": [
+							"The corrupted retainer begins to rage and gains 5 temporary Hit Points. The rage lasts for 1 minute or until they fall {@condition unconscious}, whichever happens first. While raging, the corrupted retainer deals 2 additional damage with melee weapons, has a \u20131 penalty to AC, and cannot use actions that have the {@trait concentrate} trait unless those actions also have the {@trait rage} trait. The corrupted retainer can still {@action Seek} while raging."
+						],
+						"name": "Tainted Rage"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"TA",
-				"CC",
-				"UW"
-			]
+			}
 		},
 		{
 			"name": "Daring Danika",
@@ -1464,69 +1368,62 @@
 			"source": "EC1",
 			"page": 28,
 			"level": 2,
-			"rarity": "Unique",
-			"alignment": "LE",
-			"size": "Medium",
 			"traits": [
-				"Human"
+				"unique",
+				"le",
+				"medium",
+				"human",
+				"humanoid"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 7
+				"std": 7
 			},
 			"skills": {
 				"Athletics": {
-					"default": 6,
+					"std": 6,
 					"to Disarm": 7
 				},
 				"Diplomacy": {
-					"default": 7
+					"std": 7
 				},
 				"Intimidation": {
-					"default": 7
+					"std": 7
 				},
 				"Nature": {
-					"default": 6
+					"std": 6
 				},
 				"Performance": {
-					"default": 7
+					"std": 7
 				}
 			},
 			"abilityMods": {
-				"Str": 0,
-				"Dex": 3,
-				"Con": 1,
-				"Int": 1,
-				"Wis": 1,
-				"Cha": 3
+				"str": 0,
+				"dex": 3,
+				"con": 1,
+				"int": 1,
+				"wis": 1,
+				"cha": 3
 			},
 			"items": [
 				"lion tamer's outfit",
 				"short stool",
 				"whip"
 			],
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+7, {@skill Nature} +6, {@skill Performance} +7 Str +0, Dex +3, Con +1, Int +1, Wis +1, Cha +3 Items lion tamer's outfit, short stool, whip."
-					],
-					"name": "Intimidation"
-				}
-			],
 			"ac": {
-				"default": 17
+				"std": 17
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 7
+				"fort": {
+					"std": 7
 				},
-				"Ref": {
-					"default": 9
+				"ref": {
+					"std": 9
 				},
-				"Will": {
-					"default": 7
+				"will": {
+					"std": 7
 				}
 			},
 			"hp": [
@@ -1535,7 +1432,6 @@
 					"abilities": null
 				}
 			],
-			"abilitiesMid": [],
 			"speed": {
 				"walk": 25
 			},
@@ -1571,31 +1467,29 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"entries": [
-						"Danika targets a single minion creature within reach of her whip to spur its ferocity.",
-						"That creature gains 5 temporary Hit Points. The target is temporarily immune to Sting of the Lash for 24 hours."
-					],
-					"name": "Sting of the Lash"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning",
-					"slashing"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"+7, {@skill Nature} +6, {@skill Performance} +7 Str +0, Dex +3, Con +1, Int +1, Wis +1, Cha +3 Items lion tamer's outfit, short stool, whip."
+						],
+						"name": "Intimidation"
+					}
 				],
-				"condition": []
-			},
-			"misc": [
-				"MA",
-				"RC",
-				"UW"
-			]
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"Danika targets a single minion creature within reach of her whip to spur its ferocity.",
+							"That creature gains 5 temporary Hit Points. The target is temporarily immune to Sting of the Lash for 24 hours."
+						],
+						"name": "Sting of the Lash"
+					}
+				]
+			}
 		},
 		{
 			"name": "Flea Swarm",
@@ -1603,58 +1497,57 @@
 			"source": "EC1",
 			"page": 83,
 			"level": 5,
-			"rarity": "Common",
-			"alignment": "N",
-			"size": "Large",
 			"traits": [
-				"Swarm"
+				"n",
+				"large",
+				"animal",
+				"swarm"
 			],
 			"creatureType": [
 				"Animal"
 			],
 			"perception": {
-				"default": 13
+				"std": 13
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [
-					"scent 30 feet"
-				],
-				"vague": [],
-				"other": [
-					"low-light vision"
-				]
-			},
+			"senses": [
+				{
+					"name": "low-light vision"
+				},
+				{
+					"type": "imprecise",
+					"name": "scent",
+					"range": 30
+				}
+			],
 			"skills": {
 				"Acrobatics": {
-					"default": 14
+					"std": 14
 				},
 				"Athletics": {
-					"default": 9,
+					"std": 9,
 					"to Jump": 13
 				}
 			},
 			"abilityMods": {
-				"Str": -2,
-				"Dex": 5,
-				"Con": 4,
-				"Int": -5,
-				"Wis": 1,
-				"Cha": -4
+				"str": -2,
+				"dex": 5,
+				"con": 4,
+				"int": -5,
+				"wis": 1,
+				"cha": -4
 			},
-			"abilitiesTop": [],
 			"ac": {
-				"default": 18
+				"std": 18
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 15
+				"fort": {
+					"std": 15
 				},
-				"Ref": {
-					"default": 16
+				"ref": {
+					"std": 16
 				},
-				"Will": {
-					"default": 6
+				"will": {
+					"std": 6
 				}
 			},
 			"hp": [
@@ -1663,72 +1556,58 @@
 					"abilities": null
 				}
 			],
-			"immunities": {
-				"damage": [
-					"precision"
-				],
-				"condition": [
-					"disease",
-					"swarm mind"
-				]
-			},
+			"immunities": [
+				"precision",
+				"disease",
+				"swarm mind"
+			],
 			"weaknesses": [
 				{
 					"name": "area"
 				}
 			],
-			"abilitiesMid": [],
 			"speed": {
 				"walk": 30
 			},
 			"attacks": [],
-			"abilitiesBot": [
-				{
-					"traits": [
-						"disease"
-					],
-					"entries": [
-						"As giant flea, except DC 19."
-					],
-					"name": "Flea Fever"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
+			"abilities": {
+				"bot": [
+					{
+						"traits": [
+							"disease"
+						],
+						"entries": [
+							"As giant flea, except DC 19."
+						],
+						"name": "Flea Fever"
 					},
-					"requirements": "The flea swarm's last action was",
-					"entries": [],
-					"name": "Suck Blood"
-				},
-				{
-					"entries": [
-						"Bites, and it dealt damage to at least one enemy; The flea swarm drinks the creatures' blood. Each victim becomes {@condition drained|CRB|drained 1} and the swarm regains 3 HP for each victim {@condition drained}."
-					],
-					"name": "Swarming"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"requirements": "The flea swarm's last action was",
+						"entries": [],
+						"name": "Suck Blood"
 					},
-					"entries": [
-						"Each enemy in the swarm's space takes {@damage 2d4+7} piercing damage and must attempt a DC 22 basic Reflex save. A creature that fails its save is exposed to flea fever."
-					],
-					"name": "Swarming Bites"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"piercing"
-				],
-				"condition": [
-					"{@condition drained}"
+					{
+						"entries": [
+							"Bites, and it dealt damage to at least one enemy; The flea swarm drinks the creatures' blood. Each victim becomes {@condition drained|CRB|drained 1} and the swarm regains 3 HP for each victim {@condition drained}."
+						],
+						"name": "Swarming"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"Each enemy in the swarm's space takes {@damage 2d4+7} piercing damage and must attempt a DC 22 basic Reflex save. A creature that fails its save is exposed to flea fever."
+						],
+						"name": "Swarming Bites"
+					}
 				]
-			},
-			"misc": [
-				"CC"
-			]
+			}
 		},
 		{
 			"name": "Giant Flea",
@@ -1736,55 +1615,56 @@
 			"source": "EC1",
 			"page": 83,
 			"level": 3,
-			"rarity": "Common",
-			"alignment": "N",
-			"size": "Large",
+			"traits": [
+				"n",
+				"large",
+				"animal"
+			],
 			"creatureType": [
 				"Animal"
 			],
 			"perception": {
-				"default": 10
+				"std": 10
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [
-					"scent 30 feet"
-				],
-				"vague": [],
-				"other": [
-					"low-light vision"
-				]
-			},
+			"senses": [
+				{
+					"name": "low-light vision"
+				},
+				{
+					"type": "imprecise",
+					"name": "scent",
+					"range": 30
+				}
+			],
 			"skills": {
 				"Acrobatics": {
-					"default": 10
+					"std": 10
 				},
 				"Athletics": {
-					"default": 9,
+					"std": 9,
 					"to Jump": 15
 				}
 			},
 			"abilityMods": {
-				"Str": 2,
-				"Dex": 3,
-				"Con": 3,
-				"Int": -5,
-				"Wis": 1,
-				"Cha": -4
+				"str": 2,
+				"dex": 3,
+				"con": 3,
+				"int": -5,
+				"wis": 1,
+				"cha": -4
 			},
-			"abilitiesTop": [],
 			"ac": {
-				"default": 19
+				"std": 19
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 12
+				"fort": {
+					"std": 12
 				},
-				"Ref": {
-					"default": 12
+				"ref": {
+					"std": 12
 				},
-				"Will": {
-					"default": 4
+				"will": {
+					"std": 4
 				}
 			},
 			"hp": [
@@ -1793,7 +1673,6 @@
 					"abilities": null
 				}
 			],
-			"abilitiesMid": [],
 			"speed": {
 				"walk": 30
 			},
@@ -1812,40 +1691,30 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
+			"abilities": {
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"requirements": "The giant flea's last action was a successful proboscis {@action Strike}",
+						"entries": [
+							"The giant flea drinks the creature's blood. The victim becomes {@condition drained|CRB|drained 1} and the flea regains 5 HP."
+						],
+						"name": "Suck Blood"
 					},
-					"requirements": "The giant flea's last action was a successful proboscis {@action Strike}",
-					"entries": [
-						"The giant flea drinks the creature's blood. The victim becomes {@condition drained|CRB|drained 1} and the flea regains 5 HP."
-					],
-					"name": "Suck Blood"
-				},
-				{
-					"traits": [
-						"disease"
-					],
-					"entries": [
-						"Drain from flea fever can't be reduced or recovered from naturally until the disease is cured. Saving Throw DC 18 Fortitude; Stage 1 {@condition drained|CRB|drained 1} ({@dice 1d4} hours), Stage 2 {@condition drained|CRB|drained 1} and {@condition sickened|CRB|sickened 1} (1 day), Stage 3 {@condition drained|CRB|drained 2} and {@condition sickened|CRB|sickened 1} (1 day), Stage 4."
-					],
-					"name": "Flea Fever"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"piercing"
-				],
-				"condition": [
-					"{@condition drained}"
+					{
+						"traits": [
+							"disease"
+						],
+						"entries": [
+							"Drain from flea fever can't be reduced or recovered from naturally until the disease is cured. Saving Throw DC 18 Fortitude; Stage 1 {@condition drained|CRB|drained 1} ({@dice 1d4} hours), Stage 2 {@condition drained|CRB|drained 1} and {@condition sickened|CRB|sickened 1} (1 day), Stage 3 {@condition drained|CRB|drained 2} and {@condition sickened|CRB|sickened 1} (1 day), Stage 4."
+						],
+						"name": "Flea Fever"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"CC"
-			]
+			}
 		},
 		{
 			"name": "Jaleen And Rhovo",
@@ -1853,17 +1722,18 @@
 			"source": "EC1",
 			"page": 9,
 			"level": 1,
-			"rarity": "Unique",
-			"alignment": "CN",
-			"size": "Medium",
 			"traits": [
-				"Human"
+				"unique",
+				"cn",
+				"medium",
+				"human",
+				"humanoid"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 4
+				"std": 4
 			},
 			"languages": {
 				"languages": [
@@ -1873,39 +1743,38 @@
 			},
 			"skills": {
 				"Athletics": {
-					"default": 7
+					"std": 7
 				},
 				"Intimidation": {
-					"default": 3
+					"std": 3
 				},
 				"Society": {
-					"default": 3
+					"std": 3
 				}
 			},
 			"abilityMods": {
-				"Str": 3,
-				"Dex": 1,
-				"Con": 3,
-				"Int": -1,
-				"Wis": 2,
-				"Cha": -1
+				"str": 3,
+				"dex": 1,
+				"con": 3,
+				"int": -1,
+				"wis": 2,
+				"cha": -1
 			},
 			"items": [
 				"leather armor"
 			],
-			"abilitiesTop": [],
 			"ac": {
-				"default": 14
+				"std": 14
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 9
+				"fort": {
+					"std": 9
 				},
-				"Ref": {
-					"default": 4
+				"ref": {
+					"std": 4
 				},
-				"Will": {
-					"default": 7
+				"will": {
+					"std": 7
 				}
 			},
 			"hp": [
@@ -1914,7 +1783,6 @@
 					"abilities": null
 				}
 			],
-			"abilitiesMid": [],
 			"speed": {
 				"walk": 25
 			},
@@ -1947,47 +1815,36 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
+			"abilities": {
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"concentrate",
+							"emotion",
+							"mental"
+						],
+						"requirements": "The drunken brawler isn't {@condition fatigued} or raging",
+						"entries": [
+							"The drunken brawler begins raging. They gain 4 temporary Hit Points and deal 1 additional damage with fist Strikes. They have a \u20131 penalty to AC and can't use actions with the {@trait concentrate} trait unless those actions also have the {@trait rage} trait. The drunken brawler can still {@action Seek} while in a drunken rage. The rage lasts for 1 minute or until the drunken brawler falls {@condition unconscious}, whichever comes first. When the drunken rage is over, the drunken brawler is {@condition fatigued}, loses all temporary Hit Points they received from the rage, and cannot rage again for 1 minute."
+						],
+						"name": "Drunken Rage"
 					},
-					"traits": [
-						"concentrate",
-						"emotion",
-						"mental"
-					],
-					"requirements": "The drunken brawler isn't {@condition fatigued} or raging",
-					"entries": [
-						"The drunken brawler begins raging. They gain 4 temporary Hit Points and deal 1 additional damage with fist Strikes. They have a \u20131 penalty to AC and can't use actions with the {@trait concentrate} trait unless those actions also have the {@trait rage} trait. The drunken brawler can still {@action Seek} while in a drunken rage. The rage lasts for 1 minute or until the drunken brawler falls {@condition unconscious}, whichever comes first. When the drunken rage is over, the drunken brawler is {@condition fatigued}, loses all temporary Hit Points they received from the rage, and cannot rage again for 1 minute."
-					],
-					"name": "Drunken Rage"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"entries": [
-						"The drunken brawler uses an {@action Interact} action to pick up an improvised weapon within reach and then Strikes with it. The drunken brawler has a +2 circumstance bonus to this attack."
-					],
-					"name": "Improvised Surprise"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning"
-				],
-				"condition": [
-					"{@condition fatigued}",
-					"{@condition unconscious}"
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"The drunken brawler uses an {@action Interact} action to pick up an improvised weapon within reach and then Strikes with it. The drunken brawler has a +2 circumstance bonus to this attack."
+						],
+						"name": "Improvised Surprise"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"CC"
-			]
+			}
 		},
 		{
 			"name": "Jellico Bounce-bounce",
@@ -1995,72 +1852,59 @@
 			"source": "EC1",
 			"page": 28,
 			"level": 2,
-			"rarity": "Unique",
-			"alignment": "CE",
-			"size": "Medium",
 			"traits": [
-				"Human"
+				"unique",
+				"ce",
+				"medium",
+				"human",
+				"humanoid"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 7
+				"std": 7
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 7
+					"std": 7
 				},
 				"Performance": {
-					"default": 7
+					"std": 7
 				},
 				"Stealth": {
-					"default": 7
+					"std": 7
 				},
 				"Thievery": {
-					"default": 9
+					"std": 9
 				}
 			},
 			"abilityMods": {
-				"Str": 2,
-				"Dex": 3,
-				"Con": 1,
-				"Int": 2,
-				"Wis": 0,
-				"Cha": 1
+				"str": 2,
+				"dex": 3,
+				"con": 1,
+				"int": 2,
+				"wis": 0,
+				"cha": 1
 			},
-			"abilitiesTop": [],
 			"ac": {
-				"default": 17
+				"std": 17
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 7
+				"fort": {
+					"std": 7
 				},
-				"Ref": {
-					"default": 9
+				"ref": {
+					"std": 9
 				},
-				"Will": {
-					"default": 6
+				"will": {
+					"std": 6
 				}
 			},
 			"hp": [
 				{
 					"hp": 32,
 					"abilities": null
-				}
-			],
-			"abilitiesMid": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"trigger": "Jellico is the target of a {@action Strike} by an attacker he can see",
-					"entries": [
-						"Jellico gains a +2 circumstance bonus to AC against the triggering {@action Strike}."
-					],
-					"name": "Bob and Weave"
 				}
 			],
 			"speed": {
@@ -2088,7 +1932,7 @@
 					"traits": [
 						"agile",
 						"finesse",
-						"versatile S"
+						"versatile s"
 					],
 					"effects": [],
 					"damage": "{@damage 1d4+2} piercing",
@@ -2118,7 +1962,7 @@
 					"traits": [
 						"agile",
 						"thrown 10 feet",
-						"versatile S"
+						"versatile s"
 					],
 					"effects": [],
 					"damage": "{@damage 1d4+2} piercing",
@@ -2127,48 +1971,50 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"entries": [
-						"Jellico makes a {@action High Jump} or {@action Long Jump}."
-					],
-					"name": "Bounce"
-				},
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"entries": [
-						"Jellico {@action Stride||Strides} up to his Speed and does not trigger reactions during this movement."
-					],
-					"name": "Bounce-Bounce"
-				},
-				{
-					"entries": [
-						"Jellico's bowling pin ranged {@action Strike} hits, the bowling pin bounces off the target back toward Jellico.",
-						"Jellico can catch it again if he has a free hand."
-					],
-					"name": "Juggler If"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning",
-					"piercing"
+			"abilities": {
+				"mid": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"trigger": "Jellico is the target of a {@action Strike} by an attacker he can see",
+						"entries": [
+							"Jellico gains a +2 circumstance bonus to AC against the triggering {@action Strike}."
+						],
+						"name": "Bob and Weave"
+					}
 				],
-				"condition": []
-			},
-			"misc": [
-				"MA",
-				"RA",
-				"TA",
-				"UW"
-			]
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"Jellico makes a {@action High Jump} or {@action Long Jump}."
+						],
+						"name": "Bounce"
+					},
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"Jellico {@action Stride||Strides} up to his Speed and does not trigger reactions during this movement."
+						],
+						"name": "Bounce-Bounce"
+					},
+					{
+						"entries": [
+							"Jellico's bowling pin ranged {@action Strike} hits, the bowling pin bounces off the target back toward Jellico.",
+							"Jellico can catch it again if he has a free hand."
+						],
+						"name": "Juggler If"
+					}
+				]
+			}
 		},
 		{
 			"name": "Juvenile Boar",
@@ -2176,74 +2022,64 @@
 			"source": "EC1",
 			"page": 20,
 			"level": 0,
-			"rarity": "Common",
-			"alignment": "N",
-			"size": "Small",
+			"traits": [
+				"n",
+				"small",
+				"animal"
+			],
 			"creatureType": [
 				"Animal"
 			],
 			"perception": {
-				"default": 5
+				"std": 5
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [
-					"scent 30 feet"
-				],
-				"vague": [],
-				"other": [
-					"low-light vision"
-				]
-			},
+			"senses": [
+				{
+					"name": "low-light vision"
+				},
+				{
+					"type": "imprecise",
+					"name": "scent",
+					"range": 30
+				}
+			],
 			"skills": {
 				"Acrobatics": {
-					"default": 3
+					"std": 3
 				},
 				"Athletics": {
-					"default": 5
+					"std": 5
 				},
 				"Survival": {
-					"default": 5
+					"std": 5
 				}
 			},
 			"abilityMods": {
-				"Str": 3,
-				"Dex": 1,
-				"Con": 2,
-				"Int": -4,
-				"Wis": 1,
-				"Cha": -2
+				"str": 3,
+				"dex": 1,
+				"con": 2,
+				"int": -4,
+				"wis": 1,
+				"cha": -2
 			},
-			"abilitiesTop": [],
 			"ac": {
-				"default": 15
+				"std": 15
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 9
+				"fort": {
+					"std": 9
 				},
-				"Ref": {
-					"default": 3
+				"ref": {
+					"std": 3
 				},
-				"Will": {
-					"default": 5
+				"will": {
+					"std": 5
 				}
 			},
 			"hp": [
 				{
 					"hp": 16,
 					"abilities": null
-				}
-			],
-			"abilitiesMid": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"entries": [],
-					"name": "Ferocity",
-					"generic": true
 				}
 			],
 			"speed": {
@@ -2261,27 +2097,31 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"entries": [
-						"The juvenile boar {@action Stride||Strides} up to two times and then makes a tusk {@action Strike}. As long as it moved at least 20 feet, it gains a +2 circumstance bonus to its attack roll."
-					],
-					"name": "Boar Charge"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"piercing"
+			"abilities": {
+				"mid": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"entries": [],
+						"name": "Ferocity",
+						"generic": true
+					}
 				],
-				"condition": []
-			},
-			"misc": [
-				"MA"
-			]
+				"bot": [
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"The juvenile boar {@action Stride||Strides} up to two times and then makes a tusk {@action Strike}. As long as it moved at least 20 feet, it gains a +2 circumstance bonus to its attack roll."
+						],
+						"name": "Boar Charge"
+					}
+				]
+			}
 		},
 		{
 			"name": "Luminous Ooze",
@@ -2289,60 +2129,52 @@
 			"source": "EC1",
 			"page": 85,
 			"level": 4,
-			"rarity": "Common",
-			"alignment": "N",
-			"size": "Small",
 			"traits": [
-				"Mindless"
+				"n",
+				"small",
+				"mindless",
+				"ooze"
 			],
 			"creatureType": [
 				"Ooze"
 			],
 			"perception": {
-				"default": 6
+				"std": 6
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"motion sense 60 feet",
-					"no vision"
-				]
-			},
+			"senses": [
+				{
+					"name": "motion sense",
+					"range": 60
+				},
+				{
+					"name": "no vision"
+				}
+			],
 			"skills": {
 				"Athletics": {
-					"default": 11
+					"std": 11
 				}
 			},
 			"abilityMods": {
-				"Str": 3,
-				"Dex": -5,
-				"Con": 3,
-				"Int": -5,
-				"Wis": 0,
-				"Cha": 1
+				"str": 3,
+				"dex": -5,
+				"con": 3,
+				"int": -5,
+				"wis": 0,
+				"cha": 1
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"A luminous ooze can sense nearby motion through vibration and air movement."
-					],
-					"name": "Motion Sense"
-				}
-			],
 			"ac": {
-				"default": 11
+				"std": 11
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 11
+				"fort": {
+					"std": 11
 				},
-				"Ref": {
-					"default": 3
+				"ref": {
+					"std": 3
 				},
-				"Will": {
-					"default": 6
+				"will": {
+					"std": 6
 				}
 			},
 			"hp": [
@@ -2351,34 +2183,11 @@
 					"abilities": null
 				}
 			],
-			"immunities": {
-				"damage": [
-					"electricity",
-					"mental",
-					"precision"
-				],
-				"condition": [
-					"critical hits"
-				]
-			},
-			"abilitiesMid": [
-				{
-					"traits": [
-						"aura",
-						"light",
-						"visual"
-					],
-					"entries": [
-						"5 feet. A luminous ooze constantly sheds distracting multicolored light. A creature that ends its turn within the aura must attempt a DC 21 Fortitude save or become {@condition dazzled} until the end of its next turn. On a critical failure, it instead becomes {@condition blinded} until the end of its next turn."
-					],
-					"name": "Bedazzling"
-				},
-				{
-					"entries": [
-						"Whenever the luminous ooze's electricity immunity prevents it from taking damage, it gains 8 temporary HP. Until the end of its next turn, the luminous ooze's pseudopod {@action Strike} deals an additional {@dice 1d6} points of electricity damage."
-					],
-					"name": "Lightning Catcher"
-				}
+			"immunities": [
+				"electricity",
+				"mental",
+				"precision",
+				"critical hits"
 			],
 			"speed": {
 				"walk": 25,
@@ -2396,43 +2205,59 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"traits": [
-						"light",
-						"visual"
-					],
-					"entries": [
-						"The ooze glows with blinding brightness. All creatures within a 30-foot emanation must attempt a DC 21 Fortitude save.",
-						{
-							"type": "successDegree",
-							"entries": {
-								"Critical Success": "The creature is unaffected.",
-								"Success": "The creature is {@condition dazzled} until the end of its next turn.",
-								"Failure": "The creature is {@condition blinded} until the end of its next turn."
-							}
-						}
-					],
-					"name": "Light Up"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"A luminous ooze can sense nearby motion through vibration and air movement."
+						],
+						"name": "Motion Sense"
+					}
 				],
-				"condition": [
-					"{@condition blinded}",
-					"{@condition dazzled}"
+				"mid": [
+					{
+						"traits": [
+							"aura",
+							"light",
+							"visual"
+						],
+						"entries": [
+							"5 feet. A luminous ooze constantly sheds distracting multicolored light. A creature that ends its turn within the aura must attempt a DC 21 Fortitude save or become {@condition dazzled} until the end of its next turn. On a critical failure, it instead becomes {@condition blinded} until the end of its next turn."
+						],
+						"name": "Bedazzling"
+					},
+					{
+						"entries": [
+							"Whenever the luminous ooze's electricity immunity prevents it from taking damage, it gains 8 temporary HP. Until the end of its next turn, the luminous ooze's pseudopod {@action Strike} deals an additional {@dice 1d6} points of electricity damage."
+						],
+						"name": "Lightning Catcher"
+					}
+				],
+				"bot": [
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"light",
+							"visual"
+						],
+						"entries": [
+							"The ooze glows with blinding brightness. All creatures within a 30-foot emanation must attempt a DC 21 Fortitude save.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": "The creature is unaffected.",
+									"Success": "The creature is {@condition dazzled} until the end of its next turn.",
+									"Failure": "The creature is {@condition blinded} until the end of its next turn."
+								}
+							}
+						],
+						"name": "Light Up"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"CC"
-			]
+			}
 		},
 		{
 			"name": "Mechanical Carny",
@@ -2440,26 +2265,23 @@
 			"source": "EC1",
 			"page": 86,
 			"level": 2,
-			"rarity": "Common",
-			"alignment": "N",
-			"size": "Medium",
 			"traits": [
-				"Mindless"
+				"n",
+				"medium",
+				"construct",
+				"mindless"
 			],
 			"creatureType": [
 				"Construct"
 			],
 			"perception": {
-				"default": 6
+				"std": 6
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"low-light vision"
-				]
-			},
+			"senses": [
+				{
+					"name": "low-light vision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Common (can speak pre-recorded phrases only)"
@@ -2468,36 +2290,35 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 7
+					"std": 7
 				},
 				"Athletics": {
-					"default": 9
+					"std": 9
 				},
 				"Performance": {
-					"default": 6
+					"std": 6
 				}
 			},
 			"abilityMods": {
-				"Str": 3,
-				"Dex": 1,
-				"Con": 0,
-				"Int": -5,
-				"Wis": 0,
-				"Cha": 2
+				"str": 3,
+				"dex": 1,
+				"con": 0,
+				"int": -5,
+				"wis": 0,
+				"cha": 2
 			},
-			"abilitiesTop": [],
 			"ac": {
-				"default": 17
+				"std": 17
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 8
+				"fort": {
+					"std": 8
 				},
-				"Ref": {
-					"default": 11
+				"ref": {
+					"std": 11
 				},
-				"Will": {
-					"default": 4
+				"will": {
+					"std": 4
 				}
 			},
 			"hp": [
@@ -2506,16 +2327,12 @@
 					"abilities": null
 				}
 			],
-			"immunities": {
-				"damage": [
-					"bleed"
-				],
-				"condition": [
-					"death effects",
-					"disease",
-					"doomed"
-				]
-			},
+			"immunities": [
+				"bleed",
+				"death effects",
+				"disease",
+				"doomed"
+			],
 			"weaknesses": [
 				{
 					"name": "electricity"
@@ -2526,14 +2343,6 @@
 					"amount": 3,
 					"name": "physical",
 					"note": "(except adamantine)"
-				}
-			],
-			"abilitiesMid": [
-				{
-					"entries": [
-						"A severely damaged mechanical carny has a chance of malfunctioning. If a mechanical carny has 15 or fewer Hit Points at the start of its turn, it must succeed at a DC {@flatDC 5} flat check or go haywire. A haywire mechanical carny wildly attacks the nearest living creature, or the nearest object if no creatures are nearby. It takes a \u20131 circumstance penalty to Strikes but deals an additional {@damage 1d6} bludgeoning damage plus Knockdown. This effect lasts 10 minutes or until the mechanical carny is destroyed."
-					],
-					"name": "Haywire"
 				}
 			],
 			"speed": {
@@ -2565,17 +2374,16 @@
 					]
 				}
 			],
-			"abilitiesBot": [],
-			"inflicts": {
-				"damage": [
-					"bludgeoning"
-				],
-				"condition": []
-			},
-			"misc": [
-				"MA",
-				"RC"
-			]
+			"abilities": {
+				"mid": [
+					{
+						"entries": [
+							"A severely damaged mechanical carny has a chance of malfunctioning. If a mechanical carny has 15 or fewer Hit Points at the start of its turn, it must succeed at a DC {@flatDC 5} flat check or go haywire. A haywire mechanical carny wildly attacks the nearest living creature, or the nearest object if no creatures are nearby. It takes a \u20131 circumstance penalty to Strikes but deals an additional {@damage 1d6} bludgeoning damage plus Knockdown. This effect lasts 10 minutes or until the mechanical carny is destroyed."
+						],
+						"name": "Haywire"
+					}
+				]
+			}
 		},
 		{
 			"name": "Nemmia Bramblecloak",
@@ -2583,26 +2391,24 @@
 			"source": "EC1",
 			"page": 91,
 			"level": 3,
-			"rarity": "Unique",
-			"alignment": "NE",
-			"size": "Small",
 			"traits": [
-				"Halfling"
+				"unique",
+				"ne",
+				"small",
+				"halfling",
+				"humanoid"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 9
+				"std": 9
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"keen eyes"
-				]
-			},
+			"senses": [
+				{
+					"name": "keen eyes"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Abyssal",
@@ -2613,55 +2419,41 @@
 			},
 			"skills": {
 				"Diplomacy": {
-					"default": 8
+					"std": 8
 				},
 				"Nature": {
-					"default": 11
+					"std": 11
 				},
 				"Religion": {
-					"default": 9
+					"std": 9
 				},
 				"Stealth": {
-					"default": 8
+					"std": 8
 				},
 				"Survival": {
-					"default": 11
+					"std": 11
 				}
 			},
 			"abilityMods": {
-				"Str": -1,
-				"Dex": 3,
-				"Con": 1,
-				"Int": 1,
-				"Wis": 4,
-				"Cha": 1
+				"str": -1,
+				"dex": 3,
+				"con": 1,
+				"int": 1,
+				"wis": 4,
+				"cha": 1
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+8, {@skill Survival} +11 Str \u20131, Dex +3, Con +1, Int +1, Wis +4,"
-					],
-					"name": "Stealth"
-				},
-				{
-					"entries": [
-						"+1 Items hide armor, key to the ringmaster's wagon (area A2), rat hood, +1 sickle, staff."
-					],
-					"name": "Cha"
-				}
-			],
 			"ac": {
-				"default": 19
+				"std": 19
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 8
+				"fort": {
+					"std": 8
 				},
-				"Ref": {
-					"default": 8
+				"ref": {
+					"std": 8
 				},
-				"Will": {
-					"default": 11
+				"will": {
+					"std": 11
 				}
 			},
 			"hp": [
@@ -2670,7 +2462,6 @@
 					"abilities": null
 				}
 			],
-			"abilitiesMid": [],
 			"speed": {
 				"walk": 20
 			},
@@ -2798,41 +2589,46 @@
 					}
 				}
 			],
-			"abilitiesBot": [
-				{
-					"entries": [
-						"Nemmia has a +2 circumstance bonus when using the {@action Seek} action to find {@condition hidden} or {@condition undetected} creatures within 30 feet. When she targets a {@condition concealed} or {@condition hidden} opponent, she reduces the DC of the flat check to 3 for a {@condition concealed} target or 9 for a {@condition hidden} one."
-					],
-					"name": "Keen Eyes"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"+8, {@skill Survival} +11 Str \u20131, Dex +3, Con +1, Int +1, Wis +4,"
+						],
+						"name": "Stealth"
 					},
-					"entries": [
-						"If the next action Nemmia takes is to {@action Cast a Spell} that has a range, increase that spell's range by 30 feet."
-					],
-					"name": "Reach Spell"
-				},
-				{
-					"entries": [
-						"Nemmia ignores difficult terrain from trees, foliage, and undergrowth."
-					],
-					"name": "Wildwood Halfling"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning",
-					"slashing"
+					{
+						"entries": [
+							"+1 Items hide armor, key to the ringmaster's wagon (area A2), rat hood, +1 sickle, staff."
+						],
+						"name": "Cha"
+					}
 				],
-				"condition": []
-			},
-			"misc": [
-				"MA",
-				"UW"
-			]
+				"bot": [
+					{
+						"entries": [
+							"Nemmia has a +2 circumstance bonus when using the {@action Seek} action to find {@condition hidden} or {@condition undetected} creatures within 30 feet. When she targets a {@condition concealed} or {@condition hidden} opponent, she reduces the DC of the flat check to 3 for a {@condition concealed} target or 9 for a {@condition hidden} one."
+						],
+						"name": "Keen Eyes"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"If the next action Nemmia takes is to {@action Cast a Spell} that has a range, increase that spell's range by 30 feet."
+						],
+						"name": "Reach Spell"
+					},
+					{
+						"entries": [
+							"Nemmia ignores difficult terrain from trees, foliage, and undergrowth."
+						],
+						"name": "Wildwood Halfling"
+					}
+				]
+			}
 		},
 		{
 			"name": "Oil Living Graffiti",
@@ -2840,23 +2636,22 @@
 			"source": "EC1",
 			"page": 84,
 			"level": 3,
-			"rarity": "Common",
-			"alignment": "CN",
-			"size": "Medium",
+			"traits": [
+				"cn",
+				"medium",
+				"construct"
+			],
 			"creatureType": [
 				"Construct"
 			],
 			"perception": {
-				"default": 9
+				"std": 9
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Common (can't speak any language)"
@@ -2865,39 +2660,38 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 11
+					"std": 11
 				},
 				"Crafting": {
-					"default": 5
+					"std": 5
 				},
 				"Deception": {
-					"default": 10
+					"std": 10
 				},
 				"Stealth": {
-					"default": 11
+					"std": 11
 				}
 			},
 			"abilityMods": {
-				"Str": 2,
-				"Dex": 4,
-				"Con": 1,
-				"Int": -2,
-				"Wis": 2,
-				"Cha": 1
+				"str": 2,
+				"dex": 4,
+				"con": 1,
+				"int": -2,
+				"wis": 2,
+				"cha": 1
 			},
-			"abilitiesTop": [],
 			"ac": {
-				"default": 19
+				"std": 19
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 8
+				"fort": {
+					"std": 8
 				},
-				"Ref": {
-					"default": 11
+				"ref": {
+					"std": 11
 				},
-				"Will": {
-					"default": 7
+				"will": {
+					"std": 7
 				}
 			},
 			"hp": [
@@ -2906,32 +2700,13 @@
 					"abilities": null
 				}
 			],
-			"immunities": {
-				"damage": [
-					"bleed"
-				],
-				"condition": [
-					"death effects",
-					"disease",
-					"doomed",
-					"drained",
-					"fatigued"
-				]
-			},
-			"abilitiesMid": [
-				{
-					"entries": [
-						"When a creature attempts to {@action Strike} a living graffiti and critically misses, the attacker hits the surface (a wall, canvas, or so on) behind the living graffiti. This may damage or break the weapon or surface."
-					],
-					"name": "Backdrop"
-				},
-				{
-					"entries": [
-						"A living graffiti can move only along flat surfaces such as floors and walls. If the surface it's on is destroyed (such as a portrait hit by a {@spell fireball} spell or a puddle being splashed), the graffiti takes {@dice 2d6} damage and is shunted to the nearest flat surface.",
-						"If there is no flat surface within 5 feet, the living graffiti is destroyed."
-					],
-					"name": "Surface-Bound"
-				}
+			"immunities": [
+				"bleed",
+				"death effects",
+				"disease",
+				"doomed",
+				"drained",
+				"fatigued"
 			],
 			"speed": {
 				"walk": 25
@@ -2968,20 +2743,23 @@
 					]
 				}
 			],
-			"abilitiesBot": [],
-			"inflicts": {
-				"damage": [
-					"bludgeoning"
-				],
-				"condition": [
-					"{@condition blinded}"
+			"abilities": {
+				"mid": [
+					{
+						"entries": [
+							"When a creature attempts to {@action Strike} a living graffiti and critically misses, the attacker hits the surface (a wall, canvas, or so on) behind the living graffiti. This may damage or break the weapon or surface."
+						],
+						"name": "Backdrop"
+					},
+					{
+						"entries": [
+							"A living graffiti can move only along flat surfaces such as floors and walls. If the surface it's on is destroyed (such as a portrait hit by a {@spell fireball} spell or a puddle being splashed), the graffiti takes {@dice 2d6} damage and is shunted to the nearest flat surface.",
+							"If there is no flat surface within 5 feet, the living graffiti is destroyed."
+						],
+						"name": "Surface-Bound"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"RA",
-				"CC"
-			]
+			}
 		},
 		{
 			"name": "Pinacosaurus",
@@ -2989,52 +2767,48 @@
 			"source": "EC1",
 			"page": 50,
 			"level": 4,
-			"rarity": "Common",
-			"alignment": "N",
-			"size": "Large",
 			"traits": [
-				"Dinosaur"
+				"n",
+				"large",
+				"animal",
+				"dinosaur"
 			],
 			"creatureType": [
 				"Animal"
 			],
 			"perception": {
-				"default": 10
+				"std": 10
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"low-light vision"
-				]
-			},
+			"senses": [
+				{
+					"name": "low-light vision"
+				}
+			],
 			"skills": {
 				"Athletics": {
-					"default": 13
+					"std": 13
 				}
 			},
 			"abilityMods": {
-				"Str": 5,
-				"Dex": 0,
-				"Con": 4,
-				"Int": -4,
-				"Wis": 2,
-				"Cha": -1
+				"str": 5,
+				"dex": 0,
+				"con": 4,
+				"int": -4,
+				"wis": 2,
+				"cha": -1
 			},
-			"abilitiesTop": [],
 			"ac": {
-				"default": 21
+				"std": 21
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 12
+				"fort": {
+					"std": 12
 				},
-				"Ref": {
-					"default": 8
+				"ref": {
+					"std": 8
 				},
-				"Will": {
-					"default": 8
+				"will": {
+					"std": 8
 				}
 			},
 			"hp": [
@@ -3043,7 +2817,6 @@
 					"abilities": null
 				}
 			],
-			"abilitiesMid": [],
 			"speed": {
 				"walk": 25
 			},
@@ -3075,38 +2848,27 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"entries": [
-						"A creature hit by the pinacosaurus's tail must attempt a DC 21 Fortitude save. On a failure, it's {@condition slowed|CRB|slowed 1} until the end of its next turn; on a critical failure, it's {@condition stunned} until the end of its next turn."
-					],
-					"name": "Punishing Tail"
-				},
-				{
-					"activity": {
-						"number": 3,
-						"unit": "action"
+			"abilities": {
+				"bot": [
+					{
+						"entries": [
+							"A creature hit by the pinacosaurus's tail must attempt a DC 21 Fortitude save. On a failure, it's {@condition slowed|CRB|slowed 1} until the end of its next turn; on a critical failure, it's {@condition stunned} until the end of its next turn."
+						],
+						"name": "Punishing Tail"
 					},
-					"entries": [
-						"Small or smaller, foot, DC 21."
-					],
-					"name": "Trample",
-					"generic": true
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning"
-				],
-				"condition": [
-					"{@condition slowed}"
+					{
+						"activity": {
+							"number": 3,
+							"unit": "action"
+						},
+						"entries": [
+							"Small or smaller, foot, DC 21."
+						],
+						"name": "Trample",
+						"generic": true
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"RC",
-				"CC"
-			]
+			}
 		},
 		{
 			"name": "Pruana Two-punch",
@@ -3114,26 +2876,24 @@
 			"source": "EC1",
 			"page": 22,
 			"level": 3,
-			"rarity": "Unique",
-			"alignment": "NE",
-			"size": "Medium",
 			"traits": [
-				"Dwarf"
+				"unique",
+				"ne",
+				"medium",
+				"dwarf",
+				"humanoid"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 7
+				"std": 7
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Common",
@@ -3143,52 +2903,44 @@
 			},
 			"skills": {
 				"Athletics": {
-					"default": 9
+					"std": 9
 				},
 				"Deception": {
-					"default": 8
+					"std": 8
 				},
 				"Intimidation": {
-					"default": 8
+					"std": 8
 				},
 				"Thievery": {
-					"default": 7
+					"std": 7
 				},
 				"Abberton Lore": {
-					"default": 7
+					"std": 7
 				}
 			},
 			"abilityMods": {
-				"Str": 4,
-				"Dex": 0,
-				"Con": 2,
-				"Int": 0,
-				"Wis": 2,
-				"Cha": 1
+				"str": 4,
+				"dex": 0,
+				"con": 2,
+				"int": 0,
+				"wis": 2,
+				"cha": 1
 			},
 			"items": [
 				"chain mail"
 			],
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+8, {@skill Thievery} +7 Str +4, Dex +0, Con +2, Int +0, Wis +2, Cha +1 Items chain mail."
-					],
-					"name": "Intimidation"
-				}
-			],
 			"ac": {
-				"default": 20
+				"std": 20
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 9
+				"fort": {
+					"std": 9
 				},
-				"Ref": {
-					"default": 8
+				"ref": {
+					"std": 8
 				},
-				"Will": {
-					"default": 7
+				"will": {
+					"std": 7
 				}
 			},
 			"hp": [
@@ -3197,7 +2949,6 @@
 					"abilities": null
 				}
 			],
-			"abilitiesMid": [],
 			"speed": {
 				"walk": 20
 			},
@@ -3217,43 +2968,40 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"traits": [
-						"press"
-					],
-					"entries": [
-						"Pruana makes a fist {@action Strike} against a target she has previously attacked this turn. If she hits, she gains a +3 circumstance bonus to the damage, and the creature must attempt a DC 20 Fortitude save to resist the staggering force of the blow.",
-						{
-							"type": "successDegree",
-							"entries": {
-								"Critical Success": "The target is unaffected.",
-								"Success": "The target is {@condition stunned|CRB|stunned 1}.",
-								"Failure": "The target is {@condition stunned|CRB|stunned 3}.",
-								"Critical Failure": "The target is knocked {@condition prone} and {@condition stunned|CRB|stunned 5}."
-							}
-						}
-					],
-					"name": "Haymaker"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"+8, {@skill Thievery} +7 Str +4, Dex +0, Con +2, Int +0, Wis +2, Cha +1 Items chain mail."
+						],
+						"name": "Intimidation"
+					}
 				],
-				"condition": [
-					"{@condition prone}",
-					"{@condition stunned}"
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"press"
+						],
+						"entries": [
+							"Pruana makes a fist {@action Strike} against a target she has previously attacked this turn. If she hits, she gains a +3 circumstance bonus to the damage, and the creature must attempt a DC 20 Fortitude save to resist the staggering force of the blow.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": "The target is unaffected.",
+									"Success": "The target is {@condition stunned|CRB|stunned 1}.",
+									"Failure": "The target is {@condition stunned|CRB|stunned 3}.",
+									"Critical Failure": "The target is knocked {@condition prone} and {@condition stunned|CRB|stunned 5}."
+								}
+							}
+						],
+						"name": "Haymaker"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"CC"
-			]
+			}
 		},
 		{
 			"name": "Smiler",
@@ -3261,26 +3009,24 @@
 			"source": "EC1",
 			"page": 38,
 			"level": 3,
-			"rarity": "Unique",
-			"alignment": "CE",
-			"size": "Medium",
 			"traits": [
-				"Ghoul"
+				"unique",
+				"ce",
+				"medium",
+				"ghoul",
+				"undead"
 			],
 			"creatureType": [
 				"Undead"
 			],
 			"perception": {
-				"default": 12
+				"std": 12
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Common",
@@ -3290,42 +3036,41 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 9
+					"std": 9
 				},
 				"Athletics": {
-					"default": 9
+					"std": 9
 				},
 				"Intimidation": {
-					"default": 9
+					"std": 9
 				},
 				"Stealth": {
-					"default": 9
+					"std": 9
 				}
 			},
 			"abilityMods": {
-				"Str": 3,
-				"Dex": 4,
-				"Con": 2,
-				"Int": 1,
-				"Wis": 2,
-				"Cha": 4
+				"str": 3,
+				"dex": 4,
+				"con": 2,
+				"int": 1,
+				"wis": 2,
+				"cha": 4
 			},
 			"items": [
 				"composite shortbow (20 arrows)"
 			],
-			"abilitiesTop": [],
 			"ac": {
-				"default": 19
+				"std": 19
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 9
+				"fort": {
+					"std": 9
 				},
-				"Ref": {
-					"default": 12
+				"ref": {
+					"std": 12
 				},
-				"Will": {
-					"default": 8
+				"will": {
+					"std": 8
 				}
 			},
 			"hp": [
@@ -3334,18 +3079,6 @@
 					"abilities": [
 						"negative healing"
 					]
-				}
-			],
-			"abilitiesMid": [
-				{
-					"traits": [
-						"aura",
-						"olfactory"
-					],
-					"entries": [
-						"10 feet. A creature entering the aura or starting its turn in the aura must succeed at a DC 18 Fortitude save or become {@condition sickened|CRB|sickened 1} (plus {@condition slowed|CRB|slowed 1} as long as itʼs {@condition sickened} on a critical failure). While within the aura, the creature takes a \u20132 circumstance penalty to saves against disease and to recover from the {@condition sickened} condition. A creature that succeeds at its save is temporarily immune for 1 minute."
-					],
-					"name": "Stench"
 				}
 			],
 			"speed": {
@@ -3402,111 +3135,108 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"traits": [
-						"manipulate"
-					],
-					"requirements": "Smiler is adjacent to the corpse of a creature that died within the last hour",
-					"entries": [
-						"Smiler devours a chunk of the corpse and regains {@dice 3d6} Hit Points. He can regain Hit Points from any given corpse only once."
-					],
-					"name": "Consume Flesh"
-				},
-				{
-					"entries": [
-						{
-							"type": "affliction",
-							"name": "",
-							"traits": [
-								"disease"
-							],
-							"note": "",
-							"DC": 18,
-							"savingThrow": "Fortitude",
-							"stages": [
-								{
-									"stage": 1,
-									"entry": "carrier with no ill effect",
-									"duration": "1 day"
-								},
-								{
-									"stage": 2,
-									"entry": "{@damage 3d8} negative damage and regains half as many Hit Points from all healing",
-									"duration": "1 day"
-								},
-								{
-									"stage": 3,
-									"entry": "as stage 2",
-									"duration": "1 day"
-								},
-								{
-									"stage": 4,
-									"entry": "{@damage 3d8} negative damage and gains no benefit from healing",
-									"duration": "1 day"
-								},
-								{
-									"stage": 5,
-									"entry": "as stage 4",
-									"duration": "1 day"
-								},
-								{
-									"stage": 6,
-									"entry": "dead, and rises as a ghast the next midnight.",
-									"duration": null
-								}
-							]
-						}
-					],
-					"name": "Ghast Fever"
-				},
-				{
-					"traits": [
-						"incapacitation",
-						"occult",
-						"necromancy"
-					],
-					"entries": [
-						"Any living creature hit by Smiler's attack must succeed at a DC 18 Fortitude save or become {@condition paralyzed}. It can attempt a new save at the end of each of its turns, and the DC cumulatively decreases by 1 on each such save."
-					],
-					"name": "Paralysis"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"traits": [
-						"move"
-					],
-					"entries": [
-						"Smiler jumps up to half his Speed.",
-						"This movement doesn't trigger reactions."
-					],
-					"name": "Swift Leap"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"negative",
-					"piercing",
-					"slashing"
+			"abilities": {
+				"mid": [
+					{
+						"traits": [
+							"aura",
+							"olfactory"
+						],
+						"entries": [
+							"10 feet. A creature entering the aura or starting its turn in the aura must succeed at a DC 18 Fortitude save or become {@condition sickened|CRB|sickened 1} (plus {@condition slowed|CRB|slowed 1} as long as itʼs {@condition sickened} on a critical failure). While within the aura, the creature takes a \u20132 circumstance penalty to saves against disease and to recover from the {@condition sickened} condition. A creature that succeeds at its save is temporarily immune for 1 minute."
+						],
+						"name": "Stench"
+					}
 				],
-				"condition": [
-					"{@condition paralyzed}",
-					"{@condition sickened}"
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"manipulate"
+						],
+						"requirements": "Smiler is adjacent to the corpse of a creature that died within the last hour",
+						"entries": [
+							"Smiler devours a chunk of the corpse and regains {@dice 3d6} Hit Points. He can regain Hit Points from any given corpse only once."
+						],
+						"name": "Consume Flesh"
+					},
+					{
+						"entries": [
+							{
+								"type": "affliction",
+								"name": "",
+								"traits": [
+									"disease"
+								],
+								"note": "",
+								"DC": 18,
+								"savingThrow": "Fortitude",
+								"stages": [
+									{
+										"stage": 1,
+										"entry": "carrier with no ill effect",
+										"duration": "1 day"
+									},
+									{
+										"stage": 2,
+										"entry": "{@damage 3d8} negative damage and regains half as many Hit Points from all healing",
+										"duration": "1 day"
+									},
+									{
+										"stage": 3,
+										"entry": "as stage 2",
+										"duration": "1 day"
+									},
+									{
+										"stage": 4,
+										"entry": "{@damage 3d8} negative damage and gains no benefit from healing",
+										"duration": "1 day"
+									},
+									{
+										"stage": 5,
+										"entry": "as stage 4",
+										"duration": "1 day"
+									},
+									{
+										"stage": 6,
+										"entry": "dead, and rises as a ghast the next midnight.",
+										"duration": null
+									}
+								]
+							}
+						],
+						"name": "Ghast Fever"
+					},
+					{
+						"traits": [
+							"incapacitation",
+							"occult",
+							"necromancy"
+						],
+						"entries": [
+							"Any living creature hit by Smiler's attack must succeed at a DC 18 Fortitude save or become {@condition paralyzed}. It can attempt a new save at the end of each of its turns, and the DC cumulatively decreases by 1 on each such save."
+						],
+						"name": "Paralysis"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"move"
+						],
+						"entries": [
+							"Smiler jumps up to half his Speed.",
+							"This movement doesn't trigger reactions."
+						],
+						"name": "Swift Leap"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"RA",
-				"CC",
-				"UW"
-			]
+			}
 		},
 		{
 			"name": "Smoldering Leopard",
@@ -3514,59 +3244,62 @@
 			"source": "EC1",
 			"page": 44,
 			"level": 3,
-			"rarity": "Uncommon",
-			"alignment": "NE",
-			"size": "Medium",
+			"traits": [
+				"uncommon",
+				"ne",
+				"medium",
+				"animal",
+				"fiend"
+			],
 			"creatureType": [
 				"Animal",
 				"Fiend"
 			],
 			"perception": {
-				"default": 11
+				"std": 11
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [
-					"scent 30 feet"
-				],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"type": "imprecise",
+					"name": "scent",
+					"range": 30
+				}
+			],
 			"skills": {
 				"Acrobatics": {
-					"default": 11
+					"std": 11
 				},
 				"Athletics": {
-					"default": 10
+					"std": 10
 				},
 				"Stealth": {
-					"default": 11,
+					"std": 11,
 					"in dim light or darker": 14
 				}
 			},
 			"abilityMods": {
-				"Str": 3,
-				"Dex": 4,
-				"Con": 2,
-				"Int": -4,
-				"Wis": 1,
-				"Cha": -2
+				"str": 3,
+				"dex": 4,
+				"con": 2,
+				"int": -4,
+				"wis": 1,
+				"cha": -2
 			},
-			"abilitiesTop": [],
 			"ac": {
-				"default": 19
+				"std": 19
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 9
+				"fort": {
+					"std": 9
 				},
-				"Ref": {
-					"default": 11
+				"ref": {
+					"std": 11
 				},
-				"Will": {
-					"default": 6
+				"will": {
+					"std": 6
 				}
 			},
 			"hp": [
@@ -3589,14 +3322,6 @@
 				{
 					"amount": 5,
 					"name": "poison"
-				}
-			],
-			"abilitiesMid": [
-				{
-					"entries": [
-						"10 feet. Every creature within the aura is {@condition concealed}; smoldering leopards can see through this concealment."
-					],
-					"name": "Aura of Smoke"
 				}
 			],
 			"speed": {
@@ -3636,53 +3361,48 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"entries": [
-						"The smoldering leopard {@action Stride||Strides} and makes a {@action Strike} at the end of that movement. If the leopard began this action {@condition hidden}, it remains {@condition hidden} until after making this ability's {@action Strike}."
-					],
-					"name": "Pounce"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"entries": [
-						"The smoldering leopard makes two claw Strikes against a creature it has {@condition grabbed}. A creature hit by both claw Strikes also takes {@damage 1d4} {@condition persistent damage ||persistent fire damage}. Both attacks count toward its multiple attack penalty, but the penalty increases only after both attacks are made."
-					],
-					"name": "Scorching Maul"
-				},
-				{
-					"traits": [
-						"precision"
-					],
-					"entries": [
-						"The smoldering leopard deals an extra {@damage 1d4} precision damage to {@condition flat-footed} creatures."
-					],
-					"name": "Sneak Attack",
-					"generic": true
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"piercing",
-					"precision",
-					"slashing"
+			"abilities": {
+				"mid": [
+					{
+						"entries": [
+							"10 feet. Every creature within the aura is {@condition concealed}; smoldering leopards can see through this concealment."
+						],
+						"name": "Aura of Smoke"
+					}
 				],
-				"condition": [
-					"{@condition flat-footed}",
-					"{@condition grabbed}"
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"The smoldering leopard {@action Stride||Strides} and makes a {@action Strike} at the end of that movement. If the leopard began this action {@condition hidden}, it remains {@condition hidden} until after making this ability's {@action Strike}."
+						],
+						"name": "Pounce"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"The smoldering leopard makes two claw Strikes against a creature it has {@condition grabbed}. A creature hit by both claw Strikes also takes {@damage 1d4} {@condition persistent damage ||persistent fire damage}. Both attacks count toward its multiple attack penalty, but the penalty increases only after both attacks are made."
+						],
+						"name": "Scorching Maul"
+					},
+					{
+						"traits": [
+							"precision"
+						],
+						"entries": [
+							"The smoldering leopard deals an extra {@damage 1d4} precision damage to {@condition flat-footed} creatures."
+						],
+						"name": "Sneak Attack",
+						"generic": true
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"CC"
-			]
+			}
 		},
 		{
 			"name": "Vermlek",
@@ -3690,26 +3410,23 @@
 			"source": "EC1",
 			"page": 82,
 			"level": 3,
-			"rarity": "Common",
-			"alignment": "CE",
-			"size": "Medium",
 			"traits": [
-				"Demon"
+				"ce",
+				"medium",
+				"demon",
+				"fiend"
 			],
 			"creatureType": [
 				"Fiend"
 			],
 			"perception": {
-				"default": 8
+				"std": 8
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Abyssal",
@@ -3722,40 +3439,39 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 8
+					"std": 8
 				},
 				"Athletics": {
-					"default": 10
+					"std": 10
 				},
 				"Deception": {
-					"default": 7
+					"std": 7
 				},
 				"Stealth": {
-					"default": 8
+					"std": 8
 				}
 			},
 			"abilityMods": {
-				"Str": 3,
-				"Dex": 1,
-				"Con": 4,
-				"Int": 0,
-				"Wis": 1,
-				"Cha": 2
+				"str": 3,
+				"dex": 1,
+				"con": 4,
+				"int": 0,
+				"wis": 1,
+				"cha": 2
 			},
-			"abilitiesTop": [],
 			"ac": {
-				"default": 16,
+				"std": 16,
 				"while Inhabiting a Body": 19
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 11
+				"fort": {
+					"std": 11
 				},
-				"Ref": {
-					"default": 8
+				"ref": {
+					"std": 8
 				},
-				"Will": {
-					"default": 6
+				"will": {
+					"std": 6
 				}
 			},
 			"hp": [
@@ -3776,14 +3492,6 @@
 				{
 					"amount": 5,
 					"name": "sonic"
-				}
-			],
-			"abilitiesMid": [
-				{
-					"entries": [
-						"Worm demons can't stand the sight of a good meal presented and then swiftly taken away. Whenever a dying creature within sight of the worm demon has its dying condition removed, the worm demon takes {@damage 1d6} mental damage."
-					],
-					"name": "Recoil from Wasted Opportunities"
 				}
 			],
 			"speed": {
@@ -3819,7 +3527,7 @@
 					"name": "longsword",
 					"attack": 12,
 					"traits": [
-						"versatile P"
+						"versatile p"
 					],
 					"effects": [],
 					"damage": "{@damage 1d8+4} slashing",
@@ -3849,63 +3557,58 @@
 					}
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"traits": [
-						"manipulate"
-					],
-					"requirements": "The worm demon is Inhabiting a Body",
-					"entries": [
-						"The worm demon crawls out of the body it is inhabiting, devouring much of the body's remaining flesh and regaining 10 Hit Points in the process. The corpse it leaves behind is little more than a husk."
-					],
-					"name": "Abandon Body"
-				},
-				{
-					"activity": {
-						"number": 3,
-						"unit": "action"
-					},
-					"traits": [
-						"manipulate"
-					],
-					"entries": [
-						"The worm demon crawls into the body of an adjacent dead Medium humanoid, consuming the bulk of the victim's skeleton and internal organs as it does so and cramming itself into the cavity. As long as it Inhabits a Body, the worm demon loses its bite attack, can wield weapons like a humanoid, gains a +3 circumstance bonus to AC, and gains a +3 circumstance bonus to {@skill Deception} checks to {@action Impersonate} the creature it is inhabiting. It cannot use this ability if it is already Inhabiting a Body."
-					],
-					"name": "Inhabit Body"
-				},
-				{
-					"traits": [
-						"emotion",
-						"fear",
-						"mental",
-						"visual"
-					],
-					"entries": [
-						"Whenever the vermlek Abandons a Body or Inhabits a Body, all creatures within 30 feet who can see the vermlek must succeed at a DC 19 Will save or become {@condition frightened|CRB|frightened 1}.",
-						"On a critical failure, the creature is {@condition frightened|CRB|frightened 1} and {@condition sickened|CRB|sickened 1}. Regardless of the result, creatures are immune to the same vermlek's unsettling movement for 24 hours."
-					],
-					"name": "Unsettling Movement"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning",
-					"piercing",
-					"slashing"
+			"abilities": {
+				"mid": [
+					{
+						"entries": [
+							"Worm demons can't stand the sight of a good meal presented and then swiftly taken away. Whenever a dying creature within sight of the worm demon has its dying condition removed, the worm demon takes {@damage 1d6} mental damage."
+						],
+						"name": "Recoil from Wasted Opportunities"
+					}
 				],
-				"condition": [
-					"{@condition frightened}"
+				"bot": [
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"manipulate"
+						],
+						"requirements": "The worm demon is Inhabiting a Body",
+						"entries": [
+							"The worm demon crawls out of the body it is inhabiting, devouring much of the body's remaining flesh and regaining 10 Hit Points in the process. The corpse it leaves behind is little more than a husk."
+						],
+						"name": "Abandon Body"
+					},
+					{
+						"activity": {
+							"number": 3,
+							"unit": "action"
+						},
+						"traits": [
+							"manipulate"
+						],
+						"entries": [
+							"The worm demon crawls into the body of an adjacent dead Medium humanoid, consuming the bulk of the victim's skeleton and internal organs as it does so and cramming itself into the cavity. As long as it Inhabits a Body, the worm demon loses its bite attack, can wield weapons like a humanoid, gains a +3 circumstance bonus to AC, and gains a +3 circumstance bonus to {@skill Deception} checks to {@action Impersonate} the creature it is inhabiting. It cannot use this ability if it is already Inhabiting a Body."
+						],
+						"name": "Inhabit Body"
+					},
+					{
+						"traits": [
+							"emotion",
+							"fear",
+							"mental",
+							"visual"
+						],
+						"entries": [
+							"Whenever the vermlek Abandons a Body or Inhabits a Body, all creatures within 30 feet who can see the vermlek must succeed at a DC 19 Will save or become {@condition frightened|CRB|frightened 1}.",
+							"On a critical failure, the creature is {@condition frightened|CRB|frightened 1} and {@condition sickened|CRB|sickened 1}. Regardless of the result, creatures are immune to the same vermlek's unsettling movement for 24 hours."
+						],
+						"name": "Unsettling Movement"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"CC",
-				"UW"
-			]
+			}
 		},
 		{
 			"name": "Viktor Volkano",
@@ -3913,56 +3616,56 @@
 			"source": "EC1",
 			"page": 29,
 			"level": 2,
-			"rarity": "Unique",
-			"alignment": "CN",
-			"size": "Medium",
 			"traits": [
-				"Human"
+				"unique",
+				"cn",
+				"medium",
+				"human",
+				"humanoid"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 7
+				"std": 7
 			},
 			"skills": {
 				"Arcana": {
-					"default": 6
+					"std": 6
 				},
 				"Athletics": {
-					"default": 6
+					"std": 6
 				},
 				"Crafting": {
-					"default": 4
+					"std": 4
 				},
 				"Performance": {
-					"default": 8
+					"std": 8
 				}
 			},
 			"abilityMods": {
-				"Str": 2,
-				"Dex": 3,
-				"Con": 2,
-				"Int": 0,
-				"Wis": 0,
-				"Cha": 2
+				"str": 2,
+				"dex": 3,
+				"con": 2,
+				"int": 0,
+				"wis": 0,
+				"cha": 2
 			},
 			"items": [
 				"batons doused in flammable oil (2)"
 			],
-			"abilitiesTop": [],
 			"ac": {
-				"default": 16
+				"std": 16
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 11
+				"fort": {
+					"std": 11
 				},
-				"Ref": {
-					"default": 8
+				"ref": {
+					"std": 8
 				},
-				"Will": {
-					"default": 8
+				"will": {
+					"std": 8
 				}
 			},
 			"hp": [
@@ -3971,7 +3674,6 @@
 					"abilities": null
 				}
 			],
-			"abilitiesMid": [],
 			"speed": {
 				"walk": 25
 			},
@@ -4001,51 +3703,41 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
+			"abilities": {
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"primal",
+							"fire"
+						],
+						"requirements": "Viktor is holding an ignited baton",
+						"entries": [
+							"Viktor breathes fire in a 20-foot cone. Creatures within the cone take {@damage 3d6} fire damage (DC 18 basic Reflex save). Once Viktor breathes fire, he cannot do so again for {@dice 1d4} rounds."
+						],
+						"name": "Breathe Fire"
 					},
-					"traits": [
-						"primal",
-						"fire"
-					],
-					"requirements": "Viktor is holding an ignited baton",
-					"entries": [
-						"Viktor breathes fire in a 20-foot cone. Creatures within the cone take {@damage 3d6} fire damage (DC 18 basic Reflex save). Once Viktor breathes fire, he cannot do so again for {@dice 1d4} rounds."
-					],
-					"name": "Breathe Fire"
-				},
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"Viktor ignites or douses a baton. Ignited batons burn for 10 minutes or until Viktor douses them."
+						],
+						"name": "Ignite Baton"
 					},
-					"entries": [
-						"Viktor ignites or douses a baton. Ignited batons burn for 10 minutes or until Viktor douses them."
-					],
-					"name": "Ignite Baton"
-				},
-				{
-					"entries": [
-						"Viktor critically hits a target with an attack that deals fire damage, or if a target of one of his effects that deals fire damage critically fails its saving throw, the target takes {@damage 1d4} {@condition persistent damage ||persistent fire damage}."
-					],
-					"name": "Set on Fire If"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning",
-					"fire"
-				],
-				"condition": []
-			},
-			"misc": [
-				"MA",
-				"RA",
-				"AD"
-			]
+					{
+						"entries": [
+							"Viktor critically hits a target with an attack that deals fire damage, or if a target of one of his effects that deals fire damage critically fails its saving throw, the target takes {@damage 1d4} {@condition persistent damage ||persistent fire damage}."
+						],
+						"name": "Set on Fire If"
+					}
+				]
+			}
 		},
 		{
 			"name": "Violet",
@@ -4053,80 +3745,65 @@
 			"source": "EC1",
 			"page": 22,
 			"level": 1,
-			"rarity": "Unique",
-			"alignment": "N",
-			"size": "Small",
+			"traits": [
+				"unique",
+				"n",
+				"small",
+				"animal"
+			],
 			"creatureType": [
 				"Animal"
 			],
 			"perception": {
-				"default": 6
+				"std": 6
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [
-					"scent 30 feet"
-				],
-				"vague": [],
-				"other": [
-					"low-light vision"
-				]
-			},
+			"senses": [
+				{
+					"name": "low-light vision"
+				},
+				{
+					"type": "imprecise",
+					"name": "scent",
+					"range": 30
+				}
+			],
 			"skills": {
 				"Acrobatics": {
-					"default": 5
+					"std": 5
 				},
 				"Athletics": {
-					"default": 6
+					"std": 6
 				},
 				"Survival": {
-					"default": 5
+					"std": 5
 				}
 			},
 			"abilityMods": {
-				"Str": 3,
-				"Dex": 2,
-				"Con": 3,
-				"Int": -4,
-				"Wis": 1,
-				"Cha": -2
+				"str": 3,
+				"dex": 2,
+				"con": 3,
+				"int": -4,
+				"wis": 1,
+				"cha": -2
 			},
-			"abilitiesTop": [],
 			"ac": {
-				"default": 16
+				"std": 16
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 10
+				"fort": {
+					"std": 10
 				},
-				"Ref": {
-					"default": 4
+				"ref": {
+					"std": 4
 				},
-				"Will": {
-					"default": 7
+				"will": {
+					"std": 7
 				}
 			},
 			"hp": [
 				{
 					"hp": 24,
 					"abilities": null
-				}
-			],
-			"abilitiesMid": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"trigger": "A creature adjacent to both Violet and",
-					"entries": [],
-					"name": "Protect"
-				},
-				{
-					"entries": [
-						"Two-Punch hits Pruana with a melee attack; Violet shields Pruana from the worst of the blow, taking half the damage from the attack and Pruana takes the remainder."
-					],
-					"name": "Pruana"
 				}
 			],
 			"speed": {
@@ -4154,34 +3831,43 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
+			"abilities": {
+				"mid": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"trigger": "A creature adjacent to both Violet and",
+						"entries": [],
+						"name": "Protect"
 					},
-					"entries": [
-						"Violet {@action Stride||Strides} twice and then makes a horns {@action Strike}. As long as he moved at least 20 feet, he gains a +2 circumstance bonus to his attack roll."
-					],
-					"name": "Ram"
-				},
-				{
-					"entries": [
-						"If Violet hits with a jaws {@action Strike}, he can also deal the same amount of damage to either the target's armor or shield, ignoring 5 points of the item's Hardness."
-					],
-					"name": "Eat Anything"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning",
-					"piercing"
+					{
+						"entries": [
+							"Two-Punch hits Pruana with a melee attack; Violet shields Pruana from the worst of the blow, taking half the damage from the attack and Pruana takes the remainder."
+						],
+						"name": "Pruana"
+					}
 				],
-				"condition": []
-			},
-			"misc": [
-				"MA"
-			]
+				"bot": [
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"Violet {@action Stride||Strides} twice and then makes a horns {@action Strike}. As long as he moved at least 20 feet, he gains a +2 circumstance bonus to his attack roll."
+						],
+						"name": "Ram"
+					},
+					{
+						"entries": [
+							"If Violet hits with a jaws {@action Strike}, he can also deal the same amount of damage to either the target's armor or shield, ignoring 5 points of the item's Hardness."
+						],
+						"name": "Eat Anything"
+					}
+				]
+			}
 		},
 		{
 			"name": "Xulgath Bilebearer",
@@ -4189,26 +3875,23 @@
 			"source": "EC1",
 			"page": 87,
 			"level": 2,
-			"rarity": "Common",
-			"alignment": "CE",
-			"size": "Medium",
 			"traits": [
-				"Xulgath"
+				"ce",
+				"medium",
+				"humanoid",
+				"xulgath"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 6
+				"std": 6
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Draconic",
@@ -4218,63 +3901,50 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 8
+					"std": 8
 				},
 				"Athletics": {
-					"default": 6
+					"std": 6
 				},
 				"Deception": {
-					"default": 5
+					"std": 5
 				},
 				"Stealth": {
-					"default": 8
+					"std": 8
 				},
 				"Thievery": {
-					"default": 8
+					"std": 8
 				}
 			},
 			"abilityMods": {
-				"Str": 2,
-				"Dex": 4,
-				"Con": 2,
-				"Int": 1,
-				"Wis": 0,
-				"Cha": -1
+				"str": 2,
+				"dex": 4,
+				"con": 2,
+				"int": 1,
+				"wis": 0,
+				"cha": -1
 			},
 			"items": [
 				"2 daggers"
 			],
-			"abilitiesTop": [],
 			"ac": {
-				"default": 18
+				"std": 18
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 8
+				"fort": {
+					"std": 8
 				},
-				"Ref": {
-					"default": 10
+				"ref": {
+					"std": 10
 				},
-				"Will": {
-					"default": 4
+				"will": {
+					"std": 4
 				}
 			},
 			"hp": [
 				{
 					"hp": 30,
 					"abilities": null
-				}
-			],
-			"abilitiesMid": [
-				{
-					"traits": [
-						"aura",
-						"olfactory"
-					],
-					"entries": [
-						"30 feet. A creature that enters the area must attempt a DC 16 Fortitude save. On a failure, the creature is {@condition sickened 1}, and on a critical failure, the creature also takes a \u20135-foot status penalty to its Speeds for 1 round. While within the aura, the creature takes a \u20132 circumstance penalty to saves to recover from the {@condition sickened} condition. A creature that succeeds at its save is temporarily immune to all xulgaths' stenches for 1 minute. A xulgath bilebearer can activate or deactivate its stench aura as a free action."
-					],
-					"name": "Stench"
 				}
 			],
 			"speed": {
@@ -4288,7 +3958,7 @@
 					"traits": [
 						"agile",
 						"finesse",
-						"versatile S"
+						"versatile s"
 					],
 					"effects": [
 						"xulgath bile"
@@ -4333,7 +4003,7 @@
 						"agile",
 						"finesse",
 						"thrown 10 feet",
-						"versatile S"
+						"versatile s"
 					],
 					"effects": [
 						"xulgath bile"
@@ -4344,71 +4014,68 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"traits": [
-						"olfactory",
-						"poison"
-					],
-					"frequency": {
-						"unit": "minute",
-						"freq": 1
-					},
-					"entries": [
-						"All adjacent creatures must attempt a DC 18 Fortitude save. On a failure, the creature is {@condition slowed|CRB|slowed 1} ({@condition slowed|CRB|slowed 2} on a critical failure) until the end of its next turn and takes a \u20132 circumstance penalty to Fortitude saves against xulgath bile for 1 minute."
-					],
-					"name": "Putrid Blast"
-				},
-				{
-					"entries": [
-						{
-							"type": "affliction",
-							"name": "",
-							"traits": [
-								"poison"
-							],
-							"note": "",
-							"DC": 16,
-							"savingThrow": "Fortitude",
-							"maxDuration": "1 hour",
-							"stages": [
-								{
-									"stage": 1,
-									"entry": "{@condition fatigued}",
-									"duration": "1 minute"
-								},
-								{
-									"stage": 2,
-									"entry": "{@condition fatigued} and {@condition unconscious} .",
-									"duration": "1 minute"
-								}
-							]
-						}
-					],
-					"name": "Xulgath Bile"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"piercing",
-					"slashing"
+			"abilities": {
+				"mid": [
+					{
+						"traits": [
+							"aura",
+							"olfactory"
+						],
+						"entries": [
+							"30 feet. A creature that enters the area must attempt a DC 16 Fortitude save. On a failure, the creature is {@condition sickened 1}, and on a critical failure, the creature also takes a \u20135-foot status penalty to its Speeds for 1 round. While within the aura, the creature takes a \u20132 circumstance penalty to saves to recover from the {@condition sickened} condition. A creature that succeeds at its save is temporarily immune to all xulgaths' stenches for 1 minute. A xulgath bilebearer can activate or deactivate its stench aura as a free action."
+						],
+						"name": "Stench"
+					}
 				],
-				"condition": [
-					"{@condition fatigued}",
-					"{@condition slowed}"
+				"bot": [
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"olfactory",
+							"poison"
+						],
+						"frequency": {
+							"unit": "minute",
+							"freq": 1
+						},
+						"entries": [
+							"All adjacent creatures must attempt a DC 18 Fortitude save. On a failure, the creature is {@condition slowed|CRB|slowed 1} ({@condition slowed|CRB|slowed 2} on a critical failure) until the end of its next turn and takes a \u20132 circumstance penalty to Fortitude saves against xulgath bile for 1 minute."
+						],
+						"name": "Putrid Blast"
+					},
+					{
+						"entries": [
+							{
+								"type": "affliction",
+								"name": "",
+								"traits": [
+									"poison"
+								],
+								"note": "",
+								"DC": 16,
+								"savingThrow": "Fortitude",
+								"maxDuration": "1 hour",
+								"stages": [
+									{
+										"stage": 1,
+										"entry": "{@condition fatigued}",
+										"duration": "1 minute"
+									},
+									{
+										"stage": 2,
+										"entry": "{@condition fatigued} and {@condition unconscious} .",
+										"duration": "1 minute"
+									}
+								]
+							}
+						],
+						"name": "Xulgath Bile"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"RA",
-				"TA",
-				"CC",
-				"UW"
-			]
+			}
 		}
 	]
 }

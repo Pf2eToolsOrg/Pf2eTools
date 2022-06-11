@@ -6,29 +6,30 @@
 			"source": "AV3",
 			"page": 87,
 			"level": 12,
-			"rarity": "Unique",
-			"alignment": "CE",
-			"size": "Medium",
 			"traits": [
-				"Ghost",
-				"Incorporeal"
+				"unique",
+				"ce",
+				"medium",
+				"ghost",
+				"incorporeal",
+				"spirit",
+				"undead"
 			],
 			"creatureType": [
 				"Spirit",
 				"Undead"
 			],
 			"perception": {
-				"default": 22
+				"std": 22
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision",
-					"magic sense"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"name": "magic sense"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Aklo",
@@ -39,69 +40,44 @@
 			},
 			"skills": {
 				"Arcana": {
-					"default": 23
+					"std": 23
 				},
 				"Diplomacy": {
-					"default": 23
+					"std": 23
 				},
 				"Intimidation": {
-					"default": 25
+					"std": 25
 				},
 				"Occultism": {
-					"default": 26
+					"std": 26
 				},
 				"Religion": {
-					"default": 22
+					"std": 22
 				},
 				"Stealth": {
-					"default": 22
+					"std": 22
 				}
 			},
 			"abilityMods": {
-				"Str": -5,
-				"Dex": 4,
-				"Con": 0,
-				"Int": 5,
-				"Wis": 4,
-				"Cha": 7
+				"str": -5,
+				"dex": 4,
+				"con": 0,
+				"int": 5,
+				"wis": 4,
+				"cha": 7
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+26, {@skill Religion} +22, {@skill Stealth} +22 Str \u20135, Dex +4, Con +0, Int +5, Wis +4, Cha +7."
-					],
-					"name": "Occultism"
-				},
-				{
-					"traits": [
-						"detection",
-						"divination"
-					],
-					"entries": [
-						"Belcorra can sense the presence of magic auras as though she were always using a 1st-level {@spell detect magic} spell. When she Seeks, she gains the benefits of a 3rd-level {@spell detect magic} spell on things she sees."
-					],
-					"name": "Magic Sense"
-				},
-				{
-					"traits": [
-						"lowest three levels of the Abomination Vaults"
-					],
-					"entries": [],
-					"name": "Site Bound"
-				}
-			],
 			"ac": {
-				"default": 30
+				"std": 30
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 16
+				"fort": {
+					"std": 16
 				},
-				"Ref": {
-					"default": 22
+				"ref": {
+					"std": 22
 				},
-				"Will": {
-					"default": 20
+				"will": {
+					"std": 20
 				}
 			},
 			"hp": [
@@ -113,12 +89,9 @@
 					]
 				}
 			],
-			"immunities": {
-				"damage": [],
-				"condition": [
-					"death"
-				]
-			},
+			"immunities": [
+				"death"
+			],
 			"resistances": [
 				{
 					"amount": 10,
@@ -129,39 +102,6 @@
 				},
 				{
 					"name": "or"
-				}
-			],
-			"abilitiesMid": [
-				{
-					"traits": [
-						"divine",
-						"necromancy"
-					],
-					"entries": [],
-					"name": "Rejuvenation"
-				},
-				{
-					"entries": [
-						"Belcorra is destroyed, she re-forms in {@dice 2d4} days within the."
-					],
-					"name": "When"
-				},
-				{
-					"entries": [
-						"(though she can reduce that time by empowering herself with glimmers of {@deity Nhimbaloth|LOGM}'s essence using."
-					],
-					"name": "Empty Vault"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "varies",
-						"entry": "[page 76]"
-					},
-					"entries": [
-						"). Belcorra can only be permanently destroyed if she enacts her full revenge on Absalom or if {@deity Nhimbaloth|LOGM} devours her soul."
-					],
-					"name": "the Ebon Fulcrum Lens"
 				}
 			],
 			"speed": {
@@ -341,71 +281,118 @@
 					}
 				}
 			],
-			"abilitiesBot": [
-				{
-					"entries": [
-						"Each time Belcorra casts a sorcerer bloodline spell or an aberrant bloodline granted spell, she can grant herself or a target of the spell a +2 status bonus to Will saving throws for 1 round."
-					],
-					"name": "Blood Magic"
-				},
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"+26, {@skill Religion} +22, {@skill Stealth} +22 Str \u20135, Dex +4, Con +0, Int +5, Wis +4, Cha +7."
+						],
+						"name": "Occultism"
 					},
-					"entries": [
-						"Belcorra stares at a creature she can see within 30 feet. The target takes {@damage 9d6} mental damage (DC 33 basic Will save). A creature that fails its save is also {@condition stupefied|CRB|stupefied 1} for 1 minute."
-					],
-					"name": "Corrupting Gaze"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
+					{
+						"traits": [
+							"detection",
+							"divination"
+						],
+						"entries": [
+							"Belcorra can sense the presence of magic auras as though she were always using a 1st-level {@spell detect magic} spell. When she Seeks, she gains the benefits of a 3rd-level {@spell detect magic} spell on things she sees."
+						],
+						"name": "Magic Sense"
 					},
-					"frequency": {
-						"unit": "minute",
-						"interval": 10,
-						"recurs": true,
-						"freq": 1
-					},
-					"entries": [
-						"Belcorra extends her presence throughout the lowest three levels of Gauntlight until the end of her next turn. She can see with the benefits of all-around vision and can make ghostly hand attacks or use special abilities originating from any surface in this area."
-					],
-					"name": "Haunted Lighthouse"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "free"
-					},
-					"frequency": {
-						"unit": "day",
-						"freq": 1
-					},
-					"entries": [],
-					"name": "Quickened Casting"
-				},
-				{
-					"entries": [
-						"Belcorra's next action is to cast a sorcerer spell of 4th level or lower, she reduces the number of actions to cast it by 1 (minimum 1 action)."
-					],
-					"name": "If"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"mental",
-					"negative"
+					{
+						"traits": [
+							"lowest three levels of the abomination vaults"
+						],
+						"entries": [],
+						"name": "Site Bound"
+					}
 				],
-				"condition": [
-					"{@condition stupefied}"
+				"mid": [
+					{
+						"traits": [
+							"divine",
+							"necromancy"
+						],
+						"entries": [],
+						"name": "Rejuvenation"
+					},
+					{
+						"entries": [
+							"Belcorra is destroyed, she re-forms in {@dice 2d4} days within the."
+						],
+						"name": "When"
+					},
+					{
+						"entries": [
+							"(though she can reduce that time by empowering herself with glimmers of {@deity Nhimbaloth|LOGM}'s essence using."
+						],
+						"name": "Empty Vault"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "varies",
+							"entry": "[page 76]"
+						},
+						"entries": [
+							"). Belcorra can only be permanently destroyed if she enacts her full revenge on Absalom or if {@deity Nhimbaloth|LOGM} devours her soul."
+						],
+						"name": "the Ebon Fulcrum Lens"
+					}
+				],
+				"bot": [
+					{
+						"entries": [
+							"Each time Belcorra casts a sorcerer bloodline spell or an aberrant bloodline granted spell, she can grant herself or a target of the spell a +2 status bonus to Will saving throws for 1 round."
+						],
+						"name": "Blood Magic"
+					},
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"Belcorra stares at a creature she can see within 30 feet. The target takes {@damage 9d6} mental damage (DC 33 basic Will save). A creature that fails its save is also {@condition stupefied|CRB|stupefied 1} for 1 minute."
+						],
+						"name": "Corrupting Gaze"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"frequency": {
+							"unit": "minute",
+							"interval": 10,
+							"recurs": true,
+							"freq": 1
+						},
+						"entries": [
+							"Belcorra extends her presence throughout the lowest three levels of Gauntlight until the end of her next turn. She can see with the benefits of all-around vision and can make ghostly hand attacks or use special abilities originating from any surface in this area."
+						],
+						"name": "Haunted Lighthouse"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "free"
+						},
+						"frequency": {
+							"unit": "day",
+							"freq": 1
+						},
+						"entries": [],
+						"name": "Quickened Casting"
+					},
+					{
+						"entries": [
+							"Belcorra's next action is to cast a sorcerer spell of 4th level or lower, she reduces the number of actions to cast it by 1 (minimum 1 action)."
+						],
+						"name": "If"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"CC"
-			]
+			}
 		},
 		{
 			"name": "Bhazrade And Klathor",
@@ -413,27 +400,25 @@
 			"source": "AV3",
 			"page": 33,
 			"level": 9,
-			"rarity": "Unique",
-			"alignment": "CN",
-			"size": "Medium",
 			"traits": [
-				"Drow",
-				"Elf"
+				"unique",
+				"cn",
+				"medium",
+				"drow",
+				"elf",
+				"humanoid"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 18
+				"std": 18
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Common",
@@ -444,53 +429,46 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 17
+					"std": 17
 				},
 				"Nature": {
-					"default": 18
+					"std": 18
 				},
 				"Occultism": {
-					"default": 18,
+					"std": 18,
 					"underground": 20
 				},
 				"Stealth": {
-					"default": 19
+					"std": 19
 				},
 				"Survival": {
-					"default": 18
+					"std": 18
 				}
 			},
 			"abilityMods": {
-				"Str": 2,
-				"Dex": 4,
-				"Con": 0,
-				"Int": 1,
-				"Wis": 3,
-				"Cha": 4
+				"str": 2,
+				"dex": 4,
+				"con": 0,
+				"int": 1,
+				"wis": 3,
+				"cha": 4
 			},
 			"items": [
 				"staff",
 				"wand of manifold missiles (1st level)"
 			],
-			"abilitiesTop": [
-				{
-					"entries": [],
-					"name": "Light Blindness",
-					"generic": true
-				}
-			],
 			"ac": {
-				"default": 27
+				"std": 27
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 15
+				"fort": {
+					"std": 15
 				},
-				"Ref": {
-					"default": 19
+				"ref": {
+					"std": 19
 				},
-				"Will": {
-					"default": 18
+				"will": {
+					"std": 18
 				}
 			},
 			"hp": [
@@ -499,24 +477,8 @@
 					"abilities": null
 				}
 			],
-			"immunities": {
-				"damage": [],
-				"condition": [
-					"sleep"
-				]
-			},
-			"abilitiesMid": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"trigger": "An enemy is about to damage the cavern seer with bludgeoning damage or with a spell that has the {@trait earth} trait",
-					"entries": [
-						"The cavern seer gains resistance 10 against the triggering damage."
-					],
-					"name": "Stone Defense"
-				}
+			"immunities": [
+				"sleep"
 			],
 			"speed": {
 				"walk": 30
@@ -680,43 +642,55 @@
 					}
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"traits": [
-						"occult",
-						"transmutation"
-					],
-					"requirements": "The cavern seer is underground",
-					"frequency": {
-						"unit": "day",
-						"freq": 1
-					},
-					"entries": [
-						"Pebbles and dust rise from the stone to impede vision. The cavern seer and their allies within 60 feet become {@condition concealed} for 1 minute. This concealment can't be used to {@action Hide} or {@action Sneak}."
-					],
-					"name": "Cavern Distortion"
-				},
-				{
-					"entries": [
-						"The cavern seer ignores difficult terrain while underground."
-					],
-					"name": "Underground Stride"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning"
+			"abilities": {
+				"top": [
+					{
+						"entries": [],
+						"name": "Light Blindness",
+						"generic": true
+					}
 				],
-				"condition": []
-			},
-			"misc": [
-				"MA",
-				"UW"
-			]
+				"mid": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"trigger": "An enemy is about to damage the cavern seer with bludgeoning damage or with a spell that has the {@trait earth} trait",
+						"entries": [
+							"The cavern seer gains resistance 10 against the triggering damage."
+						],
+						"name": "Stone Defense"
+					}
+				],
+				"bot": [
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"occult",
+							"transmutation"
+						],
+						"requirements": "The cavern seer is underground",
+						"frequency": {
+							"unit": "day",
+							"freq": 1
+						},
+						"entries": [
+							"Pebbles and dust rise from the stone to impede vision. The cavern seer and their allies within 60 feet become {@condition concealed} for 1 minute. This concealment can't be used to {@action Hide} or {@action Sneak}."
+						],
+						"name": "Cavern Distortion"
+					},
+					{
+						"entries": [
+							"The cavern seer ignores difficult terrain while underground."
+						],
+						"name": "Underground Stride"
+					}
+				]
+			}
 		},
 		{
 			"name": "Bright Walker",
@@ -724,27 +698,26 @@
 			"source": "AV3",
 			"page": 78,
 			"level": 9,
-			"rarity": "Rare",
-			"alignment": "NE",
-			"size": "Medium",
 			"traits": [
-				"Incorporeal"
+				"rare",
+				"ne",
+				"medium",
+				"incorporeal",
+				"spirit",
+				"undead"
 			],
 			"creatureType": [
 				"Spirit",
 				"Undead"
 			],
 			"perception": {
-				"default": 19
+				"std": 19
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"greater darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "greater darkvision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Caligni"
@@ -753,43 +726,35 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 19
+					"std": 19
 				},
 				"Intimidation": {
-					"default": 18
+					"std": 18
 				},
 				"Stealth": {
-					"default": 19
+					"std": 19
 				}
 			},
 			"abilityMods": {
-				"Str": -5,
-				"Dex": 6,
-				"Con": 0,
-				"Int": 0,
-				"Wis": 4,
-				"Cha": 3
+				"str": -5,
+				"dex": 6,
+				"con": 0,
+				"int": 0,
+				"wis": 4,
+				"cha": 3
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+3."
-					],
-					"name": "Cha"
-				}
-			],
 			"ac": {
-				"default": 26
+				"std": 26
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 15
+				"fort": {
+					"std": 15
 				},
-				"Ref": {
-					"default": 21
+				"ref": {
+					"std": 21
 				},
-				"Will": {
-					"default": 19
+				"will": {
+					"std": 19
 				}
 			},
 			"hp": [
@@ -798,51 +763,6 @@
 					"abilities": [
 						"negative healing"
 					]
-				}
-			],
-			"abilitiesMid": [
-				{
-					"traits": [
-						"fire",
-						"light"
-					],
-					"entries": [
-						"When a bright walker is reduced to 0 Hit Points, they flash out in a burst of light, obtaining the blazing end they were denied at death. This blaze deals {@damage 10d6} fire damage (DC 25 basic Reflex save) to creatures within 20 feet. Creatures who fail this save are also {@condition dazzled} for 1 minute ({@condition blinded} for 1 minute on a critical failure)."
-					],
-					"name": "Bright Release"
-				},
-				{
-					"traits": [
-						"aura",
-						"divine",
-						"light"
-					],
-					"entries": [
-						"30 feet. The bright walker sheds bright light. Any creature that starts its turn in the aura must attempt at a DC 24 Fortitude save.",
-						{
-							"type": "successDegree",
-							"entries": {
-								"Critical Success": "The creature is temporarily immune for 24 hours.",
-								"Success": "The creature is {@condition dazzled} for 1 round.",
-								"Failure": "The creature is {@condition blinded} for 1 round.",
-								"Critical Failure": "The creature is {@condition blinded} for 1 hour."
-							}
-						}
-					],
-					"name": "Light Aura"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"traits": [
-						"concentrate"
-					],
-					"entries": [
-						"The bright walker suppresses their light aura for 1 round, reducing it to a faint, ghostly glow of dim light."
-					],
-					"name": "Suppress Aura"
 				}
 			],
 			"speed": {
@@ -886,67 +806,106 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"entries": [
-						"A bright walker can't fly higher than 1 foot above the ground. If they fly higher than this distance, they fall but don't take any damage from falling."
-					],
-					"name": "Landbound"
-				},
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"traits": [
-						"divine",
-						"evocation",
-						"fire",
-						"light"
-					],
-					"requirements": "The bright walker's",
-					"entries": [],
-					"name": "Light Flare"
-				},
-				{
-					"entries": [
-						"Aura is suppressed; The bright walker reignites their Light Aura with a burst of brightness that deals {@damage 5d6} fire damage (DC 25 basic Reflex save) to creatures within a 20-foot burst. Creatures who are {@condition dazzled} or with light blindness find this flare particularly painful; such a creature's save result is one degree of success worse than the result it rolled."
-					],
-					"name": "Light"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"traits": [
-						"conjuration",
-						"divine",
-						"teleportation"
-					],
-					"requirements": "The bright walker's Light Aura is suppressed",
-					"entries": [
-						"The bright walker teleports to a square it can see within 60 feet that is not in an area of bright light. The bright walker can't use Shadow Jump again for {@dice 1d4} rounds."
-					],
-					"name": "Shadow Jump"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"fire"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"+3."
+						],
+						"name": "Cha"
+					}
 				],
-				"condition": [
-					"{@condition blinded}",
-					"{@condition dazzled}"
+				"mid": [
+					{
+						"traits": [
+							"fire",
+							"light"
+						],
+						"entries": [
+							"When a bright walker is reduced to 0 Hit Points, they flash out in a burst of light, obtaining the blazing end they were denied at death. This blaze deals {@damage 10d6} fire damage (DC 25 basic Reflex save) to creatures within 20 feet. Creatures who fail this save are also {@condition dazzled} for 1 minute ({@condition blinded} for 1 minute on a critical failure)."
+						],
+						"name": "Bright Release"
+					},
+					{
+						"traits": [
+							"aura",
+							"divine",
+							"light"
+						],
+						"entries": [
+							"30 feet. The bright walker sheds bright light. Any creature that starts its turn in the aura must attempt at a DC 24 Fortitude save.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": "The creature is temporarily immune for 24 hours.",
+									"Success": "The creature is {@condition dazzled} for 1 round.",
+									"Failure": "The creature is {@condition blinded} for 1 round.",
+									"Critical Failure": "The creature is {@condition blinded} for 1 hour."
+								}
+							}
+						],
+						"name": "Light Aura"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"concentrate"
+						],
+						"entries": [
+							"The bright walker suppresses their light aura for 1 round, reducing it to a faint, ghostly glow of dim light."
+						],
+						"name": "Suppress Aura"
+					}
+				],
+				"bot": [
+					{
+						"entries": [
+							"A bright walker can't fly higher than 1 foot above the ground. If they fly higher than this distance, they fall but don't take any damage from falling."
+						],
+						"name": "Landbound"
+					},
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"divine",
+							"evocation",
+							"fire",
+							"light"
+						],
+						"requirements": "The bright walker's",
+						"entries": [],
+						"name": "Light Flare"
+					},
+					{
+						"entries": [
+							"Aura is suppressed; The bright walker reignites their Light Aura with a burst of brightness that deals {@damage 5d6} fire damage (DC 25 basic Reflex save) to creatures within a 20-foot burst. Creatures who are {@condition dazzled} or with light blindness find this flare particularly painful; such a creature's save result is one degree of success worse than the result it rolled."
+						],
+						"name": "Light"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"conjuration",
+							"divine",
+							"teleportation"
+						],
+						"requirements": "The bright walker's Light Aura is suppressed",
+						"entries": [
+							"The bright walker teleports to a square it can see within 60 feet that is not in an area of bright light. The bright walker can't use Shadow Jump again for {@dice 1d4} rounds."
+						],
+						"name": "Shadow Jump"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"RA",
-				"AD",
-				"AC",
-				"CC"
-			]
+			}
 		},
 		{
 			"name": "Caligni Defender",
@@ -954,26 +913,24 @@
 			"source": "AV3",
 			"page": 35,
 			"level": 8,
-			"rarity": "Rare",
-			"alignment": "CN",
-			"size": "Medium",
 			"traits": [
-				"Caligni"
+				"rare",
+				"cn",
+				"medium",
+				"caligni",
+				"humanoid"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 16
+				"std": 16
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"greater darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "greater darkvision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Caligni",
@@ -983,86 +940,47 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 17
+					"std": 17
 				},
 				"Athletics": {
-					"default": 18
+					"std": 18
 				},
 				"Intimidation": {
-					"default": 16
+					"std": 16
 				},
 				"Stealth": {
-					"default": 17
+					"std": 17
 				},
 				"Survival": {
-					"default": 16
+					"std": 16
 				}
 			},
 			"abilityMods": {
-				"Str": 4,
-				"Dex": 5,
-				"Con": 1,
-				"Int": -1,
-				"Wis": 2,
-				"Cha": 2
+				"str": 4,
+				"dex": 5,
+				"con": 1,
+				"int": -1,
+				"wis": 2,
+				"cha": 2
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+17, {@skill Survival} +16 Str +4, Dex +5, Con +1, Int \u20131, Wis +2, Cha +2 Items black smear poison (2 doses; Pathfinder Bestiary 51), chainmail, shortbow (20 arrows)"
-					],
-					"name": "Stealth"
-				},
-				{
-					"entries": [],
-					"name": "Light Blindness",
-					"generic": true
-				}
-			],
 			"ac": {
-				"default": 28
+				"std": 28
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 13
+				"fort": {
+					"std": 13
 				},
-				"Ref": {
-					"default": 19
+				"ref": {
+					"std": 19
 				},
-				"Will": {
-					"default": 16
+				"will": {
+					"std": 16
 				}
 			},
 			"hp": [
 				{
 					"hp": 125,
 					"abilities": null
-				}
-			],
-			"abilitiesMid": [
-				{
-					"entries": [
-						"When the caligni defender rolls a success on a Will save against a {@trait fear} effect, they get a critical success instead. In addition, any time they gain the {@condition frightened} condition, reduce its value by 1."
-					],
-					"name": "Bravery"
-				},
-				{
-					"traits": [
-						"light"
-					],
-					"entries": [
-						"When the caligni defender dies, their body combusts in a flash of white-hot flame. All creatures in a 20-foot burst take {@damage 6d10} fire damage (DC 26 basic Reflex save). Their gear and treasure are unaffected by the flames and are left in a pile where they died."
-					],
-					"name": "Death Flame"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"entries": [],
-					"name": "Attack of Opportunity",
-					"generic": true
 				}
 			],
 			"speed": {
@@ -1076,7 +994,7 @@
 					"traits": [
 						"agile",
 						"finesse",
-						"versatile S"
+						"versatile s"
 					],
 					"effects": [
 						"black smear poison"
@@ -1134,30 +1052,55 @@
 					}
 				}
 			],
-			"abilitiesBot": [
-				{
-					"entries": [
-						"When adjacent to one or more defenders they can see, the defender deals an additional {@dice 2d6} damage with their Strikes."
-					],
-					"name": "Shoulder to Shoulder"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"fire",
-					"piercing"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"+17, {@skill Survival} +16 Str +4, Dex +5, Con +1, Int \u20131, Wis +2, Cha +2 Items black smear poison (2 doses; Pathfinder Bestiary 51), chainmail, shortbow (20 arrows)"
+						],
+						"name": "Stealth"
+					},
+					{
+						"entries": [],
+						"name": "Light Blindness",
+						"generic": true
+					}
 				],
-				"condition": [
-					"{@condition frightened}"
+				"mid": [
+					{
+						"entries": [
+							"When the caligni defender rolls a success on a Will save against a {@trait fear} effect, they get a critical success instead. In addition, any time they gain the {@condition frightened} condition, reduce its value by 1."
+						],
+						"name": "Bravery"
+					},
+					{
+						"traits": [
+							"light"
+						],
+						"entries": [
+							"When the caligni defender dies, their body combusts in a flash of white-hot flame. All creatures in a 20-foot burst take {@damage 6d10} fire damage (DC 26 basic Reflex save). Their gear and treasure are unaffected by the flames and are left in a pile where they died."
+						],
+						"name": "Death Flame"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"entries": [],
+						"name": "Attack of Opportunity",
+						"generic": true
+					}
+				],
+				"bot": [
+					{
+						"entries": [
+							"When adjacent to one or more defenders they can see, the defender deals an additional {@dice 2d6} damage with their Strikes."
+						],
+						"name": "Shoulder to Shoulder"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"RA",
-				"AD",
-				"CC",
-				"UW"
-			]
+			}
 		},
 		{
 			"name": "Deepwater Dhuthorex",
@@ -1165,61 +1108,61 @@
 			"source": "AV3",
 			"page": 80,
 			"level": 9,
-			"rarity": "Uncommon",
-			"alignment": "CN",
-			"size": "Large",
 			"traits": [
-				"Aquatic"
+				"uncommon",
+				"cn",
+				"large",
+				"aberration",
+				"aquatic"
 			],
 			"creatureType": [
 				"Aberration"
 			],
 			"perception": {
-				"default": 18
+				"std": 18
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [
-					"wavesense 60 feet"
-				],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"type": "imprecise",
+					"name": "wavesense",
+					"range": 60
+				}
+			],
 			"skills": {
 				"Athletics": {
-					"default": 20
+					"std": 20
 				},
 				"Stealth": {
-					"default": 18
+					"std": 18
 				},
 				"Survival": {
-					"default": 19
+					"std": 19
 				}
 			},
 			"abilityMods": {
-				"Str": 7,
-				"Dex": 3,
-				"Con": 4,
-				"Int": -4,
-				"Wis": 4,
-				"Cha": 0
+				"str": 7,
+				"dex": 3,
+				"con": 4,
+				"int": -4,
+				"wis": 4,
+				"cha": 0
 			},
-			"abilitiesTop": [],
 			"ac": {
-				"default": 28,
+				"std": 28,
 				"abilities": "all-around vision"
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 19
+				"fort": {
+					"std": 19
 				},
-				"Ref": {
-					"default": 18
+				"ref": {
+					"std": 18
 				},
-				"Will": {
-					"default": 17
+				"will": {
+					"std": 17
 				}
 			},
 			"hp": [
@@ -1228,22 +1171,8 @@
 					"abilities": null
 				}
 			],
-			"immunities": {
-				"damage": [
-					"acid"
-				],
-				"condition": []
-			},
-			"abilitiesMid": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"entries": [],
-					"name": "Attack of Opportunity",
-					"generic": true
-				}
+			"immunities": [
+				"acid"
 			],
 			"speed": {
 				"abilities": [
@@ -1298,49 +1227,50 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"entries": [],
-					"name": "Aquatic Ambush",
-					"generic": true
-				},
-				{
-					"entries": [
-						"A deepwater dhuthorex deals 7 piercing damage to its target if its jaws {@action Strike} is a failure (but not a critical failure)."
-					],
-					"name": "Overpowering Jaws"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"traits": [
-						"attack"
-					],
-					"entries": [
-						"Medium, {@damage 2d6+7} bludgeoning plus {@damage 2d6} acid, Rupture 20."
-					],
-					"name": "Swallow Whole",
-					"generic": true
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning",
-					"piercing",
-					"slashing"
+			"abilities": {
+				"mid": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"entries": [],
+						"name": "Attack of Opportunity",
+						"generic": true
+					}
 				],
-				"condition": []
-			},
-			"misc": [
-				"MA",
-				"RC"
-			]
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [],
+						"name": "Aquatic Ambush",
+						"generic": true
+					},
+					{
+						"entries": [
+							"A deepwater dhuthorex deals 7 piercing damage to its target if its jaws {@action Strike} is a failure (but not a critical failure)."
+						],
+						"name": "Overpowering Jaws"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"attack"
+						],
+						"entries": [
+							"Medium, {@damage 2d6+7} bludgeoning plus {@damage 2d6} acid, Rupture 20."
+						],
+						"name": "Swallow Whole",
+						"generic": true
+					}
+				]
+			}
 		},
 		{
 			"name": "Dragon's Blood Puffball",
@@ -1348,60 +1278,53 @@
 			"source": "AV3",
 			"page": 79,
 			"level": 8,
-			"rarity": "Uncommon",
-			"alignment": "N",
-			"size": "Large",
 			"traits": [
-				"Mindless"
+				"uncommon",
+				"n",
+				"large",
+				"fungus",
+				"mindless"
 			],
 			"creatureType": [
 				"Fungus"
 			],
 			"perception": {
-				"default": 12
+				"std": 12
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"motion sense 60 feet",
-					"no vision"
-				]
-			},
+			"senses": [
+				{
+					"name": "motion sense",
+					"range": 60
+				},
+				{
+					"name": "no vision"
+				}
+			],
 			"skills": {
 				"Stealth": {
-					"default": 14
+					"std": 14
 				}
 			},
 			"abilityMods": {
-				"Str": 6,
-				"Dex": 1,
-				"Con": 4,
-				"Int": -5,
-				"Wis": 0,
-				"Cha": -2
+				"str": 6,
+				"dex": 1,
+				"con": 4,
+				"int": -5,
+				"wis": 0,
+				"cha": -2
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"The puffball senses motion through vibration and air movement."
-					],
-					"name": "Motion Sense"
-				}
-			],
 			"ac": {
-				"default": 24
+				"std": 24
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 20
+				"fort": {
+					"std": 20
 				},
-				"Ref": {
-					"default": 15
+				"ref": {
+					"std": 15
 				},
-				"Will": {
-					"default": 12
+				"will": {
+					"std": 12
 				}
 			},
 			"hp": [
@@ -1410,30 +1333,18 @@
 					"abilities": null
 				}
 			],
-			"immunities": {
-				"damage": [
-					"bleed",
-					"mental",
-					"poison"
-				],
-				"condition": [
-					"fatigued",
-					"sleep",
-					"unconscious"
-				]
-			},
+			"immunities": [
+				"bleed",
+				"mental",
+				"poison",
+				"fatigued",
+				"sleep",
+				"unconscious"
+			],
 			"weaknesses": [
 				{
 					"amount": 10,
 					"name": "piercing"
-				}
-			],
-			"abilitiesMid": [
-				{
-					"entries": [
-						"When the dragon's blood puffball dies, it explodes, dealing {@damage 7d8} poison damage to each creature in a 20-foot emanation (DC 26 basic Fortitude save)."
-					],
-					"name": "Spore Explosion"
 				}
 			],
 			"speed": {
@@ -1465,18 +1376,24 @@
 					]
 				}
 			],
-			"abilitiesBot": [],
-			"inflicts": {
-				"damage": [
-					"bludgeoning",
-					"poison"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"The puffball senses motion through vibration and air movement."
+						],
+						"name": "Motion Sense"
+					}
 				],
-				"condition": []
-			},
-			"misc": [
-				"RA",
-				"AD"
-			]
+				"mid": [
+					{
+						"entries": [
+							"When the dragon's blood puffball dies, it explodes, dealing {@damage 7d8} poison damage to each creature in a 20-foot emanation (DC 26 basic Fortitude save)."
+						],
+						"name": "Spore Explosion"
+					}
+				]
+			}
 		},
 		{
 			"name": "Dread Dhuthorex",
@@ -1484,28 +1401,29 @@
 			"source": "AV3",
 			"page": 80,
 			"level": 11,
-			"rarity": "Uncommon",
-			"alignment": "CN",
-			"size": "Large",
 			"traits": [
-				"Amphibious"
+				"uncommon",
+				"cn",
+				"large",
+				"aberration",
+				"amphibious"
 			],
 			"creatureType": [
 				"Aberration"
 			],
 			"perception": {
-				"default": 22
+				"std": 22
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [
-					"wavesense 60 feet"
-				],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"type": "imprecise",
+					"name": "wavesense",
+					"range": 60
+				}
+			],
 			"languages": {
 				"languages": [
 					"Aklo"
@@ -1514,40 +1432,39 @@
 			},
 			"skills": {
 				"Athletics": {
-					"default": 23
+					"std": 23
 				},
 				"Occultism": {
-					"default": 16
+					"std": 16
 				},
 				"Stealth": {
-					"default": 20
+					"std": 20
 				},
 				"Survival": {
-					"default": 21
+					"std": 21
 				}
 			},
 			"abilityMods": {
-				"Str": 8,
-				"Dex": 3,
-				"Con": 5,
-				"Int": -1,
-				"Wis": 4,
-				"Cha": 0
+				"str": 8,
+				"dex": 3,
+				"con": 5,
+				"int": -1,
+				"wis": 4,
+				"cha": 0
 			},
-			"abilitiesTop": [],
 			"ac": {
-				"default": 31,
+				"std": 31,
 				"abilities": "all-around vision"
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 24
+				"fort": {
+					"std": 24
 				},
-				"Ref": {
-					"default": 18
+				"ref": {
+					"std": 18
 				},
-				"Will": {
-					"default": 21
+				"will": {
+					"std": 21
 				}
 			},
 			"hp": [
@@ -1556,35 +1473,8 @@
 					"abilities": null
 				}
 			],
-			"immunities": {
-				"damage": [
-					"acid"
-				],
-				"condition": []
-			},
-			"abilitiesMid": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"entries": [],
-					"name": "Attack of Opportunity",
-					"generic": true
-				},
-				{
-					"traits": [
-						"aura",
-						"emotion",
-						"fear",
-						"mental"
-					],
-					"entries": [
-						"60 feet, DC 27."
-					],
-					"name": "Frightful Presence",
-					"generic": true
-				}
+			"immunities": [
+				"acid"
 			],
 			"speed": {
 				"abilities": [
@@ -1666,52 +1556,66 @@
 					}
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
+			"abilities": {
+				"mid": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"entries": [],
+						"name": "Attack of Opportunity",
+						"generic": true
 					},
-					"entries": [],
-					"name": "Aquatic Ambush",
-					"generic": true
-				},
-				{
-					"entries": [
-						"As deepwater dhuthorex, but 8 piercing damage."
-					],
-					"name": "Overpowering Jaws",
-					"entries_as_xyz": [
-						"A deepwater dhuthorex deals 7 piercing damage to its target if its jaws {@action Strike} is a failure (but not a critical failure)."
-					]
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"traits": [
-						"attack"
-					],
-					"entries": [
-						"Large, {@damage 3d6+8} bludgeoning plus {@damage 2d6} acid, Rupture 23."
-					],
-					"name": "Swallow Whole",
-					"generic": true
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning",
-					"piercing",
-					"slashing"
+					{
+						"traits": [
+							"aura",
+							"emotion",
+							"fear",
+							"mental"
+						],
+						"entries": [
+							"60 feet, DC 27."
+						],
+						"name": "Frightful Presence",
+						"generic": true
+					}
 				],
-				"condition": []
-			},
-			"misc": [
-				"MA",
-				"RC"
-			]
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [],
+						"name": "Aquatic Ambush",
+						"generic": true
+					},
+					{
+						"entries": [
+							"As deepwater dhuthorex, but 8 piercing damage."
+						],
+						"name": "Overpowering Jaws",
+						"entries_as_xyz": [
+							"A deepwater dhuthorex deals 7 piercing damage to its target if its jaws {@action Strike} is a failure (but not a critical failure)."
+						]
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"attack"
+						],
+						"entries": [
+							"Large, {@damage 3d6+8} bludgeoning plus {@damage 2d6} acid, Rupture 23."
+						],
+						"name": "Swallow Whole",
+						"generic": true
+					}
+				]
+			}
 		},
 		{
 			"name": "Dread Wisp",
@@ -1719,23 +1623,23 @@
 			"source": "AV3",
 			"page": 81,
 			"level": 9,
-			"rarity": "Uncommon",
-			"alignment": "CE",
-			"size": "Small",
+			"traits": [
+				"uncommon",
+				"ce",
+				"small",
+				"aberration"
+			],
 			"creatureType": [
 				"Aberration"
 			],
 			"perception": {
-				"default": 20
+				"std": 20
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Aklo",
@@ -1745,39 +1649,38 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 23
+					"std": 23
 				},
 				"Deception": {
-					"default": 16
+					"std": 16
 				},
 				"Intimidation": {
-					"default": 16
+					"std": 16
 				},
 				"Stealth": {
-					"default": 23
+					"std": 23
 				}
 			},
 			"abilityMods": {
-				"Str": -5,
-				"Dex": 6,
-				"Con": 0,
-				"Int": 2,
-				"Wis": 4,
-				"Cha": 2
+				"str": -5,
+				"dex": 6,
+				"con": 0,
+				"int": 2,
+				"wis": 4,
+				"cha": 2
 			},
-			"abilitiesTop": [],
 			"ac": {
-				"default": 31
+				"std": 31
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 14
+				"fort": {
+					"std": 14
 				},
-				"Ref": {
-					"default": 21
+				"ref": {
+					"std": 21
 				},
-				"Will": {
-					"default": 18
+				"will": {
+					"std": 18
 				}
 			},
 			"hp": [
@@ -1788,35 +1691,13 @@
 					]
 				}
 			],
-			"immunities": {
-				"damage": [],
-				"condition": [
-					"magic"
-				]
-			},
+			"immunities": [
+				"magic"
+			],
 			"weaknesses": [
 				{
 					"amount": 10,
 					"name": "positive"
-				}
-			],
-			"abilitiesMid": [
-				{
-					"traits": [
-						"aura",
-						"light"
-					],
-					"entries": [
-						"20 feet. A dread wisp, though naturally {@condition invisible}, glows with a grayish illumination, casting dim light in the aura and making them visible. Living creatures that end their turn in the aura must succeed at a DC 25 Will saving throw or become {@condition frightened|CRB|frightened 1} (or {@condition frightened|CRB|frightened 2} on a critical failure)",
-						"Those that critically succeed are temporarily immune for 10 minutes."
-					],
-					"name": "Dread Flickering"
-				},
-				{
-					"entries": [
-						"A dread wisp is immune to all spells except faerie fire, magic missile, maze, searing light, and spells with the {@trait positive} trait."
-					],
-					"name": "Magic Immunity"
 				}
 			],
 			"speed": {
@@ -1840,104 +1721,111 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
+			"abilities": {
+				"mid": [
+					{
+						"traits": [
+							"aura",
+							"light"
+						],
+						"entries": [
+							"20 feet. A dread wisp, though naturally {@condition invisible}, glows with a grayish illumination, casting dim light in the aura and making them visible. Living creatures that end their turn in the aura must succeed at a DC 25 Will saving throw or become {@condition frightened|CRB|frightened 1} (or {@condition frightened|CRB|frightened 2} on a critical failure)",
+							"Those that critically succeed are temporarily immune for 10 minutes."
+						],
+						"name": "Dread Flickering"
 					},
-					"traits": [
-						"concentrate",
-						"necromancy",
-						"negative",
-						"occult"
-					],
-					"requirements": "An enemy within 15 feet of the dread wisp is under a {@trait fear} effect, {@condition drained}, or {@condition dying}",
-					"frequency": {
-						"unit": "round",
-						"freq": 1
-					},
-					"entries": [
-						"The dread wisp feeds on the creature's despair. The dread wisp regains {@dice 2d8} Hit Points and deals {@damage 3d8} negative damage to the creature (DC 25 basic Fortitude save), and if the dread wisp has Gone Dark, their Dread Flickering reignites."
-					],
-					"name": "Feed on Despair"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"traits": [
-						"concentrate"
-					],
-					"entries": [
-						"The dread wisp extinguishes their Dread Flickering, becoming {@condition invisible}. They can end this effect with another use of this action. If the dread wisp uses their draining touch {@action Strike} while {@condition invisible}, the arc of pale energy lets any observer determine their location, making them {@condition hidden} to all observers only until the dread wisp moves."
-					],
-					"name": "Go Dark"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"traits": [
-						"conjuration",
-						"occult",
-						"teleportation"
-					],
-					"entries": [
-						"The dread wisp teleports to a square they can see within 30 feet that isn't in an area of bright light. The dread wisp can't use Shadow Flitter again for {@dice 1d4} rounds."
-					],
-					"name": "Shadow Flitter"
-				},
-				{
-					"entries": [
-						"If the dread wisp critically hits with their draining touch {@action Strike}, the target is {@condition drained|CRB|drained 1}."
-					],
-					"name": "Wearying Touch"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"negative"
+					{
+						"entries": [
+							"A dread wisp is immune to all spells except faerie fire, magic missile, maze, searing light, and spells with the {@trait positive} trait."
+						],
+						"name": "Magic Immunity"
+					}
 				],
-				"condition": [
-					"{@condition drained}",
-					"{@condition frightened}"
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"concentrate",
+							"necromancy",
+							"negative",
+							"occult"
+						],
+						"requirements": "An enemy within 15 feet of the dread wisp is under a {@trait fear} effect, {@condition drained}, or {@condition dying}",
+						"frequency": {
+							"unit": "round",
+							"freq": 1
+						},
+						"entries": [
+							"The dread wisp feeds on the creature's despair. The dread wisp regains {@dice 2d8} Hit Points and deals {@damage 3d8} negative damage to the creature (DC 25 basic Fortitude save), and if the dread wisp has Gone Dark, their Dread Flickering reignites."
+						],
+						"name": "Feed on Despair"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"concentrate"
+						],
+						"entries": [
+							"The dread wisp extinguishes their Dread Flickering, becoming {@condition invisible}. They can end this effect with another use of this action. If the dread wisp uses their draining touch {@action Strike} while {@condition invisible}, the arc of pale energy lets any observer determine their location, making them {@condition hidden} to all observers only until the dread wisp moves."
+						],
+						"name": "Go Dark"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"conjuration",
+							"occult",
+							"teleportation"
+						],
+						"entries": [
+							"The dread wisp teleports to a square they can see within 30 feet that isn't in an area of bright light. The dread wisp can't use Shadow Flitter again for {@dice 1d4} rounds."
+						],
+						"name": "Shadow Flitter"
+					},
+					{
+						"entries": [
+							"If the dread wisp critically hits with their draining touch {@action Strike}, the target is {@condition drained|CRB|drained 1}."
+						],
+						"name": "Wearying Touch"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"CC"
-			]
+			}
 		},
 		{
 			"name": "Drow Hunter",
 			"isNpc": false,
 			"source": "AV3",
 			"page": 82,
+			"hasImages": true,
 			"level": 7,
-			"rarity": "Uncommon",
-			"alignment": "CN",
-			"size": "Medium",
 			"traits": [
-				"Drow",
-				"Elf"
+				"uncommon",
+				"cn",
+				"medium",
+				"drow",
+				"elf",
+				"humanoid"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 16
+				"std": 16
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Elven",
@@ -1947,52 +1835,39 @@
 			},
 			"skills": {
 				"Athletics": {
-					"default": 14
+					"std": 14
 				},
 				"Nature": {
-					"default": 14
+					"std": 14
 				},
 				"Stealth": {
-					"default": 15
+					"std": 15
 				},
 				"Survival": {
-					"default": 16,
+					"std": 16,
 					"to Subsist": 18
 				}
 			},
 			"abilityMods": {
-				"Str": 3,
-				"Dex": 4,
-				"Con": 2,
-				"Int": 0,
-				"Wis": 3,
-				"Cha": 1
+				"str": 3,
+				"dex": 4,
+				"con": 2,
+				"int": 0,
+				"wis": 3,
+				"cha": 1
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+16 (+18 to {@action Subsist}) Str +3, Dex +4, Con +2, Int +0, Wis +3, Cha +1 Items chain shirt, +1 composite longbow (20 arrows), longsword."
-					],
-					"name": "Survival"
-				},
-				{
-					"entries": [],
-					"name": "Light Blindness",
-					"generic": true
-				}
-			],
 			"ac": {
-				"default": 25
+				"std": 25
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 15
+				"fort": {
+					"std": 15
 				},
-				"Ref": {
-					"default": 15
+				"ref": {
+					"std": 15
 				},
-				"Will": {
-					"default": 14
+				"will": {
+					"std": 14
 				}
 			},
 			"hp": [
@@ -2001,19 +1876,8 @@
 					"abilities": null
 				}
 			],
-			"immunities": {
-				"damage": [],
-				"condition": [
-					"sleep"
-				]
-			},
-			"abilitiesMid": [
-				{
-					"entries": [
-						"When the hunter rolls a success on a Reflex save, they get a critical success instead."
-					],
-					"name": "Deft Evasion"
-				}
+			"immunities": [
+				"sleep"
 			],
 			"speed": {
 				"walk": 30
@@ -2024,7 +1888,7 @@
 					"name": "longsword",
 					"attack": 16,
 					"traits": [
-						"versatile P"
+						"versatile p"
 					],
 					"effects": [],
 					"damage": "{@damage 1d8+7} slashing",
@@ -2080,73 +1944,83 @@
 					}
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"+16 (+18 to {@action Subsist}) Str +3, Dex +4, Con +2, Int +0, Wis +3, Cha +1 Items chain shirt, +1 composite longbow (20 arrows), longsword."
+						],
+						"name": "Survival"
 					},
-					"frequency": {
-						"unit": "round",
-						"freq": 1
-					},
-					"prerequisites": "The hunter is wielding a ranged weapon with a reload of 0",
-					"entries": [
-						"The hunter makes two ranged Strikes against their prey. If both hit and deal damage, the target takes an additional {@damage 1d8} {@condition persistent damage ||persistent bleed damage}."
-					],
-					"name": "Hunter's Wound"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"entries": [
-						"The hunter can {@action Step} and then {@action Strike}, or {@action Strike} and then {@action Step}."
-					],
-					"name": "Skirmish Strike"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"piercing",
-					"slashing"
+					{
+						"entries": [],
+						"name": "Light Blindness",
+						"generic": true
+					}
 				],
-				"condition": []
-			},
-			"misc": [
-				"MA",
-				"RA",
-				"UW"
-			]
+				"mid": [
+					{
+						"entries": [
+							"When the hunter rolls a success on a Reflex save, they get a critical success instead."
+						],
+						"name": "Deft Evasion"
+					}
+				],
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"frequency": {
+							"unit": "round",
+							"freq": 1
+						},
+						"prerequisites": "The hunter is wielding a ranged weapon with a reload of 0",
+						"entries": [
+							"The hunter makes two ranged Strikes against their prey. If both hit and deal damage, the target takes an additional {@damage 1d8} {@condition persistent damage ||persistent bleed damage}."
+						],
+						"name": "Hunter's Wound"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"The hunter can {@action Step} and then {@action Strike}, or {@action Strike} and then {@action Step}."
+						],
+						"name": "Skirmish Strike"
+					}
+				]
+			}
 		},
 		{
 			"name": "Drow Shootist",
 			"isNpc": false,
+			"hasImages": true,
 			"source": "AV3",
 			"page": 83,
 			"level": 8,
-			"rarity": "Uncommon",
-			"alignment": "CN",
-			"size": "Medium",
 			"traits": [
-				"Drow",
-				"Elf"
+				"uncommon",
+				"cn",
+				"medium",
+				"drow",
+				"elf",
+				"humanoid"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 16
+				"std": 16
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Elven",
@@ -2156,57 +2030,44 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 19
+					"std": 19
 				},
 				"Athletics": {
-					"default": 16
+					"std": 16
 				},
 				"Deception": {
-					"default": 16
+					"std": 16
 				},
 				"Intimidation": {
-					"default": 14
+					"std": 14
 				},
 				"Stealth": {
-					"default": 17
+					"std": 17
 				},
 				"Thievery": {
-					"default": 17
+					"std": 17
 				}
 			},
 			"abilityMods": {
-				"Str": 2,
-				"Dex": 5,
-				"Con": 1,
-				"Int": 0,
-				"Wis": 4,
-				"Cha": 2
+				"str": 2,
+				"dex": 5,
+				"con": 1,
+				"int": 0,
+				"wis": 4,
+				"cha": 2
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+17 Str +2, Dex +5, Con +1, Int +0, Wis +4, Cha +2 Items +1 repeating hand crossbow (4 magazines; page 73), rapier, shootist bandolier (page 73), stupor poison (4; page 74), studded leather armor."
-					],
-					"name": "Thievery"
-				},
-				{
-					"entries": [],
-					"name": "Light Blindness",
-					"generic": true
-				}
-			],
 			"ac": {
-				"default": 27
+				"std": 27
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 15
+				"fort": {
+					"std": 15
 				},
-				"Ref": {
-					"default": 17
+				"ref": {
+					"std": 17
 				},
-				"Will": {
-					"default": 16
+				"will": {
+					"std": 16
 				}
 			},
 			"hp": [
@@ -2215,31 +2076,8 @@
 					"abilities": null
 				}
 			],
-			"immunities": {
-				"damage": [],
-				"condition": [
-					"sleep"
-				]
-			},
-			"abilitiesMid": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"traits": [
-						"fortune"
-					],
-					"trigger": "The shootist fails a save",
-					"frequency": {
-						"unit": "day",
-						"freq": 1
-					},
-					"entries": [
-						"The shootist rerolls the save and uses the better result."
-					],
-					"name": "Shootist's Luck"
-				}
+			"immunities": [
+				"sleep"
 			],
 			"speed": {
 				"walk": 30
@@ -2308,93 +2146,112 @@
 					}
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"+17 Str +2, Dex +5, Con +1, Int +0, Wis +4, Cha +2 Items +1 repeating hand crossbow (4 magazines; page 73), rapier, shootist bandolier (page 73), stupor poison (4; page 74), studded leather armor."
+						],
+						"name": "Thievery"
 					},
-					"entries": [
-						"The shootist takes aim and makes a ranged {@action Strike}. If the attack hits and deals damage, the target is {@condition flat-footed} until the end of the shootist's turn, or until the end of the shootist's next turn on a critical hit."
-					],
-					"name": "Distracting Shot"
-				},
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"requirements": "The shootist is holding an unloaded repeating hand crossbow",
-					"entries": [
-						"The shootist Interacts to reload the repeating hand crossbow and Strikes with it."
-					],
-					"name": "Reloading Trick"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"frequency": {
-						"unit": "round",
-						"freq": 1
-					},
-					"entries": [
-						"The shootist Interacts to draw a repeating hand crossbow and Strikes with it, or Strikes with a loaded repeating hand crossbow they're holding then Interacts to stow it."
-					],
-					"name": "Shootist's Draw"
-				},
-				{
-					"entries": [
-						"The shootist deals an extra {@damage 2d6} precision damage to {@condition flat-footed} creatures."
-					],
-					"name": "Sneak Attack",
-					"generic": true
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"piercing",
-					"precision"
+					{
+						"entries": [],
+						"name": "Light Blindness",
+						"generic": true
+					}
 				],
-				"condition": [
-					"{@condition flat-footed}"
+				"mid": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"traits": [
+							"fortune"
+						],
+						"trigger": "The shootist fails a save",
+						"frequency": {
+							"unit": "day",
+							"freq": 1
+						},
+						"entries": [
+							"The shootist rerolls the save and uses the better result."
+						],
+						"name": "Shootist's Luck"
+					}
+				],
+				"bot": [
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"The shootist takes aim and makes a ranged {@action Strike}. If the attack hits and deals damage, the target is {@condition flat-footed} until the end of the shootist's turn, or until the end of the shootist's next turn on a critical hit."
+						],
+						"name": "Distracting Shot"
+					},
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"requirements": "The shootist is holding an unloaded repeating hand crossbow",
+						"entries": [
+							"The shootist Interacts to reload the repeating hand crossbow and Strikes with it."
+						],
+						"name": "Reloading Trick"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"frequency": {
+							"unit": "round",
+							"freq": 1
+						},
+						"entries": [
+							"The shootist Interacts to draw a repeating hand crossbow and Strikes with it, or Strikes with a loaded repeating hand crossbow they're holding then Interacts to stow it."
+						],
+						"name": "Shootist's Draw"
+					},
+					{
+						"entries": [
+							"The shootist deals an extra {@damage 2d6} precision damage to {@condition flat-footed} creatures."
+						],
+						"name": "Sneak Attack",
+						"generic": true
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"RA",
-				"CC",
-				"UW"
-			]
+			}
 		},
 		{
 			"name": "Drow Warden",
 			"isNpc": false,
 			"source": "AV3",
 			"page": 82,
+			"hasImages": true,
 			"level": 4,
-			"rarity": "Uncommon",
-			"alignment": "CN",
-			"size": "Medium",
 			"traits": [
-				"Drow",
-				"Elf"
+				"uncommon",
+				"cn",
+				"medium",
+				"drow",
+				"elf",
+				"humanoid"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 11
+				"std": 11
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Elven",
@@ -2404,25 +2261,25 @@
 			},
 			"skills": {
 				"Athletics": {
-					"default": 12
+					"std": 12
 				},
 				"Intimidation": {
-					"default": 8
+					"std": 8
 				},
 				"Stealth": {
-					"default": 9
+					"std": 9
 				},
 				"Survival": {
-					"default": 11
+					"std": 11
 				}
 			},
 			"abilityMods": {
-				"Str": 4,
-				"Dex": 3,
-				"Con": 1,
-				"Int": 0,
-				"Wis": 3,
-				"Cha": 0
+				"str": 4,
+				"dex": 3,
+				"con": 1,
+				"int": 0,
+				"wis": 3,
+				"cha": 0
 			},
 			"items": [
 				"chainmail",
@@ -2430,42 +2287,24 @@
 				"hand crossbow (10 bolts)",
 				"lethargy poison (3)"
 			],
-			"abilitiesTop": [
-				{
-					"entries": [],
-					"name": "Light Blindness",
-					"generic": true
-				}
-			],
 			"ac": {
-				"default": 21
+				"std": 21
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 11
+				"fort": {
+					"std": 11
 				},
-				"Ref": {
-					"default": 11
+				"ref": {
+					"std": 11
 				},
-				"Will": {
-					"default": 9
+				"will": {
+					"std": 9
 				}
 			},
 			"hp": [
 				{
 					"hp": 60,
 					"abilities": null
-				}
-			],
-			"abilitiesMid": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"entries": [],
-					"name": "Attack of Opportunity",
-					"generic": true
 				}
 			],
 			"speed": {
@@ -2534,37 +2373,41 @@
 					}
 				}
 			],
-			"abilitiesBot": [
-				{
-					"entries": [
-						"A target damaged by the warden's melee {@action Strike} must succeed at a DC 21 Fortitude save or be {@condition slowed|CRB|slowed 1} until the end of the warden's next turn."
-					],
-					"name": "Hampering Slash"
-				},
-				{
-					"entries": [
-						"A warden deals an extra {@dice 1d6} damage to {@condition flat-footed} creatures."
-					],
-					"name": "Sneak Attack",
-					"generic": true
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"piercing",
-					"slashing"
+			"abilities": {
+				"top": [
+					{
+						"entries": [],
+						"name": "Light Blindness",
+						"generic": true
+					}
 				],
-				"condition": [
-					"{@condition flat-footed}",
-					"{@condition slowed}"
+				"mid": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"entries": [],
+						"name": "Attack of Opportunity",
+						"generic": true
+					}
+				],
+				"bot": [
+					{
+						"entries": [
+							"A target damaged by the warden's melee {@action Strike} must succeed at a DC 21 Fortitude save or be {@condition slowed|CRB|slowed 1} until the end of the warden's next turn."
+						],
+						"name": "Hampering Slash"
+					},
+					{
+						"entries": [
+							"A warden deals an extra {@dice 1d6} damage to {@condition flat-footed} creatures."
+						],
+						"name": "Sneak Attack",
+						"generic": true
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"RA",
-				"CC",
-				"UW"
-			]
+			}
 		},
 		{
 			"name": "Dulac",
@@ -2572,26 +2415,24 @@
 			"source": "AV3",
 			"page": 9,
 			"level": 9,
-			"rarity": "Unique",
-			"alignment": "N",
-			"size": "Medium",
 			"traits": [
-				"Caligni"
+				"unique",
+				"n",
+				"medium",
+				"caligni",
+				"humanoid"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 18
+				"std": 18
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"greater darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "greater darkvision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Caligni",
@@ -2601,101 +2442,54 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 18
+					"std": 18
 				},
 				"Athletics": {
-					"default": 19
+					"std": 19
 				},
 				"Intimidation": {
-					"default": 18
+					"std": 18
 				},
 				"Occultism": {
-					"default": 16
+					"std": 16
 				},
 				"Religion": {
-					"default": 18
+					"std": 18
 				},
 				"Stealth": {
-					"default": 18
+					"std": 18
 				}
 			},
 			"abilityMods": {
-				"Str": 4,
-				"Dex": 3,
-				"Con": 0,
-				"Int": 1,
-				"Wis": 3,
-				"Cha": 5
+				"str": 4,
+				"dex": 3,
+				"con": 0,
+				"int": 1,
+				"wis": 3,
+				"cha": 5
 			},
 			"items": [
 				"chain shirt",
 				"+1 striking war flail"
 			],
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+16, {@skill Religion} +18, {@skill Stealth} +18 Str +4, Dex +3, Con +0, Int +1, Wis +3, Cha +5 Items chain shirt, +1 striking war flail."
-					],
-					"name": "Occultism"
-				},
-				{
-					"entries": [],
-					"name": "Light Blindness",
-					"generic": true
-				}
-			],
 			"ac": {
-				"default": 28
+				"std": 28
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 15
+				"fort": {
+					"std": 15
 				},
-				"Ref": {
-					"default": 18
+				"ref": {
+					"std": 18
 				},
-				"Will": {
-					"default": 20
+				"will": {
+					"std": 20
 				}
 			},
 			"hp": [
 				{
 					"hp": 155,
 					"abilities": null
-				}
-			],
-			"abilitiesMid": [
-				{
-					"traits": [
-						"cold",
-						"darkness"
-					],
-					"entries": [
-						"When Dulac dies, her body is destroyed in a burst of chilling shadows. All creatures in a 20-foot burst take {@damage 8d8} cold damage (DC 28 basic Reflex save). Dulac's gear and treasure are unaffected by the shadows and are left in a pile where she died."
-					],
-					"name": "Death Shadows"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"trigger": "A {@condition dazzled} or {@condition blinded} creature, or a creature with light blindness, ends its move adjacent to Dulac",
-					"entries": [
-						"Dulac {@action Step||Steps}."
-					],
-					"name": "Opportune Step"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"trigger": "An ally within",
-					"entries": [
-						"Dulac's reach is targeted with a ranged or melee attack by an attacker she can see; The ally gains a +2 circumstance bonus to AC against the triggering attack, and the ally can {@action Step} after the attack."
-					],
-					"name": "Warding Shove"
 				}
 			],
 			"speed": {
@@ -2787,31 +2581,63 @@
 					}
 				}
 			],
-			"abilitiesBot": [
-				{
-					"entries": [
-						"Attack Dulac deals an additional {@damage 1d6} precision damage to {@condition flat-footed} creatures."
-					],
-					"name": "Sneak"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning",
-					"cold",
-					"precision"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"+16, {@skill Religion} +18, {@skill Stealth} +18 Str +4, Dex +3, Con +0, Int +1, Wis +3, Cha +5 Items chain shirt, +1 striking war flail."
+						],
+						"name": "Occultism"
+					},
+					{
+						"entries": [],
+						"name": "Light Blindness",
+						"generic": true
+					}
 				],
-				"condition": [
-					"{@condition dazzled}",
-					"{@condition flat-footed}"
+				"mid": [
+					{
+						"traits": [
+							"cold",
+							"darkness"
+						],
+						"entries": [
+							"When Dulac dies, her body is destroyed in a burst of chilling shadows. All creatures in a 20-foot burst take {@damage 8d8} cold damage (DC 28 basic Reflex save). Dulac's gear and treasure are unaffected by the shadows and are left in a pile where she died."
+						],
+						"name": "Death Shadows"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"trigger": "A {@condition dazzled} or {@condition blinded} creature, or a creature with light blindness, ends its move adjacent to Dulac",
+						"entries": [
+							"Dulac {@action Step||Steps}."
+						],
+						"name": "Opportune Step"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"trigger": "An ally within",
+						"entries": [
+							"Dulac's reach is targeted with a ranged or melee attack by an attacker she can see; The ally gains a +2 circumstance bonus to AC against the triggering attack, and the ally can {@action Step} after the attack."
+						],
+						"name": "Warding Shove"
+					}
+				],
+				"bot": [
+					{
+						"entries": [
+							"Attack Dulac deals an additional {@damage 1d6} precision damage to {@condition flat-footed} creatures."
+						],
+						"name": "Sneak"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"AD",
-				"CC",
-				"UW"
-			]
+			}
 		},
 		{
 			"name": "Elder Child Of Belcorra",
@@ -2819,28 +2645,29 @@
 			"source": "AV3",
 			"page": 14,
 			"level": 9,
-			"rarity": "Rare",
-			"alignment": "LE",
-			"size": "Small",
 			"traits": [
-				"Mummy"
+				"rare",
+				"le",
+				"small",
+				"mummy",
+				"undead"
 			],
 			"creatureType": [
 				"Undead"
 			],
 			"perception": {
-				"default": 18
+				"std": 18
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [
-					"{@ability tremorsense} 30 feet"
-				],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"type": "imprecise",
+					"name": "{@ability tremorsense}",
+					"range": 30
+				}
+			],
 			"languages": {
 				"languages": [
 					"Common",
@@ -2851,36 +2678,35 @@
 			},
 			"skills": {
 				"Athletics": {
-					"default": 19
+					"std": 19
 				},
 				"Nature": {
-					"default": 19
+					"std": 19
 				},
 				"Stealth": {
-					"default": 19
+					"std": 19
 				}
 			},
 			"abilityMods": {
-				"Str": 6,
-				"Dex": 3,
-				"Con": 0,
-				"Int": 0,
-				"Wis": 3,
-				"Cha": 0
+				"str": 6,
+				"dex": 3,
+				"con": 0,
+				"int": 0,
+				"wis": 3,
+				"cha": 0
 			},
-			"abilitiesTop": [],
 			"ac": {
-				"default": 28
+				"std": 28
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 15
+				"fort": {
+					"std": 15
 				},
-				"Ref": {
-					"default": 18
+				"ref": {
+					"std": 18
 				},
-				"Will": {
-					"default": 20
+				"will": {
+					"std": 20
 				}
 			},
 			"hp": [
@@ -2891,42 +2717,13 @@
 					]
 				}
 			],
-			"immunities": {
-				"damage": [],
-				"condition": [
-					"death effects"
-				]
-			},
+			"immunities": [
+				"death effects"
+			],
 			"resistances": [
 				{
 					"amount": 10,
 					"name": "fire"
-				}
-			],
-			"abilitiesMid": [
-				{
-					"traits": [
-						"aura",
-						"divine",
-						"enchantment",
-						"mental"
-					],
-					"entries": [
-						"30 feet. A creature that begins its turn within the area feels as if its lungs were filling with water and must succeed at a DC 28 Fortitude save or be unable to speak or breathe. The creature can still hold its breath and can attempt a new save at the end of its turn. A creature that succeeds is temporarily immune for 24 hours."
-					],
-					"name": "Breath of the Bog"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"trigger": "A creature walks on top of a bog mummy that lies buried in the mud or peat below",
-					"requirements": "Initiative has not yet been rolled",
-					"entries": [
-						"The bog mummy automatically notices the creature and Burrows before rolling initiative."
-					],
-					"name": "Rise Up"
 				}
 			],
 			"speed": {
@@ -3034,52 +2831,67 @@
 					}
 				}
 			],
-			"abilitiesBot": [
-				{
-					"entries": [
-						{
-							"type": "affliction",
-							"name": "",
-							"traits": [
-								"curse",
-								"disease",
-								"divine",
-								"necromancy",
-								"negative"
-							],
-							"note": " This\naffliction can't be reduced below stage 1, nor can the\ndamage from it be healed, until it's successfully treated\nwith remove curse or a similar effect; the affliction can\nthen be removed as normal for a disease. A creature\nkilled by bog rot melts into a noxious sludge and can't\nbe resurrected except by a 7th-level resurrect ritual or\nsimilar magic",
-							"DC": 21,
-							"savingThrow": "Fortitude",
-							"stages": [
-								{
-									"stage": 1,
-									"entry": "carrier with no ill effect",
-									"duration": "1 minute"
-								},
-								{
-									"stage": 2,
-									"entry": "{@damage 3d6} negative damage and {@condition clumsy|CRB|clumsy 1}",
-									"duration": "1 day"
-								}
-							]
-						}
-					],
-					"name": "Bog Rot"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning",
-					"negative"
+			"abilities": {
+				"mid": [
+					{
+						"traits": [
+							"aura",
+							"divine",
+							"enchantment",
+							"mental"
+						],
+						"entries": [
+							"30 feet. A creature that begins its turn within the area feels as if its lungs were filling with water and must succeed at a DC 28 Fortitude save or be unable to speak or breathe. The creature can still hold its breath and can attempt a new save at the end of its turn. A creature that succeeds is temporarily immune for 24 hours."
+						],
+						"name": "Breath of the Bog"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"trigger": "A creature walks on top of a bog mummy that lies buried in the mud or peat below",
+						"requirements": "Initiative has not yet been rolled",
+						"entries": [
+							"The bog mummy automatically notices the creature and Burrows before rolling initiative."
+						],
+						"name": "Rise Up"
+					}
 				],
-				"condition": [
-					"{@condition clumsy}"
+				"bot": [
+					{
+						"entries": [
+							{
+								"type": "affliction",
+								"name": "",
+								"traits": [
+									"curse",
+									"disease",
+									"divine",
+									"necromancy",
+									"negative"
+								],
+								"note": " This\naffliction can't be reduced below stage 1, nor can the\ndamage from it be healed, until it's successfully treated\nwith remove curse or a similar effect; the affliction can\nthen be removed as normal for a disease. A creature\nkilled by bog rot melts into a noxious sludge and can't\nbe resurrected except by a 7th-level resurrect ritual or\nsimilar magic",
+								"DC": 21,
+								"savingThrow": "Fortitude",
+								"stages": [
+									{
+										"stage": 1,
+										"entry": "carrier with no ill effect",
+										"duration": "1 minute"
+									},
+									{
+										"stage": 2,
+										"entry": "{@damage 3d6} negative damage and {@condition clumsy|CRB|clumsy 1}",
+										"duration": "1 day"
+									}
+								]
+							}
+						],
+						"name": "Bog Rot"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"CC"
-			]
+			}
 		},
 		{
 			"name": "Galudu",
@@ -3087,26 +2899,24 @@
 			"source": "AV3",
 			"page": 36,
 			"level": 11,
-			"rarity": "Unique",
-			"alignment": "CN",
-			"size": "Medium",
 			"traits": [
-				"Caligni"
+				"unique",
+				"cn",
+				"medium",
+				"caligni",
+				"humanoid"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 18
+				"std": 18
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"greater darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "greater darkvision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Caligni",
@@ -3117,58 +2927,45 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 20
+					"std": 20
 				},
 				"Arcana": {
-					"default": 18
+					"std": 18
 				},
 				"Deception": {
-					"default": 22
+					"std": 22
 				},
 				"Diplomacy": {
-					"default": 20
+					"std": 20
 				},
 				"Stealth": {
-					"default": 20
+					"std": 20
 				}
 			},
 			"abilityMods": {
-				"Str": 2,
-				"Dex": 5,
-				"Con": 0,
-				"Int": 1,
-				"Wis": 3,
-				"Cha": 5
+				"str": 2,
+				"dex": 5,
+				"con": 0,
+				"int": 1,
+				"wis": 3,
+				"cha": 5
 			},
 			"items": [
 				"dagger",
 				"wand of continuation (stoneskin)"
 			],
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+20, {@skill Stealth} +20 Str +2, Dex +5, Con +0, Int +1, Wis +3, Cha +5 Items dagger, wand of continuation (stoneskin)"
-					],
-					"name": "Diplomacy"
-				},
-				{
-					"entries": [],
-					"name": "Light Blindness",
-					"generic": true
-				}
-			],
 			"ac": {
-				"default": 30
+				"std": 30
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 18
+				"fort": {
+					"std": 18
 				},
-				"Ref": {
-					"default": 21
+				"ref": {
+					"std": 21
 				},
-				"Will": {
-					"default": 22
+				"will": {
+					"std": 22
 				}
 			},
 			"hp": [
@@ -3177,29 +2974,6 @@
 					"abilities": [
 						"death motes"
 					]
-				}
-			],
-			"abilitiesMid": [
-				{
-					"traits": [
-						"force",
-						"light"
-					],
-					"entries": [
-						"When Galudu dies, her body explodes into brilliant motes of magical energy. All creatures in a 20-foot burst take {@damage 12d6} force damage (DC 30 basic Reflex save). Galudu's gear is unaffected by the explosion and is left in a pile where she died."
-					],
-					"name": "Death Motes"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"trigger": "A {@condition dazzled} or {@condition blinded} creature, or a creature with light blindness, ends its move adjacent to Galudu.",
-					"entries": [
-						"Galudu {@action Step||Steps}."
-					],
-					"name": "Opportune Step"
 				}
 			],
 			"speed": {
@@ -3213,7 +2987,7 @@
 					"traits": [
 						"agile",
 						"finesse",
-						"versatile S"
+						"versatile s"
 					],
 					"effects": [],
 					"damage": "{@damage 1d4+9} piercing",
@@ -3228,7 +3002,7 @@
 					"traits": [
 						"agile",
 						"thrown 10 feet",
-						"versatile S"
+						"versatile s"
 					],
 					"effects": [],
 					"damage": "{@damage 1d4+9} piercing",
@@ -3366,56 +3140,76 @@
 					}
 				}
 			],
-			"abilitiesBot": [
-				{
-					"traits": [
-						"6th"
-					],
-					"entries": [
-						"acid splash, daze, message, ray of frost, shield."
-					],
-					"name": "Cantrips"
-				},
-				{
-					"entries": [
-						"Attack Galudu deals an additional {@damage 3d6} precision damage to {@condition flat-footed} creatures."
-					],
-					"name": "Sneak"
-				},
-				{
-					"traits": [
-						"healing"
-					],
-					"entries": [
-						"A creature that eats food conjured by Galudu's {@spell create food} spell regains {@dice 4d4} Hit."
-					],
-					"name": "Survivor's Nourishment"
-				},
-				{
-					"entries": [
-						"A creature can only benefit from this healing once per week."
-					],
-					"name": "Points."
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"force",
-					"piercing",
-					"precision"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"+20, {@skill Stealth} +20 Str +2, Dex +5, Con +0, Int +1, Wis +3, Cha +5 Items dagger, wand of continuation (stoneskin)"
+						],
+						"name": "Diplomacy"
+					},
+					{
+						"entries": [],
+						"name": "Light Blindness",
+						"generic": true
+					}
 				],
-				"condition": [
-					"{@condition dazzled}",
-					"{@condition flat-footed}"
+				"mid": [
+					{
+						"traits": [
+							"force",
+							"light"
+						],
+						"entries": [
+							"When Galudu dies, her body explodes into brilliant motes of magical energy. All creatures in a 20-foot burst take {@damage 12d6} force damage (DC 30 basic Reflex save). Galudu's gear is unaffected by the explosion and is left in a pile where she died."
+						],
+						"name": "Death Motes"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"trigger": "A {@condition dazzled} or {@condition blinded} creature, or a creature with light blindness, ends its move adjacent to Galudu.",
+						"entries": [
+							"Galudu {@action Step||Steps}."
+						],
+						"name": "Opportune Step"
+					}
+				],
+				"bot": [
+					{
+						"traits": [
+							"6th"
+						],
+						"entries": [
+							"acid splash, daze, message, ray of frost, shield."
+						],
+						"name": "Cantrips"
+					},
+					{
+						"entries": [
+							"Attack Galudu deals an additional {@damage 3d6} precision damage to {@condition flat-footed} creatures."
+						],
+						"name": "Sneak"
+					},
+					{
+						"traits": [
+							"healing"
+						],
+						"entries": [
+							"A creature that eats food conjured by Galudu's {@spell create food} spell regains {@dice 4d4} Hit."
+						],
+						"name": "Survivor's Nourishment"
+					},
+					{
+						"entries": [
+							"A creature can only benefit from this healing once per week."
+						],
+						"name": "Points."
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"TA",
-				"AD",
-				"CC",
-				"UW"
-			]
+			}
 		},
 		{
 			"name": "Khurfel",
@@ -3423,26 +3217,24 @@
 			"source": "AV3",
 			"page": 89,
 			"level": 10,
-			"rarity": "Unique",
-			"alignment": "CE",
-			"size": "Medium",
 			"traits": [
-				"Urdefhan"
+				"unique",
+				"ce",
+				"medium",
+				"humanoid",
+				"urdefhan"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 19
+				"std": 19
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"greater darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "greater darkvision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Aklo",
@@ -3453,36 +3245,35 @@
 			},
 			"skills": {
 				"Athletics": {
-					"default": 22
+					"std": 22
 				},
 				"Intimidation": {
-					"default": 19
+					"std": 19
 				},
 				"Survival": {
-					"default": 20
+					"std": 20
 				}
 			},
 			"abilityMods": {
-				"Str": 5,
-				"Dex": 4,
-				"Con": 3,
-				"Int": 0,
-				"Wis": 5,
-				"Cha": 4
+				"str": 5,
+				"dex": 4,
+				"con": 3,
+				"int": 0,
+				"wis": 5,
+				"cha": 4
 			},
-			"abilitiesTop": [],
 			"ac": {
-				"default": 28
+				"std": 28
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 20
+				"fort": {
+					"std": 20
 				},
-				"Ref": {
-					"default": 19
+				"ref": {
+					"std": 19
 				},
-				"Will": {
-					"default": 22
+				"will": {
+					"std": 22
 				}
 			},
 			"hp": [
@@ -3493,38 +3284,13 @@
 					]
 				}
 			],
-			"immunities": {
-				"damage": [],
-				"condition": [
-					"death effects"
-				]
-			},
+			"immunities": [
+				"death effects"
+			],
 			"weaknesses": [
 				{
 					"amount": 10,
 					"name": "positive"
-				}
-			],
-			"abilitiesMid": [
-				{
-					"traits": [
-						"divine",
-						"necromancy",
-						"negative"
-					],
-					"entries": [
-						"When Khurfel dies, his {@condition invisible} flesh quickly rots away and sublimates into a foul-smelling gas that fills a 10-foot emanation around his body. The gas deals {@damage 10d6} negative damage to creatures in this area as their flesh too curdles and rots (DC 28 basic Fortitude save)."
-					],
-					"name": "Necrotic Decay"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"entries": [],
-					"name": "Attack of Opportunity",
-					"generic": true
 				}
 			],
 			"speed": {
@@ -3628,66 +3394,72 @@
 					}
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
+			"abilities": {
+				"mid": [
+					{
+						"traits": [
+							"divine",
+							"necromancy",
+							"negative"
+						],
+						"entries": [
+							"When Khurfel dies, his {@condition invisible} flesh quickly rots away and sublimates into a foul-smelling gas that fills a 10-foot emanation around his body. The gas deals {@damage 10d6} negative damage to creatures in this area as their flesh too curdles and rots (DC 28 basic Fortitude save)."
+						],
+						"name": "Necrotic Decay"
 					},
-					"entries": [
-						"Khurfel makes one rhoka sword {@action Strike} and two jaws Strikes against one or two different creatures (splitting up the attacks any way he wishes)",
-						"His multiple attack penalty doesn't increase until after all three attacks."
-					],
-					"name": "Frenzied Attack"
-				},
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"entries": [
-						"Khurfel makes a melee weapon {@action Strike}.",
-						"On this {@action Strike}, he gains a +2 circumstance bonus to the attack roll and ignores any concealment the target has."
-					],
-					"name": "Insightful Swing"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"requirements": "Khurfel damaged a creature with a jaws {@action Strike} on his last action",
-					"entries": [
-						"Khurfel maintains contact, turning the creature's flesh translucent around the injury. Khurfel chooses one of two options, each of which requires a DC 28 Fortitude save. If the jaws {@action Strike} was a critical hit, the creature suffers both effects, using the same save result for both.",
-						{
-							"type": "list",
-							"items": [
-								"{@bold Drain Blood} Khurfel drinks some of the creature's blood. On a failed save, the creature is {@condition drained|CRB|drained 1} and Khurfel regains 10 HP (or, on a critical failure, it's {@condition drained|CRB|drained 2} and Khurfel regains 20 HP).",
-								"{@bold Drain Vitality} (necromancy) Khurfel draws out some of the creature's vital essence. The creature becomes {@condition enfeebled|CRB|enfeebled 1} for 1 hour on a failed save (or {@condition enfeebled|CRB|enfeebled 2} for 1 hour on a critical failure)."
-							]
-						}
-					],
-					"name": "Wicked Bite"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"negative",
-					"piercing",
-					"slashing"
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"entries": [],
+						"name": "Attack of Opportunity",
+						"generic": true
+					}
 				],
-				"condition": [
-					"{@condition drained}",
-					"{@condition enfeebled}"
+				"bot": [
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"Khurfel makes one rhoka sword {@action Strike} and two jaws Strikes against one or two different creatures (splitting up the attacks any way he wishes)",
+							"His multiple attack penalty doesn't increase until after all three attacks."
+						],
+						"name": "Frenzied Attack"
+					},
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"Khurfel makes a melee weapon {@action Strike}.",
+							"On this {@action Strike}, he gains a +2 circumstance bonus to the attack roll and ignores any concealment the target has."
+						],
+						"name": "Insightful Swing"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"requirements": "Khurfel damaged a creature with a jaws {@action Strike} on his last action",
+						"entries": [
+							"Khurfel maintains contact, turning the creature's flesh translucent around the injury. Khurfel chooses one of two options, each of which requires a DC 28 Fortitude save. If the jaws {@action Strike} was a critical hit, the creature suffers both effects, using the same save result for both.",
+							{
+								"type": "list",
+								"items": [
+									"{@bold Drain Blood} Khurfel drinks some of the creature's blood. On a failed save, the creature is {@condition drained|CRB|drained 1} and Khurfel regains 10 HP (or, on a critical failure, it's {@condition drained|CRB|drained 2} and Khurfel regains 20 HP).",
+									"{@bold Drain Vitality} (necromancy) Khurfel draws out some of the creature's vital essence. The creature becomes {@condition enfeebled|CRB|enfeebled 1} for 1 hour on a failed save (or {@condition enfeebled|CRB|enfeebled 2} for 1 hour on a critical failure)."
+								]
+							}
+						],
+						"name": "Wicked Bite"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"RA",
-				"AD",
-				"CC",
-				"UW"
-			]
+			}
 		},
 		{
 			"name": "Lady's Whisper",
@@ -3695,91 +3467,75 @@
 			"source": "AV3",
 			"page": 49,
 			"level": 11,
-			"rarity": "Unique",
-			"alignment": "NE",
-			"size": "Medium",
+			"traits": [
+				"unique",
+				"ne",
+				"medium",
+				"undead"
+			],
 			"creatureType": [
 				"Undead"
 			],
 			"perception": {
-				"default": 25
+				"std": 25
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision",
-					"see invisibility",
-					"true seeing"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"name": "see invisibility"
+				},
+				{
+					"name": "true seeing"
+				}
+			],
 			"skills": {
 				"Acrobatics": {
-					"default": 22
+					"std": 22
 				},
 				"Athletics": {
-					"default": 20
+					"std": 20
 				},
 				"Deception": {
-					"default": 21
+					"std": 21
 				},
 				"Diplomacy": {
-					"default": 21
+					"std": 21
 				},
 				"Intimidation": {
-					"default": 21
+					"std": 21
 				},
 				"Occultism": {
-					"default": 21
+					"std": 21
 				},
 				"Society": {
-					"default": 21
+					"std": 21
 				},
 				"Stealth": {
-					"default": 22
+					"std": 22
 				}
 			},
 			"abilityMods": {
-				"Str": 3,
-				"Dex": 5,
-				"Con": 3,
-				"Int": 4,
-				"Wis": 8,
-				"Cha": 4
+				"str": 3,
+				"dex": 5,
+				"con": 3,
+				"int": 4,
+				"wis": 8,
+				"cha": 4
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"Skills {@skill Acrobatics} +22, {@skill Athletics} +20, {@skill Deception} +21,"
-					],
-					"name": "Language Aklo, Common, Necril, Undercommon"
-				},
-				{
-					"entries": [
-						"+21, {@skill Intimidation} +21, {@skill Occultism} +21, {@skill Religion} +23, {@skill Society} +21, {@skill Stealth} +22 Str +3, Dex +5, Con +3, Int +4, Wis +8, Cha +4."
-					],
-					"name": "Diplomacy"
-				},
-				{
-					"entries": [
-						"Whisper can choose whether or not it counts as undead for effects that affect undead differently. Even if it does not count as undead, Lady's Whisper never counts as a living creature."
-					],
-					"name": "Death's Grace Lady's"
-				}
-			],
 			"ac": {
-				"default": 31
+				"std": 31
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 18
+				"fort": {
+					"std": 18
 				},
-				"Ref": {
-					"default": 20
+				"ref": {
+					"std": 20
 				},
-				"Will": {
-					"default": 25
+				"will": {
+					"std": 25
 				}
 			},
 			"hp": [
@@ -3790,33 +3546,8 @@
 					]
 				}
 			],
-			"immunities": {
-				"damage": [],
-				"condition": [
-					"death effects"
-				]
-			},
-			"abilitiesMid": [
-				{
-					"entries": [
-						"Whisper can choose whether or not it takes positive damage."
-					],
-					"name": "Negative Recovery Lady's"
-				},
-				{
-					"traits": [
-						"auditory",
-						"aura",
-						"divine",
-						"emotion",
-						"enchantment",
-						"mental"
-					],
-					"entries": [
-						"20 feet. Each creature that begins its turn within the aura and can hear the ominous whispers must succeed at a DC 30 Will save or become {@condition frightened|CRB|frightened 2}. On a success, the creature is temporarily immune for 1 minute."
-					],
-					"name": "Sibilant Whispers"
-				}
+			"immunities": [
+				"death effects"
 			],
 			"speed": {
 				"walk": 25
@@ -3972,57 +3703,89 @@
 					}
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"Skills {@skill Acrobatics} +22, {@skill Athletics} +20, {@skill Deception} +21,"
+						],
+						"name": "Language Aklo, Common, Necril, Undercommon"
 					},
-					"traits": [
-						"concentrate"
-					],
-					"entries": [
-						"Lady's Whisper mentally causes any doors or portals within the Gate."
-					],
-					"name": "Gatekeeper's Will"
-				},
-				{
-					"traits": [
-						"areas B60 to B64 and areas C1 through C18"
-					],
-					"entries": [
-						"to open or shut. If Lady's Whisper wills a door closed, it must be Forced Open or battered down."
-					],
-					"name": "of Nhimbaloth"
-				},
-				{
-					"traits": [
-						"conjuration",
-						"divine",
-						"teleportation"
-					],
-					"entries": [],
-					"name": "Unwilling Teleportation"
-				},
-				{
-					"entries": [
-						"Whisper hits and damages a creature with its claw {@action Strike}, it can choose to teleport that creature to any open space within 15 feet, even if Lady's Whisper can't see the destination. The target can attempt a DC 30 Will saving throw to resist this effect."
-					],
-					"name": "When Lady's"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"slashing"
+					{
+						"entries": [
+							"+21, {@skill Intimidation} +21, {@skill Occultism} +21, {@skill Religion} +23, {@skill Society} +21, {@skill Stealth} +22 Str +3, Dex +5, Con +3, Int +4, Wis +8, Cha +4."
+						],
+						"name": "Diplomacy"
+					},
+					{
+						"entries": [
+							"Whisper can choose whether or not it counts as undead for effects that affect undead differently. Even if it does not count as undead, Lady's Whisper never counts as a living creature."
+						],
+						"name": "Death's Grace Lady's"
+					}
 				],
-				"condition": [
-					"{@condition frightened}"
+				"mid": [
+					{
+						"entries": [
+							"Whisper can choose whether or not it takes positive damage."
+						],
+						"name": "Negative Recovery Lady's"
+					},
+					{
+						"traits": [
+							"auditory",
+							"aura",
+							"divine",
+							"emotion",
+							"enchantment",
+							"mental"
+						],
+						"entries": [
+							"20 feet. Each creature that begins its turn within the aura and can hear the ominous whispers must succeed at a DC 30 Will save or become {@condition frightened|CRB|frightened 2}. On a success, the creature is temporarily immune for 1 minute."
+						],
+						"name": "Sibilant Whispers"
+					}
+				],
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"concentrate"
+						],
+						"entries": [
+							"Lady's Whisper mentally causes any doors or portals within the Gate."
+						],
+						"name": "Gatekeeper's Will"
+					},
+					{
+						"traits": [
+							"areas b60 to b64 and areas c1 through c18"
+						],
+						"entries": [
+							"to open or shut. If Lady's Whisper wills a door closed, it must be Forced Open or battered down."
+						],
+						"name": "of Nhimbaloth"
+					},
+					{
+						"traits": [
+							"conjuration",
+							"divine",
+							"teleportation"
+						],
+						"entries": [],
+						"name": "Unwilling Teleportation"
+					},
+					{
+						"entries": [
+							"Whisper hits and damages a creature with its claw {@action Strike}, it can choose to teleport that creature to any open space within 15 feet, even if Lady's Whisper can't see the destination. The target can attempt a DC 30 Will saving throw to resist this effect."
+						],
+						"name": "When Lady's"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"CC"
-			]
+			}
 		},
 		{
 			"name": "Padli",
@@ -4030,26 +3793,24 @@
 			"source": "AV3",
 			"page": 7,
 			"level": 9,
-			"rarity": "Unique",
-			"alignment": "CE",
-			"size": "Medium",
 			"traits": [
-				"Caligni"
+				"unique",
+				"ce",
+				"medium",
+				"caligni",
+				"humanoid"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 16
+				"std": 16
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"greater darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "greater darkvision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Caligni",
@@ -4059,86 +3820,50 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 18
+					"std": 18
 				},
 				"Deception": {
-					"default": 20
+					"std": 20
 				},
 				"Diplomacy": {
-					"default": 20
+					"std": 20
 				},
 				"Intimidation": {
-					"default": 18
+					"std": 18
 				},
 				"Occultism": {
-					"default": 14
+					"std": 14
 				},
 				"Stealth": {
-					"default": 18
+					"std": 18
 				}
 			},
 			"abilityMods": {
-				"Str": 2,
-				"Dex": 5,
-				"Con": 1,
-				"Int": -1,
-				"Wis": 1,
-				"Cha": 5
+				"str": 2,
+				"dex": 5,
+				"con": 1,
+				"int": -1,
+				"wis": 1,
+				"cha": 5
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+18, {@skill Occultism} +14, {@skill Stealth} +18 Str +2, Dex +5, Con +1, Int \u20131, Wis +1, Cha +5 Items dagger (3), key to area A7, leather armor, wand of magic missile (3rd level)"
-					],
-					"name": "Intimidation"
-				},
-				{
-					"entries": [],
-					"name": "Light Blindness",
-					"generic": true
-				}
-			],
 			"ac": {
-				"default": 26
+				"std": 26
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 16
+				"fort": {
+					"std": 16
 				},
-				"Ref": {
-					"default": 20
+				"ref": {
+					"std": 20
 				},
-				"Will": {
-					"default": 18
+				"will": {
+					"std": 18
 				}
 			},
 			"hp": [
 				{
 					"hp": 160,
 					"abilities": null
-				}
-			],
-			"abilitiesMid": [
-				{
-					"traits": [
-						"light"
-					],
-					"entries": [
-						"When Padli dies, his body combusts in a flash of white-hot flame. All creatures in a 20-foot burst take {@damage 6d10} fire damage (DC 28 basic Reflex save)",
-						"His gear is unaffected by the flames and is left in a pile where he died."
-					],
-					"name": "Death Flame"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"trigger": "Padli attempts a saving throw against a spell cast by a creature he can see",
-					"entries": [
-						"Padli gains a +2 circumstance bonus to the triggering save."
-					],
-					"name": "Occult Ward"
 				}
 			],
 			"speed": {
@@ -4152,7 +3877,7 @@
 					"traits": [
 						"agile",
 						"finesse",
-						"versatile S"
+						"versatile s"
 					],
 					"effects": [],
 					"damage": "{@damage 1d4+7} piercing",
@@ -4230,29 +3955,52 @@
 					}
 				}
 			],
-			"abilitiesBot": [
-				{
-					"entries": [
-						"Attack Padli deals {@dice 3d6} extra precision damage to {@condition flat-footed} creatures."
-					],
-					"name": "Sneak"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"fire",
-					"piercing"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"+18, {@skill Occultism} +14, {@skill Stealth} +18 Str +2, Dex +5, Con +1, Int \u20131, Wis +1, Cha +5 Items dagger (3), key to area A7, leather armor, wand of magic missile (3rd level)"
+						],
+						"name": "Intimidation"
+					},
+					{
+						"entries": [],
+						"name": "Light Blindness",
+						"generic": true
+					}
 				],
-				"condition": [
-					"{@condition flat-footed}"
+				"mid": [
+					{
+						"traits": [
+							"light"
+						],
+						"entries": [
+							"When Padli dies, his body combusts in a flash of white-hot flame. All creatures in a 20-foot burst take {@damage 6d10} fire damage (DC 28 basic Reflex save)",
+							"His gear is unaffected by the flames and is left in a pile where he died."
+						],
+						"name": "Death Flame"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"trigger": "Padli attempts a saving throw against a spell cast by a creature he can see",
+						"entries": [
+							"Padli gains a +2 circumstance bonus to the triggering save."
+						],
+						"name": "Occult Ward"
+					}
+				],
+				"bot": [
+					{
+						"entries": [
+							"Attack Padli deals {@dice 3d6} extra precision damage to {@condition flat-footed} creatures."
+						],
+						"name": "Sneak"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"AD",
-				"CC",
-				"UW"
-			]
+			}
 		},
 		{
 			"name": "Quara Orshendiel",
@@ -4260,27 +4008,25 @@
 			"source": "AV3",
 			"page": 91,
 			"level": 11,
-			"rarity": "Unique",
-			"alignment": "CN",
-			"size": "Medium",
 			"traits": [
-				"Drow",
-				"Elf"
+				"unique",
+				"cn",
+				"medium",
+				"drow",
+				"elf",
+				"humanoid"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 21
+				"std": 21
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Common",
@@ -4292,72 +4038,47 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 22
+					"std": 22
 				},
 				"Athletics": {
-					"default": 20
+					"std": 20
 				},
 				"Deception": {
-					"default": 22
+					"std": 22
 				},
 				"Diplomacy": {
-					"default": 20
+					"std": 20
 				},
 				"Intimidation": {
-					"default": 22
+					"std": 22
 				},
 				"Stealth": {
-					"default": 20
+					"std": 20
 				},
 				"Survival": {
-					"default": 19
+					"std": 19
 				}
 			},
 			"abilityMods": {
-				"Str": 3,
-				"Dex": 5,
-				"Con": 0,
-				"Int": 1,
-				"Wis": 2,
-				"Cha": 5
+				"str": 3,
+				"dex": 5,
+				"con": 0,
+				"int": 1,
+				"wis": 2,
+				"cha": 5
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+20, {@skill Intimidation} +22, {@skill Stealth} +20,"
-					],
-					"name": "Diplomacy"
-				},
-				{
-					"entries": [
-						"+19 Str +3, Dex +5, Con +0, Int +1, Wis +2,"
-					],
-					"name": "Survival"
-				},
-				{
-					"entries": [
-						"+5 Items chain shirt, +1 striking repeating hand crossbows (2, with 3 magazines; page 73), shootist bandolier (page 73), +1 striking kukri, stupor poison (4; page 74)"
-					],
-					"name": "Cha"
-				},
-				{
-					"entries": [],
-					"name": "Light Blindness",
-					"generic": true
-				}
-			],
 			"ac": {
-				"default": 30
+				"std": 30
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 16
+				"fort": {
+					"std": 16
 				},
-				"Ref": {
-					"default": 22
+				"ref": {
+					"std": 22
 				},
-				"Will": {
-					"default": 21
+				"will": {
+					"std": 21
 				}
 			},
 			"hp": [
@@ -4366,40 +4087,8 @@
 					"abilities": null
 				}
 			],
-			"immunities": {
-				"damage": [],
-				"condition": [
-					"sleep"
-				]
-			},
-			"abilitiesMid": [
-				{
-					"traits": [
-						"aura",
-						"emotion",
-						"mental"
-					],
-					"entries": [
-						"30 feet. Drow around Quara are heartened by her presence. Her drow allies in the aura gain a +1 status bonus to attack rolls and skill checks."
-					],
-					"name": "Commanding Aura"
-				},
-				{
-					"entries": [
-						"Quara isn't {@condition flat-footed} to {@condition hidden}, {@condition undetected}, or flanking creatures of 11th level or lower, or to creatures of 11th level or lower using Surprise."
-					],
-					"name": "Deny Advantage"
-				},
-				{
-					"entries": [],
-					"name": "Attack."
-				},
-				{
-					"entries": [
-						"Quara rolls a success on a Reflex saving throw, she gets a critical success instead."
-					],
-					"name": "Evasion When"
-				}
+			"immunities": [
+				"sleep"
 			],
 			"speed": {
 				"walk": 30
@@ -4468,78 +4157,119 @@
 					}
 				}
 			],
-			"abilitiesBot": [
-				{
-					"entries": [
-						"Quara's ranged attacks don't trigger reactions."
-					],
-					"name": "Defensive Shooter"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"+20, {@skill Intimidation} +22, {@skill Stealth} +20,"
+						],
+						"name": "Diplomacy"
 					},
-					"traits": [
-						"manipulate"
-					],
-					"requirements": "Quara is holding a piercing or slashing weapon and has a free hand",
-					"entries": [
-						"Quara applies poison to the weapon."
-					],
-					"name": "Poison Weapon"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
+					{
+						"entries": [
+							"+19 Str +3, Dex +5, Con +0, Int +1, Wis +2,"
+						],
+						"name": "Survival"
 					},
-					"requirements": "Quara is holding an unloaded repeating hand crossbow",
-					"entries": [
-						"Quara Interacts to reload the repeating hand crossbow and Strikes with it."
-					],
-					"name": "Reloading Trick"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
+					{
+						"entries": [
+							"+5 Items chain shirt, +1 striking repeating hand crossbows (2, with 3 magazines; page 73), shootist bandolier (page 73), +1 striking kukri, stupor poison (4; page 74)"
+						],
+						"name": "Cha"
 					},
-					"frequency": {
-						"unit": "round",
-						"freq": 1
-					},
-					"entries": [
-						"Quara Interacts to draw a loaded repeating hand crossbow and Strikes with it, or Strikes with a loaded repeating hand crossbow she's holding and then Interacts to stow it."
-					],
-					"name": "Shootist's Draw"
-				},
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"entries": [
-						"Quara {@action Stride||Strides} or {@action Step||Steps}, then Strikes. This {@action Strike} deals an additional {@dice 3d6} damage."
-					],
-					"name": "Skirmishing Dash"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"piercing",
-					"slashing"
+					{
+						"entries": [],
+						"name": "Light Blindness",
+						"generic": true
+					}
 				],
-				"condition": [
-					"{@condition flat-footed}"
+				"mid": [
+					{
+						"traits": [
+							"aura",
+							"emotion",
+							"mental"
+						],
+						"entries": [
+							"30 feet. Drow around Quara are heartened by her presence. Her drow allies in the aura gain a +1 status bonus to attack rolls and skill checks."
+						],
+						"name": "Commanding Aura"
+					},
+					{
+						"entries": [
+							"Quara isn't {@condition flat-footed} to {@condition hidden}, {@condition undetected}, or flanking creatures of 11th level or lower, or to creatures of 11th level or lower using Surprise."
+						],
+						"name": "Deny Advantage"
+					},
+					{
+						"entries": [],
+						"name": "Attack."
+					},
+					{
+						"entries": [
+							"Quara rolls a success on a Reflex saving throw, she gets a critical success instead."
+						],
+						"name": "Evasion When"
+					}
+				],
+				"bot": [
+					{
+						"entries": [
+							"Quara's ranged attacks don't trigger reactions."
+						],
+						"name": "Defensive Shooter"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"manipulate"
+						],
+						"requirements": "Quara is holding a piercing or slashing weapon and has a free hand",
+						"entries": [
+							"Quara applies poison to the weapon."
+						],
+						"name": "Poison Weapon"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"requirements": "Quara is holding an unloaded repeating hand crossbow",
+						"entries": [
+							"Quara Interacts to reload the repeating hand crossbow and Strikes with it."
+						],
+						"name": "Reloading Trick"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"frequency": {
+							"unit": "round",
+							"freq": 1
+						},
+						"entries": [
+							"Quara Interacts to draw a loaded repeating hand crossbow and Strikes with it, or Strikes with a loaded repeating hand crossbow she's holding and then Interacts to stow it."
+						],
+						"name": "Shootist's Draw"
+					},
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"Quara {@action Stride||Strides} or {@action Step||Steps}, then Strikes. This {@action Strike} deals an additional {@dice 3d6} damage."
+						],
+						"name": "Skirmishing Dash"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"RA",
-				"CC",
-				"UW"
-			]
+			}
 		},
 		{
 			"name": "Reaper Skull Puffball",
@@ -4547,63 +4277,56 @@
 			"source": "AV3",
 			"page": 79,
 			"level": 9,
-			"rarity": "Uncommon",
-			"alignment": "N",
-			"size": "Large",
 			"traits": [
-				"Mindless"
+				"uncommon",
+				"n",
+				"large",
+				"fungus",
+				"mindless"
 			],
 			"creatureType": [
 				"Fungus"
 			],
 			"perception": {
-				"default": 15
+				"std": 15
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"motion sense 60 feet",
-					"no vision"
-				]
-			},
+			"senses": [
+				{
+					"name": "motion sense",
+					"range": 60
+				},
+				{
+					"name": "no vision"
+				}
+			],
 			"skills": {
 				"Acrobatics": {
-					"default": 19
+					"std": 19
 				},
 				"Stealth": {
-					"default": 17
+					"std": 17
 				}
 			},
 			"abilityMods": {
-				"Str": 4,
-				"Dex": 6,
-				"Con": 3,
-				"Int": -5,
-				"Wis": 2,
-				"Cha": -2
+				"str": 4,
+				"dex": 6,
+				"con": 3,
+				"int": -5,
+				"wis": 2,
+				"cha": -2
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"The puffball senses motion through vibration and air movement."
-					],
-					"name": "Motion Sense"
-				}
-			],
 			"ac": {
-				"default": 25
+				"std": 25
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 18
+				"fort": {
+					"std": 18
 				},
-				"Ref": {
-					"default": 21
+				"ref": {
+					"std": 21
 				},
-				"Will": {
-					"default": 15
+				"will": {
+					"std": 15
 				}
 			},
 			"hp": [
@@ -4612,18 +4335,14 @@
 					"abilities": null
 				}
 			],
-			"immunities": {
-				"damage": [
-					"bleed",
-					"mental",
-					"poison"
-				],
-				"condition": [
-					"fatigued",
-					"sleep",
-					"unconscious"
-				]
-			},
+			"immunities": [
+				"bleed",
+				"mental",
+				"poison",
+				"fatigued",
+				"sleep",
+				"unconscious"
+			],
 			"weaknesses": [
 				{
 					"amount": 10,
@@ -4632,18 +4351,6 @@
 				{
 					"amount": 10,
 					"name": "piercing"
-				}
-			],
-			"abilitiesMid": [
-				{
-					"entries": [
-						"As dragon's blood puffball, but DC 28 and {@damage 8d8} poison damage.",
-						"Creatures that fail the save are exposed to skull rot."
-					],
-					"name": "Spore Explosion",
-					"entries_as_xyz": [
-						"When the dragon's blood puffball dies, it explodes, dealing {@damage 7d8} poison damage to each creature in a 20-foot emanation (DC 26 basic Fortitude save)."
-					]
 				}
 			],
 			"speed": {
@@ -4667,79 +4374,86 @@
 					"types": []
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"traits": [
-						"poison"
-					],
-					"entries": [
-						"The puffball releases a 30-foot cone of spores that deals {@damage 4d8} poison damage (DC 28 basic Fortitude save) to creatures in the cone. Creatures that fail this save are also exposed to skull rot."
-					],
-					"name": "Spore Cloud"
-				},
-				{
-					"traits": [
-						"incapacitation",
-						"poison"
-					],
-					"entries": [
-						"A creature hit by the puffball's tendril must succeed a DC 28 Fortitude save or become {@condition paralyzed}. The {@condition paralyzed} creature can attempt a new save at the end of each of its turns."
-					],
-					"name": "Paralysis"
-				},
-				{
-					"entries": [
-						{
-							"type": "affliction",
-							"name": "",
-							"traits": [
-								"poison"
-							],
-							"note": "",
-							"DC": 28,
-							"savingThrow": "Fortitude",
-							"maxDuration": "6 rounds",
-							"stages": [
-								{
-									"stage": 1,
-									"entry": "{@damage 1d8} poison damage plus {@condition enfeebled|CRB|enfeebled 2}",
-									"duration": "1 round"
-								},
-								{
-									"stage": 2,
-									"entry": "{@damage 2d8} poison damage plus {@condition enfeebled|CRB|enfeebled 2} and {@condition drained|CRB|drained 1}",
-									"duration": "1 round"
-								},
-								{
-									"stage": 3,
-									"entry": "{@damage 3d8} poison damage plus {@condition enfeebled|CRB|enfeebled 2} and {@condition drained|CRB|drained 2}",
-									"duration": "{@dice 1d4} rounds"
-								}
-							]
-						}
-					],
-					"name": "Skull Rot"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"poison"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"The puffball senses motion through vibration and air movement."
+						],
+						"name": "Motion Sense"
+					}
 				],
-				"condition": [
-					"{@condition enfeebled}",
-					"{@condition paralyzed}"
+				"mid": [
+					{
+						"entries": [
+							"As dragon's blood puffball, but DC 28 and {@damage 8d8} poison damage.",
+							"Creatures that fail the save are exposed to skull rot."
+						],
+						"name": "Spore Explosion",
+						"entries_as_xyz": [
+							"When the dragon's blood puffball dies, it explodes, dealing {@damage 7d8} poison damage to each creature in a 20-foot emanation (DC 26 basic Fortitude save)."
+						]
+					}
+				],
+				"bot": [
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"poison"
+						],
+						"entries": [
+							"The puffball releases a 30-foot cone of spores that deals {@damage 4d8} poison damage (DC 28 basic Fortitude save) to creatures in the cone. Creatures that fail this save are also exposed to skull rot."
+						],
+						"name": "Spore Cloud"
+					},
+					{
+						"traits": [
+							"incapacitation",
+							"poison"
+						],
+						"entries": [
+							"A creature hit by the puffball's tendril must succeed a DC 28 Fortitude save or become {@condition paralyzed}. The {@condition paralyzed} creature can attempt a new save at the end of each of its turns."
+						],
+						"name": "Paralysis"
+					},
+					{
+						"entries": [
+							{
+								"type": "affliction",
+								"name": "",
+								"traits": [
+									"poison"
+								],
+								"note": "",
+								"DC": 28,
+								"savingThrow": "Fortitude",
+								"maxDuration": "6 rounds",
+								"stages": [
+									{
+										"stage": 1,
+										"entry": "{@damage 1d8} poison damage plus {@condition enfeebled|CRB|enfeebled 2}",
+										"duration": "1 round"
+									},
+									{
+										"stage": 2,
+										"entry": "{@damage 2d8} poison damage plus {@condition enfeebled|CRB|enfeebled 2} and {@condition drained|CRB|drained 1}",
+										"duration": "1 round"
+									},
+									{
+										"stage": 3,
+										"entry": "{@damage 3d8} poison damage plus {@condition enfeebled|CRB|enfeebled 2} and {@condition drained|CRB|drained 2}",
+										"duration": "{@dice 1d4} rounds"
+									}
+								]
+							}
+						],
+						"name": "Skull Rot"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"RC",
-				"AD",
-				"CC"
-			]
+			}
 		},
 		{
 			"name": "Salaisa Malthulas",
@@ -4747,27 +4461,25 @@
 			"source": "AV3",
 			"page": 30,
 			"level": 11,
-			"rarity": "Unique",
-			"alignment": "N",
-			"size": "Medium",
 			"traits": [
-				"Drow",
-				"Elf"
+				"unique",
+				"n",
+				"medium",
+				"drow",
+				"elf",
+				"humanoid"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 22
+				"std": 22
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Elven",
@@ -4777,54 +4489,41 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 21
+					"std": 21
 				},
 				"Athletics": {
-					"default": 22
+					"std": 22
 				},
 				"Intimidation": {
-					"default": 20
+					"std": 20
 				},
 				"Stealth": {
-					"default": 21
+					"std": 21
 				},
 				"Survival": {
-					"default": 20
+					"std": 20
 				}
 			},
 			"abilityMods": {
-				"Str": 5,
-				"Dex": 4,
-				"Con": 3,
-				"Int": 0,
-				"Wis": 3,
-				"Cha": 1
+				"str": 5,
+				"dex": 4,
+				"con": 3,
+				"int": 0,
+				"wis": 3,
+				"cha": 1
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+21, {@skill Survival} +20 Str +5, Dex +4, Con +3, Int +0, Wis +3, Cha +1 Items breastplate, hand crossbow (10 bolts), +1 striking corrosive longsword, stupor poison (3; page 74)"
-					],
-					"name": "Stealth"
-				},
-				{
-					"entries": [],
-					"name": "Light Blindness",
-					"generic": true
-				}
-			],
 			"ac": {
-				"default": 31
+				"std": 31
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 20
+				"fort": {
+					"std": 20
 				},
-				"Ref": {
-					"default": 21
+				"ref": {
+					"std": 21
 				},
-				"Will": {
-					"default": 22
+				"will": {
+					"std": 22
 				}
 			},
 			"hp": [
@@ -4833,22 +4532,8 @@
 					"abilities": null
 				}
 			],
-			"immunities": {
-				"damage": [],
-				"condition": [
-					"sleep"
-				]
-			},
-			"abilitiesMid": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"entries": [],
-					"name": "Attack of Opportunity",
-					"generic": true
-				}
+			"immunities": [
+				"sleep"
 			],
 			"speed": {
 				"walk": 30
@@ -4859,7 +4544,7 @@
 					"name": "longsword",
 					"attack": 24,
 					"traits": [
-						"versatile P"
+						"versatile p"
 					],
 					"effects": [],
 					"damage": "{@damage 2d8+9} slashing plus {@damage 1d6} acid",
@@ -4911,40 +4596,54 @@
 					}
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"+21, {@skill Survival} +20 Str +5, Dex +4, Con +3, Int +0, Wis +3, Cha +1 Items breastplate, hand crossbow (10 bolts), +1 striking corrosive longsword, stupor poison (3; page 74)"
+						],
+						"name": "Stealth"
 					},
-					"entries": [
-						"Salaisa shouts, and a drow ally within 30 feet that can see or hear Salaisa makes a melee or ranged {@action Strike} as a reaction."
-					],
-					"name": "Attack Now!"
-				},
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"entries": [
-						"Salaisa {@action Stride||Strides} up to her Speed. She can make up to three longsword Strikes at any point during this movement, each against a different target within reach. These attacks count toward her multiple attack penalty, but the multiple attack penalty doesn't increase until after she makes all of her attacks. If she moves half her speed or less during Storm of Blades, that movement doesn't trigger reactions."
-					],
-					"name": "Storm of Blades"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"piercing",
-					"slashing"
+					{
+						"entries": [],
+						"name": "Light Blindness",
+						"generic": true
+					}
 				],
-				"condition": []
-			},
-			"misc": [
-				"MA",
-				"RA",
-				"UW"
-			]
+				"mid": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"entries": [],
+						"name": "Attack of Opportunity",
+						"generic": true
+					}
+				],
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"Salaisa shouts, and a drow ally within 30 feet that can see or hear Salaisa makes a melee or ranged {@action Strike} as a reaction."
+						],
+						"name": "Attack Now!"
+					},
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"Salaisa {@action Stride||Strides} up to her Speed. She can make up to three longsword Strikes at any point during this movement, each against a different target within reach. These attacks count toward her multiple attack penalty, but the multiple attack penalty doesn't increase until after she makes all of her attacks. If she moves half her speed or less during Storm of Blades, that movement doesn't trigger reactions."
+						],
+						"name": "Storm of Blades"
+					}
+				]
+			}
 		},
 		{
 			"name": "Urdefhan Blood Mage",
@@ -4952,26 +4651,24 @@
 			"source": "AV3",
 			"page": 85,
 			"level": 8,
-			"rarity": "Uncommon",
-			"alignment": "NE",
-			"size": "Medium",
 			"traits": [
-				"Urdefhan"
+				"uncommon",
+				"ne",
+				"medium",
+				"humanoid",
+				"urdefhan"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 15
+				"std": 15
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"greater darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "greater darkvision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Aklo",
@@ -4982,45 +4679,44 @@
 			},
 			"skills": {
 				"Arcana": {
-					"default": 16
+					"std": 16
 				},
 				"Athletics": {
-					"default": 16
+					"std": 16
 				},
 				"Intimidation": {
-					"default": 16
+					"std": 16
 				},
 				"Occultism": {
-					"default": 18
+					"std": 18
 				},
 				"Religion": {
-					"default": 16
+					"std": 16
 				}
 			},
 			"abilityMods": {
-				"Str": 4,
-				"Dex": 2,
-				"Con": 4,
-				"Int": 6,
-				"Wis": 3,
-				"Cha": 2
+				"str": 4,
+				"dex": 2,
+				"con": 4,
+				"int": 6,
+				"wis": 3,
+				"cha": 2
 			},
 			"items": [
 				"+1 striking kukri"
 			],
-			"abilitiesTop": [],
 			"ac": {
-				"default": 26
+				"std": 26
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 18
+				"fort": {
+					"std": 18
 				},
-				"Ref": {
-					"default": 14
+				"ref": {
+					"std": 14
 				},
-				"Will": {
-					"default": 17
+				"will": {
+					"std": 17
 				}
 			},
 			"hp": [
@@ -5031,26 +4727,10 @@
 					]
 				}
 			],
-			"immunities": {
-				"damage": [],
-				"condition": [
-					"death effects",
-					"disease",
-					"fear"
-				]
-			},
-			"abilitiesMid": [
-				{
-					"traits": [
-						"divine",
-						"necromancy",
-						"negative"
-					],
-					"entries": [
-						"As urdefhan warrior (Bestiary 2 272), but DC 24 and {@damage 8d6} negative damage."
-					],
-					"name": "Necrotic Decay"
-				}
+			"immunities": [
+				"death effects",
+				"disease",
+				"fear"
 			],
 			"speed": {
 				"walk": 25
@@ -5221,49 +4901,52 @@
 					}
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"traits": [
-						"occult",
-						"metamagic",
-						"necromancy"
-					],
-					"frequency": {
-						"unit": "round",
-						"freq": 1
-					},
-					"entries": [
-						"The blood mage cuts themself and takes 8 slashing damage. If the blood mage's next action is to {@action Cast a Spell}, the action can't be disrupted, and if the spell has a range, the blood mage can increase that spell's range by 30 feet."
-					],
-					"name": "Blood Offering"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"entries": [
-						"As urdefhan warrior (Bestiary 2 272), but DC 26 and the urdefhan regains 10 Hit Points when they Drink Blood if the target fails its saving throw (20 Hit Points on a critical failure)."
-					],
-					"name": "Wicked Bite"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"negative",
-					"piercing",
-					"slashing"
+			"abilities": {
+				"mid": [
+					{
+						"traits": [
+							"divine",
+							"necromancy",
+							"negative"
+						],
+						"entries": [
+							"As urdefhan warrior (Bestiary 2 272), but DC 24 and {@damage 8d6} negative damage."
+						],
+						"name": "Necrotic Decay"
+					}
 				],
-				"condition": []
-			},
-			"misc": [
-				"MA",
-				"UW"
-			]
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"occult",
+							"metamagic",
+							"necromancy"
+						],
+						"frequency": {
+							"unit": "round",
+							"freq": 1
+						},
+						"entries": [
+							"The blood mage cuts themself and takes 8 slashing damage. If the blood mage's next action is to {@action Cast a Spell}, the action can't be disrupted, and if the spell has a range, the blood mage can increase that spell's range by 30 feet."
+						],
+						"name": "Blood Offering"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"As urdefhan warrior (Bestiary 2 272), but DC 26 and the urdefhan regains 10 Hit Points when they Drink Blood if the target fails its saving throw (20 Hit Points on a critical failure)."
+						],
+						"name": "Wicked Bite"
+					}
+				]
+			}
 		},
 		{
 			"name": "Urdefhan Death Scout",
@@ -5271,26 +4954,23 @@
 			"source": "AV3",
 			"page": 84,
 			"level": 6,
-			"rarity": "Common",
-			"alignment": "NE",
-			"size": "Medium",
 			"traits": [
-				"Urdefhan"
+				"ne",
+				"medium",
+				"humanoid",
+				"urdefhan"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 15
+				"std": 15
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"greater darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "greater darkvision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Aklo",
@@ -5301,42 +4981,41 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 14
+					"std": 14
 				},
 				"Athletics": {
-					"default": 12
+					"std": 12
 				},
 				"Intimidation": {
-					"default": 11
+					"std": 11
 				},
 				"Stealth": {
-					"default": 14
+					"std": 14
 				},
 				"Thievery": {
-					"default": 14
+					"std": 14
 				}
 			},
 			"abilityMods": {
-				"Str": 2,
-				"Dex": 4,
-				"Con": 3,
-				"Int": 0,
-				"Wis": 3,
-				"Cha": 1
+				"str": 2,
+				"dex": 4,
+				"con": 3,
+				"int": 0,
+				"wis": 3,
+				"cha": 1
 			},
-			"abilitiesTop": [],
 			"ac": {
-				"default": 24
+				"std": 24
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 15
+				"fort": {
+					"std": 15
 				},
-				"Ref": {
-					"default": 16
+				"ref": {
+					"std": 16
 				},
-				"Will": {
-					"default": 11
+				"will": {
+					"std": 11
 				}
 			},
 			"hp": [
@@ -5347,26 +5026,10 @@
 					]
 				}
 			],
-			"immunities": {
-				"damage": [],
-				"condition": [
-					"death effects",
-					"disease",
-					"fear"
-				]
-			},
-			"abilitiesMid": [
-				{
-					"traits": [
-						"divine",
-						"necromancy",
-						"negative"
-					],
-					"entries": [
-						"As urdefhan warrior (Bestiary 2 272), but DC 23 and {@damage 6d6} negative damage."
-					],
-					"name": "Necrotic Decay"
-				}
+			"immunities": [
+				"death effects",
+				"disease",
+				"fear"
 			],
 			"speed": {
 				"walk": 25
@@ -5459,48 +5122,46 @@
 					}
 				}
 			],
-			"abilitiesBot": [
-				{
-					"entries": [
-						"The death scout deals an additional {@damage 1d6} {@condition persistent damage ||persistent bleed damage} with shauth blades and can use their Wicked Bite through magical shauth weapon Strikes."
-					],
-					"name": "Shauth Bite"
-				},
-				{
-					"entries": [
-						"The death scout deals an extra {@damage 2d6} precision damage to {@condition flat-footed} creatures."
-					],
-					"name": "Sneak Attack",
-					"generic": true
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"entries": [
-						"As urdefhan warrior (Bestiary 2 272) but DC 24."
-					],
-					"name": "Wicked Bite"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"negative",
-					"piercing",
-					"precision",
-					"slashing"
+			"abilities": {
+				"mid": [
+					{
+						"traits": [
+							"divine",
+							"necromancy",
+							"negative"
+						],
+						"entries": [
+							"As urdefhan warrior (Bestiary 2 272), but DC 23 and {@damage 6d6} negative damage."
+						],
+						"name": "Necrotic Decay"
+					}
 				],
-				"condition": [
-					"{@condition flat-footed}",
-					"{@condition sickened}"
+				"bot": [
+					{
+						"entries": [
+							"The death scout deals an additional {@damage 1d6} {@condition persistent damage ||persistent bleed damage} with shauth blades and can use their Wicked Bite through magical shauth weapon Strikes."
+						],
+						"name": "Shauth Bite"
+					},
+					{
+						"entries": [
+							"The death scout deals an extra {@damage 2d6} precision damage to {@condition flat-footed} creatures."
+						],
+						"name": "Sneak Attack",
+						"generic": true
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"As urdefhan warrior (Bestiary 2 272) but DC 24."
+						],
+						"name": "Wicked Bite"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"RA",
-				"CC"
-			]
+			}
 		},
 		{
 			"name": "Urdefhan Lasher",
@@ -5508,26 +5169,23 @@
 			"source": "AV3",
 			"page": 84,
 			"level": 7,
-			"rarity": "Common",
-			"alignment": "NE",
-			"size": "Medium",
 			"traits": [
-				"Urdefhan"
+				"ne",
+				"medium",
+				"humanoid",
+				"urdefhan"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 16
+				"std": 16
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"greater darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "greater darkvision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Aklo",
@@ -5538,43 +5196,42 @@
 			},
 			"skills": {
 				"Athletics": {
-					"default": 17
+					"std": 17
 				},
 				"Intimidation": {
-					"default": 13
+					"std": 13
 				},
 				"Religion": {
-					"default": 14
+					"std": 14
 				},
 				"Survival": {
-					"default": 14
+					"std": 14
 				}
 			},
 			"abilityMods": {
-				"Str": 5,
-				"Dex": 3,
-				"Con": 4,
-				"Int": 0,
-				"Wis": 3,
-				"Cha": 2
+				"str": 5,
+				"dex": 3,
+				"con": 4,
+				"int": 0,
+				"wis": 3,
+				"cha": 2
 			},
 			"items": [
 				"chain shirt",
 				"+1 striking shauth lash (page 73)"
 			],
-			"abilitiesTop": [],
 			"ac": {
-				"default": 24
+				"std": 24
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 17
+				"fort": {
+					"std": 17
 				},
-				"Ref": {
-					"default": 14
+				"ref": {
+					"std": 14
 				},
-				"Will": {
-					"default": 16
+				"will": {
+					"std": 16
 				}
 			},
 			"hp": [
@@ -5585,25 +5242,9 @@
 					]
 				}
 			],
-			"immunities": {
-				"damage": [],
-				"condition": [
-					"death effects",
-					"disease"
-				]
-			},
-			"abilitiesMid": [
-				{
-					"traits": [
-						"divine",
-						"necromancy",
-						"negative"
-					],
-					"entries": [
-						"As urdefhan warrior (Bestiary 2 272), but DC 24 and {@damage 7d6} negative damage."
-					],
-					"name": "Necrotic Decay"
-				}
+			"immunities": [
+				"death effects",
+				"disease"
 			],
 			"speed": {
 				"walk": 25
@@ -5677,55 +5318,60 @@
 					}
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"entries": [
-						"Melee jaws +17, Damage {@dice 2d6+7} plus Wicked Bite Divine Innate Spells DC 22, attack +14; 3rd paralyze; 2nd death knell; 1st feather fall (at will, self only), ray of enfeeblement."
-					],
-					"name": "and Wicked Bite"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"entries": [
-						"{@damage 1d8+7} slashing, DC 25."
-					],
-					"name": "Constrict",
-					"generic": true
-				},
-				{
-					"entries": [
-						"The lasher gains the Grab ability with a shauth lash and can use their Wicked Bite through magical shauth weapon Strikes."
-					],
-					"name": "Shauth Seize"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"entries": [
-						"As urdefhan warrior (Bestiary 2 272), but DC 25 and the urdefhan regains 10 Hit Points when they Drink Blood if the target fails its saving throw (20 Hit Points on a critical failure)."
-					],
-					"name": "Wicked Bite"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"negative",
-					"slashing"
+			"abilities": {
+				"mid": [
+					{
+						"traits": [
+							"divine",
+							"necromancy",
+							"negative"
+						],
+						"entries": [
+							"As urdefhan warrior (Bestiary 2 272), but DC 24 and {@damage 7d6} negative damage."
+						],
+						"name": "Necrotic Decay"
+					}
 				],
-				"condition": []
-			},
-			"misc": [
-				"MA"
-			]
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"Melee jaws +17, Damage {@dice 2d6+7} plus Wicked Bite Divine Innate Spells DC 22, attack +14; 3rd paralyze; 2nd death knell; 1st feather fall (at will, self only), ray of enfeeblement."
+						],
+						"name": "and Wicked Bite"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"{@damage 1d8+7} slashing, DC 25."
+						],
+						"name": "Constrict",
+						"generic": true
+					},
+					{
+						"entries": [
+							"The lasher gains the Grab ability with a shauth lash and can use their Wicked Bite through magical shauth weapon Strikes."
+						],
+						"name": "Shauth Seize"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"As urdefhan warrior (Bestiary 2 272), but DC 25 and the urdefhan regains 10 Hit Points when they Drink Blood if the target fails its saving throw (20 Hit Points on a critical failure)."
+						],
+						"name": "Wicked Bite"
+					}
+				]
+			}
 		},
 		{
 			"name": "Voidbracken Chuul",
@@ -5733,28 +5379,29 @@
 			"source": "AV3",
 			"page": 57,
 			"level": 9,
-			"rarity": "Rare",
-			"alignment": "CE",
-			"size": "Large",
 			"traits": [
-				"Amphibious"
+				"rare",
+				"ce",
+				"large",
+				"aberration",
+				"amphibious"
 			],
 			"creatureType": [
 				"Aberration"
 			],
 			"perception": {
-				"default": 18
+				"std": 18
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [
-					"{@ability tremorsense} 30 feet"
-				],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"type": "imprecise",
+					"name": "{@ability tremorsense}",
+					"range": 30
+				}
+			],
 			"languages": {
 				"languages": [
 					"Aklo",
@@ -5764,39 +5411,38 @@
 			},
 			"skills": {
 				"Athletics": {
-					"default": 21
+					"std": 21
 				},
 				"Nature": {
-					"default": 16
+					"std": 16
 				},
 				"Stealth": {
-					"default": 17
+					"std": 17
 				},
 				"Survival": {
-					"default": 16
+					"std": 16
 				}
 			},
 			"abilityMods": {
-				"Str": 6,
-				"Dex": 4,
-				"Con": 4,
-				"Int": 0,
-				"Wis": 3,
-				"Cha": 0
+				"str": 6,
+				"dex": 4,
+				"con": 4,
+				"int": 0,
+				"wis": 3,
+				"cha": 0
 			},
-			"abilitiesTop": [],
 			"ac": {
-				"default": 31
+				"std": 31
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 21
+				"fort": {
+					"std": 21
 				},
-				"Ref": {
-					"default": 18
+				"ref": {
+					"std": 18
 				},
-				"Will": {
-					"default": 15
+				"will": {
+					"std": 15
 				}
 			},
 			"hp": [
@@ -5805,22 +5451,8 @@
 					"abilities": null
 				}
 			],
-			"immunities": {
-				"damage": [
-					"poison"
-				],
-				"condition": []
-			},
-			"abilitiesMid": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"entries": [],
-					"name": "Attack of Opportunity",
-					"generic": true
-				}
+			"immunities": [
+				"poison"
 			],
 			"speed": {
 				"walk": 30,
@@ -5843,77 +5475,75 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"entries": [
-						"{@damage 1d8+12} bludgeoning, DC 28 ({@condition grabbed} by claws only)"
-					],
-					"name": "Constrict",
-					"generic": true
-				},
-				{
-					"traits": [
-						"poison"
-					],
-					"entries": [
-						"Saving Throw DC 28 Fortitude;"
-					],
-					"name": "Draining Venom"
-				},
-				{
-					"entries": [
-						"6 rounds; Stage 1 {@condition drained|CRB|drained 1} (1 round); Stage 2 {@condition drained|CRB|drained 2} (1 round)"
-					],
-					"name": "Maximum Duration"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"requirements": "A {@condition drained} creature is {@condition grabbed} by the chuul's tentacles",
-					"entries": [
-						"The creature takes {@damage 3d6} mental damage."
-					],
-					"name": "Mind Feeding"
-				},
-				{
-					"entries": [
-						"Voidbracken chuul ignores difficult terrain and greater difficult terrain in swamps."
-					],
-					"name": "Swamp Stride The"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"requirements": "The Voidbracken chuul has a creature {@condition grabbed}",
-					"entries": [
-						"The chuul transfers the {@condition grabbed} creature from its claws to its tentacles, or vice versa. The creature is exposed to the chuul's draining venom when transferred into the tentacles and at the start of each of the chuul's turns if it remains {@condition grabbed} by the tentacles."
-					],
-					"name": "Tentacle Transfer"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning",
-					"mental"
+			"abilities": {
+				"mid": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"entries": [],
+						"name": "Attack of Opportunity",
+						"generic": true
+					}
 				],
-				"condition": [
-					"{@condition drained}",
-					"{@condition grabbed}"
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"{@damage 1d8+12} bludgeoning, DC 28 ({@condition grabbed} by claws only)"
+						],
+						"name": "Constrict",
+						"generic": true
+					},
+					{
+						"traits": [
+							"poison"
+						],
+						"entries": [
+							"Saving Throw DC 28 Fortitude;"
+						],
+						"name": "Draining Venom"
+					},
+					{
+						"entries": [
+							"6 rounds; Stage 1 {@condition drained|CRB|drained 1} (1 round); Stage 2 {@condition drained|CRB|drained 2} (1 round)"
+						],
+						"name": "Maximum Duration"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"requirements": "A {@condition drained} creature is {@condition grabbed} by the chuul's tentacles",
+						"entries": [
+							"The creature takes {@damage 3d6} mental damage."
+						],
+						"name": "Mind Feeding"
+					},
+					{
+						"entries": [
+							"Voidbracken chuul ignores difficult terrain and greater difficult terrain in swamps."
+						],
+						"name": "Swamp Stride The"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"requirements": "The Voidbracken chuul has a creature {@condition grabbed}",
+						"entries": [
+							"The chuul transfers the {@condition grabbed} creature from its claws to its tentacles, or vice versa. The creature is exposed to the chuul's draining venom when transferred into the tentacles and at the start of each of the chuul's turns if it remains {@condition grabbed} by the tentacles."
+						],
+						"name": "Tentacle Transfer"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"RC",
-				"CC"
-			]
+			}
 		}
 	]
 }

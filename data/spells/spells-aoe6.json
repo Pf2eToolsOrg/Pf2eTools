@@ -6,22 +6,24 @@
 			"page": 75,
 			"level": 9,
 			"traits": [
-				"Rare",
-				"Enchantment"
+				"rare",
+				"enchantment"
 			],
 			"school": "E",
 			"traditions": [
-				"Arcane",
-				"Occult"
+				"arcane",
+				"occult"
 			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"range": {
 				"entry": "30 feet",
 				"distance": {
@@ -38,12 +40,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "sustained up to 1 minute",
+				"sustain": true,
 				"duration": {
 					"number": 1,
 					"unit": "minute"
 				}
 			},
-			"sustain": true,
 			"entries": [
 				"You disrupt the connection between a divine caster or deific servitor and their deity, blocking their use of divine power.",
 				"If the target fails its save, it is {@condition fatigued}. For the spell's duration, whenever the target casts a divine spell, you regain {@dice 6d6} HP and the target must attempt another Will save with the following effects.",
@@ -64,22 +66,24 @@
 			"page": 75,
 			"level": 9,
 			"traits": [
-				"Rare",
-				"Abjuration",
-				"Light"
+				"rare",
+				"abjuration",
+				"light"
 			],
 			"school": "A",
 			"traditions": [
-				"Arcane",
-				"Occult"
+				"arcane",
+				"occult"
 			],
 			"cast": {
 				"number": 1,
 				"unit": "action"
 			},
-			"components": {
-				"V": true
-			},
+			"components": [
+				{
+					"V": true
+				}
+			],
 			"duration": {
 				"type": "timed",
 				"entry": "until the start of your next turn",

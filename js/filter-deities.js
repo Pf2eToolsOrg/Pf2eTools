@@ -59,6 +59,7 @@ class PageFilterDeities extends PageFilter {
 		if (g.hasLore === true) g._fMisc.push("Has Lore")
 		if (g.images) g._fMisc.push("Has Images")
 
+		if (g.followerAlignment) g._fFollowerAlignment = g.followerAlignment.alignment;
 		if (g.devoteeBenefits) {
 			if (g.devoteeBenefits.font) g._fFont = g.devoteeBenefits.font;
 			if (g.devoteeBenefits.skill) g._fSkill = g.devoteeBenefits.skill;
@@ -80,7 +81,7 @@ class PageFilterDeities extends PageFilter {
 		if (g._fSkill) this._skillFilter.addItem(g._fSkill);
 		if (g._fWeapon) this._weaponFilter.addItem(g._fWeapon);
 		if (g.alignment) this._alignmentFilter.addItem(g.alignment);
-		if (g.followerAlignment) this._followerAlignmentFilter.addItem(g.followerAlignment);
+		if (g.followerAlignment) this._followerAlignmentFilter.addItem(g.followerAlignment.alignment);
 		this._domainFilter.addItem(g._fDomains);
 		this._categoryFilter.addItem(g.category);
 		this._miscFilter.addItem(g._fMisc);
@@ -120,7 +121,7 @@ class PageFilterDeities extends PageFilter {
 			values,
 			g._fSources,
 			g.alignment,
-			g.followerAlignment,
+			g._fFollowerAlignment,
 			g.category,
 			[
 				g._fFont,

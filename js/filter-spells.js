@@ -61,7 +61,7 @@ class PageFilterSpells extends PageFilter {
 		});
 		this._componentsFilter = new Filter({
 			header: "Components",
-			items: ["Focus", "Material", "Somatic", "Verbal", "Cost"],
+			items: ["Material", "Somatic", "Verbal", "Focus", "Cost"],
 			itemSortFn: null,
 		});
 		this._areaFilter = new Filter({
@@ -101,7 +101,7 @@ class PageFilterSpells extends PageFilter {
 		});
 		this._miscFilter = new Filter({
 			header: "Miscellaneous",
-			items: ["Has Battle Form", "Has Requirements", "Has Targets", "Has Trigger", "Can be Heightened", "Can be Dismissed", "Sustained", "Summoning"],
+			items: ["Has Battle Form", "Has Requirements", "Has Targets", "Has Trigger", "Can be Heightened", "Can be Dismissed", "Sustained", "Summoning", "Grants Temporary Hit Points"],
 		});
 	}
 
@@ -109,14 +109,14 @@ class PageFilterSpells extends PageFilter {
 		// used for sorting
 		spell._normalisedTime = Parser.getNormalisedTime(spell.cast);
 		spell._normalisedRange = Parser.getNormalisedRange(spell.range);
-		spell._normalisedType = spell.traits.includes("Cantrip") && spell.focus ? "FC" : spell.traits.includes("Cantrip") ? "C" : spell.focus ? "F" : "S";
+		spell._normalisedType = spell.traits.includes("cantrip") && spell.focus ? "FC" : spell.traits.includes("cantrip") ? "C" : spell.focus ? "F" : "S";
 
 		// used for filtering
 		spell._fSources = SourceFilter.getCompleteFilterSources(spell);
 		spell._fTraditions = (spell.traditions || [])
 			.concat(spell.spellLists || [])
-			.concat(spell.traditions ? spell.traditions.includes("Primal" || "Arcane") ? "Halcyon" : [] : []);
-		spell._fSpellType = spell.traits.includes("Cantrip") && spell.focus ? ["Focus", "Cantrip"] : spell.traits.includes("Cantrip") ? ["Cantrip"] : spell.focus ? ["Focus"] : ["Spell"];
+			.concat(spell.traditions ? spell.traditions.includes("Primal" || "Arcane") ? "Halcyon" : [] : []).map(t => t.toTitleCase());
+		spell._fSpellType = spell.traits.includes("cantrip") && spell.focus ? ["Focus", "Cantrip"] : spell.traits.includes("cantrip") ? ["Cantrip"] : spell.focus ? ["Focus"] : ["Spell"];
 		spell._fTraits = spell.traits.map(t => Parser.getTraitName(t));
 		if (!spell._fTraits.map(t => Renderer.trait.isTraitInCategory(t, "Rarity")).some(Boolean)) spell._fTraits.push("Common");
 		spell._fClasses = spell._fTraits.filter(t => Renderer.trait.isTraitInCategory(t, "Class")) || [];
@@ -138,19 +138,36 @@ class PageFilterSpells extends PageFilter {
 			if (spell.savingThrow.basic) spell._fSavingThrow.push("Basic");
 		}
 		spell._fComponents = spell.cost == null ? [] : ["Cost"];
-		if (spell.components.F) spell._fComponents.push("Focus");
-		if (spell.components.M) spell._fComponents.push("Material");
-		if (spell.components.S) spell._fComponents.push("Somatic");
-		if (spell.components.V) spell._fComponents.push("Verbal");
+		// TODO: Figure out how to make various configurations of components work in filters
+		// Example: [V], [V and S], [V and S and M]
+		// Current Data: [{V: true},{V: true, S: true},{V: true, S: true, M: true}]
+		// Right now we'll just live with this.
+		if (spell.components) {
+			spell.components.forEach(element => {
+				if (element.F) spell._fComponents.push("Focus");
+				if (element.M) spell._fComponents.push("Material");
+				if (element.S) spell._fComponents.push("Somatic");
+				if (element.V) spell._fComponents.push("Verbal");
+			});
+		}
 		spell._fMisc = [];
 		if (spell.requirements !== null) spell._fMisc.push("Has Requirements");
 		if (spell.trigger !== null) spell._fMisc.push("Has Trigger");
 		if (spell.targets !== null) spell._fMisc.push("Has Targets");
 		if (spell.heightened) spell._fMisc.push("Can be Heightened");
-		if (spell.sustain) spell._fMisc.push("Sustained");
-		if (spell.dismiss) spell._fMisc.push("Can be Dismissed");
+		if (spell.duration && spell.duration.sustain) spell._fMisc.push("Sustained");
+		if (spell.duration && spell.duration.dismiss) spell._fMisc.push("Can be Dismissed");
 		if (spell.hasBattleForm) spell._fMisc.push("Has Battle Form");
 		if (spell.summoning) spell._fMisc.push("Summoning");
+		if (spell.miscTags) {
+			spell.miscTags.forEach(element => {
+				switch (element) {
+					case "THP": spell._fMisc.push("Grants Temporary Hit Points"); break;
+					case "SM": spell._fMisc.push("Summoning"); break;
+					case "BF": spell._fMisc.push("Has Battle Form"); break;
+				}
+			});
+		}
 		// "Possible Elementalist Spell" shenanigans, could be optimised?
 		if (!spell._fTraditions.includes("Elemental")
 		&& (spell.traits.some((trait) => trait.includes("Fire" || "Water" || "Earth" || "Air"))

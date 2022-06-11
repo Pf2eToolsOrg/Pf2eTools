@@ -512,6 +512,30 @@ input[type=checkbox].sidemenu__row__label__cb {
 	display: none;
 }
 
+.hwin__top-border-icon {
+	top: 0;
+	margin-left: auto;
+	padding: 2px;
+	color: $rgb-bg--alt;
+	cursor: pointer;
+	font-size: 12px;
+	width: 18px;
+	text-align: center;
+
+	&--text {
+		line-height: 11px;
+		font-weight: bolder;
+		font-family: monospace;
+	}
+
+	&:hover,
+	&:active,
+	&:visited {
+		color: darken($rgb-bg--alt, $pct-darken-hover);
+		text-decoration: none;
+	}
+}
+
 .glyphicon.top-border-icon,
 .glyphicon.delete-icon {
 	top: 0;
@@ -2815,6 +2839,14 @@ ul.list.books > li > a > span.name:hover {
 	a,
 	.roller {
 		color: $rgb-link-blue--night;
+	}
+
+	.hwin__top-border-icon {
+		color: $rgb-font--night;
+
+		&:hover {
+			color: lighten($rgb-font--night, $pct-darken-hover);
+		}
 	}
 
 	.text-muted {

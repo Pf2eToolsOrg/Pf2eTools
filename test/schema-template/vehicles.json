@@ -41,58 +41,6 @@
 					"price": {
 						"$ref": "utils.json#/definitions/price"
 					},
-					"space": {
-						"type": "object",
-						"properties": {
-							"long": {
-								"type": "object",
-								"properties": {
-									"number": {
-										"type": "integer",
-										"exclusiveMinimum": 1
-									},
-									"unit": {
-										"type": "string",
-										"enum": [
-											"feet"
-										]
-									}
-								}
-							},
-							"wide": {
-								"type": "object",
-								"properties": {
-									"number": {
-										"type": "integer",
-										"exclusiveMinimum": 1
-									},
-									"unit": {
-										"type": "string",
-										"enum": [
-											"feet"
-										]
-									}
-								}
-							},
-							"high": {
-								"type": "object",
-								"properties": {
-									"number": {
-										"type": "integer",
-										"exclusiveMinimum": 1
-									},
-									"unit": {
-										"type": "string",
-										"enum": [
-											"feet"
-										]
-									}
-								}
-							}
-						},
-						"additionalProperties": false,
-						"minProperties": 1
-					},
 					"crew": {
 						"type": "array",
 						"items": {
@@ -153,6 +101,67 @@
 							"additionalProperties": false
 						},
 						"minItems": 1
+					},
+					"space": {
+						"type": "object",
+						"properties": {
+							"long": {
+								"type": "object",
+								"properties": {
+									"name": {
+										"type": "string"
+									},
+									"number": {
+										"type": "integer",
+										"exclusiveMinimum": 1
+									},
+									"unit": {
+										"type": "string",
+										"enum": [
+											"feet"
+										]
+									}
+								}
+							},
+							"wide": {
+								"type": "object",
+								"properties": {
+									"name": {
+										"type": "string"
+									},
+									"number": {
+										"type": "integer",
+										"exclusiveMinimum": 1
+									},
+									"unit": {
+										"type": "string",
+										"enum": [
+											"feet"
+										]
+									}
+								}
+							},
+							"high": {
+								"type": "object",
+								"properties": {
+									"name": {
+										"type": "string"
+									},
+									"number": {
+										"type": "integer",
+										"exclusiveMinimum": 1
+									},
+									"unit": {
+										"type": "string",
+										"enum": [
+											"feet"
+										]
+									}
+								}
+							}
+						},
+						"additionalProperties": false,
+						"minProperties": 1
 					},
 					"defenses": {
 						"$ref": "utils.json#/definitions/defenses"

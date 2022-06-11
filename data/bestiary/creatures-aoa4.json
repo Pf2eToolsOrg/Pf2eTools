@@ -6,26 +6,24 @@
 			"source": "AoA4",
 			"page": 32,
 			"level": 15,
-			"rarity": "Rare",
-			"alignment": "NE",
-			"size": "Large",
 			"traits": [
-				"Fire"
+				"rare",
+				"ne",
+				"large",
+				"fire",
+				"undead"
 			],
 			"creatureType": [
 				"Undead"
 			],
 			"perception": {
-				"default": 26
+				"std": 26
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Common",
@@ -36,36 +34,35 @@
 			},
 			"skills": {
 				"Athletics": {
-					"default": 29
+					"std": 29
 				},
 				"Crafting": {
-					"default": 30
+					"std": 30
 				},
 				"Droskar Lore": {
-					"default": 26
+					"std": 26
 				}
 			},
 			"abilityMods": {
-				"Str": 8,
-				"Dex": 4,
-				"Con": 6,
-				"Int": 3,
-				"Wis": 5,
-				"Cha": 2
+				"str": 8,
+				"dex": 4,
+				"con": 6,
+				"int": 3,
+				"wis": 5,
+				"cha": 2
 			},
-			"abilitiesTop": [],
 			"ac": {
-				"default": 37
+				"std": 37
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 28
+				"fort": {
+					"std": 28
 				},
-				"Ref": {
-					"default": 24
+				"ref": {
+					"std": 24
 				},
-				"Will": {
-					"default": 25
+				"will": {
+					"std": 25
 				}
 			},
 			"hp": [
@@ -81,27 +78,6 @@
 				{
 					"amount": 10,
 					"name": "cold"
-				}
-			],
-			"abilitiesMid": [
-				{
-					"traits": [
-						"divine",
-						"necromancy"
-					],
-					"entries": [
-						"As long as its soul chain remains intact, the accursed forge-spurned can't be truly destroyed and rises again fully healed at the next sundown, even if its physical body was destroyed. Information about soul chains appears on page 83."
-					],
-					"name": "Eternal Damnation"
-				},
-				{
-					"traits": [
-						"fire"
-					],
-					"entries": [
-						"A creature that touches the accursed forge-spurned (including grappling it or hitting it with an unarmed attack) takes {@damage 4d6} fire damage (DC 33 basic Reflex save)."
-					],
-					"name": "Searing Heat"
 				}
 			],
 			"speed": {
@@ -141,83 +117,87 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
+			"abilities": {
+				"mid": [
+					{
+						"traits": [
+							"divine",
+							"necromancy"
+						],
+						"entries": [
+							"As long as its soul chain remains intact, the accursed forge-spurned can't be truly destroyed and rises again fully healed at the next sundown, even if its physical body was destroyed. Information about soul chains appears on page 83."
+						],
+						"name": "Eternal Damnation"
 					},
-					"requirements": "The accursed forge-spurned has used Forge Breath.",
-					"entries": [
-						"The accursed forge-spurned re-inflates its flaccid lungs, enabling it to use Forge Breath again."
-					],
-					"name": "Inflate Bellows"
-				},
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"traits": [
-						"divine",
-						"evocation",
-						"fire"
-					],
-					"entries": [
-						"The accursed forge-spurned breathes a cloud of stinging soot, ash, and glowing embers. This can affect either a 30-foot cone or a 20-foot burst centered on the accursed forge-spurned and persists for {@dice 1d4} rounds. Creatures that move into or start their turn in the area take {@damage 12d6} fire damage (DC 36 basic Reflex save). A creature that fails its save is also {@condition blinded} for 1 minute. Creatures within the cloud are {@condition concealed}, though not from the accursed forge-spurned. The accursed forge-spurned can't use Forge Breath again until it has used Inflate Bellows."
-					],
-					"name": "Forge Breath"
-				},
-				{
-					"traits": [
-						"divine",
-						"fire",
-						"necromancy"
-					],
-					"entries": [
-						"If a creature is slain by an attack from the soul chain and the accursed forge-spurned is able to retain the creature's corpse, it can bind the creature's soul into the soul chain (as bind soul) with a day of work at a forge and a DC 20 {@skill Crafting} check. An individual whose soul is bound in this way can't be resurrected unless the soul chain is destroyed (Hardness 10, 40 HP, BT 20)."
-					],
-					"name": "Soul Chain"
-				},
-				{
-					"traits": [
-						"divine",
-						"necromancy"
-					],
-					"entries": [
-						"When the accursed forge-spurned critically hits a target with its soul chain, the chain leeches away a portion of the target's soul. The target must attempt a DC 36 Fortitude save.",
-						{
-							"type": "successDegree",
-							"entries": {
-								"Critical Success": "The target is unaffected.",
-								"Success": "The target is {@condition drained|CRB|drained 1}.",
-								"Failure": "The target is {@condition drained|CRB|drained 2}.",
-								"Critical Failure": "The target is {@condition drained|CRB|drained 2} and {@condition stunned|CRB|stunned 2} from the pain."
-							}
-						}
-					],
-					"name": "Soul Siphon"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning",
-					"fire",
-					"slashing"
+					{
+						"traits": [
+							"fire"
+						],
+						"entries": [
+							"A creature that touches the accursed forge-spurned (including grappling it or hitting it with an unarmed attack) takes {@damage 4d6} fire damage (DC 33 basic Reflex save)."
+						],
+						"name": "Searing Heat"
+					}
 				],
-				"condition": [
-					"{@condition blinded}",
-					"{@condition drained}"
+				"bot": [
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"requirements": "The accursed forge-spurned has used Forge Breath.",
+						"entries": [
+							"The accursed forge-spurned re-inflates its flaccid lungs, enabling it to use Forge Breath again."
+						],
+						"name": "Inflate Bellows"
+					},
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"divine",
+							"evocation",
+							"fire"
+						],
+						"entries": [
+							"The accursed forge-spurned breathes a cloud of stinging soot, ash, and glowing embers. This can affect either a 30-foot cone or a 20-foot burst centered on the accursed forge-spurned and persists for {@dice 1d4} rounds. Creatures that move into or start their turn in the area take {@damage 12d6} fire damage (DC 36 basic Reflex save). A creature that fails its save is also {@condition blinded} for 1 minute. Creatures within the cloud are {@condition concealed}, though not from the accursed forge-spurned. The accursed forge-spurned can't use Forge Breath again until it has used Inflate Bellows."
+						],
+						"name": "Forge Breath"
+					},
+					{
+						"traits": [
+							"divine",
+							"fire",
+							"necromancy"
+						],
+						"entries": [
+							"If a creature is slain by an attack from the soul chain and the accursed forge-spurned is able to retain the creature's corpse, it can bind the creature's soul into the soul chain (as bind soul) with a day of work at a forge and a DC 20 {@skill Crafting} check. An individual whose soul is bound in this way can't be resurrected unless the soul chain is destroyed (Hardness 10, 40 HP, BT 20)."
+						],
+						"name": "Soul Chain"
+					},
+					{
+						"traits": [
+							"divine",
+							"necromancy"
+						],
+						"entries": [
+							"When the accursed forge-spurned critically hits a target with its soul chain, the chain leeches away a portion of the target's soul. The target must attempt a DC 36 Fortitude save.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": "The target is unaffected.",
+									"Success": "The target is {@condition drained|CRB|drained 1}.",
+									"Failure": "The target is {@condition drained|CRB|drained 2}.",
+									"Critical Failure": "The target is {@condition drained|CRB|drained 2} and {@condition stunned|CRB|stunned 2} from the pain."
+								}
+							}
+						],
+						"name": "Soul Siphon"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"RC",
-				"AD",
-				"AC",
-				"CC",
-				"UW"
-			]
+			}
 		},
 		{
 			"name": "Adult Magma Dragon",
@@ -225,28 +205,29 @@
 			"source": "AoA4",
 			"page": 80,
 			"level": 13,
-			"rarity": "Rare",
-			"alignment": "CN",
-			"size": "Huge",
 			"traits": [
-				"Fire"
+				"rare",
+				"cn",
+				"huge",
+				"dragon",
+				"fire"
 			],
 			"creatureType": [
 				"Dragon"
 			],
 			"perception": {
-				"default": 23
+				"std": 23
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [
-					"scent 60 feet"
-				],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"type": "imprecise",
+					"name": "scent",
+					"range": 60
+				}
+			],
 			"languages": {
 				"languages": [
 					"Common",
@@ -258,55 +239,47 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 22
+					"std": 22
 				},
 				"Athletics": {
-					"default": 28
+					"std": 28
 				},
 				"Deception": {
-					"default": 19
+					"std": 19
 				},
 				"Intimidation": {
-					"default": 25
+					"std": 25
 				},
 				"Nature": {
-					"default": 21
+					"std": 21
 				},
 				"Stealth": {
-					"default": 22
+					"std": 22
 				},
 				"Survival": {
-					"default": 21
+					"std": 21
 				}
 			},
 			"abilityMods": {
-				"Str": 8,
-				"Dex": 2,
-				"Con": 5,
-				"Int": 2,
-				"Wis": 4,
-				"Cha": 4
+				"str": 8,
+				"dex": 2,
+				"con": 5,
+				"int": 2,
+				"wis": 4,
+				"cha": 4
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+22, {@skill Survival} +21 Str +8, Dex +2, Con +5, Int +2, Wis +4, Cha +4."
-					],
-					"name": "Stealth"
-				}
-			],
 			"ac": {
-				"default": 34
+				"std": 34
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 26
+				"fort": {
+					"std": 26
 				},
-				"Ref": {
-					"default": 21
+				"ref": {
+					"std": 21
 				},
-				"Will": {
-					"default": 23
+				"will": {
+					"std": 23
 				}
 			},
 			"hp": [
@@ -315,45 +288,15 @@
 					"abilities": null
 				}
 			],
-			"immunities": {
-				"damage": [
-					"fire"
-				],
-				"condition": [
-					"paralyzed",
-					"sleep"
-				]
-			},
+			"immunities": [
+				"fire",
+				"paralyzed",
+				"sleep"
+			],
 			"weaknesses": [
 				{
 					"amount": 15,
 					"name": "cold"
-				}
-			],
-			"abilitiesMid": [
-				{
-					"traits": [
-						"aura",
-						"emotion",
-						"fear",
-						"mental"
-					],
-					"entries": [
-						"90 feet, DC 29."
-					],
-					"name": "Frightful Presence",
-					"generic": true
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"entries": [
-						"The dragon raises its wing, gaining a +2 circumstance bonus to AC against the triggering attack. If the dragon is Flying, it descends 10 feet after the attack."
-					],
-					"name": "Wing Deflection",
-					"trigger": "The dragon is targeted with an attack."
 				}
 			],
 			"speed": {
@@ -455,75 +398,97 @@
 					}
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"traits": [
-						"evocation",
-						"fire",
-						"primal"
-					],
-					"entries": [
-						"The dragon breathes a blast of magma that deals {@damage 7d6} fire damage and {@damage 4d12} bludgeoning damage in a 40-foot cone (DC 33 basic Reflex save). It can't use Breath Weapon again for {@dice 1d4} rounds."
-					],
-					"name": "Breath Weapon"
-				},
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"entries": [
-						"The dragon makes two claw Strikes and one horns {@action Strike} in any order."
-					],
-					"name": "Draconic Frenzy"
-				},
-				{
-					"entries": [
-						"The dragon recharges its Breath Weapon whenever it scores a critical hit with a {@action Strike}."
-					],
-					"name": "Draconic Momentum"
-				},
-				{
-					"entries": [
-						"A magma dragon's swim Speed functions only when the dragon is swimming through magma or molten lava."
-					],
-					"name": "Magma Swim"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"entries": [
-						"If the next action the dragon uses is Breath Weapon, the magma clings to those it damages. Each creature that fails its save against the."
-					],
-					"name": "Volcanic Purge"
-				},
-				{
-					"entries": [
-						"Weapon takes {@damage 3d6} {@condition persistent damage ||persistent fire damage}, and as long as it has this {@condition persistent damage ||persistent fire damage}, it also takes a \u201310-foot status penalty to its Speeds."
-					],
-					"name": "Breath"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning",
-					"fire",
-					"piercing",
-					"slashing"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"+22, {@skill Survival} +21 Str +8, Dex +2, Con +5, Int +2, Wis +4, Cha +4."
+						],
+						"name": "Stealth"
+					}
 				],
-				"condition": []
-			},
-			"misc": [
-				"MA",
-				"RC",
-				"AD"
-			]
+				"mid": [
+					{
+						"traits": [
+							"aura",
+							"emotion",
+							"fear",
+							"mental"
+						],
+						"entries": [
+							"90 feet, DC 29."
+						],
+						"name": "Frightful Presence",
+						"generic": true
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"entries": [
+							"The dragon raises its wing, gaining a +2 circumstance bonus to AC against the triggering attack. If the dragon is Flying, it descends 10 feet after the attack."
+						],
+						"name": "Wing Deflection",
+						"trigger": "The dragon is targeted with an attack."
+					}
+				],
+				"bot": [
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"evocation",
+							"fire",
+							"primal"
+						],
+						"entries": [
+							"The dragon breathes a blast of magma that deals {@damage 7d6} fire damage and {@damage 4d12} bludgeoning damage in a 40-foot cone (DC 33 basic Reflex save). It can't use Breath Weapon again for {@dice 1d4} rounds."
+						],
+						"name": "Breath Weapon"
+					},
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"The dragon makes two claw Strikes and one horns {@action Strike} in any order."
+						],
+						"name": "Draconic Frenzy"
+					},
+					{
+						"entries": [
+							"The dragon recharges its Breath Weapon whenever it scores a critical hit with a {@action Strike}."
+						],
+						"name": "Draconic Momentum"
+					},
+					{
+						"entries": [
+							"A magma dragon's swim Speed functions only when the dragon is swimming through magma or molten lava."
+						],
+						"name": "Magma Swim"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"If the next action the dragon uses is Breath Weapon, the magma clings to those it damages. Each creature that fails its save against the."
+						],
+						"name": "Volcanic Purge"
+					},
+					{
+						"entries": [
+							"Weapon takes {@damage 3d6} {@condition persistent damage ||persistent fire damage}, and as long as it has this {@condition persistent damage ||persistent fire damage}, it also takes a \u201310-foot status penalty to its Speeds."
+						],
+						"name": "Breath"
+					}
+				]
+			}
 		},
 		{
 			"name": "Ancient Magma Dragon",
@@ -531,28 +496,29 @@
 			"source": "AoA4",
 			"page": 81,
 			"level": 18,
-			"rarity": "Rare",
-			"alignment": "CN",
-			"size": "Gargantuan",
 			"traits": [
-				"Fire"
+				"rare",
+				"cn",
+				"gargantuan",
+				"dragon",
+				"fire"
 			],
 			"creatureType": [
 				"Dragon"
 			],
 			"perception": {
-				"default": 33
+				"std": 33
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [
-					"scent 60 feet"
-				],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"type": "imprecise",
+					"name": "scent",
+					"range": 60
+				}
+			],
 			"languages": {
 				"languages": [
 					"Abyssal",
@@ -566,55 +532,47 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 28
+					"std": 28
 				},
 				"Athletics": {
-					"default": 35
+					"std": 35
 				},
 				"Deception": {
-					"default": 28
+					"std": 28
 				},
 				"Intimidation": {
-					"default": 32
+					"std": 32
 				},
 				"Nature": {
-					"default": 29
+					"std": 29
 				},
 				"Stealth": {
-					"default": 28
+					"std": 28
 				},
 				"Survival": {
-					"default": 29
+					"std": 29
 				}
 			},
 			"abilityMods": {
-				"Str": 8,
-				"Dex": 4,
-				"Con": 6,
-				"Int": 4,
-				"Wis": 5,
-				"Cha": 6
+				"str": 8,
+				"dex": 4,
+				"con": 6,
+				"int": 4,
+				"wis": 5,
+				"cha": 6
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+28, {@skill Survival} +29 Str +8, Dex +4, Con +6, Int +4, Wis +5, Cha +6."
-					],
-					"name": "Stealth"
-				}
-			],
 			"ac": {
-				"default": 42
+				"std": 42
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 33
+				"fort": {
+					"std": 33
 				},
-				"Ref": {
-					"default": 31
+				"ref": {
+					"std": 31
 				},
-				"Will": {
-					"default": 30
+				"will": {
+					"std": 30
 				}
 			},
 			"hp": [
@@ -623,40 +581,10 @@
 					"abilities": null
 				}
 			],
-			"immunities": {
-				"damage": [
-					"fire"
-				],
-				"condition": [
-					"paralyzed",
-					"sleep"
-				]
-			},
-			"abilitiesMid": [
-				{
-					"traits": [
-						"aura",
-						"emotion",
-						"fear",
-						"mental"
-					],
-					"entries": [
-						"90 feet, DC 36."
-					],
-					"name": "Frightful Presence",
-					"generic": true
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"entries": [
-						"The dragon raises its wing, gaining a +2 circumstance bonus to AC against the triggering attack. If the dragon is Flying, it descends 10 feet after the attack."
-					],
-					"name": "Wing Deflection",
-					"trigger": "The dragon is targeted with an attack."
-				}
+			"immunities": [
+				"fire",
+				"paralyzed",
+				"sleep"
 			],
 			"speed": {
 				"abilities": [
@@ -772,91 +700,110 @@
 					}
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"traits": [
-						"evocation",
-						"fire",
-						"primal"
-					],
-					"entries": [
-						"The dragon breathes a blast of magma that deals {@damage 10d6} fire damage and {@damage 4d12} bludgeoning damage in a 60-foot cone (DC 42 basic Reflex save). It can't use Breath Weapon again for {@dice 1d4} rounds."
-					],
-					"name": "Breath Weapon"
-				},
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"entries": [
-						"The dragon makes two claw Strikes and one horns {@action Strike} in any order."
-					],
-					"name": "Draconic Frenzy"
-				},
-				{
-					"entries": [
-						"The dragon recharges its Breath Weapon whenever it scores a critical hit with a {@action Strike}."
-					],
-					"name": "Draconic Momentum"
-				},
-				{
-					"entries": [
-						"A magma dragon's swim Speed functions only when the dragon is swimming through magma or molten lava."
-					],
-					"name": "Magma Swim"
-				},
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"entries": [
-						"Once per day, the dragon can spit a molten boulder at a target within 120 feet. This deals {@damage 10d6} fire damage and {@damage 4d12} bludgeoning damage, with a DC 42 basic Reflex save. If the creature fails its save, it's encased in magma that instantly cools and has Hardness 10, HP 40,"
-					],
-					"name": "Magma Tomb"
-				},
-				{
-					"entries": [
-						"20. The encased creature can't breathe and is {@condition restrained}."
-					],
-					"name": "and BT"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"entries": [
-						"As adult magma dragon, but the damage is {@dice 4d6}."
-					],
-					"name": "Volcanic Purge",
-					"entries_as_xyz": [
-						"If the next action the dragon uses is Breath Weapon, the magma clings to those it damages. Each creature that fails its save against the."
-					]
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning",
-					"fire",
-					"piercing",
-					"slashing"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"+28, {@skill Survival} +29 Str +8, Dex +4, Con +6, Int +4, Wis +5, Cha +6."
+						],
+						"name": "Stealth"
+					}
 				],
-				"condition": [
-					"{@condition restrained}"
+				"mid": [
+					{
+						"traits": [
+							"aura",
+							"emotion",
+							"fear",
+							"mental"
+						],
+						"entries": [
+							"90 feet, DC 36."
+						],
+						"name": "Frightful Presence",
+						"generic": true
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"entries": [
+							"The dragon raises its wing, gaining a +2 circumstance bonus to AC against the triggering attack. If the dragon is Flying, it descends 10 feet after the attack."
+						],
+						"name": "Wing Deflection",
+						"trigger": "The dragon is targeted with an attack."
+					}
+				],
+				"bot": [
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"evocation",
+							"fire",
+							"primal"
+						],
+						"entries": [
+							"The dragon breathes a blast of magma that deals {@damage 10d6} fire damage and {@damage 4d12} bludgeoning damage in a 60-foot cone (DC 42 basic Reflex save). It can't use Breath Weapon again for {@dice 1d4} rounds."
+						],
+						"name": "Breath Weapon"
+					},
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"The dragon makes two claw Strikes and one horns {@action Strike} in any order."
+						],
+						"name": "Draconic Frenzy"
+					},
+					{
+						"entries": [
+							"The dragon recharges its Breath Weapon whenever it scores a critical hit with a {@action Strike}."
+						],
+						"name": "Draconic Momentum"
+					},
+					{
+						"entries": [
+							"A magma dragon's swim Speed functions only when the dragon is swimming through magma or molten lava."
+						],
+						"name": "Magma Swim"
+					},
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"Once per day, the dragon can spit a molten boulder at a target within 120 feet. This deals {@damage 10d6} fire damage and {@damage 4d12} bludgeoning damage, with a DC 42 basic Reflex save. If the creature fails its save, it's encased in magma that instantly cools and has Hardness 10, HP 40,"
+						],
+						"name": "Magma Tomb"
+					},
+					{
+						"entries": [
+							"20. The encased creature can't breathe and is {@condition restrained}."
+						],
+						"name": "and BT"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"As adult magma dragon, but the damage is {@dice 4d6}."
+						],
+						"name": "Volcanic Purge",
+						"entries_as_xyz": [
+							"If the next action the dragon uses is Breath Weapon, the magma clings to those it damages. Each creature that fails its save against the."
+						]
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"RC",
-				"AD",
-				"CC"
-			]
+			}
 		},
 		{
 			"name": "Carnivorous Crystal",
@@ -864,61 +811,53 @@
 			"source": "AoA4",
 			"page": 76,
 			"level": 11,
-			"rarity": "Common",
-			"alignment": "N",
-			"size": "Medium",
 			"traits": [
-				"Mindless",
-				"Earth"
+				"n",
+				"medium",
+				"earth",
+				"mindless",
+				"ooze"
 			],
 			"creatureType": [
 				"Ooze"
 			],
 			"perception": {
-				"default": 15
+				"std": 15
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"motion sense 60 feet",
-					"no vision"
-				]
-			},
+			"senses": [
+				{
+					"name": "motion sense",
+					"range": 60
+				},
+				{
+					"name": "no vision"
+				}
+			],
 			"skills": {
 				"Athletics": {
-					"default": 24
+					"std": 24
 				}
 			},
 			"abilityMods": {
-				"Str": 7,
-				"Dex": -5,
-				"Con": 5,
-				"Int": -5,
-				"Wis": 0,
-				"Cha": -5
+				"str": 7,
+				"dex": -5,
+				"con": 5,
+				"int": -5,
+				"wis": 0,
+				"cha": -5
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"A carnivorous crystal can sense nearby motion through vibration and air movement."
-					],
-					"name": "Motion Sense"
-				}
-			],
 			"ac": {
-				"default": 20
+				"std": 20
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 20
+				"fort": {
+					"std": 20
 				},
-				"Ref": {
-					"default": 10
+				"ref": {
+					"std": 10
 				},
-				"Will": {
-					"default": 15
+				"will": {
+					"std": 15
 				}
 			},
 			"hp": [
@@ -927,16 +866,12 @@
 					"abilities": null
 				}
 			],
-			"immunities": {
-				"damage": [
-					"acid",
-					"mental",
-					"precision"
-				],
-				"condition": [
-					"critical hits (except bludgeoning or sonic)"
-				]
-			},
+			"immunities": [
+				"acid",
+				"mental",
+				"precision",
+				"critical hits (except bludgeoning or sonic)"
+			],
 			"weaknesses": [
 				{
 					"amount": 10,
@@ -953,25 +888,6 @@
 					"name": "slashing"
 				}
 			],
-			"abilitiesMid": [
-				{
-					"entries": [
-						"Whenever the carnivorous crystal takes a critical hit from an attack that deals bludgeoning or sonic damage, or it critically fails its saving throw against an effect that deals bludgeoning or sonic damage, it might split. If the carnivorous crystal has at least 15 HP remaining after taking the damage, it splits into two identical crystals, each with half the original's Hit Points. When the carnivorous crystal splits, one crystal remains in the same space and the other appears in an adjacent unoccupied space. If no adjacent space is unoccupied, the crystal automatically pushes creatures out of the way to fill a space."
-					],
-					"name": "Split"
-				},
-				{
-					"traits": [
-						"auditory",
-						"aura",
-						"mental"
-					],
-					"entries": [
-						"60 feet. A creature that enters or starts its turn within the aura must succeed at a DC 28 Will save or become {@condition stunned|CRB|stunned 1}."
-					],
-					"name": "Subsonic Hum"
-				}
-			],
 			"speed": {
 				"walk": 10,
 				"climb": 10
@@ -982,7 +898,7 @@
 					"name": "pseudopod",
 					"attack": 24,
 					"traits": [
-						"versatile S"
+						"versatile s"
 					],
 					"effects": [],
 					"damage": "{@damage 4d8+7} piercing",
@@ -991,72 +907,87 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"traits": [
-						"attack"
-					],
-					"requirements": "The crystal has a creature engulfed.",
-					"entries": [
-						"The engulfed creature must succeed at a DC 28 Fortitude save or become {@condition slowed|CRB|slowed 1} until it is no longer engulfed. If the creature is already {@condition slowed}, it becomes {@condition petrified} as it is turned into crystal and expelled by the carnivorous crystal onto the ground. In {@dice 1d4} hours, the {@condition petrified} victim shatters and a new carnivorous crystal emerges from the remains."
-					],
-					"name": "Crystallize"
-				},
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"entries": [
-						"DC 28, {@damage 2d6} slashing, {@action Escape} DC 28, Rupture 25 (bludgeoning only)."
-					],
-					"name": "Engulf",
-					"generic": true
-				},
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"traits": [
-						"concentrate"
-					],
-					"entries": [
-						"Until the next time it acts, the carnivorous crystal appears to be a mundane crystal formation. It has an automatic result of 40 on."
-					],
-					"name": "Freeze"
-				},
-				{
-					"entries": [
-						"{@skill Stealth} checks and DCs to pass as a crystal formation."
-					],
-					"name": "Deception and"
-				},
-				{
-					"entries": [
-						"If a carnivorous crystal hits with an attack and rolls a natural 19 on the d20 roll, the attack is a critical hit. This has no effect if the 19 would be a failure."
-					],
-					"name": "Razor Sharp"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"piercing",
-					"slashing"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"A carnivorous crystal can sense nearby motion through vibration and air movement."
+						],
+						"name": "Motion Sense"
+					}
 				],
-				"condition": [
-					"{@condition slowed}",
-					"{@condition stunned}"
+				"mid": [
+					{
+						"entries": [
+							"Whenever the carnivorous crystal takes a critical hit from an attack that deals bludgeoning or sonic damage, or it critically fails its saving throw against an effect that deals bludgeoning or sonic damage, it might split. If the carnivorous crystal has at least 15 HP remaining after taking the damage, it splits into two identical crystals, each with half the original's Hit Points. When the carnivorous crystal splits, one crystal remains in the same space and the other appears in an adjacent unoccupied space. If no adjacent space is unoccupied, the crystal automatically pushes creatures out of the way to fill a space."
+						],
+						"name": "Split"
+					},
+					{
+						"traits": [
+							"auditory",
+							"aura",
+							"mental"
+						],
+						"entries": [
+							"60 feet. A creature that enters or starts its turn within the aura must succeed at a DC 28 Will save or become {@condition stunned|CRB|stunned 1}."
+						],
+						"name": "Subsonic Hum"
+					}
+				],
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"attack"
+						],
+						"requirements": "The crystal has a creature engulfed.",
+						"entries": [
+							"The engulfed creature must succeed at a DC 28 Fortitude save or become {@condition slowed|CRB|slowed 1} until it is no longer engulfed. If the creature is already {@condition slowed}, it becomes {@condition petrified} as it is turned into crystal and expelled by the carnivorous crystal onto the ground. In {@dice 1d4} hours, the {@condition petrified} victim shatters and a new carnivorous crystal emerges from the remains."
+						],
+						"name": "Crystallize"
+					},
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"DC 28, {@damage 2d6} slashing, {@action Escape} DC 28, Rupture 25 (bludgeoning only)."
+						],
+						"name": "Engulf",
+						"generic": true
+					},
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"concentrate"
+						],
+						"entries": [
+							"Until the next time it acts, the carnivorous crystal appears to be a mundane crystal formation. It has an automatic result of 40 on."
+						],
+						"name": "Freeze"
+					},
+					{
+						"entries": [
+							"{@skill Stealth} checks and DCs to pass as a crystal formation."
+						],
+						"name": "Deception and"
+					},
+					{
+						"entries": [
+							"If a carnivorous crystal hits with an attack and rolls a natural 19 on the d20 roll, the attack is a critical hit. This has no effect if the 19 would be a failure."
+						],
+						"name": "Razor Sharp"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"CC"
-			]
+			}
 		},
 		{
 			"name": "Corrupt Guard",
@@ -1064,26 +995,24 @@
 			"source": "AoA4",
 			"page": 27,
 			"level": 12,
-			"rarity": "Rare",
-			"alignment": "LE",
-			"size": "Medium",
 			"traits": [
-				"Dwarf"
+				"rare",
+				"le",
+				"medium",
+				"dwarf",
+				"humanoid"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 22
+				"std": 22
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Common",
@@ -1093,66 +1022,47 @@
 			},
 			"skills": {
 				"Athletics": {
-					"default": 25
+					"std": 25
 				},
 				"Diplomacy": {
-					"default": 19
+					"std": 19
 				},
 				"Intimidation": {
-					"default": 21
+					"std": 21
 				},
 				"Society": {
-					"default": 20
+					"std": 20
 				},
 				"Stealth": {
-					"default": 25
+					"std": 25
 				}
 			},
 			"abilityMods": {
-				"Str": 7,
-				"Dex": 3,
-				"Con": 5,
-				"Int": 0,
-				"Wis": 4,
-				"Cha": 1
+				"str": 7,
+				"dex": 3,
+				"con": 5,
+				"int": 0,
+				"wis": 4,
+				"cha": 1
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+20, {@skill Stealth} +25 Str +7, Dex +3, Con +5, Int +0, Wis +4, Cha +1 Items +1 resilient breastplate, +1 composite shortbow (50 arrows), key to Chiselrock's Prison, +1 striking maul."
-					],
-					"name": "Society"
-				}
-			],
 			"ac": {
-				"default": 32
+				"std": 32
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 24
+				"fort": {
+					"std": 24
 				},
-				"Ref": {
-					"default": 20
+				"ref": {
+					"std": 20
 				},
-				"Will": {
-					"default": 21
+				"will": {
+					"std": 21
 				}
 			},
 			"hp": [
 				{
 					"hp": 215,
 					"abilities": null
-				}
-			],
-			"abilitiesMid": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"entries": [],
-					"name": "Attack of Opportunity",
-					"generic": true
 				}
 			],
 			"speed": {
@@ -1188,31 +1098,40 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"entries": [
-						"A corrupt guard can dash their foe to the ground with a single blow. They attempt a single melee {@action Strike}. If this {@action Strike} hits, they also apply the critical success effect of a {@action Trip}. If they used a twohanded melee weapon (such as a maul) for the {@action Strike}, they can use the weapon's damage die size instead of the regular die size for the damage from a critical {@action Trip}, and they ignore {@action Trip}'s requirement to have a hand free."
-					],
-					"name": "Improved Knockdown",
-					"generic": true
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning",
-					"piercing"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"+20, {@skill Stealth} +25 Str +7, Dex +3, Con +5, Int +0, Wis +4, Cha +1 Items +1 resilient breastplate, +1 composite shortbow (50 arrows), key to Chiselrock's Prison, +1 striking maul."
+						],
+						"name": "Society"
+					}
 				],
-				"condition": []
-			},
-			"misc": [
-				"MA",
-				"RA",
-				"UW"
-			]
+				"mid": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"entries": [],
+						"name": "Attack of Opportunity",
+						"generic": true
+					}
+				],
+				"bot": [
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"A corrupt guard can dash their foe to the ground with a single blow. They attempt a single melee {@action Strike}. If this {@action Strike} hits, they also apply the critical success effect of a {@action Trip}. If they used a twohanded melee weapon (such as a maul) for the {@action Strike}, they can use the weapon's damage die size instead of the regular die size for the damage from a critical {@action Trip}, and they ignore {@action Trip}'s requirement to have a hand free."
+						],
+						"name": "Improved Knockdown",
+						"generic": true
+					}
+				]
+			}
 		},
 		{
 			"name": "Dalos",
@@ -1220,27 +1139,25 @@
 			"source": "AoA4",
 			"page": 77,
 			"level": 13,
-			"rarity": "Uncommon",
-			"alignment": "CE",
-			"size": "Huge",
 			"traits": [
-				"Fire",
-				"Earth"
+				"uncommon",
+				"ce",
+				"huge",
+				"earth",
+				"fey",
+				"fire"
 			],
 			"creatureType": [
 				"Fey"
 			],
 			"perception": {
-				"default": 23
+				"std": 23
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"low-light vision"
-				]
-			},
+			"senses": [
+				{
+					"name": "low-light vision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Ignan",
@@ -1251,36 +1168,35 @@
 			},
 			"skills": {
 				"Athletics": {
-					"default": 29
+					"std": 29
 				},
 				"Nature": {
-					"default": 23
+					"std": 23
 				},
 				"Survival": {
-					"default": 23
+					"std": 23
 				}
 			},
 			"abilityMods": {
-				"Str": 8,
-				"Dex": 4,
-				"Con": 6,
-				"Int": 2,
-				"Wis": 4,
-				"Cha": 2
+				"str": 8,
+				"dex": 4,
+				"con": 6,
+				"int": 2,
+				"wis": 4,
+				"cha": 2
 			},
-			"abilitiesTop": [],
 			"ac": {
-				"default": 34
+				"std": 34
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 27
+				"fort": {
+					"std": 27
 				},
-				"Ref": {
-					"default": 19
+				"ref": {
+					"std": 19
 				},
-				"Will": {
-					"default": 23
+				"will": {
+					"std": 23
 				}
 			},
 			"hp": [
@@ -1289,12 +1205,9 @@
 					"abilities": null
 				}
 			],
-			"immunities": {
-				"damage": [
-					"fire"
-				],
-				"condition": []
-			},
+			"immunities": [
+				"fire"
+			],
 			"weaknesses": [
 				{
 					"amount": 10,
@@ -1308,28 +1221,6 @@
 				{
 					"amount": 15,
 					"name": "physical"
-				}
-			],
-			"abilitiesMid": [
-				{
-					"traits": [
-						"aura",
-						"fire"
-					],
-					"entries": [
-						"10 feet, {@damage 3d6} fire damage (DC 29 basic Reflex save)"
-					],
-					"name": "Volcanic Heat"
-				},
-				{
-					"traits": [
-						"fire"
-					],
-					"entries": [
-						"Whenever the dalos takes damage from a melee {@action Strike}, magma splashes from its open wound and sticks to nearby creatures.",
-						"Each creature in a 10-foot emanation must attempt a DC 31 Reflex save. On a failure, the creature takes {@damage 3d6} {@condition persistent damage ||persistent fire damage} as the superheated rock sticks to them and cools. The DC to end this {@condition persistent damage} decreases by 5 each turn after the first as the magma cools."
-					],
-					"name": "Magma Splash"
 				}
 			],
 			"speed": {
@@ -1390,68 +1281,79 @@
 					}
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 3,
-						"unit": "action"
+			"abilities": {
+				"mid": [
+					{
+						"traits": [
+							"aura",
+							"fire"
+						],
+						"entries": [
+							"10 feet, {@damage 3d6} fire damage (DC 29 basic Reflex save)"
+						],
+						"name": "Volcanic Heat"
 					},
-					"entries": [
-						"The dalos blasts smoke from its head, creating a 20-foot-radius cloud of smoke that drifts to a location within 120 feet.",
-						"This has the effects of obscuring mist."
-					],
-					"name": "Belch Smoke"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"traits": [
-						"fire"
-					],
-					"entries": [
-						"The dalos uses an {@action Interact} action to pluck a rock from its body or the nearby environment, then uses its internal fires to heat a rock it's holding until the rock is red hot. A heated rock that hits a target on a ranged {@action Strike} deals an additional {@damage 4d6} fire damage. Once the dalos heats a rock, that rock retains its heat for 2 rounds before cooling."
-					],
-					"name": "Heat Rock"
-				},
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"traits": [
-						"earth",
-						"fire"
-					],
-					"entries": [
-						"The dalos causes a volcanic explosion to erupt from its head, lobbing a mass of molten rock up to 100 feet. This lava bomb deals {@damage 6d8} fire damage and {@damage 6d8} bludgeoning damage to each creature in a 20-foot radius of its impact point, with a DC 33 basic Reflex save. The dalos can't use Lava Bomb again for {@dice 1d4} rounds."
-					],
-					"name": "Lava Bomb"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"entries": [],
-					"name": "Throw Rock",
-					"generic": true
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning",
-					"fire"
+					{
+						"traits": [
+							"fire"
+						],
+						"entries": [
+							"Whenever the dalos takes damage from a melee {@action Strike}, magma splashes from its open wound and sticks to nearby creatures.",
+							"Each creature in a 10-foot emanation must attempt a DC 31 Reflex save. On a failure, the creature takes {@damage 3d6} {@condition persistent damage ||persistent fire damage} as the superheated rock sticks to them and cools. The DC to end this {@condition persistent damage} decreases by 5 each turn after the first as the magma cools."
+						],
+						"name": "Magma Splash"
+					}
 				],
-				"condition": []
-			},
-			"misc": [
-				"MA",
-				"RC",
-				"RA",
-				"AD"
-			]
+				"bot": [
+					{
+						"activity": {
+							"number": 3,
+							"unit": "action"
+						},
+						"entries": [
+							"The dalos blasts smoke from its head, creating a 20-foot-radius cloud of smoke that drifts to a location within 120 feet.",
+							"This has the effects of obscuring mist."
+						],
+						"name": "Belch Smoke"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"fire"
+						],
+						"entries": [
+							"The dalos uses an {@action Interact} action to pluck a rock from its body or the nearby environment, then uses its internal fires to heat a rock it's holding until the rock is red hot. A heated rock that hits a target on a ranged {@action Strike} deals an additional {@damage 4d6} fire damage. Once the dalos heats a rock, that rock retains its heat for 2 rounds before cooling."
+						],
+						"name": "Heat Rock"
+					},
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"earth",
+							"fire"
+						],
+						"entries": [
+							"The dalos causes a volcanic explosion to erupt from its head, lobbing a mass of molten rock up to 100 feet. This lava bomb deals {@damage 6d8} fire damage and {@damage 6d8} bludgeoning damage to each creature in a 20-foot radius of its impact point, with a DC 33 basic Reflex save. The dalos can't use Lava Bomb again for {@dice 1d4} rounds."
+						],
+						"name": "Lava Bomb"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [],
+						"name": "Throw Rock",
+						"generic": true
+					}
+				]
+			}
 		},
 		{
 			"name": "Deculi",
@@ -1459,24 +1361,26 @@
 			"source": "AoA4",
 			"page": 78,
 			"level": 12,
-			"rarity": "Common",
-			"alignment": "NE",
-			"size": "Large",
+			"traits": [
+				"ne",
+				"large",
+				"beast"
+			],
 			"creatureType": [
 				"Beast"
 			],
 			"perception": {
-				"default": 23
+				"std": 23
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"infrared vision 60 feet",
-					"no vision"
-				]
-			},
+			"senses": [
+				{
+					"name": "infrared vision",
+					"range": 60
+				},
+				{
+					"name": "no vision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Undercommon (can't speak any language)"
@@ -1485,43 +1389,35 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 24
+					"std": 24
 				},
 				"Athletics": {
-					"default": 24
+					"std": 24
 				},
 				"Stealth": {
-					"default": 26
+					"std": 26
 				}
 			},
 			"abilityMods": {
-				"Str": 5,
-				"Dex": 7,
-				"Con": 4,
-				"Int": -3,
-				"Wis": 1,
-				"Cha": 5
+				"str": 5,
+				"dex": 7,
+				"con": 4,
+				"int": -3,
+				"wis": 1,
+				"cha": 5
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"A deculi can detect infrared radiation as a precise sense."
-					],
-					"name": "Infrared Vision"
-				}
-			],
 			"ac": {
-				"default": 33
+				"std": 33
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 21
+				"fort": {
+					"std": 21
 				},
-				"Ref": {
-					"default": 26
+				"ref": {
+					"std": 26
 				},
-				"Will": {
-					"default": 18
+				"will": {
+					"std": 18
 				}
 			},
 			"hp": [
@@ -1530,7 +1426,6 @@
 					"abilities": null
 				}
 			],
-			"abilitiesMid": [],
 			"speed": {
 				"abilities": [
 					"walk in shadow"
@@ -1583,56 +1478,55 @@
 					}
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"traits": [
-						"conjuration",
-						"darkness",
-						"extradimensional",
-						"occult"
-					],
-					"frequency": {
-						"unit": "day",
-						"freq": 1
-					},
-					"entries": [
-						"The deculi creates an extradimensional space adjacent to itself in any 10-foot-by-10-foot area of darkness and enters it. To non-deculis, the extradimensional space looks like an ordinary area of darkness (though effects such as true seeing can see through this illusion). The deculi's infrared vision functions normally between this extradimensional space and the area outside its confines, allowing the deculi to sense what is going on around it, and its innate {@spell darkness} spell also extends to the area around the shadow sanctuary. Attacks cannot be made into or from the extradimensional space. The deculi can {@action Dismiss} this effect to emerge from its shadow sanctuary, but the space it emerges into must be in darkness and must be unobstructed. If the area is obstructed, the deculi is shunted to the nearest available space and takes {@damage 1d6} bludgeoning damage per 5 feet shunted. If the area overlaying the shadow sanctuary becomes illuminated by magical light, the extradimensional space can no longer be accessed and the deculi is trapped within until the area is once again in darkness. The deculi can try to extinguish a magical {@trait light} effect obscuring its sanctuary once per day by attempting to counteract the {@trait light} effect with its darkness innate spell. If a deculi dies (including from hunger, thirst, or asphyxiation) while within the extradimensional space, the shadow sanctuary immediately ends and the deculi's corpse is expelled. If the area is illuminated, the corpse is not expelled until the sanctuary entrance is in darkness once again."
-					],
-					"name": "Create Shadow Sanctuary"
-				},
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"requirements": "The deculi is in its shadow sanctuary.",
-					"entries": [
-						"The deculi Dismisses its shadow sanctuary. It {@action Stride||Strides}, Climbs, or Flies up to its Speed, then makes a fangs {@action Strike} that deals an additional {@damage 4d6} precision damage."
-					],
-					"name": "Shadow Strike"
-				},
-				{
-					"entries": [
-						"When the deculi is Hiding in darkness and {@action Sneak||Sneaks}, it can move up to its full Speed instead of half its Speed."
-					],
-					"name": "Walk in Shadow"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning",
-					"piercing",
-					"precision"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"A deculi can detect infrared radiation as a precise sense."
+						],
+						"name": "Infrared Vision"
+					}
 				],
-				"condition": []
-			},
-			"misc": [
-				"MA"
-			]
+				"bot": [
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"conjuration",
+							"darkness",
+							"extradimensional",
+							"occult"
+						],
+						"frequency": {
+							"unit": "day",
+							"freq": 1
+						},
+						"entries": [
+							"The deculi creates an extradimensional space adjacent to itself in any 10-foot-by-10-foot area of darkness and enters it. To non-deculis, the extradimensional space looks like an ordinary area of darkness (though effects such as true seeing can see through this illusion). The deculi's infrared vision functions normally between this extradimensional space and the area outside its confines, allowing the deculi to sense what is going on around it, and its innate {@spell darkness} spell also extends to the area around the shadow sanctuary. Attacks cannot be made into or from the extradimensional space. The deculi can {@action Dismiss} this effect to emerge from its shadow sanctuary, but the space it emerges into must be in darkness and must be unobstructed. If the area is obstructed, the deculi is shunted to the nearest available space and takes {@damage 1d6} bludgeoning damage per 5 feet shunted. If the area overlaying the shadow sanctuary becomes illuminated by magical light, the extradimensional space can no longer be accessed and the deculi is trapped within until the area is once again in darkness. The deculi can try to extinguish a magical {@trait light} effect obscuring its sanctuary once per day by attempting to counteract the {@trait light} effect with its darkness innate spell. If a deculi dies (including from hunger, thirst, or asphyxiation) while within the extradimensional space, the shadow sanctuary immediately ends and the deculi's corpse is expelled. If the area is illuminated, the corpse is not expelled until the sanctuary entrance is in darkness once again."
+						],
+						"name": "Create Shadow Sanctuary"
+					},
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"requirements": "The deculi is in its shadow sanctuary.",
+						"entries": [
+							"The deculi Dismisses its shadow sanctuary. It {@action Stride||Strides}, Climbs, or Flies up to its Speed, then makes a fangs {@action Strike} that deals an additional {@damage 4d6} precision damage."
+						],
+						"name": "Shadow Strike"
+					},
+					{
+						"entries": [
+							"When the deculi is Hiding in darkness and {@action Sneak||Sneaks}, it can move up to its full Speed instead of half its Speed."
+						],
+						"name": "Walk in Shadow"
+					}
+				]
+			}
 		},
 		{
 			"name": "Devourer",
@@ -1640,23 +1534,23 @@
 			"source": "AoA4",
 			"page": 79,
 			"level": 11,
-			"rarity": "Uncommon",
-			"alignment": "NE",
-			"size": "Large",
+			"traits": [
+				"uncommon",
+				"ne",
+				"large",
+				"undead"
+			],
 			"creatureType": [
 				"Undead"
 			],
 			"perception": {
-				"default": 22
+				"std": 22
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Abyssal",
@@ -1669,42 +1563,41 @@
 			},
 			"skills": {
 				"Arcana": {
-					"default": 21
+					"std": 21
 				},
 				"Deception": {
-					"default": 21
+					"std": 21
 				},
 				"Intimidation": {
-					"default": 23
+					"std": 23
 				},
 				"Occultism": {
-					"default": 23
+					"std": 23
 				},
 				"Stealth": {
-					"default": 20
+					"std": 20
 				}
 			},
 			"abilityMods": {
-				"Str": 7,
-				"Dex": 3,
-				"Con": 5,
-				"Int": 5,
-				"Wis": 4,
-				"Cha": 5
+				"str": 7,
+				"dex": 3,
+				"con": 5,
+				"int": 5,
+				"wis": 4,
+				"cha": 5
 			},
-			"abilitiesTop": [],
 			"ac": {
-				"default": 31
+				"std": 31
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 20
+				"fort": {
+					"std": 20
 				},
-				"Ref": {
-					"default": 18
+				"ref": {
+					"std": 18
 				},
-				"Will": {
-					"default": 24
+				"will": {
+					"std": 24
 				}
 			},
 			"hp": [
@@ -1715,25 +1608,10 @@
 					]
 				}
 			],
-			"immunities": {
-				"damage": [],
-				"condition": [
-					"death effects",
-					"disease",
-					"paralyzed"
-				]
-			},
-			"abilitiesMid": [
-				{
-					"traits": [
-						"abjuration",
-						"divine"
-					],
-					"entries": [
-						"A spellcaster can target a devourer with a mental spell, banishment, bind soul, divine decree, divine wrath, possession, spirit blast, or spirit song to attempt to counteract the devourer's Devour Soul effect. If this counteract attempt succeeds, the trapped soul is released (though the creature remains dead), and the devourer can't use any soul charges from the creature. Devourers are otherwise immune to these spells."
-					],
-					"name": "Spell Deflection"
-				}
+			"immunities": [
+				"death effects",
+				"disease",
+				"paralyzed"
 			],
 			"speed": {
 				"walk": 30,
@@ -1768,54 +1646,54 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"traits": [
-						"death",
-						"divine",
-						"necromancy"
-					],
-					"entries": [
-						"The devourer touches a creature within reach, dealing {@damage 8d6} negative damage (DC 26 basic Fortitude save). If a creature is slain by this attack, its soul becomes trapped within the devourer. While trapped, a creature cannot be resurrected except by powerful magic such as a {@spell wish} spell. Destroying the devourer or successfully counteracting Devour Soul (see spell deflection) releases the soul. The devourer can hold only one soul at a time.",
-						"A soul has 5 soul charges per level. The devourer can expend charges to cast spells (see the soul spells ability below). If the soul is freed and the creature returns to life, the creature is {@condition drained|CRB|drained 1} for every 5 soul charges expended. If reduced to 0 charges, the soul is consumed and can be restored to life only by powerful magic such as wish."
-					],
-					"name": "Devour Soul"
-				},
-				{
-					"traits": [
-						"divine",
-						"necromancy"
-					],
-					"entries": [
-						"When the devourer damages a living creature with its claw {@action Strike}, the devourer gains 10 temporary Hit Points and the creature must succeed at a DC 24 Fortitude save or become {@condition drained|CRB|drained 1}. Further damage dealt by the devourer increases the amount of drain by 1 on a failed save, to a maximum of {@condition drained|CRB|drained 4}."
-					],
-					"name": "Drain Life"
-				},
-				{
-					"entries": [
-						"A devourer casts occult innate spells, but to do so must expend a number of soul charges equal to the spell's level (similar to casting a spell using charges from a staff). It can heighten any spell to a maximum of 6th level by expending more charges as it Casts the Spell. When encountered, a devourer typically has one trapped soul with 10 soul charges."
-					],
-					"name": "Soul Spells"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"negative",
-					"slashing"
+			"abilities": {
+				"mid": [
+					{
+						"traits": [
+							"abjuration",
+							"divine"
+						],
+						"entries": [
+							"A spellcaster can target a devourer with a mental spell, banishment, bind soul, divine decree, divine wrath, possession, spirit blast, or spirit song to attempt to counteract the devourer's Devour Soul effect. If this counteract attempt succeeds, the trapped soul is released (though the creature remains dead), and the devourer can't use any soul charges from the creature. Devourers are otherwise immune to these spells."
+						],
+						"name": "Spell Deflection"
+					}
 				],
-				"condition": [
-					"{@condition drained}"
+				"bot": [
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"death",
+							"divine",
+							"necromancy"
+						],
+						"entries": [
+							"The devourer touches a creature within reach, dealing {@damage 8d6} negative damage (DC 26 basic Fortitude save). If a creature is slain by this attack, its soul becomes trapped within the devourer. While trapped, a creature cannot be resurrected except by powerful magic such as a {@spell wish} spell. Destroying the devourer or successfully counteracting Devour Soul (see spell deflection) releases the soul. The devourer can hold only one soul at a time.",
+							"A soul has 5 soul charges per level. The devourer can expend charges to cast spells (see the soul spells ability below). If the soul is freed and the creature returns to life, the creature is {@condition drained|CRB|drained 1} for every 5 soul charges expended. If reduced to 0 charges, the soul is consumed and can be restored to life only by powerful magic such as wish."
+						],
+						"name": "Devour Soul"
+					},
+					{
+						"traits": [
+							"divine",
+							"necromancy"
+						],
+						"entries": [
+							"When the devourer damages a living creature with its claw {@action Strike}, the devourer gains 10 temporary Hit Points and the creature must succeed at a DC 24 Fortitude save or become {@condition drained|CRB|drained 1}. Further damage dealt by the devourer increases the amount of drain by 1 on a failed save, to a maximum of {@condition drained|CRB|drained 4}."
+						],
+						"name": "Drain Life"
+					},
+					{
+						"entries": [
+							"A devourer casts occult innate spells, but to do so must expend a number of soul charges equal to the spell's level (similar to casting a spell using charges from a staff). It can heighten any spell to a maximum of 6th level by expending more charges as it Casts the Spell. When encountered, a devourer typically has one trapped soul with 10 soul charges."
+						],
+						"name": "Soul Spells"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"RC",
-				"CC"
-			]
+			}
 		},
 		{
 			"name": "Dragonscarred Dead",
@@ -1823,27 +1701,27 @@
 			"source": "AoA4",
 			"page": 82,
 			"level": 13,
-			"rarity": "Uncommon",
-			"alignment": "NE",
-			"size": "Medium",
 			"traits": [
-				"Fire"
+				"uncommon",
+				"ne",
+				"medium",
+				"fire",
+				"undead"
 			],
 			"creatureType": [
 				"Undead"
 			],
 			"perception": {
-				"default": 24
+				"std": 24
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision",
-					"guardian sense"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"name": "guardian sense"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Common",
@@ -1854,51 +1732,38 @@
 			},
 			"skills": {
 				"Athletics": {
-					"default": 25
+					"std": 25
 				},
 				"Intimidation": {
-					"default": 21
+					"std": 21
 				},
 				"Dragon Lore": {
-					"default": 22
+					"std": 22
 				}
 			},
 			"abilityMods": {
-				"Str": 6,
-				"Dex": 5,
-				"Con": 4,
-				"Int": 1,
-				"Wis": 1,
-				"Cha": 2
+				"str": 6,
+				"dex": 5,
+				"con": 4,
+				"int": 1,
+				"wis": 1,
+				"cha": 2
 			},
 			"items": [
 				"{@condition broken} greatsword"
 			],
-			"abilitiesTop": [
-				{
-					"traits": [
-						"arcane",
-						"detection",
-						"divination"
-					],
-					"entries": [
-						"The dragonscarred dead is immediately aware of any intruder that enters the lair of its creator dragon. It does not know the exact location of the intruder but remains aware of the intruder's presence until the intruder either leaves or is destroyed."
-					],
-					"name": "Guardian Sense"
-				}
-			],
 			"ac": {
-				"default": 33
+				"std": 33
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 25
+				"fort": {
+					"std": 25
 				},
-				"Ref": {
-					"default": 20
+				"ref": {
+					"std": 20
 				},
-				"Will": {
-					"default": 22
+				"will": {
+					"std": 22
 				}
 			},
 			"hp": [
@@ -1909,16 +1774,12 @@
 					]
 				}
 			],
-			"immunities": {
-				"damage": [
-					"fire"
-				],
-				"condition": [
-					"death effects",
-					"disease",
-					"paralyzed"
-				]
-			},
+			"immunities": [
+				"fire",
+				"death effects",
+				"disease",
+				"paralyzed"
+			],
 			"weaknesses": [
 				{
 					"amount": 10,
@@ -1927,21 +1788,6 @@
 				{
 					"amount": 10,
 					"name": "good"
-				}
-			],
-			"abilitiesMid": [
-				{
-					"traits": [
-						"aura",
-						"emotion",
-						"fear",
-						"mental"
-					],
-					"entries": [
-						"60 feet, DC 29."
-					],
-					"name": "Frightful Presence",
-					"generic": true
 				}
 			],
 			"speed": {
@@ -1954,7 +1800,7 @@
 					"attack": 27,
 					"traits": [
 						"magical",
-						"versatile P"
+						"versatile p"
 					],
 					"effects": [],
 					"damage": "{@damage 1d12+9} slashing plus {@damage 2d6} negative plus {@damage 3d6} fire",
@@ -1965,58 +1811,75 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"entries": [
-						"{@damage 1d12+9} slashing plus {@damage 2d6} negative plus {@damage 3d6} fire."
-					],
-					"name": "P), Damage"
-				},
-				{
-					"entries": [
-						"The dragonscarred dead's weapon is magically scorched by a dragon's breath. When wielded by the dragonscarred dead who carried it in life, the sword deals an extra {@damage 2d6} negative damage and {@damage 3d6} fire damage. In the hands of any other creature, it is merely a {@condition broken} greatsword."
-					],
-					"name": "Breath-Seared Sword"
-				},
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"traits": [
-						"arcane",
-						"enchantment",
-						"mental",
-						"visual"
-					],
-					"entries": [
-						"The dragonscarred dead focuses its boundless frustration in a gaze targeting one creature it can see within 30 feet. That creature must attempt a DC 30 Will save.",
-						{
-							"type": "successDegree",
-							"entries": {
-								"Critical Success": "The creature is unaffected.",
-								"Success": "The creature is {@condition stunned|CRB|stunned 1}.",
-								"Failure": "The creature is {@condition stunned} for 1 round.",
-								"Critical Failure": "The creature is {@condition stunned} for {@dice 1d4} rounds and is {@condition fatigued}."
-							}
-						}
-					],
-					"name": "Glare of Rage"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"negative",
-					"slashing"
+			"abilities": {
+				"top": [
+					{
+						"traits": [
+							"arcane",
+							"detection",
+							"divination"
+						],
+						"entries": [
+							"The dragonscarred dead is immediately aware of any intruder that enters the lair of its creator dragon. It does not know the exact location of the intruder but remains aware of the intruder's presence until the intruder either leaves or is destroyed."
+						],
+						"name": "Guardian Sense"
+					}
 				],
-				"condition": [
-					"{@condition stunned}"
+				"mid": [
+					{
+						"traits": [
+							"aura",
+							"emotion",
+							"fear",
+							"mental"
+						],
+						"entries": [
+							"60 feet, DC 29."
+						],
+						"name": "Frightful Presence",
+						"generic": true
+					}
+				],
+				"bot": [
+					{
+						"entries": [
+							"{@damage 1d12+9} slashing plus {@damage 2d6} negative plus {@damage 3d6} fire."
+						],
+						"name": "P), Damage"
+					},
+					{
+						"entries": [
+							"The dragonscarred dead's weapon is magically scorched by a dragon's breath. When wielded by the dragonscarred dead who carried it in life, the sword deals an extra {@damage 2d6} negative damage and {@damage 3d6} fire damage. In the hands of any other creature, it is merely a {@condition broken} greatsword."
+						],
+						"name": "Breath-Seared Sword"
+					},
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"arcane",
+							"enchantment",
+							"mental",
+							"visual"
+						],
+						"entries": [
+							"The dragonscarred dead focuses its boundless frustration in a gaze targeting one creature it can see within 30 feet. That creature must attempt a DC 30 Will save.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": "The creature is unaffected.",
+									"Success": "The creature is {@condition stunned|CRB|stunned 1}.",
+									"Failure": "The creature is {@condition stunned} for 1 round.",
+									"Critical Failure": "The creature is {@condition stunned} for {@dice 1d4} rounds and is {@condition fatigued}."
+								}
+							}
+						],
+						"name": "Glare of Rage"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"CC"
-			]
+			}
 		},
 		{
 			"name": "Duergar Slave Lord",
@@ -2024,27 +1887,25 @@
 			"source": "AoA4",
 			"page": 50,
 			"level": 13,
-			"rarity": "Rare",
-			"alignment": "LE",
-			"size": "Medium",
 			"traits": [
-				"Duergar",
-				"Dwarf"
+				"rare",
+				"le",
+				"medium",
+				"duergar",
+				"dwarf",
+				"humanoid"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 26
+				"std": 26
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Common",
@@ -2055,72 +1916,50 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 25
+					"std": 25
 				},
 				"Athletics": {
-					"default": 23
+					"std": 23
 				},
 				"Intimidation": {
-					"default": 22
+					"std": 22
 				},
 				"Society": {
-					"default": 21
+					"std": 21
 				},
 				"Stealth": {
-					"default": 27
+					"std": 27
 				},
 				"Survival": {
-					"default": 26
+					"std": 26
 				}
 			},
 			"abilityMods": {
-				"Str": 4,
-				"Dex": 8,
-				"Con": 3,
-				"Int": 2,
-				"Wis": 5,
-				"Cha": 3
+				"str": 4,
+				"dex": 8,
+				"con": 3,
+				"int": 2,
+				"wis": 5,
+				"cha": 3
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+21, {@skill Stealth} +27, {@skill Survival} +26 Str +4, Dex +8, Con +3, Int +2, Wis +5, Cha +3 Items +2 striking composite longbow (100 arrows), +1 striking hatchet (2), key to the Temple of All Gods, +1 resilient studded leather."
-					],
-					"name": "Society"
-				}
-			],
 			"ac": {
-				"default": 35
+				"std": 35
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 21
+				"fort": {
+					"std": 21
 				},
-				"Ref": {
-					"default": 28
+				"ref": {
+					"std": 28
 				},
-				"Will": {
-					"default": 23
+				"will": {
+					"std": 23
 				}
 			},
 			"hp": [
 				{
 					"hp": 240,
 					"abilities": null
-				}
-			],
-			"abilitiesMid": [
-				{
-					"entries": [
-						"When a duergar slave lord rolls a success on a Reflex save, they get a critical success instead.",
-						"When they roll a critical failure on a Reflex save, they get a failure instead. Finally, when they fail a Reflex save against a damaging effect, they take half damage."
-					],
-					"name": "Improved Evasion"
-				},
-				{
-					"entries": [],
-					"name": "Light Blindness",
-					"generic": true
 				}
 			],
 			"speed": {
@@ -2135,7 +1974,7 @@
 						"agile",
 						"finesse",
 						"magical",
-						"versatile S"
+						"versatile s"
 					],
 					"effects": [],
 					"damage": "{@damage 2d6+10} slashing",
@@ -2188,54 +2027,66 @@
 					}
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"traits": [
-						"concentrate"
-					],
-					"entries": [
-						"The slave lord designates as its prey a single creature that they can see or hear or that they are {@action Track||Tracking}. They gain a +2 circumstance bonus."
-					],
-					"name": "Hunt Prey"
-				},
-				{
-					"entries": [
-						"{@skill Perception} checks when they {@action Seek} their prey and a +2 circumstance bonus to {@skill Survival} checks when they track their prey. They also ignore the penalty for making ranged attacks within their second range increment against their prey.",
-						"The first time a slave lord hits their hunted prey in a round, they deal {@dice 2d8} additional precision damage. A slave lord can have only one prey designated at a time."
-					],
-					"name": "to"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"frequency": {
-						"unit": "round",
-						"freq": 1
-					},
-					"entries": [
-						"The slave lord makes two bow Strikes or two melee Strikes, each using a different weapon. These Strikes must target the slave lord's prey. If both Strikes hit, combine their damage for the purpose of resistances and weaknesses."
-					],
-					"name": "Hunter's Flurry"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"piercing",
-					"slashing"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"+21, {@skill Stealth} +27, {@skill Survival} +26 Str +4, Dex +8, Con +3, Int +2, Wis +5, Cha +3 Items +2 striking composite longbow (100 arrows), +1 striking hatchet (2), key to the Temple of All Gods, +1 resilient studded leather."
+						],
+						"name": "Society"
+					}
 				],
-				"condition": []
-			},
-			"misc": [
-				"MA",
-				"RA",
-				"UW"
-			]
+				"mid": [
+					{
+						"entries": [
+							"When a duergar slave lord rolls a success on a Reflex save, they get a critical success instead.",
+							"When they roll a critical failure on a Reflex save, they get a failure instead. Finally, when they fail a Reflex save against a damaging effect, they take half damage."
+						],
+						"name": "Improved Evasion"
+					},
+					{
+						"entries": [],
+						"name": "Light Blindness",
+						"generic": true
+					}
+				],
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"concentrate"
+						],
+						"entries": [
+							"The slave lord designates as its prey a single creature that they can see or hear or that they are {@action Track||Tracking}. They gain a +2 circumstance bonus."
+						],
+						"name": "Hunt Prey"
+					},
+					{
+						"entries": [
+							"{@skill Perception} checks when they {@action Seek} their prey and a +2 circumstance bonus to {@skill Survival} checks when they track their prey. They also ignore the penalty for making ranged attacks within their second range increment against their prey.",
+							"The first time a slave lord hits their hunted prey in a round, they deal {@dice 2d8} additional precision damage. A slave lord can have only one prey designated at a time."
+						],
+						"name": "to"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"frequency": {
+							"unit": "round",
+							"freq": 1
+						},
+						"entries": [
+							"The slave lord makes two bow Strikes or two melee Strikes, each using a different weapon. These Strikes must target the slave lord's prey. If both Strikes hit, combine their damage for the purpose of resistances and weaknesses."
+						],
+						"name": "Hunter's Flurry"
+					}
+				]
+			}
 		},
 		{
 			"name": "Falrok",
@@ -2243,26 +2094,24 @@
 			"source": "AoA4",
 			"page": 46,
 			"level": 14,
-			"rarity": "Unique",
-			"alignment": "CE",
-			"size": "Medium",
 			"traits": [
-				"Ghoul"
+				"unique",
+				"ce",
+				"medium",
+				"ghoul",
+				"undead"
 			],
 			"creatureType": [
 				"Undead"
 			],
 			"perception": {
-				"default": 28
+				"std": 28
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Draconic",
@@ -2274,67 +2123,47 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 29
+					"std": 29
 				},
 				"Crafting": {
-					"default": 24
+					"std": 24
 				},
 				"Deception": {
-					"default": 27
+					"std": 27
 				},
 				"Diplomacy": {
-					"default": 27
+					"std": 27
 				},
 				"Society": {
-					"default": 24
+					"std": 24
 				},
 				"Stealth": {
-					"default": 29
+					"std": 29
 				},
 				"Saggorak Lore": {
-					"default": 24
+					"std": 24
 				}
 			},
 			"abilityMods": {
-				"Str": 4,
-				"Dex": 8,
-				"Con": 5,
-				"Int": 3,
-				"Wis": 2,
-				"Cha": 6
+				"str": 4,
+				"dex": 8,
+				"con": 5,
+				"int": 3,
+				"wis": 2,
+				"cha": 6
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+27, {@skill Lore||Saggorak Lore} +24, {@skill Society} +24,"
-					],
-					"name": "Diplomacy"
-				},
-				{
-					"entries": [
-						"+29 Str +4, Dex +8, Con +5, Int +3, Wis +2, Cha +6."
-					],
-					"name": "Stealth"
-				},
-				{
-					"entries": [
-						"Falrok's flesh is infused with lazurite, and he gains the benefits undead creatures gain from this mineral at all times. When in an area infused with lazurite, such as the Sanctum of the Starved, these benefits increase to a +3 circumstance bonus to saving throws against {@trait positive} effects. This infusion also grants Falrok his resistance to positive damage."
-					],
-					"name": "Lazurite-Infused Flesh"
-				}
-			],
 			"ac": {
-				"default": 37
+				"std": 37
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 26
+				"fort": {
+					"std": 26
 				},
-				"Ref": {
-					"default": 29
+				"ref": {
+					"std": 29
 				},
-				"Will": {
-					"default": 23
+				"will": {
+					"std": 23
 				}
 			},
 			"hp": [
@@ -2345,24 +2174,8 @@
 					]
 				}
 			],
-			"immunities": {
-				"damage": [],
-				"condition": [
-					"death effects"
-				]
-			},
-			"abilitiesMid": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"trigger": "A creature within Falrok's melee reach is hit by a melee attack from one of his allies.",
-					"entries": [
-						"When Falrok's enemy is hit by one of his allies, he capitalizes upon the distraction, making a {@action Strike} against the triggering creature."
-					],
-					"name": "Opportune Backstab"
-				}
+			"immunities": [
+				"death effects"
 			],
 			"speed": {
 				"walk": 30,
@@ -2402,117 +2215,136 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"+27, {@skill Lore||Saggorak Lore} +24, {@skill Society} +24,"
+						],
+						"name": "Diplomacy"
 					},
-					"traits": [
-						"manipulate"
-					],
-					"requirements": "Falrok is adjacent to the corpse of a creature that died within the last hour.",
-					"entries": [
-						"Falrok devours a chunk of the corpse and regains {@dice 8d6} hit points. He can regain Hit Points from any given corpse only once."
-					],
-					"name": "Consume Flesh"
-				},
-				{
-					"entries": [
-						{
-							"type": "affliction",
-							"name": "",
-							"traits": [
-								"disease",
-								"virulent"
-							],
-							"note": "",
-							"DC": 34,
-							"savingThrow": "Fortitude",
-							"stages": [
-								{
-									"stage": 1,
-									"entry": "carrier with no ill effect",
-									"duration": "1 day"
-								},
-								{
-									"stage": 2,
-									"entry": "{@damage 4d8} negative damage and regains half as many Hit Points from all healing",
-									"duration": "1 day"
-								},
-								{
-									"stage": 3,
-									"entry": "{@damage 4d8} negative damage and gains no benefit from healing",
-									"duration": "1 day"
-								},
-								{
-									"stage": 4,
-									"entry": "dead, and rises as a ghast the next midnight.",
-									"duration": null
-								}
-							]
-						}
-					],
-					"name": "Ghast Fever"
-				},
-				{
-					"traits": [
-						"incapacitation",
-						"occult",
-						"necromancy"
-					],
-					"entries": [
-						"Any living creature hit by Falrok's attack must succeed at a DC 34 Fortitude save or become {@condition paralyzed}.",
-						"It can attempt a new save at the end of each of its turns, and the DC cumulatively decreases by 1 on each such save."
-					],
-					"name": "Paralysis"
-				},
-				{
-					"entries": [
-						"{@damage 4d6} precision damage."
-					],
-					"name": "Sneak Attack",
-					"generic": true
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
+					{
+						"entries": [
+							"+29 Str +4, Dex +8, Con +5, Int +3, Wis +2, Cha +6."
+						],
+						"name": "Stealth"
 					},
-					"traits": [
-						"move"
-					],
-					"entries": [
-						"Falrok jumps up to half his Speed. This movement doesn't trigger reactions."
-					],
-					"name": "Swift Leap"
-				},
-				{
-					"traits": [
-						"successfully"
-					],
-					"entries": [
-						"Feints, the target is {@condition flat-footed} against melee attacks he attempts against it until the end of his next turn. On a critical success, the target is {@condition flat-footed} against all melee attacks until the end of their next turn, not just Falrok's."
-					],
-					"name": "Scoundrel When Falrok"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"negative",
-					"piercing",
-					"precision",
-					"slashing"
+					{
+						"entries": [
+							"Falrok's flesh is infused with lazurite, and he gains the benefits undead creatures gain from this mineral at all times. When in an area infused with lazurite, such as the Sanctum of the Starved, these benefits increase to a +3 circumstance bonus to saving throws against {@trait positive} effects. This infusion also grants Falrok his resistance to positive damage."
+						],
+						"name": "Lazurite-Infused Flesh"
+					}
 				],
-				"condition": [
-					"{@condition flat-footed}",
-					"{@condition paralyzed}"
+				"mid": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"trigger": "A creature within Falrok's melee reach is hit by a melee attack from one of his allies.",
+						"entries": [
+							"When Falrok's enemy is hit by one of his allies, he capitalizes upon the distraction, making a {@action Strike} against the triggering creature."
+						],
+						"name": "Opportune Backstab"
+					}
+				],
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"manipulate"
+						],
+						"requirements": "Falrok is adjacent to the corpse of a creature that died within the last hour.",
+						"entries": [
+							"Falrok devours a chunk of the corpse and regains {@dice 8d6} hit points. He can regain Hit Points from any given corpse only once."
+						],
+						"name": "Consume Flesh"
+					},
+					{
+						"entries": [
+							{
+								"type": "affliction",
+								"name": "",
+								"traits": [
+									"disease",
+									"virulent"
+								],
+								"note": "",
+								"DC": 34,
+								"savingThrow": "Fortitude",
+								"stages": [
+									{
+										"stage": 1,
+										"entry": "carrier with no ill effect",
+										"duration": "1 day"
+									},
+									{
+										"stage": 2,
+										"entry": "{@damage 4d8} negative damage and regains half as many Hit Points from all healing",
+										"duration": "1 day"
+									},
+									{
+										"stage": 3,
+										"entry": "{@damage 4d8} negative damage and gains no benefit from healing",
+										"duration": "1 day"
+									},
+									{
+										"stage": 4,
+										"entry": "dead, and rises as a ghast the next midnight.",
+										"duration": null
+									}
+								]
+							}
+						],
+						"name": "Ghast Fever"
+					},
+					{
+						"traits": [
+							"incapacitation",
+							"occult",
+							"necromancy"
+						],
+						"entries": [
+							"Any living creature hit by Falrok's attack must succeed at a DC 34 Fortitude save or become {@condition paralyzed}.",
+							"It can attempt a new save at the end of each of its turns, and the DC cumulatively decreases by 1 on each such save."
+						],
+						"name": "Paralysis"
+					},
+					{
+						"entries": [
+							"{@damage 4d6} precision damage."
+						],
+						"name": "Sneak Attack",
+						"generic": true
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"move"
+						],
+						"entries": [
+							"Falrok jumps up to half his Speed. This movement doesn't trigger reactions."
+						],
+						"name": "Swift Leap"
+					},
+					{
+						"traits": [
+							"successfully"
+						],
+						"entries": [
+							"Feints, the target is {@condition flat-footed} against melee attacks he attempts against it until the end of his next turn. On a critical success, the target is {@condition flat-footed} against all melee attacks until the end of their next turn, not just Falrok's."
+						],
+						"name": "Scoundrel When Falrok"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"CC"
-			]
+			}
 		},
 		{
 			"name": "Forge-spurned",
@@ -2520,26 +2352,24 @@
 			"source": "AoA4",
 			"page": 83,
 			"level": 5,
-			"rarity": "Uncommon",
-			"alignment": "NE",
-			"size": "Medium",
 			"traits": [
-				"Fire"
+				"uncommon",
+				"ne",
+				"medium",
+				"fire",
+				"undead"
 			],
 			"creatureType": [
 				"Undead"
 			],
 			"perception": {
-				"default": 11
+				"std": 11
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Common",
@@ -2550,40 +2380,39 @@
 			},
 			"skills": {
 				"Athletics": {
-					"default": 14
+					"std": 14
 				},
 				"Crafting": {
-					"default": 14
+					"std": 14
 				},
 				"Droskar Lore": {
-					"default": 12
+					"std": 12
 				}
 			},
 			"abilityMods": {
-				"Str": 5,
-				"Dex": 2,
-				"Con": 4,
-				"Int": 1,
-				"Wis": 2,
-				"Cha": 0
+				"str": 5,
+				"dex": 2,
+				"con": 4,
+				"int": 1,
+				"wis": 2,
+				"cha": 0
 			},
 			"items": [
 				"soul chain",
 				"warhammer"
 			],
-			"abilitiesTop": [],
 			"ac": {
-				"default": 22
+				"std": 22
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 15
+				"fort": {
+					"std": 15
 				},
-				"Ref": {
-					"default": 9
+				"ref": {
+					"std": 9
 				},
-				"Will": {
-					"default": 11
+				"will": {
+					"std": 11
 				}
 			},
 			"hp": [
@@ -2595,38 +2424,14 @@
 					]
 				}
 			],
-			"immunities": {
-				"damage": [],
-				"condition": [
-					"death effects",
-					"disease"
-				]
-			},
+			"immunities": [
+				"death effects",
+				"disease"
+			],
 			"weaknesses": [
 				{
 					"amount": 5,
 					"name": "cold"
-				}
-			],
-			"abilitiesMid": [
-				{
-					"traits": [
-						"divine",
-						"necromancy"
-					],
-					"entries": [
-						"As long as its soul chain remains intact, a forge-spurned can't be truly destroyed. It rises again fully healed at the next sundown, even if its physical body was destroyed."
-					],
-					"name": "Eternal Damnation"
-				},
-				{
-					"traits": [
-						"fire"
-					],
-					"entries": [
-						"A creature that touches a forge-spurned (including by Grappling it or hitting it with an unarmed attack) takes {@damage 2d6} fire damage with a DC 21 basic Reflex save."
-					],
-					"name": "Searing Heat"
 				}
 			],
 			"speed": {
@@ -2662,67 +2467,75 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
+			"abilities": {
+				"mid": [
+					{
+						"traits": [
+							"divine",
+							"necromancy"
+						],
+						"entries": [
+							"As long as its soul chain remains intact, a forge-spurned can't be truly destroyed. It rises again fully healed at the next sundown, even if its physical body was destroyed."
+						],
+						"name": "Eternal Damnation"
 					},
-					"requirements": "The forgespurned has used Forge Breath.",
-					"entries": [
-						"The forge-spurned draws a massive breath to refill its emptied lungs, enabling it to use."
-					],
-					"name": "Inflate Bellows"
-				},
-				{
-					"entries": [
-						"Breath again."
-					],
-					"name": "Forge"
-				},
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"traits": [
-						"divine",
-						"evocation",
-						"fire"
-					],
-					"entries": [
-						"The forge-spurned breathes a cloud of stinging soot, ash, and glowing embers. This can affect either a 30-foot cone or a 20-foot burst centered on the forge-spurned and persists for {@dice 1d4} rounds.",
-						"Each creature that moves into or starts their turn in the area takes {@damage 6d6} fire damage, with a DC 21 basic Reflex save. A creature that fails its save is also {@condition blinded} for 1 minute. Creatures within the cloud are {@condition concealed}, though not from the forge-spurned. The forge-spurned can't use Forge Breath again until it has used Inflate Bellows."
-					],
-					"name": "Forge Breath"
-				},
-				{
-					"traits": [
-						"divine",
-						"fire",
-						"necromancy"
-					],
-					"entries": [
-						"If a creature is slain by an attack from the soul chain and the forge-spurned is able to retain the creature's corpse, it can bind the creature's soul into the soul chain (as bind soul) with a day of work at a forge and a successful DC 20 {@skill Crafting} check. An individual whose soul is bound in this way can't be resurrected unless the soul chain is destroyed (Hardness 5, HP 20, BT 10)."
-					],
-					"name": "Soul Chain"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning",
-					"fire",
-					"slashing"
+					{
+						"traits": [
+							"fire"
+						],
+						"entries": [
+							"A creature that touches a forge-spurned (including by Grappling it or hitting it with an unarmed attack) takes {@damage 2d6} fire damage with a DC 21 basic Reflex save."
+						],
+						"name": "Searing Heat"
+					}
 				],
-				"condition": [
-					"{@condition blinded}"
+				"bot": [
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"requirements": "The forgespurned has used Forge Breath.",
+						"entries": [
+							"The forge-spurned draws a massive breath to refill its emptied lungs, enabling it to use."
+						],
+						"name": "Inflate Bellows"
+					},
+					{
+						"entries": [
+							"Breath again."
+						],
+						"name": "Forge"
+					},
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"divine",
+							"evocation",
+							"fire"
+						],
+						"entries": [
+							"The forge-spurned breathes a cloud of stinging soot, ash, and glowing embers. This can affect either a 30-foot cone or a 20-foot burst centered on the forge-spurned and persists for {@dice 1d4} rounds.",
+							"Each creature that moves into or starts their turn in the area takes {@damage 6d6} fire damage, with a DC 21 basic Reflex save. A creature that fails its save is also {@condition blinded} for 1 minute. Creatures within the cloud are {@condition concealed}, though not from the forge-spurned. The forge-spurned can't use Forge Breath again until it has used Inflate Bellows."
+						],
+						"name": "Forge Breath"
+					},
+					{
+						"traits": [
+							"divine",
+							"fire",
+							"necromancy"
+						],
+						"entries": [
+							"If a creature is slain by an attack from the soul chain and the forge-spurned is able to retain the creature's corpse, it can bind the creature's soul into the soul chain (as bind soul) with a day of work at a forge and a successful DC 20 {@skill Crafting} check. An individual whose soul is bound in this way can't be resurrected unless the soul chain is destroyed (Hardness 5, HP 20, BT 10)."
+						],
+						"name": "Soul Chain"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"CC",
-				"UW"
-			]
+			}
 		},
 		{
 			"name": "Gashadokuro",
@@ -2730,23 +2543,23 @@
 			"source": "AoA4",
 			"page": 84,
 			"level": 13,
-			"rarity": "Uncommon",
-			"alignment": "NE",
-			"size": "Huge",
+			"traits": [
+				"uncommon",
+				"ne",
+				"huge",
+				"undead"
+			],
 			"creatureType": [
 				"Undead"
 			],
 			"perception": {
-				"default": 24
+				"std": 24
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Common (can't speak any language)"
@@ -2755,33 +2568,32 @@
 			},
 			"skills": {
 				"Athletics": {
-					"default": 27
+					"std": 27
 				},
 				"Intimidation": {
-					"default": 24
+					"std": 24
 				}
 			},
 			"abilityMods": {
-				"Str": 8,
-				"Dex": 4,
-				"Con": 5,
-				"Int": -3,
-				"Wis": 3,
-				"Cha": 3
+				"str": 8,
+				"dex": 4,
+				"con": 5,
+				"int": -3,
+				"wis": 3,
+				"cha": 3
 			},
-			"abilitiesTop": [],
 			"ac": {
-				"default": 33
+				"std": 33
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 26
+				"fort": {
+					"std": 26
 				},
-				"Ref": {
-					"default": 21
+				"ref": {
+					"std": 21
 				},
-				"Will": {
-					"default": 24
+				"will": {
+					"std": 24
 				}
 			},
 			"hp": [
@@ -2792,14 +2604,11 @@
 					]
 				}
 			],
-			"immunities": {
-				"damage": [],
-				"condition": [
-					"death effects",
-					"disease",
-					"paralyzed"
-				]
-			},
+			"immunities": [
+				"death effects",
+				"disease",
+				"paralyzed"
+			],
 			"resistances": [
 				{
 					"amount": 10,
@@ -2816,20 +2625,6 @@
 				{
 					"amount": 10,
 					"name": "piercing"
-				}
-			],
-			"abilitiesMid": [
-				{
-					"traits": [
-						"aura",
-						"divine",
-						"mental",
-						"necromancy"
-					],
-					"entries": [
-						"60 feet. Any creature that ends its turn in the aura feels the intense pain of starvation and must attempt a DC 30 Fortitude save. On a failure, the creature becomes {@condition fatigued} and takes {@dice 6d6} damage. Damage and fatigue a creature takes from this aura can't be healed until the affected creature has eaten a full meal."
-					],
-					"name": "Starvation Aura"
 				}
 			],
 			"speed": {
@@ -2866,68 +2661,68 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"traits": [
-						"divine",
-						"necromancy"
-					],
-					"entries": [
-						"The gashadokuro breathes a spray of bone shards in a 30-foot cone. Each creature in the area takes {@damage 8d12} piercing damage (DC 34 basic Reflex save). It can't use."
-					],
-					"name": "Breath Weapon"
-				},
-				{
-					"entries": [
-						"Weapon again for {@dice 1d4} rounds."
-					],
-					"name": "Breath"
-				},
-				{
-					"traits": [
-						"divine",
-						"necromancy"
-					],
-					"entries": [
-						"If the gashadokuro kills a creature with Swallow Whole, it immediately regains Hit Points equal to the swallowed creature's level. As long as the gashadokuro still exists, creatures consumed in this way can't be resurrected except by wish or a similarly powerful effect."
-					],
-					"name": "Corpse Consumption"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"traits": [
-						"attack"
-					],
-					"entries": [
-						"Large, {@damage 3d6+8} bludgeoning, Rupture 24."
-					],
-					"name": "Swallow Whole",
-					"generic": true
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning",
-					"piercing",
-					"slashing"
+			"abilities": {
+				"mid": [
+					{
+						"traits": [
+							"aura",
+							"divine",
+							"mental",
+							"necromancy"
+						],
+						"entries": [
+							"60 feet. Any creature that ends its turn in the aura feels the intense pain of starvation and must attempt a DC 30 Fortitude save. On a failure, the creature becomes {@condition fatigued} and takes {@dice 6d6} damage. Damage and fatigue a creature takes from this aura can't be healed until the affected creature has eaten a full meal."
+						],
+						"name": "Starvation Aura"
+					}
 				],
-				"condition": [
-					"{@condition fatigued}"
+				"bot": [
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"divine",
+							"necromancy"
+						],
+						"entries": [
+							"The gashadokuro breathes a spray of bone shards in a 30-foot cone. Each creature in the area takes {@damage 8d12} piercing damage (DC 34 basic Reflex save). It can't use."
+						],
+						"name": "Breath Weapon"
+					},
+					{
+						"entries": [
+							"Weapon again for {@dice 1d4} rounds."
+						],
+						"name": "Breath"
+					},
+					{
+						"traits": [
+							"divine",
+							"necromancy"
+						],
+						"entries": [
+							"If the gashadokuro kills a creature with Swallow Whole, it immediately regains Hit Points equal to the swallowed creature's level. As long as the gashadokuro still exists, creatures consumed in this way can't be resurrected except by wish or a similarly powerful effect."
+						],
+						"name": "Corpse Consumption"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"attack"
+						],
+						"entries": [
+							"Large, {@damage 3d6+8} bludgeoning, Rupture 24."
+						],
+						"name": "Swallow Whole",
+						"generic": true
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"RC",
-				"AD",
-				"CC"
-			]
+			}
 		},
 		{
 			"name": "Ilssrah Embermead",
@@ -2935,26 +2730,24 @@
 			"source": "AoA4",
 			"page": 89,
 			"level": 15,
-			"rarity": "Unique",
-			"alignment": "NE",
-			"size": "Medium",
 			"traits": [
-				"Dwarf"
+				"unique",
+				"ne",
+				"medium",
+				"dwarf",
+				"humanoid"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 29
+				"std": 29
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Common",
@@ -2966,66 +2759,47 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 25
+					"std": 25
 				},
 				"Athletics": {
-					"default": 27
+					"std": 27
 				},
 				"Deception": {
-					"default": 26
+					"std": 26
 				},
 				"Intimidation": {
-					"default": 28
+					"std": 28
 				},
 				"Religion": {
-					"default": 31
+					"std": 31
 				}
 			},
 			"abilityMods": {
-				"Str": 6,
-				"Dex": 4,
-				"Con": 5,
-				"Int": 4,
-				"Wis": 8,
-				"Cha": 5
+				"str": 6,
+				"dex": 4,
+				"con": 5,
+				"int": 4,
+				"wis": 8,
+				"cha": 5
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+28, {@skill Religion} +31 Str +6, Dex +4, Con +5, Int +4, Wis +8, Cha +5 Items +2 resilient adamantine breastplate, Fleshroaster (+2 striking flaming spiked chain), +1 striking returning light hammer, good manacles (4), religious symbol of {@deity Droskar|LOGM}."
-					],
-					"name": "Intimidation"
-				}
-			],
 			"ac": {
-				"default": 40
+				"std": 40
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 27
+				"fort": {
+					"std": 27
 				},
-				"Ref": {
-					"default": 24
+				"ref": {
+					"std": 24
 				},
-				"Will": {
-					"default": 30
+				"will": {
+					"std": 30
 				}
 			},
 			"hp": [
 				{
 					"hp": 270,
 					"abilities": null
-				}
-			],
-			"abilitiesMid": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"entries": [],
-					"name": "Attack of Opportunity",
-					"generic": true
 				}
 			],
 			"speed": {
@@ -3213,63 +2987,69 @@
 					}
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 3,
-						"unit": "action"
-					},
-					"traits": [
-						"attack",
-						"manipulate"
-					],
-					"entries": [
-						"Requirements Ilssrah has manacles in hand and is adjacent to a creature. Ilssrah attempts to bind the creature's wrists or ankles with the manacles. If she succeeds at an attack roll with a +30 modifier against the target's AC, she applies the manacles."
-					],
-					"name": "Efficient Capture"
-				},
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"entries": [
-						"Ilssrah attempts a melee {@action Strike} with Fleshroaster. If she hits, she also draws her light hammer, makes a melee {@action Strike} with it against the same target, and immediately returns it to her belt. She then resumes her grip."
-					],
-					"name": "Hammer the Chained"
-				},
-				{
-					"entries": [
-						"Strikes count toward Ilssrah's multiple attack penalty, but the penalty doesn't increase until both Strikes have been made.",
-						"If the hammer {@action Strike} hits, it deals damage as normal and the target must attempt a DC 35 Fortitude save.",
-						{
-							"type": "successDegree",
-							"entries": {
-								"Critical Success": "The creature is unaffected.",
-								"Success": "The creature is {@condition clumsy|CRB|clumsy 1} and {@condition stupefied|CRB|stupefied 1} for 1 round.",
-								"Failure": "The creature is {@condition clumsy|CRB|clumsy 1} and {@condition stupefied|CRB|stupefied 1} for 1 minute.",
-								"Critical Failure": "The creature is {@condition clumsy|CRB|clumsy 2} and {@condition stupefied|CRB|stupefied 2} for 1 minute."
-							}
-						}
-					],
-					"name": "on Fleshroaster. Both"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning",
-					"slashing"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"+28, {@skill Religion} +31 Str +6, Dex +4, Con +5, Int +4, Wis +8, Cha +5 Items +2 resilient adamantine breastplate, Fleshroaster (+2 striking flaming spiked chain), +1 striking returning light hammer, good manacles (4), religious symbol of {@deity Droskar|LOGM}."
+						],
+						"name": "Intimidation"
+					}
 				],
-				"condition": [
-					"{@condition clumsy}"
+				"mid": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"entries": [],
+						"name": "Attack of Opportunity",
+						"generic": true
+					}
+				],
+				"bot": [
+					{
+						"activity": {
+							"number": 3,
+							"unit": "action"
+						},
+						"traits": [
+							"attack",
+							"manipulate"
+						],
+						"entries": [
+							"Requirements Ilssrah has manacles in hand and is adjacent to a creature. Ilssrah attempts to bind the creature's wrists or ankles with the manacles. If she succeeds at an attack roll with a +30 modifier against the target's AC, she applies the manacles."
+						],
+						"name": "Efficient Capture"
+					},
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"Ilssrah attempts a melee {@action Strike} with Fleshroaster. If she hits, she also draws her light hammer, makes a melee {@action Strike} with it against the same target, and immediately returns it to her belt. She then resumes her grip."
+						],
+						"name": "Hammer the Chained"
+					},
+					{
+						"entries": [
+							"Strikes count toward Ilssrah's multiple attack penalty, but the penalty doesn't increase until both Strikes have been made.",
+							"If the hammer {@action Strike} hits, it deals damage as normal and the target must attempt a DC 35 Fortitude save.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": "The creature is unaffected.",
+									"Success": "The creature is {@condition clumsy|CRB|clumsy 1} and {@condition stupefied|CRB|stupefied 1} for 1 round.",
+									"Failure": "The creature is {@condition clumsy|CRB|clumsy 1} and {@condition stupefied|CRB|stupefied 1} for 1 minute.",
+									"Critical Failure": "The creature is {@condition clumsy|CRB|clumsy 2} and {@condition stupefied|CRB|stupefied 2} for 1 minute."
+								}
+							}
+						],
+						"name": "on Fleshroaster. Both"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"RA",
-				"TA",
-				"CC"
-			]
+			}
 		},
 		{
 			"name": "Kelda Halrig",
@@ -3277,26 +3057,24 @@
 			"source": "AoA4",
 			"page": 87,
 			"level": 8,
-			"rarity": "Unique",
-			"alignment": "LN",
-			"size": "Medium",
 			"traits": [
-				"Dwarf"
+				"unique",
+				"ln",
+				"medium",
+				"dwarf",
+				"humanoid"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 22
+				"std": 22
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Common",
@@ -3306,65 +3084,39 @@
 			},
 			"skills": {
 				"Athletics": {
-					"default": 22
+					"std": 22
 				},
 				"Crafting": {
-					"default": 27,
+					"std": 27,
 					"blacksmithing": 29
 				},
 				"Diplomacy": {
-					"default": 23
+					"std": 23
 				},
 				"Society": {
-					"default": 21
+					"std": 21
 				}
 			},
 			"abilityMods": {
-				"Str": 4,
-				"Dex": 2,
-				"Con": 3,
-				"Int": 5,
-				"Wis": 4,
-				"Cha": 3
+				"str": 4,
+				"dex": 2,
+				"con": 3,
+				"int": 5,
+				"wis": 4,
+				"cha": 3
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"Skills {@skill Athletics} +22, {@skill Crafting} +27 (+29 blacksmithing), {@skill Diplomacy} +23,"
-					],
-					"name": "Undercommon"
-				},
-				{
-					"entries": [
-						"+25, {@skill Society} +21 Str +4, Dex +2, Con +3, Int +5, Wis +4,"
-					],
-					"name": "Kovlar Lore"
-				},
-				{
-					"entries": [
-						"+3."
-					],
-					"name": "Cha"
-				},
-				{
-					"entries": [
-						"+2 greater striking greater flaming warhammer, +1 striking light hammer (3), leather armor, sterling blacksmith's tools."
-					],
-					"name": "Gear"
-				}
-			],
 			"ac": {
-				"default": 24
+				"std": 24
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 19
+				"fort": {
+					"std": 19
 				},
-				"Ref": {
-					"default": 13
+				"ref": {
+					"std": 13
 				},
-				"Will": {
-					"default": 16
+				"will": {
+					"std": 16
 				}
 			},
 			"hp": [
@@ -3373,31 +3125,53 @@
 					"abilities": null
 				}
 			],
-			"abilitiesMid": [],
 			"speed": {
 				"walk": 20
 			},
 			"attacks": [],
-			"abilitiesBot": [
-				{
-					"entries": [
-						"As the most skillful blacksmith."
-					],
-					"name": "Master Smith",
-					"entries_as_xyz": "Ability not found: 'Master Smith As the most skillful blacksmith.' in Kelda Halrig, p.87"
-				},
-				{
-					"entries": [
-						"Kelda's abilities far surpass those of typical smiths. She can {@action Craft} items as if she were 16th level. Additionally, she knows how to make a vast catalog of items, including numerous uncommon formulas and several rare formulas. The exact formulas she knows can be tailored to fit the needs of each particular group of PCs, but most are for weapons, armor, and other items that could reasonably be made in a forge."
-					],
-					"name": "in Kovlar,"
-				}
-			],
-			"inflicts": {
-				"damage": [],
-				"condition": []
-			},
-			"misc": []
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"Skills {@skill Athletics} +22, {@skill Crafting} +27 (+29 blacksmithing), {@skill Diplomacy} +23,"
+						],
+						"name": "Undercommon"
+					},
+					{
+						"entries": [
+							"+25, {@skill Society} +21 Str +4, Dex +2, Con +3, Int +5, Wis +4,"
+						],
+						"name": "Kovlar Lore"
+					},
+					{
+						"entries": [
+							"+3."
+						],
+						"name": "Cha"
+					},
+					{
+						"entries": [
+							"+2 greater striking greater flaming warhammer, +1 striking light hammer (3), leather armor, sterling blacksmith's tools."
+						],
+						"name": "Gear"
+					}
+				],
+				"bot": [
+					{
+						"entries": [
+							"As the most skillful blacksmith."
+						],
+						"name": "Master Smith",
+						"entries_as_xyz": "Ability not found: 'Master Smith As the most skillful blacksmith.' in Kelda Halrig, p.87"
+					},
+					{
+						"entries": [
+							"Kelda's abilities far surpass those of typical smiths. She can {@action Craft} items as if she were 16th level. Additionally, she knows how to make a vast catalog of items, including numerous uncommon formulas and several rare formulas. The exact formulas she knows can be tailored to fit the needs of each particular group of PCs, but most are for weapons, armor, and other items that could reasonably be made in a forge."
+						],
+						"name": "in Kovlar,"
+					}
+				]
+			}
 		},
 		{
 			"name": "King Harral",
@@ -3405,23 +3179,23 @@
 			"source": "AoA4",
 			"page": 42,
 			"level": 14,
-			"rarity": "Unique",
-			"alignment": "LE",
-			"size": "Medium",
+			"traits": [
+				"unique",
+				"le",
+				"medium",
+				"undead"
+			],
 			"creatureType": [
 				"Undead"
 			],
 			"perception": {
-				"default": 25
+				"std": 25
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Aklo",
@@ -3433,58 +3207,44 @@
 			},
 			"skills": {
 				"Arcana": {
-					"default": 29
+					"std": 29
 				},
 				"Crafting": {
-					"default": 25
+					"std": 25
 				},
 				"Diplomacy": {
-					"default": 27
+					"std": 27
 				},
 				"Intimidation": {
-					"default": 27
+					"std": 27
 				},
 				"Religion": {
-					"default": 25
+					"std": 25
 				},
 				"Society": {
-					"default": 23
+					"std": 23
 				}
 			},
 			"abilityMods": {
-				"Str": 6,
-				"Dex": 5,
-				"Con": 0,
-				"Int": 7,
-				"Wis": 5,
-				"Cha": 7
+				"str": 6,
+				"dex": 5,
+				"con": 0,
+				"int": 7,
+				"wis": 5,
+				"cha": 7
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"Skills {@skill Arcana} +29, {@skill Crafting} +25, {@skill Diplomacy} +27,"
-					],
-					"name": "Necril, Undercommon"
-				},
-				{
-					"entries": [
-						"+27, {@skill Religion} +25, {@skill Society} +23 Str +6, Dex +5, Con +0, Int +7, Wis +5, Cha +7 Items +1 resilient full plate, +2 thundering striking maul, wand of smoldering fireballs (7th-level {@spell fireball})"
-					],
-					"name": "Intimidation"
-				}
-			],
 			"ac": {
-				"default": 35
+				"std": 35
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 22
+				"fort": {
+					"std": 22
 				},
-				"Ref": {
-					"default": 24
+				"ref": {
+					"std": 24
 				},
-				"Will": {
-					"default": 28
+				"will": {
+					"std": 28
 				}
 			},
 			"hp": [
@@ -3504,48 +3264,6 @@
 				{
 					"amount": 10,
 					"name": "physical"
-				}
-			],
-			"abilitiesMid": [
-				{
-					"traits": [
-						"aura",
-						"emotion",
-						"fear",
-						"mental"
-					],
-					"entries": [
-						"60 feet, DC 33."
-					],
-					"name": "Frightful Presence",
-					"generic": true
-				},
-				{
-					"traits": [
-						"arcane",
-						"necromancy"
-					],
-					"entries": [
-						"24 hours after King Harral is destroyed, his body rebuilds itself on his throne (or, if the throne is destroyed, on the site where the throne once sat), similarly to how a lich's body is restored via its phylactery. If all of Saggorak's buildings are destroyed, or if heroes perform a great service in saving Saggorak (see Concluding the Adventure),"
-					],
-					"name": "Rejuvenation"
-				},
-				{
-					"entries": [
-						"Harral loses this ability."
-					],
-					"name": "King"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"trigger": "A creature casts a spell King Harral has prepared.",
-					"entries": [
-						"The king expends a prepared spell to counter the triggering creature's casting of that same spell. He can then attempt to dispel the triggering spell."
-					],
-					"name": "Counterspell"
 				}
 			],
 			"speed": {
@@ -3697,23 +3415,72 @@
 					}
 				}
 			],
-			"abilitiesBot": [
-				{
-					"entries": [
-						"If another creature's reaction would disrupt King Harral's spell, he attempts a DC {@flatDC 15} flat check. If he succeeds, the spell isn't disrupted."
-					],
-					"name": "Steady Spellcasting"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"Skills {@skill Arcana} +29, {@skill Crafting} +25, {@skill Diplomacy} +27,"
+						],
+						"name": "Necril, Undercommon"
+					},
+					{
+						"entries": [
+							"+27, {@skill Religion} +25, {@skill Society} +23 Str +6, Dex +5, Con +0, Int +7, Wis +5, Cha +7 Items +1 resilient full plate, +2 thundering striking maul, wand of smoldering fireballs (7th-level {@spell fireball})"
+						],
+						"name": "Intimidation"
+					}
 				],
-				"condition": []
-			},
-			"misc": [
-				"MA"
-			]
+				"mid": [
+					{
+						"traits": [
+							"aura",
+							"emotion",
+							"fear",
+							"mental"
+						],
+						"entries": [
+							"60 feet, DC 33."
+						],
+						"name": "Frightful Presence",
+						"generic": true
+					},
+					{
+						"traits": [
+							"arcane",
+							"necromancy"
+						],
+						"entries": [
+							"24 hours after King Harral is destroyed, his body rebuilds itself on his throne (or, if the throne is destroyed, on the site where the throne once sat), similarly to how a lich's body is restored via its phylactery. If all of Saggorak's buildings are destroyed, or if heroes perform a great service in saving Saggorak (see Concluding the Adventure),"
+						],
+						"name": "Rejuvenation"
+					},
+					{
+						"entries": [
+							"Harral loses this ability."
+						],
+						"name": "King"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"trigger": "A creature casts a spell King Harral has prepared.",
+						"entries": [
+							"The king expends a prepared spell to counter the triggering creature's casting of that same spell. He can then attempt to dispel the triggering spell."
+						],
+						"name": "Counterspell"
+					}
+				],
+				"bot": [
+					{
+						"entries": [
+							"If another creature's reaction would disrupt King Harral's spell, he attempts a DC {@flatDC 15} flat check. If he succeeds, the spell isn't disrupted."
+						],
+						"name": "Steady Spellcasting"
+					}
+				]
+			}
 		},
 		{
 			"name": "Kralgurn",
@@ -3721,27 +3488,25 @@
 			"source": "AoA4",
 			"page": 31,
 			"level": 14,
-			"rarity": "Unique",
-			"alignment": "LE",
-			"size": "Medium",
 			"traits": [
-				"Duergar",
-				"Dwarf"
+				"unique",
+				"le",
+				"medium",
+				"duergar",
+				"dwarf",
+				"humanoid"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 24
+				"std": 24
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Common",
@@ -3752,65 +3517,41 @@
 			},
 			"skills": {
 				"Athletics": {
-					"default": 28
+					"std": 28
 				},
 				"Intimidation": {
-					"default": 28
+					"std": 28
 				},
 				"Occultism": {
-					"default": 25
+					"std": 25
 				}
 			},
 			"abilityMods": {
-				"Str": 8,
-				"Dex": 4,
-				"Con": 4,
-				"Int": 0,
-				"Wis": 4,
-				"Cha": 3
+				"str": 8,
+				"dex": 4,
+				"con": 4,
+				"int": 0,
+				"wis": 4,
+				"cha": 3
 			},
-			"abilitiesTop": [],
 			"ac": {
-				"default": 36
+				"std": 36
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 28
+				"fort": {
+					"std": 28
 				},
-				"Ref": {
-					"default": 22
+				"ref": {
+					"std": 22
 				},
-				"Will": {
-					"default": 25
+				"will": {
+					"std": 25
 				}
 			},
 			"hp": [
 				{
 					"hp": 255,
 					"abilities": null
-				}
-			],
-			"abilitiesMid": [
-				{
-					"entries": [],
-					"name": "Light Blindness",
-					"generic": true
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"traits": [
-						"emotion",
-						"fear",
-						"mental"
-					],
-					"entries": [
-						"Kralgurn's Attacks of Opportunity not only wound creatures, but also shatter their confidence.",
-						"If Kralgurn hits and deals damage with an {@action Attack of Opportunity}, the target is {@condition frightened|CRB|frightened 2}, or {@condition frightened|CRB|frightened 4} on a critical hit."
-					],
-					"name": "Intimidating Attack of Opportunity"
 				}
 			],
 			"speed": {
@@ -3879,30 +3620,39 @@
 					}
 				}
 			],
-			"abilitiesBot": [
-				{
-					"entries": [
-						"When Kralgurn attacks a {@condition frightened} creature, he gains a circumstance bonus to damage equal to three times the target's {@condition frightened} value."
-					],
-					"name": "Fearsome Brute"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"piercing",
-					"slashing"
+			"abilities": {
+				"mid": [
+					{
+						"entries": [],
+						"name": "Light Blindness",
+						"generic": true
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"traits": [
+							"emotion",
+							"fear",
+							"mental"
+						],
+						"entries": [
+							"Kralgurn's Attacks of Opportunity not only wound creatures, but also shatter their confidence.",
+							"If Kralgurn hits and deals damage with an {@action Attack of Opportunity}, the target is {@condition frightened|CRB|frightened 2}, or {@condition frightened|CRB|frightened 4} on a critical hit."
+						],
+						"name": "Intimidating Attack of Opportunity"
+					}
 				],
-				"condition": [
-					"{@condition frightened}"
+				"bot": [
+					{
+						"entries": [
+							"When Kralgurn attacks a {@condition frightened} creature, he gains a circumstance bonus to damage equal to three times the target's {@condition frightened} value."
+						],
+						"name": "Fearsome Brute"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"RC",
-				"RA",
-				"CC",
-				"UW"
-			]
+			}
 		},
 		{
 			"name": "Lazurite-infused Stone Golem",
@@ -3910,45 +3660,45 @@
 			"source": "AoA4",
 			"page": 45,
 			"level": 12,
-			"rarity": "Rare",
-			"alignment": "N",
-			"size": "Large",
 			"traits": [
-				"Mindless",
-				"Golem"
+				"rare",
+				"n",
+				"large",
+				"construct",
+				"golem",
+				"mindless"
 			],
 			"creatureType": [
 				"Construct"
 			],
 			"perception": {
-				"default": 22
+				"std": 22
 			},
 			"skills": {
 				"Athletics": {
-					"default": 28
+					"std": 28
 				}
 			},
 			"abilityMods": {
-				"Str": 8,
-				"Dex": -1,
-				"Con": 5,
-				"Int": -5,
-				"Wis": 0,
-				"Cha": -5
+				"str": 8,
+				"dex": -1,
+				"con": 5,
+				"int": -5,
+				"wis": 0,
+				"cha": -5
 			},
-			"abilitiesTop": [],
 			"ac": {
-				"default": 33
+				"std": 33
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 25
+				"fort": {
+					"std": 25
 				},
-				"Ref": {
-					"default": 19
+				"ref": {
+					"std": 19
 				},
-				"Will": {
-					"default": 20
+				"will": {
+					"std": 20
 				}
 			},
 			"hp": [
@@ -3957,43 +3707,11 @@
 					"abilities": null
 				}
 			],
-			"immunities": {
-				"damage": [
-					"acid",
-					"bleed"
-				],
-				"condition": [
-					"death effects",
-					"disease"
-				]
-			},
-			"abilitiesMid": [
-				{
-					"traits": [
-						"Pathfinder Bestiary 184"
-					],
-					"entries": [
-						"harmed by cold and positive ({@dice 5d10}, {@dice 2d8} from areas and {@condition persistent damage}); healed by negative (area {@dice 2d8} HP); {@condition slowed} by earth."
-					],
-					"name": "Golem Antimagic"
-				},
-				{
-					"traits": [
-						"aura",
-						"divine",
-						"necromancy"
-					],
-					"entries": [
-						"30 feet. Positive {@trait energy} effects within the golem's necrotic field deal only half their normal damage. Additionally, all undead within its aura deal an additional {@damage 1d6} negative damage with their natural attacks."
-					],
-					"name": "Necrotic Field"
-				},
-				{
-					"entries": [
-						"Flesh a {@spell stone to flesh} spell negates the golem's antimagic and its resistance to physical damage for 1 round. A {@spell flesh to stone} spell reverses this effect immediately."
-					],
-					"name": "Vulnerable to Stone to"
-				}
+			"immunities": [
+				"acid",
+				"bleed",
+				"death effects",
+				"disease"
 			],
 			"speed": {
 				"walk": 20
@@ -4015,67 +3733,80 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
+			"abilities": {
+				"mid": [
+					{
+						"traits": [
+							"pathfinder bestiary 184"
+						],
+						"entries": [
+							"harmed by cold and positive ({@dice 5d10}, {@dice 2d8} from areas and {@condition persistent damage}); healed by negative (area {@dice 2d8} HP); {@condition slowed} by earth."
+						],
+						"name": "Golem Antimagic"
 					},
-					"entries": [
-						"The golem {@action Stride||Strides} up to its Speed, pushing back each creature whose space it moves into and damaging them if they try to stop its movement.",
-						"A creature can bar the way by succeeding at a DC 36 Fortitude save. On a critical success, the resisting creature takes no damage; otherwise, it takes damage equal to that dealt by the golem's fist {@action Strike}."
-					],
-					"name": "Inexorable March"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
+					{
+						"traits": [
+							"aura",
+							"divine",
+							"necromancy"
+						],
+						"entries": [
+							"30 feet. Positive {@trait energy} effects within the golem's necrotic field deal only half their normal damage. Additionally, all undead within its aura deal an additional {@damage 1d6} negative damage with their natural attacks."
+						],
+						"name": "Necrotic Field"
 					},
-					"traits": [
-						"necromancy"
-					],
-					"trigger": "The golem hits a {@condition slowed} creature.",
-					"entries": [
-						"The creature must succeed at a DC 34 Fortitude save or become {@condition drained|CRB|drained 1} (or {@condition drained|CRB|drained 2} on a critical failure) as the golem's lazurite leeches vital energies and causes wounds to rot."
-					],
-					"name": "Necrotic Affliction"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"traits": [
-						"arcane",
-						"concentrate",
-						"disease",
-						"necromancy",
-						"negative"
-					],
-					"entries": [
-						"Each creature in a 10-foot emanation must succeed at a DC 32 Fortitude save or take {@damage 1d6} persistent necrotic damage and be {@condition slowed|CRB|slowed 1} for 1 minute as their flesh and bones temporarily atrophy. The golem can't use Necrotic Pulse again for {@dice 1d4} rounds."
-					],
-					"name": "Necrotic Pulse"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning",
-					"negative"
+					{
+						"entries": [
+							"Flesh a {@spell stone to flesh} spell negates the golem's antimagic and its resistance to physical damage for 1 round. A {@spell flesh to stone} spell reverses this effect immediately."
+						],
+						"name": "Vulnerable to Stone to"
+					}
 				],
-				"condition": [
-					"{@condition drained}",
-					"{@condition slowed}"
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"The golem {@action Stride||Strides} up to its Speed, pushing back each creature whose space it moves into and damaging them if they try to stop its movement.",
+							"A creature can bar the way by succeeding at a DC 36 Fortitude save. On a critical success, the resisting creature takes no damage; otherwise, it takes damage equal to that dealt by the golem's fist {@action Strike}."
+						],
+						"name": "Inexorable March"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"traits": [
+							"necromancy"
+						],
+						"trigger": "The golem hits a {@condition slowed} creature.",
+						"entries": [
+							"The creature must succeed at a DC 34 Fortitude save or become {@condition drained|CRB|drained 1} (or {@condition drained|CRB|drained 2} on a critical failure) as the golem's lazurite leeches vital energies and causes wounds to rot."
+						],
+						"name": "Necrotic Affliction"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"arcane",
+							"concentrate",
+							"disease",
+							"necromancy",
+							"negative"
+						],
+						"entries": [
+							"Each creature in a 10-foot emanation must succeed at a DC 32 Fortitude save or take {@damage 1d6} persistent necrotic damage and be {@condition slowed|CRB|slowed 1} for 1 minute as their flesh and bones temporarily atrophy. The golem can't use Necrotic Pulse again for {@dice 1d4} rounds."
+						],
+						"name": "Necrotic Pulse"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"RC",
-				"AD",
-				"AC",
-				"CC"
-			]
+			}
 		},
 		{
 			"name": "Saggorak Poltergeist",
@@ -4083,27 +3814,26 @@
 			"source": "AoA4",
 			"page": 43,
 			"level": 12,
-			"rarity": "Rare",
-			"alignment": "LE",
-			"size": "Medium",
 			"traits": [
-				"Incorporeal"
+				"rare",
+				"le",
+				"medium",
+				"incorporeal",
+				"spirit",
+				"undead"
 			],
 			"creatureType": [
 				"Spirit",
 				"Undead"
 			],
 			"perception": {
-				"default": 20
+				"std": 20
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Dwarven",
@@ -4113,43 +3843,35 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 25
+					"std": 25
 				},
 				"Intimidation": {
-					"default": 24
+					"std": 24
 				},
 				"Stealth": {
-					"default": 25
+					"std": 25
 				}
 			},
 			"abilityMods": {
-				"Str": -5,
-				"Dex": 7,
-				"Con": 2,
-				"Int": -1,
-				"Wis": 4,
-				"Cha": 5
+				"str": -5,
+				"dex": 7,
+				"con": 2,
+				"int": -1,
+				"wis": 4,
+				"cha": 5
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"Saggorak poltergeists cannot travel more than 120 feet from area F2."
-					],
-					"name": "Site Bound The"
-				}
-			],
 			"ac": {
-				"default": 33
+				"std": 33
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 18
+				"fort": {
+					"std": 18
 				},
-				"Ref": {
-					"default": 25
+				"ref": {
+					"std": 25
 				},
-				"Will": {
-					"default": 22
+				"will": {
+					"std": 22
 				}
 			},
 			"hp": [
@@ -4160,41 +3882,9 @@
 					]
 				}
 			],
-			"immunities": {
-				"damage": [],
-				"condition": [
-					"death effects",
-					"disease"
-				]
-			},
-			"abilitiesMid": [
-				{
-					"entries": [
-						"A poltergeist is naturally {@condition invisible}. It becomes visible only when it uses Frighten."
-					],
-					"name": "Natural Invisibility"
-				},
-				{
-					"traits": [
-						"necromancy",
-						"occult"
-					],
-					"entries": [
-						"When a poltergeist is destroyed, it re-forms, fully healed, where it was destroyed after {@dice 2d4} days. These Saggorak poltergeists no longer rejuvenate once King Harral no longer exists as an undead ruler of Saggorak."
-					],
-					"name": "Rejuvenation"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"trigger": "A creature approaches within 10 feet of the poltergeist.",
-					"entries": [
-						"The poltergeist makes a telekinetic object {@action Strike} against the triggering creature."
-					],
-					"name": "Telekinetic Defense"
-				}
+			"immunities": [
+				"death effects",
+				"disease"
 			],
 			"speed": {
 				"fly": 30
@@ -4251,60 +3941,87 @@
 					}
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"traits": [
-						"concentrate",
-						"emotion",
-						"fear",
-						"incapacitation",
-						"mental"
-					],
-					"requirements": "The poltergeist must be {@condition invisible}.",
-					"entries": [
-						"The poltergeist becomes visible, appearing as a skeletal, ghostlike humanoid. Each creature within 30 feet must attempt a DC 33 Will save, becoming {@condition frightened|CRB|frightened 2} on a failure. On a critical failure, it's also {@condition fleeing} for as long as it's {@condition frightened}. On a success, the creature is temporarily immune for 1 minute. At the start of its next turn, the poltergeist becomes {@condition invisible} again."
-					],
-					"name": "Frighten"
-				},
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"traits": [
-						"concentrate",
-						"evocation",
-						"occult"
-					],
-					"entries": [
-						"The poltergeist telekinetically throws numerous small and jagged chunks of stone rubble, either spreading them out among multiple foes or directing them at one target.",
-						{
-							"type": "list",
-							"items": [
-								"When this effect is spread out among multiple foes, the poltergeist makes a telekinetic object {@action Strike} at a \u20132 penalty against each creature within 30 feet. These count as one attack for the poltergeist's multiple attack penalty, and the penalty doesn't increase until after all the attacks.",
-								"When this effect has only one target, the poltergeist makes a telekinetic object {@action Strike} against the target, and the damage increases to {@dice 6d12}. It deals {@dice 2d12} damage on a failure, and no damage on a critical failure."
-							]
-						}
-					],
-					"name": "Telekinetic Storm"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"Saggorak poltergeists cannot travel more than 120 feet from area F2."
+						],
+						"name": "Site Bound The"
+					}
 				],
-				"condition": [
-					"{@condition frightened}"
+				"mid": [
+					{
+						"entries": [
+							"A poltergeist is naturally {@condition invisible}. It becomes visible only when it uses Frighten."
+						],
+						"name": "Natural Invisibility"
+					},
+					{
+						"traits": [
+							"necromancy",
+							"occult"
+						],
+						"entries": [
+							"When a poltergeist is destroyed, it re-forms, fully healed, where it was destroyed after {@dice 2d4} days. These Saggorak poltergeists no longer rejuvenate once King Harral no longer exists as an undead ruler of Saggorak."
+						],
+						"name": "Rejuvenation"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"trigger": "A creature approaches within 10 feet of the poltergeist.",
+						"entries": [
+							"The poltergeist makes a telekinetic object {@action Strike} against the triggering creature."
+						],
+						"name": "Telekinetic Defense"
+					}
+				],
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"concentrate",
+							"emotion",
+							"fear",
+							"incapacitation",
+							"mental"
+						],
+						"requirements": "The poltergeist must be {@condition invisible}.",
+						"entries": [
+							"The poltergeist becomes visible, appearing as a skeletal, ghostlike humanoid. Each creature within 30 feet must attempt a DC 33 Will save, becoming {@condition frightened|CRB|frightened 2} on a failure. On a critical failure, it's also {@condition fleeing} for as long as it's {@condition frightened}. On a success, the creature is temporarily immune for 1 minute. At the start of its next turn, the poltergeist becomes {@condition invisible} again."
+						],
+						"name": "Frighten"
+					},
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"concentrate",
+							"evocation",
+							"occult"
+						],
+						"entries": [
+							"The poltergeist telekinetically throws numerous small and jagged chunks of stone rubble, either spreading them out among multiple foes or directing them at one target.",
+							{
+								"type": "list",
+								"items": [
+									"When this effect is spread out among multiple foes, the poltergeist makes a telekinetic object {@action Strike} at a \u20132 penalty against each creature within 30 feet. These count as one attack for the poltergeist's multiple attack penalty, and the penalty doesn't increase until after all the attacks.",
+									"When this effect has only one target, the poltergeist makes a telekinetic object {@action Strike} against the target, and the damage increases to {@dice 6d12}. It deals {@dice 2d12} damage on a failure, and no damage on a critical failure."
+								]
+							}
+						],
+						"name": "Telekinetic Storm"
+					}
 				]
-			},
-			"misc": [
-				"RA",
-				"CC"
-			]
+			}
 		},
 		{
 			"name": "Soulbound Ruin",
@@ -4312,24 +4029,24 @@
 			"source": "AoA4",
 			"page": 85,
 			"level": 15,
-			"rarity": "Common",
-			"alignment": "NE",
-			"size": "Gargantuan",
+			"traits": [
+				"ne",
+				"gargantuan",
+				"construct",
+				"undead"
+			],
 			"creatureType": [
 				"Construct",
 				"Undead"
 			],
 			"perception": {
-				"default": 25
+				"std": 25
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Common"
@@ -4340,33 +4057,32 @@
 			},
 			"skills": {
 				"Athletics": {
-					"default": 30
+					"std": 30
 				},
 				"Deception": {
-					"default": 26
+					"std": 26
 				}
 			},
 			"abilityMods": {
-				"Str": 10,
-				"Dex": 0,
-				"Con": 6,
-				"Int": 4,
-				"Wis": 4,
-				"Cha": 3
+				"str": 10,
+				"dex": 0,
+				"con": 6,
+				"int": 4,
+				"wis": 4,
+				"cha": 3
 			},
-			"abilitiesTop": [],
 			"ac": {
-				"default": 37
+				"std": 37
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 29
+				"fort": {
+					"std": 29
 				},
-				"Ref": {
-					"default": 21
+				"ref": {
+					"std": 21
 				},
-				"Will": {
-					"default": 27
+				"will": {
+					"std": 27
 				}
 			},
 			"hp": [
@@ -4377,14 +4093,10 @@
 					]
 				}
 			],
-			"immunities": {
-				"damage": [
-					"bleed"
-				],
-				"condition": [
-					"death effects"
-				]
-			},
+			"immunities": [
+				"bleed",
+				"death effects"
+			],
 			"weaknesses": [
 				{
 					"amount": 15,
@@ -4395,29 +4107,6 @@
 				{
 					"amount": 10,
 					"name": "physical"
-				}
-			],
-			"abilitiesMid": [
-				{
-					"entries": [
-						"When a soulbound ruin fails a saving throw against a spell that would banish tormented spirits or manipulate souls, such as banishment or bind soul, instead of experiencing the listed effects, it takes 10 damage per spell level."
-					],
-					"name": "Vulnerability to Exorcism"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"trigger": "A creature within the soulbound ruin uses an action with the {@trait move} trait.",
-					"frequency": {
-						"unit": "turn",
-						"freq": 1
-					},
-					"entries": [
-						"The soulbound ruin reacts violently to stop the creature's movement, shooting spikes, throwing bricks, or otherwise impeding the target. The target must succeed at a DC 35 Reflex save or fall {@condition prone}."
-					],
-					"name": "Impede"
 				}
 			],
 			"speed": {
@@ -4437,52 +4126,64 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 3,
-						"unit": "action"
+			"abilities": {
+				"mid": [
+					{
+						"entries": [
+							"When a soulbound ruin fails a saving throw against a spell that would banish tormented spirits or manipulate souls, such as banishment or bind soul, instead of experiencing the listed effects, it takes 10 damage per spell level."
+						],
+						"name": "Vulnerability to Exorcism"
 					},
-					"entries": [
-						"The ruin collapses up to three 10-footby- 10-foot sections of its ceiling. The ruin takes 10 damage per section it collapses, and it can't collapse the same section until it has been repaired. Each creature in one of these areas takes {@damage 8d10} bludgeoning damage with a DC 35 basic Reflex save. On a failed save, the creature is also {@condition restrained} under the rubble until it."
-					],
-					"name": "Collapse Ceiling"
-				},
-				{
-					"traits": [
-						"DC 33"
-					],
-					"entries": [
-						"."
-					],
-					"name": "Escapes"
-				},
-				{
-					"entries": [
-						"The ruin can spend 10 minutes repairing itself to regain up to 30 Hit Points. If the ruin is interrupted during this time, it loses its focus and the repair fails. This ability functions even if the ruin is reduced to 0 HP, unless a consecrate ritual has been performed to purify the building, in which case the soulbound ruin is destroyed. This ritual must be dedicated to a good deity or a deity with a strong opposition to undead, such as {@deity Pharasma}."
-					],
-					"name": "Self-Repair"
-				},
-				{
-					"entries": [
-						"A soulbound ruin's edifice Strikes can target any creature inside the ruin."
-					],
-					"name": "Pervasive Attacks"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning"
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"trigger": "A creature within the soulbound ruin uses an action with the {@trait move} trait.",
+						"frequency": {
+							"unit": "turn",
+							"freq": 1
+						},
+						"entries": [
+							"The soulbound ruin reacts violently to stop the creature's movement, shooting spikes, throwing bricks, or otherwise impeding the target. The target must succeed at a DC 35 Reflex save or fall {@condition prone}."
+						],
+						"name": "Impede"
+					}
 				],
-				"condition": [
-					"{@condition prone}",
-					"{@condition restrained}"
+				"bot": [
+					{
+						"activity": {
+							"number": 3,
+							"unit": "action"
+						},
+						"entries": [
+							"The ruin collapses up to three 10-footby- 10-foot sections of its ceiling. The ruin takes 10 damage per section it collapses, and it can't collapse the same section until it has been repaired. Each creature in one of these areas takes {@damage 8d10} bludgeoning damage with a DC 35 basic Reflex save. On a failed save, the creature is also {@condition restrained} under the rubble until it."
+						],
+						"name": "Collapse Ceiling"
+					},
+					{
+						"traits": [
+							"dc 33"
+						],
+						"entries": [
+							"."
+						],
+						"name": "Escapes"
+					},
+					{
+						"entries": [
+							"The ruin can spend 10 minutes repairing itself to regain up to 30 Hit Points. If the ruin is interrupted during this time, it loses its focus and the repair fails. This ability functions even if the ruin is reduced to 0 HP, unless a consecrate ritual has been performed to purify the building, in which case the soulbound ruin is destroyed. This ritual must be dedicated to a good deity or a deity with a strong opposition to undead, such as {@deity Pharasma}."
+						],
+						"name": "Self-Repair"
+					},
+					{
+						"entries": [
+							"A soulbound ruin's edifice Strikes can target any creature inside the ruin."
+						],
+						"name": "Pervasive Attacks"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"CC"
-			]
+			}
 		},
 		{
 			"name": "Talamira",
@@ -4490,28 +4191,27 @@
 			"source": "AoA4",
 			"page": 8,
 			"level": 13,
-			"rarity": "Unique",
-			"alignment": "CN",
-			"size": "Medium",
 			"traits": [
-				"Ghost",
-				"Incorporeal"
+				"unique",
+				"cn",
+				"medium",
+				"ghost",
+				"incorporeal",
+				"spirit",
+				"undead"
 			],
 			"creatureType": [
 				"Spirit",
 				"Undead"
 			],
 			"perception": {
-				"default": 24
+				"std": 24
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Elven"
@@ -4520,52 +4220,38 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 27
+					"std": 27
 				},
 				"Arcana": {
-					"default": 27
+					"std": 27
 				},
 				"Nature": {
-					"default": 27
+					"std": 27
 				},
 				"Aiudara Lore": {
-					"default": 30
+					"std": 30
 				}
 			},
 			"abilityMods": {
-				"Str": -5,
-				"Dex": 4,
-				"Con": 0,
-				"Int": 6,
-				"Wis": 5,
-				"Cha": 4
+				"str": -5,
+				"dex": 4,
+				"con": 0,
+				"int": 6,
+				"wis": 5,
+				"cha": 4
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+27 Str \u20135, Dex +4, Con +0, Int +6, Wis +5, Cha +4."
-					],
-					"name": "Nature"
-				},
-				{
-					"entries": [
-						"Jewelgate way station."
-					],
-					"name": "Site Bound"
-				}
-			],
 			"ac": {
-				"default": 34
+				"std": 34
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 20
+				"fort": {
+					"std": 20
 				},
-				"Ref": {
-					"default": 23
+				"ref": {
+					"std": 23
 				},
-				"Will": {
-					"default": 26
+				"will": {
+					"std": 26
 				}
 			},
 			"hp": [
@@ -4577,23 +4263,8 @@
 					]
 				}
 			],
-			"immunities": {
-				"damage": [],
-				"condition": [
-					"death"
-				]
-			},
-			"abilitiesMid": [
-				{
-					"traits": [
-						"divine",
-						"necromancy"
-					],
-					"entries": [
-						"Talamira's ghost is bound to the way station by the presence of the wailing crystals; if this hazard is deactivated or destroyed, Talamira sighs in relief as her memories are restored\u2014this burst of psychic energy suffuses all PCs in the area, granting them access to the ancient tradition of magic she once followed, that of the crystal keeper archetype (page 74). A moment later, Talamira fades away, her soul moving on to the afterlife."
-					],
-					"name": "Rejuvenation"
-				}
+			"immunities": [
+				"death"
 			],
 			"speed": {
 				"fly": 30
@@ -4714,72 +4385,85 @@
 					}
 				}
 			],
-			"abilitiesBot": [
-				{
-					"traits": [
-						"7th"
-					],
-					"entries": [
-						"acid splash, detect magic, mage hand, ray of frost, shield."
-					],
-					"name": "Cantrips"
-				},
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"+27 Str \u20135, Dex +4, Con +0, Int +6, Wis +5, Cha +4."
+						],
+						"name": "Nature"
 					},
-					"traits": [
-						"arcane",
-						"emotion",
-						"enchantment",
-						"mental",
-						"sonic"
-					],
-					"entries": [
-						"Talamira releases an anguish-filled cry of despair. All creatures within 30 feet must attempt a DC 33 Will save to resist. Talamira can't use Resonant Wail for {@dice 1d4} rounds.",
-						{
-							"type": "successDegree",
-							"entries": {
-								"Critical Success": "The creature is unaffected.",
-								"Success": "The creature wails with anguish for 3 rounds. The shrieks resonate within the room's wailing crystals, giving the crystals a +2 status bonus on attack rolls against that creature during this time.",
-								"Failure": "As success, but the creature is {@condition slowed|CRB|slowed 1} for 1 minute as it sobs uncontrollably. If the creature is already {@condition slowed|CRB|slowed 1} by crushing despair, it is {@condition slowed|CRB|slowed 2} as long as it's under both effects simultaneously.",
-								"Critical Failure": "As failure, but the creature is also {@condition stunned|CRB|stunned 3} from its overwhelming sadness."
-							}
-						}
-					],
-					"name": "Resonant Wail"
-				},
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"traits": [
-						"divine",
-						"evocation"
-					],
-					"entries": [
-						"Talamira fills the air with whirling crystals, dealing {@damage 7d6} slashing damage to all creatures in a 30-foot emanation (DC 33 basic Reflex save)."
-					],
-					"name": "Telekinetic Crystalline Assault"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"negative",
-					"slashing"
+					{
+						"entries": [
+							"Jewelgate way station."
+						],
+						"name": "Site Bound"
+					}
 				],
-				"condition": [
-					"{@condition slowed}",
-					"{@condition stunned}"
+				"mid": [
+					{
+						"traits": [
+							"divine",
+							"necromancy"
+						],
+						"entries": [
+							"Talamira's ghost is bound to the way station by the presence of the wailing crystals; if this hazard is deactivated or destroyed, Talamira sighs in relief as her memories are restored\u2014this burst of psychic energy suffuses all PCs in the area, granting them access to the ancient tradition of magic she once followed, that of the crystal keeper archetype (page 74). A moment later, Talamira fades away, her soul moving on to the afterlife."
+						],
+						"name": "Rejuvenation"
+					}
+				],
+				"bot": [
+					{
+						"traits": [
+							"7th"
+						],
+						"entries": [
+							"acid splash, detect magic, mage hand, ray of frost, shield."
+						],
+						"name": "Cantrips"
+					},
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"arcane",
+							"emotion",
+							"enchantment",
+							"mental",
+							"sonic"
+						],
+						"entries": [
+							"Talamira releases an anguish-filled cry of despair. All creatures within 30 feet must attempt a DC 33 Will save to resist. Talamira can't use Resonant Wail for {@dice 1d4} rounds.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": "The creature is unaffected.",
+									"Success": "The creature wails with anguish for 3 rounds. The shrieks resonate within the room's wailing crystals, giving the crystals a +2 status bonus on attack rolls against that creature during this time.",
+									"Failure": "As success, but the creature is {@condition slowed|CRB|slowed 1} for 1 minute as it sobs uncontrollably. If the creature is already {@condition slowed|CRB|slowed 1} by crushing despair, it is {@condition slowed|CRB|slowed 2} as long as it's under both effects simultaneously.",
+									"Critical Failure": "As failure, but the creature is also {@condition stunned|CRB|stunned 3} from its overwhelming sadness."
+								}
+							}
+						],
+						"name": "Resonant Wail"
+					},
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"divine",
+							"evocation"
+						],
+						"entries": [
+							"Talamira fills the air with whirling crystals, dealing {@damage 7d6} slashing damage to all creatures in a 30-foot emanation (DC 33 basic Reflex save)."
+						],
+						"name": "Telekinetic Crystalline Assault"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"AD",
-				"CC"
-			]
+			}
 		},
 		{
 			"name": "Thea",
@@ -4787,17 +4471,18 @@
 			"source": "AoA4",
 			"page": 31,
 			"level": 11,
-			"rarity": "Unique",
-			"alignment": "NE",
-			"size": "Medium",
 			"traits": [
-				"Human"
+				"unique",
+				"ne",
+				"medium",
+				"human",
+				"humanoid"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 21
+				"std": 21
 			},
 			"languages": {
 				"languages": [
@@ -4809,45 +4494,44 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 22
+					"std": 22
 				},
 				"Arcana": {
-					"default": 15
+					"std": 15
 				},
 				"Athletics": {
-					"default": 19
+					"std": 19
 				},
 				"Nature": {
-					"default": 19
+					"std": 19
 				},
 				"Stealth": {
-					"default": 24
+					"std": 24
 				},
 				"Thievery": {
-					"default": 24
+					"std": 24
 				}
 			},
 			"abilityMods": {
-				"Str": 2,
-				"Dex": 7,
-				"Con": 3,
-				"Int": 0,
-				"Wis": 4,
-				"Cha": 6
+				"str": 2,
+				"dex": 7,
+				"con": 3,
+				"int": 0,
+				"wis": 4,
+				"cha": 6
 			},
-			"abilitiesTop": [],
 			"ac": {
-				"default": 32
+				"std": 32
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 18
+				"fort": {
+					"std": 18
 				},
-				"Ref": {
-					"default": 24
+				"ref": {
+					"std": 24
 				},
-				"Will": {
-					"default": 21
+				"will": {
+					"std": 21
 				}
 			},
 			"hp": [
@@ -4856,7 +4540,6 @@
 					"abilities": null
 				}
 			],
-			"abilitiesMid": [],
 			"speed": {
 				"walk": 25
 			},
@@ -4880,76 +4563,64 @@
 					]
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 3,
-						"unit": "action"
+			"abilities": {
+				"bot": [
+					{
+						"activity": {
+							"number": 3,
+							"unit": "action"
+						},
+						"traits": [
+							"attack",
+							"manipulate"
+						],
+						"entries": [
+							"Requirements Thea has manacles in hand and is adjacent to a creature.",
+							"Thea attempts to bind the creature's wrists or ankles with the manacles. If she succeeds at an attack roll with a +24 modifier against the target's AC, she applies the manacles."
+						],
+						"name": "Efficient Capture"
 					},
-					"traits": [
-						"attack",
-						"manipulate"
-					],
-					"entries": [
-						"Requirements Thea has manacles in hand and is adjacent to a creature.",
-						"Thea attempts to bind the creature's wrists or ankles with the manacles. If she succeeds at an attack roll with a +24 modifier against the target's AC, she applies the manacles."
-					],
-					"name": "Efficient Capture"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "free"
+					{
+						"activity": {
+							"number": 1,
+							"unit": "free"
+						},
+						"trigger": "Thea's {@action Strike} hits a flatfooted creature and deals damage.",
+						"entries": [
+							"Thea applies one of the following debilitations to the creature, which lasts until the end of her next turn.",
+							{
+								"type": "list",
+								"items": [
+									"{@bold Brow Gash} The target becomes {@condition flat-footed}.",
+									"{@bold Deep Cut} The target takes an additional {@damage 2d6} precision damage from Thea's attacks.",
+									"{@bold Hamstring} The target takes a \u201310-foot status penalty to its Speeds.",
+									"{@bold Low Blow} The target becomes {@condition enfeebled|CRB|enfeebled 1}."
+								]
+							}
+						],
+						"name": "Precise Debilitations"
 					},
-					"trigger": "Thea's {@action Strike} hits a flatfooted creature and deals damage.",
-					"entries": [
-						"Thea applies one of the following debilitations to the creature, which lasts until the end of her next turn.",
-						{
-							"type": "list",
-							"items": [
-								"{@bold Brow Gash} The target becomes {@condition flat-footed}.",
-								"{@bold Deep Cut} The target takes an additional {@damage 2d6} precision damage from Thea's attacks.",
-								"{@bold Hamstring} The target takes a \u201310-foot status penalty to its Speeds.",
-								"{@bold Low Blow} The target becomes {@condition enfeebled|CRB|enfeebled 1}."
-							]
-						}
-					],
-					"name": "Precise Debilitations"
-				},
-				{
-					"entries": [
-						"{@dice 3d6}."
-					],
-					"name": "Sneak Attack",
-					"generic": true
-				},
-				{
-					"entries": [
-						"When Thea critically succeeds at an attack roll against a {@condition flat-footed} creature, she applies the critical specialization effect for the weapon she is wielding."
-					],
-					"name": "Weapon Trick"
-				},
-				{
-					"entries": [
-						"DC 33; 3rd illusory disguise; 2nd hideous laughter; 1st fear; Cantrips (3rd) ghost sound."
-					],
-					"name": "Arcane Spells Known"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"piercing",
-					"precision"
-				],
-				"condition": [
-					"{@condition enfeebled}",
-					"{@condition flat-footed}"
+					{
+						"entries": [
+							"{@dice 3d6}."
+						],
+						"name": "Sneak Attack",
+						"generic": true
+					},
+					{
+						"entries": [
+							"When Thea critically succeeds at an attack roll against a {@condition flat-footed} creature, she applies the critical specialization effect for the weapon she is wielding."
+						],
+						"name": "Weapon Trick"
+					},
+					{
+						"entries": [
+							"DC 33; 3rd illusory disguise; 2nd hideous laughter; 1st fear; Cantrips (3rd) ghost sound."
+						],
+						"name": "Arcane Spells Known"
+					}
 				]
-			},
-			"misc": [
-				"MA",
-				"CC"
-			]
+			}
 		},
 		{
 			"name": "Veshumirix",
@@ -4957,28 +4628,29 @@
 			"source": "AoA4",
 			"page": 91,
 			"level": 16,
-			"rarity": "Unique",
-			"alignment": "CE",
-			"size": "Huge",
 			"traits": [
-				"Fire"
+				"unique",
+				"ce",
+				"huge",
+				"dragon",
+				"fire"
 			],
 			"creatureType": [
 				"Dragon"
 			],
 			"perception": {
-				"default": 28
+				"std": 28
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [
-					"scent 60 feet"
-				],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"type": "imprecise",
+					"name": "scent",
+					"range": 60
+				}
+			],
 			"languages": {
 				"languages": [
 					"Abyssal",
@@ -4989,73 +4661,47 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 30
+					"std": 30
 				},
 				"Athletics": {
-					"default": 30
+					"std": 30
 				},
 				"Deception": {
-					"default": 26
+					"std": 26
 				},
 				"Intimidation": {
-					"default": 32
+					"std": 32
 				},
 				"Nature": {
-					"default": 24
+					"std": 24
 				},
 				"Stealth": {
-					"default": 27
+					"std": 27
 				},
 				"Survival": {
-					"default": 24
+					"std": 24
 				}
 			},
 			"abilityMods": {
-				"Str": 7,
-				"Dex": 4,
-				"Con": 5,
-				"Int": 4,
-				"Wis": 4,
-				"Cha": 6
+				"str": 7,
+				"dex": 4,
+				"con": 5,
+				"int": 4,
+				"wis": 4,
+				"cha": 6
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"Skills {@skill Acrobatics} +30, {@skill Athletics} +30,"
-					],
-					"name": "Ignan, Terran, Undercommon"
-				},
-				{
-					"entries": [
-						"+26, {@skill Intimidation} +32,"
-					],
-					"name": "Deception"
-				},
-				{
-					"entries": [
-						"+24, {@skill Stealth} +27, {@skill Survival} +24 Str +7, Dex +4, Con +5, Int +4,"
-					],
-					"name": "Nature"
-				},
-				{
-					"entries": [
-						"+4, Cha +6."
-					],
-					"name": "Wis"
-				}
-			],
 			"ac": {
-				"default": 39
+				"std": 39
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 29
+				"fort": {
+					"std": 29
 				},
-				"Ref": {
-					"default": 28
+				"ref": {
+					"std": 28
 				},
-				"Will": {
-					"default": 26
+				"will": {
+					"std": 26
 				}
 			},
 			"hp": [
@@ -5064,44 +4710,15 @@
 					"abilities": null
 				}
 			],
-			"immunities": {
-				"damage": [
-					"fire"
-				],
-				"condition": [
-					"paralyzed",
-					"sleep"
-				]
-			},
+			"immunities": [
+				"fire",
+				"paralyzed",
+				"sleep"
+			],
 			"weaknesses": [
 				{
 					"amount": 15,
 					"name": "cold"
-				}
-			],
-			"abilitiesMid": [
-				{
-					"traits": [
-						"aura",
-						"emotion",
-						"fear",
-						"mental"
-					],
-					"entries": [
-						"90 feet, DC 34."
-					],
-					"name": "Frightful Presence",
-					"generic": true
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"entries": [
-						"As young magma dragon (page 80)."
-					],
-					"name": "Wing Deflection"
 				}
 			],
 			"speed": {
@@ -5204,78 +4821,117 @@
 					}
 				}
 			],
-			"abilitiesBot": [
-				{
-					"traits": [
-						"4th"
-					],
-					"entries": [
-						"fire shield."
-					],
-					"name": "Constant"
-				},
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"Skills {@skill Acrobatics} +30, {@skill Athletics} +30,"
+						],
+						"name": "Ignan, Terran, Undercommon"
 					},
-					"traits": [
-						"evocation",
-						"fire",
-						"primal"
-					],
-					"entries": [
-						"Veshumirix breathes a blast of magma that deals {@damage 9d6} fire damage and {@damage 4d12} bludgeoning damage in a 60-foot cone (DC 42 basic Reflex save). He can't use Breath Weapon again for {@dice 1d4} rounds."
-					],
-					"name": "Breath Weapon"
-				},
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
+					{
+						"entries": [
+							"+26, {@skill Intimidation} +32,"
+						],
+						"name": "Deception"
 					},
-					"entries": [
-						"As young magma dragon (page 80)."
-					],
-					"name": "Draconic Frenzy"
-				},
-				{
-					"entries": [
-						"As young magma dragon (page 80)."
-					],
-					"name": "Draconic Momentum"
-				},
-				{
-					"entries": [
-						"As young magma dragon (page 80)."
-					],
-					"name": "Magma Swim"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
+					{
+						"entries": [
+							"+24, {@skill Stealth} +27, {@skill Survival} +24 Str +7, Dex +4, Con +5, Int +4,"
+						],
+						"name": "Nature"
 					},
-					"entries": [
-						"As adult magma dragon (page 80), but the damage is {@dice 4d6}."
-					],
-					"name": "Volcanic Purge"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning",
-					"fire",
-					"piercing",
-					"slashing"
+					{
+						"entries": [
+							"+4, Cha +6."
+						],
+						"name": "Wis"
+					}
 				],
-				"condition": []
-			},
-			"misc": [
-				"MA",
-				"RC",
-				"AD"
-			]
+				"mid": [
+					{
+						"traits": [
+							"aura",
+							"emotion",
+							"fear",
+							"mental"
+						],
+						"entries": [
+							"90 feet, DC 34."
+						],
+						"name": "Frightful Presence",
+						"generic": true
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"entries": [
+							"As young magma dragon (page 80)."
+						],
+						"name": "Wing Deflection"
+					}
+				],
+				"bot": [
+					{
+						"traits": [
+							"4th"
+						],
+						"entries": [
+							"fire shield."
+						],
+						"name": "Constant"
+					},
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"evocation",
+							"fire",
+							"primal"
+						],
+						"entries": [
+							"Veshumirix breathes a blast of magma that deals {@damage 9d6} fire damage and {@damage 4d12} bludgeoning damage in a 60-foot cone (DC 42 basic Reflex save). He can't use Breath Weapon again for {@dice 1d4} rounds."
+						],
+						"name": "Breath Weapon"
+					},
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"As young magma dragon (page 80)."
+						],
+						"name": "Draconic Frenzy"
+					},
+					{
+						"entries": [
+							"As young magma dragon (page 80)."
+						],
+						"name": "Draconic Momentum"
+					},
+					{
+						"entries": [
+							"As young magma dragon (page 80)."
+						],
+						"name": "Magma Swim"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"As adult magma dragon (page 80), but the damage is {@dice 4d6}."
+						],
+						"name": "Volcanic Purge"
+					}
+				]
+			}
 		},
 		{
 			"name": "Xevalorg",
@@ -5283,23 +4939,23 @@
 			"source": "AoA4",
 			"page": 14,
 			"level": 13,
-			"rarity": "Unique",
-			"alignment": "CE",
-			"size": "Large",
+			"traits": [
+				"unique",
+				"ce",
+				"large",
+				"aberration"
+			],
 			"creatureType": [
 				"Aberration"
 			],
 			"perception": {
-				"default": 26
+				"std": 26
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
 			"languages": {
 				"languages": [
 					"Aklo",
@@ -5310,68 +4966,48 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 23,
+					"std": 23,
 					"to Squeeze": 27
 				},
 				"Athletics": {
-					"default": 27
+					"std": 27
 				},
 				"Religion": {
-					"default": 26
+					"std": 26
 				},
 				"Stealth": {
-					"default": 23
+					"std": 23
 				},
 				"Survival": {
-					"default": 24
+					"std": 24
 				}
 			},
 			"abilityMods": {
-				"Str": 8,
-				"Dex": 4,
-				"Con": 5,
-				"Int": 2,
-				"Wis": 7,
-				"Cha": 4
+				"str": 8,
+				"dex": 4,
+				"con": 5,
+				"int": 2,
+				"wis": 7,
+				"cha": 4
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+26, {@skill Stealth} +23, {@skill Survival} +24 Str +8, Dex +4, Con +5, Int +2, Wis +7, Cha +4."
-					],
-					"name": "Religion"
-				}
-			],
 			"ac": {
-				"default": 34
+				"std": 34
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 26
+				"fort": {
+					"std": 26
 				},
-				"Ref": {
-					"default": 20
+				"ref": {
+					"std": 20
 				},
-				"Will": {
-					"default": 23
+				"will": {
+					"std": 23
 				}
 			},
 			"hp": [
 				{
 					"hp": 235,
 					"abilities": null
-				}
-			],
-			"abilitiesMid": [
-				{
-					"activity": {
-						"number": 1,
-						"unit": "varies",
-						"entry": "[{@as R}"
-					},
-					"entries": [],
-					"name": "Attack of Opportunity",
-					"generic": true
 				}
 			],
 			"speed": {
@@ -5463,56 +5099,67 @@
 					}
 				}
 			],
-			"abilitiesBot": [
-				{
-					"traits": [
-						"4th"
-					],
-					"entries": [
-						"freedom of movement, see invisibility."
-					],
-					"name": "Constant"
-				},
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"entries": [
-						"Xevalorg makes up to four claw Strikes, each against a different target. These attacks count toward Xevalorg's multiple attack penalty, and the multiple attack penalty doesn't increase until after he makes all his attacks."
-					],
-					"name": "Furious Claws"
-				},
-				{
-					"entries": [
-						"Despite his size, Xevalorg's multiple joints allow him to fit through tight spaces as if he were a Medium creature. While Squeezing, he can move at his full Speed."
-					],
-					"name": "Eerie Flexibility"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"traits": [
-						"claw"
-					],
-					"entries": [],
-					"name": "Rend",
-					"generic": true
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"piercing",
-					"slashing"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"+26, {@skill Stealth} +23, {@skill Survival} +24 Str +8, Dex +4, Con +5, Int +2, Wis +7, Cha +4."
+						],
+						"name": "Religion"
+					}
 				],
-				"condition": []
-			},
-			"misc": [
-				"MA",
-				"RC"
-			]
+				"mid": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "varies",
+							"entry": "[{@as R}"
+						},
+						"entries": [],
+						"name": "Attack of Opportunity",
+						"generic": true
+					}
+				],
+				"bot": [
+					{
+						"traits": [
+							"4th"
+						],
+						"entries": [
+							"freedom of movement, see invisibility."
+						],
+						"name": "Constant"
+					},
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"Xevalorg makes up to four claw Strikes, each against a different target. These attacks count toward Xevalorg's multiple attack penalty, and the multiple attack penalty doesn't increase until after he makes all his attacks."
+						],
+						"name": "Furious Claws"
+					},
+					{
+						"entries": [
+							"Despite his size, Xevalorg's multiple joints allow him to fit through tight spaces as if he were a Medium creature. While Squeezing, he can move at his full Speed."
+						],
+						"name": "Eerie Flexibility"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"claw"
+						],
+						"entries": [],
+						"name": "Rend",
+						"generic": true
+					}
+				]
+			}
 		},
 		{
 			"name": "Young Magma Dragon",
@@ -5520,28 +5167,29 @@
 			"source": "AoA4",
 			"page": 80,
 			"level": 9,
-			"rarity": "Rare",
-			"alignment": "CN",
-			"size": "Large",
 			"traits": [
-				"Fire"
+				"rare",
+				"cn",
+				"large",
+				"dragon",
+				"fire"
 			],
 			"creatureType": [
 				"Dragon"
 			],
 			"perception": {
-				"default": 18
+				"std": 18
 			},
-			"senses": {
-				"precise": [],
-				"imprecise": [
-					"scent 60 feet"
-				],
-				"vague": [],
-				"other": [
-					"darkvision"
-				]
-			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"type": "imprecise",
+					"name": "scent",
+					"range": 60
+				}
+			],
 			"languages": {
 				"languages": [
 					"Common",
@@ -5552,55 +5200,47 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 16
+					"std": 16
 				},
 				"Athletics": {
-					"default": 18
+					"std": 18
 				},
 				"Deception": {
-					"default": 14
+					"std": 14
 				},
 				"Intimidation": {
-					"default": 18
+					"std": 18
 				},
 				"Nature": {
-					"default": 16
+					"std": 16
 				},
 				"Stealth": {
-					"default": 16
+					"std": 16
 				},
 				"Survival": {
-					"default": 16
+					"std": 16
 				}
 			},
 			"abilityMods": {
-				"Str": 6,
-				"Dex": 1,
-				"Con": 4,
-				"Int": 0,
-				"Wis": 3,
-				"Cha": 3
+				"str": 6,
+				"dex": 1,
+				"con": 4,
+				"int": 0,
+				"wis": 3,
+				"cha": 3
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"+16, {@skill Survival} +16 Str +6, Dex +1, Con +4, Int +0, Wis +3, Cha +3."
-					],
-					"name": "Stealth"
-				}
-			],
 			"ac": {
-				"default": 28
+				"std": 28
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 19
+				"fort": {
+					"std": 19
 				},
-				"Ref": {
-					"default": 16
+				"ref": {
+					"std": 16
 				},
-				"Will": {
-					"default": 18
+				"will": {
+					"std": 18
 				}
 			},
 			"hp": [
@@ -5609,45 +5249,15 @@
 					"abilities": null
 				}
 			],
-			"immunities": {
-				"damage": [
-					"fire"
-				],
-				"condition": [
-					"paralyzed",
-					"sleep"
-				]
-			},
+			"immunities": [
+				"fire",
+				"paralyzed",
+				"sleep"
+			],
 			"weaknesses": [
 				{
 					"amount": 10,
 					"name": "cold"
-				}
-			],
-			"abilitiesMid": [
-				{
-					"traits": [
-						"aura",
-						"emotion",
-						"fear",
-						"mental"
-					],
-					"entries": [
-						"90 feet, DC 24."
-					],
-					"name": "Frightful Presence",
-					"generic": true
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"trigger": "The dragon is targeted with an attack.",
-					"entries": [
-						"The dragon raises its wing, gaining a +2 circumstance bonus to AC against the triggering attack. If the dragon is Flying, it descends 10 feet after the attack."
-					],
-					"name": "Wing Deflection"
 				}
 			],
 			"speed": {
@@ -5741,59 +5351,81 @@
 					}
 				}
 			],
-			"abilitiesBot": [
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"traits": [
-						"evocation",
-						"fire",
-						"primal"
-					],
-					"entries": [
-						"The dragon breathes a blast of magma that deals {@damage 5d6} fire damage and {@damage 3d12} bludgeoning damage in a 30-foot cone (DC 28 basic Reflex save). It can't use Breath Weapon again for {@dice 1d4} rounds."
-					],
-					"name": "Breath Weapon"
-				},
-				{
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"entries": [
-						"The dragon makes two claw Strikes and one horns {@action Strike} in any order."
-					],
-					"name": "Draconic Frenzy"
-				},
-				{
-					"entries": [
-						"The dragon recharges its Breath Weapon whenever it scores a critical hit with a {@action Strike}."
-					],
-					"name": "Draconic Momentum"
-				},
-				{
-					"entries": [
-						"A magma dragon's swim Speed functions only when the dragon is swimming through magma or molten lava."
-					],
-					"name": "Magma Swim"
-				}
-			],
-			"inflicts": {
-				"damage": [
-					"bludgeoning",
-					"fire",
-					"piercing",
-					"slashing"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"+16, {@skill Survival} +16 Str +6, Dex +1, Con +4, Int +0, Wis +3, Cha +3."
+						],
+						"name": "Stealth"
+					}
 				],
-				"condition": []
-			},
-			"misc": [
-				"MA",
-				"RC",
-				"AD"
-			]
+				"mid": [
+					{
+						"traits": [
+							"aura",
+							"emotion",
+							"fear",
+							"mental"
+						],
+						"entries": [
+							"90 feet, DC 24."
+						],
+						"name": "Frightful Presence",
+						"generic": true
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"trigger": "The dragon is targeted with an attack.",
+						"entries": [
+							"The dragon raises its wing, gaining a +2 circumstance bonus to AC against the triggering attack. If the dragon is Flying, it descends 10 feet after the attack."
+						],
+						"name": "Wing Deflection"
+					}
+				],
+				"bot": [
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"evocation",
+							"fire",
+							"primal"
+						],
+						"entries": [
+							"The dragon breathes a blast of magma that deals {@damage 5d6} fire damage and {@damage 3d12} bludgeoning damage in a 30-foot cone (DC 28 basic Reflex save). It can't use Breath Weapon again for {@dice 1d4} rounds."
+						],
+						"name": "Breath Weapon"
+					},
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"The dragon makes two claw Strikes and one horns {@action Strike} in any order."
+						],
+						"name": "Draconic Frenzy"
+					},
+					{
+						"entries": [
+							"The dragon recharges its Breath Weapon whenever it scores a critical hit with a {@action Strike}."
+						],
+						"name": "Draconic Momentum"
+					},
+					{
+						"entries": [
+							"A magma dragon's swim Speed functions only when the dragon is swimming through magma or molten lava."
+						],
+						"name": "Magma Swim"
+					}
+				]
+			}
 		},
 		{
 			"name": "Zuferian",
@@ -5801,17 +5433,18 @@
 			"source": "AoA4",
 			"page": 37,
 			"level": 15,
-			"rarity": "Unique",
-			"alignment": "NE",
-			"size": "Medium",
 			"traits": [
-				"Human"
+				"unique",
+				"ne",
+				"medium",
+				"human",
+				"humanoid"
 			],
 			"creatureType": [
 				"Humanoid"
 			],
 			"perception": {
-				"default": 26
+				"std": 26
 			},
 			"languages": {
 				"languages": [
@@ -5823,52 +5456,44 @@
 			},
 			"skills": {
 				"Acrobatics": {
-					"default": 26
+					"std": 26
 				},
 				"Arcana": {
-					"default": 27
+					"std": 27
 				},
 				"Crafting": {
-					"default": 31
+					"std": 31
 				},
 				"Intimidation": {
-					"default": 23
+					"std": 23
 				},
 				"Stealth": {
-					"default": 26
+					"std": 26
 				},
 				"Thievery": {
-					"default": 28
+					"std": 28
 				}
 			},
 			"abilityMods": {
-				"Str": 2,
-				"Dex": 7,
-				"Con": 4,
-				"Int": 8,
-				"Wis": 7,
-				"Cha": 0
+				"str": 2,
+				"dex": 7,
+				"con": 4,
+				"int": 8,
+				"wis": 7,
+				"cha": 0
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"Zuferian's items listed as infused last for 24 hours, or until her next daily preparations."
-					],
-					"name": "Infused Items"
-				}
-			],
 			"ac": {
-				"default": 36
+				"std": 36
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 24
+				"fort": {
+					"std": 24
 				},
-				"Ref": {
-					"default": 29
+				"ref": {
+					"std": 29
 				},
-				"Will": {
-					"default": 27
+				"will": {
+					"std": 27
 				}
 			},
 			"hp": [
@@ -5877,7 +5502,6 @@
 					"abilities": null
 				}
 			],
-			"abilitiesMid": [],
 			"speed": {
 				"walk": 25
 			},
@@ -5907,62 +5531,63 @@
 					"types": []
 				}
 			],
-			"abilitiesBot": [
-				{
-					"entries": [
-						"Formulas greater acid flask, greater alchemist's fire, greater bottled lightning, greater darkvision elixir, deathcap powder, greater elixir of life, greater frost vial, lethargy poison, purple worm venom, greater tanglefoot bag."
-					],
-					"name": "Alchemical"
-				},
-				{
-					"entries": [
-						"Zuferian's bombs that have the {@trait splash} trait deal 8 extra splash damage, and splash to 10 feet."
-					],
-					"name": "Expanded Splash"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"Zuferian's items listed as infused last for 24 hours, or until her next daily preparations."
+						],
+						"name": "Infused Items"
+					}
+				],
+				"bot": [
+					{
+						"entries": [
+							"Formulas greater acid flask, greater alchemist's fire, greater bottled lightning, greater darkvision elixir, deathcap powder, greater elixir of life, greater frost vial, lethargy poison, purple worm venom, greater tanglefoot bag."
+						],
+						"name": "Alchemical"
 					},
-					"entries": [
-						"Zuferian creates a single alchemical item from her formula book (see Alchemical Formulas)",
-						"This item has the {@trait infused} trait, but it remains potent only until the start of her next turn. With her typical preparations, she can use this ability 7 times per day."
-					],
-					"name": "Quick Alchemy"
-				},
-				{
-					"activity": {
-						"number": 1,
-						"unit": "action"
+					{
+						"entries": [
+							"Zuferian's bombs that have the {@trait splash} trait deal 8 extra splash damage, and splash to 10 feet."
+						],
+						"name": "Expanded Splash"
 					},
-					"entries": [
-						"Zuferian Interacts to draw a bomb, then Strikes with it."
-					],
-					"name": "Quick Bomber"
-				},
-				{
-					"entries": [
-						"80."
-					],
-					"name": "True Debilitating Bomb Pathfinder Core Rulebook"
-				},
-				{
-					"entries": [
-						"80."
-					],
-					"name": "Uncanny Bombs Pathfinder Core Rulebook"
-				}
-			],
-			"inflicts": {
-				"damage": [],
-				"condition": []
-			},
-			"misc": [
-				"MA",
-				"RA",
-				"UW"
-			]
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"Zuferian creates a single alchemical item from her formula book (see Alchemical Formulas)",
+							"This item has the {@trait infused} trait, but it remains potent only until the start of her next turn. With her typical preparations, she can use this ability 7 times per day."
+						],
+						"name": "Quick Alchemy"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"Zuferian Interacts to draw a bomb, then Strikes with it."
+						],
+						"name": "Quick Bomber"
+					},
+					{
+						"entries": [
+							"80."
+						],
+						"name": "True Debilitating Bomb Pathfinder Core Rulebook"
+					},
+					{
+						"entries": [
+							"80."
+						],
+						"name": "Uncanny Bombs Pathfinder Core Rulebook"
+					}
+				]
+			}
 		}
 	]
 }

@@ -6,22 +6,24 @@
 			"page": 106,
 			"level": 5,
 			"traits": [
-				"Acid",
-				"Evocation"
+				"acid",
+				"evocation"
 			],
 			"school": "V",
 			"traditions": [
-				"Arcane",
-				"Primal"
+				"arcane",
+				"primal"
 			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"range": {
 				"entry": "120 feet",
 				"distance": {
@@ -61,22 +63,24 @@
 			"page": 106,
 			"level": 1,
 			"traits": [
-				"Acid",
-				"Evocation"
+				"acid",
+				"evocation"
 			],
 			"school": "V",
 			"traditions": [
-				"Arcane",
-				"Primal"
+				"arcane",
+				"primal"
 			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"area": {
 				"types": [
 					"Emanation"
@@ -111,18 +115,20 @@
 				"change"
 			],
 			"traits": [
-				"Morph",
-				"Transmutation"
+				"morph",
+				"transmutation"
 			],
 			"school": "T",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"duration": {
 				"type": "timed",
 				"entry": "1 minute",
@@ -155,16 +161,18 @@
 			],
 			"level": 4,
 			"traits": [
-				"Abjuration"
+				"abjuration"
 			],
 			"school": "A",
 			"cast": {
 				"number": 1,
 				"unit": "reaction"
 			},
-			"components": {
-				"S": true
-			},
+			"components": [
+				{
+					"S": true
+				}
+			],
 			"trigger": "You take acid, cold, electricity, fire, or sonic damage.",
 			"duration": {
 				"type": "timed",
@@ -192,23 +200,25 @@
 			"page": 106,
 			"level": 1,
 			"traits": [
-				"Enchantment",
-				"Mental",
-				"Nonlethal"
+				"enchantment",
+				"mental",
+				"nonlethal"
 			],
 			"school": "E",
 			"traditions": [
-				"Arcane",
-				"Occult"
+				"arcane",
+				"occult"
 			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"range": {
 				"entry": "30 feet",
 				"distance": {
@@ -258,21 +268,23 @@
 			"page": 106,
 			"level": 2,
 			"traits": [
-				"Abjuration",
-				"Mental"
+				"abjuration",
+				"mental"
 			],
 			"school": "A",
 			"traditions": [
-				"Occult"
+				"occult"
 			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"savingThrow": {
 				"type": [
 					"W"
@@ -281,12 +293,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "1 hour",
+				"dismiss": true,
 				"duration": {
 					"number": 1,
 					"unit": "hour"
 				}
 			},
-			"dismiss": true,
 			"entries": [
 				"You implant a mental mine within your psyche that detonates against anyone attempting to {@footnote manipulate your thoughts|The animus mine spell should only the deal the mental damage on {@trait magical} {@trait mental} effects that send their magic into your mind, not if a creature tries to do something mundane like talk to you.|{@link Lost Omens Gods & Magic Errata|https://paizo.com/pathfinder/faq}}. You can use a single action, which has the {@trait concentrate} trait, to suppress the effects of the mine for 1 round to allow someone to safely use a {@trait mental} effect on you. You can {@action Dismiss} the spell.",
 				"The first creature that uses a {@trait magical} {@trait mental} effect against you triggers the animus mine, causing the spell to end. The animus mine deals {@damage 4d8} mental damage to the triggering creature, which must attempt a Will save.",
@@ -315,21 +327,23 @@
 			"page": 107,
 			"level": 1,
 			"traits": [
-				"Divination"
+				"divination"
 			],
 			"school": "D",
 			"traditions": [
-				"Arcane",
-				"Occult"
+				"arcane",
+				"occult"
 			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"range": {
 				"entry": "30 feet",
 				"distance": {
@@ -368,19 +382,21 @@
 				"stars"
 			],
 			"traits": [
-				"Evocation",
-				"Light"
+				"evocation",
+				"light"
 			],
 			"school": "V",
 			"cast": {
 				"number": 3,
 				"unit": "action"
 			},
-			"components": {
-				"M": true,
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"M": true,
+					"S": true,
+					"V": true
+				}
+			],
 			"range": {
 				"entry": "150 feet",
 				"distance": {
@@ -397,12 +413,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "1 minute",
+				"dismiss": true,
 				"duration": {
 					"number": 1,
 					"unit": "minute"
 				}
 			},
-			"dismiss": true,
 			"entries": [
 				"Lines of burning starlight form a constellation around you.",
 				"Draw five lines, one at a time; each line must anchor at you or a creature or object already connected to a previous line, and it must end at a creature or object within 30 feet of its anchor (possibly allowing the asterism to extend to its full 150-foot range). A creature that begins its turn in one of these lines or enters one of these lines on its turn takes {@damage 4d6} fire damage (basic Reflex save). A creature can take this damage only once per turn, even if it moves through several lines. Targets that are part of the asterism do not take damage from it. If the distance between two targets (or you and a target) ever exceeds 30 feet, the line of starlight between the two breaks, and any lines that now no longer have a direct path back to you also break. You can {@action Dismiss} the spell."
@@ -422,22 +438,24 @@
 			"page": 107,
 			"level": 1,
 			"traits": [
-				"Emotion",
-				"Enchantment",
-				"Mental"
+				"emotion",
+				"enchantment",
+				"mental"
 			],
 			"school": "E",
 			"traditions": [
-				"Arcane"
+				"arcane"
 			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"range": {
 				"entry": "30 feet",
 				"distance": {
@@ -483,17 +501,19 @@
 			],
 			"level": 4,
 			"traits": [
-				"Electricity",
-				"Evocation"
+				"electricity",
+				"evocation"
 			],
 			"school": "V",
 			"cast": {
 				"number": 1,
 				"unit": "reaction"
 			},
-			"components": {
-				"S": true
-			},
+			"components": [
+				{
+					"S": true
+				}
+			],
 			"trigger": "You would take electricity damage.",
 			"duration": {
 				"type": "timed",
@@ -529,21 +549,23 @@
 			"page": 107,
 			"level": 2,
 			"traits": [
-				"Abjuration",
-				"Curse"
+				"abjuration",
+				"curse"
 			],
 			"school": "A",
 			"traditions": [
-				"Divine"
+				"divine"
 			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"range": {
 				"entry": "touch",
 				"distance": {
@@ -588,19 +610,21 @@
 				"lightning"
 			],
 			"traits": [
-				"Attack",
-				"Electricity",
-				"Evocation"
+				"attack",
+				"electricity",
+				"evocation"
 			],
 			"school": "V",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"range": {
 				"entry": "60 feet",
 				"distance": {
@@ -639,22 +663,24 @@
 			},
 			"level": 1,
 			"traits": [
-				"Cold",
-				"Evocation"
+				"cold",
+				"evocation"
 			],
 			"school": "V",
 			"traditions": [
-				"Arcane",
-				"Primal"
+				"arcane",
+				"primal"
 			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"area": {
 				"types": [
 					"Cone"
@@ -693,24 +719,26 @@
 			"page": 107,
 			"level": 3,
 			"traits": [
-				"Curse",
-				"Necromancy"
+				"curse",
+				"necromancy"
 			],
 			"school": "N",
 			"traditions": [
-				"Arcane",
-				"Occult",
-				"Primal"
+				"arcane",
+				"occult",
+				"primal"
 			],
 			"cast": {
 				"number": 3,
 				"unit": "action"
 			},
-			"components": {
-				"M": true,
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"M": true,
+					"S": true,
+					"V": true
+				}
+			],
 			"range": {
 				"entry": "30 feet",
 				"distance": {
@@ -727,12 +755,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "1 day",
+				"dismiss": true,
 				"duration": {
 					"number": 1,
 					"unit": "day"
 				}
 			},
-			"dismiss": true,
 			"entries": [
 				"You curse the target with a thirst no drink can quench. You can {@action Dismiss} the spell. The target must attempt a Fortitude save.",
 				{
@@ -767,16 +795,18 @@
 				"time"
 			],
 			"traits": [
-				"Abjuration"
+				"abjuration"
 			],
 			"school": "A",
 			"cast": {
 				"number": 1,
 				"unit": "reaction"
 			},
-			"components": {
-				"S": true
-			},
+			"components": [
+				{
+					"S": true
+				}
+			],
 			"trigger": "A creature or object within range is hit by an attack.",
 			"range": {
 				"entry": "30 feet",
@@ -789,12 +819,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "1 round",
+				"dismiss": true,
 				"duration": {
 					"number": 1,
 					"unit": "round"
 				}
 			},
-			"dismiss": true,
 			"entries": [
 				"You transpose the moment that the target would be injured to later in its timestream. Roll damage normally, but do not reduce Hit Points or apply any other effects of the attack until the spell's duration has elapsed. When the spell ends, the target is immediately affected by the attack, taking damage and being affected by any additional effects. You can {@action Dismiss} this spell."
 			]
@@ -809,18 +839,20 @@
 			"focus": true,
 			"level": 4,
 			"traits": [
-				"Cold",
-				"Evocation"
+				"cold",
+				"evocation"
 			],
 			"school": "V",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"area": {
 				"types": [
 					"Emanation"
@@ -836,12 +868,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "1 minute",
+				"dismiss": true,
 				"duration": {
 					"number": 1,
 					"unit": "minute"
 				}
 			},
-			"dismiss": true,
 			"entries": [
 				"You supercool the nearby air, forming a cloud of dancing ice crystals in an emanation around you. A creature other than you that enters the area or ends its turn within the area takes {@damage 2d6} cold damage. A creature can take this damage only once per turn. The crystals scatter and refract light; if a {@trait light} effect enters diamond dust's area, any creatures that effect goes on to affect gain a +2 status bonus to AC and saves against it.",
 				"While the spell persists, you can activate or deactivate this aura by using a single action, which has the {@trait concentrate} trait.",
@@ -866,18 +898,20 @@
 				"plague"
 			],
 			"traits": [
-				"Disease",
-				"Necromancy"
+				"disease",
+				"necromancy"
 			],
 			"school": "N",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"range": {
 				"entry": "15 feet",
 				"distance": {
@@ -904,7 +938,7 @@
 					"name": "Divine Plague",
 					"type": "affliction",
 					"traits": [
-						"Disease"
+						"disease"
 					],
 					"level": 1,
 					"stages": [
@@ -947,17 +981,19 @@
 				"void"
 			],
 			"traits": [
-				"Conjuration"
+				"conjuration"
 			],
 			"school": "C",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"range": {
 				"entry": "5 feet",
 				"distance": {
@@ -979,12 +1015,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "1 minute",
+				"dismiss": true,
 				"duration": {
 					"number": 1,
 					"unit": "minute"
 				}
 			},
-			"dismiss": true,
 			"entries": [
 				"Striking at thin air, you create hairline cracks in an unoccupied adjacent space that lead somewhere outside reality. Air rushes through the cracks, drawing Large or smaller creatures and objects of light Bulk or less toward the center. Large or smaller creatures in the area must attempt a Fortitude save at the start of their turn; creatures that move into the area must attempt the save on entering.",
 				{
@@ -1015,17 +1051,19 @@
 				"wyrmkin"
 			],
 			"traits": [
-				"Evocation"
+				"evocation"
 			],
 			"school": "V",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"duration": {
 				"type": "timed",
 				"entry": "1 minute",
@@ -1102,19 +1140,21 @@
 				"dust"
 			],
 			"traits": [
-				"Air",
-				"Conjuration",
-				"Nonlethal"
+				"air",
+				"conjuration",
+				"nonlethal"
 			],
 			"school": "C",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"range": {
 				"entry": "120 feet",
 				"distance": {
@@ -1158,17 +1198,19 @@
 				"duty"
 			],
 			"traits": [
-				"Abjuration"
+				"abjuration"
 			],
 			"school": "A",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"range": {
 				"entry": "30 feet",
 				"distance": {
@@ -1180,12 +1222,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "1 minute",
+				"dismiss": true,
 				"duration": {
 					"number": 1,
 					"unit": "minute"
 				}
 			},
-			"dismiss": true,
 			"entries": [
 				"As you challenge an enemy, you take some of its attention away from your allies. The target takes a \u20131 status penalty to attack rolls, damage rolls, and skill checks against creatures other than you, and you take a \u20131 status penalty to attack rolls, damage rolls, and skill checks against creatures other than the target. Each time a creature other than you uses a {@condition hostile} action that affects the challenged enemy, the enemy can attempt a Will save. On a success, the enemy no longer takes the penalty against that creature. You can {@action Dismiss} the spell, and it ends automatically if you or the target is defeated."
 			],
@@ -1208,17 +1250,19 @@
 				"souls"
 			],
 			"traits": [
-				"Necromancy"
+				"necromancy"
 			],
 			"school": "N",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"range": {
 				"entry": "30 feet",
 				"distance": {
@@ -1235,12 +1279,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "sustained up to 1 minute",
+				"sustain": true,
 				"duration": {
 					"number": 1,
 					"unit": "minute"
 				}
 			},
-			"sustain": true,
 			"entries": [
 				"You force the Material and Ethereal Planes to partially overlap, creating a zone that causes incorporeal and spiritual entities to take on many of the aspects of corporeal creatures. Within the ectoplasmic interstice, incorporeal creatures cannot pass through solid objects or corporeal creatures, and they can manipulate and attempt Strength-based checks against physical creatures and objects. An incorporeal PC or other creature with a normal Strength modifier simply uses that modifier, but if the creature had a Strength modifier of \u20135, like most incorporeal monsters, it uses a +4 modifier instead, increasing its {@skill Athletics} modifier by 9 accordingly. Attacks against creatures that are within the interstice overcome resistances as if they were by ghost touch weapons."
 			]
@@ -1255,18 +1299,20 @@
 				"souls"
 			],
 			"traits": [
-				"Incapacitation",
-				"Necromancy"
+				"incapacitation",
+				"necromancy"
 			],
 			"school": "N",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"range": {
 				"entry": "touch",
 				"distance": {
@@ -1305,17 +1351,19 @@
 				"void"
 			],
 			"traits": [
-				"Abjuration",
-				"Mental"
+				"abjuration",
+				"mental"
 			],
 			"school": "A",
 			"cast": {
 				"number": 1,
 				"unit": "action"
 			},
-			"components": {
-				"V": true
-			},
+			"components": [
+				{
+					"V": true
+				}
+			],
 			"entries": [
 				"You inject a sliver of the void into your mind, momentarily remaking it into a bleak and empty place. Attempt a counteract check against one {@trait emotion} effect affecting you."
 			],
@@ -1333,24 +1381,29 @@
 		{
 			"name": "Endure",
 			"source": "LOGM",
+			"miscTags": [
+				"THP"
+			],
 			"page": 107,
 			"level": 1,
 			"traits": [
-				"Enchantment",
-				"Mental"
+				"enchantment",
+				"mental"
 			],
 			"school": "E",
 			"traditions": [
-				"Arcane",
-				"Occult"
+				"arcane",
+				"occult"
 			],
 			"cast": {
 				"number": 1,
 				"unit": "action"
 			},
-			"components": {
-				"S": true
-			},
+			"components": [
+				{
+					"S": true
+				}
+			],
 			"range": {
 				"entry": "touch",
 				"distance": {
@@ -1389,20 +1442,22 @@
 			"focus": true,
 			"level": 4,
 			"traits": [
-				"Illusion",
-				"Mental",
-				"Visual"
+				"illusion",
+				"mental",
+				"visual"
 			],
 			"school": "I",
 			"cast": {
 				"number": 3,
 				"unit": "action"
 			},
-			"components": {
-				"M": true,
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"M": true,
+					"S": true,
+					"V": true
+				}
+			],
 			"range": {
 				"entry": "60 feet",
 				"distance": {
@@ -1446,22 +1501,24 @@
 			"page": 107,
 			"level": 2,
 			"traits": [
-				"Earth",
-				"Transmutation"
+				"earth",
+				"transmutation"
 			],
 			"school": "T",
 			"traditions": [
-				"Arcane",
-				"Primal"
+				"arcane",
+				"primal"
 			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"range": {
 				"entry": "touch",
 				"distance": {
@@ -1508,18 +1565,20 @@
 			"focus": true,
 			"level": 4,
 			"traits": [
-				"Necromancy",
-				"Negative"
+				"necromancy",
+				"negative"
 			],
 			"school": "N",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"range": {
 				"entry": "60 feet",
 				"distance": {
@@ -1541,12 +1600,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "sustained up to 1 minute",
+				"sustain": true,
 				"duration": {
 					"number": 1,
 					"unit": "minute"
 				}
 			},
-			"sustain": true,
 			"entries": [
 				"A sickly yellow light fills the area as entropic forces prevent healing. When a creature within the area would regain Hit Points, such as from a {@trait healing} effect or an ability like fast healing or regeneration, it must attempt a Will save.",
 				{
@@ -1566,24 +1625,26 @@
 			"page": 107,
 			"level": 2,
 			"traits": [
-				"Curse",
-				"Necromancy"
+				"curse",
+				"necromancy"
 			],
 			"school": "N",
 			"traditions": [
-				"Arcane",
-				"Occult",
-				"Primal"
+				"arcane",
+				"occult",
+				"primal"
 			],
 			"cast": {
 				"number": 3,
 				"unit": "action"
 			},
-			"components": {
-				"M": true,
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"M": true,
+					"S": true,
+					"V": true
+				}
+			],
 			"range": {
 				"entry": "30 feet",
 				"distance": {
@@ -1600,12 +1661,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "1 week",
+				"dismiss": true,
 				"duration": {
 					"number": 1,
 					"unit": "special"
 				}
 			},
-			"dismiss": true,
 			"entries": [
 				"You curse the target with a hunger no food can sate. You can {@action Dismiss} the spell. The target must attempt a Fortitude save.",
 				{
@@ -1637,19 +1698,21 @@
 			],
 			"level": 4,
 			"traits": [
-				"Abjuration",
-				"Emotion",
-				"Mental"
+				"abjuration",
+				"emotion",
+				"mental"
 			],
 			"school": "A",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"range": {
 				"entry": "30 feet",
 				"distance": {
@@ -1695,18 +1758,20 @@
 				"plague"
 			],
 			"traits": [
-				"Disease",
-				"Necromancy"
+				"disease",
+				"necromancy"
 			],
 			"school": "N",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"range": {
 				"entry": "30 feet",
 				"distance": {
@@ -1747,21 +1812,23 @@
 			"page": 108,
 			"level": 2,
 			"traits": [
-				"Fungus",
-				"Necromancy"
+				"fungus",
+				"necromancy"
 			],
 			"school": "N",
 			"traditions": [
-				"Primal"
+				"primal"
 			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"duration": {
 				"type": "timed",
 				"entry": "1 minute",
@@ -1801,18 +1868,20 @@
 				"glyph"
 			],
 			"traits": [
-				"Illusion",
-				"Visual"
+				"illusion",
+				"visual"
 			],
 			"school": "I",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"M": true,
-				"S": true
-			},
+			"components": [
+				{
+					"M": true,
+					"S": true
+				}
+			],
 			"range": {
 				"entry": "30 feet",
 				"distance": {
@@ -1824,12 +1893,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "1 minute",
+				"dismiss": true,
 				"duration": {
 					"number": 1,
 					"unit": "minute"
 				}
 			},
-			"dismiss": true,
 			"entries": [
 				"Glowing letters assemble in the air, providing a transcription of the target's speech in all languages you speak. For the spell's duration, any words spoken aloud by the target are spelled out in letters in front of them. When you {@action Cast a Spell||Cast the Spell}, you can choose whether these letters are visible to all creatures or only certain creatures you specify. Any words the target mouths silently are similarly spelled out, allowing the target to communicate silently or in areas where sound doesn't carry. This even allows the target to provide verbal casting components in such areas, but only if you choose to make the letters visible to all creatures. Furthermore, any of the target's {@trait auditory} abilities can affect creatures even in areas where sound does not carry as long as you have made the glyphs visible to them and they have line of sight to the target; in this case, they gain the {@trait visual} trait. You can {@action Dismiss} the spell."
 			]
@@ -1845,21 +1914,23 @@
 			},
 			"level": 3,
 			"traits": [
-				"Evocation"
+				"evocation"
 			],
 			"school": "V",
 			"traditions": [
-				"Arcane",
-				"Occult"
+				"arcane",
+				"occult"
 			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"range": {
 				"entry": "120 feet",
 				"distance": {
@@ -1902,17 +1973,19 @@
 			"focus": true,
 			"level": 1,
 			"traits": [
-				"Divination"
+				"divination"
 			],
 			"school": "D",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"range": {
 				"entry": "30 feet",
 				"distance": {
@@ -1970,22 +2043,24 @@
 			"page": 108,
 			"level": 1,
 			"traits": [
-				"Curse",
-				"Divination",
-				"Misfortune"
+				"curse",
+				"divination",
+				"misfortune"
 			],
 			"school": "D",
 			"traditions": [
-				"Occult"
+				"occult"
 			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"range": {
 				"entry": "30 feet",
 				"distance": {
@@ -2020,21 +2095,23 @@
 			"page": 108,
 			"level": 2,
 			"traits": [
-				"Transmutation"
+				"transmutation"
 			],
 			"school": "T",
 			"traditions": [
-				"Arcane",
-				"Primal"
+				"arcane",
+				"primal"
 			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"M": true,
-				"S": true
-			},
+			"components": [
+				{
+					"M": true,
+					"S": true
+				}
+			],
 			"duration": {
 				"type": "timed",
 				"entry": "1 hour",
@@ -2068,20 +2145,22 @@
 			"focus": true,
 			"level": 1,
 			"traits": [
-				"Auditory",
-				"Emotion",
-				"Enchantment",
-				"Mental"
+				"auditory",
+				"emotion",
+				"enchantment",
+				"mental"
 			],
 			"school": "E",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"range": {
 				"entry": "30-foot cone",
 				"distance": {
@@ -2114,20 +2193,22 @@
 			"page": 108,
 			"level": 1,
 			"traits": [
-				"Enchantment",
-				"Mental"
+				"enchantment",
+				"mental"
 			],
 			"school": "E",
 			"traditions": [
-				"Occult"
+				"occult"
 			],
 			"cast": {
 				"number": 1,
 				"unit": "action"
 			},
-			"components": {
-				"V": true
-			},
+			"components": [
+				{
+					"V": true
+				}
+			],
 			"range": {
 				"entry": "60 feet",
 				"distance": {
@@ -2146,25 +2227,27 @@
 			"page": 108,
 			"level": 1,
 			"traits": [
-				"Divination",
-				"Linguistic",
-				"Mental"
+				"divination",
+				"linguistic",
+				"mental"
 			],
 			"school": "D",
 			"traditions": [
-				"Arcane",
-				"Occult"
+				"arcane",
+				"occult"
 			],
 			"cast": {
 				"number": 5,
 				"unit": "minute",
 				"entry": "5 minutes"
 			},
-			"components": {
-				"M": true,
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"M": true,
+					"S": true,
+					"V": true
+				}
+			],
 			"range": {
 				"entry": "touch",
 				"distance": {
@@ -2176,12 +2259,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "1 day",
+				"dismiss": true,
 				"duration": {
 					"number": 1,
 					"unit": "day"
 				}
 			},
-			"dismiss": true,
 			"entries": [
 				"You record a message up to 5 minutes long and inscribe a special rune on any flat unattended surface within reach. The nature of the rune's appearance is up to you, but it is visible to everyone and it must be no smaller than 2 inches in diameter.",
 				"You also specify a {@quickref trigger||2|setting triggers} that creatures must meet to activate the rune. For the duration of the spell, creatures who meet the criteria of the trigger can touch the rune to hear the recorded message in their head as though you were speaking to them telepathically. You know when someone is listening to the message, but you do not know who is listening to it. You can {@action Dismiss} the spell."
@@ -2197,16 +2280,18 @@
 				"duty"
 			],
 			"traits": [
-				"Conjuration"
+				"conjuration"
 			],
 			"school": "C",
 			"cast": {
 				"number": 1,
 				"unit": "free"
 			},
-			"components": {
-				"V": true
-			},
+			"components": [
+				{
+					"V": true
+				}
+			],
 			"trigger": "You make a promise or deal.",
 			"duration": {
 				"type": "timed",
@@ -2258,17 +2343,19 @@
 				"vigil"
 			],
 			"traits": [
-				"Divination"
+				"divination"
 			],
 			"school": "D",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"targets": "1 weapon or tool",
 			"duration": {
 				"type": "timed",
@@ -2302,20 +2389,22 @@
 			"focus": true,
 			"level": 4,
 			"traits": [
-				"Emotion",
-				"Enchantment",
-				"Incapacitation",
-				"Mental"
+				"emotion",
+				"enchantment",
+				"incapacitation",
+				"mental"
 			],
 			"school": "E",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"area": {
 				"types": [
 					"Emanation"
@@ -2330,12 +2419,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "sustained up to 1 minute",
+				"sustain": true,
 				"duration": {
 					"number": 1,
 					"unit": "minute"
 				}
 			},
-			"sustain": true,
 			"entries": [
 				"Sadness flows out of you into nearby creatures, blotting out any other thoughts they had. The first time a creature begins its turn in the area or enters the area, it must attempt a Will save. If it later leaves and reenters the area, it uses the same effect as before.",
 				{
@@ -2367,18 +2456,20 @@
 			"focus": true,
 			"level": 1,
 			"traits": [
-				"Air",
-				"Evocation"
+				"air",
+				"evocation"
 			],
 			"school": "V",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"range": {
 				"entry": "60 feet",
 				"distance": {
@@ -2421,22 +2512,24 @@
 			"page": 109,
 			"level": 1,
 			"traits": [
-				"Darkness",
-				"Evocation"
+				"darkness",
+				"evocation"
 			],
 			"school": "V",
 			"traditions": [
-				"Arcane",
-				"Occult"
+				"arcane",
+				"occult"
 			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"range": {
 				"entry": "30 feet",
 				"distance": {
@@ -2475,17 +2568,19 @@
 				"glyph"
 			],
 			"traits": [
-				"Transmutation"
+				"transmutation"
 			],
 			"school": "T",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"M": true,
-				"S": true
-			},
+			"components": [
+				{
+					"M": true,
+					"S": true
+				}
+			],
 			"range": {
 				"entry": "30 feet",
 				"distance": {
@@ -2528,21 +2623,23 @@
 			"page": 109,
 			"level": 4,
 			"traits": [
-				"Abjuration"
+				"abjuration"
 			],
 			"school": "A",
 			"traditions": [
-				"Arcane",
-				"Primal"
+				"arcane",
+				"primal"
 			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"duration": {
 				"type": "timed",
 				"entry": "1 minute",
@@ -2574,18 +2671,20 @@
 				"vigil"
 			],
 			"traits": [
-				"Divination",
-				"Mental"
+				"divination",
+				"mental"
 			],
 			"school": "D",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"area": {
 				"types": [
 					"Emanation"
@@ -2620,20 +2719,22 @@
 				"wyrmkin"
 			],
 			"traits": [
-				"Auditory",
-				"Emotion",
-				"Enchantment",
-				"Mental"
+				"auditory",
+				"emotion",
+				"enchantment",
+				"mental"
 			],
 			"school": "E",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"area": {
 				"types": [
 					"Emanation"
@@ -2678,17 +2779,19 @@
 			],
 			"level": 1,
 			"traits": [
-				"Abjuration",
-				"Mental"
+				"abjuration",
+				"mental"
 			],
 			"school": "A",
 			"cast": {
 				"number": 1,
 				"unit": "reaction"
 			},
-			"components": {
-				"S": true
-			},
+			"components": [
+				{
+					"S": true
+				}
+			],
 			"trigger": "An ally within 30 feet is about to attempt a saving throw against a harmful {@trait emotion} effect, and you would not",
 			"targets": "you and the triggering ally",
 			"entries": [
@@ -2701,20 +2804,19 @@
 			"page": 109,
 			"level": 1,
 			"traits": [
-				"Divination",
-				"Mental"
+				"divination",
+				"mental"
 			],
 			"school": "D",
 			"traditions": [
-				"Arcane",
-				"Occult"
+				"arcane",
+				"occult"
 			],
 			"cast": {
 				"number": 1,
 				"unit": "minute",
 				"entry": "1 minute"
 			},
-			"components": {},
 			"range": {
 				"entry": "touch",
 				"distance": {
@@ -2758,22 +2860,24 @@
 			"page": 109,
 			"level": 1,
 			"traits": [
-				"Abjuration",
-				"Earth"
+				"abjuration",
+				"earth"
 			],
 			"school": "A",
 			"traditions": [
-				"Arcane",
-				"Primal"
+				"arcane",
+				"primal"
 			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"range": {
 				"entry": "touch",
 				"distance": {
@@ -2811,23 +2915,25 @@
 			"page": 110,
 			"level": 3,
 			"traits": [
-				"Earth",
-				"Transmutation"
+				"earth",
+				"transmutation"
 			],
 			"school": "T",
 			"traditions": [
-				"Arcane",
-				"Primal"
+				"arcane",
+				"primal"
 			],
 			"cast": {
 				"number": 3,
 				"unit": "action"
 			},
-			"components": {
-				"M": true,
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"M": true,
+					"S": true,
+					"V": true
+				}
+			],
 			"range": {
 				"entry": "30 feet",
 				"distance": {
@@ -2844,12 +2950,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "sustained up to 1 minute",
+				"sustain": true,
 				"duration": {
 					"number": 1,
 					"unit": "minute"
 				}
 			},
-			"sustain": true,
 			"entries": [
 				"You cause the surface to heave. The area becomes {@quickref difficult terrain||3|terrain} and any tracks in the area are destroyed by the churning ground. Creatures standing in the area take a \u20131 status penalty to {@skill Acrobatics} checks to {@action Balance} and {@action Tumble Through} and {@skill Athletics} checks to {@action High Jump} and {@action Long Jump}. The first time each round you {@action Sustain a Spell|CRB|{@action Sustain a Spell||Sustain the Spell}}, you can move the churning area up to 10 feet in any direction. Creatures {@condition immobilized} by the spell are carried along with the shifting sand in the same direction, if possible; this movement is {@quickref forced movement||3|forced movement}. Creatures that enter or begin their turn standing in the shifting sand must attempt a Reflex save.",
 				{
@@ -2894,22 +3000,24 @@
 			"page": 110,
 			"level": 1,
 			"traits": [
-				"Earth",
-				"Evocation"
+				"earth",
+				"evocation"
 			],
 			"school": "V",
 			"traditions": [
-				"Arcane",
-				"Primal"
+				"arcane",
+				"primal"
 			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"area": {
 				"types": [
 					"Cone"
@@ -2952,24 +3060,26 @@
 			"page": 110,
 			"level": 3,
 			"traits": [
-				"Detection",
-				"Divination"
+				"detection",
+				"divination"
 			],
 			"school": "D",
 			"traditions": [
-				"Divine",
-				"Primal"
+				"divine",
+				"primal"
 			],
 			"cast": {
 				"number": 10,
 				"unit": "minute",
 				"entry": "10 minutes"
 			},
-			"components": {
-				"M": true,
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"M": true,
+					"S": true,
+					"V": true
+				}
+			],
 			"area": {
 				"types": [
 					"Emanation"
@@ -3005,21 +3115,23 @@
 			"page": 110,
 			"level": 2,
 			"traits": [
-				"Necromancy"
+				"necromancy"
 			],
 			"school": "N",
 			"traditions": [
-				"Arcane",
-				"Primal"
+				"arcane",
+				"primal"
 			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"duration": {
 				"type": "timed",
 				"entry": "1 hour",
@@ -3044,18 +3156,20 @@
 				"time"
 			],
 			"traits": [
-				"Incapacitation",
-				"Transmutation"
+				"incapacitation",
+				"transmutation"
 			],
 			"school": "T",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"range": {
 				"entry": "30 feet",
 				"distance": {
@@ -3100,27 +3214,29 @@
 			"focus": true,
 			"level": 4,
 			"traits": [
-				"Transmutation",
-				"Polymorph"
+				"transmutation",
+				"polymorph"
 			],
 			"school": "T",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"duration": {
 				"type": "timed",
 				"entry": "5 minutes",
+				"dismiss": true,
 				"duration": {
 					"number": 5,
 					"unit": "minute"
 				}
 			},
-			"dismiss": true,
 			"entries": [
 				"You discorporate into a swarm of Tiny creatures. While in swarm form, you have the {@trait swarm} trait and you gain resistance 5 to slashing and piercing damage and weakness 5 to area and splash damage. You can fit into spaces only a few inches wide, moving your constituent creatures through the gap.",
 				"You don't gain the swarm mind ability, so you are still affected normally by {@trait mental} effects. As a swarm, you can't speak, cast spells, use manipulate actions requiring your hands, activate your magic items, or make any of your Strikes with your normal body. You can {@action Dismiss} the Spell."
@@ -3144,7 +3260,7 @@
 			"focus": true,
 			"level": 1,
 			"traits": [
-				"Divination"
+				"divination"
 			],
 			"school": "D",
 			"cast": {
@@ -3152,19 +3268,21 @@
 				"unit": "minute",
 				"entry": "1 minute"
 			},
-			"components": {
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"duration": {
 				"type": "timed",
 				"entry": "sustained",
+				"sustain": true,
 				"duration": {
 					"number": 1,
 					"unit": "unlimited"
 				}
 			},
-			"sustain": true,
 			"entries": [
 				"You extend your senses through a multitude of crawling and flying creatures. You create a crawling swarm in your square.",
 				"You can hear through the swarm as if using your normal auditory senses. The first time you {@action Sustain a Spell||Sustain the Spell} each round, you can move the swarm 10 feet along the ground in any direction. The swarm has AC 15 and a +0 bonus to its saves. Any damage dealt to the swarm destroys it and ends the spell."
@@ -3198,21 +3316,20 @@
 			"page": 110,
 			"level": 1,
 			"traits": [
-				"Conjuration"
+				"conjuration"
 			],
 			"school": "C",
 			"traditions": [
-				"Arcane"
+				"arcane"
 			],
 			"cast": {
 				"number": 1,
 				"unit": "minute",
 				"entry": "1 minute"
 			},
-			"components": {},
 			"duration": {
 				"type": "timed",
-				"entry": "until used or 1 minute",
+				"entry": "until used or 1 minute; see text",
 				"duration": {
 					"number": 1,
 					"unit": "minute"
@@ -3228,21 +3345,23 @@
 			"page": 111,
 			"level": 1,
 			"traits": [
-				"Abjuration"
+				"abjuration"
 			],
 			"school": "A",
 			"traditions": [
-				"Arcane",
-				"Primal"
+				"arcane",
+				"primal"
 			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"range": {
 				"entry": "30 feet",
 				"distance": {
@@ -3291,20 +3410,22 @@
 			"page": 111,
 			"level": 7,
 			"traits": [
-				"Divination"
+				"divination"
 			],
 			"school": "D",
 			"traditions": [
-				"Arcane",
-				"Occult"
+				"arcane",
+				"occult"
 			],
 			"cast": {
 				"number": 1,
 				"unit": "action"
 			},
-			"components": {
-				"M": true
-			},
+			"components": [
+				{
+					"M": true
+				}
+			],
 			"duration": {
 				"type": "timed",
 				"entry": "until the end of your turn",
@@ -3323,31 +3444,33 @@
 			"page": 111,
 			"level": 3,
 			"traits": [
-				"Abjuration",
-				"Force"
+				"abjuration",
+				"force"
 			],
 			"school": "A",
 			"traditions": [
-				"Divine",
-				"Occult"
+				"divine",
+				"occult"
 			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"duration": {
 				"type": "timed",
 				"entry": "1 minute",
+				"dismiss": true,
 				"duration": {
 					"number": 1,
 					"unit": "minute"
 				}
 			},
-			"dismiss": true,
 			"entries": [
 				"You surround yourself in a vortex of whirling colorful scarves of force that obfuscate you and disorient your foes. You gain the benefits of the {@condition concealed} condition, but only against ranged and melee attacks. When a melee attack fails to hit you because of the flat check for the {@condition concealed} condition, the scarves snag the weapon or unarmed attack, and the creature takes a \u20131 circumstance penalty to further attacks with that weapon or unarmed attack until the end of its turn (or the end of its next turn, if it wasn't the creature's turn). The timing of the scarves' movement is harder to predict for ranged attackers, so the flat check for the {@condition concealed} condition against ranged attacks increases from DC 5 to DC 6. You can {@action Dismiss} this spell."
 			],
@@ -3370,19 +3493,21 @@
 			"focus": true,
 			"level": 1,
 			"traits": [
-				"Attack",
-				"Cold",
-				"Evocation"
+				"attack",
+				"cold",
+				"evocation"
 			],
 			"school": "V",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"range": {
 				"entry": "60 feet",
 				"distance": {
@@ -3420,18 +3545,20 @@
 			],
 			"level": 1,
 			"traits": [
-				"Necromancy",
-				"Negative"
+				"necromancy",
+				"negative"
 			],
 			"school": "N",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"range": {
 				"entry": "touch",
 				"distance": {
@@ -3469,18 +3596,20 @@
 			],
 			"level": 1,
 			"traits": [
-				"Divination",
-				"Light"
+				"divination",
+				"light"
 			],
 			"school": "D",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"range": {
 				"entry": "60 feet",
 				"distance": {
@@ -3497,12 +3626,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "1 day",
+				"dismiss": true,
 				"duration": {
 					"number": 1,
 					"unit": "day"
 				}
 			},
-			"dismiss": true,
 			"entries": [
 				"You call a tiny star to orbit a creature in a sparkling halo before shooting up into the heavens, where it marks the creature's rough location. The target must attempt a Fortitude save.",
 				{

@@ -21,6 +21,7 @@ class TokenizerUtils {
 			{regex: /^([^\n[]*?)\s(\[.+]\s)?FEAT (\d{1,2})\n/, type: "FEAT", mode: "feat"},
 			{regex: /^(.+)\s(ITEM|RUNE|MATERIAL|SNARE) (\d{1,2}\+?)\n/, type: "ITEM", mode: "item"},
 			{regex: /^(.*?)\sBACKGROUND\n/, type: "BACKGROUND", mode: "background"},
+			{regex: /^(.*?)\sCREATURE (–?\d{1,2})\n/, type: "CREATURE", mode: "creature"},
 		]
 	}
 
@@ -58,7 +59,7 @@ class TokenizerUtils {
 	}
 	static get area () {
 		return [
-			{regex: /^Area\s/, type: "AREA", lookbehind: /(\n|[;.)]\s)$/},
+			{regex: /^Area\s/, type: "AREA", lookbehind: /(\n|[;.)\]]\s)$/},
 		]
 	}
 	static get bulk () {
@@ -83,12 +84,12 @@ class TokenizerUtils {
 	}
 	static get effect () {
 		return [
-			{regex: /^Effects?\s/, type: "EFFECT", lookbehind: /(\n|[;.)]\s)$/, lookahead: true},
+			{regex: /^Effects?\s/, type: "EFFECT", lookbehind: /(\n|[;.)\]]\s)$/, lookahead: true},
 		]
 	}
 	static get frequency () {
 		return [
-			{regex: /^Frequency\s/, type: "FREQUENCY", lookbehind: /(\n|[;.)]\s)$/, lookaheadIncDepth: 3},
+			{regex: /^Frequency\s/, type: "FREQUENCY", lookbehind: /(\n|[;.)\]]\s)$/, lookaheadIncDepth: 3},
 		]
 	}
 	static get level () {
@@ -118,7 +119,7 @@ class TokenizerUtils {
 	}
 	static get requirements () {
 		return [
-			{regex: /^Requirements?\s/, type: "REQUIREMENTS", lookbehind: /(\n|[;.)]\s)$/},
+			{regex: /^Requirements?\s/, type: "REQUIREMENTS", lookbehind: /(\n|[;.)\]]\s)$/},
 		]
 	}
 	static get savingThrow () {
@@ -133,7 +134,7 @@ class TokenizerUtils {
 	}
 	static get targets () {
 		return [
-			{regex: /^Targets?\s/, type: "TARGETS", lookbehind: /(\n|[;.)]\s)$/, lookaheadIncDepth: 3},
+			{regex: /^Targets?\s/, type: "TARGETS", lookbehind: /(\n|[;.)\]]\s)$/, lookaheadIncDepth: 3},
 		]
 	}
 	static get traditions () {
@@ -150,7 +151,7 @@ class TokenizerUtils {
 	}
 	static get trigger () {
 		return [
-			{regex: /^Trigger\s/, type: "TRIGGER", lookbehind: /(\n|[;.)]\s)$/, lookaheadIncDepth: 3},
+			{regex: /^Trigger\s/, type: "TRIGGER", lookbehind: /(\n|[;.)\]]\s)$/, lookaheadIncDepth: 3},
 		]
 	}
 	static get usage () {
@@ -159,7 +160,159 @@ class TokenizerUtils {
 		]
 	}
 
-	// TODO: properties_Items, properties_Feats, etc...
+	static get perception () {
+		return [
+			{regex: /^Perception\s(\+?\d+)[;,.\s]/, type: "PERCEPTION", lookbehind: /\n$/},
+		]
+	}
+	static get languages () {
+		return [
+			{regex: /^Languages?\s/, type: "LANGUAGES", lookbehind: /\n$/},
+		]
+	}
+	static get skills () {
+		return [
+			{regex: /^Acrobatics\s/, type: "ACROBATICS", lookbehind: /(Skills\s|\n|[,);]\s)$/},
+			{regex: /^Arcana\s/, type: "ARCANA", lookbehind: /(Skills\s|\n|[,);]\s)$/},
+			{regex: /^Athletics\s/, type: "ATHLETICS", lookbehind: /(Skills\s|\n|[,);]\s)$/},
+			{regex: /^Crafting\s/, type: "CRAFTING", lookbehind: /(Skills\s|\n|[,);]\s)$/},
+			{regex: /^Deception\s/, type: "DECEPTION", lookbehind: /(Skills\s|\n|[,);]\s)$/},
+			{regex: /^Diplomacy\s/, type: "DIPLOMACY", lookbehind: /(Skills\s|\n|[,);]\s)$/},
+			{regex: /^Intimidation\s/, type: "INTIMIDATION", lookbehind: /(Skills\s|\n|[,);]\s)$/},
+			{regex: /^([A-Z][\w]*?)\sLore\s/, type: "LORE", lookbehind: /(Skills\s|\n|[,);]\s)$/},
+			{regex: /^Medicine\s/, type: "MEDICINE", lookbehind: /(Skills\s|\n|[,);]\s)$/},
+			{regex: /^Nature\s/, type: "NATURE", lookbehind: /(Skills\s|\n|[,);]\s)$/},
+			{regex: /^Occultism\s/, type: "OCCULTISM", lookbehind: /(Skills\s|\n|[,);]\s)$/},
+			{regex: /^Performance\s/, type: "PERFORMANCE", lookbehind: /(Skills\s|\n|[,);]\s)$/},
+			{regex: /^Religion\s/, type: "RELIGION", lookbehind: /(Skills\s|\n|[,);]\s)$/},
+			{regex: /^Society\s/, type: "SOCIETY", lookbehind: /(Skills\s|\n|[,);]\s)$/},
+			{regex: /^Stealth\s/, type: "STEALTH", lookbehind: /(\Skills\s|n|[,);]\s)$/},
+			{regex: /^Survival\s/, type: "SURVIVAL", lookbehind: /(Skills\s|\n|[,);]\s)$/},
+			{regex: /^Thievery\s/, type: "THIEVERY", lookbehind: /(Skills\s|\n|[,);]\s)$/},
+		]
+	}
+	static get skillsProp () {
+		return [
+			{regex: /^Skills\s/, type: "SKILLS", lookbehind: /\n$/},
+		]
+	}
+	static get items () {
+		return [
+			{regex: /^Items\s/, type: "ITEMS", lookbehind: /\n$/},
+		]
+	}
+	// TODO: Split this into pattern for each score?
+	static get creatureAbilityScores () {
+		return [
+			{regex: /^Str\s(.*?)\sDex\s(.*?)\sCon\s(.*?)\sInt\s(.*?)\sWis\s(.*?)\sCha\s(.*?)\s/, type: "CR_ABILITY_SCORES", lookbehind: /\n$/},
+		]
+	}
+	static get ac () {
+		return [
+			{regex: /^AC\s/, type: "AC", lookbehind: /\n$/},
+		]
+	}
+	static get fort () {
+		return [
+			{regex: /^Fort\s/, type: "FORTITUDE", lookbehind: /[;,]\s$/},
+		]
+	}
+	static get ref () {
+		return [
+			{regex: /^Ref\s/, type: "REFLEX", lookbehind: /[;,]\s$/},
+		]
+	}
+	static get will () {
+		return [
+			{regex: /^Will\s/, type: "WILL", lookbehind: /[;,]\s$/},
+		]
+	}
+	static get creatureSavingThrows () {
+		return [
+			...this.fort,
+			...this.ref,
+			...this.will,
+		]
+	}
+	static get hp () {
+		return [
+			{regex: /^HP\s/, type: "HP", lookbehind: /\n$/},
+		]
+	}
+	static get resistances () {
+		return [
+			{regex: /^Resistances\s/, type: "RESISTANCES", lookbehind: /(\n|[;,.)]\s)$/},
+		]
+	}
+	static get weaknesses () {
+		return [
+			{regex: /^Weaknesses\s/, type: "WEAKNESSES", lookbehind: /(\n|[;,.)]\s)$/},
+		]
+	}
+	static get immunities () {
+		return [
+			{regex: /^Immunities\s/, type: "IMMUNITIES", lookbehind: /(\n|[;,.)]\s)$/},
+		]
+	}
+	static get hardness () {
+		return [
+			{regex: /^Hardness\s/, type: "HARDNESS", lookbehind: /(\n|[;,.)]\s)$/},
+		]
+	}
+	static get speed () {
+		return [
+			{regex: /^Speed\s/, type: "SPEED", lookbehind: /\n$/},
+		]
+	}
+	static get damage () {
+		return [
+			{regex: /^Damage\s/, type: "DAMAGE"},
+		]
+	}
+	static get attacks () {
+		return [
+			{regex: /^Melee\s/, type: "MELEE", lookbehind: /(\n|action?]\s?)$/},
+			{regex: /^Ranged\s/, type: "RANGED", lookbehind: /(\n|action?]\s?)$/},
+		]
+	}
+	static get spellCasting () {
+		return [
+			{regex: /^((?:[A-Z][a-z]+ )+)Spells\s/, type: "SPELL_CASTING", lookbehind: /\n$/},
+		]
+	}
+	static get cantrips () {
+		return [
+			{regex: /^Cantrips\s/, type: "CANTRIPS", lookbehind: /;\s$/},
+		]
+	}
+	static get constant () {
+		return [
+			{regex: /^Constant\s/, type: "CONSTANT", lookbehind: /;\s$/},
+		]
+	}
+	static get spellDC () {
+		return [
+			{regex: /^DC (\d+)[;,.]\s/, type: "SPELL_DC", lookbehind: /Spells\s$/},
+		]
+	}
+	static get spellAttack () {
+		return [
+			{regex: /^attack \+(\d+)[;,.]\s/, type: "SPELL_ATTACK", lookbehind: /(Spells\s|DC \d+[,.;]\s)$/},
+		]
+	}
+	static get focusPoints () {
+		return [
+			{regex: /^\(\d Focus Points?\)\s/, type: "FOCUS_POINT"},
+			{regex: /^\d Focus Points?\s/, type: "FOCUS_POINT"},
+		]
+	}
+	static get ritualCasting () {
+		return [
+			{regex: /^((?:[A-Z][a-z]+ )+)Rituals\s/, type: "RITUAL_CASTING", lookbehind: /\n$/},
+		]
+	}
+
+	// TODO: propertiesSpells and propertiesFeats dont seem quite right...
 	static get properties () {
 		return [
 			...this.access,
@@ -184,6 +337,37 @@ class TokenizerUtils {
 			...this.traditionsSubclasses,
 			...this.trigger,
 			...this.usage,
+		]
+	}
+	static get propertiesSpells () {
+		return [
+			...this.access,
+			...this.area,
+			...this.cast,
+			...this.cost,
+			...this.duration,
+			...this.effect,
+			...this.frequency,
+			...this.range,
+			...this.requirements,
+			...this.savingThrow,
+			...this.targets,
+			...this.traditions,
+			...this.traditionsSubclasses,
+			...this.trigger,
+		]
+	}
+	static get propertiesFeats () {
+		return [
+			...this.access,
+			...this.activate,
+			...this.cost,
+			...this.effect,
+			...this.frequency,
+			...this.prerequisites,
+			...this.range,
+			...this.requirements,
+			...this.trigger,
 		]
 	}
 	static get propertiesAbilities () {
@@ -233,6 +417,33 @@ class TokenizerUtils {
 			...this.craftRequirements,
 			...this.price,
 			...this.shieldData,
+		]
+	}
+	static get propertiesCreatures () {
+		return [
+			...this.perception,
+			...this.languages,
+			...this.skillsProp,
+			...this.skills,
+			...this.items,
+			...this.creatureAbilityScores,
+			...this.ac,
+			...this.creatureSavingThrows,
+			...this.hp,
+			...this.resistances,
+			...this.weaknesses,
+			...this.immunities,
+			...this.hardness,
+			...this.speed,
+			...this.attacks,
+			...this.damage,
+			...this.spellCasting,
+			...this.cantrips,
+			...this.constant,
+			...this.spellDC,
+			...this.spellAttack,
+			...this.focusPoints,
+			...this.ritualCasting,
 		]
 	}
 
@@ -305,8 +516,8 @@ class TokenizerUtils {
 			{regex: /^\[>]\s/, type: "ACTION"},
 			{regex: /^\[>>]\s/, type: "TWO_ACTIONS"},
 			{regex: /^\[>>>]\s/, type: "THREE_ACTIONS"},
-			{regex: /^\[R|r]\s/, type: "REACTION"},
-			{regex: /^\[F|f]\s/, type: "FREE_ACTION"},
+			{regex: /^\[R]\s/i, type: "REACTION"},
+			{regex: /^\[F]\s/i, type: "FREE_ACTION"},
 			{regex: /^:a:\s/, type: "ACTION"},
 			{regex: /^:aa:\s/, type: "TWO_ACTIONS"},
 			{regex: /^:aaa:\s/, type: "THREE_ACTIONS"},
@@ -318,7 +529,8 @@ class TokenizerUtils {
 	static get genericEntries () {
 		return [
 			{regex: /^•/, type: "LIST_MARKER"},
-			{regex: /^\(.*?\)/s, type: "PARENTHESIS"},
+			// Preventing dangling commas and semi-colons (word token) in many stat-blocks
+			{regex: /^\(.*?\)[.,;]?/s, type: "PARENTHESIS"},
 		]
 	}
 
@@ -347,7 +559,7 @@ class TokenizerUtils {
 				...this.endData,
 
 				// PROPERTIES
-				...this.properties,
+				...this.propertiesSpells,
 
 				// DATA ENTRIES
 				...this.traits,
@@ -366,7 +578,7 @@ class TokenizerUtils {
 				...this.endData,
 
 				// PROPERTIES
-				...this.properties,
+				...this.propertiesFeats,
 
 				// DATA ENTRIES
 				...this.traits,
@@ -384,7 +596,7 @@ class TokenizerUtils {
 				...this.endData,
 
 				// PROPERTIES
-				...this.properties,
+				...this.propertiesItems,
 
 				// DATA ENTRIES
 				...this.traits,
@@ -408,6 +620,24 @@ class TokenizerUtils {
 				// DATA ENTRIES
 				...this.traits,
 				...this.successDegrees,
+
+				// Generic
+				...this.actions,
+				...this.genericEntries,
+				...this.words,
+				{regex: /^\s+/, type: null},
+			],
+			creature: [
+				...this.endData,
+
+				// PROPERTIES
+				...this.propertiesCreatures,
+				...this.propertiesAbilities,
+
+				// DATA ENTRIES
+				...this.traits,
+				...this.successDegrees,
+				...this.afflictions,
 
 				// Generic
 				...this.actions,
@@ -482,6 +712,14 @@ class TokenizerUtils {
 		]
 	}
 
+	static get sensesTypes () {
+		return [
+			{regex: /precise/, type: "precise"},
+			{regex: /imprecise/, type: "imprecise"},
+			{regex: /vague/, type: "vague"},
+		]
+	}
+
 	static get activateComponents () {
 		return [
 			{regex: /command/, unit: "command"},
@@ -532,12 +770,33 @@ class TokenizerUtils {
 		]
 	}
 
+	static get spellTraditions () {
+		return [
+			{regex: /Arcane/, unit: "Arcane"},
+			{regex: /Occult/, unit: "Occult"},
+			{regex: /Divine/, unit: "Divine"},
+			{regex: /Primal/, unit: "Primal"},
+		]
+	}
+	static get spellTypes () {
+		return [
+			{regex: /Prepared/, unit: "Prepared"},
+			{regex: /Spontaneous/, unit: "Spontaneous"},
+			{regex: /Innate/, unit: "Innate"},
+			{regex: /Focus/, unit: "Focus"},
+		]
+	}
+
 	static get sentences () {
 		return this.words.map(w => w.type.replace(/WORD/, "SENTENCE"));
 	}
 
 	static get sentencesNewLine () {
 		return this.sentences.filter(w => w.endsWith("NEWLINE"));
+	}
+
+	static get sentencesSemiColon () {
+		return this.sentences.filter(w => /SEMICOLON/.test(w));
 	}
 
 	static get stringEntries () {

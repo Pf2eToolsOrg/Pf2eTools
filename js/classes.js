@@ -1326,7 +1326,7 @@ class ClassesPage extends BaseComponent {
 				...boxSubhashes,
 				...cpySubHashes,
 				`flop.classes.classessource:extend`,
-			].filter(Boolean), true);
+			].filter(Boolean), {force: true});
 			Object.values(this._listsSubclasses).forEach(list => list.visibleItems.filter(it => it.values.stateKey).forEach(it => this._state[it.values.stateKey] = true));
 			$selFilterPreset.val("-1");
 		};

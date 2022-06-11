@@ -7,10 +7,10 @@
 			"type": "Item",
 			"level": 9,
 			"traits": [
-				"Divine",
-				"Evocation",
-				"Good",
-				"Water"
+				"divine",
+				"evocation",
+				"good",
+				"water"
 			],
 			"price": {
 				"coin": "gp",
@@ -74,10 +74,10 @@
 			"type": "Item",
 			"level": 5,
 			"traits": [
-				"Abjuration",
-				"Consumable",
-				"Fulu",
-				"Magical"
+				"abjuration",
+				"consumable",
+				"fulu",
+				"magical"
 			],
 			"price": {
 				"coin": "gp",
@@ -96,10 +96,10 @@
 			"type": "Item",
 			"level": 18,
 			"traits": [
-				"Apex",
-				"Divination",
-				"Invested",
-				"Magical"
+				"apex",
+				"divination",
+				"invested",
+				"magical"
 			],
 			"price": {
 				"coin": "gp",
@@ -137,8 +137,8 @@
 			"type": "Item",
 			"level": 5,
 			"traits": [
-				"Divination",
-				"Magical"
+				"divination",
+				"magical"
 			],
 			"price": {
 				"coin": "gp",
@@ -148,7 +148,7 @@
 			"bulk": 1,
 			"category": "Held",
 			"entries": [
-				"This imperious +1 striking mace has a glowing orb in the shape of an eye set in its flanged head. When you succeed at a check to {@action Recall Knowledge} about a creature after you've dealt it damage with the auspicious scepter, you learn one of its resistances in addition to any other information.",
+				"This imperious {@runeItem mace||+1 weapon potency||striking|} has a glowing orb in the shape of an eye set in its flanged head. When you succeed at a check to {@action Recall Knowledge} about a creature after you've dealt it damage with the auspicious scepter, you learn one of its resistances in addition to any other information.",
 				{
 					"type": "ability",
 					"activity": {
@@ -156,10 +156,18 @@
 						"unit": "free"
 					},
 					"components": [
-						"command (divination",
-						"magical)"
+						"command"
 					],
-					"trigger": "You Cast a divination",
+					"traits": [
+						"divination",
+						"magical"
+					],
+					"frequency": {
+						"freq": 1,
+						"interval": 10,
+						"unit": "minute"
+					},
+					"trigger": "You Cast a divination spell",
 					"entries": [
 						"The next attack by a creature who was targeted by the triggering divination spell bypasses an amount of resistance equal to the spell's level. If the triggering spell targeted an enemy, this benefit instead applies to the next attack against that enemy, regardless of who makes it.",
 						"This benefit is lost if it isn't used by the end of your next turn. If more than one type of resistance would apply against the attack, the attack bypasses only one\u2014whichever would result in the highest amount of damage getting through, as determined by the GM."
@@ -174,9 +182,9 @@
 			"type": "Item",
 			"level": "3+",
 			"traits": [
-				"Abjuration",
-				"Invested",
-				"Magical"
+				"abjuration",
+				"invested",
+				"magical"
 			],
 			"usage": "worn cloak",
 			"bulk": 1,
@@ -217,9 +225,9 @@
 			"type": "Rune",
 			"level": 4,
 			"traits": [
-				"Uncommon",
-				"Divination",
-				"Magical"
+				"uncommon",
+				"divination",
+				"magical"
 			],
 			"price": {
 				"coin": "gp",
@@ -242,9 +250,9 @@
 			"type": "Item",
 			"level": 6,
 			"traits": [
-				"Grimoire",
-				"Magical",
-				"Transmutation"
+				"grimoire",
+				"magical",
+				"transmutation"
 			],
 			"price": {
 				"coin": "gp",
@@ -281,10 +289,10 @@
 			"type": "Item",
 			"level": "6+",
 			"traits": [
-				"Consumable",
-				"Magical",
-				"Talisman",
-				"Transmutation"
+				"consumable",
+				"magical",
+				"talisman",
+				"transmutation"
 			],
 			"usage": "affixed to a weapon",
 			"activate": {
@@ -342,8 +350,8 @@
 			"type": "Item",
 			"level": "13+",
 			"traits": [
-				"Evocation",
-				"Magical"
+				"evocation",
+				"magical"
 			],
 			"usage": "held in 1 hand",
 			"bulk": "L",
@@ -419,9 +427,9 @@
 			"type": "Item",
 			"level": 10,
 			"traits": [
-				"Evocation",
-				"Grimoire",
-				"Magical"
+				"evocation",
+				"grimoire",
+				"magical"
 			],
 			"price": {
 				"coin": "gp",
@@ -457,8 +465,8 @@
 			"type": "Rune",
 			"level": "12+",
 			"traits": [
-				"Evocation",
-				"Magical"
+				"evocation",
+				"magical"
 			],
 			"usage": "etched onto a weapon",
 			"category": "Rune",
@@ -513,8 +521,8 @@
 			"type": "Item",
 			"level": 5,
 			"traits": [
-				"Magical",
-				"Necromancy"
+				"magical",
+				"necromancy"
 			],
 			"price": {
 				"coin": "gp",
@@ -548,8 +556,8 @@
 			"type": "Item",
 			"level": "11+",
 			"traits": [
-				"Evocation",
-				"Magical"
+				"evocation",
+				"magical"
 			],
 			"usage": "held in 1 hand",
 			"bulk": 1,
@@ -617,8 +625,8 @@
 			"type": "Item",
 			"level": 1,
 			"traits": [
-				"Evocation",
-				"Magical"
+				"evocation",
+				"magical"
 			],
 			"usage": "held in 1 hand",
 			"category": "Held",
@@ -674,10 +682,10 @@
 			"type": "Item",
 			"level": 6,
 			"traits": [
-				"Uncommon",
-				"Enchantment",
-				"Illusion",
-				"Magical"
+				"uncommon",
+				"enchantment",
+				"illusion",
+				"magical"
 			],
 			"price": {
 				"coin": "gp",
@@ -698,9 +706,9 @@
 			"type": "Item",
 			"level": 1,
 			"traits": [
-				"Enchantment",
-				"Invested",
-				"Magical"
+				"enchantment",
+				"invested",
+				"magical"
 			],
 			"price": {
 				"coin": "gp",
@@ -720,8 +728,8 @@
 			"type": "Item",
 			"level": "3+",
 			"traits": [
-				"Illusion",
-				"Magical"
+				"illusion",
+				"magical"
 			],
 			"usage": "held in 2 hands",
 			"bulk": "L",
@@ -797,9 +805,9 @@
 			"type": "Item",
 			"level": "6+",
 			"traits": [
-				"Divination",
-				"Grimoire",
-				"Magical"
+				"divination",
+				"grimoire",
+				"magical"
 			],
 			"bulk": "L",
 			"category": "Grimoire",
@@ -855,10 +863,10 @@
 			"type": "Item",
 			"level": 7,
 			"traits": [
-				"Conjuration",
-				"Eidolon",
-				"Invested",
-				"Magical"
+				"conjuration",
+				"eidolon",
+				"invested",
+				"magical"
 			],
 			"price": {
 				"coin": "gp",
@@ -896,8 +904,8 @@
 			"type": "Item",
 			"level": 6,
 			"traits": [
-				"Evocation",
-				"Magical"
+				"evocation",
+				"magical"
 			],
 			"price": {
 				"coin": "gp",
@@ -905,9 +913,10 @@
 			},
 			"usage": "held in 2 hands",
 			"bulk": 2,
-			"category": "Held",
+			"category": "Weapon",
+			"subCategory": "Martial",
 			"entries": [
-				"A ring of magical crystals encircles the base of this +1 striking greatclub, allowing it to absorb and store magical energy.",
+				"A ring of magical crystals encircles the base of this {@runeItem greatclub||+1 weapon potency||striking|}, allowing it to absorb and store magical energy.",
 				{
 					"type": "ability",
 					"activity": {
@@ -952,9 +961,9 @@
 			"type": "Item",
 			"level": "4+",
 			"traits": [
-				"Catalyst",
-				"Consumable",
-				"Magical"
+				"catalyst",
+				"consumable",
+				"magical"
 			],
 			"usage": "held in 1 hand",
 			"bulk": "L",
@@ -995,9 +1004,9 @@
 			"type": "Item",
 			"level": 6,
 			"traits": [
-				"Uncommon",
-				"Illusion",
-				"Magical"
+				"uncommon",
+				"illusion",
+				"magical"
 			],
 			"price": {
 				"coin": "gp",
@@ -1030,9 +1039,9 @@
 			"type": "Item",
 			"level": 4,
 			"traits": [
-				"Uncommon",
-				"Illusion",
-				"Magical"
+				"uncommon",
+				"illusion",
+				"magical"
 			],
 			"price": {
 				"coin": "gp",
@@ -1053,12 +1062,12 @@
 			"type": "Item",
 			"level": 8,
 			"traits": [
-				"Uncommon",
-				"Abjuration",
-				"Consumable",
-				"Fulu",
-				"Magical",
-				"Talisman"
+				"uncommon",
+				"abjuration",
+				"consumable",
+				"fulu",
+				"magical",
+				"talisman"
 			],
 			"price": {
 				"coin": "gp",
@@ -1077,9 +1086,9 @@
 			"type": "Item",
 			"level": 7,
 			"traits": [
-				"Catalyst",
-				"Consumable",
-				"Magical"
+				"catalyst",
+				"consumable",
+				"magical"
 			],
 			"price": {
 				"coin": "gp",
@@ -1099,10 +1108,10 @@
 			"type": "Item",
 			"level": 6,
 			"traits": [
-				"Ammunition",
-				"Consumable",
-				"Evocation",
-				"Magical"
+				"ammunition",
+				"consumable",
+				"evocation",
+				"magical"
 			],
 			"price": {
 				"coin": "gp",
@@ -1132,10 +1141,10 @@
 			"type": "Item",
 			"level": 4,
 			"traits": [
-				"Consumable",
-				"Evocation",
-				"Magical",
-				"Talisman"
+				"consumable",
+				"evocation",
+				"magical",
+				"talisman"
 			],
 			"price": {
 				"coin": "gp",
@@ -1164,10 +1173,10 @@
 			"type": "Item",
 			"level": 18,
 			"traits": [
-				"Apex",
-				"Invested",
-				"Magical",
-				"Necromancy"
+				"apex",
+				"invested",
+				"magical",
+				"necromancy"
 			],
 			"price": {
 				"coin": "gp",
@@ -1210,9 +1219,9 @@
 			"type": "Item",
 			"level": "6+",
 			"traits": [
-				"Divination",
-				"Grimoire",
-				"Magical"
+				"divination",
+				"grimoire",
+				"magical"
 			],
 			"bulk": "L",
 			"category": "Grimoire",
@@ -1295,8 +1304,8 @@
 			"type": "Rune",
 			"level": "9+",
 			"traits": [
-				"Magical",
-				"Transmutation"
+				"magical",
+				"transmutation"
 			],
 			"usage": "etched onto a melee weapon",
 			"category": "Rune",
@@ -1351,10 +1360,10 @@
 			"type": "Item",
 			"level": 5,
 			"traits": [
-				"Consumable",
-				"Divination",
-				"Magical",
-				"Talisman"
+				"consumable",
+				"divination",
+				"magical",
+				"talisman"
 			],
 			"price": {
 				"coin": "gp",
@@ -1384,10 +1393,10 @@
 			"type": "Item",
 			"level": 3,
 			"traits": [
-				"Invested",
-				"Magical",
-				"Tattoo",
-				"Transmutation"
+				"invested",
+				"magical",
+				"tattoo",
+				"transmutation"
 			],
 			"price": {
 				"coin": "gp",
@@ -1407,9 +1416,9 @@
 			"type": "Item",
 			"level": "5+",
 			"traits": [
-				"Catalyst",
-				"Consumable",
-				"Magical"
+				"catalyst",
+				"consumable",
+				"magical"
 			],
 			"usage": "held in 1 hand",
 			"bulk": "L",
@@ -1483,10 +1492,10 @@
 			"type": "Item",
 			"level": "4+",
 			"traits": [
-				"Air",
-				"Magical",
-				"Spellheart",
-				"Transmutation"
+				"air",
+				"magical",
+				"spellheart",
+				"transmutation"
 			],
 			"usage": "affixed to armor or a weapon",
 			"category": "Spellheart",
@@ -1694,10 +1703,10 @@
 			"type": "Item",
 			"level": "3+",
 			"traits": [
-				"Evocation",
-				"Fire",
-				"Magical",
-				"Spellheart"
+				"evocation",
+				"fire",
+				"magical",
+				"spellheart"
 			],
 			"usage": "affixed to armor or a weapon",
 			"category": "Spellheart",
@@ -1902,8 +1911,8 @@
 			"type": "Item",
 			"level": 2,
 			"traits": [
-				"Conjuration",
-				"Magical"
+				"conjuration",
+				"magical"
 			],
 			"price": {
 				"coin": "gp",
@@ -1937,9 +1946,9 @@
 			"type": "Item",
 			"level": 13,
 			"traits": [
-				"Catalyst",
-				"Consumable",
-				"Magical"
+				"catalyst",
+				"consumable",
+				"magical"
 			],
 			"price": {
 				"coin": "gp",
@@ -1959,12 +1968,12 @@
 			"type": "Item",
 			"level": 5,
 			"traits": [
-				"Consumable",
-				"Divine",
-				"Good",
-				"Necromancy",
-				"Potion",
-				"Splash"
+				"consumable",
+				"divine",
+				"good",
+				"necromancy",
+				"potion",
+				"splash"
 			],
 			"price": {
 				"coin": "gp",
@@ -2009,9 +2018,9 @@
 			"type": "Item",
 			"level": 9,
 			"traits": [
-				"Uncommon",
-				"Magical",
-				"Necromancy"
+				"uncommon",
+				"magical",
+				"necromancy"
 			],
 			"price": {
 				"coin": "gp",
@@ -2047,10 +2056,10 @@
 			"type": "Item",
 			"level": 3,
 			"traits": [
-				"Abjuration",
-				"Consumable",
-				"Fulu",
-				"Magical"
+				"abjuration",
+				"consumable",
+				"fulu",
+				"magical"
 			],
 			"price": {
 				"coin": "gp",
@@ -2070,10 +2079,10 @@
 			"type": "Item",
 			"level": 3,
 			"traits": [
-				"Abjuration",
-				"Consumable",
-				"Fulu",
-				"Magical"
+				"abjuration",
+				"consumable",
+				"fulu",
+				"magical"
 			],
 			"price": {
 				"coin": "gp",
@@ -2093,11 +2102,11 @@
 			"type": "Item",
 			"level": 5,
 			"traits": [
-				"Abjuration",
-				"Consumable",
-				"Fulu",
-				"Magical",
-				"Talisman"
+				"abjuration",
+				"consumable",
+				"fulu",
+				"magical",
+				"talisman"
 			],
 			"price": {
 				"coin": "gp",
@@ -2127,11 +2136,11 @@
 			"type": "Item",
 			"level": 5,
 			"traits": [
-				"Abjuration",
-				"Consumable",
-				"Fulu",
-				"Magical",
-				"Talisman"
+				"abjuration",
+				"consumable",
+				"fulu",
+				"magical",
+				"talisman"
 			],
 			"price": {
 				"coin": "gp",
@@ -2160,10 +2169,10 @@
 			"type": "Item",
 			"level": 6,
 			"traits": [
-				"Consumable",
-				"Fulu",
-				"Illusion",
-				"Magical"
+				"consumable",
+				"fulu",
+				"illusion",
+				"magical"
 			],
 			"price": {
 				"coin": "gp",
@@ -2182,12 +2191,12 @@
 			"type": "Item",
 			"level": 6,
 			"traits": [
-				"Consumable",
-				"Fulu",
-				"Magical",
-				"Necromancy",
-				"Talisman",
-				"Transmutation"
+				"consumable",
+				"fulu",
+				"magical",
+				"necromancy",
+				"talisman",
+				"transmutation"
 			],
 			"price": {
 				"coin": "gp",
@@ -2216,11 +2225,11 @@
 			"type": "Item",
 			"level": 9,
 			"traits": [
-				"Uncommon",
-				"Consumable",
-				"Magical",
-				"Oil",
-				"Transmutation"
+				"uncommon",
+				"consumable",
+				"magical",
+				"oil",
+				"transmutation"
 			],
 			"price": {
 				"coin": "gp",
@@ -2250,9 +2259,9 @@
 			"type": "Item",
 			"level": 3,
 			"traits": [
-				"Divination",
-				"Invested",
-				"Magical"
+				"divination",
+				"invested",
+				"magical"
 			],
 			"price": {
 				"coin": "gp",
@@ -2286,9 +2295,9 @@
 			"type": "Item",
 			"level": 11,
 			"traits": [
-				"Conjuration",
-				"Magical",
-				"Shadow"
+				"conjuration",
+				"magical",
+				"shadow"
 			],
 			"price": {
 				"coin": "gp",
@@ -2327,10 +2336,10 @@
 			"type": "Item",
 			"level": 5,
 			"traits": [
-				"Ammunition",
-				"Consumable",
-				"Evocation",
-				"Magical"
+				"ammunition",
+				"consumable",
+				"evocation",
+				"magical"
 			],
 			"price": {
 				"coin": "gp",
@@ -2369,9 +2378,9 @@
 			"type": "Item",
 			"level": "3+",
 			"traits": [
-				"Magical",
-				"Necromancy",
-				"Spellheart"
+				"magical",
+				"necromancy",
+				"spellheart"
 			],
 			"usage": "affixed to armor or a weapon",
 			"category": "Spellheart",
@@ -2566,10 +2575,10 @@
 			"type": "Item",
 			"level": 7,
 			"traits": [
-				"Chaotic",
-				"Divine",
-				"Evocation",
-				"Good"
+				"chaotic",
+				"divine",
+				"evocation",
+				"good"
 			],
 			"price": {
 				"coin": "gp",
@@ -2607,8 +2616,8 @@
 			"type": "Item",
 			"level": 12,
 			"traits": [
-				"Conjuration",
-				"Magical"
+				"conjuration",
+				"magical"
 			],
 			"price": {
 				"coin": "gp",
@@ -2647,9 +2656,9 @@
 			"type": "Item",
 			"level": "5+",
 			"traits": [
-				"Catalyst",
-				"Consumable",
-				"Magical"
+				"catalyst",
+				"consumable",
+				"magical"
 			],
 			"usage": "held in 1 hand",
 			"bulk": "L",
@@ -2723,9 +2732,9 @@
 			"type": "Item",
 			"level": 8,
 			"traits": [
-				"Divine",
-				"Necromancy",
-				"Negative"
+				"divine",
+				"necromancy",
+				"negative"
 			],
 			"price": {
 				"coin": "gp",
@@ -2764,9 +2773,9 @@
 			"type": "Rune",
 			"level": "10+",
 			"traits": [
-				"Evocation",
-				"Force",
-				"Magical"
+				"evocation",
+				"force",
+				"magical"
 			],
 			"usage": "etched onto a weapon",
 			"category": "Rune",
@@ -2807,9 +2816,9 @@
 			"type": "Item",
 			"level": 5,
 			"traits": [
-				"Grimoire",
-				"Magical",
-				"Necromancy"
+				"grimoire",
+				"magical",
+				"necromancy"
 			],
 			"price": {
 				"coin": "gp",
@@ -2845,8 +2854,8 @@
 			"type": "Item",
 			"level": 13,
 			"traits": [
-				"Evocation",
-				"Magical"
+				"evocation",
+				"magical"
 			],
 			"price": {
 				"coin": "gp",
@@ -2879,9 +2888,9 @@
 			"type": "Item",
 			"level": 7,
 			"traits": [
-				"Conjuration",
-				"Earth",
-				"Magical"
+				"conjuration",
+				"earth",
+				"magical"
 			],
 			"price": {
 				"coin": "gp",
@@ -2930,8 +2939,8 @@
 			"type": "Item",
 			"level": 3,
 			"traits": [
-				"Conjuration",
-				"Magical"
+				"conjuration",
+				"magical"
 			],
 			"price": {
 				"coin": "gp",
@@ -2953,11 +2962,11 @@
 			"type": "Item",
 			"level": 15,
 			"traits": [
-				"Unique",
-				"Magical",
-				"Plant",
-				"Staff",
-				"Transmutation"
+				"unique",
+				"magical",
+				"plant",
+				"staff",
+				"transmutation"
 			],
 			"price": {
 				"coin": "gp",
@@ -2999,10 +3008,10 @@
 			"type": "Item",
 			"level": 11,
 			"traits": [
-				"Consumable",
-				"Magical",
-				"Talisman",
-				"Transmutation"
+				"consumable",
+				"magical",
+				"talisman",
+				"transmutation"
 			],
 			"price": {
 				"coin": "gp",
@@ -3031,10 +3040,10 @@
 			"type": "Item",
 			"level": 4,
 			"traits": [
-				"Consumable",
-				"Fulu",
-				"Magical",
-				"Transmutation"
+				"consumable",
+				"fulu",
+				"magical",
+				"transmutation"
 			],
 			"price": {
 				"coin": "gp",
@@ -3054,10 +3063,10 @@
 			"type": "Item",
 			"level": 18,
 			"traits": [
-				"Apex",
-				"Enchantment",
-				"Invested",
-				"Magical"
+				"apex",
+				"enchantment",
+				"invested",
+				"magical"
 			],
 			"price": {
 				"coin": "gp",
@@ -3105,12 +3114,12 @@
 			"type": "Item",
 			"level": 3,
 			"traits": [
-				"Consumable",
-				"Enchantment",
-				"Fortune",
-				"Fulu",
-				"Magical",
-				"Talisman"
+				"consumable",
+				"enchantment",
+				"fortune",
+				"fulu",
+				"magical",
+				"talisman"
 			],
 			"price": {
 				"coin": "gp",
@@ -3139,10 +3148,10 @@
 			"type": "Item",
 			"level": 18,
 			"traits": [
-				"Apex",
-				"Invested",
-				"Magical",
-				"Transmutation"
+				"apex",
+				"invested",
+				"magical",
+				"transmutation"
 			],
 			"price": {
 				"coin": "gp",
@@ -3211,10 +3220,10 @@
 			"type": "Item",
 			"level": 10,
 			"traits": [
-				"Uncommon",
-				"Cold",
-				"Evocation",
-				"Magical"
+				"uncommon",
+				"cold",
+				"evocation",
+				"magical"
 			],
 			"price": {
 				"coin": "gp",
@@ -3258,9 +3267,9 @@
 			"type": "Item",
 			"level": "9+",
 			"traits": [
-				"Catalyst",
-				"Consumable",
-				"Magical"
+				"catalyst",
+				"consumable",
+				"magical"
 			],
 			"usage": "held in 1 hand",
 			"bulk": "L",
@@ -3301,11 +3310,11 @@
 			"type": "Item",
 			"level": 8,
 			"traits": [
-				"Auditory",
-				"Consumable",
-				"Evocation",
-				"Magical",
-				"Talisman"
+				"auditory",
+				"consumable",
+				"evocation",
+				"magical",
+				"talisman"
 			],
 			"price": {
 				"coin": "gp",
@@ -3336,8 +3345,8 @@
 			"type": "Item",
 			"level": "14+",
 			"traits": [
-				"Magical",
-				"Transmutation"
+				"magical",
+				"transmutation"
 			],
 			"usage": "held in 2 hands",
 			"bulk": 2,
@@ -3416,10 +3425,10 @@
 			"type": "Item",
 			"level": "3+",
 			"traits": [
-				"Evocation",
-				"Magical",
-				"Spellheart",
-				"Water"
+				"evocation",
+				"magical",
+				"spellheart",
+				"water"
 			],
 			"usage": "affixed to armor or a weapon",
 			"category": "Spellheart",
@@ -3614,11 +3623,11 @@
 			"type": "Item",
 			"level": 12,
 			"traits": [
-				"Consumable",
-				"Evocation",
-				"Fire",
-				"Magical",
-				"Potion"
+				"consumable",
+				"evocation",
+				"fire",
+				"magical",
+				"potion"
 			],
 			"price": {
 				"coin": "gp",
@@ -3649,11 +3658,11 @@
 			"type": "Item",
 			"level": 10,
 			"traits": [
-				"Abjuration",
-				"Consumable",
-				"Electricity",
-				"Magical",
-				"Potion"
+				"abjuration",
+				"consumable",
+				"electricity",
+				"magical",
+				"potion"
 			],
 			"price": {
 				"coin": "gp",
@@ -3706,10 +3715,10 @@
 			"type": "Item",
 			"level": 9,
 			"traits": [
-				"Consumable",
-				"Divination",
-				"Magical",
-				"Potion"
+				"consumable",
+				"divination",
+				"magical",
+				"potion"
 			],
 			"price": {
 				"coin": "gp",
@@ -3739,10 +3748,10 @@
 			"type": "Item",
 			"level": 8,
 			"traits": [
-				"Consumable",
-				"Necromancy",
-				"Magical",
-				"Potion"
+				"consumable",
+				"necromancy",
+				"magical",
+				"potion"
 			],
 			"price": {
 				"coin": "gp",
@@ -3772,10 +3781,10 @@
 			"type": "Item",
 			"level": "10+",
 			"traits": [
-				"Abjuration",
-				"Consumable",
-				"Magical",
-				"Potion"
+				"abjuration",
+				"consumable",
+				"magical",
+				"potion"
 			],
 			"usage": "held in 1 hand",
 			"bulk": "L",
@@ -3844,11 +3853,11 @@
 			"type": "Item",
 			"level": 9,
 			"traits": [
-				"Abjuration",
-				"Consumable",
-				"Fulu",
-				"Magical",
-				"Talisman"
+				"abjuration",
+				"consumable",
+				"fulu",
+				"magical",
+				"talisman"
 			],
 			"price": {
 				"coin": "gp",
@@ -3878,9 +3887,9 @@
 			"type": "Item",
 			"level": 20,
 			"traits": [
-				"Evocation",
-				"Force",
-				"Magical"
+				"evocation",
+				"force",
+				"magical"
 			],
 			"price": {
 				"coin": "gp",
@@ -3915,10 +3924,10 @@
 			"type": "Item",
 			"level": 11,
 			"traits": [
-				"Consumable",
-				"Evocation",
-				"Magical",
-				"Sonic"
+				"consumable",
+				"evocation",
+				"magical",
+				"sonic"
 			],
 			"price": {
 				"coin": "gp",
@@ -3948,11 +3957,11 @@
 			"type": "Item",
 			"level": 6,
 			"traits": [
-				"Consumable",
-				"Enchantment",
-				"Fulu",
-				"Magical",
-				"Necromancy"
+				"consumable",
+				"enchantment",
+				"fulu",
+				"magical",
+				"necromancy"
 			],
 			"price": {
 				"coin": "gp",
@@ -3980,8 +3989,8 @@
 			"type": "Item",
 			"level": 7,
 			"traits": [
-				"Enchantment",
-				"Magical"
+				"enchantment",
+				"magical"
 			],
 			"price": {
 				"coin": "gp",
@@ -4000,11 +4009,11 @@
 			"type": "Item",
 			"level": "3+",
 			"traits": [
-				"Conjuration",
-				"Consumable",
-				"Magical",
-				"Talisman",
-				"Teleportation"
+				"conjuration",
+				"consumable",
+				"magical",
+				"talisman",
+				"teleportation"
 			],
 			"usage": "affixed to armor",
 			"activate": {
@@ -4053,10 +4062,10 @@
 			"type": "Item",
 			"level": 12,
 			"traits": [
-				"Uncommon",
-				"Arcane",
-				"Invested",
-				"Tattoo"
+				"uncommon",
+				"arcane",
+				"invested",
+				"tattoo"
 			],
 			"price": {
 				"coin": "gp",
@@ -4076,9 +4085,9 @@
 			"type": "Item",
 			"level": 10,
 			"traits": [
-				"Focused",
-				"Invested",
-				"Magical"
+				"focused",
+				"invested",
+				"magical"
 			],
 			"price": {
 				"coin": "gp",
@@ -4114,10 +4123,10 @@
 			"type": "Item",
 			"level": 18,
 			"traits": [
-				"Apex",
-				"Invested",
-				"Magical",
-				"Necromancy"
+				"apex",
+				"invested",
+				"magical",
+				"necromancy"
 			],
 			"price": {
 				"coin": "gp",
@@ -4161,9 +4170,9 @@
 			"type": "Item",
 			"level": 10,
 			"traits": [
-				"Evocation",
-				"Invested",
-				"Magical"
+				"evocation",
+				"invested",
+				"magical"
 			],
 			"price": {
 				"coin": "gp",
@@ -4196,9 +4205,9 @@
 			"type": "Item",
 			"level": 5,
 			"traits": [
-				"Catalyst",
-				"Consumable",
-				"Magical"
+				"catalyst",
+				"consumable",
+				"magical"
 			],
 			"price": {
 				"coin": "gp",
@@ -4218,11 +4227,11 @@
 			"type": "Item",
 			"level": 6,
 			"traits": [
-				"Uncommon",
-				"Consumable",
-				"Divination",
-				"Magical",
-				"Scrying"
+				"uncommon",
+				"consumable",
+				"divination",
+				"magical",
+				"scrying"
 			],
 			"price": {
 				"coin": "gp",
@@ -4242,8 +4251,8 @@
 			"type": "Item",
 			"level": "14+",
 			"traits": [
-				"Enchantment",
-				"Magical"
+				"enchantment",
+				"magical"
 			],
 			"usage": "held in 1 hand",
 			"bulk": 1,
@@ -4262,7 +4271,7 @@
 					],
 					"traits": [
 						"auditory",
-						"Abjuration"
+						"abjuration"
 					],
 					"frequency": {
 						"unit": "hour",
@@ -4311,9 +4320,9 @@
 			"type": "Item",
 			"level": "9+",
 			"traits": [
-				"Evocation",
-				"Magical",
-				"Sonic"
+				"evocation",
+				"magical",
+				"sonic"
 			],
 			"usage": "held in 1 hand",
 			"bulk": "L",
@@ -4371,9 +4380,9 @@
 			"type": "Item",
 			"level": 3,
 			"traits": [
-				"Catalyst",
-				"Consumable",
-				"Magical"
+				"catalyst",
+				"consumable",
+				"magical"
 			],
 			"price": {
 				"coin": "gp",
@@ -4393,10 +4402,10 @@
 			"type": "Item",
 			"level": 10,
 			"traits": [
-				"Uncommon",
-				"Evocation",
-				"Fire",
-				"Magical"
+				"uncommon",
+				"evocation",
+				"fire",
+				"magical"
 			],
 			"price": {
 				"coin": "gp",
@@ -4436,9 +4445,9 @@
 			"type": "Item",
 			"level": 8,
 			"traits": [
-				"Enchantment",
-				"Grimoire",
-				"Magical"
+				"enchantment",
+				"grimoire",
+				"magical"
 			],
 			"price": {
 				"coin": "gp",
@@ -4475,11 +4484,11 @@
 			"type": "Item",
 			"level": "3+",
 			"traits": [
-				"Consumable",
-				"Fulu",
-				"Incapacitation",
-				"Magical",
-				"Necromancy"
+				"consumable",
+				"fulu",
+				"incapacitation",
+				"magical",
+				"necromancy"
 			],
 			"usage": "affixed to one undead creature",
 			"category": "Consumable",
@@ -4551,10 +4560,10 @@
 			"type": "Item",
 			"level": "7+",
 			"traits": [
-				"Magical",
-				"Plant",
-				"Staff",
-				"Transmutation"
+				"magical",
+				"plant",
+				"staff",
+				"transmutation"
 			],
 			"usage": "held in 1 hand",
 			"bulk": 1,
@@ -4635,9 +4644,9 @@
 			"type": "Item",
 			"level": "6+",
 			"traits": [
-				"Abjuration",
-				"Magical",
-				"Staff"
+				"abjuration",
+				"magical",
+				"staff"
 			],
 			"usage": "held in 1 hand",
 			"bulk": 1,
@@ -4736,10 +4745,10 @@
 			"type": "Item",
 			"level": "7+",
 			"traits": [
-				"Extradimensional",
-				"Invested",
-				"Magical",
-				"Transmutation"
+				"extradimensional",
+				"invested",
+				"magical",
+				"transmutation"
 			],
 			"usage": "held in 1 hand",
 			"bulk": 1,
@@ -4828,10 +4837,10 @@
 			"type": "Item",
 			"level": "12+",
 			"traits": [
-				"Eidolon",
-				"Evocation",
-				"Invested",
-				"Magical"
+				"eidolon",
+				"evocation",
+				"invested",
+				"magical"
 			],
 			"usage": "worn",
 			"bulk": "L",
@@ -4900,12 +4909,12 @@
 			"type": "Item",
 			"level": 16,
 			"traits": [
-				"Uncommon",
-				"Abjuration",
-				"Consumable",
-				"Fulu",
-				"Magical",
-				"Talisman"
+				"uncommon",
+				"abjuration",
+				"consumable",
+				"fulu",
+				"magical",
+				"talisman"
 			],
 			"price": {
 				"coin": "gp",
@@ -4934,10 +4943,10 @@
 			"type": "Item",
 			"level": 8,
 			"traits": [
-				"Consumable",
-				"Magical",
-				"Talisman",
-				"Transmutation"
+				"consumable",
+				"magical",
+				"talisman",
+				"transmutation"
 			],
 			"price": {
 				"coin": "gp",
@@ -4968,9 +4977,9 @@
 			"type": "Item",
 			"level": 6,
 			"traits": [
-				"Grimoire",
-				"Illusion",
-				"Magical"
+				"grimoire",
+				"illusion",
+				"magical"
 			],
 			"price": {
 				"coin": "gp",
@@ -5008,9 +5017,9 @@
 			"type": "Item",
 			"level": 8,
 			"traits": [
-				"Conjuration",
-				"Grimoire",
-				"Magical"
+				"conjuration",
+				"grimoire",
+				"magical"
 			],
 			"price": {
 				"coin": "gp",
@@ -5042,10 +5051,10 @@
 			"type": "Item",
 			"level": 9,
 			"traits": [
-				"Uncommon",
-				"Extradimensional",
-				"Invested",
-				"Magical"
+				"uncommon",
+				"extradimensional",
+				"invested",
+				"magical"
 			],
 			"price": {
 				"coin": "gp",
@@ -5083,9 +5092,9 @@
 			"type": "Item",
 			"level": "1+",
 			"traits": [
-				"Catalyst",
-				"Consumable",
-				"Magical"
+				"catalyst",
+				"consumable",
+				"magical"
 			],
 			"usage": "held in 1 hand",
 			"bulk": "L",
@@ -5180,10 +5189,10 @@
 			"type": "Item",
 			"level": 18,
 			"traits": [
-				"Apex",
-				"Evocation",
-				"Invested",
-				"Magical"
+				"apex",
+				"evocation",
+				"invested",
+				"magical"
 			],
 			"price": {
 				"coin": "gp",
@@ -5231,10 +5240,10 @@
 			"type": "Item",
 			"level": 7,
 			"traits": [
-				"Consumable",
-				"Magical",
-				"Oil",
-				"Transmutation"
+				"consumable",
+				"magical",
+				"oil",
+				"transmutation"
 			],
 			"price": {
 				"coin": "gp",
@@ -5263,10 +5272,10 @@
 			"type": "Item",
 			"level": 5,
 			"traits": [
-				"Abjuration",
-				"Consumable",
-				"Fulu",
-				"Magical"
+				"abjuration",
+				"consumable",
+				"fulu",
+				"magical"
 			],
 			"price": {
 				"coin": "gp",
@@ -5294,10 +5303,10 @@
 			"type": "Item",
 			"level": "3+",
 			"traits": [
-				"Earth",
-				"Evocation",
-				"Magical",
-				"Spellheart"
+				"earth",
+				"evocation",
+				"magical",
+				"spellheart"
 			],
 			"usage": "affixed to armor or a weapon",
 			"category": "Spellheart",
@@ -5492,9 +5501,9 @@
 			"type": "Item",
 			"level": "5+",
 			"traits": [
-				"Rare",
-				"Invested",
-				"Magical"
+				"rare",
+				"invested",
+				"magical"
 			],
 			"usage": "worn amulet",
 			"category": "Worn",
@@ -5550,10 +5559,10 @@
 			"type": "Item",
 			"level": 14,
 			"traits": [
-				"Consumable",
-				"Magical",
-				"Talisman",
-				"Transmutation"
+				"consumable",
+				"magical",
+				"talisman",
+				"transmutation"
 			],
 			"price": {
 				"coin": "gp",
@@ -5584,11 +5593,11 @@
 			"type": "Item",
 			"level": 3,
 			"traits": [
-				"Consumable",
-				"Fulu",
-				"Magical",
-				"Necromancy",
-				"Talisman"
+				"consumable",
+				"fulu",
+				"magical",
+				"necromancy",
+				"talisman"
 			],
 			"price": {
 				"coin": "gp",
@@ -5618,9 +5627,9 @@
 			"type": "Item",
 			"level": 8,
 			"traits": [
-				"Abjuration",
-				"Grimoire",
-				"Magical"
+				"abjuration",
+				"grimoire",
+				"magical"
 			],
 			"price": {
 				"coin": "gp",
@@ -5657,10 +5666,10 @@
 			"type": "Item",
 			"level": "5+",
 			"traits": [
-				"Abjuration",
-				"Invested",
-				"Magical",
-				"Tattoo"
+				"abjuration",
+				"invested",
+				"magical",
+				"tattoo"
 			],
 			"usage": "tattooed on the body",
 			"category": "Tattoo",
@@ -5741,9 +5750,9 @@
 			"type": "Item",
 			"level": 3,
 			"traits": [
-				"Catalyst",
-				"Consumable",
-				"Magical"
+				"catalyst",
+				"consumable",
+				"magical"
 			],
 			"price": {
 				"coin": "gp",

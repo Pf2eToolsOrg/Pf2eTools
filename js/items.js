@@ -176,7 +176,7 @@ class ItemsPage extends ListPage {
 			const count = it.values.count;
 			cntItems += it.values.count;
 			if (item._fBulk) bulk += item._fBulk * count;
-			if (item._fPrice) value += item._sPrice * count;
+			if (item._sPrice) value += item._sPrice * count;
 		});
 
 		this._$totalBulk.text(`${Math.floor(bulk)}`);

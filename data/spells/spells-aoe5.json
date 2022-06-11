@@ -7,9 +7,9 @@
 			"focus": true,
 			"level": 4,
 			"traits": [
-				"Uncommon",
-				"Enchantment",
-				"Mental"
+				"uncommon",
+				"enchantment",
+				"mental"
 			],
 			"school": "E",
 			"domains": [
@@ -19,10 +19,12 @@
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"area": {
 				"types": [
 					"Emanation"
@@ -63,8 +65,8 @@
 			"focus": true,
 			"level": 1,
 			"traits": [
-				"Uncommon",
-				"Transmutation"
+				"uncommon",
+				"transmutation"
 			],
 			"school": "T",
 			"domains": [
@@ -74,9 +76,11 @@
 				"number": 1,
 				"unit": "reaction"
 			},
-			"components": {
-				"S": true
-			},
+			"components": [
+				{
+					"S": true
+				}
+			],
 			"trigger": "A creature within 30 feet fails a {@skill Deception} or {@skill Diplomacy} check.",
 			"savingThrow": {
 				"basic": true,
@@ -84,8 +88,6 @@
 					"F"
 				]
 			},
-			"sustain": false,
-			"dismiss": false,
 			"entries": [
 				"The deceiving creature's tongue splits like a serpent's tongue. The creature takes {@damage 1d8} slashing damage and must attempt a Fortitude save.",
 				{

@@ -7,11 +7,11 @@
 			"focus": true,
 			"level": 5,
 			"traits": [
-				"Uncommon",
-				"Fire",
-				"Healing",
-				"Necromancy",
-				"Sorcerer"
+				"uncommon",
+				"fire",
+				"healing",
+				"necromancy",
+				"sorcerer"
 			],
 			"subclass": {
 				"Sorcerer|Bloodline": [
@@ -23,10 +23,12 @@
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"range": {
 				"entry": "touch",
 				"distance": {
@@ -47,11 +49,11 @@
 			"focus": true,
 			"level": 1,
 			"traits": [
-				"Uncommon",
-				"Fire",
-				"Healing",
-				"Necromancy",
-				"Sorcerer"
+				"uncommon",
+				"fire",
+				"healing",
+				"necromancy",
+				"sorcerer"
 			],
 			"subclass": {
 				"Sorcerer|Bloodline": [
@@ -63,10 +65,12 @@
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"area": {
 				"types": [
 					"Cone"
@@ -98,10 +102,10 @@
 			"focus": true,
 			"level": 3,
 			"traits": [
-				"Uncommon",
-				"Evocation",
-				"Fire",
-				"Sorcerer"
+				"uncommon",
+				"evocation",
+				"fire",
+				"sorcerer"
 			],
 			"subclass": {
 				"Sorcerer|Bloodline": [
@@ -113,10 +117,12 @@
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"S": true,
-				"V": true
-			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
 			"area": {
 				"types": [
 					"Emanation"
@@ -126,12 +132,12 @@
 			"duration": {
 				"type": "timed",
 				"entry": "sustained up to 1 minute",
+				"sustain": true,
 				"duration": {
 					"number": 1,
 					"unit": "minute"
 				}
 			},
-			"sustain": true,
 			"entries": [
 				"You encircle yourself in an aura of protective flames.",
 				"Each creature that hits you with an unarmed attack, Grapples you, or otherwise touches you takes 3 fire damage. When you {@action Cast a Spell||Cast the Spell} and the first time you sustain it each round, each creature in the area takes {@damage 3d6} fire damage (basic Reflex save)."

@@ -5,13 +5,12 @@
 			"source": "CRB",
 			"page": 380,
 			"level": -1,
-			"rarity": "Common",
-			"size": "Medium",
 			"traits": [
-				"Mindless"
+				"medium",
+				"mindless"
 			],
 			"perception": {
-				"default": 0
+				"std": 0
 			},
 			"languages": {
 				"languages": [],
@@ -21,37 +20,29 @@
 			},
 			"skills": {
 				"Stealth": {
-					"default": 8
+					"std": 8
 				}
 			},
 			"abilityMods": {
-				"Str": -4,
-				"Dex": 2,
-				"Con": 0,
-				"Int": -5,
-				"Wis": 0,
-				"Cha": 0
+				"str": -4,
+				"dex": 2,
+				"con": 0,
+				"int": -5,
+				"wis": 0,
+				"cha": 0
 			},
-			"abilitiesTop": [
-				{
-					"entries": [
-						"An unseen servant is {@condition invisible}, though it normally doesn't {@action Sneak}, so it is usually only {@condition hidden}."
-					],
-					"name": "Invisible"
-				}
-			],
 			"ac": {
-				"default": 13
+				"std": 13
 			},
 			"savingThrows": {
-				"Fort": {
-					"default": 0
+				"fort": {
+					"std": 0
 				},
-				"Ref": {
-					"default": 4
+				"ref": {
+					"std": 4
 				},
-				"Will": {
-					"default": 0
+				"will": {
+					"std": 0
 				}
 			},
 			"hp": [
@@ -60,18 +51,15 @@
 					"abilities": null
 				}
 			],
-			"immunities": {
-				"damage": [],
-				"condition": [
-					"disease",
-					"mental",
-					"non-magical attacks",
-					"paralysis",
-					"poison",
-					"precision",
-					"unconscious"
-				]
-			},
+			"immunities": [
+				"disease",
+				"mental",
+				"non-magical attacks",
+				"paralysis",
+				"poison",
+				"precision",
+				"unconscious"
+			],
 			"resistances": [
 				{
 					"amount": 5,
@@ -82,14 +70,24 @@
 			"speed": {
 				"fly": 30
 			},
-			"abilitiesBot": [
-				{
-					"entries": [
-						"An unseen servant's physical body is made of force. It can't use {@trait attack} actions. It can move and use {@action Interact} actions to do things such as fetch objects, open unstuck or unlocked doors, hold chairs, and clean. It can't pass through solid objects."
-					],
-					"name": "Force Body"
-				}
-			]
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"An unseen servant is {@condition invisible}, though it normally doesn't {@action Sneak}, so it is usually only {@condition hidden}."
+						],
+						"name": "Invisible"
+					}
+				],
+				"bot": [
+					{
+						"entries": [
+							"An unseen servant's physical body is made of force. It can't use {@trait attack} actions. It can move and use {@action Interact} actions to do things such as fetch objects, open unstuck or unlocked doors, hold chairs, and clean. It can't pass through solid objects."
+						],
+						"name": "Force Body"
+					}
+				]
+			}
 		}
 	]
 }

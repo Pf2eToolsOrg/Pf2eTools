@@ -399,7 +399,7 @@ class BestiaryPage extends ListPage {
 
 	async _pPostLoad () {
 		const homebrew = await BrewUtil.pAddBrewData();
-		await this._addCreatures(homebrew);
+		this._addCreatures(homebrew.creature);
 		BrewUtil.bind({list: this._list, pHandleBrew: this._handleBrew.bind(this)});
 		await BrewUtil.pAddLocalBrewData();
 		BrewUtil.makeBrewButton("manage-brew");

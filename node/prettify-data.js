@@ -86,7 +86,11 @@ function prettifyFolder (folder) {
 					if (PropOrder.hasOrder(k)) {
 						PROPS_TO_UNHANDLED_KEYS[k] = PROPS_TO_UNHANDLED_KEYS[k] || new Set();
 
-						json[k] = v.map(it => PropOrder.getOrdered(it, k, {fnUnhandledKey: uk => PROPS_TO_UNHANDLED_KEYS[k].add(uk)}));
+						json[k] = v.map(it => {
+							it = PropOrder.getOrdered(it, k, {fnUnhandledKey: uk => PROPS_TO_UNHANDLED_KEYS[k].add(uk)});
+							if (it.traits) it.traits = it.traits.map(t => t.toLowerCase());
+							return it;
+						});
 
 						json[k].sort(getFnListSort(k));
 
@@ -104,6 +108,12 @@ function prettifyFolder (folder) {
 			set.forEach(k => console.warn(`\t${k}`));
 		})
 }
+async function main () {
+	require("../js/render.js");
+	ut.patchLoadJson();
+	await Renderer.trait.preloadTraits();
+	ut.unpatchLoadJson();
+	prettifyFolder(`./data`);
+}
 
-prettifyFolder(`./data`);
-console.log("Prettifying complete.");
+main().then(() => console.log("Prettifying complete."));

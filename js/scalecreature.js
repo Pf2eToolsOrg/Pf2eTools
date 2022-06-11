@@ -436,7 +436,7 @@ class ScaleCreature {
 		this._adjustResistancesWeaknesses(creature, lvlIn, toLvl, opts);
 		this._adjustItems(creature, lvlIn, toLvl, opts);
 		this._adjustAttacks(creature, lvlIn, toLvl, opts);
-		this._adjustSpellcasting(creature, lvlIn, toLvl, opts);
+		this._adjustSpellCasting(creature, lvlIn, toLvl, opts);
 		this._adjustAbilities(creature, lvlIn, toLvl, opts);
 	}
 
@@ -568,7 +568,7 @@ class ScaleCreature {
 		Object.keys(creature.ac).forEach(key => {
 			if (key !== "abilities") creature.ac[key] += opts.flatAddProf;
 		});
-		["Fort", "Ref", "Will"].forEach(st => Object.keys(creature.savingThrows[st]).forEach(key => creature.savingThrows[st][key] += opts.flatAddProf));
+		["fort", "ref", "will"].forEach(st => Object.keys(creature.savingThrows[st]).forEach(key => creature.savingThrows[st][key] += opts.flatAddProf));
 		Object.keys(creature.perception).forEach(key => creature.perception[key] += opts.flatAddProf);
 		Object.keys(creature.skills).forEach(skill => Object.keys(creature.skills[skill]).forEach(key => creature.skills[skill][key] += opts.flatAddProf));
 		if (creature.spellcasting != null) {
@@ -577,17 +577,19 @@ class ScaleCreature {
 				if (sc.attack) sc.attack += opts.flatAddProf;
 			});
 		}
-		creature.attacks.forEach(a => {
-			a.attack += opts.flatAddProf;
-			a.damage = a.damage.replace(/(\d+d\d+)([+-]?\d*)/, (formula, formulaNoMod, mod) => {
-				if (!mod) return `${formula}${Parser.numToBonus(opts.flatAddDamage)}`;
-				else {
-					const newMod = Number(mod) + opts.flatAddDamage;
-					if (newMod === 0) return `${formulaNoMod}`;
-					else return `${formulaNoMod}${Parser.numToBonus(newMod)}`;
-				}
+		if (creature.attacks) {
+			creature.attacks.forEach(a => {
+				a.attack += opts.flatAddProf;
+				a.damage = a.damage.replace(/(\d+d\d+)([+-]?\d*)/, (formula, formulaNoMod, mod) => {
+					if (!mod) return `${formula}${Parser.numToBonus(opts.flatAddDamage)}`;
+					else {
+						const newMod = Number(mod) + opts.flatAddDamage;
+						if (newMod === 0) return `${formulaNoMod}`;
+						else return `${formulaNoMod}${Parser.numToBonus(newMod)}`;
+					}
+				});
 			});
-		});
+		}
 		const adjustAbility = (ab) => {
 			const {isLimited, isArea} = this._isAbilityAreaLimited(ab);
 			const bonus = isLimited ? opts.flatAddDamageLimited : opts.flatAddDamage;
@@ -614,11 +616,8 @@ class ScaleCreature {
 				}
 				return e;
 			});
-			return ab
 		};
-		creature.abilitiesTop.map(ab => adjustAbility(ab));
-		creature.abilitiesMid.map(ab => adjustAbility(ab));
-		creature.abilitiesBot.map(ab => adjustAbility(ab));
+		if (creature.abilities) Object.keys(creature.abilities).forEach(k => creature.abilities[k].forEach(adjustAbility));
 		return creature;
 	}
 
@@ -626,7 +625,7 @@ class ScaleCreature {
 		const rangesIn = map[lvlIn];
 		const toRanges = map[toLvl];
 		const lowerIdx = rangesIn.findIndex(it => it < value);
-		const upperIdx = rangesIn.length - 1 - rangesIn.reverse().findIndex(it => it >= value);
+		const upperIdx = rangesIn.length - 1 - MiscUtil.copy(rangesIn).reverse().findIndex(it => it >= value);
 
 		const a = rangesIn[lowerIdx] || 0;
 		const b = rangesIn[upperIdx] || value;
@@ -642,6 +641,7 @@ class ScaleCreature {
 
 		// Handle singletons, then finally scale the interval [a,b] to [c,d] linearly, and return the scaled value.
 		if (a === b) return a;
+		// CRITICAL FIXME: This rounding is making everything wrong. You could floor it instead but it doesn't alleviate the issue of wrong calculations from the start.
 		return Math.round((value - a) * ((d - c) / (b - a)) + c);
 	}
 
@@ -680,37 +680,37 @@ class ScaleCreature {
 	}
 
 	_adjustPerception (creature, lvlIn, toLvl, opts) {
-		const defaultPerception = creature.perception.default;
-		creature.perception.default = this._scaleValue(lvlIn, toLvl, defaultPerception, this._LvlPerception) + opts.flatAddProf;
+		const defaultPerception = creature.perception.std;
+		creature.perception.std = this._scaleValue(lvlIn, toLvl, defaultPerception, this._LvlPerception) + opts.flatAddProf;
 		Object.keys(creature.perception).forEach(key => {
-			if (key !== "default") creature.perception[key] += creature.perception.default - defaultPerception;
+			if (key !== "std") creature.perception[key] += creature.perception.std - defaultPerception;
 		});
 	}
 
 	_adjustSkills (creature, lvlIn, toLvl, opts) {
 		Object.keys(creature.skills).forEach(skill => {
-			const defaultSkill = creature.skills[skill].default;
-			creature.skills[skill].default = this._scaleValue(lvlIn, toLvl, defaultSkill, this._LvlSkills) + opts.flatAddProf;
+			const defaultSkill = creature.skills[skill].std;
+			creature.skills[skill].std = this._scaleValue(lvlIn, toLvl, defaultSkill, this._LvlSkills) + opts.flatAddProf;
 			Object.keys(creature.skills[skill]).forEach(key => {
-				if (key !== "default") creature.skills[skill][key] += creature.skills[skill].default - defaultSkill;
+				if (key !== "std") creature.skills[skill][key] += creature.skills[skill].std - defaultSkill;
 			});
 		});
 	}
 
 	_adjustAC (creature, lvlIn, toLvl, opts) {
-		const defaultAc = creature.ac.default;
-		creature.ac.default = this._scaleValue(lvlIn, toLvl, defaultAc, this._LvlAC) + opts.flatAddProf;
+		const defaultAc = creature.ac.std;
+		creature.ac.std = this._scaleValue(lvlIn, toLvl, defaultAc, this._LvlAC) + opts.flatAddProf;
 		Object.keys(creature.ac).forEach(key => {
-			if (key !== "default" && key !== "abilities") creature.ac[key] += creature.ac.default - defaultAc;
+			if (key !== "std" && key !== "abilities") creature.ac[key] += creature.ac.std - defaultAc;
 		});
 	}
 
 	_adjustSavingThrows (creature, lvlIn, toLvl, opts) {
-		["Fort", "Ref", "Will"].forEach(st => {
-			const defaultSave = creature.savingThrows[st].default;
-			creature.savingThrows[st].default = this._scaleValue(lvlIn, toLvl, defaultSave, this._LvlSavingThrows) + opts.flatAddProf;
+		["fort", "ref", "will"].forEach(st => {
+			const defaultSave = creature.savingThrows[st].std;
+			creature.savingThrows[st].std = this._scaleValue(lvlIn, toLvl, defaultSave, this._LvlSavingThrows) + opts.flatAddProf;
 			Object.keys(creature.savingThrows[st]).forEach(key => {
-				if (key !== "default") creature.savingThrows[st][key] += creature.savingThrows[st].default - defaultSave;
+				if (key !== "std") creature.savingThrows[st][key] += creature.savingThrows[st].std - defaultSave;
 			});
 		});
 	}
@@ -764,7 +764,7 @@ class ScaleCreature {
 		});
 	}
 
-	_adjustSpellcasting (creature, lvlIn, toLvl, opts) {
+	_adjustSpellCasting (creature, lvlIn, toLvl, opts) {
 		if (creature.spellcasting == null) return;
 		creature.spellcasting.forEach(sc => {
 			if (sc.DC) sc.DC = this._scaleValue(lvlIn, toLvl, sc.DC, this._LvlSpellDC) + opts.flatAddProf;
@@ -886,11 +886,8 @@ class ScaleCreature {
 				}
 				return e;
 			});
-			return ab
 		};
-		if (creature.abilitiesTop) creature.abilitiesTop.map(ab => adjustAbility(ab));
-		if (creature.abilitiesMid) creature.abilitiesMid.map(ab => adjustAbility(ab));
-		if (creature.abilitiesBot) creature.abilitiesBot.map(ab => adjustAbility(ab));
+		if (creature.abilities) Object.keys(creature.abilities).forEach(k => creature.abilities[k].forEach(adjustAbility));
 	}
 	_isAbilityAreaLimited (ab) {
 		let isArea = Boolean(ab.area);
