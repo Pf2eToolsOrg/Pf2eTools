@@ -91,8 +91,8 @@
 			"txt": "- Fix Items page price filter and expand it\n- (Typos/Tags)"
 		},
 		{
-			"ver": "0.4.3",
-			"date": "2022-06-07",
+			"ver": "0.5.0",
+			"date": "2022-06-11",
 			"txt": "- Overhauled caching and preloading system (big thanks to @ isaac for all of this)\n  - Fixed (hopefully) caching hell/\"keep CTRL+F5-ing until it works\" by using a modern, robust service worker solution\n  - Fixed preloaded offline data being invalidated when a new site version is released\n  - Improved loading times by intelligently preloading common files/data\n  - Improved loading times by checking for updates on a per-file basis, and serving a file from cache when no update is required\n  - Broke down Preload Offline Data into a granular set of options, allowing faster preloads by avoiding unneeded data\n  - Reworked Preload Offline Data to avoid ever having hangs due to the background process being killed off by the browser\n  - Preloading offline data is now parallelized, making it significantly faster\n  - Preloading may now continue in the background when navigating between pages\n  - Added various notifications to better display the state of caching/preloading, including \"reload to see changes\" notifications\n- (Typos/Tags) Added images to missing creatures in the Bst (thanks @ Indy Techwisp) \n- (Typos/Tags)"
 		}
 	]
