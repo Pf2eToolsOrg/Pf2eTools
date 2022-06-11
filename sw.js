@@ -9,7 +9,7 @@
 
 // importScripts("./js/sw-files.js");
 
-const cacheName = /* PF2ETOOLS_VERSION__OPEN */"0.4.3"/* PF2ETOOLS_VERSION__CLOSE */;
+const cacheName = /* PF2ETOOLS_VERSION__OPEN */"0.5.0"/* PF2ETOOLS_VERSION__CLOSE */;
 // const cacheableFilenames = new Set(filesToCache);
 
 let isCacheRunning;
