@@ -136,7 +136,7 @@ class Converter {
 		const feat = {};
 		feat.name = name.toTitleCase();
 		const activityToken = this._tokenizerUtils.actions.find(it => it.regex.test(activity));
-		feat.activity = this._renderToken(activityToken, {asObject: true});
+		activityToken ? feat.activity = this._renderToken(activityToken, {asObject: true}) : null;
 		feat.level = Number(level);
 		feat.source = this._source;
 		feat.page = this._page;
@@ -1365,8 +1365,7 @@ class Converter {
 		} else if (token.type === "PARENTHESIS") {
 			return token.value.trim();
 		}
-
-		throw new Error(`Unimplemented rendering of token with type "${token.type}"`)
+		throw new Error(`Unimplemented rendering of token with type "${token.type ? token.type : "???"}"`)
 	}
 	_renderEntries (tokens, opts) {
 		opts = opts || {};
