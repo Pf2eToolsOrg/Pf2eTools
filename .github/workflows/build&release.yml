@@ -7,7 +7,7 @@ on:
 
 env:
    # See: https://docs.github.com/en/packages/managing-github-packages-using-github-actions-workflows/publishing-and-installing-a-package-with-github-actions#upgrading-a-workflow-that-accesses-ghcrio
-   IMAGE_NAME: Pf2etools
+   IMAGE_NAME: pf2etools
 
 jobs:
    build-and-deploy:
@@ -21,7 +21,7 @@ jobs:
 
          -  name: Archive Release
             run: |
-               zip -r pf2ools-${{ env.RELEASE_VERSION }}.zip . -x '*.git*' '*node_modules*' '*.github*' `.editorconfig` `CNAME`
+               zip -r pf2ools-${{ env.RELEASE_VERSION }}.zip . -x '*.git*' '*node_modules*' '*.github*' '*img*' '*.editorconfig*' '*CNAME*'
          -  name: Set Deployed Flag
             run: |
                bash ./.github/set-deployed-flag.sh ${{ env.RELEASE_VERSION }}
@@ -44,7 +44,7 @@ jobs:
          -  name: Deploy
             uses: JamesIves/github-pages-deploy-action@releases/v4
             with:
-               branch: gh-pages
+               branch: prod
                folder: .
 
          -  name: Archive Images
@@ -53,7 +53,7 @@ jobs:
          -  name: Upload Release
             # Add the files one-by-one in an effort to avoid timeouts
             run: |
-               hub release create -a Pf2etools-${{ env.RELEASE_VERSION }}.zip -m ${{ env.RELEASE_VERSION }} ${{ env.RELEASE_VERSION }}
+               hub release create -a pf2ools-${{ env.RELEASE_VERSION }}.zip -m ${{ env.RELEASE_VERSION }} ${{ env.RELEASE_VERSION }}
                for f in $(find . -name 'img-${{ env.RELEASE_VERSION }}.*' -print); do hub release edit ${{ env.RELEASE_VERSION }} -m '' -a $f; done
             env:
                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
