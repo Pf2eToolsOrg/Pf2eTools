@@ -136,7 +136,7 @@ class Converter {
 		const feat = {};
 		feat.name = name.toTitleCase();
 		const activityToken = this._tokenizerUtils.actions.find(it => it.regex.test(activity));
-		activityToken ? feat.activity = this._renderToken(activityToken, {asObject: true}) : null;
+		if (activityToken) feat.activity = this._renderToken(activityToken, {asObject: true});
 		feat.level = Number(level);
 		feat.source = this._source;
 		feat.page = this._page;
