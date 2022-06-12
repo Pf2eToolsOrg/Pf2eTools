@@ -1,1 +1,98 @@
-{"feat":[{"name":"Drow Shootist Dedication","source":"AV3","page":77,"level":2,"featType":{"archetype":true},"traits":["uncommon","archetype","dedication"],"prerequisites":"trained in the hand crossbow","entries":["Every chance you get, you practice with the hand crossbow to increase your draw speed and accuracy. Whenever you gain a class feature that grants you expert or greater proficiency in a given weapon or weapons, you also gain that proficiency in the hand crossbow. If you're at least an expert in a hand crossbow you're using, you gain access to its critical specialization effect. You also gain the Shootist's Draw action.",{"type":"ability","name":"Shootist's Draw","activity":{"number":1,"unit":"action"},"frequency":{"unit":"round","freq":1},"entries":["You {@action Interact} to draw a hand crossbow and {@action Strike} with it, or you {@action Strike} with a loaded hand crossbow you're already holding and then {@action Interact} to stow it."]}],"special":"You can't select another dedication feat until you've gained two other feats from the drow shootist archetype."},{"name":"Lethargy Poisoner","source":"AV3","page":77,"level":8,"featType":{"archetype":true},"traits":["archetype"],"prerequisites":"Drow Shootist Dedication, trained in {@skill Crafting}","entries":["You've learned more than the use of hand crossbows from drow lore. During your daily preparations, you can prepare a dose of {@item lethargy poison} from ordinary materials in a wilderness or urban area. If you're an expert in {@skill Crafting}, you can instead craft a dose of {@item stupor poison|av3}. You can prepare two doses (of either poison) if you're a master in {@skill Crafting} and three doses if you're legendary in {@skill Crafting}. The save DC for this poison is equal to your class DC. Only you can use these poisons, and they expire the next time you make your daily preparations. The GM might decide that the area you're in is too barren to provide the materials you need for this feat."]},{"name":"Reloading Trick","source":"AV3","page":77,"activity":{"number":1,"unit":"action"},"level":6,"featType":{"archetype":true},"traits":["archetype","manipulate"],"prerequisites":"Drow Shootist Dedication","frequency":{"unit":"round","freq":1},"requirements":"You're holding an unloaded hand crossbow.","entries":["You can fire off a single shot even when unprepared. You {@action Interact} to reload your hand crossbow and {@action Strike} with it."],"special":"If you have the {@feat Repeating Hand Crossbow Training|av3} feat, you can use this feat with a {@item repeating hand crossbow|G&G} to load either a bolt or a magazine, but the speed means you can fire only one bolt, then the magazine jams. You must spend a 3-action {@action Interact} activity to remove the jammed magazine and clear it before it can be used again."},{"name":"Repeating Hand Crossbow Training","source":"AV3","page":77,"level":4,"featType":{"archetype":true},"traits":["archetype"],"prerequisites":"Drow Shootist Dedication","entries":["You become trained in the {@item repeating hand crossbow|G&G} and gain access to {@item repeating hand crossbow|G&G|repeating hand crossbows} and {@item shootist bandolier|av3|shootist bandoliers}. Whenever you gain a class feature that grants you expert or greater proficiency in a given weapon or weapons, you also gain that proficiency in the repeating hand crossbow. If you're at least an expert in a {@item repeating hand crossbow|G&G} you're using, you gain access to its critical specialization effect. You can perform the Shootist's Draw action with {@item repeating hand crossbow|G&G|repeating hand crossbows}."],"special":"If you have the {@feat Running Reload|CRB} feat, you can reload a repeating hand crossbow magazine on the move. You can use {@feat Running Reload|CRB} as a 3-action activity to reload a magazine into a repeating hand crossbow after you {@action Stride}, {@action Step}, or {@action Sneak}, or as a 2-action activity if you use a magazine from a shootist bandolier."}]}
+{
+	"feat": [
+		{
+			"name": "Drow Shootist Dedication",
+			"source": "AV3",
+			"page": 77,
+			"level": 2,
+			"featType": {
+				"archetype": true
+			},
+			"traits": [
+				"uncommon",
+				"archetype",
+				"dedication"
+			],
+			"prerequisites": "trained in the hand crossbow",
+			"entries": [
+				"Every chance you get, you practice with the hand crossbow to increase your draw speed and accuracy. Whenever you gain a class feature that grants you expert or greater proficiency in a given weapon or weapons, you also gain that proficiency in the hand crossbow. If you're at least an expert in a hand crossbow you're using, you gain access to its critical specialization effect. You also gain the Shootist's Draw action.",
+				{
+					"type": "ability",
+					"name": "Shootist's Draw",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"frequency": {
+						"unit": "round",
+						"freq": 1
+					},
+					"entries": [
+						"You {@action Interact} to draw a hand crossbow and {@action Strike} with it, or you {@action Strike} with a loaded hand crossbow you're already holding and then {@action Interact} to stow it."
+					]
+				}
+			],
+			"special": "You can't select another dedication feat until you've gained two other feats from the drow shootist archetype."
+		},
+		{
+			"name": "Lethargy Poisoner",
+			"source": "AV3",
+			"page": 77,
+			"level": 8,
+			"featType": {
+				"archetype": true
+			},
+			"traits": [
+				"archetype"
+			],
+			"prerequisites": "Drow Shootist Dedication, trained in {@skill Crafting}",
+			"entries": [
+				"You've learned more than the use of hand crossbows from drow lore. During your daily preparations, you can prepare a dose of {@item lethargy poison} from ordinary materials in a wilderness or urban area. If you're an expert in {@skill Crafting}, you can instead craft a dose of {@item stupor poison|av3}. You can prepare two doses (of either poison) if you're a master in {@skill Crafting} and three doses if you're legendary in {@skill Crafting}. The save DC for this poison is equal to your class DC. Only you can use these poisons, and they expire the next time you make your daily preparations. The GM might decide that the area you're in is too barren to provide the materials you need for this feat."
+			]
+		},
+		{
+			"name": "Reloading Trick",
+			"source": "AV3",
+			"page": 77,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"level": 6,
+			"featType": {
+				"archetype": true
+			},
+			"traits": [
+				"archetype",
+				"manipulate"
+			],
+			"prerequisites": "Drow Shootist Dedication",
+			"frequency": {
+				"unit": "round",
+				"freq": 1
+			},
+			"requirements": "You're holding an unloaded hand crossbow.",
+			"entries": [
+				"You can fire off a single shot even when unprepared. You {@action Interact} to reload your hand crossbow and {@action Strike} with it."
+			],
+			"special": "If you have the {@feat Repeating Hand Crossbow Training|av3} feat, you can use this feat with a {@item repeating hand crossbow|G&G} to load either a bolt or a magazine, but the speed means you can fire only one bolt, then the magazine jams. You must spend a 3-action {@action Interact} activity to remove the jammed magazine and clear it before it can be used again."
+		},
+		{
+			"name": "Repeating Hand Crossbow Training",
+			"source": "AV3",
+			"page": 77,
+			"level": 4,
+			"featType": {
+				"archetype": true
+			},
+			"traits": [
+				"archetype"
+			],
+			"prerequisites": "Drow Shootist Dedication",
+			"entries": [
+				"You become trained in the {@item repeating hand crossbow|G&G} and gain access to {@item repeating hand crossbow|G&G|repeating hand crossbows} and {@item shootist bandolier|av3|shootist bandoliers}. Whenever you gain a class feature that grants you expert or greater proficiency in a given weapon or weapons, you also gain that proficiency in the repeating hand crossbow. If you're at least an expert in a {@item repeating hand crossbow|G&G} you're using, you gain access to its critical specialization effect. You can perform the Shootist's Draw action with {@item repeating hand crossbow|G&G|repeating hand crossbows}."
+			],
+			"special": "If you have the {@feat Running Reload|CRB} feat, you can reload a repeating hand crossbow magazine on the move. You can use {@feat Running Reload|CRB} as a 3-action activity to reload a magazine into a repeating hand crossbow after you {@action Stride}, {@action Step}, or {@action Sneak}, or as a 2-action activity if you use a magazine from a shootist bandolier."
+		}
+	]
+}

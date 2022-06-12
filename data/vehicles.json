@@ -1,1 +1,1130 @@
-{"vehicle":[{"name":"Airship","source":"GMG","page":177,"level":12,"traits":["rare"],"size":"Gargantuan","price":{"coin":"gp","amount":6000},"space":{"long":{"number":90,"unit":"feet"},"wide":{"number":30,"unit":"feet"},"high":{"number":60,"unit":"feet"}},"crew":[{"type":"pilot","number":1},{"type":"crew","number":5,"entry":"other crew"}],"passengers":15,"pilotingCheck":[{"skill":"Arcana","dc":32},{"skill":"Crafting","dc":32},{"skill":"Nature","dc":32},{"skill":"Pilot Lore","dc":30}],"defenses":{"ac":{"default":28},"savingThrows":{"fort":22},"hardness":{"default":20},"hp":{"default":210},"bt":{"default":105},"immunities":["critical hits","object immunities","precision damage"],"weaknesses":[{"name":"fire","amount":15,"note":"until broken"}]},"speed":{"type":"fly","speed":50,"traits":["alchemical","magical"]},"collision":{"damage":"{@dice 9d10}","dc":30},"abilities":[{"name":"Sluggish","entries":["This vehicle must move twice its length for each 90-degree turn it makes."]}]},{"name":"Carriage","source":"GMG","page":178,"level":2,"size":"Large","price":{"coin":"gp","amount":50},"space":{"long":{"number":10,"unit":"feet"},"wide":{"number":10,"unit":"feet"},"high":{"number":7,"unit":"feet"}},"crew":[{"type":"pilot","number":1}],"passengers":2,"pilotingCheck":[{"skill":"Driving Lore","dc":16},{"skill":"Nature","dc":18,"entry":"{@skill Nature} (DC 18 to DC 26, depending on pulling creature)"}],"defenses":{"ac":{"default":13},"savingThrows":{"fort":8},"hardness":{"default":5},"hp":{"default":40},"bt":{"default":20},"immunities":["critical hits","object immunities","precision damage"]},"speed":{"type":"special","entry":"the speed of the slowest pulling creature (pulled by 2 Large creatures)"},"collision":{"damage":"{@dice 2d8}","dc":16}},{"name":"Cart","source":"GMG","page":178,"level":0,"size":"Large","price":{"coin":"gp","amount":3},"space":{"long":{"number":10,"unit":"feet"},"wide":{"number":5,"unit":"feet"},"high":{"number":4,"unit":"feet"}},"crew":[{"type":"pilot","number":1}],"passengers":1,"pilotingCheck":[{"skill":"Driving Lore","dc":14},{"skill":"Nature","dc":16,"entry":"{@skill Nature} (DC 16 to DC 24, depending on pulling creature)"}],"defenses":{"ac":{"default":10},"savingThrows":{"fort":6},"hardness":{"default":4},"hp":{"default":14},"bt":{"default":7},"immunities":["critical hits","object immunities","precision damage"]},"speed":{"type":"special","entry":"the Speed of the slowest pulling creature (pulled by 1 Large creature)"},"collision":{"damage":"{@dice 1d10}","dc":14}},{"name":"Galley","source":"GMG","page":178,"level":10,"size":"Gargantuan","price":{"coin":"gp","amount":3000},"space":{"long":{"number":130,"unit":"feet"},"wide":{"number":20,"unit":"feet"},"high":{"number":25,"unit":"feet"}},"crew":[{"type":"pilot","number":1},{"type":"rower","number":20,"entry":"rowers"}],"passengers":6,"pilotingCheck":[{"skill":"Sailing Lore","dc":27},{"skill":"Diplomacy","dc":29},{"skill":"Intimidation","dc":29}],"defenses":{"ac":{"default":25},"savingThrows":{"fort":19},"hardness":{"default":15},"hp":{"default":170},"bt":{"default":85},"immunities":["critical hits","object immunities","precision damage"],"weaknesses":[{"name":"fire","amount":15,"note":"until broken"}]},"speed":{"type":"swim","speed":30,"note":"rowed, wind"},"collision":{"damage":"{@dice 7d10}","dc":27},"abilities":[{"name":"Maneuverable","entries":["With a full complement of skilled rowers, a rowed galley can turn swiftly, turn in place, and even row backwards. Each 90-degree turn made in less than a vehicle length costs 5 extra feet of movement. It can row backwards no faster than half its speed, and it can't turn while rowing backwards."]}]},{"name":"Glider","source":"GMG","page":178,"level":0,"traits":["uncommon"],"size":"Large","price":{"coin":"gp","amount":15},"space":{"long":{"number":5,"unit":"feet"},"wide":{"number":10,"unit":"feet"},"high":{"number":2,"unit":"feet"}},"crew":[{"type":"pilot","number":1}],"passengers":1,"pilotingCheck":[{"skill":"Driving Lore","dc":14},{"skill":"Nature","dc":16}],"defenses":{"ac":{"default":10},"savingThrows":{"fort":6},"hardness":{"default":0},"hp":{"default":16},"bt":{"default":8},"immunities":["critical hits","object immunities","precision damage"],"weaknesses":[{"amount":5,"name":"fire"}]},"speed":{"type":"fly","speed":25,"note":"wind"},"collision":{"damage":"{@dice 2d4}","dc":14},"abilities":[{"name":"Starting Drop","entries":["The only way to launch a glider is to jump off a steep incline with favorable wind conditions. The glider is uncontrolled and falls 60 feet each round until the pilot successfully Takes Control. If the glider hits the ground before the pilot successfully Takes Control, the pilot and the glider each take falling damage."]}]},{"name":"Heavy Chariot","source":"GMG","page":178,"level":3,"size":"Large","price":{"coin":"gp","amount":150},"space":{"long":{"number":10,"unit":"feet"},"wide":{"number":10,"unit":"feet"},"high":{"number":4,"unit":"feet"}},"crew":[{"type":"pilot","number":1}],"passengers":3,"pilotingCheck":[{"skill":"Driving Lore","dc":18},{"skill":"Nature","dc":20,"entry":"{@skill Nature} (DC 20 to DC 28, depending on pulling creature)"}],"defenses":{"ac":{"default":14},"savingThrows":{"fort":9},"hardness":{"default":5},"hp":{"default":40},"bt":{"default":20},"immunities":["critical hits","object immunities","precision damage"]},"speed":{"type":"special","entry":"the speed of the slowest pulling creature (pulled by 2 Large creatures)"},"collision":{"damage":"{@dice 2d10}","dc":18}},{"name":"Light Chariot","source":"GMG","page":178,"level":0,"size":"Large","price":{"coin":"gp","amount":10},"space":{"long":{"number":5,"unit":"feet"},"wide":{"number":5,"unit":"feet"},"high":{"number":4,"unit":"feet"}},"crew":[{"type":"pilot","number":1}],"passengers":1,"pilotingCheck":[{"skill":"Driving Lore","dc":14},{"skill":"Nature","dc":16,"entry":"{@skill Nature} (DC 16 to DC 24, depending on pulling creature)"}],"defenses":{"ac":{"default":10},"savingThrows":{"fort":6},"hardness":{"default":5},"hp":{"default":14},"bt":{"default":7},"immunities":["critical hits","object immunities","precision damage"]},"speed":{"type":"special","entry":"the Speed of the slowest pulling creature (pulled by 1 Large creature)"},"collision":{"damage":"{@dice 1d12}","dc":14}},{"name":"Rowboat","source":"GMG","page":179,"level":0,"size":"Medium","price":{"coin":"gp","amount":15},"space":{"long":{"number":10,"unit":"feet"},"wide":{"number":5,"unit":"feet"},"high":{"number":3,"unit":"feet"}},"crew":[{"type":"pilot","number":1}],"passengers":2,"pilotingCheck":[{"skill":"Athletics","dc":16},{"skill":"Sailing Lore","dc":14}],"defenses":{"ac":{"default":10},"savingThrows":{"fort":6},"hardness":{"default":5},"hp":{"default":16},"bt":{"default":8},"immunities":["critical hits","object immunities","precision damage"]},"speed":{"type":"swim","speed":20,"note":"rowed"},"collision":{"damage":"{@dice 2d4}","dc":14},"abilities":[{"name":"Portaged","entries":["The rowboat can be carried overland by 2 Medium creatures or 1 Large creature. Those creatures are {@condition encumbered} when doing so."]}]},{"name":"Sailing Ship","source":"GMG","page":179,"level":9,"size":"Gargantuan","price":{"coin":"gp","amount":2000},"space":{"long":{"number":75,"unit":"feet"},"wide":{"number":20,"unit":"feet"},"high":{"number":25,"unit":"feet"}},"crew":[{"type":"pilot","number":1},{"type":"crew","number":8}],"passengers":10,"pilotingCheck":[{"skill":"Driving Lore","dc":26},{"skill":"Diplomacy","dc":28},{"skill":"Intimidation","dc":28}],"defenses":{"ac":{"default":23},"savingThrows":{"fort":18},"hardness":{"default":15},"hp":{"default":150},"bt":{"default":75},"immunities":["critical hits","object immunities","precision damage"],"weaknesses":[{"name":"fire","amount":15,"note":"until broken"}]},"speed":{"type":"swim","speed":40,"note":"wind"},"collision":{"damage":"{@dice 6d10}","dc":26},"abilities":[{"name":"Sluggish","entries":["This vehicle must move twice its length for each 90-degree turn it makes."]}]},{"name":"Sleigh","source":"GMG","page":179,"level":1,"size":"Large","price":{"coin":"gp","amount":50},"space":{"long":{"number":10,"unit":"feet"},"wide":{"number":5,"unit":"feet"},"high":{"number":4,"unit":"feet"}},"crew":[{"type":"pilot","number":1}],"passengers":1,"pilotingCheck":[{"skill":"Driving Lore","dc":15},{"skill":"Nature","dc":17,"entry":"{@skill Nature} (DC 17 to DC 25, depending on pulling creature)"}],"defenses":{"ac":{"default":11},"savingThrows":{"fort":7},"hardness":{"default":5},"hp":{"default":18},"bt":{"default":9},"immunities":["critical hits","object immunities","precision damage"]},"speed":{"type":"special","entry":"the speed of the slowest pulling creature (pulled by 2 Large creatures or 6 Medium creatures)"},"collision":{"damage":"{@dice 2d6}","dc":15},"abilities":[{"name":"Ice Traverser","entries":["Ice and snow are not {@quickref difficult terrain||3|terrain} to a sleigh, but all other terrains are {@quickref difficult terrain||3|terrain} for it."]},{"name":"Sluggish","entries":["This vehicle must move twice its length for each 90-degree turn it makes."]}]},{"name":"Steam Giant","source":"GMG","page":179,"level":14,"traits":["rare"],"size":"Huge","price":{"coin":"gp","amount":12500},"space":{"long":{"number":20,"unit":"feet"},"wide":{"number":20,"unit":"feet"},"high":{"number":25,"unit":"feet"}},"crew":[{"type":"pilot","number":1},{"type":"crew","number":3}],"passengers":4,"pilotingCheck":[{"skill":"Driving Lore","dc":32},{"skill":"Crafting","dc":34}],"defenses":{"ac":{"default":33},"savingThrows":{"fort":28},"hardness":{"default":20},"hp":{"default":200},"bt":{"default":100},"immunities":["critical hits","object immunities","precision damage"]},"speed":{"type":"walk","speed":20,"traits":["alchemical"]},"collision":{"damage":"{@dice 10d10}","dc":29},"abilities":[{"name":"Flame Jet","activity":{"number":3,"unit":"action"},"traits":["fire"],"entries":["Two crew members each perform a 3-action activity on their turn to produce a gout of flames that erupts at the end of the second character's turn from any corner of any space the steam giant occupies. The flames deal {@damage 6d8} fire damage to each creature in a 30-foot cone (DC 32 basic Reflex save). The flame jet stops working if the steam giant is broken."]}]},{"name":"Helepolis","source":"G&g","page":77,"level":16,"traits":["rare"],"size":"Gargantuan","price":{"coin":"gp","amount":30000},"space":{"long":{"number":65,"unit":"feet"},"wide":{"number":65,"unit":"feet"},"high":{"number":130,"unit":"feet"}},"crew":[{"type":"pilot","number":1},{"type":"turners","number":200},{"type":"pushers","number":3000}],"passengers":306,"pilotingCheck":[{"skill":"Diplomacy","dc":37},{"skill":"Intimidation","dc":37},{"skill":"Warfare Lore","dc":35}],"defenses":{"ac":{"default":34},"savingThrows":{"fort":28},"hardness":{"default":20},"hp":{"default":240},"bt":{"default":120},"immunities":["object immunities"]},"speed":{"type":"walk","speed":10,"note":"pushed, turned"},"collision":{"damage":"{@dice 8d10}","dc":32},"abilities":[{"name":"Sluggish","entries":["This vehicle must move twice its length for each 90-degree turn it makes."]},{"name":"Tiered","entries":["A helepolis has six levels. The crew operate at the bottom tier, turning a giant capstan. There's room remaining on that tier for up to six passengers (enough for a full heavy ballista siege crew; see Weaponry). Each of the remaining five levels carries up to 60 passengers. The tiers are specifically meant to be protective and give those within the helepolis {@quickref greater cover||3|cover} (or @quickref standard cover||3|cover} if the helepolis is {@condition broken}). A massive ladder runs diagonally through the center of the helepolis, from the front of the top tier to the rear of the bottom tier. The ladder is wide enough for two crew or passengers to climb simultaneously."]},{"name":"Weaponry","entries":["The siege tower is loaded to the brim with siege weapons—typically bristling with {@item heavy ballista|G&G|heavy ballistas} on its first and second tiers and ballistas on its third, fourth, and fifth. The Price of these weapons is included in that of the helepolis. When building a helepolis, you can choose to replace any of these with other siege weapons with a lower Price. If you want a more expensive siege weapon, you must {@action Craft} it separately. Because of the helepolis's structure, any siege weapon in it must launch its payload straight ahead. For instance, a {@item ballista|G&G} or {@item springald|G&G} could function in a helepolis, but not a {@item catapult|G&G} or {@item trebuchet|G&G}. Passengers of the helepolis can crew these siege weapons."]}]},{"name":"Wagon","source":"GMG","page":179,"level":1,"size":"Large","price":{"coin":"gp","amount":25},"space":{"long":{"number":10,"unit":"feet"},"wide":{"number":10,"unit":"feet"},"high":{"number":7,"unit":"feet"}},"crew":[{"type":"pilot","number":1}],"passengers":2,"pilotingCheck":[{"skill":"Driving Lore","dc":15},{"skill":"Nature","dc":17,"entry":"{@skill Nature} (DC 17 to DC 25, depending on pulling creature)"}],"defenses":{"ac":{"default":11},"savingThrows":{"fort":7},"hardness":{"default":5},"hp":{"default":18},"bt":{"default":9},"immunities":["critical hits","object immunities","precision damage"]},"speed":{"type":"special","entry":"the speed of the slowest pulling creature (pulled by 2 Large creatures)"},"collision":{"damage":"{@dice 2d6}","dc":15}}]}
+{
+	"vehicle": [
+		{
+			"name": "Airship",
+			"source": "GMG",
+			"page": 177,
+			"level": 12,
+			"traits": [
+				"rare"
+			],
+			"size": "Gargantuan",
+			"price": {
+				"coin": "gp",
+				"amount": 6000
+			},
+			"space": {
+				"long": {
+					"number": 90,
+					"unit": "feet"
+				},
+				"wide": {
+					"number": 30,
+					"unit": "feet"
+				},
+				"high": {
+					"number": 60,
+					"unit": "feet"
+				}
+			},
+			"crew": [
+				{
+					"type": "pilot",
+					"number": 1
+				},
+				{
+					"type": "crew",
+					"number": 5,
+					"entry": "other crew"
+				}
+			],
+			"passengers": 15,
+			"pilotingCheck": [
+				{
+					"skill": "Arcana",
+					"dc": 32
+				},
+				{
+					"skill": "Crafting",
+					"dc": 32
+				},
+				{
+					"skill": "Nature",
+					"dc": 32
+				},
+				{
+					"skill": "Pilot Lore",
+					"dc": 30
+				}
+			],
+			"defenses": {
+				"ac": {
+					"default": 28
+				},
+				"savingThrows": {
+					"fort": 22
+				},
+				"hardness": {
+					"default": 20
+				},
+				"hp": {
+					"default": 210
+				},
+				"bt": {
+					"default": 105
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				],
+				"weaknesses": [
+					{
+						"name": "fire",
+						"amount": 15,
+						"note": "until broken"
+					}
+				]
+			},
+			"speed": {
+				"type": "fly",
+				"speed": 50,
+				"traits": [
+					"alchemical",
+					"magical"
+				]
+			},
+			"collision": {
+				"damage": "{@dice 9d10}",
+				"dc": 30
+			},
+			"abilities": [
+				{
+					"name": "Sluggish",
+					"entries": [
+						"This vehicle must move twice its length for each 90-degree turn it makes."
+					]
+				}
+			]
+		},
+		{
+			"name": "Carriage",
+			"source": "GMG",
+			"page": 178,
+			"level": 2,
+			"size": "Large",
+			"price": {
+				"coin": "gp",
+				"amount": 50
+			},
+			"space": {
+				"long": {
+					"number": 10,
+					"unit": "feet"
+				},
+				"wide": {
+					"number": 10,
+					"unit": "feet"
+				},
+				"high": {
+					"number": 7,
+					"unit": "feet"
+				}
+			},
+			"crew": [
+				{
+					"type": "pilot",
+					"number": 1
+				}
+			],
+			"passengers": 2,
+			"pilotingCheck": [
+				{
+					"skill": "Driving Lore",
+					"dc": 16
+				},
+				{
+					"skill": "Nature",
+					"dc": 18,
+					"entry": "{@skill Nature} (DC 18 to DC 26, depending on pulling creature)"
+				}
+			],
+			"defenses": {
+				"ac": {
+					"default": 13
+				},
+				"savingThrows": {
+					"fort": 8
+				},
+				"hardness": {
+					"default": 5
+				},
+				"hp": {
+					"default": 40
+				},
+				"bt": {
+					"default": 20
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				]
+			},
+			"speed": {
+				"type": "special",
+				"entry": "the speed of the slowest pulling creature (pulled by 2 Large creatures)"
+			},
+			"collision": {
+				"damage": "{@dice 2d8}",
+				"dc": 16
+			}
+		},
+		{
+			"name": "Cart",
+			"source": "GMG",
+			"page": 178,
+			"level": 0,
+			"size": "Large",
+			"price": {
+				"coin": "gp",
+				"amount": 3
+			},
+			"space": {
+				"long": {
+					"number": 10,
+					"unit": "feet"
+				},
+				"wide": {
+					"number": 5,
+					"unit": "feet"
+				},
+				"high": {
+					"number": 4,
+					"unit": "feet"
+				}
+			},
+			"crew": [
+				{
+					"type": "pilot",
+					"number": 1
+				}
+			],
+			"passengers": 1,
+			"pilotingCheck": [
+				{
+					"skill": "Driving Lore",
+					"dc": 14
+				},
+				{
+					"skill": "Nature",
+					"dc": 16,
+					"entry": "{@skill Nature} (DC 16 to DC 24, depending on pulling creature)"
+				}
+			],
+			"defenses": {
+				"ac": {
+					"default": 10
+				},
+				"savingThrows": {
+					"fort": 6
+				},
+				"hardness": {
+					"default": 4
+				},
+				"hp": {
+					"default": 14
+				},
+				"bt": {
+					"default": 7
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				]
+			},
+			"speed": {
+				"type": "special",
+				"entry": "the Speed of the slowest pulling creature (pulled by 1 Large creature)"
+			},
+			"collision": {
+				"damage": "{@dice 1d10}",
+				"dc": 14
+			}
+		},
+		{
+			"name": "Galley",
+			"source": "GMG",
+			"page": 178,
+			"level": 10,
+			"size": "Gargantuan",
+			"price": {
+				"coin": "gp",
+				"amount": 3000
+			},
+			"space": {
+				"long": {
+					"number": 130,
+					"unit": "feet"
+				},
+				"wide": {
+					"number": 20,
+					"unit": "feet"
+				},
+				"high": {
+					"number": 25,
+					"unit": "feet"
+				}
+			},
+			"crew": [
+				{
+					"type": "pilot",
+					"number": 1
+				},
+				{
+					"type": "rower",
+					"number": 20,
+					"entry": "rowers"
+				}
+			],
+			"passengers": 6,
+			"pilotingCheck": [
+				{
+					"skill": "Sailing Lore",
+					"dc": 27
+				},
+				{
+					"skill": "Diplomacy",
+					"dc": 29
+				},
+				{
+					"skill": "Intimidation",
+					"dc": 29
+				}
+			],
+			"defenses": {
+				"ac": {
+					"default": 25
+				},
+				"savingThrows": {
+					"fort": 19
+				},
+				"hardness": {
+					"default": 15
+				},
+				"hp": {
+					"default": 170
+				},
+				"bt": {
+					"default": 85
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				],
+				"weaknesses": [
+					{
+						"name": "fire",
+						"amount": 15,
+						"note": "until broken"
+					}
+				]
+			},
+			"speed": {
+				"type": "swim",
+				"speed": 30,
+				"note": "rowed, wind"
+			},
+			"collision": {
+				"damage": "{@dice 7d10}",
+				"dc": 27
+			},
+			"abilities": [
+				{
+					"name": "Maneuverable",
+					"entries": [
+						"With a full complement of skilled rowers, a rowed galley can turn swiftly, turn in place, and even row backwards. Each 90-degree turn made in less than a vehicle length costs 5 extra feet of movement. It can row backwards no faster than half its speed, and it can't turn while rowing backwards."
+					]
+				}
+			]
+		},
+		{
+			"name": "Glider",
+			"source": "GMG",
+			"page": 178,
+			"level": 0,
+			"traits": [
+				"uncommon"
+			],
+			"size": "Large",
+			"price": {
+				"coin": "gp",
+				"amount": 15
+			},
+			"space": {
+				"long": {
+					"number": 5,
+					"unit": "feet"
+				},
+				"wide": {
+					"number": 10,
+					"unit": "feet"
+				},
+				"high": {
+					"number": 2,
+					"unit": "feet"
+				}
+			},
+			"crew": [
+				{
+					"type": "pilot",
+					"number": 1
+				}
+			],
+			"passengers": 1,
+			"pilotingCheck": [
+				{
+					"skill": "Driving Lore",
+					"dc": 14
+				},
+				{
+					"skill": "Nature",
+					"dc": 16
+				}
+			],
+			"defenses": {
+				"ac": {
+					"default": 10
+				},
+				"savingThrows": {
+					"fort": 6
+				},
+				"hardness": {
+					"default": 0
+				},
+				"hp": {
+					"default": 16
+				},
+				"bt": {
+					"default": 8
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				],
+				"weaknesses": [
+					{
+						"amount": 5,
+						"name": "fire"
+					}
+				]
+			},
+			"speed": {
+				"type": "fly",
+				"speed": 25,
+				"note": "wind"
+			},
+			"collision": {
+				"damage": "{@dice 2d4}",
+				"dc": 14
+			},
+			"abilities": [
+				{
+					"name": "Starting Drop",
+					"entries": [
+						"The only way to launch a glider is to jump off a steep incline with favorable wind conditions. The glider is uncontrolled and falls 60 feet each round until the pilot successfully Takes Control. If the glider hits the ground before the pilot successfully Takes Control, the pilot and the glider each take falling damage."
+					]
+				}
+			]
+		},
+		{
+			"name": "Heavy Chariot",
+			"source": "GMG",
+			"page": 178,
+			"level": 3,
+			"size": "Large",
+			"price": {
+				"coin": "gp",
+				"amount": 150
+			},
+			"space": {
+				"long": {
+					"number": 10,
+					"unit": "feet"
+				},
+				"wide": {
+					"number": 10,
+					"unit": "feet"
+				},
+				"high": {
+					"number": 4,
+					"unit": "feet"
+				}
+			},
+			"crew": [
+				{
+					"type": "pilot",
+					"number": 1
+				}
+			],
+			"passengers": 3,
+			"pilotingCheck": [
+				{
+					"skill": "Driving Lore",
+					"dc": 18
+				},
+				{
+					"skill": "Nature",
+					"dc": 20,
+					"entry": "{@skill Nature} (DC 20 to DC 28, depending on pulling creature)"
+				}
+			],
+			"defenses": {
+				"ac": {
+					"default": 14
+				},
+				"savingThrows": {
+					"fort": 9
+				},
+				"hardness": {
+					"default": 5
+				},
+				"hp": {
+					"default": 40
+				},
+				"bt": {
+					"default": 20
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				]
+			},
+			"speed": {
+				"type": "special",
+				"entry": "the speed of the slowest pulling creature (pulled by 2 Large creatures)"
+			},
+			"collision": {
+				"damage": "{@dice 2d10}",
+				"dc": 18
+			}
+		},
+		{
+			"name": "Light Chariot",
+			"source": "GMG",
+			"page": 178,
+			"level": 0,
+			"size": "Large",
+			"price": {
+				"coin": "gp",
+				"amount": 10
+			},
+			"space": {
+				"long": {
+					"number": 5,
+					"unit": "feet"
+				},
+				"wide": {
+					"number": 5,
+					"unit": "feet"
+				},
+				"high": {
+					"number": 4,
+					"unit": "feet"
+				}
+			},
+			"crew": [
+				{
+					"type": "pilot",
+					"number": 1
+				}
+			],
+			"passengers": 1,
+			"pilotingCheck": [
+				{
+					"skill": "Driving Lore",
+					"dc": 14
+				},
+				{
+					"skill": "Nature",
+					"dc": 16,
+					"entry": "{@skill Nature} (DC 16 to DC 24, depending on pulling creature)"
+				}
+			],
+			"defenses": {
+				"ac": {
+					"default": 10
+				},
+				"savingThrows": {
+					"fort": 6
+				},
+				"hardness": {
+					"default": 5
+				},
+				"hp": {
+					"default": 14
+				},
+				"bt": {
+					"default": 7
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				]
+			},
+			"speed": {
+				"type": "special",
+				"entry": "the Speed of the slowest pulling creature (pulled by 1 Large creature)"
+			},
+			"collision": {
+				"damage": "{@dice 1d12}",
+				"dc": 14
+			}
+		},
+		{
+			"name": "Rowboat",
+			"source": "GMG",
+			"page": 179,
+			"level": 0,
+			"size": "Medium",
+			"price": {
+				"coin": "gp",
+				"amount": 15
+			},
+			"space": {
+				"long": {
+					"number": 10,
+					"unit": "feet"
+				},
+				"wide": {
+					"number": 5,
+					"unit": "feet"
+				},
+				"high": {
+					"number": 3,
+					"unit": "feet"
+				}
+			},
+			"crew": [
+				{
+					"type": "pilot",
+					"number": 1
+				}
+			],
+			"passengers": 2,
+			"pilotingCheck": [
+				{
+					"skill": "Athletics",
+					"dc": 16
+				},
+				{
+					"skill": "Sailing Lore",
+					"dc": 14
+				}
+			],
+			"defenses": {
+				"ac": {
+					"default": 10
+				},
+				"savingThrows": {
+					"fort": 6
+				},
+				"hardness": {
+					"default": 5
+				},
+				"hp": {
+					"default": 16
+				},
+				"bt": {
+					"default": 8
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				]
+			},
+			"speed": {
+				"type": "swim",
+				"speed": 20,
+				"note": "rowed"
+			},
+			"collision": {
+				"damage": "{@dice 2d4}",
+				"dc": 14
+			},
+			"abilities": [
+				{
+					"name": "Portaged",
+					"entries": [
+						"The rowboat can be carried overland by 2 Medium creatures or 1 Large creature. Those creatures are {@condition encumbered} when doing so."
+					]
+				}
+			]
+		},
+		{
+			"name": "Sailing Ship",
+			"source": "GMG",
+			"page": 179,
+			"level": 9,
+			"size": "Gargantuan",
+			"price": {
+				"coin": "gp",
+				"amount": 2000
+			},
+			"space": {
+				"long": {
+					"number": 75,
+					"unit": "feet"
+				},
+				"wide": {
+					"number": 20,
+					"unit": "feet"
+				},
+				"high": {
+					"number": 25,
+					"unit": "feet"
+				}
+			},
+			"crew": [
+				{
+					"type": "pilot",
+					"number": 1
+				},
+				{
+					"type": "crew",
+					"number": 8
+				}
+			],
+			"passengers": 10,
+			"pilotingCheck": [
+				{
+					"skill": "Driving Lore",
+					"dc": 26
+				},
+				{
+					"skill": "Diplomacy",
+					"dc": 28
+				},
+				{
+					"skill": "Intimidation",
+					"dc": 28
+				}
+			],
+			"defenses": {
+				"ac": {
+					"default": 23
+				},
+				"savingThrows": {
+					"fort": 18
+				},
+				"hardness": {
+					"default": 15
+				},
+				"hp": {
+					"default": 150
+				},
+				"bt": {
+					"default": 75
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				],
+				"weaknesses": [
+					{
+						"name": "fire",
+						"amount": 15,
+						"note": "until broken"
+					}
+				]
+			},
+			"speed": {
+				"type": "swim",
+				"speed": 40,
+				"note": "wind"
+			},
+			"collision": {
+				"damage": "{@dice 6d10}",
+				"dc": 26
+			},
+			"abilities": [
+				{
+					"name": "Sluggish",
+					"entries": [
+						"This vehicle must move twice its length for each 90-degree turn it makes."
+					]
+				}
+			]
+		},
+		{
+			"name": "Sleigh",
+			"source": "GMG",
+			"page": 179,
+			"level": 1,
+			"size": "Large",
+			"price": {
+				"coin": "gp",
+				"amount": 50
+			},
+			"space": {
+				"long": {
+					"number": 10,
+					"unit": "feet"
+				},
+				"wide": {
+					"number": 5,
+					"unit": "feet"
+				},
+				"high": {
+					"number": 4,
+					"unit": "feet"
+				}
+			},
+			"crew": [
+				{
+					"type": "pilot",
+					"number": 1
+				}
+			],
+			"passengers": 1,
+			"pilotingCheck": [
+				{
+					"skill": "Driving Lore",
+					"dc": 15
+				},
+				{
+					"skill": "Nature",
+					"dc": 17,
+					"entry": "{@skill Nature} (DC 17 to DC 25, depending on pulling creature)"
+				}
+			],
+			"defenses": {
+				"ac": {
+					"default": 11
+				},
+				"savingThrows": {
+					"fort": 7
+				},
+				"hardness": {
+					"default": 5
+				},
+				"hp": {
+					"default": 18
+				},
+				"bt": {
+					"default": 9
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				]
+			},
+			"speed": {
+				"type": "special",
+				"entry": "the speed of the slowest pulling creature (pulled by 2 Large creatures or 6 Medium creatures)"
+			},
+			"collision": {
+				"damage": "{@dice 2d6}",
+				"dc": 15
+			},
+			"abilities": [
+				{
+					"name": "Ice Traverser",
+					"entries": [
+						"Ice and snow are not {@quickref difficult terrain||3|terrain} to a sleigh, but all other terrains are {@quickref difficult terrain||3|terrain} for it."
+					]
+				},
+				{
+					"name": "Sluggish",
+					"entries": [
+						"This vehicle must move twice its length for each 90-degree turn it makes."
+					]
+				}
+			]
+		},
+		{
+			"name": "Steam Giant",
+			"source": "GMG",
+			"page": 179,
+			"level": 14,
+			"traits": [
+				"rare"
+			],
+			"size": "Huge",
+			"price": {
+				"coin": "gp",
+				"amount": 12500
+			},
+			"space": {
+				"long": {
+					"number": 20,
+					"unit": "feet"
+				},
+				"wide": {
+					"number": 20,
+					"unit": "feet"
+				},
+				"high": {
+					"number": 25,
+					"unit": "feet"
+				}
+			},
+			"crew": [
+				{
+					"type": "pilot",
+					"number": 1
+				},
+				{
+					"type": "crew",
+					"number": 3
+				}
+			],
+			"passengers": 4,
+			"pilotingCheck": [
+				{
+					"skill": "Driving Lore",
+					"dc": 32
+				},
+				{
+					"skill": "Crafting",
+					"dc": 34
+				}
+			],
+			"defenses": {
+				"ac": {
+					"default": 33
+				},
+				"savingThrows": {
+					"fort": 28
+				},
+				"hardness": {
+					"default": 20
+				},
+				"hp": {
+					"default": 200
+				},
+				"bt": {
+					"default": 100
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				]
+			},
+			"speed": {
+				"type": "walk",
+				"speed": 20,
+				"traits": [
+					"alchemical"
+				]
+			},
+			"collision": {
+				"damage": "{@dice 10d10}",
+				"dc": 29
+			},
+			"abilities": [
+				{
+					"name": "Flame Jet",
+					"activity": {
+						"number": 3,
+						"unit": "action"
+					},
+					"traits": [
+						"fire"
+					],
+					"entries": [
+						"Two crew members each perform a 3-action activity on their turn to produce a gout of flames that erupts at the end of the second character's turn from any corner of any space the steam giant occupies. The flames deal {@damage 6d8} fire damage to each creature in a 30-foot cone (DC 32 basic Reflex save). The flame jet stops working if the steam giant is broken."
+					]
+				}
+			]
+		},
+		{
+			"name": "Helepolis",
+			"source": "G&g",
+			"page": 77,
+			"level": 16,
+			"traits": [
+				"rare"
+			],
+			"size": "Gargantuan",
+			"price": {
+				"coin": "gp",
+				"amount": 30000
+			},
+			"space": {
+				"long": {
+					"number": 65,
+					"unit": "feet"
+				},
+				"wide": {
+					"number": 65,
+					"unit": "feet"
+				},
+				"high": {
+					"number": 130,
+					"unit": "feet"
+				}
+			},
+			"crew": [
+				{
+					"type": "pilot",
+					"number": 1
+				},
+				{
+					"type": "turners",
+					"number": 200
+				},
+				{
+					"type": "pushers",
+					"number": 3000
+				}
+			],
+			"passengers": 306,
+			"pilotingCheck": [
+				{
+					"skill": "Diplomacy",
+					"dc": 37
+				},
+				{
+					"skill": "Intimidation",
+					"dc": 37
+				},
+				{
+					"skill": "Warfare Lore",
+					"dc": 35
+				}
+			],
+			"defenses": {
+				"ac": {
+					"default": 34
+				},
+				"savingThrows": {
+					"fort": 28
+				},
+				"hardness": {
+					"default": 20
+				},
+				"hp": {
+					"default": 240
+				},
+				"bt": {
+					"default": 120
+				},
+				"immunities": [
+					"object immunities"
+				]
+			},
+			"speed": {
+				"type": "walk",
+				"speed": 10,
+				"note": "pushed, turned"
+			},
+			"collision": {
+				"damage": "{@dice 8d10}",
+				"dc": 32
+			},
+			"abilities": [
+				{
+					"name": "Sluggish",
+					"entries": [
+						"This vehicle must move twice its length for each 90-degree turn it makes."
+					]
+				},
+				{
+					"name": "Tiered",
+					"entries": [
+						"A helepolis has six levels. The crew operate at the bottom tier, turning a giant capstan. There's room remaining on that tier for up to six passengers (enough for a full heavy ballista siege crew; see Weaponry). Each of the remaining five levels carries up to 60 passengers. The tiers are specifically meant to be protective and give those within the helepolis {@quickref greater cover||3|cover} (or @quickref standard cover||3|cover} if the helepolis is {@condition broken}). A massive ladder runs diagonally through the center of the helepolis, from the front of the top tier to the rear of the bottom tier. The ladder is wide enough for two crew or passengers to climb simultaneously."
+					]
+				},
+				{
+					"name": "Weaponry",
+					"entries": [
+						"The siege tower is loaded to the brim with siege weapons\u2014typically bristling with {@item heavy ballista|G&G|heavy ballistas} on its first and second tiers and ballistas on its third, fourth, and fifth. The Price of these weapons is included in that of the helepolis. When building a helepolis, you can choose to replace any of these with other siege weapons with a lower Price. If you want a more expensive siege weapon, you must {@action Craft} it separately. Because of the helepolis's structure, any siege weapon in it must launch its payload straight ahead. For instance, a {@item ballista|G&G} or {@item springald|G&G} could function in a helepolis, but not a {@item catapult|G&G} or {@item trebuchet|G&G}. Passengers of the helepolis can crew these siege weapons."
+					]
+				}
+			]
+		},
+		{
+			"name": "Wagon",
+			"source": "GMG",
+			"page": 179,
+			"level": 1,
+			"size": "Large",
+			"price": {
+				"coin": "gp",
+				"amount": 25
+			},
+			"space": {
+				"long": {
+					"number": 10,
+					"unit": "feet"
+				},
+				"wide": {
+					"number": 10,
+					"unit": "feet"
+				},
+				"high": {
+					"number": 7,
+					"unit": "feet"
+				}
+			},
+			"crew": [
+				{
+					"type": "pilot",
+					"number": 1
+				}
+			],
+			"passengers": 2,
+			"pilotingCheck": [
+				{
+					"skill": "Driving Lore",
+					"dc": 15
+				},
+				{
+					"skill": "Nature",
+					"dc": 17,
+					"entry": "{@skill Nature} (DC 17 to DC 25, depending on pulling creature)"
+				}
+			],
+			"defenses": {
+				"ac": {
+					"default": 11
+				},
+				"savingThrows": {
+					"fort": 7
+				},
+				"hardness": {
+					"default": 5
+				},
+				"hp": {
+					"default": 18
+				},
+				"bt": {
+					"default": 9
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				]
+			},
+			"speed": {
+				"type": "special",
+				"entry": "the speed of the slowest pulling creature (pulled by 2 Large creatures)"
+			},
+			"collision": {
+				"damage": "{@dice 2d6}",
+				"dc": 15
+			}
+		}
+	]
+}

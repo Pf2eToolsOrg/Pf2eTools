@@ -1,1 +1,179 @@
-{"item":[{"name":"Bonmuan Swapping Stone","source":"FRP1","page":75,"type":"Item","level":"11+","traits":["uncommon","conjuration","consumable","magical","teleportation"],"usage":"held in 1 hand","activate":{"activity":{"number":1,"unit":"action"},"components":["Interact"]},"category":"Consumable","entries":["This small, opalescent stone glows with a light that constantly shifts between colors. When you activate the stone, you throw it into a space within 100 feet. The stone then casts dimension door on you and transports you to itself. This destroys the stone.","You can instead hurl the stone at a creature in an attempt to bring that creature closer to you.","Make a ranged {@action Strike} against a creature using your highest proficiency with a ranged weapon. The swapping stone has a range increment of 15 feet. On a hit, the stone shatters against the creature, casting dimension door on the creature and causing it to instantly teleport to a space adjacent to you. An unwilling creature can resist this teleportation with a successful DC 28 Will save."],"generic":"G","variants":[{"type":"lesser swapping stone","level":11,"price":{"coin":"gp","amount":300},"entries":[]},{"type":"moderate swapping stone","level":14,"price":{"coin":"gp","amount":600},"entries":["The Will save DC is 31."]},{"type":"greater swapping stone","level":17,"price":{"coin":"gp","amount":3000},"entries":["The Will save DC is 37."]},{"type":"major swapping stone","level":20,"price":{"coin":"gp","amount":9000},"entries":["The Will save DC is 43."]}]},{"name":"Phoenix Fighting Fan","source":"FRP1","page":75,"type":"Item","level":20,"traits":["rare","artifact","conjuration","healing","magical"],"usage":"held in 1 hand","bulk":"L","category":"Artifact","entries":["This elegant silver {@runeItem fighting fan|LOGM|+3 weapon potency||greater striking||flaming|} features sharp silver feathers instead of traditional paper leaves in its design.",{"type":"ability","activity":{"number":3,"unit":"action"},"components":["command","envision","Interact"],"entries":["You call upon the fan's extradimensional powers to trap a creature in Hao Jin's repository, a small demiplane that holds the countless relics Hao Jin collected over her lifetime (though a trapped creature cannot interact with any of these relics). The fighting fan casts maze on a creature within 30 feet. The fan automatically Sustains the Spell as long as you {@action Strike} a creature with it each round.","The {@skill Survival} or {@skill Perception} DC to escape the demiplane is 34. The spell ends once the creature escapes, you fail to {@action Strike} a creature with the fan during a round, or after 1 minute, whichever comes first."]},{"type":"ability","activity":{"number":10,"unit":"minute","entry":"10 minutes"},"components":["(envision","Interact)"],"entries":["The fan casts 8th-level {@spell raise dead}, consuming the phoenix fighting fan in the process."]}]},{"name":"Phoenix Necklace","source":"FRP1","page":75,"type":"Item","level":20,"traits":["rare","artifact","healing","magical","necromancy"],"usage":"worn necklace","category":"Artifact","entries":["This brilliant jewelry is made from fine silver interwoven with a uniquely malleable form of ruby that causes the necklace to glimmer like a flickering fire. Hao Jin created the necklaces to mitigate the potential of death during the Ruby Phoenix Tournament pre-qualifier, and she specially attuned each phoenix necklace to the silver feathers she created for the pre-qualifying round. While the silver feathers themselves aren't magical, they are required to activate the necklace's power. Each team starts with 3 feathers {@condition hidden} in their headquarters; they acquire more through challenges and events.","Additionally, the tournament emissary's enforcers have the ability to deliver messages to the necklace's wearer at any time by casting sending, though the wearer can't respond.",{"type":"ability","activity":{"number":3,"unit":"action"},"components":["command","envision"],"entries":["You select any number of willing creatures you can see within 30 feet, including yourself. The selected creatures can make nonlethal attacks without taking a penalty to their attack rolls. This effect remains in place until you remove the necklace or use this activation again."]},{"type":"ability","activity":{"number":10,"unit":"minute","entry":"10 minutes (envision,"},"components":["Interact)"],"entries":["The necklace consumes one of the attached silver feathers and casts 7th-level {@spell raise dead}. Activating this ability is particularly costly and every activation requires consuming one more silver feather than the previous activation.","Destruction Once a phoenix necklace has 10 silver feathers attached, Hao Jin can transform the necklace into a phoenix fighting fan, a process which requires 3 {@action Interact} actions."]}]}]}
+{
+	"item": [
+		{
+			"name": "Bonmuan Swapping Stone",
+			"source": "FRP1",
+			"page": 75,
+			"type": "Item",
+			"level": "11+",
+			"traits": [
+				"uncommon",
+				"conjuration",
+				"consumable",
+				"magical",
+				"teleportation"
+			],
+			"usage": "held in 1 hand",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": [
+					"Interact"
+				]
+			},
+			"category": "Consumable",
+			"entries": [
+				"This small, opalescent stone glows with a light that constantly shifts between colors. When you activate the stone, you throw it into a space within 100 feet. The stone then casts dimension door on you and transports you to itself. This destroys the stone.",
+				"You can instead hurl the stone at a creature in an attempt to bring that creature closer to you.",
+				"Make a ranged {@action Strike} against a creature using your highest proficiency with a ranged weapon. The swapping stone has a range increment of 15 feet. On a hit, the stone shatters against the creature, casting dimension door on the creature and causing it to instantly teleport to a space adjacent to you. An unwilling creature can resist this teleportation with a successful DC 28 Will save."
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"type": "lesser swapping stone",
+					"level": 11,
+					"price": {
+						"coin": "gp",
+						"amount": 300
+					},
+					"entries": []
+				},
+				{
+					"type": "moderate swapping stone",
+					"level": 14,
+					"price": {
+						"coin": "gp",
+						"amount": 600
+					},
+					"entries": [
+						"The Will save DC is 31."
+					]
+				},
+				{
+					"type": "greater swapping stone",
+					"level": 17,
+					"price": {
+						"coin": "gp",
+						"amount": 3000
+					},
+					"entries": [
+						"The Will save DC is 37."
+					]
+				},
+				{
+					"type": "major swapping stone",
+					"level": 20,
+					"price": {
+						"coin": "gp",
+						"amount": 9000
+					},
+					"entries": [
+						"The Will save DC is 43."
+					]
+				}
+			]
+		},
+		{
+			"name": "Phoenix Fighting Fan",
+			"source": "FRP1",
+			"page": 75,
+			"type": "Item",
+			"level": 20,
+			"traits": [
+				"rare",
+				"artifact",
+				"conjuration",
+				"healing",
+				"magical"
+			],
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"category": "Artifact",
+			"entries": [
+				"This elegant silver {@runeItem fighting fan|LOGM|+3 weapon potency||greater striking||flaming|} features sharp silver feathers instead of traditional paper leaves in its design.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 3,
+						"unit": "action"
+					},
+					"components": [
+						"command",
+						"envision",
+						"Interact"
+					],
+					"entries": [
+						"You call upon the fan's extradimensional powers to trap a creature in Hao Jin's repository, a small demiplane that holds the countless relics Hao Jin collected over her lifetime (though a trapped creature cannot interact with any of these relics). The fighting fan casts maze on a creature within 30 feet. The fan automatically Sustains the Spell as long as you {@action Strike} a creature with it each round.",
+						"The {@skill Survival} or {@skill Perception} DC to escape the demiplane is 34. The spell ends once the creature escapes, you fail to {@action Strike} a creature with the fan during a round, or after 1 minute, whichever comes first."
+					]
+				},
+				{
+					"type": "ability",
+					"activity": {
+						"number": 10,
+						"unit": "minute",
+						"entry": "10 minutes"
+					},
+					"components": [
+						"(envision",
+						"Interact)"
+					],
+					"entries": [
+						"The fan casts 8th-level {@spell raise dead}, consuming the phoenix fighting fan in the process."
+					]
+				}
+			]
+		},
+		{
+			"name": "Phoenix Necklace",
+			"source": "FRP1",
+			"page": 75,
+			"type": "Item",
+			"level": 20,
+			"traits": [
+				"rare",
+				"artifact",
+				"healing",
+				"magical",
+				"necromancy"
+			],
+			"usage": "worn necklace",
+			"category": "Artifact",
+			"entries": [
+				"This brilliant jewelry is made from fine silver interwoven with a uniquely malleable form of ruby that causes the necklace to glimmer like a flickering fire. Hao Jin created the necklaces to mitigate the potential of death during the Ruby Phoenix Tournament pre-qualifier, and she specially attuned each phoenix necklace to the silver feathers she created for the pre-qualifying round. While the silver feathers themselves aren't magical, they are required to activate the necklace's power. Each team starts with 3 feathers {@condition hidden} in their headquarters; they acquire more through challenges and events.",
+				"Additionally, the tournament emissary's enforcers have the ability to deliver messages to the necklace's wearer at any time by casting sending, though the wearer can't respond.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 3,
+						"unit": "action"
+					},
+					"components": [
+						"command",
+						"envision"
+					],
+					"entries": [
+						"You select any number of willing creatures you can see within 30 feet, including yourself. The selected creatures can make nonlethal attacks without taking a penalty to their attack rolls. This effect remains in place until you remove the necklace or use this activation again."
+					]
+				},
+				{
+					"type": "ability",
+					"activity": {
+						"number": 10,
+						"unit": "minute",
+						"entry": "10 minutes (envision,"
+					},
+					"components": [
+						"Interact)"
+					],
+					"entries": [
+						"The necklace consumes one of the attached silver feathers and casts 7th-level {@spell raise dead}. Activating this ability is particularly costly and every activation requires consuming one more silver feather than the previous activation.",
+						"Destruction Once a phoenix necklace has 10 silver feathers attached, Hao Jin can transform the necklace into a phoenix fighting fan, a process which requires 3 {@action Interact} actions."
+					]
+				}
+			]
+		}
+	]
+}

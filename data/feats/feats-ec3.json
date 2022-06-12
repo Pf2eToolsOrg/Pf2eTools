@@ -1,1 +1,428 @@
-{"feat":[{"name":"Accursed Clay Fist","source":"EC3","page":74,"level":10,"featType":{"archetype":["Golem Grafter"]},"traits":["archetype","curse"],"prerequisites":"{@feat Golem Grafter Dedication|EC3}, expert in unarmed attacks","entries":["You have replaced one of your forearms with one made of clay and infused with cursed arcane magic. When you make an unarmed {@action Strike} with your clay fist and hit, your target takes a –2 status penalty to saving throws against {@trait curse} effects for 1 hour."],"special":"The damage die for your clay fist is {@dice 1d8}, and it loses the {@trait agile} and {@trait finesse} traits of a typical fist."},{"name":"Axe Climber","source":"EC3","page":75,"level":4,"featType":{"archetype":["Turpin Rowe Lumberjack"]},"traits":["archetype"],"prerequisites":"{@feat Turpin Rowe Lumberjack Dedication|EC3}","entries":["When you are climbing a wooden surface and have a hatchet or battle axe in each hand, you have a climb Speed equal to half your normal Speed. You must still have both legs available to climb and can't use either of the axes in combat while climbing. This feat can also be used to climb a surface of ice if you have a light pick in each hand."]},{"name":"Axe Thrower","source":"EC3","page":75,"level":6,"featType":{"archetype":["Turpin Rowe Lumberjack"]},"traits":["archetype"],"prerequisites":"{@feat Turpin Rowe Lumberjack Dedication|EC3}","entries":["You have mastered the weight and balance of a variety of axes and can lob them with ease. Any one-handed axe weapon you wield has the {@trait thrown} trait with a range of 10 feet. For axes that already have the {@trait thrown} trait, the range increases by 10 feet. When you critically succeed at an attack roll with a thrown axe weapon, you apply the axe's critical specialization effect."]},{"name":"Dig Quickly","source":"EC3","page":72,"activity":{"number":2,"unit":"action"},"level":1,"traits":["manipulate","shoony"],"requirements":"You are standing on dirt, sand, snow, or similar particulate material.","entries":["Your hands work as effectively as shovels when you need to dig a quick hole.","You dig a shallow pit in the square you currently occupy, turning the square into difficult terrain (including for you). In addition, you also kick up a cloud of grit in a direction of your choice. The cloud extinguishes small, unattended, non-magical fires and helps smother the flames on burning creatures located within the cone; creatures in this cone that are taking {@condition persistent damage ||persistent fire damage} can immediately attempt an additional flat DC 15 check to end the {@condition persistent damage}."]},{"name":"Esteemed Visitor","source":"EC3","page":72,"level":1,"traits":["shoony"],"entries":["Your polite manners and natural ability to comfort others make it easy for you to break down cultural barriers and earn strangers' trust. While you are in a settlement, when you roll a critical failure on a {@skill Diplomacy} check to {@action Gather Information} or {@action Make an Impression}, you get a failure instead."]},{"name":"Golem Grafter Dedication","source":"EC3","page":74,"level":8,"featType":{"archetype":["Golem Grafter"]},"traits":["uncommon","archetype","dedication"],"prerequisites":"expert in {@skill Arcana} and {@skill Crafting}, or an ally with expert proficiency in those skills willing to augment you","entries":["Your flesh has been specially treated with the same arcane and alchemical processes used to toughen the skin of flesh golems. Increase your maximum Hit Points by an amount equal to your level. You gain resistance to physical damage (except adamantine) equal to your number of class feats from the golem grafter archetype."],"special":"You cannot select another dedication feat until you have gained two other feats from the golem grafter archetype.","leadsTo":["Accursed Clay Fist|EC3","Iron Lung|EC3","Legs Of Stone|EC3","Quicken Heartbeat|EC3"]},{"name":"Handy With Your Paws","source":"EC3","page":72,"level":1,"traits":["shoony"],"entries":["You gain a +1 circumstance bonus to {@skill Crafting} checks to {@action Repair} non-magical items, and you don't need a repair kit for such repairs as long as you have any amount of junk, spare parts, or debris at your disposal."]},{"name":"Improvisational Defender","source":"EC3","page":72,"level":1,"traits":["shoony"],"entries":["You are always prepared for fights that frequently disrupt seemingly peaceful times. When you use an improvised weapon or a shoddy weapon, you don't take the –2 item penalty to attack rolls."]},{"name":"Improvisational Warrior","source":"EC3","page":73,"level":9,"traits":["shoony"],"prerequisites":"Improvisational Defender","entries":["When you use an improvised weapon, you apply the critical specialization of a brawling weapon to it.","Depending on the shape and nature of the improvised weapon, your GM might determine another weapon group's critical specialization is more appropriate."]},{"name":"Iron Lung","source":"EC3","page":74,"level":14,"featType":{"archetype":["Golem Grafter"]},"traits":["archetype"],"prerequisites":"{@feat Golem Grafter Dedication|EC3}","entries":["Your lungs are infused with the resilience of iron. Treat the result of your save against an inhaled poison as one degree of success better than you rolled. Additionally, you gain the following ability.",{"type":"ability","name":"Exhale Poison","activity":{"number":2,"unit":"action"},"traits":["arcane","necromancy","poison"],"requirements":"You were within the area of an inhaled poison within the last minute","frequency":{"unit":"hour","freq":1},"entries":["You sharply exhale the poison that previously surrounded you in a 15-foot cone. Creatures in the area are affected by the poison; the poison's DC and effects are unchanged."]}]},{"name":"Legs Of Stone","source":"EC3","page":74,"level":12,"featType":{"archetype":["Golem Grafter"]},"traits":["archetype","prestige"],"prerequisites":"{@feat Golem Grafter Dedication|EC3}","entries":["You gain a +2 status bonus to your Fortitude and Reflex DCs against attempts to {@action Shove} or {@action Trip} you. You can {@action Shove} creatures even if you don't have a hand free. When you successfully {@action Shove} a foe, you can {@action Stride} away from your opponent (instead of toward it), but you must move the same distance in the opposite direction from where you Shoved it."]},{"name":"Log Roll","source":"EC3","page":75,"activity":{"number":1,"unit":"action"},"level":4,"featType":{"archetype":["Turpin Rowe Lumberjack"]},"traits":["archetype"],"prerequisites":"{@feat Turpin Rowe Lumberjack Dedication|EC3}","requirements":"You and an adjacent creature are both on a narrow surface or uneven ground and the other creature is {@condition flat-footed}.","entries":["You shuffle your feet to dislodge the surface beneath you or otherwise cause your opponent to become unsteady.","Attempt an {@skill Acrobatics} check against the adjacent creature's Reflex saving throw DC. On a success, the creature falls. On a critical failure, you fall."]},{"name":"Loyal Empath","source":"EC3","page":73,"level":5,"traits":["shoony"],"entries":["You have incredible empathy for your friends and family, and you have an innate timing for helping others in distress.","You can use the {@action Aid} reaction to grant a bonus to another creature's Will saving throw. As usual for {@action Aid}, you need to prepare by using an action on your turn to encourage the creature to bravely withstand the effect."]},{"name":"Practiced Paddler","source":"EC3","page":73,"level":5,"traits":["shoony"],"prerequisites":"paddler shoony","entries":["You're skilled at navigating bogs and marshes, even for a paddler shoony. You gain a swim Speed of 15 feet."]},{"name":"Quicken Heartbeat","source":"EC3","page":74,"activity":{"number":1,"unit":"action"},"level":10,"featType":{"archetype":["Golem Grafter"]},"traits":["archetype","prestige"],"prerequisites":"{@feat Golem Grafter Dedication|EC3}","frequency":{"unit":"turn","freq":1},"entries":["You've replaced your heart with one made of animated quicksilver and living adamantine. You reduce your {@condition slowed} condition by 1. Alternatively, if you are not {@condition slowed}, you are {@condition quickened|CRB|quickened 1} during your next turn, and can use your extra action to {@action Stride} or {@action Strike}."]},{"name":"Ravening's Desperation","source":"EC3","page":67,"level":1,"traits":["uncommon","general","skill"],"prerequisites":"trained in {@skill Lore||Zevgavizeb Lore}","entries":["Your study of the Beast of Gluttondark has taught you how to make do in the most trying of circumstances rather than succumb to weakness. As long as your current Hit Points are less than half your maximum Hit Points, you gain a +1 circumstance bonus to {@skill Survival} and {@skill Stealth} checks. If your current Hit Points are less than a quarter your maximum Hit Points, the circumstance bonus is +2 instead."]},{"name":"Scamper Underfoot","source":"EC3","page":72,"level":1,"traits":["shoony"],"entries":["You are used to ducking under foes and can scurry around the battlefield with ease. You gain a +1 circumstance bonus to {@skill Acrobatics} checks to {@action Tumble Through} the spaces of Medium or larger enemies, and the presence of an enemy doesn't make the squares difficult terrain."]},{"name":"Shoony Lore","source":"EC3","page":72,"level":1,"traits":["shoony"],"entries":["Growing up in shoony society, you learned the value of honesty, friendship, and hard work, even during trying times. You gain the trained proficiency rank in {@skill Diplomacy} and {@skill Survival}. If you would automatically become trained in one of those skills (from your background or class, for example), you instead become trained in a skill of your choice. You also become trained in {@skill Lore||Shoony Lore}."]},{"name":"Sodbuster","source":"EC3","page":73,"level":9,"traits":["shoony"],"prerequisites":"Dig Quickly","entries":["Years toiling in soil have made you an expert digger. You gain a burrow Speed of 10 feet through loose soil or dirt."]},{"name":"Steadfast Ally","source":"EC3","page":73,"level":13,"traits":["shoony"],"prerequisites":"Loyal Empath","entries":["Your presence alone is enough to provide your allies with emotional support. You can use the {@action Aid} reaction to grant a bonus to another creature's Will saving throw even when you haven't prepared to help."]},{"name":"Tough Tumbler","source":"EC3","page":73,"level":5,"traits":["shoony"],"prerequisites":"{@feat Scamper|APG} Underfoot","entries":["You've taken your share of licks while scurrying around the battlefield and know how to defend yourself against opportunistic attackers. Your movement ends only when you critically fail an {@skill Acrobatics} check to {@action Tumble Through} an enemy's space (or when you don't have enough Speed to move all the way through its space). You still trigger reactions on a failure to {@action Tumble Through}, but you gain a +1 circumstance bonus to AC against attacks that you trigger in this way."]},{"name":"Turpin Rowe Lumberjack Dedication","source":"EC3","page":75,"level":2,"featType":{"archetype":["Turpin Rowe Lumberjack"]},"traits":["uncommon","archetype","dedication"],"prerequisites":"trained in {@skill Survival}","access":"You must befriend at least one Turpin Rowe logger.","entries":["Your logging training has made you intimately familiar with all aspects of forestry, and you have trained extensively to reach around trees and utilize their bulk to your advantage. You become trained in {@skill Lore||Milling Lore} and {@skill Lore||Forest Lore}, or an expert if you were already trained. You can always {@action Take Cover} when you are within forest terrain to gain cover, even if you're not next to an obstacle you can {@action Take Cover} behind. In addition, any enemy who gains standard cover from a tree gains only lesser cover against your attacks (or only standard cover, if the enemy otherwise gains greater cover)."],"special":"You cannot select another dedication feat until you have gained two other feats from the Turpin Rowe lumberjack archetype.","leadsTo":["Axe Climber|EC3","Axe Thrower|EC3","Log Roll|EC3","Widen The Gap|EC3"]},{"name":"Unrivaled Builder","source":"EC3","page":73,"level":13,"traits":["shoony"],"prerequisites":"Handy with Your Paws","entries":["Building things is like solving a puzzle, and you know how to use anything at your disposal to get the job done. You gain {@spell creation} as a 5th-level innate primal spell. You must have an equivalent Bulk of material to create an item, such as wood or scrap metal to make a wheelbarrow. You can cast this spell once each day."]},{"name":"Widen The Gap","source":"EC3","page":75,"level":10,"featType":{"archetype":["Turpin Rowe Lumberjack"]},"traits":["archetype"],"prerequisites":"{@feat Turpin Rowe Lumberjack Dedication|EC3}","entries":["Once you have penetrated a foe's defenses, you can home in on the same spot to exploit your opponent's wound and deal some serious damage. The second time you hit and deal damage with a melee axe {@action Strike} to the same opponent or object during your turn, you ignore half of the opponent's or object's Hardness, if any. If you hit and deal damage with a melee axe {@action Strike} to the same opponent or object a third or fourth time during your turn, you ignore all of its Hardness, if any."]}]}
+{
+	"feat": [
+		{
+			"name": "Accursed Clay Fist",
+			"source": "EC3",
+			"page": 74,
+			"level": 10,
+			"featType": {
+				"archetype": [
+					"Golem Grafter"
+				]
+			},
+			"traits": [
+				"archetype",
+				"curse"
+			],
+			"prerequisites": "{@feat Golem Grafter Dedication|EC3}, expert in unarmed attacks",
+			"entries": [
+				"You have replaced one of your forearms with one made of clay and infused with cursed arcane magic. When you make an unarmed {@action Strike} with your clay fist and hit, your target takes a \u20132 status penalty to saving throws against {@trait curse} effects for 1 hour."
+			],
+			"special": "The damage die for your clay fist is {@dice 1d8}, and it loses the {@trait agile} and {@trait finesse} traits of a typical fist."
+		},
+		{
+			"name": "Axe Climber",
+			"source": "EC3",
+			"page": 75,
+			"level": 4,
+			"featType": {
+				"archetype": [
+					"Turpin Rowe Lumberjack"
+				]
+			},
+			"traits": [
+				"archetype"
+			],
+			"prerequisites": "{@feat Turpin Rowe Lumberjack Dedication|EC3}",
+			"entries": [
+				"When you are climbing a wooden surface and have a hatchet or battle axe in each hand, you have a climb Speed equal to half your normal Speed. You must still have both legs available to climb and can't use either of the axes in combat while climbing. This feat can also be used to climb a surface of ice if you have a light pick in each hand."
+			]
+		},
+		{
+			"name": "Axe Thrower",
+			"source": "EC3",
+			"page": 75,
+			"level": 6,
+			"featType": {
+				"archetype": [
+					"Turpin Rowe Lumberjack"
+				]
+			},
+			"traits": [
+				"archetype"
+			],
+			"prerequisites": "{@feat Turpin Rowe Lumberjack Dedication|EC3}",
+			"entries": [
+				"You have mastered the weight and balance of a variety of axes and can lob them with ease. Any one-handed axe weapon you wield has the {@trait thrown} trait with a range of 10 feet. For axes that already have the {@trait thrown} trait, the range increases by 10 feet. When you critically succeed at an attack roll with a thrown axe weapon, you apply the axe's critical specialization effect."
+			]
+		},
+		{
+			"name": "Dig Quickly",
+			"source": "EC3",
+			"page": 72,
+			"activity": {
+				"number": 2,
+				"unit": "action"
+			},
+			"level": 1,
+			"traits": [
+				"manipulate",
+				"shoony"
+			],
+			"requirements": "You are standing on dirt, sand, snow, or similar particulate material.",
+			"entries": [
+				"Your hands work as effectively as shovels when you need to dig a quick hole.",
+				"You dig a shallow pit in the square you currently occupy, turning the square into difficult terrain (including for you). In addition, you also kick up a cloud of grit in a direction of your choice. The cloud extinguishes small, unattended, non-magical fires and helps smother the flames on burning creatures located within the cone; creatures in this cone that are taking {@condition persistent damage ||persistent fire damage} can immediately attempt an additional flat DC 15 check to end the {@condition persistent damage}."
+			]
+		},
+		{
+			"name": "Esteemed Visitor",
+			"source": "EC3",
+			"page": 72,
+			"level": 1,
+			"traits": [
+				"shoony"
+			],
+			"entries": [
+				"Your polite manners and natural ability to comfort others make it easy for you to break down cultural barriers and earn strangers' trust. While you are in a settlement, when you roll a critical failure on a {@skill Diplomacy} check to {@action Gather Information} or {@action Make an Impression}, you get a failure instead."
+			]
+		},
+		{
+			"name": "Golem Grafter Dedication",
+			"source": "EC3",
+			"page": 74,
+			"level": 8,
+			"featType": {
+				"archetype": [
+					"Golem Grafter"
+				]
+			},
+			"traits": [
+				"uncommon",
+				"archetype",
+				"dedication"
+			],
+			"prerequisites": "expert in {@skill Arcana} and {@skill Crafting}, or an ally with expert proficiency in those skills willing to augment you",
+			"entries": [
+				"Your flesh has been specially treated with the same arcane and alchemical processes used to toughen the skin of flesh golems. Increase your maximum Hit Points by an amount equal to your level. You gain resistance to physical damage (except adamantine) equal to your number of class feats from the golem grafter archetype."
+			],
+			"special": "You cannot select another dedication feat until you have gained two other feats from the golem grafter archetype.",
+			"leadsTo": [
+				"Accursed Clay Fist|EC3",
+				"Iron Lung|EC3",
+				"Legs Of Stone|EC3",
+				"Quicken Heartbeat|EC3"
+			]
+		},
+		{
+			"name": "Handy With Your Paws",
+			"source": "EC3",
+			"page": 72,
+			"level": 1,
+			"traits": [
+				"shoony"
+			],
+			"entries": [
+				"You gain a +1 circumstance bonus to {@skill Crafting} checks to {@action Repair} non-magical items, and you don't need a repair kit for such repairs as long as you have any amount of junk, spare parts, or debris at your disposal."
+			]
+		},
+		{
+			"name": "Improvisational Defender",
+			"source": "EC3",
+			"page": 72,
+			"level": 1,
+			"traits": [
+				"shoony"
+			],
+			"entries": [
+				"You are always prepared for fights that frequently disrupt seemingly peaceful times. When you use an improvised weapon or a shoddy weapon, you don't take the \u20132 item penalty to attack rolls."
+			]
+		},
+		{
+			"name": "Improvisational Warrior",
+			"source": "EC3",
+			"page": 73,
+			"level": 9,
+			"traits": [
+				"shoony"
+			],
+			"prerequisites": "Improvisational Defender",
+			"entries": [
+				"When you use an improvised weapon, you apply the critical specialization of a brawling weapon to it.",
+				"Depending on the shape and nature of the improvised weapon, your GM might determine another weapon group's critical specialization is more appropriate."
+			]
+		},
+		{
+			"name": "Iron Lung",
+			"source": "EC3",
+			"page": 74,
+			"level": 14,
+			"featType": {
+				"archetype": [
+					"Golem Grafter"
+				]
+			},
+			"traits": [
+				"archetype"
+			],
+			"prerequisites": "{@feat Golem Grafter Dedication|EC3}",
+			"entries": [
+				"Your lungs are infused with the resilience of iron. Treat the result of your save against an inhaled poison as one degree of success better than you rolled. Additionally, you gain the following ability.",
+				{
+					"type": "ability",
+					"name": "Exhale Poison",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"traits": [
+						"arcane",
+						"necromancy",
+						"poison"
+					],
+					"requirements": "You were within the area of an inhaled poison within the last minute",
+					"frequency": {
+						"unit": "hour",
+						"freq": 1
+					},
+					"entries": [
+						"You sharply exhale the poison that previously surrounded you in a 15-foot cone. Creatures in the area are affected by the poison; the poison's DC and effects are unchanged."
+					]
+				}
+			]
+		},
+		{
+			"name": "Legs Of Stone",
+			"source": "EC3",
+			"page": 74,
+			"level": 12,
+			"featType": {
+				"archetype": [
+					"Golem Grafter"
+				]
+			},
+			"traits": [
+				"archetype",
+				"prestige"
+			],
+			"prerequisites": "{@feat Golem Grafter Dedication|EC3}",
+			"entries": [
+				"You gain a +2 status bonus to your Fortitude and Reflex DCs against attempts to {@action Shove} or {@action Trip} you. You can {@action Shove} creatures even if you don't have a hand free. When you successfully {@action Shove} a foe, you can {@action Stride} away from your opponent (instead of toward it), but you must move the same distance in the opposite direction from where you Shoved it."
+			]
+		},
+		{
+			"name": "Log Roll",
+			"source": "EC3",
+			"page": 75,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"level": 4,
+			"featType": {
+				"archetype": [
+					"Turpin Rowe Lumberjack"
+				]
+			},
+			"traits": [
+				"archetype"
+			],
+			"prerequisites": "{@feat Turpin Rowe Lumberjack Dedication|EC3}",
+			"requirements": "You and an adjacent creature are both on a narrow surface or uneven ground and the other creature is {@condition flat-footed}.",
+			"entries": [
+				"You shuffle your feet to dislodge the surface beneath you or otherwise cause your opponent to become unsteady.",
+				"Attempt an {@skill Acrobatics} check against the adjacent creature's Reflex saving throw DC. On a success, the creature falls. On a critical failure, you fall."
+			]
+		},
+		{
+			"name": "Loyal Empath",
+			"source": "EC3",
+			"page": 73,
+			"level": 5,
+			"traits": [
+				"shoony"
+			],
+			"entries": [
+				"You have incredible empathy for your friends and family, and you have an innate timing for helping others in distress.",
+				"You can use the {@action Aid} reaction to grant a bonus to another creature's Will saving throw. As usual for {@action Aid}, you need to prepare by using an action on your turn to encourage the creature to bravely withstand the effect."
+			]
+		},
+		{
+			"name": "Practiced Paddler",
+			"source": "EC3",
+			"page": 73,
+			"level": 5,
+			"traits": [
+				"shoony"
+			],
+			"prerequisites": "paddler shoony",
+			"entries": [
+				"You're skilled at navigating bogs and marshes, even for a paddler shoony. You gain a swim Speed of 15 feet."
+			]
+		},
+		{
+			"name": "Quicken Heartbeat",
+			"source": "EC3",
+			"page": 74,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"level": 10,
+			"featType": {
+				"archetype": [
+					"Golem Grafter"
+				]
+			},
+			"traits": [
+				"archetype",
+				"prestige"
+			],
+			"prerequisites": "{@feat Golem Grafter Dedication|EC3}",
+			"frequency": {
+				"unit": "turn",
+				"freq": 1
+			},
+			"entries": [
+				"You've replaced your heart with one made of animated quicksilver and living adamantine. You reduce your {@condition slowed} condition by 1. Alternatively, if you are not {@condition slowed}, you are {@condition quickened|CRB|quickened 1} during your next turn, and can use your extra action to {@action Stride} or {@action Strike}."
+			]
+		},
+		{
+			"name": "Ravening's Desperation",
+			"source": "EC3",
+			"page": 67,
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"general",
+				"skill"
+			],
+			"prerequisites": "trained in {@skill Lore||Zevgavizeb Lore}",
+			"entries": [
+				"Your study of the Beast of Gluttondark has taught you how to make do in the most trying of circumstances rather than succumb to weakness. As long as your current Hit Points are less than half your maximum Hit Points, you gain a +1 circumstance bonus to {@skill Survival} and {@skill Stealth} checks. If your current Hit Points are less than a quarter your maximum Hit Points, the circumstance bonus is +2 instead."
+			]
+		},
+		{
+			"name": "Scamper Underfoot",
+			"source": "EC3",
+			"page": 72,
+			"level": 1,
+			"traits": [
+				"shoony"
+			],
+			"entries": [
+				"You are used to ducking under foes and can scurry around the battlefield with ease. You gain a +1 circumstance bonus to {@skill Acrobatics} checks to {@action Tumble Through} the spaces of Medium or larger enemies, and the presence of an enemy doesn't make the squares difficult terrain."
+			]
+		},
+		{
+			"name": "Shoony Lore",
+			"source": "EC3",
+			"page": 72,
+			"level": 1,
+			"traits": [
+				"shoony"
+			],
+			"entries": [
+				"Growing up in shoony society, you learned the value of honesty, friendship, and hard work, even during trying times. You gain the trained proficiency rank in {@skill Diplomacy} and {@skill Survival}. If you would automatically become trained in one of those skills (from your background or class, for example), you instead become trained in a skill of your choice. You also become trained in {@skill Lore||Shoony Lore}."
+			]
+		},
+		{
+			"name": "Sodbuster",
+			"source": "EC3",
+			"page": 73,
+			"level": 9,
+			"traits": [
+				"shoony"
+			],
+			"prerequisites": "Dig Quickly",
+			"entries": [
+				"Years toiling in soil have made you an expert digger. You gain a burrow Speed of 10 feet through loose soil or dirt."
+			]
+		},
+		{
+			"name": "Steadfast Ally",
+			"source": "EC3",
+			"page": 73,
+			"level": 13,
+			"traits": [
+				"shoony"
+			],
+			"prerequisites": "Loyal Empath",
+			"entries": [
+				"Your presence alone is enough to provide your allies with emotional support. You can use the {@action Aid} reaction to grant a bonus to another creature's Will saving throw even when you haven't prepared to help."
+			]
+		},
+		{
+			"name": "Tough Tumbler",
+			"source": "EC3",
+			"page": 73,
+			"level": 5,
+			"traits": [
+				"shoony"
+			],
+			"prerequisites": "{@feat Scamper|APG} Underfoot",
+			"entries": [
+				"You've taken your share of licks while scurrying around the battlefield and know how to defend yourself against opportunistic attackers. Your movement ends only when you critically fail an {@skill Acrobatics} check to {@action Tumble Through} an enemy's space (or when you don't have enough Speed to move all the way through its space). You still trigger reactions on a failure to {@action Tumble Through}, but you gain a +1 circumstance bonus to AC against attacks that you trigger in this way."
+			]
+		},
+		{
+			"name": "Turpin Rowe Lumberjack Dedication",
+			"source": "EC3",
+			"page": 75,
+			"level": 2,
+			"featType": {
+				"archetype": [
+					"Turpin Rowe Lumberjack"
+				]
+			},
+			"traits": [
+				"uncommon",
+				"archetype",
+				"dedication"
+			],
+			"prerequisites": "trained in {@skill Survival}",
+			"access": "You must befriend at least one Turpin Rowe logger.",
+			"entries": [
+				"Your logging training has made you intimately familiar with all aspects of forestry, and you have trained extensively to reach around trees and utilize their bulk to your advantage. You become trained in {@skill Lore||Milling Lore} and {@skill Lore||Forest Lore}, or an expert if you were already trained. You can always {@action Take Cover} when you are within forest terrain to gain cover, even if you're not next to an obstacle you can {@action Take Cover} behind. In addition, any enemy who gains standard cover from a tree gains only lesser cover against your attacks (or only standard cover, if the enemy otherwise gains greater cover)."
+			],
+			"special": "You cannot select another dedication feat until you have gained two other feats from the Turpin Rowe lumberjack archetype.",
+			"leadsTo": [
+				"Axe Climber|EC3",
+				"Axe Thrower|EC3",
+				"Log Roll|EC3",
+				"Widen The Gap|EC3"
+			]
+		},
+		{
+			"name": "Unrivaled Builder",
+			"source": "EC3",
+			"page": 73,
+			"level": 13,
+			"traits": [
+				"shoony"
+			],
+			"prerequisites": "Handy with Your Paws",
+			"entries": [
+				"Building things is like solving a puzzle, and you know how to use anything at your disposal to get the job done. You gain {@spell creation} as a 5th-level innate primal spell. You must have an equivalent Bulk of material to create an item, such as wood or scrap metal to make a wheelbarrow. You can cast this spell once each day."
+			]
+		},
+		{
+			"name": "Widen The Gap",
+			"source": "EC3",
+			"page": 75,
+			"level": 10,
+			"featType": {
+				"archetype": [
+					"Turpin Rowe Lumberjack"
+				]
+			},
+			"traits": [
+				"archetype"
+			],
+			"prerequisites": "{@feat Turpin Rowe Lumberjack Dedication|EC3}",
+			"entries": [
+				"Once you have penetrated a foe's defenses, you can home in on the same spot to exploit your opponent's wound and deal some serious damage. The second time you hit and deal damage with a melee axe {@action Strike} to the same opponent or object during your turn, you ignore half of the opponent's or object's Hardness, if any. If you hit and deal damage with a melee axe {@action Strike} to the same opponent or object a third or fourth time during your turn, you ignore all of its Hardness, if any."
+			]
+		}
+	]
+}

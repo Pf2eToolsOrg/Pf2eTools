@@ -1,1 +1,1255 @@
-{"feat":[{"name":"Advanced Red Mantis Magic","source":"LOWG","page":71,"level":6,"featType":{"archetype":["Red Mantis Assassin"]},"traits":["archetype"],"prerequisites":"{@feat Basic Red Mantis Magic|LOWG}","entries":["Your Red Mantis magical training has improved. Add two 2nd-level spells to your Red Mantis assassin spellbook. You gain a 2nd-level spell slot that you can use to prepare a spell from your Red Mantis assassin spellbook.","At 8th level, add two 3rd-level spells to your Red Mantis assassin spellbook. You gain a 3rd-level spell slot that you can use to prepare a spell from your Red Mantis assassin spellbook.","At 10th level, add two 4th-level spells to your Red Mantis assassin spellbook. You gain a 4th-level spell slot that you can use to prepare a spell from your Red Mantis assassin spellbook."],"leadsTo":["Vernai Training|LOL"]},{"name":"Aldori Duelist Dedication","source":"LOWG","page":35,"level":2,"featType":{"archetype":["Aldori Duelist"]},"traits":["uncommon","archetype","dedication"],"prerequisites":"trained in {@item Aldori dueling sword|lowg|Aldori dueling swords}","access":"You are from the {@condition Broken} Lands region.","entries":["Your Aldori duelist training teaches you martial techniques and increases your dedication to the Aldori dueling sword. You become trained in your choice of {@skill Acrobatics} or {@skill Athletics} and in {@skill Lore||Dueling Lore}; if you were already trained, you become an expert instead.","Whenever your proficiency rank in any weapon increases to expert or beyond, you also gain that new proficiency rank with {@item Aldori dueling sword|lowg|Aldori dueling swords}. You gain access to {@item Aldori dueling sword|lowg|Aldori dueling swords}."],"special":"You cannot select another dedication feat until you have gained two other feats from the Aldori duelist archetype.","leadsTo":["Aldori Parry|LOWG","Aldori Riposte|LOWG","Duelist's Edge|LOWG","Saving Slash|LOWG","Unnerving Prowess|LOWG"]},{"name":"Aldori Parry","source":"LOWG","page":35,"activity":{"number":1,"unit":"action"},"level":4,"featType":{"archetype":["Aldori Duelist"]},"traits":["archetype"],"prerequisites":"{@feat Aldori Duelist Dedication|LOWG}","requirements":"You are wielding only an Aldori dueling sword and have your other hand or hands free.","entries":["You can parry attacks against you with your Aldori dueling sword. You gain a +2 circumstance bonus to AC until the start of your next turn as long as you continue to meet the requirement."],"leadsTo":["Aldori Riposte|LOWG"]},{"name":"Aldori Riposte","source":"LOWG","page":35,"activity":{"number":1,"unit":"varies","entry":"{@as R}]"},"level":6,"featType":{"archetype":["Aldori Duelist"]},"traits":["archetype"],"prerequisites":"{@feat Aldori Parry|LOWG}","trigger":"An opponent within your reach critically fails a {@action Strike} against you.","requirements":"You are benefiting from Aldori Parry.","entries":["You riposte with your Aldori dueling sword when your enemy leaves an opening. Make a melee {@action Strike} or use a {@action Disarm} action against the triggering opponent using your Aldori dueling sword."]},{"name":"Ardent Armiger","source":"LOWG","page":107,"level":4,"featType":{"archetype":["Hellknight Armiger"]},"traits":["archetype"],"prerequisites":"{@feat Hellknight Armiger Dedication|LOWG}","entries":["You have been trained to resist the manipulations of fiends, and your Hellknight discipline makes you difficult to influence. You gain a +1 circumstance bonus to saves against {@trait mental} effects that specifically improve your attitude and to your Will DC against someone Coercing you, Demoralizing you, {@action Make an Impression||Making an Impression} on you, or Making a {@action Request} of you.","If a {@trait mental} effect would compel you to act in a way that violates your Hellknight order's tenets (as determined by the GM), you can attempt to break free from the effect as a reaction triggered by receiving the violating order, and you gain a new Will save against the effect. You can attempt this new save only once for a given effect, even if you are compelled to violate your order's tenets multiple times."]},{"name":"Armiger's Mobility","source":"LOWG","page":107,"level":8,"featType":{"archetype":["Hellknight Armiger"]},"traits":["archetype"],"prerequisites":"expert in heavy armor, {@feat Hellknight Armiger Dedication|LOWG}","entries":["You've learned how best to move in heavy armor. When wearing heavy armor, if you meet the Strength requirement, instead of reducing the movement penalty by 5 feet, you reduce the penalty by 10 feet (typically reducing the penalty to 0). If you are a dwarf with the Unburdened Iron feat, increase your Speed by 5 feet."]},{"name":"Attunement To Stone","source":"LOWG","page":59,"level":10,"featType":{"archetype":["Living Monolith"]},"traits":["archetype"],"prerequisites":"{@feat Ka Stone Ritual|LOWG}","entries":["You become attuned to the stone around you. When in contact with a stone surface, you gain {@ability tremorsense} (imprecise) 5 feet along that surface, and you can activate your ka stone to cast {@spell meld into stone}."]},{"name":"Basic Red Mantis Magic","source":"LOWG","page":71,"level":4,"featType":{"archetype":["Red Mantis Assassin"]},"traits":["archetype"],"prerequisites":"trained in {@skill Religion}, {@feat Red Mantis Assassin Dedication|LOWG}","entries":["You have learned limited divine magic from your Red Mantis training.","You gain the {@action Cast a Spell} activity. You're a prepared spellcaster, able to prepare two cantrips and one 1st-level spell each day. You prepare these spells from a Red Mantis assassin spellbook, similar to a wizard's, containing three cantrips and two 1st-level spells.","All the spells in your Red Mantis assassin spellbook, from this and later feats, must be either transmutation or illusion spells from the arcane spell list or a spell from the following list: {@spell clairaudience}, {@spell clairvoyance}, {@spell darkness}, {@spell dimension door}, {@spell modify memory}, {@spell obscuring mist}, {@spell paralyze}, {@spell see invisibility}, {@spell true strike}. Regardless of their usual magical tradition, your Red Mantis assassin spells are divine spells, as are any Red Mantis focus spells you gain.","You can prepare two cantrips and one 1st-level spell each day from those found in your Red Mantis assassin spellbook. You're trained in spell attack rolls and spell DCs for casting divine spells. Your key spellcasting ability for these spells is Charisma."],"leadsTo":["Advanced Red Mantis Magic|LOWG","Vernai Training|LOL","Mantis Form|LOWG","Achaekek's Grip|LOL"]},{"name":"Careful Explorer","source":"LOWG","page":23,"level":4,"featType":{"archetype":["Pathfinder Agent"]},"traits":["archetype"],"prerequisites":"{@feat Pathfinder Agent Dedication|LOWG}","entries":["You've explored enough dusty tombs and {@condition hidden} vaults to gain a sixth sense about traps, and you sometimes notice them even when you're not trying to.","Even if you aren't {@action Search||Searching} in exploration mode, you get a check to find traps that normally require you to {@action Search} for them. You still need to meet any other requirements to find the trap."]},{"name":"Crimson Shroud","source":"LOWG","page":71,"activity":{"number":1,"unit":"action"},"level":6,"featType":{"archetype":["Red Mantis Assassin"]},"traits":["archetype","healing","magical","necromancy"],"prerequisites":"{@feat Red Mantis Assassin Dedication|LOWG}","frequency":{"special":"A number of times per day equal to your number of class feats from the {@archetype Red Mantis assassin|aoe3} archetype"},"entries":["You swathe yourself in a veil of red mist for 1 minute. While the shroud is active, you gain fast healing equal to half your level.","You can {@action Interact} with your shroud, swirling it around you, to gain a +1 circumstance bonus to AC until the beginning of your next turn. Finally, if you die while the shroud is active, you can choose to have your entire body vanish into red mist, leaving behind only your gear; you make this choice when you activate Crimson Shroud."],"leadsTo":["Fading|LOL"]},{"name":"Crowd Mastery","source":"LOWG","page":131,"level":6,"featType":{"archetype":["Lion Blade"]},"traits":["archetype"],"prerequisites":"{@feat Lost in the Crowd|LOWG}","entries":["You use the crowd to your advantage, diverting your foes' attention to potential {@condition hidden} dangers in the crowd. When determining if your foe is flanked, treat all squares occupied by a crowd as if they were occupied by an ally with a melee reach of 5 feet."]},{"name":"Deft Cooperation","source":"LOWG","page":23,"level":4,"featType":{"archetype":["Pathfinder Agent"]},"traits":["archetype"],"prerequisites":"{@feat Pathfinder Agent Dedication|LOWG}","entries":["When you set things up to help your allies, you also gain some of the fruits of your labors. When you successfully {@action Aid} an attack roll or AC, you gain a +1 circumstance bonus to attack rolls or AC against that enemy until the end of your next turn, whichever you granted to your ally. When you successfully {@action Aid} a skill check, if you attempt the exact same skill check (not just using the same skill, but using it for the same purpose, for instance a check to {@action Climb} the same wall) on your next turn, you gain a +1 circumstance bonus to your skill check."]},{"name":"Diabolic Certitude","source":"LOWG","page":107,"activity":{"number":1,"unit":"free"},"level":4,"featType":{"archetype":["Hellknight Armiger"]},"traits":["archetype","skill"],"prerequisites":"{@feat Hellknight Armiger Dedication|LOWG}","trigger":"Your turn begins and you can observe a devil.","entries":["Your Hellknight training drilled details of Hell's denizens deep into your mind. Make an attempt to {@action Recall Knowledge} about a devil you're observing. If you roll a critical failure on this check, you get a failure instead."]},{"name":"Duelist's Edge","source":"LOWG","page":35,"activity":{"number":1,"unit":"free"},"level":4,"featType":{"archetype":["Aldori Duelist"]},"traits":["archetype"],"prerequisites":"{@feat Aldori Duelist Dedication|LOWG}","trigger":"You roll initiative, and you can observe at least one opponent.","entries":["You hone your reaction time through duels and learn to draw your weapon seamlessly as you begin a fight. You gain a +2 circumstance bonus to the triggering initiative roll, and you can immediately {@action Interact} to draw your Aldori dueling sword."]},{"name":"Expeditious Advance","source":"LOWG","page":131,"level":6,"featType":{"archetype":["Lion Blade"]},"traits":["archetype"],"prerequisites":"{@feat Lion Blade Dedication|LOWG}","requirements":"You are unarmored or wearing light armor.","entries":["You advance and retreat quickly. You gain a +10-foot status bonus to your speed."]},{"name":"Eye Of Ozem","source":"LOWG","page":47,"level":4,"featType":{"archetype":["Lastwall Sentry"]},"traits":["archetype"],"prerequisites":"{@feat Lastwall Sentry Dedication|LOWG}, expert in {@skill Perception}","entries":["You've learned how to spot danger at a distance, allowing you to serve as a sentry with ease. You gain a +2 circumstance bonus to initiative rolls when using {@skill Perception}, and when you're Scouting, you grant your allies a +2 circumstance bonus instead of +1."]},{"name":"Eye Of The Arclords","source":"LOWG","page":81,"activity":{"number":1,"unit":"action"},"level":2,"featType":{"skill":["Arcana"]},"traits":["uncommon","general","skill"],"prerequisites":"expert in {@skill Arcana}, {@feat Arcane Sense}","frequency":{"unit":"day","freq":1},"access":"You are a member of the Arclords of Nex.","entries":["You open an incandescent third eye upon your forehead. The eye can remain open for 1 minute, and you can close it before then with a single action with the {@trait concentrate} trait. It can remain open for 2 minutes if you're a master in {@skill Arcana}, or 5 minutes if you're legendary. While the eye is open, you gain the following benefits: you gain the effects of the detect magic arcane innate spell from your Arcane Sense at the start of each of your turns without needing to cast the spell; you gain {@ability darkvision}; you gain a +2 status bonus to {@skill Perception} checks to {@action Seek} {@condition undetected} and {@condition hidden} creatures and to your {@skill Perception} DC against {@action Hide} and {@action Sneak}. After your third eye closes, you are {@condition dazzled} for an amount of time equal to how long you had it open."]},{"name":"Flicker","source":"LOWG","page":131,"activity":{"number":1,"unit":"action"},"level":12,"featType":{"archetype":["Lion Blade"]},"traits":["archetype"],"prerequisites":"{@feat Lion Blade Dedication|LOWG}","entries":["You use your movements and disguises to make yourself a flickering blur. You gain concealment until your next turn. As usual for concealment involving an obvious visual manifestation, you can't use this concealment to {@action Hide}."]},{"name":"Fortified Flesh","source":"LOWG","page":59,"level":8,"featType":{"archetype":["Living Monolith"]},"traits":["archetype"],"prerequisites":"{@feat Ka Stone Ritual|LOWG}","entries":["Your flesh takes on the hardness of stone. You gain resistance to physical damage (except adamantine) equal to your number of class feats from the {@archetype Living Monolith|LOWG} archetype."]},{"name":"Godless Healing","source":"LOWG","page":57,"level":2,"featType":{"skill":["Medicine"]},"traits":["general","skill"],"prerequisites":"{@feat Battle Medicine}, can't have a patron deity","entries":["You recover an additional 5 Hit Points from a successful attempt to {@action Treat Wounds||Treat your Wounds} or use {@feat Battle Medicine} on you. After you or an ally use {@feat Battle Medicine} on you, you become temporarily immune to that {@feat Battle Medicine} for only 1 hour, instead of 1 day."],"leadsTo":["Mortal Healing|LOGM"]},{"name":"Grave Sense","source":"LOWG","page":47,"level":6,"featType":{"archetype":["Lastwall Sentry"]},"traits":["archetype"],"prerequisites":"{@feat Lastwall Sentry Dedication|LOWG}","entries":["Your time spent hunting the undead allows you to sense them.","You sense undead as a vague sense (Core Rulebook 465) similar to a human's sense of smell, an uncomfortable sensation akin to smelling something cloying and rotting. When in proximity to the undead, you eventually sense their presence, though you might not do so instantly, and you can't pinpoint their location. An undead using a disguise or otherwise trying to hide its presence must attempt a {@skill Deception} check against your {@skill Perception} DC to hide its presence from you. If the creature succeeds at its {@skill Deception} check, it is then temporarily immune to your Grave Sense for 1 day."]},{"name":"Greater Spell Runes","source":"LOWG","page":119,"level":10,"featType":{"archetype":["Runescarred"]},"traits":["archetype"],"prerequisites":"{@feat Spell Runes|LOWG}","entries":["You gain more powerful spell runes. You gain a spell rune corresponding to a 4th-level arcane spell. At 12th level, you gain a spell rune corresponding to a 5th-level arcane spell, and at 14th level, you gain a spell rune corresponding to a 6th-level arcane spell."]},{"name":"Hellknight Armiger Dedication","source":"LOWG","page":107,"level":2,"featType":{"archetype":["Hellknight Armiger"]},"traits":["uncommon","archetype","dedication"],"prerequisites":"member of a Hellknight order, trained in heavy armor as well as your order's favored weapon","access":"You are from Old Cheliax.","entries":["Your Hellknight training teaches you to terrorize others into compliance, but you also study the structure and hierarchy of Hell. You must survive painful tests of your body and mind called reckonings, which steady your mind against all sorts of trauma.","You gain resistance to mental damage equal to 1 + your number of class feats from the Hellknight Armiger archetype and other Hellknight archetypes. You become trained in {@skill Intimidation} and {@skill Lore||Hell Lore}; if you were already trained, you become an expert instead."],"special":"You can't select another dedication feat except dedication feats for higher positions within the Hellknights until you have gained two other feats from the Hellknight armiger archetype.","leadsTo":["Ardent Armiger|LOWG","Armiger's Mobility|LOWG","Diabolic Certitude|LOWG","Mortification|LOWG","Advanced Order Training|LOCG","Hellknight Dedication|LOCG","Blade Of Law|LOCG","Hell's Armaments|LOCG","Hellknight Order Cross-training|LOCG","Sense Chaos|LOCG","Hellknight Signifer Dedication|LOCG","Gaze Of Veracity|LOCG","Masked Casting|LOCG","Signifer Armor Expertise|LOCG","Signifer's Sight|LOCG","Order Training|LOCG"]},{"name":"Judgment Of The Monolith","source":"LOWG","page":59,"level":12,"featType":{"archetype":["Living Monolith"]},"traits":["archetype"],"prerequisites":"{@feat Ka Stone Ritual|LOWG}","entries":["You can use the oaths bound in your ka stone to compel the truth from the living and the dead. You can activate your ka stone to target a single living creature, causing that creature to experience the effects of being in a {@spell zone of truth}. You can also activate it with a 10-minute activation (envision) to cast {@spell talking corpse}."]},{"name":"Ka Stone Ritual","source":"LOWG","page":59,"level":4,"featType":{"archetype":["Living Monolith"]},"traits":["rare","archetype"],"prerequisites":"{@feat Living Monolith Dedication|LOWG}, a sphinx or living monolith with this feat performs a ritual with you","entries":["You inscribe your true name on your ka stone, as well as oaths to gods and pharaohs, and embed it in your forehead in a special ritual with a sphinx or with a living monolith who already has this feat. The ka stone is an invested magic item that you automatically invest each day. It can't be removed without your permission, nor can it be dispelled, and you can never lose investiture in the ka stone. Its Bulk is negligible.","The ka stone grants you a +1 item bonus to saves against {@trait death} effects and {@trait negative} effects, which increases to +2 at 8th level, +3 at 14th level, and +4 at 20th level.",{"type":"ability","activity":{"number":2,"unit":"action"},"components":["(envision)","or a different activation if otherwise specified"],"frequency":{"special":"a number of times each day equal to the number of class feats you have from the {@archetype Living Monolith|LOWG} archetype"},"entries":["You cast {@spell enlarge} on yourself or use one of the other activated abilities granted by a later {@archetype Living Monolith|LOWG} feat."]}],"leadsTo":["Attunement To Stone|LOWG","Fortified Flesh|LOWG","Judgment Of The Monolith|LOWG","Stone Blood|LOWG","Stone Communion|LOWG"]},{"name":"Lastwall Sentry Dedication","source":"LOWG","page":47,"level":2,"featType":{"archetype":["Lastwall Sentry"]},"traits":["uncommon","archetype","dedication"],"prerequisites":"member of the Knights of Lastwall, {@feat Shield Block}","access":"You are from the Eye of Dread region.","entries":["You've sworn yourself as a sentry for the Knights of Lastwall, the first line of defense against incursions by the Whispering Tyrant throughout Golarion. You become trained in {@skill Athletics} and in {@skill Lore||Undead Lore}; if you were already trained, you become an expert instead. Finally, you gain the {@feat Reactive Shield} fighter feat."],"special":"You can't select another dedication feat until you have gained two other feats from the Lastwall sentry archetype.","leadsTo":["Eye Of Ozem|LOWG","Grave Sense|LOWG","Lastwall Warden|LOWG","Necromantic Resistance|LOWG","Necromantic Tenacity|LOWG","Rescuer's Press|LOL"]},{"name":"Lastwall Warden","source":"LOWG","page":47,"level":10,"featType":{"archetype":["Lastwall Sentry"]},"traits":["archetype"],"prerequisites":"{@feat Lastwall Sentry Dedication|LOWG}","entries":["You use your shield to protect your allies, not just yourself, especially against the undead. When you have a shield raised, you can use your {@feat Shield Block} reaction when an attack is made against an ally adjacent to you, in addition to its usual trigger. If you do, the shield prevents that ally from taking damage instead of you, following the normal rules for a {@feat Shield Block}.","If an undead makes an attack against an ally within 10 feet, you can {@action Step} to become adjacent to your ally and then use {@feat Shield Block} as part of the same reaction."]},{"name":"Lion Blade Dedication","source":"LOWG","page":131,"level":2,"featType":{"archetype":["Lion Blade"]},"traits":["uncommon","archetype","dedication"],"prerequisites":"member of the Lion Blades, trained in {@skill Performance}","access":"You are from Taldor.","entries":["Your lion blade spy training helps you conceal yourself and your identity. You become trained in your choice of {@skill Deception} or {@skill Stealth} and in {@skill Lore||Espionage Lore}; if you were already trained, you become an expert instead. You never take circumstance penalties for attempting to take a disguise of a different ancestry, age, and so on, as long as the disguised form is appropriate for your size."],"special":"You cannot select another dedication feat until you have gained two other feats from the Lion Blade archetype.","leadsTo":["Expeditious Advance|LOWG","Flicker|LOWG","Lost In The Crowd|LOWG","Crowd Mastery|LOWG","Spy's Countermeasures|LOWG"]},{"name":"Living Monolith Dedication","source":"LOWG","page":59,"level":2,"featType":{"archetype":["Living Monolith"]},"traits":["uncommon","archetype","dedication"],"prerequisites":"{@language Ancient Osirion|LOWG|Ancient Osiriani} and {@language Sphinx|Be1} languages, trained in {@skill Crafting}","access":"You are from the Golden Road region.","entries":["You've begun to inscribe a magical stone called a ka stone that you will some day tie to your soul. You gain knowledge of {@language Ancient Osirion|LOWG} and a connection to your nascent ka stone. If you fail a recovery check while {@condition dying}, your {@condition dying} condition does not increase; if you critically fail, your {@condition dying} condition increases by only 1. You become trained in {@skill Lore||Ancient Osirion Lore}, or expert if you were already trained."],"special":"You cannot select another dedication feat until you have gained two other feats from the living monolith archetype.","leadsTo":["Ka Stone Ritual|LOWG","Attunement To Stone|LOWG","Fortified Flesh|LOWG","Judgment Of The Monolith|LOWG","Stone Blood|LOWG","Stone Communion|LOWG"]},{"name":"Living Rune","source":"LOWG","page":119,"level":6,"featType":{"archetype":["Runescarred"]},"traits":["archetype"],"prerequisites":"{@feat Runescarred Dedication|LOWG}","entries":["You've bridged a connection between the runes on your body and the magic of runestones, allowing you to place an armor rune on your living flesh. Your body can hold a single property rune; you can't etch a property rune on your body if it has requirements on the type or category of armor or if the property would affect the armor instead of its wearer. If you wear armor, you gain the property rune's effects in addition to any effects of that armor."]},{"name":"Lost In The Crowd","source":"LOWG","page":131,"level":4,"featType":{"archetype":["Lion Blade"]},"traits":["archetype"],"prerequisites":"{@feat Lion Blade Dedication|LOWG}","entries":["You've learned how to move as one with crowds and hide among them, vanishing into a busy street in the blink of an eye. You move at full Speed in crowds and can use cover from crowds to {@action Hide} and {@action Sneak}, gaining a +2 circumstance bonus on your {@skill Stealth} checks when in a crowd of at least 10 creatures and a +4 circumstance bonus on your {@skill Stealth} checks when in a crowd of at least 100 creatures."],"leadsTo":["Crowd Mastery|LOWG"]},{"name":"Magic Warrior Aspect","source":"LOWG","page":95,"level":4,"featType":{"archetype":["Magic Warrior"]},"traits":["archetype"],"prerequisites":"{@feat Magic Warrior Dedication|LOWG}","entries":["You can alter your form to gain an aspect of the animal your mask represents. You gain the {@spell magic warrior aspect|LOWG} focus spell."]},{"name":"Magic Warrior Dedication","source":"LOWG","page":95,"level":2,"featType":{"archetype":["Magic Warrior"]},"traits":["uncommon","archetype","dedication"],"prerequisites":"ability to cast focus spells","access":"You are from the Mwangi Expanse.","entries":["You have taken up a nameless mask and sworn the oath of the magic warriors. You become trained in your choice of {@skill Arcana} or {@skill Nature} and in {@skill Lore||Magic Warrior Lore}; if you were already trained in the skill, you become an expert instead.","You hide your identity behind a mask representing an animal of your choice, corresponding to one of the general animal types in the {@spell animal form} spell. You gain a +1 circumstance bonus to saves against {@trait divination} effects, though sometimes refusing to remove your mask can cause issues in areas that don't respect or understand the magic warrior tradition.","Once you take this feat, if another creature ever learns your true face or name, you lose your abilities from this archetype.","Close allies who knew of your decision to take the mask before your dedication don't break this taboo unless they tell someone else. To regain your abilities, you must discard your mask and obtain a new one of a different animal, then retrain Magic Warrior Dedication into a new Magic Warrior Dedication with your new mask. Your focus spells from the magic warrior archetype are the same tradition as your other spells (choose one if you have spells from multiple traditions)."],"special":"You cannot select another dedication feat until you have gained two other feats from the magic warrior archetype.","leadsTo":["Magic Warrior Aspect|LOWG","Magic Warrior Transformation|LOWG","Nameless Anonymity|LOWG"]},{"name":"Magic Warrior Transformation","source":"LOWG","page":95,"level":4,"featType":{"archetype":["Magic Warrior"]},"traits":["archetype"],"prerequisites":"{@feat Magic Warrior Dedication|LOWG}","entries":["You can transform fully into the animal your mask represents.","You gain the {@spell magic warrior transformation|LOWG} focus spell."]},{"name":"Mantis Form","source":"LOWG","page":71,"level":8,"featType":{"archetype":["Red Mantis Assassin"]},"traits":["archetype"],"prerequisites":"{@feat Basic Red Mantis Magic|LOWG}","entries":["You gain the {@spell mantis form|LOWG} focus spell. If you don't already have one, you gain a focus pool of 1 Focus Point, which you can {@action Refocus} by praying to {@deity Achaekek|LOGM} or researching your assigned kill."]},{"name":"Mortification","source":"LOWG","page":107,"level":4,"featType":{"archetype":["Hellknight Armiger"]},"traits":["archetype"],"prerequisites":"{@feat Hellknight Armiger Dedication|LOWG}","entries":["Your reckonings have prepared your body for physical punishment. Choose bludgeoning, piercing, or slashing damage, based on the nature of your physical reckonings. You gain resistance to the chosen damage type equal to your number of class feats from the Hellknight Armiger archetype and other Hellknight archetypes."]},{"name":"Nameless Anonymity","source":"LOWG","page":95,"level":6,"featType":{"archetype":["Magic Warrior"]},"traits":["archetype"],"prerequisites":"{@feat Magic Warrior Dedication|LOWG}","entries":["Your mask protects you further from divination. Once per day, you can cast {@spell nondetection} on yourself, heightened to the highest level of spell you can cast; the spell ends immediately if your mask is removed for even a moment. The spell is of the same tradition as your focus spells."]},{"name":"Necromantic Resistance","source":"LOWG","page":47,"level":4,"featType":{"archetype":["Lastwall Sentry"]},"traits":["archetype"],"prerequisites":"{@feat Lastwall Sentry Dedication|LOWG}","entries":["As part of your training, you've inured yourself against necromancy through repeated exposure. You gain a +1 circumstance bonus to saves against {@trait necromancy} effects and gain resistance to negative damage equal to half your level."],"leadsTo":["Necromantic Tenacity|LOWG"]},{"name":"Necromantic Tenacity","source":"LOWG","page":47,"level":8,"featType":{"archetype":["Lastwall Sentry"]},"traits":["archetype"],"prerequisites":"{@feat Necromantic Resistance|LOWG}","entries":["Your training against necromantic effects allows you to escape the worst of their touch. If you roll a success on a saving throw against a {@trait necromancy} effect, you get a critical success instead; if you roll a critical failure on such a save, you get a failure instead."]},{"name":"Pathfinder Agent Dedication","source":"LOWG","page":23,"level":2,"featType":{"archetype":["Pathfinder Agent"]},"traits":["uncommon","archetype","dedication"],"prerequisites":"member of the Pathfinder Society","access":"You are from Absalom.","entries":["Your Pathfinder training has broadened your horizons and made you more flexible at various skills, since you never know when you might need an obscure skill to complete your mission. You become trained in one skill of your choice, or expert in a skill of your choice in which you were trained. You also become trained in {@skill Lore||Pathfinder Lore}, or an expert if you were already trained. When using a skill untrained, your proficiency bonus is equal to your level instead of 0. You gain access to {@item wayfinder||wayfinders}."],"special":"You cannot select another dedication feat until you have gained two other feats from the Pathfinder agent archetype.","leadsTo":["Careful Explorer|LOWG","Deft Cooperation|LOWG","Thorough Reports|LOWG","Discerning Strike|LOPSG","Wayfinder Resonance Tinkerer|LOWG","Wayfinder Resonance Infiltrator|LOPSG","Educated Assessment|LOCG","Everyone Duck!|LOCG","Forced Entry|LOCG","Recognize Threat|LOCG","Archaeologist's Warning|LOPSG","Craft Facsimile|LOPSG","Dead Reckoning|LOPSG","Diverse Recognition|LOPSG","Eidetic Memorization|LOPSG","Environmental Explorer|LOPSG","Observant Explorer|LOPSG","Remember Your Training|LOPSG","Snap Out Of It!|LOPSG","Spiritual Explorer|LOPSG","Swap Investment|LOPSG","Watch And Learn|LOPSG","Westyr's Wayfinder Repository|LOPSG"]},{"name":"Perfect Ki Adept","source":"LOWG","page":83,"level":6,"featType":{"archetype":["Student of Perfection"]},"traits":["archetype"],"prerequisites":"{@feat Student of Perfection Dedication|LOWG}","entries":["You gain the appropriate ki spell for your School of Perfection: {@spell unblinking flame revelation|LOWG} for Unblinking Flame, {@spell unbreaking wave advance|LOWG} for Unbreaking Waves, {@spell unfolding wind rush|LOWG} for Unfolding Wind, or {@spell untwisting iron buffer|LOWG} for Untwisting Iron.","Increase the number of Focus Points in your focus pool by 1."]},{"name":"Perfect Strike","source":"LOWG","page":83,"level":4,"featType":{"archetype":["Student of Perfection"]},"traits":["archetype"],"prerequisites":"{@feat Student of Perfection Dedication|LOWG}","entries":["You gain the {@spell perfect strike|LOWG} ki spell. Increase the number of Focus Points in your focus pool by 1."]},{"name":"Red Mantis Assassin Dedication","source":"LOWG","page":71,"level":2,"featType":{"archetype":["Red Mantis Assassin"]},"traits":["uncommon","archetype","dedication"],"prerequisites":"trained in sawtooth sabers, deity is {@deity Achaekek|LOGM}, lawful evil alignment, member of the Red Mantis assassins","access":"You are from Mediogalti Island.","entries":["You have learned how to stalk your foes and slay them with a sawtooth sabre. You become trained in {@skill Stealth} and {@skill Lore||Assassin Lore}; if you were already trained, you become an expert instead. Whenever your proficiency in any weapon increases to expert or beyond, you also gain that new proficiency with sawtooth sabers."],"special":"You cannot select another dedication feat until you have gained two other feats from the Red Mantis assassin archetype.","leadsTo":["Basic Red Mantis Magic|LOWG","Advanced Red Mantis Magic|LOWG","Vernai Training|LOL","Mantis Form|LOWG","Achaekek's Grip|LOL","Crimson Shroud|LOWG","Fading|LOL","Prayer Attack|LOL"]},{"name":"Runescarred Dedication","source":"LOWG","page":119,"level":2,"featType":{"archetype":["Runescarred"]},"traits":["uncommon","archetype","dedication"],"prerequisites":"trained in {@skill Arcana}","access":"You are from the Saga Lands.","entries":["Whether through blood (if you're Varisian, Shoanti, or New Thassilonian) or by exposure to rune magic, you have become runescarred, with visible, glowing runes on your body in the form of tattoos or scars. You might have possessed these marks before gaining the archetype, but you only truly became runescarred when you chose to study and tap into the runes' power. You become an expert in {@skill Arcana} and you also become trained in {@skill Lore||Thassilon Lore}, or an expert in {@skill Lore||Thassilon Lore} if you were already trained in it.","Choose one cantrip from the arcane list. One of the runes on your body corresponds to the chosen cantrip, and you can cast the chosen cantrip as an innate arcane spell."],"special":"You cannot select another dedication feat until you have gained two other feats from the runescarred archetype.","leadsTo":["Living Rune|LOWG","Spell Runes|LOWG","Greater Spell Runes|LOWG","Warding Rune|LOWG"]},{"name":"Saving Slash","source":"LOWG","page":35,"activity":{"number":1,"unit":"varies","entry":"{@as R}]"},"level":10,"featType":{"archetype":["Aldori Duelist"]},"traits":["archetype"],"prerequisites":"{@feat Aldori Duelist Dedication|LOWG}","trigger":"An opponent critically hits you with a melee attack.","entries":["You quickly whirl your blade, trying to deflect enough momentum to avoid the worst of the attack. Attempt a DC {@flatDC 16} flat check. If you succeed, the attack becomes a normal hit, instead of a critical hit."]},{"name":"Spell Runes","source":"LOWG","page":119,"level":4,"featType":{"archetype":["Runescarred"]},"traits":["archetype"],"prerequisites":"{@feat Runescarred Dedication|LOWG}","entries":["The magical runes on your body grant you several magical abilities. Choose a 1st-level arcane spell. You gain a spell rune on your body corresponding to the chosen spell, which you can cast once per day as an innate spell. At 6th level, you gain a spell rune corresponding to a 2nd-level arcane spell, and at 8th level, you gain a spell rune corresponding to a 3rd-level arcane spell."],"leadsTo":["Greater Spell Runes|LOWG"]},{"name":"Spy's Countermeasures","source":"LOWG","page":131,"level":10,"featType":{"archetype":["Lion Blade"]},"traits":["archetype"],"prerequisites":"{@feat Lion Blade Dedication|LOWG}","entries":["You've learned how to analyze and fake your responses to the most common magic used against spies. Whenever you succeed at your save against a {@trait divination} or {@trait mental} effect, you can {@action Identify Magic} to identify the spell as a free action triggered when you succeed, even if you didn't notice the spell being cast.","If you successfully identify a {@trait divination} effect targeting you and the spell would normally fail or have no effect, you can create a substitute result, causing the spell's caster to think the spell succeeded, with a result of your choice. If you successfully identify a {@trait mental} effect targeting you and the spell would normally fail or have no effect, you can make it appear as if you were affected and attempt to play along with the spell; if the spell normally establishes a mental link, it functions normally but you can disregard any commands you receive through the link."]},{"name":"Stone Blood","source":"LOWG","page":59,"level":6,"featType":{"archetype":["Living Monolith"]},"traits":["archetype"],"prerequisites":"{@feat Ka Stone Ritual|LOWG}","entries":["You can selectively stop your bleeding with ease. Reduce the DC of flat checks to stop {@condition persistent damage ||persistent bleed damage} you have from 15 to 10, and you can use a single action that has the {@trait concentrate} trait to gain an early flat check without physically binding the wounds.","You recover naturally from the {@condition drained} condition twice as quickly as normal."]},{"name":"Stone Communion","source":"LOWG","page":59,"level":14,"featType":{"archetype":["Living Monolith"]},"traits":["archetype"],"prerequisites":"{@feat Ka Stone Ritual|LOWG}","entries":["You gain a unique communion with the earth and stones. You learn the {@language Terran} language and you can {@action Activate an Item||Activate} your ka stone with a 10-minute activation (envision) to cast {@spell stone tell}."]},{"name":"Student of Perfection Dedication","source":"LOWG","page":83,"level":2,"featType":{"archetype":["Student of Perfection"]},"traits":["uncommon","archetype","dedication"],"prerequisites":"{@classFeature powerful fist|monk||1} or expert in unarmed attacks; member of a House of Perfection","access":"You are from Jalmeray.","entries":["You have learned the martial arts techniques of your House of Perfection. You become trained in your choice of {@skill Acrobatics} or {@skill Athletics} and {@skill Lore||Warfare Lore}; if you were already trained, you become an expert instead. You gain the {@feat Ki Strike} monk class feat, which grants you the {@spell ki strike} ki spell and a focus pool of 1 Focus Point that you can recover using the {@action Refocus} activity as a monk does. Your ki spells from Student of Perfection are occult spells."],"special":"You can't select another dedication feat until you have gained two other feats from the student of perfection archetype.","leadsTo":["Perfect Ki Adept|LOWG","Perfect Strike|LOWG"]},{"name":"Thorough Reports","source":"LOWG","page":23,"level":4,"featType":{"archetype":["Pathfinder Agent"]},"traits":["archetype","skill"],"prerequisites":"{@feat Pathfinder Agent Dedication|LOWG}","entries":["Your reports are thorough and informative, and putting your thoughts to paper helps you retain the information. Keep track of each type of creature you successfully identify with {@action Recall Knowledge}. When attempting {@action Recall Knowledge} checks against creatures on your list in later encounters, you gain a +2 circumstance bonus, and you learn an additional fact about such creatures on a success."],"leadsTo":["Discerning Strike|LOPSG"]},{"name":"Unnerving Prowess","source":"LOWG","page":35,"activity":{"number":1,"unit":"free"},"level":6,"featType":{"archetype":["Aldori Duelist"]},"traits":["archetype"],"prerequisites":"{@feat Aldori Duelist Dedication|LOWG}","trigger":"You critically succeed at a {@action Strike} or {@action Disarm} with your Aldori dueling sword","entries":["Your incredible skill with your blade unnerves your foes. You attempt to {@action Demoralize} the target of your {@action Strike} or {@action Disarm}. This {@action Demoralize} attempt does not have the {@trait auditory} trait, nor do you take a penalty to the check if the target doesn't understand your language."]},{"name":"Warding Rune","source":"LOWG","page":119,"level":6,"featType":{"archetype":["Runescarred"]},"traits":["archetype"],"prerequisites":"{@feat Runescarred Dedication|LOWG}","entries":["Your runes provide a warding effect that protects you against a specific school of magic. Choose a school of magic other than divination. You gain a rune on your body corresponding to that school, and you gain a +2 circumstance bonus to all saving throws against effects of that school."]},{"name":"Wayfinder Resonance Tinkerer","source":"LOWG","page":23,"level":4,"featType":{"archetype":["Pathfinder Agent"]},"traits":["archetype"],"prerequisites":"{@feat Pathfinder Agent Dedication|LOWG}","entries":["You can use the unusual resonance of your wayfinder to grant it additional effects. Choose one cantrip from the {@filter arcane|spells|tradition & spell list=arcane|rarity=common|level=0}, {@filter divine|spells|tradition & spell list=divine|rarity=common|level=0}, {@filter occult|spells|tradition & spell list=occult|rarity=common|level=0}, or {@filter primal|spells|tradition & spell list=primal|rarity=common|level=0} list. You can activate your wayfinder to cast that cantrip at will. As normal, this cantrip is heightened to a spell level equal to half your level rounded up. Additionally, you can {@action Activate an Item||Activate} your wayfinder with a {@as 1} (envision) activation to transform it into a nondescript pin or brooch to hide your affiliation with the Pathfinder Society. This transformation lasts for 1 hour."],"leadsTo":["Wayfinder Resonance Infiltrator|LOPSG"]}]}
+{
+	"feat": [
+		{
+			"name": "Advanced Red Mantis Magic",
+			"source": "LOWG",
+			"page": 71,
+			"level": 6,
+			"featType": {
+				"archetype": [
+					"Red Mantis Assassin"
+				]
+			},
+			"traits": [
+				"archetype"
+			],
+			"prerequisites": "{@feat Basic Red Mantis Magic|LOWG}",
+			"entries": [
+				"Your Red Mantis magical training has improved. Add two 2nd-level spells to your Red Mantis assassin spellbook. You gain a 2nd-level spell slot that you can use to prepare a spell from your Red Mantis assassin spellbook.",
+				"At 8th level, add two 3rd-level spells to your Red Mantis assassin spellbook. You gain a 3rd-level spell slot that you can use to prepare a spell from your Red Mantis assassin spellbook.",
+				"At 10th level, add two 4th-level spells to your Red Mantis assassin spellbook. You gain a 4th-level spell slot that you can use to prepare a spell from your Red Mantis assassin spellbook."
+			],
+			"leadsTo": [
+				"Vernai Training|LOL"
+			]
+		},
+		{
+			"name": "Aldori Duelist Dedication",
+			"source": "LOWG",
+			"page": 35,
+			"level": 2,
+			"featType": {
+				"archetype": [
+					"Aldori Duelist"
+				]
+			},
+			"traits": [
+				"uncommon",
+				"archetype",
+				"dedication"
+			],
+			"prerequisites": "trained in {@item Aldori dueling sword|lowg|Aldori dueling swords}",
+			"access": "You are from the {@condition Broken} Lands region.",
+			"entries": [
+				"Your Aldori duelist training teaches you martial techniques and increases your dedication to the Aldori dueling sword. You become trained in your choice of {@skill Acrobatics} or {@skill Athletics} and in {@skill Lore||Dueling Lore}; if you were already trained, you become an expert instead.",
+				"Whenever your proficiency rank in any weapon increases to expert or beyond, you also gain that new proficiency rank with {@item Aldori dueling sword|lowg|Aldori dueling swords}. You gain access to {@item Aldori dueling sword|lowg|Aldori dueling swords}."
+			],
+			"special": "You cannot select another dedication feat until you have gained two other feats from the Aldori duelist archetype.",
+			"leadsTo": [
+				"Aldori Parry|LOWG",
+				"Aldori Riposte|LOWG",
+				"Duelist's Edge|LOWG",
+				"Saving Slash|LOWG",
+				"Unnerving Prowess|LOWG"
+			]
+		},
+		{
+			"name": "Aldori Parry",
+			"source": "LOWG",
+			"page": 35,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"level": 4,
+			"featType": {
+				"archetype": [
+					"Aldori Duelist"
+				]
+			},
+			"traits": [
+				"archetype"
+			],
+			"prerequisites": "{@feat Aldori Duelist Dedication|LOWG}",
+			"requirements": "You are wielding only an Aldori dueling sword and have your other hand or hands free.",
+			"entries": [
+				"You can parry attacks against you with your Aldori dueling sword. You gain a +2 circumstance bonus to AC until the start of your next turn as long as you continue to meet the requirement."
+			],
+			"leadsTo": [
+				"Aldori Riposte|LOWG"
+			]
+		},
+		{
+			"name": "Aldori Riposte",
+			"source": "LOWG",
+			"page": 35,
+			"activity": {
+				"number": 1,
+				"unit": "varies",
+				"entry": "{@as R}]"
+			},
+			"level": 6,
+			"featType": {
+				"archetype": [
+					"Aldori Duelist"
+				]
+			},
+			"traits": [
+				"archetype"
+			],
+			"prerequisites": "{@feat Aldori Parry|LOWG}",
+			"trigger": "An opponent within your reach critically fails a {@action Strike} against you.",
+			"requirements": "You are benefiting from Aldori Parry.",
+			"entries": [
+				"You riposte with your Aldori dueling sword when your enemy leaves an opening. Make a melee {@action Strike} or use a {@action Disarm} action against the triggering opponent using your Aldori dueling sword."
+			]
+		},
+		{
+			"name": "Ardent Armiger",
+			"source": "LOWG",
+			"page": 107,
+			"level": 4,
+			"featType": {
+				"archetype": [
+					"Hellknight Armiger"
+				]
+			},
+			"traits": [
+				"archetype"
+			],
+			"prerequisites": "{@feat Hellknight Armiger Dedication|LOWG}",
+			"entries": [
+				"You have been trained to resist the manipulations of fiends, and your Hellknight discipline makes you difficult to influence. You gain a +1 circumstance bonus to saves against {@trait mental} effects that specifically improve your attitude and to your Will DC against someone Coercing you, Demoralizing you, {@action Make an Impression||Making an Impression} on you, or Making a {@action Request} of you.",
+				"If a {@trait mental} effect would compel you to act in a way that violates your Hellknight order's tenets (as determined by the GM), you can attempt to break free from the effect as a reaction triggered by receiving the violating order, and you gain a new Will save against the effect. You can attempt this new save only once for a given effect, even if you are compelled to violate your order's tenets multiple times."
+			]
+		},
+		{
+			"name": "Armiger's Mobility",
+			"source": "LOWG",
+			"page": 107,
+			"level": 8,
+			"featType": {
+				"archetype": [
+					"Hellknight Armiger"
+				]
+			},
+			"traits": [
+				"archetype"
+			],
+			"prerequisites": "expert in heavy armor, {@feat Hellknight Armiger Dedication|LOWG}",
+			"entries": [
+				"You've learned how best to move in heavy armor. When wearing heavy armor, if you meet the Strength requirement, instead of reducing the movement penalty by 5 feet, you reduce the penalty by 10 feet (typically reducing the penalty to 0). If you are a dwarf with the Unburdened Iron feat, increase your Speed by 5 feet."
+			]
+		},
+		{
+			"name": "Attunement To Stone",
+			"source": "LOWG",
+			"page": 59,
+			"level": 10,
+			"featType": {
+				"archetype": [
+					"Living Monolith"
+				]
+			},
+			"traits": [
+				"archetype"
+			],
+			"prerequisites": "{@feat Ka Stone Ritual|LOWG}",
+			"entries": [
+				"You become attuned to the stone around you. When in contact with a stone surface, you gain {@ability tremorsense} (imprecise) 5 feet along that surface, and you can activate your ka stone to cast {@spell meld into stone}."
+			]
+		},
+		{
+			"name": "Basic Red Mantis Magic",
+			"source": "LOWG",
+			"page": 71,
+			"level": 4,
+			"featType": {
+				"archetype": [
+					"Red Mantis Assassin"
+				]
+			},
+			"traits": [
+				"archetype"
+			],
+			"prerequisites": "trained in {@skill Religion}, {@feat Red Mantis Assassin Dedication|LOWG}",
+			"entries": [
+				"You have learned limited divine magic from your Red Mantis training.",
+				"You gain the {@action Cast a Spell} activity. You're a prepared spellcaster, able to prepare two cantrips and one 1st-level spell each day. You prepare these spells from a Red Mantis assassin spellbook, similar to a wizard's, containing three cantrips and two 1st-level spells.",
+				"All the spells in your Red Mantis assassin spellbook, from this and later feats, must be either transmutation or illusion spells from the arcane spell list or a spell from the following list: {@spell clairaudience}, {@spell clairvoyance}, {@spell darkness}, {@spell dimension door}, {@spell modify memory}, {@spell obscuring mist}, {@spell paralyze}, {@spell see invisibility}, {@spell true strike}. Regardless of their usual magical tradition, your Red Mantis assassin spells are divine spells, as are any Red Mantis focus spells you gain.",
+				"You can prepare two cantrips and one 1st-level spell each day from those found in your Red Mantis assassin spellbook. You're trained in spell attack rolls and spell DCs for casting divine spells. Your key spellcasting ability for these spells is Charisma."
+			],
+			"leadsTo": [
+				"Advanced Red Mantis Magic|LOWG",
+				"Vernai Training|LOL",
+				"Mantis Form|LOWG",
+				"Achaekek's Grip|LOL"
+			]
+		},
+		{
+			"name": "Careful Explorer",
+			"source": "LOWG",
+			"page": 23,
+			"level": 4,
+			"featType": {
+				"archetype": [
+					"Pathfinder Agent"
+				]
+			},
+			"traits": [
+				"archetype"
+			],
+			"prerequisites": "{@feat Pathfinder Agent Dedication|LOWG}",
+			"entries": [
+				"You've explored enough dusty tombs and {@condition hidden} vaults to gain a sixth sense about traps, and you sometimes notice them even when you're not trying to.",
+				"Even if you aren't {@action Search||Searching} in exploration mode, you get a check to find traps that normally require you to {@action Search} for them. You still need to meet any other requirements to find the trap."
+			]
+		},
+		{
+			"name": "Crimson Shroud",
+			"source": "LOWG",
+			"page": 71,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"level": 6,
+			"featType": {
+				"archetype": [
+					"Red Mantis Assassin"
+				]
+			},
+			"traits": [
+				"archetype",
+				"healing",
+				"magical",
+				"necromancy"
+			],
+			"prerequisites": "{@feat Red Mantis Assassin Dedication|LOWG}",
+			"frequency": {
+				"special": "A number of times per day equal to your number of class feats from the {@archetype Red Mantis assassin|aoe3} archetype"
+			},
+			"entries": [
+				"You swathe yourself in a veil of red mist for 1 minute. While the shroud is active, you gain fast healing equal to half your level.",
+				"You can {@action Interact} with your shroud, swirling it around you, to gain a +1 circumstance bonus to AC until the beginning of your next turn. Finally, if you die while the shroud is active, you can choose to have your entire body vanish into red mist, leaving behind only your gear; you make this choice when you activate Crimson Shroud."
+			],
+			"leadsTo": [
+				"Fading|LOL"
+			]
+		},
+		{
+			"name": "Crowd Mastery",
+			"source": "LOWG",
+			"page": 131,
+			"level": 6,
+			"featType": {
+				"archetype": [
+					"Lion Blade"
+				]
+			},
+			"traits": [
+				"archetype"
+			],
+			"prerequisites": "{@feat Lost in the Crowd|LOWG}",
+			"entries": [
+				"You use the crowd to your advantage, diverting your foes' attention to potential {@condition hidden} dangers in the crowd. When determining if your foe is flanked, treat all squares occupied by a crowd as if they were occupied by an ally with a melee reach of 5 feet."
+			]
+		},
+		{
+			"name": "Deft Cooperation",
+			"source": "LOWG",
+			"page": 23,
+			"level": 4,
+			"featType": {
+				"archetype": [
+					"Pathfinder Agent"
+				]
+			},
+			"traits": [
+				"archetype"
+			],
+			"prerequisites": "{@feat Pathfinder Agent Dedication|LOWG}",
+			"entries": [
+				"When you set things up to help your allies, you also gain some of the fruits of your labors. When you successfully {@action Aid} an attack roll or AC, you gain a +1 circumstance bonus to attack rolls or AC against that enemy until the end of your next turn, whichever you granted to your ally. When you successfully {@action Aid} a skill check, if you attempt the exact same skill check (not just using the same skill, but using it for the same purpose, for instance a check to {@action Climb} the same wall) on your next turn, you gain a +1 circumstance bonus to your skill check."
+			]
+		},
+		{
+			"name": "Diabolic Certitude",
+			"source": "LOWG",
+			"page": 107,
+			"activity": {
+				"number": 1,
+				"unit": "free"
+			},
+			"level": 4,
+			"featType": {
+				"archetype": [
+					"Hellknight Armiger"
+				]
+			},
+			"traits": [
+				"archetype",
+				"skill"
+			],
+			"prerequisites": "{@feat Hellknight Armiger Dedication|LOWG}",
+			"trigger": "Your turn begins and you can observe a devil.",
+			"entries": [
+				"Your Hellknight training drilled details of Hell's denizens deep into your mind. Make an attempt to {@action Recall Knowledge} about a devil you're observing. If you roll a critical failure on this check, you get a failure instead."
+			]
+		},
+		{
+			"name": "Duelist's Edge",
+			"source": "LOWG",
+			"page": 35,
+			"activity": {
+				"number": 1,
+				"unit": "free"
+			},
+			"level": 4,
+			"featType": {
+				"archetype": [
+					"Aldori Duelist"
+				]
+			},
+			"traits": [
+				"archetype"
+			],
+			"prerequisites": "{@feat Aldori Duelist Dedication|LOWG}",
+			"trigger": "You roll initiative, and you can observe at least one opponent.",
+			"entries": [
+				"You hone your reaction time through duels and learn to draw your weapon seamlessly as you begin a fight. You gain a +2 circumstance bonus to the triggering initiative roll, and you can immediately {@action Interact} to draw your Aldori dueling sword."
+			]
+		},
+		{
+			"name": "Expeditious Advance",
+			"source": "LOWG",
+			"page": 131,
+			"level": 6,
+			"featType": {
+				"archetype": [
+					"Lion Blade"
+				]
+			},
+			"traits": [
+				"archetype"
+			],
+			"prerequisites": "{@feat Lion Blade Dedication|LOWG}",
+			"requirements": "You are unarmored or wearing light armor.",
+			"entries": [
+				"You advance and retreat quickly. You gain a +10-foot status bonus to your speed."
+			]
+		},
+		{
+			"name": "Eye Of Ozem",
+			"source": "LOWG",
+			"page": 47,
+			"level": 4,
+			"featType": {
+				"archetype": [
+					"Lastwall Sentry"
+				]
+			},
+			"traits": [
+				"archetype"
+			],
+			"prerequisites": "{@feat Lastwall Sentry Dedication|LOWG}, expert in {@skill Perception}",
+			"entries": [
+				"You've learned how to spot danger at a distance, allowing you to serve as a sentry with ease. You gain a +2 circumstance bonus to initiative rolls when using {@skill Perception}, and when you're Scouting, you grant your allies a +2 circumstance bonus instead of +1."
+			]
+		},
+		{
+			"name": "Eye Of The Arclords",
+			"source": "LOWG",
+			"page": 81,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"level": 2,
+			"featType": {
+				"skill": [
+					"Arcana"
+				]
+			},
+			"traits": [
+				"uncommon",
+				"general",
+				"skill"
+			],
+			"prerequisites": "expert in {@skill Arcana}, {@feat Arcane Sense}",
+			"frequency": {
+				"unit": "day",
+				"freq": 1
+			},
+			"access": "You are a member of the Arclords of Nex.",
+			"entries": [
+				"You open an incandescent third eye upon your forehead. The eye can remain open for 1 minute, and you can close it before then with a single action with the {@trait concentrate} trait. It can remain open for 2 minutes if you're a master in {@skill Arcana}, or 5 minutes if you're legendary. While the eye is open, you gain the following benefits: you gain the effects of the detect magic arcane innate spell from your Arcane Sense at the start of each of your turns without needing to cast the spell; you gain {@ability darkvision}; you gain a +2 status bonus to {@skill Perception} checks to {@action Seek} {@condition undetected} and {@condition hidden} creatures and to your {@skill Perception} DC against {@action Hide} and {@action Sneak}. After your third eye closes, you are {@condition dazzled} for an amount of time equal to how long you had it open."
+			]
+		},
+		{
+			"name": "Flicker",
+			"source": "LOWG",
+			"page": 131,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"level": 12,
+			"featType": {
+				"archetype": [
+					"Lion Blade"
+				]
+			},
+			"traits": [
+				"archetype"
+			],
+			"prerequisites": "{@feat Lion Blade Dedication|LOWG}",
+			"entries": [
+				"You use your movements and disguises to make yourself a flickering blur. You gain concealment until your next turn. As usual for concealment involving an obvious visual manifestation, you can't use this concealment to {@action Hide}."
+			]
+		},
+		{
+			"name": "Fortified Flesh",
+			"source": "LOWG",
+			"page": 59,
+			"level": 8,
+			"featType": {
+				"archetype": [
+					"Living Monolith"
+				]
+			},
+			"traits": [
+				"archetype"
+			],
+			"prerequisites": "{@feat Ka Stone Ritual|LOWG}",
+			"entries": [
+				"Your flesh takes on the hardness of stone. You gain resistance to physical damage (except adamantine) equal to your number of class feats from the {@archetype Living Monolith|LOWG} archetype."
+			]
+		},
+		{
+			"name": "Godless Healing",
+			"source": "LOWG",
+			"page": 57,
+			"level": 2,
+			"featType": {
+				"skill": [
+					"Medicine"
+				]
+			},
+			"traits": [
+				"general",
+				"skill"
+			],
+			"prerequisites": "{@feat Battle Medicine}, can't have a patron deity",
+			"entries": [
+				"You recover an additional 5 Hit Points from a successful attempt to {@action Treat Wounds||Treat your Wounds} or use {@feat Battle Medicine} on you. After you or an ally use {@feat Battle Medicine} on you, you become temporarily immune to that {@feat Battle Medicine} for only 1 hour, instead of 1 day."
+			],
+			"leadsTo": [
+				"Mortal Healing|LOGM"
+			]
+		},
+		{
+			"name": "Grave Sense",
+			"source": "LOWG",
+			"page": 47,
+			"level": 6,
+			"featType": {
+				"archetype": [
+					"Lastwall Sentry"
+				]
+			},
+			"traits": [
+				"archetype"
+			],
+			"prerequisites": "{@feat Lastwall Sentry Dedication|LOWG}",
+			"entries": [
+				"Your time spent hunting the undead allows you to sense them.",
+				"You sense undead as a vague sense (Core Rulebook 465) similar to a human's sense of smell, an uncomfortable sensation akin to smelling something cloying and rotting. When in proximity to the undead, you eventually sense their presence, though you might not do so instantly, and you can't pinpoint their location. An undead using a disguise or otherwise trying to hide its presence must attempt a {@skill Deception} check against your {@skill Perception} DC to hide its presence from you. If the creature succeeds at its {@skill Deception} check, it is then temporarily immune to your Grave Sense for 1 day."
+			]
+		},
+		{
+			"name": "Greater Spell Runes",
+			"source": "LOWG",
+			"page": 119,
+			"level": 10,
+			"featType": {
+				"archetype": [
+					"Runescarred"
+				]
+			},
+			"traits": [
+				"archetype"
+			],
+			"prerequisites": "{@feat Spell Runes|LOWG}",
+			"entries": [
+				"You gain more powerful spell runes. You gain a spell rune corresponding to a 4th-level arcane spell. At 12th level, you gain a spell rune corresponding to a 5th-level arcane spell, and at 14th level, you gain a spell rune corresponding to a 6th-level arcane spell."
+			]
+		},
+		{
+			"name": "Hellknight Armiger Dedication",
+			"source": "LOWG",
+			"page": 107,
+			"level": 2,
+			"featType": {
+				"archetype": [
+					"Hellknight Armiger"
+				]
+			},
+			"traits": [
+				"uncommon",
+				"archetype",
+				"dedication"
+			],
+			"prerequisites": "member of a Hellknight order, trained in heavy armor as well as your order's favored weapon",
+			"access": "You are from Old Cheliax.",
+			"entries": [
+				"Your Hellknight training teaches you to terrorize others into compliance, but you also study the structure and hierarchy of Hell. You must survive painful tests of your body and mind called reckonings, which steady your mind against all sorts of trauma.",
+				"You gain resistance to mental damage equal to 1 + your number of class feats from the Hellknight Armiger archetype and other Hellknight archetypes. You become trained in {@skill Intimidation} and {@skill Lore||Hell Lore}; if you were already trained, you become an expert instead."
+			],
+			"special": "You can't select another dedication feat except dedication feats for higher positions within the Hellknights until you have gained two other feats from the Hellknight armiger archetype.",
+			"leadsTo": [
+				"Ardent Armiger|LOWG",
+				"Armiger's Mobility|LOWG",
+				"Diabolic Certitude|LOWG",
+				"Mortification|LOWG",
+				"Advanced Order Training|LOCG",
+				"Hellknight Dedication|LOCG",
+				"Blade Of Law|LOCG",
+				"Hell's Armaments|LOCG",
+				"Hellknight Order Cross-training|LOCG",
+				"Sense Chaos|LOCG",
+				"Hellknight Signifer Dedication|LOCG",
+				"Gaze Of Veracity|LOCG",
+				"Masked Casting|LOCG",
+				"Signifer Armor Expertise|LOCG",
+				"Signifer's Sight|LOCG",
+				"Order Training|LOCG"
+			]
+		},
+		{
+			"name": "Judgment Of The Monolith",
+			"source": "LOWG",
+			"page": 59,
+			"level": 12,
+			"featType": {
+				"archetype": [
+					"Living Monolith"
+				]
+			},
+			"traits": [
+				"archetype"
+			],
+			"prerequisites": "{@feat Ka Stone Ritual|LOWG}",
+			"entries": [
+				"You can use the oaths bound in your ka stone to compel the truth from the living and the dead. You can activate your ka stone to target a single living creature, causing that creature to experience the effects of being in a {@spell zone of truth}. You can also activate it with a 10-minute activation (envision) to cast {@spell talking corpse}."
+			]
+		},
+		{
+			"name": "Ka Stone Ritual",
+			"source": "LOWG",
+			"page": 59,
+			"level": 4,
+			"featType": {
+				"archetype": [
+					"Living Monolith"
+				]
+			},
+			"traits": [
+				"rare",
+				"archetype"
+			],
+			"prerequisites": "{@feat Living Monolith Dedication|LOWG}, a sphinx or living monolith with this feat performs a ritual with you",
+			"entries": [
+				"You inscribe your true name on your ka stone, as well as oaths to gods and pharaohs, and embed it in your forehead in a special ritual with a sphinx or with a living monolith who already has this feat. The ka stone is an invested magic item that you automatically invest each day. It can't be removed without your permission, nor can it be dispelled, and you can never lose investiture in the ka stone. Its Bulk is negligible.",
+				"The ka stone grants you a +1 item bonus to saves against {@trait death} effects and {@trait negative} effects, which increases to +2 at 8th level, +3 at 14th level, and +4 at 20th level.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"(envision)",
+						"or a different activation if otherwise specified"
+					],
+					"frequency": {
+						"special": "a number of times each day equal to the number of class feats you have from the {@archetype Living Monolith|LOWG} archetype"
+					},
+					"entries": [
+						"You cast {@spell enlarge} on yourself or use one of the other activated abilities granted by a later {@archetype Living Monolith|LOWG} feat."
+					]
+				}
+			],
+			"leadsTo": [
+				"Attunement To Stone|LOWG",
+				"Fortified Flesh|LOWG",
+				"Judgment Of The Monolith|LOWG",
+				"Stone Blood|LOWG",
+				"Stone Communion|LOWG"
+			]
+		},
+		{
+			"name": "Lastwall Sentry Dedication",
+			"source": "LOWG",
+			"page": 47,
+			"level": 2,
+			"featType": {
+				"archetype": [
+					"Lastwall Sentry"
+				]
+			},
+			"traits": [
+				"uncommon",
+				"archetype",
+				"dedication"
+			],
+			"prerequisites": "member of the Knights of Lastwall, {@feat Shield Block}",
+			"access": "You are from the Eye of Dread region.",
+			"entries": [
+				"You've sworn yourself as a sentry for the Knights of Lastwall, the first line of defense against incursions by the Whispering Tyrant throughout Golarion. You become trained in {@skill Athletics} and in {@skill Lore||Undead Lore}; if you were already trained, you become an expert instead. Finally, you gain the {@feat Reactive Shield} fighter feat."
+			],
+			"special": "You can't select another dedication feat until you have gained two other feats from the Lastwall sentry archetype.",
+			"leadsTo": [
+				"Eye Of Ozem|LOWG",
+				"Grave Sense|LOWG",
+				"Lastwall Warden|LOWG",
+				"Necromantic Resistance|LOWG",
+				"Necromantic Tenacity|LOWG",
+				"Rescuer's Press|LOL"
+			]
+		},
+		{
+			"name": "Lastwall Warden",
+			"source": "LOWG",
+			"page": 47,
+			"level": 10,
+			"featType": {
+				"archetype": [
+					"Lastwall Sentry"
+				]
+			},
+			"traits": [
+				"archetype"
+			],
+			"prerequisites": "{@feat Lastwall Sentry Dedication|LOWG}",
+			"entries": [
+				"You use your shield to protect your allies, not just yourself, especially against the undead. When you have a shield raised, you can use your {@feat Shield Block} reaction when an attack is made against an ally adjacent to you, in addition to its usual trigger. If you do, the shield prevents that ally from taking damage instead of you, following the normal rules for a {@feat Shield Block}.",
+				"If an undead makes an attack against an ally within 10 feet, you can {@action Step} to become adjacent to your ally and then use {@feat Shield Block} as part of the same reaction."
+			]
+		},
+		{
+			"name": "Lion Blade Dedication",
+			"source": "LOWG",
+			"page": 131,
+			"level": 2,
+			"featType": {
+				"archetype": [
+					"Lion Blade"
+				]
+			},
+			"traits": [
+				"uncommon",
+				"archetype",
+				"dedication"
+			],
+			"prerequisites": "member of the Lion Blades, trained in {@skill Performance}",
+			"access": "You are from Taldor.",
+			"entries": [
+				"Your lion blade spy training helps you conceal yourself and your identity. You become trained in your choice of {@skill Deception} or {@skill Stealth} and in {@skill Lore||Espionage Lore}; if you were already trained, you become an expert instead. You never take circumstance penalties for attempting to take a disguise of a different ancestry, age, and so on, as long as the disguised form is appropriate for your size."
+			],
+			"special": "You cannot select another dedication feat until you have gained two other feats from the Lion Blade archetype.",
+			"leadsTo": [
+				"Expeditious Advance|LOWG",
+				"Flicker|LOWG",
+				"Lost In The Crowd|LOWG",
+				"Crowd Mastery|LOWG",
+				"Spy's Countermeasures|LOWG"
+			]
+		},
+		{
+			"name": "Living Monolith Dedication",
+			"source": "LOWG",
+			"page": 59,
+			"level": 2,
+			"featType": {
+				"archetype": [
+					"Living Monolith"
+				]
+			},
+			"traits": [
+				"uncommon",
+				"archetype",
+				"dedication"
+			],
+			"prerequisites": "{@language Ancient Osirion|LOWG|Ancient Osiriani} and {@language Sphinx|Be1} languages, trained in {@skill Crafting}",
+			"access": "You are from the Golden Road region.",
+			"entries": [
+				"You've begun to inscribe a magical stone called a ka stone that you will some day tie to your soul. You gain knowledge of {@language Ancient Osirion|LOWG} and a connection to your nascent ka stone. If you fail a recovery check while {@condition dying}, your {@condition dying} condition does not increase; if you critically fail, your {@condition dying} condition increases by only 1. You become trained in {@skill Lore||Ancient Osirion Lore}, or expert if you were already trained."
+			],
+			"special": "You cannot select another dedication feat until you have gained two other feats from the living monolith archetype.",
+			"leadsTo": [
+				"Ka Stone Ritual|LOWG",
+				"Attunement To Stone|LOWG",
+				"Fortified Flesh|LOWG",
+				"Judgment Of The Monolith|LOWG",
+				"Stone Blood|LOWG",
+				"Stone Communion|LOWG"
+			]
+		},
+		{
+			"name": "Living Rune",
+			"source": "LOWG",
+			"page": 119,
+			"level": 6,
+			"featType": {
+				"archetype": [
+					"Runescarred"
+				]
+			},
+			"traits": [
+				"archetype"
+			],
+			"prerequisites": "{@feat Runescarred Dedication|LOWG}",
+			"entries": [
+				"You've bridged a connection between the runes on your body and the magic of runestones, allowing you to place an armor rune on your living flesh. Your body can hold a single property rune; you can't etch a property rune on your body if it has requirements on the type or category of armor or if the property would affect the armor instead of its wearer. If you wear armor, you gain the property rune's effects in addition to any effects of that armor."
+			]
+		},
+		{
+			"name": "Lost In The Crowd",
+			"source": "LOWG",
+			"page": 131,
+			"level": 4,
+			"featType": {
+				"archetype": [
+					"Lion Blade"
+				]
+			},
+			"traits": [
+				"archetype"
+			],
+			"prerequisites": "{@feat Lion Blade Dedication|LOWG}",
+			"entries": [
+				"You've learned how to move as one with crowds and hide among them, vanishing into a busy street in the blink of an eye. You move at full Speed in crowds and can use cover from crowds to {@action Hide} and {@action Sneak}, gaining a +2 circumstance bonus on your {@skill Stealth} checks when in a crowd of at least 10 creatures and a +4 circumstance bonus on your {@skill Stealth} checks when in a crowd of at least 100 creatures."
+			],
+			"leadsTo": [
+				"Crowd Mastery|LOWG"
+			]
+		},
+		{
+			"name": "Magic Warrior Aspect",
+			"source": "LOWG",
+			"page": 95,
+			"level": 4,
+			"featType": {
+				"archetype": [
+					"Magic Warrior"
+				]
+			},
+			"traits": [
+				"archetype"
+			],
+			"prerequisites": "{@feat Magic Warrior Dedication|LOWG}",
+			"entries": [
+				"You can alter your form to gain an aspect of the animal your mask represents. You gain the {@spell magic warrior aspect|LOWG} focus spell."
+			]
+		},
+		{
+			"name": "Magic Warrior Dedication",
+			"source": "LOWG",
+			"page": 95,
+			"level": 2,
+			"featType": {
+				"archetype": [
+					"Magic Warrior"
+				]
+			},
+			"traits": [
+				"uncommon",
+				"archetype",
+				"dedication"
+			],
+			"prerequisites": "ability to cast focus spells",
+			"access": "You are from the Mwangi Expanse.",
+			"entries": [
+				"You have taken up a nameless mask and sworn the oath of the magic warriors. You become trained in your choice of {@skill Arcana} or {@skill Nature} and in {@skill Lore||Magic Warrior Lore}; if you were already trained in the skill, you become an expert instead.",
+				"You hide your identity behind a mask representing an animal of your choice, corresponding to one of the general animal types in the {@spell animal form} spell. You gain a +1 circumstance bonus to saves against {@trait divination} effects, though sometimes refusing to remove your mask can cause issues in areas that don't respect or understand the magic warrior tradition.",
+				"Once you take this feat, if another creature ever learns your true face or name, you lose your abilities from this archetype.",
+				"Close allies who knew of your decision to take the mask before your dedication don't break this taboo unless they tell someone else. To regain your abilities, you must discard your mask and obtain a new one of a different animal, then retrain Magic Warrior Dedication into a new Magic Warrior Dedication with your new mask. Your focus spells from the magic warrior archetype are the same tradition as your other spells (choose one if you have spells from multiple traditions)."
+			],
+			"special": "You cannot select another dedication feat until you have gained two other feats from the magic warrior archetype.",
+			"leadsTo": [
+				"Magic Warrior Aspect|LOWG",
+				"Magic Warrior Transformation|LOWG",
+				"Nameless Anonymity|LOWG"
+			]
+		},
+		{
+			"name": "Magic Warrior Transformation",
+			"source": "LOWG",
+			"page": 95,
+			"level": 4,
+			"featType": {
+				"archetype": [
+					"Magic Warrior"
+				]
+			},
+			"traits": [
+				"archetype"
+			],
+			"prerequisites": "{@feat Magic Warrior Dedication|LOWG}",
+			"entries": [
+				"You can transform fully into the animal your mask represents.",
+				"You gain the {@spell magic warrior transformation|LOWG} focus spell."
+			]
+		},
+		{
+			"name": "Mantis Form",
+			"source": "LOWG",
+			"page": 71,
+			"level": 8,
+			"featType": {
+				"archetype": [
+					"Red Mantis Assassin"
+				]
+			},
+			"traits": [
+				"archetype"
+			],
+			"prerequisites": "{@feat Basic Red Mantis Magic|LOWG}",
+			"entries": [
+				"You gain the {@spell mantis form|LOWG} focus spell. If you don't already have one, you gain a focus pool of 1 Focus Point, which you can {@action Refocus} by praying to {@deity Achaekek|LOGM} or researching your assigned kill."
+			]
+		},
+		{
+			"name": "Mortification",
+			"source": "LOWG",
+			"page": 107,
+			"level": 4,
+			"featType": {
+				"archetype": [
+					"Hellknight Armiger"
+				]
+			},
+			"traits": [
+				"archetype"
+			],
+			"prerequisites": "{@feat Hellknight Armiger Dedication|LOWG}",
+			"entries": [
+				"Your reckonings have prepared your body for physical punishment. Choose bludgeoning, piercing, or slashing damage, based on the nature of your physical reckonings. You gain resistance to the chosen damage type equal to your number of class feats from the Hellknight Armiger archetype and other Hellknight archetypes."
+			]
+		},
+		{
+			"name": "Nameless Anonymity",
+			"source": "LOWG",
+			"page": 95,
+			"level": 6,
+			"featType": {
+				"archetype": [
+					"Magic Warrior"
+				]
+			},
+			"traits": [
+				"archetype"
+			],
+			"prerequisites": "{@feat Magic Warrior Dedication|LOWG}",
+			"entries": [
+				"Your mask protects you further from divination. Once per day, you can cast {@spell nondetection} on yourself, heightened to the highest level of spell you can cast; the spell ends immediately if your mask is removed for even a moment. The spell is of the same tradition as your focus spells."
+			]
+		},
+		{
+			"name": "Necromantic Resistance",
+			"source": "LOWG",
+			"page": 47,
+			"level": 4,
+			"featType": {
+				"archetype": [
+					"Lastwall Sentry"
+				]
+			},
+			"traits": [
+				"archetype"
+			],
+			"prerequisites": "{@feat Lastwall Sentry Dedication|LOWG}",
+			"entries": [
+				"As part of your training, you've inured yourself against necromancy through repeated exposure. You gain a +1 circumstance bonus to saves against {@trait necromancy} effects and gain resistance to negative damage equal to half your level."
+			],
+			"leadsTo": [
+				"Necromantic Tenacity|LOWG"
+			]
+		},
+		{
+			"name": "Necromantic Tenacity",
+			"source": "LOWG",
+			"page": 47,
+			"level": 8,
+			"featType": {
+				"archetype": [
+					"Lastwall Sentry"
+				]
+			},
+			"traits": [
+				"archetype"
+			],
+			"prerequisites": "{@feat Necromantic Resistance|LOWG}",
+			"entries": [
+				"Your training against necromantic effects allows you to escape the worst of their touch. If you roll a success on a saving throw against a {@trait necromancy} effect, you get a critical success instead; if you roll a critical failure on such a save, you get a failure instead."
+			]
+		},
+		{
+			"name": "Pathfinder Agent Dedication",
+			"source": "LOWG",
+			"page": 23,
+			"level": 2,
+			"featType": {
+				"archetype": [
+					"Pathfinder Agent"
+				]
+			},
+			"traits": [
+				"uncommon",
+				"archetype",
+				"dedication"
+			],
+			"prerequisites": "member of the Pathfinder Society",
+			"access": "You are from Absalom.",
+			"entries": [
+				"Your Pathfinder training has broadened your horizons and made you more flexible at various skills, since you never know when you might need an obscure skill to complete your mission. You become trained in one skill of your choice, or expert in a skill of your choice in which you were trained. You also become trained in {@skill Lore||Pathfinder Lore}, or an expert if you were already trained. When using a skill untrained, your proficiency bonus is equal to your level instead of 0. You gain access to {@item wayfinder||wayfinders}."
+			],
+			"special": "You cannot select another dedication feat until you have gained two other feats from the Pathfinder agent archetype.",
+			"leadsTo": [
+				"Careful Explorer|LOWG",
+				"Deft Cooperation|LOWG",
+				"Thorough Reports|LOWG",
+				"Discerning Strike|LOPSG",
+				"Wayfinder Resonance Tinkerer|LOWG",
+				"Wayfinder Resonance Infiltrator|LOPSG",
+				"Educated Assessment|LOCG",
+				"Everyone Duck!|LOCG",
+				"Forced Entry|LOCG",
+				"Recognize Threat|LOCG",
+				"Archaeologist's Warning|LOPSG",
+				"Craft Facsimile|LOPSG",
+				"Dead Reckoning|LOPSG",
+				"Diverse Recognition|LOPSG",
+				"Eidetic Memorization|LOPSG",
+				"Environmental Explorer|LOPSG",
+				"Observant Explorer|LOPSG",
+				"Remember Your Training|LOPSG",
+				"Snap Out Of It!|LOPSG",
+				"Spiritual Explorer|LOPSG",
+				"Swap Investment|LOPSG",
+				"Watch And Learn|LOPSG",
+				"Westyr's Wayfinder Repository|LOPSG"
+			]
+		},
+		{
+			"name": "Perfect Ki Adept",
+			"source": "LOWG",
+			"page": 83,
+			"level": 6,
+			"featType": {
+				"archetype": [
+					"Student of Perfection"
+				]
+			},
+			"traits": [
+				"archetype"
+			],
+			"prerequisites": "{@feat Student of Perfection Dedication|LOWG}",
+			"entries": [
+				"You gain the appropriate ki spell for your School of Perfection: {@spell unblinking flame revelation|LOWG} for Unblinking Flame, {@spell unbreaking wave advance|LOWG} for Unbreaking Waves, {@spell unfolding wind rush|LOWG} for Unfolding Wind, or {@spell untwisting iron buffer|LOWG} for Untwisting Iron.",
+				"Increase the number of Focus Points in your focus pool by 1."
+			]
+		},
+		{
+			"name": "Perfect Strike",
+			"source": "LOWG",
+			"page": 83,
+			"level": 4,
+			"featType": {
+				"archetype": [
+					"Student of Perfection"
+				]
+			},
+			"traits": [
+				"archetype"
+			],
+			"prerequisites": "{@feat Student of Perfection Dedication|LOWG}",
+			"entries": [
+				"You gain the {@spell perfect strike|LOWG} ki spell. Increase the number of Focus Points in your focus pool by 1."
+			]
+		},
+		{
+			"name": "Red Mantis Assassin Dedication",
+			"source": "LOWG",
+			"page": 71,
+			"level": 2,
+			"featType": {
+				"archetype": [
+					"Red Mantis Assassin"
+				]
+			},
+			"traits": [
+				"uncommon",
+				"archetype",
+				"dedication"
+			],
+			"prerequisites": "trained in sawtooth sabers, deity is {@deity Achaekek|LOGM}, lawful evil alignment, member of the Red Mantis assassins",
+			"access": "You are from Mediogalti Island.",
+			"entries": [
+				"You have learned how to stalk your foes and slay them with a sawtooth sabre. You become trained in {@skill Stealth} and {@skill Lore||Assassin Lore}; if you were already trained, you become an expert instead. Whenever your proficiency in any weapon increases to expert or beyond, you also gain that new proficiency with sawtooth sabers."
+			],
+			"special": "You cannot select another dedication feat until you have gained two other feats from the Red Mantis assassin archetype.",
+			"leadsTo": [
+				"Basic Red Mantis Magic|LOWG",
+				"Advanced Red Mantis Magic|LOWG",
+				"Vernai Training|LOL",
+				"Mantis Form|LOWG",
+				"Achaekek's Grip|LOL",
+				"Crimson Shroud|LOWG",
+				"Fading|LOL",
+				"Prayer Attack|LOL"
+			]
+		},
+		{
+			"name": "Runescarred Dedication",
+			"source": "LOWG",
+			"page": 119,
+			"level": 2,
+			"featType": {
+				"archetype": [
+					"Runescarred"
+				]
+			},
+			"traits": [
+				"uncommon",
+				"archetype",
+				"dedication"
+			],
+			"prerequisites": "trained in {@skill Arcana}",
+			"access": "You are from the Saga Lands.",
+			"entries": [
+				"Whether through blood (if you're Varisian, Shoanti, or New Thassilonian) or by exposure to rune magic, you have become runescarred, with visible, glowing runes on your body in the form of tattoos or scars. You might have possessed these marks before gaining the archetype, but you only truly became runescarred when you chose to study and tap into the runes' power. You become an expert in {@skill Arcana} and you also become trained in {@skill Lore||Thassilon Lore}, or an expert in {@skill Lore||Thassilon Lore} if you were already trained in it.",
+				"Choose one cantrip from the arcane list. One of the runes on your body corresponds to the chosen cantrip, and you can cast the chosen cantrip as an innate arcane spell."
+			],
+			"special": "You cannot select another dedication feat until you have gained two other feats from the runescarred archetype.",
+			"leadsTo": [
+				"Living Rune|LOWG",
+				"Spell Runes|LOWG",
+				"Greater Spell Runes|LOWG",
+				"Warding Rune|LOWG"
+			]
+		},
+		{
+			"name": "Saving Slash",
+			"source": "LOWG",
+			"page": 35,
+			"activity": {
+				"number": 1,
+				"unit": "varies",
+				"entry": "{@as R}]"
+			},
+			"level": 10,
+			"featType": {
+				"archetype": [
+					"Aldori Duelist"
+				]
+			},
+			"traits": [
+				"archetype"
+			],
+			"prerequisites": "{@feat Aldori Duelist Dedication|LOWG}",
+			"trigger": "An opponent critically hits you with a melee attack.",
+			"entries": [
+				"You quickly whirl your blade, trying to deflect enough momentum to avoid the worst of the attack. Attempt a DC {@flatDC 16} flat check. If you succeed, the attack becomes a normal hit, instead of a critical hit."
+			]
+		},
+		{
+			"name": "Spell Runes",
+			"source": "LOWG",
+			"page": 119,
+			"level": 4,
+			"featType": {
+				"archetype": [
+					"Runescarred"
+				]
+			},
+			"traits": [
+				"archetype"
+			],
+			"prerequisites": "{@feat Runescarred Dedication|LOWG}",
+			"entries": [
+				"The magical runes on your body grant you several magical abilities. Choose a 1st-level arcane spell. You gain a spell rune on your body corresponding to the chosen spell, which you can cast once per day as an innate spell. At 6th level, you gain a spell rune corresponding to a 2nd-level arcane spell, and at 8th level, you gain a spell rune corresponding to a 3rd-level arcane spell."
+			],
+			"leadsTo": [
+				"Greater Spell Runes|LOWG"
+			]
+		},
+		{
+			"name": "Spy's Countermeasures",
+			"source": "LOWG",
+			"page": 131,
+			"level": 10,
+			"featType": {
+				"archetype": [
+					"Lion Blade"
+				]
+			},
+			"traits": [
+				"archetype"
+			],
+			"prerequisites": "{@feat Lion Blade Dedication|LOWG}",
+			"entries": [
+				"You've learned how to analyze and fake your responses to the most common magic used against spies. Whenever you succeed at your save against a {@trait divination} or {@trait mental} effect, you can {@action Identify Magic} to identify the spell as a free action triggered when you succeed, even if you didn't notice the spell being cast.",
+				"If you successfully identify a {@trait divination} effect targeting you and the spell would normally fail or have no effect, you can create a substitute result, causing the spell's caster to think the spell succeeded, with a result of your choice. If you successfully identify a {@trait mental} effect targeting you and the spell would normally fail or have no effect, you can make it appear as if you were affected and attempt to play along with the spell; if the spell normally establishes a mental link, it functions normally but you can disregard any commands you receive through the link."
+			]
+		},
+		{
+			"name": "Stone Blood",
+			"source": "LOWG",
+			"page": 59,
+			"level": 6,
+			"featType": {
+				"archetype": [
+					"Living Monolith"
+				]
+			},
+			"traits": [
+				"archetype"
+			],
+			"prerequisites": "{@feat Ka Stone Ritual|LOWG}",
+			"entries": [
+				"You can selectively stop your bleeding with ease. Reduce the DC of flat checks to stop {@condition persistent damage ||persistent bleed damage} you have from 15 to 10, and you can use a single action that has the {@trait concentrate} trait to gain an early flat check without physically binding the wounds.",
+				"You recover naturally from the {@condition drained} condition twice as quickly as normal."
+			]
+		},
+		{
+			"name": "Stone Communion",
+			"source": "LOWG",
+			"page": 59,
+			"level": 14,
+			"featType": {
+				"archetype": [
+					"Living Monolith"
+				]
+			},
+			"traits": [
+				"archetype"
+			],
+			"prerequisites": "{@feat Ka Stone Ritual|LOWG}",
+			"entries": [
+				"You gain a unique communion with the earth and stones. You learn the {@language Terran} language and you can {@action Activate an Item||Activate} your ka stone with a 10-minute activation (envision) to cast {@spell stone tell}."
+			]
+		},
+		{
+			"name": "Student of Perfection Dedication",
+			"source": "LOWG",
+			"page": 83,
+			"level": 2,
+			"featType": {
+				"archetype": [
+					"Student of Perfection"
+				]
+			},
+			"traits": [
+				"uncommon",
+				"archetype",
+				"dedication"
+			],
+			"prerequisites": "{@classFeature powerful fist|monk||1} or expert in unarmed attacks; member of a House of Perfection",
+			"access": "You are from Jalmeray.",
+			"entries": [
+				"You have learned the martial arts techniques of your House of Perfection. You become trained in your choice of {@skill Acrobatics} or {@skill Athletics} and {@skill Lore||Warfare Lore}; if you were already trained, you become an expert instead. You gain the {@feat Ki Strike} monk class feat, which grants you the {@spell ki strike} ki spell and a focus pool of 1 Focus Point that you can recover using the {@action Refocus} activity as a monk does. Your ki spells from Student of Perfection are occult spells."
+			],
+			"special": "You can't select another dedication feat until you have gained two other feats from the student of perfection archetype.",
+			"leadsTo": [
+				"Perfect Ki Adept|LOWG",
+				"Perfect Strike|LOWG"
+			]
+		},
+		{
+			"name": "Thorough Reports",
+			"source": "LOWG",
+			"page": 23,
+			"level": 4,
+			"featType": {
+				"archetype": [
+					"Pathfinder Agent"
+				]
+			},
+			"traits": [
+				"archetype",
+				"skill"
+			],
+			"prerequisites": "{@feat Pathfinder Agent Dedication|LOWG}",
+			"entries": [
+				"Your reports are thorough and informative, and putting your thoughts to paper helps you retain the information. Keep track of each type of creature you successfully identify with {@action Recall Knowledge}. When attempting {@action Recall Knowledge} checks against creatures on your list in later encounters, you gain a +2 circumstance bonus, and you learn an additional fact about such creatures on a success."
+			],
+			"leadsTo": [
+				"Discerning Strike|LOPSG"
+			]
+		},
+		{
+			"name": "Unnerving Prowess",
+			"source": "LOWG",
+			"page": 35,
+			"activity": {
+				"number": 1,
+				"unit": "free"
+			},
+			"level": 6,
+			"featType": {
+				"archetype": [
+					"Aldori Duelist"
+				]
+			},
+			"traits": [
+				"archetype"
+			],
+			"prerequisites": "{@feat Aldori Duelist Dedication|LOWG}",
+			"trigger": "You critically succeed at a {@action Strike} or {@action Disarm} with your Aldori dueling sword",
+			"entries": [
+				"Your incredible skill with your blade unnerves your foes. You attempt to {@action Demoralize} the target of your {@action Strike} or {@action Disarm}. This {@action Demoralize} attempt does not have the {@trait auditory} trait, nor do you take a penalty to the check if the target doesn't understand your language."
+			]
+		},
+		{
+			"name": "Warding Rune",
+			"source": "LOWG",
+			"page": 119,
+			"level": 6,
+			"featType": {
+				"archetype": [
+					"Runescarred"
+				]
+			},
+			"traits": [
+				"archetype"
+			],
+			"prerequisites": "{@feat Runescarred Dedication|LOWG}",
+			"entries": [
+				"Your runes provide a warding effect that protects you against a specific school of magic. Choose a school of magic other than divination. You gain a rune on your body corresponding to that school, and you gain a +2 circumstance bonus to all saving throws against effects of that school."
+			]
+		},
+		{
+			"name": "Wayfinder Resonance Tinkerer",
+			"source": "LOWG",
+			"page": 23,
+			"level": 4,
+			"featType": {
+				"archetype": [
+					"Pathfinder Agent"
+				]
+			},
+			"traits": [
+				"archetype"
+			],
+			"prerequisites": "{@feat Pathfinder Agent Dedication|LOWG}",
+			"entries": [
+				"You can use the unusual resonance of your wayfinder to grant it additional effects. Choose one cantrip from the {@filter arcane|spells|tradition & spell list=arcane|rarity=common|level=0}, {@filter divine|spells|tradition & spell list=divine|rarity=common|level=0}, {@filter occult|spells|tradition & spell list=occult|rarity=common|level=0}, or {@filter primal|spells|tradition & spell list=primal|rarity=common|level=0} list. You can activate your wayfinder to cast that cantrip at will. As normal, this cantrip is heightened to a spell level equal to half your level rounded up. Additionally, you can {@action Activate an Item||Activate} your wayfinder with a {@as 1} (envision) activation to transform it into a nondescript pin or brooch to hide your affiliation with the Pathfinder Society. This transformation lasts for 1 hour."
+			],
+			"leadsTo": [
+				"Wayfinder Resonance Infiltrator|LOPSG"
+			]
+		}
+	]
+}

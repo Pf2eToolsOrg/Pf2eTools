@@ -1,1 +1,3252 @@
-{"_meta":{"dependencies":{"creature":["Bst3"]},"internalCopies":["creature"],"otherSources":{"creature":{"Bst3":"SoT1"}}},"creature":[{"name":"Anadi Fateweaver","isNpc":false,"source":"SoT1","page":79,"level":5,"traits":["uncommon","ng","medium","anadi","humanoid"],"creatureType":["Humanoid"],"perception":{"std":14},"languages":{"languages":["Anadi","Common"],"languageAbilities":[]},"skills":{"Acrobatics":{"std":13},"Athletics":{"std":11,"to Climb in true or spider form":15},"Medicine":{"std":12},"Nature":{"std":14},"Survival":{"std":12}},"abilityMods":{"str":2,"dex":4,"con":0,"int":0,"wis":5,"cha":1},"items":["composite shortbow (20 arrows)","hide armor","shortsword"],"ac":{"std":21},"savingThrows":{"fort":{"std":9},"ref":{"std":12},"will":{"std":15}},"hp":[{"hp":75,"abilities":null}],"speed":{"walk":25,"climb":25},"attacks":[],"spellcasting":[{"name":"Arcane Spontaneous","type":"Spontaneous","tradition":"Arcane","DC":23,"attack":15,"entry":{"0":{"level":3,"spells":[{"name":"daze"},{"name":"ghost sound"},{"name":"produce flame"},{"name":"shield"}]},"1":{"slots":3,"spells":[{"name":"illusory object"},{"name":"magic missile"},{"name":"ray of enfeeblement"}]},"2":{"slots":3,"spells":[{"name":"augury"},{"name":"invisibility"},{"name":"status"}]},"3":{"slots":2,"spells":[{"name":"hypnotic pattern"},{"name":"mind reading"}]}}},{"name":"Arcane Innate","type":"Innate","tradition":"Arcane","DC":23,"entry":{"0":{"level":3,"spells":[{"name":"dancing lights"},{"name":"detect magic"},{"name":"mage hand"},{"name":"message"}]},"1":{"spells":[{"name":"color spray"},{"name":"mending"},{"name":"unseen servant"}]},"2":{"spells":[{"name":"blur"},{"name":"web"}]}}}],"rituals":[{"DC":23,"rituals":[{"name":"arcane weaving|sot1"}]}],"abilities":{"mid":[{"activity":{"number":1,"unit":"reaction"},"traits":["fortune"],"trigger":"An ally within 30 feet of the anadi fateweaver that they can see makes a skill check or a saving throw","frequency":{"unit":"day","freq":3},"entries":["The creature rerolls the triggering check and takes the new result."],"name":"Fate's Threads"}],"bot":[{"traits":["poison"],"entries":[{"type":"affliction","DC":20,"savingThrow":"Fortitude","maxDuration":"4 rounds","stages":[{"stage":1,"entry":"{@dice 1d6} poison damage and {@condition flat-footed}","duration":"1 round"},{"stage":2,"entry":"{@dice 1d6} poison damage, {@condition flat-footed} and {@condition clumsy 1}","duration":"1 round"}]}],"name":"Anadi Venom"},{"activity":{"number":1,"unit":"action"},"traits":["arcane","concentrate","polymorph","transmutation"],"entries":["The anadi changes into their hybrid, spider, or human form. The above statistics assume the anadi is in hybrid form. While in human form, the anadi seeker loses their climb Speed and can't use their fangs attack. When in spider form, they can't use weapons."],"name":"Change Shape","generic":true},{"traits":["concentrate","exploration","manipulate"],"entries":["By spending several minutes, an anadi can produce silk to craft items made of cloth. An anadi can produce enough silk in a day to craft a single garment."],"name":"Spin Silk"}]}},{"name":"Anadi Lurker","isNpc":false,"source":"SoT1","page":78,"level":3,"traits":["uncommon","cn","medium","anadi","humanoid"],"creatureType":["Humanoid"],"perception":{"std":11},"languages":{"languages":["Anadi","Common"],"languageAbilities":[]},"skills":{"Acrobatics":{"std":9},"Athletics":{"std":10},"Crafting":{"std":5,"weaving":9},"Nature":{"std":7},"Stealth":{"std":11},"Survival":{"std":9}},"abilityMods":{"str":3,"dex":4,"con":0,"int":0,"wis":2,"cha":1},"items":["kukri","leather armor"],"ac":{"std":19},"savingThrows":{"fort":{"std":7},"ref":{"std":11},"will":{"std":9}},"hp":[{"hp":45,"abilities":null}],"speed":{"walk":25,"climb":25},"attacks":[{"range":"Melee","name":"fangs","attack":12,"traits":["finesse"],"effects":["anadi venom"],"damage":"{@damage 1d8+3} piercing plus anadi venom","types":["piercing"]},{"range":"Melee","name":"kukri","attack":12,"traits":["agile","finesse","trip"],"effects":[],"damage":"{@damage 1d6+3} slashing","types":["slashing"]}],"spellcasting":[{"name":"Arcane Innate","type":"Innate","tradition":"Arcane","DC":20,"entry":{"0":{"level":2,"spells":[{"name":"daze"},{"name":"detect magic"},{"name":"mage hand"},{"name":"message"}]},"1":{"spells":[{"name":"color spray"},{"name":"illusory disguise"},{"name":"illusory object"}]},"2":{"spells":[{"name":"blur"},{"name":"web"}]}}}],"abilities":{"bot":[{"entries":[{"type":"affliction","name":"","traits":["poison"],"note":"","DC":18,"savingThrow":"Fortitude","maxDuration":"4\nrounds","stages":[{"stage":1,"entry":"{@damage 1d6} poison damage and {@condition flat-footed}","duration":"1 round"},{"stage":2,"entry":"{@damage 1d6} poison damage, {@condition flat-footed}, and {@condition clumsy|CRB|clumsy 1}","duration":"1 round"}]}],"name":"Anadi Venom"},{"activity":{"number":1,"unit":"action"},"traits":["arcane","concentrate","polymorph","transmutation"],"entries":["The anadi changes into their hybrid, spider, or human form. The above statistics assume the anadi is in hybrid form. While in human form, the anadi seeker loses their climb Speed and can't use their fangs attack. When in spider form, they can't use weapons."],"name":"Change Shape","generic":true},{"entries":["The anadi lurker deals an additional {@damage 1d6} precision damage to flatfooted creatures."],"name":"Sneak Attack","generic":true},{"traits":["concentrate","exploration","manipulate"],"entries":["By spending several minutes, an anadi can produce silk to craft items made of cloth. An anadi can produce enough silk in a day to craft a single garment."],"name":"Spin Silk"}]}},{"name":"Anadi Seeker","isNpc":false,"source":"SoT1","page":78,"level":1,"traits":["uncommon","cg","medium","anadi","humanoid"],"creatureType":["Humanoid"],"perception":{"std":7},"languages":{"languages":["Anadi","Common"],"languageAbilities":[]},"skills":{"Acrobatics":{"std":6},"Arcana":{"std":7},"Athletics":{"std":4},"Crafting":{"std":7,"weaving":11},"Nature":{"std":5},"Occultism":{"std":7}},"abilityMods":{"str":1,"dex":3,"con":-1,"int":4,"wis":2,"cha":0},"items":["sling (20 sling bullets)"],"ac":{"std":15},"savingThrows":{"fort":{"std":4},"ref":{"std":10},"will":{"std":7}},"hp":[{"hp":20,"abilities":null}],"speed":{"walk":25,"climb":25},"attacks":[{"range":"Melee","name":"fangs","attack":8,"traits":["finesse"],"effects":["anadi venom"],"damage":"{@damage 1d6+1} piercing plus anadi venom","types":["piercing"]},{"range":"Ranged","name":"sling","attack":8,"traits":["propulsive","range increment 50 feet","reload 1"],"effects":[],"damage":"{@damage 1d6} bludgeoning","types":["bludgeoning"]}],"spellcasting":[{"name":"Arcane Innate","type":"Innate","tradition":"Arcane","DC":17,"entry":{"0":{"level":1,"spells":[{"name":"dancing lights"},{"name":"detect magic"},{"name":"mage hand"},{"name":"read aura"},{"name":"shield"}]},"1":{"spells":[{"name":"color spray"},{"name":"magic missile"},{"name":"unseen servant"}]}}}],"abilities":{"bot":[{"entries":[{"type":"affliction","name":"","traits":["poison"],"note":"","DC":15,"savingThrow":"Fortitude","maxDuration":"4 rounds","stages":[{"stage":1,"entry":"{@damage 1d6} poison damage and {@condition flat-footed}","duration":"1 round"},{"stage":2,"entry":"{@damage 1d6} poison damage, {@condition flat-footed}, and {@condition clumsy|CRB|clumsy 1}","duration":"1 round"}]}],"name":"Anadi Venom"},{"activity":{"number":1,"unit":"action"},"traits":["arcane","concentrate","polymorph","transmutation"],"entries":["The anadi changes into their hybrid, spider, or human form. The above statistics assume the anadi is in hybrid form. While in human form, the anadi seeker loses their climb Speed and can't use their fangs attack. When in spider form, they can't use weapons."],"name":"Change Shape","generic":true},{"traits":["concentrate","exploration","manipulate"],"entries":["By spending several minutes, an anadi can produce silk to craft items made of cloth. An anadi can produce enough silk in a day to craft a single garment."],"name":"Spin Silk"}]}},{"name":"Binji","source":"SoT1","page":53,"_copy":{"name":"Grimple","source":"Bst3","_mod":{"abilities.mid":[{"mode":"insertArr","items":{"entries":["The prevalence of insects on the Magaambya campus means Binji is more infested with gremlin lice than most grimples. The Reflex DC to avoid infestation from her gremlin lice is 15 rather than 13. {@note Already accounted in the ability.}"],"name":"So Many Lice"}},{"mode":"replaceTxt","replace":"DC 13 Reflex","with":"DC 15 Reflex"}]}},"traits":["unique","gremlin"],"languages":{"languages":["Common","Undercommon"]}},{"name":"Bramble Champion Construct","isNpc":false,"source":"SoT1","page":41,"level":3,"traits":["rare","n","large","construct","mindless"],"creatureType":["Construct"],"perception":{"std":10},"senses":[{"name":"low-light vision"}],"skills":{"Athletics":{"std":9,"to Shove":10}},"abilityMods":{"str":4,"dex":3,"con":1,"int":-5,"wis":1,"cha":-5},"items":["wooden maul"],"ac":{"std":20},"savingThrows":{"fort":{"std":10},"ref":{"std":10},"will":{"std":8}},"hp":[{"hp":45,"abilities":null}],"immunities":["bleed","death effects","disease","doomed"],"speed":{"walk":20},"attacks":[{"range":"Melee","name":"wooden maul","attack":12,"traits":["nonlethal","reach 10 feet","shove"],"effects":[],"damage":"{@damage 1d12+4} bludgeoning","types":["bludgeoning"]}],"abilities":{"mid":[{"entries":["As shieldbearer construct (page 40)."],"name":"Critical Vulnerability"},{"entries":["As shieldbearer construct (page 40)."],"name":"Ridden Construct"},{"activity":{"number":1,"unit":"reaction"},"trigger":"An ally within the bramble champion's reach is targeted by an attack, and the bramble champion can see the attacker","entries":["The bramble champion interposes with its hammer, giving the ally a +2 circumstance bonus to AC against the triggering attack."],"name":"Hammer Block"}]}},{"name":"Giant Mining Bee","isNpc":false,"source":"SoT1","page":80,"level":2,"traits":["n","small","animal"],"creatureType":["Animal"],"perception":{"std":9},"senses":[{"name":"darkvision"},{"type":"imprecise","name":"{@ability tremorsense}","range":30}],"skills":{"Acrobatics":{"std":7},"Athletics":{"std":8}},"abilityMods":{"str":4,"dex":3,"con":1,"int":-5,"wis":1,"cha":0},"ac":{"std":18},"savingThrows":{"fort":{"std":9},"ref":{"std":11},"will":{"std":5}},"hp":[{"hp":30,"abilities":null}],"weaknesses":[{"name":"smoke susceptibility"}],"speed":{"walk":20,"burrow":10,"fly":40},"attacks":[{"range":"Melee","name":"stinger","attack":11,"traits":["deadly d8"],"effects":[],"damage":"{@damage 1d6+4} piercing","types":["piercing"]},{"range":"Melee","name":"mandibles","attack":11,"traits":["agile"],"effects":[],"damage":"{@damage 1d6+4} piercing","types":["piercing"]}],"abilities":{"mid":[{"entries":["A giant bee is {@condition slowed|CRB|slowed 1} for 1 round if it starts its turn in heavy smoke."],"name":"Smoke Susceptibility"}]}},{"name":"Giant Silverfish","isNpc":false,"source":"SoT1","page":84,"level":0,"traits":["uncommon","n","small","animal"],"creatureType":["Animal"],"perception":{"std":8},"senses":[{"name":"darkvision"}],"skills":{"Acrobatics":{"std":6},"Athletics":{"std":4},"Stealth":{"std":6}},"abilityMods":{"str":2,"dex":4,"con":1,"int":-5,"wis":1,"cha":-2},"ac":{"std":15},"savingThrows":{"fort":{"std":7},"ref":{"std":8},"will":{"std":5}},"hp":[{"hp":17,"abilities":null}],"speed":{"walk":40,"climb":20},"attacks":[{"range":"Melee","name":"mandibles","attack":8,"effects":[],"damage":"{@damage 1d6+2} piercing","types":["piercing"]}],"abilities":{"mid":[{"activity":{"number":1,"unit":"reaction"},"trigger":"A creature the giant silverfish can see targets it with an attack","entries":["The giant silverfish gains a +2 circumstance bonus to AC against the triggering attack. After the attack resolves, the silverfish {@action Step||Steps}."],"name":"Wriggle"}],"bot":[{"traits":["1 minute"],"entries":["A giant silverfish consumes up to 1 Bulk of paper, cloth, or similar material. It can consume up to 8 Bulk each day."],"name":"Voracious Consumption"}]}},{"name":"Giant Tsetse Fly","isNpc":false,"source":"SoT1","page":81,"level":2,"traits":["n","large","animal"],"creatureType":["Animal"],"perception":{"std":9},"senses":[{"name":"blood scent"},{"type":"imprecise","name":"scent","range":60}],"skills":{"Athletics":{"std":8},"Stealth":{"std":5,"to Hide":9}},"abilityMods":{"str":5,"dex":3,"con":3,"int":-5,"wis":1,"cha":-5},"ac":{"std":18},"savingThrows":{"fort":{"std":7},"ref":{"std":11},"will":{"std":5}},"hp":[{"hp":30,"abilities":null}],"speed":{"walk":10,"fly":40},"attacks":[{"range":"Melee","name":"proboscis","attack":11,"effects":["sleeping sickness"],"damage":"{@damage 1d6+5} piercing plus sleeping sickness","types":["piercing"]}],"abilities":{"top":[{"entries":["The giant tsetse fly can detect blood within 30 feet. This is a precise sense against creatures within 30 feet that are bleeding."],"name":"Blood Scent"}],"bot":[{"activity":{"number":1,"unit":"action"},"entries":["If the fly's last action was a successful proboscis {@action Strike}, it sucks its target's blood. The target takes {@damage 1d4} bleed damage (or {@damage 1d6} bleed damage if the target is an animal)."],"name":"Blood Draw"},{"entries":[{"type":"affliction","name":"","traits":["disease"],"note":"","DC":18,"savingThrow":"Fortitude","stages":[{"stage":1,"entry":"{@condition enfeebled|CRB|enfeebled 1}","duration":"1 day"},{"stage":2,"entry":"{@condition enfeebled|CRB|enfeebled 1} and {@condition drained|CRB|drained 1}","duration":"1 day"},{"stage":3,"entry":"{@condition unconscious}","duration":"1 day"},{"stage":4,"entry":"as","duration":null},{"stage":3,"entry":";","duration":"1 day"}]}],"name":"Sleeping Sickness"}]}},{"name":"Giant Worker Bee","isNpc":false,"source":"SoT1","page":80,"level":0,"traits":["n","medium","animal"],"creatureType":["Animal"],"perception":{"std":5},"senses":[{"name":"darkvision"}],"skills":{"Acrobatics":{"std":6},"Athletics":{"std":5}},"abilityMods":{"str":2,"dex":3,"con":2,"int":-5,"wis":1,"cha":-1},"ac":{"std":16},"savingThrows":{"fort":{"std":6},"ref":{"std":9},"will":{"std":3}},"hp":[{"hp":16,"abilities":null}],"weaknesses":[{"name":"smoke susceptibility"}],"speed":{"walk":20,"fly":40},"attacks":[{"range":"Melee","name":"stinger","attack":8,"traits":["deadly d6","finesse"],"effects":[],"damage":"{@damage 1d4+2} piercing","types":["piercing"]},{"range":"Melee","name":"mandibles","attack":8,"traits":["agile","finesse"],"effects":[],"damage":"{@damage 1d4+2} piercing","types":["piercing"]}],"abilities":{"mid":[{"entries":["A giant bee is {@condition slowed|CRB|slowed 1} for 1 round if it starts its turn in heavy smoke."],"name":"Smoke Susceptibility"}]}},{"name":"Gnagrif","isNpc":false,"source":"SoT1","page":83,"level":2,"traits":["uncommon","ne","tiny","fey","gremlin"],"creatureType":["Fey"],"perception":{"std":7},"senses":[{"name":"darkvision"}],"languages":{"languages":["Undercommon"],"languageAbilities":[]},"skills":{"Acrobatics":{"std":8},"Athletics":{"std":6},"Intimidation":{"std":6},"Stealth":{"std":8},"Survival":{"std":5}},"abilityMods":{"str":2,"dex":4,"con":3,"int":-1,"wis":-1,"cha":2},"items":["light hammer"],"ac":{"std":18},"savingThrows":{"fort":{"std":9},"ref":{"std":10},"will":{"std":5}},"hp":[{"hp":35,"abilities":null}],"weaknesses":[{"amount":3,"name":"cold iron"}],"speed":{"walk":20,"burrow":10,"climb":10},"attacks":[{"range":"Melee","name":"light hammer","attack":10,"traits":["agile"],"effects":[],"damage":"{@damage 1d6+4} bludgeoning","types":["bludgeoning"]},{"range":"Ranged","name":"light hammer","attack":10,"traits":["agile","thrown 20 feet"],"effects":[],"damage":"{@damage 1d6+4} bludgeoning","types":["bludgeoning"]}],"spellcasting":[{"name":"Primal Innate","type":"Innate","tradition":"Primal","DC":16,"entry":{"0":{"level":1,"spells":[{"name":"prestidigitation"}]},"1":{"spells":[{"name":"ant haul"},{"name":"feather fall"}]},"2":{"spells":[{"name":"shatter"},{"name":"speak with animals","amount":"at will"}]}}}],"abilities":{"mid":[{"activity":{"number":1,"unit":"reaction"},"trigger":"A creature {@action Stride||Strides} or {@action Step||Steps} into difficult terrain adjacent to the gnagrif","entries":["The gnagrif gives the ground a hearty pound and it shifts beneath the triggering creature's feet. The triggering creature must succeed on a DC 18 Reflex save or fall {@condition prone}."],"name":"Soften Stone"}],"bot":[{"activity":{"number":1,"unit":"action"},"entries":["The gnagrif gnashes and tears at an object or structure, dealing {@damage 2d4+2} piercing damage and ignoring Hardness 2 or lower."],"name":"Eat Rocks"},{"activity":{"number":2,"unit":"action"},"requirements":"A structure made from stone or earth is within the gnagrif's reach","entries":["The gnagrif partially melds with the stone. It Takes Cover in the stone and makes a {@skill Stealth} check to."],"name":"Lurk"},{"entries":[],"name":"Hide."},{"entries":["A gnagrif ignores difficult terrain caused by rocks or rubble, including squares affected by their."],"name":"Rubble Stride"},{"entries":[],"name":"Stomp Around."},{"activity":{"number":1,"unit":"action"},"traits":["move"],"entries":["The gnagrif huffs and stamps its feet, churning the ground around it. The square it is in and all unoccupied adjacent squares become difficult terrain."],"name":"Stomp Around"},{"entries":["Whenever two or more gnagrifs use Eat Rocks on the same object or structure, the value of Hardness they can ignore increases by 1 for every gnagrif, to a maximum of Hardness 10."],"name":"Wrecker"}]}},{"name":"Kurshkin","isNpc":true,"source":"SoT1","page":87,"level":3,"traits":["unique","ne","tiny","fey","gremlin"],"creatureType":["Fey"],"perception":{"std":10,"to hear things":2},"senses":[{"name":"darkvision"}],"languages":{"languages":["Common","Gnoll","Undercommon"],"languageAbilities":[]},"skills":{"Arcana":{"std":8},"Crafting":{"std":8},"Deception":{"std":8},"Nature":{"std":8},"Stealth":{"std":11},"Thievery":{"std":9,"to Steal":11}},"abilityMods":{"str":-2,"dex":4,"con":1,"int":1,"wis":-1,"cha":3},"items":["shortbow (60 arrows)","shortsword"],"ac":{"std":19},"savingThrows":{"fort":{"std":8},"ref":{"std":11},"will":{"std":8}},"hp":[{"hp":50,"abilities":null}],"weaknesses":[{"amount":5,"name":"cold iron"}],"speed":{"walk":25},"attacks":[{"range":"Melee","name":"shortsword","attack":12,"traits":["agile","finesse","magical","versatile s"],"effects":[],"damage":"{@damage 1d6+4} piercing","types":["piercing"]},{"range":"Ranged","name":"shortbow","attack":12,"traits":["deadly d10","magical","range increment 60 feet","reload 0"],"effects":[],"damage":"{@damage 1d6} piercing","types":["piercing"]}],"spellcasting":[{"name":"Primal Innate","type":"Innate","tradition":"Primal","DC":20,"entry":{"0":{"level":2,"spells":[{"name":"prestidigitation"}]},"1":{"spells":[{"name":"gust of wind"},{"name":"spider sting"}]},"2":{"spells":[{"name":"speak with animals","amount":"at will"}]}}}],"abilities":{"top":[{"entries":["+11, {@skill Thievery} +9 (+11 to {@action Steal}) Str –2, Dex +4, Con +1, Int +1, Wis –1, Cha +3 Items shortbow (60 arrows), shortsword."],"name":"Stealth"}],"mid":[{"activity":{"number":1,"unit":"reaction"},"trigger":"A {@action Strike} critically misses Kurshkin","entries":["Kurshkin redirects the strike to an adjacent creature. The attacker rerolls the {@action Strike} against that creature."],"name":"Collateral Damage"},{"traits":["aura","divination","mental","misfortune","primal"],"entries":["20 feet. Creatures other than animals, gremlins, and gnolls in the aura become extremely unlucky (DC 20 Will save; a creature must roll this Will save twice and take the worse result). On a successful save, the creature is temporarily immune to pugwampi unluck auras for 24 hours. On a failure, the creature must roll twice and take the worse result on all checks as long as it remains within the aura's emanation."],"name":"Unluck Aura"}],"bot":[{"activity":{"number":1,"unit":"action"},"entries":["{@damage 1d6+4} piercing Ranged shortbow +12 (deadly d10, magical, range increment 60 feet, reload 0), Damage {@damage 1d6} piercing Primal Innate Spells DC 20; 2nd speak with animals (at will); 1st gust of wind, spider sting; Cantrips (2nd) prestidigitation."],"name":"S), Damage"},{"entries":["Stabs Kurshkin deals an additional {@dice 1d6} damage with her melee Strikes against creatures affected by her unluck aura."],"name":"Lucky"},{"entries":["When attacking with a finesse melee weapon, Kurshkin adds her Dexterity modifier to damage rolls instead of her Strength modifier."],"name":"Natural Thief"}]}},{"name":"Scrit","isNpc":false,"source":"SoT1","page":82,"level":0,"traits":["uncommon","ce","tiny","fey","gremlin"],"creatureType":["Fey"],"perception":{"std":6},"senses":[{"name":"darkvision"}],"languages":{"languages":["Undercommon"],"languageAbilities":[]},"skills":{"Acrobatics":{"std":5},"Athletics":{"std":5},"Deception":{"std":4},"Stealth":{"std":7}},"abilityMods":{"str":1,"dex":3,"con":2,"int":2,"wis":0,"cha":0},"ac":{"std":16},"savingThrows":{"fort":{"std":6},"ref":{"std":9},"will":{"std":4}},"hp":[{"hp":18,"abilities":null}],"speed":{"walk":25},"attacks":[{"range":"Melee","name":"sticky fingers","attack":7,"traits":["agile","finesse"],"effects":["nasty ink"],"damage":"{@damage 1d4+1} piercing plus nasty ink","types":["piercing"]}],"abilities":{"bot":[{"activity":{"number":3,"unit":"action"},"entries":["A scrit can consume a book after smearing its pages to absorb its contents (it gains no benefit from consuming a book with pages smeared by another scrit). For 1 day after consuming the book, the scrit can make {@action Recall Knowledge} skill checks on the book's subject with a +4 item bonus, and it can speak and understand the languages the book was written in. If it Eats another Book, it replaces the benefits of the previous Eat Book."],"name":"Eat Book"},{"entries":[{"type":"affliction","name":"","traits":["poison"],"note":" A scrit's fingers are perpetually\ncovered in smeared ink from the writing it's\ndestroyed. This ink mixes with its skin oils to\ncreate a disgusting, sticky poison.","DC":14,"savingThrow":"Fortitude","maxDuration":"4 rounds","stages":[{"stage":1,"entry":"{@damage 1d4} poison damage and {@condition sickened|CRB|sickened 1}","duration":"1 round"}]}],"name":"Nasty Ink"},{"activity":{"number":1,"unit":"action"},"entries":["The scrit rubs its fingers against one page of writing, smearing the text and rendering it unreadable. The scrit can smear and destroy magical writing such as a glyph of warding or a sigil by succeeding at a counteract check (using the scrit's spell attack modifier) against the caster's DC."],"name":"Smear Text"}]}},{"name":"Shieldbearer Construct","isNpc":false,"source":"SoT1","page":40,"level":2,"traits":["rare","n","large","construct","mindless"],"creatureType":["Construct"],"perception":{"std":6},"senses":[{"name":"low-light vision"}],"skills":{"Athletics":{"std":8}},"abilityMods":{"str":4,"dex":1,"con":3,"int":-5,"wis":0,"cha":-5},"ac":{"std":17},"savingThrows":{"fort":{"std":11},"ref":{"std":7},"will":{"std":6}},"hp":[{"hp":30,"abilities":null}],"immunities":["bleed","death effects","disease","doomed"],"speed":{"walk":20},"attacks":[{"range":"Melee","name":"wooden sword","attack":11,"traits":["versatile p"],"effects":[],"damage":"{@damage 1d8+4} slashing","types":["slashing"]}],"abilities":{"mid":[{"entries":["A critical hit damages the construct's controls, making it {@condition clumsy|CRB|clumsy 1} until repaired. Additional critical hits increase this value, up to {@condition clumsy|CRB|clumsy 4}."],"name":"Critical Vulnerability"},{"entries":["The construct is piloted by a leaf leshy (Pathfinder Bestiary 218), who can be targeted separately but has greater cover. The leshy can't take actions of their own while inside the construct, other than to leave it, which takes 1 minute."],"name":"Ridden Construct"},{"activity":{"number":1,"unit":"reaction"},"entries":[],"name":"Attack of Opportunity","generic":true},{"activity":{"number":1,"unit":"reaction"},"entries":[],"name":"Shield Block","generic":true}]}},{"name":"Sicklehand Construct","isNpc":false,"source":"SoT1","page":41,"level":0,"traits":["rare","n","medium","construct","mindless"],"creatureType":["Construct"],"perception":{"std":6},"senses":[{"name":"low-light vision"}],"skills":{"Acrobatics":{"std":7},"Athletics":{"std":5,"to Trip":6}},"abilityMods":{"str":1,"dex":3,"con":1,"int":-5,"wis":0,"cha":-5},"items":["wooden sickles (2)"],"ac":{"std":16},"savingThrows":{"fort":{"std":5},"ref":{"std":9},"will":{"std":4}},"hp":[{"hp":15,"abilities":null}],"immunities":["bleed","death effects"],"weaknesses":[{"amount":3,"name":"fire"}],"speed":{"walk":25},"attacks":[{"range":"Melee","name":"wooden sickle","attack":8,"traits":["agile","finesse","trip"],"effects":[],"damage":"{@damage 1d4+1} slashing","types":["slashing"]}],"abilities":{"mid":[{"entries":["As shieldbearer construct (page 40)."],"name":"Critical Vulnerability"},{"entries":["As shieldbearer construct (page 40)."],"name":"Ridden Construct"}],"bot":[{"entries":["The construct deals an additional {@damage 1d4} precision damage to {@condition flat-footed} or {@condition prone} creatures."],"name":"Menacing Sickles"}]}},{"name":"Silverfish Swarm","isNpc":false,"source":"SoT1","page":84,"level":-1,"traits":["uncommon","n","large","animal","swarm"],"creatureType":["Animal"],"perception":{"std":5},"senses":[{"name":"darkvision"}],"skills":{"Acrobatics":{"std":6},"Stealth":{"std":4}},"abilityMods":{"str":-2,"dex":3,"con":0,"int":-5,"wis":1,"cha":-2},"ac":{"std":13},"savingThrows":{"fort":{"std":5},"ref":{"std":8},"will":{"std":4}},"hp":[{"hp":9,"abilities":null}],"immunities":["precision","swarm mind"],"weaknesses":[{"amount":2,"name":"area damage"},{"name":"splash"}],"speed":{"walk":40,"climb":20},"attacks":[],"abilities":{"bot":[{"activity":{"number":1,"unit":"action"},"entries":["Each enemy in the silverfish swarm's space takes {@damage 1d4} piercing damage (DC 14 basic Fortitude save). A creature that fails its save is {@condition sickened|CRB|sickened 1}."],"name":"Swarming Bites"},{"traits":["1 minute"],"entries":["A silverfish swarm consumes up to 1 Bulk of paper, cloth, or similar material. It can consume up to 4 Bulk each day."],"name":"Voracious Consumption"}]}},{"name":"Spellskein","isNpc":false,"source":"SoT1","page":85,"level":0,"traits":["uncommon","n","tiny","construct"],"creatureType":["Construct"],"perception":{"std":2},"senses":[{"name":"darkvision"}],"languages":{"languages":["Common (can't speak any language)"],"languageAbilities":[]},"skills":{"Acrobatics":{"std":5},"Stealth":{"std":7}},"abilityMods":{"str":-1,"dex":3,"con":1,"int":-4,"wis":0,"cha":-5},"ac":{"std":16},"savingThrows":{"fort":{"std":5},"ref":{"std":9},"will":{"std":4}},"hp":[{"hp":15,"abilities":null}],"immunities":["bleed","death effects","disease","doomed","drained","fatigued","healing"],"speed":{"walk":25},"attacks":[{"range":"Melee","name":"sharp edge","attack":7,"traits":["agile","finesse"],"effects":[],"damage":"{@damage 1d6+1} slashing","types":["slashing"]}],"abilities":{"bot":[{"entries":["The spellskein can collapse flat to the ground to {@action Hide}; it can attempt to {@action Hide} even if it doesn't have any cover or concealment."],"name":"Collapse"},{"activity":{"number":1,"unit":"action"},"requirements":"The spellskein is folded into its crane shape","entries":["The spellskein gains a 25-foot fly Speed until the beginning of its next turn."],"name":"Crane Glide"},{"activity":{"number":2,"unit":"action"},"requirements":"The spellskein is folded into its frog shape","entries":["The spellskein Leaps 15 feet horizontally or vertically and gains a 10-foot climb Speed until the beginning of its next turn."],"name":"Frog Hop"},{"activity":{"number":1,"unit":"action"},"traits":["arcane","enchantment","fear","mental"],"requirements":"The spellskein is folded into its lizard shape","entries":["The spellskein puffs out its cloth frills and shakes them from side to side to look fierce. The first creature hit by its sharp edge {@action Strike} before the start of its next turn must succeed on a DC 14 Will save or become {@condition frightened|CRB|frightened 1} ({@condition frightened|CRB|frightened 2} on a critical failure). Refold {@as 1} The spellskein folds itself into a crane, frog, or lizard shape, as it chooses."],"name":"Lizard Frill"}]}},{"name":"Stone Ghost","isNpc":true,"source":"SoT1","page":89,"level":5,"traits":["unique","ne","medium","human","humanoid","oread"],"creatureType":["Humanoid"],"perception":{"std":13},"languages":{"languages":["Common","Gnoll","Terran"],"languageAbilities":[]},"skills":{"Arcana":{"std":12},"Athletics":{"std":12},"Intimidation":{"std":12},"Nature":{"std":13},"Stealth":{"std":11}},"abilityMods":{"str":3,"dex":0,"con":4,"int":3,"wis":4,"cha":1},"items":["leather armor","+1 morningstar","sling (10 bullets)"],"ac":{"std":20},"savingThrows":{"fort":{"std":11},"ref":{"std":9},"will":{"std":15}},"hp":[{"hp":40,"abilities":null}],"resistances":[{"amount":5,"name":"all damage"}],"speed":{"walk":25},"attacks":[{"range":"Melee","name":"morningstar","attack":15,"traits":["magical","versatile p"],"effects":[],"damage":"{@damage 1d6+7} bludgeoning","types":["bludgeoning"]},{"range":"Ranged","name":"sling","attack":11,"traits":["propulsive","range increment 50 feet","reload 1"],"effects":[],"damage":"{@damage 1d6+5} bludgeoning","types":["bludgeoning"]}],"spellcasting":[{"name":"Primal Prepared","type":"Prepared","tradition":"Primal","DC":22,"attack":14,"entry":{"0":{"level":3,"spells":[{"name":"acid splash"},{"name":"dancing lights"},{"name":"know direction"},{"name":"shield"},{"name":"tanglefoot"}]},"1":{"spells":[{"name":"command","notes":["animals only"]},{"name":"grease"},{"name":"pass without trace"}]},"2":{"spells":[{"name":"darkvision"},{"name":"glitterdust"},{"name":"shatter"}]},"3":{"spells":[{"name":"earthbind"},{"name":"summon elemental","notes":["earth only"]}]}}}],"abilities":{"top":[{"entries":["+12, {@skill Nature} +13, {@skill Stealth} +11 Str +3, Dex +0, Con +4, Int +3, Wis +4, Cha +1 Items leather armor, +1 morningstar, sling (10 bullets)"],"name":"Magaambya Lore"}],"mid":[{"entries":["Ghost can pass through objects made of stone or soil, including walls.","When inside an object, Stone Ghost can't perceive, attack, or interact with anything outside the object, and if he starts his turn inside an object, he is {@condition slowed|CRB|slowed 1}."],"name":"Stone Spirit Stone"}],"bot":[{"activity":{"number":1,"unit":"action"},"entries":["{@damage 1d6+7} bludgeoning Ranged sling +11 (propulsive, range increment 50 feet, reload 1), Damage {@damage 1d6+5} bludgeoning Primal Prepared Spells DC 22, attack +14; 3rd earthbind, summon elemental (earth only); 2nd darkvision, glitterdust, shatter; 1st command (animals only), grease, pass without trace; Cantrips (3rd) acid splash, dancing lights, know direction, shield, tanglefoot."],"name":"P), Damage"},{"activity":{"number":2,"unit":"action"},"traits":["earth","manipulate"],"requirements":"A foe within Stone Ghost's reach is standing on stone or soil","entries":["Stone Ghost briefly extends his intangibility to a foe and drags or pounds them into the earth. He makes an {@skill Athletics} check against the target's Fortitude."],"name":"Entombing Grasp"},{"entries":["On a success, the foe is planted waist-deep in the ground and is {@condition immobilized} and {@condition flat-footed} until it Escapes (DC 22). On a critical success, the foe is completely buried and must hold its breath until it is free or else start suffocating. A successful {@action Escape} returns the foe to its original square on the surface, or the closest unoccupied square."],"name":"DC."}]}},{"name":"Takulu Ot","isNpc":true,"source":"SoT1","page":91,"level":4,"traits":["unique","lg","medium","human","humanoid"],"creatureType":["Humanoid"],"perception":{"std":11},"languages":{"languages":["Amurrun","Common","Elven","Iruxi","Sylvan","Xanmba"],"languageAbilities":[]},"skills":{"Arcana":{"std":13},"Diplomacy":{"std":11},"Nature":{"std":9},"Performance":{"std":11},"Academia Lore":{"std":13},"Library Lore":{"std":13}},"abilityMods":{"str":-1,"dex":2,"con":1,"int":5,"wis":3,"cha":1},"items":["{@item anteater mask}","{@item potion of minor healing}","{@item staff}"],"ac":{"std":21},"savingThrows":{"fort":{"std":9},"ref":{"std":12},"will":{"std":12}},"hp":[{"hp":60,"abilities":null}],"speed":{"walk":25},"attacks":[{"range":"Melee","name":"staff","attack":9,"traits":["two-hand d8"],"effects":[],"damage":"{@damage 1d4+1} bludgeoning","types":["bludgeoning"]}],"spellcasting":[{"name":"Arcane Prepared","type":"Prepared","tradition":"Arcane","DC":21,"attack":13,"entry":{"0":{"level":2,"spells":[{"name":"daze"},{"name":"detect magic"},{"name":"message"},{"name":"prestidigitation"},{"name":"read aura"}]},"1":{"spells":[{"name":"heal"},{"name":"mending"},{"name":"ray of enfeeblement"}]},"2":{"spells":[{"name":"comprehend language"},{"name":"glitterdust"},{"name":"see invisibility"}]}}}],"abilities":{"mid":[{"activity":{"number":1,"unit":"reaction"},"traits":["auditory"],"trigger":"An ally Takulu can see and who can hear Takulu makes a skill check or an attack roll","entries":["Takulu grants the ally a +2 circumstance bonus to the triggering check."],"name":"Quick Lesson"}]}},{"name":"Umbo","isNpc":false,"source":"SoT1","page":22,"level":3,"traits":["rare","ne","medium","fungus"],"creatureType":["Fungus"],"perception":{"std":8},"senses":[{"name":"darkvision"},{"type":"imprecise","name":"scent","range":30}],"languages":{"languages":["Undercommon"],"languageAbilities":["telepathy 100 feet (myceloids)"]},"skills":{"Stealth":{"std":9},"Survival":{"std":8}},"abilityMods":{"str":3,"dex":3,"con":4,"int":-1,"wis":2,"cha":0},"ac":{"std":18},"savingThrows":{"fort":{"std":12},"ref":{"std":7},"will":{"std":8}},"hp":[{"hp":50,"abilities":null}],"weaknesses":[{"amount":5,"name":"slashing"}],"speed":{"walk":20},"attacks":[{"range":"Melee","name":"fist","attack":11,"effects":["purple pox"],"damage":"{@damage 1d8+3} bludgeoning plus purple pox","types":["bludgeoning"]}],"abilities":{"mid":[{"entries":["If Umbo is reduced to 0 HP by a critical hit, he pops, forcing him to immediately Emit Spores, even if he has already used the ability that day."],"name":"Spore Pop"}],"bot":[{"activity":{"number":1,"unit":"action"},"frequency":{"unit":"day","freq":1},"entries":["Umbo expels spores in a 10-foot burst centered on a corner of his own space. This cloud lasts until the start of the myceloid's next turn. Each creature that is in the cloud or enters it is exposed to purple pox."],"name":"Emit Spores"},{"entries":[{"type":"affliction","name":"","traits":["disease"],"note":" Myceloids are immune","DC":18,"savingThrow":"Fortitude","onset":"1 minute","stages":[{"stage":1,"entry":"{@damage 1d6} poison damage and {@condition stupefied|CRB|stupefied 1}","duration":"1 day"},{"stage":2,"entry":"{@damage 4d6} poison damage, {@condition stupefied|CRB|stupefied 3}, and the creature is compelled to seek out the nearest myceloid colony—this compulsion is a mental {@trait emotion} effect","duration":"1 day"},{"stage":3,"entry":"The creature dies.","duration":null}]}],"name":"Purple Pox"},{"activity":{"number":2,"unit":"action"},"traits":["emotion","enchantment","incapacitation","mental","primal"],"entries":["Umbo targets one creature affected by purple pox within 30 feet. That creature must attempt a DC 18 Will save. It is then temporarily immune to spore domination for 10 minutes.",{"type":"successDegree","entries":{"Critical Success":"The target is unaffected.","Success":"Until the end of its next turn, the target is {@condition helpful} to myceloids and can't take {@condition hostile} actions against them. If attacked by Umbo, the target is freed from this effect at the end of Umbo's turn.","Failure":"As success, but for 1 minute.","Critical Failure":"As success, but until the purple pox is cured."}}],"name":"Spore Domination"}]}},{"name":"Urbel","isNpc":true,"source":"SoT1","page":55,"level":4,"traits":["unique","ce","small","fey","gremlin"],"creatureType":["Fey"],"perception":{"std":8},"senses":[{"name":"darkvision"}],"languages":{"languages":["Undercommon"],"languageAbilities":[]},"skills":{"Acrobatics":{"std":10},"Athletics":{"std":9,"to Shove":11},"Intimidation":{"std":12},"Stealth":{"std":10}},"abilityMods":{"str":3,"dex":4,"con":3,"int":-1,"wis":0,"cha":2},"ac":{"std":21},"savingThrows":{"fort":{"std":13},"ref":{"std":12},"will":{"std":8}},"hp":[{"hp":68,"abilities":null}],"weaknesses":[{"amount":4,"name":"cold iron"}],"speed":{"walk":30,"climb":20},"attacks":[{"range":"Melee","name":"pick","attack":14,"traits":["fatal d10","shove"],"effects":[],"damage":"{@damage 2d6+5} piercing","types":["piercing"]},{"range":"Melee","name":"jaws","attack":14,"traits":["finesse"],"effects":["Grab"],"damage":"{@damage 1d6+5} piercing plus Grab","types":["piercing"]},{"range":"Melee","name":"claw","attack":14,"traits":["agile","finesse"],"effects":[],"damage":"{@damage 1d4+5} slashing","types":["slashing"]}],"spellcasting":[{"name":"Primal Innate","type":"Innate","tradition":"Primal","DC":21,"attack":13,"entry":{"0":{"level":2,"spells":[{"name":"prestidigitation"}]},"1":{"spells":[{"name":"grease"},{"name":"shocking grasp"}]},"2":{"spells":[{"name":"shatter"}]}}}],"abilities":{"mid":[{"activity":{"number":1,"unit":"reaction"},"trigger":"A Medium creature within","entries":["Urbel's reach leaves a square during its move action; Urbel lashes out at the triggering creature's knees. He attempts an {@skill Acrobatics} check against the creature's Reflex DC. On a success, the target falls and lands {@condition prone}."],"name":"Kneecapper"}],"bot":[{"entries":["Any melee weapon Urbel uses gains the {@trait shove} trait, and if he rolls a critical failure when attempting to {@action Shove} a creature with the weapon, he treats the result as a failure instead."],"name":"Bully"},{"entries":["Urbel's melee Strikes deal an additional {@dice 1d6} damage to {@condition prone} targets."],"name":"Pound Down"}]}}]}
+{
+	"_meta": {
+		"dependencies": {
+			"creature": [
+				"Bst3"
+			]
+		},
+		"internalCopies": [
+			"creature"
+		],
+		"otherSources": {
+			"creature": {
+				"Bst3": "SoT1"
+			}
+		}
+	},
+	"creature": [
+		{
+			"name": "Anadi Fateweaver",
+			"isNpc": false,
+			"source": "SoT1",
+			"page": 79,
+			"level": 5,
+			"traits": [
+				"uncommon",
+				"ng",
+				"medium",
+				"anadi",
+				"humanoid"
+			],
+			"creatureType": [
+				"Humanoid"
+			],
+			"perception": {
+				"std": 14
+			},
+			"languages": {
+				"languages": [
+					"Anadi",
+					"Common"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Acrobatics": {
+					"std": 13
+				},
+				"Athletics": {
+					"std": 11,
+					"to Climb in true or spider form": 15
+				},
+				"Medicine": {
+					"std": 12
+				},
+				"Nature": {
+					"std": 14
+				},
+				"Survival": {
+					"std": 12
+				}
+			},
+			"abilityMods": {
+				"str": 2,
+				"dex": 4,
+				"con": 0,
+				"int": 0,
+				"wis": 5,
+				"cha": 1
+			},
+			"items": [
+				"composite shortbow (20 arrows)",
+				"hide armor",
+				"shortsword"
+			],
+			"ac": {
+				"std": 21
+			},
+			"savingThrows": {
+				"fort": {
+					"std": 9
+				},
+				"ref": {
+					"std": 12
+				},
+				"will": {
+					"std": 15
+				}
+			},
+			"hp": [
+				{
+					"hp": 75,
+					"abilities": null
+				}
+			],
+			"speed": {
+				"walk": 25,
+				"climb": 25
+			},
+			"attacks": [],
+			"spellcasting": [
+				{
+					"name": "Arcane Spontaneous",
+					"type": "Spontaneous",
+					"tradition": "Arcane",
+					"DC": 23,
+					"attack": 15,
+					"entry": {
+						"0": {
+							"level": 3,
+							"spells": [
+								{
+									"name": "daze"
+								},
+								{
+									"name": "ghost sound"
+								},
+								{
+									"name": "produce flame"
+								},
+								{
+									"name": "shield"
+								}
+							]
+						},
+						"1": {
+							"slots": 3,
+							"spells": [
+								{
+									"name": "illusory object"
+								},
+								{
+									"name": "magic missile"
+								},
+								{
+									"name": "ray of enfeeblement"
+								}
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								{
+									"name": "augury"
+								},
+								{
+									"name": "invisibility"
+								},
+								{
+									"name": "status"
+								}
+							]
+						},
+						"3": {
+							"slots": 2,
+							"spells": [
+								{
+									"name": "hypnotic pattern"
+								},
+								{
+									"name": "mind reading"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Arcane Innate",
+					"type": "Innate",
+					"tradition": "Arcane",
+					"DC": 23,
+					"entry": {
+						"0": {
+							"level": 3,
+							"spells": [
+								{
+									"name": "dancing lights"
+								},
+								{
+									"name": "detect magic"
+								},
+								{
+									"name": "mage hand"
+								},
+								{
+									"name": "message"
+								}
+							]
+						},
+						"1": {
+							"spells": [
+								{
+									"name": "color spray"
+								},
+								{
+									"name": "mending"
+								},
+								{
+									"name": "unseen servant"
+								}
+							]
+						},
+						"2": {
+							"spells": [
+								{
+									"name": "blur"
+								},
+								{
+									"name": "web"
+								}
+							]
+						}
+					}
+				}
+			],
+			"rituals": [
+				{
+					"DC": 23,
+					"rituals": [
+						{
+							"name": "arcane weaving|sot1"
+						}
+					]
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"traits": [
+							"fortune"
+						],
+						"trigger": "An ally within 30 feet of the anadi fateweaver that they can see makes a skill check or a saving throw",
+						"frequency": {
+							"unit": "day",
+							"freq": 3
+						},
+						"entries": [
+							"The creature rerolls the triggering check and takes the new result."
+						],
+						"name": "Fate's Threads"
+					}
+				],
+				"bot": [
+					{
+						"traits": [
+							"poison"
+						],
+						"entries": [
+							{
+								"type": "affliction",
+								"DC": 20,
+								"savingThrow": "Fortitude",
+								"maxDuration": "4 rounds",
+								"stages": [
+									{
+										"stage": 1,
+										"entry": "{@dice 1d6} poison damage and {@condition flat-footed}",
+										"duration": "1 round"
+									},
+									{
+										"stage": 2,
+										"entry": "{@dice 1d6} poison damage, {@condition flat-footed} and {@condition clumsy 1}",
+										"duration": "1 round"
+									}
+								]
+							}
+						],
+						"name": "Anadi Venom"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"arcane",
+							"concentrate",
+							"polymorph",
+							"transmutation"
+						],
+						"entries": [
+							"The anadi changes into their hybrid, spider, or human form. The above statistics assume the anadi is in hybrid form. While in human form, the anadi seeker loses their climb Speed and can't use their fangs attack. When in spider form, they can't use weapons."
+						],
+						"name": "Change Shape",
+						"generic": true
+					},
+					{
+						"traits": [
+							"concentrate",
+							"exploration",
+							"manipulate"
+						],
+						"entries": [
+							"By spending several minutes, an anadi can produce silk to craft items made of cloth. An anadi can produce enough silk in a day to craft a single garment."
+						],
+						"name": "Spin Silk"
+					}
+				]
+			}
+		},
+		{
+			"name": "Anadi Lurker",
+			"isNpc": false,
+			"source": "SoT1",
+			"page": 78,
+			"level": 3,
+			"traits": [
+				"uncommon",
+				"cn",
+				"medium",
+				"anadi",
+				"humanoid"
+			],
+			"creatureType": [
+				"Humanoid"
+			],
+			"perception": {
+				"std": 11
+			},
+			"languages": {
+				"languages": [
+					"Anadi",
+					"Common"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Acrobatics": {
+					"std": 9
+				},
+				"Athletics": {
+					"std": 10
+				},
+				"Crafting": {
+					"std": 5,
+					"weaving": 9
+				},
+				"Nature": {
+					"std": 7
+				},
+				"Stealth": {
+					"std": 11
+				},
+				"Survival": {
+					"std": 9
+				}
+			},
+			"abilityMods": {
+				"str": 3,
+				"dex": 4,
+				"con": 0,
+				"int": 0,
+				"wis": 2,
+				"cha": 1
+			},
+			"items": [
+				"kukri",
+				"leather armor"
+			],
+			"ac": {
+				"std": 19
+			},
+			"savingThrows": {
+				"fort": {
+					"std": 7
+				},
+				"ref": {
+					"std": 11
+				},
+				"will": {
+					"std": 9
+				}
+			},
+			"hp": [
+				{
+					"hp": 45,
+					"abilities": null
+				}
+			],
+			"speed": {
+				"walk": 25,
+				"climb": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "fangs",
+					"attack": 12,
+					"traits": [
+						"finesse"
+					],
+					"effects": [
+						"anadi venom"
+					],
+					"damage": "{@damage 1d8+3} piercing plus anadi venom",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "kukri",
+					"attack": 12,
+					"traits": [
+						"agile",
+						"finesse",
+						"trip"
+					],
+					"effects": [],
+					"damage": "{@damage 1d6+3} slashing",
+					"types": [
+						"slashing"
+					]
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Arcane Innate",
+					"type": "Innate",
+					"tradition": "Arcane",
+					"DC": 20,
+					"entry": {
+						"0": {
+							"level": 2,
+							"spells": [
+								{
+									"name": "daze"
+								},
+								{
+									"name": "detect magic"
+								},
+								{
+									"name": "mage hand"
+								},
+								{
+									"name": "message"
+								}
+							]
+						},
+						"1": {
+							"spells": [
+								{
+									"name": "color spray"
+								},
+								{
+									"name": "illusory disguise"
+								},
+								{
+									"name": "illusory object"
+								}
+							]
+						},
+						"2": {
+							"spells": [
+								{
+									"name": "blur"
+								},
+								{
+									"name": "web"
+								}
+							]
+						}
+					}
+				}
+			],
+			"abilities": {
+				"bot": [
+					{
+						"entries": [
+							{
+								"type": "affliction",
+								"name": "",
+								"traits": [
+									"poison"
+								],
+								"note": "",
+								"DC": 18,
+								"savingThrow": "Fortitude",
+								"maxDuration": "4\nrounds",
+								"stages": [
+									{
+										"stage": 1,
+										"entry": "{@damage 1d6} poison damage and {@condition flat-footed}",
+										"duration": "1 round"
+									},
+									{
+										"stage": 2,
+										"entry": "{@damage 1d6} poison damage, {@condition flat-footed}, and {@condition clumsy|CRB|clumsy 1}",
+										"duration": "1 round"
+									}
+								]
+							}
+						],
+						"name": "Anadi Venom"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"arcane",
+							"concentrate",
+							"polymorph",
+							"transmutation"
+						],
+						"entries": [
+							"The anadi changes into their hybrid, spider, or human form. The above statistics assume the anadi is in hybrid form. While in human form, the anadi seeker loses their climb Speed and can't use their fangs attack. When in spider form, they can't use weapons."
+						],
+						"name": "Change Shape",
+						"generic": true
+					},
+					{
+						"entries": [
+							"The anadi lurker deals an additional {@damage 1d6} precision damage to flatfooted creatures."
+						],
+						"name": "Sneak Attack",
+						"generic": true
+					},
+					{
+						"traits": [
+							"concentrate",
+							"exploration",
+							"manipulate"
+						],
+						"entries": [
+							"By spending several minutes, an anadi can produce silk to craft items made of cloth. An anadi can produce enough silk in a day to craft a single garment."
+						],
+						"name": "Spin Silk"
+					}
+				]
+			}
+		},
+		{
+			"name": "Anadi Seeker",
+			"isNpc": false,
+			"source": "SoT1",
+			"page": 78,
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"cg",
+				"medium",
+				"anadi",
+				"humanoid"
+			],
+			"creatureType": [
+				"Humanoid"
+			],
+			"perception": {
+				"std": 7
+			},
+			"languages": {
+				"languages": [
+					"Anadi",
+					"Common"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Acrobatics": {
+					"std": 6
+				},
+				"Arcana": {
+					"std": 7
+				},
+				"Athletics": {
+					"std": 4
+				},
+				"Crafting": {
+					"std": 7,
+					"weaving": 11
+				},
+				"Nature": {
+					"std": 5
+				},
+				"Occultism": {
+					"std": 7
+				}
+			},
+			"abilityMods": {
+				"str": 1,
+				"dex": 3,
+				"con": -1,
+				"int": 4,
+				"wis": 2,
+				"cha": 0
+			},
+			"items": [
+				"sling (20 sling bullets)"
+			],
+			"ac": {
+				"std": 15
+			},
+			"savingThrows": {
+				"fort": {
+					"std": 4
+				},
+				"ref": {
+					"std": 10
+				},
+				"will": {
+					"std": 7
+				}
+			},
+			"hp": [
+				{
+					"hp": 20,
+					"abilities": null
+				}
+			],
+			"speed": {
+				"walk": 25,
+				"climb": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "fangs",
+					"attack": 8,
+					"traits": [
+						"finesse"
+					],
+					"effects": [
+						"anadi venom"
+					],
+					"damage": "{@damage 1d6+1} piercing plus anadi venom",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "sling",
+					"attack": 8,
+					"traits": [
+						"propulsive",
+						"range increment 50 feet",
+						"reload 1"
+					],
+					"effects": [],
+					"damage": "{@damage 1d6} bludgeoning",
+					"types": [
+						"bludgeoning"
+					]
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Arcane Innate",
+					"type": "Innate",
+					"tradition": "Arcane",
+					"DC": 17,
+					"entry": {
+						"0": {
+							"level": 1,
+							"spells": [
+								{
+									"name": "dancing lights"
+								},
+								{
+									"name": "detect magic"
+								},
+								{
+									"name": "mage hand"
+								},
+								{
+									"name": "read aura"
+								},
+								{
+									"name": "shield"
+								}
+							]
+						},
+						"1": {
+							"spells": [
+								{
+									"name": "color spray"
+								},
+								{
+									"name": "magic missile"
+								},
+								{
+									"name": "unseen servant"
+								}
+							]
+						}
+					}
+				}
+			],
+			"abilities": {
+				"bot": [
+					{
+						"entries": [
+							{
+								"type": "affliction",
+								"name": "",
+								"traits": [
+									"poison"
+								],
+								"note": "",
+								"DC": 15,
+								"savingThrow": "Fortitude",
+								"maxDuration": "4 rounds",
+								"stages": [
+									{
+										"stage": 1,
+										"entry": "{@damage 1d6} poison damage and {@condition flat-footed}",
+										"duration": "1 round"
+									},
+									{
+										"stage": 2,
+										"entry": "{@damage 1d6} poison damage, {@condition flat-footed}, and {@condition clumsy|CRB|clumsy 1}",
+										"duration": "1 round"
+									}
+								]
+							}
+						],
+						"name": "Anadi Venom"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"arcane",
+							"concentrate",
+							"polymorph",
+							"transmutation"
+						],
+						"entries": [
+							"The anadi changes into their hybrid, spider, or human form. The above statistics assume the anadi is in hybrid form. While in human form, the anadi seeker loses their climb Speed and can't use their fangs attack. When in spider form, they can't use weapons."
+						],
+						"name": "Change Shape",
+						"generic": true
+					},
+					{
+						"traits": [
+							"concentrate",
+							"exploration",
+							"manipulate"
+						],
+						"entries": [
+							"By spending several minutes, an anadi can produce silk to craft items made of cloth. An anadi can produce enough silk in a day to craft a single garment."
+						],
+						"name": "Spin Silk"
+					}
+				]
+			}
+		},
+		{
+			"name": "Binji",
+			"source": "SoT1",
+			"page": 53,
+			"_copy": {
+				"name": "Grimple",
+				"source": "Bst3",
+				"_mod": {
+					"abilities.mid": [
+						{
+							"mode": "insertArr",
+							"items": {
+								"entries": [
+									"The prevalence of insects on the Magaambya campus means Binji is more infested with gremlin lice than most grimples. The Reflex DC to avoid infestation from her gremlin lice is 15 rather than 13. {@note Already accounted in the ability.}"
+								],
+								"name": "So Many Lice"
+							}
+						},
+						{
+							"mode": "replaceTxt",
+							"replace": "DC 13 Reflex",
+							"with": "DC 15 Reflex"
+						}
+					]
+				}
+			},
+			"traits": [
+				"unique",
+				"gremlin"
+			],
+			"languages": {
+				"languages": [
+					"Common",
+					"Undercommon"
+				]
+			}
+		},
+		{
+			"name": "Bramble Champion Construct",
+			"isNpc": false,
+			"source": "SoT1",
+			"page": 41,
+			"level": 3,
+			"traits": [
+				"rare",
+				"n",
+				"large",
+				"construct",
+				"mindless"
+			],
+			"creatureType": [
+				"Construct"
+			],
+			"perception": {
+				"std": 10
+			},
+			"senses": [
+				{
+					"name": "low-light vision"
+				}
+			],
+			"skills": {
+				"Athletics": {
+					"std": 9,
+					"to Shove": 10
+				}
+			},
+			"abilityMods": {
+				"str": 4,
+				"dex": 3,
+				"con": 1,
+				"int": -5,
+				"wis": 1,
+				"cha": -5
+			},
+			"items": [
+				"wooden maul"
+			],
+			"ac": {
+				"std": 20
+			},
+			"savingThrows": {
+				"fort": {
+					"std": 10
+				},
+				"ref": {
+					"std": 10
+				},
+				"will": {
+					"std": 8
+				}
+			},
+			"hp": [
+				{
+					"hp": 45,
+					"abilities": null
+				}
+			],
+			"immunities": [
+				"bleed",
+				"death effects",
+				"disease",
+				"doomed"
+			],
+			"speed": {
+				"walk": 20
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "wooden maul",
+					"attack": 12,
+					"traits": [
+						"nonlethal",
+						"reach 10 feet",
+						"shove"
+					],
+					"effects": [],
+					"damage": "{@damage 1d12+4} bludgeoning",
+					"types": [
+						"bludgeoning"
+					]
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"entries": [
+							"As shieldbearer construct (page 40)."
+						],
+						"name": "Critical Vulnerability"
+					},
+					{
+						"entries": [
+							"As shieldbearer construct (page 40)."
+						],
+						"name": "Ridden Construct"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"trigger": "An ally within the bramble champion's reach is targeted by an attack, and the bramble champion can see the attacker",
+						"entries": [
+							"The bramble champion interposes with its hammer, giving the ally a +2 circumstance bonus to AC against the triggering attack."
+						],
+						"name": "Hammer Block"
+					}
+				]
+			}
+		},
+		{
+			"name": "Giant Mining Bee",
+			"isNpc": false,
+			"source": "SoT1",
+			"page": 80,
+			"level": 2,
+			"traits": [
+				"n",
+				"small",
+				"animal"
+			],
+			"creatureType": [
+				"Animal"
+			],
+			"perception": {
+				"std": 9
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"type": "imprecise",
+					"name": "{@ability tremorsense}",
+					"range": 30
+				}
+			],
+			"skills": {
+				"Acrobatics": {
+					"std": 7
+				},
+				"Athletics": {
+					"std": 8
+				}
+			},
+			"abilityMods": {
+				"str": 4,
+				"dex": 3,
+				"con": 1,
+				"int": -5,
+				"wis": 1,
+				"cha": 0
+			},
+			"ac": {
+				"std": 18
+			},
+			"savingThrows": {
+				"fort": {
+					"std": 9
+				},
+				"ref": {
+					"std": 11
+				},
+				"will": {
+					"std": 5
+				}
+			},
+			"hp": [
+				{
+					"hp": 30,
+					"abilities": null
+				}
+			],
+			"weaknesses": [
+				{
+					"name": "smoke susceptibility"
+				}
+			],
+			"speed": {
+				"walk": 20,
+				"burrow": 10,
+				"fly": 40
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "stinger",
+					"attack": 11,
+					"traits": [
+						"deadly d8"
+					],
+					"effects": [],
+					"damage": "{@damage 1d6+4} piercing",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "mandibles",
+					"attack": 11,
+					"traits": [
+						"agile"
+					],
+					"effects": [],
+					"damage": "{@damage 1d6+4} piercing",
+					"types": [
+						"piercing"
+					]
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"entries": [
+							"A giant bee is {@condition slowed|CRB|slowed 1} for 1 round if it starts its turn in heavy smoke."
+						],
+						"name": "Smoke Susceptibility"
+					}
+				]
+			}
+		},
+		{
+			"name": "Giant Silverfish",
+			"isNpc": false,
+			"source": "SoT1",
+			"page": 84,
+			"level": 0,
+			"traits": [
+				"uncommon",
+				"n",
+				"small",
+				"animal"
+			],
+			"creatureType": [
+				"Animal"
+			],
+			"perception": {
+				"std": 8
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
+			"skills": {
+				"Acrobatics": {
+					"std": 6
+				},
+				"Athletics": {
+					"std": 4
+				},
+				"Stealth": {
+					"std": 6
+				}
+			},
+			"abilityMods": {
+				"str": 2,
+				"dex": 4,
+				"con": 1,
+				"int": -5,
+				"wis": 1,
+				"cha": -2
+			},
+			"ac": {
+				"std": 15
+			},
+			"savingThrows": {
+				"fort": {
+					"std": 7
+				},
+				"ref": {
+					"std": 8
+				},
+				"will": {
+					"std": 5
+				}
+			},
+			"hp": [
+				{
+					"hp": 17,
+					"abilities": null
+				}
+			],
+			"speed": {
+				"walk": 40,
+				"climb": 20
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "mandibles",
+					"attack": 8,
+					"effects": [],
+					"damage": "{@damage 1d6+2} piercing",
+					"types": [
+						"piercing"
+					]
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"trigger": "A creature the giant silverfish can see targets it with an attack",
+						"entries": [
+							"The giant silverfish gains a +2 circumstance bonus to AC against the triggering attack. After the attack resolves, the silverfish {@action Step||Steps}."
+						],
+						"name": "Wriggle"
+					}
+				],
+				"bot": [
+					{
+						"traits": [
+							"1 minute"
+						],
+						"entries": [
+							"A giant silverfish consumes up to 1 Bulk of paper, cloth, or similar material. It can consume up to 8 Bulk each day."
+						],
+						"name": "Voracious Consumption"
+					}
+				]
+			}
+		},
+		{
+			"name": "Giant Tsetse Fly",
+			"isNpc": false,
+			"source": "SoT1",
+			"page": 81,
+			"level": 2,
+			"traits": [
+				"n",
+				"large",
+				"animal"
+			],
+			"creatureType": [
+				"Animal"
+			],
+			"perception": {
+				"std": 9
+			},
+			"senses": [
+				{
+					"name": "blood scent"
+				},
+				{
+					"type": "imprecise",
+					"name": "scent",
+					"range": 60
+				}
+			],
+			"skills": {
+				"Athletics": {
+					"std": 8
+				},
+				"Stealth": {
+					"std": 5,
+					"to Hide": 9
+				}
+			},
+			"abilityMods": {
+				"str": 5,
+				"dex": 3,
+				"con": 3,
+				"int": -5,
+				"wis": 1,
+				"cha": -5
+			},
+			"ac": {
+				"std": 18
+			},
+			"savingThrows": {
+				"fort": {
+					"std": 7
+				},
+				"ref": {
+					"std": 11
+				},
+				"will": {
+					"std": 5
+				}
+			},
+			"hp": [
+				{
+					"hp": 30,
+					"abilities": null
+				}
+			],
+			"speed": {
+				"walk": 10,
+				"fly": 40
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "proboscis",
+					"attack": 11,
+					"effects": [
+						"sleeping sickness"
+					],
+					"damage": "{@damage 1d6+5} piercing plus sleeping sickness",
+					"types": [
+						"piercing"
+					]
+				}
+			],
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"The giant tsetse fly can detect blood within 30 feet. This is a precise sense against creatures within 30 feet that are bleeding."
+						],
+						"name": "Blood Scent"
+					}
+				],
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"If the fly's last action was a successful proboscis {@action Strike}, it sucks its target's blood. The target takes {@damage 1d4} bleed damage (or {@damage 1d6} bleed damage if the target is an animal)."
+						],
+						"name": "Blood Draw"
+					},
+					{
+						"entries": [
+							{
+								"type": "affliction",
+								"name": "",
+								"traits": [
+									"disease"
+								],
+								"note": "",
+								"DC": 18,
+								"savingThrow": "Fortitude",
+								"stages": [
+									{
+										"stage": 1,
+										"entry": "{@condition enfeebled|CRB|enfeebled 1}",
+										"duration": "1 day"
+									},
+									{
+										"stage": 2,
+										"entry": "{@condition enfeebled|CRB|enfeebled 1} and {@condition drained|CRB|drained 1}",
+										"duration": "1 day"
+									},
+									{
+										"stage": 3,
+										"entry": "{@condition unconscious}",
+										"duration": "1 day"
+									},
+									{
+										"stage": 4,
+										"entry": "as",
+										"duration": null
+									},
+									{
+										"stage": 3,
+										"entry": ";",
+										"duration": "1 day"
+									}
+								]
+							}
+						],
+						"name": "Sleeping Sickness"
+					}
+				]
+			}
+		},
+		{
+			"name": "Giant Worker Bee",
+			"isNpc": false,
+			"source": "SoT1",
+			"page": 80,
+			"level": 0,
+			"traits": [
+				"n",
+				"medium",
+				"animal"
+			],
+			"creatureType": [
+				"Animal"
+			],
+			"perception": {
+				"std": 5
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
+			"skills": {
+				"Acrobatics": {
+					"std": 6
+				},
+				"Athletics": {
+					"std": 5
+				}
+			},
+			"abilityMods": {
+				"str": 2,
+				"dex": 3,
+				"con": 2,
+				"int": -5,
+				"wis": 1,
+				"cha": -1
+			},
+			"ac": {
+				"std": 16
+			},
+			"savingThrows": {
+				"fort": {
+					"std": 6
+				},
+				"ref": {
+					"std": 9
+				},
+				"will": {
+					"std": 3
+				}
+			},
+			"hp": [
+				{
+					"hp": 16,
+					"abilities": null
+				}
+			],
+			"weaknesses": [
+				{
+					"name": "smoke susceptibility"
+				}
+			],
+			"speed": {
+				"walk": 20,
+				"fly": 40
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "stinger",
+					"attack": 8,
+					"traits": [
+						"deadly d6",
+						"finesse"
+					],
+					"effects": [],
+					"damage": "{@damage 1d4+2} piercing",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "mandibles",
+					"attack": 8,
+					"traits": [
+						"agile",
+						"finesse"
+					],
+					"effects": [],
+					"damage": "{@damage 1d4+2} piercing",
+					"types": [
+						"piercing"
+					]
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"entries": [
+							"A giant bee is {@condition slowed|CRB|slowed 1} for 1 round if it starts its turn in heavy smoke."
+						],
+						"name": "Smoke Susceptibility"
+					}
+				]
+			}
+		},
+		{
+			"name": "Gnagrif",
+			"isNpc": false,
+			"source": "SoT1",
+			"page": 83,
+			"level": 2,
+			"traits": [
+				"uncommon",
+				"ne",
+				"tiny",
+				"fey",
+				"gremlin"
+			],
+			"creatureType": [
+				"Fey"
+			],
+			"perception": {
+				"std": 7
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
+			"languages": {
+				"languages": [
+					"Undercommon"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Acrobatics": {
+					"std": 8
+				},
+				"Athletics": {
+					"std": 6
+				},
+				"Intimidation": {
+					"std": 6
+				},
+				"Stealth": {
+					"std": 8
+				},
+				"Survival": {
+					"std": 5
+				}
+			},
+			"abilityMods": {
+				"str": 2,
+				"dex": 4,
+				"con": 3,
+				"int": -1,
+				"wis": -1,
+				"cha": 2
+			},
+			"items": [
+				"light hammer"
+			],
+			"ac": {
+				"std": 18
+			},
+			"savingThrows": {
+				"fort": {
+					"std": 9
+				},
+				"ref": {
+					"std": 10
+				},
+				"will": {
+					"std": 5
+				}
+			},
+			"hp": [
+				{
+					"hp": 35,
+					"abilities": null
+				}
+			],
+			"weaknesses": [
+				{
+					"amount": 3,
+					"name": "cold iron"
+				}
+			],
+			"speed": {
+				"walk": 20,
+				"burrow": 10,
+				"climb": 10
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "light hammer",
+					"attack": 10,
+					"traits": [
+						"agile"
+					],
+					"effects": [],
+					"damage": "{@damage 1d6+4} bludgeoning",
+					"types": [
+						"bludgeoning"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "light hammer",
+					"attack": 10,
+					"traits": [
+						"agile",
+						"thrown 20 feet"
+					],
+					"effects": [],
+					"damage": "{@damage 1d6+4} bludgeoning",
+					"types": [
+						"bludgeoning"
+					]
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Primal Innate",
+					"type": "Innate",
+					"tradition": "Primal",
+					"DC": 16,
+					"entry": {
+						"0": {
+							"level": 1,
+							"spells": [
+								{
+									"name": "prestidigitation"
+								}
+							]
+						},
+						"1": {
+							"spells": [
+								{
+									"name": "ant haul"
+								},
+								{
+									"name": "feather fall"
+								}
+							]
+						},
+						"2": {
+							"spells": [
+								{
+									"name": "shatter"
+								},
+								{
+									"name": "speak with animals",
+									"amount": "at will"
+								}
+							]
+						}
+					}
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"trigger": "A creature {@action Stride||Strides} or {@action Step||Steps} into difficult terrain adjacent to the gnagrif",
+						"entries": [
+							"The gnagrif gives the ground a hearty pound and it shifts beneath the triggering creature's feet. The triggering creature must succeed on a DC 18 Reflex save or fall {@condition prone}."
+						],
+						"name": "Soften Stone"
+					}
+				],
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"The gnagrif gnashes and tears at an object or structure, dealing {@damage 2d4+2} piercing damage and ignoring Hardness 2 or lower."
+						],
+						"name": "Eat Rocks"
+					},
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"requirements": "A structure made from stone or earth is within the gnagrif's reach",
+						"entries": [
+							"The gnagrif partially melds with the stone. It Takes Cover in the stone and makes a {@skill Stealth} check to."
+						],
+						"name": "Lurk"
+					},
+					{
+						"entries": [],
+						"name": "Hide."
+					},
+					{
+						"entries": [
+							"A gnagrif ignores difficult terrain caused by rocks or rubble, including squares affected by their."
+						],
+						"name": "Rubble Stride"
+					},
+					{
+						"entries": [],
+						"name": "Stomp Around."
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"move"
+						],
+						"entries": [
+							"The gnagrif huffs and stamps its feet, churning the ground around it. The square it is in and all unoccupied adjacent squares become difficult terrain."
+						],
+						"name": "Stomp Around"
+					},
+					{
+						"entries": [
+							"Whenever two or more gnagrifs use Eat Rocks on the same object or structure, the value of Hardness they can ignore increases by 1 for every gnagrif, to a maximum of Hardness 10."
+						],
+						"name": "Wrecker"
+					}
+				]
+			}
+		},
+		{
+			"name": "Kurshkin",
+			"isNpc": true,
+			"source": "SoT1",
+			"page": 87,
+			"level": 3,
+			"traits": [
+				"unique",
+				"ne",
+				"tiny",
+				"fey",
+				"gremlin"
+			],
+			"creatureType": [
+				"Fey"
+			],
+			"perception": {
+				"std": 10,
+				"to hear things": 2
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
+			"languages": {
+				"languages": [
+					"Common",
+					"Gnoll",
+					"Undercommon"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Arcana": {
+					"std": 8
+				},
+				"Crafting": {
+					"std": 8
+				},
+				"Deception": {
+					"std": 8
+				},
+				"Nature": {
+					"std": 8
+				},
+				"Stealth": {
+					"std": 11
+				},
+				"Thievery": {
+					"std": 9,
+					"to Steal": 11
+				}
+			},
+			"abilityMods": {
+				"str": -2,
+				"dex": 4,
+				"con": 1,
+				"int": 1,
+				"wis": -1,
+				"cha": 3
+			},
+			"items": [
+				"shortbow (60 arrows)",
+				"shortsword"
+			],
+			"ac": {
+				"std": 19
+			},
+			"savingThrows": {
+				"fort": {
+					"std": 8
+				},
+				"ref": {
+					"std": 11
+				},
+				"will": {
+					"std": 8
+				}
+			},
+			"hp": [
+				{
+					"hp": 50,
+					"abilities": null
+				}
+			],
+			"weaknesses": [
+				{
+					"amount": 5,
+					"name": "cold iron"
+				}
+			],
+			"speed": {
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "shortsword",
+					"attack": 12,
+					"traits": [
+						"agile",
+						"finesse",
+						"magical",
+						"versatile s"
+					],
+					"effects": [],
+					"damage": "{@damage 1d6+4} piercing",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "shortbow",
+					"attack": 12,
+					"traits": [
+						"deadly d10",
+						"magical",
+						"range increment 60 feet",
+						"reload 0"
+					],
+					"effects": [],
+					"damage": "{@damage 1d6} piercing",
+					"types": [
+						"piercing"
+					]
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Primal Innate",
+					"type": "Innate",
+					"tradition": "Primal",
+					"DC": 20,
+					"entry": {
+						"0": {
+							"level": 2,
+							"spells": [
+								{
+									"name": "prestidigitation"
+								}
+							]
+						},
+						"1": {
+							"spells": [
+								{
+									"name": "gust of wind"
+								},
+								{
+									"name": "spider sting"
+								}
+							]
+						},
+						"2": {
+							"spells": [
+								{
+									"name": "speak with animals",
+									"amount": "at will"
+								}
+							]
+						}
+					}
+				}
+			],
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"+11, {@skill Thievery} +9 (+11 to {@action Steal}) Str \u20132, Dex +4, Con +1, Int +1, Wis \u20131, Cha +3 Items shortbow (60 arrows), shortsword."
+						],
+						"name": "Stealth"
+					}
+				],
+				"mid": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"trigger": "A {@action Strike} critically misses Kurshkin",
+						"entries": [
+							"Kurshkin redirects the strike to an adjacent creature. The attacker rerolls the {@action Strike} against that creature."
+						],
+						"name": "Collateral Damage"
+					},
+					{
+						"traits": [
+							"aura",
+							"divination",
+							"mental",
+							"misfortune",
+							"primal"
+						],
+						"entries": [
+							"20 feet. Creatures other than animals, gremlins, and gnolls in the aura become extremely unlucky (DC 20 Will save; a creature must roll this Will save twice and take the worse result). On a successful save, the creature is temporarily immune to pugwampi unluck auras for 24 hours. On a failure, the creature must roll twice and take the worse result on all checks as long as it remains within the aura's emanation."
+						],
+						"name": "Unluck Aura"
+					}
+				],
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"{@damage 1d6+4} piercing Ranged shortbow +12 (deadly d10, magical, range increment 60 feet, reload 0), Damage {@damage 1d6} piercing Primal Innate Spells DC 20; 2nd speak with animals (at will); 1st gust of wind, spider sting; Cantrips (2nd) prestidigitation."
+						],
+						"name": "S), Damage"
+					},
+					{
+						"entries": [
+							"Stabs Kurshkin deals an additional {@dice 1d6} damage with her melee Strikes against creatures affected by her unluck aura."
+						],
+						"name": "Lucky"
+					},
+					{
+						"entries": [
+							"When attacking with a finesse melee weapon, Kurshkin adds her Dexterity modifier to damage rolls instead of her Strength modifier."
+						],
+						"name": "Natural Thief"
+					}
+				]
+			}
+		},
+		{
+			"name": "Scrit",
+			"isNpc": false,
+			"source": "SoT1",
+			"page": 82,
+			"level": 0,
+			"traits": [
+				"uncommon",
+				"ce",
+				"tiny",
+				"fey",
+				"gremlin"
+			],
+			"creatureType": [
+				"Fey"
+			],
+			"perception": {
+				"std": 6
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
+			"languages": {
+				"languages": [
+					"Undercommon"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Acrobatics": {
+					"std": 5
+				},
+				"Athletics": {
+					"std": 5
+				},
+				"Deception": {
+					"std": 4
+				},
+				"Stealth": {
+					"std": 7
+				}
+			},
+			"abilityMods": {
+				"str": 1,
+				"dex": 3,
+				"con": 2,
+				"int": 2,
+				"wis": 0,
+				"cha": 0
+			},
+			"ac": {
+				"std": 16
+			},
+			"savingThrows": {
+				"fort": {
+					"std": 6
+				},
+				"ref": {
+					"std": 9
+				},
+				"will": {
+					"std": 4
+				}
+			},
+			"hp": [
+				{
+					"hp": 18,
+					"abilities": null
+				}
+			],
+			"speed": {
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "sticky fingers",
+					"attack": 7,
+					"traits": [
+						"agile",
+						"finesse"
+					],
+					"effects": [
+						"nasty ink"
+					],
+					"damage": "{@damage 1d4+1} piercing plus nasty ink",
+					"types": [
+						"piercing"
+					]
+				}
+			],
+			"abilities": {
+				"bot": [
+					{
+						"activity": {
+							"number": 3,
+							"unit": "action"
+						},
+						"entries": [
+							"A scrit can consume a book after smearing its pages to absorb its contents (it gains no benefit from consuming a book with pages smeared by another scrit). For 1 day after consuming the book, the scrit can make {@action Recall Knowledge} skill checks on the book's subject with a +4 item bonus, and it can speak and understand the languages the book was written in. If it Eats another Book, it replaces the benefits of the previous Eat Book."
+						],
+						"name": "Eat Book"
+					},
+					{
+						"entries": [
+							{
+								"type": "affliction",
+								"name": "",
+								"traits": [
+									"poison"
+								],
+								"note": " A scrit's fingers are perpetually\ncovered in smeared ink from the writing it's\ndestroyed. This ink mixes with its skin oils to\ncreate a disgusting, sticky poison.",
+								"DC": 14,
+								"savingThrow": "Fortitude",
+								"maxDuration": "4 rounds",
+								"stages": [
+									{
+										"stage": 1,
+										"entry": "{@damage 1d4} poison damage and {@condition sickened|CRB|sickened 1}",
+										"duration": "1 round"
+									}
+								]
+							}
+						],
+						"name": "Nasty Ink"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"The scrit rubs its fingers against one page of writing, smearing the text and rendering it unreadable. The scrit can smear and destroy magical writing such as a glyph of warding or a sigil by succeeding at a counteract check (using the scrit's spell attack modifier) against the caster's DC."
+						],
+						"name": "Smear Text"
+					}
+				]
+			}
+		},
+		{
+			"name": "Shieldbearer Construct",
+			"isNpc": false,
+			"source": "SoT1",
+			"page": 40,
+			"level": 2,
+			"traits": [
+				"rare",
+				"n",
+				"large",
+				"construct",
+				"mindless"
+			],
+			"creatureType": [
+				"Construct"
+			],
+			"perception": {
+				"std": 6
+			},
+			"senses": [
+				{
+					"name": "low-light vision"
+				}
+			],
+			"skills": {
+				"Athletics": {
+					"std": 8
+				}
+			},
+			"abilityMods": {
+				"str": 4,
+				"dex": 1,
+				"con": 3,
+				"int": -5,
+				"wis": 0,
+				"cha": -5
+			},
+			"ac": {
+				"std": 17
+			},
+			"savingThrows": {
+				"fort": {
+					"std": 11
+				},
+				"ref": {
+					"std": 7
+				},
+				"will": {
+					"std": 6
+				}
+			},
+			"hp": [
+				{
+					"hp": 30,
+					"abilities": null
+				}
+			],
+			"immunities": [
+				"bleed",
+				"death effects",
+				"disease",
+				"doomed"
+			],
+			"speed": {
+				"walk": 20
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "wooden sword",
+					"attack": 11,
+					"traits": [
+						"versatile p"
+					],
+					"effects": [],
+					"damage": "{@damage 1d8+4} slashing",
+					"types": [
+						"slashing"
+					]
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"entries": [
+							"A critical hit damages the construct's controls, making it {@condition clumsy|CRB|clumsy 1} until repaired. Additional critical hits increase this value, up to {@condition clumsy|CRB|clumsy 4}."
+						],
+						"name": "Critical Vulnerability"
+					},
+					{
+						"entries": [
+							"The construct is piloted by a leaf leshy (Pathfinder Bestiary 218), who can be targeted separately but has greater cover. The leshy can't take actions of their own while inside the construct, other than to leave it, which takes 1 minute."
+						],
+						"name": "Ridden Construct"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"entries": [],
+						"name": "Attack of Opportunity",
+						"generic": true
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"entries": [],
+						"name": "Shield Block",
+						"generic": true
+					}
+				]
+			}
+		},
+		{
+			"name": "Sicklehand Construct",
+			"isNpc": false,
+			"source": "SoT1",
+			"page": 41,
+			"level": 0,
+			"traits": [
+				"rare",
+				"n",
+				"medium",
+				"construct",
+				"mindless"
+			],
+			"creatureType": [
+				"Construct"
+			],
+			"perception": {
+				"std": 6
+			},
+			"senses": [
+				{
+					"name": "low-light vision"
+				}
+			],
+			"skills": {
+				"Acrobatics": {
+					"std": 7
+				},
+				"Athletics": {
+					"std": 5,
+					"to Trip": 6
+				}
+			},
+			"abilityMods": {
+				"str": 1,
+				"dex": 3,
+				"con": 1,
+				"int": -5,
+				"wis": 0,
+				"cha": -5
+			},
+			"items": [
+				"wooden sickles (2)"
+			],
+			"ac": {
+				"std": 16
+			},
+			"savingThrows": {
+				"fort": {
+					"std": 5
+				},
+				"ref": {
+					"std": 9
+				},
+				"will": {
+					"std": 4
+				}
+			},
+			"hp": [
+				{
+					"hp": 15,
+					"abilities": null
+				}
+			],
+			"immunities": [
+				"bleed",
+				"death effects"
+			],
+			"weaknesses": [
+				{
+					"amount": 3,
+					"name": "fire"
+				}
+			],
+			"speed": {
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "wooden sickle",
+					"attack": 8,
+					"traits": [
+						"agile",
+						"finesse",
+						"trip"
+					],
+					"effects": [],
+					"damage": "{@damage 1d4+1} slashing",
+					"types": [
+						"slashing"
+					]
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"entries": [
+							"As shieldbearer construct (page 40)."
+						],
+						"name": "Critical Vulnerability"
+					},
+					{
+						"entries": [
+							"As shieldbearer construct (page 40)."
+						],
+						"name": "Ridden Construct"
+					}
+				],
+				"bot": [
+					{
+						"entries": [
+							"The construct deals an additional {@damage 1d4} precision damage to {@condition flat-footed} or {@condition prone} creatures."
+						],
+						"name": "Menacing Sickles"
+					}
+				]
+			}
+		},
+		{
+			"name": "Silverfish Swarm",
+			"isNpc": false,
+			"source": "SoT1",
+			"page": 84,
+			"level": -1,
+			"traits": [
+				"uncommon",
+				"n",
+				"large",
+				"animal",
+				"swarm"
+			],
+			"creatureType": [
+				"Animal"
+			],
+			"perception": {
+				"std": 5
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
+			"skills": {
+				"Acrobatics": {
+					"std": 6
+				},
+				"Stealth": {
+					"std": 4
+				}
+			},
+			"abilityMods": {
+				"str": -2,
+				"dex": 3,
+				"con": 0,
+				"int": -5,
+				"wis": 1,
+				"cha": -2
+			},
+			"ac": {
+				"std": 13
+			},
+			"savingThrows": {
+				"fort": {
+					"std": 5
+				},
+				"ref": {
+					"std": 8
+				},
+				"will": {
+					"std": 4
+				}
+			},
+			"hp": [
+				{
+					"hp": 9,
+					"abilities": null
+				}
+			],
+			"immunities": [
+				"precision",
+				"swarm mind"
+			],
+			"weaknesses": [
+				{
+					"amount": 2,
+					"name": "area damage"
+				},
+				{
+					"name": "splash"
+				}
+			],
+			"speed": {
+				"walk": 40,
+				"climb": 20
+			},
+			"attacks": [],
+			"abilities": {
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"Each enemy in the silverfish swarm's space takes {@damage 1d4} piercing damage (DC 14 basic Fortitude save). A creature that fails its save is {@condition sickened|CRB|sickened 1}."
+						],
+						"name": "Swarming Bites"
+					},
+					{
+						"traits": [
+							"1 minute"
+						],
+						"entries": [
+							"A silverfish swarm consumes up to 1 Bulk of paper, cloth, or similar material. It can consume up to 4 Bulk each day."
+						],
+						"name": "Voracious Consumption"
+					}
+				]
+			}
+		},
+		{
+			"name": "Spellskein",
+			"isNpc": false,
+			"source": "SoT1",
+			"page": 85,
+			"level": 0,
+			"traits": [
+				"uncommon",
+				"n",
+				"tiny",
+				"construct"
+			],
+			"creatureType": [
+				"Construct"
+			],
+			"perception": {
+				"std": 2
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
+			"languages": {
+				"languages": [
+					"Common (can't speak any language)"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Acrobatics": {
+					"std": 5
+				},
+				"Stealth": {
+					"std": 7
+				}
+			},
+			"abilityMods": {
+				"str": -1,
+				"dex": 3,
+				"con": 1,
+				"int": -4,
+				"wis": 0,
+				"cha": -5
+			},
+			"ac": {
+				"std": 16
+			},
+			"savingThrows": {
+				"fort": {
+					"std": 5
+				},
+				"ref": {
+					"std": 9
+				},
+				"will": {
+					"std": 4
+				}
+			},
+			"hp": [
+				{
+					"hp": 15,
+					"abilities": null
+				}
+			],
+			"immunities": [
+				"bleed",
+				"death effects",
+				"disease",
+				"doomed",
+				"drained",
+				"fatigued",
+				"healing"
+			],
+			"speed": {
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "sharp edge",
+					"attack": 7,
+					"traits": [
+						"agile",
+						"finesse"
+					],
+					"effects": [],
+					"damage": "{@damage 1d6+1} slashing",
+					"types": [
+						"slashing"
+					]
+				}
+			],
+			"abilities": {
+				"bot": [
+					{
+						"entries": [
+							"The spellskein can collapse flat to the ground to {@action Hide}; it can attempt to {@action Hide} even if it doesn't have any cover or concealment."
+						],
+						"name": "Collapse"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"requirements": "The spellskein is folded into its crane shape",
+						"entries": [
+							"The spellskein gains a 25-foot fly Speed until the beginning of its next turn."
+						],
+						"name": "Crane Glide"
+					},
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"requirements": "The spellskein is folded into its frog shape",
+						"entries": [
+							"The spellskein Leaps 15 feet horizontally or vertically and gains a 10-foot climb Speed until the beginning of its next turn."
+						],
+						"name": "Frog Hop"
+					},
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"arcane",
+							"enchantment",
+							"fear",
+							"mental"
+						],
+						"requirements": "The spellskein is folded into its lizard shape",
+						"entries": [
+							"The spellskein puffs out its cloth frills and shakes them from side to side to look fierce. The first creature hit by its sharp edge {@action Strike} before the start of its next turn must succeed on a DC 14 Will save or become {@condition frightened|CRB|frightened 1} ({@condition frightened|CRB|frightened 2} on a critical failure). Refold {@as 1} The spellskein folds itself into a crane, frog, or lizard shape, as it chooses."
+						],
+						"name": "Lizard Frill"
+					}
+				]
+			}
+		},
+		{
+			"name": "Stone Ghost",
+			"isNpc": true,
+			"source": "SoT1",
+			"page": 89,
+			"level": 5,
+			"traits": [
+				"unique",
+				"ne",
+				"medium",
+				"human",
+				"humanoid",
+				"oread"
+			],
+			"creatureType": [
+				"Humanoid"
+			],
+			"perception": {
+				"std": 13
+			},
+			"languages": {
+				"languages": [
+					"Common",
+					"Gnoll",
+					"Terran"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Arcana": {
+					"std": 12
+				},
+				"Athletics": {
+					"std": 12
+				},
+				"Intimidation": {
+					"std": 12
+				},
+				"Nature": {
+					"std": 13
+				},
+				"Stealth": {
+					"std": 11
+				}
+			},
+			"abilityMods": {
+				"str": 3,
+				"dex": 0,
+				"con": 4,
+				"int": 3,
+				"wis": 4,
+				"cha": 1
+			},
+			"items": [
+				"leather armor",
+				"+1 morningstar",
+				"sling (10 bullets)"
+			],
+			"ac": {
+				"std": 20
+			},
+			"savingThrows": {
+				"fort": {
+					"std": 11
+				},
+				"ref": {
+					"std": 9
+				},
+				"will": {
+					"std": 15
+				}
+			},
+			"hp": [
+				{
+					"hp": 40,
+					"abilities": null
+				}
+			],
+			"resistances": [
+				{
+					"amount": 5,
+					"name": "all damage"
+				}
+			],
+			"speed": {
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "morningstar",
+					"attack": 15,
+					"traits": [
+						"magical",
+						"versatile p"
+					],
+					"effects": [],
+					"damage": "{@damage 1d6+7} bludgeoning",
+					"types": [
+						"bludgeoning"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "sling",
+					"attack": 11,
+					"traits": [
+						"propulsive",
+						"range increment 50 feet",
+						"reload 1"
+					],
+					"effects": [],
+					"damage": "{@damage 1d6+5} bludgeoning",
+					"types": [
+						"bludgeoning"
+					]
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Primal Prepared",
+					"type": "Prepared",
+					"tradition": "Primal",
+					"DC": 22,
+					"attack": 14,
+					"entry": {
+						"0": {
+							"level": 3,
+							"spells": [
+								{
+									"name": "acid splash"
+								},
+								{
+									"name": "dancing lights"
+								},
+								{
+									"name": "know direction"
+								},
+								{
+									"name": "shield"
+								},
+								{
+									"name": "tanglefoot"
+								}
+							]
+						},
+						"1": {
+							"spells": [
+								{
+									"name": "command",
+									"notes": [
+										"animals only"
+									]
+								},
+								{
+									"name": "grease"
+								},
+								{
+									"name": "pass without trace"
+								}
+							]
+						},
+						"2": {
+							"spells": [
+								{
+									"name": "darkvision"
+								},
+								{
+									"name": "glitterdust"
+								},
+								{
+									"name": "shatter"
+								}
+							]
+						},
+						"3": {
+							"spells": [
+								{
+									"name": "earthbind"
+								},
+								{
+									"name": "summon elemental",
+									"notes": [
+										"earth only"
+									]
+								}
+							]
+						}
+					}
+				}
+			],
+			"abilities": {
+				"top": [
+					{
+						"entries": [
+							"+12, {@skill Nature} +13, {@skill Stealth} +11 Str +3, Dex +0, Con +4, Int +3, Wis +4, Cha +1 Items leather armor, +1 morningstar, sling (10 bullets)"
+						],
+						"name": "Magaambya Lore"
+					}
+				],
+				"mid": [
+					{
+						"entries": [
+							"Ghost can pass through objects made of stone or soil, including walls.",
+							"When inside an object, Stone Ghost can't perceive, attack, or interact with anything outside the object, and if he starts his turn inside an object, he is {@condition slowed|CRB|slowed 1}."
+						],
+						"name": "Stone Spirit Stone"
+					}
+				],
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"{@damage 1d6+7} bludgeoning Ranged sling +11 (propulsive, range increment 50 feet, reload 1), Damage {@damage 1d6+5} bludgeoning Primal Prepared Spells DC 22, attack +14; 3rd earthbind, summon elemental (earth only); 2nd darkvision, glitterdust, shatter; 1st command (animals only), grease, pass without trace; Cantrips (3rd) acid splash, dancing lights, know direction, shield, tanglefoot."
+						],
+						"name": "P), Damage"
+					},
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"earth",
+							"manipulate"
+						],
+						"requirements": "A foe within Stone Ghost's reach is standing on stone or soil",
+						"entries": [
+							"Stone Ghost briefly extends his intangibility to a foe and drags or pounds them into the earth. He makes an {@skill Athletics} check against the target's Fortitude."
+						],
+						"name": "Entombing Grasp"
+					},
+					{
+						"entries": [
+							"On a success, the foe is planted waist-deep in the ground and is {@condition immobilized} and {@condition flat-footed} until it Escapes (DC 22). On a critical success, the foe is completely buried and must hold its breath until it is free or else start suffocating. A successful {@action Escape} returns the foe to its original square on the surface, or the closest unoccupied square."
+						],
+						"name": "DC."
+					}
+				]
+			}
+		},
+		{
+			"name": "Takulu Ot",
+			"isNpc": true,
+			"source": "SoT1",
+			"page": 91,
+			"level": 4,
+			"traits": [
+				"unique",
+				"lg",
+				"medium",
+				"human",
+				"humanoid"
+			],
+			"creatureType": [
+				"Humanoid"
+			],
+			"perception": {
+				"std": 11
+			},
+			"languages": {
+				"languages": [
+					"Amurrun",
+					"Common",
+					"Elven",
+					"Iruxi",
+					"Sylvan",
+					"Xanmba"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Arcana": {
+					"std": 13
+				},
+				"Diplomacy": {
+					"std": 11
+				},
+				"Nature": {
+					"std": 9
+				},
+				"Performance": {
+					"std": 11
+				},
+				"Academia Lore": {
+					"std": 13
+				},
+				"Library Lore": {
+					"std": 13
+				}
+			},
+			"abilityMods": {
+				"str": -1,
+				"dex": 2,
+				"con": 1,
+				"int": 5,
+				"wis": 3,
+				"cha": 1
+			},
+			"items": [
+				"{@item anteater mask}",
+				"{@item potion of minor healing}",
+				"{@item staff}"
+			],
+			"ac": {
+				"std": 21
+			},
+			"savingThrows": {
+				"fort": {
+					"std": 9
+				},
+				"ref": {
+					"std": 12
+				},
+				"will": {
+					"std": 12
+				}
+			},
+			"hp": [
+				{
+					"hp": 60,
+					"abilities": null
+				}
+			],
+			"speed": {
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "staff",
+					"attack": 9,
+					"traits": [
+						"two-hand d8"
+					],
+					"effects": [],
+					"damage": "{@damage 1d4+1} bludgeoning",
+					"types": [
+						"bludgeoning"
+					]
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Arcane Prepared",
+					"type": "Prepared",
+					"tradition": "Arcane",
+					"DC": 21,
+					"attack": 13,
+					"entry": {
+						"0": {
+							"level": 2,
+							"spells": [
+								{
+									"name": "daze"
+								},
+								{
+									"name": "detect magic"
+								},
+								{
+									"name": "message"
+								},
+								{
+									"name": "prestidigitation"
+								},
+								{
+									"name": "read aura"
+								}
+							]
+						},
+						"1": {
+							"spells": [
+								{
+									"name": "heal"
+								},
+								{
+									"name": "mending"
+								},
+								{
+									"name": "ray of enfeeblement"
+								}
+							]
+						},
+						"2": {
+							"spells": [
+								{
+									"name": "comprehend language"
+								},
+								{
+									"name": "glitterdust"
+								},
+								{
+									"name": "see invisibility"
+								}
+							]
+						}
+					}
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"traits": [
+							"auditory"
+						],
+						"trigger": "An ally Takulu can see and who can hear Takulu makes a skill check or an attack roll",
+						"entries": [
+							"Takulu grants the ally a +2 circumstance bonus to the triggering check."
+						],
+						"name": "Quick Lesson"
+					}
+				]
+			}
+		},
+		{
+			"name": "Umbo",
+			"isNpc": false,
+			"source": "SoT1",
+			"page": 22,
+			"level": 3,
+			"traits": [
+				"rare",
+				"ne",
+				"medium",
+				"fungus"
+			],
+			"creatureType": [
+				"Fungus"
+			],
+			"perception": {
+				"std": 8
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"type": "imprecise",
+					"name": "scent",
+					"range": 30
+				}
+			],
+			"languages": {
+				"languages": [
+					"Undercommon"
+				],
+				"languageAbilities": [
+					"telepathy 100 feet (myceloids)"
+				]
+			},
+			"skills": {
+				"Stealth": {
+					"std": 9
+				},
+				"Survival": {
+					"std": 8
+				}
+			},
+			"abilityMods": {
+				"str": 3,
+				"dex": 3,
+				"con": 4,
+				"int": -1,
+				"wis": 2,
+				"cha": 0
+			},
+			"ac": {
+				"std": 18
+			},
+			"savingThrows": {
+				"fort": {
+					"std": 12
+				},
+				"ref": {
+					"std": 7
+				},
+				"will": {
+					"std": 8
+				}
+			},
+			"hp": [
+				{
+					"hp": 50,
+					"abilities": null
+				}
+			],
+			"weaknesses": [
+				{
+					"amount": 5,
+					"name": "slashing"
+				}
+			],
+			"speed": {
+				"walk": 20
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "fist",
+					"attack": 11,
+					"effects": [
+						"purple pox"
+					],
+					"damage": "{@damage 1d8+3} bludgeoning plus purple pox",
+					"types": [
+						"bludgeoning"
+					]
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"entries": [
+							"If Umbo is reduced to 0 HP by a critical hit, he pops, forcing him to immediately Emit Spores, even if he has already used the ability that day."
+						],
+						"name": "Spore Pop"
+					}
+				],
+				"bot": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"frequency": {
+							"unit": "day",
+							"freq": 1
+						},
+						"entries": [
+							"Umbo expels spores in a 10-foot burst centered on a corner of his own space. This cloud lasts until the start of the myceloid's next turn. Each creature that is in the cloud or enters it is exposed to purple pox."
+						],
+						"name": "Emit Spores"
+					},
+					{
+						"entries": [
+							{
+								"type": "affliction",
+								"name": "",
+								"traits": [
+									"disease"
+								],
+								"note": " Myceloids are immune",
+								"DC": 18,
+								"savingThrow": "Fortitude",
+								"onset": "1 minute",
+								"stages": [
+									{
+										"stage": 1,
+										"entry": "{@damage 1d6} poison damage and {@condition stupefied|CRB|stupefied 1}",
+										"duration": "1 day"
+									},
+									{
+										"stage": 2,
+										"entry": "{@damage 4d6} poison damage, {@condition stupefied|CRB|stupefied 3}, and the creature is compelled to seek out the nearest myceloid colony\u2014this compulsion is a mental {@trait emotion} effect",
+										"duration": "1 day"
+									},
+									{
+										"stage": 3,
+										"entry": "The creature dies.",
+										"duration": null
+									}
+								]
+							}
+						],
+						"name": "Purple Pox"
+					},
+					{
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"emotion",
+							"enchantment",
+							"incapacitation",
+							"mental",
+							"primal"
+						],
+						"entries": [
+							"Umbo targets one creature affected by purple pox within 30 feet. That creature must attempt a DC 18 Will save. It is then temporarily immune to spore domination for 10 minutes.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": "The target is unaffected.",
+									"Success": "Until the end of its next turn, the target is {@condition helpful} to myceloids and can't take {@condition hostile} actions against them. If attacked by Umbo, the target is freed from this effect at the end of Umbo's turn.",
+									"Failure": "As success, but for 1 minute.",
+									"Critical Failure": "As success, but until the purple pox is cured."
+								}
+							}
+						],
+						"name": "Spore Domination"
+					}
+				]
+			}
+		},
+		{
+			"name": "Urbel",
+			"isNpc": true,
+			"source": "SoT1",
+			"page": 55,
+			"level": 4,
+			"traits": [
+				"unique",
+				"ce",
+				"small",
+				"fey",
+				"gremlin"
+			],
+			"creatureType": [
+				"Fey"
+			],
+			"perception": {
+				"std": 8
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
+			"languages": {
+				"languages": [
+					"Undercommon"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Acrobatics": {
+					"std": 10
+				},
+				"Athletics": {
+					"std": 9,
+					"to Shove": 11
+				},
+				"Intimidation": {
+					"std": 12
+				},
+				"Stealth": {
+					"std": 10
+				}
+			},
+			"abilityMods": {
+				"str": 3,
+				"dex": 4,
+				"con": 3,
+				"int": -1,
+				"wis": 0,
+				"cha": 2
+			},
+			"ac": {
+				"std": 21
+			},
+			"savingThrows": {
+				"fort": {
+					"std": 13
+				},
+				"ref": {
+					"std": 12
+				},
+				"will": {
+					"std": 8
+				}
+			},
+			"hp": [
+				{
+					"hp": 68,
+					"abilities": null
+				}
+			],
+			"weaknesses": [
+				{
+					"amount": 4,
+					"name": "cold iron"
+				}
+			],
+			"speed": {
+				"walk": 30,
+				"climb": 20
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "pick",
+					"attack": 14,
+					"traits": [
+						"fatal d10",
+						"shove"
+					],
+					"effects": [],
+					"damage": "{@damage 2d6+5} piercing",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"attack": 14,
+					"traits": [
+						"finesse"
+					],
+					"effects": [
+						"Grab"
+					],
+					"damage": "{@damage 1d6+5} piercing plus Grab",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "claw",
+					"attack": 14,
+					"traits": [
+						"agile",
+						"finesse"
+					],
+					"effects": [],
+					"damage": "{@damage 1d4+5} slashing",
+					"types": [
+						"slashing"
+					]
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Primal Innate",
+					"type": "Innate",
+					"tradition": "Primal",
+					"DC": 21,
+					"attack": 13,
+					"entry": {
+						"0": {
+							"level": 2,
+							"spells": [
+								{
+									"name": "prestidigitation"
+								}
+							]
+						},
+						"1": {
+							"spells": [
+								{
+									"name": "grease"
+								},
+								{
+									"name": "shocking grasp"
+								}
+							]
+						},
+						"2": {
+							"spells": [
+								{
+									"name": "shatter"
+								}
+							]
+						}
+					}
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"trigger": "A Medium creature within",
+						"entries": [
+							"Urbel's reach leaves a square during its move action; Urbel lashes out at the triggering creature's knees. He attempts an {@skill Acrobatics} check against the creature's Reflex DC. On a success, the target falls and lands {@condition prone}."
+						],
+						"name": "Kneecapper"
+					}
+				],
+				"bot": [
+					{
+						"entries": [
+							"Any melee weapon Urbel uses gains the {@trait shove} trait, and if he rolls a critical failure when attempting to {@action Shove} a creature with the weapon, he treats the result as a failure instead."
+						],
+						"name": "Bully"
+					},
+					{
+						"entries": [
+							"Urbel's melee Strikes deal an additional {@dice 1d6} damage to {@condition prone} targets."
+						],
+						"name": "Pound Down"
+					}
+				]
+			}
+		}
+	]
+}

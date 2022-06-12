@@ -1,1 +1,128 @@
-{"spell":[{"name":"Daydreamer's Curse","source":"AV2","page":73,"level":4,"traits":["uncommon","attack","curse","enchantment","mental","misfortune"],"school":"E","traditions":["arcane","occult"],"cast":{"number":2,"unit":"action"},"components":[{"S":true,"V":true}],"range":{"entry":"touch","distance":{"type":"touch","amount":1}},"targets":"1 creature","savingThrow":{"type":["W"]},"duration":{"type":"timed","entry":"varies","duration":{"number":1,"unit":"special"}},"entries":["You impose a curse upon the target that renders it easily distracted and unable to focus its thoughts on tasks that demand insight or discernment. The target must attempt a Will save.",{"type":"successDegree","entries":{"Critical Success":"The target is unaffected.","Success":"For 10 minutes, the target must roll twice and use the worse result whenever attempting a {@skill Medicine}, {@skill Nature}, {@skill Perception}, or {@skill Survival} check. If the target critically succeeds at a {@skill Perception} check or skill check to perform an action with the {@trait concentrate} trait, the target gets a success instead.","Failure":"As success, but the effect is permanent.","Critical Failure":"As failure, except the target treats the outcomes of all checks with the {@trait concentrate} trait as one degree of success worse than the result it rolled (a critical success becomes a success, a success becomes a failure, and a failure becomes a critical failure)."}}]},{"name":"Savant's Curse","source":"AV2","page":73,"level":4,"traits":["uncommon","attack","curse","enchantment","mental","misfortune"],"school":"E","traditions":["arcane","occult"],"cast":{"number":2,"unit":"action"},"components":[{"S":true,"V":true}],"range":{"entry":"touch","distance":{"type":"touch","amount":1}},"targets":"1 creature","savingThrow":{"type":["W"]},"duration":{"type":"timed","entry":"varies","duration":{"number":1,"unit":"special"}},"entries":["You afflict the target with a curse that fills its mind with distracting and hyperspecialized minutiae, causing it to second-guess even simple facts. The target must attempt a Will saving throw.",{"type":"successDegree","entries":{"Critical Success":"The target is unaffected.","Success":"For 10 minutes, the target must roll twice and use the worse result whenever attempting an {@skill Arcana}, {@skill Lore}, {@skill Occultism}, or {@skill Society} check. If the target succeeds at a check to {@action Recall Knowledge}, it gains one piece of true knowledge and one piece of erroneous knowledge, but it has no way of knowing which is which (this has no effect if the target critically succeeds at a check to {@action Recall Knowledge}).","Failure":"As success, but the effect is permanent.","Critical Failure":"As failure, and the target treats the outcomes of all checks to {@action Recall Knowledge} as one degree of success worse than the result the target rolled (a critical success becomes a success, a success becomes a failure, and a failure becomes a critical failure)."}}]}]}
+{
+	"spell": [
+		{
+			"name": "Daydreamer's Curse",
+			"source": "AV2",
+			"page": 73,
+			"level": 4,
+			"traits": [
+				"uncommon",
+				"attack",
+				"curse",
+				"enchantment",
+				"mental",
+				"misfortune"
+			],
+			"school": "E",
+			"traditions": [
+				"arcane",
+				"occult"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
+			"range": {
+				"entry": "touch",
+				"distance": {
+					"type": "touch",
+					"amount": 1
+				}
+			},
+			"targets": "1 creature",
+			"savingThrow": {
+				"type": [
+					"W"
+				]
+			},
+			"duration": {
+				"type": "timed",
+				"entry": "varies",
+				"duration": {
+					"number": 1,
+					"unit": "special"
+				}
+			},
+			"entries": [
+				"You impose a curse upon the target that renders it easily distracted and unable to focus its thoughts on tasks that demand insight or discernment. The target must attempt a Will save.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "The target is unaffected.",
+						"Success": "For 10 minutes, the target must roll twice and use the worse result whenever attempting a {@skill Medicine}, {@skill Nature}, {@skill Perception}, or {@skill Survival} check. If the target critically succeeds at a {@skill Perception} check or skill check to perform an action with the {@trait concentrate} trait, the target gets a success instead.",
+						"Failure": "As success, but the effect is permanent.",
+						"Critical Failure": "As failure, except the target treats the outcomes of all checks with the {@trait concentrate} trait as one degree of success worse than the result it rolled (a critical success becomes a success, a success becomes a failure, and a failure becomes a critical failure)."
+					}
+				}
+			]
+		},
+		{
+			"name": "Savant's Curse",
+			"source": "AV2",
+			"page": 73,
+			"level": 4,
+			"traits": [
+				"uncommon",
+				"attack",
+				"curse",
+				"enchantment",
+				"mental",
+				"misfortune"
+			],
+			"school": "E",
+			"traditions": [
+				"arcane",
+				"occult"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				{
+					"S": true,
+					"V": true
+				}
+			],
+			"range": {
+				"entry": "touch",
+				"distance": {
+					"type": "touch",
+					"amount": 1
+				}
+			},
+			"targets": "1 creature",
+			"savingThrow": {
+				"type": [
+					"W"
+				]
+			},
+			"duration": {
+				"type": "timed",
+				"entry": "varies",
+				"duration": {
+					"number": 1,
+					"unit": "special"
+				}
+			},
+			"entries": [
+				"You afflict the target with a curse that fills its mind with distracting and hyperspecialized minutiae, causing it to second-guess even simple facts. The target must attempt a Will saving throw.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "The target is unaffected.",
+						"Success": "For 10 minutes, the target must roll twice and use the worse result whenever attempting an {@skill Arcana}, {@skill Lore}, {@skill Occultism}, or {@skill Society} check. If the target succeeds at a check to {@action Recall Knowledge}, it gains one piece of true knowledge and one piece of erroneous knowledge, but it has no way of knowing which is which (this has no effect if the target critically succeeds at a check to {@action Recall Knowledge}).",
+						"Failure": "As success, but the effect is permanent.",
+						"Critical Failure": "As failure, and the target treats the outcomes of all checks to {@action Recall Knowledge} as one degree of success worse than the result the target rolled (a critical success becomes a success, a success becomes a failure, and a failure becomes a critical failure)."
+					}
+				}
+			]
+		}
+	]
+}

@@ -1,1 +1,787 @@
-{"item":[{"name":"Armored Skirt","source":"LOCG","page":91,"type":"Item","level":0,"traits":[],"price":{"coin":"sp","amount":20},"bulk":1,"category":"Adventuring Gear","entries":["These armor-plated skirts, which are also known as armored kilts, are favored by Knights of Lastwall for their versatility and aesthetic appeal. An armored skirt can be donned with 2 {@action Interact} actions when it's worn with light or medium armor, or as part of donning heavy armor.","When worn with a breastplate, chain shirt, chain mail, or scale mail, an armored skirt increases the armor's item bonus to AC by 1, worsens the armor's check penalty by 1, reduces the armor's Dex cap by 1, increases the Strength score required to ignore the check penalty and reduce the Speed penalty by 2, and adds the {@trait noisy} trait. This also makes the armor one step heavier (from light to medium, or medium to heavy), and you use the proficiency bonus appropriate to this adjusted armor type.","Alternatively, when wearing an armored skirt to replace appropriate portions of a set of half plate or full plate, reduce the armor's item bonus to AC by 1, lessen the check penalty by 1, decrease the Strength score required to ignore the check penalty and reduce the Speed penalty by 2, increase the armor's Dex cap by 1, and add the {@trait noisy} trait to the armor. An armored skirt grants no benefit when worn by itself or with armors other than those listed here."]},{"name":"Bi-resonant Wayfinder","source":"LOCG","page":110,"type":"Item","level":6,"traits":["uncommon","evocation","illusion","invested","magical"],"price":{"coin":"gp","amount":200},"usage":"worn","category":"Worn","entries":["A bi-resonant wayfinder is inlaid with intricate platinum wires in a complex array of conduits for magical energy. These conduits control the resonant interference of aeon stones. A bi-resonant wayfinder works just like a regular {@item wayfinder} except it has two aeon stone slots, and the aeon stones in both slots grant their resonant powers without interfering with each other. The bi-resonant wayfinder and the two aeon stones count as two items toward your investiture limit."]},{"name":"Cloak Of Repute","source":"LOCG","page":72,"type":"Item","level":"4+","traits":["enchantment","invested","magical","worn"],"usage":"worn cloak","bulk":1,"category":"Worn","entries":["This gaudy and extravagant cloak is adorned with brilliant gems and a fur trim. While wearing the cloak, you gain instant fame and notoriety, granting you a +1 item bonus to {@skill Diplomacy} checks to {@action Make an Impression}. Creatures attempting to learn about you gain the same bonus to {@action Gather Information} about you.",{"type":"ability","style":"compact","activity":{"number":2,"unit":"action"},"components":["(command)"],"frequency":{"unit":"day","freq":1},"entries":["You wield your great stature to make a {@action Request} of a creature. If you roll a success on the check, you get a critical success instead."]}],"generic":"G","variants":[{"type":"cloak of repute","level":4,"price":{"coin":"gp","amount":90},"entries":[]},{"type":"greater cloak of repute","level":9,"price":{"coin":"gp","amount":1300},"entries":["The item bonus is +2. You can activate the cloak twice per day."]},{"type":"major cloak of repute","level":17,"price":{"coin":"gp","amount":21750},"entries":["The item bonus is +3. You can activate the cloak three times per day. If you roll a critical failure on your {@skill Diplomacy} check when you activate the cloak, you get a failure instead."]}]},{"name":"Crimson Brand","source":"LOCG","page":92,"type":"Item","level":9,"traits":["uncommon","evocation","magical"],"price":{"coin":"gp","amount":700},"usage":"held in 1 or 2 hands","bulk":1,"category":"Held","entries":["These ominous swords are decorated with crimson lacquer and serve as perfect conduits for the Crimson Oath's power. The first was granted to Clarethe Iomedar by a mysterious patron who many Reclaimers believe to be an emissary of Ragathiel.","A crimson brand is a +1 striking wounding bastard sword. When the wielder uses the crimson brand to cast {@spell invoke the Crimson Oath|LOCG} (page 90), they can generate a 60-foot line or a 30-foot cone instead of the normal 20-foot cone. Whenever the wielder would inflict {@condition persistent damage ||persistent bleed damage} on an undead creature with the crimson brand, they can instead wreathe the creature in ruby energy, inflicting the same amount of {@condition persistent damage ||persistent positive damage} instead of {@condition persistent damage ||persistent bleed damage}."]},{"name":"Fortifying Pebble","source":"LOCG","page":110,"type":"Item","level":4,"traits":["uncommon","abjuration","consumable","magical","talisman"],"price":{"coin":"gp","amount":13},"usage":"affixed to armor, shield, or weapon","activate":{"activity":{"number":1,"unit":"free","entry":"{@as F}"},"components":["envision"],"trigger":"The affixed object would take damage."},"category":"Talisman","entries":["This small pebble is strangely dense and surprisingly durable, affixed to an object by a sturdy steel chain. When you activate the pebble, the affixed object takes 10 less damage."]},{"name":"Glorious Plate","source":"LOCG","page":93,"type":"Item","level":14,"traits":["rare","evocation","good","light","magical"],"price":{"coin":"gp","amount":4500},"usage":"worn, armor","bulk":4,"category":"Worn","entries":["This elegant full plate is embossed with heraldic imagery and never tarnishes or loses its shine. Glorious plate is +2 resilient full plate. In battle, glorious plate sheds bright light in a 10-foot radius, which enemies see as a blinding halo that obscures creatures other than the wearer. When an enemy looks at the wearer, it must attempt a DC 33 Will saving throw. The enemy is then temporarily immune for 1 minute.",{"type":"successDegree","entries":{"Success":"The enemy is unaffected.","Failure":"For 1 minute, the wearer's allies within the glorious plate's 10-foot radius of light are {@condition concealed} to the enemy. Allies are {@condition concealed} only while they remain within the light; if allies enter the light later, they are {@condition concealed} as well.","Critical Failure":"As failure, except the wearer's allies are {@condition hidden} to the enemy instead of {@condition concealed}. Activate {@as 2} command, {@action Interact}; Frequency once per 10 minutes; Effect The armor casts sanctuary on you."}}]},{"name":"Insistent Door Knocker","source":"LOCG","page":72,"type":"Item","level":"6+","traits":["conjuration","magical"],"usage":"held in 1 hand","bulk":1,"category":"Held","entries":["This dark iron door knocker comes in a variety of shapes, such as a bird clutching a ring in its talons or a gargoyle holding a ring in its mouth. Placing the door knocker on the surface of a door (an {@action Interact} action) causes it to attach and remain in place. While in place, the door knocker whispers hints to you while you attempt to unlock the door, granting a +1 item bonus to {@skill Thievery} checks to {@action Pick a Lock}.","Removing the door knocker from a surface requires you to use an {@action Interact} action.",{"type":"ability","style":"compact","activity":{"number":2,"unit":"action"},"components":["(command","Interact)"],"frequency":{"unit":"day","freq":1},"entries":["You place the door knocker against a wall, floor, or ceiling. The door knocker fuses in place and creates a usable door within the surface. Any creature can move through the door normally, as if the door had always been there. The door can penetrate up to 1 foot of material, so thick material, such as heavy stone walls, can cause this effect to fail, expending its use for the day. A thin layer of metal in a wall, floor, or ceiling also causes the effect to fail. You can use an {@action Interact} action to release the door knocker from the surface and return the surface to its previous shape."]}],"generic":"G","variants":[{"type":"insistent door knocker","level":6,"price":{"coin":"gp","amount":225},"entries":[]},{"type":"greater insistent door knocker","level":11,"price":{"coin":"gp","amount":1250},"entries":["The item bonus is +2, and the door knocker can penetrate up to 5 feet of material when activated."]},{"type":"major insistent door knocker","level":17,"price":{"coin":"gp","amount":13500},"entries":["The item bonus is +3, and the door knocker can penetrate up to 10 feet of material when activated."]}]},{"name":"Lastwall Soup","source":"LOCG","page":92,"type":"Item","level":1,"traits":["uncommon","alchemical","consumable","elixir"],"price":{"coin":"gp","amount":3},"usage":"held in 2 hands","bulk":"L","category":"Elixir","entries":["Crimson Reclaimers make this rich, hearty soup using herbs that baffle the senses of the undead. A bowl of Lastwall soup is as nourishing as a full meal. In addition, for 1 hour after consuming a bowl of Lastwall soup, you gain a +2 item bonus to {@skill Stealth} checks and DCs against undead."]},{"name":"Pathfinder Chronicle","source":"LOCG","page":110,"type":"Item","level":3,"traits":["uncommon"],"price":{"coin":"gp","amount":6},"usage":"held in one hand","bulk":"L","category":"Held","entries":["Numerous volumes and editions of the Pathfinder Chronicles exist, each cataloging different adventures. Pathfinder Chronicles are a type of {@item scholarly journal (generic)||scholarly journal} that specifically devotes topics to Pathfinder discoveries, rather than more theoretical academic topics. Because Pathfinders have better access to these chronicles than other scholarly journals, they are particularly common among Pathfinder agents building a library of reference texts."]},{"name":"Pathfinder's Coin","source":"LOCG","page":110,"type":"Item","level":2,"traits":["uncommon","illusion","magical"],"price":{"coin":"gp","amount":30},"usage":"held in 1 hand","category":"Held","entries":["This coin usually resembles ancient currency. An intricate matrix of gold and platinum wires inside the coin causes it to float an inch in the air and spin if placed on a wayfinder.",{"type":"ability","style":"compact","activity":{"number":1,"unit":"action"},"components":["command"],"requirements":"The coin is levitating above a wayfinder","entries":["You give the coin a message of 25 words or fewer. The message repeats in your voice the next time the coin is floated above a wayfinder. A Pathfinder's coin can hold only one message at a time, and it replays its message only once."]}]},{"name":"Pathfinder's Pouch","source":"LOCG","page":111,"type":"Item","level":6,"traits":["uncommon","abjuration","consumable","extradimensional","invested","magical"],"price":{"coin":"gp","amount":200},"usage":"worn belt pouch","bulk":"L","category":"Consumable","entries":["This unobtrusive belt pouch is popular among Pathfinders who operate in places where the {@skill Society} is not welcome. It is constantly under the effects of a 3rd-level {@spell magic aura} spell to appear non-magical. The pouch's normal space holds as much as an ordinary belt pouch, but it also has a small extradimensional space that holds up to 1 Bulk of items.","A creature actively inspecting the pouch in its ordinary state discovers the existence of the extradimensional space only on a critical success to {@action Search} the pouch (see the Concealing an Item action of the {@skill Stealth} skill), though when the extradimensional space is active, it's obvious to anyone examining the pouch that it is more than it seems.",{"type":"ability","style":"compact","activity":{"number":1,"unit":"action"},"components":["Interact"],"entries":["You switch the pouch to allow access to its extradimensional space instead of its normal space, or vice versa. This lasts until you next activate it. Items in the other space are inaccessible and hard to find until you switch the pouch back."]}]},{"name":"Radiant Lance","source":"LOCG","page":92,"type":"Item","level":15,"traits":["uncommon","divine","evocation","fire","good","light"],"price":{"coin":"gp","amount":5750},"usage":"held in 2 hands","bulk":2,"category":"Held","entries":["When wielded in battle, these silver lances blaze with light.","A radiant lance is a +2 greater striking holy flaming silver lance.","When wielded in battle, the radiant lance sheds bright light in a 60-foot radius. On a hit against an undead creature that is specifically vulnerable to sunlight, the lance bursts with a brilliant flash of light, and that undead must attempt a DC 35 Fortitude save. If the attack was a critical hit, the undead uses an outcome one degree of success worse than the result of its saving throw.",{"type":"successDegree","entries":{"Success":"The undead is unaffected.","Failure":"The undead is {@condition slowed 1} for 1 round.","Critical Failure":"The undead is {@condition slowed 1} for 1 minute. Activate {@as 2} command, {@action Interact}; Frequency once per day; Effect You point the lance at a foe and call out, firing a beam with the effects of a 7th-level {@spell searing light}."}}]},{"name":"Scroll Case Of Simplicity","source":"LOCG","page":111,"type":"Item","level":4,"traits":["uncommon","invested","magical","transmutation"],"usage":"held in 1 hand","category":"Held","entries":["The four different types of scroll cases of simplicity often bear adornments appropriate to their magical tradition, such as angelic wings or otherworldly lettering. On the inside, intricate runic diagrams spiral out to surround the scroll stored within. A scroll placed within the case can be converted into energy to cast consistently useful spells depending on its type. You must be able to cast spells of a given tradition to use a scroll case of simplicity of a corresponding type.",{"type":"ability","style":"compact","activity":{"number":1,"unit":"action"},"components":["Interact"],"requirements":"The scroll case contains a single scroll of a 1st-level spell","entries":["You transfer the scroll's energy into the scroll case, consuming the scroll, and you can immediately begin casting one of the scroll case's spells. If you use any action other than to {@action Cast a Spell} from the scroll case after activating the scroll case of simplicity, the scroll and its energy are lost."]}]},{"name":"Scrollstaff","source":"LOCG","page":100,"type":"Item","level":1,"traits":["uncommon","magical","transmutation"],"price":{"coin":"gp","amount":12},"usage":"held, 1 hand","bulk":1,"category":"Weapon","subCategory":"Simple","entries":["A band of pliant wood encircles the head of this slender mahogany staff.","The {@organization Magaambya} created the first scrollstaves millennia ago, and even the few scrollstaves found beyond the organization often incorporate Magaambyan iconography as an homage to their source.","A scrollstaff serves as a weapon just like an ordinary {@item staff} and can be improved via runes like any other {@item staff}. In addition, if you are capable of creating magical {@item scroll (generic)||scrolls}, you can inscribe a single {@item scroll (generic)} onto the staff's head for the same cost as normal for {@quickref Crafting the scroll||1|Crafting a Scroll}. If necessary, you can embed a required material focus into the staff as part of the same {@action Craft} activity.","As long as you are holding the staff, you can cast the spell from the staff's head.","Casting the written spell works just like casting from a {@item scroll (generic)}, but you can perform the necessary material component with the staff, even if you don't have a free hand.","Once you cast the inscribed spell, any material focus remains embedded in the staff until removed as an {@action Interact} action.","The staff can hold only a single {@item scroll (generic)} at a time. If you inscribe a new {@item scroll (generic)} before casting the previous spell, you replace the existing spell and remove any previous material focus as part of the {@action Craft} activity to write the new {@item scroll (generic)}."]},{"name":"Serrating","source":"LOCG","page":93,"type":"Rune","level":10,"traits":["uncommon","evocation","magical"],"price":{"coin":"gp","amount":1000},"usage":"etched onto a slashing melee weapon","category":"Rune","appliesTo":["Weapon"],"entries":["A serrating weapon's bladed edge separates into jagged, swirling shards that spin along the blade. When dealing slashing damage, the weapon deals an additional {@dice 1d4} damage.",{"type":"ability","style":"compact","activity":{"number":1,"unit":"action"},"components":["Interact"],"entries":["You brandish the weapon and focus its power, causing the serrated shards to buzz as they spin at a dizzying speed. On your next hit with the weapon this turn that deals slashing damage, the serrating rune adds an additional {@dice 1d12} damage instead of the additional {@dice 1d4} damage, and then the shards return to their usual speed."]}]},{"name":"Shining Wayfinder","source":"LOCG","page":111,"type":"Item","level":4,"traits":["uncommon","abjuration","divination","evocation","invested","magical"],"price":{"coin":"gp","amount":100},"usage":"worn","category":"Worn","entries":["A shining wayfinder is a polished silver compass blessed by the power of benevolent deities. It has the usual functions of a wayfinder, except instead of an activation to cast {@spell light}, the shining wayfinder has the following two activations.",{"type":"ability","style":"compact","activity":{"number":2,"unit":"action"},"components":["command","Interact"],"entries":["You hold the wayfinder and ask for guidance. The wayfinder casts guidance on you."]},{"type":"ability","style":"compact","activity":{"number":2,"unit":"action"},"components":["command","Interact"],"frequency":{"unit":"day","freq":1},"entries":["You call upon the wayfinder's divine blessings for yourself and your allies. The wayfinder casts bless, with an emanation centered on itself. Once per turn, you can use a single action, which has the {@trait concentrate} trait, to increase the emanation's radius by 5 feet."]}]},{"name":"Sinister Knight","source":"LOCG","page":92,"type":"Rune","level":8,"traits":["uncommon","abjuration","illusion","magical"],"price":{"coin":"gp","amount":500},"usage":"etched onto heavy armor","category":"Rune","appliesTo":["Armor"],"entries":["Sinister knight armor shrouds the wearer's identity in secrecy, allowing Crimson Reclaimers to pass among foes without being immediately unmasked. The wearer gains a +1 item bonus to {@skill Deception} checks.",{"type":"ability","style":"compact","activity":{"number":1,"unit":"action"},"components":["(envision)"],"entries":["With a thought, the wearer activates a disguise. While the sinister knight armor's disguise is active, any identifying insignia or aesthetic of the armor is replaced by generic malevolent aesthetics such as spikes or demonic faces. While in the disguise, the wearer is always considered to be taking precautions against lifesense, and even a creature that successfully notices the wearer with its lifesense mistakes the wearer for an undead unless it critically succeeds at its {@skill Perception} check or the wearer critically fails a {@skill Deception} or {@skill Stealth} check. Finally, while in the disguise, the rune attempts to counteract any effects that would reveal your alignment; on a successful counteract check, rather than negate the effect, the rune causes the effect to perceive your alignment as evil (maintaining any lawful or chaotic component of your alignment)","The wearer can {@action Dismiss} the disguise, and if the wearer's armor is removed, the disguise deactivates automatically."]}]},{"name":"Snapleaf","source":"LOCG","page":73,"type":"Item","level":3,"traits":["consumable","illusion","magical","talisman"],"price":{"coin":"gp","amount":9},"usage":"affixed to armor","activate":{"activity":{"number":1,"unit":"reaction","entry":"{@as R}"},"components":["Interact"],"trigger":"You begin to fall."},"category":"Talisman","entries":["This small, crystalline carving takes the shape of a tree leaf and attaches to armor or clothing with a simple strap. When you activate the snapleaf, you gain the benefits of feather fall and a 2nd-level {@spell invisibility} spell for 1 minute or until you stop falling, whichever comes first."]},{"name":"Unmemorable Mantle","source":"LOCG","page":73,"type":"Item","level":"7+","traits":["illusion","invested","magical","worn"],"usage":"worn cloak","bulk":1,"category":"Worn","entries":["This long, shoddy cloak bears a hood and a simple brass clasp. While wearing the cloak, you gain a +1 item bonus to {@skill Deception} checks to {@action Impersonate} an individual and to {@action Lie} while in character as that individual.",{"type":"ability","style":"compact","activity":{"number":1,"unit":"minute","entry":"1 minute"},"components":["(envision","Interact)"],"frequency":{"unit":"day","freq":1},"requirements":"You are Impersonating someone else","entries":["While conversing or otherwise casually interacting with other creatures, you can adjust the mantle's clasp to modify those creatures' recollections of the last 5 minutes of their interaction with you. Each creature must attempt a DC 25 Will save.",{"type":"successDegree","entries":{"Critical Success":"The creature recalls the interaction clearly and realizes you were trying to alter their memory.","Success":"The creature recalls the interaction clearly.","Failure":"You decide whether or not the creature recalls the interaction. You can also alter minor details the creature recalls about the interaction, such as the time, place, and whether the interaction was favorable, as determined by the GM.","Critical Failure":"You decide whether or not the creature recalls the interaction. You can also alter major details the creature recalls about the interaction, such as believing you to be another individual or that the creature agreed to a favor, as determined by the GM."}}]}],"generic":"G","variants":[{"type":"unmemorable mantle","level":7,"price":{"coin":"gp","amount":300},"entries":[]},{"type":"greater unmemorable mantle","level":9,"price":{"coin":"gp","amount":1300},"entries":["The item bonus is +2, and the Will save DC is 28."]},{"type":"major unmemorable mantle","level":17,"price":{"coin":"gp","amount":21750},"entries":["The item bonus is +3, the Will save DC is 38, and you can activate the mantle once every 10 minutes."]}]},{"name":"Vanishing Wayfinder","source":"LOCG","page":112,"type":"Item","level":5,"traits":["uncommon","evocation","illusion","invested","magical"],"price":{"coin":"gp","amount":150},"usage":"worn","category":"Worn","entries":["A vanishing wayfinder is crafted of ivory chased with gold and silver. It has the usual functions of a wayfinder and the following additional activation.",{"type":"ability","style":"compact","activity":{"number":2,"unit":"action"},"components":["command","Interact"],"frequency":{"unit":"day","freq":1},"entries":["You turn the wayfinder in a circle while invoking its command word, gaining the effects of a 2nd-level {@spell invisibility} spell for 5 minutes."]}]}]}
+{
+	"item": [
+		{
+			"name": "Armored Skirt",
+			"source": "LOCG",
+			"page": 91,
+			"type": "Item",
+			"level": 0,
+			"traits": [],
+			"price": {
+				"coin": "sp",
+				"amount": 20
+			},
+			"bulk": 1,
+			"category": "Adventuring Gear",
+			"entries": [
+				"These armor-plated skirts, which are also known as armored kilts, are favored by Knights of Lastwall for their versatility and aesthetic appeal. An armored skirt can be donned with 2 {@action Interact} actions when it's worn with light or medium armor, or as part of donning heavy armor.",
+				"When worn with a breastplate, chain shirt, chain mail, or scale mail, an armored skirt increases the armor's item bonus to AC by 1, worsens the armor's check penalty by 1, reduces the armor's Dex cap by 1, increases the Strength score required to ignore the check penalty and reduce the Speed penalty by 2, and adds the {@trait noisy} trait. This also makes the armor one step heavier (from light to medium, or medium to heavy), and you use the proficiency bonus appropriate to this adjusted armor type.",
+				"Alternatively, when wearing an armored skirt to replace appropriate portions of a set of half plate or full plate, reduce the armor's item bonus to AC by 1, lessen the check penalty by 1, decrease the Strength score required to ignore the check penalty and reduce the Speed penalty by 2, increase the armor's Dex cap by 1, and add the {@trait noisy} trait to the armor. An armored skirt grants no benefit when worn by itself or with armors other than those listed here."
+			]
+		},
+		{
+			"name": "Bi-resonant Wayfinder",
+			"source": "LOCG",
+			"page": 110,
+			"type": "Item",
+			"level": 6,
+			"traits": [
+				"uncommon",
+				"evocation",
+				"illusion",
+				"invested",
+				"magical"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 200
+			},
+			"usage": "worn",
+			"category": "Worn",
+			"entries": [
+				"A bi-resonant wayfinder is inlaid with intricate platinum wires in a complex array of conduits for magical energy. These conduits control the resonant interference of aeon stones. A bi-resonant wayfinder works just like a regular {@item wayfinder} except it has two aeon stone slots, and the aeon stones in both slots grant their resonant powers without interfering with each other. The bi-resonant wayfinder and the two aeon stones count as two items toward your investiture limit."
+			]
+		},
+		{
+			"name": "Cloak Of Repute",
+			"source": "LOCG",
+			"page": 72,
+			"type": "Item",
+			"level": "4+",
+			"traits": [
+				"enchantment",
+				"invested",
+				"magical",
+				"worn"
+			],
+			"usage": "worn cloak",
+			"bulk": 1,
+			"category": "Worn",
+			"entries": [
+				"This gaudy and extravagant cloak is adorned with brilliant gems and a fur trim. While wearing the cloak, you gain instant fame and notoriety, granting you a +1 item bonus to {@skill Diplomacy} checks to {@action Make an Impression}. Creatures attempting to learn about you gain the same bonus to {@action Gather Information} about you.",
+				{
+					"type": "ability",
+					"style": "compact",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"(command)"
+					],
+					"frequency": {
+						"unit": "day",
+						"freq": 1
+					},
+					"entries": [
+						"You wield your great stature to make a {@action Request} of a creature. If you roll a success on the check, you get a critical success instead."
+					]
+				}
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"type": "cloak of repute",
+					"level": 4,
+					"price": {
+						"coin": "gp",
+						"amount": 90
+					},
+					"entries": []
+				},
+				{
+					"type": "greater cloak of repute",
+					"level": 9,
+					"price": {
+						"coin": "gp",
+						"amount": 1300
+					},
+					"entries": [
+						"The item bonus is +2. You can activate the cloak twice per day."
+					]
+				},
+				{
+					"type": "major cloak of repute",
+					"level": 17,
+					"price": {
+						"coin": "gp",
+						"amount": 21750
+					},
+					"entries": [
+						"The item bonus is +3. You can activate the cloak three times per day. If you roll a critical failure on your {@skill Diplomacy} check when you activate the cloak, you get a failure instead."
+					]
+				}
+			]
+		},
+		{
+			"name": "Crimson Brand",
+			"source": "LOCG",
+			"page": 92,
+			"type": "Item",
+			"level": 9,
+			"traits": [
+				"uncommon",
+				"evocation",
+				"magical"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 700
+			},
+			"usage": "held in 1 or 2 hands",
+			"bulk": 1,
+			"category": "Held",
+			"entries": [
+				"These ominous swords are decorated with crimson lacquer and serve as perfect conduits for the Crimson Oath's power. The first was granted to Clarethe Iomedar by a mysterious patron who many Reclaimers believe to be an emissary of Ragathiel.",
+				"A crimson brand is a +1 striking wounding bastard sword. When the wielder uses the crimson brand to cast {@spell invoke the Crimson Oath|LOCG} (page 90), they can generate a 60-foot line or a 30-foot cone instead of the normal 20-foot cone. Whenever the wielder would inflict {@condition persistent damage ||persistent bleed damage} on an undead creature with the crimson brand, they can instead wreathe the creature in ruby energy, inflicting the same amount of {@condition persistent damage ||persistent positive damage} instead of {@condition persistent damage ||persistent bleed damage}."
+			]
+		},
+		{
+			"name": "Fortifying Pebble",
+			"source": "LOCG",
+			"page": 110,
+			"type": "Item",
+			"level": 4,
+			"traits": [
+				"uncommon",
+				"abjuration",
+				"consumable",
+				"magical",
+				"talisman"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 13
+			},
+			"usage": "affixed to armor, shield, or weapon",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "free",
+					"entry": "{@as F}"
+				},
+				"components": [
+					"envision"
+				],
+				"trigger": "The affixed object would take damage."
+			},
+			"category": "Talisman",
+			"entries": [
+				"This small pebble is strangely dense and surprisingly durable, affixed to an object by a sturdy steel chain. When you activate the pebble, the affixed object takes 10 less damage."
+			]
+		},
+		{
+			"name": "Glorious Plate",
+			"source": "LOCG",
+			"page": 93,
+			"type": "Item",
+			"level": 14,
+			"traits": [
+				"rare",
+				"evocation",
+				"good",
+				"light",
+				"magical"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 4500
+			},
+			"usage": "worn, armor",
+			"bulk": 4,
+			"category": "Worn",
+			"entries": [
+				"This elegant full plate is embossed with heraldic imagery and never tarnishes or loses its shine. Glorious plate is +2 resilient full plate. In battle, glorious plate sheds bright light in a 10-foot radius, which enemies see as a blinding halo that obscures creatures other than the wearer. When an enemy looks at the wearer, it must attempt a DC 33 Will saving throw. The enemy is then temporarily immune for 1 minute.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Success": "The enemy is unaffected.",
+						"Failure": "For 1 minute, the wearer's allies within the glorious plate's 10-foot radius of light are {@condition concealed} to the enemy. Allies are {@condition concealed} only while they remain within the light; if allies enter the light later, they are {@condition concealed} as well.",
+						"Critical Failure": "As failure, except the wearer's allies are {@condition hidden} to the enemy instead of {@condition concealed}. Activate {@as 2} command, {@action Interact}; Frequency once per 10 minutes; Effect The armor casts sanctuary on you."
+					}
+				}
+			]
+		},
+		{
+			"name": "Insistent Door Knocker",
+			"source": "LOCG",
+			"page": 72,
+			"type": "Item",
+			"level": "6+",
+			"traits": [
+				"conjuration",
+				"magical"
+			],
+			"usage": "held in 1 hand",
+			"bulk": 1,
+			"category": "Held",
+			"entries": [
+				"This dark iron door knocker comes in a variety of shapes, such as a bird clutching a ring in its talons or a gargoyle holding a ring in its mouth. Placing the door knocker on the surface of a door (an {@action Interact} action) causes it to attach and remain in place. While in place, the door knocker whispers hints to you while you attempt to unlock the door, granting a +1 item bonus to {@skill Thievery} checks to {@action Pick a Lock}.",
+				"Removing the door knocker from a surface requires you to use an {@action Interact} action.",
+				{
+					"type": "ability",
+					"style": "compact",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"(command",
+						"Interact)"
+					],
+					"frequency": {
+						"unit": "day",
+						"freq": 1
+					},
+					"entries": [
+						"You place the door knocker against a wall, floor, or ceiling. The door knocker fuses in place and creates a usable door within the surface. Any creature can move through the door normally, as if the door had always been there. The door can penetrate up to 1 foot of material, so thick material, such as heavy stone walls, can cause this effect to fail, expending its use for the day. A thin layer of metal in a wall, floor, or ceiling also causes the effect to fail. You can use an {@action Interact} action to release the door knocker from the surface and return the surface to its previous shape."
+					]
+				}
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"type": "insistent door knocker",
+					"level": 6,
+					"price": {
+						"coin": "gp",
+						"amount": 225
+					},
+					"entries": []
+				},
+				{
+					"type": "greater insistent door knocker",
+					"level": 11,
+					"price": {
+						"coin": "gp",
+						"amount": 1250
+					},
+					"entries": [
+						"The item bonus is +2, and the door knocker can penetrate up to 5 feet of material when activated."
+					]
+				},
+				{
+					"type": "major insistent door knocker",
+					"level": 17,
+					"price": {
+						"coin": "gp",
+						"amount": 13500
+					},
+					"entries": [
+						"The item bonus is +3, and the door knocker can penetrate up to 10 feet of material when activated."
+					]
+				}
+			]
+		},
+		{
+			"name": "Lastwall Soup",
+			"source": "LOCG",
+			"page": 92,
+			"type": "Item",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"alchemical",
+				"consumable",
+				"elixir"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 3
+			},
+			"usage": "held in 2 hands",
+			"bulk": "L",
+			"category": "Elixir",
+			"entries": [
+				"Crimson Reclaimers make this rich, hearty soup using herbs that baffle the senses of the undead. A bowl of Lastwall soup is as nourishing as a full meal. In addition, for 1 hour after consuming a bowl of Lastwall soup, you gain a +2 item bonus to {@skill Stealth} checks and DCs against undead."
+			]
+		},
+		{
+			"name": "Pathfinder Chronicle",
+			"source": "LOCG",
+			"page": 110,
+			"type": "Item",
+			"level": 3,
+			"traits": [
+				"uncommon"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 6
+			},
+			"usage": "held in one hand",
+			"bulk": "L",
+			"category": "Held",
+			"entries": [
+				"Numerous volumes and editions of the Pathfinder Chronicles exist, each cataloging different adventures. Pathfinder Chronicles are a type of {@item scholarly journal (generic)||scholarly journal} that specifically devotes topics to Pathfinder discoveries, rather than more theoretical academic topics. Because Pathfinders have better access to these chronicles than other scholarly journals, they are particularly common among Pathfinder agents building a library of reference texts."
+			]
+		},
+		{
+			"name": "Pathfinder's Coin",
+			"source": "LOCG",
+			"page": 110,
+			"type": "Item",
+			"level": 2,
+			"traits": [
+				"uncommon",
+				"illusion",
+				"magical"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 30
+			},
+			"usage": "held in 1 hand",
+			"category": "Held",
+			"entries": [
+				"This coin usually resembles ancient currency. An intricate matrix of gold and platinum wires inside the coin causes it to float an inch in the air and spin if placed on a wayfinder.",
+				{
+					"type": "ability",
+					"style": "compact",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"command"
+					],
+					"requirements": "The coin is levitating above a wayfinder",
+					"entries": [
+						"You give the coin a message of 25 words or fewer. The message repeats in your voice the next time the coin is floated above a wayfinder. A Pathfinder's coin can hold only one message at a time, and it replays its message only once."
+					]
+				}
+			]
+		},
+		{
+			"name": "Pathfinder's Pouch",
+			"source": "LOCG",
+			"page": 111,
+			"type": "Item",
+			"level": 6,
+			"traits": [
+				"uncommon",
+				"abjuration",
+				"consumable",
+				"extradimensional",
+				"invested",
+				"magical"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 200
+			},
+			"usage": "worn belt pouch",
+			"bulk": "L",
+			"category": "Consumable",
+			"entries": [
+				"This unobtrusive belt pouch is popular among Pathfinders who operate in places where the {@skill Society} is not welcome. It is constantly under the effects of a 3rd-level {@spell magic aura} spell to appear non-magical. The pouch's normal space holds as much as an ordinary belt pouch, but it also has a small extradimensional space that holds up to 1 Bulk of items.",
+				"A creature actively inspecting the pouch in its ordinary state discovers the existence of the extradimensional space only on a critical success to {@action Search} the pouch (see the Concealing an Item action of the {@skill Stealth} skill), though when the extradimensional space is active, it's obvious to anyone examining the pouch that it is more than it seems.",
+				{
+					"type": "ability",
+					"style": "compact",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"Interact"
+					],
+					"entries": [
+						"You switch the pouch to allow access to its extradimensional space instead of its normal space, or vice versa. This lasts until you next activate it. Items in the other space are inaccessible and hard to find until you switch the pouch back."
+					]
+				}
+			]
+		},
+		{
+			"name": "Radiant Lance",
+			"source": "LOCG",
+			"page": 92,
+			"type": "Item",
+			"level": 15,
+			"traits": [
+				"uncommon",
+				"divine",
+				"evocation",
+				"fire",
+				"good",
+				"light"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 5750
+			},
+			"usage": "held in 2 hands",
+			"bulk": 2,
+			"category": "Held",
+			"entries": [
+				"When wielded in battle, these silver lances blaze with light.",
+				"A radiant lance is a +2 greater striking holy flaming silver lance.",
+				"When wielded in battle, the radiant lance sheds bright light in a 60-foot radius. On a hit against an undead creature that is specifically vulnerable to sunlight, the lance bursts with a brilliant flash of light, and that undead must attempt a DC 35 Fortitude save. If the attack was a critical hit, the undead uses an outcome one degree of success worse than the result of its saving throw.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Success": "The undead is unaffected.",
+						"Failure": "The undead is {@condition slowed 1} for 1 round.",
+						"Critical Failure": "The undead is {@condition slowed 1} for 1 minute. Activate {@as 2} command, {@action Interact}; Frequency once per day; Effect You point the lance at a foe and call out, firing a beam with the effects of a 7th-level {@spell searing light}."
+					}
+				}
+			]
+		},
+		{
+			"name": "Scroll Case Of Simplicity",
+			"source": "LOCG",
+			"page": 111,
+			"type": "Item",
+			"level": 4,
+			"traits": [
+				"uncommon",
+				"invested",
+				"magical",
+				"transmutation"
+			],
+			"usage": "held in 1 hand",
+			"category": "Held",
+			"entries": [
+				"The four different types of scroll cases of simplicity often bear adornments appropriate to their magical tradition, such as angelic wings or otherworldly lettering. On the inside, intricate runic diagrams spiral out to surround the scroll stored within. A scroll placed within the case can be converted into energy to cast consistently useful spells depending on its type. You must be able to cast spells of a given tradition to use a scroll case of simplicity of a corresponding type.",
+				{
+					"type": "ability",
+					"style": "compact",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"Interact"
+					],
+					"requirements": "The scroll case contains a single scroll of a 1st-level spell",
+					"entries": [
+						"You transfer the scroll's energy into the scroll case, consuming the scroll, and you can immediately begin casting one of the scroll case's spells. If you use any action other than to {@action Cast a Spell} from the scroll case after activating the scroll case of simplicity, the scroll and its energy are lost."
+					]
+				}
+			]
+		},
+		{
+			"name": "Scrollstaff",
+			"source": "LOCG",
+			"page": 100,
+			"type": "Item",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"magical",
+				"transmutation"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 12
+			},
+			"usage": "held, 1 hand",
+			"bulk": 1,
+			"category": "Weapon",
+			"subCategory": "Simple",
+			"entries": [
+				"A band of pliant wood encircles the head of this slender mahogany staff.",
+				"The {@organization Magaambya} created the first scrollstaves millennia ago, and even the few scrollstaves found beyond the organization often incorporate Magaambyan iconography as an homage to their source.",
+				"A scrollstaff serves as a weapon just like an ordinary {@item staff} and can be improved via runes like any other {@item staff}. In addition, if you are capable of creating magical {@item scroll (generic)||scrolls}, you can inscribe a single {@item scroll (generic)} onto the staff's head for the same cost as normal for {@quickref Crafting the scroll||1|Crafting a Scroll}. If necessary, you can embed a required material focus into the staff as part of the same {@action Craft} activity.",
+				"As long as you are holding the staff, you can cast the spell from the staff's head.",
+				"Casting the written spell works just like casting from a {@item scroll (generic)}, but you can perform the necessary material component with the staff, even if you don't have a free hand.",
+				"Once you cast the inscribed spell, any material focus remains embedded in the staff until removed as an {@action Interact} action.",
+				"The staff can hold only a single {@item scroll (generic)} at a time. If you inscribe a new {@item scroll (generic)} before casting the previous spell, you replace the existing spell and remove any previous material focus as part of the {@action Craft} activity to write the new {@item scroll (generic)}."
+			]
+		},
+		{
+			"name": "Serrating",
+			"source": "LOCG",
+			"page": 93,
+			"type": "Rune",
+			"level": 10,
+			"traits": [
+				"uncommon",
+				"evocation",
+				"magical"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 1000
+			},
+			"usage": "etched onto a slashing melee weapon",
+			"category": "Rune",
+			"appliesTo": [
+				"Weapon"
+			],
+			"entries": [
+				"A serrating weapon's bladed edge separates into jagged, swirling shards that spin along the blade. When dealing slashing damage, the weapon deals an additional {@dice 1d4} damage.",
+				{
+					"type": "ability",
+					"style": "compact",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"Interact"
+					],
+					"entries": [
+						"You brandish the weapon and focus its power, causing the serrated shards to buzz as they spin at a dizzying speed. On your next hit with the weapon this turn that deals slashing damage, the serrating rune adds an additional {@dice 1d12} damage instead of the additional {@dice 1d4} damage, and then the shards return to their usual speed."
+					]
+				}
+			]
+		},
+		{
+			"name": "Shining Wayfinder",
+			"source": "LOCG",
+			"page": 111,
+			"type": "Item",
+			"level": 4,
+			"traits": [
+				"uncommon",
+				"abjuration",
+				"divination",
+				"evocation",
+				"invested",
+				"magical"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 100
+			},
+			"usage": "worn",
+			"category": "Worn",
+			"entries": [
+				"A shining wayfinder is a polished silver compass blessed by the power of benevolent deities. It has the usual functions of a wayfinder, except instead of an activation to cast {@spell light}, the shining wayfinder has the following two activations.",
+				{
+					"type": "ability",
+					"style": "compact",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"command",
+						"Interact"
+					],
+					"entries": [
+						"You hold the wayfinder and ask for guidance. The wayfinder casts guidance on you."
+					]
+				},
+				{
+					"type": "ability",
+					"style": "compact",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"command",
+						"Interact"
+					],
+					"frequency": {
+						"unit": "day",
+						"freq": 1
+					},
+					"entries": [
+						"You call upon the wayfinder's divine blessings for yourself and your allies. The wayfinder casts bless, with an emanation centered on itself. Once per turn, you can use a single action, which has the {@trait concentrate} trait, to increase the emanation's radius by 5 feet."
+					]
+				}
+			]
+		},
+		{
+			"name": "Sinister Knight",
+			"source": "LOCG",
+			"page": 92,
+			"type": "Rune",
+			"level": 8,
+			"traits": [
+				"uncommon",
+				"abjuration",
+				"illusion",
+				"magical"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 500
+			},
+			"usage": "etched onto heavy armor",
+			"category": "Rune",
+			"appliesTo": [
+				"Armor"
+			],
+			"entries": [
+				"Sinister knight armor shrouds the wearer's identity in secrecy, allowing Crimson Reclaimers to pass among foes without being immediately unmasked. The wearer gains a +1 item bonus to {@skill Deception} checks.",
+				{
+					"type": "ability",
+					"style": "compact",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"(envision)"
+					],
+					"entries": [
+						"With a thought, the wearer activates a disguise. While the sinister knight armor's disguise is active, any identifying insignia or aesthetic of the armor is replaced by generic malevolent aesthetics such as spikes or demonic faces. While in the disguise, the wearer is always considered to be taking precautions against lifesense, and even a creature that successfully notices the wearer with its lifesense mistakes the wearer for an undead unless it critically succeeds at its {@skill Perception} check or the wearer critically fails a {@skill Deception} or {@skill Stealth} check. Finally, while in the disguise, the rune attempts to counteract any effects that would reveal your alignment; on a successful counteract check, rather than negate the effect, the rune causes the effect to perceive your alignment as evil (maintaining any lawful or chaotic component of your alignment)",
+						"The wearer can {@action Dismiss} the disguise, and if the wearer's armor is removed, the disguise deactivates automatically."
+					]
+				}
+			]
+		},
+		{
+			"name": "Snapleaf",
+			"source": "LOCG",
+			"page": 73,
+			"type": "Item",
+			"level": 3,
+			"traits": [
+				"consumable",
+				"illusion",
+				"magical",
+				"talisman"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 9
+			},
+			"usage": "affixed to armor",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "reaction",
+					"entry": "{@as R}"
+				},
+				"components": [
+					"Interact"
+				],
+				"trigger": "You begin to fall."
+			},
+			"category": "Talisman",
+			"entries": [
+				"This small, crystalline carving takes the shape of a tree leaf and attaches to armor or clothing with a simple strap. When you activate the snapleaf, you gain the benefits of feather fall and a 2nd-level {@spell invisibility} spell for 1 minute or until you stop falling, whichever comes first."
+			]
+		},
+		{
+			"name": "Unmemorable Mantle",
+			"source": "LOCG",
+			"page": 73,
+			"type": "Item",
+			"level": "7+",
+			"traits": [
+				"illusion",
+				"invested",
+				"magical",
+				"worn"
+			],
+			"usage": "worn cloak",
+			"bulk": 1,
+			"category": "Worn",
+			"entries": [
+				"This long, shoddy cloak bears a hood and a simple brass clasp. While wearing the cloak, you gain a +1 item bonus to {@skill Deception} checks to {@action Impersonate} an individual and to {@action Lie} while in character as that individual.",
+				{
+					"type": "ability",
+					"style": "compact",
+					"activity": {
+						"number": 1,
+						"unit": "minute",
+						"entry": "1 minute"
+					},
+					"components": [
+						"(envision",
+						"Interact)"
+					],
+					"frequency": {
+						"unit": "day",
+						"freq": 1
+					},
+					"requirements": "You are Impersonating someone else",
+					"entries": [
+						"While conversing or otherwise casually interacting with other creatures, you can adjust the mantle's clasp to modify those creatures' recollections of the last 5 minutes of their interaction with you. Each creature must attempt a DC 25 Will save.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "The creature recalls the interaction clearly and realizes you were trying to alter their memory.",
+								"Success": "The creature recalls the interaction clearly.",
+								"Failure": "You decide whether or not the creature recalls the interaction. You can also alter minor details the creature recalls about the interaction, such as the time, place, and whether the interaction was favorable, as determined by the GM.",
+								"Critical Failure": "You decide whether or not the creature recalls the interaction. You can also alter major details the creature recalls about the interaction, such as believing you to be another individual or that the creature agreed to a favor, as determined by the GM."
+							}
+						}
+					]
+				}
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"type": "unmemorable mantle",
+					"level": 7,
+					"price": {
+						"coin": "gp",
+						"amount": 300
+					},
+					"entries": []
+				},
+				{
+					"type": "greater unmemorable mantle",
+					"level": 9,
+					"price": {
+						"coin": "gp",
+						"amount": 1300
+					},
+					"entries": [
+						"The item bonus is +2, and the Will save DC is 28."
+					]
+				},
+				{
+					"type": "major unmemorable mantle",
+					"level": 17,
+					"price": {
+						"coin": "gp",
+						"amount": 21750
+					},
+					"entries": [
+						"The item bonus is +3, the Will save DC is 38, and you can activate the mantle once every 10 minutes."
+					]
+				}
+			]
+		},
+		{
+			"name": "Vanishing Wayfinder",
+			"source": "LOCG",
+			"page": 112,
+			"type": "Item",
+			"level": 5,
+			"traits": [
+				"uncommon",
+				"evocation",
+				"illusion",
+				"invested",
+				"magical"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 150
+			},
+			"usage": "worn",
+			"category": "Worn",
+			"entries": [
+				"A vanishing wayfinder is crafted of ivory chased with gold and silver. It has the usual functions of a wayfinder and the following additional activation.",
+				{
+					"type": "ability",
+					"style": "compact",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"command",
+						"Interact"
+					],
+					"frequency": {
+						"unit": "day",
+						"freq": 1
+					},
+					"entries": [
+						"You turn the wayfinder in a circle while invoking its command word, gaining the effects of a 2nd-level {@spell invisibility} spell for 5 minutes."
+					]
+				}
+			]
+		}
+	]
+}
