@@ -62,6 +62,10 @@ String.prototype.lowercaseFirst = String.prototype.lowercaseFirst || function ()
 	return str.charAt(0).toLowerCase() + str.slice(1);
 };
 
+String.prototype.uq = String.prototype.uq || function () {
+	return this.unescapeQuotes();
+};
+
 String.prototype.toTitleCase = String.prototype.toTitleCase || function () {
 	let str = this.replace(/([^\W_]+[^\s-/]*) */g, m0 => m0.charAt(0).toUpperCase() + m0.substr(1).toLowerCase());
 
