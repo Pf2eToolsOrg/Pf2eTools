@@ -4714,6 +4714,7 @@ Renderer.item = {
 			${Renderer.item.getCraftRequirements(item)}
 			${Renderer.item.getDestruction(item)}
 			${Renderer.item.getSpecial(item)}
+			${Renderer.item.getGenericItem(item)}
 			${Renderer.utils.getPageP(item)}`;
 	},
 
@@ -4897,7 +4898,7 @@ Renderer.item = {
 			<strong>AC Bonus&nbsp;</strong>${Parser.numToBonus(armorData.ac)};
 			<strong>Dex Cap&nbsp;</strong>${Parser.numToBonus(armorData.dexCap)}
 			</p><p class="pf2-stat pf2-stat__section">
-			<strong>Strength&nbsp;</strong>${armorData.str};
+			<strong>Strength&nbsp;</strong>${armorData.str ? `${armorData.str}` : "\u2014"};
 			<strong>Check Penalty&nbsp;</strong>${armorData.checkPen ? `–${armorData.checkPen}` : "\u2014"};
 			<strong>Speed Penalty&nbsp;</strong>${armorData.speedPen ? `–${armorData.speedPen} ft.` : "\u2014"}
 			</p>`;
@@ -4974,6 +4975,14 @@ Renderer.item = {
 	getSpecial (item) {
 		if (item.special != null) {
 			return `${Renderer.utils.getDividerDiv()}<p class="pf2-stat pf2-stat__section"><strong>Special&nbsp;</strong>${Renderer.get().render(item.special)}</p>`
+		} else return ""
+	},
+
+	getGenericItem: (item) => {
+		if (item.genericItem != null) {
+			return `<span class="pf2-stat pf2-stat__source" style="float: left">
+				${Renderer.get().render(`{@note Main Item: ${`{@item ${item.genericItem}}`}}`)}
+			</span>`
 		} else return ""
 	},
 

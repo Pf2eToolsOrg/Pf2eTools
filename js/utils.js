@@ -3014,7 +3014,7 @@ DataUtil = {
 
 		async expandVariants (item) {
 			if (!item.variants) return [item];
-			const expanded = await Promise.all(item.variants.map(v => DataUtil.item._expandVariant(item, v)));
+			const expanded = await Promise.all(item.variants.filter(x => { if (x.exists !== true) return x }).map(v => DataUtil.item._expandVariant(item, v)));
 			return [item, ...expanded];
 		},
 
@@ -3040,6 +3040,7 @@ DataUtil = {
 			}
 			variant.type = generic.type || "Item";
 			variant.generic = "V";
+			variant.genericItem = `${generic.name} (generic)${generic.source.toLowerCase() !== "crb" ? `|${generic.source}` : "||"}${generic.name}`;
 			await DataUtil.generic._pApplyCopy(DataUtil.item, generic, variant, {});
 			delete variant.variants;
 			return variant;
