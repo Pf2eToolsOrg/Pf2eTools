@@ -5,7 +5,7 @@ if (typeof module !== "undefined") require("./parser.js");
 
 // in deployment, `IS_DEPLOYED = "<version number>";` should be set below.
 IS_DEPLOYED = undefined;
-VERSION_NUMBER = /* PF2ETOOLS_VERSION__OPEN */"0.5.2"/* PF2ETOOLS_VERSION__CLOSE */;
+VERSION_NUMBER = /* PF2ETOOLS_VERSION__OPEN */"0.5.3"/* PF2ETOOLS_VERSION__CLOSE */;
 DEPLOYED_STATIC_ROOT = ""; // ""; // FIXME re-enable this when we have a CDN again
 IS_VTT = false;
 
@@ -60,6 +60,10 @@ String.prototype.lowercaseFirst = String.prototype.lowercaseFirst || function ()
 	if (str.length === 0) return str;
 	if (str.length === 1) return str.charAt(0).toLowerCase();
 	return str.charAt(0).toLowerCase() + str.slice(1);
+};
+
+String.prototype.uq = String.prototype.uq || function () {
+	return this.unescapeQuotes();
 };
 
 String.prototype.toTitleCase = String.prototype.toTitleCase || function () {
@@ -3014,7 +3018,7 @@ DataUtil = {
 
 		async expandVariants (item) {
 			if (!item.variants) return [item];
-			const expanded = await Promise.all(item.variants.map(v => DataUtil.item._expandVariant(item, v)));
+			const expanded = await Promise.all(item.variants.filter(x => { if (x.exists !== true) return x }).map(v => DataUtil.item._expandVariant(item, v)));
 			return [item, ...expanded];
 		},
 
@@ -3040,6 +3044,7 @@ DataUtil = {
 			}
 			variant.type = generic.type || "Item";
 			variant.generic = "V";
+			variant.genericItem = `${generic.name} (generic)${generic.source.toLowerCase() !== "crb" ? `|${generic.source}` : "||"}${generic.name}`;
 			await DataUtil.generic._pApplyCopy(DataUtil.item, generic, variant, {});
 			delete variant.variants;
 			return variant;

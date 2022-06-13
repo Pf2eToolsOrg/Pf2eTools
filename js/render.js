@@ -377,11 +377,6 @@ function Renderer () {
 				case "data":
 					this._renderData(entry, textStack, meta, options);
 					break;
-				case "statblock":
-					// eslint-disable-next-line no-console
-					console.warn(`Statblock entries should be removed!`);
-					this._renderStatblock(entry, textStack, meta, options);
-					break;
 
 				// images
 				case "image":
@@ -1365,28 +1360,25 @@ function Renderer () {
 		textStack[0] += Renderer.getEntryDice(entry, entry.name, this._isAddHandlers);
 	};
 
-	this._renderStatblock = async function (entry, textStack, meta, options) {
-		const cat_id = Parser._parse_bToA(Parser.CAT_ID_TO_PROP, entry.tag);
-		const page = UrlUtil.CAT_TO_PAGE[cat_id];
-		const hash = entry.hash || UrlUtil.URL_TO_HASH_BUILDER[page](entry);
-		const renderFn = Renderer.hover._pageToRenderFn(page);
-		textStack[0] += `<div class="pf2-wrp-stat pf2-stat" data-stat-hash="${hash}">${Renderer.get().render(`{@${entry.tag} ${entry.name}|${entry.source}}`)}</div>`
-		const toRender = await Renderer.hover.pCacheAndGet(page, entry.source, hash);
-		const $wrp = $(`[data-stat-hash="${hash}"]`);
-		if (toRender) $wrp.html(renderFn(toRender, { noPage: true }));
-		else throw new Error(`Could not find ${entries.tag}: ${hash}`);
-	};
-
-	// TODO: Merge with renderStatblock
-	this._renderData = function (entry, textStack, meta, options) {
+	// Ex. {"type": "data", "tag": "spell", "name": "Fireball", "source": "CRB"}
+	this._renderData = async function (entry, textStack, meta, options) {
 		this._renderPrefix(entry, textStack, meta, options);
 		this._renderDataHeader(textStack);
 		const catId = Parser._parse_bToA(Parser.CAT_ID_TO_PROP, entry.tag);
 		const page = entry.page || UrlUtil.CAT_TO_PAGE[catId];
 		const renderFn = Renderer.hover._pageToRenderFn(page);
 		if (renderFn) {
-			const rendered = renderFn(entry.data, { isEmbedded: true, noPage: true });
-			textStack[0] += typeof rendered === "object" ? rendered.html() : rendered;
+			if (entry.data) {
+				const rendered = renderFn(entry.data, { isEmbedded: true, noPage: true });
+				textStack[0] += typeof rendered === "object" ? rendered.html() : rendered;
+			} else if (entry.name && entry.source) {
+				const hash = entry.hash || UrlUtil.URL_TO_HASH_BUILDER[page](entry);
+				textStack[0] += `<div class="pf2-stat" data-stat-hash="${hash}">${Renderer.get().render(`{@${entry.tag} ${entry.name}|${entry.source}}`)}</div>`
+				const toRender = await Renderer.hover.pCacheAndGet(page, entry.source, hash);
+				const $wrp = $(`[data-stat-hash="${hash}"]`);
+				if (toRender) $wrp.html(renderFn(toRender, { noPage: true }));
+				else throw new Error(`Could not find ${entry.tag}: ${hash}`);
+			}
 		} else textStack[0] += `<div class=""></div>`;
 		this._renderDataFooter(textStack);
 		this._renderSuffix(entry, textStack, meta, options);
@@ -3126,7 +3118,7 @@ Renderer.utils = {
 		let dataPart = "";
 		if (opts.page) {
 			const hash = UrlUtil.URL_TO_HASH_BUILDER[opts.page](it);
-			dataPart = `data-page="${opts.page}" data-source="${it.source.escapeQuotes()}" data-hash="${hash.escapeQuotes()}"`;
+			dataPart = `data-page="${opts.page}" data-source="${it.source.uq()}" data-hash="${hash.uq()}"`;
 		}
 		const type = opts.type != null ? opts.type : it.type || ""
 		const DC = opts.level != null ? Number(opts.level) : Number(it.level)
@@ -4714,6 +4706,7 @@ Renderer.item = {
 			${Renderer.item.getCraftRequirements(item)}
 			${Renderer.item.getDestruction(item)}
 			${Renderer.item.getSpecial(item)}
+			${Renderer.item.getGenericItem(item)}
 			${Renderer.utils.getPageP(item)}`;
 	},
 
@@ -4897,7 +4890,7 @@ Renderer.item = {
 			<strong>AC Bonus&nbsp;</strong>${Parser.numToBonus(armorData.ac)};
 			<strong>Dex Cap&nbsp;</strong>${Parser.numToBonus(armorData.dexCap)}
 			</p><p class="pf2-stat pf2-stat__section">
-			<strong>Strength&nbsp;</strong>${armorData.str};
+			<strong>Strength&nbsp;</strong>${armorData.str ? `${armorData.str}` : "\u2014"};
 			<strong>Check Penalty&nbsp;</strong>${armorData.checkPen ? `–${armorData.checkPen}` : "\u2014"};
 			<strong>Speed Penalty&nbsp;</strong>${armorData.speedPen ? `–${armorData.speedPen} ft.` : "\u2014"}
 			</p>`;
@@ -4974,6 +4967,14 @@ Renderer.item = {
 	getSpecial (item) {
 		if (item.special != null) {
 			return `${Renderer.utils.getDividerDiv()}<p class="pf2-stat pf2-stat__section"><strong>Special&nbsp;</strong>${Renderer.get().render(item.special)}</p>`
+		} else return ""
+	},
+
+	getGenericItem: (item) => {
+		if (item.genericItem != null) {
+			return `<span class="pf2-stat pf2-stat__source" style="float: left">
+				${Renderer.get().render(`{@note Main Item: ${`{@item ${item.genericItem}}`}}`)}
+			</span>`
 		} else return ""
 	},
 
