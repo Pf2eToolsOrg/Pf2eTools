@@ -40,17 +40,14 @@ jobs:
                VET_SEO_IS_SKIP_UA_ETC: true
             run: |
                npm run build:seo -- ${{ env.RELEASE_VERSION }}
-         # Merge and minify scripts, data, etc.
+         # Merge and minify scripts, data, etc. + Build Service Worker
+         # Remove entries from the `.gitignore` so the gh-pages action can correctly add+commit them to the pages branch
          -  name: Build Prod
             env:
                VET_BASE_SITE_URL: https://pf2etools.com/
                VET_SEO_IS_SKIP_UA_ETC: true
             run: |
-               npm run build:deploy:prod
-         # Remove entries from the `.gitignore` so the gh-pages action can correctly add+commit them to the pages branch
-         -  name: Build Service Worker
-            run: |
-               npm run build:sw:prod
+               npm run build:deploy:prod -- ${{ env.RELEASE_VERSION }}
                sed -i 's/sw.js//g' .gitignore
                sed -i 's/sw-injector.js//g' .gitignore
          # See: https://github.com/JamesIves/github-pages-deploy-action
