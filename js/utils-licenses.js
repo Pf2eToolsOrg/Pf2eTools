@@ -1,16 +1,1 @@
-"use strict";
-
-class UtilsLicenses {
-	static renderLicenses (licenses) {
-		const $wrp = $(`#wrp-licenses`).empty();
-		const renderer = Renderer.get();
-		$$`${(licenses.map(it => {
-			return `<div class="row"><div class="home__stripe-header text-right home__h-player">
-			<div class="text-center">${it.name != null ? it.name : ""}</div></div>
-			<div style="text-align: justify;text-justify: inter-word;">${it.entries.map(e => renderer.render(e)).join("<br>")}</div>
-			</div></div>`
-		}).join("<hr>"))}`.appendTo($wrp);
-	}
-
-	// TODO: Homebrew licenses
-}
+"use strict";class UtilsLicenses{static renderLicenses(licenses){const $wrp=$(`#wrp-licenses`).empty();const renderer=Renderer.get();$$`${licenses.map((it=>`<div class="row"><div class="home__stripe-header text-right home__h-player">\n\t\t\t<div class="text-center">${it.name!=null?it.name:""}</div></div>\n\t\t\t<div style="text-align: justify;text-justify: inter-word;">${it.entries.map((e=>renderer.render(e))).join("<br>")}</div>\n\t\t\t</div></div>`)).join("<hr>")}`.appendTo($wrp)}}

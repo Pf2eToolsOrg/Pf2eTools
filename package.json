@@ -1,12 +1,11 @@
 {
 	"name": "pf2etools",
 	"author": "Pf2eTools",
-	"version": "0.5.3",
+	"version": "0.5.6",
 	"license": "MIT",
 	"description": "A site dedicated to making playing games with your friends as easy as possible.",
 	"scripts": {
 		"serve:dev": "http-server -c-1 --cors",
-		"version-bump": "npm version -m \"chore(version): bump\"",
 		"gen-all": "node node/generate-all.js",
 		"clean-jsons": "node node/clean-jsons.js",
 		"minify:js": "terser --keep-classnames --keep-fnames",
@@ -25,6 +24,7 @@
 		"build:deploy:dev": "bash build/deploy-prep-dev.sh",
 		"build:deploy:prod": "bash build/deploy-prep-prod.sh",
 		"build:deploy:prod:cdn": "bash build/deploy-prep-prod--cdn.sh",
+		"build:data:prod": "node node/prepare-data-prod.js",
 		"build:seo": "node node/generate-seo.js",
 		"build:sw": "node node/build-sw.mjs",
 		"build:sw:prod": "node node/build-sw.mjs prod",
