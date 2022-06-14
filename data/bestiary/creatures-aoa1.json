@@ -116,7 +116,9 @@
 							"]"
 						],
 						"name": "Attack of Opportunity",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				],
 				"bot": [
@@ -394,7 +396,9 @@
 							"As anadi hunter."
 						],
 						"name": "Change Shape",
-						"generic": true,
+						"generic": {
+							"tag": "ability"
+						},
 						"entries_as_xyz": "Ability not found: '{@action Change Shape|LOAG} As anadi hunter.' in Anadi Elder, p.85"
 					},
 					{
@@ -733,7 +737,9 @@
 							"As anadi hunter."
 						],
 						"name": "Change Shape",
-						"generic": true,
+						"generic": {
+							"tag": "ability"
+						},
 						"entries_as_xyz": "Ability not found: '{@action Change Shape|LOAG} As anadi hunter.' in Anadi Sage, p.85"
 					},
 					{
@@ -1439,7 +1445,9 @@
 						},
 						"entries": [],
 						"name": "Attack of Opportunity",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
 						"activity": {
@@ -1461,7 +1469,9 @@
 							"When the doorwarden uses Shield Block against a melee attack from a creature within 5 feet, it can also push the creature 5 feet."
 						],
 						"name": "Shield Block",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				],
 				"bot": [
@@ -2507,7 +2517,9 @@
 							"As anadi hunter (page 84)."
 						],
 						"name": "Change Shape",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
 						"entries": [
@@ -2638,7 +2650,9 @@
 						},
 						"entries": [],
 						"name": "Attack of Opportunity",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				],
 				"bot": [
@@ -2971,7 +2985,9 @@
 							"Small, {@damage 1d12+3} bludgeoning, Rupture 10."
 						],
 						"name": "Swallow Whole",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
 						"entries": [
@@ -3223,11 +3239,17 @@
 						"entries": [
 							"When Voz uses this ability, she also regains 1 Focus Point."
 						],
-						"name": "Drain Bonded Item"
+						"name": "Drain Bonded Item",
+						"generic": {
+							"tag": "action"
+						}
 					},
 					{
+						"name": "Eschew Materials",
 						"entries": [],
-						"name": "Eschew Materials"
+						"generic": {
+							"tag": "feat"
+						}
 					},
 					{
 						"activity": {
@@ -3235,7 +3257,11 @@
 							"unit": "action"
 						},
 						"entries": [],
-						"name": "Reach Spell"
+						"name": "Reach Spell",
+						"generic": {
+							"tag": "feat",
+							"add_hash": "Wizard"
+						}
 					}
 				]
 			}
