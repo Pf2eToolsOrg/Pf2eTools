@@ -1213,9 +1213,9 @@ Parser.CONDITION_TO_COLOR = {
 // Listing of all the sources
 SRC_CRB = "CRB";
 SRC_APG = "APG";
-SRC_BST = "Bst";
-SRC_BST2 = "Bst2";
-SRC_BST3 = "Bst3";
+SRC_B1 = "B1";
+SRC_B2 = "B2";
+SRC_B3 = "B3";
 SRC_GMG = "GMG";
 SRC_SOM = "SoM";
 SRC_LOWG = "LOWG";
@@ -1340,11 +1340,11 @@ Parser.SOURCE_PREFIX_TO_SHORT[OoA_PREFIX] = OoA_PREFIX_SHORT;
 // Turn JSON to Full Title
 Parser.SOURCE_JSON_TO_FULL = {};
 Parser.SOURCE_JSON_TO_FULL[SRC_CRB] = "Core Rulebook";
-Parser.SOURCE_JSON_TO_FULL[SRC_BST] = "Bestiary";
+Parser.SOURCE_JSON_TO_FULL[SRC_B1] = "Bestiary";
 Parser.SOURCE_JSON_TO_FULL[SRC_GMG] = "Gamemastery Guide";
-Parser.SOURCE_JSON_TO_FULL[SRC_BST2] = "Bestiary 2";
+Parser.SOURCE_JSON_TO_FULL[SRC_B2] = "Bestiary 2";
 Parser.SOURCE_JSON_TO_FULL[SRC_APG] = "Advanced Player's Guide";
-Parser.SOURCE_JSON_TO_FULL[SRC_BST3] = "Bestiary 3";
+Parser.SOURCE_JSON_TO_FULL[SRC_B3] = "Bestiary 3";
 Parser.SOURCE_JSON_TO_FULL[SRC_SOM] = "Secrets of Magic";
 Parser.SOURCE_JSON_TO_FULL[SRC_LOWG] = "Lost Omens: World Guide";
 Parser.SOURCE_JSON_TO_FULL[SRC_LOCG] = "Lost Omens: Character Guide";
@@ -1424,11 +1424,11 @@ Parser.SOURCE_JSON_TO_FULL[SRC_LTIBA] = "Little Trouble in Big Absalom";
 // Turn JSON to Abbreviations
 Parser.SOURCE_JSON_TO_ABV = {};
 Parser.SOURCE_JSON_TO_ABV[SRC_CRB] = "CRB";
-Parser.SOURCE_JSON_TO_ABV[SRC_BST] = "Bst";
+Parser.SOURCE_JSON_TO_ABV[SRC_B1] = "B1";
 Parser.SOURCE_JSON_TO_ABV[SRC_GMG] = "GMG";
-Parser.SOURCE_JSON_TO_ABV[SRC_BST2] = "Bst2";
+Parser.SOURCE_JSON_TO_ABV[SRC_B2] = "B2";
 Parser.SOURCE_JSON_TO_ABV[SRC_APG] = "APG";
-Parser.SOURCE_JSON_TO_ABV[SRC_BST3] = "Bst3";
+Parser.SOURCE_JSON_TO_ABV[SRC_B3] = "B3";
 Parser.SOURCE_JSON_TO_ABV[SRC_SOM] = "SoM";
 Parser.SOURCE_JSON_TO_ABV[SRC_LOWG] = "LOWG";
 Parser.SOURCE_JSON_TO_ABV[SRC_LOCG] = "LOCG";
@@ -1508,21 +1508,21 @@ Parser.SOURCE_JSON_TO_ABV[SRC_TIO] = "TiO";
 // Turn JSON to Date of Release
 Parser.SOURCE_JSON_TO_DATE = {};
 Parser.SOURCE_JSON_TO_DATE[SRC_CRB] = "2019-08-01";
-Parser.SOURCE_JSON_TO_DATE[SRC_BST] = "2019-08-01";
+Parser.SOURCE_JSON_TO_DATE[SRC_B1] = "2019-08-01";
 Parser.SOURCE_JSON_TO_DATE[SRC_LOWG] = "2019-08-28";
 Parser.SOURCE_JSON_TO_DATE[SRC_LOCG] = "2019-10-16";
 Parser.SOURCE_JSON_TO_DATE[SRC_LOGM] = "2020-01-29";
 Parser.SOURCE_JSON_TO_DATE[SRC_LOGMWS] = "2020-01-29";
 Parser.SOURCE_JSON_TO_DATE[SRC_GMG] = "2020-02-26";
 Parser.SOURCE_JSON_TO_DATE[SRC_EC3] = "2020-03-25";
-Parser.SOURCE_JSON_TO_DATE[SRC_BST2] = "2020-05-27";
+Parser.SOURCE_JSON_TO_DATE[SRC_B2] = "2020-05-27";
 Parser.SOURCE_JSON_TO_DATE[SRC_LOL] = "2020-07-30";
 Parser.SOURCE_JSON_TO_DATE[SRC_APG] = "2020-08-30";
 Parser.SOURCE_JSON_TO_DATE[SRC_LOPSG] = "2020-10-14";
 Parser.SOURCE_JSON_TO_DATE[SRC_LOAG] = "2021-02-24";
 Parser.SOURCE_JSON_TO_DATE[SRC_AAWS] = "2021-02-24";
-Parser.SOURCE_JSON_TO_DATE[SRC_BST3] = "2021-03-31";
-Parser.SOURCE_JSON_TO_DATE[SRC_BST3] = "2021-07-07";
+Parser.SOURCE_JSON_TO_DATE[SRC_B3] = "2021-03-31";
+Parser.SOURCE_JSON_TO_DATE[SRC_B3] = "2021-07-07";
 Parser.SOURCE_JSON_TO_DATE[SRC_SOM] = "2021-08-25";
 Parser.SOURCE_JSON_TO_DATE[SRC_GNG] = "2021-10-13";
 Parser.SOURCE_JSON_TO_DATE[SRC_LOTGB] = "2021-10-13";
@@ -1531,21 +1531,21 @@ Parser.SOURCE_JSON_TO_DATE[SRC_BD] = "2022-04-27";
 // Turn JSON to Paizo Store
 Parser.SOURCE_JSON_TO_STORE = {};
 Parser.SOURCE_JSON_TO_STORE[SRC_CRB] = "https://paizo.com/products/btq01zp3";
-Parser.SOURCE_JSON_TO_STORE[SRC_BST] = "https://paizo.com/products/btq01zp4";
+Parser.SOURCE_JSON_TO_STORE[SRC_B1] = "https://paizo.com/products/btq01zp4";
 Parser.SOURCE_JSON_TO_STORE[SRC_LOWG] = "https://paizo.com/products/btq01zoj";
 Parser.SOURCE_JSON_TO_STORE[SRC_LOCG] = "https://paizo.com/products/btq01zt4";
 Parser.SOURCE_JSON_TO_STORE[SRC_LOGM] = "https://paizo.com/products/btq021wf";
 Parser.SOURCE_JSON_TO_STORE[SRC_LOGMWS] = "https://paizo.com/products/btq021wf";
 Parser.SOURCE_JSON_TO_STORE[SRC_GMG] = "https://paizo.com/products/btq022c1";
 Parser.SOURCE_JSON_TO_STORE[SRC_EC3] = "https://paizo.com/products/btq01zuh";
-Parser.SOURCE_JSON_TO_STORE[SRC_BST2] = "https://paizo.com/products/btq022yq";
+Parser.SOURCE_JSON_TO_STORE[SRC_B2] = "https://paizo.com/products/btq022yq";
 Parser.SOURCE_JSON_TO_STORE[SRC_LOL] = "https://paizo.com/products/btq023gd";
 Parser.SOURCE_JSON_TO_STORE[SRC_APG] = "https://paizo.com/products/btq023ih";
 Parser.SOURCE_JSON_TO_STORE[SRC_LOPSG] = "https://paizo.com/products/btq0250x";
 Parser.SOURCE_JSON_TO_STORE[SRC_LOAG] = "https://paizo.com/products/btq026k5";
 Parser.SOURCE_JSON_TO_STORE[SRC_LOME] = "https://paizo.com/products/btq026i4";
 Parser.SOURCE_JSON_TO_STORE[SRC_AAWS] = "https://paizo-images.s3-us-west-2.amazonaws.com/image/download/Azarketi+Ancestry.pdf";
-Parser.SOURCE_JSON_TO_STORE[SRC_BST3] = "https://paizo.com/products/btq027mn";
+Parser.SOURCE_JSON_TO_STORE[SRC_B3] = "https://paizo.com/products/btq027mn";
 Parser.SOURCE_JSON_TO_STORE[SRC_SOM] = "https://paizo.com/products/btq027uy";
 Parser.SOURCE_JSON_TO_STORE[SRC_GNG] = "https://paizo.com/products/btq026mw";
 Parser.SOURCE_JSON_TO_STORE[SRC_LOTGB] = "https://paizo.com/products/btq027kc";
@@ -1664,15 +1664,15 @@ Parser.SOURCES_ADVENTURES = new Set([
 	SRC_QFF3,
 ]);
 Parser.SOURCES_CORE_SUPPLEMENTS = new Set(Object.keys(Parser.SOURCE_JSON_TO_FULL).filter(it => !Parser.SOURCES_ADVENTURES.has(it)));
-Parser.SOURCES_VANILLA = new Set([SRC_CRB, SRC_BST, SRC_GMG, SRC_APG, SRC_SOM, SRC_GNG]);
+Parser.SOURCES_VANILLA = new Set([SRC_CRB, SRC_B1, SRC_GMG, SRC_APG, SRC_SOM, SRC_GNG]);
 
 Parser.SOURCES_AVAILABLE_DOCS_BOOK = {};
 [
 	SRC_CRB,
 	SRC_APG,
-	SRC_BST,
-	SRC_BST2,
-	SRC_BST3,
+	SRC_B1,
+	SRC_B2,
+	SRC_B3,
 	SRC_GMG,
 	SRC_SOM,
 	SRC_LOCG,
@@ -1742,7 +1742,7 @@ Parser.TAG_TO_DEFAULT_SOURCE = {
 	"spell": SRC_CRB,
 	"item": SRC_CRB,
 	"class": SRC_CRB,
-	"creature": SRC_BST,
+	"creature": SRC_B1,
 	"condition": SRC_CRB,
 	"disease": SRC_GMG,
 	"curse": SRC_GMG,
@@ -1756,7 +1756,7 @@ Parser.TAG_TO_DEFAULT_SOURCE = {
 	"deity": SRC_CRB,
 	"variantrule": SRC_GMG,
 	"action": SRC_CRB,
-	"ability": SRC_BST,
+	"ability": SRC_B1,
 	"classFeature": SRC_CRB,
 	"subclassFeature": SRC_CRB,
 	"table": SRC_CRB,

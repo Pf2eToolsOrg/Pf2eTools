@@ -4167,8 +4167,8 @@ Renderer.creature = {
 
 		let renderedGenericAbility;
 		if (ability.generic && !options.noButton) {
-			const hash = UrlUtil.encodeForHash([ability.name, "Bst"]);
-			const genericAbility = Renderer.hover._getFromCache(UrlUtil.PG_ABILITIES, "Bst", hash);
+			const hash = UrlUtil.encodeForHash([ability.name, "B1"]);
+			const genericAbility = Renderer.hover._getFromCache(UrlUtil.PG_ABILITIES, "B1", hash);
 			renderedGenericAbility = Renderer.creature.getRenderedAbility(genericAbility, { generic: true });
 		}
 		// FIXME: This is a mess that doesn't account for creature abilities that are just class feats or actions. Also where the hell did the buttonClass go?
