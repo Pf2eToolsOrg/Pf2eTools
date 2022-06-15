@@ -3095,7 +3095,7 @@ Renderer.utils = {
 				const procHash = hash.replace(/'/g, "\\'");
 				const hoverMeta = Renderer.get()._getHoverString(UrlUtil.PG_TRAITS, source, procHash, null);
 
-				traitsHtml.push(`<a href="${url}" class="${styles.join(" ")}" ${hoverMeta}>${trait}</a>`)
+				traitsHtml.push(`<a href="${url}" class="${styles.join(" ")}" ${hoverMeta}>${trait}<span style="letter-spacing: -.2em">&nbsp;</span></a>`)
 			}
 		}
 		return traitsHtml.join("")
@@ -3687,7 +3687,7 @@ Renderer.ancestry = {
 		renderStack.push(`<div class="pf2-sidebar--compact">`)
 		if (anc.rarity) renderStack.push(renderer.render(`<div><p class="pf2-title">Rarity</p><p class="pf2-sidebar__text">{@trait ${anc.rarity.toTitleCase()}}</p></div>`))
 		renderStack.push(`<div><p class="pf2-title">Hit Points</p><p class="pf2-sidebar__text">${anc.hp}</p></div>`)
-		renderStack.push(`<div><p class="pf2-title">Size</p><p class="pf2-sidebar__text">${anc.size}</p></div>`)
+		renderStack.push(`<div><p class="pf2-title">Size</p><p class="pf2-sidebar__text">${anc.size.joinConjunct(", ", " or ").toTitleCase()}</p></div>`)
 		renderStack.push(`<div><p class="pf2-title">Speed</p><p class="pf2-sidebar__text">${Parser.speedToFullMap(anc.speed).join(", ")}</p></div>`)
 		if (anc.boosts) renderStack.push(`<div><p class="pf2-title">Ability Boosts</p><p class="pf2-sidebar__text">${anc.boosts.join(", ").toTitleCase()}</p></div>`)
 		if (anc.flaw) renderStack.push(`<div><p class="pf2-title">Ability Flaw</p><p class="pf2-sidebar__text">${anc.flaw.join(", ").toTitleCase()}</p></div>`)
@@ -3698,21 +3698,6 @@ Renderer.ancestry = {
 			${anc.feature ? `<div><p class="pf2-title">${anc.feature.name}</p><p class="pf2-sidebar__text">${renderer.render(anc.feature.entries)}</p></div>` : ""}
 			${anc.features ? anc.features.map(f => `<div><p class="pf2-title">${f.name}</p><p class="pf2-sidebar__text">${renderer.render(f.entries)}</p></div>`).join("") : ""}
 		`)
-		/* return `
-		${renderer.render({type: "pf2-h1", name: anc.name})}
-		<div class="pf2-sidebar--compact">
-		${anc.rarity ? `<div><p class="pf2-title">Rarity</p><p class="pf2-sidebar__text">${anc.rarity}</p></div>` : ""}
-		<div><p class="pf2-title">Hit Points</p><p class="pf2-sidebar__text">${anc.hp}</p></div>
-		<div><p class="pf2-title">Size</p><p class="pf2-sidebar__text">${anc.size}</p></div>
-		<div><p class="pf2-title">Speed</p><p class="pf2-sidebar__text">${Parser.speedToFullMap(anc.speed).join(", ")}</p></div>
-		${anc.boosts ? `<div><p class="pf2-title">Ability Boosts</p><p class="pf2-sidebar__text">${anc.boosts.join(", ")}</p></div>` : ""}
-		${anc.flaw ? `<div><p class="pf2-title">Ability Flaw</p><p class="pf2-sidebar__text">${anc.flaw.join(", ")}</p></div>` : ""}
-		${anc.languages ? `<div><p class="pf2-title">Languages</p><p class="pf2-sidebar__text">${renderer.render(anc.languages.join(", "))}</p></div>` : ""}
-		${anc.traits ? `<div><p class="pf2-title">Traits</p><p class="pf2-sidebar__text">${renderer.render(anc.traits.join(", "))}</p></div>` : ""}
-		${anc.feature ? `<div><p class="pf2-title">${anc.feature.name}</p><p class="pf2-sidebar__text">${renderer.render(anc.feature.entries)}</p></div>` : ""}
-		${anc.features ? anc.features.map(f => `<div><p class="pf2-title">${f.name}</p><p class="pf2-sidebar__text">${renderer.render(f.entries)}</p></div>`).join("") : ""}
-		</div>
-		`; */
 		renderStack.push(`</div>`)
 		if (!opts.noPage) renderStack.push(Renderer.utils.getPageP(anc));
 		return renderStack.join("");

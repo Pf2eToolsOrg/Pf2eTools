@@ -661,6 +661,7 @@ Parser.spSchoolAbvToFull = function (school) {
 	return out;
 };
 Parser.spSchoolAbvToShort = function (school) {
+	if (school == null) return `N/A`
 	const out = Parser._parse_aToB(Parser.SP_SCHOOL_ABV_TO_SHORT, school);
 	if (Parser.SP_SCHOOL_ABV_TO_SHORT[school]) return out;
 	if (BrewUtil.homebrewMeta && BrewUtil.homebrewMeta.spellSchools && BrewUtil.homebrewMeta.spellSchools[school]) return BrewUtil.homebrewMeta.spellSchools[school].short;

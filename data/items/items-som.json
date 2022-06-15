@@ -4594,9 +4594,9 @@
 						{
 							"type": "list",
 							"items": [
-								"{@bold Cantrip} tanglefoot",
-								"{@bold 1st} protector tree, shillelagh",
-								"{@bold 2nd} entangle, shape wood"
+								"{@bold Cantrip} {@spell tanglefoot}",
+								"{@bold 1st} {@spell protector tree}, {@spell shillelagh}",
+								"{@bold 2nd} {@spell entangle}, {@spell shape wood}"
 							]
 						}
 					]
@@ -4612,8 +4612,8 @@
 						{
 							"type": "list",
 							"items": [
-								"{@bold 3rd} tree shape, wall of thorns",
-								"{@bold 4th} barkskin, speak with plants"
+								"{@bold 3rd} {@spell tree shape}, {@spell wall of thorns}",
+								"{@bold 4th} {@spell barkskin}, {@spell speak with plants}"
 							]
 						}
 					]
@@ -4629,8 +4629,8 @@
 						{
 							"type": "list",
 							"items": [
-								"{@bold 5th} plant form, wall of thorns",
-								"{@bold 6th} nature's reprisal, plant form"
+								"{@bold 5th} {@spell plant form}, {@spell wall of thorns}",
+								"{@bold 6th} {@spell nature's reprisal}, {@spell plant form}"
 							]
 						}
 					]
@@ -4677,9 +4677,9 @@
 						{
 							"type": "list",
 							"items": [
-								"{@bold Cantrip} know direction",
-								"{@bold 1st} create water, pass without trace",
-								"{@bold 2nd} endure elements, enhance victuals"
+								"{@bold Cantrip} {@spell know direction}",
+								"{@bold 1st} {@spell create water}, {@spell pass without trace}",
+								"{@bold 2nd} {@spell endure elements}, {@spell enhance victuals}"
 							]
 						}
 					]
@@ -4695,9 +4695,9 @@
 						{
 							"type": "list",
 							"items": [
-								"{@bold 3rd} remove disease, wall of wind",
-								"{@bold 4th} air walk",
-								"{@bold 5th} elemental form"
+								"{@bold 3rd} {@spell remove disease}, {@spell wall of wind}",
+								"{@bold 4th} {@spell air walk}",
+								"{@bold 5th} {@spell elemental form}"
 							]
 						}
 					]
@@ -4713,8 +4713,8 @@
 						{
 							"type": "list",
 							"items": [
-								"6rd flesh to stone, stone to flesh",
-								"{@bold 7th} fiery body"
+								"{@b 6rd} {@spell flesh to stone}, {@spell stone to flesh}",
+								"{@bold 7th} {@spell fiery body}"
 							]
 						}
 					]
@@ -4730,8 +4730,8 @@
 						{
 							"type": "list",
 							"items": [
-								"8rd horrid wilting, wind walk",
-								"{@bold 9th} storm of vengeance"
+								"{@b 8rd} {@spell horrid wilting}, {@spell wind walk}",
+								"{@bold 9th} {@spell storm of vengeance}"
 							]
 						}
 					]
@@ -4754,7 +4754,7 @@
 			"bulk": 1,
 			"category": "Held",
 			"entries": [
-				"This magically reinforced wooden shield (Hardness 6, HP 36, BT 18 ) normally has a blank face. It can absorb a staff and transform between a shield and staff. When you prepare a staff, you can hold it up to the shield, at which point the items will merge, and the shield's face becomes an image corresponding to the type of magic, such as a skull for a staff of necromancy.",
+				"This magically reinforced {@item wooden shield} normally has a blank face. It can absorb a staff and transform between a shield and staff. When you prepare a staff, you can hold it up to the shield, at which point the items will merge, and the shield's face becomes an image corresponding to the type of magic, such as a skull for a {@item staff of necromancy (generic)||staff of necromancy}.",
 				{
 					"type": "ability",
 					"activity": {
@@ -4778,6 +4778,13 @@
 						"coin": "gp",
 						"amount": 350
 					},
+					"shieldData": {
+						"hardness": 6,
+						"hp": 36,
+						"ac": 2,
+						"speedPen": 0,
+						"bt": 18
+					},
 					"entries": []
 				},
 				{
@@ -4790,11 +4797,11 @@
 					"shieldData": {
 						"hardness": 9,
 						"hp": 54,
+						"ac": 2,
+						"speedPen": 0,
 						"bt": 27
 					},
-					"entries": [
-						"The shield has Hardness 9, HP 54, and BT 27."
-					]
+					"entries": []
 				},
 				{
 					"type": "major staff-storing shield",
@@ -4806,11 +4813,11 @@
 					"shieldData": {
 						"hardness": 12,
 						"hp": 72,
+						"ac": 2,
+						"speedPen": 0,
 						"bt": 36
 					},
-					"entries": [
-						"The shield has Hardness 12, HP 72, and BT 36."
-					]
+					"entries": []
 				},
 				{
 					"type": "true staff-storing shield",
@@ -4822,11 +4829,11 @@
 					"shieldData": {
 						"hardness": 16,
 						"hp": 96,
+						"ac": 2,
+						"speedPen": 0,
 						"bt": 48
 					},
-					"entries": [
-						"The shield has Hardness 16, HP 96, and BT 48."
-					]
+					"entries": []
 				}
 			]
 		},
