@@ -1364,22 +1364,22 @@ function Renderer () {
 	this._renderData = async function (entry, textStack, meta, options) {
 		this._renderPrefix(entry, textStack, meta, options);
 		this._renderDataHeader(textStack);
-		const tag = entry.tag;
-		const name = entry.name;
-		const source = entry.source || Parser.TAG_TO_DEFAULT_SOURCE[tag];
-		const catId = Parser._parse_bToA(Parser.CAT_ID_TO_PROP, tag);
+		const catId = Parser._parse_bToA(Parser.CAT_ID_TO_PROP, entry.tag);
 		const page = entry.page || UrlUtil.CAT_TO_PAGE[catId];
-		const hash = entry.hash || UrlUtil.URL_TO_HASH_BUILDER[page](entry);
-		if (entry.data) {
-			const renderFn = Renderer.hover._pageToRenderFn(page);
-			const rendered = renderFn ? renderFn(entry.data, {isEmbedded: true, noPage: true}) : `<div class="pf2-stat">Failed to render ${entry.data.name}.</div>`;
-			textStack[0] += typeof rendered === "object" ? rendered.html() : rendered;
-		} else {
-			textStack[0] += `<div class="pf2-stat" data-stat-tag="${tag.qq()}" data-stat-name="${name.qq()}" data-stat-hash="${hash.qq()}" data-stat-page="${page.qq()}" data-stat-source="${source.qq()}">
-				<i>Loading ${Renderer.get().render(`{@${tag} ${name}|${source}}`)}...</i>
-				<style onload="Renderer.events.handleLoad_inlineStatblock(this)"></style>
-			</div>`;
-		}
+		const renderFn = Renderer.hover._pageToRenderFn(page);
+		if (renderFn) {
+			if (entry.data) {
+				const rendered = renderFn(entry.data, { isEmbedded: true, noPage: true });
+				textStack[0] += typeof rendered === "object" ? rendered.html() : rendered;
+			} else if (entry.name && entry.source) {
+				const hash = entry.hash || UrlUtil.URL_TO_HASH_BUILDER[page](entry);
+				textStack[0] += `<div class="pf2-stat" data-stat-hash="${hash}">${Renderer.get().render(`{@${entry.tag} ${entry.name}|${entry.source}}`)}</div>`
+				const toRender = await Renderer.hover.pCacheAndGet(page, entry.source, hash);
+				const $wrp = $(`[data-stat-hash="${hash}"]`);
+				if (toRender) $wrp.html(renderFn(toRender, { noPage: true }));
+				else throw new Error(`Could not find ${entry.tag}: ${hash}`);
+			}
+		} else textStack[0] += `<div class=""></div>`;
 		this._renderDataFooter(textStack);
 		this._renderSuffix(entry, textStack, meta, options);
 	};
@@ -2551,39 +2551,6 @@ Renderer.events = {
 		const $e = $btn.parent().next("pre");
 		$e.toggleClass("rd__pre-wrap", nxt);
 	},
-
-	handleLoad_inlineStatblock (ele) {
-		const observer = Renderer.utils.lazy.getCreateObserver({
-			observerId: "inlineStatblock",
-			fnOnObserve: Renderer.events._handleLoad_inlineStatblock_fnOnObserve.bind(Renderer.events),
-		});
-
-		observer.track(ele.parentNode);
-	},
-
-	_handleLoad_inlineStatblock_fnOnObserve ({entry}) {
-		const ele = entry.target;
-
-		const tag = ele.dataset.statTag.uq();
-		const page = ele.dataset.statPage.uq();
-		const pageRenderFn = (ele.dataset.statPageRenderFn || ele.dataset.statPage).uq();
-		const source = ele.dataset.statSource.uq();
-		const name = ele.dataset.statName.uq();
-		const hash = ele.dataset.statHash.uq();
-
-		Renderer.hover.pCacheAndGet(page, source, hash)
-			.then(toRender => {
-				if (!toRender) {
-					ele.outerHTML = `<div class="pf2-stat"><i>Failed to load ${Renderer.get().render(`{@${tag} ${name}|${source}}`)}!</i></div>`;
-					throw new Error(`Could not find ${tag}: ${hash}`);
-				}
-
-				const fnRender = Renderer.hover._pageToRenderFn(pageRenderFn);
-				const rendered = fnRender(toRender, {noPage: true});
-				if (typeof rendered === "string") ele.outerHTML = rendered;
-				else if (MiscUtil.isObject(rendered)) $(ele).replaceWith(rendered);
-			});
-	},
 };
 
 Renderer.applyProperties = function (entry, object) {
@@ -3128,7 +3095,7 @@ Renderer.utils = {
 				const procHash = hash.replace(/'/g, "\\'");
 				const hoverMeta = Renderer.get()._getHoverString(UrlUtil.PG_TRAITS, source, procHash, null);
 
-				traitsHtml.push(`<a href="${url}" class="${styles.join(" ")}" ${hoverMeta}>${trait}</a>`)
+				traitsHtml.push(`<a href="${url}" class="${styles.join(" ")}" ${hoverMeta}>${trait}<span style="letter-spacing: -.2em">&nbsp;</span></a>`)
 			}
 		}
 		return traitsHtml.join("")
@@ -3488,86 +3455,6 @@ Renderer.utils = {
 		}
 		return href;
 	},
-
-	lazy: {
-		_getIntersectionConfig () {
-			return {
-				rootMargin: "150px 0px", // if the element gets within 150px of the viewport
-				threshold: 0.01,
-			};
-		},
-
-		_OBSERVERS: {},
-		getCreateObserver ({observerId, fnOnObserve}) {
-			if (!Renderer.utils.lazy._OBSERVERS[observerId]) {
-				const observer = Renderer.utils.lazy._OBSERVERS[observerId] = new IntersectionObserver(
-					Renderer.utils.lazy.getFnOnIntersect({
-						observerId,
-						fnOnObserve,
-					}),
-					Renderer.utils.lazy._getIntersectionConfig(),
-				);
-
-				observer._TRACKED = new Set();
-
-				observer.track = it => {
-					observer._TRACKED.add(it);
-					return observer.observe(it);
-				};
-
-				observer.untrack = it => {
-					observer._TRACKED.delete(it);
-					return observer.unobserve(it);
-				};
-
-				// If we try to print a page with e.g. un-loaded images, attempt to load them all first
-				observer._printListener = evt => {
-					if (!observer._TRACKED.size) return;
-
-					// region Sadly we cannot cancel or delay the print event, so, show a blocking alert
-					[...observer._TRACKED].forEach(it => {
-						observer.untrack(it);
-						fnOnObserve({
-							observer,
-							entry: {
-								target: it,
-							},
-						});
-					});
-
-					alert(`All content must be loaded prior to printing. Please cancel the print and wait a few moments for loading to complete!`);
-					// endregion
-				};
-				window.addEventListener("beforeprint", observer._printListener);
-			}
-			return Renderer.utils.lazy._OBSERVERS[observerId];
-		},
-
-		destroyObserver ({observerId}) {
-			const observer = Renderer.utils.lazy._OBSERVERS[observerId];
-			if (!observer) return;
-
-			observer.disconnect();
-			window.removeEventListener("beforeprint", observer._printListener);
-		},
-
-		getFnOnIntersect ({observerId, fnOnObserve}) {
-			return obsEntries => {
-				const observer = Renderer.utils.lazy._OBSERVERS[observerId];
-
-				obsEntries.forEach(entry => {
-					// filter observed entries for those that intersect
-					if (entry.intersectionRatio <= 0) return;
-
-					observer.untrack(entry.target);
-					fnOnObserve({
-						observer,
-						entry,
-					});
-				});
-			};
-		},
-	},
 };
 
 Renderer.get = () => {
@@ -3800,7 +3687,7 @@ Renderer.ancestry = {
 		renderStack.push(`<div class="pf2-sidebar--compact">`)
 		if (anc.rarity) renderStack.push(renderer.render(`<div><p class="pf2-title">Rarity</p><p class="pf2-sidebar__text">{@trait ${anc.rarity.toTitleCase()}}</p></div>`))
 		renderStack.push(`<div><p class="pf2-title">Hit Points</p><p class="pf2-sidebar__text">${anc.hp}</p></div>`)
-		renderStack.push(`<div><p class="pf2-title">Size</p><p class="pf2-sidebar__text">${anc.size}</p></div>`)
+		renderStack.push(`<div><p class="pf2-title">Size</p><p class="pf2-sidebar__text">${anc.size.joinConjunct(", ", " or ").toTitleCase()}</p></div>`)
 		renderStack.push(`<div><p class="pf2-title">Speed</p><p class="pf2-sidebar__text">${Parser.speedToFullMap(anc.speed).join(", ")}</p></div>`)
 		if (anc.boosts) renderStack.push(`<div><p class="pf2-title">Ability Boosts</p><p class="pf2-sidebar__text">${anc.boosts.join(", ").toTitleCase()}</p></div>`)
 		if (anc.flaw) renderStack.push(`<div><p class="pf2-title">Ability Flaw</p><p class="pf2-sidebar__text">${anc.flaw.join(", ").toTitleCase()}</p></div>`)
@@ -3811,21 +3698,6 @@ Renderer.ancestry = {
 			${anc.feature ? `<div><p class="pf2-title">${anc.feature.name}</p><p class="pf2-sidebar__text">${renderer.render(anc.feature.entries)}</p></div>` : ""}
 			${anc.features ? anc.features.map(f => `<div><p class="pf2-title">${f.name}</p><p class="pf2-sidebar__text">${renderer.render(f.entries)}</p></div>`).join("") : ""}
 		`)
-		/* return `
-		${renderer.render({type: "pf2-h1", name: anc.name})}
-		<div class="pf2-sidebar--compact">
-		${anc.rarity ? `<div><p class="pf2-title">Rarity</p><p class="pf2-sidebar__text">${anc.rarity}</p></div>` : ""}
-		<div><p class="pf2-title">Hit Points</p><p class="pf2-sidebar__text">${anc.hp}</p></div>
-		<div><p class="pf2-title">Size</p><p class="pf2-sidebar__text">${anc.size}</p></div>
-		<div><p class="pf2-title">Speed</p><p class="pf2-sidebar__text">${Parser.speedToFullMap(anc.speed).join(", ")}</p></div>
-		${anc.boosts ? `<div><p class="pf2-title">Ability Boosts</p><p class="pf2-sidebar__text">${anc.boosts.join(", ")}</p></div>` : ""}
-		${anc.flaw ? `<div><p class="pf2-title">Ability Flaw</p><p class="pf2-sidebar__text">${anc.flaw.join(", ")}</p></div>` : ""}
-		${anc.languages ? `<div><p class="pf2-title">Languages</p><p class="pf2-sidebar__text">${renderer.render(anc.languages.join(", "))}</p></div>` : ""}
-		${anc.traits ? `<div><p class="pf2-title">Traits</p><p class="pf2-sidebar__text">${renderer.render(anc.traits.join(", "))}</p></div>` : ""}
-		${anc.feature ? `<div><p class="pf2-title">${anc.feature.name}</p><p class="pf2-sidebar__text">${renderer.render(anc.feature.entries)}</p></div>` : ""}
-		${anc.features ? anc.features.map(f => `<div><p class="pf2-title">${f.name}</p><p class="pf2-sidebar__text">${renderer.render(f.entries)}</p></div>`).join("") : ""}
-		</div>
-		`; */
 		renderStack.push(`</div>`)
 		if (!opts.noPage) renderStack.push(Renderer.utils.getPageP(anc));
 		return renderStack.join("");
@@ -4265,45 +4137,36 @@ Renderer.creature = {
 		const renderRitual = (r) => {
 			return `{@ritual ${r.name}|${r.source || ""}}${r.notes == null && r.level == null ? "" : ` (${[Parser.getOrdinalForm(r.level)].concat(...(r.notes || [])).filter(Boolean).join(", ")})`}`;
 		};
-		return `${cr.rituals.map(rf => `<p class="pf2-stat pf2-stat__section"><strong>${rf.tradition ? `${rf.tradition} ` : ""}Rituals</strong> DC ${rf.DC}; ${renderer.render(rf.rituals.map(r => renderRitual(r)).join(", "))}`)}`;
+		return `${cr.rituals.map(rf => `<p class="pf2-stat pf2-stat__section"><strong>${rf.tradition ? `${rf.tradition} ` : ""}Rituals</strong> DC ${rf.DC};${renderer.render(rf.rituals.map(r => renderRitual(r)).join(", "))}`)}`;
 	},
 
-	getRenderedAbility (ability, opts) {
-		opts = opts || {};
+	getRenderedAbility (ability, options) {
+		options = options || {};
 		const renderer = Renderer.get();
 		const buttonClass = Parser.stringToSlug(`ab ${ability.name}`);
 
-		let renderedGenericAbility;
-		const generic = ability.generic;
-		if (generic != null && !opts.isRenderingGeneric) {
-			const tag = generic.tag || "ability";
-			const name = generic.name || ability.name;
-			generic.name = name;
-			const source = generic.source || Parser.TAG_TO_DEFAULT_SOURCE[tag];
-			generic.source = source;
-			const catId = Parser._parse_bToA(Parser.CAT_ID_TO_PROP, tag);
-			const page = generic.page || UrlUtil.CAT_TO_PAGE[catId];
-			generic.page = page;
-			const hash = generic.hash || UrlUtil.URL_TO_HASH_BUILDER[page](generic);
-			generic.hash = hash;
-			renderedGenericAbility = `<div class="pf2-stat pf2-stat__section" data-stat-tag="${tag.qq()}" data-stat-name="${name.qq()}" data-stat-hash="${hash.qq()}" data-stat-page-render-fn="genericCreatureAbility" data-stat-page="${page.qq()}" data-stat-source="${source.qq()}">
-				<i>Loading ${renderer.render(`{@${tag} ${name}|${source}}`)}...</i>
-				<style onload="Renderer.events.handleLoad_inlineStatblock(this)"></style>
-			</div>`;
+		let trts = []
+		if (ability.traits != null && ability.traits.length) {
+			ability.traits.forEach((t) => trts.push(Renderer.get().render(`{@trait ${t.toLowerCase()}}`)));
 		}
-		const isRenderButton = (generic || opts.isRenderingGeneric) && !opts.noButton;
-		// FIXME/TODO: Also render name as link inside generic abilities? Would need to get the tag somehow...
-		const abilityName = generic ? renderer.render(`{@${generic.tag} ${ability.name}${generic.add_hash ? ` (${generic.add_hash})` : ""}${ability.title ? `||${ability.title}` : ""}}`) : ability.name;
 
-		return $$`<p class="pf2-stat pf2-stat__section ${buttonClass} ${opts.isRenderingGeneric ? "hidden" : ""}"><strong>${abilityName}</strong>
+		let renderedGenericAbility;
+		if (ability.generic && !options.noButton) {
+			const hash = UrlUtil.encodeForHash([ability.name, "Bst"]);
+			const genericAbility = Renderer.hover._getFromCache(UrlUtil.PG_ABILITIES, "Bst", hash);
+			renderedGenericAbility = Renderer.creature.getRenderedAbility(genericAbility, { generic: true });
+		}
+		// FIXME: This is a mess that doesn't account for creature abilities that are just class feats or actions. Also where the hell did the buttonClass go?
+		// When this is fixed, search through spellcaster statblocks for things like Eschew Materials, Drain Bonded Item, and metamagic feats.
+		return $$`<p class="pf2-stat pf2-stat__section ${buttonClass} ${options.generic ? "hidden" : ""}"><strong>${ability.generic || options.generic ? `${renderer.render(`{@ability ${ability.name}${ability.title ? `||${ability.title}` : ""}}`)}` : ability.name}</strong>
 					${ability.activity ? renderer.render(Parser.timeToFullEntry(ability.activity)) : ""}
-					${isRenderButton ? Renderer.creature.getAbilityTextButton(buttonClass, opts.isRenderingGeneric) : ""}
-					${ability.traits && ability.traits.length ? `(${ability.traits.map(t => renderer.render(`{@trait ${t.toLowerCase()}}`)).join(", ")}); ` : ""}
+					${(ability.generic || options.generic) && !options.noButton ? Renderer.creature.getAbilityTextButton(buttonClass, options.generic) : ""}
+					${trts.length ? `(${trts.join(", ")}); ` : ""}
 					${ability.frequency ? `<strong>Frequency&nbsp;</strong>${renderer.render_addTerm(Parser.freqToFullEntry(ability.frequency))}` : ""}
 					${ability.requirements ? `<strong>Requirements&nbsp;</strong>${renderer.render_addTerm(ability.requirements)}` : ""}
 					${ability.trigger ? `<strong>Trigger&nbsp;</strong>${renderer.render_addTerm(ability.trigger)}` : ""}
 					${ability.frequency || ability.requirements || ability.trigger ? "<strong>Effect</strong>" : ""}
-					${(ability.entries || []).map(it => renderer.render(it, {isAbility: true})).join(" ")}
+					${(ability.entries || []).map(it => renderer.render(it, { isAbility: true })).join(" ")}
 					</p>
 					${renderedGenericAbility || ""}`;
 	},
@@ -7535,9 +7398,9 @@ Renderer.hover = {
 			case "group": return Renderer.group.getRenderedString;
 			case "skill": return Renderer.skill.getRenderedString;
 			case "genericData": return Renderer.generic.dataGetRenderedString;
-			case "genericCreatureAbility": return it => Renderer.creature.getRenderedAbility(it, {isRenderingGeneric: true, asHTML: true});
 			// endregion
-			default: throw new Error(`Unknown page: ${page} in _pageToRenderFn`);
+			default:
+				throw new Error(`Unknown page: ${page} in _pageToRenderFn`);
 		}
 	},
 

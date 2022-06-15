@@ -43,9 +43,9 @@
 						"{@ability Darkvision}.",
 						"One or more unarmed melee attacks specific to the battle form you choose, which are the only attacks you can use. You're trained with them. Your attack modifier is +18, and you use the listed damage. These attacks are Strength based (for the purpose of the {@condition enfeebled} condition, for example). If your unarmed attack modifier is higher, you can use it instead.",
 						"{@skill Athletics} modifier of +20, unless your own modifier is higher. You also gain specific abilities based on the type of aberration you choose:",
-						"{@bold Chuul} Speed 30 feet, swim 25 feet; Melee {@as 1} claw (reach 10 feet), Damage {@damage 2d8+8} bludgeoning, and you can spend an action after a hit to Grab the target.",
-						"{@bold Gogiteth} Speed 40 feet, climb 30 feet; Melee {@as 1} jaws, Damage {@damage 2d10+8} piercing, and you can spend an action after a hit to Grab the target; Melee {@as 1} leg (agile, reach 10 feet), Damage {@damage 2d6+8} piercing.",
-						"{@bold Gug} Speed 40 feet, climb 20 feet; Melee {@as 1} jaws (reach 10 feet), Damage {@damage 2d12+8} piercing; Melee {@as 1}"
+						"{@bold Chuul} Speed 30 feet, swim 25 feet; {@b Melee} {@as 1} claw (reach 10 feet), {@b Damage} {@damage 2d8+8} bludgeoning, and you can spend an action after a hit to Grab the target.",
+						"{@bold Gogiteth} Speed 40 feet, climb 30 feet; {@b Melee} {@as 1} jaws, {@b Damage} {@damage 2d10+8} piercing, and you can spend an action after a hit to Grab the target; {@b Melee} {@as 1} leg (agile, reach 10 feet), {@b Damage} {@damage 2d6+8} piercing.",
+						"{@bold Gug} Speed 40 feet, climb 20 feet; {@b Melee} {@as 1} jaws (reach 10 feet), {@b Damage} {@damage 2d12+8} piercing; {@b Melee} {@as 1}"
 					]
 				}
 			],
@@ -99,10 +99,10 @@
 						"{@ability Darkvision}.",
 						"One or more attacks specific to the battle form you choose. You're trained with them. Your attack modifier is +25, and you use the listed damage. Melee attacks are Strength based (for the purpose of the {@condition enfeebled} condition, for example), and ranged attacks are Dexterity based. If your attack modifier is higher for the given unarmed attack or weapon, you can use it instead.",
 						"{@skill Athletics} modifier of +25, unless your own modifier is higher. You also gain specific abilities based on the type of angel you choose:",
-						"{@bold Balisse} Speed 30 feet, fly 40 feet; {@skill Perception} modifier of +26 to detect lies and illusions unless your own modifier is higher; Melee {@as 1} scimitar (forceful, sweep), Damage {@damage 2d6+12} slashing plus {@damage 1d6} fire and {@damage 1d6} good.",
-						"{@bold Choral} Speed 30 feet, fly 40 feet; +1 status bonus to AC and saves against sonic and auditory; Melee {@as 1} fist (agile), Damage {@damage 2d6+12} bludgeoning plus {@damage 1d6} good; Ranged {@as 1} piercing hymn (range 90 feet), Damage {@damage 1d6+12} sonic plus {@damage 1d6} good, and {@condition deafened} for 1 round on a critical hit.",
-						"{@bold Monadic Deva} Speed 30 feet, fly 40 feet; +2 status bonus on saves against {@trait death} effects and effects that manipulate souls; Melee {@as 1} holy mace (shove), Damage {@damage 2d6+12} bludgeoning plus {@damage 1d6} force and {@damage 1d6} good.",
-						"{@bold Movanic Deva} Speed 30 feet, fly 40 feet; resistance 10 to negative; Melee {@as 1} bastard sword (two-hand d12), Damage {@damage 1d8+12} slashing plus {@damage 1d6} fire and {@damage 1d6} good."
+						"{@bold Balisse} Speed 30 feet, fly 40 feet; {@skill Perception} modifier of +26 to detect lies and illusions unless your own modifier is higher; {@b Melee} {@as 1} scimitar (forceful, sweep), {@b Damage} {@damage 2d6+12} slashing plus {@damage 1d6} fire and {@damage 1d6} good.",
+						"{@bold Choral} Speed 30 feet, fly 40 feet; +1 status bonus to AC and saves against sonic and auditory; {@b Melee} {@as 1} fist ({@trait agile}), {@b Damage} {@damage 2d6+12} bludgeoning plus {@damage 1d6} good; {@b Ranged} {@as 1} piercing hymn (range 90 feet), {@b Damage} {@damage 1d6+12} sonic plus {@damage 1d6} good, and {@condition deafened} for 1 round on a critical hit.",
+						"{@bold Monadic Deva} Speed 30 feet, fly 40 feet; +2 status bonus on saves against {@trait death} effects and effects that manipulate souls; {@b Melee} {@as 1} holy mace ({@trait shove}), {@b Damage} {@damage 2d6+12} bludgeoning plus {@damage 1d6} force and {@damage 1d6} good.",
+						"{@bold Movanic Deva} Speed 30 feet, fly 40 feet; resistance 10 to negative; {@b Melee} {@as 1} bastard sword (two-hand d12), {@b Damage} {@damage 1d8+12} slashing plus {@damage 1d6} fire and {@damage 1d6} good."
 					]
 				}
 			],
@@ -1335,7 +1335,69 @@
 				"The armor sheds bright light for 20 feet (and dim light for the next 20 feet). Whenever a creature attacks the target and is adjacent to it, the attacker must attempt a Will save at the end of its action. On a failure, it becomes {@condition dazzled} until the end of its next turn. Regardless of the result of the save, the attacker is temporarily immune until the end of its next turn. The dazzling effect has the {@trait light} and {@trait visual} traits.",
 				"When you cast the spell, roll {@dice 1d8} twice on the table below to see the armor's colors (rerolling any duplicates)",
 				"Each color grants resistance 5 to the indicated damage type. If you spend three actions to {@action Cast a Spell||Cast the Spell}, roll three times instead.",
-				"1. Red fire 2. Orange acid 3. Yellow electricity 4. Green poison 5. Blue sonic 6. Indigo mental 7. Violet force 8. Matching Color The armor becomes the color matching the type of damage the target took most recently in the past minute. If it didn't take any of those seven types of damage or the armor is already that color, roll again, rerolling any results of 8."
+				{
+					"type": "pf2-options",
+					"noColon": true,
+					"style": "pf2-book__option--indent",
+					"items": [
+						{
+							"type": "item",
+							"name": "1. Red",
+							"entries": [
+								"fire"
+							]
+						},
+						{
+							"type": "item",
+							"name": "2. Orange",
+							"entries": [
+								"acid"
+							]
+						},
+						{
+							"type": "item",
+							"name": "3. Yellow",
+							"entries": [
+								"electricity"
+							]
+						},
+						{
+							"type": "item",
+							"name": "4. Green",
+							"entries": [
+								"poison"
+							]
+						},
+						{
+							"type": "item",
+							"name": "5. Blue",
+							"entries": [
+								"sonic"
+							]
+						},
+						{
+							"type": "item",
+							"name": "6. Indigo",
+							"entries": [
+								"mental"
+							]
+						},
+						{
+							"type": "item",
+							"name": "7. Violet",
+							"entries": [
+								"force"
+							]
+						},
+						{
+							"type": "item",
+							"name": "8. Matching Color",
+							"entries": [
+								"The armor becomes the color matching the type of damage the target took most recently in the past minute. If it didn't take any of those seven types of damage or the armor is already that color, roll again, rerolling any results of 8."
+							]
+						}
+					]
+				}
 			],
 			"heightened": {
 				"plus_x": {
@@ -1380,10 +1442,41 @@
 			},
 			"entries": [
 				"You call forth three illusory images of yourself, and each of the four of you takes on a different color, your colors all shifting each time someone attacks you. This has the effects of mirror image, except that whenever a foe destroys one of the images, roll {@dice 1d4} to see which color the image was when it was destroyed. The attacker takes the corresponding effect.",
-				"1. Red 5 fire damage and 5 mental damage.",
-				"2. Orange 5 acid damage and 5 mental damage.",
-				"3. Yellow 5 electricity damage and 5 mental damage.",
-				"4. Green 5 poison damage and 5 mental damage, plus it's {@condition frightened 1}."
+				{
+					"type": "pf2-options",
+					"noColon": true,
+					"style": "pf2-book__option--indent",
+					"items": [
+						{
+							"type": "item",
+							"name": "1. Red ",
+							"entries": [
+								"5 fire damage and 5 mental damage."
+							]
+						},
+						{
+							"type": "item",
+							"name": "2. Orange",
+							"entries": [
+								"5 acid damage and 5 mental damage."
+							]
+						},
+						{
+							"type": "item",
+							"name": "3. Yellow",
+							"entries": [
+								"5 electricity damage and 5 mental damage."
+							]
+						},
+						{
+							"type": "item",
+							"name": "4. Green",
+							"entries": [
+								"5 poison damage and 5 mental damage, plus it's {@condition frightened 1}."
+							]
+						}
+					]
+				}
 			]
 		},
 		{
@@ -1422,17 +1515,83 @@
 			"entries": [
 				"You send out a ray of colored light streaming toward your enemy, with a {@trait magical} effect depending on the ray's color.",
 				"Make a spell attack roll. If you hit, roll {@dice 1d4} to see which beam you cast. If the ray deals damage, that damage is doubled on a critical hit. Any additional traits that apply to a ray are listed in parentheses just after the name of the color.",
-				"1. Red (fire) The ray deals 30 fire damage to the target.",
-				"2. Orange (acid) The ray deals 40 acid damage to the target.",
-				"3. Yellow (electricity) The ray deals 50 electricity damage to the target.",
-				"4. Green (poison) The ray deals 25 poison damage to the target, and the target must succeed at a Fortitude save or be {@condition enfeebled 1} for 1 minute ({@condition enfeebled 2} on a critical failure)."
+				{
+					"type": "pf2-options",
+					"noColon": true,
+					"style": "pf2-book__option--indent",
+					"items": [
+						{
+							"type": "item",
+							"name": "1. Red",
+							"entries": [
+								"({@trait fire}) The ray deals 30 fire damage to the target."
+							]
+						},
+						{
+							"type": "item",
+							"name": "2. Orange",
+							"entries": [
+								"({@trait acid}) The ray deals 40 acid damage to the target."
+							]
+						},
+						{
+							"type": "item",
+							"name": "3. Yellow",
+							"entries": [
+								"({@trait electricity}) The ray deals 50 electricity damage to the target."
+							]
+						},
+						{
+							"type": "item",
+							"name": "4. Green",
+							"entries": [
+								"({@trait poison}) The ray deals 25 poison damage to the target, and the target must succeed at a Fortitude save or be {@condition enfeebled 1} for 1 minute ({@condition enfeebled 2} on a critical failure)."
+							]
+						}
+					]
+				}
 			],
 			"heightened": {
 				"x": [
 					{
 						"level": 6,
 						"entries": [
-							"The damage for red, orange, yellow, and green each increase by 10. Roll {@dice 1d8} to determine the ray's color, using the results for 1\u20134 above and the results for 5\u20138 below. 5. Blue The ray has the effect of the {@spell flesh to stone} spell. On a critical hit, the target is {@condition clumsy 1} as long as it's {@condition slowed} by the flesh to stone effect. 6. Indigo (emotion, incapacitation, mental) The ray has the effect of the {@spell confusion} spell. On a critical hit, it has the effect of warp mind instead. 7. Violet The target is {@condition slowed} for 1 minute. It must also succeed at a Will save or be teleported 120 feet directly away from you (if there isn't room for it to appear there, it appears in the nearest open space); this is a {@trait teleportation} effect. 8. Intense Color The target is {@condition dazzled} until the end of your next turn, or {@condition blinded} if your attack roll was a critical hit. Roll again and add the effects of another color (rerolling results of 8)."
+							"The damage for red, orange, yellow, and green each increase by 10. Roll {@dice 1d8} to determine the ray's color, using the results for 1\u20134 above and the results for 5\u20138 below.",
+							{
+								"type": "pf2-options",
+								"noColon": true,
+								"style": "pf2-book__option--indent",
+								"items": [
+									{
+										"type": "item",
+										"name": "5. Blue",
+										"entries": [
+											"The ray has the effect of the {@spell flesh to stone} spell. On a critical hit, the target is {@condition clumsy 1} as long as it's {@condition slowed} by the flesh to stone effect."
+										]
+									},
+									{
+										"type": "item",
+										"name": "6. Indigo",
+										"entries": [
+											"({@trait emotion}, {@trait incapacitation}, {@trait mental}) The ray has the effect of the {@spell confusion} spell. On a critical hit, it has the effect of {@spell warp mind} instead."
+										]
+									},
+									{
+										"type": "item",
+										"name": "7. Violet",
+										"entries": [
+											"The target is {@condition slowed} for 1 minute. It must also succeed at a Will save or be teleported 120 feet directly away from you (if there isn't room for it to appear there, it appears in the nearest open space); this is a {@trait teleportation} effect."
+										]
+									},
+									{
+										"type": "item",
+										"name": "8. Intense Color",
+										"entries": [
+											"The target is {@condition dazzled} until the end of your next turn, or {@condition blinded} if your attack roll was a critical hit. Roll again and add the effects of another color (rerolling results of 8)."
+										]
+									}
+								]
+							}
 						]
 					}
 				]
@@ -1863,8 +2022,8 @@
 						"{@ability Darkvision}.",
 						"One or more attacks specific to the battle form you use. You're trained with them. Your attack modifier is +25, and you use the listed damage. The melee attacks are Strength based (for the purpose of the {@condition enfeebled} condition, for example), and the ranged attacks are Dexterity based. If your unarmed attack modifier is higher, you can use it instead.",
 						"{@skill Athletics} modifier of +25, unless your own is higher. You also gain specific abilities based on the stellar body:",
-						"{@bold Moon} Speed 30 feet, fly 50 feet; Melee {@as 1} fist (agile, reach 10 feet), Damage {@damage 2d4+10} bludgeoning plus {@damage 1d6} fire; Ranged {@as 1} moonbeam (range 90 feet), Damage {@damage 2d4+10} fire; this form's fire damage is silver for resistances, weaknesses, and the like; on a critical hit with either {@action Strike}, the target is {@condition stupefied 2} for 1 round.",
-						"{@bold Sun} Speed 30 feet, fly 50 feet; Melee {@as 1} fist (agile, reach 10 feet), Damage {@damage 2d6+10} fire plus {@damage 1d6} {@condition persistent damage ||persistent fire}; Ranged {@as 1} sunbeam (range 90 feet), Damage {@damage 1d6+10} fire plus {@damage 1d6} {@condition persistent damage ||persistent fire}; on a critical hit with either {@action Strike}, the target is {@condition dazzled} for 1 round."
+						"{@bold Moon} Speed 30 feet, fly 50 feet; {@b Melee} {@as 1} fist (agile, reach 10 feet), {@b Damage} {@damage 2d4+10} bludgeoning plus {@damage 1d6} fire; {@b Ranged} {@as 1} moonbeam (range 90 feet), {@b Damage} {@damage 2d4+10} fire; this form's fire damage is silver for resistances, weaknesses, and the like; on a critical hit with either {@action Strike}, the target is {@condition stupefied 2} for 1 round.",
+						"{@bold Sun} Speed 30 feet, fly 50 feet; {@b Melee} {@as 1} fist (agile, reach 10 feet), {@b Damage} {@damage 2d6+10} fire plus {@damage 1d6} {@condition persistent damage ||persistent fire}; {@b Ranged} {@as 1} sunbeam (range 90 feet), {@b Damage} {@damage 1d6+10} fire plus {@damage 1d6} {@condition persistent damage ||persistent fire}; on a critical hit with either {@action Strike}, the target is {@condition dazzled} for 1 round."
 					]
 				}
 			],
@@ -1986,10 +2145,10 @@
 						"{@ability Darkvision}.",
 						"One or more attacks specific to the battle form you use. You're trained with them. Your attack modifier is +21, and you use the listed damage. These attacks are Strength based (for the purpose of the {@condition enfeebled} condition, for example). If your unarmed attack modifier is higher, you can use it instead.",
 						"{@skill Athletics} modifier of +23, unless your own modifier is higher. You also gain specific abilities based on the type of Daemon you choose:",
-						"{@bold Ceustodaemon} Speed 25 feet; Melee {@as 1} jaws (reach 10 feet), Damage {@damage 2d10+10} piercing plus {@damage 1d6} evil; Melee {@as 1} claw (agile, reach 10 feet), Damage {@damage 2d6} slashing plus {@damage 1d6} evil; any successful jaws or claw {@action Strike} deals an additional {@dice 1d6} damage, and you take the same amount of damage.",
-						"{@bold Leukodaemon} Speed 25 feet, fly 40 feet; +2 status bonus to saves against diseases; Melee {@as 1} jaws (reach 10 feet), Damage {@damage 2d10+10} piercing plus {@damage 1d6} evil; Melee {@as 1} claw (agile, reach 10 feet), Damage {@damage 2d6} slashing plus {@damage 1d6} evil; Ranged {@as 1} composite longbow (deadly d10, range increment 100 feet, volley), Damage {@damage 2d8} piercing plus {@damage 1d6} evil.",
-						"{@bold Meladaemon} Speed 25 feet, fly 40 feet; Melee {@as 1} jaws (reach 10 feet), Damage {@damage 2d10+10} piercing plus {@damage 1d6} evil; Melee {@as 1} claw (agile, reach 10 feet), Damage {@damage 1d8} slashing plus {@damage 1d6} evil and {@damage 1d6} negative, and you can spend an action after a hit to Grab the target.",
-						"{@bold Piscodaemon} Speed 25 feet, swim 40 feet; Melee {@as 1} claw, Damage {@damage 2d10+10} piercing plus {@damage 1d6} evil and {@damage 1d6} {@condition persistent damage ||persistent bleed}, and you can spend an action after a hit to Grab the target; Melee {@as 1} tentacle (agile), Damage {@damage 2d6} bludgeoning plus {@damage 1d6} evil and {@damage 1d6} poison."
+						"{@bold Ceustodaemon} Speed 25 feet; {@b Melee} {@as 1} jaws (reach 10 feet), {@b Damage} {@damage 2d10+10} piercing plus {@damage 1d6} evil; {@b Melee} {@as 1} claw (agile, reach 10 feet), {@b Damage} {@damage 2d6} slashing plus {@damage 1d6} evil; any successful jaws or claw {@action Strike} deals an additional {@dice 1d6} damage, and you take the same amount of damage.",
+						"{@bold Leukodaemon} Speed 25 feet, fly 40 feet; +2 status bonus to saves against diseases; {@b Melee} {@as 1} jaws (reach 10 feet), {@b Damage} {@damage 2d10+10} piercing plus {@damage 1d6} evil; {@b Melee} {@as 1} claw (agile, reach 10 feet), {@b Damage} {@damage 2d6} slashing plus {@damage 1d6} evil; {@b Ranged} {@as 1} composite longbow (deadly d10, range increment 100 feet, volley), {@b Damage} {@damage 2d8} piercing plus {@damage 1d6} evil.",
+						"{@bold Meladaemon} Speed 25 feet, fly 40 feet; {@b Melee} {@as 1} jaws (reach 10 feet), {@b Damage} {@damage 2d10+10} piercing plus {@damage 1d6} evil; {@b Melee} {@as 1} claw (agile, reach 10 feet), {@b Damage} {@damage 1d8} slashing plus {@damage 1d6} evil and {@damage 1d6} negative, and you can spend an action after a hit to Grab the target.",
+						"{@bold Piscodaemon} Speed 25 feet, swim 40 feet; {@b Melee} {@as 1} claw, {@b Damage} {@damage 2d10+10} piercing plus {@damage 1d6} evil and {@damage 1d6} {@condition persistent damage ||persistent bleed}, and you can spend an action after a hit to Grab the target; {@b Melee} {@as 1} tentacle ({@trait agile}), {@b Damage} {@damage 2d6} bludgeoning plus {@damage 1d6} evil and {@damage 1d6} poison."
 					]
 				}
 			],
@@ -2222,10 +2381,10 @@
 						"{@ability Darkvision}.",
 						"One or more attacks specific to the battle form you use. You're trained with them. Your attack modifier is +22, and you use the listed damage. These attacks are Strength based (for the purpose of the {@condition enfeebled} condition, for example). If your attack modifier is higher for the given unarmed attack or weapon, you can use it instead.",
 						"{@skill Athletics} modifier of +23, unless your own modifier is higher. You also gain specific abilities based on the type of demon you choose:",
-						"{@bold Babau} Speed 25 feet; Melee {@as 1} longspear (reach 10 feet), Damage {@damage 2d8+10} piercing plus {@damage 1d6} evil; Melee {@as 1} jaws, Damage {@damage 2d10} piercing plus {@damage 1d6} evil; Melee {@as 1} claw (agile), Damage {@damage 2d4} slashing plus {@damage 1d6} evil; all Strikes deal {@dice 2d6} additional precision damage to flatfooted creatures.",
-						"{@bold Hezrou} Speed 30 feet, swim 30 feet; Melee {@as 1} jaws (reach 10 feet), Damage {@damage 2d12+10} piercing plus {@damage 1d6} evil, and you can spend an action after a hit to Grab the target; Melee {@as 1} claw (agile, reach 10 feet), Damage {@damage 2d8} slashing plus {@damage 1d6} evil.",
-						"{@bold Nabasu} Speed 25 feet, fly 40 feet; Melee {@as 1} jaws, Damage {@damage 2d10+10} piercing plus {@damage 1d6} evil; Melee {@as 1} claw (agile), Damage {@damage 2d6} slashing plus {@damage 1d6} evil.",
-						"{@bold Vrock} Speed 25 feet, fly 35 feet; resistance 10 to electricity; Melee {@as 1} beak, Damage {@damage 2d8+10} piercing plus {@damage 1d6} evil; Melee {@as 1} claw (agile), Damage {@damage 2d6} slashing plus {@damage 1d6} evil; Melee {@as 1} talon (agile), Damage {@damage 2d6} slashing plus {@damage 1d6} evil."
+						"{@bold Babau} Speed 25 feet; {@b Melee} {@as 1} longspear (reach 10 feet), {@b Damage} {@damage 2d8+10} piercing plus {@damage 1d6} evil; {@b Melee} {@as 1} jaws, {@b Damage} {@damage 2d10} piercing plus {@damage 1d6} evil; {@b Melee} {@as 1} claw ({@trait agile}), {@b Damage} {@damage 2d4} slashing plus {@damage 1d6} evil; all Strikes deal {@dice 2d6} additional precision damage to flatfooted creatures.",
+						"{@bold Hezrou} Speed 30 feet, swim 30 feet; {@b Melee} {@as 1} jaws (reach 10 feet), {@b Damage} {@damage 2d12+10} piercing plus {@damage 1d6} evil, and you can spend an action after a hit to Grab the target; {@b Melee} {@as 1} claw (agile, reach 10 feet), {@b Damage} {@damage 2d8} slashing plus {@damage 1d6} evil.",
+						"{@bold Nabasu} Speed 25 feet, fly 40 feet; {@b Melee} {@as 1} jaws, {@b Damage} {@damage 2d10+10} piercing plus {@damage 1d6} evil; {@b Melee} {@as 1} claw ({@trait agile}), {@b Damage} {@damage 2d6} slashing plus {@damage 1d6} evil.",
+						"{@bold Vrock} Speed 25 feet, fly 35 feet; resistance 10 to electricity; {@b Melee} {@as 1} beak, {@b Damage} {@damage 2d8+10} piercing plus {@damage 1d6} evil; {@b Melee} {@as 1} claw ({@trait agile}), {@b Damage} {@damage 2d6} slashing plus {@damage 1d6} evil; {@b Melee} {@as 1} talon ({@trait agile}), {@b Damage} {@damage 2d6} slashing plus {@damage 1d6} evil."
 					]
 				}
 			],
@@ -2281,10 +2440,10 @@
 						"{@ability Darkvision}.",
 						"One or more attacks specific to the battle form you use. You're trained with them. Your attack modifier is +20, and you use the listed damage. These attacks are Strength based (for the purpose of the {@condition enfeebled} condition, for example). If your attack modifier is higher for the given unarmed attack or weapon, you can use it instead.",
 						"{@skill Athletics} modifier of +23, unless your own modifier is higher. You also gain specific abilities based on the type of devil you choose:",
-						"{@bold Barbazu} Speed 35 feet; Melee {@as 1} glaive (deadly d8, forceful, reach 10 feet), Damage {@damage 2d8+10} slashing plus {@damage 1d6} evil and {@damage 1d6} {@condition persistent damage ||persistent bleed}; Melee {@as 1} beard, Damage {@damage 3d8} piercing plus {@damage 1d6} evil; Melee {@as 1} claw (agile), Damage {@damage 3d6} slashing plus {@damage 1d6} evil.",
-						"{@bold Erinys} Speed 25 feet, fly 40 feet; Melee {@as 1} longsword (versatile P), Damage {@damage 1d8+10} slashing plus {@damage 1d6} evil and {@damage 1d6} fire; Ranged {@as 1} composite longbow (deadly d10, range increment 100 feet, volley), Damage {@damage 1d8} piercing plus {@damage 1d6} evil and {@damage 1d6} fire.",
-						"{@bold Osyluth} Speed 35 feet, fly 30 feet; Melee {@as 1} jaws, Damage {@damage 2d10+10} piercing plus {@damage 1d6} evil; Melee {@as 1} claw (agile, reach 10 feet), Damage {@damage 2d6} slashing plus {@damage 1d6} evil; Melee {@as 1} stinger (reach 15 feet), Damage {@damage 1d10} piercing plus {@damage 1d6} evil and {@damage 1d6} poison; Ranged {@as 1} bone shard (range increment 30 feet), Damage {@damage 2d6} piercing plus {@damage 1d6} evil.",
-						"{@bold Sarglagon} Speed 25 feet, fly 25 feet, swim 30 feet; Melee {@as 1} fangs, Damage {@damage 2d10+10} piercing plus {@damage 1d6} evil; Melee {@as 1} tentacle arm (agile), Damage {@damage 1d8} bludgeoning plus {@damage 1d6} evil and {@damage 1d6} poison."
+						"{@bold Barbazu} Speed 35 feet; {@b Melee} {@as 1} glaive (deadly d8, forceful, reach 10 feet), {@b Damage} {@damage 2d8+10} slashing plus {@damage 1d6} evil and {@damage 1d6} {@condition persistent damage ||persistent bleed}; {@b Melee} {@as 1} beard, {@b Damage} {@damage 3d8} piercing plus {@damage 1d6} evil; {@b Melee} {@as 1} claw ({@trait agile}), {@b Damage} {@damage 3d6} slashing plus {@damage 1d6} evil.",
+						"{@bold Erinys} Speed 25 feet, fly 40 feet; {@b Melee} {@as 1} longsword (versatile P), {@b Damage} {@damage 1d8+10} slashing plus {@damage 1d6} evil and {@damage 1d6} fire; {@b Ranged} {@as 1} composite longbow (deadly d10, range increment 100 feet, volley), {@b Damage} {@damage 1d8} piercing plus {@damage 1d6} evil and {@damage 1d6} fire.",
+						"{@bold Osyluth} Speed 35 feet, fly 30 feet; {@b Melee} {@as 1} jaws, {@b Damage} {@damage 2d10+10} piercing plus {@damage 1d6} evil; {@b Melee} {@as 1} claw (agile, reach 10 feet), {@b Damage} {@damage 2d6} slashing plus {@damage 1d6} evil; {@b Melee} {@as 1} stinger (reach 15 feet), {@b Damage} {@damage 1d10} piercing plus {@damage 1d6} evil and {@damage 1d6} poison; {@b Ranged} {@as 1} bone shard (range increment 30 feet), {@b Damage} {@damage 2d6} piercing plus {@damage 1d6} evil.",
+						"{@bold Sarglagon} Speed 25 feet, fly 25 feet, swim 30 feet; {@b Melee} {@as 1} fangs, {@b Damage} {@damage 2d10+10} piercing plus {@damage 1d6} evil; {@b Melee} {@as 1} tentacle arm ({@trait agile}), {@b Damage} {@damage 1d8} bludgeoning plus {@damage 1d6} evil and {@damage 1d6} poison."
 					]
 				}
 			],
@@ -2781,7 +2940,7 @@
 						"One or more attacks specific to the battle form you choose, which are the only attacks you can use. You're trained with them. Your attack modifier is +34, and you use the listed damage. These attacks are Dexterity based if you choose an air or fire elemental, or Strength based if you choose an earth or water elemental. (This distinction doesn't change the statistics, but matters for the {@condition enfeebled} and {@condition clumsy} conditions, for example). If your unarmed attack modifier is higher, you can use it instead.",
 						"{@skill Acrobatics} modifier of +36 for air or fire elemental or {@skill Athletics} modifier of +36 for earth or water elemental, unless your own modifier is higher. You also gain specific abilities based on the type of elemental you choose:",
 						"{@bold Air Elemental} fly Speed 80 feet; {@b High Winds} (air, aura) 30 feet. Air within the emanation is {@quickref difficult terrain||3|terrain} for flying creatures that don't have the {@trait air} trait; {@b Swiftness} Your movement doesn't trigger reactions; {@b Melee} {@as 1} gust (reach 25 feet), {@b Damage} {@damage 3d12+11} bludgeoning plus Push 10 feet; {@b Ranged} {@as 1} lightning lash (range increment 80 feet), {@b Damage} {@damage 3d12+4} electricity.",
-						"{@bold Earth Elemental} 30 feet, burrow 20 feet; resistance 5 to physical; {@b Spike Stones} (aura, earth) 30 feet. The area is {@quickref difficult terrain||3|terrain} and hazardous terrain. A creature without the {@trait earth} trait that moves on the ground in the area takes 5 piercing damage for every square of that area it moves into; {@b Rocky Toughness} You gain 40 temporary Hit Points when you choose this form instead of 30; Melee {@as 1} fist (reach 25 feet), {@b Damage} {@damage 3d12+15} bludgeoning; {@b Ranged} {@as 1} rock (range increment 40 feet), {@b Damage} {@damage 4d8+6} bludgeoning.",
+						"{@bold Earth Elemental} 30 feet, burrow 20 feet; resistance 5 to physical; {@b Spike Stones} (aura, earth) 30 feet. The area is {@quickref difficult terrain||3|terrain} and hazardous terrain. A creature without the {@trait earth} trait that moves on the ground in the area takes 5 piercing damage for every square of that area it moves into; {@b Rocky Toughness} You gain 40 temporary Hit Points when you choose this form instead of 30; {@b Melee} {@as 1} fist (reach 25 feet), {@b Damage} {@damage 3d12+15} bludgeoning; {@b Ranged} {@as 1} rock (range increment 40 feet), {@b Damage} {@damage 4d8+6} bludgeoning.",
 						"{@bold Fire Elemental} 50 feet; immunity to fire; weakness to cold 10; {@b Intense Heat} (aura, fire) 30 feet. A creature that enters the aura or starts its turn in the aura takes {@damage 5d6} fire damage with a basic Reflex save against your spell DC. A creature can take damage from the aura only once per round; {@b Melee} {@as 1} tendril (reach 25 feet), {@b Damage} {@damage 3d10+12} fire plus {@damage 2d6} {@condition persistent damage ||persistent fire}; {@b Ranged} {@as 1} fire mote (range increment 60 feet), {@b Damage} {@damage 4d8+6} bludgeoning.",
 						"{@bold Water Elemental} 40 feet, swim 80 feet; resistance 10 to fire; {@b Vortex} (aura, water) 30 feet. Water within the aura that is part of the same body of water you occupy is {@quickref difficult terrain||3|terrain} for Swimming creatures that don't have the {@trait water} trait; {@b Melee} {@as 1} wave (reach 25 feet), {@b Damage} {@damage 3d12+18} bludgeoning plus Push or Pull 10 feet; {@b Ranged} {@as 1} water spout (range increment 60 feet), {@b Damage} {@damage 4d8+6} bludgeoning."
 					]
@@ -2961,8 +3120,8 @@
 					"type": "list",
 					"items": [
 						"{@bold Air} (air, electricity) The elemental looses a bolt of electricity from the confluence, dealing {@damage 4d4} electricity damage to creatures within 20 feet of the confluence, with a basic Reflex save. This doesn't affect creatures that are completely inside of the confluence.",
-						"{@bold Earth} (earth) The confluence gains a +2 circumstance bonus to AC and resistance 10 to all physical damage (except adamantine) for 1 round.",
-						"{@bold Fire} (fire) Flames roar through the confluence, dealing {@damage 1d6} {@condition persistent damage ||persistent fire damage} to those partially or entirely inside the confluence.",
+						"{@bold Earth} ({@trait earth}) The confluence gains a +2 circumstance bonus to AC and resistance 10 to all physical damage (except adamantine) for 1 round.",
+						"{@bold Fire} ({@trait fire}) Flames roar through the confluence, dealing {@damage 1d6} {@condition persistent damage ||persistent fire damage} to those partially or entirely inside the confluence.",
 						"{@bold Water} (attack, water) The elemental expels a powerful jet of water. Attempt a ranged spell attack against a target within 60 feet of the confluence, using your spell attack roll modifier. This attack ignores concealment granted by the confluence, and the elemental gets a +2 circumstance bonus on the spell attack roll against a target inside the confluence"
 					]
 				},
@@ -3442,11 +3601,11 @@
 						"Low-light vision.",
 						"One or more unarmed melee attacks specific to the battle form you choose, which are the only attacks you can use. You're trained with them. Your attack modifier is +16, and you use the listed damage. These attacks are Dexterity based. If your attack modifier is higher for the given unarmed attack or weapon, you can use it instead.",
 						"{@skill Acrobatics} modifiers of +16, unless your own modifier is higher. You also gain specific abilities based on the type of fey:",
-						"{@bold Dryad The temporary} HP gained increases to 30; Speed 25 feet; weakness 5 to fire; Melee {@as 1} branch, Damage {@damage 1d12+8} bludgeoning.",
-						"{@bold Elananx} Speed 30 feet; resistance 5 to fire; Melee {@as 1} jaws, Damage {@damage 1d6+8} piercing plus {@damage 1d6} fire; Melee {@as 1} claw (agile), Damage {@damage 1d6} slashing.",
-						"{@bold Naiad} Speed 25 feet, swim 25 feet; resistance 5 to fire; Melee {@as 1} aqueous fist (water), Damage {@damage 1d8+8} bludgeoning.",
-						"{@bold Redcap} Speed 40 feet; Size Small; Melee {@as 1} scythe (deadly d10, trip), Damage {@damage 1d10+8} slashing; Melee {@as 1} boot (agile, versatile B), Damage {@damage 1d6} piercing.",
-						"Unicorn gain the {@trait beast} trait in addition to fey; Speed 40 feet; resistance 5 to poison; Size Large; Melee {@as 1} horn, Damage {@damage 1d10+8} piercing plus 1 good; Melee {@as 1} hoof (agile), Damage {@damage 1d8} bludgeoning; all Strikes have the effects of a ghost touch property rune."
+						"{@bold Dryad The temporary} HP gained increases to 30; Speed 25 feet; weakness 5 to fire; {@b Melee} {@as 1} branch, {@b Damage} {@damage 1d12+8} bludgeoning.",
+						"{@bold Elananx} Speed 30 feet; resistance 5 to fire; {@b Melee} {@as 1} jaws, {@b Damage} {@damage 1d6+8} piercing plus {@damage 1d6} fire; {@b Melee} {@as 1} claw ({@trait agile}), {@b Damage} {@damage 1d6} slashing.",
+						"{@bold Naiad} Speed 25 feet, swim 25 feet; resistance 5 to fire; {@b Melee} {@as 1} aqueous fist ({@trait water}), {@b Damage} {@damage 1d8+8} bludgeoning.",
+						"{@bold Redcap} Speed 40 feet; Size Small; {@b Melee} {@as 1} scythe (deadly d10, trip), {@b Damage} {@damage 1d10+8} slashing; {@b Melee} {@as 1} boot (agile, versatile B), {@b Damage} {@damage 1d6} piercing.",
+						"Unicorn gain the {@trait beast} trait in addition to fey; Speed 40 feet; resistance 5 to poison; Size Large; {@b Melee} {@as 1} horn, {@b Damage} {@damage 1d10+8} piercing plus 1 good; {@b Melee} {@as 1} hoof ({@trait agile}), {@b Damage} {@damage 1d8} bludgeoning; all Strikes have the effects of a ghost touch property rune."
 					]
 				}
 			],
@@ -4947,8 +5106,8 @@
 						"number": 1,
 						"unit": "action"
 					},
-					"components": [
-						"(manipulate)"
+					"traits": [
+						"manipulate"
 					],
 					"entries": [
 						"You snap your fingers. The armor returns to your body."
@@ -6263,7 +6422,21 @@
 			},
 			"entries": [
 				"Just as a creature is about to attack you, you assault them with jarring illusions, completely surrounding their eyes with blinding flashes of motion and color. When the spell is complete, you gain the Overload Vision reaction; once you use the reaction, the spell ends.",
-				"Overload Vision {@as R} (concentrate) Trigger A creature within 60 feet would make an attack roll against you; Effects The triggering creature must attempt a Fortitude save.",
+				{
+					"name": "Overload Vision",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"concentrate"
+					],
+					"trigger": "A creature within 60 feet would make an attack roll against you",
+					"entries": [
+						"The triggering creature must attempt a Fortitude save."
+					],
+					"type": "ability"
+				},
 				{
 					"type": "successDegree",
 					"entries": {
@@ -6422,10 +6595,10 @@
 						"No vision and motion sense 30 feet. You can sense nearby motion through vibration and air movement as a precise sense.",
 						"One or more unarmed melee attacks specific to the battle form you choose, which are the only attacks you can use. You're trained with them. Your attack modifier is +14, and you use the listed damage. These attacks are Strength based (for the purpose of the {@condition enfeebled} condition, for example). If your unarmed attack modifier is higher, you can use it instead.",
 						"{@skill Athletics} modifier of +14, unless your own is higher. You also gain specific abilities based on the ooze:",
-						"{@bold Black Pudding} Speed 15 feet, climb 15 feet; Melee {@as 1} pseudopod, Damage {@damage 2d6+5} bludgeoning and {@damage 1d8} acid.",
-						"{@bold Gelatinous Cube} Speed 15 feet; Melee {@as 1} cube face, Damage {@damage 1d6+5} acid; a creature hit by your cube face {@action Strike} must succeed at a Fortitude save against your spell DC or be {@condition stunned 1} (or {@condition paralyzed} for 1 round on a critical failure); this save has the {@trait incapacitation} trait.",
-						"{@bold Gray Ooze} Speed 15 feet, climb 15 feet, swim 15 feet; Melee {@as 1} pseudopod, Damage {@damage 1d6+5} bludgeoning and {@damage 1d6} acid, and you can spend an action after a hit to Grab the target.",
-						"{@bold Ochre Jelly} Speed 15 feet, climb 10 feet; resistance 5 to electricity; Melee {@as 1} pseudopod, Damage {@damage 1d8+5} bludgeoning and {@damage 1d8} acid, and you can spend an action after a hit to Grab the target."
+						"{@bold Black Pudding} Speed 15 feet, climb 15 feet; {@b Melee} {@as 1} pseudopod, {@b Damage} {@damage 2d6+5} bludgeoning and {@damage 1d8} acid.",
+						"{@bold Gelatinous Cube} Speed 15 feet; {@b Melee} {@as 1} cube face, {@b Damage} {@damage 1d6+5} acid; a creature hit by your cube face {@action Strike} must succeed at a Fortitude save against your spell DC or be {@condition stunned 1} (or {@condition paralyzed} for 1 round on a critical failure); this save has the {@trait incapacitation} trait.",
+						"{@bold Gray Ooze} Speed 15 feet, climb 15 feet, swim 15 feet; {@b Melee} {@as 1} pseudopod, {@b Damage} {@damage 1d6+5} bludgeoning and {@damage 1d6} acid, and you can spend an action after a hit to Grab the target.",
+						"{@bold Ochre Jelly} Speed 15 feet, climb 10 feet; resistance 5 to electricity; {@b Melee} {@as 1} pseudopod, {@b Damage} {@damage 1d8+5} bludgeoning and {@damage 1d8} acid, and you can spend an action after a hit to Grab the target."
 					]
 				}
 			],
@@ -6619,9 +6792,9 @@
 				{
 					"type": "list",
 					"items": [
-						"{@bold Deathly Assault} (negative) The poltergeist focuses on one creature in the area and flies through that creature's space, dealing {@damage 4d10} negative damage (basic Fortitude save).",
-						"{@bold Frighten} (emotion, fear, mental) The poltergeist becomes visible, appearing as a skeletal, ghostlike humanoid. Creatures in the area must attempt a Will save, becoming {@condition frightened 2} on a failure.",
-						"{@bold Telekinetic Storm} (force) The poltergeist hurls debris and quasi-real objects around in the area. All creatures in the area take {@damage 4d8} force damage (basic Reflex save)."
+						"{@bold Deathly Assault} ({@trait negative}) The poltergeist focuses on one creature in the area and flies through that creature's space, dealing {@damage 4d10} negative damage (basic Fortitude save).",
+						"{@bold Frighten} ({@trait emotion}, {@trait fear}, {@trait mental}) The poltergeist becomes visible, appearing as a skeletal, ghostlike humanoid. Creatures in the area must attempt a Will save, becoming {@condition frightened 2} on a failure.",
+						"{@bold Telekinetic Storm} ({@trait force}) The poltergeist hurls debris and quasi-real objects around in the area. All creatures in the area take {@damage 4d8} force damage (basic Reflex save)."
 					]
 				}
 			],
@@ -7126,7 +7299,7 @@
 			},
 			"entries": [
 				"You wrap the target in armor made of multicolored light.",
-				"It functions as chromatic armor (page 95) that is all colors (granting resistance 5 to acid, electricity, fire, force, mental, poison, and sonic). An attacker that critically fails on its saving throw against the spell is {@condition blinded} rather than {@condition dazzled}."
+				"It functions as {@spell chromatic armor|som} that is all colors (granting resistance 5 to acid, electricity, fire, force, mental, poison, and sonic). An attacker that critically fails on its saving throw against the spell is {@condition blinded} rather than {@condition dazzled}."
 			],
 			"heightened": {
 				"x": [
@@ -9521,7 +9694,7 @@
 				{
 					"type": "list",
 					"items": [
-						"{@bold Agmazar the Star Titan} Speed 100 feet, climb 50 feet; {@b Arrive} ({@trait necromancy}, {@trait negative}) {@i Channel Void} Each foe in a 100-foot emanation takes {@damage 16d8} negative energy damage with a basic Fortitude save; {@b Depart} (transmutation) Gravitic Repulsion Each foe in a 50-foot emanation is pushed 100 feet away unless it succeeds at a Fortitude save.",
+						"{@bold Agmazar the Star Titan} Speed 100 feet, climb 50 feet; {@b Arrive} ({@trait necromancy}, {@trait negative}) {@i Channel Void} Each foe in a 100-foot emanation takes {@damage 16d8} negative energy damage with a basic Fortitude save; {@b Depart} ({@trait transmutation}) Gravitic Repulsion Each foe in a 50-foot emanation is pushed 100 feet away unless it succeeds at a Fortitude save.",
 						"{@bold Agyra, the Forever Storm} Speed 80 feet, fly 200 feet; {@b Arrive} ({@trait electricity}, {@trait evocation}) {@i Breath of a Thousand Storms} Agyra shoots two 1,200-foot lines of electricity, one from each of her heads. The lines can't overlap. Each creature along one of the lines takes {@damage 6d12} electricity damage with a basic Reflex save. On a failure, the creature is also {@condition slowed 1} for 1 round (or for 1 minute on a critical failure); {@b Depart} ({@trait evocation}, {@trait sonic}) {@i Thunderous Blast} Each creature within a 100-foot emanation takes {@damage 6d10} sonic damage with a basic Reflex save, and is also knocked {@condition prone} on a failed save.",
 						"{@bold Bezravnis, the Inferno Below} Speed 100 feet, burrow 100 feet; {@b Arrive} ({@trait earth}, {@trait evocation}) {@i Burrow from the Earth's Heart} Bezravnis explodes from the ground where it was summoned, causing all creatures in a 50-foot emanation to take {@damage 8d12} bludgeoning damage with a basic Reflex save. This potentially collapses structures with the collapse effect of the {@spell earthquake} spell, except there is no chance of falling into a fissure; {@b Depart} {@i Web Hurricane} Bezravnis departs with a hurricane of webbing. All creatures within a 50-foot emanation must succeed at a Reflex save or take a \u201320-foot circumstance penalty to its Speeds until it {@action Escape||Escapes} (or is {@condition immobilized} until it escapes on a critical failure). The {@action Escape} DC is your spell DC.",
 						"{@bold Mogaru, the Final King} Speed 100 feet, swim 100 feet; {@b Arrive} ({@trait auditory}, {@trait enchantment}, {@trait mental}) {@i Trance of the King's Melody} Mogaru manifests with a burst of the song that summoned him, requiring all foes within 60 feet who can hear him to attempt a Will save, leaving them {@condition stunned 3} on a failure; {@b Depart} ({@trait evocation}, {@trait fire}) {@i Volcanic Breath} Mogaru unleashes his scorching breath in a 120-foot cone. Each creature in the area takes {@damage 10d6} fire damage with a basic Reflex save. On a failure, it also takes {@damage 4d6} {@condition persistent damage||persistent fire damage}.",
@@ -9875,7 +10048,7 @@
 			},
 			"entries": [
 				"You channel the forces of undeath to briefly call forth an amalgam of the vengeful dead slain by your enemies and allies alike. This amalgam manifests as a large tornado of insubstantial, howling faces. It occupies the space of a Huge creature and has a Speed of 60 feet.",
-				"{@b Arrive} (negative) Vortex of Death Each enemy creature within a 60-foot emanation must attempt a Fortitude save with the following effects.",
+				"{@b Arrive} ({@trait negative}) Vortex of Death Each enemy creature within a 60-foot emanation must attempt a Fortitude save with the following effects.",
 				{
 					"type": "successDegree",
 					"entries": {

@@ -7292,7 +7292,7 @@
 			]
 		},
 		{
-			"name": "Staff Of Final Rest",
+			"name": "Staff of Final Rest",
 			"source": "LOTGB",
 			"page": 30,
 			"type": "Item",
@@ -7307,7 +7307,75 @@
 			"bulk": 1,
 			"category": "Staff",
 			"entries": [
-				"Historia Reliquary Wares."
+				"This white marble staff is carved into the figure of an abstract knight, its shield bearing the symbol of Lastwall, with a wickedly pointed sword made of dark wood raised high above its head. When you wield it as a weapon, it gains the versatile P trait and functions as a wooden stake, allowing you to use it to stake vampires, and your Strikes with the staff gain a +1 circumstance bonus to damage rolls against undead.",
+				{
+					"type": "ability",
+					"components": [
+						"{@action Cast a Spell}"
+					],
+					"entries": [
+						"You expend a number of charges from the staff to cast a spell from its list."
+					]
+				}
+			],
+			"craftReq": "Supply one casting of all listed levels of all listed spells.",
+			"generic": "G",
+			"variants": [
+				{
+					"name": "staff of final rest",
+					"level": 6,
+					"price": {
+						"amount": 240,
+						"coin": "gp"
+					},
+					"entries": [
+						{
+							"type": "list",
+							"items": [
+								"{@b Cantrip} {@spell disrupt undead}",
+								"{@b 1st} {@spell disrupting weapons}, {@spell heal}",
+								"{@b 2nd} {@spell heal}, {@spell gentle repose}"
+							]
+						}
+					]
+				},
+				{
+					"name": "greater staff of final rest",
+					"level": 10,
+					"price": {
+						"amount": 900,
+						"coin": "gp"
+					},
+					"entries": [
+						"The circumstance bonus to damage rolls is +2.",
+						{
+							"type": "list",
+							"items": [
+								"{@b 3rd} {@spell bind undead}, {@spell disrupting weapons}, {@spell heal}",
+								"{@b 4th} {@spell heal}, {@spell holy cascade}"
+							]
+						}
+					]
+				},
+				{
+					"name": "major staff of final rest",
+					"level": 16,
+					"price": {
+						"amount": 9000,
+						"coin": "gp"
+					},
+					"entries": [
+						"The circumstance bonus to damage rolls is +3.",
+						{
+							"type": "list",
+							"items": [
+								"{@b 5th} {@spell death ward}, {@spell disrupting weapons}, {@spell heal}",
+								"{@b 6th} {@spell field of life}, {@spell heal}, {@spell holy cascade}",
+								"{@b 7th} {@spell heal}, {@spell holy cascade}, {@spell sunburst}"
+							]
+						}
+					]
+				}
 			]
 		},
 		{
@@ -7351,9 +7419,9 @@
 						{
 							"type": "list",
 							"items": [
-								"{@bold Cantrip} daze",
-								"{@bold 1st} alarm, déjà vu (Advanced Player's Guide 218), sleep",
-								"{@bold 2nd} phantasmal treasure, silence"
+								"{@bold Cantrip} {@spell daze}",
+								"{@bold 1st} {@spell alarm}, {@spell déjà vu|apg}, {@spell sleep}",
+								"{@bold 2nd} {@spell phantasmal treasure}, {@spell silence}"
 							]
 						}
 					]
@@ -7369,9 +7437,9 @@
 						{
 							"type": "list",
 							"items": [
-								"{@bold 3rd} dream message",
-								"{@bold 4th} dream message, nightmare, sleep",
-								"{@bold 5th} dreaming potential, illusory scene"
+								"{@bold 3rd} {@spell dream message}",
+								"{@bold 4th} {@spell dream message}, {@spell nightmare}, {@spell sleep}",
+								"{@bold 5th} {@spell dreaming potential}, {@spell illusory scene}"
 							]
 						}
 					]
@@ -7387,9 +7455,9 @@
 						{
 							"type": "list",
 							"items": [
-								"{@bold 6th} illusory scene",
-								"{@bold 7th} project image, visions of danger",
-								"{@bold 8th} dream council, maze, visions of danger"
+								"{@bold 6th} {@spell illusory scene}",
+								"{@bold 7th} {@spell project image}, {@spell visions of danger}",
+								"{@bold 8th} {@spell dream council}, {@spell maze}, {@spell visions of danger}"
 							]
 						}
 					]

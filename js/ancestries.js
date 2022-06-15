@@ -880,7 +880,7 @@ class AncestriesPage extends BaseComponent {
 					type: "pf2-title",
 					name: "Size",
 				},
-				`${anc.size}`,
+				`${anc.size.joinConjunct(", ", " or ").toTitleCase()}`,
 				{
 					type: "pf2-title",
 					name: "Speed",
@@ -889,8 +889,8 @@ class AncestriesPage extends BaseComponent {
 			],
 		};
 		if (anc.rarity) statSidebar.entries.unshift({type: "pf2-title", name: "Rarity"}, `{@trait ${anc.rarity.toTitleCase()}}`);
-		if (anc.boosts) statSidebar.entries.push({type: "pf2-title", name: "Ability Boosts"}, anc.boosts.join(", ").toTitleCase());
-		if (anc.flaw) statSidebar.entries.push({type: "pf2-title", name: "Ability Flaw"}, anc.flaw.join(", ").toTitleCase());
+		if (anc.boosts) statSidebar.entries.push({type: "pf2-title", name: "Ability Boosts"}, anc.boosts.join(" <br> ").toTitleCase());
+		if (anc.flaw) statSidebar.entries.push({type: "pf2-title", name: "Ability Flaw"}, anc.flaw.join(" <br> ").toTitleCase());
 		if (anc.languages) statSidebar.entries.push({type: "pf2-title", name: "Languages"}, ...anc.languages);
 		if (anc.traits) statSidebar.entries.push({type: "pf2-title", name: "Traits"}, anc.traits.map(t => `{@trait ${t.toTitleCase()}}`).join(", "));
 		if (anc.feature) statSidebar.entries.push({type: "pf2-title", name: anc.feature.name}, ...anc.feature.entries);
