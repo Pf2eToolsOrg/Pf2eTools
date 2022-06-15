@@ -50,4 +50,4 @@ find . -maxdepth 1 -type f -name '*.html' -print0 |
     done
 
 # Rebuild the service worker index, to use our compressed files
-npm run build:sw
+npm run build:sw:prod
