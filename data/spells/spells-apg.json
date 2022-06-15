@@ -13,7 +13,6 @@
 				"fortune",
 				"oracle"
 			],
-			"school": "D",
 			"subclass": {
 				"Oracle|Mystery": [
 					"lore"
@@ -24,9 +23,9 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true
-				}
+				[
+					"S"
+				]
 			],
 			"duration": {
 				"type": "timed",
@@ -51,7 +50,6 @@
 				"fear",
 				"mental"
 			],
-			"school": "E",
 			"traditions": [
 				"arcane",
 				"divine",
@@ -62,17 +60,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "60 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 60
-				}
+				"type": "feet",
+				"number": 60
 			},
 			"targets": "1 creature",
 			"savingThrow": {
@@ -115,7 +110,6 @@
 				"mental",
 				"oracle"
 			],
-			"school": "A",
 			"subclass": {
 				"Oracle|Mystery": [
 					"ancestors"
@@ -126,9 +120,9 @@
 				"unit": "reaction"
 			},
 			"components": [
-				{
-					"S": true
-				}
+				[
+					"S"
+				]
 			],
 			"trigger": "You are about to attempt a Will save.",
 			"entries": [
@@ -147,7 +141,6 @@
 				"oracle",
 				"transmutation"
 			],
-			"school": "T",
 			"subclass": {
 				"Oracle|Mystery": [
 					"ancestors"
@@ -158,10 +151,10 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"duration": {
 				"type": "timed",
@@ -199,7 +192,6 @@
 				"mental",
 				"oracle"
 			],
-			"school": "E",
 			"subclass": {
 				"Oracle|Mystery": [
 					"ancestors"
@@ -210,16 +202,13 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true
-				}
+				[
+					"S"
+				]
 			],
 			"range": {
-				"entry": "touch",
-				"distance": {
-					"type": "touch",
-					"amount": 1
-				}
+				"type": "touch",
+				"number": 1
 			},
 			"targets": "1 living creature",
 			"savingThrow": {
@@ -260,16 +249,15 @@
 				"ranger",
 				"transmutation"
 			],
-			"school": "T",
 			"cast": {
 				"number": 1,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"duration": {
 				"type": "timed",
@@ -317,7 +305,6 @@
 			"traits": [
 				"necromancy"
 			],
-			"school": "N",
 			"traditions": [
 				"arcane",
 				"divine",
@@ -328,18 +315,15 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true,
-					"V": true
-				}
+				[
+					"M",
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"duration": {
 				"type": "timed",
@@ -423,7 +407,6 @@
 			"traits": [
 				"transmutation"
 			],
-			"school": "T",
 			"traditions": [
 				"arcane",
 				"occult"
@@ -433,17 +416,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "100 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 100
-				}
+				"type": "feet",
+				"number": 100
 			},
 			"targets": "up to 50 feet of rope or a nonliving rope-like object",
 			"duration": {
@@ -487,7 +467,6 @@
 			"traits": [
 				"evocation"
 			],
-			"school": "V",
 			"traditions": [
 				"arcane",
 				"occult"
@@ -497,17 +476,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "120 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 120
-				}
+				"type": "feet",
+				"number": 120
 			},
 			"area": {
 				"types": [
@@ -551,27 +527,26 @@
 				"conjuration",
 				"water"
 			],
-			"school": "C",
 			"traditions": [
 				"arcane",
 				"primal"
+			],
+			"spellLists": [
+				"Elemental"
 			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "60 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 60
-				}
+				"type": "feet",
+				"number": 60
 			},
 			"duration": {
 				"type": "timed",
@@ -588,9 +563,6 @@
 				"A creature that fails its save is pulled into the orb. It becomes {@condition grabbed}, moves along with the orb, and must hold its breath or begin suffocating (unless it can breathe in water)",
 				"An engulfed Medium or smaller creature and anyone trying to affect that creature follow the normal rules for aquatic battles (Core Rulebook 478). An engulfed Large creature is usually big enough that parts of it stick out from the water, and it can reach out of the water. An engulfed creature can get free either by Swimming with a successful DC 10 {@skill Athletics} check or by Escaping against your spell DC. A creature that critically failed its Reflex save is further stuck and must attempt to {@action Escape} instead of {@action Swim}. A freed creature exits the orb's space and can immediately breathe. The orb can contain as many creatures as can fit in its space.",
 				"When the spell ends, all creatures the orb has engulfed are automatically released."
-			],
-			"spellLists": [
-				"Elemental"
 			]
 		},
 		{
@@ -605,7 +577,6 @@
 				"necromancy",
 				"oracle"
 			],
-			"school": "N",
 			"subclass": {
 				"Oracle|Mystery": [
 					"bones"
@@ -616,9 +587,9 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true
-				}
+				[
+					"S"
+				]
 			],
 			"duration": {
 				"type": "timed",
@@ -653,7 +624,6 @@
 				"divine",
 				"oracle"
 			],
-			"school": "D",
 			"subclass": {
 				"Oracle|Mystery": [
 					"battle"
@@ -664,9 +634,9 @@
 				"unit": "reaction"
 			},
 			"components": [
-				{
-					"V": true
-				}
+				[
+					"V"
+				]
 			],
 			"trigger": "You are about to attempt a saving throw, but you haven't rolled yet.",
 			"entries": [
@@ -685,23 +655,19 @@
 				"divination",
 				"mental"
 			],
-			"school": "D",
 			"cast": {
 				"number": 3,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "1 mile",
-				"distance": {
-					"type": "miles",
-					"amount": 1
-				}
+				"type": "mile",
+				"number": 1
 			},
 			"targets": "one of your animal companions you can perceive",
 			"duration": {
@@ -744,7 +710,6 @@
 				"polymorph",
 				"transmutation"
 			],
-			"school": "T",
 			"traditions": [
 				"arcane",
 				"occult",
@@ -755,17 +720,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "touch",
-				"distance": {
-					"type": "touch",
-					"amount": 1
-				}
+				"type": "touch",
+				"number": 1
 			},
 			"targets": "1 living humanoid",
 			"savingThrow": {
@@ -802,7 +764,6 @@
 			"traits": [
 				"illusion"
 			],
-			"school": "I",
 			"traditions": [
 				"occult",
 				"primal"
@@ -812,10 +773,10 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"savingThrow": {
 				"type": [
@@ -849,11 +810,6 @@
 			"page": 235,
 			"focus": true,
 			"level": 3,
-			"subclass": {
-				"Sorcerer|Bloodline": [
-					"Nymph"
-				]
-			},
 			"traits": [
 				"uncommon",
 				"emotion",
@@ -862,15 +818,19 @@
 				"sorcerer",
 				"visual"
 			],
-			"school": "E",
+			"subclass": {
+				"Sorcerer|Bloodline": [
+					"Nymph"
+				]
+			},
 			"cast": {
 				"number": 1,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true
-				}
+				[
+					"S"
+				]
 			],
 			"area": {
 				"types": [
@@ -908,7 +868,6 @@
 				"incapacitation",
 				"mental"
 			],
-			"school": "E",
 			"traditions": [
 				"divine",
 				"occult",
@@ -919,17 +878,14 @@
 				"unit": "reaction"
 			},
 			"components": [
-				{
-					"V": true
-				}
+				[
+					"V"
+				]
 			],
 			"trigger": "A creature damages you.",
 			"range": {
-				"entry": "60 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 60
-				}
+				"type": "feet",
+				"number": 60
 			},
 			"targets": "the triggering creature",
 			"savingThrow": {
@@ -966,7 +922,6 @@
 			"traits": [
 				"necromancy"
 			],
-			"school": "N",
 			"traditions": [
 				"arcane",
 				"occult",
@@ -977,17 +932,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "60 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 60
-				}
+				"type": "feet",
+				"number": 60
 			},
 			"targets": "1 creature",
 			"savingThrow": {
@@ -1036,26 +988,25 @@
 				"fear",
 				"mental"
 			],
-			"school": "E",
 			"traditions": [
 				"occult"
+			],
+			"spellLists": [
+				"Elemental"
 			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 creature",
 			"savingThrow": {
@@ -1082,10 +1033,7 @@
 						"You can target two additional creatures, and the {@condition persistent damage} increases by {@dice 2d6}."
 					]
 				}
-			},
-			"spellLists": [
-				"Elemental"
-			]
+			}
 		},
 		{
 			"name": "Blood Vendetta",
@@ -1096,7 +1044,6 @@
 				"curse",
 				"necromancy"
 			],
-			"school": "N",
 			"traditions": [
 				"arcane",
 				"divine",
@@ -1107,18 +1054,15 @@
 				"unit": "reaction"
 			},
 			"components": [
-				{
-					"V": true
-				}
+				[
+					"V"
+				]
 			],
 			"trigger": "A creature deals piercing, slashing, or {@condition persistent damage ||persistent bleed damage} to you",
 			"requirements": "You can bleed.",
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "the triggering creature",
 			"savingThrow": {
@@ -1167,22 +1111,18 @@
 				"hex",
 				"witch"
 			],
-			"school": "A",
 			"cast": {
 				"number": 1,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true
-				}
+				[
+					"S"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 creature",
 			"duration": {
@@ -1221,7 +1161,6 @@
 				"mental",
 				"oracle"
 			],
-			"school": "E",
 			"subclass": {
 				"Oracle|Mystery": [
 					"lore"
@@ -1232,17 +1171,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true
-				}
+				[
+					"M",
+					"S"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 creature",
 			"savingThrow": {
@@ -1274,15 +1210,14 @@
 				"hex",
 				"witch"
 			],
-			"school": "E",
 			"cast": {
 				"number": 1,
 				"unit": "free"
 			},
 			"components": [
-				{
-					"V": true
-				}
+				[
+					"V"
+				]
 			],
 			"entries": [
 				"With a quick burst of laughter, you prolong a {@trait magical} effect you created. You {@action Sustain a Spell}."
@@ -1292,9 +1227,6 @@
 			"name": "Call To Arms",
 			"source": "APG",
 			"page": 230,
-			"miscTags": [
-				"THP"
-			],
 			"focus": true,
 			"level": 1,
 			"traits": [
@@ -1306,7 +1238,6 @@
 				"mental",
 				"oracle"
 			],
-			"school": "E",
 			"subclass": {
 				"Oracle|Mystery": [
 					"battle"
@@ -1317,9 +1248,9 @@
 				"unit": "reaction"
 			},
 			"components": [
-				{
-					"V": true
-				}
+				[
+					"V"
+				]
 			],
 			"trigger": "You are about to roll for initiative.",
 			"area": {
@@ -1355,7 +1286,10 @@
 						]
 					}
 				]
-			}
+			},
+			"miscTags": [
+				"THP"
+			]
 		},
 		{
 			"name": "Chameleon Coat",
@@ -1365,7 +1299,6 @@
 			"traits": [
 				"illusion"
 			],
-			"school": "I",
 			"traditions": [
 				"primal"
 			],
@@ -1374,18 +1307,15 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true,
-					"V": true
-				}
+				[
+					"M",
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "15 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 15
-				}
+				"type": "feet",
+				"number": 15
 			},
 			"targets": "up to 8 creatures",
 			"duration": {
@@ -1426,7 +1356,6 @@
 				"incapacitation",
 				"mental"
 			],
-			"school": "E",
 			"traditions": [
 				"arcane",
 				"divine",
@@ -1437,17 +1366,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 creature",
 			"savingThrow": {
@@ -1484,7 +1410,6 @@
 			"traits": [
 				"necromancy"
 			],
-			"school": "N",
 			"traditions": [
 				"occult"
 			],
@@ -1493,17 +1418,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "touch",
-				"distance": {
-					"type": "touch",
-					"amount": 1
-				}
+				"type": "touch",
+				"number": 1
 			},
 			"targets": "1 living creature",
 			"savingThrow": {
@@ -1538,7 +1460,6 @@
 				"necromancy",
 				"oracle"
 			],
-			"school": "N",
 			"subclass": {
 				"Oracle|Mystery": [
 					"bones"
@@ -1549,17 +1470,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 undead creature",
 			"savingThrow": {
@@ -1602,7 +1520,6 @@
 				"hex",
 				"witch"
 			],
-			"school": "C",
 			"subclass": {
 				"Witch|Patron": [
 					"Winter"
@@ -1613,16 +1530,13 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true
-				}
+				[
+					"S"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 creature",
 			"savingThrow": {
@@ -1673,15 +1587,14 @@
 				"shadow",
 				"stance"
 			],
-			"school": "V",
 			"cast": {
 				"number": 1,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true
-				}
+				[
+					"S"
+				]
 			],
 			"duration": {
 				"type": "timed",
@@ -1700,11 +1613,6 @@
 			"name": "Consuming Darkness",
 			"source": "APG",
 			"page": 235,
-			"subclass": {
-				"Sorcerer|Bloodline": [
-					"Shadow"
-				]
-			},
 			"focus": true,
 			"level": 5,
 			"traits": [
@@ -1713,16 +1621,20 @@
 				"shadow",
 				"sorcerer"
 			],
-			"school": "V",
+			"subclass": {
+				"Sorcerer|Bloodline": [
+					"Shadow"
+				]
+			},
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"area": {
 				"types": [
@@ -1775,7 +1687,6 @@
 			"traits": [
 				"divination"
 			],
-			"school": "D",
 			"traditions": [
 				"arcane",
 				"occult",
@@ -1786,17 +1697,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "touch",
-				"distance": {
-					"type": "touch",
-					"amount": 1
-				}
+				"type": "touch",
+				"number": 1
 			},
 			"targets": "1 creature",
 			"duration": {
@@ -1819,7 +1727,6 @@
 			"traits": [
 				"conjuration"
 			],
-			"school": "C",
 			"traditions": [
 				"arcane",
 				"occult"
@@ -1830,18 +1737,15 @@
 				"entry": "1 minute"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true,
-					"V": true
-				}
+				[
+					"M",
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"duration": {
 				"type": "timed",
@@ -1866,20 +1770,22 @@
 				"evocation",
 				"water"
 			],
-			"school": "V",
 			"traditions": [
 				"arcane",
 				"primal"
+			],
+			"spellLists": [
+				"Elemental"
 			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"area": {
 				"types": [
@@ -1903,10 +1809,7 @@
 						"The damage increases by {@dice 2d6}."
 					]
 				}
-			},
-			"spellLists": [
-				"Elemental"
-			]
+			}
 		},
 		{
 			"name": "Curse Of Death",
@@ -1922,23 +1825,19 @@
 				"necromancy",
 				"witch"
 			],
-			"school": "N",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 creature",
 			"savingThrow": {
@@ -2015,7 +1914,6 @@
 				"negative",
 				"transmutation"
 			],
-			"school": "T",
 			"traditions": [
 				"arcane",
 				"occult",
@@ -2026,17 +1924,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "touch",
-				"distance": {
-					"type": "touch",
-					"amount": 1
-				}
+				"type": "touch",
+				"number": 1
 			},
 			"targets": "1 Large or smaller object, construct, or living creature",
 			"savingThrow": {
@@ -2092,16 +1987,15 @@
 				"darkness",
 				"evocation"
 			],
-			"school": "V",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"duration": {
 				"type": "timed",
@@ -2136,23 +2030,19 @@
 				"mental",
 				"oracle"
 			],
-			"school": "V",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 creature other than you",
 			"savingThrow": {
@@ -2184,16 +2074,15 @@
 				"illusion",
 				"witch"
 			],
-			"school": "I",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"duration": {
 				"type": "timed",
@@ -2232,7 +2121,6 @@
 				"oracle",
 				"positive"
 			],
-			"school": "N",
 			"subclass": {
 				"Oracle|Mystery": [
 					"life"
@@ -2243,17 +2131,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 creature",
 			"entries": [
@@ -2273,11 +2158,6 @@
 			"source": "APG",
 			"page": 236,
 			"focus": true,
-			"subclass": {
-				"Sorcerer|Bloodline": [
-					"Shadow"
-				]
-			},
 			"level": 1,
 			"traits": [
 				"uncommon",
@@ -2285,15 +2165,19 @@
 				"evocation",
 				"sorcerer"
 			],
-			"school": "V",
+			"subclass": {
+				"Sorcerer|Bloodline": [
+					"Shadow"
+				]
+			},
 			"cast": {
 				"number": 1,
 				"unit": "reaction"
 			},
 			"components": [
-				{
-					"S": true
-				}
+				[
+					"S"
+				]
 			],
 			"trigger": "You cast a darkness or shadow spell.",
 			"entries": [
@@ -2314,7 +2198,6 @@
 				"hex",
 				"witch"
 			],
-			"school": "D",
 			"subclass": {
 				"Witch|Patron": [
 					"Rune"
@@ -2325,16 +2208,13 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true
-				}
+				[
+					"S"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 creature",
 			"duration": {
@@ -2369,7 +2249,6 @@
 			"traits": [
 				"transmutation"
 			],
-			"school": "T",
 			"traditions": [
 				"arcane",
 				"primal"
@@ -2379,17 +2258,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "touch",
-				"distance": {
-					"type": "touch",
-					"amount": 1
-				}
+				"type": "touch",
+				"number": 1
 			},
 			"targets": "1 non-magical object in your possession of 1 Bulk or less",
 			"duration": {
@@ -2437,7 +2313,6 @@
 				"mental",
 				"oracle"
 			],
-			"school": "D",
 			"subclass": {
 				"Oracle|Mystery": [
 					"lore"
@@ -2448,17 +2323,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true
-				}
+				[
+					"M",
+					"S"
+				]
 			],
 			"range": {
-				"entry": "60 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 60
-				}
+				"type": "feet",
+				"number": 60
 			},
 			"targets": "up to 6 creatures",
 			"savingThrow": {
@@ -2498,7 +2370,6 @@
 				"mental",
 				"misfortune"
 			],
-			"school": "E",
 			"traditions": [
 				"arcane",
 				"divine",
@@ -2509,17 +2380,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "120 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 120
-				}
+				"type": "feet",
+				"number": 120
 			},
 			"targets": "1 creature",
 			"savingThrow": {
@@ -2561,7 +2429,6 @@
 				"incapacitation",
 				"mental"
 			],
-			"school": "E",
 			"traditions": [
 				"arcane",
 				"occult"
@@ -2571,17 +2438,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "100 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 100
-				}
+				"type": "feet",
+				"number": 100
 			},
 			"targets": "1 creature",
 			"savingThrow": {
@@ -2614,22 +2478,18 @@
 				"hex",
 				"witch"
 			],
-			"school": "V",
 			"cast": {
 				"number": 1,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"V": true
-				}
+				[
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 creature",
 			"duration": {
@@ -2662,7 +2522,6 @@
 				"necromancy",
 				"negative"
 			],
-			"school": "N",
 			"traditions": [
 				"arcane",
 				"divine",
@@ -2673,10 +2532,10 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"area": {
 				"types": [
@@ -2722,23 +2581,19 @@
 				"ranger",
 				"transmutation"
 			],
-			"school": "T",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "your animal companion",
 			"duration": {
@@ -2764,16 +2619,15 @@
 				"divination",
 				"ranger"
 			],
-			"school": "D",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"duration": {
 				"type": "timed",
@@ -2792,27 +2646,26 @@
 			"source": "APG",
 			"page": 236,
 			"focus": true,
-			"subclass": {
-				"Sorcerer|Bloodline": [
-					"Nymph"
-				]
-			},
 			"level": 5,
 			"traits": [
 				"uncommon",
 				"abjuration",
 				"sorcerer"
 			],
-			"school": "A",
+			"subclass": {
+				"Sorcerer|Bloodline": [
+					"Nymph"
+				]
+			},
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"area": {
 				"types": [
@@ -2858,7 +2711,6 @@
 				"mental",
 				"witch"
 			],
-			"school": "E",
 			"subclass": {
 				"Witch|Patron": [
 					"Curse"
@@ -2869,16 +2721,13 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true
-				}
+				[
+					"S"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 creature",
 			"savingThrow": {
@@ -2917,7 +2766,6 @@
 				"divination",
 				"scrying"
 			],
-			"school": "D",
 			"traditions": [
 				"arcane",
 				"divine",
@@ -2929,17 +2777,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true
-				}
+				[
+					"M",
+					"S"
+				]
 			],
 			"range": {
-				"entry": "1 mile",
-				"distance": {
-					"type": "miles",
-					"amount": 1
-				}
+				"type": "mile",
+				"number": 1
 			},
 			"targets": "1 willing creature that is your animal companion or familiar",
 			"duration": {
@@ -2965,29 +2810,28 @@
 				"evocation",
 				"fire"
 			],
-			"school": "V",
 			"traditions": [
 				"arcane",
 				"divine",
 				"occult",
 				"primal"
 			],
+			"spellLists": [
+				"Elemental"
+			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "120 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 120
-				}
+				"type": "feet",
+				"number": 120
 			},
 			"targets": "1 creature with the minion trait that you summoned or permanently control",
 			"entries": [
@@ -3001,10 +2845,7 @@
 						"The damage increases by {@dice 2d6}."
 					]
 				}
-			},
-			"spellLists": [
-				"Elemental"
-			]
+			}
 		},
 		{
 			"name": "Flaming Fusillade",
@@ -3019,7 +2860,6 @@
 				"fire",
 				"oracle"
 			],
-			"school": "V",
 			"subclass": {
 				"Oracle|Mystery": [
 					"flames"
@@ -3030,10 +2870,10 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"duration": {
 				"type": "timed",
@@ -3066,7 +2906,6 @@
 				"evocation",
 				"force"
 			],
-			"school": "V",
 			"traditions": [
 				"arcane",
 				"occult"
@@ -3076,18 +2915,15 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true,
-					"V": true
-				}
+				[
+					"M",
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"area": {
 				"types": [
@@ -3123,7 +2959,6 @@
 			"traits": [
 				"conjuration"
 			],
-			"school": "C",
 			"traditions": [
 				"primal"
 			],
@@ -3132,17 +2967,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "touch",
-				"distance": {
-					"type": "touch",
-					"amount": 1
-				}
+				"type": "touch",
+				"number": 1
 			},
 			"area": {
 				"types": [
@@ -3180,11 +3012,6 @@
 			"name": "Genie's Veil",
 			"source": "APG",
 			"page": 236,
-			"subclass": {
-				"Sorcerer|Bloodline": [
-					"Genie"
-				]
-			},
 			"focus": true,
 			"level": 1,
 			"traits": [
@@ -3192,23 +3019,24 @@
 				"abjuration",
 				"sorcerer"
 			],
-			"school": "A",
+			"subclass": {
+				"Sorcerer|Bloodline": [
+					"Genie"
+				]
+			},
 			"cast": {
 				"number": 1,
 				"unit": "reaction"
 			},
 			"components": [
-				{
-					"S": true
-				}
+				[
+					"S"
+				]
 			],
 			"trigger": "A creature within range is attacked.",
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 willing creature",
 			"entries": [
@@ -3224,7 +3052,6 @@
 				"uncommon",
 				"divination"
 			],
-			"school": "D",
 			"traditions": [
 				"divine",
 				"occult"
@@ -3235,11 +3062,11 @@
 				"entry": "(1 minute)"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true,
-					"V": true
-				}
+				[
+					"M",
+					"S",
+					"V"
+				]
 			],
 			"area": {
 				"types": [
@@ -3271,15 +3098,14 @@
 				"evocation",
 				"ranger"
 			],
-			"school": "V",
 			"cast": {
 				"number": 1,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true
-				}
+				[
+					"S"
+				]
 			],
 			"duration": {
 				"type": "timed",
@@ -3302,7 +3128,6 @@
 			"traits": [
 				"transmutation"
 			],
-			"school": "T",
 			"traditions": [
 				"arcane",
 				"primal"
@@ -3312,17 +3137,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "60 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 60
-				}
+				"type": "feet",
+				"number": 60
 			},
 			"targets": "1 corporeal creature",
 			"savingThrow": {
@@ -3367,26 +3189,22 @@
 				"positive",
 				"ranger"
 			],
-			"school": "N",
 			"cast": {
 				"number": 1,
 				"unit": "varies",
 				"entry": "{@as 1} or {@as 2}"
 			},
 			"components": [
-				{
-					"S": true
-				},
-				{
-					"V": true
-				}
+				[
+					"S"
+				],
+				[
+					"V"
+				]
 			],
 			"range": {
-				"entry": "touch or 30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "your animal companion",
 			"entries": [
@@ -3409,11 +3227,6 @@
 			"page": 236,
 			"focus": true,
 			"level": 3,
-			"subclass": {
-				"Sorcerer|Bloodline": [
-					"Genie"
-				]
-			},
 			"traits": [
 				"uncommon",
 				"emotion",
@@ -3421,23 +3234,24 @@
 				"mental",
 				"sorcerer"
 			],
-			"school": "I",
+			"subclass": {
+				"Sorcerer|Bloodline": [
+					"Genie"
+				]
+			},
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "60 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 60
-				}
+				"type": "feet",
+				"number": 60
 			},
 			"targets": "1 creature",
 			"savingThrow": {
@@ -3483,27 +3297,26 @@
 				"evocation",
 				"fire"
 			],
-			"school": "V",
 			"traditions": [
 				"arcane",
 				"primal"
+			],
+			"spellLists": [
+				"Elemental"
 			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 metal item or metal creature",
 			"entries": [
@@ -3526,10 +3339,7 @@
 						"The initial damage increases by {@dice 2d6} and the {@condition persistent damage} increases by {@dice 1d4}."
 					]
 				}
-			},
-			"spellLists": [
-				"Elemental"
-			]
+			}
 		},
 		{
 			"name": "Heroic Feat",
@@ -3544,7 +3354,6 @@
 				"mental",
 				"oracle"
 			],
-			"school": "D",
 			"subclass": {
 				"Oracle|Mystery": [
 					"battle"
@@ -3556,10 +3365,10 @@
 				"entry": "{@as 2} or {@as 3}"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"entries": [
 				"You gain the ability to perform a specialized combat technique from the vast wealth of martial knowledge your mystery provides. When you {@action Cast a Spell||Cast this Spell}, you use the action granted by one common fighter feat from pages 144\u2013153 of the Core Rulebook or pages 126\u2013127 of this book (your GM might add feats to this list). If you {@action Cast a Spell||Cast this Spell} using 2 actions, the granted action must be a single action, and if you {@action Cast a Spell||Cast this Spell} using 3 actions, you can instead choose a feat that grants a 2-action activity. The chosen feat's level can be no higher than heroic feat's spell level. The feat can't have a Frequency entry, and you must meet its prerequisites and requirements in order to select it."
@@ -3577,15 +3386,14 @@
 				"fortune",
 				"ranger"
 			],
-			"school": "D",
 			"cast": {
 				"number": 1,
 				"unit": "free"
 			},
 			"components": [
-				{
-					"V": true
-				}
+				[
+					"V"
+				]
 			],
 			"trigger": "You attempt a check to {@action Recall Knowledge} about a creature, but you haven't rolled yet.",
 			"entries": [
@@ -3603,22 +3411,18 @@
 				"divination",
 				"ranger"
 			],
-			"school": "D",
 			"cast": {
 				"number": 1,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"V": true
-				}
+				[
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 hunted prey",
 			"duration": {
@@ -3637,9 +3441,6 @@
 			"name": "Hymn Of Healing",
 			"source": "APG",
 			"page": 228,
-			"miscTags": [
-				"THP"
-			],
 			"focus": true,
 			"level": 1,
 			"traits": [
@@ -3650,22 +3451,18 @@
 				"necromancy",
 				"positive"
 			],
-			"school": "N",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"V": true
-				}
+				[
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "you or 1 ally",
 			"duration": {
@@ -3687,7 +3484,10 @@
 						"The fast healing and temporary Hit Points each increase by 2."
 					]
 				}
-			}
+			},
+			"miscTags": [
+				"THP"
+			]
 		},
 		{
 			"name": "Ice Storm",
@@ -3698,7 +3498,6 @@
 				"cold",
 				"evocation"
 			],
-			"school": "V",
 			"traditions": [
 				"arcane",
 				"primal"
@@ -3708,18 +3507,15 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true,
-					"V": true
-				}
+				[
+					"M",
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "120 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 120
-				}
+				"type": "feet",
+				"number": 120
 			},
 			"area": {
 				"types": [
@@ -3763,7 +3559,6 @@
 				"divination",
 				"misfortune"
 			],
-			"school": "D",
 			"traditions": [
 				"occult"
 			],
@@ -3772,17 +3567,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 creature",
 			"duration": {
@@ -3813,7 +3605,6 @@
 			"traits": [
 				"conjuration"
 			],
-			"school": "C",
 			"traditions": [
 				"arcane",
 				"primal"
@@ -3823,17 +3614,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 creature",
 			"savingThrow": {
@@ -3878,7 +3666,6 @@
 			"traits": [
 				"divination"
 			],
-			"school": "D",
 			"traditions": [
 				"occult"
 			],
@@ -3887,17 +3674,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "touch",
-				"distance": {
-					"type": "touch",
-					"amount": 1
-				}
+				"type": "touch",
+				"number": 1
 			},
 			"targets": "1 object",
 			"entries": [
@@ -3918,7 +3702,6 @@
 				"fire",
 				"oracle"
 			],
-			"school": "V",
 			"subclass": {
 				"Oracle|Mystery": [
 					"flames"
@@ -3929,10 +3712,10 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"area": {
 				"types": [
@@ -3968,22 +3751,24 @@
 			"traits": [
 				"abjuration"
 			],
-			"school": "A",
 			"traditions": [
 				"arcane",
 				"divine",
 				"occult",
 				"primal"
 			],
+			"spellLists": [
+				"Elemental"
+			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"duration": {
 				"type": "timed",
@@ -3996,9 +3781,6 @@
 			"entries": [
 				"You can't be affected by anything unless you choose to be.",
 				"For the duration of the spell, you are immune to any effect or damage that would harm you, excluding effects caused by artifacts, deific power, and similarly powerful sources. You can still be affected by anything you're willing to have affect you."
-			],
-			"spellLists": [
-				"Elemental"
 			]
 		},
 		{
@@ -4014,7 +3796,6 @@
 				"evocation",
 				"oracle"
 			],
-			"school": "V",
 			"subclass": {
 				"Oracle|Mystery": [
 					"cosmos"
@@ -4025,17 +3806,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 creature",
 			"savingThrow": {
@@ -4073,7 +3851,6 @@
 			"traits": [
 				"illusion"
 			],
-			"school": "I",
 			"traditions": [
 				"arcane",
 				"occult"
@@ -4083,17 +3860,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true
-				}
+				[
+					"M",
+					"S"
+				]
 			],
 			"range": {
-				"entry": "touch",
-				"distance": {
-					"type": "touch",
-					"amount": 1
-				}
+				"type": "touch",
+				"number": 1
 			},
 			"targets": "1 object",
 			"duration": {
@@ -4140,9 +3914,9 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"V": true
-				}
+				[
+					"V"
+				]
 			],
 			"duration": {
 				"type": "timed",
@@ -4170,22 +3944,18 @@
 				"necromancy",
 				"witch"
 			],
-			"school": "N",
 			"cast": {
 				"number": 1,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true
-				}
+				[
+					"S"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 creature",
 			"duration": {
@@ -4214,7 +3984,6 @@
 				"oracle",
 				"positive"
 			],
-			"school": "N",
 			"subclass": {
 				"Oracle|Mystery": [
 					"life"
@@ -4225,16 +3994,13 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true
-				}
+				[
+					"S"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 creature other than you",
 			"duration": {
@@ -4288,7 +4054,6 @@
 				"oracle",
 				"positive"
 			],
-			"school": "N",
 			"subclass": {
 				"Oracle|Mystery": [
 					"life"
@@ -4299,10 +4064,10 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"duration": {
 				"type": "timed",
@@ -4337,7 +4102,6 @@
 				"electricity",
 				"evocation"
 			],
-			"school": "V",
 			"traditions": [
 				"primal"
 			],
@@ -4346,18 +4110,15 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true,
-					"V": true
-				}
+				[
+					"M",
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "120 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 120
-				}
+				"type": "feet",
+				"number": 120
 			},
 			"area": {
 				"types": [
@@ -4405,22 +4166,18 @@
 				"evocation",
 				"litany"
 			],
-			"school": "V",
 			"cast": {
 				"number": 1,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"V": true
-				}
+				[
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 good creature",
 			"duration": {
@@ -4457,22 +4214,18 @@
 				"litany",
 				"mental"
 			],
-			"school": "E",
 			"cast": {
 				"number": 1,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"V": true
-				}
+				[
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 creature",
 			"savingThrow": {
@@ -4517,7 +4270,6 @@
 			"traits": [
 				"conjuration"
 			],
-			"school": "C",
 			"traditions": [
 				"primal"
 			],
@@ -4526,17 +4278,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"area": {
 				"types": [
@@ -4585,22 +4334,18 @@
 				"abjuration",
 				"ranger"
 			],
-			"school": "A",
 			"cast": {
 				"number": 1,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true
-				}
+				[
+					"S"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "your animal companion",
 			"duration": {
@@ -4624,10 +4369,12 @@
 				"necromancy",
 				"positive"
 			],
-			"school": "N",
 			"traditions": [
 				"divine",
 				"primal"
+			],
+			"spellLists": [
+				"Elemental"
 			],
 			"cast": {
 				"number": 1,
@@ -4635,17 +4382,14 @@
 				"entry": "{@as 1} to {@as 3}"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "touch",
-				"distance": {
-					"type": "touch",
-					"amount": 1
-				}
+				"type": "touch",
+				"number": 1
 			},
 			"targets": "1 to 3 non-magical stones or sling bullets",
 			"duration": {
@@ -4659,9 +4403,6 @@
 			"entries": [
 				"You pour positive energy into ordinary stones, granting them temporary magical properties. You can target 1 non-magical stone or sling bullet for every action you use {@action Cast a Spell||Casting this Spell}.",
 				"The stones must be unattended or carried by you or a willing ally. The stones become +1 striking disrupting sling bullets. Each stone can be used only once, after which it crumbles to dust."
-			],
-			"spellLists": [
-				"Elemental"
 			]
 		},
 		{
@@ -4677,23 +4418,19 @@
 				"shadow",
 				"witch"
 			],
-			"school": "V",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 creature",
 			"duration": {
@@ -4730,16 +4467,15 @@
 				"monk",
 				"transmutation"
 			],
-			"school": "T",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"entries": [
 				"You make an attack filled with a medusa's petrifying power.",
@@ -4766,7 +4502,6 @@
 				"light",
 				"oracle"
 			],
-			"school": "C",
 			"subclass": {
 				"Oracle|Mystery": [
 					"cosmos"
@@ -4777,17 +4512,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"duration": {
 				"type": "timed",
@@ -4824,22 +4556,18 @@
 				"mental",
 				"witch"
 			],
-			"school": "E",
 			"cast": {
 				"number": 1,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true
-				}
+				[
+					"S"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 enemy",
 			"savingThrow": {
@@ -4878,7 +4606,6 @@
 				"evocation",
 				"poison"
 			],
-			"school": "V",
 			"traditions": [
 				"arcane",
 				"primal"
@@ -4888,10 +4615,10 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"area": {
 				"types": [
@@ -4938,7 +4665,6 @@
 				"hex",
 				"witch"
 			],
-			"school": "D",
 			"subclass": {
 				"Witch|Patron": [
 					"Fate"
@@ -4949,16 +4675,13 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"V": true
-				}
+				[
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 creature",
 			"savingThrow": {
@@ -4985,27 +4708,26 @@
 			"source": "APG",
 			"page": 236,
 			"focus": true,
-			"subclass": {
-				"Sorcerer|Bloodline": [
-					"Nymph"
-				]
-			},
 			"level": 1,
 			"traits": [
 				"uncommon",
 				"enchantment",
 				"sorcerer"
 			],
-			"school": "E",
+			"subclass": {
+				"Sorcerer|Bloodline": [
+					"Nymph"
+				]
+			},
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"duration": {
 				"type": "timed",
@@ -5038,7 +4760,6 @@
 			"traits": [
 				"divination"
 			],
-			"school": "D",
 			"traditions": [
 				"occult"
 			],
@@ -5047,17 +4768,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "touch",
-				"distance": {
-					"type": "touch",
-					"amount": 1
-				}
+				"type": "touch",
+				"number": 1
 			},
 			"targets": "1 object",
 			"entries": [
@@ -5110,23 +4828,19 @@
 				"composition",
 				"necromancy"
 			],
-			"school": "N",
 			"cast": {
 				"number": 1,
 				"unit": "reaction"
 			},
 			"components": [
-				{
-					"V": true
-				}
+				[
+					"V"
+				]
 			],
 			"trigger": "A creature's {@condition dying} condition would reach the value at which they would die.",
 			"range": {
-				"entry": "60 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 60
-				}
+				"type": "feet",
+				"number": 60
 			},
 			"targets": "the triggering creature",
 			"entries": [
@@ -5145,22 +4859,18 @@
 				"hex",
 				"witch"
 			],
-			"school": "C",
 			"cast": {
 				"number": 1,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true
-				}
+				[
+					"S"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 creature",
 			"savingThrow": {
@@ -5207,28 +4917,27 @@
 				"conjuration",
 				"extradimensional"
 			],
-			"school": "C",
 			"traditions": [
 				"arcane",
 				"divine",
 				"occult",
 				"primal"
 			],
+			"spellLists": [
+				"Elemental"
+			],
 			"cast": {
 				"number": 1,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true
-				}
+				[
+					"S"
+				]
 			],
 			"range": {
-				"entry": "touch",
-				"distance": {
-					"type": "touch",
-					"amount": 1
-				}
+				"type": "touch",
+				"number": 1
 			},
 			"targets": "1 willing creature that is your animal companion or familiar",
 			"duration": {
@@ -5243,9 +4952,6 @@
 			"entries": [
 				"You open your cloak or create a gap with your hands, drawing the target into a pocket dimension just large enough for its basic comfort. No other creature can enter this extradimensional space, and the target can bring along objects only if they were designed to be worn by a creature of its kind. The space has enough air, food, and water to sustain the target for the duration.",
 				"You can {@action Dismiss} the spell. The spell also ends if you die or enter an extradimensional space. When the spell ends, the target reappears in the nearest unoccupied space (outside of any extradimensional space you may have entered)."
-			],
-			"spellLists": [
-				"Elemental"
 			]
 		},
 		{
@@ -5258,7 +4964,6 @@
 				"illusion",
 				"mental"
 			],
-			"school": "I",
 			"traditions": [
 				"arcane",
 				"occult"
@@ -5268,17 +4973,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "60 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 60
-				}
+				"type": "feet",
+				"number": 60
 			},
 			"targets": "1 living creature",
 			"savingThrow": {
@@ -5320,23 +5022,19 @@
 				"hex",
 				"witch"
 			],
-			"school": "A",
 			"cast": {
 				"number": 1,
 				"unit": "reaction"
 			},
 			"components": [
-				{
-					"S": true
-				}
+				[
+					"S"
+				]
 			],
 			"trigger": "Your familiar would take damage.",
 			"range": {
-				"entry": "60 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 60
-				}
+				"type": "feet",
+				"number": 60
 			},
 			"targets": "your familiar",
 			"entries": [
@@ -5366,15 +5064,14 @@
 				"mental",
 				"sonic"
 			],
-			"school": "E",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"V": true
-				}
+				[
+					"V"
+				]
 			],
 			"area": {
 				"types": [
@@ -5418,20 +5115,22 @@
 				"earth",
 				"evocation"
 			],
-			"school": "V",
 			"traditions": [
 				"arcane",
 				"primal"
+			],
+			"spellLists": [
+				"Elemental"
 			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"area": {
 				"types": [
@@ -5463,10 +5162,7 @@
 						"Increase the damage by {@dice 2d4}."
 					]
 				}
-			},
-			"spellLists": [
-				"Elemental"
-			]
+			}
 		},
 		{
 			"name": "Quench",
@@ -5477,26 +5173,25 @@
 				"abjuration",
 				"water"
 			],
-			"school": "A",
 			"traditions": [
 				"primal"
+			],
+			"spellLists": [
+				"Elemental"
 			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "120 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 120
-				}
+				"type": "feet",
+				"number": 120
 			},
 			"area": {
 				"types": [
@@ -5525,10 +5220,7 @@
 						"Increase the damage to fire creatures by {@dice 2d8}."
 					]
 				}
-			},
-			"spellLists": [
-				"Elemental"
-			]
+			}
 		},
 		{
 			"name": "Ranger's Bramble",
@@ -5542,23 +5234,19 @@
 				"ranger",
 				"transmutation"
 			],
-			"school": "T",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "100 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 100
-				}
+				"type": "feet",
+				"number": 100
 			},
 			"area": {
 				"types": [
@@ -5589,7 +5277,6 @@
 				"light",
 				"necromancy"
 			],
-			"school": "N",
 			"traditions": [
 				"divine",
 				"occult",
@@ -5600,10 +5287,10 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"area": {
 				"types": [
@@ -5641,23 +5328,19 @@
 				"necromancy",
 				"witch"
 			],
-			"school": "N",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 creature",
 			"entries": [
@@ -5672,7 +5355,6 @@
 			"traits": [
 				"transmutation"
 			],
-			"school": "T",
 			"traditions": [
 				"primal"
 			],
@@ -5681,17 +5363,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "touch",
-				"distance": {
-					"type": "touch",
-					"amount": 1
-				}
+				"type": "touch",
+				"number": 1
 			},
 			"targets": "1 metal creature, 1 non-magical metal hazard, or 1 non-magical metal item of up to 1 Bulk",
 			"entries": [
@@ -5724,29 +5403,28 @@
 			"traits": [
 				"abjuration"
 			],
-			"school": "A",
 			"traditions": [
 				"arcane",
 				"divine",
 				"primal"
+			],
+			"spellLists": [
+				"Elemental"
 			],
 			"cast": {
 				"number": 3,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true,
-					"V": true
-				}
+				[
+					"M",
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "touch",
-				"distance": {
-					"type": "touch",
-					"amount": 1
-				}
+				"type": "touch",
+				"number": 1
 			},
 			"area": {
 				"types": [
@@ -5783,10 +5461,7 @@
 						]
 					}
 				]
-			},
-			"spellLists": [
-				"Elemental"
-			]
+			}
 		},
 		{
 			"name": "Scintillating Safeguard",
@@ -5796,28 +5471,27 @@
 			"traits": [
 				"abjuration"
 			],
-			"school": "A",
 			"traditions": [
 				"divine",
 				"occult",
 				"primal"
+			],
+			"spellLists": [
+				"Elemental"
 			],
 			"cast": {
 				"number": 1,
 				"unit": "reaction"
 			},
 			"components": [
-				{
-					"S": true
-				}
+				[
+					"S"
+				]
 			],
 			"trigger": "An effect would deal physical or energy damage to you or a creature in range.",
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "up to 5 willing creatures who would be harmed by the triggering effect",
 			"entries": [
@@ -5830,10 +5504,7 @@
 						"The resistance increases by 1."
 					]
 				}
-			},
-			"spellLists": [
-				"Elemental"
-			]
+			}
 		},
 		{
 			"name": "Sculpt Sound",
@@ -5843,7 +5514,6 @@
 			"traits": [
 				"illusion"
 			],
-			"school": "I",
 			"traditions": [
 				"occult"
 			],
@@ -5852,17 +5522,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true
-				}
+				[
+					"M",
+					"S"
+				]
 			],
 			"range": {
-				"entry": "touch",
-				"distance": {
-					"type": "touch",
-					"amount": 1
-				}
+				"type": "touch",
+				"number": 1
 			},
 			"targets": "1 creature or object",
 			"duration": {
@@ -5907,7 +5574,6 @@
 				"death",
 				"necromancy"
 			],
-			"school": "N",
 			"traditions": [
 				"arcane",
 				"divine",
@@ -5918,17 +5584,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "touch",
-				"distance": {
-					"type": "touch",
-					"amount": 1
-				}
+				"type": "touch",
+				"number": 1
 			},
 			"targets": "1 living creature",
 			"savingThrow": {
@@ -5965,7 +5628,6 @@
 			"traits": [
 				"conjuration"
 			],
-			"school": "C",
 			"traditions": [
 				"arcane",
 				"occult"
@@ -5976,18 +5638,15 @@
 				"entry": "1 minute"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true,
-					"V": true
-				}
+				[
+					"M",
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "touch",
-				"distance": {
-					"type": "touch",
-					"amount": 1
-				}
+				"type": "touch",
+				"number": 1
 			},
 			"targets": "1 container and its contents, totaling 10",
 			"entries": [
@@ -5999,11 +5658,6 @@
 			"name": "Sepulchral Mask",
 			"source": "APG",
 			"page": 236,
-			"subclass": {
-				"Sorcerer|Bloodline": [
-					"Psychopomp"
-				]
-			},
 			"focus": true,
 			"level": 1,
 			"traits": [
@@ -6014,16 +5668,20 @@
 				"sorcerer",
 				"visual"
 			],
-			"school": "D",
+			"subclass": {
+				"Sorcerer|Bloodline": [
+					"Psychopomp"
+				]
+			},
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"area": {
 				"types": [
@@ -6078,23 +5736,19 @@
 				"shadow",
 				"visual"
 			],
-			"school": "I",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "500 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 500
-				}
+				"type": "feet",
+				"number": 500
 			},
 			"duration": {
 				"type": "timed",
@@ -6124,24 +5778,20 @@
 				"shadow",
 				"teleportation"
 			],
-			"school": "C",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"requirements": "You are in dim light or darkness.",
 			"range": {
-				"entry": "120 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 120
-				}
+				"type": "feet",
+				"number": 120
 			},
 			"entries": [
 				"You instantly transport yourself from one shadow to another.",
@@ -6169,16 +5819,15 @@
 				"evocation",
 				"monk"
 			],
-			"school": "V",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"area": {
 				"types": [
@@ -6216,11 +5865,6 @@
 			"name": "Shepherd Of Souls",
 			"source": "APG",
 			"page": 236,
-			"subclass": {
-				"Sorcerer|Bloodline": [
-					"Psychopomp"
-				]
-			},
 			"focus": true,
 			"level": 5,
 			"traits": [
@@ -6229,23 +5873,24 @@
 				"necromancy",
 				"sorcerer"
 			],
-			"school": "N",
+			"subclass": {
+				"Sorcerer|Bloodline": [
+					"Psychopomp"
+				]
+			},
 			"cast": {
 				"number": 1,
 				"unit": "reaction"
 			},
 			"components": [
-				{
-					"V": true
-				}
+				[
+					"V"
+				]
 			],
 			"trigger": "A living creature within 30 feet takes damage.",
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 creature",
 			"entries": [
@@ -6274,7 +5919,6 @@
 				"hex",
 				"witch"
 			],
-			"school": "V",
 			"subclass": {
 				"Witch|Patron": [
 					"Night"
@@ -6285,16 +5929,13 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true
-				}
+				[
+					"S"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 creature",
 			"savingThrow": {
@@ -6334,23 +5975,19 @@
 				"ranger",
 				"teleportation"
 			],
-			"school": "C",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "10 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 10
-				}
+				"type": "feet",
+				"number": 10
 			},
 			"targets": "one snare you built",
 			"entries": [
@@ -6379,15 +6016,14 @@
 				"enchantment",
 				"mental"
 			],
-			"school": "E",
 			"cast": {
 				"number": 1,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"V": true
-				}
+				[
+					"V"
+				]
 			],
 			"area": {
 				"types": [
@@ -6439,15 +6075,14 @@
 				"enchantment",
 				"mental"
 			],
-			"school": "E",
 			"cast": {
 				"number": 1,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"V": true
-				}
+				[
+					"V"
+				]
 			],
 			"area": {
 				"types": [
@@ -6481,23 +6116,19 @@
 				"positive",
 				"ranger"
 			],
-			"school": "N",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 willing living creature or 1 undead creature",
 			"entries": [
@@ -6515,9 +6146,6 @@
 		{
 			"name": "Soul Siphon",
 			"source": "APG",
-			"miscTags": [
-				"THP"
-			],
 			"page": 233,
 			"focus": true,
 			"level": 1,
@@ -6528,7 +6156,6 @@
 				"negative",
 				"oracle"
 			],
-			"school": "N",
 			"subclass": {
 				"Oracle|Mystery": [
 					"bones"
@@ -6539,16 +6166,13 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true
-				}
+				[
+					"S"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 living creature",
 			"savingThrow": {
@@ -6575,7 +6199,10 @@
 						"Increase the damage by {@dice 1d4}."
 					]
 				}
-			}
+			},
+			"miscTags": [
+				"THP"
+			]
 		},
 		{
 			"name": "Spike Stones",
@@ -6586,27 +6213,26 @@
 				"conjuration",
 				"earth"
 			],
-			"school": "C",
 			"traditions": [
 				"primal"
+			],
+			"spellLists": [
+				"Elemental"
 			],
 			"cast": {
 				"number": 3,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true,
-					"V": true
-				}
+				[
+					"M",
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "60 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 60
-				}
+				"type": "feet",
+				"number": 60
 			},
 			"area": {
 				"types": [
@@ -6633,10 +6259,7 @@
 						"Increase the damage by 1."
 					]
 				}
-			},
-			"spellLists": [
-				"Elemental"
-			]
+			}
 		},
 		{
 			"name": "Spirit Sense",
@@ -6648,7 +6271,6 @@
 				"divination",
 				"mental"
 			],
-			"school": "D",
 			"traditions": [
 				"divine",
 				"occult"
@@ -6658,10 +6280,10 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"area": {
 				"types": [
@@ -6697,26 +6319,25 @@
 			"page": 237,
 			"focus": true,
 			"level": 3,
-			"subclass": {
-				"Sorcerer|Bloodline": [
-					"Psychopomp"
-				]
-			},
 			"traits": [
 				"uncommon",
 				"illusion",
 				"sorcerer"
 			],
-			"school": "I",
+			"subclass": {
+				"Sorcerer|Bloodline": [
+					"Psychopomp"
+				]
+			},
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"duration": {
 				"type": "timed",
@@ -6752,7 +6373,6 @@
 				"light",
 				"oracle"
 			],
-			"school": "V",
 			"subclass": {
 				"Oracle|Mystery": [
 					"cosmos"
@@ -6763,10 +6383,10 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"area": {
 				"types": [
@@ -6803,11 +6423,6 @@
 		{
 			"name": "Steal Shadow",
 			"source": "APG",
-			"subclass": {
-				"Sorcerer|Bloodline": [
-					"Shadow"
-				]
-			},
 			"page": 237,
 			"focus": true,
 			"level": 3,
@@ -6817,23 +6432,24 @@
 				"shadow",
 				"sorcerer"
 			],
-			"school": "N",
+			"subclass": {
+				"Sorcerer|Bloodline": [
+					"Shadow"
+				]
+			},
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "60 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 60
-				}
+				"type": "feet",
+				"number": 60
 			},
 			"targets": "1 creature",
 			"savingThrow": {
@@ -6885,7 +6501,6 @@
 				"hex",
 				"witch"
 			],
-			"school": "E",
 			"subclass": {
 				"Witch|Patron": [
 					"Fervor"
@@ -6896,16 +6511,13 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"V": true
-				}
+				[
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 creature",
 			"duration": {
@@ -6938,7 +6550,6 @@
 			"traits": [
 				"illusion"
 			],
-			"school": "I",
 			"traditions": [
 				"occult"
 			],
@@ -6947,18 +6558,15 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true,
-					"V": true
-				}
+				[
+					"M",
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "60 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 60
-				}
+				"type": "feet",
+				"number": 60
 			},
 			"area": {
 				"types": [
@@ -6999,7 +6607,6 @@
 				"necromancy",
 				"negative"
 			],
-			"school": "N",
 			"traditions": [
 				"divine",
 				"primal"
@@ -7009,17 +6616,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "120 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 120
-				}
+				"type": "feet",
+				"number": 120
 			},
 			"area": {
 				"types": [
@@ -7055,7 +6659,6 @@
 				"cantrip",
 				"conjuration"
 			],
-			"school": "C",
 			"traditions": [
 				"divine",
 				"occult"
@@ -7065,11 +6668,11 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true,
-					"V": true
-				}
+				[
+					"M",
+					"S",
+					"V"
+				]
 			],
 			"duration": {
 				"type": "timed",
@@ -7106,23 +6709,19 @@
 				"bard",
 				"composition"
 			],
-			"school": "A",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "you or 1 ally",
 			"entries": [
@@ -7153,7 +6752,6 @@
 				"polymorph",
 				"transmutation"
 			],
-			"school": "T",
 			"subclass": {
 				"Oracle|Mystery": [
 					"tempest"
@@ -7164,10 +6762,10 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"duration": {
 				"type": "timed",
@@ -7215,7 +6813,6 @@
 				"oracle",
 				"water"
 			],
-			"school": "V",
 			"subclass": {
 				"Oracle|Mystery": [
 					"tempest"
@@ -7226,16 +6823,13 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true
-				}
+				[
+					"S"
+				]
 			],
 			"range": {
-				"entry": "touch",
-				"distance": {
-					"type": "touch",
-					"amount": 1
-				}
+				"type": "touch",
+				"number": 1
 			},
 			"targets": "1 creature",
 			"savingThrow": {
@@ -7276,23 +6870,19 @@
 				"ranger",
 				"teleportation"
 			],
-			"school": "C",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "90 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 90
-				}
+				"type": "feet",
+				"number": 90
 			},
 			"entries": [
 				"You mystically transpose your current location with another.",
@@ -7309,7 +6899,6 @@
 				"conjuration",
 				"teleportation"
 			],
-			"school": "C",
 			"traditions": [
 				"arcane",
 				"divine",
@@ -7320,16 +6909,13 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true
-				}
+				[
+					"S"
+				]
 			],
 			"range": {
-				"entry": "120 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 120
-				}
+				"type": "feet",
+				"number": 120
 			},
 			"targets": "1 willing creature",
 			"entries": [
@@ -7362,7 +6948,6 @@
 				"polymorph",
 				"transmutation"
 			],
-			"school": "T",
 			"traditions": [
 				"occult",
 				"primal"
@@ -7373,11 +6958,11 @@
 				"entry": "1 minute"
 			},
 			"components": [
-				{
-					"S": true,
-					"M": true,
-					"V": true
-				}
+				[
+					"S",
+					"M",
+					"V"
+				]
 			],
 			"duration": {
 				"type": "timed",
@@ -7407,7 +6992,6 @@
 				"oracle",
 				"sonic"
 			],
-			"school": "V",
 			"subclass": {
 				"Oracle|Mystery": [
 					"tempest"
@@ -7418,17 +7002,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "100 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 100
-				}
+				"type": "feet",
+				"number": 100
 			},
 			"area": {
 				"types": [
@@ -7475,22 +7056,18 @@
 				"necromancy",
 				"negative"
 			],
-			"school": "N",
 			"cast": {
 				"number": 1,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true
-				}
+				[
+					"S"
+				]
 			],
 			"range": {
-				"entry": "touch",
-				"distance": {
-					"type": "touch",
-					"amount": 1
-				}
+				"type": "touch",
+				"number": 1
 			},
 			"targets": "1 willing undead creature or 1 living creature",
 			"entries": [
@@ -7515,28 +7092,27 @@
 				"earth",
 				"transmutation"
 			],
-			"school": "T",
 			"traditions": [
 				"arcane",
 				"primal"
+			],
+			"spellLists": [
+				"Elemental"
 			],
 			"cast": {
 				"number": 3,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true,
-					"V": true
-				}
+				[
+					"M",
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "60 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 60
-				}
+				"type": "feet",
+				"number": 60
 			},
 			"area": {
 				"types": [
@@ -7571,24 +7147,17 @@
 						"Add an additional 10-foot cube to the area, adjacent to at least one of the other cubes."
 					]
 				}
-			},
-			"spellLists": [
-				"Elemental"
-			]
+			}
 		},
 		{
 			"name": "Vampiric Maiden",
 			"source": "APG",
 			"page": 227,
-			"miscTags": [
-				"THP"
-			],
 			"level": 4,
 			"traits": [
 				"necromancy",
 				"negative"
 			],
-			"school": "N",
 			"traditions": [
 				"arcane",
 				"divine",
@@ -7599,17 +7168,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 creature",
 			"savingThrow": {
@@ -7636,7 +7202,10 @@
 						"The piercing and negative damage increase by {@dice 1d4} each."
 					]
 				}
-			}
+			},
+			"miscTags": [
+				"THP"
+			]
 		},
 		{
 			"name": "Veil Of Dreams",
@@ -7651,22 +7220,18 @@
 				"mental",
 				"witch"
 			],
-			"school": "E",
 			"cast": {
 				"number": 1,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true
-				}
+				[
+					"S"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 creature",
 			"savingThrow": {
@@ -7707,15 +7272,14 @@
 				"divination",
 				"oracle"
 			],
-			"school": "D",
 			"cast": {
 				"number": 1,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true
-				}
+				[
+					"S"
+				]
 			],
 			"targets": "1 creature",
 			"entries": [
@@ -7730,7 +7294,6 @@
 			"traits": [
 				"evocation"
 			],
-			"school": "V",
 			"traditions": [
 				"arcane",
 				"occult",
@@ -7741,10 +7304,10 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"area": {
 				"types": [
@@ -7778,7 +7341,6 @@
 			"traits": [
 				"necromancy"
 			],
-			"school": "N",
 			"traditions": [
 				"divine",
 				"occult",
@@ -7789,17 +7351,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true
-				}
+				[
+					"M",
+					"S"
+				]
 			],
 			"range": {
-				"entry": "20 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 20
-				}
+				"type": "feet",
+				"number": 20
 			},
 			"duration": {
 				"type": "timed",
@@ -7843,7 +7402,6 @@
 				"fire",
 				"oracle"
 			],
-			"school": "V",
 			"subclass": {
 				"Oracle|Mystery": [
 					"flames"
@@ -7854,17 +7412,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"area": {
 				"types": [
@@ -7903,7 +7458,6 @@
 				"hex",
 				"witch"
 			],
-			"school": "E",
 			"subclass": {
 				"Witch|Patron": [
 					"Wild"
@@ -7914,16 +7468,13 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"V": true
-				}
+				[
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 animal, fungus, or plant",
 			"savingThrow": {
@@ -7959,33 +7510,29 @@
 			"page": 237,
 			"focus": true,
 			"level": 5,
-			"subclass": {
-				"Sorcerer|Bloodline": [
-					"Genie"
-				]
-			},
 			"traits": [
 				"uncommon",
 				"sorcerer",
 				"transmutation"
 			],
-			"school": "T",
+			"subclass": {
+				"Sorcerer|Bloodline": [
+					"Genie"
+				]
+			},
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "60 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 60
-				}
+				"type": "feet",
+				"number": 60
 			},
 			"targets": "1 creature",
 			"savingThrow": {

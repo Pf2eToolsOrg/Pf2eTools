@@ -12,23 +12,19 @@
 				"death",
 				"necromancy"
 			],
-			"school": "N",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 creature",
 			"savingThrow": {
@@ -58,7 +54,6 @@
 				"rare",
 				"necromancy"
 			],
-			"school": "N",
 			"traditions": [
 				"arcane",
 				"primal"
@@ -68,18 +63,15 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true,
-					"V": true
-				}
+				[
+					"M",
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "60 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 60
-				}
+				"type": "feet",
+				"number": 60
 			},
 			"targets": "you and up to 10 willing living allies",
 			"entries": [
@@ -98,7 +90,6 @@
 				"incapacitation",
 				"mental"
 			],
-			"school": "E",
 			"traditions": [
 				"arcane",
 				"occult"
@@ -108,17 +99,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "60 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 60
-				}
+				"type": "feet",
+				"number": 60
 			},
 			"targets": "1 creature",
 			"savingThrow": {
@@ -167,23 +155,19 @@
 				"hex",
 				"witch"
 			],
-			"school": "V",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 creature",
 			"savingThrow": {
@@ -230,7 +214,6 @@
 				"divination",
 				"mental"
 			],
-			"school": "D",
 			"traditions": [
 				"arcane",
 				"primal"
@@ -241,18 +224,15 @@
 				"entry": "10 minutes"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true,
-					"V": true
-				}
+				[
+					"M",
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "touch",
-				"distance": {
-					"type": "touch",
-					"amount": 1
-				}
+				"type": "touch",
+				"number": 1
 			},
 			"targets": "one willing creature of lower level than you",
 			"duration": {
@@ -294,7 +274,6 @@
 				"rare",
 				"abjuration"
 			],
-			"school": "A",
 			"traditions": [
 				"arcane",
 				"occult"
@@ -304,9 +283,9 @@
 				"unit": "reaction"
 			},
 			"components": [
-				{
-					"V": true
-				}
+				[
+					"V"
+				]
 			],
 			"trigger": "You are hit by a physical {@action Strike}.",
 			"entries": [
@@ -333,15 +312,14 @@
 				"healing",
 				"necromancy"
 			],
-			"school": "N",
 			"cast": {
 				"number": 1,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"V": true
-				}
+				[
+					"V"
+				]
 			],
 			"duration": {
 				"type": "timed",
@@ -359,11 +337,6 @@
 			"name": "Spirit Object",
 			"source": "LOL",
 			"page": 32,
-			"subclass": {
-				"Witch|Patron": [
-					"Baba Yaga"
-				]
-			},
 			"focus": true,
 			"level": 1,
 			"traits": [
@@ -373,24 +346,25 @@
 				"necromancy",
 				"witch"
 			],
-			"school": "N",
+			"subclass": {
+				"Witch|Patron": [
+					"Baba Yaga"
+				]
+			},
 			"cast": {
 				"number": 1,
 				"unit": "varies",
 				"entry": "{@as 1} or {@as 2}"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 unattended object up to 1 Bulk",
 			"entries": [
@@ -417,23 +391,19 @@
 				"fire",
 				"good"
 			],
-			"school": "V",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "touch",
-				"distance": {
-					"type": "touch",
-					"amount": 1
-				}
+				"type": "touch",
+				"number": 1
 			},
 			"targets": "1 weapon without an unholy rune that is unattended or wielded by you or a willing ally",
 			"duration": {

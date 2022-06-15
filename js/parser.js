@@ -599,80 +599,17 @@ Parser.getClassSideBarEntries = function (cls) {
 	return out
 }
 
-SKL_ABV_ABJ = "A";
-SKL_ABV_EVO = "V";
-SKL_ABV_ENC = "E";
-SKL_ABV_ILL = "I";
-SKL_ABV_DIV = "D";
-SKL_ABV_NEC = "N";
-SKL_ABV_TRA = "T";
-SKL_ABV_CON = "C";
-Parser.SKL_ABVS = [
-	SKL_ABV_ABJ,
-	SKL_ABV_EVO,
-	SKL_ABV_ENC,
-	SKL_ABV_ILL,
-	SKL_ABV_DIV,
-	SKL_ABV_NEC,
-	SKL_ABV_TRA,
-	SKL_ABV_CON,
-];
-SKL_ABJ = "Abjuration";
-SKL_EVO = "Evocation";
-SKL_ENC = "Enchantment";
-SKL_ILL = "Illusion";
-SKL_DIV = "Divination";
-SKL_NEC = "Necromancy";
-SKL_TRA = "Transmutation";
-SKL_CON = "Conjuration";
-Parser.SP_SCHOOLS = [SKL_ABJ, SKL_EVO, SKL_ENC, SKL_ILL, SKL_DIV, SKL_NEC, SKL_TRA, SKL_CON];
-Parser.SP_SCHOOL_FULL_TO_ABV = {};
-Parser.SP_SCHOOL_FULL_TO_ABV[SKL_ABJ] = SKL_ABV_ABJ;
-Parser.SP_SCHOOL_FULL_TO_ABV[SKL_EVO] = SKL_ABV_EVO;
-Parser.SP_SCHOOL_FULL_TO_ABV[SKL_ENC] = SKL_ABV_ENC;
-Parser.SP_SCHOOL_FULL_TO_ABV[SKL_ILL] = SKL_ABV_ILL;
-Parser.SP_SCHOOL_FULL_TO_ABV[SKL_DIV] = SKL_ABV_DIV;
-Parser.SP_SCHOOL_FULL_TO_ABV[SKL_NEC] = SKL_ABV_NEC;
-Parser.SP_SCHOOL_FULL_TO_ABV[SKL_TRA] = SKL_ABV_TRA;
-Parser.SP_SCHOOL_FULL_TO_ABV[SKL_CON] = SKL_ABV_CON;
-Parser.SP_SCHOOL_ABV_TO_FULL = {};
-Parser.SP_SCHOOL_ABV_TO_FULL[SKL_ABV_ABJ] = SKL_ABJ;
-Parser.SP_SCHOOL_ABV_TO_FULL[SKL_ABV_EVO] = SKL_EVO;
-Parser.SP_SCHOOL_ABV_TO_FULL[SKL_ABV_ENC] = SKL_ENC;
-Parser.SP_SCHOOL_ABV_TO_FULL[SKL_ABV_ILL] = SKL_ILL;
-Parser.SP_SCHOOL_ABV_TO_FULL[SKL_ABV_DIV] = SKL_DIV;
-Parser.SP_SCHOOL_ABV_TO_FULL[SKL_ABV_NEC] = SKL_NEC;
-Parser.SP_SCHOOL_ABV_TO_FULL[SKL_ABV_TRA] = SKL_TRA;
-Parser.SP_SCHOOL_ABV_TO_FULL[SKL_ABV_CON] = SKL_CON;
-Parser.SP_SCHOOL_ABV_TO_SHORT = {};
-Parser.SP_SCHOOL_ABV_TO_SHORT[SKL_ABV_ABJ] = "Abj.";
-Parser.SP_SCHOOL_ABV_TO_SHORT[SKL_ABV_EVO] = "Evoc.";
-Parser.SP_SCHOOL_ABV_TO_SHORT[SKL_ABV_ENC] = "Ench.";
-Parser.SP_SCHOOL_ABV_TO_SHORT[SKL_ABV_ILL] = "Illu.";
-Parser.SP_SCHOOL_ABV_TO_SHORT[SKL_ABV_DIV] = "Divin.";
-Parser.SP_SCHOOL_ABV_TO_SHORT[SKL_ABV_NEC] = "Necro.";
-Parser.SP_SCHOOL_ABV_TO_SHORT[SKL_ABV_TRA] = "Trans.";
-Parser.SP_SCHOOL_ABV_TO_SHORT[SKL_ABV_CON] = "Conj.";
-Parser.spSchoolAbvToFull = function (school) {
-	if (school == null) return `N/A`
-	const out = Parser._parse_aToB(Parser.SP_SCHOOL_ABV_TO_FULL, school);
-	if (Parser.SP_SCHOOL_ABV_TO_FULL[school]) return out;
-	if (BrewUtil.homebrewMeta && BrewUtil.homebrewMeta.spellSchools && BrewUtil.homebrewMeta.spellSchools[school]) return BrewUtil.homebrewMeta.spellSchools[school].full;
-	return out;
-};
-Parser.spSchoolAbvToShort = function (school) {
-	if (school == null) return `N/A`
-	const out = Parser._parse_aToB(Parser.SP_SCHOOL_ABV_TO_SHORT, school);
-	if (Parser.SP_SCHOOL_ABV_TO_SHORT[school]) return out;
-	if (BrewUtil.homebrewMeta && BrewUtil.homebrewMeta.spellSchools && BrewUtil.homebrewMeta.spellSchools[school]) return BrewUtil.homebrewMeta.spellSchools[school].short;
-	return out;
-};
-Parser.spSchoolAbvToStyle = function (school) { // For homebrew
-	const rawColor = MiscUtil.get(BrewUtil, "homebrewMeta", "spellSchools", school, "color");
+Parser.spSchoolToStyle = function (school) {
+	const rawColor = MiscUtil.get(Renderer.trait.TRAITS, school.toLowerCase(), "_data", "school", "color");
 	if (!rawColor || !rawColor.trim()) return "";
 	const validColor = BrewUtil.getValidColor(rawColor);
 	if (validColor.length) return `style="color: #${validColor}"`;
 	return "";
+};
+Parser.spSchoolToAbv = function (school) {
+	const schoolAbv = MiscUtil.get(Renderer.trait.TRAITS, school.toLowerCase(), "_data", "school", "short");
+	if (!schoolAbv || !schoolAbv.trim()) return school;
+	return schoolAbv;
 };
 
 TR_AC = "Arcane";
@@ -1050,24 +987,23 @@ Parser.timeToTableStr = function (time) {
 }
 
 UNT_FEET = "feet";
-UNT_MILES = "miles";
+UNT_MILES = "mile";
 Parser.INCHES_PER_FOOT = 12;
 Parser.FEET_PER_MILE = 5280;
 
-RNG_SPECIAL = "special";
-RNG_POINT = "point";
-RNG_LINE = "line";
-RNG_CUBE = "cube";
-RNG_CONE = "cone";
-RNG_RADIUS = "radius";
-RNG_SPHERE = "sphere";
-RNG_HEMISPHERE = "hemisphere";
-RNG_CYLINDER = "cylinder"; // homebrew only
 RNG_SELF = "self";
-RNG_SIGHT = "sight";
 RNG_UNLIMITED = "unlimited";
 RNG_UNLIMITED_SAME_PLANE = "planetary";
+RNG_UNLIMITED_OTHER_PLANE = "interplanar";
 RNG_TOUCH = "touch";
+
+Parser.rangeToFull = function (range) {
+	if (range == null) return "";
+	if (range.entry) return range.entry;
+	if (range.type === UNT_FEET) return `${range.number} ${range.number === 1 ? "foot" : "feet"}`;
+	if (range.type === UNT_MILES) return `${range.number} ${range.number === 1 ? "mile" : "miles"}`;
+	return range.type;
+}
 
 // TODO: Handle range/area types: emanation, cone etc?
 Parser.getNormalisedRange = function (range) {
@@ -1076,23 +1012,23 @@ Parser.getNormalisedRange = function (range) {
 	let distance = 0;
 	let offset = 0;
 
-	const dist = MiscUtil.merge({type: null, amount: 0}, range.distance)
-	switch (dist.type) {
+	switch (range.type) {
 		case null: distance = 0; break;
-		case UNT_FEET: multiplier = Parser.INCHES_PER_FOOT; distance = dist.amount; break;
-		case UNT_MILES: multiplier = Parser.INCHES_PER_FOOT * Parser.FEET_PER_MILE; distance = dist.amount; break;
+		case UNT_FEET: multiplier = Parser.INCHES_PER_FOOT; distance = range.number; break;
+		case UNT_MILES: multiplier = Parser.INCHES_PER_FOOT * Parser.FEET_PER_MILE; distance = range.number; break;
 		case RNG_TOUCH: distance = 1; break;
 		case RNG_UNLIMITED_SAME_PLANE: distance = 900000000; break;
-		case RNG_UNLIMITED: distance = 900000001; break;
-		case "unknown": distance = 900000002; break;
+		case RNG_UNLIMITED_OTHER_PLANE: distance = 900000001; break;
+		case RNG_UNLIMITED: distance = 900000002; break;
+		case "unknown": distance = 900000003; break;
 		default: {
 			// it's homebrew?
-			const fromBrew = MiscUtil.get(BrewUtil.homebrewMeta, "spellDistanceUnits", dist.type);
+			const fromBrew = MiscUtil.get(BrewUtil.homebrewMeta, "spellDistanceUnits", range.type);
 			if (fromBrew) {
 				const ftPerUnit = fromBrew.feetPerUnit;
 				if (ftPerUnit != null) {
 					multiplier = Parser.INCHES_PER_FOOT * ftPerUnit;
-					distance = dist.amount;
+					distance = range.number;
 				} else {
 					distance = 910000000; // default to max distance, to have them displayed at the bottom
 				}
