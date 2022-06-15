@@ -19,10 +19,12 @@
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"S": true,
-				"V": true
-			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
 			"range": {
 				"unit": "touch"
 			},
@@ -33,105 +35,6 @@
 			},
 			"entries": [
 				"You pray for swift and painful death to your enemies and find your and your allies' weapons blessed to deliver just that. The target weapons are coated with giant scorpion venom (Core Rulebook 551) with a DC equal to your spell DC. The effects remain on a weapon for 1 minute or until the weapon deals damage, whichever comes first."
-			]
-		},
-		{
-			"name": "Gray Shadow",
-			"source": "SoT3",
-			"page": 78,
-			"type": "Spell",
-			"level": 6,
-			"traits": [
-				"uncommon",
-				"necromancy",
-				"shadow"
-			],
-			"traditions": [
-				"Divine"
-			],
-			"cast": {
-				"number": 3,
-				"unit": "action"
-			},
-			"components": {
-				"S": true,
-				"V": true
-			},
-			"range": {
-				"unit": "feet",
-				"number": 30
-			},
-			"targets": "1 {@condition dying} creature",
-			"duration": {
-				"sustained": true,
-				"unit": "unlimited"
-			},
-			"entries": [
-				"You pray over a {@condition dying} creature, drawing its shadow into your service as long as its owner is stooped at death's door. You summon a greater shadow in a space adjacent to the {@condition dying} creature. The greater shadow has its usual stats (Pathfinder Bestiary 289), with the following modifications:",
-				{
-					"type": "list",
-					"items": [
-						"The greater shadow's shadow hand {@action Strike} deals an additional {@damage 1d8} poison damage.",
-						"When you {@action Cast a Spell}, you can use the greater shadow's location as the origin point instead of your own location. Upon doing so, the greater shadow immediately disappears. If the {@condition dying} creature targeted by this spell dies or regains consciousness, the greater shadow disappears and this spell ends."
-					]
-				}
-			]
-		},
-		{
-			"name": "Mirecloak",
-			"source": "SoT3",
-			"page": 78,
-			"type": "Spell",
-			"level": 5,
-			"traits": [
-				"uncommon",
-				"divination",
-				"mental"
-			],
-			"traditions": [
-				"Divine",
-				"Occult"
-			],
-			"cast": {
-				"number": 2,
-				"unit": "action"
-			},
-			"components": {
-				"S": true,
-				"V": true
-			},
-			"range": {
-				"unit": "feet",
-				"number": 30
-			},
-			"targets": "up to 4 creatures",
-			"savingThrow": {
-				"type": "Fort"
-			},
-			"duration": {
-				"unit": "unknown",
-				"entry": "up to 1 minute"
-			},
-			"entries": [
-				"You wrap the targeted creatures in thin, sickly green shrouds that sap information from attackers. The shroud settles about each target's shoulders, granting a +1 status bonus to AC and a +2 status bonus to {@skill Stealth} checks, both only while the target is in dim light or darkness.",
-				"If a creature deals damage in melee to or touches a cloaked creature, the cloak wraps around the attacker, temporarily connecting the psyches of the cloaked creature and the attacker and violently prying a random piece of interesting information from the attacker's mind. The attacker takes {@damage 2d8} mental damage and must attempt a Will save. Afterward, the spell ends for the cloaked creature, and the attacker is temporarily immune to mirecloak for 24 hours.",
-				{
-					"type": "successDegree",
-					"entries": {
-						"Critical Success": [
-							"The attacker is unaffected."
-						],
-						"Success": [
-							"The attacker takes half damage."
-						],
-						"Failure": [
-							"The attacker takes full damage and is {@condition sickened||sickened 1}. In addition, the cloaked creature gleans a piece of information from the attacker's mind. The details and extent of this information are at the GM's discretion."
-						],
-						"Critical Failure": [
-							"As failure, but the attacker takes double damage and is {@condition sickened||sickened 2}."
-						]
-					}
-				}
 			]
 		},
 		{
@@ -153,10 +56,12 @@
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"S": true,
-				"V": true
-			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
 			"range": {
 				"unit": "feet",
 				"number": 30
@@ -218,9 +123,11 @@
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"V": true
-			},
+			"components": [
+				[
+					"V"
+				]
+			],
 			"area": {
 				"entry": "30-foot burst",
 				"types": [
@@ -247,6 +154,109 @@
 			}
 		},
 		{
+			"name": "Gray Shadow",
+			"source": "SoT3",
+			"page": 78,
+			"type": "Spell",
+			"level": 6,
+			"traits": [
+				"uncommon",
+				"necromancy",
+				"shadow"
+			],
+			"traditions": [
+				"Divine"
+			],
+			"cast": {
+				"number": 3,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"targets": "1 {@condition dying} creature",
+			"duration": {
+				"sustained": true,
+				"unit": "unlimited"
+			},
+			"entries": [
+				"You pray over a {@condition dying} creature, drawing its shadow into your service as long as its owner is stooped at death's door. You summon a greater shadow in a space adjacent to the {@condition dying} creature. The greater shadow has its usual stats (Pathfinder Bestiary 289), with the following modifications:",
+				{
+					"type": "list",
+					"items": [
+						"The greater shadow's shadow hand {@action Strike} deals an additional {@damage 1d8} poison damage.",
+						"When you {@action Cast a Spell}, you can use the greater shadow's location as the origin point instead of your own location. Upon doing so, the greater shadow immediately disappears. If the {@condition dying} creature targeted by this spell dies or regains consciousness, the greater shadow disappears and this spell ends."
+					]
+				}
+			]
+		},
+		{
+			"name": "Mirecloak",
+			"source": "SoT3",
+			"page": 78,
+			"type": "Spell",
+			"level": 5,
+			"traits": [
+				"uncommon",
+				"divination",
+				"mental"
+			],
+			"traditions": [
+				"Divine",
+				"Occult"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"targets": "up to 4 creatures",
+			"savingThrow": {
+				"type": "Fort"
+			},
+			"duration": {
+				"unit": "unknown",
+				"entry": "up to 1 minute"
+			},
+			"entries": [
+				"You wrap the targeted creatures in thin, sickly green shrouds that sap information from attackers. The shroud settles about each target's shoulders, granting a +1 status bonus to AC and a +2 status bonus to {@skill Stealth} checks, both only while the target is in dim light or darkness.",
+				"If a creature deals damage in melee to or touches a cloaked creature, the cloak wraps around the attacker, temporarily connecting the psyches of the cloaked creature and the attacker and violently prying a random piece of interesting information from the attacker's mind. The attacker takes {@damage 2d8} mental damage and must attempt a Will save. Afterward, the spell ends for the cloaked creature, and the attacker is temporarily immune to mirecloak for 24 hours.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The attacker is unaffected."
+						],
+						"Success": [
+							"The attacker takes half damage."
+						],
+						"Failure": [
+							"The attacker takes full damage and is {@condition sickened||sickened 1}. In addition, the cloaked creature gleans a piece of information from the attacker's mind. The details and extent of this information are at the GM's discretion."
+						],
+						"Critical Failure": [
+							"As failure, but the attacker takes double damage and is {@condition sickened||sickened 2}."
+						]
+					}
+				}
+			]
+		},
+		{
 			"name": "Stormburst",
 			"source": "SoT3",
 			"page": 77,
@@ -264,10 +274,12 @@
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"S": true,
-				"V": true
-			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
 			"range": {
 				"unit": "feet",
 				"number": 60
@@ -330,10 +342,12 @@
 				"number": 2,
 				"unit": "action"
 			},
-			"components": {
-				"S": true,
-				"V": true
-			},
+			"components": [
+				[
+					"S",
+					"V"
+				]
+			],
 			"range": {
 				"unit": "feet",
 				"number": 30

@@ -5485,7 +5485,7 @@ Renderer.spell = {
 	getSubHead (sp) {
 		const renderer = Renderer.get()
 
-		const componentsRender = sp.components && sp.components.length === 1 ? Object.keys(sp.components[0]).filter(it => sp.components[0][it]).map(it => Parser.COMPONENTS_TO_FULL[it]).join(", ") : "";
+		const componentsRender = sp.components && sp.components.length === 1 ? sp.components[0].map(it => Parser.COMPONENTS_TO_FULL[it]).join(", ") : "";
 
 		let castPart = ``;
 		if (sp.cost != null) castPart += `; <strong>Cost&nbsp;</strong>${renderer.render(sp.cost)}`;
@@ -5493,7 +5493,7 @@ Renderer.spell = {
 		if (sp.requirements != null) castPart += `; <strong>Requirements&nbsp;</strong>${renderer.render(sp.requirements)}`;
 
 		const targetingParts = [];
-		if (sp.range) targetingParts.push(`<strong>Range&nbsp;</strong>${renderer.render(sp.range.entry)}`);
+		if (sp.range) targetingParts.push(`<strong>Range&nbsp;</strong>${renderer.render(Parser.rangeToFull(sp.range))}`);
 		if (sp.area != null) targetingParts.push(`<strong>Area&nbsp;</strong>${renderer.render(sp.area.entry)}`);
 		if (sp.targets != null) targetingParts.push(`<strong>Targets&nbsp;</strong>${renderer.render(sp.targets)}`);
 

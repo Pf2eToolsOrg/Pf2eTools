@@ -11,22 +11,18 @@
 				"electricity",
 				"evocation"
 			],
-			"school": "V",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true
-				}
+				[
+					"S"
+				]
 			],
 			"range": {
-				"entry": "touch",
-				"distance": {
-					"type": "touch",
-					"amount": 1
-				}
+				"type": "touch",
+				"number": 1
 			},
 			"targets": "1 hinge or latch",
 			"entries": [
@@ -52,7 +48,6 @@
 				"cleric",
 				"divination"
 			],
-			"school": "D",
 			"domains": [
 				"toil"
 			],
@@ -61,17 +56,14 @@
 				"unit": "reaction"
 			},
 			"components": [
-				{
-					"S": true
-				}
+				[
+					"S"
+				]
 			],
 			"trigger": "You or an ally within range fails a skill check for a skill in which you or they are trained.",
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"entries": [
 				"The target gains a +2 status bonus to the triggering check, or a +3 bonus if the target has master or better proficiency in the skill. This bonus can change the outcome of the target's check."
@@ -87,7 +79,6 @@
 				"healing",
 				"necromancy"
 			],
-			"school": "N",
 			"domains": [
 				"toil"
 			],
@@ -96,17 +87,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 creature",
 			"duration": {

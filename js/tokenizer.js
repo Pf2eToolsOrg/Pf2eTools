@@ -667,6 +667,7 @@ class TokenizerUtils {
 			{regex: /mile/, unit: "mile"},
 			{regex: /planetary/, unit: "planetary"},
 			{regex: /interplanar/, unit: "interplanar"},
+			{regex: /unlimited/, unit: "unlimited"},
 		]
 	}
 
@@ -695,10 +696,10 @@ class TokenizerUtils {
 
 	static get savingThrows () {
 		return [
-			{regex: /Fortitude/, unit: "Fort", full: "Fortitude"},
-			{regex: /Fort/, unit: "Fort", full: "Fortitude"},
-			{regex: /Reflex/, unit: "Reflex", full: "Reflex"},
-			{regex: /Will/, unit: "Will", full: "Will"},
+			{regex: /Fortitude/, unit: "Fort", full: "Fortitude", short: "F"},
+			{regex: /Fort/, unit: "Fort", full: "Fortitude", short: "F"},
+			{regex: /Reflex/, unit: "Reflex", full: "Reflex", short: "R"},
+			{regex: /Will/, unit: "Will", full: "Will", short: "W"},
 		]
 	}
 	static get abilityScores () {

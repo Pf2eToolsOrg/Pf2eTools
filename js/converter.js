@@ -447,14 +447,8 @@ class Converter {
 		this._parsedProperties.push(...this._tokenizerUtils.savingThrow);
 		const entries = this._getEntries({checkContinuedLines: true});
 		const rendered = this._renderEntries(entries, {asString: true});
-		const regExpSavingThrow = new RegExp(`(basic)? ?(${this._tokenizerUtils.savingThrows.map(u => u.regex.source).join("|")})`);
-		const matched = regExpSavingThrow.exec(rendered);
-		if (matched) {
-			obj.savingThrow = {type: this._tokenizerUtils.savingThrows.find(u => u.regex.test(matched[2])).unit};
-			if (matched[1]) obj.savingThrow.basic = true;
-		} else {
-			obj.savingThrow = {type: rendered};
-		}
+		obj.savingThrow = {type: this._tokenizerUtils.savingThrows.filter(u => u.regex.test(rendered)).map(st => st.short)};
+		if (/basic/.test(rendered)) obj.savingThrow.basic = true;
 	}
 	_parseShieldData (obj) {
 		const token = this._consumeToken(this._tokenizerUtils.shieldData);
@@ -1006,9 +1000,13 @@ class Converter {
 				ability.entries = entries.length ? this._renderEntries(entries) : [];
 			}
 			this._parsedProperties = cachedParsedProps;
+			this._parseIsGenericAbility(ability);
 
 			creature.abilities[section].push(ability);
 		}
+	}
+	_parseIsGenericAbility (ability) {
+		//
 	}
 
 	_getBonusPushAbilities () {

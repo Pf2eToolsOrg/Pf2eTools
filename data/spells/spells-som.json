@@ -9,7 +9,6 @@
 				"polymorph",
 				"transmutation"
 			],
-			"school": "T",
 			"traditions": [
 				"occult"
 			],
@@ -18,10 +17,10 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"duration": {
 				"type": "timed",
@@ -63,7 +62,6 @@
 				"polymorph",
 				"transmutation"
 			],
-			"school": "T",
 			"traditions": [
 				"divine"
 			],
@@ -72,10 +70,10 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"duration": {
 				"type": "timed",
@@ -128,7 +126,6 @@
 			"traits": [
 				"conjuration"
 			],
-			"school": "C",
 			"traditions": [
 				"primal"
 			],
@@ -137,10 +134,10 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"area": {
 				"types": [
@@ -176,7 +173,6 @@
 				"detection",
 				"divination"
 			],
-			"school": "D",
 			"traditions": [
 				"arcane",
 				"divine",
@@ -188,17 +184,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "10 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 10
-				}
+				"type": "feet",
+				"number": 10
 			},
 			"area": {
 				"types": [
@@ -222,28 +215,27 @@
 				"conjuration",
 				"fire"
 			],
-			"school": "C",
 			"traditions": [
 				"arcane",
 				"primal"
+			],
+			"spellLists": [
+				"Elemental"
 			],
 			"cast": {
 				"number": 3,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true,
-					"V": true
-				}
+				[
+					"M",
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "120 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 120
-				}
+				"type": "feet",
+				"number": 120
 			},
 			"area": {
 				"types": [
@@ -283,10 +275,7 @@
 						"The damage increases by {@dice 1d4}."
 					]
 				}
-			},
-			"spellLists": [
-				"Elemental"
-			]
+			}
 		},
 		{
 			"name": "Bandit's Doom",
@@ -297,7 +286,6 @@
 				"abjuration",
 				"curse"
 			],
-			"school": "A",
 			"traditions": [
 				"arcane",
 				"divine",
@@ -309,11 +297,11 @@
 				"entry": "30 minutes"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true,
-					"V": true
-				}
+				[
+					"M",
+					"S",
+					"V"
+				]
 			],
 			"targets": "1 item of 2 Bulk or less",
 			"duration": {
@@ -354,7 +342,6 @@
 				"illusion",
 				"visual"
 			],
-			"school": "I",
 			"traditions": [
 				"arcane",
 				"occult"
@@ -364,17 +351,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"M": true,
-					"V": true
-				}
+				[
+					"M",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "5 willing creatures",
 			"duration": {
@@ -418,7 +402,6 @@
 				"linguistic",
 				"sonic"
 			],
-			"school": "V",
 			"traditions": [
 				"occult"
 			],
@@ -427,10 +410,10 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"duration": {
 				"type": "timed",
@@ -463,20 +446,22 @@
 				"evocation",
 				"fire"
 			],
-			"school": "V",
 			"traditions": [
 				"arcane",
 				"primal"
+			],
+			"spellLists": [
+				"Elemental"
 			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"savingThrow": {
 				"type": [
@@ -495,10 +480,7 @@
 						"The damage increases by {@damage 1d4} bludgeoning and {@damage 1d6} fire."
 					]
 				}
-			},
-			"spellLists": [
-				"Elemental"
-			]
+			}
 		},
 		{
 			"name": "Blazing Fissure",
@@ -510,20 +492,22 @@
 				"evocation",
 				"fire"
 			],
-			"school": "V",
 			"traditions": [
 				"arcane",
 				"primal"
+			],
+			"spellLists": [
+				"Elemental"
 			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"area": {
 				"types": [
@@ -555,10 +539,7 @@
 						"The damage increases by {@damage 1d6} bludgeoning and {@damage 1d6} fire."
 					]
 				}
-			},
-			"spellLists": [
-				"Elemental"
-			]
+			}
 		},
 		{
 			"name": "Blessing Of Defiance",
@@ -568,7 +549,6 @@
 			"traits": [
 				"abjuration"
 			],
-			"school": "A",
 			"traditions": [
 				"divine",
 				"primal"
@@ -579,19 +559,16 @@
 				"entry": "{@as 1} to {@as 3}"
 			},
 			"components": [
-				{
-					"S": true
-				},
-				{
-					"V": true
-				}
+				[
+					"S"
+				],
+				[
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "varies",
 			"duration": {
@@ -619,7 +596,6 @@
 				"force",
 				"teleportation"
 			],
-			"school": "C",
 			"traditions": [
 				"arcane",
 				"divine",
@@ -630,17 +606,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "60 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 60
-				}
+				"type": "feet",
+				"number": 60
 			},
 			"targets": "1 creature",
 			"entries": [
@@ -673,7 +646,6 @@
 				"curse",
 				"necromancy"
 			],
-			"school": "N",
 			"traditions": [
 				"divine",
 				"occult",
@@ -684,17 +656,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 creature",
 			"savingThrow": {
@@ -739,27 +708,26 @@
 				"evocation",
 				"fire"
 			],
-			"school": "V",
 			"traditions": [
 				"arcane",
 				"primal"
+			],
+			"spellLists": [
+				"Elemental"
 			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "60 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 60
-				}
+				"type": "feet",
+				"number": 60
 			},
 			"targets": "1 creature",
 			"savingThrow": {
@@ -786,10 +754,7 @@
 						"The damage increases by {@dice 1d10}."
 					]
 				}
-			},
-			"spellLists": [
-				"Elemental"
-			]
+			}
 		},
 		{
 			"name": "Boost Eidolon",
@@ -803,22 +768,18 @@
 				"evocation",
 				"summoner"
 			],
-			"school": "V",
 			"cast": {
 				"number": 1,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"V": true
-				}
+				[
+					"V"
+				]
 			],
 			"range": {
-				"entry": "100 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 100
-				}
+				"type": "feet",
+				"number": 100
 			},
 			"targets": "your eidolon",
 			"duration": {
@@ -842,7 +803,6 @@
 				"conjuration",
 				"extradimensional"
 			],
-			"school": "C",
 			"traditions": [
 				"arcane",
 				"occult",
@@ -853,18 +813,15 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true,
-					"V": true
-				}
+				[
+					"M",
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "touch",
-				"distance": {
-					"type": "touch",
-					"amount": 1
-				}
+				"type": "touch",
+				"number": 1
 			},
 			"targets": "1 willing creature",
 			"duration": {
@@ -900,12 +857,14 @@
 			"traits": [
 				"abjuration"
 			],
-			"school": "A",
 			"traditions": [
 				"arcane",
 				"divine",
 				"occult",
 				"primal"
+			],
+			"spellLists": [
+				"Elemental"
 			],
 			"cast": {
 				"number": 1,
@@ -913,18 +872,15 @@
 				"entry": "1 minute"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true,
-					"V": true
-				}
+				[
+					"M",
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "touch",
-				"distance": {
-					"type": "touch",
-					"amount": 1
-				}
+				"type": "touch",
+				"number": 1
 			},
 			"targets": "1 willing creature",
 			"duration": {
@@ -954,10 +910,7 @@
 						]
 					}
 				]
-			},
-			"spellLists": [
-				"Elemental"
-			]
+			}
 		},
 		{
 			"name": "Bullhorn",
@@ -969,7 +922,6 @@
 				"cantrip",
 				"illusion"
 			],
-			"school": "I",
 			"traditions": [
 				"arcane",
 				"divine",
@@ -980,10 +932,10 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"duration": {
 				"type": "timed",
@@ -1026,27 +978,26 @@
 				"fire",
 				"plant"
 			],
-			"school": "E",
 			"traditions": [
 				"arcane",
 				"primal"
+			],
+			"spellLists": [
+				"Elemental"
 			],
 			"cast": {
 				"number": 3,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "120 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 120
-				}
+				"type": "feet",
+				"number": 120
 			},
 			"area": {
 				"types": [
@@ -1088,10 +1039,7 @@
 						"The damage increases by {@dice 1d6}."
 					]
 				}
-			},
-			"spellLists": [
-				"Elemental"
-			]
+			}
 		},
 		{
 			"name": "Canticle Of Everlasting Grief",
@@ -1106,7 +1054,6 @@
 				"fear",
 				"mental"
 			],
-			"school": "E",
 			"traditions": [
 				"divine",
 				"occult"
@@ -1116,17 +1063,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "120 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 120
-				}
+				"type": "feet",
+				"number": 120
 			},
 			"targets": "1 creature",
 			"savingThrow": {
@@ -1166,15 +1110,14 @@
 				"abjuration",
 				"magus"
 			],
-			"school": "A",
 			"cast": {
 				"number": 1,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true
-				}
+				[
+					"S"
+				]
 			],
 			"requirements": "You're benefiting from {@action Arcane Cascade|SoM}.",
 			"duration": {
@@ -1205,7 +1148,6 @@
 			"traits": [
 				"divination"
 			],
-			"school": "D",
 			"traditions": [
 				"arcane",
 				"occult"
@@ -1215,10 +1157,10 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"area": {
 				"types": [
@@ -1261,7 +1203,6 @@
 				"rare",
 				"divination"
 			],
-			"school": "D",
 			"traditions": [
 				"arcane",
 				"divine",
@@ -1273,9 +1214,9 @@
 				"unit": "reaction"
 			},
 			"components": [
-				{
-					"S": true
-				}
+				[
+					"S"
+				]
 			],
 			"trigger": "A creature on your plane speaks your private or true name",
 			"requirements": "You know your own true name.",
@@ -1298,7 +1239,6 @@
 				"abjuration",
 				"light"
 			],
-			"school": "A",
 			"traditions": [
 				"arcane",
 				"occult"
@@ -1309,17 +1249,14 @@
 				"entry": "{@as 2} or {@as 3}"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "touch",
-				"distance": {
-					"type": "touch",
-					"amount": 1
-				}
+				"type": "touch",
+				"number": 1
 			},
 			"targets": "1 willing creature",
 			"duration": {
@@ -1417,7 +1354,6 @@
 				"illusion",
 				"visual"
 			],
-			"school": "I",
 			"traditions": [
 				"arcane",
 				"occult"
@@ -1427,10 +1363,10 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"duration": {
 				"type": "timed",
@@ -1489,7 +1425,6 @@
 				"evocation",
 				"light"
 			],
-			"school": "V",
 			"traditions": [
 				"arcane",
 				"occult"
@@ -1499,17 +1434,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 creature",
 			"entries": [
@@ -1605,7 +1537,6 @@
 			"traits": [
 				"necromancy"
 			],
-			"school": "N",
 			"traditions": [
 				"divine",
 				"occult"
@@ -1615,17 +1546,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "touch",
-				"distance": {
-					"type": "touch",
-					"amount": 1
-				}
+				"type": "touch",
+				"number": 1
 			},
 			"targets": "1 creature affected by a curse",
 			"duration": {
@@ -1648,7 +1576,6 @@
 			"traits": [
 				"conjuration"
 			],
-			"school": "C",
 			"traditions": [
 				"primal"
 			],
@@ -1657,18 +1584,15 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true,
-					"V": true
-				}
+				[
+					"M",
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "your companion",
 			"duration": {
@@ -1698,23 +1622,22 @@
 				"evocation",
 				"fire"
 			],
-			"school": "V",
+			"spellLists": [
+				"Elemental"
+			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "120 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 120
-				}
+				"type": "feet",
+				"number": 120
 			},
 			"targets": "1 creature",
 			"savingThrow": {
@@ -1741,10 +1664,7 @@
 						"Increase the initial damage by {@dice 1d8} and the {@condition persistent damage} by {@dice 1d6}."
 					]
 				}
-			},
-			"spellLists": [
-				"Elemental"
-			]
+			}
 		},
 		{
 			"name": "Compel True Name",
@@ -1760,7 +1680,6 @@
 				"mental",
 				"true name"
 			],
-			"school": "E",
 			"traditions": [
 				"arcane",
 				"divine",
@@ -1772,16 +1691,13 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"V": true
-				}
+				[
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 creature whose true name you know",
 			"savingThrow": {
@@ -1820,7 +1736,6 @@
 				"evocation",
 				"sonic"
 			],
-			"school": "V",
 			"traditions": [
 				"divine",
 				"occult"
@@ -1831,25 +1746,22 @@
 				"entry": "{@as 1} to {@as 3}"
 			},
 			"components": [
-				{
-					"V": true,
-					"S": true,
-					"M": true
-				},
-				{
-					"V": true,
-					"S": true
-				},
-				{
-					"V": true
-				}
+				[
+					"V",
+					"S",
+					"M"
+				],
+				[
+					"V",
+					"S"
+				],
+				[
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "varies",
 			"savingThrow": {
@@ -1881,7 +1793,6 @@
 			"traits": [
 				"conjuration"
 			],
-			"school": "C",
 			"traditions": [
 				"arcane",
 				"primal"
@@ -1891,17 +1802,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "120 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 120
-				}
+				"type": "feet",
+				"number": 120
 			},
 			"area": {
 				"types": [
@@ -1942,16 +1850,12 @@
 			"name": "Corrosive Body",
 			"source": "SoM",
 			"page": 96,
-			"miscTags": [
-				"THP"
-			],
 			"level": 7,
 			"traits": [
 				"acid",
 				"polymorph",
 				"transmutation"
 			],
-			"school": "T",
 			"traditions": [
 				"arcane",
 				"primal"
@@ -1961,10 +1865,10 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"duration": {
 				"type": "timed",
@@ -1976,6 +1880,9 @@
 			},
 			"entries": [
 				"You exhale corrosive gas, and acidic secretions coat your skin as you transform into a being of living acid. You gain acid immunity. Any creature that touches you or damages you with an unarmed melee attack or non-reach melee weapon takes {@damage 3d6} acid damage, and your unarmed attacks deal {@dice 1d4} additional acid damage. The first time each round that you deal acid damage to a creature in this way, you gain {@dice 3d6} temporary HP as your body digests the eroded material and transforms it into a protective acid. When the spell ends, any remaining temporary HP expires as well. Your acid."
+			],
+			"miscTags": [
+				"THP"
 			]
 		},
 		{
@@ -1987,7 +1894,6 @@
 				"polymorph",
 				"transmutation"
 			],
-			"school": "T",
 			"traditions": [
 				"divine",
 				"primal"
@@ -1997,10 +1903,10 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"duration": {
 				"type": "timed",
@@ -2042,23 +1948,22 @@
 				"earth",
 				"transmutation"
 			],
-			"school": "T",
+			"spellLists": [
+				"Elemental"
+			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "60 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 60
-				}
+				"type": "feet",
+				"number": 60
 			},
 			"targets": "1 creature",
 			"savingThrow": {
@@ -2093,10 +1998,7 @@
 						"Increase the initial damage and additional damage by {@dice 2d6}."
 					]
 				}
-			},
-			"spellLists": [
-				"Elemental"
-			]
+			}
 		},
 		{
 			"name": "Daemon Form",
@@ -2108,7 +2010,6 @@
 				"polymorph",
 				"transmutation"
 			],
-			"school": "T",
 			"traditions": [
 				"arcane",
 				"divine"
@@ -2118,10 +2019,10 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"duration": {
 				"type": "timed",
@@ -2168,24 +2069,20 @@
 				"evocation",
 				"shadow"
 			],
-			"school": "V",
 			"cast": {
 				"number": 3,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true,
-					"V": true
-				}
+				[
+					"M",
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "120 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 120
-				}
+				"type": "feet",
+				"number": 120
 			},
 			"area": {
 				"types": [
@@ -2226,7 +2123,6 @@
 			"traits": [
 				"transmutation"
 			],
-			"school": "T",
 			"traditions": [
 				"arcane",
 				"occult",
@@ -2237,17 +2133,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "120 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 120
-				}
+				"type": "feet",
+				"number": 120
 			},
 			"targets": "1 living creature",
 			"savingThrow": {
@@ -2295,7 +2188,6 @@
 				"evocation",
 				"force"
 			],
-			"school": "V",
 			"traditions": [
 				"divine"
 			],
@@ -2304,18 +2196,15 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"requirements": "You have a deity.",
 			"range": {
-				"entry": "500 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 500
-				}
+				"type": "feet",
+				"number": 500
 			},
 			"targets": "1 creature (see text)",
 			"entries": [
@@ -2345,7 +2234,6 @@
 				"polymorph",
 				"transmutation"
 			],
-			"school": "T",
 			"traditions": [
 				"arcane",
 				"divine"
@@ -2355,10 +2243,10 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"duration": {
 				"type": "timed",
@@ -2403,7 +2291,6 @@
 				"polymorph",
 				"transmutation"
 			],
-			"school": "T",
 			"traditions": [
 				"arcane",
 				"divine"
@@ -2413,10 +2300,10 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"duration": {
 				"type": "timed",
@@ -2463,22 +2350,18 @@
 				"magus",
 				"teleportation"
 			],
-			"school": "C",
 			"cast": {
 				"number": 1,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"V": true
-				}
+				[
+					"V"
+				]
 			],
 			"range": {
-				"entry": "half your Speed",
-				"distance": {
-					"type": "unknown",
-					"amount": 1
-				}
+				"type": "unknown",
+				"entry": "half your Speed"
 			},
 			"entries": [
 				"You tumble through space, making a short dimensional hop to better position yourself for an attack. Teleport to any square in range that's within reach of a creature, and then make a melee {@action Strike} against one creature within your reach."
@@ -2493,7 +2376,6 @@
 				"auditory",
 				"illusion"
 			],
-			"school": "I",
 			"traditions": [
 				"arcane",
 				"occult"
@@ -2503,17 +2385,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 creature",
 			"savingThrow": {
@@ -2563,7 +2442,6 @@
 				"negative",
 				"positive"
 			],
-			"school": "N",
 			"traditions": [
 				"divine"
 			],
@@ -2572,17 +2450,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "120 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 120
-				}
+				"type": "feet",
+				"number": 120
 			},
 			"area": {
 				"types": [
@@ -2619,7 +2494,6 @@
 				"enchantment",
 				"mental"
 			],
-			"school": "E",
 			"traditions": [
 				"arcane",
 				"occult"
@@ -2629,17 +2503,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "120 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 120
-				}
+				"type": "feet",
+				"number": 120
 			},
 			"targets": "1 creature",
 			"savingThrow": {
@@ -2685,7 +2556,6 @@
 				"electricity",
 				"evocation"
 			],
-			"school": "V",
 			"traditions": [
 				"arcane",
 				"primal"
@@ -2695,17 +2565,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "120 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 120
-				}
+				"type": "feet",
+				"number": 120
 			},
 			"targets": "1 creature that is either taller than you or higher in the air than you",
 			"savingThrow": {
@@ -2747,7 +2614,6 @@
 				"evocation",
 				"sonic"
 			],
-			"school": "V",
 			"traditions": [
 				"arcane",
 				"divine",
@@ -2758,17 +2624,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "touch",
-				"distance": {
-					"type": "touch",
-					"amount": 1
-				}
+				"type": "touch",
+				"number": 1
 			},
 			"targets": "1 weapon",
 			"duration": {
@@ -2803,22 +2666,18 @@
 				"teleportation",
 				"wizard"
 			],
-			"school": "C",
 			"cast": {
 				"number": 1,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true
-				}
+				[
+					"S"
+				]
 			],
 			"range": {
-				"entry": "60 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 60
-				}
+				"type": "feet",
+				"number": 60
 			},
 			"targets": "1 unattended object of light Bulk or less",
 			"entries": [
@@ -2860,16 +2719,15 @@
 				"evocation",
 				"summoner"
 			],
-			"school": "V",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"area": {
 				"types": [
@@ -2904,19 +2762,21 @@
 				"polymorph",
 				"transmutation"
 			],
-			"school": "T",
 			"traditions": [
 				"primal"
+			],
+			"spellLists": [
+				"Elemental"
 			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"duration": {
 				"type": "timed",
@@ -2948,9 +2808,6 @@
 			],
 			"miscTags": [
 				"BF"
-			],
-			"spellLists": [
-				"Elemental"
 			]
 		},
 		{
@@ -2961,20 +2818,22 @@
 			"traits": [
 				"abjuration"
 			],
-			"school": "A",
 			"traditions": [
 				"arcane",
 				"primal"
+			],
+			"spellLists": [
+				"Elemental"
 			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"duration": {
 				"type": "timed",
@@ -2995,10 +2854,7 @@
 						"The resistance increases by 5 and the maximum damage increases by 30."
 					]
 				}
-			},
-			"spellLists": [
-				"Elemental"
-			]
+			}
 		},
 		{
 			"name": "Elemental Annihilation Wave",
@@ -3012,10 +2868,12 @@
 				"fire",
 				"water"
 			],
-			"school": "V",
 			"traditions": [
 				"arcane",
 				"primal"
+			],
+			"spellLists": [
+				"Elemental"
 			],
 			"cast": {
 				"number": 2,
@@ -3023,15 +2881,15 @@
 				"entry": "{@as 2} to 2 rounds"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				},
-				{
-					"S": true,
-					"M": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				],
+				[
+					"S",
+					"M",
+					"V"
+				]
 			],
 			"area": {
 				"types": [
@@ -3059,10 +2917,7 @@
 						"The damage increases by {@dice 2d6}, and the distance that enemies are pushed back if you spent 3 actions or 2 rounds increases by 5 feet on a failed save and 10 feet on a critical failure."
 					]
 				}
-			},
-			"spellLists": [
-				"Elemental"
-			]
+			}
 		},
 		{
 			"name": "Elemental Confluence",
@@ -3076,28 +2931,27 @@
 				"fire",
 				"water"
 			],
-			"school": "C",
 			"traditions": [
 				"arcane",
 				"primal"
+			],
+			"spellLists": [
+				"Elemental"
 			],
 			"cast": {
 				"number": 3,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true,
-					"V": true
-				}
+				[
+					"M",
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "60 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 60
-				}
+				"type": "feet",
+				"number": 60
 			},
 			"area": {
 				"types": [
@@ -3126,9 +2980,6 @@
 					]
 				},
 				"The water deals {@damage 4d6} bludgeoning damage on a hit (doubled on a critical hit). This attack doesn't count toward your multiple attack penalty."
-			],
-			"spellLists": [
-				"Elemental"
 			]
 		},
 		{
@@ -3139,26 +2990,25 @@
 			"traits": [
 				"transmutation"
 			],
-			"school": "T",
 			"traditions": [
 				"primal"
+			],
+			"spellLists": [
+				"Elemental"
 			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 willing creature",
 			"duration": {
@@ -3191,10 +3041,7 @@
 						]
 					}
 				]
-			},
-			"spellLists": [
-				"Elemental"
-			]
+			}
 		},
 		{
 			"name": "Elemental Zone",
@@ -3204,27 +3051,26 @@
 			"traits": [
 				"evocation"
 			],
-			"school": "V",
 			"traditions": [
 				"arcane",
 				"primal"
+			],
+			"spellLists": [
+				"Elemental"
 			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "120 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 120
-				}
+				"type": "feet",
+				"number": 120
 			},
 			"area": {
 				"types": [
@@ -3251,10 +3097,7 @@
 						"The status bonus increases by 1."
 					]
 				}
-			},
-			"spellLists": [
-				"Elemental"
-			]
+			}
 		},
 		{
 			"name": "Envenom Companion",
@@ -3265,7 +3108,6 @@
 				"necromancy",
 				"poison"
 			],
-			"school": "N",
 			"traditions": [
 				"primal"
 			],
@@ -3274,17 +3116,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "your companion or eidolon",
 			"duration": {
@@ -3320,23 +3159,19 @@
 				"summoner",
 				"transmutation"
 			],
-			"school": "T",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "100 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 100
-				}
+				"type": "feet",
+				"number": 100
 			},
 			"targets": "your eidolon",
 			"duration": {
@@ -3402,15 +3237,14 @@
 				"metamagic",
 				"summoner"
 			],
-			"school": "D",
 			"cast": {
 				"number": 1,
 				"unit": "free"
 			},
 			"components": [
-				{
-					"V": true
-				}
+				[
+					"V"
+				]
 			],
 			"entries": [
 				"You focus on the intricacies of the magic binding you to your eidolon to extend the duration of your {@spell boost eidolon|SoM} or {@spell reinforce eidolon|SoM} spell. If your next action is to cast {@spell boost eidolon|SoM} or reinforce eidolon, attempt a skill check with the skill associated with the tradition of magic you gain from your eidolon (such as {@skill Nature} for a primal eidolon). The DC is usually a standard-difficulty DC of your level, but the GM can assign a different DC based on the circumstances. The effect depends on the result of your check.",
@@ -3432,7 +3266,6 @@
 			"traits": [
 				"abjuration"
 			],
-			"school": "A",
 			"traditions": [
 				"arcane",
 				"primal"
@@ -3442,17 +3275,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "touch",
-				"distance": {
-					"type": "touch",
-					"amount": 1
-				}
+				"type": "touch",
+				"number": 1
 			},
 			"targets": "1 poison on or in an object",
 			"entries": [
@@ -3467,7 +3297,6 @@
 			"traits": [
 				"divination"
 			],
-			"school": "D",
 			"traditions": [
 				"arcane",
 				"divine",
@@ -3479,18 +3308,15 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true,
-					"V": true
-				}
+				[
+					"M",
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "120 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 120
-				}
+				"type": "feet",
+				"number": 120
 			},
 			"targets": "1 willing ally and 1 enemy",
 			"duration": {
@@ -3518,7 +3344,6 @@
 			"traits": [
 				"necromancy"
 			],
-			"school": "N",
 			"traditions": [
 				"primal"
 			],
@@ -3527,10 +3352,10 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"area": {
 				"types": [
@@ -3565,7 +3390,6 @@
 				"polymorph",
 				"transmutation"
 			],
-			"school": "T",
 			"traditions": [
 				"occult",
 				"primal"
@@ -3575,10 +3399,10 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"duration": {
 				"type": "timed",
@@ -3623,28 +3447,27 @@
 				"evocation",
 				"fire"
 			],
-			"school": "V",
 			"traditions": [
 				"arcane",
 				"primal"
+			],
+			"spellLists": [
+				"Elemental"
 			],
 			"cast": {
 				"number": 3,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true,
-					"V": true
-				}
+				[
+					"M",
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "120 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 120
-				}
+				"type": "feet",
+				"number": 120
 			},
 			"area": {
 				"types": [
@@ -3678,10 +3501,7 @@
 						"The vortex deals an additional {@damage 1d4} bludgeoning damage and {@damage 1d6} fire damage."
 					]
 				}
-			},
-			"spellLists": [
-				"Elemental"
-			]
+			}
 		},
 		{
 			"name": "Flame Wisp",
@@ -3692,20 +3512,22 @@
 				"evocation",
 				"fire"
 			],
-			"school": "V",
 			"traditions": [
 				"arcane",
 				"primal"
+			],
+			"spellLists": [
+				"Elemental"
 			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"duration": {
 				"type": "timed",
@@ -3726,10 +3548,7 @@
 						"The damage increases by {@dice 1d4}."
 					]
 				}
-			},
-			"spellLists": [
-				"Elemental"
-			]
+			}
 		},
 		{
 			"name": "Flammable Fumes",
@@ -3740,28 +3559,27 @@
 				"conjuration",
 				"poison"
 			],
-			"school": "C",
 			"traditions": [
 				"arcane",
 				"primal"
+			],
+			"spellLists": [
+				"Elemental"
 			],
 			"cast": {
 				"number": 3,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true,
-					"V": true
-				}
+				[
+					"M",
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "120 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 120
-				}
+				"type": "feet",
+				"number": 120
 			},
 			"area": {
 				"types": [
@@ -3789,10 +3607,7 @@
 						"The poison damage increases by {@dice 1d6} and the fire damage on an explosion increases by {@dice 2d6}."
 					]
 				}
-			},
-			"spellLists": [
-				"Elemental"
-			]
+			}
 		},
 		{
 			"name": "Flowing Strike",
@@ -3803,28 +3618,27 @@
 				"evocation",
 				"water"
 			],
-			"school": "V",
 			"traditions": [
 				"arcane",
 				"primal"
+			],
+			"spellLists": [
+				"Elemental"
 			],
 			"cast": {
 				"number": 3,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true,
-					"V": true
-				}
+				[
+					"M",
+					"S",
+					"V"
+				]
 			],
 			"entries": [
 				"A wave of flowing water rushes behind you like an elegant river, pushing you across the battlefield with fluid grace.",
 				"You {@action Stride} up to 50 feet. This movement doesn't trigger reactions. You can make a {@action Strike} at any point during your {@action Stride}. If your {@action Strike} hits, the wave flows after you to batter the target of your {@action Strike} as well, dealing {@damage 2d10} bludgeoning damage and pushing it 10 feet in a direction of your choice."
-			],
-			"spellLists": [
-				"Elemental"
 			]
 		},
 		{
@@ -3839,22 +3653,18 @@
 				"force",
 				"magus"
 			],
-			"school": "V",
 			"cast": {
 				"number": 1,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true
-				}
+				[
+					"S"
+				]
 			],
 			"range": {
-				"entry": "varies",
-				"distance": {
-					"type": "unknown",
-					"amount": 1
-				}
+				"type": "unknown",
+				"entry": "varies"
 			},
 			"targets": "1 creature",
 			"entries": [
@@ -3879,7 +3689,6 @@
 				"evocation",
 				"force"
 			],
-			"school": "V",
 			"traditions": [
 				"arcane",
 				"occult"
@@ -3889,17 +3698,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "60 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 60
-				}
+				"type": "feet",
+				"number": 60
 			},
 			"duration": {
 				"type": "timed",
@@ -3986,20 +3792,22 @@
 				"evocation",
 				"water"
 			],
-			"school": "V",
 			"traditions": [
 				"arcane",
 				"primal"
+			],
+			"spellLists": [
+				"Elemental"
 			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"area": {
 				"types": [
@@ -4023,10 +3831,7 @@
 						"The cold and slashing damage each increase by {@dice 1d6}."
 					]
 				}
-			},
-			"spellLists": [
-				"Elemental"
-			]
+			}
 		},
 		{
 			"name": "Gale Blast",
@@ -4038,20 +3843,22 @@
 				"cantrip",
 				"evocation"
 			],
-			"school": "V",
 			"traditions": [
 				"arcane",
 				"primal"
+			],
+			"spellLists": [
+				"Elemental"
 			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"savingThrow": {
 				"type": [
@@ -4077,10 +3884,7 @@
 						"The damage increases by {@dice 1d6}."
 					]
 				}
-			},
-			"spellLists": [
-				"Elemental"
-			]
+			}
 		},
 		{
 			"name": "Geyser",
@@ -4092,27 +3896,26 @@
 				"fire",
 				"water"
 			],
-			"school": "V",
 			"traditions": [
 				"arcane",
 				"primal"
+			],
+			"spellLists": [
+				"Elemental"
 			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "500 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 500
-				}
+				"type": "feet",
+				"number": 500
 			},
 			"area": {
 				"types": [
@@ -4153,10 +3956,7 @@
 						"The damage increases by {@damage 1d6} bludgeoning and {@damage 1d6} fire."
 					]
 				}
-			},
-			"spellLists": [
-				"Elemental"
-			]
+			}
 		},
 		{
 			"name": "Glimmer Of Charm",
@@ -4170,7 +3970,6 @@
 				"incapacitation",
 				"mental"
 			],
-			"school": "E",
 			"traditions": [
 				"arcane",
 				"occult",
@@ -4181,10 +3980,10 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"area": {
 				"types": [
@@ -4230,7 +4029,6 @@
 				"morph",
 				"transmutation"
 			],
-			"school": "T",
 			"traditions": [
 				"arcane",
 				"primal"
@@ -4240,17 +4038,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "touch",
-				"distance": {
-					"type": "touch",
-					"amount": 1
-				}
+				"type": "touch",
+				"number": 1
 			},
 			"targets": "1 creature",
 			"entries": [
@@ -4276,7 +4071,6 @@
 			"traits": [
 				"evocation"
 			],
-			"school": "V",
 			"traditions": [
 				"arcane",
 				"occult"
@@ -4287,25 +4081,22 @@
 				"entry": "{@as 1} to {@as 3}"
 			},
 			"components": [
-				{
-					"S": true
-				},
-				{
-					"S": true,
-					"V": true
-				},
-				{
-					"S": true,
-					"M": true,
-					"V": true
-				}
+				[
+					"S"
+				],
+				[
+					"S",
+					"V"
+				],
+				[
+					"S",
+					"M",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 creature",
 			"savingThrow": {
@@ -4331,7 +4122,6 @@
 				"divination",
 				"mental"
 			],
-			"school": "D",
 			"traditions": [
 				"divine",
 				"primal"
@@ -4341,17 +4131,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "planetary",
-				"distance": {
-					"type": "planetary",
-					"amount": 1
-				}
+				"type": "planetary",
+				"number": 1
 			},
 			"targets": "1 creature you've met",
 			"duration": {
@@ -4377,15 +4164,14 @@
 				"magus",
 				"transmutation"
 			],
-			"school": "T",
 			"cast": {
 				"number": 1,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true
-				}
+				[
+					"S"
+				]
 			],
 			"duration": {
 				"type": "timed",
@@ -4410,7 +4196,6 @@
 				"evocation",
 				"sonic"
 			],
-			"school": "V",
 			"traditions": [
 				"divine",
 				"occult"
@@ -4420,10 +4205,10 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"area": {
 				"types": [
@@ -4458,25 +4243,24 @@
 				"earth",
 				"transmutation"
 			],
-			"school": "T",
 			"traditions": [
 				"primal"
+			],
+			"spellLists": [
+				"Elemental"
 			],
 			"cast": {
 				"number": 1,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true
-				}
+				[
+					"S"
+				]
 			],
 			"range": {
-				"entry": "5 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 5
-				}
+				"type": "feet",
+				"number": 5
 			},
 			"targets": "a handful of dirt or mud",
 			"duration": {
@@ -4499,10 +4283,7 @@
 						]
 					}
 				]
-			},
-			"spellLists": [
-				"Elemental"
-			]
+			}
 		},
 		{
 			"name": "Healing Well",
@@ -4514,7 +4295,6 @@
 				"necromancy",
 				"positive"
 			],
-			"school": "N",
 			"traditions": [
 				"divine",
 				"primal"
@@ -4524,18 +4304,15 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true,
-					"V": true
-				}
+				[
+					"M",
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"duration": {
 				"type": "timed",
@@ -4568,7 +4345,6 @@
 				"evocation",
 				"electricity"
 			],
-			"school": "V",
 			"traditions": [
 				"arcane",
 				"primal"
@@ -4579,22 +4355,19 @@
 				"entry": "{@as 2} to 2 rounds"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				},
-				{
-					"S": true,
-					"M": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				],
+				[
+					"S",
+					"M",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "varies",
-				"distance": {
-					"type": "unknown",
-					"amount": 1
-				}
+				"type": "unknown",
+				"entry": "varies"
 			},
 			"targets": "1 creature",
 			"entries": [
@@ -4623,27 +4396,26 @@
 				"fire",
 				"sonic"
 			],
-			"school": "V",
 			"traditions": [
 				"arcane",
 				"primal"
+			],
+			"spellLists": [
+				"Elemental"
 			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "60 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 60
-				}
+				"type": "feet",
+				"number": 60
 			},
 			"area": {
 				"types": [
@@ -4675,10 +4447,7 @@
 						"The initial fire damage increases by {@dice 1d8}, the sonic damage increases by {@dice 1d8}, and the {@condition persistent damage ||persistent fire damage} a creature takes on a critical failure increases by {@dice 1d4}."
 					]
 				}
-			},
-			"spellLists": [
-				"Elemental"
-			]
+			}
 		},
 		{
 			"name": "Impending Doom",
@@ -4693,7 +4462,6 @@
 				"mental",
 				"prediction"
 			],
-			"school": "D",
 			"traditions": [
 				"arcane",
 				"divine",
@@ -4704,17 +4472,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 living creature",
 			"savingThrow": {
@@ -4761,7 +4526,6 @@
 				"divination",
 				"prediction"
 			],
-			"school": "D",
 			"traditions": [
 				"divine",
 				"occult"
@@ -4771,17 +4535,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "60 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 60
-				}
+				"type": "feet",
+				"number": 60
 			},
 			"targets": "1 creature",
 			"savingThrow": {
@@ -4811,7 +4572,6 @@
 				"enchantment",
 				"mental"
 			],
-			"school": "E",
 			"traditions": [
 				"arcane",
 				"divine",
@@ -4822,17 +4582,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "up to 5 creatures",
 			"savingThrow": {
@@ -4865,7 +4622,6 @@
 				"enchantment",
 				"mental"
 			],
-			"school": "E",
 			"traditions": [
 				"arcane",
 				"occult"
@@ -4875,10 +4631,10 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"duration": {
 				"type": "timed",
@@ -4904,7 +4660,6 @@
 				"enchantment",
 				"mental"
 			],
-			"school": "E",
 			"traditions": [
 				"occult"
 			],
@@ -4913,10 +4668,10 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"area": {
 				"types": [
@@ -4961,7 +4716,6 @@
 				"light",
 				"necromancy"
 			],
-			"school": "N",
 			"traditions": [
 				"divine",
 				"occult"
@@ -4972,15 +4726,15 @@
 				"entry": "{@as 2} to 2 rounds"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				},
-				{
-					"S": true,
-					"M": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				],
+				[
+					"S",
+					"M",
+					"V"
+				]
 			],
 			"area": {
 				"types": [
@@ -5021,16 +4775,15 @@
 				"illusion",
 				"shadow"
 			],
-			"school": "I",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"duration": {
 				"type": "timed",
@@ -5070,7 +4823,6 @@
 				"contingency",
 				"extradimensional"
 			],
-			"school": "C",
 			"traditions": [
 				"arcane",
 				"divine",
@@ -5083,11 +4835,11 @@
 				"entry": "10 minutes"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true,
-					"V": true
-				}
+				[
+					"M",
+					"S",
+					"V"
+				]
 			],
 			"duration": {
 				"type": "timed",
@@ -5123,7 +4875,6 @@
 			"traits": [
 				"illusion"
 			],
-			"school": "I",
 			"traditions": [
 				"arcane",
 				"occult"
@@ -5133,18 +4884,15 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true,
-					"V": true
-				}
+				[
+					"M",
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "120 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 120
-				}
+				"type": "feet",
+				"number": 120
 			},
 			"duration": {
 				"type": "timed",
@@ -5180,7 +4928,6 @@
 				"mental",
 				"necromancy"
 			],
-			"school": "N",
 			"traditions": [
 				"arcane",
 				"divine",
@@ -5191,17 +4938,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "120 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 120
-				}
+				"type": "feet",
+				"number": 120
 			},
 			"area": {
 				"types": [
@@ -5249,7 +4993,6 @@
 				"enchantment",
 				"true name"
 			],
-			"school": "E",
 			"traditions": [
 				"arcane",
 				"divine",
@@ -5261,16 +5004,13 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"V": true
-				}
+				[
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 creature whose true name you know",
 			"entries": [
@@ -5287,7 +5027,6 @@
 				"polymorph",
 				"transmutation"
 			],
-			"school": "T",
 			"traditions": [
 				"primal"
 			],
@@ -5296,17 +5035,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "touch",
-				"distance": {
-					"type": "touch",
-					"amount": 1
-				}
+				"type": "touch",
+				"number": 1
 			},
 			"targets": "your companion",
 			"duration": {
@@ -5341,7 +5077,6 @@
 				"contingency",
 				"necromancy"
 			],
-			"school": "N",
 			"traditions": [
 				"divine",
 				"primal"
@@ -5352,18 +5087,15 @@
 				"entry": "10 minutes"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true,
-					"V": true
-				}
+				[
+					"M",
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "touch",
-				"distance": {
-					"type": "touch",
-					"amount": 1
-				}
+				"type": "touch",
+				"number": 1
 			},
 			"targets": "1 living creature",
 			"duration": {
@@ -5407,15 +5139,14 @@
 				"positive",
 				"summoner"
 			],
-			"school": "N",
 			"cast": {
 				"number": 1,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true
-				}
+				[
+					"S"
+				]
 			],
 			"duration": {
 				"type": "timed",
@@ -5447,7 +5178,6 @@
 				"mental",
 				"visual"
 			],
-			"school": "I",
 			"traditions": [
 				"occult",
 				"primal"
@@ -5457,17 +5187,14 @@
 				"unit": "reaction"
 			},
 			"components": [
-				{
-					"S": true
-				}
+				[
+					"S"
+				]
 			],
 			"trigger": "A creature in range {@action Stride||Strides}.",
 			"range": {
-				"entry": "60 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 60
-				}
+				"type": "feet",
+				"number": 60
 			},
 			"targets": "the triggering creature",
 			"savingThrow": {
@@ -5497,7 +5224,6 @@
 				"contingency",
 				"divination"
 			],
-			"school": "D",
 			"traditions": [
 				"arcane",
 				"divine",
@@ -5509,11 +5235,11 @@
 				"entry": "10 minutes"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true,
-					"V": true
-				}
+				[
+					"M",
+					"S",
+					"V"
+				]
 			],
 			"duration": {
 				"type": "timed",
@@ -5538,7 +5264,6 @@
 				"conjuration",
 				"teleportation"
 			],
-			"school": "C",
 			"traditions": [
 				"arcane",
 				"divine",
@@ -5550,18 +5275,15 @@
 				"entry": "1 hour"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true,
-					"V": true
-				}
+				[
+					"M",
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "touch",
-				"distance": {
-					"type": "touch",
-					"amount": 1
-				}
+				"type": "touch",
+				"number": 1
 			},
 			"targets": "2 containers, each no larger than 5 feet in any dimension",
 			"duration": {
@@ -5586,7 +5308,6 @@
 				"attack",
 				"evocation"
 			],
-			"school": "V",
 			"traditions": [
 				"arcane",
 				"primal"
@@ -5596,17 +5317,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "120 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 120
-				}
+				"type": "feet",
+				"number": 120
 			},
 			"targets": "1 creature or object",
 			"entries": [
@@ -5629,7 +5347,6 @@
 			"traits": [
 				"evocation"
 			],
-			"school": "V",
 			"traditions": [
 				"arcane",
 				"primal"
@@ -5639,17 +5356,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "60 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 60
-				}
+				"type": "feet",
+				"number": 60
 			},
 			"targets": "up to 10 metal objects with a total Bulk of 1 or less",
 			"entries": [
@@ -5666,7 +5380,6 @@
 			"traits": [
 				"abjuration"
 			],
-			"school": "A",
 			"traditions": [
 				"arcane",
 				"primal"
@@ -5676,10 +5389,10 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"duration": {
 				"type": "timed",
@@ -5712,20 +5425,22 @@
 				"morph",
 				"transmutation"
 			],
-			"school": "T",
 			"traditions": [
 				"arcane",
 				"primal"
+			],
+			"spellLists": [
+				"Elemental"
 			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"duration": {
 				"type": "timed",
@@ -5746,9 +5461,6 @@
 						"{@bold Icy Claws} Your hands morph into vicious, piercing claws of ice useful for attacking or climbing. As long as you have both hands free, you gain a climb Speed equal to your land Speed. You gain a claw unarmed attack with the {@trait agile} and {@trait finesse} traits, in the brawling weapon group. Your claw attack deals {@damage 1d6} piercing damage as its base damage, plus an additional {@damage 2d6} cold damage."
 					]
 				}
-			],
-			"spellLists": [
-				"Elemental"
 			]
 		},
 		{
@@ -5761,20 +5473,22 @@
 				"morph",
 				"transmutation"
 			],
-			"school": "T",
 			"traditions": [
 				"arcane",
 				"primal"
+			],
+			"spellLists": [
+				"Elemental"
 			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"duration": {
 				"type": "timed",
@@ -5796,9 +5510,6 @@
 						"{@bold Warming Flames} Flames flicker around you, warming away the cold while protecting you from the heat. You gain resistance 5 to cold and fire."
 					]
 				}
-			],
-			"spellLists": [
-				"Elemental"
 			]
 		},
 		{
@@ -5809,7 +5520,6 @@
 			"traits": [
 				"necromancy"
 			],
-			"school": "N",
 			"traditions": [
 				"divine",
 				"occult"
@@ -5819,10 +5529,10 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"requirements": "You're a living creature.",
 			"duration": {
@@ -5850,7 +5560,6 @@
 				"fear",
 				"mental"
 			],
-			"school": "E",
 			"traditions": [
 				"arcane",
 				"divine",
@@ -5863,11 +5572,11 @@
 				"entry": "10 minutes"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true,
-					"V": true
-				}
+				[
+					"M",
+					"S",
+					"V"
+				]
 			],
 			"duration": {
 				"type": "timed",
@@ -5900,7 +5609,6 @@
 				"mental",
 				"visual"
 			],
-			"school": "I",
 			"traditions": [
 				"arcane",
 				"divine",
@@ -5911,17 +5619,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 creature",
 			"savingThrow": {
@@ -5960,7 +5665,6 @@
 			"traits": [
 				"illusion"
 			],
-			"school": "I",
 			"traditions": [
 				"arcane",
 				"occult"
@@ -5970,10 +5674,10 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"duration": {
 				"type": "timed",
@@ -6006,28 +5710,27 @@
 				"earth",
 				"water"
 			],
-			"school": "C",
 			"traditions": [
 				"arcane",
 				"primal"
+			],
+			"spellLists": [
+				"Elemental"
 			],
 			"cast": {
 				"number": 3,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true,
-					"V": true
-				}
+				[
+					"M",
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "60 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 60
-				}
+				"type": "feet",
+				"number": 60
 			},
 			"area": {
 				"types": [
@@ -6045,9 +5748,6 @@
 			},
 			"entries": [
 				"Thick, clinging mud covers the ground, 1 foot deep. The mud is {@quickref difficult terrain||3|terrain}."
-			],
-			"spellLists": [
-				"Elemental"
 			]
 		},
 		{
@@ -6060,7 +5760,6 @@
 				"conjuration",
 				"plant"
 			],
-			"school": "C",
 			"traditions": [
 				"primal"
 			],
@@ -6069,17 +5768,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "60 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 60
-				}
+				"type": "feet",
+				"number": 60
 			},
 			"targets": "1 creature adjacent to a flat surface",
 			"duration": {
@@ -6116,7 +5812,6 @@
 				"poison",
 				"transmutation"
 			],
-			"school": "T",
 			"traditions": [
 				"primal"
 			],
@@ -6125,18 +5820,15 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true,
-					"V": true
-				}
+				[
+					"M",
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "120 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 120
-				}
+				"type": "feet",
+				"number": 120
 			},
 			"area": {
 				"types": [
@@ -6173,7 +5865,6 @@
 				"necromancy",
 				"negative"
 			],
-			"school": "N",
 			"traditions": [
 				"arcane",
 				"divine"
@@ -6183,17 +5874,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 undead minion you control",
 			"duration": {
@@ -6225,7 +5913,6 @@
 				"necromancy",
 				"negative"
 			],
-			"school": "N",
 			"traditions": [
 				"arcane",
 				"divine",
@@ -6236,17 +5923,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "60 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 60
-				}
+				"type": "feet",
+				"number": 60
 			},
 			"targets": "1 living creature",
 			"savingThrow": {
@@ -6302,7 +5986,6 @@
 				"uncommon",
 				"divination"
 			],
-			"school": "D",
 			"traditions": [
 				"arcane",
 				"divine",
@@ -6313,10 +5996,10 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"duration": {
 				"type": "timed",
@@ -6350,37 +6033,33 @@
 			"traits": [
 				"abjuration"
 			],
-			"school": "A",
 			"traditions": [
 				"arcane",
 				"divine",
 				"occult",
 				"primal"
 			],
+			"spellLists": [
+				"Elemental"
+			],
 			"cast": {
 				"number": 1,
 				"unit": "reaction"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"trigger": "A foe within range casts a 9th-level or lower spell.",
 			"range": {
-				"entry": "120 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 120
-				}
+				"type": "feet",
+				"number": 120
 			},
 			"targets": "the triggering spell",
 			"entries": [
 				"You instantly destroy the incoming spell, though at the cost of sending magical feedback through your body. You automatically counteract the spell, but the feedback brings you unavoidable harm. You lose {@dice 1d8} Hit Points per level of the triggering spell."
-			],
-			"spellLists": [
-				"Elemental"
 			]
 		},
 		{
@@ -6394,7 +6073,6 @@
 				"incapacitation",
 				"visual"
 			],
-			"school": "I",
 			"traditions": [
 				"arcane",
 				"occult",
@@ -6406,11 +6084,11 @@
 				"entry": "10 minutes"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true,
-					"V": true
-				}
+				[
+					"M",
+					"S",
+					"V"
+				]
 			],
 			"duration": {
 				"type": "timed",
@@ -6458,7 +6136,6 @@
 				"plant",
 				"transmutation"
 			],
-			"school": "T",
 			"traditions": [
 				"primal"
 			],
@@ -6467,10 +6144,10 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"duration": {
 				"type": "timed",
@@ -6507,7 +6184,6 @@
 				"mental",
 				"visual"
 			],
-			"school": "I",
 			"traditions": [
 				"arcane",
 				"occult",
@@ -6518,17 +6194,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "120 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 120
-				}
+				"type": "feet",
+				"number": 120
 			},
 			"area": {
 				"types": [
@@ -6558,7 +6231,6 @@
 				"polymorph",
 				"transmutation"
 			],
-			"school": "T",
 			"traditions": [
 				"arcane",
 				"occult"
@@ -6568,10 +6240,10 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"duration": {
 				"type": "timed",
@@ -6637,7 +6309,6 @@
 				"divination",
 				"revelation"
 			],
-			"school": "D",
 			"traditions": [
 				"arcane",
 				"divine",
@@ -6649,17 +6320,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 living or undead creature that has organs",
 			"duration": {
@@ -6692,7 +6360,6 @@
 				"evocation",
 				"sonic"
 			],
-			"school": "V",
 			"traditions": [
 				"divine",
 				"occult"
@@ -6702,17 +6369,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "100 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 100
-				}
+				"type": "feet",
+				"number": 100
 			},
 			"targets": "1 living creature",
 			"savingThrow": {
@@ -6750,7 +6414,6 @@
 			"traits": [
 				"necromancy"
 			],
-			"school": "N",
 			"traditions": [
 				"divine",
 				"occult"
@@ -6760,17 +6423,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "60 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 60
-				}
+				"type": "feet",
+				"number": 60
 			},
 			"area": {
 				"types": [
@@ -6815,7 +6475,6 @@
 			"traits": [
 				"conjuration"
 			],
-			"school": "C",
 			"traditions": [
 				"arcane",
 				"occult"
@@ -6826,18 +6485,15 @@
 				"entry": "1 minute"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true,
-					"V": true
-				}
+				[
+					"M",
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "120 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 120
-				}
+				"type": "feet",
+				"number": 120
 			},
 			"area": {
 				"types": [
@@ -6869,26 +6525,25 @@
 				"conjuration",
 				"plant"
 			],
-			"school": "C",
 			"traditions": [
 				"primal"
+			],
+			"spellLists": [
+				"Elemental"
 			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "120 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 120
-				}
+				"type": "feet",
+				"number": 120
 			},
 			"area": {
 				"types": [
@@ -6914,10 +6569,7 @@
 						"The damage increases by {@dice 1d10}."
 					]
 				}
-			},
-			"spellLists": [
-				"Elemental"
-			]
+			}
 		},
 		{
 			"name": "Phantom Crowd",
@@ -6928,7 +6580,6 @@
 				"illusion",
 				"visual"
 			],
-			"school": "I",
 			"traditions": [
 				"arcane",
 				"occult"
@@ -6938,17 +6589,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "60 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 60
-				}
+				"type": "feet",
+				"number": 60
 			},
 			"area": {
 				"types": [
@@ -6989,7 +6637,6 @@
 				"mental",
 				"visual"
 			],
-			"school": "I",
 			"traditions": [
 				"arcane",
 				"occult"
@@ -6999,18 +6646,15 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true,
-					"V": true
-				}
+				[
+					"M",
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "50 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 50
-				}
+				"type": "feet",
+				"number": 50
 			},
 			"targets": "1 creature",
 			"savingThrow": {
@@ -7049,7 +6693,6 @@
 				"divination",
 				"extradimensional"
 			],
-			"school": "D",
 			"traditions": [
 				"arcane",
 				"occult"
@@ -7059,11 +6702,11 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true,
-					"V": true
-				}
+				[
+					"M",
+					"S",
+					"V"
+				]
 			],
 			"duration": {
 				"type": "timed",
@@ -7110,7 +6753,6 @@
 				"illusion",
 				"visual"
 			],
-			"school": "I",
 			"traditions": [
 				"occult"
 			],
@@ -7120,11 +6762,11 @@
 				"entry": "1 minute"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true,
-					"V": true
-				}
+				[
+					"M",
+					"S",
+					"V"
+				]
 			],
 			"duration": {
 				"type": "timed",
@@ -7149,7 +6791,6 @@
 				"necromancy",
 				"positive"
 			],
-			"school": "N",
 			"traditions": [
 				"divine",
 				"primal"
@@ -7159,17 +6800,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "touch",
-				"distance": {
-					"type": "touch",
-					"amount": 1
-				}
+				"type": "touch",
+				"number": 1
 			},
 			"targets": "1 living or undead creature",
 			"savingThrow": {
@@ -7219,16 +6857,18 @@
 				"air",
 				"evocation"
 			],
-			"school": "V",
+			"spellLists": [
+				"Elemental"
+			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"area": {
 				"types": [
@@ -7253,10 +6893,7 @@
 						"Increase the damage by {@dice 2d6}."
 					]
 				}
-			},
-			"spellLists": [
-				"Elemental"
-			]
+			}
 		},
 		{
 			"name": "Prismatic Armor",
@@ -7266,7 +6903,6 @@
 			"traits": [
 				"abjuration"
 			],
-			"school": "A",
 			"traditions": [
 				"arcane",
 				"occult"
@@ -7276,17 +6912,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "touch",
-				"distance": {
-					"type": "touch",
-					"amount": 1
-				}
+				"type": "touch",
+				"number": 1
 			},
 			"targets": "1 willing creature",
 			"duration": {
@@ -7321,7 +6954,6 @@
 				"divination",
 				"scrying"
 			],
-			"school": "D",
 			"traditions": [
 				"arcane",
 				"divine",
@@ -7332,17 +6964,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "touch",
-				"distance": {
-					"type": "touch",
-					"amount": 1
-				}
+				"type": "touch",
+				"number": 1
 			},
 			"targets": "1 creature (see text)",
 			"duration": {
@@ -7367,7 +6996,6 @@
 				"abjuration",
 				"cantrip"
 			],
-			"school": "A",
 			"traditions": [
 				"arcane",
 				"divine",
@@ -7379,16 +7007,13 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"V": true
-				}
+				[
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "your eidolon, or a creature with the {@trait minion} trait under your control",
 			"duration": {
@@ -7421,7 +7046,6 @@
 				"conjuration",
 				"plant"
 			],
-			"school": "C",
 			"traditions": [
 				"primal"
 			],
@@ -7430,17 +7054,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"duration": {
 				"type": "timed",
@@ -7475,7 +7096,6 @@
 				"inhaled",
 				"poison"
 			],
-			"school": "V",
 			"traditions": [
 				"arcane",
 				"primal"
@@ -7485,17 +7105,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "5 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 5
-				}
+				"type": "feet",
+				"number": 5
 			},
 			"targets": "1 creature",
 			"savingThrow": {
@@ -7535,23 +7152,22 @@
 				"evocation",
 				"water"
 			],
-			"school": "V",
+			"spellLists": [
+				"Elemental"
+			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "120 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 120
-				}
+				"type": "feet",
+				"number": 120
 			},
 			"area": {
 				"types": [
@@ -7575,10 +7191,7 @@
 						"Increase the damage by {@dice 2d6}."
 					]
 				}
-			},
-			"spellLists": [
-				"Elemental"
-			]
+			}
 		},
 		{
 			"name": "Quick Sort",
@@ -7588,7 +7201,6 @@
 			"traits": [
 				"transmutation"
 			],
-			"school": "T",
 			"traditions": [
 				"arcane",
 				"divine",
@@ -7600,18 +7212,15 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true,
-					"V": true
-				}
+				[
+					"M",
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "10 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 10
-				}
+				"type": "feet",
+				"number": 10
 			},
 			"targets": "up to 200 unattended objects in range, each of light Bulk or less",
 			"duration": {
@@ -7651,7 +7260,6 @@
 			"traits": [
 				"transmutation"
 			],
-			"school": "T",
 			"traditions": [
 				"arcane",
 				"primal"
@@ -7661,17 +7269,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "touch",
-				"distance": {
-					"type": "touch",
-					"amount": 1
-				}
+				"type": "touch",
+				"number": 1
 			},
 			"targets": "your companion or eidolon",
 			"duration": {
@@ -7707,7 +7312,6 @@
 			"traits": [
 				"abjuration"
 			],
-			"school": "A",
 			"traditions": [
 				"arcane",
 				"occult"
@@ -7717,18 +7321,15 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true,
-					"V": true
-				}
+				[
+					"M",
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 door no more than 10 feet tall and 5 feet wide",
 			"duration": {
@@ -7754,7 +7355,6 @@
 				"cantrip",
 				"divination"
 			],
-			"school": "D",
 			"traditions": [
 				"divine",
 				"occult"
@@ -7764,10 +7364,10 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"duration": {
 				"type": "timed",
@@ -7794,22 +7394,18 @@
 				"cantrip",
 				"summoner"
 			],
-			"school": "A",
 			"cast": {
 				"number": 1,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"V": true
-				}
+				[
+					"V"
+				]
 			],
 			"range": {
-				"entry": "100 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 100
-				}
+				"type": "feet",
+				"number": 100
 			},
 			"targets": "your eidolon",
 			"duration": {
@@ -7833,7 +7429,6 @@
 				"evocation",
 				"force"
 			],
-			"school": "V",
 			"traditions": [
 				"divine",
 				"occult"
@@ -7843,10 +7438,10 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"area": {
 				"types": [
@@ -7889,7 +7484,6 @@
 				"illusion",
 				"shadow"
 			],
-			"school": "I",
 			"traditions": [
 				"arcane",
 				"occult"
@@ -7899,18 +7493,15 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true,
-					"V": true
-				}
+				[
+					"M",
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "60 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 60
-				}
+				"type": "feet",
+				"number": 60
 			},
 			"targets": "1 willing or {@condition unconscious} creature of 8th level or lower",
 			"duration": {
@@ -7941,7 +7532,6 @@
 			"traits": [
 				"transmutation"
 			],
-			"school": "T",
 			"traditions": [
 				"arcane",
 				"divine",
@@ -7954,18 +7544,15 @@
 				"entry": "1 minute"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true,
-					"V": true
-				}
+				[
+					"M",
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "touch",
-				"distance": {
-					"type": "touch",
-					"amount": 1
-				}
+				"type": "touch",
+				"number": 1
 			},
 			"targets": "1 piece of clothing currently worn by you or an ally",
 			"duration": {
@@ -7988,7 +7575,6 @@
 			"traits": [
 				"transmutation"
 			],
-			"school": "T",
 			"traditions": [
 				"arcane",
 				"divine",
@@ -8000,11 +7586,11 @@
 				"entry": "1 minute"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true,
-					"V": true
-				}
+				[
+					"M",
+					"S",
+					"V"
+				]
 			],
 			"duration": {
 				"type": "timed",
@@ -8045,7 +7631,6 @@
 				"necromancy",
 				"negative"
 			],
-			"school": "N",
 			"traditions": [
 				"divine",
 				"occult"
@@ -8056,25 +7641,22 @@
 				"entry": "{@as 1} to {@as 3}"
 			},
 			"components": [
-				{
-					"S": true
-				},
-				{
-					"S": true,
-					"V": true
-				},
-				{
-					"S": true,
-					"M": true,
-					"V": true
-				}
+				[
+					"S"
+				],
+				[
+					"S",
+					"V"
+				],
+				[
+					"S",
+					"M",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 living creature",
 			"savingThrow": {
@@ -8110,22 +7692,21 @@
 				"move",
 				"water"
 			],
-			"school": "C",
+			"spellLists": [
+				"Elemental"
+			],
 			"cast": {
 				"number": 1,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true
-				}
+				[
+					"S"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"entries": [
 				"You create a wave of water that you ride, banking around obstacles and surfing to higher ground. You move up to 35 feet, raising yourself up to 5 feet above the ground.",
@@ -8138,10 +7719,7 @@
 						"Increase the distance you move by 5 feet and the maximum height traveled above the ground by 5 feet."
 					]
 				}
-			},
-			"spellLists": [
-				"Elemental"
-			]
+			}
 		},
 		{
 			"name": "Roaring Applause",
@@ -8153,7 +7731,6 @@
 				"enchantment",
 				"mental"
 			],
-			"school": "E",
 			"traditions": [
 				"arcane",
 				"divine",
@@ -8164,17 +7741,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "60 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 60
-				}
+				"type": "feet",
+				"number": 60
 			},
 			"targets": "1 creature",
 			"savingThrow": {
@@ -8223,7 +7797,6 @@
 			"traits": [
 				"necromancy"
 			],
-			"school": "N",
 			"traditions": [
 				"arcane",
 				"divine",
@@ -8234,17 +7807,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "60 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 60
-				}
+				"type": "feet",
+				"number": 60
 			},
 			"area": {
 				"types": [
@@ -8291,22 +7861,18 @@
 				"evocation",
 				"magus"
 			],
-			"school": "V",
 			"cast": {
 				"number": 1,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true
-				}
+				[
+					"S"
+				]
 			],
 			"range": {
-				"entry": "touch",
-				"distance": {
-					"type": "touch",
-					"amount": 1
-				}
+				"type": "touch",
+				"number": 1
 			},
 			"targets": "you or one weapon you're wielding",
 			"duration": {
@@ -8343,7 +7909,6 @@
 				"necromancy",
 				"negative"
 			],
-			"school": "N",
 			"traditions": [
 				"arcane",
 				"divine",
@@ -8354,17 +7919,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "60 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 60
-				}
+				"type": "feet",
+				"number": 60
 			},
 			"area": {
 				"types": [
@@ -8391,9 +7953,6 @@
 				"You unleash a cloud of foul, blood-sucking fog that drains the vitality from the living to bolster your own. Each living creature in the area when you {@action Cast a Spell||Cast the Spell}, aside from you, takes {@damage 6d6} negative damage with a basic Fortitude save. Creatures in the area are {@condition concealed}, and all creatures outside the cloud become {@condition concealed} to creatures within it.",
 				"The first time each round you Sustain this Spell on subsequent turns, living creatures in the area take an additional {@damage 2d6} negative damage with another basic Fortitude save. You also gain temporary Hit Points equal to half the damage a single creature took when you Sustained the spell this turn; calculate these temporary Hit Points using the creature that took the most damage. You lose any remaining temporary Hit Points after 1 minute."
 			],
-			"miscTags": [
-				"THP"
-			],
 			"heightened": {
 				"plus_x": {
 					"level": 1,
@@ -8401,7 +7960,10 @@
 						"The initial damage increases by {@dice 2d6} and the secondary damage increases by {@dice 1d6}."
 					]
 				}
-			}
+			},
+			"miscTags": [
+				"THP"
+			]
 		},
 		{
 			"name": "Scatter Scree",
@@ -8413,27 +7975,26 @@
 				"earth",
 				"evocation"
 			],
-			"school": "V",
 			"traditions": [
 				"arcane",
 				"primal"
+			],
+			"spellLists": [
+				"Elemental"
 			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"area": {
 				"types": [
@@ -8466,10 +8027,7 @@
 						"The damage increases by {@dice 1d4}."
 					]
 				}
-			},
-			"spellLists": [
-				"Elemental"
-			]
+			}
 		},
 		{
 			"name": "Schadenfreude",
@@ -8481,7 +8039,6 @@
 				"enchantment",
 				"mental"
 			],
-			"school": "E",
 			"traditions": [
 				"arcane",
 				"divine",
@@ -8492,17 +8049,14 @@
 				"unit": "reaction"
 			},
 			"components": [
-				{
-					"V": true
-				}
+				[
+					"V"
+				]
 			],
 			"trigger": "You critically fail a saving throw against a foe's effect.",
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "the triggering foe",
 			"savingThrow": {
@@ -8533,10 +8087,12 @@
 				"evocation",
 				"fire"
 			],
-			"school": "V",
 			"traditions": [
 				"arcane",
 				"primal"
+			],
+			"spellLists": [
+				"Elemental"
 			],
 			"cast": {
 				"number": 1,
@@ -8544,17 +8100,14 @@
 				"entry": "{@as 1} to {@as 3}"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "60 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 60
-				}
+				"type": "feet",
+				"number": 60
 			},
 			"targets": "1 or more creatures",
 			"entries": [
@@ -8568,10 +8121,7 @@
 						"The damage to each target increases by {@dice 1d6} for the 1-action version, or by {@dice 2d6} for the 2-action and 3-action versions."
 					]
 				}
-			},
-			"spellLists": [
-				"Elemental"
-			]
+			}
 		},
 		{
 			"name": "Seashell Of Stolen Sound",
@@ -8582,7 +8132,6 @@
 				"divination",
 				"sonic"
 			],
-			"school": "D",
 			"traditions": [
 				"arcane",
 				"occult",
@@ -8593,18 +8142,15 @@
 				"unit": "reaction"
 			},
 			"components": [
-				{
-					"F": true,
-					"V": true
-				}
+				[
+					"F",
+					"V"
+				]
 			],
 			"trigger": "A creature within range begins to make a sound.",
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"duration": {
 				"type": "timed",
@@ -8632,7 +8178,6 @@
 				"shadow",
 				"visual"
 			],
-			"school": "I",
 			"traditions": [
 				"arcane",
 				"occult"
@@ -8642,18 +8187,15 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true,
-					"V": true
-				}
+				[
+					"M",
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "500 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 500
-				}
+				"type": "feet",
+				"number": 500
 			},
 			"area": {
 				"types": [
@@ -8697,7 +8239,6 @@
 				"shadow",
 				"visual"
 			],
-			"school": "I",
 			"traditions": [
 				"arcane",
 				"occult"
@@ -8707,9 +8248,9 @@
 				"unit": "reaction"
 			},
 			"components": [
-				{
-					"S": true
-				}
+				[
+					"S"
+				]
 			],
 			"trigger": "An ally within 20 feet of you makes a ranged attack roll.",
 			"savingThrow": {
@@ -8747,7 +8288,6 @@
 				"illusion",
 				"shadow"
 			],
-			"school": "I",
 			"traditions": [
 				"arcane",
 				"occult"
@@ -8757,18 +8297,15 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true,
-					"V": true
-				}
+				[
+					"M",
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "120 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 120
-				}
+				"type": "feet",
+				"number": 120
 			},
 			"area": {
 				"types": [
@@ -8818,15 +8355,14 @@
 				"abjuration",
 				"magus"
 			],
-			"school": "A",
 			"cast": {
 				"number": 1,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"V": true
-				}
+				[
+					"V"
+				]
 			],
 			"entries": [
 				"As you attack a foe, warding magic transforms your momentum into action and lifts your shield. Make a melee {@action Strike}. You can then either {@action Raise a Shield||Raise your Shield} if you're wielding one or cast {@spell shield} if you have the spell."
@@ -8841,7 +8377,6 @@
 				"enchantment",
 				"mental"
 			],
-			"school": "E",
 			"traditions": [
 				"arcane",
 				"occult"
@@ -8851,17 +8386,14 @@
 				"unit": "reaction"
 			},
 			"components": [
-				{
-					"V": true
-				}
+				[
+					"V"
+				]
 			],
 			"trigger": "You or another creature attacks a creature or fails at a {@skill Deception}, {@skill Diplomacy}, or {@skill Intimidation} check.",
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "the target of the triggering attack or skill check",
 			"savingThrow": {
@@ -8892,15 +8424,14 @@
 				"divination",
 				"magus"
 			],
-			"school": "D",
 			"cast": {
 				"number": 1,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"V": true
-				}
+				[
+					"V"
+				]
 			],
 			"requirements": "You're wielding a ranged weapon or a thrown weapon.",
 			"entries": [
@@ -8917,7 +8448,6 @@
 				"conjuration",
 				"sonic"
 			],
-			"school": "C",
 			"traditions": [
 				"occult"
 			],
@@ -8926,10 +8456,10 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"area": {
 				"types": [
@@ -8960,7 +8490,6 @@
 				"conjuration",
 				"plant"
 			],
-			"school": "C",
 			"traditions": [
 				"divine",
 				"primal"
@@ -8970,17 +8499,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"area": {
 				"types": [
@@ -9013,10 +8539,12 @@
 				"positive",
 				"water"
 			],
-			"school": "N",
 			"traditions": [
 				"divine",
 				"primal"
+			],
+			"spellLists": [
+				"Elemental"
 			],
 			"cast": {
 				"number": 1,
@@ -9024,18 +8552,15 @@
 				"entry": "1 minute"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true,
-					"V": true
-				}
+				[
+					"M",
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"duration": {
 				"type": "timed",
@@ -9058,10 +8583,7 @@
 						"The healing increases by {@dice 2d8}."
 					]
 				}
-			},
-			"spellLists": [
-				"Elemental"
-			]
+			}
 		},
 		{
 			"name": "Spinning Staff",
@@ -9074,15 +8596,14 @@
 				"evocation",
 				"magus"
 			],
-			"school": "V",
 			"cast": {
 				"number": 1,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"V": true
-				}
+				[
+					"V"
+				]
 			],
 			"requirements": "You're wielding a staff.",
 			"entries": [
@@ -9098,7 +8619,6 @@
 				"uncommon",
 				"abjuration"
 			],
-			"school": "A",
 			"traditions": [
 				"divine",
 				"occult"
@@ -9108,10 +8628,10 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true
-				}
+				[
+					"M",
+					"S"
+				]
 			],
 			"duration": {
 				"type": "timed",
@@ -9143,27 +8663,26 @@
 				"evocation",
 				"water"
 			],
-			"school": "V",
 			"traditions": [
 				"arcane",
 				"primal"
+			],
+			"spellLists": [
+				"Elemental"
 			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"area": {
 				"types": [
@@ -9187,10 +8706,7 @@
 						"The damage increases by {@dice 1d4}."
 					]
 				}
-			},
-			"spellLists": [
-				"Elemental"
-			]
+			}
 		},
 		{
 			"name": "Stone Lance",
@@ -9204,23 +8720,22 @@
 				"earth",
 				"evocation"
 			],
-			"school": "V",
+			"spellLists": [
+				"Elemental"
+			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "120 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 120
-				}
+				"type": "feet",
+				"number": 120
 			},
 			"targets": "1 creature",
 			"duration": {
@@ -9242,10 +8757,7 @@
 						"Increase the damage by {@dice 2d6} and the {@condition persistent damage ||persistent bleed damage} for {@action Escape||Escapes} by 1."
 					]
 				}
-			},
-			"spellLists": [
-				"Elemental"
-			]
+			}
 		},
 		{
 			"name": "Sudden Recollection",
@@ -9257,7 +8769,6 @@
 				"enchantment",
 				"mental"
 			],
-			"school": "E",
 			"traditions": [
 				"occult"
 			],
@@ -9266,17 +8777,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 creature",
 			"savingThrow": {
@@ -9312,7 +8820,6 @@
 			"traits": [
 				"conjuration"
 			],
-			"school": "C",
 			"traditions": [
 				"divine"
 			],
@@ -9321,18 +8828,15 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true,
-					"V": true
-				}
+				[
+					"M",
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"duration": {
 				"type": "timed",
@@ -9393,7 +8897,6 @@
 				"conjuration",
 				"incarnate"
 			],
-			"school": "C",
 			"traditions": [
 				"arcane"
 			],
@@ -9402,18 +8905,15 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true,
-					"V": true
-				}
+				[
+					"M",
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "100 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 100
-				}
+				"type": "feet",
+				"number": 100
 			},
 			"duration": {
 				"type": "timed",
@@ -9441,7 +8941,6 @@
 			"traits": [
 				"conjuration"
 			],
-			"school": "C",
 			"traditions": [
 				"divine"
 			],
@@ -9450,18 +8949,15 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true,
-					"V": true
-				}
+				[
+					"M",
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"duration": {
 				"type": "timed",
@@ -9522,7 +9018,6 @@
 				"conjuration",
 				"incarnate"
 			],
-			"school": "C",
 			"traditions": [
 				"divine"
 			],
@@ -9531,19 +9026,16 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true,
-					"V": true
-				}
+				[
+					"M",
+					"S",
+					"V"
+				]
 			],
 			"requirements": "You have a deity.",
 			"range": {
-				"entry": "100 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 100
-				}
+				"type": "feet",
+				"number": 100
 			},
 			"duration": {
 				"type": "timed",
@@ -9604,7 +9096,6 @@
 				"conjuration",
 				"incarnate"
 			],
-			"school": "C",
 			"traditions": [
 				"arcane"
 			],
@@ -9613,18 +9104,15 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true,
-					"V": true
-				}
+				[
+					"M",
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "100 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 100
-				}
+				"type": "feet",
+				"number": 100
 			},
 			"duration": {
 				"type": "timed",
@@ -9647,18 +9135,17 @@
 			"name": "Summon Kaiju",
 			"source": "SoM",
 			"page": 133,
-			"level": 10,
 			"otherSources": {
 				"Expanded": [
 					"LOMM|41"
 				]
 			},
+			"level": 10,
 			"traits": [
 				"rare",
 				"conjuration",
 				"incarnate"
 			],
-			"school": "C",
 			"traditions": [
 				"primal"
 			],
@@ -9667,18 +9154,15 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true,
-					"V": true
-				}
+				[
+					"M",
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "500 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 500
-				}
+				"type": "feet",
+				"number": 500
 			},
 			"duration": {
 				"type": "timed",
@@ -9716,7 +9200,6 @@
 			"traits": [
 				"conjuration"
 			],
-			"school": "C",
 			"traditions": [
 				"divine"
 			],
@@ -9725,18 +9208,15 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true,
-					"V": true
-				}
+				[
+					"M",
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"duration": {
 				"type": "timed",
@@ -9788,7 +9268,6 @@
 				"contingency",
 				"necromancy"
 			],
-			"school": "N",
 			"traditions": [
 				"arcane",
 				"divine",
@@ -9801,12 +9280,13 @@
 				"entry": "10 minutes"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true,
-					"V": true
-				}
+				[
+					"M",
+					"S",
+					"V"
+				]
 			],
+			"requirements": "You have an eidolon.",
 			"duration": {
 				"type": "timed",
 				"entry": "until your next daily preparations",
@@ -9815,7 +9295,6 @@
 					"unit": "special"
 				}
 			},
-			"requirements": "You have an eidolon.",
 			"entries": [
 				"You create a buffer in the link between yourself and your eidolon in order to prevent you from falling alongside your bonded ally. You gain the following reaction; after using it, the spell ends.",
 				"Sever Conduit {@as R} (concentrate) Trigger Your eidolon takes damage that would bring you to 0 Hit Points and comes from an effect other than a {@trait death} effect; Effect You quickly shut the buffer in your link with your eidolon, causing your bonded ally to wink out of existence before you can be laid low. Your eidolon unmanifests, and you can't Manifest your Eidolon for 1 minute. In exchange, you don't take the triggering damage, though your eidolon still suffers any other adverse effects that accompanied the damage."
@@ -9830,7 +9309,6 @@
 				"polymorph",
 				"transmutation"
 			],
-			"school": "T",
 			"traditions": [
 				"arcane",
 				"divine",
@@ -9842,17 +9320,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "touch",
-				"distance": {
-					"type": "touch",
-					"amount": 1
-				}
+				"type": "touch",
+				"number": 1
 			},
 			"targets": "your eidolon",
 			"duration": {
@@ -9890,7 +9365,6 @@
 			"traits": [
 				"divination"
 			],
-			"school": "D",
 			"traditions": [
 				"arcane",
 				"divine",
@@ -9902,17 +9376,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "touch",
-				"distance": {
-					"type": "touch",
-					"amount": 1
-				}
+				"type": "touch",
+				"number": 1
 			},
 			"targets": "up to 5 willing creatures",
 			"duration": {
@@ -9948,7 +9419,6 @@
 				"enchantment",
 				"mental"
 			],
-			"school": "E",
 			"traditions": [
 				"occult",
 				"primal"
@@ -9958,17 +9428,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "10 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 10
-				}
+				"type": "feet",
+				"number": 10
 			},
 			"targets": "1 non-{@condition hostile} domesticated animal",
 			"savingThrow": {
@@ -10014,7 +9481,6 @@
 				"incarnate",
 				"necromancy"
 			],
-			"school": "N",
 			"traditions": [
 				"arcane",
 				"divine",
@@ -10025,18 +9491,15 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true,
-					"V": true
-				}
+				[
+					"M",
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "100 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 100
-				}
+				"type": "feet",
+				"number": 100
 			},
 			"duration": {
 				"type": "timed",
@@ -10068,30 +9531,29 @@
 			"traits": [
 				"abjuration"
 			],
-			"school": "A",
 			"traditions": [
 				"arcane",
 				"divine",
 				"occult",
 				"primal"
 			],
+			"spellLists": [
+				"Elemental"
+			],
 			"cast": {
 				"number": 3,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true,
-					"V": true
-				}
+				[
+					"M",
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"area": {
 				"types": [
@@ -10114,9 +9576,6 @@
 				"You can also set a more specific trigger to limit which types of creatures set off the glyph (Core Rulebook 305)",
 				"Once a spell is stored in the glyph, the glyph gains all the traits of that spell. If the stored spell can target one or more creatures, it targets the creature that set off the glyph. If it has an area, that area is centered on the creature that set off the glyph. Temporary glyph's duration ends when the glyph is triggered. The glyph is a magical trap, using your spell DC for both the {@skill Perception} check to notice it and the {@skill Thievery} check to disable it; both checks require the creature attempting them to be trained in order to succeed.",
 				"You can {@action Dismiss} temporary glyph."
-			],
-			"spellLists": [
-				"Elemental"
 			]
 		},
 		{
@@ -10128,7 +9587,6 @@
 				"illusion",
 				"visual"
 			],
-			"school": "I",
 			"traditions": [
 				"arcane",
 				"occult"
@@ -10138,10 +9596,10 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"duration": {
 				"type": "timed",
@@ -10164,7 +9622,6 @@
 				"enchantment",
 				"mental"
 			],
-			"school": "E",
 			"traditions": [
 				"occult",
 				"primal"
@@ -10174,17 +9631,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "your companion or eidolon",
 			"duration": {
@@ -10220,15 +9674,14 @@
 				"magus",
 				"sonic"
 			],
-			"school": "V",
 			"cast": {
 				"number": 1,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"V": true
-				}
+				[
+					"V"
+				]
 			],
 			"requirements": "You're wielding a melee weapon in two hands.",
 			"entries": [
@@ -10251,7 +9704,6 @@
 			"traits": [
 				"transmutation"
 			],
-			"school": "T",
 			"traditions": [
 				"arcane",
 				"occult"
@@ -10261,9 +9713,9 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"V": true
-				}
+				[
+					"V"
+				]
 			],
 			"entries": [
 				"You leap forward a few seconds in time, appearing across the battlefield in the blink of an eye. You gain 2 actions, each of which must be used to {@action Leap}, {@action Stand}, {@action Step}, or {@action Stride}.",
@@ -10281,7 +9733,6 @@
 				"divination",
 				"mental"
 			],
-			"school": "D",
 			"traditions": [
 				"arcane",
 				"occult"
@@ -10291,16 +9742,13 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true
-				}
+				[
+					"S"
+				]
 			],
 			"range": {
-				"entry": "touch",
-				"distance": {
-					"type": "touch",
-					"amount": 1
-				}
+				"type": "touch",
+				"number": 1
 			},
 			"targets": "your eidolon or familiar",
 			"duration": {
@@ -10325,7 +9773,6 @@
 			"traits": [
 				"transmutation"
 			],
-			"school": "T",
 			"traditions": [
 				"occult",
 				"primal"
@@ -10335,17 +9782,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 foe, and either yourself or 1 ally",
 			"savingThrow": {
@@ -10376,7 +9820,6 @@
 				"mental",
 				"shadow"
 			],
-			"school": "I",
 			"traditions": [
 				"arcane",
 				"occult"
@@ -10386,10 +9829,10 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"duration": {
 				"type": "timed",
@@ -10415,7 +9858,6 @@
 				"illusion",
 				"shadow"
 			],
-			"school": "I",
 			"traditions": [
 				"arcane",
 				"occult"
@@ -10425,10 +9867,10 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"duration": {
 				"type": "timed",
@@ -10453,7 +9895,6 @@
 				"conjuration",
 				"teleportation"
 			],
-			"school": "C",
 			"traditions": [
 				"arcane",
 				"occult"
@@ -10463,17 +9904,14 @@
 				"unit": "reaction"
 			},
 			"components": [
-				{
-					"V": true
-				}
+				[
+					"V"
+				]
 			],
 			"trigger": "You are targeted with an enemy's {@action Strike}.",
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 creature other than the triggering enemy",
 			"savingThrow": {
@@ -10496,23 +9934,19 @@
 				"abjuration",
 				"summoner"
 			],
-			"school": "A",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "100 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 100
-				}
+				"type": "feet",
+				"number": 100
 			},
 			"targets": "your eidolon",
 			"duration": {
@@ -10541,7 +9975,6 @@
 				"shadow",
 				"visual"
 			],
-			"school": "I",
 			"traditions": [
 				"arcane",
 				"occult"
@@ -10551,17 +9984,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "120 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 120
-				}
+				"type": "feet",
+				"number": 120
 			},
 			"targets": "1 creature",
 			"savingThrow": {
@@ -10601,23 +10031,22 @@
 				"air",
 				"evocation"
 			],
-			"school": "V",
+			"spellLists": [
+				"Elemental"
+			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "60 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 60
-				}
+				"type": "feet",
+				"number": 60
 			},
 			"targets": "1 creature",
 			"savingThrow": {
@@ -10636,10 +10065,7 @@
 						"Increase the damage by {@dice 2d6}."
 					]
 				}
-			},
-			"spellLists": [
-				"Elemental"
-			]
+			}
 		},
 		{
 			"name": "Variable Gravity",
@@ -10649,7 +10075,6 @@
 			"traits": [
 				"transmutation"
 			],
-			"school": "T",
 			"traditions": [
 				"arcane",
 				"occult"
@@ -10659,10 +10084,10 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"duration": {
 				"type": "timed",
@@ -10706,7 +10131,6 @@
 				"evil",
 				"necromancy"
 			],
-			"school": "N",
 			"traditions": [
 				"divine",
 				"occult"
@@ -10716,10 +10140,10 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"area": {
 				"types": [
@@ -10767,28 +10191,27 @@
 				"conjuration",
 				"water"
 			],
-			"school": "C",
 			"traditions": [
 				"arcane",
 				"primal"
+			],
+			"spellLists": [
+				"Elemental"
 			],
 			"cast": {
 				"number": 3,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true,
-					"V": true
-				}
+				[
+					"M",
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "120 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 120
-				}
+				"type": "feet",
+				"number": 120
 			},
 			"duration": {
 				"type": "timed",
@@ -10802,9 +10225,6 @@
 				"Raising your hand in the air, you call a massive wave onto the battlefield. The wall stays upright in a straight line that is 60 feet long, 10 feet high, and 5 feet thick.",
 				"Any non-magical fires within the wall of water's area that are its size or smaller are put out instantly. It also attempts to counteract any magical fires in its area. Both of these effects happen when the spell is cast and whenever a fire enters the wall's area. If the wall fails to counteract a given fire, it can't counteract that fire for the duration of the spell.",
 				"Bludgeoning or slashing projectiles can't pass through the wall, and piercing projectiles have their range increments halved if they pass through the wall. A creature traversing the wall of water needs to {@action Swim} through. The rules of aquatic combat (Core Rulebook 478) apply to creatures traversing the wall of water, targeting creatures within the wall, or passing through the wall. For instance, a bludgeoning or slashing melee attack targeting a creature in the wall would take a \u20132 circumstance penalty."
-			],
-			"spellLists": [
-				"Elemental"
 			]
 		},
 		{
@@ -10815,7 +10235,6 @@
 			"traits": [
 				"abjuration"
 			],
-			"school": "A",
 			"traditions": [
 				"arcane",
 				"divine",
@@ -10826,10 +10245,10 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"duration": {
 				"type": "timed",
@@ -10863,7 +10282,6 @@
 				"enchantment",
 				"mental"
 			],
-			"school": "E",
 			"traditions": [
 				"arcane",
 				"divine",
@@ -10874,17 +10292,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "touch",
-				"distance": {
-					"type": "touch",
-					"amount": 1
-				}
+				"type": "touch",
+				"number": 1
 			},
 			"targets": "1 creature",
 			"savingThrow": {
@@ -10923,7 +10338,6 @@
 				"cantrip",
 				"fortune"
 			],
-			"school": "A",
 			"traditions": [
 				"divine",
 				"occult"
@@ -10933,10 +10347,10 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"duration": {
 				"type": "timed",
@@ -10960,7 +10374,6 @@
 				"divination",
 				"scrying"
 			],
-			"school": "D",
 			"traditions": [
 				"arcane",
 				"divine",
@@ -10972,17 +10385,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "up to 5 willing creatures",
 			"duration": {
@@ -11011,27 +10421,26 @@
 				"air",
 				"evocation"
 			],
-			"school": "V",
 			"traditions": [
 				"primal"
+			],
+			"spellLists": [
+				"Elemental"
 			],
 			"cast": {
 				"number": 3,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true,
-					"V": true
-				}
+				[
+					"M",
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "500 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 500
-				}
+				"type": "feet",
+				"number": 500
 			},
 			"area": {
 				"types": [
@@ -11073,10 +10482,7 @@
 						"Increase the bludgeoning damage by {@dice 1d10}."
 					]
 				}
-			},
-			"spellLists": [
-				"Elemental"
-			]
+			}
 		},
 		{
 			"name": "Wildfire",
@@ -11089,23 +10495,22 @@
 				"conjuration",
 				"fire"
 			],
-			"school": "C",
+			"spellLists": [
+				"Elemental"
+			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"area": {
 				"types": [
@@ -11138,10 +10543,7 @@
 						"Increase the damage and {@condition persistent damage} by 1."
 					]
 				}
-			},
-			"spellLists": [
-				"Elemental"
-			]
+			}
 		},
 		{
 			"name": "Winning Streak",
@@ -11151,7 +10553,6 @@
 			"traits": [
 				"divination"
 			],
-			"school": "D",
 			"traditions": [
 				"arcane",
 				"occult"
@@ -11161,16 +10562,13 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"V": true
-				}
+				[
+					"V"
+				]
 			],
 			"range": {
-				"entry": "20 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 20
-				}
+				"type": "feet",
+				"number": 20
 			},
 			"targets": "1 creature",
 			"duration": {
@@ -11194,7 +10592,6 @@
 				"uncommon",
 				"evocation"
 			],
-			"school": "V",
 			"traditions": [
 				"arcane",
 				"occult"
@@ -11204,18 +10601,15 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true,
-					"V": true
-				}
+				[
+					"M",
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "120 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 120
-				}
+				"type": "feet",
+				"number": 120
 			},
 			"area": {
 				"types": [

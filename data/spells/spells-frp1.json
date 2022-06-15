@@ -10,7 +10,6 @@
 				"illusion",
 				"mental"
 			],
-			"school": "I",
 			"traditions": [
 				"arcane",
 				"occult"
@@ -20,10 +19,10 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"area": {
 				"types": [
@@ -63,7 +62,6 @@
 				"conjuration",
 				"teleportation"
 			],
-			"school": "C",
 			"traditions": [
 				"arcane",
 				"occult"
@@ -74,18 +72,15 @@
 				"entry": "1 minute"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true,
-					"V": true
-				}
+				[
+					"M",
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"duration": {
 				"type": "timed",
@@ -141,17 +136,16 @@
 				"force",
 				"monk"
 			],
-			"school": "V",
 			"cast": {
 				"number": 1,
 				"unit": "varies",
 				"entry": "{@as 1} to {@as 3}"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"area": {
 				"types": [
