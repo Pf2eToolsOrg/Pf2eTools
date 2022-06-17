@@ -63183,6 +63183,42 @@
 			"creatureType": [
 				"Construct"
 			],
+			"spellcasting": [
+				{
+					"name": "Occult Innate",
+					"tradition": "Occult",
+					"type": "Innate",
+					"DC": 18,
+					"attack": 8,
+					"entry": {
+						"0": {
+							"level": 1,
+							"spells": [
+								{
+									"name": "light"
+								},
+								{
+									"name": "mage hand"
+								},
+								{
+									"name": "prestidigitation"
+								}
+							]
+						},
+						"3": {
+							"spells": [
+								{
+									"name": "levitate"
+								},
+								{
+									"name": "one additional spell depending on the donor soul's alignment",
+									"notes": "{@b Lawful Good:} {@spell zone of truth}; {@b Neutral Good:} {@spell heroism}; {@b Chaotic Good:} {@spell heal}; {@b Lawful Neutral:} {@b nondetection; Neutral:} {@spell wall of thorns}; {@b Chaotic Neutral:} {@spell grease}; {@b Lawful Evil:} {@spell chilling darkness}; {@b Neutral Evil:} {@spell harm}; {@b Chaotic Evil:} {@spell vampiric touch}"
+								}
+							]
+						}
+					}
+				}
+			],
 			"perception": {
 				"std": 8
 			},

@@ -1284,21 +1284,9 @@
 					},
 					{
 						"entries": [
-							"When a corpselight is reduced to 0 Hit Points while merged with a corpse, it is instead reduced to 1."
+							"When a corpselight is reduced to 0 Hit Points while merged with a corpse, it is instead reduced to 1 Hit Point as the corpse collapses to the ground and the corpselight emerges in its wisp form. While in wisp form, a corpselight is Tiny and can take no actions other than Claim Corpse or Fly. A corpselight that starts its turn in wisp form must attempt a DC {@flatDC 16} flat check at the end of its turn; if it fails, it loses 1 Hit Point. A corpselight reduced to 0 Hit Points while in wisp form is destroyed."
 						],
 						"name": "Wisp Form"
-					},
-					{
-						"entries": [
-							"Point as the corpse collapses to the ground and the corpselight emerges in its wisp form. While in wisp form, a corpselight is Tiny and can take no actions other than."
-						],
-						"name": "Hit"
-					},
-					{
-						"entries": [
-							"A corpselight that starts its turn in wisp form must attempt a DC {@flatDC 16} flat check at the end of its turn; if it fails, it loses 1 Hit Point. A corpselight reduced to 0 Hit Points while in wisp form is destroyed."
-						],
-						"name": "Claim Corpse or Fly."
 					}
 				],
 				"bot": [
@@ -1330,13 +1318,7 @@
 						],
 						"prerequisites": "The corpselight is in a corpse",
 						"entries": [
-							"The corpselight emits a sickly blue beam of light from its mouth and eyes in a 20-foot cone. All living creatures in this area must attempt a DC 18 Fortitude saving throw. If at least 1 creature fails its save, the corpselight regains {@dice 2d6} Hit Points, gaining any that exceed its maximum as temporary Hit Points that last for 1 minute. The corpselight can't use."
-						],
-						"name": "Death Light"
-					},
-					{
-						"entries": [
-							"Light again for {@dice 1d4} rounds.",
+							"The corpselight emits a sickly blue beam of light from its mouth and eyes in a 20-foot cone. All living creatures in this area must attempt a DC 18 Fortitude saving throw. If at least 1 creature fails its save, the corpselight regains {@dice 2d6} Hit Points, gaining any that exceed its maximum as temporary Hit Points that last for 1 minute. The corpselight can't use Death Light again for {@dice 1d4} rounds.",
 							{
 								"type": "successDegree",
 								"entries": {
@@ -1347,7 +1329,7 @@
 								}
 							}
 						],
-						"name": "Death"
+						"name": "Death Light"
 					}
 				]
 			}
