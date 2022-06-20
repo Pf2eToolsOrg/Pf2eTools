@@ -500,11 +500,11 @@
 								"{@bold Vizier} Upon request, you can learn the solution to any one problem or the correct answer to any one question, unless that information is obscured by a deity. This doesn't necessarily give you the means to act on that solution. You have 1 year to take the vizier's advice or lose its benefits.",
 								"{@bold The Void} Your mind becomes trapped forever. This card is fickle, but it often throws the psyche into a prison in an object on a distant plane or planet. Wish or similarly powerful magic can reveal your psyche's location, but it doesn't bring you back. Your comatose body continues to function. Cease drawing cards."
 							]
-						},
-						"Destruction Trick the Grim Reaper into drawing the Skull card."
+						}
 					]
 				}
-			]
+			],
+			"destruction": "Trick the Grim Reaper into drawing the Skull card."
 		},
 		{
 			"name": "Degenerating",
@@ -639,7 +639,7 @@
 			"bulk": 1,
 			"category": "Artifact",
 			"entries": [
-				"This stone tablet is carved with the symbol of a five-branched twig. There are only a limited number of elder signs, and each time one is destroyed, the universe's doom creeps inexorably closer. Reciting one of three different occult mantras (DC 20 {@skill Occultism} check to do so correctly) allows three different activations. All three abilities work only on a creature connected to the Elder Mythos or a cosmic horror, such as a wendigo or gug; the activations refer to them as \"eldritch creatures.\"",
+				"This stone tablet is carved with the symbol of a five-branched twig. There are only a limited number of elder signs, and each time one is destroyed, the universe's doom creeps inexorably closer. Reciting one of three different occult mantras (DC 20 {@skill Occultism} check to do so correctly) allows three different activations. All three abilities work only on a creature connected to the Elder Mythos or a cosmic horror, such as a {@creature wendigo} or {@creature gug}; the activations refer to them as \"eldritch creatures.\"",
 				{
 					"type": "ability",
 					"style": "compact",
@@ -669,7 +669,7 @@
 						"Interact"
 					],
 					"entries": [
-						"The elder sign casts dispel magic on an effect from an eldritch creature, using a counteract level of 10 and +30 modifier for the roll."
+						"The elder sign casts {@spell dispel magic} on an effect from an eldritch creature, using a counteract level of 10 and +30 modifier for the roll."
 					]
 				},
 				{
@@ -685,11 +685,12 @@
 						"Interact"
 					],
 					"entries": [
-						"The elder sign casts dimensional lock, though it wards against travel by only eldritch creatures. Each time the elder sign casts dimensional lock in this way, the previous {@spell dimensional lock} spell ends.",
-						"Destruction The only way to destroy an elder sign is to use it to banish a Great Old One."
+						"The elder sign casts {@spell dimensional lock}, though it wards against travel by only eldritch creatures. Each time the elder sign casts {@spell dimensional lock} in this way, the previous {@spell dimensional lock} spell ends."
+
 					]
 				}
-			]
+			],
+			"destruction": "The only way to destroy an elder sign is to use it to banish a Great Old One."
 		},
 		{
 			"name": "Elven Absinthe",
@@ -974,11 +975,11 @@
 					"trigger": "You have not acted yet on your turn",
 					"entries": [
 						"You call upon Torag to defend your allies and those around you, sacrificing yourself in the process. Creatures of your choosing within 60 feet recover all their Hit Points. If any of the creatures are dead, they are instead brought back to life with half of their maximum Hit Points. The chosen creatures also gain a +4 status bonus to AC and saving throws, and fast healing 15 for 1 hour. You can use this ability to bring back to life a creature that requires a {@spell miracle} spell or divine intervention to raise from the dead, as long as you choose no other creatures within 60 feet to recover.",
-						"Once you use this activation, you are turned into a perfect statue made from stone or metal that depicts you in a glorious pose honoring your sacrifice, and you can never be restored. The Forgefather's seal remains on this statue and can be transferred to another suit of armor or a runestone as normal.",
-						"Destruction Using the Forgefather's seal ability to bring the dead back to life on an evil demigod causes it to shatter in a violent explosion that destroys the seal and the statue made as part of the sacrifice, erasing all knowledge of the user from existence. It does, however, bring the evil demigod back to life."
+						"Once you use this activation, you are turned into a perfect statue made from stone or metal that depicts you in a glorious pose honoring your sacrifice, and you can never be restored. The Forgefather's seal remains on this statue and can be transferred to another suit of armor or a runestone as normal."
 					]
 				}
-			]
+			],
+			"destruction": "Using the Forgefather's seal ability to bring the dead back to life on an evil demigod causes it to shatter in a violent explosion that destroys the seal and the statue made as part of the sacrifice, erasing all knowledge of the user from existence. It does, however, bring the evil demigod back to life."
 		},
 		{
 			"name": "Genius Diadem",
@@ -1153,11 +1154,12 @@
 						"freq": 1
 					},
 					"entries": [
-						"The Horns of Naraga transform into Naraga, an ancient black dragon (Bestiary 106). Naraga appears in an adjacent appropriate space, and if no such space is available, she does not appear. Naraga follows your commands without question. She remains for up to 1 hour or until you use an {@action Interact} action to dismiss her, after which she reverts back to the helm. If Naraga is slain, she immediately reverts back to the helm and can't be summoned for 1 week. You don't receive any of the helm's other benefits while it is transformed.",
-						"Destruction The helm is utterly obliterated if crushed between the jaws of an ancient black dragon's skull located in a desert while the sun is at its zenith."
+						"The Horns of Naraga transform into Naraga, an ancient black dragon (Bestiary 106). Naraga appears in an adjacent appropriate space, and if no such space is available, she does not appear. Naraga follows your commands without question. She remains for up to 1 hour or until you use an {@action Interact} action to dismiss her, after which she reverts back to the helm. If Naraga is slain, she immediately reverts back to the helm and can't be summoned for 1 week. You don't receive any of the helm's other benefits while it is transformed."
 					]
 				}
-			]
+			],
+			"destruction": "The helm is utterly obliterated if crushed between the jaws of an ancient black dragon's skull located in a desert while the sun is at its zenith."
+
 		},
 		{
 			"name": "Martyr's Shield",
@@ -1282,11 +1284,12 @@
 					],
 					"requirements": "The target must be {@condition fascinated} by the mirror",
 					"entries": [
-						"You control the target for 30 days, with the effect of a critically failed saving throw against dominate. If the victim sees the mirror again at any point before this duration expires, the control extends for an additional 30 days from the moment it looked at the mirror again. While there is no initial saving throw, the DC to break free due to commands against the creature's nature is 35.",
-						"Destruction The Mirror of Sorshen shatters into a thousand pieces if an intelligent but completely innocent creature resists the mirror's attraction and then accidentally drops it."
+						"You control the target for 30 days, with the effect of a critically failed saving throw against dominate. If the victim sees the mirror again at any point before this duration expires, the control extends for an additional 30 days from the moment it looked at the mirror again. While there is no initial saving throw, the DC to break free due to commands against the creature's nature is 35."
 					]
 				}
-			]
+			],
+			"destruction": "The Mirror of Sorshen shatters into a thousand pieces if an intelligent but completely innocent creature resists the mirror's attraction and then accidentally drops it."
+
 		},
 		{
 			"name": "Monkey's Paw",
@@ -1381,11 +1384,12 @@
 						"freq": 3
 					},
 					"entries": [
-						"You breathe an elemental blast that deals {@dice 25d6} damage (DC 40 basic Reflex save) in either a 60-foot cone or a 100-foot line (your choice). The breath's damage type matches the Breath Weapon of the dragon type associated with the orb of dragonkind (acid for the black orb, electricity for the blue orb, and so on)",
-						"Destruction An orb of dragonkind violently shatters and explodes when exposed to the Breath Weapon of a dragon who is a descendant of the dragon trapped within. The explosion deals damage as the 2-action activation above to all creatures within 90 feet."
+						"You breathe an elemental blast that deals {@dice 25d6} damage (DC 40 basic Reflex save) in either a 60-foot cone or a 100-foot line (your choice). The breath's damage type matches the Breath Weapon of the dragon type associated with the orb of dragonkind (acid for the black orb, electricity for the blue orb, and so on)"
 					]
 				}
-			]
+			],
+			"destruction": "An orb of dragonkind violently shatters and explodes when exposed to the Breath Weapon of a dragon who is a descendant of the dragon trapped within. The explosion deals damage as the 2-action activation above to all creatures within 90 feet."
+
 		},
 		{
 			"name": "Overdramatic",
@@ -1997,12 +2001,12 @@
 					"requirements": "You are within 40 feet of the sphere",
 					"entries": [
 						"You attempt a DC 30 {@skill Arcana} or {@skill Occultism} check to take control of the sphere. If someone else already controls the sphere, this check uses their Will DC if higher. If you succeed, you take control of the sphere. If you fail, the sphere moves 10 feet closer to you (or 20 feet on a critical failure). You keep control as long as you remain within 80 feet of the sphere and Sustain the Activation each round.",
-						"When you Sustain the Activation, you must attempt a DC 30 {@skill Arcana} or {@skill Occultism} check. If you succeed, you direct the sphere to move up to 10 feet in a straight line (or up to 20 feet on a critical success). On a failure, you lose control of the sphere, and it moves 10 feet closer to you in a straight line (or 20 feet on a critical failure)",
-						"Destruction When a {@spell gate} spell is cast such that its rift overlaps a sphere of annihilation, roll d%. On a result of 1\u201350, the sphere is destroyed; on a 51\u201385, the spell is disrupted; and on a 86\u2013100, everything within an 180-foot emanation of the sphere is pulled to another plane through a tear in the spatial fabric.",
-						"If a {@item rod of cancellation|apg} touches the sphere, both items explode, dealing {@damage 14d6} bludgeoning damage (DC 35 basic Reflex save) to everything in a 60-foot burst from the point of their destruction."
+						"When you Sustain the Activation, you must attempt a DC 30 {@skill Arcana} or {@skill Occultism} check. If you succeed, you direct the sphere to move up to 10 feet in a straight line (or up to 20 feet on a critical success). On a failure, you lose control of the sphere, and it moves 10 feet closer to you in a straight line (or 20 feet on a critical failure)"
 					]
 				}
-			]
+			],
+			"destruction": "When a {@spell gate} spell is cast such that its rift overlaps a sphere of annihilation, roll {@dice d100|d%}. On a result of 1\u201350, the sphere is destroyed; on a 51\u201385, the spell is disrupted; and on a 86\u2013100, everything within an 180-foot emanation of the sphere is pulled to another plane through a tear in the spatial fabric. If a {@item rod of cancellation|apg} touches the sphere, both items explode, dealing {@damage 14d6} bludgeoning damage (DC 35 basic Reflex save) to everything in a 60-foot burst from the point of their destruction."
+
 		},
 		{
 			"name": "Staining",
@@ -2062,10 +2066,9 @@
 			"category": "Artifact",
 			"entries": [
 				"This loop of adamantine can be slung on a chain to be worn as a necklace, but must be held to convey its benefits. A creature that can't cast either arcane or occult spells takes {@damage 8d6} mental damage just from picking up the item, and they take that damage again at the start of each of their turns if they continue to hold it.",
-				"If the wielder can cast arcane or occult spells, they can use the talisman of the sphere to more easily control a sphere of annihilation. This reduces the DC of the check to control the sphere or Sustain the Activation by 10.",
-				"Destruction The talisman of the sphere is destroyed if touched by a sphere of annihilation.",
-				"Much like coins, gems and art objects are valuable currency worth their full Price when sold. When making a treasure hoard, you can choose gems or art objects you like, or roll randomly using percentile dice."
-			]
+				"If the wielder can cast arcane or occult spells, they can use the talisman of the sphere to more easily control a sphere of annihilation. This reduces the DC of the check to control the sphere or Sustain the Activation by 10."
+			],
+			"destruction": "The talisman of the sphere is destroyed if touched by a sphere of annihilation."
 		},
 		{
 			"name": "Withering",

@@ -40,7 +40,7 @@ class AbilitiesPage extends ListPage {
 
 		eleLi.innerHTML = `<a href="#${hash}" class="lst--border">
 			<span class="col-6 bold pl-0">${it.name}</span>
-			<span class="col-4 bold">${time}</span>
+			<span class="col-4">${time}</span>
 			<span class="col-2 text-center ${Parser.sourceJsonToColor(it.source)} pr-0" title="${Parser.sourceJsonToFull(it.source)}" ${BrewUtil.sourceJsonToStyle(it.source)}>${source}</span>
 		</a>`;
 
@@ -80,7 +80,7 @@ class AbilitiesPage extends ListPage {
 		const $ele = $(`<li class="row">
 			<a href="#${hash}" class="lst--border">
 				<span class="bold col-8 pl-0">${it.name}</span>
-				<span class="bold col-4 pr-0">${time}</span>
+				<span class="col-4 pr-0">${time}</span>
 			</a>
 		</li>`)
 			.contextmenu(evt => ListUtil.openSubContextMenu(evt, listItem));
