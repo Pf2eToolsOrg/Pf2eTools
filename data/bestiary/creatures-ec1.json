@@ -3172,51 +3172,45 @@
 						"name": "Consume Flesh"
 					},
 					{
-						"entries": [
-							{
-								"type": "affliction",
-								"name": "",
-								"traits": [
-									"disease"
-								],
-								"note": "",
-								"DC": 18,
-								"savingThrow": "Fortitude",
-								"stages": [
-									{
-										"stage": 1,
-										"entry": "carrier with no ill effect",
-										"duration": "1 day"
-									},
-									{
-										"stage": 2,
-										"entry": "{@damage 3d8} negative damage and regains half as many Hit Points from all healing",
-										"duration": "1 day"
-									},
-									{
-										"stage": 3,
-										"entry": "as stage 2",
-										"duration": "1 day"
-									},
-									{
-										"stage": 4,
-										"entry": "{@damage 3d8} negative damage and gains no benefit from healing",
-										"duration": "1 day"
-									},
-									{
-										"stage": 5,
-										"entry": "as stage 4",
-										"duration": "1 day"
-									},
-									{
-										"stage": 6,
-										"entry": "dead, and rises as a ghast the next midnight.",
-										"duration": null
-									}
-								]
-							}
+						"type": "affliction",
+						"name": "Ghast Fever",
+						"traits": [
+							"disease"
 						],
-						"name": "Ghast Fever"
+						"DC": 18,
+						"savingThrow": "Fortitude",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "carrier with no ill effect",
+								"duration": "1 day"
+							},
+							{
+								"stage": 2,
+								"entry": "{@damage 3d8} negative damage and regains half as many Hit Points from all healing",
+								"duration": "1 day"
+							},
+							{
+								"stage": 3,
+								"entry": "as stage 2",
+								"duration": "1 day"
+							},
+							{
+								"stage": 4,
+								"entry": "{@damage 3d8} negative damage and gains no benefit from healing",
+								"duration": "1 day"
+							},
+							{
+								"stage": 5,
+								"entry": "as stage 4",
+								"duration": "1 day"
+							},
+							{
+								"stage": 6,
+								"entry": "dead, and rises as a ghast the next midnight.",
+								"duration": null
+							}
+						]
 					},
 					{
 						"traits": [
@@ -4057,32 +4051,26 @@
 						"name": "Putrid Blast"
 					},
 					{
-						"entries": [
-							{
-								"type": "affliction",
-								"name": "",
-								"traits": [
-									"poison"
-								],
-								"note": "",
-								"DC": 16,
-								"savingThrow": "Fortitude",
-								"maxDuration": "1 hour",
-								"stages": [
-									{
-										"stage": 1,
-										"entry": "{@condition fatigued}",
-										"duration": "1 minute"
-									},
-									{
-										"stage": 2,
-										"entry": "{@condition fatigued} and {@condition unconscious} .",
-										"duration": "1 minute"
-									}
-								]
-							}
+						"type": "affliction",
+						"name": "Xulgath Bile",
+						"traits": [
+							"poison"
 						],
-						"name": "Xulgath Bile"
+						"DC": 16,
+						"savingThrow": "Fortitude",
+						"maxDuration": "1 hour",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "{@condition fatigued}",
+								"duration": "1 minute"
+							},
+							{
+								"stage": 2,
+								"entry": "{@condition fatigued} and {@condition unconscious} .",
+								"duration": "1 minute"
+							}
+						]
 					}
 				]
 			}

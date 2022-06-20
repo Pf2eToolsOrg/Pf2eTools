@@ -374,28 +374,23 @@
 			"abilities": {
 				"bot": [
 					{
-						"entries": [
+						"type": "affliction",
+						"traits": [
+							"poison"
+						],
+						"DC": 22,
+						"savingThrow": "Fortitude",
+						"maxDuration": "6 rounds",
+						"stages": [
 							{
-								"type": "affliction",
-								"traits": [
-									"poison"
-								],
-								"note": "",
-								"DC": 22,
-								"savingThrow": "Fortitude",
-								"maxDuration": "6 rounds",
-								"stages": [
-									{
-										"stage": 1,
-										"entry": "{@damage 2d6} poison damage and {@condition flat-footed}",
-										"duration": "1 round"
-									},
-									{
-										"stage": 2,
-										"entry": "{@damage 2d6} poison damage, {@condition flat-footed}, and {@condition clumsy 1}",
-										"duration": "1 round"
-									}
-								]
+								"stage": 1,
+								"entry": "{@damage 2d6} poison damage and {@condition flat-footed}",
+								"duration": "1 round"
+							},
+							{
+								"stage": 2,
+								"entry": "{@damage 2d6} poison damage, {@condition flat-footed}, and {@condition clumsy 1}",
+								"duration": "1 round"
 							}
 						],
 						"name": "Anadi Venom"
@@ -565,28 +560,23 @@
 			"abilities": {
 				"bot": [
 					{
-						"entries": [
+						"type": "affliction",
+						"traits": [
+							"poison"
+						],
+						"DC": 15,
+						"savingThrow": "Fortitude",
+						"maxDuration": "4 rounds",
+						"stages": [
 							{
-								"type": "affliction",
-								"traits": [
-									"poison"
-								],
-								"note": "",
-								"DC": 15,
-								"savingThrow": "Fortitude",
-								"maxDuration": "4 rounds",
-								"stages": [
-									{
-										"stage": 1,
-										"entry": "{@damage 1d6} poison damage and {@condition flat-footed}",
-										"duration": "1 round"
-									},
-									{
-										"stage": 2,
-										"entry": "{@damage 1d6} poison damage, {@condition flat-footed}, and {@condition clumsy 1}",
-										"duration": "1 round"
-									}
-								]
+								"stage": 1,
+								"entry": "{@damage 1d6} poison damage and {@condition flat-footed}",
+								"duration": "1 round"
+							},
+							{
+								"stage": 2,
+								"entry": "{@damage 1d6} poison damage, {@condition flat-footed}, and {@condition clumsy 1}",
+								"duration": "1 round"
 							}
 						],
 						"name": "Anadi Venom"
@@ -792,28 +782,23 @@
 			"abilities": {
 				"bot": [
 					{
-						"entries": [
+						"type": "affliction",
+						"traits": [
+							"poison"
+						],
+						"DC": 19,
+						"savingThrow": "Fortitude",
+						"maxDuration": "4 rounds",
+						"stages": [
 							{
-								"type": "affliction",
-								"traits": [
-									"poison"
-								],
-								"note": "",
-								"DC": 19,
-								"savingThrow": "Fortitude",
-								"maxDuration": "4 rounds",
-								"stages": [
-									{
-										"stage": 1,
-										"entry": "{@damage 1d6} poison damage and {@condition flat-footed}",
-										"duration": "1 round"
-									},
-									{
-										"stage": 2,
-										"entry": "{@damage 1d6} poison damage, {@condition flat-footed}, and {@condition clumsy 1}",
-										"duration": "1 round"
-									}
-								]
+								"stage": 1,
+								"entry": "{@damage 1d6} poison damage and {@condition flat-footed}",
+								"duration": "1 round"
+							},
+							{
+								"stage": 2,
+								"entry": "{@damage 1d6} poison damage, {@condition flat-footed}, and {@condition clumsy 1}",
+								"duration": "1 round"
 							}
 						],
 						"name": "Anadi Venom"
@@ -2864,32 +2849,27 @@
 				],
 				"bot": [
 					{
-						"entries": [
+						"type": "affliction",
+						"traits": [
+							"disease"
+						],
+						"DC": 19,
+						"savingThrow": "Fortitude",
+						"stages": [
 							{
-								"type": "affliction",
-								"traits": [
-									"disease"
-								],
-								"note": "",
-								"DC": 19,
-								"savingThrow": "Fortitude",
-								"stages": [
-									{
-										"stage": 1,
-										"entry": "carrier with no ill effect",
-										"duration": "1 day"
-									},
-									{
-										"stage": 2,
-										"entry": "{@damage 1d6} poison damage, {@condition sickened 1}",
-										"duration": "1 day"
-									},
-									{
-										"stage": 3,
-										"entry": "{@damage 1d8} poison damage, every hour the victim must succeed at another Fortitude save or be {@condition confused} for 1 minute, {@condition sickened 2}",
-										"duration": "1 day"
-									}
-								]
+								"stage": 1,
+								"entry": "carrier with no ill effect",
+								"duration": "1 day"
+							},
+							{
+								"stage": 2,
+								"entry": "{@damage 1d6} poison damage, {@condition sickened 1}",
+								"duration": "1 day"
+							},
+							{
+								"stage": 3,
+								"entry": "{@damage 1d8} poison damage, every hour the victim must succeed at another Fortitude save or be {@condition confused} for 1 minute, {@condition sickened 2}",
+								"duration": "1 day"
 							}
 						],
 						"name": "Grave Blight"
@@ -3627,38 +3607,34 @@
 						"name": "Crooning Cry"
 					},
 					{
-						"entries": [
+						"type": "affliction",
+						"traits": [
+							"disease"
+						],
+						"note": "The target can't reduce its {@condition sickened} condition while affected by rompo chills",
+						"DC": 19,
+						"savingThrow": "Fortitude",
+						"onset": "1 day",
+						"stages": [
 							{
-								"type": "affliction",
-								"traits": [
-									"disease"
-								],
-								"note": "The target can't reduce its {@condition sickened} condition while affected by rompo chills",
-								"DC": 19,
-								"savingThrow": "Fortitude",
-								"onset": "1 day",
-								"stages": [
-									{
-										"stage": 1,
-										"entry": "{@condition clumsy 1}",
-										"duration": "1 day"
-									},
-									{
-										"stage": 2,
-										"entry": "{@condition clumsy 1} and {@condition sickened 1}",
-										"duration": "1 day"
-									},
-									{
-										"stage": 3,
-										"entry": "{@condition clumsy 2} and {@condition sickened 2}",
-										"duration": "1 day"
-									},
-									{
-										"stage": 4,
-										"entry": "{@condition unconscious} ;",
-										"duration": "1 day"
-									}
-								]
+								"stage": 1,
+								"entry": "{@condition clumsy 1}",
+								"duration": "1 day"
+							},
+							{
+								"stage": 2,
+								"entry": "{@condition clumsy 1} and {@condition sickened 1}",
+								"duration": "1 day"
+							},
+							{
+								"stage": 3,
+								"entry": "{@condition clumsy 2} and {@condition sickened 2}",
+								"duration": "1 day"
+							},
+							{
+								"stage": 4,
+								"entry": "{@condition unconscious} ;",
+								"duration": "1 day"
 							}
 						],
 						"name": "Rompo Chills"
@@ -4187,23 +4163,18 @@
 						"name": "Zinba Restoration"
 					},
 					{
-						"entries": [
+						"type": "affliction",
+						"traits": [
+							"poison"
+						],
+						"DC": 29,
+						"savingThrow": "Fortitude",
+						"maxDuration": "6 rounds",
+						"stages": [
 							{
-								"type": "affliction",
-								"traits": [
-									"poison"
-								],
-								"note": "",
-								"DC": 29,
-								"savingThrow": "Fortitude",
-								"maxDuration": "6 rounds",
-								"stages": [
-									{
-										"stage": 1,
-										"entry": "{@damage 3d6} poison ;",
-										"duration": "1 round"
-									}
-								]
+								"stage": 1,
+								"entry": "{@damage 3d6} poison ;",
+								"duration": "1 round"
 							}
 						],
 						"name": "Zinba Venom"

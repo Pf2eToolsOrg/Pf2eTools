@@ -453,35 +453,30 @@
 				],
 				"bot": [
 					{
-						"entries": [
-							{
-								"type": "affliction",
-								"name": "",
-								"traits": [
-									"curse",
-									"disease",
-									"divine",
-									"necromancy",
-									"negative"
-								],
-								"note": "\nThis disease and any damage from it can't be healed\nuntil this curse is removed. A creature killed by mummy\nrot turns to dust and can't be resurrected except by a\n7th-level resurrect ritual or similar magic.",
-								"DC": 24,
-								"savingThrow": "Fortitude",
-								"stages": [
-									{
-										"stage": 1,
-										"entry": "carrier with no ill effect",
-										"duration": "1 minute"
-									},
-									{
-										"stage": 2,
-										"entry": "{@damage 6d6} negative damage and {@condition stupefied|CRB|stupefied 1}",
-										"duration": "1 day"
-									}
-								]
-							}
+						"type": "affliction",
+						"name": "Mummy Rot",
+						"traits": [
+							"curse",
+							"disease",
+							"divine",
+							"necromancy",
+							"negative"
 						],
-						"name": "Mummy Rot"
+						"note": "\nThis disease and any damage from it can't be healed\nuntil this curse is removed. A creature killed by mummy\nrot turns to dust and can't be resurrected except by a\n7th-level resurrect ritual or similar magic.",
+						"DC": 24,
+						"savingThrow": "Fortitude",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "carrier with no ill effect",
+								"duration": "1 minute"
+							},
+							{
+								"stage": 2,
+								"entry": "{@damage 6d6} negative damage and {@condition stupefied|CRB|stupefied 1}",
+								"duration": "1 day"
+							}
+						]
 					}
 				]
 			}
@@ -3127,7 +3122,6 @@
 								"traits": [
 									"poison"
 								],
-								"note": "",
 								"DC": 21,
 								"savingThrow": "Fortitude",
 								"maxDuration": "6 rounds",
@@ -3392,32 +3386,26 @@
 						"name": "Magic Item Mastery"
 					},
 					{
-						"entries": [
-							{
-								"type": "affliction",
-								"name": "",
-								"traits": [
-									"poison"
-								],
-								"note": "",
-								"DC": 21,
-								"savingThrow": "Fortitude",
-								"maxDuration": "6 rounds",
-								"stages": [
-									{
-										"stage": 1,
-										"entry": "{@damage 1d6} poison damage and {@condition stupefied|CRB|stupefied 1}",
-										"duration": "1 round"
-									},
-									{
-										"stage": 2,
-										"entry": "{@damage 2d6} poison damage and {@condition deafened} and {@condition stupefied|CRB|stupefied 2}",
-										"duration": "1 round"
-									}
-								]
-							}
+						"type": "affliction",
+						"name": "Seugathi Venom",
+						"traits": [
+							"poison"
 						],
-						"name": "Seugathi Venom"
+						"DC": 21,
+						"savingThrow": "Fortitude",
+						"maxDuration": "6 rounds",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "{@damage 1d6} poison damage and {@condition stupefied|CRB|stupefied 1}",
+								"duration": "1 round"
+							},
+							{
+								"stage": 2,
+								"entry": "{@damage 2d6} poison damage and {@condition deafened} and {@condition stupefied|CRB|stupefied 2}",
+								"duration": "1 round"
+							}
+						]
 					}
 				]
 			}

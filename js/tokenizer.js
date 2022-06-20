@@ -302,8 +302,8 @@ class TokenizerUtils {
 	}
 	static get focusPoints () {
 		return [
-			{regex: /^\(\d Focus Points?\)\s/, type: "FOCUS_POINT"},
-			{regex: /^\d Focus Points?\s/, type: "FOCUS_POINT"},
+			{regex: /^\(\d Focus Points?\)[\s;,]/, type: "FOCUS_POINT"},
+			{regex: /^\d Focus Points?[\s;,]/, type: "FOCUS_POINT"},
 		]
 	}
 	static get ritualCasting () {

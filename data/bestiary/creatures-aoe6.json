@@ -7648,47 +7648,42 @@
 				],
 				"bot": [
 					{
-						"entries": [
-							{
-								"type": "affliction",
-								"name": "",
-								"traits": [
-									"disease",
-									"virulent"
-								],
-								"note": " Non-fiend\ncreatures adjacent to the afflicted creature take a\n\u20131 circumstance penalty to saving throws against\ndisease",
-								"DC": 36,
-								"savingThrow": "Fortitude",
-								"stages": [
-									{
-										"stage": 1,
-										"entry": "{@condition drained|CRB|drained 1}",
-										"duration": "1 day"
-									},
-									{
-										"stage": 2,
-										"entry": "{@condition doomed|CRB|doomed 1} and {@condition drained|CRB|drained 1}",
-										"duration": "1 day"
-									},
-									{
-										"stage": 3,
-										"entry": "{@condition doomed|CRB|doomed 1} and {@condition drained|CRB|drained 2}",
-										"duration": "1 day"
-									},
-									{
-										"stage": 4,
-										"entry": "{@condition doomed|CRB|doomed 2} and {@condition drained|CRB|drained 2}",
-										"duration": "1 week"
-									},
-									{
-										"stage": 5,
-										"entry": "dead.",
-										"duration": null
-									}
-								]
-							}
+						"type": "affliction",
+						"name": "Pollution Infusion",
+						"traits": [
+							"disease",
+							"virulent"
 						],
-						"name": "Pollution Infusion"
+						"note": " Non-fiend\ncreatures adjacent to the afflicted creature take a\n\u20131 circumstance penalty to saving throws against\ndisease",
+						"DC": 36,
+						"savingThrow": "Fortitude",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "{@condition drained|CRB|drained 1}",
+								"duration": "1 day"
+							},
+							{
+								"stage": 2,
+								"entry": "{@condition doomed|CRB|doomed 1} and {@condition drained|CRB|drained 1}",
+								"duration": "1 day"
+							},
+							{
+								"stage": 3,
+								"entry": "{@condition doomed|CRB|doomed 1} and {@condition drained|CRB|drained 2}",
+								"duration": "1 day"
+							},
+							{
+								"stage": 4,
+								"entry": "{@condition doomed|CRB|doomed 2} and {@condition drained|CRB|drained 2}",
+								"duration": "1 week"
+							},
+							{
+								"stage": 5,
+								"entry": "dead.",
+								"duration": null
+							}
+						]
 					},
 					{
 						"activity": {

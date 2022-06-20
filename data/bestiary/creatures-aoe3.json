@@ -408,42 +408,36 @@
 						"name": "Consume Flesh"
 					},
 					{
-						"entries": [
-							{
-								"type": "affliction",
-								"name": "",
-								"traits": [
-									"curse",
-									"necromancy"
-								],
-								"note": "",
-								"DC": 26,
-								"savingThrow": "Fortitude",
-								"stages": [
-									{
-										"stage": 1,
-										"entry": "{@condition sickened|CRB|sickened 1}",
-										"duration": "1 round"
-									},
-									{
-										"stage": 2,
-										"entry": "{@condition sickened|CRB|sickened 2}",
-										"duration": "1 round"
-									},
-									{
-										"stage": 3,
-										"entry": "{@condition sickened|CRB|sickened 3}",
-										"duration": "1 round"
-									},
-									{
-										"stage": 4,
-										"entry": "drowning and cannot reduce below stage 4 until the water is purged;",
-										"duration": null
-									}
-								]
-							}
+						"type": "affliction",
+						"name": "Fill Lungs",
+						"traits": [
+							"curse",
+							"necromancy"
 						],
-						"name": "Fill Lungs"
+						"DC": 26,
+						"savingThrow": "Fortitude",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "{@condition sickened|CRB|sickened 1}",
+								"duration": "1 round"
+							},
+							{
+								"stage": 2,
+								"entry": "{@condition sickened|CRB|sickened 2}",
+								"duration": "1 round"
+							},
+							{
+								"stage": 3,
+								"entry": "{@condition sickened|CRB|sickened 3}",
+								"duration": "1 round"
+							},
+							{
+								"stage": 4,
+								"entry": "drowning and cannot reduce below stage 4 until the water is purged;",
+								"duration": null
+							}
+						]
 					},
 					{
 						"entries": [

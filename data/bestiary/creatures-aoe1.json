@@ -2857,68 +2857,57 @@
 						"name": "Shriek"
 					},
 					{
-						"entries": [
-							{
-								"type": "affliction",
-								"name": "",
-								"traits": [
-									"disease"
-								],
-								"note": " Exposing the victim\nto sunlight or any {@spell light} spell of 3rd level or higher\npauses the progression of the disease until the victim\nis no longer in light.",
-								"DC": 18,
-								"savingThrow": "Fortitude",
-								"stages": [
-									{
-										"stage": 1,
-										"entry": "carrier with no effect",
-										"duration": "{@dice 1d6} hours"
-									},
-									{
-										"stage": 2,
-										"entry": "victim's hair falls out",
-										"duration": "{@dice 1d6} hours"
-									},
-									{
-										"stage": 3,
-										"entry": "victim's ears grow into leathery wings, tentacles sprout on the chin and scalp, and the teeth become long, pointed fangs",
-										"duration": "1 day"
-									},
-									{
-										"stage": 4,
-										"entry": "victim's mind regresses to a vicious and unintelligent shell of its former self",
-										"duration": "{@dice 1d6} hours"
-									},
-									{
-										"stage": 5,
-										"entry": "victim's head breaks free of the body",
-										"duration": "which dies"
-									}
-								]
-							}
+						"type": "affliction",
+						"name": "Vargouille Transformation",
+						"traits": [
+							"disease"
 						],
-						"name": "Vargouille Transformation"
+						"note": " Exposing the victim\nto sunlight or any {@spell light} spell of 3rd level or higher\npauses the progression of the disease until the victim\nis no longer in light.",
+						"DC": 18,
+						"savingThrow": "Fortitude",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "carrier with no effect",
+								"duration": "{@dice 1d6} hours"
+							},
+							{
+								"stage": 2,
+								"entry": "victim's hair falls out",
+								"duration": "{@dice 1d6} hours"
+							},
+							{
+								"stage": 3,
+								"entry": "victim's ears grow into leathery wings, tentacles sprout on the chin and scalp, and the teeth become long, pointed fangs",
+								"duration": "1 day"
+							},
+							{
+								"stage": 4,
+								"entry": "victim's mind regresses to a vicious and unintelligent shell of its former self",
+								"duration": "{@dice 1d6} hours"
+							},
+							{
+								"stage": 5,
+								"entry": "victim's head breaks free of the body",
+								"duration": "which dies"
+							}
+						]
 					},
 					{
-						"entries": [
-							{
-								"type": "affliction",
-								"name": "",
-								"traits": [
-									"poison"
-								],
-								"note": "",
-								"DC": 18,
-								"savingThrow": "Fortitude",
-								"stages": [
-									{
-										"stage": 1,
-										"entry": "Damage the victim has taken from vargouille fangs can't be healed magically.",
-										"duration": null
-									}
-								]
-							}
+						"type": "affliction",
+						"name": "Vargouille Venom",
+						"traits": [
+							"poison"
 						],
-						"name": "Vargouille Venom"
+						"DC": 18,
+						"savingThrow": "Fortitude",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "Damage the victim has taken from vargouille fangs can't be healed magically.",
+								"duration": null
+							}
+						]
 					}
 				]
 			}
