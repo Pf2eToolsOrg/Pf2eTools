@@ -25,6 +25,12 @@
 						"type": "integer",
 						"minimum": 0
 					},
+					"entries": {
+						"type": "array",
+						"items": {
+							"$ref": "entry.json"
+						}
+					},
 					"traits": {
 						"type": "array",
 						"items": {
@@ -51,7 +57,9 @@
 									"enum": [
 										"pilot",
 										"crew",
-										"rower"
+										"rower",
+										"pushers",
+										"turners"
 									]
 								},
 								"number": {
@@ -73,6 +81,9 @@
 					"passengers": {
 						"type": "integer",
 						"minimum": 0
+					},
+					"passengersNote": {
+						"type": "string"
 					},
 					"pilotingCheck": {
 						"type": "array",
@@ -167,38 +178,46 @@
 						"$ref": "utils.json#/definitions/defenses"
 					},
 					"speed": {
-						"type": "object",
-						"properties": {
-							"type": {
-								"type": "string",
-								"enum": [
-									"fly",
-									"special",
-									"swim",
-									"walk"
-								]
-							},
-							"speed": {
-								"type": "integer",
-								"exclusiveMinimum": 0
-							},
-							"note": {
-								"type": "string"
-							},
-							"entry": {
-								"type": "string"
-							},
-							"traits": {
-								"type": "array",
-								"items": {
+						"type": "array",
+						"minItems": 1,
+						"items": {
+							"type": "object",
+							"properties": {
+								"type": {
 									"type": "string",
-									"$ref": "utils.json#/definitions/anyTrait"
+									"enum": [
+										"fly",
+										"special",
+										"swim",
+										"burrow",
+										"jump jet",
+										"hover",
+										"walk",
+										"climb"
+									]
 								},
-								"minItems": 1,
-								"uniqueItems": true
-							}
-						},
-						"additionalProperties": false
+								"speed": {
+									"type": "integer",
+									"exclusiveMinimum": 0
+								},
+								"note": {
+									"type": "string"
+								},
+								"entry": {
+									"type": "string"
+								},
+								"traits": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"$ref": "utils.json#/definitions/anyTrait"
+									},
+									"minItems": 1,
+									"uniqueItems": true
+								}
+							},
+							"additionalProperties": false
+						}
 					},
 					"collision": {
 						"type": "object",
@@ -212,12 +231,27 @@
 							}
 						}
 					},
+					"destruction": {
+						"type": "string"
+					},
 					"abilities": {
-						"type": "array",
-						"items": {
-							"$ref": "utils.json#/definitions/abilityBlock"
-						},
-						"minItems": 1
+						"type": "object",
+						"properties": {
+							"bot": {
+								"type": "array",
+								"items": {
+									"$ref": "utils.json#/definitions/abilityBlock"
+								},
+								"minItems": 1
+							},
+							"mid": {
+								"type": "array",
+								"items": {
+									"$ref": "utils.json#/definitions/abilityBlock"
+								},
+								"minItems": 1
+							}
+						}
 					}
 				},
 				"additionalProperties": false,

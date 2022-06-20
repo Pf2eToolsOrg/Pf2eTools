@@ -4158,7 +4158,7 @@ Renderer.creature = {
 		}
 		// FIXME: This is a mess that doesn't account for creature abilities that are just class feats or actions. Also where the hell did the buttonClass go?
 		// When this is fixed, search through spellcaster statblocks for things like Eschew Materials, Drain Bonded Item, and metamagic feats.
-		return $$`<p class="pf2-stat pf2-stat__section ${buttonClass} ${options.generic ? "hidden" : ""}"><strong>${ability.generic || options.generic ? `${renderer.render(`{@ability ${ability.name}${ability.title ? `||${ability.title}` : ""}}`)}` : ability.name}</strong>
+		return $$`<p class="pf2-stat pf2-stat__section ${buttonClass} ${options.generic ? "hidden" : ""}"><strong>${ability.generic || options.generic ? `${renderer.render(`{@ability ${ability.name}${ability.title ? `||${ability.title}` : ""}}`)}` : ability.name ? ability.name : "Activate"}</strong>
 					${ability.activity ? renderer.render(Parser.timeToFullEntry(ability.activity)) : ""}
 					${(ability.generic || options.generic) && !options.noButton ? Renderer.creature.getAbilityTextButton(buttonClass, options.generic) : ""}
 					${trts.length ? `(${trts.join(", ")}); ` : ""}
@@ -5590,24 +5590,28 @@ Renderer.vehicle = {
 		opts = opts || {};
 		const renderer = Renderer.get();
 		const traits = it.traits || [];
-		traits.push(it.size);
 		// FIXME: This is becoming a mess
 		// <p class="pf2-stat pf2-stat__section"><strong>Crew&nbsp;</strong>${it.crew.pilot} pilot${it.crew.pilot > 1 ? "s" : ""}${it.crew.crew ? `, ${it.crew.crew} crew` : ""}${it.passengers != null ? `; <strong>Passengers&nbsp;</strong>${it.passengers}` : ""}</p>
-		return `${Renderer.utils.getExcludedDiv(it, "vehicle", UrlUtil.PG_VEHICLES)}
+		return $$`${Renderer.utils.getExcludedDiv(it, "vehicle", UrlUtil.PG_VEHICLES)}
 		${Renderer.utils.getNameDiv(it, { type: "Vehicle", ...opts })}
 		${Renderer.utils.getDividerDiv()}
 		${Renderer.utils.getTraitsDiv(traits)}
 		${it.price ? `<p class="pf2-stat pf2-stat__section"><strong>Price&nbsp;</strong>${Parser.priceToFull(it.price)}</p>` : ""}
+		${it.price && it.entries ? `${Renderer.utils.getDividerDiv()}` : ""}
+		${it.entries ? `<p class="pf2-stat pf2-stat__section">${renderer.render(it.entries)}</p>` : ""}
 		${Renderer.utils.getDividerDiv()}
-		<p class="pf2-stat pf2-stat__section"><strong>Space&nbsp;</strong>${Object.entries(it.space).map(([k, v]) => `${v.number} ${v.unit} ${v.name !== null ? v.name : k}`).join(", ")}</p>
-		<p class="pf2-stat pf2-stat__section"><strong>Crew&nbsp;</strong>${it.crew.map(c => `${c.number} ${c.entry ? c.entry : c.type}`).join(", ")}${it.passengers != null ? `; <strong>Passengers&nbsp;</strong>${it.passengers}` : ""}</p>
+		<p class="pf2-stat pf2-stat__section"><strong>Space&nbsp;</strong>${Object.entries(it.space).map(([k, v]) => `${v.number} ${v.unit} ${v.name ? v.name : k}`).join(", ")}</p>
+		<p class="pf2-stat pf2-stat__section"><strong>Crew&nbsp;</strong>${it.crew.map(c => `${c.number} ${c.entry ? c.entry : c.type}`).join(", ")}${it.passengers ? `; <strong>Passengers&nbsp;</strong>${it.passengers}${it.passengersNote ? ` (${it.passengersNote})` : ""}` : ""}</p>
 		<p class="pf2-stat pf2-stat__section"><strong>Piloting Check&nbsp;</strong>${it.pilotingCheck.length > 1 ? `${it.pilotingCheck.slice(0, -1).map(c => `${c.entry ? `${renderer.render(c.entry)}` : `${c.skill.includes("Lore") ? renderer.render(`{@skill Lore||${c.skill}}`) : renderer.render(`{@skill ${c.skill}}`)} (DC ${c.dc})`}`).join(", ")} or ${it.pilotingCheck.map(c => `${c.entry ? `${renderer.render(c.entry)}` : `${c.skill.includes("Lore") ? renderer.render(`{@skill Lore||${c.skill}}`) : renderer.render(`{@skill ${c.skill}}`)} (DC ${c.dc})`}`).slice(-1)}` : it.pilotingCheck.map(c => `${c.entry ? `${renderer.render(c.entry)}` : `${c.skill.includes("Lore") ? renderer.render(`{@skill Lore||${c.skill}}`) : renderer.render(`{@skill ${c.skill}}`)} (DC ${c.dc})`}`)}</p>
 		${Renderer.utils.getDividerDiv()}
 		${Renderer.vehicle.getDefenses(it, opts)}
+		${it.abilities && it.abilities.mid ? it.abilities.mid.map(x => Renderer.creature.getRenderedAbility(x, { noButton: true })) : ""}
 		${Renderer.utils.getDividerDiv()}
-		<p class="pf2-stat pf2-stat__section"><strong>Speed&nbsp;</strong>${it.speed.type === "special" ? it.speed.entry : `${it.speed.type !== "walk" ? `${it.speed.type} ` : ""}${it.speed.speed} feet ${it.speed.traits ? `(${renderer.render(it.speed.traits.map(t => `{@trait ${t.toLowerCase()}}`).join(", "))})` : ""} ${it.speed.note ? `(${renderer.render(it.speed.note)})` : ""}`}</p>
-		<p class="pf2-stat pf2-stat__section"><strong>Collision&nbsp;</strong>${renderer.render(it.collision.damage)}${it.collision.type ? ` ${it.collision.type}` : ""} DC (${it.collision.dc})</p>
-		${it.abilities ? it.abilities.map(a => Renderer.creature.getRenderedAbility(a)[0].outerHTML).join("") : ""}
+		<p class="pf2-stat pf2-stat__section"><strong>Speed&nbsp;</strong>${it.speed.map(s => s.type === "special" ? s.entry : `${s.type !== "walk" ? `${s.type} ` : ""}${s.speed ? `${s.speed} feet` : ""} ${s.traits ? `(${renderer.render(s.traits.map(t => `{@trait ${t.toLowerCase()}}`).join(", "))})` : ""} ${s.note ? `(${renderer.render(s.note)})` : ""}`).join(", ")}</p>
+		<p class="pf2-stat pf2-stat__section"><strong>Collision&nbsp;</strong>${it.collision.entries ? it.collision.entries : `${it.collision.damage ? renderer.render(it.collision.damage) : ""}${it.collision.type ? ` ${it.collision.type}` : ""} ${it.collision.dc ? `(DC ${it.collision.dc})` : ""}`}</p>
+		${it.abilities && it.abilities.bot ? it.abilities.bot.map(x => Renderer.creature.getRenderedAbility(x, { noButton: true })) : ""}
+		${Renderer.item.getDestruction(it)}
+		${Renderer.item.getSpecial(it)}
 		${Renderer.utils.getPageP(it)}`;
 	},
 	getDefenses (it, opts) {
