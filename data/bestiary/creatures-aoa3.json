@@ -1042,51 +1042,45 @@
 						"name": "Hit Points."
 					},
 					{
-						"entries": [
-							{
-								"type": "affliction",
-								"name": "",
-								"traits": [
-									"disease"
-								],
-								"note": "",
-								"DC": 26,
-								"savingThrow": "Fortitude",
-								"stages": [
-									{
-										"stage": 1,
-										"entry": "carrier with no ill effect",
-										"duration": "1 day"
-									},
-									{
-										"stage": 2,
-										"entry": "{@damage 3d8} negative damage and regains half as many Hit Points from all healing",
-										"duration": "1 day"
-									},
-									{
-										"stage": 3,
-										"entry": "as stage 2",
-										"duration": "1 day"
-									},
-									{
-										"stage": 4,
-										"entry": "{@damage 3d8} negative damage and gains no benefit from healing",
-										"duration": "1 day"
-									},
-									{
-										"stage": 5,
-										"entry": "as stage 4",
-										"duration": "1 day"
-									},
-									{
-										"stage": 6,
-										"entry": "dead, and rises as a ghast the next midnight.",
-										"duration": null
-									}
-								]
-							}
+						"type": "affliction",
+						"name": "Ghast Fever",
+						"traits": [
+							"disease"
 						],
-						"name": "Ghast Fever"
+						"DC": 26,
+						"savingThrow": "Fortitude",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "carrier with no ill effect",
+								"duration": "1 day"
+							},
+							{
+								"stage": 2,
+								"entry": "{@damage 3d8} negative damage and regains half as many Hit Points from all healing",
+								"duration": "1 day"
+							},
+							{
+								"stage": 3,
+								"entry": "as stage 2",
+								"duration": "1 day"
+							},
+							{
+								"stage": 4,
+								"entry": "{@damage 3d8} negative damage and gains no benefit from healing",
+								"duration": "1 day"
+							},
+							{
+								"stage": 5,
+								"entry": "as stage 4",
+								"duration": "1 day"
+							},
+							{
+								"stage": 6,
+								"entry": "dead, and rises as a ghast the next midnight.",
+								"duration": null
+							}
+						]
 					},
 					{
 						"entries": [
@@ -3146,37 +3140,31 @@
 			"abilities": {
 				"bot": [
 					{
-						"entries": [
-							{
-								"type": "affliction",
-								"name": "",
-								"traits": [
-									"poison"
-								],
-								"note": "",
-								"DC": 25,
-								"savingThrow": "Fortitude",
-								"maxDuration": "6\nrounds",
-								"stages": [
-									{
-										"stage": 1,
-										"entry": "{@damage 2d6} poison damage, {@condition enfeebled|CRB|enfeebled 1}",
-										"duration": "1 round"
-									},
-									{
-										"stage": 2,
-										"entry": "{@damage 3d6} poison damage and {@condition enfeebled|CRB|enfeebled 1}",
-										"duration": "1 round"
-									},
-									{
-										"stage": 3,
-										"entry": "{@damage 3d6} poison damage, {@condition enfeebled|CRB|enfeebled 2}, and the creature takes a \u20134 status penalty to Will saves against attempts to {@action Coerce} it",
-										"duration": "1 hour"
-									}
-								]
-							}
+						"type": "affliction",
+						"name": "Bone Devil Venom",
+						"traits": [
+							"poison"
 						],
-						"name": "Bone Devil Venom"
+						"DC": 25,
+						"savingThrow": "Fortitude",
+						"maxDuration": "6\nrounds",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "{@damage 2d6} poison damage, {@condition enfeebled|CRB|enfeebled 1}",
+								"duration": "1 round"
+							},
+							{
+								"stage": 2,
+								"entry": "{@damage 3d6} poison damage and {@condition enfeebled|CRB|enfeebled 1}",
+								"duration": "1 round"
+							},
+							{
+								"stage": 3,
+								"entry": "{@damage 3d6} poison damage, {@condition enfeebled|CRB|enfeebled 2}, and the creature takes a \u20134 status penalty to Will saves against attempts to {@action Coerce} it",
+								"duration": "1 hour"
+							}
+						]
 					},
 					{
 						"traits": [

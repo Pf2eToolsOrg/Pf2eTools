@@ -3184,37 +3184,31 @@
 			"abilities": {
 				"bot": [
 					{
-						"entries": [
-							{
-								"type": "affliction",
-								"name": "",
-								"traits": [
-									"poison"
-								],
-								"note": "",
-								"DC": 18,
-								"savingThrow": "Fortitude",
-								"maxDuration": "6 rounds",
-								"stages": [
-									{
-										"stage": 1,
-										"entry": "{@damage 1d6} poison damage and {@condition enfeebled 1}",
-										"duration": "1 round"
-									},
-									{
-										"stage": 2,
-										"entry": "{@damage 2d6} poison damage and {@condition enfeebled 2} and {@condition slowed 1}",
-										"duration": "1 round"
-									},
-									{
-										"stage": 3,
-										"entry": "{@damage 3d6} poison damage and {@condition paralyzed}",
-										"duration": "1 round"
-									}
-								]
-							}
+						"type": "affliction",
+						"name": "Amphisbaena Venom",
+						"traits": [
+							"poison"
 						],
-						"name": "Amphisbaena Venom"
+						"DC": 18,
+						"savingThrow": "Fortitude",
+						"maxDuration": "6 rounds",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "{@damage 1d6} poison damage and {@condition enfeebled 1}",
+								"duration": "1 round"
+							},
+							{
+								"stage": 2,
+								"entry": "{@damage 2d6} poison damage and {@condition enfeebled 2} and {@condition slowed 1}",
+								"duration": "1 round"
+							},
+							{
+								"stage": 3,
+								"entry": "{@damage 3d6} poison damage and {@condition paralyzed}",
+								"duration": "1 round"
+							}
+						]
 					},
 					{
 						"entries": [
@@ -12315,37 +12309,31 @@
 				],
 				"bot": [
 					{
-						"entries": [
-							{
-								"type": "affliction",
-								"name": "",
-								"traits": [
-									"poison"
-								],
-								"note": "",
-								"DC": 14,
-								"savingThrow": "Fortitude",
-								"maxDuration": "4 rounds",
-								"stages": [
-									{
-										"stage": 1,
-										"entry": "{@damage 1d4} poison damage",
-										"duration": "1 round"
-									},
-									{
-										"stage": 2,
-										"entry": "{@damage 1d6} poison damage",
-										"duration": "1 round"
-									},
-									{
-										"stage": 3,
-										"entry": "{@damage 1d6} poison damage and {@condition enfeebled 1}",
-										"duration": "1 round"
-									}
-								]
-							}
+						"type": "affliction",
+						"name": "Eurypterid Venom",
+						"traits": [
+							"poison"
 						],
-						"name": "Eurypterid Venom"
+						"DC": 14,
+						"savingThrow": "Fortitude",
+						"maxDuration": "4 rounds",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "{@damage 1d4} poison damage",
+								"duration": "1 round"
+							},
+							{
+								"stage": 2,
+								"entry": "{@damage 1d6} poison damage",
+								"duration": "1 round"
+							},
+							{
+								"stage": 3,
+								"entry": "{@damage 1d6} poison damage and {@condition enfeebled 1}",
+								"duration": "1 round"
+							}
+						]
 					}
 				]
 			},
@@ -14438,32 +14426,28 @@
 				],
 				"bot": [
 					{
-						"entries": [
+						"type": "affliction",
+						"traits": [
+							"poison"
+						],
+						"DC": 16,
+						"savingThrow": "Fortitude",
+						"maxDuration": "6 rounds",
+						"stages": [
 							{
-								"type": "affliction",
-								"traits": [
-									"poison"
-								],
-								"DC": 16,
-								"savingThrow": "Fortitude",
-								"maxDuration": "6 rounds",
-								"stages": [
-									{
-										"stage": 1,
-										"entry": "{@damage 1d6} poison",
-										"duration": "1 round"
-									},
-									{
-										"stage": 2,
-										"entry": "{@damage 1d6} poison and {@condition stupefied 1}",
-										"duration": "1 round"
-									},
-									{
-										"stage": 3,
-										"entry": "{@damage 1d6} poison and {@condition stupefied 2} .",
-										"duration": "1 round"
-									}
-								]
+								"stage": 1,
+								"entry": "{@damage 1d6} poison",
+								"duration": "1 round"
+							},
+							{
+								"stage": 2,
+								"entry": "{@damage 1d6} poison and {@condition stupefied 1}",
+								"duration": "1 round"
+							},
+							{
+								"stage": 3,
+								"entry": "{@damage 1d6} poison and {@condition stupefied 2} .",
+								"duration": "1 round"
 							}
 						],
 						"name": "Doru Venom"
@@ -21584,32 +21568,27 @@
 			"abilities": {
 				"bot": [
 					{
-						"entries": [
-							{
-								"type": "affliction",
-								"name": "",
-								"traits": [
-									"disease"
-								],
-								"note": " The {@condition sickened} condition from carrion fever can't be reduced while the affliction remains",
-								"DC": 18,
-								"savingThrow": "Fortitude",
-								"onset": "1 day",
-								"stages": [
-									{
-										"stage": 1,
-										"entry": "{@condition sickened 1} and {@condition fatigued}",
-										"duration": "1 day"
-									},
-									{
-										"stage": 2,
-										"entry": "{@condition sickened 1}, {@condition slowed 1}, and {@condition fatigued}",
-										"duration": "1 day"
-									}
-								]
-							}
+						"type": "affliction",
+						"name": "Carrion Fever",
+						"traits": [
+							"disease"
 						],
-						"name": "Carrion Fever"
+						"note": " The {@condition sickened} condition from carrion fever can't be reduced while the affliction remains",
+						"DC": 18,
+						"savingThrow": "Fortitude",
+						"onset": "1 day",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "{@condition sickened 1} and {@condition fatigued}",
+								"duration": "1 day"
+							},
+							{
+								"stage": 2,
+								"entry": "{@condition sickened 1}, {@condition slowed 1}, and {@condition fatigued}",
+								"duration": "1 day"
+							}
+						]
 					},
 					{
 						"activity": {
@@ -21896,37 +21875,31 @@
 						"name": "Desert Stride"
 					},
 					{
-						"entries": [
-							{
-								"type": "affliction",
-								"name": "",
-								"traits": [
-									"poison"
-								],
-								"note": "",
-								"DC": 30,
-								"savingThrow": "Fortitude",
-								"maxDuration": "6 rounds",
-								"stages": [
-									{
-										"stage": 1,
-										"entry": "{@damage 2d6} poison damage and {@condition enfeebled 1}",
-										"duration": "1 round"
-									},
-									{
-										"stage": 2,
-										"entry": "{@damage 3d6} poison damage and {@condition enfeebled 1}",
-										"duration": "1 round"
-									},
-									{
-										"stage": 3,
-										"entry": "{@damage 3d6} poison damage and {@condition enfeebled 2}",
-										"duration": "1 round"
-									}
-								]
-							}
+						"type": "affliction",
+						"name": "Girtablilu Venom",
+						"traits": [
+							"poison"
 						],
-						"name": "Girtablilu Venom"
+						"DC": 30,
+						"savingThrow": "Fortitude",
+						"maxDuration": "6 rounds",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "{@damage 2d6} poison damage and {@condition enfeebled 1}",
+								"duration": "1 round"
+							},
+							{
+								"stage": 2,
+								"entry": "{@damage 3d6} poison damage and {@condition enfeebled 1}",
+								"duration": "1 round"
+							},
+							{
+								"stage": 3,
+								"entry": "{@damage 3d6} poison damage and {@condition enfeebled 2}",
+								"duration": "1 round"
+							}
+						]
 					}
 				]
 			},
@@ -22083,37 +22056,31 @@
 						"name": "Desert Stride"
 					},
 					{
-						"entries": [
-							{
-								"type": "affliction",
-								"name": "",
-								"traits": [
-									"poison"
-								],
-								"note": "",
-								"DC": 24,
-								"savingThrow": "Fortitude",
-								"maxDuration": "6 rounds",
-								"stages": [
-									{
-										"stage": 1,
-										"entry": "{@damage 2d6} poison damage and {@condition enfeebled 1}",
-										"duration": "1 round"
-									},
-									{
-										"stage": 2,
-										"entry": "{@damage 3d6} poison damage and {@condition enfeebled 1}",
-										"duration": "1 round"
-									},
-									{
-										"stage": 3,
-										"entry": "{@damage 3d6} poison damage and {@condition enfeebled 2}",
-										"duration": "1 round"
-									}
-								]
-							}
+						"type": "affliction",
+						"name": "Girtablilu Venom",
+						"traits": [
+							"poison"
 						],
-						"name": "Girtablilu Venom"
+						"DC": 24,
+						"savingThrow": "Fortitude",
+						"maxDuration": "6 rounds",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "{@damage 2d6} poison damage and {@condition enfeebled 1}",
+								"duration": "1 round"
+							},
+							{
+								"stage": 2,
+								"entry": "{@damage 3d6} poison damage and {@condition enfeebled 1}",
+								"duration": "1 round"
+							},
+							{
+								"stage": 3,
+								"entry": "{@damage 3d6} poison damage and {@condition enfeebled 2}",
+								"duration": "1 round"
+							}
+						]
 					}
 				]
 			},
@@ -23253,35 +23220,31 @@
 				],
 				"bot": [
 					{
-						"entries": [
+						"type": "affliction",
+						"traits": [
+							"emotion",
+							"fear",
+							"mental",
+							"poison"
+						],
+						"DC": 20,
+						"savingThrow": "Fortitude",
+						"maxDuration": "6 rounds",
+						"stages": [
 							{
-								"type": "affliction",
-								"traits": [
-									"emotion",
-									"fear",
-									"mental",
-									"poison"
-								],
-								"DC": 20,
-								"savingThrow": "Fortitude",
-								"maxDuration": "6 rounds",
-								"stages": [
-									{
-										"stage": 1,
-										"entry": "{@condition frightened 1}",
-										"duration": "1 round"
-									},
-									{
-										"stage": 2,
-										"entry": "{@condition frightened 2}",
-										"duration": "1 round"
-									},
-									{
-										"stage": 3,
-										"entry": "{@condition frightened 3}",
-										"duration": "1 round"
-									}
-								]
+								"stage": 1,
+								"entry": "{@condition frightened 1}",
+								"duration": "1 round"
+							},
+							{
+								"stage": 2,
+								"entry": "{@condition frightened 2}",
+								"duration": "1 round"
+							},
+							{
+								"stage": 3,
+								"entry": "{@condition frightened 3}",
+								"duration": "1 round"
 							}
 						],
 						"name": "Grioth Venom"
@@ -23524,40 +23487,34 @@
 				],
 				"bot": [
 					{
-						"entries": [
-							{
-								"type": "affliction",
-								"name": "",
-								"traits": [
-									"emotion",
-									"fear",
-									"mental",
-									"poison"
-								],
-								"note": "",
-								"DC": 17,
-								"savingThrow": "Fortitude",
-								"maxDuration": "6 rounds",
-								"stages": [
-									{
-										"stage": 1,
-										"entry": "{@condition frightened 1}",
-										"duration": "1 round"
-									},
-									{
-										"stage": 2,
-										"entry": "{@condition frightened 2}",
-										"duration": "1 round"
-									},
-									{
-										"stage": 3,
-										"entry": "{@condition frightened 3}",
-										"duration": "1 round"
-									}
-								]
-							}
+						"type": "affliction",
+						"name": "Grioth Venom",
+						"traits": [
+							"emotion",
+							"fear",
+							"mental",
+							"poison"
 						],
-						"name": "Grioth Venom"
+						"DC": 17,
+						"savingThrow": "Fortitude",
+						"maxDuration": "6 rounds",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "{@condition frightened 1}",
+								"duration": "1 round"
+							},
+							{
+								"stage": 2,
+								"entry": "{@condition frightened 2}",
+								"duration": "1 round"
+							},
+							{
+								"stage": 3,
+								"entry": "{@condition frightened 3}",
+								"duration": "1 round"
+							}
+						]
 					},
 					{
 						"activity": {
@@ -25604,32 +25561,26 @@
 						"name": "Hellwasp Stings"
 					},
 					{
-						"entries": [
-							{
-								"type": "affliction",
-								"name": "",
-								"traits": [
-									"poison"
-								],
-								"note": "",
-								"DC": 26,
-								"savingThrow": "Fortitude",
-								"maxDuration": "6 rounds",
-								"stages": [
-									{
-										"stage": 1,
-										"entry": "{@damage 1d8} poison damage and {@condition clumsy 2}",
-										"duration": "1 round"
-									},
-									{
-										"stage": 2,
-										"entry": "{@damage 2d8} poison damage and {@condition clumsy 2}",
-										"duration": "1 round"
-									}
-								]
-							}
+						"type": "affliction",
+						"name": "Hellwasp Venom",
+						"traits": [
+							"poison"
 						],
-						"name": "Hellwasp Venom"
+						"DC": 26,
+						"savingThrow": "Fortitude",
+						"maxDuration": "6 rounds",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "{@damage 1d8} poison damage and {@condition clumsy 2}",
+								"duration": "1 round"
+							},
+							{
+								"stage": 2,
+								"entry": "{@damage 2d8} poison damage and {@condition clumsy 2}",
+								"duration": "1 round"
+							}
+						]
 					},
 					{
 						"activity": {
@@ -30949,36 +30900,31 @@
 			"abilities": {
 				"bot": [
 					{
-						"entries": [
-							{
-								"type": "affliction",
-								"name": "",
-								"traits": [
-									"disease"
-								],
-								"note": " The target can't recover from the {@condition fatigued} condition caused by black apoxia until the disease is cured",
-								"DC": 24,
-								"savingThrow": "Fortitude",
-								"stages": [
-									{
-										"stage": 1,
-										"entry": "carrier with no ill effect",
-										"duration": "1 day"
-									},
-									{
-										"stage": 2,
-										"entry": "{@condition drained 1} and {@condition fatigued}",
-										"duration": "1 day"
-									},
-									{
-										"stage": 3,
-										"entry": "{@condition drained 2} and {@condition fatigued} ;",
-										"duration": "1 day"
-									}
-								]
-							}
+						"type": "affliction",
+						"name": "Black Apoxia",
+						"traits": [
+							"disease"
 						],
-						"name": "Black Apoxia"
+						"note": " The target can't recover from the {@condition fatigued} condition caused by black apoxia until the disease is cured",
+						"DC": 24,
+						"savingThrow": "Fortitude",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "carrier with no ill effect",
+								"duration": "1 day"
+							},
+							{
+								"stage": 2,
+								"entry": "{@condition drained 1} and {@condition fatigued}",
+								"duration": "1 day"
+							},
+							{
+								"stage": 3,
+								"entry": "{@condition drained 2} and {@condition fatigued} ;",
+								"duration": "1 day"
+							}
+						]
 					},
 					{
 						"entries": [
@@ -32258,46 +32204,40 @@
 						"name": "The"
 					},
 					{
-						"entries": [
-							{
-								"type": "affliction",
-								"name": "",
-								"traits": [
-									"disease"
-								],
-								"note": "",
-								"DC": 28,
-								"savingThrow": "Fortitude",
-								"stages": [
-									{
-										"stage": 1,
-										"entry": "carrier with no ill effect",
-										"duration": "1 day"
-									},
-									{
-										"stage": 2,
-										"entry": "{@damage 4d8} negative damage and regains half as many Hit Points from all healing",
-										"duration": "1 day"
-									},
-									{
-										"stage": 3,
-										"entry": "as stage 2",
-										"duration": "1 day"
-									},
-									{
-										"stage": 4,
-										"entry": "{@damage 4d8} negative damage and gains no benefit from healing",
-										"duration": "1 day"
-									},
-									{
-										"stage": 5,
-										"entry": "as stage 4 ;",
-										"duration": "1 day"
-									}
-								]
-							}
+						"type": "affliction",
+						"name": "Leng Ghoul Fever",
+						"traits": [
+							"disease"
 						],
-						"name": "Leng Ghoul Fever"
+						"DC": 28,
+						"savingThrow": "Fortitude",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "carrier with no ill effect",
+								"duration": "1 day"
+							},
+							{
+								"stage": 2,
+								"entry": "{@damage 4d8} negative damage and regains half as many Hit Points from all healing",
+								"duration": "1 day"
+							},
+							{
+								"stage": 3,
+								"entry": "as stage 2",
+								"duration": "1 day"
+							},
+							{
+								"stage": 4,
+								"entry": "{@damage 4d8} negative damage and gains no benefit from healing",
+								"duration": "1 day"
+							},
+							{
+								"stage": 5,
+								"entry": "as stage 4 ;",
+								"duration": "1 day"
+							}
+						]
 					},
 					{
 						"traits": [
@@ -35755,37 +35695,32 @@
 						"name": "Gift of Knowledge"
 					},
 					{
-						"entries": [
-							{
-								"type": "affliction",
-								"name": "",
-								"traits": [
-									"poison"
-								],
-								"note": " A mix couatl's venom deals good damage rather than poison damage to fiends",
-								"DC": 26,
-								"savingThrow": "Fortitude",
-								"maxDuration": "6 rounds",
-								"stages": [
-									{
-										"stage": 1,
-										"entry": "{@damage 1d6} poison damage and {@condition stupefied 1}",
-										"duration": "1 round"
-									},
-									{
-										"stage": 2,
-										"entry": "{@damage 2d6} poison damage, {@condition stunned 1}, and {@condition stupefied 1}",
-										"duration": "1 round"
-									},
-									{
-										"stage": 3,
-										"entry": "{@damage 2d8} poison damage, {@condition stunned 1}, and {@condition stupefied 2}",
-										"duration": "1 round"
-									}
-								]
-							}
+						"type": "affliction",
+						"name": "Mix Couatl Venom",
+						"traits": [
+							"poison"
 						],
-						"name": "Mix Couatl Venom"
+						"note": " A mix couatl's venom deals good damage rather than poison damage to fiends",
+						"DC": 26,
+						"savingThrow": "Fortitude",
+						"maxDuration": "6 rounds",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "{@damage 1d6} poison damage and {@condition stupefied 1}",
+								"duration": "1 round"
+							},
+							{
+								"stage": 2,
+								"entry": "{@damage 2d6} poison damage, {@condition stunned 1}, and {@condition stupefied 1}",
+								"duration": "1 round"
+							},
+							{
+								"stage": 3,
+								"entry": "{@damage 2d8} poison damage, {@condition stunned 1}, and {@condition stupefied 2}",
+								"duration": "1 round"
+							}
+						]
 					},
 					{
 						"activity": {
@@ -37459,37 +37394,32 @@
 						"name": "Emit Spores"
 					},
 					{
-						"entries": [
-							{
-								"type": "affliction",
-								"name": "",
-								"traits": [
-									"disease"
-								],
-								"note": " Myceloids are immune",
-								"DC": 20,
-								"savingThrow": "Fortitude",
-								"onset": "1 minute",
-								"stages": [
-									{
-										"stage": 1,
-										"entry": "{@damage 2d6} poison damage and {@condition stupefied 1}",
-										"duration": "1 day"
-									},
-									{
-										"stage": 2,
-										"entry": "{@damage 6d6} poison damage, {@condition stupefied 3}, and the creature is compelled to seek out the nearest myceloid colony\u2014this compulsion is a mental {@trait emotion} effect",
-										"duration": "1 day"
-									},
-									{
-										"stage": 3,
-										"entry": "The creature dies.",
-										"duration": null
-									}
-								]
-							}
+						"type": "affliction",
+						"name": "Purple Pox",
+						"traits": [
+							"disease"
 						],
-						"name": "Purple Pox"
+						"note": " Myceloids are immune",
+						"DC": 20,
+						"savingThrow": "Fortitude",
+						"onset": "1 minute",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "{@damage 2d6} poison damage and {@condition stupefied 1}",
+								"duration": "1 day"
+							},
+							{
+								"stage": 2,
+								"entry": "{@damage 6d6} poison damage, {@condition stupefied 3}, and the creature is compelled to seek out the nearest myceloid colony\u2014this compulsion is a mental {@trait emotion} effect",
+								"duration": "1 day"
+							},
+							{
+								"stage": 3,
+								"entry": "The creature dies.",
+								"duration": null
+							}
+						]
 					},
 					{
 						"activity": {
@@ -39577,41 +39507,35 @@
 				],
 				"bot": [
 					{
-						"entries": [
-							{
-								"type": "affliction",
-								"name": "",
-								"traits": [
-									"disease",
-									"divine",
-									"emotion",
-									"enchantment",
-									"mental"
-								],
-								"note": "",
-								"DC": 21,
-								"savingThrow": "Fortitude",
-								"onset": "1 minute",
-								"stages": [
-									{
-										"stage": 1,
-										"entry": "{@condition sickened 1} and {@condition stupefied 1}",
-										"duration": "1 day"
-									},
-									{
-										"stage": 2,
-										"entry": "{@condition clumsy 1} and {@condition stupefied 2}",
-										"duration": "1 day"
-									},
-									{
-										"stage": 3,
-										"entry": "{@condition clumsy 2} and {@condition stupefied 3}",
-										"duration": "1 day"
-									}
-								]
-							}
+						"type": "affliction",
+						"name": "Nervous Consumption",
+						"traits": [
+							"disease",
+							"divine",
+							"emotion",
+							"enchantment",
+							"mental"
 						],
-						"name": "Nervous Consumption"
+						"DC": 21,
+						"savingThrow": "Fortitude",
+						"onset": "1 minute",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "{@condition sickened 1} and {@condition stupefied 1}",
+								"duration": "1 day"
+							},
+							{
+								"stage": 2,
+								"entry": "{@condition clumsy 1} and {@condition stupefied 2}",
+								"duration": "1 day"
+							},
+							{
+								"stage": 3,
+								"entry": "{@condition clumsy 2} and {@condition stupefied 3}",
+								"duration": "1 day"
+							}
+						]
 					},
 					{
 						"activity": {
@@ -40569,43 +40493,38 @@
 						"name": "Flying Wheel"
 					},
 					{
-						"entries": [
-							{
-								"type": "affliction",
-								"name": "",
-								"traits": [
-									"contact",
-									"curse",
-									"incapacitation",
-									"poison",
-									"polymorph",
-									"primal",
-									"transmutation"
-								],
-								"note": " The regenerative and transmutative properties of ouroboros blood regenerate and mutate a creature's body into ouroboros-like snakes. A creature already affected by regenerative blood is immune to additional exposure.",
-								"DC": 42,
-								"savingThrow": "Fortitude",
-								"maxDuration": "24 hours",
-								"stages": [
-									{
-										"stage": 1,
-										"entry": "{@ability regeneration} 5 , {@condition slowed 1}, and {@condition clumsy 2}",
-										"duration": "deactivated by fire"
-									},
-									{
-										"stage": 2,
-										"entry": "{@ability regeneration} 5 , {@condition slowed 2} and {@condition clumsy 4}",
-										"duration": "deactivated by fire"
-									},
-									{
-										"stage": 3,
-										"entry": "The creature's body transmutes into a mass of writhing snakes, with the effects an 8th-level {@spell animal form} spell but with an unlimited duration.",
-										"duration": null
-									}
-								]
-							}
+						"type": "affliction",
+						"name": "Regenerative Blood",
+						"traits": [
+							"contact",
+							"curse",
+							"incapacitation",
+							"poison",
+							"polymorph",
+							"primal",
+							"transmutation"
 						],
-						"name": "Regenerative Blood"
+						"note": " The regenerative and transmutative properties of ouroboros blood regenerate and mutate a creature's body into ouroboros-like snakes. A creature already affected by regenerative blood is immune to additional exposure.",
+						"DC": 42,
+						"savingThrow": "Fortitude",
+						"maxDuration": "24 hours",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "{@ability regeneration} 5 , {@condition slowed 1}, and {@condition clumsy 2}",
+								"duration": "deactivated by fire"
+							},
+							{
+								"stage": 2,
+								"entry": "{@ability regeneration} 5 , {@condition slowed 2} and {@condition clumsy 4}",
+								"duration": "deactivated by fire"
+							},
+							{
+								"stage": 3,
+								"entry": "The creature's body transmutes into a mass of writhing snakes, with the effects an 8th-level {@spell animal form} spell but with an unlimited duration.",
+								"duration": null
+							}
+						]
 					},
 					{
 						"activity": {
@@ -41462,37 +41381,32 @@
 						"name": "Divine Ritual"
 					},
 					{
-						"entries": [
-							{
-								"type": "affliction",
-								"name": "",
-								"traits": [
-									"disease"
-								],
-								"note": " A creature can't remove the {@condition fatigued} condition while infected",
-								"DC": 23,
-								"savingThrow": "Fortitude",
-								"onset": "1 day",
-								"stages": [
-									{
-										"stage": 1,
-										"entry": "{@condition fatigued}",
-										"duration": "1 day"
-									},
-									{
-										"stage": 2,
-										"entry": "{@condition enfeebled 2} and {@condition fatigued}",
-										"duration": "1 day"
-									},
-									{
-										"stage": 3,
-										"entry": "{@condition enfeebled 3}, {@condition fatigued}, and take {@damage 1d6} {@condition persistent damage ||persistent bleed damage} every {@dice 1d20} minutes",
-										"duration": "1 day"
-									}
-								]
-							}
+						"type": "affliction",
+						"name": "Bubonic Plague",
+						"traits": [
+							"disease"
 						],
-						"name": "Bubonic Plague"
+						"note": " A creature can't remove the {@condition fatigued} condition while infected",
+						"DC": 23,
+						"savingThrow": "Fortitude",
+						"onset": "1 day",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "{@condition fatigued}",
+								"duration": "1 day"
+							},
+							{
+								"stage": 2,
+								"entry": "{@condition enfeebled 2} and {@condition fatigued}",
+								"duration": "1 day"
+							},
+							{
+								"stage": 3,
+								"entry": "{@condition enfeebled 3}, {@condition fatigued}, and take {@damage 1d6} {@condition persistent damage ||persistent bleed damage} every {@dice 1d20} minutes",
+								"duration": "1 day"
+							}
+						]
 					},
 					{
 						"activity": {
@@ -41771,35 +41685,30 @@
 				],
 				"bot": [
 					{
-						"entries": [
-							{
-								"type": "affliction",
-								"name": "",
-								"traits": [
-									"divine",
-									"enchantment",
-									"mental",
-									"poison"
-								],
-								"note": " A creature affected by betrayal toxin hears whispers of incessant doubt in their head and can't treat any creature as their ally",
-								"DC": 28,
-								"savingThrow": "Fortitude",
-								"maxDuration": "6 rounds",
-								"stages": [
-									{
-										"stage": 1,
-										"entry": "{@condition stupefied 1}",
-										"duration": "1 round"
-									},
-									{
-										"stage": 2,
-										"entry": "{@condition stupefied 2}",
-										"duration": "1 round"
-									}
-								]
-							}
+						"type": "affliction",
+						"name": "Betrayal Toxin",
+						"traits": [
+							"divine",
+							"enchantment",
+							"mental",
+							"poison"
 						],
-						"name": "Betrayal Toxin"
+						"note": " A creature affected by betrayal toxin hears whispers of incessant doubt in their head and can't treat any creature as their ally",
+						"DC": 28,
+						"savingThrow": "Fortitude",
+						"maxDuration": "6 rounds",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "{@condition stupefied 1}",
+								"duration": "1 round"
+							},
+							{
+								"stage": 2,
+								"entry": "{@condition stupefied 2}",
+								"duration": "1 round"
+							}
+						]
 					},
 					{
 						"activity": {
@@ -42240,36 +42149,31 @@
 						"name": "Elongate Tongue"
 					},
 					{
-						"entries": [
-							{
-								"type": "affliction",
-								"name": "",
-								"traits": [
-									"disease"
-								],
-								"note": " Rest doesn't decrease the {@condition drained} value from penanggalan bile",
-								"DC": 19,
-								"savingThrow": "Fortitude",
-								"stages": [
-									{
-										"stage": 1,
-										"entry": "{@condition drained 1}",
-										"duration": "1 week"
-									},
-									{
-										"stage": 2,
-										"entry": "{@condition drained 2}",
-										"duration": "1 week"
-									},
-									{
-										"stage": 3,
-										"entry": "{@condition drained 3} ;",
-										"duration": "1 week"
-									}
-								]
-							}
+						"type": "affliction",
+						"name": "Penanggalan Bile",
+						"traits": [
+							"disease"
 						],
-						"name": "Penanggalan Bile"
+						"note": " Rest doesn't decrease the {@condition drained} value from penanggalan bile",
+						"DC": 19,
+						"savingThrow": "Fortitude",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "{@condition drained 1}",
+								"duration": "1 week"
+							},
+							{
+								"stage": 2,
+								"entry": "{@condition drained 2}",
+								"duration": "1 week"
+							},
+							{
+								"stage": 3,
+								"entry": "{@condition drained 3} ;",
+								"duration": "1 week"
+							}
+						]
 					},
 					{
 						"activity": {
@@ -43176,38 +43080,32 @@
 				],
 				"bot": [
 					{
-						"entries": [
-							{
-								"type": "affliction",
-								"name": "",
-								"traits": [
-									"disease",
-									"divine",
-									"necromancy"
-								],
-								"note": "",
-								"DC": 34,
-								"savingThrow": "Fortitude",
-								"stages": [
-									{
-										"stage": 1,
-										"entry": "{@condition enfeebled 2} and {@condition fatigued}",
-										"duration": "1 day"
-									},
-									{
-										"stage": 2,
-										"entry": "{@condition enfeebled 3} and {@condition fatigued}",
-										"duration": "1 day"
-									},
-									{
-										"stage": 3,
-										"entry": "{@condition enfeebled 4} and {@condition fatigued} ;",
-										"duration": "1 day"
-									}
-								]
-							}
+						"type": "affliction",
+						"name": "Atrophic Plague",
+						"traits": [
+							"disease",
+							"divine",
+							"necromancy"
 						],
-						"name": "Atrophic Plague"
+						"DC": 34,
+						"savingThrow": "Fortitude",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "{@condition enfeebled 2} and {@condition fatigued}",
+								"duration": "1 day"
+							},
+							{
+								"stage": 2,
+								"entry": "{@condition enfeebled 3} and {@condition fatigued}",
+								"duration": "1 day"
+							},
+							{
+								"stage": 3,
+								"entry": "{@condition enfeebled 4} and {@condition fatigued} ;",
+								"duration": "1 day"
+							}
+						]
 					},
 					{
 						"activity": {
@@ -43980,43 +43878,37 @@
 						"name": "Inflating Rush"
 					},
 					{
-						"entries": [
-							{
-								"type": "affliction",
-								"name": "",
-								"traits": [
-									"incapacitation",
-									"poison"
-								],
-								"note": "",
-								"DC": 16,
-								"savingThrow": "Fortitude",
-								"maxDuration": "24 hours",
-								"stages": [
-									{
-										"stage": 1,
-										"entry": "{@damage 1d4} poison damage",
-										"duration": "1 round"
-									},
-									{
-										"stage": 2,
-										"entry": "{@damage 1d4} poison damage and {@condition flat-footed}",
-										"duration": "1 round"
-									},
-									{
-										"stage": 3,
-										"entry": "{@damage 1d4} poison damage and {@condition paralyzed}",
-										"duration": "1 round"
-									},
-									{
-										"stage": 4,
-										"entry": "{@damage 1d4} poison damage and {@condition paralyzed} for {@dice 2d10} hours",
-										"duration": "1 round"
-									}
-								]
-							}
+						"type": "affliction",
+						"name": "Pufferfish Venom",
+						"traits": [
+							"incapacitation",
+							"poison"
 						],
-						"name": "Pufferfish Venom"
+						"DC": 16,
+						"savingThrow": "Fortitude",
+						"maxDuration": "24 hours",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "{@damage 1d4} poison damage",
+								"duration": "1 round"
+							},
+							{
+								"stage": 2,
+								"entry": "{@damage 1d4} poison damage and {@condition flat-footed}",
+								"duration": "1 round"
+							},
+							{
+								"stage": 3,
+								"entry": "{@damage 1d4} poison damage and {@condition paralyzed}",
+								"duration": "1 round"
+							},
+							{
+								"stage": 4,
+								"entry": "{@damage 1d4} poison damage and {@condition paralyzed} for {@dice 2d10} hours",
+								"duration": "1 round"
+							}
+						]
 					}
 				]
 			},
@@ -44241,37 +44133,31 @@
 						}
 					},
 					{
-						"entries": [
-							{
-								"type": "affliction",
-								"name": "",
-								"traits": [
-									"poison"
-								],
-								"note": "",
-								"DC": 25,
-								"savingThrow": "Fortitude",
-								"maxDuration": "6 rounds",
-								"stages": [
-									{
-										"stage": 1,
-										"entry": "{@damage 1d6} poison damage and {@condition stupefied 1}",
-										"duration": "1 round"
-									},
-									{
-										"stage": 2,
-										"entry": "{@damage 1d6} poison damage and {@condition stupefied 2}",
-										"duration": "1 round"
-									},
-									{
-										"stage": 3,
-										"entry": "{@damage 1d6} poison damage, {@condition confused}, and {@condition stupefied 2}",
-										"duration": "1 round"
-									}
-								]
-							}
+						"type": "affliction",
+						"name": "Pukwudgie Poison",
+						"traits": [
+							"poison"
 						],
-						"name": "Pukwudgie Poison"
+						"DC": 25,
+						"savingThrow": "Fortitude",
+						"maxDuration": "6 rounds",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "{@damage 1d6} poison damage and {@condition stupefied 1}",
+								"duration": "1 round"
+							},
+							{
+								"stage": 2,
+								"entry": "{@damage 1d6} poison damage and {@condition stupefied 2}",
+								"duration": "1 round"
+							},
+							{
+								"stage": 3,
+								"entry": "{@damage 1d6} poison damage, {@condition confused}, and {@condition stupefied 2}",
+								"duration": "1 round"
+							}
+						]
 					}
 				]
 			},
@@ -44699,32 +44585,26 @@
 						"name": "Master's Eyes"
 					},
 					{
-						"entries": [
-							{
-								"type": "affliction",
-								"name": "",
-								"traits": [
-									"poison"
-								],
-								"note": "",
-								"DC": 16,
-								"savingThrow": "Fortitude",
-								"maxDuration": "6 rounds",
-								"stages": [
-									{
-										"stage": 1,
-										"entry": "{@damage 1d4} poison damage and {@condition stupefied 1}",
-										"duration": "1 round"
-									},
-									{
-										"stage": 2,
-										"entry": "{@damage 1d4} poison damage and {@condition stupefied 2}",
-										"duration": "1 round"
-									}
-								]
-							}
+						"type": "affliction",
+						"name": "Raktavarna Venom",
+						"traits": [
+							"poison"
 						],
-						"name": "Raktavarna Venom"
+						"DC": 16,
+						"savingThrow": "Fortitude",
+						"maxDuration": "6 rounds",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "{@damage 1d4} poison damage and {@condition stupefied 1}",
+								"duration": "1 round"
+							},
+							{
+								"stage": 2,
+								"entry": "{@damage 1d4} poison damage and {@condition stupefied 2}",
+								"duration": "1 round"
+							}
+						]
 					}
 				]
 			},
@@ -48380,32 +48260,26 @@
 						}
 					},
 					{
-						"entries": [
-							{
-								"type": "affliction",
-								"name": "",
-								"traits": [
-									"poison"
-								],
-								"note": "",
-								"DC": 17,
-								"savingThrow": "Fortitude",
-								"maxDuration": "6 rounds",
-								"stages": [
-									{
-										"stage": 1,
-										"entry": "{@damage 1d4} poison damage and {@condition clumsy 1}",
-										"duration": "1 round"
-									},
-									{
-										"stage": 2,
-										"entry": "{@damage 1d6} poison damage and {@condition clumsy 2}",
-										"duration": "1 round"
-									}
-								]
-							}
+						"type": "affliction",
+						"name": "Fire Jackal Saliva",
+						"traits": [
+							"poison"
 						],
-						"name": "Fire Jackal Saliva"
+						"DC": 17,
+						"savingThrow": "Fortitude",
+						"maxDuration": "6 rounds",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "{@damage 1d4} poison damage and {@condition clumsy 1}",
+								"duration": "1 round"
+							},
+							{
+								"stage": 2,
+								"entry": "{@damage 1d6} poison damage and {@condition clumsy 2}",
+								"duration": "1 round"
+							}
+						]
 					}
 				]
 			},
@@ -50485,35 +50359,28 @@
 				],
 				"bot": [
 					{
+						"type": "affliction",
 						"traits": [
 							"poison"
 						],
-						"entries": [
+						"DC": 22,
+						"savingThrow": "Fortitude",
+						"maxDuration": "6 rounds",
+						"stages": [
 							{
-								"type": "affliction",
-								"traits": [
-									"poison"
-								],
-								"DC": 22,
-								"savingThrow": "Fortitude",
-								"maxDuration": "6 rounds",
-								"stages": [
-									{
-										"stage": 1,
-										"entry": "{@damage 1d8} poison damage and {@condition enfeebled 1}",
-										"duration": "1 round"
-									},
-									{
-										"stage": 2,
-										"entry": "{@damage 1d8} poison damage and {@condition enfeebled 2}",
-										"duration": "1 round"
-									},
-									{
-										"stage": 3,
-										"entry": "{@damage 2d8} poison damage and {@condition enfeebled 3}",
-										"duration": "1 round"
-									}
-								]
+								"stage": 1,
+								"entry": "{@damage 1d8} poison damage and {@condition enfeebled 1}",
+								"duration": "1 round"
+							},
+							{
+								"stage": 2,
+								"entry": "{@damage 1d8} poison damage and {@condition enfeebled 2}",
+								"duration": "1 round"
+							},
+							{
+								"stage": 3,
+								"entry": "{@damage 2d8} poison damage and {@condition enfeebled 3}",
+								"duration": "1 round"
 							}
 						],
 						"name": "Spiny Eurypterid Venom"
@@ -56831,33 +56698,27 @@
 						"name": "Consume Organ"
 					},
 					{
-						"entries": [
-							{
-								"type": "affliction",
-								"name": "",
-								"traits": [
-									"nonlethal",
-									"poison"
-								],
-								"note": "",
-								"DC": 24,
-								"savingThrow": "Fortitude",
-								"maxDuration": "4 rounds",
-								"stages": [
-									{
-										"stage": 1,
-										"entry": "{@damage 2d6} poison damage",
-										"duration": "1 round"
-									},
-									{
-										"stage": 2,
-										"entry": "{@damage 3d6} poison damage",
-										"duration": "1 round"
-									}
-								]
-							}
+						"type": "affliction",
+						"name": "Harvester Poison",
+						"traits": [
+							"nonlethal",
+							"poison"
 						],
-						"name": "Harvester Poison"
+						"DC": 24,
+						"savingThrow": "Fortitude",
+						"maxDuration": "4 rounds",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "{@damage 2d6} poison damage",
+								"duration": "1 round"
+							},
+							{
+								"stage": 2,
+								"entry": "{@damage 3d6} poison damage",
+								"duration": "1 round"
+							}
+						]
 					}
 				]
 			},
@@ -57857,32 +57718,28 @@
 						"name": "Venomous Fangs"
 					},
 					{
-						"entries": [
+						"type": "affliction",
+						"traits": [
+							"poison"
+						],
+						"DC": 21,
+						"savingThrow": "Fortitude",
+						"maxDuration": "6 rounds",
+						"stages": [
 							{
-								"type": "affliction",
-								"traits": [
-									"poison"
-								],
-								"DC": 21,
-								"savingThrow": "Fortitude",
-								"maxDuration": "6 rounds",
-								"stages": [
-									{
-										"stage": 1,
-										"entry": "{@damage 1d4} poison damage",
-										"duration": "1 round"
-									},
-									{
-										"stage": 2,
-										"entry": "{@damage 1d6} poison damage and {@condition clumsy 1}",
-										"duration": "1 round"
-									},
-									{
-										"stage": 3,
-										"entry": "{@damage 2d4} poison damage, {@condition clumsy 2}, and {@condition enfeebled 1}",
-										"duration": "1 round"
-									}
-								]
+								"stage": 1,
+								"entry": "{@damage 1d4} poison damage",
+								"duration": "1 round"
+							},
+							{
+								"stage": 2,
+								"entry": "{@damage 1d6} poison damage and {@condition clumsy 1}",
+								"duration": "1 round"
+							},
+							{
+								"stage": 3,
+								"entry": "{@damage 2d4} poison damage, {@condition clumsy 2}, and {@condition enfeebled 1}",
+								"duration": "1 round"
 							}
 						],
 						"name": "Viper Swarm Venom"
@@ -58053,33 +57910,29 @@
 						}
 					},
 					{
-						"entries": [
+						"type": "affliction",
+						"traits": [
+							"injury",
+							"poison"
+						],
+						"DC": 20,
+						"savingThrow": "Fortitude",
+						"maxDuration": "6 rounds",
+						"stages": [
 							{
-								"type": "affliction",
-								"traits": [
-									"injury",
-									"poison"
-								],
-								"DC": 20,
-								"savingThrow": "Fortitude",
-								"maxDuration": "6 rounds",
-								"stages": [
-									{
-										"stage": 1,
-										"entry": "{@damage 1d4} poison damage",
-										"duration": "1 round"
-									},
-									{
-										"stage": 2,
-										"entry": "{@damage 1d4} poison damage and {@condition flat-footed}",
-										"duration": "1 round"
-									},
-									{
-										"stage": 3,
-										"entry": "{@damage 1d4} poison damage, {@condition flat-footed}, and a \u20135-foot penalty to Speed",
-										"duration": "1 round"
-									}
-								]
+								"stage": 1,
+								"entry": "{@damage 1d4} poison damage",
+								"duration": "1 round"
+							},
+							{
+								"stage": 2,
+								"entry": "{@damage 1d4} poison damage and {@condition flat-footed}",
+								"duration": "1 round"
+							},
+							{
+								"stage": 3,
+								"entry": "{@damage 1d4} poison damage, {@condition flat-footed}, and a \u20135-foot penalty to Speed",
+								"duration": "1 round"
 							}
 						],
 						"name": "Vishkanyan Venom"
@@ -60589,41 +60442,36 @@
 						"name": "Isolate Foes"
 					},
 					{
-						"entries": [
-							{
-								"type": "affliction",
-								"name": "",
-								"traits": [
-									"disease"
-								],
-								"note": " A ximtal's withering attacks cause a debilitating disease targeting the senses",
-								"DC": 36,
-								"savingThrow": "Fortitude",
-								"stages": [
-									{
-										"stage": 1,
-										"entry": "creature loses one sense determined randomly: taste, smell, hearing, or sight",
-										"duration": "1 day"
-									},
-									{
-										"stage": 2,
-										"entry": "creature loses an additional sense from the stage 1 list",
-										"duration": "1 day"
-									},
-									{
-										"stage": 3,
-										"entry": "creature loses an additional sense from the stage 1 list",
-										"duration": "1 day"
-									},
-									{
-										"stage": 4,
-										"entry": "creature loses the last sense from the stage 1 list and any special senses, such as {@ability tremorsense} or lifesense ;",
-										"duration": "1 day"
-									}
-								]
-							}
+						"type": "affliction",
+						"name": "Sensory Fever",
+						"traits": [
+							"disease"
 						],
-						"name": "Sensory Fever"
+						"note": " A ximtal's withering attacks cause a debilitating disease targeting the senses",
+						"DC": 36,
+						"savingThrow": "Fortitude",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "creature loses one sense determined randomly: taste, smell, hearing, or sight",
+								"duration": "1 day"
+							},
+							{
+								"stage": 2,
+								"entry": "creature loses an additional sense from the stage 1 list",
+								"duration": "1 day"
+							},
+							{
+								"stage": 3,
+								"entry": "creature loses an additional sense from the stage 1 list",
+								"duration": "1 day"
+							},
+							{
+								"stage": 4,
+								"entry": "creature loses the last sense from the stage 1 list and any special senses, such as {@ability tremorsense} or lifesense ;",
+								"duration": "1 day"
+							}
+						]
 					},
 					{
 						"activity": {
@@ -60938,37 +60786,32 @@
 						"requirements": "The mix couatl has a Medium or smaller creature {@condition grabbed} or {@condition restrained} in their jaws"
 					},
 					{
-						"entries": [
-							{
-								"type": "affliction",
-								"name": "",
-								"traits": [
-									"poison"
-								],
-								"note": " A xiuh couatl's poison deals good damage rather than poison damage to fiends",
-								"DC": 32,
-								"savingThrow": "Fortitude",
-								"maxDuration": "6 rounds",
-								"stages": [
-									{
-										"stage": 1,
-										"entry": "{@damage 2d8} poison damage and {@condition enfeebled 1}",
-										"duration": "1 round"
-									},
-									{
-										"stage": 2,
-										"entry": "{@damage 2d10} poison damage, {@condition enfeebled 1}, and \u20135-foot status penalty to all Speeds",
-										"duration": "1 round"
-									},
-									{
-										"stage": 3,
-										"entry": "{@damage 3d8} poison damage, {@condition enfeebled 2}, and \u201310-foot status penalty to all Speeds",
-										"duration": "1 round"
-									}
-								]
-							}
+						"type": "affliction",
+						"name": "Xiuh Couatl Venom",
+						"traits": [
+							"poison"
 						],
-						"name": "Xiuh Couatl Venom"
+						"note": " A xiuh couatl's poison deals good damage rather than poison damage to fiends",
+						"DC": 32,
+						"savingThrow": "Fortitude",
+						"maxDuration": "6 rounds",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "{@damage 2d8} poison damage and {@condition enfeebled 1}",
+								"duration": "1 round"
+							},
+							{
+								"stage": 2,
+								"entry": "{@damage 2d10} poison damage, {@condition enfeebled 1}, and \u20135-foot status penalty to all Speeds",
+								"duration": "1 round"
+							},
+							{
+								"stage": 3,
+								"entry": "{@damage 3d8} poison damage, {@condition enfeebled 2}, and \u201310-foot status penalty to all Speeds",
+								"duration": "1 round"
+							}
+						]
 					}
 				]
 			},

@@ -1788,32 +1788,26 @@
 						}
 					},
 					{
-						"entries": [
-							{
-								"type": "affliction",
-								"name": "",
-								"traits": [
-									"poison"
-								],
-								"note": "",
-								"DC": 32,
-								"savingThrow": "Fortitude",
-								"maxDuration": "10 rounds",
-								"stages": [
-									{
-										"stage": 1,
-										"entry": "{@damage 3d6} poison damage and {@condition stupefied|CRB|stupefied 1}",
-										"duration": "1 round"
-									},
-									{
-										"stage": 2,
-										"entry": "{@damage 3d6} poison damage and {@condition stupefied|CRB|stupefied 2} ;",
-										"duration": "1 round"
-									}
-								]
-							}
+						"type": "affliction",
+						"name": "Jorogumo Venom",
+						"traits": [
+							"poison"
 						],
-						"name": "Jorogumo Venom"
+						"DC": 32,
+						"savingThrow": "Fortitude",
+						"maxDuration": "10 rounds",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "{@damage 3d6} poison damage and {@condition stupefied|CRB|stupefied 1}",
+								"duration": "1 round"
+							},
+							{
+								"stage": 2,
+								"entry": "{@damage 3d6} poison damage and {@condition stupefied|CRB|stupefied 2} ;",
+								"duration": "1 round"
+							}
+						]
 					},
 					{
 						"activity": {

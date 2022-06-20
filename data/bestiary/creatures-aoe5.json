@@ -2436,32 +2436,26 @@
 						"name": "Capsize"
 					},
 					{
-						"entries": [
-							{
-								"type": "affliction",
-								"name": "",
-								"traits": [
-									"poison"
-								],
-								"note": "",
-								"DC": 38,
-								"savingThrow": "Fortitude",
-								"maxDuration": "6 rounds",
-								"stages": [
-									{
-										"stage": 1,
-										"entry": "{@damage 4d6} poison damage and {@condition clumsy|CRB|clumsy 1}",
-										"duration": "1 round"
-									},
-									{
-										"stage": 2,
-										"entry": "{@damage 6d6} poison damage and {@condition clumsy|CRB|clumsy 2}",
-										"duration": "1 round"
-									}
-								]
-							}
+						"type": "affliction",
+						"name": "Lusca Venom",
+						"traits": [
+							"poison"
 						],
-						"name": "Lusca Venom"
+						"DC": 38,
+						"savingThrow": "Fortitude",
+						"maxDuration": "6 rounds",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "{@damage 4d6} poison damage and {@condition clumsy|CRB|clumsy 1}",
+								"duration": "1 round"
+							},
+							{
+								"stage": 2,
+								"entry": "{@damage 6d6} poison damage and {@condition clumsy|CRB|clumsy 2}",
+								"duration": "1 round"
+							}
+						]
 					},
 					{
 						"activity": {
@@ -3552,31 +3546,26 @@
 				],
 				"bot": [
 					{
-						"entries": [
-							{
-								"type": "affliction",
-								"name": "",
-								"traits": [
-									"disease"
-								],
-								"note": " A creature can't recover from\n{@condition drained} until Abyssal plague is cured",
-								"DC": 41,
-								"savingThrow": "Fortitude",
-								"stages": [
-									{
-										"stage": 1,
-										"entry": "{@condition drained|CRB|drained 1}",
-										"duration": "1 day"
-									},
-									{
-										"stage": 2,
-										"entry": "{@condition drained|CRB|drained 3}",
-										"duration": "1 day"
-									}
-								]
-							}
+						"type": "affliction",
+						"name": "Abyssal Plague",
+						"traits": [
+							"disease"
 						],
-						"name": "Abyssal Plague"
+						"note": " A creature can't recover from\n{@condition drained} until Abyssal plague is cured",
+						"DC": 41,
+						"savingThrow": "Fortitude",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "{@condition drained|CRB|drained 1}",
+								"duration": "1 day"
+							},
+							{
+								"stage": 2,
+								"entry": "{@condition drained|CRB|drained 3}",
+								"duration": "1 day"
+							}
+						]
 					},
 					{
 						"activity": {
@@ -4230,32 +4219,27 @@
 						"name": "Secret of"
 					},
 					{
-						"entries": [
-							{
-								"type": "affliction",
-								"name": "",
-								"traits": [
-									"poison"
-								],
-								"note": " Reginald is immune to the\ntoxic ink that flows through his veins",
-								"DC": 38,
-								"savingThrow": "Fortitude",
-								"maxDuration": "10 rounds",
-								"stages": [
-									{
-										"stage": 1,
-										"entry": "{@damage 3d6} poison and {@condition sickened|CRB|sickened 1}",
-										"duration": "1 round"
-									},
-									{
-										"stage": 2,
-										"entry": "{@damage 4d6} poison {@condition sickened|CRB|sickened 2} .",
-										"duration": "1 round"
-									}
-								]
-							}
+						"type": "affliction",
+						"name": "Poison Ink",
+						"traits": [
+							"poison"
 						],
-						"name": "Poison Ink"
+						"note": " Reginald is immune to the\ntoxic ink that flows through his veins",
+						"DC": 38,
+						"savingThrow": "Fortitude",
+						"maxDuration": "10 rounds",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "{@damage 3d6} poison and {@condition sickened|CRB|sickened 1}",
+								"duration": "1 round"
+							},
+							{
+								"stage": 2,
+								"entry": "{@damage 4d6} poison {@condition sickened|CRB|sickened 2} .",
+								"duration": "1 round"
+							}
+						]
 					},
 					{
 						"activity": {

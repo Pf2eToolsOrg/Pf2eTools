@@ -2764,31 +2764,26 @@
 				],
 				"bot": [
 					{
-						"entries": [
-							{
-								"type": "affliction",
-								"name": "",
-								"traits": [
-									"disease"
-								],
-								"note": " A creature can't recover from the\n{@condition drained} condition until Abyssal plague is cured",
-								"DC": 33,
-								"savingThrow": "Fortitude",
-								"stages": [
-									{
-										"stage": 1,
-										"entry": "{@condition drained|CRB|drained 1}",
-										"duration": "1 day"
-									},
-									{
-										"stage": 2,
-										"entry": "{@condition drained} increases by 2",
-										"duration": "1 day"
-									}
-								]
-							}
+						"type": "affliction",
+						"name": "Abyssal Plague",
+						"traits": [
+							"disease"
 						],
-						"name": "Abyssal Plague"
+						"note": " A creature can't recover from the\n{@condition drained} condition until Abyssal plague is cured",
+						"DC": 33,
+						"savingThrow": "Fortitude",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "{@condition drained|CRB|drained 1}",
+								"duration": "1 day"
+							},
+							{
+								"stage": 2,
+								"entry": "{@condition drained} increases by 2",
+								"duration": "1 day"
+							}
+						]
 					},
 					{
 						"activity": {

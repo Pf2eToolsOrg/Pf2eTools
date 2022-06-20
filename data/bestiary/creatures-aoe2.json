@@ -101,37 +101,32 @@
 						"name": "Swarming Bites"
 					},
 					{
-						"entries": [
-							{
-								"type": "affliction",
-								"name": "",
-								"traits": [
-									"disease"
-								],
-								"note": " Marrow rot affects only creatures with a skeletal\nsystem",
-								"DC": 24,
-								"savingThrow": "Fortitude",
-								"onset": "1 day",
-								"stages": [
-									{
-										"stage": 1,
-										"entry": "{@condition enfeebled|CRB|enfeebled 1}",
-										"duration": "1 day"
-									},
-									{
-										"stage": 2,
-										"entry": "{@condition enfeebled|CRB|enfeebled 2}",
-										"duration": "1 day"
-									},
-									{
-										"stage": 3,
-										"entry": "{@condition enfeebled|CRB|enfeebled 2} and {@condition drained|CRB|drained 1}",
-										"duration": "1 day"
-									}
-								]
-							}
+						"type": "affliction",
+						"name": "Marrow Rot",
+						"traits": [
+							"disease"
 						],
-						"name": "Marrow Rot"
+						"note": " Marrow rot affects only creatures with a skeletal\nsystem",
+						"DC": 24,
+						"savingThrow": "Fortitude",
+						"onset": "1 day",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "{@condition enfeebled|CRB|enfeebled 1}",
+								"duration": "1 day"
+							},
+							{
+								"stage": 2,
+								"entry": "{@condition enfeebled|CRB|enfeebled 2}",
+								"duration": "1 day"
+							},
+							{
+								"stage": 3,
+								"entry": "{@condition enfeebled|CRB|enfeebled 2} and {@condition drained|CRB|drained 1}",
+								"duration": "1 day"
+							}
+						]
 					}
 				]
 			}

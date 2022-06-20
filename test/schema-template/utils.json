@@ -1271,6 +1271,83 @@
 				"entries"
 			]
 		},
+		"afflictionBlock": {
+			"properties": {
+				"type": {
+					"const": "affliction"
+				},
+				"name": {
+					"type": "string"
+				},
+				"source": {
+					"$ref": "#/definitions/sourceList"
+				},
+				"page": {
+					"type": "integer",
+					"minimum": 0
+				},
+				"entries": {
+					"type": "array",
+					"items": {
+						"$ref": "entry.json"
+					},
+					"minItems": 1
+				},
+				"level": {
+					"type": "integer"
+				},
+				"note": {
+					"type": "string"
+				},
+				"DC": {
+					"type": "integer"
+				},
+				"onset": {
+					"type": "string"
+				},
+				"maxDuration": {
+					"type": "string"
+				},
+				"traits": {
+					"type": "array",
+					"items": {
+						"type": "string",
+						"anyOf": [
+							{
+								"$ref": "#/definitions/anyTrait"
+							}
+						]
+					},
+					"minItems": 1
+				},
+				"stages": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"stage": {
+								"type": "integer"
+							},
+							"entry": {
+								"type": "string"
+							},
+							"duration": {
+								"type": "string"
+							}
+						},
+						"additionalProperties": false,
+						"required": ["stage", "entry"]
+					},
+					"minItems": 1
+				}
+			},
+			"additionalProperties": false,
+			"required": [
+				"type",
+				"name",
+				"stages"
+			]
+		},
 		"attackBlock": {
 			"properties": {
 				"type": {

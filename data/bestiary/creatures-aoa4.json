@@ -2281,42 +2281,36 @@
 						"name": "Consume Flesh"
 					},
 					{
-						"entries": [
-							{
-								"type": "affliction",
-								"name": "",
-								"traits": [
-									"disease",
-									"virulent"
-								],
-								"note": "",
-								"DC": 34,
-								"savingThrow": "Fortitude",
-								"stages": [
-									{
-										"stage": 1,
-										"entry": "carrier with no ill effect",
-										"duration": "1 day"
-									},
-									{
-										"stage": 2,
-										"entry": "{@damage 4d8} negative damage and regains half as many Hit Points from all healing",
-										"duration": "1 day"
-									},
-									{
-										"stage": 3,
-										"entry": "{@damage 4d8} negative damage and gains no benefit from healing",
-										"duration": "1 day"
-									},
-									{
-										"stage": 4,
-										"entry": "dead, and rises as a ghast the next midnight.",
-										"duration": null
-									}
-								]
-							}
+						"type": "affliction",
+						"name": "Ghast Fever",
+						"traits": [
+							"disease",
+							"virulent"
 						],
-						"name": "Ghast Fever"
+						"DC": 34,
+						"savingThrow": "Fortitude",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "carrier with no ill effect",
+								"duration": "1 day"
+							},
+							{
+								"stage": 2,
+								"entry": "{@damage 4d8} negative damage and regains half as many Hit Points from all healing",
+								"duration": "1 day"
+							},
+							{
+								"stage": 3,
+								"entry": "{@damage 4d8} negative damage and gains no benefit from healing",
+								"duration": "1 day"
+							},
+							{
+								"stage": 4,
+								"entry": "dead, and rises as a ghast the next midnight.",
+								"duration": null
+							}
+						]
 					},
 					{
 						"traits": [

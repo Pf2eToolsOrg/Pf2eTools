@@ -26,13 +26,45 @@ class Converter {
 		this._parsedData = null;
 		this._parsedProperties = null;
 		this._tokenStack = [];
+		this._genericAbilityLookup = {};
 
 		// eslint-disable-next-line no-console
 		this._cbWarn = opts.cbWarn || console.warn;
 	}
 
 	async init () {
-		await TagJsons.pInit();
+		// FIXME: Enable items tagging once we actually implement that
+		const [spells, /* items, */ feats, traits, deities, actions, abilities] = await Promise.all([
+			DataUtil.spell.pLoadAll(),
+			// Renderer.item.pBuildList(),
+			DataUtil.feat.loadJSON(),
+			DataUtil.trait.loadJSON(),
+			DataUtil.deity.loadJSON(),
+			DataUtil.loadJSON(`${Renderer.get().baseUrl}data/actions.json`),
+			DataUtil.loadJSON(`${Renderer.get().baseUrl}data/abilities.json`),
+			BrewUtil.pAddBrewData(),
+		]);
+		await TagJsons.pInit({
+			spells,
+			// items,
+			feats: feats.feat,
+			traits: traits.trait,
+			deities: deities.deity,
+			actions: actions.action,
+		});
+		const genLookUp = (data, prop) => {
+			this._genericAbilityLookup[prop] = {};
+			data[prop].forEach(obj => {
+				const name = (obj.name || "").trim().toLowerCase();
+				const lookup = {};
+				lookup.source = obj.source;
+				lookup.add_hash = obj.add_hash;
+				(this._genericAbilityLookup[prop][name] = this._genericAbilityLookup[prop][name] || []).push(lookup);
+			});
+		}
+		genLookUp(abilities, "ability");
+		genLookUp(actions, "action");
+		genLookUp(feats, "feat");
 	}
 
 	_preprocessString (string) {
@@ -363,6 +395,7 @@ class Converter {
 		this._parsedProperties.push(...this._tokenizerUtils.effect);
 		const entries = this._getEntries({checkContinuedLines: true});
 		obj.entries = this._renderEntries(entries);
+		if (this._tokenIsType("LIST_MARKER")) obj.entries.push(this._parseList());
 	}
 	_parseFrequency (obj) {
 		this._consumeToken(this._tokenizerUtils.frequency);
@@ -998,15 +1031,41 @@ class Converter {
 			if (ability.entries == null) {
 				const entries = this._getEntries({checkContinuedLines: true, checkLookahead: true});
 				ability.entries = entries.length ? this._renderEntries(entries) : [];
+				// TODO: Text-LIST-Text. Should getEntries be able to parse lists?
+				if (this._tokenIsType("LIST_MARKER")) ability.entries.push(this._parseList());
 			}
 			this._parsedProperties = cachedParsedProps;
-			this._parseIsGenericAbility(ability);
+			this._setIsGenericAbility(creature, ability);
 
 			creature.abilities[section].push(ability);
 		}
 	}
-	_parseIsGenericAbility (ability) {
-		//
+	_setIsGenericAbility (creature, ability) {
+		// TODO (?): Wrong/Different spellings
+		if (ability.trigger || ability.frequency || ability.requirements) return;
+		const name = (ability.name || "").trim().toLowerCase();
+		if (this._genericAbilityLookup.ability[name]) {
+			const lookups = this._genericAbilityLookup.ability[name];
+			const lookup = lookups.find(it => it.source === this._source) || lookups.find(it => it.source === Parser.TAG_TO_DEFAULT_SOURCE.ability || lookups[0]);
+			ability.generic = {tag: "ability", source: lookup.source === Parser.TAG_TO_DEFAULT_SOURCE.ability ? undefined : lookup.source, add_hash: lookup.add_hash};
+		} else if (this._genericAbilityLookup.action[name]) {
+			const lookups = this._genericAbilityLookup.action[name];
+			const lookup = lookups.find(it => it.source === this._source) || lookups.find(it => it.source === Parser.TAG_TO_DEFAULT_SOURCE.action || lookups[0]);
+			ability.generic = {tag: "action", source: lookup.source === Parser.TAG_TO_DEFAULT_SOURCE.action ? undefined : lookup.source, add_hash: lookup.add_hash};
+		} else if (this._genericAbilityLookup.feat[name]) {
+			if (ability.entries.length > 1) return;
+			if (ability.entries.length === 1 && typeof ability.entries[0] !== "string") return;
+			if (ability.entries.length === 1 && ability.entries[0].length > 100) return;
+			const lookups = this._genericAbilityLookup.feat[name];
+			const lookupsFiltered = lookups.filter(lu => lu.add_hash).filter(lu => {
+				const re = new RegExp(`${lu.add_hash}`, "i");
+				if (creature.spellcasting && creature.spellcasting.some(sc => re.test(sc.name))) return true;
+				if (re.test(creature.name)) return true;
+				if (creature.abilities && Object.values(creature.abilities).flat().some(ab => ab.entries && ab.entries.some(e => typeof e === "string" && re.test(e)))) return true;
+			});
+			const lookup = lookupsFiltered.length === 1 ? lookupsFiltered[0] : lookups.find(it => it.source === SRC_CRB) || lookups.find(it => it.source === SRC_APG) || lookups[0];
+			ability.generic = {tag: "feat", source: lookup.source === Parser.TAG_TO_DEFAULT_SOURCE.feat ? undefined : lookup.source, add_hash: lookup.add_hash};
+		}
 	}
 
 	_getBonusPushAbilities () {
@@ -1124,34 +1183,8 @@ class Converter {
 	}
 	_parseListItem () {
 		this._consumeToken("LIST_MARKER");
-		const entries = [];
-		let temp = [];
-
-		const returnItem = () => {
-			entries.forEach(_ => this._consumeToken(this._tokenizerUtils.stringEntries));
-			return this._renderEntries(entries, {asString: true});
-		}
-
-		for (let i = 0; i < this._tokenStack.length; i++) {
-			const token = this._peek(i);
-			if (this._tokenIsType(this._tokenizerUtils.stringEntries, token)) temp.push(token);
-			else break;
-			if (token.type.endsWith("NEWLINE")) {
-				const text = temp.map(it => it.value.trim()).join(" ");
-				const len = text.length;
-				// TODO: fiddle with number to improve this
-				// If the line is more than 10% shorter than the average length, its probably still a list entry,
-				// otherwise don't add the line to the list item. (It's a line after the list?).
-				if (/^[^A-Z]/.test(text) || Math.abs(this._avgLineLength - len) / this._avgLineLength > 0.10) {
-					entries.push(...temp);
-					temp = [];
-				} else {
-					return returnItem();
-				}
-			}
-		}
-		entries.push(...temp);
-		return returnItem();
+		const entries = this._getEntries({onlyShortLines: true});
+		return this._renderEntries(entries, {asString: true});
 	}
 	_parseList () {
 		const list = {type: "list", items: []};
@@ -1438,7 +1471,7 @@ class Converter {
 			return true;
 		}
 		if (this._tokenIsType(this._tokenizerUtils.actions, token2)) return true;
-		if (this._tokenIsType("PARENTHESIS", token2)) return true;
+		if (this._tokenIsType(this._tokenizerUtils.genericEntries, token2)) return true;
 		if (!this._tokenIsType(this._tokenizerUtils.sentencesNewLine, token1)) return true;
 		const line1 = this._renderToken(token1);
 		const line2 = this._renderToken(token2);
@@ -1452,7 +1485,6 @@ class Converter {
 		const tagged2 = TagJsons.doTagStr(line2);
 		const taggedCombined = TagJsons.doTagStr(`${line1} ${line2}`);
 		if (taggedCombined !== `${tagged1} ${tagged2}`) return true;
-
 		// TODO: is something better required?
 		return false;
 	}
@@ -1460,12 +1492,24 @@ class Converter {
 		if (!this._tokenIsType(this._tokenizerUtils.properties, token)) return false;
 		return this._tokenIsType(this._parsedProperties, token);
 	}
+	_isShortLine (entries) {
+		const text = [...entries, this._peek()].map(it => it.value.trim()).join(" ");
+		const len = text.length;
+		// TODO: fiddle with number to improve this
+		// If the line is more than 10% shorter than the average length, its probably still a list entry,
+		// otherwise don't add the line to the list item. (It's a line after the list?).
+		if (entries.length === 0) return true;
+		if (/^[^A-Z]/.test(text)) return true;
+		if (Math.abs(this._avgLineLength - len) / this._avgLineLength > 0.10) return true;
+		return null;
+	}
 	// TODO: Clean this up. When to use each option?
 	/**
 	 * @param [opts]
 	 * @param [opts.checkContinuedLines]
 	 * @param [opts.checkLookahead]
 	 * @param [opts.breakAfterNewline]
+	 * @param [opts.onlyShortLines]
 	 * @param [opts.noCap] On a stack bro, imma keep it a buck 50, break on capitalized words at start of entries
 	 **/
 	_getEntries (opts) {
@@ -1474,7 +1518,8 @@ class Converter {
 		while (this._tokenIsType(this._tokenizerUtils.stringEntries)) {
 			if (this._isParsingCreature && this._isAbilityName()) break;
 			if (opts.checkLookahead && this._getLookahead()) break;
-			if (opts.noCap && /^[A-Z0-9]/.test(this._renderToken(this._peek()))) break;
+			if (opts.noCap && /^[A-Z\d]/.test(this._renderToken(this._peek()))) break;
+			if (opts.onlyShortLines && !this._isShortLine(entries)) break;
 			entries.push(this._consumeToken(this._tokenizerUtils.stringEntries));
 			if (opts.checkContinuedLines && !this._isContinuedLine(entries.last())) break;
 			if (opts.breakAfterNewline && this._tokenIsType(this._tokenizerUtils.sentencesNewLine, entries.last())) break;
