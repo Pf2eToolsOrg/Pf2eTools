@@ -3991,6 +3991,12 @@
 							"entries": [
 								"Some abilities require you to wield an item, typically a weapon. You're wielding an item any time you're holding it in the number of hands needed to use it effectively. When wielding an item, you're not just carrying it around\u2014you're ready to use it. Other abilities might require you to merely carry or have an item. These apply as long as you have the item on your person; you don't have to wield it."
 							]
+						},
+						{
+							"type": "data",
+							"tag": "table",
+							"name": "Changing Equipment",
+							"source": "CRB"
 						}
 					],
 					"data": {
@@ -4004,15 +4010,15 @@
 					"entries": [
 						"An item can be broken or destroyed if it takes enough damage. Every item has a {@b Hardness} value. Each time an item takes damage, reduce any damage the item takes by its Hardness. The rest of the damage reduces the item's Hit Points. Normally an item takes damage only when a creature is directly attacking it\u2014commonly targeted items include doors and traps. A creature that attacks you doesn't normally damage your armor or other gear, even if it hits you. However, the {@feat Shield Block} reaction can cause your shield to take damage as you use it to prevent damage to yourself, and some monsters have exceptional abilities that can damage your items.",
 						"An item that takes damage can become and eventually destroyed. It becomes broken when its Hit Points are equal to or lower than its {@b Broken Threshold} ({@b BT}); once its Hit Points are reduced to 0, it is {@b destroyed}. A broken item has the broken condition until Repaired above its Broken Threshold. Anything that automatically makes an item broken immediately reduces its Hit Points to its Broken Threshold if the item had more Hit Points than that when the effect occurred. If an item has no {@condition Broken} Threshold, then it has no relevant changes to its function due to being broken, but it's still destroyed at 0 Hit Points. (See the broken condition definition on page 273 for more information.) A destroyed item can't be Repaired.",
-						"An item's Hardness, Hit Points, and {@condition Broken} Threshold usually depend on the material the item is made of. This information appears on page 577.",
+						"An item's Hardness, Hit Points, and {@condition Broken} Threshold usually depend on the material the item is made of. This information appears in the {@book Materials|CRB|11|Materials} section of {@book Chapter 11: Crafting & Treasure|CRB|11|Chapter 11: Crafting & Treasure}.",
 						{
 							"type": "pf2-beige-box",
 							"page": 273,
 							"name": "Broken",
 							"entries": [
 								"Broken is a condition that affects objects. An object is broken when damage has reduced its Hit Points to equal or less than its Broken Threshold. A broken object can't be used for its normal function, nor does it grant bonuses\u2014 with the exception of armor. Broken armor still grants its item bonus to AC, but it also imparts a status penalty to AC depending on its category: \u20131 for broken light armor, \u20132 for broken medium armor, or \u20133 for broken heavy armor.",
-								"A {@condition broken} item still imposes penalties and limitations normally incurred by carrying, holding, or wearing it. For example, broken armor would still impose its Dexterity modifier cap, check penalty, and so forth.",
-								"If an effect makes an item {@condition broken} automatically and the item has more HP than its Broken Threshold, that effect also reduces the item's current HP to the Broken Threshold."
+								"A broken item still imposes penalties and limitations normally incurred by carrying, holding, or wearing it. For example, broken armor would still impose its Dexterity modifier cap, check penalty, and so forth.",
+								"If an effect makes an item broken automatically and the item has more HP than its Broken Threshold, that effect also reduces the item's current HP to the Broken Threshold."
 							]
 						},
 						{
@@ -4022,12 +4028,6 @@
 							"entries": [
 								"Inanimate objects and hazards are immune to bleed, death effects, disease, healing, mental effects, necromancy, nonlethal attacks, and poison, as well as the doomed, drained, fatigued, paralyzed, sickened, and unconscious conditions. An item that has a mind is not immune to mental effects. Many objects are immune to other conditions, at the GM's discretion. For instance, a sword has no Speed, so it can't take a penalty to its Speed, but an effect that causes a Speed penalty might work on a moving blade trap."
 							]
-						},
-						{
-							"type": "data",
-							"tag": "table",
-							"name": "Changing Equipment",
-							"source": "CRB"
 						}
 					],
 					"data": {
