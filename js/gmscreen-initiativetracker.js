@@ -1022,7 +1022,7 @@ class InitiativeTracker {
 
 					// roll initiative
 					if (!init && isRollInit) {
-						$iptScore.val(await pRollInitiative(cr));
+						$iptScore.val(pRollInitiative(cr));
 					}
 
 					doUpdateHpColors();
@@ -1417,7 +1417,7 @@ class InitiativeTracker {
 					})
 				}));
 				await Promise.all(toAdd.map(async it => {
-					const groupInit = cfg.importIsRollGroups && cfg.isRollInit ? await pRollInitiative(it.creature) : null;
+					const groupInit = cfg.importIsRollGroups && cfg.isRollInit ? pRollInitiative(it.creature) : null;
 
 					await Promise.all([...new Array(it.count || 1)].map(async () => {
 						const hp = `${getTotalHp(it.creature)}`;
@@ -1427,7 +1427,7 @@ class InitiativeTracker {
 								displayName: it.creature._displayName,
 								scaledTo: it.creature._isScaledLvl,
 							},
-							i: cfg.isRollInit ? `${cfg.importIsRollGroups ? groupInit : await pRollInitiative(it.creature)}` : null,
+							i: cfg.isRollInit ? `${cfg.importIsRollGroups ? groupInit : pRollInitiative(it.creature)}` : null,
 							a: 0,
 							s: it.creature.source,
 							c: [],
