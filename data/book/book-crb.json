@@ -1893,7 +1893,7 @@
 							"page": 214,
 							"name": "Animal Companions",
 							"entries": [
-								"An animal companion is a loyal comrade who follows your orders without you needing to use Handle an Animal on it. Your animal companion has the minion trait, and it gains 2 actions during your turn if you use the {@action Command an Animal} action to command it; this is in place of the usual effects of {@action Command an Animal}. If your companion dies, you can spend a week of downtime to replace it at no cost. You can have only one animal companion at a time.",
+								"An animal companion is a loyal comrade who follows your orders without you needing to use Handle an Animal on it. Your animal companion has the {@trait animal} and {@trait minion} traits, and it gains 2 actions during your turn if you use the {@action Command an Animal} action to command it; this is in place of the usual effects of {@action Command an Animal}. If your companion dies, you can spend a week of downtime to replace it at no cost. You can have only one animal companion at a time.",
 								{
 									"type": "pf2-h3",
 									"page": 214,
@@ -1953,7 +1953,7 @@
 									"page": 214,
 									"name": "Nimble Animal Companions",
 									"entries": [
-										"To advance a mature animal companion to a nimble animal companion, increase its Dexterity modifier by 2 and its Strength, Constitution, and Wisdom modifiers by 1. It deals 2 additional damage with its unarmed attacks. Increase its proficiency ranks in {@skill Acrobatics} and unarmored defense to expert. It also learns the advanced maneuver for its type. Its attacks become magical for the purpose of ignoring resistances."
+										"To advance a mature animal companion to a nimble animal companion, increase its Dexterity modifier by 2 and its Strength, Constitution, and Wisdom modifiers by 1. It deals 2 additional damage with its unarmed attacks. Increase its proficiency ranks in {@skill Acrobatics} to expert. It also learns the advanced maneuver for its type. Its attacks become magical for the purpose of ignoring resistances."
 									],
 									"data": {
 										"quickrefIndex": true
@@ -1992,7 +1992,7 @@
 											"page": 217,
 											"name": "Ambusher",
 											"entries": [
-												"In your companion's natural environment, it can use a Sneak action even if it's currently observed. Its proficiency rank in {@skill Stealth} increases to expert (or master if it was already an expert from its type), and its Dexterity modifier increases by 1. Its proficiency rank for unarmored defense increases to expert, or master if it's nimble."
+												"In your companion's natural environment, it can use a {@action Sneak} action even if it's currently observed. Its proficiency rank in {@skill Stealth} increases to expert (or master if it was already an expert from its type), and its Dexterity modifier increases by 1. Its proficiency rank for unarmored defense increases to expert."
 											]
 										},
 										{
@@ -2009,7 +2009,7 @@
 											"name": "Daredevil",
 											"entries": [
 												"Your companion joins the fray with graceful leaps and dives.",
-												"It gains the deny advantage ability, so it isn't {@condition flat-footed} to hidden, undetected, or flanking creatures unless such a creature's level is greater than yours. Its proficiency rank in {@skill Acrobatics} increases to master, and its Dexterity modifier increases by 1. Its proficiency rank in unarmored defense increases to expert, or master if it's nimble."
+												"It gains the {@classFeature deny advantage|barbarian||3} ability, so it isn't {@condition flat-footed} to hidden, undetected, or flanking creatures unless such a creature's level is greater than yours. Its proficiency rank in {@skill Acrobatics} increases to master, and its Dexterity modifier increases by 1. Its proficiency rank in unarmored defense increases to expert."
 											]
 										},
 										{
@@ -6808,7 +6808,7 @@
 									"page": 446,
 									"name": "Multiple Attack Penalty",
 									"entries": [
-										"The more attacks you make beyond your first in a single turn, the less accurate you become, represented by the multiple attack penalty. The second time you use an attack action during your turn, you take a \u20135 penalty to your attack roll. The third time you attack, and on any subsequent attacks, you take a \u201310 penalty to your attack roll. Every check that has the attack trait counts toward your multiple attack penalty, including Strikes, spell attack rolls, certain skill actions like Shove, and many others.",
+										"The more attacks you make beyond your first in a single turn, the less accurate you become, represented by the multiple attack penalty. The second time you use an {@trait attack} action during your turn, you take a \u20135 penalty to your check. The third time you attack, and on any subsequent attacks, you take a \u201310 penalty to your check. Every check that has the {@trait attack} trait counts toward your multiple attack penalty, including {@action Strike||Strikes}, spell attack rolls, certain skill actions like {@action Shove}, and many others.",
 										"Some weapons and abilities reduce multiple attack penalties, such as agile weapons, which reduce these penalties to \u20134 on the second attack or \u20138 on further attacks.",
 										{
 											"type": "table",
@@ -7121,6 +7121,7 @@
 									"name": "Persistent Damage",
 									"entries": [
 										"Persistent damage is a condition that causes damage to recur beyond the original effect. Unlike with normal damage, when you are subject to persistent damage, you don't take it right away. Instead, you take the specified damage at the end of your turns, after which you attempt a DC {@flatDC 15} flat check to see if you recover from the persistent damage.",
+										"Like normal damage, it can be doubled or halved based on the results of an attack roll or saving throw.",
 										"See the Conditions Appendix on pages 618\u2013623 for the complete rules regarding the persistent damage condition."
 									]
 								},
@@ -8522,7 +8523,7 @@
 							"page": 476,
 							"name": "Flanking",
 							"entries": [
-								"When you and an ally are flanking a foe, it has a harder time defending against you. A creature is {@condition flat-footed} (taking a \u20132 circumstance penalty to AC) to creatures that are flanking it.",
+								"When you and an ally are flanking a foe, it has a harder time defending against you. A creature is {@condition flat-footed} (taking a \u20132 circumstance penalty to AC) to melee attacks from creatures that are flanking it.",
 								"To flank a foe, you and your ally must be on opposites sides or corners of the creature. A line drawn between the center of your space and the center of your ally's space must pass through opposite sides or opposite corners of the foe's space. Additionally, both you and the ally have to be able to act, must be wielding melee weapons or able to make an unarmed attack, can't be under any effects that prevent you from attacking, and must have the enemy within reach. If you are wielding a reach weapon, you use your {@trait reach} with that weapon for this purpose."
 							],
 							"data": {
@@ -9768,7 +9769,7 @@
 											"page": 500,
 											"name": "Checks",
 											"entries": [
-												"Some downtime activities require rolls, typically skill checks. Because these rolls represent the culmination of a series of tasks over a long period, players can't use most abilities or spells that manipulate die rolls, such as activating a magic item to gain a bonus or casting a fortune spell to roll twice. Constant benefits still apply, though, so someone might invest a magic item that gives them a bonus without requiring activation. You might make specific exceptions to this rule. If something could apply constantly, or so often that it might as well be constant, it's more likely to be used for downtime checks."
+												"Some downtime activities require rolls, typically skill checks. Because these rolls represent the culmination of a series of tasks over a long period, players can't use most abilities or spells that manipulate die rolls, such as activating a magic item to gain a bonus or casting a fortune spell to roll twice. Constant benefits still apply, though, so someone might invest a magic item that gives them a bonus without requiring activation. You might make specific exceptions to this rule. If something could apply constantly, or so often that it might as well be constant, it's more likely to be used for downtime checks; for instance {@feat Assurance} could apply."
 											]
 										}
 									]
@@ -11960,7 +11961,7 @@
 							"page": 557,
 							"name": "Specific Magic Armor",
 							"entries": [
-								"These suits of armor have abilities far different from what can be gained by etching runes. A specific magic armor lists its fundamental runes, which you can upgrade, add, or transfer as normal. You can't etch any property runes onto a specific armor that it doesn't already have."
+								"These suits of armor have abilities far different from what can be gained by etching runes. A specific magic armor lists its fundamental runes, which you can upgrade, add, or transfer as normal. You can't etch any property runes onto a specific armor that it doesn't already have, nor remove a property rune or transfer a property rune to or from a specific armor."
 							]
 						}
 					]
@@ -12065,7 +12066,7 @@
 									"page": 565,
 									"name": "Crafting a Scroll",
 									"entries": [
-										"The process to {@action Craft} a scroll is much like that to {@action Craft} any other magic item. When you begin the crafting process, choose a spell to put into the scroll. You have to either {@action Cast a Spell||Cast that Spell} during the crafting process, or someone else must do so in your presence. {@action Cast a Spell||Casting that Spell} doesn't produce its normal effects; instead, the magic is trapped inside the scroll. The casting must come from a spellcaster expending a spell slot.",
+										"The process to {@action Craft} a scroll is much like that to {@action Craft} any other magic item. You only need to learn one 1st-level formula to {@action Craft} a {@i scroll}. When you begin the crafting process, choose a spell to put into the scroll. You have to either {@action Cast a Spell||Cast that Spell} during the crafting process, or someone else must do so in your presence. {@action Cast a Spell||Casting that Spell} doesn't produce its normal effects; instead, the magic is trapped inside the scroll. The casting must come from a spellcaster expending a spell slot.",
 										"You can't {@action Craft} a scroll from a spell produced from another magic item, for example. The caster has to provide any cost of the spell.",
 										"Like other {@trait consumable||consumables}, scrolls can be crafted in batches of four. All scrolls of one batch must contain the same spell at the same level, and you must provide one casting for each scroll crafted."
 									],
@@ -12168,7 +12169,7 @@
 									"page": 565,
 									"name": "Affixing a Talisman",
 									"entries": [
-										"Each talisman's stat block indicates the type of item it can be affixed to. Affixing or removing requires using the {@action Affix a Talisman||Affixing the Talisman} activity. A single talisman can be affixed to only one item at a time, and an item can have only one talisman affixed to it at a time.",
+										"Each talisman's stat block indicates the type of item it can be affixed to. Affixing or removing requires using the {@action Affix a Talisman||Affixing the Talisman} activity. A single talisman can be affixed to only one item at a time, and if more than one talisman is affixed to an item, the talismans are suppressed; none of them can be activated.",
 										{
 											"type": "data",
 											"tag": "action",
@@ -12563,7 +12564,7 @@
 							"page": 597,
 							"name": "Crafting a Wand",
 							"entries": [
-								"For the most part, the process to Craft a wand is like that to Craft any other magic item. When you begin the crafting process, choose a spell to put into the wand. You have to either cast that spell during the process, or someone else must do so in your presence. That spell doesn't have its normal effects; instead, the magic is captured inside the wand. The caster doesn't need to pay any cost of the spell.",
+								"For the most part, the process to {@action Craft} a wand is like that to {@action Craft} any other magic item. You only need to learn one 1st-level formula to {@action Craft} a {@i magic wand}. When you begin the crafting process, choose a spell to put into the wand. You have to either cast that spell during the process, or someone else must do so in your presence. That spell doesn't have its normal effects; instead, the magic is captured inside the wand. The caster doesn't need to pay any cost of the spell.",
 								"The casting must come from a spellcaster expending a spell slot. You can't make a wand from a spell that comes from another magic item, for example.",
 								{
 									"type": "pf2-brown-box",
@@ -12704,7 +12705,7 @@
 							"page": 597,
 							"name": "Magic Wand",
 							"entries": [
-								"The simplest form of wand contains a spell, with Price and level based on that spell. The wand has the magical and wand traits, as well as the traits the spell has. The name of a magic wand with a spell in it is simply \"wand of,\" followed by the spell's name."
+								"The simplest form of wand contains a spell, with Price and level based on that spell. The wand has the {@trait magical} and {@trait wand} traits, as well as the traits the spell has. The name of a magic wand with a spell in it is simply \"wand of,\" followed by the spell's name."
 							]
 						},
 						{
@@ -12747,7 +12748,7 @@
 							"page": 600,
 							"name": "Specific Magic Weapons",
 							"entries": [
-								"These weapons have abilities far different from what can be gained by simply etching runes. A specific magic weapon lists its fundamental runes, which you can upgrade, add, or transfer as normal. You can't etch any property runes onto a specific weapon that it doesn't already have."
+								"These weapons have abilities far different from what can be gained by simply etching runes. A specific magic weapon lists its fundamental runes, which you can upgrade, add, or transfer as normal. You can't etch any property runes onto a specific weapon that it doesn't already have, nor remove a property rune or transfer a property rune to or from a specific weapon."
 							]
 						}
 					]

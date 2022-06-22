@@ -7595,7 +7595,7 @@
 						"freq": 1
 					},
 					"entries": [
-						"You cast a 2nd-level {@spell shocking grasp} with a DC of 29."
+						"You cast a 2nd-level {@spell shocking grasp} with a spell attack modifier of +19."
 					]
 				}
 			],
@@ -14147,7 +14147,7 @@
 			},
 			"category": "Oil",
 			"entries": [
-				"When you apply this thick, viscous oil to a non-magical weapon or suit of armor, that item immediately becomes magically potent. If the item is a weapon, it temporarily becomes a +1 striking weapon, or, if it's armor, it temporarily becomes +1 resilient armor. This lasts for 1 minute."
+				"When you apply this thick, viscous oil to a weapon or suit of armor, that item immediately becomes magically potent. If the item is a weapon, it temporarily becomes a +1 striking weapon, or, if it's armor, it temporarily becomes +1 resilient armor. This lasts for 1 minute."
 			]
 		},
 		{
@@ -15384,7 +15384,7 @@
 						"freq": 1
 					},
 					"entries": [
-						"You squeeze juice from one of the berries and smear it onto a non-magical club or staff to cast {@spell shillelagh} upon it."
+						"You squeeze juice from one of the berries and smear it onto a club or staff to cast {@spell shillelagh} upon it."
 					]
 				},
 				{
@@ -15646,7 +15646,7 @@
 					},
 					"requirements": "The reflecting shield is raised",
 					"entries": [
-						"You attempt to reflect the spell on its caster, with the effects of a 9th-level {@spell spell turning} with a counteract modifier of +40."
+						"You attempt to reflect the spell on its caster, with the effects of a 9th-level {@spell spell turning} with a counteract modifier of +30."
 					]
 				}
 			],
@@ -16099,6 +16099,10 @@
 						"number": 2,
 						"unit": "action"
 					},
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
 					"components": [
 						"Interact"
 					],
@@ -16159,7 +16163,7 @@
 					"level": 18,
 					"price": {
 						"coin": "gp",
-						"amount": 4250
+						"amount": 21000
 					},
 					"entries": [
 						"The ring grants a +3 bonus. {@action Activate an Item||Activating} it creates an 8th-level {@spell glyph of warding} containing your choice of either prismatic spray or 7th-level {@spell fireball}."
@@ -16473,8 +16477,8 @@
 			"bulk": 1,
 			"category": "Worn",
 			"entries": [
-				"Embroidered with fine silver thread in ornate arcane patterns, these robes come in one of three colors depending on their attuned alignment. Good robes are white, neutral robes are gray, and evil robes are black. An evil or good robe gains the appropriate trait. The robes benefit only characters who can cast arcane spells and whose alignment on the good-evil axis matches that of the robe. If your alignment does not match that of the robe, or you are not an arcane spellcaster, you are instead {@condition stupefied 2} while wearing a robe of the archmagi. This condition can't be removed in any way until you remove the robe.",
-				"The robes are +2 greater resilient explorer's clothing, and they grant a +1 circumstance bonus to saving throws against arcane spells and resistance 5 to damage from arcane spells.",
+				"Embroidered with fine silver thread in ornate arcane patterns, these robes come in one of three colors depending on their attuned alignment. Good robes are gold, neutral robes are light blue, and evil robes are red. An {@trait evil} or {@trait good} robe gains the appropriate trait. The robes benefit only characters who can cast arcane spells and whose alignment on the good-evil axis matches that of the robe. If your alignment does not match that of the robe, or you are not an arcane spellcaster, you are instead {@condition stupefied 2} while wearing a robe of the archmagi. This condition can't be removed in any way until you remove the robe.",
+				"The robes are {@runeItem explorer's clothing||+2 armor potency||greater resilient|}, and they grant a +1 circumstance bonus to saving throws against arcane spells and resistance 5 to damage from arcane spells.",
 				{
 					"type": "ability",
 					"style": "compact",
@@ -23346,7 +23350,7 @@
 			],
 			"entries": [
 				"Weapons with wounding runes are said to thirst for blood.",
-				"When you hit a creature with a wounding weapon, you deal an extra {@damage 1d6} {@condition persistent damage||persistent bleed damage}. On a critical hit, it instead deals {@damage 1d12} {@condition persistent damage||persistent bleed damage}."
+				"When you hit a creature with a wounding weapon, you deal an extra {@damage 1d6} {@condition persistent damage||persistent bleed damage}."
 			]
 		},
 		{
