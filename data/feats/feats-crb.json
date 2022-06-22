@@ -802,7 +802,7 @@
 			],
 			"prerequisites": "{@feat Wizard Dedication}",
 			"entries": [
-				"Select one arcane {@classFeature arcane school|wizard||1||school of magic}. You gain the school's initial school spell. If you don't already have one, you gain a focus pool of 1 Focus Point, which you can {@action Refocus} by studying."
+				"You gain the school's initial school spell. If you don't already have one, you gain a focus pool of 1 Focus Point, which you can {@action Refocus} by studying."
 			]
 		},
 		{
@@ -1720,6 +1720,7 @@
 			"traits": [
 				"champion"
 			],
+			"prerequisites": "tenets of good",
 			"entries": [
 				"You call upon divine power and make a weapon or unarmed {@action Strike} against a foe you have witnessed harming an ally or innocent. The {@action Strike} deals two extra weapon damage dice if the target of your {@action Strike} is evil. Whether or not the target is {@trait evil}, you can convert all the physical damage from the attack into good damage, and if you are a paladin, the {@action Strike} applies all effects that normally apply on a {@action Retributive Strike} (such as {@subclassFeature divine smite|Champion||Paladin||9})."
 			]
@@ -1952,7 +1953,7 @@
 				"fighter"
 			],
 			"entries": [
-				"With a sixth sense for the flow of combat, you can quickly react to any situation as required. At the start of each enemy's turn, you gain a reaction you can use only during that turn."
+				"With a sixth sense for the flow of combat, you can quickly react to any situation as required. At the start of each enemy's turn, you gain a reaction you can use only during that turn for any reaction from a fighter feat or class feature.."
 			]
 		},
 		{
@@ -2134,7 +2135,7 @@
 			],
 			"prerequisites": "master in {@skill Stealth}",
 			"entries": [
-				"You alter your appearance to blend in to the wilderness. In natural terrain, you can {@action Sneak} even if you're {@condition observed}."
+				"You alter your appearance to blend in to the wilderness. In natural terrain, you can {@action Hide} and {@action Sneak} even without cover or being concealed."
 			],
 			"leadsTo": [
 				"Shadow Hunter",
@@ -4700,6 +4701,7 @@
 			"page": 165,
 			"level": 16,
 			"traits": [
+				"aura",
 				"emotion",
 				"mental",
 				"monk"
@@ -6830,7 +6832,9 @@
 			},
 			"level": 18,
 			"traits": [
-				"ranger"
+				"ranger",
+				"flourish",
+				"open"
 			],
 			"requirements": "You are wielding a ranged weapon with the {@trait volley} trait and reload 0.",
 			"entries": [
@@ -6934,7 +6938,7 @@
 			],
 			"prerequisites": "{@feat Knockdown}",
 			"entries": [
-				"You can dash your foe to the ground with a single blow. When you use Knockdown, instead of making a {@action Strike} followed by a {@action Trip}, you can attempt a single {@action Strike}. If you do and your {@action Strike} hits, you also apply the critical success effect of a {@action Trip}. If you used a two-handed melee weapon for the {@action Strike}, you can use the weapon's damage die size instead of the regular die size for the damage from a critical {@action Trip}."
+				"You can dash your foe to the ground with a single blow. When you use Knockdown, instead of making a {@action Strike} followed by a {@action Trip}, you can attempt a single {@action Strike}. If you do and your {@action Strike} hits, instead of rolling a check for your {@action Trip} attempt, you also apply the critical success effect of a {@action Trip}. If you used a two-handed melee weapon for the {@action Strike}, you can use the weapon's damage die size instead of the regular die size for the damage from a critical {@action Trip}."
 			]
 		},
 		{
@@ -8078,8 +8082,9 @@
 				"sorcerer"
 			],
 			"entries": [
-				"You have a literal sixth sense for magic. You can sense the presence of magic auras as though you were always using a 1st-level {@spell detect magic} spell. This detects magic in your field of vision only. When you {@action Seek}, you gain the benefits of a 3rd-level {@spell detect magic} spell on things you see (in addition to the normal benefits of Seeking). You can turn this sense off and on with a free action at the start or the end of your turn."
-			]
+				"You have a literal sixth sense for magic. You can sense the presence of magic auras as though you were always using a 1st-level {@spell detect magic} spell. This detects magic in your field of vision only. When you {@action Seek}, you gain the benefits of a 3rd-level {@spell detect magic} spell on things you see (in addition to the normal benefits of {@action Seek||Seeking}). You can turn this sense off and on with a free action at the start or the end of your turn."
+			],
+			"special": "This feat has the trait corresponding to the tradition of spells you cast ({@trait arcane}, {@trait divine}, {@trait natural}, or {@trait occult})."
 		},
 		{
 			"name": "Magic Sense",
@@ -8852,7 +8857,7 @@
 			"prerequisites": "{@feat Mountain Stronghold}",
 			"requirements": "You are in Mountain Stance.",
 			"entries": [
-				"You stomp, shaking the earth beneath you. Creatures on the ground within a 20-foot emanation take damage equal to your Strength modifier (minimum 0), which they can resist with a basic Fortitude save. On a failure, they also fall {@condition prone}. After you use this action, you can't use it again for {@dice 1d4} rounds."
+				"You stomp, shaking the earth beneath you. Creatures on the ground within a 20-foot emanation take damage equal to your Strength modifier (minimum 0), which they can resist with a basic Fortitude save against your class DC. On a failure, they also fall {@condition prone}. After you use this action, you can't use it again for {@dice 1d4} rounds."
 			],
 			"special": "If you have this feat, the Dexterity modifier cap to your AC while using Mountain Stance increases from +1 to +2."
 		},
@@ -10031,8 +10036,9 @@
 			]
 		},
 		{
-			"name": "Quick Block",
+			"name": "Quick Shield Block",
 			"source": "CRB",
+			"add_hash": "Champion",
 			"page": 113,
 			"level": 8,
 			"traits": [
@@ -10215,6 +10221,7 @@
 			"source": "CRB",
 			"page": 149,
 			"level": 8,
+			"add_hash": "Fighter",
 			"traits": [
 				"fighter"
 			],
@@ -10688,7 +10695,7 @@
 				"You can snap your shield into place just as you would take a blow, avoiding the hit at the last second. You immediately use the {@action Raise a Shield} action and gain your shield's bonus to AC. The circumstance bonus from the shield applies to your AC when you're determining the outcome of the triggering attack."
 			],
 			"leadsTo": [
-				"Quick Shield Block"
+				"Quick Shield Block (Fighter)"
 			]
 		},
 		{
@@ -11053,7 +11060,6 @@
 			},
 			"level": 15,
 			"traits": [
-				"death",
 				"emotion",
 				"fear",
 				"general",
@@ -11066,7 +11072,7 @@
 				{
 					"type": "successDegree",
 					"entries": {
-						"Critical Success": "The target must succeed at a Fortitude save against your {@skill Intimidation} DC or die. If the target succeeds at its save, it becomes {@condition frightened 2} and is {@condition fleeing} for 1 round; it suffers no effect on a critical success.",
+						"Critical Success": "The target must attempt at a Fortitude save against your {@skill Intimidation} DC. On a critical failure, it dies. On any other result, it becomes {@condition frightened 2} and is {@condition fleeing} for 1 round. The critical failure effect has the {@trait death} trait.",
 						"Success": "The target becomes {@condition frightened 2}.",
 						"Failure": "The target becomes {@condition frightened 1}.",
 						"Critical Failure": "The target is unaffected."
@@ -11386,7 +11392,7 @@
 				"You snap your shield in place to ward off a blow. Your shield prevents you from taking an amount of damage up to the shield's Hardness. You and the shield each take any remaining damage, possibly breaking or destroying the shield."
 			],
 			"leadsTo": [
-				"Quick Shield Block",
+				"Quick Shield Block (Fighter)",
 				"Shield Warden (Fighter)",
 				"Bastion Dedication|APG",
 				"Destructive Block|APG",
@@ -14452,7 +14458,8 @@
 			],
 			"prerequisites": "Intelligence 14",
 			"entries": [
-				"You cast spells like a wizard, gaining a spellbook with four common arcane cantrips of your choice. You gain the {@action Cast a Spell} activity. You can prepare two cantrips each day from your spellbook. You're trained in arcane spell attack rolls and spell DCs. Your key spellcasting ability for wizard archetype spells is Int, and they are arcane wizard spells. You become trained in {@skill Arcana}; if you were already trained in {@skill Arcana}, you instead become trained in a skill of your choice."
+				"You cast spells like a wizard, gaining a spellbook with four common arcane cantrips of your choice. You gain the {@action Cast a Spell} activity. You can prepare two cantrips each day from your spellbook. You're trained in arcane spell attack rolls and spell DCs. Your key spellcasting ability for wizard archetype spells is Int, and they are arcane wizard spells. You become trained in {@skill Arcana}; if you were already trained in {@skill Arcana}, you instead become trained in a skill of your choice.",
+				"Choose an arcane {@classFeature arcane school|wizard||1||school of magic} as you would if you were a wizard. You become a member of that school, allowing you to take the schools feats. You don't gain any abilities from your choice of school."
 			],
 			"special": "You can't select another dedication feat until you have gained two other feats from the wizard archetype.",
 			"leadsTo": [

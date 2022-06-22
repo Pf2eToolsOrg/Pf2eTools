@@ -382,7 +382,7 @@
 						"AC = 18 + your level. Ignore your armor's check penalty and Speed reduction.",
 						"5 temporary Hit Points.",
 						"Low-light vision.",
-						"One or more unarmed melee attacks specific to the battle form you choose, which are the only attacks you can use. You're trained with them. Your attack modifier is +16, and your damage bonus is +5. These attacks are Dexterity based (for the purpose of the {@condition clumsy} condition, for example). If your attack modifier for Dexterity-based unarmed attacks is higher, you can use it instead.",
+						"One or more unarmed melee attacks specific to the battle form you choose, which are the only attacks you can {@action Strike} with. You're trained with them. Your attack modifier is +16, and your damage bonus is +5. These attacks are Dexterity based (for the purpose of the {@condition clumsy} condition, for example). If your attack modifier for Dexterity-based unarmed attacks is higher, you can use it instead.",
 						"{@skill Acrobatics} modifier of +16, unless your own modifier is higher. You also gain specific abilities based on the form you choose:",
 						"{@bold Bat} Speed 20 feet, fly Speed 30 feet; precise echolocation 40 feet; {@b Melee} {@as 1} fangs, {@b Damage} {@damage 2d8} piercing; {@b Melee} {@as 1} wing ({@trait agile}), {@b Damage} {@damage 2d6} bludgeoning.",
 						"{@bold Bird} Speed 10 feet, fly Speed 50 feet; {@b Melee} {@as 1} beak, {@b Damage} {@damage 2d8} piercing; {@b Melee} {@as 1} talon ({@trait agile}), {@b Damage} {@damage 1d10} slashing.",
@@ -679,8 +679,8 @@
 				{
 					"type": "list",
 					"items": [
-						"Duplicate any occult spell of 9th level or lower.",
-						"Duplicate any non-occult spell of 7th level or lower.",
+						"Duplicate any spell from the occult list of 9th level or lower to which you have access.",
+						"Duplicate any spell from another spell list of 7th level or lower to which you have access.",
 						"Produce any effect whose power is equivalent to any occult spell 9th level or lower, or non-occult spell 7th level or lower.",
 						"Reverse certain effects that refer to the {@spell wish} spell"
 					]
@@ -800,6 +800,7 @@
 			"level": 1,
 			"traits": [
 				"uncommon",
+				"aura",
 				"abjuration",
 				"good",
 				"sorcerer"
@@ -923,7 +924,7 @@
 						"AC = 16 + your level. Ignore your armor's check penalty and Speed reduction.",
 						"5 temporary Hit Points.",
 						"{@ability Low-light vision} and imprecise {@ability scent} 30 feet.",
-						"One or more unarmed melee attacks specific to the battle form you choose, which are the only attacks you can use. You're trained with them. Your attack modifier is +9, and your damage bonus is +1. These attacks are Strength based (for the purpose of the {@condition enfeebled} condition, for example). If your unarmed attack bonus is higher, you can use it instead.",
+						"One or more unarmed melee attacks specific to the battle form you choose, which are the only attacks you can {@action Strike} with. You're trained with them. Your attack modifier is +9, and your damage bonus is +1. These attacks are Strength based (for the purpose of the {@condition enfeebled} condition, for example). If your unarmed attack bonus is higher, you can use it instead.",
 						"{@skill Athletics} modifier of +9, unless your own modifier is higher. You also gain specific abilities based on the type of animal you choose:",
 						"{@bold Ape} Speed 25 feet, climb Speed 20 feet; {@b Melee} {@as 1} fist, {@b Damage} {@damage 2d6} bludgeoning.",
 						"{@bold Bear} Speed 30 feet; {@b Melee} {@as 1} jaws, {@b Damage} {@damage 2d8} piercing; {@b Melee} {@as 1} claw ({@trait agile}), {@b Damage} {@damage 1d8} slashing.",
@@ -1460,7 +1461,7 @@
 						"AC = 25 + your level. Ignore your armor's check penalty and Speed reduction.",
 						"30 temporary Hit Points.",
 						"{@ability Darkvision}.",
-						"One or more attacks specific to your deity's battle form, which are the only attacks you can use. You're trained with them. Your attack modifier is +33, and you use the listed damage. Melee attacks are Strength based (for the purposes of the {@condition enfeebled} condition, for example) unless they have the {@trait finesse} trait, and all ranged attacks are Dexterity based. Attacks that deal positive or negative damage don't heal creatures.",
+						"One or more attacks specific to your deity's battle form, which are the only attacks you can {@action Strike} with. You're trained with them. Your attack modifier is +33, and you use the listed damage. Melee attacks are Strength based (for the purposes of the {@condition enfeebled} condition, for example) unless they have the {@trait finesse} trait, and all ranged attacks are Dexterity based. Attacks that deal positive or negative damage don't heal creatures.",
 						"{@skill Athletics} modifier of +35, unless your own is higher."
 					]
 				},
@@ -3039,7 +3040,7 @@
 					"items": [
 						"{@b Red} The wall destroys ranged weapon ammunition (such as arrows and crossbow bolts) that would pass through, and it deals 20 fire damage to anyone passing through, with a basic Reflex save. {@spell Cone of cold} can counteract a red chromatic wall.",
 						"{@b Orange} The wall destroys thrown weapons that would pass through, and it deals 25 acid damage to anyone passing through, with a basic Reflex save. {@spell Gust of wind} can counteract an orange chromatic wall.",
-						"{@b Yellow} The wall stops acid, cold, electricity, fire, force, negative, {@trait positive}, and {@trait sonic} effects from passing through, and it deals 30 electricity damage to anyone passing through, with a basic Reflex save. {@spell Disintegrate} can counteract a yellow chromatic wall.",
+						"{@b Yellow} The wall stops {@trait acid}, {@trait cold}, {@trait electricity}, {@trait fire}, {@trait force}, {@trait negative}, {@trait positive}, and {@trait sonic} effects from passing through, and it deals 30 electricity damage to anyone passing through, with a basic Reflex save. {@spell Disintegrate} can counteract a yellow chromatic wall.",
 						"{@b Green} The wall stops toxins, gases, and breath weapons from passing through. It deals 10 poison damage to anyone passing through and makes them {@condition enfeebled 1} for 1 minute. A basic Fortitude save reduces the damage and negates the {@condition enfeebled} condition on a success. {@spell Passwall} can counteract a green chromatic wall."
 					]
 				}
@@ -3054,7 +3055,7 @@
 								"type": "list",
 								"style": "list-no-bullets",
 								"items": [
-									"5. {@b Blue} The wall stops auditory, petrification, and {@trait visual} effects from passing through, and creatures passing through are subject to the effects of {@spell flesh to stone}. {@spell Magic missile} can counteract a blue chromatic wall.",
+									"5. {@b Blue} The wall stops {@trait auditory}, {@trait petrification}, {@trait sonic}, and {@trait visual} effects from passing through, and creatures passing through are subject to the effects of {@spell flesh to stone}. {@spell Magic missile} can counteract a blue chromatic wall.",
 									"6. {@b Indigo} The wall stops {@trait divination} and {@trait mental} effects from passing through, and those passing through are subject to the effects of {@spell warp mind}. {@spell Searing light} can counteract an indigo chromatic wall.",
 									"7. {@b Violet} The wall prevents spells from targeting the other side (area effects still cross as normal). Creatures passing through must succeed at a Will save or they are {@condition slowed 1} for 1 minute; on a critical failure, the creature is instead sent to another plane, with the effect of {@spell plane shift}. {@spell Dispel magic} can counteract a violet chromatic wall.",
 									"8. Reroll, and creatures that pass through the wall take a \u20132 circumstance penalty to their saves."
@@ -3863,10 +3864,10 @@
 			],
 			"duration": {
 				"type": "timed",
-				"entry": "24 hours",
+				"entry": "until the next time you make your daily preparations",
 				"duration": {
-					"number": 24,
-					"unit": "hour"
+					"number": 1,
+					"unit": "special"
 				}
 			},
 			"entries": [
@@ -5037,6 +5038,7 @@
 			"level": 4,
 			"traits": [
 				"uncommon",
+				"aura",
 				"cleric",
 				"evocation"
 			],
@@ -5473,10 +5475,10 @@
 			},
 			"duration": {
 				"type": "timed",
-				"entry": "1 day",
+				"entry": "until the next time you make your daily preparations",
 				"duration": {
 					"number": 1,
-					"unit": "day"
+					"unit": "special"
 				}
 			},
 			"entries": [
@@ -5569,7 +5571,7 @@
 						"AC = 18 + your level. Ignore your armor's check penalty and Speed reduction.",
 						"15 temporary Hit Points.",
 						"{@ability Low-light vision} and imprecise {@ability scent} 30 feet.",
-						"One or more unarmed melee attacks specific to the battle form you choose, which are the only attacks you can use. You're trained with them. Your attack modifier is +16, and your damage bonus is +9. These attacks are Strength based (for the purpose of the {@condition enfeebled} condition, for example). If your unarmed attack modifier is higher, you can use it instead.",
+						"One or more unarmed melee attacks specific to the battle form you choose, which are the only attacks you can {@action Strike} with. You're trained with them. Your attack modifier is +16, and your damage bonus is +9. These attacks are Strength based (for the purpose of the {@condition enfeebled} condition, for example). If your unarmed attack modifier is higher, you can use it instead.",
 						"{@skill Athletics} modifier of +18, unless your own modifier is higher. You also gain specific abilities based on the form you choose:",
 						"{@bold Ankylosaurus} Speed 25 feet; {@b Melee} {@as 1} tail (backswing, reach 10 feet), {@b Damage} {@damage 2d6} bludgeoning; {@b Melee} {@as 1} foot, {@b Damage} {@damage 2d6} bludgeoning.",
 						"{@bold Brontosaurus} Speed 25 feet; {@b Melee} {@as 1} tail (reach 15 feet), {@b Damage} {@damage 2d6} bludgeoning; {@b Melee} {@as 1} foot, {@b Damage} {@damage 2d8} bludgeoning.",
@@ -5804,7 +5806,7 @@
 				]
 			},
 			"entries": [
-				"You fire a green ray at your target. Make a spell attack. You deal {@dice 12d10} damage, and the target must attempt a basic Fortitude save. On a critical hit, treat the save result as one degree worse. A creature reduced to 0 HP is reduced to fine powder; its gear remains.",
+				"You fire a green ray at your target. Make a spell attack. On a hit you deal {@dice 12d10} damage, and the target must attempt a basic Fortitude save. On a critical hit, treat the save result as one degree worse. A creature reduced to 0 HP is reduced to fine powder; its gear remains.",
 				"An object you hit is destroyed (no save), regardless of Hardness, unless it's an artifact or similarly hard to destroy.",
 				"A single casting can destroy no more than a 10-foot cube of matter. This automatically destroys any force construct, such as a wall of force."
 			],
@@ -6040,6 +6042,7 @@
 			"page": 331,
 			"level": 8,
 			"traits": [
+				"aura",
 				"abjuration"
 			],
 			"school": "A",
@@ -6771,7 +6774,7 @@
 						"Speed 40 feet, fly Speed 100 feet.",
 						"Resistance 10 against the damage type of your breath weapon (see below).",
 						"{@ability Darkvision} and imprecise {@ability scent} 60 feet.",
-						"One or more unarmed melee attacks specific to the battle form you choose, which are the only attacks you can use. You're trained with them. Your attack modifier is +22, and your damage bonus is +6. These attacks are Strength based (for the purpose of the {@condition enfeebled} condition, for example). If your unarmed attack modifier is higher, you can use it instead. See below for more on these attacks.",
+						"One or more unarmed melee attacks specific to the battle form you choose, which are the only attacks you can {@action Strike} with. You're trained with them. Your attack modifier is +22, and your damage bonus is +6. These attacks are Strength based (for the purpose of the {@condition enfeebled} condition, for example). If your unarmed attack modifier is higher, you can use it instead. See below for more on these attacks.",
 						"{@skill Athletics} modifier of +23, unless your own modifier is higher.",
 						"{@bold Breath Weapon} {@as 2} ({@trait arcane}, {@trait evocation}) The shape, damage, and damage type of your breath weapon depend on your specific dragon form (see below). A creature in the area attempts a basic save against your spell DC. This is a Reflex save unless stated otherwise in the special ability description for your specific dragon form. Once activated, your breath weapon can't be used again for {@dice 1d4} rounds. Your breath weapon has the trait corresponding to the type of damage it deals."
 					]
@@ -6923,6 +6926,7 @@
 			"traits": [
 				"uncommon",
 				"enchantment",
+				"aura",
 				"emotion",
 				"fear",
 				"mental",
@@ -7040,10 +7044,10 @@
 			"targets": "1 creature you know by name and have met in person",
 			"duration": {
 				"type": "timed",
-				"entry": "1 day",
+				"entry": "until the next time you make your daily preparations",
 				"duration": {
 					"number": 1,
-					"unit": "day"
+					"unit": "special"
 				}
 			},
 			"entries": [
@@ -7645,7 +7649,7 @@
 						"AC = 19 + your level. Ignore your armor's check penalty and Speed reduction.",
 						"10 temporary Hit Points.",
 						"{@ability Darkvision}.",
-						"One or more unarmed melee attacks specific to the battle form you choose, which are the only attacks you can use. You're trained with them. Your attack modifier is +18, and your damage bonus is +9. These are Dexterity based (air or fire) or Strength based (earth or water). If your corresponding unarmed attack modifier is higher, you can use it instead.",
+						"One or more unarmed melee attacks specific to the battle form you choose, which are the only attacks you can {@action Strike} with. You're trained with them. Your attack modifier is +18, and your damage bonus is +9. These are Dexterity based (air or fire) or Strength based (earth or water). If your corresponding unarmed attack modifier is higher, you can use it instead.",
 						"{@bold Acrobatics} (air or fire) or {@skill Athletics} (earth or water) modifier of +20; ignore this change if your own modifier is higher. You also gain specific abilities based on the type of elemental you choose:",
 						"{@bold Air fly} Speed 80 feet, movement doesn't trigger reactions; {@b Melee} {@as 1} gust, {@b Damage} {@damage 1d4} bludgeoning.",
 						"{@bold Earth} Speed 20 feet, burrow Speed 20 feet; {@b Melee} {@as 1} fist, {@b Damage} {@damage 2d10} bludgeoning.",
@@ -8072,10 +8076,10 @@
 			"targets": "1 creature",
 			"duration": {
 				"type": "timed",
-				"entry": "24 hours",
+				"entry": "until the next time you make your daily preparations",
 				"duration": {
-					"number": 24,
-					"unit": "hour"
+					"number": 1,
+					"unit": "special"
 				}
 			},
 			"entries": [
@@ -10410,7 +10414,7 @@
 					"amount": 1
 				}
 			},
-			"targets": "1 non-magical weapon that is either unattended or wielded by you or a willing ally",
+			"targets": "1 weapon that is either unattended or wielded by you or a willing ally",
 			"duration": {
 				"type": "timed",
 				"entry": "5 minutes",
@@ -10420,7 +10424,8 @@
 				}
 			},
 			"entries": [
-				"The target weapon becomes translucent and ghostly, and it can affect material and incorporeal creatures and objects. It can be wielded by a corporeal or incorporeal creature and gains the effects of the ghost touch property rune."
+				"The target weapon becomes translucent and ghostly, and it can affect material and incorporeal creatures and objects. It can be wielded by a corporeal or incorporeal creature and gains the effects of the ghost touch property rune.",
+				"If the weapon is magical and already has the maximum number of property runes, the wielder can choose one to suppress to gain {@item ghost touch}."
 			]
 		},
 		{
@@ -12782,7 +12787,7 @@
 						"AC = 18 + your level. Ignore your armor's check penalty and Speed reduction.",
 						"10 temporary Hit Points.",
 						"Low-light vision.",
-						"One or more attacks specific to the battle form you choose, which are the only attacks you can use. You're trained with them. Your attack modifier is +13, and your damage bonus is +2. These attacks are Strength based (for the purpose of the {@condition enfeebled} condition). If your unarmed attack modifier is higher, you can use it instead.",
+						"One or more attacks specific to the battle form you choose, which are the only attacks you can {@action Strike} with. You're trained with them. Your attack modifier is +13, and your damage bonus is +2. These attacks are Strength based (for the purpose of the {@condition enfeebled} condition). If your unarmed attack modifier is higher, you can use it instead.",
 						"{@skill Athletics} modifier of +13, unless your own is higher. You also gain specific abilities based on the form you choose:",
 						"{@bold Ant} Speed 30 feet, climb Speed 30 feet; {@b Melee} {@as 1} mandibles, {@b Damage} {@damage 2d6} bludgeoning.",
 						"{@bold Beetle} Speed 25 feet; {@b Melee} {@as 1} mandibles, {@b Damage} {@damage 2d10} bludgeoning.",
@@ -12957,6 +12962,7 @@
 			"traits": [
 				"uncommon",
 				"bard",
+				"metamagic",
 				"enchantment"
 			],
 			"school": "E",
@@ -13757,6 +13763,7 @@
 			"level": 1,
 			"traits": [
 				"uncommon",
+				"metamagic",
 				"bard",
 				"enchantment"
 			],
@@ -14110,11 +14117,11 @@
 			"targets": "1 lock, or a door or container with a latch",
 			"duration": {
 				"type": "timed",
-				"entry": "1 day",
+				"entry": "until the next time you make your daily preparations",
 				"dismiss": true,
 				"duration": {
 					"number": 1,
-					"unit": "day"
+					"unit": "special"
 				}
 			},
 			"entries": [
@@ -14696,10 +14703,10 @@
 			},
 			"duration": {
 				"type": "timed",
-				"entry": "24 hours",
+				"entry": "until the next time you make your daily preparations",
 				"duration": {
-					"number": 24,
-					"unit": "hour"
+					"number": 1,
+					"unit": "special"
 				}
 			},
 			"entries": [
@@ -15204,7 +15211,7 @@
 				"basic": true
 			},
 			"entries": [
-				"You call down four meteors that explode in a fiery blast. Each meteor deals {@damage 6d10} bludgeoning damage to any creatures in the 10-foot burst at the center of its area of effect before exploding, dealing {@damage 14d6} fire damage to any creatures in its 40-foot burst. The meteors' central 10-foot bursts can't overlap, and a creature takes the same amount of fire damage no matter how many overlapping explosions it's caught in. The saving throw applies to both the bludgeoning and the fire damage."
+				"You call down four meteors that explode in a fiery blast. Each meteor deals {@damage 6d10} bludgeoning damage to any creatures in the 10-foot burst at the center of its area of effect before exploding, dealing {@damage 14d6} fire damage to any creatures in its 40-foot burst. The meteors’ central 10-foot bursts can’t overlap, and a creature attempts only one saving throw against the spell no matter how many overlapping explosions it's caught in, and they can take each type of damage once once. The saving throw applies to both the bludgeoning and the fire damage."
 			],
 			"heightened": {
 				"plus_x": {
@@ -15449,8 +15456,8 @@
 				{
 					"type": "list",
 					"items": [
-						"Duplicate any divine spell of 9th level or lower.",
-						"Duplicate any non-divine spell of 7th level or lower.",
+						"Duplicate any spell from the divine list of 9th level or lower to which you have access.",
+						"Duplicate any spell from another spell list of 7th level or lower to which you have access.",
 						"Produce any effect whose power level is in line with the above effects.",
 						"Reverse certain effects that refer to the {@spell wish} spell"
 					]
@@ -15727,7 +15734,7 @@
 						"AC = 20 + your level. Ignore your armor's check penalty and Speed reduction.",
 						"20 temporary Hit Points.",
 						"{@ability Darkvision}.",
-						"One or more unarmed melee attacks specific to the battle form you choose, which are the only attacks you can use. You're trained with them. Your attack modifier is +28, and you use the listed damage. These attacks are Strength based (for the purpose of the {@condition enfeebled} condition, for example). If your unarmed attack modifier is higher, you can use it instead.",
+						"One or more unarmed melee attacks specific to the battle form you choose, which are the only attacks you can {@action Strike} with. You're trained with them. Your attack modifier is +28, and you use the listed damage. These attacks are Strength based (for the purpose of the {@condition enfeebled} condition, for example). If your unarmed attack modifier is higher, you can use it instead.",
 						"{@skill Athletics} modifier of +30, unless your own modifier is higher. You also gain specific abilities based on the type of monster you choose:",
 						"{@bold Phoenix} Speed 30 feet, fly Speed 90 feet; {@b Melee} {@as 1} beak (reach 15 feet), {@b Damage} {@damage 2d6+12} piercing plus {@damage 2d4} fire and {@damage 2d4} {@condition persistent damage ||persistent fire}; {@b Melee} {@as 1} talon (agile, reach 15 feet), {@b Damage} {@damage 2d8+12} slashing; Shroud of Flame (aura, evocation, fire, primal) 20 feet. You gain an aura of fire that extends out from you. A creature that enters or ends its turn within the aura takes {@damage 2d6} fire damage. A creature can take this damage only once per turn. You can use a single action, which has the {@trait concentrate} trait, to activate or deactivate this aura.",
 						"{@bold Purple Worm} Speed 40 feet, burrow Speed 30 feet, swim Speed 20 feet; {@b Melee} {@as 1} jaws (reach 10 feet), {@b Damage} {@damage 2d12+20} piercing; {@b Melee} {@as 1} stinger (agile, reach 10 feet), {@b Damage} {@damage 2d8+15} piercing plus {@damage 2d6} {@condition persistent damage ||persistent poison}; {@b Melee} {@as 1} body (reach 10 feet) {@b Damage} {@damage 2d8+20} bludgeoning; Inexorable You automatically recover from the {@condition paralyzed}, {@condition slowed}, and {@condition stunned} conditions at the end of each of your turns. You're also immune to being {@condition immobilized} and ignore {@quickref difficult terrain||3|terrain} and {@quickref greater difficult terrain||3|terrain}.",
@@ -15953,7 +15960,7 @@
 						"AC = 25 + your level. Ignore your armor's check penalty and Speed reduction.",
 						"30 temporary Hit Points.",
 						"{@ability Darkvision}.",
-						"One or more attacks specific to the battle form you choose, which are the only attacks you can use. You're trained with them. Your attack modifier is +34, and you use the listed damage. These attacks are Strength based (for the purpose of the {@condition enfeebled} condition, for example). If your unarmed attack modifier is higher, you can use it instead.",
+						"One or more attacks specific to the battle form you choose, which are the only attacks you can {@action Strike} with. You're trained with them. Your attack modifier is +34, and you use the listed damage. These attacks are Strength based (for the purpose of the {@condition enfeebled} condition, for example). If your unarmed attack modifier is higher, you can use it instead.",
 						"{@skill Athletics} modifier of +36, unless your own modifier is higher. You also gain specific abilities based on the type of incarnation you choose:",
 						"{@bold Green Man} Speed 40 feet, climb Speed 40 feet; {@b Melee} {@as 1} vines (reach 30 feet, versatile P), {@b Damage} {@damage 6d8+12} bludgeoning; {@b Ranged} {@as 1} thorns (range 100 feet), {@b Damage} {@damage 6d6+6} piercing; Green Caress (aura, primal, transmutation) 60 feet. Enemies other than plants must succeed at a Fortitude save against your spell DC or become {@condition clumsy 1} for 1 round ({@condition clumsy 2} on a critical failure).",
 						"{@bold Kaiju} Speed 50 feet; resistance 5 to physical damage; {@b Melee} {@as 1} jaws (reach 30 feet), {@b Damage} {@damage 6d10+10} piercing; {@b Melee} {@as 1} claws (agile, reach 30 feet), {@b Damage} {@damage 6d8+8} slashing; {@b Melee} {@as 1} foot (agile, reach 15 feet), {@b Damage} {@damage 6d6+10} bludgeoning; Unstoppable You are immune to being {@condition immobilized} and ignore {@quickref difficult terrain||3|terrain} and {@quickref greater difficult terrain||3|terrain}; Trample {@as 3} You move up to double your Speed and move through the spaces of Huge or smaller creatures, trampling each creature whose space you enter. A trampled creature takes foot damage with a basic Reflex save against your spell DC."
@@ -16818,13 +16825,13 @@
 				}
 			},
 			"entries": [
-				"You transform into a the battle form of a Tiny animal, such as a cat, insect, lizard, or rat. You can decide the specific type of animal (such as a rat or praying mantis), but this has no effect on the form's Size or statistics. While in this form, you gain the {@trait animal} trait. You can {@action Dismiss} the spell.",
+				"You transform into a the battle form of a Tiny animal, such as a cat, insect, lizard, or rat. You can decide the specific type of animal (such as a rat or praying mantis), but this has no effect on the form's Size or statistics. While in this form, you gain the {@trait animal} trait, and you can’t make {@action Strike||Strikes}. You can {@action Dismiss} the spell.",
 				"You gain the following statistics and abilities:",
 				{
 					"type": "list",
 					"items": [
 						"AC = 15 + your level. Ignore your armor's check penalty and Speed reduction.",
-						"Speed 10 feet.",
+						"Speed 20 feet.",
 						"Weakness 5 to physical damage. (If you take physical damage in this form, you take 5 additional damage.)",
 						"{@ability Low-light vision} and imprecise {@ability scent} 30 feet.",
 						"{@bold {@skill Acrobatics} and} {@skill Stealth} modifiers of +10, unless your own modifier is higher; {@skill Athletics} modifier \u20134."
@@ -17223,7 +17230,7 @@
 						"12 temporary Hit Points.",
 						"Resistance 10 to poison.",
 						"Low-light vision.",
-						"One or more unarmed melee attacks specific to the battle form you choose, which are the only attacks you can use. You're trained with them. Your attack modifier is +17, and your damage bonus is +11. These attacks are Strength based (for the purpose of the {@condition enfeebled} condition, for example). If your unarmed attack modifier is higher, you can use it instead.",
+						"One or more unarmed melee attacks specific to the battle form you choose, which are the only attacks you can {@action Strike} with. You're trained with them. Your attack modifier is +17, and your damage bonus is +11. These attacks are Strength based (for the purpose of the {@condition enfeebled} condition, for example). If your unarmed attack modifier is higher, you can use it instead.",
 						"{@skill Athletics} modifier of +19, unless your own modifier is higher. You also gain specific abilities based on the type of plant you choose:",
 						"{@bold Arboreal} Speed 30 feet; {@b Melee} {@as 1} branch (reach 15 feet), {@b Damage} {@damage 2d10} bludgeoning; {@b Melee} {@as 1} foot, {@b Damage} {@damage 2d8} bludgeoning; you can speak in this form, but you still can't {@action Cast a Spell} or supply verbal components.",
 						"{@bold Flytrap} Speed 15 feet; resistance 10 to acid; {@b Melee} {@as 1} leaf (reach 10 feet), {@b Damage} {@damage 2d8} piercing, and you can spend an action after a hit to Grab the target.",
@@ -17834,8 +17841,8 @@
 				{
 					"type": "list",
 					"items": [
-						"Duplicate any primal spell of 9th level or lower.",
-						"Duplicate any non-primal spell of 7th level or lower.",
+						"Duplicate any spell from the primal list of 9th level or lower to which you have access.",
+						"Duplicate any spell from another spell list of 7th level or lower to which you have access.",
 						"Produce any effect whose power level is in line with the above effects.",
 						"Reverse certain effects that refer to the {@spell wish} spell"
 					]
@@ -18065,7 +18072,7 @@
 				"You create an opaque wall of shimmering, multicolored light.",
 				"The wall is straight and vertical, stretching 60 feet long and 30 feet high. You must form the wall in an unbroken open space so its edges don't pass through any creatures or objects, or the spell is lost. You can pass through the wall and ignore its effects.",
 				"The wall sheds bright light out to 20 feet on each side (and dim light to the next 20 feet). Creatures other than you that come into the wall's light must attempt a Will save; they're {@condition dazzled} for 1 round on a success, {@condition blinded} for 1 round on a failure, and {@condition blinded} for 1 minute on a critical failure. They are then temporarily immune to the blinding effect for 1 hour.",
-				"A prismatic wall has seven different layers, each a different color. Red, orange, yellow, and green have the effect of a 5th-level {@spell chromatic wall} (page 323) spell of that color, and the others have the effect of a 7th-level {@spell chromatic wall} spell of that color. A creature that tries to pass through the wall must attempt a saving throw against each component wall.",
+				"A prismatic wall has seven different layers, each a different color. Red, orange, yellow, and green have the effect of a 5th-level {@spell chromatic wall} spell of that color, and the others have the effect of a 7th-level {@spell chromatic wall} spell of that color. A creature that tries to pass through the wall must attempt a saving throw against each component wall.",
 				"The effects take place simultaneously, so a creature turned to stone by the blue wall is still treated as a creature for the indigo and violet walls.",
 				"The wall as a whole is immune to counteracting effects of the wall's level or lower; each color must be counteracted by its specific spell, as described in chromatic wall. This must be done in order (red, orange, yellow, green, blue, indigo, then violet). A given color can't be affected until the previous color is counteracted. Counteracting a color wall removes that color's effect from the wall, and counteracting them all ends prismatic wall. You can {@action Dismiss} the spell."
 			]
@@ -18111,10 +18118,10 @@
 			},
 			"duration": {
 				"type": "timed",
-				"entry": "24 hours",
+				"entry": "until the next time you make your daily preparations",
 				"duration": {
-					"number": 24,
-					"unit": "hour"
+					"number": 1,
+					"unit": "special"
 				}
 			},
 			"entries": [
@@ -18276,6 +18283,7 @@
 			"level": 1,
 			"traits": [
 				"uncommon",
+				"aura",
 				"abjuration",
 				"wizard"
 			],
@@ -18361,6 +18369,7 @@
 			"level": 4,
 			"traits": [
 				"uncommon",
+				"aura",
 				"abjuration",
 				"cleric"
 			],
@@ -20134,10 +20143,10 @@
 			},
 			"duration": {
 				"type": "timed",
-				"entry": "24 hours",
+				"entry": "until the next time you make your daily preparations",
 				"duration": {
-					"number": 24,
-					"unit": "hour"
+					"number": 1,
+					"unit": "special"
 				}
 			},
 			"entries": [
@@ -21156,7 +21165,7 @@
 					"amount": 1
 				}
 			},
-			"targets": "1 non-magical club or staff you hold",
+			"targets": "1 club or staff you hold",
 			"duration": {
 				"type": "timed",
 				"entry": "1 minute",
@@ -21302,11 +21311,11 @@
 			"targets": "1 non-magical object up to 20 cubic feet in volume and up to 80 Bulk",
 			"duration": {
 				"type": "timed",
-				"entry": "1 day",
+				"entry": "until the next time you make your daily preparations",
 				"dismiss": true,
 				"duration": {
 					"number": 1,
-					"unit": "day"
+					"unit": "special"
 				}
 			},
 			"entries": [
@@ -22001,10 +22010,10 @@
 			"targets": "1 creature",
 			"duration": {
 				"type": "timed",
-				"entry": "24 hours",
+				"entry": "until the next time you make your daily preparations",
 				"duration": {
-					"number": 24,
-					"unit": "hour"
+					"number": 1,
+					"unit": "special"
 				}
 			},
 			"entries": [
@@ -22718,10 +22727,10 @@
 			"targets": "1 willing living creature",
 			"duration": {
 				"type": "timed",
-				"entry": "1 day",
+				"entry": "until the next time you make your daily preparations",
 				"duration": {
 					"number": 1,
-					"unit": "day"
+					"unit": "special"
 				}
 			},
 			"entries": [
@@ -24445,13 +24454,6 @@
 					"V": true
 				}
 			],
-			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
-			},
 			"area": {
 				"types": [
 					"Emanation"
@@ -24472,7 +24474,7 @@
 				}
 			},
 			"entries": [
-				"You emit a pulsating mental blast that penetrates the minds of all enemies in the area. Each creature in the area must attempt a Will save.",
+				"You emit a pulsating mental blast that penetrates the minds of all enemies in the area. Each enemy in the area must attempt a Will save.",
 				{
 					"type": "successDegree",
 					"entries": {
@@ -26123,8 +26125,8 @@
 					"type": "successDegree",
 					"entries": {
 						"Critical Success": "The target is unaffected.",
-						"Success": "The target heals half as much from heal and takes half as much damage from harm for 1 round.",
-						"Failure": "Effects as described in the text."
+						"Success": "The target heals half as much from {@spell heal} and takes half as much damage from {@spell harm} for 1 round.",
+						"Failure": "For the duration, {@spell harm} and {@spell heal} spells treat the creature as undead. In addition, {@spell harm} spells gain a +2 status bonus to the Hit Points restored to the target."
 					}
 				}
 			],
@@ -28458,8 +28460,8 @@
 				{
 					"type": "list",
 					"items": [
-						"Duplicate any arcane spell of 9th level or lower.",
-						"Duplicate any non-arcane spell of 7th level or lower.",
+						"Duplicate any spell from the arcane list of 9th level or lower to which you have access.",
+						"Duplicate any spell from another spell list of 7th level or lower to which you have access.",
 						"Produce any effect whose power level is in line with the above effects.",
 						"Reverse certain effects that refer to the {@spell wish} spell"
 					]
