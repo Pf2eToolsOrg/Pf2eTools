@@ -515,10 +515,12 @@ class ArchetypesPage extends BaseComponent {
 	getListItem (arc, ancI, isExcluded) {
 		const hash = UrlUtil.autoEncodeHash(arc);
 		const source = Parser.sourceJsonToAbv(arc.source);
+		const rarity = arc._fRarity ? arc._fRarity : "\u2014";
 
 		const $lnk = $(`<a href="#${hash}" class="lst--border">
-			<span class="bold col-8 pl-0">${arc.name}</span>
+			<span class="bold col-6 pl-0">${arc.name}</span>
 			<span class="col-2 text-center">${arc.dedicationLevel}</span>
+			<span class="col-2 text-center">${rarity}</span>
 			<span class="col-2 text-center ${Parser.sourceJsonToColor(arc.source)} pr-0" title="${Parser.sourceJsonToFull(arc.source)}" ${BrewUtil.sourceJsonToStyle(arc.source)}>${source}</span>
 		</a>`);
 
@@ -531,6 +533,7 @@ class ArchetypesPage extends BaseComponent {
 			{
 				hash,
 				source,
+				rarity,
 				level: arc.dedicationLevel,
 			},
 			{
