@@ -708,7 +708,7 @@ class ClassesPage extends BaseComponent {
 			"_state",
 			"__state",
 			this.activeClass.subclasses
-				.filter(sc => !this.filterBox.toDisplay(f, sc.source, Array(5), sc._fMisc, null))
+				.filter(sc => !this.filterBox.toDisplay(f, sc.source, sc._fRarity, Array(5), sc._fMisc, null))
 				.map(sc => UrlUtil.getStateKeySubclass(sc))
 				.filter(stateKey => this._state[stateKey])
 				.mergeMap(stateKey => ({[stateKey]: false})),
@@ -1154,7 +1154,7 @@ class ClassesPage extends BaseComponent {
 				metaTblRow.metasFeatureLinks.forEach(metaFeatureLink => {
 					if (metaFeatureLink.source) {
 						// FIXME: length of _filters hardcoded...
-						const isHidden = !this.filterBox.toDisplay(filterValues, metaFeatureLink.source, Array(5), null);
+						const isHidden = !this.filterBox.toDisplay(filterValues, metaFeatureLink.source, null, Array(5), null);
 						metaFeatureLink.isHidden = isHidden;
 						metaFeatureLink.$wrpLink.toggleClass("hidden", isHidden);
 					}
@@ -1388,6 +1388,7 @@ class ClassesPage extends BaseComponent {
 			return this.filterBox.toDisplay(
 				f,
 				li.data.entity.source,
+				cls._fRarity,
 				Array(5),
 				cls._fMisc,
 			);
