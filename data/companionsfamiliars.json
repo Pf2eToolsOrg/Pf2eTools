@@ -966,7 +966,7 @@
 			"speed": {
 				"walk": 40
 			},
-			"support": " horse adds momentum to your charge. Until the start of your next turn, if you moved at least 10 feet on the action before your {@action Strike}, add a circumstance bonus to damage for that {@action Strike} equal to twice the number of damage dice. If your weapon already has the {@trait jousting} weapon trait, increase the trait’s damage bonus by 2 per die instead.",
+			"support": " horse adds momentum to your charge. Until the start of your next turn, if you moved at least 10 feet on the action before your {@action Strike}, add a circumstance bonus to damage for that {@action Strike} equal to twice the number of damage dice. If your weapon already has the {@trait jousting} weapon trait, increase the trait's damage bonus by 2 per die instead.",
 			"maneuver": {
 				"name": "Gallop",
 				"source": "CRB",
@@ -1836,6 +1836,160 @@
 		}
 	],
 	"familiar": [
+		{
+			"name": "Polong",
+			"source": "BD",
+			"page": 40,
+			"type": "Familiar",
+			"traits": [
+				"incorporeal",
+				"undead"
+			],
+			"requires": 8,
+			"granted": [
+				"{@familiarAbility flier}",
+				"{@familiarAbility lifelink}",
+				"{@familiarAbility skilled|apg} ({@skill Society})",
+				"{@familiarAbility speech}"
+			],
+			"abilities": [
+				{
+					"name": "Polong Possession",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"traits": [
+						"incapacitation",
+						"mental",
+						"necromancy",
+						"occult",
+						"possession"
+					],
+					"entries": [
+						"The polong attempts to possess an adjacent corporeal creature. The creature must attempt a Will save against your class DC or spell DC, whichever is higher. On a failure, the polong merges into the creature's body for 1 minute (24 hours on a critical failure). The polong can observe through the creature's senses but is unable to control the creature. The possessed creature is drained 1 while the possession lasts. While possessing a creature, a polong can ignore the distance and line of effect limitation from its anchored incorporeality ability; when the possession ends, it immediately returns to the bottle if it's beyond range."
+					]
+				},
+				{
+					"name": "Anchored Incorporeality",
+					"entries": [
+						"The anchor must be a bottle.",
+						"{@note {@quickref Anchored Incorporeality|BD}}"
+					]
+				},
+				{
+					"name": "Undead",
+					"entries": [
+						"Your familiar is undead. It has {@ability negative healing} and is immune to {@trait death} effects, {@trait disease}, {@trait poison}, and {@condition unconscious}. It's destroyed at 0 HP."
+					]
+				}
+			],
+			"fluff": [
+				"Sometimes, the spirit of a cherished pet returns from the Boneyard to continue aiding its beloved owner. These tiny animal ghosts tend to be bound to anchors such as favorite toys, collars, or carved representations of who they were in life. An old friend is less likely to be evil than other undead familiars, as is its master."
+			]
+		},
+		{
+			"name": "Old Friend",
+			"source": "BD",
+			"page": 40,
+			"type": "Familiar",
+			"traits": [
+				"incorporeal",
+				"spirit",
+				"undead"
+			],
+			"requires": 4,
+			"granted": [
+				"{@familiarAbility flier}"
+			],
+			"abilities": [
+				{
+					"name": "Invisibility",
+					"entries": [
+						"Once per hour, your familiar can cast 2nd-level {@spell invisibility} on itself as a divine innate spell."
+					]
+				},
+				{
+					"name": "Anchored Incorporeality",
+					"entries": [
+						"{@note {@quickref Anchored Incorporeality|BD}}"
+					]
+				},
+				{
+					"name": "Undead",
+					"entries": [
+						"Your familiar is undead. It has {@ability negative healing} and is immune to {@trait death} effects, {@trait disease}, {@trait poison}, and {@condition unconscious}. It's destroyed at 0 HP."
+					]
+				}
+			],
+			"fluff": [
+				"Sometimes, the spirit of a cherished pet returns from the Boneyard to continue aiding its beloved owner. These tiny animal ghosts tend to be bound to anchors such as favorite toys, collars, or carved representations of who they were in life. An old friend is less likely to be evil than other undead familiars, as is its master."
+			]
+		},
+		{
+			"name": "Crawling Hand",
+			"source": "BD",
+			"page": 40,
+			"type": "Familiar",
+			"traits": [
+				"undead"
+			],
+			"requires": 5,
+			"granted": [
+				"{@familiarAbility manual dexterity}",
+				"{@familiarAbility spell delivery}",
+				"{@familiarAbility valet|apg}"
+			],
+			"abilities": [
+				{
+					"name": "Lend a Hand",
+					"entries": [
+						"The crawling hand assists an ally in the same space to attack a foe, crawling over the enemy and grabbing to distract them. Despite being a {@trait minion}, it gains 1 reaction at the start of its turns, which it can use only to {@action Aid} an attack roll by an ally that shares the hand's space (it still has to prepare to help as normal for the {@action Aid} reaction). This attempt automatically succeeds. If the crawling hand has a similar ability, like {@familiarAbility partner in crime}, it still gains only 1 reaction and can choose how to spend it."
+					]
+				},
+				{
+					"name": "Undead",
+					"entries": [
+						"Your familiar is undead. It has {@ability negative healing} and is immune to {@trait death} effects, {@trait disease}, {@trait poison}, and {@condition unconscious}. It's destroyed at 0 HP."
+					]
+				}
+			],
+			"fluff": [
+				"Crawling hands make grisly but striking familiars, popular among necromancers with an eye for aesthetics. They also tend to be convenient, due to many available spare parts. Crawling hands can be skeletal or fleshy, like a zombie."
+			]
+		},
+		{
+			"name": "Talking Head",
+			"source": "BD",
+			"page": 40,
+			"type": "Familiar",
+			"traits": [
+				"undead"
+			],
+			"requires": 3,
+			"granted": [
+				"{@familiarAbility cantrip connection}",
+				"{@familiarAbility skilled|apg} (your choice of {@skill Arcana}, {@skill Occultism}, or one kind of {@skill Lore})",
+				"{@familiarAbility speech}"
+			],
+			"abilities": [
+				{
+					"name": "Heads Will Roll",
+					"entries": [
+						"Unless its master gives the talking head the flier ability, a talking head is able to move only by rolling along the ground, reducing its speed to 15 feet. Alternatively, a creature can, as a single action, kick or throw the head 30 feet. This can't be used as an attack; the head bounces harmlessly off anything it hits."
+					]
+				},
+				{
+					"name": "Undead",
+					"entries": [
+						"Your familiar is undead. It has {@ability negative healing|b2} and is immune to {@trait death} effects, {@trait disease}, {@trait poison}, and {@condition unconscious}. It's destroyed at 0 HP."
+					]
+				}
+			],
+			"fluff": [
+				"Similar to beheaded, these disembodied, reanimated heads (with or without skin) retain some of their arcane wisdom, making for invaluable study partners. However, they also tend to be mouthy, opinionated, or downright obnoxious with their constant chattering, leading some annoyed masters to sew their mouths shut in punishment."
+			]
+		},
 		{
 			"name": "Aeon Wyrd",
 			"source": "LOPSG",
@@ -2849,6 +3003,127 @@
 		}
 	],
 	"eidolon": [
+		{
+			"name": "Undead Eidolon",
+			"type": "Eidolon",
+			"source": "BD",
+			"page": 36,
+			"fluff": [
+				"Your eidolon is an undead spirit pulled from the Ethereal Plane or Negative Energy Plane, embodied, and bound to your life force in an unusual, potentially antithetical way that even other summoners can't quite understand. Undead eidolons take about every imaginable shape and form, as their bodies manifest from their connection to you. Their ultimate form can be influenced by an amalgamation of the echoes and memories of their old life before becoming undead, their cause of death, their encounters in the afterlife, and portions of your own essences. Together, you and your eidolon need to explore the mysteries of life, death, and undeath to understand what your bond means for both of your futures."
+			],
+			"tradition": "divine",
+			"traits": [
+				"undead",
+				"eidolon"
+			],
+			"alignment": "must be good, usually neutral good",
+			"home": "Ethereal Plane or Negative Energy Plane",
+			"size": [
+				"Medium",
+				"Small"
+			],
+			"suggestedAttacks": [
+				"claw (slashing), fist (bludgeoning), jaws (piercing)"
+			],
+			"stats": [
+				{
+					"name": "Undead Brute",
+					"abilityMods": {
+						"Str": 18,
+						"Dex": 14,
+						"Con": 16,
+						"Int": 8,
+						"Wis": 10,
+						"Cha": 12
+					},
+					"ac": {
+						"number": 2,
+						"dexCap": 3
+					}
+				},
+				{
+					"name": "Undead Stalker",
+					"abilityMods": {
+						"Str": 14,
+						"Dex": 18,
+						"Con": 16,
+						"Int": 8,
+						"Wis": 12,
+						"Cha": 10
+					},
+					"ac": {
+						"number": 1,
+						"dexCap": 4
+					}
+				}
+			],
+			"skills": [
+				"Intimidation",
+				"Religion"
+			],
+			"senses": {
+				"other": [
+					"{@ability darkvision}"
+				]
+			},
+			"languages": [
+				"necril"
+			],
+			"speed": {
+				"walk": 25
+			},
+			"abilities": [
+				{
+					"name": "Negative Essence",
+					"type": "initial",
+					"entries": [
+						"Your undead eidolon has a link directly to your life force, which grants it a twilight state between living and undead. This renders it a living creature and therefore susceptible to many ailments that bother only the living, though it does possess some resistances to these effects.",
+						"The eidolon has {@ability negative healing|b2}, meaning it heals from negative energy effects that heal undead and is damaged by positive energy effects that damage undead. It doesn't have an undead's normal immunities, but it does gain a +2 circumstance bonus to saving throws against {@trait death} effects, {@trait disease}, and {@trait poison} effects, and non-damaging effects that target only undead. Additionally, its necrotic essence stanches its wounds easily. The flat check to remove {@condition persistent damage||persistent bleed damage} from the eidolon is DC {@flatDC 10} (or DC {@flatDC 5} after receiving particularly effective aid)."
+					]
+				},
+				{
+					"name": "Drain Life",
+					"type": "symbiosis",
+					"level": 7,
+					"entries": [
+						"Your eidolon's link with you sustains it, but it still craves the life essence of the living, whether through blood or pure essence. It gains the Drain Life activity.",
+						{
+							"type": "ability",
+							"activity": {
+								"number": 2,
+								"unit": "action"
+							},
+							"traits": [
+								"divine",
+								"eidolon",
+								"necromancy",
+								"negative"
+							],
+							"entries": [
+								"Your eidolon attacks a living creature and drains some of the creature's life force to feed your shared link. Your eidolon Strikes a living enemy. If the Strike hits and deals damage, the target must attempt a Fortitude save, with the following effects. On a critical hit, the enemy uses the result one degree worse than it rolled.",
+								{
+									"type": "successDegree",
+									"entries": {
+										"Critical Success": "No effect.",
+										"Success": "Your eidolon drains a small amount of life force. The enemy takes additional negative damage equal to half your level.",
+										"Failure": "Your eidolon drains enough life force to satisfy itself. The enemy takes additional negative damage equal to half your level and is {@condition drained 1}. Your eidolon gains temporary Hit Points equal to the enemy's level, which last for 1 minute.",
+										"Critical Failure": "Your eidolon drains an incredible amount of life force and is thoroughly glutted with energy. As failure, but the enemy is {@condition drained 2} and the temporary Hit Points are equal to double the enemy's level."
+									}
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Rejuvenation",
+					"type": "transcendence",
+					"level": 17,
+					"entries": [
+						"Your eidolon's unusual connection with you allows you both to rejuvenate when defeated. The first time each day your turn begins while you're dying, you instantly regain a number of Hit Points equal to three times your level and wake up. (Increase your {@condition wounded} condition as normal.) You can immediately {@action Manifest Eidolon|SoM|Manifest Your Eidolon} as a free action. You can then take your turn as normal."
+					]
+				}
+			]
+		},
 		{
 			"name": "Angel Eidolon",
 			"type": "Eidolon",
