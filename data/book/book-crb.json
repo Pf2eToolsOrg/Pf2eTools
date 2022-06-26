@@ -520,7 +520,7 @@
 						"{@b Erik:} Does a 20 hit you?",
 						"{@b James:} Nope, just missed!",
 						"{@b Erik:} You twist away from the ghast as its tongue leaves a slimy film on your armor. With its final action, the undead menace lashes out at you with its claw.",
-						"{@i Erik rolls a second attack with the ghast, this time with its claw. Normally this attack would take a \u20135 multiple attack penalty, but since the claw has the agile trait, the penalty is only \u20134. He rolls a 19 on the die, adds 11 for the ghoul's attack modifier and subtracts 4, for a total of 26.}",
+						"{@i Erik rolls a second attack with the ghast, this time with its claw. Normally this attack would take a \u20135 multiple attack penalty, but since the claw has the {@trait agile} trait, the penalty is only \u20134. He rolls a 19 on the die, adds 11 for the ghoul's attack modifier and subtracts 4, for a total of 26.}",
 						"{@b Erik:} You may have dodged the ghast's bite, but the thing's bony claw rakes across your face!",
 						"{@i Erik knows this is a hit and rolls the ghast's claw damage,} {@b Erik:} Take 8 points of damage, and I need you to attempt a Fortitude saving throw as a numbing sensation spreads from the wound.",
 						"{@i James rolls a Fortitude saving throw. He gets a 4 on the die, and after adding his bonus and the penalty from the sickened condition, it comes out to only a 9.}",
@@ -1694,7 +1694,7 @@
 							"entries": [
 								"This is the ability score that a member of your class cares about the most. Many of your most useful and powerful abilities are tied to this ability in some way.",
 								"For instance, this is the ability score you'll use to determine the Difficulty Class (DC) associated with your character's class features and feats. This is called your class DC. If your character is a member of a spellcasting class, this key ability is used to calculate spell DCs and similar values.",
-								"Most classes are associated with one key ability score, but some allow you to choose from two options. For instance, if you're a fighter, you can choose either Strength or Dexterity as your key ability. A fighter who chooses Strength will excel in hand-to-hand combat, while those who choose Dexterity prefer ranged or finesse weapons.",
+								"Most classes are associated with one key ability score, but some allow you to choose from two options. For instance, if you're a fighter, you can choose either Strength or Dexterity as your key ability. A fighter who chooses Strength will excel in hand-to-hand combat, while those who choose Dexterity prefer ranged or {@trait finesse} weapons.",
 								"Additionally, when you choose your character's class, they gain an ability boost to their key ability score, increasing that ability score by 2. For more about ability boosts, see page 20."
 							]
 						},
@@ -4350,7 +4350,7 @@
 									"type": "pf2-inset",
 									"page": 278,
 									"entries": [
-										"Melee attack modifier = Strength modifier {@n (or optionally Dexterity for a finesse weapon)} + proficiency bonus + other bonuses + penalties"
+										"Melee attack modifier = Strength modifier {@n (or optionally Dexterity for a {@trait finesse} weapon)} + proficiency bonus + other bonuses + penalties"
 									]
 								},
 								"Bonuses, and penalties apply to these rolls just like with other types of checks. Weapons with potency runes (page 581) add an item bonus to your attack rolls.",
@@ -4360,7 +4360,7 @@
 									"name": "Multiple Attack Penalty",
 									"entries": [
 										"If you use an action with the attack trait more than once on the same turn, your attacks after the first take a penalty called a multiple attack penalty. Your second attack takes a \u20135 penalty, and any subsequent attacks take a \u201310 penalty.",
-										"The multiple attack penalty doesn't apply to attacks you make when it isn't your turn (such as attacks made as part of a reaction). You can use a weapon with the {@trait agile} trait (page 282) to reduce your multiple attack penalty."
+										"The multiple attack penalty doesn't apply to attacks you make when it isn't your turn (such as attacks made as part of a reaction). You can use a weapon with the {@trait agile} trait to reduce your multiple attack penalty."
 									]
 								}
 							]
@@ -6786,11 +6786,11 @@
 							"name": "Attack Rolls",
 							"entries": [
 								"When you use a {@action Strike} action or make a spell attack, you attempt a check called an attack roll. Attack rolls take a variety of forms and are often highly variable based on the weapon you are using for the attack, but there are three main types: melee attack rolls, ranged attack rolls, and spell attack rolls. Spell attack rolls work a little bit differently, so they are explained separately on the next page.",
-								"{@b Melee attack rolls} use Strength as their ability modifier by default. If you're using a weapon or attack with the finesse trait, then you can use your Dexterity modifier instead.",
+								"{@b Melee attack rolls} use Strength as their ability modifier by default. If you're using a weapon or attack with the {@trait finesse} trait, then you can use your Dexterity modifier instead.",
 								{
 									"type": "pf2-inset",
 									"entries": [
-										"Melee attack roll result = d20 roll + Strength modifier (or optionally Dexterity modifier for a finesse weapon) + proficiency bonus + other bonuses + penalties"
+										"Melee attack roll result = d20 roll + Strength modifier (or optionally Dexterity modifier for a {@trait finesse} weapon) + proficiency bonus + other bonuses + penalties"
 									]
 								},
 								"{@b Ranged attack rolls} use Dexterity as their ability modifier.",
@@ -6809,7 +6809,7 @@
 									"name": "Multiple Attack Penalty",
 									"entries": [
 										"The more attacks you make beyond your first in a single turn, the less accurate you become, represented by the multiple attack penalty. The second time you use an {@trait attack} action during your turn, you take a \u20135 penalty to your check. The third time you attack, and on any subsequent attacks, you take a \u201310 penalty to your check. Every check that has the {@trait attack} trait counts toward your multiple attack penalty, including {@action Strike||Strikes}, spell attack rolls, certain skill actions like {@action Shove}, and many others.",
-										"Some weapons and abilities reduce multiple attack penalties, such as agile weapons, which reduce these penalties to \u20134 on the second attack or \u20138 on further attacks.",
+										"Some weapons and abilities reduce multiple attack penalties, such as {@trait agile} weapons, which reduce these penalties to \u20134 on the second attack or \u20138 on further attacks.",
 										{
 											"type": "table",
 											"colStyles": [
@@ -6840,8 +6840,8 @@
 												]
 											]
 										},
-										"Always calculate your multiple attack penalty for the weapon you're using on that attack. For example, let's say you're wielding a longsword in one hand and a shortsword (which has the agile trait) in your other hand, and you are going to make three Strikes with these weapons during the course of your turn. The first Strike you make during your turn has no penalty, no matter what weapon you are using. The second Strike will take either a \u20135 penalty if you use the longsword or a \u20134 penalty if you use the shortsword.",
-										"Just like the second attack, the penalty for your third attack is based on which weapon you're using for that particular Strike. It would be a \u201310 penalty with the longsword and a \u20138 penalty with the shortsword, no matter what weapon you used for your previous Strikes.",
+										"Always calculate your multiple attack penalty for the weapon you're using on that attack. For example, let's say you're wielding a {@item longsword} in one hand and a {@item shortsword} (which has the {@trait agile} trait) in your other hand, and you are going to make three {@action Strike||Strikes} with these weapons during the course of your turn. The first {@action Strike} you make during your turn has no penalty, no matter what weapon you are using. The second Strike will take either a \u20135 penalty if you use the {@item longsword} or a \u20134 penalty if you use the {@item shortsword}.",
+										"Just like the second attack, the penalty for your third attack is based on which weapon you're using for that particular {@action Strike}. It would be a \u201310 penalty with the {@item longsword} and a \u20138 penalty with the {@item shortsword}, no matter what weapon you used for your previous {@action Strike||Strikes}.",
 										"The multiple attack penalty applies only during your turn, so you don't have to keep track of it if you can perform an Attack of Opportunity or a similar reaction that lets you make a Strike on someone else's turn.",
 										{
 											"type": "pf2-h4",
@@ -11961,7 +11961,7 @@
 							"page": 557,
 							"name": "Specific Magic Armor",
 							"entries": [
-								"These suits of armor have abilities far different from what can be gained by etching runes. A specific magic armor lists its fundamental runes, which you can upgrade, add, or transfer as normal. You can't etch any property runes onto a specific armor that it doesn't already have, nor remove a property rune or transfer a property rune to or from a specific armor."
+								"These suits of armor have abilities far different from what can be gained by etching runes. A specific magic armor lists its fundamental runes, which you can upgrade, add, or transfer as normal. You can’t etch or transfer any property runes onto a specific armor that it doesn’t already have or remove its property runes."
 							]
 						}
 					]
@@ -12066,8 +12066,8 @@
 									"page": 565,
 									"name": "Crafting a Scroll",
 									"entries": [
-										"The process to {@action Craft} a scroll is much like that to {@action Craft} any other magic item. You only need to learn one 1st-level formula to {@action Craft} a {@i scroll}. When you begin the crafting process, choose a spell to put into the scroll. You have to either {@action Cast a Spell||Cast that Spell} during the crafting process, or someone else must do so in your presence. {@action Cast a Spell||Casting that Spell} doesn't produce its normal effects; instead, the magic is trapped inside the scroll. The casting must come from a spellcaster expending a spell slot.",
-										"You can't {@action Craft} a scroll from a spell produced from another magic item, for example. The caster has to provide any cost of the spell.",
+										"The process to {@action Craft} a scroll is much like that to {@action Craft} any other magic item. When you begin the crafting process, choose a spell to put into the scroll. You have to either {@action Cast a Spell||Cast that Spell} during the crafting process, or someone else must do so in your presence. {@action Cast a Spell||Casting that Spell} doesn't produce its normal effects; instead, the magic is trapped inside the scroll. The casting must come from a spellcaster expending a spell slot.",
+										"You can't {@action Craft} a scroll from a spell produced from another magic item, for example. The caster has to provide any cost of the spell. You need to learn only a single 1st-level formula to {@spell Craft} scrolls.",
 										"Like other {@trait consumable||consumables}, scrolls can be crafted in batches of four. All scrolls of one batch must contain the same spell at the same level, and you must provide one casting for each scroll crafted."
 									],
 									"data": {
@@ -12169,7 +12169,7 @@
 									"page": 565,
 									"name": "Affixing a Talisman",
 									"entries": [
-										"Each talisman's stat block indicates the type of item it can be affixed to. Affixing or removing requires using the {@action Affix a Talisman||Affixing the Talisman} activity. A single talisman can be affixed to only one item at a time, and if more than one talisman is affixed to an item, the talismans are suppressed; none of them can be activated.",
+										"Each talisman's stat block indicates the type of item it can be affixed to. Affixing or removing requires using the {@action Affix a Talisman||Affixing the Talisman} activity. A single talisman can be affixed to only one item at a time, and an item can have only one talisman affixed to it at a time without suppressing them all.",
 										{
 											"type": "data",
 											"tag": "action",
@@ -12556,16 +12556,7 @@
 									"entries": [
 										"Each type of wand has a Level and Price determined by the spell's level. The wand's rarity matches the spell's rarity. The item's traits also vary, based on the spell. A wand has any traits listed in its stat block (usually just magical and wand), plus any traits of the spell stored on it. A wand has the normal Hardness, BT, and HP of a thin item of its material (page 577)."
 									]
-								}
-							]
-						},
-						{
-							"type": "pf2-h3",
-							"page": 597,
-							"name": "Crafting a Wand",
-							"entries": [
-								"For the most part, the process to {@action Craft} a wand is like that to {@action Craft} any other magic item. You only need to learn one 1st-level formula to {@action Craft} a {@i magic wand}. When you begin the crafting process, choose a spell to put into the wand. You have to either cast that spell during the process, or someone else must do so in your presence. That spell doesn't have its normal effects; instead, the magic is captured inside the wand. The caster doesn't need to pay any cost of the spell.",
-								"The casting must come from a spellcaster expending a spell slot. You can't make a wand from a spell that comes from another magic item, for example.",
+								},
 								{
 									"type": "pf2-brown-box",
 									"page": 597,
@@ -12703,9 +12694,18 @@
 						{
 							"type": "pf2-h3",
 							"page": 597,
+							"name": "Crafting a Wand",
+							"entries": [
+								"For the most part, the process to {@action Craft} a wand is like that to {@action Craft} any other magic item. When you begin the crafting process, choose a spell to put into the wand. You have to either cast that spell during the process, or someone else must do so in your presence. That spell doesn't have its normal effects; instead, the magic is captured inside the wand. The caster doesn't need to pay any cost of the spell.",
+								"The casting must come from a spellcaster expending a spell slot. You can't make a wand from a spell that comes from another magic item, for example."
+							]
+						},
+						{
+							"type": "pf2-h3",
+							"page": 597,
 							"name": "Magic Wand",
 							"entries": [
-								"The simplest form of wand contains a spell, with Price and level based on that spell. The wand has the {@trait magical} and {@trait wand} traits, as well as the traits the spell has. The name of a magic wand with a spell in it is simply \"wand of,\" followed by the spell's name."
+								"The simplest form of wand contains a spell, with Price and level based on that spell. The wand has the {@trait magical} and {@trait wand} traits, as well as the traits the spell has. The name of a magic wand with a spell in it is simply \"wand of,\" followed by the spell's name. You only need to learn one 1st-level formula to {@action Craft} a {@i magic wand}."
 							]
 						},
 						{
@@ -12748,7 +12748,7 @@
 							"page": 600,
 							"name": "Specific Magic Weapons",
 							"entries": [
-								"These weapons have abilities far different from what can be gained by simply etching runes. A specific magic weapon lists its fundamental runes, which you can upgrade, add, or transfer as normal. You can't etch any property runes onto a specific weapon that it doesn't already have, nor remove a property rune or transfer a property rune to or from a specific weapon."
+								"These weapons have abilities far different from what can be gained by simply etching runes. A specific magic weapon lists its fundamental runes, which you can upgrade, add, or transfer as normal. You can’t etch or transfer any property runes onto a specific weapon that it doesn’t already have, and you can't remove its property runes."
 							]
 						}
 					]
