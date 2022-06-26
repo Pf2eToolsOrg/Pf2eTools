@@ -293,7 +293,7 @@ class List {
 
 	removeItemByIndex (ix, ixItem) {
 		ixItem = ixItem ?? this._items.findIndex(it => it.ix === ix);
-		if (!~ixItem) return;
+		if (!ixItem) throw new Error(`Tried to remove item that doesn't exist (${ix}, ${ixItem})`);
 
 		this._isDirty = true;
 		const removed = this._items.splice(ixItem, 1);

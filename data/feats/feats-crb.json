@@ -1953,7 +1953,7 @@
 				"fighter"
 			],
 			"entries": [
-				"With a sixth sense for the flow of combat, you can quickly react to any situation as required. At the start of each enemy's turn, you gain a reaction you can use only during that turn for any reaction from a fighter feat or class feature.."
+				"With a sixth sense for the flow of combat, you can quickly react to any situation as required. At the start of each enemy’s turn, you gain a reaction you can use only during that turn for any reaction from a fighter feat or class feature."
 			]
 		},
 		{
@@ -2135,7 +2135,7 @@
 			],
 			"prerequisites": "master in {@skill Stealth}",
 			"entries": [
-				"You alter your appearance to blend in to the wilderness. In natural terrain, you can {@action Hide} and {@action Sneak} even without cover or being concealed."
+				"You alter your appearance to blend in to the wilderness. In natural terrain, you can {@action Hide} and {@action Sneak} even without cover or being {@condition concealed}."
 			],
 			"leadsTo": [
 				"Shadow Hunter",
@@ -8855,11 +8855,11 @@
 				"monk"
 			],
 			"prerequisites": "{@feat Mountain Stronghold}",
-			"requirements": "You are in Mountain Stance.",
+			"requirements": "You are in {@feat Mountain Stance}.",
 			"entries": [
 				"You stomp, shaking the earth beneath you. Creatures on the ground within a 20-foot emanation take damage equal to your Strength modifier (minimum 0), which they can resist with a basic Fortitude save against your class DC. On a failure, they also fall {@condition prone}. After you use this action, you can't use it again for {@dice 1d4} rounds."
 			],
-			"special": "If you have this feat, the Dexterity modifier cap to your AC while using Mountain Stance increases from +1 to +2."
+			"special": "If you have this feat, the Dexterity modifier cap to your AC while using {@feat Mountain Stance} increases from +1 to +2."
 		},
 		{
 			"name": "Mountain Stance",
@@ -8897,11 +8897,11 @@
 				"monk"
 			],
 			"prerequisites": "{@feat Mountain Stance}",
-			"requirements": "You are in Mountain Stance.",
+			"requirements": "You are in {@feat Mountain Stance}.",
 			"entries": [
 				"You focus on your connection to the earth and call upon the mountain to block attacks against you. You gain a +2 circumstance bonus to AC until the beginning of your next turn."
 			],
-			"special": "If you have this feat, the Dexterity modifier cap to your AC while you're in Mountain Stance increases from +0 to +1.",
+			"special": "If you have this feat, the Dexterity modifier cap to your AC while you're in {@feat Mountain Stance} increases from +0 to +1.",
 			"leadsTo": [
 				"Mountain Quake"
 			]
@@ -14459,7 +14459,7 @@
 			"prerequisites": "Intelligence 14",
 			"entries": [
 				"You cast spells like a wizard, gaining a spellbook with four common arcane cantrips of your choice. You gain the {@action Cast a Spell} activity. You can prepare two cantrips each day from your spellbook. You're trained in arcane spell attack rolls and spell DCs. Your key spellcasting ability for wizard archetype spells is Int, and they are arcane wizard spells. You become trained in {@skill Arcana}; if you were already trained in {@skill Arcana}, you instead become trained in a skill of your choice.",
-				"Choose an arcane {@classFeature arcane school|wizard||1||school of magic} as you would if you were a wizard. You become a member of that school, allowing you to take the schools feats. You don't gain any abilities from your choice of school."
+				"Select one arcane {@classFeature arcane school|wizard||1||school of magic}; you don't gain any abilities from your choice of school."
 			],
 			"special": "You can't select another dedication feat until you have gained two other feats from the wizard archetype.",
 			"leadsTo": [
