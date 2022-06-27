@@ -628,10 +628,18 @@ GroupTag._GROUPS_REGEX = null;
 
 if (typeof module !== "undefined") {
 	module.exports = {
+		TagJsons,
 		TaggerUtils,
 		ActionSymbolTag,
 		DiceTag,
 		SkillTag,
 		ConditionTag,
+		SpellTag,
+		ItemTag,
+		FeatTag,
+		TraitTag,
+		ActionTag,
+		DeityTag,
+		GroupTag,
 	}
 }
