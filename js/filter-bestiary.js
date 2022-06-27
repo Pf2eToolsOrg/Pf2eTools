@@ -132,7 +132,7 @@ class PageFilterBestiary extends PageFilter {
 			filters: [this._speedFilter, this._speedTypeFilter],
 		});
 
-		this._spelltpyeFilter = new Filter({
+		this._spelltypeFilter = new Filter({
 			header: "Spellcasting Type",
 			itemSortFn: SortUtil.ascSort,
 		});
@@ -151,11 +151,19 @@ class PageFilterBestiary extends PageFilter {
 		});
 		this._spellcastingFilter = new MultiFilter({
 			header: "Spellcasting",
-			filters: [this._spelltpyeFilter, this._spellDCFilter, this._highestSpellFilter, this._ritualTraditionFilter],
+			filters: [this._spelltypeFilter, this._spellDCFilter, this._highestSpellFilter, this._ritualTraditionFilter],
+		});
+
+		this._miscellaneousFilter = new Filter({
+			header: "Miscellaneous",
+			itemSortFn: SortUtil.ascSort,
 		});
 	}
 
 	mutateForFilters (cr) {
+		cr._fMisc = [];
+		if (cr.hasImages) cr._fMisc.push("Has Images");
+		if (cr.isNpc) cr._fMisc.push("NPC");
 		cr._fSources = SourceFilter.getCompleteFilterSources(cr);
 		cr._fTraits = [...cr.traits];
 		cr._fSenses = {precise: [], imprecise: [], vague: [], other: []};
@@ -250,10 +258,12 @@ class PageFilterBestiary extends PageFilter {
 		this._speedFilter.addItem(cr._fSpeed);
 		this._speedTypeFilter.addItem(cr._fSpeedtypes);
 
-		this._spelltpyeFilter.addItem(cr._fSpellTypes);
+		this._spelltypeFilter.addItem(cr._fSpellTypes);
 		if (cr._fSpellDC > 0) this._spellDCFilter.addItem(cr._fSpellDC);
 		if (cr._fHighestSpell > 0) this._highestSpellFilter.addItem(cr._fHighestSpell);
 		this._ritualTraditionFilter.addItem(cr._fRitualTraditions);
+
+		this._miscellaneousFilter.addItem(cr._fMisc);
 	}
 
 	async _pPopulateBoxOptions (opts) {
@@ -268,6 +278,7 @@ class PageFilterBestiary extends PageFilter {
 			this._defenseFilter,
 			this._speedMultiFilter,
 			this._spellcastingFilter,
+			this._miscellaneousFilter,
 		];
 	}
 
@@ -314,6 +325,7 @@ class PageFilterBestiary extends PageFilter {
 				c._fHighestSpell,
 				c._fRitualTraditions,
 			],
+			c._fMisc,
 		);
 	}
 }
