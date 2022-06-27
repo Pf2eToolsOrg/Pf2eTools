@@ -3191,7 +3191,7 @@ Renderer.utils = {
 			const toSel = (!Renderer.utils._prevTab && i === 0) || (Renderer.utils._prevTab && Renderer.utils._prevTab.label === tb.label);
 			const $t = $(`<span class="ui-tab__btn-tab-head ${toSel ? `ui-tab__btn-tab-head--active` : ""} btn btn-default stat-tab-gen">${tb.label}</span>`);
 			tb.$t = $t;
-			$t.click(() => {
+			$t.click((e) => {
 				const curTab = Renderer.utils._curTab;
 				const tabs = Renderer.utils._tabs;
 
@@ -3208,6 +3208,12 @@ Renderer.utils = {
 						$content.append(tabs[tb.label].content);
 					}
 					if (tb.funcChange) tb.funcChange();
+				}
+				// FIXME: Doesn't work on first try. Needs to load the content first.
+				if (e.ctrlKey && tb.label === "Images") {
+					for (let index = 0; index < tabs.Images.content.length; index++) {
+						if (tabs.Images.content[index].href) window.open(tabs.Images.content[index].href, "_blank");
+					}
 				}
 			});
 			if (Renderer.utils._prevTab && Renderer.utils._prevTab.label === tb.label) initialTab = $t;
