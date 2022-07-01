@@ -48,10 +48,11 @@ class PageFilterClasses extends PageFilter {
 		};
 	}
 
+	get rarityFilter () { return this._rarityFilter; }
 	get optionsFilter () { return this._optionsFilter; }
 
 	mutateForFilters (cls, opts) {
-		if (cls.rarity) cls._fRarity = cls.rarity.toTitleCase();
+		cls._fRarity = cls.rarity ? cls.rarity.toTitleCase() : "Common";
 		cls.subclasses = cls.subclasses || []
 		cls._fSources = SourceFilter.getCompleteFilterSources(cls);
 		cls._fSourceSubclass = [...new Set([cls.source, ...cls.subclasses.map(it => it.source)])];
@@ -123,32 +124,14 @@ class PageFilterClasses extends PageFilter {
 		];
 	}
 
-	isClassNaturallyDisplayed (values, cls) {
-		return this._filterBox.toDisplay(
-			values,
-			cls.source,
-			cls._fRarity,
-			Array(this._proficienciesFilter._filters.length),
-			cls._fMisc,
-		);
-	}
-
 	isAnySubclassDisplayed (values, cls) {
 		return values[this._optionsFilter.header].isDisplayClassIfSubclassActive && (cls.subclasses || []).some(sc => {
-			return this._filterBox.toDisplay(
+			return this._filterBox.toDisplayByFilters(
 				values,
-				sc.source,
-				cls._fRarity,
-				Array(this._proficienciesFilter._filters.length),
-				sc._fMisc,
+				{filter: this.sourceFilter, value: sc.source},
+				{filter: this.rarityFilter, value: sc._fRarity},
 			);
 		});
-	}
-
-	getActiveSource (values) {
-		const sourceFilterValues = values[this._sourceFilter.header];
-		if (!sourceFilterValues) return null;
-		return Object.keys(sourceFilterValues).find(it => this._sourceFilter.toDisplay(values, it));
 	}
 
 	toDisplay (values, c) {

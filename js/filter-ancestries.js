@@ -60,6 +60,7 @@ class PageFilterAncestries extends PageFilter {
 	get optionsFilter () { return this._optionsFilter; }
 
 	mutateForFilters (ancestry, opts) {
+		ancestry._fRarity = ancestry.rarity ? ancestry.rarity.toTitleCase() : "Common";
 		ancestry._fSources = SourceFilter.getCompleteFilterSources(ancestry);
 		ancestry._fLanguages = ancestry.languages.filter(it => it.length < 20);
 		ancestry._fAbilities = []
@@ -88,7 +89,7 @@ class PageFilterAncestries extends PageFilter {
 		this._sizeFilter.addItem(ancestry._fSize);
 		this._languageFilter.addItem(ancestry._fLanguages);
 		this._traitsFilter.addItem(ancestry._fTraits);
-		this._rarityFilter.addItem(ancestry.rarity);
+		this._rarityFilter.addItem(ancestry._fRarity);
 		this._miscFilter.addItem(ancestry._fMisc);
 		this._fAbilities.addItem(ancestry._fAbilities);
 	}
@@ -123,7 +124,7 @@ class PageFilterAncestries extends PageFilter {
 			a._fSpeedtypes,
 			a._fLanguages,
 			a._fTraits,
-			a.rarity,
+			a._fRarity,
 			a._fMisc,
 			a._fAbilities,
 		)

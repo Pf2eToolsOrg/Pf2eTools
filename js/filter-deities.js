@@ -11,12 +11,12 @@ class PageFilterDeities extends PageFilter {
 		this._alignmentFilter = new Filter({
 			header: "Alignment",
 			itemSortFn: SortUtil.alignmentSort,
-			displayFn: Parser.alignAbvToFull,
+			displayFn: Parser.alignToFull,
 		});
 		this._followerAlignmentFilter = new Filter({
 			header: "Follower Alignment",
 			itemSortFn: SortUtil.alignmentSort,
-			displayFn: Parser.alignAbvToFull,
+			displayFn: Parser.alignToFull,
 		});
 		this._fontFilter = new Filter({header: "Divine Font", displayFn: StrUtil.toTitleCase});
 		this._skillFilter = new Filter({header: "Divine Skill", displayFn: StrUtil.toTitleCase});

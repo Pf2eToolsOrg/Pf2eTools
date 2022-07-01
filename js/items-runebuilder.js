@@ -114,7 +114,7 @@ class RuneBuilder extends ProxyBase {
 			itemsPage._addItems(data);
 			const id = itemsPage._ixData - 1;
 			itemsPage._runeItems.push(id);
-			await ListUtil.pDoSublistAdd(id, true);
+			await ListUtil.pDoSublistAdd({index: id, doFinalize: true});
 
 			// Remove old item from lists & save
 			const listItem = itemsPage._list.items.find(li => UrlUtil.autoEncodeHash(itemsPage._dataList[li.ix]) === this._state.activeKey);
@@ -276,10 +276,9 @@ class RuneBuilder extends ProxyBase {
 		this._active = false;
 	}
 
-	handleClick (evt, ix, add, customHashId) {
-		const data = customHashId ? {customHashId} : undefined;
-		if (add) RuneListUtil.pDoAdd(ix, data);
-		else RuneListUtil.pDoSubtract(ix, data);
+	handleClick (evt, ix, add) {
+		if (add) RuneListUtil.pDoAdd(ix);
+		else RuneListUtil.pDoSubtract(ix);
 	}
 
 	getRuneListItem (item, idx) {
@@ -550,7 +549,7 @@ const RuneListUtil = {
 	},
 
 	async pDoSubtract (index) {
-		this.list.removeItem(index);
+		this.list.removeItemByIndex(index);
 		this.list.update();
 		this._updateNoRunesVisible();
 		this._updateAddSubtractButton(index);

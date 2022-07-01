@@ -5,7 +5,7 @@ if (typeof module !== "undefined") require("./parser.js");
 
 // in deployment, `IS_DEPLOYED = "<version number>";` should be set below.
 IS_DEPLOYED = undefined;
-VERSION_NUMBER = /* PF2ETOOLS_VERSION__OPEN */"0.5.14"/* PF2ETOOLS_VERSION__CLOSE */;
+VERSION_NUMBER = /* PF2ETOOLS_VERSION__OPEN */"0.5.15"/* PF2ETOOLS_VERSION__CLOSE */;
 DEPLOYED_STATIC_ROOT = ""; // ""; // FIXME re-enable this when we have a CDN again
 IS_VTT = false;
 
@@ -692,6 +692,12 @@ JqueryUtil = {
 
 		JqueryUtil._ACTIVE_TOAST.push($toast);
 	},
+
+	isMobile () {
+		if (navigator && navigator.userAgentData && navigator.userAgentData.mobile) return true;
+		// Equivalent to `$width-screen-sm`
+		return window.matchMedia("(max-width: 768px)").matches;
+	},
 };
 
 if (typeof window !== "undefined") window.addEventListener("load", JqueryUtil.initEnhancements);
@@ -707,13 +713,23 @@ ElementUtil = {
 		mousedown,
 		mouseup,
 		mousemove,
+		keydown,
 		html,
 		text,
+		txt,
 		ele,
-		title,
 		children,
+		outer,
+
+		id,
+		name,
+		title,
+		val,
+		href,
+		type,
+		attrs,
 	}) {
-		ele = ele || document.createElement(tag);
+		ele = ele || (outer ? (new DOMParser()).parseFromString(outer, "text/html").body.childNodes[0] : document.createElement(tag));
 
 		if (clazz) ele.className = clazz;
 		if (style) ele.setAttribute("style", style);
@@ -723,10 +739,17 @@ ElementUtil = {
 		if (mousedown) ele.addEventListener("mousedown", mousedown);
 		if (mouseup) ele.addEventListener("mouseup", mouseup);
 		if (mousemove) ele.addEventListener("mousemove", mousemove);
+		if (keydown) ele.addEventListener("keydown", keydown);
 		if (html != null) ele.innerHTML = html;
-		if (text != null) ele.innerHTML = `${text}`.qq();
+		if (text != null || txt != null) ele.textContent = text;
+		if (id != null) ele.setAttribute("id", id);
+		if (name != null) ele.setAttribute("name", name);
 		if (title != null) ele.setAttribute("title", title);
-		if (children) for (let i = 0, len = children.length; i < len; ++i) ele.append(children[i]);
+		if (href != null) ele.setAttribute("href", href);
+		if (val != null) ele.setAttribute("value", val);
+		if (type != null) ele.setAttribute("type", type);
+		if (attrs != null) { for (const k in attrs) { if (attrs[k] === undefined) continue; ele.setAttribute(k, attrs[k]); } }
+		if (children) for (let i = 0, len = children.length; i < len; ++i) if (children[i] != null) ele.append(children[i]);
 
 		ele.appends = ele.appends || ElementUtil._appends.bind(ele);
 		ele.appendTo = ele.appendTo || ElementUtil._appendTo.bind(ele);
@@ -742,6 +765,11 @@ ElementUtil = {
 		ele.attr = ele.attr || ElementUtil._attr.bind(ele);
 		ele.val = ele.val || ElementUtil._val.bind(ele);
 		ele.html = ele.html || ElementUtil._html.bind(ele);
+		ele.txt = ele.txt || ElementUtil._txt.bind(ele);
+		ele.tooltip = ele.tooltip || ElementUtil._tooltip.bind(ele);
+		ele.onClick = ele.onClick || ElementUtil._onClick.bind(ele);
+		ele.onContextmenu = ele.onContextmenu || ElementUtil._onContextmenu.bind(ele);
+		ele.onChange = ele.onChange || ElementUtil._onChange.bind(ele);
 
 		return ele;
 	},
@@ -809,9 +837,26 @@ ElementUtil = {
 	},
 
 	_html (html) {
+		if (html === undefined) return this.innerHTML;
 		this.innerHTML = html;
 		return this;
 	},
+
+	_txt (txt) {
+		if (txt === undefined) return this.innerText;
+		this.innerText = txt;
+		return this;
+	},
+
+	_tooltip (title) {
+		return this.attr("title", title);
+	},
+
+	_onClick (fn) { return ElementUtil._onX(this, "click", fn); },
+	_onContextmenu (fn) { return ElementUtil._onX(this, "contextmenu", fn); },
+	_onChange (fn) { return ElementUtil._onX(this, "change", fn); },
+
+	_onX (ele, evtName, fn) { ele.addEventListener(evtName, fn); return ele; },
 
 	_val (val) {
 		if (val !== undefined) {
@@ -838,7 +883,37 @@ ElementUtil = {
 			default: return this.value;
 		}
 	},
-}
+
+	// region "Static"
+	getIndexPathToParent (parent, child) {
+		if (!parent.contains(child)) return null;
+
+		const path = [];
+
+		while (child !== parent) {
+			if (!child.parentElement) return null;
+
+			const ix = [...child.parentElement.children].indexOf(child);
+			if (!~ix) return null;
+
+			path.push(ix);
+
+			child = child.parentElement;
+		}
+
+		return path.reverse();
+	},
+
+	getChildByIndexPath (parent, indexPath) {
+		for (let i = 0; i < indexPath.length; ++i) {
+			const ix = indexPath[i];
+			parent = parent.children[ix];
+			if (!parent) return null;
+		}
+		return parent;
+	},
+	// endregion
+};
 
 if (typeof window !== "undefined") window.e_ = ElementUtil.getOrModify;
 

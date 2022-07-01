@@ -4158,22 +4158,10 @@
 									"entries": [
 										"The traits for each suit of armor appear in this entry.",
 										"Armor can have the following traits.",
-										"{@b Bulwark:} The armor covers you so completely that it provides benefits against some damaging effects. On Reflex saves to avoid a damaging effect, such as a {@spell fireball}, you add a +3 modifier instead of your Dexterity modifier.",
-										"{@b Comfort:} The armor is so comfortable that you can rest normally while wearing it.",
-										"{@b Flexible:} The armor is flexible enough that it doesn't hinder most actions. You don't apply its check penalty to {@skill Acrobatics} or {@skill Athletics} checks.",
-										"{@b Noisy:} This armor is loud and likely to alert others to your presence when you're using the {@action Avoid Notice} exploration activity (page 479).",
-										{
-											"type": "data",
-											"tag": "table",
-											"name": "Unarmored Defense",
-											"source": "CRB"
-										},
-										{
-											"type": "data",
-											"tag": "table",
-											"name": "Armor",
-											"source": "CRB"
-										}
+										"{@b {@trait Bulwark}:} The armor covers you so completely that it provides benefits against some damaging effects. On Reflex saves to avoid a damaging effect, such as a {@spell fireball}, you add a +3 modifier instead of your Dexterity modifier.",
+										"{@b {@trait Comfort}:} The armor is so comfortable that you can rest normally while wearing it.",
+										"{@b {@trait Flexible}:} The armor is flexible enough that it doesn't hinder most actions. You don't apply its check penalty to {@skill Acrobatics} or {@skill Athletics} checks.",
+										"{@b {@trait Noisy}:} This armor is loud and likely to alert others to your presence when you're using the {@action Avoid Notice} exploration activity."
 									]
 								},
 								{
@@ -4182,10 +4170,10 @@
 									"name": "Armor Specialization Effects",
 									"entries": [
 										"Certain class features can grant you additional benefits with certain armors. This is called an armor specialization effect. The exact effect depends on which armor group your armor belongs to, as listed below. Only medium and heavy armors have armor specialization effects.",
-										"{@b Chain:} The armor is so flexible it can bend with a critical hit and absorb some of the blow. Reduce the damage from critical hits by either 4 + the value of the armor's potency rune for medium armor, or 6 + the value of the armor's potency rune for heavy armor. This can't reduce the damage to less than the damage rolled for the hit before doubling for a critical hit.",
-										"{@b Composite:} The numerous overlapping pieces of this armor protect you from piercing attacks. You gain resistance to piercing damage equal to 1 + the value of the armor's potency rune for medium armor, or 2 + the value of the armor's potency rune for heavy armor.",
-										"{@b Leather:} The thick second skin of the armor disperses blunt force to reduce bludgeoning damage. You gain resistance to bludgeoning damage equal to 1 + the value of the armor's potency rune for medium armor, or 2 + the value of the armor's potency rune for heavy armor.",
-										"{@b Plate:} The sturdy plate provides no purchase for a cutting edge. You gain resistance to slashing damage equal to 1 + the value of the armor's potency rune for medium armor, or 2 + the value of the armor's potency rune for heavy armor."
+										"{@b {@group Chain}:} The armor is so flexible it can bend with a critical hit and absorb some of the blow. Reduce the damage from critical hits by either 4 + the value of the armor's potency rune for medium armor, or 6 + the value of the armor's potency rune for heavy armor. This can't reduce the damage to less than the damage rolled for the hit before doubling for a critical hit.",
+										"{@b {@group Composite}:} The numerous overlapping pieces of this armor protect you from piercing attacks. You gain resistance to piercing damage equal to 1 + the value of the armor's potency rune for medium armor, or 2 + the value of the armor's potency rune for heavy armor.",
+										"{@b {@group Leather}:} The thick second skin of the armor disperses blunt force to reduce bludgeoning damage. You gain resistance to bludgeoning damage equal to 1 + the value of the armor's potency rune for medium armor, or 2 + the value of the armor's potency rune for heavy armor.",
+										"{@b {@group Plate}:} The sturdy plate provides no purchase for a cutting edge. You gain resistance to slashing damage equal to 1 + the value of the armor's potency rune for medium armor, or 2 + the value of the armor's potency rune for heavy armor."
 									]
 								},
 								{
@@ -4217,18 +4205,18 @@
 							"name": "Armor Descriptions",
 							"entries": [
 								"Each type of armor is described in more detail below.",
-								"{@b Breastplate:} Though referred to as a breastplate, this type of armor consists of several pieces of plate or half-plate armor (page 276) that protect the torso, chest, neck, and sometimes the hips and lower legs. It strategically grants some of the protection of plate while allowing greater flexibility and speed.",
-								"{@b Chain Mail:} A suit of chain mail consists of several pieces of armor composed of small metal rings linked together in a protective mesh. It typically includes a chain shirt, leggings, a pair of arms, and a coif, collectively protecting most of the body.",
-								"{@b Chain Shirt:} Sometimes called a hauberk, this is a long shirt constructed of the same metal rings as chainmail. However, it is much lighter than chainmail and protects only the torso, upper arms, and upper legs of its wearer.",
-								"{@b Explorer's Clothing:} Adventurers who don't wear armor travel in durable clothing. Though it's not armor and uses your unarmored defense proficiency, it still has a Dex Cap and can grant an item bonus to AC if etched with potency runes (as described on page 581).",
-								"{@b Full Plate:} Plate mail consists of interlocking plates that encase nearly the entire body in a carapace of steel. It is costly and heavy, and the wearer often requires help to don it correctly, but it provides some of the best defense armor can supply. A suit of this armor comes with an undercoat of padded armor (see below) and a pair of gauntlets (page 285).",
-								"{@b Half Plate:} Half plate consists of most of the upper body plates used in full plate, with lighter or sparser steel plate protection for the arms and legs. This provides some of the protection of full plate with greater flexibility and speed. A suit of this armor comes with an undercoat of padded armor (see below) and a pair of gauntlets (page 285).",
-								"{@b Hide:} A mix of furs, sturdy hide, and sometimes molded boiled leather, this armor provides protection due to its layers of leather, though its bulkiness slows the wearer down and decreases mobility.",
-								"{@b Leather:} A mix of flexible and molded boiled leather, a suit of this type of armor provides some protection with maximum flexibility.",
-								"{@b Padded Armor:} This armor is simply a layer of heavy, quilted cloth, but it is sometimes used because it's so inexpensive. Padded armor is easier to damage and destroy than other types of armor. Heavy armor comes with a padded armor undercoat included in its Price, though it loses the comfort trait when worn under heavy armor. You can wear just that padded armor undercoat to sleep in, if your heavy armor is destroyed, or when otherwise not wearing the full heavy armor. This allows you to keep the armor invested and benefit from the power of any runes on the associated heavy armor, but no one else can wear your heavy armor without the padded undercoat.",
-								"{@b Scale Mail:} Scale mail consists of many metal scales sewn onto a reinforced leather backing, often in the form of a long shirt that protects the torso, arms, and legs.",
-								"{@b Splint Mail:} This type of armor is chain mail reinforced with flexible, interlocking metal plates, typically located on the wearer's torso, upper arms, and legs. A suit of this armor comes with an undercoat of padded armor (see above) and a pair of gauntlets (page 285).",
-								"{@b Studded Leather:} This leather armor is reinforced with metal studs and sometimes small metal plates, providing most of the flexibility of leather armor with more robust protection.",
+								"{@b {@item Breastplate}:} Though referred to as a breastplate, this type of armor consists of several pieces of plate or half-plate armor (page 276) that protect the torso, chest, neck, and sometimes the hips and lower legs. It strategically grants some of the protection of plate while allowing greater flexibility and speed.",
+								"{@b {@item Chain Mail}:} A suit of chain mail consists of several pieces of armor composed of small metal rings linked together in a protective mesh. It typically includes a chain shirt, leggings, a pair of arms, and a coif, collectively protecting most of the body.",
+								"{@b {@item Chain Shirt}:} Sometimes called a hauberk, this is a long shirt constructed of the same metal rings as chainmail. However, it is much lighter than chainmail and protects only the torso, upper arms, and upper legs of its wearer.",
+								"{@b {@item Explorer's Clothing}:} Adventurers who don't wear armor travel in durable clothing. Though it's not armor and uses your unarmored defense proficiency, it still has a Dex Cap and can grant an item bonus to AC if etched with potency runes (as described on page 581).",
+								"{@b {@item Full Plate}:} Plate mail consists of interlocking plates that encase nearly the entire body in a carapace of steel. It is costly and heavy, and the wearer often requires help to don it correctly, but it provides some of the best defense armor can supply. A suit of this armor comes with an undercoat of padded armor (see below) and a pair of gauntlets (page 285).",
+								"{@b {@item Half Plate}:} Half plate consists of most of the upper body plates used in full plate, with lighter or sparser steel plate protection for the arms and legs. This provides some of the protection of full plate with greater flexibility and speed. A suit of this armor comes with an undercoat of padded armor (see below) and a pair of gauntlets (page 285).",
+								"{@b {@item Hide}:} A mix of furs, sturdy hide, and sometimes molded boiled leather, this armor provides protection due to its layers of leather, though its bulkiness slows the wearer down and decreases mobility.",
+								"{@b {@item Leather}:} A mix of flexible and molded boiled leather, a suit of this type of armor provides some protection with maximum flexibility.",
+								"{@b {@item Padded Armor}:} This armor is simply a layer of heavy, quilted cloth, but it is sometimes used because it's so inexpensive. Padded armor is easier to damage and destroy than other types of armor. Heavy armor comes with a padded armor undercoat included in its Price, though it loses the comfort trait when worn under heavy armor. You can wear just that padded armor undercoat to sleep in, if your heavy armor is destroyed, or when otherwise not wearing the full heavy armor. This allows you to keep the armor invested and benefit from the power of any runes on the associated heavy armor, but no one else can wear your heavy armor without the padded undercoat.",
+								"{@b {@item Scale Mail}:} Scale mail consists of many metal scales sewn onto a reinforced leather backing, often in the form of a long shirt that protects the torso, arms, and legs.",
+								"{@b {@item Splint Mail}:} This type of armor is chain mail reinforced with flexible, interlocking metal plates, typically located on the wearer's torso, upper arms, and legs. A suit of this armor comes with an undercoat of padded armor (see above) and a pair of gauntlets (page 285).",
+								"{@b {@item Studded Leather}:} This leather armor is reinforced with metal studs and sometimes small metal plates, providing most of the flexibility of leather armor with more robust protection.",
 								{
 									"type": "data",
 									"tag": "table",
@@ -4310,10 +4298,10 @@
 							"name": "Shield Descriptions",
 							"entries": [
 								"Each type of shield is described in more detail below.",
-								"{@b Buckler:} This very small shield is a favorite of duelists and quick, lightly armored warriors. It's typically made of steel and strapped to your forearm. You can Raise a Shield with your buckler as long as you have that hand free or are holding a light object that's not a weapon in that hand.",
-								"{@b Wooden Shield:} Though they come in a variety of shapes and sizes, the protection offered by wooden shields comes from the stoutness of their materials. While wooden shields are less expensive than steel shields, they break more easily.",
-								"{@b Steel Shield:} Like wooden shields, steel shields come in a variety of shapes and sizes. Though more expensive than wooden shields, they are much more durable.",
-								"{@b Tower Shield:} These massive shields can be used to provide cover to nearly the entire body. Due to their size, they are typically made of wood reinforced with metal."
+								"{@b {@item Buckler}:} This very small shield is a favorite of duelists and quick, lightly armored warriors. It's typically made of steel and strapped to your forearm. You can Raise a Shield with your buckler as long as you have that hand free or are holding a light object that's not a weapon in that hand.",
+								"{@b {@item Wooden Shield}:} Though they come in a variety of shapes and sizes, the protection offered by wooden shields comes from the stoutness of their materials. While wooden shields are less expensive than steel shields, they break more easily.",
+								"{@b {@item Steel Shield}:} Like wooden shields, steel shields come in a variety of shapes and sizes. Though more expensive than wooden shields, they are much more durable.",
+								"{@b {@item Tower Shield}:} These massive shields can be used to provide cover to nearly the entire body. Due to their size, they are typically made of wood reinforced with metal."
 							]
 						}
 					],
@@ -11961,7 +11949,7 @@
 							"page": 557,
 							"name": "Specific Magic Armor",
 							"entries": [
-								"These suits of armor have abilities far different from what can be gained by etching runes. A specific magic armor lists its fundamental runes, which you can upgrade, add, or transfer as normal. You can’t etch or transfer any property runes onto a specific armor that it doesn’t already have or remove its property runes."
+								"These suits of armor have abilities far different from what can be gained by etching runes. A specific magic armor lists its fundamental runes, which you can upgrade, add, or transfer as normal. You can't etch or transfer any property runes onto a specific armor that it doesn't already have or remove its property runes."
 							]
 						}
 					]
@@ -12748,7 +12736,7 @@
 							"page": 600,
 							"name": "Specific Magic Weapons",
 							"entries": [
-								"These weapons have abilities far different from what can be gained by simply etching runes. A specific magic weapon lists its fundamental runes, which you can upgrade, add, or transfer as normal. You can’t etch or transfer any property runes onto a specific weapon that it doesn’t already have, and you can't remove its property runes."
+								"These weapons have abilities far different from what can be gained by simply etching runes. A specific magic weapon lists its fundamental runes, which you can upgrade, add, or transfer as normal. You can't etch or transfer any property runes onto a specific weapon that it doesn't already have, and you can't remove its property runes."
 							]
 						}
 					]
