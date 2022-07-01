@@ -325,7 +325,7 @@ class SpellsPage extends ListPage {
 
 		ListUtil.setOptions({
 			itemList: this._dataList,
-			getSublistRow: this.getSublistItem.bind(this),
+			pGetSublistRow: this.getSublistItem.bind(this),
 			primaryLists: [this._list],
 		});
 		ListUtil.bindPinButton();
@@ -336,14 +336,6 @@ class SpellsPage extends ListPage {
 			download: true,
 			upload: {
 				pFnPreLoad: pPreloadSublistSources.bind(this),
-			},
-			sendToBrew: {
-				mode: "spellBuilder",
-				fnGetMeta: () => ({
-					page: UrlUtil.getCurrentPage(),
-					source: Hist.getHashSource(),
-					hash: Hist.getHashParts()[0],
-				}),
 			},
 		});
 	}

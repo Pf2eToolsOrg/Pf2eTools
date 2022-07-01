@@ -860,6 +860,18 @@ class IndexableFileActions extends IndexableFile {
 	}
 }
 
+class IndexableFileVehicles extends IndexableFile {
+	constructor () {
+		super({
+			category: Parser.CAT_ID_VEHICLE,
+			file: "vehicles.json",
+			listProp: "vehicle",
+			baseUrl: "vehicles.html",
+			isHover: true,
+		});
+	}
+}
+
 class IndexableFileCreatureAbilities extends IndexableFile {
 	constructor () {
 		super({
@@ -994,6 +1006,7 @@ Omnidexer.TO_INDEX = [
 	new IndexableFileTables(),
 
 	new IndexableFileActions(),
+	new IndexableFileVehicles(),
 	new IndexableFileCreatureAbilities(),
 	new IndexableFileLanguages(),
 	new IndexableFileTraits(),

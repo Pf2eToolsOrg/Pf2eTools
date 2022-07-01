@@ -573,7 +573,7 @@ Parser.getClassSideBarEntries = function (cls) {
 					if (element.entry) {
 						return entry.push(`{@indentSubsequent ${prof} in ${element.entry}}`);
 					} else {
-						return entry.push(`{@indentSubsequent ${prof} in your choice of ${element.skill.map(s => `{@skill ${s}}`).joinConjunct(", ", " or ")}}`);
+						return entry.push(`{@indentSubsequent ${prof} in ${element.skill.length === 1 ? "" : `your choice of`} ${element.skill.map(s => `{@skill ${s}}`).joinConjunct(", ", " or ")}}`);
 					}
 				} else return entry.push(`{@indentSubsequent ${prof} in ${element}}`);
 			});
@@ -712,32 +712,53 @@ Parser.COMPONENTS_TO_FULL["M"] = "material";
 Parser.COMPONENTS_TO_FULL["S"] = "somatic";
 Parser.COMPONENTS_TO_FULL["F"] = "focus";
 
-Parser.alignAbvToFull = function (align) {
+Parser.alignToFull = function (align) {
 	switch (String(align).toLowerCase()) {
 		case null:
 			return "";
 		case "any":
 			return "Any";
 		case "lg":
+		case "lawful good":
 			return "Lawful Good";
 		case "ng":
+		case "neutral good":
 			return "Neutral Good";
 		case "cg":
+		case "chaotic good":
 			return "Chaotic Good";
 		case "ln":
+		case "lawful neutral":
 			return "Lawful Neutral";
 		case "n":
+		case "neutral":
 			return "Neutral";
 		case "cn":
+		case "chaotic neutral":
 			return "Chaotic Neutral";
 		case "le":
+		case "lawful evil":
 			return "Lawful Evil";
 		case "ne":
+		case "neutral evil":
 			return "Neutral Evil";
 		case "ce":
+		case "chaotic evil":
 			return "Chaotic Evil";
 		case "all":
 			return "All";
+		case "l":
+		case "lawful":
+			return "Lawful";
+		case "c":
+		case "chaotic":
+			return "Chaotic";
+		case "g":
+		case "good":
+			return "Good";
+		case "e":
+		case "evil":
+			return "Evil";
 		default:
 			return "\u2014";
 	}
@@ -1834,21 +1855,18 @@ Parser.DMGTYPE_JSON_TO_FULL = {
 	"-": "negative",
 };
 
-Parser.levelToDC = function (level, spell, difficulty) {
-	if (isNaN(level)) return "?"
-	let DC = 0
-	if (spell.toLowerCase() === "focus" || spell.toLowerCase() === "spell" || spell === true) level = (level * 2) - 1
-	if (level < 21) {
-		DC = 14 + Number(level) + Math.floor(level / 3)
-	} else {
-		DC = 40 + Number((level - 20) * 2)
-	}
+Parser.levelToDC = function (level, isSpell, traits) {
+	if (isNaN(level)) return "?";
+	let DC = 0;
+	if (isSpell.toLowerCase() === "focus" || isSpell.toLowerCase() === "spell" || isSpell === true) level = (level * 2) - 1;
+	if (level < 21) DC = 14 + Number(level) + Math.floor(level / 3);
+	else DC = 40 + Number((level - 20) * 2);
+
 	// The Difficulty is negative for easier adjustments and positive for harder adjustments. 0 is default.
-	if (difficulty) {
-		if (typeof difficulty === "string" || difficulty instanceof String) { difficulty = difficulty.split() }
-		for (let i = 0; i < difficulty.length; i++) {
-			let typeNum = difficulty[i];
-			switch (Parser.rarityToNumber(typeNum)) {
+	if (traits && traits.length) {
+		const difficulties = typeof traits === "string" ? traits.split(" ") : traits.filter(it => typeof it === "string");
+		difficulties.forEach(difficulty => {
+			switch (Parser.rarityToNumber(difficulty)) {
 				// Incredibly Easy
 				case -3:
 					DC = DC - 10;
@@ -1875,7 +1893,7 @@ Parser.levelToDC = function (level, spell, difficulty) {
 					break;
 				default: break;
 			}
-		}
+		});
 	}
 
 	return `${DC}${level < 0 || level > 25 ? `*` : ""}`

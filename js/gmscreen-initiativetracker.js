@@ -1425,7 +1425,7 @@ class InitiativeTracker {
 							n: {
 								name: it.creature.name,
 								displayName: it.creature._displayName,
-								scaledTo: it.creature._isScaledLvl,
+								scaledTo: it.creature._scaledLvl,
 							},
 							i: cfg.isRollInit ? `${cfg.importIsRollGroups ? groupInit : pRollInitiative(it.creature)}` : null,
 							a: 0,

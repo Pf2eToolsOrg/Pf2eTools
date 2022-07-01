@@ -981,15 +981,19 @@ class AncestriesPage extends BaseComponent {
 			evt.stopPropagation();
 			$dropDownImagesContent.empty();
 			const {veHerUrls, ancUrls} = this._getImageUrls();
-			const ancLinks = ancUrls.map(l => `<li><a href="${l}" target="_blank" rel="noopener noreferrer">${l}</a></li>`);
-			const veHerLinks = veHerUrls.map(l => `<li><a href="${l}" target="_blank" rel="noopener noreferrer">${l}</a></li>`);
-			ancLinks.forEach(l => $dropDownImagesContent.append(l));
-			if (ancLinks.length && veHerLinks.length) $dropDownImagesContent.append($(`<li class="divider"></li>`))
-			veHerLinks.forEach(l => $dropDownImagesContent.append(l));
-			if (ancLinks.length === 0 && veHerLinks.length === 0) $dropDownImagesContent.append($(`<li class="p-1">No Images available.</li>`))
+			const ancLinks = ancUrls.map(l => `<a href="${l}" target="_blank" rel="noopener noreferrer">${l}</a>`);
+			const veHerLinks = veHerUrls.map(l => `<a href="${l}" target="_blank" rel="noopener noreferrer">${l}</a>`);
+			if (evt.ctrlKey || evt.shiftKey) {
+				[...ancLinks, ...veHerLinks].forEach(l => $(l)[0].click());
+			} else {
+				ancLinks.forEach(l => $dropDownImagesContent.append(`<li>${l}</li>`));
+				if (ancLinks.length && veHerLinks.length) $dropDownImagesContent.append($(`<li class="divider"></li>`))
+				veHerLinks.forEach(l => $dropDownImagesContent.append(`<li>${l}</li>`));
+				if (ancLinks.length === 0 && veHerLinks.length === 0) $dropDownImagesContent.append($(`<li class="p-1">No Images available.</li>`))
 
-			$dropDownImagesButton.toggleClass("ui-tab__btn-tab-head");
-			$dropDownImages.toggleClass("open");
+				$dropDownImagesButton.toggleClass("ui-tab__btn-tab-head");
+				$dropDownImages.toggleClass("open");
+			}
 		}).appendTo($dropDownImages);
 		document.addEventListener("click", () => {
 			$dropDownImages.toggleClass("open", false)

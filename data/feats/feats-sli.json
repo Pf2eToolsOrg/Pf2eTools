@@ -13,7 +13,7 @@
 			"traits": [
 				"archetype"
 			],
-			"prerequisites": "Oozemorph Dedication",
+			"prerequisites": "{@feat Oozemorph Dedication|Sli}",
 			"entries": [
 				"Your internal organs and blood vessels have shifted and changed, and even you don't know precisely where in your body they are. You gain resistance to precision damage equal to 2 + your number of class feats from the oozemorph archetype. The DC of your flat checks to recover from {@condition persistent damage ||persistent bleed damage} is 13, rather than 15."
 			]
@@ -32,7 +32,7 @@
 				"archetype",
 				"skill"
 			],
-			"prerequisites": "Oozemorph Dedication, trained in {@skill Performance}",
+			"prerequisites": "{@feat Oozemorph Dedication|Sli}, trained in {@skill Performance}",
 			"entries": [
 				"Your throat has multiple separate chambers that can give your voice an eerie echo. You can be clearly heard at distances of up to 300 feet regardless of ambient sound, although your voice doesn't penetrate a magical silence effect."
 			]
@@ -50,7 +50,7 @@
 			"traits": [
 				"archetype"
 			],
-			"prerequisites": "Oozemorph Dedication, at least two other class feats from the oozemorph archetype",
+			"prerequisites": "{@feat Oozemorph Dedication|Sli}, at least two other class feats from the oozemorph archetype",
 			"entries": [
 				"You can connect with oozes (and other amorphous aberrations, at the GM's discretion) on a rudimentary level. You can use {@skill Diplomacy} to {@action Make an Impression} on oozes and to make very simple Requests of them. In most instances, oozes will give you time to make your case."
 			]
@@ -92,10 +92,10 @@
 			"traits": [
 				"archetype"
 			],
-			"prerequisites": "Disturbing Defense",
+			"prerequisites": "{@feat Disturbing Defense|Sli}",
 			"entries": [
 				"Your circulatory system contains viscous protoplasmic fluid instead of ordinary blood. You gain a +2 circumstance bonus to saving throws against disease and poison, and resistance to poison damage equal to half your level.",
-				"In addition, your resistance to precision damage from Disturbing Defense increases to an amount equal to 7 + your number of class feats from the oozemorph archetype, and the DC of your flat checks to recover from {@condition persistent damage ||persistent bleed damage} is 8 rather than 13."
+				"In addition, your resistance to precision damage from {@feat Disturbing Defense|Sli} increases to an amount equal to 7 + your number of class feats from the oozemorph archetype, and the DC of your flat checks to recover from {@condition persistent damage ||persistent bleed damage} is 8 rather than 13."
 			]
 		},
 		{
@@ -111,7 +111,7 @@
 			"traits": [
 				"archetype"
 			],
-			"prerequisites": "Disturbing Defense",
+			"prerequisites": "{@feat Disturbing Defense|Sli}",
 			"entries": [
 				"Your skin develops a malleable, rubbery quality. You gain resistance to bludgeoning damage equal to 2 + your number of class feats from the oozemorph archetype. You also gain resistance equal to twice that amount to extra damage from critical hits; if the resistance is greater than the extra damage, it reduces the extra damage to 0 but doesn't reduce the attack's normal damage."
 			]
@@ -132,7 +132,7 @@
 			"prerequisites": "{@feat Oozemorph Dedication|Sli}",
 			"entries": [
 				"Your limbs produce strange, sucker-like growths that allow you to adhere to walls, objects, and most other surfaces. You gain a climb Speed equal to your half your land Speed (minimum 5 feet). If you have the {@feat Quick Climb} feat, your climb Speed is equal to your land Speed.",
-				"In addition, you gain a +2 circumstance bonus to your Reflex DC to avoid being Disarmed."
+				"In addition, you gain a +2 circumstance bonus to your Reflex DC to avoid being {@action Disarm||Disarmed}."
 			]
 		},
 		{
@@ -152,7 +152,7 @@
 			"traits": [
 				"archetype"
 			],
-			"prerequisites": "Oozemorph Dedication",
+			"prerequisites": "{@feat Oozemorph Dedication|Sli}",
 			"trigger": "You fail (but don't critically fail) a saving throw against an effect with the {@trait visual} trait.",
 			"entries": [
 				"You cause your eyes to liquefy and run out of your eye sockets, leaving them empty. You get a success on the save against the triggering effect, but you are {@condition blinded} for the duration the effect would have had on a failure. At that time, your eyes regrow and your normal vision returns."

@@ -472,7 +472,8 @@ class ScaleCreature {
 			creature.level = toLvl;
 			if (lvlIn !== toLvl) {
 				creature._displayName = `${creature.name} (Lvl ${toLvl})`;
-				creature._isScaledLvl = toLvl;
+				creature._isScaledLvl = true;
+				creature._scaledLvl = toLvl;
 				creature._originalLvl = creature._originalLvl || lvlIn;
 			}
 		}
@@ -524,7 +525,8 @@ class ScaleCreature {
 		creature._displayName = `Elite ${creature.name}`;
 		creature._originalLvl = creature._originalLvl || creature.level;
 		creature.level += 1;
-		creature._isScaledLvl = creature.level;
+		creature._isScaledLvl = true;
+		creature._scaledLvl = creature.level;
 		return creature;
 	}
 
@@ -560,7 +562,8 @@ class ScaleCreature {
 		creature._displayName = `Weak ${creature.name}`;
 		creature._originalLvl = creature._originalLvl || creature.level;
 		creature.level -= 1;
-		creature._isScaledLvl = creature.level;
+		creature._isScaledLvl = true;
+		creature._scaledLvl = creature.level;
 		return creature;
 	}
 

@@ -3,7 +3,7 @@
 class PageFilterBestiary extends PageFilter {
 	// region static
 	static sortCreatures (a, b, o) {
-		if (o.sortBy === "count") return SortUtil.ascSort(a.values.count, b.values.count) || SortUtil.compareListNames(a, b);
+		if (o.sortBy === "count") return SortUtil.ascSort(a.data.count, b.data.count) || SortUtil.compareListNames(a, b);
 		switch (o.sortBy) {
 			case "name":
 				return SortUtil.compareListNames(a, b);
@@ -30,12 +30,6 @@ class PageFilterBestiary extends PageFilter {
 			header: "Traits",
 			discardCategories: {
 				"Ancestry & Heritage": true,
-			},
-			filterOpts: {
-				"Alignment": {
-					displayFn: Parser.alignAbvToFull,
-					itemSortFn: SortUtil.ascSort,
-				},
 			},
 		});
 		this._perceptionFilter = new RangeFilter({

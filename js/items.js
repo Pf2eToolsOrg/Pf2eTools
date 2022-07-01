@@ -83,9 +83,8 @@ class ItemsPage extends ListPage {
 		FilterBox.selectFirstVisible(this._dataList);
 	}
 
-	getSublistItem (item, pinId, addCount) {
+	getSublistItem (item, pinId, {count = 1} = {}) {
 		const hash = UrlUtil.autoEncodeHash(item);
-		const count = addCount || 1;
 
 		const $dispCount = $(`<span class="text-center col-2-3 pr-0">${count}</span>`);
 		const $ele = $$`<li class="row">
@@ -108,9 +107,9 @@ class ItemsPage extends ListPage {
 				price: item._sPrice,
 				bulk: item._fBulk,
 				category: item.category,
-				count,
 			},
 			{
+				count,
 				$elesCount: [$dispCount],
 			},
 		);
@@ -173,8 +172,8 @@ class ItemsPage extends ListPage {
 		ListUtil.sublist.items.forEach(it => {
 			const item = this._dataList[it.ix];
 			if (item.currencyConversion) availConversions.add(item.currencyConversion);
-			const count = it.values.count;
-			cntItems += it.values.count;
+			const count = it.data.count;
+			cntItems += it.data.count;
 			if (item._fBulk) bulk += item._fBulk * count;
 			if (item._sPrice) value += item._sPrice * count;
 		});
@@ -324,7 +323,7 @@ class ItemsPage extends ListPage {
 		this._subList = ListUtil.initSublist({
 			listClass: "subitems",
 			fnSort: PageFilterItems.sortItems,
-			getSublistRow: this.getSublistItem.bind(this),
+			pGetSublistRow: this.getSublistItem.bind(this),
 			onUpdate: this.onSublistChange.bind(this),
 		});
 		SortUtil.initBtnSortHandlers($("#sublistsort"), this._subList);
@@ -398,7 +397,7 @@ class ItemsPage extends ListPage {
 
 		ListUtil.setOptions({
 			itemList: this._dataList,
-			getSublistRow: this.getSublistItem.bind(this),
+			pGetSublistRow: this.getSublistItem.bind(this),
 			primaryLists: [this._list],
 		});
 		ListUtil.bindAddButton();

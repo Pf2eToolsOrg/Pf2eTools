@@ -51,11 +51,6 @@ class ClassesPage extends BaseComponent {
 	}
 
 	get activeClass () {
-		if (this._activeClassDataFiltered) return this._activeClassDataFiltered;
-		return this.activeClassRaw;
-	}
-
-	get activeClassRaw () {
 		return this._dataList[this._classId._];
 	}
 
@@ -82,6 +77,12 @@ class ClassesPage extends BaseComponent {
 			input: "#feat-lst__search",
 			glass: "#feat-lst__search-glass",
 			reset: "#feat-reset",
+		});
+		this._list.on("updated", () => {
+			$(`.lst__wrp-search-visible.classes`).html(`${this._list.visibleItems.length}/${this._list.items.length}`);
+		});
+		this._listFeat.on("updated", () => {
+			$(`.lst__wrp-search-visible.feats`).html(`${this._listFeat.visibleItems.length}/${this._listFeat.items.length}`);
 		});
 		ListUtil.setOptions({primaryLists: [this._list, this._listFeat]});
 		SortUtil.initBtnSortHandlers($("#filtertools"), this._list);
@@ -609,90 +610,10 @@ class ClassesPage extends BaseComponent {
 		);
 	}
 
-	_doGenerateFilteredActiveClassData () {
-		const f = this.filterBox.getValues();
-		const cpyCls = MiscUtil.copy(this.activeClassRaw);
-		const walker = MiscUtil.getWalker({
-			keyBlacklist: MiscUtil.GENERIC_WALKER_ENTRIES_KEY_BLACKLIST,
-			isAllowDeleteObjects: true,
-			isDepthFirst: true,
-		});
-
-		cpyCls.classFeatures = cpyCls.classFeatures.map(lvlFeatures => {
-			return walker.walk(
-				lvlFeatures,
-				{
-					object: (obj) => {
-						if (!obj.source) return obj;
-						return this.filterBox.toDisplayByFilters(
-							f,
-							{
-								filter: this._pageFilter.sourceFilter,
-								value: obj.gainSubclassFeature && this._pageFilter.isAnySubclassDisplayed(f, cpyCls) ? this._pageFilter.getActiveSource(f) : obj.source,
-							},
-						) ? obj : null;
-					},
-					array: (arr) => {
-						return arr.filter(it => it != null);
-					},
-				},
-			);
-		});
-
-		(cpyCls.subclasses || []).forEach(sc => {
-			sc.subclassFeatures = sc.subclassFeatures.map(lvlFeatures => {
-				return walker.walk(
-					lvlFeatures,
-					{
-						object: (obj) => {
-							if (!obj.source) return obj;
-							const fText = obj.isClassFeatureVariant ? {isClassFeatureVariant: true} : null;
-							return this.filterBox.toDisplayByFilters(
-								f,
-								{
-									filter: this._pageFilter.sourceFilter,
-									value: obj.source,
-								},
-								{
-									filter: this._pageFilter.optionsFilter,
-									value: fText,
-								},
-							) ? obj : null;
-						},
-						array: (arr) => {
-							return arr.filter(it => it != null);
-						},
-					},
-				);
-			});
-		});
-
-		cpyCls.fluff = cpyCls.fluff.map(fluffEntry => {
-			return walker.walk(
-				fluffEntry,
-				{
-					object: (obj) => {
-						const src = obj.source || cpyCls.source;
-						return this.filterBox.toDisplayByFilters(
-							f,
-							{
-								filter: this._pageFilter.sourceFilter,
-								value: src,
-							},
-						) ? obj : null;
-					},
-				},
-			);
-		});
-
-		this._activeClassDataFiltered = cpyCls
-	}
-
 	_handleFilterChange (isFilterValueChange) {
 		// If the filter values changes (i.e. we're not handling an initial load), mutate the state, and trigger a
-		//   re-render.
+		//  re-render.
 		if (isFilterValueChange) {
-			this._doGenerateFilteredActiveClassData();
 			this._pDoSynchronizedRender();
 			return;
 		}
@@ -700,15 +621,13 @@ class ClassesPage extends BaseComponent {
 		const f = this.filterBox.getValues();
 		this._list.filter(item => this._pageFilter.toDisplay(f, item.data.entity));
 
-		if (this._fnTableHandleFilterChange) this._fnTableHandleFilterChange(f);
-
 		// Force-hide any subclasses which are filtered out
 		this._proxyAssign(
 			"state",
 			"_state",
 			"__state",
 			this.activeClass.subclasses
-				.filter(sc => !this.filterBox.toDisplay(f, sc.source, sc._fRarity, Array(5), sc._fMisc, null))
+				.filter(sc => !this.filterBox.toDisplayByFilters(f, {filter: this._pageFilter.sourceFilter, value: sc.source}, {filter: this._pageFilter.rarityFilter, value: sc._fRarity}))
 				.map(sc => UrlUtil.getStateKeySubclass(sc))
 				.filter(stateKey => this._state[stateKey])
 				.mergeMap(stateKey => ({[stateKey]: false})),
@@ -728,7 +647,6 @@ class ClassesPage extends BaseComponent {
 
 		// Use hookAll to allow us to reset temp hooks on the property itself
 		this._addHookAll("classId", async () => {
-			this._doGenerateFilteredActiveClassData();
 			await this._pDoSynchronizedRender();
 		});
 
@@ -736,7 +654,6 @@ class ClassesPage extends BaseComponent {
 			await this._pDoSynchronizedRender(true);
 		});
 
-		this._doGenerateFilteredActiveClassData();
 		await this._pDoRender();
 	}
 
@@ -1013,86 +930,85 @@ class ClassesPage extends BaseComponent {
 		const $wrpTblClass = $(`#advancements`).empty();
 		const cls = this.activeClass;
 
-		Renderer.get().resetHeaderIndex();
 		for (let i = 0; i < 20; i++) {
-			if (!cls.classFeatures[i]) cls.classFeatures[i] = []
+			if (!cls.classFeatures[i]) cls.classFeatures[i] = [];
 		}
-		const renderer = Renderer.get()
+		const renderer = Renderer.get().resetHeaderIndex();
 		const metasTblRows = cls.classFeatures.map((lvlFeatures, ixLvl) => {
-			const lvlFeaturesFilt = lvlFeatures
-				.filter(it => it.name && it.type !== "inset"); // don't add inset entry names to class table
-			if (this._pageFilter.isClassNaturallyDisplayed(this.filterBox.getValues(), cls)) {
-				// for each cls.advancement, check
-				Object.keys(cls.advancement).forEach(key => {
-					// is it an array, in which case go through the default cases
-					// or is it an object, in which case push it's entry
-					if (Array.isArray(cls.advancement[key]) && cls.advancement[key].slice(1).includes(ixLvl + 1)) {
-						switch (key) {
-							case "classFeats": {
-								lvlFeaturesFilt.push({
-									name: "class feat",
-									source: cls.source,
-									$lnk: $(`<a href="feats.html#blankhash,flstlevel:max=${ixLvl + 1},flsttype:class=1,flstclasses:${this.activeClass.name.toLowerCase()}=1">class feat</a>`),
-									preCalc: true,
-								});
-								break;
-							}
-							case "generalFeats": {
-								lvlFeaturesFilt.push({
-									name: "general feat",
-									source: cls.source,
-									$lnk: $(`<a href="feats.html#blankhash,flstlevel:max=${ixLvl + 1},flsttype:general=1">general feat</a>`),
-									preCalc: true,
-								});
-								break;
-							}
-							case "skillFeats": {
-								lvlFeaturesFilt.push({
-									name: "skill feat",
-									source: cls.source,
-									$lnk: $(`<a href="feats.html#blankhash,flstlevel:max=${ixLvl + 1},flsttype:skill=1~archetype=2">skill feat</a>`),
-									preCalc: true,
-								});
-								break;
-							}
-							case "ancestryFeats": {
-								lvlFeaturesFilt.push({
-									name: "ancestry feat",
-									source: cls.source,
-									$lnk: $(`<a href="feats.html#blankhash,flstlevel:max=${ixLvl + 1},flsttype:ancestry=1">ancestry feat</a>`),
-									preCalc: true,
-								});
-								break;
-							}
-							case "skillIncrease": {
-								lvlFeaturesFilt.push({
-									name: "skill increase",
-									source: cls.source,
-									$lnk: $(`<span>skill increase</span>`),
-									preCalc: true,
-								});
-								break;
-							}
-							case "abilityBoosts": {
-								lvlFeaturesFilt.push({
-									name: "ability boosts",
-									source: cls.source,
-									$lnk: $(`<span>ability boosts</span>`),
-									preCalc: true,
-								});
-								break;
-							}
+			// don't add inset entry names to class table
+			const lvlFeaturesFilt = lvlFeatures.filter(it => it.name && it.type !== "inset");
+
+			// for each cls.advancement, check
+			Object.keys(cls.advancement).forEach(key => {
+				// is it an array, in which case go through the default cases
+				// or is it an object, in which case push it's entry
+				if (Array.isArray(cls.advancement[key]) && cls.advancement[key].slice(1).includes(ixLvl + 1)) {
+					switch (key) {
+						case "classFeats": {
+							lvlFeaturesFilt.push({
+								name: "class feat",
+								source: cls.source,
+								$lnk: $(`<a href="feats.html#blankhash,flstlevel:max=${ixLvl + 1},flsttype:class=1,flstclasses:${this.activeClass.name.toLowerCase()}=1">class feat</a>`),
+								preCalc: true,
+							});
+							break;
 						}
-					} else if (MiscUtil.isObject(cls.advancement[key]) && cls.advancement[key].levels.slice(1).includes(ixLvl + 1)) {
-						lvlFeaturesFilt.push({
-							name: cls.advancement[key].name,
-							source: cls.source,
-							$lnk: $(`${renderer.render(cls.advancement[key].entry.replace(`\${level}`, `${ixLvl + 1}`))}`),
-							preCalc: true,
-						});
+						case "generalFeats": {
+							lvlFeaturesFilt.push({
+								name: "general feat",
+								source: cls.source,
+								$lnk: $(`<a href="feats.html#blankhash,flstlevel:max=${ixLvl + 1},flsttype:general=1">general feat</a>`),
+								preCalc: true,
+							});
+							break;
+						}
+						case "skillFeats": {
+							lvlFeaturesFilt.push({
+								name: "skill feat",
+								source: cls.source,
+								$lnk: $(`<a href="feats.html#blankhash,flstlevel:max=${ixLvl + 1},flsttype:skill=1~archetype=2">skill feat</a>`),
+								preCalc: true,
+							});
+							break;
+						}
+						case "ancestryFeats": {
+							lvlFeaturesFilt.push({
+								name: "ancestry feat",
+								source: cls.source,
+								$lnk: $(`<a href="feats.html#blankhash,flstlevel:max=${ixLvl + 1},flsttype:ancestry=1">ancestry feat</a>`),
+								preCalc: true,
+							});
+							break;
+						}
+						case "skillIncrease": {
+							lvlFeaturesFilt.push({
+								name: "skill increase",
+								source: cls.source,
+								$lnk: $(`<span>skill increase</span>`),
+								preCalc: true,
+							});
+							break;
+						}
+						case "abilityBoosts": {
+							lvlFeaturesFilt.push({
+								name: "ability boosts",
+								source: cls.source,
+								$lnk: $(`<span>ability boosts</span>`),
+								preCalc: true,
+							});
+							break;
+						}
 					}
-				});
-			}
+				} else if (MiscUtil.isObject(cls.advancement[key]) && cls.advancement[key].levels.slice(1).includes(ixLvl + 1)) {
+					lvlFeaturesFilt.push({
+						name: cls.advancement[key].name,
+						source: cls.source,
+						$lnk: $(`${renderer.render(cls.advancement[key].entry.replace(`\${level}`, `${ixLvl + 1}`))}`),
+						preCalc: true,
+					});
+				}
+			});
+
 			// FIXME: this works for now
 			const skipSort = lvlFeaturesFilt.filter(f => !f.preCalc).length;
 			const metasFeatureLinks = lvlFeaturesFilt.sort(skipSort ? () => {} : SortUtil.compareListNames)
@@ -1131,15 +1047,12 @@ class ClassesPage extends BaseComponent {
 						hkSetHref();
 					}
 
-					// Make a dummy for the last item
-					const $dispComma = ixFeature === lvlFeaturesFilt.length - 1 ? $(`<span/>`) : $(`<span>,&nbsp;</span>`);
+					if (ixFeature === 0) $lnk.html($lnk.html().uppercaseFirst());
 					return {
 						name,
-						$wrpLink: $$`<span>${$lnk}${$dispComma}</span>`,
+						$wrpLink: $$`<span>${$lnk}${ixFeature === lvlFeaturesFilt.length - 1 ? "" : ", "}</span>`,
 						$lnk,
-						$dispComma,
 						source,
-						isHidden: false,
 					};
 				});
 			return {
@@ -1149,31 +1062,11 @@ class ClassesPage extends BaseComponent {
 			}
 		});
 
-		this._fnTableHandleFilterChange = (filterValues) => {
-			metasTblRows.forEach(metaTblRow => {
-				metaTblRow.metasFeatureLinks.forEach(metaFeatureLink => {
-					if (metaFeatureLink.source) {
-						// FIXME: length of _filters hardcoded...
-						const isHidden = !this.filterBox.toDisplay(filterValues, metaFeatureLink.source, null, Array(5), null);
-						metaFeatureLink.isHidden = isHidden;
-						metaFeatureLink.$wrpLink.toggleClass("hidden", isHidden);
-					}
-				});
-
-				metaTblRow.metasFeatureLinks.forEach(metaFeatureLink => metaFeatureLink.$dispComma.toggleClass("hidden", false));
-				metaTblRow.metasFeatureLinks.forEach(metaFeatureLink => metaFeatureLink.$lnk.html(metaFeatureLink.$lnk.html().toLowerCase()));
-				const firstVisible = metaTblRow.metasFeatureLinks.filter(metaFeatureLink => !metaFeatureLink.isHidden)[0];
-				const lastVisible = metaTblRow.metasFeatureLinks.filter(metaFeatureLink => !metaFeatureLink.isHidden).last();
-				if (firstVisible) firstVisible.$lnk.html(firstVisible.$lnk.html().uppercaseFirst());
-				if (lastVisible) lastVisible.$dispComma.addClass("hidden");
-			});
-		};
-
 		$$`<div class="pf2-table pf2-table--advancements">
 			<div class="pf2-table__label">Your</div>
 			<div class="pf2-table__label"></div>
 			<div class="pf2-table__label">Level</div>
-			<div class="pf2-table__label"><span>Class Features${Renderer.get()._renderTable_getMinimizeButton()}</span></div>
+			<div class="pf2-table__label"><span>Class Features${renderer._renderTable_getMinimizeButton()}</span></div>
 			${metasTblRows.map(it => it.$row)}
 		</div>`.appendTo($wrpTblClass);
 		$wrpTblClass.show();
@@ -1202,18 +1095,22 @@ class ClassesPage extends BaseComponent {
 			inactiveText: "Show Feats",
 		}).title("Toggle Feat View").addClass("mb-1");
 
-		const imageLinks = ((this.activeClass.summary || {}).images || []).map(l => `<li><a href="${l}" target="_blank" rel="noopener noreferrer">${l}</a></li>`);
+		const imageLinks = ((this.activeClass.summary || {}).images || []).map(l => `<a href="${l}" target="_blank" rel="noopener noreferrer">${l}</a>`);
 		const $dropDownImages = $(`<li class="dropdown" style="list-style: none"></li>`);
 		const $dropDownImagesButton = $(`<button class="btn btn-default btn-xs mr-2 mb-1 flex-3">Images</button>`).on("click", (evt) => {
 			evt.preventDefault();
 			evt.stopPropagation();
-			$dropDownImagesButton.toggleClass("ui-tab__btn-tab-head");
-			$dropDownImages.toggleClass("open");
+			if (evt.ctrlKey || evt.shiftKey) {
+				imageLinks.forEach(link => $(link)[0].click());
+			} else {
+				$dropDownImagesButton.toggleClass("ui-tab__btn-tab-head");
+				$dropDownImages.toggleClass("open");
+			}
 		}).appendTo($dropDownImages);
 		const $dropDownImagesContent = $(`<li class="dropdown-menu dropdown-menu--top" style="margin-top: -0.25rem !important; border-radius: 0"></li>`).appendTo($dropDownImages);
-		imageLinks.forEach(l => $dropDownImagesContent.append(l));
+		imageLinks.forEach(l => $dropDownImagesContent.append(`<li>${l}</li>`));
 		document.addEventListener("click", () => {
-			$dropDownImages.toggleClass("open", false)
+			$dropDownImages.toggleClass("open", false);
 			$dropDownImagesButton.toggleClass("ui-tab__btn-tab-head", false);
 		});
 
@@ -1382,16 +1279,9 @@ class ClassesPage extends BaseComponent {
 
 	_handleSubclassFilterChange () {
 		const f = this.filterBox.getValues();
-		const cls = this.activeClass;
 		Object.keys(this._listsSubclasses).forEach(k => this._listsSubclasses[k].filter(li => {
 			if (li.values.isAlwaysVisible) return true;
-			return this.filterBox.toDisplay(
-				f,
-				li.data.entity.source,
-				cls._fRarity,
-				Array(5),
-				cls._fMisc,
-			);
+			return this.filterBox.toDisplayByFilters(f, {filter: this._pageFilter.sourceFilter, value: li.data.entity.source});
 		}));
 	}
 
