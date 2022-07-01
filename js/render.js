@@ -4311,6 +4311,41 @@ Renderer.creature = {
 			fluffProp: "creatureFluff",
 		});
 	},
+
+	// region Custom hash ID packing/unpacking
+	getCustomHashId (cr) {
+		if (!cr._isScaledLvl) return null;
+
+		const {
+			name,
+			source,
+			_scaledLvl: scaledLvl,
+		} = cr;
+
+		return [
+			name,
+			source,
+			scaledLvl ?? "",
+		].join("__").toLowerCase();
+	},
+
+	getUnpackedCustomHashId (customHashId) {
+		if (!customHashId) return null;
+		const [, , scaledLvl] = customHashId.split("__").map(it => it.trim());
+		if (scaledLvl == null) return null;
+		return {
+			_scaledLvl: Number(scaledLvl),
+			customHashId,
+		};
+	},
+	// endregion
+
+	async pGetModifiedCreature (cr, customHashId) {
+		if (!customHashId) return cr;
+		const {_scaledLvl} = Renderer.creature.getUnpackedCustomHashId(customHashId);
+		if (_scaledLvl != null) return scaleCreature.scale(cr, _scaledLvl);
+		throw new Error(`Unhandled custom hash ID "${customHashId}"`);
+	},
 };
 
 Renderer.deity = {
@@ -4913,7 +4948,7 @@ Renderer.item = {
 		const rangedLine = rangedEntries.join("; ");
 		return `
 		${data.traits && data.traits.length ? `<p class="pf2-stat pf2-stat__section"><strong>Traits&nbsp;</strong>${data.traits.map(t => renderer.render(`{@trait ${t.toLowerCase()}}`)).join(", ")}</p>` : ""}
-		<p class="pf2-stat pf2-stat__section"><strong>Damage&nbsp;</strong>${renderer.render(`{@damage ${data.damage}}&nbsp;${Parser.dmgTypeToFull(data.damageType)}`)}</p>
+		<p class="pf2-stat pf2-stat__section"><strong>Damage&nbsp;</strong>${renderer.render(`{@damage ${data.damage}}&nbsp;${Parser.dmgTypeToFull(data.damageType)}${data.damage2 ? ` and {@damage ${data.damage2}}&nbsp;${data.damageType2 ? Parser.dmgTypeToFull(data.damageType2) : Parser.dmgTypeToFull(data.damageType)}` : ""}`)}</p>
 		${rangedLine ? `<p class="pf2-stat pf2-stat__section">${rangedLine}</p>` : ""}
 		${opts.doRenderGroup ? `<p class="pf2-stat pf2-stat__section"><strong>Group&nbsp;</strong>${renderer.render(`{@group ${data.group}}`)}</p>` : ""}
 		`;
@@ -5354,7 +5389,7 @@ Renderer.runeItem = {
 		runeItem.name = [...runes.map(r => Renderer.runeItem.getRuneShortName(r)), runeItem.name].join(" ");
 		runeItem.type = "item";
 		runeItem.level = Math.max(...runes.map(r => r.level));
-		runeItem.traits = [...new Set([baseItem.traits, ...runes.map(it => it.traits)].flat())].sort(SortUtil.sortTraits);
+		runeItem.traits = [...new Set([baseItem.traits || [], ...runes.map(it => it.traits || [])].flat())].sort(SortUtil.sortTraits);
 		const value = [baseItem, ...runes].map(it => Parser.priceToValue(it.price)).reduce((a, b) => a + b, 0);
 		runeItem.price = { coin: "gp", amount: Math.floor(value / 100) };
 		runeItem.entries = [runeItem.entries, ...runes.map(r => r.entries.map((e, idx) => idx === 0 ? `{@bold ${r.name}} ${e}` : e))].flat();

@@ -73,7 +73,7 @@ class ListPage {
 
 		this._listSub = ListUtil.initSublist({
 			listClass: this._sublistClass,
-			getSublistRow: this.getSublistItem.bind(this),
+			pGetSublistRow: this.getSublistItem.bind(this),
 			...this._sublistOptions,
 		});
 		ListUtil.initGenericPinnable();

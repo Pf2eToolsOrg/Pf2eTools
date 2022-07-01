@@ -3686,6 +3686,7 @@ class TraitsFilter extends MultiFilter {
 		if (opts.discardCategories === undefined) opts.discardCategories = {};
 		let filterOpts = opts.filterOpts || {};
 		filterOpts["Rarity"] = filterOpts["Rarity"] || {itemSortFn: SortUtil.ascSortRarity};
+		filterOpts["Alignment"] = filterOpts["Alignment"] || {displayFn: Parser.alignToFull};
 		const filterSortFn = opts.filterSortFn || TraitsFilter._getDefaultFilterSortFn();
 		const categories = Renderer.trait.TRAITS._categories;
 		opts.filters = [];

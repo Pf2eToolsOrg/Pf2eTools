@@ -93,7 +93,7 @@ class OptionalFeaturesPage extends ListPage {
 				}).appendTo($wrpOptFeatType);
 		};
 		const statsTab = Renderer.utils.tabButton(
-			"data",
+			"Opt. Feature",
 			() => {},
 			buildStatsTab,
 		);
