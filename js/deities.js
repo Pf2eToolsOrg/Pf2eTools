@@ -119,7 +119,7 @@ function renderStatblock (deity) {
 	async function buildLoreTab () {
 		const pGetFluff = async () => {
 			const fluff = await Renderer.deity.pGetFluff(deity);
-			return fluff ? fluff.lore || [] : [];
+			return fluff ? fluff.entries || [] : [];
 		}
 		$content.append(Renderer.deity.getRenderedLore({lore: await pGetFluff()}))
 	}
