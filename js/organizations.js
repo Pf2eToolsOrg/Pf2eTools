@@ -107,7 +107,7 @@ function renderStatblock (organization) {
 	async function buildLoreTab () {
 		const pGetFluff = async () => {
 			const fluff = await Renderer.organization.pGetFluff(organization);
-			return fluff ? fluff.lore || [] : [];
+			return fluff ? fluff.entries || [] : [];
 		}
 		$content.append(Renderer.organization.getRenderedLore({lore: await pGetFluff()}))
 	}
