@@ -2240,6 +2240,92 @@
 							]
 						}
 					]
+				},
+				{
+					"type": "pf2-h1",
+					"name": "Flexible Preparation",
+					"source": "SoM",
+					"page": 208,
+					"entries": [
+						{
+							"type": "pf2-h1-flavor",
+							"entries": [
+								"For millennia, debate raged among magical circles as to which spellcasters have the edge: those who cast spells spontaneously from a repertoire, since they can pull out whichever of those spells they require in a pinch, or those who prepare their daily spells, since they can plan and change out their spells each day to meet their varying needs. Yet, there have also been those who dared to have it all."
+							]
+						},
+						"Flexible spellcasters learn to prepare spells into a collection each day and can cast spells from their collection spontaneously. This combination makes such spellcasters the envy of their peers, but it comes with a significant cost. The magical power required to fuel their flexible casting draws heavily upon their magic’s mental or vital essence, so they can cast far fewer spells each day. The strain manifests differently for each flexible spellcaster and varies by tradition, though it most commonly starts as a mild headache for arcane and occult spellcasters or fatigue for divine and primal spellcasters.",
+						"Flexible spellcasting wizards—who sometimes prefer to use the more generic term for arcane spellcasters, arcanists—are more common in schools and other places that practice experimental or innovative magic, such as the Occularium in the atheist nation of Rahadoum, the Magaambya magic school in the jungle of the Mwangi Expanse, or the many academies in the arcane nation of Nex. Flexible spellcasting druids, sometimes called fey callers, use the infinite possibilities of the First World and the magical curiosity of the fey to power their flexible magic. They more commonly appear in places where the veil to the First World is thin, such as the Land of the Linnorm Kings or the River Kingdoms. Flexible spellcasting clerics, sometimes called ecclesiasts, have an unorthodox connection to their deity, allowing them flexibility in the grace they earn through their prayers. They’re more commonly itinerant, rather than connected to an established church. Flexible spellcasting witches, sometimes called invokers, have more personal connections with their patrons (even though the patron is still an enigma), allowing them to adjust their magic more easily.",
+						{
+							"type": "data",
+							"tag": "table",
+							"name": "Flexible Spellcaster Spells per Day",
+							"source": "SoM"
+						},
+						{
+							"type": "pf2-h2",
+							"name": "{@archetype Flexible Spellcaster|SoM} (Class Archetype)",
+							"source": "SoM",
+							"page": 209,
+							"entries": [
+								"You've learned how to cast spells flexibly, blending the best elements of spontaneous and prepared spellcasting at the cost of casting fewer spells each day.",
+								{
+									"type": "pf2-h3",
+									"name": "Flexible Spell Preparation",
+									"level": 1,
+									"entries": [
+										"This class feature alters your spellcasting class feature (such as {@classFeature Arcane Spellcasting|Wizard||1} for the {@class wizard} or {@classFeature Divine Spellcasting|Cleric||1} for the {@class cleric}). If you choose this class archetype, you must select {@feat Flexible Spellcaster Dedication|SoM} as your 2nd-level class feat.",
+										"{@b Prerequisites:} You must have a class, such as {@class cleric||clerics}, {@class druid||druids}, {@class witch|apg|witches}, and {@class wizard||wizards}, that prepares spells in spell slots using the same number of prepared spells per day.",
+										"{@b Flexible Spellcaster Adjustments:} You learn spells as normal for your class (a {@class wizard} uses a spellbook, a {@class witch|APG} teaches spells to their familiar, and so on), but change your spellcasting from your class as follows.",
+										{
+											"type": "list",
+											"items": [
+												"You can cast fewer spells each day. Your number of spell slots per day don't advance from 2 to 3 spells at even levels (see Table 5\u20141).",
+												"Reduce the number of cantrips you gain from your class by 2. This archetype doesn't change the way you prepare cantrips.",
+												"During your daily preparations, you prepare a spell collection rather than preparing spells into each spell slot individually. The number of spells in your spell collection each day equals the total number of spell slots you get each day from your class spells. Select these spells from the same source as normal, such as from a spellbook for a {@class wizard}.",
+												"You can cast any of the spells in your collection by using a spell slot of an appropriate level. For instance, if you were level 1 and had feather fall and magic missile in your spell collection, you could cast feather fall twice that day, magic missile twice, or each spell once.",
+												"Extra spell slots you gain that have additional restrictions, like the {@class wizard}'s specialist school spells or the cleric's divine font spells, don't change due to this archetype, nor do such spells count toward the number of spells you place in your spell collection. See the Restricted Spell Slots sidebar."
+											]
+										},
+										{
+											"type": "data",
+											"tag": "table",
+											"name": "Flexible Spellcaster Spells per Day",
+											"source": "SoM"
+										},
+										{
+											"type": "pf2-sidebar",
+											"name": "Restricted Spell Slots",
+											"entries": [
+												"When applying this archetype to a class that grants additional spell slots with restrictions, such as the specialist {@class wizard||wizard's} {@classFeature Arcane School|Wizard||1||specialist school} spells or the {@class cleric||cleric's} {@classFeature divine font|Cleric||1}, you still gain those additional slots, but they work as normal for your class, and they don't add more spells to your spell collection. A healing font grants you additional spell slots to cast {@spell heal} spells of the highest level you can cast, but doesn't add {@spell heal} to your spell collection. A harming font does the same for the {@spell harm} spell. As a specialist {@class wizard}, you prepare one spell per level from your specialty school, which also aren't added to your spell collection."
+											]
+										},
+										{
+											"type": "pf2-h3",
+											"name": "Heightening Spells",
+											"entries": [
+												"Once you gain 2nd-level spells, you can heighten any spell in your spell collection to any level you can cast, similar to a spontaneous spellcaster's signature spells. The only restriction is that you must select at least one 1st-level spell for your collection each time you prepare, ensuring that you can use all your spell slots each day."
+											]
+										},
+										{
+											"type": "pf2-h3",
+											"name": "Adjucidating Class Feats and Features",
+											"entries": [
+												"Some of your class feats or features might rely on the fact that you prepare spells in spell slots. While some class feats might no longer work or be necessary with the flexible spellcaster archetype, in many cases you can make a simple replacement and continue using the class feat. The following class feats simply require replacing \"a spell you have prepared\" or \"a prepared spell\" for \"a spell in your collection\" or \"a spell slot.\" For example, in {@feat Counterspell (Wizard)||Counterspell}, you'd replace \"a spell you have prepared\" in the trigger for \"a spell in your collection\" and \"expend a prepared spell\" for \"expend a spell slot.\" Similarly, in {@classFeature arcane bond|Wizard||1}, you'd replace \"cast one spell you prepared today and already cast\" with \"cast one spell in your collection you've already cast today.\"",
+												"The {@feat Counterspell (Wizard)||Counterspell} and {@feat Leyline Conduit} feats in the Core Rulebook need these substitutions, as does {@feat Form Retention|APG} from the Advanced Player's Guide. {@feat Spell Mastery|APG} provides additional restricted spells, like {@classFeature divine font|Cleric||1} or specialist spells; you can take it, but it doesn't add to your collection and works like normal prepared spells."
+											]
+										},
+										{
+											"type": "pf2-h3",
+											"name": "Disallowed Feats",
+											"entries": [
+												"The following feats from the Core Rulebook aren't available for a flexible spellcaster: {@feat Call of the Wild}, {@feat Clever Counterspell}, {@feat Infinite Possibilities}, {@feat Reprepare Spell}, and {@feat Spell Combination}. The disallowed feats from the Advanced Player's Guide are as follows: {@feat Elemental Summons|APG}, {@feat Miraculous Possibility|APG}, {@feat Rites of Convocation|APG}, and {@feat Rites of Transfiguration|APG}."
+											]
+										}
+									]
+								}
+							]
+						}
+					]
 				}
 			]
 		}
