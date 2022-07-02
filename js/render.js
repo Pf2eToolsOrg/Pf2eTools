@@ -1597,7 +1597,7 @@ function Renderer () {
 				textStack[0] += `</span>`;
 				break;
 			case "@indentSubsequent":
-				textStack[0] += `<span class="text-indent-subsequent inline-block">`;
+				textStack[0] += `<span class="text-indent-subsequent block">`;
 				this._recursiveRender(text, textStack, meta);
 				textStack[0] += `</span>`;
 				break;
