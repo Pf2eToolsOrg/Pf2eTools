@@ -7530,10 +7530,10 @@ Renderer.hover = {
 		return $$`<div class="stats">${Renderer.generic.getRenderedString(toRender)}</div>`;
 	},
 
-	$getHoverContent_statsCode (toRender) {
-		const cleanCopy = DataUtil.cleanJson(MiscUtil.copy(toRender));
+	$getHoverContent_statsCode (toRender, dirty) {
+		const cleanCopy = dirty ? MiscUtil.copy(toRender) : DataUtil.cleanJson(MiscUtil.copy(toRender));
 		return Renderer.hover.$getHoverContent_miscCode(
-			`${cleanCopy.name} \u2014 Source Data`,
+			`${cleanCopy.name} \u2014 Source Data${dirty ? " (Dev Mode)" : ""}`,
 			JSON.stringify(cleanCopy, null, "\t"),
 		);
 	},
