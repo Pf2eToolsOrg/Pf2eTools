@@ -3079,7 +3079,7 @@
 		},
 		{
 			"name": "Undead Master",
-			"source": "BD",
+			"source": "BotD",
 			"page": 41,
 			"entries": [
 				"Not everyone with an interest in the undead raises a vast army of faceless, disposable minions. You prefer to cultivate a more personal relationship with a small number of undead companions, personalized to your needs and expectations. Those companions with minds trust you implicitly; those without are extensions of your will. Perhaps they see you as a teacher or caretaker, shepherding them on the path to peace and passing on, or perhaps they are your protectors, bound to aid you by negotiation and magical spells. Whatever the case, they will fight for and alongside you without question, throwing themselves into danger without hesitation if it will provide a means to your desired end.",
@@ -3093,6 +3093,127 @@
 				"8|Incredible Beastmaster Companion|APG",
 				"14|Specialized Beastmaster Companion|APG",
 				"16|Lead the Pack|APG"
+			],
+			"dedicationLevel": 2
+		},
+		{
+			"name": "Exorcist",
+			"source": "BotD",
+			"page": 22,
+			"entries": [
+				{
+					"type": "pf2-sidebar",
+					"source": "BotD",
+					"page": 23,
+					"name": "Spirit Dwellings and Remnants",
+					"entries": [
+						"A {@i spirit dwelling} can be any object, from an everyday item like a mirror, hand bell, or gemstone, to a custom clockwork device, so long as it can be held in one hand, is light Bulk, and doesn't serve another function (such as a weapon, shield, consumable, or magic item). Your {@i spirit dwelling} has the trait of the magical tradition used to take {@feat Exorcist Dedication|BotD} and the {@trait necromancy} trait. Your {@i spirit dwelling} is attuned to you, so only you can use it. If your {@i spirit dwelling} is lost or stolen, you can turn another object into a new spirit dwelling with a 1-hour ritual; this causes your previous {@i spirit dwelling} to revert to a mundane object and any spirits within to harmlessly disperse.",
+						"Your {@i spirit dwelling} can house not just wisps but greater remnants of spiritual energy left behind by defeated ghosts and haunts. You can use the Collect Spirit Remnant activity.",
+						{
+							"type": "ability",
+							"name": "Collect Spirit Remnant",
+							"activity": {
+								"number": 3,
+								"unit": "action"
+							},
+							"traits": [
+								"concentrate",
+								"manipulate"
+							],
+							"requirements": "You're holding your {@i spirit dwelling}",
+							"entries": [
+								"You brandish your spirit dwelling at the location where a haunt, ghost, or other incorporeal undead was destroyed within the last minute and pray or recite ritual incantations. You coax the spirit remnant into your spirit dwelling."
+							]
+						},
+						"{@b Rejuvenating Spirits:} Though all spirit wisps and most remnants can pass on immediately when purified, if a spirit remnant came from a creature with the rejuvenation special ability (such as most ghosts), a recurring haunt, or another entity who ordinarily doesn't pass on when destroyed, its ties to this world are too strong for it to easily pass on. When a spirit remnant from such an entity is released as part of your daily preparations, instead of joining the River of Souls, it begins re-forming itself in the time and location noted in its rejuvenation ability. However, you learn a clue about the spirit's unfinished business, which may help you put it to rest permanently.",
+						{
+							"type": "pf2-title",
+							"name": "Excorcists Across Golarion",
+							"entries": [
+								"The well-known exorcists of Pharasma use methods of repeated prayer, holy water, and sacred rituals. Ashavic exorcists often dance under the moonlight to entice lost souls and guide them onward. In Osirion, exorcists practice execration, or proactive preventive exorcism techniques. In Northern Garund and some parts of Qadira, playing the stringed tanbura, rattling manjur, and specific drum patterns help cut the threads that tie the spirit to this world. Matanji orcs in the Mwangi Expanse perform exorcisms by drawing tattoo-like diagrams in iron ink. In Tian Xia, exorcists often use {@book fulus|SoM|5|fulus} to assist in their practice."
+							]
+						}
+					]
+				},
+				"You pacify restless spirits, ghosts, and haunts, capturing fragments of them and using their vengeful energies to fuel your own powers while purifying the spirit. You store these ghosts within a magical vessel called a spirit dwelling. This {@i spirit dwelling} might be a treasured family heirloom, an item you crafted expressly to help with exorcisms, or even just an odd trinket you found that happens to do the job.",
+				"While the motivations of exorcists run the gamut, most are compassionate individuals who believe that every ghost, haunt, and spirit is simply a lost soul in need of rest. They collect spirits expressly for the purposes of offering them comfort, guidance, and absolution. After an exorcist's ministrations, these spirits are freed of their burdens, emotion, and regrets and are reabsorbed into the River of Souls. Although exorcists rarely gather in one place, many different religions employ them to deal with spiritual threats.",
+				"Exorcists are most commonly found among the faithful of Ashava the True Spark (the empyreal lord of dancers), but among the major deities of the Inner Sea region, {@deity Sarenrae}, {@deity Pharasma}, and even {@deity Shelyn} count a fair number of exorcists among their faithful. Exorcists can come from any walk of life, but many are redeemer champions, clerics, or monks. Apart from the role of the {@i spirit dwelling}, exorcism practices can vary. For example, a {@class bard} or {@class rogue} might attract spirits with trickery, charm, or empty promises. In contrast, a cleric of {@deity Pharasma} could take a more severe route, demanding the spirits return to the natural order of things."
+			],
+			"extraFeats": [
+				"8|Spiritual Sense|APG",
+				"10|Blind-Fight (Ranger)",
+				"14|Sense Evil",
+				"16|Sense the Unseen"
+			],
+			"dedicationLevel": 4
+		},
+		{
+			"name": "Hallowed Necromancer",
+			"source": "BotD",
+			"page": 24,
+			"entries": [
+				{
+					"type": "pf2-sidebar",
+					"source": "BotD",
+					"page": 25,
+					"name": "Hallowed Necromancy in Geb",
+					"entries": [
+						"As hallowed necromancy lacks any unified credo, its practitioners are found throughout Golarion. It's rare they make their presence known within the borders of Geb, however. Those who hide their profession usually move on to other lands and those who openly crusade against Geb's many undead quickly find themselves utterly overwhelmed.",
+						"Hallowed necromancers captured in Geb might be executed only to be risen by their foes with their spellcasting ability intact but moral code absent or twisted."
+					]
+				},
+				"It's quite common for mages of all sorts to study necromancy\u2014the surprisingly diverse school holds the secrets of positive and negative energy, as well as life and death. Many tap into these powers with no consideration of the morality of their use. For these unscrupulous magic users, it's simply another avenue in their never-ending pursuit of power, and the abilities learned are turned to the caster's personal ends, whatever they may be.",
+				"Others choose a different path. Through spiritual study and introspection, they have come to recognize the evil intrinsic in the existence of undead, the fundamental wrongness of using the universal energy of death to create an appearance of life. To combat this evil, these casters learn to conduct positive energy and direct it to great effect against the undead they encounter. They may also engage in ongoing study to learn of the nature of life, death, and undeath, and the precise relationship between each state. These scholars and mages are commonly known as hallowed necromancers\u2014a slightly misrepresentative name, as many of them don't use religious methods, but a frequently used shorthand regardless.",
+				"The exact origin of hallowed necromancers' abilities may vary from one to the next. Some are granted their gifts directly by a sympathetic deity such as {@deity Sarenrae} or {@deity Pharasma}, while others might use their knowledge of religion and the planes to learn such abilities on their own. Though rarer, it's even possible these practitioners might discover they possess an intuitive understanding and control over abilities that manifest spontaneously as their capabilities grow. Despite this variance, all share a fundamental understanding that undeath is an aberration to be quickly remedied.",
+				"Though the majority of hallowed necromancers have similar goals and are willing to work together, they tend not to form their own organizations. More often, these necromancers attach themselves to existing groups\u2014such as the {@organization Knights of Lastwall} or Voices of the Spire\u2014and use their powers in support of those groups' causes. Otherwise, they plan and carry out their own personal vendettas against the forces of undeath, often enlisting the help of trusted friends and allies."
+			],
+			"dedicationLevel": 2
+		},
+		{
+			"name": "Soul Warden",
+			"source": "BotD",
+			"page": 26,
+			"entries": [
+				{
+					"type": "pf2-sidebar",
+					"source": "BotD",
+					"page": 27,
+					"name": "The Soul Cycle",
+					"entries": [
+						"A soul's journey begins on the Positive Energy Plane, where blank, empty souls attach themselves alongside the positive life essence of the plane to mortals on the Material Plane, forming a single living being. At the end of a mortal's life, these souls enter the Ethereal Plane, progressing through the River of Souls to Pharasma's Boneyard, where they're judged and sorted into the appropriate afterlife. Judged souls proceed to their assigned planes, becoming petitioners. These, too, die in time, becoming absorbed by and expanding their associated plane, as their own spiritual essence joins with the plane's as a substance known as quintessence. But the ever-churning Maelstrom breaks these planes down, scattering this planar quintessence throughout the Maelstrom and adjoining planes. Those pieces that land on the Positive Energy Plane eventually form new blank souls and the cycle begins anew."
+					]
+				},
+				"You consider yourself an honorary psychopomp\u2014a shepherd of spirits who ensures the cycle of souls progresses unimpeded. Although you're unable to safeguard the cycle of souls in its entirety, you strive to ensure each soul's time on the Material Plane proceeds without incident. You work to free souls from imprisonment, prevent necromancers from animating the dead, and destroy undead so their souls rejoin the cycle.",
+				"While most who hunt undead do so out of fear, vengeance, or a desire to protect the lives of others, you take a more measured and far less emotional approach; you destroy undead so their souls can continue their journey along the River of Souls, thus ensuring the continuation of existence. You understand that without the cycle of souls, the life cycle of the planes is disrupted, and all of existence could be consumed by the Maelstrom.",
+				"Nearly all soul wardens worship {@deity Pharasma} or one of the {@filter psychopomp ushers|deities||category=Monitor Demigods}, especially Barzahk the Passage, a psychopomp usher who routinely shirks their duties and needs help from mortal soul wardens. Soul wardens also often join organizations that regularly combat undead, including the Voices of the Spire and Ustalav's Ivory Reapers (page 14)."
+			],
+			"extraFeats": [
+				"4|Domain Initiate",
+				"8|Expanded Domain Initiate|LOGM",
+				"16|Advanced Domain"
+			],
+			"dedicationLevel": 2
+		},
+		{
+			"name": "Undead Slayer",
+			"source": "BotD",
+			"page": 28,
+			"entries": [
+				{
+					"type": "pf2-sidebar",
+					"source": "BotD",
+					"page": 29,
+					"name": "Undead Slayers in The Inner Sea",
+					"entries": [
+						"Just as undead stalk prey across the world, undead slayers wander every land in the Inner Sea region, seeking to end the threat and keep people safe. Organizations such as the Knights of Lastwall or the militant anti-undead Pharasmin sect called the Voices of the Spire count many undead slayers within their ranks, and thus undead slayers are particularly common in places where forces of those organizations fight undead, such as the Gravelands and Ustalav. Many undead hunting organizations are described in more detail on pages 14\u201315.",
+						"The occupation of undead slayer is illegal in Geb, where the undead citizenry see the title as something similar to declaring oneself a serial killer. Nonetheless, a few undead slayers manage to ply their trade in Geb and avoid retribution by reluctantly marketing themselves as assassins specialized in eliminating undead rivals. Still other undead slayers in Geb simply keep hidden and continue their hunts in secret.",
+						"Undead slayers are able to operate more easily in the city of {@place Mzali|LOME} in the Mwangi Expanse, despite the city being ruled by the mummy god-king {@deity Walkena|LOGM} and guarded by {@deity Walkena|LOGM}'s undead servants. Nonetheless, {@deity Walkena|LOGM} doesn't control every undead in the region or offer them citizenship like in Geb, so undead slayers can ply their trade. Those who wish to assist the rebel group known as the Bright Lions should tread lightly, however, as known undead slayers are the first suspects if any of {@deity Walkena|LOGM}'s undead guardians perish.",
+						"With the conflict between the nations of Geb and Nex, Nex is only too happy to host as many undead slayers as possible within their borders, particularly the warmongers among the ruling Arclords, who want to be ready for the end of their tenuous peace. Yet most prefer not to hasten the hostilities, finding means to support undead slayers more subtly, rather than vocally condoning or promoting them. Grant programs or financial incentives just happen to go to undead slayers instead of other applicants.",
+						"Ustalav is home to undead slayers of many kinds, from wandering mercenaries taking on jobs for coin to aristocratic bloodlines that have been hunting undead for generations. Given that undead could lurk disguised in society, these slayers often disguise their trade. Aristocratic ones in particular keep a different trade public, with the undead slaying a more personal source of familial pride. On the border of Virlych, undead slayers protect the residents of the other regions safe from undead predators that escape the gloomy land."
+					]
+				},
+				"Anywhere undead prey upon the living, some brave souls make it their mission to destroy the monsters. Many adventurers are skilled at dispatching undead, but you go a step further. You study them, learn their weaknesses, and master the tools to end them quickly and cleanly. An undead slayer doesn't simply kill monsters; they become what even monsters fear. Leave it to others to be a shield\u2014you become the blade that strikes evil at its heart. You can identify the common types of undead by sight. You drill and practice with the special gear necessary to destroy some of the more complicated undead, like vampires; train in their strengths and weaknesses; and learn how to create safe houses to stash your arsenal and hide from undead.",
+				"Some undead slayers work at the behest of an organization to exterminate the undead of a particular region, but many act independently, or in a group of like-minded adventurers. Were you called by a higher power? Are you on a personal quest for vengeance? Whatever the reason, you now walk a path that will take you to the vilest dens of rot and decay."
 			],
 			"dedicationLevel": 2
 		}
