@@ -259,7 +259,12 @@ class BestiaryPage extends ListPage {
 			const toRender = this._lastRendered.creature != null && this._lastRendered.isScaled ? this._lastRendered.creature : cr;
 
 			if (evt.shiftKey) {
-				const $content = Renderer.hover.$getHoverContent_statsCode(toRender);
+				let $content = "";
+				if (evt.ctrlKey) {
+					$content = Renderer.hover.$getHoverContent_statsCode(toRender, true)
+				} else {
+					$content = Renderer.hover.$getHoverContent_statsCode(toRender)
+				}
 				Renderer.hover.getShowWindow(
 					$content,
 					Renderer.hover.getWindowPositionFromEvent(evt),
