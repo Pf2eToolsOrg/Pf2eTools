@@ -44,7 +44,7 @@ class PageFilterSpells extends PageFilter {
 			items: ["Focus", "Spell", "Cantrip"],
 			itemSortFn: null,
 		});
-		this._classFilter = new Filter({header: "Classes"});
+		this._classFilter = new Filter({header: "Class"});
 		this._subClassFilter = new Filter({
 			header: "Subclass",
 			displayFn: (it) => it.toTitleCase(),
