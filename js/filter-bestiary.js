@@ -159,7 +159,7 @@ class PageFilterBestiary extends PageFilter {
 		if (cr.hasImages) cr._fMisc.push("Has Images");
 		if (cr.isNpc) cr._fMisc.push("NPC");
 		cr._fSources = SourceFilter.getCompleteFilterSources(cr);
-		cr._fTraits = [...cr.traits];
+		cr._fTraits = [...(cr.traits || [])];
 		cr._fSenses = {precise: [], imprecise: [], vague: [], other: []};
 		if (cr.senses && cr.senses.length) {
 			cr.senses.forEach(s => {
@@ -168,7 +168,7 @@ class PageFilterBestiary extends PageFilter {
 			})
 		}
 		cr._flanguages = cr.languages == null ? [] : cr.languages.languages || [];
-		cr._flanguages = cr._flanguages.map(l => l.replace(/\s(?:\().+/, "")).filter(l => !l.includes(" "));
+		cr._flanguages = cr._flanguages.map(l => l.replace(/\s\(.+/, "")).filter(l => !l.includes(" "));
 		cr._fskills = new Set();
 		Object.keys(cr.skills).forEach((k) => {
 			if (k.match(/lore/i)) cr._fskills.add("Lore");

@@ -1,0 +1,5149 @@
+{
+	"creature": [
+		{
+			"name": "Avatar of Walkena",
+			"source": "SoT4",
+			"page": 60,
+			"level": 17,
+			"traits": [
+				"rare",
+				"le",
+				"huge",
+				"divine",
+				"humanoid"
+			],
+			"perception": {
+				"std": 29
+			},
+			"senses": [
+				{
+					"name": "greater darkvision"
+				},
+				{
+					"name": "smoke vision"
+				}
+			],
+			"languages": {
+				"languages": [
+					"Common"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 29
+				},
+				"athletics": {
+					"std": 34
+				},
+				"intimidation": {
+					"std": 33
+				},
+				"religion": {
+					"std": 28
+				},
+				"walkena lore": {
+					"std": 33
+				}
+			},
+			"abilityMods": {
+				"str": 9,
+				"dex": 4,
+				"con": 8,
+				"int": 2,
+				"wis": 3,
+				"cha": 8
+			},
+			"items": [
+				"spear"
+			],
+			"ac": {
+				"std": 40
+			},
+			"savingThrows": {
+				"fort": {
+					"std": 31
+				},
+				"ref": {
+					"std": 25
+				},
+				"will": {
+					"std": 31
+				}
+			},
+			"hp": [
+				{
+					"hp": 380
+				}
+			],
+			"immunities": [
+				"death effects",
+				"disease",
+				"drained",
+				"fire",
+				"paralyzed",
+				"unconscious"
+			],
+			"weaknesses": [
+				{
+					"name": "cold",
+					"amount": 15
+				}
+			],
+			"resistances": [
+				{
+					"name": "physical",
+					"amount": 10
+				}
+			],
+			"speed": {
+				"walk": 60,
+				"abilities": [
+					"air walk"
+				]
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"magical",
+						"reach 20 feet",
+						"versatile fire"
+					],
+					"name": "holy spear",
+					"bonus": 33,
+					"damage": "{@damage 3d12+19} piercing"
+				},
+				{
+					"range": "Melee",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"agile",
+						"finesse",
+						"unarmed",
+						"versatile fire"
+					],
+					"name": "fist",
+					"bonus": 33,
+					"damage": "{@damage 3d6+19} bludgeoning plus Improved Grab"
+				},
+				{
+					"range": "Ranged",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"fire",
+						"magical",
+						"range increment 120 feet"
+					],
+					"name": "sunfire",
+					"bonus": 31,
+					"damage": "{@damage 3d8+18} fire"
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Divine Innate",
+					"tradition": "Divine",
+					"type": "Innate",
+					"DC": 36,
+					"attack": 28,
+					"entry": {
+						"0": {
+							"level": 8,
+							"spells": [
+								{
+									"name": "daze"
+								},
+								{
+									"name": "produce flame"
+								},
+								{
+									"name": "shield"
+								},
+								{
+									"name": "telekinetic projectile"
+								}
+							]
+						},
+						"5": {
+							"spells": [
+								{
+									"name": "command"
+								},
+								{
+									"name": "harm"
+								},
+								{
+									"name": "heal"
+								}
+							]
+						},
+						"6": {
+							"spells": [
+								{
+									"name": "flame strike"
+								},
+								{
+									"name": "flaming sphere"
+								},
+								{
+									"name": "freedom of movement"
+								}
+							]
+						},
+						"7": {
+							"spells": [
+								{
+									"name": "fireball"
+								},
+								{
+									"name": "harm"
+								},
+								{
+									"name": "heal"
+								},
+								{
+									"name": "prismatic spray"
+								}
+							]
+						},
+						"8": {
+							"spells": [
+								{
+									"name": "blade barrier"
+								},
+								{
+									"name": "fire seeds"
+								},
+								{
+									"name": "prismatic wall"
+								}
+							]
+						},
+						"constant": {
+							"4": {
+								"spells": [
+									{
+										"name": "air walk"
+									}
+								]
+							}
+						}
+					}
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Attack of Opportunity",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"entries": [],
+						"generic": {
+							"tag": "ability"
+						}
+					},
+					{
+						"name": "Avatar's Resistance",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"traits": [
+							"abjuration",
+							"divine",
+							"fortune"
+						],
+						"trigger": "The avatar fails or critically fails a saving throw",
+						"frequency": {
+							"freq": 1,
+							"unit": "minute"
+						},
+						"entries": [
+							"{@deity Walkena|LOGM}'s will attempts to undo his avatar's fate. The avatar rerolls the saving throw and takes the better result."
+						]
+					},
+					{
+						"name": "Frightful Presence",
+						"traits": [
+							"aura",
+							"emotion",
+							"fear",
+							"mental"
+						],
+						"entries": [
+							"60 feet, DC 38"
+						],
+						"generic": {
+							"tag": "ability"
+						}
+					},
+					{
+						"name": "Smoke Vision",
+						"entries": [
+							"The avatar ignores the {@condition concealed} condition from smoke."
+						]
+					},
+					{
+						"name": "Sun's Touch",
+						"traits": [
+							"aura",
+							"divine",
+							"evocation",
+							"fire",
+							"light"
+						],
+						"entries": [
+							"10 feet.",
+							"The avatar of {@deity Walkena|LOGM} radiates with an intense light.",
+							"Creatures that enter or begin their turn in the emanation are {@condition dazzled} and take {@damage 3d8} fire damage (DC 35 basic Fortitude save). Creatures remain {@condition dazzled} until they leave the emanation."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Constrict",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"{@damage 2d4+11} bludgeoning plus {@damage 2d8} fire, DC 38"
+						],
+						"generic": {
+							"tag": "ability"
+						}
+					},
+					{
+						"name": "Pull Down the Sun",
+						"activity": {
+							"number": 3,
+							"unit": "action"
+						},
+						"traits": [
+							"divine",
+							"evocation",
+							"fire",
+							"light"
+						],
+						"entries": [
+							"The avatar of {@deity Walkena|LOGM} plucks a small drop of sunlight from the sky and rains down sunfire on the battlefield. The avatar selects a 20-foot burst within 90 feet. Sunfire rains down in the area, dealing {@damage 12d8} fire damage (DC 38 basic Reflex save) to all creatures that enter or begin their turn in the area. The power of the sun restores the avatar; it instead recovers an equal number of Hit Points while in the area. The sunfire continues to rain until the end of the avatar's next turn. The avatar can't use Pull"
+						]
+					},
+					{
+						"name": "Down the",
+						"entries": [
+							"Sun again for {@dice 1d4} rounds."
+						]
+					},
+					{
+						"name": "Radiate Glory",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"divine",
+							"evocation",
+							"light"
+						],
+						"entries": [
+							"The avatar intensifies its light. All creatures within 30 feet must attempt a DC 38 Fortitude save. The avatar can't use Radiate Glory again for {@dice 1d4} rounds. During this time, the avatar's Sun Touch no longer dazzles creatures.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": [
+										"The creature is unaffected and becomes temporarily immune for 24 hours."
+									],
+									"Success": [
+										"The creature is {@condition dazzled} for 1 round."
+									],
+									"Failure": [
+										"The creature is {@condition blinded} for 1 round."
+									],
+									"Critical Failure": [
+										"The creature is {@condition blinded} for 1 minute."
+									]
+								}
+							}
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Ba'aupa Mdoudu",
+			"source": "SoT4",
+			"page": 80,
+			"level": 13,
+			"traits": [
+				"n",
+				"medium",
+				"beast"
+			],
+			"perception": {
+				"std": 23
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"name": "skeleton sense ",
+					"range": {
+						"unit": "feet",
+						"number": 60
+					}
+				},
+				{
+					"name": "tremorsense",
+					"range": {
+						"unit": "feet",
+						"number": 30
+					},
+					"type": "precise"
+				}
+			],
+			"skills": {
+				"athletics": {
+					"std": 27
+				},
+				"stealth": {
+					"std": 25
+				}
+			},
+			"abilityMods": {
+				"str": 8,
+				"dex": 4,
+				"con": 5,
+				"int": -4,
+				"wis": 4,
+				"cha": -2
+			},
+			"ac": {
+				"std": 33
+			},
+			"savingThrows": {
+				"fort": {
+					"std": 26
+				},
+				"ref": {
+					"std": 21
+				},
+				"will": {
+					"std": 23
+				}
+			},
+			"hp": [
+				{
+					"hp": 245
+				}
+			],
+			"immunities": [
+				"acid"
+			],
+			"resistances": [
+				{
+					"name": "bludgeoning",
+					"amount": 15
+				}
+			],
+			"speed": {
+				"walk": 30,
+				"burrow": 20
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"deadly d12"
+					],
+					"name": "jaws",
+					"bonus": 27,
+					"damage": "{@damage 3d8+14} piercing plus {@damage 1d10} {@condition persistent damage ||persistent acid}"
+				},
+				{
+					"range": "Ranged",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"acid",
+						"range increment 60 feet"
+					],
+					"name": "spit",
+					"bonus": 23,
+					"damage": "{@damage 6d6} acid"
+				}
+			],
+			"abilities": {
+				"top": [
+					{
+						"name": "Skeleton Sense",
+						"entries": [
+							"A ba'aupa mdoudu can sense the presence of bones and skeletons within 60 feet; this is a precise sense when detecting dead bones but an imprecise one when detecting living bones."
+						]
+					}
+				],
+				"mid": [
+					{
+						"name": "Reactive",
+						"entries": [
+							"A ba'aupa mdoudu gains an additional reaction at the start of its turn but can use this reaction only to Slime Squirt."
+						]
+					},
+					{
+						"name": "Slime Squirt",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"trigger": "A creature inflicts slashing or piercing damage on the ba'aupa mdoudu with a melee {@action Strike}",
+						"entries": [
+							"The attacking creature takes {@damage 2d10} acid damage."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Caustic Acid",
+						"entries": [
+							"Whenever a creature takes acid damage from any of a ba'aupa mdoudu's abilities or Strikes, it must succeed at a DC 30 Fortitude save or become {@condition drained||drained 1} ({@condition drained||drained 2} on a critical failure). On each subsequent failure, the {@condition drained} condition value increases by 1 (or by 2 on a critical failure), to a maximum of {@condition drained||drained 4}."
+						]
+					},
+					{
+						"name": "Caustic Rain",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"evocation",
+							"primal"
+						],
+						"entries": [
+							"The ba'aupa mdoudu spews copious amounts of acid into the air, creating a cascading rain to fall in a 10- foot radius around itself. All creatures in the area take {@damage 14d6} acid damage (DC 33 basic Reflex save). The ba'aupa mdoudu can't use Caustic Rain again for {@dice 1d4} rounds."
+						]
+					},
+					{
+						"name": "Stone Tunneler",
+						"entries": [
+							"A ba'aupa mdoudu can leave a tunnel when it burrows through earth or stone, and it usually does."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Biloko Reaver",
+			"source": "SoT4",
+			"page": 36,
+			"level": 10,
+			"traits": [
+				"uncommon",
+				"ce",
+				"small",
+				"fey"
+			],
+			"perception": {
+				"std": 19
+			},
+			"senses": [
+				{
+					"name": "low-light vision"
+				},
+				{
+					"name": "scent",
+					"range": {
+						"unit": "feet",
+						"number": 30
+					},
+					"type": "precise"
+				}
+			],
+			"languages": {
+				"languages": [
+					"Common",
+					"Sylvan"
+				]
+			},
+			"skills": {
+				"athletics": {
+					"std": 22
+				},
+				"crafting": {
+					"std": 16
+				},
+				"intimidation": {
+					"std": 19
+				},
+				"stealth": {
+					"std": 19
+				},
+				"survival": {
+					"std": 21
+				}
+			},
+			"abilityMods": {
+				"str": 6,
+				"dex": 5,
+				"con": 3,
+				"int": 0,
+				"wis": 3,
+				"cha": 1
+			},
+			"items": [
+				"leather armor",
+				"+1 striking maul",
+				"spear (3)"
+			],
+			"ac": {
+				"std": 29
+			},
+			"savingThrows": {
+				"fort": {
+					"std": 19
+				},
+				"ref": {
+					"std": 21
+				},
+				"will": {
+					"std": 19
+				}
+			},
+			"hp": [
+				{
+					"hp": 175
+				}
+			],
+			"speed": {
+				"walk": 20
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"magical",
+						"shove"
+					],
+					"name": "maul",
+					"bonus": 23,
+					"damage": "{@damage 2d12+12} bludgeoning"
+				},
+				{
+					"range": "Melee",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"name": "jaws",
+					"bonus": 22,
+					"damage": "{@damage 2d8+12} piercing"
+				},
+				{
+					"range": "Ranged",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"thrown 20 feet"
+					],
+					"name": "spear",
+					"bonus": 22,
+					"damage": "{@damage 1d6+12} piercing"
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Primal Innate",
+					"tradition": "Primal",
+					"type": "Innate",
+					"DC": 26,
+					"entry": {
+						"1": {
+							"spells": [
+								{
+									"name": "charm"
+								}
+							]
+						}
+					}
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Attack of Opportunity",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"entries": [],
+						"generic": {
+							"tag": "ability"
+						}
+					}
+				],
+				"bot": [
+					{
+						"name": "Inspired Feast",
+						"traits": [
+							"emotion",
+							"mental"
+						],
+						"entries": [
+							"If a biloko feasts on a human corpse for 1 minute or more, they gain a +1 status bonus to attack rolls and a +2 status bonus to damage rolls for 1 hour."
+						]
+					},
+					{
+						"name": "Terrifying Roar",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"auditory",
+							"emotion",
+							"fear",
+							"mental"
+						],
+						"entries": [
+							"The biloko reaver unleashes a frightful roar. Any non-biloko within 30 feet must succeed at a DC 29 Will save or become {@condition frightened||frightened 1} ({@condition frightened||frightened 3} on a critical failure). Those who critically succeed are temporarily immune for 1 minute."
+						]
+					}
+				]
+			},
+			"description": "Biloko killers (Pathfinder Lost Omens The Mwangi Expanse 294)"
+		},
+		{
+			"name": "Dimari-Diji",
+			"source": "SoT4",
+			"page": 86,
+			"level": 25,
+			"traits": [
+				"unique",
+				"n",
+				"gargantuan",
+				"plant"
+			],
+			"perception": {
+				"std": 43
+			},
+			"senses": [
+				{
+					"name": "low-light vision"
+				},
+				{
+					"name": "tremorsense",
+					"range": {
+						"unit": "feet",
+						"number": 120
+					},
+					"type": "precise"
+				},
+				{
+					"name": "true seeing"
+				}
+			],
+			"languages": {
+				"languages": [
+					"Aklo",
+					"Arboreal",
+					"Celestial",
+					"Common",
+					"Draconic",
+					"Requian",
+					"Sphinx"
+				],
+				"languageAbilities": [
+					"{@spell speak with animals}",
+					"{@spell speak with plants}",
+					"telepathy 300 feet"
+				]
+			},
+			"skills": {
+				"arcana": {
+					"std": 42
+				},
+				"athletics": {
+					"std": 43
+				},
+				"diplomacy": {
+					"std": 41
+				},
+				"mwangi\nexpanse lore": {
+					"std": 50
+				},
+				"nature": {
+					"std": 50
+				},
+				"stealth": {
+					"std": 36,
+					"in forests": 42
+				}
+			},
+			"abilityMods": {
+				"str": 12,
+				"dex": -1,
+				"con": 7,
+				"int": 7,
+				"wis": 12,
+				"cha": 10
+			},
+			"ac": {
+				"std": 52
+			},
+			"savingThrows": {
+				"fort": {
+					"std": 42
+				},
+				"ref": {
+					"std": 36
+				},
+				"will": {
+					"std": 48
+				}
+			},
+			"hp": [
+				{
+					"hp": 550,
+					"abilities": [
+						"regeneration 30 (deactivated by fire)"
+					]
+				}
+			],
+			"immunities": [
+				"disease",
+				"mental",
+				"poison"
+			],
+			"weaknesses": [
+				{
+					"name": "axe vulnerability"
+				},
+				{
+					"name": "fire",
+					"amount": 20
+				}
+			],
+			"resistances": [
+				{
+					"name": "bludgeoning",
+					"amount": 20
+				},
+				{
+					"name": "piercing",
+					"amount": 20
+				}
+			],
+			"speed": {
+				"walk": 40,
+				"abilities": [
+					"freedom of movement"
+				]
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"magical",
+						"reach 20 feet"
+					],
+					"name": "branch",
+					"bonus": 44,
+					"damage": "{@damage 5d10+20} bludgeoning plus Improved Knockdown"
+				},
+				{
+					"range": "Ranged",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"magical",
+						"mental",
+						"range increment 120 feet"
+					],
+					"name": "mental blast",
+					"bonus": 44,
+					"damage": "{@damage 5d6+20} mental plus"
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Primal Innate",
+					"tradition": "Primal",
+					"type": "Innate",
+					"DC": 49,
+					"attack": 41,
+					"entry": {
+						"2": {
+							"spells": [
+								{
+									"name": "entangle"
+								}
+							]
+						},
+						"3": {
+							"spells": [
+								{
+									"name": "earthbind",
+									"amount": "at will"
+								}
+							]
+						},
+						"6": {
+							"spells": [
+								{
+									"name": "tangling creepers"
+								}
+							]
+						},
+						"7": {
+							"spells": [
+								{
+									"name": "regenerate"
+								},
+								{
+									"name": "sunburst"
+								}
+							]
+						},
+						"8": {
+							"spells": [
+								{
+									"name": "moment of renewal"
+								},
+								{
+									"name": "punishing winds"
+								},
+								{
+									"name": "wind walk"
+								}
+							]
+						},
+						"9": {
+							"spells": [
+								{
+									"name": "nature's enmity"
+								},
+								{
+									"name": "storm of vengeance"
+								},
+								{
+									"name": "summon plant or fungus"
+								}
+							]
+						},
+						"10": {
+							"spells": [
+								{
+									"name": "primal phenomenon"
+								},
+								{
+									"name": "revival"
+								}
+							]
+						},
+						"constant": {
+							"2": {
+								"spells": [
+									{
+										"name": "speak with animals"
+									}
+								]
+							},
+							"4": {
+								"spells": [
+									{
+										"name": "freedom of movement"
+									},
+									{
+										"name": "speak with plants"
+									}
+								]
+							},
+							"8": {
+								"spells": [
+									{
+										"name": "true seeing"
+									}
+								]
+							}
+						}
+					}
+				}
+			],
+			"abilities": {
+				"top": [
+					{
+						"name": "Requian, Sphinx, Sylvan;",
+						"entries": [
+							"speak with animals, speak with plants; telepathy 300 feet"
+						]
+					},
+					{
+						"name": "Fungus Sight",
+						"traits": [
+							"divination",
+							"primal"
+						],
+						"entries": [
+							"Dimari-Diji produces small clumps of fungus that he can use to see beyond his normal sight. He can use a single action, which has the {@trait concentrate} trait, to project his senses into an intact fungus clump on the Material Plane or to end this projection. Dimari-Diji loses all sensory information from his own body while projecting his senses into fungus."
+						]
+					}
+				],
+				"mid": [
+					{
+						"name": "Axe Vulnerability",
+						"entries": [
+							"An arboreal nature-speaker takes 20 additional damage from axes."
+						]
+					},
+					{
+						"name": "Aura of Growth",
+						"traits": [
+							"aura",
+							"plant",
+							"primal",
+							"transmutation"
+						],
+						"entries": [
+							"120 feet. Plants near Dimari-Diji grow larger and more vibrant. Plants in the emanation gain the success effects of the plant growth ritual. Any plant spells cast in the area are empowered and use the effects of the spell 1 level higher than it was cast, to a maximum of 9th level (Dimari-Diji's spells are unaffected). Finally, other plant creatures gain fast healing 20 while in the area."
+						]
+					},
+					{
+						"name": "Enriching Aura",
+						"traits": [
+							"aura",
+							"evocation",
+							"transmutation"
+						],
+						"entries": [
+							"60 feet.",
+							"Dimari-Diji's natural power enhances primal spellcasting around him. All creatures within the emanation can alter a primal spell as if they had just used Reach Spell or Widen"
+						]
+					},
+					{
+						"name": "Spell",
+						"activity": {
+							"unit": "varies",
+							"entry": "Core Rulebook 210"
+						},
+						"components": [
+							"when they Cast the Spell."
+						],
+						"entries": []
+					}
+				],
+				"bot": [
+					{
+						"name": "Memories of Ages",
+						"entries": []
+					},
+					{
+						"name": "Forest Growth",
+						"entries": [
+							"Once per month, Dimari-Diji can spend 1 hour to sprout a new forest. He causes the forest to sprout in a 50-foot burst within 300 feet. The forest instantly springs to life, and is composed of fungi, plants, and trees most appropriate to the area he selected. The forest grows to the height, density, and liveliness of a forest that has grown for 10 years.",
+							"The forest doesn't feature any animals or other creatures, but animals within 1 mile are aware of the new forest and might make the forest their new habitat as appropriate. Memories of Ages Dimari-Diji's mental blasts cloud the minds of his foes, making it difficult for them to focus on combat. A creature that takes damage from Dimari-Diji's mental blast is {@condition dazzled} for 1 round. If the attack was a critical hit, the creature is {@condition dazzled} for 1 minute instead."
+						]
+					},
+					{
+						"name": "Memory Maelstrom",
+						"activity": {
+							"number": 3,
+							"unit": "action"
+						},
+						"traits": [
+							"concentrate",
+							"incapacitation",
+							"mental",
+							"nonlethal",
+							"primal"
+						],
+						"entries": [
+							"Dimari-Diji tries to overwhelm foes with a surge of information he has absorbed over his long life. This surge deals {@damage 12d6} mental damage to each enemy within 60 feet, who must attempt a DC 32 Will save.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": [
+										"The creature maintains its composure, takes no damage, and is temporarily immune to Memory Maelstrom for 1 minute."
+									],
+									"Success": [
+										"The creature is {@condition stunned||stunned 1} and takes half damage."
+									],
+									"Failure": [
+										"The creature takes full damage and is {@condition stunned||stunned 3}."
+									],
+									"Critical Failure": [
+										"The creature takes double damage, is {@condition confused} for {@dice 2d4} rounds, and is {@condition stunned||stunned 3}."
+									]
+								}
+							}
+						]
+					},
+					{
+						"name": "Nature's Concentration",
+						"activity": {
+							"number": 1,
+							"unit": "free"
+						},
+						"trigger": "Dimari-Diji's turn begins",
+						"entries": [
+							"Dimari-Diji calls upon the natural world around him to support his magic. He Sustains a Spell."
+						]
+					}
+				]
+			},
+			"description": "Male arboreal nature-speaker"
+		},
+		{
+			"name": "Drenchdead",
+			"source": "SoT4",
+			"page": 81,
+			"level": 12,
+			"traits": [
+				"uncommon",
+				"ne",
+				"medium",
+				"undead",
+				"water"
+			],
+			"perception": {
+				"std": 21
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"name": "wavesense",
+					"range": {
+						"unit": "feet",
+						"number": 60
+					},
+					"type": "precise"
+				}
+			],
+			"languages": {
+				"languages": [
+					"Common (can't speak any language)"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 21
+				},
+				"athletics": {
+					"std": 25
+				},
+				"stealth": {
+					"std": 23
+				},
+				"survival": {
+					"std": 19
+				}
+			},
+			"abilityMods": {
+				"str": 7,
+				"dex": 3,
+				"con": 4,
+				"int": 0,
+				"wis": 1,
+				"cha": 3
+			},
+			"ac": {
+				"std": 32
+			},
+			"savingThrows": {
+				"fort": {
+					"std": 24
+				},
+				"ref": {
+					"std": 21
+				},
+				"will": {
+					"std": 19
+				}
+			},
+			"hp": [
+				{
+					"hp": 230
+				}
+			],
+			"immunities": [
+				"death effects",
+				"disease",
+				"paralyzed",
+				"poison",
+				"unconscious"
+			],
+			"resistances": [
+				{
+					"name": "cold",
+					"amount": 10
+				}
+			],
+			"speed": {
+				"walk": 20,
+				"swim": 35
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"agile"
+					],
+					"name": "claw",
+					"bonus": 26,
+					"damage": "{@damage 3d6+13} slashing plus Grab"
+				},
+				{
+					"range": "Melee",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"name": "jaws",
+					"bonus": 26,
+					"damage": "{@damage 3d10+13} piercing"
+				}
+			],
+			"abilities": {
+				"bot": [
+					{
+						"name": "Aquatic Camouflage",
+						"entries": [
+							"When fully submerged in water, the drenchdead can {@action Hide} from other creatures even if it doesn't have cover against them and isn't {@condition concealed} from them."
+						]
+					},
+					{
+						"name": "Drag Down",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"requirements": "The drenchdead is swimming in water at least 10 feet deep",
+						"entries": [
+							"The drenchdead attempts an {@skill Athletics} check to {@action Grapple} an adjacent creature (on nearby land or in the water). On a success against a creature on land, in addition to the normal effects of {@action Grapple}, the drenchdead pulls the creature into the water into a space adjacent to itself. If the creature is already in the water, on a success, in addition the normal effects of {@action Grapple}, the drenchdead drags the creature 10 feet deeper, moving 10 feet with the creature. Moving a creature into water or deeper into water using Drag Down is forced movement for the target creature, but not for the drenchdead."
+						]
+					},
+					{
+						"name": "Drowning Touch",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"conjuration",
+							"incapacitation",
+							"occult",
+							"water"
+						],
+						"entries": [
+							"The drenchdead touches a creature and causes water from its own body to flow into the creature's lungs. If the creature can't breathe water, it must attempt a DC 32 Fortitude save.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Success": [
+										"The creature is unaffected and is temporarily immune to Drowning Touch for 24 hours."
+									],
+									"Failure": [
+										"The creature becomes {@condition sickened||sickened 3}."
+									],
+									"Critical Failure": [
+										"The creature chokes on the water and runs out of air. It falls {@condition unconscious} and starts drowning (Core Rulebook 478). If the creature is above water, it recovers from drowning as soon as it succeeds at a saving throw against suffocation."
+									]
+								}
+							}
+						]
+					},
+					{
+						"name": "Surface Skimmer",
+						"entries": [
+							"A drenchdead submerged in water has cover from attacks made by creatures out of the water."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Gambulami",
+			"source": "SoT4",
+			"page": 37,
+			"level": 11,
+			"traits": [
+				"unique",
+				"ne",
+				"small",
+				"fey"
+			],
+			"perception": {
+				"std": 21
+			},
+			"senses": [
+				{
+					"name": "low-light vision"
+				},
+				{
+					"name": "scent",
+					"range": {
+						"unit": "feet",
+						"number": 30
+					},
+					"type": "precise"
+				}
+			],
+			"languages": {
+				"languages": [
+					"Aklo",
+					"Common",
+					"Sylvan"
+				]
+			},
+			"skills": {
+				"athletics": {
+					"std": 24
+				},
+				"crafting": {
+					"std": 18
+				},
+				"deception": {
+					"std": 20
+				},
+				"intimidation": {
+					"std": 22
+				},
+				"nature": {
+					"std": 21
+				},
+				"stealth": {
+					"std": 22
+				},
+				"survival": {
+					"std": 21
+				}
+			},
+			"abilityMods": {
+				"str": 7,
+				"dex": 5,
+				"con": 3,
+				"int": 1,
+				"wis": 4,
+				"cha": 3
+			},
+			"items": [
+				"deflecting branch (page 75)",
+				"leather armor",
+				"spear (3)"
+			],
+			"ac": {
+				"std": 31
+			},
+			"savingThrows": {
+				"fort": {
+					"std": 24
+				},
+				"ref": {
+					"std": 20
+				},
+				"will": {
+					"std": 21
+				}
+			},
+			"hp": [
+				{
+					"hp": 200
+				}
+			],
+			"speed": {
+				"walk": 20
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"forceful",
+						"magical",
+						"sweep"
+					],
+					"name": "deflecting branch",
+					"bonus": 24,
+					"damage": "{@damage 3d10+13} bludgeoning"
+				},
+				{
+					"range": "Melee",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"name": "jaws",
+					"bonus": 22,
+					"damage": "{@damage 2d8+13} piercing plus Grab"
+				},
+				{
+					"range": "Ranged",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"thrown 20 feet"
+					],
+					"name": "spear",
+					"bonus": 22,
+					"damage": "{@damage 1d6+13} piercing"
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Primal Innate",
+					"tradition": "Primal",
+					"type": "Innate",
+					"DC": 30,
+					"entry": {
+						"1": {
+							"spells": [
+								{
+									"name": "charm"
+								}
+							]
+						}
+					}
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Attack of Opportunity",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"entries": [],
+						"generic": {
+							"tag": "ability"
+						}
+					}
+				],
+				"bot": [
+					{
+						"name": "Inspired Feast",
+						"traits": [
+							"emotion",
+							"mental"
+						],
+						"entries": [
+							"As biloko reaver."
+						]
+					},
+					{
+						"name": "Size Alteration",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"polymorph",
+							"primal",
+							"transmutation"
+						],
+						"entries": [
+							"Gambulami is affected by a 4th-level {@spell enlarge} spell. This lasts for 1 minute, and Gambulami can {@action Dismiss} the Spell."
+						]
+					},
+					{
+						"name": "Thrashing Chomp",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"requirements": "Gambulami is larger than Small in size and has a creature {@condition grabbed} with his jaws",
+						"entries": [
+							"Gambulami whips the creature around, smashing it against other nearby creatures. He makes an {@skill Athletics} check against the {@condition grabbed} creature's"
+						]
+					},
+					{
+						"name": "Fortitude DC.",
+						"entries": [
+							"Regardless of the result, the creature is released from Gambulami's jaws afterward, escaping into the space in which it was {@condition grabbed}.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": [
+										"Gambulami uses a mighty spin to smash the held creature against every creature within his reach. Every creature, including the {@condition grabbed} creature, takes {@damage 1d10+7} bludgeoning damage."
+									],
+									"Success": [
+										"As critical success, but creatures take {@damage 1d10} bludgeoning damage."
+									],
+									"Failure": [
+										"The creature breaks free."
+									],
+									"Critical Failure": [
+										"The creature breaks free and Gambulami's spin causes him to fall {@condition prone}."
+									]
+								}
+							}
+						]
+					}
+				]
+			},
+			"description": "Male eloko rager (Pathfinder Lost Omens The Mwangi Expanse 294)"
+		},
+		{
+			"name": "Gold Defender",
+			"source": "SoT4",
+			"page": 49,
+			"level": 13,
+			"traits": [
+				"rare",
+				"n",
+				"huge",
+				"construct",
+				"golem",
+				"mindless"
+			],
+			"perception": {
+				"std": 21
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
+			"skills": {
+				"athletics": {
+					"std": 30
+				}
+			},
+			"abilityMods": {
+				"str": 8,
+				"dex": -1,
+				"con": 4,
+				"int": -5,
+				"wis": 0,
+				"cha": -5
+			},
+			"ac": {
+				"std": 34
+			},
+			"savingThrows": {
+				"fort": {
+					"std": 26
+				},
+				"ref": {
+					"std": 21
+				},
+				"will": {
+					"std": 22
+				}
+			},
+			"hp": [
+				{
+					"hp": 190
+				}
+			],
+			"immunities": [
+				"bleed",
+				"death effects",
+				"disease",
+				"doomed",
+				"drained",
+				"fatigued",
+				"fire",
+				"healing",
+				"magic (see page 50)",
+				"mental",
+				"necromancy",
+				"nonlethal attacks",
+				"paralyzed",
+				"poison",
+				"sickened",
+				"unconscious"
+			],
+			"resistances": [
+				{
+					"name": "physical",
+					"amount": 15,
+					"note": "except adamantine"
+				}
+			],
+			"speed": {
+				"walk": 20
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"magical",
+						"reach 10 feet"
+					],
+					"name": "fist",
+					"bonus": 28,
+					"damage": "{@damage 3d10+12} bludgeoning"
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Death Throes",
+						"entries": [
+							"When the gold defender is destroyed, it melts into worthless slag. As it melts, it releases a 10-foot radius cloud of fumes and a 10-foot radius puddle of molten metal.",
+							"Creatures that breathe fumes are exposed to gold defender poison. Creatures that move through the puddle take {@damage 10d6} fire damage. The fumes dissipate after 1 round and the puddle cools after 1 minute."
+						]
+					},
+					{
+						"name": "Golem",
+						"entries": [
+							"Antimagic harmed by cold ({@dice 6d10}, {@dice 2d8} from areas and {@condition persistent damage}); healed by fire (area {@dice 2d8} HP); {@condition slowed} by acid"
+						]
+					},
+					{
+						"name": "Malleable Shape",
+						"entries": [
+							"The gold defender's body is made from soft gold, which is particularly pliable. If the gold defender is critically hit with an attack that deals bludgeoning damage, the attack partially bends and reshapes the gold defender. The gold defender becomes {@condition clumsy||clumsy 2} until it spends an {@action Interact} action to bend itself back into shape."
+						]
+					},
+					{
+						"name": "Vulnerable to Telekinetic Haul",
+						"entries": [
+							"Casting telekinetic haul on the gold defender squeezes its form, compressing it into a smaller and much more awkward shape. The gold defender becomes {@condition clumsy||clumsy 3} and can't use Light Reflection.",
+							"The gold defender must take a 1-minute activity, which has the {@trait manipulate} trait, to restore its shape, removing the {@condition clumsy} condition and restoring its Light Reflection."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Inexorable March",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"The gold defender Strides up to its Speed, pushing back each creature whose space it moves into and damaging them if they try to stop its movement.",
+							"A creature can attempt to bar the way by succeeding at a DC 37 Fortitude save. On a critical success, the resisting creature takes no damage; otherwise, it is damaged as if hit by the defender's fist {@action Strike}."
+						]
+					},
+					{
+						"name": "Light Reflection",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"primal",
+							"evocation"
+						],
+						"requirements": "The gold defender is not in darkness",
+						"entries": [
+							"The gold defender reshapes its skin into a reflective surface that magnifies ambient light into a precise beam that burns all creatures in a 30-foot cone, dealing {@damage 14d6} fire damage (DC 31 Reflex save if the gold defender is in dim light, DC 33 Reflex save if it's in bright light). It can't use Light Reflection again for {@dice 1d4} rounds.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": [
+										"The creature takes no damage."
+									],
+									"Success": [
+										"The creature takes half damage."
+									],
+									"Failure": [
+										"The creature takes full damage and catches fire, taking {@damage 1d6} {@condition persistent damage ||persistent fire damage}."
+									],
+									"Critical Failure": [
+										"As failure, but the {@condition persistent damage ||persistent fire damage} is {@dice 5d6}."
+									]
+								}
+							}
+						]
+					},
+					{
+						"name": "Gold Defender Poison",
+						"traits": [
+							"poison"
+						],
+						"entries": [
+							"Any {@condition drained} value from this poison is reduced by 1 every hour;",
+							{
+								"type": "affliction",
+								"DC": 33,
+								"savingThrow": "Fortitude",
+								"maxDuration": "4 rounds",
+								"stages": [
+									{
+										"stage": 1,
+										"entry": "{@damage 2d6} poison and {@condition drained||drained 1}",
+										"duration": "1 round"
+									},
+									{
+										"stage": 2,
+										"entry": "{@damage 4d6} poison and {@condition drained||drained 2}",
+										"duration": "1 round"
+									},
+									{
+										"stage": 3,
+										"entry": "{@damage 8d6} poison and {@condition drained||drained 3}",
+										"duration": "1 round"
+									}
+								]
+							}
+						]
+					}
+				]
+			},
+			"description": "Variant iron golem (Pathfinder Bestiary 188)"
+		},
+		{
+			"name": "Gold Defender Garrison",
+			"source": "SoT4",
+			"page": 50,
+			"level": 13,
+			"traits": [
+				"rare",
+				"n",
+				"gargantuan",
+				"construct",
+				"mindless",
+				"troop"
+			],
+			"perception": {
+				"std": 22
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
+			"skills": {
+				"athletics": {
+					"std": 30
+				}
+			},
+			"abilityMods": {
+				"str": 7,
+				"dex": 2,
+				"con": 6,
+				"int": -5,
+				"wis": 0,
+				"cha": -5
+			},
+			"ac": {
+				"std": 29
+			},
+			"savingThrows": {
+				"fort": {
+					"std": 26
+				},
+				"ref": {
+					"std": 22
+				},
+				"will": {
+					"std": 22
+				}
+			},
+			"hp": [
+				{
+					"hp": 240,
+					"abilities": [
+						"(16 squares); Thresholds 160 (12 squares)",
+						"80 (8 squares)"
+					]
+				}
+			],
+			"immunities": [
+				"bleed",
+				"death effects",
+				"disease",
+				"doomed",
+				"drained",
+				"fatigued",
+				"fire",
+				"healing",
+				"magic (see below)",
+				"mental",
+				"necromancy",
+				"nonlethal attacks",
+				"paralyzed",
+				"poison",
+				"sickened",
+				"unconscious"
+			],
+			"weaknesses": [
+				{
+					"name": "area damage",
+					"amount": 15
+				},
+				{
+					"name": "bludgeoning",
+					"amount": 10
+				},
+				{
+					"name": "splash damage",
+					"amount": 8
+				}
+			],
+			"resistances": [
+				{
+					"name": "physical",
+					"amount": 15,
+					"note": "except adamantine and bludgeoning"
+				}
+			],
+			"speed": {
+				"walk": 20,
+				"abilities": [
+					"troop movement"
+				]
+			},
+			"abilities": {
+				"mid": [
+					{
+						"name": "Death Throes",
+						"entries": [
+							"As the garrison's numbers dwindle, gold defenders melt away into worthless slag. Every time that the garrison is reduced to a threshold, it leaves behind a 10-foot radius cloud of fumes and a 10-foot radius puddle of molten metal. Creatures that breathe fumes are exposed to gold defender poison. Creatures that move through the puddle take {@damage 10d6} fire damage. The fumes dissipate after 1 round and the puddle completely evaporates after 1 minute."
+						]
+					},
+					{
+						"name": "Golem",
+						"entries": [
+							"Antimagic harmed by cold ({@dice 2d8} from areas and {@condition persistent damage}); healed by fire (area {@dice 2d8} HP); {@condition slowed} by acid"
+						]
+					},
+					{
+						"name": "Troop Defenses",
+						"entries": []
+					}
+				],
+				"bot": [
+					{
+						"name": "Form Up",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": []
+					},
+					{
+						"name": "Golden Strike",
+						"activity": {
+							"number": 1,
+							"unit": "varies",
+							"entry": "{@as 1} to {@as 3}"
+						},
+						"frequency": {
+							"freq": 1,
+							"unit": "round"
+						},
+						"entries": [
+							"The garrison makes a melee attack against each enemy within 5 feet (DC 30 basic Reflex save). The damage depends on the number of actions.",
+							"{@as 1} {@damage 2d8+2} bludgeoning damage {@as 2} {@damage 3d8+12} bludgeoning damage {@as 3} {@damage 4d8+15} bludgeoning damage"
+						]
+					},
+					{
+						"name": "Light Reflection",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"primal",
+							"evocation"
+						],
+						"entries": [
+							"As gold defender (page 50). When the garrison is reduced to 8 or fewer squares, this area decreases to a 15-foot cone."
+						]
+					},
+					{
+						"name": "Troop Movement",
+						"entries": [
+							"Whenever the garrison Strides, it first Forms Up as a free action to condense into a 20-foot-by-20-foot area (minus any missing squares), then moves up to its Speed. This works just like a Gargantuan creature moving; for instance, if any square enters difficult terrain, the extra movement cost applies to the whole troop."
+						]
+					},
+					{
+						"name": "Gold Defender Poison",
+						"traits": [
+							"poison"
+						],
+						"entries": [
+							"As gold defender (page 50)."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Grave Karina",
+			"source": "SoT4",
+			"page": 31,
+			"level": 11,
+			"traits": [
+				"rare",
+				"ne",
+				"large",
+				"beast",
+				"fiend"
+			],
+			"perception": {
+				"std": 21
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"name": "smoke vision"
+				}
+			],
+			"languages": {
+				"languages": [
+					"Common",
+					"Necril"
+				],
+				"languageAbilities": [
+					"can't speak any language"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 22
+				},
+				"athletics": {
+					"std": 21
+				},
+				"deception": {
+					"std": 22
+				},
+				"stealth": {
+					"std": 24
+				}
+			},
+			"abilityMods": {
+				"str": 4,
+				"dex": 7,
+				"con": 4,
+				"int": -1,
+				"wis": 2,
+				"cha": 7
+			},
+			"ac": {
+				"std": 30
+			},
+			"savingThrows": {
+				"fort": {
+					"std": 21
+				},
+				"ref": {
+					"std": 24
+				},
+				"will": {
+					"std": 19
+				}
+			},
+			"hp": [
+				{
+					"hp": 240
+				}
+			],
+			"weaknesses": [
+				{
+					"name": "good",
+					"amount": 10
+				}
+			],
+			"speed": {
+				"walk": 10,
+				"fly": 50
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"magical",
+						"reach 10 feet"
+					],
+					"name": "beak",
+					"bonus": 24,
+					"damage": "{@damage 2d10+16} piercing plus grave blight"
+				},
+				{
+					"range": "Melee",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"agile",
+						"magical"
+					],
+					"name": "claw",
+					"bonus": 22,
+					"damage": "{@damage 2d8+13} slashing plus grave blight"
+				},
+				{
+					"range": "Melee",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"magical"
+					],
+					"name": "talon",
+					"bonus": 24,
+					"damage": "{@damage 2d6+13} piercing plus Grab"
+				}
+			],
+			"abilities": {
+				"top": [
+					{
+						"name": "Smoke Vision",
+						"entries": [
+							"Smoke doesn't impair a grave karina's vision; they ignore the {@condition concealed} condition from smoke, including the ash they create with their Breath Weapon."
+						]
+					},
+					{
+						"name": "Sound Imitation",
+						"entries": [
+							"A grave karina who succeeds at a {@skill Deception} check to {@action Lie} can mimic any voice they have heard. They have a +4 circumstance bonus to this check."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Breath Weapon",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"divine",
+							"evocation",
+							"fire"
+						],
+						"entries": [
+							"The grave karina breathes a cloud of burning ash in 30-foot cone that deals {@damage 9d8} fire damage (DC 30 basic Reflex save). The area becomes filled with ash for 1 round. All creatures within the cloud of ash become {@condition concealed}, and all creatures outside the cloud become {@condition concealed} to creatures within it. The grave karina can't use Breath Weapon again for {@dice 1d4} rounds.",
+							{
+								"type": "affliction",
+								"name": "Grave Blight",
+								"traits": [
+									"disease"
+								],
+								"DC": 27,
+								"savingThrow": "Fortitude",
+								"stages": [
+									{
+										"stage": 1,
+										"entry": "carrier with no ill effect",
+										"duration": "1 day"
+									},
+									{
+										"stage": 2,
+										"entry": "{@damage 2d6} poison damage, and {@condition sickened||sickened 1}",
+										"duration": "1 day"
+									},
+									{
+										"stage": 3,
+										"entry": "{@damage 2d8} poison damage, every hour the victim must succeed at another Fortitude save or be {@condition confused} for 1 minute, and {@condition sickened||sickened 2}",
+										"duration": "1 day"
+									}
+								]
+							}
+						]
+					},
+					{
+						"name": "Mocking Cry",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"auditory"
+						],
+						"entries": [
+							"The grave karina mimics a voice and mocks a creature within 30 feet. They attempt a {@skill Deception} check to {@action Demoralize} the creature. Regardless of whether the check succeeds, the target is temporarily immune to the grave karina's mocking cry for 1 hour."
+						]
+					},
+					{
+						"name": "Shadow Command",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"concentrate",
+							"manipulate"
+						],
+						"frequency": {
+							"freq": 1,
+							"unit": "day"
+						},
+						"requirements": "The grave karina is adjacent to a creature that's casting a shadow",
+						"entries": [
+							"The grave karina drives a talon into a creature's shadow and attempts to manipulate it like a puppet with the effects of dominate (DC 27 Will save), except the duration is only 1 minute."
+						]
+					}
+				]
+			},
+			"description": "Variant karina (Pathfinder Lost Omens The Mwangi Expanse 301)"
+		},
+		{
+			"name": "Graveknight Captain",
+			"source": "SoT4",
+			"page": 82,
+			"level": 6,
+			"traits": [
+				"uncommon",
+				"le",
+				"medium",
+				"undead"
+			],
+			"perception": {
+				"std": 14
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
+			"languages": {
+				"languages": [
+					"Common",
+					"Necril"
+				]
+			},
+			"skills": {
+				"athletics": {
+					"std": 16
+				},
+				"intimidation": {
+					"std": 15
+				},
+				"survival": {
+					"std": 12
+				},
+				"warfare lore": {
+					"std": 12
+				}
+			},
+			"abilityMods": {
+				"str": 5,
+				"dex": 3,
+				"con": 4,
+				"int": 1,
+				"wis": 2,
+				"cha": 3
+			},
+			"items": [
+				"+1 full plate",
+				"graveknight's shield (Hardness 8",
+				"HP 64",
+				"BT 32)",
+				"shock warhammer"
+			],
+			"ac": {
+				"std": 25
+			},
+			"savingThrows": {
+				"fort": {
+					"std": 16
+				},
+				"ref": {
+					"std": 14
+				},
+				"will": {
+					"std": 13
+				}
+			},
+			"hp": [
+				{
+					"hp": 90,
+					"abilities": [
+						"negative healing",
+						"rejuvenation"
+					]
+				}
+			],
+			"immunities": [
+				"death",
+				"disease",
+				"electricity",
+				"paralyzed",
+				"poison",
+				"unconscious"
+			],
+			"speed": {
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"electricity",
+						"magical",
+						"shove"
+					],
+					"name": "warhammer",
+					"bonus": 16,
+					"damage": "{@damage 2d8+7} bludgeoning plus {@damage 1d6} electricity"
+				},
+				{
+					"range": "Melee",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"agile",
+						"electricity"
+					],
+					"name": "fist",
+					"bonus": 15,
+					"damage": "{@damage 2d4+7} bludgeoning plus {@damage 1d6} electricity"
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Graveknight's Shield",
+						"entries": []
+					},
+					{
+						"name": "Attack of Opportunity",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"entries": [],
+						"generic": {
+							"tag": "ability"
+						}
+					}
+				],
+				"bot": [
+					{
+						"name": "Devastating Blast",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"arcane",
+							"electricity",
+							"evocation"
+						],
+						"entries": [
+							"{@damage 4d12} electricity, DC 24; as graveknight."
+						]
+					},
+					{
+						"name": "Graveknight's Curse",
+						"entries": [
+							"DC 24; as graveknight."
+						]
+					},
+					{
+						"name": "Weapon Master",
+						"entries": [
+							"As graveknight."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Graveknight Champion",
+			"source": "SoT4",
+			"page": 83,
+			"level": 15,
+			"traits": [
+				"uncommon",
+				"le",
+				"medium",
+				"undead"
+			],
+			"perception": {
+				"std": 27
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
+			"languages": {
+				"languages": [
+					"Common",
+					"Necril"
+				]
+			},
+			"skills": {
+				"athletics": {
+					"std": 31
+				},
+				"deity lore": {
+					"std": 27
+				},
+				"intimidation": {
+					"std": 29
+				},
+				"religion": {
+					"std": 27
+				}
+			},
+			"abilityMods": {
+				"str": 8,
+				"dex": 4,
+				"con": 5,
+				"int": 2,
+				"wis": 4,
+				"cha": 6
+			},
+			"items": [
+				"greater flaming composite shortbow (20 arrows)",
+				"+2 resilient full plate",
+				"greater flaming greatpick"
+			],
+			"ac": {
+				"std": 38
+			},
+			"savingThrows": {
+				"fort": {
+					"std": 28
+				},
+				"ref": {
+					"std": 26
+				},
+				"will": {
+					"std": 25
+				}
+			},
+			"hp": [
+				{
+					"hp": 275,
+					"abilities": [
+						"negative healing",
+						"rejuvenation"
+					]
+				}
+			],
+			"immunities": [
+				"death",
+				"disease",
+				"fire",
+				"paralyzed",
+				"poison",
+				"unconscious"
+			],
+			"speed": {
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"fatal d12",
+						"fire",
+						"magical"
+					],
+					"name": "greatpick",
+					"bonus": 31,
+					"damage": "{@damage 3d10+16} slashing plus {@damage 1d6} fire"
+				},
+				{
+					"range": "Melee",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"agile",
+						"fire"
+					],
+					"name": "fist",
+					"bonus": 30,
+					"damage": "{@damage 3d6+16} bludgeoning plus {@damage 1d6} fire"
+				},
+				{
+					"range": "Ranged",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"deadly d10",
+						"fire",
+						"magical",
+						"range increment 60 feet",
+						"reload 0"
+					],
+					"name": "composite shortbow",
+					"bonus": 28,
+					"damage": "{@damage 3d6+10} piercing plus {@damage 1d6} fire"
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Innate Divine",
+					"tradition": "Divine",
+					"type": "Innate",
+					"DC": 33,
+					"attack": 25,
+					"entry": {
+						"6": {
+							"spells": [
+								{
+									"name": "fireball"
+								},
+								{
+									"name": "scorching ray"
+								}
+							]
+						},
+						"7": {
+							"spells": [
+								{
+									"name": "eclipse burst"
+								},
+								{
+									"name": "finger of death"
+								}
+							]
+						}
+					}
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Attack of Opportunity",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"entries": [],
+						"generic": {
+							"tag": "ability"
+						}
+					},
+					{
+						"name": "Clutching Armor",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"entries": []
+					}
+				],
+				"bot": [
+					{
+						"name": "SoM;",
+						"entries": [
+							"5th cone of cold, flame strike; 4th fireball; Cantrips (7th) chill touch, daze, light, shield"
+						]
+					},
+					{
+						"name": "Channel Magic",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": []
+					},
+					{
+						"name": "Devastating Blast",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"arcane",
+							"evocation",
+							"fire"
+						],
+						"entries": [
+							"{@damage 8d12} fire, DC 36; as graveknight"
+						]
+					},
+					{
+						"name": "Graveknight's Curse",
+						"entries": [
+							"DC 36; as graveknight."
+						]
+					},
+					{
+						"name": "Weapon Master",
+						"entries": [
+							"As graveknight."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Jackal Guard",
+			"source": "SoT4",
+			"page": 9,
+			"level": 10,
+			"traits": [
+				"uncommon",
+				"le",
+				"medium",
+				"human",
+				"humanoid"
+			],
+			"perception": {
+				"std": 19
+			},
+			"languages": {
+				"languages": [
+					"Common",
+					"Mzunu"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 20
+				},
+				"athletics": {
+					"std": 23
+				},
+				"religion": {
+					"std": 18
+				},
+				"society": {
+					"std": 17
+				},
+				"stealth": {
+					"std": 18
+				}
+			},
+			"abilityMods": {
+				"str": 5,
+				"dex": 4,
+				"con": 3,
+				"int": 1,
+				"wis": 2,
+				"cha": -1
+			},
+			"items": [
+				"chain shirt",
+				"religious symbol of {@deity Walkena|LOGM}",
+				"+1 striking returning spear",
+				"lesser sturdy shield (Hardness 10",
+				"HP 80",
+				"BT 40)"
+			],
+			"ac": {
+				"std": 29,
+				"abilities": [
+					"31 with shield raised);"
+				]
+			},
+			"savingThrows": {
+				"fort": {
+					"std": 21
+				},
+				"ref": {
+					"std": 18
+				},
+				"will": {
+					"std": 18
+				}
+			},
+			"hp": [
+				{
+					"hp": 180
+				}
+			],
+			"speed": {
+				"walk": 30
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"magical"
+					],
+					"name": "spear",
+					"bonus": 23,
+					"damage": "{@damage 2d8+13} piercing"
+				},
+				{
+					"range": "Melee",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"agile",
+						"finesse",
+						"nonlethal",
+						"unarmed"
+					],
+					"name": "fist",
+					"bonus": 22,
+					"damage": "{@damage 1d4+13} bludgeoning plus Grab"
+				},
+				{
+					"range": "Ranged",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"magical",
+						"thrown 20 feet"
+					],
+					"name": "spear",
+					"bonus": 22,
+					"damage": "{@damage 2d8+13} piercing"
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Attack of Opportunity",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"entries": [],
+						"generic": {
+							"tag": "ability"
+						}
+					},
+					{
+						"name": "Shield Block",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"entries": [],
+						"generic": {
+							"tag": "ability"
+						}
+					}
+				],
+				"bot": [
+					{
+						"name": "Impaling Strike",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"frequency": {
+							"freq": 1,
+							"unit": "round"
+						},
+						"entries": [
+							"The Jackal Guard lunges forward with their spear and delivers a piercing blow. The Jackal Guard Steps and then makes a melee spear {@action Strike}. On a hit, the target also takes {@damage 1d6} {@condition persistent damage ||persistent bleed damage}."
+						]
+					},
+					{
+						"name": "Knocking Sweep",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"frequency": {
+							"freq": 1,
+							"unit": "round"
+						},
+						"entries": []
+					},
+					{
+						"name": "The Jackal",
+						"entries": [
+							"Guard swings their weapon with a sweeping spin. They attempt separate {@skill Athletics} checks to {@action Trip} any number of creatures within their reach. Each attempt counts toward the Jackal Guard's multiple attack penalty, but the multiple attack penalty doesn't increase until after they make all the attacks."
+						]
+					},
+					{
+						"name": "Spear Vault",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"frequency": {
+							"freq": 1,
+							"unit": "round"
+						},
+						"entries": [
+							"The"
+						]
+					},
+					{
+						"name": "Jackal",
+						"entries": [
+							"Guard uses their spear to jump over or around a creature and create an opening. The Jackal Guard Strides up to half their Speed. This movement doesn't trigger reactions. During this movement, they can move through the space of one creature, and when the Jackal Guard moves through a creature's space in this way, that creature becomes flatfooted until the end of the Jackal Guard's turn. If the Jackal Guard ends their movement within melee reach of at least one enemy, they can make a melee {@action Strike} against that enemy."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Kilia Mwibo",
+			"source": "SoT4",
+			"page": 84,
+			"level": 15,
+			"traits": [
+				"uncommon",
+				"n",
+				"huge",
+				"plant"
+			],
+			"perception": {
+				"std": 26
+			},
+			"senses": [
+				{
+					"name": "emotion sense ",
+					"range": {
+						"unit": "feet",
+						"number": 60
+					}
+				}
+			],
+			"languages": {
+				"languages": [
+					"Sylvan (can't speak any language)"
+				]
+			},
+			"skills": {
+				"athletics": {
+					"std": 30
+				},
+				"deception": {
+					"std": 25
+				},
+				"stealth": {
+					"std": 28
+				}
+			},
+			"abilityMods": {
+				"str": 7,
+				"dex": 5,
+				"con": 3,
+				"int": -2,
+				"wis": 5,
+				"cha": 0
+			},
+			"ac": {
+				"std": 36
+			},
+			"savingThrows": {
+				"fort": {
+					"std": 24
+				},
+				"ref": {
+					"std": 29
+				},
+				"will": {
+					"std": 26
+				}
+			},
+			"hp": [
+				{
+					"hp": 345
+				}
+			],
+			"immunities": [
+				"critical hits",
+				"precision",
+				"vision-based effects"
+			],
+			"weaknesses": [
+				{
+					"name": "fire",
+					"amount": 15
+				},
+				{
+					"name": "slashing",
+					"amount": 15
+				}
+			],
+			"resistances": [
+				{
+					"name": "sonic",
+					"amount": 15
+				}
+			],
+			"speed": {
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"deadly d12",
+						"reach 15 feet",
+						"sweep",
+						"versatile P"
+					],
+					"name": "frond",
+					"bonus": 30,
+					"damage": "{@damage 3d10+15} slashing plus {@damage 1d6} bleed and Improved Grab"
+				},
+				{
+					"range": "Melee",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"reach 20 feet",
+						"sweep",
+						"trip"
+					],
+					"name": "root",
+					"bonus": 28,
+					"damage": "{@damage 3d8+15} bludgeoning"
+				},
+				{
+					"range": "Ranged",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"deadly d12",
+						"range increment 60 feet"
+					],
+					"name": "thorn",
+					"bonus": 28,
+					"damage": "{@damage 3d6+15} piercing"
+				}
+			],
+			"abilities": {
+				"top": [
+					{
+						"name": "Emotion Sense",
+						"entries": [
+							"A kilia mwibo can sense nearby negative emotions. This is a precise sense against creatures who are under powerful {@trait emotion} effects like rage, those who are {@condition frightened}, or, at the GM's discretion, those who are in the grips of hatred, sadness, or other overwhelming negative emotions. Against all other creatures that possess emotions, this is an imprecise sense. A creature that has no emotions is effectively {@condition invisible} to a kilia mwibo. A creature that knows about emotion sense can take precautions to {@action Hide} and {@action Sneak} from a kilia mwibo, in this case by suppressing feelings of negativity. You can find more details on hiding from special senses on page 465 of the Core Rulebook."
+						]
+					}
+				],
+				"mid": [
+					{
+						"name": "Despairing Presence",
+						"traits": [
+							"aura",
+							"emotion",
+							"enchantment",
+							"fear",
+							"incapacitation",
+							"mental",
+							"primal"
+						],
+						"entries": [
+							"60 feet. A creature that enters the emanation or starts its turn within it tumbles down a deep well of dread and must attempt a DC 33 Will save.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": [
+										"The target is unaffected."
+									],
+									"Success": [
+										"The target becomes {@condition frightened||frightened 1}."
+									],
+									"Failure": [
+										"The target becomes {@condition frightened||frightened 2}."
+									],
+									"Critical Failure": [
+										"The target becomes {@condition frightened||frightened 3} and {@condition immobilized} until it's no longer {@condition frightened}."
+									]
+								}
+							}
+						]
+					},
+					{
+						"name": "Attack of Opportunity",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"entries": [
+							"Frond only."
+						],
+						"generic": {
+							"tag": "ability"
+						}
+					}
+				],
+				"bot": [
+					{
+						"name": "Constrict",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"{@dice 2d12+15}, DC 36"
+						],
+						"generic": {
+							"tag": "ability"
+						}
+					},
+					{
+						"name": "Consume Emotion",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"divine",
+							"mental",
+							"necromancy"
+						],
+						"entries": [
+							"The kilia mwibo feeds on the negative emotions of a creature within 60 feet; this must be a creature that it can precisely sense with its emotion sense. The target must succeed at a DC 36 Will save or increase its {@condition drained} condition value by 1 (by 2 on a critical failure), to a maximum of {@condition drained||drained 4}."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Living Sun-Spire",
+			"source": "SoT4",
+			"page": 57,
+			"level": 13,
+			"traits": [
+				"n",
+				"gargantuan",
+				"construct",
+				"mindless"
+			],
+			"perception": {
+				"std": 21
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
+			"skills": {
+				"athletics": {
+					"std": 30
+				}
+			},
+			"abilityMods": {
+				"str": 9,
+				"dex": 2,
+				"con": 8,
+				"int": -5,
+				"wis": 0,
+				"cha": -5
+			},
+			"ac": {
+				"std": 36,
+				"abilities": [
+					"32 when broken);",
+					"construct armor"
+				]
+			},
+			"savingThrows": {
+				"fort": {
+					"std": 29
+				},
+				"ref": {
+					"std": 19
+				},
+				"will": {
+					"std": 17
+				}
+			},
+			"hp": [
+				{
+					"hp": 200
+				}
+			],
+			"hardness": 14,
+			"immunities": [
+				"death effects",
+				"disease",
+				"doomed",
+				"drained",
+				"fatigued",
+				"fire",
+				"healing",
+				"mental",
+				"necromancy",
+				"nonlethal attacks",
+				"paralyzed",
+				"poison",
+				"sickened",
+				"unconscious"
+			],
+			"speed": {
+				"walk": 20
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"magical",
+						"reach 15 feet"
+					],
+					"name": "arm",
+					"bonus": 28,
+					"damage": "{@damage 3d12+11} bludgeoning plus Grab"
+				},
+				{
+					"range": "Melee",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"magical",
+						"reach 20 feet"
+					],
+					"name": "spear",
+					"bonus": 28,
+					"damage": "{@damage 3d12+11} piercing"
+				},
+				{
+					"range": "Ranged",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"fire",
+						"evocation",
+						"magical",
+						"range increment 100 feet"
+					],
+					"name": "sunfire beam",
+					"bonus": 28,
+					"damage": "{@damage 3d8+11} fire"
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Attack of Opportunity",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"entries": [],
+						"generic": {
+							"tag": "ability"
+						}
+					},
+					{
+						"name": "Construct Armor",
+						"entries": [
+							"Like normal objects, the living sun-spire has Hardness. This Hardness reduces any damage the sun-spire takes by an amount equal to the Hardness.",
+							"Once a sun-spire is reduced to fewer than half its Hit Points, or immediately upon being damaged by a critical hit, its construct armor breaks, removing the Hardness and reducing its Armor Class to 32."
+						]
+					},
+					{
+						"name": "Steal the Sun",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"traits": [
+							"divine",
+							"evocation"
+						],
+						"trigger": "A creature within 30 feet of the sun-spire begins to {@action Cast a Spell} that has the {@trait fire} or {@trait light} trait",
+						"entries": [
+							"The sun-spire attempts to redirect the energy from the triggering effect into its sunlight stores. The sun-spire attempts to counteract the triggering spell with a +22 counteract bonus. If it successfully counteracts the spell, the sun-spire's sunlight stores are empowered. While empowered, the sun-spire deals an additional {@damage 2d8} fire damage with all of its attacks and abilities. The sun-spire remains empowered until the end of its next turn."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Beam of the Seven Suns",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"divine",
+							"evocation",
+							"fire"
+						],
+						"entries": [
+							"The sun-spire collects solar energy and uses the energy to create a deadly beam of fire. It fires the beam in a 120-foot line, dealing {@damage 11d8} fire damage to all creatures in the line (DC 33 basic Reflex save). The concentrated beam ignites everything in its path, including the air, creating a wall of burning flame along the line that continues to burn until the end of the sun-spire's next turn. This wall has the effects of a 5th-level {@spell wall of fire} spell, dealing {@damage 5d6} fire damage to any creature that crosses the wall or occupies the wall's area at the start of its turn. The sun-spire can't use the Beam of the Seven Suns again for {@dice 1d4} rounds, although rounds it's not in sunlight don't count toward this number."
+						]
+					},
+					{
+						"name": "Trample",
+						"activity": {
+							"number": 3,
+							"unit": "action"
+						},
+						"entries": [
+							"Large or smaller, arm, DC 33"
+						],
+						"generic": {
+							"tag": "ability"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Nkiruka",
+			"source": "SoT4",
+			"page": 89,
+			"level": 14,
+			"traits": [
+				"unique",
+				"n",
+				"medium",
+				"human",
+				"humanoid"
+			],
+			"perception": {
+				"std": 25,
+				"to notice lies and Sense Motive": 29
+			},
+			"languages": {
+				"languages": [
+					"Common",
+					"Draconic",
+					"Elven",
+					"Mzunu",
+					"Taldane"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 24
+				},
+				"arcana": {
+					"std": 25
+				},
+				"deception": {
+					"std": 28
+				},
+				"diplomacy": {
+					"std": 28,
+					"to Make an Impression": 30
+				},
+				"intimidation": {
+					"std": 28
+				},
+				"occultism": {
+					"std": 25
+				},
+				"performance": {
+					"std": 28
+				},
+				"religion": {
+					"std": 23
+				},
+				"society": {
+					"std": 25
+				}
+			},
+			"abilityMods": {
+				"str": 0,
+				"dex": 4,
+				"con": 4,
+				"int": 3,
+				"wis": 1,
+				"cha": 6
+			},
+			"items": [
+				"+2 striking hand crossbow (20 bolts)",
+				"+1 resilient leather armor",
+				"+2 striking sickle"
+			],
+			"ac": {
+				"std": 36
+			},
+			"savingThrows": {
+				"fort": {
+					"std": 24
+				},
+				"ref": {
+					"std": 26
+				},
+				"will": {
+					"std": 25
+				}
+			},
+			"hp": [
+				{
+					"hp": 260
+				}
+			],
+			"speed": {
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"agile",
+						"finesse",
+						"magical",
+						"trip"
+					],
+					"name": "sickle",
+					"bonus": 27,
+					"damage": "{@damage 2d4+10} slashing"
+				},
+				{
+					"range": "Ranged",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"magical",
+						"range increment 60 feet",
+						"reload 1"
+					],
+					"name": "hand crossbow",
+					"bonus": 27,
+					"damage": "{@damage 2d6+10} piercing"
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Occult Spontaneous",
+					"tradition": "Occult",
+					"type": "Spontaneous",
+					"DC": 34,
+					"attack": 26,
+					"entry": {
+						"0": {
+							"level": 7,
+							"spells": [
+								{
+									"name": "detect magic"
+								},
+								{
+									"name": "forbidding ward"
+								},
+								{
+									"name": "mage hand"
+								},
+								{
+									"name": "read aura"
+								},
+								{
+									"name": "sigil"
+								}
+							]
+						},
+						"1": {
+							"slots": 3,
+							"spells": [
+								{
+									"name": "illusory object"
+								},
+								{
+									"name": "sanctuary"
+								},
+								{
+									"name": "unseen servant"
+								}
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								{
+									"name": "calm emotions"
+								},
+								{
+									"name": "magic mouth"
+								},
+								{
+									"name": "status"
+								}
+							]
+						},
+						"3": {
+							"slots": 3,
+							"spells": [
+								{
+									"name": "dream message"
+								},
+								{
+									"name": "hypercognition"
+								},
+								{
+									"name": "wanderer's guide"
+								}
+							]
+						},
+						"4": {
+							"slots": 3,
+							"spells": [
+								{
+									"name": "discern lies"
+								},
+								{
+									"name": "private sanctum"
+								},
+								{
+									"name": "resilient sphere"
+								}
+							]
+						},
+						"5": {
+							"slots": 3,
+							"spells": [
+								{
+									"name": "illusory scene"
+								},
+								{
+									"name": "telepathic bond"
+								},
+								{
+									"name": "tongues"
+								}
+							]
+						},
+						"6": {
+							"slots": 3,
+							"spells": [
+								{
+									"name": "mislead"
+								},
+								{
+									"name": "repulsion"
+								},
+								{
+									"name": "true seeing"
+								}
+							]
+						},
+						"7": {
+							"slots": 3,
+							"spells": [
+								{
+									"name": "dimensional lock"
+								},
+								{
+									"name": "project image"
+								},
+								{
+									"name": "retrocognition"
+								}
+							]
+						}
+					}
+				}
+			],
+			"abilities": {
+				"top": [
+					{
+						"name": "Ear for Lies",
+						"entries": [
+							"Nkiruka's training allows her to recognize microexpressions, voice tone, and other tells. When a creature fails to {@action Lie} to Nkiruka, not only does she know they were lying, she also receives a clue about what that creature believes to be the truth."
+						]
+					},
+					{
+						"name": "Group Impression When Nkiruka Makes an Impression,",
+						"entries": [
+							"she can compare her {@skill Diplomacy} check result to the Will DCs of up to four targets instead of one."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Eye for an Opening Nkiruka's",
+						"entries": [
+							"Strikes against creatures she observes that don't have cover and aren't {@condition concealed} deal an additional {@damage 2d10} precision damage."
+						]
+					},
+					{
+						"name": "Size Up",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"Nkiruka attempts a {@skill Perception} check against the {@skill Deception} DC or Will DC, whichever is higher, of a creature she can see. On a success, she gleans a notable detail about the creature as if she had successfully"
+						]
+					},
+					{
+						"name": "Recalled",
+						"entries": [
+							"Knowledge about it. Once Nkiruka has Sized Up a creature, she can't do so again for 1 day."
+						]
+					}
+				]
+			},
+			"description": "Female human diplomat"
+		},
+		{
+			"name": "Reborn Sun Hunter",
+			"source": "SoT4",
+			"page": 10,
+			"level": 11,
+			"traits": [
+				"rare",
+				"le",
+				"medium",
+				"fire",
+				"undead"
+			],
+			"perception": {
+				"std": 24
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
+			"languages": {
+				"languages": [
+					"Common",
+					"Necril"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 23
+				},
+				"athletics": {
+					"std": 21
+				},
+				"religion": {
+					"std": 19
+				},
+				"stealth": {
+					"std": 23
+				},
+				"survival": {
+					"std": 19
+				}
+			},
+			"abilityMods": {
+				"str": 4,
+				"dex": 6,
+				"con": 1,
+				"int": 3,
+				"wis": 2,
+				"cha": -1
+			},
+			"items": [
+				"+2 greater striking returning dagger",
+				"religious symbol of {@deity Walkena|LOGM},"
+			],
+			"ac": {
+				"std": null
+			},
+			"savingThrows": {
+				"fort": {
+					"std": 18
+				},
+				"ref": {
+					"std": 23
+				},
+				"will": {
+					"std": 21
+				}
+			},
+			"hp": [
+				{
+					"hp": 195,
+					"abilities": [
+						"negative healing"
+					]
+				}
+			],
+			"immunities": [
+				"death effects",
+				"disease",
+				"paralyzed",
+				"poison",
+				"unconscious"
+			],
+			"resistances": [
+				{
+					"name": "fire",
+					"amount": 10
+				},
+				{
+					"name": "mental",
+					"amount": 10
+				}
+			],
+			"speed": {
+				"walk": 35
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"agile",
+						"finesse",
+						"magical",
+						"versatile S"
+					],
+					"name": "dagger",
+					"bonus": 22,
+					"damage": "{@damage 3d4+6} piercing plus {@damage 1d6} fire"
+				},
+				{
+					"range": "Melee",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"agile",
+						"finesse",
+						"nonlethal",
+						"unarmed"
+					],
+					"name": "fist",
+					"bonus": 22,
+					"damage": "{@damage 1d4+6} bludgeoning plus {@damage 1d6} fire"
+				},
+				{
+					"range": "Ranged",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"agile",
+						"magical",
+						"thrown 10 feet",
+						"versatile S"
+					],
+					"name": "dagger",
+					"bonus": 22,
+					"damage": "{@damage 3d4+6} piercing plus {@damage 1d6} fire"
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Divine Innate",
+					"tradition": "Divine",
+					"type": "Innate",
+					"DC": 27,
+					"attack": 19,
+					"entry": {
+						"0": {
+							"level": 5,
+							"spells": [
+								{
+									"name": "divine lance",
+									"note": "law or evil"
+								},
+								{
+									"name": "message"
+								},
+								{
+									"name": "shield"
+								},
+								{
+									"name": "sigil"
+								}
+							]
+						},
+						"5": {
+							"spells": [
+								{
+									"name": "burning hands"
+								}
+							]
+						}
+					}
+				}
+			],
+			"abilities": {
+				"top": [
+					{
+						"name": "Burning Sacrifice",
+						"traits": [
+							"divine",
+							"evocation",
+							"fire"
+						],
+						"entries": [
+							"When the sun hunter is destroyed, they explode in a blast of flame that deals {@damage 6d6} fire damage in a 10-foot emanation (DC 27 basic Reflex save). Creatures that critically fail their saves are marked with {@deity Walkena|LOGM}'s religious symbol on a visible area of their body, which remains for 1 day. This mark allows {@deity Walkena|LOGM} to treat the creature as if he knew the creature's identity but not having met them for the purposes of scrying, lowering the spell's DC by 2. The sun hunter's gear and treasure are unaffected by the explosion and left in a pile where they die."
+						]
+					},
+					{
+						"name": "Nimble Dodge",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"trigger": "The sun hunter is targeted with a melee or ranged attack by an attacker they can see",
+						"entries": [
+							"The sun hunter gains a +2 circumstance bonus to"
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Sneak Attack",
+						"entries": [
+							"The sun hunter's Strikes deal an additional {@damage 2d6} precision damage to {@condition flat-footed} creatures."
+						],
+						"generic": {
+							"tag": "ability"
+						}
+					},
+					{
+						"name": "Study Foe",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"The sun hunter reads a creature they can see within 30 feet to notice openings. The sun hunter attempts a {@skill Perception} check against that creature's"
+						]
+					},
+					{
+						"name": "Deception DC or Will",
+						"entries": [
+							"DC, whichever is higher. The target is then temporarily immune for 1 minute.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": [
+										"The sun hunter reads the target like a book. The target is {@condition flat-footed} against the sun hunter's attacks until the end of the sun hunter's next turn."
+									],
+									"Success": [
+										"The sun hunter notices a brief opening. The target is {@condition flat-footed} against the sun hunter's attacks until the end of the sun hunter's turn."
+									],
+									"Failure": [
+										"The target is unaffected."
+									],
+									"Critical Failure": [
+										"The sun hunter's intense focus opens them up to other attacks. The target is unaffected, and the sun hunter is {@condition flat-footed} until the start of their next turn."
+									]
+								}
+							}
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Reborn Sun Mage",
+			"source": "SoT4",
+			"page": 11,
+			"level": 11,
+			"traits": [
+				"rare",
+				"le",
+				"medium",
+				"fire",
+				"undead"
+			],
+			"perception": {
+				"std": 24
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
+			"languages": {
+				"languages": [
+					"Common",
+					"Necril"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 21
+				},
+				"athletics": {
+					"std": 17
+				},
+				"intimidation": {
+					"std": 23
+				},
+				"nature": {
+					"std": 19
+				},
+				"religion": {
+					"std": 19
+				}
+			},
+			"abilityMods": {
+				"str": 1,
+				"dex": 3,
+				"con": 1,
+				"int": 0,
+				"wis": 2,
+				"cha": 5
+			},
+			"items": [
+				"major staff of fire",
+				"religious symbol of {@deity Walkena|LOGM}"
+			],
+			"ac": {
+				"std": 28
+			},
+			"savingThrows": {
+				"fort": {
+					"std": 18
+				},
+				"ref": {
+					"std": 21
+				},
+				"will": {
+					"std": 24
+				}
+			},
+			"hp": [
+				{
+					"hp": 195,
+					"abilities": [
+						"negative healing"
+					]
+				}
+			],
+			"immunities": [
+				"death effects",
+				"disease",
+				"paralyzed",
+				"poison",
+				"unconscious"
+			],
+			"resistances": [
+				{
+					"name": "fire",
+					"amount": 10
+				},
+				{
+					"name": "mental",
+					"amount": 10
+				}
+			],
+			"speed": {
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"agile",
+						"finesse",
+						"nonlethal",
+						"unarmed"
+					],
+					"name": "fist",
+					"bonus": 19,
+					"damage": "{@damage 1d4+4} bludgeoning plus {@damage 2d6} fire"
+				},
+				{
+					"range": "Melee",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"magical",
+						"two-hand d8"
+					],
+					"name": "staff",
+					"bonus": 17,
+					"damage": "{@damage 1d4+4} bludgeoning"
+				},
+				{
+					"range": "Ranged",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"fire",
+						"magical",
+						"range increment 40 feet"
+					],
+					"name": "sunfire",
+					"bonus": 19,
+					"damage": "{@damage 3d6+12} fire"
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Divine Innate",
+					"tradition": "Divine",
+					"type": "Innate",
+					"DC": 30,
+					"attack": 22,
+					"entry": {
+						"0": {
+							"level": 5,
+							"spells": [
+								{
+									"name": "divine lance",
+									"note": "law or evil"
+								},
+								{
+									"name": "message"
+								},
+								{
+									"name": "shield"
+								},
+								{
+									"name": "sigil"
+								}
+							]
+						},
+						"5": {
+							"spells": [
+								{
+									"name": "burning hands"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Primal Spontaneous",
+					"tradition": "Primal",
+					"type": "Spontaneous",
+					"DC": 30,
+					"attack": 22,
+					"entry": {
+						"0": {
+							"level": 6,
+							"spells": [
+								{
+									"name": "acid splash"
+								},
+								{
+									"name": "detect magic"
+								},
+								{
+									"name": "light"
+								},
+								{
+									"name": "produce flame"
+								},
+								{
+									"name": "read aura"
+								}
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								{
+									"name": "grease"
+								},
+								{
+									"name": "gust of wind"
+								},
+								{
+									"name": "shocking grasp"
+								},
+								{
+									"name": "spider sting"
+								}
+							]
+						},
+						"2": {
+							"slots": 4,
+							"spells": [
+								{
+									"name": "barkskin"
+								},
+								{
+									"name": "faerie fire"
+								},
+								{
+									"name": "flaming sphere"
+								},
+								{
+									"name": "spider climb"
+								}
+							]
+						},
+						"3": {
+							"slots": 4,
+							"spells": [
+								{
+									"name": "fireball"
+								},
+								{
+									"name": "haste"
+								},
+								{
+									"name": "meld into stone"
+								},
+								{
+									"name": "wall of thorns"
+								}
+							]
+						},
+						"4": {
+							"slots": 4,
+							"spells": [
+								{
+									"name": "fly"
+								},
+								{
+									"name": "shape stone"
+								},
+								{
+									"name": "stoneskin"
+								},
+								{
+									"name": "wall of fire"
+								}
+							]
+						},
+						"5": {
+							"slots": 4,
+							"spells": [
+								{
+									"name": "dispel magic"
+								},
+								{
+									"name": "fireball"
+								},
+								{
+									"name": "elemental form"
+								},
+								{
+									"name": "wall of stone"
+								}
+							]
+						},
+						"6": {
+							"slots": 3,
+							"spells": [
+								{
+									"name": "chain lightning"
+								},
+								{
+									"name": "fire seeds"
+								},
+								{
+									"name": "purple worm sting"
+								}
+							]
+						}
+					}
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Burning Sacrifice",
+						"traits": [
+							"divine",
+							"evocation",
+							"fire"
+						],
+						"entries": [
+							"As reborn sun hunter."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Revitalizing Flame",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"divine",
+							"healing",
+							"necromancy"
+						],
+						"frequency": {
+							"freq": 1,
+							"unit": "day"
+						},
+						"entries": [
+							"The sun mage produces a specialized flame that burns away maladies and restores a creature. If the sun mage's next action is to {@action Cast a Spell} with the {@trait fire} trait that deals damage and isn't a cantrip, the spell doesn't deal any damage. It instead restores a number of Hit Points equal to four times the spell's level to all targets or creatures. This restoration affects all creatures regardless of whether they are healed by positive or negative energy."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Reborn Sun Warrior",
+			"source": "SoT4",
+			"page": 11,
+			"level": 11,
+			"traits": [
+				"rare",
+				"le",
+				"medium",
+				"fire",
+				"undead"
+			],
+			"perception": {
+				"std": 21
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
+			"languages": {
+				"languages": [
+					"Common",
+					"Necril"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 21
+				},
+				"athletics": {
+					"std": 23
+				},
+				"intimidation": {
+					"std": 16
+				},
+				"religion": {
+					"std": 19
+				},
+				"stealth": {
+					"std": 21
+				}
+			},
+			"abilityMods": {
+				"str": 5,
+				"dex": 4,
+				"con": 5,
+				"int": 1,
+				"wis": 2,
+				"cha": -1
+			},
+			"items": [
+				"flame spike (as a flame tongue",
+				"but a spear rather than a longsword)",
+				"religious symbol of {@deity Walkena|LOGM}"
+			],
+			"ac": {
+				"std": 31
+			},
+			"savingThrows": {
+				"fort": {
+					"std": 24
+				},
+				"ref": {
+					"std": 21
+				},
+				"will": {
+					"std": 18
+				}
+			},
+			"hp": [
+				{
+					"hp": 245,
+					"abilities": [
+						"negative healing"
+					]
+				}
+			],
+			"immunities": [
+				"death effects",
+				"disease",
+				"paralyzed",
+				"poison",
+				"unconscious"
+			],
+			"resistances": [
+				{
+					"name": "fire",
+					"amount": 10
+				},
+				{
+					"name": "mental",
+					"amount": 10
+				}
+			],
+			"speed": {
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"magical"
+					],
+					"name": "spear",
+					"bonus": 24,
+					"damage": "{@damage 3d8+11} piercing plus {@damage 1d6} fire"
+				},
+				{
+					"range": "Melee",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"agile",
+						"finesse",
+						"nonlethal",
+						"unarmed"
+					],
+					"name": "fist",
+					"bonus": 23,
+					"damage": "{@damage 1d4+11} bludgeoning plus {@damage 1d6} fire and Grab"
+				},
+				{
+					"range": "Ranged",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"magical",
+						"thrown 20 feet"
+					],
+					"name": "spear",
+					"bonus": 23,
+					"damage": "{@damage 3d8+11} piercing plus {@damage 1d6} fire"
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Divine Innate",
+					"tradition": "Divine",
+					"type": "Innate",
+					"DC": 27,
+					"attack": 19,
+					"entry": {
+						"0": {
+							"level": 5,
+							"spells": [
+								{
+									"name": "divine lance",
+									"note": "law or evil"
+								},
+								{
+									"name": "message"
+								},
+								{
+									"name": "shield"
+								},
+								{
+									"name": "sigil"
+								}
+							]
+						},
+						"5": {
+							"spells": [
+								{
+									"name": "burning hands"
+								}
+							]
+						}
+					}
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Burning Sacrifice",
+						"traits": [
+							"divine",
+							"evocation",
+							"fire"
+						],
+						"entries": [
+							"As reborn sun hunter."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Constrict",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"{@damage 1d4+9} bludgeoning plus {@damage 2d6} fire, DC 27"
+						],
+						"generic": {
+							"tag": "ability"
+						}
+					},
+					{
+						"name": "Knocking Sweep",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"frequency": {
+							"freq": 1,
+							"unit": "round"
+						},
+						"entries": [
+							"The sun warrior swings their weapon with a sweeping spin. They attempt separate {@skill Athletics} checks to {@action Trip} any number of creatures within their reach. Each attempt counts toward the sun warrior's multiple attack penalty, but the multiple attack penalty doesn't increase until after they make all the attacks."
+						]
+					},
+					{
+						"name": "Pinning Thrust",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"The sun warrior attempts to drive their spear through a foe to pin them in place. The sun warrior makes a spear {@action Strike}. On a hit, the target's clothes, armor, or other piece of equipment becomes pinned to the ground. The sun warrior Releases the spear, and the target is {@condition immobilized} until they can remove the spear ({@action Escape} DC 27). If the {@action Strike} was a critical hit, the DC increases by 2."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Soul Swarms",
+			"source": "SoT4",
+			"page": 42,
+			"level": 13,
+			"traits": [
+				"rare",
+				"ne",
+				"gargantuan",
+				"ghost",
+				"incorporeal",
+				"spirit",
+				"troop",
+				"undead"
+			],
+			"perception": {
+				"std": 24
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
+			"languages": {
+				"languages": [
+					"Common"
+				]
+			},
+			"skills": {
+				"religion": {
+					"std": 26
+				},
+				"stealth": {
+					"std": 24
+				}
+			},
+			"abilityMods": {
+				"str": -5,
+				"dex": 5,
+				"con": 3,
+				"int": 2,
+				"wis": 5,
+				"cha": 4
+			},
+			"ac": {
+				"std": 28
+			},
+			"savingThrows": {
+				"fort": {
+					"std": 22
+				},
+				"ref": {
+					"std": 18
+				},
+				"will": {
+					"std": 23
+				}
+			},
+			"hp": [
+				{
+					"hp": 234,
+					"abilities": [
+						"(16 squares); Thresholds 156 (12 squares)",
+						"78 (8 squares)"
+					]
+				}
+			],
+			"weaknesses": [
+				{
+					"name": "area damage",
+					"amount": 15
+				},
+				{
+					"name": "good",
+					"amount": 15
+				},
+				{
+					"name": "splash damage",
+					"amount": 15
+				}
+			],
+			"resistances": [
+				{
+					"name": "all damage",
+					"amount": 5,
+					"note": "except force"
+				},
+				{
+					"name": "ghost touch"
+				},
+				{
+					"name": "or positive; double resistance vs. non-magical)"
+				}
+			],
+			"speed": {
+				"walk": 30,
+				"abilities": [
+					"air walk",
+					"troop movement"
+				]
+			},
+			"spellcasting": [
+				{
+					"name": "Divine Innate",
+					"tradition": "Divine",
+					"type": "Innate",
+					"DC": 30,
+					"entry": {
+						"constant": {
+							"4": {
+								"spells": [
+									{
+										"name": "air walk"
+									}
+								]
+							}
+						}
+					}
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Frightful Presence",
+						"traits": [
+							"aura",
+							"auditory",
+							"emotion",
+							"fear",
+							"mental"
+						],
+						"entries": [
+							"60 feet, DC 30"
+						],
+						"generic": {
+							"tag": "ability"
+						}
+					},
+					{
+						"name": "Troop Defenses",
+						"entries": []
+					}
+				],
+				"bot": [
+					{
+						"name": "Cosmic Explosion",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"The soul swarm unleashes a blast of burning sunlight or moonlight, dealing {@damage 4d8+6} fire damage to creatures in a 10-foot burst within 20 feet (DC 30 basic Reflex save). When the soul swarm is reduced to 8 or fewer squares, this decreases to a 5-foot burst."
+						]
+					},
+					{
+						"name": "Form Up",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": []
+					},
+					{
+						"name": "Soul Grasp",
+						"activity": {
+							"number": 1,
+							"unit": "varies",
+							"entry": "{@as 1} to {@as 3}"
+						},
+						"frequency": {
+							"freq": 1,
+							"unit": "round"
+						},
+						"entries": [
+							"The soul swarm reaches out and tries to tear at the spiritual energy of enemies within 5 feet (DC 32 basic Reflex save). The soul swarm can choose to deal slashing damage as it cuts away at a creature, fire damage as it burns other souls away, or negative damage as it attempts to unmake a soul. The damage depends on the number of actions.",
+							"{@as 1} {@dice 2d6+1} damage {@as 2} {@dice 4d6+11} damage {@as 3} {@dice 6d6+11} damage"
+						]
+					},
+					{
+						"name": "Troop Movement",
+						"entries": [
+							"Whenever the soul swarm Strides, the soul swarm first Forms Up as a free action to condense into a 20-foot-by-20-foot area (minus any missing squares), then moves. This works just like a Gargantuan creature moving; for instance, if any square of the soul swarm enters difficult terrain, the extra movement cost applies to the whole soul swarm."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Sun Warrior Brigade",
+			"source": "SoT4",
+			"page": 57,
+			"level": 12,
+			"traits": [
+				"uncommon",
+				"le",
+				"gargantuan",
+				"humanoid",
+				"troop"
+			],
+			"perception": {
+				"std": 22
+			},
+			"languages": {
+				"languages": [
+					"Common",
+					"Mzunu"
+				]
+			},
+			"skills": {
+				"athletics": {
+					"std": 23
+				},
+				"intimidation": {
+					"std": 22
+				},
+				"religion": {
+					"std": 23
+				}
+			},
+			"abilityMods": {
+				"str": 7,
+				"dex": 2,
+				"con": 6,
+				"int": 2,
+				"wis": 5,
+				"cha": 4
+			},
+			"ac": {
+				"std": 33
+			},
+			"savingThrows": {
+				"fort": {
+					"std": 24
+				},
+				"ref": {
+					"std": 18
+				},
+				"will": {
+					"std": 23
+				}
+			},
+			"hp": [
+				{
+					"hp": 216,
+					"abilities": [
+						"(16 squares); Thresholds 144 (12 squares)",
+						"72 (8 squares)"
+					]
+				}
+			],
+			"weaknesses": [
+				{
+					"name": "area damage",
+					"amount": 15
+				},
+				{
+					"name": "splash damage",
+					"amount": 8
+				}
+			],
+			"speed": {
+				"walk": 25,
+				"abilities": [
+					"troop movement"
+				]
+			},
+			"spellcasting": [
+				{
+					"name": "Divine Spontaneous",
+					"tradition": "Divine",
+					"type": "Spontaneous",
+					"DC": 29,
+					"attack": 21,
+					"entry": {
+						"0": {
+							"level": 6,
+							"spells": [
+								{
+									"name": "daze"
+								},
+								{
+									"name": "detect magic"
+								},
+								{
+									"name": "divine lance",
+									"note": "law or evil"
+								}
+							]
+						},
+						"5": {
+							"slots": 4,
+							"spells": [
+								{
+									"name": "burning hands"
+								},
+								{
+									"name": "fireball"
+								},
+								{
+									"name": "flame strike"
+								}
+							]
+						},
+						"6": {
+							"slots": 3,
+							"spells": [
+								{
+									"name": "blade barrier"
+								},
+								{
+									"name": "vampiric exsanguination"
+								},
+								{
+									"name": "wall of fire"
+								}
+							]
+						}
+					}
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Troop Defenses",
+						"entries": []
+					}
+				],
+				"bot": [
+					{
+						"name": "Form Up",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": []
+					},
+					{
+						"name": "Frenetic Assault",
+						"activity": {
+							"number": 1,
+							"unit": "varies",
+							"entry": "{@as 1} to {@as 3}"
+						},
+						"frequency": {
+							"freq": 1,
+							"unit": "round"
+						},
+						"entries": [
+							"The members of the brigade wildly swing their weapons\u2014primarily spears\u2014in a frenzied attack at each enemy adjacent to the troop (DC 29 basic Reflex save). The damage depends on the number of actions.",
+							"{@as 1} {@damage 1d12+1} piercing damage {@as 2} {@damage 2d12+11} piercing damage {@as 3} {@damage 3d12+11} piercing damage"
+						]
+					},
+					{
+						"name": "Troop Movement",
+						"entries": [
+							"Whenever the troop Strides, they first Form Up as a free action to condense into a 20-foot-by-20-foot area (minus any missing squares), then move up to their Speed. This works just like a Gargantuan creature moving; for instance, if any square of the troop enters difficult terrain, the extra movement cost applies to the whole troop."
+						]
+					},
+					{
+						"name": "Troop Spellcasting",
+						"entries": [
+							"When the sun warrior brigade Casts a Spell, its constituent members combine their efforts into casting a more powerful version of the spell than any one member could achieve alone. When {@action Cast a Spell||Casting a Spell} that has an area of a burst, cone, or line and doesn't have a duration, increase the area of that spell. Add 5 feet to the radius of a burst that normally has a radius of at least 10 feet (a burst with a smaller radius is not affected). Add 5 feet to the length of a cone or line that is normally 15 feet long or smaller, and add 10 feet to the length of a larger cone or line."
+						]
+					},
+					{
+						"name": "Walkena's Radiance",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"divine",
+							"evocation",
+							"fire",
+							"light"
+						],
+						"entries": [
+							"The brigade calls upon {@deity Walkena|LOGM} to burn and blind their foes. The sun warriors present their religious symbols and create a white-hot flash of light in a 45-foot cone.",
+							"Creatures in the cone take {@damage 10d8} fire damage (DC 29 basic Fortitude save). Creatures that fail their save become {@condition dazzled} for 1 round. Creatures that critically fail become {@condition blinded} for 1 round instead. When the troop is reduced to 8 or fewer squares, this area decreases to a 20-foot cone."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Sunburst Corpse",
+			"source": "SoT4",
+			"page": 85,
+			"level": 14,
+			"traits": [
+				"uncommon",
+				"ne",
+				"medium",
+				"undead"
+			],
+			"perception": {
+				"std": 25
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
+			"languages": {
+				"languages": [
+					"Common (can't speak any language)"
+				]
+			},
+			"skills": {
+				"athletics": {
+					"std": 23
+				},
+				"intimidation": {
+					"std": 29
+				},
+				"occultism": {
+					"std": 25
+				}
+			},
+			"abilityMods": {
+				"str": 5,
+				"dex": 1,
+				"con": 8,
+				"int": 1,
+				"wis": 3,
+				"cha": 7
+			},
+			"ac": {
+				"std": 35
+			},
+			"savingThrows": {
+				"fort": {
+					"std": 28
+				},
+				"ref": {
+					"std": 21
+				},
+				"will": {
+					"std": 25
+				}
+			},
+			"hp": [
+				{
+					"hp": 255
+				}
+			],
+			"immunities": [
+				"blinded",
+				"dazzled",
+				"fire"
+			],
+			"weaknesses": [
+				{
+					"name": "cold",
+					"amount": 10
+				},
+				{
+					"name": "darkness vulnerability"
+				}
+			],
+			"speed": {
+				"walk": 35
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"agile",
+						"finesse"
+					],
+					"name": "claw",
+					"bonus": 29,
+					"damage": "{@damage 3d6+13} slashing plus {@damage 2d8} fire and Grab and residual light"
+				},
+				{
+					"range": "Ranged",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"range increment 40 feet"
+					],
+					"name": "sunfire",
+					"bonus": 25,
+					"damage": "{@damage 7d6} fire"
+				}
+			],
+			"abilities": {
+				"top": [
+					{
+						"name": "Light Camouflage",
+						"entries": [
+							"The sunburst corpse is {@condition concealed} in areas of natural bright light, such as due to sunlight or torches, even to creatures that can see clearly in bright light. Magical bright light and light from the sunburst corpse's blinding aura don't conceal the sunburst corpse."
+						]
+					}
+				],
+				"mid": [
+					{
+						"name": "Blinding Aura",
+						"traits": [
+							"aura",
+							"evocation",
+							"incapacitation",
+							"light",
+							"occult",
+							"visual"
+						],
+						"entries": [
+							"60 feet. The sunburst corpse sheds bright light. Any creature that starts its turn in the emanation must succeed at a DC 31 Fortitude save.",
+							"If it fails, it's {@condition blinded} for 1 minute, and if it critically fails, it's {@condition blinded} permanently. A creature that succeeds at its save is temporarily immune to this effect for 24 hours."
+						]
+					},
+					{
+						"name": "Darkness Vulnerability",
+						"entries": [
+							"A sunburst corpse is {@condition sickened||sickened 1} while in areas of magical darkness. If the level of the magical {@trait darkness} effect is at least half of the sunburst corpse's level (a 7th-level effect against most sunburst corpses), the sunburst corpse is also {@condition slowed||slowed 1} while in the area."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Constrict",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"{@damage 2d6+6} bludgeoning plus {@damage 2d8} fire and residual light, DC 34"
+						],
+						"generic": {
+							"tag": "ability"
+						}
+					},
+					{
+						"name": "Nova Burst",
+						"activity": {
+							"number": 3,
+							"unit": "action"
+						},
+						"traits": [
+							"evocation",
+							"light",
+							"occult"
+						],
+						"entries": [
+							"The sunburst corpse intensifies its light and unleashes a burning blast of energy. It deals {@damage 12d8} fire damage to all creatures in a 20-foot emanation (DC 34 basic Fortitude save). A creature that fails its save becomes {@condition dazzled} until the end of its next turn. The sunburst corpse can't use Nova Burst again for {@dice 1d4} rounds, and its blinding aura becomes inactive during this time."
+						]
+					},
+					{
+						"name": "Residual Light",
+						"traits": [
+							"evocation",
+							"light",
+							"occult"
+						],
+						"entries": [
+							"When a sunburst corpse Strikes or Grapples a creature, some of the corpse's light clings to the creature for a moment. The creature must attempt a DC 34 Fortitude save. On a failure, the creature is {@condition dazzled} until the end of its next turn. On a critical failure, the creature is {@condition dazzled} for 1 minute. A {@condition dazzled} creature can use an {@action Interact} action to wick off the light and remove the {@condition dazzled} condition."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Worknesh",
+			"source": "SoT4",
+			"page": 91,
+			"level": 16,
+			"traits": [
+				"unique",
+				"le",
+				"medium",
+				"human",
+				"humanoid"
+			],
+			"perception": {
+				"std": 28
+			},
+			"languages": {
+				"languages": [
+					"Common",
+					"Mzunu"
+				]
+			},
+			"skills": {
+				"athletics": {
+					"std": 32
+				},
+				"intimidation": {
+					"std": 29
+				},
+				"religion": {
+					"std": 26
+				},
+				"society": {
+					"std": 26
+				},
+				"stealth": {
+					"std": 27
+				},
+				"survival": {
+					"std": 30
+				},
+				"warfare lore": {
+					"std": 30
+				}
+			},
+			"abilityMods": {
+				"str": 6,
+				"dex": 1,
+				"con": 3,
+				"int": 2,
+				"wis": 4,
+				"cha": 3
+			},
+			"items": [
+				"golden blade of Mzali (page 76)",
+				"+2 resilient splint mail",
+				"moderate sturdy shield (Hardness 13",
+				"HP 104",
+				"BT 52)"
+			],
+			"ac": {
+				"std": 37,
+				"with shield raised);": 9
+			},
+			"savingThrows": {
+				"fort": {
+					"std": 29
+				},
+				"ref": {
+					"std": 25
+				},
+				"will": {
+					"std": 28
+				}
+			},
+			"hp": [
+				{
+					"hp": 310
+				}
+			],
+			"resistances": [
+				{
+					"name": "piercing",
+					"amount": 4
+				}
+			],
+			"speed": {
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"name": "golden blade",
+					"bonus": 32,
+					"damage": "{@damage 3d6+16} piercing plus {@damage 2d6} fire"
+				},
+				{
+					"range": "Ranged",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"thrown 20 feet"
+					],
+					"name": "golden blade",
+					"bonus": 27,
+					"damage": "{@damage 3d6+16} piercing plus {@damage 2d6} fire"
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Divine Spontaneous",
+					"tradition": "Divine",
+					"type": "Spontaneous",
+					"DC": 34,
+					"attack": 26,
+					"entry": {
+						"0": {
+							"level": 8,
+							"spells": [
+								{
+									"name": "daze"
+								},
+								{
+									"name": "detect magic"
+								},
+								{
+									"name": "divine lance",
+									"note": "law or evil"
+								},
+								{
+									"name": "message"
+								},
+								{
+									"name": "shield"
+								},
+								{
+									"name": "sigil"
+								}
+							]
+						},
+						"4": {
+							"slots": 3,
+							"spells": [
+								{
+									"name": "air walk"
+								},
+								{
+									"name": "discern lies"
+								},
+								{
+									"name": "freedom of movement"
+								}
+							]
+						},
+						"5": {
+							"slots": 3,
+							"spells": [
+								{
+									"name": "prying eye"
+								},
+								{
+									"name": "see invisibility"
+								},
+								{
+									"name": "tongues"
+								}
+							]
+						},
+						"6": {
+							"slots": 3,
+							"spells": [
+								{
+									"name": "dispel magic"
+								},
+								{
+									"name": "heal"
+								},
+								{
+									"name": "wall of fire"
+								}
+							]
+						},
+						"7": {
+							"slots": 3,
+							"spells": [
+								{
+									"name": "dispel magic"
+								},
+								{
+									"name": "fireball"
+								},
+								{
+									"name": "heal"
+								}
+							]
+						}
+					}
+				}
+			],
+			"abilities": {
+				"top": [
+					{
+						"name": "Master's Cry",
+						"activity": {
+							"number": 1,
+							"unit": "free"
+						},
+						"trigger": "Worknesh rolls initiative",
+						"requirements": "Worknesh can perceive at least one foe within 60 feet",
+						"entries": [
+							"Worknesh yells a mighty rallying cry. Worknesh attempts an {@skill Intimidation} check to {@action Demoralize} a single foe within 60 feet. If successful, any of her allies within 30 feet can {@action Stride} up to double their speed as their first action on their first turn of the combat."
+						]
+					},
+					{
+						"name": "Warmaster's Instinct",
+						"entries": [
+							"Worknesh can recognize the skills of any combatants she faces. She can use {@skill Lore||Warfare Lore} to"
+						]
+					},
+					{
+						"name": "Recall",
+						"entries": [
+							"Knowledge about any creature, but only while in combat or observing the creature fight."
+						]
+					}
+				],
+				"mid": [
+					{
+						"name": "Attack of Opportunity",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"entries": [],
+						"generic": {
+							"tag": "ability"
+						}
+					},
+					{
+						"name": "Shield Block",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"entries": [],
+						"generic": {
+							"tag": "ability"
+						}
+					}
+				],
+				"bot": [
+					{
+						"name": "Battle Cry",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"auditory",
+							"concentrate",
+							"emotion",
+							"mental"
+						],
+						"entries": [
+							"Worknesh unleashes a war cry, granting herself and all allies within 60 feet a +1 status bonus to attack and damage rolls until the start of her next turn."
+						]
+					},
+					{
+						"name": "Walkena's Fury",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"frequency": {
+							"freq": 1,
+							"unit": "round"
+						},
+						"requirements": "Worknesh is within reach of an enemy designated by {@deity Walkena|LOGM}'s Judgment",
+						"entries": [
+							"Worknesh makes two melee Strikes against the enemy of {@deity Walkena|LOGM}. If both attacks hit, she combines their damage for the purpose of the creature's resistances and weaknesses."
+						]
+					},
+					{
+						"name": "Walkena's Judgment",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"concentrate",
+							"divine"
+						],
+						"entries": [
+							"Worknesh designates a single creature as an enemy of {@deity Walkena|LOGM}. She must be able to see or hear the creature, or she must be tracking the creature. Worknesh gains a +4 status bonus to damage against the designated creature, and she gains fast healing 5 while within 30 feet of the creature. In addition, she doesn't take the \u20132 circumstance penalty to attack rolls when attempting to deal nonlethal damage with an attack without the {@trait nonlethal} trait and vice versa. Worknesh can have only one creature designated as an enemy of {@deity Walkena|LOGM} at a time. If she uses {@deity Walkena|LOGM}'s Judgment against a creature when she already has a creature designated, the prior creature loses the designation and the new target gains the designation.",
+							"This designation lasts for 24 hours."
+						]
+					}
+				]
+			},
+			"description": "Female human inquisitor"
+		}
+	]
+}

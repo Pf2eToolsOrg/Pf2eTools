@@ -110,7 +110,7 @@ class TokenizerUtils {
 	}
 	static get prerequisites () {
 		return [
-			{regex: /^Prerequisites?\s/, type: "PREREQUISITES", lookbehind: /(\n|[;.)]\s)$/},
+			{regex: /^Prerequisites?\s/, type: "PREREQUISITES", lookbehind: /(\n|[;.)]\s)$/, lookaheadIncDepth: 3},
 		]
 	}
 	static get price () {
@@ -125,7 +125,7 @@ class TokenizerUtils {
 	}
 	static get requirements () {
 		return [
-			{regex: /^Requirements?\s/, type: "REQUIREMENTS", lookbehind: /(\n|[;.)\]]\s)$/},
+			{regex: /^Requirements?\s/, type: "REQUIREMENTS", lookbehind: /(\n|[;.)\]]\s)$/, lookaheadIncDepth: 3},
 		]
 	}
 	static get savingThrow () {
@@ -524,21 +524,21 @@ class TokenizerUtils {
 
 	static get actions () {
 		return [
-			{regex: /^\[one.action]\s/, type: "ACTION"},
-			{regex: /^\[two.actions?]\s/, type: "TWO_ACTIONS"},
-			{regex: /^\[three.actions?]\s/, type: "THREE_ACTIONS"},
-			{regex: /^\[reaction]\s/, type: "REACTION"},
-			{regex: /^\[free.action]\s/, type: "FREE_ACTION"},
-			{regex: /^\[>]\s/, type: "ACTION"},
-			{regex: /^\[>>]\s/, type: "TWO_ACTIONS"},
-			{regex: /^\[>>>]\s/, type: "THREE_ACTIONS"},
-			{regex: /^\[R]\s/i, type: "REACTION"},
-			{regex: /^\[F]\s/i, type: "FREE_ACTION"},
-			{regex: /^:a:\s/, type: "ACTION"},
-			{regex: /^:aa:\s/, type: "TWO_ACTIONS"},
-			{regex: /^:aaa:\s/, type: "THREE_ACTIONS"},
-			{regex: /^:r:\s/, type: "REACTION"},
-			{regex: /^:f:\s/, type: "FREE_ACTION"},
+			{regex: /^\[one.action][\s;,.]/, type: "ACTION", lookaheadIncDepth: 1},
+			{regex: /^\[two.actions?][\s;,.]/, type: "TWO_ACTIONS", lookaheadIncDepth: 1},
+			{regex: /^\[three.actions?][\s;,.]/, type: "THREE_ACTIONS", lookaheadIncDepth: 1},
+			{regex: /^\[reaction][\s;,.]/, type: "REACTION", lookaheadIncDepth: 1},
+			{regex: /^\[free.action][\s;,.]/, type: "FREE_ACTION", lookaheadIncDepth: 1},
+			{regex: /^\[>][\s;,.]/, type: "ACTION", lookaheadIncDepth: 1},
+			{regex: /^\[>>][\s;,.]/, type: "TWO_ACTIONS", lookaheadIncDepth: 1},
+			{regex: /^\[>>>][\s;,.]/, type: "THREE_ACTIONS", lookaheadIncDepth: 1},
+			{regex: /^\[R][\s;,.]/i, type: "REACTION", lookaheadIncDepth: 1},
+			{regex: /^\[F][\s;,.]/i, type: "FREE_ACTION", lookaheadIncDepth: 1},
+			{regex: /^:a:[\s;,.]/, type: "ACTION", lookaheadIncDepth: 1},
+			{regex: /^:aa:[\s;,.]/, type: "TWO_ACTIONS", lookaheadIncDepth: 1},
+			{regex: /^:aaa:[\s;,.]/, type: "THREE_ACTIONS", lookaheadIncDepth: 1},
+			{regex: /^:r:[\s;,.]/, type: "REACTION", lookaheadIncDepth: 1},
+			{regex: /^:f:[\s;,.]/, type: "FREE_ACTION", lookaheadIncDepth: 1},
 		]
 	}
 

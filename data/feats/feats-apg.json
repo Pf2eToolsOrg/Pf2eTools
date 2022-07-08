@@ -1937,11 +1937,11 @@
 			"name": "Blind-fight",
 			"source": "APG",
 			"page": 63,
+			"add_hash": "Investigator",
 			"level": 8,
 			"traits": [
 				"investigator"
 			],
-			"add_hash": "Investigator",
 			"prerequisites": "master in {@skill Perception}",
 			"entries": [
 				"Your battle insights make you more aware of {@condition concealed} and {@condition invisible} opponents. You don't need to succeed at a flat check to target {@condition concealed} creatures. You're not {@condition flat-footed} to creatures that are {@condition hidden} from you (unless you're {@condition flat-footed} to them for reasons other than the {@condition hidden} condition), and you need only a successful DC {@flatDC 5} flat check to target a {@condition hidden} creature.",
@@ -4502,7 +4502,11 @@
 				"Scales Of The Dragon|APG",
 				"Shape Of The Dragon|APG",
 				"Mighty Dragon Shape|APG",
-				"Wings Of The Dragon|APG"
+				"Wings Of The Dragon|APG",
+				"Cloud Walk|SoT3",
+				"Deflecting Cloud|SoT3",
+				"Mighty Wings|SoT3",
+				"Shape of the Cloud Dragon|SoT3"
 			]
 		},
 		{
@@ -8664,6 +8668,19 @@
 			]
 		},
 		{
+			"name": "Lie Detector",
+			"source": "APG",
+			"page": 62,
+			"level": 4,
+			"traits": [
+				"investigator"
+			],
+			"prerequisites": "{@class Investigator|APG|empiricism|empiricism} or {@class Investigator|APG|interrogation|interrogation} methodology",
+			"entries": [
+				"You're adept at noticing the tells of a liar\u2014sweat, flushing, a quavering voice, a quickening pulse. You gain a +1 circumstance bonus to {@skill Perception} checks to {@action Sense Motive} and to {@skill Perception} DCs against attempts to {@action Lie} to you. When you determine someone is lying to you, you can use their deceit to your advantage to gain a +1 circumstance bonus to the next {@skill Deception}, {@skill Diplomacy}, {@skill Intimidation}, or {@skill Performance} check you attempt against that creature within the next minute."
+			]
+		},
+		{
 			"name": "Life Leap",
 			"source": "APG",
 			"page": 44,
@@ -12427,19 +12444,6 @@
 			],
 			"entries": [
 				"You bring the magical wavelengths of your spell into sync with the ones produced by your own body. If the next action you take is to {@action Cast a Spell} with an area, you aren't affected by the spell even if you are within the area."
-			]
-		},
-		{
-			"name": "Lie Detector",
-			"source": "APG",
-			"page": 62,
-			"level": 4,
-			"traits": [
-				"investigator"
-			],
-			"prerequisites": "{@class Investigator|APG|empiricism|empiricism} or {@class Investigator|APG|interrogation|interrogation} methodology",
-			"entries": [
-				"You're adept at noticing the tells of a liar\u2014sweat, flushing, a quavering voice, a quickening pulse. You gain a +1 circumstance bonus to {@skill Perception} checks to {@action Sense Motive} and to {@skill Perception} DCs against attempts to {@action Lie} to you. When you determine someone is lying to you, you can use their deceit to your advantage to gain a +1 circumstance bonus to the next {@skill Deception}, {@skill Diplomacy}, {@skill Intimidation}, or {@skill Performance} check you attempt against that creature within the next minute."
 			]
 		},
 		{

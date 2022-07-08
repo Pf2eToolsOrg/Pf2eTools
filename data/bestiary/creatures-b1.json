@@ -16664,7 +16664,7 @@
 					},
 					{
 						"entries": [
-							"The purple worm recovers from the {@condition paralyzed}, {@condition slowed}, and {@condition stunned} conditions at the end of its turn. It's also immune to penalties to its Speeds and the {@condition immobilized} condition, and it ignores {@quickref difficult terrain||3|terrain} and {@quickref greater difficult terrain||3|terrain}."
+							"The crimson worm recovers from the {@condition paralyzed}, {@condition slowed}, and {@condition stunned} conditions at the end of its turn. It's also immune to penalties to its Speeds and the {@condition immobilized} condition, and it ignores {@quickref difficult terrain||3|terrain} and {@quickref greater difficult terrain||3|terrain}."
 						],
 						"name": "Inexorable"
 					},
@@ -16675,10 +16675,10 @@
 							"entry": "{@as R}"
 						},
 						"entries": [
-							"The purple worm negates the triggering condition or effect. s from artifacts, deities, or a similarly powerful source can't be avoided in this way."
+							"The crimson worm negates the triggering condition or effect. Effects from artifacts, deities, or a similarly powerful source can't be avoided in this way."
 						],
 						"name": "Shake It Off",
-						"trigger": "The purple worm would be affected by a condition or adverse effect (such as baleful polymorph).",
+						"trigger": "The crimson worm would be affected by a condition or adverse effect (such as baleful polymorph).",
 						"frequency": {
 							"unit": "day",
 							"freq": 1
@@ -16742,7 +16742,7 @@
 					},
 					{
 						"entries": [
-							"A purple worm can burrow through solid stone at a Speed of 20 feet. It can leave a tunnel if it desires, and it usually does."
+							"A crimson worm can burrow through solid stone at a Speed of 20 feet. It can leave a tunnel if it desires, and it usually does."
 						],
 						"name": "Rock Tunneler"
 					},
@@ -63339,42 +63339,6 @@
 			"creatureType": [
 				"Construct"
 			],
-			"spellcasting": [
-				{
-					"name": "Occult Innate",
-					"tradition": "Occult",
-					"type": "Innate",
-					"DC": 18,
-					"attack": 8,
-					"entry": {
-						"0": {
-							"level": 1,
-							"spells": [
-								{
-									"name": "light"
-								},
-								{
-									"name": "mage hand"
-								},
-								{
-									"name": "prestidigitation"
-								}
-							]
-						},
-						"3": {
-							"spells": [
-								{
-									"name": "levitate"
-								},
-								{
-									"name": "one additional spell depending on the donor soul's alignment",
-									"notes": "{@b Lawful Good:} {@spell zone of truth}; {@b Neutral Good:} {@spell heroism}; {@b Chaotic Good:} {@spell heal}; {@b Lawful Neutral:} {@b nondetection; Neutral:} {@spell wall of thorns}; {@b Chaotic Neutral:} {@spell grease}; {@b Lawful Evil:} {@spell chilling darkness}; {@b Neutral Evil:} {@spell harm}; {@b Chaotic Evil:} {@spell vampiric touch}"
-								}
-							]
-						}
-					}
-				}
-			],
 			"perception": {
 				"std": 8
 			},
@@ -63446,6 +63410,42 @@
 					"types": [
 						"bludgeoning"
 					]
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Occult Innate",
+					"tradition": "Occult",
+					"type": "Innate",
+					"DC": 18,
+					"attack": 8,
+					"entry": {
+						"0": {
+							"level": 1,
+							"spells": [
+								{
+									"name": "light"
+								},
+								{
+									"name": "mage hand"
+								},
+								{
+									"name": "prestidigitation"
+								}
+							]
+						},
+						"3": {
+							"spells": [
+								{
+									"name": "levitate"
+								},
+								{
+									"name": "one additional spell depending on the donor soul's alignment",
+									"notes": "{@b Lawful Good:} {@spell zone of truth}; {@b Neutral Good:} {@spell heroism}; {@b Chaotic Good:} {@spell heal}; {@b Lawful Neutral:} {@b nondetection; Neutral:} {@spell wall of thorns}; {@b Chaotic Neutral:} {@spell grease}; {@b Lawful Evil:} {@spell chilling darkness}; {@b Neutral Evil:} {@spell harm}; {@b Chaotic Evil:} {@spell vampiric touch}"
+								}
+							]
+						}
+					}
 				}
 			],
 			"abilities": {

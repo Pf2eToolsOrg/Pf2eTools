@@ -1012,7 +1012,6 @@
 				"coin": "gp",
 				"amount": 200
 			},
-			"hasFluff": true,
 			"usage": "held in 2 hands",
 			"category": "Held",
 			"entries": [
@@ -1031,7 +1030,8 @@
 						"You draw a card, chosen randomly from the remaining cards in the deck, and throw it to the ground to create an illusion of the creature depicted. The image is an illusory creature, except it has a range of only 30 feet from where the card was thrown and the illusion lasts until destroyed or until anyone moves or damages the card. The creature takes its actions once on your turn if you're within 60 feet of the card and Sustain the Activation. The illusion ends if you don't Sustain it, or if you activate a new card from the deck."
 					]
 				}
-			]
+			],
+			"hasFluff": true
 		},
 		{
 			"name": "Deck Of Mischief",
@@ -1230,14 +1230,6 @@
 				"When opened, this grimoire has unlimited pages that, oddly, seem almost eager to transcribe spells. Unlike most grimoires, it has no limits to its number of spells. The grimoire's eagerness to contain your spells grants you a +1 item bonus to checks to {@action Learn a Spell} if you do so by transcribing the spell into the grimoire. If you use the grimoire during your daily preparations and are capable of preparing spells of the appropriate level, the grimoire's nature leaks into your mind, allowing you to prepare an additional 1st-level spell."
 			],
 			"generic": "G",
-			"_vmod": {
-				"entries": {
-					"mode": "replaceTxt",
-					"replaceTags": true,
-					"replace": "The grimoire's eagerness to contain your spells grants you a \\+1 item bonus to checks to {@action Learn a Spell} if you do so by transcribing the spell into the grimoire. If you use the grimoire during your daily preparations and are capable of preparing spells of the appropriate level, the grimoire's nature leaks into your mind, allowing you to prepare an additional 1st-level spell."
-				},
-				"entriesMode": "generic"
-			},
 			"variants": [
 				{
 					"type": "Endless Grimoire",
@@ -1296,7 +1288,15 @@
 						}
 					}
 				}
-			]
+			],
+			"_vmod": {
+				"entries": {
+					"mode": "replaceTxt",
+					"replaceTags": true,
+					"replace": "The grimoire's eagerness to contain your spells grants you a \\+1 item bonus to checks to {@action Learn a Spell} if you do so by transcribing the spell into the grimoire. If you use the grimoire during your daily preparations and are capable of preparing spells of the appropriate level, the grimoire's nature leaks into your mind, allowing you to prepare an additional 1st-level spell."
+				},
+				"entriesMode": "generic"
+			}
 		},
 		{
 			"name": "Extending",
@@ -4493,14 +4493,6 @@
 			],
 			"usage": "affixed to one undead creature",
 			"category": "Consumable",
-			"duration": {
-				"type": "timed",
-				"entry": "1 round (or 4 rounds)",
-				"duration": {
-					"number": 1,
-					"unit": "round"
-				}
-			},
 			"entries": [
 				"This classic fulu seals the negative energy within an undead, freezing it in its tracks. Upon affixing, the target undead must attempt a Will save or be {@condition paralyzed} for 1 round."
 			],
@@ -4552,7 +4544,15 @@
 						"entriesMode": "generic"
 					}
 				}
-			]
+			],
+			"duration": {
+				"type": "timed",
+				"entry": "1 round (or 4 rounds)",
+				"duration": {
+					"number": 1,
+					"unit": "round"
+				}
+			}
 		},
 		{
 			"name": "Staff Of Nature's Cunning",

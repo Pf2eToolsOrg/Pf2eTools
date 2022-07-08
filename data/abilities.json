@@ -1,98 +1,6 @@
 {
 	"ability": [
 		{
-			"name": "Warpwave",
-			"source": "AoE6",
-			"page": 81,
-			"entries": [
-				"Many proteans can inflict disorienting alterations in time and space called warpwaves. When a creature fails its saving throw and is affected by a warpwave, roll {@dice 1d8} and consult the table below for the specific effect on that creature. Unless indicated otherwise, a warpwave effect lasts for {@dice 1d4} rounds, and a new warpwave effect negates any previous warpwave effect already affecting a creature.",
-				{
-					"source": "AoE6",
-					"page": 81,
-					"colStyles": [
-						"text-center",
-						"text-center"
-					],
-					"labelRowIdx": [
-						0
-					],
-					"colSizes": [
-						1,
-						9
-					],
-					"rows": [
-						[
-							"{@dice D8}",
-							"Warpwave Effect"
-						],
-						[
-							1,
-							"{@condition Clumsy 2} ({@condition clumsy 3} on a critical failure)"
-						],
-						[
-							2,
-							"{@condition Confused} and gains {@dice 4d6} temporary Hit Points"
-						],
-						[
-							3,
-							"{@condition Dazzled} (permanent on a critical failure)"
-						],
-						[
-							4,
-							"{@condition Enfeebled 2} (3 on a critical failure)"
-						],
-						[
-							5,
-							"{@condition Immobilized} by filaments of energy"
-						],
-						[
-							6,
-							"{@condition Quickened} ({@action Stride}, {@action Strike}, or {@action Step} only)"
-						],
-						[
-							7,
-							"{@condition Slowed 1}"
-						],
-						[
-							8,
-							"{@condition Stupefied 2} (3 on a critical failure)"
-						]
-					],
-					"type": "table"
-				}
-			]
-		},
-		{
-			"name": "Moon Frenzy",
-			"page": 329,
-			"source": "B1",
-			"traits": [
-				"polymorph",
-				"primal",
-				"transmutation"
-			],
-			"entries": [
-				"When a full moon appears in the night sky, the werecreature must enter hybrid form, can't {@ability Change Shape} thereafter, becomes one size larger, increases its reach by 5 feet, and increases the damage of its jaws by 2. When the moon sets or the sun rises, the werecreature returns to humanoid form and is fatigued for 2d4 hours."
-			]
-		},
-		{
-			"name": "Golem Antimagic",
-			"source": "B1",
-			"page": 184,
-			"entries": [
-				"A golem is immune to spells and magical abilities other than its own, but each type of golem is affected by a few types of magic in special ways. These exceptions are listed in shortened form in the golem's stat block, with the full rules appearing here. If an entry lists multiple types (such as \"cold and water\"), either type of spell can affect the golem.",
-				{
-					"type": "list",
-					"items": [
-						"{@bold Harmed By} Any magic of this type that targets the golem causes it to take the listed amount of damage (this damage has no type) instead of the usual effect. If the golem starts its turn in an area of magic of this type or is affected by a persistent effect of the appropriate type, it takes the damage listed in the parenthetical.",
-						"{@bold Healed By} Any magic of this type that targets the golem makes the golem lose the {@condition slowed} condition and gain HP equal to half the damage the spell would have dealt. If the golem starts its turn in an area of this type of magic, it gains the HP listed in the parenthetical.",
-						"{@bold Slowed By} Any magic of this type that targets the golem causes it to be {@condition slowed 1} for {@dice 2d6} rounds instead of the usual effect. If the golem starts its turn in an area of this type of magic, it's {@condition slowed 1} for that round.",
-						"{@bold Vulnerable To} Each golem is vulnerable to one or more specific spells, with the effects described in its stat block."
-					]
-				}
-			]
-		},
-		{
 			"name": "All-Around Vision",
 			"source": "B1",
 			"page": 342,
@@ -201,32 +109,11 @@
 			"traits": [
 				"concentrate",
 				"[magical tradition]",
-				"Polymorph",
-				"Transmutation"
+				"polymorph",
+				"transmutation"
 			],
 			"entries": [
 				"The monster changes its shape indefinitely. It can use this action again to return to its natural shape or adopt a new shape. Unless otherwise noted, a monster cannot use Change Shape to appear as a specific individual. Using Change Shape counts as creating a disguise for the Impersonate use of {@skill Deception}. The monster's transformation automatically defeats Perception DCs to determine whether the creature is a member of the ancestry or creature type into which it transformed, and it gains a +4 status bonus to its {@skill Deception} DC to prevent others from seeing through its disguise. Change Shape abilities specify what shapes the monster can adopt. The monster doesn't gain any special abilities of the new shape, only its physical form. For example, in each shape, it replaces its normal Speeds and Strikes, and might potentially change its senses or size. Any changes are listed in its stat block."
-			]
-		},
-		{
-			"name": "Curse of the Werecreature",
-			"source": "B1",
-			"page": 329,
-			"traits": [
-				"curse",
-				"necromancy",
-				"primal"
-			],
-			"entries": [
-				"This curse affects only humanoids.",
-				{
-					"type": "affliction",
-					"savingThrow": "Fortitude",
-					"DC": "is the standard DC for the {@table DCs by Level||werecreature's new level \u2013 1}",
-					"entries": [
-						"On each full moon, the cursed creature must succeed at another Fortitude save or turn into the same kind of {@filter werecreature|bestiary||creature=werecreature} until dawn. The creature is under the GM's control and goes on a rampage for half the night before falling {@condition unconscious} until dawn"
-					]
-				}
 			]
 		},
 		{
@@ -270,6 +157,27 @@
 				"This monster can form a coven with two or more other creatures who also have the coven ability. This involves performing an 8-hour ceremony with all prospective coven members. After the coven is formed, each of its members gains elite adjustments, adjusting their levels accordingly. Coven members can sense other members' locations and conditions by spending a single action, which has the {@trait concentrate}, and can sense what another coven member is sensing as a two-action activity, which has the {@trait concentrate} as well.",
 				"Covens also grant spells and rituals to their members, but these can be cast only in cooperation between three coven members who are all within 30 feet of one another. A coven member can contribute to a coven spell with a single-action spellcasting activity that has a single verbal component. If two coven members have contributed these actions within the last round, a third member can cast a coven spell on her turn by spending the normal spellcasting actions. A coven can cast its coven spells an unlimited number of times but can cast only one coven spell each round. All covens grant the 8th-level {@spell baleful polymorph|CRB} spell and all the following spells, which the coven can cast at any level up to 5th: {@spell augury|CRB}, {@spell charm|CRB}, {@spell clairaudience|CRB}, {@spell clairvoyance|CRB}, {@spell dream message|CRB}, {@spell illusory disguise|CRB}, {@spell illusory scene|CRB}, {@spell prying eye|CRB}, and {@spell talking corpse|CRB}. Individual creatures with the coven ability also grant additional spells to any coven they join. A coven can also cast the {@ritual control weather} ritual, with a DC of 23 instead of the standard DC.",
 				"If a coven member leaving the coven or the death of a coven member brings the coven below three members, the remaining members keep their elite adjustments for 24 hours, but without enough members to contribute the necessary actions, they can't cast coven spells."
+			]
+		},
+		{
+			"name": "Curse of the Werecreature",
+			"source": "B1",
+			"page": 329,
+			"traits": [
+				"curse",
+				"necromancy",
+				"primal"
+			],
+			"entries": [
+				"This curse affects only humanoids.",
+				{
+					"type": "affliction",
+					"savingThrow": "Fortitude",
+					"DC": "is the standard DC for the {@table DCs by Level||werecreature's new level \u2013 1}",
+					"entries": [
+						"On each full moon, the cursed creature must succeed at another Fortitude save or turn into the same kind of {@filter werecreature|bestiary||creature=werecreature} until dawn. The creature is under the GM's control and goes on a rampage for half the night before falling {@condition unconscious} until dawn"
+					]
+				}
 			]
 		},
 		{
@@ -358,6 +266,23 @@
 						"Failure": "The creature is {@condition frightened} 2.",
 						"Critical Failure": "The creature is {@condition frightened} 4."
 					}
+				}
+			]
+		},
+		{
+			"name": "Golem Antimagic",
+			"source": "B1",
+			"page": 184,
+			"entries": [
+				"A golem is immune to spells and magical abilities other than its own, but each type of golem is affected by a few types of magic in special ways. These exceptions are listed in shortened form in the golem's stat block, with the full rules appearing here. If an entry lists multiple types (such as \"cold and water\"), either type of spell can affect the golem.",
+				{
+					"type": "list",
+					"items": [
+						"{@bold Harmed By} Any magic of this type that targets the golem causes it to take the listed amount of damage (this damage has no type) instead of the usual effect. If the golem starts its turn in an area of magic of this type or is affected by a persistent effect of the appropriate type, it takes the damage listed in the parenthetical.",
+						"{@bold Healed By} Any magic of this type that targets the golem makes the golem lose the {@condition slowed} condition and gain HP equal to half the damage the spell would have dealt. If the golem starts its turn in an area of this type of magic, it gains the HP listed in the parenthetical.",
+						"{@bold Slowed By} Any magic of this type that targets the golem causes it to be {@condition slowed 1} for {@dice 2d6} rounds instead of the usual effect. If the golem starts its turn in an area of this type of magic, it's {@condition slowed 1} for that round.",
+						"{@bold Vulnerable To} Each golem is vulnerable to one or more specific spells, with the effects described in its stat block."
+					]
 				}
 			]
 		},
@@ -460,14 +385,6 @@
 			]
 		},
 		{
-			"name": "Negative Healing",
-			"source": "B2",
-			"page": 305,
-			"entries": [
-				"A creature with negative healing draws health from negative energy rather than positive energy. It is damaged by positive damage and is not healed by positive healing effects. It does not take negative damage, and it is healed by negative effects that heal undead."
-			]
-		},
-		{
 			"name": "Local Lore",
 			"source": "GMG",
 			"page": 205,
@@ -481,6 +398,27 @@
 			"page": 343,
 			"entries": [
 				"The monster can see in dim light as though it were bright light, so it ignores the {@condition concealed} condition due to dim light."
+			]
+		},
+		{
+			"name": "Moon Frenzy",
+			"source": "B1",
+			"page": 329,
+			"traits": [
+				"polymorph",
+				"primal",
+				"transmutation"
+			],
+			"entries": [
+				"When a full moon appears in the night sky, the werecreature must enter hybrid form, can't {@ability Change Shape} thereafter, becomes one size larger, increases its reach by 5 feet, and increases the damage of its jaws by 2. When the moon sets or the sun rises, the werecreature returns to humanoid form and is fatigued for 2d4 hours."
+			]
+		},
+		{
+			"name": "Negative Healing",
+			"source": "B2",
+			"page": 305,
+			"entries": [
+				"A creature with negative healing draws health from negative energy rather than positive energy. It is damaged by positive damage and is not healed by positive healing effects. It does not take negative damage, and it is healed by negative effects that heal undead."
 			]
 		},
 		{
@@ -644,6 +582,68 @@
 			"page": 344,
 			"entries": [
 				"Tremorsense allows a monster to feel the vibrations through a solid surface caused by movement. It is an imprecise sense with a limited range (listed in the ability). Tremorsense functions only if the monster is on the same surface as the subject, and only if the subject is moving along (or burrowing through) the surface."
+			]
+		},
+		{
+			"name": "Warpwave",
+			"source": "AoE6",
+			"page": 81,
+			"entries": [
+				"Many proteans can inflict disorienting alterations in time and space called warpwaves. When a creature fails its saving throw and is affected by a warpwave, roll {@dice 1d8} and consult the table below for the specific effect on that creature. Unless indicated otherwise, a warpwave effect lasts for {@dice 1d4} rounds, and a new warpwave effect negates any previous warpwave effect already affecting a creature.",
+				{
+					"source": "AoE6",
+					"page": 81,
+					"colStyles": [
+						"text-center",
+						"text-center"
+					],
+					"labelRowIdx": [
+						0
+					],
+					"colSizes": [
+						1,
+						9
+					],
+					"rows": [
+						[
+							"{@dice D8}",
+							"Warpwave Effect"
+						],
+						[
+							1,
+							"{@condition Clumsy 2} ({@condition clumsy 3} on a critical failure)"
+						],
+						[
+							2,
+							"{@condition Confused} and gains {@dice 4d6} temporary Hit Points"
+						],
+						[
+							3,
+							"{@condition Dazzled} (permanent on a critical failure)"
+						],
+						[
+							4,
+							"{@condition Enfeebled 2} (3 on a critical failure)"
+						],
+						[
+							5,
+							"{@condition Immobilized} by filaments of energy"
+						],
+						[
+							6,
+							"{@condition Quickened} ({@action Stride}, {@action Strike}, or {@action Step} only)"
+						],
+						[
+							7,
+							"{@condition Slowed 1}"
+						],
+						[
+							8,
+							"{@condition Stupefied 2} (3 on a critical failure)"
+						]
+					],
+					"type": "table"
+				}
 			]
 		},
 		{

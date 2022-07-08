@@ -4050,7 +4050,7 @@ Renderer.creature = {
 		const senses = cr.senses || [];
 		const rdPerception = renderer.render(`{@d20 ${perception.std}||Perception}`);
 		const rdOtherPerception = Renderer.utils.getNotes(perception, { exclude: ["std"], dice: { name: "Perception" } });
-		const rdSenses = renderer.renderJoinCommaOrSemi(senses.map(s => `${s.name}${s.type ? ` (${s.type})` : ""}${s.range != null ? ` ${s.range} feet` : ""}`));
+		const rdSenses = renderer.renderJoinCommaOrSemi(senses.map(s => `${s.name}${s.type ? ` (${s.type})` : ""}${s.range != null ? ` ${s.range.number} feet` : ""}`));
 		return `<p class="pf2-stat pf2-stat__section"><strong>Perception&nbsp;</strong>${rdPerception}${rdOtherPerception}${rdSenses.length ? "; " : ""}${rdSenses}</p>`;
 	},
 
@@ -5638,20 +5638,18 @@ Renderer.spell = {
 				else renderer.recursiveRender(e, renderStack, { prefix: "<span class='pf2-stat__section'>", suffix: "</span>" });
 			});
 		};
-		if (sp.heightened.plus_x != null) {
-			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Heightened (+${sp.heightened.plus_x.level})&nbsp;</strong>`)
-			renderArray(sp.heightened.plus_x.entries);
-			renderStack.push(`</p>`);
+		if (sp.heightened.plusX != null) {
+			Object.entries(sp.heightened.plusX).forEach(([x, entries]) => {
+				renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Heightened (+${Parser.getOrdinalForm(x)})&nbsp;</strong>`);
+				renderArray(entries);
+				renderStack.push(`</p>`);
+			});
 		}
-		if (sp.heightened.x != null) {
-			sp.heightened.x.forEach(x => {
-				if (typeof x.entries === "string") {
-					renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Heightened (${Parser.getOrdinalForm(x.level)})&nbsp;</strong>${renderer.render(x.entries)}</p>`);
-				} else if (Array.isArray(x.entries)) {
-					renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Heightened (${Parser.getOrdinalForm(x.level)})&nbsp;</strong>`);
-					renderArray(x.entries);
-					renderStack.push(`</p>`);
-				}
+		if (sp.heightened.X != null) {
+			Object.entries(sp.heightened.X).forEach(([x, entries]) => {
+				renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Heightened (${Parser.getOrdinalForm(x)})&nbsp;</strong>`);
+				renderArray(entries);
+				renderStack.push(`</p>`);
 			});
 		}
 		return renderStack.join("")

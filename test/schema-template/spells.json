@@ -292,39 +292,11 @@
 					"heightened": {
 						"type": "object",
 						"properties": {
-							"x": {
-								"type": "array",
-								"items": {
-									"type": "object",
-									"properties": {
-										"level": {
-											"type": "integer",
-											"exclusiveMinimum": 0
-										},
-										"entries": {
-											"type": "array",
-											"items": {
-												"$ref": "entry.json"
-											}
-										}
-									}
-								}
+							"X": {
+								"type": "object"
 							},
-							"plus_x": {
-								"type": "object",
-								"properties": {
-									"level": {
-										"type": "integer",
-										"exclusiveMinimum": 0
-									},
-									"entries": {
-										"type": "array",
-										"items": {
-											"$ref": "entry.json"
-										}
-									}
-								},
-								"additionalProperties": false
+							"plusX": {
+								"type": "object"
 							}
 						},
 						"additionalProperties": false

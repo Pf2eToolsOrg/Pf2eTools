@@ -356,12 +356,12 @@ class Converter {
 		this._consumeToken(this._tokenizerUtils.cast);
 		this._parsedProperties.push(...this._tokenizerUtils.cast);
 		const entries = this._getEntries({checkContinuedLines: true, ...opts.getEntriesOpts});
-		const components = {};
+		const components = [];
 
 		if (this._tokensAreTypes(entries, [this._tokenizerUtils.actions, this._tokenizerUtils.sentences])) {
 			obj.cast = this._renderToken(entries[0], {asObject: true});
 			Object.entries(this._tokenizerUtils.spellComponents).forEach(([key, regexp]) => {
-				if (regexp.test(entries[1].value)) components[key] = true;
+				if (regexp.test(entries[1].value)) components.push(key);
 			});
 		} else if (this._tokensAreTypes(entries, [this._tokenizerUtils.sentences, "PARENTHESIS"])) {
 			const regExpTime = new RegExp(`(\\d+) (${this._tokenizerUtils.timeUnits.map(u => u.regex.source).join("|")})`);
@@ -369,18 +369,18 @@ class Converter {
 			if (matchedTime) obj.cast = {number: Number(matchedTime[1]), unit: this._tokenizerUtils.timeUnits.find(u => u.regex.test(matchedTime[2])).unit};
 			else obj.cast = {number: 1, unit: "varies", entry: this._renderToken(entries[0])};
 			Object.entries(this._tokenizerUtils.spellComponents).forEach(([key, regexp]) => {
-				if (regexp.test(entries[1].value)) components[key] = true;
+				if (regexp.test(entries[1].value)) components.push(key);
 			});
 		} else if (this._tokensAreTypes(entries, [this._tokenizerUtils.actions, this._tokenizerUtils.sentences, this._tokenizerUtils.actions, "PARENTHESIS"])) {
 			obj.cast = {number: 1, unit: "varies", entry: entries.slice(0, 3).map(e => this._renderToken(e)).join(" ")};
 			Object.entries(this._tokenizerUtils.spellComponents).forEach(([key, regexp]) => {
-				if (regexp.test(entries[3].value)) components[key] = true;
+				if (regexp.test(entries[3].value)) components.push(key);
 			});
 		} else {
 			this._cbWarn(`Encountered unknown data structure while parsing CAST in "${obj.name}". Skipping...`);
 		}
 
-		if (Object.keys(components).length) obj.components = components;
+		if (components.length) obj.components = [components];
 	}
 	_parseCost (obj, opts) {
 		this._parseGenericProperty(obj, this._tokenizerUtils.cost, "cost", opts);
@@ -695,7 +695,7 @@ class Converter {
 		} else if (this._tokensAreTypes(entries, [this._tokenizerUtils.sentencesSemiColon, this._tokenizerUtils.sentences])) {
 			languages.languages = this._renderEntries([entries[0]], {asString: true}).split(", ");
 			languages.abilities = this._renderEntries([entries[1]], {asString: true}).split(", ");
-		}
+		} else throw new Error(`Couldnt parse languages: ${entries}`)
 		creature.languages = languages;
 	}
 	_parseSkills (creature) {
@@ -937,7 +937,7 @@ class Converter {
 	}
 	// TODO: Expand tokenizer ?
 	_parseSpells_parseParenthesisText (str, spells) {
-		const reSources = new RegExp(`(${Object.entries(Parser.SOURCE_JSON_TO_FULL).flat().join("|")})`);
+		const reSources = new RegExp(`(${Object.entries(Parser.SOURCE_JSON_TO_FULL).flat().map(s => s.replace(/[^\w\s]/g, "")).join("|")})`);
 		const reLevel = /(\d+)(st|nd|rd|th)/;
 		const reAmount = /([x×](\d+)|at will)/;
 		const rePage = /^(page|p\.) \d+$/i;
@@ -950,8 +950,8 @@ class Converter {
 				spells[spells.length - 1].level = Number(matchLevel[1]);
 			} else if (rePage.test(e)) {
 				if (this._source.toLowerCase() !== SRC_CRB.toLowerCase()) spells[spells.length - 1].source = this._source;
-			} else if (reSources.test(e)) {
-				const matchSource = reSources.exec(e);
+			} else if (reSources.test(e.replace(/[^\w\s]/g, ""))) {
+				const matchSource = reSources.exec(e.replace(/[^\w\s]/g, ""));
 				const src = Parser._parse_bToA(Parser.SOURCE_JSON_TO_FULL, matchSource[0]).toLowerCase();
 				if (src && src !== SRC_CRB.toLowerCase()) spells[spells.length - 1].source = src;
 			} else spells[spells.length - 1].note = str;
@@ -1127,7 +1127,6 @@ class Converter {
 		return rendered.split(", ")
 	}
 
-	// FIXME: use _getEntries here. Allow for entryTypes in _parseEffect
 	// FIXME: We might have tokenized some normal word occurrences of properties as property token. Do we need to check for that?
 	_parseEntries (obj, opts) {
 		opts = opts || {};
@@ -1141,7 +1140,7 @@ class Converter {
 			else if (this._tokenIsType(this._tokenizerUtils.itemVariants, token)) this._parseItemVariants(obj);
 			else if (this._tokenIsType(this._tokenizerUtils.afflictions, token)) entriesOut.push(this._parseAffliction());
 			else if (this._tokenIsType(this._tokenizerUtils.lvlEffect, token)) entriesOut.push(this._parseLvlEffect(obj));
-			else if (this._tokenIsType(this._tokenizerUtils.special, token)) this._parseSpecial(obj);
+			else if (!opts.noAbilities && this._tokenIsType(this._tokenizerUtils.special, token)) this._parseSpecial(obj);
 			else if (!opts.noAbilities && this._tokenIsType(this._tokenizerUtils.effect, token)) entriesOut.push(this._parseAbility());
 		}
 

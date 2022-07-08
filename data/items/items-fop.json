@@ -54,13 +54,6 @@
 				"{@b Drawback} You gain weakness 5 to the other three energy types."
 			],
 			"generic": "G",
-			"_vmod": {
-				"entries": {
-					"mode": "replaceTxt",
-					"replace": "You gain resistance to the attuned energy type. Whenever you score a hit with a melee weapon, add the listed amount of damage of the attuned energy type."
-				},
-				"entriesMode": "generic"
-			},
 			"variants": [
 				{
 					"type": "lesser",
@@ -126,7 +119,14 @@
 						}
 					}
 				}
-			]
+			],
+			"_vmod": {
+				"entries": {
+					"mode": "replaceTxt",
+					"replace": "You gain resistance to the attuned energy type. Whenever you score a hit with a melee weapon, add the listed amount of damage of the attuned energy type."
+				},
+				"entriesMode": "generic"
+			}
 		},
 		{
 			"name": "Merchant's Guile",
