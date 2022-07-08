@@ -4648,6 +4648,9 @@ Renderer.feat = {
 	getSubHead (feat) {
 		const renderStack = [];
 		const renderer = Renderer.get()
+		if (feat.access != null) {
+			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Access&nbsp;</strong>${renderer.render(feat.access)}</p>`);
+		}
 		// TODO: Fully transition to objects
 		if (feat.prerequisites != null) {
 			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Prerequisites&nbsp;</strong>`)
@@ -4670,9 +4673,6 @@ Renderer.feat = {
 		}
 		if (feat.requirements != null) {
 			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Requirements&nbsp;</strong>${renderer.render(feat.requirements)}</p>`);
-		}
-		if (feat.access != null) {
-			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Access&nbsp;</strong>${renderer.render(feat.access)}</p>`);
 		}
 		if (renderStack.length !== 0) renderStack.push(Renderer.utils.getDividerDiv())
 		return renderStack.join("");
