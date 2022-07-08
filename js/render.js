@@ -1369,13 +1369,13 @@ function Renderer () {
 		const source = entry.source || Parser.TAG_TO_DEFAULT_SOURCE[tag];
 		const catId = Parser._parse_bToA(Parser.CAT_ID_TO_PROP, tag);
 		const page = entry.page || UrlUtil.CAT_TO_PAGE[catId];
-		const hash = entry.hash || UrlUtil.URL_TO_HASH_BUILDER[page](entry);
 		// FIXME: Doesn't render "data" structures. See SoM dragon and soul gifts.
 		if (entry.data) {
 			const renderFn = Renderer.hover._pageToRenderFn(page);
 			const rendered = renderFn ? renderFn(entry.data, {isEmbedded: true, noPage: true}) : `<div class="pf2-stat">Failed to render ${entry.data.name}.</div>`;
 			textStack[0] += typeof rendered === "object" ? rendered.html() : rendered;
 		} else {
+			const hash = entry.hash || UrlUtil.URL_TO_HASH_BUILDER[page](entry);
 			textStack[0] += `<div class="pf2-stat" data-stat-tag="${tag.qq()}" data-stat-name="${name.qq()}" data-stat-hash="${hash.qq()}" data-stat-page="${page.qq()}" data-stat-source="${source.qq()}">
 				<i>Loading ${Renderer.get().render(`{@${tag} ${name}|${source}}`)}...</i>
 				<style onload="Renderer.events.handleLoad_inlineStatblock(this)"></style>
@@ -2290,6 +2290,14 @@ function Renderer () {
 						fauxEntry.href.path = UrlUtil.PG_ORGANIZATIONS;
 						fauxEntry.href.hover = {
 							page: UrlUtil.PG_ORGANIZATIONS,
+							source,
+						};
+						this._recursiveRender(fauxEntry, textStack, meta);
+						break;
+					case "@creatureTemplate":
+						fauxEntry.href.path = UrlUtil.PG_CREATURETEMPLATE;
+						fauxEntry.href.hover = {
+							page: UrlUtil.PG_CREATURETEMPLATE,
 							source,
 						};
 						this._recursiveRender(fauxEntry, textStack, meta);
@@ -5381,7 +5389,7 @@ Renderer.organization = {
 	getRenderedLore (organization) {
 		const textStack = [""];
 		const renderer = Renderer.get().setFirstSection(true);
-		if (organization.lore) organization.lore.forEach(l => renderer.recursiveRender(l, textStack));
+		if (organization.entries) organization.entries.forEach(l => renderer.recursiveRender(l, textStack));
 		return textStack.join("");
 	},
 
@@ -5400,6 +5408,64 @@ Renderer.organization = {
 			entity: organization,
 			fluffUrl: `data/fluff-organizations.json`,
 			fluffProp: "organizationFluff",
+		});
+	},
+};
+
+Renderer.creatureTemplate = {
+	getRenderedString (creatureTemplate, opts) {
+		opts = opts || {};
+		return `
+			${Renderer.utils.getExcludedDiv(creatureTemplate, "creatureTemplate", UrlUtil.PG_CREATURETEMPLATE)}
+			${Renderer.utils.getNameDiv(creatureTemplate)}
+			${Renderer.utils.getDividerDiv()}
+			${Renderer.utils.getTraitsDiv(creatureTemplate.traits || [])}
+			${Renderer.creatureTemplate.getBody(creatureTemplate)}
+			${Renderer.creatureTemplate.getAbilities(creatureTemplate)}
+			${Renderer.generic.getRenderedEntries(creatureTemplate)}
+		`
+	},
+
+	getBody (it) {
+		if (!it.languages || it.languages.length === 0) return "";
+		const textStack = [""];
+		const renderer = Renderer.get().setFirstSection(true);
+		if (it.languages) textStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Languages&nbsp;</strong>${it.languages.map(x => `{@language ${x}}`).join(", ")}</p>`)
+		if (it.speed) textStack.push(Renderer.creature.getSpeed(it))
+		textStack.push(Renderer.utils.getDividerDiv())
+		return renderer.render(textStack.join(""));
+	},
+
+	getAbilities (it) {
+		if (!it.abilities || it.abilities.length === 0) return "";
+		const textStack = [""];
+		const renderer = Renderer.get().setFirstSection(true);
+		textStack.push(`${it.abilities.map(x => renderer.render(x)).join("")}`)
+		return renderer.render(textStack.join(""));
+	},
+
+	getRenderedLore (creatureTemplate) {
+		const textStack = [""];
+		const renderer = Renderer.get().setFirstSection(true);
+		if (creatureTemplate.lore) creatureTemplate.lore.forEach(l => renderer.recursiveRender(l, textStack));
+		return textStack.join("");
+	},
+
+	getImage (creatureTemplate) {
+		const textStack = [""];
+		if (creatureTemplate.images) {
+			const img = creatureTemplate.images[0];
+			if (img.includes("2e.aonprd.com")) textStack.push(`<a target="_blank" rel="noopener noreferrer" title="Shift/Ctrl to open in a new window/tab." href="${img}">Images available on the Archives of Nethys.</a>`);
+			else textStack.push(`<p><img style="display: block; margin-left: auto; margin-right: auto; width: 50%;" src="${img}" alt="No Image Found."></p>`);
+		}
+		return textStack.join("");
+	},
+
+	async pGetFluff (creatureTemplate) {
+		return Renderer.utils.pGetFluff({
+			entity: creatureTemplate,
+			fluffUrl: `data/fluff-creaturetemplates.json`,
+			fluffProp: "creatureTemplateFluff",
 		});
 	},
 };
@@ -5883,6 +5949,7 @@ Renderer.hover = {
 		"hazard": UrlUtil.PG_HAZARDS,
 		"deity": UrlUtil.PG_DEITIES,
 		"organization": UrlUtil.PG_ORGANIZATIONS,
+		"creatureTemplate": UrlUtil.PG_CREATURETEMPLATE,
 		"variantrule": UrlUtil.PG_VARIANTRULES,
 		"optfeature": UrlUtil.PG_OPTIONAL_FEATURES,
 	},
@@ -6874,6 +6941,8 @@ Renderer.hover = {
 				return Renderer.hover._pCacheAndGet_pLoadCustom(page, source, hash, opts, "deities.json", "deity", null, "deity");
 			case UrlUtil.PG_ORGANIZATIONS:
 				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "organizations.json", "organization");
+			case UrlUtil.PG_CREATURETEMPLATE:
+				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "creaturetemplates.json", "creatureTemplate");
 			case UrlUtil.PG_HAZARDS:
 				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "hazards.json", ["hazard"]);
 			case UrlUtil.PG_VARIANTRULES:
@@ -6993,6 +7062,8 @@ Renderer.hover = {
 				return Renderer.hover._pCacheAndGet_pLoadSimpleFluff(page, source, hash, opts, "fluff-conditions.json", ["conditionFluff", "diseaseFluff"]);
 			case `fluff__${UrlUtil.PG_ORGANIZATIONS}`:
 				return Renderer.hover._pCacheAndGet_pLoadSimpleFluff(page, source, hash, opts, "fluff-organizations.json", "organizationFluff");
+			case `fluff__${UrlUtil.PG_CREATURETEMPLATE}`:
+				return Renderer.hover._pCacheAndGet_pLoadSimpleFluff(page, source, hash, opts, "fluff-creaturetemplates.json", "creatureTemplateFluff");
 				// endregion
 
 			// region props
@@ -7519,6 +7590,8 @@ Renderer.hover = {
 				return Renderer.affliction.getRenderedString;
 			case UrlUtil.PG_ORGANIZATIONS:
 				return Renderer.organization.getRenderedString;
+			case UrlUtil.PG_CREATURETEMPLATE:
+				return Renderer.creatureTemplate.getRenderedString;
 			case UrlUtil.PG_BACKGROUNDS:
 				return Renderer.background.getRenderedString;
 			case UrlUtil.PG_FEATS:
@@ -7888,6 +7961,7 @@ Renderer._stripTagLayer = function (str) {
 					case "@companion":
 					case "@companionAbility":
 					case "@optfeature":
+					case "@creatureTemplate":
 					case "@variantrule": {
 						const parts = Renderer.splitTagByPipe(text);
 						return parts.length >= 3 ? parts[2] : parts[0];
