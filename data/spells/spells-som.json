@@ -2950,13 +2950,13 @@
 				{
 					"type": "list",
 					"items": [
-						"{@bold Air} (air, electricity) The elemental looses a bolt of electricity from the confluence, dealing {@damage 4d4} electricity damage to creatures within 20 feet of the confluence, with a basic Reflex save. This doesn't affect creatures that are completely inside of the confluence.",
+						"{@bold Air} ({@trait air}, {@trait electricity}) The elemental looses a bolt of electricity from the confluence, dealing {@damage 4d4} electricity damage to creatures within 20 feet of the confluence, with a basic Reflex save. This doesn't affect creatures that are completely inside of the confluence.",
 						"{@bold Earth} ({@trait earth}) The confluence gains a +2 circumstance bonus to AC and resistance 10 to all physical damage (except adamantine) for 1 round.",
 						"{@bold Fire} ({@trait fire}) Flames roar through the confluence, dealing {@damage 1d6} {@condition persistent damage ||persistent fire damage} to those partially or entirely inside the confluence.",
-						"{@bold Water} (attack, water) The elemental expels a powerful jet of water. Attempt a ranged spell attack against a target within 60 feet of the confluence, using your spell attack roll modifier. This attack ignores concealment granted by the confluence, and the elemental gets a +2 circumstance bonus on the spell attack roll against a target inside the confluence"
+						"{@bold Water} ({@trait attack}, {@trait water}) The elemental expels a powerful jet of water. Attempt a ranged spell attack against a target within 60 feet of the confluence, using your spell attack roll modifier. This attack ignores concealment granted by the confluence, and the elemental gets a +2 circumstance bonus on the spell attack roll against a target inside the confluence.",
+						"The water deals {@damage 4d6} bludgeoning damage on a hit (doubled on a critical hit). This attack doesn't count toward your multiple attack penalty."
 					]
-				},
-				"The water deals {@damage 4d6} bludgeoning damage on a hit (doubled on a critical hit). This attack doesn't count toward your multiple attack penalty."
+				}
 			]
 		},
 		{
@@ -3064,7 +3064,7 @@
 				}
 			},
 			"entries": [
-				"Select an {@trait elemental} trait: air, earth, fire, or water. Elemental zone gains the trait you chose. You imbue the area with the raw energy of that element, creating a zone that emits and amplifies magic of that type. The temperature might suddenly rise or fall, a storm cloud might form, and so on. Spells with the chosen {@trait elemental} trait cast against creatures in the zone get a +2 status bonus to one damage type the spell deals based on the chosen trait: bludgeoning or electricity for air, bludgeoning for earth, fire for fire, and bludgeoning or cold for water. The caster chooses one type to add the bonus to if the spell deals more than one eligible type. This bonus is halved if the spell didn't use a spell slot (such as a cantrip, focus spell, or innate spell)",
+				"Select an elemental trait: {@trait air}, {@trait earth}, {@trait fire}, or {@trait water}. Elemental zone gains the trait you chose. You imbue the area with the raw energy of that element, creating a zone that emits and amplifies magic of that type. The temperature might suddenly rise or fall, a storm cloud might form, and so on. Spells with the chosen elemental trait cast against creatures in the zone get a +2 status bonus to one damage type the spell deals based on the chosen trait: bludgeoning or electricity for {@trait air}, bludgeoning for {@trait earth}, fire for {@trait fire}, and bludgeoning or cold for {@trait water}. The caster chooses one type to add the bonus to if the spell deals more than one eligible type. This bonus is halved if the spell didn't use a spell slot (such as a cantrip, focus spell, or innate spell).",
 				"The zone has no effect on the spell if the spell doesn't deal any damage of an eligible type."
 			],
 			"heightened": {
