@@ -1736,13 +1736,14 @@ Parser.TAG_TO_DEFAULT_SOURCE = {
 	"eidolon": SRC_SOM,
 	"optfeature": SRC_APG,
 	"organization": SRC_LOCG,
+	"creatureTemplate": SRC_GMG,
 };
 Parser.getTagSource = function (tag, source) {
 	if (source && source.trim()) return source;
 	tag = tag.trim();
 	if (tag.startsWith("@")) tag = tag.slice(1);
 
-	if (!Parser.TAG_TO_DEFAULT_SOURCE[tag]) throw new Error(`Unhandled tag "${tag}"`);
+	if (!Parser.TAG_TO_DEFAULT_SOURCE[tag]) throw new Error(`Unhandled tag source "${tag}"`);
 	return Parser.TAG_TO_DEFAULT_SOURCE[tag];
 };
 
