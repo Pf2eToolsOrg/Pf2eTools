@@ -165,7 +165,7 @@
 				}
 			},
 			"entries": [
-				"You take the form of your ancestral spirits, becoming {@condition invisible} and quasi-corporeal. You gain resistance 10 to all damage (except force and damage from Strikes with the ghost touch property rune), and this resistance is doubled against non-magical and precision damage. You gain a fly Speed equal to your land Speed; when Flying, moving upward isn't {@quickref difficult terrain||3|terrain} for you. You can't move through solid objects, but you can float through tiny gaps. You can't Cast Spells (but you can {@action Sustain a Spell}), activate items, or use actions that have the {@trait attack} or {@trait manipulate} trait."
+				"You take the form of your ancestral spirits, becoming {@condition invisible} and quasi-corporeal. You gain resistance 10 to all damage (except force and damage from Strikes with the ghost touch property rune), and this resistance is doubled against non-magical and precision damage. You gain a fly Speed equal to your land Speed; when Flying, moving upward isn't {@quickref difficult terrain||3|terrain} for you. You can't move through solid objects, but you can float through tiny gaps. You can't {@action Cast a Spell||Cast Spells} (but you can {@action Sustain Spells||Sustain a Spell}), activate items, or use actions that have the {@trait attack} or {@trait manipulate} trait."
 			],
 			"heightened": {
 				"plusX": {
@@ -503,7 +503,7 @@
 				}
 			},
 			"entries": [
-				"You use your mind to manipulate unattended objects in the area, temporarily animating them to attack. The objects hover in the air, then hurl themselves at nearby creatures in a chaotic flurry of debris. This assault deals {@damage 2d10} bludgeoning damage (basic Reflex save) to each creature in the area. On subsequent rounds, you can Sustain this Spell, dealing {@damage 1d10} bludgeoning damage (basic Reflex save) to each creature in the area."
+				"You use your mind to manipulate unattended objects in the area, temporarily animating them to attack. The objects hover in the air, then hurl themselves at nearby creatures in a chaotic flurry of debris. This assault deals {@damage 2d10} bludgeoning damage (basic Reflex save) to each creature in the area. On subsequent rounds, the first time each round you {@action Sustain a Spell||Sustain this Spell}, dealing {@damage 1d10} bludgeoning damage (basic Reflex save) to each creature in the area."
 			],
 			"heightened": {
 				"plusX": {
@@ -553,10 +553,9 @@
 				}
 			},
 			"entries": [
-				"A sphere of water 10 feet in diameter forms in an unoccupied space in range, either on the ground or on the surface of a liquid. When you {@action Cast a Spell||Cast the Spell} and each time you {@action Sustain a Spell||Sustain the Spell}, you can roll the orb, moving it up to 10 feet along the ground or the surface of a liquid. Unlike most spells, you can gain this effect multiple times in the same round by {@action Sustain a Spell||Sustaining the Spell} multiple times. The orb can move through the spaces of any creatures or obstacles that wouldn't stop the flow of water. It extinguishes non-magical fires it moves through of its size or smaller, and it attempts to counteract any magical fires it moves through. If it fails to counteract a given fire, it can't counteract that fire for the duration of the spell.",
+				"A sphere of water 10 feet in diameter forms in an unoccupied space in range, either on the ground or on the surface of a liquid. When you {@action Cast a Spell||Cast the Spell} and each time you {@action Sustain a Spell||Sustain the Spell}, you can roll the orb, moving it up to 10 feet along the ground or the surface of a liquid. You can gain this effect multiple times in the same round by {@action Sustain a Spell||Sustaining the Spell} multiple times. The orb can move through the spaces of any creatures or obstacles that wouldn't stop the flow of water. It extinguishes non-magical fires it moves through of its size or smaller, and it attempts to counteract any magical fires it moves through. If it fails to counteract a given fire, it can't counteract that fire for the duration of the spell.",
 				"The orb can also collect creatures it moves through. Any Large or smaller creature whose space the orb tries to move through can attempt a Reflex save against your spell DC to avoid being engulfed. If a creature succeeds at this save, it can either let the orb pass (remaining in its space or moving out of the orb's path into a space of the creature's choice) or allow itself to be pushed in front of the orb to the end of the orb's movement. The orb can try to Engulf the same creature only once per turn, even if you roll it onto a creature's space more than once.",
-				"A creature that fails its save is pulled into the orb. It becomes {@condition grabbed}, moves along with the orb, and must hold its breath or begin suffocating (unless it can breathe in water)",
-				"An engulfed Medium or smaller creature and anyone trying to affect that creature follow the normal rules for aquatic battles (Core Rulebook 478). An engulfed Large creature is usually big enough that parts of it stick out from the water, and it can reach out of the water. An engulfed creature can get free either by Swimming with a successful DC 10 {@skill Athletics} check or by Escaping against your spell DC. A creature that critically failed its Reflex save is further stuck and must attempt to {@action Escape} instead of {@action Swim}. A freed creature exits the orb's space and can immediately breathe. The orb can contain as many creatures as can fit in its space.",
+				"A creature that fails its save is pulled into the orb. It becomes {@condition grabbed}, moves along with the orb, and must hold its breath or begin suffocating (unless it can breathe in water). An engulfed Medium or smaller creature and anyone trying to affect that creature follow the normal rules for {@quickref aquatic battles|CRB|3|aquatic combat}. An engulfed Large creature is usually big enough that parts of it stick out from the water, and it can reach out of the water. An engulfed creature can get free either by Swimming with a successful DC 10 {@skill Athletics} check or by Escaping against your spell DC. A creature that critically failed its Reflex save is further stuck and must attempt to {@action Escape} instead of {@action Swim}. A freed creature exits the orb's space and can immediately breathe. The orb can contain as many creatures as can fit in its space.",
 				"When the spell ends, all creatures the orb has engulfed are automatically released."
 			]
 		},
@@ -644,6 +643,7 @@
 			"focus": true,
 			"level": 3,
 			"traits": [
+				"uncommon",
 				"archetype",
 				"concentrate",
 				"divination",
@@ -1969,6 +1969,7 @@
 			"focus": true,
 			"level": 5,
 			"traits": [
+				"uncommon",
 				"darkness",
 				"evocation"
 			],
@@ -3176,6 +3177,7 @@
 					"S"
 				],
 				[
+					"S",
 					"V"
 				]
 			],
@@ -3187,7 +3189,7 @@
 			"entries": [
 				"You harness positive energy to heal your animal companion's wounds. You restore {@dice 1d10} Hit Points to your animal companion. The number of actions you spend {@action Cast a Spell||Casting this Spell} determines range and other parameters.",
 				"{@b {@as 1} (somatic)} The spell has a range of touch.",
-				"{@b {@as 2} (verbal)} The spell has a range of 30 feet and restores an additional 8 Hit Points to the target."
+				"{@b {@as 2} (somatic, verbal)} The spell has a range of 30 feet and restores an additional 8 Hit Points to the target."
 			],
 			"heightened": {
 				"plusX": {
@@ -3449,7 +3451,7 @@
 				}
 			},
 			"entries": [
-				"Your divine singing mends wounds and provides a temporary respite from harm. The target gains fast healing 2. When you {@action Cast a Spell||Cast the Spell} and each time you {@action Sustain a Spell||Sustain the Spell}, the target gains 2 temporary Hit Points, which last for 1 round."
+				"Your divine singing mends wounds and provides a temporary respite from harm. The target gains fast healing 2. When you {@action Cast a Spell||Cast the Spell} and the first time each round you {@action Sustain a Spell||Sustain the Spell}, the target gains 2 temporary Hit Points, which last for 1 round."
 			],
 			"heightened": {
 				"plusX": {
@@ -3494,7 +3496,7 @@
 				"types": [
 					"Burst"
 				],
-				"entry": "5-foot burst"
+				"entry": "20-foot burst"
 			},
 			"savingThrow": {
 				"type": [
@@ -3504,19 +3506,20 @@
 			},
 			"duration": {
 				"type": "timed",
-				"entry": "1 minute",
+				"sustain": true,
+				"entry": "sustained up to 1 minute",
 				"duration": {
 					"number": 1,
 					"unit": "minute"
 				}
 			},
 			"entries": [
-				"You create a gray storm cloud that pelts creatures with an icy deluge. When you {@action Cast a Spell||Cast the Spell}, a burst of magical hail deals {@damage 2d8} bludgeoning damage and {@damage 2d8} cold damage to each creature in the area below the cloud (basic Reflex save). Snow and sleet continue to rain down in the area for the remainder of the spell's duration, making the area {@quickref difficult terrain||3|terrain}, causing creatures in the storm to be {@condition concealed}, and making creatures outside the storm {@condition concealed} from those inside the storm. Any creature that ends its turn in the storm takes 4 cold damage. If you {@action Cast a Spell||Cast this Spell} outdoors, you can create two non-overlapping clouds instead of one."
+				"You create a gray storm cloud that pelts creatures with an icy deluge. When you {@action Cast a Spell||Cast the Spell}, a burst of magical hail deals {@damage 2d8} bludgeoning damage and {@damage 2d8} cold damage to each creature in the area below the cloud (basic Reflex save). Snow and sleet continue to rain down in the area for the remainder of the spell’s duration, making the area difficult terrain. Any creature that ends its turn in the storm takes 2 cold damage. If you {@spell Cast a Spell||Cast this Spell} outdoors, you can create two non-overlapping clouds instead of one. As normal, if a big creature is in both clouds, it still only takes the initial damage once and the continuing damage once per turn."
 			],
 			"heightened": {
 				"plusX": {
 					"2": [
-						"The initial bludgeoning damage and cold damage increase by {@dice 1d8} each, and the cold damage creatures take at the end of their turns increases by 2."
+						"The initial bludgeoning damage and cold damage increase by {@dice 1d8} each, and the cold damage creatures take at the end of their turns increases by 1."
 					]
 				}
 			}
@@ -3801,7 +3804,7 @@
 				}
 			},
 			"entries": [
-				"You call upon the frigid depths of outer space to bring a terrible chill to your enemy. The target is cloaked in the freezing void, which deals {@damage 3d6} cold damage immediately and when you {@action Sustain a Spell||Sustain the Spell} on future turns, with a basic Fortitude save.",
+				"You call upon the frigid depths of outer space to bring a terrible chill to your enemy. The target is cloaked in the freezing void, which deals {@damage 3d6} cold damage immediately and the first time each round you {@action Sustain a Spell||Sustain the Spell} on future turns, with a basic Fortitude save.",
 				"The target is {@condition fatigued} for as long as the effect persists."
 			],
 			"heightened": {
@@ -4060,18 +4063,18 @@
 					]
 				}
 			}
-		},
-		{
+		},{
 			"name": "Lightning Storm",
 			"source": "APG",
 			"page": 221,
+			"type": "Spell",
 			"level": 5,
 			"traits": [
 				"electricity",
 				"evocation"
 			],
 			"traditions": [
-				"primal"
+				"Primal"
 			],
 			"cast": {
 				"number": 3,
@@ -4079,20 +4082,20 @@
 			},
 			"components": [
 				[
-					"M",
 					"S",
+					"M",
 					"V"
 				]
 			],
 			"range": {
-				"type": "feet",
+				"unit": "feet",
 				"number": 120
 			},
 			"area": {
+				"entry": "20-foot burst",
 				"types": [
 					"Burst"
-				],
-				"entry": "5-foot burst"
+				]
 			},
 			"savingThrow": {
 				"type": [
@@ -4101,21 +4104,17 @@
 				"basic": true
 			},
 			"duration": {
-				"type": "timed",
-				"entry": "sustained up to 1 minute",
-				"sustain": true,
-				"duration": {
-					"number": 1,
-					"unit": "minute"
-				}
+				"sustained": true,
+				"number": 1,
+				"unit": "minute"
 			},
 			"entries": [
-				"You create a black, rumbling storm cloud and call down one lightning bolt. The bolt is a vertical line from the storm cloud to the ground below, dealing {@damage 4d12} electricity damage to creatures in the spell's area (basic Reflex save). The first time you {@action Sustain a Spell||Sustain the Spell} each round, you can call another lightning bolt within the area. If you {@action Cast a Spell||Cast this Spell} outdoors, you can create two non-overlapping clouds instead of one, though you can still call down only one bolt per turn."
+				"You create a black, rumbling storm cloud and call down one lightning bolt within the spell's area. The bolt is a vertical line from the top of the storm cloud to the ground below, dealing {@damage 4d12} electricity damage to creatures in the line (basic Reflex save). On subsequent rounds, the first time you Sustain the Spell each round, you can call another lightning bolt within the area. If you Cast this Spell outdoors, you can create two non-overlapping clouds instead of one, though you can still call down only one bolt per turn."
 			],
 			"heightened": {
 				"plusX": {
-					"1": [
-						"The damage of each bolt increases by {@dice 1d12}. Spells 5"
+					"2": [
+						"The damage of each bolt increases by {@dice 1d12}."
 					]
 				}
 			}
@@ -4270,7 +4269,7 @@
 			},
 			"entries": [
 				"Magical monkey spirits fill the area as they pile and climb on top of one another. Because the monkeys are magical spirits, they can't be attacked or hurt. Casting calm emotions or a similar effect over the monkeys makes them docile, causing them to cease making mischief for the duration of mad monkeys.",
-				"Choose the kind of mischief your monkeys make when you {@action Cast a Spell||Cast the Spell}. They produce the effect listed for that mischief when you {@action Cast a Spell||Cast the Spell} and each round when you {@action Sustain a Spell||Sustain the Spell}. When you {@action Sustain a Spell||Sustain the Spell}, you can move the area of the monkeys by 5 feet.",
+				"Choose the kind of mischief your monkeys make when you {@action Cast a Spell||Cast the Spell}. They produce the effect listed for that mischief when you {@action Cast a Spell||Cast the Spell} and the first time each round you {@action Sustain a Spell||Sustain the Spell}. When you {@action Sustain a Spell||Sustain the Spell}, you can move the area of the monkeys by 5 feet.",
 				{
 					"type": "list",
 					"items": [
@@ -5169,7 +5168,7 @@
 			},
 			"entries": [
 				"You cause the air in the area to become supersaturated with water vapor. Non-magical fires within the area are automatically extinguished. Fire creatures within the area take {@dice 4d8} damage (basic Fortitude save). Choose one magical fire, fire spell, or fire item in the area and attempt to counteract it. If you succeed against an item, the item loses its fire properties for 10 minutes (for instance, a +1 flaming longsword would become a +1 longsword). If the target is an artifact or similarly powerful item, you automatically fail to counteract it.",
-				"When you Sustain this Spell, you can move the area of vapor anywhere within range, but the only effect when you do so is to automatically extinguish non-magical fires.",
+				"The first time each round you {@action Sustain a Spell||Sustain this Spell}, you can move the area of vapor anywhere within range, but the only effect when you do so is to automatically extinguish non-magical fires.",
 				"If you have the Counterspell reaction, you can use quench to counter any spell with the {@trait fire} trait instead of needing to have the triggering fire spell prepared or in your repertoire."
 			],
 			"heightened": {
@@ -5684,6 +5683,7 @@
 			"focus": true,
 			"level": 6,
 			"traits": [
+				"uncommon",
 				"auditory",
 				"illusion",
 				"shadow",
@@ -5727,6 +5727,7 @@
 			"focus": true,
 			"level": 5,
 			"traits": [
+				"uncommon",
 				"conjuration",
 				"shadow",
 				"teleportation"
@@ -6418,7 +6419,7 @@
 					"entries": {
 						"Critical Success": "The target is unaffected.",
 						"Success": "The target is {@condition enfeebled 1} for 1 round.",
-						"Failure": "The target takes {@damage 3d4} negative damage and is {@condition enfeebled 1} for the spell's duration as you tear its shadow away, collecting it in your hand. On subsequent rounds, when you {@action Sustain a Spell||Sustain the Spell}, you can throttle the shadow to deal {@damage 3d4} negative damage to the target (basic Fortitude save). Until the spell ends, the target doesn't cast a shadow.",
+						"Failure": "The target takes {@damage 3d4} negative damage and is {@condition enfeebled 1} for the spell's duration as you tear its shadow away, collecting it in your hand. On subsequent rounds, the first time each round you {@action Sustain a Spell||Sustain the Spell}, you can throttle the shadow to deal {@damage 3d4} negative damage to the target (basic Fortitude save). Until the spell ends, the target doesn't cast a shadow.",
 						"Critical Failure": "As failure, but the target is {@condition enfeebled 2}."
 					}
 				}
@@ -6722,7 +6723,7 @@
 				"Your body becomes fluid to better suit your surroundings.",
 				"When you {@action Cast a Spell||Cast this Spell}, choose whether to become air, water, or mist. The spell gains the {@trait air} trait if you choose air or mist, and the {@trait water} trait if you choose water or mist. You become amorphous, as does your armor. You lose any item bonus to AC and use your proficiency bonus for unarmored defense to determine your AC. You also gain resistance 10 to physical damage and become immune to precision damage.",
 				"You can slip through tiny cracks and don't need to breathe.",
-				"You can't cast spells, activate items, or use actions that have the {@trait attack} or {@trait manipulate} trait. You also gain the following effects based on your form.",
+				"You can't cast spells, activate items, or use actions that have the {@trait attack} or {@trait manipulate} trait, except those granted by this spell. You also gain the following effects based on your form.",
 				{
 					"type": "list",
 					"items": [
