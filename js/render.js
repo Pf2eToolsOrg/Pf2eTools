@@ -5389,7 +5389,7 @@ Renderer.organization = {
 	getRenderedLore (organization) {
 		const textStack = [""];
 		const renderer = Renderer.get().setFirstSection(true);
-		if (organization.entries) organization.entries.forEach(l => renderer.recursiveRender(l, textStack));
+		if (organization.lore) organization.lore.forEach(l => renderer.recursiveRender(l, textStack));
 		return textStack.join("");
 	},
 
