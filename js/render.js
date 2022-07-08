@@ -1371,6 +1371,7 @@ function Renderer () {
 		const catId = Parser._parse_bToA(Parser.CAT_ID_TO_PROP, tag);
 		const page = entry.page || UrlUtil.CAT_TO_PAGE[catId];
 		const hash = entry.hash || UrlUtil.URL_TO_HASH_BUILDER[page](entry);
+		// FIXME: Doesn't render "data" structures. See SoM dragon and soul gifts.
 		if (entry.data) {
 			const renderFn = Renderer.hover._pageToRenderFn(page);
 			const rendered = renderFn ? renderFn(entry.data, {isEmbedded: true, noPage: true}) : `<div class="pf2-stat">Failed to render ${entry.data.name}.</div>`;
