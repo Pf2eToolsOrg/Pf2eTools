@@ -5422,8 +5422,9 @@ Renderer.creatureTemplate = {
 			${Renderer.utils.getDividerDiv()}
 			${Renderer.utils.getTraitsDiv(creatureTemplate.traits || [])}
 			${Renderer.creatureTemplate.getBody(creatureTemplate)}
-			${Renderer.creatureTemplate.getAbilities(creatureTemplate)}
 			${Renderer.generic.getRenderedEntries(creatureTemplate)}
+			${Renderer.creatureTemplate.getAbilities(creatureTemplate)}
+			${Renderer.creatureTemplate.getOptionalAbilities(creatureTemplate)}
 		`
 	},
 
@@ -5431,8 +5432,7 @@ Renderer.creatureTemplate = {
 		if (!it.languages || it.languages.length === 0) return "";
 		const textStack = [""];
 		const renderer = Renderer.get().setFirstSection(true);
-		if (it.languages) textStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Languages&nbsp;</strong>${it.languages.map(x => `{@language ${x}}`).join(", ")}</p>`)
-		if (it.speed) textStack.push(Renderer.creature.getSpeed(it))
+		// TODO: Insert any functional properties here to be displayed.
 		textStack.push(Renderer.utils.getDividerDiv())
 		return renderer.render(textStack.join(""));
 	},
@@ -5442,6 +5442,15 @@ Renderer.creatureTemplate = {
 		const textStack = [""];
 		const renderer = Renderer.get().setFirstSection(true);
 		textStack.push(`${it.abilities.map(x => renderer.render(x)).join("")}`)
+		return renderer.render(textStack.join(""));
+	},
+
+	getOptionalAbilities (it) {
+		if (!it.optAbilities || Object.keys(it.optAbilities).length === 0) return "";
+		const textStack = [""];
+		const renderer = Renderer.get().setFirstSection(true);
+		textStack.push(Renderer.generic.getRenderedEntries(it.optAbilities))
+		textStack.push(`${it.optAbilities.abilities.map(x => renderer.render(x)).join("")}`)
 		return renderer.render(textStack.join(""));
 	},
 
