@@ -47,7 +47,7 @@ class PdfConverter extends Converter {
 			const dirPart = `${this._args.output || "./trash/parsed"}/${folder}`;
 			fs.mkdirSync(dirPart, {recursive: true});
 			const out = {[key]: data[key]};
-			const filePath = `${dirPart}/${key}s-${source.toLowerCase()}`;
+			const filePath = `${dirPart}/${key}s-${source.toLowerCase()}.json`;
 			console.log(`Writing to "${filePath}"...`);
 			fs.writeFileSync(filePath, CleanUtil.getCleanJson(out));
 		});

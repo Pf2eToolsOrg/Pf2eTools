@@ -2729,7 +2729,7 @@ DataUtil = {
 			}
 
 			function doMod_replaceTxt (modInfo, path) {
-				if (!copyTo[path]) return;
+				if (!getPropertyFromPath(copyTo, path)) return;
 
 				DataUtil.generic._walker_replaceTxt = DataUtil.generic._walker_replaceTxt || MiscUtil.getWalker();
 				const re = new RegExp(modInfo.replace, `g${modInfo.flags || ""}`);
@@ -2761,6 +2761,10 @@ DataUtil = {
 				// TODO: This is getting out of hand
 				const typesToReplaceIn = ["successDegree", "ability", "affliction", "lvlEffect"];
 				getPropertyFromPath(copyTo, path).forEach(it => {
+					if (path === "attacks") {
+						it.damage = it.damage.replace(re, modInfo.with);
+						it.traits = DataUtil.generic._walker_replaceTxt.walk(it.traits, handlers);
+					}
 					if (it.entries) it.entries = DataUtil.generic._walker_replaceTxt.walk(it.entries, handlers);
 					if (it.items) it.items = DataUtil.generic._walker_replaceTxt.walk(it.items, handlers);
 					if (typesToReplaceIn.includes(it.type)) {

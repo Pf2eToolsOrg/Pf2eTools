@@ -12,25 +12,6 @@
 			]
 		},
 		{
-			"name": "Cursebound",
-			"source": "APG",
-			"page": 267,
-			"entries": [
-				"Spells with this trait increase the severity of your oracular curse when cast. Usually only revelation spells have this trait. You can't cast a cursebound spell if you don't have an oracular curse."
-			]
-		},
-		{
-			"name": "Olfactory",
-			"source": "B1",
-			"page": 168,
-			"categories": [
-				"Effect"
-			],
-			"entries": [
-				"An olfactory effect can affect only creatures that can smell it. This applies only to olfactory parts of the effect, as determined by the GM."
-			]
-		},
-		{
 			"name": "[Magical Tradition]",
 			"source": "B1",
 			"page": 342,
@@ -79,6 +60,11 @@
 				"Schools & Traditions",
 				"_school"
 			],
+			"implies": {
+				"spell": {
+					"_fSchool": "Abjuration"
+				}
+			},
 			"entries": [
 				"Effects and magic items with this trait are associated with the abjuration school of magic, typically involving protection or wards.",
 				{
@@ -90,11 +76,6 @@
 					"page": 297
 				}
 			],
-			"implies": {
-				"spell": {
-					"_fSchool": "Abjuration"
-				}
-			},
 			"_data": {
 				"school": {
 					"short": "Abj.",
@@ -834,6 +815,14 @@
 			]
 		},
 		{
+			"name": "Charm",
+			"source": "B1",
+			"page": 77,
+			"entries": [
+				"{@note No entries available.}"
+			]
+		},
+		{
 			"name": "City",
 			"source": "GMG",
 			"page": 250,
@@ -859,22 +848,6 @@
 			]
 		},
 		{
-			"name": "Kaiju",
-			"source": "FRP2",
-			"page": 89,
-			"entries": [
-				"{@note No entries available.}"
-			]
-		},
-		{
-			"name": "Charm",
-			"source": "B1",
-			"page": 77,
-			"entries": [
-				"{@note No entries available.}"
-			]
-		},
-		{
 			"name": "Cleric",
 			"source": "CRB",
 			"page": 629,
@@ -883,6 +856,17 @@
 			],
 			"entries": [
 				"This indicates abilities from the {@class cleric|CRB} class."
+			]
+		},
+		{
+			"name": "Climbing",
+			"source": "AAWS",
+			"page": 1,
+			"categories": [
+				"Armor & Weapon"
+			],
+			"entries": [
+				"The hand holding this weapon is freely available to {@action Climb}."
 			]
 		},
 		{
@@ -1085,6 +1069,11 @@
 				"Schools & Traditions",
 				"_school"
 			],
+			"implies": {
+				"spell": {
+					"_fSchool": "Conjuration"
+				}
+			},
 			"entries": [
 				"Effects and magic items with this trait are associated with the conjuration school of magic, typically involving summoning, creation, {@trait teleportation}, or moving things from place to place.",
 				{
@@ -1097,11 +1086,6 @@
 					"page": 297
 				}
 			],
-			"implies": {
-				"spell": {
-					"_fSchool": "Conjuration"
-				}
-			},
 			"_data": {
 				"school": {
 					"short": "Conj.",
@@ -1249,6 +1233,14 @@
 						"Afflictions with this trait are manifestations of potent ill will. A curse either lasts a specified amount of time or can be removed only by certain actions a character must perform or conditions they must meet. A curse with stages follows the rules for afflictions."
 					]
 				}
+			]
+		},
+		{
+			"name": "Cursebound",
+			"source": "APG",
+			"page": 267,
+			"entries": [
+				"Spells with this trait increase the severity of your oracular curse when cast. Usually only revelation spells have this trait. You can't cast a cursebound spell if you don't have an oracular curse."
 			]
 		},
 		{
@@ -1483,6 +1475,11 @@
 				"Schools & Traditions",
 				"_school"
 			],
+			"implies": {
+				"spell": {
+					"_fSchool": "Divination"
+				}
+			},
 			"entries": [
 				"The divination school of magic typically involves obtaining or transferring information, or predicting events.",
 				{
@@ -1495,11 +1492,6 @@
 					"page": 297
 				}
 			],
-			"implies": {
-				"spell": {
-					"_fSchool": "Divination"
-				}
-			},
 			"_data": {
 				"school": {
 					"short": "Divin.",
@@ -1801,6 +1793,11 @@
 				"Schools & Traditions",
 				"_school"
 			],
+			"implies": {
+				"spell": {
+					"_fSchool": "Enchantment"
+				}
+			},
 			"entries": [
 				"Effects and magic items with this trait are associated with the enchantment school of magic, typically involving mind control, emotion alteration, and other mental effects.",
 				{
@@ -1812,11 +1809,6 @@
 					"page": 297
 				}
 			],
-			"implies": {
-				"spell": {
-					"_fSchool": "Enchantment"
-				}
-			},
 			"_data": {
 				"school": {
 					"short": "Ench.",
@@ -1923,6 +1915,11 @@
 				"Schools & Traditions",
 				"_school"
 			],
+			"implies": {
+				"spell": {
+					"_fSchool": "Evocation"
+				}
+			},
 			"entries": [
 				"Effects and magic items with this trait are associated with the evocation school of magic, typically involving energy and elemental forces.",
 				{
@@ -1934,11 +1931,6 @@
 					"page": 298
 				}
 			],
-			"implies": {
-				"spell": {
-					"_fSchool": "Evocation"
-				}
-			},
 			"_data": {
 				"school": {
 					"short": "Evoc.",
@@ -2880,6 +2872,11 @@
 				"Schools & Traditions",
 				"_school"
 			],
+			"implies": {
+				"spell": {
+					"_fSchool": "Illusion"
+				}
+			},
 			"entries": [
 				"Effects and magic items with this trait are associated with the illusion school of magic, typically involving false sensory stimuli.",
 				{
@@ -2891,11 +2888,6 @@
 					"page": 298
 				}
 			],
-			"implies": {
-				"spell": {
-					"_fSchool": "Illusion"
-				}
-			},
 			"_data": {
 				"school": {
 					"short": "Illu.",
@@ -3067,17 +3059,6 @@
 			]
 		},
 		{
-			"name": "Climbing",
-			"source": "AAWS",
-			"page": 1,
-			"categories": [
-				"Armor & Weapon"
-			],
-			"entries": [
-				"The hand holding this weapon is freely available to {@action Climb}."
-			]
-		},
-		{
 			"name": "Inventor",
 			"source": "G&G",
 			"page": 16,
@@ -3124,6 +3105,14 @@
 			],
 			"entries": [
 				"The weapon is suited for mounted combat with a harness or similar means. When mounted, if you moved at least 10 feet on the action before your attack, add a circumstance bonus to damage for that attack equal to the number of damage dice for the weapon. In addition, while mounted, you can wield the weapon in one hand, changing the damage die to the listed value."
+			]
+		},
+		{
+			"name": "Kaiju",
+			"source": "FRP2",
+			"page": 89,
+			"entries": [
+				"{@note No entries available.}"
 			]
 		},
 		{
@@ -3836,6 +3825,11 @@
 				"Schools & Traditions",
 				"_school"
 			],
+			"implies": {
+				"spell": {
+					"_fSchool": "Necromancy"
+				}
+			},
 			"entries": [
 				"Effects and magic items with this trait are associated with the necromancy school of magic, typically involving forces of life and death.",
 				{
@@ -3848,11 +3842,6 @@
 					"page": 298
 				}
 			],
-			"implies": {
-				"spell": {
-					"_fSchool": "Necromancy"
-				}
-			},
 			"_data": {
 				"school": {
 					"short": "Necr.",
@@ -3983,6 +3972,17 @@
 			],
 			"entries": [
 				"Oils are magical gels, ointments, pastes, or salves that are typically applied to an object and are used up in the process."
+			]
+		},
+		{
+			"name": "Olfactory",
+			"source": "B1",
+			"page": 168,
+			"categories": [
+				"Effect"
+			],
+			"entries": [
+				"An olfactory effect can affect only creatures that can smell it. This applies only to olfactory parts of the effect, as determined by the GM."
 			]
 		},
 		{
@@ -5278,6 +5278,11 @@
 				"Schools & Traditions",
 				"_school"
 			],
+			"implies": {
+				"spell": {
+					"_fSchool": "Transmutation"
+				}
+			},
 			"entries": [
 				"Effects and magic items with this trait are associated with the transmutation school of magic, typically changing something's form.",
 				{
@@ -5289,11 +5294,6 @@
 					"page": 298
 				}
 			],
-			"implies": {
-				"spell": {
-					"_fSchool": "Transmutation"
-				}
-			},
 			"_data": {
 				"school": {
 					"short": "Trans.",
