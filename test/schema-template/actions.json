@@ -77,7 +77,12 @@
 								"minItems": 1
 							},
 							"versatileHeritage": {
-								"type": "string"
+								"type": "array",
+								"items": {
+									"type": "string"
+								},
+								"uniqueItems": true,
+								"minItems": 1
 							},
 							"basic": {
 								"type": "boolean",

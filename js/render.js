@@ -3850,10 +3850,17 @@ Renderer.ancestry = {
 };
 
 Renderer.archetype = {
-	getRenderedString (archetype) {
+	getRenderedString (arc) {
 		const renderer = Renderer.get().setFirstSection(true);
-		return `${renderer.render({ type: "pf2-h3", name: archetype.name })}
-		${renderer.render(archetype.entries)}`;
+		const renderStack = [];
+		Renderer.get().setFirstSection(true).recursiveRender(arc.entries, renderStack, { pf2StatFix: true });
+
+		return `${Renderer.utils.getNameDiv(arc, { page: UrlUtil.PG_ARCHETYPES, type: "ARCHETYPE" })}
+		${Renderer.utils.getDividerDiv()}
+		${Renderer.utils.getTraitsDiv(arc.traits || [])}
+		${renderer.render({	type: "pf2-h4", entries: arc.entries })}
+		${Renderer.utils.getPageP(arc)}
+		`;
 	},
 };
 
