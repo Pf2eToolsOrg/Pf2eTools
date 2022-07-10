@@ -28,7 +28,10 @@
 						]
 					},
 					"special": {
-						"type": "string"
+						"type": "array",
+						"items": {
+							"$ref": "entry.json"
+						}
 					},
 					"access": {
 						"type": "string"
