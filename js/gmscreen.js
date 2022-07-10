@@ -2724,7 +2724,7 @@ class AddMenuSpecialTab extends AddMenuTab {
 
 			$(`<hr class="ui-modal__row-sep"/>`).appendTo($tab);
 
-			const $wrpText = $(`<div class="ui-modal__row"><span>Basic Text Box <i class="text-muted">(for a feature-rich editor, embed a Google Doc or similar)</i></span></div>`).appendTo($tab);
+			const $wrpText = $(`<div class="ui-modal__row"><span>Basic Text Box <i class="text-muted">(Use the <b>embed</b> feature with Google Docs for formatting)</i></span></div>`).appendTo($tab);
 			const $btnText = $(`<button class="btn btn-primary btn-sm">Add</button>`).appendTo($wrpText);
 			$btnText.on("click", () => {
 				this.menu.pnl.doPopulate_TextBox();

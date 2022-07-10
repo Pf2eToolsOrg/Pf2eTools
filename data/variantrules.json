@@ -5033,13 +5033,13 @@
 									"entries": [
 										"Group activities require the entire party to work together in order to be effective; these activities each count as one of the day's hexploration activities for the whole group. For instance, if the group had 2 hexploration activities per day and decided to Travel and Reconnoiter, no one would have any additional hexploration activities that day. There are two group activities: Travel and Reconnoiter.",
 										{
-											"type": "statblock",
+											"type": "data",
 											"tag": "action",
 											"name": "Travel",
 											"source": "GMG"
 										},
 										{
-											"type": "statblock",
+											"type": "data",
 											"tag": "action",
 											"name": "Reconnoiter",
 											"source": "GMG"
@@ -5054,13 +5054,13 @@
 									"entries": [
 										"Not all hexploration activities need to be accomplished as a group. In place of using a hexploration activity to {@action Travel} or {@action Reconnoiter}, each individual group member can instead perform one of these individual activities.",
 										{
-											"type": "statblock",
+											"type": "data",
 											"tag": "action",
 											"name": "Fortify Camp",
 											"source": "GMG"
 										},
 										{
-											"type": "statblock",
+											"type": "data",
 											"tag": "action",
 											"name": "Map The Area",
 											"source": "GMG"
@@ -5662,7 +5662,7 @@
 									"entries": [
 										"You can use your magical prowess to temporarily access the power of a ley line. Tapping the Ley Line requires a skill check using the skill associated with its tradition ({@skill Arcana} for arcane, {@skill Nature} for primal, {@skill Occultism} for occult, and {@skill Religion} for divine). In cases where a ley line has multiple associated traditions, you can use any of the appropriate skills to Tap the Ley Line. The benefits of a ley line are always magical in nature and can be counteracted in a similar way to a magic item.",
 										{
-											"type": "statblock",
+											"type": "data",
 											"tag": "action",
 											"name": "Tap Ley Line",
 											"source": "SoM"
@@ -6958,7 +6958,7 @@
 											"type": "pf2-h4",
 											"name": "Shade",
 											"entries": [
-												"Your companion's physical form is made, in whole or in part, of shadow. It gains {@ability darkvision}, resistance 5 to all damage except force, and in areas of dim light or darkness, it can Step 10 feet instead of 5 feet. Its proficiency rank in unarmored defense increases to expert, or master if it's nimble."
+												"Your companion's physical form is made, in whole or in part, of shadow. It gains {@ability darkvision}, resistance 5 to all damage except force, and in areas of dim light or darkness, it can Step 10 feet instead of 5 feet. Its proficiency rank in unarmored defense increases to expert."
 											]
 										}
 									]
@@ -7823,6 +7823,13 @@
 							]
 						},
 						{
+							"type": "pf2-sidebar",
+							"name": "Fragmentary Names",
+							"entries": [
+								"Sometimes characters know only pieces of a creature's true name, not the whole thing. You don't gain the benefits listed under Using True Names if you only have fragments of the name, but you can still try to use abilities with the true name trait, though it's very dangerous. If your true name ability requires you to attempt a check, reduce your degree of success by one step. If your ability requires the named creature to attempt a saving throw, improve their degree of success by one step. For example, Invoke True Name would do nothing, since its effects would be canceled out. If the true name ability also has the incapacitation trait and the creature is high enough level, these effects combine, reducing your degree of success by two steps or improving their degree of success by two steps."
+							]
+						},
+						{
 							"type": "pf2-h2",
 							"name": "Namer's Codex",
 							"entries": [
@@ -7832,7 +7839,7 @@
 									"name": "Naming Skill Feat",
 									"entries": [
 										{
-											"type": "statblock",
+											"type": "data",
 											"tag": "feat",
 											"name": "Reveal True Name",
 											"source": "SoM"
@@ -7844,19 +7851,19 @@
 									"name": "Naming Spells",
 									"entries": [
 										{
-											"type": "statblock",
+											"type": "data",
 											"tag": "spell",
 											"name": "Catch Your Name",
 											"source": "SoM"
 										},
 										{
-											"type": "statblock",
+											"type": "data",
 											"tag": "spell",
 											"name": "Compel True Name",
 											"source": "SoM"
 										},
 										{
-											"type": "statblock",
+											"type": "data",
 											"tag": "spell",
 											"name": "Invoke True Name",
 											"source": "SoM"
@@ -7868,7 +7875,7 @@
 									"name": "Naming Items",
 									"entries": [
 										{
-											"type": "statblock",
+											"type": "data",
 											"tag": "item",
 											"name": "True Name Amulet (Generic)",
 											"source": "SoM"
@@ -8167,19 +8174,19 @@
 								"Even with these extra opportunities, you can't advance your primary branch level above your character's level, or your secondary branch level above half your character's level (both with a minimum of 0). If the result of any of these activities would raise a branch level past those limits, put a star next to your branch's level. The next time your character gains a level, raise that branch's level to the new limit and erase the star. This way, if you have an opportunity to advance your branch level, you don't have to wait until your character level is high enough to pursue it.",
 								"Each of these downtime activities takes a few months, as they occur over an academic semester. You might have encounters during or between these checks as the story requires.",
 								{
-									"type": "statblock",
+									"type": "data",
 									"tag": "action",
 									"name": "Study",
 									"source": "SoT1"
 								},
 								{
-									"type": "statblock",
+									"type": "data",
 									"tag": "action",
 									"name": "Cram",
 									"source": "SoT1"
 								},
 								{
-									"type": "statblock",
+									"type": "data",
 									"tag": "action",
 									"name": "Practical Research",
 									"source": "SoT1"

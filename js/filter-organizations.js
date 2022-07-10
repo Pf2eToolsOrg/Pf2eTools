@@ -6,7 +6,7 @@ class PageFilterOrganizations extends PageFilter {
 		this._AlignmentFilter = new Filter({
 			header: "Accepted Alignment",
 			itemSortFn: SortUtil.alignmentSort,
-			displayFn: Parser.alignAbvToFull,
+			displayFn: Parser.alignToFull,
 		});
 		this._miscFilter = new Filter({
 			header: "Miscellaneous",

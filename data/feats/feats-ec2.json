@@ -19,7 +19,13 @@
 			"entries": [
 				"You gain the services of a {@quickref young animal companion||0|young animal companions} that travels with you and obeys simple commands as best as it can. This trained animal is trained in {@skill Performance} instead of the skill listed for its type."
 			],
-			"special": "You can't select another dedication feat until you've gained two other feats from the animal trainer archetype."
+			"special": "You can't select another dedication feat until you've gained two other feats from the animal trainer archetype.",
+			"leadsTo": [
+				"Beast Speaker|EC2",
+				"Mature Trained Companion|EC2",
+				"Splendid Companion|EC2",
+				"Specialized Companion|EC2"
+			]
 		},
 		{
 			"name": "Beast Speaker",
@@ -35,7 +41,7 @@
 				"uncommon",
 				"archetype"
 			],
-			"prerequisites": "Animal Trainer Dedication",
+			"prerequisites": "{@feat Animal Trainer Dedication|EC2}",
 			"entries": [
 				"You constantly have the effects of {@spell speak with animals} as a 2nd-level innate primal spell. You gain a +2 circumstance bonus to {@skill Diplomacy} checks to Make a {@action Request} of animals while this spell is active."
 			]
@@ -74,7 +80,7 @@
 				"uncommon",
 				"archetype"
 			],
-			"prerequisites": "Animal Trainer Dedication",
+			"prerequisites": "{@feat Animal Trainer Dedication|EC2}",
 			"entries": [
 				"Your animal companion grows up, becoming a mature animal companion. Increase its proficiency rank in {@skill Performance} to expert instead of one of the three skill increases for mature. It gains the Mesmerizing {@skill Performance} advanced maneuver (see below), rather than the normal advanced maneuver for its type."
 			],

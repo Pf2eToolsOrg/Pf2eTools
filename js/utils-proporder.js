@@ -453,7 +453,9 @@ PropOrder._SPELL = [
 	"level",
 	"traits",
 	"school",
+	"domains",
 	"traditions",
+	"spellLists",
 	"subclass",
 	"cast",
 	"components",
@@ -473,7 +475,7 @@ PropOrder._SPELL = [
 
 	"heightened",
 
-	"hasBattleForm",
+	"miscTags",
 ];
 PropOrder._AFFLICTION = [
 	"name",
@@ -609,6 +611,7 @@ PropOrder._TRAIT = [
 	"categories",
 	"implies",
 	"entries",
+	"_data",
 ];
 PropOrder._PROP_TO_LIST = {
 	"table": PropOrder._TABLE,

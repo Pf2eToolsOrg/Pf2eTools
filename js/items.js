@@ -3,7 +3,7 @@
 class ItemsPage extends ListPage {
 	constructor () {
 		super({
-			dataSource: Renderer.item.pBuildList({isAddGroups: true, isBlacklistVariants: true}),
+			dataSource: Renderer.item.pBuildList({ isAddGroups: true, isBlacklistVariants: true }),
 			pageFilter: new PageFilterItems(),
 			listClass: "items",
 			sublistClass: "subitems",
@@ -83,9 +83,8 @@ class ItemsPage extends ListPage {
 		FilterBox.selectFirstVisible(this._dataList);
 	}
 
-	getSublistItem (item, pinId, addCount) {
+	getSublistItem (item, pinId, { count = 1 } = {}) {
 		const hash = UrlUtil.autoEncodeHash(item);
-		const count = addCount || 1;
 
 		const $dispCount = $(`<span class="text-center col-2-3 pr-0">${count}</span>`);
 		const $ele = $$`<li class="row">
@@ -108,9 +107,9 @@ class ItemsPage extends ListPage {
 				price: item._sPrice,
 				bulk: item._fBulk,
 				category: item.category,
-				count,
 			},
 			{
+				count,
 				$elesCount: [$dispCount],
 			},
 		);
@@ -131,17 +130,17 @@ class ItemsPage extends ListPage {
 				const fluff = await Renderer.item.pGetFluff(item);
 				return fluff ? fluff.entries || [] : [];
 			}
-			$content.append(Renderer.item.getRenderedFluff({entries: await pGetFluff()}))
+			$content.append(Renderer.item.getRenderedFluff({ entries: await pGetFluff() }))
 		}
 
 		const statTab = Renderer.utils.tabButton(
 			"Item",
-			() => {},
+			() => { },
 			buildStatsTab,
 		);
 		const fluffTab = Renderer.utils.tabButton(
 			"Info",
-			() => {},
+			() => { },
 			buildFluffTab,
 		);
 		const tabs = [statTab];
@@ -173,8 +172,8 @@ class ItemsPage extends ListPage {
 		ListUtil.sublist.items.forEach(it => {
 			const item = this._dataList[it.ix];
 			if (item.currencyConversion) availConversions.add(item.currencyConversion);
-			const count = it.values.count;
-			cntItems += it.values.count;
+			const count = it.data.count;
+			cntItems += it.data.count;
 			if (item._fBulk) bulk += item._fBulk * count;
 			if (item._sPrice) value += item._sPrice * count;
 		});
@@ -184,7 +183,7 @@ class ItemsPage extends ListPage {
 
 		if (availConversions.size) {
 			this._$totalPrice
-				.text(Parser.itemValueToFullMultiCurrency({value, currencyConversion: this._sublistCurrencyConversion}))
+				.text(Parser.itemValueToFullMultiCurrency({ value, currencyConversion: this._sublistCurrencyConversion }))
 				.off("click")
 				.click(async () => {
 					const values = ["(Default)", ...[...availConversions].sort(SortUtil.ascSortLower)];
@@ -205,16 +204,16 @@ class ItemsPage extends ListPage {
 			const modes = ["Exact Coinage", "Lowest Common Currency", "Gold"];
 			const text = (() => {
 				switch (this._sublistCurrencyDisplayMode) {
-					case modes[1]: return Parser.itemValueToFull({value});
+					case modes[1]: return Parser.itemValueToFull({ value });
 					case modes[2]: {
 						return value ? `${(Parser.DEFAULT_CURRENCY_CONVERSION_TABLE.find(it => it.coin === "gp").mult * value).toFixed(2).replace(/\.?0+$/, "")} gp` : "";
 					}
 					default:
 					case modes[0]: {
 						const CURRENCIES = ["gp", "sp", "cp"];
-						const coins = {cp: value};
+						const coins = { cp: value };
 						CurrencyUtil.doSimplifyCoins(coins);
-						return CURRENCIES.filter(it => coins[it]).map(it => `${coins[it].toLocaleString(undefined, {maximumFractionDigits: 5})} ${it}`).join(", ");
+						return CURRENCIES.filter(it => coins[it]).map(it => `${coins[it].toLocaleString(undefined, { maximumFractionDigits: 5 })} ${it}`).join(", ");
 					}
 				}
 			})();
@@ -253,7 +252,7 @@ class ItemsPage extends ListPage {
 		$(`#btn-equip-buy`).on("click", () => {
 			// TODO: keep the source filters?
 			this._pageFilter.filterBox.reset();
-			this._pageFilter.filterBox.setFromValues({Type: {Equipment: 1, "Generic Variant": 2}});
+			this._pageFilter.filterBox.setFromValues({ Type: { Equipment: 1, "Generic Variant": 2 } });
 			this.handleFilterChange();
 		});
 
@@ -296,7 +295,7 @@ class ItemsPage extends ListPage {
 		runeBuilder.initUi();
 		await runeBuilder.initState();
 
-		return this._pPopulateTablesAndFilters({item: await Renderer.item.pBuildList({isAddGroups: true, isBlacklistVariants: true})});
+		return this._pPopulateTablesAndFilters({ item: await Renderer.item.pBuildList({ isAddGroups: true, isBlacklistVariants: true }) });
 	}
 
 	async _pPopulateTablesAndFilters (data) {
@@ -311,7 +310,7 @@ class ItemsPage extends ListPage {
 			$outVisibleResults.html(`${this._list.visibleItems.length}/${this._list.items.length}`);
 		});
 
-		ListUtil.setOptions({primaryLists: [this._list]});
+		ListUtil.setOptions({ primaryLists: [this._list] });
 
 		// filtering function
 		this._pageFilter.filterBox.on(
@@ -324,7 +323,7 @@ class ItemsPage extends ListPage {
 		this._subList = ListUtil.initSublist({
 			listClass: "subitems",
 			fnSort: PageFilterItems.sortItems,
-			getSublistRow: this.getSublistItem.bind(this),
+			pGetSublistRow: this.getSublistItem.bind(this),
 			onUpdate: this.onSublistChange.bind(this),
 		});
 		SortUtil.initBtnSortHandlers($("#sublistsort"), this._subList);
@@ -333,11 +332,11 @@ class ItemsPage extends ListPage {
 		this._addItems(data);
 		BrewUtil.pAddBrewData()
 			.then(this._pHandleBrew.bind(this))
-			.then(() => BrewUtil.bind({lists: [this._list], pHandleBrew: this._pHandleBrew.bind(this)}))
+			.then(() => BrewUtil.bind({ lists: [this._list], pHandleBrew: this._pHandleBrew.bind(this) }))
 			.then(() => BrewUtil.pAddLocalBrewData())
 			.then(async () => {
 				BrewUtil.makeBrewButton("manage-brew");
-				BrewUtil.bind({lists: [this._list], filterBox: this._pageFilter.filterBox, sourceFilter: this._pageFilter.sourceFilter});
+				BrewUtil.bind({ lists: [this._list], filterBox: this._pageFilter.filterBox, sourceFilter: this._pageFilter.sourceFilter });
 				await ListUtil.pLoadState();
 				RollerUtil.addListRollButton();
 				ListUtil.addListShowHide();
@@ -347,17 +346,17 @@ class ItemsPage extends ListPage {
 					"Items",
 					this._dataList,
 					{
-						name: {name: "Name", transform: true},
-						source: {name: "Source", transform: (it) => `<span class="${Parser.sourceJsonToColor(it)}" title="${Parser.sourceJsonToFull(it)}" ${BrewUtil.sourceJsonToStyle(it.source)}>${Parser.sourceJsonToAbv(it)}</span>`},
-						_traits: {name: "Traits", transform: (it) => `<span>${(it._fTraits).sort(SortUtil.sortTraits).join(", ")}</span>`},
-						_category: {name: "Category", transform: (it) => `${it.subCategory ? `${it.subCategory} ` : ""}${it.category === "Weapon" ? `${it.range ? "Ranged" : "Melee"} ${it.category}` : it.category}`},
-						group: {name: "Group", transform: (it) => it || ""},
-						_price: {name: "Price", transform: (it) => Parser.priceToFull(it.price)},
-						_bulk: {name: "Bulk", transform: (it) => it.bulk != null ? it.bulk : "\u2014"},
-						_damage: {name: "Damage", transform: (it) => `${it.damage || ""} ${it.damageType || ""}`},
-						_description: {name: "Description", unchecked: true, transform: (it) => Renderer.get().render(it.entries.join(" ").split(". ")[0])},
+						name: { name: "Name", transform: true },
+						source: { name: "Source", transform: (it) => `<span class="${Parser.sourceJsonToColor(it)}" title="${Parser.sourceJsonToFull(it)}" ${BrewUtil.sourceJsonToStyle(it.source)}>${Parser.sourceJsonToAbv(it)}</span>` },
+						_traits: { name: "Traits", transform: (it) => `<span>${(it._fTraits).sort(SortUtil.sortTraits).join(", ")}</span>` },
+						_category: { name: "Category", transform: (it) => `${it.subCategory ? `${it.subCategory} ` : ""}${it.category === "Weapon" ? `${it.range ? "Ranged" : "Melee"} ${it.category}` : it.category}` },
+						group: { name: "Group", transform: (it) => it || "" },
+						_price: { name: "Price", transform: (it) => Parser.priceToFull(it.price) },
+						_bulk: { name: "Bulk", transform: (it) => it.bulk != null ? it.bulk : "\u2014" },
+						_damage: { name: "Damage", transform: (it) => `${it.damage || ""} ${it.damageType || ""}` },
+						_description: { name: "Description", unchecked: true, transform: (it) => Renderer.get().render(it.entries.join(" ").split(". ")[0]) },
 					},
-					{generator: ListUtil.basicFilterGenerator},
+					{ generator: ListUtil.basicFilterGenerator },
 					(a, b) => SortUtil.ascSort(a.name, b.name) || SortUtil.ascSort(a.source, b.source),
 				);
 
@@ -376,7 +375,7 @@ class ItemsPage extends ListPage {
 
 	async _pHandleBrew (homebrew) {
 		const itemList = await Renderer.item.getItemsFromHomebrew(homebrew);
-		this._addItems({item: itemList});
+		this._addItems({ item: itemList });
 	}
 
 	_addItems (data) {
@@ -398,7 +397,7 @@ class ItemsPage extends ListPage {
 
 		ListUtil.setOptions({
 			itemList: this._dataList,
-			getSublistRow: this.getSublistItem.bind(this),
+			pGetSublistRow: this.getSublistItem.bind(this),
 			primaryLists: [this._list],
 		});
 		ListUtil.bindAddButton();
@@ -419,7 +418,12 @@ class ItemsPage extends ListPage {
 					}
 
 					if (evt.shiftKey) {
-						const $content = Renderer.hover.$getHoverContent_statsCode(toRender);
+						let $content = ""
+						if (evt.ctrlKey) {
+							$content = Renderer.hover.$getHoverContent_statsCode(toRender, true)
+						} else {
+							$content = Renderer.hover.$getHoverContent_statsCode(toRender)
+						}
 						Renderer.hover.getShowWindow(
 							$content,
 							Renderer.hover.getWindowPositionFromEvent(evt),
@@ -461,7 +465,7 @@ class ItemsPage extends ListPage {
 
 	_getSearchCache (entity) {
 		if (this.constructor._INDEXABLE_PROPS.every(it => !entity[it])) return "";
-		const ptrOut = {_: ""};
+		const ptrOut = { _: "" };
 		this.constructor._INDEXABLE_PROPS.forEach(it => this._getSearchCache_handleEntryProp(entity, it, ptrOut));
 		return ptrOut._;
 	}

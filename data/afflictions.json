@@ -1,6 +1,42 @@
 {
 	"disease": [
 		{
+			"name": "Graveknight's Curse",
+			"source": "B1",
+			"page": 191,
+			"type": "Disease",
+			"traits": [
+				"arcane",
+				"curse",
+				"necromancy"
+			],
+			"entries": [
+				"This curse affects anyone who wears a graveknight's armor for at least 1 hour.",
+				{
+					"type": "affliction",
+					"savingThrow": "Will",
+					"onset": "1 hour",
+					"stages": [
+						{
+							"stage": 1,
+							"entry": "{@condition doomed 1} and cannot remove the armor",
+							"duration": "1 day"
+						},
+						{
+							"stage": 2,
+							"entry": "{@condition doomed 2}, hampered 10, and cannot remove the armor",
+							"duration": "1 day"
+						},
+						{
+							"stage": 3,
+							"entry": "dies and transforms into the armor's graveknight",
+							"duration": "1 day"
+						}
+					]
+				}
+			]
+		},
+		{
 			"name": "Blinding Sickness",
 			"source": "GMG",
 			"page": 119,
@@ -256,7 +292,7 @@
 		},
 		{
 			"name": "Ghast Fever",
-			"source": "Bst",
+			"source": "B1",
 			"page": 169,
 			"type": "Disease",
 			"traits": [
@@ -302,7 +338,7 @@
 		},
 		{
 			"name": "Ghoul Fever",
-			"source": "Bst",
+			"source": "B1",
 			"page": 168,
 			"type": "Disease",
 			"traits": [
@@ -774,7 +810,7 @@
 		},
 		{
 			"name": "Curse of the Werecreature",
-			"source": "Bst",
+			"source": "B1",
 			"page": 329,
 			"type": "Curse",
 			"traits": [

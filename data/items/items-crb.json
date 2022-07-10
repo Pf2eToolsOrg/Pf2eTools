@@ -4378,8 +4378,65 @@
 			"equipment": true,
 			"type": "Item",
 			"category": "Adventuring Gear",
-			"entries": [
-				"Ordinary clothing is functional with basic tailoring, such as peasant garb, monk's robes, or work clothes. Explorer's clothing is sturdy enough that it can be reinforced to protect you, even though it isn't a suit of armor. It comes in many forms, though the most common sorts look like clerical vestments, monk's garments, or wizard's robes, as members of all three classes are likely to avoid wearing armor. For more information on explorer's clothing, see pages 275\u2013276. Fine clothing, suitable for a noble or royal, is made with expensive fabrics, precious metals, and intricate patterns. You can wear only one tool set of light Bulk with fine clothing, instead of the normal limit of 2 Bulk. You gain a +1 item bonus to checks to Make an Impression on upper-class folk while wearing high-fashion fine clothing. Winter clothing allows you to negate the damage from severe environmental cold and reduce the damage from extreme cold to that of severe cold."
+			"entries": [],
+			"generic": "G",
+			"variants": [
+				{
+					"type": "ordinary",
+					"price": {
+						"coin": "sp",
+						"amount": 1
+					},
+					"entries": [
+						"Ordinary clothing is functional with basic tailoring, such as peasant garb, monk's robes, or work clothes."
+					]
+				},
+				{
+					"type": "explorer's",
+					"exists": true,
+					"price": {
+						"coin": "sp",
+						"amount": 1
+					},
+					"bulk": "L",
+					"entries": [
+						"Explorer's clothing is sturdy enough that it can be reinforced to protect you, even though it isn't a suit of armor. It comes in many forms, though the most common sorts look like {@class cleric||clerical} vestments, {@class monk}'s garments, or {@class wizard}'s robes, as members of all three classes are likely to avoid wearing armor."
+					]
+				},
+				{
+					"type": "fine",
+					"price": {
+						"coin": "gp",
+						"amount": 2
+					},
+					"bulk": "L",
+					"entries": [
+						"Fine clothing, suitable for a noble or royal, is made with expensive fabrics, precious metals, and intricate patterns. You can {@quickref wear||1|wearing tools} only one tool set of light Bulk with fine clothing, instead of the normal limit of 2 Bulk."
+					]
+				},
+				{
+					"type": "high-fashion fine",
+					"price": {
+						"coin": "gp",
+						"amount": 55
+					},
+					"level": 3,
+					"bulk": "L",
+					"entries": [
+						"You gain a +1 item bonus to checks to {@action Make an Impression} on upper-class folk while wearing high-fashion fine clothing."
+					]
+				},
+				{
+					"type": "winter",
+					"price": {
+						"coin": "sp",
+						"amount": 4
+					},
+					"bulk": "L",
+					"entries": [
+						"Winter clothing allows you to negate the damage from severe environmental cold and reduce the damage from extreme cold to that of severe cold."
+					]
+				}
 			]
 		},
 		{
@@ -5985,32 +6042,55 @@
 						"coin": "gp",
 						"amount": 400
 					},
+					"shieldData": {
+						"ac": 1,
+						"speedPen": 0,
+						"hardness": 3,
+						"hp": 12,
+						"bt": 6
+					},
 					"bulk": "L",
-					"craftReq": "darkwood worth at least 50 gp The shield has Hardness 3, HP 12, and BT 6.",
+					"craftReq": "darkwood worth at least 50 gp",
 					"entries": []
 				},
 				{
 					"type": "standard-grade darkwood shield",
+					"name": "Standard-Grade Darkwood Shield",
 					"level": 8,
 					"price": {
 						"coin": "gp",
 						"amount": 440
 					},
-					"bulk": "L",
-					"craftReq": "darkwood worth at least 55 gp The shield has Hardness 5, HP 20, and BT 10.",
-					"entries": []
-				},
-				{
-					"type": "standard-grade darkwood tower shield",
-					"level": 8,
 					"shieldData": {
+						"ac": 2,
+						"speedPen": 0,
 						"hardness": 5,
 						"hp": 20,
 						"bt": 10
 					},
-					"entries": [
-						"gp; Bulk 3; {@action Craft} Requirements darkwood worth at least 70 gpThe shield has Hardness 5, HP 20, and BT 10."
-					]
+					"bulk": "L",
+					"craftReq": "darkwood worth at least 55 gp",
+					"entries": []
+				},
+				{
+					"type": "standard-grade darkwood tower shield",
+					"name": "Standard-Grade Darkwood Tower Shield",
+					"level": 8,
+					"price": {
+						"coin": "gp",
+						"amount": 560
+					},
+					"shieldData": {
+						"ac": 2,
+						"ac2": 4,
+						"speedPen": 5,
+						"hardness": 5,
+						"hp": 20,
+						"bt": 10
+					},
+					"bulk": 3,
+					"craftReq": "darkwood worth at least 70 gp",
+					"entries": []
 				},
 				{
 					"type": "high-grade darkwood buckler",
@@ -6021,29 +6101,53 @@
 						"amount": 8000
 					},
 					"bulk": "L",
-					"craftReq": "darkwood worth at least 4,000 gp The shield has Hardness 6, HP 24, and BT 12.",
+					"shieldData": {
+						"ac": 1,
+						"speedPen": 0,
+						"hardness": 6,
+						"hp": 24,
+						"bt": 12
+					},
+					"craftReq": "darkwood worth at least 4,000 gp",
 					"entries": []
 				},
 				{
 					"type": "high-grade darkwood shield",
+					"name": "High-Grade Darkwood Shield",
 					"level": 16,
 					"price": {
 						"coin": "gp",
 						"amount": 8800
 					},
 					"bulk": "L",
-					"craftReq": "darkwood worth at least 4,400 gp The shield has Hardness 8, HP 32, and BT 16.",
+					"shieldData": {
+						"ac": 2,
+						"speedPen": 0,
+						"hardness": 8,
+						"hp": 32,
+						"bt": 16
+					},
+					"craftReq": "darkwood worth at least 4,400 gp",
 					"entries": []
 				},
 				{
 					"type": "high-grade darkwood tower shield",
+					"name": "High-Grade Darkwood Tower Shield",
 					"level": 16,
+					"shieldData": {
+						"ac": 2,
+						"ac2": 4,
+						"speedPen": 5,
+						"hardness": 8,
+						"hp": 32,
+						"bt": 16
+					},
 					"price": {
 						"coin": "gp",
 						"amount": 11200
 					},
 					"bulk": 3,
-					"craftReq": "darkwood worth at least 5,600 gp The shield has Hardness 8, HP 32, and BT 16.",
+					"craftReq": "darkwood worth at least 5,600 gp",
 					"entries": []
 				}
 			]
@@ -7487,7 +7591,7 @@
 						"freq": 1
 					},
 					"entries": [
-						"You cast a 2nd-level {@spell shocking grasp} with a DC of 29."
+						"You cast a 2nd-level {@spell shocking grasp} with a spell attack modifier of +19."
 					]
 				}
 			],
@@ -12050,147 +12154,6 @@
 			]
 		},
 		{
-			"name": "Scroll",
-			"source": "CRB",
-			"page": 564,
-			"type": "Item",
-			"level": "1+",
-			"traits": [
-				"consumable",
-				"magical",
-				"scroll"
-			],
-			"usage": "held in 1 hand",
-			"bulk": "L",
-			"activate": {
-				"components": [
-					"{@action Cast a Spell}"
-				]
-			},
-			"category": "Scroll",
-			"entries": [
-				"A scroll contains a single spell that you can cast without having to expend a spell slot. A scroll can be {@action Craft||Crafted} to contain nearly any spell, so the types of scrolls available are limited only by the number of spells in the game. The exceptions are cantrips, focus spells, and rituals, none of which can be put on scrolls. The spell on a scroll can be cast only once, and the scroll is destroyed as part of the casting. The spell on the scroll is cast at a particular spell level, as determined by the scroll. For instance, a scroll of {@spell magic missile} (1st level) can be used to cast the 1st-level version of {@spell magic missile}, but not a {@spell magic missile} heightened to 2nd level. If no level is listed, the scroll can be used to cast the spell at its lowest level.",
-				"If you find a scroll, you can try to figure out what spell it contains. If the spell is a common spell from your spell list or a spell you know, you can spend a single {@action Recall Knowledge} action and automatically succeed at identifying the scroll's spell. If it's not, you must use {@action Identify Magic} to learn what spell the scroll holds.",
-				{
-					"type": "pf2-h4",
-					"page": 564,
-					"name": "Casting a Spell from a Scroll",
-					"entries": [
-						"{@action Cast a Spell||Casting a Spell} from a scroll requires holding the scroll in one hand and activating it with a {@action Cast a Spell} activity using the normal number of actions for that spell.",
-						"To {@action Cast a Spell} from a scroll, the spell must appear on your spell list. Because you're the one {@action Cast a Spell||Casting the Spell}, use your spell attack roll and spell DC. The spell also gains the appropriate trait for your tradition (arcane, divine, occult, or primal).",
-						"Any physical material components and costs are provided when a scroll is created, so you don't need to provide them when {@action Cast a Spell||Casting a Spell} from a scroll. You must replace any required material component for that spell with a somatic component. If the spell requires a focus, you must have that focus to {@action Cast a Spell||Cast the Spell} from a scroll."
-					],
-					"source": "CRB"
-				},
-				"{@note See the following for more details on the rules for {@quickref Scrolls||1|Scrolls}.}"
-			],
-			"craftReq": "Supply a listed-level casting of the spell.",
-			"generic": "G",
-			"variants": [
-				{
-					"type": "1st-level spell",
-					"level": 1,
-					"equipment": true,
-					"price": {
-						"coin": "gp",
-						"amount": 4
-					},
-					"craftReq": "Supply a 1st-level casting of the spell.",
-					"entries": []
-				},
-				{
-					"type": "2nd-level spell",
-					"level": 3,
-					"craftReq": "Supply a 2nd-level casting of the spell.",
-					"price": {
-						"coin": "gp",
-						"amount": 12
-					},
-					"entries": []
-				},
-				{
-					"type": "3rd-level spell",
-					"level": 5,
-					"craftReq": "Supply a 3rd-level casting of the spell.",
-					"price": {
-						"coin": "gp",
-						"amount": 30
-					},
-					"entries": []
-				},
-				{
-					"type": "4th-level spell",
-					"level": 7,
-					"craftReq": "Supply a 4th-level casting of the spell.",
-					"price": {
-						"coin": "gp",
-						"amount": 70
-					},
-					"entries": []
-				},
-				{
-					"type": "5th-level spell",
-					"level": 9,
-					"craftReq": "Supply a 5th-level casting of the spell.",
-					"price": {
-						"coin": "gp",
-						"amount": 150
-					},
-					"entries": []
-				},
-				{
-					"type": "6th-level spell",
-					"level": 11,
-					"craftReq": "Supply a 6th-level casting of the spell.",
-					"price": {
-						"coin": "gp",
-						"amount": 300
-					},
-					"entries": []
-				},
-				{
-					"type": "7th-level spell",
-					"level": 13,
-					"craftReq": "Supply a 7th-level casting of the spell.",
-					"price": {
-						"coin": "gp",
-						"amount": 600
-					},
-					"entries": []
-				},
-				{
-					"type": "8th-level spell",
-					"level": 15,
-					"craftReq": "Supply a 8th-level casting of the spell.",
-					"price": {
-						"coin": "gp",
-						"amount": 1300
-					},
-					"entries": []
-				},
-				{
-					"type": "9th-level spell",
-					"level": 17,
-					"craftReq": "Supply a 9th-level casting of the spell.",
-					"price": {
-						"coin": "gp",
-						"amount": 3000
-					},
-					"entries": []
-				},
-				{
-					"type": "10th-level spell",
-					"level": 19,
-					"craftReq": "Supply a 10th-level casting of the spell.",
-					"price": {
-						"coin": "gp",
-						"amount": 8000
-					},
-					"entries": []
-				}
-			]
-		},
-		{
 			"name": "Magic Wand",
 			"source": "CRB",
 			"page": 597,
@@ -14039,7 +14002,7 @@
 			},
 			"category": "Oil",
 			"entries": [
-				"When you apply this thick, viscous oil to a non-magical weapon or suit of armor, that item immediately becomes magically potent. If the item is a weapon, it temporarily becomes a +1 striking weapon, or, if it's armor, it temporarily becomes +1 resilient armor. This lasts for 1 minute."
+				"When you apply this thick, viscous oil to a weapon or suit of armor, that item immediately becomes magically potent. If the item is a weapon, it temporarily becomes a +1 striking weapon, or, if it's armor, it temporarily becomes +1 resilient armor. This lasts for 1 minute."
 			]
 		},
 		{
@@ -15276,7 +15239,7 @@
 						"freq": 1
 					},
 					"entries": [
-						"You squeeze juice from one of the berries and smear it onto a non-magical club or staff to cast {@spell shillelagh} upon it."
+						"You squeeze juice from one of the berries and smear it onto a club or staff to cast {@spell shillelagh} upon it."
 					]
 				},
 				{
@@ -15538,7 +15501,7 @@
 					},
 					"requirements": "The reflecting shield is raised",
 					"entries": [
-						"You attempt to reflect the spell on its caster, with the effects of a 9th-level {@spell spell turning} with a counteract modifier of +40."
+						"You attempt to reflect the spell on its caster, with the effects of a 9th-level {@spell spell turning} with a counteract modifier of +30."
 					]
 				}
 			],
@@ -15991,6 +15954,10 @@
 						"number": 2,
 						"unit": "action"
 					},
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
 					"components": [
 						"Interact"
 					],
@@ -16051,7 +16018,7 @@
 					"level": 18,
 					"price": {
 						"coin": "gp",
-						"amount": 4250
+						"amount": 21000
 					},
 					"entries": [
 						"The ring grants a +3 bonus. {@action Activate an Item||Activating} it creates an 8th-level {@spell glyph of warding} containing your choice of either prismatic spray or 7th-level {@spell fireball}."
@@ -16365,8 +16332,8 @@
 			"bulk": 1,
 			"category": "Worn",
 			"entries": [
-				"Embroidered with fine silver thread in ornate arcane patterns, these robes come in one of three colors depending on their attuned alignment. Good robes are white, neutral robes are gray, and evil robes are black. An evil or good robe gains the appropriate trait. The robes benefit only characters who can cast arcane spells and whose alignment on the good-evil axis matches that of the robe. If your alignment does not match that of the robe, or you are not an arcane spellcaster, you are instead {@condition stupefied 2} while wearing a robe of the archmagi. This condition can't be removed in any way until you remove the robe.",
-				"The robes are +2 greater resilient explorer's clothing, and they grant a +1 circumstance bonus to saving throws against arcane spells and resistance 5 to damage from arcane spells.",
+				"Embroidered with fine silver thread in ornate arcane patterns, these robes come in one of three colors depending on their attuned alignment. Good robes are gold, neutral robes are light blue, and evil robes are red. An {@trait evil} or {@trait good} robe gains the appropriate trait. The robes benefit only characters who can cast arcane spells and whose alignment on the good-evil axis matches that of the robe. If your alignment does not match that of the robe, or you are not an arcane spellcaster, you are instead {@condition stupefied 2} while wearing a robe of the archmagi. This condition can't be removed in any way until you remove the robe.",
+				"The robes are {@runeItem explorer's clothing||+2 armor potency||greater resilient|}, and they grant a +1 circumstance bonus to saving throws against arcane spells and resistance 5 to damage from arcane spells.",
 				{
 					"type": "ability",
 					"style": "compact",
@@ -16912,6 +16879,147 @@
 					"entries": [
 						"A compendium of journals costs five times as much as a single journal and requires both hands to use; each compendium contains several journals and grants its bonus on a broader topic, such as all undead or a whole city."
 					]
+				}
+			]
+		},
+		{
+			"name": "Scroll",
+			"source": "CRB",
+			"page": 564,
+			"type": "Item",
+			"level": "1+",
+			"traits": [
+				"consumable",
+				"magical",
+				"scroll"
+			],
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"activate": {
+				"components": [
+					"{@action Cast a Spell}"
+				]
+			},
+			"category": "Scroll",
+			"entries": [
+				"A scroll contains a single spell that you can cast without having to expend a spell slot. A scroll can be {@action Craft||Crafted} to contain nearly any spell, so the types of scrolls available are limited only by the number of spells in the game. The exceptions are cantrips, focus spells, and rituals, none of which can be put on scrolls. The spell on a scroll can be cast only once, and the scroll is destroyed as part of the casting. The spell on the scroll is cast at a particular spell level, as determined by the scroll. For instance, a scroll of {@spell magic missile} (1st level) can be used to cast the 1st-level version of {@spell magic missile}, but not a {@spell magic missile} heightened to 2nd level. If no level is listed, the scroll can be used to cast the spell at its lowest level.",
+				"If you find a scroll, you can try to figure out what spell it contains. If the spell is a common spell from your spell list or a spell you know, you can spend a single {@action Recall Knowledge} action and automatically succeed at identifying the scroll's spell. If it's not, you must use {@action Identify Magic} to learn what spell the scroll holds.",
+				{
+					"type": "pf2-h4",
+					"page": 564,
+					"name": "Casting a Spell from a Scroll",
+					"entries": [
+						"{@action Cast a Spell||Casting a Spell} from a scroll requires holding the scroll in one hand and activating it with a {@action Cast a Spell} activity using the normal number of actions for that spell.",
+						"To {@action Cast a Spell} from a scroll, the spell must appear on your spell list. Because you're the one {@action Cast a Spell||Casting the Spell}, use your spell attack roll and spell DC. The spell also gains the appropriate trait for your tradition (arcane, divine, occult, or primal).",
+						"Any physical material components and costs are provided when a scroll is created, so you don't need to provide them when {@action Cast a Spell||Casting a Spell} from a scroll. You must replace any required material component for that spell with a somatic component. If the spell requires a focus, you must have that focus to {@action Cast a Spell||Cast the Spell} from a scroll."
+					],
+					"source": "CRB"
+				},
+				"{@note See the following for more details on the rules for {@quickref Scrolls||1|Scrolls}.}"
+			],
+			"craftReq": "Supply a listed-level casting of the spell.",
+			"generic": "G",
+			"variants": [
+				{
+					"type": "1st-level spell",
+					"level": 1,
+					"equipment": true,
+					"price": {
+						"coin": "gp",
+						"amount": 4
+					},
+					"craftReq": "Supply a 1st-level casting of the spell.",
+					"entries": []
+				},
+				{
+					"type": "2nd-level spell",
+					"level": 3,
+					"craftReq": "Supply a 2nd-level casting of the spell.",
+					"price": {
+						"coin": "gp",
+						"amount": 12
+					},
+					"entries": []
+				},
+				{
+					"type": "3rd-level spell",
+					"level": 5,
+					"craftReq": "Supply a 3rd-level casting of the spell.",
+					"price": {
+						"coin": "gp",
+						"amount": 30
+					},
+					"entries": []
+				},
+				{
+					"type": "4th-level spell",
+					"level": 7,
+					"craftReq": "Supply a 4th-level casting of the spell.",
+					"price": {
+						"coin": "gp",
+						"amount": 70
+					},
+					"entries": []
+				},
+				{
+					"type": "5th-level spell",
+					"level": 9,
+					"craftReq": "Supply a 5th-level casting of the spell.",
+					"price": {
+						"coin": "gp",
+						"amount": 150
+					},
+					"entries": []
+				},
+				{
+					"type": "6th-level spell",
+					"level": 11,
+					"craftReq": "Supply a 6th-level casting of the spell.",
+					"price": {
+						"coin": "gp",
+						"amount": 300
+					},
+					"entries": []
+				},
+				{
+					"type": "7th-level spell",
+					"level": 13,
+					"craftReq": "Supply a 7th-level casting of the spell.",
+					"price": {
+						"coin": "gp",
+						"amount": 600
+					},
+					"entries": []
+				},
+				{
+					"type": "8th-level spell",
+					"level": 15,
+					"craftReq": "Supply a 8th-level casting of the spell.",
+					"price": {
+						"coin": "gp",
+						"amount": 1300
+					},
+					"entries": []
+				},
+				{
+					"type": "9th-level spell",
+					"level": 17,
+					"craftReq": "Supply a 9th-level casting of the spell.",
+					"price": {
+						"coin": "gp",
+						"amount": 3000
+					},
+					"entries": []
+				},
+				{
+					"type": "10th-level spell",
+					"level": 19,
+					"craftReq": "Supply a 10th-level casting of the spell.",
+					"price": {
+						"coin": "gp",
+						"amount": 8000
+					},
+					"entries": []
 				}
 			]
 		},
@@ -19187,9 +19295,9 @@
 						{
 							"type": "list",
 							"items": [
-								"{@bold Cantrip} shield",
-								"{@bold 1st} alarm, feather fall",
-								"{@bold 2nd} dispel magic, endure elements, resist energy"
+								"{@bold Cantrip} {@spell shield}",
+								"{@bold 1st} {@spell alarm}, {@spell feather fall}",
+								"{@bold 2nd} {@spell dispel magic}, {@spell endure elements}, {@spell resist energy}"
 							]
 						}
 					]
@@ -19205,8 +19313,8 @@
 						{
 							"type": "list",
 							"items": [
-								"{@bold 3rd} alarm, glyph of warding",
-								"{@bold 4th} dimensional anchor, dispel magic, resist energy"
+								"{@bold 3rd} {@spell alarm}, {@spell glyph of warding}",
+								"{@bold 4th} {@spell dimensional anchor}, {@spell dispel magic}, {@spell resist energy}"
 							]
 						}
 					]
@@ -19222,8 +19330,8 @@
 						{
 							"type": "list",
 							"items": [
-								"{@bold 5th} banishment, endure elements",
-								"{@bold 6th} dispel magic, repulsion"
+								"{@bold 5th} {@spell banishment}, {@spell endure elements}",
+								"{@bold 6th} {@spell dispel magic}, {@spell repulsion}"
 							]
 						}
 					]
@@ -19271,9 +19379,9 @@
 						{
 							"type": "list",
 							"items": [
-								"{@bold Cantrip} tanglefoot",
-								"{@bold 1st} summon construct, unseen servant",
-								"{@bold 2nd} obscuring mist, phantom steed, summon construct, summon elemental"
+								"{@bold Cantrip} {@spell tanglefoot}",
+								"{@bold 1st} {@spell summon construct}, {@spell unseen servant}",
+								"{@bold 2nd} {@spell obscuring mist}, {@spell phantom steed}, {@spell summon construct}, {@spell summon elemental}"
 							]
 						}
 					]
@@ -19289,8 +19397,8 @@
 						{
 							"type": "list",
 							"items": [
-								"{@bold 3rd} stinking cloud, summon construct, summon elemental",
-								"{@bold 4th} creation, phantom steed, summon construct, summon elemental"
+								"{@bold 3rd} {@spell stinking cloud}, {@spell summon construct}, {@spell summon elemental}",
+								"{@bold 4th} {@spell creation}, {@spell phantom steed}, {@spell summon construct}, {@spell summon elemental}"
 							]
 						}
 					]
@@ -19306,8 +19414,8 @@
 						{
 							"type": "list",
 							"items": [
-								"{@bold 5th} black tentacles, summon construct, summon elemental",
-								"{@bold 6th} phantom steed, summon construct, summon elemental"
+								"{@bold 5th} {@spell black tentacles}, {@spell summon construct}, {@spell summon elemental}",
+								"{@bold 6th} {@spell phantom steed}, {@spell summon construct}, {@spell summon elemental}"
 							]
 						}
 					]
@@ -19355,9 +19463,9 @@
 						{
 							"type": "list",
 							"items": [
-								"{@bold Cantrip} detect magic",
-								"{@bold 1st} true strike",
-								"{@bold 2nd} comprehend language, {@ability darkvision}, see invisibility"
+								"{@bold Cantrip} {@spell detect magic}",
+								"{@bold 1st} {@spell true strike}",
+								"{@bold 2nd} {@spell comprehend language}, {@spell darkvision}, {@spell see invisibility}"
 							]
 						}
 					]
@@ -19373,8 +19481,8 @@
 						{
 							"type": "list",
 							"items": [
-								"{@bold 3rd} clairaudience, darkvision",
-								"{@bold 4th} clairvoyance, comprehend language, telepathy"
+								"{@bold 3rd} {@spell clairaudience}, {@spell darkvision}",
+								"{@bold 4th} {@spell clairvoyance}, {@spell comprehend language}, {@spell telepathy}"
 							]
 						}
 					]
@@ -19390,8 +19498,8 @@
 						{
 							"type": "list",
 							"items": [
-								"{@bold 5th} prying eye, sending",
-								"{@bold 6th} telepathy, true seeing"
+								"{@bold 5th} {@spell prying eye}, {@spell sending}",
+								"{@bold 6th} {@spell telepathy}, {@spell true seeing}"
 							]
 						}
 					]
@@ -19439,9 +19547,9 @@
 						{
 							"type": "list",
 							"items": [
-								"{@bold Cantrip} daze",
-								"{@bold 1st} charm, command",
-								"{@bold 2nd} hideous laughter, touch of idiocy"
+								"{@bold Cantrip} {@spell daze}",
+								"{@bold 1st} {@spell charm}, {@spell command}",
+								"{@bold 2nd} {@spell hideous laughter}, {@spell touch of idiocy}"
 							]
 						}
 					]
@@ -19457,8 +19565,8 @@
 						{
 							"type": "list",
 							"items": [
-								"{@bold 3rd} paralyze",
-								"{@bold 4th} charm, confusion, suggestion"
+								"{@bold 3rd} {@spell paralyze}",
+								"{@bold 4th} {@spell charm}, {@spell confusion}, {@spell suggestion}"
 							]
 						}
 					]
@@ -19477,8 +19585,8 @@
 						{
 							"type": "list",
 							"items": [
-								"{@bold 5th} command, crushing despair",
-								"{@bold 6th} dominate, feeblemind"
+								"{@bold 5th} {@spell command}, {@spell crushing despair}",
+								"{@bold 6th} {@spell dominate}, {@spell feeblemind}"
 							]
 						}
 					]
@@ -19526,9 +19634,9 @@
 						{
 							"type": "list",
 							"items": [
-								"{@bold Cantrip} ray of frost",
-								"{@bold 1st} {@spell magic missile}, shocking grasp",
-								"{@bold 2nd} acid arrow, glitterdust"
+								"{@bold Cantrip} {@spell ray of frost}",
+								"{@bold 1st} {@spell magic missile}, {@spell shocking grasp}",
+								"{@bold 2nd} {@spell acid arrow}, {@spell glitterdust}"
 							]
 						}
 					]
@@ -19544,8 +19652,8 @@
 						{
 							"type": "list",
 							"items": [
-								"{@bold 3rd} lightning bolt, {@spell magic missile}",
-								"{@bold 4th} fireball, weapon storm"
+								"{@bold 3rd} {@spell lightning bolt}, {@spell magic missile}",
+								"{@bold 4th} {@spell fireball}, {@spell weapon storm}"
 							]
 						}
 					]
@@ -19561,8 +19669,8 @@
 						{
 							"type": "list",
 							"items": [
-								"{@bold 5th} cone of cold, {@spell magic missile}",
-								"{@bold 6th} chain lightning, wall of force"
+								"{@bold 5th} {@spell cone of cold}, {@spell magic missile}",
+								"{@bold 6th} {@spell chain lightning}, {@spell wall of force}"
 							]
 						}
 					]
@@ -19611,8 +19719,8 @@
 						{
 							"type": "list",
 							"items": [
-								"{@bold Cantrip} produce flame",
-								"{@bold 1st} burning hands"
+								"{@bold Cantrip} {@spell produce flame}",
+								"{@bold 1st} {@spell burning hands}"
 							]
 						}
 					]
@@ -19628,8 +19736,8 @@
 						{
 							"type": "list",
 							"items": [
-								"{@bold 2nd} burning hands, flaming sphere",
-								"{@bold 3rd} flaming sphere, fireball"
+								"{@bold 2nd} {@spell burning hands}, {@spell flaming sphere}",
+								"{@bold 3rd} {@spell flaming sphere}, {@spell fireball}"
 							]
 						}
 					]
@@ -19645,8 +19753,8 @@
 						{
 							"type": "list",
 							"items": [
-								"{@bold 4th} fire shield, fireball, wall of fire",
-								"{@bold 5th} fireball, wall of fire"
+								"{@bold 4th} {@spell fire shield}, {@spell fireball}, {@spell wall of fire}",
+								"{@bold 5th} {@spell fireball}, {@spell wall of fire}"
 							]
 						}
 					]
@@ -19695,8 +19803,8 @@
 						{
 							"type": "list",
 							"items": [
-								"{@bold Cantrip} stabilize",
-								"{@bold 1st} heal"
+								"{@bold Cantrip} {@spell stabilize}",
+								"{@bold 1st} {@spell heal}"
 							]
 						}
 					]
@@ -19713,8 +19821,8 @@
 						{
 							"type": "list",
 							"items": [
-								"{@bold 2nd} heal, restoration, restore senses",
-								"{@bold 3rd} heal, remove disease"
+								"{@bold 2nd} {@spell heal}, {@spell restoration}, {@spell restore senses}",
+								"{@bold 3rd} {@spell heal}, {@spell remove disease}"
 							]
 						}
 					]
@@ -19731,8 +19839,8 @@
 						{
 							"type": "list",
 							"items": [
-								"{@bold 4th} heal, restoration",
-								"{@bold 5th} breath of life, heal, remove disease"
+								"{@bold 4th} {@spell heal}, {@spell restoration}",
+								"{@bold 5th} {@spell breath of life}, {@spell heal}, {@spell remove disease}"
 							]
 						}
 					]
@@ -19749,8 +19857,8 @@
 						{
 							"type": "list",
 							"items": [
-								"{@bold 6th} heal, restoration, restore senses",
-								"{@bold 7th} heal, regenerate, remove disease"
+								"{@bold 6th} {@spell heal}, {@spell restoration}, {@spell restore senses}",
+								"{@bold 7th} {@spell heal}, {@spell regenerate}, {@spell remove disease}"
 							]
 						}
 					]
@@ -19802,9 +19910,9 @@
 						{
 							"type": "list",
 							"items": [
-								"{@bold Cantrip} light",
-								"{@bold 2nd} continual flame",
-								"{@bold 3rd} continual flame, searing light"
+								"{@bold Cantrip} {@spell light}",
+								"{@bold 2nd} {@spell continual flame}",
+								"{@bold 3rd} {@spell continual flame}, {@spell searing light}"
 							]
 						}
 					]
@@ -19854,9 +19962,9 @@
 						{
 							"type": "list",
 							"items": [
-								"{@bold Cantrip} ghost sound",
-								"{@bold 1st} illusory disguise, illusory object",
-								"{@bold 2nd} illusory creature, item facade, ventriloquism"
+								"{@bold Cantrip} {@spell ghost sound}",
+								"{@bold 1st} {@spell illusory disguise}, {@spell illusory object}",
+								"{@bold 2nd} {@spell illusory creature}, {@spell item facade}, {@spell ventriloquism}"
 							]
 						}
 					]
@@ -19872,8 +19980,8 @@
 						{
 							"type": "list",
 							"items": [
-								"{@bold 3rd} illusory disguise, item facade",
-								"{@bold 4th} illusory creature, veil"
+								"{@bold 3rd} {@spell illusory disguise}, {@spell item facade}",
+								"{@bold 4th} {@spell illusory creature}, {@spell veil}"
 							]
 						}
 					]
@@ -19889,8 +19997,8 @@
 						{
 							"type": "list",
 							"items": [
-								"{@bold 5th} illusory scene, veil",
-								"{@bold 6th} hallucination, mislead"
+								"{@bold 5th} {@spell illusory scene}, {@spell veil}",
+								"{@bold 6th} {@spell hallucination}, {@spell mislead}"
 							]
 						}
 					]
@@ -19938,9 +20046,9 @@
 						{
 							"type": "list",
 							"items": [
-								"{@bold Cantrip} chill touch",
-								"{@bold 1st} grim tendrils, ray of enfeeblement",
-								"{@bold 2nd} deafness, gentle repose"
+								"{@bold Cantrip} {@spell chill touch}",
+								"{@bold 1st} {@spell grim tendrils}, {@spell ray of enfeeblement}",
+								"{@bold 2nd} {@spell deafness}, {@spell gentle repose}"
 							]
 						}
 					]
@@ -19956,8 +20064,8 @@
 						{
 							"type": "list",
 							"items": [
-								"{@bold 3rd} blindness, vampiric touch",
-								"{@bold 4th} grim tendrils, vampiric touch"
+								"{@bold 3rd} {@spell blindness}, {@spell vampiric touch}",
+								"{@bold 4th} {@spell grim tendrils}, {@spell vampiric touch}"
 							]
 						}
 					]
@@ -19973,8 +20081,8 @@
 						{
 							"type": "list",
 							"items": [
-								"{@bold 5th} cloudkill, gentle repose",
-								"{@bold 6th} grim tendrils, vampiric exsanguination"
+								"{@bold 5th} {@spell cloudkill}, {@spell gentle repose}",
+								"{@bold 6th} {@spell grim tendrils}, {@spell vampiric exsanguination}"
 							]
 						}
 					]
@@ -20015,13 +20123,13 @@
 						{
 							"type": "list",
 							"items": [
-								"{@bold 1st} ray of enfeeblement",
-								"{@bold 2nd} continual flame",
-								"{@bold 3rd} levitate",
-								"{@bold 4th} globe of invulnerability, paralyze",
+								"{@bold 1st} {@spell ray of enfeeblement}",
+								"{@bold 2nd} {@spell continual flame}",
+								"{@bold 3rd} {@spell levitate}",
+								"{@bold 4th} {@spell globe of invulnerability}, {@spell paralyze}",
 								"{@bold 5th} {@spell magic missile}",
-								"{@bold 6th} wall of force",
-								"{@bold 7th} cone of cold, fireball, lightning bolt"
+								"{@bold 6th} {@spell wall of force}",
+								"{@bold 7th} {@spell cone of cold}, {@spell fireball}, {@spell lightning bolt}"
 							]
 						}
 					]
@@ -20062,16 +20170,16 @@
 						{
 							"type": "list",
 							"items": [
-								"{@bold Cantrip} detect magic, light, mage hand, telekinetic projectile",
-								"{@bold 1st} lock",
-								"{@bold 2nd} enlarge, glitterdust, invisibility, knock, telekinetic maneuver, web",
-								"{@bold 3rd} dispel magic, fireball, lightning bolt",
-								"{@bold 4th} invisibility, enlarge, fireball, wall of fire, web",
-								"{@bold 5th} cone of cold, passwall, telekinetic haul",
-								"{@bold 6th} disintegrate, dispel magic, fireball, lightning bolt",
-								"{@bold 7th} cone of cold, passwall, plane shift, wall of fire",
-								"{@bold 8th} fireball, mage armor",
-								"{@bold 9th} dispel magic, meteor swarm, summon dragon"
+								"{@bold Cantrip} {@spell detect magic}, {@spell light}, {@spell mage hand}, {@spell telekinetic projectile}",
+								"{@bold 1st} {@spell lock}",
+								"{@bold 2nd} {@spell enlarge}, {@spell glitterdust}, {@spell invisibility}, {@spell knock}, {@spell telekinetic maneuver}, {@spell web}",
+								"{@bold 3rd} {@spell dispel magic}, {@spell fireball}, {@spell lightning bolt}",
+								"{@bold 4th} {@spell invisibility}, {@spell enlarge}, {@spell fireball}, {@spell wall of fire}, {@spell web}",
+								"{@bold 5th} {@spell cone of cold}, {@spell passwall}, {@spell telekinetic haul}",
+								"{@bold 6th} {@spell disintegrate}, {@spell dispel magic}, {@spell fireball}, {@spell lightning bolt}",
+								"{@bold 7th} {@spell cone of cold}, {@spell passwall}, {@spell plane shift}, {@spell wall of fire}",
+								"{@bold 8th} {@spell fireball}, {@spell mage armor}",
+								"{@bold 9th} {@spell dispel magic}, {@spell meteor swarm}, {@spell summon dragon}"
 							]
 						}
 					]
@@ -20121,9 +20229,9 @@
 						{
 							"type": "list",
 							"items": [
-								"{@bold Cantrip} sigil",
-								"{@bold 1st} fleet step, jump",
-								"{@bold 2nd} enlarge, humanoid form"
+								"{@bold Cantrip} {@spell sigil}",
+								"{@bold 1st} {@spell fleet step}, {@spell jump}",
+								"{@bold 2nd} {@spell enlarge}, {@spell humanoid form}"
 							]
 						}
 					]
@@ -20139,8 +20247,8 @@
 						{
 							"type": "list",
 							"items": [
-								"{@bold 3rd} feet to fins, jump",
-								"{@bold 4th} gaseous form, shape stone"
+								"{@bold 3rd} {@spell feet to fins}, {@spell jump}",
+								"{@bold 4th} {@spell gaseous form}, {@spell shape stone}"
 							]
 						}
 					]
@@ -20156,8 +20264,8 @@
 						{
 							"type": "list",
 							"items": [
-								"{@bold 5th} humanoid transformation",
-								"{@bold 6th} baleful polymorph, dragon form, flesh to stone"
+								"{@bold 5th} {@spell humanoid transformation}",
+								"{@bold 6th} {@spell baleful polymorph}, {@spell dragon form}, {@spell flesh to stone}"
 							]
 						}
 					]
@@ -20611,6 +20719,7 @@
 			"name": "Sunrod",
 			"source": "CRB",
 			"page": 554,
+			"equipment": true,
 			"type": "Item",
 			"level": 1,
 			"traits": [
@@ -20633,7 +20742,6 @@
 					"Interact"
 				]
 			},
-			"equipment": true,
 			"category": "Tool",
 			"entries": [
 				"This 1-foot-long, gold-tipped rod glows after it's struck on a hard surface. For the next 6 hours, it sheds bright light in a 20-foot radius (and dim light to the next 40 feet)."
@@ -23237,8 +23345,7 @@
 				"Weapon"
 			],
 			"entries": [
-				"Weapons with wounding runes are said to thirst for blood.",
-				"When you hit a creature with a wounding weapon, you deal an extra {@damage 1d6} {@condition persistent damage||persistent bleed damage}. On a critical hit, it instead deals {@damage 1d12} {@condition persistent damage||persistent bleed damage}."
+				"Weapons with wounding runes are said to thirst for blood. When you hit a creature with a wounding weapon, you deal an extra {@damage 1d6} {@condition persistent damage||persistent bleed damage}."
 			]
 		},
 		{

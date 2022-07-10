@@ -505,25 +505,9 @@ Steady Spellcasting If a reaction would disrupt the lich’s spellcasting action
 let converterUi;
 async function doPageInit () {
 	ExcludeUtil.pInitialise(); // don't await, as this is only used for search
-	// FIXME: Enable items tagging once we actually implement that
-	const [spells, /* items, */ feats, traits, deities, actions] = await Promise.all([
-		DataUtil.spell.pLoadAll(),
-		// Renderer.item.pBuildList(),
-		DataUtil.feat.loadJSON(),
-		DataUtil.trait.loadJSON(),
-		DataUtil.deity.loadJSON(),
-		DataUtil.loadJSON(`${Renderer.get().baseUrl}data/actions.json`),
-		BrewUtil.pAddBrewData(),
-	]);
-	await TagJsons.pInit({
-		spells,
-		// items,
-		feats: feats.feat,
-		traits: traits.trait,
-		deities: deities.deity,
-		actions: actions.action,
-	})
 	converterUi = new ConverterUi();
-	converterUi.converter = new Converter({config: TokenizerUtils.defaultConfig, tokenizerUtilsClass: TokenizerUtils, cbWarn: converterUi.showWarning.bind(converterUi)});
+	const converter = new Converter({config: TokenizerUtils.defaultConfig, tokenizerUtilsClass: TokenizerUtils, cbWarn: converterUi.showWarning.bind(converterUi)});
+	await converter.init();
+	converterUi.converter = converter;
 	return converterUi.pInit();
 }

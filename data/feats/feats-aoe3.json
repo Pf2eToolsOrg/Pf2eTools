@@ -37,7 +37,7 @@
 			"traits": [
 				"archetype"
 			],
-			"prerequisites": "Provocator Dedication",
+			"prerequisites": "{@feat Provocator Dedication|AoE3}",
 			"trigger": "You succeed or critically succeed at a Reflex saving throw.",
 			"requirements": "You aren't {@condition encumbered} or overburdened.",
 			"entries": [
@@ -99,7 +99,7 @@
 				"emotion",
 				"mental"
 			],
-			"prerequisites": "Provocator Dedication",
+			"prerequisites": "{@feat Provocator Dedication|AoE3}",
 			"requirements": "Your last action was a {@action Strike} that dropped an opponent to 0 Hit Points.",
 			"entries": [
 				"Attempt a {@skill Performance} check, comparing the result to the Will DC of each foe within 30 feet who can see you.",
@@ -130,7 +130,7 @@
 			"traits": [
 				"archetype"
 			],
-			"prerequisites": "Provocator Dedication",
+			"prerequisites": "{@feat Provocator Dedication|AoE3}",
 			"entries": [
 				"You {@action Strike} a target within reach and then {@action Step} to any other open space adjacent to that target. Your target is then {@condition flat-footed} against your next {@action Strike} this turn."
 			]
@@ -148,7 +148,7 @@
 			"traits": [
 				"archetype"
 			],
-			"prerequisites": "Provocator Dedication, expert in any kind of weapon or unarmed attack",
+			"prerequisites": "{@feat Provocator Dedication|AoE3}, expert in any kind of weapon or unarmed attack",
 			"entries": [
 				"Your experience has made you better with a wide variety of weapons. Your proficiency ranks for simple weapons and martial weapons increase to expert, as does your proficiency rank for your chosen advanced weapon."
 			]
@@ -170,7 +170,7 @@
 			"traits": [
 				"archetype"
 			],
-			"prerequisites": "Provocator Dedication",
+			"prerequisites": "{@feat Provocator Dedication|AoE3}",
 			"entries": [
 				"You {@action Strike} a target within reach. If you hit and deal damage, the target is also {@condition restrained} as if you had critically succeeded at an {@skill Athletics} check to {@action Grapple}."
 			]
@@ -195,7 +195,14 @@
 			"entries": [
 				"For you, fighting is as much about style as skill. You become trained in simple weapons, martial weapons, and one advanced weapon of your choice. When you critically succeed at an attack roll using your chosen advanced weapon, you also apply the critical specialization of that weapon. You become an expert in {@skill Performance} and your choice of either {@skill Acrobatics} or {@skill Athletics}. If you were an expert in all three of these skills, you instead become an expert in a skill of your choice."
 			],
-			"special": "You can't select another dedication feat until you have gained two other feats from the provocator archetype."
+			"special": "You can't select another dedication feat until you have gained two other feats from the provocator archetype.",
+			"leadsTo": [
+				"Cartwheel Dodge|AoE3",
+				"Flourishing Finish|AoE3",
+				"Murderer's Circle|AoE3",
+				"Performance Weapon Expert|AoE3",
+				"Pin To The Spot|AoE3"
+			]
 		},
 		{
 			"name": "Slice And Swipe",

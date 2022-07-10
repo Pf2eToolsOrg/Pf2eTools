@@ -120,6 +120,17 @@ function listFiles (opts) {
 	}, []);
 }
 
+function rmDirRecursiveSync (dir) {
+	if (fs.existsSync(dir)) {
+		fs.readdirSync(dir).forEach(file => {
+			const curPath = `${dir}/${file}`;
+			if (fs.lstatSync(curPath).isDirectory()) rmDirRecursiveSync(curPath);
+			else fs.unlinkSync(curPath);
+		});
+		fs.rmdirSync(dir);
+	}
+}
+
 class PatchLoadJson {
 	static patchLoadJson () {
 		PatchLoadJson._CACHED = PatchLoadJson._CACHED || DataUtil.loadJSON;
@@ -166,4 +177,5 @@ module.exports = {
 	patchLoadJson: PatchLoadJson.patchLoadJson,
 	unpatchLoadJson: PatchLoadJson.unpatchLoadJson,
 	ArgParser,
+	rmDirRecursiveSync,
 };

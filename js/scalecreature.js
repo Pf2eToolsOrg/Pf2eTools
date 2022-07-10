@@ -472,7 +472,8 @@ class ScaleCreature {
 			creature.level = toLvl;
 			if (lvlIn !== toLvl) {
 				creature._displayName = `${creature.name} (Lvl ${toLvl})`;
-				creature._isScaledLvl = toLvl;
+				creature._isScaledLvl = true;
+				creature._scaledLvl = toLvl;
 				creature._originalLvl = creature._originalLvl || lvlIn;
 			}
 		}
@@ -524,7 +525,8 @@ class ScaleCreature {
 		creature._displayName = `Elite ${creature.name}`;
 		creature._originalLvl = creature._originalLvl || creature.level;
 		creature.level += 1;
-		creature._isScaledLvl = creature.level;
+		creature._isScaledLvl = true;
+		creature._scaledLvl = creature.level;
 		return creature;
 	}
 
@@ -560,7 +562,8 @@ class ScaleCreature {
 		creature._displayName = `Weak ${creature.name}`;
 		creature._originalLvl = creature._originalLvl || creature.level;
 		creature.level -= 1;
-		creature._isScaledLvl = creature.level;
+		creature._isScaledLvl = true;
+		creature._scaledLvl = creature.level;
 		return creature;
 	}
 
@@ -593,29 +596,30 @@ class ScaleCreature {
 		const adjustAbility = (ab) => {
 			const {isLimited, isArea} = this._isAbilityAreaLimited(ab);
 			const bonus = isLimited ? opts.flatAddDamageLimited : opts.flatAddDamage;
-			ab.entries = ab.entries.map(e => {
-				if (typeof e === "object") {
-					if (e.type === "affliction") e.DC += opts.flatAddProf;
-				} else if (typeof e === "string") {
-					// Do not scale flat check DCs
-					e = e.replaceAll(/ DC (\d+)(?!\d* flat)/g, (...m) => {
-						return ` DC ${Number(m[1]) + opts.flatAddProf}`;
-					});
-					// Do not scale status, circumstance, item bonus...
-					e = e.replaceAll(/@hit (\d+)/g, (...m) => {
-						return `@hit ${Number(m[1]) + opts.flatAddProf}`;
-					});
-					e = e.replaceAll(/@damage (\d+d\d+)([+-]?\d*)/g, (formula, formulaNoMod, mod) => {
-						if (!mod) return `@damage ${formulaNoMod}${bonus > 0 ? "+" : ""}${bonus}`;
-						else {
-							if (Number(mod) + bonus > 0) return `@damage ${formulaNoMod}+${Number(mod) + bonus}`;
-							else if (Number(mod) + bonus < 0) return `@damage ${formulaNoMod}${Number(mod) + bonus}`;
-							else return `@damage ${formulaNoMod}`
-						}
-					});
-				}
-				return e;
-			});
+			if (ab.type === "affliction") ab.DC += opts.flatAddProf;
+			if (ab.entries) {
+				ab.entries = ab.entries.map(e => {
+					if (typeof e === "string") {
+						// Do not scale flat check DCs
+						e = e.replaceAll(/ DC (\d+)(?!\d* flat)/g, (...m) => {
+							return ` DC ${Number(m[1]) + opts.flatAddProf}`;
+						});
+						// Do not scale status, circumstance, item bonus...
+						e = e.replaceAll(/@hit (\d+)/g, (...m) => {
+							return `@hit ${Number(m[1]) + opts.flatAddProf}`;
+						});
+						e = e.replaceAll(/@damage (\d+d\d+)([+-]?\d*)/g, (formula, formulaNoMod, mod) => {
+							if (!mod) return `@damage ${formulaNoMod}${bonus > 0 ? "+" : ""}${bonus}`;
+							else {
+								if (Number(mod) + bonus > 0) return `@damage ${formulaNoMod}+${Number(mod) + bonus}`;
+								else if (Number(mod) + bonus < 0) return `@damage ${formulaNoMod}${Number(mod) + bonus}`;
+								else return `@damage ${formulaNoMod}`
+							}
+						});
+					}
+					return e;
+				});
+			}
 		};
 		if (creature.abilities) Object.keys(creature.abilities).forEach(k => creature.abilities[k].forEach(adjustAbility));
 		return creature;
@@ -856,43 +860,43 @@ class ScaleCreature {
 		const adjustAbility = (ab) => {
 			// TODO: Scale areas, ranges, durations, number of targets...
 			const {isLimited, isArea} = this._isAbilityAreaLimited(ab);
-
-			ab.entries = ab.entries.map(e => {
-				if (typeof e === "object") {
-					if (e.type === "affliction") {
-						e.DC = this._scaleValue(lvlIn, toLvl, e.DC, this._LvlSpellDC) + opts.flatAddProf;
-						for (let s of e.stages) {
-							s.entry.replaceAll(/@damage (\d+d\d+[+-]?\d*)/g, (...m) => {
-								return `@damage ${this._scaleDice(m[1], this._scaleValue(lvlIn, toLvl, this._getDiceEV(m[1]), this._LvlExpectedDamage))}`;
+			if (ab.type === "affliction") {
+				ab.DC = this._scaleValue(lvlIn, toLvl, ab.DC, this._LvlSpellDC) + opts.flatAddProf;
+				for (let s of ab.stages) {
+					s.entry.replaceAll(/@damage (\d+d\d+[+-]?\d*)/g, (...m) => {
+						return `@damage ${this._scaleDice(m[1], this._scaleValue(lvlIn, toLvl, this._getDiceEV(m[1]), this._LvlExpectedDamage))}`;
+					});
+				}
+			}
+			if (ab.entries) {
+				ab.entries = ab.entries.map(e => {
+					if (typeof e === "string") {
+						// Do not scale flat check DCs
+						e = e.replaceAll(/ (?:{@dc|DC) (\d+)(?:\}|)(?!\d* flat)/g, (...m) => {
+							return ` DC ${this._scaleValue(lvlIn, toLvl, Number(m[1]), this._LvlSpellDC) + opts.flatAddProf}`;
+						});
+						// Do not scale status, circumstance, item bonus...
+						e = e.replaceAll(/@hit (\d+)/g, (...m) => {
+							return `@hit ${this._scaleValue(lvlIn, toLvl, Number(m[1]), this._LvlAttackBonus) + opts.flatAddProf}`;
+						});
+						// Do not scale damage formulas when applying variant rules
+						if (lvlIn !== toLvl) {
+							e = e.replaceAll(/@damage (\d+d\d+[+-]?\d*)/g, (...m) => {
+								const scaleTo = isArea ? this._LvlAreaDamage[toLvl][Number(isLimited)] / this._LvlAreaDamage[lvlIn][Number(isLimited)] * this._getDiceEV(m[1]) : this._scaleValue(lvlIn, toLvl, this._getDiceEV(m[1]), this._LvlExpectedDamage);
+								return `@damage ${this._scaleDice(m[1], scaleTo)}`;
 							});
 						}
 					}
-				} else if (typeof e === "string") {
-					// Do not scale flat check DCs
-					e = e.replaceAll(/ (?:{@dc|DC) (\d+)(?:\}|)(?!\d* flat)/g, (...m) => {
-						return ` DC ${this._scaleValue(lvlIn, toLvl, Number(m[1]), this._LvlSpellDC) + opts.flatAddProf}`;
-					});
-					// Do not scale status, circumstance, item bonus...
-					e = e.replaceAll(/@hit (\d+)/g, (...m) => {
-						return `@hit ${this._scaleValue(lvlIn, toLvl, Number(m[1]), this._LvlAttackBonus) + opts.flatAddProf}`;
-					});
-					// Do not scale damage formulas when applying variant rules
-					if (lvlIn !== toLvl) {
-						e = e.replaceAll(/@damage (\d+d\d+[+-]?\d*)/g, (...m) => {
-							const scaleTo = isArea ? this._LvlAreaDamage[toLvl][Number(isLimited)] / this._LvlAreaDamage[lvlIn][Number(isLimited)] * this._getDiceEV(m[1]) : this._scaleValue(lvlIn, toLvl, this._getDiceEV(m[1]), this._LvlExpectedDamage);
-							return `@damage ${this._scaleDice(m[1], scaleTo)}`;
-						});
-					}
-				}
-				return e;
-			});
+					return e;
+				});
+			}
 		};
 		if (creature.abilities) Object.keys(creature.abilities).forEach(k => creature.abilities[k].forEach(adjustAbility));
 	}
 	_isAbilityAreaLimited (ab) {
 		let isArea = Boolean(ab.area);
 		let isLimited = false;
-		const entry = ab.entries.filter(it => typeof it === "string").join(" ");
+		const entry = (ab.entries || []).filter(it => typeof it === "string").join(" ");
 		if (entry.match(/foot (cone|line|burst|emanation|cylinder)/i)) isArea = true;
 		if (entry.match(/can.t use .+ again\W/i)) isLimited = true;
 		return {isLimited, isArea}

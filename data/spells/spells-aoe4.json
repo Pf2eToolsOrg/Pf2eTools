@@ -11,7 +11,6 @@
 				"necromancy",
 				"poison"
 			],
-			"school": "N",
 			"traditions": [
 				"divine",
 				"occult"
@@ -21,17 +20,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "touch",
-				"distance": {
-					"type": "touch",
-					"amount": 1
-				}
+				"type": "touch",
+				"number": 1
 			},
 			"targets": "1 creature",
 			"savingThrow": {
@@ -45,11 +41,39 @@
 				{
 					"type": "successDegree",
 					"entries": {
-						"Critical Success": "The target is unaffected.",
-						"Success": "The target takes {@damage 1d6} poison damage.",
-						"Failure": "The target is afflicted with imp venom at stage 1.",
-						"Critical Failure": "The target is afflicted with imp venom at stage 2. Imp Venom (poison) Level 3; Maximum Duration 6 rounds; Stage 1 {@damage 1d6} poison and {@condition clumsy|CRB|clumsy 1}; Stage 2 {@damage 1d6} poison, {@condition clumsy|CRB|clumsy 1}, and {@condition slowed|CRB|slowed 1} (1 round)."
+						"Critical Success": [
+							"The target is unaffected."
+						],
+						"Success": [
+							"The target takes {@damage 1d6} poison damage."
+						],
+						"Failure": [
+							"The target is afflicted with imp venom at stage 1."
+						],
+						"Critical Failure": [
+							"The target is afflicted with imp venom at stage 2."
+						]
 					}
+				},
+				{
+					"type": "affliction",
+					"name": "Imp Venom",
+					"traits": [
+						"poison"
+					],
+					"level": 3,
+					"maxDuration": "6 rounds",
+					"stages": [
+						{
+							"stage": 1,
+							"entry": "{@damage 1d6} poison and {@condition clumsy||clumsy 1}"
+						},
+						{
+							"stage": 2,
+							"entry": "{@damage 1d6} poison, {@condition clumsy||clumsy 1}, and {@condition slowed||slowed 1}",
+							"duration": "1 round."
+						}
+					]
 				}
 			]
 		},
@@ -63,7 +87,6 @@
 				"necromancy",
 				"poison"
 			],
-			"school": "N",
 			"traditions": [
 				"arcane",
 				"occult"
@@ -73,17 +96,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "touch",
-				"distance": {
-					"type": "touch",
-					"amount": 1
-				}
+				"type": "touch",
+				"number": 1
 			},
 			"targets": "1 creature",
 			"savingThrow": {
@@ -115,7 +135,6 @@
 				"necromancy",
 				"poison"
 			],
-			"school": "N",
 			"traditions": [
 				"arcane",
 				"primal"
@@ -125,17 +144,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "touch",
-				"distance": {
-					"type": "touch",
-					"amount": 1
-				}
+				"type": "touch",
+				"number": 1
 			},
 			"targets": "1 creature",
 			"savingThrow": {
@@ -167,7 +183,6 @@
 				"necromancy",
 				"poison"
 			],
-			"school": "N",
 			"traditions": [
 				"arcane",
 				"primal"
@@ -177,17 +192,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"area": {
 				"types": [
@@ -207,11 +219,40 @@
 				{
 					"type": "successDegree",
 					"entries": {
-						"Critical Success": "The target is unaffected.",
-						"Success": "The target takes {@damage 2d6} poison damage.",
-						"Failure": "The target is afflicted with swarming wasp venom at stage 1.",
-						"Critical Failure": "The target is afflicted with swarming wasp venom at stage 2. Swarming Wasp Venom (poison) Level 7; Maximum Duration 6 rounds; Stage 1 {@damage 2d6} poison damage and {@condition clumsy|CRB|clumsy 1} (1 round); Stage 2 {@damage 3d6} poison damage and {@condition clumsy|CRB|clumsy 2} (1 round)"
+						"Critical Success": [
+							"The target is unaffected."
+						],
+						"Success": [
+							"The target takes {@damage 2d6} poison damage."
+						],
+						"Failure": [
+							"The target is afflicted with swarming wasp venom at stage 1."
+						],
+						"Critical Failure": [
+							"The target is afflicted with swarming wasp venom at stage 2."
+						]
 					}
+				},
+				{
+					"type": "affliction",
+					"name": "Swarming Wasp Venom",
+					"traits": [
+						"poison"
+					],
+					"level": 7,
+					"maxDuration": "6 rounds",
+					"stages": [
+						{
+							"stage": 1,
+							"entry": "{@damage 2d6} poison damage and {@condition clumsy||clumsy 1}",
+							"duration": "1 round;"
+						},
+						{
+							"stage": 2,
+							"entry": "{@damage 3d6} poison damage and {@condition clumsy||clumsy 2}",
+							"duration": "1 round"
+						}
+					]
 				}
 			]
 		},
@@ -225,7 +266,6 @@
 				"necromancy",
 				"poison"
 			],
-			"school": "N",
 			"traditions": [
 				"arcane",
 				"primal"
@@ -235,17 +275,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "touch",
-				"distance": {
-					"type": "touch",
-					"amount": 1
-				}
+				"type": "touch",
+				"number": 1
 			},
 			"targets": "1 creature",
 			"savingThrow": {
@@ -258,11 +295,45 @@
 				{
 					"type": "successDegree",
 					"entries": {
-						"Critical Success": "The target is unaffected.",
-						"Success": "The target takes {@damage 5d6} poison damage.",
-						"Failure": "The target is afflicted with wyvern venom at stage 1.",
-						"Critical Failure": "The target is afflicted with wyvern venom at stage 2. Wyvern Venom (poison) Level 9; Maximum Duration 6 rounds; Stage 1 {@damage 5d6} poison damage (1 round); Stage 2 {@damage 6d6} poison damage (1 round); Stage 3 {@damage 8d6} poison damage (1 round)"
+						"Critical Success": [
+							"The target is unaffected."
+						],
+						"Success": [
+							"The target takes {@damage 5d6} poison damage."
+						],
+						"Failure": [
+							"The target is afflicted with wyvern venom at stage 1."
+						],
+						"Critical Failure": [
+							"The target is afflicted with wyvern venom at stage 2."
+						]
 					}
+				},
+				{
+					"type": "affliction",
+					"name": "Wyvern Venom",
+					"traits": [
+						"poison"
+					],
+					"level": 9,
+					"maxDuration": "6 rounds",
+					"stages": [
+						{
+							"stage": 1,
+							"entry": "{@damage 5d6} poison damage",
+							"duration": "1 round;"
+						},
+						{
+							"stage": 2,
+							"entry": "{@damage 6d6} poison damage",
+							"duration": "1 round;"
+						},
+						{
+							"stage": 3,
+							"entry": "{@damage 8d6} poison damage",
+							"duration": "1 round"
+						}
+					]
 				}
 			]
 		}

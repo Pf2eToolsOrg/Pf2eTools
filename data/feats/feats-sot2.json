@@ -13,7 +13,7 @@
 			"traits": [
 				"archetype"
 			],
-			"prerequisites": "Folklorist Dedication",
+			"prerequisites": "{@feat Folklorist Dedication|SoT2}",
 			"entries": [
 				"Stories are an experience meant to be shared as a group. When you Spin a Tale, you can designate up to six non-minion allies as the heroes of your story. Each hero, once during the tale, can continue the story in your stead by spending an action to Spin the Tale; if they do, the story continues for another round, as if you had Spun the Tale at the start of your turn. This could allow the story to continue for up to 6 additional rounds, if all possible allies Spin the Tale, though you can continue to Spin the Tale on your own as normal."
 			]
@@ -31,7 +31,7 @@
 			"traits": [
 				"archetype"
 			],
-			"prerequisites": "Nantambu Chime-Ringer Dedication",
+			"prerequisites": "{@feat Nantambu Chime-Ringer Dedication|SoT2}",
 			"entries": [
 				"To keep the peace, you disrupt those who seek to break it.",
 				"You can cast {@spell deafness} and 4th-level {@spell silence} once per day each as innate spells. The tradition of these spells is the one you chose for the Nantambu Chime-Ringer Dedication feat."
@@ -56,7 +56,7 @@
 				"auditory",
 				"transmutation"
 			],
-			"prerequisites": "Nantambu Chime-Ringer Dedication",
+			"prerequisites": "{@feat Nantambu Chime-Ringer Dedication|SoT2}",
 			"frequency": {
 				"unit": "hour",
 				"freq": 1
@@ -105,7 +105,13 @@
 					]
 				}
 			],
-			"special": "You can't select another dedication feat until you've gained two other feats from the folklorist archetype."
+			"special": "You can't select another dedication feat until you've gained two other feats from the folklorist archetype.",
+			"leadsTo": [
+				"Communal Tale|SoT2",
+				"Folktales Lore|SoT2",
+				"Narrative Conduit|SoT2",
+				"Rule Of Three|SoT2"
+			]
 		},
 		{
 			"name": "Folktales Lore",
@@ -120,7 +126,7 @@
 			"traits": [
 				"archetype"
 			],
-			"prerequisites": "Folklorist Dedication",
+			"prerequisites": "{@feat Folklorist Dedication|SoT2}",
 			"entries": [
 				"You can pull bits of wisdom from any tale. You become trained in {@skill Lore||Folktales Lore}, a special {@skill Lore} skill that can be used only to {@action Recall Knowledge}, but on any topic. If you fail a check to {@action Recall Knowledge} with {@skill Lore||Folktales Lore}, you get the effects of the {@feat Dubious Knowledge} skill feat.",
 				"If you are legendary in the {@skill Performance} skill, you gain expert proficiency in {@skill Lore||Folktales Lore}, but you can't increase your proficiency rank in {@skill Lore||Folktales Lore} by any other means."
@@ -145,7 +151,13 @@
 			"entries": [
 				"You've studied the basics of harmony and resonance in magic, exemplified by the ringing of chimes. You gain a single arcane or occult cantrip of your choice, heightened to a spell level equal to half your level, rounded up. If you weren't already, you become trained in that tradition's spell DCs and spell attack rolls, with Intelligence as your spellcasting ability if you choose arcane or Charisma as your spellcasting ability if you choose occult. Regardless of your choice, you also either become trained in {@skill Arcana} or {@skill Occultism}, or an expert in one of these skills if you are already trained in both."
 			],
-			"special": "You can't select another dedication feat until you have gained two other feats from the Nantambu Chime-Ringer archetype."
+			"special": "You can't select another dedication feat until you have gained two other feats from the Nantambu Chime-Ringer archetype.",
+			"leadsTo": [
+				"Deny The Songs Of War|SoT2",
+				"Fleet Tempo|SoT2",
+				"Sing To The Steel|SoT2",
+				"Song Of Grace And Speed|SoT2"
+			]
 		},
 		{
 			"name": "Narrative Conduit",
@@ -163,7 +175,7 @@
 				"linguistic",
 				"magical"
 			],
-			"prerequisites": "Folklorist Dedication",
+			"prerequisites": "{@feat Folklorist Dedication|SoT2}",
 			"entries": [
 				"You act as a conduit for your companions just as your stories are a conduit between teller and listener. When you Spin a Tale and the hero of your tale Casts a Spell against the villain, you warp the world, allowing the hero to calculate range and cover to the villain from your space instead of their own if they prefer. The hero must choose to calculate both range and cover from the same space; they can't use one space for range and the other for cover."
 			]
@@ -188,7 +200,7 @@
 				"linguistic",
 				"magical"
 			],
-			"prerequisites": "Folklorist Dedication",
+			"prerequisites": "{@feat Folklorist Dedication|SoT2}",
 			"trigger": "The villain of the tale you've spun makes an attack roll with a given weapon or unarmed attack, uses a particular special ability (such as a Breath Weapon), or",
 			"requirements": "You have Spun a Tale.",
 			"entries": [
@@ -215,7 +227,7 @@
 				"auditory",
 				"evocation"
 			],
-			"prerequisites": "Nantambu Chime-Ringer Dedication",
+			"prerequisites": "{@feat Nantambu Chime-Ringer Dedication|SoT2}",
 			"frequency": {
 				"unit": "hour",
 				"freq": 1
@@ -246,7 +258,7 @@
 				"auditory",
 				"transmutation"
 			],
-			"prerequisites": "Nantambu Chime-Ringer Dedication",
+			"prerequisites": "{@feat Nantambu Chime-Ringer Dedication|SoT2}",
 			"frequency": {
 				"unit": "day",
 				"freq": 1

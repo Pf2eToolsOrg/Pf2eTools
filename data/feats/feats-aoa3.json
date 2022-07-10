@@ -13,15 +13,22 @@
 			"traits": [
 				"uncommon",
 				"archetype",
-				"dedication",
-				"prestige"
+				"dedication"
 			],
 			"prerequisites": "Charisma 14, expert in {@skill Stealth} and {@skill Survival}, member of the Bellflower Network",
 			"entries": [
 				"You dedicate yourself to freeing slaves and escorting them to freedom. You gain a +5-foot status bonus to your Speed.",
 				"Choose up to six other people to be your \"crop.\" Members of your crop can use your Speed for overland travel if it's higher than their own. Members more than 60 feet from you lose all benefits (from this or other Bellflower tiller feats) of being part of your crop, but they regain those benefits immediately when they return. You can add or remove someone from your crop by spending 10 minutes in conversation with them."
 			],
-			"special": "You cannot select another dedication feat until you have gained two other feats from the Bellflower tiller archetype."
+			"special": "You cannot select another dedication feat until you have gained two other feats from the Bellflower tiller archetype.",
+			"leadsTo": [
+				"Cut The Bonds|AoA3",
+				"Garden Path|AoA3",
+				"Practiced Guidance|AoA3",
+				"Scarecrow|AoA3",
+				"Tiller's Aid|AoA3",
+				"Tiller's Drive|AoA3"
+			]
 		},
 		{
 			"name": "Cut The Bonds",
@@ -42,7 +49,7 @@
 				"archetype",
 				"attack"
 			],
-			"prerequisites": "Bellflower Dedication, expert in a melee weapon",
+			"prerequisites": "{@feat Bellflower Dedication|AoA3}, expert in a melee weapon",
 			"entries": [
 				"Select a {@trait magical} effect that has made an adjacent member of your crop {@condition clumsy}, {@condition grabbed}, {@condition paralyzed}, {@condition restrained}, or {@condition slowed}. Attempt a counteract check using your attack modifier (including your multiple attack penalty) with a melee weapon with which you have expert proficiency. Your counteract level is half your level rounded up. On a success, you free that member from the effect; on a failure, you can't attempt to use Cut the Bonds on that effect on that crop member until 24 hours have passed."
 			]
@@ -75,7 +82,7 @@
 				"uncommon",
 				"archetype"
 			],
-			"prerequisites": "Bellflower Dedication",
+			"prerequisites": "{@feat Bellflower Dedication|AoA3}",
 			"entries": [
 				"You can guide your crop to move without notice. When you and any of your crop are {@action Avoid Notice||Avoiding Notice}, you can choose one member of your crop to temporarily gain the benefits of the {@feat Quiet Allies} skill feat until the group is no longer {@action Avoid Notice||Avoiding Notice}. The group rolls two checks instead of one, using the higher die roll. This is a {@trait fortune} effect."
 			]
@@ -94,7 +101,7 @@
 				"uncommon",
 				"archetype"
 			],
-			"prerequisites": "Bellflower Dedication",
+			"prerequisites": "{@feat Bellflower Dedication|AoA3}",
 			"entries": [
 				"Making one's way to safety can be harrowing, but you have extensive practice at helping others along that path.",
 				"When you roll a success to {@action Aid} a member of your crop, you get a critical success instead."
@@ -139,7 +146,7 @@
 				"uncommon",
 				"archetype"
 			],
-			"prerequisites": "Bellflower Dedication",
+			"prerequisites": "{@feat Bellflower Dedication|AoA3}",
 			"entries": [
 				"You fight fiercely to protect your crop. When you hit a creature that is adjacent to two or more members of your crop with a weapon or unarmed attack, you gain a circumstance bonus to your damage roll equal to the number of weapon damage dice. When you hit a creature who has a member of your crop {@condition grabbed}, that member can attempt to {@action Escape} using a reaction."
 			]
@@ -197,7 +204,7 @@
 				"uncommon",
 				"archetype"
 			],
-			"prerequisites": "Bellflower Dedication",
+			"prerequisites": "{@feat Bellflower Dedication|AoA3}",
 			"entries": [
 				"You can use the {@action Aid} reaction to help a member of your crop even if you haven't prepared to do so."
 			]
@@ -216,7 +223,7 @@
 				"uncommon",
 				"archetype"
 			],
-			"prerequisites": "Bellflower Dedication",
+			"prerequisites": "{@feat Bellflower Dedication|AoA3}",
 			"entries": [
 				"Your Speed bonus from Bellflower Dedication increases to +10 feet. Members of your crop receive a +5-foot circumstance bonus to Speed."
 			]

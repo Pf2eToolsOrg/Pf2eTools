@@ -42,8 +42,8 @@
 				},
 				"spells": {
 					"t": [
-						"spell attack rolls of your spellcasting tradition, determined by your first lesson",
-						"spell DC's of your spellcasting tradition, determined by your first lesson"
+						"spell attack rolls of your spellcasting tradition, determined by your patron",
+						"spell DC's of your spellcasting tradition, determined by your patron"
 					]
 				}
 			},
@@ -1309,7 +1309,7 @@
 								{
 									"type": "item",
 									"name": "Spell List",
-									"entry": "{@filter primal|spells||tradition & spell list= primal}"
+									"entry": "{@filter primal|spells||tradition & spell list=primal}"
 								},
 								{
 									"type": "item",
@@ -1327,32 +1327,6 @@
 									"entry": "{@spell gust of wind}"
 								}
 							]
-						}
-					]
-				},
-				{
-					"type": "list",
-					"style": "list-hang-notitle",
-					"items": [
-						{
-							"type": "item",
-							"name": "Spell List",
-							"entry": "{@filter primal|spells||tradition & spell list= primal}"
-						},
-						{
-							"type": "item",
-							"name": "Patron Skill",
-							"entry": "{@skill Nature}"
-						},
-						{
-							"type": "item",
-							"name": "Hex Cantrip",
-							"entry": "{@spell clinging ice|APG}"
-						},
-						{
-							"type": "item",
-							"name": "Granted Spell",
-							"entry": "{@spell gust of wind}"
 						}
 					]
 				}

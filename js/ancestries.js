@@ -880,7 +880,7 @@ class AncestriesPage extends BaseComponent {
 					type: "pf2-title",
 					name: "Size",
 				},
-				`${anc.size}`,
+				`${anc.size.joinConjunct(", ", " or ").toTitleCase()}`,
 				{
 					type: "pf2-title",
 					name: "Speed",
@@ -889,8 +889,8 @@ class AncestriesPage extends BaseComponent {
 			],
 		};
 		if (anc.rarity) statSidebar.entries.unshift({type: "pf2-title", name: "Rarity"}, `{@trait ${anc.rarity.toTitleCase()}}`);
-		if (anc.boosts) statSidebar.entries.push({type: "pf2-title", name: "Ability Boosts"}, anc.boosts.join(", ").toTitleCase());
-		if (anc.flaw) statSidebar.entries.push({type: "pf2-title", name: "Ability Flaw"}, anc.flaw.join(", ").toTitleCase());
+		if (anc.boosts) statSidebar.entries.push({type: "pf2-title", name: "Ability Boosts"}, anc.boosts.join(" <br> ").toTitleCase());
+		if (anc.flaw) statSidebar.entries.push({type: "pf2-title", name: "Ability Flaw"}, anc.flaw.join(" <br> ").toTitleCase());
 		if (anc.languages) statSidebar.entries.push({type: "pf2-title", name: "Languages"}, ...anc.languages);
 		if (anc.traits) statSidebar.entries.push({type: "pf2-title", name: "Traits"}, anc.traits.map(t => `{@trait ${t.toTitleCase()}}`).join(", "));
 		if (anc.feature) statSidebar.entries.push({type: "pf2-title", name: anc.feature.name}, ...anc.feature.entries);
@@ -981,15 +981,19 @@ class AncestriesPage extends BaseComponent {
 			evt.stopPropagation();
 			$dropDownImagesContent.empty();
 			const {veHerUrls, ancUrls} = this._getImageUrls();
-			const ancLinks = ancUrls.map(l => `<li><a href="${l}" target="_blank" rel="noopener noreferrer">${l}</a></li>`);
-			const veHerLinks = veHerUrls.map(l => `<li><a href="${l}" target="_blank" rel="noopener noreferrer">${l}</a></li>`);
-			ancLinks.forEach(l => $dropDownImagesContent.append(l));
-			if (ancLinks.length && veHerLinks.length) $dropDownImagesContent.append($(`<li class="divider"></li>`))
-			veHerLinks.forEach(l => $dropDownImagesContent.append(l));
-			if (ancLinks.length === 0 && veHerLinks.length === 0) $dropDownImagesContent.append($(`<li class="p-1">No Images available.</li>`))
+			const ancLinks = ancUrls.map(l => `<a href="${l}" target="_blank" rel="noopener noreferrer">${l}</a>`);
+			const veHerLinks = veHerUrls.map(l => `<a href="${l}" target="_blank" rel="noopener noreferrer">${l}</a>`);
+			if (evt.ctrlKey || evt.shiftKey) {
+				[...ancLinks, ...veHerLinks].forEach(l => $(l)[0].click());
+			} else {
+				ancLinks.forEach(l => $dropDownImagesContent.append(`<li>${l}</li>`));
+				if (ancLinks.length && veHerLinks.length) $dropDownImagesContent.append($(`<li class="divider"></li>`))
+				veHerLinks.forEach(l => $dropDownImagesContent.append(`<li>${l}</li>`));
+				if (ancLinks.length === 0 && veHerLinks.length === 0) $dropDownImagesContent.append($(`<li class="p-1">No Images available.</li>`))
 
-			$dropDownImagesButton.toggleClass("ui-tab__btn-tab-head");
-			$dropDownImages.toggleClass("open");
+				$dropDownImagesButton.toggleClass("ui-tab__btn-tab-head");
+				$dropDownImages.toggleClass("open");
+			}
 		}).appendTo($dropDownImages);
 		document.addEventListener("click", () => {
 			$dropDownImages.toggleClass("open", false)

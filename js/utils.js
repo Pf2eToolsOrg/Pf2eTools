@@ -5,7 +5,7 @@ if (typeof module !== "undefined") require("./parser.js");
 
 // in deployment, `IS_DEPLOYED = "<version number>";` should be set below.
 IS_DEPLOYED = undefined;
-VERSION_NUMBER = /* PF2ETOOLS_VERSION__OPEN */"0.5.0"/* PF2ETOOLS_VERSION__CLOSE */;
+VERSION_NUMBER = /* PF2ETOOLS_VERSION__OPEN */"0.5.17"/* PF2ETOOLS_VERSION__CLOSE */;
 DEPLOYED_STATIC_ROOT = ""; // ""; // FIXME re-enable this when we have a CDN again
 IS_VTT = false;
 
@@ -60,6 +60,10 @@ String.prototype.lowercaseFirst = String.prototype.lowercaseFirst || function ()
 	if (str.length === 0) return str;
 	if (str.length === 1) return str.charAt(0).toLowerCase();
 	return str.charAt(0).toLowerCase() + str.slice(1);
+};
+
+String.prototype.uq = String.prototype.uq || function () {
+	return this.unescapeQuotes();
 };
 
 String.prototype.toTitleCase = String.prototype.toTitleCase || function () {
@@ -688,6 +692,12 @@ JqueryUtil = {
 
 		JqueryUtil._ACTIVE_TOAST.push($toast);
 	},
+
+	isMobile () {
+		if (navigator && navigator.userAgentData && navigator.userAgentData.mobile) return true;
+		// Equivalent to `$width-screen-sm`
+		return window.matchMedia("(max-width: 768px)").matches;
+	},
 };
 
 if (typeof window !== "undefined") window.addEventListener("load", JqueryUtil.initEnhancements);
@@ -703,13 +713,23 @@ ElementUtil = {
 		mousedown,
 		mouseup,
 		mousemove,
+		keydown,
 		html,
 		text,
+		txt,
 		ele,
-		title,
 		children,
+		outer,
+
+		id,
+		name,
+		title,
+		val,
+		href,
+		type,
+		attrs,
 	}) {
-		ele = ele || document.createElement(tag);
+		ele = ele || (outer ? (new DOMParser()).parseFromString(outer, "text/html").body.childNodes[0] : document.createElement(tag));
 
 		if (clazz) ele.className = clazz;
 		if (style) ele.setAttribute("style", style);
@@ -719,10 +739,17 @@ ElementUtil = {
 		if (mousedown) ele.addEventListener("mousedown", mousedown);
 		if (mouseup) ele.addEventListener("mouseup", mouseup);
 		if (mousemove) ele.addEventListener("mousemove", mousemove);
+		if (keydown) ele.addEventListener("keydown", keydown);
 		if (html != null) ele.innerHTML = html;
-		if (text != null) ele.innerHTML = `${text}`.qq();
+		if (text != null || txt != null) ele.textContent = text;
+		if (id != null) ele.setAttribute("id", id);
+		if (name != null) ele.setAttribute("name", name);
 		if (title != null) ele.setAttribute("title", title);
-		if (children) for (let i = 0, len = children.length; i < len; ++i) ele.append(children[i]);
+		if (href != null) ele.setAttribute("href", href);
+		if (val != null) ele.setAttribute("value", val);
+		if (type != null) ele.setAttribute("type", type);
+		if (attrs != null) { for (const k in attrs) { if (attrs[k] === undefined) continue; ele.setAttribute(k, attrs[k]); } }
+		if (children) for (let i = 0, len = children.length; i < len; ++i) if (children[i] != null) ele.append(children[i]);
 
 		ele.appends = ele.appends || ElementUtil._appends.bind(ele);
 		ele.appendTo = ele.appendTo || ElementUtil._appendTo.bind(ele);
@@ -738,6 +765,11 @@ ElementUtil = {
 		ele.attr = ele.attr || ElementUtil._attr.bind(ele);
 		ele.val = ele.val || ElementUtil._val.bind(ele);
 		ele.html = ele.html || ElementUtil._html.bind(ele);
+		ele.txt = ele.txt || ElementUtil._txt.bind(ele);
+		ele.tooltip = ele.tooltip || ElementUtil._tooltip.bind(ele);
+		ele.onClick = ele.onClick || ElementUtil._onClick.bind(ele);
+		ele.onContextmenu = ele.onContextmenu || ElementUtil._onContextmenu.bind(ele);
+		ele.onChange = ele.onChange || ElementUtil._onChange.bind(ele);
 
 		return ele;
 	},
@@ -805,9 +837,26 @@ ElementUtil = {
 	},
 
 	_html (html) {
+		if (html === undefined) return this.innerHTML;
 		this.innerHTML = html;
 		return this;
 	},
+
+	_txt (txt) {
+		if (txt === undefined) return this.innerText;
+		this.innerText = txt;
+		return this;
+	},
+
+	_tooltip (title) {
+		return this.attr("title", title);
+	},
+
+	_onClick (fn) { return ElementUtil._onX(this, "click", fn); },
+	_onContextmenu (fn) { return ElementUtil._onX(this, "contextmenu", fn); },
+	_onChange (fn) { return ElementUtil._onX(this, "change", fn); },
+
+	_onX (ele, evtName, fn) { ele.addEventListener(evtName, fn); return ele; },
 
 	_val (val) {
 		if (val !== undefined) {
@@ -834,7 +883,37 @@ ElementUtil = {
 			default: return this.value;
 		}
 	},
-}
+
+	// region "Static"
+	getIndexPathToParent (parent, child) {
+		if (!parent.contains(child)) return null;
+
+		const path = [];
+
+		while (child !== parent) {
+			if (!child.parentElement) return null;
+
+			const ix = [...child.parentElement.children].indexOf(child);
+			if (!~ix) return null;
+
+			path.push(ix);
+
+			child = child.parentElement;
+		}
+
+		return path.reverse();
+	},
+
+	getChildByIndexPath (parent, indexPath) {
+		for (let i = 0; i < indexPath.length; ++i) {
+			const ix = indexPath[i];
+			parent = parent.children[ix];
+			if (!parent) return null;
+		}
+		return parent;
+	},
+	// endregion
+};
 
 if (typeof window !== "undefined") window.e_ = ElementUtil.getOrModify;
 
@@ -1916,6 +1995,7 @@ UrlUtil.PG_MAKE_BREW = "makebrew.html";
 UrlUtil.PG_DEMO_RENDER = "renderdemo.html";
 UrlUtil.PG_TABLES = "tables.html";
 UrlUtil.PG_ORGANIZATIONS = "organizations.html";
+UrlUtil.PG_CREATURETEMPLATE = "creaturetemplates.html";
 UrlUtil.PG_CHARACTERS = "characters.html";
 UrlUtil.PG_ACTIONS = "actions.html";
 UrlUtil.PG_ABILITIES = "abilities.html";
@@ -1949,6 +2029,7 @@ UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_DEITIES] = (it) => UrlUtil.encodeForHash(
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_HAZARDS] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_TABLES] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ORGANIZATIONS] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CREATURETEMPLATE] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ACTIONS] = (it) => UrlUtil.encodeForHash([it.add_hash ? `${it.name} (${it.add_hash})` : it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ABILITIES] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_LANGUAGES] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
@@ -1995,6 +2076,7 @@ UrlUtil.PG_TO_NAME[UrlUtil.PG_MANAGE_BREW] = "Homebrew Manager";
 UrlUtil.PG_TO_NAME[UrlUtil.PG_DEMO_RENDER] = "Renderer Demo";
 UrlUtil.PG_TO_NAME[UrlUtil.PG_TABLES] = "Tables";
 UrlUtil.PG_TO_NAME[UrlUtil.PG_ORGANIZATIONS] = "Organizations";
+UrlUtil.PG_TO_NAME[UrlUtil.PG_CREATURETEMPLATE] = "Creature Templates";
 UrlUtil.PG_TO_NAME[UrlUtil.PG_ACTIONS] = "Actions";
 UrlUtil.PG_TO_NAME[UrlUtil.PG_ABILITIES] = "Creature Abilities";
 UrlUtil.PG_TO_NAME[UrlUtil.PG_LANGUAGES] = "Languages";
@@ -2044,6 +2126,7 @@ UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_LANGUAGE] = UrlUtil.PG_LANGUAGES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_PLACE] = UrlUtil.PG_PLACES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_PLANE] = UrlUtil.PG_PLACES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_ORGANIZATION] = UrlUtil.PG_ORGANIZATIONS;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_CREATURETEMPLATE] = UrlUtil.PG_CREATURETEMPLATE;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_NATION] = UrlUtil.PG_PLACES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_SETTLEMENT] = UrlUtil.PG_PLACES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_RITUAL] = UrlUtil.PG_RITUALS;
@@ -2340,6 +2423,8 @@ DataUtil = {
 				case "deityFluff": return DataUtil.deityFluff.pMergeCopy(arr, entry, options);
 				case "organization": return DataUtil.organization.pMergeCopy(arr, entry, options);
 				case "organizationFluff": return DataUtil.organizationFluff.pMergeCopy(arr, entry, options);
+				case "creatureTemplate": return DataUtil.creatureTemplate.pMergeCopy(arr, entry, options);
+				case "creatureTemplateFluff": return DataUtil.creatureTemplateFluff.pMergeCopy(arr, entry, options);
 				default: throw new Error(`No dependency _copy merge strategy specified for property "${prop}"`);
 			}
 		}
@@ -2650,7 +2735,7 @@ DataUtil = {
 			}
 
 			function doMod_replaceTxt (modInfo, path) {
-				if (!copyTo[path]) return;
+				if (!getPropertyFromPath(copyTo, path)) return;
 
 				DataUtil.generic._walker_replaceTxt = DataUtil.generic._walker_replaceTxt || MiscUtil.getWalker();
 				const re = new RegExp(modInfo.replace, `g${modInfo.flags || ""}`);
@@ -2682,6 +2767,10 @@ DataUtil = {
 				// TODO: This is getting out of hand
 				const typesToReplaceIn = ["successDegree", "ability", "affliction", "lvlEffect"];
 				getPropertyFromPath(copyTo, path).forEach(it => {
+					if (path === "attacks") {
+						it.damage = it.damage.replace(re, modInfo.with);
+						it.traits = DataUtil.generic._walker_replaceTxt.walk(it.traits, handlers);
+					}
 					if (it.entries) it.entries = DataUtil.generic._walker_replaceTxt.walk(it.entries, handlers);
 					if (it.items) it.items = DataUtil.generic._walker_replaceTxt.walk(it.items, handlers);
 					if (typesToReplaceIn.includes(it.type)) {
@@ -3014,7 +3103,7 @@ DataUtil = {
 
 		async expandVariants (item) {
 			if (!item.variants) return [item];
-			const expanded = await Promise.all(item.variants.map(v => DataUtil.item._expandVariant(item, v)));
+			const expanded = await Promise.all(item.variants.filter(x => { if (x.exists !== true) return x }).map(v => DataUtil.item._expandVariant(item, v)));
 			return [item, ...expanded];
 		},
 
@@ -3040,6 +3129,7 @@ DataUtil = {
 			}
 			variant.type = generic.type || "Item";
 			variant.generic = "V";
+			variant.genericItem = `${generic.name} (generic)${generic.source.toLowerCase() !== "crb" ? `|${generic.source}` : "||"}${generic.name}`;
 			await DataUtil.generic._pApplyCopy(DataUtil.item, generic, variant, {});
 			delete variant.variants;
 			return variant;
@@ -3381,6 +3471,32 @@ DataUtil = {
 		_mergeCache: {},
 		async pMergeCopy (organizationFlfList, organizationFlf, options) {
 			return DataUtil.generic._pMergeCopy(DataUtil.organizationFluff, UrlUtil.PG_ORGANIZATIONS, organizationFlfList, organizationFlf, options);
+		},
+	},
+
+	creatureTemplate: {
+		_MERGE_REQUIRES_PRESERVE: {
+			page: true,
+			otherSources: true,
+		},
+		_mergeCache: {},
+		async pMergeCopy (creatureTemplateList, creatureTemplate, options) {
+			return DataUtil.generic._pMergeCopy(DataUtil.creatureTemplate, UrlUtil.PG_ORGANIZATIONS, creatureTemplateList, creatureTemplate, options);
+		},
+
+		loadJSON: async function () {
+			return DataUtil.loadJSON(`${Renderer.get().baseUrl}data/creaturetemplates.json`);
+		},
+	},
+
+	creatureTemplateFluff: {
+		_MERGE_REQUIRES_PRESERVE: {
+			page: true,
+			otherSources: true,
+		},
+		_mergeCache: {},
+		async pMergeCopy (creatureTemplateFlfList, creatureTemplateFlf, options) {
+			return DataUtil.generic._pMergeCopy(DataUtil.creatureTemplateFluff, UrlUtil.PG_ORGANIZATIONS, creatureTemplateFlfList, creatureTemplateFlf, options);
 		},
 	},
 
@@ -4501,6 +4617,8 @@ BrewUtil = {
 				return ["place"];
 			case UrlUtil.PG_ORGANIZATIONS:
 				return ["organization"];
+			case UrlUtil.PG_CREATURETEMPLATE:
+				return ["creatureTemplate"];
 			case UrlUtil.PG_RITUALS:
 				return ["ritual"];
 			case UrlUtil.PG_OPTIONAL_FEATURES:
@@ -4611,6 +4729,7 @@ BrewUtil = {
 			case "curse":
 			case "ability":
 			case "organization":
+			case "creatureTemplate":
 			case "deity":
 			case "language":
 			case "place":
@@ -4715,7 +4834,7 @@ BrewUtil = {
 		obj.uniqueId = CryptUtil.md5(JSON.stringify(obj));
 	},
 
-	_STORABLE: ["variantrule", "table", "tableGroup", "book", "bookData", "ancestry", "heritage", "versatileHeritage", "background", "class", "subclass", "classFeature", "subclassFeature", "archetype", "feat", "companion", "familiar", "eidolon", "adventure", "adventureData", "hazard", "action", "creature", "condition", "item", "baseitem", "spell", "disease", "curse", "ability", "deity", "language", "place", "ritual", "vehicle", "trait", "group", "domain", "skill", "optionalfeature", "organization"],
+	_STORABLE: ["variantrule", "table", "tableGroup", "book", "bookData", "ancestry", "heritage", "versatileHeritage", "background", "class", "subclass", "classFeature", "subclassFeature", "archetype", "feat", "companion", "familiar", "eidolon", "adventure", "adventureData", "hazard", "action", "creature", "condition", "item", "baseitem", "spell", "disease", "curse", "ability", "deity", "language", "place", "ritual", "vehicle", "trait", "group", "domain", "skill", "optionalfeature", "organization", "creatureTemplate"],
 	async pDoHandleBrewJson (json, page, pFuncRefresh) {
 		page = BrewUtil._PAGE || page;
 		await BrewUtil._lockHandleBrewJson.pLock();
@@ -4858,6 +4977,7 @@ BrewUtil = {
 			case UrlUtil.PG_LANGUAGES:
 			case UrlUtil.PG_PLACES:
 			case UrlUtil.PG_ORGANIZATIONS:
+			case UrlUtil.PG_CREATURETEMPLATE:
 			case UrlUtil.PG_RITUALS:
 			case UrlUtil.PG_VEHICLES:
 			case UrlUtil.PG_OPTIONAL_FEATURES:

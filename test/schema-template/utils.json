@@ -28,9 +28,9 @@
 				"AoE4",
 				"AoE5",
 				"AoE6",
-				"Bst",
-				"Bst2",
-				"Bst3",
+				"B1",
+				"B2",
+				"B3",
 				"CRB",
 				"EC0",
 				"EC1",
@@ -67,6 +67,14 @@
 				"SoT4",
 				"SoT5",
 				"SoT6",
+				"OoA0",
+				"OoA1",
+				"OoA2",
+				"OoA3",
+				"QFF0",
+				"QFF1",
+				"QFF2",
+				"QFF3",
 				"TiO"
 			]
 		},
@@ -594,7 +602,11 @@
 					"$ref": "#/definitions/alignmentTraits"
 				},
 				{
+					"$ref": "#/definitions/size"
+				},
+				{
 					"enum": [
+						"artifact",
 						"archetype",
 						"secret",
 						"dedication",
@@ -933,12 +945,12 @@
 		"size": {
 			"type": "string",
 			"enum": [
-				"Tiny",
-				"Small",
-				"Medium",
-				"Large",
-				"Huge",
-				"Gargantuan"
+				"tiny",
+				"small",
+				"medium",
+				"large",
+				"huge",
+				"gargantuan"
 			]
 		},
 		"sizeAbbv": {
@@ -1203,6 +1215,20 @@
 					"type": "integer",
 					"minimum": 0
 				},
+				"components": {
+					"type": "array",
+					"items": {
+						"type": "string",
+						"enum": [
+							"{@action Strike}",
+							"{@action Interact}",
+							"{@action Cast a Spell}",
+							"envision",
+							"command"
+						]
+					},
+					"minItems": 1
+				},
 				"entries": {
 					"type": "array",
 					"items": {
@@ -1241,7 +1267,87 @@
 			},
 			"additionalProperties": false,
 			"required": [
-				"name"
+				"entries"
+			]
+		},
+		"afflictionBlock": {
+			"properties": {
+				"type": {
+					"const": "affliction"
+				},
+				"name": {
+					"type": "string"
+				},
+				"source": {
+					"$ref": "#/definitions/sourceList"
+				},
+				"page": {
+					"type": "integer",
+					"minimum": 0
+				},
+				"entries": {
+					"type": "array",
+					"items": {
+						"$ref": "entry.json"
+					},
+					"minItems": 1
+				},
+				"level": {
+					"type": "integer"
+				},
+				"note": {
+					"type": "string"
+				},
+				"DC": {
+					"type": "integer"
+				},
+				"onset": {
+					"type": "string"
+				},
+				"maxDuration": {
+					"type": "string"
+				},
+				"traits": {
+					"type": "array",
+					"items": {
+						"type": "string",
+						"anyOf": [
+							{
+								"$ref": "#/definitions/anyTrait"
+							}
+						]
+					},
+					"minItems": 1
+				},
+				"stages": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"stage": {
+								"type": "integer"
+							},
+							"entry": {
+								"type": "string"
+							},
+							"duration": {
+								"type": "string"
+							}
+						},
+						"additionalProperties": false,
+						"required": [
+							"stage",
+							"entry"
+						]
+					},
+					"minItems": 1
+				}
+			},
+			"additionalProperties": false,
+			"required": [
+				"type",
+				"name",
+				"stages"
 			]
 		},
 		"attackBlock": {

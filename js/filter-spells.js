@@ -44,7 +44,7 @@ class PageFilterSpells extends PageFilter {
 			items: ["Focus", "Spell", "Cantrip"],
 			itemSortFn: null,
 		});
-		this._classFilter = new Filter({header: "Classes"});
+		this._classFilter = new Filter({header: "Class"});
 		this._subClassFilter = new Filter({
 			header: "Subclass",
 			displayFn: (it) => it.toTitleCase(),
@@ -95,9 +95,7 @@ class PageFilterSpells extends PageFilter {
 		});
 		this._schoolFilter = new Filter({
 			header: "School",
-			items: [...Parser.SKL_ABVS],
-			displayFn: Parser.spSchoolAbvToFull,
-			itemSortFn: (a, b) => SortUtil.ascSortLower(Parser.spSchoolAbvToFull(a.item), Parser.spSchoolAbvToFull(b.item)),
+			displayFn: it => it.toTitleCase(),
 		});
 		this._miscFilter = new Filter({
 			header: "Miscellaneous",
@@ -129,6 +127,8 @@ class PageFilterSpells extends PageFilter {
 				});
 			});
 		}).flat();
+		this.handleTraitImplies(spell, { traitProp: "_fTraits", entityTypes: ["spell"] });
+		spell._fSchool = (spell._fSchool || [])[0];
 		spell._fTime = Parser.timeToActivityType(spell.cast);
 		spell._fDurationType = Parser.getFilterDuration(spell);
 		spell._areaTypes = spell.area ? spell.area.types : [];
@@ -137,19 +137,11 @@ class PageFilterSpells extends PageFilter {
 			if (spell.savingThrow.type) spell._fSavingThrow = spell.savingThrow.type.map(t => Parser.savingThrowAbvToFull(t))
 			if (spell.savingThrow.basic) spell._fSavingThrow.push("Basic");
 		}
-		spell._fComponents = spell.cost == null ? [] : ["Cost"];
 		// TODO: Figure out how to make various configurations of components work in filters
 		// Example: [V], [V and S], [V and S and M]
-		// Current Data: [{V: true},{V: true, S: true},{V: true, S: true, M: true}]
 		// Right now we'll just live with this.
-		if (spell.components) {
-			spell.components.forEach(element => {
-				if (element.F) spell._fComponents.push("Focus");
-				if (element.M) spell._fComponents.push("Material");
-				if (element.S) spell._fComponents.push("Somatic");
-				if (element.V) spell._fComponents.push("Verbal");
-			});
-		}
+		spell._fComponents = [...new Set((spell.components || []).flat())];
+		if (spell.cost != null) spell._fComponents.push("Cost");
 		spell._fMisc = [];
 		if (spell.requirements !== null) spell._fMisc.push("Has Requirements");
 		if (spell.trigger !== null) spell._fMisc.push("Has Trigger");
@@ -157,7 +149,6 @@ class PageFilterSpells extends PageFilter {
 		if (spell.heightened) spell._fMisc.push("Can be Heightened");
 		if (spell.duration && spell.duration.sustain) spell._fMisc.push("Sustained");
 		if (spell.duration && spell.duration.dismiss) spell._fMisc.push("Can be Dismissed");
-		if (spell.hasBattleForm) spell._fMisc.push("Has Battle Form");
 		if (spell.summoning) spell._fMisc.push("Summoning");
 		if (spell.miscTags) {
 			spell.miscTags.forEach(element => {
@@ -179,10 +170,10 @@ class PageFilterSpells extends PageFilter {
 		if (isExcluded) return;
 
 		if (spell.level > 10) this._levelFilter.addItem(spell.level);
-		this._schoolFilter.addItem(spell.school);
 		this._sourceFilter.addItem(spell._fSources);
 		this._traditionFilter.addItem(spell._fTraditions);
-		if (spell.spellLists) this._traditionFilter.addItem(spell.spellLists)
+		if (spell.spellLists) this._traditionFilter.addItem(spell.spellLists);
+		if (spell._fSchool) this._schoolFilter.addItem(spell._fSchool);
 		this._spellTypeFilter.addItem(spell._fSpellType);
 		this._classFilter.addItem(spell._fClasses);
 		this._domainFilter.addItem(spell.domains);
@@ -222,7 +213,7 @@ class PageFilterSpells extends PageFilter {
 			s._fSpellType,
 			s.level,
 			s._fTraditions,
-			s.school,
+			s._fSchool,
 			s._fComponents,
 			s._fTime,
 			s._fDurationType,
@@ -239,6 +230,3 @@ class PageFilterSpells extends PageFilter {
 		)
 	}
 }
-
-PageFilterSpells.INCHES_PER_FOOT = 12;
-PageFilterSpells.FEET_PER_MILE = 5280;

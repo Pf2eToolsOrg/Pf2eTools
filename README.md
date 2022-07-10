@@ -1,5 +1,5 @@
 ## Pf2e.Tools
-[![Automated Build](https://github.com/Pf2eToolsOrg/Pf2eTools/actions/workflows/build.yml/badge.svg?branch=master)](https://github.com/Pf2eToolsOrg/Pf2eTools/actions/workflows/build.yml)
+[![Build and Deploy](https://github.com/Pf2eToolsOrg/Pf2eTools/actions/workflows/main.yml/badge.svg)](https://github.com/Pf2eToolsOrg/Pf2eTools/actions/workflows/main.yml)
 
 Visit the main site (not yet) or go to the unofficial GitHub [mirror](https://pf2etools.com).
 

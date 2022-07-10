@@ -12,33 +12,14 @@
 			]
 		},
 		{
-			"name": "Cursebound",
-			"source": "APG",
-			"page": 267,
-			"entries": [
-				"Spells with this trait increase the severity of your oracular curse when cast. Usually only revelation spells have this trait. You can't cast a cursebound spell if you don't have an oracular curse."
-			]
-		},
-		{
-			"name": "Olfactory",
-			"source": "Bst",
-			"page": 168,
-			"categories": [
-				"Effect"
-			],
-			"entries": [
-				"An olfactory effect can affect only creatures that can smell it. This applies only to olfactory parts of the effect, as determined by the GM."
-			]
-		},
-		{
 			"name": "[Magical Tradition]",
-			"source": "Bst",
+			"source": "B1",
 			"page": 342,
 			"categories": [
 				"Schools & Traditions"
 			],
 			"entries": [
-				"{@note Replace this trait with another fitting magic tradition, such as {@trait Arcane}, {@trait Divine}, {@trait Primal}, or {@trait Occult}."
+				"{@note Replace this trait with another fitting magic tradition, such as {@trait Arcane}, {@trait Divine}, {@trait Primal}, or {@trait Occult}.}"
 			]
 		},
 		{
@@ -76,8 +57,14 @@
 			"source": "CRB",
 			"page": 628,
 			"categories": [
-				"Schools & Traditions"
+				"Schools & Traditions",
+				"_school"
 			],
+			"implies": {
+				"spell": {
+					"_fSchool": "Abjuration"
+				}
+			},
 			"entries": [
 				"Effects and magic items with this trait are associated with the abjuration school of magic, typically involving protection or wards.",
 				{
@@ -88,7 +75,13 @@
 					"source": "CRB",
 					"page": 297
 				}
-			]
+			],
+			"_data": {
+				"school": {
+					"short": "Abj.",
+					"color": "00b921"
+				}
+			}
 		},
 		{
 			"name": "Academic",
@@ -139,7 +132,7 @@
 		},
 		{
 			"name": "Aeon",
-			"source": "Bst",
+			"source": "B1",
 			"page": 345,
 			"otherSources": {
 				"Reprinted": [
@@ -229,7 +222,7 @@
 		},
 		{
 			"name": "Amphibious",
-			"source": "Bst",
+			"source": "B1",
 			"page": 345,
 			"otherSources": {
 				"Reprinted": [
@@ -303,7 +296,7 @@
 		},
 		{
 			"name": "Any",
-			"source": "Bst",
+			"source": "B1",
 			"page": 345,
 			"categories": [
 				"Alignment",
@@ -337,7 +330,7 @@
 		},
 		{
 			"name": "Aquatic",
-			"source": "Bst",
+			"source": "B1",
 			"page": 345,
 			"otherSources": {
 				"Reprinted": [
@@ -416,7 +409,7 @@
 		},
 		{
 			"name": "Astral",
-			"source": "Bst",
+			"source": "B1",
 			"page": 345,
 			"categories": [
 				"Creature Type"
@@ -610,7 +603,7 @@
 		},
 		{
 			"name": "Boggard",
-			"source": "Bst",
+			"source": "B1",
 			"page": 345,
 			"categories": [
 				"Creature"
@@ -639,7 +632,7 @@
 		},
 		{
 			"name": "Brutal",
-			"source": "Bst2",
+			"source": "B2",
 			"page": 310,
 			"categories": [
 				"Armor & Weapon"
@@ -661,7 +654,7 @@
 		},
 		{
 			"name": "Caligni",
-			"source": "Bst",
+			"source": "B1",
 			"page": 345,
 			"otherSources": {
 				"Reprinted": [
@@ -710,7 +703,7 @@
 		},
 		{
 			"name": "Catfolk",
-			"source": "Bst",
+			"source": "B1",
 			"page": 345,
 			"otherSources": {
 				"Reprinted": [
@@ -735,7 +728,7 @@
 		},
 		{
 			"name": "CE",
-			"source": "Bst",
+			"source": "B1",
 			"page": 345,
 			"categories": [
 				"Alignment",
@@ -765,7 +758,7 @@
 		},
 		{
 			"name": "CG",
-			"source": "Bst",
+			"source": "B1",
 			"page": 345,
 			"categories": [
 				"Alignment",
@@ -788,7 +781,7 @@
 		},
 		{
 			"name": "Changeling",
-			"source": "Bst",
+			"source": "B1",
 			"page": 123,
 			"categories": [
 				"Ancestry & Heritage",
@@ -822,6 +815,14 @@
 			]
 		},
 		{
+			"name": "Charm",
+			"source": "B1",
+			"page": 77,
+			"entries": [
+				"{@note No entries available.}"
+			]
+		},
+		{
 			"name": "City",
 			"source": "GMG",
 			"page": 250,
@@ -847,22 +848,6 @@
 			]
 		},
 		{
-			"name": "Kaiju",
-			"source": "FRP2",
-			"page": 89,
-			"entries": [
-				"{@note No entries available.}"
-			]
-		},
-		{
-			"name": "Charm",
-			"source": "Bst",
-			"page": 77,
-			"entries": [
-				"{@note No entries available.}"
-			]
-		},
-		{
 			"name": "Cleric",
 			"source": "CRB",
 			"page": 629,
@@ -871,6 +856,17 @@
 			],
 			"entries": [
 				"This indicates abilities from the {@class cleric|CRB} class."
+			]
+		},
+		{
+			"name": "Climbing",
+			"source": "AAWS",
+			"page": 1,
+			"categories": [
+				"Armor & Weapon"
+			],
+			"entries": [
+				"The hand holding this weapon is freely available to {@action Climb}."
 			]
 		},
 		{
@@ -896,7 +892,7 @@
 		},
 		{
 			"name": "CN",
-			"source": "Bst",
+			"source": "B1",
 			"page": 345,
 			"categories": [
 				"Alignment",
@@ -975,7 +971,7 @@
 				"Anything that doesn't list another rarity trait ({@trait uncommon}, {@trait rare}, or {@trait unique}) automatically has the common trait. This rarity indicates that an ability, item, or spell is available to all players who meet the prerequisites for it.",
 				{
 					"type": "entriesOtherSource",
-					"source": "Bst",
+					"source": "B1",
 					"page": 344,
 					"entries": [
 						"A creature of this rarity is generally known and can be summoned with the appropriate summon spell."
@@ -1070,8 +1066,14 @@
 				]
 			},
 			"categories": [
-				"Schools & Traditions"
+				"Schools & Traditions",
+				"_school"
 			],
+			"implies": {
+				"spell": {
+					"_fSchool": "Conjuration"
+				}
+			},
 			"entries": [
 				"Effects and magic items with this trait are associated with the conjuration school of magic, typically involving summoning, creation, {@trait teleportation}, or moving things from place to place.",
 				{
@@ -1083,7 +1085,13 @@
 					"source": "CRB",
 					"page": 297
 				}
-			]
+			],
+			"_data": {
+				"school": {
+					"short": "Conj.",
+					"color": "bd0044"
+				}
+			}
 		},
 		{
 			"name": "Conrasu",
@@ -1180,7 +1188,7 @@
 		},
 		{
 			"name": "Couatl",
-			"source": "Bst2",
+			"source": "B2",
 			"page": 308,
 			"categories": [
 				"Creature"
@@ -1228,6 +1236,14 @@
 			]
 		},
 		{
+			"name": "Cursebound",
+			"source": "APG",
+			"page": 267,
+			"entries": [
+				"Spells with this trait increase the severity of your oracular curse when cast. Usually only revelation spells have this trait. You can't cast a cursebound spell if you don't have an oracular curse."
+			]
+		},
+		{
 			"name": "Cursed",
 			"source": "GMG",
 			"page": 251,
@@ -1245,7 +1261,7 @@
 		},
 		{
 			"name": "Daemon",
-			"source": "Bst",
+			"source": "B1",
 			"page": 346,
 			"otherSources": {
 				"Reprinted": [
@@ -1333,7 +1349,7 @@
 		},
 		{
 			"name": "Dero",
-			"source": "Bst",
+			"source": "B1",
 			"page": 346,
 			"categories": [
 				"Creature"
@@ -1373,7 +1389,7 @@
 		},
 		{
 			"name": "Dhampir",
-			"source": "Bst",
+			"source": "B1",
 			"page": 346,
 			"otherSources": {
 				"Expanded": [
@@ -1456,8 +1472,14 @@
 				]
 			},
 			"categories": [
-				"Schools & Traditions"
+				"Schools & Traditions",
+				"_school"
 			],
+			"implies": {
+				"spell": {
+					"_fSchool": "Divination"
+				}
+			},
 			"entries": [
 				"The divination school of magic typically involves obtaining or transferring information, or predicting events.",
 				{
@@ -1469,7 +1491,13 @@
 					"source": "CRB",
 					"page": 297
 				}
-			]
+			],
+			"_data": {
+				"school": {
+					"short": "Divin.",
+					"color": "00adb3"
+				}
+			}
 		},
 		{
 			"name": "Divine",
@@ -1531,7 +1559,7 @@
 		},
 		{
 			"name": "Dream",
-			"source": "Bst2",
+			"source": "B2",
 			"page": 308,
 			"categories": [
 				"Creature Type"
@@ -1762,8 +1790,14 @@
 				]
 			},
 			"categories": [
-				"Schools & Traditions"
+				"Schools & Traditions",
+				"_school"
 			],
+			"implies": {
+				"spell": {
+					"_fSchool": "Enchantment"
+				}
+			},
 			"entries": [
 				"Effects and magic items with this trait are associated with the enchantment school of magic, typically involving mind control, emotion alteration, and other mental effects.",
 				{
@@ -1774,7 +1808,13 @@
 					"source": "CRB",
 					"page": 297
 				}
-			]
+			],
+			"_data": {
+				"school": {
+					"short": "Ench.",
+					"color": "b30083"
+				}
+			}
 		},
 		{
 			"name": "Energy",
@@ -1872,8 +1912,14 @@
 				]
 			},
 			"categories": [
-				"Schools & Traditions"
+				"Schools & Traditions",
+				"_school"
 			],
+			"implies": {
+				"spell": {
+					"_fSchool": "Evocation"
+				}
+			},
 			"entries": [
 				"Effects and magic items with this trait are associated with the evocation school of magic, typically involving energy and elemental forces.",
 				{
@@ -1884,7 +1930,13 @@
 					"source": "CRB",
 					"page": 298
 				}
-			]
+			],
+			"_data": {
+				"school": {
+					"short": "Evoc.",
+					"color": "bb0100"
+				}
+			}
 		},
 		{
 			"name": "Evolution",
@@ -1969,7 +2021,7 @@
 		},
 		{
 			"name": "Fetchling",
-			"source": "Bst2",
+			"source": "B2",
 			"page": 308,
 			"otherSources": {
 				"Expanded": [
@@ -2260,7 +2312,7 @@
 		},
 		{
 			"name": "Fungus",
-			"source": "Bst",
+			"source": "B1",
 			"page": 345,
 			"otherSources": {
 				"Reprinted": [
@@ -2296,7 +2348,7 @@
 		},
 		{
 			"name": "Gargantuan",
-			"source": "Bst",
+			"source": "B1",
 			"page": 345,
 			"categories": [
 				"Size"
@@ -2318,7 +2370,7 @@
 		},
 		{
 			"name": "Genie",
-			"source": "Bst",
+			"source": "B1",
 			"page": 346,
 			"categories": [
 				"Creature"
@@ -2341,7 +2393,7 @@
 		},
 		{
 			"name": "Ghost",
-			"source": "Bst",
+			"source": "B1",
 			"page": 346,
 			"categories": [
 				"Creature"
@@ -2352,7 +2404,7 @@
 		},
 		{
 			"name": "Ghoul",
-			"source": "Bst",
+			"source": "B1",
 			"page": 346,
 			"otherSources": {
 				"Reprinted": [
@@ -2385,7 +2437,7 @@
 		},
 		{
 			"name": "Gnoll",
-			"source": "Bst",
+			"source": "B1",
 			"page": 346,
 			"otherSources": {
 				"Reprinted": [
@@ -2447,7 +2499,7 @@
 		},
 		{
 			"name": "Golem",
-			"source": "Bst",
+			"source": "B1",
 			"page": 346,
 			"otherSources": {
 				"Reprinted": [
@@ -2514,7 +2566,7 @@
 		},
 		{
 			"name": "Gremlin",
-			"source": "Bst",
+			"source": "B1",
 			"page": 346,
 			"otherSources": {
 				"Reprinted": [
@@ -2541,7 +2593,7 @@
 		},
 		{
 			"name": "Grippli",
-			"source": "Bst2",
+			"source": "B2",
 			"page": 309,
 			"otherSources": {
 				"Expanded": [
@@ -2717,7 +2769,7 @@
 			"source": "APG",
 			"page": 101,
 			"categories": [
-				"Class"
+				"Combat"
 			],
 			"entries": [
 				"A hex is a short-term effect generated on the fly from your patron's magic, requiring your familiar to draw from your patron. As such, you can cast only one spell with the hex trait each turn; attempts to cast a second hex spell on the same turn fail and the spellcasting actions are lost."
@@ -2749,7 +2801,7 @@
 		},
 		{
 			"name": "Huge",
-			"source": "Bst",
+			"source": "B1",
 			"page": 345,
 			"categories": [
 				"Size"
@@ -2796,7 +2848,7 @@
 		},
 		{
 			"name": "Ifrit",
-			"source": "Bst2",
+			"source": "B2",
 			"page": 308,
 			"categories": [
 				"Creature",
@@ -2817,8 +2869,14 @@
 				]
 			},
 			"categories": [
-				"Schools & Traditions"
+				"Schools & Traditions",
+				"_school"
 			],
+			"implies": {
+				"spell": {
+					"_fSchool": "Illusion"
+				}
+			},
 			"entries": [
 				"Effects and magic items with this trait are associated with the illusion school of magic, typically involving false sensory stimuli.",
 				{
@@ -2829,7 +2887,13 @@
 					"source": "CRB",
 					"page": 298
 				}
-			]
+			],
+			"_data": {
+				"school": {
+					"short": "Illu.",
+					"color": "006dbd"
+				}
+			}
 		},
 		{
 			"name": "Immeasurable",
@@ -2874,7 +2938,7 @@
 		},
 		{
 			"name": "Incorporeal",
-			"source": "Bst",
+			"source": "B1",
 			"page": 346,
 			"otherSources": {
 				"Reprinted": [
@@ -2893,7 +2957,7 @@
 		},
 		{
 			"name": "Inevitable",
-			"source": "Bst",
+			"source": "B1",
 			"page": 347,
 			"otherSources": {
 				"Reprinted": [
@@ -3044,6 +3108,14 @@
 			]
 		},
 		{
+			"name": "Kaiju",
+			"source": "FRP2",
+			"page": 89,
+			"entries": [
+				"{@note No entries available.}"
+			]
+		},
+		{
 			"name": "Kickback",
 			"source": "G&G",
 			"page": 234,
@@ -3068,7 +3140,7 @@
 		},
 		{
 			"name": "Kobold",
-			"source": "Bst",
+			"source": "B1",
 			"page": 347,
 			"otherSources": {
 				"Expanded": [
@@ -3102,7 +3174,7 @@
 		},
 		{
 			"name": "Large",
-			"source": "Bst",
+			"source": "B1",
 			"page": 345,
 			"categories": [
 				"Size"
@@ -3138,7 +3210,7 @@
 		},
 		{
 			"name": "LE",
-			"source": "Bst",
+			"source": "B1",
 			"page": 345,
 			"categories": [
 				"Alignment",
@@ -3150,7 +3222,7 @@
 		},
 		{
 			"name": "Leshy",
-			"source": "Bst",
+			"source": "B1",
 			"page": 347,
 			"otherSources": {
 				"Reprinted": [
@@ -3178,7 +3250,7 @@
 		},
 		{
 			"name": "LG",
-			"source": "Bst",
+			"source": "B1",
 			"page": 345,
 			"categories": [
 				"Alignment",
@@ -3243,7 +3315,7 @@
 		},
 		{
 			"name": "Lizardfolk",
-			"source": "Bst",
+			"source": "B1",
 			"page": 347,
 			"otherSources": {
 				"Expanded": [
@@ -3268,7 +3340,7 @@
 		},
 		{
 			"name": "LN",
-			"source": "Bst",
+			"source": "B1",
 			"page": 345,
 			"categories": [
 				"Alignment",
@@ -3364,7 +3436,7 @@
 		},
 		{
 			"name": "Medium",
-			"source": "Bst",
+			"source": "B1",
 			"page": 345,
 			"categories": [
 				"Size"
@@ -3401,7 +3473,7 @@
 		},
 		{
 			"name": "Merfolk",
-			"source": "Bst",
+			"source": "B1",
 			"page": 347,
 			"categories": [
 				"Creature"
@@ -3469,17 +3541,6 @@
 			]
 		},
 		{
-			"name": "Militaristic",
-			"source": "LOCG",
-			"page": 133,
-			"categories": [
-				"General"
-			],
-			"entries": [
-				"Militaristic entities have a command structure and an emphasis on armed combat in organized groups; militaristic organizations are often armies or law enforcement agencies."
-			]
-		},
-		{
 			"name": "Mindless",
 			"source": "CRB",
 			"page": 634,
@@ -3520,7 +3581,7 @@
 				"Creature"
 			],
 			"entries": [
-				"Minions are creatures that directly serve another creature. A creature with this trait can use only 2 actions per turn and can't use reactions. Your minion acts on your turn in combat, once per turn, when you spend an action to issue it commands. For an animal companion, you {@action Command an Animal}; for a minion that's a spell or magic item effect, like a summoned minion, you {@action Sustain a Spell} or {@action Sustain an Activation}; if not otherwise specified, you issue a verbal command, a single action with the {@trait auditory} and {@trait concentrate} traits. If given no commands, minions use no actions except to defend themselves or to escape obvious harm. If left unattended for long enough, typically 1 minute, mindless minions usually don't act, animals follow their instincts, and sapient minions act how they please."
+				"Minions are creatures that directly serve another creature. A creature with this trait can use only 2 actions per turn, doesn't have reactions, and can't act when it's not your turn. Your minion acts on your turn in combat, once per turn, when you spend an action to issue it commands. For an animal companion, you {@action Command an Animal}; for a minion that's a spell or magic item effect, like a summoned minion, you {@action Sustain a Spell} or {@action Sustain an Activation}; if not otherwise specified, you issue a verbal command as a single action with the {@trait auditory} and {@trait concentrate} traits. If given no commands, minions use no actions except to defend themselves or to escape obvious harm. If left unattended for long enough, typically 1 minute, {@trait mindless} minions usually don't act, animals follow their instincts, and sapient minions act how they please. A minion can't control other creatures."
 			]
 		},
 		{
@@ -3618,7 +3679,7 @@
 		},
 		{
 			"name": "Morlock",
-			"source": "Bst2",
+			"source": "B2",
 			"page": 308,
 			"categories": [
 				"Creature"
@@ -3674,7 +3735,7 @@
 		},
 		{
 			"name": "Mummy",
-			"source": "Bst",
+			"source": "B1",
 			"page": 347,
 			"otherSources": {
 				"Reprinted": [
@@ -3701,7 +3762,7 @@
 		},
 		{
 			"name": "Mutant",
-			"source": "Bst",
+			"source": "B1",
 			"page": 347,
 			"otherSources": {
 				"Reprinted": [
@@ -3717,7 +3778,7 @@
 		},
 		{
 			"name": "N",
-			"source": "Bst",
+			"source": "B1",
 			"page": 345,
 			"categories": [
 				"Alignment",
@@ -3729,7 +3790,7 @@
 		},
 		{
 			"name": "NE",
-			"source": "Bst",
+			"source": "B1",
 			"page": 345,
 			"categories": [
 				"Alignment",
@@ -3750,8 +3811,14 @@
 				]
 			},
 			"categories": [
-				"Schools & Traditions"
+				"Schools & Traditions",
+				"_school"
 			],
+			"implies": {
+				"spell": {
+					"_fSchool": "Necromancy"
+				}
+			},
 			"entries": [
 				"Effects and magic items with this trait are associated with the necromancy school of magic, typically involving forces of life and death.",
 				{
@@ -3763,7 +3830,13 @@
 					"source": "CRB",
 					"page": 298
 				}
-			]
+			],
+			"_data": {
+				"school": {
+					"short": "Necr.",
+					"color": "6c00cc"
+				}
+			}
 		},
 		{
 			"name": "Negative",
@@ -3803,7 +3876,7 @@
 		},
 		{
 			"name": "NG",
-			"source": "Bst",
+			"source": "B1",
 			"page": 345,
 			"categories": [
 				"Alignment",
@@ -3843,7 +3916,7 @@
 		},
 		{
 			"name": "Nymph",
-			"source": "Bst",
+			"source": "B1",
 			"page": 347,
 			"categories": [
 				"Creature"
@@ -3891,8 +3964,19 @@
 			]
 		},
 		{
+			"name": "Olfactory",
+			"source": "B1",
+			"page": 168,
+			"categories": [
+				"Effect"
+			],
+			"entries": [
+				"An olfactory effect can affect only creatures that can smell it. This applies only to olfactory parts of the effect, as determined by the GM."
+			]
+		},
+		{
 			"name": "Oni",
-			"source": "Bst2",
+			"source": "B2",
 			"page": 309,
 			"categories": [
 				"Creature"
@@ -3960,7 +4044,7 @@
 		},
 		{
 			"name": "Oread",
-			"source": "Bst2",
+			"source": "B2",
 			"page": 309,
 			"categories": [
 				"Creature",
@@ -3999,7 +4083,7 @@
 		},
 		{
 			"name": "Petitioner",
-			"source": "Bst2",
+			"source": "B2",
 			"page": 309,
 			"categories": [
 				"Creature Type"
@@ -4213,7 +4297,7 @@
 		},
 		{
 			"name": "Protean",
-			"source": "Bst",
+			"source": "B1",
 			"page": 347,
 			"otherSources": {
 				"Reprinted": [
@@ -4229,7 +4313,7 @@
 		},
 		{
 			"name": "Psychopomp",
-			"source": "Bst",
+			"source": "B1",
 			"page": 347,
 			"otherSources": {
 				"Reprinted": [
@@ -4245,7 +4329,7 @@
 		},
 		{
 			"name": "Qlippoth",
-			"source": "Bst2",
+			"source": "B2",
 			"page": 309,
 			"categories": [
 				"Creature"
@@ -4267,7 +4351,7 @@
 		},
 		{
 			"name": "Rakshasa",
-			"source": "Bst",
+			"source": "B1",
 			"page": 347,
 			"categories": [
 				"Creature"
@@ -4278,7 +4362,7 @@
 		},
 		{
 			"name": "Ranged Trip",
-			"source": "Bst",
+			"source": "B1",
 			"page": 85,
 			"otherSources": {
 				"Reprinted": [
@@ -4323,7 +4407,7 @@
 				"This rarity indicates that a rules element is very difficult to find in the game world. A rare feat, spell, item or the like is available to players only if the GM decides to include it in the game, typically through discovery during play.",
 				{
 					"type": "entriesOtherSource",
-					"source": "Bst",
+					"source": "B1",
 					"page": 344,
 					"entries": [
 						"Creatures with this trait are rare. They typically can't be summoned. The DC of {@action Recall Knowledge} checks related to these creatures is increased by 5."
@@ -4333,7 +4417,7 @@
 		},
 		{
 			"name": "Ratfolk",
-			"source": "Bst",
+			"source": "B1",
 			"page": 347,
 			"otherSources": {
 				"Expanded": [
@@ -4416,7 +4500,7 @@
 			"entries": [
 				"This weapon can channel energy damage. You gain the {@action Conduct Energy|LOAG} free action while wielding a resonant weapon.",
 				{
-					"type": "statblock",
+					"type": "data",
 					"tag": "action",
 					"name": "Conduct Energy",
 					"source": "LOAG"
@@ -4501,7 +4585,7 @@
 		},
 		{
 			"name": "Sea Devil",
-			"source": "Bst",
+			"source": "B1",
 			"page": 347,
 			"categories": [
 				"Creature"
@@ -4535,7 +4619,7 @@
 		},
 		{
 			"name": "Serpentfolk",
-			"source": "Bst2",
+			"source": "B2",
 			"page": 309,
 			"categories": [
 				"Creature"
@@ -4561,7 +4645,7 @@
 				"This magic involves shadows or the energy of the Shadow Plane.",
 				{
 					"type": "entriesOtherSource",
-					"source": "Bst2",
+					"source": "B2",
 					"page": 309,
 					"entries": [
 						"Creatures with this trait are natives of the Shadow Plane. They can survive the basic environmental effects of the Shadow Plane."
@@ -4619,7 +4703,7 @@
 		},
 		{
 			"name": "Skeleton",
-			"source": "Bst",
+			"source": "B1",
 			"page": 347,
 			"categories": [
 				"Creature"
@@ -4641,7 +4725,7 @@
 		},
 		{
 			"name": "Skulk",
-			"source": "Bst2",
+			"source": "B2",
 			"page": 309,
 			"categories": [
 				"Creature"
@@ -4668,7 +4752,7 @@
 		},
 		{
 			"name": "Small",
-			"source": "Bst",
+			"source": "B1",
 			"page": 345,
 			"categories": [
 				"Size"
@@ -4723,7 +4807,7 @@
 		},
 		{
 			"name": "Soulbound",
-			"source": "Bst",
+			"source": "B1",
 			"page": 347,
 			"otherSources": {
 				"Reprinted": [
@@ -4784,7 +4868,7 @@
 		},
 		{
 			"name": "Spriggan",
-			"source": "Bst2",
+			"source": "B2",
 			"page": 310,
 			"categories": [
 				"Creature"
@@ -4795,7 +4879,7 @@
 		},
 		{
 			"name": "Sprite",
-			"source": "Bst",
+			"source": "B1",
 			"page": 347,
 			"categories": [
 				"Creature",
@@ -4901,7 +4985,7 @@
 		},
 		{
 			"name": "Suli",
-			"source": "Bst2",
+			"source": "B2",
 			"page": 310,
 			"categories": [
 				"Creature",
@@ -4924,9 +5008,8 @@
 				"Creature"
 			],
 			"entries": [
-				"A creature called by a {@trait conjuration} spell or effect gains the summoned trait. A summoned creature can't summon other creatures, create things of value, or cast spells that require a cost. It has the {@trait minion} trait. If it tries to cast a spell of equal or higher level than the spell that summoned it, it overpowers the summoning magic, causing the summoned creature's spell to fail and the summon spell to end. Otherwise, the summoned creature uses the standard abilities for a creature of its kind. It generally attacks your enemies to the best of its abilities. If you can communicate with it, you can attempt to command it, but the GM determines the degree to which it follows your commands.",
-				"Immediately when you finish {@action Cast a Spell|CRB|Casting the Spell}, the summoned creature uses its 2 actions for that turn. A summoned creature can't control any spawn or other creatures generated from it, and such creatures return to their unaltered state (usually a corpse in the case of spawn) once the summoned creature is gone. If it's unclear what this state would be, the GM decides.",
-				"Summoned creatures can be banished by various spells and effects. They are automatically banished if reduced to 0 Hit Points or if the spell that called them ends."
+				"A creature called by a spell or effect gains the summoned trait. A summoned creature can't summon other creatures, create things of value, or cast spells that require a cost. It has the {@trait minion} trait. If it tries to {@action Cast a Spell} of equal or higher level than the spell that summoned it, it overpowers the summoning magic, causing its own spell to fail and the summon spell to end. Otherwise, the summoned creature uses the standard abilities for a creature of its kind. It generally attacks your enemies to the best of its ability. If you can communicate with it, you can attempt to command it, but the GM determines the degree to which it follows your commands.",
+				"Immediately when you finish {@action Cast a Spell||Casting the Spell}, the summoned creature uses its 2 actions for that turn. A spawn or other creature generated from a summoned creature returns to its unaltered state (usually a corpse in the case of spawn) once the summoned creature is gone. If it's unclear what this state would be, the GM decides. Summoned creatures can be banished by various spells and effects. They are automatically banished if reduced to 0 Hit Points or if the spell that called them ends."
 			]
 		},
 		{
@@ -4942,7 +5025,7 @@
 		},
 		{
 			"name": "Swarm",
-			"source": "Bst",
+			"source": "B1",
 			"page": 347,
 			"otherSources": {
 				"Reprinted": [
@@ -4985,7 +5068,7 @@
 		},
 		{
 			"name": "Sylph",
-			"source": "Bst2",
+			"source": "B2",
 			"page": 309,
 			"categories": [
 				"Creature",
@@ -5025,7 +5108,7 @@
 		},
 		{
 			"name": "Tane",
-			"source": "Bst2",
+			"source": "B2",
 			"page": 310,
 			"categories": [
 				"Creature"
@@ -5071,7 +5154,7 @@
 		},
 		{
 			"name": "Tengu",
-			"source": "Bst",
+			"source": "B1",
 			"page": 270,
 			"categories": [
 				"Creature",
@@ -5083,7 +5166,7 @@
 		},
 		{
 			"name": "Tethered",
-			"source": "Bst",
+			"source": "B1",
 			"page": 85,
 			"otherSources": {
 				"Reprinted": [
@@ -5115,7 +5198,7 @@
 		},
 		{
 			"name": "Tiefling",
-			"source": "Bst",
+			"source": "B1",
 			"page": 270,
 			"categories": [
 				"Ancestry & Heritage"
@@ -5126,7 +5209,7 @@
 		},
 		{
 			"name": "Time",
-			"source": "Bst2",
+			"source": "B2",
 			"page": 310,
 			"categories": [
 				"Creature Type"
@@ -5149,7 +5232,7 @@
 		},
 		{
 			"name": "Tiny",
-			"source": "Bst",
+			"source": "B1",
 			"page": 345,
 			"categories": [
 				"Size"
@@ -5181,8 +5264,14 @@
 				]
 			},
 			"categories": [
-				"Schools & Traditions"
+				"Schools & Traditions",
+				"_school"
 			],
+			"implies": {
+				"spell": {
+					"_fSchool": "Transmutation"
+				}
+			},
 			"entries": [
 				"Effects and magic items with this trait are associated with the transmutation school of magic, typically changing something's form.",
 				{
@@ -5193,7 +5282,13 @@
 					"source": "CRB",
 					"page": 298
 				}
-			]
+			],
+			"_data": {
+				"school": {
+					"short": "Trans.",
+					"color": "ccbe00"
+				}
+			}
 		},
 		{
 			"name": "Trap",
@@ -5224,7 +5319,7 @@
 		},
 		{
 			"name": "Troll",
-			"source": "Bst",
+			"source": "B1",
 			"page": 347,
 			"otherSources": {
 				"Reprinted": [
@@ -5325,7 +5420,7 @@
 				"Something of uncommon rarity requires special training or comes from a particular culture or part of the world. Some character choices give access to uncommon options, and the GM can choose to allow access for anyone.",
 				{
 					"type": "entriesOtherSource",
-					"source": "Bst",
+					"source": "B1",
 					"page": 344,
 					"entries": [
 						"Less is known about uncommon creatures than common creatures. They typically can't be summoned. The DC of {@action Recall Knowledge} checks related to these creature is increased by 2."
@@ -5353,7 +5448,7 @@
 		},
 		{
 			"name": "Undine",
-			"source": "Bst2",
+			"source": "B2",
 			"page": 310,
 			"categories": [
 				"Creature",
@@ -5379,7 +5474,7 @@
 				"A rules element with this trait is one-of-a-kind.",
 				{
 					"type": "entriesOtherSource",
-					"source": "Bst",
+					"source": "B1",
 					"page": 345,
 					"entries": [
 						"A creature with this rarity is one of a kind. The DC of Recall Knowledge checks related to this creature is increased by 10."
@@ -5397,7 +5492,7 @@
 		},
 		{
 			"name": "Urdefhan",
-			"source": "Bst2",
+			"source": "B2",
 			"page": 310,
 			"categories": [
 				"Creature"
@@ -5408,7 +5503,7 @@
 		},
 		{
 			"name": "Vampire",
-			"source": "Bst",
+			"source": "B1",
 			"page": 347,
 			"otherSources": {
 				"Reprinted": [
@@ -5424,7 +5519,7 @@
 		},
 		{
 			"name": "Velstrac",
-			"source": "Bst2",
+			"source": "B2",
 			"page": 310,
 			"categories": [
 				"Creature"
@@ -5562,7 +5657,7 @@
 				"Effects with the water trait either manipulate or conjure water. Those that manipulate water have no effect in an area without water. Creatures with this trait consist primarily of water or have a magical connection to the element.",
 				{
 					"type": "entriesOtherSource",
-					"source": "Bst",
+					"source": "B1",
 					"page": 344,
 					"entries": [
 						"These planes are mostly liquid. Visitors who can't breathe water or reach an air pocket likely drown. Water magic is enhanced, and {@trait fire} magic is impeded. Creatures with a weakness to water take damage equal to double their weakness at the end of each round."
@@ -5594,7 +5689,7 @@
 		},
 		{
 			"name": "Werecreature",
-			"source": "Bst",
+			"source": "B1",
 			"page": 347,
 			"otherSources": {
 				"Reprinted": [
@@ -5610,7 +5705,7 @@
 		},
 		{
 			"name": "Wight",
-			"source": "Bst",
+			"source": "B1",
 			"page": 332,
 			"otherSources": {
 				"Reprinted": [
@@ -5653,7 +5748,7 @@
 		},
 		{
 			"name": "Wraith",
-			"source": "Bst",
+			"source": "B1",
 			"page": 335,
 			"otherSources": {
 				"Reprinted": [
@@ -5669,7 +5764,7 @@
 		},
 		{
 			"name": "Xulgath",
-			"source": "Bst",
+			"source": "B1",
 			"page": 347,
 			"categories": [
 				"Creature"
@@ -5680,7 +5775,7 @@
 		},
 		{
 			"name": "Zombie",
-			"source": "Bst",
+			"source": "B1",
 			"page": 347,
 			"categories": [
 				"Creature"

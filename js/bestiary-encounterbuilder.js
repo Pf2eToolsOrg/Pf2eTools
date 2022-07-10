@@ -539,6 +539,8 @@ class EncounterBuilder extends ProxyBase {
 		document.title = "Encounter Builder - Pf2eTools";
 		$(`body`).addClass("ecgen_active");
 		this.updateDifficulty();
+		ListUtil.doDeselectAll();
+		ListUtil.doSublistDeselectAll();
 	}
 
 	hide () {
@@ -755,6 +757,10 @@ class EncounterBuilder extends ProxyBase {
 		else handleNoImages();
 	}
 
+	static _getFauxCr (name, source, scaledTo) {
+		return {name, source, _isScaledLvl: scaledTo != null, _scaledLvl: scaledTo};
+	}
+
 	async pDoLvlChange ($iptLvl, ixCr, scaledTo) {
 		await this._lock.pLock();
 
@@ -771,14 +777,14 @@ class EncounterBuilder extends ProxyBase {
 				const state = ListUtil.getExportableSublist();
 				const toFindHash = UrlUtil.autoEncodeHash(creature);
 
-				const toFindUid = !(scaledTo == null || baseLvl === scaledTo) ? getCustomHashId(creature.name, creature.source, scaledTo) : null;
+				const toFindUid = !(scaledTo == null || baseLvl === scaledTo) ? Renderer.creature.getCustomHashId(EncounterBuilder._getFauxCr(creature.name, creature.source, scaledTo)) : null;
 				const ixCurrItem = state.items.findIndex(it => {
 					if (scaledTo == null || scaledTo === baseLvl) return !it.customHashId && it.h === toFindHash;
 					else return it.customHashId === toFindUid;
 				});
 				if (!~ixCurrItem) throw new Error(`Could not find previously sublisted item!`);
 
-				const toFindNxtUid = baseLvl !== targetLvl ? getCustomHashId(creature.name, creature.source, targetLvl) : null;
+				const toFindNxtUid = baseLvl !== targetLvl ? Renderer.creature.getCustomHashId(EncounterBuilder._getFauxCr(creature.name, creature.source, targetLvl)) : null;
 				const nextItem = state.items.find(it => {
 					if (targetLvl === baseLvl) return !it.customHashId && it.h === toFindHash;
 					else return it.customHashId === toFindNxtUid;
@@ -792,7 +798,7 @@ class EncounterBuilder extends ProxyBase {
 				} else {
 					// if we're returning to the original level, wipe the existing UID. Otherwise, adjust it
 					if (targetLvl === baseLvl) delete state.items[ixCurrItem].customHashId;
-					else state.items[ixCurrItem].customHashId = getCustomHashId(creature.name, creature.source, targetLvl);
+					else state.items[ixCurrItem].customHashId = Renderer.creature.getCustomHashId(EncounterBuilder._getFauxCr(creature.name, creature.source, targetLvl));
 				}
 
 				await this._pLoadSublist(state);

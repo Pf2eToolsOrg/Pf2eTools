@@ -3562,24 +3562,6 @@
 			]
 		},
 		{
-			"name": "Griffon Cane",
-			"source": "LOTGB",
-			"page": 67,
-			"type": "Item",
-			"level": 0,
-			"price": {
-				"coin": "gp",
-				"amount": 1
-			},
-			"usage": "held in 1 hand",
-			"bulk": "L",
-			"category": "Assistive Item",
-			"subCategory": "Canes & Crutches",
-			"entries": [
-				"A griffon cane is named for the shape of its base, which features four small pronged supports splayed out in a manner similar to a griffon's talons. A griffon cane's splayed foot enables it to stand upright by itself. A griffon cane deals {@damage 1d6} bludgeoning damage, has the backswing and two-hand d10 traits, and is a martial melee weapon in the club weapon group."
-			]
-		},
-		{
 			"name": "Harmonic Hauberk",
 			"source": "LOTGB",
 			"page": 84,
@@ -5708,26 +5690,6 @@
 			]
 		},
 		{
-			"name": "Probing Cane",
-			"source": "LOTGB",
-			"page": 67,
-			"type": "Item",
-			"level": 0,
-			"price": {
-				"coin": "sp",
-				"amount": 5
-			},
-			"usage": "held in 1 hand",
-			"bulk": "L",
-			"category": "Assistive Item",
-			"subCategory": "Canes & Crutches",
-			"entries": [
-				"Your cane indicates that you have low vision or are blind. By holding this cane in front of you, you indicate to those around that you're partially sighted, which is particularly useful in urban or busy places to let others know to give you enough space.",
-				"The cane is typically several feet long, generally reaching the user's chin, but can be lengthened or shortened as needed.",
-				"Probing canes are made from reinforced wood with the same strengthening process and treatment as a longbow, creating a cane that is both high quality and durable enough for an adventuring owner to use as a weapon. A probing cane deals {@damage 1d6} bludgeoning damage, has the {@trait finesse} and {@trait sweep} traits, and is a martial melee weapon in the club weapon group."
-			]
-		},
-		{
 			"name": "Psychic Brigandine",
 			"source": "LOTGB",
 			"page": 42,
@@ -7292,7 +7254,7 @@
 			]
 		},
 		{
-			"name": "Staff Of Final Rest",
+			"name": "Staff of Final Rest",
 			"source": "LOTGB",
 			"page": 30,
 			"type": "Item",
@@ -7307,7 +7269,75 @@
 			"bulk": 1,
 			"category": "Staff",
 			"entries": [
-				"Historia Reliquary Wares."
+				"This white marble staff is carved into the figure of an abstract knight, its shield bearing the symbol of Lastwall, with a wickedly pointed sword made of dark wood raised high above its head. When you wield it as a weapon, it gains the versatile P trait and functions as a wooden stake, allowing you to use it to stake vampires, and your Strikes with the staff gain a +1 circumstance bonus to damage rolls against undead.",
+				{
+					"type": "ability",
+					"components": [
+						"{@action Cast a Spell}"
+					],
+					"entries": [
+						"You expend a number of charges from the staff to cast a spell from its list."
+					]
+				}
+			],
+			"craftReq": "Supply one casting of all listed levels of all listed spells.",
+			"generic": "G",
+			"variants": [
+				{
+					"name": "staff of final rest",
+					"level": 6,
+					"price": {
+						"amount": 240,
+						"coin": "gp"
+					},
+					"entries": [
+						{
+							"type": "list",
+							"items": [
+								"{@b Cantrip} {@spell disrupt undead}",
+								"{@b 1st} {@spell disrupting weapons}, {@spell heal}",
+								"{@b 2nd} {@spell heal}, {@spell gentle repose}"
+							]
+						}
+					]
+				},
+				{
+					"name": "greater staff of final rest",
+					"level": 10,
+					"price": {
+						"amount": 900,
+						"coin": "gp"
+					},
+					"entries": [
+						"The circumstance bonus to damage rolls is +2.",
+						{
+							"type": "list",
+							"items": [
+								"{@b 3rd} {@spell bind undead}, {@spell disrupting weapons}, {@spell heal}",
+								"{@b 4th} {@spell heal}, {@spell holy cascade}"
+							]
+						}
+					]
+				},
+				{
+					"name": "major staff of final rest",
+					"level": 16,
+					"price": {
+						"amount": 9000,
+						"coin": "gp"
+					},
+					"entries": [
+						"The circumstance bonus to damage rolls is +3.",
+						{
+							"type": "list",
+							"items": [
+								"{@b 5th} {@spell death ward}, {@spell disrupting weapons}, {@spell heal}",
+								"{@b 6th} {@spell field of life}, {@spell heal}, {@spell holy cascade}",
+								"{@b 7th} {@spell heal}, {@spell holy cascade}, {@spell sunburst}"
+							]
+						}
+					]
+				}
 			]
 		},
 		{
@@ -7351,9 +7381,9 @@
 						{
 							"type": "list",
 							"items": [
-								"{@bold Cantrip} daze",
-								"{@bold 1st} alarm, déjà vu (Advanced Player's Guide 218), sleep",
-								"{@bold 2nd} phantasmal treasure, silence"
+								"{@bold Cantrip} {@spell daze}",
+								"{@bold 1st} {@spell alarm}, {@spell déjà vu|apg}, {@spell sleep}",
+								"{@bold 2nd} {@spell phantasmal treasure}, {@spell silence}"
 							]
 						}
 					]
@@ -7369,9 +7399,9 @@
 						{
 							"type": "list",
 							"items": [
-								"{@bold 3rd} dream message",
-								"{@bold 4th} dream message, nightmare, sleep",
-								"{@bold 5th} dreaming potential, illusory scene"
+								"{@bold 3rd} {@spell dream message}",
+								"{@bold 4th} {@spell dream message}, {@spell nightmare}, {@spell sleep}",
+								"{@bold 5th} {@spell dreaming potential}, {@spell illusory scene}"
 							]
 						}
 					]
@@ -7387,9 +7417,9 @@
 						{
 							"type": "list",
 							"items": [
-								"{@bold 6th} illusory scene",
-								"{@bold 7th} project image, visions of danger",
-								"{@bold 8th} dream council, maze, visions of danger"
+								"{@bold 6th} {@spell illusory scene}",
+								"{@bold 7th} {@spell project image}, {@spell visions of danger}",
+								"{@bold 8th} {@spell dream council}, {@spell maze}, {@spell visions of danger}"
 							]
 						}
 					]

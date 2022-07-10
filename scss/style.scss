@@ -1777,8 +1777,22 @@ input[type=checkbox].readonly {
 		min-height: 75px;
 		max-height: 80%;
 
-		&::after {
-			content: '...';
+		@media (max-width: $max-width-screen-md) {
+			max-height: 40vh;
+			height: initial;
+		}
+	}
+
+	&__ {
+		&wrp-cols {
+			display: flex;
+
+			> *:last-child {
+				flex-grow: 1;
+			}
+		}
+
+		&ele-resize {
 			background-color: #aaa4;
 			border: 1px solid $rgb-border-grey--trans-muted;
 			position: absolute;
@@ -1790,14 +1804,6 @@ input[type=checkbox].readonly {
 			line-height: 1px;
 			font-size: 10px;
 			text-align: center;
-		}
-	}
-
-	&__wrp-cols {
-		display: flex;
-
-		> *:last-child {
-			flex-grow: 1;
 		}
 	}
 }

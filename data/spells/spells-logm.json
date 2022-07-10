@@ -9,7 +9,6 @@
 				"acid",
 				"evocation"
 			],
-			"school": "V",
 			"traditions": [
 				"arcane",
 				"primal"
@@ -19,17 +18,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "120 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 120
-				}
+				"type": "feet",
+				"number": 120
 			},
 			"area": {
 				"types": [
@@ -49,9 +45,8 @@
 				"You evoke a storm of acid rain that pelts the area for the spell's duration. A creature that begins its turn in the area takes {@damage 3d8} acid damage (basic Reflex save)."
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 2,
-					"entries": [
+				"plusX": {
+					"2": [
 						"The damage increases by {@dice 1d8}."
 					]
 				}
@@ -66,7 +61,6 @@
 				"acid",
 				"evocation"
 			],
-			"school": "V",
 			"traditions": [
 				"arcane",
 				"primal"
@@ -76,10 +70,10 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"area": {
 				"types": [
@@ -97,9 +91,8 @@
 				"You create a shell of acid around yourself that immediately bursts outward, dealing {@damage 2d6} acid damage to each creature in the area."
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 1,
-					"entries": [
+				"plusX": {
+					"1": [
 						"The damage increases by {@dice 2d6}."
 					]
 				}
@@ -111,23 +104,22 @@
 			"page": 112,
 			"focus": true,
 			"level": 1,
-			"domains": [
-				"change"
-			],
 			"traits": [
 				"morph",
 				"transmutation"
 			],
-			"school": "T",
+			"domains": [
+				"change"
+			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"duration": {
 				"type": "timed",
@@ -156,22 +148,21 @@
 			"source": "LOGM",
 			"page": 112,
 			"focus": true,
-			"domains": [
-				"change"
-			],
 			"level": 4,
 			"traits": [
 				"abjuration"
 			],
-			"school": "A",
+			"domains": [
+				"change"
+			],
 			"cast": {
 				"number": 1,
 				"unit": "reaction"
 			},
 			"components": [
-				{
-					"S": true
-				}
+				[
+					"S"
+				]
 			],
 			"trigger": "You take acid, cold, electricity, fire, or sonic damage.",
 			"duration": {
@@ -186,9 +177,8 @@
 				"You shift yourself to adapt to the mystical wavelengths of the energy damage, protecting yourself from further harm. You gain resistance 5 to the triggering energy type; you gain this resistance after you take the triggering damage, so it applies only to future damage you take during the duration."
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 2,
-					"entries": [
+				"plusX": {
+					"2": [
 						"Increase the resistance by 5."
 					]
 				}
@@ -204,7 +194,6 @@
 				"mental",
 				"nonlethal"
 			],
-			"school": "E",
 			"traditions": [
 				"arcane",
 				"occult"
@@ -214,17 +203,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 creature",
 			"savingThrow": {
@@ -254,9 +240,8 @@
 				}
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 1,
-					"entries": [
+				"plusX": {
+					"1": [
 						"The damage increases by {@dice 2d8}."
 					]
 				}
@@ -271,7 +256,6 @@
 				"abjuration",
 				"mental"
 			],
-			"school": "A",
 			"traditions": [
 				"occult"
 			],
@@ -280,10 +264,10 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"savingThrow": {
 				"type": [
@@ -313,9 +297,8 @@
 				}
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 1,
-					"entries": [
+				"plusX": {
+					"1": [
 						"The damage increases by {@dice 2d8}."
 					]
 				}
@@ -329,7 +312,6 @@
 			"traits": [
 				"divination"
 			],
-			"school": "D",
 			"traditions": [
 				"arcane",
 				"occult"
@@ -339,17 +321,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 creature",
 			"duration": {
@@ -364,9 +343,8 @@
 				"You grant the target brief foresight. The target gains a +1 status bonus to its next initiative roll, after which the spell ends."
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 2,
-					"entries": [
+				"plusX": {
+					"2": [
 						"The status bonus increases by 1, to a maximum of +4 at 7th level."
 					]
 				}
@@ -378,31 +356,27 @@
 			"page": 117,
 			"focus": true,
 			"level": 4,
-			"domains": [
-				"stars"
-			],
 			"traits": [
 				"evocation",
 				"light"
 			],
-			"school": "V",
+			"domains": [
+				"stars"
+			],
 			"cast": {
 				"number": 3,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true,
-					"V": true
-				}
+				[
+					"M",
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "150 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 150
-				}
+				"type": "feet",
+				"number": 150
 			},
 			"savingThrow": {
 				"type": [
@@ -424,9 +398,8 @@
 				"Draw five lines, one at a time; each line must anchor at you or a creature or object already connected to a previous line, and it must end at a creature or object within 30 feet of its anchor (possibly allowing the asterism to extend to its full 150-foot range). A creature that begins its turn in one of these lines or enters one of these lines on its turn takes {@damage 4d6} fire damage (basic Reflex save). A creature can take this damage only once per turn, even if it moves through several lines. Targets that are part of the asterism do not take damage from it. If the distance between two targets (or you and a target) ever exceeds 30 feet, the line of starlight between the two breaks, and any lines that now no longer have a direct path back to you also break. You can {@action Dismiss} the spell."
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 1,
-					"entries": [
+				"plusX": {
+					"1": [
 						"The damage increases by {@dice 1d6}."
 					]
 				}
@@ -442,7 +415,6 @@
 				"enchantment",
 				"mental"
 			],
-			"school": "E",
 			"traditions": [
 				"arcane"
 			],
@@ -451,17 +423,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 creature",
 			"savingThrow": {
@@ -496,23 +465,22 @@
 			"source": "LOGM",
 			"page": 115,
 			"focus": true,
-			"domains": [
-				"lightning"
-			],
 			"level": 4,
 			"traits": [
 				"electricity",
 				"evocation"
 			],
-			"school": "V",
+			"domains": [
+				"lightning"
+			],
 			"cast": {
 				"number": 1,
 				"unit": "reaction"
 			},
 			"components": [
-				{
-					"S": true
-				}
+				[
+					"S"
+				]
 			],
 			"trigger": "You would take electricity damage.",
 			"duration": {
@@ -527,7 +495,7 @@
 				"When lightning is turned at you, you store the charge safely within yourself, unleashing it when the time is right. You gain electricity resistance 10 against the triggering effect. If you successfully prevent damage in this way, at any time during the spell's duration, you can spend a single action, which has the {@trait attack} trait, to expend the charge and make a melee spell attack at an adjacent target or a ranged spell attack at a target within 60 feet. This attack deals electricity damage equal to the damage prevented by bottle the storm. If you cast {@spell bottle the storm|LOGM} a second time before the original duration elapses, or if you do not make this attack, the stored charge dissipates harmlessly."
 			],
 			"heightened": {
-				"x": [
+				"X": [
 					{
 						"level": 7,
 						"entries": [
@@ -552,7 +520,6 @@
 				"abjuration",
 				"curse"
 			],
-			"school": "A",
 			"traditions": [
 				"divine"
 			],
@@ -561,17 +528,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "touch",
-				"distance": {
-					"type": "touch",
-					"amount": 1
-				}
+				"type": "touch",
+				"number": 1
 			},
 			"targets": "1 creature",
 			"savingThrow": {
@@ -606,31 +570,27 @@
 			"page": 115,
 			"focus": true,
 			"level": 1,
-			"domains": [
-				"lightning"
-			],
 			"traits": [
 				"attack",
 				"electricity",
 				"evocation"
 			],
-			"school": "V",
+			"domains": [
+				"lightning"
+			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "60 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 60
-				}
+				"type": "feet",
+				"number": 60
 			},
 			"targets": "1 or more creatures",
 			"entries": [
@@ -644,9 +604,8 @@
 				}
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 1,
-					"entries": [
+				"plusX": {
+					"1": [
 						"The initial damage increases by {@dice 1d6}, and the {@condition persistent damage} increases by 1."
 					]
 				}
@@ -666,7 +625,6 @@
 				"cold",
 				"evocation"
 			],
-			"school": "V",
 			"traditions": [
 				"arcane",
 				"primal"
@@ -676,10 +634,10 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"area": {
 				"types": [
@@ -705,9 +663,8 @@
 				}
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 1,
-					"entries": [
+				"plusX": {
+					"1": [
 						"The damage increases by {@dice 2d4}."
 					]
 				}
@@ -722,29 +679,28 @@
 				"curse",
 				"necromancy"
 			],
-			"school": "N",
 			"traditions": [
 				"arcane",
 				"occult",
 				"primal"
+			],
+			"spellLists": [
+				"Elemental"
 			],
 			"cast": {
 				"number": 3,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true,
-					"V": true
-				}
+				[
+					"M",
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 living creature",
 			"savingThrow": {
@@ -774,16 +730,12 @@
 				}
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 3,
-					"entries": [
+				"plusX": {
+					"3": [
 						"The thirst becomes more unbearable, increasing the damage each hour by {@dice 1d4}, or by {@dice 2d4} on a critical failure."
 					]
 				}
-			},
-			"spellLists": [
-				"Elemental"
-			]
+			}
 		},
 		{
 			"name": "Delay Consequence",
@@ -791,29 +743,25 @@
 			"page": 118,
 			"focus": true,
 			"level": 1,
-			"domains": [
-				"time"
-			],
 			"traits": [
 				"abjuration"
 			],
-			"school": "A",
+			"domains": [
+				"time"
+			],
 			"cast": {
 				"number": 1,
 				"unit": "reaction"
 			},
 			"components": [
-				{
-					"S": true
-				}
+				[
+					"S"
+				]
 			],
 			"trigger": "A creature or object within range is hit by an attack.",
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "the triggering creature",
 			"duration": {
@@ -832,9 +780,6 @@
 		{
 			"name": "Diamond Dust",
 			"source": "LOGM",
-			"domains": [
-				"cold"
-			],
 			"page": 112,
 			"focus": true,
 			"level": 4,
@@ -842,16 +787,18 @@
 				"cold",
 				"evocation"
 			],
-			"school": "V",
+			"domains": [
+				"cold"
+			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"area": {
 				"types": [
@@ -880,9 +827,8 @@
 				"You can {@action Dismiss} this spell."
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 2,
-					"entries": [
+				"plusX": {
+					"2": [
 						"The damage increases by {@dice 1d6}."
 					]
 				}
@@ -894,30 +840,26 @@
 			"page": 115,
 			"focus": true,
 			"level": 1,
-			"domains": [
-				"plague"
-			],
 			"traits": [
 				"disease",
 				"necromancy"
 			],
-			"school": "N",
+			"domains": [
+				"plague"
+			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "15 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 15
-				}
+				"type": "feet",
+				"number": 15
 			},
 			"savingThrow": {
 				"type": [
@@ -961,7 +903,7 @@
 				}
 			],
 			"heightened": {
-				"x": [
+				"X": [
 					{
 						"level": 5,
 						"entries": [
@@ -977,29 +919,25 @@
 			"page": 119,
 			"focus": true,
 			"level": 4,
-			"domains": [
-				"void"
-			],
 			"traits": [
 				"conjuration"
 			],
-			"school": "C",
+			"domains": [
+				"void"
+			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "5 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 5
-				}
+				"type": "feet",
+				"number": 5
 			},
 			"area": {
 				"types": [
@@ -1033,9 +971,8 @@
 				}
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 1,
-					"entries": [
+				"plusX": {
+					"1": [
 						"The damage increases by {@dice 1d6}."
 					]
 				}
@@ -1047,22 +984,21 @@
 			"page": 119,
 			"focus": true,
 			"level": 1,
-			"domains": [
-				"wyrmkin"
-			],
 			"traits": [
 				"evocation"
 			],
-			"school": "V",
+			"domains": [
+				"wyrmkin"
+			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"duration": {
 				"type": "timed",
@@ -1122,9 +1058,8 @@
 				}
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 1,
-					"entries": [
+				"plusX": {
+					"1": [
 						"You shape 1 additional dragon, and the {@action Strike} damage increases by {@dice 1d6}."
 					]
 				}
@@ -1136,31 +1071,27 @@
 			"page": 114,
 			"focus": true,
 			"level": 4,
-			"domains": [
-				"dust"
-			],
 			"traits": [
 				"air",
 				"conjuration",
 				"nonlethal"
 			],
-			"school": "C",
+			"domains": [
+				"dust"
+			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "120 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 120
-				}
+				"type": "feet",
+				"number": 120
 			},
 			"area": {
 				"types": [
@@ -1180,9 +1111,8 @@
 				"You call forth a swirling storm of dust. The dust storm obscures vision, with the effect of obscuring mist. The dust also makes the air unbreathable; creatures in the area must hold their breath (Core Rulebook 478), though wearing a scarf or similar clothing over the mouth increases the time the creature can hold its breath to 5 rounds. Creatures entering or starting their turn in the dust storm take {@damage 1d6} slashing damage. Creatures that have the {@trait water} trait or that are made primarily of liquid take double damage."
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 2,
-					"entries": [
+				"plusX": {
+					"2": [
 						"The damage increases by {@dice 1d6}."
 					]
 				}
@@ -1194,29 +1124,25 @@
 			"page": 114,
 			"focus": true,
 			"level": 4,
-			"domains": [
-				"duty"
-			],
 			"traits": [
 				"abjuration"
 			],
-			"school": "A",
+			"domains": [
+				"duty"
+			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 creature",
 			"duration": {
@@ -1232,9 +1158,8 @@
 				"As you challenge an enemy, you take some of its attention away from your allies. The target takes a \u20131 status penalty to attack rolls, damage rolls, and skill checks against creatures other than you, and you take a \u20131 status penalty to attack rolls, damage rolls, and skill checks against creatures other than the target. Each time a creature other than you uses a {@condition hostile} action that affects the challenged enemy, the enemy can attempt a Will save. On a success, the enemy no longer takes the penalty against that creature. You can {@action Dismiss} the spell, and it ends automatically if you or the target is defeated."
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 3,
-					"entries": [
+				"plusX": {
+					"3": [
 						"The status penalties increase by 1."
 					]
 				}
@@ -1246,29 +1171,25 @@
 			"page": 117,
 			"focus": true,
 			"level": 4,
-			"domains": [
-				"souls"
-			],
 			"traits": [
 				"necromancy"
 			],
-			"school": "N",
+			"domains": [
+				"souls"
+			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"area": {
 				"types": [
@@ -1295,30 +1216,26 @@
 			"page": 117,
 			"focus": true,
 			"level": 1,
-			"domains": [
-				"souls"
-			],
 			"traits": [
 				"incapacitation",
 				"necromancy"
 			],
-			"school": "N",
+			"domains": [
+				"souls"
+			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "touch",
-				"distance": {
-					"type": "touch",
-					"amount": 1
-				}
+				"type": "touch",
+				"number": 1
 			},
 			"targets": "1 living creature that has a soul",
 			"entries": [
@@ -1333,9 +1250,8 @@
 				}
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 3,
-					"entries": [
+				"plusX": {
+					"3": [
 						"If a willing ally chooses to critically fail, it can stay in soul form for 1 additional round."
 					]
 				}
@@ -1347,28 +1263,27 @@
 			"page": 119,
 			"focus": true,
 			"level": 1,
-			"domains": [
-				"void"
-			],
 			"traits": [
 				"abjuration",
 				"mental"
 			],
-			"school": "A",
+			"domains": [
+				"void"
+			],
 			"cast": {
 				"number": 1,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"V": true
-				}
+				[
+					"V"
+				]
 			],
 			"entries": [
 				"You inject a sliver of the void into your mind, momentarily remaking it into a bleak and empty place. Attempt a counteract check against one {@trait emotion} effect affecting you."
 			],
 			"heightened": {
-				"x": [
+				"X": [
 					{
 						"level": 5,
 						"entries": [
@@ -1381,16 +1296,12 @@
 		{
 			"name": "Endure",
 			"source": "LOGM",
-			"miscTags": [
-				"THP"
-			],
 			"page": 107,
 			"level": 1,
 			"traits": [
 				"enchantment",
 				"mental"
 			],
-			"school": "E",
 			"traditions": [
 				"arcane",
 				"occult"
@@ -1400,16 +1311,13 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true
-				}
+				[
+					"S"
+				]
 			],
 			"range": {
-				"entry": "touch",
-				"distance": {
-					"type": "touch",
-					"amount": 1
-				}
+				"type": "touch",
+				"number": 1
 			},
 			"targets": "1 creature",
 			"duration": {
@@ -1424,21 +1332,20 @@
 				"You invigorate the touched creature's mind and urge it to press on. You grant the touched creature 5 temporary Hit Points."
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 1,
-					"entries": [
+				"plusX": {
+					"1": [
 						"Increase the temporary Hit Points by 5."
 					]
 				}
-			}
+			},
+			"miscTags": [
+				"THP"
+			]
 		},
 		{
 			"name": "Ephemeral Hazards",
 			"source": "LOGM",
 			"page": 113,
-			"domains": [
-				"delirium"
-			],
 			"focus": true,
 			"level": 4,
 			"traits": [
@@ -1446,24 +1353,23 @@
 				"mental",
 				"visual"
 			],
-			"school": "I",
+			"domains": [
+				"delirium"
+			],
 			"cast": {
 				"number": 3,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true,
-					"V": true
-				}
+				[
+					"M",
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "60 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 60
-				}
+				"type": "feet",
+				"number": 60
 			},
 			"duration": {
 				"type": "timed",
@@ -1487,9 +1393,8 @@
 				}
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 1,
-					"entries": [
+				"plusX": {
+					"1": [
 						"The damage increases by {@dice 1d6}."
 					]
 				}
@@ -1504,27 +1409,26 @@
 				"earth",
 				"transmutation"
 			],
-			"school": "T",
 			"traditions": [
 				"arcane",
 				"primal"
+			],
+			"spellLists": [
+				"Elemental"
 			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "touch",
-				"distance": {
-					"type": "touch",
-					"amount": 1
-				}
+				"type": "touch",
+				"number": 1
 			},
 			"area": {
 				"types": [
@@ -1544,47 +1448,39 @@
 				}
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 2,
-					"entries": [
+				"plusX": {
+					"2": [
 						"The spell can excavate an additional 5-foot cube of earth. If you excavate all four 5-foot cubes beneath a Large creature, it must attempt a Reflex save or {@skill Acrobatics} check, as above."
 					]
 				}
-			},
-			"spellLists": [
-				"Elemental"
-			]
+			}
 		},
 		{
 			"name": "Fallow Field",
 			"source": "LOGM",
 			"page": 113,
-			"domains": [
-				"decay"
-			],
 			"focus": true,
 			"level": 4,
 			"traits": [
 				"necromancy",
 				"negative"
 			],
-			"school": "N",
+			"domains": [
+				"decay"
+			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "60 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 60
-				}
+				"type": "feet",
+				"number": 60
 			},
 			"area": {
 				"types": [
@@ -1628,7 +1524,6 @@
 				"curse",
 				"necromancy"
 			],
-			"school": "N",
 			"traditions": [
 				"arcane",
 				"occult",
@@ -1639,18 +1534,15 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true,
-					"V": true
-				}
+				[
+					"M",
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 living creature",
 			"savingThrow": {
@@ -1680,9 +1572,8 @@
 				}
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 1,
-					"entries": [
+				"plusX": {
+					"1": [
 						"The hunger becomes more unbearable, increasing the damage each day by {@dice 1d4}, or by {@dice 2d4} on a critical failure."
 					]
 				}
@@ -1693,32 +1584,28 @@
 			"source": "LOGM",
 			"page": 116,
 			"focus": true,
-			"domains": [
-				"repose"
-			],
 			"level": 4,
 			"traits": [
 				"abjuration",
 				"emotion",
 				"mental"
 			],
-			"school": "A",
+			"domains": [
+				"repose"
+			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"area": {
 				"types": [
@@ -1740,9 +1627,8 @@
 				"If the spell succeeds at the counteract check, it removes the {@trait emotion} effect from your ally, though not from any other creatures the effect might be affecting."
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 4,
-					"entries": [
+				"plusX": {
+					"4": [
 						"The bonus increases by 1."
 					]
 				}
@@ -1754,30 +1640,26 @@
 			"page": 115,
 			"focus": true,
 			"level": 4,
-			"domains": [
-				"plague"
-			],
 			"traits": [
 				"disease",
 				"necromancy"
 			],
-			"school": "N",
+			"domains": [
+				"plague"
+			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 creature affected by a disease",
 			"savingThrow": {
@@ -1815,7 +1697,6 @@
 				"fungus",
 				"necromancy"
 			],
-			"school": "N",
 			"traditions": [
 				"primal"
 			],
@@ -1824,10 +1705,10 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"duration": {
 				"type": "timed",
@@ -1842,7 +1723,7 @@
 				"You gain an imprecise {@ability tremorsense} allowing you to sense anything directly touching plants within that distance. If you move, the hyphae snap and the spell ends."
 			],
 			"heightened": {
-				"x": [
+				"X": [
 					{
 						"level": 4,
 						"entries": [
@@ -1864,30 +1745,26 @@
 			"page": 115,
 			"focus": true,
 			"level": 4,
-			"domains": [
-				"glyph"
-			],
 			"traits": [
 				"illusion",
 				"visual"
 			],
-			"school": "I",
+			"domains": [
+				"glyph"
+			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true
-				}
+				[
+					"M",
+					"S"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 creature",
 			"duration": {
@@ -1916,7 +1793,6 @@
 			"traits": [
 				"evocation"
 			],
-			"school": "V",
 			"traditions": [
 				"arcane",
 				"occult"
@@ -1926,17 +1802,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "120 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 120
-				}
+				"type": "feet",
+				"number": 120
 			},
 			"area": {
 				"types": [
@@ -1967,31 +1840,27 @@
 			"name": "Hyperfocus",
 			"source": "LOGM",
 			"page": 113,
-			"domains": [
-				"delirium"
-			],
 			"focus": true,
 			"level": 1,
 			"traits": [
 				"divination"
 			],
-			"school": "D",
+			"domains": [
+				"delirium"
+			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 creature",
 			"savingThrow": {
@@ -2021,7 +1890,7 @@
 				}
 			],
 			"heightened": {
-				"x": [
+				"X": [
 					{
 						"level": 3,
 						"entries": [
@@ -2047,7 +1916,6 @@
 				"divination",
 				"misfortune"
 			],
-			"school": "D",
 			"traditions": [
 				"occult"
 			],
@@ -2056,17 +1924,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 creature",
 			"duration": {
@@ -2097,7 +1962,6 @@
 			"traits": [
 				"transmutation"
 			],
-			"school": "T",
 			"traditions": [
 				"arcane",
 				"primal"
@@ -2107,10 +1971,10 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true
-				}
+				[
+					"M",
+					"S"
+				]
 			],
 			"duration": {
 				"type": "timed",
@@ -2125,7 +1989,7 @@
 				"The object must be small enough to reasonably fit within your stomach. It is very difficult for other creatures to notice that you are hiding an object in this way; passive observers can't possibly notice and you gain a +4 circumstance bonus to your {@skill Stealth} checks to Conceal the Object unless the searcher specifically searches your mouth and stomach. If at the end of the spell's duration you still have an object stored in your stomach, it is violently expelled, dealing {@dice 1d6} damage to you."
 			],
 			"heightened": {
-				"x": [
+				"X": [
 					{
 						"level": 3,
 						"entries": [
@@ -2139,9 +2003,6 @@
 			"name": "Lament",
 			"source": "LOGM",
 			"page": 116,
-			"domains": [
-				"sorrow"
-			],
 			"focus": true,
 			"level": 1,
 			"traits": [
@@ -2150,23 +2011,22 @@
 				"enchantment",
 				"mental"
 			],
-			"school": "E",
+			"domains": [
+				"sorrow"
+			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30-foot cone",
-				"distance": {
-					"type": "unknown",
-					"amount": 1
-				}
+				"type": "unknown",
+				"entry": "30-foot cone"
 			},
 			"targets": "1 or more creatures",
 			"savingThrow": {
@@ -2179,9 +2039,8 @@
 				"You let out your negative emotions in a guttural wail that shakes your enemies' hearts and deals {@damage 1d8} mental damage (basic Will save). If you have any harmful conditions imposed by {@trait emotion} effects, lament deals additional mental damage equal to the counteract level of the highest-level effect."
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 1,
-					"entries": [
+				"plusX": {
+					"1": [
 						"The damage increases by {@dice 1d8}."
 					]
 				}
@@ -2196,7 +2055,6 @@
 				"enchantment",
 				"mental"
 			],
-			"school": "E",
 			"traditions": [
 				"occult"
 			],
@@ -2205,16 +2063,13 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"V": true
-				}
+				[
+					"V"
+				]
 			],
 			"range": {
-				"entry": "60 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 60
-				}
+				"type": "feet",
+				"number": 60
 			},
 			"targets": "1 creature",
 			"entries": [
@@ -2231,7 +2086,6 @@
 				"linguistic",
 				"mental"
 			],
-			"school": "D",
 			"traditions": [
 				"arcane",
 				"occult"
@@ -2242,18 +2096,15 @@
 				"entry": "5 minutes"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true,
-					"V": true
-				}
+				[
+					"M",
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "touch",
-				"distance": {
-					"type": "touch",
-					"amount": 1
-				}
+				"type": "touch",
+				"number": 1
 			},
 			"targets": "1 flat unattended surface",
 			"duration": {
@@ -2276,21 +2127,20 @@
 			"page": 114,
 			"focus": true,
 			"level": 1,
-			"domains": [
-				"duty"
-			],
 			"traits": [
 				"conjuration"
 			],
-			"school": "C",
+			"domains": [
+				"duty"
+			],
 			"cast": {
 				"number": 1,
 				"unit": "free"
 			},
 			"components": [
-				{
-					"V": true
-				}
+				[
+					"V"
+				]
 			],
 			"trigger": "You make a promise or deal.",
 			"duration": {
@@ -2305,7 +2155,7 @@
 				"A magical indicator assures a creature that you've upheld your end of a bargain. When you {@action Cast a Spell||Cast the Spell}, you create a bracelet, flower, or other such trinket. If, while the spell persists, you complete the terms of the promise or deal you made, the trinket fades away with a pleasant chime; if you violate the terms instead, the trinket breaks with a dissonant crash."
 			],
 			"heightened": {
-				"x": [
+				"X": [
 					{
 						"level": 3,
 						"entries": [
@@ -2339,22 +2189,21 @@
 			"page": 118,
 			"focus": true,
 			"level": 1,
-			"domains": [
-				"vigil"
-			],
 			"traits": [
 				"divination"
 			],
-			"school": "D",
+			"domains": [
+				"vigil"
+			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"targets": "1 weapon or tool",
 			"duration": {
@@ -2369,7 +2218,7 @@
 				"By touching an object, you draw forth the experience of those who created and used it. If you touch a weapon, your proficiency rank with that weapon temporarily increases to trained (if it is not already higher). If you touch a tool, your proficiency rank with the next skill check you attempt with that tool (such as a {@skill Crafting} check with a blacksmith's hammer) within the spell's duration temporarily increases to trained (if it is not already higher). This spell has no benefit for activities that take longer than a minute to complete."
 			],
 			"heightened": {
-				"x": [
+				"X": [
 					{
 						"level": 6,
 						"entries": [
@@ -2383,9 +2232,6 @@
 			"name": "Overflowing Sorrow",
 			"source": "LOGM",
 			"page": 116,
-			"domains": [
-				"sorrow"
-			],
 			"focus": true,
 			"level": 4,
 			"traits": [
@@ -2394,16 +2240,18 @@
 				"incapacitation",
 				"mental"
 			],
-			"school": "E",
+			"domains": [
+				"sorrow"
+			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"area": {
 				"types": [
@@ -2438,9 +2286,8 @@
 				}
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 2,
-					"entries": [
+				"plusX": {
+					"2": [
 						"When you {@action Cast a Spell||Cast the Spell}, you can choose to increase the area by 5 feet."
 					]
 				}
@@ -2450,32 +2297,28 @@
 			"name": "Parch",
 			"source": "LOGM",
 			"page": 114,
-			"domains": [
-				"dust"
-			],
 			"focus": true,
 			"level": 1,
 			"traits": [
 				"air",
 				"evocation"
 			],
-			"school": "V",
+			"domains": [
+				"dust"
+			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "60 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 60
-				}
+				"type": "feet",
+				"number": 60
 			},
 			"targets": "1 creature",
 			"savingThrow": {
@@ -2496,7 +2339,7 @@
 				}
 			],
 			"heightened": {
-				"x": [
+				"X": [
 					{
 						"level": 4,
 						"entries": [
@@ -2515,7 +2358,6 @@
 				"darkness",
 				"evocation"
 			],
-			"school": "V",
 			"traditions": [
 				"arcane",
 				"occult"
@@ -2525,17 +2367,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 creature",
 			"duration": {
@@ -2564,29 +2403,25 @@
 			"page": 114,
 			"focus": true,
 			"level": 1,
-			"domains": [
-				"glyph"
-			],
 			"traits": [
 				"transmutation"
 			],
-			"school": "T",
+			"domains": [
+				"glyph"
+			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true
-				}
+				[
+					"M",
+					"S"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "unattended written materials of up to 1 Bulk or less",
 			"duration": {
@@ -2601,7 +2436,7 @@
 				"You strike mention of a specific name from one or more documents. When you cast the spell, give one proper name, be it a creature, location, or object. Any mention of that name within the document becomes blurred, smudged, or otherwise completely illegible. Epithets and unambiguous references to the name are redacted as well; for instance, redacting the name of the goddess Sarenrae from a book would also remove references to her title \"the Dawnflower.\""
 			],
 			"heightened": {
-				"x": [
+				"X": [
 					{
 						"level": 3,
 						"entries": [
@@ -2625,7 +2460,6 @@
 			"traits": [
 				"abjuration"
 			],
-			"school": "A",
 			"traditions": [
 				"arcane",
 				"primal"
@@ -2635,10 +2469,10 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"duration": {
 				"type": "timed",
@@ -2653,9 +2487,8 @@
 				"The scales store up energy as they protect you. Keep track of how much damage the scales have prevented. As a 2-action activity that has the {@trait concentrate} and {@trait manipulate} traits, you can explode your scales outward in a 20-foot radius around you, dealing {@dice 1d6} damage of the chosen type to all creatures in the area for every 10 damage the scales have prevented, to a maximum of {@dice 10d6} damage (after preventing 100 damage). Once you do so, the spell ends."
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 2,
-					"entries": [
+				"plusX": {
+					"2": [
 						"The resistance increases by 5 and the maximum damage from the scale explosion increases by {@dice 5d6}."
 					]
 				}
@@ -2667,23 +2500,22 @@
 			"page": 119,
 			"focus": true,
 			"level": 4,
-			"domains": [
-				"vigil"
-			],
 			"traits": [
 				"divination",
 				"mental"
 			],
-			"school": "D",
+			"domains": [
+				"vigil"
+			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"area": {
 				"types": [
@@ -2701,9 +2533,8 @@
 				"You call upon the lost and forgotten, assailing your foes' minds with the memories of those who died with a grievance toward them. Enemies in the area take {@damage 6d6} mental damage (basic Will save) and are {@condition frightened 1} on a critical failure. If you know the names of anyone murdered or grievously wronged by an enemy in the area, you can chant those victims' names when you cast the spell to improve the clarity of the visions, increasing the damage to the corresponding enemy from {@dice 6d6} to {@dice 6d10}; you can do so for multiple enemies if you know victims of each enemy. The visions are personal to each foe in the area, and you can't use this spell to discern a murderer by guessing a name. A creature that truly knows no one who died with any sort of grievance to that creature is immune to this effect."
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 1,
-					"entries": [
+				"plusX": {
+					"1": [
 						"The damage increases by {@dice 2d6} (or {@dice 2d10} to an enemy when you name a specific victim)."
 					]
 				}
@@ -2715,25 +2546,24 @@
 			"page": 119,
 			"focus": true,
 			"level": 4,
-			"domains": [
-				"wyrmkin"
-			],
 			"traits": [
 				"auditory",
 				"emotion",
 				"enchantment",
 				"mental"
 			],
-			"school": "E",
+			"domains": [
+				"wyrmkin"
+			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"area": {
 				"types": [
@@ -2774,23 +2604,22 @@
 			"source": "LOGM",
 			"page": 116,
 			"focus": true,
-			"domains": [
-				"repose"
-			],
 			"level": 1,
 			"traits": [
 				"abjuration",
 				"mental"
 			],
-			"school": "A",
+			"domains": [
+				"repose"
+			],
 			"cast": {
 				"number": 1,
 				"unit": "reaction"
 			},
 			"components": [
-				{
-					"S": true
-				}
+				[
+					"S"
+				]
 			],
 			"trigger": "An ally within 30 feet is about to attempt a saving throw against a harmful {@trait emotion} effect, and you would not",
 			"targets": "you and the triggering ally",
@@ -2807,7 +2636,6 @@
 				"divination",
 				"mental"
 			],
-			"school": "D",
 			"traditions": [
 				"arcane",
 				"occult"
@@ -2818,11 +2646,8 @@
 				"entry": "1 minute"
 			},
 			"range": {
-				"entry": "touch",
-				"distance": {
-					"type": "touch",
-					"amount": 1
-				}
+				"type": "touch",
+				"number": 1
 			},
 			"targets": "up to 3 creatures",
 			"duration": {
@@ -2838,7 +2663,7 @@
 				"Choose one {@skill Lore} skill in which you are trained. The targets become trained in that {@skill Lore} skill for the duration of the spell."
 			],
 			"heightened": {
-				"x": [
+				"X": [
 					{
 						"level": 3,
 						"entries": [
@@ -2863,27 +2688,26 @@
 				"abjuration",
 				"earth"
 			],
-			"school": "A",
 			"traditions": [
 				"arcane",
 				"primal"
+			],
+			"spellLists": [
+				"Elemental"
 			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "touch",
-				"distance": {
-					"type": "touch",
-					"amount": 1
-				}
+				"type": "touch",
+				"number": 1
 			},
 			"targets": "1 creature",
 			"duration": {
@@ -2898,16 +2722,12 @@
 				"A large gem floats around the target in an erratic pattern. The gem has 5 Hit Points. Each time a creature Strikes the target, the target attempts a DC {@flatDC 11} flat check. On a success, the gem blocks the attack, so the attack first damages the gem and then applies any remaining damage to the target. If the gem is reduced to 0 Hit Points, it shatters, immediately dealing the creature that destroyed it {@damage 1d8} slashing damage (basic Reflex save), as long as that creature is within 10 feet of the target."
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 1,
-					"entries": [
+				"plusX": {
+					"1": [
 						"The gem has 5 additional HP, and the damage dealt by its detonation increases by {@dice 1d8}."
 					]
 				}
-			},
-			"spellLists": [
-				"Elemental"
-			]
+			}
 		},
 		{
 			"name": "Shifting Sand",
@@ -2918,28 +2738,27 @@
 				"earth",
 				"transmutation"
 			],
-			"school": "T",
 			"traditions": [
 				"arcane",
 				"primal"
+			],
+			"spellLists": [
+				"Elemental"
 			],
 			"cast": {
 				"number": 3,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true,
-					"V": true
-				}
+				[
+					"M",
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"area": {
 				"types": [
@@ -2969,7 +2788,7 @@
 				}
 			],
 			"heightened": {
-				"x": [
+				"X": [
 					{
 						"level": 5,
 						"entries": [
@@ -2989,10 +2808,7 @@
 						]
 					}
 				]
-			},
-			"spellLists": [
-				"Elemental"
-			]
+			}
 		},
 		{
 			"name": "Shockwave",
@@ -3003,20 +2819,22 @@
 				"earth",
 				"evocation"
 			],
-			"school": "V",
 			"traditions": [
 				"arcane",
 				"primal"
+			],
+			"spellLists": [
+				"Elemental"
 			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"area": {
 				"types": [
@@ -3043,16 +2861,12 @@
 				}
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 1,
-					"entries": [
+				"plusX": {
+					"1": [
 						"The area increases by 5 feet (to a 20-foot cone at 2nd level, and so on)."
 					]
 				}
-			},
-			"spellLists": [
-				"Elemental"
-			]
+			}
 		},
 		{
 			"name": "Show The Way",
@@ -3063,7 +2877,6 @@
 				"detection",
 				"divination"
 			],
-			"school": "D",
 			"traditions": [
 				"divine",
 				"primal"
@@ -3074,11 +2887,11 @@
 				"entry": "10 minutes"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true,
-					"V": true
-				}
+				[
+					"M",
+					"S",
+					"V"
+				]
 			],
 			"area": {
 				"types": [
@@ -3099,7 +2912,7 @@
 				"You and affected allies gain preternatural knowledge of the path ahead, allowing you to intuit the best way forward and avoid potential obstacles such as difficult or confusing terrain. For the purpose of long-distance overland travel during exploration mode, traveling through {@quickref difficult terrain||3|terrain} reduces you to only three-quarters your travel Speed instead of half, and traveling through {@quickref greater difficult terrain||3|terrain} reduces your travel Speed to only half your travel Speed instead of one-third. Show the way does not prevent you from falling into traps or encountering other artificial obstacles and hazards."
 			],
 			"heightened": {
-				"x": [
+				"X": [
 					{
 						"level": 6,
 						"entries": [
@@ -3117,7 +2930,6 @@
 			"traits": [
 				"necromancy"
 			],
-			"school": "N",
 			"traditions": [
 				"arcane",
 				"primal"
@@ -3127,10 +2939,10 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"duration": {
 				"type": "timed",
@@ -3152,30 +2964,26 @@
 			"page": 118,
 			"focus": true,
 			"level": 4,
-			"domains": [
-				"time"
-			],
 			"traits": [
 				"incapacitation",
 				"transmutation"
 			],
-			"school": "T",
+			"domains": [
+				"time"
+			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 creature or up to 1 Bulk of objects",
 			"savingThrow": {
@@ -3208,25 +3016,24 @@
 			"name": "Swarm Form",
 			"source": "LOGM",
 			"page": 118,
-			"domains": [
-				"swarm"
-			],
 			"focus": true,
 			"level": 4,
 			"traits": [
 				"transmutation",
 				"polymorph"
 			],
-			"school": "T",
+			"domains": [
+				"swarm"
+			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"duration": {
 				"type": "timed",
@@ -3242,9 +3049,8 @@
 				"You don't gain the swarm mind ability, so you are still affected normally by {@trait mental} effects. As a swarm, you can't speak, cast spells, use manipulate actions requiring your hands, activate your magic items, or make any of your Strikes with your normal body. You can {@action Dismiss} the Spell."
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 2,
-					"entries": [
+				"plusX": {
+					"2": [
 						"Increase your resistances and weaknesses each by 5."
 					]
 				}
@@ -3254,25 +3060,24 @@
 			"name": "Swarmsense",
 			"source": "LOGM",
 			"page": 117,
-			"domains": [
-				"swarm"
-			],
 			"focus": true,
 			"level": 1,
 			"traits": [
 				"divination"
 			],
-			"school": "D",
+			"domains": [
+				"swarm"
+			],
 			"cast": {
 				"number": 1,
 				"unit": "minute",
 				"entry": "1 minute"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"duration": {
 				"type": "timed",
@@ -3288,7 +3093,7 @@
 				"You can hear through the swarm as if using your normal auditory senses. The first time you {@action Sustain a Spell||Sustain the Spell} each round, you can move the swarm 10 feet along the ground in any direction. The swarm has AC 15 and a +0 bonus to its saves. Any damage dealt to the swarm destroys it and ends the spell."
 			],
 			"heightened": {
-				"x": [
+				"X": [
 					{
 						"level": 3,
 						"entries": [
@@ -3318,7 +3123,6 @@
 			"traits": [
 				"conjuration"
 			],
-			"school": "C",
 			"traditions": [
 				"arcane"
 			],
@@ -3347,7 +3151,6 @@
 			"traits": [
 				"abjuration"
 			],
-			"school": "A",
 			"traditions": [
 				"arcane",
 				"primal"
@@ -3357,17 +3160,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 creature",
 			"savingThrow": {
@@ -3396,9 +3196,8 @@
 				}
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 1,
-					"entries": [
+				"plusX": {
+					"1": [
 						"The tethers' AC increases by 3 and their Hit Points increase by 10."
 					]
 				}
@@ -3412,7 +3211,6 @@
 			"traits": [
 				"divination"
 			],
-			"school": "D",
 			"traditions": [
 				"arcane",
 				"occult"
@@ -3422,9 +3220,9 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"M": true
-				}
+				[
+					"M"
+				]
 			],
 			"duration": {
 				"type": "timed",
@@ -3447,7 +3245,6 @@
 				"abjuration",
 				"force"
 			],
-			"school": "A",
 			"traditions": [
 				"divine",
 				"occult"
@@ -3457,10 +3254,10 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"duration": {
 				"type": "timed",
@@ -3475,9 +3272,8 @@
 				"You surround yourself in a vortex of whirling colorful scarves of force that obfuscate you and disorient your foes. You gain the benefits of the {@condition concealed} condition, but only against ranged and melee attacks. When a melee attack fails to hit you because of the flat check for the {@condition concealed} condition, the scarves snag the weapon or unarmed attack, and the creature takes a \u20131 circumstance penalty to further attacks with that weapon or unarmed attack until the end of its turn (or the end of its next turn, if it wasn't the creature's turn). The timing of the scarves' movement is harder to predict for ranged attackers, so the flat check for the {@condition concealed} condition against ranged attacks increases from DC 5 to DC 6. You can {@action Dismiss} this spell."
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 2,
-					"entries": [
+				"plusX": {
+					"2": [
 						"The circumstance penalty to further attacks with a melee weapon or unarmed attack the scarves snag increases by 1. The DC of the flat check for the {@condition concealed} condition against ranged attacks increases by 1."
 					]
 				}
@@ -3487,9 +3283,6 @@
 			"name": "Winter Bolt",
 			"source": "LOGM",
 			"page": 112,
-			"domains": [
-				"cold"
-			],
 			"focus": true,
 			"level": 1,
 			"traits": [
@@ -3497,23 +3290,22 @@
 				"cold",
 				"evocation"
 			],
-			"school": "V",
+			"domains": [
+				"cold"
+			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "60 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 60
-				}
+				"type": "feet",
+				"number": 60
 			},
 			"targets": "1 creature",
 			"entries": [
@@ -3527,9 +3319,8 @@
 				}
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 1,
-					"entries": [
+				"plusX": {
+					"1": [
 						"The initial damage increases by {@dice 1d8} and the secondary damage increases by {@dice 1d12}."
 					]
 				}
@@ -3540,31 +3331,27 @@
 			"source": "LOGM",
 			"page": 112,
 			"focus": true,
-			"domains": [
-				"decay"
-			],
 			"level": 1,
 			"traits": [
 				"necromancy",
 				"negative"
 			],
-			"school": "N",
+			"domains": [
+				"decay"
+			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "touch",
-				"distance": {
-					"type": "touch",
-					"amount": 1
-				}
+				"type": "touch",
+				"number": 1
 			},
 			"targets": "1 creature or object",
 			"entries": [
@@ -3578,9 +3365,8 @@
 				}
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 1,
-					"entries": [
+				"plusX": {
+					"1": [
 						"The damage increases by {@dice 1d12} and the {@condition persistent damage} increases by 1. If you target an object, lower its Hardness by an additional 1 point on both a success and a critical success."
 					]
 				}
@@ -3591,31 +3377,27 @@
 			"source": "LOGM",
 			"page": 117,
 			"focus": true,
-			"domains": [
-				"stars"
-			],
 			"level": 1,
 			"traits": [
 				"divination",
 				"light"
 			],
-			"school": "D",
+			"domains": [
+				"stars"
+			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "60 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 60
-				}
+				"type": "feet",
+				"number": 60
 			},
 			"targets": "1 creature",
 			"savingThrow": {
@@ -3645,13 +3427,12 @@
 				}
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 1,
-					"entries": [
-						"The duration increases by 1 day. Heightened (4th) You ignore the {@condition concealed} condition against targets marked by zenith star."
+				"plusX": {
+					"1": [
+						"The duration increases by 1 day."
 					]
 				},
-				"x": [
+				"X": [
 					{
 						"level": 4,
 						"entries": [

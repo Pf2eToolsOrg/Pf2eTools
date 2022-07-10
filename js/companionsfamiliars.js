@@ -95,7 +95,7 @@ class CompanionsFamiliarsPage extends ListPage {
 			$pgContent.append(`<div class="pf2-h3" style="padding: 0 0 0">${it.name}</div><div>${it.fluff.map(f => `<p>${Renderer.get().render(f)}</p>`).join("")}</div>`);
 		}
 		const statsTab = Renderer.utils.tabButton(
-			"Statblock",
+			it.type.toTitleCase(),
 			() => {},
 			buildStatsTab,
 		);

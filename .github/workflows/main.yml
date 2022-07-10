@@ -25,21 +25,31 @@ jobs:
          -  name: Set Deployed Flag
             run: |
                bash ./.github/set-deployed-flag.sh ${{ env.RELEASE_VERSION }}
-         # Remove entries from the `.gitignore` so the gh-pages action can correctly add+commit them to the pages branch
-         -  name: Build Service Worker
+         # Builds the data
+         -  name: Build Site
             run: |
                node --version
                npm --version
                npm i
-               npm run build:sw:prod
-               sed -i 's/sw.js//g' .gitignore
-               sed -i 's/sw-injector.js//g' .gitignore
+               npm run build:data:prod
+               npm run build
+         # Builds SEO pages
          -  name: Build SEO Pages
             env:
                VET_BASE_SITE_URL: https://pf2etools.com/
                VET_SEO_IS_SKIP_UA_ETC: true
             run: |
                npm run build:seo -- ${{ env.RELEASE_VERSION }}
+         # Merge and minify scripts, data, etc. + Build Service Worker
+         # Remove entries from the `.gitignore` so the gh-pages action can correctly add+commit them to the pages branch
+         -  name: Build Prod
+            env:
+               VET_BASE_SITE_URL: https://pf2etools.com/
+               VET_SEO_IS_SKIP_UA_ETC: true
+            run: |
+               npm run build:deploy:prod -- ${{ env.RELEASE_VERSION }}
+               sed -i 's/sw.js//g' .gitignore
+               sed -i 's/sw-injector.js//g' .gitignore
          # See: https://github.com/JamesIves/github-pages-deploy-action
          -  name: Deploy
             uses: JamesIves/github-pages-deploy-action@releases/v4

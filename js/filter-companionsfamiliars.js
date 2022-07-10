@@ -6,12 +6,6 @@ class PageFilterCompanionsFamiliars extends PageFilter {
 		this._typeFilter = new Filter({ header: "Type" });
 		this._traitsFilter = new TraitsFilter({
 			header: "Traits",
-			filterOpts: {
-				"Alignment": {
-					displayFn: Parser.alignAbvToFull,
-					itemSortFn: SortUtil.ascSort,
-				},
-			},
 		});
 		this._skillFilter = new Filter({ header: "Skills" });
 		this._strengthFilter = new RangeFilter({ header: "Strength", min: -5, max: 5 });

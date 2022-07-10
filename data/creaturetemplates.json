@@ -1,0 +1,281 @@
+{
+	"creatureTemplate": [
+		{
+			"name": "Halfling",
+			"source": "GMG",
+			"page": 204,
+			"entries": [
+				"Change the {@trait human} trait to {@trait halfling}.",
+				{
+					"type": "list",
+					"items": [
+						"Add Halfling to the NPC's languages.",
+						"Add the keen eyes ability below."
+					]
+				}
+			],
+			"abilities": [
+				{
+					"type": "ability",
+					"name": "Keen Eyes",
+					"entries": [
+						"Your eyes are sharp, allowing you to make out small details about concealed or even invisible creatures that others might miss. You gain a +2 circumstance bonus when using the Seek action to find hidden or undetected creatures within 30 feet of you. When you target an opponent that is concealed from you or hidden from you, reduce the DC of the flat check to 3 for a concealed target or 9 for a hidden one."
+					]
+				}
+			]
+		},
+		{
+			"name": "Dwarf",
+			"source": "GMG",
+			"page": 204,
+			"entries": [
+				"Change the {@trait human} trait to {@trait dwarf}.",
+				{
+					"type": "list",
+					"items": [
+						"Add Dwarven to the NPC's languages.",
+						"Add {@ability darkvision}.",
+						"Decrease the NPC's Speed by 5 feet. If the NPC already has a reduced Speed due to their armor, consider applying the {@feat Unburdened Iron} ancestry feat."
+					]
+				}
+			],
+			"abilities": [
+				{
+					"type": "ability",
+					"name": "Darkvision",
+					"entries": [
+						"A monster with darkvision can see perfectly well in areas of darkness and dim light, though such vision is in black and white only. Some forms of magical darkness, such as a 4th-level {@spell darkness|CRB} spell, block normal {@ability darkvision}. A monster with greater darkvision, however, can see through even these forms of magical darkness."
+					]
+				}
+			]
+		},
+		{
+			"name": "Elf",
+			"source": "GMG",
+			"page": 204,
+			"entries": [
+				"Change the {@trait human} trait to {@trait elf}.",
+				{
+					"type": "list",
+					"items": [
+						"Add Elven to the NPC's languages.",
+						"Add {@ability low-light vision}.",
+						"Increase the NPC's Speed by 5 feet."
+					]
+				}
+			],
+			"abilities": [
+				{
+					"type": "ability",
+					"name": "Low-Light Vision",
+					"entries": [
+						"The monster can see in dim light as though it were bright light, so it ignores the {@condition concealed} condition due to dim light."
+					]
+				}
+			]
+		},
+		{
+			"name": "Gnome",
+			"source": "GMG",
+			"page": 204,
+			"entries": [
+				"Change the {@trait human} trait to {@trait gnome}.",
+				{
+					"type": "list",
+					"items": [
+						"Add Gnomish and Sylvan to the NPC's languages.",
+						"Add {@ability low-light vision}."
+					]
+				}
+			],
+			"abilities": [
+				{
+					"type": "ability",
+					"name": "Darkvision",
+					"entries": [
+						"A monster with darkvision can see perfectly well in areas of darkness and dim light, though such vision is in black and white only. Some forms of magical darkness, such as a 4th-level {@spell darkness|CRB} spell, block normal {@ability darkvision}. A monster with greater darkvision, however, can see through even these forms of magical darkness."
+					]
+				}
+			]
+		},
+		{
+			"name": "Goblin",
+			"source": "GMG",
+			"page": 204,
+			"entries": [
+				"Change the {@trait human} trait to {@trait goblin}.",
+				{
+					"type": "list",
+					"items": [
+						"Add Goblin to the NPC's languages.",
+						"Add {@ability darkvision}."
+					]
+				}
+			],
+			"abilities": [
+				{
+					"type": "ability",
+					"name": "Darkvision",
+					"entries": [
+						"A monster with darkvision can see perfectly well in areas of darkness and dim light, though such vision is in black and white only. Some forms of magical darkness, such as a 4th-level {@spell darkness|CRB} spell, block normal {@ability darkvision}. A monster with greater darkvision, however, can see through even these forms of magical darkness."
+					]
+				}
+			]
+		},
+		{
+			"name": "Graveknight",
+			"source": "B1",
+			"page": 190,
+			"hasLore": true,
+			"abilities": [
+				{
+					"type": "ability",
+					"name": "Darkvision",
+					"entries": [
+						"A monster with darkvision can see perfectly well in areas of darkness and dim light, though such vision is in black and white only. Some forms of magical darkness, such as a 4th-level {@spell darkness|CRB} spell, block normal {@ability darkvision}. A monster with greater darkvision, however, can see through even these forms of magical darkness."
+					]
+				},
+				{
+					"type": "ability",
+					"name": "Negative Healing",
+					"entries": [
+						"A creature with negative healing draws health from negative energy rather than positive energy. It is damaged by positive damage and is not healed by positive healing effects. It does not take negative damage, and it is healed by negative effects that heal undead."
+					]
+				},
+				{
+					"type": "ability",
+					"name": "Rejuvenation",
+					"traits": [
+						"divine",
+						"necromancy"
+					],
+					"entries": [
+						"When a graveknight is destroyed, its armor rebuilds its body over the course of 1d10 days\u2014or more quickly if the armor is worn by a living host (see Graveknight Armor, in Lore). If the body is destroyed before then, the process restarts. A graveknight can only be permanently destroyed by obliterating its armor (such as with disintegrate), transporting it to the Positive Energy Plane, or throwing it into the heart of a volcano."
+					]
+				},
+				{
+					"type": "ability",
+					"name": "Immunities",
+					"entries": [
+						"death effects, disease, paralyzed, poison, precision, unconscious, plus one energy type (the same chosen for ruinous weapons below)."
+					]
+				},
+				{
+					"type": "ability",
+					"name": "Sacrilegious Aura",
+					"traits": [
+						"abjuration",
+						"aura",
+						"divine",
+						"evil"
+					],
+					"entries": [
+						"30 feet. When a creature in the aura uses a positive spell or ability, the graveknight automatically attempts to counteract it, with the listed counteract modifier."
+					]
+				},
+				{
+					"type": "ability",
+					"name": "Devastating Blast",
+					"activity": {
+						"unit": "action",
+						"number": 2
+					},
+					"traits": [
+						"arcane",
+						"evocation"
+					],
+					"entries": [
+						"The graveknight unleashes a 30-foot cone of energy. Creatures in the area take {@damage 1d12} damage, plus an additional {@damage 1d12} damage for every two levels the graveknight has (basic Reflex save). The graveknight can use this ability once every {@dice 1d4} rounds. This energy damage is of the same type as that of its ruinous weapons (see below); Devastating Blast gains the associated energy trait."
+					]
+				},
+				{
+					"type": "ability",
+					"name": "Phantom Mount",
+					"activity": {
+						"unit": "action",
+						"number": 3
+					},
+					"traits": [
+						"arcane",
+						"conjuration",
+						"summon"
+					],
+					"entries": [
+						"The graveknight summons a supernatural mount as per {@spell phantom steed}, heightened to a level equal to half the graveknight's level. Unlike {@spell phantom steed}, the steed's AC and saving throw bonuses are all 4 lower than the graveknight's, and the steed has one-third the graveknight's Hit Points (rounded down). If the steed is destroyed, the graveknight must wait 1 hour before using this ability again."
+					]
+				},
+				{
+					"type": "ability",
+					"name": "Ruinous Weapons",
+					"entries": [
+						"At the time of its creation, a graveknight chooses one of the following energy types that was relevant to its life or death: acid, cold, electricity, or fire. Any weapon the graveknight wields gains the effects of the caustic, frost, shock, or flaming weapon rune, respectively, in addition to a +1 striking weapon rune. If the graveknight is 14th level or higher, its weapons instead gain the effects of the greater versions of both of these runes."
+					]
+				},
+				{
+					"type": "ability",
+					"name": "Weapon Master",
+					"entries": [
+						"The graveknight has access to the critical specialization effects of any weapons it wields."
+					]
+				}
+			],
+			"optAbilities": {
+				"entries": [
+					{
+						"type": "pf2-h4",
+						"name": "Alternate Graveknight Abilities",
+						"entries": [
+							"Although the abilities listed above are standard for a graveknight, you can create a more unusual graveknight by substituting one of the aforementioned abilities (except for its rejuvenation ability) with one of the following."
+						]
+					}
+				],
+				"abilities": [
+					{
+						"type": "ability",
+						"name": "Betrayed Revivification",
+						"entries": [
+							"The graveknight died after being deeply betrayed. Instead of being immune to a type of energy damage, it is immune to mental damage, its weapons deal {@damage 1d6} additional mental damage, and its Devastating Blast deals mental damage with a Will saving throw instead of Reflex."
+						]
+					},
+					{
+						"type": "ability",
+						"name": "Create Grave Squire",
+						"entries": [
+							"The graveknight can gift a piece of its armor to a willing ally, which becomes its grave squire. The graveknight can communicate telepathically with its squire at any distance, see through the squire's senses, and cast suggestion as a divine innate spell through the telepathic link at will; the squire treats its degree of success as one step worse. If the graveknight's main armor is destroyed, the squire's piece expands to cover the squire's body over {@dice 1d10} days, after which point it becomes the graveknight's new body. The graveknight can have only one squire at a time, and must recover the gifted piece of armor if it wishes to create a new squire."
+						]
+					},
+					{
+						"type": "ability",
+						"name": "Dark Deliverance",
+						"entries": [
+							"The graveknight has positive resistance equal to its level."
+						]
+					}
+				]
+			},
+			"entries": [
+				{
+					"type": "pf2-h3",
+					"name": "Creating Graveknights",
+					"entries": [
+						"You can turn an existing, living creature into a graveknight by completing the following steps. It's best to build a graveknight from scratch, but if you don't have the time, simply apply the template. A creature should be at least level 5 before being converted to a graveknight.",
+						"Increase the creature's level by 1 and change its statistics as follows.",
+						{
+							"type": "list",
+							"items": [
+								"Increase its attack rolls, AC, saving throws, Perception, and skills by 1, its HP by 5, and its Strike damage by 1."
+							]
+						}
+					]
+				},
+				{
+					"type": "pf2-h4",
+					"name": "Graveknight Abilities",
+					"entries": [
+						"A graveknight gains the {@trait undead} and {@trait graveknight} traits, and its alignment is usually adjusted to evil. It loses any abilities that come from it being a living creature and any traits that represent its life, such as {@trait human} and {@trait humanoid}."
+					]
+				}
+			]
+		}
+	]
+}

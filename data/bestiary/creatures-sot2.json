@@ -715,7 +715,9 @@
 						},
 						"entries": [],
 						"name": "Attack of Opportunity",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				],
 				"bot": [
@@ -728,7 +730,9 @@
 							"40 feet."
 						],
 						"name": "Aquatic Ambush",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
 						"entries": [
@@ -748,7 +752,9 @@
 							"Medium, {@damage 2d8+7} bludgeoning, Rupture 20."
 						],
 						"name": "Swallow Whole",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				]
 			}
@@ -1364,37 +1370,31 @@
 				],
 				"bot": [
 					{
-						"entries": [
-							{
-								"type": "affliction",
-								"name": "",
-								"traits": [
-									"poison"
-								],
-								"note": "",
-								"DC": 21,
-								"savingThrow": "Fortitude",
-								"maxDuration": "6 rounds",
-								"stages": [
-									{
-										"stage": 1,
-										"entry": "{@damage 1d4} poison damage and {@condition stupefied|CRB|stupefied 1}",
-										"duration": "1 round"
-									},
-									{
-										"stage": 2,
-										"entry": "{@damage 2d4} poison damage and {@condition stupefied|CRB|stupefied 2}",
-										"duration": "1 round"
-									},
-									{
-										"stage": 3,
-										"entry": "{@damage 2d4} poison damage, {@condition stupefied|CRB|stupefied 3}, and {@condition flat-footed}",
-										"duration": "1 round"
-									}
-								]
-							}
+						"type": "affliction",
+						"name": "Baneback Poison",
+						"traits": [
+							"poison"
 						],
-						"name": "Baneback Poison"
+						"DC": 21,
+						"savingThrow": "Fortitude",
+						"maxDuration": "6 rounds",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "{@damage 1d4} poison damage and {@condition stupefied|CRB|stupefied 1}",
+								"duration": "1 round"
+							},
+							{
+								"stage": 2,
+								"entry": "{@damage 2d4} poison damage and {@condition stupefied|CRB|stupefied 2}",
+								"duration": "1 round"
+							},
+							{
+								"stage": 3,
+								"entry": "{@damage 2d4} poison damage, {@condition stupefied|CRB|stupefied 3}, and {@condition flat-footed}",
+								"duration": "1 round"
+							}
+						]
 					},
 					{
 						"entries": [
@@ -2027,7 +2027,9 @@
 					{
 						"entries": [],
 						"name": "Grab",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
 						"activity": {
@@ -2331,7 +2333,9 @@
 							"Mashkudu deals an extra {@damage 1d6} precision damage to {@condition flat-footed} creatures."
 						],
 						"name": "Sneak Attack",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
 						"entries": [
@@ -3408,7 +3412,9 @@
 						},
 						"entries": [],
 						"name": "Attack of Opportunity",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
 						"activity": {

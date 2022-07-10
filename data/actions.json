@@ -1,51 +1,6 @@
 {
 	"action": [
 		{
-			"name": "Practical Research",
-			"source": "SoT1",
-			"page": 63,
-			"traits": [
-				"downtime"
-			],
-			"requirements": "You are a conversant or lore-speaker.",
-			"entries": [
-				"You identify something interesting in the field and perform special research on it. This requires an appropriate check, which the GM will describe when the opportunity arises. The results of the check vary. While they typically include all the benefits of the Study activity, some opportunities for Practical Research also offer unique benefits, such as access to new character options."
-			]
-		},
-		{
-			"name": "Cram",
-			"source": "SoT1",
-			"page": 63,
-			"traits": [
-				"downtime"
-			],
-			"requirements": "You are an initiate, attendant, or conversant, and your branch level for either your primary or secondary branch is 2 or more levels below the limit.",
-			"entries": [
-				"Realizing that you're falling behind in your studies, you cram more than you probably should. You Study twice, each in a branch that satisfies the activity requirements. However, the extra studying comes at a price. Until the next time you take the Study downtime activity, you're particularly tired from all the extra hours cramming; at the start of each day of adventuring, you must succeed at a DC {@flatDC 8} flat check or be {@condition fatigued} for that day."
-			]
-		},
-		{
-			"name": "Study",
-			"source": "SoT1",
-			"page": 63,
-			"traits": [
-				"downtime"
-			],
-			"requirements": "You are an initiate, attendant, or conversant.",
-			"entries": [
-				"You give everything you have to your studies, in keeping with your branch. Choose either your primary or secondary branch and attempt a skill check with one of the branch's associated skills against a standard DC of the branch's level.",
-				{
-					"type": "successDegree",
-					"entries": {
-						"Critical Success": "Incredible results! You ace every exam and cause a stir that all the instructors notice. Increase the level of the branch you chose by 2.",
-						"Success": "You succeed in your studies admirably. Increase the level of the branch you chose by 1.",
-						"Failure": "You need to work harder and try again. Your branch level remains the same.",
-						"Critical Failure": "You make a major mistake that requires you to perform remedial studies. The next time you would get an opportunity to attempt this activity, you must skip that opportunity to catch up."
-					}
-				}
-			]
-		},
-		{
 			"name": "Accidental Shot",
 			"source": "G&G",
 			"page": 142,
@@ -276,7 +231,7 @@
 			},
 			"requirements": "You must use a {@item repair kit}.",
 			"entries": [
-				"You spend 10 minutes affixing a talisman to an item, placing the item on a stable surface and using the {@item repair kit} with both hands. You can also use this activity to remove a talisman. If more than one talisman is affixed to an item, the talismans are suppressed; none of them can be activated."
+				"You spend 10 minutes affixing a talisman to an item, placing the item on a stable surface and using the {@item repair kit} with both hands. You can also use this activity to remove a talisman. Attaching more than one talisman to an item deactivates all the talismans. They must be removed and re-affixed before they can be used again."
 			]
 		},
 		{
@@ -308,7 +263,7 @@
 		{
 			"name": "Anadi Venom",
 			"source": "LOME",
-			"page": 119,
+			"page": 103,
 			"activity": {
 				"number": 1,
 				"unit": "action"
@@ -1288,6 +1243,18 @@
 			"info": []
 		},
 		{
+			"name": "Cram",
+			"source": "SoT1",
+			"page": 63,
+			"traits": [
+				"downtime"
+			],
+			"requirements": "You are an initiate, attendant, or conversant, and your branch level for either your primary or secondary branch is 2 or more levels below the limit.",
+			"entries": [
+				"Realizing that you're falling behind in your studies, you cram more than you probably should. You Study twice, each in a branch that satisfies the activity requirements. However, the extra studying comes at a price. Until the next time you take the Study downtime activity, you're particularly tired from all the extra hours cramming; at the start of each day of adventuring, you must succeed at a DC {@flatDC 8} flat check or be {@condition fatigued} for that day."
+			]
+		},
+		{
 			"name": "Crawl",
 			"source": "CRB",
 			"page": 470,
@@ -1768,7 +1735,7 @@
 				"freq": 1
 			},
 			"entries": [
-				"You expend the power stored in your bonded item. During your turn, you gain the ability to cast one spell you prepared today and already cast, without spending a spell slot. You must still {@action Cast a Spell|CRB|Cast the Spell} and meet the spell's other requirements."
+				"You expend the power stored in your bonded item, as long as the item is on your person. During your turn, you gain the ability to cast one spell you prepared today and already cast, without spending a spell slot. You must still {@action Cast a Spell||Cast the Spell} and meet the spell's other requirements."
 			]
 		},
 		{
@@ -1916,6 +1883,12 @@
 							]
 						}
 					]
+				},
+				{
+					"tag": "table",
+					"name": "EARN INCOME TASKS",
+					"source": "GMG",
+					"type": "data"
 				}
 			]
 		},
@@ -3747,6 +3720,18 @@
 			]
 		},
 		{
+			"name": "Practical Research",
+			"source": "SoT1",
+			"page": 63,
+			"traits": [
+				"downtime"
+			],
+			"requirements": "You are a conversant or lore-speaker.",
+			"entries": [
+				"You identify something interesting in the field and perform special research on it. This requires an appropriate check, which the GM will describe when the opportunity arises. The results of the check vary. While they typically include all the benefits of the Study activity, some opportunities for Practical Research also offer unique benefits, such as access to new character options."
+			]
+		},
+		{
 			"name": "Pursue a Lead",
 			"source": "APG",
 			"page": 56,
@@ -5085,6 +5070,27 @@
 					"entries": {
 						"Critical Success": "As success, but you deal double damage.",
 						"Success": "You deal damage according to the weapon or unarmed attack, including any modifiers, bonuses, and penalties you have to damage."
+					}
+				}
+			]
+		},
+		{
+			"name": "Study",
+			"source": "SoT1",
+			"page": 63,
+			"traits": [
+				"downtime"
+			],
+			"requirements": "You are an initiate, attendant, or conversant.",
+			"entries": [
+				"You give everything you have to your studies, in keeping with your branch. Choose either your primary or secondary branch and attempt a skill check with one of the branch's associated skills against a standard DC of the branch's level.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "Incredible results! You ace every exam and cause a stir that all the instructors notice. Increase the level of the branch you chose by 2.",
+						"Success": "You succeed in your studies admirably. Increase the level of the branch you chose by 1.",
+						"Failure": "You need to work harder and try again. Your branch level remains the same.",
+						"Critical Failure": "You make a major mistake that requires you to perform remedial studies. The next time you would get an opportunity to attempt this activity, you must skip that opportunity to catch up."
 					}
 				}
 			]

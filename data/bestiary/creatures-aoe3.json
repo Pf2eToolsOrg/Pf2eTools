@@ -244,7 +244,9 @@
 							"The avarek's Strikes deal an additional {@damage 2d6} precision damage to {@condition flat-footed} creatures."
 						],
 						"name": "Sneak Attack",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				]
 			}
@@ -406,42 +408,36 @@
 						"name": "Consume Flesh"
 					},
 					{
-						"entries": [
-							{
-								"type": "affliction",
-								"name": "",
-								"traits": [
-									"curse",
-									"necromancy"
-								],
-								"note": "",
-								"DC": 26,
-								"savingThrow": "Fortitude",
-								"stages": [
-									{
-										"stage": 1,
-										"entry": "{@condition sickened|CRB|sickened 1}",
-										"duration": "1 round"
-									},
-									{
-										"stage": 2,
-										"entry": "{@condition sickened|CRB|sickened 2}",
-										"duration": "1 round"
-									},
-									{
-										"stage": 3,
-										"entry": "{@condition sickened|CRB|sickened 3}",
-										"duration": "1 round"
-									},
-									{
-										"stage": 4,
-										"entry": "drowning and cannot reduce below stage 4 until the water is purged;",
-										"duration": null
-									}
-								]
-							}
+						"type": "affliction",
+						"name": "Fill Lungs",
+						"traits": [
+							"curse",
+							"necromancy"
 						],
-						"name": "Fill Lungs"
+						"DC": 26,
+						"savingThrow": "Fortitude",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "{@condition sickened|CRB|sickened 1}",
+								"duration": "1 round"
+							},
+							{
+								"stage": 2,
+								"entry": "{@condition sickened|CRB|sickened 2}",
+								"duration": "1 round"
+							},
+							{
+								"stage": 3,
+								"entry": "{@condition sickened|CRB|sickened 3}",
+								"duration": "1 round"
+							},
+							{
+								"stage": 4,
+								"entry": "drowning and cannot reduce below stage 4 until the water is purged;",
+								"duration": null
+							}
+						]
 					},
 					{
 						"entries": [
@@ -776,7 +772,9 @@
 						},
 						"entries": [],
 						"name": "Aquatic Ambush",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
 						"activity": {
@@ -803,7 +801,9 @@
 							"Medium, {@damage 2d8+7} bludgeoning, Rupture 18."
 						],
 						"name": "Swallow Whole",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
 						"activity": {
@@ -944,7 +944,9 @@
 						},
 						"entries": [],
 						"name": "Attack of Opportunity",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				],
 				"bot": [
@@ -1932,7 +1934,9 @@
 						},
 						"entries": [],
 						"name": "Attack of Opportunity",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
 						"activity": {
@@ -2092,7 +2096,9 @@
 						},
 						"entries": [],
 						"name": "Attack of Opportunity",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				],
 				"bot": [
@@ -2131,7 +2137,9 @@
 						],
 						"entries": [],
 						"name": "Rend",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				]
 			}
@@ -2546,7 +2554,9 @@
 						},
 						"entries": [],
 						"name": "Attack of Opportunity",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
 						"activity": {
@@ -2555,7 +2565,9 @@
 						},
 						"entries": [],
 						"name": "Shield Block",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				],
 				"bot": [
@@ -2790,7 +2802,9 @@
 							"A svartalfar killer deals an extra {@damage 2d6} precision damage to {@condition flat-footed} creatures."
 						],
 						"name": "Sneak Attack",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
 						"activity": {
@@ -3092,7 +3106,9 @@
 						},
 						"entries": [],
 						"name": "Shield Block",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				],
 				"bot": [

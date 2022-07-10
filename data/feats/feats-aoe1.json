@@ -13,7 +13,7 @@
 			"traits": [
 				"archetype"
 			],
-			"prerequisites": "Edgewatch Detective Dedication",
+			"prerequisites": "{@feat Edgewatch Detective Dedication|AoE1}",
 			"entries": [
 				"You can sense the presence of the supernatural, even if you don't have any magical ability yourself. You can spend a single action (this action has the {@trait concentrate} trait) to determine if any magical auras are present in the area.",
 				"This has the effects of a 1st-level {@spell detect magic} spell but isn't magical. By straining, you can also discover the source of the magic and its school (with the effect of a 4th-level {@spell detect magic} spell), but doing so prevents you from using this ability again until you've rested for 8 hours."
@@ -36,7 +36,7 @@
 			"traits": [
 				"archetype"
 			],
-			"prerequisites": "Edgewatch Detective Dedication",
+			"prerequisites": "{@feat Edgewatch Detective Dedication|AoE1}",
 			"frequency": {
 				"unit": "day",
 				"freq": 3
@@ -65,7 +65,12 @@
 			"entries": [
 				"You become trained in {@skill Society} or {@skill Thievery}; if you are already trained in both of these skills, you instead become trained in a skill of your choice. You can use {@skill Perception} instead of {@skill Survival} to {@action Track}, and you gain the {@feat Experienced Tracker} skill feat (Core Rulebook 261)."
 			],
-			"special": "You can't select another dedication feat until you have gained two other feats from the this archetype."
+			"special": "You can't select another dedication feat until you have gained two other feats from the this archetype.",
+			"leadsTo": [
+				"Arcane Sensitivity|AoE1",
+				"Bolera's Interrogation|AoE1",
+				"Sense Alignment|AoE1"
+			]
 		},
 		{
 			"name": "Sense Alignment",
@@ -85,7 +90,7 @@
 				"archetype",
 				"secret"
 			],
-			"prerequisites": "Edgewatch Detective Dedication",
+			"prerequisites": "{@feat Edgewatch Detective Dedication|AoE1}",
 			"entries": [
 				"You read the body language of an intelligent creature within 30 feet and pick up on subtle cues to detect its general propensity for good or evil and law or chaos. The GM rolls a secret {@skill Perception} check, comparing the result against the target's {@skill Deception} DC.",
 				{

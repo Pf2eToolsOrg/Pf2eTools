@@ -9,7 +9,6 @@
 				"rare",
 				"necromancy"
 			],
-			"school": "N",
 			"traditions": [
 				"occult",
 				"primal"
@@ -19,17 +18,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 corporeal creature",
 			"savingThrow": {
@@ -58,9 +54,8 @@
 				}
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 2,
-					"entries": [
+				"plusX": {
+					"2": [
 						": The initial and {@condition persistent damage} increase by {@dice 2d6} and {@dice 1d6}, respectively."
 					]
 				}

@@ -60,13 +60,17 @@ class PageFilterAncestries extends PageFilter {
 	get optionsFilter () { return this._optionsFilter; }
 
 	mutateForFilters (ancestry, opts) {
+		ancestry._fRarity = ancestry.rarity ? ancestry.rarity.toTitleCase() : "Common";
 		ancestry._fSources = SourceFilter.getCompleteFilterSources(ancestry);
-		ancestry._flanguages = ancestry.languages.filter(it => it.length < 20);
+		ancestry._fLanguages = ancestry.languages.filter(it => it.length < 20);
 		ancestry._fAbilities = []
-		const unarmedAttacks = new RegExp("Bite|Beak|Fangs|Claws", "g")
+		ancestry._fTraits = ancestry.traits.map(t => t.toTitleCase())
+		ancestry._fSize = ancestry.size ? ancestry.size.map(x => x.toTitleCase()) : []
+		ancestry._fFlaw = ancestry.flaw ? ancestry.flaw.map(x => x.toTitleCase()) : []
+		ancestry._fBoosts = ancestry.boosts ? ancestry.boosts.map(x => x.toTitleCase()) : []
 		if (ancestry.features) {
 			ancestry.features.forEach(function (obj) {
-				if (unarmedAttacks.test(obj.name)) { ancestry._fAbilities.push("Unarmed Attack") }
+				if (obj.unarmedAttack) { ancestry._fAbilities.push("Unarmed Attack") }
 				ancestry._fAbilities.push(obj.name)
 			});
 		}
@@ -82,10 +86,10 @@ class PageFilterAncestries extends PageFilter {
 		if (isExcluded) return;
 		this._sourceFilter.addItem(ancestry._fSources);
 		this._hpFilter.addItem(ancestry.hp);
-		this._sizeFilter.addItem(ancestry.size);
-		this._languageFilter.addItem(ancestry._flanguages);
-		this._traitsFilter.addItem(ancestry.traits);
-		this._rarityFilter.addItem(ancestry.rarity);
+		this._sizeFilter.addItem(ancestry._fSize);
+		this._languageFilter.addItem(ancestry._fLanguages);
+		this._traitsFilter.addItem(ancestry._fTraits);
+		this._rarityFilter.addItem(ancestry._fRarity);
 		this._miscFilter.addItem(ancestry._fMisc);
 		this._fAbilities.addItem(ancestry._fAbilities);
 	}
@@ -112,15 +116,15 @@ class PageFilterAncestries extends PageFilter {
 		return this._filterBox.toDisplay(
 			values,
 			a._fSources,
-			a.boosts || [],
-			a.flaw || [],
+			a._fBoosts,
+			a._fFlaw,
 			a.hp,
-			a.size,
+			a._fSize,
 			a._fSpeed,
 			a._fSpeedtypes,
-			a._flanguages,
-			a.traits,
-			a.rarity,
+			a._fLanguages,
+			a._fTraits,
+			a._fRarity,
 			a._fMisc,
 			a._fAbilities,
 		)

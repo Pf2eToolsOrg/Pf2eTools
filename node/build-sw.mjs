@@ -47,13 +47,17 @@ const workboxPrecacheBuildResult = await injectManifest({
 		"manifest.webmanifest", // we should make sure we have the manifest, although its not strictly needed...
 		// we want to store fonts to make things styled nicely
 		"fonts/glyphicons-halflings-regular.woff2",
+		"fonts/glyphicons-halflings-regular.ttf",
 		"fonts/good-pro*",
 		"fonts/Pathfinder2eActions.ttf",
+		"fonts/Gin-Regular.ttf",
 		"fonts/SabonLTStd*",
 		"fonts/AlbertusMT.ttf",
-		"img/*.webp", // matches all images
 		"fonts/Basing.ttf",
 		"fonts/Taroca.ttf",
+		"img/gmscreen/moon.webp",
+		"img/*.webp",
+		"fonts/fa-light*",
 		// we need to cache the sw-injector or we won't be injected
 		"sw-injector.js",
 	],
@@ -77,7 +81,8 @@ const workboxRuntimeBuildResult = await injectManifest({
 	*/
 	globPatterns: [
 		"data/adventure/*.json", // matches all adventure json
-		"img/**/*", // matches all images
+		"img/**/*.webp", // matches all images
+		"img/**/*.svg", // matches all images
 		"*.png", // root images
 		"*.svg", // root svg
 	],

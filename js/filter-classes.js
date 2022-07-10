@@ -3,6 +3,7 @@
 class PageFilterClasses extends PageFilter {
 	constructor () {
 		super();
+		this._rarityFilter = new Filter({header: "Rarity"});
 		this._perceptionFilter = new Filter({header: "Perception"});
 		this._fortFilter = new Filter({header: "Fortitude"});
 		this._refFilter = new Filter({header: "Reflex"});
@@ -47,9 +48,11 @@ class PageFilterClasses extends PageFilter {
 		};
 	}
 
+	get rarityFilter () { return this._rarityFilter; }
 	get optionsFilter () { return this._optionsFilter; }
 
 	mutateForFilters (cls, opts) {
+		cls._fRarity = cls.rarity ? cls.rarity.toTitleCase() : "Common";
 		cls.subclasses = cls.subclasses || []
 		cls._fSources = SourceFilter.getCompleteFilterSources(cls);
 		cls._fSourceSubclass = [...new Set([cls.source, ...cls.subclasses.map(it => it.source)])];
@@ -101,6 +104,7 @@ class PageFilterClasses extends PageFilter {
 				sc.subclassFeatures.forEach(lvlFeatures => lvlFeatures.forEach(feature => this._addEntrySourcesToFilter(feature)))
 			}
 		});
+		this._rarityFilter.addItem(cls._fRarity);
 		this._perceptionFilter.addItem(cls._fPerception);
 		this._fortFilter.addItem(cls._fFort);
 		this._refFilter.addItem(cls._fRef);
@@ -113,42 +117,28 @@ class PageFilterClasses extends PageFilter {
 	async _pPopulateBoxOptions (opts) {
 		opts.filters = [
 			this._sourceFilter,
+			this._rarityFilter,
 			this._proficienciesFilter,
 			this._miscFilter,
 			this._optionsFilter,
 		];
 	}
 
-	isClassNaturallyDisplayed (values, cls) {
-		return this._filterBox.toDisplay(
-			values,
-			cls.source,
-			Array(this._proficienciesFilter._filters.length),
-			cls._fMisc,
-		);
-	}
-
 	isAnySubclassDisplayed (values, cls) {
 		return values[this._optionsFilter.header].isDisplayClassIfSubclassActive && (cls.subclasses || []).some(sc => {
-			return this._filterBox.toDisplay(
+			return this._filterBox.toDisplayByFilters(
 				values,
-				sc.source,
-				Array(this._proficienciesFilter._filters.length),
-				sc._fMisc,
+				{filter: this.sourceFilter, value: sc.source},
+				{filter: this.rarityFilter, value: sc._fRarity},
 			);
 		});
-	}
-
-	getActiveSource (values) {
-		const sourceFilterValues = values[this._sourceFilter.header];
-		if (!sourceFilterValues) return null;
-		return Object.keys(sourceFilterValues).find(it => this._sourceFilter.toDisplay(values, it));
 	}
 
 	toDisplay (values, c) {
 		return this._filterBox.toDisplay(
 			values,
 			this.isAnySubclassDisplayed(values, c) ? c._fSourceSubclass : c._fSources,
+			c._fRarity,
 			[
 				c._fPerception,
 				c._fFort,

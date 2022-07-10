@@ -175,6 +175,13 @@
 		margin: 0;
 		padding-left: 1em;
 		text-indent: -1em;
+
+		&--indent {
+			font-family: 'good-pro', sans-serif;
+			font-size: 1em;
+			margin: 0;
+			text-indent: 1em;
+		}
 	}
 
 	.pf2-other-source {
@@ -199,6 +206,7 @@
 	text-align: justify;
 	line-height: 1.33em;
 	font-weight: 400;
+	text-indent: 0;
 
 	&__ {
 		&name {
@@ -1513,19 +1521,8 @@
 }
 
 .feat-view--active {
-	.feat-view--resizable::after {
-		content: '...';
-		background-color: #aaa4;
-		border: 1px solid rgba(204, 204, 204, 0.4);
-		position: absolute;
+	.sublist__ele-resize {
 		bottom: 3px;
-		height: 2px;
-		width: 100%;
-		cursor: ns-resize;
-		user-select: none;
-		line-height: 1px;
-		font-size: 10px;
-		text-align: center;
 	}
 
 	.wrp-stats-table {
