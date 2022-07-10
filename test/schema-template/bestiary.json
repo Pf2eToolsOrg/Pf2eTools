@@ -1,0 +1,383 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema",
+	"$id": "bestiary.json",
+	"title": "Creatures",
+	"description": "The creature data type for Pf2eTools.",
+	"type": "object",
+	"version": "0.0.1",
+	"properties": {
+		"creature": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"source": {
+						"type": "string",
+						"$ref": "utils.json#/definitions/sourceList"
+					},
+					"name": {
+						"type": "string"
+					},
+					"page": {
+						"type": "integer"
+					},
+					"isNpc": {
+						"type": "boolean"
+					},
+					"level": {
+						"type": "integer",
+						"minimum": -1
+					},
+					"rarity": {
+						"$ref": "utils.json#/definitions/rarity"
+					},
+					"alignment": {
+						"$ref": "utils.json#/definitions/alignmentTags"
+					},
+					"size": {
+						"$ref": "utils.json#/definitions/size"
+					},
+					"traits": {
+						"type": "array",
+						"items": {
+							"type": "string",
+							"$ref": "utils.json#/definitions/anyTrait"
+						},
+						"minItems": 1,
+						"uniqueItems": true
+					},
+					"creatureType": {
+						"type": "array",
+						"items": {
+							"type": "string",
+							"$ref": "utils.json#/definitions/creatureTypes"
+						},
+						"minItems": 1,
+						"uniqueItems": true
+					},
+					"perception": {
+						"type": "object",
+						"properties": {
+							"default": {
+								"type": "integer"
+							}
+						},
+						"additionalProperties": false,
+						"minProperties": 1
+					},
+					"languages": {
+						"type": "object",
+						"properties": {
+							"languages": {
+								"type": "array",
+								"items": {
+									"$ref": "utils.json#/definitions/languages"
+								},
+								"minItems": 1,
+								"uniqueItems": true
+							},
+							"languageAbilities": {
+								"type": "array",
+								"items": {
+									"type": "string",
+									"enum": [
+										"//TODO"
+									]
+								},
+								"minItems": 1,
+								"uniqueItems": true
+							}
+						},
+						"additionalProperties": false,
+						"minProperties": 1
+					},
+					"skills": {
+						"type": "object",
+						"propertyNames": {
+							"oneOf": [
+								{
+									"$ref": "utils.json#/definitions/skillNameUpper"
+								},
+								{
+									"type": "string",
+									"pattern": "^[a-zA-Z]+ Lore$"
+								}
+							]
+						},
+						"additionalProperties": {
+							"type": "object",
+							"properties": {
+								"default": {
+									"type": "integer",
+									"minimum": 1
+								}
+							},
+							"additionalProperties": {
+								"type": "integer"
+							},
+							"minProperties": 1
+						}
+					},
+					"senses": {
+						"type": "object",
+						"propertyNames": {
+							"enum": [
+								"precise",
+								"imprecise",
+								"vague",
+								"other"
+							]
+						},
+						"additionalProperties": {
+							"type": "array",
+							"items": {
+								"type": "string"
+							},
+							"minItems": 1,
+							"uniqueItems": true
+						},
+						"minProperties": 1
+					},
+					"abilityMods": {
+						"$ref": "utils.json#/definitions/abilityMods"
+					},
+					"items": {
+						"type": "array",
+						"items": {
+							"type": "string"
+						},
+						"minItems": 1
+					},
+					"ac": {
+						"type": "object",
+						"properties": {
+							"default": {
+								"type": "integer"
+							}
+						},
+						"additionalProperties": {
+							"type": "integer"
+						},
+						"minProperties": 1
+					},
+					"savingThrows": {
+						"$ref": "utils.json#/definitions/savingThrows"
+					},
+					"hp": {
+						"type": "array",
+						"items": {
+							"type": "object",
+							"properties": {
+								"hp": {
+									"type": "integer",
+									"minimum": 1
+								},
+								"abilities": {
+									"type": "object"
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"hp"
+							]
+						},
+						"minItems": 1
+					},
+					"speed": {
+						"$ref": "utils.json#/definitions/speed"
+					},
+					"attacks": {
+						"type": "array",
+						"items": {
+							"$ref": "utils.json#/definitions/attackBlock"
+						},
+						"uniqueItems": true,
+						"minItems": 1
+					},
+					"abilitiesTop": {
+						"type": "array",
+						"items": {
+							"$ref": "utils.json#/definitions/abilityBlock"
+						},
+						"uniqueItems": true,
+						"minItems": 1
+					},
+					"abilitiesMid": {
+						"type": "array",
+						"items": {
+							"$ref": "utils.json#/definitions/abilityBlock"
+						},
+						"uniqueItems": true,
+						"minItems": 1
+					},
+					"abilitiesBot": {
+						"type": "array",
+						"items": {
+							"$ref": "utils.json#/definitions/abilityBlock"
+						},
+						"uniqueItems": true,
+						"minItems": 1
+					},
+					"inflicts": {
+						"type": "object",
+						"properties": {
+							"damage": {
+								"type": "array",
+								"items": {
+									"$ref": "utils.json#/definitions/damageType"
+								},
+								"minItems": 1,
+								"uniqueItems": true
+							},
+							"condition": {
+								"type": "array",
+								"items": {
+									"$ref": "utils.json#/definitions/conditions"
+								},
+								"minItems": 1,
+								"uniqueItems": true
+							}
+						},
+						"additionalProperties": false,
+						"minProperties": 1
+					},
+					"immunities": {
+						"type": "object",
+						"properties": {
+							"damage": {
+								"type": "array",
+								"items": {
+									"$ref": "utils.json#/definitions/damageType"
+								},
+								"minItems": 1,
+								"uniqueItems": true
+							},
+							"condition": {
+								"type": "array",
+								"items": {
+									"$ref": "utils.json#/definitions/conditions"
+								},
+								"minItems": 1,
+								"uniqueItems": true
+							}
+						},
+						"additionalProperties": false,
+						"minProperties": 1
+					},
+					"misc": {
+						"type": "array",
+						"items": {
+							"type": "string",
+							"enum": [
+								"MA",
+								"RA",
+								"UW",
+								"CC",
+								"TA"
+							]
+						},
+						"minItems": 1,
+						"uniqueItems": true
+					},
+					"spellcasting": {
+						"type": "array",
+						"items": {
+							"type": "object",
+							"properties": {
+								"name": {
+									"type": "string"
+								},
+								"type": {
+									"type": "string",
+									"enum": [
+										"Innate"
+									]
+								},
+								"tradition": {
+									"type": "string",
+									"enum": [
+										"Arcane"
+									]
+								},
+								"attack": {
+									"type": "integer",
+									"minimum": 10
+								},
+								"DC": {
+									"type": "integer",
+									"minimum": 10
+								},
+								"entry": {
+									"type": "object",
+									"patternProperties": {
+										"^[0-9]$": {
+											"type": "object",
+											"properties": {
+												"level": {
+													"type": "integer",
+													"minimum": 1
+												},
+												"spells": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"name": {
+																"type": "string"
+															}
+														},
+														"additionalProperties": false,
+														"required": [
+															"name"
+														]
+													},
+													"minItems": 1,
+													"uniqueItems": true
+												}
+											},
+											"additionalProperties": false,
+											"required": [
+												"spells"
+											]
+										}
+									},
+									"additionalProperties": false,
+									"minProperties": 1
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"name",
+								"type",
+								"tradition",
+								"DC",
+								"entry"
+							]
+						},
+						"minItems": 1,
+						"uniqueItems": true
+					},
+					"entries": {
+						"type": "array",
+						"items": {
+							"$ref": "entry.json"
+						},
+						"minItems": 1
+					}
+				},
+				"additionalProperties": false,
+				"required": [
+					"source",
+					"name",
+					"page"
+				]
+			},
+			"uniqueItems": true,
+			"minItems": 1
+		}
+	},
+	"additionalProperties": false,
+	"required": [
+		"creature"
+	]
+}
