@@ -48,7 +48,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "bloodbane",
+					"variantType": "bloodbane",
 					"level": 8,
 					"price": {
 						"coin": "gp",
@@ -57,7 +57,7 @@
 					"entries": []
 				},
 				{
-					"type": "greater bloodbane",
+					"variantType": "greater bloodbane",
 					"level": 13,
 					"price": {
 						"coin": "gp",
@@ -86,7 +86,7 @@
 				"amount": 5800
 			},
 			"usage": "worn",
-			"bulk": "\u2014",
+			"bulk": "\u2013",
 			"category": "Worn",
 			"entries": [
 				"This amulet is made from the scales of five ancient dragons. You gain resistance 5 to acid, cold, electricity, fire, and poison. If you take damage of one of these types from a dragon's Breath Weapon, the amulet begins to glow brightly; for the next 10 minutes, your resistance against that type of damage increases to 20. If you are subjected to a dragon's frightful presence, you can roll your saving throw twice and use the higher result to determine the aura's effects. This is a {@trait fortune} effect.",
@@ -136,10 +136,11 @@
 					"activity": {
 						"number": 10,
 						"unit": "minute",
-						"entry": "10 minutes (command, envision,"
+						"entry": "10 minutes"
 					},
 					"components": [
-						"Interact)"
+						"command", "envision",
+						"{@action Interact}"
 					],
 					"frequency": {
 						"unit": "day",
@@ -193,11 +194,12 @@
 			"shieldData": {
 				"hardness": 15,
 				"hp": 120,
-				"bt": 60
+				"bt": 60,
+				"ac": 2
 			},
 			"category": "Held",
 			"entries": [
-				"This steel shield contains a smoldering core of magma that never cools. Whenever the reforging shield's current Hit Points are below its Break Threshold, the shield recovers 5 Hit Points at the start of its wielder's turn each round until it is no longer {@condition broken}. Each time a character Repairs the shield, the shield recovers double the number of Hit Points.",
+				"This steel shield contains a smoldering core of magma that never cools. Whenever the reforging shield's current Hit Points are below its Break Threshold, the shield recovers 5 Hit Points at the start of its wielder's turn each round until it is no longer {@condition broken}. Each time a character {@action Repair||Repairs} the shield, the shield recovers double the number of Hit Points.",
 				"The shield has Hardness 15, HP 120, and BT 60."
 			]
 		},
