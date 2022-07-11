@@ -856,6 +856,7 @@ function Renderer () {
 		if (entry.components != null) textStack[0] += ` ${this.render(entry.components.join(", "))}`;
 		if (entry.traits && entry.traits.length) textStack[0] += ` (${entry.traits.map(t => this.render(`{@trait ${t.toLowerCase()}}`)).join(", ")})`;
 		entry.components != null || entry.traits != null ? textStack[0] += "; " : textStack[0] += "&nbsp;";
+		if (entry.cost != null) textStack[0] += `<strong>Cost&nbsp;</strong>${entry.cost}; `;
 		if (entry.frequency != null) textStack[0] += `<strong>Frequency&nbsp;</strong>${this.render_addTerm(Parser.freqToFullEntry(entry.frequency))} `;
 		if (entry.note != null) textStack[0] += `${this.render(entry.note)}; `;
 		if (entry.requirements != null) textStack[0] += `<strong>Requirements&nbsp;</strong>${this.render_addTerm(entry.requirements)} `;
