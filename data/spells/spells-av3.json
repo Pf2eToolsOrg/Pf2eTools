@@ -11,7 +11,6 @@
 				"necromancy",
 				"negative"
 			],
-			"school": "N",
 			"traditions": [
 				"arcane",
 				"occult",
@@ -22,17 +21,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "60 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 60
-				}
+				"type": "feet",
+				"number": 60
 			},
 			"targets": "1 living creature",
 			"savingThrow": {
@@ -46,9 +42,8 @@
 				"If the target takes damage, its blood flows into your mouth. If you're a living creature and don't have negative healing, you're {@condition sickened|CRB|sickened 2}. If you're undead (or living but have negative healing), you can choose to either gain temporary Hit Points equal to half of the negative damage the target takes (after applying resistance and the like) and become {@condition quickened} for 1 round, or forgo the temporary Hit Points and become {@condition quickened} for 1 minute. You can use this extra action only to {@action Step}, {@action Stride}, or {@action Strike}. You lose any remaining temporary Hit Points after 1 minute."
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 1,
-					"entries": [
+				"plusX": {
+					"1": [
 						"The damage increases by {@dice 2d4}."
 					]
 				}
@@ -64,7 +59,6 @@
 				"mental",
 				"necromancy"
 			],
-			"school": "N",
 			"traditions": [
 				"occult"
 			],
@@ -73,18 +67,15 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true,
-					"V": true
-				}
+				[
+					"M",
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 creature",
 			"entries": [
@@ -104,23 +95,19 @@
 				"mental",
 				"necromancy"
 			],
-			"school": "N",
 			"cast": {
 				"number": 1,
 				"unit": "reaction"
 			},
 			"components": [
-				{
-					"S": true
-				}
+				[
+					"S"
+				]
 			],
 			"trigger": "A creature within range becomes {@condition frightened}.",
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "the triggering creature",
 			"savingThrow": {
@@ -150,9 +137,8 @@
 				}
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 1,
-					"entries": [
+				"plusX": {
+					"1": [
 						"The damage increases by {@dice 2d4}."
 					]
 				}
@@ -170,16 +156,15 @@
 				"illusion",
 				"visual"
 			],
-			"school": "I",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"area": {
 				"types": [
@@ -215,9 +200,8 @@
 				}
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 2,
-					"entries": [
+				"plusX": {
+					"2": [
 						"You increase the area by 5 feet and the duration of the {@condition stupefied} condition by 1 minute."
 					]
 				}

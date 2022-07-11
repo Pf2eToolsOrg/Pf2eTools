@@ -370,7 +370,9 @@
 							"The acolyte deals an additional {@damage 2d6} precision damage to {@condition flat-footed} creatures."
 						],
 						"name": "Sneak Attack",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				]
 			}
@@ -537,7 +539,9 @@
 						},
 						"entries": [],
 						"name": "Attack of Opportunity",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				],
 				"bot": [
@@ -568,7 +572,9 @@
 							"The clockwork assassin's Strikes deal an additional {@damage 3d6} precision damage to {@condition flat-footed} creatures."
 						],
 						"name": "Sneak Attack",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
 						"entries": [
@@ -994,7 +1000,10 @@
 						"entries": [
 							"Grabble can cast one prepared spell he has already cast today without spending a spell slot. He must still {@action Cast a Spell||Cast the Spell} and meet the spell's other requirements. He can do this once per day for each of the spell levels he can cast."
 						],
-						"name": "Drain Bonded Item"
+						"name": "Drain Bonded Item",
+						"generic": {
+							"tag": "action"
+						}
 					},
 					{
 						"activity": {
@@ -1774,35 +1783,31 @@
 							"The jorogumo takes on the appearance of any Small or Medium spider. This doesn't change their Speed or Strikes."
 						],
 						"name": "Change Shape",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
-						"entries": [
-							{
-								"type": "affliction",
-								"name": "",
-								"traits": [
-									"poison"
-								],
-								"note": "",
-								"DC": 32,
-								"savingThrow": "Fortitude",
-								"maxDuration": "10 rounds",
-								"stages": [
-									{
-										"stage": 1,
-										"entry": "{@damage 3d6} poison damage and {@condition stupefied|CRB|stupefied 1}",
-										"duration": "1 round"
-									},
-									{
-										"stage": 2,
-										"entry": "{@damage 3d6} poison damage and {@condition stupefied|CRB|stupefied 2} ;",
-										"duration": "1 round"
-									}
-								]
-							}
+						"type": "affliction",
+						"name": "Jorogumo Venom",
+						"traits": [
+							"poison"
 						],
-						"name": "Jorogumo Venom"
+						"DC": 32,
+						"savingThrow": "Fortitude",
+						"maxDuration": "10 rounds",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "{@damage 3d6} poison damage and {@condition stupefied|CRB|stupefied 1}",
+								"duration": "1 round"
+							},
+							{
+								"stage": 2,
+								"entry": "{@damage 3d6} poison damage and {@condition stupefied|CRB|stupefied 2} ;",
+								"duration": "1 round"
+							}
+						]
 					},
 					{
 						"activity": {
@@ -2088,7 +2093,9 @@
 						},
 						"entries": [],
 						"name": "Attack of Opportunity",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				],
 				"bot": [
@@ -2558,7 +2565,9 @@
 							"The poisoner deals an additional {@damage 3d6} precision damage to {@condition flat-footed} creatures."
 						],
 						"name": "Sneak Attack",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
 						"entries": [
@@ -2704,7 +2713,9 @@
 						},
 						"entries": [],
 						"name": "Attack of Opportunity",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				],
 				"bot": [
@@ -2871,7 +2882,9 @@
 						},
 						"entries": [],
 						"name": "Attack of Opportunity",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
 						"entries": [
@@ -3075,7 +3088,9 @@
 						},
 						"entries": [],
 						"name": "Attack of Opportunity",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
 						"entries": [
@@ -3627,7 +3642,9 @@
 							"Stinger only."
 						],
 						"name": "Attack of Opportunity",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				],
 				"bot": [
@@ -3655,7 +3672,9 @@
 							"The Stabbing Beast takes on the appearance of a Medium humanoid with a scorpion's tail and chitinous, full-body plate armor. This doesn't change their."
 						],
 						"name": "Change Shape",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				]
 			}
@@ -3881,7 +3900,9 @@
 						},
 						"entries": [],
 						"name": "Shield Block",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				],
 				"bot": [
@@ -4052,7 +4073,9 @@
 							"Wynsal can use {@action Attack of Opportunity} when a creature within his reach uses a concentrate action, in addition to normal triggers. He disrupts triggering actions on any hit, not only a critical hit."
 						],
 						"name": "Attack of Opportunity",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				],
 				"bot": [

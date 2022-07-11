@@ -25,7 +25,7 @@
 						{
 							"type": "list",
 							"items": [
-								"{@b Ability:} {@ability darkvision} assumes Bestiary by default, {@ability aquatic ambush|bst} can have sources added with a pipe, {@ability at-will spells|bst|and optional link text added with another pipe}.",
+								"{@b Ability:} {@ability darkvision} assumes Bestiary by default, {@ability aquatic ambush|bst} can have sources added with a pipe, {@ability at-will spells|B1|and optional link text added with another pipe}.",
 								"{@b Actions:} {@action strike} assumes CRB by default, {@action act together|som} can have sources added with a pipe, {@action devise a stratagem|apg|and optional link text added with another pipe}.",
 								"{@b Ancestries:} {@ancestry elf} assumes CRB by default, {@ancestry anadi|lome} can have sources added with a pipe, {@ancestry gnoll|loag|optional link text added with another pipe}, {@ancestry dwarf|crb|heritages added|rock} with another pipe.",
 								"{@b Versatile Heritages:} {@versatileHeritage aasimar} assumes APG by default, {@versatileHeritage oread|LOAG} can have sources added with a pipe, {@ancestry ganzi|loag|optional link text added with another pipe}.",
@@ -35,7 +35,7 @@
 								"{@b Classes:} {@class alchemist} assumes CRB by default, {@class investigator|apg} can have sources added with a pipe, {@class summoner|som|optional link text added with another pipe}, {@class barbarian|crb|subclasses added|giant} with another pipe, {@class barbarian|crb|and class feature added|giant|crb|2-2} with another pipe (first number is level index (0-19), second number is feature index (0-n)), although this is prone to changes in the index, it's best to use the above method instead.",
 								"{@b Conditions:} {@condition stunned} assumes CRB by default, {@condition stunned|crb} can have sources added with a pipe (not that it's ever useful), {@condition stunned|crb|and optional link text added with another pipe}.",
 								"{@b Creatures:} {@creature giant rat} assumes Bestiary by default, {@creature quickling|bst2} can have sources added with a pipe, {@creature treerazer||and optional link text added with another pipe}.",
-								"{@b Deities:} {@deity abadar} assumes CRB by default, {@deity abraxas|logm} can have sources added with a pipe, {@deity ydersius|bst2|and optional link text added with another pipe}.",
+								"{@b Deities:} {@deity abadar} assumes CRB by default, {@deity abraxas|logm} can have sources added with a pipe, {@deity ydersius|B2|and optional link text added with another pipe}.",
 								"{@b Diseases:} {@disease blinding sickness} assumes GMG by default, {@disease soulforged corruption|som} can have sources added with a pipe, {@disease blinding sickness|gmg|and optional link text added with another pipe}.",
 								"{@b Curses:} {@curse curse of the ravenous} assumes GMG by default, {@disease curse of the werecreature|bst} can have sources added with a pipe, {@disease spirit anchor||and optional link text added with another pipe}.",
 								"{@b Companions:} {@companion badger} assumes CRB by default, {@companion ape|apg} can have sources added with a pipe, {@companion shadow hound|som|and optional link text added with another pipe}. This tag as well as the {@i companion} and {@i eidolon} tags are effectively interchangeable, provided you use the correct source.",
@@ -765,9 +765,8 @@
 															"basic": true
 														},
 														"heightened": {
-															"plus_x": {
-																"level": 1,
-																"entries": [
+															"plusX": {
+																"1": [
 																	"The damage increases by {@dice 2d6}."
 																]
 															}

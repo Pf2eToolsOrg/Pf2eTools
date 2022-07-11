@@ -599,80 +599,17 @@ Parser.getClassSideBarEntries = function (cls) {
 	return out
 }
 
-SKL_ABV_ABJ = "A";
-SKL_ABV_EVO = "V";
-SKL_ABV_ENC = "E";
-SKL_ABV_ILL = "I";
-SKL_ABV_DIV = "D";
-SKL_ABV_NEC = "N";
-SKL_ABV_TRA = "T";
-SKL_ABV_CON = "C";
-Parser.SKL_ABVS = [
-	SKL_ABV_ABJ,
-	SKL_ABV_EVO,
-	SKL_ABV_ENC,
-	SKL_ABV_ILL,
-	SKL_ABV_DIV,
-	SKL_ABV_NEC,
-	SKL_ABV_TRA,
-	SKL_ABV_CON,
-];
-SKL_ABJ = "Abjuration";
-SKL_EVO = "Evocation";
-SKL_ENC = "Enchantment";
-SKL_ILL = "Illusion";
-SKL_DIV = "Divination";
-SKL_NEC = "Necromancy";
-SKL_TRA = "Transmutation";
-SKL_CON = "Conjuration";
-Parser.SP_SCHOOLS = [SKL_ABJ, SKL_EVO, SKL_ENC, SKL_ILL, SKL_DIV, SKL_NEC, SKL_TRA, SKL_CON];
-Parser.SP_SCHOOL_FULL_TO_ABV = {};
-Parser.SP_SCHOOL_FULL_TO_ABV[SKL_ABJ] = SKL_ABV_ABJ;
-Parser.SP_SCHOOL_FULL_TO_ABV[SKL_EVO] = SKL_ABV_EVO;
-Parser.SP_SCHOOL_FULL_TO_ABV[SKL_ENC] = SKL_ABV_ENC;
-Parser.SP_SCHOOL_FULL_TO_ABV[SKL_ILL] = SKL_ABV_ILL;
-Parser.SP_SCHOOL_FULL_TO_ABV[SKL_DIV] = SKL_ABV_DIV;
-Parser.SP_SCHOOL_FULL_TO_ABV[SKL_NEC] = SKL_ABV_NEC;
-Parser.SP_SCHOOL_FULL_TO_ABV[SKL_TRA] = SKL_ABV_TRA;
-Parser.SP_SCHOOL_FULL_TO_ABV[SKL_CON] = SKL_ABV_CON;
-Parser.SP_SCHOOL_ABV_TO_FULL = {};
-Parser.SP_SCHOOL_ABV_TO_FULL[SKL_ABV_ABJ] = SKL_ABJ;
-Parser.SP_SCHOOL_ABV_TO_FULL[SKL_ABV_EVO] = SKL_EVO;
-Parser.SP_SCHOOL_ABV_TO_FULL[SKL_ABV_ENC] = SKL_ENC;
-Parser.SP_SCHOOL_ABV_TO_FULL[SKL_ABV_ILL] = SKL_ILL;
-Parser.SP_SCHOOL_ABV_TO_FULL[SKL_ABV_DIV] = SKL_DIV;
-Parser.SP_SCHOOL_ABV_TO_FULL[SKL_ABV_NEC] = SKL_NEC;
-Parser.SP_SCHOOL_ABV_TO_FULL[SKL_ABV_TRA] = SKL_TRA;
-Parser.SP_SCHOOL_ABV_TO_FULL[SKL_ABV_CON] = SKL_CON;
-Parser.SP_SCHOOL_ABV_TO_SHORT = {};
-Parser.SP_SCHOOL_ABV_TO_SHORT[SKL_ABV_ABJ] = "Abj.";
-Parser.SP_SCHOOL_ABV_TO_SHORT[SKL_ABV_EVO] = "Evoc.";
-Parser.SP_SCHOOL_ABV_TO_SHORT[SKL_ABV_ENC] = "Ench.";
-Parser.SP_SCHOOL_ABV_TO_SHORT[SKL_ABV_ILL] = "Illu.";
-Parser.SP_SCHOOL_ABV_TO_SHORT[SKL_ABV_DIV] = "Divin.";
-Parser.SP_SCHOOL_ABV_TO_SHORT[SKL_ABV_NEC] = "Necro.";
-Parser.SP_SCHOOL_ABV_TO_SHORT[SKL_ABV_TRA] = "Trans.";
-Parser.SP_SCHOOL_ABV_TO_SHORT[SKL_ABV_CON] = "Conj.";
-Parser.spSchoolAbvToFull = function (school) {
-	if (school == null) return `N/A`
-	const out = Parser._parse_aToB(Parser.SP_SCHOOL_ABV_TO_FULL, school);
-	if (Parser.SP_SCHOOL_ABV_TO_FULL[school]) return out;
-	if (BrewUtil.homebrewMeta && BrewUtil.homebrewMeta.spellSchools && BrewUtil.homebrewMeta.spellSchools[school]) return BrewUtil.homebrewMeta.spellSchools[school].full;
-	return out;
-};
-Parser.spSchoolAbvToShort = function (school) {
-	if (school == null) return `N/A`
-	const out = Parser._parse_aToB(Parser.SP_SCHOOL_ABV_TO_SHORT, school);
-	if (Parser.SP_SCHOOL_ABV_TO_SHORT[school]) return out;
-	if (BrewUtil.homebrewMeta && BrewUtil.homebrewMeta.spellSchools && BrewUtil.homebrewMeta.spellSchools[school]) return BrewUtil.homebrewMeta.spellSchools[school].short;
-	return out;
-};
-Parser.spSchoolAbvToStyle = function (school) { // For homebrew
-	const rawColor = MiscUtil.get(BrewUtil, "homebrewMeta", "spellSchools", school, "color");
+Parser.spSchoolToStyle = function (school) {
+	const rawColor = MiscUtil.get(Renderer.trait.TRAITS, school.toLowerCase(), "_data", "school", "color");
 	if (!rawColor || !rawColor.trim()) return "";
 	const validColor = BrewUtil.getValidColor(rawColor);
 	if (validColor.length) return `style="color: #${validColor}"`;
 	return "";
+};
+Parser.spSchoolToAbv = function (school) {
+	const schoolAbv = MiscUtil.get(Renderer.trait.TRAITS, school.toLowerCase(), "_data", "school", "short");
+	if (!schoolAbv || !schoolAbv.trim()) return school;
+	return schoolAbv;
 };
 
 TR_AC = "Arcane";
@@ -1050,24 +987,23 @@ Parser.timeToTableStr = function (time) {
 }
 
 UNT_FEET = "feet";
-UNT_MILES = "miles";
+UNT_MILES = "mile";
 Parser.INCHES_PER_FOOT = 12;
 Parser.FEET_PER_MILE = 5280;
 
-RNG_SPECIAL = "special";
-RNG_POINT = "point";
-RNG_LINE = "line";
-RNG_CUBE = "cube";
-RNG_CONE = "cone";
-RNG_RADIUS = "radius";
-RNG_SPHERE = "sphere";
-RNG_HEMISPHERE = "hemisphere";
-RNG_CYLINDER = "cylinder"; // homebrew only
 RNG_SELF = "self";
-RNG_SIGHT = "sight";
 RNG_UNLIMITED = "unlimited";
 RNG_UNLIMITED_SAME_PLANE = "planetary";
+RNG_UNLIMITED_OTHER_PLANE = "interplanar";
 RNG_TOUCH = "touch";
+
+Parser.rangeToFull = function (range) {
+	if (range == null) return "";
+	if (range.entry) return range.entry;
+	if (range.type === UNT_FEET) return `${range.number} ${range.number === 1 ? "foot" : "feet"}`;
+	if (range.type === UNT_MILES) return `${range.number} ${range.number === 1 ? "mile" : "miles"}`;
+	return range.type;
+}
 
 // TODO: Handle range/area types: emanation, cone etc?
 Parser.getNormalisedRange = function (range) {
@@ -1076,23 +1012,23 @@ Parser.getNormalisedRange = function (range) {
 	let distance = 0;
 	let offset = 0;
 
-	const dist = MiscUtil.merge({type: null, amount: 0}, range.distance)
-	switch (dist.type) {
+	switch (range.type) {
 		case null: distance = 0; break;
-		case UNT_FEET: multiplier = Parser.INCHES_PER_FOOT; distance = dist.amount; break;
-		case UNT_MILES: multiplier = Parser.INCHES_PER_FOOT * Parser.FEET_PER_MILE; distance = dist.amount; break;
+		case UNT_FEET: multiplier = Parser.INCHES_PER_FOOT; distance = range.number; break;
+		case UNT_MILES: multiplier = Parser.INCHES_PER_FOOT * Parser.FEET_PER_MILE; distance = range.number; break;
 		case RNG_TOUCH: distance = 1; break;
 		case RNG_UNLIMITED_SAME_PLANE: distance = 900000000; break;
-		case RNG_UNLIMITED: distance = 900000001; break;
-		case "unknown": distance = 900000002; break;
+		case RNG_UNLIMITED_OTHER_PLANE: distance = 900000001; break;
+		case RNG_UNLIMITED: distance = 900000002; break;
+		case "unknown": distance = 900000003; break;
 		default: {
 			// it's homebrew?
-			const fromBrew = MiscUtil.get(BrewUtil.homebrewMeta, "spellDistanceUnits", dist.type);
+			const fromBrew = MiscUtil.get(BrewUtil.homebrewMeta, "spellDistanceUnits", range.type);
 			if (fromBrew) {
 				const ftPerUnit = fromBrew.feetPerUnit;
 				if (ftPerUnit != null) {
 					multiplier = Parser.INCHES_PER_FOOT * ftPerUnit;
-					distance = dist.amount;
+					distance = range.number;
 				} else {
 					distance = 910000000; // default to max distance, to have them displayed at the bottom
 				}
@@ -1235,9 +1171,9 @@ Parser.CONDITION_TO_COLOR = {
 // Listing of all the sources
 SRC_CRB = "CRB";
 SRC_APG = "APG";
-SRC_BST = "Bst";
-SRC_BST2 = "Bst2";
-SRC_BST3 = "Bst3";
+SRC_B1 = "B1";
+SRC_B2 = "B2";
+SRC_B3 = "B3";
 SRC_GMG = "GMG";
 SRC_SOM = "SoM";
 SRC_LOWG = "LOWG";
@@ -1362,11 +1298,11 @@ Parser.SOURCE_PREFIX_TO_SHORT[OoA_PREFIX] = OoA_PREFIX_SHORT;
 // Turn JSON to Full Title
 Parser.SOURCE_JSON_TO_FULL = {};
 Parser.SOURCE_JSON_TO_FULL[SRC_CRB] = "Core Rulebook";
-Parser.SOURCE_JSON_TO_FULL[SRC_BST] = "Bestiary";
+Parser.SOURCE_JSON_TO_FULL[SRC_B1] = "Bestiary";
 Parser.SOURCE_JSON_TO_FULL[SRC_GMG] = "Gamemastery Guide";
-Parser.SOURCE_JSON_TO_FULL[SRC_BST2] = "Bestiary 2";
+Parser.SOURCE_JSON_TO_FULL[SRC_B2] = "Bestiary 2";
 Parser.SOURCE_JSON_TO_FULL[SRC_APG] = "Advanced Player's Guide";
-Parser.SOURCE_JSON_TO_FULL[SRC_BST3] = "Bestiary 3";
+Parser.SOURCE_JSON_TO_FULL[SRC_B3] = "Bestiary 3";
 Parser.SOURCE_JSON_TO_FULL[SRC_SOM] = "Secrets of Magic";
 Parser.SOURCE_JSON_TO_FULL[SRC_LOWG] = "Lost Omens: World Guide";
 Parser.SOURCE_JSON_TO_FULL[SRC_LOCG] = "Lost Omens: Character Guide";
@@ -1446,11 +1382,11 @@ Parser.SOURCE_JSON_TO_FULL[SRC_LTIBA] = "Little Trouble in Big Absalom";
 // Turn JSON to Abbreviations
 Parser.SOURCE_JSON_TO_ABV = {};
 Parser.SOURCE_JSON_TO_ABV[SRC_CRB] = "CRB";
-Parser.SOURCE_JSON_TO_ABV[SRC_BST] = "Bst";
+Parser.SOURCE_JSON_TO_ABV[SRC_B1] = "B1";
 Parser.SOURCE_JSON_TO_ABV[SRC_GMG] = "GMG";
-Parser.SOURCE_JSON_TO_ABV[SRC_BST2] = "Bst2";
+Parser.SOURCE_JSON_TO_ABV[SRC_B2] = "B2";
 Parser.SOURCE_JSON_TO_ABV[SRC_APG] = "APG";
-Parser.SOURCE_JSON_TO_ABV[SRC_BST3] = "Bst3";
+Parser.SOURCE_JSON_TO_ABV[SRC_B3] = "B3";
 Parser.SOURCE_JSON_TO_ABV[SRC_SOM] = "SoM";
 Parser.SOURCE_JSON_TO_ABV[SRC_LOWG] = "LOWG";
 Parser.SOURCE_JSON_TO_ABV[SRC_LOCG] = "LOCG";
@@ -1530,21 +1466,21 @@ Parser.SOURCE_JSON_TO_ABV[SRC_TIO] = "TiO";
 // Turn JSON to Date of Release
 Parser.SOURCE_JSON_TO_DATE = {};
 Parser.SOURCE_JSON_TO_DATE[SRC_CRB] = "2019-08-01";
-Parser.SOURCE_JSON_TO_DATE[SRC_BST] = "2019-08-01";
+Parser.SOURCE_JSON_TO_DATE[SRC_B1] = "2019-08-01";
 Parser.SOURCE_JSON_TO_DATE[SRC_LOWG] = "2019-08-28";
 Parser.SOURCE_JSON_TO_DATE[SRC_LOCG] = "2019-10-16";
 Parser.SOURCE_JSON_TO_DATE[SRC_LOGM] = "2020-01-29";
 Parser.SOURCE_JSON_TO_DATE[SRC_LOGMWS] = "2020-01-29";
 Parser.SOURCE_JSON_TO_DATE[SRC_GMG] = "2020-02-26";
 Parser.SOURCE_JSON_TO_DATE[SRC_EC3] = "2020-03-25";
-Parser.SOURCE_JSON_TO_DATE[SRC_BST2] = "2020-05-27";
+Parser.SOURCE_JSON_TO_DATE[SRC_B2] = "2020-05-27";
 Parser.SOURCE_JSON_TO_DATE[SRC_LOL] = "2020-07-30";
 Parser.SOURCE_JSON_TO_DATE[SRC_APG] = "2020-08-30";
 Parser.SOURCE_JSON_TO_DATE[SRC_LOPSG] = "2020-10-14";
 Parser.SOURCE_JSON_TO_DATE[SRC_LOAG] = "2021-02-24";
 Parser.SOURCE_JSON_TO_DATE[SRC_AAWS] = "2021-02-24";
-Parser.SOURCE_JSON_TO_DATE[SRC_BST3] = "2021-03-31";
-Parser.SOURCE_JSON_TO_DATE[SRC_BST3] = "2021-07-07";
+Parser.SOURCE_JSON_TO_DATE[SRC_B3] = "2021-03-31";
+Parser.SOURCE_JSON_TO_DATE[SRC_B3] = "2021-07-07";
 Parser.SOURCE_JSON_TO_DATE[SRC_SOM] = "2021-08-25";
 Parser.SOURCE_JSON_TO_DATE[SRC_GNG] = "2021-10-13";
 Parser.SOURCE_JSON_TO_DATE[SRC_LOTGB] = "2021-10-13";
@@ -1553,21 +1489,21 @@ Parser.SOURCE_JSON_TO_DATE[SRC_BD] = "2022-04-27";
 // Turn JSON to Paizo Store
 Parser.SOURCE_JSON_TO_STORE = {};
 Parser.SOURCE_JSON_TO_STORE[SRC_CRB] = "https://paizo.com/products/btq01zp3";
-Parser.SOURCE_JSON_TO_STORE[SRC_BST] = "https://paizo.com/products/btq01zp4";
+Parser.SOURCE_JSON_TO_STORE[SRC_B1] = "https://paizo.com/products/btq01zp4";
 Parser.SOURCE_JSON_TO_STORE[SRC_LOWG] = "https://paizo.com/products/btq01zoj";
 Parser.SOURCE_JSON_TO_STORE[SRC_LOCG] = "https://paizo.com/products/btq01zt4";
 Parser.SOURCE_JSON_TO_STORE[SRC_LOGM] = "https://paizo.com/products/btq021wf";
 Parser.SOURCE_JSON_TO_STORE[SRC_LOGMWS] = "https://paizo.com/products/btq021wf";
 Parser.SOURCE_JSON_TO_STORE[SRC_GMG] = "https://paizo.com/products/btq022c1";
 Parser.SOURCE_JSON_TO_STORE[SRC_EC3] = "https://paizo.com/products/btq01zuh";
-Parser.SOURCE_JSON_TO_STORE[SRC_BST2] = "https://paizo.com/products/btq022yq";
+Parser.SOURCE_JSON_TO_STORE[SRC_B2] = "https://paizo.com/products/btq022yq";
 Parser.SOURCE_JSON_TO_STORE[SRC_LOL] = "https://paizo.com/products/btq023gd";
 Parser.SOURCE_JSON_TO_STORE[SRC_APG] = "https://paizo.com/products/btq023ih";
 Parser.SOURCE_JSON_TO_STORE[SRC_LOPSG] = "https://paizo.com/products/btq0250x";
 Parser.SOURCE_JSON_TO_STORE[SRC_LOAG] = "https://paizo.com/products/btq026k5";
 Parser.SOURCE_JSON_TO_STORE[SRC_LOME] = "https://paizo.com/products/btq026i4";
 Parser.SOURCE_JSON_TO_STORE[SRC_AAWS] = "https://paizo-images.s3-us-west-2.amazonaws.com/image/download/Azarketi+Ancestry.pdf";
-Parser.SOURCE_JSON_TO_STORE[SRC_BST3] = "https://paizo.com/products/btq027mn";
+Parser.SOURCE_JSON_TO_STORE[SRC_B3] = "https://paizo.com/products/btq027mn";
 Parser.SOURCE_JSON_TO_STORE[SRC_SOM] = "https://paizo.com/products/btq027uy";
 Parser.SOURCE_JSON_TO_STORE[SRC_GNG] = "https://paizo.com/products/btq026mw";
 Parser.SOURCE_JSON_TO_STORE[SRC_LOTGB] = "https://paizo.com/products/btq027kc";
@@ -1686,15 +1622,15 @@ Parser.SOURCES_ADVENTURES = new Set([
 	SRC_QFF3,
 ]);
 Parser.SOURCES_CORE_SUPPLEMENTS = new Set(Object.keys(Parser.SOURCE_JSON_TO_FULL).filter(it => !Parser.SOURCES_ADVENTURES.has(it)));
-Parser.SOURCES_VANILLA = new Set([SRC_CRB, SRC_BST, SRC_GMG, SRC_APG, SRC_SOM, SRC_GNG]);
+Parser.SOURCES_VANILLA = new Set([SRC_CRB, SRC_B1, SRC_GMG, SRC_APG, SRC_SOM, SRC_GNG]);
 
 Parser.SOURCES_AVAILABLE_DOCS_BOOK = {};
 [
 	SRC_CRB,
 	SRC_APG,
-	SRC_BST,
-	SRC_BST2,
-	SRC_BST3,
+	SRC_B1,
+	SRC_B2,
+	SRC_B3,
 	SRC_GMG,
 	SRC_SOM,
 	SRC_LOCG,
@@ -1764,7 +1700,7 @@ Parser.TAG_TO_DEFAULT_SOURCE = {
 	"spell": SRC_CRB,
 	"item": SRC_CRB,
 	"class": SRC_CRB,
-	"creature": SRC_BST,
+	"creature": SRC_B1,
 	"condition": SRC_CRB,
 	"disease": SRC_GMG,
 	"curse": SRC_GMG,
@@ -1778,7 +1714,7 @@ Parser.TAG_TO_DEFAULT_SOURCE = {
 	"deity": SRC_CRB,
 	"variantrule": SRC_GMG,
 	"action": SRC_CRB,
-	"ability": SRC_BST,
+	"ability": SRC_B1,
 	"classFeature": SRC_CRB,
 	"subclassFeature": SRC_CRB,
 	"table": SRC_CRB,
@@ -1800,13 +1736,14 @@ Parser.TAG_TO_DEFAULT_SOURCE = {
 	"eidolon": SRC_SOM,
 	"optfeature": SRC_APG,
 	"organization": SRC_LOCG,
+	"creatureTemplate": SRC_GMG,
 };
 Parser.getTagSource = function (tag, source) {
 	if (source && source.trim()) return source;
 	tag = tag.trim();
 	if (tag.startsWith("@")) tag = tag.slice(1);
 
-	if (!Parser.TAG_TO_DEFAULT_SOURCE[tag]) throw new Error(`Unhandled tag "${tag}"`);
+	if (!Parser.TAG_TO_DEFAULT_SOURCE[tag]) throw new Error(`Unhandled tag source "${tag}"`);
 	return Parser.TAG_TO_DEFAULT_SOURCE[tag];
 };
 

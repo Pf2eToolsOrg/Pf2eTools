@@ -550,7 +550,7 @@
 			"prerequisites": "Intelligence 14",
 			"entries": [
 				"You put your alchemical interest into practice. You become trained in alchemical bombs and {@skill Crafting}; if you were already trained in {@skill Crafting}, you instead become trained in a skill of your choice. You become trained in alchemist class DC.",
-				"You gain the {@class alchemist|crb|alchemist's} {@classFeature Alchemy|Alchemist|CRB|1||infused reagents} class feature, gaining a number of reagents each day equal to your level.",
+				"You gain the {@class alchemist|crb|alchemist's} {@classFeature infused reagents|Alchemist|CRB|1} class feature, gaining a number of reagents each day equal to your level.",
 				"You also gain the {@feat Alchemical Crafting} feat and four additional formulas for 1st-level alchemical items, as well as the ability to create free items during your daily preparations. Your advanced alchemy level is 1 and doesn't increase on its own."
 			],
 			"special": "You cannot select another dedication feat until you have gained two other feats from the alchemist archetype.",
@@ -10036,19 +10036,6 @@
 			]
 		},
 		{
-			"name": "Quick Shield Block",
-			"source": "CRB",
-			"add_hash": "Champion",
-			"page": 113,
-			"level": 8,
-			"traits": [
-				"champion"
-			],
-			"entries": [
-				"You can block with your shield instinctively. At the start of each of your turns, you gain an additional reaction that you can use only to perform a {@feat Shield Block}."
-			]
-		},
-		{
 			"name": "Quick Bomber",
 			"source": "CRB",
 			"page": 76,
@@ -10219,9 +10206,22 @@
 		{
 			"name": "Quick Shield Block",
 			"source": "CRB",
-			"page": 149,
+			"page": 113,
+			"add_hash": "Champion",
 			"level": 8,
+			"traits": [
+				"champion"
+			],
+			"entries": [
+				"You can block with your shield instinctively. At the start of each of your turns, you gain an additional reaction that you can use only to perform a {@feat Shield Block}."
+			]
+		},
+		{
+			"name": "Quick Shield Block",
+			"source": "CRB",
+			"page": 149,
 			"add_hash": "Fighter",
+			"level": 8,
 			"traits": [
 				"fighter"
 			],
@@ -12444,7 +12444,6 @@
 			],
 			"leadsTo": [
 				"Criminal Connections|APG",
-				"Quick Contacts|APG",
 				"Underground Network|APG"
 			]
 		},

@@ -566,39 +566,33 @@
 					"name": "Spore Explosion"
 				},
 				{
-					"entries": [
-						{
-							"type": "affliction",
-							"name": "",
-							"traits": [
-								"inhaled",
-								"poison"
-							],
-							"note": " The {@condition enfeebled} condition\nfrom ash web remains even after the poison's duration\nends. The condition's value reduces by 1 per hour. Gugs\nare immune to this poison; instead, they have vivid\nand strange dreams when they sleep after ingesting\nash web.",
-							"DC": 29,
-							"savingThrow": "Fortitude",
-							"maxDuration": "6 rounds",
-							"stages": [
-								{
-									"stage": 1,
-									"entry": "{@damage 2d6} poison damage and {@condition enfeebled|CRB|enfeebled 1}",
-									"duration": "1 round"
-								},
-								{
-									"stage": 2,
-									"entry": "{@damage 4d6} poison damage and {@condition enfeebled|CRB|enfeebled 2}",
-									"duration": "1 round"
-								},
-								{
-									"stage": 3,
-									"entry": "{@damage 6d6} poison and {@condition enfeebled|CRB|enfeebled 3} .",
-									"duration": "1 round"
-								}
-							]
-						}
-					],
+					"type": "affliction",
 					"name": "Ash Web Spores",
-					"type": "ability"
+					"traits": [
+						"inhaled",
+						"poison"
+					],
+					"note": " The {@condition enfeebled} condition\nfrom ash web remains even after the poison's duration\nends. The condition's value reduces by 1 per hour. Gugs\nare immune to this poison; instead, they have vivid\nand strange dreams when they sleep after ingesting\nash web.",
+					"DC": 29,
+					"savingThrow": "Fortitude",
+					"maxDuration": "6 rounds",
+					"stages": [
+						{
+							"stage": 1,
+							"entry": "{@damage 2d6} poison damage and {@condition enfeebled|CRB|enfeebled 1}",
+							"duration": "1 round"
+						},
+						{
+							"stage": 2,
+							"entry": "{@damage 4d6} poison damage and {@condition enfeebled|CRB|enfeebled 2}",
+							"duration": "1 round"
+						},
+						{
+							"stage": 3,
+							"entry": "{@damage 6d6} poison and {@condition enfeebled|CRB|enfeebled 3} .",
+							"duration": "1 round"
+						}
+					]
 				}
 			],
 			"reset": [
@@ -862,6 +856,12 @@
 			"description": [
 				"Three bulky kegs of black powder placed at key locations in the temple are triggered to explode in unison, causing the entire structure to collapse into rubble and slide partially down the cliff face."
 			],
+			"disable": {
+				"entries": [
+					"No special skills are required to disable this manually activated trap. As an {@action Interact} action, a PC can sweep aside some black powder to interrupt the fuse line, but this doesn't prevent Gerhard from activating a keg via blunderbuss. A keg that is removed from its position (either by being thrown over the cliff or merely carried away) retains its explosive potential, but as long as one of the three kegs are removed they no longer have the precise placement required to trigger a collapse\u2014an explosion at this point merely inflicts fire damage in the appropriate areas but does not particularly damage the temple structure itself.",
+					"A keg's contents can be dispersed by scattering the gunpowder to the wind (most efficiently by pouring it over the cliff side) as a 2-action activity, or rendered permanently inert by pouring a gallon of water into the powder, inhibiting its explosive qualities. The kegs themselves can be destroyed with damage (note that the AC listed below for each keg takes into account the fact that Gerhard has wedged the kegs into nooks in the temple's stone flooring and walls), but note that any fire damage (including incidental fire damage from area effects like a fireball or Gerhard's blunderbuss) causes them to explode. At your option, other actions may be similarly effective at disabling this hazard."
+				]
+			},
 			"defenses": {
 				"ac": {
 					"default": 26
@@ -886,12 +886,6 @@
 				],
 				"weaknesses": [
 					"fire automatically penetrates hardness"
-				]
-			},
-			"disable": {
-				"entries": [
-					"No special skills are required to disable this manually activated trap. As an {@action Interact} action, a PC can sweep aside some black powder to interrupt the fuse line, but this doesn't prevent Gerhard from activating a keg via blunderbuss. A keg that is removed from its position (either by being thrown over the cliff or merely carried away) retains its explosive potential, but as long as one of the three kegs are removed they no longer have the precise placement required to trigger a collapse\u2014an explosion at this point merely inflicts fire damage in the appropriate areas but does not particularly damage the temple structure itself.",
-					"A keg's contents can be dispersed by scattering the gunpowder to the wind (most efficiently by pouring it over the cliff side) as a 2-action activity, or rendered permanently inert by pouring a gallon of water into the powder, inhibiting its explosive qualities. The kegs themselves can be destroyed with damage (note that the AC listed below for each keg takes into account the fact that Gerhard has wedged the kegs into nooks in the temple's stone flooring and walls), but note that any fire damage (including incidental fire damage from area effects like a fireball or Gerhard's blunderbuss) causes them to explode. At your option, other actions may be similarly effective at disabling this hazard."
 				]
 			},
 			"actions": [
@@ -972,41 +966,35 @@
 					"name": "Blackfingers's Prayer"
 				},
 				{
-					"entries": [
-						{
-							"type": "affliction",
-							"name": "",
-							"traits": [
-								"inhaled",
-								"poison",
-								"virulent"
-							],
-							"note": " Each round,\nat the beginning of their turn, a creature affected by\nblackfinger blight must succeed at a DC {@flatDC 5} flat check or\ndrop one random item they're holding",
-							"DC": 40,
-							"savingThrow": "Fortitude",
-							"onset": "1 round",
-							"maxDuration": "6\nrounds",
-							"stages": [
-								{
-									"stage": 1,
-									"entry": "{@damage 6d6} poison damage",
-									"duration": "1 round"
-								},
-								{
-									"stage": 2,
-									"entry": "{@damage 8d6} poison damage",
-									"duration": "1 round"
-								},
-								{
-									"stage": 3,
-									"entry": "{@damage 10d6} poison damage and {@condition confused}",
-									"duration": "1 round"
-								}
-							]
-						}
-					],
+					"type": "affliction",
 					"name": "Blackfinger Blight",
-					"type": "ability"
+					"traits": [
+						"inhaled",
+						"poison",
+						"virulent"
+					],
+					"note": " Each round,\nat the beginning of their turn, a creature affected by\nblackfinger blight must succeed at a DC {@flatDC 5} flat check or\ndrop one random item they're holding",
+					"DC": 40,
+					"savingThrow": "Fortitude",
+					"onset": "1 round",
+					"maxDuration": "6\nrounds",
+					"stages": [
+						{
+							"stage": 1,
+							"entry": "{@damage 6d6} poison damage",
+							"duration": "1 round"
+						},
+						{
+							"stage": 2,
+							"entry": "{@damage 8d6} poison damage",
+							"duration": "1 round"
+						},
+						{
+							"stage": 3,
+							"entry": "{@damage 10d6} poison damage and {@condition confused}",
+							"duration": "1 round"
+						}
+					]
 				}
 			]
 		},
@@ -1838,40 +1826,34 @@
 					"name": "Breath Snatcher"
 				},
 				{
-					"entries": [
-						{
-							"type": "affliction",
-							"name": "",
-							"traits": [
-								"acid",
-								"poison"
-							],
-							"note": " Oozes are immune\nto this poison",
-							"DC": 38,
-							"savingThrow": "Fortitude",
-							"onset": "1 round",
-							"maxDuration": "6 rounds",
-							"stages": [
-								{
-									"stage": 1,
-									"entry": "{@damage 4d6} acid damage and {@condition confused}",
-									"duration": "1 round"
-								},
-								{
-									"stage": 2,
-									"entry": "{@damage 6d6} acid damage, {@condition confused}, and {@condition flat-footed}",
-									"duration": "1 round"
-								},
-								{
-									"stage": 3,
-									"entry": "{@damage 8d6} acid damage, {@condition confused}, {@condition flat-footed}, and {@condition stupefied|CRB|stupefied 2}",
-									"duration": "1 round"
-								}
-							]
-						}
-					],
+					"type": "affliction",
 					"name": "Caustic Nightmare Vapor",
-					"type": "ability"
+					"traits": [
+						"acid",
+						"poison"
+					],
+					"note": " Oozes are immune\nto this poison",
+					"DC": 38,
+					"savingThrow": "Fortitude",
+					"onset": "1 round",
+					"maxDuration": "6 rounds",
+					"stages": [
+						{
+							"stage": 1,
+							"entry": "{@damage 4d6} acid damage and {@condition confused}",
+							"duration": "1 round"
+						},
+						{
+							"stage": 2,
+							"entry": "{@damage 6d6} acid damage, {@condition confused}, and {@condition flat-footed}",
+							"duration": "1 round"
+						},
+						{
+							"stage": 3,
+							"entry": "{@damage 8d6} acid damage, {@condition confused}, {@condition flat-footed}, and {@condition stupefied|CRB|stupefied 2}",
+							"duration": "1 round"
+						}
+					]
 				}
 			],
 			"reset": [
@@ -2916,25 +2898,36 @@
 				"bonus": 0,
 				"notes": "or {@spell detect magic}"
 			},
-			"perception": {
-				"bonus": 16,
-				"notes": "{@ability darkvision} 60 feet"
-			},
-			"abilities": [
-				{
-					"entries": [
-						"A dragon pillar can see through its empty eye sockets, and it can recognize Cinderclaws and their allies. A character disguised as a Cinderclaw can trick a dragon pillar into perceiving it as a Cinderclaw ally by using {@skill Deception} to {@action Impersonate}. A dragon pillar always uses {@skill Perception} for initiative."
-					],
-					"type": "ability",
-					"name": "Recognize Ally"
-				}
-			],
 			"description": [
 				"A 10-foot-tall wooden pole topped by a wooden carving of {@deity Dahak|LOGM}'s head. Each dragon pillar's head has been treated with something to give it a distinct color, as indicated in the specific encounter, but regardless of color, plumes of smoke waft up from the mouth."
 			],
 			"disable": {
 				"entries": [
 					"{@skill Athletics} DC 26 (expert) to push the pillar over, or {@skill Thievery} DC 26 (expert) on the pillar to erase the magic runes that power it, or {@spell dispel magic} (4th level; counteract DC 22) to dispel the pillar's magic."
+				]
+			},
+			"defenses": {
+				"ac": {
+					"default": 24
+				},
+				"savingThrows": {
+					"fort": 17,
+					"ref": 8
+				},
+				"hardness": {
+					"default": 14
+				},
+				"hp": {
+					"default": 56
+				},
+				"bt": {
+					"default": 28
+				},
+				"immunities": [
+					"critical hits",
+					"fire",
+					"object immunities",
+					"precision damage"
 				]
 			},
 			"actions": [
@@ -3074,30 +3067,19 @@
 			"reset": [
 				"The dragon pillar deactivates and resets as soon as it perceives no appropriate targets in range."
 			],
-			"defenses": {
-				"ac": {
-					"default": 24
-				},
-				"savingThrows": {
-					"fort": 17,
-					"ref": 8
-				},
-				"hardness": {
-					"default": 14
-				},
-				"hp": {
-					"default": 56
-				},
-				"bt": {
-					"default": 28
-				},
-				"immunities": [
-					"critical hits",
-					"fire",
-					"object immunities",
-					"precision damage"
-				]
-			}
+			"perception": {
+				"bonus": 16,
+				"notes": "{@ability darkvision} 60 feet"
+			},
+			"abilities": [
+				{
+					"entries": [
+						"A dragon pillar can see through its empty eye sockets, and it can recognize Cinderclaws and their allies. A character disguised as a Cinderclaw can trick a dragon pillar into perceiving it as a Cinderclaw ally by using {@skill Deception} to {@action Impersonate}. A dragon pillar always uses {@skill Perception} for initiative."
+					],
+					"type": "ability",
+					"name": "Recognize Ally"
+				}
+			]
 		},
 		{
 			"name": "Dragonstorm",
@@ -4684,39 +4666,33 @@
 					"name": "Ectoplasmic Explosion"
 				},
 				{
-					"entries": [
-						{
-							"type": "affliction",
-							"name": "",
-							"traits": [
-								"inhaled",
-								"poison"
-							],
-							"note": "\nCreatures with the {@trait ethereal} trait\nare immune",
-							"DC": 26,
-							"savingThrow": "Fortitude",
-							"maxDuration": "6 rounds",
-							"stages": [
-								{
-									"stage": 1,
-									"entry": "{@damage 1d10} poison damage and {@condition stupefied|CRB|stupefied 1}",
-									"duration": "1 round"
-								},
-								{
-									"stage": 2,
-									"entry": "{@damage 2d10} poison damage and {@condition stupefied|CRB|stupefied 2}",
-									"duration": "1 round"
-								},
-								{
-									"stage": 3,
-									"entry": "{@damage 3d10} poison damage and {@condition stupefied|CRB|stupefied 3}",
-									"duration": "1 round"
-								}
-							]
-						}
-					],
+					"type": "affliction",
 					"name": "Ghost Crystal Cloud",
-					"type": "ability"
+					"traits": [
+						"inhaled",
+						"poison"
+					],
+					"note": "\nCreatures with the {@trait ethereal} trait\nare immune",
+					"DC": 26,
+					"savingThrow": "Fortitude",
+					"maxDuration": "6 rounds",
+					"stages": [
+						{
+							"stage": 1,
+							"entry": "{@damage 1d10} poison damage and {@condition stupefied|CRB|stupefied 1}",
+							"duration": "1 round"
+						},
+						{
+							"stage": 2,
+							"entry": "{@damage 2d10} poison damage and {@condition stupefied|CRB|stupefied 2}",
+							"duration": "1 round"
+						},
+						{
+							"stage": 3,
+							"entry": "{@damage 3d10} poison damage and {@condition stupefied|CRB|stupefied 3}",
+							"duration": "1 round"
+						}
+					]
 				}
 			],
 			"reset": [
@@ -5629,33 +5605,26 @@
 			"routine": [
 				"(4 actions) The trap loses 1 action for each disabled ink spout. On each of the trap's actions, a spout pours ink, increasing the depth of the ink in that vat by 2 feet. Creatures standing in the ink are exposed to a dose of poison ink. Once the vat is full of ink, the trap stops using actions, but creatures in the vat might start drowning.",
 				{
-					"entries": [
-						{
-							"type": "affliction",
-							"name": "",
-							"traits": [
-								"poison"
-							],
-							"note": "",
-							"DC": 38,
-							"savingThrow": "Fortitude",
-							"maxDuration": "10 rounds",
-							"stages": [
-								{
-									"stage": 1,
-									"entry": "{@damage 3d6} poison damage and {@condition sickened|CRB|sickened 1}",
-									"duration": "1 round"
-								},
-								{
-									"stage": 2,
-									"entry": "{@damage 4d6} poison damage and {@condition sickened|CRB|sickened 2}",
-									"duration": "1 round"
-								}
-							]
-						}
-					],
+					"type": "affliction",
 					"name": "Poison Ink",
-					"type": "ability"
+					"traits": [
+						"poison"
+					],
+					"DC": 38,
+					"savingThrow": "Fortitude",
+					"maxDuration": "10 rounds",
+					"stages": [
+						{
+							"stage": 1,
+							"entry": "{@damage 3d6} poison damage and {@condition sickened|CRB|sickened 1}",
+							"duration": "1 round"
+						},
+						{
+							"stage": 2,
+							"entry": "{@damage 4d6} poison damage and {@condition sickened|CRB|sickened 2}",
+							"duration": "1 round"
+						}
+					]
 				}
 			],
 			"reset": [
@@ -7229,38 +7198,31 @@
 					"name": "Continuous Barrage"
 				},
 				{
-					"entries": [
-						{
-							"type": "affliction",
-							"name": "",
-							"traits": [
-								"poison"
-							],
-							"note": "",
-							"DC": 22,
-							"savingThrow": "Fortitude",
-							"maxDuration": "6 rounds",
-							"stages": [
-								{
-									"stage": 1,
-									"entry": "{@damage 1d6} poison damage and {@condition clumsy 1}",
-									"duration": "1 round"
-								},
-								{
-									"stage": 2,
-									"entry": "{@damage 2d6} poison damage and {@condition clumsy 2}",
-									"duration": "1 round"
-								},
-								{
-									"stage": 3,
-									"entry": "{@damage 3d6} poison damage and {@condition clumsy 3}",
-									"duration": "1 round"
-								}
-							]
-						}
-					],
+					"type": "affliction",
 					"name": "Flesset Poison",
-					"type": "ability"
+					"traits": [
+						"poison"
+					],
+					"DC": 22,
+					"savingThrow": "Fortitude",
+					"maxDuration": "6 rounds",
+					"stages": [
+						{
+							"stage": 1,
+							"entry": "{@damage 1d6} poison damage and {@condition clumsy 1}",
+							"duration": "1 round"
+						},
+						{
+							"stage": 2,
+							"entry": "{@damage 2d6} poison damage and {@condition clumsy 2}",
+							"duration": "1 round"
+						},
+						{
+							"stage": 3,
+							"entry": "{@damage 3d6} poison damage and {@condition clumsy 3}",
+							"duration": "1 round"
+						}
+					]
 				}
 			],
 			"reset": [
@@ -7453,38 +7415,31 @@
 					"noMAP": true
 				},
 				{
-					"entries": [
-						{
-							"type": "affliction",
-							"name": "",
-							"traits": [
-								"poison"
-							],
-							"note": "",
-							"DC": 19,
-							"savingThrow": "Fortitude",
-							"maxDuration": "4 hours",
-							"stages": [
-								{
-									"stage": 1,
-									"entry": "{@damage 1d6} poison damage and {@condition drained 1}",
-									"duration": "1 hour"
-								},
-								{
-									"stage": 2,
-									"entry": "{@damage 2d6} poison damage and {@condition drained 2}",
-									"duration": "1 hour"
-								},
-								{
-									"stage": 3,
-									"entry": "{@damage 3d6} poison damage and {@condition drained 2}",
-									"duration": "1 hour"
-								}
-							]
-						}
-					],
+					"type": "affliction",
 					"name": "Cladis Poison",
-					"type": "ability"
+					"traits": [
+						"poison"
+					],
+					"DC": 19,
+					"savingThrow": "Fortitude",
+					"maxDuration": "4 hours",
+					"stages": [
+						{
+							"stage": 1,
+							"entry": "{@damage 1d6} poison damage and {@condition drained 1}",
+							"duration": "1 hour"
+						},
+						{
+							"stage": 2,
+							"entry": "{@damage 2d6} poison damage and {@condition drained 2}",
+							"duration": "1 hour"
+						},
+						{
+							"stage": 3,
+							"entry": "{@damage 3d6} poison damage and {@condition drained 2}",
+							"duration": "1 hour"
+						}
+					]
 				}
 			]
 		},
@@ -7554,38 +7509,31 @@
 					"noMAP": true
 				},
 				{
-					"entries": [
-						{
-							"type": "affliction",
-							"name": "",
-							"traits": [
-								"poison"
-							],
-							"note": "",
-							"DC": 19,
-							"savingThrow": "Fortitude",
-							"maxDuration": "4 hours",
-							"stages": [
-								{
-									"stage": 1,
-									"entry": "{@damage 1d6} poison damage and {@condition drained|CRB|drained 1}",
-									"duration": "1 hour"
-								},
-								{
-									"stage": 2,
-									"entry": "{@damage 2d6} poison damage and {@condition drained|CRB|drained 2}",
-									"duration": "1 hour"
-								},
-								{
-									"stage": 3,
-									"entry": "{@damage 3d6} poison damage and {@condition drained|CRB|drained 2}",
-									"duration": "1 hour"
-								}
-							]
-						}
-					],
+					"type": "affliction",
 					"name": "Cladis Poison",
-					"type": "ability"
+					"traits": [
+						"poison"
+					],
+					"DC": 19,
+					"savingThrow": "Fortitude",
+					"maxDuration": "4 hours",
+					"stages": [
+						{
+							"stage": 1,
+							"entry": "{@damage 1d6} poison damage and {@condition drained|CRB|drained 1}",
+							"duration": "1 hour"
+						},
+						{
+							"stage": 2,
+							"entry": "{@damage 2d6} poison damage and {@condition drained|CRB|drained 2}",
+							"duration": "1 hour"
+						},
+						{
+							"stage": 3,
+							"entry": "{@damage 3d6} poison damage and {@condition drained|CRB|drained 2}",
+							"duration": "1 hour"
+						}
+					]
 				}
 			]
 		},
@@ -10714,7 +10662,7 @@
 		},
 		{
 			"name": "Web Lurker Deadfall",
-			"source": "Bst",
+			"source": "B1",
 			"page": 325,
 			"level": 3,
 			"traits": [
@@ -10759,7 +10707,7 @@
 		},
 		{
 			"name": "Web Lurker Noose",
-			"source": "Bst",
+			"source": "B1",
 			"page": 325,
 			"level": 3,
 			"traits": [
@@ -11123,39 +11071,33 @@
 					"name": "Spore Explosion"
 				},
 				{
-					"entries": [
-						{
-							"type": "affliction",
-							"name": "",
-							"traits": [
-								"inhaled",
-								"poison"
-							],
-							"note": " Any {@condition drained} condition from the spores persists after the poison's duration ends",
-							"DC": 26,
-							"savingThrow": "Fortitude",
-							"maxDuration": "6 rounds",
-							"stages": [
-								{
-									"stage": 1,
-									"entry": "{@damage 1d8} poison damage and {@condition drained 1}",
-									"duration": "1 round"
-								},
-								{
-									"stage": 2,
-									"entry": "{@damage 2d8} poison damage and {@condition drained 2}",
-									"duration": "1 round"
-								},
-								{
-									"stage": 3,
-									"entry": "{@damage 3d8} poison damage and {@condition drained 3}",
-									"duration": "1 round"
-								}
-							]
-						}
-					],
+					"type": "affliction",
 					"name": "Yellow Mold Spores",
-					"type": "ability"
+					"traits": [
+						"inhaled",
+						"poison"
+					],
+					"note": " Any {@condition drained} condition from the spores persists after the poison's duration ends",
+					"DC": 26,
+					"savingThrow": "Fortitude",
+					"maxDuration": "6 rounds",
+					"stages": [
+						{
+							"stage": 1,
+							"entry": "{@damage 1d8} poison damage and {@condition drained 1}",
+							"duration": "1 round"
+						},
+						{
+							"stage": 2,
+							"entry": "{@damage 2d8} poison damage and {@condition drained 2}",
+							"duration": "1 round"
+						},
+						{
+							"stage": 3,
+							"entry": "{@damage 3d8} poison damage and {@condition drained 3}",
+							"duration": "1 round"
+						}
+					]
 				}
 			]
 		}

@@ -130,7 +130,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "lesser",
+					"variantType": "lesser",
 					"level": 1,
 					"price": {
 						"coin": "gp",
@@ -147,7 +147,7 @@
 					}
 				},
 				{
-					"type": "moderate",
+					"variantType": "moderate",
 					"level": 3,
 					"price": {
 						"coin": "gp",
@@ -164,7 +164,7 @@
 					}
 				},
 				{
-					"type": "greater",
+					"variantType": "greater",
 					"level": 11,
 					"price": {
 						"coin": "gp",
@@ -181,7 +181,7 @@
 					}
 				},
 				{
-					"type": "major",
+					"variantType": "major",
 					"level": 17,
 					"price": {
 						"coin": "gp",
@@ -235,7 +235,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "lesser",
+					"variantType": "lesser",
 					"level": 2,
 					"price": {
 						"coin": "gp",
@@ -246,7 +246,7 @@
 					]
 				},
 				{
-					"type": "moderate",
+					"variantType": "moderate",
 					"level": 6,
 					"price": {
 						"coin": "gp",
@@ -257,7 +257,7 @@
 					]
 				},
 				{
-					"type": "greater",
+					"variantType": "greater",
 					"level": 11,
 					"price": {
 						"coin": "gp",
@@ -313,7 +313,7 @@
 			"category": "Consumable",
 			"entries": [
 				"This golden candle bears the symbol of a specific deity emblazoned on its surface, surrounded by the iconography of that deity's faith. Once lit, this candle burns for 1 hour, and it can't be extinguished.",
-				"Characters who cast divine spells and worship the deity emblazoned on the candle can perform their daily preparations within 10 feet of the lit candle to gain two additional spell slots for the day, each at half the highest spell level the character can cast (for example, 4th level slots if the caster can cast 8th-level spells). Prepared casters must prepare spells in these spell slots as they do for all their other spell slots.",
+				"Characters who cast divine spells and worship the deity emblazoned on the candle can perform their daily preparations within 10 feet of the lit candle to gain two additional spell slots for the day, each at half the highest spell slot level the character can cast (for example, 4th level slots if the caster can cast 8th-level spells). Prepared casters must prepare spells in these spell slots as they do for all their other spell slots.",
 				"A caster's additional spell slots from the candle are lost the next time that caster performs their daily preparations.",
 				"No one can benefit from more than one candle of invocation in a day, but multiple characters can benefit from a single candle's effects."
 			]
@@ -482,7 +482,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "moderate",
+					"variantType": "moderate",
 					"level": 4,
 					"price": {
 						"coin": "gp",
@@ -493,7 +493,7 @@
 					]
 				},
 				{
-					"type": "greater",
+					"variantType": "greater",
 					"level": 12,
 					"price": {
 						"coin": "gp",
@@ -504,7 +504,7 @@
 					]
 				},
 				{
-					"type": "major",
+					"variantType": "major",
 					"level": 18,
 					"price": {
 						"coin": "gp",
@@ -575,17 +575,10 @@
 				},
 				"{@b Drawback} You take a \u20131 penalty to Will saves, Reflex saves, and all skill checks to {@action Recall Knowledge}."
 			],
-			"_vmod": {
-				"entries": {
-					"mode": "replaceTxt",
-					"replace": "You gain the listed bonus to AC, a Dexterity cap of \\+2 \\(as usual, use your lowest Dexterity cap if you have more than one\\), and an item bonus to {@skill Perception} checks."
-				},
-				"entriesMode": "generic"
-			},
 			"generic": "G",
 			"variants": [
 				{
-					"type": "lesser",
+					"variantType": "lesser",
 					"level": 1,
 					"price": {
 						"coin": "gp",
@@ -602,7 +595,7 @@
 					}
 				},
 				{
-					"type": "moderate",
+					"variantType": "moderate",
 					"level": 3,
 					"price": {
 						"coin": "gp",
@@ -619,7 +612,7 @@
 					}
 				},
 				{
-					"type": "greater",
+					"variantType": "greater",
 					"level": 11,
 					"price": {
 						"coin": "gp",
@@ -636,7 +629,7 @@
 					}
 				},
 				{
-					"type": "major",
+					"variantType": "major",
 					"level": 17,
 					"price": {
 						"coin": "gp",
@@ -652,7 +645,14 @@
 						}
 					}
 				}
-			]
+			],
+			"_vmod": {
+				"entries": {
+					"mode": "replaceTxt",
+					"replace": "You gain the listed bonus to AC, a Dexterity cap of \\+2 \\(as usual, use your lowest Dexterity cap if you have more than one\\), and an item bonus to {@skill Perception} checks."
+				},
+				"entriesMode": "generic"
+			}
 		},
 		{
 			"name": "Dread Ampoule",
@@ -689,7 +689,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "lesser",
+					"variantType": "lesser",
 					"level": 1,
 					"price": {
 						"coin": "gp",
@@ -700,7 +700,7 @@
 					]
 				},
 				{
-					"type": "moderate",
+					"variantType": "moderate",
 					"level": 3,
 					"price": {
 						"coin": "gp",
@@ -711,7 +711,7 @@
 					]
 				},
 				{
-					"type": "greater",
+					"variantType": "greater",
 					"level": 11,
 					"price": {
 						"coin": "gp",
@@ -722,7 +722,7 @@
 					]
 				},
 				{
-					"type": "major",
+					"variantType": "major",
 					"level": 17,
 					"price": {
 						"coin": "gp",
@@ -1140,7 +1140,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "lesser",
+					"variantType": "lesser",
 					"level": 2,
 					"price": {
 						"coin": "gp",
@@ -1151,7 +1151,7 @@
 					]
 				},
 				{
-					"type": "moderate",
+					"variantType": "moderate",
 					"level": 4,
 					"price": {
 						"coin": "gp",
@@ -1162,7 +1162,7 @@
 					]
 				},
 				{
-					"type": "greater",
+					"variantType": "greater",
 					"level": 12,
 					"price": {
 						"coin": "gp",
@@ -1173,7 +1173,7 @@
 					]
 				},
 				{
-					"type": "major",
+					"variantType": "major",
 					"level": 18,
 					"price": {
 						"coin": "gp",
@@ -1349,7 +1349,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "lesser",
+					"variantType": "lesser",
 					"level": 1,
 					"price": {
 						"coin": "gp",
@@ -1360,7 +1360,7 @@
 					]
 				},
 				{
-					"type": "moderate",
+					"variantType": "moderate",
 					"level": 3,
 					"price": {
 						"coin": "gp",
@@ -1371,7 +1371,7 @@
 					]
 				},
 				{
-					"type": "greater",
+					"variantType": "greater",
 					"level": 11,
 					"price": {
 						"coin": "gp",
@@ -1382,7 +1382,7 @@
 					]
 				},
 				{
-					"type": "major",
+					"variantType": "major",
 					"level": 17,
 					"price": {
 						"coin": "gp",
@@ -1952,7 +1952,7 @@
 					]
 				},
 				{
-					"type": "lesser",
+					"variantType": "lesser",
 					"level": 3,
 					"price": {
 						"coin": "gp",
@@ -1963,7 +1963,7 @@
 					]
 				},
 				{
-					"type": "moderate",
+					"variantType": "moderate",
 					"level": 6,
 					"price": {
 						"coin": "gp",
@@ -1974,7 +1974,7 @@
 					]
 				},
 				{
-					"type": "greater",
+					"variantType": "greater",
 					"level": 12,
 					"price": {
 						"coin": "gp",
@@ -1985,7 +1985,7 @@
 					]
 				},
 				{
-					"type": "major",
+					"variantType": "major",
 					"level": 18,
 					"price": {
 						"coin": "gp",
@@ -2146,7 +2146,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "lesser",
+					"variantType": "lesser",
 					"level": 5,
 					"price": {
 						"coin": "gp",
@@ -2156,7 +2156,7 @@
 					"entries": []
 				},
 				{
-					"type": "moderate",
+					"variantType": "moderate",
 					"level": 8,
 					"price": {
 						"coin": "gp",
@@ -2166,7 +2166,7 @@
 					"entries": []
 				},
 				{
-					"type": "greater",
+					"variantType": "greater",
 					"level": 11,
 					"price": {
 						"coin": "gp",
@@ -2251,7 +2251,7 @@
 					]
 				},
 				{
-					"type": "lesser",
+					"variantType": "lesser",
 					"level": 3,
 					"price": {
 						"coin": "gp",
@@ -2262,7 +2262,7 @@
 					]
 				},
 				{
-					"type": "moderate",
+					"variantType": "moderate",
 					"level": 6,
 					"price": {
 						"coin": "gp",
@@ -2273,7 +2273,7 @@
 					]
 				},
 				{
-					"type": "greater",
+					"variantType": "greater",
 					"level": 12,
 					"price": {
 						"coin": "gp",
@@ -2284,7 +2284,7 @@
 					]
 				},
 				{
-					"type": "major",
+					"variantType": "major",
 					"level": 18,
 					"price": {
 						"coin": "gp",
@@ -2629,7 +2629,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "lesser",
+					"variantType": "lesser",
 					"level": 2,
 					"price": {
 						"coin": "gp",
@@ -2640,7 +2640,7 @@
 					]
 				},
 				{
-					"type": "moderate",
+					"variantType": "moderate",
 					"level": 4,
 					"price": {
 						"coin": "gp",
@@ -2651,7 +2651,7 @@
 					]
 				},
 				{
-					"type": "greater",
+					"variantType": "greater",
 					"level": 12,
 					"price": {
 						"coin": "gp",
@@ -2662,7 +2662,7 @@
 					]
 				},
 				{
-					"type": "major",
+					"variantType": "major",
 					"level": 18,
 					"price": {
 						"coin": "gp",
@@ -3303,7 +3303,7 @@
 			"category": "Consumable",
 			"entries": [
 				"You sprinkle these salts onto a single object up to 10 cubic feet in volume and no more than 40 Bulk to preserve it for 1 week.",
-				"The object doesn't decay, and effects that require the object to be fresh don't count the time passing during this duration as having elapsed. When sprinkled on a corpse, this extends the period in which a creature can be revived by magic, as well as the wait time required before a corpse can be targeted again with speak with dead. The salts prevent ordinary pests from consuming the target (such as maggots for a corpse or moths for a piece of clothing). Any creature can use an {@action Interact} action to disperse the salts from an unattended object and end this effect."
+				"The object doesn't decay, and effects that require the object to be fresh don't count the time passing during this duration as having elapsed. When sprinkled on a corpse, this extends the period in which a creature can be revived by magic, as well as the wait time required before a corpse can be targeted again with {@spell talking corpse}. The salts prevent ordinary pests from consuming the target (such as maggots for a corpse or moths for a piece of clothing). Any creature can use an {@action Interact} action to disperse the salts from an unattended object and end this effect."
 			]
 		},
 		{
@@ -3335,7 +3335,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "moderate",
+					"variantType": "moderate",
 					"level": 5,
 					"price": {
 						"coin": "gp",
@@ -3346,7 +3346,7 @@
 					]
 				},
 				{
-					"type": "greater",
+					"variantType": "greater",
 					"level": 12,
 					"price": {
 						"coin": "gp",
@@ -3357,7 +3357,7 @@
 					]
 				},
 				{
-					"type": "major",
+					"variantType": "major",
 					"level": 18,
 					"price": {
 						"coin": "gp",
@@ -3634,7 +3634,7 @@
 						"overcharge": true
 					},
 					"entries": [
-						"You cast {@spell darkness}. Each creature that ends its turn within the spell's area must succeed at a DC 20 Will save or become {@condition frightened|CRB|frightened 1} ({@condition frightened|CRB|frightened 2} on a critical failure)."
+						"You cast {@spell darkness}. Each creature that ends its turn within the spell's area must succeed at a DC 27 Will save or become {@condition frightened|CRB|frightened 1} ({@condition frightened|CRB|frightened 2} on a critical failure)."
 					]
 				}
 			],

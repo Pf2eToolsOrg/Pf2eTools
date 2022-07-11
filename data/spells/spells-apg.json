@@ -13,7 +13,6 @@
 				"fortune",
 				"oracle"
 			],
-			"school": "D",
 			"subclass": {
 				"Oracle|Mystery": [
 					"lore"
@@ -24,9 +23,9 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true
-				}
+				[
+					"S"
+				]
 			],
 			"duration": {
 				"type": "timed",
@@ -51,7 +50,6 @@
 				"fear",
 				"mental"
 			],
-			"school": "E",
 			"traditions": [
 				"arcane",
 				"divine",
@@ -62,17 +60,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "60 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 60
-				}
+				"type": "feet",
+				"number": 60
 			},
 			"targets": "1 creature",
 			"savingThrow": {
@@ -93,9 +88,8 @@
 				}
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 1,
-					"entries": [
+				"plusX": {
+					"1": [
 						"Increase the damage by {@dice 2d6}."
 					]
 				}
@@ -115,7 +109,6 @@
 				"mental",
 				"oracle"
 			],
-			"school": "A",
 			"subclass": {
 				"Oracle|Mystery": [
 					"ancestors"
@@ -126,9 +119,9 @@
 				"unit": "reaction"
 			},
 			"components": [
-				{
-					"S": true
-				}
+				[
+					"S"
+				]
 			],
 			"trigger": "You are about to attempt a Will save.",
 			"entries": [
@@ -147,7 +140,6 @@
 				"oracle",
 				"transmutation"
 			],
-			"school": "T",
 			"subclass": {
 				"Oracle|Mystery": [
 					"ancestors"
@@ -158,10 +150,10 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"duration": {
 				"type": "timed",
@@ -173,12 +165,11 @@
 				}
 			},
 			"entries": [
-				"You take the form of your ancestral spirits, becoming {@condition invisible} and quasi-corporeal. You gain resistance 10 to all damage (except force and damage from Strikes with the ghost touch property rune), and this resistance is doubled against non-magical and precision damage. You gain a fly Speed equal to your land Speed; when Flying, moving upward isn't {@quickref difficult terrain||3|terrain} for you. You can't move through solid objects, but you can float through tiny gaps. You can't Cast Spells (but you can {@action Sustain a Spell}), activate items, or use actions that have the {@trait attack} or {@trait manipulate} trait."
+				"You take the form of your ancestral spirits, becoming {@condition invisible} and quasi-corporeal. You gain resistance 10 to all damage (except force and damage from Strikes with the ghost touch property rune), and this resistance is doubled against non-magical and precision damage. You gain a fly Speed equal to your land Speed; when Flying, moving upward isn't {@quickref difficult terrain||3|terrain} for you. You can't move through solid objects, but you can float through tiny gaps. You can't {@action Cast a Spell||Cast Spells} (but you can {@action Sustain Spells||Sustain a Spell}), activate items, or use actions that have the {@trait attack} or {@trait manipulate} trait."
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 2,
-					"entries": [
+				"plusX": {
+					"2": [
 						"The resistance increases by 5."
 					]
 				}
@@ -199,7 +190,6 @@
 				"mental",
 				"oracle"
 			],
-			"school": "E",
 			"subclass": {
 				"Oracle|Mystery": [
 					"ancestors"
@@ -210,16 +200,13 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true
-				}
+				[
+					"S"
+				]
 			],
 			"range": {
-				"entry": "touch",
-				"distance": {
-					"type": "touch",
-					"amount": 1
-				}
+				"type": "touch",
+				"number": 1
 			},
 			"targets": "1 living creature",
 			"savingThrow": {
@@ -240,9 +227,8 @@
 				}
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 1,
-					"entries": [
+				"plusX": {
+					"1": [
 						"The mental damage increases by {@dice 1d4}."
 					]
 				}
@@ -260,16 +246,15 @@
 				"ranger",
 				"transmutation"
 			],
-			"school": "T",
 			"cast": {
 				"number": 1,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"duration": {
 				"type": "timed",
@@ -291,7 +276,7 @@
 				}
 			],
 			"heightened": {
-				"x": [
+				"X": [
 					{
 						"level": 4,
 						"entries": [
@@ -317,7 +302,6 @@
 			"traits": [
 				"necromancy"
 			],
-			"school": "N",
 			"traditions": [
 				"arcane",
 				"divine",
@@ -328,18 +312,15 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true,
-					"V": true
-				}
+				[
+					"M",
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"duration": {
 				"type": "timed",
@@ -354,7 +335,7 @@
 				"Your magic dredges up a corpse or skeleton and fills it with necromantic life, and you force the dead to fight at your command. You summon a common creature that has the {@trait undead} trait and whose level is {@filter \u20131|bestiary||Level=[-1;-1]|Rarity=Common|Creature Type=Undead}; this creature gains the {@trait summoned} trait. Heightening the spell increases the maximum level of creature you can summon."
 			],
 			"heightened": {
-				"x": [
+				"X": [
 					{
 						"level": 2,
 						"entries": [
@@ -423,7 +404,6 @@
 			"traits": [
 				"transmutation"
 			],
-			"school": "T",
 			"traditions": [
 				"arcane",
 				"occult"
@@ -433,17 +413,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "100 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 100
-				}
+				"type": "feet",
+				"number": 100
 			},
 			"targets": "up to 50 feet of rope or a nonliving rope-like object",
 			"duration": {
@@ -471,9 +448,8 @@
 				}
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 2,
-					"entries": [
+				"plusX": {
+					"2": [
 						"The range increases by 50 feet, and you can animate 50 more feet of rope."
 					]
 				}
@@ -487,7 +463,6 @@
 			"traits": [
 				"evocation"
 			],
-			"school": "V",
 			"traditions": [
 				"arcane",
 				"occult"
@@ -497,17 +472,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "120 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 120
-				}
+				"type": "feet",
+				"number": 120
 			},
 			"area": {
 				"types": [
@@ -531,12 +503,11 @@
 				}
 			},
 			"entries": [
-				"You use your mind to manipulate unattended objects in the area, temporarily animating them to attack. The objects hover in the air, then hurl themselves at nearby creatures in a chaotic flurry of debris. This assault deals {@damage 2d10} bludgeoning damage (basic Reflex save) to each creature in the area. On subsequent rounds, you can Sustain this Spell, dealing {@damage 1d10} bludgeoning damage (basic Reflex save) to each creature in the area."
+				"You use your mind to manipulate unattended objects in the area, temporarily animating them to attack. The objects hover in the air, then hurl themselves at nearby creatures in a chaotic flurry of debris. This assault deals {@damage 2d10} bludgeoning damage (basic Reflex save) to each creature in the area. On subsequent rounds, the first time each round you {@action Sustain a Spell||Sustain this Spell}, dealing {@damage 1d10} bludgeoning damage (basic Reflex save) to each creature in the area."
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 2,
-					"entries": [
+				"plusX": {
+					"2": [
 						"The initial damage increases by {@dice 2d10} and the subsequent damage increases by {@dice 1d10}."
 					]
 				}
@@ -551,27 +522,26 @@
 				"conjuration",
 				"water"
 			],
-			"school": "C",
 			"traditions": [
 				"arcane",
 				"primal"
+			],
+			"spellLists": [
+				"Elemental"
 			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "60 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 60
-				}
+				"type": "feet",
+				"number": 60
 			},
 			"duration": {
 				"type": "timed",
@@ -583,14 +553,10 @@
 				}
 			},
 			"entries": [
-				"A sphere of water 10 feet in diameter forms in an unoccupied space in range, either on the ground or on the surface of a liquid. When you {@action Cast a Spell||Cast the Spell} and each time you {@action Sustain a Spell||Sustain the Spell}, you can roll the orb, moving it up to 10 feet along the ground or the surface of a liquid. Unlike most spells, you can gain this effect multiple times in the same round by {@action Sustain a Spell||Sustaining the Spell} multiple times. The orb can move through the spaces of any creatures or obstacles that wouldn't stop the flow of water. It extinguishes non-magical fires it moves through of its size or smaller, and it attempts to counteract any magical fires it moves through. If it fails to counteract a given fire, it can't counteract that fire for the duration of the spell.",
+				"A sphere of water 10 feet in diameter forms in an unoccupied space in range, either on the ground or on the surface of a liquid. When you {@action Cast a Spell||Cast the Spell} and each time you {@action Sustain a Spell||Sustain the Spell}, you can roll the orb, moving it up to 10 feet along the ground or the surface of a liquid. You can gain this effect multiple times in the same round by {@action Sustain a Spell||Sustaining the Spell} multiple times. The orb can move through the spaces of any creatures or obstacles that wouldn't stop the flow of water. It extinguishes non-magical fires it moves through of its size or smaller, and it attempts to counteract any magical fires it moves through. If it fails to counteract a given fire, it can't counteract that fire for the duration of the spell.",
 				"The orb can also collect creatures it moves through. Any Large or smaller creature whose space the orb tries to move through can attempt a Reflex save against your spell DC to avoid being engulfed. If a creature succeeds at this save, it can either let the orb pass (remaining in its space or moving out of the orb's path into a space of the creature's choice) or allow itself to be pushed in front of the orb to the end of the orb's movement. The orb can try to Engulf the same creature only once per turn, even if you roll it onto a creature's space more than once.",
-				"A creature that fails its save is pulled into the orb. It becomes {@condition grabbed}, moves along with the orb, and must hold its breath or begin suffocating (unless it can breathe in water)",
-				"An engulfed Medium or smaller creature and anyone trying to affect that creature follow the normal rules for aquatic battles (Core Rulebook 478). An engulfed Large creature is usually big enough that parts of it stick out from the water, and it can reach out of the water. An engulfed creature can get free either by Swimming with a successful DC 10 {@skill Athletics} check or by Escaping against your spell DC. A creature that critically failed its Reflex save is further stuck and must attempt to {@action Escape} instead of {@action Swim}. A freed creature exits the orb's space and can immediately breathe. The orb can contain as many creatures as can fit in its space.",
+				"A creature that fails its save is pulled into the orb. It becomes {@condition grabbed}, moves along with the orb, and must hold its breath or begin suffocating (unless it can breathe in water). An engulfed Medium or smaller creature and anyone trying to affect that creature follow the normal rules for {@quickref aquatic battles|CRB|3|aquatic combat}. An engulfed Large creature is usually big enough that parts of it stick out from the water, and it can reach out of the water. An engulfed creature can get free either by Swimming with a successful DC 10 {@skill Athletics} check or by Escaping against your spell DC. A creature that critically failed its Reflex save is further stuck and must attempt to {@action Escape} instead of {@action Swim}. A freed creature exits the orb's space and can immediately breathe. The orb can contain as many creatures as can fit in its space.",
 				"When the spell ends, all creatures the orb has engulfed are automatically released."
-			],
-			"spellLists": [
-				"Elemental"
 			]
 		},
 		{
@@ -605,7 +571,6 @@
 				"necromancy",
 				"oracle"
 			],
-			"school": "N",
 			"subclass": {
 				"Oracle|Mystery": [
 					"bones"
@@ -616,9 +581,9 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true
-				}
+				[
+					"S"
+				]
 			],
 			"duration": {
 				"type": "timed",
@@ -632,9 +597,8 @@
 				"You ossify your physical form, mimicking the durability of bone. You gain resistance 3 to cold, electricity, fire, piercing, and slashing damage."
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 1,
-					"entries": [
+				"plusX": {
+					"1": [
 						"Increase the resistance by 1."
 					]
 				}
@@ -653,7 +617,6 @@
 				"divine",
 				"oracle"
 			],
-			"school": "D",
 			"subclass": {
 				"Oracle|Mystery": [
 					"battle"
@@ -664,9 +627,9 @@
 				"unit": "reaction"
 			},
 			"components": [
-				{
-					"V": true
-				}
+				[
+					"V"
+				]
 			],
 			"trigger": "You are about to attempt a saving throw, but you haven't rolled yet.",
 			"entries": [
@@ -680,28 +643,25 @@
 			"focus": true,
 			"level": 3,
 			"traits": [
+				"uncommon",
 				"archetype",
 				"concentrate",
 				"divination",
 				"mental"
 			],
-			"school": "D",
 			"cast": {
 				"number": 3,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "1 mile",
-				"distance": {
-					"type": "miles",
-					"amount": 1
-				}
+				"type": "mile",
+				"number": 1
 			},
 			"targets": "one of your animal companions you can perceive",
 			"duration": {
@@ -718,7 +678,7 @@
 				"For the duration of the trance, your own senses are muted, though you can still communicate. This lack of awareness makes you {@condition flat-footed}. You can't take actions with the {@trait attack} or {@trait move} traits."
 			],
 			"heightened": {
-				"x": [
+				"X": [
 					{
 						"level": 6,
 						"entries": [
@@ -744,7 +704,6 @@
 				"polymorph",
 				"transmutation"
 			],
-			"school": "T",
 			"traditions": [
 				"arcane",
 				"occult",
@@ -755,17 +714,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "touch",
-				"distance": {
-					"type": "touch",
-					"amount": 1
-				}
+				"type": "touch",
+				"number": 1
 			},
 			"targets": "1 living humanoid",
 			"savingThrow": {
@@ -802,7 +758,6 @@
 			"traits": [
 				"illusion"
 			],
-			"school": "I",
 			"traditions": [
 				"occult",
 				"primal"
@@ -812,10 +767,10 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"savingThrow": {
 				"type": [
@@ -849,11 +804,6 @@
 			"page": 235,
 			"focus": true,
 			"level": 3,
-			"subclass": {
-				"Sorcerer|Bloodline": [
-					"Nymph"
-				]
-			},
 			"traits": [
 				"uncommon",
 				"emotion",
@@ -862,15 +812,19 @@
 				"sorcerer",
 				"visual"
 			],
-			"school": "E",
+			"subclass": {
+				"Sorcerer|Bloodline": [
+					"Nymph"
+				]
+			},
 			"cast": {
 				"number": 1,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true
-				}
+				[
+					"S"
+				]
 			],
 			"area": {
 				"types": [
@@ -908,7 +862,6 @@
 				"incapacitation",
 				"mental"
 			],
-			"school": "E",
 			"traditions": [
 				"divine",
 				"occult",
@@ -919,17 +872,14 @@
 				"unit": "reaction"
 			},
 			"components": [
-				{
-					"V": true
-				}
+				[
+					"V"
+				]
 			],
 			"trigger": "A creature damages you.",
 			"range": {
-				"entry": "60 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 60
-				}
+				"type": "feet",
+				"number": 60
 			},
 			"targets": "the triggering creature",
 			"savingThrow": {
@@ -966,7 +916,6 @@
 			"traits": [
 				"necromancy"
 			],
-			"school": "N",
 			"traditions": [
 				"arcane",
 				"occult",
@@ -977,17 +926,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "60 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 60
-				}
+				"type": "feet",
+				"number": 60
 			},
 			"targets": "1 creature",
 			"savingThrow": {
@@ -1016,9 +962,8 @@
 				}
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 1,
-					"entries": [
+				"plusX": {
+					"1": [
 						"The damage of a popped blister increases by {@dice 1d6}."
 					]
 				}
@@ -1036,26 +981,25 @@
 				"fear",
 				"mental"
 			],
-			"school": "E",
 			"traditions": [
 				"occult"
+			],
+			"spellLists": [
+				"Elemental"
 			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 creature",
 			"savingThrow": {
@@ -1076,16 +1020,12 @@
 				}
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 2,
-					"entries": [
+				"plusX": {
+					"2": [
 						"You can target two additional creatures, and the {@condition persistent damage} increases by {@dice 2d6}."
 					]
 				}
-			},
-			"spellLists": [
-				"Elemental"
-			]
+			}
 		},
 		{
 			"name": "Blood Vendetta",
@@ -1096,7 +1036,6 @@
 				"curse",
 				"necromancy"
 			],
-			"school": "N",
 			"traditions": [
 				"arcane",
 				"divine",
@@ -1107,18 +1046,15 @@
 				"unit": "reaction"
 			},
 			"components": [
-				{
-					"V": true
-				}
+				[
+					"V"
+				]
 			],
 			"trigger": "A creature deals piercing, slashing, or {@condition persistent damage ||persistent bleed damage} to you",
 			"requirements": "You can bleed.",
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "the triggering creature",
 			"savingThrow": {
@@ -1147,9 +1083,8 @@
 				}
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 2,
-					"entries": [
+				"plusX": {
+					"2": [
 						"The {@condition persistent damage ||persistent bleed damage} increases by {@dice 2d6}."
 					]
 				}
@@ -1167,22 +1102,18 @@
 				"hex",
 				"witch"
 			],
-			"school": "A",
 			"cast": {
 				"number": 1,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true
-				}
+				[
+					"S"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 creature",
 			"duration": {
@@ -1198,7 +1129,7 @@
 				"You consolidate warding energies with a gesture, guarding a creature against attacks from a certain type of foe. Designate one of the following creature traits: aberration, animal, beast, celestial, construct, dragon, elemental, fey, fiend, fungus, monitor, ooze, plant, or undead. The target gains a +1 status bonus to its saving throws and AC against creatures with that trait. The target is temporarily immune for 10 minutes."
 			],
 			"heightened": {
-				"x": [
+				"X": [
 					{
 						"level": 5,
 						"entries": [
@@ -1221,7 +1152,6 @@
 				"mental",
 				"oracle"
 			],
-			"school": "E",
 			"subclass": {
 				"Oracle|Mystery": [
 					"lore"
@@ -1232,17 +1162,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true
-				}
+				[
+					"M",
+					"S"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 creature",
 			"savingThrow": {
@@ -1254,9 +1181,8 @@
 				"You probe the target's mind to glean knowledge. This deals {@damage 1d8} mental damage with a basic Will save. If the target fails the save, you sort through the stolen memories to attempt a single check to {@action Recall Knowledge}. Choose a skill that has the {@action Recall Knowledge} action, and use the target's skill modifier for the check."
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 1,
-					"entries": [
+				"plusX": {
+					"1": [
 						"The mental damage increases by {@dice 1d8}."
 					]
 				}
@@ -1274,15 +1200,14 @@
 				"hex",
 				"witch"
 			],
-			"school": "E",
 			"cast": {
 				"number": 1,
 				"unit": "free"
 			},
 			"components": [
-				{
-					"V": true
-				}
+				[
+					"V"
+				]
 			],
 			"entries": [
 				"With a quick burst of laughter, you prolong a {@trait magical} effect you created. You {@action Sustain a Spell}."
@@ -1292,9 +1217,6 @@
 			"name": "Call To Arms",
 			"source": "APG",
 			"page": 230,
-			"miscTags": [
-				"THP"
-			],
 			"focus": true,
 			"level": 1,
 			"traits": [
@@ -1306,7 +1228,6 @@
 				"mental",
 				"oracle"
 			],
-			"school": "E",
 			"subclass": {
 				"Oracle|Mystery": [
 					"battle"
@@ -1317,9 +1238,9 @@
 				"unit": "reaction"
 			},
 			"components": [
-				{
-					"V": true
-				}
+				[
+					"V"
+				]
 			],
 			"trigger": "You are about to roll for initiative.",
 			"area": {
@@ -1341,7 +1262,7 @@
 				"Each ally in the area gains a +2 status bonus to their initiative roll and gains temporary Hit Points equal to the spell's level; these temporary Hit Points last for the spell's duration."
 			],
 			"heightened": {
-				"x": [
+				"X": [
 					{
 						"level": 6,
 						"entries": [
@@ -1355,7 +1276,10 @@
 						]
 					}
 				]
-			}
+			},
+			"miscTags": [
+				"THP"
+			]
 		},
 		{
 			"name": "Chameleon Coat",
@@ -1365,7 +1289,6 @@
 			"traits": [
 				"illusion"
 			],
-			"school": "I",
 			"traditions": [
 				"primal"
 			],
@@ -1374,18 +1297,15 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true,
-					"V": true
-				}
+				[
+					"M",
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "15 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 15
-				}
+				"type": "feet",
+				"number": 15
 			},
 			"targets": "up to 8 creatures",
 			"duration": {
@@ -1400,7 +1320,7 @@
 				"You shift the colors of the targets' outermost layer of clothing and gear to be closer to their environment when they remain still. Creatures affected by the spell gain a +3 status bonus to {@skill Stealth} checks to {@action Hide}. The changed color granted by the spell always shifts to match the environment, even if there are drastic changes. If any piece of gear or clothing affected by the spell is removed from a creature, the spell ends for that creature."
 			],
 			"heightened": {
-				"x": [
+				"X": [
 					{
 						"level": 6,
 						"entries": [
@@ -1426,7 +1346,6 @@
 				"incapacitation",
 				"mental"
 			],
-			"school": "E",
 			"traditions": [
 				"arcane",
 				"divine",
@@ -1437,17 +1356,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 creature",
 			"savingThrow": {
@@ -1484,7 +1400,6 @@
 			"traits": [
 				"necromancy"
 			],
-			"school": "N",
 			"traditions": [
 				"occult"
 			],
@@ -1493,17 +1408,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "touch",
-				"distance": {
-					"type": "touch",
-					"amount": 1
-				}
+				"type": "touch",
+				"number": 1
 			},
 			"targets": "1 living creature",
 			"savingThrow": {
@@ -1538,7 +1450,6 @@
 				"necromancy",
 				"oracle"
 			],
-			"school": "N",
 			"subclass": {
 				"Oracle|Mystery": [
 					"bones"
@@ -1549,17 +1460,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 undead creature",
 			"savingThrow": {
@@ -1602,7 +1510,6 @@
 				"hex",
 				"witch"
 			],
-			"school": "C",
 			"subclass": {
 				"Witch|Patron": [
 					"Winter"
@@ -1613,16 +1520,13 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true
-				}
+				[
+					"S"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 creature",
 			"savingThrow": {
@@ -1652,9 +1556,8 @@
 				}
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 1,
-					"entries": [
+				"plusX": {
+					"1": [
 						"The damage increases by {@dice 1d4}."
 					]
 				}
@@ -1673,15 +1576,14 @@
 				"shadow",
 				"stance"
 			],
-			"school": "V",
 			"cast": {
 				"number": 1,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true
-				}
+				[
+					"S"
+				]
 			],
 			"duration": {
 				"type": "timed",
@@ -1700,11 +1602,6 @@
 			"name": "Consuming Darkness",
 			"source": "APG",
 			"page": 235,
-			"subclass": {
-				"Sorcerer|Bloodline": [
-					"Shadow"
-				]
-			},
 			"focus": true,
 			"level": 5,
 			"traits": [
@@ -1713,16 +1610,20 @@
 				"shadow",
 				"sorcerer"
 			],
-			"school": "V",
+			"subclass": {
+				"Sorcerer|Bloodline": [
+					"Shadow"
+				]
+			},
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"area": {
 				"types": [
@@ -1759,9 +1660,8 @@
 				}
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 1,
-					"entries": [
+				"plusX": {
+					"1": [
 						"The damage increases by {@dice 1d6}."
 					]
 				}
@@ -1775,7 +1675,6 @@
 			"traits": [
 				"divination"
 			],
-			"school": "D",
 			"traditions": [
 				"arcane",
 				"occult",
@@ -1786,17 +1685,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "touch",
-				"distance": {
-					"type": "touch",
-					"amount": 1
-				}
+				"type": "touch",
+				"number": 1
 			},
 			"targets": "1 creature",
 			"duration": {
@@ -1819,7 +1715,6 @@
 			"traits": [
 				"conjuration"
 			],
-			"school": "C",
 			"traditions": [
 				"arcane",
 				"occult"
@@ -1830,18 +1725,15 @@
 				"entry": "1 minute"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true,
-					"V": true
-				}
+				[
+					"M",
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"duration": {
 				"type": "timed",
@@ -1866,20 +1758,22 @@
 				"evocation",
 				"water"
 			],
-			"school": "V",
 			"traditions": [
 				"arcane",
 				"primal"
+			],
+			"spellLists": [
+				"Elemental"
 			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"area": {
 				"types": [
@@ -1897,16 +1791,12 @@
 				"You summon a crashing wave that sweeps away from you. You deal {@damage 6d6} bludgeoning damage to creatures in the area. The water also extinguishes non-magical fires in the area."
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 1,
-					"entries": [
+				"plusX": {
+					"1": [
 						"The damage increases by {@dice 2d6}."
 					]
 				}
-			},
-			"spellLists": [
-				"Elemental"
-			]
+			}
 		},
 		{
 			"name": "Curse Of Death",
@@ -1922,23 +1812,19 @@
 				"necromancy",
 				"witch"
 			],
-			"school": "N",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 creature",
 			"savingThrow": {
@@ -1997,9 +1883,8 @@
 				}
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 1,
-					"entries": [
+				"plusX": {
+					"1": [
 						"Increase the negative damage taken on a success and during the first three stages of the curse by {@dice 1d6}."
 					]
 				}
@@ -2015,7 +1900,6 @@
 				"negative",
 				"transmutation"
 			],
-			"school": "T",
 			"traditions": [
 				"arcane",
 				"occult",
@@ -2026,17 +1910,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "touch",
-				"distance": {
-					"type": "touch",
-					"amount": 1
-				}
+				"type": "touch",
+				"number": 1
 			},
 			"targets": "1 Large or smaller object, construct, or living creature",
 			"savingThrow": {
@@ -2074,9 +1955,8 @@
 				}
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 1,
-					"entries": [
+				"plusX": {
+					"1": [
 						"The damage increases by {@dice 1d6}."
 					]
 				}
@@ -2089,19 +1969,19 @@
 			"focus": true,
 			"level": 5,
 			"traits": [
+				"uncommon",
 				"darkness",
 				"evocation"
 			],
-			"school": "V",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"duration": {
 				"type": "timed",
@@ -2136,23 +2016,19 @@
 				"mental",
 				"oracle"
 			],
-			"school": "V",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 creature other than you",
 			"savingThrow": {
@@ -2164,9 +2040,8 @@
 				"You reveal a glimpse of the impossible conflicts between the divine anathema behind your curse, forcing you to reckon with another's conflicts as well. You and the target each take {@damage 9d6} mental damage with a basic Will save, and the target is {@condition stunned 1} if it critically fails its save. You get a degree of success one better than you rolled for your saving throw."
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 1,
-					"entries": [
+				"plusX": {
+					"1": [
 						"The damage increases by {@dice 3d6}."
 					]
 				}
@@ -2184,16 +2059,15 @@
 				"illusion",
 				"witch"
 			],
-			"school": "I",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"duration": {
 				"type": "timed",
@@ -2208,7 +2082,7 @@
 				"You wrap yourself in a cloak of illusion, appearing as another creature of the same body shape with roughly similar height and weight as yourself. This has the effects of a 3rd-level {@spell illusory disguise}."
 			],
 			"heightened": {
-				"x": [
+				"X": [
 					{
 						"level": 6,
 						"entries": [
@@ -2232,7 +2106,6 @@
 				"oracle",
 				"positive"
 			],
-			"school": "N",
 			"subclass": {
 				"Oracle|Mystery": [
 					"life"
@@ -2243,26 +2116,22 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 creature",
 			"entries": [
 				"With a surge of healing energy, you push back against an affliction threatening the target and grant a small amount of healing. The target recovers {@dice 3d8} Hit Points. You attempt to counteract any one affliction you are aware the target has, suspending its effects for 1 hour on a success rather than removing it. The target is then temporarily immune to delay affliction for 1 day. You don't need to have identified the name of the specific affliction, but you do need to be aware of it; for instance, you couldn't delay an ingested poison during its onset period unless you were aware of the poison."
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 1,
-					"entries": [
+				"plusX": {
+					"1": [
 						"The target recovers an additional {@dice 1d8} Hit Points and you can attempt to suspend an additional affliction."
 					]
 				}
@@ -2273,11 +2142,6 @@
 			"source": "APG",
 			"page": 236,
 			"focus": true,
-			"subclass": {
-				"Sorcerer|Bloodline": [
-					"Shadow"
-				]
-			},
 			"level": 1,
 			"traits": [
 				"uncommon",
@@ -2285,15 +2149,19 @@
 				"evocation",
 				"sorcerer"
 			],
-			"school": "V",
+			"subclass": {
+				"Sorcerer|Bloodline": [
+					"Shadow"
+				]
+			},
 			"cast": {
 				"number": 1,
 				"unit": "reaction"
 			},
 			"components": [
-				{
-					"S": true
-				}
+				[
+					"S"
+				]
 			],
 			"trigger": "You cast a darkness or shadow spell.",
 			"entries": [
@@ -2314,7 +2182,6 @@
 				"hex",
 				"witch"
 			],
-			"school": "D",
 			"subclass": {
 				"Witch|Patron": [
 					"Rune"
@@ -2325,16 +2192,13 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true
-				}
+				[
+					"S"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 creature",
 			"duration": {
@@ -2351,7 +2215,7 @@
 				"When you {@action Cast a Spell||Cast the Spell}, the target can {@action Recall Knowledge}, {@action Seek}, or {@action Sense Motive}. The target gains a +1 status bonus to the skill or {@skill Perception} used for the roll, and this bonus remains as long as you {@action Sustain a Spell||Sustain the Spell}. The target is temporarily immune to discern secrets for 1 minute."
 			],
 			"heightened": {
-				"x": [
+				"X": [
 					{
 						"level": 5,
 						"entries": [
@@ -2369,7 +2233,6 @@
 			"traits": [
 				"transmutation"
 			],
-			"school": "T",
 			"traditions": [
 				"arcane",
 				"primal"
@@ -2379,17 +2242,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "touch",
-				"distance": {
-					"type": "touch",
-					"amount": 1
-				}
+				"type": "touch",
+				"number": 1
 			},
 			"targets": "1 non-magical object in your possession of 1 Bulk or less",
 			"duration": {
@@ -2406,7 +2266,7 @@
 				"When the spell ends, the object reassembles itself into its original form, appearing in your hand or hands if you have them free, or on the ground in front of you otherwise. Once reassembled, the object loses the {@condition broken} condition and its Hit Points return to the value the object had when you {@action Cast a Spell||Cast the Spell}."
 			],
 			"heightened": {
-				"x": [
+				"X": [
 					{
 						"level": 4,
 						"entries": [
@@ -2437,7 +2297,6 @@
 				"mental",
 				"oracle"
 			],
-			"school": "D",
 			"subclass": {
 				"Oracle|Mystery": [
 					"lore"
@@ -2448,17 +2307,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true
-				}
+				[
+					"M",
+					"S"
+				]
 			],
 			"range": {
-				"entry": "60 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 60
-				}
+				"type": "feet",
+				"number": 60
 			},
 			"targets": "up to 6 creatures",
 			"savingThrow": {
@@ -2498,7 +2354,6 @@
 				"mental",
 				"misfortune"
 			],
-			"school": "E",
 			"traditions": [
 				"arcane",
 				"divine",
@@ -2509,17 +2364,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "120 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 120
-				}
+				"type": "feet",
+				"number": 120
 			},
 			"targets": "1 creature",
 			"savingThrow": {
@@ -2550,9 +2402,6 @@
 		},
 		{
 			"name": "Déjà Vu",
-			"alias": [
-				"Deja Vu"
-			],
 			"source": "APG",
 			"page": 218,
 			"level": 1,
@@ -2561,7 +2410,6 @@
 				"incapacitation",
 				"mental"
 			],
-			"school": "E",
 			"traditions": [
 				"arcane",
 				"occult"
@@ -2571,17 +2419,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "100 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 100
-				}
+				"type": "feet",
+				"number": 100
 			},
 			"targets": "1 creature",
 			"savingThrow": {
@@ -2600,6 +2445,9 @@
 			"entries": [
 				"You loop a thought process in the target's mind, forcing it to repeat the same actions over again. The target must attempt a Will save. If the target fails, whatever actions the target uses on its next turn, it must repeat on its following turn. The actions must be repeated in the same order and as close to the same specifics as possible. For example, if the target makes an attack, it must repeat the attack against the same creature, if possible, and if the target moves, it must move the same distance and direction, if possible, on its next turn.",
 				"If the target can't repeat an action, such as {@action Cast a Spell||Casting a Spell} that has been exhausted or needing to target a creature that has died, it can act as it chooses for that action but becomes {@condition stupefied 1} until the end of its turn."
+			],
+			"alias": [
+				"Deja Vu"
 			]
 		},
 		{
@@ -2614,22 +2462,18 @@
 				"hex",
 				"witch"
 			],
-			"school": "V",
 			"cast": {
 				"number": 1,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"V": true
-				}
+				[
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 creature",
 			"duration": {
@@ -2645,9 +2489,8 @@
 				"You call upon the elements to undermine your foe. When you {@action Cast a Spell||Cast this Spell}, choose air, earth, fire, or water. Each time the target takes damage from a spell or effect with the chosen trait, it takes an additional 2 damage of one damage type dealt by the spell or effect. If you chose fire or water, the target also takes this additional damage when taking fire or cold damage, respectively, from effects or spells without the chosen trait."
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 2,
-					"entries": [
+				"plusX": {
+					"2": [
 						"Increase the additional damage by 1."
 					]
 				}
@@ -2662,7 +2505,6 @@
 				"necromancy",
 				"negative"
 			],
-			"school": "N",
 			"traditions": [
 				"arcane",
 				"divine",
@@ -2673,10 +2515,10 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"area": {
 				"types": [
@@ -2702,9 +2544,8 @@
 				}
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 2,
-					"entries": [
+				"plusX": {
+					"2": [
 						"The {@condition persistent damage ||persistent negative damage} increases by {@dice 1d8} on a success, or by {@dice 2d8} on a failure or critical failure."
 					]
 				}
@@ -2722,23 +2563,19 @@
 				"ranger",
 				"transmutation"
 			],
-			"school": "T",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "your animal companion",
 			"duration": {
@@ -2764,16 +2601,15 @@
 				"divination",
 				"ranger"
 			],
-			"school": "D",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"duration": {
 				"type": "timed",
@@ -2792,27 +2628,26 @@
 			"source": "APG",
 			"page": 236,
 			"focus": true,
-			"subclass": {
-				"Sorcerer|Bloodline": [
-					"Nymph"
-				]
-			},
 			"level": 5,
 			"traits": [
 				"uncommon",
 				"abjuration",
 				"sorcerer"
 			],
-			"school": "A",
+			"subclass": {
+				"Sorcerer|Bloodline": [
+					"Nymph"
+				]
+			},
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"area": {
 				"types": [
@@ -2833,9 +2668,8 @@
 				"Upon {@action Cast a Spell||Casting the Spell}, you can immediately make a single nature's wrath {@action Strike}. You are {@condition quickened} while inside the ward, and can use the additional action only to make nature's wrath Strikes. You are {@condition slowed 1} while outside the area."
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 2,
-					"entries": [
+				"plusX": {
+					"2": [
 						"The area increases by 5 feet, and the Strikes deal an additional {@dice 1d8} damage."
 					]
 				}
@@ -2858,7 +2692,6 @@
 				"mental",
 				"witch"
 			],
-			"school": "E",
 			"subclass": {
 				"Witch|Patron": [
 					"Curse"
@@ -2869,16 +2702,13 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true
-				}
+				[
+					"S"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 creature",
 			"savingThrow": {
@@ -2917,7 +2747,6 @@
 				"divination",
 				"scrying"
 			],
-			"school": "D",
 			"traditions": [
 				"arcane",
 				"divine",
@@ -2929,17 +2758,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true
-				}
+				[
+					"M",
+					"S"
+				]
 			],
 			"range": {
-				"entry": "1 mile",
-				"distance": {
-					"type": "miles",
-					"amount": 1
-				}
+				"type": "mile",
+				"number": 1
 			},
 			"targets": "1 willing creature that is your animal companion or familiar",
 			"duration": {
@@ -2965,29 +2791,28 @@
 				"evocation",
 				"fire"
 			],
-			"school": "V",
 			"traditions": [
 				"arcane",
 				"divine",
 				"occult",
 				"primal"
 			],
+			"spellLists": [
+				"Elemental"
+			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "120 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 120
-				}
+				"type": "feet",
+				"number": 120
 			},
 			"targets": "1 creature with the minion trait that you summoned or permanently control",
 			"entries": [
@@ -2995,16 +2820,12 @@
 				"If the target has the {@trait cold} or {@trait water} trait, the spell instead deals cold damage and gains the {@trait cold} trait in place of the {@trait fire} trait. If used on a creature that isn't mindless, this spell has the {@trait evil} trait. Attempting to cast this spell targeting a creature that you temporarily seized control of, such as an undead commanded by command undead, automatically fails and breaks the controlling effect."
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 1,
-					"entries": [
+				"plusX": {
+					"1": [
 						"The damage increases by {@dice 2d6}."
 					]
 				}
-			},
-			"spellLists": [
-				"Elemental"
-			]
+			}
 		},
 		{
 			"name": "Flaming Fusillade",
@@ -3019,7 +2840,6 @@
 				"fire",
 				"oracle"
 			],
-			"school": "V",
 			"subclass": {
 				"Oracle|Mystery": [
 					"flames"
@@ -3030,10 +2850,10 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"duration": {
 				"type": "timed",
@@ -3047,7 +2867,7 @@
 				"You call upon an endless barrage of flames, producing miniature fireballs in your hands to hurl at foes. You cast {@spell produce flame} as part of casting flaming fusillade. For the duration of flaming fusillade, produce flame's casting time is reduced from 2 actions to 1."
 			],
 			"heightened": {
-				"x": [
+				"X": [
 					{
 						"level": 9,
 						"entries": [
@@ -3066,7 +2886,6 @@
 				"evocation",
 				"force"
 			],
-			"school": "V",
 			"traditions": [
 				"arcane",
 				"occult"
@@ -3076,18 +2895,15 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true,
-					"V": true
-				}
+				[
+					"M",
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"area": {
 				"types": [
@@ -3123,7 +2939,6 @@
 			"traits": [
 				"conjuration"
 			],
-			"school": "C",
 			"traditions": [
 				"primal"
 			],
@@ -3132,17 +2947,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "touch",
-				"distance": {
-					"type": "touch",
-					"amount": 1
-				}
+				"type": "touch",
+				"number": 1
 			},
 			"area": {
 				"types": [
@@ -3168,9 +2980,8 @@
 				}
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 2,
-					"entries": [
+				"plusX": {
+					"2": [
 						"The {@condition persistent damage} increases by {@dice 2d6}, and the weakness increases by 1, or by 2 on a critical failure."
 					]
 				}
@@ -3180,11 +2991,6 @@
 			"name": "Genie's Veil",
 			"source": "APG",
 			"page": 236,
-			"subclass": {
-				"Sorcerer|Bloodline": [
-					"Genie"
-				]
-			},
 			"focus": true,
 			"level": 1,
 			"traits": [
@@ -3192,23 +2998,24 @@
 				"abjuration",
 				"sorcerer"
 			],
-			"school": "A",
+			"subclass": {
+				"Sorcerer|Bloodline": [
+					"Genie"
+				]
+			},
 			"cast": {
 				"number": 1,
 				"unit": "reaction"
 			},
 			"components": [
-				{
-					"S": true
-				}
+				[
+					"S"
+				]
 			],
 			"trigger": "A creature within range is attacked.",
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 willing creature",
 			"entries": [
@@ -3224,7 +3031,6 @@
 				"uncommon",
 				"divination"
 			],
-			"school": "D",
 			"traditions": [
 				"divine",
 				"occult"
@@ -3235,11 +3041,11 @@
 				"entry": "(1 minute)"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true,
-					"V": true
-				}
+				[
+					"M",
+					"S",
+					"V"
+				]
 			],
 			"area": {
 				"types": [
@@ -3271,15 +3077,14 @@
 				"evocation",
 				"ranger"
 			],
-			"school": "V",
 			"cast": {
 				"number": 1,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true
-				}
+				[
+					"S"
+				]
 			],
 			"duration": {
 				"type": "timed",
@@ -3302,7 +3107,6 @@
 			"traits": [
 				"transmutation"
 			],
-			"school": "T",
 			"traditions": [
 				"arcane",
 				"primal"
@@ -3312,17 +3116,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "60 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 60
-				}
+				"type": "feet",
+				"number": 60
 			},
 			"targets": "1 corporeal creature",
 			"savingThrow": {
@@ -3346,9 +3147,8 @@
 				}
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 1,
-					"entries": [
+				"plusX": {
+					"1": [
 						"The damage increases by {@dice 2d6}."
 					]
 				}
@@ -3367,37 +3167,33 @@
 				"positive",
 				"ranger"
 			],
-			"school": "N",
 			"cast": {
 				"number": 1,
 				"unit": "varies",
 				"entry": "{@as 1} or {@as 2}"
 			},
 			"components": [
-				{
-					"S": true
-				},
-				{
-					"V": true
-				}
+				[
+					"S"
+				],
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "touch or 30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "your animal companion",
 			"entries": [
 				"You harness positive energy to heal your animal companion's wounds. You restore {@dice 1d10} Hit Points to your animal companion. The number of actions you spend {@action Cast a Spell||Casting this Spell} determines range and other parameters.",
 				"{@b {@as 1} (somatic)} The spell has a range of touch.",
-				"{@b {@as 2} (verbal)} The spell has a range of 30 feet and restores an additional 8 Hit Points to the target."
+				"{@b {@as 2} (somatic, verbal)} The spell has a range of 30 feet and restores an additional 8 Hit Points to the target."
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 1,
-					"entries": [
+				"plusX": {
+					"1": [
 						"The amount of healing increases by {@dice 1d10}, and the additional healing for the 2-action version increases by 8."
 					]
 				}
@@ -3409,11 +3205,6 @@
 			"page": 236,
 			"focus": true,
 			"level": 3,
-			"subclass": {
-				"Sorcerer|Bloodline": [
-					"Genie"
-				]
-			},
 			"traits": [
 				"uncommon",
 				"emotion",
@@ -3421,23 +3212,24 @@
 				"mental",
 				"sorcerer"
 			],
-			"school": "I",
+			"subclass": {
+				"Sorcerer|Bloodline": [
+					"Genie"
+				]
+			},
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "60 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 60
-				}
+				"type": "feet",
+				"number": 60
 			},
 			"targets": "1 creature",
 			"savingThrow": {
@@ -3466,9 +3258,8 @@
 				}
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 2,
-					"entries": [
+				"plusX": {
+					"2": [
 						"You can target one additional creature."
 					]
 				}
@@ -3483,27 +3274,26 @@
 				"evocation",
 				"fire"
 			],
-			"school": "V",
 			"traditions": [
 				"arcane",
 				"primal"
+			],
+			"spellLists": [
+				"Elemental"
 			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 metal item or metal creature",
 			"entries": [
@@ -3520,16 +3310,12 @@
 				}
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 1,
-					"entries": [
+				"plusX": {
+					"1": [
 						"The initial damage increases by {@dice 2d6} and the {@condition persistent damage} increases by {@dice 1d4}."
 					]
 				}
-			},
-			"spellLists": [
-				"Elemental"
-			]
+			}
 		},
 		{
 			"name": "Heroic Feat",
@@ -3544,7 +3330,6 @@
 				"mental",
 				"oracle"
 			],
-			"school": "D",
 			"subclass": {
 				"Oracle|Mystery": [
 					"battle"
@@ -3556,10 +3341,10 @@
 				"entry": "{@as 2} or {@as 3}"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"entries": [
 				"You gain the ability to perform a specialized combat technique from the vast wealth of martial knowledge your mystery provides. When you {@action Cast a Spell||Cast this Spell}, you use the action granted by one common fighter feat from pages 144\u2013153 of the Core Rulebook or pages 126\u2013127 of this book (your GM might add feats to this list). If you {@action Cast a Spell||Cast this Spell} using 2 actions, the granted action must be a single action, and if you {@action Cast a Spell||Cast this Spell} using 3 actions, you can instead choose a feat that grants a 2-action activity. The chosen feat's level can be no higher than heroic feat's spell level. The feat can't have a Frequency entry, and you must meet its prerequisites and requirements in order to select it."
@@ -3577,15 +3362,14 @@
 				"fortune",
 				"ranger"
 			],
-			"school": "D",
 			"cast": {
 				"number": 1,
 				"unit": "free"
 			},
 			"components": [
-				{
-					"V": true
-				}
+				[
+					"V"
+				]
 			],
 			"trigger": "You attempt a check to {@action Recall Knowledge} about a creature, but you haven't rolled yet.",
 			"entries": [
@@ -3603,22 +3387,18 @@
 				"divination",
 				"ranger"
 			],
-			"school": "D",
 			"cast": {
 				"number": 1,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"V": true
-				}
+				[
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 hunted prey",
 			"duration": {
@@ -3637,9 +3417,6 @@
 			"name": "Hymn Of Healing",
 			"source": "APG",
 			"page": 228,
-			"miscTags": [
-				"THP"
-			],
 			"focus": true,
 			"level": 1,
 			"traits": [
@@ -3650,22 +3427,18 @@
 				"necromancy",
 				"positive"
 			],
-			"school": "N",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"V": true
-				}
+				[
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "you or 1 ally",
 			"duration": {
@@ -3678,16 +3451,18 @@
 				}
 			},
 			"entries": [
-				"Your divine singing mends wounds and provides a temporary respite from harm. The target gains fast healing 2. When you {@action Cast a Spell||Cast the Spell} and each time you {@action Sustain a Spell||Sustain the Spell}, the target gains 2 temporary Hit Points, which last for 1 round."
+				"Your divine singing mends wounds and provides a temporary respite from harm. The target gains fast healing 2. When you {@action Cast a Spell||Cast the Spell} and the first time each round you {@action Sustain a Spell||Sustain the Spell}, the target gains 2 temporary Hit Points, which last for 1 round."
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 1,
-					"entries": [
+				"plusX": {
+					"1": [
 						"The fast healing and temporary Hit Points each increase by 2."
 					]
 				}
-			}
+			},
+			"miscTags": [
+				"THP"
+			]
 		},
 		{
 			"name": "Ice Storm",
@@ -3698,7 +3473,6 @@
 				"cold",
 				"evocation"
 			],
-			"school": "V",
 			"traditions": [
 				"arcane",
 				"primal"
@@ -3708,24 +3482,21 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true,
-					"V": true
-				}
+				[
+					"M",
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "120 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 120
-				}
+				"type": "feet",
+				"number": 120
 			},
 			"area": {
 				"types": [
 					"Burst"
 				],
-				"entry": "5-foot burst"
+				"entry": "20-foot burst"
 			},
 			"savingThrow": {
 				"type": [
@@ -3735,20 +3506,20 @@
 			},
 			"duration": {
 				"type": "timed",
-				"entry": "1 minute",
+				"sustain": true,
+				"entry": "sustained up to 1 minute",
 				"duration": {
 					"number": 1,
 					"unit": "minute"
 				}
 			},
 			"entries": [
-				"You create a gray storm cloud that pelts creatures with an icy deluge. When you {@action Cast a Spell||Cast the Spell}, a burst of magical hail deals {@damage 2d8} bludgeoning damage and {@damage 2d8} cold damage to each creature in the area below the cloud (basic Reflex save). Snow and sleet continue to rain down in the area for the remainder of the spell's duration, making the area {@quickref difficult terrain||3|terrain}, causing creatures in the storm to be {@condition concealed}, and making creatures outside the storm {@condition concealed} from those inside the storm. Any creature that ends its turn in the storm takes 4 cold damage. If you {@action Cast a Spell||Cast this Spell} outdoors, you can create two non-overlapping clouds instead of one."
+				"You create a gray storm cloud that pelts creatures with an icy deluge. When you {@action Cast a Spell||Cast the Spell}, a burst of magical hail deals {@damage 2d8} bludgeoning damage and {@damage 2d8} cold damage to each creature in the area below the cloud (basic Reflex save). Snow and sleet continue to rain down in the area for the remainder of the spell's duration, making the area difficult terrain. Any creature that ends its turn in the storm takes 2 cold damage. If you {@spell Cast a Spell||Cast this Spell} outdoors, you can create two non-overlapping clouds instead of one. As normal, if a big creature is in both clouds, it still only takes the initial damage once and the continuing damage once per turn."
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 2,
-					"entries": [
-						"The initial bludgeoning damage and cold damage increase by {@dice 1d8} each, and the cold damage creatures take at the end of their turns increases by 2."
+				"plusX": {
+					"2": [
+						"The initial bludgeoning damage and cold damage increase by {@dice 1d8} each, and the cold damage creatures take at the end of their turns increases by 1."
 					]
 				}
 			}
@@ -3763,7 +3534,6 @@
 				"divination",
 				"misfortune"
 			],
-			"school": "D",
 			"traditions": [
 				"occult"
 			],
@@ -3772,17 +3542,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 creature",
 			"duration": {
@@ -3813,7 +3580,6 @@
 			"traits": [
 				"conjuration"
 			],
-			"school": "C",
 			"traditions": [
 				"arcane",
 				"primal"
@@ -3823,17 +3589,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 creature",
 			"savingThrow": {
@@ -3862,9 +3625,8 @@
 				}
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 1,
-					"entries": [
+				"plusX": {
+					"1": [
 						"The damage increases by {@dice 2d6}."
 					]
 				}
@@ -3878,7 +3640,6 @@
 			"traits": [
 				"divination"
 			],
-			"school": "D",
 			"traditions": [
 				"occult"
 			],
@@ -3887,17 +3648,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "touch",
-				"distance": {
-					"type": "touch",
-					"amount": 1
-				}
+				"type": "touch",
+				"number": 1
 			},
 			"targets": "1 object",
 			"entries": [
@@ -3918,7 +3676,6 @@
 				"fire",
 				"oracle"
 			],
-			"school": "V",
 			"subclass": {
 				"Oracle|Mystery": [
 					"flames"
@@ -3929,10 +3686,10 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"area": {
 				"types": [
@@ -3952,9 +3709,8 @@
 				"You surround yourself with a combustible aura. Each time a creature within the emanation takes fire damage, it catches on fire, taking {@damage 2d4} {@condition persistent damage ||persistent fire damage}."
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 2,
-					"entries": [
+				"plusX": {
+					"2": [
 						"Increase the {@condition persistent damage} by {@dice 1d4} and the radius of the emanation by 5 feet."
 					]
 				}
@@ -3968,22 +3724,24 @@
 			"traits": [
 				"abjuration"
 			],
-			"school": "A",
 			"traditions": [
 				"arcane",
 				"divine",
 				"occult",
 				"primal"
 			],
+			"spellLists": [
+				"Elemental"
+			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"duration": {
 				"type": "timed",
@@ -3996,9 +3754,6 @@
 			"entries": [
 				"You can't be affected by anything unless you choose to be.",
 				"For the duration of the spell, you are immune to any effect or damage that would harm you, excluding effects caused by artifacts, deific power, and similarly powerful sources. You can still be affected by anything you're willing to have affect you."
-			],
-			"spellLists": [
-				"Elemental"
 			]
 		},
 		{
@@ -4014,7 +3769,6 @@
 				"evocation",
 				"oracle"
 			],
-			"school": "V",
 			"subclass": {
 				"Oracle|Mystery": [
 					"cosmos"
@@ -4025,17 +3779,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 creature",
 			"savingThrow": {
@@ -4053,13 +3804,12 @@
 				}
 			},
 			"entries": [
-				"You call upon the frigid depths of outer space to bring a terrible chill to your enemy. The target is cloaked in the freezing void, which deals {@damage 3d6} cold damage immediately and when you {@action Sustain a Spell||Sustain the Spell} on future turns, with a basic Fortitude save.",
+				"You call upon the frigid depths of outer space to bring a terrible chill to your enemy. The target is cloaked in the freezing void, which deals {@damage 3d6} cold damage immediately and the first time each round you {@action Sustain a Spell||Sustain the Spell} on future turns, with a basic Fortitude save.",
 				"The target is {@condition fatigued} for as long as the effect persists."
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 1,
-					"entries": [
+				"plusX": {
+					"1": [
 						"The cold damage increases by {@dice 1d6}."
 					]
 				}
@@ -4073,7 +3823,6 @@
 			"traits": [
 				"illusion"
 			],
-			"school": "I",
 			"traditions": [
 				"arcane",
 				"occult"
@@ -4083,17 +3832,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true
-				}
+				[
+					"M",
+					"S"
+				]
 			],
 			"range": {
-				"entry": "touch",
-				"distance": {
-					"type": "touch",
-					"amount": 1
-				}
+				"type": "touch",
+				"number": 1
 			},
 			"targets": "1 object",
 			"duration": {
@@ -4108,7 +3854,7 @@
 				"You make the object {@condition invisible}. This makes it {@condition undetected} to all creatures, though the creatures can attempt to find the target, making it {@condition hidden} to them instead if they succeed. If the item is used as part of a {@condition hostile} action, the spell ends after that {@condition hostile} action is completed. Making a weapon {@condition invisible} typically doesn't give any advantage to the attack, except that an {@condition invisible} thrown weapon or piece of ammunition can be used for an attack without necessarily giving information about the attacker's hiding place unless the weapon returns to the attacker."
 			],
 			"heightened": {
-				"x": [
+				"X": [
 					{
 						"level": 3,
 						"entries": [
@@ -4140,9 +3886,9 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"V": true
-				}
+				[
+					"V"
+				]
 			],
 			"duration": {
 				"type": "timed",
@@ -4170,22 +3916,18 @@
 				"necromancy",
 				"witch"
 			],
-			"school": "N",
 			"cast": {
 				"number": 1,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true
-				}
+				[
+					"S"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 creature",
 			"duration": {
@@ -4214,7 +3956,6 @@
 				"oracle",
 				"positive"
 			],
-			"school": "N",
 			"subclass": {
 				"Oracle|Mystery": [
 					"life"
@@ -4225,16 +3966,13 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true
-				}
+				[
+					"S"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 creature other than you",
 			"duration": {
@@ -4251,7 +3989,7 @@
 				"The spell ends immediately if you fall {@condition unconscious}. You can {@action Dismiss} the spell."
 			],
 			"heightened": {
-				"x": [
+				"X": [
 					{
 						"level": 3,
 						"entries": [
@@ -4288,7 +4026,6 @@
 				"oracle",
 				"positive"
 			],
-			"school": "N",
 			"subclass": {
 				"Oracle|Mystery": [
 					"life"
@@ -4299,10 +4036,10 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"duration": {
 				"type": "timed",
@@ -4320,9 +4057,8 @@
 				"You can {@action Dismiss} this spell."
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 1,
-					"entries": [
+				"plusX": {
+					"1": [
 						"Increase the Hit Points restored with an {@action Interact} action by {@dice 1d8}, the positive damage by 1, and the resistance and weakness by 1."
 					]
 				}
@@ -4332,38 +4068,35 @@
 			"name": "Lightning Storm",
 			"source": "APG",
 			"page": 221,
+			"type": "Spell",
 			"level": 5,
 			"traits": [
 				"electricity",
 				"evocation"
 			],
-			"school": "V",
 			"traditions": [
-				"primal"
+				"Primal"
 			],
 			"cast": {
 				"number": 3,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"M",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "120 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 120
-				}
+				"unit": "feet",
+				"number": 120
 			},
 			"area": {
+				"entry": "20-foot burst",
 				"types": [
 					"Burst"
-				],
-				"entry": "5-foot burst"
+				]
 			},
 			"savingThrow": {
 				"type": [
@@ -4372,22 +4105,17 @@
 				"basic": true
 			},
 			"duration": {
-				"type": "timed",
-				"entry": "sustained up to 1 minute",
-				"sustain": true,
-				"duration": {
-					"number": 1,
-					"unit": "minute"
-				}
+				"sustained": true,
+				"number": 1,
+				"unit": "minute"
 			},
 			"entries": [
-				"You create a black, rumbling storm cloud and call down one lightning bolt. The bolt is a vertical line from the storm cloud to the ground below, dealing {@damage 4d12} electricity damage to creatures in the spell's area (basic Reflex save). The first time you {@action Sustain a Spell||Sustain the Spell} each round, you can call another lightning bolt within the area. If you {@action Cast a Spell||Cast this Spell} outdoors, you can create two non-overlapping clouds instead of one, though you can still call down only one bolt per turn."
+				"You create a black, rumbling storm cloud and call down one lightning bolt within the spell's area. The bolt is a vertical line from the top of the storm cloud to the ground below, dealing {@damage 4d12} electricity damage to creatures in the line (basic Reflex save). On subsequent rounds, the first time you Sustain the Spell each round, you can call another lightning bolt within the area. If you Cast this Spell outdoors, you can create two non-overlapping clouds instead of one, though you can still call down only one bolt per turn."
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 1,
-					"entries": [
-						"The damage of each bolt increases by {@dice 1d12}. Spells 5"
+				"plusX": {
+					"2": [
+						"The damage of each bolt increases by {@dice 1d12}."
 					]
 				}
 			}
@@ -4405,22 +4133,18 @@
 				"evocation",
 				"litany"
 			],
-			"school": "V",
 			"cast": {
 				"number": 1,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"V": true
-				}
+				[
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 good creature",
 			"duration": {
@@ -4435,9 +4159,8 @@
 				"Your litany calls into question the morals your foe claims to hold dear. The target gains weakness 7 to evil, then becomes temporarily immune to all your litanies for 1 minute."
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 1,
-					"entries": [
+				"plusX": {
+					"1": [
 						"The weakness increases by 1."
 					]
 				}
@@ -4457,22 +4180,18 @@
 				"litany",
 				"mental"
 			],
-			"school": "E",
 			"cast": {
 				"number": 1,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"V": true
-				}
+				[
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 creature",
 			"savingThrow": {
@@ -4499,7 +4218,7 @@
 				}
 			],
 			"heightened": {
-				"x": [
+				"X": [
 					{
 						"level": 8,
 						"entries": [
@@ -4517,7 +4236,6 @@
 			"traits": [
 				"conjuration"
 			],
-			"school": "C",
 			"traditions": [
 				"primal"
 			],
@@ -4526,17 +4244,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"area": {
 				"types": [
@@ -4555,7 +4270,7 @@
 			},
 			"entries": [
 				"Magical monkey spirits fill the area as they pile and climb on top of one another. Because the monkeys are magical spirits, they can't be attacked or hurt. Casting calm emotions or a similar effect over the monkeys makes them docile, causing them to cease making mischief for the duration of mad monkeys.",
-				"Choose the kind of mischief your monkeys make when you {@action Cast a Spell||Cast the Spell}. They produce the effect listed for that mischief when you {@action Cast a Spell||Cast the Spell} and each round when you {@action Sustain a Spell||Sustain the Spell}. When you {@action Sustain a Spell||Sustain the Spell}, you can move the area of the monkeys by 5 feet.",
+				"Choose the kind of mischief your monkeys make when you {@action Cast a Spell||Cast the Spell}. They produce the effect listed for that mischief when you {@action Cast a Spell||Cast the Spell} and the first time each round you {@action Sustain a Spell||Sustain the Spell}. When you {@action Sustain a Spell||Sustain the Spell}, you can move the area of the monkeys by 5 feet.",
 				{
 					"type": "list",
 					"items": [
@@ -4585,22 +4300,18 @@
 				"abjuration",
 				"ranger"
 			],
-			"school": "A",
 			"cast": {
 				"number": 1,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true
-				}
+				[
+					"S"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "your animal companion",
 			"duration": {
@@ -4624,10 +4335,12 @@
 				"necromancy",
 				"positive"
 			],
-			"school": "N",
 			"traditions": [
 				"divine",
 				"primal"
+			],
+			"spellLists": [
+				"Elemental"
 			],
 			"cast": {
 				"number": 1,
@@ -4635,17 +4348,14 @@
 				"entry": "{@as 1} to {@as 3}"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "touch",
-				"distance": {
-					"type": "touch",
-					"amount": 1
-				}
+				"type": "touch",
+				"number": 1
 			},
 			"targets": "1 to 3 non-magical stones or sling bullets",
 			"duration": {
@@ -4659,9 +4369,6 @@
 			"entries": [
 				"You pour positive energy into ordinary stones, granting them temporary magical properties. You can target 1 non-magical stone or sling bullet for every action you use {@action Cast a Spell||Casting this Spell}.",
 				"The stones must be unattended or carried by you or a willing ally. The stones become +1 striking disrupting sling bullets. Each stone can be used only once, after which it crumbles to dust."
-			],
-			"spellLists": [
-				"Elemental"
 			]
 		},
 		{
@@ -4677,23 +4384,19 @@
 				"shadow",
 				"witch"
 			],
-			"school": "V",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 creature",
 			"duration": {
@@ -4711,9 +4414,8 @@
 				"The shadow vanishes if the target moves into an area of complete darkness or enters an area with light from all directions such that the target doesn't cast a shadow. If another effect is controlling the target's shadow when you cast {@spell malicious shadow|APG}, you can attempt to counteract that effect to temporarily take control of the shadow, but the original effect resumes when malicious shadow ends."
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 2,
-					"entries": [
+				"plusX": {
+					"2": [
 						"The {@action Strike} damage increases by {@dice 1d10}."
 					]
 				}
@@ -4730,16 +4432,15 @@
 				"monk",
 				"transmutation"
 			],
-			"school": "T",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"entries": [
 				"You make an attack filled with a medusa's petrifying power.",
@@ -4766,7 +4467,6 @@
 				"light",
 				"oracle"
 			],
-			"school": "C",
 			"subclass": {
 				"Oracle|Mystery": [
 					"cosmos"
@@ -4777,17 +4477,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"duration": {
 				"type": "timed",
@@ -4803,9 +4500,8 @@
 				"The bridge blocks physical, ethereal, and incorporeal attacks from crossing, whether from above or below. You can {@action Dismiss} the spell."
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 1,
-					"entries": [
+				"plusX": {
+					"1": [
 						"The length of the bridge increases by 20 feet, and its Hit Points increase by 20."
 					]
 				}
@@ -4824,22 +4520,18 @@
 				"mental",
 				"witch"
 			],
-			"school": "E",
 			"cast": {
 				"number": 1,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true
-				}
+				[
+					"S"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 enemy",
 			"savingThrow": {
@@ -4861,9 +4553,8 @@
 				"A long, jagged needle jabs into the target foe's psyche whenever it tries to attack a specifically forbidden creature. Name yourself or one of your allies. The target takes 2 mental damage any time it uses a {@condition hostile} action against the named creature."
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 1,
-					"entries": [
+				"plusX": {
+					"1": [
 						"Increase the damage by 2."
 					]
 				}
@@ -4878,7 +4569,6 @@
 				"evocation",
 				"poison"
 			],
-			"school": "V",
 			"traditions": [
 				"arcane",
 				"primal"
@@ -4888,10 +4578,10 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"area": {
 				"types": [
@@ -4917,9 +4607,8 @@
 				"You emit a cloud of toxic smoke that temporarily obscures you from sight. Each creature except you in the area when you {@action Cast a Spell||Cast the Spell} takes {@damage 1d6} poison damage (basic Fortitude save). A creature that critically fails the saving throw also becomes {@condition sickened 1}. All creatures in the area become {@condition concealed}, and all creatures outside the smoke become {@condition concealed} to creatures within it. This smoke can be dispersed by a strong wind."
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 1,
-					"entries": [
+				"plusX": {
+					"1": [
 						"The damage increases by {@dice 1d6}."
 					]
 				}
@@ -4938,7 +4627,6 @@
 				"hex",
 				"witch"
 			],
-			"school": "D",
 			"subclass": {
 				"Witch|Patron": [
 					"Fate"
@@ -4949,16 +4637,13 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"V": true
-				}
+				[
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 creature",
 			"savingThrow": {
@@ -4985,27 +4670,26 @@
 			"source": "APG",
 			"page": 236,
 			"focus": true,
-			"subclass": {
-				"Sorcerer|Bloodline": [
-					"Nymph"
-				]
-			},
 			"level": 1,
 			"traits": [
 				"uncommon",
 				"enchantment",
 				"sorcerer"
 			],
-			"school": "E",
+			"subclass": {
+				"Sorcerer|Bloodline": [
+					"Nymph"
+				]
+			},
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"duration": {
 				"type": "timed",
@@ -5020,7 +4704,7 @@
 				"You grant an ally a token of favor. You create a token, such as a lock of your hair or a flower, that persists for the spell's duration; as part of {@action Cast a Spell||Casting the Spell}, you can {@action Interact} to pass the token to an ally within your reach. As long as the ally has the token on their person, they gain a +1 status bonus to {@skill Performance} checks and Will saves. You can {@action Dismiss} the spell as a free action."
 			],
 			"heightened": {
-				"x": [
+				"X": [
 					{
 						"level": 4,
 						"entries": [
@@ -5038,7 +4722,6 @@
 			"traits": [
 				"divination"
 			],
-			"school": "D",
 			"traditions": [
 				"occult"
 			],
@@ -5047,24 +4730,21 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "touch",
-				"distance": {
-					"type": "touch",
-					"amount": 1
-				}
+				"type": "touch",
+				"number": 1
 			},
 			"targets": "1 object",
 			"entries": [
 				"You place a hand on an object to learn a piece of information about an emotional event that occurred involving the object within the past week, determined by the GM. If you cast {@spell object reading|APG} on the same item multiple times, you can either concentrate on a single event to gain additional pieces of information about that event, or gain a piece of information about another emotional event in the applicable time frame."
 			],
 			"heightened": {
-				"x": [
+				"X": [
 					{
 						"level": 2,
 						"entries": [
@@ -5110,23 +4790,19 @@
 				"composition",
 				"necromancy"
 			],
-			"school": "N",
 			"cast": {
 				"number": 1,
 				"unit": "reaction"
 			},
 			"components": [
-				{
-					"V": true
-				}
+				[
+					"V"
+				]
 			],
 			"trigger": "A creature's {@condition dying} condition would reach the value at which they would die.",
 			"range": {
-				"entry": "60 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 60
-				}
+				"type": "feet",
+				"number": 60
 			},
 			"targets": "the triggering creature",
 			"entries": [
@@ -5145,22 +4821,18 @@
 				"hex",
 				"witch"
 			],
-			"school": "C",
 			"cast": {
 				"number": 1,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true
-				}
+				[
+					"S"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 creature",
 			"savingThrow": {
@@ -5190,9 +4862,8 @@
 				}
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 1,
-					"entries": [
+				"plusX": {
+					"1": [
 						"The cold damage and {@condition persistent damage ||persistent cold damage} increase by 1 (2 on a critical failure)."
 					]
 				}
@@ -5207,28 +4878,27 @@
 				"conjuration",
 				"extradimensional"
 			],
-			"school": "C",
 			"traditions": [
 				"arcane",
 				"divine",
 				"occult",
 				"primal"
 			],
+			"spellLists": [
+				"Elemental"
+			],
 			"cast": {
 				"number": 1,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true
-				}
+				[
+					"S"
+				]
 			],
 			"range": {
-				"entry": "touch",
-				"distance": {
-					"type": "touch",
-					"amount": 1
-				}
+				"type": "touch",
+				"number": 1
 			},
 			"targets": "1 willing creature that is your animal companion or familiar",
 			"duration": {
@@ -5243,9 +4913,6 @@
 			"entries": [
 				"You open your cloak or create a gap with your hands, drawing the target into a pocket dimension just large enough for its basic comfort. No other creature can enter this extradimensional space, and the target can bring along objects only if they were designed to be worn by a creature of its kind. The space has enough air, food, and water to sustain the target for the duration.",
 				"You can {@action Dismiss} the spell. The spell also ends if you die or enter an extradimensional space. When the spell ends, the target reappears in the nearest unoccupied space (outside of any extradimensional space you may have entered)."
-			],
-			"spellLists": [
-				"Elemental"
 			]
 		},
 		{
@@ -5258,7 +4925,6 @@
 				"illusion",
 				"mental"
 			],
-			"school": "I",
 			"traditions": [
 				"arcane",
 				"occult"
@@ -5268,17 +4934,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "60 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 60
-				}
+				"type": "feet",
+				"number": 60
 			},
 			"targets": "1 living creature",
 			"savingThrow": {
@@ -5320,32 +4983,27 @@
 				"hex",
 				"witch"
 			],
-			"school": "A",
 			"cast": {
 				"number": 1,
 				"unit": "reaction"
 			},
 			"components": [
-				{
-					"S": true
-				}
+				[
+					"S"
+				]
 			],
 			"trigger": "Your familiar would take damage.",
 			"range": {
-				"entry": "60 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 60
-				}
+				"type": "feet",
+				"number": 60
 			},
 			"targets": "your familiar",
 			"entries": [
 				"You draw upon your patron's power to momentarily shift your familiar from its solid, physical form into an ephemeral version of itself shaped of mist. Your familiar gains resistance 5 to all damage and is immune to precision damage. These apply only against the triggering damage."
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 1,
-					"entries": [
+				"plusX": {
+					"1": [
 						"Increase the resistance by 2."
 					]
 				}
@@ -5366,15 +5024,14 @@
 				"mental",
 				"sonic"
 			],
-			"school": "E",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"V": true
-				}
+				[
+					"V"
+				]
 			],
 			"area": {
 				"types": [
@@ -5418,20 +5075,22 @@
 				"earth",
 				"evocation"
 			],
-			"school": "V",
 			"traditions": [
 				"arcane",
 				"primal"
+			],
+			"spellLists": [
+				"Elemental"
 			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"area": {
 				"types": [
@@ -5457,16 +5116,12 @@
 				}
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 1,
-					"entries": [
+				"plusX": {
+					"1": [
 						"Increase the damage by {@dice 2d4}."
 					]
 				}
-			},
-			"spellLists": [
-				"Elemental"
-			]
+			}
 		},
 		{
 			"name": "Quench",
@@ -5477,26 +5132,25 @@
 				"abjuration",
 				"water"
 			],
-			"school": "A",
 			"traditions": [
 				"primal"
+			],
+			"spellLists": [
+				"Elemental"
 			],
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "120 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 120
-				}
+				"type": "feet",
+				"number": 120
 			},
 			"area": {
 				"types": [
@@ -5515,20 +5169,16 @@
 			},
 			"entries": [
 				"You cause the air in the area to become supersaturated with water vapor. Non-magical fires within the area are automatically extinguished. Fire creatures within the area take {@dice 4d8} damage (basic Fortitude save). Choose one magical fire, fire spell, or fire item in the area and attempt to counteract it. If you succeed against an item, the item loses its fire properties for 10 minutes (for instance, a +1 flaming longsword would become a +1 longsword). If the target is an artifact or similarly powerful item, you automatically fail to counteract it.",
-				"When you Sustain this Spell, you can move the area of vapor anywhere within range, but the only effect when you do so is to automatically extinguish non-magical fires.",
+				"The first time each round you {@action Sustain a Spell||Sustain this Spell}, you can move the area of vapor anywhere within range, but the only effect when you do so is to automatically extinguish non-magical fires.",
 				"If you have the Counterspell reaction, you can use quench to counter any spell with the {@trait fire} trait instead of needing to have the triggering fire spell prepared or in your repertoire."
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 1,
-					"entries": [
+				"plusX": {
+					"1": [
 						"Increase the damage to fire creatures by {@dice 2d8}."
 					]
 				}
-			},
-			"spellLists": [
-				"Elemental"
-			]
+			}
 		},
 		{
 			"name": "Ranger's Bramble",
@@ -5542,23 +5192,19 @@
 				"ranger",
 				"transmutation"
 			],
-			"school": "T",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "100 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 100
-				}
+				"type": "feet",
+				"number": 100
 			},
 			"area": {
 				"types": [
@@ -5571,9 +5217,8 @@
 				"Escaping your bramble doesn't end the bleed damage."
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 1,
-					"entries": [
+				"plusX": {
+					"1": [
 						"The bleed damage on a critical failure increases by {@dice 1d4}."
 					]
 				}
@@ -5589,7 +5234,6 @@
 				"light",
 				"necromancy"
 			],
-			"school": "N",
 			"traditions": [
 				"divine",
 				"occult",
@@ -5600,10 +5244,10 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"area": {
 				"types": [
@@ -5641,23 +5285,19 @@
 				"necromancy",
 				"witch"
 			],
-			"school": "N",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 creature",
 			"entries": [
@@ -5672,7 +5312,6 @@
 			"traits": [
 				"transmutation"
 			],
-			"school": "T",
 			"traditions": [
 				"primal"
 			],
@@ -5681,17 +5320,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "touch",
-				"distance": {
-					"type": "touch",
-					"amount": 1
-				}
+				"type": "touch",
+				"number": 1
 			},
 			"targets": "1 metal creature, 1 non-magical metal hazard, or 1 non-magical metal item of up to 1 Bulk",
 			"entries": [
@@ -5708,9 +5344,8 @@
 				"When targeting armor someone is wearing, its Bulk is 1 higher than the listed value, since carrying armor is more cumbersome than wearing it. Thin iron or steel items, such as weapons, have 20 HP and a {@condition Broken} Threshold of 10, and thicker iron or steel items, such as most suits of armor, have 36 HP and a {@condition Broken} Threshold of 18. Other materials' statistics can be found on pages 577\u2013579 of the Core Rulebook."
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 1,
-					"entries": [
+				"plusX": {
+					"1": [
 						"Increase the initial damage to creatures or hazards by {@dice 2d6}, and increase the maximum Bulk of an item you can target by 1."
 					]
 				}
@@ -5724,29 +5359,28 @@
 			"traits": [
 				"abjuration"
 			],
-			"school": "A",
 			"traditions": [
 				"arcane",
 				"divine",
 				"primal"
+			],
+			"spellLists": [
+				"Elemental"
 			],
 			"cast": {
 				"number": 3,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true,
-					"V": true
-				}
+				[
+					"M",
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "touch",
-				"distance": {
-					"type": "touch",
-					"amount": 1
-				}
+				"type": "touch",
+				"number": 1
 			},
 			"area": {
 				"types": [
@@ -5769,7 +5403,7 @@
 				"Safe passage protects only against harm, not inconvenience, and it doesn't reduce {@quickref difficult terrain||3|terrain}, remove the {@condition concealed} condition caused by precipitation, or the like, nor does it protect against creatures within the spell's area."
 			],
 			"heightened": {
-				"x": [
+				"X": [
 					{
 						"level": 5,
 						"entries": [
@@ -5783,10 +5417,7 @@
 						]
 					}
 				]
-			},
-			"spellLists": [
-				"Elemental"
-			]
+			}
 		},
 		{
 			"name": "Scintillating Safeguard",
@@ -5796,44 +5427,39 @@
 			"traits": [
 				"abjuration"
 			],
-			"school": "A",
 			"traditions": [
 				"divine",
 				"occult",
 				"primal"
+			],
+			"spellLists": [
+				"Elemental"
 			],
 			"cast": {
 				"number": 1,
 				"unit": "reaction"
 			},
 			"components": [
-				{
-					"S": true
-				}
+				[
+					"S"
+				]
 			],
 			"trigger": "An effect would deal physical or energy damage to you or a creature in range.",
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "up to 5 willing creatures who would be harmed by the triggering effect",
 			"entries": [
 				"A sparkling magical barrier envelops each target, shielding them against the triggering effect. Choose one type of physical or energy damage the triggering effect deals. Each target gains resistance 10 against that damage type for the triggering effect. The resistance applies only against the initial damage, not against any {@condition persistent damage} or other lingering effects of the effect."
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 1,
-					"entries": [
+				"plusX": {
+					"1": [
 						"The resistance increases by 1."
 					]
 				}
-			},
-			"spellLists": [
-				"Elemental"
-			]
+			}
 		},
 		{
 			"name": "Sculpt Sound",
@@ -5843,7 +5469,6 @@
 			"traits": [
 				"illusion"
 			],
-			"school": "I",
 			"traditions": [
 				"occult"
 			],
@@ -5852,17 +5477,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true
-				}
+				[
+					"M",
+					"S"
+				]
 			],
 			"range": {
-				"entry": "touch",
-				"distance": {
-					"type": "touch",
-					"amount": 1
-				}
+				"type": "touch",
+				"number": 1
 			},
 			"targets": "1 creature or object",
 			"duration": {
@@ -5887,7 +5509,7 @@
 				}
 			],
 			"heightened": {
-				"x": [
+				"X": [
 					{
 						"level": 5,
 						"entries": [
@@ -5907,7 +5529,6 @@
 				"death",
 				"necromancy"
 			],
-			"school": "N",
 			"traditions": [
 				"arcane",
 				"divine",
@@ -5918,17 +5539,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "touch",
-				"distance": {
-					"type": "touch",
-					"amount": 1
-				}
+				"type": "touch",
+				"number": 1
 			},
 			"targets": "1 living creature",
 			"savingThrow": {
@@ -5949,9 +5567,8 @@
 				}
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 2,
-					"entries": [
+				"plusX": {
+					"2": [
 						"The weakness increases by 1, and the maximum level of creature that can be automatically killed increases by 4."
 					]
 				}
@@ -5965,7 +5582,6 @@
 			"traits": [
 				"conjuration"
 			],
-			"school": "C",
 			"traditions": [
 				"arcane",
 				"occult"
@@ -5976,18 +5592,15 @@
 				"entry": "1 minute"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true,
-					"V": true
-				}
+				[
+					"M",
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "touch",
-				"distance": {
-					"type": "touch",
-					"amount": 1
-				}
+				"type": "touch",
+				"number": 1
 			},
 			"targets": "1 container and its contents, totaling 10",
 			"entries": [
@@ -5999,11 +5612,6 @@
 			"name": "Sepulchral Mask",
 			"source": "APG",
 			"page": 236,
-			"subclass": {
-				"Sorcerer|Bloodline": [
-					"Psychopomp"
-				]
-			},
 			"focus": true,
 			"level": 1,
 			"traits": [
@@ -6014,16 +5622,20 @@
 				"sorcerer",
 				"visual"
 			],
-			"school": "D",
+			"subclass": {
+				"Sorcerer|Bloodline": [
+					"Psychopomp"
+				]
+			},
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"area": {
 				"types": [
@@ -6058,9 +5670,8 @@
 				}
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 2,
-					"entries": [
+				"plusX": {
+					"2": [
 						"Increase the mental damage by {@dice 2d4} and the emanation's radius by 5 feet."
 					]
 				}
@@ -6073,28 +5684,25 @@
 			"focus": true,
 			"level": 6,
 			"traits": [
+				"uncommon",
 				"auditory",
 				"illusion",
 				"shadow",
 				"visual"
 			],
-			"school": "I",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "500 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 500
-				}
+				"type": "feet",
+				"number": 500
 			},
 			"duration": {
 				"type": "timed",
@@ -6120,35 +5728,32 @@
 			"focus": true,
 			"level": 5,
 			"traits": [
+				"uncommon",
 				"conjuration",
 				"shadow",
 				"teleportation"
 			],
-			"school": "C",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"requirements": "You are in dim light or darkness.",
 			"range": {
-				"entry": "120 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 120
-				}
+				"type": "feet",
+				"number": 120
 			},
 			"entries": [
 				"You instantly transport yourself from one shadow to another.",
 				"Teleport yourself and any items you're wearing and holding from your current space to a clear space you can see that's in dim light or darkness and within range. You can transport your familiar with this spell, but if shadow jump would bring any other creature with you\u2014even if you're carrying the creature in an extradimensional container\u2014the spell is disrupted."
 			],
 			"heightened": {
-				"x": [
+				"X": [
 					{
 						"level": 8,
 						"entries": [
@@ -6169,16 +5774,15 @@
 				"evocation",
 				"monk"
 			],
-			"school": "V",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"area": {
 				"types": [
@@ -6204,9 +5808,8 @@
 				}
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 1,
-					"entries": [
+				"plusX": {
+					"1": [
 						"The negative damage increases by {@dice 2d4}. Oracle"
 					]
 				}
@@ -6216,11 +5819,6 @@
 			"name": "Shepherd Of Souls",
 			"source": "APG",
 			"page": 236,
-			"subclass": {
-				"Sorcerer|Bloodline": [
-					"Psychopomp"
-				]
-			},
 			"focus": true,
 			"level": 5,
 			"traits": [
@@ -6229,32 +5827,32 @@
 				"necromancy",
 				"sorcerer"
 			],
-			"school": "N",
+			"subclass": {
+				"Sorcerer|Bloodline": [
+					"Psychopomp"
+				]
+			},
 			"cast": {
 				"number": 1,
 				"unit": "reaction"
 			},
 			"components": [
-				{
-					"V": true
-				}
+				[
+					"V"
+				]
 			],
 			"trigger": "A living creature within 30 feet takes damage.",
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 creature",
 			"entries": [
 				"You stay the hand of fate for one not yet destined to die, sacrificing some of your own vitality to heal them. You lose up to 15 Hit Points as a sacrifice, and the target reduces the damage by twice the number of Hit Points sacrificed. If this reduction exceeds the amount of damage, the target recovers Hit Points equal to the excess amount."
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 2,
-					"entries": [
+				"plusX": {
+					"2": [
 						"The maximum number of Hit Points you can sacrifice increases by 5."
 					]
 				}
@@ -6274,7 +5872,6 @@
 				"hex",
 				"witch"
 			],
-			"school": "V",
 			"subclass": {
 				"Witch|Patron": [
 					"Night"
@@ -6285,16 +5882,13 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true
-				}
+				[
+					"S"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 creature",
 			"savingThrow": {
@@ -6334,32 +5928,27 @@
 				"ranger",
 				"teleportation"
 			],
-			"school": "C",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "10 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 10
-				}
+				"type": "feet",
+				"number": 10
 			},
 			"targets": "one snare you built",
 			"entries": [
 				"You may not have placed your snare in the right place, but you can magically move it there. You teleport the target snare to another unoccupied location in range."
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 1,
-					"entries": [
+				"plusX": {
+					"1": [
 						"The range of the spell increases by 10 feet."
 					]
 				}
@@ -6379,15 +5968,14 @@
 				"enchantment",
 				"mental"
 			],
-			"school": "E",
 			"cast": {
 				"number": 1,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"V": true
-				}
+				[
+					"V"
+				]
 			],
 			"area": {
 				"types": [
@@ -6408,7 +5996,7 @@
 				"You maintain a brisk performance that keeps allies on the move. You and your allies in the area can {@action Hustle} for the spell's duration, even though you are also {@action Sustain a Spell||Sustaining the Spell}. You and your allies then become temporarily immune for 1 day."
 			],
 			"heightened": {
-				"x": [
+				"X": [
 					{
 						"level": 6,
 						"entries": [
@@ -6439,15 +6027,14 @@
 				"enchantment",
 				"mental"
 			],
-			"school": "E",
 			"cast": {
 				"number": 1,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"V": true
-				}
+				[
+					"V"
+				]
 			],
 			"area": {
 				"types": [
@@ -6481,32 +6068,27 @@
 				"positive",
 				"ranger"
 			],
-			"school": "N",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 willing living creature or 1 undead creature",
 			"entries": [
 				"You call forth a magical mist of positive energy that envelops a creature. The mist restores {@dice 2d8} Hit Points to a target living creature and ends one source of {@condition persistent damage ||persistent acid}, bleed, fire, negative, or poison damage affecting it. If the creature is taking {@condition persistent damage} from multiple sources, you select which one is removed. Against an undead target, you deal {@damage 2d8} positive damage (basic Fortitude save); if it fails the save, it also takes 2 {@condition persistent damage ||persistent positive damage}."
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 1,
-					"entries": [
+				"plusX": {
+					"1": [
 						"The amount of healing (or damage to an undead target) increases by {@dice 1d8}, and the {@condition persistent damage ||persistent positive damage} to an undead creature increases by 1."
 					]
 				}
@@ -6515,9 +6097,6 @@
 		{
 			"name": "Soul Siphon",
 			"source": "APG",
-			"miscTags": [
-				"THP"
-			],
 			"page": 233,
 			"focus": true,
 			"level": 1,
@@ -6528,7 +6107,6 @@
 				"negative",
 				"oracle"
 			],
-			"school": "N",
 			"subclass": {
 				"Oracle|Mystery": [
 					"bones"
@@ -6539,16 +6117,13 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true
-				}
+				[
+					"S"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 living creature",
 			"savingThrow": {
@@ -6569,13 +6144,15 @@
 				}
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 1,
-					"entries": [
+				"plusX": {
+					"1": [
 						"Increase the damage by {@dice 1d4}."
 					]
 				}
-			}
+			},
+			"miscTags": [
+				"THP"
+			]
 		},
 		{
 			"name": "Spike Stones",
@@ -6586,27 +6163,26 @@
 				"conjuration",
 				"earth"
 			],
-			"school": "C",
 			"traditions": [
 				"primal"
+			],
+			"spellLists": [
+				"Elemental"
 			],
 			"cast": {
 				"number": 3,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true,
-					"V": true
-				}
+				[
+					"M",
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "60 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 60
-				}
+				"type": "feet",
+				"number": 60
 			},
 			"area": {
 				"types": [
@@ -6627,16 +6203,12 @@
 				"A creature that moves on the ground through the area takes 3 piercing damage for every square of that area it moves into."
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 1,
-					"entries": [
+				"plusX": {
+					"1": [
 						"Increase the damage by 1."
 					]
 				}
-			},
-			"spellLists": [
-				"Elemental"
-			]
+			}
 		},
 		{
 			"name": "Spirit Sense",
@@ -6648,7 +6220,6 @@
 				"divination",
 				"mental"
 			],
-			"school": "D",
 			"traditions": [
 				"divine",
 				"occult"
@@ -6658,10 +6229,10 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"area": {
 				"types": [
@@ -6681,7 +6252,7 @@
 				"You open your mind to the metaphysical, enabling you to sense nearby spirits. Even if you aren't {@action Search||Searching}, you get a check to find haunts and spirits in the area. You gain a +1 status bonus to the following checks regarding haunts or spirits: {@skill Perception} checks to {@action Seek}, attempts to {@action Recall Knowledge}, skill checks to determine the reason for their existence, and skill checks to disable a haunt. You also gain a +1 status bonus to AC and saving throws against haunts and spirits."
 			],
 			"heightened": {
-				"x": [
+				"X": [
 					{
 						"level": 6,
 						"entries": [
@@ -6697,26 +6268,25 @@
 			"page": 237,
 			"focus": true,
 			"level": 3,
-			"subclass": {
-				"Sorcerer|Bloodline": [
-					"Psychopomp"
-				]
-			},
 			"traits": [
 				"uncommon",
 				"illusion",
 				"sorcerer"
 			],
-			"school": "I",
+			"subclass": {
+				"Sorcerer|Bloodline": [
+					"Psychopomp"
+				]
+			},
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"duration": {
 				"type": "timed",
@@ -6730,9 +6300,8 @@
 				"You draw an occluding veil of spirits around yourself, blocking yourself especially well from undead eyes. You become {@condition concealed} to all creatures, and you are {@condition hidden} from undead creatures regardless of what precise senses they have; this grants the effects of invisibility, but against all the undead creature's precise senses. If you physically interact with an undead creature or use a {@condition hostile} action, the spell ends."
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 1,
-					"entries": [
+				"plusX": {
+					"1": [
 						"You can target one additional willing creature within 30 feet. The spell ends if any target physically interacts with an undead creature or uses a {@condition hostile} action."
 					]
 				}
@@ -6752,7 +6321,6 @@
 				"light",
 				"oracle"
 			],
-			"school": "V",
 			"subclass": {
 				"Oracle|Mystery": [
 					"cosmos"
@@ -6763,10 +6331,10 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"area": {
 				"types": [
@@ -6792,9 +6360,8 @@
 				}
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 1,
-					"entries": [
+				"plusX": {
+					"1": [
 						"Increase the damage by {@dice 1d4}."
 					]
 				}
@@ -6803,11 +6370,6 @@
 		{
 			"name": "Steal Shadow",
 			"source": "APG",
-			"subclass": {
-				"Sorcerer|Bloodline": [
-					"Shadow"
-				]
-			},
 			"page": 237,
 			"focus": true,
 			"level": 3,
@@ -6817,23 +6379,24 @@
 				"shadow",
 				"sorcerer"
 			],
-			"school": "N",
+			"subclass": {
+				"Sorcerer|Bloodline": [
+					"Shadow"
+				]
+			},
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "60 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 60
-				}
+				"type": "feet",
+				"number": 60
 			},
 			"targets": "1 creature",
 			"savingThrow": {
@@ -6857,15 +6420,14 @@
 					"entries": {
 						"Critical Success": "The target is unaffected.",
 						"Success": "The target is {@condition enfeebled 1} for 1 round.",
-						"Failure": "The target takes {@damage 3d4} negative damage and is {@condition enfeebled 1} for the spell's duration as you tear its shadow away, collecting it in your hand. On subsequent rounds, when you {@action Sustain a Spell||Sustain the Spell}, you can throttle the shadow to deal {@damage 3d4} negative damage to the target (basic Fortitude save). Until the spell ends, the target doesn't cast a shadow.",
+						"Failure": "The target takes {@damage 3d4} negative damage and is {@condition enfeebled 1} for the spell's duration as you tear its shadow away, collecting it in your hand. On subsequent rounds, the first time each round you {@action Sustain a Spell||Sustain the Spell}, you can throttle the shadow to deal {@damage 3d4} negative damage to the target (basic Fortitude save). Until the spell ends, the target doesn't cast a shadow.",
 						"Critical Failure": "As failure, but the target is {@condition enfeebled 2}."
 					}
 				}
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 1,
-					"entries": [
+				"plusX": {
+					"1": [
 						"The damage when the spell is cast and when it is sustained increases by {@dice 1d4}."
 					]
 				}
@@ -6885,7 +6447,6 @@
 				"hex",
 				"witch"
 			],
-			"school": "E",
 			"subclass": {
 				"Witch|Patron": [
 					"Fervor"
@@ -6896,16 +6457,13 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"V": true
-				}
+				[
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 creature",
 			"duration": {
@@ -6922,9 +6480,8 @@
 				"The target gains a +2 status bonus to damage rolls. Once this spell ends, the target becomes temporarily immune for 1 minute."
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 2,
-					"entries": [
+				"plusX": {
+					"2": [
 						"The status bonus to damage increases by 1."
 					]
 				}
@@ -6938,7 +6495,6 @@
 			"traits": [
 				"illusion"
 			],
-			"school": "I",
 			"traditions": [
 				"occult"
 			],
@@ -6947,18 +6503,15 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true,
-					"V": true
-				}
+				[
+					"M",
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "60 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 60
-				}
+				"type": "feet",
+				"number": 60
 			},
 			"area": {
 				"types": [
@@ -6999,7 +6552,6 @@
 				"necromancy",
 				"negative"
 			],
-			"school": "N",
 			"traditions": [
 				"divine",
 				"primal"
@@ -7009,17 +6561,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "120 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 120
-				}
+				"type": "feet",
+				"number": 120
 			},
 			"area": {
 				"types": [
@@ -7038,9 +6587,8 @@
 				"You can also direct the blight to rot all Small and Tiny non-creature plants in the area, eliminating non-magical undergrowth and any resulting {@quickref difficult terrain||3|terrain}, cover, and concealment. Sudden blight attempts to counteract any {@trait magical} effect on the plants before withering them."
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 1,
-					"entries": [
+				"plusX": {
+					"1": [
 						"The damage increases by {@dice 1d10}."
 					]
 				}
@@ -7055,7 +6603,6 @@
 				"cantrip",
 				"conjuration"
 			],
-			"school": "C",
 			"traditions": [
 				"divine",
 				"occult"
@@ -7065,11 +6612,11 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true,
-					"V": true
-				}
+				[
+					"M",
+					"S",
+					"V"
+				]
 			],
 			"duration": {
 				"type": "timed",
@@ -7084,7 +6631,7 @@
 				"The instrument is typical for its type, but it plays only for you. The instrument vanishes when the spell ends. If you cast {@spell summon instrument|APG} again, any instrument you previously summoned disappears."
 			],
 			"heightened": {
-				"x": [
+				"X": [
 					{
 						"level": 5,
 						"entries": [
@@ -7106,23 +6653,19 @@
 				"bard",
 				"composition"
 			],
-			"school": "A",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "you or 1 ally",
 			"entries": [
@@ -7130,7 +6673,7 @@
 				"Attempt a {@skill Performance} check to counteract one of the following conditions affecting the target: {@condition grabbed}, {@condition immobilized}, {@condition paralyzed}, {@condition restrained}, {@condition slowed}, or {@condition stunned}. If you fail, you can't target that effect on the target for 1 day. Use the condition's source to determine the counteract DC (for example, the {@action Escape} DC for {@condition grabbed})."
 			],
 			"heightened": {
-				"x": [
+				"X": [
 					{
 						"level": 9,
 						"entries": [
@@ -7153,7 +6696,6 @@
 				"polymorph",
 				"transmutation"
 			],
-			"school": "T",
 			"subclass": {
 				"Oracle|Mystery": [
 					"tempest"
@@ -7164,10 +6706,10 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"duration": {
 				"type": "timed",
@@ -7182,7 +6724,7 @@
 				"Your body becomes fluid to better suit your surroundings.",
 				"When you {@action Cast a Spell||Cast this Spell}, choose whether to become air, water, or mist. The spell gains the {@trait air} trait if you choose air or mist, and the {@trait water} trait if you choose water or mist. You become amorphous, as does your armor. You lose any item bonus to AC and use your proficiency bonus for unarmored defense to determine your AC. You also gain resistance 10 to physical damage and become immune to precision damage.",
 				"You can slip through tiny cracks and don't need to breathe.",
-				"You can't cast spells, activate items, or use actions that have the {@trait attack} or {@trait manipulate} trait. You also gain the following effects based on your form.",
+				"You can't cast spells, activate items, or use actions that have the {@trait attack} or {@trait manipulate} trait, except those granted by this spell. You also gain the following effects based on your form.",
 				{
 					"type": "list",
 					"items": [
@@ -7193,9 +6735,8 @@
 				}
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 2,
-					"entries": [
+				"plusX": {
+					"2": [
 						"Increase the resistance by 5 and the electricity damage from the charged water form by 1."
 					]
 				}
@@ -7215,7 +6756,6 @@
 				"oracle",
 				"water"
 			],
-			"school": "V",
 			"subclass": {
 				"Oracle|Mystery": [
 					"tempest"
@@ -7226,16 +6766,13 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true
-				}
+				[
+					"S"
+				]
 			],
 			"range": {
-				"entry": "touch",
-				"distance": {
-					"type": "touch",
-					"amount": 1
-				}
+				"type": "touch",
+				"number": 1
 			},
 			"targets": "1 creature",
 			"savingThrow": {
@@ -7256,9 +6793,8 @@
 				}
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 1,
-					"entries": [
+				"plusX": {
+					"1": [
 						"The bludgeoning and cold damage each increase by {@dice 1d4}. Spells 5"
 					]
 				}
@@ -7276,23 +6812,19 @@
 				"ranger",
 				"teleportation"
 			],
-			"school": "C",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "90 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 90
-				}
+				"type": "feet",
+				"number": 90
 			},
 			"entries": [
 				"You mystically transpose your current location with another.",
@@ -7309,7 +6841,6 @@
 				"conjuration",
 				"teleportation"
 			],
-			"school": "C",
 			"traditions": [
 				"arcane",
 				"divine",
@@ -7320,16 +6851,13 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true
-				}
+				[
+					"S"
+				]
 			],
 			"range": {
-				"entry": "120 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 120
-				}
+				"type": "feet",
+				"number": 120
 			},
 			"targets": "1 willing creature",
 			"entries": [
@@ -7337,7 +6865,7 @@
 				"If the target is {@condition unconscious} or refuses to accept your gift, or if the spell would teleport a creature (even if the creature is inside an extradimensional container), the spell fails."
 			],
 			"heightened": {
-				"x": [
+				"X": [
 					{
 						"level": 3,
 						"entries": [
@@ -7362,7 +6890,6 @@
 				"polymorph",
 				"transmutation"
 			],
-			"school": "T",
 			"traditions": [
 				"occult",
 				"primal"
@@ -7373,11 +6900,11 @@
 				"entry": "1 minute"
 			},
 			"components": [
-				{
-					"S": true,
-					"M": true,
-					"V": true
-				}
+				[
+					"S",
+					"M",
+					"V"
+				]
 			],
 			"duration": {
 				"type": "timed",
@@ -7407,7 +6934,6 @@
 				"oracle",
 				"sonic"
 			],
-			"school": "V",
 			"subclass": {
 				"Oracle|Mystery": [
 					"tempest"
@@ -7418,17 +6944,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "100 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 100
-				}
+				"type": "feet",
+				"number": 100
 			},
 			"area": {
 				"types": [
@@ -7455,9 +6978,8 @@
 				}
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 2,
-					"entries": [
+				"plusX": {
+					"2": [
 						"Increase each type of damage by {@dice 2d6} and the area by 5 feet."
 					]
 				}
@@ -7475,22 +6997,18 @@
 				"necromancy",
 				"negative"
 			],
-			"school": "N",
 			"cast": {
 				"number": 1,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true
-				}
+				[
+					"S"
+				]
 			],
 			"range": {
-				"entry": "touch",
-				"distance": {
-					"type": "touch",
-					"amount": 1
-				}
+				"type": "touch",
+				"number": 1
 			},
 			"targets": "1 willing undead creature or 1 living creature",
 			"entries": [
@@ -7498,9 +7016,8 @@
 				"If the target is a willing undead creature, the target instead regains 6 Hit Points, and if you are the undead target, you also gain a +2 status bonus to damage rolls for 1 round."
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 1,
-					"entries": [
+				"plusX": {
+					"1": [
 						"Increase the damage dealt to a living creature by {@dice 1d6} or increase the Hit Points regained by undead by 6."
 					]
 				}
@@ -7515,28 +7032,27 @@
 				"earth",
 				"transmutation"
 			],
-			"school": "T",
 			"traditions": [
 				"arcane",
 				"primal"
+			],
+			"spellLists": [
+				"Elemental"
 			],
 			"cast": {
 				"number": 3,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true,
-					"V": true
-				}
+				[
+					"M",
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "60 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 60
-				}
+				"type": "feet",
+				"number": 60
 			},
 			"area": {
 				"types": [
@@ -7565,30 +7081,22 @@
 				}
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 2,
-					"entries": [
+				"plusX": {
+					"2": [
 						"Add an additional 10-foot cube to the area, adjacent to at least one of the other cubes."
 					]
 				}
-			},
-			"spellLists": [
-				"Elemental"
-			]
+			}
 		},
 		{
 			"name": "Vampiric Maiden",
 			"source": "APG",
 			"page": 227,
-			"miscTags": [
-				"THP"
-			],
 			"level": 4,
 			"traits": [
 				"necromancy",
 				"negative"
 			],
-			"school": "N",
 			"traditions": [
 				"arcane",
 				"divine",
@@ -7599,17 +7107,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 creature",
 			"savingThrow": {
@@ -7630,13 +7135,15 @@
 				}
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 1,
-					"entries": [
+				"plusX": {
+					"1": [
 						"The piercing and negative damage increase by {@dice 1d4} each."
 					]
 				}
-			}
+			},
+			"miscTags": [
+				"THP"
+			]
 		},
 		{
 			"name": "Veil Of Dreams",
@@ -7651,22 +7158,18 @@
 				"mental",
 				"witch"
 			],
-			"school": "E",
 			"cast": {
 				"number": 1,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true
-				}
+				[
+					"S"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 creature",
 			"savingThrow": {
@@ -7707,15 +7210,14 @@
 				"divination",
 				"oracle"
 			],
-			"school": "D",
 			"cast": {
 				"number": 1,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true
-				}
+				[
+					"S"
+				]
 			],
 			"targets": "1 creature",
 			"entries": [
@@ -7730,7 +7232,6 @@
 			"traits": [
 				"evocation"
 			],
-			"school": "V",
 			"traditions": [
 				"arcane",
 				"occult",
@@ -7741,10 +7242,10 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"area": {
 				"types": [
@@ -7762,9 +7263,8 @@
 				"You belch forth a swarm of magical vermin. You evoke and shape the creatures from your own imagination, allowing you to change the appearance of the creatures (typically a mix of centipedes, roaches, wasps, and worms), but this doesn't change the effect of the spell. The vermin swarm over anyone in the area, their bites and stings dealing {@damage 2d8} piercing damage (basic Reflex save). A creature that fails its saving throw also becomes {@condition sickened 1}. Once the spell ends, the swarm disappears."
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 1,
-					"entries": [
+				"plusX": {
+					"1": [
 						"Increase the damage by {@dice 1d8}."
 					]
 				}
@@ -7778,7 +7278,6 @@
 			"traits": [
 				"necromancy"
 			],
-			"school": "N",
 			"traditions": [
 				"divine",
 				"occult",
@@ -7789,17 +7288,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true
-				}
+				[
+					"M",
+					"S"
+				]
 			],
 			"range": {
-				"entry": "20 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 20
-				}
+				"type": "feet",
+				"number": 20
 			},
 			"duration": {
 				"type": "timed",
@@ -7843,7 +7339,6 @@
 				"fire",
 				"oracle"
 			],
-			"school": "V",
 			"subclass": {
 				"Oracle|Mystery": [
 					"flames"
@@ -7854,17 +7349,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"area": {
 				"types": [
@@ -7882,9 +7374,8 @@
 				"You call forth a storm of whirling flames, engulfing all creatures in that area and dealing {@damage 5d6} fire damage with a basic Reflex save."
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 2,
-					"entries": [
+				"plusX": {
+					"2": [
 						"The damage increases by {@dice 3d6}, and you can add another nonoverlapping 5-foot burst to the area. Ranger"
 					]
 				}
@@ -7903,7 +7394,6 @@
 				"hex",
 				"witch"
 			],
-			"school": "E",
 			"subclass": {
 				"Witch|Patron": [
 					"Wild"
@@ -7914,16 +7404,13 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"V": true
-				}
+				[
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"targets": "1 animal, fungus, or plant",
 			"savingThrow": {
@@ -7959,33 +7446,29 @@
 			"page": 237,
 			"focus": true,
 			"level": 5,
-			"subclass": {
-				"Sorcerer|Bloodline": [
-					"Genie"
-				]
-			},
 			"traits": [
 				"uncommon",
 				"sorcerer",
 				"transmutation"
 			],
-			"school": "T",
+			"subclass": {
+				"Sorcerer|Bloodline": [
+					"Genie"
+				]
+			},
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "60 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 60
-				}
+				"type": "feet",
+				"number": 60
 			},
 			"targets": "1 creature",
 			"savingThrow": {
@@ -8024,9 +7507,8 @@
 				}
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 1,
-					"entries": [
+				"plusX": {
+					"1": [
 						"Increase the weakness and the reduction to resistances by 1."
 					]
 				}

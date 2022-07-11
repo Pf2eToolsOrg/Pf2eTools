@@ -162,11 +162,6 @@
 			"source": "APG",
 			"page": 202,
 			"level": 1,
-			"featType": {
-				"skill": [
-					"Acrobatics"
-				]
-			},
 			"traits": [
 				"general",
 				"skill"
@@ -912,8 +907,7 @@
 				]
 			},
 			"traits": [
-				"archetype",
-				"skill"
+				"archetype"
 			],
 			"prerequisites": "{@feat Sentinel Dedication|APG}",
 			"entries": [
@@ -1645,7 +1639,8 @@
 				"archetype",
 				"auditory",
 				"concentrate",
-				"primal"
+				"primal",
+				"conjuration"
 			],
 			"prerequisites": "{@feat Beastmaster Dedication|APG}, Call Companion",
 			"frequency": {
@@ -1937,11 +1932,11 @@
 			"name": "Blind-fight",
 			"source": "APG",
 			"page": 63,
+			"add_hash": "Investigator",
 			"level": 8,
 			"traits": [
 				"investigator"
 			],
-			"add_hash": "Investigator",
 			"prerequisites": "master in {@skill Perception}",
 			"entries": [
 				"Your battle insights make you more aware of {@condition concealed} and {@condition invisible} opponents. You don't need to succeed at a flat check to target {@condition concealed} creatures. You're not {@condition flat-footed} to creatures that are {@condition hidden} from you (unless you're {@condition flat-footed} to them for reasons other than the {@condition hidden} condition), and you need only a successful DC {@flatDC 5} flat check to target a {@condition hidden} creature.",
@@ -2067,6 +2062,7 @@
 			"page": 38,
 			"level": 17,
 			"traits": [
+				"uncommon",
 				"duskwalker"
 			],
 			"entries": [
@@ -3417,9 +3413,6 @@
 			"entries": [
 				"You have dealings with a variety of unsavory characters, which you can leverage to trade favors or meet powerful people. When you're in an area where you have connections (typically a settlement where you've spent downtime building connections or possibly another area in the same nation), you can attempt a {@skill Society} check to arrange a meeting with an important criminal, such as a thieves' guild leader, or ask for a favor in exchange for a later favor of your contact's choice.",
 				"The GM decides the DC based on the difficulty of the favor and the figure's prominence."
-			],
-			"leadsTo": [
-				"Quick Contacts|APG"
 			]
 		},
 		{
@@ -4476,20 +4469,29 @@
 				"archetype",
 				"dedication"
 			],
+			"otherSources": {
+				"Expanded": [
+					"LOME|76"
+				]
+			},
 			"access": "You are a {@ancestry kobold|APG} with the {@ancestry kobold|APG|dragonscaled|Dragonscaled Kobold|APG} or {@ancestry kobold|APG|spellscaled|Spellscale Kobold|APG} heritage, a {@class Barbarian|CRB|dragon instinct barbarian|Dragon}, or a {@class Sorcerer|CRB|draconic bloodline sorcerer|draconic}.",
 			"entries": [
-				"You choose to study or worship one type of dragon, and your focus grants you a measure of its power. Choose one color of dragon when you select this feat; if you are a sorcerer with the draconic bloodline, this must be the same type as your bloodline. You gain resistance equal to half your level against one type of damage determined by the chosen dragon type.",
-				"The GM may allow you to choose a dragon type not listed below, and will determine the damage type appropriate for that dragon.",
+				"You choose to study or worship one type of dragon, and your focus grants you a measure of its power. You become trained in arcane spell DCs and arcane spell attack rolls. Choose one color of dragon when you select this feat; if you are a {@class sorcerer} with the {@class Sorcerer|CRB|draconic|draconic} bloodline, this must be the same type as your bloodline. You gain resistance equal to half your level against one type of damage determined by the chosen dragon type. The GM may allow you to choose a dragon type not listed below, and will determine the damage type appropriate for that dragon.",
 				{
 					"type": "list",
 					"items": [
-						"{@bold Black or Copper} Acid",
-						"{@bold Blue or Bronze} Electricity",
-						"{@bold Brass, Gold, or Red} Fire",
-						"{@bold Green} Poison",
-						"{@bold Silver or White} Cold"
+						"{@b Black, Brine{@sup 1}, or Copper} Acid",
+						"{@b Blue, Bronze, Cloud{@sup 1}, or Sky{@sup 1}} Electricity",
+						"{@b Brass, Gold, Magma{@sup 1}, Red, or Underworld{@sup 1}} Fire",
+						"{@b Crystal{@sup 1} or Forest{@sup 1}} Piercing",
+						"{@b Green} Poison",
+						"{@b Sea{@sup 1}} Bludgeoning",
+						"{@b Silver or White} Cold",
+						"{@b Sovereign{@sup 1}} Mental",
+						"{@b Umbral{@sup 1}} Negative"
 					]
 				},
+				"{@note {@sup 1}Mwangi Expanse, p.76}",
 				"You also gain a +1 circumstance bonus to saving throws against {@trait sleep} effects and effects that would make you {@condition paralyzed}."
 			],
 			"special": "You can't select another dedication feat until you have gained two other feats from the dragon disciple archetype. If you later take the {@archetype sorcerer|crb|sorcerer archetype}, you must choose the {@class Sorcerer|CRB|draconic bloodline|draconic}.",
@@ -4502,7 +4504,11 @@
 				"Scales Of The Dragon|APG",
 				"Shape Of The Dragon|APG",
 				"Mighty Dragon Shape|APG",
-				"Wings Of The Dragon|APG"
+				"Wings Of The Dragon|APG",
+				"Cloud Walk|SoT3",
+				"Deflecting Cloud|SoT3",
+				"Mighty Wings|SoT3",
+				"Shape of the Cloud Dragon|SoT3"
 			]
 		},
 		{
@@ -5074,7 +5080,6 @@
 			"entries": [
 				"You blend magic with your archery, leading to powerful results.",
 				"If you don't already cast spells from spell slots, you learn to cast spontaneous spells and gain the {@action Cast a Spell} activity. You gain a spell repertoire with one cantrip of your choice, from a spell list of your choice. You choose this cantrip from the common spells on your chosen spell list or from other spells to which you have access on that list. This cantrip must require a spell attack roll. You're trained in spell attack rolls and spell DCs for that tradition. Your key spellcasting ability for these spells is Charisma.",
-				"If you already cast spells from spell slots, you learn one additional cantrip from that tradition. If you're a prepared caster, you can prepare this spell in addition to your usual cantrips per day; if you're a spontaneous caster, you add this cantrip to your spell repertoire.",
 				"You also gain Eldritch Shot.",
 				{
 					"type": "ability",
@@ -7556,6 +7561,7 @@
 			"page": 44,
 			"level": 17,
 			"traits": [
+				"uncommon",
 				"gnome"
 			],
 			"frequency": {
@@ -8351,7 +8357,7 @@
 			],
 			"trigger": "Your prey is within reach and attempts to move away from you.",
 			"entries": [
-				"Your prey can't {@action Escape}. {@action Stride} up to your Speed, following the foe and keeping it in reach throughout its movement until it stops moving or you've moved your full Speed. You can use Keep Pace to {@action Burrow}, {@action Climb}, {@action Fly}, or {@action Swim} instead of {@action Stride} if you have the corresponding movement type."
+				"Your prey can't escape. {@action Stride} up to your Speed, following the foe and keeping it in reach throughout its movement until it stops moving or you've moved your full Speed. You can use Keep Pace to {@action Burrow}, {@action Climb}, {@action Fly}, or {@action Swim} instead of {@action Stride} if you have the corresponding movement type."
 			]
 		},
 		{
@@ -8402,7 +8408,7 @@
 			],
 			"entries": [
 				"You deliver a punishing blow to an enemy's knee, shin, or other vulnerable anatomy within your reach. Make a {@action Strike} with one of your melee weapons or melee unarmed attacks.",
-				"This attack doesn't deal damage. On a hit, the target takes a \u201310-foot status penalty to its Speed or a \u201315-foot status penalty on a critical hit. This penalty applies only if the target has a land Speed and depends on legs or other targetable appendages to use its land Speed. As with all penalties to Speed, this can't reduce a creature's Speed below 5 feet."
+				"This attack doesn't deal damage. On a hit, the target takes a \u201310-foot status penalty to its Speed or a \u201315-foot status penalty on a critical hit. The penalty lasts for 1 round. This penalty applies only if the target has a land Speed and depends on legs or other targetable appendages to use its land Speed. As with all penalties to Speed, this can't reduce a creature's Speed below 5 feet."
 			]
 		},
 		{
@@ -8661,6 +8667,19 @@
 						"Critical Failure": "You deal {@damage 18d6} precision damage."
 					}
 				}
+			]
+		},
+		{
+			"name": "Lie Detector",
+			"source": "APG",
+			"page": 62,
+			"level": 4,
+			"traits": [
+				"investigator"
+			],
+			"prerequisites": "{@class Investigator|APG|empiricism|empiricism} or {@class Investigator|APG|interrogation|interrogation} methodology",
+			"entries": [
+				"You're adept at noticing the tells of a liar\u2014sweat, flushing, a quavering voice, a quickening pulse. You gain a +1 circumstance bonus to {@skill Perception} checks to {@action Sense Motive} and to {@skill Perception} DCs against attempts to {@action Lie} to you. When you determine someone is lying to you, you can use their deceit to your advantage to gain a +1 circumstance bonus to the next {@skill Deception}, {@skill Diplomacy}, {@skill Intimidation}, or {@skill Performance} check you attempt against that creature within the next minute."
 			]
 		},
 		{
@@ -9490,7 +9509,7 @@
 			"traits": [
 				"archetype"
 			],
-			"prerequisites": "{@feat Shape of the Dragon|APG}",
+			"prerequisites": "{@feat Shape of the Dragon|APG} {@note (or {@feat Shape of the Cloud Dragon|SoT3})}",
 			"entries": [
 				"You've practiced and increased your draconic might, allowing you to take your draconic form more often. You can use {@feat Shape of the Dragon|APG} once per hour instead of once per day."
 			]
@@ -9852,11 +9871,6 @@
 				"unit": "action"
 			},
 			"level": 1,
-			"featType": {
-				"skill": [
-					"Diplomacy"
-				]
-			},
 			"traits": [
 				"auditory",
 				"concentrate",
@@ -11317,7 +11331,7 @@
 				"general",
 				"skill"
 			],
-			"prerequisites": "expert in {@skill Society}; {@feat Connections} or {@feat Criminal Connections|APG|Underworld Connections}",
+			"prerequisites": "expert in {@skill Society}; {@feat Connections} or {@feat Underworld Connections|APG}",
 			"entries": [
 				"You know where to go, who to talk to, and how to make new connections, fast. Upon entering a new settlement, spending 1 day of downtime allows you to build enough connections to make use of the {@feat Connections} or {@feat Criminal Connections|APG|Underworld Connections} feats. If you're legendary in {@skill Society}, you can form the required connections within 1 hour of entering a new settlement."
 			]
@@ -11451,7 +11465,7 @@
 				"freq": 1
 			},
 			"entries": [
-				"If your next action is to cast an oracle cantrip or an oracle spell that is at least 2 levels lower than the highest-level oracle spell you can cast, reduce the number of actions to cast it by 1 (minimum 1 action)."
+				"If your next action is to cast an oracle cantrip or an oracle spell that is at least 2 levels lower than the highest-level oracle spell slot you can cast, reduce the number of actions to cast it by 1 (minimum 1 action)."
 			]
 		},
 		{
@@ -11474,7 +11488,7 @@
 				"freq": 1
 			},
 			"entries": [
-				"If your next action is to cast a witch cantrip or a witch spell that is at least 2 levels lower than the highest-level witch spell you can cast, reduce the number of actions to cast it by 1 (minimum 1 action)."
+				"If your next action is to cast a witch cantrip or a witch spell that is at least 2 levels lower than the highest-level witch spell slot you can cast, reduce the number of actions to cast it by 1 (minimum 1 action)."
 			]
 		},
 		{
@@ -12430,19 +12444,6 @@
 			]
 		},
 		{
-			"name": "Lie Detector",
-			"source": "APG",
-			"page": 62,
-			"level": 4,
-			"traits": [
-				"investigator"
-			],
-			"prerequisites": "{@class Investigator|APG|empiricism|empiricism} or {@class Investigator|APG|interrogation|interrogation} methodology",
-			"entries": [
-				"You're adept at noticing the tells of a liar\u2014sweat, flushing, a quavering voice, a quickening pulse. You gain a +1 circumstance bonus to {@skill Perception} checks to {@action Sense Motive} and to {@skill Perception} DCs against attempts to {@action Lie} to you. When you determine someone is lying to you, you can use their deceit to your advantage to gain a +1 circumstance bonus to the next {@skill Deception}, {@skill Diplomacy}, {@skill Intimidation}, or {@skill Performance} check you attempt against that creature within the next minute."
-			]
-		},
-		{
 			"name": "Scales Of The Dragon",
 			"source": "APG",
 			"page": 169,
@@ -12457,7 +12458,7 @@
 			],
 			"prerequisites": "{@feat Dragon Disciple Dedication|APG}",
 			"entries": [
-				"Scales grow across your body, protecting you against physical and magical threats. When you're unarmored, the scales give you a +2 status bonus to AC with a Dexterity cap of +2. Your resistance from Dragon Disciple Dedication increases to 3 + half your level."
+				"Scales grow across your body, protecting you against physical and magical threats. When you're unarmored, the scales give you a +2 item bonus to AC with a Dexterity cap of +3. The item bonus to AC from Scales of the Dragon is cumulative with armor potency runes on your explorer's clothing, mage armor, and bracers of armor. Your resistance from Dragon Disciple Dedication increases to 3 + half your level."
 			]
 		},
 		{
@@ -13388,7 +13389,7 @@
 			},
 			"requirements": "You haven't acted yet on your turn.",
 			"entries": [
-				"You draw upon the reservoir of your patron's magic that resides within your familiar. During your turn, you can cast one spell your familiar knows that was granted by your patron's theme or lessons without spending a spell slot to do so (or even having it prepared). The spell must be at least 1 level lower than the highest-level spell you can cast."
+				"You draw upon the reservoir of your patron's magic that resides within your familiar. During your turn, you can cast one spell your familiar knows that was granted by your patron's theme or lessons without spending a spell slot to do so (or even having it prepared). The spell must be at least 1 level lower than the highest-level spell slot you can cast."
 			],
 			"special": "This feat has the trait corresponding to the tradition of spells you cast (arcane, divine, occult, or primal)."
 		},
@@ -13414,6 +13415,7 @@
 		{
 			"name": "Skillful Tail",
 			"source": "APG",
+			"add_hash": "Tiefling",
 			"page": 40,
 			"level": 5,
 			"traits": [
@@ -13988,7 +13990,7 @@
 				"wizard"
 			],
 			"entries": [
-				"You can prepare two spells in one slot, giving you the freedom to choose the spell when you cast it. When you prepare your spells for the day, you can choose one spell slot at least 1 level lower than the highest-level spell you can cast and prepare two spells in that slot. When you {@action Cast a Spell} from that slot, choose which spell to cast. Once you've chosen, the unused spell dissipates as though you hadn't prepared it at all\u2014for example, it isn't available for use with {@action Drain Bonded Item}."
+				"You can prepare two spells in one slot, giving you the freedom to choose the spell when you cast it. When you prepare your spells for the day, you can choose one spell slot at least 1 level lower than the highest-level spell slot you can cast and prepare two spells in that slot. When you {@action Cast a Spell} from that slot, choose which spell to cast. Once you've chosen, the unused spell dissipates as though you hadn't prepared it at all\u2014for example, it isn't available for use with {@action Drain Bonded Item}."
 			]
 		},
 		{
@@ -14251,6 +14253,7 @@
 			"page": 42,
 			"level": 17,
 			"traits": [
+				"uncommon",
 				"dwarf"
 			],
 			"prerequisites": "{@feat Stonewalker}",
@@ -14534,7 +14537,7 @@
 			],
 			"prerequisites": "superstition instinct",
 			"entries": [
-				"You draw upon your superstitious fury to destroy a spell. Make a {@action Strike} with a melee weapon or an unarmed attack against a creature, object, or a spell manifestation (such as the wall created by wall of fire or the guardian from spiritual guardian)",
+				"You draw upon your superstitious fury to destroy a spell. Make a {@action Strike} with a melee weapon or an unarmed attack against a creature, object, or a spell manifestation (such as the wall created by {@spell wall of fire} or the guardian from {@spell spiritual guardian}). If you're targeting something that doesn't have an AC listed, its AC is usually 10 against this Strike for targets that are very easy to hit, like a wall, or a different AC determined by the GM.",
 				"If your {@action Strike} hits, you can attempt to {@quickref counteract|CRB|3|counteracting} a single spell or {@trait magical} effect on the target. Your counteract level for this attempt is equal to half your level rounded up, and you use the result of your attack roll for the counteract check.",
 				"Whether or not you succeed at your {@action Strike}, the target becomes temporarily immune to your Sunder Spell for 24 hours."
 			],
@@ -16444,7 +16447,7 @@
 			},
 			"level": 1,
 			"traits": [
-				"concentrate",
+				"manipulate",
 				"metamagic",
 				"witch"
 			],

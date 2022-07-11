@@ -1,46 +1,6 @@
 {
 	"item": [
 		{
-			"name": "Round",
-			"source": "G&G",
-			"page": 150,
-			"type": "Equipment",
-			"price": {
-				"coin": "sp",
-				"amount": 1,
-				"note": "(price for 5)"
-			},
-			"traits": [
-				"alchemical"
-			],
-			"bulk": "L",
-			"add_hash": "5",
-			"category": "Ammunition",
-			"entries": [
-				"Firearms require ammunition consisting of a projectile and black powder. A round of ammo can vary in its composition but is typically either a prepackaged paper cartridge, including wadding, bullet, and black powder, or loose shot packed in manually. Some weapons, like hand cannons and blunderbusses, can fire other materials, but their ammunition has the same Price due to the cost of the black powder. Because making rounds of firearm ammunition requires creating black powder, you need the {@feat Alchemical Crafting} skill feat to make them. Firearm rounds are a valid option for magical ammunition, just like {@item arrow||arrows} or {@item bolt||bolts}. Crafting magical firearm ammunition requires you to be able to craft both alchemical and magical items."
-			]
-		},
-		{
-			"name": "Round",
-			"source": "G&G",
-			"page": 150,
-			"type": "Equipment",
-			"traits": [
-				"alchemical"
-			],
-			"price": {
-				"coin": "sp",
-				"amount": 1,
-				"note": "(price for 10)"
-			},
-			"bulk": "L",
-			"add_hash": "10",
-			"category": "Ammunition",
-			"entries": [
-				"Firearms require ammunition consisting of a projectile and black powder. A round of ammo can vary in its composition but is typically either a prepackaged paper cartridge, including wadding, bullet, and black powder, or loose shot packed in manually. Some weapons, like hand cannons and blunderbusses, can fire other materials, but their ammunition has the same Price due to the cost of the black powder. Because making rounds of firearm ammunition requires creating black powder, you need the {@feat Alchemical Crafting} skill feat to make them. Firearm rounds are a valid option for magical ammunition, just like {@item arrow||arrows} or {@item bolt||bolts}. Crafting magical firearm ammunition requires you to be able to craft both alchemical and magical items."
-			]
-		},
-		{
 			"name": "Ablative Armor Plating",
 			"source": "G&G",
 			"page": 66,
@@ -61,7 +21,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "lesser",
+					"variantType": "lesser",
 					"level": 1,
 					"price": {
 						"coin": "gp",
@@ -77,7 +37,7 @@
 					}
 				},
 				{
-					"type": "moderate",
+					"variantType": "moderate",
 					"level": 3,
 					"price": {
 						"coin": "gp",
@@ -93,7 +53,7 @@
 					}
 				},
 				{
-					"type": "greater",
+					"variantType": "greater",
 					"level": 7,
 					"price": {
 						"coin": "gp",
@@ -109,7 +69,7 @@
 					}
 				},
 				{
-					"type": "major",
+					"variantType": "major",
 					"level": 13,
 					"price": {
 						"coin": "gp",
@@ -125,7 +85,7 @@
 					}
 				},
 				{
-					"type": "true",
+					"variantType": "true",
 					"level": 19,
 					"price": {
 						"coin": "gp",
@@ -170,7 +130,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "lesser",
+					"variantType": "lesser",
 					"level": 1,
 					"price": {
 						"coin": "gp",
@@ -186,7 +146,7 @@
 					}
 				},
 				{
-					"type": "moderate",
+					"variantType": "moderate",
 					"level": 3,
 					"price": {
 						"coin": "gp",
@@ -202,7 +162,7 @@
 					}
 				},
 				{
-					"type": "greater",
+					"variantType": "greater",
 					"level": 7,
 					"price": {
 						"coin": "gp",
@@ -218,7 +178,7 @@
 					}
 				},
 				{
-					"type": "major",
+					"variantType": "major",
 					"level": 13,
 					"price": {
 						"coin": "gp",
@@ -234,7 +194,7 @@
 					}
 				},
 				{
-					"type": "true",
+					"variantType": "true",
 					"level": 19,
 					"price": {
 						"coin": "gp",
@@ -396,53 +356,6 @@
 				"amount": 6000
 			},
 			"usage": "mounted (black powder)",
-			"siegeWeaponData": {
-				"crew": {
-					"min": 3,
-					"max": 5
-				},
-				"defenses": {
-					"ac": {
-						"default": 29
-					},
-					"savingThrows": {
-						"fort": 23,
-						"ref": 16
-					},
-					"hardness": {
-						"default": 15
-					},
-					"hp": {
-						"default": 200
-					},
-					"bt": {
-						"default": 100
-					},
-					"immunities": [
-						"object immunities"
-					]
-				},
-				"speed": {
-					"speed": 10,
-					"note": "pulled or pushed"
-				},
-				"space": {
-					"high": {
-						"number": 15,
-						"unit": "feet"
-					},
-					"long": {
-						"number": 15,
-						"unit": "feet"
-					},
-					"wide": {
-						"number": 12,
-						"unit": "feet"
-					}
-				},
-				"ammunition": "bomb arrows (100 gp, 2 Bulk)",
-				"proficiency": "Martial"
-			},
 			"category": "Siege Weapon",
 			"entries": [
 				"Like the standard springald, an alchemical springald can launch three arrows simultaneously when its paddle is released. It fires specially crafted and balanced bomb arrows that carry black powder enhanced alchemical payloads that explode on impact.",
@@ -489,34 +402,19 @@
 						"{@dice 10d6} damage and 3 splash damage, three different targets within a 15-foot burst, DC 30 Reflex. The damage type depends on the alchemical ammunition used: acid, cold, electricity, or fire. Creatures take the splash damage only once from the launch, even if they're in the area of more than one of the three splashes."
 					]
 				}
-			]
-		},
-		{
-			"name": "Alkenstar Cannon",
-			"source": "G&G",
-			"page": 176,
-			"type": "Item",
-			"level": 15,
-			"traits": [
-				"rare",
-				"huge"
 			],
-			"price": {
-				"coin": "gp",
-				"amount": 12000
-			},
 			"siegeWeaponData": {
 				"crew": {
-					"min": 4,
-					"max": 6
+					"min": 3,
+					"max": 5
 				},
 				"defenses": {
 					"ac": {
-						"default": 32
+						"default": 29
 					},
 					"savingThrows": {
-						"fort": 26,
-						"ref": 18
+						"fort": 23,
+						"ref": 16
 					},
 					"hardness": {
 						"default": 15
@@ -537,20 +435,35 @@
 				},
 				"space": {
 					"high": {
-						"number": 8,
+						"number": 15,
 						"unit": "feet"
 					},
 					"long": {
-						"number": 18,
+						"number": 15,
 						"unit": "feet"
 					},
 					"wide": {
-						"number": 7,
+						"number": 12,
 						"unit": "feet"
 					}
 				},
-				"proficiency": "Martial",
-				"ammunition": "scattershot barrels (25 gp, 5 Bulk)"
+				"ammunition": "bomb arrows (100 gp, 2 Bulk)",
+				"proficiency": "Martial"
+			}
+		},
+		{
+			"name": "Alkenstar Cannon",
+			"source": "G&G",
+			"page": 176,
+			"type": "Item",
+			"level": 15,
+			"traits": [
+				"rare",
+				"huge"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 12000
 			},
 			"usage": "mounted (black powder)",
 			"category": "Siege Weapon",
@@ -599,7 +512,54 @@
 						"{@dice 10d12} bludgeoning, 50-foot burst, DC 33 Reflex"
 					]
 				}
-			]
+			],
+			"siegeWeaponData": {
+				"crew": {
+					"min": 4,
+					"max": 6
+				},
+				"defenses": {
+					"ac": {
+						"default": 32
+					},
+					"savingThrows": {
+						"fort": 26,
+						"ref": 18
+					},
+					"hardness": {
+						"default": 15
+					},
+					"hp": {
+						"default": 200
+					},
+					"bt": {
+						"default": 100
+					},
+					"immunities": [
+						"object immunities"
+					]
+				},
+				"speed": {
+					"speed": 10,
+					"note": "pulled or pushed"
+				},
+				"space": {
+					"high": {
+						"number": 8,
+						"unit": "feet"
+					},
+					"long": {
+						"number": 18,
+						"unit": "feet"
+					},
+					"wide": {
+						"number": 7,
+						"unit": "feet"
+					}
+				},
+				"proficiency": "Martial",
+				"ammunition": "scattershot barrels (25 gp, 5 Bulk)"
+			}
 		},
 		{
 			"name": "Animate Dreamer",
@@ -951,53 +911,6 @@
 				"coin": "gp",
 				"amount": 320
 			},
-			"siegeWeaponData": {
-				"crew": {
-					"min": 2
-				},
-				"defenses": {
-					"ac": {
-						"default": 17
-					},
-					"savingThrows": {
-						"fort": 12,
-						"ref": 11
-					},
-					"hardness": {
-						"default": 10
-					},
-					"hp": {
-						"default": 40
-					},
-					"bt": {
-						"default": 20
-					},
-					"immunities": [
-						"object immunities"
-					]
-				},
-				"speed": {
-					"speed": 20,
-					"note": "pulled or pushed"
-				},
-				"space": {
-					"long": {
-						"number": 10,
-						"unit": "feet"
-					},
-					"wide": {
-						"number": 5,
-						"unit": "feet"
-					},
-					"high": {
-						"name": "tall",
-						"number": 4,
-						"unit": "feet"
-					}
-				},
-				"proficiency": "Martial",
-				"ammunition": "ballista bolt (5 sp, 1 Bulk)"
-			},
 			"usage": "mounted",
 			"category": "Siege Weapon",
 			"entries": [
@@ -1046,7 +959,54 @@
 						"{@damage 4d12} piercing, single target, DC 19 Reflex"
 					]
 				}
-			]
+			],
+			"siegeWeaponData": {
+				"crew": {
+					"min": 2
+				},
+				"defenses": {
+					"ac": {
+						"default": 17
+					},
+					"savingThrows": {
+						"fort": 12,
+						"ref": 11
+					},
+					"hardness": {
+						"default": 10
+					},
+					"hp": {
+						"default": 40
+					},
+					"bt": {
+						"default": 20
+					},
+					"immunities": [
+						"object immunities"
+					]
+				},
+				"speed": {
+					"speed": 20,
+					"note": "pulled or pushed"
+				},
+				"space": {
+					"long": {
+						"number": 10,
+						"unit": "feet"
+					},
+					"wide": {
+						"number": 5,
+						"unit": "feet"
+					},
+					"high": {
+						"name": "tall",
+						"number": 4,
+						"unit": "feet"
+					}
+				},
+				"proficiency": "Martial",
+				"ammunition": "ballista bolt (5 sp, 1 Bulk)"
+			}
 		},
 		{
 			"name": "Basic Chair",
@@ -1081,12 +1041,6 @@
 				"large",
 				"portable"
 			],
-			"siegeWeaponData": {
-				"proficiency": "Martial",
-				"crew": {
-					"min": 6
-				}
-			},
 			"usage": "portable, held in 12 hands",
 			"bulk": 20,
 			"category": "Siege Weapon",
@@ -1146,7 +1100,13 @@
 						"Though it has the same Ram activity as the basic battering ram, a covered battering ram is additionally suspended from a protective roof attached to large wheels. This gives the crew members {@quickref greater cover|CRB|3|cover} against attacks from outside. The cover is on the left and right flank, but open on the front and rear to allow for operating the ram. The roof has AC 23, Hardness 12, HP 48, and BT 24. Breaking the roof doesn't affect the operation of the battering ram but eliminates the cover."
 					]
 				}
-			]
+			],
+			"siegeWeaponData": {
+				"proficiency": "Martial",
+				"crew": {
+					"min": 6
+				}
+			}
 		},
 		{
 			"name": "Binding Snare",
@@ -1295,7 +1255,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "lesser",
+					"variantType": "lesser",
 					"level": 1,
 					"price": {
 						"coin": "gp",
@@ -1312,7 +1272,7 @@
 					}
 				},
 				{
-					"type": "moderate",
+					"variantType": "moderate",
 					"level": 3,
 					"price": {
 						"coin": "gp",
@@ -1332,7 +1292,7 @@
 					}
 				},
 				{
-					"type": "greater",
+					"variantType": "greater",
 					"level": 9,
 					"price": {
 						"coin": "gp",
@@ -1352,7 +1312,7 @@
 					}
 				},
 				{
-					"type": "major",
+					"variantType": "major",
 					"level": 17,
 					"price": {
 						"coin": "gp",
@@ -1389,13 +1349,6 @@
 			},
 			"usage": "portable (black powder), held in 8 hands",
 			"bulk": 14,
-			"siegeWeaponData": {
-				"proficiency": "Martial",
-				"crew": {
-					"min": 4
-				},
-				"ammunition": "ram powder charge (2 gp, 1 Bulk)"
-			},
 			"category": "Siege Weapon",
 			"entries": [
 				"A blasting ram is a smaller battering ram that supplements the crew's size with explosive force. A steel reservoir holds a charge of black powder that ignites on impact. The body of the ram is reinforced to absorb the force of the explosion, while the head itself has a blast shield to protect the crew.",
@@ -1433,7 +1386,14 @@
 						"You and the crew {@action Stride}, with a maximum distance equal to the slowest crew member's Speed. Then, make a melee {@action Strike} with the ram against a structure or unattended stationary object. As you do, the black powder in the steel reservoir explodes, significantly increasing the damage of your attack. Due to the black powder's additional force, the damage of this {@action Strike} is {@dice 7d8} + the highest Strength modifier among members of the crew."
 					]
 				}
-			]
+			],
+			"siegeWeaponData": {
+				"proficiency": "Martial",
+				"crew": {
+					"min": 4
+				},
+				"ammunition": "ram powder charge (2 gp, 1 Bulk)"
+			}
 		},
 		{
 			"name": "Blazons Of Shared Power",
@@ -1570,53 +1530,6 @@
 				"coin": "gp",
 				"amount": 300
 			},
-			"siegeWeaponData": {
-				"crew": {
-					"min": 2,
-					"max": 4
-				},
-				"ammunition": "stone spheres (4 gp, 4 Bulk)",
-				"defenses": {
-					"ac": {
-						"default": 17
-					},
-					"savingThrows": {
-						"fort": 12,
-						"ref": 5
-					},
-					"hardness": {
-						"default": 10
-					},
-					"hp": {
-						"default": 40
-					},
-					"bt": {
-						"default": 20
-					},
-					"immunities": [
-						"object immunities"
-					]
-				},
-				"space": {
-					"high": {
-						"number": 5,
-						"unit": "feet"
-					},
-					"long": {
-						"number": 10,
-						"unit": "feet"
-					},
-					"wide": {
-						"number": 4,
-						"unit": "feet"
-					}
-				},
-				"proficiency": "Martial",
-				"speed": {
-					"note": "pulled or pushed",
-					"speed": 10
-				}
-			},
 			"usage": "mounted (black powder)",
 			"category": "Siege Weapon",
 			"entries": [
@@ -1664,7 +1577,54 @@
 						"{@damage 4d10} bludgeoning, 10-foot burst, DC 19 Reflex"
 					]
 				}
-			]
+			],
+			"siegeWeaponData": {
+				"crew": {
+					"min": 2,
+					"max": 4
+				},
+				"ammunition": "stone spheres (4 gp, 4 Bulk)",
+				"defenses": {
+					"ac": {
+						"default": 17
+					},
+					"savingThrows": {
+						"fort": 12,
+						"ref": 5
+					},
+					"hardness": {
+						"default": 10
+					},
+					"hp": {
+						"default": 40
+					},
+					"bt": {
+						"default": 20
+					},
+					"immunities": [
+						"object immunities"
+					]
+				},
+				"space": {
+					"high": {
+						"number": 5,
+						"unit": "feet"
+					},
+					"long": {
+						"number": 10,
+						"unit": "feet"
+					},
+					"wide": {
+						"number": 4,
+						"unit": "feet"
+					}
+				},
+				"proficiency": "Martial",
+				"speed": {
+					"note": "pulled or pushed",
+					"speed": 10
+				}
+			}
 		},
 		{
 			"name": "Breath Blaster",
@@ -1708,6 +1668,7 @@
 					]
 				}
 			],
+			"craftReq": "The initial raw materials must include the trachea of a ritually hunted dragon or other creature with a breath weapon with the appropriate damage type and area (line or cone) for the breath blaster.",
 			"generic": "G",
 			"variants": [
 				{
@@ -1741,8 +1702,7 @@
 						"The major breath blaster's activation deals {@dice 10d6} damage, the DC is 38, and the area increases to either a 60-foot line or a 30-foot cone, chosen when it's created. It's a +3 greater striking blunderbuss."
 					]
 				}
-			],
-			"craftReq": "The initial raw materials must include the trachea of a ritually hunted dragon or other creature with a breath weapon with the appropriate damage type and area (line or cone) for the breath blaster."
+			]
 		},
 		{
 			"name": "Breech Ejectors",
@@ -1833,6 +1793,52 @@
 			},
 			"usage": "mounted (black powder)",
 			"category": "Siege Weapon",
+			"entries": [
+				"Cannons are perhaps the most well known of all black powder siege weapons, and that's because they represent a good midpoint between power and expense. Keeps and fortresses in Alkenstar prefer to fortify their forces with cannons, as they're relatively easy to construct and their ammunition is cheap enough to build up great supplies.",
+				{
+					"type": "ability",
+					"style": "compact",
+					"name": "Aim",
+					"activity": {
+						"number": 3,
+						"unit": "action"
+					},
+					"entries": [
+						"100 feet, minimum distance 50 feet"
+					]
+				},
+				{
+					"type": "ability",
+					"style": "compact",
+					"name": "Load",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"traits": [
+						"manipulate"
+					],
+					"entries": [
+						"2 times, requires a successful DC 20 {@skill Athletics} check"
+					]
+				},
+				{
+					"type": "ability",
+					"style": "compact",
+					"name": "Launch",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"manipulate",
+						"range increment 200 feet"
+					],
+					"entries": [
+						"{@damage 6d12} bludgeoning, single target, DC 23 Reflex"
+					]
+				}
+			],
 			"siegeWeaponData": {
 				"crew": {
 					"min": 2,
@@ -1879,53 +1885,7 @@
 					"speed": 15,
 					"note": "pulled or pushed"
 				}
-			},
-			"entries": [
-				"Cannons are perhaps the most well known of all black powder siege weapons, and that's because they represent a good midpoint between power and expense. Keeps and fortresses in Alkenstar prefer to fortify their forces with cannons, as they're relatively easy to construct and their ammunition is cheap enough to build up great supplies.",
-				{
-					"type": "ability",
-					"style": "compact",
-					"name": "Aim",
-					"activity": {
-						"number": 3,
-						"unit": "action"
-					},
-					"entries": [
-						"100 feet, minimum distance 50 feet"
-					]
-				},
-				{
-					"type": "ability",
-					"style": "compact",
-					"name": "Load",
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"traits": [
-						"manipulate"
-					],
-					"entries": [
-						"2 times, requires a successful DC 20 {@skill Athletics} check"
-					]
-				},
-				{
-					"type": "ability",
-					"style": "compact",
-					"name": "Launch",
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"traits": [
-						"manipulate",
-						"range increment 200 feet"
-					],
-					"entries": [
-						"{@damage 6d12} bludgeoning, single target, DC 23 Reflex"
-					]
-				}
-			]
+			}
 		},
 		{
 			"name": "Catapult",
@@ -1941,54 +1901,6 @@
 			"price": {
 				"coin": "gp",
 				"amount": 650
-			},
-			"siegeWeaponData": {
-				"crew": {
-					"min": 2,
-					"max": 4
-				},
-				"defenses": {
-					"ac": {
-						"default": 20
-					},
-					"savingThrows": {
-						"fort": 15,
-						"ref": 8
-					},
-					"hardness": {
-						"default": 10
-					},
-					"hp": {
-						"default": 60
-					},
-					"bt": {
-						"default": 30
-					},
-					"immunities": [
-						"object immunities"
-					]
-				},
-				"space": {
-					"long": {
-						"number": 10,
-						"unit": "feet"
-					},
-					"wide": {
-						"number": 10,
-						"unit": "feet"
-					},
-					"high": {
-						"name": "tall",
-						"number": 6,
-						"unit": "feet"
-					}
-				},
-				"ammunition": "stones (0 gp, 5 Bulk)",
-				"proficiency": "Martial",
-				"speed": {
-					"speed": 15,
-					"note": "pulled or pushed"
-				}
 			},
 			"usage": "mounted",
 			"category": "Siege Weapon",
@@ -2038,7 +1950,55 @@
 						"{@damage 5d10} bludgeoning, 10-foot burst, DC 22 Reflex."
 					]
 				}
-			]
+			],
+			"siegeWeaponData": {
+				"crew": {
+					"min": 2,
+					"max": 4
+				},
+				"defenses": {
+					"ac": {
+						"default": 20
+					},
+					"savingThrows": {
+						"fort": 15,
+						"ref": 8
+					},
+					"hardness": {
+						"default": 10
+					},
+					"hp": {
+						"default": 60
+					},
+					"bt": {
+						"default": 30
+					},
+					"immunities": [
+						"object immunities"
+					]
+				},
+				"space": {
+					"long": {
+						"number": 10,
+						"unit": "feet"
+					},
+					"wide": {
+						"number": 10,
+						"unit": "feet"
+					},
+					"high": {
+						"name": "tall",
+						"number": 6,
+						"unit": "feet"
+					}
+				},
+				"ammunition": "stones (0 gp, 5 Bulk)",
+				"proficiency": "Martial",
+				"speed": {
+					"speed": 15,
+					"note": "pulled or pushed"
+				}
+			}
 		},
 		{
 			"name": "Cauterizing Torch",
@@ -2404,7 +2364,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "lesser",
+					"variantType": "lesser",
 					"level": 1,
 					"price": {
 						"coin": "gp",
@@ -2444,7 +2404,7 @@
 					}
 				},
 				{
-					"type": "moderate",
+					"variantType": "moderate",
 					"level": 5,
 					"price": {
 						"coin": "gp",
@@ -2484,7 +2444,7 @@
 					}
 				},
 				{
-					"type": "greater",
+					"variantType": "greater",
 					"level": 11,
 					"price": {
 						"coin": "gp",
@@ -2524,7 +2484,7 @@
 					}
 				},
 				{
-					"type": "major",
+					"variantType": "major",
 					"level": 17,
 					"price": {
 						"coin": "gp",
@@ -2780,12 +2740,6 @@
 			},
 			"usage": "portable, held in 4 hands",
 			"bulk": 3,
-			"siegeWeaponData": {
-				"proficiency": "Simple",
-				"crew": {
-					"min": 2
-				}
-			},
 			"category": "Siege Weapon",
 			"entries": [
 				"A door ram is a small siege weapon meant for breaking down doors, palisades, and weak portcullises. It consists of a log with an iron cap, and has handholds carved into it or grips attached to it.",
@@ -2802,7 +2756,13 @@
 						"You and the other crew member {@action Stride}, with a maximum distance equal to the slowest crew member's Speed, then make a melee {@action Strike} with the ram against a structure or an unattended, stationary object. The damage of this {@action Strike} is {@dice 2d8} + the highest Strength modifier among members of the crew."
 					]
 				}
-			]
+			],
+			"siegeWeaponData": {
+				"proficiency": "Simple",
+				"crew": {
+					"min": 2
+				}
+			}
 		},
 		{
 			"name": "Drake Rifle",
@@ -3213,7 +3173,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "lesser",
+					"variantType": "lesser",
 					"level": 3,
 					"price": {
 						"coin": "gp",
@@ -3229,7 +3189,7 @@
 					}
 				},
 				{
-					"type": "moderate",
+					"variantType": "moderate",
 					"level": 7,
 					"price": {
 						"coin": "gp",
@@ -3245,7 +3205,7 @@
 					}
 				},
 				{
-					"type": "greater",
+					"variantType": "greater",
 					"level": 11,
 					"price": {
 						"coin": "gp",
@@ -3261,7 +3221,7 @@
 					}
 				},
 				{
-					"type": "major",
+					"variantType": "major",
 					"level": 15,
 					"price": {
 						"coin": "gp",
@@ -3317,7 +3277,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "lesser",
+					"variantType": "lesser",
 					"level": 1,
 					"price": {
 						"coin": "gp",
@@ -3333,7 +3293,7 @@
 					}
 				},
 				{
-					"type": "moderate",
+					"variantType": "moderate",
 					"level": 6,
 					"price": {
 						"coin": "gp",
@@ -3349,7 +3309,7 @@
 					}
 				},
 				{
-					"type": "greater",
+					"variantType": "greater",
 					"level": 12,
 					"price": {
 						"coin": "gp",
@@ -3365,7 +3325,7 @@
 					}
 				},
 				{
-					"type": "major",
+					"variantType": "major",
 					"level": 18,
 					"price": {
 						"coin": "gp",
@@ -3543,49 +3503,6 @@
 			},
 			"usage": "mounted (black powder)",
 			"category": "Siege Weapon",
-			"siegeWeaponData": {
-				"crew": {
-					"min": 3,
-					"max": 6
-				},
-				"space": {
-					"long": {
-						"number": 15,
-						"unit": "feet"
-					},
-					"wide": {
-						"number": 15,
-						"unit": "feet"
-					},
-					"high": {
-						"number": 15,
-						"unit": "feet"
-					}
-				},
-				"ammunition": "cannonball (10 gp, 6 Bulk)",
-				"proficiency": "Martial",
-				"defenses": {
-					"ac": {
-						"default": 26
-					},
-					"savingThrows": {
-						"fort": 21,
-						"ref": 13
-					},
-					"hardness": {
-						"default": 18
-					},
-					"hp": {
-						"default": 90
-					},
-					"bt": {
-						"default": 45
-					},
-					"immunities": [
-						"object immunities"
-					]
-				}
-			},
 			"entries": [
 				"Fiend's mouth cannons are large-scale cannons designed to blast a target at great distance, from a stationary location.",
 				"They get their name from the fiendish features usually adorning their barrels and frames. Compared to a standard field cannon, a fiend's mouth cannon can be aimed more easily, but flexibility comes at the cost of mobility. The barrel rests on a platform which can be rotated 360 degrees to allow for precise aiming.",
@@ -3632,7 +3549,50 @@
 						"{@damage 8d12} bludgeoning, single target, DC 27 Reflex."
 					]
 				}
-			]
+			],
+			"siegeWeaponData": {
+				"crew": {
+					"min": 3,
+					"max": 6
+				},
+				"space": {
+					"long": {
+						"number": 15,
+						"unit": "feet"
+					},
+					"wide": {
+						"number": 15,
+						"unit": "feet"
+					},
+					"high": {
+						"number": 15,
+						"unit": "feet"
+					}
+				},
+				"ammunition": "cannonball (10 gp, 6 Bulk)",
+				"proficiency": "Martial",
+				"defenses": {
+					"ac": {
+						"default": 26
+					},
+					"savingThrows": {
+						"fort": 21,
+						"ref": 13
+					},
+					"hardness": {
+						"default": 18
+					},
+					"hp": {
+						"default": 90
+					},
+					"bt": {
+						"default": 45
+					},
+					"immunities": [
+						"object immunities"
+					]
+				}
+			}
 		},
 		{
 			"name": "Fire Box",
@@ -3677,83 +3637,23 @@
 			"craftReq": null
 		},
 		{
-			"name": "Steelheart 21",
+			"name": "Firedrake",
 			"source": "G&G",
 			"page": 175,
 			"type": "Item",
-			"level": 13,
+			"level": 8,
 			"traits": [
-				"rare",
-				"large"
+				"uncommon",
+				"huge"
 			],
 			"price": {
 				"coin": "gp",
-				"amount": 6000
-			},
-			"category": "Siege Weapon",
-			"siegeWeaponData": {
-				"crew": {
-					"min": 4,
-					"max": 6
-				},
-				"proficiency": "Martial",
-				"ammunition": "artillery shell (80 gp, 4 Bulk)",
-				"defenses": {
-					"ac": {
-						"default": 29
-					},
-					"savingThrows": {
-						"fort": 23,
-						"ref": 16
-					},
-					"hardness": {
-						"default": 18
-					},
-					"hp": {
-						"default": 150
-					},
-					"bt": {
-						"default": 75
-					},
-					"immunities": [
-						"object immunities"
-					]
-				},
-				"space": {
-					"high": {
-						"number": 5,
-						"unit": "feet"
-					},
-					"long": {
-						"number": 9,
-						"unit": "feet"
-					},
-					"wide": {
-						"number": 7,
-						"unit": "feet"
-					}
-				},
-				"speed": {
-					"speed": 20,
-					"note": "pulled or pushed"
-				}
+				"amount": 1000
 			},
 			"usage": "mounted (black powder)",
+			"category": "Siege Weapon",
 			"entries": [
-				"Named for Brondar Steelheart, one of the most important historical dwarven pioneers in the use of black powder, this remarkable piece of new Dongun artillery uses metallurgy and alchemy to negate nearly all of the immense amount of recoil a shot from a siege weapon usually produces. The barrel of the Steelheart 21 is suspended in a mix of alchemical fluids that first compress to dampen the recoil when fired, then expand to push the barrel back into place afterwards. The result reduces the amount of time needed to reset the aim of the siege weapon. The crew member who launches the Steelheart 21 can use the Quick Aim reaction (below), allowing them to adjust the weapon's aim on the fly as they fire to adapt to a faulty initial target, changing battlefield conditions, the use of illusions by the enemy, or any of a variety of other factors that lead to the need to alter the siege weapon's course.",
-				{
-					"type": "ability",
-					"style": "compact",
-					"name": "Quick Aim",
-					"activity": {
-						"number": 1,
-						"unit": "reaction"
-					},
-					"trigger": "You Launch this siege weapon, after determining the effects of the Launch action.",
-					"entries": [
-						"You Aim this siege weapon, moving the aim up to 10 feet instead of its normal distance."
-					]
-				},
+				"This alchemical black powder hybrid siege weapon uses a blast of black powder to spray alchemical fire from a long metal nozzle, often sculpted or painted with designs resembling a dragon's neck and head. The nozzle turns on a ratcheted, rotating disc with a reservoir in the center to hold a barrel full of combustible alchemical liquid, using black powder to propel the fire. This main structure is atop a wheeled cart to allow it to be easily moved. Unlike most mounted siege weapons, a firedrake is intended to be wheeled out into the thick of a skirmish rather than shooting from a distance.",
 				{
 					"type": "ability",
 					"style": "compact",
@@ -3763,7 +3663,7 @@
 						"unit": "action"
 					},
 					"entries": [
-						"100 feet, minimum distance 150 feet"
+						"rotate 45º"
 					]
 				},
 				{
@@ -3790,30 +3690,13 @@
 						"unit": "action"
 					},
 					"traits": [
-						"manipulate",
-						"range increment 500 feet"
+						"manipulate"
 					],
 					"entries": [
-						"{@damage 8d12} bludgeoning, 20-foot burst, DC 30 Reflex"
+						"{@damage 8d6} fire plus {@damage 1d6} {@condition persistent damage ||persistent fire}, 60-foot line or 30-foot cone, DC 23 Reflex. Switching between the firedrake's line or cone mode takes an {@action Interact} action, and any of the crew can perform the action."
 					]
 				}
-			]
-		},
-		{
-			"name": "Firedrake",
-			"source": "G&G",
-			"page": 175,
-			"type": "Item",
-			"level": 8,
-			"traits": [
-				"uncommon",
-				"huge"
 			],
-			"price": {
-				"coin": "gp",
-				"amount": 1000
-			},
-			"category": "Siege Weapon",
 			"siegeWeaponData": {
 				"crew": {
 					"min": 3,
@@ -3863,53 +3746,7 @@
 					"speed": 15,
 					"note": "pulled or pushed"
 				}
-			},
-			"usage": "mounted (black powder)",
-			"entries": [
-				"This alchemical black powder hybrid siege weapon uses a blast of black powder to spray alchemical fire from a long metal nozzle, often sculpted or painted with designs resembling a dragon's neck and head. The nozzle turns on a ratcheted, rotating disc with a reservoir in the center to hold a barrel full of combustible alchemical liquid, using black powder to propel the fire. This main structure is atop a wheeled cart to allow it to be easily moved. Unlike most mounted siege weapons, a firedrake is intended to be wheeled out into the thick of a skirmish rather than shooting from a distance.",
-				{
-					"type": "ability",
-					"style": "compact",
-					"name": "Aim",
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"entries": [
-						"rotate 45º"
-					]
-				},
-				{
-					"type": "ability",
-					"style": "compact",
-					"name": "Load",
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"traits": [
-						"manipulate"
-					],
-					"entries": [
-						"3 times, requires a successful DC 20 {@skill Athletics} check"
-					]
-				},
-				{
-					"type": "ability",
-					"style": "compact",
-					"name": "Launch",
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"traits": [
-						"manipulate"
-					],
-					"entries": [
-						"{@damage 8d6} fire plus {@damage 1d6} {@condition persistent damage ||persistent fire}, 60-foot line or 30-foot cone, DC 23 Reflex. Switching between the firedrake's line or cone mode takes an {@action Interact} action, and any of the crew can perform the action."
-					]
-				}
-			]
+			}
 		},
 		{
 			"name": "Flame Drake Snare",
@@ -3965,7 +3802,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "lesser",
+					"variantType": "lesser",
 					"level": 1,
 					"price": {
 						"coin": "gp",
@@ -3979,7 +3816,7 @@
 					"entries": []
 				},
 				{
-					"type": "moderate",
+					"variantType": "moderate",
 					"level": 6,
 					"price": {
 						"coin": "gp",
@@ -3995,7 +3832,7 @@
 					]
 				},
 				{
-					"type": "greater",
+					"variantType": "greater",
 					"level": 10,
 					"price": {
 						"coin": "gp",
@@ -4012,7 +3849,7 @@
 					]
 				},
 				{
-					"type": "major",
+					"variantType": "major",
 					"level": 16,
 					"price": {
 						"coin": "gp",
@@ -4584,6 +4421,36 @@
 			},
 			"usage": "mounted",
 			"category": "Siege Weapon",
+			"entries": [
+				"Capable of launching bolts the size of fully grown trees, a heavy ballista is best suited to smashing down castle gates, walls, or similar fortifications.",
+				{
+					"type": "ability",
+					"style": "compact",
+					"name": "Aim",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"entries": [
+						"60 feet, minimum distance 40 feet"
+					]
+				},
+				{
+					"type": "ability",
+					"style": "compact",
+					"name": "Load",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"traits": [
+						"manipulate"
+					],
+					"entries": [
+						"3 times, requires a successful DC 20 {@skill Athletics} check."
+					]
+				}
+			],
 			"siegeWeaponData": {
 				"proficiency": "Martial",
 				"ammunition": "heavy ballista bolt (3 gp, 3 Bulk)",
@@ -4630,37 +4497,7 @@
 					"speed": 15,
 					"note": "pulled or pushed"
 				}
-			},
-			"entries": [
-				"Capable of launching bolts the size of fully grown trees, a heavy ballista is best suited to smashing down castle gates, walls, or similar fortifications.",
-				{
-					"type": "ability",
-					"style": "compact",
-					"name": "Aim",
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"entries": [
-						"60 feet, minimum distance 40 feet"
-					]
-				},
-				{
-					"type": "ability",
-					"style": "compact",
-					"name": "Load",
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"traits": [
-						"manipulate"
-					],
-					"entries": [
-						"3 times, requires a successful DC 20 {@skill Athletics} check."
-					]
-				}
-			]
+			}
 		},
 		{
 			"name": "Heavy Bombard",
@@ -4675,53 +4512,6 @@
 			"price": {
 				"coin": "gp",
 				"amount": 1400
-			},
-			"siegeWeaponData": {
-				"crew": {
-					"min": 3,
-					"max": 6
-				},
-				"defenses": {
-					"ac": {
-						"default": 23
-					},
-					"hardness": {
-						"default": 18
-					},
-					"hp": {
-						"default": 50
-					},
-					"bt": {
-						"default": 25
-					},
-					"immunities": [
-						"object immunities"
-					],
-					"savingThrows": {
-						"fort": 18,
-						"ref": 10
-					}
-				},
-				"ammunition": "large stone spheres (8 gp, 16 Bulk)",
-				"space": {
-					"high": {
-						"number": 6,
-						"unit": "feet"
-					},
-					"long": {
-						"number": 17,
-						"unit": "feet"
-					},
-					"wide": {
-						"number": 6,
-						"unit": "feet"
-					}
-				},
-				"proficiency": "Martial",
-				"speed": {
-					"speed": 10,
-					"note": "pulled or pushed"
-				}
 			},
 			"usage": "mounted (black powder)",
 			"category": "Siege Weapon",
@@ -4770,7 +4560,54 @@
 						"{@damage 7d10} bludgeoning, 20-foot burst, DC 25 Reflex."
 					]
 				}
-			]
+			],
+			"siegeWeaponData": {
+				"crew": {
+					"min": 3,
+					"max": 6
+				},
+				"defenses": {
+					"ac": {
+						"default": 23
+					},
+					"hardness": {
+						"default": 18
+					},
+					"hp": {
+						"default": 50
+					},
+					"bt": {
+						"default": 25
+					},
+					"immunities": [
+						"object immunities"
+					],
+					"savingThrows": {
+						"fort": 18,
+						"ref": 10
+					}
+				},
+				"ammunition": "large stone spheres (8 gp, 16 Bulk)",
+				"space": {
+					"high": {
+						"number": 6,
+						"unit": "feet"
+					},
+					"long": {
+						"number": 17,
+						"unit": "feet"
+					},
+					"wide": {
+						"number": 6,
+						"unit": "feet"
+					}
+				},
+				"proficiency": "Martial",
+				"speed": {
+					"speed": 10,
+					"note": "pulled or pushed"
+				}
+			}
 		},
 		{
 			"name": "Holy Steam Ball",
@@ -4828,53 +4665,6 @@
 				"amount": 180
 			},
 			"usage": "mounted (black powder)",
-			"siegeWeaponData": {
-				"crew": {
-					"min": 1,
-					"max": 4
-				},
-				"defenses": {
-					"ac": {
-						"default": 16
-					},
-					"hardness": {
-						"default": 5
-					},
-					"hp": {
-						"default": 40
-					},
-					"bt": {
-						"default": 20
-					},
-					"immunities": [
-						"object immunities"
-					],
-					"savingThrows": {
-						"fort": 11,
-						"ref": 4
-					}
-				},
-				"ammunition": "100 hwacha arrows (2 gp, 1 Bulk)",
-				"space": {
-					"high": {
-						"number": 6,
-						"unit": "feet"
-					},
-					"long": {
-						"number": 8,
-						"unit": "feet"
-					},
-					"wide": {
-						"number": 6,
-						"unit": "feet"
-					}
-				},
-				"proficiency": "Simple",
-				"speed": {
-					"speed": 25,
-					"note": "pulled or pushed"
-				}
-			},
 			"category": "Siege Weapon",
 			"entries": [
 				"Rather than a shoot a single, large projectile like a boulder, the hwacha fires dozens of rocket-propelled arrows at once. The frame of the hwacha holds 100 tubes, each loaded with an arrow or a small bundle of arrows wrapped with a small amount Fiend's Mouth Cannon Hwacha of black powder and attached to a fuse. By lighting a master fuse, you can make all of the arrows fire in rapid succession.",
@@ -4921,7 +4711,54 @@
 						"{@damage 4d8} piercing, 20-foot burst, DC 18 Reflex. If you loaded at least 70 hwacha arrows, the area increases to a 25-foot burst. If you loaded 100 hwacha arrows, the area increases to a 30-foot burst and the damage to {@damage 5d8} piercing."
 					]
 				}
-			]
+			],
+			"siegeWeaponData": {
+				"crew": {
+					"min": 1,
+					"max": 4
+				},
+				"defenses": {
+					"ac": {
+						"default": 16
+					},
+					"hardness": {
+						"default": 5
+					},
+					"hp": {
+						"default": 40
+					},
+					"bt": {
+						"default": 20
+					},
+					"immunities": [
+						"object immunities"
+					],
+					"savingThrows": {
+						"fort": 11,
+						"ref": 4
+					}
+				},
+				"ammunition": "100 hwacha arrows (2 gp, 1 Bulk)",
+				"space": {
+					"high": {
+						"number": 6,
+						"unit": "feet"
+					},
+					"long": {
+						"number": 8,
+						"unit": "feet"
+					},
+					"wide": {
+						"number": 6,
+						"unit": "feet"
+					}
+				},
+				"proficiency": "Simple",
+				"speed": {
+					"speed": 25,
+					"note": "pulled or pushed"
+				}
+			}
 		},
 		{
 			"name": "Hyldarf's Fang",
@@ -5120,7 +4957,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "lesser",
+					"variantType": "lesser",
 					"level": 1,
 					"price": {
 						"coin": "gp",
@@ -5136,7 +4973,7 @@
 					}
 				},
 				{
-					"type": "moderate",
+					"variantType": "moderate",
 					"level": 4,
 					"price": {
 						"coin": "gp",
@@ -5152,7 +4989,7 @@
 					}
 				},
 				{
-					"type": "greater",
+					"variantType": "greater",
 					"level": 9,
 					"price": {
 						"coin": "gp",
@@ -5168,7 +5005,7 @@
 					}
 				},
 				{
-					"type": "major",
+					"variantType": "major",
 					"level": 14,
 					"price": {
 						"coin": "gp",
@@ -5769,7 +5606,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "lesser",
+					"variantType": "lesser",
 					"level": 3,
 					"price": {
 						"coin": "gp",
@@ -5785,7 +5622,7 @@
 					}
 				},
 				{
-					"type": "moderate",
+					"variantType": "moderate",
 					"level": 7,
 					"price": {
 						"coin": "gp",
@@ -5801,7 +5638,7 @@
 					}
 				},
 				{
-					"type": "greater",
+					"variantType": "greater",
 					"level": 11,
 					"price": {
 						"coin": "gp",
@@ -5817,7 +5654,7 @@
 					}
 				},
 				{
-					"type": "major",
+					"variantType": "major",
 					"level": 15,
 					"price": {
 						"coin": "gp",
@@ -5974,53 +5811,6 @@
 				"amount": 720
 			},
 			"usage": "mounted (black powder)",
-			"siegeWeaponData": {
-				"crew": {
-					"min": 3,
-					"max": 4
-				},
-				"defenses": {
-					"ac": {
-						"default": 20
-					},
-					"savingThrows": {
-						"fort": 15,
-						"ref": 8
-					},
-					"hardness": {
-						"default": 12
-					},
-					"hp": {
-						"default": 40
-					},
-					"bt": {
-						"default": 20
-					},
-					"immunities": [
-						"object immunities"
-					]
-				},
-				"ammunition": "mortar round (5 gp, 1 Bulk)",
-				"space": {
-					"high": {
-						"number": 25,
-						"unit": "feet"
-					},
-					"long": {
-						"number": 25,
-						"unit": "feet"
-					},
-					"wide": {
-						"number": 15,
-						"unit": "feet"
-					}
-				},
-				"speed": {
-					"speed": 20,
-					"note": "pulled or pushed"
-				},
-				"proficiency": "Martial"
-			},
 			"category": "Siege Weapon",
 			"entries": [
 				"A mortar fires its shells at a high angle, allowing it to bypass obstacles and strike from above. A crew typically sets up such a weapon behind a wall or in another hard-to-access area to protect themselves while retaining full functionality.",
@@ -6068,7 +5858,54 @@
 						"{@damage 5d10} slashing, 20-foot burst, DC 21. Because a mortar launches its round at a high angle, the mortar round descends on the center of the burst from above, not in a straight line from the mortar. This affects whether creatures have cover from the mortar launch."
 					]
 				}
-			]
+			],
+			"siegeWeaponData": {
+				"crew": {
+					"min": 3,
+					"max": 4
+				},
+				"defenses": {
+					"ac": {
+						"default": 20
+					},
+					"savingThrows": {
+						"fort": 15,
+						"ref": 8
+					},
+					"hardness": {
+						"default": 12
+					},
+					"hp": {
+						"default": 40
+					},
+					"bt": {
+						"default": 20
+					},
+					"immunities": [
+						"object immunities"
+					]
+				},
+				"ammunition": "mortar round (5 gp, 1 Bulk)",
+				"space": {
+					"high": {
+						"number": 25,
+						"unit": "feet"
+					},
+					"long": {
+						"number": 25,
+						"unit": "feet"
+					},
+					"wide": {
+						"number": 15,
+						"unit": "feet"
+					}
+				},
+				"speed": {
+					"speed": 20,
+					"note": "pulled or pushed"
+				},
+				"proficiency": "Martial"
+			}
 		},
 		{
 			"name": "Mountebank's Passage",
@@ -6628,6 +6465,46 @@
 					"entries": []
 				}
 			]
+		},
+		{
+			"name": "Round",
+			"source": "G&G",
+			"page": 150,
+			"type": "Equipment",
+			"traits": [
+				"alchemical"
+			],
+			"price": {
+				"coin": "sp",
+				"amount": 1,
+				"note": "(price for 5)"
+			},
+			"bulk": "L",
+			"category": "Ammunition",
+			"entries": [
+				"Firearms require ammunition consisting of a projectile and black powder. A round of ammo can vary in its composition but is typically either a prepackaged paper cartridge, including wadding, bullet, and black powder, or loose shot packed in manually. Some weapons, like hand cannons and blunderbusses, can fire other materials, but their ammunition has the same Price due to the cost of the black powder. Because making rounds of firearm ammunition requires creating black powder, you need the {@feat Alchemical Crafting} skill feat to make them. Firearm rounds are a valid option for magical ammunition, just like {@item arrow||arrows} or {@item bolt||bolts}. Crafting magical firearm ammunition requires you to be able to craft both alchemical and magical items."
+			],
+			"add_hash": "5"
+		},
+		{
+			"name": "Round",
+			"source": "G&G",
+			"page": 150,
+			"type": "Equipment",
+			"traits": [
+				"alchemical"
+			],
+			"price": {
+				"coin": "sp",
+				"amount": 1,
+				"note": "(price for 10)"
+			},
+			"bulk": "L",
+			"category": "Ammunition",
+			"entries": [
+				"Firearms require ammunition consisting of a projectile and black powder. A round of ammo can vary in its composition but is typically either a prepackaged paper cartridge, including wadding, bullet, and black powder, or loose shot packed in manually. Some weapons, like hand cannons and blunderbusses, can fire other materials, but their ammunition has the same Price due to the cost of the black powder. Because making rounds of firearm ammunition requires creating black powder, you need the {@feat Alchemical Crafting} skill feat to make them. Firearm rounds are a valid option for magical ammunition, just like {@item arrow||arrows} or {@item bolt||bolts}. Crafting magical firearm ammunition requires you to be able to craft both alchemical and magical items."
+			],
+			"add_hash": "10"
 		},
 		{
 			"name": "Rowan Rifle",
@@ -7488,53 +7365,6 @@
 				"amount": 700
 			},
 			"usage": "mounted",
-			"siegeWeaponData": {
-				"ammunition": "springald arrows (5 sp, 2 Bulk)",
-				"space": {
-					"high": {
-						"number": 15,
-						"unit": "feet"
-					},
-					"long": {
-						"number": 15,
-						"unit": "feet"
-					},
-					"wide": {
-						"number": 12,
-						"unit": "feet"
-					}
-				},
-				"crew": {
-					"min": 3,
-					"max": 5
-				},
-				"defenses": {
-					"ac": {
-						"default": 20
-					},
-					"savingThrows": {
-						"fort": 16,
-						"ref": 13
-					},
-					"hardness": {
-						"default": 10
-					},
-					"hp": {
-						"default": 40
-					},
-					"bt": {
-						"default": 20
-					},
-					"immunities": [
-						"object immunities"
-					]
-				},
-				"speed": {
-					"speed": 10,
-					"note": "pulled or pushed"
-				},
-				"proficiency": "Martial"
-			},
 			"category": "Siege Weapon",
 			"entries": [
 				"A springald consists of a wooden board cranked backward and chutes that hold up to three oversized arrows. Rather than having a nock, each arrow has a flat back end. Releasing the board strikes the backs of the arrows, sending them hurtling through the air.",
@@ -7582,7 +7412,54 @@
 						"{@damage 5d8} piercing, three different targets within a 15-foot burst, DC 22 Reflex."
 					]
 				}
-			]
+			],
+			"siegeWeaponData": {
+				"ammunition": "springald arrows (5 sp, 2 Bulk)",
+				"space": {
+					"high": {
+						"number": 15,
+						"unit": "feet"
+					},
+					"long": {
+						"number": 15,
+						"unit": "feet"
+					},
+					"wide": {
+						"number": 12,
+						"unit": "feet"
+					}
+				},
+				"crew": {
+					"min": 3,
+					"max": 5
+				},
+				"defenses": {
+					"ac": {
+						"default": 20
+					},
+					"savingThrows": {
+						"fort": 16,
+						"ref": 13
+					},
+					"hardness": {
+						"default": 10
+					},
+					"hp": {
+						"default": 40
+					},
+					"bt": {
+						"default": 20
+					},
+					"immunities": [
+						"object immunities"
+					]
+				},
+				"speed": {
+					"speed": 10,
+					"note": "pulled or pushed"
+				},
+				"proficiency": "Martial"
+			}
 		},
 		{
 			"name": "Steam Winch",
@@ -7642,6 +7519,129 @@
 					]
 				}
 			]
+		},
+		{
+			"name": "Steelheart 21",
+			"source": "G&G",
+			"page": 175,
+			"type": "Item",
+			"level": 13,
+			"traits": [
+				"rare",
+				"large"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 6000
+			},
+			"usage": "mounted (black powder)",
+			"category": "Siege Weapon",
+			"entries": [
+				"Named for Brondar Steelheart, one of the most important historical dwarven pioneers in the use of black powder, this remarkable piece of new Dongun artillery uses metallurgy and alchemy to negate nearly all of the immense amount of recoil a shot from a siege weapon usually produces. The barrel of the Steelheart 21 is suspended in a mix of alchemical fluids that first compress to dampen the recoil when fired, then expand to push the barrel back into place afterwards. The result reduces the amount of time needed to reset the aim of the siege weapon. The crew member who launches the Steelheart 21 can use the Quick Aim reaction (below), allowing them to adjust the weapon's aim on the fly as they fire to adapt to a faulty initial target, changing battlefield conditions, the use of illusions by the enemy, or any of a variety of other factors that lead to the need to alter the siege weapon's course.",
+				{
+					"type": "ability",
+					"style": "compact",
+					"name": "Quick Aim",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "You Launch this siege weapon, after determining the effects of the Launch action.",
+					"entries": [
+						"You Aim this siege weapon, moving the aim up to 10 feet instead of its normal distance."
+					]
+				},
+				{
+					"type": "ability",
+					"style": "compact",
+					"name": "Aim",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"entries": [
+						"100 feet, minimum distance 150 feet"
+					]
+				},
+				{
+					"type": "ability",
+					"style": "compact",
+					"name": "Load",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"traits": [
+						"manipulate"
+					],
+					"entries": [
+						"3 times, requires a successful DC 20 {@skill Athletics} check"
+					]
+				},
+				{
+					"type": "ability",
+					"style": "compact",
+					"name": "Launch",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"manipulate",
+						"range increment 500 feet"
+					],
+					"entries": [
+						"{@damage 8d12} bludgeoning, 20-foot burst, DC 30 Reflex"
+					]
+				}
+			],
+			"siegeWeaponData": {
+				"crew": {
+					"min": 4,
+					"max": 6
+				},
+				"proficiency": "Martial",
+				"ammunition": "artillery shell (80 gp, 4 Bulk)",
+				"defenses": {
+					"ac": {
+						"default": 29
+					},
+					"savingThrows": {
+						"fort": 23,
+						"ref": 16
+					},
+					"hardness": {
+						"default": 18
+					},
+					"hp": {
+						"default": 150
+					},
+					"bt": {
+						"default": 75
+					},
+					"immunities": [
+						"object immunities"
+					]
+				},
+				"space": {
+					"high": {
+						"number": 5,
+						"unit": "feet"
+					},
+					"long": {
+						"number": 9,
+						"unit": "feet"
+					},
+					"wide": {
+						"number": 7,
+						"unit": "feet"
+					}
+				},
+				"speed": {
+					"speed": 20,
+					"note": "pulled or pushed"
+				}
+			}
 		},
 		{
 			"name": "Stepping Stone Shot",
@@ -8109,49 +8109,6 @@
 				"amount": 2000
 			},
 			"usage": "mounted",
-			"siegeWeaponData": {
-				"crew": {
-					"min": 4,
-					"max": 6
-				},
-				"defenses": {
-					"ac": {
-						"default": 24
-					},
-					"savingThrows": {
-						"fort": 21,
-						"ref": 16
-					},
-					"hardness": {
-						"default": 17
-					},
-					"hp": {
-						"default": 68
-					},
-					"bt": {
-						"default": 34
-					},
-					"immunities": [
-						"object immunities"
-					]
-				},
-				"ammunition": "stones (0 gp, 6 Bulk)",
-				"space": {
-					"high": {
-						"number": 25,
-						"unit": "feet"
-					},
-					"long": {
-						"number": 25,
-						"unit": "feet"
-					},
-					"wide": {
-						"number": 15,
-						"unit": "feet"
-					}
-				},
-				"proficiency": "Martial"
-			},
 			"category": "Siege Weapon",
 			"entries": [
 				"Built with a long wooden arm and a heavy counterweight, a trebuchet can hurl massive projectiles from a large sling, releasing the projectile at the ideal point in the arm's arc.",
@@ -8199,7 +8156,50 @@
 						"{@damage 8d10} bludgeoning, 20-foot burst, DC 26 Reflex"
 					]
 				}
-			]
+			],
+			"siegeWeaponData": {
+				"crew": {
+					"min": 4,
+					"max": 6
+				},
+				"defenses": {
+					"ac": {
+						"default": 24
+					},
+					"savingThrows": {
+						"fort": 21,
+						"ref": 16
+					},
+					"hardness": {
+						"default": 17
+					},
+					"hp": {
+						"default": 68
+					},
+					"bt": {
+						"default": 34
+					},
+					"immunities": [
+						"object immunities"
+					]
+				},
+				"ammunition": "stones (0 gp, 6 Bulk)",
+				"space": {
+					"high": {
+						"number": 25,
+						"unit": "feet"
+					},
+					"long": {
+						"number": 25,
+						"unit": "feet"
+					},
+					"wide": {
+						"number": 15,
+						"unit": "feet"
+					}
+				},
+				"proficiency": "Martial"
+			}
 		},
 		{
 			"name": "Tripod",

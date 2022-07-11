@@ -10,7 +10,6 @@
 				"illusion",
 				"mental"
 			],
-			"school": "I",
 			"traditions": [
 				"arcane",
 				"occult"
@@ -20,10 +19,10 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"area": {
 				"types": [
@@ -63,7 +62,6 @@
 				"conjuration",
 				"teleportation"
 			],
-			"school": "C",
 			"traditions": [
 				"arcane",
 				"occult"
@@ -74,18 +72,15 @@
 				"entry": "1 minute"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true,
-					"V": true
-				}
+				[
+					"M",
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"type": "feet",
+				"number": 30
 			},
 			"duration": {
 				"type": "timed",
@@ -100,7 +95,7 @@
 				"Casting return beacon while a beacon is active causes the previous return beacon spell to end. If you are not within 1 mile of the beacon, your attempt to transport yourself to the beacon fails. If a solid object is in the same space as the beacon when you transport yourself, you arrive in the nearest open space to the beacon. If there is not an open space within 30 feet of the beacon, your attempt to transport yourself fails, but the beacon remains intact."
 			],
 			"heightened": {
-				"x": [
+				"X": [
 					{
 						"level": 7,
 						"entries": [
@@ -141,17 +136,16 @@
 				"force",
 				"monk"
 			],
-			"school": "V",
 			"cast": {
 				"number": 1,
 				"unit": "varies",
 				"entry": "{@as 1} to {@as 3}"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"area": {
 				"types": [
@@ -168,9 +162,8 @@
 				"You unleash your ki as a powerful storm of force and lightning, dealing {@damage 2d6} force damage and {@damage 2d12} electricity damage to creatures in the area. If you use 2 actions to cast the spell, increase the size of the emanation to 10 feet and the damage to {@damage 3d6} force damage and {@damage 3d12} electricity damage. If you use 3 actions to cast the spell, increase the size of the emanation to 20 feet and the damage to {@damage 4d6} force and {@damage 4d12} electricity damage. Each creature attempts one basic Reflex save that applies to both types of damage On a failed save, the creature is {@condition deafened} for 1 round; on a critical failure, the creature also takes {@damage 2d12} {@condition persistent damage ||persistent electricity damage} and is {@condition deafened} for 1 minute."
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 2,
-					"entries": [
+				"plusX": {
+					"2": [
 						"The force damage increases by {@dice 1d6} and the electricity damage by {@dice 1d12}, or {@dice 2d6} and {@dice 2d12} if you use 2 or 3 actions."
 					]
 				}

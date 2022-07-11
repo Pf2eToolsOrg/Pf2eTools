@@ -3,7 +3,7 @@
 		{
 			"name": "Barricade Stone",
 			"source": "SoT3",
-			"page": 76,
+			"page": 75,
 			"type": "Item",
 			"level": "6+",
 			"traits": [
@@ -27,23 +27,24 @@
 			"category": "Structure",
 			"entries": [
 				"The ancient inhabitants of Bloodsalt crafted these magic rocks to construct defenses quickly. In its stone form, a barricade stone appears to be a simple pebble with an unnaturally geometric shape. The size and shape of the stone's final form depends on the type of barricade stone.",
-				"When you activate the barricade stone, you drop it on the ground, throw it up to 20 feet away, or sling it using a sling weapon. Upon landing, the stone instantly and permanently expands. The stone grows to its maximum size. While normally items with the structure trait put creatures in their area inside the structure, this effect creates solid stone, so it can't be placed in an area where there are creatures. While it's likely to take some time even with the right tools, an activated barricade stone can be destroyed the same as any normal stone structure (Hardness 14, HP 56)."
+				"When you activate the barricade stone, you drop it on the ground, throw it up to 20 feet away, or sling it using a sling weapon. Upon landing, the stone instantly and permanently expands. The stone grows to its maximum size. While normally items with the {@trait structure} trait put creatures in their area inside the structure, this effect creates solid stone, so it can't be placed in an area where there are creatures. While it's likely to take some time even with the right tools, an activated barricade stone can be destroyed the same as any normal stone structure (Hardness 14, HP 56)."
 			],
 			"generic": "G",
 			"variants": [
 				{
-					"name": "sphere",
+					"type": "sphere",
 					"level": 6,
 					"price": {
 						"amount": 40,
 						"coin": "gp"
 					},
 					"entries": [
-						"This smooth marble keeps its shape when activated, growing into a spherical boulder 10 feet in diameter. If stationary, the boulder can be pushed 5 feet with a successful DC 24 {@skill Athletics} check. If the marble was thrown or slung, the boulder retains its momentum, moving 25 feet away from you each round. A creature in the boulder's way takes {@damage 4d6} bludgeoning damage (DC 20 basic Reflex \nsave; on a failure, the creature is knocked {@condition prone})."
+						"This smooth marble keeps its shape when activated, growing into a spherical boulder 10 feet in diameter.",
+						"If stationary, the boulder can be pushed 5 feet with a successful DC 24 {@skill Athletics} check. If the marble was thrown or slung, the boulder retains its momentum, moving 25 feet away from you each round. A creature in the boulder's way takes {@damage 4d6} bludgeoning damage (DC 20 basic Reflex save; on a failure, the creature is knocked {@condition prone})."
 					]
 				},
 				{
-					"name": "cube",
+					"type": "cube",
 					"level": 8,
 					"price": {
 						"amount": 80,
@@ -54,7 +55,7 @@
 					]
 				},
 				{
-					"name": "cylinder",
+					"type": "cylinder",
 					"level": 10,
 					"price": {
 						"amount": 160,
@@ -69,7 +70,7 @@
 		{
 			"name": "Dragon Rune Bracelet",
 			"source": "SoT3",
-			"page": 76,
+			"page": 75,
 			"type": "Item",
 			"level": 11,
 			"traits": [
@@ -84,10 +85,11 @@
 				"coin": "gp"
 			},
 			"usage": "worn bracelet",
-			"bulk": "\u2014",
+			"bulk": "\u2013",
 			"category": "Worn",
 			"entries": [
-				"This polished golden bracelet is formed around the scale of a famous dragon. The bracelet is etched with esoteric symbols or words\u2014always in Draconic\u2014that indicate kinship with dragons. As many types of dragon rune bracelets exist as there are types of dragons, though dragon rune bracelets associated with Uncommon or Rare dragons are Rare. While wearing a dragon rune bracelet, you gain a +2 item bonus to {@skill Diplomacy} checks while interacting with dragons of the same type as the pendant's scale (such as \nred dragons or cloud dragons). You also gain a +2 item bonus to saving throws against fear effects from any kind of dragon.",
+				"This polished golden bracelet is formed around the scale of a famous dragon. The bracelet is etched with esoteric symbols or words\u2014always in Draconic\u2014that indicate kinship with dragons. As many types of dragon rune bracelets exist as there are types of dragons, though dragon rune bracelets associated with Uncommon or Rare dragons are Rare.",
+				"While wearing a dragon rune bracelet, you gain a +2 item bonus to {@skill Diplomacy} checks while interacting with dragons of the same type as the pendant's scale (such as red dragons or cloud dragons). You also gain a +2 item bonus to saving throws against {@trait fear} effects from any kind of dragon.",
 				{
 					"type": "ability",
 					"activity": {
@@ -121,7 +123,7 @@
 				"magical"
 			],
 			"usage": "held in 1 hand",
-			"bulk": "\u2014",
+			"bulk": "\u2013",
 			"activate": {
 				"activity": {
 					"number": 1,
@@ -133,8 +135,9 @@
 			},
 			"category": "Held",
 			"entries": [
-				"An exploration lens is a magical glass lens designed for a bull's-eye lantern. When light from the lantern passes through the lens, it alters the light to make it easier to perform a common exploration activity with the lantern. You can find more information about exploration activities related to these lenses on page 496 of the Core Rulebook. Alternatively, an exploration lens can be installed in a wayfinder like an aeon stone. In this case, light (such as \nthat from a lantern, torch, or {@spell light} spell) must still pass through the lens and you must hold the wayfinder in your hand for it to function.",
-				"There are several different types of exploration lens, each granting benefits with a different type of exploration activity. Each type of lens is distinguishable from all the other types by holding it up to a bright light."
+				"An exploration lens is a magical glass lens designed for a bull's-eye lantern. When light from the lantern passes through the lens, it alters the light to make it easier to perform a common exploration activity with the lantern. You can find more information about exploration activities related to these lenses on page 496 of the Core Rulebook. Alternatively, an exploration lens can be installed in a wayfinder like an aeon stone. In this case, light (such as that from a lantern, torch, or {@spell light} spell) must still pass through the lens and you must hold the wayfinder in your hand for it to function.",
+				"There are several different types of exploration lens, each granting benefits with a different type of exploration activity.",
+				"Each type of lens is distinguishable from all the other types by holding it up to a bright light."
 			],
 			"generic": "G",
 			"variants": [
@@ -168,7 +171,8 @@
 						"coin": "gp"
 					},
 					"entries": [
-						"This lens has an opalescent sheen when held up to light. The lens subtly outlines {@condition hidden} doors and {@condition concealed} hazards, granting you a +2 item bonus to {@skill Perception} checks to spot such features while Searching. Even if you aren't Searching, you get a check to find traps that normally require you to {@action Search}."
+						"This lens has an opalescent sheen when held up to light. The lens subtly outlines {@condition hidden} doors and {@condition concealed} hazards, granting you a +2 item bonus to {@skill Perception} checks to spot such features while Searching.",
+						"Even if you aren't Searching, you get a check to find traps that normally require you to {@action Search}."
 					]
 				}
 			]
@@ -191,7 +195,7 @@
 				"coin": "gp"
 			},
 			"usage": "affixed to headgear",
-			"bulk": "\u2014",
+			"bulk": "\u2013",
 			"activate": {
 				"activity": {
 					"number": 1,
@@ -203,8 +207,9 @@
 			},
 			"category": "Talisman",
 			"entries": [
-				"Via some strange alchemical reaction with the gasses of Terwa Lake, the cloud dragon Ixamè's eyeballs have shriveled into sky-blue gems. The dragon's sense of vision isn't impaired, and her eyes can't be removed from her head until she's destroyed. Once removed, each gem functions as a special talisman.",
-				"Ixamè's eye sparkles when it's in an area of fog or mist. Activating the talisman enables you to see clearly through fog and mist for 1 minute; any creature {@condition concealed} only by fog or mist is no longer {@condition concealed} to you. If such a creature was relying on the concealment to {@action Hide} or {@action Sneak}, this also means it's no longer {@condition hidden} or {@condition undetected}."
+				"Via some strange alchemical reaction with the gasses of Terwa Lake, the cloud dragon Ixamè's eyeballs have shriveled into sky-blue gems.",
+				"The dragon's sense of vision isn't impaired, and her eyes can't be removed from her head until she's destroyed.",
+				"Once removed, each gem functions as a special talisman. Ixamè's eye sparkles when it's in an area of fog or mist. Activating the talisman enables you to see clearly through fog and mist for 1 minute; any creature {@condition concealed} only by fog or mist is no longer {@condition concealed} to you. If such a creature was relying on the concealment to {@action Hide} or {@action Sneak}, this also means it's no longer {@condition hidden} or {@condition undetected}."
 			]
 		},
 		{
@@ -231,12 +236,13 @@
 			},
 			"category": "Consumable",
 			"entries": [
-				"This mask is made from the gills of the red-rib salamander, an amphibious creature unique to Terwa Lake. Once activated, the mask intensifies the odors of gaseous toxins, allowing you to automatically detect toxic fumes within 30 feet and their approximate source (making the source {@condition undetected} instead \nof {@condition unnoticed}). You can't wear other masks while you're wearing a red-rib gill mask. After Activating the mask, you also gain the listed item bonus to Fortitude saves against inhaled effects; this bonus is increased against the deadly volcanic gas known around Terwa Lake as Dead Man's Breath, and possibly against other similar volcanic gases at the GM's discretion."
+				"This mask is made from the gills of the red-rib salamander, an amphibious creature unique to Terwa Lake. Once activated, the mask intensifies the odors of gaseous toxins, allowing you to automatically detect toxic fumes within 30 feet and their approximate source (making the source {@condition undetected} instead of {@condition unnoticed}). You can't wear other masks while you're wearing a red-rib gill mask.",
+				"After Activating the mask, you also gain the listed item bonus to Fortitude saves against {@trait inhaled} effects; this bonus is increased against the deadly volcanic gas known around Terwa Lake as Dead Man's Breath, and possibly against other similar volcanic gases at the GM's discretion."
 			],
 			"generic": "G",
 			"variants": [
 				{
-					"name": "lesser",
+					"variantType": "lesser",
 					"level": 2,
 					"price": {
 						"amount": 7,
@@ -247,7 +253,7 @@
 					]
 				},
 				{
-					"name": "moderate",
+					"variantType": "moderate",
 					"level": 8,
 					"price": {
 						"amount": 100,
@@ -258,7 +264,7 @@
 					]
 				},
 				{
-					"name": "greater",
+					"variantType": "greater",
 					"level": 14,
 					"price": {
 						"amount": 700,

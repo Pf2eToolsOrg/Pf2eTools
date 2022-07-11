@@ -72,7 +72,7 @@
 			"type": "array"
 		},
 		"archetype": {
-			"type": "array"
+			"$ref": "archetypes.json#/properties/archetype"
 		},
 		"feat": {
 			"$ref": "feats.json#/properties/feat"
@@ -99,6 +99,9 @@
 			"$ref": "actions.json#/properties/action"
 		},
 		"creature": {
+			"$ref": "bestiary.json#/properties/creature"
+		},
+		"creatureFluff": {
 			"type": "array"
 		},
 		"condition": {

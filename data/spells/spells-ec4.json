@@ -9,7 +9,6 @@
 				"uncommon",
 				"necromancy"
 			],
-			"school": "N",
 			"traditions": [
 				"arcane",
 				"divine",
@@ -20,17 +19,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "touch",
-				"distance": {
-					"type": "touch",
-					"amount": 1
-				}
+				"type": "touch",
+				"number": 1
 			},
 			"targets": "1 creature",
 			"entries": [
@@ -46,9 +42,8 @@
 				}
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 1,
-					"entries": [
+				"plusX": {
+					"1": [
 						"The piercing damage increases by {@dice 2d6}, and the {@condition persistent damage ||persistent bleed damage} on a critical increases by 1."
 					]
 				}
@@ -65,7 +60,6 @@
 				"mental",
 				"visual"
 			],
-			"school": "E",
 			"traditions": [
 				"arcane"
 			],
@@ -74,10 +68,10 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"area": {
 				"types": [
@@ -116,7 +110,6 @@
 				"necromancy",
 				"negative"
 			],
-			"school": "N",
 			"traditions": [
 				"arcane",
 				"divine",
@@ -127,17 +120,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true
-				}
+				[
+					"M",
+					"S"
+				]
 			],
 			"range": {
-				"entry": "touch",
-				"distance": {
-					"type": "touch",
-					"amount": 1
-				}
+				"type": "touch",
+				"number": 1
 			},
 			"targets": "one object or one 10-footsquare area",
 			"duration": {
@@ -161,9 +151,8 @@
 				}
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 2,
-					"entries": [
+				"plusX": {
+					"2": [
 						"Increase the radiation's negative damage by {@dice 1d6}."
 					]
 				}

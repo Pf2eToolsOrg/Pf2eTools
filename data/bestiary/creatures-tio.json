@@ -2,7 +2,7 @@
 	"_meta": {
 		"dependencies": {
 			"creature": [
-				"Bst"
+				"B1"
 			]
 		},
 		"internalCopies": [
@@ -10,7 +10,7 @@
 		],
 		"otherSources": {
 			"creature": {
-				"Bst": "TiO"
+				"B1": "TiO"
 			}
 		}
 	},
@@ -192,7 +192,9 @@
 							"When the boar is reduced to 0 Hit Points, it can use its reaction to remain conscious with 1 Hit Point, but it gains the {@condition wounded|CRB|wounded 1} condition (or increases the {@condition wounded} value by 1 if it already has that condition). It can't use this ability at {@condition wounded|CRB|wounded 3}."
 						],
 						"name": "Ferocity",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				],
 				"bot": [
@@ -491,7 +493,9 @@
 							"When hiding in water, the crocodile can move up to 35 feet, traveling on water and land, up to a creature that doesn't see it and doesn't know where it is and make a {@action Strike} against that creature. The creature is {@condition flat-footed} against the attack."
 						],
 						"name": "Aquatic Ambush",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
 						"activity": {
@@ -515,7 +519,9 @@
 							"After succeeding at a jaws {@action Strike}, the crocodile can use this action to automatically give the target the {@condition grabbed} condition until the end of the crocodile's next turn."
 						],
 						"name": "Grab",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				]
 			}
@@ -1287,7 +1293,7 @@
 			"page": 29,
 			"_copy": {
 				"name": "Shadow",
-				"source": "Bst",
+				"source": "B1",
 				"_mod": {
 					"abilities.mid": [
 						{
@@ -1411,7 +1417,9 @@
 							"The dragon mage deals an extra {@dice 1d6} damage to creatures that have the {@condition flat-footed} condition."
 						],
 						"name": "Sneak Attack",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				]
 			}
@@ -1518,7 +1526,9 @@
 							"The kobold scout deals an extra {@dice 1d6} damage to creatures that have the {@condition flat-footed} condition."
 						],
 						"name": "Sneak Attack",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				]
 			}
@@ -1625,7 +1635,9 @@
 							"The kobold scout deals an extra {@dice 1d6} damage to creatures that have the {@condition flat-footed} condition."
 						],
 						"name": "Sneak Attack",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				]
 			}
@@ -1716,7 +1728,9 @@
 							"The kobold trapmaster deals an extra {@dice 1d6} damage to creatures that have the {@condition flat-footed} condition."
 						],
 						"name": "Sneak Attack",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
 						"activity": {
@@ -1827,7 +1841,9 @@
 							"If a creature Kotgar can reach with a melee attack makes a ranged attack, uses an action with the {@trait manipulate} or {@trait move} trait, or leaves a square on its turn, Kotgar can use his reaction to make a melee {@action Strike} against that creature. If his attack is a critical hit and the foe was using an action with the {@trait manipulate} trait, their action doesn't have {@trait any} effect."
 						],
 						"name": "Attack of Opportunity",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				],
 				"bot": [
@@ -2042,7 +2058,9 @@
 							"When the Kurnugian jackal succeeds at their jaws {@action Strike}, they can use this action immediately after to automatically knock over the target, giving the target the {@condition prone} condition."
 						],
 						"name": "Knockdown",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
 						"activity": {
@@ -2145,7 +2163,9 @@
 							"When the leopard succeeds at its jaws {@action Strike}, it can use this action to automatically give the target the {@condition grabbed} condition until the end of its next turn."
 						],
 						"name": "Grab",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
 						"activity": {
@@ -2172,7 +2192,9 @@
 							"The leopard deals an extra {@dice 1d4} damage to creatures that have the {@condition flat-footed} condition."
 						],
 						"name": "Sneak Attack",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				]
 			}
@@ -2594,7 +2616,9 @@
 							"Omblin deals an extra {@dice 1d6} to creatures that have the {@condition flat-footed} condition."
 						],
 						"name": "Sneak Attack",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
 						"entries": [
@@ -2696,7 +2720,9 @@
 							"When the orc is reduced to 0 Hit Points, they can use their reaction to remain conscious with 1 Hit Point, but they gain the {@condition wounded|CRB|wounded 1} condition (or increases the {@condition wounded} value by 1 if they already have that condition). They can't use this ability at {@condition wounded|CRB|wounded 3}."
 						],
 						"name": "Ferocity",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				],
 				"bot": [
@@ -2800,7 +2826,9 @@
 							"When the orc is reduced to 0 Hit Points, they can use their reaction to remain conscious with 1 Hit Point, but they gain the {@condition wounded|CRB|wounded 1} condition (or increases the {@condition wounded} value by 1 if they already have that condition). They can't use this ability at {@condition wounded|CRB|wounded 3}."
 						],
 						"name": "Ferocity",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				]
 			}
@@ -2895,7 +2923,9 @@
 							"When the owlbear succeeds at its talon {@action Strike}, it can use this action immediately after to automatically give the target the {@condition grabbed} condition until the end of its next turn."
 						],
 						"name": "Grab",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
 						"activity": {
@@ -3459,7 +3489,9 @@
 							"Bomela recovers 20 Hit Points at the start of her turn unless she has taken acid or fire damage since her last turn. She can't die unless her regeneration is deactivated when she's reduced to 0 HP."
 						],
 						"name": "Regeneration",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				],
 				"bot": [
@@ -3472,7 +3504,9 @@
 							"If Bomela succeeds at two claw Strikes against the same creature in the same turn, she can use this ability to automatically deal claw {@action Strike} damage to that creature."
 						],
 						"name": "Rend",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				]
 			}
@@ -3849,7 +3883,9 @@
 					{
 						"entries": [],
 						"name": "Knockdown",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
 						"activity": {
@@ -3860,7 +3896,9 @@
 							"When the wolf succeeds at its jaws {@action Strike}, it can use this action to automatically knock over the target, giving it the {@condition prone} condition."
 						],
 						"name": "Knockdown",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
 						"entries": [
@@ -3956,7 +3994,9 @@
 							"When the zombie succeeds at its jaws {@action Strike}, it can use this action to automatically give the target the {@condition grabbed} condition until the end of its next turn."
 						],
 						"name": "Grab",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
 						"activity": {

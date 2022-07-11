@@ -28,7 +28,11 @@
 						]
 					},
 					"special": {
-						"type": "string"
+						"type": "array",
+						"items": {
+							"$ref": "entry.json"
+						},
+						"minItems": 1
 					},
 					"access": {
 						"type": "string"
@@ -53,29 +57,7 @@
 						"$ref": "utils.json#/definitions/abilityBlock"
 					},
 					"abilityMods": {
-						"type": "object",
-						"properties": {
-							"Str": {
-								"type": "integer"
-							},
-							"Dex": {
-								"type": "integer"
-							},
-							"Con": {
-								"type": "integer"
-							},
-							"Int": {
-								"type": "integer"
-							},
-							"Wis": {
-								"type": "integer"
-							},
-							"Cha": {
-								"type": "integer"
-							}
-						},
-						"minProperties": 6,
-						"additionalProperties": false
+						"$ref": "utils.json#/definitions/abilityMods"
 					},
 					"hp": {
 						"type": "integer",
@@ -372,29 +354,7 @@
 									"type": "string"
 								},
 								"abilityMods": {
-									"type": "object",
-									"properties": {
-										"Str": {
-											"type": "integer"
-										},
-										"Dex": {
-											"type": "integer"
-										},
-										"Con": {
-											"type": "integer"
-										},
-										"Int": {
-											"type": "integer"
-										},
-										"Wis": {
-											"type": "integer"
-										},
-										"Cha": {
-											"type": "integer"
-										}
-									},
-									"minProperties": 6,
-									"additionalProperties": false
+									"$ref": "utils.json#/definitions/abilityMods"
 								},
 								"ac": {
 									"type": "object",

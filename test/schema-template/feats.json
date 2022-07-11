@@ -122,7 +122,11 @@
 						}
 					},
 					"special": {
-						"type": "string"
+						"type": "array",
+						"items": {
+							"$ref": "entry.json"
+						},
+						"minItems": 1
 					},
 					"add_hash": {
 						"type": "string"

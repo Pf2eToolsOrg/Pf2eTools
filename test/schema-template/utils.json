@@ -28,9 +28,9 @@
 				"AoE4",
 				"AoE5",
 				"AoE6",
-				"Bst",
-				"Bst2",
-				"Bst3",
+				"B1",
+				"B2",
+				"B3",
 				"CRB",
 				"EC0",
 				"EC1",
@@ -573,6 +573,48 @@
 			},
 			"additionalProperties": false
 		},
+		"abilityMods": {
+			"type": "object",
+			"propertyNames": {
+				"type": "string",
+				"enum": [
+					"str",
+					"dex",
+					"con",
+					"int",
+					"wis",
+					"cha"
+				]
+			},
+			"minProperties": 6,
+			"additionalProperties": {
+				"type": "integer",
+				"minimum": -5,
+				"maximum": 12
+			}
+		},
+		"savingThrows": {
+			"type": "object",
+			"propertyNames": {
+				"enum": [
+					"fort",
+					"ref",
+					"will"
+				]
+			},
+			"additionalProperties": {
+				"type": "object",
+				"properties": {
+					"default": {
+						"type": "integer",
+						"minimum": 0
+					}
+				},
+				"additionalProperties": false,
+				"minProperties": 1
+			},
+			"minProperties": 1
+		},
 		"anyTrait": {
 			"type": "string",
 			"description": "Any Trait in the game.",
@@ -597,6 +639,9 @@
 				},
 				{
 					"$ref": "#/definitions/ancestryName"
+				},
+				{
+					"$ref": "#/definitions/creatureTypes"
 				},
 				{
 					"$ref": "#/definitions/alignmentTraits"
@@ -628,8 +673,18 @@
 						"spellshot",
 						"unstable",
 						"reckless",
+						"trap",
+						"structure",
+						"saggorak",
+						"cursed",
+						"mechanical",
+						"potion",
+						"tattoo",
+						"consumable",
 						"verbal",
 						"open",
+						"snare",
+						"talisman",
 						"rage",
 						"lineage",
 						"metamagic",
@@ -687,6 +742,7 @@
 						"humanoid",
 						"construct",
 						"amphibious",
+						"precious",
 						"aeon",
 						"agile",
 						"finesse",
@@ -703,7 +759,9 @@
 						"celestial",
 						"ethereal",
 						"phantom",
-						"astral"
+						"astral",
+						"propulsive",
+						"disarm"
 					]
 				},
 				{
@@ -714,19 +772,32 @@
 				},
 				{
 					"type": "string",
-					"pattern": "Additive \\d"
-				},
-				{
-					"type": "string",
-					"pattern": "^reach \\d+ feet$"
-				},
-				{
-					"type": "string",
-					"pattern": "^deadly \\d*d\\d+$"
-				},
-				{
-					"type": "string",
-					"pattern": "^range \\d+ feet$"
+					"oneOf": [
+						{
+							"pattern": "^volley \\d+ feet$"
+						},
+						{
+							"pattern": "Additive \\d"
+						},
+						{
+							"pattern": "^reach \\d+ feet$"
+						},
+						{
+							"pattern": "^deadly \\d*d\\d+$"
+						},
+						{
+							"pattern": "^range( increment)? \\d+ feet$"
+						},
+						{
+							"pattern": "^range \\d+ feet$"
+						},
+						{
+							"pattern": "^reload \\d+$"
+						},
+						{
+							"pattern": "^thrown \\d+ feet$"
+						}
+					]
 				}
 			]
 		},
@@ -813,6 +884,43 @@
 				"fey",
 				"sprite",
 				"strix"
+			]
+		},
+		"creatureTypes": {
+			"type": "string",
+			"enum": [
+				"aberration",
+				"animal",
+				"astral",
+				"beast",
+				"celestial",
+				"construct",
+				"dragon",
+				"elemental",
+				"ethereal",
+				"fey",
+				"fiend",
+				"fungus",
+				"humanoid",
+				"monitor",
+				"ooze",
+				"plant",
+				"spirit",
+				"undead"
+			]
+		},
+		"languages": {
+			"type": "string",
+			"enum": [
+				"Common",
+				"Infernal",
+				"Varisian",
+				"Anadi",
+				"Orcish",
+				"Goblin",
+				"Undercommon",
+				"Draconic",
+				"Mwangi"
 			]
 		},
 		"skillName": {
@@ -1021,7 +1129,9 @@
 				"chaotic",
 				"lawful",
 				"mental",
-				"persistent"
+				"persistent",
+				"versatile P",
+				"versatile S"
 			]
 		},
 		"damageTypeTags": {
@@ -1263,11 +1373,104 @@
 						]
 					},
 					"minItems": 1
+				},
+				"cost": {
+					"type": "string"
+				},
+				"generic": {
+					"type": "boolean"
+				},
+				"special": {
+					"type": "array",
+					"items": {
+						"$ref": "entry.json"
+					},
+					"minItems": 1
 				}
 			},
 			"additionalProperties": false,
 			"required": [
 				"entries"
+			]
+		},
+		"afflictionBlock": {
+			"properties": {
+				"type": {
+					"const": "affliction"
+				},
+				"name": {
+					"type": "string"
+				},
+				"source": {
+					"$ref": "#/definitions/sourceList"
+				},
+				"page": {
+					"type": "integer",
+					"minimum": 0
+				},
+				"entries": {
+					"type": "array",
+					"items": {
+						"$ref": "entry.json"
+					},
+					"minItems": 1
+				},
+				"level": {
+					"type": "integer"
+				},
+				"note": {
+					"type": "string"
+				},
+				"DC": {
+					"type": "integer"
+				},
+				"onset": {
+					"type": "string"
+				},
+				"maxDuration": {
+					"type": "string"
+				},
+				"traits": {
+					"type": "array",
+					"items": {
+						"type": "string",
+						"anyOf": [
+							{
+								"$ref": "#/definitions/anyTrait"
+							}
+						]
+					},
+					"minItems": 1
+				},
+				"stages": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"stage": {
+								"type": "integer"
+							},
+							"entry": {
+								"type": "string"
+							},
+							"duration": {
+								"type": "string"
+							}
+						},
+						"additionalProperties": false,
+						"required": [
+							"stage",
+							"entry"
+						]
+					},
+					"minItems": 1
+				}
+			},
+			"additionalProperties": false,
+			"required": [
+				"type",
+				"name",
+				"stages"
 			]
 		},
 		"attackBlock": {

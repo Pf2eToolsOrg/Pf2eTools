@@ -1,6 +1,590 @@
 {
 	"ability": [
 		{
+			"name": "All-Around Vision",
+			"source": "B1",
+			"page": 342,
+			"entries": [
+				"This monster can see in all directions simultaneously, and therefore can't be flanked."
+			]
+		},
+		{
+			"name": "Aquatic Ambush",
+			"source": "B1",
+			"page": 342,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"requirements": "The monster is hiding in water and a creature that hasn't detected it is within the listed number of feet.",
+			"entries": [
+				"The monster moves up to its swim Speed + 10 feet toward the triggering creature, traveling on water and on land. Once the creature is in reach, the monster makes a {@action Strike|CRB} against it. The creature is {@condition flat-footed} against this {@action Strike|CRB}."
+			]
+		},
+		{
+			"name": "At-Will Spells",
+			"source": "B1",
+			"page": 342,
+			"entries": [
+				"The monster can cast its at-will spells any number of times without using up spell slots."
+			]
+		},
+		{
+			"name": "Attack of Opportunity",
+			"source": "B1",
+			"page": 342,
+			"activity": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"trigger": "A creature within the monster's reach uses a manipulate action or a move action, makes a ranged attack, or leaves a square during a move action it's using.",
+			"entries": [
+				"The monster attempts a melee {@action Strike} against the triggering creature. If the attack is a critical hit and the trigger was a manipulate action, the monster disrupts that action. This {@action Strike} doesn't count toward the monster's multiple attack penalty, and its multiple attack penalty doesn't apply to this {@action Strike}."
+			]
+		},
+		{
+			"name": "Aura",
+			"source": "B1",
+			"page": 342,
+			"entries": [
+				"A monster's aura automatically affects everything within a specified emanation around that monster. The monster doesn't need to spend actions on the aura; rather, the aura's effects are applied at specific times, such as when a creature ends its turn in the aura or when creatures enter the aura.",
+				"If an aura does nothing but deal damage, its entry lists only the radius, damage, and saving throw. Such auras deal this damage to a creature when the creature enters the aura and when a creature starts its turn in the aura. A creature can take damage from the aura only once per round. The GM might determine that a monster's aura doesn't affect its own allies. For example, a creature might be immune to a monster' frightful presence if they have been around each other for a long time."
+			]
+		},
+		{
+			"name": "Buck",
+			"source": "B1",
+			"page": 342,
+			"activity": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"trigger": "A creature Mounts or uses the Command an Animal action while riding the monster.",
+			"entries": [
+				"Most monsters that serve as mounts can attempt to buck off unwanted or annoying riders, but most mounts will not use this reaction against a trusted creature unless the mounts are spooked or mistreated. The triggering creature must succeed at a Reflex saving throw against the listed DC or fall off the creature and land {@condition prone}. If the save is a critical failure, the triggering creature also takes {@dice 1d6} bludgeoning damage in addition to the normal damage for the fall."
+			]
+		},
+		{
+			"name": "Butter Up",
+			"source": "GMG",
+			"page": 204,
+			"traits": [
+				"emotion",
+				"mental"
+			],
+			"entries": [
+				"When someone eats a dish or treat made by this NPC, the NPC can attempt a {@skill Lore||Baking Lore}, {@skill Lore||Cooking Lore}, or similar check against that creature's Will DC, with the same results as the {@action Make an Impression} action of {@skill Diplomacy}. If more than one creature partakes, the NPC uses the same check result against each creature's Will DC."
+			]
+		},
+		{
+			"name": "Call Your Bluff",
+			"source": "GMG",
+			"page": 205,
+			"entries": [
+				"When gambling, the NPC may use {@skill Lore||Games Lore} to {@action Sense Motive} instead of {@skill Perception}."
+			]
+		},
+		{
+			"name": "Catch Rock",
+			"source": "B1",
+			"page": 342,
+			"activity": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"requirements": "The monster must have a free hand but can Release anything it's holding as part of this reaction.",
+			"trigger": "The monster is targeted with a thrown rock Strike or a rock would fall on the monster.",
+			"entries": [
+				"The monster gains a +4 circumstance bonus to its AC against the triggering attack or to any defense against the falling rock. If the attack misses or the monster successfully defends against the falling rock, the monster catches the rock, takes no damage, and is now holding the rock."
+			]
+		},
+		{
+			"name": "Change Shape",
+			"source": "B1",
+			"page": 342,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"traits": [
+				"concentrate",
+				"[magical tradition]",
+				"polymorph",
+				"transmutation"
+			],
+			"entries": [
+				"The monster changes its shape indefinitely. It can use this action again to return to its natural shape or adopt a new shape. Unless otherwise noted, a monster cannot use Change Shape to appear as a specific individual. Using Change Shape counts as creating a disguise for the Impersonate use of {@skill Deception}. The monster's transformation automatically defeats Perception DCs to determine whether the creature is a member of the ancestry or creature type into which it transformed, and it gains a +4 status bonus to its {@skill Deception} DC to prevent others from seeing through its disguise. Change Shape abilities specify what shapes the monster can adopt. The monster doesn't gain any special abilities of the new shape, only its physical form. For example, in each shape, it replaces its normal Speeds and Strikes, and might potentially change its senses or size. Any changes are listed in its stat block."
+			]
+		},
+		{
+			"name": "Child Care",
+			"source": "GMG",
+			"page": 205,
+			"entries": [
+				"When treating infants, the NPC can use their {@skill Lore||Midwifery Lore} skill in place of {@skill Medicine}, and can use {@filter Medicine's trained actions|actions||Trained=Medicine} on infants."
+			]
+		},
+		{
+			"name": "Constant Spells",
+			"source": "B1",
+			"page": 342,
+			"entries": [
+				"A constant spell affects the monster without the monster needing to cast it, and its duration is unlimited. If a constant spell gets counteracted, the monster can reactivate it by spending the normal spellcasting actions the spell requires."
+			]
+		},
+		{
+			"name": "Constrict",
+			"source": "B1",
+			"page": 342,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"entries": [
+				"The monster deals the listed amount of damage to any number of creatures {@condition grabbed} or {@condition restrained} by it. Each of those creatures can attempt a basic Fortitude save with the listed DC."
+			]
+		},
+		{
+			"name": "Coven",
+			"source": "B1",
+			"page": 342,
+			"traits": [
+				"divination",
+				"mental",
+				"occult"
+			],
+			"entries": [
+				"This monster can form a coven with two or more other creatures who also have the coven ability. This involves performing an 8-hour ceremony with all prospective coven members. After the coven is formed, each of its members gains elite adjustments, adjusting their levels accordingly. Coven members can sense other members' locations and conditions by spending a single action, which has the {@trait concentrate}, and can sense what another coven member is sensing as a two-action activity, which has the {@trait concentrate} as well.",
+				"Covens also grant spells and rituals to their members, but these can be cast only in cooperation between three coven members who are all within 30 feet of one another. A coven member can contribute to a coven spell with a single-action spellcasting activity that has a single verbal component. If two coven members have contributed these actions within the last round, a third member can cast a coven spell on her turn by spending the normal spellcasting actions. A coven can cast its coven spells an unlimited number of times but can cast only one coven spell each round. All covens grant the 8th-level {@spell baleful polymorph|CRB} spell and all the following spells, which the coven can cast at any level up to 5th: {@spell augury|CRB}, {@spell charm|CRB}, {@spell clairaudience|CRB}, {@spell clairvoyance|CRB}, {@spell dream message|CRB}, {@spell illusory disguise|CRB}, {@spell illusory scene|CRB}, {@spell prying eye|CRB}, and {@spell talking corpse|CRB}. Individual creatures with the coven ability also grant additional spells to any coven they join. A coven can also cast the {@ritual control weather} ritual, with a DC of 23 instead of the standard DC.",
+				"If a coven member leaving the coven or the death of a coven member brings the coven below three members, the remaining members keep their elite adjustments for 24 hours, but without enough members to contribute the necessary actions, they can't cast coven spells."
+			]
+		},
+		{
+			"name": "Curse of the Werecreature",
+			"source": "B1",
+			"page": 329,
+			"traits": [
+				"curse",
+				"necromancy",
+				"primal"
+			],
+			"entries": [
+				"This curse affects only humanoids.",
+				{
+					"type": "affliction",
+					"savingThrow": "Fortitude",
+					"DC": "is the standard DC for the {@table DCs by Level||werecreature's new level \u2013 1}",
+					"entries": [
+						"On each full moon, the cursed creature must succeed at another Fortitude save or turn into the same kind of {@filter werecreature|bestiary||creature=werecreature} until dawn. The creature is under the GM's control and goes on a rampage for half the night before falling {@condition unconscious} until dawn"
+					]
+				}
+			]
+		},
+		{
+			"name": "Darkvision",
+			"source": "B1",
+			"page": 343,
+			"entries": [
+				"A monster with darkvision can see perfectly well in areas of darkness and dim light, though such vision is in black and white only. Some forms of magical darkness, such as a 4th-level {@spell darkness|CRB} spell, block normal {@ability darkvision}. A monster with greater darkvision, however, can see through even these forms of magical darkness."
+			]
+		},
+		{
+			"name": "Disease",
+			"source": "B1",
+			"page": 343,
+			"entries": [
+				"When a creature is exposed to a monster's disease, it attempts a Fortitude save or succumbs to the disease. The level of a disease is the level of the monster inflicting the disease. The disease follows the rules for afflictions found on page 457 of the Pathfinder Core Rulebook."
+			]
+		},
+		{
+			"name": "Engulf",
+			"source": "B1",
+			"page": 343,
+			"activity": {
+				"number": 2,
+				"unit": "action"
+			},
+			"entries": [
+				"The monster {@action Stride||Strides} up to double its Speed and can move through the spaces of any creatures in its path. Any creature of the monster's size or smaller whose space the monster moves through can attempt a Reflex save with the listed DC to avoid being engulfed. A creature unable to act automatically critically fails this save. If a creature succeeds at its save, it can choose to be either pushed aside (out of the monster's path) or pushed in front of the monster to the end of the monster's movement. The monster can attempt to Engulf the same creature only once in a single use of Engulf. The monster can contain as many creatures as can fit in its space.",
+				"A creature that fails its save is pulled into the monster's body. It is {@condition grabbed}, is {@condition slowed} 1, and has to hold its breath or start suffocating. The creature takes the listed amount of damage when first engulfed and at the end of each of its turns while it's engulfed. An engulfed creature can get free by Escaping against the listed escape DC. An engulfed creature can attack the monster engulfing it, but only with unarmed attacks or with weapons of light Bulk or less. The engulfing creature is {@condition flat-footed} against the attack. If the monster takes piercing or slashing damage equaling or exceeding the listed Rupture value from a single attack or spell, the engulfed creature cuts itself free. A creature that gets free by either method can immediately breathe and exits the swallowing monster's space.",
+				"If the monster dies, all creatures it has engulfed are automatically released as the monster's form loses cohesion."
+			]
+		},
+		{
+			"name": "Fast Healing",
+			"source": "B1",
+			"page": 343,
+			"entries": [
+				"A monster with this ability regains the given number of Hit Points each round at the beginning of its turn."
+			]
+		},
+		{
+			"name": "Ferocity",
+			"source": "B1",
+			"page": 343,
+			"activity": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"trigger": "The monster is reduced to 0 HP.",
+			"entries": [
+				"The monster avoids being knocked out and remains at 1 HP, but its {@condition wounded} value increases by 1. When it is {@condition wounded} 3, it can no longer use this ability."
+			]
+		},
+		{
+			"name": "Find Footing",
+			"source": "GMG",
+			"page": 205,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"traits": [
+				"concentrate"
+			],
+			"entries": [
+				"The NPC attempts an {@skill Lore||Architecture Lore}, {@skill Lore||Engineering Lore}, or similar skill check to find a stable path across uneven ground. This grants them and anyone they share this information with a +2 circumstance bonus on {@skill Acrobatics} checks to {@action Balance} across that ground."
+			]
+		},
+		{
+			"name": "Frightful Presence",
+			"source": "B1",
+			"page": 343,
+			"traits": [
+				"aura",
+				"emotion",
+				"fear",
+				"mental"
+			],
+			"entries": [
+				"A creature that first enters the area must attempt a Will save. Regardless of the result of the saving throw, the creature is temporarily immune to this monster's Frightful Presence for 1 minute.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "The creature is unaffected by the presence.",
+						"Success": "The creature is {@condition frightened} 1.",
+						"Failure": "The creature is {@condition frightened} 2.",
+						"Critical Failure": "The creature is {@condition frightened} 4."
+					}
+				}
+			]
+		},
+		{
+			"name": "Golem Antimagic",
+			"source": "B1",
+			"page": 184,
+			"entries": [
+				"A golem is immune to spells and magical abilities other than its own, but each type of golem is affected by a few types of magic in special ways. These exceptions are listed in shortened form in the golem's stat block, with the full rules appearing here. If an entry lists multiple types (such as \"cold and water\"), either type of spell can affect the golem.",
+				{
+					"type": "list",
+					"items": [
+						"{@bold Harmed By} Any magic of this type that targets the golem causes it to take the listed amount of damage (this damage has no type) instead of the usual effect. If the golem starts its turn in an area of magic of this type or is affected by a persistent effect of the appropriate type, it takes the damage listed in the parenthetical.",
+						"{@bold Healed By} Any magic of this type that targets the golem makes the golem lose the {@condition slowed} condition and gain HP equal to half the damage the spell would have dealt. If the golem starts its turn in an area of this type of magic, it gains the HP listed in the parenthetical.",
+						"{@bold Slowed By} Any magic of this type that targets the golem causes it to be {@condition slowed 1} for {@dice 2d6} rounds instead of the usual effect. If the golem starts its turn in an area of this type of magic, it's {@condition slowed 1} for that round.",
+						"{@bold Vulnerable To} Each golem is vulnerable to one or more specific spells, with the effects described in its stat block."
+					]
+				}
+			]
+		},
+		{
+			"name": "Gone Fishing",
+			"source": "GMG",
+			"page": 205,
+			"entries": [
+				"The NPC can use {@skill Lore||Fishing Lore} to {@action Track} aquatic creatures or to {@action Aid} checks to {@action Track} them."
+			]
+		},
+		{
+			"name": "Grab",
+			"source": "B1",
+			"page": 343,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"requirements": "The monster's last action was a success with a Strike that lists Grab in its damage entry, or it has a creature grabbed using this action.",
+			"entries": [
+				"The monster automatically Grabs the target until the end of the monster's next turn. The creature is {@condition grabbed} by whichever body part the monster attacked with, and that body part can't be used to {@action Strike|CRB} creatures until the grab is ended. Using Grab extends the duration of the monster's Grab until the end of its next turn for all creatures {@condition grabbed} by it. A {@condition grabbed} creature can use the {@action Escape|CRB} action to get out of the grab, and the Grab ends for a {@condition grabbed} creatures if the monster moves away from it."
+			]
+		},
+		{
+			"name": "Greater Constrict",
+			"source": "B1",
+			"page": 343,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"entries": [
+				"The monster deals the listed amount of damage to any number of creatures {@condition grabbed} or {@condition restrained} by it. Each of those creatures can attempt a basic Fortitude save with the listed DC. A creature that fails this save falls {@condition unconscious}, and a creature that succeeds is then temporarily immune to falling {@condition unconscious} from Greater Constrict for 1 minute."
+			]
+		},
+		{
+			"name": "Improved Grab",
+			"source": "B1",
+			"page": 343,
+			"activity": {
+				"number": 1,
+				"unit": "free"
+			},
+			"entries": [
+				"The monster can use {@ability Grab|BST} as a free action triggered by a hit with its initial attack. A monster with {@ability Improved Grab} still needs to spend an action to extend the duration for creatures it already has {@condition grabbed}."
+			]
+		},
+		{
+			"name": "Improved Knockdown",
+			"source": "B1",
+			"page": 343,
+			"activity": {
+				"number": 1,
+				"unit": "free"
+			},
+			"entries": [
+				"The monster can use {@ability Knockdown|BST} as a free action triggered by a hit with its initial attack."
+			]
+		},
+		{
+			"name": "Improved Push",
+			"source": "B1",
+			"page": 343,
+			"activity": {
+				"number": 1,
+				"unit": "free"
+			},
+			"entries": [
+				"The monster can use {@ability Push|BST} as a free action triggered by a hit with its initial attack."
+			]
+		},
+		{
+			"name": "Knockdown",
+			"source": "B1",
+			"page": 343,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"requirements": "The monster's last action was a success with a Strike that lists Knockdown in its damage entry.",
+			"entries": [
+				"The monster knocks the target {@condition prone}."
+			]
+		},
+		{
+			"name": "Lifesense",
+			"source": "B1",
+			"page": 343,
+			"entries": [
+				"Lifesense allows a monster to sense the vital essence of living and undead creatures within the listed range. The sense can distinguish between the positive energy animating living creatures and the negative energy animating undead creatures, much as sight distinguishes colors."
+			]
+		},
+		{
+			"name": "Light Blindness",
+			"source": "B1",
+			"page": 343,
+			"entries": [
+				"When first exposed to bright light, the monster is {@condition blinded} until the end of its next turn. After this exposure, light doesn't blind the monster again until after it spends 1 hour in {@spell darkness|CRB}. However, as long as the monster is in an area of bright light, it's {@condition dazzled}."
+			]
+		},
+		{
+			"name": "Local Lore",
+			"source": "GMG",
+			"page": 205,
+			"entries": [
+				"When they first meet a given person from their home settlement, the NPC can automatically attempt one check to {@action Recall Knowledge} about that person. This uses the {@skill Lore} skill for that settlement."
+			]
+		},
+		{
+			"name": "Low-Light Vision",
+			"source": "B1",
+			"page": 343,
+			"entries": [
+				"The monster can see in dim light as though it were bright light, so it ignores the {@condition concealed} condition due to dim light."
+			]
+		},
+		{
+			"name": "Moon Frenzy",
+			"source": "B1",
+			"page": 329,
+			"traits": [
+				"polymorph",
+				"primal",
+				"transmutation"
+			],
+			"entries": [
+				"When a full moon appears in the night sky, the werecreature must enter hybrid form, can't {@ability Change Shape} thereafter, becomes one size larger, increases its reach by 5 feet, and increases the damage of its jaws by 2. When the moon sets or the sun rises, the werecreature returns to humanoid form and is fatigued for 2d4 hours."
+			]
+		},
+		{
+			"name": "Negative Healing",
+			"source": "B2",
+			"page": 305,
+			"entries": [
+				"A creature with negative healing draws health from negative energy rather than positive energy. It is damaged by positive damage and is not healed by positive healing effects. It does not take negative damage, and it is healed by negative effects that heal undead."
+			]
+		},
+		{
+			"name": "Poison",
+			"source": "B1",
+			"page": 343,
+			"entries": [
+				"When a creature is exposed to a monster's poison, it attempts a Fortitude save to avoid becoming poisoned. The level of a poison is the level of the monster inflicting the poison. The poison follows the rules for afflictions found on page 457 of the Pathfinder Core Rulebook."
+			]
+		},
+		{
+			"name": "Push",
+			"source": "B1",
+			"page": 343,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"requirements": "The monster's last action was a success with a Strike that lists Push in its damage entry.",
+			"entries": [
+				"The monster automatically knocks the target away from the monster. Unless otherwise noted in the ability description, the creature is pushed 5 feet. If the attack was a critical hit, this distance is doubled."
+			]
+		},
+		{
+			"name": "Quick Transcription",
+			"source": "GMG",
+			"page": 205,
+			"entries": [
+				"The NPC can attempt to copy a document faster than normal, provided they don't alter the content. They attempt a {@skill Lore||Scribing Lore} check, completing the task in half the time on a success (one-quarter on a critical success)."
+			]
+		},
+		{
+			"name": "Regeneration",
+			"source": "B1",
+			"page": 343,
+			"entries": [
+				"This monster regains the listed number of Hit Points each round at the beginning of its turn. Its {@condition dying} condition never increases beyond {@condition dying} 3 as long as its regeneration is active. However, if it takes damage of a type listed in the regeneration entry, its regeneration deactivates until the end of its next turn. Deactivate the regeneration before applying any damage of a listed type, since that damage might kill the monster by bringing it to {@condition dying} 4."
+			]
+		},
+		{
+			"name": "Rend",
+			"source": "B1",
+			"page": 344,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"requirements": "The monster hit the same enemy with two consecutive Strikes of the listed type in the same round.",
+			"entries": [
+				"A Rend entry lists a {@action Strike|CRB} the monster has. The monster automatically deals that {@action Strike|CRB}'s damage again to the enemy."
+			]
+		},
+		{
+			"name": "Retributive Strike",
+			"source": "B1",
+			"page": 344,
+			"activity": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"trigger": "An enemy damages the monster's ally, and both are within 15 feet of the monster.",
+			"entries": [
+				"The ally gains resistance to all damage against the triggering damage equal to 2 + the monster's level. If the foe is within reach, the monster makes a melee {@action Strike|CRB} against it."
+			]
+		},
+		{
+			"name": "Scent",
+			"source": "B1",
+			"page": 344,
+			"entries": [
+				"Scent involves sensing creatures or objects by smell, and is usually a vague sense. The range is listed in the ability, and it functions only if the creature or object being detected emits an aroma (for instance, incorporeal creatures usually do not exude an aroma)",
+				"If a creature emits a heavy aroma or is upwind, the GM can double or even triple the range of {@ability scent} abilities used to detect that creature, and the GM can reduce the range if a creature is downwind."
+			]
+		},
+		{
+			"name": "Shield Block",
+			"source": "B1",
+			"page": 344,
+			"activity": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"trigger": "The monster has its shield raised and takes damage from a physical attack.",
+			"entries": [
+				"The monster snaps its shield into place to deflect a blow. The shield prevents the monster from taking an amount of damage up to the shield's Hardness. The monster and the shield each take any remaining damage, possibly breaking or destroying the shield."
+			]
+		},
+		{
+			"name": "Sneak Attack",
+			"source": "B1",
+			"page": 344,
+			"entries": [
+				"When the monster Strikes a creature that has the {@condition flat-footed} condition with an agile or finesse melee weapon, an agile or finesse unarmed attack, or a ranged weapon attack, it also deals the listed precision damage. For a ranged attack with a thrown weapon, that weapon must also be an agile or finesse weapon."
+			]
+		},
+		{
+			"name": "Swallow Whole",
+			"source": "B1",
+			"page": 344,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"traits": [
+				"attack"
+			],
+			"entries": [
+				"The monster attempts to swallow a creature of the listed size or smaller that it has {@condition grabbed} in its jaws or mouth. If a swallowed creature is of the maximum size listed, the monster can't use Swallow Whole again. If the creature is smaller than the maximum, the monster can usually swallow more creatures; the GM determines the maximum. The monster attempts an {@skill Athletics} check opposed by the {@condition grabbed} creature's Reflex DC. If it succeeds, it swallows the creature. The monster's mouth or jaws no longer grab a creature it has swallowed, so the monster is free to use them to {@action Strike|CRB} or Grab once again. The monster can't attack creatures it has swallowed.",
+				"A swallowed creature is {@condition grabbed}, is {@condition slowed} 1, and has to hold its breath or start suffocating. The swallowed creature takes the listed amount of damage when first swallowed and at the end of each of its turns while it's swallowed. If the victim {@action Escape||Escapes} this ability's {@condition grabbed} condition, it exits through the monster's mouth. This frees any other creature {@condition grabbed} in the monster's mouth or jaws. A swallowed creature can attack the monster that has swallowed it, but only with unarmed attacks or with weapons of light Bulk or less. The engulfing creature is {@condition flat-footed} against the attack. If the monster takes piercing or slashing damage equaling or exceeding the listed Rupture value from a single attack or spell, the engulfed creature cuts itself free. A creature that gets free by either Escaping or cutting itself free can immediately breathe and exits the swallowing monster's space.",
+				"If the monster dies, a swallowed creature can be freed by creatures adjacent to the corpse if they spend a combined total of 3 actions cutting the monster open with a weapon or unarmed attack that deals piercing or slashing damage."
+			]
+		},
+		{
+			"name": "Swarm Mind",
+			"source": "B1",
+			"page": 344,
+			"entries": [
+				"This monster doesn't have a single mind (typically because it's a swarm of smaller creatures), and is immune to mental effects that target only a specific number of creatures. It is still subject to mental effects that affect all creatures in an area."
+			]
+		},
+		{
+			"name": "Telepathy",
+			"source": "B1",
+			"page": 344,
+			"traits": [
+				"aura",
+				"divination",
+				"magical"
+			],
+			"entries": [
+				"A monster with {@spell telepathy|CRB} can communicate mentally with any creatures within the listed radius, as long as they share a language. This doesn't give any special access to their thoughts, and communicates no more information than normal speech would."
+			]
+		},
+		{
+			"name": "Throw Rock",
+			"source": "B1",
+			"page": 344,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"entries": [
+				"The monster picks up a rock within reach or retrieves a stowed rock and throws it, making a ranged {@action Strike|CRB}."
+			]
+		},
+		{
+			"name": "Trample",
+			"source": "B1",
+			"page": 344,
+			"activity": {
+				"number": 3,
+				"unit": "action"
+			},
+			"entries": [
+				"The monster {@action Stride||Strides} up to double its Speed and can move through the spaces of creatures of the listed size, Trampling each creature whose space it enters. The monster can attempt to Trample the same creature only once in a single use of Trample. The monster deals the damage of the listed {@action Strike|CRB}, but trampled creatures can attempt a basic Reflex save at the listed DC (no damage on a critical success, half damage on a success, double damage on a critical failure)."
+			]
+		},
+		{
+			"name": "Tremorsense",
+			"source": "B1",
+			"page": 344,
+			"entries": [
+				"Tremorsense allows a monster to feel the vibrations through a solid surface caused by movement. It is an imprecise sense with a limited range (listed in the ability). Tremorsense functions only if the monster is on the same surface as the subject, and only if the subject is moving along (or burrowing through) the surface."
+			]
+		},
+		{
 			"name": "Warpwave",
 			"source": "AoE6",
 			"page": 81,
@@ -63,592 +647,8 @@
 			]
 		},
 		{
-			"name": "Moon Frenzy",
-			"page": 329,
-			"source": "Bst",
-			"traits": [
-				"polymorph",
-				"primal",
-				"transmutation"
-			],
-			"entries": [
-				"When a full moon appears in the night sky, the werecreature must enter hybrid form, can't {@ability Change Shape} thereafter, becomes one size larger, increases its reach by 5 feet, and increases the damage of its jaws by 2. When the moon sets or the sun rises, the werecreature returns to humanoid form and is fatigued for 2d4 hours."
-			]
-		},
-		{
-			"name": "Golem Antimagic",
-			"source": "Bst",
-			"page": 184,
-			"entries": [
-				"A golem is immune to spells and magical abilities other than its own, but each type of golem is affected by a few types of magic in special ways. These exceptions are listed in shortened form in the golem's stat block, with the full rules appearing here. If an entry lists multiple types (such as \"cold and water\"), either type of spell can affect the golem.",
-				{
-					"type": "list",
-					"items": [
-						"{@bold Harmed By} Any magic of this type that targets the golem causes it to take the listed amount of damage (this damage has no type) instead of the usual effect. If the golem starts its turn in an area of magic of this type or is affected by a persistent effect of the appropriate type, it takes the damage listed in the parenthetical.",
-						"{@bold Healed By} Any magic of this type that targets the golem makes the golem lose the {@condition slowed} condition and gain HP equal to half the damage the spell would have dealt. If the golem starts its turn in an area of this type of magic, it gains the HP listed in the parenthetical.",
-						"{@bold Slowed By} Any magic of this type that targets the golem causes it to be {@condition slowed 1} for {@dice 2d6} rounds instead of the usual effect. If the golem starts its turn in an area of this type of magic, it's {@condition slowed 1} for that round.",
-						"{@bold Vulnerable To} Each golem is vulnerable to one or more specific spells, with the effects described in its stat block."
-					]
-				}
-			]
-		},
-		{
-			"name": "All-Around Vision",
-			"source": "Bst",
-			"page": 342,
-			"entries": [
-				"This monster can see in all directions simultaneously, and therefore can't be flanked."
-			]
-		},
-		{
-			"name": "Aquatic Ambush",
-			"source": "Bst",
-			"page": 342,
-			"activity": {
-				"number": 1,
-				"unit": "action"
-			},
-			"requirements": "The monster is hiding in water and a creature that hasn't detected it is within the listed number of feet.",
-			"entries": [
-				"The monster moves up to its swim Speed + 10 feet toward the triggering creature, traveling on water and on land. Once the creature is in reach, the monster makes a {@action Strike|CRB} against it. The creature is {@condition flat-footed} against this {@action Strike|CRB}."
-			]
-		},
-		{
-			"name": "At-Will Spells",
-			"source": "Bst",
-			"page": 342,
-			"entries": [
-				"The monster can cast its at-will spells any number of times without using up spell slots."
-			]
-		},
-		{
-			"name": "Attack of Opportunity",
-			"source": "Bst",
-			"page": 342,
-			"activity": {
-				"number": 1,
-				"unit": "reaction"
-			},
-			"trigger": "A creature within the monster's reach uses a manipulate action or a move action, makes a ranged attack, or leaves a square during a move action it's using.",
-			"entries": [
-				"The monster attempts a melee {@action Strike} against the triggering creature. If the attack is a critical hit and the trigger was a manipulate action, the monster disrupts that action. This {@action Strike} doesn't count toward the monster's multiple attack penalty, and its multiple attack penalty doesn't apply to this {@action Strike}."
-			]
-		},
-		{
-			"name": "Aura",
-			"source": "Bst",
-			"page": 342,
-			"entries": [
-				"A monster's aura automatically affects everything within a specified emanation around that monster. The monster doesn't need to spend actions on the aura; rather, the aura's effects are applied at specific times, such as when a creature ends its turn in the aura or when creatures enter the aura.",
-				"If an aura does nothing but deal damage, its entry lists only the radius, damage, and saving throw. Such auras deal this damage to a creature when the creature enters the aura and when a creature starts its turn in the aura. A creature can take damage from the aura only once per round. The GM might determine that a monster's aura doesn't affect its own allies. For example, a creature might be immune to a monster' frightful presence if they have been around each other for a long time."
-			]
-		},
-		{
-			"name": "Buck",
-			"source": "Bst",
-			"page": 342,
-			"activity": {
-				"number": 1,
-				"unit": "reaction"
-			},
-			"trigger": "A creature Mounts or uses the Command an Animal action while riding the monster.",
-			"entries": [
-				"Most monsters that serve as mounts can attempt to buck off unwanted or annoying riders, but most mounts will not use this reaction against a trusted creature unless the mounts are spooked or mistreated. The triggering creature must succeed at a Reflex saving throw against the listed DC or fall off the creature and land {@condition prone}. If the save is a critical failure, the triggering creature also takes {@dice 1d6} bludgeoning damage in addition to the normal damage for the fall."
-			]
-		},
-		{
-			"name": "Butter Up",
-			"source": "GMG",
-			"page": 204,
-			"traits": [
-				"emotion",
-				"mental"
-			],
-			"entries": [
-				"When someone eats a dish or treat made by this NPC, the NPC can attempt a {@skill Lore||Baking Lore}, {@skill Lore||Cooking Lore}, or similar check against that creature's Will DC, with the same results as the {@action Make an Impression} action of {@skill Diplomacy}. If more than one creature partakes, the NPC uses the same check result against each creature's Will DC."
-			]
-		},
-		{
-			"name": "Call Your Bluff",
-			"source": "GMG",
-			"page": 205,
-			"entries": [
-				"When gambling, the NPC may use {@skill Lore||Games Lore} to {@action Sense Motive} instead of {@skill Perception}."
-			]
-		},
-		{
-			"name": "Catch Rock",
-			"source": "Bst",
-			"page": 342,
-			"activity": {
-				"number": 1,
-				"unit": "reaction"
-			},
-			"requirements": "The monster must have a free hand but can Release anything it's holding as part of this reaction.",
-			"trigger": "The monster is targeted with a thrown rock Strike or a rock would fall on the monster.",
-			"entries": [
-				"The monster gains a +4 circumstance bonus to its AC against the triggering attack or to any defense against the falling rock. If the attack misses or the monster successfully defends against the falling rock, the monster catches the rock, takes no damage, and is now holding the rock."
-			]
-		},
-		{
-			"name": "Change Shape",
-			"source": "Bst",
-			"page": 342,
-			"activity": {
-				"number": 1,
-				"unit": "action"
-			},
-			"traits": [
-				"concentrate",
-				"[magical tradition]",
-				"Polymorph",
-				"Transmutation"
-			],
-			"entries": [
-				"The monster changes its shape indefinitely. It can use this action again to return to its natural shape or adopt a new shape. Unless otherwise noted, a monster cannot use Change Shape to appear as a specific individual. Using Change Shape counts as creating a disguise for the Impersonate use of {@skill Deception}. The monster's transformation automatically defeats Perception DCs to determine whether the creature is a member of the ancestry or creature type into which it transformed, and it gains a +4 status bonus to its {@skill Deception} DC to prevent others from seeing through its disguise. Change Shape abilities specify what shapes the monster can adopt. The monster doesn't gain any special abilities of the new shape, only its physical form. For example, in each shape, it replaces its normal Speeds and Strikes, and might potentially change its senses or size. Any changes are listed in its stat block."
-			]
-		},
-		{
-			"name": "Curse of the Werecreature",
-			"source": "Bst",
-			"page": 329,
-			"traits": [
-				"curse",
-				"necromancy",
-				"primal"
-			],
-			"entries": [
-				"This curse affects only humanoids.",
-				{
-					"type": "affliction",
-					"savingThrow": "Fortitude",
-					"DC": "is the standard DC for the {@table DCs by Level||werecreature's new level \u2013 1}",
-					"entries": [
-						"On each full moon, the cursed creature must succeed at another Fortitude save or turn into the same kind of {@filter werecreature|bestiary||creature=werecreature} until dawn. The creature is under the GM's control and goes on a rampage for half the night before falling {@condition unconscious} until dawn"
-					]
-				}
-			]
-		},
-		{
-			"name": "Child Care",
-			"source": "GMG",
-			"page": 205,
-			"entries": [
-				"When treating infants, the NPC can use their {@skill Lore||Midwifery Lore} skill in place of {@skill Medicine}, and can use {@filter Medicine's trained actions|actions||Trained=Medicine} on infants."
-			]
-		},
-		{
-			"name": "Constant Spells",
-			"source": "Bst",
-			"page": 342,
-			"entries": [
-				"A constant spell affects the monster without the monster needing to cast it, and its duration is unlimited. If a constant spell gets counteracted, the monster can reactivate it by spending the normal spellcasting actions the spell requires."
-			]
-		},
-		{
-			"name": "Constrict",
-			"source": "Bst",
-			"page": 342,
-			"activity": {
-				"number": 1,
-				"unit": "action"
-			},
-			"entries": [
-				"The monster deals the listed amount of damage to any number of creatures {@condition grabbed} or {@condition restrained} by it. Each of those creatures can attempt a basic Fortitude save with the listed DC."
-			]
-		},
-		{
-			"name": "Coven",
-			"source": "Bst",
-			"page": 342,
-			"traits": [
-				"divination",
-				"mental",
-				"occult"
-			],
-			"entries": [
-				"This monster can form a coven with two or more other creatures who also have the coven ability. This involves performing an 8-hour ceremony with all prospective coven members. After the coven is formed, each of its members gains elite adjustments, adjusting their levels accordingly. Coven members can sense other members' locations and conditions by spending a single action, which has the {@trait concentrate}, and can sense what another coven member is sensing as a two-action activity, which has the {@trait concentrate} as well.",
-				"Covens also grant spells and rituals to their members, but these can be cast only in cooperation between three coven members who are all within 30 feet of one another. A coven member can contribute to a coven spell with a single-action spellcasting activity that has a single verbal component. If two coven members have contributed these actions within the last round, a third member can cast a coven spell on her turn by spending the normal spellcasting actions. A coven can cast its coven spells an unlimited number of times but can cast only one coven spell each round. All covens grant the 8th-level {@spell baleful polymorph|CRB} spell and all the following spells, which the coven can cast at any level up to 5th: {@spell augury|CRB}, {@spell charm|CRB}, {@spell clairaudience|CRB}, {@spell clairvoyance|CRB}, {@spell dream message|CRB}, {@spell illusory disguise|CRB}, {@spell illusory scene|CRB}, {@spell prying eye|CRB}, and {@spell talking corpse|CRB}. Individual creatures with the coven ability also grant additional spells to any coven they join. A coven can also cast the {@ritual control weather} ritual, with a DC of 23 instead of the standard DC.",
-				"If a coven member leaving the coven or the death of a coven member brings the coven below three members, the remaining members keep their elite adjustments for 24 hours, but without enough members to contribute the necessary actions, they can't cast coven spells."
-			]
-		},
-		{
-			"name": "Darkvision",
-			"source": "Bst",
-			"page": 343,
-			"entries": [
-				"A monster with darkvision can see perfectly well in areas of darkness and dim light, though such vision is in black and white only. Some forms of magical darkness, such as a 4th-level {@spell darkness|CRB} spell, block normal {@ability darkvision}. A monster with greater darkvision, however, can see through even these forms of magical darkness."
-			]
-		},
-		{
-			"name": "Disease",
-			"source": "Bst",
-			"page": 343,
-			"entries": [
-				"When a creature is exposed to a monster's disease, it attempts a Fortitude save or succumbs to the disease. The level of a disease is the level of the monster inflicting the disease. The disease follows the rules for afflictions found on page 457 of the Pathfinder Core Rulebook."
-			]
-		},
-		{
-			"name": "Engulf",
-			"source": "Bst",
-			"page": 343,
-			"activity": {
-				"number": 2,
-				"unit": "action"
-			},
-			"entries": [
-				"The monster {@action Stride||Strides} up to double its Speed and can move through the spaces of any creatures in its path. Any creature of the monster's size or smaller whose space the monster moves through can attempt a Reflex save with the listed DC to avoid being engulfed. A creature unable to act automatically critically fails this save. If a creature succeeds at its save, it can choose to be either pushed aside (out of the monster's path) or pushed in front of the monster to the end of the monster's movement. The monster can attempt to Engulf the same creature only once in a single use of Engulf. The monster can contain as many creatures as can fit in its space.",
-				"A creature that fails its save is pulled into the monster's body. It is {@condition grabbed}, is {@condition slowed} 1, and has to hold its breath or start suffocating. The creature takes the listed amount of damage when first engulfed and at the end of each of its turns while it's engulfed. An engulfed creature can get free by Escaping against the listed escape DC. An engulfed creature can attack the monster engulfing it, but only with unarmed attacks or with weapons of light Bulk or less. The engulfing creature is {@condition flat-footed} against the attack. If the monster takes piercing or slashing damage equaling or exceeding the listed Rupture value from a single attack or spell, the engulfed creature cuts itself free. A creature that gets free by either method can immediately breathe and exits the swallowing monster's space.",
-				"If the monster dies, all creatures it has engulfed are automatically released as the monster's form loses cohesion."
-			]
-		},
-		{
-			"name": "Fast Healing",
-			"source": "Bst",
-			"page": 343,
-			"entries": [
-				"A monster with this ability regains the given number of Hit Points each round at the beginning of its turn."
-			]
-		},
-		{
-			"name": "Ferocity",
-			"source": "Bst",
-			"page": 343,
-			"activity": {
-				"number": 1,
-				"unit": "reaction"
-			},
-			"trigger": "The monster is reduced to 0 HP.",
-			"entries": [
-				"The monster avoids being knocked out and remains at 1 HP, but its {@condition wounded} value increases by 1. When it is {@condition wounded} 3, it can no longer use this ability."
-			]
-		},
-		{
-			"name": "Find Footing",
-			"source": "GMG",
-			"page": 205,
-			"activity": {
-				"number": 1,
-				"unit": "action"
-			},
-			"traits": [
-				"concentrate"
-			],
-			"entries": [
-				"The NPC attempts an {@skill Lore||Architecture Lore}, {@skill Lore||Engineering Lore}, or similar skill check to find a stable path across uneven ground. This grants them and anyone they share this information with a +2 circumstance bonus on {@skill Acrobatics} checks to {@action Balance} across that ground."
-			]
-		},
-		{
-			"name": "Frightful Presence",
-			"source": "Bst",
-			"page": 343,
-			"traits": [
-				"aura",
-				"emotion",
-				"fear",
-				"mental"
-			],
-			"entries": [
-				"A creature that first enters the area must attempt a Will save. Regardless of the result of the saving throw, the creature is temporarily immune to this monster's Frightful Presence for 1 minute.",
-				{
-					"type": "successDegree",
-					"entries": {
-						"Critical Success": "The creature is unaffected by the presence.",
-						"Success": "The creature is {@condition frightened} 1.",
-						"Failure": "The creature is {@condition frightened} 2.",
-						"Critical Failure": "The creature is {@condition frightened} 4."
-					}
-				}
-			]
-		},
-		{
-			"name": "Gone Fishing",
-			"source": "GMG",
-			"page": 205,
-			"entries": [
-				"The NPC can use {@skill Lore||Fishing Lore} to {@action Track} aquatic creatures or to {@action Aid} checks to {@action Track} them."
-			]
-		},
-		{
-			"name": "Grab",
-			"source": "Bst",
-			"page": 343,
-			"activity": {
-				"number": 1,
-				"unit": "action"
-			},
-			"requirements": "The monster's last action was a success with a Strike that lists Grab in its damage entry, or it has a creature grabbed using this action.",
-			"entries": [
-				"The monster automatically Grabs the target until the end of the monster's next turn. The creature is {@condition grabbed} by whichever body part the monster attacked with, and that body part can't be used to {@action Strike|CRB} creatures until the grab is ended. Using Grab extends the duration of the monster's Grab until the end of its next turn for all creatures {@condition grabbed} by it. A {@condition grabbed} creature can use the {@action Escape|CRB} action to get out of the grab, and the Grab ends for a {@condition grabbed} creatures if the monster moves away from it."
-			]
-		},
-		{
-			"name": "Greater Constrict",
-			"source": "Bst",
-			"page": 343,
-			"activity": {
-				"number": 1,
-				"unit": "action"
-			},
-			"entries": [
-				"The monster deals the listed amount of damage to any number of creatures {@condition grabbed} or {@condition restrained} by it. Each of those creatures can attempt a basic Fortitude save with the listed DC. A creature that fails this save falls {@condition unconscious}, and a creature that succeeds is then temporarily immune to falling {@condition unconscious} from Greater Constrict for 1 minute."
-			]
-		},
-		{
-			"name": "Improved Grab",
-			"source": "Bst",
-			"page": 343,
-			"activity": {
-				"number": 1,
-				"unit": "free"
-			},
-			"entries": [
-				"The monster can use {@ability Grab|BST} as a free action triggered by a hit with its initial attack. A monster with {@ability Improved Grab} still needs to spend an action to extend the duration for creatures it already has {@condition grabbed}."
-			]
-		},
-		{
-			"name": "Improved Knockdown",
-			"source": "Bst",
-			"page": 343,
-			"activity": {
-				"number": 1,
-				"unit": "free"
-			},
-			"entries": [
-				"The monster can use {@ability Knockdown|BST} as a free action triggered by a hit with its initial attack."
-			]
-		},
-		{
-			"name": "Improved Push",
-			"source": "Bst",
-			"page": 343,
-			"activity": {
-				"number": 1,
-				"unit": "free"
-			},
-			"entries": [
-				"The monster can use {@ability Push|BST} as a free action triggered by a hit with its initial attack."
-			]
-		},
-		{
-			"name": "Knockdown",
-			"source": "Bst",
-			"page": 343,
-			"activity": {
-				"number": 1,
-				"unit": "action"
-			},
-			"requirements": "The monster's last action was a success with a Strike that lists Knockdown in its damage entry.",
-			"entries": [
-				"The monster knocks the target {@condition prone}."
-			]
-		},
-		{
-			"name": "Lifesense",
-			"source": "Bst",
-			"page": 343,
-			"entries": [
-				"Lifesense allows a monster to sense the vital essence of living and undead creatures within the listed range. The sense can distinguish between the positive energy animating living creatures and the negative energy animating undead creatures, much as sight distinguishes colors."
-			]
-		},
-		{
-			"name": "Light Blindness",
-			"source": "Bst",
-			"page": 343,
-			"entries": [
-				"When first exposed to bright light, the monster is {@condition blinded} until the end of its next turn. After this exposure, light doesn't blind the monster again until after it spends 1 hour in {@spell darkness|CRB}. However, as long as the monster is in an area of bright light, it's {@condition dazzled}."
-			]
-		},
-		{
-			"name": "Negative Healing",
-			"source": "Bst2",
-			"page": 305,
-			"entries": [
-				"A creature with negative healing draws health from negative energy rather than positive energy. It is damaged by positive damage and is not healed by positive healing effects. It does not take negative damage, and it is healed by negative effects that heal undead."
-			]
-		},
-		{
-			"name": "Local Lore",
-			"source": "GMG",
-			"page": 205,
-			"entries": [
-				"When they first meet a given person from their home settlement, the NPC can automatically attempt one check to {@action Recall Knowledge} about that person. This uses the {@skill Lore} skill for that settlement."
-			]
-		},
-		{
-			"name": "Low-Light Vision",
-			"source": "Bst",
-			"page": 343,
-			"entries": [
-				"The monster can see in dim light as though it were bright light, so it ignores the {@condition concealed} condition due to dim light."
-			]
-		},
-		{
-			"name": "Poison",
-			"source": "Bst",
-			"page": 343,
-			"entries": [
-				"When a creature is exposed to a monster's poison, it attempts a Fortitude save to avoid becoming poisoned. The level of a poison is the level of the monster inflicting the poison. The poison follows the rules for afflictions found on page 457 of the Pathfinder Core Rulebook."
-			]
-		},
-		{
-			"name": "Push",
-			"source": "Bst",
-			"page": 343,
-			"activity": {
-				"number": 1,
-				"unit": "action"
-			},
-			"requirements": "The monster's last action was a success with a Strike that lists Push in its damage entry.",
-			"entries": [
-				"The monster automatically knocks the target away from the monster. Unless otherwise noted in the ability description, the creature is pushed 5 feet. If the attack was a critical hit, this distance is doubled."
-			]
-		},
-		{
-			"name": "Quick Transcription",
-			"source": "GMG",
-			"page": 205,
-			"entries": [
-				"The NPC can attempt to copy a document faster than normal, provided they don't alter the content. They attempt a {@skill Lore||Scribing Lore} check, completing the task in half the time on a success (one-quarter on a critical success)."
-			]
-		},
-		{
-			"name": "Regeneration",
-			"source": "Bst",
-			"page": 343,
-			"entries": [
-				"This monster regains the listed number of Hit Points each round at the beginning of its turn. Its {@condition dying} condition never increases beyond {@condition dying} 3 as long as its regeneration is active. However, if it takes damage of a type listed in the regeneration entry, its regeneration deactivates until the end of its next turn. Deactivate the regeneration before applying any damage of a listed type, since that damage might kill the monster by bringing it to {@condition dying} 4."
-			]
-		},
-		{
-			"name": "Rend",
-			"source": "Bst",
-			"page": 344,
-			"activity": {
-				"number": 1,
-				"unit": "action"
-			},
-			"requirements": "The monster hit the same enemy with two consecutive Strikes of the listed type in the same round.",
-			"entries": [
-				"A Rend entry lists a {@action Strike|CRB} the monster has. The monster automatically deals that {@action Strike|CRB}'s damage again to the enemy."
-			]
-		},
-		{
-			"name": "Retributive Strike",
-			"source": "Bst",
-			"page": 344,
-			"activity": {
-				"number": 1,
-				"unit": "reaction"
-			},
-			"trigger": "An enemy damages the monster's ally, and both are within 15 feet of the monster.",
-			"entries": [
-				"The ally gains resistance to all damage against the triggering damage equal to 2 + the monster's level. If the foe is within reach, the monster makes a melee {@action Strike|CRB} against it."
-			]
-		},
-		{
-			"name": "Scent",
-			"source": "Bst",
-			"page": 344,
-			"entries": [
-				"Scent involves sensing creatures or objects by smell, and is usually a vague sense. The range is listed in the ability, and it functions only if the creature or object being detected emits an aroma (for instance, incorporeal creatures usually do not exude an aroma)",
-				"If a creature emits a heavy aroma or is upwind, the GM can double or even triple the range of {@ability scent} abilities used to detect that creature, and the GM can reduce the range if a creature is downwind."
-			]
-		},
-		{
-			"name": "Shield Block",
-			"source": "Bst",
-			"page": 344,
-			"activity": {
-				"number": 1,
-				"unit": "reaction"
-			},
-			"trigger": "The monster has its shield raised and takes damage from a physical attack.",
-			"entries": [
-				"The monster snaps its shield into place to deflect a blow. The shield prevents the monster from taking an amount of damage up to the shield's Hardness. The monster and the shield each take any remaining damage, possibly breaking or destroying the shield."
-			]
-		},
-		{
-			"name": "Sneak Attack",
-			"source": "Bst",
-			"page": 344,
-			"entries": [
-				"When the monster Strikes a creature that has the {@condition flat-footed} condition with an agile or finesse melee weapon, an agile or finesse unarmed attack, or a ranged weapon attack, it also deals the listed precision damage. For a ranged attack with a thrown weapon, that weapon must also be an agile or finesse weapon."
-			]
-		},
-		{
-			"name": "Swallow Whole",
-			"source": "Bst",
-			"page": 344,
-			"activity": {
-				"number": 1,
-				"unit": "action"
-			},
-			"traits": [
-				"attack"
-			],
-			"entries": [
-				"The monster attempts to swallow a creature of the listed size or smaller that it has {@condition grabbed} in its jaws or mouth. If a swallowed creature is of the maximum size listed, the monster can't use Swallow Whole again. If the creature is smaller than the maximum, the monster can usually swallow more creatures; the GM determines the maximum. The monster attempts an {@skill Athletics} check opposed by the {@condition grabbed} creature's Reflex DC. If it succeeds, it swallows the creature. The monster's mouth or jaws no longer grab a creature it has swallowed, so the monster is free to use them to {@action Strike|CRB} or Grab once again. The monster can't attack creatures it has swallowed.",
-				"A swallowed creature is {@condition grabbed}, is {@condition slowed} 1, and has to hold its breath or start suffocating. The swallowed creature takes the listed amount of damage when first swallowed and at the end of each of its turns while it's swallowed. If the victim {@action Escape||Escapes} this ability's {@condition grabbed} condition, it exits through the monster's mouth. This frees any other creature {@condition grabbed} in the monster's mouth or jaws. A swallowed creature can attack the monster that has swallowed it, but only with unarmed attacks or with weapons of light Bulk or less. The engulfing creature is {@condition flat-footed} against the attack. If the monster takes piercing or slashing damage equaling or exceeding the listed Rupture value from a single attack or spell, the engulfed creature cuts itself free. A creature that gets free by either Escaping or cutting itself free can immediately breathe and exits the swallowing monster's space.",
-				"If the monster dies, a swallowed creature can be freed by creatures adjacent to the corpse if they spend a combined total of 3 actions cutting the monster open with a weapon or unarmed attack that deals piercing or slashing damage."
-			]
-		},
-		{
-			"name": "Swarm Mind",
-			"source": "Bst",
-			"page": 344,
-			"entries": [
-				"This monster doesn't have a single mind (typically because it's a swarm of smaller creatures), and is immune to mental effects that target only a specific number of creatures. It is still subject to mental effects that affect all creatures in an area."
-			]
-		},
-		{
-			"name": "Telepathy",
-			"source": "Bst",
-			"page": 344,
-			"traits": [
-				"aura",
-				"divination",
-				"magical"
-			],
-			"entries": [
-				"A monster with {@spell telepathy|CRB} can communicate mentally with any creatures within the listed radius, as long as they share a language. This doesn't give any special access to their thoughts, and communicates no more information than normal speech would."
-			]
-		},
-		{
-			"name": "Throw Rock",
-			"source": "Bst",
-			"page": 344,
-			"activity": {
-				"number": 1,
-				"unit": "action"
-			},
-			"entries": [
-				"The monster picks up a rock within reach or retrieves a stowed rock and throws it, making a ranged {@action Strike|CRB}."
-			]
-		},
-		{
-			"name": "Trample",
-			"source": "Bst",
-			"page": 344,
-			"activity": {
-				"number": 3,
-				"unit": "action"
-			},
-			"entries": [
-				"The monster {@action Stride||Strides} up to double its Speed and can move through the spaces of creatures of the listed size, Trampling each creature whose space it enters. The monster can attempt to Trample the same creature only once in a single use of Trample. The monster deals the damage of the listed {@action Strike|CRB}, but trampled creatures can attempt a basic Reflex save at the listed DC (no damage on a critical success, half damage on a success, double damage on a critical failure)."
-			]
-		},
-		{
-			"name": "Tremorsense",
-			"source": "Bst",
-			"page": 344,
-			"entries": [
-				"Tremorsense allows a monster to feel the vibrations through a solid surface caused by movement. It is an imprecise sense with a limited range (listed in the ability). Tremorsense functions only if the monster is on the same surface as the subject, and only if the subject is moving along (or burrowing through) the surface."
-			]
-		},
-		{
 			"name": "Wavesense",
-			"source": "Bst",
+			"source": "B1",
 			"page": 344,
 			"entries": [
 				"This sense allows a monster to feel vibrations caused by movement through a liquid. It's an imprecise sense with a limited range (listed in the ability). Wavesense functions only if monster and the subject are in the same body of liquid, and only if the subject is moving through the liquid."

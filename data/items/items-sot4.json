@@ -1,0 +1,395 @@
+{
+	"item": [
+		{
+			"name": "Deathless Light",
+			"source": "SoT4",
+			"page": 85,
+			"type": "Item",
+			"level": 10,
+			"traits": [
+				"uncommon",
+				"catalyst",
+				"consumable",
+				"magical"
+			],
+			"price": {
+				"amount": 165,
+				"coin": "gp"
+			},
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": [
+					"envision"
+				]
+			},
+			"category": "Consumable",
+			"entries": [
+				"This glowing piece of flesh increases the spell level of a spell with the {@trait light} trait by 1 (maximum 7) when determining whether the spell's light will shine in magical darkness or counteract a {@spell darkness} spell."
+			]
+		},
+		{
+			"name": "Deflecting Branch",
+			"source": "SoT4",
+			"page": 75,
+			"type": "Item",
+			"level": 14,
+			"traits": [
+				"uncommon",
+				"abjuration",
+				"magical"
+			],
+			"price": {
+				"amount": 4500,
+				"coin": "gp"
+			},
+			"usage": "held in 2 hands",
+			"bulk": 2,
+			"category": "Held",
+			"entries": [
+				"This massive branch has been cut into a general club shape but still bears several knots and has a number of runes carved along its length. The deflecting branch is a +2 greater striking greatclub. On a critical hit, you knock the target {@condition prone}.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"components": [
+						"{@action Interact}"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "minute"
+					},
+					"trigger": "You are the target of a physical ranged attack",
+					"requirements": "You're aware of the attack and are not {@condition flat-footed} against it",
+					"entries": [
+						"You gain a +4 circumstance bonus to AC against the triggering attack. If the attack misses, you have knocked it away. You can't use this ability to deflect unusually massive ranged projectiles (such as boulders or ballista bolts)."
+					]
+				},
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "free"
+					},
+					"components": [
+						"{@action Interact}"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "hour"
+					},
+					"trigger": "You knock away a physical ranged attack by using the deflecting branch's other activation",
+					"entries": [
+						"You swing the club and reflect the oncoming attack. The attack is redirected toward a creature within 60 feet. Make a ranged attack against the creature using your highest proficiency with a ranged weapon."
+					]
+				}
+			]
+		},
+		{
+			"name": "Golden Blade of Mzali",
+			"source": "SoT4",
+			"page": 76,
+			"type": "Item",
+			"level": 15,
+			"traits": [
+				"rare",
+				"evocation",
+				"fire",
+				"light",
+				"magical"
+			],
+			"price": {
+				"amount": 6500,
+				"coin": "gp"
+			},
+			"usage": "held in 1 hand",
+			"bulk": 1,
+			"category": "Held",
+			"entries": [
+				"Each of these golden spears was forged in the days of old Mzali, when the sun kings ruled the city. The majority of these weapons are lost, most likely buried with warriors in tombs and temples sealed by {@deity Walkena|LOGM}'s decrees.",
+				"{@deity Walkena|LOGM} retains a single golden blade, which he grants to his Master of Spears.",
+				"This +2 greater striking returning spear is coated in brilliant gold, and beautiful engravings run along the shaft, depicting the rising and setting of the sun against Mzali's skyline. The spear glows with the effects of 4th-level {@spell light}. You can suppress or resume this light by using an action, which has the {@trait concentrate} trait. When you hit a creature with the spear, it takes {@dice 1d6} additional fire damage. When you critically hit a creature with the spear, the creature takes {@damage 1d8} {@condition persistent damage ||persistent fire damage} and {@damage 1d8} {@condition persistent damage ||persistent bleed damage} as its blood boils away. Unlike normal when taking two types of {@condition persistent damage}, a creature needs only a single successful flat check to remove both the fire and bleed damage.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"components": [
+						"envision"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"trigger": "You critically hit a creature with the weapon",
+					"entries": [
+						"You call upon the spear's light to guide the creature away from violence. The creature must choose one of the following options:",
+						{
+							"type": "list",
+							"items": [
+								"The creature surrenders, immediately receiving the critical failure effects of calm emotions and paralyze.",
+								"The weapon casts 7th-level {@spell blindness} on the creature with a DC of 34. Regardless of the choice, the spear loses its ability to glow with light until your next daily preparations."
+							]
+						}
+					]
+				},
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"envision",
+						"{@action Interact}"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"The spear casts 7th-level {@spell elemental form} on you, choosing fire as the form's trait. The spear loses its additional fire damage until your next daily preparations."
+					]
+				}
+			]
+		},
+		{
+			"name": "Midday Lantern",
+			"source": "SoT4",
+			"page": 76,
+			"type": "Item",
+			"level": "6+",
+			"traits": [
+				"uncommon",
+				"light",
+				"magical",
+				"transmutation"
+			],
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"category": "Held",
+			"entries": [
+				"This hooded lantern is made from brilliant, reinforced gold engraved with the image of the sun high in the sky. The lantern uses oil, as a standard lantern, except that any light the lantern emits is magical and similar to sunlight. The lantern doesn't emit dim light, instead only emitting bright light to its normal radius (20 feet for typical lights when using oil). This bright light is close enough to sunlight to open temple doors that require sunlight or similar light, but it doesn't shine direct sunlight, so it doesn't trigger effects such as a vampire's sunlight weakness.",
+				{
+					"type": "ability",
+					"activity": {
+						"entry": "{@as 1} to {@as 3}",
+						"unit": "varies"
+					},
+					"components": [
+						"envision",
+						"{@action Interact}"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"You raise the lantern and unleash a blast of powerful sunlight. The blast has the effects of 2nd-level {@spell scorching ray|SoM} (Pathfinder Secrets of Magic 127) using a spell attack roll of +14, with its effect determined by the number of actions you used to Activate the lantern."
+					]
+				}
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"variantType": "lesser",
+					"level": 6,
+					"price": {
+						"amount": 235,
+						"coin": "gp"
+					},
+					"entries": []
+				},
+				{
+					"variantType": "moderate",
+					"level": 10,
+					"price": {
+						"amount": 850,
+						"coin": "gp"
+					},
+					"entries": [
+						"The lantern casts 4th-level {@spell scorching ray|SoM} using a spell attack roll of +20."
+					]
+				},
+				{
+					"variantType": "greater",
+					"level": 14,
+					"price": {
+						"amount": 3700,
+						"coin": "gp"
+					},
+					"entries": [
+						"The lantern casts 6th-level {@spell light} and 6th-level {@spell scorching ray|SoM}, using a spell attack roll of +26."
+					]
+				},
+				{
+					"variantType": "major",
+					"level": 18,
+					"price": {
+						"amount": 18750,
+						"coin": "gp"
+					},
+					"entries": [
+						"The lantern casts 8th-level {@spell scorching ray|SoM}, using a spell attack roll of +32."
+					]
+				}
+			]
+		},
+		{
+			"name": "Sun Shot",
+			"source": "SoT4",
+			"page": 78,
+			"type": "Item",
+			"traits": [],
+			"price": {
+				"amount": 1,
+				"coin": "sp",
+				"note": "(price for 10)"
+			},
+			"bulk": "L",
+			"category": "Ammunition",
+			"entries": [
+				"A sun sling is a small staff with a head of woven netting. The staff is small enough to hold in a single hand, making it useful for hit-and-run tactics, but once loaded with ammunition, it requires two hands to properly swing and fire. Sun slings use small metal bullets covered in sharp spikes known as sun shots."
+			]
+		},
+		{
+			"name": "Sun Sling",
+			"source": "SoT4",
+			"page": 78,
+			"type": "Item",
+			"level": 0,
+			"traits": [
+				"uncommon",
+				"concussive",
+				"propulsive"
+			],
+			"price": {
+				"amount": 3,
+				"coin": "gp"
+			},
+			"bulk": "L",
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"entries": [
+				"A sun sling is a small staff with a head of woven netting. The staff is small enough to hold in a single hand, making it useful for hit-and-run tactics, but once loaded with ammunition, it requires two hands to properly swing and fire. Sun slings use small metal bullets covered in sharp spikes known as {@item sun shots|sot4}."
+			],
+			"weaponData": {
+				"ammunition": "Sun Shot|SoT4",
+				"damage": "1d8",
+				"damageType": "P",
+				"reload": 1,
+				"range": 100,
+				"hands": 2,
+				"group": "Sling"
+			},
+			"comboWeaponData": {
+				"damage": "1d8",
+				"damageType": "P",
+				"hands": 1,
+				"group": "Staff"
+			}
+		},
+		{
+			"name": "Twilight Lantern",
+			"source": "SoT4",
+			"page": 76,
+			"type": "Item",
+			"level": "6+",
+			"traits": [
+				"uncommon",
+				"light",
+				"magical",
+				"transmutation"
+			],
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"category": "Held",
+			"entries": [
+				"This elegant hooded lantern is made from onyx-black metal. In dim light, flecks of white metal speckled within the lantern's housing resemble stars in a night sky. The lantern uses oil as a standard hooded lantern, except that any light the lantern emits is converted into magical light similar to moonlight. This magical moonlight is always dim light.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"envision"
+					],
+					"entries": [
+						"You concentrate on the lantern's light and reduce or increase its radius.",
+						"The light can have a minimum radius of 5 feet and a maximum radius equal to double the light's standard radius."
+					]
+				},
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"envision",
+						"{@action Interact}"
+					],
+					"frequency": {
+						"freq": 1,
+						"unit": "day"
+					},
+					"variants": [
+						{
+							"name": "lesser",
+							"level": 6,
+							"price": {
+								"amount": 235,
+								"coin": "gp"
+							},
+							"entries": []
+						},
+						{
+							"name": "moderate",
+							"level": 10,
+							"price": {
+								"amount": 850,
+								"coin": "gp"
+							},
+							"entries": [
+								"The counteract modifier is +17, and the maximum radius is equal to triple the light's standard radius."
+							]
+						},
+						{
+							"name": "greater",
+							"level": 14,
+							"price": {
+								"amount": 3700,
+								"coin": "gp"
+							},
+							"entries": [
+								"As moderate twilight lantern, but the counteract modifier is +21."
+							]
+						},
+						{
+							"name": "major",
+							"level": 18,
+							"price": {
+								"amount": 18750,
+								"coin": "gp"
+							},
+							"entries": [
+								"The counteract modifier is +28, and the maximum radius is equal to quadruple the light's standard radius."
+							]
+						}
+					],
+					"entries": [
+						"You raise the lantern and unleash a beam of powerful moonlight, targeting a {@trait darkness} effect within 60 feet. The lantern attempts to counteract the effect with a counteract modifier of +10."
+					]
+				}
+			]
+		}
+	]
+}

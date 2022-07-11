@@ -73,33 +73,7 @@ function getFnListSort (prop) {
 function prettifyFolder (folder) {
 	console.log(`Prettifying directory ${folder}...`);
 	const files = ut.listFiles({dir: folder});
-	files
-		.filter(file => file.endsWith(".json") && !FILE_BLACKLIST.has(file.split("/").last()))
-		.forEach(file => {
-			console.log(`\tPrettifying ${file}...`);
-			const json = ut.readJson(file);
-			let isModified = false;
-
-			Object.entries(json)
-				.filter(([k, v]) => !KEY_BLACKLIST.has(k) && v instanceof Array)
-				.forEach(([k, v]) => {
-					if (PropOrder.hasOrder(k)) {
-						PROPS_TO_UNHANDLED_KEYS[k] = PROPS_TO_UNHANDLED_KEYS[k] || new Set();
-
-						json[k] = v.map(it => {
-							it = PropOrder.getOrdered(it, k, {fnUnhandledKey: uk => PROPS_TO_UNHANDLED_KEYS[k].add(uk)});
-							if (it.traits) it.traits = it.traits.map(t => t.toLowerCase());
-							return it;
-						});
-
-						json[k].sort(getFnListSort(k));
-
-						isModified = true;
-					} else console.warn(`\tUnhandled property "${k}"`);
-				});
-
-			if (isModified) fs.writeFileSync(file, CleanUtil.getCleanJson(json), "utf-8");
-		});
+	files.filter(file => file.endsWith(".json") && !FILE_BLACKLIST.has(file.split("/").last())).forEach(prettifyFile);
 
 	Object.entries(PROPS_TO_UNHANDLED_KEYS)
 		.filter(([prop, set]) => set.size)
@@ -108,6 +82,32 @@ function prettifyFolder (folder) {
 			set.forEach(k => console.warn(`\t${k}`));
 		})
 }
+function prettifyFile (file) {
+	console.log(`\tPrettifying ${file}...`);
+	const json = ut.readJson(file);
+	let isModified = false;
+
+	Object.entries(json)
+		.filter(([k, v]) => !KEY_BLACKLIST.has(k) && v instanceof Array)
+		.forEach(([k, v]) => {
+			if (PropOrder.hasOrder(k)) {
+				PROPS_TO_UNHANDLED_KEYS[k] = PROPS_TO_UNHANDLED_KEYS[k] || new Set();
+
+				json[k] = v.map(it => {
+					it = PropOrder.getOrdered(it, k, {fnUnhandledKey: uk => PROPS_TO_UNHANDLED_KEYS[k].add(uk)});
+					if (it.traits) it.traits = it.traits.map(t => t.toLowerCase());
+					return it;
+				});
+
+				json[k].sort(getFnListSort(k));
+
+				isModified = true;
+			} else console.warn(`\tUnhandled property "${k}"`);
+		});
+
+	if (isModified) fs.writeFileSync(file, CleanUtil.getCleanJson(json), "utf-8");
+}
+
 async function main () {
 	require("../js/render.js");
 	ut.patchLoadJson();

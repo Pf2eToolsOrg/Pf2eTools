@@ -112,8 +112,4 @@ if (require.main === module) {
 	main().then(() => console.log("Run complete.")).catch(e => {
 		throw e;
 	});
-} else {
-	module.exports = {
-		TagJsons,
-	};
 }

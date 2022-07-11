@@ -1995,6 +1995,7 @@ UrlUtil.PG_MAKE_BREW = "makebrew.html";
 UrlUtil.PG_DEMO_RENDER = "renderdemo.html";
 UrlUtil.PG_TABLES = "tables.html";
 UrlUtil.PG_ORGANIZATIONS = "organizations.html";
+UrlUtil.PG_CREATURETEMPLATE = "creaturetemplates.html";
 UrlUtil.PG_CHARACTERS = "characters.html";
 UrlUtil.PG_ACTIONS = "actions.html";
 UrlUtil.PG_ABILITIES = "abilities.html";
@@ -2028,6 +2029,7 @@ UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_DEITIES] = (it) => UrlUtil.encodeForHash(
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_HAZARDS] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_TABLES] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ORGANIZATIONS] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CREATURETEMPLATE] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ACTIONS] = (it) => UrlUtil.encodeForHash([it.add_hash ? `${it.name} (${it.add_hash})` : it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ABILITIES] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_LANGUAGES] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
@@ -2074,6 +2076,7 @@ UrlUtil.PG_TO_NAME[UrlUtil.PG_MANAGE_BREW] = "Homebrew Manager";
 UrlUtil.PG_TO_NAME[UrlUtil.PG_DEMO_RENDER] = "Renderer Demo";
 UrlUtil.PG_TO_NAME[UrlUtil.PG_TABLES] = "Tables";
 UrlUtil.PG_TO_NAME[UrlUtil.PG_ORGANIZATIONS] = "Organizations";
+UrlUtil.PG_TO_NAME[UrlUtil.PG_CREATURETEMPLATE] = "Creature Templates";
 UrlUtil.PG_TO_NAME[UrlUtil.PG_ACTIONS] = "Actions";
 UrlUtil.PG_TO_NAME[UrlUtil.PG_ABILITIES] = "Creature Abilities";
 UrlUtil.PG_TO_NAME[UrlUtil.PG_LANGUAGES] = "Languages";
@@ -2123,6 +2126,7 @@ UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_LANGUAGE] = UrlUtil.PG_LANGUAGES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_PLACE] = UrlUtil.PG_PLACES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_PLANE] = UrlUtil.PG_PLACES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_ORGANIZATION] = UrlUtil.PG_ORGANIZATIONS;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_CREATURETEMPLATE] = UrlUtil.PG_CREATURETEMPLATE;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_NATION] = UrlUtil.PG_PLACES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_SETTLEMENT] = UrlUtil.PG_PLACES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_RITUAL] = UrlUtil.PG_RITUALS;
@@ -2419,6 +2423,8 @@ DataUtil = {
 				case "deityFluff": return DataUtil.deityFluff.pMergeCopy(arr, entry, options);
 				case "organization": return DataUtil.organization.pMergeCopy(arr, entry, options);
 				case "organizationFluff": return DataUtil.organizationFluff.pMergeCopy(arr, entry, options);
+				case "creatureTemplate": return DataUtil.creatureTemplate.pMergeCopy(arr, entry, options);
+				case "creatureTemplateFluff": return DataUtil.creatureTemplateFluff.pMergeCopy(arr, entry, options);
 				default: throw new Error(`No dependency _copy merge strategy specified for property "${prop}"`);
 			}
 		}
@@ -2729,7 +2735,7 @@ DataUtil = {
 			}
 
 			function doMod_replaceTxt (modInfo, path) {
-				if (!copyTo[path]) return;
+				if (!getPropertyFromPath(copyTo, path)) return;
 
 				DataUtil.generic._walker_replaceTxt = DataUtil.generic._walker_replaceTxt || MiscUtil.getWalker();
 				const re = new RegExp(modInfo.replace, `g${modInfo.flags || ""}`);
@@ -2761,6 +2767,10 @@ DataUtil = {
 				// TODO: This is getting out of hand
 				const typesToReplaceIn = ["successDegree", "ability", "affliction", "lvlEffect"];
 				getPropertyFromPath(copyTo, path).forEach(it => {
+					if (path === "attacks") {
+						it.damage = it.damage.replace(re, modInfo.with);
+						it.traits = DataUtil.generic._walker_replaceTxt.walk(it.traits, handlers);
+					}
 					if (it.entries) it.entries = DataUtil.generic._walker_replaceTxt.walk(it.entries, handlers);
 					if (it.items) it.items = DataUtil.generic._walker_replaceTxt.walk(it.items, handlers);
 					if (typesToReplaceIn.includes(it.type)) {
@@ -3112,9 +3122,9 @@ DataUtil = {
 			// FIXME:
 			if (!variant.name) {
 				if (!generic.name.toLowerCase().includes(variant.type.toLowerCase()) && !variant.type.toLowerCase().includes(generic.name.toLowerCase())) {
-					variant.name = `${variant.type} ${generic.name}`.toTitleCase();
+					variant.name = `${variant.variantType} ${generic.name}`.toTitleCase();
 				} else {
-					variant.name = variant.type.toTitleCase();
+					variant.name = variant.variantType.toTitleCase();
 				}
 			}
 			variant.type = generic.type || "Item";
@@ -3461,6 +3471,32 @@ DataUtil = {
 		_mergeCache: {},
 		async pMergeCopy (organizationFlfList, organizationFlf, options) {
 			return DataUtil.generic._pMergeCopy(DataUtil.organizationFluff, UrlUtil.PG_ORGANIZATIONS, organizationFlfList, organizationFlf, options);
+		},
+	},
+
+	creatureTemplate: {
+		_MERGE_REQUIRES_PRESERVE: {
+			page: true,
+			otherSources: true,
+		},
+		_mergeCache: {},
+		async pMergeCopy (creatureTemplateList, creatureTemplate, options) {
+			return DataUtil.generic._pMergeCopy(DataUtil.creatureTemplate, UrlUtil.PG_ORGANIZATIONS, creatureTemplateList, creatureTemplate, options);
+		},
+
+		loadJSON: async function () {
+			return DataUtil.loadJSON(`${Renderer.get().baseUrl}data/creaturetemplates.json`);
+		},
+	},
+
+	creatureTemplateFluff: {
+		_MERGE_REQUIRES_PRESERVE: {
+			page: true,
+			otherSources: true,
+		},
+		_mergeCache: {},
+		async pMergeCopy (creatureTemplateFlfList, creatureTemplateFlf, options) {
+			return DataUtil.generic._pMergeCopy(DataUtil.creatureTemplateFluff, UrlUtil.PG_ORGANIZATIONS, creatureTemplateFlfList, creatureTemplateFlf, options);
 		},
 	},
 
@@ -4581,6 +4617,8 @@ BrewUtil = {
 				return ["place"];
 			case UrlUtil.PG_ORGANIZATIONS:
 				return ["organization"];
+			case UrlUtil.PG_CREATURETEMPLATE:
+				return ["creatureTemplate"];
 			case UrlUtil.PG_RITUALS:
 				return ["ritual"];
 			case UrlUtil.PG_OPTIONAL_FEATURES:
@@ -4691,6 +4729,7 @@ BrewUtil = {
 			case "curse":
 			case "ability":
 			case "organization":
+			case "creatureTemplate":
 			case "deity":
 			case "language":
 			case "place":
@@ -4795,7 +4834,7 @@ BrewUtil = {
 		obj.uniqueId = CryptUtil.md5(JSON.stringify(obj));
 	},
 
-	_STORABLE: ["variantrule", "table", "tableGroup", "book", "bookData", "ancestry", "heritage", "versatileHeritage", "background", "class", "subclass", "classFeature", "subclassFeature", "archetype", "feat", "companion", "familiar", "eidolon", "adventure", "adventureData", "hazard", "action", "creature", "condition", "item", "baseitem", "spell", "disease", "curse", "ability", "deity", "language", "place", "ritual", "vehicle", "trait", "group", "domain", "skill", "optionalfeature", "organization"],
+	_STORABLE: ["variantrule", "table", "tableGroup", "book", "bookData", "ancestry", "heritage", "versatileHeritage", "background", "class", "subclass", "classFeature", "subclassFeature", "archetype", "feat", "companion", "familiar", "eidolon", "adventure", "adventureData", "hazard", "action", "creature", "condition", "item", "baseitem", "spell", "disease", "curse", "ability", "deity", "language", "place", "ritual", "vehicle", "trait", "group", "domain", "skill", "optionalfeature", "organization", "creatureTemplate"],
 	async pDoHandleBrewJson (json, page, pFuncRefresh) {
 		page = BrewUtil._PAGE || page;
 		await BrewUtil._lockHandleBrewJson.pLock();
@@ -4938,6 +4977,7 @@ BrewUtil = {
 			case UrlUtil.PG_LANGUAGES:
 			case UrlUtil.PG_PLACES:
 			case UrlUtil.PG_ORGANIZATIONS:
+			case UrlUtil.PG_CREATURETEMPLATE:
 			case UrlUtil.PG_RITUALS:
 			case UrlUtil.PG_VEHICLES:
 			case UrlUtil.PG_OPTIONAL_FEATURES:
