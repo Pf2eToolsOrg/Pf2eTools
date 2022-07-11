@@ -5095,7 +5095,7 @@ Renderer.item = {
 		item.variants.forEach((v) => {
 			renderStack.push(Renderer.utils.getDividerDiv());
 			// FIXME: Optimize this hellish mess
-			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Type&nbsp;</strong>${renderer.render(`{@item ${v.type.toLowerCase().includes(item.name.toLowerCase()) ? `${v.type}` : `${v.name ? v.name : `${v.type} ${item.name}`}`}|${v.source ? v.source : item.source}|${v.type}}`)}`);
+			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Type&nbsp;</strong>${renderer.render(`{@item ${v.variantType.toLowerCase().includes(item.name.toLowerCase()) ? `${v.variantType}` : `${v.name ? v.name : `${v.variantType} ${item.name}`}`}|${v.source ? v.source : item.source}|${v.variantType}}`)}`);
 			if (v.level != null) renderStack.push(`; <strong>Level&nbsp;</strong>${v.level}`);
 			if (v.traits != null && v.traits.length) renderStack.push(` (${renderer.render(v.traits.map(t => `{@trait ${t.toLowerCase()}}`).join(", "))})`);
 			if (v.price != null) renderStack.push(`; <strong>Price&nbsp;</strong>${Parser.priceToFull(v.price)}`);

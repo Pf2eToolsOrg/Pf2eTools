@@ -3122,9 +3122,9 @@ DataUtil = {
 			// FIXME:
 			if (!variant.name) {
 				if (!generic.name.toLowerCase().includes(variant.type.toLowerCase()) && !variant.type.toLowerCase().includes(generic.name.toLowerCase())) {
-					variant.name = `${variant.type} ${generic.name}`.toTitleCase();
+					variant.name = `${variant.variantType} ${generic.name}`.toTitleCase();
 				} else {
-					variant.name = variant.type.toTitleCase();
+					variant.name = variant.variantType.toTitleCase();
 				}
 			}
 			variant.type = generic.type || "Item";
