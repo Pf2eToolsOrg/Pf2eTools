@@ -264,9 +264,8 @@
 			],
 			"usage": "varies by shield",
 			"category": "Shield",
-			"group": "Shield",
 			"entries": [
-				"These glowing shields are crafted to ensure that the abysium used is safely contained within a durable outer shell. If the shield breaks, however, the toxic metal becomes exposed. When you use the Shield Block reaction against an adjacent creature's melee {@action Strike}, if the shield breaks, the creature is exposed to the abysium and is {@condition sickened|CRB|sickened 1} for a standard-grade shield or {@condition sickened|CRB|sickened 2} for a high-grade shield."
+				"These glowing shields are crafted to ensure that the abysium used is safely contained within a durable outer shell. If the shield breaks, however, the toxic metal becomes exposed. When you use the {@action Shield Block} reaction against an adjacent creature's melee {@action Strike}, if the shield breaks, the creature is exposed to the abysium and is {@condition sickened|CRB|sickened 1} for a standard-grade shield or {@condition sickened|CRB|sickened 2} for a high-grade shield."
 			],
 			"generic": "G",
 			"variants": [
@@ -279,7 +278,14 @@
 						"amount": 400
 					},
 					"bulk": "L",
-					"craftReq": "abysium worth at least 50 gp The shield has Hardness 4, HP 16, and BT 8.",
+					"shieldData": {
+						"hardness": 4,
+						"hp": 16,
+						"bt": 8,
+						"ac": 1,
+						"speedPen": 0
+					},
+					"craftReq": "abysium worth at least 50 gp",
 					"entries": []
 				},
 				{
@@ -290,7 +296,14 @@
 						"amount": 440
 					},
 					"bulk": 1,
-					"craftReq": "abysium worth at least 55 gp The shield has Hardness 6, HP 24, and BT 12.",
+					"shieldData": {
+						"hardness": 6,
+						"hp": 24,
+						"bt": 12,
+						"ac": 2,
+						"speedPen": 0
+					},
+					"craftReq": "abysium worth at least 55 gp",
 					"entries": []
 				},
 				{
@@ -302,7 +315,14 @@
 						"amount": 8000
 					},
 					"bulk": "L",
-					"craftReq": "abysium worth at least 4,000 gp The shield has Hardness 7, HP 28, and BT 14.",
+					"shieldData": {
+						"hardness": 7,
+						"hp": 28,
+						"bt": 14,
+						"ac": 1,
+						"speedPen": 0
+					},
+					"craftReq": "abysium worth at least 4,000 gp",
 					"entries": []
 				},
 				{
@@ -313,7 +333,14 @@
 						"amount": 8800
 					},
 					"bulk": 1,
-					"craftReq": "abysium worth at least 4,400 gp The shield has Hardness 10, HP 40, and BT 20.",
+					"shieldData": {
+						"hardness": 10,
+						"hp": 40,
+						"bt": 20,
+						"ac": 2,
+						"speedPen": 0
+					},
+					"craftReq": "abysium worth at least 4,400 gp",
 					"entries": []
 				}
 			]
@@ -915,7 +942,7 @@
 					},
 					"components": [
 						"envision",
-						"Interact"
+						"{@action Interact}"
 					],
 					"frequency": {
 						"unit": "day",
@@ -1457,7 +1484,7 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"frequency": {
 						"unit": "hour",
@@ -2121,7 +2148,6 @@
 			],
 			"usage": "varies by shield",
 			"category": "Shield",
-			"group": "Shield",
 			"entries": [
 				"The burnished red faces of djezet-alloy shields attract effects made of pure magic. While you have a djezet shield Raised, you can use the Shield Block reaction when you would take energy damage in addition to the reaction's usual trigger.",
 				"When taking energy damage from a spell, the shield's listed Hardness doubles."
@@ -2662,7 +2688,7 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"frequency": {
 						"unit": "minute",
@@ -2679,7 +2705,7 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"frequency": {
 						"unit": "day",
@@ -2762,7 +2788,7 @@
 						"entry": "1 minute"
 					},
 					"components": [
-						"(Interact)"
+						"{@action Interact}"
 					],
 					"frequency": {
 						"unit": "day",
@@ -2860,7 +2886,7 @@
 					},
 					"components": [
 						"command",
-						"Interact"
+						"{@action Interact}"
 					],
 					"frequency": {
 						"unit": "day",
@@ -3206,7 +3232,7 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"traits": [
 						"magical",
@@ -3398,7 +3424,7 @@
 					},
 					"components": [
 						"command",
-						"Interact"
+						"{@action Interact}"
 					],
 					"entries": [
 						"The folding boat can take two shapes. The first is a wooden box that's 12 inches long, 6 inches wide, and 4 inches high; it weighs 1 Bulk and can store up to 1 Bulk of items. The other form is a rowboat (Gamemastery Guide 179). If the chosen form can't fit in the space, it takes the largest shape that does fit. You can activate the boat again to revert it to its original shape.",
@@ -3810,7 +3836,7 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"entries": [
 						"You curl your fingers inward to press the button on the heel of your hand, anchoring your prosthetic arm in place. Your arm no longer moves, defying gravity if necessary. You can still move the fingers of this hand and your elbow, shoulder, and rest of your body while the magic is in effect, but you can't move your wrist. If you press the button again, the rod inside your arm is deactivated, ending the magic that anchors it in place. While anchored, the arm can be moved only if 8,000 pounds of pressure is placed upon it or if a creature succeeds at a DC 40 {@skill Athletics} check to {@action Force Open} your arm. A creature can notice the button {@condition hidden} in the hand of the prosthesis with a successful DC 25 {@skill Perception} check to {@action Seek}."
@@ -4426,7 +4452,7 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"frequency": {
 						"unit": "minute",
@@ -4732,7 +4758,7 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"frequency": {
 						"unit": "hour",
@@ -4798,7 +4824,7 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"requirements": "The mirror robe was last activated to draw attention toward you, or you haven't used the mirror robe today",
 					"entries": [
@@ -5578,7 +5604,7 @@
 			"usage": "applied to any visible article of clothing",
 			"category": "Rune",
 			"entries": [
-				"A garment with this rune is always clean, as though it had just been affected by prestidigitation. You gain a +1 item bonus to {@action Make an Impression} on those who would be impressed by a particular presentable outfit while wearing this garment."
+				"A garment with this rune is always clean, as though it had just been affected by {@spell prestidigitation}. You gain a +1 item bonus to {@action Make an Impression} on those who would be impressed by a particular presentable outfit while wearing this garment."
 			],
 			"generic": "G",
 			"variants": [
@@ -5600,8 +5626,24 @@
 					},
 					"entries": [
 						"This rune grants a +2 item bonus and has an activation.",
-						"Activate {@as 2} envision, {@action Interact}; Frequency once per day; Effect You cast {@spell suggestion}."
-					]
+						{
+							"type": "ability",
+							"activity": {
+								"number": 2,
+								"unit": "action"
+							},
+							"components": [
+								"envision",
+								"{@action Interact}"
+							],
+							"frequency": {
+								"freq": 1,
+								"unit": "day"
+							},
+							"entries": [
+								"You cast {@spell suggestion}."
+							]
+						}]
 				}
 			]
 		},
@@ -5815,7 +5857,7 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"frequency": {
 						"unit": "day",
@@ -6832,7 +6874,7 @@
 						"unit": "reaction"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"frequency": {
 						"unit": "day",
@@ -6997,7 +7039,7 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"requirements": "You are riding on your weapon",
 					"entries": [
@@ -7935,7 +7977,7 @@
 						"unit": "reaction"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"trigger": "You would take damage from a physical attack",
 					"entries": [
@@ -7970,7 +8012,7 @@
 						"unit": "reaction"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"trigger": "You hit a creature with a melee",
 					"entries": [
@@ -7984,7 +8026,7 @@
 						"unit": "reaction"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"trigger": "You are hit with a melee attack that deals physical damage",
 					"entries": [
@@ -8395,7 +8437,7 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"entries": [
 						"You hold the chain out before you, and the weapon glows as bright as a torch. You can suppress this light by {@action Activate an Item||Activating} the weapon again."
@@ -8847,7 +8889,7 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"frequency": {
 						"unit": "day",
