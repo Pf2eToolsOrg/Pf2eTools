@@ -32,7 +32,6 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "sphere",
 					"level": 6,
 					"price": {
 						"amount": 40,
@@ -41,10 +40,10 @@
 					"entries": [
 						"This smooth marble keeps its shape when activated, growing into a spherical boulder 10 feet in diameter.",
 						"If stationary, the boulder can be pushed 5 feet with a successful DC 24 {@skill Athletics} check. If the marble was thrown or slung, the boulder retains its momentum, moving 25 feet away from you each round. A creature in the boulder's way takes {@damage 4d6} bludgeoning damage (DC 20 basic Reflex save; on a failure, the creature is knocked {@condition prone})."
-					]
+					],
+					"variantType": "sphere"
 				},
 				{
-					"type": "cube",
 					"level": 8,
 					"price": {
 						"amount": 80,
@@ -52,10 +51,10 @@
 					},
 					"entries": [
 						"This seemingly simple six-sided die was designed to block a corridor. When activated, it grows to fill a solid square or rectangular space no more than 20 feet on any side. The cube fills spaces well enough that Tiny creatures can't slip through, but it's far from a perfect seal. Liquids, gases, and minuscule creatures such as insects can still find ways around it. Depending on the irregularities of the space the cube fills, it might be possible to see or hear past it."
-					]
+					],
+					"variantType": "cube"
 				},
 				{
-					"type": "cylinder",
 					"level": 10,
 					"price": {
 						"amount": 160,
@@ -63,7 +62,8 @@
 					},
 					"entries": [
 						"When activated, this cylinder expands to a diameter of 5 feet, 10 feet, or 20 feet, depending on the command, with respective maximum heights of 80 feet, 40 feet, and 20 feet. If a dimension can't be reached due to contact with another solid surface, the cylinder ceases to grow in that direction. You can activate the cylinder horizontally instead of vertically. If you do, the cylinder moves similarly to the sphere barricade stone, with the following changes: both DCs increase to 27, the damage increases to {@dice 6d6}, and a creature that critically fails its Reflex save against the rolling cylinder gains the {@condition wounded||wounded 1} condition (or increases the value of its {@condition wounded} condition by 1)."
-					]
+					],
+					"variantType": "cylinder"
 				}
 			]
 		},
