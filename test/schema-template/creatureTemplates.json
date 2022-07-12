@@ -1,0 +1,93 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema",
+	"$id": "creatureTemplates.json",
+	"title": "Creature Templates",
+	"description": "The creatureTemplate data type for Pf2eTools.",
+	"type": "object",
+	"version": "0.0.1",
+	"properties": {
+		"creatureTemplate": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"source": {
+						"type": "string",
+						"$ref": "utils.json#/definitions/sourceList"
+					},
+					"otherSources": {
+						"$ref": "utils.json#/definitions/otherSources"
+					},
+					"page": {
+						"type": "integer"
+					},
+					"alias": {
+						"type": "array",
+						"items": {
+							"type": "string"
+						},
+						"minItems": 1
+					},
+					"entries": {
+						"type": "array",
+						"items": {
+							"$ref": "entry.json"
+						}
+					},
+					"abilities": {
+						"type": "object",
+						"properties": {
+							"entries": {
+								"type": "array",
+								"items": {
+									"$ref": "entry.json"
+								}
+							},
+							"abilities": {
+								"type": "array",
+								"items": {
+									"$ref": "entry.json#/definitions/entriesAbilityBlock"
+								}
+							}
+						}
+					},
+					"hasLore": {
+						"type": "boolean"
+					},
+					"optAbilities": {
+						"type": "object",
+						"properties": {
+							"entries": {
+								"type": "array",
+								"items": {
+									"$ref": "entry.json"
+								}
+							},
+							"abilities": {
+								"type": "array",
+								"items": {
+									"anyOf": [
+										{
+											"$ref": "entry.json#/definitions/entriesAbilityBlock"
+										},
+										{
+											"$ref": "entry.json#/definitions/entriesAffliction"
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"additionalProperties": false
+			},
+			"minItems": 1
+		}
+	},
+	"required": [
+		"creatureTemplate"
+	]
+}

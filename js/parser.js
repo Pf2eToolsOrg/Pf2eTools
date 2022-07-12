@@ -1736,7 +1736,7 @@ Parser.TAG_TO_DEFAULT_SOURCE = {
 	"eidolon": SRC_SOM,
 	"optfeature": SRC_APG,
 	"organization": SRC_LOCG,
-	"creatureTemplate": SRC_GMG,
+	"creatureTemplate": SRC_B1,
 };
 Parser.getTagSource = function (tag, source) {
 	if (source && source.trim()) return source;
