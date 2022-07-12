@@ -39,6 +39,14 @@ function updateFolder (folder) {
 					return x
 				})
 			}
+			if (json.ancestry) {
+				console.log(`\tUpdating ancestry size in ${file}...`)
+				json.ancestry = json.ancestry.map(x => {
+					if (typeof x.size === 'string' || x.size instanceof String) {
+						x.size = x.size.split(/, or |, | or /g)
+					}
+				})
+			}
 			console.log(`\tCleaning ${file}...`);
 			fs.writeFileSync(file, CleanUtil.getCleanJson(json), "utf-8");
 		})
