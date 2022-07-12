@@ -21,7 +21,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Strike"
+					"{@action Strike}"
 				]
 			},
 			"category": "Bomb",
@@ -222,7 +222,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "adamantine chunk",
+					"variantType": "adamantine chunk",
 					"price": {
 						"coin": "gp",
 						"amount": 500
@@ -231,7 +231,7 @@
 					"entries": []
 				},
 				{
-					"type": "adamantine ingot",
+					"variantType": "adamantine ingot",
 					"price": {
 						"coin": "gp",
 						"amount": 5000
@@ -240,7 +240,7 @@
 					"entries": []
 				},
 				{
-					"type": "standard-grade adamantine object",
+					"variantType": "standard-grade adamantine object",
 					"level": 8,
 					"price": {
 						"coin": "gp",
@@ -250,7 +250,7 @@
 					"entries": []
 				},
 				{
-					"type": "high-grade adamantine object",
+					"variantType": "high-grade adamantine object",
 					"level": 16,
 					"price": {
 						"coin": "gp",
@@ -279,7 +279,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "standard-grade adamantine armor",
+					"variantType": "standard-grade adamantine armor",
 					"level": 12,
 					"price": {
 						"coin": "gp",
@@ -290,7 +290,7 @@
 					"entries": []
 				},
 				{
-					"type": "high-grade adamantine armor",
+					"variantType": "high-grade adamantine armor",
 					"level": 19,
 					"price": {
 						"coin": "gp",
@@ -320,7 +320,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "standard-grade adamantine buckler",
+					"variantType": "standard-grade adamantine buckler",
 					"name": "Standard-Grade Adamantine Buckler",
 					"level": 8,
 					"price": {
@@ -331,13 +331,14 @@
 					"shieldData": {
 						"hardness": 8,
 						"hp": 32,
-						"bt": 16
+						"bt": 16,
+						"ac": 1
 					},
 					"craftReq": "adamantine worth at least 50 gp",
 					"entries": []
 				},
 				{
-					"type": "standard-grade adamantine shield",
+					"variantType": "standard-grade adamantine shield",
 					"level": 8,
 					"price": {
 						"coin": "gp",
@@ -347,26 +348,28 @@
 					"shieldData": {
 						"hardness": 10,
 						"hp": 40,
-						"bt": 20
+						"bt": 20,
+						"ac": 2
 					},
 					"craftReq": "adamantine worth at least 55 gp",
 					"entries": []
 				},
 				{
-					"type": "high-grade adamantine buckler",
+					"variantType": "high-grade adamantine buckler",
 					"name": "High-Grade Adamantine Buckler",
 					"level": 16,
 					"shieldData": {
 						"hardness": 11,
 						"hp": 44,
-						"bt": 22
+						"bt": 22,
+						"ac": 1
 					},
 					"bulk": "L",
 					"craftReq": "adamantine worth at least 4,000 gp",
 					"entries": []
 				},
 				{
-					"type": "high-grade adamantine shield",
+					"variantType": "high-grade adamantine shield",
 					"level": 16,
 					"price": {
 						"coin": "gp",
@@ -376,7 +379,8 @@
 					"shieldData": {
 						"hardness": 13,
 						"hp": 52,
-						"bt": 26
+						"bt": 26,
+						"ac": 2
 					},
 					"craftReq": "adamantine worth at least 4,400 gp",
 					"entries": []
@@ -401,7 +405,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "standard-grade adamantine weapon",
+					"variantType": "standard-grade adamantine weapon",
 					"level": 11,
 					"price": {
 						"coin": "gp",
@@ -412,7 +416,7 @@
 					"entries": []
 				},
 				{
-					"type": "high-grade adamantine weapon",
+					"variantType": "high-grade adamantine weapon",
 					"level": 17,
 					"price": {
 						"coin": "gp",
@@ -469,7 +473,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "clear spindle",
+					"variantType": "clear spindle",
 					"level": 7,
 					"name": "Clear Spindle Aeon Stone",
 					"price": {
@@ -482,7 +486,7 @@
 					]
 				},
 				{
-					"type": "dull gray",
+					"variantType": "dull gray",
 					"level": 1,
 					"price": {
 						"coin": "gp",
@@ -495,7 +499,7 @@
 					]
 				},
 				{
-					"type": "gold nodule",
+					"variantType": "gold nodule",
 					"level": 6,
 					"price": {
 						"coin": "gp",
@@ -508,7 +512,7 @@
 					]
 				},
 				{
-					"type": "lavender and green ellipsoid",
+					"variantType": "lavender and green ellipsoid",
 					"level": 19,
 					"price": {
 						"coin": "gp",
@@ -521,7 +525,7 @@
 					]
 				},
 				{
-					"type": "orange prism",
+					"variantType": "orange prism",
 					"level": 16,
 					"price": {
 						"coin": "gp",
@@ -534,7 +538,7 @@
 					]
 				},
 				{
-					"type": "pale lavender ellipsoid",
+					"variantType": "pale lavender ellipsoid",
 					"level": 13,
 					"price": {
 						"coin": "gp",
@@ -548,7 +552,7 @@
 					]
 				},
 				{
-					"type": "pink rhomboid",
+					"variantType": "pink rhomboid",
 					"level": 12,
 					"price": {
 						"coin": "gp",
@@ -561,7 +565,7 @@
 					]
 				},
 				{
-					"type": "tourmaline sphere",
+					"variantType": "tourmaline sphere",
 					"level": 7,
 					"price": {
 						"coin": "gp",
@@ -574,7 +578,7 @@
 					]
 				},
 				{
-					"type": "agate ellipsoid",
+					"variantType": "agate ellipsoid",
 					"level": 5,
 					"price": {
 						"coin": "gp",
@@ -590,7 +594,7 @@
 					]
 				},
 				{
-					"type": "azure briolette",
+					"variantType": "azure briolette",
 					"level": 4,
 					"price": {
 						"coin": "gp",
@@ -607,7 +611,7 @@
 					]
 				},
 				{
-					"type": "dusty rose prism",
+					"variantType": "dusty rose prism",
 					"level": 3,
 					"price": {
 						"coin": "gp",
@@ -622,7 +626,7 @@
 					]
 				},
 				{
-					"type": "pale orange rhomboid",
+					"variantType": "pale orange rhomboid",
 					"level": 19,
 					"price": {
 						"coin": "gp",
@@ -639,7 +643,7 @@
 					]
 				},
 				{
-					"type": "pearlescent pyramid",
+					"variantType": "pearlescent pyramid",
 					"level": 10,
 					"price": {
 						"coin": "gp",
@@ -655,7 +659,7 @@
 					]
 				},
 				{
-					"type": "pearly white spindle",
+					"variantType": "pearly white spindle",
 					"level": 3,
 					"price": {
 						"coin": "gp",
@@ -670,7 +674,7 @@
 					]
 				},
 				{
-					"type": "western star",
+					"variantType": "western star",
 					"level": 6,
 					"price": {
 						"coin": "gp",
@@ -686,7 +690,7 @@
 					]
 				},
 				{
-					"type": "black pearl",
+					"variantType": "black pearl",
 					"level": 12,
 					"price": {
 						"coin": "gp",
@@ -744,7 +748,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "alchemist goggles",
+					"variantType": "alchemist goggles",
 					"level": 4,
 					"price": {
 						"coin": "gp",
@@ -758,7 +762,7 @@
 					}
 				},
 				{
-					"type": "greater alchemist goggles",
+					"variantType": "greater alchemist goggles",
 					"level": 11,
 					"price": {
 						"coin": "gp",
@@ -774,7 +778,7 @@
 					}
 				},
 				{
-					"type": "major alchemist goggles",
+					"variantType": "major alchemist goggles",
 					"level": 17,
 					"price": {
 						"coin": "gp",
@@ -903,7 +907,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "Base",
+					"variantType": "Base",
 					"name": "Alchemist's Lab",
 					"price": {
 						"coin": "gp",
@@ -912,7 +916,7 @@
 					"entries": []
 				},
 				{
-					"type": "Expanded",
+					"variantType": "Expanded",
 					"name": "Expanded Alchemist's Lab",
 					"level": 3,
 					"price": {
@@ -1033,7 +1037,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "animal staff",
+					"variantType": "animal staff",
 					"level": 4,
 					"price": {
 						"coin": "gp",
@@ -1050,7 +1054,7 @@
 					]
 				},
 				{
-					"type": "greater animal staff",
+					"variantType": "greater animal staff",
 					"level": 8,
 					"price": {
 						"coin": "gp",
@@ -1067,7 +1071,7 @@
 					]
 				},
 				{
-					"type": "major animal staff",
+					"variantType": "major animal staff",
 					"level": 12,
 					"price": {
 						"coin": "gp",
@@ -1462,7 +1466,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "armbands of athleticism",
+					"variantType": "armbands of athleticism",
 					"level": 9,
 					"price": {
 						"coin": "gp",
@@ -1471,7 +1475,7 @@
 					"entries": []
 				},
 				{
-					"type": "greater armbands of athleticism",
+					"variantType": "greater armbands of athleticism",
 					"level": 17,
 					"price": {
 						"coin": "gp",
@@ -1505,7 +1509,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "+1 armor potency",
+					"variantType": "+1 armor potency",
 					"level": 5,
 					"price": {
 						"coin": "gp",
@@ -1520,7 +1524,7 @@
 					}
 				},
 				{
-					"type": "+2 armor potency",
+					"variantType": "+2 armor potency",
 					"level": 11,
 					"price": {
 						"coin": "gp",
@@ -1537,7 +1541,7 @@
 					}
 				},
 				{
-					"type": "+3 armor potency",
+					"variantType": "+3 armor potency",
 					"level": 18,
 					"price": {
 						"coin": "gp",
@@ -1697,12 +1701,12 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "Base",
+					"variantType": "Base",
 					"name": "Artisan's Tools",
 					"entries": []
 				},
 				{
-					"type": "Sterling",
+					"variantType": "Sterling",
 					"name": "Sterling Artisan's Tools",
 					"level": 3,
 					"price": {
@@ -1779,7 +1783,7 @@
 			"variants": [
 				{
 					"name": "Bag of Holding (Type I)",
-					"type": "I",
+					"variantType": "I",
 					"level": 4,
 					"price": {
 						"coin": "gp",
@@ -1796,7 +1800,7 @@
 				},
 				{
 					"name": "Bag of Holding (Type II)",
-					"type": "II",
+					"variantType": "II",
 					"level": 7,
 					"price": {
 						"coin": "gp",
@@ -1813,7 +1817,7 @@
 				},
 				{
 					"name": "Bag of Holding (Type III)",
-					"type": "III",
+					"variantType": "III",
 					"level": 11,
 					"price": {
 						"coin": "gp",
@@ -1830,7 +1834,7 @@
 				},
 				{
 					"name": "Bag of Holding (Type IV)",
-					"type": "IV",
+					"variantType": "IV",
 					"level": 13,
 					"price": {
 						"coin": "gp",
@@ -2202,7 +2206,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "berserker's cloak",
+					"variantType": "berserker's cloak",
 					"level": 12,
 					"price": {
 						"coin": "gp",
@@ -2211,7 +2215,7 @@
 					"entries": []
 				},
 				{
-					"type": "greater berserker's cloak",
+					"variantType": "greater berserker's cloak",
 					"level": 19,
 					"price": {
 						"coin": "gp",
@@ -2802,7 +2806,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "boots of bounding",
+					"variantType": "boots of bounding",
 					"level": 7,
 					"price": {
 						"coin": "gp",
@@ -2811,7 +2815,7 @@
 					"entries": []
 				},
 				{
-					"type": "greater boots of bounding",
+					"variantType": "greater boots of bounding",
 					"level": 14,
 					"price": {
 						"coin": "gp",
@@ -2862,7 +2866,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "boots of elvenkind",
+					"variantType": "boots of elvenkind",
 					"level": 5,
 					"price": {
 						"coin": "gp",
@@ -2871,7 +2875,7 @@
 					"entries": []
 				},
 				{
-					"type": "greater boots of elvenkind",
+					"variantType": "greater boots of elvenkind",
 					"level": 11,
 					"price": {
 						"coin": "gp",
@@ -3127,7 +3131,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "I",
+					"variantType": "I",
 					"name": "Bracers of Armor (Type I)",
 					"level": 8,
 					"price": {
@@ -3142,7 +3146,7 @@
 					}
 				},
 				{
-					"type": "II",
+					"variantType": "II",
 					"name": "Bracers of Armor (Type II)",
 					"level": 14,
 					"price": {
@@ -3159,7 +3163,7 @@
 					}
 				},
 				{
-					"type": "III",
+					"variantType": "III",
 					"level": 20,
 					"name": "Bracers of Armor (Type III)",
 					"price": {
@@ -3224,7 +3228,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "bracers of missile deflection",
+					"variantType": "bracers of missile deflection",
 					"level": 3,
 					"price": {
 						"coin": "gp",
@@ -3233,7 +3237,7 @@
 					"entries": []
 				},
 				{
-					"type": "greater bracers of missile deflection",
+					"variantType": "greater bracers of missile deflection",
 					"level": 9,
 					"price": {
 						"coin": "gp",
@@ -3380,7 +3384,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "breastplate of command",
+					"variantType": "breastplate of command",
 					"level": 10,
 					"price": {
 						"coin": "gp",
@@ -3389,7 +3393,7 @@
 					"entries": []
 				},
 				{
-					"type": "greater breastplate of command",
+					"variantType": "greater breastplate of command",
 					"level": 18,
 					"price": {
 						"coin": "gp",
@@ -4064,7 +4068,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "choker of elocution",
+					"variantType": "choker of elocution",
 					"level": 6,
 					"price": {
 						"coin": "gp",
@@ -4073,7 +4077,7 @@
 					"entries": []
 				},
 				{
-					"type": "greater choker of elocution",
+					"variantType": "greater choker of elocution",
 					"level": 10,
 					"price": {
 						"coin": "gp",
@@ -4176,7 +4180,7 @@
 					"entries": []
 				},
 				{
-					"type": "greater clandestine cloak",
+					"variantType": "greater clandestine cloak",
 					"level": 10,
 					"price": {
 						"coin": "gp",
@@ -4230,7 +4234,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "Base",
+					"variantType": "Base",
 					"name": "Climbing Kit",
 					"price": {
 						"coin": "sp",
@@ -4239,7 +4243,7 @@
 					"entries": []
 				},
 				{
-					"type": "Extreme",
+					"variantType": "Extreme",
 					"name": "Extreme Climbing Kit",
 					"level": 3,
 					"price": {
@@ -4299,7 +4303,7 @@
 					"entries": []
 				},
 				{
-					"type": "greater cloak of elvenkind",
+					"variantType": "greater cloak of elvenkind",
 					"level": 12,
 					"price": {
 						"coin": "gp",
@@ -4350,7 +4354,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "cloak of the bat",
+					"variantType": "cloak of the bat",
 					"level": 10,
 					"price": {
 						"coin": "gp",
@@ -4359,7 +4363,7 @@
 					"entries": []
 				},
 				{
-					"type": "greater cloak of the bat",
+					"variantType": "greater cloak of the bat",
 					"level": 17,
 					"price": {
 						"coin": "gp",
@@ -4382,7 +4386,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "ordinary",
+					"variantType": "ordinary",
 					"price": {
 						"coin": "sp",
 						"amount": 1
@@ -4392,7 +4396,7 @@
 					]
 				},
 				{
-					"type": "explorer's",
+					"variantType": "explorer's",
 					"exists": true,
 					"price": {
 						"coin": "sp",
@@ -4404,7 +4408,7 @@
 					]
 				},
 				{
-					"type": "fine",
+					"variantType": "fine",
 					"price": {
 						"coin": "gp",
 						"amount": 2
@@ -4415,7 +4419,7 @@
 					]
 				},
 				{
-					"type": "high-fashion fine",
+					"variantType": "high-fashion fine",
 					"price": {
 						"coin": "gp",
 						"amount": 55
@@ -4427,7 +4431,7 @@
 					]
 				},
 				{
-					"type": "winter",
+					"variantType": "winter",
 					"price": {
 						"coin": "sp",
 						"amount": 4
@@ -4677,7 +4681,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "cold iron chunk",
+					"variantType": "cold iron chunk",
 					"price": {
 						"coin": "gp",
 						"amount": 10
@@ -4686,7 +4690,7 @@
 					"entries": []
 				},
 				{
-					"type": "cold iron ingot",
+					"variantType": "cold iron ingot",
 					"price": {
 						"coin": "gp",
 						"amount": 100
@@ -4695,7 +4699,7 @@
 					"entries": []
 				},
 				{
-					"type": "low-grade cold iron object",
+					"variantType": "low-grade cold iron object",
 					"level": 2,
 					"price": {
 						"coin": "gp",
@@ -4705,7 +4709,7 @@
 					"entries": []
 				},
 				{
-					"type": "standard-grade cold iron object",
+					"variantType": "standard-grade cold iron object",
 					"level": 7,
 					"price": {
 						"coin": "gp",
@@ -4715,7 +4719,7 @@
 					"entries": []
 				},
 				{
-					"type": "high-grade cold iron object",
+					"variantType": "high-grade cold iron object",
 					"level": 15,
 					"price": {
 						"coin": "gp",
@@ -4741,7 +4745,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "low-grade cold iron armor",
+					"variantType": "low-grade cold iron armor",
 					"level": 5,
 					"price": {
 						"coin": "gp",
@@ -4751,7 +4755,7 @@
 					"entries": []
 				},
 				{
-					"type": "standard-grade cold iron armor",
+					"variantType": "standard-grade cold iron armor",
 					"level": 11,
 					"price": {
 						"coin": "gp",
@@ -4762,7 +4766,7 @@
 					"entries": []
 				},
 				{
-					"type": "high-grade cold iron armor",
+					"variantType": "high-grade cold iron armor",
 					"level": 18,
 					"price": {
 						"coin": "gp",
@@ -4789,7 +4793,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "low-grade cold iron buckler",
+					"variantType": "low-grade cold iron buckler",
 					"name": "Low-Grade Cold Iron Buckler",
 					"level": 2,
 					"price": {
@@ -4806,7 +4810,7 @@
 					]
 				},
 				{
-					"type": "low-grade cold iron shield",
+					"variantType": "low-grade cold iron shield",
 					"level": 2,
 					"price": {
 						"coin": "gp",
@@ -4822,7 +4826,7 @@
 					]
 				},
 				{
-					"type": "standard-grade cold iron buckler",
+					"variantType": "standard-grade cold iron buckler",
 					"name": "Standard-Grade Cold Iron Buckler",
 					"level": 7,
 					"price": {
@@ -4834,7 +4838,7 @@
 					"entries": []
 				},
 				{
-					"type": "standard-grade cold iron shield",
+					"variantType": "standard-grade cold iron shield",
 					"level": 7,
 					"price": {
 						"coin": "gp",
@@ -4845,7 +4849,7 @@
 					"entries": []
 				},
 				{
-					"type": "high-grade cold iron buckler",
+					"variantType": "high-grade cold iron buckler",
 					"name": "High-Grade Cold Iron Buckler",
 					"level": 15,
 					"price": {
@@ -4857,7 +4861,7 @@
 					"entries": []
 				},
 				{
-					"type": "high-grade cold iron shield",
+					"variantType": "high-grade cold iron shield",
 					"level": 15,
 					"price": {
 						"coin": "gp",
@@ -4884,7 +4888,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "low-grade cold iron weapon",
+					"variantType": "low-grade cold iron weapon",
 					"level": 2,
 					"price": {
 						"coin": "gp",
@@ -4894,7 +4898,7 @@
 					"entries": []
 				},
 				{
-					"type": "standard-grade cold iron weapon",
+					"variantType": "standard-grade cold iron weapon",
 					"level": 10,
 					"price": {
 						"coin": "gp",
@@ -4905,7 +4909,7 @@
 					"entries": []
 				},
 				{
-					"type": "high-grade cold iron weapon",
+					"variantType": "high-grade cold iron weapon",
 					"level": 16,
 					"price": {
 						"coin": "gp",
@@ -5010,7 +5014,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "Base",
+					"variantType": "Base",
 					"name": "Compass",
 					"price": {
 						"coin": "gp",
@@ -5019,7 +5023,7 @@
 					"entries": []
 				},
 				{
-					"type": "Lensatic",
+					"variantType": "Lensatic",
 					"name": "Lensatic Compass",
 					"level": 3,
 					"price": {
@@ -5140,7 +5144,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "corrosive",
+					"variantType": "corrosive",
 					"level": 8,
 					"price": {
 						"coin": "gp",
@@ -5149,7 +5153,7 @@
 					"entries": []
 				},
 				{
-					"type": "greater corrosive",
+					"variantType": "greater corrosive",
 					"level": 15,
 					"price": {
 						"coin": "gp",
@@ -5181,7 +5185,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "coyote cloak",
+					"variantType": "coyote cloak",
 					"level": 3,
 					"price": {
 						"coin": "gp",
@@ -5190,7 +5194,7 @@
 					"entries": []
 				},
 				{
-					"type": "greater coyote cloak",
+					"variantType": "greater coyote cloak",
 					"level": 9,
 					"price": {
 						"coin": "gp",
@@ -5230,7 +5234,7 @@
 					"entries": []
 				},
 				{
-					"type": "greater crafter's eyepiece",
+					"variantType": "greater crafter's eyepiece",
 					"level": 11,
 					"price": {
 						"coin": "gp",
@@ -5312,7 +5316,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "Base",
+					"variantType": "Base",
 					"name": "Crowbar",
 					"price": {
 						"coin": "gp",
@@ -5321,7 +5325,7 @@
 					"entries": []
 				},
 				{
-					"type": "Levered",
+					"variantType": "Levered",
 					"name": "Levered Crowbar",
 					"level": 3,
 					"price": {
@@ -5428,7 +5432,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "clear quartz",
+					"variantType": "clear quartz",
 					"level": 14,
 					"price": {
 						"coin": "gp",
@@ -5437,47 +5441,47 @@
 					"entries": []
 				},
 				{
-					"type": "selenite",
+					"variantType": "selenite",
 					"level": 15,
 					"price": {
 						"coin": "gp",
 						"amount": 7000
 					},
 					"entries": [
-						"Scrying is DC 36 and gives you the benefits of see invisibility on the target."
+						"Scrying is DC 36 and gives you the benefits of {@spell see invisibility} on the target."
 					]
 				},
 				{
-					"type": "moonstone",
+					"variantType": "moonstone",
 					"level": 16,
 					"price": {
 						"coin": "gp",
 						"amount": 7500
 					},
 					"entries": [
-						"Scrying is DC 37 and gives you the benefits of mind reading on the target, using the same save DC."
+						"Scrying is DC 37 and gives you the benefits of {@spell mind reading} on the target, using the same save DC."
 					]
 				},
 				{
-					"type": "peridot",
+					"variantType": "peridot",
 					"level": 17,
 					"price": {
 						"coin": "gp",
 						"amount": 12500
 					},
 					"entries": [
-						"Scrying is DC 39 and gives you the benefits of telepathy for communicating with the target."
+						"Scrying is DC 39 and gives you the benefits of {@spell telepathy} for communicating with the target."
 					]
 				},
 				{
-					"type": "obsidian",
+					"variantType": "obsidian",
 					"level": 19,
 					"price": {
 						"coin": "gp",
 						"amount": 32000
 					},
 					"entries": [
-						"Scrying is DC 41 and gives you the benefits of true seeing for anything you watch through it."
+						"Scrying is DC 41 and gives you the benefits of {@spell true seeing} for anything you watch through it."
 					]
 				}
 			]
@@ -5674,7 +5678,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "dancing scarf",
+					"variantType": "dancing scarf",
 					"level": 3,
 					"price": {
 						"coin": "gp",
@@ -5683,7 +5687,7 @@
 					"entries": []
 				},
 				{
-					"type": "greater dancing scarf",
+					"variantType": "greater dancing scarf",
 					"level": 9,
 					"price": {
 						"coin": "gp",
@@ -5716,7 +5720,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "daredevil boots",
+					"variantType": "daredevil boots",
 					"level": 10,
 					"price": {
 						"coin": "gp",
@@ -5725,7 +5729,7 @@
 					"entries": []
 				},
 				{
-					"type": "greater daredevil boots",
+					"variantType": "greater daredevil boots",
 					"level": 17,
 					"price": {
 						"coin": "gp",
@@ -5937,7 +5941,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "darkwood branch",
+					"variantType": "darkwood branch",
 					"price": {
 						"coin": "gp",
 						"amount": 500
@@ -5946,7 +5950,7 @@
 					"entries": []
 				},
 				{
-					"type": "darkwood lumber",
+					"variantType": "darkwood lumber",
 					"price": {
 						"coin": "gp",
 						"amount": 5000
@@ -5955,7 +5959,7 @@
 					"entries": []
 				},
 				{
-					"type": "standard-grade darkwood object",
+					"variantType": "standard-grade darkwood object",
 					"level": 8,
 					"price": {
 						"coin": "gp",
@@ -5965,7 +5969,7 @@
 					"entries": []
 				},
 				{
-					"type": "high-grade darkwood object",
+					"variantType": "high-grade darkwood object",
 					"level": 16,
 					"price": {
 						"coin": "gp",
@@ -5994,7 +5998,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "standard-grade darkwood armor",
+					"variantType": "standard-grade darkwood armor",
 					"level": 12,
 					"price": {
 						"coin": "gp",
@@ -6005,7 +6009,7 @@
 					"entries": []
 				},
 				{
-					"type": "high-grade darkwood armor",
+					"variantType": "high-grade darkwood armor",
 					"level": 19,
 					"price": {
 						"coin": "gp",
@@ -6035,7 +6039,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "standard-grade darkwood buckler",
+					"variantType": "standard-grade darkwood buckler",
 					"name": "Standard-Grade Darkwood Buckler",
 					"level": 8,
 					"price": {
@@ -6054,7 +6058,7 @@
 					"entries": []
 				},
 				{
-					"type": "standard-grade darkwood shield",
+					"variantType": "standard-grade darkwood shield",
 					"name": "Standard-Grade Darkwood Shield",
 					"level": 8,
 					"price": {
@@ -6073,7 +6077,7 @@
 					"entries": []
 				},
 				{
-					"type": "standard-grade darkwood tower shield",
+					"variantType": "standard-grade darkwood tower shield",
 					"name": "Standard-Grade Darkwood Tower Shield",
 					"level": 8,
 					"price": {
@@ -6093,7 +6097,7 @@
 					"entries": []
 				},
 				{
-					"type": "high-grade darkwood buckler",
+					"variantType": "high-grade darkwood buckler",
 					"name": "High-Grade Darkwood Buckler",
 					"level": 16,
 					"price": {
@@ -6112,7 +6116,7 @@
 					"entries": []
 				},
 				{
-					"type": "high-grade darkwood shield",
+					"variantType": "high-grade darkwood shield",
 					"name": "High-Grade Darkwood Shield",
 					"level": 16,
 					"price": {
@@ -6131,7 +6135,7 @@
 					"entries": []
 				},
 				{
-					"type": "high-grade darkwood tower shield",
+					"variantType": "high-grade darkwood tower shield",
 					"name": "High-Grade Darkwood Tower Shield",
 					"level": 16,
 					"shieldData": {
@@ -6170,7 +6174,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "standard grade darkwood weapon",
+					"variantType": "standard grade darkwood weapon",
 					"level": 11,
 					"price": {
 						"coin": "gp",
@@ -6181,7 +6185,7 @@
 					"entries": []
 				},
 				{
-					"type": "high-grade darkwood weapon",
+					"variantType": "high-grade darkwood weapon",
 					"level": 17,
 					"price": {
 						"coin": "gp",
@@ -6433,7 +6437,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "demon mask",
+					"variantType": "demon mask",
 					"level": 4,
 					"price": {
 						"coin": "gp",
@@ -6442,7 +6446,7 @@
 					"entries": []
 				},
 				{
-					"type": "greater demon mask",
+					"variantType": "greater demon mask",
 					"level": 10,
 					"price": {
 						"coin": "gp",
@@ -6553,7 +6557,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "Base",
+					"variantType": "Base",
 					"name": "Disguise Kit",
 					"price": {
 						"coin": "gp",
@@ -6562,7 +6566,7 @@
 					"entries": []
 				},
 				{
-					"type": "Elite",
+					"variantType": "Elite",
 					"name": "Elite Disguise Kit",
 					"level": 3,
 					"price": {
@@ -6665,7 +6669,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "disrupting",
+					"variantType": "disrupting",
 					"level": 5,
 					"price": {
 						"coin": "gp",
@@ -6674,7 +6678,7 @@
 					"entries": []
 				},
 				{
-					"type": "greater disrupting",
+					"variantType": "greater disrupting",
 					"level": 14,
 					"traits": [
 						"uncommon"
@@ -6718,7 +6722,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "doubling rings",
+					"variantType": "doubling rings",
 					"level": 3,
 					"price": {
 						"coin": "gp",
@@ -6727,7 +6731,7 @@
 					"entries": []
 				},
 				{
-					"type": "greater doubling rings",
+					"variantType": "greater doubling rings",
 					"level": 11,
 					"price": {
 						"coin": "gp",
@@ -6863,7 +6867,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "young",
+					"variantType": "young",
 					"level": 7,
 					"price": {
 						"coin": "gp",
@@ -6872,7 +6876,7 @@
 					"entries": []
 				},
 				{
-					"type": "adult",
+					"variantType": "adult",
 					"level": 12,
 					"price": {
 						"coin": "gp",
@@ -6900,7 +6904,7 @@
 					}
 				},
 				{
-					"type": "wyrm",
+					"variantType": "wyrm",
 					"level": 17,
 					"price": {
 						"coin": "gp",
@@ -7058,7 +7062,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "standard-grade dragonhide object",
+					"variantType": "standard-grade dragonhide object",
 					"level": 8,
 					"price": {
 						"coin": "gp",
@@ -7068,7 +7072,7 @@
 					"entries": []
 				},
 				{
-					"type": "high-grade dragonhide object",
+					"variantType": "high-grade dragonhide object",
 					"level": 16,
 					"price": {
 						"coin": "gp",
@@ -7097,7 +7101,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "standard-grade dragonhide armor",
+					"variantType": "standard-grade dragonhide armor",
 					"level": 12,
 					"price": {
 						"coin": "gp",
@@ -7108,7 +7112,7 @@
 					"entries": []
 				},
 				{
-					"type": "high-grade dragonhide armor",
+					"variantType": "high-grade dragonhide armor",
 					"level": 19,
 					"price": {
 						"coin": "gp",
@@ -7138,7 +7142,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "standard-grade dragonhide buckler",
+					"variantType": "standard-grade dragonhide buckler",
 					"name": "Standard-Grade Dragonhide Buckler",
 					"level": 8,
 					"price": {
@@ -7150,7 +7154,7 @@
 					"entries": []
 				},
 				{
-					"type": "standard-grade dragonhide shield",
+					"variantType": "standard-grade dragonhide shield",
 					"level": 8,
 					"price": {
 						"coin": "gp",
@@ -7161,7 +7165,7 @@
 					"entries": []
 				},
 				{
-					"type": "high-grade dragonhide buckler",
+					"variantType": "high-grade dragonhide buckler",
 					"name": "High-Grade Dragonhide Buckler",
 					"level": 16,
 					"price": {
@@ -7173,7 +7177,7 @@
 					"entries": []
 				},
 				{
-					"type": "high-grade dragonhide shield",
+					"variantType": "high-grade dragonhide shield",
 					"level": 16,
 					"price": {
 						"coin": "gp",
@@ -7656,7 +7660,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "minor",
+					"variantType": "minor",
 					"level": 1,
 					"equipment": true,
 					"price": {
@@ -7773,9 +7777,6 @@
 				"consumable",
 				"elixir"
 			],
-			"price": {
-				"coin": null
-			},
 			"usage": "held in 1 hand",
 			"bulk": "L",
 			"activate": {
@@ -7784,7 +7785,7 @@
 					"unit": "action"
 				},
 				"components": [
-					"Interact"
+					"{@action Interact}"
 				]
 			},
 			"category": "Elixir",
@@ -7792,7 +7793,7 @@
 				"The elixir of rejuvenation restores a creature to full health and eradicates toxins affecting it. When you drink this elixir, you're restored to your maximum Hit Points, and all afflictions of 20th level or lower affecting you are removed.",
 				"You can instead administer this elixir to a creature that has been dead for a week or less. When you do, that creature is instantly brought back to life with 1 Hit Point and no spell slots, Focus Points, or other daily resources."
 			],
-			"craftReq": "philosopher's stone, true elixir of life."
+			"craftReq": "{@item philosopher's stone}, {@item true elixir of life}."
 		},
 		{
 			"name": "Elven Chain",
@@ -7813,7 +7814,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "standard-grade elven chain",
+					"variantType": "standard-grade elven chain",
 					"level": 13,
 					"price": {
 						"coin": "gp",
@@ -7823,7 +7824,7 @@
 					"entries": []
 				},
 				{
-					"type": "high-grade elven chain",
+					"variantType": "high-grade elven chain",
 					"level": 20,
 					"price": {
 						"coin": "gp",
@@ -7900,7 +7901,7 @@
 					"entries": []
 				},
 				{
-					"type": "greater energy-resistant",
+					"variantType": "greater energy-resistant",
 					"level": 12,
 					"price": {
 						"coin": "gp",
@@ -8051,7 +8052,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "standard",
+					"variantType": "standard",
 					"level": 9,
 					"price": {
 						"coin": "gp",
@@ -8325,7 +8326,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "anchor",
+					"variantType": "anchor",
 					"level": 7,
 					"price": {
 						"coin": "gp",
@@ -8336,7 +8337,7 @@
 					]
 				},
 				{
-					"type": "bird",
+					"variantType": "bird",
 					"level": 3,
 					"price": {
 						"coin": "gp",
@@ -8348,7 +8349,7 @@
 					]
 				},
 				{
-					"type": "chest",
+					"variantType": "chest",
 					"level": 3,
 					"price": {
 						"coin": "gp",
@@ -8359,7 +8360,7 @@
 					]
 				},
 				{
-					"type": "fan",
+					"variantType": "fan",
 					"level": 4,
 					"price": {
 						"coin": "gp",
@@ -8371,7 +8372,7 @@
 					]
 				},
 				{
-					"type": "holly bush",
+					"variantType": "holly bush",
 					"level": 2,
 					"price": {
 						"coin": "gp",
@@ -8384,7 +8385,7 @@
 					]
 				},
 				{
-					"type": "ladder",
+					"variantType": "ladder",
 					"level": 1,
 					"price": {
 						"coin": "gp",
@@ -8395,7 +8396,7 @@
 					]
 				},
 				{
-					"type": "swan boat",
+					"variantType": "swan boat",
 					"level": 8,
 					"price": {
 						"coin": "gp",
@@ -8406,7 +8407,7 @@
 					]
 				},
 				{
-					"type": "tree",
+					"variantType": "tree",
 					"level": 6,
 					"price": {
 						"coin": "gp",
@@ -8417,7 +8418,7 @@
 					]
 				},
 				{
-					"type": "whip",
+					"variantType": "whip",
 					"level": 9,
 					"price": {
 						"coin": "gp",
@@ -8457,7 +8458,7 @@
 						"unit": "action"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"entries": [
 						"You extend or shorten the trident's haft. When extended, the trident requires two hands to wield and gains the {@trait reach} trait, but loses the trident's normal {@trait thrown} trait."
@@ -8484,7 +8485,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "Base",
+					"variantType": "Base",
 					"name": "Fishing Tackle",
 					"price": {
 						"coin": "sp",
@@ -8493,7 +8494,7 @@
 					"entries": []
 				},
 				{
-					"type": "Professional",
+					"variantType": "Professional",
 					"level": 3,
 					"price": {
 						"coin": "gp",
@@ -8572,7 +8573,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "flame tongue",
+					"variantType": "flame tongue",
 					"level": 13,
 					"price": {
 						"coin": "gp",
@@ -8581,7 +8582,7 @@
 					"entries": []
 				},
 				{
-					"type": "greater flame tongue",
+					"variantType": "greater flame tongue",
 					"level": 17,
 					"price": {
 						"coin": "gp",
@@ -8625,7 +8626,7 @@
 					"entries": []
 				},
 				{
-					"type": "greater flaming",
+					"variantType": "greater flaming",
 					"level": 15,
 					"price": {
 						"coin": "gp",
@@ -8700,7 +8701,7 @@
 					"entries": []
 				},
 				{
-					"type": "greater floating shield",
+					"variantType": "greater floating shield",
 					"level": 16,
 					"price": {
 						"coin": "gp",
@@ -8854,7 +8855,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "fortification",
+					"variantType": "fortification",
 					"level": 12,
 					"price": {
 						"coin": "gp",
@@ -8863,7 +8864,7 @@
 					"entries": []
 				},
 				{
-					"type": "greater fortification",
+					"variantType": "greater fortification",
 					"level": 18,
 					"price": {
 						"coin": "gp",
@@ -8897,7 +8898,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "frost",
+					"variantType": "frost",
 					"level": 8,
 					"price": {
 						"coin": "gp",
@@ -8906,7 +8907,7 @@
 					"entries": []
 				},
 				{
-					"type": "greater frost",
+					"variantType": "greater frost",
 					"level": 15,
 					"price": {
 						"coin": "gp",
@@ -9527,7 +9528,7 @@
 					"entries": []
 				},
 				{
-					"type": "greater goggles of night",
+					"variantType": "greater goggles of night",
 					"level": 11,
 					"price": {
 						"coin": "gp",
@@ -9538,7 +9539,7 @@
 					]
 				},
 				{
-					"type": "major goggles of night",
+					"variantType": "major goggles of night",
 					"level": 18,
 					"price": {
 						"coin": "gp",
@@ -9891,7 +9892,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "+1 handwraps of mighty blows",
+					"variantType": "+1 handwraps of mighty blows",
 					"level": 2,
 					"price": {
 						"coin": "gp",
@@ -9900,7 +9901,7 @@
 					"entries": []
 				},
 				{
-					"type": "+1 striking handwraps of mighty blows",
+					"variantType": "+1 striking handwraps of mighty blows",
 					"level": 4,
 					"price": {
 						"coin": "gp",
@@ -9909,7 +9910,7 @@
 					"entries": []
 				},
 				{
-					"type": "+2 striking handwraps of mighty blows",
+					"variantType": "+2 striking handwraps of mighty blows",
 					"level": 10,
 					"price": {
 						"coin": "gp",
@@ -9918,7 +9919,7 @@
 					"entries": []
 				},
 				{
-					"type": "+2 greater striking handwraps of mighty blows",
+					"variantType": "+2 greater striking handwraps of mighty blows",
 					"level": 12,
 					"price": {
 						"coin": "gp",
@@ -9927,7 +9928,7 @@
 					"entries": []
 				},
 				{
-					"type": "+3 greater striking handwraps of mighty blows",
+					"variantType": "+3 greater striking handwraps of mighty blows",
 					"level": 16,
 					"price": {
 						"coin": "gp",
@@ -9936,7 +9937,7 @@
 					"entries": []
 				},
 				{
-					"type": "+3 major striking handwraps of mighty blows",
+					"variantType": "+3 major striking handwraps of mighty blows",
 					"level": 19,
 					"price": {
 						"coin": "gp",
@@ -9985,7 +9986,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "hat of disguise",
+					"variantType": "hat of disguise",
 					"level": 2,
 					"price": {
 						"coin": "gp",
@@ -9994,7 +9995,7 @@
 					"entries": []
 				},
 				{
-					"type": "greater hat of disguise",
+					"variantType": "greater hat of disguise",
 					"level": 7,
 					"price": {
 						"coin": "gp",
@@ -10025,7 +10026,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "hat of the magi",
+					"variantType": "hat of the magi",
 					"level": 3,
 					"price": {
 						"coin": "gp",
@@ -10034,7 +10035,7 @@
 					"entries": []
 				},
 				{
-					"type": "greater hat of the magi",
+					"variantType": "greater hat of the magi",
 					"level": 9,
 					"price": {
 						"coin": "gp",
@@ -10154,7 +10155,7 @@
 					"entries": []
 				},
 				{
-					"type": "greater healer's gloves",
+					"variantType": "greater healer's gloves",
 					"level": 9,
 					"price": {
 						"coin": "gp",
@@ -10185,7 +10186,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "Base",
+					"variantType": "Base",
 					"name": "Healer's Tools",
 					"entries": []
 				},
@@ -10233,7 +10234,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "minor",
+					"variantType": "minor",
 					"level": 1,
 					"equipment": true,
 					"price": {
@@ -10569,7 +10570,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "standard",
+					"variantType": "standard",
 					"level": 5,
 					"price": {
 						"coin": "gp",
@@ -10752,7 +10753,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "horseshoes of speed",
+					"variantType": "horseshoes of speed",
 					"level": 7,
 					"price": {
 						"coin": "gp",
@@ -10761,7 +10762,7 @@
 					"entries": []
 				},
 				{
-					"type": "greater horseshoes of speed",
+					"variantType": "greater horseshoes of speed",
 					"level": 14,
 					"price": {
 						"coin": "gp",
@@ -11142,7 +11143,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "invisibility",
+					"variantType": "invisibility",
 					"level": 8,
 					"price": {
 						"coin": "gp",
@@ -11151,7 +11152,7 @@
 					"entries": []
 				},
 				{
-					"type": "greater invisibility",
+					"variantType": "greater invisibility",
 					"level": 10,
 					"price": {
 						"coin": "gp",
@@ -11645,7 +11646,7 @@
 					"entries": []
 				},
 				{
-					"type": "greater knapsack of halflingkind",
+					"variantType": "greater knapsack of halflingkind",
 					"level": 13,
 					"price": {
 						"coin": "gp",
@@ -11974,7 +11975,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "Poor",
+					"variantType": "Poor",
 					"price": {
 						"coin": "sp",
 						"amount": 2
@@ -11983,7 +11984,7 @@
 					"entries": []
 				},
 				{
-					"type": "Simple",
+					"variantType": "Simple",
 					"price": {
 						"coin": "gp",
 						"amount": 2
@@ -11992,7 +11993,7 @@
 					"entries": []
 				},
 				{
-					"type": "Average",
+					"variantType": "Average",
 					"price": {
 						"coin": "gp",
 						"amount": 15
@@ -12001,7 +12002,7 @@
 					"entries": []
 				},
 				{
-					"type": "Good",
+					"variantType": "Good",
 					"price": {
 						"coin": "gp",
 						"amount": 200
@@ -12010,7 +12011,7 @@
 					"entries": []
 				},
 				{
-					"type": "Superior",
+					"variantType": "Superior",
 					"price": {
 						"coin": "gp",
 						"amount": 4500
@@ -12042,8 +12043,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "reaction",
-						"entry": "{@as R}"
+						"unit": "reaction"
 					},
 					"components": [
 						"envision"
@@ -12061,7 +12061,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "luck blade",
+					"variantType": "luck blade",
 					"level": 17,
 					"price": {
 						"coin": "gp",
@@ -12070,15 +12070,15 @@
 					"entries": []
 				},
 				{
-					"type": "wishing luck blade",
+					"variantType": "wishing luck blade",
 					"level": 19,
 					"price": {
 						"coin": "gp",
 						"amount": 30000
 					},
-					"craftReq": "Supply a casting of wish.",
+					"craftReq": "Supply a casting of {@spell wish}.",
 					"entries": [
-						"Some luck blades contain one wish when crafted. You can cast this spell as an arcane innate spell while wielding the luck blade, expending the spell. A spellcaster who can cast {@spell wish} can place another wish into the blade by spending 8,000 gp and 4 days of downtime. A wishing luck blade can hold no more than one wish at a time."
+						"Some luck blades contain one {@spell wish} when crafted. You can cast this spell as an arcane innate spell while wielding the luck blade, expending the spell. A spellcaster who can cast {@spell wish} can place another wish into the blade by spending 8,000 gp and 4 days of downtime. A wishing luck blade can hold no more than one {@spell wish} at a time."
 					]
 				}
 			]
@@ -12188,7 +12188,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "1st-level spell",
+					"variantType": "1st-level spell",
 					"level": 3,
 					"price": {
 						"coin": "gp",
@@ -12197,7 +12197,7 @@
 					"entries": []
 				},
 				{
-					"type": "2nd-level spell",
+					"variantType": "2nd-level spell",
 					"level": 5,
 					"price": {
 						"coin": "gp",
@@ -12206,7 +12206,7 @@
 					"entries": []
 				},
 				{
-					"type": "3rd-level spell",
+					"variantType": "3rd-level spell",
 					"level": 7,
 					"price": {
 						"coin": "gp",
@@ -12215,7 +12215,7 @@
 					"entries": []
 				},
 				{
-					"type": "4th-level spell",
+					"variantType": "4th-level spell",
 					"level": 9,
 					"price": {
 						"coin": "gp",
@@ -12224,7 +12224,7 @@
 					"entries": []
 				},
 				{
-					"type": "5th-level spell",
+					"variantType": "5th-level spell",
 					"level": 11,
 					"price": {
 						"coin": "gp",
@@ -12233,7 +12233,7 @@
 					"entries": []
 				},
 				{
-					"type": "6th-level spell",
+					"variantType": "6th-level spell",
 					"level": 13,
 					"price": {
 						"coin": "gp",
@@ -12242,7 +12242,7 @@
 					"entries": []
 				},
 				{
-					"type": "7th-level spell",
+					"variantType": "7th-level spell",
 					"level": 15,
 					"price": {
 						"coin": "gp",
@@ -12251,7 +12251,7 @@
 					"entries": []
 				},
 				{
-					"type": "8th-level spell",
+					"variantType": "8th-level spell",
 					"level": 17,
 					"price": {
 						"coin": "gp",
@@ -12260,7 +12260,7 @@
 					"entries": []
 				},
 				{
-					"type": "9th-level spell",
+					"variantType": "9th-level spell",
 					"level": 19,
 					"price": {
 						"coin": "gp",
@@ -12396,7 +12396,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "Poor",
+					"variantType": "Poor",
 					"price": {
 						"coin": "sp",
 						"amount": 2
@@ -12405,7 +12405,7 @@
 					"entries": []
 				},
 				{
-					"type": "Simple",
+					"variantType": "Simple",
 					"price": {
 						"coin": "gp",
 						"amount": 3
@@ -12414,7 +12414,7 @@
 					"entries": []
 				},
 				{
-					"type": "Average",
+					"variantType": "Average",
 					"price": {
 						"coin": "gp",
 						"amount": 20
@@ -12423,7 +12423,7 @@
 					"entries": []
 				},
 				{
-					"type": "Good",
+					"variantType": "Good",
 					"price": {
 						"coin": "gp",
 						"amount": 250
@@ -12432,7 +12432,7 @@
 					"entries": []
 				},
 				{
-					"type": "Superior",
+					"variantType": "Superior",
 					"price": {
 						"coin": "gp",
 						"amount": 5000
@@ -12504,7 +12504,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "standard",
+					"variantType": "standard",
 					"level": 12,
 					"price": {
 						"coin": "gp",
@@ -12650,7 +12650,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "mentalist's staff",
+					"variantType": "mentalist's staff",
 					"level": 4,
 					"price": {
 						"coin": "gp",
@@ -12667,7 +12667,7 @@
 					]
 				},
 				{
-					"type": "greater mentalist's staff",
+					"variantType": "greater mentalist's staff",
 					"level": 8,
 					"price": {
 						"coin": "gp",
@@ -12684,7 +12684,7 @@
 					]
 				},
 				{
-					"type": "major mentalist's staff",
+					"variantType": "major mentalist's staff",
 					"level": 12,
 					"price": {
 						"coin": "gp",
@@ -12789,7 +12789,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "messenger's ring",
+					"variantType": "messenger's ring",
 					"level": 9,
 					"price": {
 						"coin": "gp",
@@ -12798,7 +12798,7 @@
 					"entries": []
 				},
 				{
-					"type": "greater messenger's ring",
+					"variantType": "greater messenger's ring",
 					"level": 17,
 					"price": {
 						"coin": "gp",
@@ -13083,7 +13083,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "mithral chunk",
+					"variantType": "mithral chunk",
 					"price": {
 						"coin": "gp",
 						"amount": 500
@@ -13092,7 +13092,7 @@
 					"entries": []
 				},
 				{
-					"type": "mithral ingot",
+					"variantType": "mithral ingot",
 					"price": {
 						"coin": "gp",
 						"amount": 5000
@@ -13101,7 +13101,7 @@
 					"entries": []
 				},
 				{
-					"type": "standard-grade mithral object",
+					"variantType": "standard-grade mithral object",
 					"level": 8,
 					"price": {
 						"coin": "gp",
@@ -13111,7 +13111,7 @@
 					"entries": []
 				},
 				{
-					"type": "high-grade mithral object",
+					"variantType": "high-grade mithral object",
 					"level": 16,
 					"price": {
 						"coin": "gp",
@@ -13140,7 +13140,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "standard-grade mithral armor",
+					"variantType": "standard-grade mithral armor",
 					"level": 12,
 					"price": {
 						"coin": "gp",
@@ -13150,7 +13150,7 @@
 					"entries": []
 				},
 				{
-					"type": "high-grade mithral armor",
+					"variantType": "high-grade mithral armor",
 					"level": 19,
 					"price": {
 						"coin": "gp",
@@ -13180,7 +13180,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "standard-grade mithral buckler",
+					"variantType": "standard-grade mithral buckler",
 					"name": "Standard-Grade Mithral Buckler",
 					"level": 8,
 					"price": {
@@ -13194,7 +13194,7 @@
 					]
 				},
 				{
-					"type": "standard-grade mithral shield",
+					"variantType": "standard-grade mithral shield",
 					"level": 8,
 					"price": {
 						"coin": "gp",
@@ -13207,7 +13207,7 @@
 					]
 				},
 				{
-					"type": "high-grade mithral buckler",
+					"variantType": "high-grade mithral buckler",
 					"name": "High-Grade Mithral Buckler",
 					"level": 16,
 					"price": {
@@ -13221,7 +13221,7 @@
 					]
 				},
 				{
-					"type": "high-grade mithral shield",
+					"variantType": "high-grade mithral shield",
 					"level": 16,
 					"price": {
 						"coin": "gp",
@@ -13257,7 +13257,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "standard-grade mithral weapon",
+					"variantType": "standard-grade mithral weapon",
 					"level": 11,
 					"price": {
 						"coin": "gp",
@@ -13268,7 +13268,7 @@
 					"entries": []
 				},
 				{
-					"type": "high-grade mithral weapon",
+					"variantType": "high-grade mithral weapon",
 					"level": 17,
 					"price": {
 						"coin": "gp",
@@ -13449,7 +13449,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "Handheld",
+					"variantType": "Handheld",
 					"price": {
 						"coin": "sp",
 						"amount": 8
@@ -13458,7 +13458,7 @@
 					"entries": []
 				},
 				{
-					"type": "Virtuoso Handheld",
+					"variantType": "Virtuoso Handheld",
 					"price": {
 						"coin": "gp",
 						"amount": 50
@@ -13470,7 +13470,7 @@
 					]
 				},
 				{
-					"type": "Heavy",
+					"variantType": "Heavy",
 					"price": {
 						"coin": "gp",
 						"amount": 2
@@ -13479,7 +13479,7 @@
 					"entries": []
 				},
 				{
-					"type": "Virtuoso Heavy",
+					"variantType": "Virtuoso Heavy",
 					"price": {
 						"coin": "gp",
 						"amount": 100
@@ -13526,7 +13526,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "I",
+					"variantType": "I",
 					"name": "Necklace of Fireballs (Type I)",
 					"level": 5,
 					"price": {
@@ -13543,7 +13543,7 @@
 					}
 				},
 				{
-					"type": "II",
+					"variantType": "II",
 					"level": 7,
 					"name": "Necklace of Fireballs (Type II)",
 					"price": {
@@ -13560,7 +13560,7 @@
 					}
 				},
 				{
-					"type": "III",
+					"variantType": "III",
 					"level": 9,
 					"name": "Necklace of Fireballs (Type III)",
 					"price": {
@@ -13577,7 +13577,7 @@
 					}
 				},
 				{
-					"type": "IV",
+					"variantType": "IV",
 					"level": 11,
 					"name": "Necklace of Fireballs (Type IV)",
 					"price": {
@@ -13594,7 +13594,7 @@
 					}
 				},
 				{
-					"type": "V",
+					"variantType": "V",
 					"level": 13,
 					"name": "Necklace of Fireballs (Type V)",
 					"price": {
@@ -13611,7 +13611,7 @@
 					}
 				},
 				{
-					"type": "VI",
+					"variantType": "VI",
 					"level": 15,
 					"name": "Necklace of Fireballs (Type VI)",
 					"price": {
@@ -13628,7 +13628,7 @@
 					}
 				},
 				{
-					"type": "VII",
+					"variantType": "VII",
 					"level": 17,
 					"name": "Necklace of Fireballs (Type VII)",
 					"price": {
@@ -14075,7 +14075,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "oil of weightlessness",
+					"variantType": "oil of weightlessness",
 					"level": 2,
 					"price": {
 						"coin": "gp",
@@ -14084,7 +14084,7 @@
 					"entries": []
 				},
 				{
-					"type": "greater oil of weightlessness",
+					"variantType": "greater oil of weightlessness",
 					"level": 6,
 					"price": {
 						"coin": "gp",
@@ -14280,7 +14280,7 @@
 					"entries": []
 				},
 				{
-					"type": "high-grade orichalcum object",
+					"variantType": "high-grade orichalcum object",
 					"level": 17,
 					"price": {
 						"coin": "gp",
@@ -14309,7 +14309,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "high-grade orichalcum armor",
+					"variantType": "high-grade orichalcum armor",
 					"level": 20,
 					"price": {
 						"coin": "gp",
@@ -14339,7 +14339,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "high-grade orichalcum buckler",
+					"variantType": "high-grade orichalcum buckler",
 					"name": "High-Grade Orichalcum Buckler",
 					"level": 17,
 					"price": {
@@ -14351,7 +14351,7 @@
 					"entries": []
 				},
 				{
-					"type": "high-grade orichalcum shield",
+					"variantType": "high-grade orichalcum shield",
 					"level": 17,
 					"shieldData": {
 						"hardness": 16,
@@ -14382,7 +14382,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "high-grade orichalcum weapon",
+					"variantType": "high-grade orichalcum weapon",
 					"level": 18,
 					"price": {
 						"coin": "gp",
@@ -14490,7 +14490,7 @@
 					"entries": []
 				},
 				{
-					"type": "greater pendant of the occult",
+					"variantType": "greater pendant of the occult",
 					"level": 9,
 					"price": {
 						"coin": "gp",
@@ -14581,7 +14581,7 @@
 					"entries": []
 				},
 				{
-					"type": "greater persona mask",
+					"variantType": "greater persona mask",
 					"level": 9,
 					"price": {
 						"coin": "gp",
@@ -14678,7 +14678,7 @@
 					"entries": []
 				},
 				{
-					"type": "greater phylactery of faithfulness",
+					"variantType": "greater phylactery of faithfulness",
 					"level": 17,
 					"price": {
 						"coin": "gp",
@@ -14874,7 +14874,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "standard",
+					"variantType": "standard",
 					"level": 8,
 					"price": {
 						"coin": "gp",
@@ -15264,7 +15264,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "standard",
+					"variantType": "standard",
 					"level": 6,
 					"price": {
 						"coin": "gp",
@@ -15522,7 +15522,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "Wooden",
+					"variantType": "Wooden",
 					"price": {
 						"coin": "sp",
 						"amount": 1
@@ -15530,7 +15530,7 @@
 					"entries": []
 				},
 				{
-					"type": "Silver",
+					"variantType": "Silver",
 					"price": {
 						"coin": "gp",
 						"amount": 2
@@ -15571,7 +15571,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "Base",
+					"variantType": "Base",
 					"name": "Repair Kit",
 					"price": {
 						"coin": "gp",
@@ -15609,7 +15609,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "Base",
+					"variantType": "Base",
 					"name": "Replacement Cosmetics",
 					"price": {
 						"coin": "sp",
@@ -15643,7 +15643,7 @@
 			"variants": [
 				{
 					"name": "Replacement Picks",
-					"type": "Base",
+					"variantType": "Base",
 					"price": {
 						"coin": "sp",
 						"amount": 3
@@ -15651,7 +15651,7 @@
 					"entries": []
 				},
 				{
-					"type": "Infiltrator",
+					"variantType": "Infiltrator",
 					"level": 3,
 					"price": {
 						"coin": "gp",
@@ -15660,7 +15660,7 @@
 					"entries": []
 				},
 				{
-					"type": "Concealable",
+					"variantType": "Concealable",
 					"level": 4,
 					"equipment": false,
 					"source": "LOPSG",
@@ -15708,7 +15708,7 @@
 					"entries": []
 				},
 				{
-					"type": "greater resilient",
+					"variantType": "greater resilient",
 					"level": 14,
 					"price": {
 						"coin": "gp",
@@ -15719,7 +15719,7 @@
 					]
 				},
 				{
-					"type": "major resilient",
+					"variantType": "major resilient",
 					"level": 20,
 					"price": {
 						"coin": "gp",
@@ -15904,7 +15904,7 @@
 					"entries": []
 				},
 				{
-					"type": "greater ring of energy resistance",
+					"variantType": "greater ring of energy resistance",
 					"level": 10,
 					"price": {
 						"coin": "gp",
@@ -15915,7 +15915,7 @@
 					]
 				},
 				{
-					"type": "major ring of energy resistance",
+					"variantType": "major ring of energy resistance",
 					"level": 14,
 					"price": {
 						"coin": "gp",
@@ -16014,7 +16014,7 @@
 					"entries": []
 				},
 				{
-					"type": "greater ring of maniacal devices",
+					"variantType": "greater ring of maniacal devices",
 					"level": 18,
 					"price": {
 						"coin": "gp",
@@ -16163,7 +16163,7 @@
 					"entries": []
 				},
 				{
-					"type": "greater ring of the ram",
+					"variantType": "greater ring of the ram",
 					"level": 13,
 					"price": {
 						"coin": "gp",
@@ -16354,7 +16354,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "robe of the archmagi",
+					"variantType": "robe of the archmagi",
 					"level": 15,
 					"price": {
 						"coin": "gp",
@@ -16363,7 +16363,7 @@
 					"entries": []
 				},
 				{
-					"type": "greater robe of the archmagi",
+					"variantType": "greater robe of the archmagi",
 					"level": 19,
 					"price": {
 						"coin": "gp",
@@ -16746,7 +16746,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "salve of antiparalysis",
+					"variantType": "salve of antiparalysis",
 					"level": 6,
 					"price": {
 						"coin": "gp",
@@ -16755,7 +16755,7 @@
 					"entries": []
 				},
 				{
-					"type": "greater salve of antiparalysis",
+					"variantType": "greater salve of antiparalysis",
 					"level": 12,
 					"price": {
 						"coin": "gp",
@@ -16921,7 +16921,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "1st-level spell",
+					"variantType": "1st-level spell",
 					"level": 1,
 					"equipment": true,
 					"price": {
@@ -16932,7 +16932,7 @@
 					"entries": []
 				},
 				{
-					"type": "2nd-level spell",
+					"variantType": "2nd-level spell",
 					"level": 3,
 					"craftReq": "Supply a 2nd-level casting of the spell.",
 					"price": {
@@ -16942,7 +16942,7 @@
 					"entries": []
 				},
 				{
-					"type": "3rd-level spell",
+					"variantType": "3rd-level spell",
 					"level": 5,
 					"craftReq": "Supply a 3rd-level casting of the spell.",
 					"price": {
@@ -16952,7 +16952,7 @@
 					"entries": []
 				},
 				{
-					"type": "4th-level spell",
+					"variantType": "4th-level spell",
 					"level": 7,
 					"craftReq": "Supply a 4th-level casting of the spell.",
 					"price": {
@@ -16962,7 +16962,7 @@
 					"entries": []
 				},
 				{
-					"type": "5th-level spell",
+					"variantType": "5th-level spell",
 					"level": 9,
 					"craftReq": "Supply a 5th-level casting of the spell.",
 					"price": {
@@ -16972,7 +16972,7 @@
 					"entries": []
 				},
 				{
-					"type": "6th-level spell",
+					"variantType": "6th-level spell",
 					"level": 11,
 					"craftReq": "Supply a 6th-level casting of the spell.",
 					"price": {
@@ -16982,7 +16982,7 @@
 					"entries": []
 				},
 				{
-					"type": "7th-level spell",
+					"variantType": "7th-level spell",
 					"level": 13,
 					"craftReq": "Supply a 7th-level casting of the spell.",
 					"price": {
@@ -16992,7 +16992,7 @@
 					"entries": []
 				},
 				{
-					"type": "8th-level spell",
+					"variantType": "8th-level spell",
 					"level": 15,
 					"craftReq": "Supply a 8th-level casting of the spell.",
 					"price": {
@@ -17002,7 +17002,7 @@
 					"entries": []
 				},
 				{
-					"type": "9th-level spell",
+					"variantType": "9th-level spell",
 					"level": 17,
 					"craftReq": "Supply a 9th-level casting of the spell.",
 					"price": {
@@ -17012,7 +17012,7 @@
 					"entries": []
 				},
 				{
-					"type": "10th-level spell",
+					"variantType": "10th-level spell",
 					"level": 19,
 					"craftReq": "Supply a 10th-level casting of the spell.",
 					"price": {
@@ -17345,7 +17345,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "shadow",
+					"variantType": "shadow",
 					"level": 5,
 					"price": {
 						"coin": "gp",
@@ -17354,7 +17354,7 @@
 					"entries": []
 				},
 				{
-					"type": "greater shadow",
+					"variantType": "greater shadow",
 					"level": 9,
 					"price": {
 						"coin": "gp",
@@ -17362,10 +17362,20 @@
 					},
 					"entries": [
 						"The item bonus is +2."
-					]
+					],
+					"_mod": {
+						"entries":
+							{
+								"mode": "replaceTxt",
+								"replace": "+1",
+								"with": "+2"
+							}
+						,
+						"entriesMode": "generic"
+					}
 				},
 				{
-					"type": "major shadow",
+					"variantType": "major shadow",
 					"level": 17,
 					"price": {
 						"coin": "gp",
@@ -17373,7 +17383,17 @@
 					},
 					"entries": [
 						"The item bonus is +3."
-					]
+					],
+					"_mod": {
+						"entries":
+							{
+								"mode": "replaceTxt",
+								"replace": "+1",
+								"with": "+3"
+							}
+						,
+						"entriesMode": "generic"
+					}
 				}
 			]
 		},
@@ -17551,7 +17571,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "shock",
+					"variantType": "shock",
 					"level": 8,
 					"price": {
 						"coin": "gp",
@@ -17560,7 +17580,7 @@
 					"entries": []
 				},
 				{
-					"type": "greater shock",
+					"variantType": "greater shock",
 					"level": 15,
 					"price": {
 						"coin": "gp",
@@ -17603,7 +17623,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "standard",
+					"variantType": "standard",
 					"level": 4,
 					"price": {
 						"coin": "gp",
@@ -17819,7 +17839,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "silver chunk",
+					"variantType": "silver chunk",
 					"price": {
 						"coin": "gp",
 						"amount": 10
@@ -17828,7 +17848,7 @@
 					"entries": []
 				},
 				{
-					"type": "silver ingot",
+					"variantType": "silver ingot",
 					"price": {
 						"coin": "gp",
 						"amount": 100
@@ -17837,7 +17857,7 @@
 					"entries": []
 				},
 				{
-					"type": "low-grade silver object",
+					"variantType": "low-grade silver object",
 					"level": 2,
 					"price": {
 						"coin": "gp",
@@ -17847,7 +17867,7 @@
 					"entries": []
 				},
 				{
-					"type": "standard-grade silver object",
+					"variantType": "standard-grade silver object",
 					"level": 7,
 					"price": {
 						"coin": "gp",
@@ -17857,7 +17877,7 @@
 					"entries": []
 				},
 				{
-					"type": "high-grade silver object",
+					"variantType": "high-grade silver object",
 					"level": 15,
 					"price": {
 						"coin": "gp",
@@ -17883,7 +17903,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "low-grade silver armor",
+					"variantType": "low-grade silver armor",
 					"level": 5,
 					"price": {
 						"coin": "gp",
@@ -17894,7 +17914,7 @@
 					"entries": []
 				},
 				{
-					"type": "standard-grade silver armor",
+					"variantType": "standard-grade silver armor",
 					"level": 11,
 					"price": {
 						"coin": "gp",
@@ -17905,7 +17925,7 @@
 					"entries": []
 				},
 				{
-					"type": "high-grade silver armor",
+					"variantType": "high-grade silver armor",
 					"level": 18,
 					"price": {
 						"coin": "gp",
@@ -17931,7 +17951,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "low-grade silver buckler",
+					"variantType": "low-grade silver buckler",
 					"name": "Low-Grade Silver Buckler",
 					"level": 2,
 					"price": {
@@ -17943,7 +17963,7 @@
 					"entries": []
 				},
 				{
-					"type": "low-grade silver shield",
+					"variantType": "low-grade silver shield",
 					"level": 2,
 					"price": {
 						"coin": "gp",
@@ -17954,7 +17974,7 @@
 					"entries": []
 				},
 				{
-					"type": "standard-grade silver buckler",
+					"variantType": "standard-grade silver buckler",
 					"name": "Standard-Grade Silver Buckler",
 					"level": 7,
 					"price": {
@@ -17966,7 +17986,7 @@
 					"entries": []
 				},
 				{
-					"type": "standard-grade silver shield",
+					"variantType": "standard-grade silver shield",
 					"level": 7,
 					"price": {
 						"coin": "gp",
@@ -17977,7 +17997,7 @@
 					"entries": []
 				},
 				{
-					"type": "high-grade silver buckler",
+					"variantType": "high-grade silver buckler",
 					"name": "High-Grade Silver Buckler",
 					"level": 15,
 					"price": {
@@ -17989,7 +18009,7 @@
 					"entries": []
 				},
 				{
-					"type": "high-grade silver shield",
+					"variantType": "high-grade silver shield",
 					"level": 15,
 					"price": {
 						"coin": "gp",
@@ -18016,7 +18036,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "low-grade silver weapon",
+					"variantType": "low-grade silver weapon",
 					"level": 2,
 					"price": {
 						"coin": "gp",
@@ -18026,7 +18046,7 @@
 					"entries": []
 				},
 				{
-					"type": "standard-grade silver weapon",
+					"variantType": "standard-grade silver weapon",
 					"level": 10,
 					"price": {
 						"coin": "gp",
@@ -18036,7 +18056,7 @@
 					"entries": []
 				},
 				{
-					"type": "high-grade silver weapon",
+					"variantType": "high-grade silver weapon",
 					"level": 16,
 					"price": {
 						"coin": "gp",
@@ -18254,7 +18274,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "standard",
+					"variantType": "standard",
 					"level": 5,
 					"price": {
 						"coin": "gp",
@@ -18370,7 +18390,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "slick",
+					"variantType": "slick",
 					"level": 5,
 					"price": {
 						"coin": "gp",
@@ -18379,7 +18399,7 @@
 					"entries": []
 				},
 				{
-					"type": "greater slick",
+					"variantType": "greater slick",
 					"level": 8,
 					"price": {
 						"coin": "gp",
@@ -18387,19 +18407,38 @@
 					},
 					"entries": [
 						"The item bonus is +2."
-					]
+					],
+					"_mod": {
+						"entries":
+							{
+								"mode": "replaceTxt",
+								"replace": "+1",
+								"with": "+2"
+							}
+						,
+						"entriesMode": "generic"
+					}
 				},
 				{
-					"type": "major slick",
+					"variantType": "major slick",
 					"level": 16,
 					"price": {
 						"coin": "gp",
 						"amount": 9000
 					},
 					"entries": [
-						"The item bonus is +3.",
-						"Weapon Property Runes."
-					]
+						"The item bonus is +3."
+					],
+					"_mod": {
+						"entries":
+							{
+								"mode": "replaceTxt",
+								"replace": "+1",
+								"with": "+3"
+							}
+						,
+						"entriesMode": "generic"
+					}
 				}
 			]
 		},
@@ -18637,7 +18676,7 @@
 			"variants": [
 				{
 					"name": "Snare Kit",
-					"type": "Base",
+					"variantType": "Base",
 					"price": {
 						"coin": "gp",
 						"amount": 6
@@ -18645,7 +18684,7 @@
 					"entries": []
 				},
 				{
-					"type": "Specialist",
+					"variantType": "Specialist",
 					"level": 3,
 					"price": {
 						"coin": "gp",
@@ -18859,7 +18898,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "I",
+					"variantType": "I",
 					"name": "Spellstrike Ammunition (Type I)",
 					"level": 3,
 					"price": {
@@ -18886,7 +18925,7 @@
 					}
 				},
 				{
-					"type": "II",
+					"variantType": "II",
 					"name": "Spellstrike Ammunition (Type II)",
 					"level": 5,
 					"price": {
@@ -18913,7 +18952,7 @@
 					}
 				},
 				{
-					"type": "III",
+					"variantType": "III",
 					"name": "Spellstrike Ammunition (Type III)",
 					"level": 7,
 					"price": {
@@ -18940,7 +18979,7 @@
 					}
 				},
 				{
-					"type": "IV",
+					"variantType": "IV",
 					"name": "Spellstrike Ammunition (Type IV)",
 					"level": 9,
 					"price": {
@@ -18967,7 +19006,7 @@
 					}
 				},
 				{
-					"type": "V",
+					"variantType": "V",
 					"name": "Spellstrike Ammunition (Type V)",
 					"level": 11,
 					"price": {
@@ -18994,7 +19033,7 @@
 					}
 				},
 				{
-					"type": "VI",
+					"variantType": "VI",
 					"name": "Spellstrike Ammunition (Type VI)",
 					"level": 13,
 					"price": {
@@ -19021,7 +19060,7 @@
 					}
 				},
 				{
-					"type": "VII",
+					"variantType": "VII",
 					"name": "Spellstrike Ammunition (Type VII)",
 					"level": 15,
 					"price": {
@@ -19048,7 +19087,7 @@
 					}
 				},
 				{
-					"type": "VIII",
+					"variantType": "VIII",
 					"name": "Spellstrike Ammunition (Type VIII)",
 					"level": 17,
 					"price": {
@@ -19075,7 +19114,7 @@
 					}
 				},
 				{
-					"type": "IX",
+					"variantType": "IX",
 					"name": "Spellstrike Ammunition (Type IX)",
 					"level": 19,
 					"price": {
@@ -19237,7 +19276,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "Base",
+					"variantType": "Base",
 					"name": "Spyglass",
 					"entries": []
 				},
@@ -19303,7 +19342,7 @@
 					]
 				},
 				{
-					"type": "greater staff of abjuration",
+					"variantType": "greater staff of abjuration",
 					"level": 10,
 					"price": {
 						"coin": "gp",
@@ -19320,7 +19359,7 @@
 					]
 				},
 				{
-					"type": "major staff of abjuration",
+					"variantType": "major staff of abjuration",
 					"level": 14,
 					"price": {
 						"coin": "gp",
@@ -19387,7 +19426,7 @@
 					]
 				},
 				{
-					"type": "greater staff of conjuration",
+					"variantType": "greater staff of conjuration",
 					"level": 10,
 					"price": {
 						"coin": "gp",
@@ -19404,7 +19443,7 @@
 					]
 				},
 				{
-					"type": "major staff of conjuration",
+					"variantType": "major staff of conjuration",
 					"level": 14,
 					"price": {
 						"coin": "gp",
@@ -19471,7 +19510,7 @@
 					]
 				},
 				{
-					"type": "greater staff of divination",
+					"variantType": "greater staff of divination",
 					"level": 10,
 					"price": {
 						"coin": "gp",
@@ -19488,7 +19527,7 @@
 					]
 				},
 				{
-					"type": "major staff of divination",
+					"variantType": "major staff of divination",
 					"level": 14,
 					"price": {
 						"coin": "gp",
@@ -19555,7 +19594,7 @@
 					]
 				},
 				{
-					"type": "greater staff of enchantment",
+					"variantType": "greater staff of enchantment",
 					"level": 10,
 					"price": {
 						"coin": "gp",
@@ -19572,7 +19611,7 @@
 					]
 				},
 				{
-					"type": "major staff of enchantment",
+					"variantType": "major staff of enchantment",
 					"level": 14,
 					"traits": [
 						"uncommon"
@@ -19642,7 +19681,7 @@
 					]
 				},
 				{
-					"type": "greater staff of evocation",
+					"variantType": "greater staff of evocation",
 					"level": 10,
 					"price": {
 						"coin": "gp",
@@ -19659,7 +19698,7 @@
 					]
 				},
 				{
-					"type": "major staff of evocation",
+					"variantType": "major staff of evocation",
 					"level": 14,
 					"price": {
 						"coin": "gp",
@@ -19709,7 +19748,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "staff of fire",
+					"variantType": "staff of fire",
 					"level": 3,
 					"price": {
 						"coin": "gp",
@@ -19726,7 +19765,7 @@
 					]
 				},
 				{
-					"type": "greater staff of fire",
+					"variantType": "greater staff of fire",
 					"level": 8,
 					"price": {
 						"coin": "gp",
@@ -19743,7 +19782,7 @@
 					]
 				},
 				{
-					"type": "major staff of fire",
+					"variantType": "major staff of fire",
 					"level": 12,
 					"price": {
 						"coin": "gp",
@@ -19810,7 +19849,7 @@
 					]
 				},
 				{
-					"type": "greater staff of healing",
+					"variantType": "greater staff of healing",
 					"level": 8,
 					"price": {
 						"coin": "gp",
@@ -19828,7 +19867,7 @@
 					]
 				},
 				{
-					"type": "major staff of healing",
+					"variantType": "major staff of healing",
 					"level": 12,
 					"price": {
 						"coin": "gp",
@@ -19970,7 +20009,7 @@
 					]
 				},
 				{
-					"type": "greater staff of illusion",
+					"variantType": "greater staff of illusion",
 					"level": 10,
 					"price": {
 						"coin": "gp",
@@ -19987,7 +20026,7 @@
 					]
 				},
 				{
-					"type": "major staff of illusion",
+					"variantType": "major staff of illusion",
 					"level": 14,
 					"price": {
 						"coin": "gp",
@@ -20054,7 +20093,7 @@
 					]
 				},
 				{
-					"type": "greater staff of necromancy",
+					"variantType": "greater staff of necromancy",
 					"level": 10,
 					"price": {
 						"coin": "gp",
@@ -20071,7 +20110,7 @@
 					]
 				},
 				{
-					"type": "major staff of necromancy",
+					"variantType": "major staff of necromancy",
 					"level": 14,
 					"price": {
 						"coin": "gp",
@@ -20237,7 +20276,7 @@
 					]
 				},
 				{
-					"type": "greater staff of transmutation",
+					"variantType": "greater staff of transmutation",
 					"level": 10,
 					"price": {
 						"coin": "gp",
@@ -20254,7 +20293,7 @@
 					]
 				},
 				{
-					"type": "major staff of transmutation",
+					"variantType": "major staff of transmutation",
 					"level": 14,
 					"price": {
 						"coin": "gp",
@@ -20481,7 +20520,7 @@
 					"entries": []
 				},
 				{
-					"type": "greater storm flash",
+					"variantType": "greater storm flash",
 					"level": 18,
 					"price": {
 						"coin": "gp",
@@ -20524,7 +20563,7 @@
 					"entries": []
 				},
 				{
-					"type": "greater striking",
+					"variantType": "greater striking",
 					"level": 12,
 					"price": {
 						"coin": "gp",
@@ -20535,7 +20574,7 @@
 					]
 				},
 				{
-					"type": "major striking",
+					"variantType": "major striking",
 					"level": 19,
 					"price": {
 						"coin": "gp",
@@ -21136,7 +21175,7 @@
 			"variants": [
 				{
 					"name": "Thieves' Tools",
-					"type": "Base",
+					"variantType": "Base",
 					"entries": [],
 					"_mod": {
 						"entries": [
@@ -21276,7 +21315,7 @@
 					"entries": []
 				},
 				{
-					"type": "greater thundering",
+					"variantType": "greater thundering",
 					"level": 15,
 					"price": {
 						"coin": "gp",
@@ -21655,7 +21694,7 @@
 					"entries": []
 				},
 				{
-					"type": "greater tracker's goggles",
+					"variantType": "greater tracker's goggles",
 					"level": 9,
 					"price": {
 						"coin": "gp",
@@ -22044,7 +22083,7 @@
 					"entries": []
 				},
 				{
-					"type": "greater ventriloquist's ring",
+					"variantType": "greater ventriloquist's ring",
 					"level": 9,
 					"price": {
 						"coin": "gp",
@@ -22135,7 +22174,7 @@
 					]
 				},
 				{
-					"type": "greater verdant staff",
+					"variantType": "greater verdant staff",
 					"level": 12,
 					"price": {
 						"coin": "gp",
@@ -22915,7 +22954,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "+1 weapon potency",
+					"variantType": "+1 weapon potency",
 					"level": 2,
 					"price": {
 						"coin": "gp",
@@ -22930,7 +22969,7 @@
 					}
 				},
 				{
-					"type": "+2 weapon potency",
+					"variantType": "+2 weapon potency",
 					"level": 10,
 					"price": {
 						"coin": "gp",
@@ -22947,7 +22986,7 @@
 					}
 				},
 				{
-					"type": "+3 weapon potency",
+					"variantType": "+3 weapon potency",
 					"level": 16,
 					"price": {
 						"coin": "gp",
