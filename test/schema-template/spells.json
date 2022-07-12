@@ -293,12 +293,37 @@
 						"type": "object",
 						"properties": {
 							"X": {
-								"type": "object"
+								"description": "An array of levels to which the spell can be heightened.",
+								"type": "object",
+								"patternProperties": {
+									"^([1-9]|10)$": {
+										"description": "An array of effects of heightening the spell to the given level.",
+										"type": "array",
+										"items": {
+											"$ref": "entry.json"
+										},
+										"minItems": 1
+									}
+								},
+								"minProperties": 1,
+								"additionalProperties": false
 							},
 							"plusX": {
-								"type": "object"
+								"type": "object",
+								"patternProperties": {
+									"^([1-9]|10)$": {
+										"type": "array",
+										"items": {
+											"$ref": "entry.json"
+										},
+										"minItems": 1
+									}
+								},
+								"minProperties": 1,
+								"additionalProperties": false
 							}
 						},
+						"minProperties": 1,
 						"additionalProperties": false
 					}
 				},
