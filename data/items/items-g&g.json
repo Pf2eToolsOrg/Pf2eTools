@@ -814,7 +814,6 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "awakened adamantine shot",
 					"name": "Awakened Adamantine Shot",
 					"level": 18,
 					"price": {
@@ -823,10 +822,10 @@
 					},
 					"entries": [
 						"The shot is a high-grade adamantine bullet. The awakened adamantine breaks through any resistance. The shot ignores the first 20 resistance a creature has to physical damage, all damage, or piercing or bludgeoning damage. Against a golem or creature who already has a resistance bypassed by adamantine, or a weakness to adamantine, the shot shatters the target's defenses, causing them to become {@condition flat-footed} for 1 minute instead. Because adamantine is uncommon, this version of awakened metal shot is uncommon even for gunslingers or other characters with access to uncommon guns and bullets from this book."
-					]
+					],
+					"variantType": "awakened adamantine shot"
 				},
 				{
-					"type": "awakened cold iron shot",
 					"name": "Awakened Cold Iron Shot",
 					"level": 17,
 					"price": {
@@ -835,10 +834,10 @@
 					},
 					"entries": [
 						"The shot is a high-grade cold iron bullet. The awakened cold iron attempts to disrupt enchantments the target placed on others' minds. You can name a creature you believe to be enchanted by your target or allow the shot to choose an enchanted creature randomly. On a hit, the shot attempts to counteract the enchantment the target is using to manipulate that creature's mind. The counteract level is 9, and the counteract modifier is +27. If you fail (but don't critically fail) the counteract check against a demon or fey, you get a success instead. If you hit a demon or fey with no active {@trait enchantment} effects on other creatures, the target is {@condition stupefied|CRB|stupefied 1} for 1 minute instead."
-					]
+					],
+					"variantType": "awakened cold iron shot"
 				},
 				{
-					"type": "awakened silver shot",
 					"name": "Awakened Silver Shot",
 					"level": 17,
 					"price": {
@@ -847,7 +846,8 @@
 					},
 					"entries": [
 						"The shot is a high-grade silver bullet. The awakened silver gleams with altered celestial moonlight designed to weaken and expose devils and werecreatures. On a hit, it attempts to counteract any {@trait polymorph} effect on the target. The counteract level is 9, and the counteract modifier is +27. If you fail (but don't critically fail) the counteract check against a devil or a werecreature, you get a success instead. If you counteracted the {@action Change Shape|LOAG} ability, the creature can't use that ability again for 1 round, or 1 minute on a critical success. If you hit a devil or werecreature not under a {@trait polymorph} effect, the target is {@condition enfeebled|CRB|enfeebled 1} for 1 minute instead."
-					]
+					],
+					"variantType": "awakened silver shot"
 				}
 			],
 			"_vmod": {
@@ -1063,15 +1063,14 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "battering ram",
 					"level": 5,
 					"price": {
 						"amount": 160,
 						"coin": "gp"
-					}
+					},
+					"variantType": "battering ram"
 				},
 				{
-					"type": "covered battering ram",
 					"level": 6,
 					"price": {
 						"amount": 250,
@@ -1098,7 +1097,8 @@
 					},
 					"entries": [
 						"Though it has the same Ram activity as the basic battering ram, a covered battering ram is additionally suspended from a protective roof attached to large wheels. This gives the crew members {@quickref greater cover|CRB|3|cover} against attacks from outside. The cover is on the left and right flank, but open on the front and rear to allow for operating the ram. The roof has AC 23, Hardness 12, HP 48, and BT 24. Breaking the roof doesn't affect the operation of the battering ram but eliminates the cover."
-					]
+					],
+					"variantType": "covered battering ram"
 				}
 			],
 			"siegeWeaponData": {
@@ -1168,7 +1168,6 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "dose or round",
 					"name": "Dose or Round of Black Powder",
 					"level": 0,
 					"price": {
@@ -1178,10 +1177,10 @@
 					"entries": [
 						"The smallest unit of black powder that still has a simple use, a dose can be a simple package paper parcel around black powder or it can be packaged with a metal bullet or pellet to be used as ammunition. When ignited with a fuse or exposed to direct flame, a dose of black powder explodes. This isn't powerful enough to deal damage but makes a loud sound and could trigger further explosions. A fuse for a dose can be created with a few twists of paper and causes the dose to explode the round after it's lit."
 					],
-					"activate": null
+					"activate": null,
+					"variantType": "dose or round"
 				},
 				{
-					"type": "horn",
 					"name": "Horn of Black Powder",
 					"level": 2,
 					"price": {
@@ -1190,10 +1189,10 @@
 					},
 					"entries": [
 						"A horn contains 500 doses worth of black powder. A horn can be detonated by leaving a small trail of black powder and then lighting it. Each 5-foot square requires one dose of black powder to create a trail through. As long as the horn is mostly full (at least 400 doses remaining) it can be detonated to deal {@damage 1d6} fire damage in a 5-foot burst (DC 16 basic Reflex save). It takes 1 round per 15 feet of powder trail laid down for a horn to detonate after the trail is lit. If multiple horns detonate simultaneously, it can increase the area of the explosion, but the damage in overlapping areas doesn't increase."
-					]
+					],
+					"variantType": "horn"
 				},
 				{
-					"type": "keg",
 					"name": "Keg of Black Powder",
 					"level": 6,
 					"price": {
@@ -1202,7 +1201,8 @@
 					},
 					"entries": [
 						"A keg contains 5,000 doses of black powder and can be detonated in the same way as a horn. As long as the keg is mostly full (at least 4,000 doses remaining) this deals {@damage 3d6} fire damage in a 20-foot burst (DC 20 basic Reflex save). Detonating multiple kegs can increase the area, but not the damage, of this effect; detonating a keg and any horns at the same time in an overlapping area also doesn't increase the damage."
-					]
+					],
+					"variantType": "keg"
 				}
 			]
 		},
@@ -1415,16 +1415,15 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "blazons of shared power",
 					"level": 3,
 					"price": {
 						"coin": "gp",
 						"amount": 52
 					},
-					"entries": []
+					"entries": [],
+					"variantType": "blazons of shared power"
 				},
 				{
-					"type": "greater blazons of shared power",
 					"level": 11,
 					"price": {
 						"coin": "gp",
@@ -1432,7 +1431,8 @@
 					},
 					"entries": [
 						"A set of greater blazons of shared power also replicates property runes from the primary weapon, so long as the secondary weapon meets all the prerequisites for a given rune and isn't a specific weapon. The secondary weapon gains the benefits of those runes. All of its own runes are suppressed. When you invest the blazons, you can elect for them to transfer only fundamental runes, in which case they function as standard blazons of shared power."
-					]
+					],
+					"variantType": "greater blazons of shared power"
 				}
 			]
 		},
@@ -1672,16 +1672,15 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "breath blaster",
 					"level": 8,
 					"price": {
 						"coin": "gp",
 						"amount": 500
 					},
-					"entries": []
+					"entries": [],
+					"variantType": "breath blaster"
 				},
 				{
-					"type": "greater breath blaster",
 					"level": 14,
 					"price": {
 						"coin": "gp",
@@ -1689,10 +1688,10 @@
 					},
 					"entries": [
 						"The greater breath blaster's activation deals {@dice 6d6} damage and the DC is 31. It's a +2 greater striking blunderbuss."
-					]
+					],
+					"variantType": "greater breath blaster"
 				},
 				{
-					"type": "major breath blaster",
 					"level": 18,
 					"price": {
 						"coin": "gp",
@@ -1700,7 +1699,8 @@
 					},
 					"entries": [
 						"The major breath blaster's activation deals {@dice 10d6} damage, the DC is 38, and the area increases to either a 60-foot line or a 30-foot cone, chosen when it's created. It's a +3 greater striking blunderbuss."
-					]
+					],
+					"variantType": "major breath blaster"
 				}
 			]
 		},
@@ -1749,16 +1749,15 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "Base",
 					"name": "Camouflage Suit",
 					"price": {
 						"coin": "gp",
 						"amount": 10
 					},
-					"entries": []
+					"entries": [],
+					"variantType": "Base"
 				},
 				{
-					"type": "Superb Camouflage Suit",
 					"level": 9,
 					"price": {
 						"coin": "gp",
@@ -1773,7 +1772,8 @@
 							"replace": "A suit prepared in this manner grants you a \\+1 item bonus",
 							"with": "A suit prepared in this manner grants you a +2 item bonus"
 						}
-					}
+					},
+					"variantType": "Superb Camouflage Suit"
 				}
 			]
 		},
@@ -2062,7 +2062,6 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "chameleon suit",
 					"level": 4,
 					"price": {
 						"coin": "gp",
@@ -2070,10 +2069,10 @@
 					},
 					"entries": [
 						"The effect lasts for 1 minute."
-					]
+					],
+					"variantType": "chameleon suit"
 				},
 				{
-					"type": "greater chameleon suit",
 					"level": 8,
 					"price": {
 						"coin": "gp",
@@ -2081,10 +2080,10 @@
 					},
 					"entries": [
 						"The effect lasts for 10 minutes."
-					]
+					],
+					"variantType": "greater chameleon suit"
 				},
 				{
-					"type": "major chameleon suit",
 					"level": 12,
 					"price": {
 						"coin": "gp",
@@ -2092,7 +2091,8 @@
 					},
 					"entries": [
 						"The effect lasts for 1 hour."
-					]
+					],
+					"variantType": "major chameleon suit"
 				}
 			]
 		},
@@ -2236,7 +2236,6 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "clockwork goggles",
 					"level": 1,
 					"price": {
 						"coin": "gp",
@@ -2244,10 +2243,10 @@
 					},
 					"entries": [
 						"When activated, you gain {@ability low-light vision} for 10 minutes."
-					]
+					],
+					"variantType": "clockwork goggles"
 				},
 				{
-					"type": "greater clockwork goggles",
 					"level": 4,
 					"price": {
 						"coin": "gp",
@@ -2255,10 +2254,10 @@
 					},
 					"entries": [
 						"When activated, you gain {@ability low-light vision} and {@ability darkvision} for 10 minutes."
-					]
+					],
+					"variantType": "greater clockwork goggles"
 				},
 				{
-					"type": "major clockwork goggles",
 					"level": 8,
 					"price": {
 						"coin": "gp",
@@ -2266,7 +2265,8 @@
 					},
 					"entries": [
 						"When activated, you gain {@ability low-light vision}, {@ability darkvision}, and the effects of {@spell see invisibility} for 10 minutes."
-					]
+					],
+					"variantType": "major clockwork goggles"
 				}
 			]
 		},
@@ -2561,16 +2561,15 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "darkvision scope",
 					"level": 5,
 					"price": {
 						"coin": "gp",
 						"amount": 160
 					},
-					"entries": []
+					"entries": [],
+					"variantType": "darkvision scope"
 				},
 				{
-					"type": "greater darkvision scope",
 					"level": 15,
 					"price": {
 						"coin": "gp",
@@ -2595,7 +2594,8 @@
 							}
 						],
 						"entriesMode": "generic"
-					}
+					},
+					"variantType": "greater darkvision scope"
 				}
 			]
 		},
@@ -2670,16 +2670,15 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "deployable cover",
 					"level": 1,
 					"price": {
 						"coin": "gp",
 						"amount": 15
 					},
-					"entries": []
+					"entries": [],
+					"variantType": "deployable cover"
 				},
 				{
-					"type": "ballistic cover",
 					"level": 2,
 					"price": {
 						"coin": "gp",
@@ -2687,7 +2686,8 @@
 					},
 					"entries": [
 						"Specially crafted to protect against bullet fire, a ballistic cover also works against other physical projectiles, such as arrows, bolts, and thrown weapons. While a creature has cover from {@action Take Cover||Taking Cover} behind a ballistic cover, it gains resistance 2 to piercing damage from ranged weapons and ranged unarmed attacks."
-					]
+					],
+					"variantType": "ballistic cover"
 				}
 			]
 		},
@@ -3378,7 +3378,6 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "exsanguinating ammunition",
 					"level": 4,
 					"price": {
 						"coin": "gp",
@@ -3391,10 +3390,10 @@
 						"entries": {
 							"with": "weakness 1"
 						}
-					}
+					},
+					"variantType": "exsanguinating ammunition"
 				},
 				{
-					"type": "greater exsanguinating ammunition",
 					"level": 8,
 					"price": {
 						"coin": "gp",
@@ -3407,10 +3406,10 @@
 						"entries": {
 							"with": "weakness 3"
 						}
-					}
+					},
+					"variantType": "greater exsanguinating ammunition"
 				},
 				{
-					"type": "major exsanguinating ammunition",
 					"level": 12,
 					"price": {
 						"coin": "gp",
@@ -3423,7 +3422,8 @@
 						"entries": {
 							"with": "weakness 5"
 						}
-					}
+					},
+					"variantType": "major exsanguinating ammunition"
 				}
 			],
 			"_vmod": {
@@ -4106,7 +4106,6 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "gecko pads",
 					"level": 5,
 					"price": {
 						"coin": "gp",
@@ -4114,10 +4113,10 @@
 					},
 					"entries": [
 						"The climb Speed lasts for 10 minutes."
-					]
+					],
+					"variantType": "gecko pads"
 				},
 				{
-					"type": "greater gecko pads",
 					"level": 9,
 					"price": {
 						"coin": "gp",
@@ -4125,7 +4124,8 @@
 					},
 					"entries": [
 						"The climb Speed lasts for 1 hour."
-					]
+					],
+					"variantType": "greater gecko pads"
 				}
 			]
 		},
@@ -4246,16 +4246,15 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "grappling gun",
 					"level": 0,
 					"price": {
 						"coin": "gp",
 						"amount": 3
 					},
-					"entries": []
+					"entries": [],
+					"variantType": "grappling gun"
 				},
 				{
-					"type": "clockwork grappling gun",
 					"level": 1,
 					"price": {
 						"coin": "gp",
@@ -4263,7 +4262,8 @@
 					},
 					"entries": [
 						"Clockwork controls the reel on this grappling gun, reeling the grappling hook back in when you pull a lever. Reloading a clockwork grappling gun takes three {@action Interact} actions."
-					]
+					],
+					"variantType": "clockwork grappling gun"
 				}
 			]
 		},
@@ -5061,16 +5061,15 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "indomitable keepsake",
 					"level": 3,
 					"price": {
 						"coin": "gp",
 						"amount": 12
 					},
-					"entries": []
+					"entries": [],
+					"variantType": "indomitable keepsake"
 				},
 				{
-					"type": "greater indomitable keepsake",
 					"level": 9,
 					"price": {
 						"coin": "gp",
@@ -5086,10 +5085,10 @@
 							"with": "20"
 						},
 						"entriesMode": "generic"
-					}
+					},
+					"variantType": "greater indomitable keepsake"
 				},
 				{
-					"type": "major indomitable keepsake",
 					"level": 15,
 					"price": {
 						"coin": "gp",
@@ -5105,7 +5104,8 @@
 							"with": "30"
 						},
 						"entriesMode": "generic"
-					}
+					},
+					"variantType": "major indomitable keepsake"
 				}
 			]
 		},
@@ -5324,16 +5324,15 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "lucky draw bandolier",
 					"level": 9,
 					"price": {
 						"coin": "gp",
 						"amount": 700
 					},
-					"entries": []
+					"entries": [],
+					"variantType": "lucky draw bandolier"
 				},
 				{
-					"type": "greater lucky draw bandolier",
 					"level": 12,
 					"price": {
 						"coin": "gp",
@@ -5342,7 +5341,8 @@
 					"entries": [
 						"You can activate a greater lucky draw bandolier once per hour instead of being able to activate it once per day.",
 						"d6 Ability (Suit) Ammunition 1 Strength (Hammer) Meteor shot (page 171) 2 Dexterity (Key) Storm arrow 3 Constitution (Shield) Corrosive ammunition 4 Intelligence (Book) Explosive shot 5 Wisdom (Star) Terrifying ammunition (Advanced Player's Guide 259) 6 Charisma (Crown) Fairy bullet (page 170)"
-					]
+					],
+					"variantType": "greater lucky draw bandolier"
 				}
 			]
 		},
@@ -5375,16 +5375,15 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "magnetic suit",
 					"level": 4,
 					"price": {
 						"coin": "gp",
 						"amount": 20
 					},
-					"entries": []
+					"entries": [],
+					"variantType": "magnetic suit"
 				},
 				{
-					"type": "greater magnetic suit",
 					"level": 10,
 					"price": {
 						"coin": "gp",
@@ -5407,10 +5406,10 @@
 							}
 						],
 						"entriesMode": "generic"
-					}
+					},
+					"variantType": "greater magnetic suit"
 				},
 				{
-					"type": "major magnetic suit",
 					"level": 16,
 					"price": {
 						"coin": "gp",
@@ -5433,7 +5432,8 @@
 							}
 						],
 						"entriesMode": "generic"
-					}
+					},
+					"variantType": "major magnetic suit"
 				}
 			]
 		},
@@ -5473,7 +5473,6 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "magnetite Scope",
 					"appliesTo": [
 						"Weapon"
 					],
@@ -5482,10 +5481,10 @@
 						"coin": "gp",
 						"amount": 800
 					},
-					"entries": []
+					"entries": [],
+					"variantType": "magnetite Scope"
 				},
 				{
-					"type": "greater magnetite Scope",
 					"appliesTo": [
 						"Weapon"
 					],
@@ -5496,7 +5495,8 @@
 					},
 					"entries": [
 						"The item bonus is +3, and activating the scope increases the scatter radius by 10 feet."
-					]
+					],
+					"variantType": "greater magnetite Scope"
 				}
 			]
 		},
@@ -5536,7 +5536,6 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "magnifying Scope",
 					"appliesTo": [
 						"Weapon"
 					],
@@ -5545,10 +5544,10 @@
 						"coin": "gp",
 						"amount": 70
 					},
-					"entries": []
+					"entries": [],
+					"variantType": "magnifying Scope"
 				},
 				{
-					"type": "greater magnifying Scope",
 					"appliesTo": [
 						"Weapon"
 					],
@@ -5559,10 +5558,10 @@
 					},
 					"entries": [
 						"The item bonus is +2, and activating the scope increases the range increment by 10 feet."
-					]
+					],
+					"variantType": "greater magnifying Scope"
 				},
 				{
-					"type": "major magnifying Scope",
 					"appliesTo": [
 						"Weapon"
 					],
@@ -5573,7 +5572,8 @@
 					},
 					"entries": [
 						"The item bonus is +3, and activating the scope increases the range increment by 20 feet."
-					]
+					],
+					"variantType": "major magnifying Scope"
 				}
 			]
 		},
@@ -5740,7 +5740,6 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "meteor shot",
 					"level": 7,
 					"price": {
 						"coin": "gp",
@@ -5753,10 +5752,10 @@
 					},
 					"entries": [
 						"The ammunition deals {@damage 3d6} fire damage in a 5-foot emanation around the target (DC 23 basic Reflex save)."
-					]
+					],
+					"variantType": "meteor shot"
 				},
 				{
-					"type": "greater meteor shot",
 					"level": 12,
 					"price": {
 						"coin": "gp",
@@ -5769,10 +5768,10 @@
 					},
 					"entries": [
 						"The ammunition deals {@damage 6d6} fire damage in a 10-foot emanation around the target (DC 29 basic Reflex save)."
-					]
+					],
+					"variantType": "greater meteor shot"
 				},
 				{
-					"type": "major meteor shot",
 					"level": 17,
 					"price": {
 						"coin": "gp",
@@ -5785,7 +5784,8 @@
 					},
 					"entries": [
 						"The ammunition deals {@damage 9d6} fire damage in a 20-foot emanation around the target (DC 37 basic Reflex save)."
-					]
+					],
+					"variantType": "major meteor shot"
 				}
 			],
 			"_vmod": {
@@ -6280,7 +6280,6 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "monopod",
 					"level": 1,
 					"price": {
 						"coin": "sp",
@@ -6288,10 +6287,10 @@
 					},
 					"entries": [
 						"Monopods are lighter and can be deployed with a single hand using the same action as drawing the firearm. They still require an {@action Interact} action to retrieve. Monopods are less stable than a {@item tripod|G&G}, and firing a {@trait kickback} weapon from a monopod without the necessary Strength reduces the penalty to a \u20131 circumstance penalty instead of removing it entirely."
-					]
+					],
+					"variantType": "monopod"
 				},
 				{
-					"type": "tripod, shielded",
 					"level": 3,
 					"price": {
 						"coin": "gp",
@@ -6299,7 +6298,8 @@
 					},
 					"entries": [
 						"A shielded tripod resembles a squat shield on a tripod. You can deploy and retrieve a shielded tripod with an {@action Interact} action, as normal, but while a shielded tripod is in your square, you can use the {@action Take Cover} action to gain {@quickref standard cover||3|cover} behind the tripod's shield. You can't use this cover to {@action Hide} or {@action Sneak}, as normal for times when your cover still leaves your position obvious."
-					]
+					],
+					"variantType": "tripod, shielded"
 				}
 			]
 		},
@@ -6445,24 +6445,24 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "Crossbow",
 					"name": "Repeating Crossbow Magazine",
-					"entries": []
+					"entries": [],
+					"variantType": "Crossbow"
 				},
 				{
-					"type": "Hand Crossbow",
 					"name": "Repeating Hand Crossbow Magazine",
 					"otherSources": {
 						"Reprinted": [
 							"AV3|73"
 						]
 					},
-					"entries": []
+					"entries": [],
+					"variantType": "Hand Crossbow"
 				},
 				{
-					"type": "Heavy Crossbow",
 					"name": "Repeating Heavy Crossbow Magazine",
-					"entries": []
+					"entries": [],
+					"variantType": "Heavy Crossbow"
 				}
 			]
 		},
@@ -6720,16 +6720,15 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "screech shooter",
 					"level": 9,
 					"price": {
 						"coin": "gp",
 						"amount": 700
 					},
-					"entries": []
+					"entries": [],
+					"variantType": "screech shooter"
 				},
 				{
-					"type": "greater screech shooter",
 					"level": 13,
 					"price": {
 						"coin": "gp",
@@ -6737,10 +6736,10 @@
 					},
 					"entries": [
 						"A greater screech shooter is a +2 greater striking harmona gun. The DC for the activation is 30 and it affects creatures in a 40-foot emanation."
-					]
+					],
+					"variantType": "greater screech shooter"
 				},
 				{
-					"type": "major screech shooter",
 					"level": 17,
 					"price": {
 						"coin": "gp",
@@ -6749,7 +6748,8 @@
 					"craftReq": "The initial raw materials must include the larynx of a creature with a frightening screech.",
 					"entries": [
 						"The DC for the activation is 37 and it affects creatures in a 50-foot emanation."
-					]
+					],
+					"variantType": "major screech shooter"
 				}
 			]
 		},
@@ -6966,16 +6966,15 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "smoke fan",
 					"level": 2,
 					"price": {
 						"coin": "gp",
 						"amount": 5
 					},
-					"entries": []
+					"entries": [],
+					"variantType": "smoke fan"
 				},
 				{
-					"type": "greater smoke fan",
 					"level": 8,
 					"price": {
 						"coin": "gp",
@@ -6990,7 +6989,8 @@
 							"replace": "5-foot radius. The creator chooses the smoke's color when creating the smoke fan.",
 							"with": "20-foot radius. The creator can choose for the smoke to be a mixture of colors when creating the smoke fan."
 						}
-					}
+					},
+					"variantType": "greater smoke fan"
 				}
 			]
 		},
@@ -7026,7 +7026,6 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "sniper's bead",
 					"level": 4,
 					"price": {
 						"coin": "gp",
@@ -7034,10 +7033,10 @@
 					},
 					"entries": [
 						"You take no range increment penalty on your attack, as long as the attack is against a target within the affixed weapon's first two range increments."
-					]
+					],
+					"variantType": "sniper's bead"
 				},
 				{
-					"type": "greater sniper's bead",
 					"level": 10,
 					"price": {
 						"coin": "gp",
@@ -7045,10 +7044,10 @@
 					},
 					"entries": [
 						"You take no range increment penalty on your attack, as long as the attack is against a target within the affixed weapon's first four range increments."
-					]
+					],
+					"variantType": "greater sniper's bead"
 				},
 				{
-					"type": "major sniper's bead",
 					"level": 16,
 					"price": {
 						"coin": "gp",
@@ -7056,7 +7055,8 @@
 					},
 					"entries": [
 						"You take no range increment penalty on your attack, even if the target is all the way out to the weapon's sixth range increment. As normal, you still can't hit a target more than six range increments away."
-					]
+					],
+					"variantType": "major sniper's bead"
 				}
 			]
 		},
@@ -7156,16 +7156,15 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "spider gun",
 					"level": 6,
 					"price": {
 						"coin": "gp",
 						"amount": 250
 					},
-					"entries": []
+					"entries": [],
+					"variantType": "spider gun"
 				},
 				{
-					"type": "greater spider gun",
 					"level": 9,
 					"price": {
 						"coin": "gp",
@@ -7173,10 +7172,10 @@
 					},
 					"entries": [
 						"The gun's webbing requires at least 15 slashing damage or 5 fire damage to clear away and the DC is 25."
-					]
+					],
+					"variantType": "greater spider gun"
 				},
 				{
-					"type": "major spider gun",
 					"level": 15,
 					"price": {
 						"coin": "gp",
@@ -7185,7 +7184,8 @@
 					"craftReq": "The initial raw materials for the spider gun must include the fangs and spinneret of a giant spider or other Large spider.",
 					"entries": [
 						"A major spider gun is a +2 greater striking weapon. The gun's webbing requires at least 25 slashing damage or 15 fire damage to clear away and the DC is 34."
-					]
+					],
+					"variantType": "major spider gun"
 				}
 			]
 		},
@@ -7272,17 +7272,16 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "spirit-singer",
 					"level": 5,
 					"price": {
 						"coin": "gp",
 						"amount": 150
 					},
 					"bulk": 16,
-					"entries": []
+					"entries": [],
+					"variantType": "spirit-singer"
 				},
 				{
-					"type": "handheld spirit-singer",
 					"level": 6,
 					"price": {
 						"coin": "gp",
@@ -7290,10 +7289,10 @@
 					},
 					"usage": "held in two hands",
 					"bulk": 1,
-					"entries": []
+					"entries": [],
+					"variantType": "handheld spirit-singer"
 				},
 				{
-					"type": "incredible spirit-singer",
 					"level": 11,
 					"price": {
 						"coin": "gp",
@@ -7317,10 +7316,10 @@
 							}
 						],
 						"entriesMode": "generic"
-					}
+					},
+					"variantType": "incredible spirit-singer"
 				},
 				{
-					"type": "incredible handheld spirit-singer",
 					"level": 12,
 					"price": {
 						"coin": "gp",
@@ -7345,7 +7344,8 @@
 							}
 						],
 						"entriesMode": "generic"
-					}
+					},
+					"variantType": "incredible handheld spirit-singer"
 				}
 			]
 		},
@@ -7672,7 +7672,6 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "stepping stone shot",
 					"level": 7,
 					"price": {
 						"coin": "gp",
@@ -7680,10 +7679,10 @@
 					},
 					"entries": [
 						"The stones reach up to 100 feet, and they last up to the end of your next turn if no one collapses them."
-					]
+					],
+					"variantType": "stepping stone shot"
 				},
 				{
-					"type": "greater stepping stone shot",
 					"level": 10,
 					"price": {
 						"coin": "gp",
@@ -7691,7 +7690,8 @@
 					},
 					"entries": [
 						"The stones reach up to 250 feet, and they last up to 1 minute if no one collapses them."
-					]
+					],
+					"variantType": "greater stepping stone shot"
 				}
 			]
 		},
@@ -7919,16 +7919,15 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "tentacle cannon",
 					"level": 7,
 					"price": {
 						"coin": "gp",
 						"amount": 360
 					},
-					"entries": []
+					"entries": [],
+					"variantType": "tentacle cannon"
 				},
 				{
-					"type": "greater tentacle cannon",
 					"level": 13,
 					"price": {
 						"coin": "gp",
@@ -7937,10 +7936,10 @@
 					"entries": [
 						"A greater tentacle cannon is a +2 greater striking weapon.",
 						"It has a +20 bonus to {@action Grapple}, and its ink spray DC is 30."
-					]
+					],
+					"variantType": "greater tentacle cannon"
 				},
 				{
-					"type": "major tentacle cannon",
 					"level": 17,
 					"price": {
 						"coin": "gp",
@@ -7950,7 +7949,8 @@
 					"entries": [
 						"A major tentacle cannon is a +3 greater striking weapon.",
 						"It has a +27 bonus to {@action Grapple}, and its ink spray DC is 37."
-					]
+					],
+					"variantType": "major tentacle cannon"
 				}
 			]
 		},
@@ -8012,7 +8012,6 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "desktop clock",
 					"level": 1,
 					"price": {
 						"coin": "gp",
@@ -8021,10 +8020,10 @@
 					"bulk": 3,
 					"entries": [
 						"Desktop clocks have been designed to be small enough to only take up a quarter of a typical writing desk's surface area, but they're still too bulky and heavy to be lugged around casually."
-					]
+					],
+					"variantType": "desktop clock"
 				},
 				{
-					"type": "grand clock",
 					"level": 3,
 					"price": {
 						"coin": "gp",
@@ -8033,7 +8032,8 @@
 					"bulk": 16,
 					"entries": [
 						"These towering, ten-foot-tall clocks have been painstakingly handcrafted by skilled artisans and feature loud chimes that can be heard hourly throughout a manor. Owners of grand clocks usually tend to display them prominently in a study, lounge area, or foyer."
-					]
+					],
+					"variantType": "grand clock"
 				}
 			]
 		},
@@ -8388,7 +8388,6 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "flutterback wind-up wings",
 					"level": 3,
 					"price": {
 						"coin": "gp",
@@ -8396,10 +8395,10 @@
 					},
 					"entries": [
 						"When you make a thrown {@action Strike} with the weapon to which a pair of flutterback wind-up wings are attached, and the wings are wound, the wings fly the weapon back to your hand after the {@action Strike} is complete. If your hands are full when the weapon returns, the wings hover in place three feet above the ground. At the end of your turn, the wings are wound down; they don't function again until wound. If you aren't holding the weapon when the flutterback wind-up wings become wound down, the weapon falls to the ground."
-					]
+					],
+					"variantType": "flutterback wind-up wings"
 				},
 				{
-					"type": "homing wind-up wings",
 					"level": 12,
 					"price": {
 						"coin": "gp",
@@ -8407,7 +8406,8 @@
 					},
 					"entries": [
 						"When you make a thrown {@action Strike} with the weapon to which a pair of homing wind-up wings are attached, and the wings are wound, the wings seek out your target, flying through cover and avoiding obstacles. You ignore the target's {@condition concealed} condition and reduce the target's cover by one step (lesser cover to no cover, standard cover to lesser cover, or greater cover to standard cover). After the {@action Strike} is complete, the wings are wound down; they don't function again until wound."
-					]
+					],
+					"variantType": "homing wind-up wings"
 				}
 			]
 		}

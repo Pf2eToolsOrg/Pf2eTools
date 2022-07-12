@@ -3121,7 +3121,7 @@ DataUtil = {
 			}
 			// FIXME:
 			if (!variant.name) {
-				if (!generic.name.toLowerCase().includes(variant.type.toLowerCase()) && !variant.type.toLowerCase().includes(generic.name.toLowerCase())) {
+				if (!generic.name.toLowerCase().includes(variant.variantType.toLowerCase()) && !variant.variantType.toLowerCase().includes(generic.name.toLowerCase())) {
 					variant.name = `${variant.variantType} ${generic.name}`.toTitleCase();
 				} else {
 					variant.name = variant.variantType.toTitleCase();
