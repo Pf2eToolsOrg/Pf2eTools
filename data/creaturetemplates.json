@@ -276,6 +276,580 @@
 					]
 				}
 			]
+		},
+		{
+			"name": "Divine Warden",
+			"source": "B3",
+			"page": 72,
+			"hasLore": true,
+			"abilities": [
+				{
+					"type": "ability",
+					"name": "Divine Destruction",
+					"traits": [
+						"divine",
+						"necromancy"
+					],
+					"entries": [
+						"When the divine warden is reduced to 0 HP, it erupts with divine energy in a 30-foot emanation, dealing {@damage 1d6} damage per level. This damage is either positive or negative, determined by the patron deity's divine font (chosen at the divine warden's creation if the deity offers a choice), and this ability gains the corresponding trait. Each creature in the area must attempt a Will save with the following outcomes.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "The creature takes half damage.",
+								"Success": "The creature takes full damage.",
+								"Failure": "The creature takes full damage and becomes temporarily cursed by the patron deity. The creature becomes {@condition enfeebled 1} and {@condition stupefied 1} for 1 day; this is a curse effect that uses the Will save DC as the counteract DC.",
+								"Critical Failure": "As failure, except the creature becomes {@condition enfeebled 2} and {@condition stupefied 2}."
+							}
+						}
+					]
+				},
+				{
+					"type": "ability",
+					"name": "Divine Innate Spells",
+					"entries": [
+						"A divine warden whose patron deity has any alignment components gains {@spell divine lance} as an innate cantrip. A divine warden with a neutral patron deity instead gains {@spell daze} as an innate cantrip."
+					]
+				},
+				{
+					"type": "ability",
+					"name": "Divine Domain Spells",
+					"entries": [
+						"The divine warden selects two of its patron deity's domains. The divine warden can cast the basic domain spell for its chosen domains. The divine warden has a focus pool of 1 Focus Point. It can't Refocus, but its focus pool automatically refills 24 hours after it last used a Focus Point. If the divine warden is at least 10th level, it also gains the advanced domain spells for its chosen domains, and its focus pool increases to 2 Focus Points."
+					]
+				},
+				{
+					"type": "ability",
+					"name": "Faith Bound",
+					"traits": [
+						"abjuration",
+						"divine"
+					],
+					"entries": [
+						"A divine warden can't attack a creature that openly wears or displays the religious symbol of the divine warden's patron deity unless that creature uses a hostile action against the divine warden first. If the divine warden is intelligent, it can also attack a creature it believes isn't faithful to its deity or who wears the {@item religious symbol (generic)||religious symbol} as a ruse (typically after succeeding at a {@skill Perception} check to {@action Sense Motive})."
+					]
+				},
+				{
+					"type": "ability",
+					"name": "Faithful Weapon",
+					"entries": [
+						"A divine warden always wields its patron deity's favored weapon. If the weapon is a ranged weapon, the divine warden automatically generates new ammunition with each attack. For a divine warden of 4th level or higher, the deity's favored weapon gains the effects of a {@item striking} rune while the divine warden wields it; at 12th level, these effects are of a {@item greater striking} rune, and at 19th level, they're instead of a {@item major striking} rune."
+					]
+				},
+				{
+					"type": "ability",
+					"name": "Instrument of Faith",
+					"entries": [
+						"The divine warden is a beacon for its deity's faith. A cleric of the divine warden's patron deity can channel a {@spell heal} spell through a divine warden they can see within 60 feet. The cleric determines any targets or area for the spell as if they were standing in the divine warden's space."
+					]
+				}
+			],
+			"entries": [
+				{
+					"type": "pf2-h3",
+					"name": "Creating a Divine Warden",
+					"entries": [
+						"You can build a divine warden from the ground up using the standard rules for monster creation (which is how the divine warden on the following page was built), or you can turn an existing construct into a divine warden by taking the following steps. In either case, the specific divine warden abilities listed below work the same.",
+						"Select the deity that empowered the divine warden. This deity is the divine warden's patron deity. Increase the creature's level by 1 and change its statistics as follows.",
+						{
+							"type": "list",
+							"items": [
+								"It gains the {@trait uncommon} and {@trait divine} traits. Its alignment changes to match that of its patron deity. For example, a divine warden of a lawful good deity becomes a lawful good creature.",
+								"Increase AC, attack bonuses, DCs, saving throws, and skill modifiers by 1. If the creature didn't have any listed DCs, use the moderate DC for a creature of its level for any new abilities that require a DC.",
+								"Increase its Hit Points as shown on the table below."
+							]
+						},
+						{
+							"type": "table",
+							"source": "B3",
+							"page": 72,
+							"colStyles": [
+								"text-center",
+								"text-center"
+							],
+							"labelRowIdx": [
+								0
+							],
+							"rows": [
+								[
+									"Starting Level",
+									"HP Increase"
+								],
+								[
+									"1 or lower",
+									"10"
+								],
+								[
+									"2\u20134",
+									"15"
+								],
+								[
+									"5\u201319",
+									"20"
+								],
+								[
+									"20+",
+									"30"
+								]
+							]
+						}
+					]
+				},
+				{
+					"type": "pf2-h4",
+					"name": "Divine Warden Abilities",
+					"entries": [
+						"A divine warden retains any abilities it had previously, and it gains the abilities listed below. You might need to adjust or remove other abilities that conflict with the construct's new theme as a divine warden."
+					]
+				}
+			]
+		},
+		{
+			"name": "Ghost",
+			"source": "B1",
+			"page": 166,
+			"hasLore": true,
+			"entries": [
+				{
+					"type": "pf2-h3",
+					"name": "Creating a Ghost",
+					"entries": [
+						"While it's best to create custom ghosts to fill an adventure's specific needs, you can also use the following guidelines to turn existing living creatures into ghosts.",
+						"First, increase the creature's level by 2 and change its statistics as follows.",
+						{
+							"type": "list",
+							"items": [
+								"Increase AC, saves, Perception, DCs, and skill modifiers by 2. Increase the most appropriate melee attack modifier by 4 to become ghostly hand (described below), and other attack modifiers by 2.",
+								"A ghost has a Strength modifier of \u20135 and a Constitution modifier of +0.",
+								"Do not modify the ghost's Hit Points due to its new level."
+							]
+						}
+					]
+				},
+				{
+					"type": "pf2-h4",
+					"name": "Ghost Abilities",
+					"entries": [
+						"A ghost gains the {@trait incorporeal}, {@trait spirit}, and {@trait undead} traits. Many become evil. If the base creature has any abilities or traits that come from it being a living, corporeal creature, it loses them. You might also need to adjust some abilities that conflict with the theme of a ghost. All ghosts gain the following abilities."
+					]
+				}
+			],
+			"abilities": [
+				{
+					"type": "ability",
+					"name": "Darkvision",
+					"entries": [
+						"A monster with darkvision can see perfectly well in areas of darkness and dim light, though such vision is in black and white only. Some forms of magical darkness, such as a 4th-level {@spell darkness|CRB} spell, block normal {@ability darkvision}. A monster with greater darkvision, however, can see through even these forms of magical darkness."
+					]
+				},
+				{
+					"type": "ability",
+					"name": "Site Bound",
+					"entries": [
+						"A typical ghost can stray only a short distance from where it was killed or the place it haunts. A typical limit is 120 feet. Some ghosts are instead bound to a room, building, item, or creature that was special to it rather than a location."
+					]
+				},
+				{
+					"type": "ability",
+					"name": "Negative Healing",
+					"entries": [
+						"A creature with negative healing draws health from negative energy rather than positive energy. It is damaged by positive damage and is not healed by positive healing effects. It does not take negative damage, and it is healed by negative effects that heal undead."
+					]
+				},
+				{
+					"type": "ability",
+					"name": "Rejuvenation",
+					"traits": [
+						"divine",
+						"necromancy"
+					],
+					"entries": [
+						"When a ghost is destroyed, it re-forms after 2d4 days within the location it's bound to, fully healed. A ghost can be permanently destroyed only if someone determines the reason for its existence and sets right whatever prevents the spirit from resting."
+					]
+				},
+				{
+					"type": "ability",
+					"name": "Immunities",
+					"entries": [
+						"{@trait death} effects, {@trait disease}, {@condition paralyzed}, {@trait poison}, precision, {@condition unconscious}"
+					]
+				},
+				{
+					"type": "ability",
+					"name": "Resistances",
+					"entries": [
+						"all damage 5 (except force, {@item ghost touch}, or positive; double resistance to non-magical). This resistance increases to 10 at 9th level and 15 at 16th level."
+					]
+				},
+				{
+					"type": "ability",
+					"name": "Fly Speed",
+					"entries": [
+						"equal to its Speed"
+					]
+				},
+				{
+					"type": "ability",
+					"name": "Ghostly Hand",
+					"entries": [
+						"All ghosts have a ghostly hand unarmed attack that deals negative damage. It typically has the {@trait agile}, {@trait finesse}, and {@trait magical} traits. Some ghosts wield ghostly memories of weapons they held in life, but the effect is the same."
+					]
+				}
+			],
+			"optAbilities": {
+				"entries": [
+					{
+						"type": "pf2-h4",
+						"name": "Special Abilities",
+						"entries": [
+							"Select one or two of the following abilities, or potentially three if the ghost is 9th level or higher. These abilities should relate to the ghost's death or its history. You can also create new abilities or adapt those from monsters or classes to fit the theme. For DCs, use 2 + the {@table DCs by Level||DC of the ghost's level}."
+						]
+					}
+				],
+				"abilities": [
+					{
+						"type": "ability",
+						"name": "Corrupting Gaze",
+						"activity": {
+							"unit": "action",
+							"number": 2
+						},
+						"entries": [
+							"The ghost stares at a creature it can see within 30 feet. The target takes {@damage 1d6} negative damage + {@damage 1d6} per 2 levels with a basic Will save. A creature that fails its save is also {@condition stupefied 1} for 1 minute."
+						]
+					},
+					{
+						"type": "ability",
+						"name": "Draining Touch",
+						"activity": {
+							"unit": "action",
+							"number": 2
+						},
+						"entries": [
+							"With a touch, the ghost attempts to drain a living creature's life force. It makes a ghostly hand {@action Strike} but deals no damage on a hit. Instead, the target becomes {@condition drained 1} for 1 day, and the ghost regains HP equal to half its own level."
+						]
+					},
+					{
+						"type": "ability",
+						"name": "Frightful Moan",
+						"traits": [
+							"auditory",
+							"divine",
+							"emotion",
+							"enchantment",
+							"fear",
+							"mental"
+						],
+						"activity": {
+							"unit": "action",
+							"number": 2
+						},
+						"entries": [
+							"The ghost laments its fate, forcing each living creature within 30 feet to attempt a Will save. On a failure, a creature becomes {@condition frightened 2} (or {@condition frightened 3} on a critical failure). On a success, a creature is temporarily immune to this ghost's frightful moan for 1 minute."
+						]
+					},
+					{
+						"type": "ability",
+						"name": "Inhabit Object",
+						"activity": {
+							"unit": "action",
+							"number": 1
+						},
+						"entries": [
+							"The ghost possesses an object of size Large or smaller within 20 feet, making it an animated object (pages 20\u201321). This animated object's level can be no higher than the ghost's level \u2013 2. If the target object is being held by a creature, the bearer can attempt a Will save to prevent the possession. This possession ends when the object is destroyed or the ghost leaves it. At this point, the ghost reappears in the object's square and can't Inhabit an Object again for {@dice 1d4} rounds."
+						]
+					},
+					{
+						"type": "ability",
+						"name": "Malevolent Possession",
+						"activity": {
+							"unit": "action",
+							"number": 2
+						},
+						"entries": [
+							"The ghost attempts to possess an adjacent corporeal creature. This has the same effect as the {@spell possession} spell, except since the ghost doesn't have a physical body, it is unaffected by that restriction of the spell."
+						]
+					},
+					{
+						"type": "ability",
+						"name": "Telekinetic Assault",
+						"traits": [
+							"divine",
+							"evocation"
+						],
+						"activity": {
+							"unit": "action",
+							"number": 2
+						},
+						"entries": [
+							"The ghost cries out in pain and anguish as small objects and debris fly about in a 30-foot emanation. Creatures in this area take {@damage 1d6} bludgeoning damage + {@damage 1d6} per 2 levels, subject to a basic Reflex save."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Ghoul",
+			"source": "B1",
+			"page": 168,
+			"hasLore": true,
+			"entries": [
+				{
+					"type": "pf2-h3",
+					"name": "Creating Ghouls",
+					"entries": [
+						"You can turn a living creature into a ghoul by completing the following steps. When creating a ghast, double these numerical adjustments. The monsters in this section are built from the ground up, so their numbers don't match these guidelines exactly. Custom-building ghouls is recommended if you have time, using the special abilities listed here but creating the other statistics to match what you want the ghoul to be.",
+						"First, increase the creature's level by 1 and change its statistics as follows.",
+						{
+							"type": "list",
+							"items": [
+								"Increase its AC, attack bonuses, DCs, saving throws, and skill modifiers by 1.",
+								"Increase its damage with Strikes and other offensive abilities by 1. If the creature is limited in how often it can use an ability (such as a breath weapon), increase the damage by 2 instead."
+							]
+						}
+					]
+				},
+				{
+					"type": "pf2-h4",
+					"name": "Ghoul Abilities",
+					"entries": [
+						"A ghoul gains the {@trait undead} and {@trait ghoul} traits, and it usually becomes evil. If the base creature has any abilities that come from it being a living creature, it loses them. It also loses any traits that represented its life as a living creature, such as human and humanoid. You might also need to adjust abilities that conflict with the theme of a ghoul. All ghouls gain the following abilities. The save DC for all abilities uses the DC of the ghoul's level (Core Rulebook 503)."
+					]
+				}
+			],
+			"abilities": [
+				{
+					"type": "ability",
+					"name": "Darkvision",
+					"entries": [
+						"A monster with darkvision can see perfectly well in areas of darkness and dim light, though such vision is in black and white only. Some forms of magical darkness, such as a 4th-level {@spell darkness|CRB} spell, block normal {@ability darkvision}. A monster with greater darkvision, however, can see through even these forms of magical darkness."
+					]
+				},
+				{
+					"type": "ability",
+					"name": "Negative Healing",
+					"entries": [
+						"A creature with negative healing draws health from negative energy rather than positive energy. It is damaged by positive damage and is not healed by positive healing effects. It does not take negative damage, and it is healed by negative effects that heal undead."
+					]
+				},
+				{
+					"type": "ability",
+					"name": "Immunities",
+					"entries": [
+						"{@trait death} effects, {@trait disease}, {@condition paralyzed}, {@trait poison}, precision, {@condition unconscious}"
+					]
+				},
+				{
+					"type": "ability",
+					"name": "Claws",
+					"entries": [
+						"If the creature had hands, it gains a claw {@action Strike} (an {@trait agile} {@group unarmed} attack that deals slashing damage plus paralysis). If it had any {@trait agile} attacks, the damage dealt by its claws should be roughly the same as the damage dealt by those attacks. If it had only non-agile attacks, its claws should deal three-quarters that damage."
+					]
+				},
+				{
+					"type": "ability",
+					"name": "Jaws",
+					"entries": [
+						"If the creature had a mouth, it gains a jaws {@action Strike} (an {@group unarmed} attack that deals slashing damage plus ghoul fever and paralysis). The damage amount should be the same as the creature's non-agile attacks."
+					]
+				},
+				{
+					"type": "ability",
+					"name": "Consume Flesh",
+					"traits": [
+						"manipulate"
+					],
+					"activity": {
+						"unit": "action",
+						"number": 1
+					},
+					"requirements": "The ghoul is adjacent to the corpse of a creature that died within the last hour.",
+					"entries": [
+						"The ghoul devours a chunk of the corpse and regains {@dice 1d6} Hit Points plus {@dice 1d6} for every 2 levels it has. It can regain Hit Points from any given corpse only once."
+					]
+				},
+				{
+					"type": "affliction",
+					"savingThrow": "Fortitude",
+					"stages": [
+						{
+							"stage": 1,
+							"entry": "carrier with no ill effect",
+							"duration": "1 day"
+						},
+						{
+							"stage": 2,
+							"entry": "{@damage 2d6} negative damage and regains half as many Hit Points from all healing",
+							"duration": "1 day"
+						},
+						{
+							"stage": 3,
+							"entry": "as stage 2",
+							"duration": "1 day"
+						},
+						{
+							"stage": 4,
+							"entry": "{@damage 2d6} negative damage and gains no benefit from healing",
+							"duration": "1 day"
+						},
+						{
+							"stage": 5,
+							"entry": "as stage 4",
+							"duration": "1 day"
+						},
+						{
+							"stage": 6,
+							"entry": "dead, and rises as a {@creature ghoul|b1} the next midnight"
+						}
+					],
+					"name": "Ghoul Fever"
+				},
+				{
+					"type": "ability",
+					"name": "Paralysis",
+					"traits": [
+						"incapacitation",
+						"occult",
+						"necromancy"
+					],
+					"entries": [
+						"Any living, non-elf creature hit by a ghoul's attack must succeed at a Fortitude save or become paralyzed. It can attempt a new save at the end of each of its turns, and the DC cumulatively decreases by 1 on each such save."
+					]
+				},
+				{
+					"type": "ability",
+					"name": "Swift Leap",
+					"activity": {
+						"unit": "action",
+						"number": 1
+					},
+					"traits": [
+						"move"
+					],
+					"entries": [
+						"The ghoul jumps up to half its Speed. This movement doesn't trigger reactions."
+					]
+				}
+			],
+			"optAbilities": {
+				"entries": [
+					{
+						"type": "pf2-h4",
+						"name": "Ghast Abilities",
+						"entries": [
+							"A ghast has all the abilities above, plus following additions."
+						]
+					}
+				],
+				"abilities": [
+					{
+						"type": "ability",
+						"name": "Stench",
+						"traits": [
+							"aura",
+							"olfactory"
+						],
+						"entries": [
+							"10 feet A creature entering the aura or starting its turn in the aura must succeed at a Fortitude save (use a {@table DCs by Level||DC based on the monster's level}) or become {@condition sickened 1} (plus {@condition slowed 1} as long as it's {@condition sickened} on a critical failure). While within the aura, the creature takes a \u20132 circumstance penalty to saves against disease and to recover from the sickened condition. A creature that succeeds at its save is temporarily immune for 1 minute."
+						]
+					},
+					{
+						"type": "ability",
+						"name": "Claws and Jaws",
+						"entries": [
+							"As ghoul, but apply ghast fever instead of ghoul fever."
+						]
+					},
+					{
+						"type": "ability",
+						"name": "Consume Flesh",
+						"activity": {
+							"unit": "action",
+							"number": 1
+						},
+						"entries": [
+							"As ghoul, but it regains {@dice 1d6} additional Hit Points."
+						]
+					},
+					{
+						"type": "affliction",
+						"savingThrow": "Fortitude",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "carrier with no ill effect",
+								"duration": "1 day"
+							},
+							{
+								"stage": 2,
+								"entry": "{@damage 3d8} negative damage and regains half as many Hit Points from all healing",
+								"duration": "1 day"
+							},
+							{
+								"stage": 3,
+								"entry": "as stage 2",
+								"duration": "1 day"
+							},
+							{
+								"stage": 4,
+								"entry": "{@damage 3d8} negative damage and gains no benefit from healing",
+								"duration": "1 day"
+							},
+							{
+								"stage": 5,
+								"entry": "as stage 4",
+								"duration": "1 day"
+							},
+							{
+								"stage": 6,
+								"entry": "dead, and rises as a {@creature ghast|b1} the next midnight"
+							}
+						],
+						"name": "Ghast Fever"
+					},
+					{
+						"type": "ability",
+						"name": "Paralysis",
+						"traits": [
+							"incapacitation",
+							"occult",
+							"necromancy"
+						],
+						"entries": [
+							"As ghoul, but elves are not immune."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Herexen",
+			"source": "B3",
+			"page": 134,
+			"hasLore": true,
+			"entries": [
+				{
+					"type": "pf2-h3",
+					"name": "Building Herexens",
+					"entries": [
+						"The herexen presented in the stat block below was originally a cleric of Pharasma, but there are as many kinds of herexens as there are deities. To create a herexen of a different deity, do the following.",
+						{
+							"type": "list",
+							"items": [
+								"Swap out the herexen's weapon for the deity's favored weapon. If the weapon is simple, increase the damage die by one step; if it's two-handed, decrease the herexen's attack bonus with that weapon by 2.",
+								"Swap out the herexen's domain spell for a 1st-level focus spell from a domain associated with that deity.",
+								"Swap the defiled religious symbol for the correct deity. For example, an ex-{@deity Sarenrae||Sarenite} herexen carries a {@item scimitar} and a defiled {@item religious symbol} of Sarenrae, and can cast {@spell fire ray} (attack +12) as a focus spell."
+							]
+						}
+					]
+				},
+				{
+					"type": "pf2-h4",
+					"name": "Greater Herexens",
+					"entries": [
+						"More powerful clerics, or herexens that have existed over long spans of time, might become a more powerful variant known as a greater herexen. An 8th-level creature, it casts {@spell harm} as a 4th-level spell, it gains a second Focus Point and a 4th-level domain spell in addition to its 1st-level domain spell, and the bonus damage from heretic's smite increases to {@damage 2d6}."
+					]
+				}
+			]
 		}
 	]
 }
