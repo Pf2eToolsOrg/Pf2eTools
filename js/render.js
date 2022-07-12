@@ -5445,10 +5445,11 @@ Renderer.creatureTemplate = {
 	},
 
 	getAbilities (it) {
-		if (!it.abilities || it.abilities.length === 0) return "";
+		if (!it.abilities || Object.keys(it.abilities).length === 0) return "";
 		const textStack = [""];
 		const renderer = Renderer.get().setFirstSection(true);
-		textStack.push(`${it.abilities.map(x => renderer.render(x)).join("")}`)
+		textStack.push(Renderer.generic.getRenderedEntries(it.abilities))
+		if (it.abilities.abilities || !Object.keys(it.abilities.abilities).length === 0) textStack.push(`${it.abilities.abilities.map(x => renderer.render(x)).join("")}`)
 		return renderer.render(textStack.join(""));
 	},
 
@@ -5457,7 +5458,7 @@ Renderer.creatureTemplate = {
 		const textStack = [""];
 		const renderer = Renderer.get().setFirstSection(true);
 		textStack.push(Renderer.generic.getRenderedEntries(it.optAbilities))
-		textStack.push(`${it.optAbilities.abilities.map(x => renderer.render(x)).join("")}`)
+		if (it.optAbilities.abilities || !Object.keys(it.optAbilities.abilities).length === 0) textStack.push(`${it.optAbilities.abilities.map(x => renderer.render(x)).join("")}`)
 		return renderer.render(textStack.join(""));
 	},
 
@@ -5723,7 +5724,7 @@ Renderer.spell = {
 		};
 		if (sp.heightened.plusX != null) {
 			Object.entries(sp.heightened.plusX).forEach(([x, entries]) => {
-				renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Heightened (+${Parser.getOrdinalForm(x)})&nbsp;</strong>`);
+				renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Heightened (+${x})&nbsp;</strong>`);
 				renderArray(entries);
 				renderStack.push(`</p>`);
 			});
