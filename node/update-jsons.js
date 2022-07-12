@@ -10,11 +10,10 @@ function updateFolder (folder) {
 	files
 		.filter(file => file.endsWith(".json"))
 		.forEach(file => {
-			console.log(`\tUpdating ${file}...`);
 			let json = ut.readJson(file)
 			// For targeted schema changes, like changing a name of an object key
 			if (json.item) {
-				console.log(`\tUpdating item variants in ${file}`)
+				console.log(`\tUpdating item variants in ${file}...`)
 				json.item = json.item.map(x => {
 					if (x.variants) {
 						x.variants.map(v => {
@@ -27,9 +26,23 @@ function updateFolder (folder) {
 					return x
 				})
 			}
+			if (json.spell) {
+				console.log(`\tUpdating spell heightening in ${file}...`)
+				json.spell = json.spell.map(x => {
+					if (x.heightened && x.heightened.X && Array.isArray(x.heightened.X)) {
+						let heightenedOld = x.heightened.X
+						x.heightened.X = {}
+						heightenedOld.forEach(v => {
+							x.heightened.X = {...x.heightened.X, [v.level]: v.entries}
+						})
+					}
+					return x
+				})
+			}
+			console.log(`\tCleaning ${file}...`);
 			fs.writeFileSync(file, CleanUtil.getCleanJson(json), "utf-8");
 		})
 }
 
-cleanFolder(`./updateFolder`);
+updateFolder(`./data`);
 console.log("Updating complete.");

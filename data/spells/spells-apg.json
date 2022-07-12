@@ -276,22 +276,19 @@
 				}
 			],
 			"heightened": {
-				"X": [
-					{
-						"level": 4,
-						"entries": [
-							"Add the following options to the list you can choose from.",
-							{
-								"type": "list",
-								"items": [
-									"{@b Fish Tail} You gain a swim Speed equal to your land Speed.",
-									"{@b Owl Eyes} You gain {@ability darkvision}.",
-									"{@b Wings} You gain a fly Speed equal to your land Speed."
-								]
-							}
-						]
-					}
-				]
+				"X": {
+					"4": [
+						"Add the following options to the list you can choose from.",
+						{
+							"type": "list",
+							"items": [
+								"{@b Fish Tail} You gain a swim Speed equal to your land Speed.",
+								"{@b Owl Eyes} You gain {@ability darkvision}.",
+								"{@b Wings} You gain a fly Speed equal to your land Speed."
+							]
+						}
+					]
+				}
 			}
 		},
 		{
@@ -335,62 +332,35 @@
 				"Your magic dredges up a corpse or skeleton and fills it with necromantic life, and you force the dead to fight at your command. You summon a common creature that has the {@trait undead} trait and whose level is {@filter \u20131|bestiary||Level=[-1;-1]|Rarity=Common|Creature Type=Undead}; this creature gains the {@trait summoned} trait. Heightening the spell increases the maximum level of creature you can summon."
 			],
 			"heightened": {
-				"X": [
-					{
-						"level": 2,
-						"entries": [
-							"{@filter Level 1|bestiary||Level=[-1;1]|Rarity=Common|Creature Type=Undead}."
-						]
-					},
-					{
-						"level": 3,
-						"entries": [
-							"{@filter Level 2|bestiary||Level=[-1;2]|Rarity=Common|Creature Type=Undead}."
-						]
-					},
-					{
-						"level": 4,
-						"entries": [
-							"{@filter Level 3|bestiary||Level=[-1;3]|Rarity=Common|Creature Type=Undead}."
-						]
-					},
-					{
-						"level": 5,
-						"entries": [
-							"{@filter Level 5|bestiary||Level=[-1;5]|Rarity=Common|Creature Type=Undead}."
-						]
-					},
-					{
-						"level": 6,
-						"entries": [
-							"{@filter Level 7|bestiary||Level=[-1;7]|Rarity=Common|Creature Type=Undead}."
-						]
-					},
-					{
-						"level": 7,
-						"entries": [
-							"{@filter Level 9|bestiary||Level=[-1;9]|Rarity=Common|Creature Type=Undead}."
-						]
-					},
-					{
-						"level": 8,
-						"entries": [
-							"{@filter Level 11.|bestiary||Level=[-1;11]|Rarity=Common|Creature Type=Undead}"
-						]
-					},
-					{
-						"level": 9,
-						"entries": [
-							"{@filter Level 13.|bestiary||Level=[-1;13]|Rarity=Common|Creature Type=Undead}"
-						]
-					},
-					{
-						"level": 10,
-						"entries": [
-							"{@filter Level 15.|bestiary||Level=[-1;15]|Rarity=Common|Creature Type=Undead}"
-						]
-					}
-				]
+				"X": {
+					"2": [
+						"{@filter Level 1|bestiary||Level=[-1;1]|Rarity=Common|Creature Type=Undead}."
+					],
+					"3": [
+						"{@filter Level 2|bestiary||Level=[-1;2]|Rarity=Common|Creature Type=Undead}."
+					],
+					"4": [
+						"{@filter Level 3|bestiary||Level=[-1;3]|Rarity=Common|Creature Type=Undead}."
+					],
+					"5": [
+						"{@filter Level 5|bestiary||Level=[-1;5]|Rarity=Common|Creature Type=Undead}."
+					],
+					"6": [
+						"{@filter Level 7|bestiary||Level=[-1;7]|Rarity=Common|Creature Type=Undead}."
+					],
+					"7": [
+						"{@filter Level 9|bestiary||Level=[-1;9]|Rarity=Common|Creature Type=Undead}."
+					],
+					"8": [
+						"{@filter Level 11.|bestiary||Level=[-1;11]|Rarity=Common|Creature Type=Undead}"
+					],
+					"9": [
+						"{@filter Level 13.|bestiary||Level=[-1;13]|Rarity=Common|Creature Type=Undead}"
+					],
+					"10": [
+						"{@filter Level 15.|bestiary||Level=[-1;15]|Rarity=Common|Creature Type=Undead}"
+					]
+				}
 			},
 			"miscTags": [
 				"SM"
@@ -678,20 +648,14 @@
 				"For the duration of the trance, your own senses are muted, though you can still communicate. This lack of awareness makes you {@condition flat-footed}. You can't take actions with the {@trait attack} or {@trait move} traits."
 			],
 			"heightened": {
-				"X": [
-					{
-						"level": 6,
-						"entries": [
-							"Increase the range to 100 miles and the duration to sustained up to 10 minutes. The target can hear you through the spell, allowing you to Command the Animal or use other actions that have the {@trait auditory} trait."
-						]
-					},
-					{
-						"level": 8,
-						"entries": [
-							"Increase the range to planetary and the duration to sustained up to 1 hour. You can communicate telepathically with the target for the duration of the trance."
-						]
-					}
-				]
+				"X": {
+					"6": [
+						"Increase the range to 100 miles and the duration to sustained up to 10 minutes. The target can hear you through the spell, allowing you to Command the Animal or use other actions that have the {@trait auditory} trait."
+					],
+					"8": [
+						"Increase the range to planetary and the duration to sustained up to 1 hour. You can communicate telepathically with the target for the duration of the trance."
+					]
+				}
 			}
 		},
 		{
@@ -1129,14 +1093,11 @@
 				"You consolidate warding energies with a gesture, guarding a creature against attacks from a certain type of foe. Designate one of the following creature traits: aberration, animal, beast, celestial, construct, dragon, elemental, fey, fiend, fungus, monitor, ooze, plant, or undead. The target gains a +1 status bonus to its saving throws and AC against creatures with that trait. The target is temporarily immune for 10 minutes."
 			],
 			"heightened": {
-				"X": [
-					{
-						"level": 5,
-						"entries": [
-							"The status bonus increases to +2."
-						]
-					}
-				]
+				"X": {
+					"5": [
+						"The status bonus increases to +2."
+					]
+				}
 			}
 		},
 		{
@@ -1262,20 +1223,14 @@
 				"Each ally in the area gains a +2 status bonus to their initiative roll and gains temporary Hit Points equal to the spell's level; these temporary Hit Points last for the spell's duration."
 			],
 			"heightened": {
-				"X": [
-					{
-						"level": 6,
-						"entries": [
-							"The bonus increases to +3."
-						]
-					},
-					{
-						"level": 9,
-						"entries": [
-							"The bonus increases to +4."
-						]
-					}
-				]
+				"X": {
+					"6": [
+						"The bonus increases to +3."
+					],
+					"9": [
+						"The bonus increases to +4."
+					]
+				}
 			},
 			"miscTags": [
 				"THP"
@@ -1320,20 +1275,14 @@
 				"You shift the colors of the targets' outermost layer of clothing and gear to be closer to their environment when they remain still. Creatures affected by the spell gain a +3 status bonus to {@skill Stealth} checks to {@action Hide}. The changed color granted by the spell always shifts to match the environment, even if there are drastic changes. If any piece of gear or clothing affected by the spell is removed from a creature, the spell ends for that creature."
 			],
 			"heightened": {
-				"X": [
-					{
-						"level": 6,
-						"entries": [
-							"If a creature affected by this spell rolls a critical failure on its {@skill Stealth} check to {@action Sneak} within 30 feet of a creature that would spot it, it instead only fails its check, as the spell mildly hypnotizes the spotter."
-						]
-					},
-					{
-						"level": 8,
-						"entries": [
-							"As 6th level, and the status bonus is +4."
-						]
-					}
-				]
+				"X": {
+					"6": [
+						"If a creature affected by this spell rolls a critical failure on its {@skill Stealth} check to {@action Sneak} within 30 feet of a creature that would spot it, it instead only fails its check, as the spell mildly hypnotizes the spotter."
+					],
+					"8": [
+						"As 6th level, and the status bonus is +4."
+					]
+				}
 			}
 		},
 		{
@@ -2082,14 +2031,11 @@
 				"You wrap yourself in a cloak of illusion, appearing as another creature of the same body shape with roughly similar height and weight as yourself. This has the effects of a 3rd-level {@spell illusory disguise}."
 			],
 			"heightened": {
-				"X": [
-					{
-						"level": 6,
-						"entries": [
-							"You can appear as any creature of the same size, even with a completely different body shape."
-						]
-					}
-				]
+				"X": {
+					"6": [
+						"You can appear as any creature of the same size, even with a completely different body shape."
+					]
+				}
 			}
 		},
 		{
@@ -2215,14 +2161,11 @@
 				"When you {@action Cast a Spell||Cast the Spell}, the target can {@action Recall Knowledge}, {@action Seek}, or {@action Sense Motive}. The target gains a +1 status bonus to the skill or {@skill Perception} used for the roll, and this bonus remains as long as you {@action Sustain a Spell||Sustain the Spell}. The target is temporarily immune to discern secrets for 1 minute."
 			],
 			"heightened": {
-				"X": [
-					{
-						"level": 5,
-						"entries": [
-							"You can target two creatures instead of one."
-						]
-					}
-				]
+				"X": {
+					"5": [
+						"You can target two creatures instead of one."
+					]
+				}
 			}
 		},
 		{
@@ -2266,20 +2209,14 @@
 				"When the spell ends, the object reassembles itself into its original form, appearing in your hand or hands if you have them free, or on the ground in front of you otherwise. Once reassembled, the object loses the {@condition broken} condition and its Hit Points return to the value the object had when you {@action Cast a Spell||Cast the Spell}."
 			],
 			"heightened": {
-				"X": [
-					{
-						"level": 4,
-						"entries": [
-							"The spell lasts for 10 minutes."
-						]
-					},
-					{
-						"level": 6,
-						"entries": [
-							"The spell lasts until your next daily preparations."
-						]
-					}
-				]
+				"X": {
+					"4": [
+						"The spell lasts for 10 minutes."
+					],
+					"6": [
+						"The spell lasts until your next daily preparations."
+					]
+				}
 			}
 		},
 		{
@@ -2867,14 +2804,11 @@
 				"You call upon an endless barrage of flames, producing miniature fireballs in your hands to hurl at foes. You cast {@spell produce flame} as part of casting flaming fusillade. For the duration of flaming fusillade, produce flame's casting time is reduced from 2 actions to 1."
 			],
 			"heightened": {
-				"X": [
-					{
-						"level": 9,
-						"entries": [
-							"For the duration, you also gain a status bonus to the damage dealt by produce flame equal to flaming fusillade's spell level."
-						]
-					}
-				]
+				"X": {
+					"9": [
+						"For the duration, you also gain a status bonus to the damage dealt by produce flame equal to flaming fusillade's spell level."
+					]
+				}
 			}
 		},
 		{
@@ -3854,20 +3788,14 @@
 				"You make the object {@condition invisible}. This makes it {@condition undetected} to all creatures, though the creatures can attempt to find the target, making it {@condition hidden} to them instead if they succeed. If the item is used as part of a {@condition hostile} action, the spell ends after that {@condition hostile} action is completed. Making a weapon {@condition invisible} typically doesn't give any advantage to the attack, except that an {@condition invisible} thrown weapon or piece of ammunition can be used for an attack without necessarily giving information about the attacker's hiding place unless the weapon returns to the attacker."
 			],
 			"heightened": {
-				"X": [
-					{
-						"level": 3,
-						"entries": [
-							"The duration is until the next time you make your daily preparations."
-						]
-					},
-					{
-						"level": 7,
-						"entries": [
-							"The duration is unlimited."
-						]
-					}
-				]
+				"X": {
+					"3": [
+						"The duration is until the next time you make your daily preparations."
+					],
+					"7": [
+						"The duration is unlimited."
+					]
+				}
 			}
 		},
 		{
@@ -3989,26 +3917,17 @@
 				"The spell ends immediately if you fall {@condition unconscious}. You can {@action Dismiss} the spell."
 			],
 			"heightened": {
-				"X": [
-					{
-						"level": 3,
-						"entries": [
-							"You can target 2 creatures other than you. Increase the initial healing to {@dice 3d4} and the maximum damage reduced and Hit Points lost to 5."
-						]
-					},
-					{
-						"level": 6,
-						"entries": [
-							"You can target 3 creatures other than you. Increase the initial healing to {@dice 6d4} and the maximum damage reduced and Hit Points lost to 10."
-						]
-					},
-					{
-						"level": 9,
-						"entries": [
-							"You can target 4 creatures other than you. Increase the initial healing to {@dice 9d4} and the maximum damage reduced and Hit Points lost to 15."
-						]
-					}
-				]
+				"X": {
+					"3": [
+						"You can target 2 creatures other than you. Increase the initial healing to {@dice 3d4} and the maximum damage reduced and Hit Points lost to 5."
+					],
+					"6": [
+						"You can target 3 creatures other than you. Increase the initial healing to {@dice 6d4} and the maximum damage reduced and Hit Points lost to 10."
+					],
+					"9": [
+						"You can target 4 creatures other than you. Increase the initial healing to {@dice 9d4} and the maximum damage reduced and Hit Points lost to 15."
+					]
+				}
 			}
 		},
 		{
@@ -4218,14 +4137,11 @@
 				}
 			],
 			"heightened": {
-				"X": [
-					{
-						"level": 8,
-						"entries": [
-							"The status bonus increases to +3."
-						]
-					}
-				]
+				"X": {
+					"8": [
+						"The status bonus increases to +3."
+					]
+				}
 			}
 		},
 		{
@@ -4704,14 +4620,11 @@
 				"You grant an ally a token of favor. You create a token, such as a lock of your hair or a flower, that persists for the spell's duration; as part of {@action Cast a Spell||Casting the Spell}, you can {@action Interact} to pass the token to an ally within your reach. As long as the ally has the token on their person, they gain a +1 status bonus to {@skill Performance} checks and Will saves. You can {@action Dismiss} the spell as a free action."
 			],
 			"heightened": {
-				"X": [
-					{
-						"level": 4,
-						"entries": [
-							"As long as the ally has the token on their person, you can cast spells that have a range of touch on them at a range of 30 feet."
-						]
-					}
-				]
+				"X": {
+					"4": [
+						"As long as the ally has the token on their person, you can cast spells that have a range of touch on them at a range of 30 feet."
+					]
+				}
 			}
 		},
 		{
@@ -4744,38 +4657,23 @@
 				"You place a hand on an object to learn a piece of information about an emotional event that occurred involving the object within the past week, determined by the GM. If you cast {@spell object reading|APG} on the same item multiple times, you can either concentrate on a single event to gain additional pieces of information about that event, or gain a piece of information about another emotional event in the applicable time frame."
 			],
 			"heightened": {
-				"X": [
-					{
-						"level": 2,
-						"entries": [
-							"You can learn about an event that occurred within the last month."
-						]
-					},
-					{
-						"level": 4,
-						"entries": [
-							"You can learn about an event that occurred within the last year."
-						]
-					},
-					{
-						"level": 6,
-						"entries": [
-							"You can learn about an event that occurred within the last decade."
-						]
-					},
-					{
-						"level": 8,
-						"entries": [
-							"You can learn about an event that occurred within the last century."
-						]
-					},
-					{
-						"level": 9,
-						"entries": [
-							"You can learn about an event that occurred within the entirety of the object's history."
-						]
-					}
-				]
+				"X": {
+					"2": [
+						"You can learn about an event that occurred within the last month."
+					],
+					"4": [
+						"You can learn about an event that occurred within the last year."
+					],
+					"6": [
+						"You can learn about an event that occurred within the last decade."
+					],
+					"8": [
+						"You can learn about an event that occurred within the last century."
+					],
+					"9": [
+						"You can learn about an event that occurred within the entirety of the object's history."
+					]
+				}
 			}
 		},
 		{
@@ -5403,20 +5301,14 @@
 				"Safe passage protects only against harm, not inconvenience, and it doesn't reduce {@quickref difficult terrain||3|terrain}, remove the {@condition concealed} condition caused by precipitation, or the like, nor does it protect against creatures within the spell's area."
 			],
 			"heightened": {
-				"X": [
-					{
-						"level": 5,
-						"entries": [
-							"The granted resistance increases to 10, and the area can be 120 feet long."
-						]
-					},
-					{
-						"level": 8,
-						"entries": [
-							"The granted resistance increases to 15, and the area can be 500 feet long."
-						]
-					}
-				]
+				"X": {
+					"5": [
+						"The granted resistance increases to 10, and the area can be 120 feet long."
+					],
+					"8": [
+						"The granted resistance increases to 15, and the area can be 500 feet long."
+					]
+				}
 			}
 		},
 		{
@@ -5509,14 +5401,11 @@
 				}
 			],
 			"heightened": {
-				"X": [
-					{
-						"level": 5,
-						"entries": [
-							"You can target up to 6 creatures or 6 objects, altering the sounds of all affected creatures or objects in the same way."
-						]
-					}
-				]
+				"X": {
+					"5": [
+						"You can target up to 6 creatures or 6 objects, altering the sounds of all affected creatures or objects in the same way."
+					]
+				}
 			}
 		},
 		{
@@ -5753,14 +5642,11 @@
 				"Teleport yourself and any items you're wearing and holding from your current space to a clear space you can see that's in dim light or darkness and within range. You can transport your familiar with this spell, but if shadow jump would bring any other creature with you\u2014even if you're carrying the creature in an extradimensional container\u2014the spell is disrupted."
 			],
 			"heightened": {
-				"X": [
-					{
-						"level": 8,
-						"entries": [
-							"When you arrive at your destination, you can become {@condition invisible} until the end of your next turn or until you are no longer in an area of dim light or darkness, whichever comes first. The invisibility is an {@trait illusion} effect."
-						]
-					}
-				]
+				"X": {
+					"8": [
+						"When you arrive at your destination, you can become {@condition invisible} until the end of your next turn or until you are no longer in an area of dim light or darkness, whichever comes first. The invisibility is an {@trait illusion} effect."
+					]
+				}
 			}
 		},
 		{
@@ -5996,20 +5882,14 @@
 				"You maintain a brisk performance that keeps allies on the move. You and your allies in the area can {@action Hustle} for the spell's duration, even though you are also {@action Sustain a Spell||Sustaining the Spell}. You and your allies then become temporarily immune for 1 day."
 			],
 			"heightened": {
-				"X": [
-					{
-						"level": 6,
-						"entries": [
-							"You can {@action Sustain a Spell||Sustain the Spell} for up to 2 hours."
-						]
-					},
-					{
-						"level": 9,
-						"entries": [
-							"You can {@action Sustain a Spell||Sustain the Spell} for up to 4 hours."
-						]
-					}
-				]
+				"X": {
+					"6": [
+						"You can {@action Sustain a Spell||Sustain the Spell} for up to 2 hours."
+					],
+					"9": [
+						"You can {@action Sustain a Spell||Sustain the Spell} for up to 4 hours."
+					]
+				}
 			}
 		},
 		{
@@ -6252,14 +6132,11 @@
 				"You open your mind to the metaphysical, enabling you to sense nearby spirits. Even if you aren't {@action Search||Searching}, you get a check to find haunts and spirits in the area. You gain a +1 status bonus to the following checks regarding haunts or spirits: {@skill Perception} checks to {@action Seek}, attempts to {@action Recall Knowledge}, skill checks to determine the reason for their existence, and skill checks to disable a haunt. You also gain a +1 status bonus to AC and saving throws against haunts and spirits."
 			],
 			"heightened": {
-				"X": [
-					{
-						"level": 6,
-						"entries": [
-							"The spell's duration lasts until the next time you make your daily preparations."
-						]
-					}
-				]
+				"X": {
+					"6": [
+						"The spell's duration lasts until the next time you make your daily preparations."
+					]
+				}
 			}
 		},
 		{
@@ -6631,14 +6508,11 @@
 				"The instrument is typical for its type, but it plays only for you. The instrument vanishes when the spell ends. If you cast {@spell summon instrument|APG} again, any instrument you previously summoned disappears."
 			],
 			"heightened": {
-				"X": [
-					{
-						"level": 5,
-						"entries": [
-							"The instrument is instead a virtuoso handheld instrument."
-						]
-					}
-				]
+				"X": {
+					"5": [
+						"The instrument is instead a virtuoso handheld instrument."
+					]
+				}
 			}
 		},
 		{
@@ -6673,14 +6547,11 @@
 				"Attempt a {@skill Performance} check to counteract one of the following conditions affecting the target: {@condition grabbed}, {@condition immobilized}, {@condition paralyzed}, {@condition restrained}, {@condition slowed}, or {@condition stunned}. If you fail, you can't target that effect on the target for 1 day. Use the condition's source to determine the counteract DC (for example, the {@action Escape} DC for {@condition grabbed})."
 			],
 			"heightened": {
-				"X": [
-					{
-						"level": 9,
-						"entries": [
-							"You can target up to four creatures."
-						]
-					}
-				]
+				"X": {
+					"9": [
+						"You can target up to four creatures."
+					]
+				}
 			}
 		},
 		{
@@ -6865,20 +6736,14 @@
 				"If the target is {@condition unconscious} or refuses to accept your gift, or if the spell would teleport a creature (even if the creature is inside an extradimensional container), the spell fails."
 			],
 			"heightened": {
-				"X": [
-					{
-						"level": 3,
-						"entries": [
-							"The spell's range increases to 500 feet."
-						]
-					},
-					{
-						"level": 5,
-						"entries": [
-							"As 3rd level, and the object's maximum Bulk increases to 1. You can {@action Cast a Spell||Cast the Spell} with 3 actions instead of 1; doing so increases the range to 1 mile and you don't need line of sight to the target, but you must be extremely familiar with the target."
-						]
-					}
-				]
+				"X": {
+					"3": [
+						"The spell's range increases to 500 feet."
+					],
+					"5": [
+						"As 3rd level, and the object's maximum Bulk increases to 1. You can {@action Cast a Spell||Cast the Spell} with 3 actions instead of 1; doing so increases the range to 1 mile and you don't need line of sight to the target, but you must be extremely familiar with the target."
+					]
+				}
 			}
 		},
 		{
