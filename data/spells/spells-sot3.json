@@ -4,7 +4,6 @@
 			"name": "Blackfingers's Blades",
 			"source": "SoT3",
 			"page": 78,
-			"type": "Spell",
 			"level": 5,
 			"traits": [
 				"uncommon",
@@ -12,8 +11,8 @@
 				"transmutation"
 			],
 			"traditions": [
-				"Divine",
-				"Primal"
+				"divine",
+				"primal"
 			],
 			"cast": {
 				"number": 2,
@@ -26,11 +25,10 @@
 				]
 			],
 			"range": {
-				"unit": "touch"
+				"type": "touch"
 			},
 			"targets": "up to 4 weapons, each wielded by a separate willing creature within range",
 			"duration": {
-				"unit": "unknown",
 				"entry": "up to 1 minute"
 			},
 			"entries": [
@@ -41,15 +39,14 @@
 			"name": "Clawsong",
 			"source": "SoT3",
 			"page": 77,
-			"type": "Spell",
 			"level": 2,
 			"traits": [
 				"uncommon",
 				"transmutation"
 			],
 			"traditions": [
-				"Divine",
-				"Primal"
+				"divine",
+				"primal"
 			],
 			"cast": {
 				"number": 2,
@@ -61,14 +58,16 @@
 				]
 			],
 			"range": {
-				"unit": "feet",
+				"type": "feet",
 				"number": 30
 			},
 			"targets": "1 willing creature with an unarmed claw {@action Strike}",
 			"duration": {
-				"sustained": true,
-				"number": 1,
-				"unit": "minute"
+				"sustain": true,
+				"duration": {
+					"number": 1,
+					"unit": "minute"
+				}
 			},
 			"entries": [
 				"You sing a fierce prayer, low and growling, and awaken the ancient spirit of a Terwa beast to guide and strengthen the target's unarmed blows. The target's claw attack gains the versatile (piercing) trait, and deals {@damage 1d6} slashing damage. If the target's claw attack already deals {@damage 1d6} slashing damage, it deals {@dice 1d8} instead. If its claw attack already had the versatile (piercing) trait, it gains the deadly {@dice 1d8} trait."
@@ -85,7 +84,6 @@
 			"name": "Gasping Marsh",
 			"source": "SoT3",
 			"page": 77,
-			"type": "Spell",
 			"level": 3,
 			"traits": [
 				"uncommon",
@@ -93,8 +91,8 @@
 				"poison"
 			],
 			"traditions": [
-				"Arcane",
-				"Primal"
+				"arcane",
+				"primal"
 			],
 			"cast": {
 				"number": 2,
@@ -107,7 +105,7 @@
 				]
 			],
 			"range": {
-				"unit": "feet",
+				"type": "feet",
 				"number": 30
 			},
 			"area": {
@@ -123,9 +121,11 @@
 				"basic": true
 			},
 			"duration": {
-				"sustained": true,
-				"number": 1,
-				"unit": "minute"
+				"sustain": true,
+				"duration": {
+					"number": 1,
+					"unit": "minute"
+				}
 			},
 			"entries": [
 				"With a rattling hiss, you create a quickly evaporating mist of {@condition invisible} poisonous marsh gas to smother creatures in the area. When you Sustain the Spell, the mist dissipates completely from the previous area, and you can select a new area within range to fill with the mist. If you don't Sustain the Spell, the mist dissipates and the spell ends. You deal {@damage 4d6} poison damage to each breathing creature that starts its turn in the area. Each affected creature must attempt a Fortitude save. The creature is then temporarily immune to gasping marsh for 1 minute.",
@@ -152,7 +152,6 @@
 			"name": "Girzanje's March",
 			"source": "SoT3",
 			"page": 77,
-			"type": "Spell",
 			"level": 4,
 			"traits": [
 				"uncommon",
@@ -162,8 +161,8 @@
 				"mental"
 			],
 			"traditions": [
-				"Divine",
-				"Occult"
+				"divine",
+				"occult"
 			],
 			"cast": {
 				"number": 2,
@@ -181,9 +180,11 @@
 				]
 			},
 			"duration": {
-				"sustained": true,
-				"number": 1,
-				"unit": "minute"
+				"sustain": true,
+				"duration": {
+					"number": 1,
+					"unit": "minute"
+				}
 			},
 			"entries": [
 				"You sing a prayer for war, inspiring valor in allies who hear your song. Allied creatures who can hear and understand you gain a +1 status bonus to attack rolls, Fortitude saves, and Will saves against {@trait mental} effects."
@@ -203,7 +204,6 @@
 			"name": "Gray Shadow",
 			"source": "SoT3",
 			"page": 78,
-			"type": "Spell",
 			"level": 6,
 			"traits": [
 				"uncommon",
@@ -211,7 +211,7 @@
 				"shadow"
 			],
 			"traditions": [
-				"Divine"
+				"divine"
 			],
 			"cast": {
 				"number": 3,
@@ -224,13 +224,15 @@
 				]
 			],
 			"range": {
-				"unit": "feet",
+				"type": "feet",
 				"number": 30
 			},
 			"targets": "1 {@condition dying} creature",
 			"duration": {
-				"sustained": true,
-				"unit": "unlimited"
+				"sustain": true,
+				"duration": {
+					"unit": "unlimited"
+				}
 			},
 			"entries": [
 				"You pray over a {@condition dying} creature, drawing its shadow into your service as long as its owner is stooped at death's door. You summon a greater shadow in a space adjacent to the {@condition dying} creature. The greater shadow has its usual stats (Pathfinder Bestiary 289), with the following modifications:",
@@ -247,7 +249,6 @@
 			"name": "Mirecloak",
 			"source": "SoT3",
 			"page": 78,
-			"type": "Spell",
 			"level": 5,
 			"traits": [
 				"uncommon",
@@ -255,8 +256,8 @@
 				"mental"
 			],
 			"traditions": [
-				"Divine",
-				"Occult"
+				"divine",
+				"occult"
 			],
 			"cast": {
 				"number": 2,
@@ -269,7 +270,7 @@
 				]
 			],
 			"range": {
-				"unit": "feet",
+				"type": "feet",
 				"number": 30
 			},
 			"targets": "up to 4 creatures",
@@ -279,7 +280,6 @@
 				]
 			},
 			"duration": {
-				"unit": "unknown",
 				"entry": "up to 1 minute"
 			},
 			"entries": [
@@ -309,7 +309,6 @@
 			"name": "Stormburst",
 			"source": "SoT3",
 			"page": 77,
-			"type": "Spell",
 			"level": 5,
 			"traits": [
 				"uncommon",
@@ -317,7 +316,7 @@
 				"evocation"
 			],
 			"traditions": [
-				"Primal"
+				"primal"
 			],
 			"cast": {
 				"number": 2,
@@ -330,7 +329,7 @@
 				]
 			],
 			"range": {
-				"unit": "feet",
+				"type": "feet",
 				"number": 60
 			},
 			"area": {
@@ -379,7 +378,6 @@
 			"name": "Swampcall",
 			"source": "SoT3",
 			"page": 77,
-			"type": "Spell",
 			"level": 1,
 			"traits": [
 				"uncommon",
@@ -387,7 +385,7 @@
 				"transmutation"
 			],
 			"traditions": [
-				"Primal"
+				"primal"
 			],
 			"cast": {
 				"number": 2,
@@ -400,7 +398,7 @@
 				]
 			],
 			"range": {
-				"unit": "feet",
+				"type": "feet",
 				"number": 30
 			},
 			"area": {
@@ -410,8 +408,10 @@
 				]
 			},
 			"duration": {
-				"number": 1,
-				"unit": "minute"
+				"duration": {
+					"number": 1,
+					"unit": "minute"
+				}
 			},
 			"entries": [
 				"You call upon the spirits of the soil to twist and churn, transforming the terrain in the targeted area into a sodden mess. The area becomes difficult terrain. Creatures in the area when you Cast this Spell must attempt a Reflex saving throw.",
