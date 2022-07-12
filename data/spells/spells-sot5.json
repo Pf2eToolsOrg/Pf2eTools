@@ -4,16 +4,15 @@
 			"name": "Return to Essence",
 			"source": "SoT5",
 			"page": 77,
-			"type": "Spell",
 			"level": 7,
 			"traits": [
 				"rare",
 				"abjuration"
 			],
 			"traditions": [
-				"Arcane",
-				"Divine",
-				"Occult"
+				"arcane",
+				"divine",
+				"occult"
 			],
 			"cast": {
 				"number": 2,
@@ -26,37 +25,21 @@
 				]
 			],
 			"range": {
-				"unit": "feet",
+				"type": "feet",
 				"number": 120
 			},
 			"targets": "one magically sealed or warded doorway or chest",
 			"entries": [
-				"You unravel the magic of a spell that affects a container, door, or lock, converting it into energy you can repurpose to power your own spells. Attempt a counteract check (Core Rulebook 458) against the target spell or {@trait magical} effect that wards or seals a doorway or chest, such as lock, or against a spell or effect that deals damage or delivers secondary effects when it's opened, such as glyph of warding. If you succeed, you recover its energy, restoring one of your expended spell slots of 3rd level or lower.",
-				{
-					"type": "lvlEffect",
-					"entries": [
-						{
-							"range": "4th",
-							"entry": [
-								"level or lower."
-							]
-						}
-					]
-				},
-				{
-					"type": "lvlEffect",
-					"entries": [
-						{
-							"range": "5th",
-							"entry": [
-								"level or lower."
-							]
-						}
-					]
-				}
+				"You unravel the magic of a spell that affects a container, door, or lock, converting it into energy you can repurpose to power your own spells. Attempt a counteract check (Core Rulebook 458) against the target spell or {@trait magical} effect that wards or seals a doorway or chest, such as lock, or against a spell or effect that deals damage or delivers secondary effects when it's opened, such as glyph of warding. If you succeed, you recover its energy, restoring one of your expended spell slots of 3rd level or lower."
 			],
 			"heightened": {
 				"X": {
+					"8": [
+						"You can restore an expended spell slot of 4th level or lower."
+					],
+					"9": [
+						"You can restore an expended spell slot of 5th level or lower."
+					],
 					"10": [
 						"You can restore an expended spell slot of 6th level or lower."
 					]
@@ -67,16 +50,15 @@
 			"name": "Temporal Ward",
 			"source": "SoT5",
 			"page": 78,
-			"type": "Spell",
 			"level": 6,
 			"traits": [
 				"rare",
 				"abjuration"
 			],
 			"traditions": [
-				"Arcane",
-				"Divine",
-				"Occult"
+				"arcane",
+				"divine",
+				"occult"
 			],
 			"cast": {
 				"number": 3,
@@ -90,7 +72,7 @@
 				]
 			],
 			"range": {
-				"unit": "touch"
+				"type": "touch"
 			},
 			"targets": "1 container or doorway",
 			"savingThrow": {
@@ -99,8 +81,10 @@
 				]
 			},
 			"duration": {
-				"number": 10,
-				"unit": "minute"
+				"duration": {
+					"number": 10,
+					"unit": "minute"
+				}
 			},
 			"entries": [
 				"You ward a target doorway or container with a temporal trap that rewinds the personal timeline of creatures trying to open it. A creature attempting to open a warded doorway or container must attempt a Will save with the below results. You can set a password for the ward. Any creature that attempts to open the target container, or to open or pass through the target doorway without speaking the password must attempt a save as normal. The ward vanishes automatically once the spell's duration ends, but can be removed before then as if it were a magical trap, using your spell DC for both the {@skill Perception} check to notice it and {@skill Thievery} check to disable it. Both checks require the creature attempting them to have expert proficiency in order to succeed. You can {@action Dismiss} temporal ward. The maximum number of temporal wards you can have active at a time is equal to your spellcasting ability modifier.",

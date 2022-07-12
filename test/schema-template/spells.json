@@ -123,9 +123,13 @@
 											"V"
 										]
 									}
-								]
+								],
+								"minItems": 1,
+								"uniqueItems": true
 							}
-						]
+						],
+						"minItems": 1,
+						"uniqueItems": true
 					},
 					"subclass": {
 						"type": "object"
@@ -266,7 +270,10 @@
 										]
 									}
 								},
-								"additionalProperties": false
+								"additionalProperties": false,
+								"required": [
+									"unit"
+								]
 							}
 						},
 						"additionalProperties": false
@@ -288,6 +295,14 @@
 						"items": {
 							"$ref": "entry.json"
 						}
+					},
+					"alias": {
+						"type": "array",
+						"items": {
+							"type": "string"
+						},
+						"minItems": 1,
+						"uniqueItems": true
 					},
 					"heightened": {
 						"type": "object",

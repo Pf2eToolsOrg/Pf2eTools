@@ -1008,6 +1008,73 @@
 				}
 			]
 		},
+		"entryPf2Options": {
+			"allOf": [
+				{
+					"$ref": "#/definitions/entry"
+				},
+				{
+					"type": "object",
+					"properties": {
+						"type": {
+							"const": "pf2-options"
+						},
+						"style": {
+							"type": "string",
+							"description": "Formatting to be applied to the options; not providing a style results in a simple list with bold headings.\n pf2-p: This style is used for normal paragraphs in most sourcebooks. \n pf2-stat--text: This style is used for all statblocks. \n pf2-book__option--indent: A bold heading list with indented first line",
+							"enum": [
+								"pf2-p",
+								"pf2-stat--text",
+								"pf2-book__option--indent"
+							]
+						},
+						"skipSort": {
+							"type": "boolean",
+							"const": true,
+							"description": "If true, the options will not be sorted alphabetically."
+						},
+						"noColon": {
+							"type": "boolean",
+							"const": true,
+							"description": "Don't render a colon \":\" between the item \"name\" and the item \"entry\"."
+						},
+						"items": {
+							"type": "array",
+							"items": {
+								"type": "object",
+								"properties": {
+									"type": {
+										"type": "string",
+										"const": "item"
+									},
+									"name": {
+										"type": "string"
+									},
+									"entries": {
+										"type": "array",
+										"items": {
+											"$ref": "#"
+										},
+										"minItems": 1
+									}
+								},
+								"additionalProperties": false,
+								"required": [
+									"type",
+									"name",
+									"entries"
+								]
+							},
+							"minItems": 1
+						}
+					},
+					"required": [
+						"items"
+					],
+					"additionalProperties": false
+				}
+			]
+		},
 		"entryList": {
 			"allOf": [
 				{
@@ -2442,6 +2509,9 @@
 		},
 		{
 			"$ref": "#/definitions/entryList"
+		},
+		{
+			"$ref": "#/definitions/entryPf2Options"
 		},
 		{
 			"$ref": "#/definitions/entryBonus"
