@@ -39,10 +39,7 @@
 								"$ref": "utils.json#/definitions/frequency"
 							},
 							"components": {
-								"type": "array",
-								"items": {
-									"type": "string"
-								}
+								"$ref": "utils.json#/definitions/abilityBlock/properties/components"
 							},
 							"requirements": {
 								"type": "string"
@@ -90,6 +87,11 @@
 						"type": "string",
 						"title": "Variant Type",
 						"description": "The Prefix of an items name, often indicative of it's power level (Minor, Moderate, Major, True, etc.)"
+					},
+					"exists": {
+						"title": "Item Exists",
+						"description": "Causes the item to not be generated in generic variants under the assumption it already exists (like in \"baseitems\").",
+						"type": "boolean"
 					},
 					"type": {
 						"type": "string",
