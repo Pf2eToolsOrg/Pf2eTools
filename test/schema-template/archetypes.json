@@ -25,7 +25,8 @@
 						"type": "array",
 						"items": {
 							"$ref": "entry.json"
-						}
+						},
+						"minItems": 1
 					},
 					"dedicationLevel": {
 						"type": "integer"
@@ -34,8 +35,10 @@
 						"type": "array",
 						"items": {
 							"type": "string",
-							"pattern": "\\d+\\|.+?\\|"
-						}
+							"$comment": "\"pattern\": \"^\\d+\\|.+?\\|$\" //TODO in future make this build with an enum of sources."
+						},
+						"uniqueItems": true,
+						"minItems": 1
 					},
 					"miscTags": {
 						"type": "array",
@@ -65,17 +68,21 @@
 								"Spellcasting",
 								"Bounded Spellcasting"
 							]
-						}
+						},
+						"minItems": 1,
+						"uniqueItems": true
 					}
 				},
 				"additionalProperties": false,
 				"required": [
 					"source",
 					"name",
-					"page"
+					"page",
+					"dedicationLevel"
 				]
 			},
-			"uniqueItems": true
+			"uniqueItems": true,
+			"minItems": 1
 		}
 	},
 	"additionalProperties": false,

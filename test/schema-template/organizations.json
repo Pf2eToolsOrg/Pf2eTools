@@ -19,37 +19,108 @@
 						"type": "string"
 					},
 					"title": {
-						"type": "array"
+						"type": "array",
+						"items": {
+							"type": "string"
+						},
+						"minItems": 1
 					},
 					"scope": {
-						"type": "array"
+						"type": "array",
+						"items": {
+							"type": "string"
+						},
+						"minItems": 1
 					},
 					"goals": {
-						"type": "array"
+						"type": "array",
+						"items": {
+							"type": "string"
+						},
+						"minItems": 1
 					},
 					"headquarters": {
-						"type": "array"
+						"type": "array",
+						"items": {
+							"type": "string"
+						},
+						"minItems": 1
 					},
 					"keyMembers": {
-						"type": "array"
+						"type": "array",
+						"items": {
+							"type": "string"
+						},
+						"minItems": 1
 					},
 					"allies": {
-						"type": "array"
+						"type": "array",
+						"items": {
+							"type": "string"
+						},
+						"minItems": 1
 					},
 					"enemies": {
-						"type": "array"
+						"type": "array",
+						"items": {
+							"type": "string"
+						},
+						"minItems": 1
 					},
 					"assets": {
-						"type": "array"
+						"type": "array",
+						"items": {
+							"type": "string"
+						},
+						"minItems": 1
 					},
 					"requirements": {
-						"type": "array"
+						"type": "array",
+						"items": {
+							"type": "string"
+						},
+						"minItems": 1
 					},
 					"anathema": {
-						"type": "array"
+						"type": "array",
+						"items": {
+							"type": "string"
+						},
+						"minItems": 1
 					},
 					"followerAlignment": {
-						"type": "array"
+						"type": "array",
+						"items": {
+							"type": "object",
+							"properties": {
+								"main": {
+									"$ref": "utils.json#/definitions/alignmentTraits"
+								},
+								"secondary": {
+									"type": "array",
+									"items": {
+										"$ref": "utils.json#/definitions/alignmentTraits"
+									},
+									"minItems": 1,
+									"uniqueItems": true
+								},
+								"secondaryCustom": {
+									"type": "string"
+								},
+								"note": {
+									"type": "string"
+								},
+								"entry": {
+									"type": "string"
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"main"
+							]
+						},
+						"minItems": 1,
+						"uniqueItems": true
 					},
 					"hasLore": {
 						"type": "boolean"

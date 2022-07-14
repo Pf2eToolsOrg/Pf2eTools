@@ -107,15 +107,15 @@
 			"type": "string",
 			"description": "CE: Chaotic Evil\nCG: Chaotic Good\nCN: Chaotic Neutral\nLE: Lawful Evil\nLG: Lawful Good\nLN: Lawful Neutral\nN: Neutral\nNE: Neutral Evil\nNG: Neutral Good",
 			"enum": [
-				"CE",
-				"CG",
-				"CN",
-				"LE",
-				"LG",
-				"LN",
-				"N",
-				"NE",
-				"NG"
+				"ce",
+				"cg",
+				"cn",
+				"le",
+				"lg",
+				"ln",
+				"n",
+				"ne",
+				"ng"
 			]
 		},
 		"speed": {
@@ -514,7 +514,7 @@
 					"alignment": {
 						"type": "array",
 						"items": {
-							"$ref": "utils.json#/definitions/alignmentTraits"
+							"$ref": "#/definitions/alignmentTraits"
 						}
 					},
 					"note": {
@@ -567,12 +567,25 @@
 								]
 							},
 							"uniqueItems": true
-						},
-						"additionalProperties": false
-					}
+						}
+					},
+					"additionalProperties": false,
+					"minProperties": 1
+				},
+				"spell": {
+					"type": "object",
+					"properties": {
+						"_fSchool": {
+							"type": "string",
+							"$ref": "#/definitions/schoolTitle"
+						}
+					},
+					"additionalProperties": false,
+					"minProperties": 1
 				}
 			},
-			"additionalProperties": false
+			"additionalProperties": false,
+			"minProperties": 1
 		},
 		"abilityMods": {
 			"type": "object",
@@ -592,6 +605,26 @@
 				"type": "integer",
 				"minimum": -5,
 				"maximum": 12
+			}
+		},
+		"abilityScores": {
+			"type": "object",
+			"propertyNames": {
+				"type": "string",
+				"enum": [
+					"str",
+					"dex",
+					"con",
+					"int",
+					"wis",
+					"cha"
+				]
+			},
+			"minProperties": 6,
+			"additionalProperties": {
+				"type": "integer",
+				"minimum": 0,
+				"maximum": 30
 			}
 		},
 		"savingThrows": {
@@ -765,7 +798,18 @@
 						"phantom",
 						"astral",
 						"propulsive",
-						"disarm"
+						"disarm",
+						"backswing",
+						"deadly",
+						"sweep",
+						"trip",
+						"forceful",
+						"thrown",
+						"revolutionary",
+						"militaristic",
+						"academic",
+						"wayfaring",
+						"consecration"
 					]
 				},
 				{
@@ -800,6 +844,12 @@
 						},
 						{
 							"pattern": "^thrown \\d+ feet$"
+						},
+						{
+							"pattern": "^fatal d\\d+$"
+						},
+						{
+							"pattern": "^two-hand d\\d+$"
 						}
 					]
 				}
@@ -1054,6 +1104,19 @@
 				"transmutation"
 			]
 		},
+		"schoolTitle": {
+			"type": "string",
+			"enum": [
+				"Abjuration",
+				"Conjuration",
+				"Divination",
+				"Enchantment",
+				"Evocation",
+				"Illusion",
+				"Necromancy",
+				"Transmutation"
+			]
+		},
 		"size": {
 			"type": "string",
 			"enum": [
@@ -1134,8 +1197,16 @@
 				"lawful",
 				"mental",
 				"persistent",
-				"versatile P",
-				"versatile S"
+				"persistent fire",
+				"persistent bleed damage",
+				"versatile p",
+				"versatile s",
+				"versatile fire",
+				"versatile p or s",
+				"persistent bleed",
+				"versatile electricity",
+				"electricity splash",
+				"versatile cold, electricity, or fire"
 			]
 		},
 		"damageTypeTags": {
@@ -1405,6 +1476,13 @@
 				"name": {
 					"type": "string"
 				},
+				"savingThrow": {
+					"type": "string",
+					"enum": [
+						"Will",
+						"Fortitude"
+					]
+				},
 				"source": {
 					"$ref": "#/definitions/sourceList"
 				},
@@ -1420,13 +1498,24 @@
 					"minItems": 1
 				},
 				"level": {
-					"type": "integer"
+					"oneOf": [
+						{
+							"type": "integer",
+							"exclusiveMinimum": 0
+						},
+						{
+							"const":"your level"
+						}
+					]
 				},
 				"note": {
 					"type": "string"
 				},
 				"DC": {
-					"type": "integer"
+					"type": [
+						"integer",
+						"string"
+					]
 				},
 				"onset": {
 					"type": "string"
@@ -1438,44 +1527,103 @@
 					"type": "array",
 					"items": {
 						"type": "string",
-						"anyOf": [
-							{
-								"$ref": "#/definitions/anyTrait"
-							}
-						]
+						"$ref": "#/definitions/anyTrait"
 					},
 					"minItems": 1
 				},
 				"stages": {
 					"type": "array",
-					"items": {
-						"type": "object",
-						"properties": {
-							"stage": {
-								"type": "integer"
+					"items": [
+						{
+							"properties": {
+								"stage": {
+									"const": 1
+								},
+								"entry": {
+									"type": "string"
+								},
+								"duration": {
+									"type": "string"
+								}
 							},
-							"entry": {
-								"type": "string"
-							},
-							"duration": {
-								"type": "string"
-							}
+							"additionalProperties": false
 						},
-						"additionalProperties": false,
-						"required": [
-							"stage",
-							"entry"
-						]
-					},
-					"minItems": 1
+						{
+							"properties": {
+								"stage": {
+									"const": 2
+								},
+								"entry": {
+									"type": "string"
+								},
+								"duration": {
+									"type": "string"
+								}
+							},
+							"additionalProperties": false
+						},
+						{
+							"properties": {
+								"stage": {
+									"const": 3
+								},
+								"entry": {
+									"type": "string"
+								},
+								"duration": {
+									"type": "string"
+								}
+							},
+							"additionalProperties": false
+						},
+						{
+							"properties": {
+								"stage": {
+									"const": 4
+								},
+								"entry": {
+									"type": "string"
+								},
+								"duration": {
+									"type": "string"
+								}
+							},
+							"additionalProperties": false
+						},
+						{
+							"properties": {
+								"stage": {
+									"const": 5
+								},
+								"entry": {
+									"type": "string"
+								},
+								"duration": {
+									"type": "string"
+								}
+							},
+							"additionalProperties": false
+						},
+						{
+							"properties": {
+								"stage": {
+									"const": 6
+								},
+								"entry": {
+									"type": "string"
+								},
+								"duration": {
+									"type": "string"
+								}
+							},
+							"additionalProperties": false
+						}
+					],
+					"additionalItems": false,
+					"uniqueItems": true
 				}
 			},
-			"additionalProperties": false,
-			"required": [
-				"type",
-				"name",
-				"stages"
-			]
+			"additionalProperties": false
 		},
 		"attackBlock": {
 			"properties": {
@@ -1682,6 +1830,7 @@
 		"genericFluffArray": {
 			"type": "array",
 			"uniqueItems": true,
+			"minItems": 1,
 			"items": {
 				"anyOf": [
 					{

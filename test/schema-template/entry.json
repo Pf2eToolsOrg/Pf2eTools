@@ -177,6 +177,9 @@
 						},
 						"id": {
 							"type": "string"
+						},
+						"style": {
+							"type": "string"
 						}
 					},
 					"required": [
@@ -212,16 +215,10 @@
 									"const": "pf2-h5"
 								},
 								{
-									"const": "pf2-title"
-								},
-								{
 									"const": "pf2-brown-box"
 								},
 								{
 									"const": "pf2-sample-box"
-								},
-								{
-									"const": "pf2-h1-flavor"
 								},
 								{
 									"const": "pf2-sidebar"
@@ -244,6 +241,9 @@
 							},
 							"minItems": 1
 						},
+						"level": {
+							"type": "integer"
+						},
 						"data": {
 							"type": "object"
 						},
@@ -262,6 +262,60 @@
 					},
 					"required": [
 						"entries"
+					],
+					"additionalProperties": false
+				}
+			]
+		},
+		"entryPF2-title": {
+			"allOf": [
+				{
+					"$ref": "#/definitions/entry"
+				},
+				{
+					"type": "object",
+					"properties": {
+						"type": {
+							"const": "pf2-title"
+						},
+						"name": {
+							"type": "string"
+						},
+						"alias": {
+							"type": "array",
+							"items": {
+								"type": "string"
+							}
+						},
+						"entries": {
+							"type": "array",
+							"items": {
+								"$ref": "#"
+							},
+							"minItems": 1
+						},
+						"level": {
+							"type": "integer"
+						},
+						"data": {
+							"type": "object"
+						},
+						"page": {
+							"type": "integer"
+						},
+						"source": {
+							"type": "string"
+						},
+						"id": {
+							"type": "string"
+						},
+						"collapsible": {
+							"type": "boolean"
+						}
+					},
+					"required": [
+						"type",
+						"name"
 					],
 					"additionalProperties": false
 				}
@@ -302,7 +356,11 @@
 					"$ref": "#/definitions/entry"
 				},
 				{
-					"$ref": "utils.json#/definitions/abilityBlock"
+					"$ref": "utils.json#/definitions/abilityBlock",
+					"required": [
+						"type",
+						"entries"
+					]
 				}
 			]
 		},
@@ -426,144 +484,7 @@
 					"$ref": "#/definitions/entry"
 				},
 				{
-					"type": "object",
-					"properties": {
-						"type": {
-							"const": "affliction"
-						},
-						"name": {
-							"type": "string"
-						},
-						"traits": {
-							"type": "array",
-							"items": {
-								"type": "string",
-								"$ref": "utils.json#/definitions/anyTrait"
-							}
-						},
-						"DC": {
-							"type": "integer"
-						},
-						"savingThrow": {
-							"type": "string",
-							"enum": [
-								"Will",
-								"Fortitude"
-							]
-						},
-						"note": {
-							"type": "string"
-						},
-						"onset": {
-							"type": "string"
-						},
-						"maxDuration": {
-							"type": "string"
-						},
-						"level": {
-							"type": "integer",
-							"exclusiveMinimum": 0
-						},
-						"stages": {
-							"type": "array",
-							"items": [
-								{
-									"properties": {
-										"stage": {
-											"const": 1
-										},
-										"entry": {
-											"type": "string"
-										},
-										"duration": {
-											"type": "string"
-										}
-									},
-									"additionalProperties": false
-								},
-								{
-									"properties": {
-										"stage": {
-											"const": 2
-										},
-										"entry": {
-											"type": "string"
-										},
-										"duration": {
-											"type": "string"
-										}
-									},
-									"additionalProperties": false
-								},
-								{
-									"properties": {
-										"stage": {
-											"const": 3
-										},
-										"entry": {
-											"type": "string"
-										},
-										"duration": {
-											"type": "string"
-										}
-									},
-									"additionalProperties": false
-								},
-								{
-									"properties": {
-										"stage": {
-											"const": 4
-										},
-										"entry": {
-											"type": "string"
-										},
-										"duration": {
-											"type": "string"
-										}
-									},
-									"additionalProperties": false
-								},
-								{
-									"properties": {
-										"stage": {
-											"const": 5
-										},
-										"entry": {
-											"type": "string"
-										},
-										"duration": {
-											"type": "string"
-										}
-									},
-									"additionalProperties": false
-								},
-								{
-									"properties": {
-										"stage": {
-											"const": 6
-										},
-										"entry": {
-											"type": "string"
-										},
-										"duration": {
-											"type": "string"
-										}
-									},
-									"additionalProperties": false
-								}
-							],
-							"additionalItems": false,
-							"uniqueItems": true
-						},
-						"entries": {
-							"type": "array",
-							"items": {
-								"$ref": "#"
-							},
-							"minItems": 1
-						}
-					},
-					"additionalProperties": false
+					"$ref": "utils.json#/definitions/afflictionBlock"
 				}
 			]
 		},
@@ -803,6 +724,33 @@
 							},
 							"minItems": 1
 						},
+						"cellStyles": {
+							"type": "array",
+							"items": {
+								"type": "object",
+								"properties": {
+									"row": {
+										"type": "integer",
+										"minimum": 0
+									},
+									"col": {
+										"type": "integer",
+										"minimum": 0
+									},
+									"style": {
+										"type": "string"
+									}
+								},
+								"additionalProperties": false,
+								"required": [
+									"row",
+									"col",
+									"style"
+								]
+							},
+							"minItems": 1,
+							"uniqueItems": true
+						},
 						"rows": {
 							"type": "array",
 							"items": {
@@ -842,6 +790,14 @@
 						},
 						"page": {
 							"type": "integer"
+						},
+						"alias": {
+							"type": "array",
+							"items": {
+								"type": "string"
+							},
+							"minItems": 1,
+							"uniqueItems": true
 						}
 					},
 					"required": [
@@ -2192,7 +2148,20 @@
 			"type": "object",
 			"properties": {
 				"type": {
-					"const": "hr"
+					"const": "hr",
+					"description": "A horizontal rule."
+				}
+			},
+			"required": [
+				"type"
+			]
+		},
+		"entryPf2-h1-flavor": {
+			"type": "object",
+			"properties": {
+				"type": {
+					"const": "pf2-h1-flavor",
+					"description": "A pathfinder style horizontal rule."
 				}
 			},
 			"required": [
@@ -2466,6 +2435,9 @@
 			"$ref": "#/definitions/entryPF2-hx"
 		},
 		{
+			"$ref": "#/definitions/entryPF2-title"
+		},
+		{
 			"$ref": "#/definitions/entriesAbilityBlock"
 		},
 		{
@@ -2596,6 +2568,9 @@
 		},
 		{
 			"$ref": "#/definitions/entryHr"
+		},
+		{
+			"$ref": "#/definitions/entryPf2-h1-flavor"
 		},
 		{
 			"$ref": "#/definitions/entrySpellcasting"
