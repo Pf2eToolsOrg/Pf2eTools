@@ -25,29 +25,38 @@
 						"type": "array",
 						"items": {
 							"type": "string",
-							"enum": [
-								"Ancestry & Heritage",
-								"Creature",
-								"Creature Type",
-								"Schools & Traditions",
-								"General",
-								"Energy & Elements",
-								"Class",
-								"Armor & Weapon",
-								"Planar",
-								"Item",
-								"Alignment",
-								"_alignAbv",
-								"Scope",
-								"Effect",
-								"Time",
-								"Size",
-								"Gravity",
-								"Combat",
-								"Morphic",
-								"Rarity",
-								"Equipment",
-								"_settlement"
+							"oneOf": [
+								{
+									"enum": [
+										"Ancestry & Heritage",
+										"Creature",
+										"Creature Type",
+										"Schools & Traditions",
+										"General",
+										"Energy & Elements",
+										"Class",
+										"Armor & Weapon",
+										"Planar",
+										"Item",
+										"Alignment",
+										"Scope",
+										"Effect",
+										"Time",
+										"Size",
+										"Gravity",
+										"Combat",
+										"Morphic",
+										"Rarity",
+										"Equipment"
+									]
+								},
+								{
+									"enum": [
+										"_alignAbv",
+										"_settlement",
+										"_school"
+									]
+								}
 							]
 						}
 					},
@@ -56,6 +65,31 @@
 					},
 					"implies": {
 						"$ref": "utils.json#/definitions/implies"
+					},
+					"_data": {
+						"type": "object",
+						"properties": {
+							"school": {		
+								"type": "object",
+								"properties": {
+									"short": {
+										"type": "string"
+									},
+									"color": {
+										"type": "string",
+										"pattern": "^([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$",
+										"description": "HTML hex color code this school should use when displayed in lists, e.g. 'ff00ff'"
+									}
+								},
+								"required": [
+									"short",
+									"color"
+								],
+								"additionalProperties": false
+							}
+						},
+						"minProperties": 1,
+						"additionalProperties": false
 					},
 					"entries": {
 						"type": "array",

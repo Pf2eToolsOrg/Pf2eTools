@@ -630,18 +630,12 @@
 						"divine",
 						"transmutation"
 					],
-					"entries": [
-						"Trigger A creature moves within 10 feet of the entryway to the Hall of Wonders (area {@b N4}) without speaking the passphrase (\"The History and Future of Humanity\") in Utopian."
-					],
-					"type": "ability",
-					"name": "Axiomatic Polymorph"
-				},
-				{
+					"trigger": "A creature moves within 10 feet of the entryway to the Hall of Wonders (area {@b N4}) without speaking the passphrase (\"The History and Future of Humanity\") in Utopian.",
 					"entries": [
 						"Each creature within 20 feet of the door is targeted by baleful polymorph (DC 42 Will save), except the effect transforms creatures into the form of an {@creature arbiter||arbiter aeon} rather than that of an animal."
 					],
 					"type": "ability",
-					"name": "in Utopian; Effect"
+					"name": "Axiomatic Polymorph"
 				}
 			],
 			"reset": [
@@ -3958,16 +3952,12 @@
 						"number": 1,
 						"unit": "reaction"
 					},
-					"trigger": "The tank reaches its {@condition Broken}",
+					"trigger": "The tank reaches its {@condition Broken} Threshold",
 					"type": "ability",
-					"name": "Spill Eyeballs"
-				},
-				{
+					"name": "Spill Eyeballs",
 					"entries": [
 						"The glass shatters, spilling eyeballs onto the floor in a 15-foot radius and casting grease (DC 33) on the affected area. The eyeball tank is permanently destroyed and can't be reset."
-					],
-					"type": "ability",
-					"name": "Threshold; Effect"
+					]
 				}
 			],
 			"reset": [
@@ -4152,16 +4142,12 @@
 						"conjuration",
 						"teleportation"
 					],
-					"trigger": "A creature moves between the two glass faces",
+					"trigger": "A creature moves between the two glass faces of Olansa Terimor",
 					"type": "ability",
-					"name": "Spawn Mirror Duplicate"
-				},
-				{
+					"name": "Spawn Mirror Duplicate",
 					"entries": [
 						"The planar rift disgorges an evil mirror duplicate of the creature (see below), and the duplicate rolls initiative. The field of opposition can use this reaction once per round but can't spawn a duplicate of a creature that already has a mirror duplicate in existence."
-					],
-					"type": "ability",
-					"name": "of Olansa Terimor; Effect"
+					]
 				},
 				{
 					"entries": [
@@ -6393,22 +6379,40 @@
 			],
 			"disable": {
 				"entries": [
-					"DC 29 {@skill Religion} (expert) or {@skill Occultism} or DC 31."
+					"DC 29 {@skill Religion} (expert) or {@skill Occultism} or DC 31 Thievery (expert) to dismiss the magic on a single statue.",
+					"Replacing the two missing masks (a mask made of or incorporating coins on the merchant statue and a mask made of any valuable fabric on the tailor statue) and succeeding at a DC 27 {@skill Religion} check disarms the trap.",
+					"AC 30; Fort +20, Ref +16 Statue Hardness 18; Statue HP 48 (BT 24); Immunities critical hits, object immunities, precision damage."
+				]
+			},
+			"defenses": {
+				"ac": {
+					"default": 30
+				},
+				"fort": {
+					"default": 20
+				},
+				"ref": {
+					"default": 16
+				},
+				"hardness": {
+					"default": 18
+				},
+				"hp": {
+					"default": 48
+				},
+				"bt": {
+					"default": 24
+				},
+				"notes": {
+					"default": "per statue"
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
 				]
 			},
 			"actions": [
-				{
-					"traits": [
-						"expert"
-					],
-					"entries": [
-						"to dismiss the magic on a single statue.",
-						"Replacing the two missing masks (a mask made of or incorporating coins on the merchant statue and a mask made of any valuable fabric on the tailor statue) and succeeding at a DC 27 {@skill Religion} check disarms the trap.",
-						"AC 30; Fort +20, Ref +16 Statue Hardness 18; Statue HP 48 (BT 24); Immunities critical hits, object immunities, precision damage."
-					],
-					"type": "ability",
-					"name": "Thievery"
-				},
 				{
 					"activity": {
 						"number": 1,
@@ -6635,20 +6639,10 @@
 			],
 			"disable": {
 				"entries": [
-					"DC 36 {@skill Acrobatics} to approach without triggering the trap followed by DC 34 {@skill Occultism} (expert) or DC 38."
+					"DC 36 {@skill Acrobatics} to approach without triggering the trap followed by DC 34 {@skill Occultism} (expert) or DC 38 Thievery(master) to erase the rune, or dispel magic (8th level; counteract DC 34) to counteract the rune.."
 				]
 			},
 			"actions": [
-				{
-					"traits": [
-						"master"
-					],
-					"entries": [
-						"to erase the rune, or dispel magic (8th level; counteract DC 34) to counteract the rune."
-					],
-					"type": "ability",
-					"name": "Thievery"
-				},
 				{
 					"activity": {
 						"number": 1,
@@ -7731,20 +7725,10 @@
 			],
 			"disable": {
 				"entries": [
-					"three DC 39 {@skill Athletics} (trained), {@skill Crafting} (trained), or."
+					"three DC 39 {@skill Athletics} (trained), {@skill Crafting} (trained), or Engineering Lore (trained) checks to brace a small structure or surface to cancel the effects of the quake in that area; DC 41 {@skill Performance} (legendary) to calm Mogaru momentarily."
 				]
 			},
 			"actions": [
-				{
-					"traits": [
-						"trained"
-					],
-					"entries": [
-						"checks to brace a small structure or surface to cancel the effects of the quake in that area; DC 41 {@skill Performance} (legendary) to calm Mogaru momentarily."
-					],
-					"type": "ability",
-					"name": "Engineering Lore"
-				},
 				{
 					"activity": {
 						"number": 1,
