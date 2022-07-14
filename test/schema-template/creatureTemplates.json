@@ -49,7 +49,14 @@
 							"abilities": {
 								"type": "array",
 								"items": {
-									"$ref": "entry.json#/definitions/entriesAbilityBlock"
+									"anyOf": [
+										{
+											"$ref": "entry.json#/definitions/entriesAbilityBlock"
+										},
+										{
+											"$ref": "entry.json#/definitions/entriesAffliction"
+										}
+									]
 								}
 							}
 						}

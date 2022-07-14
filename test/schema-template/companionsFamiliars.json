@@ -28,11 +28,7 @@
 						]
 					},
 					"special": {
-						"type": "array",
-						"items": {
-							"$ref": "entry.json"
-						},
-						"minItems": 1
+						"type": "string"
 					},
 					"access": {
 						"type": "string"
@@ -231,8 +227,7 @@
 					"source",
 					"name",
 					"page",
-					"type",
-					"granted"
+					"type"
 				]
 			},
 			"minItems": 1,
@@ -314,6 +309,9 @@
 						"type": "string",
 						"$ref": "utils.json#/definitions/tradition"
 					},
+					"traditionNote": {
+						"type": "string"
+					},
 					"traits": {
 						"type": "array",
 						"items": {
@@ -353,8 +351,8 @@
 								"name": {
 									"type": "string"
 								},
-								"abilityMods": {
-									"$ref": "utils.json#/definitions/abilityMods"
+								"abilityScores": {
+									"$ref": "utils.json#/definitions/abilityScores"
 								},
 								"ac": {
 									"type": "object",
