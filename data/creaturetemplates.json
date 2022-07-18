@@ -1,7 +1,940 @@
 {
 	"creatureTemplate": [
 		{
+			"name": "Vampire, Jiang-shi",
+			"type": "Template",
+			"hasLore": true,
+			"source": "BotD",
+			"page": 156,
+			"entries": [
+				"Increase the creature's level by 1 and change its statistics as follows.",
+				{
+					"type": "list",
+					"items": [
+						"It gains the {@trait undead} and {@trait vampire} traits, and usually becomes evil.",
+						"Increase the creature's AC, attack modifiers, DCs, saving throws, and skill modifiers by 1.",
+						"Reduce its Speed by 10 feet, to a minimum of 15 feet.",
+						"Increase its damage with {@action Strike||Strikes} and other offensive abilities by 1. If an ability can be used only a small number of times (such as a dragon's Breath Weapon), increase the damage by 2 instead.",
+						"Reduce its HP by the amount listed on the table.",
+						"The jiang-shi gains {@ability fast healing} and resistance to physical damage (except darkwood) as indicated on the table. These abilities are the reason the jiang-shi has less HP."
+					]
+				},
+				{
+					"type": "table",
+					"source": "BotD",
+					"page": 156,
+					"colStyles": [
+						"text-center",
+						"text-center",
+						"text-center"
+					],
+					"labelRowIdx": [
+						0
+					],
+					"rows": [
+						[
+							"Starting Level",
+							"HP Decrease",
+							"Fast Healing/Resistance"
+						],
+						[
+							"3\u20134",
+							"\u201320",
+							"5"
+						],
+						[
+							"5\u20137",
+							"\u201330",
+							"7"
+						],
+						[
+							"8\u201314",
+							"\u201340",
+							"10"
+						],
+						[
+							"15+",
+							"\u201360",
+							"15"
+						]
+					]
+				}
+			],
+			"abilities": {
+				"entries": [
+					{
+						"type": "pf2-h3",
+						"name": "Basic Jiang-shi Abilities",
+						"entries": [
+							"If the base creature becoming a jiang-shi has any abilities that specifically come from it being a living creature, it loses them. It also loses any traits that represented its life as a living creature, such as human and humanoid. You might also need to adjust abilities that conflict with the jiang-shi's theme. All jiang-shi gain the following abilities."
+						]
+					}
+				],
+				"abilities": [
+					{
+						"name": "Darkvision",
+						"generic": {
+							"tag": "ability"
+						}
+					},
+					{
+						"name": "Breathsense",
+						"entries": [
+							"60 feet (precise). A jiang-shi can't perceive living creatures beyond 5 feet except with their breathsense. A living creature within the listed range who holds its breath is {@condition invisible} to the jiang-shi for as long as it holds its breath. To hold its breath in this way, a creature must have one hand free to fully plug its nose or cover its mouth. (Refer {@quickref here||3|drowning and suffocating} for the full rules on holding breath.)"
+						]
+					},
+					{
+						"name": "Negative Healing",
+						"generic": {
+							"tag": "ability",
+							"source": "B2"
+						}
+					},
+					{
+						"name": "Immunities",
+						"entries": [
+							"{@trait death} effects, {@trait disease}, {@condition paralyzed}, {@trait poison}, {@trait sleep}, {@condition prone}"
+						]
+					},
+					{
+						"name": "One More Breath",
+						"traits": [
+							"divine",
+							"necromancy",
+							"negative"
+						],
+						"entries": [
+							"Unlike other undead, a jiang-shi isn't destroyed at 0 HP. Instead, they fall unconscious and awaken in 1 minute with 1 Hit Point. Scattering at least 1 Bulk of glutinous rice or hen eggs on an unconscious jiang-shi destroys them permanently. If the jiang-shi was reduced to 0 HP by an attack from a weapon made of darkwood, they're destroyed immediately."
+						]
+					},
+					{
+						"name": "Jiang-shi Vulnerabilities",
+						"entries": [
+							"All jiang-shi possess the following vulnerabilities.",
+							{
+								"type": "list",
+								"items": [
+									{
+										"type": "ability",
+										"name": "Revulsion",
+										"entries": [
+											"A jiang-shi can't voluntarily come within 10 feet of a brandished mirror or the sound of ringing handbells. A creature can {@action Interact} with a mirror or handbell to brandish or ring the item for 1 round (similar to {@action Raise a Shield||Raising a Shield}). If the jiang-shi involuntarily comes within 10 feet of an object of their revulsion, they gain the {@condition fleeing} condition, running from the object of their revulsion until they are 10 feet or farther from the object. After 1 round of being exposed to the object of their revulsion, a jiang-shi can attempt a DC 25 Will save as a single action, which has the {@trait concentrate} trait. On a success, they overcome their revulsions for {@dice 1d6} rounds (or 1 hour on a critical success)."
+										]
+									},
+									{
+										"type": "ability",
+										"name": "Bitter Epiphany",
+										"entries": [
+											"A jiang-shi is afflicted by severe melancholia when reminded of their debased nature and the truth of their existential disconnection from living beings. When a jiang-shi sees an altar with at least 1 Bulk of food offerings to ancestor spirits, they must attempt a DC 25 Will save. They are then temporarily immune to Bitter Epiphany for 1 minute.",
+											{
+												"type": "successDegree",
+												"entries": {
+													"Critical Success": [
+														"The jiang-shi is unaffected."
+													],
+													"Success": [
+														"The jiang-shi is {@condition stupefied||stupefied 1} for 1 round."
+													],
+													"Failure": [
+														"The jiang-shi is {@condition stupefied||stupefied 2} for 1 minute."
+													],
+													"Critical Failure": [
+														"The jiang-shi is {@condition stupefied||stupefied 2} and {@condition confused} for 1 minute."
+													]
+												}
+											}
+										]
+									}
+								]
+							}
+						]
+					},
+					{
+						"name": "Warped Fulu",
+						"entries": [
+							"The jiang-shi has corrupted the fulu attached to their brow. The jiang-shi is immune to spells cast from a magic item without expending a spell slot, such as from a scroll or wand. A creature can {@action Steal} the fulu to remove it, rolling against the jiangshi's {@skill Perception} DC. This immediately ends the jiang-shi's immunity to these effects. If a creature then destroys the removed fulu with an {@action Interact} action, the jiang-shi also loses their fast healing ability. A jiang-shi can create a replacement fulu by spending 1 uninterrupted hour inscribing a strip of paper (or similar) with a writing instrument."
+						]
+					},
+					{
+						"name": "Rigor Mortis",
+						"entries": [
+							"The jiang-shi ignores difficult terrain and effects that would render them {@condition prone}. A jiang-shi can't take the Drop {@condition Prone} action.",
+							"When they {@action Leap} they don't trigger reactions that are normally triggered by move actions, such as Attacks of Opportunity."
+						]
+					},
+					{
+						"name": "Claws",
+						"entries": [
+							"If the base creature had hands, its fingernails thicken and grow to terrible proportions, granting it an unarmed claw {@action Strike} that deals slashing damage, has the {@trait agile} trait, and can Grab. Use the moderate damage for the creature's level on the {@action Strike} Damage table on page 65 of the Gamemastery Guide."
+						]
+					},
+					{
+						"name": "Drain Qi",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"divine",
+							"necromancy"
+						],
+						"requirements": "A {@condition grabbed}, {@condition paralyzed}, {@condition restrained}, {@condition unconscious}, or willing creature is within the jiang-shi's reach",
+						"entries": [
+							"The jiang-shi drains the victim's life energy, or qi, through their breath. This requires an {@skill Athletics} check against the victim's Fortitude DC if the victim is {@condition grabbed} and is automatic for any of the other conditions. The victim is {@condition drained||drained 1} and the jiang-shi regains HP equal to 10% of its maximum HP, gaining any excess as temporary Hit Points. Draining qi from a creature that's already {@condition drained} doesn't restore any HP to the jiang-shi but increases the victim's {@condition drained} condition value by 1, killing the victim when it reaches {@condition drained||drained 5}. If the victim has the ability to cast ki spells, it can spend 1 Focus Point to avoid becoming {@condition drained}. This protects it only from the current attack, not from subsequent attempts to Drain Qi.",
+							"A victim's {@condition drained} condition value decreases by 1 every week. If the creature restricts their diet to glutinous rice for at least 1 day and spends 10 minutes dancing, jogging, or otherwise engaging in vigorous physical activity by succeeding at a DC 25 {@skill Athletics} check, it reduces its {@condition drained} condition by 1."
+						]
+					}
+				]
+			},
+			"optAbilities": {
+				"entries": [
+					{
+						"type": "pf2-h3",
+						"name": "Jiang-shi Minister Abilities",
+						"entries": [
+							"Those rare jiang-shi who have devoured at least a thousand victims' qi have shed many of their frailties and become able to create jiang-shi from their slain victims. These imperious undead address themselves as \"ministers\" or by other grandiose titles, and they mock lesser jiang-shi as mere \"provincials.\" ",
+							"Ministers gain additional jiang-shi abilities, as detailed below. A creature below level 13 is not significant enough to become a minister\u2014you should instead make such a creature into a regular jiang-shi or rebuild the creature so that it's at least level 13 before becoming a minister. "
+						]
+					}
+				],
+				"abilities": [
+					{
+						"name": "Dark Enlightenment",
+						"entries": [
+							"The jiang-shi is no longer limited to seeing living creatures with only their breathsense, and they no longer have the Revulsion vulnerability. They can perceive living creatures normally with either darkvision or breathsense, and they can take the Drop {@condition Prone} action."
+						]
+					},
+					{
+						"name": "Distant Steps",
+						"entries": [
+							"When the jiang-shi Leaps, they can add 10 feet to the horizontal and/or vertical distance they move without affecting the {@action Leap} DC. The jiang-shi can stand and walk on water and other solid or liquid surfaces that wouldn't normally support their weight."
+						]
+					},
+					{
+						"name": "Tumult of the Blood",
+						"traits": [
+							"divine",
+							"necromancy"
+						],
+						"entries": [
+							"The third time a jiang-shi successfully Drains Qi within a single minute, they become {@condition quickened} for 1 minute. They can use their extra action only to {@action Strike} or {@action Stride}."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Zombie",
+			"type": "Adjustment",
+			"hasLore": true,
+			"source": "BotD",
+			"page": 73,
+			"entries": [
+				"A zombified creature is a mindless, rotting corpse that attacks everything it perceives.",
+				{
+					"type": "list",
+					"items": [
+						"Add the {@trait mindless}, {@trait undead}, and {@trait zombie} traits.",
+						"Increase the creature's HP based on its level.",
+						"Add the following immunities: {@trait death} effects, {@trait disease}, {@trait mental}, {@condition paralyzed}, {@trait poison}, {@condition unconscious}.",
+						"Add the following weaknesses, with a value based on its level: positive, slashing."
+					]
+				},
+				{
+					"type": "table",
+					"source": "BotD",
+					"page": 73,
+					"colStyles": [
+						"text-center",
+						"text-center",
+						"text-center"
+					],
+					"labelRowIdx": [
+						0
+					],
+					"rows": [
+						[
+							"Level",
+							"HP Increase",
+							"Weaknesses"
+						],
+						[
+							"1 or lower",
+							"10",
+							"5"
+						],
+						[
+							"2\u20135",
+							"20",
+							"5"
+						],
+						[
+							"6\u201310",
+							"50",
+							"10"
+						],
+						[
+							"11\u201315",
+							"75",
+							"15"
+						],
+						[
+							"16\u201319",
+							"100",
+							"20"
+						],
+						[
+							"20+",
+							"150",
+							"25"
+						]
+					]
+				}
+			],
+			"abilities": {
+				"entries": [
+					{
+						"type": "list",
+						"items": [
+							"Add the following abilities."
+						]
+					}
+				],
+				"abilities": [
+					{
+						"name": "Darkvision",
+						"generic": {
+							"tag": "ability"
+						}
+					},
+					{
+						"name": "Negative Healing",
+						"generic": {
+							"tag": "ability",
+							"source": "B2"
+						}
+					},
+					{
+						"name": "Slow",
+						"entries": [
+							"A zombie is permanently {@condition slowed 1} and can't use reactions."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Wight",
+			"type": "Adjustment",
+			"hasLore": true,
+			"source": "BotD",
+			"page": 73,
+			"entries": [
+				"All wights can drain life through their unarmed attacks, but some can draw life force through weapons as well.",
+				{
+					"type": "list",
+					"items": [
+						"Add the {@trait undead} and {@trait wight} traits.",
+						"Add the {@language Necril} language.",
+						"Add the following immunities: {@trait death} effects, {@trait disease}, {@condition paralyzed}, {@trait poison}, {@condition unconscious}.",
+						"Add drain life to any number of the creature's Strikes and reduce the damage of each of those Strikes by half the creature's level."
+					]
+				}
+			],
+			"abilities": {
+				"entries": [
+					{
+						"type": "list",
+						"items": [
+							"Add the following abilities."
+						]
+					}
+				],
+				"abilities": [
+					{
+						"name": "Darkvision",
+						"generic": {
+							"tag": "ability"
+						}
+					},
+					{
+						"name": "Negative Healing",
+						"generic": {
+							"tag": "ability",
+							"source": "B2"
+						}
+					},
+					{
+						"name": "Drain Life",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"divine",
+							"necromancy"
+						],
+						"entries": [
+							"When the creature damages a living creature with this {@action Strike}, it gains temporary HP equal to its level, and the target must succeed at a Fortitude save or become {@condition drained 1}. This save uses the moderate DC for the {@table DCs by Level||wight creature's level}."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Vampire",
+			"type": "Adjustment",
+			"hasLore": true,
+			"source": "BotD",
+			"page": 73,
+			"entries": [
+				"A vampiric creature consumes the blood of the living for sustenance. It might also possess the compulsions and revulsions of a specific vampire bloodline.",
+				{
+					"type": "list",
+					"items": [
+						"Add the {@trait undead} and {@trait vampire} traits.",
+						"Add the {@language Necril} language.",
+						"Decrease the creature's HP based on its level.",
+						"Add the following immunities: {@trait death} effects, {@trait disease}, {@condition paralyzed}, {@trait poison}, {@trait sleep}.",
+						"Add resistance to physical damage, with a value based on the creature's level. Choose one type of material that bypasses this resistance: cold iron (vetalarana), silver (moroi), or wood (jiang-shi or nosferatu).",
+						"Add a fangs {@action Strike}. It deals damage equal to the creature's lowest melee {@action Strike} and can be used to Feed. If the creature already has a jaws or fangs Strike, just add the Feed ability"
+					]
+				},
+				{
+					"type": "table",
+					"source": "BotD",
+					"page": 73,
+					"colStyles": [
+						"text-center",
+						"text-center",
+						"text-center"
+					],
+					"labelRowIdx": [
+						0
+					],
+					"rows": [
+						[
+							"Level",
+							"HP Decrease",
+							"Resistance/Feed HP"
+						],
+						[
+							"\u20131",
+							"\u20133",
+							"2"
+						],
+						[
+							"0\u20131",
+							"\u20135",
+							"2"
+						],
+						[
+							"2\u20135",
+							"\u201310",
+							"3"
+						],
+						[
+							"6\u201310",
+							"\u201320",
+							"5"
+						],
+						[
+							"11+",
+							"\u201340",
+							"10"
+						]
+					]
+				}
+			],
+			"abilities": {
+				"entries": [
+					{
+						"type": "list",
+						"items": [
+							"Add the following abilities."
+						]
+					}
+				],
+				"abilities": [
+					{
+						"name": "Darkvision",
+						"generic": {
+							"tag": "ability"
+						}
+					},
+					{
+						"name": "Negative Healing",
+						"generic": {
+							"tag": "ability",
+							"source": "B2"
+						}
+					},
+					{
+						"name": "Feed",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"divine",
+							"necromancy"
+						],
+						"requirements": "The vampiric creature's most recent action was a successful jaws {@action Strike} that dealt damage",
+						"entries": [
+							"The vampiric creature drains blood from its victim, dealing minimum jaws damage and regaining HP based on its level."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Skeleton",
+			"type": "Adjustment",
+			"hasLore": true,
+			"source": "BotD",
+			"page": 73,
+			"entries": [
+				"Most skeletons are mindless and follow either the basic instincts they had in life or orders given by their creator.",
+				{
+					"type": "list",
+					"items": [
+						"Add the {@trait skeleton} and {@trait undead} traits and, optionally, the {@trait mindless} trait.",
+						"Add the {@language Necril} language if it isn't mindless.",
+						"Decrease the creature's HP based on its level.",
+						"Add the following immunities: {@trait death} effects, {@trait disease}, {@condition paralyzed}, {@trait poison}, {@condition unconscious}. If it's mindless, add {@trait mental} as well.",
+						"Add the following resistances with a value based on the creature's level: cold, electricity, fire, piercing, slashing"
+					]
+				},
+				{
+					"type": "table",
+					"source": "BotD",
+					"page": 73,
+					"colStyles": [
+						"text-center",
+						"text-center",
+						"text-center"
+					],
+					"labelRowIdx": [
+						0
+					],
+					"rows": [
+						[
+							"Level",
+							"HP Decrease",
+							"Resistances"
+						],
+						[
+							"-1",
+							"-2",
+							"2"
+						],
+						[
+							"0\u20131",
+							"-4",
+							"2"
+						],
+						[
+							"2\u20135",
+							"-10",
+							"3"
+						],
+						[
+							"6\u201310",
+							"-20",
+							"5"
+						],
+						[
+							"11+",
+							"-40",
+							"10"
+						]
+					]
+				}
+			],
+			"abilities": {
+				"entries": [
+					{
+						"type": "list",
+						"items": [
+							"Add the following abilities."
+						]
+					}
+				],
+				"abilities": [
+					{
+						"name": "Darkvision",
+						"generic": {
+							"tag": "ability"
+						}
+					},
+					{
+						"name": "Negative Healing",
+						"generic": {
+							"tag": "ability",
+							"source": "B2"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Undead",
+			"type": "Adjustment",
+			"hasLore": true,
+			"source": "BotD",
+			"page": 72,
+			"entries": [
+				"This creature is a reanimated corpse.",
+				{
+					"type": "list",
+					"items": [
+						"Add the {@trait undead} trait and optionally the {@trait mindless} trait.",
+						"Add the {@language Necril} language if it isn't {@trait mindless}.",
+						"Add the following immunities: {@trait death} effects, {@trait disease}, {@condition paralyzed}, {@trait poison}, {@condition unconscious}. If it's {@trait mindless}, add {@trait mental} as well"
+					]
+				}
+			]
+		},
+		{
+			"name": "Mummy",
+			"type": "Adjustment",
+			"hasLore": true,
+			"source": "BotD",
+			"page": 72,
+			"entries": [
+				"All types of creatures can have their corpses preserved and rise as mummies.",
+				{
+					"type": "list",
+					"items": [
+						"Add the {@trait mummy} and {@trait undead} traits.",
+						"Add the {@language Necril} language.",
+						"Add the following immunities: {@trait death} effects, {@trait disease}, {@condition paralyzed}, {@trait poison}, {@condition unconscious}.",
+						"Add weakness to fire, with a value depending on the creature's level."
+					]
+				},
+				{
+					"type": "table",
+					"source": "BotD",
+					"page": 72,
+					"colStyles": [
+						"text-center",
+						"text-center"
+					],
+					"labelRowIdx": [
+						0
+					],
+					"rows": [
+						[
+							"Level",
+							"Weakness to Fire"
+						],
+						[
+							"3 or lower",
+							"3"
+						],
+						[
+							"4\u20138",
+							"5"
+						],
+						[
+							"9\u201313",
+							"10"
+						],
+						[
+							"14+",
+							"15"
+						]
+					]
+				}
+			],
+			"abilities": {
+				"entries": [
+					{
+						"type": "list",
+						"items": [
+							"Add the following abilities."
+						]
+					}
+				],
+				"abilities": [
+					{
+						"name": "Darkvision",
+						"generic": {
+							"tag": "ability"
+						}
+					},
+					{
+						"name": "Negative Healing",
+						"generic": {
+							"tag": "ability",
+							"source": "B2"
+						}
+					},
+					{
+						"name": "Lesser Despair",
+						"traits": [
+							"aura",
+							"divine",
+							"emotion",
+							"enchantment",
+							"fear",
+							"mental"
+						],
+						"entries": [
+							"30 feet. Living creatures of the mummy creature's level or lower are {@condition frightened 1} while in its despair aura. They can't naturally recover from this fear while in the area but recover instantly once they leave."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Ghoul",
+			"type": "Adjustment",
+			"hasLore": true,
+			"source": "BotD",
+			"page": 72,
+			"entries": [
+				"Ghoul creatures are typically hairless and gaunt with blue or purple skin and pointed ears.",
+				{
+					"type": "list",
+					"items": [
+						"Add the {@trait ghoul} and {@trait undead} traits.",
+						"Add the following immunities: {@trait death} effects, {@trait disease}, {@condition paralyzed}, {@trait poison}, {@condition unconscious}.",
+						"Decrease all saving throw modifiers by 1.",
+						"Add the paralysis ability to the creature's jaws, fangs, or similar unarmed attack. If the creature doesn't have one, add one with the same attack and damage as its strongest melee attack."
+					]
+				}
+			],
+			"abilities": {
+				"entries": [
+					{
+						"type": "list",
+						"items": [
+							"Add the following abilities."
+						]
+					}
+				],
+				"abilities": [
+					{
+						"name": "Darkvision",
+						"generic": {
+							"tag": "ability"
+						}
+					},
+					{
+						"name": "Negative Healing",
+						"generic": {
+							"tag": "ability",
+							"source": "B2"
+						}
+					},
+					{
+						"name": "Paralysis",
+						"traits": [
+							"occult",
+							"necromancy"
+						],
+						"entries": [
+							"When the creature gets a critical hit with its jaws against a living, non-elf foe of the creature's level or lower, the foe is paralyzed until the end of the foe's next turn."
+						]
+					},
+					{
+						"name": "Paralysis",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"move"
+						],
+						"entries": [
+							"The creature jumps up to half its Speed. This movement doesn't trigger reactions."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Shadow",
+			"type": "Adjustment",
+			"hasLore": true,
+			"source": "BotD",
+			"page": 72,
+			"entries": [
+				"A shadow creature is little more than a sentient shadow powered by negative energy. Shadows can easily travel to and from the Shadow Plane.",
+				{
+					"type": "list",
+					"items": [
+						"Add the {@trait undead} trait.",
+						"Add the {@language Necril} language.",
+						"Add {@skill Stealth} with a modifier equal to its highest skill modifier.",
+						"Add the following immunities: {@trait death} effects, {@trait disease}, {@condition paralyzed}, {@trait poison}, precision, {@condition unconscious}.",
+						"Add the following weaknesses, with a value based on the creature's level: force, {@item ghost touch}, positive.",
+						"If the creature can't fly, change its highest Speed to a fly Speed. Remove all other Speeds.",
+						"The damage of the creature's physical Strikes changes to negative damage, and those Strikes are {@trait magical}.",
+						"Add {@spell darkness} as an innate divine spell usable once per day."
+					]
+				},
+				{
+					"type": "table",
+					"source": "BotD",
+					"page": 73,
+					"colStyles": [
+						"text-center",
+						"text-center"
+					],
+					"labelRowIdx": [
+						0
+					],
+					"rows": [
+						[
+							"Level",
+							"Weaknesses"
+						],
+						[
+							"3 or lower",
+							"3"
+						],
+						[
+							"4\u20138",
+							"5"
+						],
+						[
+							"9\u201313",
+							"10"
+						],
+						[
+							"14+",
+							"15"
+						]
+					]
+				}
+			],
+			"abilities": {
+				"entries": [
+					{
+						"type": "list",
+						"items": [
+							"Add the following abilities."
+						]
+					}
+				],
+				"abilities": [
+					{
+						"name": "Darkvision",
+						"generic": {
+							"tag": "ability"
+						}
+					},
+					{
+						"name": "Negative Healing",
+						"generic": {
+							"tag": "ability",
+							"source": "B2"
+						}
+					},
+					{
+						"name": "Slink in Shadows",
+						"entries": [
+							"The creature can {@action Hide} or end its {@action Sneak} in a creature's or object's shadow."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Ghost",
+			"type": "Adjustment",
+			"hasLore": true,
+			"source": "BotD",
+			"page": 72,
+			"entries": [
+				"The ephemeral form of a ghostly creature lets it pass through solid objects and float in the air. For simplicity, a creature with these adjustments isn't truly incorporeal, nor does it necessarily return after being destroyed.",
+				{
+					"type": "list",
+					"items": [
+						"Add the {@trait ghost}, {@trait spirit}, and {@trait undead} traits.",
+						"Add the {@language Necril} language.",
+						"Add the following immunities: {@trait death} effects, {@trait disease}, {@condition paralyzed}, {@trait poison}, precision, {@condition unconscious}.",
+						"Add the following weaknesses, with a value based on the creature's level: force, {@item ghost touch}, positive.",
+						"If the creature can't fly, change its highest Speed to a fly Speed. Remove all other Speeds.",
+						"The damage of the creature's physical Strikes changes to negative damage, and those Strikes are magical."
+					]
+				},
+				{
+					"type": "table",
+					"source": "BotD",
+					"page": 72,
+					"colStyles": [
+						"text-center",
+						"text-center"
+					],
+					"labelRowIdx": [
+						0
+					],
+					"rows": [
+						[
+							"Level",
+							"Weaknesses"
+						],
+						[
+							"3 or lower",
+							"3"
+						],
+						[
+							"4\u20138",
+							"5"
+						],
+						[
+							"9\u201313",
+							"10"
+						],
+						[
+							"14+",
+							"15"
+						]
+					]
+				}
+			],
+			"abilities": {
+				"entries": [
+					{
+						"type": "list",
+						"items": [
+							"Add the following abilities."
+						]
+					}
+				],
+				"abilities": [
+					{
+						"name": "Darkvision",
+						"generic": {
+							"tag": "ability"
+						}
+					},
+					{
+						"name": "Negative Healing",
+						"generic": {
+							"tag": "ability",
+							"source": "B2"
+						}
+					},
+					{
+						"name": "Ghostly Passage",
+						"activity": {
+							"unit": "action",
+							"number": 1
+						},
+						"entries": [
+							"The creature Flies and, during this movement, can pass through walls, creatures, and other material obstacles as though incorporeal. It must begin and end its movement outside of any physical obstacles, and passing through solid material is difficult terrain."
+						]
+					}
+				]
+			}
+		},
+		{
 			"name": "Halfling",
+			"type": "Template",
 			"source": "GMG",
 			"page": 204,
 			"entries": [
@@ -9,7 +942,7 @@
 				{
 					"type": "list",
 					"items": [
-						"Add Halfling to the NPC's languages.",
+						"Add {@language Halfling} to the NPC's languages.",
 						"Add the keen eyes ability below."
 					]
 				}
@@ -30,12 +963,13 @@
 			"name": "Dwarf",
 			"source": "GMG",
 			"page": 204,
+			"type": "Template",
 			"entries": [
 				"Change the {@trait human} trait to {@trait dwarf}.",
 				{
 					"type": "list",
 					"items": [
-						"Add Dwarven to the NPC's languages.",
+						"Add {@language Dwarven} to the NPC's languages.",
 						"Add {@ability darkvision}.",
 						"Decrease the NPC's Speed by 5 feet. If the NPC already has a reduced Speed due to their armor, consider applying the {@feat Unburdened Iron} ancestry feat."
 					]
@@ -44,11 +978,10 @@
 			"abilities": {
 				"abilities": [
 					{
-						"type": "ability",
 						"name": "Darkvision",
-						"entries": [
-							"A monster with darkvision can see perfectly well in areas of darkness and dim light, though such vision is in black and white only. Some forms of magical darkness, such as a 4th-level {@spell darkness|CRB} spell, block normal {@ability darkvision}. A monster with greater darkvision, however, can see through even these forms of magical darkness."
-						]
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				]
 			}
@@ -57,6 +990,7 @@
 			"name": "Elf",
 			"source": "GMG",
 			"page": 204,
+			"type": "Template",
 			"entries": [
 				"Change the {@trait human} trait to {@trait elf}.",
 				{
@@ -71,7 +1005,6 @@
 			"abilities": {
 				"abilities": [
 					{
-						"type": "ability",
 						"name": "Low-Light Vision",
 						"entries": [
 							"The monster can see in dim light as though it were bright light, so it ignores the {@condition concealed} condition due to dim light."
@@ -84,12 +1017,13 @@
 			"name": "Gnome",
 			"source": "GMG",
 			"page": 204,
+			"type": "Template",
 			"entries": [
 				"Change the {@trait human} trait to {@trait gnome}.",
 				{
 					"type": "list",
 					"items": [
-						"Add Gnomish and Sylvan to the NPC's languages.",
+						"Add {@language Gnomish} and {@language Sylvan} to the NPC's languages.",
 						"Add {@ability low-light vision}."
 					]
 				}
@@ -97,11 +1031,10 @@
 			"abilities": {
 				"abilities": [
 					{
-						"type": "ability",
 						"name": "Darkvision",
-						"entries": [
-							"A monster with darkvision can see perfectly well in areas of darkness and dim light, though such vision is in black and white only. Some forms of magical darkness, such as a 4th-level {@spell darkness|CRB} spell, block normal {@ability darkvision}. A monster with greater darkvision, however, can see through even these forms of magical darkness."
-						]
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				]
 			}
@@ -110,12 +1043,13 @@
 			"name": "Goblin",
 			"source": "GMG",
 			"page": 204,
+			"type": "Template",
 			"entries": [
 				"Change the {@trait human} trait to {@trait goblin}.",
 				{
 					"type": "list",
 					"items": [
-						"Add Goblin to the NPC's languages.",
+						"Add {@language Goblin} to the NPC's languages.",
 						"Add {@ability darkvision}."
 					]
 				}
@@ -123,11 +1057,10 @@
 			"abilities": {
 				"abilities": [
 					{
-						"type": "ability",
 						"name": "Darkvision",
-						"entries": [
-							"A monster with darkvision can see perfectly well in areas of darkness and dim light, though such vision is in black and white only. Some forms of magical darkness, such as a 4th-level {@spell darkness|CRB} spell, block normal {@ability darkvision}. A monster with greater darkvision, however, can see through even these forms of magical darkness."
-						]
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				]
 			}
@@ -136,6 +1069,7 @@
 			"name": "Graveknight",
 			"source": "B1",
 			"page": 190,
+			"type": "Template",
 			"hasLore": true,
 			"abilities": {
 				"entries": [
@@ -149,21 +1083,19 @@
 				],
 				"abilities": [
 					{
-						"type": "ability",
 						"name": "Darkvision",
-						"entries": [
-							"A monster with darkvision can see perfectly well in areas of darkness and dim light, though such vision is in black and white only. Some forms of magical darkness, such as a 4th-level {@spell darkness|CRB} spell, block normal {@ability darkvision}. A monster with greater darkvision, however, can see through even these forms of magical darkness."
-						]
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
-						"type": "ability",
 						"name": "Negative Healing",
-						"entries": [
-							"A creature with negative healing draws health from negative energy rather than positive energy. It is damaged by positive damage and is not healed by positive healing effects. It does not take negative damage, and it is healed by negative effects that heal undead."
-						]
+						"generic": {
+							"tag": "ability",
+							"source": "B2"
+						}
 					},
 					{
-						"type": "ability",
 						"name": "Rejuvenation",
 						"traits": [
 							"divine",
@@ -174,14 +1106,12 @@
 						]
 					},
 					{
-						"type": "ability",
 						"name": "Immunities",
 						"entries": [
 							"{@trait death} effects, {@trait disease}, {@condition paralyzed}, {@trait poison}, precision, {@condition unconscious}, plus one energy type (the same chosen for ruinous weapons below)."
 						]
 					},
 					{
-						"type": "ability",
 						"name": "Sacrilegious Aura",
 						"traits": [
 							"abjuration",
@@ -194,7 +1124,6 @@
 						]
 					},
 					{
-						"type": "ability",
 						"name": "Devastating Blast",
 						"activity": {
 							"unit": "action",
@@ -209,7 +1138,6 @@
 						]
 					},
 					{
-						"type": "ability",
 						"name": "Phantom Mount",
 						"activity": {
 							"unit": "action",
@@ -225,14 +1153,12 @@
 						]
 					},
 					{
-						"type": "ability",
 						"name": "Ruinous Weapons",
 						"entries": [
 							"At the time of its creation, a graveknight chooses one of the following energy types that was relevant to its life or death: acid, cold, electricity, or fire. Any weapon the graveknight wields gains the effects of the caustic, frost, shock, or flaming weapon rune, respectively, in addition to a +1 striking weapon rune. If the graveknight is 14th level or higher, its weapons instead gain the effects of the greater versions of both of these runes."
 						]
 					},
 					{
-						"type": "ability",
 						"name": "Weapon Master",
 						"entries": [
 							"The graveknight has access to the critical specialization effects of any weapons it wields."
@@ -252,21 +1178,18 @@
 				],
 				"abilities": [
 					{
-						"type": "ability",
 						"name": "Betrayed Revivification",
 						"entries": [
 							"The graveknight died after being deeply betrayed. Instead of being immune to a type of energy damage, it is immune to mental damage, its weapons deal {@damage 1d6} additional mental damage, and its Devastating Blast deals mental damage with a Will saving throw instead of Reflex."
 						]
 					},
 					{
-						"type": "ability",
 						"name": "Create Grave Squire",
 						"entries": [
 							"The graveknight can gift a piece of its armor to a willing ally, which becomes its grave squire. The graveknight can communicate telepathically with its squire at any distance, see through the squire's senses, and cast suggestion as a divine innate spell through the telepathic link at will; the squire treats its degree of success as one step worse. If the graveknight's main armor is destroyed, the squire's piece expands to cover the squire's body over {@dice 1d10} days, after which point it becomes the graveknight's new body. The graveknight can have only one squire at a time, and must recover the gifted piece of armor if it wishes to create a new squire."
 						]
 					},
 					{
-						"type": "ability",
 						"name": "Dark Deliverance",
 						"entries": [
 							"The graveknight has positive resistance equal to its level."
@@ -275,18 +1198,12 @@
 				]
 			},
 			"entries": [
+				"You can turn an existing, living creature into a graveknight by completing the following steps. It's best to build a graveknight from scratch, but if you don't have the time, simply apply the template. A creature should be at least level 5 before being converted to a graveknight.",
+				"Increase the creature's level by 1 and change its statistics as follows.",
 				{
-					"type": "pf2-h3",
-					"name": "Creating Graveknights",
-					"entries": [
-						"You can turn an existing, living creature into a graveknight by completing the following steps. It's best to build a graveknight from scratch, but if you don't have the time, simply apply the template. A creature should be at least level 5 before being converted to a graveknight.",
-						"Increase the creature's level by 1 and change its statistics as follows.",
-						{
-							"type": "list",
-							"items": [
-								"Increase its attack rolls, AC, saving throws, Perception, and skills by 1, its HP by 5, and its Strike damage by 1."
-							]
-						}
+					"type": "list",
+					"items": [
+						"Increase its attack rolls, AC, saving throws, Perception, and skills by 1, its HP by 5, and its Strike damage by 1."
 					]
 				}
 			]
@@ -295,6 +1212,7 @@
 			"name": "Divine Warden",
 			"source": "B3",
 			"page": 72,
+			"type": "Template",
 			"hasLore": true,
 			"abilities": {
 				"entries": [
@@ -308,7 +1226,6 @@
 				],
 				"abilities": [
 					{
-						"type": "ability",
 						"name": "Divine Destruction",
 						"traits": [
 							"divine",
@@ -328,21 +1245,18 @@
 						]
 					},
 					{
-						"type": "ability",
 						"name": "Divine Innate Spells",
 						"entries": [
 							"A divine warden whose patron deity has any alignment components gains {@spell divine lance} as an innate cantrip. A divine warden with a neutral patron deity instead gains {@spell daze} as an innate cantrip."
 						]
 					},
 					{
-						"type": "ability",
 						"name": "Divine Domain Spells",
 						"entries": [
 							"The divine warden selects two of its patron deity's domains. The divine warden can cast the basic domain spell for its chosen domains. The divine warden has a focus pool of 1 Focus Point. It can't Refocus, but its focus pool automatically refills 24 hours after it last used a Focus Point. If the divine warden is at least 10th level, it also gains the advanced domain spells for its chosen domains, and its focus pool increases to 2 Focus Points."
 						]
 					},
 					{
-						"type": "ability",
 						"name": "Faith Bound",
 						"traits": [
 							"abjuration",
@@ -353,14 +1267,12 @@
 						]
 					},
 					{
-						"type": "ability",
 						"name": "Faithful Weapon",
 						"entries": [
 							"A divine warden always wields its patron deity's favored weapon. If the weapon is a ranged weapon, the divine warden automatically generates new ammunition with each attack. For a divine warden of 4th level or higher, the deity's favored weapon gains the effects of a {@item striking} rune while the divine warden wields it; at 12th level, these effects are of a {@item greater striking} rune, and at 19th level, they're instead of a {@item major striking} rune."
 						]
 					},
 					{
-						"type": "ability",
 						"name": "Instrument of Faith",
 						"entries": [
 							"The divine warden is a beacon for its deity's faith. A cleric of the divine warden's patron deity can channel a {@spell heal} spell through a divine warden they can see within 60 feet. The cleric determines any targets or area for the spell as if they were standing in the divine warden's space."
@@ -424,23 +1336,18 @@
 		{
 			"name": "Ghost",
 			"source": "B1",
+			"type": "Template",
 			"page": 166,
 			"hasLore": true,
 			"entries": [
+				"While it's best to create custom ghosts to fill an adventure's specific needs, you can also use the following guidelines to turn existing living creatures into ghosts.",
+				"First, increase the creature's level by 2 and change its statistics as follows.",
 				{
-					"type": "pf2-h3",
-					"name": "Creating a Ghost",
-					"entries": [
-						"While it's best to create custom ghosts to fill an adventure's specific needs, you can also use the following guidelines to turn existing living creatures into ghosts.",
-						"First, increase the creature's level by 2 and change its statistics as follows.",
-						{
-							"type": "list",
-							"items": [
-								"Increase AC, saves, Perception, DCs, and skill modifiers by 2. Increase the most appropriate melee attack modifier by 4 to become ghostly hand (described below), and other attack modifiers by 2.",
-								"A ghost has a Strength modifier of \u20135 and a Constitution modifier of +0.",
-								"Do not modify the ghost's Hit Points due to its new level."
-							]
-						}
+					"type": "list",
+					"items": [
+						"Increase AC, saves, Perception, DCs, and skill modifiers by 2. Increase the most appropriate melee attack modifier by 4 to become ghostly hand (described below), and other attack modifiers by 2.",
+						"A ghost has a Strength modifier of \u20135 and a Constitution modifier of +0.",
+						"Do not modify the ghost's Hit Points due to its new level."
 					]
 				}
 			],
@@ -456,28 +1363,25 @@
 				],
 				"abilities": [
 					{
-						"type": "ability",
 						"name": "Darkvision",
-						"entries": [
-							"A monster with darkvision can see perfectly well in areas of darkness and dim light, though such vision is in black and white only. Some forms of magical darkness, such as a 4th-level {@spell darkness|CRB} spell, block normal {@ability darkvision}. A monster with greater darkvision, however, can see through even these forms of magical darkness."
-						]
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
-						"type": "ability",
 						"name": "Site Bound",
 						"entries": [
 							"A typical ghost can stray only a short distance from where it was killed or the place it haunts. A typical limit is 120 feet. Some ghosts are instead bound to a room, building, item, or creature that was special to it rather than a location."
 						]
 					},
 					{
-						"type": "ability",
 						"name": "Negative Healing",
-						"entries": [
-							"A creature with negative healing draws health from negative energy rather than positive energy. It is damaged by positive damage and is not healed by positive healing effects. It does not take negative damage, and it is healed by negative effects that heal undead."
-						]
+						"generic": {
+							"tag": "ability",
+							"source": "B2"
+						}
 					},
 					{
-						"type": "ability",
 						"name": "Rejuvenation",
 						"traits": [
 							"divine",
@@ -488,28 +1392,24 @@
 						]
 					},
 					{
-						"type": "ability",
 						"name": "Immunities",
 						"entries": [
 							"{@trait death} effects, {@trait disease}, {@condition paralyzed}, {@trait poison}, precision, {@condition unconscious}"
 						]
 					},
 					{
-						"type": "ability",
 						"name": "Resistances",
 						"entries": [
 							"all damage 5 (except force, {@item ghost touch}, or positive; double resistance to non-magical). This resistance increases to 10 at 9th level and 15 at 16th level."
 						]
 					},
 					{
-						"type": "ability",
 						"name": "Fly Speed",
 						"entries": [
 							"equal to its Speed"
 						]
 					},
 					{
-						"type": "ability",
 						"name": "Ghostly Hand",
 						"entries": [
 							"All ghosts have a ghostly hand unarmed attack that deals negative damage. It typically has the {@trait agile}, {@trait finesse}, and {@trait magical} traits. Some ghosts wield ghostly memories of weapons they held in life, but the effect is the same."
@@ -529,7 +1429,6 @@
 				],
 				"abilities": [
 					{
-						"type": "ability",
 						"name": "Corrupting Gaze",
 						"activity": {
 							"unit": "action",
@@ -540,7 +1439,6 @@
 						]
 					},
 					{
-						"type": "ability",
 						"name": "Draining Touch",
 						"activity": {
 							"unit": "action",
@@ -551,7 +1449,6 @@
 						]
 					},
 					{
-						"type": "ability",
 						"name": "Frightful Moan",
 						"traits": [
 							"auditory",
@@ -570,7 +1467,6 @@
 						]
 					},
 					{
-						"type": "ability",
 						"name": "Inhabit Object",
 						"activity": {
 							"unit": "action",
@@ -581,7 +1477,6 @@
 						]
 					},
 					{
-						"type": "ability",
 						"name": "Malevolent Possession",
 						"activity": {
 							"unit": "action",
@@ -592,7 +1487,6 @@
 						]
 					},
 					{
-						"type": "ability",
 						"name": "Telekinetic Assault",
 						"traits": [
 							"divine",
@@ -613,21 +1507,16 @@
 			"name": "Ghoul",
 			"source": "B1",
 			"page": 168,
+			"type": "Template",
 			"hasLore": true,
 			"entries": [
+				"You can turn a living creature into a ghoul by completing the following steps. When creating a ghast, double these numerical adjustments. The monsters in this section are built from the ground up, so their numbers don't match these guidelines exactly. Custom-building ghouls is recommended if you have time, using the special abilities listed here but creating the other statistics to match what you want the ghoul to be.",
+				"First, increase the creature's level by 1 and change its statistics as follows.",
 				{
-					"type": "pf2-h3",
-					"name": "Creating Ghouls",
-					"entries": [
-						"You can turn a living creature into a ghoul by completing the following steps. When creating a ghast, double these numerical adjustments. The monsters in this section are built from the ground up, so their numbers don't match these guidelines exactly. Custom-building ghouls is recommended if you have time, using the special abilities listed here but creating the other statistics to match what you want the ghoul to be.",
-						"First, increase the creature's level by 1 and change its statistics as follows.",
-						{
-							"type": "list",
-							"items": [
-								"Increase its AC, attack bonuses, DCs, saving throws, and skill modifiers by 1.",
-								"Increase its damage with Strikes and other offensive abilities by 1. If the creature is limited in how often it can use an ability (such as a breath weapon), increase the damage by 2 instead."
-							]
-						}
+					"type": "list",
+					"items": [
+						"Increase its AC, attack bonuses, DCs, saving throws, and skill modifiers by 1.",
+						"Increase its damage with Strikes and other offensive abilities by 1. If the creature is limited in how often it can use an ability (such as a breath weapon), increase the damage by 2 instead."
 					]
 				}
 			],
@@ -643,42 +1532,37 @@
 				],
 				"abilities": [
 					{
-						"type": "ability",
 						"name": "Darkvision",
-						"entries": [
-							"A monster with darkvision can see perfectly well in areas of darkness and dim light, though such vision is in black and white only. Some forms of magical darkness, such as a 4th-level {@spell darkness|CRB} spell, block normal {@ability darkvision}. A monster with greater darkvision, however, can see through even these forms of magical darkness."
-						]
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
-						"type": "ability",
 						"name": "Negative Healing",
-						"entries": [
-							"A creature with negative healing draws health from negative energy rather than positive energy. It is damaged by positive damage and is not healed by positive healing effects. It does not take negative damage, and it is healed by negative effects that heal undead."
-						]
+						"generic": {
+							"tag": "ability",
+							"source": "B2"
+						}
 					},
 					{
-						"type": "ability",
 						"name": "Immunities",
 						"entries": [
 							"{@trait death} effects, {@trait disease}, {@condition paralyzed}, {@trait poison}, {@condition unconscious}"
 						]
 					},
 					{
-						"type": "ability",
 						"name": "Claws",
 						"entries": [
 							"If the creature had hands, it gains a claw {@action Strike} (an {@trait agile} {@trait unarmed} attack that deals slashing damage plus paralysis). If it had any {@trait agile} attacks, the damage dealt by its claws should be roughly the same as the damage dealt by those attacks. If it had only non-agile attacks, its claws should deal three-quarters that damage."
 						]
 					},
 					{
-						"type": "ability",
 						"name": "Jaws",
 						"entries": [
 							"If the creature had a mouth, it gains a jaws {@action Strike} (an {@trait unarmed} attack that deals slashing damage plus ghoul fever and paralysis). The damage amount should be the same as the creature's non-agile attacks."
 						]
 					},
 					{
-						"type": "ability",
 						"name": "Consume Flesh",
 						"traits": [
 							"manipulate"
@@ -729,7 +1613,6 @@
 						"name": "Ghoul Fever"
 					},
 					{
-						"type": "ability",
 						"name": "Paralysis",
 						"traits": [
 							"incapacitation",
@@ -741,7 +1624,6 @@
 						]
 					},
 					{
-						"type": "ability",
 						"name": "Swift Leap",
 						"activity": {
 							"unit": "action",
@@ -768,7 +1650,6 @@
 				],
 				"abilities": [
 					{
-						"type": "ability",
 						"name": "Stench",
 						"traits": [
 							"aura",
@@ -779,14 +1660,12 @@
 						]
 					},
 					{
-						"type": "ability",
 						"name": "Claws and Jaws",
 						"entries": [
 							"As ghoul, but apply ghast fever instead of ghoul fever."
 						]
 					},
 					{
-						"type": "ability",
 						"name": "Consume Flesh",
 						"activity": {
 							"unit": "action",
@@ -833,7 +1712,6 @@
 						"name": "Ghast Fever"
 					},
 					{
-						"type": "ability",
 						"name": "Paralysis",
 						"traits": [
 							"incapacitation",
@@ -850,22 +1728,17 @@
 		{
 			"name": "Herexen",
 			"source": "B3",
+			"type": "Template",
 			"page": 134,
 			"hasLore": true,
 			"entries": [
+				"The herexen presented in the stat block below was originally a cleric of Pharasma, but there are as many kinds of herexens as there are deities. To create a herexen of a different deity, do the following.",
 				{
-					"type": "pf2-h3",
-					"name": "Building Herexens",
-					"entries": [
-						"The herexen presented in the stat block below was originally a cleric of Pharasma, but there are as many kinds of herexens as there are deities. To create a herexen of a different deity, do the following.",
-						{
-							"type": "list",
-							"items": [
-								"Swap out the herexen's weapon for the deity's favored weapon. If the weapon is simple, increase the damage die by one step; if it's two-handed, decrease the herexen's attack bonus with that weapon by 2.",
-								"Swap out the herexen's domain spell for a 1st-level focus spell from a domain associated with that deity.",
-								"Swap the defiled religious symbol for the correct deity. For example, an ex-{@deity Sarenrae||Sarenite} herexen carries a {@item scimitar} and a defiled {@item religious symbol} of Sarenrae, and can cast {@spell fire ray} (attack +12) as a focus spell."
-							]
-						}
+					"type": "list",
+					"items": [
+						"Swap out the herexen's weapon for the deity's favored weapon. If the weapon is simple, increase the damage die by one step; if it's two-handed, decrease the herexen's attack bonus with that weapon by 2.",
+						"Swap out the herexen's domain spell for a 1st-level focus spell from a domain associated with that deity.",
+						"Swap the defiled religious symbol for the correct deity. For example, an ex-{@deity Sarenrae||Sarenite} herexen carries a {@item scimitar} and a defiled {@item religious symbol} of Sarenrae, and can cast {@spell fire ray} (attack +12) as a focus spell."
 					]
 				},
 				{
@@ -880,21 +1753,16 @@
 		{
 			"name": "Lich",
 			"source": "B1",
+			"type": "Template",
 			"page": 220,
 			"hasLore": true,
 			"entries": [
+				"A lich can be any type of spellcaster, as long as it has the ability to perform a ritual of undeath as the primary caster (which can usually be performed only by a spellcaster capable of casting 6th-level spells). To create a lich, follow these steps.",
+				"Increase the spellcaster's level by 1 and change its statistics as follows.",
 				{
-					"type": "pf2-h3",
-					"name": "Creating A Lich",
-					"entries": [
-						"A lich can be any type of spellcaster, as long as it has the ability to perform a ritual of undeath as the primary caster (which can usually be performed only by a spellcaster capable of casting 6th-level spells). To create a lich, follow these steps.",
-						"Increase the spellcaster's level by 1 and change its statistics as follows.",
-						{
-							"type": "list",
-							"items": [
-								"Increase spell DCs and spell attack roll by 2."
-							]
-						}
+					"type": "list",
+					"items": [
+						"Increase spell DCs and spell attack roll by 2."
 					]
 				}
 			],
@@ -911,28 +1779,25 @@
 				],
 				"abilities": [
 					{
-						"type": "ability",
 						"name": "Darkvision",
-						"entries": [
-							"A monster with darkvision can see perfectly well in areas of darkness and dim light, though such vision is in black and white only. Some forms of magical darkness, such as a 4th-level {@spell darkness|CRB} spell, block normal {@ability darkvision}. A monster with greater darkvision, however, can see through even these forms of magical darkness."
-						]
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
-						"type": "ability",
 						"name": "Saving Throws",
 						"entries": [
 							"+1 status bonus to all saves vs. {@trait positive}"
 						]
 					},
 					{
-						"type": "ability",
 						"name": "Negative Healing",
-						"entries": [
-							"A creature with negative healing draws health from negative energy rather than positive energy. It is damaged by positive damage and is not healed by positive healing effects. It does not take negative damage, and it is healed by negative effects that heal undead."
-						]
+						"generic": {
+							"tag": "ability",
+							"source": "B2"
+						}
 					},
 					{
-						"type": "ability",
 						"name": "Rejuvenation",
 						"traits": [
 							"divine",
@@ -943,21 +1808,18 @@
 						]
 					},
 					{
-						"type": "ability",
 						"name": "Immunities",
 						"entries": [
 							"{@trait death} effects, {@trait disease}, {@condition paralyzed}, {@trait poison}, precision, {@condition unconscious}"
 						]
 					},
 					{
-						"type": "ability",
 						"name": "Resistances",
 						"entries": [
 							"cold 20, physical 15 (except magic bludgeoning)"
 						]
 					},
 					{
-						"type": "ability",
 						"name": "Frightful Presence",
 						"source": "B1",
 						"page": 343,
@@ -981,14 +1843,12 @@
 						]
 					},
 					{
-						"type": "ability",
 						"name": "Hand of the Lich",
 						"entries": [
 							"All liches have a hand unarmed attack that deals {@damage 1d8} negative damage for every 3 levels and inflicts a paralyzing touch. This attack has the {@trait finesse} trait."
 						]
 					},
 					{
-						"type": "ability",
 						"name": "Drain Phylactery",
 						"activity": {
 							"unit": "free",
@@ -1003,7 +1863,6 @@
 						]
 					},
 					{
-						"type": "ability",
 						"name": "Paralyzing Touch",
 						"activity": {
 							"unit": "free",
@@ -1037,7 +1896,6 @@
 				],
 				"abilities": [
 					{
-						"type": "ability",
 						"name": "Blasphemous Utterances",
 						"traits": [
 							"arcane",
@@ -1050,21 +1908,18 @@
 						]
 					},
 					{
-						"type": "ability",
 						"name": "Cold Beyond Cold",
 						"entries": [
 							"The lich's hand Strike deals cold damage instead of negative, and instead of being paralyzed, the target is slowed 2. A successful Fortitude save reduces this to slowed 1 (or negates it on a critical success)."
 						]
 					},
 					{
-						"type": "ability",
 						"name": "Dark Deliverance",
 						"entries": [
 							"The lich has resistance to positive equal to its level."
 						]
 					},
 					{
-						"type": "ability",
 						"name": "Siphon Life",
 						"activity": {
 							"unit": "reaction",
@@ -1076,7 +1931,6 @@
 						]
 					},
 					{
-						"type": "ability",
 						"name": "Void Shroud",
 						"traits": [
 							"aura",
@@ -1094,53 +1948,48 @@
 			"name": "Ravener",
 			"source": "B2",
 			"page": 220,
+			"type": "Template",
 			"hasLore": true,
 			"entries": [
+				"Any evil dragon of at least level 13 can become a ravener, although it is exceedingly rare for a dragon younger than an ancient true dragon (such as a chromatic, primal, or metallic dragon) to do so. Typically, the dragon must perform a rare ritual called ravenous reanimation, but this requirement can be waived if the prospective ravener has the aid of a powerful patron. In certain unique conditions, such as the intervention of a vile god of undeath, a dragon can transform into a ravener after death without the use of this rite at all. A ravener is a powerful creature that is likely to have a major impact on your game, so you might want to create each one as a custom monster. If you don't have time, you can also create a ravener via the following steps.",
+				"Increase the dragon's level by 2 and change their statistics as follows.",
 				{
-					"type": "pf2-h3",
-					"name": "Creating A Ravener",
-					"entries": [
-						"Any evil dragon of at least level 13 can become a ravener, although it is exceedingly rare for a dragon younger than an ancient true dragon (such as a chromatic, primal, or metallic dragon) to do so. Typically, the dragon must perform a rare ritual called ravenous reanimation, but this requirement can be waived if the prospective ravener has the aid of a powerful patron. In certain unique conditions, such as the intervention of a vile god of undeath, a dragon can transform into a ravener after death without the use of this rite at all. A ravener is a powerful creature that is likely to have a major impact on your game, so you might want to create each one as a custom monster. If you don't have time, you can also create a ravener via the following steps.",
-						"Increase the dragon's level by 2 and change their statistics as follows.",
-						{
-							"type": "list",
-							"items": [
-								"They gain the undead trait and the {@language Necril} language.",
-								"Increase their AC, attack bonuses, DCs, saving throws, and skill modifiers by 2.",
-								"They gain weakness to good damage and more HP (see below).",
-								"The ravener's melee strikes deal an additional {@damage 2d6} negative damage, and their damaging Breath Weapon deals an additional {@damage 4d6} persistent negative damage."
-							]
-						},
-						{
-							"type": "table",
-							"source": "B2",
-							"page": 222,
-							"colStyles": [
-								"text-center",
-								"text-center",
-								"text-center"
-							],
-							"labelRowIdx": [
-								0
-							],
-							"rows": [
-								[
-									"Starting Level",
-									"HP Increase",
-									"Weakness"
-								],
-								[
-									"13\u201320",
-									"50",
-									"15"
-								],
-								[
-									"21 or greater",
-									"80",
-									"20"
-								]
-							]
-						}
+					"type": "list",
+					"items": [
+						"They gain the undead trait and the {@language Necril} language.",
+						"Increase their AC, attack bonuses, DCs, saving throws, and skill modifiers by 2.",
+						"They gain weakness to good damage and more HP (see below).",
+						"The ravener's melee strikes deal an additional {@damage 2d6} negative damage, and their damaging Breath Weapon deals an additional {@damage 4d6} persistent negative damage."
+					]
+				},
+				{
+					"type": "table",
+					"source": "B2",
+					"page": 222,
+					"colStyles": [
+						"text-center",
+						"text-center",
+						"text-center"
+					],
+					"labelRowIdx": [
+						0
+					],
+					"rows": [
+						[
+							"Starting Level",
+							"HP Increase",
+							"Weakness"
+						],
+						[
+							"13\u201320",
+							"50",
+							"15"
+						],
+						[
+							"21 or greater",
+							"80",
+							"20"
+						]
 					]
 				}
 			],
@@ -1156,35 +2005,31 @@
 				],
 				"abilities": [
 					{
-						"type": "ability",
 						"name": "Darkvision",
-						"entries": [
-							"A monster with darkvision can see perfectly well in areas of darkness and dim light, though such vision is in black and white only. Some forms of magical darkness, such as a 4th-level {@spell darkness|CRB} spell, block normal {@ability darkvision}. A monster with greater darkvision, however, can see through even these forms of magical darkness."
-						]
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
-						"type": "ability",
 						"name": "Soulsense",
 						"entries": [
 							"A ravener senses the spiritual essence of living and undead creatures within the listed range. Creatures whose material bodies are one unit with their souls, like celestials and fiends, appear brighter to this sense."
 						]
 					},
 					{
-						"type": "ability",
 						"name": "Negative Healing",
-						"entries": [
-							"A creature with negative healing draws health from negative energy rather than positive energy. It is damaged by positive damage and is not healed by positive healing effects. It does not take negative damage, and it is healed by negative effects that heal undead."
-						]
+						"generic": {
+							"tag": "ability",
+							"source": "B2"
+						}
 					},
 					{
-						"type": "ability",
 						"name": "Immunities",
 						"entries": [
 							"{@trait death} effects, {@trait disease}, {@condition paralyzed}, {@trait poison}, {@condition unconscious}"
 						]
 					},
 					{
-						"type": "ability",
 						"name": "Cowering Fear",
 						"traits": [
 							"aura",
@@ -1197,14 +2042,12 @@
 						]
 					},
 					{
-						"type": "ability",
 						"name": "Soul Ward",
 						"entries": [
 							"An intangible field of necromantic energy protects a ravener from total destruction. A soul ward has 150 maximum Hit Points, or 200 if the ravener is level 21 or higher. Whenever a ravener would be reduced below 1 Hit Point, all damage in excess of what would reduce them to 1 Hit Point is instead dealt to their soul ward. If this damage reduces the soul ward to fewer than 0 Hit Points, the ravener is destroyed. A soul ward's Hit Points can be restored only via specific ravener abilities such as Consume Soul, ravenous breath, or vicious criticals. A ravener who goes more than a week without successfully using Consume Soul to feed on a dying creature starves, and their soul ward loses 1d4 Hit Points each day until they feed. If the ravener's soul ward loses all its Hit Points while the ravener still has more than 1 HP, they become a {@creature ravener husk|b2}."
 						]
 					},
 					{
-						"type": "ability",
 						"name": "Consume Soul",
 						"activity": {
 							"unit": "free",
@@ -1230,7 +2073,6 @@
 						]
 					},
 					{
-						"type": "ability",
 						"name": "Discorporate",
 						"activity": {
 							"unit": "free",
@@ -1246,14 +2088,12 @@
 						]
 					},
 					{
-						"type": "ability",
 						"name": "Ravenous Breath",
 						"entries": [
 							"A ravener's Breath Weapon is infused with negative energy and strips life essence from the victims. Any creature that fails its save against the ravener's Breath Weapon is drained 1 (or drained 2 on a critical failure). If at least one creature is drained by the ravener's Breath Weapon, the ravener's soul ward gains 5 Hit Points."
 						]
 					},
 					{
-						"type": "ability",
 						"name": "Vicious Criticals",
 						"entries": [
 							"The ravener treats an attack roll as a critical hit on a roll of 19 or 20, as long as the attack roll was a success. Additionally, whenever the ravener makes a critical hit with one of their {@action Strike||Strikes}, the target must succeed on a Fortitude save or gain the {@condition drained 1} condition. If the target already has a drained value of greater than 0, their {@condition drained} value instead increases by 1, to a maximum of {@condition drained 4}. Whenever the ravener applies drain to a creature in this way, their soul ward gains 5 Hit Points."
@@ -1287,62 +2127,57 @@
 			"name": "Vampire",
 			"source": "B1",
 			"page": 318,
+			"type": "Template",
 			"hasLore": true,
 			"entries": [
+				"You can turn an existing living creature into a vampire using the following steps.",
+				"Increase the creature's level by 1 and change its statistics as follows.",
 				{
-					"type": "pf2-h3",
-					"name": "Creating a Vampire",
-					"entries": [
-						"You can turn an existing living creature into a vampire using the following steps.",
-						"Increase the creature's level by 1 and change its statistics as follows.",
-						{
-							"type": "list",
-							"items": [
-								"It gains the {@trait undead} and {@trait vampire} traits, and usually becomes {@trait evil}.",
-								"Increase AC, attack bonuses, DCs, saving throws, and skill modifiers by 1.",
-								"Increase damage with {@action Strike||Strikes} and other offensive abilities by 1. If an ability can be used only a small number of times (such as a dragon's breath weapon), increase the damage by 2 instead.",
-								"Reduce HP by the amount listed on the table.",
-								"The vampire gains {@ability fast healing} and resistance to physical damage (except silver) as indicated in the table. These abilities are the reason the vampire has less HP."
-							]
-						},
-						{
-							"type": "table",
-							"labelRowIdx": [
-								0
-							],
-							"colStyles": [
-								"text-center",
-								"text-center",
-								"text-center"
-							],
-							"rows": [
-								[
-									"Starting Level",
-									"HP Decrease",
-									"Fast Healing/Resistance"
-								],
-								[
-									"3-4",
-									"-20",
-									"5"
-								],
-								[
-									"5-7",
-									"-30",
-									"7"
-								],
-								[
-									"8-14",
-									"-40",
-									"10"
-								],
-								[
-									"15+",
-									"-60",
-									"15"
-								]
-							]
-						}
+					"type": "list",
+					"items": [
+						"It gains the {@trait undead} and {@trait vampire} traits, and usually becomes {@trait evil}.",
+						"Increase AC, attack bonuses, DCs, saving throws, and skill modifiers by 1.",
+						"Increase damage with {@action Strike||Strikes} and other offensive abilities by 1. If an ability can be used only a small number of times (such as a dragon's breath weapon), increase the damage by 2 instead.",
+						"Reduce HP by the amount listed on the table.",
+						"The vampire gains {@ability fast healing} and resistance to physical damage (except silver) as indicated in the table. These abilities are the reason the vampire has less HP."
+					]
+				},
+				{
+					"type": "table",
+					"labelRowIdx": [
+						0
+					],
+					"colStyles": [
+						"text-center",
+						"text-center",
+						"text-center"
+					],
+					"rows": [
+						[
+							"Starting Level",
+							"HP Decrease",
+							"Fast Healing/Resistance"
+						],
+						[
+							"3-4",
+							"-20",
+							"5"
+						],
+						[
+							"5-7",
+							"-30",
+							"7"
+						],
+						[
+							"8-14",
+							"-40",
+							"10"
+						],
+						[
+							"15+",
+							"-60",
+							"15"
+						]
 					]
 				}
 			],
@@ -1358,21 +2193,19 @@
 				],
 				"abilities": [
 					{
-						"type": "ability",
 						"name": "Negative Healing",
-						"entries": [
-							"A creature with negative healing draws health from negative energy rather than positive energy. It is damaged by positive damage and is not healed by positive healing effects. It does not take negative damage, and it is healed by negative effects that heal undead."
-						]
+						"generic": {
+							"tag": "ability",
+							"source": "B2"
+						}
 					},
 					{
-						"type": "ability",
 						"name": "Immunities",
 						"entries": [
 							"{@trait death} effects, {@trait disease}, {@condition paralyzed}, {@trait poison}, {@trait sleep}"
 						]
 					},
 					{
-						"type": "ability",
 						"name": "Coffin Restoration",
 						"traits": [
 							"divine",
@@ -1384,7 +2217,6 @@
 						]
 					},
 					{
-						"type": "ability",
 						"name": "Vampire Weaknesses",
 						"entries": [
 							"All vampires possess the following weaknesses.",
@@ -1400,14 +2232,12 @@
 						]
 					},
 					{
-						"type": "ability",
 						"name": "Climb Speed",
 						"entries": [
 							"Vampires gain a climb Speed equal to their land Speed."
 						]
 					},
 					{
-						"type": "ability",
 						"name": "Claws",
 						"entries": [
 							"If the creature had hands, its fingernails thicken and grow, granting it an {@trait unarmed} claw {@action Strike} that deals slashing damage and has the {@trait agile} trait. If the monster had any {@trait agile} attacks, the damage dealt by its claws should be roughly the same as the damage dealt by those attacks. If it had only non-agile attacks, its claws should deal three-quarters that damage."
@@ -1422,7 +2252,6 @@
 						"entries": [
 							"The vampire sinks its fangs into that creature to drink its blood. This requires an {@skill Athletics} check against the victim's Fortitude DC if the victim is {@condition grabbed} and is automatic for any of the other conditions. The victim is {@condition drained 1} and the vampire regains HP equal to 10% of its maximum HP, gaining any excess HP as temporary Hit Points. Drinking Blood from a creature that's already drained doesn't restore any HP to the vampire but increases the victim's {@condition drained||drain} value by 1. A vampire can also consume blood that's been emptied into a vessel for sustenance, but it gains no HP from doing so."
 						],
-						"type": "ability",
 						"style": "compact",
 						"traits": [
 							"divine",
@@ -1431,7 +2260,6 @@
 						"name": "Drink Blood"
 					},
 					{
-						"type": "ability",
 						"name": "Grab",
 						"entries": [
 							"The creature's claw attacks (or equivalent {@trait unarmed} attacks) gain {@ability Grab}."
@@ -1451,14 +2279,12 @@
 				],
 				"abilities": [
 					{
-						"type": "ability",
 						"name": "Resistances",
 						"entries": [
 							"The vampire resists all physical damage except magical silver."
 						]
 					},
 					{
-						"type": "ability",
 						"traits": [
 							"divine",
 							"downtime",
@@ -1478,7 +2304,6 @@
 						"entries": [
 							"The vampire uses Turn to Mist. It can take move actions to move toward its coffin even though it's at 0 HP. While at 0 HP in this form, the vampire is unaffected by further damage. It automatically returns to its corporeal form, unconscious, if it reaches its coffin or after 2 hours, whichever comes first."
 						],
-						"type": "ability",
 						"style": "compact",
 						"name": "Mist Escape"
 					},
@@ -1503,7 +2328,6 @@
 								]
 							}
 						],
-						"type": "ability",
 						"style": "compact",
 						"traits": [
 							"concentrate",
@@ -1514,7 +2338,6 @@
 						"name": "Change Shape"
 					},
 					{
-						"type": "ability",
 						"traits": [
 							"divine",
 							"enchantment",
@@ -1533,7 +2356,6 @@
 						"entries": [
 							"The vampire can cast {@spell dominate} at will as a divine innate spell. Casting it requires staring into the target's eyes, giving the spell the {@trait visual} trait. The save DC uses the DC of the {@table DCs by Level||vampire's level}, and a creature that succeeds is temporarily immune to that vampire's Dominate for 24 hours. Fully destroying the vampire ends the domination, but merely reducing the vampire to 0 HP is insufficient to break the spell."
 						],
-						"type": "ability",
 						"style": "compact",
 						"traits": [
 							"divine",
@@ -1545,7 +2367,6 @@
 						"name": "Dominate"
 					},
 					{
-						"type": "ability",
 						"name": "Drink Blood",
 						"entries": [
 							"As a typical vampire, but the victim is {@condition drained 2} instead of 1."
@@ -1559,7 +2380,6 @@
 						"entries": [
 							"The vampire turns into a cloud of vapor, as the {@spell gaseous form} spell, or back to its normal form. The vampire loses {@ability fast healing} while in gaseous form. The vampire can remain in this form indefinitely."
 						],
-						"type": "ability",
 						"style": "compact",
 						"traits": [
 							"concentrate",
@@ -1575,6 +2395,7 @@
 			"name": "Werecreature",
 			"source": "B1",
 			"page": 328,
+			"type": "Template",
 			"hasLore": true,
 			"entries": [
 				{
@@ -1584,61 +2405,55 @@
 						"The curse of the werecreature comes in myriad forms and can affect any humanoid, allowing you to make a wide variety of werecreatures for your adventures. When you need to create a werecreature for your game, you can do so in one of two ways. You can simply build the werecreature from the ground up, using the standard rules for monster creation (this is how the werebear, wererat, and werewolf presented on these pages were built). Or you can use the guidelines presented under \"Creating Werecreatures\" to turn an existing creature (or even a player character!) into a werecreature. In either case, specific werecreature abilities like Change Shape, curse of the werecreature, and moon frenzy work the same."
 					]
 				},
+				"You can turn an existing, living humanoid into a werecreature by completing the following steps. (These changes reflect a werecreature in its hybrid form.)",
+				"Increase the creature's level by 1 and change its statistics as follows.",
 				{
-					"type": "pf2-h3",
-					"name": "Creating Werecreatures",
-					"entries": [
-						"You can turn an existing, living humanoid into a werecreature by completing the following steps. (These changes reflect a werecreature in its hybrid form.)",
-						"Increase the creature's level by 1 and change its statistics as follows.",
-						{
-							"type": "list",
-							"items": [
-								"It gains the {@trait beast} and {@trait werecreature} traits, and its alignment is usually adjusted to match that of its werecreature type.",
-								"Increase its size by one category if the animal is a larger size than the base humanoid.",
-								"Increase its AC, attack bonuses, DCs, saving throws, and skill modifiers by 1.",
-								"Increase its damage with {@action Strike||Strikes} and other offensive abilities by 1. If the werecreature is limited in how often it can use an ability (such as a breath weapon), increase the damage by 2 instead.",
-								"Increase its HP by the amount shown on the table. This HP increase is more than typical in order to compensate for the creature's weakness to silver.",
-								"The creature gains weakness to silver as shown on the table."
-							]
-						},
-						{
-							"type": "table",
-							"labelRowIdx": [
-								0
-							],
-							"colStyles": [
-								"text-center",
-								"text-center",
-								"text-center"
-							],
-							"rows": [
-								[
-									"Starting Level",
-									"HP Increase",
-									"Weakness to Silver"
-								],
-								[
-									"4 or lower",
-									"+25",
-									"5"
-								],
-								[
-									"5-7",
-									"+35",
-									"7"
-								],
-								[
-									"8-14",
-									"+50",
-									"10"
-								],
-								[
-									"15+",
-									"+75",
-									"15"
-								]
-							]
-						}
+					"type": "list",
+					"items": [
+						"It gains the {@trait beast} and {@trait werecreature} traits, and its alignment is usually adjusted to match that of its werecreature type.",
+						"Increase its size by one category if the animal is a larger size than the base humanoid.",
+						"Increase its AC, attack bonuses, DCs, saving throws, and skill modifiers by 1.",
+						"Increase its damage with {@action Strike||Strikes} and other offensive abilities by 1. If the werecreature is limited in how often it can use an ability (such as a breath weapon), increase the damage by 2 instead.",
+						"Increase its HP by the amount shown on the table. This HP increase is more than typical in order to compensate for the creature's weakness to silver.",
+						"The creature gains weakness to silver as shown on the table."
+					]
+				},
+				{
+					"type": "table",
+					"labelRowIdx": [
+						0
+					],
+					"colStyles": [
+						"text-center",
+						"text-center",
+						"text-center"
+					],
+					"rows": [
+						[
+							"Starting Level",
+							"HP Increase",
+							"Weakness to Silver"
+						],
+						[
+							"4 or lower",
+							"+25",
+							"5"
+						],
+						[
+							"5-7",
+							"+35",
+							"7"
+						],
+						[
+							"8-14",
+							"+50",
+							"10"
+						],
+						[
+							"15+",
+							"+75",
+							"15"
+						]
 					]
 				}
 			],
@@ -1654,14 +2469,12 @@
 				],
 				"abilities": [
 					{
-						"type": "ability",
 						"name": "Senses",
 						"entries": [
 							"The werecreature gains all the senses of the animal."
 						]
 					},
 					{
-						"type": "ability",
 						"traits": [
 							"divination",
 							"primal"
@@ -1672,21 +2485,18 @@
 						]
 					},
 					{
-						"type": "ability",
 						"name": "Claws",
 						"entries": [
 							"The werecreature gains a claw {@action Strike} (an {@trait agile} {@trait unarmed} attack that deals slashing damage). If it had any {@trait agile} attacks, the damage dealt by its claws should be roughly the same as the damage dealt by those attacks. If it had only non-{@trait agile} attacks, its claws should deal three-quarters that damage."
 						]
 					},
 					{
-						"type": "ability",
 						"name": "Jaws",
 						"entries": [
 							"The creature gains a jaws {@action Strike} (an {@trait unarmed} attack that deals piercing damage) that inflicts its curse of the werecreature. If it had any non-{@trait agile} attacks, the damage dealt by its jaws should be roughly the same as the damage dealt by those attacks. If it had only {@trait agile} attacks, its jaws should deal one-third more damage."
 						]
 					},
 					{
-						"type": "ability",
 						"name": "Change Shape",
 						"activity": {
 							"number": 1,
@@ -1706,7 +2516,6 @@
 						"name": "Curse of the Werecreature",
 						"source": "B1",
 						"page": 329,
-						"type": "ability",
 						"traits": [
 							"curse",
 							"necromancy",
@@ -1725,7 +2534,6 @@
 						]
 					},
 					{
-						"type": "ability",
 						"name": "Moon Frenzy",
 						"traits": [
 							"polymorph",
@@ -1742,6 +2550,7 @@
 		{
 			"name": "Worm That Walks",
 			"source": "B2",
+			"type": "Template",
 			"page": 296,
 			"hasLore": true,
 			"entries": [
@@ -1760,59 +2569,53 @@
 						}
 					]
 				},
+				"You can turn an existing evil, living, spellcasting creature into a worm that walks using the following steps.",
+				"Increase the creature's level by 1 and change its statistics as follows.",
 				{
-					"type": "pf2-h3",
-					"name": "Creating A Worm That Walks",
-					"entries": [
-						"You can turn an existing evil, living, spellcasting creature into a worm that walks using the following steps.",
-						"Increase the creature's level by 1 and change its statistics as follows.",
-						{
-							"type": "list",
-							"items": [
-								"It gains the {@trait aberration} and {@trait swarm} traits and usually remains evil.",
-								"Increase AC, attack bonuses, DCs, saving throws, and skill modifiers by 1.",
-								"Reduce its Hit Points by the amount listed on the table (to a minimum of 2 HP per level).",
-								"The worm that walks gains fast healing, resistance to physical damage, and weakness to area damage and splash damage as indicated in the table. These abilities are the reason the worm that walks has fewer HP."
-							]
-						},
-						{
-							"type": "table",
-							"labelRowIdx": [
-								0
-							],
-							"colStyles": [
-								"text-center",
-								"text-center",
-								"text-center"
-							],
-							"rows": [
-								[
-									"Starting Level",
-									"HP Decrease",
-									"Fast Healing, Resistance, and Weakness"
-								],
-								[
-									"4 or less",
-									"-20",
-									"5"
-								],
-								[
-									"5-7",
-									"-30",
-									"7"
-								],
-								[
-									"8-14",
-									"-40",
-									"10"
-								],
-								[
-									"15 or higher",
-									"-60",
-									"15"
-								]
-							]
-						}
+					"type": "list",
+					"items": [
+						"It gains the {@trait aberration} and {@trait swarm} traits and usually remains evil.",
+						"Increase AC, attack bonuses, DCs, saving throws, and skill modifiers by 1.",
+						"Reduce its Hit Points by the amount listed on the table (to a minimum of 2 HP per level).",
+						"The worm that walks gains fast healing, resistance to physical damage, and weakness to area damage and splash damage as indicated in the table. These abilities are the reason the worm that walks has fewer HP."
+					]
+				},
+				{
+					"type": "table",
+					"labelRowIdx": [
+						0
+					],
+					"colStyles": [
+						"text-center",
+						"text-center",
+						"text-center"
+					],
+					"rows": [
+						[
+							"Starting Level",
+							"HP Decrease",
+							"Fast Healing, Resistance, and Weakness"
+						],
+						[
+							"4 or less",
+							"-20",
+							"5"
+						],
+						[
+							"5-7",
+							"-30",
+							"7"
+						],
+						[
+							"8-14",
+							"-40",
+							"10"
+						],
+						[
+							"15 or higher",
+							"-60",
+							"15"
+						]
 					]
 				}
 			],
@@ -1828,37 +2631,30 @@
 				],
 				"abilities": [
 					{
-						"type": "ability",
 						"name": "Darkvision",
-						"entries": [
-							"A monster with darkvision can see perfectly well in areas of darkness and dim light, though such vision is in black and white only. Some forms of magical darkness, such as a 4th-level {@spell darkness|CRB} spell, block normal {@ability darkvision}. A monster with greater darkvision, however, can see through even these forms of magical darkness."
-						]
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
-						"type": "ability",
 						"name": "Tremorsense",
-						"entries": [
-							"Tremorsense allows a monster to feel the vibrations through a solid surface caused by movement. It is an imprecise sense with a limited range (listed in the ability). Tremorsense functions only if the monster is on the same surface as the subject, and only if the subject is moving along (or burrowing through) the surface."
-						]
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
-						"type": "ability",
 						"name": "Immunities",
 						"entries": [
 							"All worms that walk have immunity to {@trait disease}, {@condition paralyzed}, {@trait poison}, precision, and {@condition unconscious}. They also have the {@ability swarm mind} ability, which makes them immune to {@trait mental} effects that target a specific number of creatures, though they are still subject to {@trait mental} effects that affect all creatures in an area."
 						]
 					},
 					{
-						"type": "ability",
 						"name": "All-Around Vision",
-						"source": "B1",
-						"page": 342,
-						"entries": [
-							"This monster can see in all directions simultaneously, and therefore can't be flanked."
-						]
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
-						"type": "ability",
 						"name": "Discorporate",
 						"entries": [
 							"When the worm that walks is reduced to 0 HP, it discorporates and the component worms that make up its body disperse in every direction. If even a single worm escapes, the worm that walks will eventually re-form using a process that typically takes {@dice 1d10} days.",
@@ -1866,14 +2662,12 @@
 						]
 					},
 					{
-						"type": "ability",
 						"name": "Tendril",
 						"entries": [
 							"Regardless of the creature's former anatomy, it gains a tendril melee {@action Strike} with reach that deals {@condition persistent damage||persistent piercing damage} as it leaves biting worms on the target. If it had any {@trait agile} attacks, the damage dealt by its tendril should be roughly the same as the damage dealt by those attacks. If it had only non-agile attacks, its tendril should deal three-quarters of that damage."
 						]
 					},
 					{
-						"type": "ability",
 						"activity": {
 							"number": 1,
 							"unit": "action"
@@ -1884,7 +2678,6 @@
 						]
 					},
 					{
-						"type": "ability",
 						"activity": {
 							"number": 1,
 							"unit": "action"

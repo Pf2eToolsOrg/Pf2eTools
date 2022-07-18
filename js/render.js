@@ -4295,8 +4295,7 @@ Renderer.creature = {
 			</div>`;
 		}
 		const isRenderButton = (generic || opts.isRenderingGeneric) && !opts.noButton;
-		// FIXME/TODO: Also render name as link inside generic abilities? Would need to get the tag somehow...
-		const abilityName = generic ? renderer.render(`{@${generic.tag} ${ability.name}${generic.add_hash ? ` (${generic.add_hash})` : ""}${ability.title ? `||${ability.title}` : ""}}`) : ability.name;
+		const abilityName = generic ? renderer.render(`{@${generic.tag} ${ability.name}${generic.add_hash ? ` (${generic.add_hash})` : ""}|${ability.source ? ability.source : generic.source ? generic.source : ""}${ability.title ? `|${ability.title}` : ""}}`) : ability.name;
 
 		return $$`<p class="pf2-stat pf2-stat__section ${buttonClass} ${opts.isRenderingGeneric ? "hidden" : ""}"><strong>${abilityName}</strong>
 					${ability.activity ? renderer.render(Parser.timeToFullEntry(ability.activity)) : ""}
@@ -5421,17 +5420,19 @@ Renderer.organization = {
 };
 
 Renderer.creatureTemplate = {
-	getRenderedString (creatureTemplate, opts) {
+	getRenderedString (it, opts) {
 		opts = opts || {};
-		return `
-			${Renderer.utils.getExcludedDiv(creatureTemplate, "creatureTemplate", UrlUtil.PG_CREATURETEMPLATE)}
-			${Renderer.utils.getNameDiv(creatureTemplate)}
+		return $$`
+			${Renderer.utils.getExcludedDiv(it, "creatureTemplate", UrlUtil.PG_CREATURETEMPLATE)}
+			${Renderer.utils.getNameDiv(it)}
 			${Renderer.utils.getDividerDiv()}
-			${Renderer.utils.getTraitsDiv(creatureTemplate.traits || [])}
-			${Renderer.creatureTemplate.getBody(creatureTemplate)}
-			${Renderer.generic.getRenderedEntries(creatureTemplate)}
-			${Renderer.creatureTemplate.getAbilities(creatureTemplate)}
-			${Renderer.creatureTemplate.getOptionalAbilities(creatureTemplate)}
+			${Renderer.utils.getTraitsDiv(it.traits || [])}
+			${Renderer.creatureTemplate.getBody(it)}
+			${Renderer.generic.getRenderedEntries(it)}
+			${it.abilities && it.abilities.entries ? Renderer.generic.getRenderedEntries(it.abilities) : ""}
+			${it.abilities && it.abilities.abilities ? it.abilities.abilities.map(x => Renderer.creature.getRenderedAbility(x)) : ""}
+			${it.optAbilities && it.optAbilities.entries ? Renderer.generic.getRenderedEntries(it.optAbilities) : ""}
+			${it.optAbilities && it.optAbilities.abilities ? it.optAbilities.abilities.map(x => Renderer.creature.getRenderedAbility(x)) : ""}
 		`
 	},
 
@@ -5441,24 +5442,6 @@ Renderer.creatureTemplate = {
 		const renderer = Renderer.get().setFirstSection(true);
 		// TODO: Insert any functional properties here to be displayed.
 		textStack.push(Renderer.utils.getDividerDiv())
-		return renderer.render(textStack.join(""));
-	},
-
-	getAbilities (it) {
-		if (!it.abilities || Object.keys(it.abilities).length === 0) return "";
-		const textStack = [""];
-		const renderer = Renderer.get().setFirstSection(true);
-		textStack.push(Renderer.generic.getRenderedEntries(it.abilities))
-		if (it.abilities.abilities || !Object.keys(it.abilities.abilities).length === 0) textStack.push(`${it.abilities.abilities.map(x => renderer.render(x)).join("")}`)
-		return renderer.render(textStack.join(""));
-	},
-
-	getOptionalAbilities (it) {
-		if (!it.optAbilities || Object.keys(it.optAbilities).length === 0) return "";
-		const textStack = [""];
-		const renderer = Renderer.get().setFirstSection(true);
-		textStack.push(Renderer.generic.getRenderedEntries(it.optAbilities))
-		if (it.optAbilities.abilities || !Object.keys(it.optAbilities.abilities).length === 0) textStack.push(`${it.optAbilities.abilities.map(x => renderer.render(x)).join("")}`)
 		return renderer.render(textStack.join(""));
 	},
 

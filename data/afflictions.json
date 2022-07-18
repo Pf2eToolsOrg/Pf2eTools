@@ -1,6 +1,53 @@
 {
 	"disease": [
 		{
+			"name": "WATERBORNE ZOMBIE ROT",
+			"source": "BotD",
+			"page": 197,
+			"type": "Disease",
+			"level": 1,
+			"traits": [
+				"disease"
+			],
+			"entries": [
+				"Typically carried by plague zombies, this version of the disease is found in water supplies tainted by a zombie corpse. ",
+				{
+					"type": "affliction",
+					"savingThrow": "Fortitude",
+					"DC": 16,
+					"onset": "1 hour",
+					"stages": [
+						{
+							"stage": 1,
+							"entry": "carrier with no ill effect",
+							"duration": "1 day"
+						},
+						{
+							"stage": 2,
+							"entry": "{@damage 1d6} negative damage",
+							"duration": "1 day"
+						},
+						{
+							"stage": 3,
+							"entry": "{@damage 1d6} negative damage",
+							"duration": "1 day"
+						},
+						{
+							"stage": 4,
+							"entry": "{@damage 1d6} negative damage",
+							"duration": "1 day"
+						},
+						{
+							"stage": 5,
+							"entry": "dead, rising as a {@creature plague zombie} immediately.",
+							"duration": "1 day"
+						}
+					]
+				},
+				"An infected creature can't heal damage it takes from zombie rot until it has been cured of the disease."
+			]
+		},
+		{
 			"name": "Graveknight's Curse",
 			"source": "B1",
 			"page": 191,

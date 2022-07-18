@@ -3,6 +3,11 @@
 class PageFilterCreatureTemplates extends PageFilter {
 	constructor () {
 		super();
+		this._typeFilter = new Filter({
+			header: "Type",
+			items: [],
+			displayFn: StrUtil.uppercaseFirst,
+		});
 		this._miscFilter = new Filter({
 			header: "Miscellaneous",
 			items: [],
@@ -21,11 +26,13 @@ class PageFilterCreatureTemplates extends PageFilter {
 
 		this._sourceFilter.addItem(it._fSources);
 		this._miscFilter.addItem(it._fMisc);
+		this._typeFilter.addItem(it.type);
 	}
 
 	async _pPopulateBoxOptions (opts) {
 		opts.filters = [
 			this._sourceFilter,
+			this._typeFilter,
 			this._miscFilter,
 		];
 	}
@@ -34,6 +41,7 @@ class PageFilterCreatureTemplates extends PageFilter {
 		return this._filterBox.toDisplay(
 			values,
 			it._fSources,
+			it.type,
 			it._fMisc,
 		)
 	}

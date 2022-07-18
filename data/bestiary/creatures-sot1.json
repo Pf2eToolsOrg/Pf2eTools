@@ -754,7 +754,7 @@
 							"mode": "insertArr",
 							"items": {
 								"entries": [
-									"The prevalence of insects on the Magaambya campus means Binji is more infested with gremlin lice than most grimples. The Reflex DC to avoid infestation from her gremlin lice is 15 rather than 13. {@note Already accounted in the ability.}"
+									"The prevalence of insects on the Magaambya campus means Binji is more infested with gremlin lice than most grimples. The Reflex DC to avoid infestation from her gremlin lice is 15 rather than 13."
 								],
 								"name": "So Many Lice"
 							}
@@ -764,13 +764,15 @@
 							"replace": "DC 13 Reflex",
 							"with": "DC 15 Reflex"
 						}
-					]
+					],
+					"traits": {
+						"mode": "insertArr",
+						"items": [
+							"unique"
+						]
+					}
 				}
 			},
-			"traits": [
-				"unique",
-				"gremlin"
-			],
 			"languages": {
 				"languages": [
 					"Common",
@@ -1373,7 +1375,7 @@
 				"gremlin"
 			],
 			"creatureType": [
-				"Fey"
+				"fey"
 			],
 			"perception": {
 				"std": 7
@@ -1548,23 +1550,15 @@
 						},
 						"requirements": "A structure made from stone or earth is within the gnagrif's reach",
 						"entries": [
-							"The gnagrif partially melds with the stone. It Takes Cover in the stone and makes a {@skill Stealth} check to."
+							"The gnagrif partially melds with the stone. It {@action Take Cover||Takes Cover} in the stone and makes a {@skill Stealth} check to {@action Hide}."
 						],
 						"name": "Lurk"
 					},
 					{
-						"entries": [],
-						"name": "Hide."
-					},
-					{
 						"entries": [
-							"A gnagrif ignores difficult terrain caused by rocks or rubble, including squares affected by their."
+							"A gnagrif ignores difficult terrain caused by rocks or rubble, including squares affected by their Stomp Around."
 						],
 						"name": "Rubble Stride"
-					},
-					{
-						"entries": [],
-						"name": "Stomp Around."
 					},
 					{
 						"activity": {

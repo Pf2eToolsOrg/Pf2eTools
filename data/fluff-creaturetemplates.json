@@ -1,14 +1,140 @@
 {
 	"_meta": {
-		"dependencies": {
-			"creatureFluff": [
-				"B1",
-				"B2",
-				"B3"
-			]
-		}
+		"internalCopies": [
+			"deityFluff"
+		]
 	},
 	"creatureTemplateFluff": [
+		{
+			"name": "Vampire, Jiang-Shi",
+			"source": "BotD",
+			"entries": [
+				{
+					"type": "pf2-sidebar",
+					"name": "DREAMERS OF THE DARK",
+					"entries": [
+						"Jiang-shi typically arise from priests or holy workers who have died but chose to make their way back from the afterlife. While in a state of repose, a jiang-shi is haunted by dream visions of the netherworld. Many recall endless privations and instinctively seek to share their agonies while awake. Some recall humiliation and swear none shall master them again. A few even glimpse the multiverse's secrets and plot to drain the heavens dry."
+					]
+				},
+				{
+					"type": "pf2-sidebar",
+					"name": "JIANG-SHI AND FULUS",
+					"entries": [
+						"A typical Tian exorcism for a jiang-shi involves subduing the vampire followed by a lengthy prayer to {@deity Pharasma}. The exorcist then affixes a {@book fulu|SoM|4|Fulus} charm upon the jiang-shi's brow, an object believed to ease the undead's eternal nightmares."
+					]
+				},
+				{
+					"type": "pf2-sidebar",
+					"name": "HIERARCHIES OF BREATH AND DEATH",
+					"entries": [
+						"Unlike their blood-drinking cousins, jiang-shi subsist on mortals' breath and vitality in the form of qi, also known in some regions as ki. As a jiang-shi inhales more qi, they become stronger in body and mind. A truly gluttonous jiang-shi becomes even more powerful and attains a higher status than their peers. Such ancient vampires are known as \"ministers,\" and they seek to feast on only the most rarefied qi of the cosmos."
+					]
+				},
+				{
+					"type": "pf2-sidebar",
+					"name": "SCORNED BY HEAVEN AND EARTH",
+					"entries": [
+						"Jiang-shi crave qi but are also repelled by certain harmonious arrangements of qi, such as that which occurs in grains of rice, hen eggs, mirrors, and certain types of wood."
+					]
+				},
+				"Jiang-shi are terrifying hopping vampires from Tian Xia. Though similar to other vampires\u2014they are undead, drain vital energy from the living, and can be slain only in specific ways\u2014jiang-shi feast upon the breath of the living, also known as qi or ki, instead of blood. While they possess unique powers, including their magic-deflecting paper fulus, extraordinary jumping ability, and immunity to sunlight, jiang-shi also possess unique vulnerabilities, such as the inability to see living creatures save through breathsense, a revulsion to bells and mirrors, and near-stupefying melancholia. Thankfully, most jiang-shi can't create vampiric spawn."
+			]
+		},
+		{
+			"name": "Undead",
+			"source": "BotD",
+			"_copy": {
+				"name": "Undead Adjustments",
+				"source": "BotD",
+				"_mod": {
+					"entries": {
+						"mode": "appendArr",
+						"items": [
+							"The undead adjustments below work for turning a creature into a type of undead that doesn't fall into any of the major undead categories, and the adjustments after that mimic more specific varieties of undead."
+						]
+					}
+				}
+			}
+		},
+		{
+			"name": "Ghost",
+			"source": "BotD",
+			"_copy": {
+				"name": "Undead Adjustments",
+				"source": "BotD"
+			}
+		},
+		{
+			"name": "Wight",
+			"source": "BotD",
+			"_copy": {
+				"name": "Undead Adjustments",
+				"source": "BotD"
+			}
+		},
+		{
+			"name": "Zombie",
+			"source": "BotD",
+			"_copy": {
+				"name": "Undead Adjustments",
+				"source": "BotD"
+			}
+		},
+		{
+			"name": "Vampire",
+			"source": "BotD",
+			"_copy": {
+				"name": "Undead Adjustments",
+				"source": "BotD"
+			}
+		},
+		{
+			"name": "Skeleton",
+			"source": "BotD",
+			"_copy": {
+				"name": "Undead Adjustments",
+				"source": "BotD"
+			}
+		},
+		{
+			"name": "Shadow",
+			"source": "BotD",
+			"_copy": {
+				"name": "Undead Adjustments",
+				"source": "BotD"
+			}
+		},
+		{
+			"name": "Mummy",
+			"source": "BotD",
+			"_copy": {
+				"name": "Undead Adjustments",
+				"source": "BotD"
+			}
+		},
+		{
+			"name": "Ghoul",
+			"source": "BotD",
+			"_copy": {
+				"name": "Undead Adjustments",
+				"source": "BotD"
+			}
+		},
+		{
+			"name": "Undead Adjustments",
+			"source": "BotD",
+			"page": 72,
+			"entries": [
+				{
+					"type": "pf2-h2",
+					"name": "Undead Adjustments",
+					"entries": [
+						"Sometimes you might need to create a creature with undead attributes in a hurry. Like the elite and weak adjustments detailed in each Bestiary, the following special adjustments can be used to quickly customize any creature into an undead.",
+						"As with any adjustments, these changes are meant to be fast, not comprehensive. It's best to check whether the adjustment breaks the creature in combat. For example, a creature with an important 3-action ability won't work well with zombie adjustments due to the slow ability. On the other hand, an adjustment lending a fly Speed to a creature with powerful ranged attacks might make the creature too able to harry the PCs from the air, especially at low levels."
+					]
+				}
+			]
+		},
 		{
 			"name": "Graveknight",
 			"source": "B1",

@@ -103,6 +103,21 @@
 				"all"
 			]
 		},
+		"tags": {
+			"type": "string",
+			"description": "Tags used in abilities and \"data\" entries. Defines what type of entry to draw data from.",
+			"enum": [
+				"action",
+				"ritual",
+				"curse",
+				"ability",
+				"affliction",
+				"feat",
+				"item",
+				"creature",
+				"table"
+			]
+		},
 		"alignmentTags": {
 			"type": "string",
 			"description": "CE: Chaotic Evil\nCG: Chaotic Good\nCN: Chaotic Neutral\nLE: Lawful Evil\nLG: Lawful Good\nLN: Lawful Neutral\nN: Neutral\nNE: Neutral Evil\nNG: Neutral Good",
@@ -1378,10 +1393,53 @@
 				"zeal"
 			]
 		},
+		"components": {
+			"type": "array",
+			"items": {
+				"type": "string",
+				"enum": [
+					"{@action Strike}",
+					"{@action Interact}",
+					"{@action Cast a Spell}",
+					"envision",
+					"command"
+				]
+			},
+			"minItems": 1
+		},
 		"abilityBlock": {
+			"if": {
+				"properties": {
+					"type": {
+						"const": "ability"
+					}
+				}
+			},
+			"then": {
+				"allOf": [
+					{
+						"$ref": "#/definitions/creatureAbilityBlock"
+					}
+				]
+			},
+			"else": {
+				"allOf": [
+					{
+						"$ref": "#/definitions/afflictionBlock"
+					}
+				]
+			},
+			"minItems": 1,
+			"uniqueItems": true
+		},
+		"creatureAbilityBlock": {
 			"properties": {
 				"type": {
-					"const": "ability"
+					"type": "string",
+					"enum": [
+						"ability",
+						"affliction"
+					]
 				},
 				"style": {
 					"type": "string",
@@ -1401,18 +1459,7 @@
 					"minimum": 0
 				},
 				"components": {
-					"type": "array",
-					"items": {
-						"type": "string",
-						"enum": [
-							"{@action Strike}",
-							"{@action Interact}",
-							"{@action Cast a Spell}",
-							"envision",
-							"command"
-						]
-					},
-					"minItems": 1
+					"$ref": "#/definitions/components"
 				},
 				"entries": {
 					"type": "array",
@@ -1453,7 +1500,21 @@
 					"type": "string"
 				},
 				"generic": {
-					"type": "boolean"
+					"type": "object",
+					"properties": {
+						"tag": {
+							"$ref": "#/definitions/tags"
+						},
+						"source": {
+							"type": "string"
+						},
+						"name": {
+							"type": "string"
+						}
+					},
+					"required": [
+						"tag"
+					]
 				},
 				"special": {
 					"type": "array",
@@ -1464,8 +1525,17 @@
 				}
 			},
 			"additionalProperties": false,
-			"required": [
-				"entries"
+			"anyOf": [
+				{
+					"required": [
+						"entries"
+					]
+				},
+				{
+					"required": [
+						"generic"
+					]
+				}
 			]
 		},
 		"afflictionBlock": {
@@ -1504,7 +1574,7 @@
 							"exclusiveMinimum": 0
 						},
 						{
-							"const":"your level"
+							"const": "your level"
 						}
 					]
 				},

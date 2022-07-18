@@ -1,6 +1,248 @@
 {
 	"creature": [
 		{
+			"name": "Harlo Krant",
+			"source": "BotD",
+			"page": 210,
+			"level": 4,
+			"traits": [
+				"unique",
+				"ne",
+				"medium",
+				"undead",
+				"zombie"
+			],
+			"perception": {
+				"std": 13
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
+			"languages": {
+				"languages": [
+					"Common",
+					"Necril"
+				]
+			},
+			"skills": {
+				"athletics": {
+					"std": 10
+				},
+				"mercantile lore": {
+					"std": 9
+				},
+				"religion": {
+					"std": 13
+				},
+				"stealth": {
+					"std": 10
+				}
+			},
+			"abilityMods": {
+				"str": 4,
+				"dex": 4,
+				"con": 3,
+				"int": 1,
+				"wis": 5,
+				"cha": 2
+			},
+			"items": [
+				"bag of holding type I (contains two doses of arsenic",
+				"invisibility potion",
+				"and 136 gp)",
+				"scythe"
+			],
+			"ac": {
+				"std": 20
+			},
+			"savingThrows": {
+				"fort": {
+					"std": 11
+				},
+				"ref": {
+					"std": 10
+				},
+				"will": {
+					"std": 13
+				}
+			},
+			"hp": [
+				{
+					"hp": 80,
+					"abilities": [
+						"negative healing (page 213)"
+					]
+				}
+			],
+			"immunities": [
+				"death effects",
+				"disease",
+				"paralyzed",
+				"poison",
+				"unconscious"
+			],
+			"weaknesses": [
+				{
+					"name": "positive",
+					"amount": 5
+				},
+				{
+					"name": "slashing",
+					"amount": 5
+				}
+			],
+			"speed": {
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"deadly d10",
+						"trip"
+					],
+					"name": "scythe",
+					"bonus": 12,
+					"damage": "{@damage 1d10+8} slashing plus whispering scythe"
+				},
+				{
+					"range": "Melee",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"name": "fist",
+					"bonus": 12,
+					"damage": "{@damage 1d8+8} bludgeoning"
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Divine Innate",
+					"tradition": "Divine",
+					"type": "Innate",
+					"DC": 21,
+					"attack": 13,
+					"entry": {
+						"0": {
+							"level": 2,
+							"spells": [
+								{
+									"name": "chill touch"
+								},
+								{
+									"name": "daze"
+								},
+								{
+									"name": "divine lance"
+								}
+							]
+						},
+						"1": {
+							"spells": [
+								{
+									"name": "fear"
+								},
+								{
+									"name": "harm",
+									"amount": 3
+								},
+								{
+									"name": "ray of enfeeblement"
+								}
+							]
+						},
+						"2": {
+							"spells": [
+								{
+									"name": "silence"
+								},
+								{
+									"name": "sudden blightapg"
+								}
+							]
+						}
+					}
+				}
+			],
+			"abilities": {
+				"bot": [
+					{
+						"name": "Command Zombie",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"concentrate",
+							"divine",
+							"incapacitation",
+							"necromancy"
+						],
+						"entries": [
+							"Krant intones blasphemous words to gain control over a zombie he can see within 100 feet. A zombie that is mindless and not under someone else's control falls under his control automatically; otherwise, the zombie or its controller can attempt a DC 22 Will save to avoid being {@condition controlled} (whichever has the higher modifier). The target zombie is temporarily immune for 24 hours if successful. The attempt fails if the zombie is the same level as Krant or higher. The zombie remains {@condition controlled} by Krant until either is destroyed. Krant can control up to 8 zombies at a time. If Krant would control a number of zombies over this limit, he chooses which to release."
+						]
+					},
+					{
+						"name": "Create Zombies",
+						"traits": [
+							"concentrate",
+							"divine",
+							"evil",
+							"necromancy"
+						],
+						"entries": [
+							"Krant can create lesser zombies with a 1-hour ritual. During this time, Krant chants and performs an unholy dance over the corpses he intends to animate. Unlike normal rituals, this doesn't require a skill check or Cost. At the end of this hour, Krant can create one 1st- or 2nd-level zombie, or two zombies of level 0 or lower. These are automatically under Krant's control and count toward the limit of Command Zombie. Any zombies created by Krant still count toward the XP budget of an encounter normally.",
+							"Krant has created enough individual zombies to form shambler troops, which are effectively 4th-level creatures.",
+							"Rather than creating them directly, he needed to train weaker zombies to work as troops."
+						]
+					},
+					{
+						"name": "Shamble Forth!",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"concentrate",
+							"divine",
+							"necromancy"
+						],
+						"frequency": {
+							"freq": 1,
+							"unit": "round"
+						},
+						"entries": [
+							"Each zombie {@condition controlled} by Krant Strides 5 feet (or Burrows, Climbs, Flies, or Swims 5 feet if it has the corresponding movement type)."
+						]
+					},
+					{
+						"name": "Whispering Scythe",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"traits": [
+							"divine",
+							"necromancy"
+						],
+						"trigger": "An undead {@condition controlled} by Krant and within 20 feet of him is destroyed",
+						"requirements": "Krant is holding his scythe",
+						"entries": [
+							"Krant draws the creature's soul into his scythe. The next time he makes a scythe {@action Strike}, the soul is released and the {@action Strike} deals an extra {@damage 1d6} negative damage. The scythe can hold only one soul at a time."
+						]
+					}
+				]
+			},
+			"description": "Male variant {@creature zombie lord|botd}"
+		},
+		{
 			"name": "Shredskin",
 			"source": "BotD",
 			"page": 143,

@@ -19,6 +19,12 @@
 				"page": {
 					"type": "integer"
 				},
+				"creature": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
 				"activity": {
 					"type": "object",
 					"$ref": "utils.json#/definitions/activity"
@@ -31,6 +37,9 @@
 				},
 				"trigger": {
 					"type": "string"
+				},
+				"frequency": {
+					"$ref": "utils.json#/definitions/frequency"
 				},
 				"traits": {
 					"type": "array",
