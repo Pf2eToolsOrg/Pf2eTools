@@ -98,18 +98,39 @@
 			],
 			"disable": {
 				"entries": [
-					"DC 35 {@skill Thievery} (expert) to block one of the nozzles."
+					"DC 35 {@skill Thievery} (expert) to block one of the nozzles or DC 40 {@skill Thievery} (master) to shut off the tank. The trap deactivates after 5 rounds, once the tank is empty."
 				]
 			},
-			"actions": [
-				{
-					"entries": [
-						"40 {@skill Thievery} (master) to shut off the tank. The trap deactivates after 5 rounds, once the tank is empty.",
-						"AC 34; Fort +28, Ref +20 Nozzle Hardness 15; Nozzle HP 40 (BT 20) to destroy a nozzle; Tank Hardness 20; Tank HP 100 (BT 50) to damage the tank enough to stop it from spewing gas; Immunities critical hits, object immunities, precision damage."
-					],
-					"type": "ability",
-					"name": "or DC"
+			"defenses": {
+				"ac":{
+					"default": 34
 				},
+				"fort": 28,
+				"ref": 20,
+				"hardness": {
+					"Nozzle": 15,
+					"Tank": 20
+				},
+				"hp": {
+					"Nozzle": 40,
+					"Tank": 100
+				},
+				"bt": {
+					"Nozzle": 20,
+					"Tank": 50
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				],
+				"notes": {
+					"Tank": "to damage the tank enough to stop it from spewing gas",
+					"Nozzle": "to destroy a nozzle"
+				}
+
+			},
+			"actions": [
 				{
 					"activity": {
 						"number": 1,
@@ -505,8 +526,6 @@
 					"entries": [
 						"Fire rains from the sky in a 100-mile radius, dealing {@damage 10d6} fire damage to creatures and objects in the area. Each creature or object can attempt a DC 46 basic Reflex save. Any creature reduced to 0 Hit Points by this damage dies instantly. This is not enough damage to completely burn away a forest or level an entire mountain or city, but it typically kills most creatures in the area."
 					],
-					"type": "ability",
-					"style": "compact",
 					"name": "Burn It All"
 				}
 			]
@@ -674,8 +693,6 @@
 					"entries": [
 						"The trap releases an arcane wail of the banshee (DC 40) with a 100-foot-radius emanation instead of 40 feet, targeting all living creatures in the area, and rolls initiative."
 					],
-					"type": "ability",
-					"style": "compact",
 					"name": "Scream"
 				}
 			],
@@ -1135,8 +1152,6 @@
 					"entries": [
 						"31 (expert) to talk it down."
 					],
-					"type": "ability",
-					"style": "compact",
 					"name": "Diplomacy DC"
 				},
 				{
@@ -1156,8 +1171,6 @@
 					"entries": [
 						"The haunt takes control of the triggering creature, forcing it to attack itself. The creature must attempt a DC 29 Will save. Critical Success The target is unaffected. Success The target makes a {@action Strike} against itself and automatically hits; the target also becomes {@condition frightened 1}. Failure The target makes a {@action Strike} against itself and automatically scores a critical hit; the target also becomes {@condition frightened 2}. Critical Failure The target attempts a Fortitude save. If the target succeeds, it is subject to the effects of a failure instead. If the target fails, it is reduced to 0 Hit Points and dies."
 					],
-					"type": "ability",
-					"style": "compact",
 					"name": "Quietus"
 				}
 			]
@@ -1310,8 +1323,6 @@
 					"entries": [
 						"The triggering creature falls in and continues to fall, potentially forever. That creature can try to {@action Grab an Edge} to avoid {@quickref falling||3|falling}. The DC to {@action Climb} the walls or {@action Grab an Edge} is 26. The pit contains many handholds, so the falling creature can try to {@action Grab an Edge} again every 6 seconds. If the creature succeeds, it can start to {@action Climb} out from that point (though it might be a very long climb, depending on how far the creature fell). Since the creature falls endlessly, it can rest and even prepare spells while falling, though items dropped while falling are usually lost forever."
 					],
-					"type": "ability",
-					"style": "compact",
 					"name": "Infinite Pitfall"
 				}
 			],
@@ -2628,8 +2639,6 @@
 					"entries": [
 						"The mirror absorbs the creature into the mirror, replacing it with an evil mirror duplicate (DC 34 Reflex to avoid being absorbed into the mirror), and rolls initiative."
 					],
-					"type": "ability",
-					"style": "compact",
 					"name": "Reflection of Evil"
 				}
 			],
@@ -3250,8 +3259,6 @@
 					"entries": [
 						"22 (trained) to open the trapdoor, or {@skill Athletics} DC 22 to {@action Force Open} the trapdoor AC 19; Fort +8, Ref +5 Trapdoor Hardness 15, Trapdoor HP 60 (BT 30); Spout Hardness 8, Spout HP 32 (BT 16); Immunities critical hits, object immunities, precision damage."
 					],
-					"type": "ability",
-					"style": "compact",
 					"name": "Thievery DC"
 				},
 				{
@@ -3263,8 +3270,6 @@
 					"entries": [
 						"The triggering creature falls in and takes damage from the fall, reduced by 5 feet for falling into the water (typically 12 bludgeoning damage). A creature can {@action Grab an Edge} to avoid {@quickref falling||3|falling}. The trapdoor then slams shut, and the hazard rolls initiative."
 					],
-					"type": "ability",
-					"style": "compact",
 					"name": "Pitfall"
 				}
 			],
@@ -3447,8 +3452,6 @@
 					"entries": [
 						"The trap deals {@damage 3d12} electricity damage to the triggering creature (DC 22 basic Reflex save)."
 					],
-					"type": "ability",
-					"style": "compact",
 					"name": "Electrocution"
 				}
 			]
@@ -4241,8 +4244,6 @@
 					"entries": [
 						"The rune detonates a fireball centered on the triggering creature's square. This is a 3rdlevel {@spell fireball} spell that deals {@damage 6d6} fire damage (DC 22 basic Reflex save)."
 					],
-					"type": "ability",
-					"style": "compact",
 					"name": "Fireball"
 				}
 			]
@@ -4436,7 +4437,7 @@
 				}
 			],
 			"reset": [
-				"1 day."
+				"1 day"
 			]
 		},
 		{
@@ -4542,16 +4543,12 @@
 					"entries": [
 						"The triggering creature and all creatures within 30 feet are trapped in a disrupted time flow (DC 38 Fortitude negates). The creatures' minds move so quickly that each round seems to last a century, but their bodies and magical energies move so slowly that they can't use any actions except Recall."
 					],
-					"type": "ability",
-					"style": "compact",
 					"name": "Adrift in Time"
 				},
 				{
 					"entries": [
 						"An affected creature must attempt a DC 36 Will saving throw against a {@spell warp mind} spell immediately and again for every minute of real time that passes while the creature is trapped in the frozen moment. This effect has an unlimited duration but can be counteracted."
 					],
-					"type": "ability",
-					"style": "compact",
 					"name": "Knowledge."
 				}
 			]
@@ -4986,8 +4983,6 @@
 					"entries": [
 						"The tube explodes, spraying hallucinogenic powder in a 30-foot cone. Any creature in the cone must succeed at a DC 24 Will save or be {@condition confused} for 1 round and take a \u20132 status penalty to {@skill Perception} checks and saves against {@trait mental} effects for {@dice 1d4} hours. On a critical failure, the penalty is instead \u20134."
 					],
-					"type": "ability",
-					"style": "compact",
 					"name": "Powder Burst"
 				}
 			]
@@ -5055,8 +5050,6 @@
 					"entries": [
 						"The hammer swings down, making an attack against the triggering creature."
 					],
-					"type": "ability",
-					"style": "compact",
 					"name": "Forbid Entry"
 				},
 				{
@@ -5221,8 +5214,6 @@
 					"entries": [
 						"The triggering creature falls in and takes falling damage (typically 10 bludgeoning damage). That creature can use the {@action Grab an Edge} reaction to avoid falling."
 					],
-					"type": "ability",
-					"style": "compact",
 					"name": "Pitfall"
 				}
 			],
@@ -5763,8 +5754,6 @@
 					"entries": [
 						"The fence deals {@damage 7d12} electricity damage to the triggering creature (DC 26 basic Reflex save)."
 					],
-					"type": "ability",
-					"style": "compact",
 					"name": "Shock"
 				}
 			],
@@ -5983,8 +5972,6 @@
 					"entries": [
 						"The exits seal instantly and the trap rolls initiative."
 					],
-					"type": "ability",
-					"style": "compact",
 					"name": "Flume Activation"
 				}
 			],
@@ -6340,8 +6327,6 @@
 					"entries": [
 						"The mannequins all lurch towards the triggering creature, {@action Stride||Striding} up to 50 feet, then roll initiative."
 					],
-					"type": "ability",
-					"style": "compact",
 					"name": "Awaken"
 				}
 			],
@@ -6990,8 +6975,6 @@
 					"entries": [
 						"Each living creature within 60 feet must succeed at a DC 23 Will save or be subjected to the pharaoh's curse. A cursed creature takes a \u20132 status penalty to Fortitude saves, and any natural or magical healing it receives is halved. The curse remains until removed by {@spell remove curse|CRB} or similar magic."
 					],
-					"type": "ability",
-					"style": "compact",
 					"name": "Curse the Intruders"
 				}
 			],
@@ -7035,8 +7018,6 @@
 					"entries": [
 						"The triggering creature and all creatures within 30 feet of the rift are drawn into another plane. Each creature can attempt a DC 33 Reflex save to avoid this fate."
 					],
-					"type": "ability",
-					"style": "compact",
 					"name": "Into the Great Beyond"
 				}
 			]
@@ -7157,8 +7138,6 @@
 					"entries": [
 						"The trap makes a poisoned dart {@action Strike} against the triggering creature, then rolls initiative."
 					],
-					"type": "ability",
-					"style": "compact",
 					"name": "Dart Volley"
 				}
 			],
@@ -7187,8 +7166,6 @@
 					"entries": [
 						"The trap makes a poisoned dart {@action Strike} against the triggering creature."
 					],
-					"type": "ability",
-					"style": "compact",
 					"name": "Continuous Barrage"
 				},
 				{
@@ -7390,8 +7367,6 @@
 					"entries": [
 						"Lock. A spine extends to attack the triggering creature."
 					],
-					"type": "ability",
-					"style": "compact",
 					"name": "Spring"
 				},
 				{
@@ -7646,8 +7621,6 @@
 					"entries": [
 						"Trigger A creature moves within 30 feet of the glyph without speaking the passphrase in Druidic. The creature is targeted by baleful polymorph (DC 32 Will save)."
 					],
-					"type": "ability",
-					"style": "compact",
 					"name": "Baleful Polymorph"
 				}
 			]
@@ -7830,8 +7803,6 @@
 					"entries": [
 						"The triggering creature sinks into the quicksand up to its waist. The quicksand rolls initiative if it hasn't already."
 					],
-					"type": "ability",
-					"style": "compact",
 					"name": "Submerge"
 				}
 			],
@@ -8199,8 +8170,6 @@
 					"entries": [
 						"Both blades swing down, each one attacking all creatures under the ceiling grooves."
 					],
-					"type": "ability",
-					"style": "compact",
 					"name": "Falling Scythes"
 				},
 				{
@@ -8257,8 +8226,6 @@
 					"entries": [
 						"If someone uses a proxy or dupe for the theft or intrusion, the trap unerringly targets the true perpetrator or perpetrators at any distance\u2014even across planes. The triggering creature and up to five coconspirators instantly revert to infants, losing all memories, class abilities, and other skills acquired during their lives (DC 44 Fortitude negates). Reversing this effect is nearly impossible, requiring powerful magic such as wish."
 					],
-					"type": "ability",
-					"style": "compact",
 					"name": "In the Beginning"
 				}
 			]
@@ -8519,8 +8486,6 @@
 					"entries": [
 						"The door falls, closing off the hallway. The stone slab deals {@damage 3d8} bludgeoning damage to anyone beneath or adjacent to the slab when it drops and pushes them out of its space in a random direction. A creature that succeeds at a DC 17 Reflex save takes no damage and rolls out of the way in a random direction. On a critical success, they can choose the direction. Lifting the fallen slab requires a successful DC 25 {@skill Athletics} check. Hitting the floor panels triggers the trap. The slab uses the same AC and saves as the trap, but it has Hardness 12, HP 48 (BT 24)."
 					],
-					"type": "ability",
-					"style": "compact",
 					"name": "Slam Shut"
 				}
 			]
@@ -8582,8 +8547,6 @@
 					"entries": [
 						"The trap shoots a spear, making an attack against the creature or object on the floor tile."
 					],
-					"type": "ability",
-					"style": "compact",
 					"name": "Spear"
 				},
 				{
@@ -8940,8 +8903,6 @@
 					"entries": [
 						"The trap pops up in a grid intersection and makes a spinning blade attack against one adjacent creature (if any), then rolls initiative."
 					],
-					"type": "ability",
-					"style": "compact",
 					"name": "Rising Pillar"
 				}
 			],
@@ -9138,8 +9099,6 @@
 					"entries": [
 						"Steam erupts from the pipes, dealing {@damage 3d6} bludgeoning damage and {@damage 3d6} fire damage (DC 24 basic Reflex save) to all creatures within 15 feet. Creatures that critically fail their save are knocked prone."
 					],
-					"type": "ability",
-					"style": "compact",
 					"name": "Steam Blast"
 				}
 			]
@@ -9400,8 +9359,6 @@
 					"entries": [
 						"(arcane, conjuration, summon; Trigger A creature enters the cloud of magical sensors. This trap summons a specific level 1 creature, determined when the trap is created. The creature rolls initiative and remains for {@dice 2d6} rounds, after which the spell ends and the creature disappears. The creature also disappears if someone disables the trap before the duration expires. The summoned creature can use 3 actions each round and can use reactions, unlike most summoned creatures."
 					],
-					"type": "ability",
-					"style": "compact",
 					"name": "Summon Monster"
 				}
 			],
@@ -9591,8 +9548,6 @@
 					"entries": [
 						"Each telekinetic decoration constructs a cloud of objects in the room (three clouds total) and the trap rolls initiative. The creatures in the room when the trap is triggered become the trap's targets, regardless of whether they leave the room or other creatures later enter the room. Each decoration targets a different creature if possible. A target creature that moves at least 1 mile from the trap ceases being a target, at which point the decoration designates a new target."
 					],
-					"type": "ability",
-					"style": "compact",
 					"name": "Agitate"
 				}
 			],
@@ -10411,8 +10366,6 @@
 					"entries": [
 						"The saw blade travels along its path, making one {@action Strike} against each creature in the room, twisting and varying its height for a maximum chance of beheading its targets."
 					],
-					"type": "ability",
-					"style": "compact",
 					"name": "Total Decapitation"
 				},
 				{
@@ -10436,8 +10389,6 @@
 					"entries": [
 						"On a critical hit, a target must succeed at a DC 39 Fortitude save or be decapitated, {@condition dying} instantly unless it can survive without a head."
 					],
-					"type": "ability",
-					"style": "compact",
 					"name": "Decapitation"
 				}
 			],
@@ -10683,8 +10634,6 @@
 					"entries": [
 						"All creatures in the trap's 10-foot square take {@damage 2d6} bludgeoning damage (DC 20 basic Reflex save)."
 					],
-					"type": "ability",
-					"style": "compact",
 					"name": "Deadfall"
 				}
 			]
@@ -10731,8 +10680,6 @@
 					"entries": [
 						"The web lurker noose makes a noose {@action Strike} against the triggering creature."
 					],
-					"type": "ability",
-					"style": "compact",
 					"name": "Web Noose"
 				},
 				{
@@ -10829,8 +10776,6 @@
 					"entries": [
 						"The wheel begins to spin and rolls initiative."
 					],
-					"type": "ability",
-					"style": "compact",
 					"name": "Wheel Spin"
 				}
 			],
@@ -11050,8 +10995,6 @@
 					"entries": [
 						"The mold can't use this reaction if it's in direct sunlight or if the damage was fire damage. The triggering creature and all creatures within 10 feet are exposed to yellow mold spores."
 					],
-					"type": "ability",
-					"style": "compact",
 					"name": "Spore Explosion"
 				},
 				{
@@ -11081,6 +11024,842 @@
 							"entry": "{@damage 3d8} poison damage and {@condition drained 3}",
 							"duration": "1 round"
 						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Locking Door",
+			"source": "BotD",
+			"page": 64,
+			"level": -1,
+			"traits": [
+				"haunt"
+			],
+			"stealth": {
+				"dc": 18,
+				"minProf": "trained",
+				"notes": "to notice the door sway slightly, even though there's no breeze"
+			},
+			"description": [
+				"A door (or other portal) slams shut and locks."
+			],
+			"disable": {
+				"entries": [
+					"DC 14 {@skill Athletics} to push back against the door, DC 14 {@skill Crafting} to wedge the door open, or DC 20 {@skill Thievery} (trained) to jam the lock or open the lock afterward"
+				]
+			},
+			"actions": [
+				{
+					"name": "Shut In",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A creature ends their move after passing through the doorway",
+					"entries": [
+						"With an ethereal gust shimmering in the air, the door creaks as it swings shut and locks. The haunted door pushes anyone in its space into an adjacent space in the connecting chamber. A creature that would be pushed and succeeds at a DC 16 Reflex save selects which side of the door they end up on."
+					]
+				}
+			]
+		},
+		{
+			"name": "Phantom Footsteps",
+			"source": "BotD",
+			"page": 64,
+			"level": -1,
+			"traits": [
+				"haunt"
+			],
+			"stealth": {
+				"dc": 15
+			},
+			"description": [
+				"Audible footsteps approach from behind, but their source is not apparent."
+			],
+			"disable": {
+				"entries": [
+					"DC 17 {@skill Religion} (trained) to ritually ward off lesser spirits or DC 18 {@skill Occultism} to exorcise the spirit"
+				]
+			},
+			"actions": [
+				{
+					"name": "Stalk",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"auditory",
+						"emotion",
+						"enchantment",
+						"fear",
+						"mental",
+						"occult"
+					],
+					"trigger": "A creature passes by the footsteps' path",
+					"entries": [
+						"Footsteps with no visible source closely shadow the triggering creature, then stop. The triggering creature must attempt a DC 16 Will save.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": [
+									"The creature is unaffected."
+								],
+								"Success": [
+									"The creature is {@condition frightened||frightened 1}."
+								],
+								"Failure": [
+									"The creature is {@condition frightened||frightened 2}."
+								],
+								"Critical Failure": [
+									"The creature is {@condition frightened||frightened 3}."
+								]
+							}
+						}
+					]
+				}
+			],
+			"reset": [
+				"1 hour"
+			]
+		},
+		{
+			"name": "Blood-Soaked Soil",
+			"source": "BotD",
+			"page": 64,
+			"level": 0,
+			"traits": [
+				"haunt"
+			],
+			"stealth": {
+				"dc": 16,
+				"minProf": "trained",
+				"notes": "to feel breath upon your neck"
+			},
+			"description": [
+				"The blood of those who died in the area bubbles up from the earth, soaking the soil and turning it into a bloody morass."
+			],
+			"disable": {
+				"entries": [
+					"DC 18 {@skill Diplomacy} or {@skill Occultism} (trained) to settle the spirits or DC 19 {@skill Religion} (trained) to bless the area"
+				]
+			},
+			"actions": [
+				{
+					"name": "Whisper",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"auditory",
+						"emotion",
+						"enchantment",
+						"fear",
+						"mental",
+						"occult"
+					],
+					"trigger": "A creature enters the haunt's area",
+					"entries": [
+						"The haunt deals {@damage 1d6+4} mental damage to creatures in the area (DC 19 basic Will save). On a failure, the creature is also {@condition frightened||frightened 1}."
+					]
+				}
+			],
+			"reset": [
+				"1 hour"
+			]
+		},
+		{
+			"name": "Cold Spot",
+			"source": "BotD",
+			"page": 64,
+			"level": 1,
+			"traits": [
+				"haunt"
+			],
+			"stealth": {
+				"dc": 17,
+				"minProf": "trained"
+			},
+			"description": [
+				"The temperature suddenly drops as spectral forces gather in the area."
+			],
+			"disable": {
+				"entries": [
+					"DC 19 {@skill Religion} (trained) to banish the cold spot with ritual prayers or DC 20 {@skill Occultism} (trained) to foil the arrival of outside forces"
+				]
+			},
+			"actions": [
+				{
+					"name": "Sudden Chill",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"cold",
+						"evocation",
+						"occult"
+					],
+					"trigger": "A living creature enters the area",
+					"entries": [
+						"The temperature drops as {@condition invisible} spirits gather around the living. Living creatures within 15 feet take {@damage 2d4+5} cold damage (DC 17 basic Fortitude save). Creatures that critically fail their save are additionally {@condition clumsy||clumsy 1}."
+					]
+				}
+			],
+			"reset": [
+				"1 hour"
+			]
+		},
+		{
+			"name": "Shattered Window",
+			"source": "BotD",
+			"page": 65,
+			"level": 1,
+			"traits": [
+				"haunt"
+			],
+			"stealth": {
+				"dc": 17,
+				"minProf": "trained",
+				"notes": "to notice cracks spider-webbing across the window"
+			},
+			"description": [
+				"The anger trapped within a structure shatters a window, showering glass in adjacent spaces."
+			],
+			"disable": {
+				"entries": [
+					"DC 19 {@skill Occultism} or {@skill Religion} (trained) to suppress the spiritual energy or DC 20 {@skill Diplomacy} (trained) to soothe the latent anger"
+				]
+			},
+			"actions": [
+				{
+					"name": "Shatter",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A creature moves adjacent to the window",
+					"entries": [
+						"The window shatters, dealing {@damage 2d6+5} slashing damage to creatures within 5 feet (DC 17 basic Reflex save)."
+					]
+				}
+			]
+		},
+		{
+			"name": "Bloodthirsty Toy",
+			"source": "BotD",
+			"page": 65,
+			"level": 2,
+			"traits": [
+				"haunt"
+			],
+			"stealth": {
+				"dc": 17,
+				"minProf": "trained",
+				"notes": "to hear a child imitate an animal’s roar"
+			},
+			"description": [
+				"A scruffy stuffed bear animates, biting whoever disturbs it."
+			],
+			"disable": {
+				"entries": [
+					"DC 20 {@skill Thievery} (trained) to handle the toy without disturbing it or DC 21 {@skill Occultism} (trained) to suppress the memories suffusing the toy"
+				]
+			},
+			"reset": ["1 hour"],
+			"actions": [
+				{
+					"name": "Chomp",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A creature touches the toy",
+					"entries": [
+						"The toy animates for a split second, biting the triggering creature with a ferocious jaws {@action Strike}."
+					]
+				},
+				{
+					"type": "attack",
+					"range": "Melee",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"name": "jaws",
+					"bonus": 14,
+					"damage": "{@damage 2d8+8} piercing damage"
+				}
+			]
+		},
+		{
+			"name": "Toppling Furniture",
+			"source": "BotD",
+			"page": 65,
+			"level": 2,
+			"traits": [
+				"haunt"
+			],
+			"stealth": {
+				"dc": 18,
+				"minProf": "trained",
+				"notes": "to hear the spirit’s grunt of exertion as it works to topple the furniture"
+			},
+			"description": [
+				"A mischievous spirit pushes a bookshelf over onto a creature."
+			],
+			"disable": {
+				"entries": [
+					"DC 16 {@skill Athletics} to hold the furniture upright or DC 18 {@skill Occultism} (trained) to foil the spirit’s efforts to influence matter"
+				]
+			},
+			"reset": ["If the haunt successfully damages a creature with Topple Furniture, the spirit laughs for {@dice 1d4} rounds as the haunt resets; each subsequent time the haunt activates, it must topple a different piece of upright furniture. If the haunt fails to damage a creature, the spirit wails in frustration and resets after pouting for {@dice 1d4} hours."],
+			"actions": [
+				{
+					"name": "Topple Furniture",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A creature moves adjacent to the furniture",
+					"entries": [
+						"The spirit shoves the furniture over in an attempt to crush the triggering creature. The triggering creature takes {@damage 2d10+7} bludgeoning damage (DC 22 basic Reflex save). On a failure, the creature is additionally knocked {@condition prone}."
+					]
+				}
+			]
+		},
+		{
+			"name": "Phantom Jailer",
+			"source": "BotD",
+			"page": 65,
+			"level": 3,
+			"traits": [
+				"haunt"
+			],
+			"stealth": {
+				"dc": 20,
+				"minProf": "trained",
+				"notes": "to notice the manacles twitch"
+			},
+			"description": [
+				"A spirit appears and arrests the creature by clamping manacles around their wrists."
+			],
+			"disable": {
+				"entries": [
+					"DC 18 {@skill Athletics} to seize the manacles from the spirit, DC 19 {@skill Intimidation} (trained) to order the spirit to stand down, or DC 20 {@skill Occultism} to exorcise the spirit"
+				]
+			},
+			"reset": ["1 day"],
+			"actions": [
+				{
+					"name": "Capture",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A creature touches the manacles",
+					"entries": [
+						"The spirit attempts to lock the manacles around the triggering creature's wrists. The triggering creature must attempt a DC 23 Reflex save.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": [
+									"The creature is unaffected."
+								],
+								"Success": [
+									"The spirit loosely places manacles around the creature's wrists. Removing the manacles requires a single action."
+								],
+								"Failure": [
+									"The spirit clamps the manacles around the creature's wrists but fails to lock them. The creature is {@condition flat-footed} and {@condition clumsy||clumsy 1} until the manacles are removed as a 3-action activity."
+								],
+								"Critical Failure": [
+									"The spirit clamps the manacles around the creature's wrists and locks them. The creature is {@condition flat-footed} and {@condition clumsy||clumsy 1} until the manacles are removed ({@action Escape} DC 23, simple lock)."
+								]
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Violent Shove",
+			"source": "BotD",
+			"page": 65,
+			"level": 3,
+			"traits": [
+				"haunt"
+			],
+			"stealth": {
+				"dc": 23,
+				"minProf": "trained",
+				"notes": "to feel an ominous presence in the room"
+			},
+			"description": [
+				"An invisible force bats creatures aside, hurling them into a nearby wall."
+			],
+			"disable": {
+				"entries": [
+					"DC 19 {@skill Occultism} (trained) to disperse the force or DC 20 {@skill Religion} (trained) to ward yourself from harm"
+				]
+			},
+			"reset": ["1 day"],
+			"actions": [
+				{
+					"name": "Shove",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A creature moves adjacent to the haunted wall",
+					"entries": [
+						"A powerful force sweeps across the room, shoving all creatures in the room toward the wall. Each creature in the area must attempt a DC 20 Fortitude save.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": [
+									"The creature is unaffected."
+								],
+								"Success": [
+									"The creature is pushed 5 feet toward the wall. If the creature would collide with the wall, they take {@damage 1d10+5} bludgeoning damage."
+								],
+								"Failure": [
+									"The creature is pushed 10 feet toward the wall. If the creature would collide with the wall, they take {@damage 2d10+10} bludgeoning damage."
+								],
+								"Critical Failure": [
+									"The creature is pushed 15 feet toward the wall. If the creature would collide with the wall, they take {@damage 3d10+15} bludgeoning damage and are knocked {@condition prone}."
+								]
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Final Words",
+			"source": "BotD",
+			"page": 65,
+			"level": 4,
+			"traits": [
+				"haunt"
+			],
+			"stealth": {
+				"dc": 22,
+				"minProf": "trained",
+				"notes": "to hear the scratch of a quill upon paper"
+			},
+			"description": [
+				"As a creature touches a hand-written letter, they witness the letter’s author scribe it in the past; each pen stroke across the page carves the letter’s text into the creature’s flesh."
+			],
+			"disable": {
+				"entries": [
+					"DC 24 {@skill Religion} (trained) to ward off the haunt or DC 25 {@skill Thievery} (trained) to dispose of the letter with extreme care before the haunt can form"
+				]
+			},
+			"reset": ["1 minute"],
+			"actions": [
+				{
+					"name": "Carve in Flesh",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"divine",
+						"necromancy",
+						"visual"
+					],
+					"trigger": "A creature reads the letter",
+					"entries": [
+						"The haunt deals {@damage 2d8+11} slashing damage to the triggering creature as the words are carved into its flesh (DC 21 basic Will save). On a failure, the creature takes {@damage 2d8} {@condition persistent damage ||persistent bleed damage}."
+					]
+				}
+			]
+		},
+		{
+			"name": "Ectoplasmic Grasp",
+			"source": "BotD",
+			"page": 66,
+			"level": 5,
+			"traits": [
+				"haunt"
+			],
+			"stealth": {
+				"dc": 23,
+				"minProf": "trained",
+				"notes": "to notice ectoplasm coalescing"
+			},
+			"description": [
+				"A massive ectoplasmic hand forms around a creature and squeezes it."
+			],
+			"disable": {
+				"entries": [
+					"DC 24 {@skill Occultism} (trained) to send the ectoplasm back to the Ethereal Plane or DC 26 {@skill Acrobatics} to move through and disrupt the coalescing ectoplasm before it takes hold"
+				]
+			},
+			"reset": ["1 day"],
+			"actions": [
+				{
+					"name": "Squeeze",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A creature moves over the haunt's area",
+					"entries": [
+						"The hand forms out of ectoplasm and squeezes the triggering creature, dealing {@damage 3d8+14} bludgeoning damage (DC 22 basic Fortitude save). On a failure, the creature is {@condition immobilized} ({@action Escape} DC 22)."
+					]
+				}
+			]
+		},
+		{
+			"name": "Weight of Guilt",
+			"source": "BotD",
+			"page": 66,
+			"level": 7,
+			"traits": [
+				"haunt"
+			],
+			"stealth": {
+				"dc": 30,
+				"minProf": "expert",
+				"notes": "to sense an oppressive aura of sorrow"
+			},
+			"description": [
+				"Influenced by the guilt and regrets of the dead, creatures are wrapped in weighted chains that embody their own sins."
+			],
+			"disable": {
+				"entries": [
+					"DC 26 {@skill Religion} (expert) to disrupt the haunt through prayer or DC 27 {@skill Deception} (expert) to openly defy your regrets and banish the haunt. Creatures who haven’t committed sins or already made amends for their transgressions are immune to the effects of this haunt."
+				]
+			},
+			"reset": ["1 day"],
+			"actions": [
+				{
+					"name": "Mental Bind",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"enchantment",
+						"mental",
+						"occult"
+					],
+					"trigger": "A creature enters the area",
+					"entries": [
+						"Each creature within 30 feet becomes wrapped in heavy spectral chains forged from its own sins and regrets. Each must attempt a DC 25 Will save.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": [
+									"The creature is unaffected."
+								],
+								"Success": [
+									"The creature takes a \u201310-foot status penalty to its Speeds for 1 round."
+								],
+								"Failure": [
+									"The creature is {@condition restrained} until it Escapes (DC 25)."
+								],
+								"Critical Failure": [
+									"As failure, and the creature is overwhelmed with guilt, becoming {@condition stupefied||stupefied 2} for 1 day"
+								]
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Frenetic Musician",
+			"source": "BotD",
+			"page": 66,
+			"level": 8,
+			"traits": [
+				"haunt"
+			],
+			"stealth": {
+				"dc": 28,
+				"minProf": "expert",
+				"notes": "to hear phantom notes"
+			},
+			"description": [
+				"A spirit musician rises out of an instrument and plays a frantic, bone-shaking melody."
+			],
+			"disable": {
+				"entries": [
+					"DC 26 {@action Perform} (trained) to bring the spirit’s music to a close or DC 28 {@skill Occultism} (expert) to banish the spirit"
+				]
+			},
+			"reset": ["1 hour"],
+			"actions": [
+				{
+					"name": "Musical Assault",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"auditory",
+						"evocation",
+						"occult",
+						"sonic"
+					],
+					"trigger": "A creature touches the instrument",
+					"entries": [
+						"The musician's bone-shaking musical performance deals {@damage 4d10+22} sonic damage to creatures within 30 feet (DC 30 basic Will save)."
+					]
+				}
+			]
+		},
+		{
+			"name": "Blood Tears",
+			"source": "BotD",
+			"page": 66,
+			"level": 10,
+			"traits": [
+				"haunt"
+			],
+			"stealth": {
+				"dc": 32,
+				"minProf": "master",
+				"notes": "to notice your vision tint red"
+			},
+			"description": [
+				"A wailing spirit appears and gouges their own eyes. As they do, blood seeps from the eyes of those who witness the act, obscuring their vision."
+			],
+			"disable": {
+				"entries": [
+					"DC 30 {@skill Diplomacy} (master) to talk the spirit out of gouging its eyes or DC 32 {@skill Religion} (trained) to ease the spirit’s sorrows"
+				]
+			},
+			"reset": ["1 day"],
+			"actions": [
+				{
+					"name": "Weep Blood",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"divine",
+						"necromancy"
+					],
+					"trigger": "A creature approaches within 15 feet",
+					"entries": [
+						"Blood seeps from the eyes of all creatures within 30 feet, dealing {@condition persistent damage ||persistent bleed damage}. Each creature in the area must attempt a DC 33 Fortitude save.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": [
+									"The creature is unaffected."
+								],
+								"Success": [
+									"The creature takes {@damage 2d8+3} {@condition persistent damage ||persistent bleed damage} and is {@condition dazzled} for 1 round."
+								],
+								"Failure": [
+									"The creature takes {@damage 4d8+6} {@condition persistent damage ||persistent bleed damage} and is {@condition dazzled} for as long as the {@condition persistent damage} lasts."
+								],
+								"Critical Failure": [
+									"The creature takes {@damage 8d8+12} {@condition persistent damage ||persistent bleed damage} and is {@condition blinded} for as long as the {@condition persistent damage} lasts."
+								]
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Desperate Hunger",
+			"source": "BotD",
+			"page": 67,
+			"level": 12,
+			"traits": [
+				"haunt"
+			],
+			"stealth": {
+				"dc": 35,
+				"minProf": "master",
+				"notes": "to feel an odd sense of hunger"
+			},
+			"description": [
+				"A skeletally thin spirit appears, weeping as it shoves earth and stones down its throat in an effort to stave off hunger."
+			],
+			"disable": {
+				"entries": [
+					"DC 36 {@skill Deception} (master) to convince the spirit it’s no longer hungry or DC 38 {@skill Occultism} (trained) to ritually feed the spirit"
+				]
+			},
+			"reset": ["1 day"],
+			"actions": [
+				{
+					"name": "Desperate Meal",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"occult",
+						"transmutation"
+					],
+					"trigger": "A creature approaches within 10 feet",
+					"entries": [
+						"Creatures within 30 feet are filled with painful hunger and must succeed at a DC 32 Fortitude save or feel their stomachs fill with rocks, dirt, and worse, dealing {@damage 6d10+20} piercing damage.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": [
+									"The creature is unaffected."
+								],
+								"Success": [
+									"The creature takes half damage and is {@condition sickened||sickened 1}."
+								],
+								"Failure": [
+									"The creature takes full damage and is {@condition sickened||sickened 2}."
+								],
+								"Critical Failure": [
+									"The creature takes double damage, is {@condition sickened||sickened 4}, and takes a \u201310-foot status penalty to its Speeds for as long as it's {@condition sickened}."
+								]
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Cannibalistic Echoes",
+			"source": "BotD",
+			"page": 67,
+			"level": 16,
+			"traits": [
+				"haunt"
+			],
+			"stealth": {
+				"dc": 42,
+				"minProf": "master",
+				"notes": "to sense something unusual lurking in the area’s echoes"
+			},
+			"description": [
+				"A pack of cannibalistic spirits swarm through the area, devouring living creatures"
+			],
+			"disable": {
+				"entries": [
+					"DC 40 {@skill Intimidation} (master) to drive the spirits off with a ferocious display or DC 42 {@skill Occultism} (expert) to exorcise the spirits"
+				]
+			},
+			"reset": ["1 day"],
+			"actions": [
+				{
+					"name": "Feast",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A living creature approaches within 10 feet",
+					"entries": [
+						"The spirits bite and chew, dealing {@damage 6d12+35} piercing damage to each creature within 30 feet. Affected creatures must each attempt a DC 41 Reflex save.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": [
+									"The creature is unaffected."
+								],
+								"Success": [
+									"The creature takes half damage."
+								],
+								"Failure": [
+									"The creature takes full damage, {@damage 2d8} {@condition persistent damage ||persistent bleed damage}, and is {@condition drained||drained 1}."
+								],
+								"Critical Failure": [
+									"The creature takes double damage, {@damage 4d8} {@condition persistent damage ||persistent bleed damage}, and is {@condition drained||drained 2}."
+								]
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Flood Of Spirits",
+			"source": "BotD",
+			"page": 67,
+			"level": 18,
+			"traits": [
+				"haunt"
+			],
+			"stealth": {
+				"dc": 45,
+				"minProf": "master",
+				"notes": "to hear the flood of spirits coalescing"
+			},
+			"description": [
+				"A wave of spirits fly through the area, passing right through the living."
+			],
+			"disable": {
+				"entries": [
+					"DC 48 {@skill Occultism} (expert) or {@skill Religion} (master) to divert the spirits"
+				]
+			},
+			"reset": ["1 day"],
+			"actions": [
+				{
+					"name": "Surge Through",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"cold",
+						"negative"
+					],
+					"trigger": "A creature passes through the area",
+					"entries": [
+						"The haunt deals {@damage 3d12+20} negative damage and {@damage 3d12+20} cold damage to creatures in the area (DC 40 basic Reflex save). On a failure, a creature is {@condition stupefied||stupefied 2} for 1 minute, and on a critical failure, it's also {@condition confused} for 1 minute."
+					]
+				}
+			]
+		},
+		{
+			"name": "Glimpse Grave",
+			"source": "BotD",
+			"page": 67,
+			"level": 20,
+			"traits": [
+				"haunt"
+			],
+			"stealth": {
+				"dc": 48,
+				"minProf": "master",
+				"notes": "to notice the words on the tombstone waver"
+			},
+			"description": [
+				"A tombstone bears the name of those who look upon it, causing their hearts to seize."
+			],
+			"disable": {
+				"entries": [
+					"DC 45 {@skill Religion} (legendary) to bless the tombstone or DC 50 {@skill Occultism} (trained) to ward off spirits"
+				]
+			},
+			"reset": ["1 day"],
+			"actions": [
+				{
+					"name": "Stop Heart",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"death",
+						"illusion",
+						"incapacitation",
+						"linguistic",
+						"occult",
+						"visual"
+					],
+					"trigger": "A creature reads or touches the tombstone",
+					"entries": [
+						"The haunt deals {@damage 8d10+44} negative damage (DC 47 basic Will save) to all creatures within 60 feet who can see the tombstone and can read any language. On a critical failure, a creature dies."
 					]
 				}
 			]

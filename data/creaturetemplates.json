@@ -1,6 +1,287 @@
 {
 	"creatureTemplate": [
 		{
+			"name": "Vampire, Vetalarana",
+			"type": "Template",
+			"hasLore": true,
+			"source": "BotD",
+			"page": 160,
+			"entries": [
+				"While it's best to create a vetalarana from scratch, you can turn an existing living creature into a vetalarana using the following steps.",
+				"Increase the creature's level by 1 and change its statistics as follows.",
+				{
+					"type": "list",
+					"items": [
+						"It gains the {@trait undead} and {@trait vampire} traits, and usually becomes evil.",
+						"Increase the creature's AC, attack modifiers, DCs, saving throws, and skill modifiers by 1.",
+						"Increase its damage with {@action Strike||Strikes} and other offensive abilities by 1. If an ability can be used only a small number of times (such as a dragon's Breath Weapon), increase the damage by 2 instead.",
+						"Reduce its HP by the amount listed on the table.",
+						"The vetalarana gains {@ability fast healing}, resistance to mental damage, and resistance to physical damage (except cold iron) as indicated on the table. These abilities are the reason the vetalarana has less HP."
+					]
+				},
+				{
+					"type": "table",
+					"source": "BotD",
+					"page": 160,
+					"colStyles": [
+						"text-center",
+						"text-center",
+						"text-center"
+					],
+					"labelRowIdx": [
+						0
+					],
+					"rows": [
+						[
+							"Starting Level",
+							"HP Decrease",
+							"Fast Healing/Resistance"
+						],
+						[
+							"3\u20134",
+							"\u201320",
+							"5"
+						],
+						[
+							"5\u20137",
+							"\u201330",
+							"7"
+						],
+						[
+							"8\u201314",
+							"\u201340",
+							"10"
+						],
+						[
+							"15+",
+							"\u201360",
+							"15"
+						]
+					]
+				}
+			],
+			"abilities": {
+				"entries": [
+					{
+						"type": "pf2-h3",
+						"name": "Basic Vetalarana Abilities",
+						"entries": [
+							"All vetalaranas gain the following abilities. If the base creature has any abilities that specifically come from being a living creature, it loses them. It also loses any traits that represented its life as a living creature, such as human and humanoid. You might also need to adjust abilities that conflict with the vetalarana's theme."
+						]
+					}
+				],
+				"abilities": [
+					{
+						"name": "Thoughtsense",
+						"traits": [
+							"divination",
+							"mental",
+							"occult"
+						],
+						"entries": [
+							"The vetalarana senses all non-mindless creatures within 100 feet as a precise sense."
+						]
+					},
+					{
+						"name": "Negative Healing",
+						"generic": {
+							"tag": "ability",
+							"source": "B2"
+						}
+					},
+					{
+						"name": "Immunities",
+						"entries": [
+							"{@trait death} effects, {@trait disease}, {@condition paralyzed}, {@trait poison}, {@trait sleep}"
+						]
+					},
+					{
+						"name": "Mental Rebirth",
+						"traits": [
+							"curse",
+							"incapacitation",
+							"mental",
+							"necromancy",
+							"occult"
+						],
+						"entries": [
+							"Unlike most other undead, a vetalarana isn't destroyed when they reach 0 HP. Instead, their body is destroyed, crumbling to ash, and their mind is immediately transferred into a creature they rendered comatose through Drain Thoughts. This creature must be within 1 mile; if no such creature is in range, the vetalarana is destroyed.",
+							"The creature becomes {@condition controlled} by the vetalarana and loses the {@condition stupefied} and {@condition unconscious} conditions. If the creature {@condition controlled} by a vetalarana in this way is killed, the vetalarana's mind transfers to another creature within 1 mile who they rendered comatose through Drain Thoughts.",
+							"After {@dice 1d6} days of being {@condition controlled}, the {@condition controlled} creature dies, and its body transforms into that of the vetalarana who rendered it comatose."
+						]
+					},
+					{
+						"name": "Climb Speed",
+						"entries": [
+							"A vetalarana gains a climb Speed equal to their land Speed."
+						]
+					},
+					{
+						"name": "Claws",
+						"entries": [
+							"If the base creature had hands, its fingernails thicken and grow to terrible proportions, granting it an unarmed claw {@action Strike} that deals slashing damage, has the {@trait agile} trait, and can Grab. Use the moderate damage for the creature's level on the {@action Strike} Damage table on page 65 of the Gamemastery Guide."
+						]
+					},
+					{
+						"name": "Drain Thoughts",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"divination",
+							"mental",
+							"occult"
+						],
+						"requirements": "A {@condition grabbed}, {@condition paralyzed}, {@condition restrained}, {@condition unconscious}, or willing creature is within the vetalarana's reach",
+						"entries": [
+							"The vetalarana seizes a creature and consumes its memories. This requires an {@skill Athletics} check against the victim's Fortitude DC if the victim is {@condition grabbed} and is automatic for any of the other conditions. The victim is {@condition stupefied||stupefied 1}, and the vetalarana regains HP equal to 10% of the vetalarana's maximum HP, gaining any excess as temporary Hit Points. Draining Thoughts from a creature that is already {@condition stupefied} doesn't restore any HP to the vetalarana but increases the victim's {@condition stupefied} value by 1. Additionally, the vetalarana views one of the victim's memories.",
+							"A victim's {@condition stupefied} condition value decreases by 1 every week.",
+							"A victim that becomes {@condition stupefied||stupefied 5} in this way is rendered comatose, becoming permanently {@condition unconscious}. As long as the vetalarana lives, a comatose victim can't regain consciousness, and its {@condition stupefied} condition doesn't decrease."
+						]
+					},
+					{
+						"name": "Vetalarana Vulnerabilities",
+						"entries": [
+							"All vetalaranas possess the following vulnerabilities.",
+							{
+								"type": "list",
+								"items": [
+									{
+										"type": "ability",
+										"name": "Barred Senses",
+										"entries": [
+											"A vetalarana can't see or sense through {@trait force} effects or cold iron, and their mind can't penetrate {@trait force} effects or cold iron. Such barriers can prevent the transference of a vetalarana's mind through Mental Rebirth."
+										]
+									},
+									{
+										"type": "ability",
+										"name": "Revulsion",
+										"entries": [
+											"A vetalarana delights in consuming memories and secrets, and is disgusted by those who share such sensitive tidbits openly. A vetalarana can't voluntarily come within 10 feet of a creature loudly voicing their intimate personal secrets or most cherished memories aloud. Speaking such information aloud with conviction is a single action that has the auditory, {@trait concentrate}, and {@trait linguistic} traits, and protects the creature until the start of its next turn. A vetalarana that involuntarily comes within 10 feet of a creature sharing such information gains the {@condition fleeing} condition until they're 10 feet or farther from the creature. After 1 round of being exposed to the secrets of a creature, a vetalarana can attempt a DC 25 Will save as a single action, which has the {@trait concentrate} trait. On a success, they overcome their revulsions for {@dice 1d6} rounds (or 1 hour on a critical success)."
+										]
+									},
+									{
+										"type": "ability",
+										"name": "Vulnerable to Brain Destruction",
+										"entries": [
+											"A vetalarana whose brain has been destroyed, or is reduced to 0 HP while unable to take mental actions, can't use Mental Rebirth."
+										]
+									}
+								]
+							}
+						]
+					},
+					{
+						"name": "Warped Fulu",
+						"entries": [
+							"The jiang-shi has corrupted the fulu attached to their brow. The jiang-shi is immune to spells cast from a magic item without expending a spell slot, such as from a scroll or wand. A creature can {@action Steal} the fulu to remove it, rolling against the jiangshi's {@skill Perception} DC. This immediately ends the jiang-shi's immunity to these effects. If a creature then destroys the removed fulu with an {@action Interact} action, the jiang-shi also loses their fast healing ability. A jiang-shi can create a replacement fulu by spending 1 uninterrupted hour inscribing a strip of paper (or similar) with a writing instrument."
+						]
+					},
+					{
+						"name": "Rigor Mortis",
+						"entries": [
+							"The jiang-shi ignores difficult terrain and effects that would render them {@condition prone}. A jiang-shi can't take the Drop {@condition Prone} action.",
+							"When they {@action Leap} they don't trigger reactions that are normally triggered by move actions, such as Attacks of Opportunity."
+						]
+					},
+					{
+						"name": "Claws",
+						"entries": [
+							"If the base creature had hands, its fingernails thicken and grow to terrible proportions, granting it an unarmed claw {@action Strike} that deals slashing damage, has the {@trait agile} trait, and can Grab. Use the moderate damage for the creature's level on the {@action Strike} Damage table on page 65 of the Gamemastery Guide."
+						]
+					},
+					{
+						"name": "Drain Qi",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"divine",
+							"necromancy"
+						],
+						"requirements": "A {@condition grabbed}, {@condition paralyzed}, {@condition restrained}, {@condition unconscious}, or willing creature is within the jiang-shi's reach",
+						"entries": [
+							"The jiang-shi drains the victim's life energy, or qi, through their breath. This requires an {@skill Athletics} check against the victim's Fortitude DC if the victim is {@condition grabbed} and is automatic for any of the other conditions. The victim is {@condition drained||drained 1} and the jiang-shi regains HP equal to 10% of its maximum HP, gaining any excess as temporary Hit Points. Draining qi from a creature that's already {@condition drained} doesn't restore any HP to the jiang-shi but increases the victim's {@condition drained} condition value by 1, killing the victim when it reaches {@condition drained||drained 5}. If the victim has the ability to cast ki spells, it can spend 1 Focus Point to avoid becoming {@condition drained}. This protects it only from the current attack, not from subsequent attempts to Drain Qi.",
+							"A victim's {@condition drained} condition value decreases by 1 every week. If the creature restricts their diet to glutinous rice for at least 1 day and spends 10 minutes dancing, jogging, or otherwise engaging in vigorous physical activity by succeeding at a DC 25 {@skill Athletics} check, it reduces its {@condition drained} condition by 1."
+						]
+					}
+				]
+			},
+			"optAbilities": {
+				"entries": [
+					{
+						"type": "pf2-h3",
+						"name": "Vetalarana Manipulator Abilities",
+						"entries": [
+							"Extremely powerful vetalaranas who've tasted the thoughts of hundreds of people or more become empowered by the memories and experiences they've consumed, overcoming their revulsions. They gain greater control over their comatose victims, can manipulate memories, and even paralyze with a touch. These vetalaranas are known as \"manipulators,\" although those with psychic powers of their own often prefer the terms \"doyen\" or \"thoughtseer.\"",
+							"Vetalarana manipulators gain additional abilities, as detailed below. A creature below 10th level isn't powerful enough to become a vetalarana manipulator; instead, make such a creature into a regular vetalarana or rebuild the creature so that it's at least 10th level before making it a vetalarana manipulator."
+						]
+					}
+				],
+				"abilities": [
+					{
+						"name": "Occult Innate Spells",
+						"entries": [
+							"A vetalarana manipulator has {@spell tongues} as a constant occult innate spell."
+						]
+					},
+					{
+						"name": "Resistances",
+						"entries": [
+							"The vetalarana manipulator resists mental damage and all physical damage (except magical cold iron)."
+						]
+					},
+					{
+						"name": "Control Comatose",
+						"traits": [
+							"exploration",
+							"incapacitation",
+							"mental",
+							"necromancy",
+							"occult",
+							"possession"
+						],
+						"frequency": {
+							"freq": 1,
+							"unit": "day"
+						},
+						"entries": [
+							"The vetalarana manipulator spends 10 minutes to take psychic control of the creatures they've rendered comatose with Drain Thoughts. This has the effects of the {@spell possession} spell, but lasts for up to 6 hours, has a range of 1 mile, and the vetalarana can control a number of comatose victims at a time equal to half the vetalarana's level. A comatose victim can't resist this possession and automatically gets a critical failure on its saving throw against Control Comatose.",
+							"As long as a comatose victim is {@condition controlled} by a vetalarana manipulator in this way, the victim's {@condition stupefied} and {@condition unconscious} conditions are temporarily suppressed."
+						]
+					},
+					{
+						"name": "Drain Thoughts",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"divination",
+							"mental",
+							"occult"
+						],
+						"entries": [
+							"As a basic vetalarana, but the vetalarana manipulator can choose to alter, enhance, or erase the memory they view as a 4th-level {@spell modify memory} spell. If the vetalarana gets a critical success on their {@skill Athletics} check to Drain Thoughts, the target is {@condition stupefied||stupefied 2} instead of {@condition stupefied||stupefied 1}."
+						]
+					},
+					{
+						"name": "Paralyzing Claws",
+						"traits": [
+							"incapacitation",
+							"occult",
+							"necromancy"
+						],
+						"entries": [
+							"Any living creature hit by a vetalarana manipulator's claw {@action Strike} must succeed at a Fortitude save or become {@condition paralyzed}. The target can attempt a new save at the end of each of its turns to end the effect, and the DC cumulatively decreases by 1 on each such save. Use the moderate DC for the creature's level on the Spell DC and Spell Attack Bonus table on page 66 of the Gamemastery Guide."
+						]
+					}
+				]
+			}
+		},
+		{
 			"name": "Vampire, Jiang-shi",
 			"type": "Template",
 			"hasLore": true,
