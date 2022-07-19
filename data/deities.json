@@ -3233,6 +3233,11 @@
 			"alias": [
 				"The Boatman"
 			],
+			"otherSources": {
+				"Reprinted": [
+					"BD|43"
+				]
+			},
 			"source": "LOGM",
 			"page": 128,
 			"alignment": [
@@ -7462,6 +7467,11 @@
 			"alias": [
 				"Him Who Gnaws"
 			],
+			"otherSources": {
+				"Reprinted": [
+					"BD|105"
+				]
+			},
 			"source": "LOGM",
 			"page": 77,
 			"alignment": [
@@ -15804,6 +15814,11 @@
 			"alias": [
 				"The Vampire Queen"
 			],
+			"otherSources": {
+				"Reprinted": [
+					"BD|43"
+				]
+			},
 			"source": "LOGM",
 			"page": 77,
 			"alignment": [
@@ -15921,6 +15936,371 @@
 				},
 				"weapon": [
 					"pick"
+				]
+			}
+		},
+		{
+			"name": "Uvuko",
+			"alias": [
+				"The Diamond Ring"
+			],
+			"source": "LOME",
+			"hasLore": true,
+			"page": 141,
+			"alignment": [
+				"cg"
+			],
+			"category": "Mwangi Gods",
+			"edicts": [
+				"embrace change and the future, master adversity with flexibility",
+				"foster freedom and progress for others"
+			],
+			"anathema": [
+				"allow yourself and your surroundings to stagnate",
+				"crush an egg",
+				"use vile or cruel language"
+			],
+			"followerAlignment": {
+				"alignment": [
+					"ng",
+					"n",
+					"cg",
+					"cn"
+				]
+			},
+			"devoteeBenefits": {
+				"font": [
+					"heal"
+				],
+				"skill": [
+					"athletics"
+				],
+				"ability": {
+					"entry": "Strength or Wisdom",
+					"abilities": [
+						"str",
+						"wis"
+					]
+				},
+				"domains": [
+					"change",
+					"creation",
+					"healing",
+					"wyrmkin"
+				],
+				"alternateDomains": [
+					"air",
+					"cold"
+				],
+				"spells": {
+					"1": [
+						"fleet step"
+					],
+					"3": [
+						"haste"
+					],
+					"6": [
+						"dragon form"
+					]
+				},
+				"weapon": [
+					"maul"
+				],
+				"avatar": {
+					"preface": "When casting the {@spell avatar} spell, a worshipper of Uvuko gains the following additional abilities.",
+					"speed": {
+						"walk": 30,
+						"fly": 70
+					},
+					"immune": [
+						"immobilized"
+					],
+					"melee": [
+						{
+							"name": "maul",
+							"traits": [
+								"shove",
+								"reach 15 feet"
+							],
+							"damage": "6d12+6",
+							"damageType": "bludgeoning"
+						}
+					],
+					"ranged": [
+						{
+							"name": "breath of lightning",
+							"range": 120,
+							"rangedIncrement": true,
+							"damage": "6d6+3",
+							"damageType": "electricity"
+						}
+					]
+				}
+			}
+		},
+		{
+			"name": "Tlehar",
+			"alias": [
+				"The Rising Sun"
+			],
+			"source": "LOME",
+			"hasLore": true,
+			"page": 141,
+			"alignment": [
+				"ng"
+			],
+			"category": "Mwangi Gods",
+			"edicts": [
+				"give yourself fully to everything you attempt",
+				"always maintain hope that tomorrow will be a better day",
+				"treasure every gift you are given by those who matter to you"
+			],
+			"anathema": [
+				"lose your motivation to your regrets",
+				"spread despair",
+				"treat a loved one poorly"
+			],
+			"followerAlignment": {
+				"alignment": [
+					"lg",
+					"ng",
+					"cg"
+				]
+			},
+			"devoteeBenefits": {
+				"font": [
+					"heal"
+				],
+				"skill": [
+					"crafting"
+				],
+				"ability": {
+					"entry": "Intelligence or Charisma",
+					"abilities": [
+						"cha",
+						"int"
+					]
+				},
+				"domains": [
+					"cities",
+					"healing",
+					"passion",
+					"sun"
+				],
+				"alternateDomains": [
+					"change",
+					"creation",
+					"vigil",
+					"zeal"
+				],
+				"spells": {
+					"1": [
+						"soothe"
+					],
+					"3": [
+						"enthrall"
+					],
+					"5": [
+						"dreaming potential"
+					]
+				},
+				"weapon": [
+					"morningstar"
+				],
+				"avatar": {
+					"preface": "When casting the {@spell avatar} spell, a worshipper of Tlehar gains the following additional abilities.",
+					"speed": {
+						"walk": 50,
+						"fly": 70
+					},
+					"immune": [
+						"immobilized"
+					],
+					"melee": [
+						{
+							"name": "morningstar",
+							"traits": [
+								"versatile p",
+								"reach 15 feet"
+							],
+							"damage": "6d6+6",
+							"damageType": "bludgeoning"
+						}
+					],
+					"ranged": [
+						{
+							"name": "morning light",
+							"range": 120,
+							"rangedIncrement": true,
+							"damage": "3d6+3",
+							"damageType": "fire",
+							"damage2": "3d6+3",
+							"damageType2": "positive"
+						}
+					]
+				}
+			}
+		},
+		{
+			"name": "Orcus",
+			"source": "BotD",
+			"hasLore": true,
+			"page": 43,
+			"alignment": [
+				"ce"
+			],
+			"category": "Demon Lords",
+			"edicts": [
+				"become undead through choice and skill",
+				"master necromantic magic",
+				"create undead"
+			],
+			"anathema": [
+				"become a vampire or accidental undead",
+				"give succor to faiths that seek to destroy undead"
+			],
+			"followerAlignment": {
+				"alignment": [
+					"ne",
+					"ce"
+				]
+			},
+			"devoteeBenefits": {
+				"font": [
+					"harm"
+				],
+				"skill": [
+					"arcana"
+				],
+				"domains": [
+					"magic",
+					"might",
+					"undeath",
+					"zeal"
+				],
+				"spells": {
+					"1": [
+						"grim tendrils"
+					],
+					"2": [
+						"feral shades|som"
+					],
+					"9": [
+						"power word kill"
+					]
+				},
+				"weapon": [
+					"mace"
+				]
+			}
+		},
+		{
+			"name": "Followers Of Fate",
+			"source": "B2",
+			"page": 184,
+			"hasLore": true,
+			"alignment": [
+				"ln"
+			],
+			"category": "Creature",
+			"edicts": [
+				"make predictions of the future",
+				"offer advice and guidance to those in positions of power",
+				"provide comfort to the elderly"
+			],
+			"anathema": [
+				"apologize for making an incorrect prediction",
+				"disrespect mothers",
+				"accept payment for fortune-telling"
+			],
+			"followerAlignment": {
+				"alignment": [
+					"lg",
+					"ln",
+					"le"
+				]
+			},
+			"devoteeBenefits": {
+				"font": [
+					"heal",
+					"harm"
+				],
+				"skill": [
+					"occultism"
+				],
+				"domains": [
+					"family",
+					"fate",
+					"knowledge",
+					"truth"
+				],
+				"spells": {
+					"1": [
+						"mindlink"
+					],
+					"2": [
+						"web"
+					],
+					"5": [
+						"prying eye"
+					]
+				},
+				"weapon": [
+					"shears|Bst2"
+				]
+			}
+		},
+		{
+			"name": "Set",
+			"source": "BotD",
+			"page": 133,
+			"hasLore": true,
+			"alignment": [
+				"ne"
+			],
+			"category": "Ancient Osirian Gods",
+			"edicts": [
+				"bring chaos to society",
+				"murder those who stand in your way",
+				"defeat your foes with personal strength and cunning"
+			],
+			"anathema": [
+				"refuse to fight your own battles",
+				"destroy a soul instead of turning it to undeath"
+			],
+			"followerAlignment": {
+				"alignment": [
+					"le",
+					"ne",
+					"ce"
+				]
+			},
+			"devoteeBenefits": {
+				"font": [
+					"harm"
+				],
+				"skill": [
+					"intimidation"
+				],
+				"domains": [
+					"death",
+					"darkness",
+					"dust",
+					"lightning"
+				],
+				"spells": {
+					"1": [
+						"penumbral shroud|LOGM"
+					],
+					"3": [
+						"cup of dust|LOGM"
+					],
+					"6": [
+						"disintegrate"
+					]
+				},
+				"weapon": [
+					"spear"
 				]
 			}
 		}

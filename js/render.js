@@ -1373,7 +1373,7 @@ function Renderer () {
 		// FIXME: Doesn't render "data" structures. See SoM dragon and soul gifts.
 		if (entry.data) {
 			const renderFn = Renderer.hover._pageToRenderFn(page);
-			const rendered = renderFn ? renderFn(entry.data, {isEmbedded: true, noPage: true}) : `<div class="pf2-stat">Failed to render ${entry.data.name}.</div>`;
+			const rendered = renderFn ? renderFn(entry.data, { isEmbedded: true, noPage: true }) : `<div class="pf2-stat">Failed to render ${entry.data.name}.</div>`;
 			textStack[0] += typeof rendered === "object" ? rendered.html() : rendered;
 		} else {
 			const hash = entry.hash || UrlUtil.URL_TO_HASH_BUILDER[page](entry);
@@ -2571,7 +2571,7 @@ Renderer.events = {
 		observer.track(ele.parentNode);
 	},
 
-	_handleLoad_inlineStatblock_fnOnObserve ({entry}) {
+	_handleLoad_inlineStatblock_fnOnObserve ({ entry }) {
 		const ele = entry.target;
 
 		const tag = ele.dataset.statTag.uq();
@@ -2589,7 +2589,7 @@ Renderer.events = {
 				}
 
 				const fnRender = Renderer.hover._pageToRenderFn(pageRenderFn);
-				const rendered = fnRender(toRender, {noPage: true});
+				const rendered = fnRender(toRender, { noPage: true });
 				if (typeof rendered === "string") ele.outerHTML = rendered;
 				else if (MiscUtil.isObject(rendered)) $(ele).replaceWith(rendered);
 			});
@@ -3508,7 +3508,7 @@ Renderer.utils = {
 		},
 
 		_OBSERVERS: {},
-		getCreateObserver ({observerId, fnOnObserve}) {
+		getCreateObserver ({ observerId, fnOnObserve }) {
 			if (!Renderer.utils.lazy._OBSERVERS[observerId]) {
 				const observer = Renderer.utils.lazy._OBSERVERS[observerId] = new IntersectionObserver(
 					Renderer.utils.lazy.getFnOnIntersect({
@@ -3553,7 +3553,7 @@ Renderer.utils = {
 			return Renderer.utils.lazy._OBSERVERS[observerId];
 		},
 
-		destroyObserver ({observerId}) {
+		destroyObserver ({ observerId }) {
 			const observer = Renderer.utils.lazy._OBSERVERS[observerId];
 			if (!observer) return;
 
@@ -3561,7 +3561,7 @@ Renderer.utils = {
 			window.removeEventListener("beforeprint", observer._printListener);
 		},
 
-		getFnOnIntersect ({observerId, fnOnObserve}) {
+		getFnOnIntersect ({ observerId, fnOnObserve }) {
 			return obsEntries => {
 				const observer = Renderer.utils.lazy._OBSERVERS[observerId];
 
@@ -3858,7 +3858,7 @@ Renderer.archetype = {
 		return `${Renderer.utils.getNameDiv(arc, { page: UrlUtil.PG_ARCHETYPES, type: "ARCHETYPE" })}
 		${Renderer.utils.getDividerDiv()}
 		${Renderer.utils.getTraitsDiv(arc.traits || [])}
-		${renderer.render({	type: "pf2-h4", entries: arc.entries })}
+		${renderer.render({ type: "pf2-h4", entries: arc.entries })}
 		${Renderer.utils.getPageP(arc)}
 		`;
 	},
@@ -4295,9 +4295,21 @@ Renderer.creature = {
 			</div>`;
 		}
 		const isRenderButton = (generic || opts.isRenderingGeneric) && !opts.noButton;
-		// FIXME/TODO: Also render name as link inside generic abilities? Would need to get the tag somehow...
-		const abilityName = generic ? renderer.render(`{@${generic.tag} ${ability.name}${generic.add_hash ? ` (${generic.add_hash})` : ""}${ability.title ? `||${ability.title}` : ""}}`) : ability.name;
+		const abilityName = generic ? renderer.render(`{@${generic.tag} ${ability.name}${generic.add_hash ? ` (${generic.add_hash})` : ""}|${ability.source ? ability.source : generic.source ? generic.source : ""}${ability.title ? `|${ability.title}` : ""}}`) : ability.name;
 
+		if (opts.asHTML) {
+			return `<p class="pf2-stat pf2-stat__section ${buttonClass} ${opts.isRenderingGeneric ? "hidden" : ""}"><strong>${abilityName}</strong>
+				${ability.activity ? renderer.render(Parser.timeToFullEntry(ability.activity)) : ""}
+				${isRenderButton ? Renderer.creature.getAbilityTextButton(buttonClass, opts.isRenderingGeneric) : ""}
+				${ability.traits && ability.traits.length ? `(${ability.traits.map(t => renderer.render(`{@trait ${t.toLowerCase()}}`)).join(", ")}); ` : ""}
+				${ability.frequency ? `<strong>Frequency&nbsp;</strong>${renderer.render_addTerm(Parser.freqToFullEntry(ability.frequency))}` : ""}
+				${ability.requirements ? `<strong>Requirements&nbsp;</strong>${renderer.render_addTerm(ability.requirements)}` : ""}
+				${ability.trigger ? `<strong>Trigger&nbsp;</strong>${renderer.render_addTerm(ability.trigger)}` : ""}
+				${ability.frequency || ability.requirements || ability.trigger ? "<strong>Effect</strong>" : ""}
+				${(ability.entries || []).map(it => renderer.render(it)).join(" ")}
+				</p>
+				${renderedGenericAbility || ""}`;
+		}
 		return $$`<p class="pf2-stat pf2-stat__section ${buttonClass} ${opts.isRenderingGeneric ? "hidden" : ""}"><strong>${abilityName}</strong>
 					${ability.activity ? renderer.render(Parser.timeToFullEntry(ability.activity)) : ""}
 					${isRenderButton ? Renderer.creature.getAbilityTextButton(buttonClass, opts.isRenderingGeneric) : ""}
@@ -4476,7 +4488,7 @@ Renderer.creature = {
 
 	async pGetModifiedCreature (cr, customHashId) {
 		if (!customHashId) return cr;
-		const {_scaledLvl} = Renderer.creature.getUnpackedCustomHashId(customHashId);
+		const { _scaledLvl } = Renderer.creature.getUnpackedCustomHashId(customHashId);
 		if (_scaledLvl != null) return scaleCreature.scale(cr, _scaledLvl);
 		throw new Error(`Unhandled custom hash ID "${customHashId}"`);
 	},
@@ -4751,17 +4763,7 @@ Renderer.hazard = {
 		}
 		if (hazard.abilities) {
 			hazard.abilities.forEach(a => {
-				if (a.type === "ability") renderer.recursiveRender(a, renderStack);
-				else {
-					renderStack.push(`<p class="pf2-stat pf2-stat__section">`);
-					renderStack.push(`${a.name} `);
-					renderStack.push(`</span>`);
-					renderStack.push(renderer.render(`${a.name.uppercaseFirst()} `));
-					renderStack.push(`<span>`);
-					if (a.traits != null) renderStack.push(renderer.render(` (${a.traits.map(t => `{@trait ${t.toLowerCase()}}`).join(", ")})`));
-					renderStack.push(`</span>`);
-					renderStack.push(`</p>`);
-				}
+				renderStack.push(Renderer.creature.getRenderedAbility(a, { noButton: true, asHTML: true }))
 			});
 		}
 		if (hazard.description) {
@@ -4812,23 +4814,11 @@ Renderer.hazard = {
 		}
 		if (hazard.actions) {
 			hazard.actions.forEach(a => {
-				if (a.type === "ability" || a.type === "affliction") renderStack.push(renderer.render(a));
-				else {
-					renderStack.push(`<p class="pf2-stat pf2-stat__section">`);
-					renderStack.push(`<span><strong>${a.range}&nbsp;</strong>`);
-					renderStack.push(renderer.render(`{@as 1} `));
-					renderStack.push(`${a.name} `);
-					renderStack.push(`</span>`);
-					renderStack.push(renderer.render(`{@hit ${a.attack}||${a.name.uppercaseFirst()} `));
-					renderStack.push(`<span>`);
-					if (a.traits != null) renderStack.push(renderer.render(` (${a.traits.map(t => `{@trait ${t.toLowerCase()}}`).join(", ")})`));
-					if (a.damage != null) {
-						renderStack.push(`, <strong>Damage&nbsp;</strong>`);
-						renderStack.push(renderer.render(a.damage));
-					}
-					renderStack.push(`</span>`);
-					renderStack.push(`</p>`);
-				}
+				if (a.type === "attack") {
+					let textStack = []
+					renderer._renderAttack(a, textStack)
+					renderStack.push(textStack)
+				} else renderStack.push(Renderer.creature.getRenderedAbility(a, { noButton: true, asHTML: true }))
 			});
 		}
 		if (hazard.routine) {
@@ -5421,17 +5411,19 @@ Renderer.organization = {
 };
 
 Renderer.creatureTemplate = {
-	getRenderedString (creatureTemplate, opts) {
+	getRenderedString (it, opts) {
 		opts = opts || {};
-		return `
-			${Renderer.utils.getExcludedDiv(creatureTemplate, "creatureTemplate", UrlUtil.PG_CREATURETEMPLATE)}
-			${Renderer.utils.getNameDiv(creatureTemplate)}
+		return $$`
+			${Renderer.utils.getExcludedDiv(it, "creatureTemplate", UrlUtil.PG_CREATURETEMPLATE)}
+			${Renderer.utils.getNameDiv(it)}
 			${Renderer.utils.getDividerDiv()}
-			${Renderer.utils.getTraitsDiv(creatureTemplate.traits || [])}
-			${Renderer.creatureTemplate.getBody(creatureTemplate)}
-			${Renderer.generic.getRenderedEntries(creatureTemplate)}
-			${Renderer.creatureTemplate.getAbilities(creatureTemplate)}
-			${Renderer.creatureTemplate.getOptionalAbilities(creatureTemplate)}
+			${Renderer.utils.getTraitsDiv(it.traits || [])}
+			${Renderer.creatureTemplate.getBody(it)}
+			${Renderer.generic.getRenderedEntries(it)}
+			${it.abilities && it.abilities.entries ? Renderer.generic.getRenderedEntries(it.abilities) : ""}
+			${it.abilities && it.abilities.abilities ? it.abilities.abilities.map(x => Renderer.creature.getRenderedAbility(x)) : ""}
+			${it.optAbilities && it.optAbilities.entries ? Renderer.generic.getRenderedEntries(it.optAbilities) : ""}
+			${it.optAbilities && it.optAbilities.abilities ? it.optAbilities.abilities.map(x => Renderer.creature.getRenderedAbility(x)) : ""}
 		`
 	},
 
@@ -5441,24 +5433,6 @@ Renderer.creatureTemplate = {
 		const renderer = Renderer.get().setFirstSection(true);
 		// TODO: Insert any functional properties here to be displayed.
 		textStack.push(Renderer.utils.getDividerDiv())
-		return renderer.render(textStack.join(""));
-	},
-
-	getAbilities (it) {
-		if (!it.abilities || Object.keys(it.abilities).length === 0) return "";
-		const textStack = [""];
-		const renderer = Renderer.get().setFirstSection(true);
-		textStack.push(Renderer.generic.getRenderedEntries(it.abilities))
-		if (it.abilities.abilities || !Object.keys(it.abilities.abilities).length === 0) textStack.push(`${it.abilities.abilities.map(x => renderer.render(x)).join("")}`)
-		return renderer.render(textStack.join(""));
-	},
-
-	getOptionalAbilities (it) {
-		if (!it.optAbilities || Object.keys(it.optAbilities).length === 0) return "";
-		const textStack = [""];
-		const renderer = Renderer.get().setFirstSection(true);
-		textStack.push(Renderer.generic.getRenderedEntries(it.optAbilities))
-		if (it.optAbilities.abilities || !Object.keys(it.optAbilities.abilities).length === 0) textStack.push(`${it.optAbilities.abilities.map(x => renderer.render(x)).join("")}`)
 		return renderer.render(textStack.join(""));
 	},
 
@@ -7650,7 +7624,7 @@ Renderer.hover = {
 			case "group": return Renderer.group.getRenderedString;
 			case "skill": return Renderer.skill.getRenderedString;
 			case "genericData": return Renderer.generic.dataGetRenderedString;
-			case "genericCreatureAbility": return it => Renderer.creature.getRenderedAbility(it, {isRenderingGeneric: true, asHTML: true});
+			case "genericCreatureAbility": return it => Renderer.creature.getRenderedAbility(it, { isRenderingGeneric: true, asHTML: true });
 			// endregion
 			default: throw new Error(`Unknown page: ${page} in _pageToRenderFn`);
 		}

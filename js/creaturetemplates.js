@@ -26,7 +26,8 @@ class CreatureTemplatePage extends ListPage {
 		const hash = UrlUtil.autoEncodeHash(g);
 
 		eleLi.innerHTML = `<a href="#${hash}" class="lst--border">
-			<span class="bold col-10 pl-0">${g.name}</span>
+			<span class="bold col-6 pl-0">${g.name}</span>
+			<span class="text-center col-4">${g.type || "\u2014"}</span>
 			<span class="col-2 text-center ${Parser.sourceJsonToColor(g.source)}" title="${Parser.sourceJsonToFull(g.source)}" ${BrewUtil.sourceJsonToStyle(g.source)}>${source}</span>
 		</a>`;
 
@@ -35,6 +36,7 @@ class CreatureTemplatePage extends ListPage {
 			eleLi,
 			g.name,
 			{
+				type: g.type || "\u2014",
 				hash,
 				source,
 				title: g.title || "",
@@ -70,6 +72,7 @@ class CreatureTemplatePage extends ListPage {
 			$ele,
 			g.name,
 			{
+				type: g.type || "\u2014",
 				hash,
 			},
 		);

@@ -7,7 +7,7 @@ Object.assign(global, require("../js/converter.js"));
 /*
 	How To:
 	1. Create a new .txt file and copy all of the statblocks from a book into it. The name of the file determines its source.
-	2. Run this script. node node\pdf-parser.js input="./path/to/dir"
+	2. Run this script. node node/pdf-parser.js input="./path/to/dir"
 	3. The parser will split the txt, parse each chunk, save chunks without errors as data, and those with errors as txt.
 */
 

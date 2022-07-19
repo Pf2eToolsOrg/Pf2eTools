@@ -1,6 +1,228 @@
 {
 	"ability": [
 		{
+			"name": "Troop Defenses",
+			"otherSources": {
+				"Reprinted": [
+					"BotD|214"
+				]
+			},
+			"source": "B3",
+			"page": 306,
+			"entries": [
+				"Troops are composed of many individuals, and over the course of enough attacks and downed comrades, troops shrink in size. Most troops start with 16 squares (4 by 4), and their Hit Points have two listed thresholds, typically the first is at 2/3 their maximum Hit Points and the second is at 1/3 their maximum Hit Points. Once the troop drops below the first threshold, it loses 4 squares, leaving 12 squares remaining, and the first threshold becomes the troop's new maximum Hit Points. Once the troop falls below the second threshold, it loses another 4 squares, leaving 8 squares remaining, and the second threshold becomes the troop's new maximum Hit Points. In order to restore its size and maximum Hit Points, a troop needs to spend downtime to use long-term treatment on casualties or recruit new members to replace the fallen. At 0 Hit Points, the troop is reduced down to 4 squares, which is too few to sustain the troop, so it disperses entirely, with the few remaining members surrendering, {@condition fleeing}, or easily dispatched, depending on their nature. A damaging single-target effect, such as a {@action Strike}, can't force a troop to pass through more than one threshold at once. For instance, if a troop had 60 Hit Points, with thresholds at 40 and 20, a {@action Strike} for 50 damage would leave the troop at 21 Hit Points, just above the second threshold. A damaging area effect or multi-target effect can cross multiple thresholds at once and could potentially destroy the entire troop in one shot. Non-damaging effects with an area or that target all creatures in a certain proximity affect a troop normally if they affect the entire area occupied by the troop. If an effect has a smaller area or numbers of targets, it typically has no effect on the troop. However, if the effect can target at least four creatures or cover at least four squares in the troop, and if it would prevent its targets from acting, cause them to flee, or otherwise make them unable to function as part of the troop for a round or more, the troop loses a number of Hit Points equal to the amount required to bring it to the next threshold, removing 4 squares. If an effect would both deal damage and automatically cross a threshold due to incapacitating some of the creatures in the troop, apply the damage first. If the damage wasn't enough to cross a threshold on its own, then reduce the Hit Points to cross the threshold for the incapacitating effect."
+			]
+		},
+		{
+			"name": "Bloody",
+			"source": "B1",
+			"page": 298,
+			"creature": [
+				"Skeleton"
+			],
+			"entries": [
+				"The skeleton is covered in dripping blood and gains {@ability fast healing} equal to its level."
+			]
+		},
+		{
+			"name": "Collapse",
+			"source": "B1",
+			"page": 298,
+			"creature": [
+				"Skeleton"
+			],
+			"activity": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"trigger": "The skeleton is critically hit.",
+			"entries": [
+				"The skeleton collapses into a pile of bones and the attack deals only normal damage. The skeleton can reform in a standing position as an action, but until it does, it is {@condition immobilized} and {@condition flat-footed}."
+			]
+		},
+		{
+			"name": "Explosive Death",
+			"source": "B1",
+			"page": 298,
+			"creature": [
+				"Skeleton"
+			],
+			"entries": [
+				"When the skeleton is destroyed, its bones shatter and explode as the necromantic energy holding it together is released. Adjacent creatures take {@damage 1d6} slashing damage per 2 levels (minimum {@dice 1d6}) with a basic Reflex save."
+			]
+		},
+		{
+			"name": "Screaming Skull",
+			"activity": {
+				"number": 2,
+				"unit": "action"
+			},
+			"source": "B1",
+			"page": 298,
+			"creature": [
+				"Skeleton"
+			],
+			"traits": [
+				"auditory",
+				"emotion",
+				"fear",
+				"mental"
+			],
+			"entries": [
+				"The skeleton removes its skull and throws it, making a jaws attack with a range of 20 feet. It then attempts to {@action Demoralize} each foe within 10 feet of the target. The head bounces, rolls, or even flies back, returning to the skeleton at the start of its next turn. The skeleton is blind until then."
+			]
+		},
+		{
+			"name": "Blaze",
+			"source": "B3",
+			"creature": [
+				"Skeleton"
+			],
+			"page": 236,
+			"entries": [
+				"The skeleton is wreathed with fire, which doesn't consume its bones or gear. The skeleton gains immunity to fire and weakness 5 to cold, loses its resistance to cold, and its Strikes deal additional {@condition persistent damage ||persistent fire damage} equal to half the skeleton's level (minimum 1 damage)."
+			]
+		},
+		{
+			"name": "Bone Missile",
+			"activity": {
+				"number": 2,
+				"unit": "action"
+			},
+			"source": "B3",
+			"creature": [
+				"Skeleton"
+			],
+			"page": 236,
+			"entries": [
+				"The skeleton yanks a rib from its ribcage to use as an arrow or javelin. The skeleton loses HP equal to its level (minimum 1), then makes a ranged {@action Strike}. This uses the attack bonus of whichever of the skeleton's other Strikes has the highest attack bonus and deals piercing damage equal to that {@action Strike}'s damage plus the skeleton's level (minimum 1)."
+			]
+		},
+		{
+			"name": "Bone Powder",
+			"source": "B3",
+			"creature": [
+				"Skeleton"
+			],
+			"page": 236,
+			"entries": [
+				"When the skeleton takes physical damage from a critical hit, one of its bones is pulverized into a fine powder. All creatures in a 5-foot emanation that breathe take {@damage 1d6} {@condition persistent damage ||persistent poison damage} (plus an additional {@dice 1d6} for every 6 levels the skeleton has)."
+			]
+		},
+		{
+			"name": "Skeleton of Roses",
+			"source": "B3",
+			"creature": [
+				"Skeleton"
+			],
+			"page": 236,
+			"entries": [
+				"Thick briars have grown through the skeleton's bones, covering it in red roses with inch-long thorns. The skeleton's unarmed melee Strikes deal additional piercing damage equal to 1/3 the skeleton's level (minimum 1 damage). At the end of each of its turns, if the skeleton has caused piercing damage with its thorns, it regains HP equal to its level (minimum 1). Each time the skeleton regains HP in this way, another rose blossoms."
+			]
+		},
+		{
+			"name": "Aquatic Bones",
+			"source": "BotD",
+			"creature": [
+				"Skeleton"
+			],
+			"page": 146,
+			"entries": [
+				"The skeleton has bones from aquatic creatures, allowing it to swim using a simple tail, paddles, or similar appendage. The skeleton has a swim Speed of 20 feet and gains the {@trait aquatic} trait and the {@ability aquatic ambush} ability."
+			]
+		},
+		{
+			"name": "Bone Storm",
+			"source": "BotD",
+			"creature": [
+				"Skeleton"
+			],
+			"page": 146,
+			"activity": {
+				"number": 3,
+				"unit": "action"
+			},
+			"frequency": {
+				"freq": 1,
+				"unit": "day"
+			},
+			"entries": [
+				"The skeleton transforms into a cyclone of bones, taking up the same space, but twice as tall. It then Strides up to double its Speed. It can move through spaces occupied by other creatures, and this movement doesn't trigger reactions. Creatures the bone storm moves through take {@damage 1d6} slashing damage for every 2 levels of the skeleton, with a basic Reflex save against the hard DC for the creature's level. A level 1 or lower skeleton only moves; it doesn't deal damage. A creature attempts this save only once even if the bone storm moved through its space multiple times. At the end of the movement, the skeleton reforms."
+			]
+		},
+		{
+			"name": "Crumbling Bones",
+			"source": "BotD",
+			"creature": [
+				"Skeleton"
+			],
+			"page": 146,
+			"entries": [
+				"The skeleton is made from crumbling bones that drift in clouds of dust. The skeleton has a fly Speed of 20 but it must end its turn within no more than 5 feet off the ground, or it falls, taking damage as normal. In addition, the skeleton can move through any space that's large enough for its skull to fit through."
+			]
+		},
+		{
+			"name": "Frozen",
+			"source": "BotD",
+			"creature": [
+				"Skeleton"
+			],
+			"page": 146,
+			"entries": [
+				"The skeleton's bones are covered in a thin layer of ice. The skeleton gains immunity to cold and weakness 5 to fire and loses resistance to fire. The skeleton is surrounded by an aura of cold that deals cold damage equal to half the skeleton's level to all adjacent creatures at the start of the skeleton's turn (basic Reflex save with a standard DC for its level)."
+			]
+		},
+		{
+			"name": "Grave Eruption",
+			"activity": {
+				"number": 2,
+				"unit": "action"
+			},
+			"source": "BotD",
+			"creature": [
+				"Skeleton"
+			],
+			"page": 146,
+			"requirements": "The skeleton is {@condition undetected} and buried in dirt, gravel, or other loose material",
+			"entries": [
+				"The skeleton erupts from the ground, Stands, and makes a melee {@action Strike}. The target is {@condition flat-footed} against this {@action Strike}. If the {@action Strike} hits, the target is {@condition frightened||frightened 1} (or {@condition frightened||frightened 2} on a critical hit)."
+			]
+		},
+		{
+			"name": "Lacquered",
+			"source": "BotD",
+			"creature": [
+				"Skeleton"
+			],
+			"page": 146,
+			"entries": [
+				"During the process to create the skeleton, it was covered with several layers of an alchemical lacquer, giving its bones a golden hue and granting added protection. The skeleton gains acid resistance 5 and a +2 status bonus to saves against effects that age or erode the target."
+			]
+		},
+		{
+			"name": "Nimble",
+			"source": "BotD",
+			"page": 146,
+			"creature": [
+				"Skeleton"
+			],
+			"entries": [
+				"The skeleton is particularly fast and nimble. Its land Speed increases by 10 feet and it has a climb Speed of 20 feet. In addition, it gains the Nimble Dodge reaction (Core Rulebook 183)."
+			]
+		},
+		{
+			"name": "Rotten",
+			"source": "BotD",
+			"creature": [
+				"Skeleton"
+			],
+			"page": 146,
+			"entries": [
+				"The bones of this skeleton are black and rotten, having spent years in polluted water or some other foul substance. The skeleton loses its resistance to piercing and slashing damage and is surrounded by a horrific stench in a 10-foot aura. A creature entering or starting its turn in the aura must succeed at a Fortitude save against the standard DC of the skeleton's level or become {@condition sickened||sickened 1} (plus {@condition slowed||slowed 1} for as long as it remains {@condition sickened} on a critical failure). While within the aura, affected creatures take a \u20132 circumstance penalty to saves against disease and to recover from the {@condition sickened} condition. A creature that succeeds at its save is temporarily immune for 1 minute.",
+				"This stench remains for 1 hour after the rotten skeleton has been destroyed unless the bones are burned, or the rot is washed away with at least 1 gallon of water."
+			]
+		},
+		{
 			"name": "All-Around Vision",
 			"source": "B1",
 			"page": 342,

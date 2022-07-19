@@ -24,6 +24,13 @@
 					"page": {
 						"type": "integer"
 					},
+					"type": {
+						"type": "string",
+						"enum": [
+							"Adjustment",
+							"Template"
+						]
+					},
 					"alias": {
 						"type": "array",
 						"items": {
@@ -49,15 +56,10 @@
 							"abilities": {
 								"type": "array",
 								"items": {
-									"anyOf": [
-										{
-											"$ref": "entry.json#/definitions/entriesAbilityBlock"
-										},
-										{
-											"$ref": "entry.json#/definitions/entriesAffliction"
-										}
-									]
-								}
+									"$ref": "utils.json#/definitions/abilityBlock"
+								},
+								"uniqueItems": true,
+								"minItems": 1
 							}
 						}
 					},
@@ -76,19 +78,17 @@
 							"abilities": {
 								"type": "array",
 								"items": {
-									"anyOf": [
-										{
-											"$ref": "entry.json#/definitions/entriesAbilityBlock"
-										},
-										{
-											"$ref": "entry.json#/definitions/entriesAffliction"
-										}
-									]
-								}
+									"$ref": "utils.json#/definitions/abilityBlock"
+								},
+								"uniqueItems": true,
+								"minItems": 1
 							}
 						}
 					}
 				},
+				"required": [
+					"type"
+				],
 				"additionalProperties": false
 			},
 			"minItems": 1
