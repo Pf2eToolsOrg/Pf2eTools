@@ -452,6 +452,7 @@ const ListUtil = {
 	},
 
 	async pDoSublistAdd ({index, doFinalize = false, addCount = 1, customHashId = null, initialData = null} = {}) {
+		// FIXME:
 		if (index == null) {
 			return JqueryUtil.doToast({
 				content: "Please first view something from the list.",
