@@ -553,8 +553,20 @@ class EncounterBuilder extends ProxyBase {
 
 	handleClick (evt, ix, add, customHashId) {
 		const data = customHashId ? {customHashId} : undefined;
-		if (add) ListUtil.pDoSublistAdd(ix, true, evt.shiftKey ? 5 : 1, data);
-		else ListUtil.pDoSublistSubtract(ix, evt.shiftKey ? 5 : 1, data);
+		if (add) {
+			ListUtil.pDoSublistAdd({
+				index: ix,
+				doFinalize: true,
+				addCount: evt.shiftKey ? 5 : 1,
+				customHashId: data,
+			});
+		} else {
+			ListUtil.pDoSublistSubtract({
+				index: ix,
+				subtractCount: evt.shiftKey ? 5 : 1,
+				customHashId: data,
+			});
+		}
 	}
 
 	async pHandleShuffleClick (ix) {
