@@ -36,7 +36,7 @@ class BestiaryPage extends ListPage {
 		eleLi.addEventListener("contextmenu", (evt) => this._handleBestiaryLiContext(evt, listItem));
 
 		const source = Parser.sourceJsonToAbv(cr.source);
-		const type = cr.creatureType && cr.creatureType.length ? cr.creatureType.join(", ") : "\u2014";
+		const type = cr._fCreatureType.join(", ") ?? "\u2014";
 		const level = cr.level;
 
 		eleLi.innerHTML += `<a href="#${hash}" class="lst--border">

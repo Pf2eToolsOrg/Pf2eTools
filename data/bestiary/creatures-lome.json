@@ -953,23 +953,12 @@
 						},
 						"requirements": "A {@condition grabbed}, {@condition paralyzed}, {@condition restrained}, {@condition unconscious}, or willing creature is within reach of the asanbosam's jaws",
 						"entries": [
-							"The asanbosam sinks its teeth into the creature to drink its blood. If the victim is {@condition grabbed}, this is automatic; otherwise, the asanbosam must succeed at an {@skill Athletics} check against the victim's Fortitude."
-						],
-						"name": "Drink Blood"
-					},
-					{
-						"entries": [
-							"The victim becomes {@condition drained 1} and the asanbosam regains 10 HP, gaining any excess Hit Points beyond its maximum as temporary."
-						],
-						"name": "DC."
-					},
-					{
-						"entries": [
+							"The asanbosam sinks its teeth into the creature to drink its blood. If the victim is {@condition grabbed}, this is automatic; otherwise, the asanbosam must succeed at an {@skill Athletics} check against the victim's Fortitude DC. The victim becomes {@condition drained 1} and the asanbosam regains 10 HP, gaining any excess Hit Points beyond its maximum as temporary Hit Points.",
 							"These temporary Hit Points remain for 1 minute. Drinking Blood from a creature that's already {@condition drained} increases the victim's {@condition drained} value by 1 to a maximum of {@condition drained 3}, but doesn't restore any HP to the asanbosam.",
 							"A victim's {@condition drained} condition decreases by 1 each week.",
 							"A blood transfusion, which requires a successful DC 20 {@skill Medicine} check and a blood donor or sufficient blood, reduces the {@condition drained} value by 1 after 10 minutes."
 						],
-						"name": "Hit Points."
+						"name": "Drink Blood"
 					}
 				]
 			}

@@ -212,10 +212,12 @@ class PageFilterBestiary extends PageFilter {
 				cr._fRitualTraditions.push(r.tradition)
 			});
 		}
+		cr._fCreatureType = []
 
 		this.handleTraitImplies(cr, {traitProp: "_fTraits", entityTypes: ["creature"]});
 		cr._fTraits = cr._fTraits.map(t => Parser.getTraitName(t));
 		if (!cr._fTraits.map(t => Renderer.trait.isTraitInCategory(t, "Rarity")).some(Boolean)) cr._fTraits.push("Common");
+		cr._fCreatureType = cr._fTraits.map(t => Renderer.trait.isTraitInCategory(t, "Creature Type") ? t : null).filter(Boolean);
 	}
 
 	addToFilters (cr, isExcluded) {
