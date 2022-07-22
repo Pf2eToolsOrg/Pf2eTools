@@ -4,9 +4,9 @@ const fs = require("fs");
 const ut = require("./util");
 require("../js/utils");
 
-function updateFolder (folder) {
+function updateFolder(folder) {
 	console.log(`Updating directory ${folder}...`);
-	const files = ut.listFiles({dir: folder});
+	const files = ut.listFiles({ dir: folder });
 	files
 		.filter(file => file.endsWith(".json"))
 		.forEach(file => {
@@ -18,9 +18,15 @@ function updateFolder (folder) {
 						x.variants.map(v => {
 							if (v.variantType) return v
 							console.log(`\tUpdating ${x.name} item variants in ${file}...`)
-							v.variantType = v.type
-							delete v.type
-							return v
+							if (!v.type && v.name) {
+								console.log(`\tCannot find type! Assuming name is type.\nPlease check the file.`)
+								v.variantType = v.name
+								return v
+							} else {
+								v.variantType = v.type
+								delete v.type
+								return v
+							}
 						})
 					}
 					return x
@@ -33,7 +39,7 @@ function updateFolder (folder) {
 						let heightenedOld = x.heightened.X
 						x.heightened.X = {}
 						heightenedOld.forEach(v => {
-							x.heightened.X = {...x.heightened.X, [v.level]: v.entries}
+							x.heightened.X = { ...x.heightened.X, [v.level]: v.entries }
 						})
 					}
 					if (x?.range?.type) {
@@ -53,7 +59,6 @@ function updateFolder (folder) {
 					return x
 				})
 			}
-			console.log(`\tCleaning ${file}...`);
 			fs.writeFileSync(file, CleanUtil.getCleanJson(json), "utf-8");
 		})
 }
