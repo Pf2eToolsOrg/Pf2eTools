@@ -5655,6 +5655,7 @@ Renderer.spell = {
 		${Renderer.spell.getSubHead(sp)}
 		${entryStack.join("")}
 		${sp.heightened ? `${Renderer.utils.getDividerDiv()}${Renderer.spell.getHeightenedEntry(sp)}` : ""}
+		${sp.amp ? `${Renderer.utils.getDividerDiv()}${Renderer.spell.getAmpEntry(sp)}` : ""}
 		${opts.noPage ? "" : Renderer.utils.getPageP(sp)}`;
 	},
 
@@ -5706,6 +5707,38 @@ Renderer.spell = {
 		if (sp.heightened.X != null) {
 			Object.entries(sp.heightened.X).forEach(([x, entries]) => {
 				renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Heightened (${Parser.getOrdinalForm(x)})&nbsp;</strong>`);
+				renderArray(entries);
+				renderStack.push(`</p>`);
+			});
+		}
+		return renderStack.join("")
+	},
+
+	getAmpEntry (sp) {
+		if (!sp.amp) return "";
+		const renderer = Renderer.get();
+		const renderStack = [""];
+		const renderArray = (a) => {
+			a.forEach((e, i) => {
+				if (i === 0) renderer.recursiveRender(e, renderStack, { prefix: "<span>", suffix: "</span>" });
+				else renderer.recursiveRender(e, renderStack, { prefix: "<span class='pf2-stat__section'>", suffix: "</span>" });
+			});
+		};
+		if (sp.amp.entries) {
+			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Amp&nbsp;</strong>`);
+			renderArray(sp.amp.entries);
+			renderStack.push(`</p>`);
+		}
+		if (sp.amp.heightened.plusX != null) {
+			Object.entries(sp.amp.heightened.plusX).forEach(([x, entries]) => {
+				renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Heightened (+${x})&nbsp;</strong>`);
+				renderArray(entries);
+				renderStack.push(`</p>`);
+			});
+		}
+		if (sp.amp.heightened.X != null) {
+			Object.entries(sp.amp.heightened.X).forEach(([x, entries]) => {
+				renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Amp Heightened (${Parser.getOrdinalForm(x)})&nbsp;</strong>`);
 				renderArray(entries);
 				renderStack.push(`</p>`);
 			});
