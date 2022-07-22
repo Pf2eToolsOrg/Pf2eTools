@@ -1000,9 +1000,9 @@ RNG_TOUCH = "touch";
 Parser.rangeToFull = function (range) {
 	if (range == null) return "";
 	if (range.entry) return range.entry;
-	if (range.type === UNT_FEET) return `${range.number} ${range.number === 1 ? "foot" : "feet"}`;
-	if (range.type === UNT_MILES) return `${range.number} ${range.number === 1 ? "mile" : "miles"}`;
-	return range.type;
+	if (range.unit === UNT_FEET) return `${range.number} ${range.number === 1 ? "foot" : "feet"}`;
+	if (range.unit === UNT_MILES) return `${range.number} ${range.number === 1 ? "mile" : "miles"}`;
+	return range.unit;
 }
 
 // TODO: Handle range/area types: emanation, cone etc?
@@ -1012,7 +1012,7 @@ Parser.getNormalisedRange = function (range) {
 	let distance = 0;
 	let offset = 0;
 
-	switch (range.type) {
+	switch (range.unit) {
 		case null: distance = 0; break;
 		case UNT_FEET: multiplier = Parser.INCHES_PER_FOOT; distance = range.number; break;
 		case UNT_MILES: multiplier = Parser.INCHES_PER_FOOT * Parser.FEET_PER_MILE; distance = range.number; break;
@@ -1023,7 +1023,7 @@ Parser.getNormalisedRange = function (range) {
 		case "unknown": distance = 900000003; break;
 		default: {
 			// it's homebrew?
-			const fromBrew = MiscUtil.get(BrewUtil.homebrewMeta, "spellDistanceUnits", range.type);
+			const fromBrew = MiscUtil.get(BrewUtil.homebrewMeta, "spellDistanceUnits", range.unit);
 			if (fromBrew) {
 				const ftPerUnit = fromBrew.feetPerUnit;
 				if (ftPerUnit != null) {
@@ -1042,7 +1042,7 @@ Parser.getNormalisedRange = function (range) {
 
 Parser.getFilterRange = function (object) {
 	const fRan = object.range || {type: null};
-	if (fRan.type !== null) {
+	if (fRan.unit !== null) {
 		let norm_range = Parser.getNormalisedRange(fRan);
 		if (norm_range === 1) {
 			return "Touch"
