@@ -4903,9 +4903,9 @@ Renderer.item = {
 			${Renderer.item.getSubHead(item)}
 			${renderStack.join("")}
 			${Renderer.item.getVariantsHtml(item)}
-			${Renderer.item.getCraftRequirements(item)}
-			${Renderer.item.getDestruction(item)}
-			${Renderer.item.getSpecial(item)}
+			${Renderer.generic.getSpecial(item, { type: "Craft Requirements"})}
+			${Renderer.generic.getSpecial(item, { type: "Destruction"})}
+			${Renderer.generic.getSpecial(item)}
 			${Renderer.item.getGenericItem(item)}
 			${Renderer.utils.getPageP(item)}`;
 	},
@@ -5148,26 +5148,6 @@ Renderer.item = {
 			if (v.shieldData != null) renderStack.push(`<p class='pf2-stat pf2-stat__section--wide'>The shield has Hardness ${v.shieldData.hardness}, HP ${v.shieldData.hp}, and BT ${v.shieldData.bt}.</p>`);
 		});
 		return renderStack.join("")
-	},
-
-	// FIXME: Merge getCraftRequirements, getDestruction and getSpecial into a generic object with strings, like we have with successDegree
-
-	getCraftRequirements (item) {
-		if (item.craftReq != null) {
-			return `${Renderer.utils.getDividerDiv()}<p class="pf2-stat pf2-stat__section"><strong>Craft Requirements&nbsp;</strong>${Renderer.get().render(item.craftReq)}</p>`
-		} else return ""
-	},
-
-	getDestruction (item) {
-		if (item.destruction != null) {
-			return `${Renderer.utils.getDividerDiv()}<p class="pf2-stat pf2-stat__section"><strong>Destruction&nbsp;</strong>${Renderer.get().render(item.destruction)}</p>`
-		} else return ""
-	},
-
-	getSpecial (item) {
-		if (item.special != null) {
-			return `${Renderer.utils.getDividerDiv()}<p class="pf2-stat pf2-stat__section"><strong>Special&nbsp;</strong>${Renderer.get().render(item.special)}</p>`
-		} else return ""
 	},
 
 	getGenericItem: (item) => {
@@ -5876,7 +5856,7 @@ Renderer.vehicle = {
 		<p class="pf2-stat pf2-stat__section"><strong>Collision&nbsp;</strong>${it.collision.entries ? it.collision.entries : `${it.collision.damage ? renderer.render(it.collision.damage) : ""}${it.collision.type ? ` ${it.collision.type}` : ""} ${it.collision.dc ? `(DC ${it.collision.dc})` : ""}`}</p>
 		${it.abilities && it.abilities.bot ? it.abilities.bot.map(x => Renderer.creature.getRenderedAbility(x, { noButton: true })) : ""}
 		${Renderer.item.getDestruction(it)}
-		${Renderer.item.getSpecial(it)}
+		${Renderer.generic.getSpecial(it)}
 		${Renderer.utils.getPageP(it)}`;
 	},
 	getDefenses (it, opts) {
@@ -5966,10 +5946,29 @@ Renderer.generic = {
 		else return "";
 	},
 
-	getSpecial (it) {
+	/**
+	 * @param it {array} Entry Itself
+	 * @param [opts] {array}
+	 * @param [opts.type] {string} "Special", "Destruction", etc. Defaults to Special
+	 */
+	getSpecial (it, opts) {
+		opts = opts || {};
+		opts.type = opts.type ?? "Special"
 		const renderer = Renderer.get();
-		if (it.special != null) {
-			return `<p class="pf2-stat pf2-stat__section"><strong>Special&nbsp;</strong>${renderer.render(it.special)}</p>`;
+		if (it[opts.type.toLowerCase()] != null) {
+			let renderStack = []
+			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>${opts.type}&nbsp;</strong>`)
+			it[opts.type.toLowerCase()].forEach((s, index) => {
+				if (index === 0) {
+					renderStack.push(renderer.render(s))
+					renderStack.push(`</p>`)
+				} else {
+					renderStack.push(`<p class="pf2-stat__text">`)
+					renderStack.push(renderer.render(s))
+					renderStack.push(`</p>`)
+				}
+			})
+			return renderStack.join("")
 		} else return "";
 	},
 };
