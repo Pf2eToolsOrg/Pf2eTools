@@ -59,6 +59,14 @@ function updateFolder(folder) {
 					return x
 				})
 			}
+			if (json.feat) {
+				json.feat = json.feat.map(x => {
+					if (typeof x.special === "string") {
+						x.special = [x.special]
+					}
+					return x
+				})
+			}
 			fs.writeFileSync(file, CleanUtil.getCleanJson(json), "utf-8");
 		})
 }
