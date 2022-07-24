@@ -380,6 +380,7 @@
 					"name": "Kurshkin",
 					"source": "SoT1",
 					"page": 86,
+					"reference": true,
 					"entries": [
 						{
 							"type": "pf2-h1-flavor",
@@ -388,15 +389,13 @@
 								"Gremlin Trickster"
 							]
 						},
-						"{@note Read on page 86 of Strength of Thousands: Kindled Magic}",
 						{
 							"type": "pf2-h3",
 							"name": "Campaign Role",
 							"source": "SoT1",
 							"page": 87,
-							"entries": [
-								"{@note Read on page 87 of Strength of Thousands: Kindled Magic}"
-							]
+							"entries": [],
+							"reference": true
 						}
 					]
 				}
@@ -421,6 +420,7 @@
 					"name": "Stone Ghost",
 					"source": "SoT1",
 					"page": 88,
+					"reference": true,
 					"entries": [
 						{
 							"type": "pf2-h1-flavor",
@@ -429,13 +429,11 @@
 								"Spite-Filled Apparition and Failed Student"
 							]
 						},
-						"{@note Read on page 88 of Strength of Thousands: Kindled Magic}",
 						{
 							"type": "pf2-h3",
 							"name": "Campaign Role",
-							"entries": [
-								"{@note Read on page 88 of Strength of Thousands: Kindled Magic}"
-							]
+							"entries": [],
+							"reference": true
 						}
 					]
 				}
@@ -449,6 +447,7 @@
 					"type": "pf2-h1",
 					"name": "Takulu Ot",
 					"source": "SoT1",
+					"reference": true,
 					"page": 90,
 					"entries": [
 						{
@@ -458,88 +457,101 @@
 								"Kindly Teacher of Incoming Students"
 							]
 						},
-						"{@note Read on page 90 of Strength of Thousands: Kindled Magic}",
 						{
 							"type": "pf2-h3",
 							"name": "Campaign Role",
 							"source": "SoT1",
 							"page": 91,
-							"entries": [
-								"{@note Read on page 91 of Strength of Thousands: Kindled Magic}"
-							]
+							"entries": [],
+							"reference": true
 						}
 					]
 				},
 				{
-					"type": "pf2-h3",
-					"source": "SoT4",
-					"page": 67,
-					"name": "Takulu Ot",
-					"entries": [
-						{
-							"type": "pf2-options",
-							"skipSort": true,
-							"items": [
-								{
-									"type": "item",
-									"entries": [
-										"{@trait LG} | male | human | teacher"
-									]
-								},
-								{
-									"type": "item",
-									"name": "Branch",
-									"entries": [
-										"Cascade Bearers"
-									]
-								},
-								{
-									"type": "item",
-									"name": "Area of Specialty",
-									"entries": [
-										"arcane theory and mathematics"
-									]
-								},
-								{
-									"type": "item",
-									"name": "Notable Skills",
-									"entries": [
-										"{@skill Diplomacy}, {@skill Occultism}, {@skill Performance}, {@skill Society}"
-									]
-								},
-								{
-									"type": "item",
-									"name": "Hobbies",
-									"entries": [
-										"weaving, mbira music, drawing glyphs and fractals, bird-feeding"
-									]
-								},
-								{
-									"type": "item",
-									"name": "Most Well Known For",
-									"entries": [
-										"telling heartwarming stories about his wife during lessons"
-									]
-								},
-								{
-									"type": "item",
-									"name": "Strangest Quirk",
-									"entries": [
-										"having a huge collection of carved anteaters"
-									]
-								},
-								{
-									"type": "item",
-									"name": "Common Associates",
-									"entries": [
-										"Esi Djana (school events), Anchor Root and Noxolo (giving impromptu musical performances), Tzeniwe (bird-watching)"
-									]
-								}
+					"type": "data",
+					"tag": "generic",
+					"data": {
+						"name": "Takulu Ot",
+						"source": "SoT4",
+						"page": 67,
+						"doNotSortTraits": true,
+						"doNotTagTraits": true,
+						"traits": [
+							"{@trait LG}",
+							"male",
+							"{@ancestry human}",
+							"{@creature teacher|gmg}"
+						],
+						"sections": [
+							[
+								[
+									{
+										"type": "pf2-options",
+										"skipSort": true,
+										"items": [
+											{
+												"type": "item",
+												"name": "Branch",
+												"entries": [
+													"Cascade Bearers"
+												]
+											},
+											{
+												"type": "item",
+												"name": "Area of Specialty",
+												"entries": [
+													"arcane theory and mathematics"
+												]
+											},
+											{
+												"type": "item",
+												"name": "Notable Skills",
+												"entries": [	"{@skill Diplomacy}, {@skill Occultism}, {@skill Performance}, {@skill Society}"
+											]
+											},
+											{
+												"type": "item",
+												"name": "Hobbies",
+												"entries": [
+													"weaving, mbira music, drawing glyphs and fractals, bird-feeding"
+												]
+											},
+											{
+												"type": "item",
+												"name": "Most Well Known For",
+												"entries": [
+													"telling heartwarming stories about his wife during lessons"
+												]
+											},
+											{
+												"type": "item",
+												"name": "Strangest Quirk",
+												"entries": [
+													"having a huge collection of carved anteaters"
+												]
+											},
+											{
+												"type": "item",
+												"name": "Common Associates",
+												"entries": [
+													"Esi Djana (school events), Anchor Root and Noxolo (giving impromptu musical performances), Tzeniwe (bird-watching)"
+												]
+											}
+										]
+									}
+								],
+								[
+									{
+										"type": "pf2-h3",
+										"entries": [
+											"Takulu is a kindly Magaambya scholar who takes it upon himself to make all new students feel welcome. He's so kindly that some students have a hard time believing he's genuine, in fact. In any given semester, rumors abound that the professor is a secret serial murder, an ex-soldier responsible for the deaths of hundreds, or possessed of a secretly violent hobby in order to channel his rage. Takulu responds to these rumors as he does most things, with an understanding smile and a well-considered statement. Those who aren't hung up on Takulu's seemingly inhuman reserves of patience often appreciate the teacher for his willingness to treat his students as the young adults they are, empowering their efforts and ensuring they can always pursue what they feel is right.",
+											"In addition to his love of mathematics, Takulu is one of the few professors who puts just as much scholarly emphasis on the study of teaching. Whereas many of the Magaambya's teachers provide hands-on lessons mainly to advance a relevant research project or simply due to the day's whim, Takulu has spent much of his time researching how best to convey information to others. He's particularly focused on teaching those who lack formal education, as they arrive without a framework for scholarly learning. Though his ideas have gotten some interest from others on campus, other teachers are uncertain how much of Takulu's success stems from his methods and how much stems from his even temperament."
+										]
+									}
+								]
 							]
-						},
-						"Takulu is a kindly Magaambya scholar who takes it upon himself to make all new students feel welcome. He's so kindly that some students have a hard time believing he's genuine, in fact. In any given semester, rumors abound that the professor is a secret serial murder, an ex-soldier responsible for the deaths of hundreds, or possessed of a secretly violent hobby in order to channel his rage. Takulu responds to these rumors as he does most things, with an understanding smile and a well-considered statement. Those who aren't hung up on Takulu's seemingly inhuman reserves of patience often appreciate the teacher for his willingness to treat his students as the young adults they are, empowering their efforts and ensuring they can always pursue what they feel is right.",
-						"In addition to his love of mathematics, Takulu is one of the few professors who puts just as much scholarly emphasis on the study of teaching. Whereas many of the Magaambya's teachers provide hands-on lessons mainly to advance a relevant research project or simply due to the day's whim, Takulu has spent much of his time researching how best to convey information to others. He's particularly focused on teaching those who lack formal education, as they arrive without a framework for scholarly learning. Though his ideas have gotten some interest from others on campus, other teachers are uncertain how much of Takulu's success stems from his methods and how much stems from his even temperament."
-					]
+						]
+					}
 				}
 			]
 		},

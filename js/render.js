@@ -932,6 +932,7 @@ function Renderer () {
 			if (entry.collapsible) textStack[0] += `<span class="pf2-h1--collapse">${this._getCollapsibleToggle({ minus: "-" })}</span>`;
 			textStack[0] += `</p>`
 		}
+		this._getReference(entry);
 		this._firstSection = false;
 		if (entry.entries) {
 			const len = entry.entries.length;
@@ -944,6 +945,7 @@ function Renderer () {
 	};
 
 	this._renderPf2H1Flavor = function (entry, textStack, meta, options) {
+		this._getReference(entry);
 		if (entry.entries) {
 			const len = entry.entries.length;
 			for (let i = 0; i < len; ++i) {
@@ -972,6 +974,7 @@ function Renderer () {
 			textStack[0] += `<p class="pf2-h2__step-num">${entry.step}</p>`
 			textStack[0] += `<p class="pf2-h2__step">STEP ${entry.step}</p>`
 		}
+		this._getReference(entry);
 
 		if (entry.name != null) {
 			const renderer = Renderer.get();
@@ -1003,6 +1006,7 @@ function Renderer () {
 			if (entry.level || entry.collapsible) textStack[0] += `<span class="pf2-h3--lvl">${entry.level ? Parser.getOrdinalForm(entry.level) : ""}${entry.collapsible ? this._getCollapsibleToggle({ minus: "\u2013" }) : ""}</span>`;
 			textStack[0] += `</p>`;
 		}
+		this._getReference(entry);
 		this._firstSection = false;
 		if (entry.entries) {
 			const len = entry.entries.length;
@@ -1025,6 +1029,7 @@ function Renderer () {
 			if (entry.level || entry.collapsible) textStack[0] += `<span class="pf2-h4--lvl">${entry.level ? Parser.getOrdinalForm(entry.level) : ""}${entry.collapsible ? this._getCollapsibleToggle({ minus: "\u2013" }) : ""}</span>`;
 			textStack[0] += `</p>`;
 		}
+		this._getReference(entry);
 		this._firstSection = false;
 		if (entry.entries) {
 			const len = entry.entries.length;
@@ -1043,6 +1048,7 @@ function Renderer () {
 			this._handleTrackTitles(entry.name);
 			textStack[0] += `<p class="pf2-h5 rd__h ${this._firstSection ? "mt-0" : ""}" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}><span class="entry-title-inner">${this.render(entry.name)}</span></p>`;
 		}
+		this._getReference(entry);
 		this._firstSection = false;
 		if (entry.entries) {
 			const len = entry.entries.length;
@@ -1065,6 +1071,7 @@ function Renderer () {
 			this._handleTrackTitles(entry.name);
 			textStack[0] += `<p class="pf2-title ${entry.style || ""}">${this.render(entry.name)}</p>`;
 		}
+		this._getReference(entry);
 		if (entry.entries) {
 			const len = entry.entries.length;
 			for (let i = 0; i < len; ++i) {
@@ -1082,6 +1089,7 @@ function Renderer () {
 			this._handleTrackTitles(entry.name);
 			textStack[0] += `<p class="pf2-sidebar__title" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}><span class="entry-title-inner">${renderer.render(entry.name)}</span></p>`;
 		}
+		this._getReference(entry);
 		if (entry.entries) {
 			const len = entry.entries.length;
 			for (let i = 0; i < len; ++i) {
@@ -1102,6 +1110,7 @@ function Renderer () {
 			this._handleTrackTitles(entry.name);
 			textStack[0] += `<div class="${options.beige ? "pf2-beige-box__title" : "pf2-sample-box__title"}"><span>${entry.name}</span></div>`;
 		}
+		this._getReference(entry);
 		if (entry.entries) {
 			const len = entry.entries.length;
 			for (let i = 0; i < len; ++i) {
@@ -1118,6 +1127,7 @@ function Renderer () {
 		const dataString = this._getDataString(entry);
 		textStack[0] += `<div class="pf2-inset" ${dataString}>`;
 
+		this._getReference(entry);
 		if (entry.entries) {
 			const len = entry.entries.length;
 			for (let i = 0; i < len; ++i) {
@@ -1135,6 +1145,7 @@ function Renderer () {
 			this._handleTrackTitles(entry.name);
 			textStack[0] += `<div class="pf2-tips-box__title"><span>${entry.name}</span></div>`;
 		}
+		this._getReference(entry);
 		if (entry.entries) {
 			const len = entry.entries.length;
 			for (let i = 0; i < len; ++i) {
@@ -1167,6 +1178,7 @@ function Renderer () {
 			this._handleTrackTitles(entry.name);
 			textStack[0] += `<span class="pf2-box__title">${entry.name}</span>`;
 		}
+		this._getReference(entry);
 		if (entry.entries) {
 			const len = entry.entries.length;
 			for (let i = 0; i < len; ++i) {
@@ -1188,6 +1200,7 @@ function Renderer () {
 			this._handleTrackTitles(entry.name);
 			textStack[0] += `<span class="pf2-box__title">${entry.name}</span>`;
 		}
+		this._getReference(entry);
 		if (entry.entries) {
 			const len = entry.entries.length;
 			for (let i = 0; i < len; ++i) {
@@ -1208,6 +1221,7 @@ function Renderer () {
 			this._handleTrackTitles(entry.name);
 			textStack[0] += `<p class="pf2-key-box__title">${entry.name}</p>`;
 		}
+		this._getReference(entry);
 		if (entry.entries) {
 			const len = entry.entries.length;
 			for (let i = 0; i < len; ++i) {
@@ -1302,6 +1316,7 @@ function Renderer () {
 			}
 			textStack[0] += `</div>`;
 		}
+		this._getReference(entry);
 
 		textStack[0] += `<div class="pf2-paper__entries">`;
 		if (entry.entries) {
@@ -1342,6 +1357,7 @@ function Renderer () {
 	};
 
 	this._renderInline = function (entry, textStack, meta, options) {
+		this._getReference(entry);
 		if (entry.entries) {
 			const len = entry.entries.length;
 			for (let i = 0; i < len; ++i) this._recursiveRender(entry.entries[i], textStack, meta);
@@ -1349,6 +1365,7 @@ function Renderer () {
 	};
 
 	this._renderInlineBlock = function (entry, textStack, meta, options) {
+		this._getReference(entry);
 		this._renderPrefix(entry, textStack, meta, options);
 		if (entry.entries) {
 			const len = entry.entries.length;
@@ -1472,6 +1489,7 @@ function Renderer () {
 
 	this._renderHr = function (entry, textStack, meta, options) {
 		textStack[0] += `<hr class="${entry.style ? entry.style : "rd__hr"}">`;
+		this._getReference(entry);
 		if (entry.entries) {
 			const len = entry.entries.length;
 			for (let i = 0; i < len; ++i) {
@@ -1494,6 +1512,38 @@ function Renderer () {
 		}
 		return outList.join(" ");
 	};
+
+	this._getReference = function (entry) {
+		if (entry.reference === true) {
+			let source = `<a href="${Parser.sourceJsonToStore(entry.source)}">${Parser.sourceJsonToFull(entry.source)}</a>`
+			if (!entry.entries.length) {
+				entry.entries = []
+				entry.entries.push(`{@note Read from ${entry.page != null ? `page ${entry.page} of ` : ""}${source}}.`);
+			} else {
+				const len = entry.entries.length;
+				for (let i = 0; i < len; ++i) {
+					// If there are no strings, assume there is no content inside the entry itself, meaning it's a 100% reference to the source.
+					// Else, check if the entry contains any objects. If it does, put the reference *before* the objects.
+					// Resolving that, just add the entry at the end if the previous two are false.
+					if (entry.entries[i].type === ("pf2-h1-flavor" || "pf2-sidebar")) {
+						entry.entries.splice(i + 1, 0, `{@note Read from ${entry.page != null ? `page ${entry.page} of ` : ""}${source}}.`);
+						return
+					} else if (!entry.entries.filter(t => typeof t === "string").length) {
+						entry.entries.unshift(`{@note Read from ${entry.page != null ? `page ${entry.page} of ` : ""}${source}}.`)
+						return
+					} else if (typeof entry.entries[i] === "object") {
+						entry.entries.splice(i, 0, `{@note Read the rest from ${entry.page != null ? `page ${entry.page} of ` : ""}${source}}.`)
+						return
+					} else {
+						entry.entries.push(`{@note Read the rest from ${entry.page != null ? `page ${entry.page} of ` : ""}${source}}.`)
+						return
+					}
+				}
+			}
+			// Dedpulication measure, not needed though (?)
+			// entry.entries = Array.from([...new Set(entry.entries)]);
+		}
+	}
 
 	this._renderString = function (entry, textStack, meta, options) {
 		const tagSplit = Renderer.splitByTags(entry);
