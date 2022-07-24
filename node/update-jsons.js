@@ -29,6 +29,19 @@ function updateFolder(folder) {
 							}
 						})
 					}
+					if (x.destruction || x.special || x.craftReq) {
+						console.log(`\tUpdating ${x.name} destruction/special/craftReq to arrays in ${file}...`)
+						if (typeof x.special === "string") {
+							x.special = [x.special]
+						}
+						if (typeof x.destruction === "string") {
+							x.destruction = [x.destruction]
+						}
+						if (typeof x.craftReq === "string") {
+							x.craftReq = [x.craftReq]
+						}
+						return x
+					}
 					return x
 				})
 			}
@@ -62,7 +75,26 @@ function updateFolder(folder) {
 			if (json.feat) {
 				json.feat = json.feat.map(x => {
 					if (typeof x.special === "string") {
+						console.log(`\tUpdating ${x.name} special to arrays in ${file}...`)
 						x.special = [x.special]
+					}
+					return x
+				})
+			}
+			if (json.vehicle) {
+				json.vehicle = json.vehicle.map(x => {
+					if (x.destruction || x.special || x.craftReq) {
+						console.log(`\tUpdating ${x.name} destruction/special/craftReq to arrays in ${file}...`)
+						if (typeof x.special === "string") {
+							x.special = [x.special]
+						}
+						if (typeof x.destruction === "string") {
+							x.destruction = [x.destruction]
+						}
+						if (typeof x.craftReq === "string") {
+							x.craftReq = [x.craftReq]
+						}
+						return x
 					}
 					return x
 				})

@@ -4903,7 +4903,8 @@ Renderer.item = {
 			${Renderer.item.getSubHead(item)}
 			${renderStack.join("")}
 			${Renderer.item.getVariantsHtml(item)}
-			${Renderer.generic.getSpecial(item, { type: "Craft Requirements"})}
+			${item.craftReq || item.special || item.destruction ? Renderer.utils.getDividerDiv() : ""}
+			${Renderer.generic.getSpecial(item, { type: "craftReq", title: "Craft Requirements"})}
 			${Renderer.generic.getSpecial(item, { type: "Destruction"})}
 			${Renderer.generic.getSpecial(item)}
 			${Renderer.item.getGenericItem(item)}
@@ -5855,7 +5856,8 @@ Renderer.vehicle = {
 		<p class="pf2-stat pf2-stat__section"><strong>Speed&nbsp;</strong>${it.speed.map(s => s.type === "special" ? s.entry : `${s.type !== "walk" ? `${s.type} ` : ""}${s.speed ? `${s.speed} feet` : ""} ${s.traits ? `(${renderer.render(s.traits.map(t => `{@trait ${t.toLowerCase()}}`).join(", "))})` : ""} ${s.note ? `(${renderer.render(s.note)})` : ""}`).join(", ")}</p>
 		<p class="pf2-stat pf2-stat__section"><strong>Collision&nbsp;</strong>${it.collision.entries ? it.collision.entries : `${it.collision.damage ? renderer.render(it.collision.damage) : ""}${it.collision.type ? ` ${it.collision.type}` : ""} ${it.collision.dc ? `(DC ${it.collision.dc})` : ""}`}</p>
 		${it.abilities && it.abilities.bot ? it.abilities.bot.map(x => Renderer.creature.getRenderedAbility(x, { noButton: true })) : ""}
-		${Renderer.item.getDestruction(it)}
+		${it.craftReq || it.special || it.destruction ? Renderer.utils.getDividerDiv() : ""}
+		${Renderer.generic.getSpecial(it, { title: "Destruction"})}
 		${Renderer.generic.getSpecial(it)}
 		${Renderer.utils.getPageP(it)}`;
 	},
@@ -5949,16 +5951,19 @@ Renderer.generic = {
 	/**
 	 * @param it {array} Entry Itself
 	 * @param [opts] {array}
-	 * @param [opts.type] {string} "Special", "Destruction", etc. Defaults to Special
+	 * @param [opts.type] {string} "special", "destruction", "craftReq"
+	 * @param [opts.title] {string} "Special", "Destruction", "Crafting Requirements"
 	 */
 	getSpecial (it, opts) {
 		opts = opts || {};
-		opts.type = opts.type ?? "Special"
+		opts.title = opts.title ?? "Special";
+		opts.type = opts.type ?? opts.title.toLowerCase();
 		const renderer = Renderer.get();
-		if (it[opts.type.toLowerCase()] != null) {
+		if (it[opts.type] != null) {
 			let renderStack = []
-			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>${opts.type}&nbsp;</strong>`)
-			it[opts.type.toLowerCase()].forEach((s, index) => {
+			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>${opts.title}&nbsp;</strong>`)
+
+			it[opts.type].forEach((s, index) => {
 				if (index === 0) {
 					renderStack.push(renderer.render(s))
 					renderStack.push(`</p>`)
