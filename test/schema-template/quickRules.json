@@ -8,332 +8,53 @@
 	"properties": {
 		"quickRules": {
 			"type": "object",
-			"properties": {
-				"organization": {
-					"properties": {
-						"source": {
-							"type": "string",
-							"$ref": "utils.json#/definitions/sourceList"
-						},
-						"page": {
-							"type": "integer"
-						},
-						"entries": {
-							"type": "array",
-							"items": {
-								"$ref": "entry.json"
-							}
-						}
-					}
-				},
-				"variantRule": {
-					"properties": {
-						"source": {
-							"type": "string",
-							"$ref": "utils.json#/definitions/sourceList"
-						},
-						"page": {
-							"type": "integer"
-						},
-						"entries": {
-							"type": "array",
-							"items": {
-								"$ref": "entry.json"
-							}
-						}
-					}
-				},
-				"background": {
-					"properties": {
-						"source": {
-							"type": "string",
-							"$ref": "utils.json#/definitions/sourceList"
-						},
-						"page": {
-							"type": "integer"
-						},
-						"entries": {
-							"type": "array",
-							"items": {
-								"$ref": "entry.json"
-							}
-						}
-					}
-				},
-				"archetype": {
-					"properties": {
-						"source": {
-							"type": "string",
-							"$ref": "utils.json#/definitions/sourceList"
-						},
-						"page": {
-							"type": "integer"
-						},
-						"entries": {
-							"type": "array",
-							"items": {
-								"$ref": "entry.json"
-							}
-						}
-					}
-				},
-				"feat": {
-					"properties": {
-						"source": {
-							"type": "string",
-							"$ref": "utils.json#/definitions/sourceList"
-						},
-						"page": {
-							"type": "integer"
-						},
-						"entries": {
-							"type": "array",
-							"items": {
-								"$ref": "entry.json"
-							}
-						}
-					}
-				},
-				"companion": {
-					"properties": {
-						"source": {
-							"type": "string",
-							"$ref": "utils.json#/definitions/sourceList"
-						},
-						"page": {
-							"type": "integer"
-						},
-						"entries": {
-							"type": "array",
-							"items": {
-								"$ref": "entry.json"
-							}
-						}
-					}
-				},
-				"familiar": {
-					"properties": {
-						"source": {
-							"type": "string",
-							"$ref": "utils.json#/definitions/sourceList"
-						},
-						"page": {
-							"type": "integer"
-						},
-						"entries": {
-							"type": "array",
-							"items": {
-								"$ref": "entry.json"
-							}
-						}
-					}
-				},
-				"eidolon": {
-					"properties": {
-						"source": {
-							"type": "string",
-							"$ref": "utils.json#/definitions/sourceList"
-						},
-						"page": {
-							"type": "integer"
-						},
-						"entries": {
-							"type": "array",
-							"items": {
-								"$ref": "entry.json"
-							}
-						}
-					}
-				},
-				"hazard": {
-					"properties": {
-						"source": {
-							"type": "string",
-							"$ref": "utils.json#/definitions/sourceList"
-						},
-						"page": {
-							"type": "integer"
-						},
-						"entries": {
-							"type": "array",
-							"items": {
-								"$ref": "entry.json"
-							}
-						}
-					}
-				},
-				"condition": {
-					"properties": {
-						"source": {
-							"type": "string",
-							"$ref": "utils.json#/definitions/sourceList"
-						},
-						"page": {
-							"type": "integer"
-						},
-						"entries": {
-							"type": "array",
-							"items": {
-								"$ref": "entry.json"
-							}
-						}
-					}
-				},
-				"curse": {
-					"properties": {
-						"source": {
-							"type": "string",
-							"$ref": "utils.json#/definitions/sourceList"
-						},
-						"page": {
-							"type": "integer"
-						},
-						"entries": {
-							"type": "array",
-							"items": {
-								"$ref": "entry.json"
-							}
-						}
-					}
-				},
-				"disease": {
-					"properties": {
-						"source": {
-							"type": "string",
-							"$ref": "utils.json#/definitions/sourceList"
-						},
-						"page": {
-							"type": "integer"
-						},
-						"entries": {
-							"type": "array",
-							"items": {
-								"$ref": "entry.json"
-							}
-						}
-					}
-				},
-				"itemcurse": {
-					"properties": {
-						"source": {
-							"type": "string",
-							"$ref": "utils.json#/definitions/sourceList"
-						},
-						"page": {
-							"type": "integer"
-						},
-						"entries": {
-							"type": "array",
-							"items": {
-								"$ref": "entry.json"
-							}
-						}
-					}
-				},
-				"ability": {
-					"properties": {
-						"source": {
-							"type": "string",
-							"$ref": "utils.json#/definitions/sourceList"
-						},
-						"page": {
-							"type": "integer"
-						},
-						"entries": {
-							"type": "array",
-							"items": {
-								"$ref": "entry.json"
-							}
-						}
-					}
-				},
-				"deity": {
-					"properties": {
-						"source": {
-							"type": "string",
-							"$ref": "utils.json#/definitions/sourceList"
-						},
-						"page": {
-							"type": "integer"
-						},
-						"entries": {
-							"type": "array",
-							"items": {
-								"$ref": "entry.json"
-							}
-						}
-					}
-				},
-				"language": {
-					"properties": {
-						"source": {
-							"type": "string",
-							"$ref": "utils.json#/definitions/sourceList"
-						},
-						"page": {
-							"type": "integer"
-						},
-						"entries": {
-							"type": "array",
-							"items": {
-								"$ref": "entry.json"
-							}
-						}
-					}
-				},
-				"ritual": {
-					"properties": {
-						"source": {
-							"type": "string",
-							"$ref": "utils.json#/definitions/sourceList"
-						},
-						"page": {
-							"type": "integer"
-						},
-						"entries": {
-							"type": "array",
-							"items": {
-								"$ref": "entry.json"
-							}
-						}
-					}
-				},
-				"trait": {
-					"properties": {
-						"source": {
-							"type": "string",
-							"$ref": "utils.json#/definitions/sourceList"
-						},
-						"page": {
-							"type": "integer"
-						},
-						"entries": {
-							"type": "array",
-							"items": {
-								"$ref": "entry.json"
-							}
-						}
-					}
-				},
-				"vehicle": {
-					"properties": {
-						"source": {
-							"type": "string",
-							"$ref": "utils.json#/definitions/sourceList"
-						},
-						"page": {
-							"type": "integer"
-						},
-						"entries": {
-							"type": "array",
-							"items": {
-								"$ref": "entry.json"
-							}
-						}
-					}
-				}
+			"propertyNames": {
+				"type": "string",
+				"enum": [
+					"organization",
+					"variantRule",
+					"background",
+					"archetype",
+					"feat",
+					"companion",
+					"familiar",
+					"eidolon",
+					"hazard",
+					"condition",
+					"curse",
+					"disease",
+					"itemcurse",
+					"ability",
+					"deity",
+					"language",
+					"ritual",
+					"trait",
+					"vehicle"
+				]
 			},
-			"additionalProperties": false,
+			"additionalProperties": {
+				"properties": {
+					"source": {
+						"type": "string",
+						"$ref": "utils.json#/definitions/sourceList"
+					},
+					"page": {
+						"type": "integer"
+					},
+					"entries": {
+						"type": "array",
+						"items": {
+							"$ref": "entry.json"
+						}
+					}
+				},
+				"required": [
+					"source",
+					"page",
+					"entries"
+				],
+				"additionalProperties": false
+			},
 			"minProperties": 1
 		}
 	},

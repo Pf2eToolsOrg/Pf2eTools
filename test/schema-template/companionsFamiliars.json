@@ -53,29 +53,7 @@
 						"$ref": "utils.json#/definitions/abilityBlock"
 					},
 					"abilityMods": {
-						"type": "object",
-						"properties": {
-							"Str": {
-								"type": "integer"
-							},
-							"Dex": {
-								"type": "integer"
-							},
-							"Con": {
-								"type": "integer"
-							},
-							"Int": {
-								"type": "integer"
-							},
-							"Wis": {
-								"type": "integer"
-							},
-							"Cha": {
-								"type": "integer"
-							}
-						},
-						"minProperties": 6,
-						"additionalProperties": false
+						"$ref": "utils.json#/definitions/abilityMods"
 					},
 					"hp": {
 						"type": "integer",
@@ -249,8 +227,7 @@
 					"source",
 					"name",
 					"page",
-					"type",
-					"granted"
+					"type"
 				]
 			},
 			"minItems": 1,
@@ -332,6 +309,9 @@
 						"type": "string",
 						"$ref": "utils.json#/definitions/tradition"
 					},
+					"traditionNote": {
+						"type": "string"
+					},
 					"traits": {
 						"type": "array",
 						"items": {
@@ -371,30 +351,8 @@
 								"name": {
 									"type": "string"
 								},
-								"abilityMods": {
-									"type": "object",
-									"properties": {
-										"Str": {
-											"type": "integer"
-										},
-										"Dex": {
-											"type": "integer"
-										},
-										"Con": {
-											"type": "integer"
-										},
-										"Int": {
-											"type": "integer"
-										},
-										"Wis": {
-											"type": "integer"
-										},
-										"Cha": {
-											"type": "integer"
-										}
-									},
-									"minProperties": 6,
-									"additionalProperties": false
+								"abilityScores": {
+									"$ref": "utils.json#/definitions/abilityScores"
 								},
 								"ac": {
 									"type": "object",
