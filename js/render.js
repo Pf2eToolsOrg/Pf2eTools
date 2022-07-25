@@ -4347,10 +4347,11 @@ Renderer.creature = {
 		const isRenderButton = (generic || opts.isRenderingGeneric) && !opts.noButton;
 		const abilityName = generic ? renderer.render(`{@${generic.tag} ${ability.name}${generic.add_hash ? ` (${generic.add_hash})` : ""}|${ability.source ? ability.source : generic.source ? generic.source : ""}${ability.title ? `|${ability.title}` : ""}}`) : ability.name;
 
+		// Button doesn't work with asHTML
 		if (opts.asHTML) {
 			return `<p class="pf2-stat pf2-stat__section ${buttonClass} ${opts.isRenderingGeneric ? "hidden" : ""}"><strong>${abilityName}</strong>
 				${ability.activity ? renderer.render(Parser.timeToFullEntry(ability.activity)) : ""}
-				${isRenderButton ? Renderer.creature.getAbilityTextButton(buttonClass, opts.isRenderingGeneric) : ""}
+				${false ? Renderer.creature.getAbilityTextButton(buttonClass, opts.isRenderingGeneric) : ""}
 				${ability.traits && ability.traits.length ? `(${ability.traits.map(t => renderer.render(`{@trait ${t.toLowerCase()}}`)).join(", ")}); ` : ""}
 				${ability.frequency ? `<strong>Frequency&nbsp;</strong>${renderer.render_addTerm(Parser.freqToFullEntry(ability.frequency))}` : ""}
 				${ability.requirements ? `<strong>Requirements&nbsp;</strong>${renderer.render_addTerm(ability.requirements)}` : ""}
@@ -5857,7 +5858,7 @@ Renderer.vehicle = {
 		<p class="pf2-stat pf2-stat__section"><strong>Collision&nbsp;</strong>${it.collision.entries ? it.collision.entries : `${it.collision.damage ? renderer.render(it.collision.damage) : ""}${it.collision.type ? ` ${it.collision.type}` : ""} ${it.collision.dc ? `(DC ${it.collision.dc})` : ""}`}</p>
 		${it.abilities && it.abilities.bot ? it.abilities.bot.map(x => Renderer.creature.getRenderedAbility(x, { noButton: true })) : ""}
 		${it.craftReq || it.special || it.destruction ? Renderer.utils.getDividerDiv() : ""}
-		${Renderer.generic.getSpecial(it, { title: "Destruction"})}
+		${Renderer.generic.getSpecial(it, { title: "Destruction" })}
 		${Renderer.generic.getSpecial(it)}
 		${Renderer.utils.getPageP(it)}`;
 	},
