@@ -4348,20 +4348,7 @@ Renderer.creature = {
 		const abilityName = generic ? renderer.render(`{@${generic.tag} ${ability.name}${generic.add_hash ? ` (${generic.add_hash})` : ""}|${ability.source ? ability.source : generic.source ? generic.source : ""}${ability.title ? `|${ability.title}` : ""}}`) : ability.name;
 
 		// Button doesn't work with asHTML
-		if (opts.asHTML) {
-			return `<p class="pf2-stat pf2-stat__section ${buttonClass} ${opts.isRenderingGeneric ? "hidden" : ""}"><strong>${abilityName}</strong>
-				${ability.activity ? renderer.render(Parser.timeToFullEntry(ability.activity)) : ""}
-				${false ? Renderer.creature.getAbilityTextButton(buttonClass, opts.isRenderingGeneric) : ""}
-				${ability.traits && ability.traits.length ? `(${ability.traits.map(t => renderer.render(`{@trait ${t.toLowerCase()}}`)).join(", ")}); ` : ""}
-				${ability.frequency ? `<strong>Frequency&nbsp;</strong>${renderer.render_addTerm(Parser.freqToFullEntry(ability.frequency))}` : ""}
-				${ability.requirements ? `<strong>Requirements&nbsp;</strong>${renderer.render_addTerm(ability.requirements)}` : ""}
-				${ability.trigger ? `<strong>Trigger&nbsp;</strong>${renderer.render_addTerm(ability.trigger)}` : ""}
-				${ability.frequency || ability.requirements || ability.trigger ? "<strong>Effect</strong>" : ""}
-				${(ability.entries || []).map(it => renderer.render(it)).join(" ")}
-				</p>
-				${renderedGenericAbility || ""}`;
-		}
-		return $$`<p class="pf2-stat pf2-stat__section ${buttonClass} ${opts.isRenderingGeneric ? "hidden" : ""}"><strong>${abilityName}</strong>
+		let $ele = $$`<p class="pf2-stat pf2-stat__section ${buttonClass} ${opts.isRenderingGeneric ? "hidden" : ""}"><strong>${abilityName}</strong>
 					${ability.activity ? renderer.render(Parser.timeToFullEntry(ability.activity)) : ""}
 					${isRenderButton ? Renderer.creature.getAbilityTextButton(buttonClass, opts.isRenderingGeneric) : ""}
 					${ability.traits && ability.traits.length ? `(${ability.traits.map(t => renderer.render(`{@trait ${t.toLowerCase()}}`)).join(", ")}); ` : ""}
@@ -4372,6 +4359,8 @@ Renderer.creature = {
 					${(ability.entries || []).map(it => renderer.render(it)).join(" ")}
 					</p>
 					${renderedGenericAbility || ""}`;
+		if (!opts.asHTML) return $ele;
+		else return $ele[0].outerHTML;
 	},
 
 	getAbilityTextButton (buttonClass, generic) {
