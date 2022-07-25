@@ -10,7 +10,7 @@ class PageFilterAbilities extends PageFilter {
 			itemSortFn: SortUtil.sortActivities,
 		});
 		this._creatureFilter = new Filter({
-			header: "Creature"
+			header: "Creature",
 		});
 		this._traitFilter = new Filter({header: "Traits"})
 		this._miscFilter = new Filter({header: "Miscellaneous", items: ["Optional/Variant Action"]});

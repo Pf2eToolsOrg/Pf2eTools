@@ -4,7 +4,7 @@ const fs = require("fs");
 const ut = require("./util");
 require("../js/utils");
 
-function updateFolder(folder) {
+function updateFolder (folder) {
 	console.log(`Updating directory ${folder}...`);
 	const files = ut.listFiles({ dir: folder });
 	files
@@ -55,7 +55,7 @@ function updateFolder(folder) {
 							x.heightened.X = { ...x.heightened.X, [v.level]: v.entries }
 						})
 					}
-					if (x?.range?.type) {
+					if (x && x.range && x.range.type) {
 						console.log(`\tUpdating ${x.name} spell range in ${file}...`)
 						x.range.unit = x.range.type
 						delete x.range.type
