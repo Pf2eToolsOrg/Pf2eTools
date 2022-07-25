@@ -155,7 +155,9 @@
 							"Small, {@damage 2d12+4} bludgeoning, Rupture 22."
 						],
 						"name": "Swallow Whole",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
 						"entries": [
@@ -372,28 +374,23 @@
 			"abilities": {
 				"bot": [
 					{
-						"entries": [
+						"type": "affliction",
+						"traits": [
+							"poison"
+						],
+						"DC": 22,
+						"savingThrow": "Fortitude",
+						"maxDuration": "6 rounds",
+						"stages": [
 							{
-								"type": "affliction",
-								"traits": [
-									"poison"
-								],
-								"note": "",
-								"DC": 22,
-								"savingThrow": "Fortitude",
-								"maxDuration": "6 rounds",
-								"stages": [
-									{
-										"stage": 1,
-										"entry": "{@damage 2d6} poison damage and {@condition flat-footed}",
-										"duration": "1 round"
-									},
-									{
-										"stage": 2,
-										"entry": "{@damage 2d6} poison damage, {@condition flat-footed}, and {@condition clumsy 1}",
-										"duration": "1 round"
-									}
-								]
+								"stage": 1,
+								"entry": "{@damage 2d6} poison damage and {@condition flat-footed}",
+								"duration": "1 round"
+							},
+							{
+								"stage": 2,
+								"entry": "{@damage 2d6} poison damage, {@condition flat-footed}, and {@condition clumsy 1}",
+								"duration": "1 round"
 							}
 						],
 						"name": "Anadi Venom"
@@ -413,7 +410,9 @@
 							"The anadi changes into their hybrid form, spider form, or human form. The above statistics assume the anadi is in their hybrid form. While in their human form, the anadi hunter can't use their fangs attack and loses their climb Speed. When in spider form, they can't use weapons."
 						],
 						"name": "Change Shape",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
 						"entries": [
@@ -561,28 +560,23 @@
 			"abilities": {
 				"bot": [
 					{
-						"entries": [
+						"type": "affliction",
+						"traits": [
+							"poison"
+						],
+						"DC": 15,
+						"savingThrow": "Fortitude",
+						"maxDuration": "4 rounds",
+						"stages": [
 							{
-								"type": "affliction",
-								"traits": [
-									"poison"
-								],
-								"note": "",
-								"DC": 15,
-								"savingThrow": "Fortitude",
-								"maxDuration": "4 rounds",
-								"stages": [
-									{
-										"stage": 1,
-										"entry": "{@damage 1d6} poison damage and {@condition flat-footed}",
-										"duration": "1 round"
-									},
-									{
-										"stage": 2,
-										"entry": "{@damage 1d6} poison damage, {@condition flat-footed}, and {@condition clumsy 1}",
-										"duration": "1 round"
-									}
-								]
+								"stage": 1,
+								"entry": "{@damage 1d6} poison damage and {@condition flat-footed}",
+								"duration": "1 round"
+							},
+							{
+								"stage": 2,
+								"entry": "{@damage 1d6} poison damage, {@condition flat-footed}, and {@condition clumsy 1}",
+								"duration": "1 round"
 							}
 						],
 						"name": "Anadi Venom"
@@ -602,7 +596,9 @@
 							"The anadi changes into their hybrid form, spider form, or human form. The above statistics assume the anadi is in their hybrid form. While in their human form, the anadi hunter can't use their fangs attack and loses their climb Speed. When in spider form, they can't use weapons."
 						],
 						"name": "Change Shape",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
 						"traits": [
@@ -786,28 +782,23 @@
 			"abilities": {
 				"bot": [
 					{
-						"entries": [
+						"type": "affliction",
+						"traits": [
+							"poison"
+						],
+						"DC": 19,
+						"savingThrow": "Fortitude",
+						"maxDuration": "4 rounds",
+						"stages": [
 							{
-								"type": "affliction",
-								"traits": [
-									"poison"
-								],
-								"note": "",
-								"DC": 19,
-								"savingThrow": "Fortitude",
-								"maxDuration": "4 rounds",
-								"stages": [
-									{
-										"stage": 1,
-										"entry": "{@damage 1d6} poison damage and {@condition flat-footed}",
-										"duration": "1 round"
-									},
-									{
-										"stage": 2,
-										"entry": "{@damage 1d6} poison damage, {@condition flat-footed}, and {@condition clumsy 1}",
-										"duration": "1 round"
-									}
-								]
+								"stage": 1,
+								"entry": "{@damage 1d6} poison damage and {@condition flat-footed}",
+								"duration": "1 round"
+							},
+							{
+								"stage": 2,
+								"entry": "{@damage 1d6} poison damage, {@condition flat-footed}, and {@condition clumsy 1}",
+								"duration": "1 round"
 							}
 						],
 						"name": "Anadi Venom"
@@ -827,7 +818,9 @@
 							"The anadi changes into their hybrid form, spider form, or human form. The above statistics assume the anadi is in their hybrid form. While in their human form, the anadi hunter can't use their fangs attack and loses their climb Speed. When in spider form, they can't use weapons."
 						],
 						"name": "Change Shape",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
 						"entries": [
@@ -960,23 +953,12 @@
 						},
 						"requirements": "A {@condition grabbed}, {@condition paralyzed}, {@condition restrained}, {@condition unconscious}, or willing creature is within reach of the asanbosam's jaws",
 						"entries": [
-							"The asanbosam sinks its teeth into the creature to drink its blood. If the victim is {@condition grabbed}, this is automatic; otherwise, the asanbosam must succeed at an {@skill Athletics} check against the victim's Fortitude."
-						],
-						"name": "Drink Blood"
-					},
-					{
-						"entries": [
-							"The victim becomes {@condition drained 1} and the asanbosam regains 10 HP, gaining any excess Hit Points beyond its maximum as temporary."
-						],
-						"name": "DC."
-					},
-					{
-						"entries": [
+							"The asanbosam sinks its teeth into the creature to drink its blood. If the victim is {@condition grabbed}, this is automatic; otherwise, the asanbosam must succeed at an {@skill Athletics} check against the victim's Fortitude DC. The victim becomes {@condition drained 1} and the asanbosam regains 10 HP, gaining any excess Hit Points beyond its maximum as temporary Hit Points.",
 							"These temporary Hit Points remain for 1 minute. Drinking Blood from a creature that's already {@condition drained} increases the victim's {@condition drained} value by 1 to a maximum of {@condition drained 3}, but doesn't restore any HP to the asanbosam.",
 							"A victim's {@condition drained} condition decreases by 1 each week.",
 							"A blood transfusion, which requires a successful DC 20 {@skill Medicine} check and a blood donor or sufficient blood, reduces the {@condition drained} value by 1 after 10 minutes."
 						],
-						"name": "Hit Points."
+						"name": "Drink Blood"
 					}
 				]
 			}
@@ -1136,7 +1118,9 @@
 						},
 						"entries": [],
 						"name": "Attack of Opportunity",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				],
 				"bot": [
@@ -1311,7 +1295,9 @@
 						},
 						"entries": [],
 						"name": "Shield Block",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				],
 				"bot": [
@@ -1722,7 +1708,9 @@
 						},
 						"entries": [],
 						"name": "Attack of Opportunity",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
 						"activity": {
@@ -2182,7 +2170,9 @@
 							"The eloko deals {@dice 2d6} extra precision damage to {@condition flat-footed} creatures."
 						],
 						"name": "Sneak Attack",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				]
 			}
@@ -2350,7 +2340,9 @@
 						},
 						"entries": [],
 						"name": "Attack of Opportunity",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				],
 				"bot": [
@@ -2390,7 +2382,9 @@
 							"tail only, {@damage 2d12+12} bludgeoning, DC 34."
 						],
 						"name": "Greater Constrict",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
 						"activity": {
@@ -2401,7 +2395,9 @@
 							"jaws only, Huge, {@damage 3d12+10} bludgeoning, Rupture 37."
 						],
 						"name": "Swallow Whole",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
 						"activity": {
@@ -2842,32 +2838,27 @@
 				],
 				"bot": [
 					{
-						"entries": [
+						"type": "affliction",
+						"traits": [
+							"disease"
+						],
+						"DC": 19,
+						"savingThrow": "Fortitude",
+						"stages": [
 							{
-								"type": "affliction",
-								"traits": [
-									"disease"
-								],
-								"note": "",
-								"DC": 19,
-								"savingThrow": "Fortitude",
-								"stages": [
-									{
-										"stage": 1,
-										"entry": "carrier with no ill effect",
-										"duration": "1 day"
-									},
-									{
-										"stage": 2,
-										"entry": "{@damage 1d6} poison damage, {@condition sickened 1}",
-										"duration": "1 day"
-									},
-									{
-										"stage": 3,
-										"entry": "{@damage 1d8} poison damage, every hour the victim must succeed at another Fortitude save or be {@condition confused} for 1 minute, {@condition sickened 2}",
-										"duration": "1 day"
-									}
-								]
+								"stage": 1,
+								"entry": "carrier with no ill effect",
+								"duration": "1 day"
+							},
+							{
+								"stage": 2,
+								"entry": "{@damage 1d6} poison damage, {@condition sickened 1}",
+								"duration": "1 day"
+							},
+							{
+								"stage": 3,
+								"entry": "{@damage 1d8} poison damage, every hour the victim must succeed at another Fortitude save or be {@condition confused} for 1 minute, {@condition sickened 2}",
+								"duration": "1 day"
 							}
 						],
 						"name": "Grave Blight"
@@ -3132,7 +3123,9 @@
 						},
 						"entries": [],
 						"name": "Improved Grab",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
 						"activity": {
@@ -3153,7 +3146,9 @@
 							"The maliadi can take on the appearance of any Large, Huge, or Gargantuan animal. This doesn't change its."
 						],
 						"name": "Change Shape",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				]
 			}
@@ -3294,7 +3289,9 @@
 							"Tail only."
 						],
 						"name": "Attack of Opportunity",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				],
 				"bot": [
@@ -3305,7 +3302,9 @@
 						},
 						"entries": [],
 						"name": "Aquatic Ambush",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
 						"activity": {
@@ -3597,38 +3596,34 @@
 						"name": "Crooning Cry"
 					},
 					{
-						"entries": [
+						"type": "affliction",
+						"traits": [
+							"disease"
+						],
+						"note": "The target can't reduce its {@condition sickened} condition while affected by rompo chills",
+						"DC": 19,
+						"savingThrow": "Fortitude",
+						"onset": "1 day",
+						"stages": [
 							{
-								"type": "affliction",
-								"traits": [
-									"disease"
-								],
-								"note": "The target can't reduce its {@condition sickened} condition while affected by rompo chills",
-								"DC": 19,
-								"savingThrow": "Fortitude",
-								"onset": "1 day",
-								"stages": [
-									{
-										"stage": 1,
-										"entry": "{@condition clumsy 1}",
-										"duration": "1 day"
-									},
-									{
-										"stage": 2,
-										"entry": "{@condition clumsy 1} and {@condition sickened 1}",
-										"duration": "1 day"
-									},
-									{
-										"stage": 3,
-										"entry": "{@condition clumsy 2} and {@condition sickened 2}",
-										"duration": "1 day"
-									},
-									{
-										"stage": 4,
-										"entry": "{@condition unconscious} ;",
-										"duration": "1 day"
-									}
-								]
+								"stage": 1,
+								"entry": "{@condition clumsy 1}",
+								"duration": "1 day"
+							},
+							{
+								"stage": 2,
+								"entry": "{@condition clumsy 1} and {@condition sickened 1}",
+								"duration": "1 day"
+							},
+							{
+								"stage": 3,
+								"entry": "{@condition clumsy 2} and {@condition sickened 2}",
+								"duration": "1 day"
+							},
+							{
+								"stage": 4,
+								"entry": "{@condition unconscious} ;",
+								"duration": "1 day"
 							}
 						],
 						"name": "Rompo Chills"
@@ -3804,7 +3799,9 @@
 						},
 						"entries": [],
 						"name": "Ferocity",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				],
 				"bot": [
@@ -4110,7 +4107,9 @@
 							"{@damage 2d10+6} bludgeoning, DC 29."
 						],
 						"name": "Greater Constrict",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
 						"activity": {
@@ -4134,7 +4133,9 @@
 							"Medium, {@damage 2d10+6} bludgeoning, Rupture 23."
 						],
 						"name": "Swallow Whole",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
 						"activity": {
@@ -4151,23 +4152,18 @@
 						"name": "Zinba Restoration"
 					},
 					{
-						"entries": [
+						"type": "affliction",
+						"traits": [
+							"poison"
+						],
+						"DC": 29,
+						"savingThrow": "Fortitude",
+						"maxDuration": "6 rounds",
+						"stages": [
 							{
-								"type": "affliction",
-								"traits": [
-									"poison"
-								],
-								"note": "",
-								"DC": 29,
-								"savingThrow": "Fortitude",
-								"maxDuration": "6 rounds",
-								"stages": [
-									{
-										"stage": 1,
-										"entry": "{@damage 3d6} poison ;",
-										"duration": "1 round"
-									}
-								]
+								"stage": 1,
+								"entry": "{@damage 3d6} poison ;",
+								"duration": "1 round"
 							}
 						],
 						"name": "Zinba Venom"

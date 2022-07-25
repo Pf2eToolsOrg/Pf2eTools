@@ -30,7 +30,9 @@
 			"entries": [
 				"You gain one {@filter magus|feats||Class=magus} feat. For the purpose of meeting its prerequisites, your magus level is equal to half your character level."
 			],
-			"special": "You can select this feat more than once. Each time you select it, you gain another magus feat."
+			"special": [
+				"You can select this feat more than once. Each time you select it, you gain another magus feat."
+			]
 		},
 		{
 			"name": "Advanced Synergy",
@@ -49,7 +51,9 @@
 			"entries": [
 				"You gain one {@filter summoner|feats||Class=summoner} feat. For the purpose of meeting its prerequisites, your summoner level is equal to half your character level."
 			],
-			"special": "You can select this feat more than once. Each time you select it, you gain another summoner feat.",
+			"special": [
+				"You can select this feat more than once. Each time you select it, you gain another summoner feat."
+			],
 			"leadsTo": [
 				"Signature Synergy|SoM"
 			]
@@ -84,7 +88,9 @@
 			"entries": [
 				"You gain the resonant power of one embedded aeon stone as if it were placed in a wayfinder. While you can embed multiple aeon stones in your flesh, you can gain the resonance power from only one embedded stone at a time, selected each day when you make your daily preparations."
 			],
-			"special": "At 8th level, you can take this feat again. If you do, you gain the resonance powers of up to four invested aeon stones instead of only one."
+			"special": [
+				"At 8th level, you can take this feat again. If you do, you gain the resonance powers of up to four invested aeon stones instead of only one."
+			]
 		},
 		{
 			"name": "Airborne Form",
@@ -628,7 +634,9 @@
 					]
 				}
 			],
-			"special": "You can't select another dedication feat until you've gained two other feats from the cathartic mage archetype.",
+			"special": [
+				"You can't select another dedication feat until you've gained two other feats from the cathartic mage archetype."
+			],
 			"leadsTo": [
 				"Basic Cathartic Spellcasting|SoM",
 				"Expert Cathartic Spellcasting|SoM",
@@ -989,7 +997,9 @@
 			"entries": [
 				"Each day when you make your daily preparations, you can attune yourself to one element of your choice: air, earth, fire, or water. You gain resistance equal to half your level (minimum 1 resistance) against damage dealt by effects with your attuned {@trait elemental} trait. This attunement lasts until you next make your daily preparations."
 			],
-			"special": "You can't select another dedication feat until you've gained two other feats from the elementalist archetype.",
+			"special": [
+				"You can't select another dedication feat until you've gained two other feats from the elementalist archetype."
+			],
 			"leadsTo": [
 				"Burning Spell|SoM",
 				"Dousing Spell|SoM",
@@ -1265,8 +1275,8 @@
 			"name": "Familiar",
 			"source": "SoM",
 			"page": 42,
-			"level": 1,
 			"add_hash": "Magus",
+			"level": 1,
 			"traits": [
 				"magus"
 			],
@@ -1332,7 +1342,7 @@
 			"level": 2,
 			"featType": {
 				"archetype": [
-					"Flexible Caster"
+					"Flexible Spellcaster"
 				]
 			},
 			"traits": [
@@ -1441,7 +1451,9 @@
 					]
 				}
 			],
-			"special": "You can't select another dedication feat until you've gained two other feats from the geomancer archetype.",
+			"special": [
+				"You can't select another dedication feat until you've gained two other feats from the geomancer archetype."
+			],
 			"leadsTo": [
 				"Attuned Stride|SoM",
 				"Attunement Shift|SoM",
@@ -1629,7 +1641,9 @@
 				"You overcharge the triggering spell with magic. You expend a spell slot and attempt to counteract the triggering spell using the energy of the expended slot. If the triggering spell is in your repertoire and the spell slot you expended was a high enough level to cast it, you take no penalty. Otherwise, you take a \u20132 penalty to the counteract check if the triggering spell was cast using the same magical tradition you cast, or a \u20135 penalty if it was cast using a different tradition.",
 				"If the triggering spell is successfully counteracted, it creates a wellspring surge from its caster in addition to the normal effects of being counteracted. If it isn't counteracted, your expended spell slot creates a wellspring surge from you."
 			],
-			"special": "This feat has the trait corresponding to the tradition of spells you cast (arcane, divine, primal, or occult)."
+			"special": [
+				"This feat has the trait corresponding to the tradition of spells you cast (arcane, divine, primal, or occult)."
+			]
 		},
 		{
 			"name": "Knowledge Is Power",
@@ -1802,7 +1816,9 @@
 				"You cast spells like a magus, gaining a spellbook with four common arcane cantrips of your choice. You gain the {@action Cast a Spell} activity. You can prepare two cantrips each day from your spellbook. Each time you gain a spell slot of a new level from the magus archetype, add a spell of that level or lower to your spellbook. You're trained in arcane spell attack rolls and spell DCs. Your key spellcasting ability for magus archetype spells is Intelligence, and they are arcane magus spells. You become trained in {@skill Arcana}; if you were already trained in {@skill Arcana}, you instead become trained in a skill of your choice.",
 				"You become trained in simple weapons."
 			],
-			"special": "You can't select another dedication feat until you have gained two other feats from the magus archetype.",
+			"special": [
+				"You can't select another dedication feat until you have gained two other feats from the magus archetype."
+			],
 			"leadsTo": [
 				"Basic Magus Spellcasting|SoM",
 				"Expert Magus Spellcasting|SoM",
@@ -2133,7 +2149,9 @@
 			"entries": [
 				"The power of your bond can protect you and your eidolon from harm. If you and your eidolon would take different amounts of damage from the area effect, you take the lower amount of damage instead of the greater amount of damage."
 			],
-			"special": "This feat has the trait matching your eidolon's tradition ({@trait arcane}, {@trait divine}, {@trait occult}, or {@trait primal})."
+			"special": [
+				"This feat has the trait matching your eidolon's tradition ({@trait arcane}, {@trait divine}, {@trait occult}, or {@trait primal})."
+			]
 		},
 		{
 			"name": "Purifying Spell",
@@ -2197,7 +2215,9 @@
 			"entries": [
 				"If your next action is to cast a spell that would grant your terrain attunement bonus, reduce the number of actions to cast it by 1 (to a minimum of 1 action)."
 			],
-			"special": "You can't use {@condition Quickened} Attunement and {@condition Quickened} Casting in the same round."
+			"special": [
+				"You can't use {@condition Quickened} Attunement and {@condition Quickened} Casting in the same round."
+			]
 		},
 		{
 			"name": "Raise A Tome",
@@ -2361,7 +2381,9 @@
 				"They are in the {@group brawling} group and have the {@trait agile}, {@trait disarm}, {@trait finesse}, {@trait nonlethal}, {@trait trip}, {@trait unarmed}, and {@trait water} traits.",
 				"While in Reflective Ripple Stance, you gain a +1 circumstance bonus to {@skill Athletics} checks to {@action Disarm}, {@action Swim}, or {@action Trip}, and you gain a +2 circumstance bonus to your Reflex DC to avoid being Disarmed and Tripped."
 			],
-			"special": "This feat gains your choice of either the {@trait divine} or {@trait occult} trait, matching your ki spell tradition if possible.",
+			"special": [
+				"This feat gains your choice of either the {@trait divine} or {@trait occult} trait, matching your ki spell tradition if possible."
+			],
 			"leadsTo": [
 				"Rippling Spin|SoM",
 				"Wave Spiral|SoM"
@@ -2540,7 +2562,9 @@
 			"entries": [
 				"Your rune magic increases, and you practice with your school's associated weapon. You gain an additional cantrip of your chosen arcane school, and each time you gain a level (including this level), you add an additional spell from your chosen arcane school to your spellbook, with the same restrictions as the two spells you normally add."
 			],
-			"special": "You can't select another dedication feat until you have gained two other feats from the runelord archetype.",
+			"special": [
+				"You can't select another dedication feat until you have gained two other feats from the runelord archetype."
+			],
 			"leadsTo": [
 				"Embed Aeon Stone|SoM",
 				"Aeon Resonance|SoM",
@@ -2708,7 +2732,9 @@
 				"You've sacrificed a piece of your spirit, allowing the powers of shadow into your being and changing the nature of your magic. You can no longer cast spells that have the {@trait light} trait; if an ability, such as a class feature or ancestry feat, would automatically grant you a {@spell light} spell, such as the Domain Initiate feat granting you the {@spell dazzling flash} spell, you don't gain that spell.",
 				"You gain the {@spell cloak of shadow} domain spell. It costs 1 Focus Point to cast a focus spell. This feat grants a focus pool of 1 Focus Point that you can recover using the {@action Refocus} activity. You can {@action Refocus} by meditating to siphon power from the {@plane Shadow Plane} and refill your focus pool. Your domain spells from the shadowcaster archetype are of the same tradition as the spells you used to meet the shadowcaster archetype's prerequisites."
 			],
-			"special": "You can't select another dedication feat until you've gained two other feats from the shadowcaster archetype.",
+			"special": [
+				"You can't select another dedication feat until you've gained two other feats from the shadowcaster archetype."
+			],
 			"leadsTo": [
 				"Disciple Of Shade|SoM",
 				"Shadow Reservoir|SoM",
@@ -2920,7 +2946,9 @@
 				"When you gain soulforged corruption, choose one armament's corruption flaw to affect you for stage 1.",
 				"At stage 2, you take the flaws of all your soulforged armaments. While you have the curse, each armament gets a separate flat check to manifest its essence form, and failing prevents you from manifesting only that armament's essence form."
 			],
-			"special": "You can select this feat a second time at 12th level or higher, choosing the final item type."
+			"special": [
+				"You can select this feat a second time at 12th level or higher, choosing the final item type."
+			]
 		},
 		{
 			"name": "Soul Flare",
@@ -2988,7 +3016,9 @@
 					]
 				}
 			],
-			"special": "You can't select another dedication feat before gaining two other feats from this archetype.",
+			"special": [
+				"You can't select another dedication feat before gaining two other feats from this archetype."
+			],
 			"leadsTo": [
 				"Rapid Manifestation|SoM",
 				"Soul Arsenal|SoM",
@@ -3168,7 +3198,9 @@
 				"You enter a stance of fast, fiery movements. You can make flashing spark attacks that deal {@damage 1d8} slashing damage. They are in the {@group brawling} group and have the {@trait forceful}, {@trait nonlethal}, {@trait sweep}, and {@trait unarmed} traits. If you have access to the flashing sparks' critical specialization effect, you can take an alternate effect instead: if your critical {@action Strike} dealt damage, the target takes {@damage 1d6} {@condition persistent damage||persistent fire damage}.",
 				"While in Stoked Flame Stance, you gain a +5-foot status bonus to your Speed. If you have incredible movement, increase the benefit from incredible movement to a +15-foot status bonus plus 5 feet for every 4 levels beyond 3rd."
 			],
-			"special": "This feat gains your choice of either the {@trait divine} or {@trait occult} trait, matching your ki spell tradition if possible.",
+			"special": [
+				"This feat gains your choice of either the {@trait divine} or {@trait occult} trait, matching your ki spell tradition if possible."
+			],
 			"leadsTo": [
 				"Blazing Streak|SoM",
 				"Inner Fire|SoM"
@@ -3225,7 +3257,9 @@
 				"Your eidolon's initial ability scores are reduced. It starts with a 16 in any ability score listed at 18 for its eidolon array. It otherwise gains the statistics listed for an eidolon of that type.",
 				"At 5th level, the eidolon's ability score that was reduced to 16 increases to 18, before applying ability boosts. At levels 5, 10, 15, and 20, your eidolon also gets four ability boosts, which follow the same rules as yours."
 			],
-			"special": "You can't select another dedication feat until you have gained two other feats from the summoner archetype.",
+			"special": [
+				"You can't select another dedication feat until you have gained two other feats from the summoner archetype."
+			],
 			"leadsTo": [
 				"Basic Summoner Spellcasting|SoM",
 				"Expert Summoner Spellcasting|SoM",
@@ -3257,7 +3291,9 @@
 			"entries": [
 				"In a moment of danger, you call your eidolon to your side. Your eidolon teleports to an open space adjacent to you."
 			],
-			"special": "This feat has the trait matching your eidolon's tradition (arcane, divine, occult, or primal)."
+			"special": [
+				"This feat has the trait matching your eidolon's tradition (arcane, divine, occult, or primal)."
+			]
 		},
 		{
 			"name": "Supreme Spellstrike",
@@ -3427,7 +3463,9 @@
 			"entries": [
 				"You switch places with your eidolon. You each teleport to the other's position."
 			],
-			"special": "This feat has the trait matching your eidolon's tradition (arcane, divine, occult, or primal)."
+			"special": [
+				"This feat has the trait matching your eidolon's tradition (arcane, divine, occult, or primal)."
+			]
 		},
 		{
 			"name": "True Transmogrification",
@@ -3456,7 +3494,9 @@
 				"You can transform to match your eidolon. When you {@action Manifest Eidolon|SoM|Manifest your Eidolon}, you can call upon its powers to transform yourself into a duplicate until it unmanifests.",
 				"You can't use this if you {@action Manifest Eidolon|SoM|Manifest your Eidolon} in an unusual way, such as {@feat Meld into Eidolon|SoM}. While using Twin Eidolon, you use your eidolon's statistics other than your mental ability modifiers, including its evolutions. You can't cast spells (except spells your eidolon could cast), Activate or otherwise benefit from magic items that normally benefit you and not your eidolon, or use other actions it can't perform. Any of its spells you cast with limited uses count against your eidolon's uses. You can {@action Manifest Eidolon|SoM|Manifest your Eidolon} again to end this effect."
 			],
-			"special": "This feat has the trait matching your eidolon's tradition (arcane, divine, occult, or primal)."
+			"special": [
+				"This feat has the trait matching your eidolon's tradition (arcane, divine, occult, or primal)."
+			]
 		},
 		{
 			"name": "Unending Emptiness",
@@ -3618,7 +3658,9 @@
 			"entries": [
 				"There's no longer a limit on how many temporary spell slots you can gain per day from wellspring magic."
 			],
-			"special": "You can't select another dedication feat until you gain two other feats from the wellspring mage archetype.",
+			"special": [
+				"You can't select another dedication feat until you gain two other feats from the wellspring mage archetype."
+			],
 			"leadsTo": [
 				"Interfering Surge|SoM",
 				"Urgent Upwelling|SoM",

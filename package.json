@@ -1,13 +1,14 @@
 {
 	"name": "pf2etools",
 	"author": "Pf2eTools",
-	"version": "0.5.17",
+	"version": "0.6.0",
 	"license": "MIT",
 	"description": "A site dedicated to making playing games with your friends as easy as possible.",
 	"scripts": {
 		"serve:dev": "http-server -c-1 --cors",
 		"gen-all": "node node/generate-all.js",
 		"clean-jsons": "node node/clean-jsons.js",
+		"update-jsons": "node node/update-jsons.js",
 		"minify:js": "terser --keep-classnames --keep-fnames",
 		"minify:json": "node node/minify-json.js",
 		"test:js": "eslint js node",

@@ -31,14 +31,14 @@ class SpellsPage extends ListPage {
 
 		const source = Parser.sourceJsonToAbv(spell.source);
 		const time = Parser.timeToTableStr(spell.cast);
-		const school = Parser.spSchoolAbvToFull(spell.school);
+		const school = spell._fSchool || "N/A";
 
 		eleLi.innerHTML = `<a href="#${hash}" class="lst--border">
 			<span class="bold col-3-8 pl-0">${spell.name}</span>
 			<span class="col-0-9 text-center">${spell._normalisedType}</span>
 			<span class="col-1-3 text-center">${Parser.spLevelToFull(spell.level)}</span>
 			<span class="col-2-2 text-center">${time}</span>
-			<span class="col-2-5 sp__school-${spell.school} text-center" title="${Parser.spSchoolAbvToFull(spell.school)}" ${Parser.spSchoolAbvToStyle(spell.school)}>${school}</span>
+			<span class="col-2-5 text-center" ${Parser.spSchoolToStyle(school)}>${school}</span>
 			<span class="col-1-3 text-center ${Parser.sourceJsonToColor(spell.source)} pr-0" title="${Parser.sourceJsonToFull(spell.source)}" ${BrewUtil.sourceJsonToStyle(spell.source)}>${source}</span>
 		</a>`;
 
@@ -51,7 +51,7 @@ class SpellsPage extends ListPage {
 				source,
 				level: spell.level,
 				time,
-				school: Parser.spSchoolAbvToFull(spell.school),
+				school,
 				normalisedTime: spell._normalisedTime,
 				type: spell._normalisedType,
 			},
@@ -78,7 +78,7 @@ class SpellsPage extends ListPage {
 
 	getSublistItem (spell, pinId) {
 		const hash = UrlUtil.autoEncodeHash(spell);
-		const school = Parser.spSchoolAbvToShort(spell.school);
+		const school = spell._fSchool || "N/A";
 		const time = Parser.timeToTableStr(spell.cast);
 
 		const $ele = $(`<li class="row">
@@ -86,7 +86,7 @@ class SpellsPage extends ListPage {
 				<span class="bold col-6 pl-0">${spell.name}</span>
 				<span class="capitalise col-1-5 text-center">${Parser.spLevelToFull(spell.level)}</span>
 				<span class="col-2-9 text-center">${time}</span>
-				<span class="capitalise col-1-6 sp__school-${spell.school} text-center" title="${Parser.spSchoolAbvToFull(spell.school)}" ${Parser.spSchoolAbvToStyle(spell.school)}>${school}</span>
+				<span class="capitalise col-1-6 text-center" title="${school}" ${Parser.spSchoolToStyle(school)}>${Parser.spSchoolToAbv(school)}</span>
 			</a>
 		</li>`).contextmenu(evt => ListUtil.openSubContextMenu(evt, listItem));
 

@@ -231,7 +231,9 @@
 							"Large, {@damage 3d12+8} bludgeoning, Rupture 32."
 						],
 						"name": "Swallow Whole",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
 						"traits": [
@@ -532,7 +534,9 @@
 							"As muurfeli, but with the appearance of a Tiny or Small scorpion (rather than owl) and piercing damage for their Strikes (rather than slashing)."
 						],
 						"name": "Change Shape",
-						"generic": true,
+						"generic": {
+							"tag": "ability"
+						},
 						"entries_as_xyz": [
 							"The muurfeli can take on the form of an owl. The owl form always looks the same, but the muurfeli can choose to become either Tiny or Small in this form. This transformation doesn't change their Speed or the attack and damage bonuses of their Strikes, but might change the damage type their Strikes deal (typically to slashing)."
 						]
@@ -683,37 +687,32 @@
 				],
 				"bot": [
 					{
-						"entries": [
-							{
-								"type": "affliction",
-								"name": "",
-								"traits": [
-									"poison"
-								],
-								"note": " The {@condition drained} condition\npersists after the poison's duration ends",
-								"DC": 32,
-								"savingThrow": "Fortitude",
-								"maxDuration": "6 rounds",
-								"stages": [
-									{
-										"stage": 1,
-										"entry": "{@damage 2d8} poison damage and {@condition drained|CRB|drained 1}",
-										"duration": "1 round"
-									},
-									{
-										"stage": 2,
-										"entry": "{@damage 3d8} poison damage and {@condition drained|CRB|drained 2}",
-										"duration": "1 round"
-									},
-									{
-										"stage": 3,
-										"entry": "{@damage 4d8} poison damage and {@condition drained|CRB|drained 2}",
-										"duration": "1 round"
-									}
-								]
-							}
+						"type": "affliction",
+						"name": "Death Drider Venom",
+						"traits": [
+							"poison"
 						],
-						"name": "Death Drider Venom"
+						"note": " The {@condition drained} condition\npersists after the poison's duration ends",
+						"DC": 32,
+						"savingThrow": "Fortitude",
+						"maxDuration": "6 rounds",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "{@damage 2d8} poison damage and {@condition drained|CRB|drained 1}",
+								"duration": "1 round"
+							},
+							{
+								"stage": 2,
+								"entry": "{@damage 3d8} poison damage and {@condition drained|CRB|drained 2}",
+								"duration": "1 round"
+							},
+							{
+								"stage": 3,
+								"entry": "{@damage 4d8} poison damage and {@condition drained|CRB|drained 2}",
+								"duration": "1 round"
+							}
+						]
 					}
 				]
 			}
@@ -1163,7 +1162,9 @@
 							"He can disrupt triggering concentrate actions, and he disrupts actions with a successful attack roll, not just a critical success."
 						],
 						"name": "Attack of Opportunity",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				],
 				"bot": [
@@ -1184,34 +1185,29 @@
 						"name": "Familiar"
 					},
 					{
-						"entries": [
-							{
-								"type": "affliction",
-								"name": "",
-								"traits": [
-									"curse",
-									"disease",
-									"divine",
-									"necromancy"
-								],
-								"note": "\nThis disease and damage from it can't be healed until the\ncurse is removed. A creature killed by this curse turns\nto sand and can't be resurrected except by a 9th-level\nresurrect ritual or similar magic",
-								"DC": 39,
-								"savingThrow": "Fortitude",
-								"stages": [
-									{
-										"stage": 1,
-										"entry": "carrier with no ill effect",
-										"duration": "1 minute"
-									},
-									{
-										"stage": 2,
-										"entry": "{@damage 15d6} negative damage and {@condition stupefied|CRB|stupefied 2}",
-										"duration": "1 day"
-									}
-								]
-							}
+						"type": "affliction",
+						"name": "Insidious Mummy Rot",
+						"traits": [
+							"curse",
+							"disease",
+							"divine",
+							"necromancy"
 						],
-						"name": "Insidious Mummy Rot"
+						"note": "\nThis disease and damage from it can't be healed until the\ncurse is removed. A creature killed by this curse turns\nto sand and can't be resurrected except by a 9th-level\nresurrect ritual or similar magic",
+						"DC": 39,
+						"savingThrow": "Fortitude",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "carrier with no ill effect",
+								"duration": "1 minute"
+							},
+							{
+								"stage": 2,
+								"entry": "{@damage 15d6} negative damage and {@condition stupefied|CRB|stupefied 2}",
+								"duration": "1 day"
+							}
+						]
 					}
 				]
 			}
@@ -1648,7 +1644,9 @@
 							"{@damage 3d10+17} piercing."
 						],
 						"name": "Constrict",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
 						"entries": [
@@ -1665,7 +1663,9 @@
 							"DC 43, {@damage 10d6} negative, {@action Escape} DC 43, Rupture 45."
 						],
 						"name": "Engulf",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
 						"activity": {
@@ -1898,7 +1898,9 @@
 						},
 						"entries": [],
 						"name": "Attack of Opportunity",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				],
 				"bot": [
@@ -2245,7 +2247,9 @@
 							"The muurfeli can take on the form of an owl. The owl form always looks the same, but the muurfeli can choose to become either Tiny or Small in this form. This transformation doesn't change their Speed or the attack and damage bonuses of their Strikes, but might change the damage type their Strikes deal (typically to slashing)."
 						],
 						"name": "Change Shape",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				]
 			}
@@ -2390,7 +2394,9 @@
 							"harmed by sonic ({@dice 8d10}, {@dice 2d10} from area or {@condition persistent damage}); healed by cold (area {@dice 2d10} HP); {@condition slowed} by fire."
 						],
 						"name": "Golem Antimagic",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
 						"entries": [
@@ -2623,7 +2629,9 @@
 					{
 						"entries": [],
 						"name": "Light Blindness",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				],
 				"bot": [
@@ -2871,7 +2879,9 @@
 						},
 						"entries": [],
 						"name": "Attack of Opportunity",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				],
 				"bot": [
@@ -3139,7 +3149,9 @@
 						},
 						"entries": [],
 						"name": "Attack of Opportunity",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				],
 				"bot": [
@@ -4163,7 +4175,9 @@
 							"{@damage 4d8+10} bludgeoning, DC 37."
 						],
 						"name": "Constrict",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
 						"activity": {
@@ -4804,7 +4818,9 @@
 							"As vampire, but hunting spider or spider swarm only, and Zinogyvaz keeps her fangs and web Strikes in either form."
 						],
 						"name": "Change Shape",
-						"generic": true,
+						"generic": {
+							"tag": "ability"
+						},
 						"entries_as_xyz": "Ability not found: '{@action Change Shape|LOAG} As vampire, but hunting spider or spider swarm only, and Zinogyvaz keeps her fangs and web Strikes in either form.' in Zinogyvaz, p.35"
 					},
 					{
@@ -4857,32 +4873,26 @@
 						"entries_as_xyz": "Ability not found: 'Turn to Mist As vampire.' in Zinogyvaz, p.35"
 					},
 					{
-						"entries": [
-							{
-								"type": "affliction",
-								"name": "",
-								"traits": [
-									"poison"
-								],
-								"note": "",
-								"DC": 35,
-								"savingThrow": "Fortitude",
-								"maxDuration": "6 rounds",
-								"stages": [
-									{
-										"stage": 1,
-										"entry": "{@damage 3d8} poison damage and {@condition enfeebled|CRB|enfeebled 2}",
-										"duration": "1 round"
-									},
-									{
-										"stage": 2,
-										"entry": "{@damage 4d8} poison damage and {@condition paralyzed}",
-										"duration": "1 round"
-									}
-								]
-							}
+						"type": "affliction",
+						"name": "Vampire Drider Venom",
+						"traits": [
+							"poison"
 						],
-						"name": "Vampire Drider Venom"
+						"DC": 35,
+						"savingThrow": "Fortitude",
+						"maxDuration": "6 rounds",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "{@damage 3d8} poison damage and {@condition enfeebled|CRB|enfeebled 2}",
+								"duration": "1 round"
+							},
+							{
+								"stage": 2,
+								"entry": "{@damage 4d8} poison damage and {@condition paralyzed}",
+								"duration": "1 round"
+							}
+						]
 					},
 					{
 						"entries": [

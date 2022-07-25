@@ -14,16 +14,16 @@
 				"humanoid"
 			],
 			"creatureType": [
-				"Humanoid"
+				"humanoid"
 			],
 			"perception": {
 				"std": 7
 			},
 			"languages": {
 				"languages": [
-					"Common",
-					"Infernal",
-					"Varisian"
+					"common",
+					"infernal",
+					"varisian"
 				],
 				"languageAbilities": []
 			},
@@ -116,7 +116,9 @@
 							"]"
 						],
 						"name": "Attack of Opportunity",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				],
 				"bot": [
@@ -159,15 +161,15 @@
 				"humanoid"
 			],
 			"creatureType": [
-				"Humanoid"
+				"humanoid"
 			],
 			"perception": {
 				"std": 15
 			},
 			"languages": {
 				"languages": [
-					"Anadi",
-					"Common"
+					"anadi",
+					"common"
 				],
 				"languageAbilities": []
 			},
@@ -352,32 +354,26 @@
 			"abilities": {
 				"bot": [
 					{
-						"entries": [
-							{
-								"type": "affliction",
-								"name": "",
-								"traits": [
-									"poison"
-								],
-								"note": "",
-								"DC": 22,
-								"savingThrow": "Fortitude",
-								"maxDuration": "6 rounds",
-								"stages": [
-									{
-										"stage": 1,
-										"entry": "{@damage 2d6} poison damage and {@condition flat-footed}",
-										"duration": "1 round"
-									},
-									{
-										"stage": 2,
-										"entry": "{@damage 2d6} poison damage, {@condition flat-footed}, and {@condition clumsy|CRB|clumsy 1}",
-										"duration": "1 round"
-									}
-								]
-							}
+						"type": "affliction",
+						"name": "Anadi Venom",
+						"traits": [
+							"poison"
 						],
-						"name": "Anadi Venom"
+						"DC": 22,
+						"savingThrow": "Fortitude",
+						"maxDuration": "6 rounds",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "{@damage 2d6} poison damage and {@condition flat-footed}",
+								"duration": "1 round"
+							},
+							{
+								"stage": 2,
+								"entry": "{@damage 2d6} poison damage, {@condition flat-footed}, and {@condition clumsy|CRB|clumsy 1}",
+								"duration": "1 round"
+							}
+						]
 					},
 					{
 						"activity": {
@@ -394,7 +390,9 @@
 							"As anadi hunter."
 						],
 						"name": "Change Shape",
-						"generic": true,
+						"generic": {
+							"tag": "ability"
+						},
 						"entries_as_xyz": "Ability not found: '{@action Change Shape|LOAG} As anadi hunter.' in Anadi Elder, p.85"
 					},
 					{
@@ -421,15 +419,15 @@
 				"humanoid"
 			],
 			"creatureType": [
-				"Humanoid"
+				"humanoid"
 			],
 			"perception": {
 				"std": 7
 			},
 			"languages": {
 				"languages": [
-					"Anadi",
-					"Common"
+					"anadi",
+					"common"
 				],
 				"languageAbilities": []
 			},
@@ -528,15 +526,15 @@
 				"humanoid"
 			],
 			"creatureType": [
-				"Humanoid"
+				"humanoid"
 			],
 			"perception": {
 				"std": 12
 			},
 			"languages": {
 				"languages": [
-					"Anadi",
-					"Common"
+					"anadi",
+					"common"
 				],
 				"languageAbilities": []
 			},
@@ -691,32 +689,26 @@
 				],
 				"bot": [
 					{
-						"entries": [
-							{
-								"type": "affliction",
-								"name": "",
-								"traits": [
-									"poison"
-								],
-								"note": "",
-								"DC": 20,
-								"savingThrow": "Fortitude",
-								"maxDuration": "4 rounds",
-								"stages": [
-									{
-										"stage": 1,
-										"entry": "{@damage 1d6} poison damage and {@condition flat-footed}",
-										"duration": "1 round"
-									},
-									{
-										"stage": 2,
-										"entry": "{@damage 1d6} poison damage, {@condition flat-footed}, and {@condition clumsy|CRB|clumsy 1}",
-										"duration": "1 round"
-									}
-								]
-							}
+						"type": "affliction",
+						"name": "Anadi Venom",
+						"traits": [
+							"poison"
 						],
-						"name": "Anadi Venom"
+						"DC": 20,
+						"savingThrow": "Fortitude",
+						"maxDuration": "4 rounds",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "{@damage 1d6} poison damage and {@condition flat-footed}",
+								"duration": "1 round"
+							},
+							{
+								"stage": 2,
+								"entry": "{@damage 1d6} poison damage, {@condition flat-footed}, and {@condition clumsy|CRB|clumsy 1}",
+								"duration": "1 round"
+							}
+						]
 					},
 					{
 						"activity": {
@@ -733,7 +725,9 @@
 							"As anadi hunter."
 						],
 						"name": "Change Shape",
-						"generic": true,
+						"generic": {
+							"tag": "ability"
+						},
 						"entries_as_xyz": "Ability not found: '{@action Change Shape|LOAG} As anadi hunter.' in Anadi Sage, p.85"
 					},
 					{
@@ -761,15 +755,15 @@
 				"orc"
 			],
 			"creatureType": [
-				"Humanoid"
+				"humanoid"
 			],
 			"perception": {
 				"std": 6
 			},
 			"languages": {
 				"languages": [
-					"Common",
-					"Orcish"
+					"common",
+					"orcish"
 				],
 				"languageAbilities": []
 			},
@@ -909,7 +903,7 @@
 				"humanoid"
 			],
 			"creatureType": [
-				"Humanoid"
+				"humanoid"
 			],
 			"perception": {
 				"std": 6
@@ -921,8 +915,8 @@
 			],
 			"languages": {
 				"languages": [
-					"Common",
-					"Goblin",
+					"common",
+					"goblin",
 					"Halfling"
 				],
 				"languageAbilities": []
@@ -1109,7 +1103,7 @@
 				"humanoid"
 			],
 			"creatureType": [
-				"Humanoid"
+				"humanoid"
 			],
 			"perception": {
 				"std": 14
@@ -1121,8 +1115,8 @@
 			],
 			"languages": {
 				"languages": [
-					"Common",
-					"Goblin"
+					"common",
+					"goblin"
 				],
 				"languageAbilities": []
 			},
@@ -1307,7 +1301,7 @@
 				"construct"
 			],
 			"creatureType": [
-				"Construct"
+				"construct"
 			],
 			"perception": {
 				"std": 13
@@ -1322,7 +1316,7 @@
 			],
 			"languages": {
 				"languages": [
-					"Common"
+					"common"
 				],
 				"languageAbilities": []
 			},
@@ -1439,7 +1433,9 @@
 						},
 						"entries": [],
 						"name": "Attack of Opportunity",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
 						"activity": {
@@ -1461,7 +1457,9 @@
 							"When the doorwarden uses Shield Block against a melee attack from a creature within 5 feet, it can also push the creature 5 feet."
 						],
 						"name": "Shield Block",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				],
 				"bot": [
@@ -2088,7 +2086,7 @@
 				"humanoid"
 			],
 			"creatureType": [
-				"Humanoid"
+				"humanoid"
 			],
 			"perception": {
 				"std": 13
@@ -2326,15 +2324,15 @@
 				"humanoid"
 			],
 			"creatureType": [
-				"Humanoid"
+				"humanoid"
 			],
 			"perception": {
 				"std": 12
 			},
 			"languages": {
 				"languages": [
-					"Anadi",
-					"Common"
+					"anadi",
+					"common"
 				],
 				"languageAbilities": []
 			},
@@ -2507,7 +2505,9 @@
 							"As anadi hunter (page 84)."
 						],
 						"name": "Change Shape",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
 						"entries": [
@@ -2544,7 +2544,7 @@
 			],
 			"languages": {
 				"languages": [
-					"Common",
+					"common",
 					"Infernal"
 				],
 				"languageAbilities": []
@@ -2638,7 +2638,9 @@
 						},
 						"entries": [],
 						"name": "Attack of Opportunity",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				],
 				"bot": [
@@ -2684,7 +2686,7 @@
 				"humanoid"
 			],
 			"creatureType": [
-				"Humanoid"
+				"humanoid"
 			],
 			"perception": {
 				"std": 6
@@ -2858,7 +2860,7 @@
 			"languages": {
 				"languages": [
 					"Aklo",
-					"Common"
+					"common"
 				],
 				"languageAbilities": []
 			},
@@ -2971,7 +2973,9 @@
 							"Small, {@damage 1d12+3} bludgeoning, Rupture 10."
 						],
 						"name": "Swallow Whole",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
 						"entries": [
@@ -2998,19 +3002,19 @@
 				"humanoid"
 			],
 			"creatureType": [
-				"Humanoid"
+				"humanoid"
 			],
 			"perception": {
 				"std": 7
 			},
 			"languages": {
 				"languages": [
-					"Common",
+					"common",
 					"Elven",
-					"Goblin",
+					"goblin",
 					"Halfling",
 					"Necril",
-					"Orcish"
+					"orcish"
 				],
 				"languageAbilities": []
 			},
@@ -3223,11 +3227,17 @@
 						"entries": [
 							"When Voz uses this ability, she also regains 1 Focus Point."
 						],
-						"name": "Drain Bonded Item"
+						"name": "Drain Bonded Item",
+						"generic": {
+							"tag": "action"
+						}
 					},
 					{
+						"name": "Eschew Materials",
 						"entries": [],
-						"name": "Eschew Materials"
+						"generic": {
+							"tag": "feat"
+						}
 					},
 					{
 						"activity": {
@@ -3235,7 +3245,11 @@
 							"unit": "action"
 						},
 						"entries": [],
-						"name": "Reach Spell"
+						"name": "Reach Spell",
+						"generic": {
+							"tag": "feat",
+							"add_hash": "Wizard"
+						}
 					}
 				]
 			}
@@ -3254,7 +3268,7 @@
 				"humanoid"
 			],
 			"creatureType": [
-				"Humanoid"
+				"humanoid"
 			],
 			"perception": {
 				"std": 3
@@ -3266,8 +3280,8 @@
 			],
 			"languages": {
 				"languages": [
-					"Common",
-					"Goblin"
+					"common",
+					"goblin"
 				],
 				"languageAbilities": []
 			},

@@ -197,7 +197,9 @@
 						},
 						"entries": [],
 						"name": "Attack of Opportunity",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				],
 				"bot": [
@@ -351,7 +353,9 @@
 						},
 						"entries": [],
 						"name": "Shield Block",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				],
 				"bot": [
@@ -513,7 +517,9 @@
 						},
 						"entries": [],
 						"name": "Attack of Opportunity",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
 						"entries": [
@@ -529,7 +535,9 @@
 						},
 						"entries": [],
 						"name": "Shield Block",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				],
 				"bot": [
@@ -689,37 +697,31 @@
 				],
 				"bot": [
 					{
-						"entries": [
-							{
-								"type": "affliction",
-								"name": "",
-								"traits": [
-									"poison"
-								],
-								"note": "",
-								"DC": 21,
-								"savingThrow": "Fortitude",
-								"maxDuration": "6 rounds",
-								"stages": [
-									{
-										"stage": 1,
-										"entry": "{@damage 1d10} poison damage and {@condition flat-footed}",
-										"duration": "1 round"
-									},
-									{
-										"stage": 2,
-										"entry": "{@damage 1d12} poison damage, {@condition clumsy|CRB|clumsy 1}, and {@condition flat-footed}",
-										"duration": "1 round"
-									},
-									{
-										"stage": 3,
-										"entry": "{@damage 2d6} poison damage, {@condition clumsy|CRB|clumsy 2}, and {@condition flat-footed}",
-										"duration": "1 round"
-									}
-								]
-							}
+						"type": "affliction",
+						"name": "Hunting Spider Venom",
+						"traits": [
+							"poison"
 						],
-						"name": "Hunting Spider Venom"
+						"DC": 21,
+						"savingThrow": "Fortitude",
+						"maxDuration": "6 rounds",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "{@damage 1d10} poison damage and {@condition flat-footed}",
+								"duration": "1 round"
+							},
+							{
+								"stage": 2,
+								"entry": "{@damage 1d12} poison damage, {@condition clumsy|CRB|clumsy 1}, and {@condition flat-footed}",
+								"duration": "1 round"
+							},
+							{
+								"stage": 3,
+								"entry": "{@damage 2d6} poison damage, {@condition clumsy|CRB|clumsy 2}, and {@condition flat-footed}",
+								"duration": "1 round"
+							}
+						]
 					},
 					{
 						"activity": {
@@ -1038,7 +1040,9 @@
 							"harmed by cold and water ({@dice 5d8}; {@dice 2d6} from areas and {@condition persistent damage}); healed by acid (area {@dice 2d6} HP); {@condition slowed} by earth."
 						],
 						"name": "Golem Antimagic",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
 						"entries": [
@@ -1234,7 +1238,9 @@
 						},
 						"entries": [],
 						"name": "Attack of Opportunity",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				],
 				"bot": [
@@ -1247,7 +1253,9 @@
 							"{@damage 1d8+6} bludgeoning plus {@damage 1d8} {@condition persistent damage ||persistent fire}, DC 24."
 						],
 						"name": "Constrict",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
 						"entries": [

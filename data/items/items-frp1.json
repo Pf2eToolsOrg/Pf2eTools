@@ -32,16 +32,15 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "lesser swapping stone",
 					"level": 11,
 					"price": {
 						"coin": "gp",
 						"amount": 300
 					},
-					"entries": []
+					"entries": [],
+					"variantType": "lesser swapping stone"
 				},
 				{
-					"type": "moderate swapping stone",
 					"level": 14,
 					"price": {
 						"coin": "gp",
@@ -49,10 +48,10 @@
 					},
 					"entries": [
 						"The Will save DC is 31."
-					]
+					],
+					"variantType": "moderate swapping stone"
 				},
 				{
-					"type": "greater swapping stone",
 					"level": 17,
 					"price": {
 						"coin": "gp",
@@ -60,10 +59,10 @@
 					},
 					"entries": [
 						"The Will save DC is 37."
-					]
+					],
+					"variantType": "greater swapping stone"
 				},
 				{
-					"type": "major swapping stone",
 					"level": 20,
 					"price": {
 						"coin": "gp",
@@ -71,7 +70,8 @@
 					},
 					"entries": [
 						"The Will save DC is 43."
-					]
+					],
+					"variantType": "major swapping stone"
 				}
 			]
 		},
@@ -173,7 +173,9 @@
 					]
 				}
 			],
-			"destruction": "Once a phoenix necklace has 10 silver feathers attached, Hao Jin can transform the necklace into a phoenix fighting fan, a process which requires 3 {@action Interact} actions."
+			"destruction": [
+				"Once a phoenix necklace has 10 silver feathers attached, Hao Jin can transform the necklace into a phoenix fighting fan, a process which requires 3 {@action Interact} actions."
+			]
 		}
 	]
 }

@@ -20,6 +20,56 @@
 			]
 		},
 		{
+			"name": "Deflecting Cloud",
+			"source": "SoT3",
+			"page": 79,
+			"activity": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"level": 16,
+			"featType": {
+				"archetype": [
+					"Dragon Disciple"
+				]
+			},
+			"traits": [
+				"uncommon",
+				"archetype"
+			],
+			"prerequisites": "{@feat Dragon Disciple Dedication|APG}, {@spell dragon wings} sorcerer bloodline spell",
+			"frequency": {
+				"freq": 1,
+				"recurs": true,
+				"interval": 10,
+				"unit": "minute"
+			},
+			"trigger": "You are the target of a ranged attack.",
+			"requirements": "You are aware of the attack and currently have dragon wings active.",
+			"entries": [
+				"You've mastered a defensive technique unique to the ancient dragons of Bloodsalt: beating your wings to create a billowing cloud of mist. You become momentarily {@condition hidden} from the triggering attack if vision is the attacker's only precise sense. Normally this means the attacker must succeed at a DC {@flatDC 11} flat check to target you. You also gain a +4 circumstance bonus to AC against the triggering attack."
+			]
+		},
+		{
+			"name": "Mighty Wings",
+			"source": "SoT3",
+			"page": 79,
+			"level": 18,
+			"featType": {
+				"archetype": [
+					"Dragon Disciple"
+				]
+			},
+			"traits": [
+				"uncommon",
+				"archetype"
+			],
+			"prerequisites": "{@feat Dragon Disciple Dedication|APG}, {@spell dragon wings} sorcerer bloodline spell",
+			"entries": [
+				"Your dragon wings are now a permanent part of your body, giving you a fly Speed equal to your Speed. If you spend 1 Focus Point to cast {@spell dragon wings}, your fly Speed increases to 90 feet for the duration, unless your Speed is faster, and you gain the effects of dragon claws for the duration. Bloodsalt Dragon Disciple"
+			]
+		},
+		{
 			"name": "Shape of the Cloud Dragon",
 			"source": "SoT3",
 			"page": 79,
@@ -46,56 +96,9 @@
 			],
 			"special": [
 				"You can use this feat in place of {@feat Shape of the Dragon|APG} to fulfill feat requirements."
-			]
-		},
-		{
-			"name": "Deflecting Cloud",
-			"source": "SoT3",
-			"page": 79,
-			"activity": {
-				"number": 1,
-				"unit": "reaction"
-			},
-			"featType": {
-				"archetype": [
-					"Dragon Disciple"
-				]
-			},
-			"level": 16,
-			"traits": [
-				"uncommon",
-				"archetype"
 			],
-			"prerequisites": "{@feat Dragon Disciple Dedication|APG}, {@spell dragon wings} sorcerer bloodline spell",
-			"frequency": {
-				"freq": 1,
-				"recurs": true,
-				"interval": 10,
-				"unit": "minute"
-			},
-			"trigger": "You are the target of a ranged attack.",
-			"requirements": "You are aware of the attack and currently have dragon wings active.",
-			"entries": [
-				"You've mastered a defensive technique unique to the ancient dragons of Bloodsalt: beating your wings to create a billowing cloud of mist. You become momentarily {@condition hidden} from the triggering attack if vision is the attacker's only precise sense. Normally this means the attacker must succeed at a DC {@flatDC 11} flat check to target you. You also gain a +4 circumstance bonus to AC against the triggering attack."
-			]
-		},
-		{
-			"name": "Mighty Wings",
-			"source": "SoT3",
-			"page": 79,
-			"featType": {
-				"archetype": [
-					"Dragon Disciple"
-				]
-			},
-			"level": 18,
-			"traits": [
-				"uncommon",
-				"archetype"
-			],
-			"prerequisites": "{@feat Dragon Disciple Dedication|APG}, {@spell dragon wings} sorcerer bloodline spell",
-			"entries": [
-				"Your dragon wings are now a permanent part of your body, giving you a fly Speed equal to your Speed. If you spend 1 Focus Point to cast {@spell dragon wings}, your fly Speed increases to 90 feet for the duration, unless your Speed is faster, and you gain the effects of dragon claws for the duration. Bloodsalt Dragon Disciple"
+			"leadsTo": [
+				"Mighty Dragon Shape|APG"
 			]
 		}
 	]

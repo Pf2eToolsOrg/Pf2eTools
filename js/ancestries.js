@@ -1248,7 +1248,7 @@ class AncestriesPage extends BaseComponent {
 
 		if (this._state[stateKey] == null) this._state[stateKey] = false;
 
-		const $dispName = $(`<div title="${h.name.toTitleCase()}; Source: ${Parser.sourceJsonToAbv(h.source)}">${h.shortName || h.name}</div>`);
+		const $dispName = $(`<div title="${Parser.sourceJsonToFull(h.source)}${h.page ? `, page ${h.page}` : ""}">${h.shortName || h.name}</div>`);
 		const $dispSource = $(`<div class="ml-1" title="${Parser.sourceJsonToFull(h.source)}">(${Parser.sourceJsonToAbv(h.source)})</div>`);
 		const hkSourcesVisible = () => $dispSource.toggleClass("hidden", !this._state.isShowHSources);
 		this._addHookBase("isShowHSources", hkSourcesVisible);

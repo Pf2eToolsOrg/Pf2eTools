@@ -34,7 +34,8 @@
 								"const": "Level Varies"
 							},
 							{
-								"type": "integer"
+								"type": "integer",
+								"minimum": 0
 							}
 						]
 					},
@@ -62,6 +63,10 @@
 						"type": "array",
 						"items": {
 							"$ref": "entry.json"
+						},
+						"contains": {
+							"$ref": "entry.json#/definitions/entriesAffliction",
+							"$comment": "This should really be a standalone part of diseases.json and not tucked in the entries."
 						}
 					}
 				},
@@ -69,11 +74,13 @@
 				"required": [
 					"source",
 					"name",
+					"type",
 					"entries",
 					"page"
 				]
 			},
-			"uniqueItems": true
+			"uniqueItems": true,
+			"minItems": 1
 		}
 	},
 	"additionalProperties": false,

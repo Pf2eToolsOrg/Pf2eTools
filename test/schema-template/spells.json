@@ -32,20 +32,6 @@
 					"focus": {
 						"type": "boolean"
 					},
-					"school": {
-						"type": "string",
-						"description": "A: Abjuration\nC: Conjuration\nD: Divination\nE: Enchantment\nV: Evocation\nI: Illusion\nN: Necromancy\nT:Transmutation",
-						"enum": [
-							"A",
-							"C",
-							"D",
-							"E",
-							"V",
-							"I",
-							"N",
-							"T"
-						]
-					},
 					"domains": {
 						"type": "array",
 						"items": {
@@ -126,41 +112,24 @@
 						"type": "array",
 						"items": [
 							{
-								"type": "object",
-								"properties": {
-									"F": {
-										"description": "Focus",
-										"type": "boolean",
+								"type": "array",
+								"items": [
+									{
+										"type": "string",
 										"enum": [
-											true
-										]
-									},
-									"M": {
-										"description": "Material",
-										"type": "boolean",
-										"enum": [
-											true
-										]
-									},
-									"S": {
-										"description": "Somatic",
-										"type": "boolean",
-										"enum": [
-											true
-										]
-									},
-									"V": {
-										"description": "Verbal",
-										"type": "boolean",
-										"enum": [
-											true
+											"F",
+											"S",
+											"M",
+											"V"
 										]
 									}
-								},
-								"additionalProperties": false,
-								"minProperties": 1
+								],
+								"minItems": 1,
+								"uniqueItems": true
 							}
-						]
+						],
+						"minItems": 1,
+						"uniqueItems": true
 					},
 					"subclass": {
 						"type": "object"
@@ -207,32 +176,26 @@
 							"entry": {
 								"type": "string"
 							},
-							"distance": {
-								"type": "object",
-								"properties": {
-									"type": {
-										"type": "string",
-										"enum": [
-											"touch",
-											"feet",
-											"miles",
-											"planetary",
-											"unlimited",
-											"unknown"
-										]
-									},
-									"amount": {
-										"type": "integer",
-										"inclusiveMinimum": 0
-									}
-								},
-								"additionalProperties": false,
-								"required": [
-									"type",
-									"amount"
+							"unit": {
+								"type": "string",
+								"enum": [
+									"touch",
+									"feet",
+									"mile",
+									"planetary",
+									"interplanar",
+									"unlimited",
+									"unknown"
 								]
+							},
+							"number": {
+								"type": "integer",
+								"inclusiveMinimum": 0
 							}
 						},
+						"required": [
+							"type"
+						],
 						"additionalProperties": false
 					},
 					"targets": {
@@ -307,7 +270,10 @@
 										]
 									}
 								},
-								"additionalProperties": false
+								"additionalProperties": false,
+								"required": [
+									"unit"
+								]
 							}
 						},
 						"additionalProperties": false
@@ -330,44 +296,49 @@
 							"$ref": "entry.json"
 						}
 					},
+					"alias": {
+						"type": "array",
+						"items": {
+							"type": "string"
+						},
+						"minItems": 1,
+						"uniqueItems": true
+					},
 					"heightened": {
 						"type": "object",
 						"properties": {
-							"x": {
-								"type": "array",
-								"items": {
-									"type": "object",
-									"properties": {
-										"level": {
-											"type": "integer",
-											"exclusiveMinimum": 0
-										},
-										"entries": {
-											"type": "array",
-											"items": {
-												"$ref": "entry.json"
-											}
-										}
-									}
-								}
-							},
-							"plus_x": {
+							"X": {
+								"description": "An array of levels to which the spell can be heightened.",
 								"type": "object",
-								"properties": {
-									"level": {
-										"type": "integer",
-										"exclusiveMinimum": 0
-									},
-									"entries": {
+								"patternProperties": {
+									"^([1-9]|10)$": {
+										"description": "An array of effects of heightening the spell to the given level.",
 										"type": "array",
 										"items": {
 											"$ref": "entry.json"
-										}
+										},
+										"minItems": 1
 									}
 								},
+								"minProperties": 1,
+								"additionalProperties": false
+							},
+							"plusX": {
+								"type": "object",
+								"patternProperties": {
+									"^([1-9]|10)$": {
+										"type": "array",
+										"items": {
+											"$ref": "entry.json"
+										},
+										"minItems": 1
+									}
+								},
+								"minProperties": 1,
 								"additionalProperties": false
 							}
 						},
+						"minProperties": 1,
 						"additionalProperties": false
 					}
 				},

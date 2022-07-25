@@ -24,7 +24,7 @@ class DeitiesPage extends ListPage {
 
 		const source = Parser.sourceJsonToAbv(g.source);
 		const hash = UrlUtil.autoEncodeHash(g);
-		const alignment = g.alignment ? g.alignment.join("") : "\u2014";
+		const alignment = g.alignment ? g.alignment.map(x => x.length > 2 ? x : x.toUpperCase()).join("") : "\u2014";
 		const domains = g._fDomains ? g._fDomains.join(", ") : "\u2014";
 
 		eleLi.innerHTML = `<a href="#${hash}" class="lst--border">
@@ -119,7 +119,7 @@ function renderStatblock (deity) {
 	async function buildLoreTab () {
 		const pGetFluff = async () => {
 			const fluff = await Renderer.deity.pGetFluff(deity);
-			return fluff ? fluff.lore || [] : [];
+			return fluff ? fluff.entries || [] : [];
 		}
 		$content.append(Renderer.deity.getRenderedLore({lore: await pGetFluff()}))
 	}

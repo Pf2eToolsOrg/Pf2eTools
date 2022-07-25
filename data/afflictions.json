@@ -1,6 +1,89 @@
 {
 	"disease": [
 		{
+			"name": "Waterborne Zombie Rot",
+			"source": "BotD",
+			"page": 197,
+			"type": "Disease",
+			"level": 1,
+			"traits": [
+				"disease"
+			],
+			"entries": [
+				"Typically carried by plague zombies, this version of the disease is found in water supplies tainted by a zombie corpse. ",
+				{
+					"type": "affliction",
+					"savingThrow": "Fortitude",
+					"DC": 16,
+					"onset": "1 hour",
+					"stages": [
+						{
+							"stage": 1,
+							"entry": "carrier with no ill effect",
+							"duration": "1 day"
+						},
+						{
+							"stage": 2,
+							"entry": "{@damage 1d6} negative damage",
+							"duration": "1 day"
+						},
+						{
+							"stage": 3,
+							"entry": "{@damage 1d6} negative damage",
+							"duration": "1 day"
+						},
+						{
+							"stage": 4,
+							"entry": "{@damage 1d6} negative damage",
+							"duration": "1 day"
+						},
+						{
+							"stage": 5,
+							"entry": "dead, rising as a {@creature plague zombie} immediately.",
+							"duration": "1 day"
+						}
+					]
+				},
+				"An infected creature can't heal damage it takes from zombie rot until it has been cured of the disease."
+			]
+		},
+		{
+			"name": "Graveknight's Curse",
+			"source": "B1",
+			"page": 191,
+			"type": "Curse",
+			"traits": [
+				"arcane",
+				"curse",
+				"necromancy"
+			],
+			"entries": [
+				"This curse affects anyone who wears a graveknight's armor for at least 1 hour.",
+				{
+					"type": "affliction",
+					"savingThrow": "Will",
+					"onset": "1 hour",
+					"stages": [
+						{
+							"stage": 1,
+							"entry": "{@condition doomed 1} and cannot remove the armor",
+							"duration": "1 day"
+						},
+						{
+							"stage": 2,
+							"entry": "{@condition doomed 2}, hampered 10, and cannot remove the armor",
+							"duration": "1 day"
+						},
+						{
+							"stage": 3,
+							"entry": "dies and transforms into the armor's graveknight",
+							"duration": "1 day"
+						}
+					]
+				}
+			]
+		},
+		{
 			"name": "Blinding Sickness",
 			"source": "GMG",
 			"page": 119,
@@ -256,7 +339,7 @@
 		},
 		{
 			"name": "Ghast Fever",
-			"source": "Bst",
+			"source": "B1",
 			"page": 169,
 			"type": "Disease",
 			"traits": [
@@ -294,7 +377,7 @@
 						},
 						{
 							"stage": 6,
-							"entry": "dead, and rises as a {@creature ghast|Bst} the next midnight"
+							"entry": "dead, and rises as a {@creature ghast|b1} the next midnight"
 						}
 					]
 				}
@@ -302,7 +385,7 @@
 		},
 		{
 			"name": "Ghoul Fever",
-			"source": "Bst",
+			"source": "B1",
 			"page": 168,
 			"type": "Disease",
 			"traits": [
@@ -340,7 +423,7 @@
 						},
 						{
 							"stage": 6,
-							"entry": "dead, and rises as a {@creature ghoul|bst} the next midnight"
+							"entry": "dead, and rises as a {@creature ghoul|b1} the next midnight"
 						}
 					]
 				}
@@ -774,7 +857,7 @@
 		},
 		{
 			"name": "Curse of the Werecreature",
-			"source": "Bst",
+			"source": "B1",
 			"page": 329,
 			"type": "Curse",
 			"traits": [

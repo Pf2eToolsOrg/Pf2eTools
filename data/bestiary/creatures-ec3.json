@@ -153,7 +153,9 @@
 							"A bandit deals an additional {@damage 2d6} precision damage to {@condition flat-footed} creatures."
 						],
 						"name": "Sneak Attack",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				]
 			}
@@ -334,7 +336,9 @@
 							"Animals take a \u20132 circumstance penalty to the Will save."
 						],
 						"name": "Frightful Presence",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
 						"traits": [
@@ -1120,7 +1124,9 @@
 							"Ginjana deals an extra {@damage 2d6} precision damage to {@condition flat-footed} creatures."
 						],
 						"name": "Sneak Attack",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
 						"entries": [
@@ -1242,7 +1248,9 @@
 						},
 						"entries": [],
 						"name": "Attack of Opportunity",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
 						"traits": [
@@ -1651,7 +1659,9 @@
 						},
 						"entries": [],
 						"name": "Attack of Opportunity",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
 						"traits": [
@@ -1691,7 +1701,9 @@
 						],
 						"entries": [],
 						"name": "Rend",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				]
 			}
@@ -2752,31 +2764,26 @@
 				],
 				"bot": [
 					{
-						"entries": [
-							{
-								"type": "affliction",
-								"name": "",
-								"traits": [
-									"disease"
-								],
-								"note": " A creature can't recover from the\n{@condition drained} condition until Abyssal plague is cured",
-								"DC": 33,
-								"savingThrow": "Fortitude",
-								"stages": [
-									{
-										"stage": 1,
-										"entry": "{@condition drained|CRB|drained 1}",
-										"duration": "1 day"
-									},
-									{
-										"stage": 2,
-										"entry": "{@condition drained} increases by 2",
-										"duration": "1 day"
-									}
-								]
-							}
+						"type": "affliction",
+						"name": "Abyssal Plague",
+						"traits": [
+							"disease"
 						],
-						"name": "Abyssal Plague"
+						"note": " A creature can't recover from the\n{@condition drained} condition until Abyssal plague is cured",
+						"DC": 33,
+						"savingThrow": "Fortitude",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "{@condition drained|CRB|drained 1}",
+								"duration": "1 day"
+							},
+							{
+								"stage": 2,
+								"entry": "{@condition drained} increases by 2",
+								"duration": "1 day"
+							}
+						]
 					},
 					{
 						"activity": {
@@ -2793,7 +2800,9 @@
 							"Skarja can take on the appearance of any Medium female humanoid. This doesn't change her."
 						],
 						"name": "Change Shape",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				]
 			}
@@ -2929,7 +2938,9 @@
 							"The delinquent deals {@dice 1d6} extra precision damage to {@condition flat-footed} creatures."
 						],
 						"name": "Sneak Attack",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				]
 			}
@@ -3067,7 +3078,9 @@
 							"Tanessa can make."
 						],
 						"name": "Attack of Opportunity",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
 						"entries": [
@@ -4178,7 +4191,9 @@
 						},
 						"entries": [],
 						"name": "Attack of Opportunity",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				],
 				"bot": [

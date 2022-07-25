@@ -2,7 +2,7 @@
 	"_meta": {
 		"dependencies": {
 			"creature": [
-				"Bst3"
+				"B3"
 			]
 		},
 		"internalCopies": [
@@ -10,7 +10,7 @@
 		],
 		"otherSources": {
 			"creature": {
-				"Bst3": "SoT1"
+				"B3": "SoT1"
 			}
 		}
 	},
@@ -245,27 +245,20 @@
 				],
 				"bot": [
 					{
-						"traits": [
-							"poison"
-						],
-						"entries": [
+						"type": "affliction",
+						"DC": 20,
+						"savingThrow": "Fortitude",
+						"maxDuration": "4 rounds",
+						"stages": [
 							{
-								"type": "affliction",
-								"DC": 20,
-								"savingThrow": "Fortitude",
-								"maxDuration": "4 rounds",
-								"stages": [
-									{
-										"stage": 1,
-										"entry": "{@dice 1d6} poison damage and {@condition flat-footed}",
-										"duration": "1 round"
-									},
-									{
-										"stage": 2,
-										"entry": "{@dice 1d6} poison damage, {@condition flat-footed} and {@condition clumsy 1}",
-										"duration": "1 round"
-									}
-								]
+								"stage": 1,
+								"entry": "{@dice 1d6} poison damage and {@condition flat-footed}",
+								"duration": "1 round"
+							},
+							{
+								"stage": 2,
+								"entry": "{@dice 1d6} poison damage, {@condition flat-footed} and {@condition clumsy 1}",
+								"duration": "1 round"
 							}
 						],
 						"name": "Anadi Venom"
@@ -285,7 +278,9 @@
 							"The anadi changes into their hybrid, spider, or human form. The above statistics assume the anadi is in hybrid form. While in human form, the anadi seeker loses their climb Speed and can't use their fangs attack. When in spider form, they can't use weapons."
 						],
 						"name": "Change Shape",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
 						"traits": [
@@ -469,32 +464,26 @@
 			"abilities": {
 				"bot": [
 					{
-						"entries": [
-							{
-								"type": "affliction",
-								"name": "",
-								"traits": [
-									"poison"
-								],
-								"note": "",
-								"DC": 18,
-								"savingThrow": "Fortitude",
-								"maxDuration": "4\nrounds",
-								"stages": [
-									{
-										"stage": 1,
-										"entry": "{@damage 1d6} poison damage and {@condition flat-footed}",
-										"duration": "1 round"
-									},
-									{
-										"stage": 2,
-										"entry": "{@damage 1d6} poison damage, {@condition flat-footed}, and {@condition clumsy|CRB|clumsy 1}",
-										"duration": "1 round"
-									}
-								]
-							}
+						"type": "affliction",
+						"name": "Anadi Venom",
+						"traits": [
+							"poison"
 						],
-						"name": "Anadi Venom"
+						"DC": 18,
+						"savingThrow": "Fortitude",
+						"maxDuration": "4\nrounds",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "{@damage 1d6} poison damage and {@condition flat-footed}",
+								"duration": "1 round"
+							},
+							{
+								"stage": 2,
+								"entry": "{@damage 1d6} poison damage, {@condition flat-footed}, and {@condition clumsy|CRB|clumsy 1}",
+								"duration": "1 round"
+							}
+						]
 					},
 					{
 						"activity": {
@@ -511,14 +500,18 @@
 							"The anadi changes into their hybrid, spider, or human form. The above statistics assume the anadi is in hybrid form. While in human form, the anadi seeker loses their climb Speed and can't use their fangs attack. When in spider form, they can't use weapons."
 						],
 						"name": "Change Shape",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
 						"entries": [
 							"The anadi lurker deals an additional {@damage 1d6} precision damage to flatfooted creatures."
 						],
 						"name": "Sneak Attack",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
 						"traits": [
@@ -694,32 +687,26 @@
 			"abilities": {
 				"bot": [
 					{
-						"entries": [
-							{
-								"type": "affliction",
-								"name": "",
-								"traits": [
-									"poison"
-								],
-								"note": "",
-								"DC": 15,
-								"savingThrow": "Fortitude",
-								"maxDuration": "4 rounds",
-								"stages": [
-									{
-										"stage": 1,
-										"entry": "{@damage 1d6} poison damage and {@condition flat-footed}",
-										"duration": "1 round"
-									},
-									{
-										"stage": 2,
-										"entry": "{@damage 1d6} poison damage, {@condition flat-footed}, and {@condition clumsy|CRB|clumsy 1}",
-										"duration": "1 round"
-									}
-								]
-							}
+						"type": "affliction",
+						"name": "Anadi Venom",
+						"traits": [
+							"poison"
 						],
-						"name": "Anadi Venom"
+						"DC": 15,
+						"savingThrow": "Fortitude",
+						"maxDuration": "4 rounds",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "{@damage 1d6} poison damage and {@condition flat-footed}",
+								"duration": "1 round"
+							},
+							{
+								"stage": 2,
+								"entry": "{@damage 1d6} poison damage, {@condition flat-footed}, and {@condition clumsy|CRB|clumsy 1}",
+								"duration": "1 round"
+							}
+						]
 					},
 					{
 						"activity": {
@@ -736,7 +723,9 @@
 							"The anadi changes into their hybrid, spider, or human form. The above statistics assume the anadi is in hybrid form. While in human form, the anadi seeker loses their climb Speed and can't use their fangs attack. When in spider form, they can't use weapons."
 						],
 						"name": "Change Shape",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
 						"traits": [
@@ -758,14 +747,14 @@
 			"page": 53,
 			"_copy": {
 				"name": "Grimple",
-				"source": "Bst3",
+				"source": "B3",
 				"_mod": {
 					"abilities.mid": [
 						{
 							"mode": "insertArr",
 							"items": {
 								"entries": [
-									"The prevalence of insects on the Magaambya campus means Binji is more infested with gremlin lice than most grimples. The Reflex DC to avoid infestation from her gremlin lice is 15 rather than 13. {@note Already accounted in the ability.}"
+									"The prevalence of insects on the Magaambya campus means Binji is more infested with gremlin lice than most grimples. The Reflex DC to avoid infestation from her gremlin lice is 15 rather than 13."
 								],
 								"name": "So Many Lice"
 							}
@@ -775,13 +764,15 @@
 							"replace": "DC 13 Reflex",
 							"with": "DC 15 Reflex"
 						}
-					]
+					],
+					"traits": {
+						"mode": "insertArr",
+						"items": [
+							"unique"
+						]
+					}
 				}
 			},
-			"traits": [
-				"unique",
-				"gremlin"
-			],
 			"languages": {
 				"languages": [
 					"Common",
@@ -1224,46 +1215,40 @@
 						"name": "Blood Draw"
 					},
 					{
-						"entries": [
-							{
-								"type": "affliction",
-								"name": "",
-								"traits": [
-									"disease"
-								],
-								"note": "",
-								"DC": 18,
-								"savingThrow": "Fortitude",
-								"stages": [
-									{
-										"stage": 1,
-										"entry": "{@condition enfeebled|CRB|enfeebled 1}",
-										"duration": "1 day"
-									},
-									{
-										"stage": 2,
-										"entry": "{@condition enfeebled|CRB|enfeebled 1} and {@condition drained|CRB|drained 1}",
-										"duration": "1 day"
-									},
-									{
-										"stage": 3,
-										"entry": "{@condition unconscious}",
-										"duration": "1 day"
-									},
-									{
-										"stage": 4,
-										"entry": "as",
-										"duration": null
-									},
-									{
-										"stage": 3,
-										"entry": ";",
-										"duration": "1 day"
-									}
-								]
-							}
+						"type": "affliction",
+						"name": "Sleeping Sickness",
+						"traits": [
+							"disease"
 						],
-						"name": "Sleeping Sickness"
+						"DC": 18,
+						"savingThrow": "Fortitude",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "{@condition enfeebled|CRB|enfeebled 1}",
+								"duration": "1 day"
+							},
+							{
+								"stage": 2,
+								"entry": "{@condition enfeebled|CRB|enfeebled 1} and {@condition drained|CRB|drained 1}",
+								"duration": "1 day"
+							},
+							{
+								"stage": 3,
+								"entry": "{@condition unconscious}",
+								"duration": "1 day"
+							},
+							{
+								"stage": 4,
+								"entry": "as",
+								"duration": null
+							},
+							{
+								"stage": 3,
+								"entry": ";",
+								"duration": "1 day"
+							}
+						]
 					}
 				]
 			}
@@ -1390,7 +1375,7 @@
 				"gremlin"
 			],
 			"creatureType": [
-				"Fey"
+				"fey"
 			],
 			"perception": {
 				"std": 7
@@ -1565,23 +1550,15 @@
 						},
 						"requirements": "A structure made from stone or earth is within the gnagrif's reach",
 						"entries": [
-							"The gnagrif partially melds with the stone. It Takes Cover in the stone and makes a {@skill Stealth} check to."
+							"The gnagrif partially melds with the stone. It {@action Take Cover||Takes Cover} in the stone and makes a {@skill Stealth} check to {@action Hide}."
 						],
 						"name": "Lurk"
 					},
 					{
-						"entries": [],
-						"name": "Hide."
-					},
-					{
 						"entries": [
-							"A gnagrif ignores difficult terrain caused by rocks or rubble, including squares affected by their."
+							"A gnagrif ignores difficult terrain caused by rocks or rubble, including squares affected by their Stomp Around."
 						],
 						"name": "Rubble Stride"
-					},
-					{
-						"entries": [],
-						"name": "Stomp Around."
 					},
 					{
 						"activity": {
@@ -1937,27 +1914,22 @@
 						"name": "Eat Book"
 					},
 					{
-						"entries": [
-							{
-								"type": "affliction",
-								"name": "",
-								"traits": [
-									"poison"
-								],
-								"note": " A scrit's fingers are perpetually\ncovered in smeared ink from the writing it's\ndestroyed. This ink mixes with its skin oils to\ncreate a disgusting, sticky poison.",
-								"DC": 14,
-								"savingThrow": "Fortitude",
-								"maxDuration": "4 rounds",
-								"stages": [
-									{
-										"stage": 1,
-										"entry": "{@damage 1d4} poison damage and {@condition sickened|CRB|sickened 1}",
-										"duration": "1 round"
-									}
-								]
-							}
+						"type": "affliction",
+						"name": "Nasty Ink",
+						"traits": [
+							"poison"
 						],
-						"name": "Nasty Ink"
+						"note": " A scrit's fingers are perpetually\ncovered in smeared ink from the writing it's\ndestroyed. This ink mixes with its skin oils to\ncreate a disgusting, sticky poison.",
+						"DC": 14,
+						"savingThrow": "Fortitude",
+						"maxDuration": "4 rounds",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "{@damage 1d4} poison damage and {@condition sickened|CRB|sickened 1}",
+								"duration": "1 round"
+							}
+						]
 					},
 					{
 						"activity": {
@@ -2074,7 +2046,9 @@
 						},
 						"entries": [],
 						"name": "Attack of Opportunity",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
 						"activity": {
@@ -2083,7 +2057,9 @@
 						},
 						"entries": [],
 						"name": "Shield Block",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				]
 			}
@@ -2993,37 +2969,32 @@
 						"name": "Emit Spores"
 					},
 					{
-						"entries": [
-							{
-								"type": "affliction",
-								"name": "",
-								"traits": [
-									"disease"
-								],
-								"note": " Myceloids are immune",
-								"DC": 18,
-								"savingThrow": "Fortitude",
-								"onset": "1 minute",
-								"stages": [
-									{
-										"stage": 1,
-										"entry": "{@damage 1d6} poison damage and {@condition stupefied|CRB|stupefied 1}",
-										"duration": "1 day"
-									},
-									{
-										"stage": 2,
-										"entry": "{@damage 4d6} poison damage, {@condition stupefied|CRB|stupefied 3}, and the creature is compelled to seek out the nearest myceloid colony\u2014this compulsion is a mental {@trait emotion} effect",
-										"duration": "1 day"
-									},
-									{
-										"stage": 3,
-										"entry": "The creature dies.",
-										"duration": null
-									}
-								]
-							}
+						"type": "affliction",
+						"name": "Purple Pox",
+						"traits": [
+							"disease"
 						],
-						"name": "Purple Pox"
+						"note": " Myceloids are immune",
+						"DC": 18,
+						"savingThrow": "Fortitude",
+						"onset": "1 minute",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "{@damage 1d6} poison damage and {@condition stupefied|CRB|stupefied 1}",
+								"duration": "1 day"
+							},
+							{
+								"stage": 2,
+								"entry": "{@damage 4d6} poison damage, {@condition stupefied|CRB|stupefied 3}, and the creature is compelled to seek out the nearest myceloid colony\u2014this compulsion is a mental {@trait emotion} effect",
+								"duration": "1 day"
+							},
+							{
+								"stage": 3,
+								"entry": "The creature dies.",
+								"duration": null
+							}
+						]
 					},
 					{
 						"activity": {

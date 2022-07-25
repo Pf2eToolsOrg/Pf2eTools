@@ -31,6 +31,7 @@ class PageFilter {
 			if (!lookup || !lookup.implies) return;
 			Object.keys(lookup.implies).filter(it => opts.entityTypes.includes(it))
 				.forEach(key => Object.entries(lookup.implies[key]).forEach(([prop, values]) => {
+					// FIXME: If we are going to use this feature more often, reconsider how we handle data types
 					entity[prop] = entity[prop] || [];
 					if (typeof entity[prop] === "string") entity[prop] = [entity[prop]];
 					else if (entity[prop] instanceof Array) {

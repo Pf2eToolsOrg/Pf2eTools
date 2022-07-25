@@ -54,16 +54,9 @@
 				"{@b Drawback} You gain weakness 5 to the other three energy types."
 			],
 			"generic": "G",
-			"_vmod": {
-				"entries": {
-					"mode": "replaceTxt",
-					"replace": "You gain resistance to the attuned energy type. Whenever you score a hit with a melee weapon, add the listed amount of damage of the attuned energy type."
-				},
-				"entriesMode": "generic"
-			},
 			"variants": [
 				{
-					"type": "lesser",
+					"variantType": "lesser",
 					"level": 1,
 					"price": {
 						"coin": "gp",
@@ -79,7 +72,7 @@
 					}
 				},
 				{
-					"type": "moderate",
+					"variantType": "moderate",
 					"level": 3,
 					"price": {
 						"coin": "gp",
@@ -95,7 +88,7 @@
 					}
 				},
 				{
-					"type": "greater",
+					"variantType": "greater",
 					"level": 11,
 					"price": {
 						"coin": "gp",
@@ -111,7 +104,7 @@
 					}
 				},
 				{
-					"type": "major",
+					"variantType": "major",
 					"level": 17,
 					"price": {
 						"coin": "gp",
@@ -126,7 +119,14 @@
 						}
 					}
 				}
-			]
+			],
+			"_vmod": {
+				"entries": {
+					"mode": "replaceTxt",
+					"replace": "You gain resistance to the attuned energy type. Whenever you score a hit with a melee weapon, add the listed amount of damage of the attuned energy type."
+				},
+				"entriesMode": "generic"
+			}
 		},
 		{
 			"name": "Merchant's Guile",
@@ -279,7 +279,7 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "lesser",
+					"variantType": "lesser",
 					"level": 5,
 					"price": {
 						"coin": "gp",
@@ -290,7 +290,7 @@
 					]
 				},
 				{
-					"type": "moderate",
+					"variantType": "moderate",
 					"level": 12,
 					"price": {
 						"coin": "gp",
@@ -301,7 +301,7 @@
 					]
 				},
 				{
-					"type": "greater",
+					"variantType": "greater",
 					"level": 15,
 					"price": {
 						"coin": "gp",

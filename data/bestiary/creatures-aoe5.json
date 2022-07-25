@@ -287,7 +287,9 @@
 						},
 						"entries": [],
 						"name": "Attack of Opportunity",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				],
 				"bot": [
@@ -306,7 +308,9 @@
 							"The goon deals an additional {@damage 2d6} precision damage to {@condition flat-footed} creatures."
 						],
 						"name": "Sneak Attack",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
 						"activity": {
@@ -474,7 +478,9 @@
 						},
 						"entries": [],
 						"name": "Shield Block",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				],
 				"bot": [
@@ -656,7 +662,9 @@
 							"The child of venom deals an additional {@damage 3d6} precision damage to {@condition flat-footed} creatures."
 						],
 						"name": "Sneak Attack",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
 						"entries": [
@@ -1031,7 +1039,9 @@
 						},
 						"entries": [],
 						"name": "Attack of Opportunity",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				],
 				"bot": [
@@ -1067,7 +1077,9 @@
 							"The clockwork assassin's Strikes deal an additional {@damage 3d6} precision damage to {@condition flat-footed} creatures."
 						],
 						"name": "Sneak Attack",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
 						"entries": [
@@ -1262,7 +1274,9 @@
 							"The master assassin deals an additional {@damage 3d6} precision damage to {@condition flat-footed} creatures."
 						],
 						"name": "Sneak Attack",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
 						"activity": {
@@ -1763,7 +1777,9 @@
 					{
 						"entries": [],
 						"name": "Light Blindness",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
 						"entries": [
@@ -2170,7 +2186,9 @@
 						},
 						"entries": [],
 						"name": "Attack of Opportunity",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				],
 				"bot": [
@@ -2374,7 +2392,9 @@
 					{
 						"entries": [],
 						"name": "All-Around Vision",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
 						"traits": [
@@ -2396,7 +2416,9 @@
 							"The lusca gains 2 extra reactions at the start of each of its turns that it can use only to make an {@action Attack of Opportunity} with its jaws. It can't use more than one {@action Attack of Opportunity} triggered by the same action."
 						],
 						"name": "Attack of Opportunity",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				],
 				"bot": [
@@ -2414,32 +2436,26 @@
 						"name": "Capsize"
 					},
 					{
-						"entries": [
-							{
-								"type": "affliction",
-								"name": "",
-								"traits": [
-									"poison"
-								],
-								"note": "",
-								"DC": 38,
-								"savingThrow": "Fortitude",
-								"maxDuration": "6 rounds",
-								"stages": [
-									{
-										"stage": 1,
-										"entry": "{@damage 4d6} poison damage and {@condition clumsy|CRB|clumsy 1}",
-										"duration": "1 round"
-									},
-									{
-										"stage": 2,
-										"entry": "{@damage 6d6} poison damage and {@condition clumsy|CRB|clumsy 2}",
-										"duration": "1 round"
-									}
-								]
-							}
+						"type": "affliction",
+						"name": "Lusca Venom",
+						"traits": [
+							"poison"
 						],
-						"name": "Lusca Venom"
+						"DC": 38,
+						"savingThrow": "Fortitude",
+						"maxDuration": "6 rounds",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "{@damage 4d6} poison damage and {@condition clumsy|CRB|clumsy 1}",
+								"duration": "1 round"
+							},
+							{
+								"stage": 2,
+								"entry": "{@damage 6d6} poison damage and {@condition clumsy|CRB|clumsy 2}",
+								"duration": "1 round"
+							}
+						]
 					},
 					{
 						"activity": {
@@ -2461,7 +2477,9 @@
 						],
 						"entries": [],
 						"name": "Rend",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
 						"activity": {
@@ -2475,7 +2493,9 @@
 							"Huge, {@damage 4d12+9} bludgeoning, Rupture 38."
 						],
 						"name": "Swallow Whole",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				]
 			}
@@ -2617,7 +2637,9 @@
 							"Primal Innate Spells DC 40; 9th hydraulic torrent; 5th control water (×3);"
 						],
 						"name": "Improved Grab",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
 						"traits": [
@@ -2669,7 +2691,9 @@
 							"Large, {@damage 3d10+16} bludgeoning, Rupture 36."
 						],
 						"name": "Swallow Whole",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
 						"activity": {
@@ -3522,31 +3546,26 @@
 				],
 				"bot": [
 					{
-						"entries": [
-							{
-								"type": "affliction",
-								"name": "",
-								"traits": [
-									"disease"
-								],
-								"note": " A creature can't recover from\n{@condition drained} until Abyssal plague is cured",
-								"DC": 41,
-								"savingThrow": "Fortitude",
-								"stages": [
-									{
-										"stage": 1,
-										"entry": "{@condition drained|CRB|drained 1}",
-										"duration": "1 day"
-									},
-									{
-										"stage": 2,
-										"entry": "{@condition drained|CRB|drained 3}",
-										"duration": "1 day"
-									}
-								]
-							}
+						"type": "affliction",
+						"name": "Abyssal Plague",
+						"traits": [
+							"disease"
 						],
-						"name": "Abyssal Plague"
+						"note": " A creature can't recover from\n{@condition drained} until Abyssal plague is cured",
+						"DC": 41,
+						"savingThrow": "Fortitude",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "{@condition drained|CRB|drained 1}",
+								"duration": "1 day"
+							},
+							{
+								"stage": 2,
+								"entry": "{@condition drained|CRB|drained 3}",
+								"duration": "1 day"
+							}
+						]
 					},
 					{
 						"activity": {
@@ -3557,7 +3576,9 @@
 							"As night hag."
 						],
 						"name": "Change Shape",
-						"generic": true,
+						"generic": {
+							"tag": "ability"
+						},
 						"entries_as_xyz": "Ability not found: '{@action Change Shape|LOAG} As night hag.' in Myrna Rath, p.39"
 					},
 					{
@@ -3754,7 +3775,9 @@
 					{
 						"entries": [],
 						"name": "Light Blindness",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
 						"entries": [
@@ -3968,7 +3991,9 @@
 							"The obrousian can take on the appearance of any Small or Medium humanoid. This increases their."
 						],
 						"name": "Change Shape",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				]
 			}
@@ -4194,32 +4219,27 @@
 						"name": "Secret of"
 					},
 					{
-						"entries": [
-							{
-								"type": "affliction",
-								"name": "",
-								"traits": [
-									"poison"
-								],
-								"note": " Reginald is immune to the\ntoxic ink that flows through his veins",
-								"DC": 38,
-								"savingThrow": "Fortitude",
-								"maxDuration": "10 rounds",
-								"stages": [
-									{
-										"stage": 1,
-										"entry": "{@damage 3d6} poison and {@condition sickened|CRB|sickened 1}",
-										"duration": "1 round"
-									},
-									{
-										"stage": 2,
-										"entry": "{@damage 4d6} poison {@condition sickened|CRB|sickened 2} .",
-										"duration": "1 round"
-									}
-								]
-							}
+						"type": "affliction",
+						"name": "Poison Ink",
+						"traits": [
+							"poison"
 						],
-						"name": "Poison Ink"
+						"note": " Reginald is immune to the\ntoxic ink that flows through his veins",
+						"DC": 38,
+						"savingThrow": "Fortitude",
+						"maxDuration": "10 rounds",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "{@damage 3d6} poison and {@condition sickened|CRB|sickened 1}",
+								"duration": "1 round"
+							},
+							{
+								"stage": 2,
+								"entry": "{@damage 4d6} poison {@condition sickened|CRB|sickened 2} .",
+								"duration": "1 round"
+							}
+						]
 					},
 					{
 						"activity": {
@@ -5038,7 +5058,9 @@
 							"DC 35, no damage, {@action Escape} DC 35, Rupture 28."
 						],
 						"name": "Engulf",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
 						"activity": {

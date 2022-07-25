@@ -61,7 +61,7 @@ class ItemsPage extends ListPage {
 				price: item._sPrice,
 				bulk: item._fBulk,
 				category: cats.join(", "),
-				_searchStr: item.generic === "G" && item.variants ? item.variants.map(v => `${v.type} ${item.name}`).join(" - ") : "",
+				_searchStr: item.generic === "G" && item.variants ? item.variants.map(v => `${v.variantType} ${item.name}`).join(" - ") : "",
 			},
 			{
 				uniqueId: item.uniqueId ? item.uniqueId : itI,
@@ -125,12 +125,16 @@ class ItemsPage extends ListPage {
 		function buildStatsTab () {
 			$content.append(Renderer.item.getRenderedString(item));
 		}
-		async function buildFluffTab () {
+		const buildFluffTab = async () => {
 			const pGetFluff = async () => {
+				const item = this._dataList[Hist.lastLoadedId];
 				const fluff = await Renderer.item.pGetFluff(item);
 				return fluff ? fluff.entries || [] : [];
 			}
-			$content.append(Renderer.item.getRenderedFluff({ entries: await pGetFluff() }))
+			const fluffEntries = await pGetFluff();
+			const renderStack = [];
+			Renderer.get().recursiveRender(fluffEntries, renderStack);
+			$content.append(renderStack.join(""));
 		}
 
 		const statTab = Renderer.utils.tabButton(

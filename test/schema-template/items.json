@@ -39,10 +39,7 @@
 								"$ref": "utils.json#/definitions/frequency"
 							},
 							"components": {
-								"type": "array",
-								"items": {
-									"type": "string"
-								}
+								"$ref": "utils.json#/definitions/components"
 							},
 							"requirements": {
 								"type": "string"
@@ -63,8 +60,14 @@
 							{
 								"type": "string",
 								"enum": [
-									"L"
+									"\u2014",
+									"L",
+									"L (when not activated)"
 								]
+							},
+							{
+								"type": "string",
+								"pattern": "varies by \\w+"
 							}
 						]
 					},
@@ -80,6 +83,16 @@
 							}
 						]
 					},
+					"variantType": {
+						"type": "string",
+						"title": "Variant Type",
+						"description": "The Prefix of an items name, often indicative of it's power level (Minor, Moderate, Major, True, etc.)"
+					},
+					"exists": {
+						"title": "Item Exists",
+						"description": "Causes the item to not be generated in generic variants under the assumption it already exists (like in \"baseitems\").",
+						"type": "boolean"
+					},
 					"type": {
 						"type": "string",
 						"title": "Item Type",
@@ -89,6 +102,7 @@
 							"Item",
 							"Rune",
 							"Artifact",
+							"Material",
 							"Snare"
 						]
 					},
@@ -158,6 +172,7 @@
 							"Companion",
 							"Consumable",
 							"Contract",
+							"Customization",
 							"Curse",
 							"Elixir",
 							"Adventuring Gear",
@@ -166,6 +181,7 @@
 							"Material",
 							"Modification",
 							"Oil",
+							"Other",
 							"Poison",
 							"Potion",
 							"Rune",
@@ -244,9 +260,10 @@
 							"type": "object",
 							"$ref": "items.json#/properties/item/items",
 							"required": [
-								"type"
+								"variantType"
 							]
-						}
+						},
+						"uniqueItems": true
 					},
 					"craftReq": {
 						"type": "string"

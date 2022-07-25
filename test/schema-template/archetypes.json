@@ -1,0 +1,92 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema",
+	"$id": "archetypes.json",
+	"title": "Archetypes",
+	"description": "The archetype data type for Pf2eTools.",
+	"type": "object",
+	"version": "0.0.1",
+	"properties": {
+		"archetype": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"source": {
+						"type": "string",
+						"$ref": "utils.json#/definitions/sourceList"
+					},
+					"page": {
+						"type": "integer"
+					},
+					"entries": {
+						"type": "array",
+						"items": {
+							"$ref": "entry.json"
+						},
+						"minItems": 1
+					},
+					"dedicationLevel": {
+						"type": "integer"
+					},
+					"extraFeats": {
+						"type": "array",
+						"items": {
+							"type": "string",
+							"$comment": "\"pattern\": \"^\\d+\\|.+?\\|$\" //TODO in future make this build with an enum of sources."
+						},
+						"uniqueItems": true,
+						"minItems": 1
+					},
+					"miscTags": {
+						"type": "array",
+						"items": {
+							"type": "string",
+							"enum": [
+								"Multiclass",
+								"Class Archetype"
+							]
+						}
+					},
+					"traits": {
+						"type": "array",
+						"items": {
+							"type": "string",
+							"$ref": "utils.json#/definitions/anyTrait"
+						},
+						"minItems": 1,
+						"uniqueItems": true
+					},
+					"benefits": {
+						"type": "array",
+						"items": {
+							"type": "string",
+							"enum": [
+								"Alchemy",
+								"Spellcasting",
+								"Bounded Spellcasting"
+							]
+						},
+						"minItems": 1,
+						"uniqueItems": true
+					}
+				},
+				"additionalProperties": false,
+				"required": [
+					"source",
+					"name",
+					"page",
+					"dedicationLevel"
+				]
+			},
+			"uniqueItems": true,
+			"minItems": 1
+		}
+	},
+	"additionalProperties": false,
+	"required": [
+		"archetype"
+	]
+}

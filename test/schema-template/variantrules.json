@@ -25,7 +25,15 @@
 						"type": "string",
 						"$ref": "utils.json#/definitions/rarity"
 					},
-					"type": {
+					"category": {
+						"type": "string",
+						"enum": [
+							"Variant",
+							"Subsystem",
+							"Optional"
+						]
+					},
+					"subCategory": {
 						"type": "string",
 						"enum": [
 							"Ability Score Variant",
@@ -65,7 +73,9 @@
 					"source",
 					"name",
 					"entries",
-					"page"
+					"page",
+					"category",
+					"subCategory"
 				]
 			},
 			"uniqueItems": true

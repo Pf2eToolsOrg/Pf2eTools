@@ -11,31 +11,26 @@
 				"electricity",
 				"evocation"
 			],
-			"school": "V",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true
-				}
+				[
+					"S"
+				]
 			],
 			"range": {
-				"entry": "touch",
-				"distance": {
-					"type": "touch",
-					"amount": 1
-				}
+				"number": 1,
+				"unit": "touch"
 			},
 			"targets": "1 hinge or latch",
 			"entries": [
 				"You create an {@hazard electric latch rune} hazard on the target, creating a special crystalline lock on the object. You can also substitute your spell DC for any of the hazard's listed DCs. You can have only one such hazard active at a time, and if you cast this spell while a previous electric latch rune is active, the older hazard discharges harmlessly."
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 2,
-					"entries": [
+				"plusX": {
+					"2": [
 						"The hazard's damage increases by {@dice 1d12}."
 					]
 				}
@@ -52,7 +47,6 @@
 				"cleric",
 				"divination"
 			],
-			"school": "D",
 			"domains": [
 				"toil"
 			],
@@ -61,17 +55,14 @@
 				"unit": "reaction"
 			},
 			"components": [
-				{
-					"S": true
-				}
+				[
+					"S"
+				]
 			],
 			"trigger": "You or an ally within range fails a skill check for a skill in which you or they are trained.",
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"number": 30,
+				"unit": "feet"
 			},
 			"entries": [
 				"The target gains a +2 status bonus to the triggering check, or a +3 bonus if the target has master or better proficiency in the skill. This bonus can change the outcome of the target's check."
@@ -87,7 +78,6 @@
 				"healing",
 				"necromancy"
 			],
-			"school": "N",
 			"domains": [
 				"toil"
 			],
@@ -96,17 +86,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
+				"number": 30,
+				"unit": "feet"
 			},
 			"targets": "1 creature",
 			"duration": {

@@ -10,16 +10,15 @@
 				"uncommon",
 				"evocation"
 			],
-			"school": "V",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"area": {
 				"types": [
@@ -44,23 +43,19 @@
 				"light",
 				"revelation"
 			],
-			"school": "D",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
 				"entry": "30-foot emanation",
-				"distance": {
-					"type": "unknown",
-					"amount": 1
-				}
+				"unit": "unknown"
 			},
 			"duration": {
 				"type": "timed",
@@ -85,15 +80,14 @@
 				"divination",
 				"fortune"
 			],
-			"school": "D",
 			"cast": {
 				"number": 1,
 				"unit": "reaction"
 			},
 			"components": [
-				{
-					"V": true
-				}
+				[
+					"V"
+				]
 			],
 			"trigger": "You miss a {@action Strike} with an unarmed attack.",
 			"entries": [
@@ -113,23 +107,19 @@
 				"light",
 				"positive"
 			],
-			"school": "V",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "60 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 60
-				}
+				"number": 60,
+				"unit": "feet"
 			},
 			"targets": "1 creature",
 			"entries": [
@@ -143,9 +133,8 @@
 				}
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 1,
-					"entries": [
+				"plusX": {
+					"1": [
 						"The damage increases by {@damage 1d4} fire, {@damage 1d4} good, and {@damage 1d4} positive (or {@dice 1d6} of each type of damage in bright natural sunlight)."
 					]
 				}

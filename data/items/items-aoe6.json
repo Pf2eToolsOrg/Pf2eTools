@@ -64,7 +64,9 @@
 					]
 				}
 			],
-			"destruction": "Trapping a lawful demigod in the hallucinatory terrain created by the cane and leaving it imprisoned for a year and a day causes a deific overload that destroys the artifact. When the artifact is destroyed, the terrain imprisoning the demigod crumbles away and the demigod is freed."
+			"destruction": [
+				"Trapping a lawful demigod in the hallucinatory terrain created by the cane and leaving it imprisoned for a year and a day causes a deific overload that destroys the artifact. When the artifact is destroyed, the terrain imprisoning the demigod crumbles away and the demigod is freed."
+			]
 		},
 		{
 			"name": "Radiant Spark",
@@ -190,32 +192,32 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "warpglass chunk",
 					"price": {
 						"coin": "gp",
 						"amount": 800
 					},
 					"bulk": "L",
-					"entries": []
+					"entries": [],
+					"variantType": "warpglass chunk"
 				},
 				{
-					"type": "warpglass ingot",
 					"price": {
 						"coin": "gp",
 						"amount": 8000
 					},
 					"bulk": 1,
-					"entries": []
+					"entries": [],
+					"variantType": "warpglass ingot"
 				},
 				{
-					"type": "high-grade warpglass object",
 					"level": 17,
 					"price": {
 						"coin": "gp",
 						"amount": 8000,
 						"note": "per Bulk"
 					},
-					"entries": []
+					"entries": [],
+					"variantType": "high-grade warpglass object"
 				}
 			]
 		},
@@ -237,7 +239,6 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "high-grade warpglass weapon",
 					"level": 17,
 					"price": {
 						"coin": "gp",
@@ -245,7 +246,8 @@
 						"note": "+ 1,400 gp per Bulk"
 					},
 					"craftReq": "at least 7,000 gp of warpglass + 700 gp per Bulk.",
-					"entries": []
+					"entries": [],
+					"variantType": "high-grade warpglass weapon"
 				}
 			]
 		}

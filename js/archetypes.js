@@ -696,15 +696,7 @@ class ArchetypesPage extends BaseComponent {
 		const arc = this.activeArchetype;
 
 		const buildStatsTab = () => {
-			const renderer = Renderer.get().resetHeaderIndex().setFirstSection(true);
-			const archetypeEntry = {
-				type: "pf2-h2",
-				name: arc.name,
-				entries: arc.entries,
-			}
-
-			$$`${renderer.render(archetypeEntry)}
-		${Renderer.utils.getPageP(arc)}`.appendTo($archetypeStats.empty());
+			$archetypeStats.empty().append(Renderer.archetype.getRenderedString(arc));
 		}
 		const buildInfoTab = async () => {
 			const quickRules = await Renderer.utils.pGetQuickRules("archetype");

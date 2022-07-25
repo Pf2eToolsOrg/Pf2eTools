@@ -10,7 +10,6 @@
 				"necromancy",
 				"nonlethal"
 			],
-			"school": "N",
 			"traditions": [
 				"arcane",
 				"divine"
@@ -20,17 +19,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "60 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 60
-				}
+				"number": 60,
+				"unit": "feet"
 			},
 			"targets": "1 creature",
 			"entries": [
@@ -44,9 +40,8 @@
 				}
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 1,
-					"entries": [
+				"plusX": {
+					"1": [
 						"The damage increases by {@dice 2d6}."
 					]
 				}
@@ -62,7 +57,6 @@
 				"conjuration",
 				"incapacitation"
 			],
-			"school": "C",
 			"traditions": [
 				"arcane",
 				"occult"
@@ -72,17 +66,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "60 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 60
-				}
+				"number": 60,
+				"unit": "feet"
 			},
 			"targets": "1 creature",
 			"savingThrow": {
@@ -124,7 +115,6 @@
 				"incapacitation",
 				"teleportation"
 			],
-			"school": "C",
 			"traditions": [
 				"arcane",
 				"occult"
@@ -134,17 +124,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "120 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 120
-				}
+				"number": 120,
+				"unit": "feet"
 			},
 			"targets": "1 creature",
 			"savingThrow": {
@@ -182,7 +169,6 @@
 			"traits": [
 				"necromancy"
 			],
-			"school": "N",
 			"traditions": [
 				"divine",
 				"primal"
@@ -192,37 +178,28 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "touch",
-				"distance": {
-					"type": "touch",
-					"amount": 1
-				}
+				"number": 1,
+				"unit": "touch"
 			},
 			"targets": "1 cubic foot of clean food or water",
 			"entries": [
 				"You cause otherwise edible food to rot and spoil instantly, and water and other liquids to become brackish and undrinkable. Holy water, unholy water, and similar food and drink of significance are spoiled by this spell, unless they are associated with a deity of decay or putrefaction, but it has no effect on creatures of any type, potions, or alchemical elixirs. One cubic foot of liquid is roughly 8 gallons."
 			],
 			"heightened": {
-				"x": [
-					{
-						"level": 2,
-						"entries": [
-							"You can target an alchemical elixir with this spell, attempting a counteract check against it. If you succeed, the elixir spoils and becomes a mundane item."
-						]
-					},
-					{
-						"level": 3,
-						"entries": [
-							"You can target a potion or alchemical elixir with this spell, attempting a counteract check against it. If you succeed, the elixir or potion spoils and becomes a mundane item."
-						]
-					}
-				]
+				"X": {
+					"2": [
+						"You can target an alchemical elixir with this spell, attempting a counteract check against it. If you succeed, the elixir spoils and becomes a mundane item."
+					],
+					"3": [
+						"You can target a potion or alchemical elixir with this spell, attempting a counteract check against it. If you succeed, the elixir or potion spoils and becomes a mundane item."
+					]
+				}
 			}
 		},
 		{
@@ -236,16 +213,15 @@
 				"air",
 				"divination"
 			],
-			"school": "D",
 			"cast": {
 				"number": 2,
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"duration": {
 				"type": "timed",
@@ -270,15 +246,14 @@
 				"air",
 				"evocation"
 			],
-			"school": "V",
 			"cast": {
 				"number": 1,
 				"unit": "reaction"
 			},
 			"components": [
-				{
-					"V": true
-				}
+				[
+					"V"
+				]
 			],
 			"trigger": "You make a successful unarmed",
 			"entries": [
@@ -295,9 +270,8 @@
 				}
 			],
 			"heightened": {
-				"plus_x": {
-					"level": 1,
-					"entries": [
+				"plusX": {
+					"1": [
 						"Increase the distance the creature must descend by 20 feet."
 					]
 				}

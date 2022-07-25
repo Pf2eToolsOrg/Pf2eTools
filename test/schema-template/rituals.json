@@ -21,13 +21,17 @@
 						"type": "integer"
 					},
 					"level": {
-						"type": "integer"
+						"type": "integer",
+						"minimum": 0
 					},
 					"traits": {
 						"type": "array",
 						"items": {
-							"type": "string"
-						}
+							"type": "string",
+							"$ref": "utils.json#/definitions/anyTrait"
+						},
+						"minItems": 1,
+						"uniqueItems": true
 					},
 					"cast": {
 						"type": "object",
@@ -40,8 +44,7 @@
 						],
 						"required": [
 							"number",
-							"unit",
-							"entry"
+							"unit"
 						],
 						"properties": {
 							"number": {
@@ -56,10 +59,15 @@
 						},
 						"additionalProperties": false
 					},
+					"cost": {
+						"type": "string"
+					},
+					"requirements": {
+						"type": "string"
+					},
 					"primaryCheck": {
 						"type": "object",
 						"required": [
-							"entry",
 							"skills"
 						],
 						"properties": {
@@ -70,10 +78,18 @@
 								"type": "array",
 								"items": {
 									"type": "string"
-								}
+								},
+								"minItems": 1
 							},
 							"prof": {
 								"type": "string"
+							},
+							"mustBe": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								},
+								"minItems": 1
 							}
 						},
 						"additionalProperties": false
@@ -83,7 +99,6 @@
 					},
 					"secondaryCheck": {
 						"type": "object",
-						"required": [],
 						"properties": {
 							"entry": {
 								"type": "string"
@@ -92,7 +107,8 @@
 								"type": "array",
 								"items": {
 									"type": "string"
-								}
+								},
+								"minItems": 1
 							}
 						},
 						"additionalProperties": false
@@ -160,7 +176,8 @@
 								"additionalItems": false,
 								"items": {
 									"type": "string"
-								}
+								},
+								"minItems": 1
 							}
 						},
 						"additionalProperties": false
@@ -172,9 +189,54 @@
 								"type": "integer"
 							}
 						}
+					},
+					"heightened": {
+						"type": "object",
+						"properties": {
+							"X": {
+								"description": "An array of levels to which the spell can be heightened.",
+								"type": "object",
+								"patternProperties": {
+									"^([1-9]|10)$": {
+										"description": "An array of effects of heightening the spell to the given level.",
+										"type": "array",
+										"items": {
+											"$ref": "entry.json"
+										},
+										"minItems": 1
+									}
+								},
+								"minProperties": 1,
+								"additionalProperties": false
+							},
+							"plusX": {
+								"type": "object",
+								"patternProperties": {
+									"^([1-9]|10)$": {
+										"type": "array",
+										"items": {
+											"$ref": "entry.json"
+										},
+										"minItems": 1
+									}
+								},
+								"minProperties": 1,
+								"additionalProperties": false
+							}
+						},
+						"minProperties": 1,
+						"additionalProperties": false
 					}
-				}
-			}
+				},
+				"additionalProperties": false,
+				"required": [
+					"name",
+					"source",
+					"level"
+				]
+			},
+			"minItems": 1,
+			"uniqueItems": true
 		}
 	},
 	"required": [

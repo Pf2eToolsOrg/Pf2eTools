@@ -13,7 +13,6 @@
 				"mental",
 				"misfortune"
 			],
-			"school": "E",
 			"traditions": [
 				"arcane",
 				"occult"
@@ -23,17 +22,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "touch",
-				"distance": {
-					"type": "touch",
-					"amount": 1
-				}
+				"number": 1,
+				"unit": "touch"
 			},
 			"targets": "1 creature",
 			"savingThrow": {
@@ -73,7 +69,6 @@
 				"incapacitation",
 				"mental"
 			],
-			"school": "E",
 			"traditions": [
 				"arcane",
 				"occult"
@@ -83,17 +78,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"S": true,
-					"V": true
-				}
+				[
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "touch",
-				"distance": {
-					"type": "touch",
-					"amount": 1
-				}
+				"number": 1,
+				"unit": "touch"
 			},
 			"targets": "1 creature",
 			"savingThrow": {
@@ -123,14 +115,11 @@
 				}
 			],
 			"heightened": {
-				"x": [
-					{
-						"level": 8,
-						"entries": [
-							"The range increases to 60 feet and you can target up to 10 creatures."
-						]
-					}
-				]
+				"X": {
+					"8": [
+						"The range increases to 60 feet and you can target up to 10 creatures."
+					]
+				}
 			}
 		},
 		{
@@ -143,7 +132,6 @@
 				"evocation",
 				"water"
 			],
-			"school": "V",
 			"traditions": [
 				"arcane",
 				"primal"
@@ -153,18 +141,15 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true,
-					"V": true
-				}
+				[
+					"M",
+					"S",
+					"V"
+				]
 			],
 			"range": {
-				"entry": "120 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 120
-				}
+				"number": 120,
+				"unit": "feet"
 			},
 			"duration": {
 				"type": "timed",
@@ -190,7 +175,6 @@
 				"fire",
 				"transmutation"
 			],
-			"school": "T",
 			"traditions": [
 				"arcane",
 				"occult"
@@ -200,17 +184,14 @@
 				"unit": "action"
 			},
 			"components": [
-				{
-					"M": true,
-					"S": true
-				}
+				[
+					"M",
+					"S"
+				]
 			],
 			"range": {
-				"entry": "120 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 120
-				}
+				"number": 120,
+				"unit": "feet"
 			},
 			"targets": "1 fire",
 			"savingThrow": {

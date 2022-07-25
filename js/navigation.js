@@ -87,6 +87,7 @@ class NavBar {
 		this._addElement_li(NavBar._CAT_REFERENCES, "organizations.html", "Organizations");
 		this._addElement_divider(NavBar._CAT_REFERENCES);
 		this._addElement_li(NavBar._CAT_REFERENCES, "abilities.html", "Creature Abilities");
+		this._addElement_li(NavBar._CAT_REFERENCES, "creaturetemplates.html", "Creature Templates");
 		this._addElement_li(NavBar._CAT_REFERENCES, "traits.html", "Traits");
 
 		this._addElement_dropdown(null, NavBar._CAT_UTILITIES);

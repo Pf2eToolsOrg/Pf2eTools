@@ -104,7 +104,7 @@
 				"amount": 150
 			},
 			"usage": "worn amulet",
-			"bulk": "\u2014",
+			"bulk": "\u2013",
 			"category": "Worn",
 			"entries": [
 				"This small pendant is usually shaped like a humanoid skull or small animal skull.",
@@ -220,7 +220,6 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "average handcuffs",
 					"level": 3,
 					"price": {
 						"coin": "gp",
@@ -228,10 +227,10 @@
 					},
 					"entries": [
 						"Escaping requires two successful DC 27 {@skill Thievery} checks, and the {@skill Athletics} DC to Break Open the chain between handcuffs is 30."
-					]
+					],
+					"variantType": "average handcuffs"
 				},
 				{
-					"type": "good handcuffs",
 					"level": 9,
 					"price": {
 						"coin": "gp",
@@ -239,10 +238,10 @@
 					},
 					"entries": [
 						"Escaping requires three successful DC 30 {@skill Thievery} checks, and the {@skill Athletics} DC to Break Open the chain between handcuffs is 35."
-					]
+					],
+					"variantType": "good handcuffs"
 				},
 				{
-					"type": "superior handcuffs",
 					"level": 17,
 					"price": {
 						"coin": "gp",
@@ -250,7 +249,8 @@
 					},
 					"entries": [
 						"Escaping requires four successful DC 40 {@skill Thievery} checks, and the {@skill Athletics} DC to Break Open the chain between handcuffs is 45."
-					]
+					],
+					"variantType": "superior handcuffs"
 				}
 			]
 		},
@@ -481,22 +481,22 @@
 			"generic": "G",
 			"variants": [
 				{
-					"type": "basic",
 					"level": 3,
 					"price": {
 						"coin": "gp",
 						"amount": 20
 					},
-					"entries": []
+					"entries": [],
+					"variantType": "basic"
 				},
 				{
-					"type": "reusable",
 					"level": 5,
 					"price": {
 						"coin": "gp",
 						"amount": 60
 					},
-					"entries": []
+					"entries": [],
+					"variantType": "reusable"
 				}
 			]
 		},
@@ -518,7 +518,7 @@
 				"amount": 15
 			},
 			"usage": "worn ring",
-			"bulk": "\u2014",
+			"bulk": "\u2013",
 			"category": "Worn",
 			"entries": [
 				"This ring magically conceals any armor and sheathed weapons you're wearing by either turning them {@condition invisible} or creating the illusion of ordinary clothes. The ring doesn't change your appearance beyond concealing weapons and armor. As soon as you wield a weapon, the weapon becomes obvious to onlookers and is no longer affected by the ring until you sheathe the weapon for at least 1 minute. A creature can {@quickref disbelieve this illusion|CRB|2|disbelieving illusions|0} by Seeking or any time it hits you with an attack."

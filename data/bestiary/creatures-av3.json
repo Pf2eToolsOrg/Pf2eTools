@@ -647,7 +647,9 @@
 					{
 						"entries": [],
 						"name": "Light Blindness",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				],
 				"mid": [
@@ -1063,7 +1065,9 @@
 					{
 						"entries": [],
 						"name": "Light Blindness",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				],
 				"mid": [
@@ -1089,7 +1093,9 @@
 						},
 						"entries": [],
 						"name": "Attack of Opportunity",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				],
 				"bot": [
@@ -1236,7 +1242,9 @@
 						},
 						"entries": [],
 						"name": "Attack of Opportunity",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				],
 				"bot": [
@@ -1247,7 +1255,9 @@
 						},
 						"entries": [],
 						"name": "Aquatic Ambush",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
 						"entries": [
@@ -1267,7 +1277,9 @@
 							"Medium, {@damage 2d6+7} bludgeoning plus {@damage 2d6} acid, Rupture 20."
 						],
 						"name": "Swallow Whole",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				]
 			}
@@ -1565,7 +1577,9 @@
 						},
 						"entries": [],
 						"name": "Attack of Opportunity",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
 						"traits": [
@@ -1578,7 +1592,9 @@
 							"60 feet, DC 27."
 						],
 						"name": "Frightful Presence",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				],
 				"bot": [
@@ -1589,7 +1605,9 @@
 						},
 						"entries": [],
 						"name": "Aquatic Ambush",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
 						"entries": [
@@ -1612,7 +1630,9 @@
 							"Large, {@damage 3d6+8} bludgeoning plus {@damage 2d6} acid, Rupture 23."
 						],
 						"name": "Swallow Whole",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				]
 			}
@@ -1805,7 +1825,6 @@
 			"isNpc": false,
 			"source": "AV3",
 			"page": 82,
-			"hasImages": true,
 			"level": 7,
 			"traits": [
 				"uncommon",
@@ -1955,7 +1974,9 @@
 					{
 						"entries": [],
 						"name": "Light Blindness",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				],
 				"mid": [
@@ -1993,12 +2014,12 @@
 						"name": "Skirmish Strike"
 					}
 				]
-			}
+			},
+			"hasImages": true
 		},
 		{
 			"name": "Drow Shootist",
 			"isNpc": false,
-			"hasImages": true,
 			"source": "AV3",
 			"page": 83,
 			"level": 8,
@@ -2157,7 +2178,9 @@
 					{
 						"entries": [],
 						"name": "Light Blindness",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				],
 				"mid": [
@@ -2221,17 +2244,19 @@
 							"The shootist deals an extra {@damage 2d6} precision damage to {@condition flat-footed} creatures."
 						],
 						"name": "Sneak Attack",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				]
-			}
+			},
+			"hasImages": true
 		},
 		{
 			"name": "Drow Warden",
 			"isNpc": false,
 			"source": "AV3",
 			"page": 82,
-			"hasImages": true,
 			"level": 4,
 			"traits": [
 				"uncommon",
@@ -2378,7 +2403,9 @@
 					{
 						"entries": [],
 						"name": "Light Blindness",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				],
 				"mid": [
@@ -2389,7 +2416,9 @@
 						},
 						"entries": [],
 						"name": "Attack of Opportunity",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				],
 				"bot": [
@@ -2404,10 +2433,13 @@
 							"A warden deals an extra {@dice 1d6} damage to {@condition flat-footed} creatures."
 						],
 						"name": "Sneak Attack",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				]
-			}
+			},
+			"hasImages": true
 		},
 		{
 			"name": "Dulac",
@@ -2592,7 +2624,9 @@
 					{
 						"entries": [],
 						"name": "Light Blindness",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				],
 				"mid": [
@@ -2860,35 +2894,30 @@
 				],
 				"bot": [
 					{
-						"entries": [
-							{
-								"type": "affliction",
-								"name": "",
-								"traits": [
-									"curse",
-									"disease",
-									"divine",
-									"necromancy",
-									"negative"
-								],
-								"note": " This\naffliction can't be reduced below stage 1, nor can the\ndamage from it be healed, until it's successfully treated\nwith remove curse or a similar effect; the affliction can\nthen be removed as normal for a disease. A creature\nkilled by bog rot melts into a noxious sludge and can't\nbe resurrected except by a 7th-level resurrect ritual or\nsimilar magic",
-								"DC": 21,
-								"savingThrow": "Fortitude",
-								"stages": [
-									{
-										"stage": 1,
-										"entry": "carrier with no ill effect",
-										"duration": "1 minute"
-									},
-									{
-										"stage": 2,
-										"entry": "{@damage 3d6} negative damage and {@condition clumsy|CRB|clumsy 1}",
-										"duration": "1 day"
-									}
-								]
-							}
+						"type": "affliction",
+						"name": "Bog Rot",
+						"traits": [
+							"curse",
+							"disease",
+							"divine",
+							"necromancy",
+							"negative"
 						],
-						"name": "Bog Rot"
+						"note": " This\naffliction can't be reduced below stage 1, nor can the\ndamage from it be healed, until it's successfully treated\nwith remove curse or a similar effect; the affliction can\nthen be removed as normal for a disease. A creature\nkilled by bog rot melts into a noxious sludge and can't\nbe resurrected except by a 7th-level resurrect ritual or\nsimilar magic",
+						"DC": 21,
+						"savingThrow": "Fortitude",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "carrier with no ill effect",
+								"duration": "1 minute"
+							},
+							{
+								"stage": 2,
+								"entry": "{@damage 3d6} negative damage and {@condition clumsy|CRB|clumsy 1}",
+								"duration": "1 day"
+							}
+						]
 					}
 				]
 			}
@@ -3151,7 +3180,9 @@
 					{
 						"entries": [],
 						"name": "Light Blindness",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				],
 				"mid": [
@@ -3414,7 +3445,9 @@
 						},
 						"entries": [],
 						"name": "Attack of Opportunity",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				],
 				"bot": [
@@ -3966,7 +3999,9 @@
 					{
 						"entries": [],
 						"name": "Light Blindness",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				],
 				"mid": [
@@ -4180,7 +4215,9 @@
 					{
 						"entries": [],
 						"name": "Light Blindness",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				],
 				"mid": [
@@ -4420,37 +4457,31 @@
 						"name": "Paralysis"
 					},
 					{
-						"entries": [
-							{
-								"type": "affliction",
-								"name": "",
-								"traits": [
-									"poison"
-								],
-								"note": "",
-								"DC": 28,
-								"savingThrow": "Fortitude",
-								"maxDuration": "6 rounds",
-								"stages": [
-									{
-										"stage": 1,
-										"entry": "{@damage 1d8} poison damage plus {@condition enfeebled|CRB|enfeebled 2}",
-										"duration": "1 round"
-									},
-									{
-										"stage": 2,
-										"entry": "{@damage 2d8} poison damage plus {@condition enfeebled|CRB|enfeebled 2} and {@condition drained|CRB|drained 1}",
-										"duration": "1 round"
-									},
-									{
-										"stage": 3,
-										"entry": "{@damage 3d8} poison damage plus {@condition enfeebled|CRB|enfeebled 2} and {@condition drained|CRB|drained 2}",
-										"duration": "{@dice 1d4} rounds"
-									}
-								]
-							}
+						"type": "affliction",
+						"name": "Skull Rot",
+						"traits": [
+							"poison"
 						],
-						"name": "Skull Rot"
+						"DC": 28,
+						"savingThrow": "Fortitude",
+						"maxDuration": "6 rounds",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "{@damage 1d8} poison damage plus {@condition enfeebled|CRB|enfeebled 2}",
+								"duration": "1 round"
+							},
+							{
+								"stage": 2,
+								"entry": "{@damage 2d8} poison damage plus {@condition enfeebled|CRB|enfeebled 2} and {@condition drained|CRB|drained 1}",
+								"duration": "1 round"
+							},
+							{
+								"stage": 3,
+								"entry": "{@damage 3d8} poison damage plus {@condition enfeebled|CRB|enfeebled 2} and {@condition drained|CRB|drained 2}",
+								"duration": "{@dice 1d4} rounds"
+							}
+						]
 					}
 				]
 			}
@@ -4607,7 +4638,9 @@
 					{
 						"entries": [],
 						"name": "Light Blindness",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				],
 				"mid": [
@@ -4618,7 +4651,9 @@
 						},
 						"entries": [],
 						"name": "Attack of Opportunity",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				],
 				"bot": [
@@ -5148,7 +5183,9 @@
 							"The death scout deals an extra {@damage 2d6} precision damage to {@condition flat-footed} creatures."
 						],
 						"name": "Sneak Attack",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
 						"activity": {
@@ -5352,7 +5389,9 @@
 							"{@damage 1d8+7} slashing, DC 25."
 						],
 						"name": "Constrict",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
 						"entries": [
@@ -5484,7 +5523,9 @@
 						},
 						"entries": [],
 						"name": "Attack of Opportunity",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				],
 				"bot": [
@@ -5497,7 +5538,9 @@
 							"{@damage 1d8+12} bludgeoning, DC 28 ({@condition grabbed} by claws only)"
 						],
 						"name": "Constrict",
-						"generic": true
+						"generic": {
+							"tag": "ability"
+						}
 					},
 					{
 						"traits": [
