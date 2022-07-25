@@ -107,6 +107,7 @@
 							"type": "string"
 						},
 						"alias": {
+							"description": "The alias of the entry, used by Omnisearch for more results, for ex. 'Déjà vu' and an alias 'Deja Vu'.",
 							"type": "array",
 							"items": {
 								"type": "string"
@@ -118,6 +119,12 @@
 								"$ref": "#"
 							},
 							"minItems": 1
+						},
+						"reference": {
+							"$comment": "Add the source requirement to the schema if reference is true.",
+							"description": "Adds a reference string to the entry. Requires a source.",
+							"type": "boolean",
+							"const": true
 						},
 						"data": {
 							"type": "object"

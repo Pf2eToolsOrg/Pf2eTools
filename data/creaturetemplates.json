@@ -1287,9 +1287,9 @@
 				"abilities": [
 					{
 						"name": "Low-Light Vision",
-						"entries": [
-							"The monster can see in dim light as though it were bright light, so it ignores the {@condition concealed} condition due to dim light."
-						]
+						"generic": {
+							"tag": "ability"
+						}
 					}
 				]
 			}
@@ -1312,7 +1312,7 @@
 			"abilities": {
 				"abilities": [
 					{
-						"name": "Darkvision",
+						"name": "Low-Light Vision",
 						"generic": {
 							"tag": "ability"
 						}
@@ -1562,54 +1562,48 @@
 				]
 			},
 			"entries": [
+				"You can build a divine warden from the ground up using the standard rules for monster creation (which is how the divine warden on the following page was built), or you can turn an existing construct into a divine warden by taking the following steps. In either case, the specific divine warden abilities listed below work the same.",
+				"Select the deity that empowered the divine warden. This deity is the divine warden's patron deity. Increase the creature's level by 1 and change its statistics as follows.",
 				{
-					"type": "pf2-h3",
-					"name": "Creating a Divine Warden",
-					"entries": [
-						"You can build a divine warden from the ground up using the standard rules for monster creation (which is how the divine warden on the following page was built), or you can turn an existing construct into a divine warden by taking the following steps. In either case, the specific divine warden abilities listed below work the same.",
-						"Select the deity that empowered the divine warden. This deity is the divine warden's patron deity. Increase the creature's level by 1 and change its statistics as follows.",
-						{
-							"type": "list",
-							"items": [
-								"It gains the {@trait uncommon} and {@trait divine} traits. Its alignment changes to match that of its patron deity. For example, a divine warden of a lawful good deity becomes a lawful good creature.",
-								"Increase AC, attack bonuses, DCs, saving throws, and skill modifiers by 1. If the creature didn't have any listed DCs, use the moderate DC for a creature of its level for any new abilities that require a DC.",
-								"Increase its Hit Points as shown on the table below."
-							]
-						},
-						{
-							"type": "table",
-							"source": "B3",
-							"page": 72,
-							"colStyles": [
-								"text-center",
-								"text-center"
-							],
-							"labelRowIdx": [
-								0
-							],
-							"rows": [
-								[
-									"Starting Level",
-									"HP Increase"
-								],
-								[
-									"1 or lower",
-									"10"
-								],
-								[
-									"2\u20134",
-									"15"
-								],
-								[
-									"5\u201319",
-									"20"
-								],
-								[
-									"20+",
-									"30"
-								]
-							]
-						}
+					"type": "list",
+					"items": [
+						"It gains the {@trait uncommon} and {@trait divine} traits. Its alignment changes to match that of its patron deity. For example, a divine warden of a lawful good deity becomes a lawful good creature.",
+						"Increase AC, attack bonuses, DCs, saving throws, and skill modifiers by 1. If the creature didn't have any listed DCs, use the moderate DC for a creature of its level for any new abilities that require a DC.",
+						"Increase its Hit Points as shown on the table below."
+					]
+				},
+				{
+					"type": "table",
+					"source": "B3",
+					"page": 72,
+					"colStyles": [
+						"text-center",
+						"text-center"
+					],
+					"labelRowIdx": [
+						0
+					],
+					"rows": [
+						[
+							"Starting Level",
+							"HP Increase"
+						],
+						[
+							"1 or lower",
+							"10"
+						],
+						[
+							"2\u20134",
+							"15"
+						],
+						[
+							"5\u201319",
+							"20"
+						],
+						[
+							"20+",
+							"30"
+						]
 					]
 				}
 			]

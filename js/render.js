@@ -932,6 +932,7 @@ function Renderer () {
 			if (entry.collapsible) textStack[0] += `<span class="pf2-h1--collapse">${this._getCollapsibleToggle({ minus: "-" })}</span>`;
 			textStack[0] += `</p>`
 		}
+		this._getReference(entry);
 		this._firstSection = false;
 		if (entry.entries) {
 			const len = entry.entries.length;
@@ -944,6 +945,7 @@ function Renderer () {
 	};
 
 	this._renderPf2H1Flavor = function (entry, textStack, meta, options) {
+		this._getReference(entry);
 		if (entry.entries) {
 			const len = entry.entries.length;
 			for (let i = 0; i < len; ++i) {
@@ -972,6 +974,7 @@ function Renderer () {
 			textStack[0] += `<p class="pf2-h2__step-num">${entry.step}</p>`
 			textStack[0] += `<p class="pf2-h2__step">STEP ${entry.step}</p>`
 		}
+		this._getReference(entry);
 
 		if (entry.name != null) {
 			const renderer = Renderer.get();
@@ -1003,6 +1006,7 @@ function Renderer () {
 			if (entry.level || entry.collapsible) textStack[0] += `<span class="pf2-h3--lvl">${entry.level ? Parser.getOrdinalForm(entry.level) : ""}${entry.collapsible ? this._getCollapsibleToggle({ minus: "\u2013" }) : ""}</span>`;
 			textStack[0] += `</p>`;
 		}
+		this._getReference(entry);
 		this._firstSection = false;
 		if (entry.entries) {
 			const len = entry.entries.length;
@@ -1025,6 +1029,7 @@ function Renderer () {
 			if (entry.level || entry.collapsible) textStack[0] += `<span class="pf2-h4--lvl">${entry.level ? Parser.getOrdinalForm(entry.level) : ""}${entry.collapsible ? this._getCollapsibleToggle({ minus: "\u2013" }) : ""}</span>`;
 			textStack[0] += `</p>`;
 		}
+		this._getReference(entry);
 		this._firstSection = false;
 		if (entry.entries) {
 			const len = entry.entries.length;
@@ -1043,6 +1048,7 @@ function Renderer () {
 			this._handleTrackTitles(entry.name);
 			textStack[0] += `<p class="pf2-h5 rd__h ${this._firstSection ? "mt-0" : ""}" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}><span class="entry-title-inner">${this.render(entry.name)}</span></p>`;
 		}
+		this._getReference(entry);
 		this._firstSection = false;
 		if (entry.entries) {
 			const len = entry.entries.length;
@@ -1065,6 +1071,7 @@ function Renderer () {
 			this._handleTrackTitles(entry.name);
 			textStack[0] += `<p class="pf2-title ${entry.style || ""}">${this.render(entry.name)}</p>`;
 		}
+		this._getReference(entry);
 		if (entry.entries) {
 			const len = entry.entries.length;
 			for (let i = 0; i < len; ++i) {
@@ -1082,6 +1089,7 @@ function Renderer () {
 			this._handleTrackTitles(entry.name);
 			textStack[0] += `<p class="pf2-sidebar__title" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}><span class="entry-title-inner">${renderer.render(entry.name)}</span></p>`;
 		}
+		this._getReference(entry);
 		if (entry.entries) {
 			const len = entry.entries.length;
 			for (let i = 0; i < len; ++i) {
@@ -1102,6 +1110,7 @@ function Renderer () {
 			this._handleTrackTitles(entry.name);
 			textStack[0] += `<div class="${options.beige ? "pf2-beige-box__title" : "pf2-sample-box__title"}"><span>${entry.name}</span></div>`;
 		}
+		this._getReference(entry);
 		if (entry.entries) {
 			const len = entry.entries.length;
 			for (let i = 0; i < len; ++i) {
@@ -1118,6 +1127,7 @@ function Renderer () {
 		const dataString = this._getDataString(entry);
 		textStack[0] += `<div class="pf2-inset" ${dataString}>`;
 
+		this._getReference(entry);
 		if (entry.entries) {
 			const len = entry.entries.length;
 			for (let i = 0; i < len; ++i) {
@@ -1135,6 +1145,7 @@ function Renderer () {
 			this._handleTrackTitles(entry.name);
 			textStack[0] += `<div class="pf2-tips-box__title"><span>${entry.name}</span></div>`;
 		}
+		this._getReference(entry);
 		if (entry.entries) {
 			const len = entry.entries.length;
 			for (let i = 0; i < len; ++i) {
@@ -1167,6 +1178,7 @@ function Renderer () {
 			this._handleTrackTitles(entry.name);
 			textStack[0] += `<span class="pf2-box__title">${entry.name}</span>`;
 		}
+		this._getReference(entry);
 		if (entry.entries) {
 			const len = entry.entries.length;
 			for (let i = 0; i < len; ++i) {
@@ -1188,6 +1200,7 @@ function Renderer () {
 			this._handleTrackTitles(entry.name);
 			textStack[0] += `<span class="pf2-box__title">${entry.name}</span>`;
 		}
+		this._getReference(entry);
 		if (entry.entries) {
 			const len = entry.entries.length;
 			for (let i = 0; i < len; ++i) {
@@ -1208,6 +1221,7 @@ function Renderer () {
 			this._handleTrackTitles(entry.name);
 			textStack[0] += `<p class="pf2-key-box__title">${entry.name}</p>`;
 		}
+		this._getReference(entry);
 		if (entry.entries) {
 			const len = entry.entries.length;
 			for (let i = 0; i < len; ++i) {
@@ -1302,6 +1316,7 @@ function Renderer () {
 			}
 			textStack[0] += `</div>`;
 		}
+		this._getReference(entry);
 
 		textStack[0] += `<div class="pf2-paper__entries">`;
 		if (entry.entries) {
@@ -1342,6 +1357,7 @@ function Renderer () {
 	};
 
 	this._renderInline = function (entry, textStack, meta, options) {
+		this._getReference(entry);
 		if (entry.entries) {
 			const len = entry.entries.length;
 			for (let i = 0; i < len; ++i) this._recursiveRender(entry.entries[i], textStack, meta);
@@ -1349,6 +1365,7 @@ function Renderer () {
 	};
 
 	this._renderInlineBlock = function (entry, textStack, meta, options) {
+		this._getReference(entry);
 		this._renderPrefix(entry, textStack, meta, options);
 		if (entry.entries) {
 			const len = entry.entries.length;
@@ -1472,6 +1489,7 @@ function Renderer () {
 
 	this._renderHr = function (entry, textStack, meta, options) {
 		textStack[0] += `<hr class="${entry.style ? entry.style : "rd__hr"}">`;
+		this._getReference(entry);
 		if (entry.entries) {
 			const len = entry.entries.length;
 			for (let i = 0; i < len; ++i) {
@@ -1494,6 +1512,38 @@ function Renderer () {
 		}
 		return outList.join(" ");
 	};
+
+	this._getReference = function (entry) {
+		if (entry.reference === true) {
+			let source = `<a href="${Parser.sourceJsonToStore(entry.source)}">${Parser.sourceJsonToFull(entry.source)}</a>`
+			if (!entry.entries.length) {
+				entry.entries = []
+				entry.entries.push(`{@note Read from ${entry.page != null ? `page ${entry.page} of ` : ""}${source}}.`);
+			} else {
+				const len = entry.entries.length;
+				for (let i = 0; i < len; ++i) {
+					// If there are no strings, assume there is no content inside the entry itself, meaning it's a 100% reference to the source.
+					// Else, check if the entry contains any objects. If it does, put the reference *before* the objects.
+					// Resolving that, just add the entry at the end if the previous two are false.
+					if (entry.entries[i].type === ("pf2-h1-flavor" || "pf2-sidebar")) {
+						entry.entries.splice(i + 1, 0, `{@note Read from ${entry.page != null ? `page ${entry.page} of ` : ""}${source}}.`);
+						return
+					} else if (!entry.entries.filter(t => typeof t === "string").length) {
+						entry.entries.unshift(`{@note Read from ${entry.page != null ? `page ${entry.page} of ` : ""}${source}}.`)
+						return
+					} else if (typeof entry.entries[i] === "object") {
+						entry.entries.splice(i, 0, `{@note Read the rest from ${entry.page != null ? `page ${entry.page} of ` : ""}${source}}.`)
+						return
+					} else {
+						entry.entries.push(`{@note Read the rest from ${entry.page != null ? `page ${entry.page} of ` : ""}${source}}.`)
+						return
+					}
+				}
+			}
+			// Dedpulication measure, not needed though (?)
+			// entry.entries = Array.from([...new Set(entry.entries)]);
+		}
+	}
 
 	this._renderString = function (entry, textStack, meta, options) {
 		const tagSplit = Renderer.splitByTags(entry);
@@ -4294,23 +4344,11 @@ Renderer.creature = {
 				<style onload="Renderer.events.handleLoad_inlineStatblock(this)"></style>
 			</div>`;
 		}
-		const isRenderButton = (generic || opts.isRenderingGeneric) && !opts.noButton;
+		const isRenderButton = (generic || opts.isRenderingGeneric) && !opts.noButton && !opts.asHTML;
 		const abilityName = generic ? renderer.render(`{@${generic.tag} ${ability.name}${generic.add_hash ? ` (${generic.add_hash})` : ""}|${ability.source ? ability.source : generic.source ? generic.source : ""}${ability.title ? `|${ability.title}` : ""}}`) : ability.name;
 
-		if (opts.asHTML) {
-			return `<p class="pf2-stat pf2-stat__section ${buttonClass} ${opts.isRenderingGeneric ? "hidden" : ""}"><strong>${abilityName}</strong>
-				${ability.activity ? renderer.render(Parser.timeToFullEntry(ability.activity)) : ""}
-				${isRenderButton ? Renderer.creature.getAbilityTextButton(buttonClass, opts.isRenderingGeneric) : ""}
-				${ability.traits && ability.traits.length ? `(${ability.traits.map(t => renderer.render(`{@trait ${t.toLowerCase()}}`)).join(", ")}); ` : ""}
-				${ability.frequency ? `<strong>Frequency&nbsp;</strong>${renderer.render_addTerm(Parser.freqToFullEntry(ability.frequency))}` : ""}
-				${ability.requirements ? `<strong>Requirements&nbsp;</strong>${renderer.render_addTerm(ability.requirements)}` : ""}
-				${ability.trigger ? `<strong>Trigger&nbsp;</strong>${renderer.render_addTerm(ability.trigger)}` : ""}
-				${ability.frequency || ability.requirements || ability.trigger ? "<strong>Effect</strong>" : ""}
-				${(ability.entries || []).map(it => renderer.render(it)).join(" ")}
-				</p>
-				${renderedGenericAbility || ""}`;
-		}
-		return $$`<p class="pf2-stat pf2-stat__section ${buttonClass} ${opts.isRenderingGeneric ? "hidden" : ""}"><strong>${abilityName}</strong>
+		// Button doesn't work with asHTML
+		const $ele = $$`<p class="pf2-stat pf2-stat__section ${buttonClass} ${opts.isRenderingGeneric ? "hidden" : ""}"><strong>${abilityName}</strong>
 					${ability.activity ? renderer.render(Parser.timeToFullEntry(ability.activity)) : ""}
 					${isRenderButton ? Renderer.creature.getAbilityTextButton(buttonClass, opts.isRenderingGeneric) : ""}
 					${ability.traits && ability.traits.length ? `(${ability.traits.map(t => renderer.render(`{@trait ${t.toLowerCase()}}`)).join(", ")}); ` : ""}
@@ -4321,6 +4359,8 @@ Renderer.creature = {
 					${(ability.entries || []).map(it => renderer.render(it)).join(" ")}
 					</p>
 					${renderedGenericAbility || ""}`;
+		if (!opts.asHTML) return $ele;
+		else return $ele[0].outerHTML;
 	},
 
 	getAbilityTextButton (buttonClass, generic) {
@@ -4853,9 +4893,10 @@ Renderer.item = {
 			${Renderer.item.getSubHead(item)}
 			${renderStack.join("")}
 			${Renderer.item.getVariantsHtml(item)}
-			${Renderer.item.getCraftRequirements(item)}
-			${Renderer.item.getDestruction(item)}
-			${Renderer.item.getSpecial(item)}
+			${item.craftReq || item.special || item.destruction ? Renderer.utils.getDividerDiv() : ""}
+			${Renderer.generic.getSpecial(item, { type: "craftReq", title: "Craft Requirements"})}
+			${Renderer.generic.getSpecial(item, { type: "Destruction"})}
+			${Renderer.generic.getSpecial(item)}
 			${Renderer.item.getGenericItem(item)}
 			${Renderer.utils.getPageP(item)}`;
 	},
@@ -5098,26 +5139,6 @@ Renderer.item = {
 			if (v.shieldData != null) renderStack.push(`<p class='pf2-stat pf2-stat__section--wide'>The shield has Hardness ${v.shieldData.hardness}, HP ${v.shieldData.hp}, and BT ${v.shieldData.bt}.</p>`);
 		});
 		return renderStack.join("")
-	},
-
-	// FIXME: Merge getCraftRequirements, getDestruction and getSpecial into a generic object with strings, like we have with successDegree
-
-	getCraftRequirements (item) {
-		if (item.craftReq != null) {
-			return `${Renderer.utils.getDividerDiv()}<p class="pf2-stat pf2-stat__section"><strong>Craft Requirements&nbsp;</strong>${Renderer.get().render(item.craftReq)}</p>`
-		} else return ""
-	},
-
-	getDestruction (item) {
-		if (item.destruction != null) {
-			return `${Renderer.utils.getDividerDiv()}<p class="pf2-stat pf2-stat__section"><strong>Destruction&nbsp;</strong>${Renderer.get().render(item.destruction)}</p>`
-		} else return ""
-	},
-
-	getSpecial (item) {
-		if (item.special != null) {
-			return `${Renderer.utils.getDividerDiv()}<p class="pf2-stat pf2-stat__section"><strong>Special&nbsp;</strong>${Renderer.get().render(item.special)}</p>`
-		} else return ""
 	},
 
 	getGenericItem: (item) => {
@@ -5858,8 +5879,9 @@ Renderer.vehicle = {
 		<p class="pf2-stat pf2-stat__section"><strong>Speed&nbsp;</strong>${it.speed.map(s => s.type === "special" ? s.entry : `${s.type !== "walk" ? `${s.type} ` : ""}${s.speed ? `${s.speed} feet` : ""} ${s.traits ? `(${renderer.render(s.traits.map(t => `{@trait ${t.toLowerCase()}}`).join(", "))})` : ""} ${s.note ? `(${renderer.render(s.note)})` : ""}`).join(", ")}</p>
 		<p class="pf2-stat pf2-stat__section"><strong>Collision&nbsp;</strong>${it.collision.entries ? it.collision.entries : `${it.collision.damage ? renderer.render(it.collision.damage) : ""}${it.collision.type ? ` ${it.collision.type}` : ""} ${it.collision.dc ? `(DC ${it.collision.dc})` : ""}`}</p>
 		${it.abilities && it.abilities.bot ? it.abilities.bot.map(x => Renderer.creature.getRenderedAbility(x, { noButton: true })) : ""}
-		${Renderer.item.getDestruction(it)}
-		${Renderer.item.getSpecial(it)}
+		${it.craftReq || it.special || it.destruction ? Renderer.utils.getDividerDiv() : ""}
+		${Renderer.generic.getSpecial(it, { title: "Destruction" })}
+		${Renderer.generic.getSpecial(it)}
 		${Renderer.utils.getPageP(it)}`;
 	},
 	getDefenses (it, opts) {
@@ -5949,10 +5971,32 @@ Renderer.generic = {
 		else return "";
 	},
 
-	getSpecial (it) {
+	/**
+	 * @param it {array} Entry Itself
+	 * @param [opts] {array}
+	 * @param [opts.type] {string} "special", "destruction", "craftReq"
+	 * @param [opts.title] {string} "Special", "Destruction", "Crafting Requirements"
+	 */
+	getSpecial (it, opts) {
+		opts = opts || {};
+		opts.title = opts.title ?? "Special";
+		opts.type = opts.type ?? opts.title.toLowerCase();
 		const renderer = Renderer.get();
-		if (it.special != null) {
-			return `<p class="pf2-stat pf2-stat__section"><strong>Special&nbsp;</strong>${renderer.render(it.special)}</p>`;
+		if (it[opts.type] != null) {
+			let renderStack = []
+			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>${opts.title}&nbsp;</strong>`)
+
+			it[opts.type].forEach((s, index) => {
+				if (index === 0) {
+					renderStack.push(renderer.render(s))
+					renderStack.push(`</p>`)
+				} else {
+					renderStack.push(`<p class="pf2-stat__text">`)
+					renderStack.push(renderer.render(s))
+					renderStack.push(`</p>`)
+				}
+			})
+			return renderStack.join("")
 		} else return "";
 	},
 };
@@ -7657,7 +7701,7 @@ Renderer.hover = {
 			case "group": return Renderer.group.getRenderedString;
 			case "skill": return Renderer.skill.getRenderedString;
 			case "genericData": return Renderer.generic.dataGetRenderedString;
-			case "genericCreatureAbility": return it => Renderer.creature.getRenderedAbility(it, { isRenderingGeneric: true, asHTML: true });
+			case "genericCreatureAbility": return it => Renderer.creature.getRenderedAbility(it, {isRenderingGeneric: true});
 			// endregion
 			default: throw new Error(`Unknown page: ${page} in _pageToRenderFn`);
 		}

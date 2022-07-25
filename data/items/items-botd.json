@@ -83,7 +83,9 @@
 				"You choose the form of your soul cage when you {@action Craft} it. A few options include a miniature cage, a ring, an amulet, or a crown. Work with your GM to adjust the usage and Bulk as needed, though a soul cage is rarely more than light Bulk. The soul cage has Hardness 9 and 36 HP.",
 				"If your soul cage is destroyed but you aren't, you can attempt to find your soul and trap it again, building a new soul cage. This is no trivial feat and often takes an entire adventure to accomplish. If you don't cage your soul again, you suffer a long decline as described on page 119."
 			],
-			"craftReq": "You have Lich Dedication."
+			"craftReq": [
+				"You have Lich Dedication."
+			]
 		},
 		{
 			"name": "Peachwood Weapon",
@@ -112,7 +114,8 @@
 						"note": "+ 200 gp per Bulk"
 					},
 					"craftReq": "At least 250 gp of peachwood + 25 gp per Bulk",
-					"entries": []
+					"entries": [],
+					"variantType": "standard-grade"
 				},
 				{
 					"name": "high-grade peachwood weapon",
@@ -123,7 +126,8 @@
 						"note": "+ 1,900 gp per Bulk"
 					},
 					"craftReq": "At least 9,500 gp of peachwood + 950 gp per Bulk",
-					"entries": []
+					"entries": [],
+					"variantType": "high-grade"
 				}
 			]
 		},
@@ -168,7 +172,8 @@
 					},
 					"entries": [
 						"The bomb deals {@damage 1d4} positive damage and 1 positive splash damage, as well as {@dice 1d4} additional fire damage. As normal, positive damage harms only undead and other creatures with negative healing. Undead with a particular vulnerability to sunlight (such as vampires or wraiths) take the maximum amount of positive damage from bottled sunlight (4 instead of {@dice 1d4}). For any ability that depends on the number of weapon dice bottled sunlight has, count only the positive damage dice."
-					]
+					],
+					"variantType": "lesser"
 				},
 				{
 					"name": "moderate",
@@ -179,7 +184,8 @@
 					},
 					"entries": [
 						"The bomb deals {@damage 2d4} positive damage, 2 positive splash damage, and {@dice 2d4} additional fire damage."
-					]
+					],
+					"variantType": "moderate"
 				},
 				{
 					"name": "greater",
@@ -190,7 +196,8 @@
 					},
 					"entries": [
 						"The bomb deals {@damage 3d4} positive damage, 3 positive splash damage, and {@dice 3d4} additional fire damage."
-					]
+					],
+					"variantType": "greater"
 				},
 				{
 					"name": "major",
@@ -201,7 +208,8 @@
 					},
 					"entries": [
 						"The bomb deals {@damage 4d4} positive damage, 4 positive splash damage, and {@dice 4d4} additional fire damage."
-					]
+					],
+					"variantType": "major"
 				}
 			]
 		},
@@ -311,7 +319,9 @@
 					]
 				}
 			],
-			"craftReq": "You have a spellcasting class feature with the divine tradition."
+			"craftReq": [
+				"You have a spellcasting class feature with the divine tradition."
+			]
 		},
 		{
 			"name": "Ectoplasmic Tracer",
@@ -379,7 +389,8 @@
 						"coin": "gp"
 					},
 					"bulk": 3,
-					"entries": []
+					"entries": [],
+					"variantType": "feast of hungry ghosts"
 				},
 				{
 					"name": "banquet of hungry ghosts",
@@ -391,7 +402,8 @@
 					},
 					"entries": [
 						"This feast feeds up to 4 willing undead."
-					]
+					],
+					"variantType": "banquet of hungry ghosts"
 				}
 			]
 		},
@@ -450,7 +462,9 @@
 					]
 				}
 			],
-			"craftReq": "The initial raw materials must include 4,950 gp of silver."
+			"craftReq": [
+				"The initial raw materials must include 4,950 gp of silver."
+			]
 		},
 		{
 			"name": "Grim Ring",
@@ -576,7 +590,8 @@
 						"coin": "gp"
 					},
 					"bulk": "L",
-					"entries": []
+					"entries": [],
+					"variantType": "peachwood branch"
 				},
 				{
 					"name": "peachwood lumber",
@@ -585,7 +600,8 @@
 						"coin": "gp",
 						"note": "; Bulk 1"
 					},
-					"entries": []
+					"entries": [],
+					"variantType": "peachwood lumber"
 				},
 				{
 					"name": "standard-grade peachwood object",
@@ -595,7 +611,8 @@
 						"coin": "gp",
 						"note": "per Bulk"
 					},
-					"entries": []
+					"entries": [],
+					"variantType": "standard-grade peachwood object"
 				},
 				{
 					"name": "high-grade peachwood object",
@@ -607,7 +624,8 @@
 					},
 					"entries": [
 						"Peachwood Items Hardness HP BT Thin Items Standard-grade 4 16 8 High-grade 6 24 12 Items Standard-grade 5 20 10 High-grade 8 32 16 Structures Standard-grade 12 48 24 High-grade 18 64 32"
-					]
+					],
+					"variantType": "high-grade peachwood object"
 				}
 			]
 		},

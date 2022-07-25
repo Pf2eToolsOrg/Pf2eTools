@@ -3,7 +3,7 @@ class PageFilterArchetypes extends PageFilter {
 	constructor () {
 		super();
 		this._traitFilter = new TraitsFilter({
-			header: "Traits"
+			header: "Traits",
 		});
 		this._benefitsFilter = new Filter({header: "Benefits"});
 		this._levelFilter = new Filter({
