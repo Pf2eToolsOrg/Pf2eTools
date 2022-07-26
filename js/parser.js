@@ -293,7 +293,8 @@ Parser.priceToValue = function (price) {
 			mult = 1000;
 			break;
 	}
-	if (price.note != null) offset = 0.1;
+	// FIXME: This is rather stupid in retrospect, to modify the price if there is a note.
+	// if (price.note != null) offset = 0.1;
 	return mult * amount + offset
 };
 Parser.priceToFull = function (price, noPlatinum) {
