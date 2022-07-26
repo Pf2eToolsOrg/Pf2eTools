@@ -4762,6 +4762,7 @@ Renderer.feat = {
 			${Renderer.utils.getTraitsDiv(feat.traits)}
 			${Renderer.feat.getSubHead(feat)}
 			${Renderer.generic.getRenderedEntries(feat)}
+			${feat.amp ? `${Renderer.utils.getDividerDiv()}${Renderer.spell.getAmpEntry(feat)}` : ""}
 			${opts.renderLeadsTo ? Renderer.feat.getLeadsTo(feat) : ""}
 			${opts.noPage ? "" : Renderer.utils.getPageP(feat)}`;
 	},
@@ -5718,14 +5719,14 @@ Renderer.spell = {
 				else renderer.recursiveRender(e, renderStack, { prefix: "<span class='pf2-stat__section'>", suffix: "</span>" });
 			});
 		};
-		if (sp.heightened.plusX != null) {
+		if (sp.heightened?.plusX != null) {
 			Object.entries(sp.heightened.plusX).forEach(([x, entries]) => {
 				renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Heightened (+${x})&nbsp;</strong>`);
 				renderArray(entries);
 				renderStack.push(`</p>`);
 			});
 		}
-		if (sp.heightened.X != null) {
+		if (sp.heightened?.X) {
 			Object.entries(sp.heightened.X).forEach(([x, entries]) => {
 				renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Heightened (${Parser.getOrdinalForm(x)})&nbsp;</strong>`);
 				renderArray(entries);
@@ -5745,19 +5746,19 @@ Renderer.spell = {
 				else renderer.recursiveRender(e, renderStack, { prefix: "<span class='pf2-stat__section'>", suffix: "</span>" });
 			});
 		};
-		if (sp.amp.entries) {
+		if (sp.amp?.entries) {
 			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Amp&nbsp;</strong>`);
 			renderArray(sp.amp.entries);
 			renderStack.push(`</p>`);
 		}
-		if (sp.amp.heightened.plusX != null) {
+		if (sp.amp?.heightened?.plusX) {
 			Object.entries(sp.amp.heightened.plusX).forEach(([x, entries]) => {
 				renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Heightened (+${x})&nbsp;</strong>`);
 				renderArray(entries);
 				renderStack.push(`</p>`);
 			});
 		}
-		if (sp.amp.heightened.X != null) {
+		if (sp.amp?.heightened?.X) {
 			Object.entries(sp.amp.heightened.X).forEach(([x, entries]) => {
 				renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Amp Heightened (${Parser.getOrdinalForm(x)})&nbsp;</strong>`);
 				renderArray(entries);

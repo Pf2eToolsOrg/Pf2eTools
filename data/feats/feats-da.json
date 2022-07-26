@@ -1,0 +1,835 @@
+{
+	"feat": [
+		{
+			"name": "Ancestral Mind",
+			"source": "DA",
+			"page": 24,
+			"level": 1,
+			"traits": [
+				"psychic"
+			],
+			"entries": [
+				"By unraveling memories and connections passed down from your progenitors and buried within your unconscious mind, you learn to convert your inherent magic into psychic power. You can cast any innate spells you know from an ancestry feat or heritage using your psychic spellcasting components. When you do so, the spell's tradition becomes occult, if it wasn't already, and you can use your psychic spellcasting ability modifier instead of Charisma to determine your spell attack roll and spell DC."
+			]
+		},
+		{
+			"name": "Counter Thought",
+			"source": "DA",
+			"page": 24,
+			"activity": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"level": 1,
+			"traits": [
+				"abjuration",
+				"occult",
+				"psychic"
+			],
+			"trigger": "A creature Casts a Spell with the {@trait mental} trait.",
+			"requirements": "You have an unexpended spell slot you could use to {@action Cast a Spell} with the {@trait mental} trait.",
+			"entries": [
+				"When a foe Casts a Spell that has the {@trait mental} trait and you can see its manifestations, you can use your own mental magic to disrupt it. You expend one of your spell slots to counter the triggering creature's casting of a spell with the {@trait mental} trait.",
+				"You lose your spell slot as if you had cast the triggering spell; this spell slot must be one for which you could {@action Cast a Spell} with the {@trait mental} trait. You then attempt to counteract the triggering spell."
+			]
+		},
+		{
+			"name": "Mental Buffer",
+			"source": "DA",
+			"page": 24,
+			"level": 1,
+			"traits": [
+				"psychic"
+			],
+			"entries": [
+				"Your mind deflects some amount of harm from attacks that induce pain or manipulate your mind directly. You gain resistance to mental damage equal to half your level (minimum 1). This resistance increases to equal to your level while your Psyche is Unleashed."
+			]
+		},
+		{
+			"name": "Psychic Rapport",
+			"source": "DA",
+			"page": 24,
+			"level": 1,
+			"traits": [
+				"psychic"
+			],
+			"entries": [
+				"Your telepathic sensitivity intensifies when you're affected by mental magic, making it easier for you to link to other creatures. After you {@action Cast a Spell} with the {@trait mental} trait, until the start of your next turn, you gain a +1 circumstance bonus to {@skill Deception}, {@skill Diplomacy}, and {@skill Intimidation} checks, and to {@skill Perception} checks to {@action Sense Motive}."
+			]
+		},
+		{
+			"name": "Cantrip Expansion",
+			"source": "DA",
+			"page": 24,
+			"add_hash": "Psychic",
+			"level": 2,
+			"traits": [
+				"psychic"
+			],
+			"entries": [
+				"You expand what your mind can accomplish. Add two additional occult cantrips to your repertoire."
+			]
+		},
+		{
+			"name": "Mental Balm",
+			"source": "DA",
+			"page": 24,
+			"level": 2,
+			"traits": [
+				"amp",
+				"emotion",
+				"mental",
+				"psychic"
+			],
+			"amp": {
+				"entries": [
+					"You or one ally within 30 feet gains a +2 status bonus to Will saves against {@trait emotion} effects for 1 minute. You can also have the amped psi cantrip attempt to counteract one effect imposing the {@condition frightened} condition on yourself or the chosen ally, or an effect imposing the {@condition stupefied} condition that has a duration of 1 hour or less. If you successfully counteract the effect, you remove only the {@condition frightened} and {@condition stupefied} conditions, not any other part of the effect."
+				]
+			},
+			"entries": [
+				"Your spells release soothing mental waves. Use this amp in place of a psi cantrip's normal amp entry. You can use this amp only on a psi cantrip that targets or affects you or one or more of your allies and doesn't target or affect any enemies."
+			]
+		},
+		{
+			"name": "Psi Burst",
+			"source": "DA",
+			"page": 24,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"level": 2,
+			"traits": [
+				"concentrate",
+				"evocation",
+				"mindshift",
+				"occult",
+				"psyche",
+				"psychic"
+			],
+			"frequency": {
+				"freq": 1,
+				"unit": "round"
+			},
+			"entries": [
+				"With a passing thought, you direct violent psychic energies at a nearby creature. Target one creature within 30 feet. It takes {@damage 1d4} bludgeoning damage with a basic Reflex save. At 3rd level and every 2 levels thereafter, the damage increases by {@dice 1d4}."
+			]
+		},
+		{
+			"name": "Warp Space",
+			"source": "DA",
+			"page": 24,
+			"level": 2,
+			"traits": [
+				"amp",
+				"psychic"
+			],
+			"amp": {
+				"entries": [
+					"Choose a square within 30 feet to which you have line of effect and line of sight. Determine your spell's line of effect and line of sight from there, as well as whether creatures have cover against the spell. The spell can exceed its normal range as measured from you, as long as it's within its normal range from the square you chose."
+				]
+			},
+			"entries": [
+				"You use your magic to bend space, causing your spell to strike from a strange vector. Use this amp in place of a psi cantrip's normal amp entry. The amped psi cantrip must have a range."
+			]
+		},
+		{
+			"name": "Astral Tether",
+			"source": "DA",
+			"page": 24,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"level": 4,
+			"traits": [
+				"abjuration",
+				"occult",
+				"psychic"
+			],
+			"entries": [
+				"You spin out a thread of psychic energy that connects you to an ally, using it as a conduit for your abilities. Choose a willing creature within 60 feet and connect to it. Whenever you would gain a benefit from a psychic amp, you can have the amp affect the tethered creature instead. You can do so only if the amp grants a distinct benefit, not if it alters the amped spell.",
+				"The tether can't be severed physically but breaks if the distance between you and the tethered ally ever exceeds 60 feet, if you become {@condition unconscious}, or if you use Astral Tether again."
+			]
+		},
+		{
+			"name": "Homing Beacon",
+			"source": "DA",
+			"page": 24,
+			"level": 4,
+			"traits": [
+				"amp",
+				"psychic"
+			],
+			"amp": {
+				"entries": [
+					"Choose one creature hit by the spell (if the spell has a Archive spell attack roll) or that fails its save against the spell (if the spell requires a save). A psychic beacon emits from the creature's location, making it easier to notice the creature as the mind and attention of onlookers is subtly drawn to it. For 1 minute, if the target would be {@condition invisible}, it's instead merely {@condition concealed}, and if it would be {@condition concealed}, it's no longer {@condition concealed}."
+				]
+			},
+			"entries": [
+				"As your spell strikes a target, you plant a beacon in the target's mind that announces its presence to those nearby. Use this amp in place of a psi cantrip's normal amp entry. The amped cantrip must be one that has one or more targets and must either require a spell attack roll or have a saving throw."
+			]
+		},
+		{
+			"name": "Psi Strikes",
+			"source": "DA",
+			"page": 25,
+			"activity": {
+				"number": 1,
+				"unit": "free"
+			},
+			"level": 4,
+			"traits": [
+				"mindshift",
+				"psychic"
+			],
+			"frequency": {
+				"freq": 1,
+				"unit": "turn"
+			},
+			"requirements": "Your most recent action was to {@action Cast a Spell} or to {@action Unleash Psyche|DA|Unleash your Psyche}.",
+			"entries": [
+				"You siphon residual psychic energies from your spell into one weapon you're wielding or one of your unarmed attacks and when you unleash your mind, the energies flare to match. The attack deals an extra {@damage 1d6} force damage until the end of the current turn. If your Psyche is Unleashed, this benefit instead lasts until your psyche subsides."
+			]
+		},
+		{
+			"name": "Thoughtform Summoning",
+			"source": "DA",
+			"page": 25,
+			"level": 4,
+			"traits": [
+				"psychic"
+			],
+			"entries": [
+				"You can create a prototypical creature from the depths of your imagination instead of calling one from elsewhere. Whenever you summon a creature, you can choose to instead create a psychic construct of that creature. This grants it resistance to physical damage equal to half its level, weakness 5 to force and mental damage, and the ability to pass through enemies' spaces without needing to {@action Tumble Through} (though it can't end its turn in an occupied space)."
+			]
+		},
+		{
+			"name": "Violent Unleash",
+			"source": "DA",
+			"page": 25,
+			"activity": {
+				"number": 1,
+				"unit": "free"
+			},
+			"level": 4,
+			"traits": [
+				"evocation",
+				"mindshift",
+				"occult",
+				"psychic"
+			],
+			"trigger": "You {@action Unleash Psyche|DA|Unleash your Psyche}.",
+			"entries": [
+				"The force of your mind unleashing itself wracks your enemies with a violent shockwave. You deal {@damage 2d6} force damage to all creatures in a 20-foot emanation, with a basic Reflex save. This explosion is taxing, making you {@condition stunned||stunned 1}.",
+				"At 5th level and every 2 levels thereafter, the damage increases by {@dice 1d6}."
+			]
+		},
+		{
+			"name": "Inertial Barrier",
+			"source": "DA",
+			"page": 25,
+			"level": 6,
+			"traits": [
+				"abjuration",
+				"amp",
+				"occult",
+				"psychic"
+			],
+			"entries": [
+				"Your spell leaves behind barriers that reduce shock and motion.",
+				"Use this amp in place of a psi cantrip's normal amp entry. Amp You or one target of the spell gains resistance to physical damage equal to 2 + the spell's level until the start of your next turn."
+			]
+		},
+		{
+			"name": "Parallel Breakthrough",
+			"source": "DA",
+			"page": 25,
+			"level": 6,
+			"traits": [
+				"psychic"
+			],
+			"entries": [
+				"You expand your mind beyond your area of psychic specialty. You gain a 1st-level psi cantrip for a conscious mind other than your own; this can be either the unique surface cantrip or one of the common cantrips and the accompanying amp. If you choose a common cantrip, you also gain the special benefit granted by that conscious mind when casting the cantrip without an amp. You don't gain any other benefits of that conscious mind, such as additional spells known."
+			]
+		},
+		{
+			"name": "Sixth Sense",
+			"source": "DA",
+			"page": 26,
+			"level": 6,
+			"traits": [
+				"divination",
+				"occult",
+				"psychic"
+			],
+			"entries": [
+				"Your psychic abilities also allow you to detect the lingering thoughts of spirits and similar entities. While you're exploring but not Searching, the GM rolls a secret check for you to find haunts that usually require Searching, as well as spirits, creatures on the Ethereal Plane, and beings made entirely of spiritual essence, such as celestials, fiends, and monitors.",
+				"You can also potentially notice ethereal creatures and spirits inside solid objects, provided they are within 30 feet of you. This applies while Searching, Seeking, and on the automatic secret check from Sixth Sense. You can still notice spirits only on a successful check, and you can't see them if they're more than 5 feet inside an object.",
+				"When you notice a creature with your Sixth Sense, you also learn its location, making it {@condition hidden} to you if it had been {@condition undetected}."
+			]
+		},
+		{
+			"name": "Steady Spellcasting",
+			"source": "DA",
+			"page": 26,
+			"level": 6,
+			"traits": [
+				"psychic"
+			],
+			"entries": [
+				"Confident in your technique, you don't easily lose your concentration when you {@action Cast a Spell}. If a reaction would disrupt your spellcasting action, attempt a DC {@flatDC 15} flat check. If you succeed, your action isn't disrupted."
+			]
+		},
+		{
+			"name": "Strain Mind",
+			"source": "DA",
+			"page": 26,
+			"activity": {
+				"number": 1,
+				"unit": "free"
+			},
+			"level": 6,
+			"traits": [
+				"psychic"
+			],
+			"frequency": {
+				"freq": 1,
+				"unit": "hour"
+			},
+			"trigger": "You cast a psi cantrip.",
+			"requirements": "You have 0 Focus Points.",
+			"entries": [
+				"You strain your body beyond its limits to use an amp even when your mental power is depleted. You add an amp that costs 1 Focus Point to the spell. Instead of paying the normal Focus Point cost, you lose Hit Points equal to four times the spell level of the amped psi cantrip as you bleed from your nose or suffer some other visible sign of strain."
+			]
+		},
+		{
+			"name": "Brain Drain",
+			"source": "DA",
+			"page": 26,
+			"activity": {
+				"number": 2,
+				"unit": "action"
+			},
+			"level": 8,
+			"traits": [
+				"divination",
+				"mental",
+				"occult",
+				"psyche",
+				"psychic"
+			],
+			"entries": [
+				"With a wresting of will, you siphon off a creature's mental energy to replenish your own. One non-mindless creature within 30 feet must attempt a Will save against your spell DC.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Success": [
+							"The creature is unaffected."
+						],
+						"Failure": [
+							"The creature is {@condition stupefied||stupefied 1} for 1 minute, and you regain 1 Focus Point, up to your normal maximum. You can't use Brain Drain again until after the next time you make your daily preparations."
+						],
+						"Critical Failure": [
+							"As failure, but the creature is {@condition stupefied||stupefied 2}."
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Dark Persona's Presence",
+			"source": "DA",
+			"page": 26,
+			"activity": {
+				"number": 1,
+				"unit": "free"
+			},
+			"level": 8,
+			"traits": [
+				"aura",
+				"emotion",
+				"enchantment",
+				"fear",
+				"mental",
+				"psychic"
+			],
+			"trigger": "You {@action Unleash Psyche|DA|Unleash your Psyche}.",
+			"entries": [
+				"When you {@action Unleash Psyche|DA|Unleash your Psyche}, all your rage and pain\u2014the portion of your psyche dedicated to cruel retribution\u2014come along with it.",
+				"The force of your dark persona's negativity batters constantly against all creatures in a 30-foot emanation when you {@action Unleash Psyche|DA|Unleash your Psyche} and for as long as your Psyche is Unleashed. A creature must attempt a Will save against your spell DC the first time it enters the emanation, or if it's in the emanation when you take this action; it doesn't need to attempt a save again, even if it leaves the emanation and returns. A creature {@condition frightened} by your Dark Persona's Presence can't decrease its {@condition frightened} value below 1 while within the emanation.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The creature is unaffected."
+						],
+						"Success": [
+							"The target is {@condition frightened||frightened 1}."
+						],
+						"Failure": [
+							"The target is {@condition frightened||frightened 2}."
+						],
+						"Critical Failure": [
+							"The target is {@condition frightened||frightened 3}.",
+							"While your Psyche is Unleashed, your dark persona cares only for destruction. You can {@action Cast a Spell} only if it can directly damage an enemy or object or can impose a detrimental condition or penalty on one."
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Mental Static",
+			"source": "DA",
+			"page": 27,
+			"activity": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"level": 8,
+			"traits": [
+				"enchantment",
+				"mental",
+				"nonlethal",
+				"occult",
+				"psychic"
+			],
+			"trigger": "You roll a critical success on a Will save against a {@trait mental} effect from a creature.",
+			"entries": [
+				"Your thoughts sting back when a lesser mind tries to invade your own. You deal mental damage equal to your level to the triggering creature. If you so desire, you can also send the creature a single mental image to coincide with the damage, such as a watchful eye or the dread of floating in an infinite sea."
+			]
+		},
+		{
+			"name": "Remove Presence",
+			"source": "DA",
+			"page": 27,
+			"level": 8,
+			"traits": [
+				"amp",
+				"illusion",
+				"mental",
+				"occult",
+				"psychic"
+			],
+			"amp": {
+				"entries": [
+					"Choose one target of the spell or one creature in its area.",
+					"If that enemy fails its save or the spell hits it, you become {@condition undetected} by that creature, disappearing from its senses for 1 minute or until you use a {@condition hostile} action. This is similar to being {@condition invisible}, but effects like see invisibility don't reveal you\u2014you're affecting the target's mind, not its vision. True seeing can still see through this illusion if the counteract check succeeds."
+				]
+			},
+			"entries": [
+				"Your spell reaches into the mind of a creature and removes you from it. The amped cantrip must be one that has one or more targets and must either require a spell attack roll or have a saving throw. Use this amp in place of the psi cantrip's normal amp entry."
+			]
+		},
+		{
+			"name": "Thoughtsense",
+			"source": "DA",
+			"page": 27,
+			"level": 8,
+			"traits": [
+				"divination",
+				"mental",
+				"occult",
+				"psychic"
+			],
+			"entries": [
+				"You can detect the flickers of mental activity let off by all thinking creatures. You gain thoughtsense as a vague sense that has a range of 30 feet\u2014like all vague senses, it's only about as precise as an average human's sense of smell, meaning you generally can predict only if a creature is present. Your thoughtsense detects only thinking creatures, so a creature that is unthinking or otherwise immune to {@trait mental} effects (such as many constructs and oozes) can't be perceived using your thoughtsense, regardless of how precise it is.",
+				"While your Psyche is Unleashed, your thoughtsense upgrades to an imprecise sense, letting you use it to {@action Seek} out creatures."
+			]
+		},
+		{
+			"name": "Whispering Steps",
+			"source": "DA",
+			"page": 27,
+			"level": 8,
+			"traits": [
+				"amp",
+				"enchantment",
+				"mental",
+				"occult",
+				"psychic"
+			],
+			"entries": [
+				"Your spell leaves a lingering connection between you and a creature\u2014one through which you can nudge the creature's mind this way or that. The amped cantrip must take 2 or more actions to cast, target one or more creatures, and either require a spell attack roll or have a saving throw. Use this amp in place of the psi cantrip's normal amp entry. Amp Choose one enemy who is a target of the spell. If that enemy fails its save or the spell hits it, you whisper in the creature's mind, forcing it to {@action Step} in a direction of your choosing; as this is forced movement, you can't force the creature to {@action Step} into hazardous terrain, off a ledge, or the like. After it Steps, the creature becomes temporarily immune to this amp for 24 hours."
+			]
+		},
+		{
+			"name": "Dream Guise",
+			"source": "DA",
+			"page": 27,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"level": 10,
+			"traits": [
+				"illusion",
+				"occult",
+				"psyche",
+				"psychic"
+			],
+			"requirements": "wandering reverie subconscious mind",
+			"entries": [
+				"You {@action Stride} into a willing ally's space, at which point both of your appearances shift into a shared third appearance, usually one that looks like a mix of the two of you. Then, either you or your ally Steps. You each maintain the merged appearance.",
+				"Creatures who are observing this know what happened, but still must {@action Seek} or otherwise engage with the illusion to attempt to disbelieve it and determine which of you is which. Otherwise, they can't tell the difference and have an equal chance to target each of you (DC {@flatDC 11} flat check). This illusion ends as soon as either you or the ally you're merged with acts."
+			]
+		},
+		{
+			"name": "Emotional Surge",
+			"source": "DA",
+			"page": 27,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"level": 10,
+			"traits": [
+				"concentrate",
+				"emotion",
+				"psyche",
+				"psychic"
+			],
+			"requirements": "emotional acceptance subconscious mind",
+			"entries": [
+				"Your heart soars, increasing your power for a moment. You gain a +2 status bonus to attack rolls and skill checks until the start of your next turn."
+			]
+		},
+		{
+			"name": "Impose Order",
+			"source": "DA",
+			"page": 27,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"level": 10,
+			"traits": [
+				"fortune",
+				"psyche",
+				"psychic"
+			],
+			"requirements": "precise discipline subconscious mind",
+			"entries": [
+				"You bring discipline to your mind and magic, ensuring that you don't under-perform. Until the end of your turn, instead of rolling dice for damage, count each damage die as average damage rounded up (3 for d4, 4 for d6, 5 for d8, 6 for d10, and 7 for d12)."
+			]
+		},
+		{
+			"name": "Scour the Library",
+			"source": "DA",
+			"page": 27,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"level": 10,
+			"traits": [
+				"psyche",
+				"psychic"
+			],
+			"requirements": "gathered lore subconscious mind",
+			"entries": [
+				"Seeing an enemy's attack, you quickly consult multiple scraps of lore in your mind, synthesizing them into the perfect plan.",
+				"Make a check to {@action Recall Knowledge} (using an appropriate skill) about one creature within 60 feet. On a success, in addition to the normal benefits, you gain a +1 circumstance bonus to your next attack roll against that creature and to your AC against the creature's next attack. On a critical success, the bonuses are +2."
+			]
+		},
+		{
+			"name": "Signature Spell Expansion",
+			"source": "DA",
+			"page": 27,
+			"level": 10,
+			"traits": [
+				"psychic"
+			],
+			"entries": [
+				"Your direct mental grasp of your power lets you cast more spells with greater freedom. You gain two additional signature spells, each of which must have a minimum level of 3rd or lower."
+			]
+		},
+		{
+			"name": "Foreseen Failure",
+			"source": "DA",
+			"page": 28,
+			"activity": {
+				"number": 1,
+				"unit": "free"
+			},
+			"level": 12,
+			"traits": [
+				"divination",
+				"fortune",
+				"occult",
+				"psychic"
+			],
+			"frequency": {
+				"freq": 1,
+				"unit": "day"
+			},
+			"trigger": "A spell you cast has no effect because you critically failed all your spell attack rolls or because all targets critically succeeded at their saving throws.",
+			"entries": [
+				"You see your spell fail to take hold to disastrous end, then snap back to reality\u2014it was all a precognition, and you know to try a different spell. Your spell is expended, but you can {@action Cast a Spell} that requires the same number of actions as the triggering spell or fewer to cast. The second spell must be a different spell than the first."
+			]
+		},
+		{
+			"name": "No!!!",
+			"source": "DA",
+			"page": 28,
+			"activity": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"level": 12,
+			"traits": [
+				"psychic"
+			],
+			"trigger": "A non-minion ally within 60 feet is reduced to 0 Hit Points.",
+			"entries": [
+				"The shock of seeing your ally near death breaks whatever limits exist in your mind, sending your power spilling forth. If your psyche is currently unleashed, you can immediately use a psyche action that takes 1 action or less to use. If your psyche is not currently unleashed, you {@action Unleash Psyche|DA|Unleash your Psyche}, which remains unleashed until the end of your next turn. You can ignore {@action Unleash Psyche|DA}'s requirement of needing to have {@action Cast a Spell} on your previous turn, but you still can't {@action Unleash Psyche|DA|Unleash your Psyche} if you're {@condition stupefied} or for 2 rounds after your psyche subsides."
+			]
+		},
+		{
+			"name": "Psi Catastrophe",
+			"source": "DA",
+			"page": 28,
+			"activity": {
+				"number": 2,
+				"unit": "action"
+			},
+			"level": 12,
+			"traits": [
+				"concentrate",
+				"evocation",
+				"mindshift",
+				"occult",
+				"psyche",
+				"psychic"
+			],
+			"entries": [
+				"You stop holding your power back, unleashing it all in a catastrophic blast. All creatures in a 20-foot emanation take {@damage 1d6} bludgeoning damage per level with a basic Reflex save. Your psyche subsides as your power is expended."
+			]
+		},
+		{
+			"name": "Conscious Spell Specialization",
+			"source": "DA",
+			"page": 28,
+			"level": 14,
+			"traits": [
+				"psychic"
+			],
+			"entries": [
+				"You become more adept with the spells that are always in your mind.",
+				"You gain an additional spell slot of 1st, 2nd, 3rd, and 4th levels. You can use these spell slots to cast only a spell granted by your conscious mind.",
+				"At 18th level, you also gain an additional 5th-level spell slot, with the same restrictions."
+			]
+		},
+		{
+			"name": "Deep Roots",
+			"source": "DA",
+			"page": 28,
+			"level": 14,
+			"traits": [
+				"psychic"
+			],
+			"entries": [
+				"Your mind-control spells send burrowing mental roots that tear at your target's mind when they're removed or run their course. When you {@action Cast a Spell} that imposes the {@condition controlled} condition or otherwise forces the target to take certain actions (such as command), you can choose one target that critically failed its save. When that target finishes fulfilling any commands issued by your spell, or when the spell is dispelled or counteracted, the target takes {@damage 1d6} mental damage per level of the spell."
+			]
+		},
+		{
+			"name": "Shatter Space",
+			"source": "DA",
+			"page": 28,
+			"level": 14,
+			"traits": [
+				"amp",
+				"psychic"
+			],
+			"amp": {
+				"entries": [
+					"You or one target of the spell are surrounded by a spiral of Archive torn space. This is an aura, and you choose the radius of the emanation, up to 20 feet. A creature that starts its turn in the aura or enters the aura during its turn takes {@damage 1d6} slashing damage for every level of the amped psi cantrip, with a basic Reflex save against your spell DC. If the creature critically fails, the torn space throws it off balance and it falls {@condition prone}.",
+					"The aura lasts until the beginning of your next turn. You can choose whether the aura affects the creature emitting it."
+				]
+			},
+			"entries": [
+				"The sheer power of your magic fractures reality. Use this amp in place of a psi cantrip's normal amp entry. The cantrip must be one that takes 2 or more actions to cast."
+			]
+		},
+		{
+			"name": "Constant Levitation",
+			"source": "DA",
+			"page": 29,
+			"level": 16,
+			"traits": [
+				"psychic"
+			],
+			"entries": [
+				"Your power has unbound you from the earth below. You're affected by a constant {@spell fly} spell, and when your Psyche is Unleashed, you gain a +10-foot status bonus to your fly Speed."
+			]
+		},
+		{
+			"name": "Target of Psychic Ire",
+			"source": "DA",
+			"page": 29,
+			"level": 16,
+			"traits": [
+				"amp",
+				"evocation",
+				"occult",
+				"psychic"
+			],
+			"amp": {
+				"entries": [
+					"Choose one target of the spell. Psychic phenomena turn themselves on the target\u2014typically, objects fling themselves at the creature. At the beginning of each of the target's turns, it takes {@damage 1d4} bludgeoning damage for each spell level of the psi cantrip this amp was added to, with a basic Reflex save.",
+					"The target remains marked by psychic ire for 3 rounds. The effect persists even if you fall {@condition unconscious} or leave the area."
+				]
+			},
+			"entries": [
+				"Your magic saturates your surroundings with hateful psychic energy. Use this amp in place of a psi cantrip's normal amp entry. The cantrip must be one that takes 2 or more actions to cast and targets a creature."
+			]
+		},
+		{
+			"name": "Wandering Thoughts",
+			"source": "DA",
+			"page": 29,
+			"activity": {
+				"number": 1,
+				"unit": "free"
+			},
+			"level": 16,
+			"traits": [
+				"concentrate",
+				"occult",
+				"psyche",
+				"psychic",
+				"teleportation"
+			],
+			"frequency": {
+				"freq": 1,
+				"unit": "round"
+			},
+			"requirements": "You used your most recent action to {@action Cast a Spell}.",
+			"entries": [
+				"When your Psyche is Unleashed, each burst of magic you cast also folds space around you, and you travel through one of those folds. You teleport 15 feet to a square you can see."
+			]
+		},
+		{
+			"name": "All in Your Head",
+			"source": "DA",
+			"page": 29,
+			"activity": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"level": 18,
+			"traits": [
+				"psyche",
+				"psychic"
+			],
+			"trigger": "You're about to attempt a Fortitude save or a Reflex save.",
+			"entries": [
+				"Flames scouring at your body, venom coursing through your veins\u2014you refuse to believe they exist, and nothing can affect you if you don't believe in it. You attempt a Will save against the triggering effect, instead of a Reflex or Fortitude save. You don't gain the benefits of fortress of will or walls of will on this save."
+			]
+		},
+		{
+			"name": "Cranial Detonation",
+			"source": "DA",
+			"page": 29,
+			"activity": {
+				"number": 1,
+				"unit": "free"
+			},
+			"level": 18,
+			"traits": [
+				"death",
+				"mindshift",
+				"psyche",
+				"psychic"
+			],
+			"frequency": {
+				"freq": 1,
+				"unit": "round"
+			},
+			"trigger": "You successfully reduce one or more non-mindless enemies to 0 Hit Points with a spell.",
+			"entries": [
+				"As your overwhelming psyche fells a creature, you use its flickering consciousness to detonate psychic energy from the creature's head. Each enemy you reduced to 0 Hit Points dies and its head explodes. Each exploding head generates a shockwave in a 15-foot emanation around that enemy. Each creature in any of the emanations takes {@damage 10d6} bludgeoning damage with a basic Reflex save. If this damage reduces an enemy to 0 Hit Points, its head also explodes, potentially damaging more creatures and potentially causing more detonations. A given creature can take damage only once from a single use of Cranial Detonation."
+			]
+		},
+		{
+			"name": "Deepest Wellspring",
+			"source": "DA",
+			"page": 29,
+			"level": 18,
+			"traits": [
+				"psychic"
+			],
+			"entries": [
+				"You've glimpsed the furthest recesses of your mind. If you have spent at least 3 Focus Points since the last time you Refocused, you recover 3 Focus Points when you {@action Refocus}, even if you spent your Focus Points on spells other than psychic abilities."
+			]
+		},
+		{
+			"name": "Become Thought",
+			"source": "DA",
+			"page": 29,
+			"level": 20,
+			"traits": [
+				"psychic",
+				"transmutation"
+			],
+			"entries": [
+				"You shed some of your material form, becoming a being of pure thought. This has the following effects.",
+				{
+					"type": "list",
+					"items": [
+						"You gain resistance 10 to physical damage but weakness 5 to mental damage and weakness 10 to {@trait any} effect that deals damage by targeting the spirit, such as spirit blast.",
+						"You can change your appearance on a whim. This takes a single action, which has the {@trait concentrate} trait, has the effects of illusory disguise, and lasts until you change your appearance again.",
+						"Once per year, when you die, you automatically return to life the next day as long as one living sentient creature on your plane remembers you; the memories enable you to reconstruct yourself from their thoughts. You appear in the vicinity of the creature that remembers you most strongly."
+					]
+				}
+			]
+		},
+		{
+			"name": "Mind over Matter",
+			"source": "DA",
+			"page": 29,
+			"level": 20,
+			"traits": [
+				"psychic"
+			],
+			"entries": [
+				"Your mind's limits are only what you imagine them to be. You gain an additional 10th-level spell slot."
+			]
+		},
+		{
+			"name": "Twin Psyche",
+			"source": "DA",
+			"page": 29,
+			"level": 20,
+			"traits": [
+				"psychic"
+			],
+			"entries": [
+				"You've segmented your psyche so it can operate in tandem. When you {@action Unleash Psyche|DA|Unleash your Psyche}, you can double its duration."
+			]
+		},
+		{
+			"name": "Unlimited Potential",
+			"source": "DA",
+			"page": 29,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"level": 20,
+			"traits": [
+				"concentrate",
+				"manipulate",
+				"metamagic",
+				"psychic"
+			],
+			"frequency": {
+				"freq": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"The laws of magic can limit your mind only if you think you need them, and you've grown past the need for such limits. If your next action is to {@action Cast a Spell} of 5th level or lower that has no duration, you don't expend the prepared spell as you cast it."
+			]
+		}
+	]
+}

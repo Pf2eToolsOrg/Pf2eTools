@@ -102,8 +102,8 @@
 				"Ancestry and Background|Psychic|DA|1",
 				"Initial Proficiencies|Psychic|DA|1",
 				"Psychic Spellcasting|Psychic|DA|1",
-				"Spell Repetoire|Psychic|DA|1",
-				"Psi Cantrips and Psi Amps|Psychic|DA|1",
+				"Spell Repertoire|Psychic|DA|1",
+				"Psi Cantrips and Amps|Psychic|DA|1",
 				"Unleash Psyche|Psychic|DA|1",
 				{
 					"classFeature": "Subconscious Mind|Psychic|DA|1",
@@ -336,7 +336,27 @@
 			]
 		},
 		{
-			"name": "Divine Spellcasting",
+			"name": "Spell Repertoire",
+			"source": "DA",
+			"page": 10,
+			"className": "Psychic",
+			"classSource": "DA",
+			"level": 1,
+			"entries": [
+				"The collection of spells you can cast is called your spell repertoire. At 1st level, you learn one 1st-level occult spell of your choice and three occult cantrips of your choice. You choose these from the common spells from the occult list or from other occult spells to which you have access. You can cast any spell in your spell repertoire by using a spell slot of an appropriate spell level. Your choice of conscious mind also grants you additional spells in your repertoire, starting with an additional 1st-level spell and two cantrips listed in your conscious mind, which you cast as psi cantrips (see below).",
+				"You add to this spell repertoire as you increase in level. Each time you get a spell slot (see Table 2), you add a spell to your spell repertoire of the same level. At 2nd level, you select another 1st-level spell; at 3rd level, you select one 2nd-level spell, and so on. When you add spells, you might add a higher-level version of a spell you already have, so you can cast a heightened version of that spell. Your conscious mind also adds additional spells to your repertoire as you gain spells of higher levels.",
+				"Though you gain them at the same rate, your spell slots and the spells in your spell repertoire are separate. If a feat or other ability adds a spell to your spell repertoire, such as the spells you gain from your conscious mind, it wouldn’t give you another spell slot, and vice versa.",
+				{
+					"type": "pf2-h4",
+					"name": "Swapping Spells in Your Repertoire",
+					"entries": [
+						"As you gain new spells in your repertoire, you might want to replace some of the spells you previously learned. Each time you gain a level and learn new spells, you can swap out one of your old spells for a different spell of the same level. This spell can be a cantrip. You can also swap out spells by {@action retraining} during downtime."
+					]
+				}
+			]
+		},
+		{
+			"name": "Psychic Spellcasting",
 			"source": "DA",
 			"page": 10,
 			"className": "Psychic",
@@ -736,7 +756,7 @@
 					"style": "pf2-p",
 					"items": [
 						{
-							"name": "{@class Psychic|DA|Emotional Acceptance|Emotional} (Cha)",
+							"name": "{@class Psychic|DA|Emotional Acceptance|Emotion} (Cha)",
 							"entries": [
 								"Throwing yourself headlong into your emotions is what lets you access your power."
 							]
@@ -1606,7 +1626,7 @@
 			"className": "Psychic",
 			"classSource": "DA",
 			"level": 1,
-			"subclassShortName": "Oscillating Wave",
+			"subclassShortName": "Silent Whisper",
 			"subclassSource": "DA",
 			"entries": [
 				{
