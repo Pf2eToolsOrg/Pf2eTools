@@ -440,6 +440,7 @@ function Renderer () {
 	};
 
 	this._renderEntriesOtherSource = function (entry, textStack, meta, options) {
+		this._getReference(entry)
 		if (entry.entries && entry.entries.length) {
 			textStack[0] += `<div class="pf2-wrp-other-source mb-3">`;
 			textStack[0] += `<hr class="hr-other-source">`;
@@ -1514,9 +1515,11 @@ function Renderer () {
 	};
 
 	this._getReference = function (entry) {
-		if (entry.reference === true) {
+		if (entry.reference) {
 			let source = `<a href="${Parser.sourceJsonToStore(entry.source)}">${Parser.sourceJsonToFull(entry.source)}</a>`
-			if (!entry.entries.length) {
+			if (entry.reference.index || entry.reference.auto !== true) {
+				entry.entries.splice(entry.reference.index, 0, entry.reference.note ?? `{@note Read from ${entry.page != null ? `page ${entry.page} of ` : ""}${source}}.`);
+			} else if (!entry.entries.length) {
 				entry.entries = []
 				entry.entries.push(`{@note Read from ${entry.page != null ? `page ${entry.page} of ` : ""}${source}}.`);
 			} else {
@@ -1525,7 +1528,7 @@ function Renderer () {
 					// If there are no strings, assume there is no content inside the entry itself, meaning it's a 100% reference to the source.
 					// Else, check if the entry contains any objects. If it does, put the reference *before* the objects.
 					// Resolving that, just add the entry at the end if the previous two are false.
-					if (entry.entries[i].type === ("pf2-h1-flavor" || "pf2-sidebar")) {
+					if (entry.entries[i].type === "pf2-h1-flavor" || entry.entries[i].type === "pf2-sidebar") {
 						entry.entries.splice(i + 1, 0, `{@note Read from ${entry.page != null ? `page ${entry.page} of ` : ""}${source}}.`);
 						return
 					} else if (!entry.entries.filter(t => typeof t === "string").length) {
@@ -4028,7 +4031,7 @@ Renderer.eidolon = {
 		<p class="pf2-stat pf2-stat__section"><strong>Size&nbsp;</strong>${renderer.render(eidolon.size.map(t => `{@trait ${t}}`).joinConjunct(", ", " or "))}</p>
 		${eidolon.extraStats ? eidolon.extraStats.map(es => `<p class="pf2-stat pf2-stat__section"><strong>${es.name}&nbsp;</strong>${renderer.render(es.entries)}</p>`) : ""}
 		<p class="pf2-stat pf2-stat__section"><strong>Suggested Attacks&nbsp;</strong>${renderer.render(eidolon.suggestedAttacks)}</p>
-		${eidolon.stats.map(s => `<p class="pf2-stat pf2-stat__section"><strong>${s.name || ""}&nbsp;</strong>${Object.entries(s.abilityMods).map(([k, v]) => `<i>${k}</i> ${v}`).join(", ")}; ${Parser.numToBonus(s.ac.number)} AC (${Parser.numToBonus(s.ac.dexCap)} Dex Cap)</p>`)}
+		${eidolon.stats.map(s => `<p class="pf2-stat pf2-stat__section"><strong>${s.name || ""}&nbsp;</strong>${Object.entries(s.abilityScores).map(([k, v]) => `<i>${k.toTitleCase()}</i> ${v}`).join(", ")}; ${Parser.numToBonus(s.ac.number)} AC (${Parser.numToBonus(s.ac.dexCap)} Dex Cap)</p>`)}
 		<p class="pf2-stat pf2-stat__section"><strong>Skills&nbsp;</strong>${renderer.render(eidolon.skills.map(s => `{@skill ${s}}`).join(", "))}</p>
 		${Renderer.companionfamiliar.getRenderedSenses(eidolon)}
 		<p class="pf2-stat pf2-stat__section"><strong>Language&nbsp;</strong>${renderer.render(eidolon.languages.map(l => `{@language ${l}}`).join(", "))}</p>
